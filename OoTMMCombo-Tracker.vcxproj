@@ -138,6 +138,7 @@
     <ClCompile Include="OoTMMCombo-Tracker.cpp" />
     <ClCompile Include="OvTypes.cpp" />
     <ClCompile Include="protocol.cpp" />
+    <ClCompile Include="Scenes.cpp" />
     <ClCompile Include="sendq.cpp" />
   </ItemGroup>
   <ItemGroup>

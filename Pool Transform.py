@@ -101,12 +101,12 @@ def match_items(spoiler_log, input_file, output_file):
 #
 #print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
 
-#spoiler_file = 'D:\Emulation\OoTMMCombo-Tracker\Logs\OoTMM-Spoiler-Coop.csv'
-#input_file = 'D:\Emulation\OoTMMCombo-Tracker\Logs\Game_Log.csv'
-#output_file = 'D:\Emulation\OoTMMCombo-Tracker\Logs\Output.csv'
-#match_items(spoiler_file, input_file, output_file)
+spoiler_file = 'D:\Emulation\OoTMMCombo-Tracker\Logs\OoTMM-Spoiler-Coop.csv'
+input_file = 'D:\Emulation\OoTMMCombo-Tracker\Logs\Game_Log.csv'
+output_file = 'D:\Emulation\OoTMMCombo-Tracker\Logs\Output.csv'
+match_items(spoiler_file, input_file, output_file)
 
 
-input_file = 'D:\Emulation\OoTMMCombo-Tracker\Logs\Output.csv'
-output_file = 'D:\Emulation\OoTMMCombo-Tracker\Logs\Items.txt'
-parse_items(input_file, output_file, "ItemList")
+#input_file = 'D:\Emulation\OoTMMCombo-Tracker\Logs\Output.csv'
+#output_file = 'D:\Emulation\OoTMMCombo-Tracker\Logs\Items.txt'
+#parse_items(input_file, output_file, "ItemList")

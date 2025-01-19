@@ -1,5 +1,6 @@
 #include "OvTypes.h"
 #include "Items.h"
+#include "Scenes.h"
 #include "game.h"
 
 void CorrectComboItem(ComboItem* Item)
@@ -18,20 +19,26 @@ void CorrectComboItem(ComboItem* Item)
 				case OV_COW:
 					//Item->ObjectID >>= 3;
 					break;
-				case OV_NPC:
 				case OV_SHOP:
-				case OV_SCRUB:
-				case OV_SR:
+					Item->SceneID = GetSceneShop(Item->ObjectID, OOT_GAME);
+					break;
+				case OV_NPC:
+					Item->SceneID = GetSceneNPC(Item->ObjectID, OOT_GAME);
+					break;
 				case OV_FISH:
-					//BITMAP8_SET(gSharedCustomSave.oot.npc, id);
+					Item->SceneID = FISHING_POND;
+					break;
+				case OV_SR:
+					Item->SceneID = GetSceneSR(Item->ObjectID);
+					break;
+				case OV_SCRUB:
+					Item->SceneID = GetSceneScrub(Item->ObjectID);
 					break;
 				case OV_GS:
-					//BITMAP32_SET(gOotSave.info.gsFlags, id - 8);
+					Item->SceneID = GetSceneGS(Item->ObjectID);
 					break;
 				default:
-
 					Item->ObjectID = ((uint32_t)Item->OvType - OV_XFLAG0) << 16 | ((uint32_t)Item->RoomID) << 8 | Item->ObjectID;
-					//setXflagsMarkOot(play, ovType - OV_XFLAG0, sceneId, roomId, id);
 					break;
 			}
 		}
@@ -54,13 +61,13 @@ void CorrectComboItem(ComboItem* Item)
 				case OV_COW:
 					break;
 				case OV_NPC:
+					Item->SceneID = GetSceneNPC(Item->ObjectID, MM_GAME);
+					break;
 				case OV_SHOP:
-					//BITMAP8_SET(gSharedCustomSave.mm.shops, id);
+					Item->SceneID = GetSceneShop(Item->ObjectID, MM_GAME);
 					break;
 				default:
-
 					Item->ObjectID = ((uint32_t)Item->OvType - OV_XFLAG0) << 16 | ((uint32_t)Item->RoomID) << 8 | Item->ObjectID;
-					//setXflagsMarkMm(play, ovType - OV_XFLAG0, sceneId, roomId, id);
 					break;
 			}
 

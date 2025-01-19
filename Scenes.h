@@ -1,5 +1,7 @@
 #pragma once
 
+#include "multi.h"
+
 #define DEKU_TREE                           0x00
 #define DODONGO_CAVERN  0x01
 #define INSIDE_JABU_JABU  0x02
@@ -207,3 +209,27 @@
 
 #define EXTRA  0x71
 
+enum OoT_Shops
+{
+	OoT_Kokiri_Shop = 0x00,
+	OoT_Bombchu_Shop = 0x01,
+	OoT_Zora_Shop = 0x02,
+	OoT_Goron_Shop = 0x03,
+	OoT_Market_Bazaar = 0x04,
+	OoT_Market_Potion_Shop = 0x05,
+	OoT_Kakariko_Bazaar = 0x06,
+	OoT_Kakariko_Potion_Shop = 0x07
+};
+
+enum MM_Shops
+{
+	MM_Clock_Town_Shop = 0x00,
+	MM_Swamp_Potion_Shop = 0x01,
+	MM_Goron_Zora_Shop = 0x02,
+};
+
+uint32_t GetSceneShop(uint32_t ItemID, uint32_t Game);
+uint32_t GetSceneNPC(uint32_t NPC, uint32_t Game);
+uint32_t GetSceneSR(uint32_t SilverRupee);
+uint32_t GetSceneGS(uint32_t GS);
+uint32_t GetSceneScrub(uint32_t Scrub);
