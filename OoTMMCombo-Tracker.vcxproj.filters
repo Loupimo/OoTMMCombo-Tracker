@@ -1,93 +1,153 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Fichiers sources">
+    <Filter Include="Source Files">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+      <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Fichiers d%27en-tête">
+    <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Fichiers de ressources">
+    <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{0d676e77-6519-44f7-85d2-0c22cd7d3f11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Multi">
+      <UniqueIdentifier>{0fce90d2-1239-400e-8ff2-d3981ec555c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Combo">
+      <UniqueIdentifier>{99e8f5db-7777-4b86-af07-00989f13a4b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Multi">
+      <UniqueIdentifier>{32429e65-a9b1-4a64-badf-aa3f99e1e87f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{77b06b68-cbeb-4a90-a527-75ab505bf8fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Combo">
+      <UniqueIdentifier>{4bf04eab-463e-405c-b7cb-8f930158faad}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="OoTMMCombo-Tracker.cpp">
-      <Filter>Fichiers sources</Filter>
+    <QtRcc Include="OoTMMComboTracker.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <QtUic Include="OoTMMComboTracker.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="protocol.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="Sources\Multi\API.cpp">
+      <Filter>Source Files\Multi</Filter>
     </ClCompile>
-    <ClCompile Include="sendq.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="Sources\Multi\App.cpp">
+      <Filter>Source Files\Multi</Filter>
     </ClCompile>
-    <ClCompile Include="api.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="Sources\Multi\Buffer.cpp">
+      <Filter>Source Files\Multi</Filter>
     </ClCompile>
-    <ClCompile Include="app.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="Sources\Multi\Game.cpp">
+      <Filter>Source Files\Multi</Filter>
     </ClCompile>
-    <ClCompile Include="buffer.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="Sources\UI\MapTab.cpp">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
-    <ClCompile Include="game.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="Sources\UI\ObjectRenderer.cpp">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
-    <ClCompile Include="Items.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="Sources\UI\OoTMMComboTracker.cpp">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
-    <ClCompile Include="Objects.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="Sources\Combo\Objects.cpp">
+      <Filter>Source Files\Combo</Filter>
     </ClCompile>
-    <ClCompile Include="OvTypes.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="Sources\Combo\OvTypes.cpp">
+      <Filter>Source Files\Combo</Filter>
     </ClCompile>
-    <ClCompile Include="Scenes.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="Sources\Combo\Items.cpp">
+      <Filter>Source Files\Combo</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Combo\Scenes.cpp">
+      <Filter>Source Files\Combo</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Multi\Sendq.cpp">
+      <Filter>Source Files\Multi</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Multi\Protocol.cpp">
+      <Filter>Source Files\Multi</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\LogTab.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Multi\Multi.cpp">
+      <Filter>Source Files\Multi</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="multi.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Headers\Multi\API.h">
+      <Filter>Header Files\Multi</Filter>
     </ClInclude>
-    <ClInclude Include="buffer.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Headers\Multi\App.h">
+      <Filter>Header Files\Multi</Filter>
     </ClInclude>
-    <ClInclude Include="game.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Headers\Multi\Game.h">
+      <Filter>Header Files\Multi</Filter>
     </ClInclude>
-    <ClInclude Include="protocol.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Headers\Multi\Buffer.h">
+      <Filter>Header Files\Multi</Filter>
     </ClInclude>
-    <ClInclude Include="sendq.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Headers\Multi\Sendq.h">
+      <Filter>Header Files\Multi</Filter>
     </ClInclude>
-    <ClInclude Include="api.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Headers\Multi\Protocol.h">
+      <Filter>Header Files\Multi</Filter>
     </ClInclude>
-    <ClInclude Include="app.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Headers\Combo\Items.h">
+      <Filter>Header Files\Combo</Filter>
     </ClInclude>
-    <ClInclude Include="Items.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Headers\Combo\NPC.h">
+      <Filter>Header Files\Combo</Filter>
     </ClInclude>
-    <ClInclude Include="Flags.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Headers\Combo\Objects.h">
+      <Filter>Header Files\Combo</Filter>
     </ClInclude>
-    <ClInclude Include="Objects.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Headers\Combo\OvTypes.h">
+      <Filter>Header Files\Combo</Filter>
     </ClInclude>
-    <ClInclude Include="OvTypes.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Headers\Combo\Scenes.h">
+      <Filter>Header Files\Combo</Filter>
     </ClInclude>
-    <ClInclude Include="Scenes.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="Headers\UI\ObjectRenderer.h">
+      <Filter>Header Files\UI</Filter>
     </ClInclude>
-    <ClInclude Include="NPC.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Headers\UI\MapTab.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="Headers\UI\OoTMMComboTracker.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="Headers\UI\LogTab.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="Headers\Multi\Multi.h">
+      <Filter>Header Files\Multi</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>
