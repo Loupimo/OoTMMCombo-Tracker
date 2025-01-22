@@ -121,10 +121,12 @@
     <ClCompile Include="Sources\Multi\Multi.cpp" />
     <ClCompile Include="Sources\Multi\Protocol.cpp" />
     <ClCompile Include="Sources\Multi\Sendq.cpp" />
+    <ClCompile Include="Sources\UI\GameTab.cpp" />
     <ClCompile Include="Sources\UI\LogTab.cpp" />
     <ClCompile Include="Sources\UI\MapTab.cpp" />
     <ClCompile Include="Sources\UI\ObjectRenderer.cpp" />
     <ClCompile Include="Sources\UI\OoTMMComboTracker.cpp" />
+    <ClCompile Include="Sources\UI\SceneRenderer.cpp" />
     <QtRcc Include="OoTMMComboTracker.qrc" />
     <QtUic Include="OoTMMComboTracker.ui" />
     <ClCompile Include="main.cpp" />
@@ -139,10 +141,12 @@
     <ClInclude Include="Headers\Multi\App.h" />
     <ClInclude Include="Headers\Multi\Buffer.h" />
     <ClInclude Include="Headers\Multi\Game.h" />
+    <QtMoc Include="Headers\UI\SceneRenderer.h" />
     <QtMoc Include="Headers\Multi\Multi.h" />
     <ClInclude Include="Headers\Multi\Protocol.h" />
     <ClInclude Include="Headers\Multi\Sendq.h" />
     <QtMoc Include="Headers\UI\LogTab.h" />
+    <QtMoc Include="Headers\UI\GameTab.h" />
     <ClInclude Include="Headers\UI\ObjectRenderer.h" />
     <QtMoc Include="Headers\UI\OoTMMComboTracker.h" />
     <QtMoc Include="Headers\UI\MapTab.h" />

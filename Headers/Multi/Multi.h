@@ -1,5 +1,4 @@
-#ifndef MULTI_H
-#define MULTI_H
+#pragma once
 
 #define LOG_DEBUG    0
 
@@ -200,5 +199,3 @@ public:
     }
 
 };
-
-#endif

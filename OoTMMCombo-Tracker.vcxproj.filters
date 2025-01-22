@@ -97,6 +97,12 @@
     <ClCompile Include="Sources\Multi\Multi.cpp">
       <Filter>Source Files\Multi</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\UI\SceneRenderer.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\GameTab.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Multi\API.h">
@@ -148,6 +154,12 @@
     </QtMoc>
     <QtMoc Include="Headers\Multi\Multi.h">
       <Filter>Header Files\Multi</Filter>
+    </QtMoc>
+    <QtMoc Include="Headers\UI\SceneRenderer.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="Headers\UI\GameTab.h">
+      <Filter>Header Files\UI</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

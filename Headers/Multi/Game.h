@@ -1,5 +1,4 @@
-#ifndef GAME_H
-#define GAME_H
+#pragma once
 
 #include "Multi.h"
 #include "Buffer.h"
@@ -78,5 +77,3 @@ public:
     void gameTick(App* app);
     void ParseLedgerFullEntry(char* LedgerData, bool IsGoingOut);
 };
-
-#endif

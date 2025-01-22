@@ -53,7 +53,7 @@ LogTab::LogTab(QWidget* parent) : QWidget(parent)
 
     // Layout principal pour la fenêtre
     this->MainLayout = new QVBoxLayout;
-    MainLayout->addWidget(this->LaunchGroup);
+    this->MainLayout->addWidget(this->LaunchGroup);
 
 	this->LogViewer = new QPlainTextEdit;
     this->LogViewer->setReadOnly(true);
@@ -130,14 +130,6 @@ void LogTab::PressLaunchButton()
             this->LaunchButton->setText("Stop Tracking");
             this->Tracker->IsRunning = true;
 
-            /*std::string t = this->Host->text().toStdString();
-            const char* tmp = t.c_str();
-            if (tmp != nullptr)
-            {
-                size_t len = strlen(tmp);
-                this->Tracker->serverHost = (char*)malloc(sizeof(char) * len);
-                strcpy_s(this->Tracker->serverHost, len, tmp);
-            }*/
             this->TrackerThread = std::thread(&App::appRun, this->Tracker, this->EnableMultiplayer, this->Host, this->Port->text().toUShort());
         }
     }

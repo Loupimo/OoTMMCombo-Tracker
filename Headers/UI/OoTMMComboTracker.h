@@ -4,7 +4,7 @@
 #include <QTabWidget>
 #include "ui_OoTMMComboTracker.h"
 #include "LogTab.h"
-#include "MapTab.h"
+#include "GameTab.h"
 
 class OoTMMComboTracker : public QMainWindow
 {
@@ -18,5 +18,6 @@ private:
     Ui::OoTMMComboTrackerClass ui;
     QTabWidget* TabWidget;
     LogTab* Log;
-    MapTab* Maps;
+    GameTab OoTTab = GameTab(OOT_GAME);
+    GameTab MMTab = GameTab(MM_GAME);
 };

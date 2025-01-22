@@ -3,10 +3,11 @@
 ObjectRenderer::ObjectRenderer(ObjectType Type)
 {
     // Charger l'image à afficher
-    this->Icon = QPixmap("./Resources/Common/Pot.png"); // Remplacez par le chemin de votre image
-    this->Icon = this->Icon.scaled(30, 30, Qt::KeepAspectRatio);
+    this->Icon = QPixmap(Icons[Type].IconPath);
+    this->Icon = this->Icon.scaled(Icons[Type].Scale[0], Icons[Type].Scale[1], Qt::KeepAspectRatio);
+
     // Liste des positions où afficher les images
-    points = { {353, 501}, {607, 493}, {455, 493}, {517, 488},
+    /*points = {{353, 501}, {607, 493}, {455, 493}, {517, 488},
 {310, 473}, {765, 473}, {697, 473}, {635, 473},
 {181, 472}, {248, 471}, {533, 454}, {474, 454},
 {420, 453}, {472, 362}, {429, 356}, {318, 341},
@@ -17,16 +18,45 @@ ObjectRenderer::ObjectRenderer(ObjectType Type)
 {425, 273}, {476, 268}, {476, 174}, {433, 171},
 {524, 166}, {568, 164}, {476, 146}, {519, 141},
 {574, 136}, {432, 135}, {524, 114}, {460, 114} };
+    */
 
+    /*points = {
+
+       {997, 296}, {918, 611}
+
+    };*/
+}
+
+void ObjectRenderer::AddObjectToRender(int X, int Y)
+{
+    X = X - (Icon.width() / 2);
+
+    if (X < 0)
+    {
+        X = 0;
+    }
+
+    Y = Y - (Icon.height() / 2);
+
+    if (Y < 0)
+    {
+        Y = 0;
+    }
+
+    this->ObjectsLocation.append(std::pair<int, int>(X, Y));
 }
 
 
-void ObjectRenderer::AddRendererToScene(QGraphicsScene* Destination)
+
+void ObjectRenderer::AddObjectToScene(QGraphicsScene* Destination)
 {
-    for (const auto& point : points)
+    if (this->ShouldBeRendered)
     {
-        QGraphicsPixmapItem* iconItem = new QGraphicsPixmapItem(this->Icon);
-        iconItem->setPos(point.first, point.second); // Positionner les images
-        Destination->addItem(iconItem);
+        for (const auto& point : this->ObjectsLocation)
+        {
+            QGraphicsPixmapItem* iconItem = new QGraphicsPixmapItem(this->Icon);
+            iconItem->setPos(point.first, point.second); // Positionner les images
+            Destination->addItem(iconItem);
+        }
     }
 }

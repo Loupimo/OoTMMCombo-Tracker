@@ -5,7 +5,7 @@
 #include <QVBoxLayout>
 #include <QGraphicsScene>
 #include "ui_OoTMMComboTracker.h"
-#include "ObjectRenderer.h"
+#include "SceneRenderer.h"
 
 class MapTab : public QWidget
 {
@@ -18,12 +18,15 @@ public:
     QGraphicsScene* Scene;
     QGraphicsView* View;
     QPixmap* Map;
-    std::vector<ObjectRenderer*> Objects;
+
+    SceneRenderer* SceneToRender;
 
 #pragma endregion
 
 public:
-    MapTab(const QString& MapPath, QWidget* parent = nullptr);
+    MapTab(QWidget* parent = nullptr);
     ~MapTab();
 
+    void RenderTab();
+    void UnloadTab();
 };

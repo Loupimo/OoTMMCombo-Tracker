@@ -6,24 +6,18 @@
 #include "UI/MapTab.h"
 
 // Création d'un onglet avec une carte et un panneau latéral
-MapTab::MapTab(const QString& MapPath, QWidget* parent) : QWidget(parent)
+MapTab::MapTab(QWidget* parent) : QWidget(parent)
 {
     // Layout principal
     this->MainLayout = new QHBoxLayout;
 
+    //this->SceneToRender = new SceneRenderer(&OoTScenes[0]);
+    //this->SceneToRender->RenderScene();
+
     // Zone graphique pour la carte
-    this->Scene = new QGraphicsScene;
-    this->View = new QGraphicsView(this->Scene);
-
-    // Charger l'image de la carte
-    this->Map = new QPixmap(MapPath);
-    this->Scene->addPixmap(*this->Map);
-
-    // Ajouter des points cliquables
-    //QGraphicsEllipseItem* point = this->Scene->addEllipse(50, 50, 10, 10, QPen(Qt::red), QBrush(Qt::red));
-    this->Objects.push_back(new ObjectRenderer(ObjectType::pot));
-    this->Objects[0]->AddRendererToScene(this->Scene);
-    //this->Scene->addWidget(this->Objects[0]);
+    //this->View = new QGraphicsView(this->SceneToRender);
+    this->View = new QGraphicsView();
+    this->SceneToRender = new SceneRenderer(&OoTScenes[0]);
 
     // Panneau latéral
     QVBoxLayout* sidePanelLayout = new QVBoxLayout;
@@ -45,8 +39,27 @@ MapTab::MapTab(const QString& MapPath, QWidget* parent) : QWidget(parent)
 
 MapTab::~MapTab()
 {
+    this->SceneToRender->~SceneRenderer();
+    this->SceneToRender = nullptr;
     this->View->~QGraphicsView();
-    this->Scene->~QGraphicsScene();
-    this->Map->~QPixmap();
     this->MainLayout->~QHBoxLayout();
+}
+
+void MapTab::RenderTab()
+{
+
+
+    this->SceneToRender->RenderScene();
+
+    // Zone graphique pour la carte
+    this->View->setScene(this->SceneToRender);
+}
+
+void MapTab::UnloadTab()
+{
+    if (this->SceneToRender != nullptr)
+    {
+        this->SceneToRender->UnloadScene();
+        this->View->setScene(nullptr);
+    }
 }

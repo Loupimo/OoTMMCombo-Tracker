@@ -1,0 +1,115 @@
+import pandas as pd 
+
+commonScenes = ["FAIRY_FOUNTAIN", "GROTTOS", "GORON_SHOP", "LOST_WOODS", "SHOOTING_GALLERY", "CUTSCENE_MAP", "TREASURE_SHOP", "LABORATORY", "SPIDER_HOUSE_SWAMP", "SPIDER_HOUSE_OCEAN"]
+commonID = ["SONG_STORMS"]
+
+def parse_file(input_file, output_file, arrayname, prefix):
+    """Parse un fichier pour convertir les lignes RGB en hexadécimal."""
+    with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
+        filereader = pd.read_csv(infile, delimiter=";", header=0)
+        outfile.write ("const ObjectInfo " + arrayname + "[" + str(len(filereader)) + "] =\n{\n")
+        isFirst = True
+        #print(filereader)
+        for i, row in filereader.iterrows():
+            objectstr = ""
+            if isFirst == False :
+                objectstr = ",\n"
+            else:
+                isFirst = False
+
+            idstr = row["id"]
+            if row["id"] in commonID:
+                idstr = prefix + idstr
+            scenestr = row["scene"]
+            if row["scene"] in commonScenes:
+                scenestr = prefix + scenestr
+            renderscene = row["renderscene"]
+            if row["renderscene"] in commonScenes:
+                renderscene = prefix + renderscene
+            
+            objectstr = objectstr + "\t{ " + idstr + ", " + scenestr + ", \"" + str(row["location"]) + "\", ObjectType::" + str(row["type"]) + ", {" + str(row["x"]) + ", " + str(row["y"]) + "}, " + renderscene + " }"
+            outfile.write(objectstr)
+        outfile.write("\n};")
+
+def parse_items(input_file, output_file, arrayname):
+    """Parse un fichier pour convertir les lignes RGB en hexadécimal."""
+    with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
+        filereader = pd.read_csv(infile, delimiter=";", header=0)
+        outfile.write ("const ItemInfo " + arrayname + "[" + str(len(filereader)) + "] =\n{\n")
+        isFirst = True
+        unique_list = set ()
+        #print(filereader)
+        for i, row in filereader.iterrows():
+            if unique_list.__contains__((row["Item ID"], row["Real Item"])) == False:
+                unique_list.add((row["Item ID"], row["Real Item"]))
+        
+        sorted_list = sorted(unique_list, key=lambda x: int(x[0], 16))
+
+        for item in sorted_list:
+            objectstr = ""
+            if isFirst == False :
+                objectstr = ",\n"
+            else:
+                isFirst = False
+            objectstr = objectstr + "\t{ 0x" + str(item[0]) + ", \"" + str(item[1]) + "\" }"
+            outfile.write(objectstr)
+        outfile.write("\n};")
+
+def match_items(spoiler_log, input_file, output_file):
+    """Parse un fichier pour convertir les lignes RGB en hexadécimal."""
+    with open(input_file, 'r') as infile, open (spoiler_log, 'r') as spoiler, open(output_file, 'w') as outfile:
+        filereader = pd.read_csv(infile, delimiter=";", header=0)
+        spoilerreader = pd.read_csv(spoiler, delimiter=";", header=0)
+        outfile.write ("Location;Guessed Item;Real Item;Item ID\n")
+        outfile.flush()
+        max_len = len(spoilerreader.index)
+        startID = 0
+        for i, row in filereader.iterrows():
+            objectstr = ""
+            found = False
+            for j in range(startID, max_len):
+                row_spoil = spoilerreader.iloc[j]
+                if row_spoil["Location"] == row["Object"]:
+                    objectstr = row_spoil["Location"] + ";" + row["Item"] + ";" + row_spoil["Item"] + ";" + row["ItemID"] + "\n"
+                    startID = j
+                    #spoilerreader.drop(j, inplace=True)
+                    
+                    #print("Found : " + row["Object"])
+                    found = True
+                    break
+            
+            if found == False:
+                print("Not found : " + row["Object"])
+            outfile.write(objectstr)
+            outfile.flush()
+
+
+
+# Exemple d'utilisation
+input_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Objects\pool_mm.csv'
+output_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Objects\pool_mm.txt'
+parse_file(input_file, output_file, "MMObjects", "MM_")
+#
+print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
+#
+input_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Objects\pool_oot.csv'
+output_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Objects\pool_oot.txt'
+parse_file(input_file, output_file, "OoTObjects", "OOT_")
+#
+print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
+#
+#input_file = 'D:\Emulation\OoTMMCombo-Tracker\Items.csv'
+#output_file = 'D:\Emulation\OoTMMCombo-Tracker\Items.txt'
+#parse_items(input_file, output_file, "ItemList")
+#
+#print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
+
+#spoiler_file = 'D:\Emulation\OoTMMCombo-Tracker\Logs\OoTMM-Spoiler-Coop.csv'
+#input_file = 'D:\Emulation\OoTMMCombo-Tracker\Logs\Game_Log.csv'
+#output_file = 'D:\Emulation\OoTMMCombo-Tracker\Logs\Output.csv'
+#match_items(spoiler_file, input_file, output_file)
+
+
+#input_file = 'D:\Emulation\OoTMMCombo-Tracker\Logs\Output.csv'
+#output_file = 'D:\Emulation\OoTMMCombo-Tracker\Logs\Items.txt'
+#parse_items(input_file, output_file, "ItemList")

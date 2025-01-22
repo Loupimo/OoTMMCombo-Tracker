@@ -11,7 +11,6 @@
 #include <QLineEdit>
 #include <QIntValidator>
 #include "ui_OoTMMComboTracker.h"
-#include "ObjectRenderer.h"
 #include "Multi/App.h"
 #include <thread>
 
