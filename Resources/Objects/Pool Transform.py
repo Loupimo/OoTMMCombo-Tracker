@@ -31,6 +31,51 @@ def parse_file(input_file, output_file, arrayname, prefix):
             outfile.write(objectstr)
         outfile.write("\n};")
 
+def parse_file2(input_file, output_file, arrayname, prefix):
+    """Parse un fichier pour convertir les lignes RGB en hexadécimal."""
+    with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
+        filereader = pd.read_csv(infile, delimiter=";", header=0)
+        isFirst = True
+        fin = {}
+        #print(filereader)
+        for i, row in filereader.iterrows():
+            objectstr = ""
+            if isFirst == False :
+                objectstr = ",\n"
+            else:
+                isFirst = False
+
+            idstr = row["id"]
+            if row["id"] in commonID:
+                idstr = prefix + idstr
+            scenestr = row["scene"]
+            if row["scene"] in commonScenes:
+                scenestr = prefix + scenestr
+            renderscene = row["renderscene"]
+            if row["renderscene"] in commonScenes:
+                renderscene = prefix + renderscene
+            
+            if fin.__contains__(scenestr) == False:
+                fin[scenestr] = []
+
+            objectstr = "\t{ " + idstr + ", " + scenestr + ", \"" + str(row["location"]) + "\", ObjectType::" + str(row["type"]) + ", {" + str(row["x"]) + ", " + str(row["y"]) + "}, " + renderscene + " }"
+            fin[scenestr].append(objectstr)
+            
+            #outfile.write(objectstr)
+        for r in fin:
+            le = len(fin[r])
+            i = 0
+            strb = "\nCreateObjectsForScene(" + r + ", " + str(le) + ",\n"
+            for u in fin[r]:
+                i = i + 1
+                strb = strb + u 
+                if i < le:
+                    strb = strb + ",\n"
+            strb = strb + ")\n"
+            #print(strb)
+            outfile.write(strb)
+
+
 def parse_items(input_file, output_file, arrayname):
     """Parse un fichier pour convertir les lignes RGB en hexadécimal."""
     with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
@@ -88,13 +133,13 @@ def match_items(spoiler_log, input_file, output_file):
 # Exemple d'utilisation
 input_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Objects\pool_mm.csv'
 output_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Objects\pool_mm.txt'
-parse_file(input_file, output_file, "MMObjects", "MM_")
+parse_file2(input_file, output_file, "MMObjects", "MM_")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
 #
 input_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Objects\pool_oot.csv'
 output_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Objects\pool_oot.txt'
-parse_file(input_file, output_file, "OoTObjects", "OOT_")
+parse_file2(input_file, output_file, "OoTObjects", "OOT_")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
 #

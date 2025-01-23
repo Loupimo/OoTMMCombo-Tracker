@@ -13,17 +13,15 @@ SceneInfo::SceneInfo(int PSceneID, const char* PImage, int PGameID)
     if (this->GameID == OOT_GAME)
     {   // Ocarina of time
 
-        arrLen = NUM_OOT_OBJ;
-        arrObj = OoTObjects;
+        this->Objects = &OoTSceneObjects[this->SceneID];
     }
     else
     {   // Majora's Mask
 
-        arrLen = NUM_MM_OBJ;
-        arrObj = MMObjects;
+        this->Objects = &MMSceneObjects[this->SceneID];
     }
 
-    for (size_t i = 0; i < arrLen; i++)
+    /*for (size_t i = 0; i < arrLen; i++)
     {
         const ObjectInfo* currObj = &arrObj[i];
         if (currObj->RenderScene == this->SceneID)
@@ -31,7 +29,7 @@ SceneInfo::SceneInfo(int PSceneID, const char* PImage, int PGameID)
 
             this->Objects.push_back(currObj);
         }
-    }
+    }*/
 }
 
 // Destructeur pour libérer la mémoire
@@ -46,9 +44,11 @@ SceneRenderer::SceneRenderer(const SceneInfo* SceneToRender) : QGraphicsScene()
 	this->CurrScene = SceneToRender;
 	if (SceneToRender)
 	{
-		for (size_t i = 0; i < SceneToRender->Objects.size(); i++)
+		for (size_t i = 0; i < SceneToRender->Objects->NumOfObjs; i++)
 		{
-			const ObjectInfo* currObject = SceneToRender->Objects[i];
+			const ObjectInfo* currObject = &SceneToRender->Objects->Objects[i];
+            if (currObject->RenderScene != this->CurrScene->SceneID)
+                continue;
 			ObjectRenderer* dest = nullptr;
 			switch (currObject->Type)
 			{

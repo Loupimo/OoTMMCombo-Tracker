@@ -688,14 +688,14 @@ MEDIGORON;GORON_CITY;Goron City Medigoron Giant Knife;npc;0;0;GORON_CITY
 0x032b;GORON_CITY;Goron City Pot Stairs 3;pot;0;0;GORON_CITY
 0x032c;GORON_CITY;Goron City Pot Stairs 4;pot;0;0;GORON_CITY
 0x032d;GORON_CITY;Goron City Pot Stairs 5;pot;0;0;GORON_CITY
-0x18;GORON_CITY;Goron Shop Item 1;shop;0;0;GORON_CITY
-0x19;GORON_CITY;Goron Shop Item 2;shop;0;0;GORON_CITY
-0x1a;GORON_CITY;Goron Shop Item 3;shop;0;0;GORON_CITY
-0x1b;GORON_CITY;Goron Shop Item 4;shop;0;0;GORON_CITY
-0x1c;GORON_CITY;Goron Shop Item 5;shop;0;0;GORON_CITY
-0x1d;GORON_CITY;Goron Shop Item 6;shop;0;0;GORON_CITY
-0x1e;GORON_CITY;Goron Shop Item 7;shop;0;0;GORON_CITY
-0x1f;GORON_CITY;Goron Shop Item 8;shop;0;0;GORON_CITY
+0x18;GORON_CITY;Goron Shop Item 1;shop;0;0;GORON_SHOP
+0x19;GORON_CITY;Goron Shop Item 2;shop;0;0;GORON_SHOP
+0x1a;GORON_CITY;Goron Shop Item 3;shop;0;0;GORON_SHOP
+0x1b;GORON_CITY;Goron Shop Item 4;shop;0;0;GORON_SHOP
+0x1c;GORON_CITY;Goron Shop Item 5;shop;0;0;GORON_SHOP
+0x1d;GORON_CITY;Goron Shop Item 6;shop;0;0;GORON_SHOP
+0x1e;GORON_CITY;Goron Shop Item 7;shop;0;0;GORON_SHOP
+0x1f;GORON_CITY;Goron Shop Item 8;shop;0;0;GORON_SHOP
 0x1f;GRAVEYARD;Graveyard Dampe Game;collectible;0;0;GRAVEYARD
 MASK_SELL_SPOOKY;GRAVEYARD;Graveyard Sell Spooky Mask;npc;0;0;GRAVEYARD
 0x00111;GRAVEYARD;Graveyard Butterfly 1;butterfly;0;0;GRAVEYARD
@@ -1578,10 +1578,10 @@ MALON_SONG;LON_LON_RANCH;Lon Lon Ranch Malon Song;npc;0;0;LON_LON_RANCH
 0x62;LON_LON_RANCH;Lon Lon Ranch GS House;gs;0;0;LON_LON_RANCH
 0x61;LON_LON_RANCH;Lon Lon Ranch GS Rain Shed;gs;0;0;LON_LON_RANCH
 0x60;LON_LON_RANCH;Lon Lon Ranch GS Back Wall;gs;0;0;LON_LON_RANCH
-0x02;LON_LON_RANCH;Lon Lon Ranch Stables Cow Left;cow;0;0;LON_LON_RANCH
-0x03;LON_LON_RANCH;Lon Lon Ranch Stables Cow Right;cow;0;0;LON_LON_RANCH
-0x04;LON_LON_RANCH;Lon Lon Ranch Silo Cow Front;cow;0;0;LON_LON_RANCH
-0x05;LON_LON_RANCH;Lon Lon Ranch Silo Cow Back;cow;0;0;LON_LON_RANCH
+0x02;LON_LON_RANCH;Lon Lon Ranch Stables Cow Left;cow;0;0;STABLE
+0x03;LON_LON_RANCH;Lon Lon Ranch Stables Cow Right;cow;0;0;STABLE
+0x04;LON_LON_RANCH;Lon Lon Ranch Silo Cow Front;cow;0;0;RANCH_HOUSE_SILO
+0x05;LON_LON_RANCH;Lon Lon Ranch Silo Cow Back;cow;0;0;RANCH_HOUSE_SILO
 0x0003;LON_LON_RANCH;Lon Lon Ranch Pot 1;pot;0;0;LON_LON_RANCH
 0x0004;LON_LON_RANCH;Lon Lon Ranch Pot 2;pot;0;0;LON_LON_RANCH
 0x0005;LON_LON_RANCH;Lon Lon Ranch Pot 3;pot;0;0;LON_LON_RANCH

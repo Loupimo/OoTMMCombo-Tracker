@@ -13,7 +13,7 @@ typedef struct SceneInfo
 	uint32_t SceneID;			            // The actual OOTMM rom scene
     int GameID;                             // The game scene come from
 	const char* Image;			            // The path to the corresponding image
-	std::vector<const ObjectInfo*> Objects;	// The list of objects that are in the scene
+    const SceneObjects* Objects;            // The scene objects
 
     // Constructeur pour initialiser la structure
     SceneInfo(int PSceneID, const char* PImage, int PGameID);
