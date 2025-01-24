@@ -10,17 +10,18 @@ SceneInfo::SceneInfo(int PSceneID, const char* PImage, int PGameID)
     size_t arrLen = 0;
     const ObjectInfo* arrObj = nullptr;
 
-    if (this->GameID == OOT_GAME)
+    this->Objects = &GetGameSceneObjects(PGameID)[this->SceneID];
+   /* if (this->GameID == OOT_GAME)
     {   // Ocarina of time
 
-        this->Objects = &OoTSceneObjects[this->SceneID];
+        this->Objects = &GetGameSceneObjects(PGameID)[this->SceneID];
     }
     else
     {   // Majora's Mask
 
         this->Objects = &MMSceneObjects[this->SceneID];
     }
-
+   */
     /*for (size_t i = 0; i < arrLen; i++)
     {
         const ObjectInfo* currObj = &arrObj[i];

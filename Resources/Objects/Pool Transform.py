@@ -61,6 +61,12 @@ def parse_file2(input_file, output_file, arrayname, prefix):
             objectstr = "\t{ " + idstr + ", " + scenestr + ", \"" + str(row["location"]) + "\", ObjectType::" + str(row["type"]) + ", {" + str(row["x"]) + ", " + str(row["y"]) + "}, " + renderscene + " }"
             fin[scenestr].append(objectstr)
             
+            if renderscene != scenestr:
+                if fin.__contains__(renderscene) == False:
+                    fin[renderscene] = []
+                fin[renderscene].append(objectstr)
+
+
             #outfile.write(objectstr)
         for r in fin:
             le = len(fin[r])

@@ -98,7 +98,7 @@ GameTab::GameTab(int GameID, QWidget* parent) : QWidget(parent)
     //this->View = new QGraphicsView();
 
 
-    // Ajouter à la mise en page principale
+    // Ajouter Ã  la mise en page principale
     this->MainLayout->addWidget(&this->MainRegion);
     //this->MainLayout->addWidget(this->View);
     this->setLayout(this->MainLayout);

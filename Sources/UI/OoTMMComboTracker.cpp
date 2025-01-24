@@ -21,6 +21,8 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     this->setWindowTitle("OoTMMCombo Auto Tracker");
     /*mainWindow.resize(800, 600);
     mainWindow.show();*/
+
+    connect(MultiLogger::GetLogger(), &MultiLogger::NotifyObjectFound, this, &OoTMMComboTracker::UpdateTrackedObject);
 }
 
 OoTMMComboTracker::~OoTMMComboTracker()
@@ -30,21 +32,21 @@ OoTMMComboTracker::~OoTMMComboTracker()
 }
 
 
-// Onglet pour les logs
-/*QWidget* logTab = new QWidget;
-QVBoxLayout* logLayout = new QVBoxLayout;
-QPlainTextEdit* logViewer = new QPlainTextEdit;
-logViewer->setReadOnly(true);
-logViewer->appendPlainText("Bienvenue dans l'application");
-logLayout->addWidget(logViewer);
-logTab->setLayout(logLayout);
-
-tabWidget->addTab(logTab, "Logs");
-
-// Configurer la fenêtre principale
-mainWindow.setCentralWidget(tabWidget);
-mainWindow.setWindowTitle("Application avec onglets");
-mainWindow.resize(800, 600);
-mainWindow.show();
-
-return app.exec();*/
+void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, ItemInfo ItemFound)
+{
+    switch (Game)
+    {
+        case OOT_GAME:
+        {
+            break;
+        }
+        case MM_GAME:
+        {
+            break;
+        }
+        default:
+        {
+            break;
+        }
+    }
+}

@@ -1,5 +1,6 @@
 #include "Combo/Scenes.h"
 #include "Combo/NPC.h"
+#include "Combo/Objects.h"
 #include "Multi/Game.h"
 
 uint32_t GetSceneShop(uint32_t ItemID, uint32_t Game)

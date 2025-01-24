@@ -4,6 +4,7 @@
 #include <QGraphicsView>
 #include <QVBoxLayout>
 #include "MapTab.h"
+#include "Combo/Objects.h"
 
 
 class MainRegionTab : public QTabWidget
@@ -40,9 +41,9 @@ public slots:
 
     /*
     *   Loads the tab corresponding to the given index.
-    *   
+    *
     *   Note: This should be called and connected to the currentChanged signal.
-    * 
+    *
     *   @param TabIndex    The tab index to unload
     */
     void LoadTab(int TabIndex);
@@ -60,7 +61,7 @@ public:
     QGraphicsView* View;
     QPixmap* Map;
 
-    int GameID;                // The game ID the refers to
+    int GameID;                // The game ID this tab refers to
     const char* TabName;       // The tab name. Should correspond to the game it refers to
     MainRegionTab MainRegion;  // This tab widget will regroup all possible main region for a game
 
@@ -69,5 +70,4 @@ public:
 public:
     GameTab(int GameID, QWidget* parent = nullptr);
     ~GameTab();
-
 };

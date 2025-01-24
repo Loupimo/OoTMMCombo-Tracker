@@ -15,7 +15,6 @@ class MapTab : public QWidget
 
 public:
     QHBoxLayout* MainLayout;
-    QGraphicsScene* Scene;
     QGraphicsView* View;
     QPixmap* Map;
 

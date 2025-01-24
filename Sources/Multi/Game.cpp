@@ -279,19 +279,21 @@ void Game::ParseLedgerFullEntry(char* LedgerData, bool IsGoingOut)
 
     MultiLogger::LogMessage("OvType : %d, Scene ID: %d, Room ID: %d, Object ID: %d", recievedItem.OvType, recievedItem.SceneID, recievedItem.RoomID, recievedItem.ObjectID);
 
-    ObjectInfo matchObject = FindObject(recievedItem);
+    ObjectInfo * matchObject = FindObject(recievedItem);
     ItemInfo matchItem = FindItem(gameItem);
 
     if (recievedItem.GameID == OOT_GAME)
     {
-        fprintf(game_file_log, "OoT %s;%02X%;%02X;%02X;%04X;%s;%02X\n", matchObject.Location, recievedItem.OvType, recievedItem.SceneID, recievedItem.RoomID, recievedItem.ObjectID, matchItem.ItemName, gameItem);
-        MultiLogger::LogMessage("OoT World Object: %s - Item : %s\n", matchObject.Location, matchItem.ItemName);
+        fprintf(game_file_log, "OoT %s;%02X;%02X;%02X;%04X;%s;%02X\n", matchObject->Location, recievedItem.OvType, recievedItem.SceneID, recievedItem.RoomID, recievedItem.ObjectID, matchItem.ItemName, gameItem);
+        MultiLogger::LogMessage("OoT World Object: %s - Item : %s\n", matchObject->Location, matchItem.ItemName);
+        emit MultiLogger::GetLogger()->NotifyObjectFound(OOT_GAME, matchObject, matchItem);
     }
     else
     {   // Majora's Mask
 
-        fprintf(game_file_log, "MM %s;%02X%;%02X;%02X;%04X;%s;%02X\n", matchObject.Location, recievedItem.OvType, recievedItem.SceneID, recievedItem.RoomID, recievedItem.ObjectID, matchItem.ItemName, gameItem);
-        MultiLogger::LogMessage("MM World Object: %s - Item : %s\n", matchObject.Location, matchItem.ItemName);
+        fprintf(game_file_log, "MM %s;%02X;%02X;%02X;%04X;%s;%02X\n", matchObject->Location, recievedItem.OvType, recievedItem.SceneID, recievedItem.RoomID, recievedItem.ObjectID, matchItem.ItemName, gameItem);
+        MultiLogger::LogMessage("MM World Object: %s - Item : %s\n", matchObject->Location, matchItem.ItemName);
+        emit MultiLogger::GetLogger()->NotifyObjectFound(MM_GAME, matchObject, matchItem);
     }
 
     fflush(game_file_log);

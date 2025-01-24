@@ -4,6 +4,7 @@
 
 #include <QPlainTextEdit>
 #include <QScrollBar>
+#include "Combo/Objects.h"
 
 #ifdef _WIN32
     #define _WIN32_LEAN_AND_MEAN 1
@@ -181,6 +182,15 @@ signals:
     /* This function emits a signal to the main thread that a message has arrived. */
     void LogMsgToView(const QString& message);
 
+    /*
+    *   Notifies that a new item has been found in the given object.
+    *
+    *   @param Game           The game the object belong to.
+    *   @param ObjectFound    The object in which the item has been found.
+    *   @param ItemFound      The item that has been found.
+    */
+    void NotifyObjectFound(int Game, ObjectInfo * ObjectFound, ItemInfo ItemFound);
+
 public:
 
     /* We need this has the Qt connect function cannot take static function as parameter. Also, we don't want to create a new logging object for each class. */
@@ -197,5 +207,4 @@ public:
         QString msg(tmpBuf);
         emit GetLogger()->LogMsgToView(msg);
     }
-
 };
