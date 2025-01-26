@@ -1,36 +1,18 @@
 #include "UI/SceneRenderer.h"
 
 // Constructeur pour initialiser la structure
-SceneInfo::SceneInfo(int PSceneID, const char* PImage, int PGameID)
+SceneInfo::SceneInfo(int PSceneID, const char* PImage, int PGameID, SceneType PType)
 {
     this->SceneID = PSceneID;
     this->Image = PImage;
     this->GameID = PGameID;
+    this->Type = PType;
 
     size_t arrLen = 0;
     const ObjectInfo* arrObj = nullptr;
 
     this->Objects = &GetGameSceneObjects(PGameID)[this->SceneID];
-   /* if (this->GameID == OOT_GAME)
-    {   // Ocarina of time
-
-        this->Objects = &GetGameSceneObjects(PGameID)[this->SceneID];
-    }
-    else
-    {   // Majora's Mask
-
-        this->Objects = &MMSceneObjects[this->SceneID];
-    }
-   */
-    /*for (size_t i = 0; i < arrLen; i++)
-    {
-        const ObjectInfo* currObj = &arrObj[i];
-        if (currObj->RenderScene == this->SceneID)
-        {   // We can add the object to the scene
-
-            this->Objects.push_back(currObj);
-        }
-    }*/
+    this->Objects->Owner = this;
 }
 
 // Destructeur pour libérer la mémoire
@@ -39,138 +21,17 @@ SceneInfo::~SceneInfo()
 }
 
 
-
-SceneRenderer::SceneRenderer(const SceneInfo* SceneToRender) : QGraphicsScene()
+SceneRenderer::SceneRenderer(SceneInfo* SceneToRender) : QGraphicsScene()
 {
 	this->CurrScene = SceneToRender;
 	if (SceneToRender)
 	{
 		for (size_t i = 0; i < SceneToRender->Objects->NumOfObjs; i++)
 		{
-			const ObjectInfo* currObject = &SceneToRender->Objects->Objects[i];
+			ObjectInfo* currObject = &SceneToRender->Objects->Objects[i];
             if (currObject->RenderScene != this->CurrScene->SceneID)
                 continue;
-			ObjectRenderer* dest = nullptr;
-			switch (currObject->Type)
-			{
-                case ObjectType::pot:
-                {
-                    dest = &this->Pots;
-                    break;
-                }
-                case ObjectType::cow:
-                {
-                    dest = &this->Cows;
-                    break;
-                }
-                case ObjectType::grass:
-                {
-                    dest = &this->Grass;
-                    break;
-                }
-                case ObjectType::chest:
-                {
-                    dest = &this->Chests;
-                    break;
-                }
-                case ObjectType::collectible:
-                {
-                    dest = &this->Collectibles;
-                    break;
-                }
-                case ObjectType::npc:
-                {
-                    dest = &this->NPCs;
-                    break;
-                }
-                case ObjectType::gs:
-                {
-                    dest = &this->GoldSkulltulas;
-                    break;
-                }
-                case ObjectType::sf:
-                {
-                    dest = &this->StrayFairies;
-                    break;
-                }
-                case ObjectType::shop:
-                {
-                    dest = &this->Shops;
-                    break;
-                }
-                case ObjectType::scrub:
-                {
-                    dest = &this->Scrubs;
-                    break;
-                }
-                case ObjectType::sr:
-                {
-                    dest = &this->SilverRupees;
-                    break;
-                }
-                case ObjectType::fish:
-                {
-                    dest = &this->Fishes;
-                    break;
-                }
-                case ObjectType::wonder:
-                {
-                    dest = &this->Wonders;
-                    break;
-                }
-                case ObjectType::crate:
-                {
-                    dest = &this->Crates;
-                    break;
-                }
-                case ObjectType::hive:
-                {
-                    dest = &this->Hives;
-                    break;
-                }
-                case ObjectType::butterfly:
-                {
-                    dest = &this->Butterflies;
-                    break;
-                }
-                case ObjectType::rupee:
-                {
-                    dest = &this->Rupees;
-                    break;
-                }
-                case ObjectType::snowball:
-                {
-                    dest = &this->Snowballs;
-                    break;
-                }
-                case ObjectType::barrel:
-                {
-                    dest = &this->Barrels;
-                    break;
-                }
-                case ObjectType::heart:
-                {
-                    dest = &this->Hearts;
-                    break;
-                }
-                case ObjectType::fairy_spot:
-                {
-                    dest = &this->FairySpots;
-                    break;
-                }
-                case ObjectType::fairy:
-                {
-                    dest = &this->Fairies;
-                    break;
-                }
-
-                case ObjectType::none:
-                default:
-                {
-                    // Aucun traitement spécifique pour les types inconnus
-                    break;
-                }
-			}
+			ObjectRenderer* dest = this->FindObjectRenderer(currObject);
 
 			if (dest != nullptr)
 			{	// Add the object to the renderer
@@ -181,6 +42,7 @@ SceneRenderer::SceneRenderer(const SceneInfo* SceneToRender) : QGraphicsScene()
         this->SceneImage = new QPixmap(SceneToRender->Image);
 	}
 
+    connect(this->CurrScene, &SceneInfo::NotifyItemFound, this, &SceneRenderer::UpdateItemFound);
 }
 
 SceneRenderer::~SceneRenderer()
@@ -191,6 +53,7 @@ SceneRenderer::~SceneRenderer()
 
 void SceneRenderer::RenderScene()
 {
+    this->IsRendered = true;
     this->addPixmap(*this->SceneImage);
     this->Pots.AddObjectToScene(this);
     this->Cows.AddObjectToScene(this);
@@ -199,5 +62,144 @@ void SceneRenderer::RenderScene()
 
 void SceneRenderer::UnloadScene()
 {
+    this->IsRendered = false;
     this->clear();
+}
+
+void SceneRenderer::UpdateItemFound(ObjectInfo* Object, const ItemInfo* ItemFound)
+{
+    ObjectRenderer* dest = this->FindObjectRenderer(Object);
+
+    if (dest != nullptr)
+    {	// Add the object to the renderer
+
+        dest->UpdateObjectState(this);
+    }
+}
+
+ObjectRenderer* SceneRenderer::FindObjectRenderer(ObjectInfo* Object)
+{
+    ObjectRenderer* renderer = nullptr;
+    switch (Object->Type)
+    {
+        case ObjectType::pot:
+        {
+            renderer = &this->Pots;
+            break;
+        }
+        case ObjectType::cow:
+        {
+            renderer = &this->Cows;
+            break;
+        }
+        case ObjectType::grass:
+        {
+            renderer = &this->Grass;
+            break;
+        }
+        case ObjectType::chest:
+        {
+            renderer = &this->Chests;
+            break;
+        }
+        case ObjectType::collectible:
+        {
+            renderer = &this->Collectibles;
+            break;
+        }
+        case ObjectType::npc:
+        {
+            renderer = &this->NPCs;
+            break;
+        }
+        case ObjectType::gs:
+        {
+            renderer = &this->GoldSkulltulas;
+            break;
+        }
+        case ObjectType::sf:
+        {
+            renderer = &this->StrayFairies;
+            break;
+        }
+        case ObjectType::shop:
+        {
+            renderer = &this->Shops;
+            break;
+        }
+        case ObjectType::scrub:
+        {
+            renderer = &this->Scrubs;
+            break;
+        }
+        case ObjectType::sr:
+        {
+            renderer = &this->SilverRupees;
+            break;
+        }
+        case ObjectType::fish:
+        {
+            renderer = &this->Fishes;
+            break;
+        }
+        case ObjectType::wonder:
+        {
+            renderer = &this->Wonders;
+            break;
+        }
+        case ObjectType::crate:
+        {
+            renderer = &this->Crates;
+            break;
+        }
+        case ObjectType::hive:
+        {
+            renderer = &this->Hives;
+            break;
+        }
+        case ObjectType::butterfly:
+        {
+            renderer = &this->Butterflies;
+            break;
+        }
+        case ObjectType::rupee:
+        {
+            renderer = &this->Rupees;
+            break;
+        }
+        case ObjectType::snowball:
+        {
+            renderer = &this->Snowballs;
+            break;
+        }
+        case ObjectType::barrel:
+        {
+            renderer = &this->Barrels;
+            break;
+        }
+        case ObjectType::heart:
+        {
+            renderer = &this->Hearts;
+            break;
+        }
+        case ObjectType::fairy_spot:
+        {
+            renderer = &this->FairySpots;
+            break;
+        }
+        case ObjectType::fairy:
+        {
+            renderer = &this->Fairies;
+            break;
+        }
+
+        case ObjectType::none:
+        default:
+        {
+            // Aucun traitement spécifique pour les types inconnus
+            break;
+        }
+    }
+
+    return renderer;
 }

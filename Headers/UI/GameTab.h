@@ -4,7 +4,8 @@
 #include <QGraphicsView>
 #include <QVBoxLayout>
 #include "MapTab.h"
-#include "Combo/Objects.h"
+#include "Combo/Objects.h
+#include "UI/SceneRenderer.h"
 
 
 class MainRegionTab : public QTabWidget
@@ -16,10 +17,10 @@ class MainRegionTab : public QTabWidget
 public:
     QHBoxLayout* MainLayout;
 
-    MapTab Overworld;   // The overworld tab
-    MapTab Temples;     // The temples tab
-    MapTab Houses;      // The houses tab
-    MapTab Grottos;     // The grottos tab
+    std::vector<MapTab> Overworld;   // The overworld tab
+    std::vector<MapTab> Temples;     // The temples tab
+    std::vector<MapTab> Houses;      // The houses tab
+    std::vector<MapTab> Grottos;     // The grottos tab
 
     int PrevTab = -1;
 
@@ -29,6 +30,13 @@ public:
 
     MainRegionTab();
     ~MainRegionTab();
+
+    /*
+    *   Fills the desired map tab with the given scenes.
+    *
+    *   @param TabIndex    The tab index to unload
+    */
+    void PrepareMaps(std::vector<MapTab>* DestMap, size_t NumOfMaps, SceneInfo * Scenes);
 
     /*
     *   Unloads the tab corresponding to the given index

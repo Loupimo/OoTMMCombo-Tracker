@@ -5,8 +5,9 @@
 #include <QPushButton>
 #include "UI/MapTab.h"
 
+
 // Création d'un onglet avec une carte et un panneau latéral
-MapTab::MapTab(QWidget* parent) : QWidget(parent)
+MapTab::MapTab(SceneInfo* Scenes, size_t NumOfScenes, QWidget* parent) : QWidget(parent)
 {
     // Layout principal
     this->MainLayout = new QHBoxLayout;
@@ -17,7 +18,6 @@ MapTab::MapTab(QWidget* parent) : QWidget(parent)
     // Zone graphique pour la carte
     //this->View = new QGraphicsView(this->SceneToRender);
     this->View = new QGraphicsView();
-    this->SceneToRender = new SceneRenderer(&OoTScenes[0]);
 
     // Panneau latéral
     QVBoxLayout* sidePanelLayout = new QVBoxLayout;
@@ -25,8 +25,14 @@ MapTab::MapTab(QWidget* parent) : QWidget(parent)
     QPushButton* button = new QPushButton("Action");
     sidePanelLayout->addWidget(infoLabel);
     sidePanelLayout->addWidget(button);
-    sidePanelLayout->addStretch();
 
+    for (size_t i = 0; i < NumOfScenes; i++)
+    {
+        this->ScenesToRender.push_back(new SceneRenderer(&Scenes[i]));
+        QPushButton* button = new QPushButton(this->ScenesToRender[i]->Name);
+    }
+
+    sidePanelLayout->addStretch();
     QWidget* sidePanel = new QWidget;
     sidePanel->setLayout(sidePanelLayout);
 
@@ -39,8 +45,12 @@ MapTab::MapTab(QWidget* parent) : QWidget(parent)
 
 MapTab::~MapTab()
 {
-    this->SceneToRender->~SceneRenderer();
-    this->SceneToRender = nullptr;
+    for (size_t i = 0; this->ScenesToRender.size(); i++)
+    {
+        this->ScenesToRender[i]->~SceneRenderer();
+    }
+    this->ScenesToRender.clear();
+    this->RenderedScene = nullptr;
     this->View->~QGraphicsView();
     this->MainLayout->~QHBoxLayout();
 }
@@ -49,17 +59,18 @@ void MapTab::RenderTab()
 {
 
 
-    this->SceneToRender->RenderScene();
+    //this->SceneToRender->RenderScene();
 
     // Zone graphique pour la carte
-    this->View->setScene(this->SceneToRender);
+    //this->View->setScene(this->SceneToRender);
 }
 
 void MapTab::UnloadTab()
 {
-    if (this->SceneToRender != nullptr)
+    if (this->RenderedScene != nullptr)
     {
-        this->SceneToRender->UnloadScene();
+        this->RenderedScene->UnloadScene();
+        this->RenderedScene = nullptr;
         this->View->setScene(nullptr);
     }
 }

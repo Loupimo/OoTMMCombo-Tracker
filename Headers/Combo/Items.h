@@ -798,4 +798,4 @@ const ItemInfo ItemList[NUM_ITEM] =
 
 
 void ParseKey(uint8_t Key[5], ComboItem* Item);
-ItemInfo FindItem(uint32_t gi);
+const ItemInfo * FindItem(uint32_t gi);

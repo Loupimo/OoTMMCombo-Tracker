@@ -60,3 +60,8 @@ void ObjectRenderer::AddObjectToScene(QGraphicsScene* Destination)
         }
     }
 }
+
+void ObjectRenderer::UpdateObjectState(QGraphicsScene* Destination)
+{
+    Destination->removeItem(Destination->items()[0]);
+}

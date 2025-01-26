@@ -3,6 +3,23 @@
 #include "Combo/Objects.h"
 #include "Multi/Game.h"
 
+uint32_t GetSceneName(uint32_t SceneID, uint32_t Game)
+{
+	if (Game == OOT_GAME)
+	{
+		switch (SceneID)
+		{
+			case 0:
+			{
+				break;
+			}
+			default:
+				break;
+		}
+	}
+}
+
+
 uint32_t GetSceneShop(uint32_t ItemID, uint32_t Game)
 {
 	uint32_t ShopID = ItemID >> 3;

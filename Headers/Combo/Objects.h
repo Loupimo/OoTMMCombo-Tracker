@@ -1,9 +1,12 @@
 #pragma once
 
+#include <QObject>
 #include "Multi/API.h"
 #include "Scenes.h"
 #include "NPC.h"
 #include "Items.h"
+
+class SceneInfo;
 
 enum ObjectType
 {
@@ -49,6 +52,7 @@ typedef struct SceneObjects
 	uint32_t SceneID;
 	const size_t NumOfObjs;
 	ObjectInfo* Objects;
+	class SceneInfo* Owner;
 } SceneObjects;
 
 /* This macro define static arrays and size arrays that contains all objects of a specific scene */
@@ -62,7 +66,7 @@ const size_t SceneID##NumOfObjs = 0; \
 ObjectInfo * SceneID##SceneObjects = nullptr;
 
 /* This macro create a SceneObjects structure based on the given SceneID */
-#define CreateSceneObjects(SceneID) { SceneID, SceneID##NumOfObjs, SceneID##SceneObjects}
+#define CreateSceneObjects(SceneID) { SceneID, SceneID##NumOfObjs, SceneID##SceneObjects, nullptr }
 
 
 SceneObjects* GetGameSceneObjects(uint32_t GameID);

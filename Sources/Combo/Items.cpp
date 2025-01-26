@@ -11,15 +11,15 @@ void ParseKey(uint8_t Key[5], ComboItem* Item)
     Item->ObjectID = Key[++index];
 }
 
-ItemInfo FindItem(uint32_t gi)
+const ItemInfo * FindItem(uint32_t gi)
 {
-    ItemInfo currItem;
+    const ItemInfo * currItem = nullptr;
 
     for (size_t i = 0; i < NUM_ITEM; i++)
     {
-        currItem = ItemList[i];
+        currItem = &ItemList[i];
 
-        if (currItem.ItemID == gi)
+        if (currItem->ItemID == gi)
         {
             return currItem;
         }

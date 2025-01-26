@@ -133,8 +133,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Combo\Items.h" />
+    <ClInclude Include="Headers\Combo\MMObjectScene.h" />
     <ClInclude Include="Headers\Combo\NPC.h" />
     <ClInclude Include="Headers\Combo\Objects.h" />
+    <ClInclude Include="Headers\Combo\OoTObjectScene.h" />
     <ClInclude Include="Headers\Combo\OvTypes.h" />
     <ClInclude Include="Headers\Combo\Scenes.h" />
     <ClInclude Include="Headers\Multi\API.h" />

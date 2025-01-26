@@ -141,6 +141,12 @@
     <ClInclude Include="Headers\Combo\Objects.h">
       <Filter>Header Files\Combo</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\Combo\OoTObjectScene.h">
+      <Filter>Header Files\Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Combo\MMObjectScene.h">
+      <Filter>Header Files\Combo</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Headers\UI\MapTab.h">

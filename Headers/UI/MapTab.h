@@ -16,14 +16,15 @@ class MapTab : public QWidget
 public:
     QHBoxLayout* MainLayout;
     QGraphicsView* View;
-    QPixmap* Map;
+    //QPixmap* Map;
 
-    SceneRenderer* SceneToRender;
+    std::vector<SceneRenderer *> ScenesToRender;
+    SceneRenderer* RenderedScene = nullptr;
 
 #pragma endregion
 
 public:
-    MapTab(QWidget* parent = nullptr);
+    MapTab(SceneInfo* Scene, size_t NumOfScenes, QWidget* parent = nullptr);
     ~MapTab();
 
     void RenderTab();

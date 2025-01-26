@@ -803,10 +803,10 @@ THEATER_NUTS;GROTTOS;Deku Theater Nuts Upgrade;npc;0;0;OOT_GROTTO_LOST_WOODS_THE
 0x03a06;GROTTOS;Death Mountain Crater Grotto Butterfly 1;butterfly;0;0;OOT_GROTTO_DEATH_CRATER_GENERIC
 0x13a06;GROTTOS;Death Mountain Crater Grotto Butterfly 2;butterfly;0;0;OOT_GROTTO_DEATH_CRATER_GENERIC
 0x23a06;GROTTOS;Death Mountain Crater Grotto Butterfly 3;butterfly;0;0;OOT_GROTTO_DEATH_CRATER_GENERIC
-0x0f;GROTTOS;Death Mountain Crater Grotto Left Scrub;scrub;0;0;OOT_GROTTO_DEATH_CRATER_SCURBS
-0x10;GROTTOS;Death Mountain Crater Grotto Center Scrub;scrub;0;0;OOT_GROTTO_DEATH_CRATER_SCURBS
-0x11;GROTTOS;Death Mountain Crater Grotto Right Scrub;scrub;0;0;OOT_GROTTO_DEATH_CRATER_SCURBS
-0x02b03;GROTTOS;Death Mountain Crater Scrub Grotto Hive;hive;0;0;OOT_GROTTO_DEATH_CRATER_SCURBS
+0x0f;GROTTOS;Death Mountain Crater Grotto Left Scrub;scrub;0;0;OOT_GROTTO_DEATH_CRATER_SCRUBS
+0x10;GROTTOS;Death Mountain Crater Grotto Center Scrub;scrub;0;0;OOT_GROTTO_DEATH_CRATER_SCRUBS
+0x11;GROTTOS;Death Mountain Crater Grotto Right Scrub;scrub;0;0;OOT_GROTTO_DEATH_CRATER_SCRUBS
+0x02b03;GROTTOS;Death Mountain Crater Scrub Grotto Hive;hive;0;0;OOT_GROTTO_DEATH_CRATER_SCRUBS
 0x09;GROTTOS;Zora River Grotto;chest;0;0;OOT_GROTTO_ZORA_RIVER_GENERIC
 0x02902;GROTTOS;Zora River Grotto Grass 1;grass;0;0;OOT_GROTTO_ZORA_RIVER_GENERIC
 0x02903;GROTTOS;Zora River Grotto Grass 2;grass;0;0;OOT_GROTTO_ZORA_RIVER_GENERIC

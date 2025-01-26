@@ -134,8 +134,6 @@ def match_items(spoiler_log, input_file, output_file):
             outfile.write(objectstr)
             outfile.flush()
 
-
-
 # Exemple d'utilisation
 input_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Objects\pool_mm.csv'
 output_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Objects\pool_mm.txt'

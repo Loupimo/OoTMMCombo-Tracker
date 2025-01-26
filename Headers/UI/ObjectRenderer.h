@@ -56,4 +56,5 @@ public:
 	ObjectRenderer(ObjectType Type);
 	void AddObjectToScene(QGraphicsScene* Destination);
 	void AddObjectToRender(int X, int Y);
+    void UpdateObjectState(QGraphicsScene* Destination);
 };
