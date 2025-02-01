@@ -1,10 +1,10 @@
 #include "UI/SceneRenderer.h"
 
 // Constructeur pour initialiser la structure
-SceneInfo::SceneInfo(int PSceneID, const char* PImage, int PGameID, SceneType PType)
+SceneInfo::SceneInfo(int PSceneID, int PGameID, SceneType PType)
 {
     this->SceneID = PSceneID;
-    this->Image = PImage;
+    this->Info = GetSceneMetaInfo(PSceneID, PGameID);
     this->GameID = PGameID;
     this->Type = PType;
 
@@ -31,7 +31,7 @@ SceneRenderer::SceneRenderer(SceneInfo* SceneToRender) : QGraphicsScene()
 			ObjectInfo* currObject = &SceneToRender->Objects->Objects[i];
             if (currObject->RenderScene != this->CurrScene->SceneID)
                 continue;
-			ObjectRenderer* dest = this->FindObjectRenderer(currObject);
+			ObjectRenderer* dest = this->FindObjectRendererCategory(currObject);
 
 			if (dest != nullptr)
 			{	// Add the object to the renderer
@@ -39,7 +39,7 @@ SceneRenderer::SceneRenderer(SceneInfo* SceneToRender) : QGraphicsScene()
 				dest->AddObjectToRender(currObject->Position[0], currObject->Position[1]);
 			}
 		}
-        this->SceneImage = new QPixmap(SceneToRender->Image);
+        //this->SceneImage = new QPixmap(SceneToRender->Info->ImagePath);
 	}
 
     connect(this->CurrScene, &SceneInfo::NotifyItemFound, this, &SceneRenderer::UpdateItemFound);
@@ -48,7 +48,18 @@ SceneRenderer::SceneRenderer(SceneInfo* SceneToRender) : QGraphicsScene()
 SceneRenderer::~SceneRenderer()
 {
     this->CurrScene = nullptr;
-    this->SceneImage->~QPixmap();
+    if (this->SceneImage)
+        this->SceneImage->~QPixmap();
+}
+
+const char* SceneRenderer::GetSceneName()
+{
+    return this->CurrScene->Info->Name;
+}
+
+uint8_t SceneRenderer::GetSceneParentRegion()
+{
+    return this->CurrScene->Info->ParentRegion;
 }
 
 void SceneRenderer::RenderScene()
@@ -68,7 +79,7 @@ void SceneRenderer::UnloadScene()
 
 void SceneRenderer::UpdateItemFound(ObjectInfo* Object, const ItemInfo* ItemFound)
 {
-    ObjectRenderer* dest = this->FindObjectRenderer(Object);
+    ObjectRenderer* dest = this->FindObjectRendererCategory(Object);
 
     if (dest != nullptr)
     {	// Add the object to the renderer
@@ -77,7 +88,7 @@ void SceneRenderer::UpdateItemFound(ObjectInfo* Object, const ItemInfo* ItemFoun
     }
 }
 
-ObjectRenderer* SceneRenderer::FindObjectRenderer(ObjectInfo* Object)
+ObjectRenderer* SceneRenderer::FindObjectRendererCategory(ObjectInfo* Object)
 {
     ObjectRenderer* renderer = nullptr;
     switch (Object->Type)

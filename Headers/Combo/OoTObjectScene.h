@@ -3327,7 +3327,6 @@ SceneObjects OoTSceneObjects[WINDMILL + 1] =
 	CreateSceneObjects(OOT_FAIRY_ZORA_RIVER),
 	CreateSceneObjects(OOT_FAIRY_ZORA_DOMAIN),
 	CreateSceneObjects(OOT_FAIRY_HYRULE),
-	CreateSceneObjects(OOT_FAIRY_SACRED_MEADOW),
 	CreateSceneObjects(OOT_FAIRY_GERUDO_FORTRESS),
 
 	// OoT detailed great fairy scene

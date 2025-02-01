@@ -1,11 +1,13 @@
 #pragma once
 
 #include "Multi/API.h"
+#include "Regions.h"
 
 typedef struct SceneMetaInfo
 {
 	const char* Name;
 	const char* ImagePath;
+	uint8_t ParentRegion;
 } SceneMetaInfo;
 
 #define DEKU_TREE								0x00
@@ -116,204 +118,201 @@ typedef struct SceneMetaInfo
 #define OOT_GROTTO_LOST_WOODS_GENERIC			0x67	// Lost woods generic grotto
 #define OOT_GROTTO_LOST_WOODS_THEATER			0x68	// Lost woods theater grotto
 #define OOT_GROTTO_SACRED_MEADOW_WOLFOS			0x69	// Sacred Meadow wolfos grotto
-#define OOT_GROTTO_SACRED_MEADOW_STORMS			0x70	// Sacred Meadow song of storms grotto
-#define OOT_GROTTO_KAKARIKO_REDEAD				0x71	// Kakariko redead grotto
-#define OOT_GROTTO_KAKARIKO_OPEN				0x72	// Kakariko open grotto
-#define OOT_GROTTO_DEATH_TRIAL_STORMS			0x73	// Death mountain trial song of storms grotto
-#define OOT_GROTTO_DEATH_TRIAL_COW				0x74	// Death mountain trial cow grotto
-#define OOT_GROTTO_GORON_CITY_SCRUBS			0x75	// Goron city scrubs grotto
-#define OOT_GROTTO_DEATH_CRATER_GENERIC			0x76	// Death mountain crater generic grotto
-#define OOT_GROTTO_DEATH_CRATER_SCRUBS			0x77	// Death mountain crater scrubs grotto
-#define OOT_GROTTO_ZORA_RIVER_STORMS			0x78	// Zora's river song of storms grotto
-#define OOT_GROTTO_ZORA_RIVER_GENERIC			0x79	// Zora's river generic grotto
-#define OOT_GROTTO_LAKE_HYLIA_SCRUBS			0x7a	// Lake Hylia scrubs grotto
-#define OOT_GROTTO_LON_LON_SCRUBS				0x7b	// Lon Lon's Ranch scrubs 
-#define OOT_GROTTO_HYRULE_SCRUBS				0x7c	// Hyrule field scrub grotto
-#define OOT_GROTTO_HYRULE_SE					0x7d	// Hyrule field southeast grotto
-#define OOT_GROTTO_HYRULE_OPEN					0x7e	// Hyrule field open grotto
-#define OOT_GROTTO_HYRULE_MARKET				0x7f	// Hyrule field market grotto
-#define OOT_GROTTO_HYRULE_TEKTITE				0x80	// Hyrule field tektite grotto
-#define OOT_GROTTO_HYRULE_KAKARIKO				0x81	// Hyrule field kakariko grotto
-#define OOT_GROTTO_HYRULE_GERUDO				0x82	// Hyrule field gerudo grotto
-#define OOT_GROTTO_CASTLE_STORMS				0x83	// Hyrule castle song of storms grotto
-#define OOT_GROTTO_VALLEY_STORMS				0x84	// Hyrule castle song of storms grotto
-#define OOT_GROTTO_VALLEY_OCTOROK				0x85	// Hyrule castle octorok grotto
-#define OOT_GROTTO_DESERT_SCRUBS				0x86	// Desert colossus scrubs grotto
+#define OOT_GROTTO_SACRED_MEADOW_STORMS			0x6a	// Sacred Meadow song of storms grotto
+#define OOT_GROTTO_KAKARIKO_REDEAD				0x6b	// Kakariko redead grotto
+#define OOT_GROTTO_KAKARIKO_OPEN				0x6c	// Kakariko open grotto
+#define OOT_GROTTO_DEATH_TRIAL_STORMS			0x6d	// Death mountain trial song of storms grotto
+#define OOT_GROTTO_DEATH_TRIAL_COW				0x6e	// Death mountain trial cow grotto
+#define OOT_GROTTO_GORON_CITY_SCRUBS			0x6f	// Goron city scrubs grotto
+#define OOT_GROTTO_DEATH_CRATER_GENERIC			0x70	// Death mountain crater generic grotto
+#define OOT_GROTTO_DEATH_CRATER_SCRUBS			0x71	// Death mountain crater scrubs grotto
+#define OOT_GROTTO_ZORA_RIVER_STORMS			0x72	// Zora's river song of storms grotto
+#define OOT_GROTTO_ZORA_RIVER_GENERIC			0x73	// Zora's river generic grotto
+#define OOT_GROTTO_LAKE_HYLIA_SCRUBS			0x74	// Lake Hylia scrubs grotto
+#define OOT_GROTTO_LON_LON_SCRUBS				0x75	// Lon Lon's Ranch scrubs 
+#define OOT_GROTTO_HYRULE_SCRUBS				0x76	// Hyrule field scrub grotto
+#define OOT_GROTTO_HYRULE_SE					0x77	// Hyrule field southeast grotto
+#define OOT_GROTTO_HYRULE_OPEN					0x78	// Hyrule field open grotto
+#define OOT_GROTTO_HYRULE_MARKET				0x79	// Hyrule field market grotto
+#define OOT_GROTTO_HYRULE_TEKTITE				0x7a	// Hyrule field tektite grotto
+#define OOT_GROTTO_HYRULE_KAKARIKO				0x7b	// Hyrule field kakariko grotto
+#define OOT_GROTTO_HYRULE_GERUDO				0x7c	// Hyrule field gerudo grotto
+#define OOT_GROTTO_CASTLE_STORMS				0x7d	// Hyrule castle song of storms grotto
+#define OOT_GROTTO_VALLEY_STORMS				0x7e	// Hyrule castle song of storms grotto
+#define OOT_GROTTO_VALLEY_OCTOROK				0x7f	// Hyrule castle octorok grotto
+#define OOT_GROTTO_DESERT_SCRUBS				0x80	// Desert colossus scrubs grotto
 
 // OoT detailed fairy scene
-#define OOT_FAIRY_SACRED_MEADOW					0x87	// Sacred meadow fairy fountain
-#define OOT_FAIRY_ZORA_RIVER					0x88	// Zora's river fairy fountain
-#define OOT_FAIRY_ZORA_DOMAIN					0x89	// Zora's domain fairy fountain
-#define OOT_FAIRY_HYRULE						0x8a	// Hyrule field fairy fountain
-#define OOT_FAIRY_GERUDO_FORTRESS				0x8b	// Gerudo fortress fairy fountain
+#define OOT_FAIRY_SACRED_MEADOW					0x81	// Sacred meadow fairy fountain
+#define OOT_FAIRY_ZORA_RIVER					0x82	// Zora's river fairy fountain
+#define OOT_FAIRY_ZORA_DOMAIN					0x83	// Zora's domain fairy fountain
+#define OOT_FAIRY_HYRULE						0x84	// Hyrule field fairy fountain
+#define OOT_FAIRY_GERUDO_FORTRESS				0x85	// Gerudo fortress fairy fountain
 
 // OoT detailed great fairy scene
-#define OOT_GREAT_FAIRY_DIN						0x8c	// Din's fire fairy fountain
-#define OOT_GREAT_FAIRY_FARORE					0x8d	// Farore's wind fairy fountain
-#define OOT_GREAT_FAIRY_NAYRU					0x8e	// Nayru's love fairy fountain
-#define OOT_GREAT_FAIRY_MAGIC					0x8f	// First magic upgrade fairy fountain
-#define OOT_GREAT_FAIRY_MAGIC2					0x90	// Second magic upgrade fairy fountain
-#define OOT_GREAT_FAIRY_DEFENSE					0x91	// Double defense upgrade fairy fountain
+#define OOT_GREAT_FAIRY_DIN						0x86	// Din's fire fairy fountain
+#define OOT_GREAT_FAIRY_FARORE					0x87	// Farore's wind fairy fountain
+#define OOT_GREAT_FAIRY_NAYRU					0x88	// Nayru's love fairy fountain
+#define OOT_GREAT_FAIRY_MAGIC					0x89	// First magic upgrade fairy fountain
+#define OOT_GREAT_FAIRY_MAGIC2					0x8a	// Second magic upgrade fairy fountain
+#define OOT_GREAT_FAIRY_DEFENSE					0x8b	// Double defense upgrade fairy fountain
 
 // OoT detailed other scene
-#define KAKARIKO_BAZAAR							0x92	// Kakariko's bazaar
-#define MARKET_BAZAAR							0x93	// Market bazaar
-#define KAKARIKO_SHOOTING						0x94	// Kakariko's shooting gallery
-#define MARKET_SHOOTING							0x95	// Kakariko's shooting gallery
-#define SILO									0x96	// It the real Silo and not the "RANCH_HOUSE_SILO"
-#define WINDMILL								0x97	// Kakariko's windmill
+#define KAKARIKO_BAZAAR							0x8c	// Kakariko's bazaar
+#define MARKET_BAZAAR							0x8d	// Market bazaar
+#define KAKARIKO_SHOOTING						0x8e	// Kakariko's shooting gallery
+#define MARKET_SHOOTING							0x8f	// Kakariko's shooting gallery
+#define SILO									0x90	// It the real Silo and not the "RANCH_HOUSE_SILO"
+#define WINDMILL								0x91	// Kakariko's windmill
 
-const SceneMetaInfo OoTScenesName[WINDMILL + 1] =
+const SceneMetaInfo OoTScenesMetaInfo[WINDMILL + 1] =
 {
-	{ "Deku Tree", "/OoT/Kokiri_Forest/Deku_Tree.png" },
-	{ "Dodongo's Cavern", "/OoT/Death_Mountain/Dodongo_Cavern.png" },
-	{ "Inside Jabu-Jabu", "/OoT/Zora_Foutain/Jabu_Jabu.png" },
-	{ "Forest Temple", "/OoT/Kokiri_Forest/Temple.png" },
-	{ "Fire Temple", "/OoT/Death_Mountain/Temple.png" },
-	{ "Water Temple", "/OoT/Lake_Hylia/Temple.png" },
-	{ "Spirit Temple", "/OoT/Desert/Temple.png" },
-	{ "Shadow Temple", "/OoT/Kakariko/Temple.png" },
-	{ "Bottom of the Well", "/OoT/Kakariko/Well.png" },
-	{ "Ice Cavern", "/OoT/Zora_Foutain/Ice_Cavern.png" },
-	{ "Ganon Tower", "/OoT/Ganon/Tower.png" },
-	{ "Gerudo Training Ground", "/OoT/Gerudo/GTG.png" },
-	{ "Thieves Hideout", "/OoT/Gerudo/Thieves_Hideout.png" },
-	{ "Inside Ganon Castle", "/OoT/Ganon/Inside.png" },
-	{ "Ganon Tower - Collapsing", "" },
-	{ "Inside Ganon Castle - Collapsing", "" },
-	{ "Gohma's Lair", "/OoT/Kokiri_Forest/Gohma_Lair.png" },
-	{ "King Dodongo's Lair", "/OoT/Death_Moutain/King_Dodongo_Lair.png" },
-	{ "Barinade's Lair", "/OoT/Zora_Fountain/Barinade_Lair.png" },
-	{ "Phantom Ganon's Lair", "/OoT/Kokiri_Forest/Phantom_Ganon_Lair.png" },
-	{ "Volvagia's Lair", "/OoT/Death_Moutain/Volvagia_Lair.png" },
-	{ "Morpha's Lair", "/OoT/Lake_Hylia/Morpha_Lair.png" },
-	{ "Twinrova's Lair", "/OoT/Desert/Twinrova_Lair.png" },
-	{ "Bongo-Bongo's Lair", "/OoT/Kakariko/Bongo_Bongo_Lair.png" },
-	{ "Ganondorf's Lair", "" },
-	{ "Tower Collapse - Exterior", "" },
-	{ "Market Entrance - Child Day", "" },
-	{ "Market Entrance - Child Night", "" },
-	{ "Market Entrance - Adult", "" },
-	{ "Back Alley - Day", "" },
-	{ "Back Alley - Night", "" },
-	{ "Market - Child Day", "/OoT/Market/Market.png" },
-	{ "Market - Child Night", "/OoT/Market/Market.png" },
-	{ "Market - Adult", "" },
-	{ "Temple of Time Exterior Child Day", "" },
-	{ "Temple of Time Exterior Child Night", "" },
-	{ "Temple of Time Exterior Adult", "" },
-	{ "Know-It-All Brothers's House", "/OoT/Kokiri_Forest/Know_It_All.png" },
-	{ "Twins's House", "/OoT/Kokiri_Forest/Twins_House.png" },
-	{ "Mido's House", "/OoT/Kokiri_Forest/Mido_House.png" },
-	{ "Saria's House", "/OoT/Kokiri_ForestSaria_House.png" },
-	{ "Carpenter's Boss House", "/OoT/Kakariko/Carpenter_Boss_House.png" },
-	{ "Back Alley House", "" },
-	{ "Bazaar", "/OoT/Market/Bazaar.png" },
-	{ "Kokiri's Shop", "/OoT/Kokiri_Forest/Shop.png" },
-	{ "Goron's Shop", "/OoT/Goron_City/Shop.png" },
-	{ "Zora's Shop", "/OoT/Zora_Domain/Shop.png" },
-	{ "Kakariko Potion Shop", "/OoT/Kakariko/Potion_Shop.png" },
-	{ "Market Potion Shop", "/OoT/Market/Potion_Shop.png" },
-	{ "Bombchu Shop", "/OoT/Market/Bombchu_Shop.png" },
-	{ "Happy Mask Shop", "" },
-	{ "Link's House", "/OoT/Kokiri_Forest/Link_House.png" },
-	{ "Dog's Lady House", "/OoT/Market/Dog_Lady_House.png" },
-	{ "Stable", "/OoT/Ranch/Stable.png" },
-	{ "Impa's House", "/OoT/Kakariko/Impa_House.png" },
-	{ "Laboratory", "/OoT/Lake_Hylia/Laboratory.png" },
-	{ "Carpenter's Tent", "" },
-	{ "Gravekeeper's Hut", "" },
-	{ "Great Fairy Fountain - Upgrades", "" },
-	{ "Fairy Fountain", "" },
-	{ "Great Fairy Fountain - Spells", "" },
-	{ "Grottos", "" },
-	{ "Redead's Tomb", "/OoT/Kakariko/Redead_Tomb.png" },
-	{ "Fairy's Foutain Tomb", "/OoT/Kakariko/Fairy_Foutain_Tomb.png" },
-	{ "Royal's Tomb", "/OoT/Kakariko/Royal_Tomb.png" },
-	{ "Shooting Gallery", "" },
-	{ "Temple of Time", "/OoT/Market/Temple of Time.png" },
-	{ "Chamber of the Sages", "" },
-	{ "Castle Maze - Day", "" },
-	{ "Castle Maze - Night", "" },
-	{ "Cutscene Map", "" },
-	{ "Dampe's Tomb", "/OoT/Kakariko/Dampe_Tomb.png" },
-	{ "Fishing Pond", "/OoT/Lake_Hylia/Fishing_Pond.png" },
-	{ "Castle Courtyard", "/OoT/Hyrule/Castle_Courtyard.png" },
-	{ "Bombchu Bowling", "/OoT/Market/Bombchu_Bowling.png" },
-	{ "Ranch House Silo", "/OoT/Ranch/Ranch_House_Silo.png" },
-	{ "Guard House", "/OoT/Market/Guard_House.png" },
-	{ "Granny Potion Shop", "/OoT/Kakariko/Granny_Potion_Shop.png" },
-	{ "Ganon Battle Arena", "" },
-	{ "House of Skulltula", "/OoT/Kakariko/House_of_Skulltula.png" },
-	{ "Hyrule Field", "/OoT/Hyrule/Hyrule_Field.png" },
-	{ "Kakariko's Village", "/OoT/Kakariko/Kakariko_Village.png" },
-	{ "Graveyard", "/OoT/Kakariko/Graveyard.png" },
-	{ "Zora's River", "/OoT/Zora_River/Zora_River.png" },
-	{ "Kokiri Forest", "/OoT/Kokiri_Forest/Kokiri_Forest.png" },
-	{ "Sacred Forest Meadow", "/OoT/Kokiri_Forest/Sacred_Forest_Meadow.png" },
-	{ "Lake Hylia", "/OoT/Lake_Hylia/Lake_Hylia.png" },
-	{ "Zora's Domain", "/OoT/Zora_Domain/Zora_Domain.png" },
-	{ "Zora's Fountain", "/OoT/Zora_Fountain/Zora_Fountain.png" },
-	{ "Gerudo Valley", "/OoT/Gerudo/Gerudo_Valley.png" },
-	{ "Lost Woods", "/OoT/Kokiri_Forest/Lost_Woods.png" },
-	{ "Desert Colossus", "/OoT/Desert/Desert_Colossus.png" },
-	{ "Gerudo's Fortress", "/OoT/Gerudo/Gerudo_Fortress.png" },
-	{ "Haunted Wasteland", "/OoT/Gerudo/Haunted_Wasteland.png" },
-	{ "Hyrule Castle", "/OoT/Hyrule/Hyrule_Castle.png" },
-	{ "Death Mountain Trail", "/OoT/Death_Mountain/Trail.png" },
-	{ "Death Mountain Crater", "/OoT/Death_Mountain/Crater.png" },
-	{ "Goron City", "/OoT/Death_Mountain/Goron_City.png" },
-	{ "Lon Lon's Ranch", "/OoT/Ranch/Lon_Lon_Ranch.png" },
-	{ "Ganon Castle - Exterior", "/OoT/Ganon/Exterior.png" },
-
-	{ "Kokiri Forest - Song of Storms", "/OoT/Kokiri_Forest/Storms.png" },
-	{ "Lost Woods - Deku Scrub Upgrade", "/OoT/Kokiri_Forest/LW_Scrub_Upgrade.png" },
-	{ "Lost Woods - Generic", "/OoT/Kokiri_Forest/LW_Generic.png" },
-	{ "Lost Woods - Deku's Theater", "/OoT/Kokiri_Forest/LW_Theater.png" },
-	{ "Sacred Meadow - Wolfos", "/OoT/Kokiri_Forest/Wolfos.png" },
-	{ "Sacred Meadow - Song of Storms", "/OoT/Kokiri_Forest/SM_Storms.png" },
-	{ "Kakariko - Redead", "/OoT/Kakariko/Redead.png" },
-	{ "Kakariko - Open", "/OoT/Kakariko/Open.png" },
-	{ "Death Mountain Trial - Song of Storms", "/OoT/Death_Mountain/Storms.png" },
-	{ "Death Mountain Trial - Cow", "/OoT/Death_Mountain/Cow.png" },
-	{ "Goron City - Deku Scrubs", "/OoT/Death_Mountain/GC_Scrubs.png" },
-	{ "Death Mountain Crater - Generic", "/OoT/Death_Mountain/Crater_Generic.png" },
-	{ "Death Mountain Crater Deku Scrubs", "/OoT/Death_Mountain/Crater_Scrubs.png" },
-	{ "Zora's River - Song of Storms", "/OoT/Zora_River/Storms.png" },
-	{ "Zora's River - Generic", "/OoT/Zora_River/Generic.png" },
-	{ "Lake Hylia - Deku Scrubs", "/OoT/Lake_Hylia/Scrubs.png" },
-	{ "Lon Lon's Ranch - Deku Scrubs", "/OoT/Ranch/Scrubs.png" },
-	{ "Hyrule Field - Deku Scrubs", "/OoT/Hyrule/Field_Scrubs.png" },
-	{ "Hyrule Field - Southeast", "/OoT/Hyrule/Field_SE.png" },
-	{ "Hyrule Field - Open", "/OoT/Hyrule/Field_Open.png" },
-	{ "Hyrule Field - Market Side", "/OoT/Hyrule/Field_Market.png" },
-	{ "Hyrule Field - Tektite", "/OoT/Hyrule/Field_Tektite.png" },
-	{ "Hyrule Field - Kakariko Side", "/OoT/Hyrule/Field_Kakariko.png" },
-	{ "Hyrule Field - Gerudo Side", "/OoT/Hyrule/Field_Gerudo.png" },
-	{ "Hyrule Castle - Song of Storms", "/OoT/Hyrule/Castle_Storms.png" },
-	{ "Gerudo Valley - Song of Storms", "/OoT/Gerudo/Valley_Storms.png" },
-	{ "Gerudo Valley - Octorok", "/OoT/Gerudo/Valley_Octorok.png" },
-	{ "Desert Colossus - Deku Scrubs", "/OoT/Desert/Scrubs.png" },
-
-	{ "Sacred Meadow Fairy Fountain", "/OoT/Kokiri_Forest/SM_Fountain.png" },
-	{ "Zora's River Fairy Fountain", "/OoT/Zora_River/Fountain.png" },
-	{ "Zora's Domain Fairy Fountain", "/OoT/Zora_Domain/Fountain.png" },
-	{ "Hyrule Field Fairy Fountain", "/OoT/Hyrule/Field_Fountain.png" },
-	{ "Gerudo's Fortress Fairy Fountain", "/OoT/Gerudo/Fountain.png" },
-
-	{ "Din's Great Fairy", "/OoT/Hyrule/Great_Fairy.png" },
-	{ "Farore's Great Fairy", "/OoT/Zora_Fountain/Great_Fairy.png" },
-	{ "Nayru's Great Fairy", "/OoT/Desert/Great_Fairy.png" },
-	{ "First Magic Upgrade Great Fairy", "/OoT/Death_Moutain/Trail_Great_Fairy.png" },
-	{ "Second Magic Upgrade Great Fairy", "/OoT/Death_Moutain/Crater_Great_Fairy.png" },
-	{ "Double Defense Great Fairy", "/OoT/Ganon/Great_Fairy.png" },
-
-	{ "Kakariko's Bazaar", "/OoT/Kakariko/Bazaar.png" },
-	{ "Market's Bazaar", "/OoT/Market/Bazaar.png" },
-	{ "Kakariko's Shooting", "/OoT/Kakariko/Shooting.png" },
-	{ "Market's Shooting", "/OoT/Market/Shooting.png" },
-	{ "Silo", "/OoT/Ranch/Silo.png" },
-	{ "Windmill", "/OoT/Kakariko/Windmill.png" }
+	{ "Deku Tree", "./Resources/OoT/Dungeons/Deku_Tree.png", (uint8_t)OoTRegions::Dungeons },
+	{ "Dodongo's Cavern", "./Resources/OoT/Dungeons/Dodongo_Cavern.png", (uint8_t)OoTRegions::Dungeons },
+	{ "Inside Jabu-Jabu", "./Resources/OoT/Dungeons/Jabu_Jabu.png", (uint8_t)OoTRegions::Dungeons },
+	{ "Forest Temple", "./Resources/OoT/Dungeons/Forest_Temple.png", (uint8_t)OoTRegions::Dungeons },
+	{ "Fire Temple", "./Resources/OoT/Dungeons/Fire_Temple.png", (uint8_t)OoTRegions::Dungeons },
+	{ "Water Temple", "./Resources/OoT/Dungeons/Water_Temple.png", (uint8_t)OoTRegions::Dungeons },
+	{ "Spirit Temple", "./Resources/OoT/Dungeons/Spirit_Temple.png", (uint8_t)OoTRegions::Dungeons },
+	{ "Shadow Temple", "./Resources/OoT/Dungeons/Shadow_Temple.png", (uint8_t)OoTRegions::Dungeons },
+	{ "Bottom of the Well", "./Resources/OoT/Dungeons/Well.png", (uint8_t)OoTRegions::Dungeons },
+	{ "Ice Cavern", "./Resources/OoT/Dungeons/Ice_Cavern.png", (uint8_t)OoTRegions::Dungeons },
+	{ "Ganon Tower", "./Resources/OoT/Ganon/Tower.png", (uint8_t)OoTRegions::Dungeons },
+	{ "Gerudo Training Ground", "./Resources/OoT/Gerudo_Fortress/GTG.png", (uint8_t)OoTRegions::Gerudo_Fortress },
+	{ "Thieves Hideout", "./Resources/OoT/Gerudo_Fortress/Thieves_Hideout.png", (uint8_t)OoTRegions::Gerudo_Fortress },
+	{ "Inside Ganon Castle", "./Resources/OoT/Ganon/Inside.png", (uint8_t)OoTRegions::Dungeons },
+	{ "Ganon Tower - Collapsing", "", (uint8_t)OoTRegions::None },
+	{ "Inside Ganon Castle - Collapsing", "", (uint8_t)OoTRegions::None },
+	{ "Treasure Shop", "./Resources/OoT/Market/Treasure.png", (uint8_t)OoTRegions::Market },
+	{ "Gohma's Lair", "./Resources/OoT/Dungeons/Gohma_Lair.png", (uint8_t)OoTRegions::Dungeons },
+	{ "King Dodongo's Lair", "./Resources/OoT/Dungeons/King_Dodongo_Lair.png", (uint8_t)OoTRegions::Dungeons },
+	{ "Barinade's Lair", "./Resources/OoT/Dungeons/Barinade_Lair.png", (uint8_t)OoTRegions::Dungeons },
+	{ "Phantom Ganon's Lair", "./Resources/OoT/Dungeons/Phantom_Ganon_Lair.png", (uint8_t)OoTRegions::Dungeons },
+	{ "Volvagia's Lair", "./Resources/OoT/Dungeons/Volvagia_Lair.png", (uint8_t)OoTRegions::Dungeons },
+	{ "Morpha's Lair", "./Resources/OoT/Dungeons/Morpha_Lair.png", (uint8_t)OoTRegions::Dungeons },
+	{ "Twinrova's Lair", "./Resources/OoT/Dungeons/Twinrova_Lair.png", (uint8_t)OoTRegions::Dungeons },
+	{ "Bongo-Bongo's Lair", "./Resources/OoT/Dungeons/Bongo_Bongo_Lair.png", (uint8_t)OoTRegions::Dungeons },
+	{ "Ganondorf's Lair", "", (uint8_t)OoTRegions::None },
+	{ "Tower Collapse - Exterior", "", (uint8_t)OoTRegions::None },
+	{ "Market Entrance - Child Day", "", (uint8_t)OoTRegions::None },
+	{ "Market Entrance - Child Night", "", (uint8_t)OoTRegions::None },
+	{ "Market Entrance - Adult", "", (uint8_t)OoTRegions::None },
+	{ "Back Alley - Day", "", (uint8_t)OoTRegions::None },
+	{ "Back Alley - Night", "", (uint8_t)OoTRegions::None },
+	{ "Market - Child Day", "./Resources/OoT/Market/Market.png", (uint8_t)OoTRegions::Market },
+	{ "Market - Child Night", "./Resources/OoT/Market/Market.png", (uint8_t)OoTRegions::Market },
+	{ "Market - Adult", "", (uint8_t)OoTRegions::None },
+	{ "Temple of Time Exterior Child Day", "", (uint8_t)OoTRegions::None },
+	{ "Temple of Time Exterior Child Night", "", (uint8_t)OoTRegions::None },
+	{ "Temple of Time Exterior Adult", "", (uint8_t)OoTRegions::None },
+	{ "House - Know-It-All Brothers", "./Resources/OoT/Kokiri_Forest/Know_It_All.png", (uint8_t)OoTRegions::Kokiri_Forest },
+	{ "House - Twins", "./Resources/OoT/Kokiri_Forest/Twins_House.png", (uint8_t)OoTRegions::Kokiri_Forest },
+	{ "House - Mido", "./Resources/OoT/Kokiri_Forest/Mido_House.png", (uint8_t)OoTRegions::Kokiri_Forest },
+	{ "House - Saria", "./Resources/OoT/Kokiri_ForestSaria_House.png", (uint8_t)OoTRegions::Kokiri_Forest },
+	{ "House - Carpenter's Boss", "./Resources/OoT/Kakariko/Carpenter_Boss_House.png", (uint8_t)OoTRegions::Kakariko },
+	{ "House - Back Alley", "./Resources/OoT/Market/Back_Alley_House.png", (uint8_t)OoTRegions::Market },
+	{ "Bazaar", "", (uint8_t)OoTRegions::None },
+	{ "Shop - Kokiri", "./Resources/OoT/Kokiri_Forest/Shop.png", (uint8_t)OoTRegions::Kokiri_Forest },
+	{ "Shop - Goron", "./Resources/OoT/Goron_City/Shop.png", (uint8_t)OoTRegions::Goron_City },
+	{ "Shop - Zora", "./Resources/OoT/Zora_Domain/Shop.png", (uint8_t)OoTRegions::Zora_Domain },
+	{ "Potion Shop - Kakariko", "./Resources/OoT/Kakariko/Potion_Shop.png", (uint8_t)OoTRegions::Kakariko },
+	{ "Potion Shop - Market", "./Resources/OoT/Market/Potion_Shop.png", (uint8_t)OoTRegions::Market },
+	{ "Shop - Bombchu", "./Resources/OoT/Market/Bombchu_Shop.png", (uint8_t)OoTRegions::Market },
+	{ "Shop - Happy Mask", "", (uint8_t)OoTRegions::None },
+	{ "House - Link", "./Resources/OoT/Kokiri_Forest/Link_House.png", (uint8_t)OoTRegions::Kokiri_Forest },
+	{ "House - Dog's Lady", "./Resources/OoT/Market/Dog_Lady_House.png", (uint8_t)OoTRegions::Market },
+	{ "Stable", "./Resources/OoT/Ranch/Stable.png", (uint8_t)OoTRegions::Lon_Lon_Ranch },
+	{ "House - Impa", "./Resources/OoT/Kakariko/Impa_House.png", (uint8_t)OoTRegions::Kakariko },
+	{ "Laboratory", "./Resources/OoT/Lake_Hylia/Laboratory.png", (uint8_t)OoTRegions::Lake_Hylia },
+	{ "Carpenter's Tent", "", (uint8_t)OoTRegions::None },
+	{ "Gravekeeper's Hut", "", (uint8_t)OoTRegions::None },
+	{ "Great Fairy Fountain - Upgrades", "", (uint8_t)OoTRegions::None },
+	{ "Fairy Fountain", "", (uint8_t)OoTRegions::None },
+	{ "Great Fairy Fountain - Spells", "", (uint8_t)OoTRegions::None },
+	{ "Grottos", "", (uint8_t)OoTRegions::None },
+	{ "Tomb - Redead", "./Resources/OoT/Graveyard/Redead_Tomb.png", (uint8_t)OoTRegions::Graveyard },
+	{ "Tomb - Fairy's Foutain", "./Resources/OoT/Graveyard/Fairy_Foutain_Tomb.png", (uint8_t)OoTRegions::Graveyard },
+	{ "Tomb - Royal's Family", "./Resources/OoT/Graveyard/Royal_Tomb.png", (uint8_t)OoTRegions::Graveyard },
+	{ "Shooting Gallery", "", (uint8_t)OoTRegions::None },
+	{ "Temple of Time", "./Resources/OoT/Market/Temple of Time.png", (uint8_t)OoTRegions::Market },
+	{ "Chamber of the Sages", "", (uint8_t)OoTRegions::None },
+	{ "Castle Maze - Day", "", (uint8_t)OoTRegions::None },
+	{ "Castle Maze - Night", "", (uint8_t)OoTRegions::None },
+	{ "Cutscene Map", "", (uint8_t)OoTRegions::None },
+	{ "Tomb - Dampe", "./Resources/OoT/Graveyard/Dampe_Tomb.png", (uint8_t)OoTRegions::Graveyard },
+	{ "Fishing Pond", "./Resources/OoT/Lake_Hylia/Fishing_Pond.png", (uint8_t)OoTRegions::Lake_Hylia },
+	{ "Castle Courtyard", "./Resources/OoT/Hyrule/Castle_Courtyard.png", (uint8_t)OoTRegions::Castle },
+	{ "Bombchu Bowling", "./Resources/OoT/Market/Bombchu_Bowling.png", (uint8_t)OoTRegions::Market },
+	{ "House - Talon", "./Resources/OoT/Ranch/Ranch_House_Silo.png", (uint8_t)OoTRegions::Lon_Lon_Ranch },
+	{ "House - Pot", "./Resources/OoT/Market/Guard_House.png", (uint8_t)OoTRegions::Market },
+	{ "Potion Shop - Granny", "./Resources/OoT/Kakariko/Granny_Potion_Shop.png", (uint8_t)OoTRegions::Kakariko },
+	{ "Ganon Battle Arena", "", (uint8_t)OoTRegions::None },
+	{ "House of Skulltula", "./Resources/OoT/Kakariko/House_of_Skulltula.png", (uint8_t)OoTRegions::Kakariko },
+	{ "Hyrule Field", "./Resources/OoT/Hyrule/Hyrule_Field.png", (uint8_t)OoTRegions::Hyrule },
+	{ "Kakariko's Village", "./Resources/OoT/Kakariko/Kakariko_Village.png", (uint8_t)OoTRegions::Kakariko },
+	{ "Graveyard", "./Resources/OoT/Graveyard/Graveyard.png", (uint8_t)OoTRegions::Graveyard },
+	{ "Zora's River", "./Resources/OoT/Zora_River/Zora_River.png", (uint8_t)OoTRegions::Zora_River },
+	{ "Kokiri Forest", "./Resources/OoT/Kokiri_Forest/Kokiri_Forest.png", (uint8_t)OoTRegions::Kokiri_Forest },
+	{ "Sacred Forest Meadow", "./Resources/OoT/Sacred_Forest_Meadow/Sacred_Forest_Meadow.png", (uint8_t)OoTRegions::Sacred_Forest_Meadow },
+	{ "Lake Hylia", "./Resources/OoT/Lake_Hylia/Lake_Hylia.png", (uint8_t)OoTRegions::Lake_Hylia },
+	{ "Zora's Domain", "./Resources/OoT/Zora_Domain/Zora_Domain.png", (uint8_t)OoTRegions::Zora_Domain },
+	{ "Zora's Fountain", "./Resources/OoT/Zora_Fountain/Zora_Fountain.png", (uint8_t)OoTRegions::Zora_Fountain },
+	{ "Gerudo Valley", "./Resources/OoT/Gerudo_Valley/Valley.png", (uint8_t)OoTRegions::Gerudo_Valley },
+	{ "Lost Woods", "./Resources/OoT/Lost_Woods/Lost_Woods.png", (uint8_t)OoTRegions::Lost_Woods },
+	{ "Desert Colossus", "./Resources/OoT/Desert_Colossus/Desert_Colossus.png", (uint8_t)OoTRegions::Desert_Colossus },
+	{ "Gerudo's Fortress", "./Resources/OoT/Gerudo_Fortress/Fortress.png", (uint8_t)OoTRegions::Gerudo_Fortress },
+	{ "Haunted Wasteland", "./Resources/OoT/Haunted_Wasteland/Haunted_Wasteland.png", (uint8_t)OoTRegions::Haunted_Wasteland },
+	{ "Hyrule Castle", "./Resources/OoT/Hyrule/Hyrule_Castle.png", (uint8_t)OoTRegions::Castle },
+	{ "Death Mountain Trail", "./Resources/OoT/Death_Mountain_Trial/Trail.png", (uint8_t)OoTRegions::Death_Mountain_Trial },
+	{ "Death Mountain Crater", "./Resources/OoT/Death_Mountain_Crater/Crater.png", (uint8_t)OoTRegions::Death_Mountain_Crater },
+	{ "Goron City", "./Resources/OoT/Goron_City/Goron_City.png", (uint8_t)OoTRegions::Goron_City },
+	{ "Lon Lon's Ranch", "./Resources/OoT/Ranch/Lon_Lon_Ranch.png", (uint8_t)OoTRegions::Lon_Lon_Ranch },
+	{ "Ganon Castle - Exterior", "./Resources/OoT/Ganon/Exterior.png", (uint8_t)OoTRegions::Castle },
+	{ "Grotto - Song of Storms", "./Resources/OoT/Kokiri_Forest/Storms.png", (uint8_t)OoTRegions::Kokiri_Forest },
+	{ "Grotto - Deku Scrub Upgrade", "./Resources/OoT/Lost_Woods/Scrub_Upgrade.png", (uint8_t)OoTRegions::Lost_Woods },
+	{ "Grotto - Generic", "./Resources/OoT/Lost_Woods/Generic.png", (uint8_t)OoTRegions::Lost_Woods },
+	{ "Grotto - Deku's Theater", "./Resources/OoT/Lost_Woods/Theater.png", (uint8_t)OoTRegions::Lost_Woods },
+	{ "Grotto - Wolfos", "./Resources/OoT/Sacred_Forest_Meadow/Wolfos.png", (uint8_t)OoTRegions::Lost_Woods },
+	{ "Grotto - Song of Storms", "./Resources/OoT/Sacred_Forest_Meadow/Storms.png", (uint8_t)OoTRegions::Sacred_Forest_Meadow },
+	{ "Grotto - Redead", "./Resources/OoT/Kakariko/Redead.png", (uint8_t)OoTRegions::Kakariko },
+	{ "Grotto - Open", "./Resources/OoT/Kakariko/Open.png", (uint8_t)OoTRegions::Kakariko },
+	{ "Grotto - Song of Storms", "./Resources/OoT/Death_Mountain_Trial/Storms.png", (uint8_t)OoTRegions::Death_Mountain_Trial },
+	{ "Grotto - Cow", "./Resources/OoT/Death_Mountain_Trial/Cow.png", (uint8_t)OoTRegions::Death_Mountain_Trial },
+	{ "Grotto - Deku Scrubs", "./Resources/OoT/Goron_City/Scrubs.png", (uint8_t)OoTRegions::Goron_City },
+	{ "Grotto - Generic", "./Resources/OoT/Death_Mountain_Crater/Generic.png", (uint8_t)OoTRegions::Death_Mountain_Crater },
+	{ "Grotto - Deku Scrubs", "./Resources/OoT/Death_Mountain_Crater/Scrubs.png", (uint8_t)OoTRegions::Death_Mountain_Crater },
+	{ "Grotto - Song of Storms", "./Resources/OoT/Zora_River/Storms.png", (uint8_t)OoTRegions::Zora_River },
+	{ "Grotto - Generic", "./Resources/OoT/Zora_River/Generic.png", (uint8_t)OoTRegions::Zora_River },
+	{ "Grotto - Deku Scrubs", "./Resources/OoT/Lake_Hylia/Scrubs.png", (uint8_t)OoTRegions::Lake_Hylia },
+	{ "Grotto - Deku Scrubs", "./Resources/OoT/Ranch/Scrubs.png", (uint8_t)OoTRegions::Lon_Lon_Ranch },
+	{ "Grotto - Deku Scrubs", "./Resources/OoT/Hyrule/Field_Scrubs.png", (uint8_t)OoTRegions::Hyrule },
+	{ "Grotto - Southeast", "./Resources/OoT/Hyrule/Field_SE.png", (uint8_t)OoTRegions::Hyrule },
+	{ "Grotto - Open", "./Resources/OoT/Hyrule/Field_Open.png", (uint8_t)OoTRegions::Hyrule },
+	{ "Grotto - Market Side", "./Resources/OoT/Hyrule/Field_Market.png", (uint8_t)OoTRegions::Hyrule },
+	{ "Grotto - Tektite", "./Resources/OoT/Hyrule/Field_Tektite.png", (uint8_t)OoTRegions::Hyrule },
+	{ "Grotto - Kakariko Side", "./Resources/OoT/Hyrule/Field_Kakariko.png", (uint8_t)OoTRegions::Hyrule },
+	{ "Grotto - Gerudo Side", "./Resources/OoT/Hyrule/Field_Gerudo.png", (uint8_t)OoTRegions::Hyrule },
+	{ "Grotto - Song of Storms", "./Resources/OoT/Hyrule/Castle_Storms.png", (uint8_t)OoTRegions::Castle },
+	{ "Grotto - Song of Storms", "./Resources/OoT/Gerudo_Valley/Storms.png", (uint8_t)OoTRegions::Gerudo_Valley },
+	{ "Grotto - Octorok", "./Resources/OoT/Gerudo_Valley/Octorok.png", (uint8_t)OoTRegions::Gerudo_Valley },
+	{ "Grotto - Deku Scrubs", "./Resources/OoT/Desert_Colossus/Scrubs.png", (uint8_t)OoTRegions::Desert_Colossus },
+	{ "Fairy Fountain - Sacred Forest Meadow", "./Resources/OoT/Sacred_Forest_Meadow/Fountain.png", (uint8_t)OoTRegions::Sacred_Forest_Meadow },
+	{ "Fairy Fountain - Zora's River", "./Resources/OoT/Zora_River/Fountain.png", (uint8_t)OoTRegions::Zora_River },
+	{ "Fairy Fountain - Zora's Domain", "./Resources/OoT/Zora_Domain/Fountain.png", (uint8_t)OoTRegions::Zora_Domain },
+	{ "Fairy Fountain - Hyrule Field", "./Resources/OoT/Hyrule/Field_Fountain.png", (uint8_t)OoTRegions::Hyrule },
+	{ "Fairy Fountain - Gerudo's Fortress", "./Resources/OoT/Gerudo_Fortress/Fountain.png", (uint8_t)OoTRegions::Gerudo_Fortress },
+	{ "Great Fairy - Din", "./Resources/OoT/Hyrule/Great_Fairy.png", (uint8_t)OoTRegions::Castle },
+	{ "Great Fairy - Farore", "./Resources/OoT/Zora_Fountain/Great_Fairy.png", (uint8_t)OoTRegions::Zora_Fountain },
+	{ "Great Fairy - Nayru", "./Resources/OoT/Desert_Colossus/Great_Fairy.png", (uint8_t)OoTRegions::Desert_Colossus },
+	{ "Great Fairy - First Magic Upgrade", "./Resources/OoT/Death_Moutain_Trail/Great_Fairy.png", (uint8_t)OoTRegions::Death_Mountain_Trial },
+	{ "Great Fairy - Second Magic Upgrade", "./Resources/OoT/Death_Moutain_Crater/Great_Fairy.png", (uint8_t)OoTRegions::Death_Mountain_Crater },
+	{ "Great Fairy - Double Defense", "./Resources/OoT/Ganon/Great_Fairy.png", (uint8_t)OoTRegions::Castle },
+	{ "Bazaar - Kakariko", "./Resources/OoT/Kakariko/Bazaar.png", (uint8_t)OoTRegions::Kakariko },
+	{ "Bazaar - Market", "./Resources/OoT/Market/Bazaar.png", (uint8_t)OoTRegions::Market },
+	{ "Shooting Gallery - Kakariko", "./Resources/OoT/Kakariko/Shooting.png", (uint8_t)OoTRegions::Kakariko },
+	{ "Shooting Gallery - Market", "./Resources/OoT/Market/Shooting.png", (uint8_t)OoTRegions::Market },
+	{ "Silo", "./Resources/OoT/Ranch/Silo.png", (uint8_t)OoTRegions::Lon_Lon_Ranch },
+	{ "Windmill", "./Resources/OoT/Kakariko/Windmill.png", (uint8_t)OoTRegions::Kakariko }
 };
 
 #define SOUTHERN_SWAMP_CLEAR					0x00
@@ -433,185 +432,181 @@ const SceneMetaInfo OoTScenesName[WINDMILL + 1] =
 #define EXTRA									0x71
 
 // MM detailed other
-#define MM_ZORA_SHOP							0x72
-#define ZORA_EVAN_ROOM							0x73
+#define LONE_PEAK								0x72	// Lone Peak Shrine
+#define MM_ZORA_SHOP							0x73
+#define ZORA_EVAN_ROOM							0x74
 
 // MM detailed grottos
-#define MM_GROTTO_TERMINA_DODONGO				0x74	// Termina field dodongo's grotto
-#define MM_GROTTO_TERMINA_OCEAN_GOSSIP			0x75	// Termina field ocean gossip's grotto
-#define MM_GROTTO_TERMINA_CANYON_GOSSIP			0x76	// Termina field canyon gossip's grotto
-#define MM_GROTTO_TERMINA_BIO_BABA				0x77	// Termina field bio baba's grotto
-#define MM_GROTTO_TERMINA_PEEHAT				0x78	// Termina field peehat's grotto
-#define MM_GROTTO_TERMINA_SCRUB					0x79	// Termina field scrub grotto
-#define MM_GROTTO_TERMINA_TALL_GRASS			0x7a	// Termina field tall grass grotto
-#define MM_GROTTO_TERMINA_COW					0x7b	// Termina field cow grotto
-#define MM_GROTTO_TERMINA_PILLAR				0x7c	// Termina field pillar grotto
-#define MM_GROTTO_DEKU_PALACE_GENERIC			0x7d	// Deku palace generic grotto
-#define MM_GROTTO_DEKU_PALACE_BEANS				0x7e	// Deku palace beans grotto
-#define MM_GROTTO_GREAT_BAY_COAST_FISHERMAN		0x7f	// Great bay coast fisherman's grotto
-#define MM_GROTTO_GREAT_BAY_COAST_COW			0x80	// Great bay coast cow grotto
-#define MM_GROTTO_ZORA_CAPE_GENERIC				0x81	// Zora cape generic grotto
-#define MM_GROTTO_IKANA_GRAVEYARD_GENERIC		0x82	// Ikana graveyard generic grotto
-#define MM_GROTTO_IKANA_VALLEY_GENERIC			0x83	// Ikana valley generic grotto
-#define MM_GROTTO_IKANA_ROAD_GENERIC			0x84	// Ikana road generic grotto
-#define MM_GROTTO_LONE_PEAK_GENERIC				0x85	// Lone Peak generic grotto
+#define MM_GROTTO_TERMINA_DODONGO				0x75	// Termina field dodongo's grotto
+#define MM_GROTTO_TERMINA_OCEAN_GOSSIP			0x76	// Termina field ocean gossip's grotto
+#define MM_GROTTO_TERMINA_CANYON_GOSSIP			0x77	// Termina field canyon gossip's grotto
+#define MM_GROTTO_TERMINA_BIO_BABA				0x78	// Termina field bio baba's grotto
+#define MM_GROTTO_TERMINA_PEEHAT				0x79	// Termina field peehat's grotto
+#define MM_GROTTO_TERMINA_SCRUB					0x7a	// Termina field scrub grotto
+#define MM_GROTTO_TERMINA_TALL_GRASS			0x7b	// Termina field tall grass grotto
+#define MM_GROTTO_TERMINA_COW					0x7c	// Termina field cow grotto
+#define MM_GROTTO_TERMINA_PILLAR				0x7d	// Termina field pillar grotto
+#define MM_GROTTO_DEKU_PALACE_GENERIC			0x7e	// Deku palace generic grotto
+#define MM_GROTTO_DEKU_PALACE_BEANS				0x7f	// Deku palace beans grotto
+#define MM_GROTTO_GREAT_BAY_COAST_FISHERMAN		0x80	// Great bay coast fisherman's grotto
+#define MM_GROTTO_GREAT_BAY_COAST_COW			0x81	// Great bay coast cow grotto
+#define MM_GROTTO_ZORA_CAPE_GENERIC				0x82	// Zora cape generic grotto
+#define MM_GROTTO_IKANA_GRAVEYARD_GENERIC		0x83	// Ikana graveyard generic grotto
+#define MM_GROTTO_IKANA_VALLEY_OPEN				0x84	// Ikana valley generic open
+#define MM_GROTTO_IKANA_ROAD_GENERIC			0x85	// Ikana road generic grotto
 #define MM_GROTTO_TWIN_ISLANDS_FROZEN			0x86	// Twin islands frozen grotto
 #define MM_GROTTO_TWIN_ISLANDS_RAMP				0x87	// Twin islands ramp grotto
 #define MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC		0x88	// Path to snowhead generic grotto
 #define MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC		0x89	// Mountain village generic grotto
-#define MM_GROTTO_SOUTHERN_SWAMP_ROAD_GENERIC	0x8a	// Southern swamp road generic grotto
-#define MM_GROTTO_SOUTHERN_SWAMP_GENERIC		0x8b	// Southern swamp generic grotto
-#define MM_GROTTO_WOODS_OF_MYSTERY_GENERIC		0x8c	// Woods of mystery generic grotto
+#define MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN		0x8a	// Southern swamp road generic open
+#define MM_GROTTO_SOUTHERN_SWAMP_OPEN			0x8b	// Southern swamp generic open
+#define MM_GROTTO_WOODS_OF_MYSTERY_OPEN			0x8c	// Woods of mystery generic open
 
 
-const SceneMetaInfo MMScenesName[MM_GROTTO_WOODS_OF_MYSTERY_GENERIC + 1] =
+const SceneMetaInfo MMScenesMetaInfo[MM_GROTTO_WOODS_OF_MYSTERY_OPEN + 1] =
 {
-	{ "Southern Swamp - Clear", "" },
-	{ "Snowhead - Fairy Fountain", "/MM/Snowhead/Fairy_Fountain.png" },
-	{ "Great Bay Coast - Fairy Fountain", "/MM/Great_Bay_Coast/Fairy_Fountain.png" },
-	{ "Woodfall - Fairy Fountain", "/MM/Woodfall/Fairy_Fountain.png" },
-	{ "Clock Town - Fairy Fountain", "/MM/Clock_Town/Fairy Fountain.png" },
-	{ "Ikana - Fairy Fountain", "/MM/Ikana/Fairy_Fountain.png" },
-	{ "Path to Snowhead - Spring", "/MM/Path_to_Snowhead/Spring.png" },
-	{ "Grottos", "" },
-	{ "Cutscene Map", "" },
-	{ "Path to Mountain Village - Spring", "/MM/Path_to_Mountain_Village/Spring.png" },
-	{ "Potion Shop", "/MM/Southern_Swamp/Potion_Shop.png" },
-	{ "Majora's Lair", "/MM/Moon/Majora_Lair.png" },
-	{ "Beneath the Graveyard", "/MM/Ikana/Beneath_Graveyard.png" },
-	{ "Curiosity Shop", "/MM/Clock_Town/Curiosity_Shop.png" },
-	{ "Beneath the Graveyard - Night 1", "/MM/Road_to_Ikana/Beneath_Graveyard_N1.png" },
-	{ "Beneath the Graveyard - Night 2", "/MM/Road_to_Ikana/Beneath_Graveyard_N2.png" },
-	{ "Ranch House Barn", "/MM/Ranch/House_Barn.png" },
-	{ "Honey Darling", "/MM/Clock_Town/Honey_Darling.png" },
-	{ "Mayor House", "/MM/Clock_Town/Mayor_House.png" },
-	{ "Ikana Canyon", "/MM/Ikana/Ikana_Canyon.png" },
-	{ "Pirate's Fortress - Exterior", "/MM/Fortress/Exterior.png" },
-	{ "Milk Bar", "/MM/Clock_Town/Milk_Bar.png" },
-	{ "Stone Tower Temple", "/MM/Stone_Tower/Temple.png" },
-	{ "Treasure Shop", "/MM/Clock_Town/Treasure Shop.png" },
-	{ "Stone Tower Temple - Inverted", "/MM/Stone_Tower/Temple_Inverted.png" },
-	{ "Clock Tower - Rooftop", "/MM/Clock_Town/Tower_Rooftop.png" },
-	{ "Opening", "" },
-	{ "Woodfall Temple", "/MM/Woodfall/Temple.png" },
-	{ "Path to Mountain Village", "/MM/Path_to_Mountain_Village/Winter.png" },
-	{ "Ancient Ikana Castle", "/MM/Ikana/Ancient_Ikana_Castle.png" },
-	{ "Deku's Playground", "/MM/Clock_Town/Deku_Playground.png" },
-	{ "Odolwa's Lair", "/MM/Woodfall/Odolwa_Lair.png" },
-	{ "Shooting Gallery - Clock Town", "/MM/Clock_Town/Shooting_Gallery.png" },
-	{ "Snowhead Temple", "/MM/Snowhead/Temple.png" },
-	{ "Milk Road", "/MM/Milk_Road/Road.png" },
-	{ "Pirate's Fortress - Interior", "/MM/Fortress/Interior.png" },
-	{ "Shooting Gallery - Southern Swamp", "/MM/Southern_Swamp/Shooting_Gallery.png" },
-	{ "Pinnacle Rock", "/MM/Great_Bay_Coast/Pinnacle_Rock.png" },
-	{ "Fairy Fountain", "" },
-	{ "Spider's House - Southern Swamp", "/MM/Southern_Swamp/Spider_House.png" },
-	{ "Spider's House - Great Bay Coast", "/MM/Great_Bay_Coast/Spider_House.png" },
-	{ "Observatory", "/MM/Clock_Town/Observatory.png" },
-	{ "Moon - Deku's Trial", "/MM/Moon/Deku.png" },
-	{ "Deku's Palace", "/MM/Southern_Swamp/Deku_Palace.png" },
-	{ "Blacksmith", "/MM/Mountain_Village/Blacksmith.png" },
-	{ "Termina Field", "/MM/Termina/Field.png" },
-	{ "Post Office", "/MM/Clock_Town/Post_Office.png" },
-	{ "Laboratory", "/MM/Great_Bay_Coast/Laboratory.png" },
-	{ "Dampe's House", "/MM/Road_to_Ikana/Dampe_House.png" },
-	{ "Inside Ancient Ikana Castle", "/MM/Ikana/Inside_Castle.png" },
-	{ "Goron's Shrine", "/MM/Goron_Village/Goron_Shrine.png" },
-	{ "Zora's Theater", "/MM/Zora_Cape/Zora_Hall.png" },
-	{ "Trading Post", "/MM/Clock_Town/Trading_Post.png" },
-	{ "Romani's Ranch", "/MM/Ranch/Romani_Ranch.png" },
-	{ "Twinmold Lair", "/MM/Stone_Tower/Twinmold_Lair.png" },
-	{ "Great Bay Coast", "/MM/Great_Bay_Coast/Great_Bay.png" },
-	{ "Zora Cape", "/MM/Zora_Cape/Zora_Cape.png" },
-	{ "Lottery", "" },
-	{ "Snowhead - Spring", "/MM/Snowhead/Spring.png" },
-	{ "Pirate's Fortress Entrance", "/MM/Fortress/Entrance.png" },
-	{ "Fisherman Hut", "/MM/Great_Bay_Coast/Fisherman_Hut.png" },
-	{ "Goron's Shop", "/MM/Goron_Village/Goron_Shop.png" },
-	{ "Deku King's Chamber", "/MM/Southern_Swamp/Deku_King_Chamber.png" },
-	{ "Moon - Goron's Trial", "/MM/Moon/Goron.png" },
-	{ "Road to Southern Swamp", "/MM/Road_to_Southern_Swamp/Road.png" },
-	{ "Dog's Racetrack", "/MM/Ranch/Dog_Racetrack.png" },
-	{ "Cucco's Shack", "/MM/Ranch/Cucco_Shack.png" },
-	{ "Ikana Graveyard", "/MM/Road_to_Ikana/Graveyard.png" },
-	{ "Goht's Lair", "/MM/Snowhead/Goht_Lair.png" },
-	{ "Southern Swamp", "/MM/Southern_Swamp/Swamp.png" },
-	{ "Woodfall", "/MM/Woodfall/Woodfall.png" },
-	{ "Moon - Zora's Trial", "/MM/Moon/Zora.png" },
-	{ "Goron's Village - Spring", "/MM/Goron_Village/Spring.png" },
-	{ "Great Bay Temple", "/MM/Great_Bay_Coast/Temple.png" },
-	{ "Waterfall Rapids", "/MM/Zora_Cape/Waterfall_Rapids.png" },
-	{ "Beneath the Well", "/MM/Ikana/Beneath_the_Well.png" },
-	{ "Zora's Theater", "/MM/Zora_Cape/Theater.png" },
-	{ "Goron's Village - Winter", "/MM/Goron_Village/Winter.png" },
-	{ "Goron's Graveyard", "/MM/Mountain_Village/Graveyard.png" },
-	{ "Sakon's Hideout", "/MM/Ikana/Sakon_Hideout.png" },
-	{ "Mountain Village - Winter", "/MM/Mountain_Village/Winter.png" },
-	{ "Ghost Hut", "/MM/Ikana/Ghost_Hut.png" },
-	{ "Deku's Shrine", "/MM/Southern_Swamp/Deku_Shrine.png" },
-	{ "Road to Ikana", "/MM/Road_to_Ikana/Road.png" },
-	{ "Swordsman's School", "/MM/Clock_Town/Swordsman_School.png" },
-	{ "Music Box House", "/MM/Ikana/Music_Box_House.png" },
-	{ "Ikana's Lair", "/MM/Ikana/Ikana_Lair.png" },
-	{ "Tourist Information", "/MM/Southern_Swamp/Tourist_Information.png" },
-	{ "Stone Tower", "/MM/Stone_Tower/Tower.png" },
-	{ "Stone Tower - Inverted", "/MM/Stone_Tower/Tower_Inverted.png" },
-	{ "Mountain Village - Spring", "/MM/Mountain_Village/Spring.png" },
-	{ "Path to Snowhead", "/MM/Path_to_Snowhead/Winter.png" },
-	{ "Snowhead", "/MM/Snowhed/Snowhead.png" },
-	{ "Twin Islands - Winter", "/MM/Twin_Islands/Winter.png" },
-	{ "Twin Islands - Spring", "/MM/Twin_Islands/Spring.png" },
-	{ "Gyorg's Lair", "/MM/Great_Bay_Coast/Gyorg_Lair.png" },
-	{ "Secret's Shrine", "/MM/Ikana/Secret_Shrine.png" },
-	{ "Stock Pot Inn", "/MM/Clock_Town/Stock_Pot_Inn.png" },
-	{ "Great Bay Cutscene", "" },
-	{ "Clock Tower - Interior", "/MM/Clock_Town/Interior.png" },
-	{ "Woods of Mystery", "/MM/Southtern_Swamp/Woods_Mystery.png" },
-	{ "Lost Woods", "" },
-	{ "Moon - Link's Trial", "/MM/Moon/Link.png" },
-	{ "Moon", "/MM/Moon/Moon.png" },
-	{ "Bomb Shop", "/MM/Clock_Town/Bomb_Shop.png" },
-	{ "Giant Chamber", "" },
-	{ "Gorman's Track", "/MM/Milk_Road/Gorman_Track.png" },
-	{ "Goron's Racetrack", "/MM/Twin_Islands/Goron_Racetrack.png" },
-	{ "Clock Town - East", "/MM/Clock_Town/East.png" },
-	{ "Clock Town - West", "/MM/Clock_Town/West.png" },
-	{ "Clock Town - North", "/MM/Clock_Town/North.png" },
-	{ "Clock Town - South", "/MM/Clock_Town/South.png" },
-	{ "Laundry Pool", "/MM/Clock_Town/Laundry Pool.png" },
-
-	{ "Extra", "" },
-
-	{ "Zora's Shop", "/MM/Zora's Shop.png" },
-	{ "Evan's Room", "/MM/Evan's Room.png" },
-
-	{ "Termina - Dodongo", "/MM/Termina/Dodongo.png" },
-	{ "Termina - Ocean Gossip", "/MM/Termina/Ocean_Gossip.png" },
-	{ "Termina - Canyon Gossip", "/MM/Termina/Canyon_Gossip.png" },
-	{ "Termina - Bio Baba", "/MM/Termina Bio Baba.png" },
-	{ "Termina - Peehat", "/MM/Termina Peehat.png" },
-	{ "Termina - Deku Scrub", "/MM/Termina Scrub.png" },
-	{ "Termina - Tall Grass", "/MM/Termina Tall Grass.png" },
-	{ "Termina - Cow", "/MM/Termina Cow.png" },
-	{ "Termina - Pillar", "/MM/Termina Pillar.png" },
-	{ "Deku Palace - Generic", "/MM/Deku Palace Generic.png" },
-	{ "Deku Palace - Beans", "/MM/Deku Palace Beans.png" },
-	{ "Great Bay Coast - Open", "/MM/Great Bay Coast - Open.png" },
-	{ "Great Bay Coast - Cow", "/MM/Great Bay Coast - Cow.png" },
-	{ "Zora Cape - Generic", "/MM/Zora Cape - Generic.png" },
-	{ "Ikana Graveyard - Generic", "/MM/Road_To_Ikana/Graveyard_Generic.png" },
-	{ "Ikana Valley - Generic", "/MM/Ikana/Generic.png" },
-	{ "Road To Ikana - Generic", "/MM/Road_To_Ikana/Generic.png" },
-	{ "Lone Peak Shrine", "/MM/Goron_Village/Lone_Peak_Shrine.png" },
-	{ "Twin Islands - Frozen", "/MM/Twin_Islands/Frozen.png" },
-	{ "Twin Islands - Ramp", "/MM/Twin_Islands/Ramp.png" },
-	{ "Path to Snowhead - Generic", "/MM/Path_to_Snowhead/Generic.png" },
-	{ "Mountain Village - Generic", "/MM/Mountain_Village/Generic.png" },
-	{ "Road to Southern Swamp - Open", "/MM/Road_to_Southern/Open.png" },
-	{ "Southern Swamp - Generic", "/MM/Southern_Swamp/Generic.png" },
-	{ "Woods of Mystery - Open", "/MM/Southern_Swamp/Woods_Open"}
+	{ "Southern Swamp - Clear", "", (uint8_t)MMRegions::None },
+	{ "Fairy Fountain - Snowhead", "./Resources/MM/Snowhead/Fairy_Fountain.png", (uint8_t)MMRegions::Snowhead },
+	{ "Fairy Fountain - Zora Cape", "./Resources/MM/Zora_Cape/Fairy_Fountain.png", (uint8_t)MMRegions::Zora_Cape },
+	{ "Fairy Fountain - Woodfall", "./Resources/MM/Woodfall/Fairy_Fountain.png", (uint8_t)MMRegions::Woodfall },
+	{ "Fairy Fountain - Clock Town", "./Resources/MM/Clock_Town/Fairy Fountain.png", (uint8_t)MMRegions::Clock_Town },
+	{ "Fairy Fountain - Ikana Canyon", "./Resources/MM/Ikana_Canyon/Fairy_Fountain.png", (uint8_t)MMRegions::Ikana_Canyon },
+	{ "Path to Snowhead - Spring", "./Resources/MM/Path_to_Snowhead/Spring.png", (uint8_t)MMRegions::Path_to_Snowhead },
+	{ "Grottos", "", (uint8_t)MMRegions::None },
+	{ "Cutscene Map", "", (uint8_t)MMRegions::None },
+	{ "Path to Mountain Village - Spring", "./Resources/MM/Path_to_Mountain_Village/Spring.png", (uint8_t)MMRegions::Path_to_Mountain_Village },
+	{ "Potion Shop", "./Resources/MM/Southern_Swamp/Potion_Shop.png", (uint8_t)MMRegions::Southern_Swamp },
+	{ "Majora's Lair", "./Resources/MM/Moon/Majora_Lair.png", (uint8_t)MMRegions::Moon },
+	{ "Beneath the Graveyard", "", (uint8_t)MMRegions::None },
+	{ "Curiosity Shop", "./Resources/MM/Clock_Town/Curiosity_Shop.png", (uint8_t)MMRegions::Clock_Town },
+	{ "Beneath the Graveyard - Night 1", "./Resources/MM/Graveyard/Beneath_Graveyard_N1.png", (uint8_t)MMRegions::Graveyard },
+	{ "Beneath the Graveyard - Night 2", "./Resources/MM/Graveyard/Beneath_Graveyard_N2.png", (uint8_t)MMRegions::Graveyard },
+	{ "House - Ranch Barn", "./Resources/MM/Ranch/House_Barn.png", (uint8_t)MMRegions::Ranch },
+	{ "House - Honey Darling", "./Resources/MM/Clock_Town/Honey_Darling.png", (uint8_t)MMRegions::Clock_Town },
+	{ "House - Mayor", "./Resources/MM/Clock_Town/Mayor_House.png", (uint8_t)MMRegions::Clock_Town },
+	{ "Ikana Canyon", "./Resources/MM/Ikana_Canyon/Ikana_Canyon.png", (uint8_t)MMRegions::Ikana_Canyon },
+	{ "Pirate's Fortress - Exterior", "./Resources/MM/Fortress/Exterior.png", (uint8_t)MMRegions::Fortress },
+	{ "House - Milk Bar", "./Resources/MM/Clock_Town/Milk_Bar.png", (uint8_t)MMRegions::Clock_Town },
+	{ "Stone Tower Temple", "./Resources/MM/Stone_Tower/Temple.png", (uint8_t)MMRegions::Dungeons },
+	{ "Treasure Shop", "./Resources/MM/Clock_Town/Treasure Shop.png", (uint8_t)MMRegions::Clock_Town },
+	{ "Stone Tower Temple - Inverted", "./Resources/MM/Stone_Tower/Temple_Inverted.png", (uint8_t)MMRegions::Dungeons },
+	{ "Clock Tower - Rooftop", "./Resources/MM/Clock_Town/Tower_Rooftop.png", (uint8_t)MMRegions::Clock_Town },
+	{ "Opening", "", (uint8_t)MMRegions::None },
+	{ "Woodfall Temple", "./Resources/MM/Woodfall/Temple.png", (uint8_t)MMRegions::Dungeons },
+	{ "Path to Mountain Village - Winter", "./Resources/MM/Path_to_Mountain_Village/Winter.png", (uint8_t)MMRegions::Path_to_Mountain_Village },
+	{ "Ancient Ikana Castle", "./Resources/MM/Ikana/Ancient_Ikana_Castle.png", (uint8_t)MMRegions::Dungeons },
+	{ "Deku's Playground", "./Resources/MM/Clock_Town/Deku_Playground.png", (uint8_t)MMRegions::Clock_Town },
+	{ "Odolwa's Lair", "./Resources/MM/Woodfall/Odolwa_Lair.png", (uint8_t)MMRegions::Dungeons },
+	{ "Shooting Gallery - Clock Town", "./Resources/MM/Clock_Town/Shooting_Gallery.png", (uint8_t)MMRegions::Clock_Town },
+	{ "Snowhead Temple", "./Resources/MM/Snowhead/Temple.png", (uint8_t)MMRegions::Dungeons },
+	{ "Milk Road", "./Resources/MM/Milk_Road/Road.png", (uint8_t)MMRegions::Milk_Road },
+	{ "Pirate's Fortress - Interior", "./Resources/MM/Fortress/Interior.png", (uint8_t)MMRegions::Fortress },
+	{ "Shooting Gallery - Road to Southern Swamp", "./Resources/MM/Road_to_Southern_Swamp/Shooting_Gallery.png", (uint8_t)MMRegions::Southern_Swamp_Road },
+	{ "Pinnacle Rock", "./Resources/MM/Great_Bay_Coast/Pinnacle_Rock.png", (uint8_t)MMRegions::Great_Bay_Coast },
+	{ "Fairy Fountain", "", (uint8_t)MMRegions::None },
+	{ "Spider's House - Southern Swamp", "./Resources/MM/Southern_Swamp/Spider_House.png", (uint8_t)MMRegions::Southern_Swamp },
+	{ "Spider's House - Great Bay Coast", "./Resources/MM/Great_Bay_Coast/Spider_House.png", (uint8_t)MMRegions::Great_Bay_Coast },
+	{ "Observatory", "./Resources/MM/Clock_Town/Observatory.png", (uint8_t)MMRegions::Clock_Town },
+	{ "Moon - Deku's Trial", "./Resources/MM/Moon/Deku.png", (uint8_t)MMRegions::Moon },
+	{ "Deku's Palace", "./Resources/MM/Southern_Swamp/Deku_Palace.png", (uint8_t)MMRegions::Deku_Palace },
+	{ "Blacksmith", "./Resources/MM/Mountain_Village/Blacksmith.png", (uint8_t)MMRegions::Mountain_Village },
+	{ "Termina Field", "./Resources/MM/Termina/Field.png", (uint8_t)MMRegions::Termina },
+	{ "Post Office", "./Resources/MM/Clock_Town/Post_Office.png", (uint8_t)MMRegions::Clock_Town },
+	{ "Laboratory", "./Resources/MM/Great_Bay_Coast/Laboratory.png", (uint8_t)MMRegions::Great_Bay_Coast },
+	{ "Dampe's House", "./Resources/MM/Graveyard/Dampe_House.png", (uint8_t)MMRegions::Graveyard },
+	{ "Inside Ancient Ikana Castle", "./Resources/MM/Ikana/Inside_Castle.png", (uint8_t)MMRegions::Dungeons },
+	{ "Goron's Shrine", "./Resources/MM/Goron_Village/Goron_Shrine.png", (uint8_t)MMRegions::Goron_Village },
+	{ "Zora's Theater", "./Resources/MM/Zora_Hall/Zora_Hall.png", (uint8_t)MMRegions::Zora_Hall },
+	{ "Trading Post", "./Resources/MM/Clock_Town/Trading_Post.png", (uint8_t)MMRegions::Clock_Town },
+	{ "Romani's Ranch", "./Resources/MM/Ranch/Romani_Ranch.png", (uint8_t)MMRegions::Ranch },
+	{ "Twinmold Lair", "./Resources/MM/Stone_Tower/Twinmold_Lair.png", (uint8_t)MMRegions::Dungeons },
+	{ "Great Bay Coast", "./Resources/MM/Great_Bay_Coast/Great_Bay.png", (uint8_t)MMRegions::Great_Bay_Coast },
+	{ "Zora Cape", "./Resources/MM/Zora_Cape/Zora_Cape.png", (uint8_t)MMRegions::Zora_Cape },
+	{ "Lottery", "", (uint8_t)MMRegions::None },
+	{ "Snowhead - Spring", "./Resources/MM/Snowhead/Spring.png", (uint8_t)MMRegions::Snowhead },
+	{ "Pirate's Fortress - Entrance", "./Resources/MM/Fortress/Entrance.png", (uint8_t)MMRegions::Fortress },
+	{ "House - Fisherman", "./Resources/MM/Great_Bay_Coast/Fisherman_Hut.png", (uint8_t)MMRegions::Great_Bay_Coast },
+	{ "Shop - Goron", "./Resources/MM/Goron_Village/Goron_Shop.png", (uint8_t)MMRegions::Goron_Village },
+	{ "Deku King's Chamber", "./Resources/MM/Southern_Swamp/Deku_King_Chamber.png", (uint8_t)MMRegions::Deku_Palace },
+	{ "Moon - Goron's Trial", "./Resources/MM/Moon/Goron.png", (uint8_t)MMRegions::Moon },
+	{ "Road to Southern Swamp", "./Resources/MM/Road_to_Southern_Swamp/Road.png", (uint8_t)MMRegions::Southern_Swamp_Road },
+	{ "Dog's Racetrack", "./Resources/MM/Ranch/Dog_Racetrack.png", (uint8_t)MMRegions::Ranch },
+	{ "Cucco's Shack", "./Resources/MM/Ranch/Cucco_Shack.png", (uint8_t)MMRegions::Ranch },
+	{ "Ikana Graveyard", "./Resources/MM/Graveyard/Graveyard.png", (uint8_t)MMRegions::Graveyard },
+	{ "Goht's Lair", "./Resources/MM/Snowhead/Goht_Lair.png", (uint8_t)MMRegions::Dungeons },
+	{ "Southern Swamp", "./Resources/MM/Southern_Swamp/Swamp.png", (uint8_t)MMRegions::Southern_Swamp },
+	{ "Woodfall", "./Resources/MM/Woodfall/Woodfall.png", (uint8_t)MMRegions::Woodfall },
+	{ "Moon - Zora's Trial", "./Resources/MM/Moon/Zora.png", (uint8_t)MMRegions::Moon },
+	{ "Goron's Village - Spring", "./Resources/MM/Goron_Village/Spring.png", (uint8_t)MMRegions::Goron_Village },
+	{ "Great Bay Temple", "./Resources/MM/Great_Bay_Coast/Temple.png", (uint8_t)MMRegions::Dungeons },
+	{ "Waterfall Rapids", "./Resources/MM/Zora_Cape/Waterfall_Rapids.png", (uint8_t)MMRegions::Zora_Cape },
+	{ "Beneath the Well", "./Resources/MM/Ikana_Canyon/Beneath_the_Well.png", (uint8_t)MMRegions::Ikana_Canyon },
+	{ "Zora's Theater", "", (uint8_t)MMRegions::None },
+	{ "Goron's Village - Winter", "./Resources/MM/Goron_Village/Winter.png", (uint8_t)MMRegions::Goron_Village },
+	{ "Goron's Graveyard", "./Resources/MM/Mountain_Village/Graveyard.png", (uint8_t)MMRegions::Mountain_Village },
+	{ "Sakon's Hideout", "./Resources/MM/Ikana_Canyon/Sakon_Hideout.png", (uint8_t)MMRegions::Ikana_Canyon },
+	{ "Mountain Village - Winter", "./Resources/MM/Mountain_Village/Winter.png", (uint8_t)MMRegions::Mountain_Village },
+	{ "Ghost Hut", "./Resources/MM/Ikana_Canyon/Ghost_Hut.png", (uint8_t)MMRegions::Ikana_Canyon },
+	{ "Deku's Shrine", "./Resources/MM/Deku_Palace/Deku_Shrine.png", (uint8_t)MMRegions::Deku_Palace },
+	{ "Road to Ikana", "./Resources/MM/Road_to_Ikana/Road.png", (uint8_t)MMRegions::Road_to_Ikana },
+	{ "Swordsman's School", "./Resources/MM/Clock_Town/Swordsman_School.png", (uint8_t)MMRegions::Clock_Town },
+	{ "House - Music Box", "./Resources/MM/Ikana_Canyon/Music_Box_House.png", (uint8_t)MMRegions::Ikana_Canyon },
+	{ "Ikana's Lair", "./Resources/MM/Dungeons/Ikana_Lair.png", (uint8_t)MMRegions::Dungeons },
+	{ "Tourist Information", "./Resources/MM/Southern_Swamp/Tourist_Information.png", (uint8_t)MMRegions::Southern_Swamp },
+	{ "Stone Tower", "./Resources/MM/Stone_Tower/Tower.png", (uint8_t)MMRegions::Stone_Tower },
+	{ "Stone Tower - Inverted", "./Resources/MM/Stone_Tower/Tower_Inverted.png", (uint8_t)MMRegions::Stone_Tower },
+	{ "Mountain Village - Spring", "./Resources/MM/Mountain_Village/Spring.png", (uint8_t)MMRegions::Mountain_Village },
+	{ "Path to Snowhead - Winter", "./Resources/MM/Path_to_Snowhead/Winter.png", (uint8_t)MMRegions::Path_to_Snowhead },
+	{ "Snowhead", "./Resources/MM/Snowhed/Snowhead.png", (uint8_t)MMRegions::Snowhead },
+	{ "Twin Islands - Winter", "./Resources/MM/Twin_Islands/Winter.png", (uint8_t)MMRegions::Twin_Islands },
+	{ "Twin Islands - Spring", "./Resources/MM/Twin_Islands/Spring.png", (uint8_t)MMRegions::Twin_Islands },
+	{ "Gyorg's Lair", "./Resources/MM/Great_Bay_Coast/Gyorg_Lair.png", (uint8_t)MMRegions::Dungeons },
+	{ "Secret's Shrine", "./Resources/MM/Ikana_Canyon/Secret_Shrine.png", (uint8_t)MMRegions::Ikana_Canyon },
+	{ "Stock Pot Inn", "./Resources/MM/Clock_Town/Stock_Pot_Inn.png", (uint8_t)MMRegions::Clock_Town },
+	{ "Great Bay Cutscene", "", (uint8_t)MMRegions::None },
+	{ "Clock Tower - Interior", "", (uint8_t)MMRegions::None },
+	{ "Woods of Mystery", "./Resources/MM/Woods_of_Mystery/Woods_Mystery.png", (uint8_t)MMRegions::Woods_of_Mystery },
+	{ "Lost Woods", "", (uint8_t)MMRegions::None },
+	{ "Moon - Link's Trial", "./Resources/MM/Moon/Link.png", (uint8_t)MMRegions::Moon },
+	{ "Moon", "./Resources/MM/Moon/Moon.png", (uint8_t)MMRegions::Moon },
+	{ "Bomb Shop", "./Resources/MM/Clock_Town/Bomb_Shop.png", (uint8_t)MMRegions::Clock_Town },
+	{ "Giant Chamber", "", (uint8_t)MMRegions::None },
+	{ "Gorman's Track", "./Resources/MM/Milk_Road/Gorman_Track.png", (uint8_t)MMRegions::Milk_Road },
+	{ "Goron's Racetrack", "./Resources/MM/Twin_Islands/Goron_Racetrack.png", (uint8_t)MMRegions::Twin_Islands },
+	{ "Clock Town - East", "./Resources/MM/Clock_Town/East.png", (uint8_t)MMRegions::Clock_Town },
+	{ "Clock Town - West", "./Resources/MM/Clock_Town/West.png", (uint8_t)MMRegions::Clock_Town },
+	{ "Clock Town - North", "./Resources/MM/Clock_Town/North.png", (uint8_t)MMRegions::Clock_Town },
+	{ "Clock Town - South", "./Resources/MM/Clock_Town/South.png", (uint8_t)MMRegions::Clock_Town },
+	{ "Laundry Pool", "./Resources/MM/Clock_Town/Laundry Pool.png", (uint8_t)MMRegions::Clock_Town },
+	{ "Extra", "", (uint8_t)MMRegions::None },
+	{ "Lone Peak Shrine", "./Resources/MM/Goron_Village/Lone_Peak_Shrine.png", (uint8_t)MMRegions::Goron_Village },
+	{ "Shop - Zora", "./Resources/MM/Zora_Hall/Zora_Shop.png", (uint8_t)MMRegions::Zora_Hall },
+	{ "Evan's Room", "./Resources/MM/Zora_Hall/Evan_Room.png", (uint8_t)MMRegions::Zora_Hall },
+	{ "Grotto - Dodongo", "./Resources/MM/Termina/Dodongo.png", (uint8_t)MMRegions::Termina },
+	{ "Grotto - Ocean Gossip", "./Resources/MM/Termina/Ocean_Gossip.png", (uint8_t)MMRegions::Termina },
+	{ "Grotto - Canyon Gossip", "./Resources/MM/Termina/Canyon_Gossip.png", (uint8_t)MMRegions::Termina },
+	{ "Grotto - Bio Baba", "./Resources/MM/Termina/Bio_Baba.png", (uint8_t)MMRegions::Termina },
+	{ "Grotto - Peehat", "./Resources/MM/Termina/Peehat.png", (uint8_t)MMRegions::Termina },
+	{ "Grotto - Deku Scrub", "./Resources/MM/Termina/Scrub.png", (uint8_t)MMRegions::Termina },
+	{ "Grotto - Tall Grass", "./Resources/MM/Termina/Tall_Grass.png", (uint8_t)MMRegions::Termina },
+	{ "Grotto - Cow", "./Resources/MM/Termina/Cow.png", (uint8_t)MMRegions::Termina },
+	{ "Grotto - Pillar", "./Resources/MM/Termina/Pillar.png", (uint8_t)MMRegions::Termina },
+	{ "Grotto - Generic", "./Resources/MM/Deku_Palace/Generic.png", (uint8_t)MMRegions::Deku_Palace },
+	{ "Grotto - Beans", "./Resources/MM/Deku_Palace/Beans.png", (uint8_t)MMRegions::Deku_Palace },
+	{ "Grotto - Open", "./Resources/MM/Great_Bay_Coast/Open.png", (uint8_t)MMRegions::Great_Bay_Coast },
+	{ "Grotto - Cow", "./Resources/MM/Great_Bay_Coast/Cow.png", (uint8_t)MMRegions::Great_Bay_Coast },
+	{ "Grotto - Generic", "./Resources/MM/Zora_Cape/Generic.png", (uint8_t)MMRegions::Zora_Cape },
+	{ "Grotto - Generic", "./Resources/MM/Garveyard/Generic.png", (uint8_t)MMRegions::Graveyard },
+	{ "Grotto - Open", "./Resources/MM/Ikana_Canyon/Open.png", (uint8_t)MMRegions::Ikana_Canyon },
+	{ "Grotto - Generic", "./Resources/MM/Road_to_Ikana/Generic.png", (uint8_t)MMRegions::Road_to_Ikana },
+	{ "Grotto - Frozen", "./Resources/MM/Twin_Islands/Frozen.png", (uint8_t)MMRegions::Twin_Islands },
+	{ "Grotto - Ramp", "./Resources/MM/Twin_Islands/Ramp.png", (uint8_t)MMRegions::Twin_Islands },
+	{ "Grotto - Generic", "./Resources/MM/Path_to_Snowhead/Generic.png", (uint8_t)MMRegions::Path_to_Snowhead },
+	{ "Grotto - Generic", "./Resources/MM/Mountain_Village/Generic.png", (uint8_t)MMRegions::Mountain_Village },
+	{ "Grotto - Open", "./Resources/MM/Road_to_Southern_Swamp/Open.png", (uint8_t)MMRegions::Southern_Swamp_Road },
+	{ "Grotto - Open", "./Resources/MM/Southern_Swamp/Open.png", (uint8_t)MMRegions::Southern_Swamp },
+	{ "Grotto - Open", "./Resources/MM/Woods_of_Mystery/Woods_Open", (uint8_t)MMRegions::Woods_of_Mystery }
 };
-
 
 enum OoT_Shops
 {
@@ -632,6 +627,7 @@ enum MM_Shops
 	MM_Goron_Zora_Shop = 0x02,
 };
 
+const SceneMetaInfo* GetSceneMetaInfo(uint32_t SceneID, uint32_t Game);
 uint32_t GetSceneShop(uint32_t ItemID, uint32_t Game);
 uint32_t GetSceneNPC(uint32_t NPC, uint32_t Game);
 uint32_t GetSceneSR(uint32_t SilverRupee);

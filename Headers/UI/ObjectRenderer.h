@@ -12,8 +12,7 @@ typedef struct ObjectIcon
     int Scale[2];       // The scale of the image. ID 0 = width, ID 1 = height
 } ObjectIcon;
 
-
-const ObjectIcon Icons[23] =
+const ObjectIcon IconsMetaInfo[23] =
 {
     {"", {0, 0}},                                          // ObjectType::none
     {"./Resources/Common/Chest.png", { 30, 30 }},          // ObjectType::chest
@@ -41,15 +40,29 @@ const ObjectIcon Icons[23] =
 };
 
 
+class ObjectIcons
+{
+public:
+
+    QPixmap Icons[23];
+
+public:
+
+    ObjectIcons();
+    ~ObjectIcons();
+    static void CreateObjectIcons();
+};
+
 class ObjectRenderer : public QGraphicsPixmapItem
 {
 
 public:
 
 	bool ShouldBeRendered = true;			// Tells if the objects should be rendered on the screen or not
+    ObjectType Type = ObjectType::none;     // The type of object, used to load the correct icon when needed
 
 protected:
-	QPixmap Icon;							// Image à afficher
+	QPixmap * Icon;					        // Image à afficher
 	QList<QPair<int, int>> ObjectsLocation; // Liste des positions (X, Y) des objets
 
 public:

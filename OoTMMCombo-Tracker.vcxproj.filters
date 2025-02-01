@@ -103,6 +103,9 @@
     <ClCompile Include="Sources\UI\GameTab.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\UI\RegionTab.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Multi\API.h">
@@ -146,6 +149,12 @@
     </ClInclude>
     <ClInclude Include="Headers\Combo\MMObjectScene.h">
       <Filter>Header Files\Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Combo\Regions.h">
+      <Filter>Header Files\Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\UI\RegionTab.h">
+      <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

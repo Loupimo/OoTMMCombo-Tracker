@@ -3,19 +3,15 @@
 #include "Combo/Objects.h"
 #include "Multi/Game.h"
 
-uint32_t GetSceneName(uint32_t SceneID, uint32_t Game)
+const SceneMetaInfo* GetSceneMetaInfo(uint32_t SceneID, uint32_t Game)
 {
 	if (Game == OOT_GAME)
 	{
-		switch (SceneID)
-		{
-			case 0:
-			{
-				break;
-			}
-			default:
-				break;
-		}
+		return &OoTScenesMetaInfo[SceneID];
+	}
+	else
+	{
+		return &MMScenesMetaInfo[SceneID];
 	}
 }
 

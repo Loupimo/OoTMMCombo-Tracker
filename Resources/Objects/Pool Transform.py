@@ -81,6 +81,30 @@ def parse_file2(input_file, output_file, arrayname, prefix):
             #print(strb)
             outfile.write(strb)
 
+def parse_scene(input_file, output_file, game):
+    """Parse un fichier pour convertir les lignes en SceneMetaInfo."""
+    with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
+        filereader = pd.read_csv(infile, delimiter=";", header=0, keep_default_na=False)
+        isFirst = True
+        for i, row in filereader.iterrows():
+            objectstr = ""
+            if isFirst == False :
+                objectstr = ",\n"
+            else:
+                isFirst = False
+
+            idstr = row["scene_id"]
+            scenestr = row["scene_name"]
+            image_path = row["image_path"]
+            parent_region = row["parent_region"]
+
+            if game == "OOT":
+                parent_region = "OoTRegions::" + parent_region
+            else:
+                parent_region = "MMRegions::" + parent_region
+
+            objectstr = objectstr + "\t{ \"" + scenestr + "\", \"" + image_path + "\", (uint8_t) " + parent_region + " }"
+            outfile.write(objectstr)
 
 def parse_items(input_file, output_file, arrayname):
     """Parse un fichier pour convertir les lignes RGB en hexadécimal."""
@@ -137,13 +161,26 @@ def match_items(spoiler_log, input_file, output_file):
 # Exemple d'utilisation
 input_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Objects\pool_mm.csv'
 output_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Objects\pool_mm.txt'
-parse_file2(input_file, output_file, "MMObjects", "MM_")
+#parse_file2(input_file, output_file, "MMObjects", "MM_")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
 #
 input_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Objects\pool_oot.csv'
 output_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Objects\pool_oot.txt'
-parse_file2(input_file, output_file, "OoTObjects", "OOT_")
+#parse_file2(input_file, output_file, "OoTObjects", "OOT_")
+#
+print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
+
+
+input_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Scenes\scenes_oot.csv'
+output_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Scenes\scenes_oot.txt'
+parse_scene(input_file, output_file, "OOT")
+#
+print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
+
+input_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Scenes\scenes_mm.csv'
+output_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Scenes\scenes_mm.txt'
+parse_scene(input_file, output_file, "MM")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
 #

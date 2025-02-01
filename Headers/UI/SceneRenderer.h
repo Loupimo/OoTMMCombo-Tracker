@@ -19,6 +19,8 @@ enum SceneType
 };
 
 
+
+
 class SceneInfo : public QObject
 {
     Q_OBJECT
@@ -31,14 +33,14 @@ public:
 
 	uint32_t SceneID;			            // The actual OOTMM rom scene
     int GameID;                             // The game scene come from
-	const char* Image;			            // The path to the corresponding image
     SceneObjects* Objects;                  // The scene objects
     SceneType Type;                         // The type of scene
+    const SceneMetaInfo* Info;              // The scene name and image path
 
 public:
 
     // Constructeur pour initialiser la structure
-    SceneInfo(int PSceneID, const char* PImage, int PGameID, SceneType PType = SceneType::None);
+    SceneInfo(int PSceneID, int PGameID, SceneType PType = SceneType::None);
 
     // Destructeur pour libérer la mémoire
     ~SceneInfo();
@@ -84,6 +86,10 @@ public:
     SceneRenderer(SceneInfo* SceneToRender);
     ~SceneRenderer();
 
+public:
+
+    const char* GetSceneName();
+    uint8_t GetSceneParentRegion();
 
     void RenderScene();
     void UnloadScene();
@@ -109,6 +115,6 @@ protected:
     *
     *   @return The object rendere that match the given object type.
     */
-    ObjectRenderer* FindObjectRenderer(ObjectInfo* Object);
+    ObjectRenderer* FindObjectRendererCategory(ObjectInfo* Object);
 
 };

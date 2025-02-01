@@ -1,10 +1,42 @@
 #include "UI/ObjectRenderer.h"
 
+static ObjectIcons* IconsRef = nullptr;
+
+ObjectIcons::ObjectIcons()
+{
+    for (size_t i = 0; i < 23; i++)
+    {
+        this->Icons[i] = QPixmap(IconsMetaInfo[i].IconPath);
+        this->Icons[i].scaled(IconsMetaInfo[i].Scale[0], IconsMetaInfo[i].Scale[1], Qt::KeepAspectRatio);
+    }
+}
+
+
+ObjectIcons::~ObjectIcons()
+{
+    for (size_t i = 0; i < 23; i++)
+    {
+        this->Icons[i].~QPixmap();
+    }
+}
+
+
+void ObjectIcons::CreateObjectIcons()
+{
+    if (IconsRef == nullptr)
+    {
+        IconsRef = new ObjectIcons();
+    }
+}
+
+
 ObjectRenderer::ObjectRenderer(ObjectType Type)
 {
+    ObjectIcons::CreateObjectIcons();
+
     // Charger l'image à afficher
-    this->Icon = QPixmap(Icons[Type].IconPath);
-    this->Icon = this->Icon.scaled(Icons[Type].Scale[0], Icons[Type].Scale[1], Qt::KeepAspectRatio);
+    this->Icon = &IconsRef->Icons[Type];
+    //this->Icon = this->Icon.scaled(Icons[Type].Scale[0], Icons[Type].Scale[1], Qt::KeepAspectRatio);
 
     // Liste des positions où afficher les images
     /*points = {{353, 501}, {607, 493}, {455, 493}, {517, 488},
@@ -29,14 +61,14 @@ ObjectRenderer::ObjectRenderer(ObjectType Type)
 
 void ObjectRenderer::AddObjectToRender(int X, int Y)
 {
-    X = X - (Icon.width() / 2);
+    X = X - (Icon->width() / 2);
 
     if (X < 0)
     {
         X = 0;
     }
 
-    Y = Y - (Icon.height() / 2);
+    Y = Y - (Icon->height() / 2);
 
     if (Y < 0)
     {
@@ -54,7 +86,7 @@ void ObjectRenderer::AddObjectToScene(QGraphicsScene* Destination)
     {
         for (const auto& point : this->ObjectsLocation)
         {
-            QGraphicsPixmapItem* iconItem = new QGraphicsPixmapItem(this->Icon);
+            QGraphicsPixmapItem* iconItem = new QGraphicsPixmapItem(*this->Icon);
             iconItem->setPos(point.first, point.second); // Positionner les images
             Destination->addItem(iconItem);
         }
