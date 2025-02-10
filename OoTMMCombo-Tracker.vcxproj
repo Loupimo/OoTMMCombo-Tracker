@@ -146,6 +146,7 @@
     <ClInclude Include="Headers\Multi\Buffer.h" />
     <ClInclude Include="Headers\Multi\Game.h" />
     <ClInclude Include="Headers\UI\RegionTab.h" />
+    <ClInclude Include="resource.h" />
     <QtMoc Include="Headers\UI\SceneRenderer.h" />
     <QtMoc Include="Headers\Multi\Multi.h" />
     <ClInclude Include="Headers\Multi\Protocol.h" />
@@ -155,6 +156,13 @@
     <ClInclude Include="Headers\UI\ObjectRenderer.h" />
     <QtMoc Include="Headers\UI\OoTMMComboTracker.h" />
     <QtMoc Include="Headers\UI\MapTab.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Logo.ico" />
+    <Image Include="Resources\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="OoTMMCombo-Tracker.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

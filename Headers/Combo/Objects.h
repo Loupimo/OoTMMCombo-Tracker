@@ -8,6 +8,13 @@
 
 class SceneInfo;
 
+enum ObjectState
+{
+	Hidden,		// The object has not been collected yet
+	Collected,	// The object has been collected in the game
+	Forced		// The user has decided to show the object item
+};
+
 enum ObjectType
 {
 	none = 0,
@@ -40,10 +47,13 @@ typedef struct ObjectInfo
 {
 	uint32_t ObjectID;		// The actual OOTMM rom object ID
 	uint32_t Scene;			// The actual OOTMM rom scene
+	const char* Name;		// The object friendly name
 	const char* Location;	// The string location of the object (should be greatly similar as the spoiler log location)
 	ObjectType Type;		// The type of object
 	int Position[2];		// Object position on its corresponding scene image. ID 0 = X, ID 1 = Y
 	uint32_t RenderScene;	// The scene where the object should be rendered
+	const ItemInfo* Item;	// The item contained in the object
+	ObjectState Status;		// The status object
 } ObjectInfo;
 
 
@@ -68,6 +78,33 @@ ObjectInfo * SceneID##SceneObjects = nullptr;
 /* This macro create a SceneObjects structure based on the given SceneID */
 #define CreateSceneObjects(SceneID) { SceneID, SceneID##NumOfObjs, SceneID##SceneObjects, nullptr }
 
+
+const char* const ObjTypeName[ObjectType::fairy + 1] =
+{
+	"",
+	"Chest",
+	"Collectible Item",
+	"NPC / Event",
+	"Gold skulltula",
+	"Stray Fairy",
+	"Cow",
+	"Shop",
+	"Scrub",
+	"Silver Rupee",
+	"Fish",
+	"Wonder Item",
+	"Grass",
+	"Crate",
+	"Pot",
+	"Hive",
+	"Butterfly",
+	"Rupee",
+	"Snowball",
+	"Barrel",
+	"Heart",
+	"Big Fairy",
+	"Fairy"
+};
 
 SceneObjects* GetGameSceneObjects(uint32_t GameID);
 ObjectInfo* FindObject(ComboItem Item);

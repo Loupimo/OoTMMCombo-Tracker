@@ -19,6 +19,7 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     //this->TabWidget->addTab(h, "o");
     this->setCentralWidget(this->TabWidget);
     this->setWindowTitle("OoTMMCombo Auto Tracker");
+    this->setWindowIcon(QIcon("./Resources/Logo.ico"));
     /*mainWindow.resize(800, 600);
     mainWindow.show();*/
 

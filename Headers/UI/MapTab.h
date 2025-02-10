@@ -12,6 +12,7 @@
 #include "ui_OoTMMComboTracker.h"
 #include "SceneRenderer.h"
 
+
 class MapTab : public QWidget
 {
     Q_OBJECT
@@ -43,9 +44,10 @@ public:
 
     // Scenes
     std::vector<RegionTree*> Regions;
-    std::vector<SceneRenderer *> ScenesToRender;
-    SceneRenderer* RenderedScene = nullptr;
-    int ActiveSceneID = -1;
+    //std::vector<SceneRenderer *> ScenesToRender;
+    //SceneRenderer* RenderedScene = nullptr;
+    //int ActiveSceneID = -1;
+    SceneItemTree* RenderedScene = nullptr;
 
 #pragma endregion
 
@@ -55,7 +57,9 @@ public:
 
     void RenderMap();
     void UnloadMap();
-    void ChangeActiveScene(int NewIndex);
+    void ChangeActiveScene (QTreeWidgetItem* Current, QTreeWidgetItem* Previous);
+    //void ChangeActiveScene(int NewIndex);
     RegionTree* FindRegionTree(uint8_t Region);
+    void ChangeObjectState(QTreeWidgetItem* Item, int Column);
     void FilterTree(QTreeWidget* TreeWidget, const QString& SearchText);
 };

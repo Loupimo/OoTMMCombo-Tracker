@@ -58,7 +58,7 @@ def parse_file2(input_file, output_file, arrayname, prefix):
             if fin.__contains__(scenestr) == False:
                 fin[scenestr] = []
 
-            objectstr = "\t{ " + idstr + ", " + scenestr + ", \"" + str(row["location"]) + "\", ObjectType::" + str(row["type"]) + ", {" + str(row["x"]) + ", " + str(row["y"]) + "}, " + renderscene + " }"
+            objectstr = "\t{ " + idstr + ", " + scenestr + ", \"" + str(row["friendly_name"]) + "\", \"" + str(row["location"]) + "\", ObjectType::" + str(row["type"]) + ", {" + str(row["x"]) + ", " + str(row["y"]) + "}, " + renderscene + " }"
             fin[scenestr].append(objectstr)
             
             if renderscene != scenestr:
@@ -161,13 +161,13 @@ def match_items(spoiler_log, input_file, output_file):
 # Exemple d'utilisation
 input_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Objects\pool_mm.csv'
 output_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Objects\pool_mm.txt'
-#parse_file2(input_file, output_file, "MMObjects", "MM_")
+parse_file2(input_file, output_file, "MMObjects", "MM_")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
 #
 input_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Objects\pool_oot.csv'
 output_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Objects\pool_oot.txt'
-#parse_file2(input_file, output_file, "OoTObjects", "OOT_")
+parse_file2(input_file, output_file, "OoTObjects", "OOT_")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
 

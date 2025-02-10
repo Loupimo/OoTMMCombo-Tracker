@@ -41,7 +41,7 @@
 	{ "House - Mido", "./Resources/OoT/Kokiri_Forest/Mido_House.png", (uint8_t) OoTRegions::Kokiri_Forest },
 	{ "House - Saria", "./Resources/OoT/Kokiri_ForestSaria_House.png", (uint8_t) OoTRegions::Kokiri_Forest },
 	{ "House - Carpenter's Boss", "./Resources/OoT/Kakariko/Carpenter_Boss_House.png", (uint8_t) OoTRegions::Kakariko },
-	{ "House - Back Alley House", "", (uint8_t) OoTRegions::None },
+	{ "House - Back Alley", "./Resources/OoT/Market/Back_Alley_House.png", (uint8_t) OoTRegions::Market },
 	{ "Bazaar", "", (uint8_t) OoTRegions::None },
 	{ "Shop - Kokiri", "./Resources/OoT/Kokiri_Forest/Shop.png", (uint8_t) OoTRegions::Kokiri_Forest },
 	{ "Shop - Goron", "./Resources/OoT/Goron_City/Shop.png", (uint8_t) OoTRegions::Goron_City },

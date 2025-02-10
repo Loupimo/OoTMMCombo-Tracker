@@ -21,28 +21,34 @@ SceneInfo::~SceneInfo()
 }
 
 
-SceneRenderer::SceneRenderer(SceneInfo* SceneToRender) : QGraphicsScene()
+SceneRenderer::SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeWidget) : QGraphicsScene()
 {
 	this->CurrScene = SceneToRender;
+    this->ObjectsTree = ObjectsTreeWidget;
 	if (SceneToRender)
 	{
 		for (size_t i = 0; i < SceneToRender->Objects->NumOfObjs; i++)
-		{
+		{   // Browse each scene objects
+
 			ObjectInfo* currObject = &SceneToRender->Objects->Objects[i];
             if (currObject->RenderScene != this->CurrScene->SceneID)
+            {   // Ignore the object if the render scene ID is different from this scene ID
+
                 continue;
+            }
+
 			ObjectRenderer* dest = this->FindObjectRendererCategory(currObject);
 
 			if (dest != nullptr)
 			{	// Add the object to the renderer
 
-				dest->AddObjectToRender(currObject->Position[0], currObject->Position[1]);
+                dest->AddObjectToRender(currObject);
+                dest->ObjCat->setExpanded(true);
 			}
 		}
-        //this->SceneImage = new QPixmap(SceneToRender->Info->ImagePath);
 	}
 
-    connect(this->CurrScene, &SceneInfo::NotifyItemFound, this, &SceneRenderer::UpdateItemFound);
+    QObject::connect(this->CurrScene, &SceneInfo::NotifyItemFound, this, &SceneRenderer::UpdateItemFound);
 }
 
 SceneRenderer::~SceneRenderer()
@@ -64,27 +70,62 @@ uint8_t SceneRenderer::GetSceneParentRegion()
 
 void SceneRenderer::RenderScene()
 {
+    if (this->SceneImage == nullptr)
+    {   // This is the first time the scene is rendered
+
+        this->SceneImage = new QPixmap(this->CurrScene->Info->ImagePath);
+    }
+
     this->IsRendered = true;
     this->addPixmap(*this->SceneImage);
-    this->Pots.AddObjectToScene(this);
-    this->Cows.AddObjectToScene(this);
-    //this->addWidget(&this->Pots);
+
+    ObjectInfo tmp;
+    for (size_t i = 0; i <= ObjectType::fairy; i++)
+    {
+        tmp.Type = (ObjectType)i;
+        ObjectRenderer* objRdr = FindObjectRendererCategory(&tmp);
+
+        if (objRdr && objRdr->GetTotalObject() > 0)
+        {
+            objRdr->UpdateText();
+            objRdr->AddObjectToScene(this);
+            this->ObjectsTree->addTopLevelItem(objRdr->ObjCat);
+            objRdr->ObjCat->setExpanded(true);
+        }
+    }
+
+    this->ObjectsTree->sortItems(0, Qt::SortOrder::AscendingOrder);
 }
 
 void SceneRenderer::UnloadScene()
 {
     this->IsRendered = false;
-    this->clear();
+
+    ObjectInfo tmp;
+    for (size_t i = 0; i <= ObjectType::fairy; i++)
+    {
+        tmp.Type = (ObjectType)i;
+        ObjectRenderer* objRdr = FindObjectRendererCategory(&tmp);
+
+        if (objRdr && objRdr->GetTotalObject() > 0)
+        {
+            objRdr->RemoveObjectFromList(this->ObjectsTree);
+            objRdr->UnloadObjectsFromScene(this);
+        }
+    }
+    //this->ObjectsTree->clear();
+    //this->clear();
 }
 
 void SceneRenderer::UpdateItemFound(ObjectInfo* Object, const ItemInfo* ItemFound)
 {
+    Object->Item = ItemFound;
     ObjectRenderer* dest = this->FindObjectRendererCategory(Object);
 
     if (dest != nullptr)
-    {	// Add the object to the renderer
+    {	// Update the object renderer
 
-        dest->UpdateObjectState(this);
+        dest->UpdateObjectState(Object, this);
     }
 }
 
@@ -213,4 +254,31 @@ ObjectRenderer* SceneRenderer::FindObjectRendererCategory(ObjectInfo* Object)
     }
 
     return renderer;
+}
+
+
+
+SceneItemTree::SceneItemTree(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeWidget, QTreeWidgetItem* Parent) : QTreeWidgetItem(Parent)
+{
+    this->Scene = new SceneRenderer(SceneToRender, ObjectsTreeWidget);
+    this->setText(0, this->Scene->GetSceneName());
+}
+
+
+SceneItemTree::~SceneItemTree()
+{
+    this->Scene->~SceneRenderer();
+    this->Scene = nullptr;
+}
+
+
+void SceneItemTree::RenderScene()
+{
+    this->Scene->RenderScene();
+}
+
+
+void SceneItemTree::UnloadScene()
+{
+    this->Scene->UnloadScene();
 }
