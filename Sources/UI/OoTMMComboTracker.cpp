@@ -33,16 +33,18 @@ OoTMMComboTracker::~OoTMMComboTracker()
 }
 
 
-void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, ItemInfo ItemFound)
+void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, const ItemInfo* ItemFound)
 {
     switch (Game)
     {
         case OOT_GAME:
         {
+            this->OoTTab.ItemFound(ObjectFound, ItemFound);
             break;
         }
         case MM_GAME:
         {
+            this->MMTab.ItemFound(ObjectFound, ItemFound);
             break;
         }
         default:

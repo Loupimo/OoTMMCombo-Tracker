@@ -41,20 +41,23 @@ ObjectItemTree::ObjectItemTree(ObjectInfo* Obj, QColor DefaultColor, ObjectRende
     this->RendererOwner = Owner;
     if (Obj->Item)
     {
-        this->Item.setText(0, QString(Obj->Item->ItemName));
+        this->Item.setText(0, Obj->Item->ItemName);
     }
     else
     {
-        this->Item.setText(0, QString("Unknown"));
+        this->Item.setText(0, "Unknown");
     }
     this->setText(0, Object->Name);
     this->UpdateTextStyle();
 }
 
 ObjectItemTree::~ObjectItemTree()
-{
-    this->RemoveObjectFromScene();
-    //this->GraphItem = nullptr;  // Not free here as it should only points to singleton data
+{   
+    if (this->GraphItem)
+    {
+        delete this->GraphItem;
+        this->GraphItem = nullptr;
+    }
 }
 
 ObjectState ObjectItemTree::GetStatus()
@@ -75,9 +78,12 @@ void ObjectItemTree::UpdateIcon(ObjectType Type)
 
 void ObjectItemTree::RemoveObjectFromScene()
 {
-    this->RendererOwner->SceneOwner->removeItem(this->GraphItem);
-    this->GraphItem->~QGraphicsPixmapItem();
-    this->GraphItem = nullptr;
+    if (this->GraphItem)
+    {
+        this->RendererOwner->SceneOwner->removeItem(this->GraphItem);
+        delete this->GraphItem;
+        this->GraphItem = nullptr;
+    }
 }
 
 void ObjectItemTree::UpdateTextStyle()
@@ -154,30 +160,35 @@ ObjectRenderer::ObjectRenderer(ObjectType Type, SceneRenderer* Owner)
 ObjectRenderer::~ObjectRenderer()
 {
     this->Icon = nullptr;
+    this->SceneOwner = nullptr;
     for (ObjectItemTree * currObj : this->Objects)
     {
-        currObj->~ObjectItemTree();
+        delete currObj;
     }
+
+    delete this->ObjCat;
 }
 
 
 void ObjectRenderer::AddObjectToRender(ObjectInfo * Obj, QColor DefaultColor)
 {
-    //this->Objects.push_back(Obj);
-    Obj->Position[0] = Obj->Position[0] - (this->Icon->width() / 2);
-
-    if (Obj->Position[0] < 0)
+    if (!Obj->PosSet)
     {
-        Obj->Position[0] = 0;
+        Obj->Position[0] = Obj->Position[0] - (this->Icon->width() / 2);
+
+        if (Obj->Position[0] < 0)
+        {
+            Obj->Position[0] = 0;
+        }
+
+        Obj->Position[1] = Obj->Position[1] - (this->Icon->height() / 2);
+
+        if (Obj->Position[1] < 0)
+        {
+            Obj->Position[1] = 0;
+        }
+        Obj->PosSet = true;
     }
-
-    Obj->Position[1] = Obj->Position[1] - (this->Icon->height() / 2);
-
-    if (Obj->Position[1] < 0)
-    {
-        Obj->Position[1] = 0;
-    }
-
     this->Objects.push_back(new ObjectItemTree(Obj, DefaultColor, this, this->ObjCat));
 }
 
@@ -215,6 +226,7 @@ void ObjectRenderer::UpdateObjectState(ObjectInfo* Object)
         if (this->Objects[i]->Object == Object)
         {
             this->Objects[i]->UpdateIcon(this->Type);
+            this->Objects[i]->PerformAction();
             break;
         }
     }

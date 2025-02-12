@@ -45,15 +45,16 @@ enum ObjectType
 
 typedef struct ObjectInfo
 {
-	uint32_t ObjectID;		// The actual OOTMM rom object ID
-	uint32_t Scene;			// The actual OOTMM rom scene
-	const char* Name;		// The object friendly name
-	const char* Location;	// The string location of the object (should be greatly similar as the spoiler log location)
-	ObjectType Type;		// The type of object
-	int Position[2];		// Object position on its corresponding scene image. ID 0 = X, ID 1 = Y
-	uint32_t RenderScene;	// The scene where the object should be rendered
-	const ItemInfo* Item;	// The item contained in the object
-	ObjectState Status;		// The status object
+	uint32_t ObjectID;								// The actual OOTMM rom object ID
+	uint32_t Scene;									// The actual OOTMM rom scene
+	const char* Name;								// The object friendly name
+	const char* Location;							// The string location of the object (should be greatly similar as the spoiler log location)
+	ObjectType Type;								// The type of object
+	int Position[2];								// Object position on its corresponding scene image. ID 0 = X, ID 1 = Y
+	uint32_t RenderScene;							// The scene where the object should be rendered
+	const ItemInfo* Item;							// The item contained in the object
+	ObjectState Status = ObjectState::Hidden;		// The status object
+	bool PosSet = false;							// Tells if the position has already been set.
 } ObjectInfo;
 
 

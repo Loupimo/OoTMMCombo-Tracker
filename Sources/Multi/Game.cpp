@@ -287,18 +287,18 @@ void Game::ParseLedgerFullEntry(char* LedgerData, bool IsGoingOut)
     {
         fprintf(game_file_log, "OoT %s;%02X;%02X;%02X;%04X;%s;%02X\n", matchObject->Location, recievedItem.OvType, recievedItem.SceneID, recievedItem.RoomID, recievedItem.ObjectID, matchItem->ItemName, gameItem);
         MultiLogger::LogMessage("OoT World Object: %s - Item : %s\n", matchObject->Location, matchItem->ItemName);
-        //emit MultiLogger::GetLogger()->NotifyObjectFound(OOT_GAME, matchObject, matchItem);
+        emit MultiLogger::GetLogger()->NotifyObjectFound(OOT_GAME, matchObject, matchItem);
     }
     else
     {   // Majora's Mask
 
         fprintf(game_file_log, "MM %s;%02X;%02X;%02X;%04X;%s;%02X\n", matchObject->Location, recievedItem.OvType, recievedItem.SceneID, recievedItem.RoomID, recievedItem.ObjectID, matchItem->ItemName, gameItem);
         MultiLogger::LogMessage("MM World Object: %s - Item : %s\n", matchObject->Location, matchItem->ItemName);
-        //emit MultiLogger::GetLogger()->NotifyObjectFound(MM_GAME, matchObject, matchItem);
+        emit MultiLogger::GetLogger()->NotifyObjectFound(MM_GAME, matchObject, matchItem);
     }
 
-    matchObject->Status = ObjectState::Collected;
-    emit GetGameSceneObjects(recievedItem.GameID)[matchObject->RenderScene].Owner->NotifyItemFound(matchObject, matchItem);
+    //matchObject->Status = ObjectState::Collected;
+    //emit GetGameSceneObjects(recievedItem.GameID)[matchObject->RenderScene].Owner->NotifyItemFound(matchObject, matchItem);
 
     fflush(game_file_log);
 }

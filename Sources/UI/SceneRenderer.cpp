@@ -29,48 +29,59 @@ SceneRenderer::SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeW
     this->ItemOwner = Owner;
 
     for (size_t i = 0; i < ObjectType::fairy; i++)
-    {   // Initializes all objects renderer
+    {   // Creates all objects renderer
 
-        this->ObjectsRen[i] = new ObjectRenderer((ObjectType)(i + 1), this);
+        this->ObjectsRen[i] = nullptr;// new ObjectRenderer((ObjectType)(i + 1), this);
     }
 
-	if (SceneToRender)
-	{
-		for (size_t i = 0; i < SceneToRender->Objects->NumOfObjs; i++)
-		{   // Browse each scene objects
+    // Fills all objects renderer
+    for (size_t i = 0; i < this->CurrScene->Objects->NumOfObjs; i++)
+    {   // Browse each scene objects
 
-			ObjectInfo* currObject = &SceneToRender->Objects->Objects[i];
-            if (currObject->RenderScene != this->CurrScene->SceneID)
-            {   // Ignore the object if the render scene ID is different from this scene ID
+        ObjectInfo* currObject = &this->CurrScene->Objects->Objects[i];
+        if (currObject->RenderScene != this->CurrScene->SceneID)
+        {   // Ignore the object if the render scene ID is different from this scene ID
 
-                continue;
-            }
+            continue;
+        }
 
-			ObjectRenderer* dest = this->FindObjectRendererCategory(currObject);
+        ObjectRenderer* dest = this->FindObjectRendererCategory(currObject);
 
-			if (dest != nullptr)
-			{	// Add the object to the renderer
+        if (dest == nullptr)
+        {
+            this->ObjectsRen[currObject->Type - 1] = new ObjectRenderer(currObject->Type, this);
+            dest = this->ObjectsRen[currObject->Type - 1];
+        }
 
-                dest->AddObjectToRender(currObject, this->ObjectsTree->palette().color(QPalette::Text));
-                dest->ObjCat->setExpanded(true);
-			}
+        if (dest != nullptr)
+        {	// Add the object to the renderer
 
-            if (currObject->Status == ObjectState::Collected)
-            {
-                this->FoundObjs++;
-            }
-            this->TotalObjs++;
-		}
-	}
+            dest->AddObjectToRender(currObject, this->ObjectsTree->palette().color(QPalette::Text));
+            dest->ObjCat->setExpanded(true);
+        }
+    }
 
-    QObject::connect(this->CurrScene, &SceneInfo::NotifyItemFound, this, &SceneRenderer::UpdateItemFound);
+    //QObject::connect(this->CurrScene, &SceneInfo::NotifyItemFound, this, &SceneRenderer::UpdateItemFound);
 }
 
 SceneRenderer::~SceneRenderer()
 {
     this->CurrScene = nullptr;
     if (this->SceneImage)
-        this->SceneImage->~QPixmap();
+    {
+        delete this->SceneImage;
+        this->SceneImage = nullptr;
+    }
+
+    for (size_t i = 0; i < ObjectType::fairy; i++)
+    {   // Destroys all objects renderer
+
+        if (this->ObjectsRen[i])
+        {
+            delete this->ObjectsRen[i];
+            this->ObjectsRen[i] = nullptr;
+        }
+    }
 }
 
 const char* SceneRenderer::GetSceneName()
@@ -82,6 +93,7 @@ uint8_t SceneRenderer::GetSceneParentRegion()
 {
     return this->CurrScene->Info->ParentRegion;
 }
+
 
 void SceneRenderer::RenderScene()
 {
@@ -95,7 +107,7 @@ void SceneRenderer::RenderScene()
     this->addPixmap(*this->SceneImage);
 
     ObjectInfo tmp;
-    for (size_t i = 0; i <= ObjectType::fairy; i++)
+    for (size_t i = 1; i <= ObjectType::fairy; i++)
     {
         tmp.Type = (ObjectType)i;
         ObjectRenderer* objRdr = FindObjectRendererCategory(&tmp);
@@ -117,7 +129,7 @@ void SceneRenderer::UnloadScene()
     this->IsRendered = false;
 
     ObjectInfo tmp;
-    for (size_t i = 0; i <= ObjectType::fairy; i++)
+    for (size_t i = 1; i <= ObjectType::fairy; i++)
     {
         tmp.Type = (ObjectType)i;
         ObjectRenderer* objRdr = FindObjectRendererCategory(&tmp);
@@ -128,17 +140,14 @@ void SceneRenderer::UnloadScene()
             objRdr->UnloadObjectsFromScene();
         }
     }
-    //this->ObjectsTree->clear();
-    //this->clear();
 }
 
 void SceneRenderer::RefreshObjectCounts(int Count)
 {
-    this->FoundObjs += Count;
     this->ItemOwner->RefreshObjectCounts(Count);
 }
 
-void SceneRenderer::UpdateItemFound(ObjectInfo* Object, const ItemInfo* ItemFound)
+/*void SceneRenderer::UpdateItemFound(ObjectInfo* Object, const ItemInfo* ItemFound)
 {
     Object->Item = ItemFound;
     ObjectRenderer* dest = this->FindObjectRendererCategory(Object);
@@ -149,8 +158,29 @@ void SceneRenderer::UpdateItemFound(ObjectInfo* Object, const ItemInfo* ItemFoun
         dest->UpdateObjectState(Object);
     }
 
-    this->FoundObjs++;
     this->ItemOwner->RefreshObjectCounts(1);
+}*/
+void SceneRenderer::ItemFound(ObjectInfo* Object, const ItemInfo* ItemFound)
+{
+    Object->Item = ItemFound;
+
+    if (Object->Status == ObjectState::Hidden)
+    {   // The object is not already counted
+
+        this->ItemOwner->RefreshObjectCounts(1);
+    }
+
+    Object->Status = ObjectState::Collected;
+
+    ObjectRenderer* dest = this->FindObjectRendererCategory(Object);
+
+    if (dest != nullptr)
+    {	// Update the object renderer
+
+        dest->UpdateObjectState(Object);
+        dest->UpdateText();
+    }
+
 }
 
 ObjectRenderer* SceneRenderer::FindObjectRendererCategory(ObjectInfo* Object)
@@ -163,56 +193,84 @@ ObjectRenderer* SceneRenderer::FindObjectRendererCategory(ObjectInfo* Object)
 }
 
 
-
-SceneItemTree::SceneItemTree(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeWidget, QTreeWidgetItem* Parent) : QTreeWidgetItem(Parent)
+SceneItemTree::SceneItemTree(SceneInfo* SceneToRender, QTreeWidgetItem* Parent) : QTreeWidgetItem(Parent)
 {
-    this->Scene = new SceneRenderer(SceneToRender, ObjectsTreeWidget, this);
-    this->setText(0, this->Scene->GetSceneName());
+    this->Scene = SceneToRender;
+
+    // Initialize the object counters
+    for (size_t i = 0; i < this->Scene->Objects->NumOfObjs; i++)
+    {   // Browse each scene objects
+
+        ObjectInfo* currObject = &this->Scene->Objects->Objects[i];
+        if (currObject->RenderScene != this->Scene->SceneID)
+        {   // Ignore the object if the render scene ID is different from this scene ID
+
+            continue;
+        }
+
+        this->TotalObjects++;  // We only add the object that should be rendered
+
+        if (currObject->Status != ObjectState::Hidden)
+        {   // The object is considered as found
+
+            this->FoundObjects++;
+        }
+    }
+
+    this->RefreshObjectCounts(0);
 }
 
 
 SceneItemTree::~SceneItemTree()
 {
-    this->Scene->~SceneRenderer();
-    this->Scene = nullptr;
+    this->UnloadScene();
 }
 
 
-void SceneItemTree::RenderScene()
+void SceneItemTree::RenderScene(QTreeWidget* ObjectsTreeWidget)
 {
-    this->Scene->RenderScene();
+    this->Renderer = new SceneRenderer(this->Scene, ObjectsTreeWidget, this);
+    this->Renderer->RenderScene();
 }
 
 
 void SceneItemTree::UnloadScene()
 {
-    this->Scene->UnloadScene();
+    if (this->Renderer)
+    {
+        delete this->Renderer;
+        this->Renderer = nullptr;
+    }
 }
 
+const char* SceneItemTree::GetSceneName()
+{
+    return this->Scene->Info->Name;
+}
 
 int SceneItemTree::GetCollectedObjects()
 {
-    return this->Scene->FoundObjs;
+    return this->FoundObjects;
 }
 
 int SceneItemTree::GetTotalObjects()
 {
-    return this->Scene->TotalObjs;
+    return this->TotalObjects;
 }
-
 
 void SceneItemTree::RefreshObjectCounts(int Count)
 {
     ((RegionTree*)this->parent())->AddObjectCounts(Count, 0);
     ((RegionTree*)this->parent())->RefreshObjsCountText();
+    this->FoundObjects += Count;
 
     const size_t max_size = 150;
     char finalName[max_size] = { 0 };
     char tmp[4] = { 0 };
 
     size_t offset = 0;
-    size_t typeLen = strlen(this->Scene->GetSceneName());
-    memcpy_s(finalName, max_size, this->Scene->GetSceneName(), typeLen);
+    size_t typeLen = strlen(this->GetSceneName());
+    memcpy_s(finalName, max_size, this->GetSceneName(), typeLen);
     offset += typeLen;
     finalName[offset] = ' ';
     finalName[offset + 1] = '(';
@@ -237,4 +295,25 @@ void SceneItemTree::RefreshObjectCounts(int Count)
     finalName[offset] = ')';
     finalName[offset + 1] = '\0';
     this->setText(0, finalName);
+}
+
+
+void SceneItemTree::ItemFound(ObjectInfo* Object, const ItemInfo* Item)
+{
+    if (this->Renderer)
+    {   // The scene is rendered. We just need to call the scene item found function
+
+        this->Renderer->ItemFound(Object, Item);
+    }
+    else
+    {   // The scene is not rendered. We just need to update the object and the scene count
+
+        if (Object->Status == ObjectState::Hidden)
+        {   // The object is not already counted
+
+            this->RefreshObjectCounts(1);
+        }
+        Object->Status = ObjectState::Collected;
+        Object->Item = Item;
+    }
 }

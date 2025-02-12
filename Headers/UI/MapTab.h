@@ -49,6 +49,7 @@ public:
     //SceneRenderer* RenderedScene = nullptr;
     //int ActiveSceneID = -1;
     SceneItemTree* RenderedScene = nullptr;
+    QHash<int, SceneItemTree*> Scenes;
 
 #pragma endregion
 
@@ -63,4 +64,15 @@ public:
     RegionTree* FindRegionTree(uint8_t Region);
     void ChangeObjectState(QTreeWidgetItem* Item, int Column);
     void FilterTree(QTreeWidget* TreeWidget, const QString& SearchText);
+
+
+    /*
+    *   Update the matching scene object.
+    *
+    *   @param Object       The object in which the item has been found.
+    *   @param ItemFound    The item that has been found.
+    *
+    *   @warning This should be executed by the main thread only at it can modify the GUI elements.
+    */
+    void ItemFound(ObjectInfo* Object, const ItemInfo* ItemFound);
 };

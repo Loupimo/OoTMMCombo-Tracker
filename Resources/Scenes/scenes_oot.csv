@@ -31,30 +31,30 @@ MARKET_ENTRANCE_CHILD_NIGHT;Market Entrance - Child Night;;None
 MARKET_ENTRANCE_ADULT;Market Entrance - Adult;;None
 BACK_ALLEY_DAY;Back Alley - Day;;None
 BACK_ALLEY_NIGHT;Back Alley - Night;;None
-MARKET_CHILD_DAY;Market - Child Day;./Resources/OoT/Market/Market.png;Market
-MARKET_CHILD_NIGHT;Market - Child Night;./Resources/OoT/Market/Market.png;Market
+MARKET_CHILD_DAY;Child Market Day;./Resources/OoT/Market/Market.png;Market
+MARKET_CHILD_NIGHT;Child Market Night;./Resources/OoT/Market/Market.png;Market
 MARKET_ADULT;Market - Adult;;None
 TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;Temple of Time Exterior Child Day;;None
 TEMPLE_OF_TIME_EXTERIOR_CHILD_NIGHT;Temple of Time Exterior Child Night;;None
 TEMPLE_OF_TIME_EXTERIOR_ADULT;Temple of Time Exterior Adult;;None
-KOKIRI_KNOW_IT_ALL;House - Know-It-All Brothers;./Resources/OoT/Kokiri_Forest/Know_It_All.png;Kokiri_Forest
-KOKIRI_TWINS;House - Twins;./Resources/OoT/Kokiri_Forest/Twins_House.png;Kokiri_Forest
-KOKIRI_MIDO;House - Mido;./Resources/OoT/Kokiri_Forest/Mido_House.png;Kokiri_Forest
-KOKIRI_SARIA;House - Saria;./Resources/OoT/Kokiri_ForestSaria_House.png;Kokiri_Forest
-CARPENTER_BOSS_HOUSE;House - Carpenter's Boss;./Resources/OoT/Kakariko/Carpenter_Boss_House.png;Kakariko
-BACK_ALLEY_HOUSE;House - Back Alley;./Resources/OoT/Market/Back_Alley_House.png;Market
+KOKIRI_KNOW_IT_ALL;Know-It-All Brothers's House;./Resources/OoT/Kokiri_Forest/Know_It_All.png;Kokiri_Forest
+KOKIRI_TWINS;Twins's House;./Resources/OoT/Kokiri_Forest/Twins_House.png;Kokiri_Forest
+KOKIRI_MIDO;Mido's House;./Resources/OoT/Kokiri_Forest/Mido_House.png;Kokiri_Forest
+KOKIRI_SARIA;Saria's House;./Resources/OoT/Kokiri_ForestSaria_House.png;Kokiri_Forest
+CARPENTER_BOSS_HOUSE;Carpenters Boss's House;./Resources/OoT/Kakariko/Carpenter_Boss_House.png;Kakariko
+BACK_ALLEY_HOUSE;Back Alley's House;./Resources/OoT/Market/Back_Alley_House.png;Market
 BAZAAR;Bazaar;;None
-KOKIRI_SHOP;Shop - Kokiri;./Resources/OoT/Kokiri_Forest/Shop.png;Kokiri_Forest
-OOT_GORON_SHOP;Shop - Goron;./Resources/OoT/Goron_City/Shop.png;Goron_City
-ZORA_SHOP;Shop - Zora;./Resources/OoT/Zora_Domain/Shop.png;Zora_Domain
-KAKARIKO_POTION_SHOP;Potion Shop - Kakariko;./Resources/OoT/Kakariko/Potion_Shop.png;Kakariko
-MARKET_POTION_SHOP;Potion Shop - Market;./Resources/OoT/Market/Potion_Shop.png;Market
-BOMBCHU_SHOP;Shop - Bombchu;./Resources/OoT/Market/Bombchu_Shop.png;Market
-HAPPY_MASK_SHOP;Shop - Happy Mask;;None
-LINK_HOUSE;House - Link;./Resources/OoT/Kokiri_Forest/Link_House.png;Kokiri_Forest
-BACK_ALLEY_HOUSE2;House - Dog's Lady;./Resources/OoT/Market/Dog_Lady_House.png;Market
+KOKIRI_SHOP;Shop;./Resources/OoT/Kokiri_Forest/Shop.png;Kokiri_Forest
+OOT_GORON_SHOP;Shop;./Resources/OoT/Goron_City/Shop.png;Goron_City
+ZORA_SHOP;Shop;./Resources/OoT/Zora_Domain/Shop.png;Zora_Domain
+KAKARIKO_POTION_SHOP;Potion Shop;./Resources/OoT/Kakariko/Potion_Shop.png;Kakariko
+MARKET_POTION_SHOP;Potion Shop;./Resources/OoT/Market/Potion_Shop.png;Market
+BOMBCHU_SHOP;Bombchu Shop;./Resources/OoT/Market/Bombchu_Shop.png;Market
+HAPPY_MASK_SHOP;Happy Mask Shop;;None
+LINK_HOUSE;Link's House;./Resources/OoT/Kokiri_Forest/Link_House.png;Kokiri_Forest
+BACK_ALLEY_HOUSE2;Dog Lady's House;./Resources/OoT/Market/Dog_Lady_House.png;Market
 STABLE;Stable;./Resources/OoT/Ranch/Stable.png;Lon_Lon_Ranch
-IMPA_HOUSE;House - Impa;./Resources/OoT/Kakariko/Impa_House.png;Kakariko
+IMPA_HOUSE;Impa's House;./Resources/OoT/Kakariko/Impa_House.png;Kakariko
 OOT_LABORATORY;Laboratory;./Resources/OoT/Lake_Hylia/Laboratory.png;Lake_Hylia
 CARPENTER_TENT;Carpenter's Tent;;None
 GRAVEKEEPER_HUT;Gravekeeper's Hut;;None
@@ -62,22 +62,22 @@ GREAT_FAIRY_FOUNTAIN_UPGRADES;Great Fairy Fountain - Upgrades;;None
 OOT_FAIRY_FOUNTAIN;Fairy Fountain;;None
 GREAT_FAIRY_FOUNTAIN_SPELLS;Great Fairy Fountain - Spells;;None
 OOT_GROTTOS;Grottos;;None
-TOMB_REDEAD;Tomb - Redead;./Resources/OoT/Graveyard/Redead_Tomb.png;Graveyard
-TOMB_FAIRY;Tomb - Fairy's Foutain;./Resources/OoT/Graveyard/Fairy_Foutain_Tomb.png;Graveyard
-TOMB_ROYAL;Tomb - Royal's Family;./Resources/OoT/Graveyard/Royal_Tomb.png;Graveyard
+TOMB_REDEAD;Redead's Tomb;./Resources/OoT/Graveyard/Redead_Tomb.png;Graveyard
+TOMB_FAIRY;Fairy's Fountain Tomb;./Resources/OoT/Graveyard/Fairy_Foutain_Tomb.png;Graveyard
+TOMB_ROYAL;Royal's Family Tomb;./Resources/OoT/Graveyard/Royal_Tomb.png;Graveyard
 OOT_SHOOTING_GALLERY;Shooting Gallery;;None
 TEMPLE_OF_TIME;Temple of Time;./Resources/OoT/Market/Temple of Time.png;Market
 CHAMBER_OF_THE_SAGES;Chamber of the Sages;;None
 CASTLE_MAZE_DAY;Castle Maze - Day;;None
 CASTLE_MAZE_NIGHT;Castle Maze - Night;;None
 OOT_CUTSCENE_MAP;Cutscene Map;;None
-TOMB_DAMPE_WINDMILL;Tomb - Dampe;./Resources/OoT/Graveyard/Dampe_Tomb.png;Graveyard
+TOMB_DAMPE_WINDMILL;Dampe's Tomb;./Resources/OoT/Graveyard/Dampe_Tomb.png;Graveyard
 FISHING_POND;Fishing Pond;./Resources/OoT/Lake_Hylia/Fishing_Pond.png;Lake_Hylia
 CASTLE_COURTYARD;Castle Courtyard;./Resources/OoT/Hyrule/Castle_Courtyard.png;Castle
 BOMBCHU_BOWLING_ALLEY;Bombchu Bowling;./Resources/OoT/Market/Bombchu_Bowling.png;Market
-RANCH_HOUSE_SILO;House - Talon;./Resources/OoT/Ranch/Ranch_House_Silo.png;Lon_Lon_Ranch
-GUARD_HOUSE;House - Pot;./Resources/OoT/Market/Guard_House.png;Market
-GRANNY_POTION_SHOP;Potion Shop - Granny;./Resources/OoT/Kakariko/Granny_Potion_Shop.png;Kakariko
+RANCH_HOUSE_SILO;Talon's House;./Resources/OoT/Ranch/Ranch_House_Silo.png;Lon_Lon_Ranch
+GUARD_HOUSE;Pot's House;./Resources/OoT/Market/Guard_House.png;Market
+GRANNY_POTION_SHOP;Granny Potion Shop;./Resources/OoT/Kakariko/Granny_Potion_Shop.png;Kakariko
 GANON_BATTLE_ARENA;Ganon Battle Arena;;None
 HOUSE_OF_SKULLTULA;House of Skulltula;./Resources/OoT/Kakariko/House_of_Skulltula.png;Kakariko
 HYRULE_FIELD;Hyrule Field;./Resources/OoT/Hyrule/Hyrule_Field.png;Hyrule
@@ -99,49 +99,49 @@ DEATH_MOUNTAIN_TRAIL;Death Mountain Trail;./Resources/OoT/Death_Mountain_Trial/T
 DEATH_MOUNTAIN_CRATER;Death Mountain Crater;./Resources/OoT/Death_Mountain_Crater/Crater.png;Death_Mountain_Crater
 GORON_CITY;Goron City;./Resources/OoT/Goron_City/Goron_City.png;Goron_City
 LON_LON_RANCH;Lon Lon's Ranch;./Resources/OoT/Ranch/Lon_Lon_Ranch.png;Lon_Lon_Ranch
-GANON_CASTLE_EXTERIOR;Ganon Castle - Exterior;./Resources/OoT/Ganon/Exterior.png;Castle
-OOT_GROTTO_KOKIRI_FOREST_STORMS;Grotto - Song of Storms;./Resources/OoT/Kokiri_Forest/Storms.png;Kokiri_Forest
-OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;Grotto - Deku Scrub Upgrade;./Resources/OoT/Lost_Woods/Scrub_Upgrade.png;Lost_Woods
-OOT_GROTTO_LOST_WOODS_GENERIC;Grotto - Generic;./Resources/OoT/Lost_Woods/Generic.png;Lost_Woods
-OOT_GROTTO_LOST_WOODS_THEATER;Grotto - Deku's Theater;./Resources/OoT/Lost_Woods/Theater.png;Lost_Woods
-OOT_GROTTO_SACRED_MEADOW_WOLFOS;Grotto - Wolfos;./Resources/OoT/Sacred_Forest_Meadow/Wolfos.png;Lost_Woods
-OOT_GROTTO_SACRED_MEADOW_STORMS;Grotto - Song of Storms;./Resources/OoT/Sacred_Forest_Meadow/Storms.png;Sacred_Forest_Meadow
-OOT_GROTTO_KAKARIKO_REDEAD;Grotto - Redead;./Resources/OoT/Kakariko/Redead.png;Kakariko
-OOT_GROTTO_KAKARIKO_OPEN;Grotto - Open;./Resources/OoT/Kakariko/Open.png;Kakariko
-OOT_GROTTO_DEATH_TRIAL_STORMS;Grotto - Song of Storms;./Resources/OoT/Death_Mountain_Trial/Storms.png;Death_Mountain_Trial
-OOT_GROTTO_DEATH_TRIAL_COW;Grotto - Cow;./Resources/OoT/Death_Mountain_Trial/Cow.png;Death_Mountain_Trial
-OOT_GROTTO_GORON_CITY_SCRUBS;Grotto - Deku Scrubs;./Resources/OoT/Goron_City/Scrubs.png;Goron_City
-OOT_GROTTO_DEATH_CRATER_GENERIC;Grotto - Generic;./Resources/OoT/Death_Mountain_Crater/Generic.png;Death_Mountain_Crater
-OOT_GROTTO_DEATH_CRATER_SCRUBS;Grotto - Deku Scrubs;./Resources/OoT/Death_Mountain_Crater/Scrubs.png;Death_Mountain_Crater
-OOT_GROTTO_ZORA_RIVER_STORMS;Grotto - Song of Storms;./Resources/OoT/Zora_River/Storms.png;Zora_River
-OOT_GROTTO_ZORA_RIVER_GENERIC;Grotto - Generic;./Resources/OoT/Zora_River/Generic.png;Zora_River
-OOT_GROTTO_LAKE_HYLIA_SCRUBS;Grotto - Deku Scrubs;./Resources/OoT/Lake_Hylia/Scrubs.png;Lake_Hylia
-OOT_GROTTO_LON_LON_SCRUBS;Grotto - Deku Scrubs;./Resources/OoT/Ranch/Scrubs.png;Lon_Lon_Ranch
-OOT_GROTTO_HYRULE_SCRUBS;Grotto - Deku Scrubs;./Resources/OoT/Hyrule/Field_Scrubs.png;Hyrule
-OOT_GROTTO_HYRULE_SE;Grotto - Southeast;./Resources/OoT/Hyrule/Field_SE.png;Hyrule
-OOT_GROTTO_HYRULE_OPEN;Grotto - Open;./Resources/OoT/Hyrule/Field_Open.png;Hyrule
-OOT_GROTTO_HYRULE_MARKET;Grotto - Market Side;./Resources/OoT/Hyrule/Field_Market.png;Hyrule
-OOT_GROTTO_HYRULE_TEKTITE;Grotto - Tektite;./Resources/OoT/Hyrule/Field_Tektite.png;Hyrule
-OOT_GROTTO_HYRULE_KAKARIKO;Grotto - Kakariko Side;./Resources/OoT/Hyrule/Field_Kakariko.png;Hyrule
-OOT_GROTTO_HYRULE_GERUDO;Grotto - Gerudo Side;./Resources/OoT/Hyrule/Field_Gerudo.png;Hyrule
-OOT_GROTTO_CASTLE_STORMS;Grotto - Song of Storms;./Resources/OoT/Hyrule/Castle_Storms.png;Castle
-OOT_GROTTO_VALLEY_STORMS;Grotto - Song of Storms;./Resources/OoT/Gerudo_Valley/Storms.png;Gerudo_Valley
-OOT_GROTTO_VALLEY_OCTOROK;Grotto - Octorok;./Resources/OoT/Gerudo_Valley/Octorok.png;Gerudo_Valley
-OOT_GROTTO_DESERT_SCRUBS;Grotto - Deku Scrubs;./Resources/OoT/Desert_Colossus/Scrubs.png;Desert_Colossus
-OOT_FAIRY_SACRED_MEADOW;Fairy Fountain - Sacred Forest Meadow;./Resources/OoT/Sacred_Forest_Meadow/Fountain.png;Sacred_Forest_Meadow
-OOT_FAIRY_ZORA_RIVER;Fairy Fountain - Zora's River;./Resources/OoT/Zora_River/Fountain.png;Zora_River
-OOT_FAIRY_ZORA_DOMAIN;Fairy Fountain - Zora's Domain;./Resources/OoT/Zora_Domain/Fountain.png;Zora_Domain
-OOT_FAIRY_HYRULE;Fairy Fountain - Hyrule Field;./Resources/OoT/Hyrule/Field_Fountain.png;Hyrule
-OOT_FAIRY_GERUDO_FORTRESS;Fairy Fountain - Gerudo's Fortress;./Resources/OoT/Gerudo_Fortress/Fountain.png;Gerudo_Fortress
-OOT_GREAT_FAIRY_DIN;Great Fairy - Din;./Resources/OoT/Hyrule/Great_Fairy.png;Castle
-OOT_GREAT_FAIRY_FARORE;Great Fairy - Farore;./Resources/OoT/Zora_Fountain/Great_Fairy.png;Zora_Fountain
-OOT_GREAT_FAIRY_NAYRU;Great Fairy - Nayru;./Resources/OoT/Desert_Colossus/Great_Fairy.png;Desert_Colossus
-OOT_GREAT_FAIRY_MAGIC;Great Fairy - First Magic Upgrade;./Resources/OoT/Death_Moutain_Trail/Great_Fairy.png;Death_Mountain_Trial
-OOT_GREAT_FAIRY_MAGIC2;Great Fairy - Second Magic Upgrade;./Resources/OoT/Death_Moutain_Crater/Great_Fairy.png;Death_Mountain_Crater
-OOT_GREAT_FAIRY_DEFENSE;Great Fairy - Double Defense;./Resources/OoT/Ganon/Great_Fairy.png;Castle
-KAKARIKO_BAZAAR;Bazaar - Kakariko;./Resources/OoT/Kakariko/Bazaar.png;Kakariko
-MARKET_BAZAAR;Bazaar - Market;./Resources/OoT/Market/Bazaar.png;Market
-KAKARIKO_SHOOTING;Shooting Gallery - Kakariko;./Resources/OoT/Kakariko/Shooting.png;Kakariko
-MARKET_SHOOTING;Shooting Gallery - Market;./Resources/OoT/Market/Shooting.png;Market
+GANON_CASTLE_EXTERIOR;Ganon Castle Exterior;./Resources/OoT/Ganon/Exterior.png;Castle
+OOT_GROTTO_KOKIRI_FOREST_STORMS;Song of Storms Grotto;./Resources/OoT/Kokiri_Forest/Storms.png;Kokiri_Forest
+OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;Deku Scrubs Grotto;./Resources/OoT/Lost_Woods/Scrub_Upgrade.png;Lost_Woods
+OOT_GROTTO_LOST_WOODS_GENERIC;Generic Grotto;./Resources/OoT/Lost_Woods/Generic.png;Lost_Woods
+OOT_GROTTO_LOST_WOODS_THEATER;Deku's Theater Grotto;./Resources/OoT/Lost_Woods/Theater.png;Lost_Woods
+OOT_GROTTO_SACRED_MEADOW_WOLFOS;Wolfos Grotto;./Resources/OoT/Sacred_Forest_Meadow/Wolfos.png;Lost_Woods
+OOT_GROTTO_SACRED_MEADOW_STORMS;Song of Storms Grotto;./Resources/OoT/Sacred_Forest_Meadow/Storms.png;Sacred_Forest_Meadow
+OOT_GROTTO_KAKARIKO_REDEAD;Redead Grotto;./Resources/OoT/Kakariko/Redead.png;Kakariko
+OOT_GROTTO_KAKARIKO_OPEN;Open Grotto;./Resources/OoT/Kakariko/Open.png;Kakariko
+OOT_GROTTO_DEATH_TRIAL_STORMS;Song of Storms Grotto;./Resources/OoT/Death_Mountain_Trial/Storms.png;Death_Mountain_Trial
+OOT_GROTTO_DEATH_TRIAL_COW;Cow Grotto;./Resources/OoT/Death_Mountain_Trial/Cow.png;Death_Mountain_Trial
+OOT_GROTTO_GORON_CITY_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Goron_City/Scrubs.png;Goron_City
+OOT_GROTTO_DEATH_CRATER_GENERIC;Generic Grotto;./Resources/OoT/Death_Mountain_Crater/Generic.png;Death_Mountain_Crater
+OOT_GROTTO_DEATH_CRATER_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Death_Mountain_Crater/Scrubs.png;Death_Mountain_Crater
+OOT_GROTTO_ZORA_RIVER_STORMS;Song of Storms Grotto;./Resources/OoT/Zora_River/Storms.png;Zora_River
+OOT_GROTTO_ZORA_RIVER_GENERIC;Generic Grotto;./Resources/OoT/Zora_River/Generic.png;Zora_River
+OOT_GROTTO_LAKE_HYLIA_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Lake_Hylia/Scrubs.png;Lake_Hylia
+OOT_GROTTO_LON_LON_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Ranch/Scrubs.png;Lon_Lon_Ranch
+OOT_GROTTO_HYRULE_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Hyrule/Field_Scrubs.png;Hyrule
+OOT_GROTTO_HYRULE_SE;Southeast Grotto;./Resources/OoT/Hyrule/Field_SE.png;Hyrule
+OOT_GROTTO_HYRULE_OPEN;Open Grotto;./Resources/OoT/Hyrule/Field_Open.png;Hyrule
+OOT_GROTTO_HYRULE_MARKET;Market Side Grotto;./Resources/OoT/Hyrule/Field_Market.png;Hyrule
+OOT_GROTTO_HYRULE_TEKTITE;Tektite Grotto;./Resources/OoT/Hyrule/Field_Tektite.png;Hyrule
+OOT_GROTTO_HYRULE_KAKARIKO;Kakariko Side Grotto;./Resources/OoT/Hyrule/Field_Kakariko.png;Hyrule
+OOT_GROTTO_HYRULE_GERUDO;Gerudo Side Grotto;./Resources/OoT/Hyrule/Field_Gerudo.png;Hyrule
+OOT_GROTTO_CASTLE_STORMS;Song of Storms Grotto;./Resources/OoT/Hyrule/Castle_Storms.png;Castle
+OOT_GROTTO_VALLEY_STORMS;Song of Storms Grotto;./Resources/OoT/Gerudo_Valley/Storms.png;Gerudo_Valley
+OOT_GROTTO_VALLEY_OCTOROK;Octorok Grotto;./Resources/OoT/Gerudo_Valley/Octorok.png;Gerudo_Valley
+OOT_GROTTO_DESERT_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Desert_Colossus/Scrubs.png;Desert_Colossus
+OOT_FAIRY_SACRED_MEADOW;Fairy Fountain;./Resources/OoT/Sacred_Forest_Meadow/Fountain.png;Sacred_Forest_Meadow
+OOT_FAIRY_ZORA_RIVER;Fairy Fountain;./Resources/OoT/Zora_River/Fountain.png;Zora_River
+OOT_FAIRY_ZORA_DOMAIN;Fairy Fountain;./Resources/OoT/Zora_Domain/Fountain.png;Zora_Domain
+OOT_FAIRY_HYRULE;Fairy Fountain;./Resources/OoT/Hyrule/Field_Fountain.png;Hyrule
+OOT_FAIRY_GERUDO_FORTRESS;Fairy Fountain;./Resources/OoT/Gerudo_Fortress/Fountain.png;Gerudo_Fortress
+OOT_GREAT_FAIRY_DIN;Child Great Fairy Fountain;./Resources/OoT/Hyrule/Great_Fairy.png;Castle
+OOT_GREAT_FAIRY_FARORE;Great Fairy Fountain;./Resources/OoT/Zora_Fountain/Great_Fairy.png;Zora_Fountain
+OOT_GREAT_FAIRY_NAYRU;Great Fairy Fountain;./Resources/OoT/Desert_Colossus/Great_Fairy.png;Desert_Colossus
+OOT_GREAT_FAIRY_MAGIC;Great Fairy Fountain;./Resources/OoT/Death_Moutain_Trail/Great_Fairy.png;Death_Mountain_Trial
+OOT_GREAT_FAIRY_MAGIC2;Great Fairy Fountain;./Resources/OoT/Death_Moutain_Crater/Great_Fairy.png;Death_Mountain_Crater
+OOT_GREAT_FAIRY_DEFENSE;Adult Great Fairy Fountain;./Resources/OoT/Ganon/Great_Fairy.png;Castle
+KAKARIKO_BAZAAR;Bazaar;./Resources/OoT/Kakariko/Bazaar.png;Kakariko
+MARKET_BAZAAR;Bazaar;./Resources/OoT/Market/Bazaar.png;Market
+KAKARIKO_SHOOTING;Shooting Gallery;./Resources/OoT/Kakariko/Shooting.png;Kakariko
+MARKET_SHOOTING;Shooting Gallery;./Resources/OoT/Market/Shooting.png;Market
 SILO;Silo;./Resources/OoT/Ranch/Silo.png;Lon_Lon_Ranch
 WINDMILL;Windmill;./Resources/OoT/Kakariko/Windmill.png;Kakariko

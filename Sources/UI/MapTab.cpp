@@ -32,7 +32,7 @@ MapTab::MapTab(int Game, SceneInfo* Scenes, size_t NumOfScenes, QWidget* parent)
     this->ObjectList->setHeaderHidden(true);
     this->ObjectTreeLayout->addWidget(this->ObjectSearchBar);
     this->ObjectTreeLayout->addWidget(this->ObjectList);
-    //this->ObjectContainer->setHidden(true);
+    this->ObjectContainer->setHidden(true);
 
     // Zone graphique pour la carte
     this->View = new QGraphicsView();
@@ -56,14 +56,12 @@ MapTab::MapTab(int Game, SceneInfo* Scenes, size_t NumOfScenes, QWidget* parent)
                 currRegion = new RegionTree(Game, sceneRegionID, this->MapList);//new RegionTree(Game, this->ScenesToRender[i]->GetSceneParentRegion(), this->MapList);
                 this->Regions.push_back(currRegion);
             }
-            SceneItemTree * tmp = new SceneItemTree(&Scenes[i], this->ObjectList, currRegion);
+            SceneItemTree * tmp = new SceneItemTree(&Scenes[i], currRegion);
             currRegion->setExpanded(true);
             currRegion->AddObjectCounts(tmp->GetCollectedObjects(), tmp->GetTotalObjects());
             currRegion->RefreshObjsCountText();
+            this->Scenes.insert(Scenes[i].SceneID, tmp);
         }
-        //QTreeWidgetItem * tmp = new QTreeWidgetItem(currRegion);
-        //tmp->setText(0, this->ScenesToRender[i]->GetSceneName());
-        //this->MapList->addItem(this->ScenesToRender[i]->GetSceneName());
     }
 
     this->MapList->sortItems(0, Qt::AscendingOrder);
@@ -101,8 +99,8 @@ MapTab::MapTab(int Game, SceneInfo* Scenes, size_t NumOfScenes, QWidget* parent)
 MapTab::~MapTab()
 {
     this->RenderedScene = nullptr;
-    this->ObjectList->~QTreeWidget();
     this->MapList->~QTreeWidget();
+    this->ObjectList->~QTreeWidget();
     this->View->~QGraphicsView();
     this->ObjectTreeLayout->~QVBoxLayout();
     this->MapTreeLayout->~QVBoxLayout();
@@ -123,8 +121,8 @@ void MapTab::RenderMap()
     {   // There is a scene to render. Render it !
 
         this->ObjectContainer->setHidden(false);
-        this->RenderedScene->RenderScene();
-        this->View->setScene(this->RenderedScene->Scene);
+        this->RenderedScene->RenderScene(this->ObjectList);
+        this->View->setScene(this->RenderedScene->Renderer);
     }
 }
 
@@ -136,7 +134,7 @@ void MapTab::UnloadMap()
         this->RenderedScene->UnloadScene();
         this->RenderedScene = nullptr;
         this->View->setScene(nullptr);
-        //this->ObjectContainer->setHidden(true);
+        this->ObjectList->clear();
     }
 }
 
@@ -155,7 +153,6 @@ void MapTab::ChangeActiveScene(QTreeWidgetItem * Current, QTreeWidgetItem * Prev
         this->RenderedScene->UnloadScene();
     }
 
-    //this->ObjectList->clear();
     this->RenderedScene = (SceneItemTree*)Current;
     this->RenderMap();
 }
@@ -199,4 +196,10 @@ void MapTab::FilterTree(QTreeWidget* TreeWidget, const QString& SearchText)
         bool matchParent = parentItem->text(0).contains(SearchText, Qt::CaseInsensitive);
         parentItem->setHidden(!parentVisible && !matchParent);
     }
+}
+
+
+void MapTab::ItemFound(ObjectInfo* Object, const ItemInfo* ItemFound)
+{
+    this->Scenes[Object->RenderScene]->ItemFound(Object, ItemFound);
 }

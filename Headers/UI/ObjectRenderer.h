@@ -50,7 +50,7 @@ class CommonBaseItemTree : public QTreeWidgetItem
 public:
 
     CommonBaseItemTree(QTreeWidgetItem* Parent = nullptr) : QTreeWidgetItem(Parent) {}
-    virtual ~CommonBaseItemTree() { this->setIcon(0, QIcon()); }
+    virtual ~CommonBaseItemTree() { }
     virtual void PerformAction() {}
 };
 

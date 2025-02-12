@@ -81,33 +81,7 @@ public:
 
     QPixmap* SceneImage = nullptr;                                          // The scene image to render
 
-    ObjectRenderer * ObjectsRen [ObjectType::fairy];
-
-    /*ObjectRenderer Pots = ObjectRenderer(ObjectType::pot);                  // Contains all pot objects of this scene
-    ObjectRenderer Cows = ObjectRenderer(ObjectType::cow);                  // Contains all cow objects of this scene
-    ObjectRenderer Grass = ObjectRenderer(ObjectType::grass);               // Contains all grass objects of this scene
-    ObjectRenderer Chests = ObjectRenderer(ObjectType::chest);              // Contains all chest objects of this scene
-    ObjectRenderer Collectibles = ObjectRenderer(ObjectType::collectible);  // Contains all collectible objects of this scene
-    ObjectRenderer NPCs = ObjectRenderer(ObjectType::npc);                  // Contains all npc / event objects of this scene
-    ObjectRenderer GoldSkulltulas = ObjectRenderer(ObjectType::gs);         // Contains all gold skulltula objects of this scene
-    ObjectRenderer StrayFairies = ObjectRenderer(ObjectType::sf);           // Contains all stray fairy objects of this scene
-    ObjectRenderer Shops = ObjectRenderer(ObjectType::shop);                // Contains all shop item objects of this scene
-    ObjectRenderer Scrubs = ObjectRenderer(ObjectType::scrub);              // Contains all scrub objects of this scene
-    ObjectRenderer SilverRupees = ObjectRenderer(ObjectType::sr);           // Contains all silver rupee objects of this scene
-    ObjectRenderer Fishes = ObjectRenderer(ObjectType::fish);               // Contains all fish objects of this scene
-    ObjectRenderer Wonders = ObjectRenderer(ObjectType::wonder);            // Contains all wonder item objects of this scene
-    ObjectRenderer Crates = ObjectRenderer(ObjectType::crate);              // Contains all crate objects of this scene
-    ObjectRenderer Hives = ObjectRenderer(ObjectType::hive);                // Contains all hive objects of this scene
-    ObjectRenderer Butterflies = ObjectRenderer(ObjectType::butterfly);     // Contains all butterfly objects of this scene
-    ObjectRenderer Rupees = ObjectRenderer(ObjectType::rupee);              // Contains all rupee objects of this scene
-    ObjectRenderer Snowballs = ObjectRenderer(ObjectType::snowball);        // Contains all snowball objects of this scene
-    ObjectRenderer Barrels = ObjectRenderer(ObjectType::barrel);            // Contains all barrel objects of this scene
-    ObjectRenderer Hearts = ObjectRenderer(ObjectType::heart);              // Contains all heart objects of this scene
-    ObjectRenderer FairySpots = ObjectRenderer(ObjectType::fairy_spot);     // Contains all big fairy objects of this scene
-    ObjectRenderer Fairies = ObjectRenderer(ObjectType::fairy);             // Contains all fairy objects of this scene*/
-
-    int FoundObjs = 0;
-    int TotalObjs = 0;
+    ObjectRenderer* ObjectsRen[ObjectType::fairy] = { nullptr };
 
 #pragma endregion
 
@@ -153,7 +127,7 @@ public:
 
     void RefreshObjectCounts(int Count);
 
-public slots:
+//public slots:
 
     /*
     *   Update the matching scene object.
@@ -163,7 +137,7 @@ public slots:
     * 
     *   @warning This should be executed by the main thread only at it can modify the GUI elements.
     */
-    void UpdateItemFound(ObjectInfo* Object, const ItemInfo* ItemFound);
+    void ItemFound(ObjectInfo* Object, const ItemInfo* ItemFound);
 
 protected:
 
@@ -188,7 +162,11 @@ class SceneItemTree : public QTreeWidgetItem
 
 public:
 
-    SceneRenderer* Scene;   // The associated scene to load when this item is active.
+    int FoundObjects = 0;
+    int TotalObjects = 0;
+
+    SceneInfo* Scene = nullptr;
+    SceneRenderer* Renderer = nullptr;   // The associated scene to load when this item is active.
 
 #pragma endregion
 
@@ -198,10 +176,9 @@ public:
     *   Construct the associated scene and tree item and it to the given parent.
     *
     *   @param SceneToRender       The actual scene information used to create the scene.
-    *   @param ObjectsTreeWidget   The object tree list to fill when this scene is active.
     *   @param Parent              The parent tree item to attach this item to.
     */
-    SceneItemTree(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeWidget, QTreeWidgetItem * Parent = nullptr);
+    SceneItemTree(SceneInfo* SceneToRender, QTreeWidgetItem * Parent = nullptr);
 
     /*
     *   Default destructor.
@@ -210,18 +187,23 @@ public:
 
     /*
     *   Render the scene associated to this item.
+    * 
+    *   @param ObjectsTreeWidget   The object tree list to fill when this scene is active.
     */
-    void RenderScene();
+    void RenderScene(QTreeWidget* ObjectsTreeWidget);
 
     /*
     *   Unload the scene associated to this item.
     */
     void UnloadScene();
 
+    const char * GetSceneName();
     int GetCollectedObjects();
     
     int GetTotalObjects();
 
     void RefreshObjectCounts(int Count);
+
+    void ItemFound(ObjectInfo* Object, const ItemInfo* Item);
 };
 

@@ -36,7 +36,7 @@ void RegionTree::RefreshObjsCountText()
 {
     const size_t max_size = 150;
     char finalName[max_size] = { 0 };
-    char tmp[4] = { 0 };
+    char tmp[5] = { 0 };
 
     size_t offset = 0;
     size_t typeLen = strlen(this->MetaInfo->RegionName);

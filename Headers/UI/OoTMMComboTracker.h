@@ -31,5 +31,5 @@ public slots:
     *   @param ObjectFound    The object in which the item has been found.
     *   @param ItemFound      The item that has been found.
     */
-    void UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, ItemInfo ItemFound);
+    void UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, const ItemInfo* ItemFound);
 };

@@ -162,19 +162,6 @@ CreateInfoScenes(WINDMILL + 1, OoTOverworld,
     CreateOverworldScene(WINDMILL, OOT_GAME)
 )
 
-CreateInfoScenes(1, OoTTemple,
-    CreateTempleScene(TEMPLE_FIRE, OOT_GAME),
-)
-
-CreateInfoScenes(2, OoTHouse,
-    CreateHouseScene(KOKIRI_MIDO, OOT_GAME),
-    CreateHouseScene(LINK_HOUSE, OOT_GAME)
-)
-
-CreateInfoScenes(1, OoTGrotto,
-    CreateGrottoScene(OOT_GROTTO_CASTLE_STORMS, OOT_GAME)
-)
-
 
 
 CreateInfoScenes(MM_GROTTO_WOODS_OF_MYSTERY_OPEN + 1, MMOverworld,
@@ -322,116 +309,6 @@ CreateInfoScenes(MM_GROTTO_WOODS_OF_MYSTERY_OPEN + 1, MMOverworld,
     CreateOverworldScene(MM_GROTTO_WOODS_OF_MYSTERY_OPEN, MM_GAME)
 )
 
-CreateInfoScenes(1, MMTemple,
-    CreateTempleScene(TEMPLE_FIRE, OOT_GAME),
-)
-
-CreateInfoScenes(1, MMHouse,
-    CreateHouseScene(LINK_HOUSE, OOT_GAME)
-)
-
-CreateInfoScenes(1, MMGrotto,
-    CreateGrottoScene(OOT_GROTTO_CASTLE_STORMS, OOT_GAME)
-)
-
-
-MainRegionTab::MainRegionTab(int GameID)
-{
-    if (GameID == OOT_GAME)
-    {
-        this->Overworld = new MapTab(OOT_GAME, OoTOverworldScenes, OoTOverworldSize);
-        this->Temples = new MapTab(OOT_GAME, OoTTempleScenes, OoTTempleSize);
-        this->Houses = new MapTab(OOT_GAME, OoTHouseScenes, OoTHouseSize);
-        this->Grottos = new MapTab(OOT_GAME, OoTGrottoScenes, OoTGrottoSize);
-    }
-    else
-    {   // Majora's Mask
-
-        this->Overworld = new MapTab(MM_GAME, MMOverworldScenes, MMOverworldSize);
-        this->Temples = new MapTab(MM_GAME, MMTempleScenes, MMTempleSize);
-        this->Houses = new MapTab(MM_GAME, MMHouseScenes, MMHouseSize);
-        this->Grottos = new MapTab(MM_GAME, MMGrottoScenes, MMGrottoSize);
-    }
-
-
-    this->addTab(this->Overworld, "Overworld");
-    this->addTab(this->Temples, "Temples");
-    this->addTab(this->Houses, "Houses");
-    this->addTab(this->Grottos, "Grottos");
-
-    connect(this, &QTabWidget::currentChanged, this, &MainRegionTab::LoadTab);
-}
-
-
-MainRegionTab::~MainRegionTab()
-{
-    this->Overworld->~MapTab();
-    this->Temples->~MapTab();
-    this->Houses->~MapTab();
-    this->Grottos->~MapTab();
-}
-
-
-void MainRegionTab::LoadTab(int TabIndex)
-{
-    this->UnloadTab(this->PrevTab);
-    switch (TabIndex)
-    {
-        case 0:
-        {
-            this->Overworld->RenderMap();
-            break;
-        }
-        case 1:
-        {
-            this->Temples->RenderMap();
-            break;
-        }
-        case 2:
-        {
-            this->Houses->RenderMap();
-            break;
-        }
-        case 3:
-        {
-            this->Grottos->RenderMap();
-            break;
-        }
-    }
-
-    this->PrevTab = TabIndex;
-}
-
-
-void MainRegionTab::UnloadTab(int TabIndex)
-{
-    switch (TabIndex)
-    {
-        case 0:
-        {
-            this->Overworld->UnloadMap();
-            break;
-        }
-        case 1:
-        {
-            this->Temples->UnloadMap();
-            break;
-        }
-        case 2:
-        {
-            this->Houses->UnloadMap();
-            break;
-        }
-        case 3:
-        {
-            this->Grottos->UnloadMap();
-            break;
-        }
-    }
-
-    this->PrevTab = TabIndex;
-}
-
 
 GameTab::GameTab(int GameID, QWidget* parent) : QWidget(parent)
 {
@@ -440,30 +317,34 @@ GameTab::GameTab(int GameID, QWidget* parent) : QWidget(parent)
 	{	// Ocarina of time
 
 		this->TabName = "OoT";
+        this->GameMaps = new MapTab(OOT_GAME, OoTOverworldScenes, OoTOverworldSize);
 	}
 	else
 	{	// Majora's mask
 
 		this->TabName = "MM";
+        this->GameMaps = new MapTab(MM_GAME, MMOverworldScenes, MMOverworldSize);
 	}
 
     // Layout principal
     this->MainLayout = new QHBoxLayout;
 
-    // Zone graphique pour la carte
-    //this->View = new QGraphicsView();
 
-    this->MainRegion = new MainRegionTab(this->GameID);
 
     // Ajouter à la mise en page principale
-    this->MainLayout->addWidget(this->MainRegion);
-    //this->MainLayout->addWidget(this->View);
+    this->MainLayout->addWidget(this->GameMaps);
     this->setLayout(this->MainLayout);
 }
 
 
 GameTab::~GameTab()
 {
-    this->MainRegion->~MainRegionTab();
+    this->GameMaps->~MapTab();
     this->MainLayout->~QHBoxLayout();
+}
+
+
+void GameTab::ItemFound(ObjectInfo* Object, const ItemInfo* Item)
+{
+    this->GameMaps->ItemFound(Object, Item);
 }
