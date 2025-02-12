@@ -10,6 +10,8 @@
 #include "Multi/Game.h"
 #include "ObjectRenderer.h"
 
+class SceneItemTree;
+
 enum SceneType
 {
     None = 0,
@@ -18,8 +20,6 @@ enum SceneType
     House = 3,
     Grotto = 4
 };
-
-
 
 
 class SceneInfo : public QObject
@@ -77,10 +77,13 @@ public:
     SceneInfo* CurrScene;                                                   // Contains all info for this scene.
     bool IsRendered = false;                                                // Tells if the scene is currently being rendered by on the GUI
     QTreeWidget* ObjectsTree = nullptr;                                     // The object panel where to display the scene object list;
+    SceneItemTree* ItemOwner = nullptr;                                     // The tree widget item that owns this scene
 
     QPixmap* SceneImage = nullptr;                                          // The scene image to render
 
-    ObjectRenderer Pots = ObjectRenderer(ObjectType::pot);                  // Contains all pot objects of this scene
+    ObjectRenderer * ObjectsRen [ObjectType::fairy];
+
+    /*ObjectRenderer Pots = ObjectRenderer(ObjectType::pot);                  // Contains all pot objects of this scene
     ObjectRenderer Cows = ObjectRenderer(ObjectType::cow);                  // Contains all cow objects of this scene
     ObjectRenderer Grass = ObjectRenderer(ObjectType::grass);               // Contains all grass objects of this scene
     ObjectRenderer Chests = ObjectRenderer(ObjectType::chest);              // Contains all chest objects of this scene
@@ -101,7 +104,10 @@ public:
     ObjectRenderer Barrels = ObjectRenderer(ObjectType::barrel);            // Contains all barrel objects of this scene
     ObjectRenderer Hearts = ObjectRenderer(ObjectType::heart);              // Contains all heart objects of this scene
     ObjectRenderer FairySpots = ObjectRenderer(ObjectType::fairy_spot);     // Contains all big fairy objects of this scene
-    ObjectRenderer Fairies = ObjectRenderer(ObjectType::fairy);             // Contains all fairy objects of this scene
+    ObjectRenderer Fairies = ObjectRenderer(ObjectType::fairy);             // Contains all fairy objects of this scene*/
+
+    int FoundObjs = 0;
+    int TotalObjs = 0;
 
 #pragma endregion
 
@@ -112,8 +118,9 @@ public:
     *
     *   @param SceneToRender       The actual scene information used to create the scene.
     *   @param ObjectsTreeWidget   The object tree list to fill when this scene is active.
+    *   @param Owner               The item tree list that owns this scene.
     */
-    SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeWidget);
+    SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeWidget, SceneItemTree* Owner);
 
     /*
     *   Default destructor.
@@ -143,6 +150,8 @@ public:
     *   Unload the scene elements.
     */
     void UnloadScene();
+
+    void RefreshObjectCounts(int Count);
 
 public slots:
 
@@ -208,5 +217,11 @@ public:
     *   Unload the scene associated to this item.
     */
     void UnloadScene();
+
+    int GetCollectedObjects();
+    
+    int GetTotalObjects();
+
+    void RefreshObjectCounts(int Count);
 };
 

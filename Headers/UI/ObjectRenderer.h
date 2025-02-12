@@ -8,6 +8,9 @@
 #include <QCollator>
 #include "Combo/Objects.h"
 
+class SceneRenderer;
+class ObjectRenderer;
+
 typedef struct ObjectIcon
 {
     const char* IconPath;
@@ -47,7 +50,7 @@ class CommonBaseItemTree : public QTreeWidgetItem
 public:
 
     CommonBaseItemTree(QTreeWidgetItem* Parent = nullptr) : QTreeWidgetItem(Parent) {}
-    virtual ~CommonBaseItemTree() {}
+    virtual ~CommonBaseItemTree() { this->setIcon(0, QIcon()); }
     virtual void PerformAction() {}
 };
 
@@ -58,7 +61,6 @@ public:
 
     QIcon Icons[23];
     QPixmap PixmapIcons[23];
-    QGraphicsPixmapItem* ItemsIcon[23];
 
 public:
 
@@ -72,20 +74,22 @@ class ObjectItemTree : public CommonBaseItemTree
 {
 public:
 
+    ObjectRenderer* RendererOwner = nullptr;
     ObjectInfo* Object;
     QGraphicsPixmapItem* GraphItem = nullptr;
     CommonBaseItemTree Item;
+    QColor DefaultTextColor;
 
 public:
 
-    ObjectItemTree(ObjectInfo* Obj, QTreeWidgetItem* Parent = nullptr);
+    ObjectItemTree(ObjectInfo* Obj, QColor DefaultColor, ObjectRenderer* Owner, QTreeWidgetItem* Parent = nullptr);
     ~ObjectItemTree();
 
     ObjectState GetStatus();
-    void UpdateIcon(ObjectType Type, QGraphicsScene* Scene);
+    void UpdateIcon(ObjectType Type);
     void UpdateTextStyle();
 
-    void RemoveObjectFromScene(QGraphicsScene* Scene);
+    void RemoveObjectFromScene();
 
     bool operator<(const QTreeWidgetItem& Other) const
     {
@@ -104,29 +108,30 @@ class ObjectRenderer
 
 public:
 
-	bool ShouldBeRendered = true;			// Tells if the objects should be rendered on the screen or not
+    SceneRenderer* SceneOwner = nullptr;
+    bool ShouldBeRendered = true;			// Tells if the objects should be rendered on the screen or not
     ObjectType Type = ObjectType::none;     // The type of object, used to load the correct icon when needed
     CommonBaseItemTree* ObjCat;
 
 protected:
-	QPixmap * Icon;					        // Image à afficher
+    QPixmap* Icon;					        // Image à afficher
     std::vector<ObjectItemTree*> Objects;
     //std::vector<ObjectInfo *> Objects;
     //std::vector<QGraphicsPixmapItem*> GraphItems;
-	//QList<QPair<int, int>> ObjectsLocation; // Liste des positions (X, Y) des objets
+    //QList<QPair<int, int>> ObjectsLocation; // Liste des positions (X, Y) des objets
 
 public:
-	ObjectRenderer(ObjectType Type);
+    ObjectRenderer(ObjectType Type, SceneRenderer* Owner);
     ~ObjectRenderer();
-	
-    void AddObjectToScene(QGraphicsScene* Destination);
-    void AddObjectToRender(ObjectInfo* Obj);
-    void UnloadObjectsFromScene(QGraphicsScene* Destination);
-    void UpdateObjectState(ObjectInfo* Object, QGraphicsScene* Destination);
+
+    void AddObjectToScene();
+    void AddObjectToRender(ObjectInfo* Obj, QColor DefaultColor);
+    void UnloadObjectsFromScene();
+    void UpdateObjectState(ObjectInfo* Object);
 
     size_t GetCollectedObject();
     size_t GetTotalObject();
     void UpdateText();
+    void RefreshObjectCounts(int Count);
     void RemoveObjectFromList(QTreeWidget* Tree);
-
 };

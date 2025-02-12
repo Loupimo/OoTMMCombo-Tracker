@@ -56,8 +56,10 @@ MapTab::MapTab(int Game, SceneInfo* Scenes, size_t NumOfScenes, QWidget* parent)
                 currRegion = new RegionTree(Game, sceneRegionID, this->MapList);//new RegionTree(Game, this->ScenesToRender[i]->GetSceneParentRegion(), this->MapList);
                 this->Regions.push_back(currRegion);
             }
-            new SceneItemTree(&Scenes[i], this->ObjectList, currRegion);
+            SceneItemTree * tmp = new SceneItemTree(&Scenes[i], this->ObjectList, currRegion);
             currRegion->setExpanded(true);
+            currRegion->AddObjectCounts(tmp->GetCollectedObjects(), tmp->GetTotalObjects());
+            currRegion->RefreshObjsCountText();
         }
         //QTreeWidgetItem * tmp = new QTreeWidgetItem(currRegion);
         //tmp->setText(0, this->ScenesToRender[i]->GetSceneName());
@@ -98,16 +100,14 @@ MapTab::MapTab(int Game, SceneInfo* Scenes, size_t NumOfScenes, QWidget* parent)
 
 MapTab::~MapTab()
 {
-    /*for (size_t i = 0; i < this->ScenesToRender.size(); i++)
-    {
-        this->ScenesToRender[i]->~SceneRenderer();
-    }*/
-    //this->ScenesToRender.clear();
     this->RenderedScene = nullptr;
-    //this->MapList->~QComboBox();
+    this->ObjectList->~QTreeWidget();
     this->MapList->~QTreeWidget();
-    this->MapTreeLayout->~QVBoxLayout();
     this->View->~QGraphicsView();
+    this->ObjectTreeLayout->~QVBoxLayout();
+    this->MapTreeLayout->~QVBoxLayout();
+    this->MapContainer->~QWidget();
+    this->ObjectContainer->~QWidget();
     this->MainLayout->~QHBoxLayout();
 }
 

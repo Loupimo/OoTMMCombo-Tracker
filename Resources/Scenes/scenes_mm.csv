@@ -30,12 +30,12 @@ TEMPLE_WOODFALL;Woodfall Temple;./Resources/MM/Woodfall/Temple.png;Dungeons
 PATH_MOUNTAIN_VILLAGE;Path to Mountain Village - Winter;./Resources/MM/Path_to_Mountain_Village/Winter.png;Path_to_Mountain_Village
 CASTLE_IKANA;Ancient Ikana Castle;./Resources/MM/Ikana/Ancient_Ikana_Castle.png;Dungeons
 DEKU_PLAYGROUND;Deku's Playground;./Resources/MM/Clock_Town/Deku_Playground.png;Clock_Town
-LAIR_ODOLWA;Odolwa's Lair;./Resources/MM/Woodfall/Odolwa_Lair.png;Dungeons
-MM_SHOOTING_GALLERY;Shooting Gallery - Clock Town;./Resources/MM/Clock_Town/Shooting_Gallery.png;Clock_Town
+LAIR_ODOLWA;Odolwa's Lair;./Resources/MM/Woodfall/Odolwa_Lair.png;None
+MM_SHOOTING_GALLERY;Shooting Gallery;./Resources/MM/Clock_Town/Shooting_Gallery.png;Clock_Town
 TEMPLE_SNOWHEAD;Snowhead Temple;./Resources/MM/Snowhead/Temple.png;Dungeons
 MILK_ROAD;Milk Road;./Resources/MM/Milk_Road/Road.png;Milk_Road
 PIRATE_FORTRESS_INTERIOR;Pirate's Fortress - Interior;./Resources/MM/Fortress/Interior.png;Fortress
-SHOOTING_GALLERY_SWAMP;Shooting Gallery - Road to Southern Swamp;./Resources/MM/Road_to_Southern_Swamp/Shooting_Gallery.png;Southern_Swamp_Road
+SHOOTING_GALLERY_SWAMP;Shooting Gallery;./Resources/MM/Road_to_Southern_Swamp/Shooting_Gallery.png;Southern_Swamp_Road
 PINNACLE_ROCK;Pinnacle Rock;./Resources/MM/Great_Bay_Coast/Pinnacle_Rock.png;Great_Bay_Coast
 MM_FAIRY_FOUNTAIN;Fairy Fountain;;None
 MM_SPIDER_HOUSE_SWAMP;Spider's House - Southern Swamp;./Resources/MM/Southern_Swamp/Spider_House.png;Southern_Swamp
@@ -53,25 +53,25 @@ GORON_SHRINE;Goron's Shrine;./Resources/MM/Goron_Village/Goron_Shrine.png;Goron_
 ZORA_HALL;Zora's Theater;./Resources/MM/Zora_Hall/Zora_Hall.png;Zora_Hall
 TRADING_POST;Trading Post;./Resources/MM/Clock_Town/Trading_Post.png;Clock_Town
 ROMANI_RANCH;Romani's Ranch;./Resources/MM/Ranch/Romani_Ranch.png;Ranch
-LAIR_TWINMOLD;Twinmold Lair;./Resources/MM/Stone_Tower/Twinmold_Lair.png;Dungeons
+LAIR_TWINMOLD;Twinmold Lair;./Resources/MM/Stone_Tower/Twinmold_Lair.png;None
 GREAT_BAY_COAST;Great Bay Coast;./Resources/MM/Great_Bay_Coast/Great_Bay.png;Great_Bay_Coast
 ZORA_CAPE;Zora Cape;./Resources/MM/Zora_Cape/Zora_Cape.png;Zora_Cape
 LOTTERY;Lottery;;None
 SNOWHEAD_SPRING;Snowhead - Spring;./Resources/MM/Snowhead/Spring.png;Snowhead
 PIRATE_FORTRESS_ENTRANCE;Pirate's Fortress - Entrance;./Resources/MM/Fortress/Entrance.png;Fortress
-FISHERMAN_HUT;House - Fisherman;./Resources/MM/Great_Bay_Coast/Fisherman_Hut.png;Great_Bay_Coast
-MM_GORON_SHOP;Shop - Goron;./Resources/MM/Goron_Village/Goron_Shop.png;Goron_Village
+FISHERMAN_HUT;House - Fisherman;./Resources/MM/Great_Bay_Coast/Fisherman_Hut.png;None
+MM_GORON_SHOP;Shop;./Resources/MM/Goron_Village/Goron_Shop.png;Goron_Village
 DEKU_KING_CHAMBER;Deku King's Chamber;./Resources/MM/Southern_Swamp/Deku_King_Chamber.png;Deku_Palace
 MOON_GORON;Moon - Goron's Trial;./Resources/MM/Moon/Goron.png;Moon
 ROAD_SOUTHERN_SWAMP;Road to Southern Swamp;./Resources/MM/Road_to_Southern_Swamp/Road.png;Southern_Swamp_Road
 DOG_RACETRACK;Dog's Racetrack;./Resources/MM/Ranch/Dog_Racetrack.png;Ranch
 CUCCO_SHACK;Cucco's Shack;./Resources/MM/Ranch/Cucco_Shack.png;Ranch
 IKANA_GRAVEYARD;Ikana Graveyard;./Resources/MM/Graveyard/Graveyard.png;Graveyard
-LAIR_GOHT;Goht's Lair;./Resources/MM/Snowhead/Goht_Lair.png;Dungeons
+LAIR_GOHT;Goht's Lair;./Resources/MM/Snowhead/Goht_Lair.png;None
 SOUTHERN_SWAMP;Southern Swamp;./Resources/MM/Southern_Swamp/Swamp.png;Southern_Swamp
 WOODFALL;Woodfall;./Resources/MM/Woodfall/Woodfall.png;Woodfall
 MOON_ZORA;Moon - Zora's Trial;./Resources/MM/Moon/Zora.png;Moon
-GORON_VILLAGE_SPRING;Goron's Village - Spring;./Resources/MM/Goron_Village/Spring.png;Goron_Village
+GORON_VILLAGE_SPRING;Goron's Village - Spring;./Resources/MM/Goron_Village/Spring.png;None
 TEMPLE_GREAT_BAY;Great Bay Temple;./Resources/MM/Great_Bay_Coast/Temple.png;Dungeons
 WATERFALL_RAPIDS;Waterfall Rapids;./Resources/MM/Zora_Cape/Waterfall_Rapids.png;Zora_Cape
 BENEATH_THE_WELL;Beneath the Well;./Resources/MM/Ikana_Canyon/Beneath_the_Well.png;Ikana_Canyon
@@ -85,7 +85,7 @@ DEKU_SHRINE;Deku's Shrine;./Resources/MM/Deku_Palace/Deku_Shrine.png;Deku_Palace
 ROAD_IKANA;Road to Ikana;./Resources/MM/Road_to_Ikana/Road.png;Road_to_Ikana
 SWORDSMAN_SCHOOL;Swordsman's School;./Resources/MM/Clock_Town/Swordsman_School.png;Clock_Town
 MUSIC_BOX_HOUSE;House - Music Box;./Resources/MM/Ikana_Canyon/Music_Box_House.png;Ikana_Canyon
-LAIR_IKANA;Ikana's Lair;./Resources/MM/Dungeons/Ikana_Lair.png;Dungeons
+LAIR_IKANA;Ikana's Lair;./Resources/MM/Dungeons/Ikana_Lair.png;None
 TOURIST_INFORMATION;Tourist Information;./Resources/MM/Southern_Swamp/Tourist_Information.png;Southern_Swamp
 STONE_TOWER;Stone Tower;./Resources/MM/Stone_Tower/Tower.png;Stone_Tower
 STONE_TOWER_INVERTED;Stone Tower - Inverted;./Resources/MM/Stone_Tower/Tower_Inverted.png;Stone_Tower
@@ -94,7 +94,7 @@ PATH_SNOWHEAD;Path to Snowhead - Winter;./Resources/MM/Path_to_Snowhead/Winter.p
 SNOWHEAD;Snowhead;./Resources/MM/Snowhed/Snowhead.png;Snowhead
 TWIN_ISLANDS_WINTER;Twin Islands - Winter;./Resources/MM/Twin_Islands/Winter.png;Twin_Islands
 TWIN_ISLANDS_SPRING;Twin Islands - Spring;./Resources/MM/Twin_Islands/Spring.png;Twin_Islands
-LAIR_GYORG;Gyorg's Lair;./Resources/MM/Great_Bay_Coast/Gyorg_Lair.png;Dungeons
+LAIR_GYORG;Gyorg's Lair;./Resources/MM/Great_Bay_Coast/Gyorg_Lair.png;None
 SECRET_SHRINE;Secret's Shrine;./Resources/MM/Ikana_Canyon/Secret_Shrine.png;Ikana_Canyon
 STOCK_POT_INN;Stock Pot Inn;./Resources/MM/Clock_Town/Stock_Pot_Inn.png;Clock_Town
 GREAT_BAY_CUTSCENE;Great Bay Cutscene;;None
@@ -114,8 +114,9 @@ CLOCK_TOWN_SOUTH;Clock Town - South;./Resources/MM/Clock_Town/South.png;Clock_To
 LAUNDRY_POOL;Laundry Pool;./Resources/MM/Clock_Town/Laundry Pool.png;Clock_Town
 EXTRA;Extra;;None
 LONE_PEAK;Lone Peak Shrine;./Resources/MM/Goron_Village/Lone_Peak_Shrine.png;Goron_Village
-MM_ZORA_SHOP;Shop - Zora;./Resources/MM/Zora_Hall/Zora_Shop.png;Zora_Hall
+MM_ZORA_SHOP;Shop;./Resources/MM/Zora_Hall/Zora_Shop.png;Zora_Hall
 ZORA_EVAN_ROOM;Evan's Room;./Resources/MM/Zora_Hall/Evan_Room.png;Zora_Hall
+ROMANI_RANCH_BARN;House - Stable;./Resources/MM/Ranch/Stable.png;Ranch
 MM_GROTTO_TERMINA_DODONGO;Grotto - Dodongo;./Resources/MM/Termina/Dodongo.png;Termina
 MM_GROTTO_TERMINA_OCEAN_GOSSIP;Grotto - Ocean Gossip;./Resources/MM/Termina/Ocean_Gossip.png;Termina
 MM_GROTTO_TERMINA_CANYON_GOSSIP;Grotto - Canyon Gossip;./Resources/MM/Termina/Canyon_Gossip.png;Termina

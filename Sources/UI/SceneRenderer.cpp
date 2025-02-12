@@ -1,4 +1,5 @@
 #include "UI/SceneRenderer.h"
+#include "UI/RegionTab.h"
 
 // Constructeur pour initialiser la structure
 SceneInfo::SceneInfo(int PSceneID, int PGameID, SceneType PType)
@@ -21,10 +22,18 @@ SceneInfo::~SceneInfo()
 }
 
 
-SceneRenderer::SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeWidget) : QGraphicsScene()
+SceneRenderer::SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeWidget, SceneItemTree* Owner) : QGraphicsScene()
 {
 	this->CurrScene = SceneToRender;
     this->ObjectsTree = ObjectsTreeWidget;
+    this->ItemOwner = Owner;
+
+    for (size_t i = 0; i < ObjectType::fairy; i++)
+    {   // Initializes all objects renderer
+
+        this->ObjectsRen[i] = new ObjectRenderer((ObjectType)(i + 1), this);
+    }
+
 	if (SceneToRender)
 	{
 		for (size_t i = 0; i < SceneToRender->Objects->NumOfObjs; i++)
@@ -42,9 +51,15 @@ SceneRenderer::SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeW
 			if (dest != nullptr)
 			{	// Add the object to the renderer
 
-                dest->AddObjectToRender(currObject);
+                dest->AddObjectToRender(currObject, this->ObjectsTree->palette().color(QPalette::Text));
                 dest->ObjCat->setExpanded(true);
 			}
+
+            if (currObject->Status == ObjectState::Collected)
+            {
+                this->FoundObjs++;
+            }
+            this->TotalObjs++;
 		}
 	}
 
@@ -88,7 +103,7 @@ void SceneRenderer::RenderScene()
         if (objRdr && objRdr->GetTotalObject() > 0)
         {
             objRdr->UpdateText();
-            objRdr->AddObjectToScene(this);
+            objRdr->AddObjectToScene();
             this->ObjectsTree->addTopLevelItem(objRdr->ObjCat);
             objRdr->ObjCat->setExpanded(true);
         }
@@ -110,11 +125,17 @@ void SceneRenderer::UnloadScene()
         if (objRdr && objRdr->GetTotalObject() > 0)
         {
             objRdr->RemoveObjectFromList(this->ObjectsTree);
-            objRdr->UnloadObjectsFromScene(this);
+            objRdr->UnloadObjectsFromScene();
         }
     }
     //this->ObjectsTree->clear();
     //this->clear();
+}
+
+void SceneRenderer::RefreshObjectCounts(int Count)
+{
+    this->FoundObjs += Count;
+    this->ItemOwner->RefreshObjectCounts(Count);
 }
 
 void SceneRenderer::UpdateItemFound(ObjectInfo* Object, const ItemInfo* ItemFound)
@@ -125,142 +146,27 @@ void SceneRenderer::UpdateItemFound(ObjectInfo* Object, const ItemInfo* ItemFoun
     if (dest != nullptr)
     {	// Update the object renderer
 
-        dest->UpdateObjectState(Object, this);
+        dest->UpdateObjectState(Object);
     }
+
+    this->FoundObjs++;
+    this->ItemOwner->RefreshObjectCounts(1);
 }
 
 ObjectRenderer* SceneRenderer::FindObjectRendererCategory(ObjectInfo* Object)
 {
-    ObjectRenderer* renderer = nullptr;
-    switch (Object->Type)
+    if (Object->Type == ObjectType::none)
     {
-        case ObjectType::pot:
-        {
-            renderer = &this->Pots;
-            break;
-        }
-        case ObjectType::cow:
-        {
-            renderer = &this->Cows;
-            break;
-        }
-        case ObjectType::grass:
-        {
-            renderer = &this->Grass;
-            break;
-        }
-        case ObjectType::chest:
-        {
-            renderer = &this->Chests;
-            break;
-        }
-        case ObjectType::collectible:
-        {
-            renderer = &this->Collectibles;
-            break;
-        }
-        case ObjectType::npc:
-        {
-            renderer = &this->NPCs;
-            break;
-        }
-        case ObjectType::gs:
-        {
-            renderer = &this->GoldSkulltulas;
-            break;
-        }
-        case ObjectType::sf:
-        {
-            renderer = &this->StrayFairies;
-            break;
-        }
-        case ObjectType::shop:
-        {
-            renderer = &this->Shops;
-            break;
-        }
-        case ObjectType::scrub:
-        {
-            renderer = &this->Scrubs;
-            break;
-        }
-        case ObjectType::sr:
-        {
-            renderer = &this->SilverRupees;
-            break;
-        }
-        case ObjectType::fish:
-        {
-            renderer = &this->Fishes;
-            break;
-        }
-        case ObjectType::wonder:
-        {
-            renderer = &this->Wonders;
-            break;
-        }
-        case ObjectType::crate:
-        {
-            renderer = &this->Crates;
-            break;
-        }
-        case ObjectType::hive:
-        {
-            renderer = &this->Hives;
-            break;
-        }
-        case ObjectType::butterfly:
-        {
-            renderer = &this->Butterflies;
-            break;
-        }
-        case ObjectType::rupee:
-        {
-            renderer = &this->Rupees;
-            break;
-        }
-        case ObjectType::snowball:
-        {
-            renderer = &this->Snowballs;
-            break;
-        }
-        case ObjectType::barrel:
-        {
-            renderer = &this->Barrels;
-            break;
-        }
-        case ObjectType::heart:
-        {
-            renderer = &this->Hearts;
-            break;
-        }
-        case ObjectType::fairy_spot:
-        {
-            renderer = &this->FairySpots;
-            break;
-        }
-        case ObjectType::fairy:
-        {
-            renderer = &this->Fairies;
-            break;
-        }
-
-        case ObjectType::none:
-        default:
-        {
-            // Aucun traitement spécifique pour les types inconnus
-            break;
-        }
+        return nullptr;
     }
-
-    return renderer;
+    return this->ObjectsRen[Object->Type - 1];
 }
 
 
 
 SceneItemTree::SceneItemTree(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeWidget, QTreeWidgetItem* Parent) : QTreeWidgetItem(Parent)
 {
-    this->Scene = new SceneRenderer(SceneToRender, ObjectsTreeWidget);
+    this->Scene = new SceneRenderer(SceneToRender, ObjectsTreeWidget, this);
     this->setText(0, this->Scene->GetSceneName());
 }
 
@@ -281,4 +187,54 @@ void SceneItemTree::RenderScene()
 void SceneItemTree::UnloadScene()
 {
     this->Scene->UnloadScene();
+}
+
+
+int SceneItemTree::GetCollectedObjects()
+{
+    return this->Scene->FoundObjs;
+}
+
+int SceneItemTree::GetTotalObjects()
+{
+    return this->Scene->TotalObjs;
+}
+
+
+void SceneItemTree::RefreshObjectCounts(int Count)
+{
+    ((RegionTree*)this->parent())->AddObjectCounts(Count, 0);
+    ((RegionTree*)this->parent())->RefreshObjsCountText();
+
+    const size_t max_size = 150;
+    char finalName[max_size] = { 0 };
+    char tmp[4] = { 0 };
+
+    size_t offset = 0;
+    size_t typeLen = strlen(this->Scene->GetSceneName());
+    memcpy_s(finalName, max_size, this->Scene->GetSceneName(), typeLen);
+    offset += typeLen;
+    finalName[offset] = ' ';
+    finalName[offset + 1] = '(';
+    offset += 2;
+
+    _itoa_s((int)this->GetCollectedObjects(), tmp, 10);
+
+    memcpy_s(finalName + offset, max_size - offset, tmp, strlen(tmp));
+    offset += strlen(tmp);
+
+    finalName[offset] = ' ';
+    finalName[offset + 1] = '/';
+    finalName[offset + 2] = ' ';
+
+    offset += 3;
+
+    _itoa_s((int)this->GetTotalObjects(), tmp, 10);
+
+    memcpy_s(finalName + offset, max_size - offset, tmp, strlen(tmp));
+
+    offset += strlen(tmp);
+    finalName[offset] = ')';
+    finalName[offset + 1] = '\0';
+    this->setText(0, finalName);
 }

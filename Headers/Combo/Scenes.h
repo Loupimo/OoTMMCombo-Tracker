@@ -165,6 +165,21 @@ typedef struct SceneMetaInfo
 #define SILO									0x90	// It the real Silo and not the "RANCH_HOUSE_SILO"
 #define WINDMILL								0x91	// Kakariko's windmill
 
+// MQ Scenes
+#define MQ_DEKU_TREE							0x92
+#define MQ_DODONGO_CAVERN						0x93
+#define MQ_INSIDE_JABU_JABU						0x94
+#define MQ_TEMPLE_FOREST						0x95
+#define MQ_TEMPLE_FIRE							0x96
+#define MQ_TEMPLE_WATER							0x97
+#define MQ_TEMPLE_SHADOW						0x98
+#define MQ_TEMPLE_SPIRIT						0x99
+#define MQ_BOTTOM_OF_THE_WELL					0x9a
+#define MQ_ICE_CAVERN							0x9b
+#define MQ_GERUDO_TRAINING_GROUND				0x9c
+#define MQ_INSIDE_GANON_CASTLE					0x9d
+
+
 const SceneMetaInfo OoTScenesMetaInfo[WINDMILL + 1] =
 {
 	{ "Deku Tree", "./Resources/OoT/Dungeons/Deku_Tree.png", (uint8_t)OoTRegions::Dungeons },
@@ -433,44 +448,45 @@ const SceneMetaInfo OoTScenesMetaInfo[WINDMILL + 1] =
 
 // MM detailed other
 #define LONE_PEAK								0x72	// Lone Peak Shrine
-#define MM_ZORA_SHOP							0x73
-#define ZORA_EVAN_ROOM							0x74
+#define MM_ZORA_SHOP							0x73	// Zora's shop
+#define ZORA_EVAN_ROOM							0x74	// Evan's room
+#define ROMANI_RANCH_BARN						0x75	// Ranch Barn
 
 // MM detailed grottos
-#define MM_GROTTO_TERMINA_DODONGO				0x75	// Termina field dodongo's grotto
-#define MM_GROTTO_TERMINA_OCEAN_GOSSIP			0x76	// Termina field ocean gossip's grotto
-#define MM_GROTTO_TERMINA_CANYON_GOSSIP			0x77	// Termina field canyon gossip's grotto
-#define MM_GROTTO_TERMINA_BIO_BABA				0x78	// Termina field bio baba's grotto
-#define MM_GROTTO_TERMINA_PEEHAT				0x79	// Termina field peehat's grotto
-#define MM_GROTTO_TERMINA_SCRUB					0x7a	// Termina field scrub grotto
-#define MM_GROTTO_TERMINA_TALL_GRASS			0x7b	// Termina field tall grass grotto
-#define MM_GROTTO_TERMINA_COW					0x7c	// Termina field cow grotto
-#define MM_GROTTO_TERMINA_PILLAR				0x7d	// Termina field pillar grotto
-#define MM_GROTTO_DEKU_PALACE_GENERIC			0x7e	// Deku palace generic grotto
-#define MM_GROTTO_DEKU_PALACE_BEANS				0x7f	// Deku palace beans grotto
-#define MM_GROTTO_GREAT_BAY_COAST_FISHERMAN		0x80	// Great bay coast fisherman's grotto
-#define MM_GROTTO_GREAT_BAY_COAST_COW			0x81	// Great bay coast cow grotto
-#define MM_GROTTO_ZORA_CAPE_GENERIC				0x82	// Zora cape generic grotto
-#define MM_GROTTO_IKANA_GRAVEYARD_GENERIC		0x83	// Ikana graveyard generic grotto
-#define MM_GROTTO_IKANA_VALLEY_OPEN				0x84	// Ikana valley generic open
-#define MM_GROTTO_IKANA_ROAD_GENERIC			0x85	// Ikana road generic grotto
-#define MM_GROTTO_TWIN_ISLANDS_FROZEN			0x86	// Twin islands frozen grotto
-#define MM_GROTTO_TWIN_ISLANDS_RAMP				0x87	// Twin islands ramp grotto
-#define MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC		0x88	// Path to snowhead generic grotto
-#define MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC		0x89	// Mountain village generic grotto
-#define MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN		0x8a	// Southern swamp road generic open
-#define MM_GROTTO_SOUTHERN_SWAMP_OPEN			0x8b	// Southern swamp generic open
-#define MM_GROTTO_WOODS_OF_MYSTERY_OPEN			0x8c	// Woods of mystery generic open
+#define MM_GROTTO_TERMINA_DODONGO				0x76	// Termina field dodongo's grotto
+#define MM_GROTTO_TERMINA_OCEAN_GOSSIP			0x77	// Termina field ocean gossip's grotto
+#define MM_GROTTO_TERMINA_CANYON_GOSSIP			0x78	// Termina field canyon gossip's grotto
+#define MM_GROTTO_TERMINA_BIO_BABA				0x79	// Termina field bio baba's grotto
+#define MM_GROTTO_TERMINA_PEEHAT				0x7a	// Termina field peehat's grotto
+#define MM_GROTTO_TERMINA_SCRUB					0x7b	// Termina field scrub grotto
+#define MM_GROTTO_TERMINA_TALL_GRASS			0x7c	// Termina field tall grass grotto
+#define MM_GROTTO_TERMINA_COW					0x7d	// Termina field cow grotto
+#define MM_GROTTO_TERMINA_PILLAR				0x7e	// Termina field pillar grotto
+#define MM_GROTTO_DEKU_PALACE_GENERIC			0x7f	// Deku palace generic grotto
+#define MM_GROTTO_DEKU_PALACE_BEANS				0x80	// Deku palace beans grotto
+#define MM_GROTTO_GREAT_BAY_COAST_FISHERMAN		0x81	// Great bay coast fisherman's grotto
+#define MM_GROTTO_GREAT_BAY_COAST_COW			0x82	// Great bay coast cow grotto
+#define MM_GROTTO_ZORA_CAPE_GENERIC				0x83	// Zora cape generic grotto
+#define MM_GROTTO_IKANA_GRAVEYARD_GENERIC		0x84	// Ikana graveyard generic grotto
+#define MM_GROTTO_IKANA_VALLEY_OPEN				0x85	// Ikana valley generic open
+#define MM_GROTTO_IKANA_ROAD_GENERIC			0x86	// Ikana road generic grotto
+#define MM_GROTTO_TWIN_ISLANDS_FROZEN			0x87	// Twin islands frozen grotto
+#define MM_GROTTO_TWIN_ISLANDS_RAMP				0x88	// Twin islands ramp grotto
+#define MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC		0x89	// Path to snowhead generic grotto
+#define MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC		0x8a	// Mountain village generic grotto
+#define MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN		0x8b	// Southern swamp road generic open
+#define MM_GROTTO_SOUTHERN_SWAMP_OPEN			0x8c	// Southern swamp generic open
+#define MM_GROTTO_WOODS_OF_MYSTERY_OPEN			0x8d	// Woods of mystery generic open
 
 
 const SceneMetaInfo MMScenesMetaInfo[MM_GROTTO_WOODS_OF_MYSTERY_OPEN + 1] =
 {
 	{ "Southern Swamp - Clear", "", (uint8_t)MMRegions::None },
-	{ "Fairy Fountain - Snowhead", "./Resources/MM/Snowhead/Fairy_Fountain.png", (uint8_t)MMRegions::Snowhead },
-	{ "Fairy Fountain - Zora Cape", "./Resources/MM/Zora_Cape/Fairy_Fountain.png", (uint8_t)MMRegions::Zora_Cape },
-	{ "Fairy Fountain - Woodfall", "./Resources/MM/Woodfall/Fairy_Fountain.png", (uint8_t)MMRegions::Woodfall },
-	{ "Fairy Fountain - Clock Town", "./Resources/MM/Clock_Town/Fairy Fountain.png", (uint8_t)MMRegions::Clock_Town },
-	{ "Fairy Fountain - Ikana Canyon", "./Resources/MM/Ikana_Canyon/Fairy_Fountain.png", (uint8_t)MMRegions::Ikana_Canyon },
+	{ "Fairy Fountain", "./Resources/MM/Snowhead/Fairy_Fountain.png", (uint8_t)MMRegions::Snowhead },
+	{ "Fairy Fountain", "./Resources/MM/Zora_Cape/Fairy_Fountain.png", (uint8_t)MMRegions::Zora_Cape },
+	{ "Fairy Fountain", "./Resources/MM/Woodfall/Fairy_Fountain.png", (uint8_t)MMRegions::Woodfall },
+	{ "Fairy Fountain", "./Resources/MM/Clock_Town/Fairy Fountain.png", (uint8_t)MMRegions::Clock_Town },
+	{ "Fairy Fountain", "./Resources/MM/Ikana_Canyon/Fairy_Fountain.png", (uint8_t)MMRegions::Ikana_Canyon },
 	{ "Path to Snowhead - Spring", "./Resources/MM/Path_to_Snowhead/Spring.png", (uint8_t)MMRegions::Path_to_Snowhead },
 	{ "Grottos", "", (uint8_t)MMRegions::None },
 	{ "Cutscene Map", "", (uint8_t)MMRegions::None },
@@ -496,12 +512,12 @@ const SceneMetaInfo MMScenesMetaInfo[MM_GROTTO_WOODS_OF_MYSTERY_OPEN + 1] =
 	{ "Path to Mountain Village - Winter", "./Resources/MM/Path_to_Mountain_Village/Winter.png", (uint8_t)MMRegions::Path_to_Mountain_Village },
 	{ "Ancient Ikana Castle", "./Resources/MM/Ikana/Ancient_Ikana_Castle.png", (uint8_t)MMRegions::Dungeons },
 	{ "Deku's Playground", "./Resources/MM/Clock_Town/Deku_Playground.png", (uint8_t)MMRegions::Clock_Town },
-	{ "Odolwa's Lair", "./Resources/MM/Woodfall/Odolwa_Lair.png", (uint8_t)MMRegions::Dungeons },
-	{ "Shooting Gallery - Clock Town", "./Resources/MM/Clock_Town/Shooting_Gallery.png", (uint8_t)MMRegions::Clock_Town },
+	{ "Odolwa's Lair", "./Resources/MM/Woodfall/Odolwa_Lair.png", (uint8_t)MMRegions::None },
+	{ "Shooting Gallery", "./Resources/MM/Clock_Town/Shooting_Gallery.png", (uint8_t)MMRegions::Clock_Town },
 	{ "Snowhead Temple", "./Resources/MM/Snowhead/Temple.png", (uint8_t)MMRegions::Dungeons },
 	{ "Milk Road", "./Resources/MM/Milk_Road/Road.png", (uint8_t)MMRegions::Milk_Road },
 	{ "Pirate's Fortress - Interior", "./Resources/MM/Fortress/Interior.png", (uint8_t)MMRegions::Fortress },
-	{ "Shooting Gallery - Road to Southern Swamp", "./Resources/MM/Road_to_Southern_Swamp/Shooting_Gallery.png", (uint8_t)MMRegions::Southern_Swamp_Road },
+	{ "Shooting Gallery", "./Resources/MM/Road_to_Southern_Swamp/Shooting_Gallery.png", (uint8_t)MMRegions::Southern_Swamp_Road },
 	{ "Pinnacle Rock", "./Resources/MM/Great_Bay_Coast/Pinnacle_Rock.png", (uint8_t)MMRegions::Great_Bay_Coast },
 	{ "Fairy Fountain", "", (uint8_t)MMRegions::None },
 	{ "Spider's House - Southern Swamp", "./Resources/MM/Southern_Swamp/Spider_House.png", (uint8_t)MMRegions::Southern_Swamp },
@@ -519,25 +535,25 @@ const SceneMetaInfo MMScenesMetaInfo[MM_GROTTO_WOODS_OF_MYSTERY_OPEN + 1] =
 	{ "Zora's Theater", "./Resources/MM/Zora_Hall/Zora_Hall.png", (uint8_t)MMRegions::Zora_Hall },
 	{ "Trading Post", "./Resources/MM/Clock_Town/Trading_Post.png", (uint8_t)MMRegions::Clock_Town },
 	{ "Romani's Ranch", "./Resources/MM/Ranch/Romani_Ranch.png", (uint8_t)MMRegions::Ranch },
-	{ "Twinmold Lair", "./Resources/MM/Stone_Tower/Twinmold_Lair.png", (uint8_t)MMRegions::Dungeons },
+	{ "Twinmold Lair", "./Resources/MM/Stone_Tower/Twinmold_Lair.png", (uint8_t)MMRegions::None },
 	{ "Great Bay Coast", "./Resources/MM/Great_Bay_Coast/Great_Bay.png", (uint8_t)MMRegions::Great_Bay_Coast },
 	{ "Zora Cape", "./Resources/MM/Zora_Cape/Zora_Cape.png", (uint8_t)MMRegions::Zora_Cape },
 	{ "Lottery", "", (uint8_t)MMRegions::None },
 	{ "Snowhead - Spring", "./Resources/MM/Snowhead/Spring.png", (uint8_t)MMRegions::Snowhead },
 	{ "Pirate's Fortress - Entrance", "./Resources/MM/Fortress/Entrance.png", (uint8_t)MMRegions::Fortress },
-	{ "House - Fisherman", "./Resources/MM/Great_Bay_Coast/Fisherman_Hut.png", (uint8_t)MMRegions::Great_Bay_Coast },
-	{ "Shop - Goron", "./Resources/MM/Goron_Village/Goron_Shop.png", (uint8_t)MMRegions::Goron_Village },
+	{ "House - Fisherman", "./Resources/MM/Great_Bay_Coast/Fisherman_Hut.png", (uint8_t)MMRegions::None },
+	{ "Shop", "./Resources/MM/Goron_Village/Goron_Shop.png", (uint8_t)MMRegions::Goron_Village },
 	{ "Deku King's Chamber", "./Resources/MM/Southern_Swamp/Deku_King_Chamber.png", (uint8_t)MMRegions::Deku_Palace },
 	{ "Moon - Goron's Trial", "./Resources/MM/Moon/Goron.png", (uint8_t)MMRegions::Moon },
 	{ "Road to Southern Swamp", "./Resources/MM/Road_to_Southern_Swamp/Road.png", (uint8_t)MMRegions::Southern_Swamp_Road },
 	{ "Dog's Racetrack", "./Resources/MM/Ranch/Dog_Racetrack.png", (uint8_t)MMRegions::Ranch },
 	{ "Cucco's Shack", "./Resources/MM/Ranch/Cucco_Shack.png", (uint8_t)MMRegions::Ranch },
 	{ "Ikana Graveyard", "./Resources/MM/Graveyard/Graveyard.png", (uint8_t)MMRegions::Graveyard },
-	{ "Goht's Lair", "./Resources/MM/Snowhead/Goht_Lair.png", (uint8_t)MMRegions::Dungeons },
+	{ "Goht's Lair", "./Resources/MM/Snowhead/Goht_Lair.png", (uint8_t)MMRegions::None },
 	{ "Southern Swamp", "./Resources/MM/Southern_Swamp/Swamp.png", (uint8_t)MMRegions::Southern_Swamp },
 	{ "Woodfall", "./Resources/MM/Woodfall/Woodfall.png", (uint8_t)MMRegions::Woodfall },
 	{ "Moon - Zora's Trial", "./Resources/MM/Moon/Zora.png", (uint8_t)MMRegions::Moon },
-	{ "Goron's Village - Spring", "./Resources/MM/Goron_Village/Spring.png", (uint8_t)MMRegions::Goron_Village },
+	{ "Goron's Village - Spring", "./Resources/MM/Goron_Village/Spring.png", (uint8_t)MMRegions::None },
 	{ "Great Bay Temple", "./Resources/MM/Great_Bay_Coast/Temple.png", (uint8_t)MMRegions::Dungeons },
 	{ "Waterfall Rapids", "./Resources/MM/Zora_Cape/Waterfall_Rapids.png", (uint8_t)MMRegions::Zora_Cape },
 	{ "Beneath the Well", "./Resources/MM/Ikana_Canyon/Beneath_the_Well.png", (uint8_t)MMRegions::Ikana_Canyon },
@@ -551,7 +567,7 @@ const SceneMetaInfo MMScenesMetaInfo[MM_GROTTO_WOODS_OF_MYSTERY_OPEN + 1] =
 	{ "Road to Ikana", "./Resources/MM/Road_to_Ikana/Road.png", (uint8_t)MMRegions::Road_to_Ikana },
 	{ "Swordsman's School", "./Resources/MM/Clock_Town/Swordsman_School.png", (uint8_t)MMRegions::Clock_Town },
 	{ "House - Music Box", "./Resources/MM/Ikana_Canyon/Music_Box_House.png", (uint8_t)MMRegions::Ikana_Canyon },
-	{ "Ikana's Lair", "./Resources/MM/Dungeons/Ikana_Lair.png", (uint8_t)MMRegions::Dungeons },
+	{ "Ikana's Lair", "./Resources/MM/Dungeons/Ikana_Lair.png", (uint8_t)MMRegions::None },
 	{ "Tourist Information", "./Resources/MM/Southern_Swamp/Tourist_Information.png", (uint8_t)MMRegions::Southern_Swamp },
 	{ "Stone Tower", "./Resources/MM/Stone_Tower/Tower.png", (uint8_t)MMRegions::Stone_Tower },
 	{ "Stone Tower - Inverted", "./Resources/MM/Stone_Tower/Tower_Inverted.png", (uint8_t)MMRegions::Stone_Tower },
@@ -560,7 +576,7 @@ const SceneMetaInfo MMScenesMetaInfo[MM_GROTTO_WOODS_OF_MYSTERY_OPEN + 1] =
 	{ "Snowhead", "./Resources/MM/Snowhed/Snowhead.png", (uint8_t)MMRegions::Snowhead },
 	{ "Twin Islands - Winter", "./Resources/MM/Twin_Islands/Winter.png", (uint8_t)MMRegions::Twin_Islands },
 	{ "Twin Islands - Spring", "./Resources/MM/Twin_Islands/Spring.png", (uint8_t)MMRegions::Twin_Islands },
-	{ "Gyorg's Lair", "./Resources/MM/Great_Bay_Coast/Gyorg_Lair.png", (uint8_t)MMRegions::Dungeons },
+	{ "Gyorg's Lair", "./Resources/MM/Great_Bay_Coast/Gyorg_Lair.png", (uint8_t)MMRegions::None },
 	{ "Secret's Shrine", "./Resources/MM/Ikana_Canyon/Secret_Shrine.png", (uint8_t)MMRegions::Ikana_Canyon },
 	{ "Stock Pot Inn", "./Resources/MM/Clock_Town/Stock_Pot_Inn.png", (uint8_t)MMRegions::Clock_Town },
 	{ "Great Bay Cutscene", "", (uint8_t)MMRegions::None },
@@ -580,8 +596,9 @@ const SceneMetaInfo MMScenesMetaInfo[MM_GROTTO_WOODS_OF_MYSTERY_OPEN + 1] =
 	{ "Laundry Pool", "./Resources/MM/Clock_Town/Laundry Pool.png", (uint8_t)MMRegions::Clock_Town },
 	{ "Extra", "", (uint8_t)MMRegions::None },
 	{ "Lone Peak Shrine", "./Resources/MM/Goron_Village/Lone_Peak_Shrine.png", (uint8_t)MMRegions::Goron_Village },
-	{ "Shop - Zora", "./Resources/MM/Zora_Hall/Zora_Shop.png", (uint8_t)MMRegions::Zora_Hall },
+	{ "Shop", "./Resources/MM/Zora_Hall/Zora_Shop.png", (uint8_t)MMRegions::Zora_Hall },
 	{ "Evan's Room", "./Resources/MM/Zora_Hall/Evan_Room.png", (uint8_t)MMRegions::Zora_Hall },
+	{ "House - Stable", "./Resources/MM/Ranch/Stable.png", (uint8_t)MMRegions::Ranch },
 	{ "Grotto - Dodongo", "./Resources/MM/Termina/Dodongo.png", (uint8_t)MMRegions::Termina },
 	{ "Grotto - Ocean Gossip", "./Resources/MM/Termina/Ocean_Gossip.png", (uint8_t)MMRegions::Termina },
 	{ "Grotto - Canyon Gossip", "./Resources/MM/Termina/Canyon_Gossip.png", (uint8_t)MMRegions::Termina },
@@ -605,7 +622,7 @@ const SceneMetaInfo MMScenesMetaInfo[MM_GROTTO_WOODS_OF_MYSTERY_OPEN + 1] =
 	{ "Grotto - Generic", "./Resources/MM/Mountain_Village/Generic.png", (uint8_t)MMRegions::Mountain_Village },
 	{ "Grotto - Open", "./Resources/MM/Road_to_Southern_Swamp/Open.png", (uint8_t)MMRegions::Southern_Swamp_Road },
 	{ "Grotto - Open", "./Resources/MM/Southern_Swamp/Open.png", (uint8_t)MMRegions::Southern_Swamp },
-	{ "Grotto - Open", "./Resources/MM/Woods_of_Mystery/Woods_Open", (uint8_t)MMRegions::Woods_of_Mystery }
+	{ "Grotto - Open", "./Resources/MM/Woods_of_Mystery/Open", (uint8_t)MMRegions::Woods_of_Mystery }
 };
 
 enum OoT_Shops
