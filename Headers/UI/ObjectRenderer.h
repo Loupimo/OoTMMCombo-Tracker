@@ -70,13 +70,31 @@ public:
 };
 
 
+class ObjectPixmapItem : public QGraphicsPixmapItem
+{
+public:
+
+    ObjectRenderer* Owner;
+
+public:
+
+    ObjectPixmapItem(const QPixmap& Pixmap, ObjectRenderer* Owner);
+
+    void SetObjectOpacity(ObjectState ObjStatus);
+
+protected:
+
+    void mousePressEvent(QGraphicsSceneMouseEvent* event) override;
+};
+
+
 class ObjectItemTree : public CommonBaseItemTree
 {
 public:
 
     ObjectRenderer* RendererOwner = nullptr;
     ObjectInfo* Object;
-    QGraphicsPixmapItem* GraphItem = nullptr;
+    ObjectPixmapItem* GraphItem = nullptr;
     CommonBaseItemTree Item;
     QColor DefaultTextColor;
 
@@ -128,6 +146,7 @@ public:
     void AddObjectToRender(ObjectInfo* Obj, QColor DefaultColor);
     void UnloadObjectsFromScene();
     void UpdateObjectState(ObjectInfo* Object);
+    void CenterViewOn(ObjectPixmapItem* Target);
 
     size_t GetCollectedObject();
     size_t GetTotalObject();

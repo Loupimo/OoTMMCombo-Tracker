@@ -1,7 +1,9 @@
 #include "UI/ObjectRenderer.h"
 #include "UI/SceneRenderer.h"
+#include <QGraphicsColorizeEffect>
 
 static ObjectIcons* IconsRef = nullptr;
+static QGraphicsColorizeEffect t = QGraphicsColorizeEffect();
 
 ObjectIcons::ObjectIcons()
 {
@@ -69,8 +71,9 @@ void ObjectItemTree::UpdateIcon(ObjectType Type)
 {
     if (this->GraphItem == nullptr)
     {
-        this->GraphItem = new QGraphicsPixmapItem(IconsRef->PixmapIcons[Type]);
+        this->GraphItem = new ObjectPixmapItem(IconsRef->PixmapIcons[Type], this->RendererOwner);
     }
+    this->GraphItem->SetObjectOpacity(this->Object->Status);
     this->GraphItem->setPos(this->Object->Position[0], this->Object->Position[1]);
     this->RendererOwner->SceneOwner->addItem(this->GraphItem);
     this->UpdateTextStyle();
@@ -128,6 +131,8 @@ void ObjectItemTree::PerformAction()
         this->Object->Status = ObjectState::Forced;
         this->setExpanded(true);
         this->RendererOwner->RefreshObjectCounts(1);
+        this->RendererOwner->CenterViewOn(this->GraphItem);
+        this->GraphItem->SetObjectOpacity(this->Object->Status);
     }
     else if (this->Object->Status == ObjectState::Forced)
     {   // The item was shown and should now be hidden
@@ -135,9 +140,52 @@ void ObjectItemTree::PerformAction()
         this->Object->Status = ObjectState::Hidden;
         this->setExpanded(false);
         this->RendererOwner->RefreshObjectCounts(-1);
+        this->GraphItem->SetObjectOpacity(this->Object->Status);
     }
 
     this->UpdateTextStyle();
+}
+
+
+ObjectPixmapItem::ObjectPixmapItem(const QPixmap& Pixmap, ObjectRenderer* Owner) : QGraphicsPixmapItem(Pixmap)
+{
+    this->Owner = Owner;
+}
+
+void ObjectPixmapItem::SetObjectOpacity(ObjectState ObjStatus)
+{
+    switch (ObjStatus)
+    {
+        // The object has been collected
+        case ObjectState::Collected:
+        {
+            this->setOpacity(0.5);
+            break;
+        }
+
+        // The object is forced to be reveal
+        case ObjectState::Forced:
+        {
+            this->setOpacity(0.65);
+            break;
+        }
+
+        // The object is considered as not revealed
+        default:
+        {
+            this->setOpacity(1);
+            break;
+        }
+    }
+}
+
+void ObjectPixmapItem::mousePressEvent(QGraphicsSceneMouseEvent* event)
+{
+    if (this->Owner)
+    {
+        this->Owner->CenterViewOn(this);  // Centre la vue sur l'icône cliquée
+    }
+    QGraphicsPixmapItem::mousePressEvent(event); // Appelle le comportement par défaut
 }
 
 
@@ -230,6 +278,12 @@ void ObjectRenderer::UpdateObjectState(ObjectInfo* Object)
             break;
         }
     }
+}
+
+
+void ObjectRenderer::CenterViewOn(ObjectPixmapItem* Target)
+{
+    this->SceneOwner->CenterViewOn(Target);
 }
 
 

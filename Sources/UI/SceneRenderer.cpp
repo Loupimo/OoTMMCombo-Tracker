@@ -1,5 +1,6 @@
 #include "UI/SceneRenderer.h"
 #include "UI/RegionTab.h"
+#include "UI/MapTab.h"
 
 // Constructeur pour initialiser la structure
 SceneInfo::SceneInfo(int PSceneID, int PGameID, SceneType PType)
@@ -316,4 +317,10 @@ void SceneItemTree::ItemFound(ObjectInfo* Object, const ItemInfo* Item)
         Object->Status = ObjectState::Collected;
         Object->Item = Item;
     }
+}
+
+
+void SceneRenderer::CenterViewOn(ObjectPixmapItem* Target)
+{
+    this->views()[0]->centerOn(Target);
 }

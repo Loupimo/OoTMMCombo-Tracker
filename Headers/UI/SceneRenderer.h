@@ -10,7 +10,7 @@
 #include "Multi/Game.h"
 #include "ObjectRenderer.h"
 
-class SceneItemTree;
+class SceneRenderer;
 
 enum SceneType
 {
@@ -60,6 +60,62 @@ public:
     */
     ~SceneInfo();
 
+};
+
+
+/*
+*   As the scenes are not sorted in alphabetic order this class act as a wrapper between the clicked tree widget item and the actual scene it refers to.
+*/
+class SceneItemTree : public QTreeWidgetItem
+{
+
+#pragma region Attributes
+
+public:
+
+    int FoundObjects = 0;
+    int TotalObjects = 0;
+
+    SceneInfo* Scene = nullptr;
+    SceneRenderer* Renderer = nullptr;   // The associated scene to load when this item is active.
+
+#pragma endregion
+
+public:
+
+    /*
+    *   Construct the associated scene and tree item and it to the given parent.
+    *
+    *   @param SceneToRender       The actual scene information used to create the scene.
+    *   @param Parent              The parent tree item to attach this item to.
+    */
+    SceneItemTree(SceneInfo* SceneToRender, QTreeWidgetItem* Parent = nullptr);
+
+    /*
+    *   Default destructor.
+    */
+    ~SceneItemTree();
+
+    /*
+    *   Render the scene associated to this item.
+    *
+    *   @param ObjectsTreeWidget   The object tree list to fill when this scene is active.
+    */
+    void RenderScene(QTreeWidget* ObjectsTreeWidget);
+
+    /*
+    *   Unload the scene associated to this item.
+    */
+    void UnloadScene();
+
+    const char* GetSceneName();
+    int GetCollectedObjects();
+
+    int GetTotalObjects();
+
+    void RefreshObjectCounts(int Count);
+
+    void ItemFound(ObjectInfo* Object, const ItemInfo* Item);
 };
 
 
@@ -139,6 +195,8 @@ public:
     */
     void ItemFound(ObjectInfo* Object, const ItemInfo* ItemFound);
 
+    void CenterViewOn(ObjectPixmapItem* Target);
+
 protected:
 
     /*
@@ -150,60 +208,3 @@ protected:
     */
     ObjectRenderer* FindObjectRendererCategory(ObjectInfo* Object);
 };
-
-
-/*
-*   As the scenes are not sorted in alphabetic order this class act as a wrapper between the clicked tree widget item and the actual scene it refers to.
-*/
-class SceneItemTree : public QTreeWidgetItem
-{
-
-#pragma region Attributes
-
-public:
-
-    int FoundObjects = 0;
-    int TotalObjects = 0;
-
-    SceneInfo* Scene = nullptr;
-    SceneRenderer* Renderer = nullptr;   // The associated scene to load when this item is active.
-
-#pragma endregion
-
-public:
-
-    /*
-    *   Construct the associated scene and tree item and it to the given parent.
-    *
-    *   @param SceneToRender       The actual scene information used to create the scene.
-    *   @param Parent              The parent tree item to attach this item to.
-    */
-    SceneItemTree(SceneInfo* SceneToRender, QTreeWidgetItem * Parent = nullptr);
-
-    /*
-    *   Default destructor.
-    */
-    ~SceneItemTree();
-
-    /*
-    *   Render the scene associated to this item.
-    * 
-    *   @param ObjectsTreeWidget   The object tree list to fill when this scene is active.
-    */
-    void RenderScene(QTreeWidget* ObjectsTreeWidget);
-
-    /*
-    *   Unload the scene associated to this item.
-    */
-    void UnloadScene();
-
-    const char * GetSceneName();
-    int GetCollectedObjects();
-    
-    int GetTotalObjects();
-
-    void RefreshObjectCounts(int Count);
-
-    void ItemFound(ObjectInfo* Object, const ItemInfo* Item);
-};
-

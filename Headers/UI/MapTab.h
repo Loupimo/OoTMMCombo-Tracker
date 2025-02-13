@@ -12,6 +12,30 @@
 #include "ui_OoTMMComboTracker.h"
 #include "SceneRenderer.h"
 
+class MapView : public QGraphicsView
+{
+    Q_OBJECT
+
+
+public:
+    explicit MapView(QWidget* parent = nullptr) : QGraphicsView(parent)
+    {
+        setRenderHint(QPainter::Antialiasing);
+        setRenderHint(QPainter::SmoothPixmapTransform);
+        setTransformationAnchor(QGraphicsView::AnchorUnderMouse);  // Zoom centré sur la souris
+        setDragMode(QGraphicsView::ScrollHandDrag);  // Permet de déplacer la vue avec la souris
+    }
+
+protected:
+    void wheelEvent(QWheelEvent* event) override
+    {
+        const double scaleFactor = 1.15; // Facteur de zoom
+        if (event->angleDelta().y() > 0)
+            scale(scaleFactor, scaleFactor);  // Zoom avant
+        else
+            scale(1.0 / scaleFactor, 1.0 / scaleFactor);  // Zoom arrière
+    }
+};
 
 
 class MapTab : public QWidget
@@ -33,7 +57,7 @@ public:
     QSplitter* LayoutSplitter;
 
     // Main View
-    QGraphicsView* View;
+    MapView* View;
 
     // Map Tree
     QLineEdit* MapSearchBar;

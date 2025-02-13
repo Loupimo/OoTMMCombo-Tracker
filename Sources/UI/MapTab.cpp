@@ -35,7 +35,7 @@ MapTab::MapTab(int Game, SceneInfo* Scenes, size_t NumOfScenes, QWidget* parent)
     this->ObjectContainer->setHidden(true);
 
     // Zone graphique pour la carte
-    this->View = new QGraphicsView();
+    this->View = new MapView();
 
     // Panneau latéral
     QLabel* mapLabel = new QLabel("Maps");
@@ -57,7 +57,7 @@ MapTab::MapTab(int Game, SceneInfo* Scenes, size_t NumOfScenes, QWidget* parent)
                 this->Regions.push_back(currRegion);
             }
             SceneItemTree * tmp = new SceneItemTree(&Scenes[i], currRegion);
-            currRegion->setExpanded(true);
+            //currRegion->setExpanded(true);
             currRegion->AddObjectCounts(tmp->GetCollectedObjects(), tmp->GetTotalObjects());
             currRegion->RefreshObjsCountText();
             this->Scenes.insert(Scenes[i].SceneID, tmp);
@@ -94,19 +94,20 @@ MapTab::MapTab(int Game, SceneInfo* Scenes, size_t NumOfScenes, QWidget* parent)
     QObject::connect(this->ObjectSearchBar, &QLineEdit::textChanged, [&](const QString& text) {
         this->FilterTree(this->ObjectList, text);
     });
+
 }
 
 MapTab::~MapTab()
 {
     this->RenderedScene = nullptr;
-    this->MapList->~QTreeWidget();
-    this->ObjectList->~QTreeWidget();
-    this->View->~QGraphicsView();
-    this->ObjectTreeLayout->~QVBoxLayout();
-    this->MapTreeLayout->~QVBoxLayout();
-    this->MapContainer->~QWidget();
-    this->ObjectContainer->~QWidget();
-    this->MainLayout->~QHBoxLayout();
+    delete this->MapList;
+    delete this->ObjectList;
+    delete this->View;
+    delete this->ObjectTreeLayout;
+    delete this->MapTreeLayout;
+    delete this->MapContainer;
+    delete this->ObjectContainer;
+    delete this->MainLayout;
 }
 
 void MapTab::RenderMap()
