@@ -3345,7 +3345,7 @@ CreateEmptyScene(CLOCK_TOWER_INTERIOR)
 CreateEmptyScene(MM_LOST_WOODS)
 CreateEmptyScene(GIANT_CHAMBER)
 
-SceneObjects MMSceneObjects[MM_GROTTO_WOODS_OF_MYSTERY_OPEN + 1] =
+SceneObjects MMSceneObjects[MM_NUM_SCENES] =
 {
 	CreateSceneObjects(SOUTHERN_SWAMP_CLEAR),
 	CreateSceneObjects(MM_FAIRY_SNOWHEAD),

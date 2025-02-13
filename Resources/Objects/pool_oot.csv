@@ -1454,8 +1454,8 @@ MASK_SELL_KEATON;KAKARIKO_VILLAGE;Keaton Mask;Kakariko Sell Keaton Mask;npc;0;0;
 0x00206;KOKIRI_FOREST;Crawl 2;Kokiri Forest Wonder Item Crawl 2;wonder;0;0;KOKIRI_FOREST
 0x00021;KOKIRI_FOREST;Platforms 1;Kokiri Forest Wonder Item Platforms 1;wonder;0;0;KOKIRI_FOREST
 0x00026;KOKIRI_FOREST;Platforms 2;Kokiri Forest Wonder Item Platforms 2;wonder;0;0;KOKIRI_FOREST
-0x0006;KOKIRI_KNOW_IT_ALL;Pot 1;Know It All House Pot 1;pot;0;0;KOKIRI_KNOW_IT_ALL
-0x0007;KOKIRI_KNOW_IT_ALL;Pot 2;Know It All House Pot 2;pot;0;0;KOKIRI_KNOW_IT_ALL
+0x0006;KOKIRI_KNOW_IT_ALL;Pot 1;Know It All House Pot 1;pot;972;505;KOKIRI_KNOW_IT_ALL
+0x0007;KOKIRI_KNOW_IT_ALL;Pot 2;Know It All House Pot 2;pot;840;234;KOKIRI_KNOW_IT_ALL
 0x00;KOKIRI_MIDO;Top Left;Mido's House Top Left;chest;0;0;KOKIRI_MIDO
 0x01;KOKIRI_MIDO;Top Right;Mido's House Top Right;chest;0;0;KOKIRI_MIDO
 0x02;KOKIRI_MIDO;Bottom Left;Mido's House Bottom Left;chest;0;0;KOKIRI_MIDO

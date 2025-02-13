@@ -14,7 +14,6 @@ SceneInfo::SceneInfo(int PSceneID, int PGameID, SceneType PType)
     const ObjectInfo* arrObj = nullptr;
 
     this->Objects = &GetGameSceneObjects(PGameID)[this->SceneID];
-    this->Objects->Owner = this;
 }
 
 // Destructeur pour libérer la mémoire
@@ -145,6 +144,7 @@ void SceneRenderer::UnloadScene()
 
 void SceneRenderer::RefreshObjectCounts(int Count)
 {
+    this->ItemOwner->FoundObjects += Count;
     this->ItemOwner->RefreshObjectCounts(Count);
 }
 
@@ -168,6 +168,7 @@ void SceneRenderer::ItemFound(ObjectInfo* Object, const ItemInfo* ItemFound)
     if (Object->Status == ObjectState::Hidden)
     {   // The object is not already counted
 
+        this->ItemOwner->FoundObjects++;
         this->ItemOwner->RefreshObjectCounts(1);
     }
 
@@ -197,8 +198,15 @@ ObjectRenderer* SceneRenderer::FindObjectRendererCategory(ObjectInfo* Object)
 SceneItemTree::SceneItemTree(SceneInfo* SceneToRender, QTreeWidgetItem* Parent) : QTreeWidgetItem(Parent)
 {
     this->Scene = SceneToRender;
+    this->CountSceneObjects();
+    this->RefreshObjectCounts(0);
+}
 
-    // Initialize the object counters
+
+void SceneItemTree::CountSceneObjects()
+{
+    this->FoundObjects = 0;
+    this->TotalObjects = 0;
     for (size_t i = 0; i < this->Scene->Objects->NumOfObjs; i++)
     {   // Browse each scene objects
 
@@ -217,8 +225,6 @@ SceneItemTree::SceneItemTree(SceneInfo* SceneToRender, QTreeWidgetItem* Parent) 
             this->FoundObjects++;
         }
     }
-
-    this->RefreshObjectCounts(0);
 }
 
 
@@ -263,7 +269,6 @@ void SceneItemTree::RefreshObjectCounts(int Count)
 {
     ((RegionTree*)this->parent())->AddObjectCounts(Count, 0);
     ((RegionTree*)this->parent())->RefreshObjsCountText();
-    this->FoundObjects += Count;
 
     const size_t max_size = 150;
     char finalName[max_size] = { 0 };
@@ -312,6 +317,7 @@ void SceneItemTree::ItemFound(ObjectInfo* Object, const ItemInfo* Item)
         if (Object->Status == ObjectState::Hidden)
         {   // The object is not already counted
 
+            this->FoundObjects++;
             this->RefreshObjectCounts(1);
         }
         Object->Status = ObjectState::Collected;

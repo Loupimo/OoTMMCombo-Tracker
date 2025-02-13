@@ -2293,8 +2293,8 @@ CreateObjectsForScene(BACK_ALLEY_HOUSE, 3,
 		{ 0x00, KOKIRI_FOREST, "Cow", "Kokiri Forest Cow", ObjectType::cow, {910, 611}, LINK_HOUSE })
 
 	CreateObjectsForScene(KOKIRI_KNOW_IT_ALL, 2,
-		{ 0x0006, KOKIRI_KNOW_IT_ALL, "Pot 1", "Know It All House Pot 1", ObjectType::pot, {0, 0}, KOKIRI_KNOW_IT_ALL },
-		{ 0x0007, KOKIRI_KNOW_IT_ALL, "Pot 2", "Know It All House Pot 2", ObjectType::pot, {0, 0}, KOKIRI_KNOW_IT_ALL })
+		{ 0x0006, KOKIRI_KNOW_IT_ALL, "Pot 1", "Know It All House Pot 1", ObjectType::pot, {972, 505}, KOKIRI_KNOW_IT_ALL },
+		{ 0x0007, KOKIRI_KNOW_IT_ALL, "Pot 2", "Know It All House Pot 2", ObjectType::pot, {840, 234}, KOKIRI_KNOW_IT_ALL })
 
 	CreateObjectsForScene(KOKIRI_MIDO, 4,
 		{ 0x00, KOKIRI_MIDO, "Top Left", "Mido's House Top Left", ObjectType::chest, {0, 0}, KOKIRI_MIDO },
@@ -4107,7 +4107,7 @@ CreateEmptyScene(CASTLE_MAZE_NIGHT)
 CreateEmptyScene(OOT_CUTSCENE_MAP)
 CreateEmptyScene(GANON_BATTLE_ARENA)
 
-SceneObjects OoTSceneObjects[WINDMILL + 1] =
+SceneObjects OoTSceneObjects[OOT_NUM_SCENES] =
 {
 	CreateSceneObjects(DEKU_TREE),
 	CreateSceneObjects(DODONGO_CAVERN),

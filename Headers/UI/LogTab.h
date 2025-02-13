@@ -1,6 +1,5 @@
 #pragma once
 
-#include <QMainWindow>
 #include <QPlainTextEdit>
 #include <QGroupBox>
 #include <QVBoxLayout>
@@ -14,6 +13,8 @@
 #include "Multi/App.h"
 #include <thread>
 
+class OoTMMComboTracker;
+
 class LogTab : public QWidget
 {
     Q_OBJECT
@@ -24,8 +25,17 @@ public:
     QVBoxLayout* MainLayout;
     QVBoxLayout* NetLayout;
     QHBoxLayout* MultiLayout;
+    QHBoxLayout* FileLayout;
     QGroupBox* LaunchGroup;
+
     QPushButton* LaunchButton;
+
+    // Save / Load options
+    QPushButton* SaveButton;
+    QPushButton* LoadButton;
+    QPushButton* LoadSpoilerButton;
+
+    // Network options
     QCheckBox* NetCheckBox;
     QPlainTextEdit* LogViewer;
     QLineEdit* Host;
@@ -34,17 +44,21 @@ public:
     bool EnableMultiplayer;
     bool IsRunning;
 
-    App * Tracker;
+    App * Tracker; 
+    OoTMMComboTracker* WinOwner = nullptr;
     std::thread TrackerThread;
 
 #pragma endregion
 
 public:
-    LogTab(QWidget* parent = nullptr);
+    LogTab(OoTMMComboTracker* Owner, QWidget* parent = nullptr);
     ~LogTab();
 
     void ToggleNetOption(int state);
     void PressLaunchButton();
+    void SaveTracking();
+    void LoadTracking();
+    void LoadSpoiler();
 
 public slots:
     void LogMessage(const QString& Message);

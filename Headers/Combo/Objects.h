@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QObject>
+#include <QFile>
 #include "Multi/API.h"
 #include "Scenes.h"
 #include "NPC.h"
@@ -55,6 +56,12 @@ typedef struct ObjectInfo
 	const ItemInfo* Item;							// The item contained in the object
 	ObjectState Status = ObjectState::Hidden;		// The status object
 	bool PosSet = false;							// Tells if the position has already been set.
+
+public:
+
+	void SaveObject(QFile* SaveFile);
+	size_t LoadObject(QByteArray* Data, size_t Offset);
+
 } ObjectInfo;
 
 
@@ -63,7 +70,7 @@ typedef struct SceneObjects
 	uint32_t SceneID;
 	const size_t NumOfObjs;
 	ObjectInfo* Objects;
-	class SceneInfo* Owner;
+
 } SceneObjects;
 
 /* This macro define static arrays and size arrays that contains all objects of a specific scene */
@@ -77,7 +84,7 @@ const size_t SceneID##NumOfObjs = 0; \
 ObjectInfo * SceneID##SceneObjects = nullptr;
 
 /* This macro create a SceneObjects structure based on the given SceneID */
-#define CreateSceneObjects(SceneID) { SceneID, SceneID##NumOfObjs, SceneID##SceneObjects, nullptr }
+#define CreateSceneObjects(SceneID) { SceneID, SceneID##NumOfObjs, SceneID##SceneObjects }
 
 
 const char* const ObjTypeName[ObjectType::fairy + 1] =
@@ -109,3 +116,8 @@ const char* const ObjTypeName[ObjectType::fairy + 1] =
 
 SceneObjects* GetGameSceneObjects(uint32_t GameID);
 ObjectInfo* FindObject(ComboItem Item);
+
+void SaveSceneObjects(QFile* SaveFile);
+void SaveSceneObjectsFor(QFile* SaveFile, SceneObjects* Array, size_t NumOfScenes);
+void LoadSceneObjects(QByteArray* Data, size_t Offset);
+size_t LoadSceneObjectsFor(QByteArray* Data, size_t Offset, SceneObjects* Array, size_t NumOfScenes);

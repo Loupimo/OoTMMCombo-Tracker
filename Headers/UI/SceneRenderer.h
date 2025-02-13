@@ -4,6 +4,7 @@
 #include <QGraphicsScene>
 #include <QPixmap>
 #include <QTreeWidget>
+#include <QFile>
 #include "Combo/Objects.h"
 #include "Combo/Scenes.h"
 #include "Combo/Items.h"
@@ -59,7 +60,6 @@ public:
     *   Default destructor.
     */
     ~SceneInfo();
-
 };
 
 
@@ -113,6 +113,7 @@ public:
 
     int GetTotalObjects();
 
+    void CountSceneObjects();
     void RefreshObjectCounts(int Count);
 
     void ItemFound(ObjectInfo* Object, const ItemInfo* Item);

@@ -99,4 +99,6 @@ public:
     *   @warning This should be executed by the main thread only at it can modify the GUI elements.
     */
     void ItemFound(ObjectInfo* Object, const ItemInfo* ItemFound);
+
+    void RefreshScenesObjectCounts();
 };

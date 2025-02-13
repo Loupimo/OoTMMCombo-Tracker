@@ -1,3 +1,4 @@
+#include "Combo/Objects.h"
 #include "UI/OoTMMComboTracker.h"
 
 OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
@@ -7,7 +8,7 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
 
     this->TabWidget = new QTabWidget;
 
-    this->Log = new LogTab();
+    this->Log = new LogTab(this);
     this->TabWidget->addTab(this->Log, "Launch");
     this->TabWidget->addTab(&this->OoTTab, this->OoTTab.TabName);
     this->TabWidget->addTab(&this->MMTab, this->MMTab.TabName);
@@ -52,4 +53,34 @@ void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, c
             break;
         }
     }
+}
+
+
+void OoTMMComboTracker::LoadGameScenes(QString FilePath)
+{
+    //GameTab::LoadGameScenes(FilePath);
+    QFile loadFile(FilePath);
+    if (!loadFile.open(QIODevice::ReadOnly))
+    {
+        MultiLogger::LogMessage("Can't open file: %s\n", FilePath.toStdString().c_str());
+        return;
+    }
+
+    QByteArray data = loadFile.readAll();
+
+    LoadSceneObjects(&data, 0);
+    loadFile.close();
+
+    MultiLogger::LogMessage("File loaded: %s\n", FilePath.toStdString().c_str());
+
+    this->OoTTab.RefreshGameTab();
+    this->MMTab.RefreshGameTab();
+}
+
+
+void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
+{
+    GameTab::LoadGameSpoiler(FilePath);
+    this->OoTTab.RefreshGameTab();
+    this->MMTab.RefreshGameTab();
 }

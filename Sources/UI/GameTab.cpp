@@ -12,7 +12,6 @@
 const size_t Prefix##Size = NumOfScenes;              \
 SceneInfo Prefix##Scenes[Prefix##Size] = { __VA_ARGS__ };
 
-
 CreateInfoScenes(WINDMILL + 1, OoTOverworld,
     CreateOverworldScene(DEKU_TREE, OOT_GAME),
     CreateOverworldScene(DODONGO_CAVERN, OOT_GAME),
@@ -313,26 +312,13 @@ CreateInfoScenes(MM_GROTTO_WOODS_OF_MYSTERY_OPEN + 1, MMOverworld,
 GameTab::GameTab(int GameID, QWidget* parent) : QWidget(parent)
 {
 	this->GameID = GameID;
-	if (GameID == OOT_GAME)
-	{	// Ocarina of time
-
-		this->TabName = "OoT";
-        this->GameMaps = new MapTab(OOT_GAME, OoTOverworldScenes, OoTOverworldSize);
-	}
-	else
-	{	// Majora's mask
-
-		this->TabName = "MM";
-        this->GameMaps = new MapTab(MM_GAME, MMOverworldScenes, MMOverworldSize);
-	}
 
     // Layout principal
     this->MainLayout = new QHBoxLayout;
 
-
+    this->LoadGameTab();
 
     // Ajouter à la mise en page principale
-    this->MainLayout->addWidget(this->GameMaps);
     this->setLayout(this->MainLayout);
 }
 
@@ -343,8 +329,83 @@ GameTab::~GameTab()
     this->MainLayout->~QHBoxLayout();
 }
 
-
 void GameTab::ItemFound(ObjectInfo* Object, const ItemInfo* Item)
 {
     this->GameMaps->ItemFound(Object, Item);
+}
+
+void GameTab::LoadGameTab()
+{
+    if (this->GameMaps)
+    {   // The maps already existed
+
+        this->MainLayout->removeWidget(this->GameMaps);
+        delete this->GameMaps;
+    }
+
+    if (GameID == OOT_GAME)
+    {	// Ocarina of time
+
+        this->TabName = "OoT";
+        this->GameMaps = new MapTab(OOT_GAME, OoTOverworldScenes, OoTOverworldSize);
+    }
+    else
+    {	// Majora's mask
+
+        this->TabName = "MM";
+        this->GameMaps = new MapTab(MM_GAME, MMOverworldScenes, MMOverworldSize);
+    }
+
+    this->MainLayout->addWidget(this->GameMaps);
+}
+
+void GameTab::RefreshGameTab()
+{
+    this->GameMaps->RefreshScenesObjectCounts();
+}
+
+
+void GameTab::SaveGameScenes(QString FilePath)
+{
+    QFile saveFile(FilePath);
+    if (!saveFile.open(QIODevice::WriteOnly))
+    {
+        MultiLogger::LogMessage("Can't open file: %s\n", FilePath.toStdString().c_str());
+        return;
+    }
+    
+    SaveSceneObjects(&saveFile);
+    //GameTab::SaveOoTScenes(&saveFile);
+    //GameTab::SaveMMScenes(&saveFile);
+    saveFile.close();
+
+    MultiLogger::LogMessage("File saved: %s\n", FilePath.toStdString().c_str());
+}
+
+void GameTab::SaveOoTScenes(QFile* SaveFile)
+{
+    /*for (size_t i = 0; i < OoTOverworldSize; i++)
+    {   // Save all OoT Scenes
+
+        OoTOverworldScenes[i].SaveScene(SaveFile);
+    }*/
+}
+
+void GameTab::SaveMMScenes(QFile* SaveFile)
+{
+    /*for (size_t i = 0; i < MMOverworldSize; i++)
+    {   // Save all MM Scenes
+
+        MMOverworldScenes[i].SaveScene(SaveFile);
+    }*/
+}
+
+void GameTab::LoadGameScenes(QString FilePath)
+{
+
+}
+
+void GameTab::LoadGameSpoiler(QString FilePath)
+{
+
 }

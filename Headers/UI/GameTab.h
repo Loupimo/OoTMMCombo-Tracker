@@ -3,6 +3,7 @@
 #include <QMainWindow>
 #include <QGraphicsView>
 #include <QVBoxLayout>
+#include <QFile>
 #include "MapTab.h"
 #include "UI/SceneRenderer.h"
 
@@ -27,4 +28,15 @@ public:
     ~GameTab();
 
     void ItemFound(ObjectInfo* Object, const ItemInfo* Item);
+    void LoadGameTab();
+    void RefreshGameTab();
+
+    static void SaveGameScenes(QString FilePath);
+    static void LoadGameScenes(QString FilePath);
+    static void LoadGameSpoiler(QString FilePath);
+
+protected:
+
+    static void SaveOoTScenes(QFile* SaveFile);
+    static void SaveMMScenes(QFile* SaveFile);
 };

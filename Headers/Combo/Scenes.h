@@ -179,8 +179,10 @@ typedef struct SceneMetaInfo
 #define MQ_GERUDO_TRAINING_GROUND				0x9c
 #define MQ_INSIDE_GANON_CASTLE					0x9d
 
+#define OOT_NUM_SCENES							WINDMILL + 1	// OOT and OOT MQ have the same number of scenes
 
-const SceneMetaInfo OoTScenesMetaInfo[WINDMILL + 1] =
+
+const SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 {
 	{ "Deku Tree", "./Resources/OoT/Dungeons/Deku_Tree.png", (uint8_t)OoTRegions::Dungeons },
 	{ "Dodongo's Cavern", "./Resources/OoT/Dungeons/Dodongo_Cavern.png", (uint8_t)OoTRegions::Dungeons },
@@ -478,8 +480,10 @@ const SceneMetaInfo OoTScenesMetaInfo[WINDMILL + 1] =
 #define MM_GROTTO_SOUTHERN_SWAMP_OPEN			0x8c	// Southern swamp generic open
 #define MM_GROTTO_WOODS_OF_MYSTERY_OPEN			0x8d	// Woods of mystery generic open
 
+#define MM_NUM_SCENES							MM_GROTTO_WOODS_OF_MYSTERY_OPEN + 1
 
-const SceneMetaInfo MMScenesMetaInfo[MM_GROTTO_WOODS_OF_MYSTERY_OPEN + 1] =
+
+const SceneMetaInfo MMScenesMetaInfo[MM_NUM_SCENES] =
 {
 	{ "Southern Swamp - Clear", "", (uint8_t)MMRegions::None },
 	{ "Fairy Fountain", "./Resources/MM/Snowhead/Fairy_Fountain.png", (uint8_t)MMRegions::Snowhead },

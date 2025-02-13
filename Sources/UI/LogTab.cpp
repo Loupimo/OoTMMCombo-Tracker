@@ -1,12 +1,33 @@
+#include <QFileDialog>
 #include "UI/LogTab.h"
+#include "UI/GameTab.h"
+#include "UI/OoTMMComboTracker.h"
 
-LogTab::LogTab(QWidget* parent) : QWidget(parent)
+LogTab::LogTab(OoTMMComboTracker* Owner, QWidget* parent) : QWidget(parent)
 {
+    this->WinOwner = Owner;
+
     this->IsRunning = false;
     this->EnableMultiplayer = false;
 
     // Conteneur principal encadré
     this->LaunchGroup = new QGroupBox("Launch Options");
+    this->FileLayout = new QHBoxLayout();
+
+    // Save tracking
+    this->SaveButton = new QPushButton("Save Tracking");
+    QObject::connect(this->SaveButton, &QPushButton::pressed, this, &LogTab::SaveTracking);
+    this->FileLayout->addWidget(this->SaveButton);
+
+    // Load tracking
+    this->LoadButton = new QPushButton("Load Tracking");
+    QObject::connect(this->LoadButton, &QPushButton::pressed, this, &LogTab::LoadTracking);
+    this->FileLayout->addWidget(this->LoadButton);
+
+    // Load spoiler
+    this->LoadSpoilerButton = new QPushButton("Load Spoiler Log");
+    QObject::connect(this->LoadSpoilerButton, &QPushButton::pressed, this, &LogTab::LoadSpoiler);
+    this->FileLayout->addWidget(this->LoadSpoilerButton);
 
     // Bouton avec texte
     this->LaunchButton = new QPushButton("Start Tracking");
@@ -44,6 +65,7 @@ LogTab::LogTab(QWidget* parent) : QWidget(parent)
 
     // Layout pour aligner les widgets verticalement
     this->NetLayout = new QVBoxLayout;
+    this->NetLayout->addLayout(this->FileLayout);
     this->NetLayout->addLayout(this->MultiLayout);   // Ajouter la checkbox
     this->NetLayout->addWidget(this->LaunchButton);  // Ajouter le bouton
 
@@ -139,4 +161,34 @@ void LogTab::LogMessage(const QString& Message)
 {
     this->LogViewer->appendPlainText(Message);
     this->LogViewer->verticalScrollBar()->setValue(this->LogViewer->verticalScrollBar()->maximum());
+}
+
+void LogTab::SaveTracking()
+{
+    QString filePath = QFileDialog::getSaveFileName(this, "Choose a file name", "", "Tracking Files (*.trck)");
+
+    if (!filePath.isEmpty())
+    {
+        GameTab::SaveGameScenes(filePath);
+    }
+}
+
+void LogTab::LoadTracking()
+{
+    QString filePath = QFileDialog::getOpenFileName(this, "Choose a tracking file", "", "Tracking Files (*.trck)");
+
+    if (!filePath.isEmpty())
+    {
+        this->WinOwner->LoadGameScenes(filePath);
+    }
+}
+
+void LogTab::LoadSpoiler()
+{
+    QString filePath = QFileDialog::getOpenFileName(this, "Choose a spoiler log", "", "Text Files (*.txt)");
+
+    if (!filePath.isEmpty())
+    {
+        this->WinOwner->LoadGameSpoiler(filePath);
+    }
 }

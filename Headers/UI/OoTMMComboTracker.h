@@ -22,6 +22,8 @@ public:
     OoTMMComboTracker(QWidget *parent = nullptr);
     ~OoTMMComboTracker();
 
+    void LoadGameScenes(QString FilePath);
+    void LoadGameSpoiler(QString FilePath);
 
 public slots:
     /*

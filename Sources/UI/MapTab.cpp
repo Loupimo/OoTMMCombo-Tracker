@@ -204,3 +204,23 @@ void MapTab::ItemFound(ObjectInfo* Object, const ItemInfo* ItemFound)
 {
     this->Scenes[Object->RenderScene]->ItemFound(Object, ItemFound);
 }
+
+void MapTab::RefreshScenesObjectCounts()
+{
+    for (SceneItemTree * currScene : this->Scenes)
+    {   // Browse all scenes
+
+        uint32_t tmpCount = currScene->GetCollectedObjects();
+
+        if (currScene == this->RenderedScene)
+        {   // Update the object list and the renderer
+
+            this->UnloadMap();
+            this->RenderedScene = currScene;
+            this->RenderMap();
+        }
+
+        currScene->CountSceneObjects();
+        currScene->RefreshObjectCounts(currScene->GetCollectedObjects() - tmpCount);
+    }
+}

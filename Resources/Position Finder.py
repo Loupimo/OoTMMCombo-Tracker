@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import os
 
 colors = {"Grass": np.array([0, 128, 0]),
           "FS": np.array([255, 228, 196]),
@@ -43,13 +44,16 @@ def find_points(image_path, colorstr):
             cy = int(M["m01"] / M["m00"])  # Coordonnée Y
             coordinates.append((cx, cy))
 
-    print("QList<QPair<int, int>> " + colorstr + "Points = {\n")
+    if len(coordinates) == 0:
+        return coordinates, ""
+    coordStr = "QList<QPair<int, int>> " + colorstr + "Points = {\n"
     # Affichage des coordonnées des points verts
     for i, (x, y) in enumerate(coordinates, start=1):
-        print("{" + str(x) + ", " + str(y) + "},\n")
+        coordStr = coordStr + "{" + str(x) + ", " + str(y) + "},\n"
 
-    print("};")
-    return coordinates
+    coordStr = coordStr + "};\n"
+    print(coordStr)
+    return coordinates, coordStr
 
 def detect_blobs(image_path, colorstr):
     # Charger l'image et convertir en HSV
@@ -76,18 +80,32 @@ def detect_blobs(image_path, colorstr):
 
     # Récupérer les coordonnées des blobs
     coordinates = [(int(k.pt[0]), int(k.pt[1])) for k in keypoints]
-
-    print("QList<QPair<int, int>> " + colorstr + "Points = {\n")
+    if len(coordinates) == 0:
+        return coordinates, ""
+    coordStr = "QList<QPair<int, int>> " + colorstr + "Points = {\n"
     # Affichage des coordonnées des points verts
     for i, (x, y) in enumerate(coordinates, start=1):
-        print("{" + str(x) + ", " + str(y) + "},\n")
+        coordStr = coordStr + "{" + str(x) + ", " + str(y) + "},\n"
 
-    print("};")
-    return coordinates
+    coordStr = coordStr + "};\n"
+    print(coordStr)
+    return coordinates, coordStr
 
-# Utilisation du code
-image_path = "D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\OoT\\Kokiri_Forest\\AP_Link_House.png"  # Chemin de l'image
-coordinates = find_points(image_path, "Pot")
-coordinates = find_points(image_path, "Cow")
-coordinates = detect_blobs(image_path, "Pot")
-coordinates = detect_blobs(image_path, "Cow")
+def perform_action(root_folder):
+    data = []
+    for root, dirs, files in os.walk(root_folder):
+        for f in files:
+            if f.startswith("AP") and f.endswith(".png"):
+                data.append(os.path.join(root,f))
+    for file in data:
+        with open(file + ".txt", 'w') as f:
+            for colorstr in colors.keys():
+                coord, coordstr = find_points(file, colorstr)
+                f.write(coordstr)
+
+perform_action("D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\OoT_AP")
+#image_path = "D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\OoT_AP\\Kokiri_Forest\\AP_KIA_House.png"  # Chemin de l'image
+#coordinates = find_points(image_path, "Pot")
+#coordinates = find_points(image_path, "Cow")
+#coordinates = detect_blobs(image_path, "Pot")
+#coordinates = detect_blobs(image_path, "Cow")

@@ -1,0 +1,6 @@
+QList<QPair<int, int>> CowPoints = {
+{918, 611},
+};
+QList<QPair<int, int>> PotPoints = {
+{997, 296},
+};

@@ -782,7 +782,7 @@ const ItemInfo ItemList[NUM_ITEM] =
 	{ 0x2F3, "Clock (Night 2)" },
 	{ 0x2F4, "Clock (Day 3)" },
 	{ 0x2F5, "Clock (Night 3)" },
-	{ 0x2F6, "Unknown" },
+	{ 0x2F6, "Rupoor" },
 	{ 0x2F7, "Megaton Hammer (MM)" },
 	{ 0x2F8, "Deku Stick Upgrade (MM)" },
 	{ 0x2F9, "Unknown" },
