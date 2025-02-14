@@ -179,8 +179,11 @@ typedef struct SceneMetaInfo
 #define MQ_GERUDO_TRAINING_GROUND				0x9c
 #define MQ_INSIDE_GANON_CASTLE					0x9d
 
-#define OOT_NUM_SCENES							WINDMILL + 1	// OOT and OOT MQ have the same number of scenes
+// Spoiler Log only
+#define INSIDE_EGGS								WINDMILL + 1
+#define MARKET									INSIDE_EGGS + 1
 
+#define OOT_NUM_SCENES							MARKET + 1	// OOT and OOT MQ have the same number of scenes
 
 const SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 {
@@ -226,7 +229,7 @@ const SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 	{ "Twins's House", "./Resources/OoT/Kokiri_Forest/Twins_House.png", (uint8_t)OoTRegions::Kokiri_Forest },
 	{ "Mido's House", "./Resources/OoT/Kokiri_Forest/Mido_House.png", (uint8_t)OoTRegions::Kokiri_Forest },
 	{ "Saria's House", "./Resources/OoT/Kokiri_ForestSaria_House.png", (uint8_t)OoTRegions::Kokiri_Forest },
-	{ "Carpenters Boss's House", "./Resources/OoT/Kakariko/Carpenter_Boss_House.png", (uint8_t)OoTRegions::Kakariko },
+	{ "Carpenters Boss's House", "./Resources/OoT/Kakariko/Carpenter_Boss_House.png", (uint8_t)OoTRegions::None },
 	{ "Back Alley's House", "./Resources/OoT/Market/Back_Alley_House.png", (uint8_t)OoTRegions::Market },
 	{ "Bazaar", "", (uint8_t)OoTRegions::None },
 	{ "Shop", "./Resources/OoT/Kokiri_Forest/Shop.png", (uint8_t)OoTRegions::Kokiri_Forest },
@@ -289,7 +292,7 @@ const SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 	{ "Deku Scrubs Grotto", "./Resources/OoT/Lost_Woods/Scrub_Upgrade.png", (uint8_t)OoTRegions::Lost_Woods },
 	{ "Generic Grotto", "./Resources/OoT/Lost_Woods/Generic.png", (uint8_t)OoTRegions::Lost_Woods },
 	{ "Deku's Theater Grotto", "./Resources/OoT/Lost_Woods/Theater.png", (uint8_t)OoTRegions::Lost_Woods },
-	{ "Wolfos Grotto", "./Resources/OoT/Sacred_Forest_Meadow/Wolfos.png", (uint8_t)OoTRegions::Lost_Woods },
+	{ "Wolfos Grotto", "./Resources/OoT/Sacred_Forest_Meadow/Wolfos.png", (uint8_t)OoTRegions::Sacred_Forest_Meadow },
 	{ "Song of Storms Grotto", "./Resources/OoT/Sacred_Forest_Meadow/Storms.png", (uint8_t)OoTRegions::Sacred_Forest_Meadow },
 	{ "Redead Grotto", "./Resources/OoT/Kakariko/Redead.png", (uint8_t)OoTRegions::Kakariko },
 	{ "Open Grotto", "./Resources/OoT/Kakariko/Open.png", (uint8_t)OoTRegions::Kakariko },
@@ -329,7 +332,11 @@ const SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 	{ "Shooting Gallery", "./Resources/OoT/Kakariko/Shooting.png", (uint8_t)OoTRegions::Kakariko },
 	{ "Shooting Gallery", "./Resources/OoT/Market/Shooting.png", (uint8_t)OoTRegions::Market },
 	{ "Silo", "./Resources/OoT/Ranch/Silo.png", (uint8_t)OoTRegions::Lon_Lon_Ranch },
-	{ "Windmill", "./Resources/OoT/Kakariko/Windmill.png", (uint8_t)OoTRegions::Kakariko }
+	{ "Windmill", "./Resources/OoT/Kakariko/Windmill.png", (uint8_t)OoTRegions::Kakariko },
+
+	// Spoiler log
+	{ "Inside Eggs", "", (uint8_t)OoTRegions::None },
+	{ "Market", "", (uint8_t)OoTRegions::None }
 };
 
 #define SOUTHERN_SWAMP_CLEAR					0x00
@@ -464,24 +471,27 @@ const SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 #define MM_GROTTO_TERMINA_TALL_GRASS			0x7c	// Termina field tall grass grotto
 #define MM_GROTTO_TERMINA_COW					0x7d	// Termina field cow grotto
 #define MM_GROTTO_TERMINA_PILLAR				0x7e	// Termina field pillar grotto
-#define MM_GROTTO_DEKU_PALACE_GENERIC			0x7f	// Deku palace generic grotto
-#define MM_GROTTO_DEKU_PALACE_BEANS				0x80	// Deku palace beans grotto
-#define MM_GROTTO_GREAT_BAY_COAST_FISHERMAN		0x81	// Great bay coast fisherman's grotto
-#define MM_GROTTO_GREAT_BAY_COAST_COW			0x82	// Great bay coast cow grotto
-#define MM_GROTTO_ZORA_CAPE_GENERIC				0x83	// Zora cape generic grotto
-#define MM_GROTTO_IKANA_GRAVEYARD_GENERIC		0x84	// Ikana graveyard generic grotto
-#define MM_GROTTO_IKANA_VALLEY_OPEN				0x85	// Ikana valley generic open
-#define MM_GROTTO_IKANA_ROAD_GENERIC			0x86	// Ikana road generic grotto
-#define MM_GROTTO_TWIN_ISLANDS_FROZEN			0x87	// Twin islands frozen grotto
-#define MM_GROTTO_TWIN_ISLANDS_RAMP				0x88	// Twin islands ramp grotto
-#define MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC		0x89	// Path to snowhead generic grotto
-#define MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC		0x8a	// Mountain village generic grotto
-#define MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN		0x8b	// Southern swamp road generic open
-#define MM_GROTTO_SOUTHERN_SWAMP_OPEN			0x8c	// Southern swamp generic open
-#define MM_GROTTO_WOODS_OF_MYSTERY_OPEN			0x8d	// Woods of mystery generic open
+#define MM_GROTTO_GREAT_BAY_COAST_FISHERMAN		0x7f	// Great bay coast fisherman's grotto
+#define MM_GROTTO_GREAT_BAY_COAST_COW			0x80	// Great bay coast cow grotto
+#define MM_GROTTO_ZORA_CAPE_GENERIC				0x81	// Zora cape generic grotto
+#define MM_GROTTO_IKANA_GRAVEYARD_GENERIC		0x82	// Ikana graveyard generic grotto
+#define MM_GROTTO_IKANA_VALLEY_OPEN				0x83	// Ikana valley generic open
+#define MM_GROTTO_IKANA_ROAD_GENERIC			0x84	// Ikana road generic grotto
+#define MM_GROTTO_TWIN_ISLANDS_FROZEN			0x85	// Twin islands frozen grotto
+#define MM_GROTTO_TWIN_ISLANDS_RAMP				0x86	// Twin islands ramp grotto
+#define MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC		0x87	// Path to snowhead generic grotto
+#define MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC		0x88	// Mountain village generic grotto
+#define MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN		0x89	// Southern swamp road generic open
+#define MM_GROTTO_SOUTHERN_SWAMP_OPEN			0x8a	// Southern swamp generic open
+#define MM_GROTTO_WOODS_OF_MYSTERY_OPEN			0x8b	// Woods of mystery generic open
+#define MM_GROTTO_DEKU_PALACE_BEANS				0x8c	// Deku palace beans grotto
+#define MM_GROTTO_DEKU_PALACE_GENERIC			0x8d	// Deku palace JP Line generic grotto
 
-#define MM_NUM_SCENES							MM_GROTTO_WOODS_OF_MYSTERY_OPEN + 1
+// Spoiler Log only
+#define MOUNTAIN_VILLAGE						MM_GROTTO_DEKU_PALACE_BEANS + 1
+#define TWIN_ISLANDS							MOUNTAIN_VILLAGE + 1
 
+#define MM_NUM_SCENES							TWIN_ISLANDS + 1	// Here I'm ignoring the JP Line Generic grotto
 
 const SceneMetaInfo MMScenesMetaInfo[MM_NUM_SCENES] =
 {
@@ -612,8 +622,6 @@ const SceneMetaInfo MMScenesMetaInfo[MM_NUM_SCENES] =
 	{ "Tall Grass Grotto", "./Resources/MM/Termina/Tall_Grass.png", (uint8_t)MMRegions::Termina },
 	{ "Cow Grotto", "./Resources/MM/Termina/Cow.png", (uint8_t)MMRegions::Termina },
 	{ "Pillar Grotto", "./Resources/MM/Termina/Pillar.png", (uint8_t)MMRegions::Termina },
-	{ "Generic Grotto", "./Resources/MM/Deku_Palace/Generic.png", (uint8_t)MMRegions::Deku_Palace },
-	{ "Beans Grotto", "./Resources/MM/Deku_Palace/Beans.png", (uint8_t)MMRegions::Deku_Palace },
 	{ "Open Grotto", "./Resources/MM/Great_Bay_Coast/Open.png", (uint8_t)MMRegions::Great_Bay_Coast },
 	{ "Cow Grotto", "./Resources/MM/Great_Bay_Coast/Cow.png", (uint8_t)MMRegions::Great_Bay_Coast },
 	{ "Generic Grotto", "./Resources/MM/Zora_Cape/Generic.png", (uint8_t)MMRegions::Zora_Cape },
@@ -626,7 +634,13 @@ const SceneMetaInfo MMScenesMetaInfo[MM_NUM_SCENES] =
 	{ "Generic Grotto", "./Resources/MM/Mountain_Village/Generic.png", (uint8_t)MMRegions::Mountain_Village },
 	{ "Open Grotto", "./Resources/MM/Road_to_Southern_Swamp/Open.png", (uint8_t)MMRegions::Southern_Swamp_Road },
 	{ "Open Grotto", "./Resources/MM/Southern_Swamp/Open.png", (uint8_t)MMRegions::Southern_Swamp },
-	{ "Open Grotto", "./Resources/MM/Woods_of_Mystery/Open", (uint8_t)MMRegions::Woods_of_Mystery }
+	{ "Open Grotto", "./Resources/MM/Woods_of_Mystery/Open", (uint8_t)MMRegions::Woods_of_Mystery },
+	{ "Beans Grotto", "./Resources/MM/Deku_Palace/Beans.png", (uint8_t)MMRegions::Deku_Palace },
+	//{ "Generic Grotto", "./Resources/MM/Deku_Palace/Generic.png", (uint8_t)MMRegions::Deku_Palace },
+
+	// Spoiler log
+	{ "Mountain Village", "", (uint8_t)MMRegions::None },
+	{ "Twin Islands", "", (uint8_t)MMRegions::None }
 };
 
 enum OoT_Shops

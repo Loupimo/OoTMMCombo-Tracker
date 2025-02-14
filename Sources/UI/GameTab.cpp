@@ -12,7 +12,7 @@
 const size_t Prefix##Size = NumOfScenes;              \
 SceneInfo Prefix##Scenes[Prefix##Size] = { __VA_ARGS__ };
 
-CreateInfoScenes(WINDMILL + 1, OoTOverworld,
+CreateInfoScenes(OOT_NUM_SCENES, OoTOverworld,
     CreateOverworldScene(DEKU_TREE, OOT_GAME),
     CreateOverworldScene(DODONGO_CAVERN, OOT_GAME),
     CreateOverworldScene(INSIDE_JABU_JABU, OOT_GAME),
@@ -158,12 +158,14 @@ CreateInfoScenes(WINDMILL + 1, OoTOverworld,
     CreateOverworldScene(KAKARIKO_SHOOTING, OOT_GAME),
     CreateOverworldScene(MARKET_SHOOTING, OOT_GAME),
     CreateOverworldScene(SILO, OOT_GAME),
-    CreateOverworldScene(WINDMILL, OOT_GAME)
+    CreateOverworldScene(WINDMILL, OOT_GAME),
+    CreateOverworldScene(INSIDE_EGGS, OOT_GAME),
+    CreateOverworldScene(MARKET, OOT_GAME)
 )
 
 
 
-CreateInfoScenes(MM_GROTTO_WOODS_OF_MYSTERY_OPEN + 1, MMOverworld,
+CreateInfoScenes(MM_NUM_SCENES, MMOverworld,
     CreateOverworldScene(SOUTHERN_SWAMP_CLEAR, MM_GAME),
     CreateOverworldScene(MM_FAIRY_SNOWHEAD, MM_GAME),
     CreateOverworldScene(MM_FAIRY_GREAT_BAY_COAST, MM_GAME),
@@ -291,8 +293,6 @@ CreateInfoScenes(MM_GROTTO_WOODS_OF_MYSTERY_OPEN + 1, MMOverworld,
     CreateOverworldScene(MM_GROTTO_TERMINA_TALL_GRASS, MM_GAME),
     CreateOverworldScene(MM_GROTTO_TERMINA_COW, MM_GAME),
     CreateOverworldScene(MM_GROTTO_TERMINA_PILLAR, MM_GAME),
-    CreateOverworldScene(MM_GROTTO_DEKU_PALACE_GENERIC, MM_GAME),
-    CreateOverworldScene(MM_GROTTO_DEKU_PALACE_BEANS, MM_GAME),
     CreateOverworldScene(MM_GROTTO_GREAT_BAY_COAST_FISHERMAN, MM_GAME),
     CreateOverworldScene(MM_GROTTO_GREAT_BAY_COAST_COW, MM_GAME),
     CreateOverworldScene(MM_GROTTO_ZORA_CAPE_GENERIC, MM_GAME),
@@ -305,7 +305,11 @@ CreateInfoScenes(MM_GROTTO_WOODS_OF_MYSTERY_OPEN + 1, MMOverworld,
     CreateOverworldScene(MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC, MM_GAME),
     CreateOverworldScene(MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, MM_GAME),
     CreateOverworldScene(MM_GROTTO_SOUTHERN_SWAMP_OPEN, MM_GAME),
-    CreateOverworldScene(MM_GROTTO_WOODS_OF_MYSTERY_OPEN, MM_GAME)
+    CreateOverworldScene(MM_GROTTO_WOODS_OF_MYSTERY_OPEN, MM_GAME),
+    CreateOverworldScene(MM_GROTTO_DEKU_PALACE_BEANS, MM_GAME),
+    //CreateOverworldScene(MM_GROTTO_DEKU_PALACE_GENERIC, MM_GAME),
+    CreateOverworldScene(MOUNTAIN_VILLAGE, MM_GAME),
+    CreateOverworldScene(TWIN_ISLANDS, MM_GAME)
 )
 
 
@@ -407,5 +411,24 @@ void GameTab::LoadGameScenes(QString FilePath)
 
 void GameTab::LoadGameSpoiler(QString FilePath)
 {
+    QFile fichier(FilePath);
+
+    if (!fichier.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qWarning() << "Impossible d'ouvrir le fichier:" << fichier.errorString();
+        return;
+    }
+
+    QTextStream in(&fichier);
+    QString contenu = in.readAll(); // Lire tout le fichier
+    fichier.close();
+
+    // Découper en sections avec "==="
+    QStringList sections = contenu.split("===", Qt::SkipEmptyParts, Qt::CaseSensitive);
+
+    // Vérifier si on a au moins 3 sections
+    if (sections.size() < 3) {
+        qWarning() << "Le fichier ne contient pas assez de sections.";
+        return;
+    }
 
 }

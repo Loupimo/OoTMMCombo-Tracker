@@ -41,7 +41,7 @@ KOKIRI_KNOW_IT_ALL;Know-It-All Brothers's House;./Resources/OoT/Kokiri_Forest/Kn
 KOKIRI_TWINS;Twins's House;./Resources/OoT/Kokiri_Forest/Twins_House.png;Kokiri_Forest
 KOKIRI_MIDO;Mido's House;./Resources/OoT/Kokiri_Forest/Mido_House.png;Kokiri_Forest
 KOKIRI_SARIA;Saria's House;./Resources/OoT/Kokiri_ForestSaria_House.png;Kokiri_Forest
-CARPENTER_BOSS_HOUSE;Carpenters Boss's House;./Resources/OoT/Kakariko/Carpenter_Boss_House.png;Kakariko
+CARPENTER_BOSS_HOUSE;Carpenters Boss's House;./Resources/OoT/Kakariko/Carpenter_Boss_House.png;None
 BACK_ALLEY_HOUSE;Back Alley's House;./Resources/OoT/Market/Back_Alley_House.png;Market
 BAZAAR;Bazaar;;None
 KOKIRI_SHOP;Shop;./Resources/OoT/Kokiri_Forest/Shop.png;Kokiri_Forest
@@ -104,7 +104,7 @@ OOT_GROTTO_KOKIRI_FOREST_STORMS;Song of Storms Grotto;./Resources/OoT/Kokiri_For
 OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;Deku Scrubs Grotto;./Resources/OoT/Lost_Woods/Scrub_Upgrade.png;Lost_Woods
 OOT_GROTTO_LOST_WOODS_GENERIC;Generic Grotto;./Resources/OoT/Lost_Woods/Generic.png;Lost_Woods
 OOT_GROTTO_LOST_WOODS_THEATER;Deku's Theater Grotto;./Resources/OoT/Lost_Woods/Theater.png;Lost_Woods
-OOT_GROTTO_SACRED_MEADOW_WOLFOS;Wolfos Grotto;./Resources/OoT/Sacred_Forest_Meadow/Wolfos.png;Lost_Woods
+OOT_GROTTO_SACRED_MEADOW_WOLFOS;Wolfos Grotto;./Resources/OoT/Sacred_Forest_Meadow/Wolfos.png;Sacred_Forest_Meadow
 OOT_GROTTO_SACRED_MEADOW_STORMS;Song of Storms Grotto;./Resources/OoT/Sacred_Forest_Meadow/Storms.png;Sacred_Forest_Meadow
 OOT_GROTTO_KAKARIKO_REDEAD;Redead Grotto;./Resources/OoT/Kakariko/Redead.png;Kakariko
 OOT_GROTTO_KAKARIKO_OPEN;Open Grotto;./Resources/OoT/Kakariko/Open.png;Kakariko

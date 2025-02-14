@@ -2,6 +2,7 @@ import pandas as pd
 
 commonScenes = ["FAIRY_FOUNTAIN", "GROTTOS", "GORON_SHOP", "LOST_WOODS", "SHOOTING_GALLERY", "CUTSCENE_MAP", "TREASURE_SHOP", "LABORATORY", "SPIDER_HOUSE_SWAMP", "SPIDER_HOUSE_OCEAN"]
 commonID = ["SONG_STORMS"]
+excludeSpoiler = ["INSIDE_EGGS", "MARKET", "MOUNTAIN_VILLAGE", "TWIN_ISLANDS", "MOON", "GORON_SHRINE", "MILK_ROAD", "GORON_VILLAGE_WINTER", "ROMANI_RANCH"]
 
 def parse_file(input_file, output_file, arrayname, prefix):
     """Parse un fichier pour convertir les lignes RGB en hexadécimal."""
@@ -62,9 +63,11 @@ def parse_file2(input_file, output_file, arrayname, prefix):
             fin[scenestr].append(objectstr)
             
             if renderscene != scenestr:
-                if fin.__contains__(renderscene) == False:
-                    fin[renderscene] = []
-                fin[renderscene].append(objectstr)
+                if str(row["type"]) != "none":
+                    if fin.__contains__(renderscene) == False:
+                        fin[renderscene] = []
+                    if objectstr not in fin[renderscene]:
+                        fin[renderscene].append(objectstr)
 
 
             #outfile.write(objectstr)
