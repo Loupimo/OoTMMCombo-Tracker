@@ -891,11 +891,11 @@ Spheres
 
 ===========================================================================
 Location List (4273)
-  Inside Eggs (2): V
+  Inside Eggs (2):
     OOT Hatch Chicken: Rupoor (OoT)
     OOT Hatch Pocket Cucco: Deku Shield
 
-  Kokiri Forest (99): V
+  Kokiri Forest (99):
     OOT Kokiri Forest Cow: Green Rupee (MM)
     OOT Link's House Pot: Recovery Heart (OoT)
     OOT Kokiri Forest Kokiri Sword Chest: Rupoor (OoT)
@@ -996,7 +996,7 @@ Location List (4273)
     OOT Kokiri Forest Storms Grotto Butterfly 2: Red Rupee (MM)
     OOT Kokiri Forest Storms Grotto Butterfly 3: Heart Container (MM)
 
-  Hyrule Field (104): V
+  Hyrule Field (104):
     OOT Hyrule Field Ocarina of Time: Fairy (OoT)
     OOT Hyrule Field Song of Time: Recovery Heart (MM)
     OOT Hyrule Field Sell Bunny Mask: Green Rupee (MM)
@@ -1102,7 +1102,7 @@ Location List (4273)
     OOT Hyrule Field Fairy Fountain Fairy 7: Green Rupee (OoT)
     OOT Hyrule Field Fairy Fountain Fairy 8: Blue Potion (MM)
 
-  Market (124): V
+  Market (124):
     OOT Market Wonder Item Day 1: Green Rupee (MM)
     OOT Market Wonder Item Day 2: Rupoor (MM)
     OOT Market Wonder Item Day 3: Green Rupee (OoT)
@@ -1228,7 +1228,7 @@ Location List (4273)
     OOT Treasure Chest Game Room 5 Chest Right: Red Rupee (OoT)
     OOT Treasure Chest Game HP: Recovery Heart (MM)
 
-  Lon Lon Ranch (28): V
+  Lon Lon Ranch (28):
     OOT Lon Lon Ranch Malon Song: Small Magic Jar (MM)
     OOT Lon Lon Ranch GS Tree: Rupoor (OoT)
     OOT Lon Lon Ranch GS House: Fairy (OoT)
@@ -1258,7 +1258,7 @@ Location List (4273)
     OOT Lon Lon Ranch Grotto Right Scrub: Green Rupee (MM)
     OOT Lon Lon Ranch Grotto Hive: Green Rupee (MM)
 
-  Hyrule Castle (39): V
+  Hyrule Castle (39):
     OOT Malon Egg: Rupoor (OoT)
     OOT Hyrule Castle GS Tree: Recovery Heart (OoT)
     OOT Hyrule Castle Grass 1: 10 Bombs (OoT)
@@ -1299,11 +1299,11 @@ Location List (4273)
     OOT Hyrule Castle Grotto Pot 3: Recovery Heart (OoT)
     OOT Hyrule Castle Grotto Pot 4: Small Magic Jar (MM)
 
-  Outside Ganon's Castle (2): V
+  Outside Ganon's Castle (2):
     OOT Ganon Castle Exterior GS: Green Rupee (MM)
     OOT Great Fairy Defense Upgrade: Rupoor (MM)
 
-  Lost Woods (56): V
+  Lost Woods (56):
     OOT Lost Woods Target: Soul of Bongo Bongo
     OOT Lost Woods Skull Kid: Recovery Heart (MM)
     OOT Lost Woods Sell Skull Mask: Soul of Dampe (OoT)
@@ -1361,7 +1361,7 @@ Location List (4273)
     OOT Lost Woods Grotto Scrub Big Fairy: Soul of Hiploops
     OOT Lost Woods Grotto Scrub Hive: Large Magic Jar (MM)
 
-  Sacred Forest Meadow (21): V
+  Sacred Forest Meadow (21):
     OOT Sacred Meadow Wonder Item Entrance: Green Rupee (MM)
     OOT Sacred Meadow Grotto: Green Rupee (MM)
     OOT Saria's Song: Rupoor (OoT)
@@ -1384,7 +1384,7 @@ Location List (4273)
     OOT Sacred Meadow Fairy Fountain Fairy 7: Green Rupee (MM)
     OOT Sacred Meadow Fairy Fountain Fairy 8: Rupoor (OoT)
 
-  Kakariko (91): V
+  Kakariko (91):
     OOT Kakariko Anju Bottle: Bomb Bag (OoT)
     OOT Kakariko Anju Egg: Green Rupee (MM)
     OOT Kakariko Anju Cojiro: Rupoor (MM)
@@ -1477,7 +1477,7 @@ Location List (4273)
     OOT Kakariko Grotto Butterfly 2: Small Magic Jar (MM)
     OOT Kakariko Grotto Butterfly 3: Blue Rupee (MM)
 
-  Graveyard (65): V
+  Graveyard (65):
     OOT Graveyard Dampe Game: Rupoor (OoT)
     OOT Graveyard Sell Spooky Mask: Green Rupee (OoT)
     OOT Graveyard Crate HP: Green Rupee (MM)
@@ -1544,7 +1544,7 @@ Location List (4273)
     OOT Graveyard Dampe Tomb Wonder Item 14: Green Rupee (OoT)
     OOT Graveyard Dampe Tomb Wonder Item 15: Green Rupee (OoT)
 
-  Death Mountain Trail (39): V
+  Death Mountain Trail (39):
     OOT Death Mountain Trail Chest: Blue Rupee (MM)
     OOT Death Mountain Trail HP: Rupoor (MM)
     OOT Death Mountain Trail GS Entrance: Green Rupee (OoT)
@@ -1585,7 +1585,7 @@ Location List (4273)
     OOT Death Mountain Trail Cow Grotto Hive: Blue Rupee (OoT)
     OOT Great Fairy Magic Upgrade: Blue Rupee (OoT)
 
-  Goron City (31): V
+  Goron City (31):
     OOT Goron City Maze Center 1: Green Rupee (MM)
     OOT Goron City Maze Center 2: Rupoor (MM)
     OOT Goron City Maze Left: Gold Skulltula Token
@@ -1618,7 +1618,7 @@ Location List (4273)
     OOT Goron City Grotto Right Scrub: Lon Lon Milk (OoT)
     OOT Goron City Grotto Hive: Green Rupee (MM)
 
-  Zora's River (83): V
+  Zora's River (83):
     OOT Zora River GS Tree: Blue Rupee (OoT)
     OOT Zora River Grass Pack Bush 01: 10 Arrows (OoT)
     OOT Zora River Grass Pack Bush 02: Adult Fish (15 pounds)
@@ -1703,7 +1703,7 @@ Location List (4273)
     OOT Zora River Fairy Fountain Fairy 7: Magic Bean (MM)
     OOT Zora River Fairy Fountain Fairy 8: 10 Bombchu (OoT)
 
-  Zora's Domain (34): V
+  Zora's Domain (34):
     OOT Zora Domain Waterfall Chest: Green Rupee (MM)
     OOT Zora Domain Diving Game: Romani Milk
     OOT Zora Domain Diving Game Green Rupee: Soul of Sheik
@@ -1739,7 +1739,7 @@ Location List (4273)
     OOT Zora Domain Fairy Fountain Fairy 7: Green Rupee (OoT)
     OOT Zora Domain Fairy Fountain Fairy 8: Green Rupee (MM)
 
-  Lake Hylia (104): V
+  Lake Hylia (104):
     OOT Lake Hylia Underwater Bottle: Red Rupee (MM)
     OOT Lake Hylia Fire Arrow: 10 Arrows (MM)
     OOT Lake Hylia HP: Soul of the Goron Elder
@@ -1845,7 +1845,7 @@ Location List (4273)
     OOT Lake Hylia Grotto Right Scrub: Green Rupee (MM)
     OOT Lake Hylia Grotto Hive: 5 Deku Seeds (OoT)
 
-  Zora's Fountain (33): V
+  Zora's Fountain (33):
     OOT Zora Fountain Iceberg HP: Green Rupee (OoT)
     OOT Zora Fountain GS Wall: Rupoor (MM)
     OOT Zora Fountain GS Tree: Soul of Ghost Hut Owner (MM)
@@ -1880,15 +1880,15 @@ Location List (4273)
     OOT Zora Fountain Rupee 18: Recovery Heart (OoT)
     OOT Great Fairy Farore's Wind: Soul of the Patrolling Gerudos
 
-  Temple of Time (3): V
+  Temple of Time (3):
     OOT Temple of Time Master Sword: Purple Rupee (OoT)
     OOT Temple of Time Sheik Song: Recovery Heart (MM)
     OOT Temple of Time Light Arrows: 5 Bombs (MM)
 
-  Sacred Realm (1): V
+  Sacred Realm (1):
     OOT Temple of Time Medallion: Green Rupee (MM)
 
-  Death Mountain Crater (40): V
+  Death Mountain Crater (40):
     OOT Death Mountain Crater GS Crate: Small Magic Jar (OoT)
     OOT Death Mountain Crater Alcove HP: Green Rupee (OoT)
     OOT Death Mountain Crater Scrub Child: Rupoor (MM)
@@ -1930,7 +1930,7 @@ Location List (4273)
     OOT Death Mountain Crater Scrub Grotto Hive: Small Key (Water Temple)
     OOT Great Fairy Magic Upgrade 2: 30 Arrows (MM)
 
-  Gerudo Valley (24): V
+  Gerudo Valley (24):
     OOT Gerudo Valley Crate HP: Green Rupee (MM)
     OOT Gerudo Valley Waterfall HP: Recovery Heart (MM)
     OOT Gerudo Valley GS Soil: Gold Skulltula Token
@@ -1956,7 +1956,7 @@ Location List (4273)
     OOT Gerudo Valley Grotto Back Scrub: Green Rupee (MM)
     OOT Gerudo Valley Grotto Hive: Recovery Heart (MM)
 
-  Gerudo's Fortress (35): V
+  Gerudo's Fortress (35):
     OOT Gerudo Fortress Archery Reward 1: Green Rupee (OoT)
     OOT Gerudo Fortress Archery Reward 2: Recovery Heart (OoT)
     OOT Gerudo Fortress GS Target: Large Magic Jar (MM)
@@ -1993,7 +1993,7 @@ Location List (4273)
     OOT Gerudo Fortress Fairy Fountain Fairy 7: Recovery Heart (OoT)
     OOT Gerudo Fortress Fairy Fountain Fairy 8: Soul of Flying Pots (OoT)
 
-  Haunted Wasteland (11): V
+  Haunted Wasteland (11):
     OOT Haunted Wasteland Crate Entrance: Map (Fire Temple)
     OOT Haunted Wasteland Chest: Gold Rupee (OoT)
     OOT Haunted Wasteland GS: Green Rupee (MM)
@@ -2006,7 +2006,7 @@ Location List (4273)
     OOT Haunted Wasteland Crate After Pit 3: Green Rupee (MM)
     OOT Haunted Wasteland Crate Deep: Green Rupee (OoT)
 
-  Desert Colossus (22): V
+  Desert Colossus (22):
     OOT Desert Colossus HP: Fairy (MM)
     OOT Desert Colossus GS Soil: Purple Rupee (MM)
     OOT Desert Colossus GS Tree: Green Rupee (MM)
@@ -2030,7 +2030,7 @@ Location List (4273)
     OOT Desert Colossus Grotto Back Scrub: Recovery Heart (OoT)
     OOT Desert Colossus Grotto Hive: Green Rupee (OoT)
 
-  Deku Tree (51): V
+  Deku Tree (51):
     OOT Deku Tree Boss Grass 1: Green Rupee (MM)
     OOT Deku Tree Boss Grass 2: Recovery Heart (MM)
     OOT Deku Tree Boss Grass 3: 5 Deku Seeds (OoT)
@@ -2083,7 +2083,7 @@ Location List (4273)
     OOT Deku Tree Heart Pre-Boss 2: Red Rupee (OoT)
     OOT Deku Tree Heart Pre-Boss 3: Stone Mask (OoT)
 
-  Dodongo's Cavern (54): V
+  Dodongo's Cavern (54):
     OOT Dodongo Cavern Boss Chest: Green Rupee (MM)
     OOT Dodongo Cavern Boss Container: Green Rupee (MM)
     OOT Dodongo Cavern Boss: Green Rupee (MM)
@@ -2139,7 +2139,7 @@ Location List (4273)
     OOT Dodongo Cavern Pot Skull 4: Soul of Deep Pythons
     OOT Dodongo Cavern Grass Pre-Boss: 10 Bombchu (OoT)
 
-  Jabu-Jabu's Belly (29): V
+  Jabu-Jabu's Belly (29):
     OOT Jabu-Jabu Boss Pot 1: Recovery Heart (MM)
     OOT Jabu-Jabu Boss Pot 2: Blue Potion (MM)
     OOT Jabu-Jabu Boss Pot 3: Large Magic Jar (MM)
@@ -2170,7 +2170,7 @@ Location List (4273)
     OOT Jabu-Jabu Pot Big Octo Room 3: Blue Rupee (OoT)
     OOT Jabu-Jabu GS Near Boss: Recovery Heart (OoT)
 
-  Forest Temple (43): V
+  Forest Temple (43):
     OOT Forest Temple Boss: Pendant of Memories
     OOT Forest Temple Boss Container: Green Rupee (MM)
     OOT Forest Temple Tree Small Key: Red Potion (OoT)
@@ -2215,7 +2215,7 @@ Location List (4273)
     OOT Forest Temple Antichamber: Green Rupee (MM)
     OOT Forest Temple GS Antichamber: Rupoor (OoT)
 
-  Fire Temple (47): V
+  Fire Temple (47):
     OOT Fire Temple Boss Container: Small Magic Jar (MM)
     OOT Fire Temple Boss: Green Rupee (OoT)
     OOT Fire Temple Jail 1 Chest: Piece of Heart (MM)
@@ -2264,7 +2264,7 @@ Location List (4273)
     OOT Fire Temple Crate 1: Fairy (MM)
     OOT Fire Temple Crate 2: Recovery Heart (OoT)
 
-  Water Temple (44): V
+  Water Temple (44):
     OOT Water Temple Boss HC: Green Rupee (MM)
     OOT Water Temple Boss: Green Rupee (MM)
     OOT Water Temple Pot Main Room Near Block 1: Green Rupee (MM)
@@ -2310,7 +2310,7 @@ Location List (4273)
     OOT Water Temple Pot Skull Cage 3: 5 Bombs (OoT)
     OOT Water Temple Pot Skull Cage 4: Purple Rupee (MM)
 
-  Spirit Temple (77): V
+  Spirit Temple (77):
     OOT Spirit Temple Boss HC: Recovery Heart (MM)
     OOT Spirit Temple Boss: Recovery Heart (MM)
     OOT Spirit Temple Pot Lobby 1: Bremen Mask
@@ -2389,7 +2389,7 @@ Location List (4273)
     OOT Spirit Temple Heart 1: Red Rupee (OoT)
     OOT Spirit Temple Heart 2: Piece of Heart (OoT)
 
-  Shadow Temple (74): V
+  Shadow Temple (74):
     OOT Shadow Temple Boss HC: Green Rupee (MM)
     OOT Shadow Temple Boss: Gold Skulltula Token
     OOT Shadow Temple Map: Blue Rupee (OoT)
@@ -2465,7 +2465,7 @@ Location List (4273)
     OOT Shadow Temple Heart Pre-Boss 3: Recovery Heart (MM)
     OOT Shadow Temple Wonder Item: Green Rupee (MM)
 
-  Bottom of the Well (64): V
+  Bottom of the Well (64):
     OOT Bottom of the Well Coffin: C-Right Button (MM)
     OOT Bottom of the Well Compass: Green Rupee (MM)
     OOT Bottom of the Well Under Debris: Green Rupee (MM)
@@ -2531,7 +2531,7 @@ Location List (4273)
     OOT Bottom of the Well Rupee 4: 10 Arrows (MM)
     OOT Bottom of the Well Rupee 5: 5 Deku Seeds (OoT)
 
-  Ice Cavern (35): V
+  Ice Cavern (35):
     OOT Ice Cavern Rupee Ice: Red Rupee (MM)
     OOT Ice Cavern Entrance Big Fairy: Fairy (MM)
     OOT Ice Cavern GS Scythe Room: 10 Arrows (MM)
@@ -2568,7 +2568,7 @@ Location List (4273)
     OOT Ice Cavern Iron Boots: Recovery Heart (MM)
     OOT Ice Cavern Sheik Song: Red Potion (OoT)
 
-  Thieves' Hideout (47): V
+  Thieves' Hideout (47):
     OOT Gerudo Fortress Jail 1: Purple Rupee (MM)
     OOT Gerudo Member Card: Gold Skulltula Token
     OOT Gerudo Fortress Pot Jail 1 1: Green Rupee (MM)
@@ -2617,7 +2617,7 @@ Location List (4273)
     OOT Thieves Hideout Crate Break Room 4: Kamaro's Mask
     OOT Gerudo Fortress Wonder Item Break Room Top: Green Rupee (MM)
 
-  Gerudo's Training Ground (43): V
+  Gerudo's Training Ground (43):
     OOT Gerudo Training Grounds Entrance 1: Green Rupee (MM)
     OOT Gerudo Training Grounds Entrance 2: Green Rupee (OoT)
     OOT Gerudo Training Grounds Stalfos: Rupoor (MM)
@@ -2662,7 +2662,7 @@ Location List (4273)
     OOT Gerudo Training Maze Chest 3: Recovery Heart (OoT)
     OOT Gerudo Training Maze Chest 4: 10 Arrows (OoT)
 
-  Ganon's Castle (88): V
+  Ganon's Castle (88):
     OOT Ganon Castle Leftmost Scrub: Rupoor (OoT)
     OOT Ganon Castle Left-Center Scrub: Recovery Heart (MM)
     OOT Ganon Castle Right-Center Scrub: Green Potion (OoT)
@@ -2752,7 +2752,7 @@ Location List (4273)
     OOT Ganon Tower Pot 17: Soul of Moon Children
     OOT Ganon Tower Pot 18: Red Rupee (OoT)
 
-  Tingle (6): V
+  Tingle (6):
     MM Tingle Map Clock Town: Recovery Heart (MM)
     MM Tingle Map Woodfall: Green Rupee (MM)
     MM Tingle Map Snowhead: Rupoor (OoT)
@@ -2760,7 +2760,7 @@ Location List (4273)
     MM Tingle Map Great Bay: Small Magic Jar (MM)
     MM Tingle Map Ikana: 30 Arrows (MM)
 
-  South Clock Town (10): V
+  South Clock Town (10):
     MM Clock Town Owl Statue: Fairy (OoT)
     MM Initial Song of Healing: 5 Deku Nuts (OoT)
     MM Clock Town Platform HP: Green Rupee (OoT)
@@ -2772,7 +2772,7 @@ Location List (4273)
     MM Clock Town South Wonder Item 2: Green Rupee (OoT)
     MM Clock Town South Wonder Item 3: Green Rupee (MM)
 
-  Milk Road (40): V
+  Milk Road (40):
     MM Milk Road Owl Statue: Recovery Heart (OoT)
     MM Milk Road Grass 1: Small Magic Jar (MM)
     MM Milk Road Grass 2: Piece of Heart (OoT)
@@ -2814,7 +2814,7 @@ Location List (4273)
     MM Gorman Track Grass Pack 2 Grass 12: Red Rupee (OoT)
     MM Gorman Track Crate: Red Rupee (MM)
 
-  Southern Swamp (106): V
+  Southern Swamp (106):
     MM Southern Swamp Owl Statue: Small Magic Jar (MM)
     MM Southern Swamp Grass Owl 1: Green Rupee (MM)
     MM Southern Swamp Grass Owl 2: Piece of Heart (MM)
@@ -2922,7 +2922,7 @@ Location List (4273)
     MM Swamp Potion Shop Item 3: Green Rupee (MM)
     MM Swamp Potion Shop Rupee: 10 Arrows (MM)
 
-  Woodfall (15): V
+  Woodfall (15):
     MM Woodfall Owl Statue: Bunny Hood (OoT)
     MM Woodfall Near Owl Chest: Soul of Part-Timer (MM)
     MM Woodfall Pot 1: Rupoor (OoT)
@@ -2939,7 +2939,7 @@ Location List (4273)
     MM Woodfall Rupee: Owl Statue (Snowhead)
     MM Woodfall Great Fairy: Green Rupee (MM)
 
-  Mountain Village (97): V
+  Mountain Village (97):
     MM Mountain Village Owl Statue: Green Rupee (MM)
     MM Mountain Village Waterfall Chest: 10 Arrows (MM)
     MM Mountain Village Don Gero Mask: Green Rupee (MM)
@@ -3038,7 +3038,7 @@ Location List (4273)
     MM Mountain Village Small Snowball Cliff 2: Soul of the Beans Salesman (MM)
     MM Goron Graveyard Mask: Red Rupee (OoT)
 
-  Snowhead (17): V
+  Snowhead (17):
     MM Snowhead Owl Statue: Progressive Sword (OoT)
     MM Snowhead Small Snowball 1: 10 Arrows (MM)
     MM Snowhead Small Snowball 2: Large Magic Jar (MM)
@@ -3057,7 +3057,7 @@ Location List (4273)
     MM Snowhead Small Snowball Spring 5: Green Rupee (OoT)
     MM Snowhead Great Fairy: Soul of Shaboms
 
-  Great Bay Coast (123): V
+  Great Bay Coast (123):
     MM Great Bay Coast Owl Statue: Green Rupee (MM)
     MM Great Bay Coast Zora Mask: 1 Bombchu (MM)
     MM Great Bay Coast HP: Recovery Heart (MM)
@@ -3182,7 +3182,7 @@ Location List (4273)
     MM Laboratory Zora Song: 5 Deku Seeds (OoT)
     MM Laboratory Fish HP: Small Key (Gerudo's Training Ground)
 
-  Zora Cape (34): V
+  Zora Cape (34):
     MM Zora Cape Owl Statue: Recovery Heart (MM)
     MM Zora Cape Pot Near Owl Statue 1: Green Rupee (OoT)
     MM Zora Cape Pot Near Owl Statue 2: Gold Skulltula Token
@@ -3218,7 +3218,7 @@ Location List (4273)
     MM Waterfall Rapids Beaver Race 1: Piece of Heart (OoT)
     MM Waterfall Rapids Beaver Race 2: Blue Rupee (OoT)
 
-  Ikana Canyon (31): V
+  Ikana Canyon (31):
     MM Ikana Canyon Owl Statue: 5 Deku Seeds (OoT)
     MM Ikana Canyon Grass 1: Green Rupee (OoT)
     MM Ikana Canyon Grass 2: Stray Fairy (Woodfall Temple)
@@ -3251,7 +3251,7 @@ Location List (4273)
     MM Music Box House Gibdo Mask: Green Rupee (MM)
     MM Ghost Hut HP: Rupoor (MM)
 
-  Stone Tower (36): V
+  Stone Tower (36):
     MM Stone Tower Owl Statue: Green Rupee (OoT)
     MM Stone Tower Pot Owl Statue 1: Green Rupee (OoT)
     MM Stone Tower Pot Owl Statue 2: Rupoor (OoT)
@@ -3289,10 +3289,10 @@ Location List (4273)
     MM Stone Tower Inverted Pot 4: Green Rupee (MM)
     MM Stone Tower Inverted Pot 5: Recovery Heart (MM)
 
-  Giant's Dream (1): V
+  Giant's Dream (1):
     MM Oath to Order: Green Rupee (MM)
 
-  North Clock Town (17): V
+  North Clock Town (17):
     MM Clock Town Tree HP: Gold Skulltula Token
     MM Clock Town Bomber Notebook: Recovery Heart (OoT)
     MM Clock Town Blast Mask: Small Magic Jar (MM)
@@ -3311,7 +3311,7 @@ Location List (4273)
     MM Deku Playground Reward Any Day: Green Rupee (MM)
     MM Deku Playground Reward All Days: Recovery Heart (OoT)
 
-  West Clock Town (25): V
+  West Clock Town (25):
     MM Clock Town Bank Reward 1: Green Rupee (MM)
     MM Clock Town Bank Reward 2: Large Magic Jar (MM)
     MM Clock Town Bank Reward 3: Rupoor (MM)
@@ -3338,7 +3338,7 @@ Location List (4273)
     MM Swordsman School Pot 4: 5 Deku Nuts (OoT)
     MM Swordsman School Pot 5: Green Rupee (MM)
 
-  East Clock Town (32): V
+  East Clock Town (32):
     MM Clock Town Silver Rupee Chest: Sun's Song (OoT)
     MM Clock Town Postman Hat: Green Rupee (MM)
     MM Clock Town East Wonder Item Target Left 1: Green Rupee (MM)
@@ -3372,7 +3372,7 @@ Location List (4273)
     MM Honey & Darling Reward Any Day: Green Rupee (MM)
     MM Honey & Darling Reward All Days: Soul of Trading Post Owner (MM)
 
-  Laundry Pool (12): V
+  Laundry Pool (12):
     MM Clock Town Guru Guru Mask Bremen: Lon Lon Milk (OoT)
     MM Clock Town Stray Fairy: Piece of Heart (MM)
     MM Clock Town Laundry Pool Small Crate: Owl Statue (Southern Swamp)
@@ -3386,7 +3386,7 @@ Location List (4273)
     MM Kafei Hideout Owner Reward 1: Green Rupee (MM)
     MM Kafei Hideout Owner Reward 2: Soul of Tingle
 
-  Stock Pot Inn (11): V
+  Stock Pot Inn (11):
     MM Stock Pot Inn Guest Room Chest: Recovery Heart (OoT)
     MM Stock Pot Inn Staff Room Chest: Green Rupee (MM)
     MM Stock Pot Inn Room Key: Green Rupee (MM)
@@ -3399,7 +3399,7 @@ Location List (4273)
     MM Stock Pot Inn Wonder Item 2: Fairy (OoT)
     MM Stock Pot Inn Wonder Item 3: Green Rupee (OoT)
 
-  Termina Field (389): V
+  Termina Field (389):
     MM Astral Observatory Moon Tear: Green Rupee (MM)
     MM Termina Field Water Chest: Boss Key (Spirit Temple)
     MM Termina Field Tall Grass Chest: 10 Arrows (MM)
@@ -3790,7 +3790,7 @@ Location List (4273)
     MM Canyon Gossip Grotto Grass 4: Fairy (OoT)
     MM Canyon Gossip Grotto Grass 5: Fairy (MM)
 
-  Road to Southern Swamp (42): V
+  Road to Southern Swamp (42):
     MM Road to Southern Swamp HP: Soul of Zora (OoT)
     MM Road to Southern Swamp Grass Pack 1 Grass 01: Blue Rupee (MM)
     MM Road to Southern Swamp Grass Pack 1 Grass 02: Soul of Igos
@@ -3834,7 +3834,7 @@ Location List (4273)
     MM Road to Southern Swamp Grotto Grass 13: Green Rupee (MM)
     MM Road to Southern Swamp Grotto Grass 14: Rupoor (MM)
 
-  Deku Palace (78): V
+  Deku Palace (78):
     MM Deku Palace HP: Green Rupee (OoT)
     MM Deku Palace Rupee Right 01: Blue Rupee (MM)
     MM Deku Palace Rupee Right 02: Rupoor (OoT)
@@ -3914,7 +3914,7 @@ Location List (4273)
     MM Deku Palace Rupee Layout-Dependant 1: Blue Rupee (MM)
     MM Deku Palace Rupee Layout-Dependant 2: Green Rupee (OoT)
 
-  Path to Mountain Village (22): V
+  Path to Mountain Village (22):
     MM Path to Mountain Village Big Snowball Lower 1: Recovery Heart (OoT)
     MM Path to Mountain Village Big Snowball Lower 2: Large Magic Jar (MM)
     MM Path to Mountain Village Big Snowball Lower 3: Green Rupee (MM)
@@ -3938,7 +3938,7 @@ Location List (4273)
     MM Path to Mountain Village Small Snowball Upper Spring 2: Green Rupee (MM)
     MM Path to Mountain Village Small Snowball Upper Spring 3: Soul of Keese (MM)
 
-  Twin Islands (85): V
+  Twin Islands (85):
     MM Goron Elder: Blue Rupee (OoT)
     MM Twin Islands Underwater Chest 1: Rupoor (OoT)
     MM Twin Islands Underwater Chest 2: Green Rupee (OoT)
@@ -4025,7 +4025,7 @@ Location List (4273)
     MM Goron Race Pot 29: Big Fairy (OoT)
     MM Goron Race Pot 30: Green Rupee (OoT)
 
-  Goron Village (68): V
+  Goron Village (68):
     MM Goron Village HP: Green Rupee (MM)
     MM Goron Village Scrub Deed: Fairy (OoT)
     MM Goron Village Scrub Bomb Bag: Rupoor (MM)
@@ -4095,7 +4095,7 @@ Location List (4273)
     MM Goron Shop Item 2: Big Fairy (OoT)
     MM Goron Shop Item 3: Fairy (OoT)
 
-  Road to Snowhead (27): V
+  Road to Snowhead (27):
     MM Path to Snowhead HP: Green Rupee (OoT)
     MM Path to Snowhead Big Snowball Middle 1: Green Rupee (MM)
     MM Path to Snowhead Big Snowball Middle 2: Rupoor (OoT)
@@ -4124,7 +4124,7 @@ Location List (4273)
     MM Path to Snowhead Grotto Grass 13: Red Rupee (OoT)
     MM Path to Snowhead Grotto Grass 14: Green Rupee (OoT)
 
-  Romani Ranch (92): V
+  Romani Ranch (92):
     MM Romani Ranch Epona Song: Rupoor (OoT)
     MM Romani Ranch Aliens: Large Magic Jar (MM)
     MM Romani Ranch Cremia Escort: Green Rupee (OoT)
@@ -4218,7 +4218,7 @@ Location List (4273)
     MM Romani Ranch Barn Wonder Item 1: Small Key (Spirit Temple)
     MM Romani Ranch Barn Wonder Item 2: Ocean Skulltula Token
 
-  Pinnacle Rock (14): V
+  Pinnacle Rock (14):
     MM Pinnacle Rock Chest 1: Recovery Heart (OoT)
     MM Pinnacle Rock Chest 2: Small Magic Jar (MM)
     MM Pinnacle Rock HP: Recovery Heart (OoT)
@@ -4234,7 +4234,7 @@ Location List (4273)
     MM Pinnacle Rock Pot 10: Green Rupee (MM)
     MM Pinnacle Rock Pot 11: 30 Arrows (OoT)
 
-  Zora Hall (8): V
+  Zora Hall (8):
     MM Zora Hall Scene Lights: Rupoor (MM)
     MM Zora Shop Item 1: Rupoor (OoT)
     MM Zora Shop Item 2: Rupoor (MM)
@@ -4244,7 +4244,7 @@ Location List (4273)
     MM Zora Hall Scrub Shop: Rupoor (OoT)
     MM Zora Hall Scrub Deed: Rupoor (OoT)
 
-  Road to Ikana (18): V
+  Road to Ikana (18):
     MM Road to Ikana Chest: Green Rupee (MM)
     MM Road to Ikana Grotto: Soul of Fishing Pond Owner (OoT)
     MM Road to Ikana Grotto Grass 01: Green Rupee (MM)
@@ -4264,7 +4264,7 @@ Location List (4273)
     MM Road to Ikana Stone Mask: Green Rupee (MM)
     MM Road to Ikana Pot: Rupoor (MM)
 
-  Ikana Graveyard (75): V
+  Ikana Graveyard (75):
     MM Ikana Graveyard Captain Mask: Green Rupee (MM)
     MM Ikana Graveyard Grass 1: Green Rupee (MM)
     MM Ikana Graveyard Grass 2: Green Rupee (MM)
@@ -4341,7 +4341,7 @@ Location List (4273)
     MM Beneath The Graveyard Pot Dampe 09: Green Rupee (MM)
     MM Beneath The Graveyard Pot Dampe 10: Progressive Sword (MM)
 
-  Ikana Castle (35): V
+  Ikana Castle (35):
     MM Ancient Castle of Ikana Pot Exterior: Silver Rupee (MM)
     MM Ancient Castle of Ikana Grass 01: 5 Bombs (MM)
     MM Ancient Castle of Ikana Grass 02: Green Rupee (OoT)
@@ -4378,7 +4378,7 @@ Location List (4273)
     MM Ancient Castle of Ikana Boss Pot 8: Green Rupee (MM)
     MM Ancient Castle of Ikana Song Emptiness: Green Rupee (MM)
 
-  Woodfall Temple (101): V
+  Woodfall Temple (101):
     MM Woodfall Temple Entrance Chest: Green Rupee (OoT)
     MM Woodfall Temple SF Entrance: Green Rupee (MM)
     MM Woodfall Temple Pot Entrance: Blue Rupee (MM)
@@ -4481,7 +4481,7 @@ Location List (4273)
     MM Woodfall Temple Boss Container: Recovery Heart (OoT)
     MM Woodfall Temple Boss: Rupoor (MM)
 
-  Snowhead Temple (131): V
+  Snowhead Temple (131):
     MM Snowhead Temple Pot Entrance 1: 5 Deku Nuts (OoT)
     MM Snowhead Temple Pot Entrance 2: Progressive Shield (OoT)
     MM Snowhead Temple Bridge Room: 10 Arrows (OoT)
@@ -4614,7 +4614,7 @@ Location List (4273)
     MM Snowhead Temple Boss HC: Green Rupee (MM)
     MM Snowhead Temple Boss: Green Rupee (OoT)
 
-  Great Bay Temple (152): V
+  Great Bay Temple (152):
     MM Great Bay Temple Entrance Chest: Green Rupee (MM)
     MM Great Bay Temple Barrel Entrance 1: Green Rupee (OoT)
     MM Great Bay Temple Barrel Entrance 2: Big Fairy (OoT)

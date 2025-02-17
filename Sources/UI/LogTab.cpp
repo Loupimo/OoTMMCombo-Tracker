@@ -5,88 +5,88 @@
 #include "UI/OoTMMComboTracker.h"
 #include "Combo/Scenes.h"
 
-const QHash<QString, uint32_t> SpoilerMap =
+const QHash<QString, QPair<uint32_t, uint32_t>> SpoilerMap =
 {
-    { "Inside Eggs", OOT_NUM_SCENES },
-    { "Kokiri Forest", KOKIRI_FOREST },
-    { "Hyrule Field", HYRULE_FIELD },
-    { "Market", MARKET },
-    { "Lon Lon Ranch", LON_LON_RANCH },
-    { "Hyrule Castle", HYRULE_CASTLE },
-    { "Outside Ganon", GANON_CASTLE_EXTERIOR },
-    { "Lost Woods", OOT_LOST_WOODS },
-    { "Sacred Forest Meadow", SACRED_FOREST_MEADOW },
-    { "Kakariko", KAKARIKO_VILLAGE },
-    { "Graveyard", GRAVEYARD },
-    { "Death Mountain Trail", DEATH_MOUNTAIN_TRAIL },
-    { "Goron City", GORON_CITY },
-    { "Zora's River", ZORA_RIVER },
-    { "Zora's Domain", ZORA_DOMAIN },
-    { "Lake Hylia", LAKE_HYLIA },
-    { "Zora's Fountain", ZORA_FOUNTAIN },
-    { "Temple of Time", TEMPLE_OF_TIME },
-    { "Sacred Realm", TEMPLE_OF_TIME },
-    { "Death Mountain Crater", DEATH_MOUNTAIN_CRATER },
-    { "Gerudo Valley", GERUDO_VALLEY },
-    { "Gerudo's Fortress", GERUDO_FORTRESS },
-    { "Haunted Wasteland", HAUNTED_WASTELAND },
-    { "Desert Colossus", DESERT_COLOSSUS },
-    { "Deku Tree", DEKU_TREE },
-    { "Dodongo's Cavern", DODONGO_CAVERN },
-    { "Jabu-Jabu's Belly", INSIDE_JABU_JABU },
-    { "Forest Temple", TEMPLE_FOREST },
-    { "Fire Temple", TEMPLE_FIRE },
-    { "Water Temple", TEMPLE_WATER },
-    { "Spirit Temple", TEMPLE_SPIRIT },
-    { "Shadow Temple", TEMPLE_SHADOW },
-    { "Bottom of the Well", BOTTOM_OF_THE_WELL },
-    { "Ice Cavern", ICE_CAVERN },
-    { "Thieves' Hideout", THIEVES_HIDEOUT },
-    { "Gerudo's Training Ground", GERUDO_TRAINING_GROUND },
-    { "Ganon's Castle", INSIDE_GANON_CASTLE },
-    { "Tingle", CLOCK_TOWN_NORTH },
-    { "South Clock Town", CLOCK_TOWN_SOUTH },
-    { "Milk Road", MILK_ROAD },
-    { "Southern Swamp", SOUTHERN_SWAMP },
-    { "Woodfall", WOODFALL },
-    { "Mountain Village", MOUNTAIN_VILLAGE },
-    { "Snowhead", SNOWHEAD },
-    { "Great Bay Coast", GREAT_BAY_COAST },
-    { "Zora Cape", ZORA_CAPE },
-    { "Ikana Canyon", IKANA_CANYON },
-    { "Stone Tower", STONE_TOWER },
-    { "Giant's Dream", TEMPLE_WOODFALL },
-    { "North Clock Town", CLOCK_TOWN_NORTH },
-    { "West Clock Town", CLOCK_TOWN_WEST },
-    { "East Clock Town", CLOCK_TOWN_EAST },
-    { "Laundry Pool", LAUNDRY_POOL },
-    { "Stock Pot Inn", STOCK_POT_INN },
-    { "Termina Field", TERMINA_FIELD },
-    { "Road to Southern Swamp", ROAD_SOUTHERN_SWAMP },
-    { "Deku Palace", DEKU_PALACE },
-    { "Path to Mountain Village", PATH_MOUNTAIN_VILLAGE },
-    { "Twin Islands", TWIN_ISLANDS },
-    { "Goron Village", GORON_VILLAGE_WINTER },
-    { "Road to Snowhead", PATH_SNOWHEAD },
-    { "Romani Ranch", ROMANI_RANCH },
-    { "Pinnacle Rock", PINNACLE_ROCK },
-    { "Zora Hall", ZORA_HALL_ROOMS },
-    { "Road to Ikana", ROAD_IKANA },
-    { "Ikana Graveyard", IKANA_GRAVEYARD },
-    { "Ikana Castle", CASTLE_IKANA },
-    { "Woodfall Temple", TEMPLE_WOODFALL },
-    { "Snowhead Temple", TEMPLE_SNOWHEAD },
-    { "Great Bay Temple", TEMPLE_GREAT_BAY },
-    { "Stone Tower Temple", TEMPLE_STONE_TOWER },
-    { "Pirates' Fortress Interior", PIRATE_FORTRESS_INTERIOR },
-    { "Pirates' Fortress Sewers", PIRATE_FORTRESS_INTERIOR },
-    { "Pirates' Fortress Exterior", PIRATE_FORTRESS_ENTRANCE },
-    { "Beneath The Well", BENEATH_THE_WELL },
-    { "Secret Shrine", SECRET_SHRINE },
-    { "Swamp Spider House", SPIDER_HOUSE_SWAMP },
-    { "Ocean Spider House", SPIDER_HOUSE_OCEAN },
-    { "Clock Tower Roof", CLOCK_TOWER_ROOFTOP },
-    { "The Moon", MOON }
+    { "Inside Eggs", { INSIDE_EGGS, OOT_GAME } },
+    { "Kokiri Forest", { KOKIRI_FOREST, OOT_GAME } },
+    { "Hyrule Field", { HYRULE_FIELD, OOT_GAME } },
+    { "Market", { MARKET, OOT_GAME } },
+    { "Lon Lon Ranch", { LON_LON_RANCH, OOT_GAME } },
+    { "Hyrule Castle", { HYRULE_CASTLE, OOT_GAME } },
+    { "Outside Ganon's Castle", { GANON_CASTLE_EXTERIOR, OOT_GAME } },
+    { "Lost Woods", { OOT_LOST_WOODS, OOT_GAME } },
+    { "Sacred Forest Meadow", { SACRED_FOREST_MEADOW, OOT_GAME } },
+    { "Kakariko", { KAKARIKO_VILLAGE, OOT_GAME } },
+    { "Graveyard", { GRAVEYARD, OOT_GAME } },
+    { "Death Mountain Trail", { DEATH_MOUNTAIN_TRAIL, OOT_GAME } },
+    { "Goron City", { GORON_CITY, OOT_GAME } },
+    { "Zora's River", { ZORA_RIVER, OOT_GAME } },
+    { "Zora's Domain", { ZORA_DOMAIN, OOT_GAME } },
+    { "Lake Hylia", { LAKE_HYLIA, OOT_GAME } },
+    { "Zora's Fountain", { ZORA_FOUNTAIN, OOT_GAME } },
+    { "Temple of Time", { TEMPLE_OF_TIME, OOT_GAME} },
+    { "Sacred Realm", { TEMPLE_OF_TIME, OOT_GAME } },
+    { "Death Mountain Crater", { DEATH_MOUNTAIN_CRATER, OOT_GAME } },
+    { "Gerudo Valley", { GERUDO_VALLEY, OOT_GAME } },
+    { "Gerudo's Fortress", { GERUDO_FORTRESS, OOT_GAME } },
+    { "Haunted Wasteland", { HAUNTED_WASTELAND, OOT_GAME } },
+    { "Desert Colossus", { DESERT_COLOSSUS, OOT_GAME } },
+    { "Deku Tree", { DEKU_TREE, OOT_GAME } },
+    { "Dodongo's Cavern", { DODONGO_CAVERN, OOT_GAME } },
+    { "Jabu-Jabu's Belly", { INSIDE_JABU_JABU, OOT_GAME } },
+    { "Forest Temple", { TEMPLE_FOREST, OOT_GAME } },
+    { "Fire Temple", { TEMPLE_FIRE, OOT_GAME } },
+    { "Water Temple", { TEMPLE_WATER, OOT_GAME } },
+    { "Spirit Temple", { TEMPLE_SPIRIT, OOT_GAME } },
+    { "Shadow Temple", { TEMPLE_SHADOW, OOT_GAME } },
+    { "Bottom of the Well", { BOTTOM_OF_THE_WELL, OOT_GAME } },
+    { "Ice Cavern", { ICE_CAVERN, OOT_GAME } },
+    { "Thieves' Hideout", { THIEVES_HIDEOUT, OOT_GAME } },
+    { "Gerudo's Training Ground", { GERUDO_TRAINING_GROUND, OOT_GAME } },
+    { "Ganon's Castle", { INSIDE_GANON_CASTLE, OOT_GAME } },
+    { "Tingle", { CLOCK_TOWN_NORTH, MM_GAME } },
+    { "South Clock Town", { CLOCK_TOWN_SOUTH, MM_GAME } },
+    { "Milk Road", { MILK_ROAD, MM_GAME } },
+    { "Southern Swamp", { SOUTHERN_SWAMP, MM_GAME } },
+    { "Woodfall", { WOODFALL, MM_GAME } },
+    { "Mountain Village", { MOUNTAIN_VILLAGE, MM_GAME } },
+    { "Snowhead", { SNOWHEAD, MM_GAME } },
+    { "Great Bay Coast", { GREAT_BAY_COAST, MM_GAME } },
+    { "Zora Cape", { ZORA_CAPE, MM_GAME } },
+    { "Ikana Canyon", { IKANA_CANYON, MM_GAME } },
+    { "Stone Tower", { STONE_TOWER, MM_GAME } },
+    { "Giant's Dream", { TEMPLE_WOODFALL, MM_GAME } },
+    { "North Clock Town", { CLOCK_TOWN_NORTH, MM_GAME } },
+    { "West Clock Town", { CLOCK_TOWN_WEST, MM_GAME } },
+    { "East Clock Town", { CLOCK_TOWN_EAST, MM_GAME } },
+    { "Laundry Pool", { LAUNDRY_POOL, MM_GAME } },
+    { "Stock Pot Inn", { STOCK_POT_INN, MM_GAME } },
+    { "Termina Field", { TERMINA_FIELD, MM_GAME } },
+    { "Road to Southern Swamp", { ROAD_SOUTHERN_SWAMP, MM_GAME } },
+    { "Deku Palace", { DEKU_PALACE, MM_GAME } },
+    { "Path to Mountain Village", { PATH_MOUNTAIN_VILLAGE, MM_GAME } },
+    { "Twin Islands", { TWIN_ISLANDS, MM_GAME } },
+    { "Goron Village", { GORON_VILLAGE_WINTER, MM_GAME } },
+    { "Road to Snowhead", { PATH_SNOWHEAD, MM_GAME } },
+    { "Romani Ranch", { ROMANI_RANCH, MM_GAME } },
+    { "Pinnacle Rock", { PINNACLE_ROCK, MM_GAME } },
+    { "Zora Hall", { ZORA_HALL_ROOMS, MM_GAME } },
+    { "Road to Ikana", { ROAD_IKANA, MM_GAME } },
+    { "Ikana Graveyard", { IKANA_GRAVEYARD, MM_GAME } },
+    { "Ikana Castle", { CASTLE_IKANA, MM_GAME } },
+    { "Woodfall Temple", { TEMPLE_WOODFALL, MM_GAME } },
+    { "Snowhead Temple", { TEMPLE_SNOWHEAD, MM_GAME } },
+    { "Great Bay Temple", { TEMPLE_GREAT_BAY, MM_GAME } },
+    { "Stone Tower Temple", { TEMPLE_STONE_TOWER, MM_GAME } },
+    { "Pirates' Fortress Interior", { PIRATE_FORTRESS_INTERIOR, MM_GAME } },
+    { "Pirates' Fortress Sewers", { PIRATE_FORTRESS_INTERIOR, MM_GAME } },
+    { "Pirates' Fortress Exterior", { PIRATE_FORTRESS_ENTRANCE, MM_GAME } },
+    { "Beneath The Well", { BENEATH_THE_WELL, MM_GAME } },
+    { "Secret Shrine", { SECRET_SHRINE, MM_GAME } },
+    { "Swamp Spider House", { MM_SPIDER_HOUSE_SWAMP, MM_GAME } },
+    { "Ocean Spider House", { MM_SPIDER_HOUSE_OCEAN, MM_GAME } },
+    { "Clock Tower Roof", { CLOCK_TOWER_ROOFTOP, MM_GAME } },
+    { "The Moon", { MOON, MM_GAME } }
 };
 
 
@@ -309,7 +309,7 @@ void LogTab::LoadSpoiler()
             maps.append(match.captured(1)); // Capture complète du bloc
         }
 
-        QString finald = "";
+        //QString finald = "";
 
         for (QString map : maps)
         {   // Browse all sections
@@ -320,10 +320,57 @@ void LogTab::LoadSpoiler()
             it = reg.globalMatch(objects[0]);
             QString mapName = it.next().captured(1);
 
-            finald += "{ \"" + mapName + "\", 0 },\n";
-            uint32_t zdzd = SpoilerMap[mapName];
-            printf("%d", finald);
+            //finald += "{ \"" + mapName + "\", 0 },\n";
+
+            uint32_t sceneID = SpoilerMap[mapName].first;
+            SceneObjects* gameSceneObj = GetGameSceneObjects(SpoilerMap[mapName].second);
+            
+            for (qsizetype i = 1; i < objects.size(); i++)
+            {   // Browse all the spoiler scene objects
+
+                QStringList spoilObject = objects[i].split(": ");
+                spoilObject[0] = spoilObject[0].replace("\n", "");
+                size_t len = spoilObject[0].length() + 1;
+                char* tmpObjName = (char*)malloc(sizeof(char) * len);
+                memcpy_s(tmpObjName, len, spoilObject[0].toStdString().c_str(), len);
+                tmpObjName[len - 1] = '\0';
+
+
+                for (size_t j = 0; j < gameSceneObj[sceneID].NumOfObjs; j++)
+                {   // Browse all scenes objects
+
+                    if (strcmp(gameSceneObj[sceneID].Objects[j].Location, tmpObjName) == 0)
+                    //if (gameSceneObj[sceneID].Objects[j].Location == spoilObject[0])
+                    { // We have found the object
+                        
+                        free(tmpObjName);
+                        ObjectInfo* object = &gameSceneObj[sceneID].Objects[j];
+
+                        const ItemInfo* item = FindItemByName(spoilObject[1]);
+                        object->Item = item;
+
+                        if (object->RenderScene != sceneID)
+                        {
+                            for (size_t k = 0; k < gameSceneObj[object->RenderScene].NumOfObjs; k++)
+                            {   // Find the object in the rendered scene
+                                
+                                if (strcmp(gameSceneObj[object->RenderScene].Objects[k].Location, object->Location) == 0)
+                                {   // Object found
+
+                                    gameSceneObj[object->RenderScene].Objects[k].Item = item;
+                                    break;
+                                }
+                            }
+                        }
+
+                        break;
+                    }
+                }
+            }
+
+            //printf("%d", finald);
         }
 
+        this->WinOwner->LoadGameSpoiler();
     }
 }

@@ -78,9 +78,9 @@ void OoTMMComboTracker::LoadGameScenes(QString FilePath)
 }
 
 
-void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
+void OoTMMComboTracker::LoadGameSpoiler()
 {
-    GameTab::LoadGameSpoiler(FilePath);
+    //GameTab::LoadGameSpoiler(FilePath);
     this->OoTTab.RefreshGameTab();
     this->MMTab.RefreshGameTab();
 }

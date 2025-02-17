@@ -3085,3 +3085,85 @@ CHEST_GAME_KEY;MARKET;Buy Key;OOT Treasure Chest Game Buy Key;none;0;0;TREASURE_
 0x15;ZORA_DOMAIN;Item 6;OOT Zora Shop Item 6;none;0;0;ZORA_SHOP
 0x16;ZORA_DOMAIN;Item 7;OOT Zora Shop Item 7;none;0;0;ZORA_SHOP
 0x17;ZORA_DOMAIN;Item 8;OOT Zora Shop Item 8;none;0;0;ZORA_SHOP
+SHOOTING_GAME_CHILD;MARKET;Reward;OOT Shooting Gallery Child;none;0;0;MARKET_SHOOTING
+SHOOTING_GAME_ADULT;KAKARIKO_VILLAGE;Reward;OOT Shooting Gallery Adult;none;0;0;KAKARIKO_SHOOTING
+FAIRY_SPELL_FIRE;HYRULE_CASTLE;Din's Fire;OOT Great Fairy Din's Fire;none;0;0;OOT_GREAT_FAIRY_DIN
+FAIRY_SPELL_WIND;ZORA_FOUNTAIN;Farore's Wind;OOT Great Fairy Farore's Wind;none;0;0;OOT_GREAT_FAIRY_FARORE
+FAIRY_SPELL_LOVE;DESERT_COLOSSUS;Nayru's Love;OOT Great Fairy Nayru's Love;none;0;0;OOT_GREAT_FAIRY_NAYRU
+FAIRY_MAGIC_UPGRADE;DEATH_MOUNTAIN_TRAIL;Magic Upgrade;OOT Great Fairy Magic Upgrade;none;0;0;OOT_GREAT_FAIRY_MAGIC
+FAIRY_MAGIC_UPGRADE2;DEATH_MOUNTAIN_CRATER;Large Magic Upgrade;OOT Great Fairy Magic Upgrade 2;none;0;0;OOT_GREAT_FAIRY_MAGIC2
+FAIRY_DEFENSE_UPGRADE;GANON_CASTLE_EXTERIOR;Double Defense Upgrade;OOT Great Fairy Defense Upgrade;none;0;0;OOT_GREAT_FAIRY_DEFENSE
+0x0b;TEMPLE_SPIRIT;Silver Gauntlets;OOT Spirit Temple Silver Gauntlets;none;0;0;DESERT_COLOSSUS
+0x09;TEMPLE_SPIRIT;Mirror Shield;OOT Spirit Temple Mirror Shield;none;0;0;DESERT_COLOSSUS
+0x00;GRAVEYARD;Hookshot;OOT Graveyard Dampe Tomb Reward 1;none;0;0;TOMB_DAMPE_WINDMILL
+0x07;GRAVEYARD;Heart Piece;OOT Graveyard Dampe Tomb Reward 2;none;0;0;TOMB_DAMPE_WINDMILL
+0x0000;GRAVEYARD;Pot 1;OOT Graveyard Dampe Tomb Pot 1;none;0;0;TOMB_DAMPE_WINDMILL
+0x0001;GRAVEYARD;Pot 2;OOT Graveyard Dampe Tomb Pot 2;none;0;0;TOMB_DAMPE_WINDMILL
+0x0002;GRAVEYARD;Pot 3;OOT Graveyard Dampe Tomb Pot 3;none;0;0;TOMB_DAMPE_WINDMILL
+0x0003;GRAVEYARD;Pot 4;OOT Graveyard Dampe Tomb Pot 4;none;0;0;TOMB_DAMPE_WINDMILL
+0x0004;GRAVEYARD;Pot 5;OOT Graveyard Dampe Tomb Pot 5;none;0;0;TOMB_DAMPE_WINDMILL
+0x0005;GRAVEYARD;Pot 6;OOT Graveyard Dampe Tomb Pot 6;none;0;0;TOMB_DAMPE_WINDMILL
+0x00100;GRAVEYARD;Rupee 1;OOT Graveyard Dampe Tomb Rupee 1;none;0;0;TOMB_DAMPE_WINDMILL
+0x00101;GRAVEYARD;Rupee 2;OOT Graveyard Dampe Tomb Rupee 2;none;0;0;TOMB_DAMPE_WINDMILL
+0x00102;GRAVEYARD;Rupee 3;OOT Graveyard Dampe Tomb Rupee 3;none;0;0;TOMB_DAMPE_WINDMILL
+0x00200;GRAVEYARD;Rupee 4;OOT Graveyard Dampe Tomb Rupee 4;none;0;0;TOMB_DAMPE_WINDMILL
+0x00201;GRAVEYARD;Rupee 5;OOT Graveyard Dampe Tomb Rupee 5;none;0;0;TOMB_DAMPE_WINDMILL
+0x00202;GRAVEYARD;Rupee 6;OOT Graveyard Dampe Tomb Rupee 6;none;0;0;TOMB_DAMPE_WINDMILL
+0x00300;GRAVEYARD;Rupee 7;OOT Graveyard Dampe Tomb Rupee 7;none;0;0;TOMB_DAMPE_WINDMILL
+0x00301;GRAVEYARD;Rupee 8;OOT Graveyard Dampe Tomb Rupee 8;none;0;0;TOMB_DAMPE_WINDMILL
+0x00105;GRAVEYARD;Invisible Item 1;OOT Graveyard Dampe Tomb Wonder Item 01;none;0;0;TOMB_DAMPE_WINDMILL
+0x00106;GRAVEYARD;Invisible Item 2;OOT Graveyard Dampe Tomb Wonder Item 02;none;0;0;TOMB_DAMPE_WINDMILL
+0x00107;GRAVEYARD;Invisible Item 3;OOT Graveyard Dampe Tomb Wonder Item 03;none;0;0;TOMB_DAMPE_WINDMILL
+0x00108;GRAVEYARD;Invisible Item 4;OOT Graveyard Dampe Tomb Wonder Item 04;none;0;0;TOMB_DAMPE_WINDMILL
+0x00109;GRAVEYARD;Invisible Item 5;OOT Graveyard Dampe Tomb Wonder Item 05;none;0;0;TOMB_DAMPE_WINDMILL
+0x00207;GRAVEYARD;Invisible Item 6;OOT Graveyard Dampe Tomb Wonder Item 06;none;0;0;TOMB_DAMPE_WINDMILL
+0x00208;GRAVEYARD;Invisible Item 7;OOT Graveyard Dampe Tomb Wonder Item 07;none;0;0;TOMB_DAMPE_WINDMILL
+0x00209;GRAVEYARD;Invisible Item 8;OOT Graveyard Dampe Tomb Wonder Item 08;none;0;0;TOMB_DAMPE_WINDMILL
+0x0020a;GRAVEYARD;Invisible Item 9;OOT Graveyard Dampe Tomb Wonder Item 09;none;0;0;TOMB_DAMPE_WINDMILL
+0x0020b;GRAVEYARD;Invisible Item 10;OOT Graveyard Dampe Tomb Wonder Item 10;none;0;0;TOMB_DAMPE_WINDMILL
+0x00308;GRAVEYARD;Invisible Item 11;OOT Graveyard Dampe Tomb Wonder Item 11;none;0;0;TOMB_DAMPE_WINDMILL
+0x00309;GRAVEYARD;Invisible Item 12;OOT Graveyard Dampe Tomb Wonder Item 12;none;0;0;TOMB_DAMPE_WINDMILL
+0x0030a;GRAVEYARD;Invisible Item 13;OOT Graveyard Dampe Tomb Wonder Item 13;none;0;0;TOMB_DAMPE_WINDMILL
+0x0030b;GRAVEYARD;Invisible Item 14;OOT Graveyard Dampe Tomb Wonder Item 14;none;0;0;TOMB_DAMPE_WINDMILL
+0x0030c;GRAVEYARD;Invisible Item 15;OOT Graveyard Dampe Tomb Wonder Item 15;none;0;0;TOMB_DAMPE_WINDMILL
+0x01;KAKARIKO_VILLAGE;Heart Piece;OOT Windmill HP;none;0;0;WINDMILL
+SONG_STORMS;KAKARIKO_VILLAGE;Song of Storms;OOT Windmill Song of Storms;none;0;0;WINDMILL
+0x00;GRAVEYARD;Chest;OOT Graveyard Fairy Tomb;none;0;0;TOMB_FAIRY
+0x00005;GRAVEYARD;Fairy 1;OOT Graveyard Fairy Fountain Fairy 1;none;0;0;TOMB_FAIRY
+0x10005;GRAVEYARD;Fairy 2;OOT Graveyard Fairy Fountain Fairy 2;none;0;0;TOMB_FAIRY
+0x20005;GRAVEYARD;Fairy 3;OOT Graveyard Fairy Fountain Fairy 3;none;0;0;TOMB_FAIRY
+0x30005;GRAVEYARD;Fairy 4;OOT Graveyard Fairy Fountain Fairy 4;none;0;0;TOMB_FAIRY
+0x40005;GRAVEYARD;Fairy 5;OOT Graveyard Fairy Fountain Fairy 5;none;0;0;TOMB_FAIRY
+0x50005;GRAVEYARD;Fairy 6;OOT Graveyard Fairy Fountain Fairy 6;none;0;0;TOMB_FAIRY
+0x60005;GRAVEYARD;Fairy 7;OOT Graveyard Fairy Fountain Fairy 7;none;0;0;TOMB_FAIRY
+0x70005;GRAVEYARD;Fairy 8;OOT Graveyard Fairy Fountain Fairy 8;none;0;0;TOMB_FAIRY
+0x00;GRAVEYARD;ReDead;OOT Graveyard ReDead Tomb;none;0;0;TOMB_REDEAD
+ROYAL_TOMB_SONG;GRAVEYARD;Sun's Song;OOT Graveyard Royal Tomb Song;none;0;0;TOMB_ROYAL
+0x00;GRAVEYARD;Torches;OOT Graveyard Royal Tomb Chest;none;0;0;TOMB_ROYAL
+0x00008;GRAVEYARD;Skull;OOT Graveyard Royal Tomb Big Fairy;none;0;0;TOMB_ROYAL
+0x30;KAKARIKO_VILLAGE;Item 1;OOT Kakariko Bazaar Item 1;none;0;0;KAKARIKO_BAZAAR
+0x31;KAKARIKO_VILLAGE;Item 2;OOT Kakariko Bazaar Item 2;none;0;0;KAKARIKO_BAZAAR
+0x32;KAKARIKO_VILLAGE;Item 3;OOT Kakariko Bazaar Item 3;none;0;0;KAKARIKO_BAZAAR
+0x33;KAKARIKO_VILLAGE;Item 4;OOT Kakariko Bazaar Item 4;none;0;0;KAKARIKO_BAZAAR
+0x34;KAKARIKO_VILLAGE;Item 5;OOT Kakariko Bazaar Item 5;none;0;0;KAKARIKO_BAZAAR
+0x35;KAKARIKO_VILLAGE;Item 6;OOT Kakariko Bazaar Item 6;none;0;0;KAKARIKO_BAZAAR
+0x36;KAKARIKO_VILLAGE;Item 7;OOT Kakariko Bazaar Item 7;none;0;0;KAKARIKO_BAZAAR
+0x37;KAKARIKO_VILLAGE;Item 8;OOT Kakariko Bazaar Item 8;none;0;0;KAKARIKO_BAZAAR
+ZELDA_LETTER;HYRULE_CASTLE;Zelda's Letter;OOT Zelda's Letter;none;0;0;CASTLE_COURTYARD
+ZELDA_SONG;HYRULE_CASTLE;Zelda's Song;OOT Zelda's Song;none;0;0;CASTLE_COURTYARD
+0x00005;HYRULE_CASTLE;Mario Painting;OOT Castle Courtyard Wonder Item;none;0;0;CASTLE_COURTYARD
+GS_10;KAKARIKO_VILLAGE;10 Tokens;OOT Skulltula House 10 Tokens;none;0;0;HOUSE_OF_SKULLTULA
+GS_20;KAKARIKO_VILLAGE;20 Tokens;OOT Skulltula House 20 Tokens;none;0;0;HOUSE_OF_SKULLTULA
+GS_30;KAKARIKO_VILLAGE;30 Tokens;OOT Skulltula House 30 Tokens;none;0;0;HOUSE_OF_SKULLTULA
+GS_40;KAKARIKO_VILLAGE;40 Tokens;OOT Skulltula House 40 Tokens;none;0;0;HOUSE_OF_SKULLTULA
+GS_50;KAKARIKO_VILLAGE;50 Tokens;OOT Skulltula House 50 Tokens;none;0;0;HOUSE_OF_SKULLTULA
+0x0002;KOKIRI_FOREST;Pot;OOT Link's House Pot;none;0;0;LINK_HOUSE
+0x00004;KOKIRI_FOREST;Behind Shop;OOT Kokiri Shop Wonder Item;none;0;0;KOKIRI_SHOP
+0x02300;ZORA_DOMAIN;Fairy 1;OOT Zora Domain Fairy Fountain Fairy 1;none;0;0;OOT_FAIRY_ZORA_DOMAIN
+0x12300;ZORA_DOMAIN;Fairy 2;OOT Zora Domain Fairy Fountain Fairy 2;none;0;0;OOT_FAIRY_ZORA_DOMAIN
+0x22300;ZORA_DOMAIN;Fairy 3;OOT Zora Domain Fairy Fountain Fairy 3;none;0;0;OOT_FAIRY_ZORA_DOMAIN
+0x32300;ZORA_DOMAIN;Fairy 4;OOT Zora Domain Fairy Fountain Fairy 4;none;0;0;OOT_FAIRY_ZORA_DOMAIN
+0x42300;ZORA_DOMAIN;Fairy 5;OOT Zora Domain Fairy Fountain Fairy 5;none;0;0;OOT_FAIRY_ZORA_DOMAIN
+0x52300;ZORA_DOMAIN;Fairy 6;OOT Zora Domain Fairy Fountain Fairy 6;none;0;0;OOT_FAIRY_ZORA_DOMAIN
+0x62300;ZORA_DOMAIN;Fairy 7;OOT Zora Domain Fairy Fountain Fairy 7;none;0;0;OOT_FAIRY_ZORA_DOMAIN
+0x72300;ZORA_DOMAIN;Fairy 8;OOT Zora Domain Fairy Fountain Fairy 8;none;0;0;OOT_FAIRY_ZORA_DOMAIN

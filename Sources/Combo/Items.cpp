@@ -27,3 +27,34 @@ const ItemInfo * FindItem(uint32_t gi)
 
     return currItem;
 }
+
+const ItemInfo* FindItemByName(QString Name)
+{
+    Name = Name.replace("\n", "");
+    size_t len = Name.length() + 1;
+    char* tmpObjName = (char*)malloc(sizeof(char) * len);
+    if (tmpObjName)
+    {
+        memcpy_s(tmpObjName, len, Name.toStdString().c_str(), len);
+        tmpObjName[len - 1] = '\0';
+
+        for (size_t i = 0; i < NUM_ITEM; i++)
+        {
+            if (strcmp(tmpObjName, ItemList[i].ItemName) == 0)
+            {
+                free(tmpObjName);
+                return &ItemList[i];
+            }
+        }
+
+        // No item found
+
+        ItemInfo* item = new ItemInfo();
+        item->ItemID = -1;
+        item->ItemName = tmpObjName;
+
+        return item;
+
+    }
+    return nullptr;
+}

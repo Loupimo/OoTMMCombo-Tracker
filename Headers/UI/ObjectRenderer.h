@@ -131,9 +131,9 @@ public:
     ObjectType Type = ObjectType::none;     // The type of object, used to load the correct icon when needed
     CommonBaseItemTree* ObjCat;
 
+    std::vector<ObjectItemTree*> Objects;
 protected:
     QPixmap* Icon;					        // Image à afficher
-    std::vector<ObjectItemTree*> Objects;
     //std::vector<ObjectInfo *> Objects;
     //std::vector<QGraphicsPixmapItem*> GraphItems;
     //QList<QPair<int, int>> ObjectsLocation; // Liste des positions (X, Y) des objets

@@ -23,7 +23,7 @@ public:
     ~OoTMMComboTracker();
 
     void LoadGameScenes(QString FilePath);
-    void LoadGameSpoiler(QString FilePath);
+    void LoadGameSpoiler();
 
 public slots:
     /*

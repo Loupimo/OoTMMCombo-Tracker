@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Multi/API.h"
+#include <QString>
 
 typedef struct ComboItem
 {
@@ -799,3 +800,4 @@ const ItemInfo ItemList[NUM_ITEM] =
 
 void ParseKey(uint8_t Key[5], ComboItem* Item);
 const ItemInfo * FindItem(uint32_t gi);
+const ItemInfo* FindItemByName(QString Name);
