@@ -100,13 +100,16 @@ public:
     *   Render the scene associated to this item.
     *
     *   @param ObjectsTreeWidget   The object tree list to fill when this scene is active.
+    *   @param Context             The context in which the scene should be rendered.
     */
-    void RenderScene(QTreeWidget* ObjectsTreeWidget);
+    void RenderScene(QTreeWidget* ObjectsTreeWidget, bool Context);
 
     /*
     *   Unload the scene associated to this item.
     */
     void UnloadScene();
+
+    bool HasContext();
 
     const char* GetSceneName();
     int GetCollectedObjects();
@@ -175,7 +178,7 @@ public:
     /*
     *   Render the scene elements.
     */
-    void RenderScene();
+    void RenderScene(bool Context);
 
     /*
     *   Unload the scene elements.
@@ -183,6 +186,9 @@ public:
     void UnloadScene();
 
     void RefreshObjectCounts(int Count);
+
+    void UpdateContext(ObjectContext Context);
+    void RefreshSceneContext(bool Context);
 
 //public slots:
 

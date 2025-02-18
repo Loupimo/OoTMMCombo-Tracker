@@ -3,6 +3,8 @@
 #include <QTreeWidget>
 #include "Combo/Regions.h"
 
+class GameTab;
+
 class RegionTree : public QTreeWidgetItem
 {
 
@@ -12,7 +14,9 @@ public:
 	int FoundObjs = 0;					// The total number of objects found in this region
 	int TotalObjs = 0;					// The total number of objects this region contains
 
-	RegionTree(int Game, uint8_t Region, QTreeWidget * Parent);
+	GameTab* GameOwner;
+
+	RegionTree(GameTab * Owner, int Game, uint8_t Region, QTreeWidget * Parent);
 	~RegionTree();
 
 	void AddObjectCounts(int FoundObjects, int TotalObjects);

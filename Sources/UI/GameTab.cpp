@@ -1,4 +1,5 @@
 #include "UI/GameTab.h"
+#include "UI/OoTMMComboTracker.h"
 #include "Multi/Game.h"
 #include "UI/SceneRenderer.h"
 #include "Combo/Regions.h"
@@ -333,6 +334,14 @@ GameTab::~GameTab()
     this->MainLayout->~QHBoxLayout();
 }
 
+void GameTab::RefreshTabCountText()
+{
+    if (this->Owner != nullptr)
+    {
+        this->Owner->UpdateTabNameText(this->GameID);
+    }
+}
+
 void GameTab::ItemFound(ObjectInfo* Object, const ItemInfo* Item)
 {
     this->GameMaps->ItemFound(Object, Item);
@@ -351,13 +360,13 @@ void GameTab::LoadGameTab()
     {	// Ocarina of time
 
         this->TabName = "OoT";
-        this->GameMaps = new MapTab(OOT_GAME, OoTOverworldScenes, OoTOverworldSize);
+        this->GameMaps = new MapTab(this, OOT_GAME, OoTOverworldScenes, OoTOverworldSize);
     }
     else
     {	// Majora's mask
 
         this->TabName = "MM";
-        this->GameMaps = new MapTab(MM_GAME, MMOverworldScenes, MMOverworldSize);
+        this->GameMaps = new MapTab(this, MM_GAME, MMOverworldScenes, MMOverworldSize);
     }
 
     this->MainLayout->addWidget(this->GameMaps);

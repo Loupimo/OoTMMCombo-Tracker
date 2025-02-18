@@ -10,6 +10,7 @@
 
 class SceneRenderer;
 class ObjectRenderer;
+class ObjectItemTree;
 
 typedef struct ObjectIcon
 {
@@ -75,12 +76,13 @@ class ObjectPixmapItem : public QGraphicsPixmapItem
 public:
 
     ObjectRenderer* Owner;
+    ObjectItemTree* ItemOwner;
 
 public:
 
-    ObjectPixmapItem(const QPixmap& Pixmap, ObjectRenderer* Owner);
+    ObjectPixmapItem(const QPixmap& Pixmap, ObjectRenderer* Owner, ObjectItemTree* ItemOwner);
 
-    void SetObjectOpacity(ObjectState ObjStatus);
+    void SetObjectOpacity(ObjectState ObjStatus, bool IsSelected);
 
 protected:
 
@@ -134,18 +136,16 @@ public:
     std::vector<ObjectItemTree*> Objects;
 protected:
     QPixmap* Icon;					        // Image à afficher
-    //std::vector<ObjectInfo *> Objects;
-    //std::vector<QGraphicsPixmapItem*> GraphItems;
-    //QList<QPair<int, int>> ObjectsLocation; // Liste des positions (X, Y) des objets
 
 public:
     ObjectRenderer(ObjectType Type, SceneRenderer* Owner);
     ~ObjectRenderer();
 
-    void AddObjectToScene();
+    void AddObjectToScene(ObjectContext ActiveContext);
     void AddObjectToRender(ObjectInfo* Obj, QColor DefaultColor);
     void UnloadObjectsFromScene();
     void UpdateObjectState(ObjectInfo* Object);
+    void UpdateContext(ObjectContext Context);
     void CenterViewOn(ObjectPixmapItem* Target);
 
     size_t GetCollectedObject();

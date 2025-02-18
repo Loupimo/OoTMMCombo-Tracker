@@ -7,6 +7,7 @@
 #include "MapTab.h"
 #include "UI/SceneRenderer.h"
 
+class OoTMMComboTracker;
 
 class GameTab : public QWidget
 {
@@ -20,6 +21,11 @@ public:
     int GameID;                 // The game ID this tab refers to
     const char* TabName;        // The tab name. Should correspond to the game it refers to
     MapTab* GameMaps;           // This tab widget will regroup all possible main regions and maps for a game
+    
+    OoTMMComboTracker* Owner = nullptr;
+
+    int FoundObjects = 0;
+    int TotalObjects = 0;
 
 #pragma endregion
 
@@ -27,6 +33,7 @@ public:
     GameTab(int GameID, QWidget* parent = nullptr);
     ~GameTab();
 
+    void RefreshTabCountText();
     void ItemFound(ObjectInfo* Object, const ItemInfo* Item);
     void LoadGameTab();
     void RefreshGameTab();

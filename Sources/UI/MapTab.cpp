@@ -3,21 +3,77 @@
 #include <QPlainTextEdit>
 #include <QLabel>
 #include <QPushButton>
+#include <QGraphicsProxyWidget>
 #include "UI/MapTab.h"
+#include "UI/GameTab.h"
+
+void ToggleSwitch::animateSwitch(bool checked) {
+    // Animation du déplacement du cercle
+    moveAnimation->setStartValue(circle->pos());
+    moveAnimation->setEndValue(checked ? QPoint(42, 2) : QPoint(2, 2));
+    moveAnimation->start();
+
+    // Animation de la couleur de fond
+    colorAnimation->setStartValue(background->palette().color(QPalette::Window));
+    colorAnimation->setEndValue(checked ? QColor("#0078D7") : QColor("#ccc"));
+    colorAnimation->start();
+
+    this->Owner->ContextSwitch(checked);
+}
+
+void MapView::UpdateContext(ObjectContext Context)
+{
+    this->Owner->UpdateContext(Context);
+}
 
 
 // Création d'un onglet avec une carte et un panneau latéral
-MapTab::MapTab(int Game, SceneInfo* Scenes, size_t NumOfScenes, QWidget* parent) : QWidget(parent)
+MapTab::MapTab(GameTab * Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes, QWidget* parent) : QWidget(parent)
 {
     // Containers
     this->MapContainer = new QWidget();
     this->ObjectContainer = new QWidget();
+    this->SwitchContainer = new QWidget();
 
     // Layouts
     this->LayoutSplitter = new QSplitter(Qt::Horizontal);
     this->MainLayout = new QHBoxLayout;
+    this->SwitchLayout = new QHBoxLayout;
     this->MapTreeLayout = new QVBoxLayout(this->MapContainer);
     this->ObjectTreeLayout = new QVBoxLayout(this->ObjectContainer);
+
+    // Switch context button
+    this->LeftIcon = new QLabel();
+    this->RightIcon = new QLabel();
+    QPixmap pixmap;
+    if (Game == OOT_GAME)
+    {
+        pixmap = pixmap.fromImage(QImage("./Resources/Common/ChildHead.png"));
+        pixmap = pixmap.scaled(50, 50, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+        this->LeftIcon->setPixmap(pixmap);
+        pixmap = pixmap.fromImage(QImage("./Resources/Common/AdultHead.png"));
+        pixmap = pixmap.scaled(50, 50, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+        this->RightIcon->setPixmap(pixmap);
+    }
+    else
+    {
+        pixmap = pixmap.fromImage(QImage("./Resources/Common/Winter.png"));
+        pixmap = pixmap.scaled(50, 50, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+        this->LeftIcon->setPixmap(pixmap);
+        pixmap = pixmap.fromImage(QImage("./Resources/Common/Spring.png"));
+        pixmap = pixmap.scaled(50, 50, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+        this->RightIcon->setPixmap(pixmap);
+    }
+    this->SwitchButton = new ToggleSwitch(this);
+    this->SwitchLayout->addWidget(this->LeftIcon);
+    this->SwitchLayout->addWidget(this->SwitchButton);
+    this->SwitchLayout->addWidget(this->RightIcon);
+    this->SwitchLayout->setContentsMargins(5, 5, 5, 5);
+    this->SwitchLayout->setSpacing(10);
+    this->SwitchContainer->setLayout(this->SwitchLayout);
+    this->SwitchContainer->setStyleSheet("background-color: rgba(255, 255, 255, 0); border-radius: 10px;");
+    this->SwitchContainer->setVisible(false);
+
 
     // Map Tree
     this->MapSearchBar = new QLineEdit();
@@ -35,7 +91,7 @@ MapTab::MapTab(int Game, SceneInfo* Scenes, size_t NumOfScenes, QWidget* parent)
     this->ObjectContainer->setHidden(true);
 
     // Zone graphique pour la carte
-    this->View = new MapView();
+    this->View = new MapView(this);
 
     // Panneau latéral
     QLabel* mapLabel = new QLabel("Maps");
@@ -56,7 +112,7 @@ MapTab::MapTab(int Game, SceneInfo* Scenes, size_t NumOfScenes, QWidget* parent)
             if (currRegion == nullptr)
             {   // Create a new region in the tree list
 
-                currRegion = new RegionTree(Game, sceneRegionID, this->MapList);//new RegionTree(Game, this->ScenesToRender[i]->GetSceneParentRegion(), this->MapList);
+                currRegion = new RegionTree(Owner, Game, sceneRegionID, this->MapList);//new RegionTree(Game, this->ScenesToRender[i]->GetSceneParentRegion(), this->MapList);
                 this->Regions.push_back(currRegion);
             }
             SceneItemTree * tmp = new SceneItemTree(&Scenes[i], currRegion);
@@ -76,6 +132,8 @@ MapTab::MapTab(int Game, SceneInfo* Scenes, size_t NumOfScenes, QWidget* parent)
 
 
     // Ajouter à la mise en page principale
+    this->SwitchContainer->setParent(this->View);
+    this->SwitchContainer->move(10, 10);
     this->MapContainer->setMaximumWidth(300);
     this->ObjectContainer->setMaximumWidth(300);
     this->LayoutSplitter->addWidget(this->MapContainer);
@@ -98,6 +156,7 @@ MapTab::MapTab(int Game, SceneInfo* Scenes, size_t NumOfScenes, QWidget* parent)
         this->FilterTree(this->ObjectList, text);
     });
 
+    QObject::connect(this->ObjectList, &QTreeWidget::itemSelectionChanged, this, &MapTab::ResetSelection);
 }
 
 MapTab::~MapTab()
@@ -125,8 +184,12 @@ void MapTab::RenderMap()
     {   // There is a scene to render. Render it !
 
         this->ObjectContainer->setHidden(false);
-        this->RenderedScene->RenderScene(this->ObjectList);
+        this->RenderedScene->RenderScene(this->ObjectList, this->SwitchButton->GetContext());
         this->View->setScene(this->RenderedScene->Renderer);
+        this->SwitchContainer->setVisible(this->RenderedScene->HasContext());
+
+       /* QGraphicsProxyWidget* proxy = this->View->scene()->addWidget(this->SwitchContainer);
+        proxy->setPos(10, 10);*/
     }
 }
 
@@ -139,6 +202,7 @@ void MapTab::UnloadMap()
         this->RenderedScene = nullptr;
         this->View->setScene(nullptr);
         this->ObjectList->clear();
+        this->SwitchContainer->setVisible(false);
     }
 }
 
@@ -240,5 +304,44 @@ void MapTab::RefreshScenesObjectCounts()
 
         currScene->CountSceneObjects();
         currScene->RefreshObjectCounts(currScene->GetCollectedObjects() - tmpCount);
+    }
+}
+
+void MapTab::UpdateContext(ObjectContext Context)
+{
+    this->SwitchButton->UpdateContext(Context);
+}
+
+
+void MapTab::ContextSwitch(bool NewState)
+{
+    if (this->RenderedScene)
+    {
+        this->RenderedScene->Renderer->RenderScene(NewState);
+    }
+}
+
+void MapTab::ResetSelection()
+{
+    QList<QTreeWidgetItem*> selectedItems = this->ObjectList->selectedItems();
+
+    if (selectedItems.isEmpty()) return;
+
+    // Vérifier si l'élément sélectionné est un enfant
+    QTreeWidgetItem* selectedItem = selectedItems.last();
+    QTreeWidgetItem* parent = selectedItem->parent();
+
+    if (parent) { // L'élément sélectionné est un enfant
+        for (int i = 0; i < parent->childCount(); ++i) {
+            QTreeWidgetItem* child = parent->child(i);
+            if (child != selectedItem)
+            {
+                child->setSelected(false);
+            }
+            else
+            {
+                this->ObjectList->scrollTo(this->ObjectList->indexFromItem(selectedItem), QAbstractItemView::PositionAtCenter);
+            }
+        }
     }
 }

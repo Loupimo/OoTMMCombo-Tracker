@@ -1,8 +1,10 @@
 #include "UI/RegionTab.h"
 #include "Multi/Game.h"
+#include "UI/GameTab.h"
 
-RegionTree::RegionTree(int Game, uint8_t Region, QTreeWidget * Parent) : QTreeWidgetItem(Parent)
+RegionTree::RegionTree(GameTab* Owner, int Game, uint8_t Region, QTreeWidget * Parent) : QTreeWidgetItem(Parent)
 {
+    this->GameOwner = Owner;
 	if (Game == OOT_GAME)
 	{
 		this->MetaInfo = &OoTRegionsMetaInfo[Region];
@@ -29,6 +31,9 @@ void RegionTree::AddObjectCounts(int FoundObjects, int TotalObjects)
 {
 	this->FoundObjs += FoundObjects;
 	this->TotalObjs += TotalObjects;
+    this->GameOwner->FoundObjects += FoundObjects;
+    this->GameOwner->TotalObjects += TotalObjects;
+    this->GameOwner->RefreshTabCountText();
 }
 
 

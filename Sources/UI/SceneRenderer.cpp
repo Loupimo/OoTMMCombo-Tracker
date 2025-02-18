@@ -95,31 +95,18 @@ uint8_t SceneRenderer::GetSceneParentRegion()
 }
 
 
-void SceneRenderer::RenderScene()
+void SceneRenderer::RenderScene(bool Context)
 {
     if (this->SceneImage == nullptr)
     {   // This is the first time the scene is rendered
 
         this->SceneImage = new QPixmap(this->CurrScene->Info->ImagePath);
+        this->addPixmap(*this->SceneImage);
     }
 
     this->IsRendered = true;
-    this->addPixmap(*this->SceneImage);
 
-    ObjectInfo tmp;
-    for (size_t i = 1; i <= ObjectType::fairy; i++)
-    {
-        tmp.Type = (ObjectType)i;
-        ObjectRenderer* objRdr = FindObjectRendererCategory(&tmp);
-
-        if (objRdr && objRdr->GetTotalObject() > 0)
-        {
-            objRdr->UpdateText();
-            objRdr->AddObjectToScene();
-            this->ObjectsTree->addTopLevelItem(objRdr->ObjCat);
-            objRdr->ObjCat->setExpanded(true);
-        }
-    }
+    this->RefreshSceneContext(Context);
 
     this->ObjectsTree->sortItems(0, Qt::SortOrder::AscendingOrder);
 }
@@ -142,12 +129,48 @@ void SceneRenderer::UnloadScene()
     }
 }
 
+void SceneRenderer::RefreshSceneContext(bool Context)
+{
+    ObjectContext context = ObjectContext::All;
+
+    if (this->ItemOwner->Scene->Info->HasContext)
+    {
+        if (this->ItemOwner->Scene->GameID == OOT_GAME)
+        {
+            context = Context ? ObjectContext::Adult : ObjectContext::Child;
+        }
+        else
+        {
+            context = Context ? ObjectContext::Spring : ObjectContext::Winter;
+        }
+    }
+
+    ObjectInfo tmp;
+    for (size_t i = 1; i <= ObjectType::fairy; i++)
+    {
+        tmp.Type = (ObjectType)i;
+        ObjectRenderer* objRdr = FindObjectRendererCategory(&tmp);
+
+        if (objRdr && objRdr->GetTotalObject() > 0)
+        {
+            objRdr->UpdateText();
+            objRdr->AddObjectToScene(context);
+            this->ObjectsTree->addTopLevelItem(objRdr->ObjCat);
+            objRdr->ObjCat->setExpanded(true);
+        }
+    }
+}
+
 void SceneRenderer::RefreshObjectCounts(int Count)
 {
     this->ItemOwner->FoundObjects += Count;
     this->ItemOwner->RefreshObjectCounts(Count);
 }
 
+void SceneRenderer::UpdateContext(ObjectContext Context)
+{
+    ((MapView*)this->views()[0])->UpdateContext(Context);
+}
 /*void SceneRenderer::UpdateItemFound(ObjectInfo* Object, const ItemInfo* ItemFound)
 {
     Object->Item = ItemFound;
@@ -234,10 +257,10 @@ SceneItemTree::~SceneItemTree()
 }
 
 
-void SceneItemTree::RenderScene(QTreeWidget* ObjectsTreeWidget)
+void SceneItemTree::RenderScene(QTreeWidget* ObjectsTreeWidget, bool Context)
 {
     this->Renderer = new SceneRenderer(this->Scene, ObjectsTreeWidget, this);
-    this->Renderer->RenderScene();
+    this->Renderer->RenderScene(Context);
 }
 
 
@@ -248,6 +271,11 @@ void SceneItemTree::UnloadScene()
         delete this->Renderer;
         this->Renderer = nullptr;
     }
+}
+
+bool SceneItemTree::HasContext()
+{
+    return this->Scene->Info->HasContext;
 }
 
 const char* SceneItemTree::GetSceneName()
@@ -328,5 +356,15 @@ void SceneItemTree::ItemFound(ObjectInfo* Object, const ItemInfo* Item)
 
 void SceneRenderer::CenterViewOn(ObjectPixmapItem* Target)
 {
-    this->views()[0]->centerOn(Target);
+    QGraphicsView* currView = this->views()[0];
+    currView->resetTransform();
+
+    // Récupérer la bounding box de l'élément
+    QRectF itemRect = Target->sceneBoundingRect();
+
+    // Calculer un facteur de zoom basé sur la taille de l'objet
+    double scaleFactor = min(currView->viewport()->width() / itemRect.width(), currView->viewport()->height() / itemRect.height()) * 0.15;
+
+    currView->scale(scaleFactor, scaleFactor);
+    currView->centerOn(Target);
 }

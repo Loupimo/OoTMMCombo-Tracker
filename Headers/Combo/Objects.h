@@ -16,6 +16,15 @@ enum ObjectState
 	Forced		// The user has decided to show the object item
 };
 
+enum ObjectContext
+{
+	All,		// The object is present in all context
+	Adult,		// The object is only present when Link is adult
+	Child,		// The object is only present when Link is child
+	Winter,		// The object is only present when season is winter
+	Spring		// The object is only present when season is spring
+};
+
 enum ObjectType
 {
 	none = 0,
@@ -53,6 +62,7 @@ typedef struct ObjectInfo
 	ObjectType Type;								// The type of object
 	int Position[2];								// Object position on its corresponding scene image. ID 0 = X, ID 1 = Y
 	uint32_t RenderScene;							// The scene where the object should be rendered
+	ObjectContext Context;							// The context in which the object appears
 	const ItemInfo* Item;							// The item contained in the object
 	ObjectState Status = ObjectState::Hidden;		// The status object
 	bool PosSet = false;							// Tells if the position has already been set.

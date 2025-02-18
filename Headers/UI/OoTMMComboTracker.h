@@ -14,14 +14,15 @@ private:
     Ui::OoTMMComboTrackerClass ui;
     QTabWidget* TabWidget;
     LogTab* Log;
-    GameTab OoTTab = GameTab(OOT_GAME);
-    GameTab MMTab = GameTab(MM_GAME);
+    GameTab* OoTTab;
+    GameTab* MMTab;
 
 
 public:
     OoTMMComboTracker(QWidget *parent = nullptr);
     ~OoTMMComboTracker();
 
+    void UpdateTabNameText(int TabID);
     void LoadGameScenes(QString FilePath);
     void LoadGameSpoiler();
 
