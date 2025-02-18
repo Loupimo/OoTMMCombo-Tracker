@@ -104,7 +104,7 @@ void ObjectInfo::SaveObject(QFile* SaveFile)
 
 	// Save item
 	uint32_t itemID = 0;
-	if (this->Item)
+	if (this->Item && this->Item->ItemID != -1)
 	{
 		itemID = this->Item->ItemID;
 	}

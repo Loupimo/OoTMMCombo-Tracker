@@ -41,6 +41,9 @@ MapTab::MapTab(int Game, SceneInfo* Scenes, size_t NumOfScenes, QWidget* parent)
     QLabel* mapLabel = new QLabel("Maps");
     this->MapTreeLayout->addWidget(mapLabel);
 
+    QLabel* objectLabel = new QLabel("Objects");
+    this->ObjectTreeLayout->addWidget(objectLabel);
+
     for (size_t i = 0; i < NumOfScenes; i++)
     {   // Creates all the scenes that match this map category.
 
@@ -187,11 +190,26 @@ void MapTab::FilterTree(QTreeWidget* TreeWidget, const QString& SearchText)
         QTreeWidgetItem* parentItem = TreeWidget->topLevelItem(i);
         bool parentVisible = false;
 
-        for (int j = 0; j < parentItem->childCount(); ++j) {
+        for (int j = 0; j < parentItem->childCount(); ++j)
+        {
             QTreeWidgetItem* childItem = parentItem->child(j);
-            bool match = childItem->text(0).contains(SearchText, Qt::CaseInsensitive);
-            childItem->setHidden(!match);
-            parentVisible |= match;  // Si un enfant est visible, le parent doit l'être aussi
+
+            if (childItem->childCount() > 0)
+            {
+                QTreeWidgetItem* childItem2 = childItem->child(0);
+
+                bool match = childItem2->text(0).contains(SearchText, Qt::CaseInsensitive);
+                childItem->setHidden(!match);
+                childItem2->setHidden(!match);
+                parentVisible |= match;  // Si un enfant est visible, le parent doit l'être aussi
+            }
+            else
+            {   // The current child has no child
+
+                bool match = childItem->text(0).contains(SearchText, Qt::CaseInsensitive);
+                childItem->setHidden(!match);
+                parentVisible |= match;  // Si un enfant est visible, le parent doit l'être aussi
+            }
         }
 
         bool matchParent = parentItem->text(0).contains(SearchText, Qt::CaseInsensitive);

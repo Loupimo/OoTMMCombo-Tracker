@@ -3,7 +3,6 @@
 #include <QGraphicsColorizeEffect>
 
 static ObjectIcons* IconsRef = nullptr;
-static QGraphicsColorizeEffect t = QGraphicsColorizeEffect();
 
 ObjectIcons::ObjectIcons()
 {
@@ -98,8 +97,14 @@ void ObjectItemTree::UpdateTextStyle()
     {   // Object is considered as collected
 
         font.setStrikeOut(true);    // Cross out the text
-        this->setForeground(0, QColor(this->DefaultTextColor.red(), this->DefaultTextColor.green(), this->DefaultTextColor.blue(), 128)); // (R, G, B, Alpha)
-
+        if (this->GetStatus() == ObjectState::Collected)
+        {
+            this->setForeground(0, QColor(this->DefaultTextColor.red(), this->DefaultTextColor.green(), this->DefaultTextColor.blue(), 128)); // (R, G, B, Alpha)
+        }
+        else
+        {
+            this->setForeground(0, QColor(147, 112, 249, 128)); // (R, G, B, Alpha)
+        }
         if (this->Object->Item)
         {   // An item is associated to this object
 
@@ -154,6 +159,7 @@ ObjectPixmapItem::ObjectPixmapItem(const QPixmap& Pixmap, ObjectRenderer* Owner)
 
 void ObjectPixmapItem::SetObjectOpacity(ObjectState ObjStatus)
 {
+    this->setGraphicsEffect(nullptr);
     switch (ObjStatus)
     {
         // The object has been collected
@@ -166,6 +172,10 @@ void ObjectPixmapItem::SetObjectOpacity(ObjectState ObjStatus)
         // The object is forced to be reveal
         case ObjectState::Forced:
         {
+            QGraphicsColorizeEffect * forcedEffect = new QGraphicsColorizeEffect();
+            forcedEffect->setColor(QColor(150, 0, 255)); // Violet
+            forcedEffect->setStrength(0.8);  // Intensité du filtre (0 à 1)
+            this->setGraphicsEffect(forcedEffect);
             this->setOpacity(0.65);
             break;
         }

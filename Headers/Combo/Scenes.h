@@ -228,7 +228,7 @@ const SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 	{ "Know-It-All Brothers's House", "./Resources/OoT/Kokiri_Forest/Know_It_All.png", (uint8_t)OoTRegions::Kokiri_Forest },
 	{ "Twins's House", "./Resources/OoT/Kokiri_Forest/Twins_House.png", (uint8_t)OoTRegions::Kokiri_Forest },
 	{ "Mido's House", "./Resources/OoT/Kokiri_Forest/Mido_House.png", (uint8_t)OoTRegions::Kokiri_Forest },
-	{ "Saria's House", "./Resources/OoT/Kokiri_ForestSaria_House.png", (uint8_t)OoTRegions::Kokiri_Forest },
+	{ "Saria's House", "./Resources/OoT/Kokiri_Forest/Saria_House.png", (uint8_t)OoTRegions::Kokiri_Forest },
 	{ "Carpenters Boss's House", "./Resources/OoT/Kakariko/Carpenter_Boss_House.png", (uint8_t)OoTRegions::None },
 	{ "Back Alley's House", "./Resources/OoT/Market/Back_Alley_House.png", (uint8_t)OoTRegions::Market },
 	{ "Bazaar", "", (uint8_t)OoTRegions::None },
