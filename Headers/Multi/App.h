@@ -1,6 +1,8 @@
 #ifndef APP_H
 #define APP_H
 
+#pragma comment(lib, "ws2_32.lib")
+
 #include "Multi.h"
 #include "Game.h"
 #include <QLineEdit>

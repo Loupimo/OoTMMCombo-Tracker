@@ -235,8 +235,6 @@ SceneItemTree::SceneItemTree(SceneInfo* SceneToRender, QTreeWidgetItem* Parent) 
             this->addChild(n);
             this->Rooms.push_back(n);
         }
-
-        //delete tmp;
     }
 }
 
@@ -306,7 +304,14 @@ bool SceneItemTree::HasContext()
 
 void SceneItemTree::UpdateRoom(uint32_t RoomID)
 {
-    this->ActiveRoom = &this->Rooms[RoomID]->Info;
+    if (this->Rooms.size() > RoomID)
+    {
+        this->ActiveRoom = &this->Rooms[RoomID]->Info;
+    }
+    else
+    {
+        this->ActiveRoom = nullptr;
+    }
 }
 
 const char* SceneItemTree::GetSceneName()

@@ -192,6 +192,8 @@ void MapTab::RenderMap()
         this->ObjectContainer->setHidden(false);
         this->RenderedScene->RenderScene(this->ObjectList, this->SwitchButton->GetContext(), true);
         this->View->setScene(this->RenderedScene->GetScene());
+        this->View->fitInView(this->RenderedScene->GetScene()->sceneRect(), Qt::KeepAspectRatio);
+        this->View->centerOn(this->RenderedScene->GetScene()->sceneRect().center());
         this->SwitchContainer->setVisible(this->RenderedScene->HasContext());
     }
 }

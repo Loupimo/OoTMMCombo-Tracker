@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Logo.ico" />
+    <Image Include="Resources\Logo.png" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="OoTMMComboTracker.qrc" />
