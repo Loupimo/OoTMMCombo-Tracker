@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.31)
+project(OoTMMCombo-Tracker)
+find_package(Qt6 REQUIRED COMPONENTS Widgets)
+add_executable(OoTMMCombo-Tracker2 main.cpp)
+target_link_libraries(OoTMMCombo-Tracker2 PRIVATE Qt6::Widgets)
+
+if(WIN32)
+    set(APP_ICON_RESOURCE_FILES "${CMAKE_SOURCE_DIR}/OoTMMCombo-Tracker.rc")
+    add_executable(OoTMMCombo-Tracker WIN32 main.cpp ${APP_ICON_RESOURCE_FILES})
+endif()

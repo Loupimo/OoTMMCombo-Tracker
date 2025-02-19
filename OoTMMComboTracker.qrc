@@ -1,4 +1,5 @@
 <RCC>
-    <qresource prefix="OoTMMComboTracker">
+    <qresource prefix="/OoTMMComboTracker">
+        <file>Resources/Logo.ico</file>
     </qresource>
 </RCC>

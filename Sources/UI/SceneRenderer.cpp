@@ -1,6 +1,7 @@
 #include "UI/SceneRenderer.h"
 #include "UI/RegionTab.h"
 #include "UI/MapTab.h"
+#include "UI/RoomRenderer.h"
 
 // Constructeur pour initialiser la structure
 SceneInfo::SceneInfo(int PSceneID, int PGameID, SceneType PType)
@@ -24,6 +25,7 @@ SceneInfo::~SceneInfo()
 
 SceneRenderer::SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeWidget, SceneItemTree* Owner) : QGraphicsScene()
 {
+    this->ActiveRoom = -1;
 	this->CurrScene = SceneToRender;
     this->ObjectsTree = ObjectsTreeWidget;
     this->ItemOwner = Owner;
@@ -95,12 +97,21 @@ uint8_t SceneRenderer::GetSceneParentRegion()
 }
 
 
-void SceneRenderer::RenderScene(bool Context)
+void SceneRenderer::RenderScene(bool Context, RoomInfo * Room)
 {
+    const char* path = this->CurrScene->Info->ImagePath;
+    if (Room != nullptr && this->ActiveRoom != Room->RoomID)
+    {
+        path = Room->ImagePath;
+        this->ActiveRoom = Room->RoomID;
+        delete this->SceneImage;
+        this->SceneImage = nullptr;
+    }
+
     if (this->SceneImage == nullptr)
     {   // This is the first time the scene is rendered
 
-        this->SceneImage = new QPixmap(this->CurrScene->Info->ImagePath);
+        this->SceneImage = new QPixmap(path);
         this->addPixmap(*this->SceneImage);
     }
 
@@ -171,19 +182,7 @@ void SceneRenderer::UpdateContext(ObjectContext Context)
 {
     ((MapView*)this->views()[0])->UpdateContext(Context);
 }
-/*void SceneRenderer::UpdateItemFound(ObjectInfo* Object, const ItemInfo* ItemFound)
-{
-    Object->Item = ItemFound;
-    ObjectRenderer* dest = this->FindObjectRendererCategory(Object);
 
-    if (dest != nullptr)
-    {	// Update the object renderer
-
-        dest->UpdateObjectState(Object);
-    }
-
-    this->ItemOwner->RefreshObjectCounts(1);
-}*/
 void SceneRenderer::ItemFound(ObjectInfo* Object, const ItemInfo* ItemFound)
 {
     Object->Item = ItemFound;
@@ -217,12 +216,28 @@ ObjectRenderer* SceneRenderer::FindObjectRendererCategory(ObjectInfo* Object)
     return this->ObjectsRen[Object->Type - 1];
 }
 
-
 SceneItemTree::SceneItemTree(SceneInfo* SceneToRender, QTreeWidgetItem* Parent) : QTreeWidgetItem(Parent)
 {
     this->Scene = SceneToRender;
     this->CountSceneObjects();
     this->RefreshObjectCounts(0);
+
+    const QHash<int, std::vector<RoomInfo>>* tmp = GetSceneRooms(this->Scene);
+
+    if (tmp->contains(this->Scene->SceneID))
+    {
+        for (size_t i = 0; i < tmp->value(this->Scene->SceneID).size(); i++)
+        {
+            RoomInfo currRoom = tmp->value(this->Scene->SceneID).at(i);
+
+            RoomItemTree* n = new RoomItemTree(&currRoom, this);
+            n->setText(0, n->Info.RoomName);
+            this->addChild(n);
+            this->Rooms.push_back(n);
+        }
+
+        //delete tmp;
+    }
 }
 
 
@@ -254,15 +269,26 @@ void SceneItemTree::CountSceneObjects()
 SceneItemTree::~SceneItemTree()
 {
     this->UnloadScene();
+
+    for (RoomItemTree* Room : this->Rooms)
+    {
+        delete Room;
+    }
 }
 
-
-void SceneItemTree::RenderScene(QTreeWidget* ObjectsTreeWidget, bool Context)
+SceneRenderer* SceneItemTree::GetScene()
 {
-    this->Renderer = new SceneRenderer(this->Scene, ObjectsTreeWidget, this);
-    this->Renderer->RenderScene(Context);
+    return this->Renderer;
 }
 
+void SceneItemTree::RenderScene(QTreeWidget* ObjectsTreeWidget, bool Context, bool CreateNew)
+{
+    if (CreateNew)
+    {
+        this->Renderer = new SceneRenderer(this->Scene, ObjectsTreeWidget, this);
+    }
+    this->Renderer->RenderScene(Context, this->ActiveRoom);
+}
 
 void SceneItemTree::UnloadScene()
 {
@@ -276,6 +302,11 @@ void SceneItemTree::UnloadScene()
 bool SceneItemTree::HasContext()
 {
     return this->Scene->Info->HasContext;
+}
+
+void SceneItemTree::UpdateRoom(uint32_t RoomID)
+{
+    this->ActiveRoom = &this->Rooms[RoomID]->Info;
 }
 
 const char* SceneItemTree::GetSceneName()
@@ -298,6 +329,12 @@ void SceneItemTree::RefreshObjectCounts(int Count)
     ((RegionTree*)this->parent())->AddObjectCounts(Count, 0);
     ((RegionTree*)this->parent())->RefreshObjsCountText();
 
+    this->UpdateCountsText();
+}
+
+
+void SceneItemTree::UpdateCountsText()
+{
     const size_t max_size = 150;
     char finalName[max_size] = { 0 };
     char tmp[4] = { 0 };
@@ -330,6 +367,7 @@ void SceneItemTree::RefreshObjectCounts(int Count)
     finalName[offset + 1] = '\0';
     this->setText(0, finalName);
 }
+
 
 
 void SceneItemTree::ItemFound(ObjectInfo* Object, const ItemInfo* Item)
@@ -367,4 +405,9 @@ void SceneRenderer::CenterViewOn(ObjectPixmapItem* Target)
 
     currView->scale(scaleFactor, scaleFactor);
     currView->centerOn(Target);
+}
+
+void SceneRenderer::UpdateRoom(uint32_t RoomID)
+{
+    this->ItemOwner->UpdateRoom(RoomID);
 }

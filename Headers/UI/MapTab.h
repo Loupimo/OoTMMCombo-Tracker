@@ -61,6 +61,15 @@ public:
         connect(button, &QPushButton::toggled, this, &ToggleSwitch::animateSwitch);
     }
 
+    ~ToggleSwitch()
+    {
+        delete moveAnimation;
+        delete colorAnimation;
+        delete button;
+        delete circle;
+        delete background;
+    }
+
     bool GetContext()
     {
         return this->button->isChecked();

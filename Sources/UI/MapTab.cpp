@@ -162,34 +162,37 @@ MapTab::MapTab(GameTab * Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes,
 MapTab::~MapTab()
 {
     this->RenderedScene = nullptr;
+
+    for (SceneItemTree * Scene : this->Scenes)
+    {
+        delete Scene;
+    }
+
+    this->Scenes.clear();
     delete this->MapList;
     delete this->ObjectList;
-    delete this->View;
+    delete this->SwitchButton;
+    delete this->LeftIcon;
+    delete this->RightIcon;
+    delete this->SwitchLayout;
     delete this->ObjectTreeLayout;
     delete this->MapTreeLayout;
+    delete this->SwitchContainer;
     delete this->MapContainer;
     delete this->ObjectContainer;
+    delete this->View;
     delete this->MainLayout;
 }
 
 void MapTab::RenderMap()
 {
-    /*if (this->ActiveSceneID != -1)
-    {   // Update the scene to render
-
-        this->RenderedScene = this->ScenesToRender[this->ActiveSceneID];
-    }*/
-
     if (this->RenderedScene != nullptr)
     {   // There is a scene to render. Render it !
 
         this->ObjectContainer->setHidden(false);
-        this->RenderedScene->RenderScene(this->ObjectList, this->SwitchButton->GetContext());
-        this->View->setScene(this->RenderedScene->Renderer);
+        this->RenderedScene->RenderScene(this->ObjectList, this->SwitchButton->GetContext(), true);
+        this->View->setScene(this->RenderedScene->GetScene());
         this->SwitchContainer->setVisible(this->RenderedScene->HasContext());
-
-       /* QGraphicsProxyWidget* proxy = this->View->scene()->addWidget(this->SwitchContainer);
-        proxy->setPos(10, 10);*/
     }
 }
 
@@ -317,7 +320,7 @@ void MapTab::ContextSwitch(bool NewState)
 {
     if (this->RenderedScene)
     {
-        this->RenderedScene->Renderer->RenderScene(NewState);
+        this->RenderedScene->RenderScene(this->ObjectList, NewState, false);
     }
 }
 

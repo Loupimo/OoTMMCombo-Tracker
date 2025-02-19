@@ -18,17 +18,9 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     this->MMTab->Owner = this;
     this->UpdateTabNameText(0);
     this->UpdateTabNameText(1);
-    //this->Maps = new MapTab("./Resources/OoT/Pot_House.png");
-    //this->Maps = new MapTab("./Resources/OoT/Kokiri_Forest/Link_House.png");
-    
-    //this->TabWidget->addTab(this->Maps, "Pot House");
-    //ObjectRenderer* h = new ObjectRenderer(ObjectType::pot, this);
-    //this->TabWidget->addTab(h, "o");
     this->setCentralWidget(this->TabWidget);
     this->setWindowTitle("OoTMMCombo Auto Tracker");
     this->setWindowIcon(QIcon("./Resources/Logo.ico"));
-    /*mainWindow.resize(800, 600);
-    mainWindow.show();*/
 
     connect(MultiLogger::GetLogger(), &MultiLogger::NotifyObjectFound, this, &OoTMMComboTracker::UpdateTrackedObject);
 }
@@ -38,6 +30,7 @@ OoTMMComboTracker::~OoTMMComboTracker()
     delete this->Log;
     delete this->OoTTab;
     delete this->MMTab;
+    delete this->TabWidget;
 }
 
 

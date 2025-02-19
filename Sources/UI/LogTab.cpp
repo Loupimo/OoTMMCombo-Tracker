@@ -140,8 +140,8 @@ LogTab::LogTab(OoTMMComboTracker* Owner, QWidget* parent) : QWidget(parent)
     this->Port->setEnabled(this->EnableMultiplayer);
 
     // Ajout de validations
-    QValidator* intValidator = new QIntValidator(0, 65535); // Valide les entiers
-    this->Port->setValidator(intValidator);
+    this->PortValidator = new QIntValidator(0, 65535); // Valide les entiers
+    this->Port->setValidator(this->PortValidator);
 
     // Layout pour aligner les widgets horizontalement
     this->MultiLayout = new QHBoxLayout;
@@ -181,17 +181,19 @@ LogTab::~LogTab()
     {
         this->Tracker->IsRunning = false;
         this->TrackerThread.join();
-        this->Tracker->~App();
     }
-    this->LaunchButton->~QPushButton();
-    this->NetCheckBox->~QCheckBox();
-    this->Host->~QLineEdit();
-    this->Port->~QLineEdit();
-    this->MultiLayout->~QHBoxLayout();
-    this->NetLayout->~QVBoxLayout();
-    this->LaunchGroup->~QGroupBox();
-    this->LogViewer->~QPlainTextEdit();
-    this->MainLayout->~QVBoxLayout();
+
+    delete this->Tracker;
+    delete this->LaunchButton;
+    delete this->NetCheckBox;
+    delete this->Host;
+    delete this->PortValidator;
+    delete this->Port;
+    delete this->MultiLayout;
+    delete this->NetLayout;
+    delete this->LaunchGroup;
+    delete this->LogViewer;
+    delete this->MainLayout;
 }
 
 

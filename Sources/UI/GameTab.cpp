@@ -330,8 +330,8 @@ GameTab::GameTab(int GameID, QWidget* parent) : QWidget(parent)
 
 GameTab::~GameTab()
 {
-    this->GameMaps->~MapTab();
-    this->MainLayout->~QHBoxLayout();
+    delete this->GameMaps;
+    delete this->MainLayout;
 }
 
 void GameTab::RefreshTabCountText()

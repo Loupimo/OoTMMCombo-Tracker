@@ -12,6 +12,8 @@
 #include "ObjectRenderer.h"
 
 class SceneRenderer;
+class RoomItemTree;
+struct RoomInfo;
 
 enum SceneType
 {
@@ -78,10 +80,15 @@ public:
 
     SceneInfo* Scene = nullptr;
     SceneRenderer* Renderer = nullptr;   // The associated scene to load when this item is active.
+    RoomInfo* ActiveRoom = nullptr;
+
+    std::vector<RoomItemTree*> Rooms;
 
 #pragma endregion
 
 public:
+
+    SceneItemTree(QTreeWidgetItem* Parent = nullptr) {}
 
     /*
     *   Construct the associated scene and tree item and it to the given parent.
@@ -101,23 +108,28 @@ public:
     *
     *   @param ObjectsTreeWidget   The object tree list to fill when this scene is active.
     *   @param Context             The context in which the scene should be rendered.
+    *   @param CreateNew           Tells if we should create a new scene renderer or not.
     */
-    void RenderScene(QTreeWidget* ObjectsTreeWidget, bool Context);
+    virtual void RenderScene(QTreeWidget* ObjectsTreeWidget, bool Context, bool CreateNew);
 
     /*
     *   Unload the scene associated to this item.
     */
-    void UnloadScene();
+    virtual void UnloadScene();
 
-    bool HasContext();
+    virtual bool HasContext();
 
+    void UpdateRoom(uint32_t RoomID);
+
+    virtual SceneRenderer* GetScene();
     const char* GetSceneName();
     int GetCollectedObjects();
 
     int GetTotalObjects();
 
     void CountSceneObjects();
-    void RefreshObjectCounts(int Count);
+    virtual void RefreshObjectCounts(int Count);
+    void UpdateCountsText();
 
     void ItemFound(ObjectInfo* Object, const ItemInfo* Item);
 };
@@ -134,6 +146,7 @@ class SceneRenderer : public QGraphicsScene
 
 public:
 
+    uint32_t ActiveRoom;                                                    // The current active room of the scene
     SceneInfo* CurrScene;                                                   // Contains all info for this scene.
     bool IsRendered = false;                                                // Tells if the scene is currently being rendered by on the GUI
     QTreeWidget* ObjectsTree = nullptr;                                     // The object panel where to display the scene object list;
@@ -178,7 +191,7 @@ public:
     /*
     *   Render the scene elements.
     */
-    void RenderScene(bool Context);
+    void RenderScene(bool Context, RoomInfo* Room);
 
     /*
     *   Unload the scene elements.
@@ -203,6 +216,8 @@ public:
     void ItemFound(ObjectInfo* Object, const ItemInfo* ItemFound);
 
     void CenterViewOn(ObjectPixmapItem* Target);
+
+    void UpdateRoom(uint32_t RoomID);
 
 protected:
 

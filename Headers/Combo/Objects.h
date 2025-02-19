@@ -63,6 +63,7 @@ typedef struct ObjectInfo
 	int Position[2];								// Object position on its corresponding scene image. ID 0 = X, ID 1 = Y
 	uint32_t RenderScene;							// The scene where the object should be rendered
 	ObjectContext Context;							// The context in which the object appears
+	uint32_t RoomID;								// The room in which the object should be put
 	const ItemInfo* Item;							// The item contained in the object
 	ObjectState Status = ObjectState::Hidden;		// The status object
 	bool PosSet = false;							// Tells if the position has already been set.

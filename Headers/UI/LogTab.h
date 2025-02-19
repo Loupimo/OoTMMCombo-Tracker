@@ -40,6 +40,7 @@ public:
     QPlainTextEdit* LogViewer;
     QLineEdit* Host;
     QLineEdit* Port;
+    QValidator* PortValidator;
 
     bool EnableMultiplayer;
     bool IsRunning;

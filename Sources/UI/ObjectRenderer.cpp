@@ -135,6 +135,7 @@ void ObjectItemTree::PerformAction()
 
         this->Object->Status = ObjectState::Forced;
         this->setExpanded(true);
+        this->RendererOwner->SceneOwner->UpdateRoom(this->Object->RoomID);
         this->RendererOwner->UpdateContext(this->Object->Context);
         this->RendererOwner->RefreshObjectCounts(1);
         this->RendererOwner->CenterViewOn(this->GraphItem);
@@ -287,7 +288,7 @@ void ObjectRenderer::AddObjectToScene(ObjectContext ActiveContext)
         for (ObjectItemTree* currObj : this->Objects)
         {   // Render all objects
 
-            if (currObj->Object->Context == ObjectContext::All || currObj->Object->Context == ActiveContext)
+            if ((currObj->Object->Context == ObjectContext::All || currObj->Object->Context == ActiveContext) && (this->SceneOwner->ActiveRoom == -1 || currObj->Object->RoomID == this->SceneOwner->ActiveRoom))
             {
                 currObj->UpdateIcon(this->Type);
             }

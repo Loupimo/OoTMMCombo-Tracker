@@ -59,7 +59,7 @@ def parse_file2(input_file, output_file, arrayname, prefix):
             if fin.__contains__(scenestr) == False:
                 fin[scenestr] = []
 
-            objectstr = "\t{ " + idstr + ", " + scenestr + ", \"" + str(row["friendly_name"]) + "\", \"" + str(row["location"]) + "\", ObjectType::" + str(row["type"]) + ", {" + str(row["x"]) + ", " + str(row["y"]) + "}, " + renderscene + ", ObjectContext::" + str(row["context"]) + " }"
+            objectstr = "\t{ " + idstr + ", " + scenestr + ", \"" + str(row["friendly_name"]) + "\", \"" + str(row["location"]) + "\", ObjectType::" + str(row["type"]) + ", {" + str(row["x"]) + ", " + str(row["y"]) + "}, " + renderscene + ", ObjectContext::" + str(row["context"]) + ", " + str(row["room"]) + " }"
             fin[scenestr].append(objectstr)
             
             if renderscene != scenestr:

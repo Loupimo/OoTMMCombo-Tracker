@@ -128,7 +128,6 @@
     <ClCompile Include="Sources\UI\OoTMMComboTracker.cpp" />
     <ClCompile Include="Sources\UI\RegionTab.cpp" />
     <ClCompile Include="Sources\UI\SceneRenderer.cpp" />
-    <QtRcc Include="OoTMMComboTracker.qrc" />
     <QtUic Include="OoTMMComboTracker.ui" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -146,6 +145,7 @@
     <ClInclude Include="Headers\Multi\Buffer.h" />
     <ClInclude Include="Headers\Multi\Game.h" />
     <ClInclude Include="Headers\UI\RegionTab.h" />
+    <ClInclude Include="Headers\UI\RoomRenderer.h" />
     <ClInclude Include="resource.h" />
     <QtMoc Include="Headers\UI\SceneRenderer.h" />
     <QtMoc Include="Headers\Multi\Multi.h" />
@@ -158,11 +158,13 @@
     <QtMoc Include="Headers\UI\MapTab.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Resources\Logo.ico" />
-    <Image Include="Resources\Logo.png" />
+    <ResourceCompile Include="OoTMMCombo-Tracker.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="OoTMMCombo-Tracker.rc" />
+    <Image Include="Resources\Logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="OoTMMComboTracker.qrc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
