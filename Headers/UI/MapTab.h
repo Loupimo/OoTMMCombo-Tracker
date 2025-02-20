@@ -17,122 +17,121 @@
 class GameTab;
 class MapTab;
 
-class ToggleSwitch : public QWidget {
+/*
+*   This class is responsible for handling the context switch option.
+*/
+class ContextSwitchButton : public QWidget {
     Q_OBJECT
 
 public:
 
-    MapTab* Owner;
+    MapTab* Owner;                      // A reference to the map tab that owns this view
 
 private:
-    QPushButton* button;
-    QLabel* circle;
-    QFrame* background;
-    QPropertyAnimation* moveAnimation;
-    QPropertyAnimation* colorAnimation;
+    QPushButton* Button;                // The push button that holds the context state
+    QLabel* Circle;                     // The moving circle of the button
+    QFrame* Background;                 // The background style of the button
+    QPropertyAnimation* MoveAnimation;  // The cursor movement animation
+    QPropertyAnimation* ColorAnimation; // The button background fading animation
 
 public:
-    explicit ToggleSwitch(MapTab* Owner, QWidget* parent = nullptr) : QWidget(parent) {
-        
-        this->Owner = Owner;
-        setFixedSize(70, 30);
 
-        // Création du fond
-        background = new QFrame(this);
-        background->setStyleSheet("background-color: #ccc; border-radius: 15px;");
-        background->setGeometry(0, 0, 70, 30);
+    /*
+    *   Constructs the button with the given parameter.
+    *
+    *   @param Owner    The map tab that owns this object.
+    *   @param Parent   The potential parent to attach this class to.
+    */
+    ContextSwitchButton(MapTab* Owner, QWidget* parent = nullptr);
 
-        // Création du cercle mobile (le "point" du switch)
-        circle = new QLabel(this);
-        circle->setFixedSize(26, 26);
-        circle->setStyleSheet("background-color: white; border-radius: 13px;");
-        circle->move(2, 2);
+    /*
+    *   The default destructor.
+    */
+    ~ContextSwitchButton();
 
-        // Animation du déplacement
-        moveAnimation = new QPropertyAnimation(circle, "pos");
-        moveAnimation->setDuration(200);
-        moveAnimation->setEasingCurve(QEasingCurve::InOutQuad);
+    /*
+    *   Get the current context switch button position.
+    *
+    *   @return True if the context is Adult or Spring, false is context is Child or Winter.
+    */
+    bool GetContext();
 
-        // Animation du fond
-        colorAnimation = new QPropertyAnimation(this, "backgroundColor");
-        colorAnimation->setDuration(200);
-        colorAnimation->setEasingCurve(QEasingCurve::InOutQuad);
-
-        // Bouton invisible qui détecte les clics
-        button = new QPushButton(this);
-        button->setCheckable(true);
-        button->setStyleSheet("background: transparent;");
-        button->setGeometry(0, 0, 70, 30);
-
-        // Connexion du bouton à l'animation
-        connect(button, &QPushButton::toggled, this, &ToggleSwitch::animateSwitch);
-    }
-
-    ~ToggleSwitch()
-    {
-        delete moveAnimation;
-        delete colorAnimation;
-        delete button;
-        delete circle;
-        delete background;
-    }
-
-    bool GetContext()
-    {
-        return this->button->isChecked();
-    }
-
+    /*
+    *   Update the switch position based on the given context.
+    *
+    *   @param Context    The context to put the switch to.
+    */
     void UpdateContext(ObjectContext Context);
 
-private slots:
-    void animateSwitch(bool checked);
+    /*
+    *   Animate the switch button regarding its current position and the desired state.
+    *
+    *   @param Checked    The final switch state : True means ends on rigth side, false on left side.
+    */
+    void AnimateSwitch(bool Checked);
 
 protected:
-    void setBackgroundColor(QColor color) {
-        background->setStyleSheet(QString("background-color: %1; border-radius: 15px;").arg(color.name()));
-    }
 
-    QColor getBackgroundColor() const {
-        return background->palette().color(QPalette::Window);
-    }
+    /*
+    *   Set the button background color.
+    *
+    *   @param Color    The new background color to use.
+    */
+    void SetBackgroundColor(QColor Color);
 
-    Q_PROPERTY(QColor backgroundColor READ getBackgroundColor WRITE setBackgroundColor)
+    /*
+    *   Get the current button background color.
+    *
+    *   @return The current button background color.
+    */
+    QColor GetBackgroundColor() const;
 
+    Q_PROPERTY(QColor backgroundColor READ GetBackgroundColor WRITE SetBackgroundColor)
 };
 
 
+/*
+*   This class is responsible for handling the view in which the scene is rendered.
+*/
 class MapView : public QGraphicsView
 {
     Q_OBJECT
 
 public:
 
-    MapTab* Owner;
+    MapTab* Owner;  // A reference to the map tab that owns this view
 
 public:
-    explicit MapView(MapTab* Owner, QWidget* parent = nullptr) : QGraphicsView(parent)
-    {
-        this->Owner = Owner;
-        setRenderHint(QPainter::Antialiasing);
-        setRenderHint(QPainter::SmoothPixmapTransform);
-        setTransformationAnchor(QGraphicsView::AnchorUnderMouse);  // Zoom centré sur la souris
-        setDragMode(QGraphicsView::ScrollHandDrag);  // Permet de déplacer la vue avec la souris
-    }
 
+    /*
+    *   Constructs the map view with the given parameter.
+    *
+    *   @param Owner    The map tab that owns this object.
+    *   @param Parent   The potential parent to attach this class to.
+    */
+    MapView(MapTab* Owner, QWidget* Parent = nullptr);
+
+    /*
+    *   Switch the current map context with the desired one.
+    *
+    *   @param Context  The context used to set up the switch.
+    */
     void UpdateContext(ObjectContext Context);
 
 protected:
-    void wheelEvent(QWheelEvent* event) override
-    {
-        const double scaleFactor = 1.15; // Facteur de zoom
-        if (event->angleDelta().y() > 0)
-            scale(scaleFactor, scaleFactor);  // Zoom avant
-        else
-            scale(1.0 / scaleFactor, 1.0 / scaleFactor);  // Zoom arrière
-    }
+
+    /*
+    *   Zoom or unzoom the camera on weel movement.
+    * 
+    *   @param event    The actual weel event that triggered this function.
+    */
+    void wheelEvent(QWheelEvent* event) override;
 };
 
 
+/*
+*   This class is responsible for holding all elements related to scene, region, object and graphical layout for a specific game.
+*/
 class MapTab : public QWidget
 {
     Q_OBJECT
@@ -159,7 +158,7 @@ public:
     // Switch Button
     QLabel* LeftIcon;
     QLabel* RightIcon;
-    ToggleSwitch* SwitchButton;
+    ContextSwitchButton* SwitchButton;
 
     // Map Tree
     QLineEdit* MapSearchBar;
@@ -170,8 +169,8 @@ public:
     QTreeWidget* ObjectList;
 
     // Scenes
-    std::vector<RegionTree*> Regions;
-    SceneItemTree* RenderedScene = nullptr;
+    std::vector<RegionTree*> Regions;           // The list of all available regions
+    SceneItemTree* RenderedScene = nullptr;     // The currently rendered scene
     QHash<int, SceneItemTree*> Scenes;          // All the scenes available
 
     // Flags
@@ -181,18 +180,91 @@ public:
 
 #pragma endregion
 
+#pragma region Class creation / loading
+
 public:
+
+    /*
+    *   Build all game map that match given game / scenes.
+    */
     MapTab(GameTab* Owner, int Game, SceneInfo* Scene, size_t NumOfScenes, QWidget* parent = nullptr);
+
+    /*
+    *   Default destructor.
+    */
     ~MapTab();
 
-    void RenderMap();
-    void UnloadMap();
-    void ChangeActiveScene (QTreeWidgetItem* Current, QTreeWidgetItem* Previous);
-    //void ChangeActiveScene(int NewIndex);
+    /*
+    *   Find the desired region.
+    *
+    *   @param Region    The region ID to match.
+    *
+    *   @return The matching region if found, nullptr otherwise.
+    */
     RegionTree* FindRegionTree(uint8_t Region);
-    void ChangeObjectState(QTreeWidgetItem* Item, int Column);
+
+    /*
+    *   Refresh the object counts of all scenes.
+    */
+    void RefreshScenesObjectCounts();
+
+    /*
+    *   Hide or unhide tree elements regarding the given string.
+    *
+    *   @param TreeWidget      The tree to filter.
+    *   @param SearchText      The text to match.
+    */
     void FilterTree(QTreeWidget* TreeWidget, const QString& SearchText);
 
+#pragma endregion
+
+#pragma region Context
+
+public:
+
+    /*
+    *   Update the context of the switch button.
+    *
+    *   @param Context      The context in which the button should be put.
+    */
+    void UpdateContext(ObjectContext Context);
+
+    /*
+    *   Refresh the context of the current rendered scene regarding the given state.
+    *
+    *   @param NewState      The context in which the scene should be.
+    */
+    void ContextSwitch(bool NewState);
+
+#pragma endregion
+
+#pragma region Map Tree / Scene Rendering
+
+public:
+
+    /*
+    *   Render the current active scene.
+    */
+    void RenderMap();
+
+    /*
+    *   Unload the current rendered scene.
+    */
+    void UnloadMap();
+
+    /*
+    *   Change the current active scene.
+    *
+    *   @param Current    The new scene to render.
+    *   @param Previous   The previously rendered scene.
+    */
+    void ChangeActiveScene(QTreeWidgetItem* Current, QTreeWidgetItem* Previous);
+
+#pragma endregion
+
+#pragma region Object Tree / Object changed
+
+public:
 
     /*
     *   Update the matching scene object.
@@ -204,9 +276,21 @@ public:
     */
     void ItemFound(ObjectInfo* Object, const ItemInfo* ItemFound);
 
-    void RefreshScenesObjectCounts();
+    /*
+    *   Perform the action on the clicked object.
+    *
+    *   @param Item      The clicked object.
+    *   @param Column    The item column (not used).
+    */
+    void ObjectClicked(QTreeWidgetItem* Item, int Column);
 
-    void UpdateContext(ObjectContext Context);
-    void ContextSwitch(bool NewState);
+    /*
+    *   Update the object list selected item.
+    *
+    *   @warning This function does a lot of things that modify some flags that could have potential side effect on other function.
+    */
     void UpdateObjectSelection();
+
+#pragma endregion
+
 };

@@ -173,6 +173,24 @@ void ObjectItemTree::PerformAction()
             this->GraphItem->UpdateObjectRendering(this->Object->Status, false);
         }
     }
+    else
+    {
+        if (this->CalledFromGraph)
+        {
+            if (this->isSelected() == true)
+            {   // The caller is the graph item. The object was already selected so we need to trigger the function in order to properly sets event flags.
+
+                this->treeWidget()->itemSelectionChanged();
+            }
+            else
+            {   // Change the object selection status
+
+                this->setSelected(true);    // The itemSelectionChanged will be triggered.
+            }
+            return;
+        }
+        this->RendererOwner->CenterViewOn(this->GraphItem);                 // Center the scene view on the object
+    }
 
     this->UpdateTextStyle();
 }
