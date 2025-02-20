@@ -7,6 +7,34 @@
 #include "UI/MapTab.h"
 #include "UI/GameTab.h"
 
+void ToggleSwitch::UpdateContext(ObjectContext Context)
+{
+    switch (Context)
+    {
+        case ObjectContext::Spring:
+        case ObjectContext::Adult:
+        {
+            this->button->setChecked(true);
+            this->animateSwitch(true);
+            break;
+        }
+
+        case ObjectContext::All:
+        {   // Here we don't want to change the context. However we still want to call the scene refresh in case the room has changed
+
+            this->Owner->ContextSwitch(this->button->isChecked());
+            break;
+        }
+
+        default:
+        {
+            this->button->setChecked(false);
+            this->animateSwitch(false);
+            break;
+        }
+    }
+}
+
 void ToggleSwitch::animateSwitch(bool checked) {
     // Animation du déplacement du cercle
     moveAnimation->setStartValue(circle->pos());
@@ -103,20 +131,18 @@ MapTab::MapTab(GameTab * Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes,
     for (size_t i = 0; i < NumOfScenes; i++)
     {   // Creates all the scenes that match this map category.
 
-        //this->ScenesToRender.push_back(new SceneRenderer(&Scenes[i]));
         uint8_t sceneRegionID = Scenes[i].Info->ParentRegion;
         if (sceneRegionID != 0)
         {   // We don't want to add scene that has no object
 
-            RegionTree* currRegion = this->FindRegionTree(sceneRegionID);//this->FindRegionTree(this->ScenesToRender[i]->GetSceneParentRegion());
+            RegionTree* currRegion = this->FindRegionTree(sceneRegionID);
             if (currRegion == nullptr)
             {   // Create a new region in the tree list
 
-                currRegion = new RegionTree(Owner, Game, sceneRegionID, this->MapList);//new RegionTree(Game, this->ScenesToRender[i]->GetSceneParentRegion(), this->MapList);
+                currRegion = new RegionTree(Owner, Game, sceneRegionID, this->MapList);
                 this->Regions.push_back(currRegion);
             }
             SceneItemTree * tmp = new SceneItemTree(&Scenes[i], currRegion);
-            //currRegion->setExpanded(true);
             currRegion->AddObjectCounts(tmp->GetCollectedObjects(), tmp->GetTotalObjects());
             currRegion->RefreshObjsCountText();
             this->Scenes.insert(Scenes[i].SceneID, tmp);
@@ -147,7 +173,6 @@ MapTab::MapTab(GameTab * Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes,
     // Connections
     QObject::connect(this->MapList, &QTreeWidget::currentItemChanged, this, &MapTab::ChangeActiveScene);
     QObject::connect(this->ObjectList, &QTreeWidget::itemClicked, this, &MapTab::ChangeObjectState);
-    //QObject::connect(this->MapList, &QComboBox::currentIndexChanged, this, &MapTab::ChangeActiveScene);
     QObject::connect(this->MapSearchBar, &QLineEdit::textChanged, [&](const QString& text) {
         this->FilterTree(this->MapList, text);
     });
@@ -156,12 +181,16 @@ MapTab::MapTab(GameTab * Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes,
         this->FilterTree(this->ObjectList, text);
     });
 
-    QObject::connect(this->ObjectList, &QTreeWidget::itemSelectionChanged, this, &MapTab::ResetSelection);
+    QObject::connect(this->ObjectList, &QTreeWidget::itemSelectionChanged, this, &MapTab::UpdateObjectSelection);
 }
 
 MapTab::~MapTab()
 {
     this->RenderedScene = nullptr;
+
+    // Disconnect singals in order to not trigger event on partially destroyed object
+    QObject::disconnect(this->MapList, nullptr, nullptr, nullptr);
+    QObject::disconnect(this->ObjectList, nullptr, nullptr, nullptr);
 
     for (SceneItemTree * Scene : this->Scenes)
     {
@@ -203,11 +232,18 @@ void MapTab::UnloadMap()
     if (this->RenderedScene != nullptr)
     {   // A scene was rendered. Unload it !
 
+        // We need to disconnect it in order to not call the perform function if an object was selected and destroyed
+        QObject::disconnect(this->ObjectList, &QTreeWidget::itemSelectionChanged, this, &MapTab::UpdateObjectSelection);
+
+        this->PrevSelected = nullptr;
         this->RenderedScene->UnloadScene();
         this->RenderedScene = nullptr;
         this->View->setScene(nullptr);
         this->ObjectList->clear();
         this->SwitchContainer->setVisible(false);
+
+        // Don't forget to reconnect the signal
+        QObject::connect(this->ObjectList, &QTreeWidget::itemSelectionChanged, this, &MapTab::UpdateObjectSelection);
     }
 }
 
@@ -223,7 +259,8 @@ void MapTab::ChangeActiveScene(QTreeWidgetItem * Current, QTreeWidgetItem * Prev
     if (this->RenderedScene && this->RenderedScene->childCount() == 0)
     {   // The previous selected item was a scene
 
-        this->RenderedScene->UnloadScene();
+        this->UnloadMap();
+        //this->RenderedScene->UnloadScene();
     }
 
     this->RenderedScene = (SceneItemTree*)Current;
@@ -233,7 +270,17 @@ void MapTab::ChangeActiveScene(QTreeWidgetItem * Current, QTreeWidgetItem * Prev
 
 void MapTab::ChangeObjectState(QTreeWidgetItem* Item, int Column)
 {
-    ((CommonBaseItemTree*)Item)->PerformAction();
+    // This function gets called only when an object is clicked on the list. We therefore need to update the scroll
+    this->ObjectList->scrollTo(this->ObjectList->indexFromItem(Item), QAbstractItemView::PositionAtCenter);
+    
+    if (!this->SelectionUpdated)
+    {   // This means that the itemSelectionChanged event has not occured before and the object can be updated
+
+        ((CommonBaseItemTree*)Item)->PerformAction(); 
+    }
+
+    // We still need to reset the flag
+    this->SelectionUpdated = false;
 }
 
 
@@ -326,27 +373,83 @@ void MapTab::ContextSwitch(bool NewState)
     }
 }
 
-void MapTab::ResetSelection()
+void MapTab::UpdateObjectSelection()
 {
     QList<QTreeWidgetItem*> selectedItems = this->ObjectList->selectedItems();
 
-    if (selectedItems.isEmpty()) return;
+    // We need to disconnect the list otherwise we will call this function multiple times
+    QObject::disconnect(this->ObjectList, &QTreeWidget::itemSelectionChanged, this, &MapTab::UpdateObjectSelection);
+
+    if (selectedItems.isEmpty())
+    {   // No item is selected anymore. The scene has probably changed
+
+        if (this->PrevSelected != nullptr)
+        {   // Unselect the previously selected item
+
+            this->PrevSelected->setSelected(false);
+            this->PrevSelected->ResetObjectEffect();
+            this->PrevSelected = nullptr;
+        }
+
+        // Reconnect the selection change event
+        QObject::connect(this->ObjectList, &QTreeWidget::itemSelectionChanged, this, &MapTab::UpdateObjectSelection);
+        return;
+    }
 
     // Vérifier si l'élément sélectionné est un enfant
     QTreeWidgetItem* selectedItem = selectedItems.last();
-    QTreeWidgetItem* parent = selectedItem->parent();
 
-    if (parent) { // L'élément sélectionné est un enfant
-        for (int i = 0; i < parent->childCount(); ++i) {
-            QTreeWidgetItem* child = parent->child(i);
-            if (child != selectedItem)
-            {
-                child->setSelected(false);
+    if (this->PrevSelected == selectedItem)
+    {   // The previously selected is the same as the new one. This can only happen when the object was selected and is clicked from the graph item
+
+        this->PrevSelected->ResetObjectEffect();
+        this->PrevSelected = nullptr;
+    }
+    else if (this->PrevSelected != nullptr)
+    {   // There was a previously selected item. We need to reset its effect
+
+        this->PrevSelected->ResetObjectEffect();
+    }
+
+    this->PrevSelected = (CommonBaseItemTree*)selectedItem;
+
+    // Multiple selection can occured when the selection event is trigger by clicking several graph items in a row
+    for (QTreeWidgetItem* currItem : selectedItems)
+    {   // Browse all the currently selected items
+
+        for (int i = 0; i < currItem->childCount(); i++)
+        {   // Update all children of this item
+
+            QTreeWidgetItem* child = currItem->child(i);
+
+            child->setSelected(false);
+            ((CommonBaseItemTree*)child)->ResetObjectEffect();
+        }
+
+        if (currItem != selectedItem)
+        {   // The current item is a different one. We need to unselect it
+
+            currItem->setSelected(false);
+            ((CommonBaseItemTree*)currItem)->ResetObjectEffect();
+        }
+        else
+        {
+            if (!this->PrevSelected->IsCalledFromGraph())
+            {   // The selection event comes from a click in the list. We need to set up the flag in order to not double update the object
+
+                this->SelectionUpdated = true;
             }
             else
-            {
-                this->ObjectList->scrollTo(this->ObjectList->indexFromItem(selectedItem), QAbstractItemView::PositionAtCenter);
+            {   // The selection event comes from a click on a graph item. We can scroll to the object in the list without fear of consuming the click event
+
+                this->ObjectList->scrollTo(this->ObjectList->indexFromItem(selectedItem), QAbstractItemView::PositionAtCenter); // Note : scrollTo seems to consume the click event and prevent the click function from being called after the selection event.
             }
+
+            this->PrevSelected->SetCalledFromGraph(false);          // Reset the caller flag in order to proceed to rest of the object updating function
+            ((CommonBaseItemTree*)selectedItem)->PerformAction();   // We can perform the object updating action
         }
     }
+
+    // Reconnect the selection changed signal
+    QObject::connect(this->ObjectList, &QTreeWidget::itemSelectionChanged, this, &MapTab::UpdateObjectSelection);
 }

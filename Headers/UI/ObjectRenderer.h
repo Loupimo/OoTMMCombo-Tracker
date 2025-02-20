@@ -21,27 +21,27 @@ typedef struct ObjectIcon
 const ObjectIcon IconsMetaInfo[23] =
 {
     {"", {0, 0}},                                          // ObjectType::none
-    {"./Resources/Common/Chest.png", { 30, 30 }},          // ObjectType::chest
-    {"./Resources/Common/Collectible.png", { 30, 30 }},    // ObjectType::collectible
-    {"./Resources/Common/NPC.png", { 30, 30 }},            // ObjectType::npc
-    {"./Resources/Common/Gold_Skulltula.png", { 30, 30 }}, // ObjectType::gs
+    {"./Resources/Common/Chest.png", { 40, 40 }},          // ObjectType::chest
+    {"./Resources/Common/Collectible.png", { 50, 50 }},    // ObjectType::collectible
+    {"./Resources/Common/NPC.png", { 50, 50 }},            // ObjectType::npc
+    {"./Resources/Common/Gold_Skulltula.png", { 50, 50 }}, // ObjectType::gs
     {"./Resources/Common/Stray_Fairy.png", { 30, 30 }},    // ObjectType::sf
     {"./Resources/Common/Cow.png", { 100, 100 }},          // ObjectType::cow
     {"./Resources/Common/Shop.png", { 30, 30 }},           // ObjectType::shop
-    {"./Resources/Common/Scrub.png", { 30, 30 }},          // ObjectType::scrub
+    {"./Resources/Common/Scrub.png", { 55, 55 }},          // ObjectType::scrub
     {"./Resources/Common/Silver_Rupee.png", { 30, 30 }},   // ObjectType::sr
     {"./Resources/Common/Fish.png", { 30, 30 }},           // ObjectType::fish
-    {"./Resources/Common/Wonder.png", { 30, 30 }},         // ObjectType::wonder
+    {"./Resources/Common/Wonder.png", { 40, 40 }},         // ObjectType::wonder
     {"./Resources/Common/Grass.png", { 30, 30 }},          // ObjectType::grass
     {"./Resources/Common/Crate.png", { 30, 30 }},          // ObjectType::crate
     {"./Resources/Common/Pot.png", { 40, 40 }},            // ObjectType::pot
-    {"./Resources/Common/Hive.png", { 30, 30 }},           // ObjectType::hive
+    {"./Resources/Common/Hive.png", { 40, 40 }},           // ObjectType::hive
     {"./Resources/Common/Butterfly.png", { 30, 30 }},      // ObjectType::butterfly
     {"./Resources/Common/Rupee.png", { 30, 30 }},          // ObjectType::rupee
     {"./Resources/Common/Snowball.png", { 30, 30 }},       // ObjectType::snowball
     {"./Resources/Common/Barrel.png", { 30, 30 }},         // ObjectType::barrel
     {"./Resources/Common/Heart.png", { 30, 30 }},          // ObjectType::heart
-    {"./Resources/Common/Fairy_Spot.png", { 30, 30 }},     // ObjectType::fairy_spot
+    {"./Resources/Common/Fairy_Spot.png", { 40, 40 }},     // ObjectType::fairy_spot
     {"./Resources/Common/Fairy.png", { 30, 30 }}           // ObjectType::fairy
 };
 
@@ -50,9 +50,16 @@ class CommonBaseItemTree : public QTreeWidgetItem
 {
 public:
 
+    bool CalledFromGraph = false;   // A flag that indicates if actions should be performed in a graph item context
+
+public:
+
     CommonBaseItemTree(QTreeWidgetItem* Parent = nullptr) : QTreeWidgetItem(Parent) {}
     virtual ~CommonBaseItemTree() { }
     virtual void PerformAction() {}
+    virtual void ResetObjectEffect() {}
+    bool IsCalledFromGraph() { return this->CalledFromGraph; }
+    void SetCalledFromGraph(bool IsCalledFromGraph) { this->CalledFromGraph = IsCalledFromGraph; }
 };
 
 
@@ -82,7 +89,7 @@ public:
 
     ObjectPixmapItem(const QPixmap& Pixmap, ObjectRenderer* Owner, ObjectItemTree* ItemOwner);
 
-    void SetObjectOpacity(ObjectState ObjStatus, bool IsSelected);
+    void UpdateObjectRendering(ObjectState ObjStatus, bool IsSelected);
 
 protected:
 
@@ -120,6 +127,7 @@ public:
     }
 
     void PerformAction() override;
+    void ResetObjectEffect() override;
 };
 
 

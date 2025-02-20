@@ -24,6 +24,13 @@ public:
 
     MapTab* Owner;
 
+private:
+    QPushButton* button;
+    QLabel* circle;
+    QFrame* background;
+    QPropertyAnimation* moveAnimation;
+    QPropertyAnimation* colorAnimation;
+
 public:
     explicit ToggleSwitch(MapTab* Owner, QWidget* parent = nullptr) : QWidget(parent) {
         
@@ -75,26 +82,7 @@ public:
         return this->button->isChecked();
     }
 
-    void UpdateContext(ObjectContext Context)
-    {
-        switch (Context)
-        {
-            case ObjectContext::Spring:
-            case ObjectContext::Adult:
-            {
-                this->button->setChecked(true);
-                this->animateSwitch(true);
-                break;
-            }
-
-            default:
-            {
-                this->button->setChecked(false);
-                this->animateSwitch(false);
-                break;
-            }
-        }
-    }
+    void UpdateContext(ObjectContext Context);
 
 private slots:
     void animateSwitch(bool checked);
@@ -110,12 +98,6 @@ protected:
 
     Q_PROPERTY(QColor backgroundColor READ getBackgroundColor WRITE setBackgroundColor)
 
-private:
-    QPushButton* button;
-    QLabel* circle;
-    QFrame* background;
-    QPropertyAnimation* moveAnimation;
-    QPropertyAnimation* colorAnimation;
 };
 
 
@@ -189,11 +171,13 @@ public:
 
     // Scenes
     std::vector<RegionTree*> Regions;
-    //std::vector<SceneRenderer *> ScenesToRender;
-    //SceneRenderer* RenderedScene = nullptr;
-    //int ActiveSceneID = -1;
     SceneItemTree* RenderedScene = nullptr;
-    QHash<int, SceneItemTree*> Scenes;
+    QHash<int, SceneItemTree*> Scenes;          // All the scenes available
+
+    // Flags
+    CommonBaseItemTree* PrevSelected = nullptr; // The previously selected object in the list
+    bool SelectionUpdated = false;              // Tells if the object has already been updated. Used to avoid duplicates between selection changed and click signals
+
 
 #pragma endregion
 
@@ -224,5 +208,5 @@ public:
 
     void UpdateContext(ObjectContext Context);
     void ContextSwitch(bool NewState);
-    void ResetSelection();
+    void UpdateObjectSelection();
 };

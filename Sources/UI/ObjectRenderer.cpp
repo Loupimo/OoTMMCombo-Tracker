@@ -72,7 +72,7 @@ void ObjectItemTree::UpdateIcon(ObjectType Type)
     {
         this->GraphItem = new ObjectPixmapItem(IconsRef->PixmapIcons[Type], this->RendererOwner, this);
     }
-    this->GraphItem->SetObjectOpacity(this->Object->Status, false);
+    this->GraphItem->UpdateObjectRendering(this->Object->Status, false);
     this->GraphItem->setPos(this->Object->Position[0], this->Object->Position[1]);
     this->RendererOwner->SceneOwner->addItem(this->GraphItem);
     this->UpdateTextStyle();
@@ -133,32 +133,56 @@ void ObjectItemTree::PerformAction()
     if (this->Object->Status == ObjectState::Hidden)
     {   // The item was hidden and should now be shown
 
+        if (this->CalledFromGraph)
+        {
+            if (this->isSelected() == true)
+            {   // The caller is the graph item. The object was already selected so we need to trigger the function in order to properly sets event flags.
+
+                this->treeWidget()->itemSelectionChanged();
+            }
+            else
+            {   // Change the object selection status
+
+                this->setSelected(true);    // The itemSelectionChanged will be triggered.
+            }
+            return;
+        }
         this->Object->Status = ObjectState::Forced;
         this->setExpanded(true);
-        this->RendererOwner->SceneOwner->UpdateRoom(this->Object->RoomID);
-        this->RendererOwner->UpdateContext(this->Object->Context);
-        this->RendererOwner->RefreshObjectCounts(1);
-        this->RendererOwner->CenterViewOn(this->GraphItem);
-        this->GraphItem->SetObjectOpacity(this->Object->Status, true);
-        this->setSelected(true);
+        this->RendererOwner->SceneOwner->UpdateRoom(this->Object->RoomID);  // We need to update the room ID in case the selected object is in another room than the active one
+        this->RendererOwner->UpdateContext(this->Object->Context);          // We need to update the context in case the selected object is in a different context than the active one
+        this->RendererOwner->RefreshObjectCounts(1);                        // Increase the number of discovered object by one
+        this->RendererOwner->CenterViewOn(this->GraphItem);                 // Center the scene view on the object
+        this->GraphItem->UpdateObjectRendering(this->Object->Status, true); // Apply opacity and effect to the selected object
     }
     else if (this->Object->Status == ObjectState::Forced)
-    {   // The item was shown and should now be hidden
+    {   // The item was forced to be shown and should now be hidden
 
+        if (this->CalledFromGraph)
+        {   // Update the selection and trigger the event to correctly set the flags
+
+            this->setSelected(false);
+        }
         this->Object->Status = ObjectState::Hidden;
         this->setExpanded(false);
-        this->RendererOwner->RefreshObjectCounts(-1);
+        this->RendererOwner->RefreshObjectCounts(-1);                       // Decrease the number of discovered object by one
         
         if (this->GraphItem)
-        {   // It can be null when the object has been forced and is only present in a context that is different from the current active one
+        {   // It can be null when the object has been forced and is only present in a context / room that is different from the current active one
 
-            this->GraphItem->SetObjectOpacity(this->Object->Status, false);
+            this->GraphItem->UpdateObjectRendering(this->Object->Status, false);
         }
-        
-        this->setSelected(false);
     }
 
     this->UpdateTextStyle();
+}
+
+void ObjectItemTree::ResetObjectEffect()
+{
+    if (this->GraphItem)
+    {
+        this->GraphItem->UpdateObjectRendering(this->Object->Status, false);
+    }
 }
 
 
@@ -168,7 +192,7 @@ ObjectPixmapItem::ObjectPixmapItem(const QPixmap& Pixmap, ObjectRenderer* Owner,
     this->ItemOwner = ItemOwner;
 }
 
-void ObjectPixmapItem::SetObjectOpacity(ObjectState ObjStatus, bool IsSelected)
+void ObjectPixmapItem::UpdateObjectRendering(ObjectState ObjStatus, bool IsSelected)
 {
     this->setGraphicsEffect(nullptr);
     switch (ObjStatus)
@@ -177,10 +201,11 @@ void ObjectPixmapItem::SetObjectOpacity(ObjectState ObjStatus, bool IsSelected)
         case ObjectState::Collected:
         {
             if (IsSelected)
-            {
-                QGraphicsColorizeEffect* forcedEffect = new QGraphicsColorizeEffect();
-                forcedEffect->setColor(QColor(253, 218, 0)); // Jaune
-                forcedEffect->setStrength(0.8);  // Intensité du filtre (0 à 1)
+            {   // Only update the effect when the object is selected
+
+                QGraphicsColorizeEffect * forcedEffect = new QGraphicsColorizeEffect();
+                forcedEffect->setColor(QColor(253, 218, 0)); // Yellow
+                forcedEffect->setStrength(0.8);
                 this->setGraphicsEffect(forcedEffect);
             }
             this->setOpacity(0.5);
@@ -193,13 +218,13 @@ void ObjectPixmapItem::SetObjectOpacity(ObjectState ObjStatus, bool IsSelected)
             QGraphicsColorizeEffect * forcedEffect = new QGraphicsColorizeEffect();
             if (IsSelected)
             {
-                forcedEffect->setColor(QColor(253, 218, 0)); // Jaune
-                forcedEffect->setStrength(0.8);  // Intensité du filtre (0 à 1)
+                forcedEffect->setColor(QColor(253, 218, 0)); // Yellow
+                forcedEffect->setStrength(0.8);
             }
             else
             {
-                forcedEffect->setColor(QColor(150, 0, 255)); // Violet
-                forcedEffect->setStrength(0.8);  // Intensité du filtre (0 à 1)
+                forcedEffect->setColor(QColor(150, 0, 255)); // Purple
+                forcedEffect->setStrength(0.8);
             }
             this->setGraphicsEffect(forcedEffect);
             this->setOpacity(0.65);
@@ -219,13 +244,14 @@ void ObjectPixmapItem::mousePressEvent(QGraphicsSceneMouseEvent* event)
 {
     if (this->Owner)
     {
-        this->Owner->CenterViewOn(this);  // Centre la vue sur l'icône cliquée
+        this->Owner->CenterViewOn(this);            // Center the scene view on this object
     }
     if (this->ItemOwner)
     {
-        this->ItemOwner->PerformAction();
+        this->ItemOwner->SetCalledFromGraph(true);  // Update the caller status
+        this->ItemOwner->PerformAction();           // Update the object
     }
-    QGraphicsPixmapItem::mousePressEvent(event); // Appelle le comportement par défaut
+    QGraphicsPixmapItem::mousePressEvent(event);
 }
 
 

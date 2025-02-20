@@ -285,6 +285,15 @@ void SceneItemTree::RenderScene(QTreeWidget* ObjectsTreeWidget, bool Context, bo
     {
         this->Renderer = new SceneRenderer(this->Scene, ObjectsTreeWidget, this);
     }
+    else
+    {
+        if (this->ActiveRoom != nullptr)
+        {   // Maybe the room has been changed by object selection. We need to unselect the prious room
+
+            this->Rooms[this->Renderer->ActiveRoom]->setSelected(false);
+            this->Rooms[this->ActiveRoom->RoomID]->setSelected(true);
+        }
+    }
     this->Renderer->RenderScene(Context, this->ActiveRoom);
 }
 

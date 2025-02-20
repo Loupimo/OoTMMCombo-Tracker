@@ -175,47 +175,47 @@ TRADE_BIGGORON_SWORD;DEATH_MOUNTAIN_TRAIL;Biggoron Sword;OOT Death Mountain Trai
 0x00001;DEATH_MOUNTAIN_TRAIL;Upper;OOT Death Mountain Trail Rupee Upper;rupee;0;0;DEATH_MOUNTAIN_TRAIL;Child;0
 0x00002;DEATH_MOUNTAIN_TRAIL;Lower;OOT Death Mountain Trail Rupee Lower;rupee;0;0;DEATH_MOUNTAIN_TRAIL;Child;0
 0x00026;DEATH_MOUNTAIN_TRAIL;Mast;OOT Death Mountain Trail Big Fairy;fairy_spot;0;0;DEATH_MOUNTAIN_TRAIL;All;0
-0x03;DEKU_TREE;Map;OOT Deku Tree Map Chest;chest;0;0;DEKU_TREE;All;0
-0x02;DEKU_TREE;Compass;OOT Deku Tree Compass Chest;chest;0;0;DEKU_TREE;All;1
-0x06;DEKU_TREE;Compass Side Room;OOT Deku Tree Compass Room Side Chest;chest;0;0;DEKU_TREE;All;1
-0x01;DEKU_TREE;Slingshot;OOT Deku Tree Slingshot Chest;chest;0;0;DEKU_TREE;All;2
-0x05;DEKU_TREE;Slingshot - Side;OOT Deku Tree Slingshot Side Chest;chest;0;0;DEKU_TREE;All;2
-0x04;DEKU_TREE;Basement;OOT Deku Tree Basement Chest;chest;0;0;DEKU_TREE;All;3
-0x0b;DEKU_TREE;Behind Compass;OOT Deku Tree GS Compass;gs;0;0;DEKU_TREE;All;2
-0x0a;DEKU_TREE;Basement Vines;OOT Deku Tree GS Basement Vines;gs;0;0;DEKU_TREE;All;3
-0x09;DEKU_TREE;Basement Gate;OOT Deku Tree GS Basement Gate;gs;0;0;DEKU_TREE;All;3
-0x08;DEKU_TREE;Basement Back Room;OOT Deku Tree GS Basement Back Room;gs;0;0;DEKU_TREE;All;4
-0x00006;DEKU_TREE;Lobby 1;OOT Deku Tree Grass Lobby 1;grass;0;0;DEKU_TREE;All;0
-0x00007;DEKU_TREE;Lobby 2;OOT Deku Tree Grass Lobby 2;grass;0;0;DEKU_TREE;All;0
-0x00008;DEKU_TREE;Lobby 3;OOT Deku Tree Grass Lobby 3;grass;0;0;DEKU_TREE;All;0
-0x00009;DEKU_TREE;Lobby 4;OOT Deku Tree Grass Lobby 4;grass;0;0;DEKU_TREE;All;0
-0x0000a;DEKU_TREE;Lobby 5;OOT Deku Tree Grass Lobby 5;grass;0;0;DEKU_TREE;All;0
-0x00200;DEKU_TREE;Slingshot Room 1;OOT Deku Tree Grass Slingshot Room 1;grass;0;0;DEKU_TREE;All;2
-0x00201;DEKU_TREE;Slingshot Room 2;OOT Deku Tree Grass Slingshot Room 2;grass;0;0;DEKU_TREE;All;2
-0x00202;DEKU_TREE;Slingshot Room 3;OOT Deku Tree Grass Slingshot Room 3;grass;0;0;DEKU_TREE;All;2
-0x00203;DEKU_TREE;Slingshot Room 4;OOT Deku Tree Grass Slingshot Room 4;grass;0;0;DEKU_TREE;All;2
-0x00301;DEKU_TREE;Basement - Main 1;OOT Deku Tree Grass Basement Main 1;grass;0;0;DEKU_TREE;All;3
-0x00302;DEKU_TREE;Basement - Main 2;OOT Deku Tree Grass Basement Main 2;grass;0;0;DEKU_TREE;All;3
-0x00400;DEKU_TREE;Eye Switch Room 1;OOT Deku Tree Grass Eye Switch Room 1;grass;0;0;DEKU_TREE;All;5
-0x00401;DEKU_TREE;Eye Switch Room 2;OOT Deku Tree Grass Eye Switch Room 2;grass;0;0;DEKU_TREE;All;5
-0x00402;DEKU_TREE;Eye Switch Room 3;OOT Deku Tree Grass Eye Switch Room 3;grass;0;0;DEKU_TREE;All;5
-0x00403;DEKU_TREE;Eye Switch Room 4;OOT Deku Tree Grass Eye Switch Room 4;grass;0;0;DEKU_TREE;All;5
-0x00501;DEKU_TREE;Water Room 1;OOT Deku Tree Grass Water Room 1;grass;0;0;DEKU_TREE;All;6
-0x00502;DEKU_TREE;Water Room 2;OOT Deku Tree Grass Water Room 2;grass;0;0;DEKU_TREE;All;6
-0x00602;DEKU_TREE;Torch Room 1;OOT Deku Tree Grass Torch Room 1;grass;0;0;DEKU_TREE;All;7
-0x00603;DEKU_TREE;Torch Room 2;OOT Deku Tree Grass Torch Room 2;grass;0;0;DEKU_TREE;All;7
-0x00702;DEKU_TREE;Larva Room 1;OOT Deku Tree Grass Larva Room 1;grass;0;0;DEKU_TREE;All;8
-0x00703;DEKU_TREE;Larva Room 2;OOT Deku Tree Grass Larva Room 2;grass;0;0;DEKU_TREE;All;8
-0x00900;DEKU_TREE;Pre-Boss Room 1;OOT Deku Tree Grass Pre-Boss Room 1;grass;0;0;DEKU_TREE;All;9
-0x00901;DEKU_TREE;Pre-Boss Room 2;OOT Deku Tree Grass Pre-Boss Room 2;grass;0;0;DEKU_TREE;All;9
-0x00902;DEKU_TREE;Pre-Boss Room 3;OOT Deku Tree Grass Pre-Boss Room 3;grass;0;0;DEKU_TREE;All;9
-0x00a02;DEKU_TREE;Compass Room 1;OOT Deku Tree Grass Compass Room 1;grass;0;0;DEKU_TREE;All;1
-0x00a03;DEKU_TREE;Compass Room 2;OOT Deku Tree Grass Compass Room 2;grass;0;0;DEKU_TREE;All;1
-0x00019;DEKU_TREE;Main Room - Lower;OOT Deku Tree Heart Main Room Lower;heart;0;0;DEKU_TREE;All;0
-0x0001a;DEKU_TREE;Main Room - Upper;OOT Deku Tree Heart Main Room Upper;heart;0;0;DEKU_TREE;All;0
-0x00906;DEKU_TREE;Pre-Boss 1;OOT Deku Tree Heart Pre-Boss 1;heart;0;0;DEKU_TREE;All;9
-0x00907;DEKU_TREE;Pre-Boss 2;OOT Deku Tree Heart Pre-Boss 2;heart;0;0;DEKU_TREE;All;9
-0x00908;DEKU_TREE;Pre-Boss 3;OOT Deku Tree Heart Pre-Boss 3;heart;0;0;DEKU_TREE;All;9
+0x03;DEKU_TREE;Map;OOT Deku Tree Map Chest;chest;889;548;DEKU_TREE;All;0
+0x02;DEKU_TREE;Compass;OOT Deku Tree Compass Chest;chest;1174;584;DEKU_TREE;All;1
+0x06;DEKU_TREE;Compass Side Room;OOT Deku Tree Compass Room Side Chest;chest;730;552;DEKU_TREE;All;1
+0x01;DEKU_TREE;Slingshot;OOT Deku Tree Slingshot Chest;chest;1043;512;DEKU_TREE;All;2
+0x05;DEKU_TREE;Slingshot - Side;OOT Deku Tree Slingshot Side Chest;chest;889;313;DEKU_TREE;All;2
+0x04;DEKU_TREE;Basement;OOT Deku Tree Basement Chest;chest;714;578;DEKU_TREE;All;3
+0x0b;DEKU_TREE;Behind Chest;OOT Deku Tree GS Compass;gs;729;508;DEKU_TREE;All;1
+0x0a;DEKU_TREE;Basement Vines;OOT Deku Tree GS Basement Vines;gs;871;499;DEKU_TREE;All;3
+0x09;DEKU_TREE;Basement Gate;OOT Deku Tree GS Basement Gate;gs;464;583;DEKU_TREE;All;3
+0x08;DEKU_TREE;Basement Back Room;OOT Deku Tree GS Basement Back Room;gs;515;375;DEKU_TREE;All;4
+0x00006;DEKU_TREE;Lobby 1;OOT Deku Tree Grass Lobby 1;grass;662;738;DEKU_TREE;All;0
+0x00007;DEKU_TREE;Lobby 2;OOT Deku Tree Grass Lobby 2;grass;618;742;DEKU_TREE;All;0
+0x00008;DEKU_TREE;Lobby 3;OOT Deku Tree Grass Lobby 3;grass;582;749;DEKU_TREE;All;0
+0x00009;DEKU_TREE;Lobby 4;OOT Deku Tree Grass Lobby 4;grass;474;603;DEKU_TREE;All;0
+0x0000a;DEKU_TREE;Lobby 5;OOT Deku Tree Grass Lobby 5;grass;494;589;DEKU_TREE;All;0
+0x00200;DEKU_TREE;Slingshot Room 1;OOT Deku Tree Grass Slingshot Room 1;grass;559;710;DEKU_TREE;All;2
+0x00201;DEKU_TREE;Slingshot Room 2;OOT Deku Tree Grass Slingshot Room 2;grass;608;703;DEKU_TREE;All;2
+0x00202;DEKU_TREE;Slingshot Room 3;OOT Deku Tree Grass Slingshot Room 3;grass;551;850;DEKU_TREE;All;2
+0x00203;DEKU_TREE;Slingshot Room 4;OOT Deku Tree Grass Slingshot Room 4;grass;586;864;DEKU_TREE;All;2
+0x00301;DEKU_TREE;Basement - Main 1;OOT Deku Tree Grass Basement Main 1;grass;975;645;DEKU_TREE;All;3
+0x00302;DEKU_TREE;Basement - Main 2;OOT Deku Tree Grass Basement Main 2;grass;1019;653;DEKU_TREE;All;3
+0x00400;DEKU_TREE;Eye Switch Room 1;OOT Deku Tree Grass Eye Switch Room 1;grass;923;606;DEKU_TREE;All;5
+0x00401;DEKU_TREE;Eye Switch Room 2;OOT Deku Tree Grass Eye Switch Room 2;grass;978;618;DEKU_TREE;All;5
+0x00402;DEKU_TREE;Eye Switch Room 3;OOT Deku Tree Grass Eye Switch Room 3;grass;520;614;DEKU_TREE;All;5
+0x00403;DEKU_TREE;Eye Switch Room 4;OOT Deku Tree Grass Eye Switch Room 4;grass;568;603;DEKU_TREE;All;5
+0x00501;DEKU_TREE;Water Room 1;OOT Deku Tree Grass Water Room 1;grass;425;553;DEKU_TREE;All;6
+0x00502;DEKU_TREE;Water Room 2;OOT Deku Tree Grass Water Room 2;grass;385;553;DEKU_TREE;All;6
+0x00602;DEKU_TREE;Torch Room 1;OOT Deku Tree Grass Torch Room 1;grass;416;657;DEKU_TREE;All;7
+0x00603;DEKU_TREE;Torch Room 2;OOT Deku Tree Grass Torch Room 2;grass;510;627;DEKU_TREE;All;7
+0x00702;DEKU_TREE;Larva Room 1;OOT Deku Tree Grass Larva Room 1;grass;445;629;DEKU_TREE;All;8
+0x00703;DEKU_TREE;Larva Room 2;OOT Deku Tree Grass Larva Room 2;grass;477;617;DEKU_TREE;All;8
+0x00900;DEKU_TREE;Pre-Boss Room 1;OOT Deku Tree Grass Pre-Boss Room 1;grass;940;513;DEKU_TREE;All;9
+0x00901;DEKU_TREE;Pre-Boss Room 2;OOT Deku Tree Grass Pre-Boss Room 2;grass;916;506;DEKU_TREE;All;9
+0x00902;DEKU_TREE;Pre-Boss Room 3;OOT Deku Tree Grass Pre-Boss Room 3;grass;895;498;DEKU_TREE;All;9
+0x00a02;DEKU_TREE;Compass Room 1;OOT Deku Tree Grass Compass Room 1;grass;1066;560;DEKU_TREE;All;1
+0x00a03;DEKU_TREE;Compass Room 2;OOT Deku Tree Grass Compass Room 2;grass;1143;563;DEKU_TREE;All;1
+0x00019;DEKU_TREE;Main Room - Lower;OOT Deku Tree Heart Main Room Lower;heart;674;626;DEKU_TREE;All;0
+0x0001a;DEKU_TREE;Main Room - Upper;OOT Deku Tree Heart Main Room Upper;heart;724;315;DEKU_TREE;All;0
+0x00906;DEKU_TREE;Pre-Boss 1;OOT Deku Tree Heart Pre-Boss 1;heart;532;762;DEKU_TREE;All;9
+0x00907;DEKU_TREE;Pre-Boss 2;OOT Deku Tree Heart Pre-Boss 2;heart;427;706;DEKU_TREE;All;9
+0x00908;DEKU_TREE;Pre-Boss 3;OOT Deku Tree Heart Pre-Boss 3;heart;1023;636;DEKU_TREE;All;9
 0x03;DEKU_TREE;Map;OOT MQ Deku Tree Map Chest;chest;0;0;MQ_DEKU_TREE;All;0
 0x01;DEKU_TREE;Compass;OOT MQ Deku Tree Compass Chest;chest;0;0;MQ_DEKU_TREE;All;0
 0x06;DEKU_TREE;Slingshot;OOT MQ Deku Tree Slingshot Chest;chest;0;0;MQ_DEKU_TREE;All;0
@@ -1388,7 +1388,7 @@ MASK_SELL_KEATON;KAKARIKO_VILLAGE;Keaton Mask;OOT Kakariko Sell Keaton Mask;npc;
 0x00037;KAKARIKO_VILLAGE;Carpenter's Beam End;OOT Kakariko Wonder Item;wonder;0;0;KAKARIKO_VILLAGE;Child;0
 0x0002e;KAKARIKO_VILLAGE;Butterfly 1;OOT Kakariko Butterfly 1;butterfly;0;0;KAKARIKO_VILLAGE;All;0
 0x1002e;KAKARIKO_VILLAGE;Butterfly 2;OOT Kakariko Butterfly 2;butterfly;0;0;KAKARIKO_VILLAGE;All;0
-0x00;KOKIRI_FOREST;Kokiri Sword;OOT Kokiri Forest Kokiri Sword Chest;chest;953;1406;KOKIRI_FOREST;All;0
+0x00;KOKIRI_FOREST;Kokiri Sword;OOT Kokiri Forest Kokiri Sword Chest;chest;953;1406;KOKIRI_FOREST;Child;0
 0x68;KOKIRI_FOREST;Soil;OOT Kokiri Forest GS Soil;gs;1055;200;KOKIRI_FOREST;Child;0
 0x69;KOKIRI_FOREST;Child - Behind Know-It-All House;OOT Kokiri Forest GS Night Child;gs;412;708;KOKIRI_FOREST;Child;0
 0x6a;KOKIRI_FOREST;Adult - Twin's House Roof;OOT Kokiri Forest GS Night Adult;gs;1205;498;KOKIRI_FOREST;Adult;0
@@ -1430,8 +1430,8 @@ MASK_SELL_KEATON;KAKARIKO_VILLAGE;Keaton Mask;OOT Kakariko Sell Keaton Mask;npc;
 0x08016;KOKIRI_FOREST;Adult - Near Crawl 8;OOT Kokiri Forest Grass Adult Near Crawl 8;grass;597;733;KOKIRI_FOREST;Adult;0
 0x00005;KOKIRI_FOREST;Child - Rupee 1;OOT Kokiri Forest Rupee Child 1;rupee;591;251;KOKIRI_FOREST;Child;0
 0x00006;KOKIRI_FOREST;Child - Rupee 2;OOT Kokiri Forest Rupee Child 2;rupee;779;430;KOKIRI_FOREST;Child;0
-0x00200;KOKIRI_FOREST;Crawl 1;OOT Kokiri Forest Rupee Crawl 1;rupee;555;1052;KOKIRI_FOREST;All;0
-0x00201;KOKIRI_FOREST;Crawl 2;OOT Kokiri Forest Rupee Crawl 2;rupee;710;1205;KOKIRI_FOREST;All;0
+0x00200;KOKIRI_FOREST;Crawl 1;OOT Kokiri Forest Rupee Crawl 1;rupee;555;1052;KOKIRI_FOREST;Child;0
+0x00201;KOKIRI_FOREST;Crawl 2;OOT Kokiri Forest Rupee Crawl 2;rupee;710;1205;KOKIRI_FOREST;Child;0
 0x0800b;KOKIRI_FOREST;Adult - Rupee 1;OOT Kokiri Forest Rupee Adult 1;rupee;1106;147;KOKIRI_FOREST;Adult;0
 0x1800b;KOKIRI_FOREST;Adult - Rupee 2;OOT Kokiri Forest Rupee Adult 2;rupee;1120;138;KOKIRI_FOREST;Adult;0
 0x2800b;KOKIRI_FOREST;Adult - Rupee 3;OOT Kokiri Forest Rupee Adult 3;rupee;1092;138;KOKIRI_FOREST;Adult;0
@@ -1491,16 +1491,16 @@ BLUE_WARP_BARINADE;LAIR_BARINADE;Zora's Sapphire;OOT Jabu-Jabu Boss;npc;0;0;INSI
 0x0106;LAIR_BARINADE;Boss Pot 6;OOT Jabu-Jabu Boss Pot 6;pot;0;0;INSIDE_JABU_JABU;All;0
 0x1f;LAIR_BONGO_BONGO;Heart Container;OOT Shadow Temple Boss HC;collectible;0;0;TEMPLE_SHADOW;All;0
 BLUE_WARP_BONGO_BONGO;LAIR_BONGO_BONGO;Shadow Medaillon;OOT Shadow Temple Boss;npc;0;0;TEMPLE_SHADOW;All;0
-0x1f;LAIR_GOHMA;Heart Container;OOT Deku Tree Boss Container;collectible;0;0;DEKU_TREE;All;10
-BLUE_WARP_GOHMA;LAIR_GOHMA;Kokiri's Emerald;OOT Deku Tree Boss;npc;0;0;DEKU_TREE;All;10
-0x00101;LAIR_GOHMA;Boss 1;OOT Deku Tree Boss Grass 1;grass;0;0;DEKU_TREE;All;10
-0x00102;LAIR_GOHMA;Boss 2;OOT Deku Tree Boss Grass 2;grass;0;0;DEKU_TREE;All;10
-0x00103;LAIR_GOHMA;Boss 3;OOT Deku Tree Boss Grass 3;grass;0;0;DEKU_TREE;All;10
-0x00104;LAIR_GOHMA;Boss 4;OOT Deku Tree Boss Grass 4;grass;0;0;DEKU_TREE;All;10
-0x00105;LAIR_GOHMA;Boss 5;OOT Deku Tree Boss Grass 5;grass;0;0;DEKU_TREE;All;10
-0x00106;LAIR_GOHMA;Boss 6;OOT Deku Tree Boss Grass 6;grass;0;0;DEKU_TREE;All;10
-0x00107;LAIR_GOHMA;Boss 7;OOT Deku Tree Boss Grass 7;grass;0;0;DEKU_TREE;All;10
-0x00108;LAIR_GOHMA;Boss 8;OOT Deku Tree Boss Grass 8;grass;0;0;DEKU_TREE;All;10
+0x1f;LAIR_GOHMA;Heart Container;OOT Deku Tree Boss Container;collectible;614;592;DEKU_TREE;All;10
+BLUE_WARP_GOHMA;LAIR_GOHMA;Kokiri's Emerald;OOT Deku Tree Boss;npc;690;592;DEKU_TREE;All;10
+0x00101;LAIR_GOHMA;Boss 1;OOT Deku Tree Boss Grass 1;grass;909;553;DEKU_TREE;All;10
+0x00102;LAIR_GOHMA;Boss 2;OOT Deku Tree Boss Grass 2;grass;981;572;DEKU_TREE;All;10
+0x00103;LAIR_GOHMA;Boss 3;OOT Deku Tree Boss Grass 3;grass;1070;602;DEKU_TREE;All;10
+0x00104;LAIR_GOHMA;Boss 4;OOT Deku Tree Boss Grass 4;grass;1056;655;DEKU_TREE;All;10
+0x00105;LAIR_GOHMA;Boss 5;OOT Deku Tree Boss Grass 5;grass;330;649;DEKU_TREE;All;10
+0x00106;LAIR_GOHMA;Boss 6;OOT Deku Tree Boss Grass 6;grass;316;601;DEKU_TREE;All;10
+0x00107;LAIR_GOHMA;Boss 7;OOT Deku Tree Boss Grass 7;grass;398;573;DEKU_TREE;All;10
+0x00108;LAIR_GOHMA;Boss 8;OOT Deku Tree Boss Grass 8;grass;470;553;DEKU_TREE;All;10
 0x00;LAIR_KING_DODONGO;Small Chest;OOT Dodongo Cavern Boss Chest;chest;0;0;DODONGO_CAVERN;All;0
 0x1f;LAIR_KING_DODONGO;Heart Container;OOT Dodongo Cavern Boss Container;collectible;0;0;DODONGO_CAVERN;All;0
 BLUE_WARP_KING_DODONGO;LAIR_KING_DODONGO;Goron's Ruby;OOT Dodongo Cavern Boss;npc;0;0;DODONGO_CAVERN;All;0
@@ -1592,46 +1592,46 @@ MALON_SONG;LON_LON_RANCH;Epona's Song;OOT Lon Lon Ranch Malon Song;npc;0;0;LON_L
 0x00018;LON_LON_RANCH;Crate;OOT Lon Lon Ranch Crate;crate;0;0;LON_LON_RANCH;All;0
 0x08018;LON_LON_RANCH;Hurdles 1;OOT Lon Lon Ranch Wonder Item 1;wonder;0;0;LON_LON_RANCH;Adult;0
 0x08019;LON_LON_RANCH;Hurdles 2;OOT Lon Lon Ranch Wonder Item 2;wonder;0;0;LON_LON_RANCH;Adult;0
-SARIA_OCARINA;LOST_WOODS;Fairy Ocarina;OOT Lost Woods Gift from Saria;npc;0;0;LOST_WOODS;Child;0
-LOST_WOODS_TARGET;LOST_WOODS;Slingshot Target;OOT Lost Woods Target;npc;0;0;LOST_WOODS;All;0
-LOST_WOODS_SKULL_KID;LOST_WOODS;Skull Kid;OOT Lost Woods Skull Kid;npc;0;0;LOST_WOODS;Adult;0
-MASK_SELL_SKULL;LOST_WOODS;Skull Mask;OOT Lost Woods Sell Skull Mask;npc;0;0;LOST_WOODS;Child;0
-LOST_WOODS_MEMORY;LOST_WOODS;Memory Game;OOT Lost Woods Memory Game;npc;0;0;LOST_WOODS;Child;0
-0x00;LOST_WOODS;Deku Sticks Upgrade;OOT Lost Woods Scrub Sticks Upgrade;scrub;0;0;LOST_WOODS;All;0
-0x01;LOST_WOODS;Near Theater - Left;OOT Lost Woods Scrub Near Theater Left;scrub;0;0;LOST_WOODS;All;0
-0x02;LOST_WOODS;Near Theater - Right;OOT Lost Woods Scrub Near Theater Right;scrub;0;0;LOST_WOODS;All;0
-TRADE_ODD_MUSHROOM;LOST_WOODS;Odd Mushroom;OOT Lost Woods Odd Mushroom;npc;0;0;LOST_WOODS;Adult;0
-TRADE_POACHER_SAW;LOST_WOODS;Poacher's Saw;OOT Lost Woods Poacher's Saw;npc;0;0;LOST_WOODS;Adult;0
-0x00202;LOST_WOODS;Grass 1;OOT Lost Woods Grass 1;grass;0;0;LOST_WOODS;All;0
-0x00203;LOST_WOODS;Grass 2;OOT Lost Woods Grass 2;grass;0;0;LOST_WOODS;All;0
-0x00204;LOST_WOODS;Grass 3;OOT Lost Woods Grass 3;grass;0;0;LOST_WOODS;All;0
-0x00701;LOST_WOODS;Deep 1;OOT Lost Woods Grass Deep 1;grass;0;0;LOST_WOODS;All;0
-0x00702;LOST_WOODS;Deep 2;OOT Lost Woods Grass Deep 2;grass;0;0;LOST_WOODS;All;0
-0x00703;LOST_WOODS;Deep 3;OOT Lost Woods Grass Deep 3;grass;0;0;LOST_WOODS;All;0
-0x00803;LOST_WOODS;Deep 4;OOT Lost Woods Grass Deep 4;grass;0;0;LOST_WOODS;All;0
-0x00804;LOST_WOODS;Deep 5;OOT Lost Woods Grass Deep 5;grass;0;0;LOST_WOODS;All;0
-0x00805;LOST_WOODS;Deep 6;OOT Lost Woods Grass Deep 6;grass;0;0;LOST_WOODS;All;0
-0x70;LOST_WOODS;Soil - Bridge;OOT Lost Woods GS Soil Bridge;gs;0;0;LOST_WOODS;Child;0
-0x71;LOST_WOODS;Soil - Theater;OOT Lost Woods GS Soil Theater;gs;0;0;LOST_WOODS;Child;0
-0x72;LOST_WOODS;Bean Ride - Theater;OOT Lost Woods GS Bean Ride;gs;0;0;LOST_WOODS;Adult;0
-0x00304;LOST_WOODS;Underwater 1;OOT Lost Woods Rupee Arrow 1;rupee;0;0;LOST_WOODS;Child;0
-0x00305;LOST_WOODS;Underwater 2;OOT Lost Woods Rupee Arrow 2;rupee;0;0;LOST_WOODS;Child;0
-0x00306;LOST_WOODS;Underwater 3;OOT Lost Woods Rupee Arrow 3;rupee;0;0;LOST_WOODS;Child;0
-0x00307;LOST_WOODS;Underwater 4;OOT Lost Woods Rupee Arrow 4;rupee;0;0;LOST_WOODS;Child;0
-0x00308;LOST_WOODS;Underwater 5;OOT Lost Woods Rupee Arrow 5;rupee;0;0;LOST_WOODS;Child;0
-0x00309;LOST_WOODS;Underwater 6;OOT Lost Woods Rupee Arrow 6;rupee;0;0;LOST_WOODS;Child;0
-0x0030a;LOST_WOODS;Underwater 7;OOT Lost Woods Rupee Arrow 7;rupee;0;0;LOST_WOODS;Child;0
-0x0030b;LOST_WOODS;Underwater 8;OOT Lost Woods Rupee Arrow 8;rupee;0;0;LOST_WOODS;Child;0
-0x00704;LOST_WOODS;Boulder;OOT Lost Woods Rupee Boulder;rupee;0;0;LOST_WOODS;All;0
-0x00303;LOST_WOODS;Pool;OOT Lost Woods Pool Big Fairy;fairy_spot;0;0;LOST_WOODS;All;0
-0x00105;LOST_WOODS;Memory Game Grass 1;OOT Lost Woods Wonder Item 1;wonder;0;0;LOST_WOODS;All;0
-0x00106;LOST_WOODS;Memory Game Grass 2;OOT Lost Woods Wonder Item 2;wonder;0;0;LOST_WOODS;All;0
-0x00107;LOST_WOODS;Memory Game Grass 3;OOT Lost Woods Wonder Item 3;wonder;0;0;LOST_WOODS;All;0
-0x00601;LOST_WOODS;Butterfly 1;OOT Lost Woods Butterfly 1;butterfly;0;0;LOST_WOODS;All;0
-0x10601;LOST_WOODS;Butterfly 2;OOT Lost Woods Butterfly 2;butterfly;0;0;LOST_WOODS;All;0
-0x20601;LOST_WOODS;Butterfly 3;OOT Lost Woods Butterfly 3;butterfly;0;0;LOST_WOODS;All;0
-0x30601;LOST_WOODS;Butterfly 4;OOT Lost Woods Butterfly 4;butterfly;0;0;LOST_WOODS;All;0
-0x40601;LOST_WOODS;Butterfly 5;OOT Lost Woods Butterfly 5;butterfly;0;0;LOST_WOODS;All;0
+SARIA_OCARINA;LOST_WOODS;Fairy Ocarina;OOT Lost Woods Gift from Saria;npc;211;2800;LOST_WOODS;Child;0
+LOST_WOODS_TARGET;LOST_WOODS;Slingshot Target;OOT Lost Woods Target;npc;2069;1966;LOST_WOODS;All;0
+LOST_WOODS_SKULL_KID;LOST_WOODS;Skull Kid;OOT Lost Woods Skull Kid;npc;380;2066;LOST_WOODS;Child;0
+MASK_SELL_SKULL;LOST_WOODS;Skull Mask;OOT Lost Woods Sell Skull Mask;npc;262;1954;LOST_WOODS;Child;0
+LOST_WOODS_MEMORY;LOST_WOODS;Memory Game;OOT Lost Woods Memory Game;npc;1896;2195;LOST_WOODS;Child;0
+0x00;LOST_WOODS;Deku Sticks Upgrade;OOT Lost Woods Scrub Sticks Upgrade;scrub;238;3051;LOST_WOODS;All;0
+0x01;LOST_WOODS;Near Theater - Left;OOT Lost Woods Scrub Near Theater Left;scrub;1264;1102;LOST_WOODS;All;0
+0x02;LOST_WOODS;Near Theater - Right;OOT Lost Woods Scrub Near Theater Right;scrub;1423;859;LOST_WOODS;All;0
+TRADE_ODD_MUSHROOM;LOST_WOODS;Odd Mushroom;OOT Lost Woods Odd Mushroom;npc;289;1981;LOST_WOODS;Adult;0
+TRADE_POACHER_SAW;LOST_WOODS;Poacher's Saw;OOT Lost Woods Poacher's Saw;npc;301;1960;LOST_WOODS;Adult;0
+0x00202;LOST_WOODS;Grass 1;OOT Lost Woods Grass 1;grass;1544;1621;LOST_WOODS;All;0
+0x00203;LOST_WOODS;Grass 2;OOT Lost Woods Grass 2;grass;1518;1633;LOST_WOODS;All;0
+0x00204;LOST_WOODS;Grass 3;OOT Lost Woods Grass 3;grass;1508;1600;LOST_WOODS;All;0
+0x00701;LOST_WOODS;Deep 1;OOT Lost Woods Grass Deep 1;grass;2056;477;LOST_WOODS;All;0
+0x00702;LOST_WOODS;Deep 2;OOT Lost Woods Grass Deep 2;grass;2027;490;LOST_WOODS;All;0
+0x00703;LOST_WOODS;Deep 3;OOT Lost Woods Grass Deep 3;grass;2015;453;LOST_WOODS;All;0
+0x00803;LOST_WOODS;Deep 4;OOT Lost Woods Grass Deep 4;grass;1607;434;LOST_WOODS;All;0
+0x00804;LOST_WOODS;Deep 5;OOT Lost Woods Grass Deep 5;grass;1620;465;LOST_WOODS;All;0
+0x00805;LOST_WOODS;Deep 6;OOT Lost Woods Grass Deep 6;grass;1583;473;LOST_WOODS;All;0
+0x70;LOST_WOODS;Soil - Bridge;OOT Lost Woods GS Soil Bridge;gs;202;2443;LOST_WOODS;Child;0
+0x71;LOST_WOODS;Soil - Theater;OOT Lost Woods GS Soil Theater;gs;1395;830;LOST_WOODS;Child;0
+0x72;LOST_WOODS;Bean Ride - Theater;OOT Lost Woods GS Bean Ride;gs;1526;752;LOST_WOODS;Adult;0
+0x00304;LOST_WOODS;Underwater 1;OOT Lost Woods Rupee Arrow 1;rupee;2462;1463;LOST_WOODS;Child;0
+0x00305;LOST_WOODS;Underwater 2;OOT Lost Woods Rupee Arrow 2;rupee;2490;1465;LOST_WOODS;Child;0
+0x00306;LOST_WOODS;Underwater 3;OOT Lost Woods Rupee Arrow 3;rupee;2517;1466;LOST_WOODS;Child;0
+0x00307;LOST_WOODS;Underwater 4;OOT Lost Woods Rupee Arrow 4;rupee;2545;1466;LOST_WOODS;Child;0
+0x00308;LOST_WOODS;Underwater 5;OOT Lost Woods Rupee Arrow 5;rupee;2534;1441;LOST_WOODS;Child;0
+0x00309;LOST_WOODS;Underwater 6;OOT Lost Woods Rupee Arrow 6;rupee;2515;1418;LOST_WOODS;Child;0
+0x0030a;LOST_WOODS;Underwater 7;OOT Lost Woods Rupee Arrow 7;rupee;2533;1486;LOST_WOODS;Child;0
+0x0030b;LOST_WOODS;Underwater 8;OOT Lost Woods Rupee Arrow 8;rupee;2510;1504;LOST_WOODS;Child;0
+0x00704;LOST_WOODS;Boulder;OOT Lost Woods Rupee Boulder;rupee;2281;230;LOST_WOODS;All;0
+0x00303;LOST_WOODS;Pool;OOT Lost Woods Pool Big Fairy;fairy_spot;2399;1504;LOST_WOODS;All;0
+0x00105;LOST_WOODS;Memory Game Grass 1;OOT Lost Woods Wonder Item 1;wonder;1975;2105;LOST_WOODS;All;0
+0x00106;LOST_WOODS;Memory Game Grass 2;OOT Lost Woods Wonder Item 2;wonder;2039;2274;LOST_WOODS;All;0
+0x00107;LOST_WOODS;Memory Game Grass 3;OOT Lost Woods Wonder Item 3;wonder;1847;2311;LOST_WOODS;All;0
+0x00601;LOST_WOODS;Butterfly 1;OOT Lost Woods Butterfly 1;butterfly;1042;907;LOST_WOODS;Child;0
+0x10601;LOST_WOODS;Butterfly 2;OOT Lost Woods Butterfly 2;butterfly;1018;914;LOST_WOODS;Child;0
+0x20601;LOST_WOODS;Butterfly 3;OOT Lost Woods Butterfly 3;butterfly;1037;926;LOST_WOODS;Child;0
+0x30601;LOST_WOODS;Butterfly 4;OOT Lost Woods Butterfly 4;butterfly;1018;935;LOST_WOODS;Child;0
+0x40601;LOST_WOODS;Butterfly 5;OOT Lost Woods Butterfly 5;butterfly;1035;946;LOST_WOODS;Child;0
 0x00021;MARKET_CHILD_DAY;Crate 1;OOT Market Crate 1;crate;0;0;MARKET_CHILD_DAY;All;0
 0x00022;MARKET_CHILD_DAY;Crate 2;OOT Market Crate 2;crate;0;0;MARKET_CHILD_DAY;All;0
 0x00023;MARKET_CHILD_DAY;Crate 3;OOT Market Crate 3;crate;0;0;MARKET_CHILD_DAY;All;0
@@ -1664,15 +1664,15 @@ TALON_BOTTLE;RANCH_HOUSE_SILO;Bottle;OOT Lon Lon Ranch Talon Bottle;npc;0;0;RANC
 0x0200;RANCH_HOUSE_SILO;Pot 1;OOT Lon Lon Ranch Talon House Pot 1;pot;0;0;RANCH_HOUSE_SILO;All;0
 0x0201;RANCH_HOUSE_SILO;Pot 2;OOT Lon Lon Ranch Talon House Pot 2;pot;0;0;RANCH_HOUSE_SILO;All;0
 0x0202;RANCH_HOUSE_SILO;Pot 3;OOT Lon Lon Ranch Talon House Pot 3;pot;0;0;RANCH_HOUSE_SILO;All;0
-SARIA_SONG;SACRED_FOREST_MEADOW;Saria's Song;OOT Saria's Song;npc;0;0;SACRED_FOREST_MEADOW;Child;0
-SHEIK_FOREST;SACRED_FOREST_MEADOW;Minuet of Forest;OOT Sacred Meadow Sheik Song;npc;0;0;SACRED_FOREST_MEADOW;Adult;0
-0x73;SACRED_FOREST_MEADOW;Night Adult;OOT Sacred Meadow GS Night Adult;gs;0;0;SACRED_FOREST_MEADOW;Adult;0
-0x0000f;SACRED_FOREST_MEADOW;Entrance;OOT Sacred Meadow Wonder Item Entrance;wonder;0;0;SACRED_FOREST_MEADOW;All;0
-0x0000c;SACRED_FOREST_MEADOW;Maze 1;OOT Sacred Meadow Wonder Item Maze 1;wonder;0;0;SACRED_FOREST_MEADOW;All;0
-0x0000d;SACRED_FOREST_MEADOW;Maze 2;OOT Sacred Meadow Wonder Item Maze 2;wonder;0;0;SACRED_FOREST_MEADOW;All;0
-0x0000e;SACRED_FOREST_MEADOW;Maze 3;OOT Sacred Meadow Wonder Item Maze 3;wonder;0;0;SACRED_FOREST_MEADOW;All;0
-0x00010;SACRED_FOREST_MEADOW;Maze 4;OOT Sacred Meadow Wonder Item Maze 4;wonder;0;0;SACRED_FOREST_MEADOW;All;0
-0x00011;SACRED_FOREST_MEADOW;Maze 5;OOT Sacred Meadow Wonder Item Maze 5;wonder;0;0;SACRED_FOREST_MEADOW;All;0
+SARIA_SONG;SACRED_FOREST_MEADOW;Saria's Song;OOT Saria's Song;npc;263;253;SACRED_FOREST_MEADOW;Child;0
+SHEIK_FOREST;SACRED_FOREST_MEADOW;Minuet of Forest;OOT Sacred Meadow Sheik Song;npc;399;391;SACRED_FOREST_MEADOW;Adult;0
+0x73;SACRED_FOREST_MEADOW;Night Adult;OOT Sacred Meadow GS Night Adult;gs;1001;90;SACRED_FOREST_MEADOW;Adult;0
+0x0000f;SACRED_FOREST_MEADOW;Entrance;OOT Sacred Meadow Wonder Item Entrance;wonder;1688;437;SACRED_FOREST_MEADOW;All;0
+0x0000c;SACRED_FOREST_MEADOW;Maze 1;OOT Sacred Meadow Wonder Item Maze 1;wonder;1418;277;SACRED_FOREST_MEADOW;All;0
+0x0000d;SACRED_FOREST_MEADOW;Maze 2;OOT Sacred Meadow Wonder Item Maze 2;wonder;1317;277;SACRED_FOREST_MEADOW;All;0
+0x0000e;SACRED_FOREST_MEADOW;Maze 3;OOT Sacred Meadow Wonder Item Maze 3;wonder;1388;384;SACRED_FOREST_MEADOW;All;0
+0x00010;SACRED_FOREST_MEADOW;Maze 4;OOT Sacred Meadow Wonder Item Maze 4;wonder;1039;209;SACRED_FOREST_MEADOW;All;0
+0x00011;SACRED_FOREST_MEADOW;Maze 5;OOT Sacred Meadow Wonder Item Maze 5;wonder;995;383;SACRED_FOREST_MEADOW;All;0
 SHOOTING_GAME_CHILD;SHOOTING_GALLERY;Reward;OOT Shooting Gallery Child;npc;0;0;MARKET_SHOOTING;All;0
 SHOOTING_GAME_ADULT;SHOOTING_GALLERY;Reward;OOT Shooting Gallery Adult;npc;0;0;KAKARIKO_SHOOTING;All;0
 0x01;TEMPLE_FIRE;Jail 1;OOT Fire Temple Jail 1 Chest;chest;0;0;TEMPLE_FIRE;All;0
@@ -3045,8 +3045,8 @@ TRADE_ODD_POTION;KAKARIKO_VILLAGE;Odd Potion;OOT Kakariko Potion Shop Odd Potion
 0x3f;KAKARIKO_VILLAGE;Item 8;OOT Kakariko Potion Shop Item 8;none;0;0;KAKARIKO_POTION_SHOP;All;0
 0x01;KAKARIKO_VILLAGE;Heart Piece;OOT Kakariko Impa House HP;none;0;0;IMPA_HOUSE;All;0
 0x00006;KAKARIKO_VILLAGE;Above Jail;OOT Kakariko Impa House Wonder Item;none;0;0;IMPA_HOUSE;All;0
-0x0006;KOKIRI_FOREST;Pot 1;OOT Know It All House Pot 1;none;972;505;KOKIRI_KNOW_IT_ALL;All;0
-0x0007;KOKIRI_FOREST;Pot 2;OOT Know It All House Pot 2;none;840;234;KOKIRI_KNOW_IT_ALL;All;0
+0x0006;KOKIRI_FOREST;Pot 1;OOT Know It All House Pot 1;none;0;0;KOKIRI_KNOW_IT_ALL;All;0
+0x0007;KOKIRI_FOREST;Pot 2;OOT Know It All House Pot 2;none;0;0;KOKIRI_KNOW_IT_ALL;All;0
 0x00;KOKIRI_FOREST;Top Left;OOT Mido's House Top Left;none;0;0;KOKIRI_MIDO;All;0
 0x01;KOKIRI_FOREST;Top Right;OOT Mido's House Top Right;none;0;0;KOKIRI_MIDO;All;0
 0x02;KOKIRI_FOREST;Bottom Left;OOT Mido's House Bottom Left;none;0;0;KOKIRI_MIDO;All;0

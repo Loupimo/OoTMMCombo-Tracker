@@ -9,10 +9,10 @@ colors = {"Grass": np.array([0, 128, 0]),
           "Cow": np.array([245, 245, 245]),
           "Pot": np.array([221, 160, 221]),
           "GS": np.array([200, 50, 200]),
-          "Fly": np.array([255, 192, 203]),
+          "Fly": np.array([250, 105, 250]),
           "Wonder": np.array([200, 100, 200]),
           "Crate": np.array([128, 0, 0]),
-          "Grotto": np.array([255, 140, 0]),
+          "Grotto": np.array([255, 50, 255]),
           "NPCs": np.array([255, 128, 255]),
           }
 
@@ -52,7 +52,7 @@ def find_points(image_path, colorstr):
         coordStr = coordStr + "{" + str(x) + ", " + str(y) + "},\n"
 
     coordStr = coordStr + "};\n"
-    print(coordStr)
+    #print(coordStr)
     return coordinates, coordStr
 
 def detect_blobs(image_path, colorstr):
@@ -98,11 +98,12 @@ def perform_action(root_folder):
             if f.startswith("AP") and f.endswith(".png"):
                 data.append(os.path.join(root,f))
     for file in data:
-        with open(file + ".txt", 'w') as f:
-            for colorstr in colors.keys():
-                coord, coordstr = find_points(file, colorstr)
-                #coord, coordstr = detect_blobs(file, colorstr)
-                f.write(coordstr)
+        if os.path.isfile(file + ".txt") == False:
+            with open(file + ".txt", 'w') as f:
+                for colorstr in colors.keys():
+                    coord, coordstr = find_points(file, colorstr)
+                    #coord, coordstr = detect_blobs(file, colorstr)
+                    f.write(coordstr)
 
 perform_action("D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\OoT_AP")
 #image_path = "D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\OoT_AP\\Kokiri_Forest\\AP_KIA_House.png"  # Chemin de l'image
