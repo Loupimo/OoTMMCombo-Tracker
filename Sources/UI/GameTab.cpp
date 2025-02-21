@@ -318,12 +318,11 @@ GameTab::GameTab(int GameID, QWidget* parent) : QWidget(parent)
 {
 	this->GameID = GameID;
 
-    // Layout principal
+    // Main layout
     this->MainLayout = new QHBoxLayout;
 
     this->LoadGameTab();
 
-    // Ajouter à la mise en page principale
     this->setLayout(this->MainLayout);
 }
 
@@ -334,6 +333,14 @@ GameTab::~GameTab()
     delete this->MainLayout;
 }
 
+#pragma region Objects related
+
+void GameTab::ItemFound(ObjectInfo* Object, const ItemInfo* Item)
+{
+    this->GameMaps->ItemFound(Object, Item);
+}
+
+
 void GameTab::RefreshTabCountText()
 {
     if (this->Owner != nullptr)
@@ -342,9 +349,13 @@ void GameTab::RefreshTabCountText()
     }
 }
 
-void GameTab::ItemFound(ObjectInfo* Object, const ItemInfo* Item)
+#pragma endregion
+
+#pragma region Saving / Loading
+
+void GameTab::RefreshGameTab()
 {
-    this->GameMaps->ItemFound(Object, Item);
+    this->GameMaps->RefreshScenesObjectCounts();
 }
 
 void GameTab::LoadGameTab()
@@ -356,7 +367,7 @@ void GameTab::LoadGameTab()
         delete this->GameMaps;
     }
 
-    if (GameID == OOT_GAME)
+    if (this->GameID == OOT_GAME)
     {	// Ocarina of time
 
         this->TabName = "OoT";
@@ -372,11 +383,6 @@ void GameTab::LoadGameTab()
     this->MainLayout->addWidget(this->GameMaps);
 }
 
-void GameTab::RefreshGameTab()
-{
-    this->GameMaps->RefreshScenesObjectCounts();
-}
-
 
 void GameTab::SaveGameScenes(QString FilePath)
 {
@@ -388,56 +394,9 @@ void GameTab::SaveGameScenes(QString FilePath)
     }
     
     SaveSceneObjects(&saveFile);
-    //GameTab::SaveOoTScenes(&saveFile);
-    //GameTab::SaveMMScenes(&saveFile);
     saveFile.close();
 
     MultiLogger::LogMessage("File saved: %s\n", FilePath.toStdString().c_str());
 }
 
-void GameTab::SaveOoTScenes(QFile* SaveFile)
-{
-    /*for (size_t i = 0; i < OoTOverworldSize; i++)
-    {   // Save all OoT Scenes
-
-        OoTOverworldScenes[i].SaveScene(SaveFile);
-    }*/
-}
-
-void GameTab::SaveMMScenes(QFile* SaveFile)
-{
-    /*for (size_t i = 0; i < MMOverworldSize; i++)
-    {   // Save all MM Scenes
-
-        MMOverworldScenes[i].SaveScene(SaveFile);
-    }*/
-}
-
-void GameTab::LoadGameScenes(QString FilePath)
-{
-
-}
-
-void GameTab::LoadGameSpoiler(QString FilePath)
-{
-    QFile fichier(FilePath);
-
-    if (!fichier.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qWarning() << "Impossible d'ouvrir le fichier:" << fichier.errorString();
-        return;
-    }
-
-    QTextStream in(&fichier);
-    QString contenu = in.readAll(); // Lire tout le fichier
-    fichier.close();
-
-    // Découper en sections avec "==="
-    QStringList sections = contenu.split("===", Qt::SkipEmptyParts, Qt::CaseSensitive);
-
-    // Vérifier si on a au moins 3 sections
-    if (sections.size() < 3) {
-        qWarning() << "Le fichier ne contient pas assez de sections.";
-        return;
-    }
-
-}
+#pragma endregion

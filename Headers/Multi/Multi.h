@@ -45,21 +45,6 @@
         #endif
     }
 
-    /*static inline void LogMsgToView(QPlainTextEdit* View, const char* fmt, ...)
-    {
-        if (View)
-        {
-            char tmpBuf[400];
-            va_list args;
-            va_start(args, fmt);
-            vsprintf_s(tmpBuf, fmt, args);
-            va_end(args);
-
-            // Very hacky way. Sending too many messages at the same time will make the program crash probably to data race between this thread and the GUI thread
-            View->appendPlainText(tmpBuf);
-            View->verticalScrollBar()->setValue(View->verticalScrollBar()->maximum());
-        }
-    }*/
 #else
     typedef int SOCKET;
     #include <unistd.h>
@@ -121,7 +106,6 @@
     }
 #endif
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
@@ -173,7 +157,9 @@ typedef struct
 }
 SendQueue;
 
-
+/*
+*   This class handles the communication with the main window UI.
+*/
 class MultiLogger : public QObject
 {
     Q_OBJECT
@@ -196,12 +182,18 @@ public:
     /* We need this has the Qt connect function cannot take static function as parameter. Also, we don't want to create a new logging object for each class. */
     static MultiLogger* GetLogger();
 
-    static inline void LogMessage(const char* fmt, ...)
+    /*
+    *   Logs the given message to the UI.
+    *
+    *   @param Format         The string format.
+    *   @param ...            The optional arguments that match the string format.
+    */
+    static inline void LogMessage(const char* Format, ...)
     {
         char tmpBuf[400];
         va_list args;
-        va_start(args, fmt);
-        vsprintf_s(tmpBuf, fmt, args);
+        va_start(args, Format);
+        vsprintf_s(tmpBuf, Format, args);
         va_end(args);
 
         QString msg(tmpBuf);

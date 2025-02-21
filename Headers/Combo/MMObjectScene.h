@@ -4289,9 +4289,9 @@ CreateObjectsForScene(BENEATH_THE_GRAVEYARD, 22,
 
 
 
+#pragma endregion
 
-
-
+#pragma region SceneObjects
 
 // Empty scene objects
 CreateEmptyScene(FISHERMAN_HUT)

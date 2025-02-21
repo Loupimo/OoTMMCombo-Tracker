@@ -70,7 +70,21 @@ typedef struct ObjectInfo
 
 public:
 
+	/*
+	*   Save the object in the given save file.
+	*
+	*   @param SaveFile  The file where to save the object to.
+	*/
 	void SaveObject(QFile* SaveFile);
+
+	/*
+	*   Load the object from the given data.
+	*
+	*   @param Data		The data array that contains the object to load.
+	*   @param Offset	The offset at which the object start.
+	* 
+	*	@return The end offset of the object.
+	*/
 	size_t LoadObject(QByteArray* Data, size_t Offset);
 
 } ObjectInfo;
@@ -78,9 +92,9 @@ public:
 
 typedef struct SceneObjects
 {
-	uint32_t SceneID;
-	const size_t NumOfObjs;
-	ObjectInfo* Objects;
+	uint32_t SceneID;			// The scene ID to which the objects belongs to
+	const size_t NumOfObjs;		// The number of objects in this scene
+	ObjectInfo* Objects;		// The actual objects
 
 } SceneObjects;
 
@@ -97,7 +111,7 @@ ObjectInfo * SceneID##SceneObjects = nullptr;
 /* This macro create a SceneObjects structure based on the given SceneID */
 #define CreateSceneObjects(SceneID) { SceneID, SceneID##NumOfObjs, SceneID##SceneObjects }
 
-
+// The strings for all object types
 const char* const ObjTypeName[ObjectType::fairy + 1] =
 {
 	"",
@@ -125,10 +139,64 @@ const char* const ObjTypeName[ObjectType::fairy + 1] =
 	"Fairy"
 };
 
+#pragma region Object getters
+
+/*
+*   Get all scene objects of the desired game.
+*
+*   @param GameID	The game ID to get the scene objects from.
+*
+*	@return All scene objects of the desired game.
+*/
 SceneObjects* GetGameSceneObjects(uint32_t GameID);
+
+/*
+*   Find the object info matching the given combo item.
+*
+*   @param Item		The item matching the object to find.
+*
+*	@return The object info matching the given combo item.
+*/
 ObjectInfo* FindObject(ComboItem Item);
 
+#pragma endregion
+
+#pragma region Saving / Loading
+
+/*
+*   Save all scene objects of both game to the given file.
+*
+*   @param SaveFile		The save file to write the scene objects to.
+*/
 void SaveSceneObjects(QFile* SaveFile);
+
+/*
+*   Save all scene objects of a specific game to the given file.
+*
+*   @param SaveFile		The save file to write the scene objects to.
+*   @param Array		The array containing the scene object to save.
+*   @param NumOfScenes	The the number of scenes in the array.
+*/
 void SaveSceneObjectsFor(QFile* SaveFile, SceneObjects* Array, size_t NumOfScenes);
+
+/*
+*   Load all scene objects of both game from the given file starting at the given offset.
+*
+*   @param Data		The data that contains the scene objects to load.
+*   @param Offset	The starting offset.
+*/
 void LoadSceneObjects(QByteArray* Data, size_t Offset);
+
+/*
+*   Load all scene objects of a specific game to the given file.
+*
+*   @param Data			The data that contains the scene objects to load.
+*   @param Offset		The starting offset.
+*   @param Array		The array containing the scene object to load.
+*   @param NumOfScenes	The the number of scenes in the array.
+* 
+*	@return The end offset of the last loaded scene object.
+*/
 size_t LoadSceneObjectsFor(QByteArray* Data, size_t Offset, SceneObjects* Array, size_t NumOfScenes);
+
+#pragma endregion

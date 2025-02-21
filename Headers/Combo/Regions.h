@@ -56,14 +56,15 @@ enum class MMRegions
 	Moon
 };
 
-
 typedef struct RegionMetaInfo
 {
-	const char* RegionName;
-	const char* Path;
-	uint8_t Region;
-}RegionMetaInfo;
+	const char* RegionName;		// The region name
+	const char* Path;			// The icon path that illustrates the region
+	uint8_t Region;				// The region ID
+} RegionMetaInfo;
 
+
+// OoT Region meta information
 const RegionMetaInfo OoTRegionsMetaInfo[(uint8_t) OoTRegions::Desert_Colossus + 1] =
 {
 	{ "None", "", (uint8_t)OoTRegions::None},
@@ -90,6 +91,8 @@ const RegionMetaInfo OoTRegionsMetaInfo[(uint8_t) OoTRegions::Desert_Colossus + 
 	{ "Desert Colossus", "./Resources/Regions/Colossus.png", (uint8_t)OoTRegions::Desert_Colossus }
 };
 
+
+// MM Region meta information
 const RegionMetaInfo MMRegionsMetaInfo[(uint8_t)MMRegions::Moon + 1] =
 {
 	{ "None", "", (uint8_t)MMRegions::None },

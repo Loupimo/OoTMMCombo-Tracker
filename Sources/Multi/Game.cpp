@@ -297,9 +297,6 @@ void Game::ParseLedgerFullEntry(char* LedgerData, bool IsGoingOut)
         emit MultiLogger::GetLogger()->NotifyObjectFound(MM_GAME, matchObject, matchItem);
     }
 
-    //matchObject->Status = ObjectState::Collected;
-    //emit GetGameSceneObjects(recievedItem.GameID)[matchObject->RenderScene].Owner->NotifyItemFound(matchObject, matchItem);
-
     fflush(game_file_log);
 }
 

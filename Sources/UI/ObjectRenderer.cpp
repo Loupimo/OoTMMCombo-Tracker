@@ -411,6 +411,7 @@ void ObjectRenderer::UpdateText()
     char finalName[max_size] = { 0 };
     char tmp[4] = { 0 };
 
+    // Initialize the string with : ObjectType (
     size_t offset = 0;
     size_t typeLen = strlen(ObjTypeName[this->Type]);
     memcpy_s(finalName, max_size, ObjTypeName[this->Type], typeLen);
@@ -419,21 +420,18 @@ void ObjectRenderer::UpdateText()
     finalName[offset + 1] = '(';
     offset += 2;
 
+    // Add the number of found object : ObjectType (foundObjs / 
     _itoa_s((int) this->GetCollectedObject(), tmp, 10);
-
     memcpy_s(finalName + offset, max_size - offset, tmp, strlen(tmp));
     offset += strlen(tmp);
-
     finalName[offset] = ' ';
     finalName[offset + 1] = '/';
     finalName[offset + 2] = ' ';
-
     offset += 3;
 
+    // Add the total number of object : ObjectType (foundObjs / totObjs) 
     _itoa_s((int) this->GetTotalObject(), tmp, 10);
-
     memcpy_s(finalName + offset, max_size - offset, tmp, strlen(tmp));
-
     offset += strlen(tmp);
     finalName[offset] = ')';
     finalName[offset + 1] = '\0';
@@ -443,7 +441,7 @@ void ObjectRenderer::UpdateText()
 void ObjectRenderer::RefreshObjectCounts(int Count)
 {
     this->UpdateText();
-    this->SceneOwner->RefreshObjectCounts(Count);
+    this->SceneOwner->UpdateObjectCounts(Count);
 }
 
 

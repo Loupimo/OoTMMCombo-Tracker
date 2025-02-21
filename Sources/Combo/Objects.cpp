@@ -5,90 +5,7 @@
 #include "Combo/MMObjectScene.h"
 #include "Multi/Game.h"
 
-
-void SaveSceneObjects(QFile* SaveFile)
-{
-	SaveSceneObjectsFor(SaveFile, OoTSceneObjects, OOT_NUM_SCENES);
-	SaveSceneObjectsFor(SaveFile, MMSceneObjects, MM_NUM_SCENES);
-}
-
-
-void SaveSceneObjectsFor(QFile* SaveFile, SceneObjects* Array, size_t NumOfScenes)
-{
-	QByteArray ID(sizeof(uint32_t), 0);
-	QByteArray numObj(sizeof(size_t), 0);
-	
-	for (size_t i = 0; i < NumOfScenes; i++)
-	{	// Browse all scenes
-
-		// Save scene ID
-		memcpy_s(ID.data(), sizeof(Array[i].SceneID), &Array[i].SceneID, sizeof(Array[i].SceneID));
-		SaveFile->write(ID);
-
-		// Save number of objects
-		memcpy_s(numObj.data(), sizeof(Array[i].NumOfObjs), &Array[i].NumOfObjs, sizeof(Array[i].NumOfObjs));
-		SaveFile->write(numObj);
-
-		for (size_t j = 0; j < Array[i].NumOfObjs; j++)
-		{	// Save all objects
-
-			Array[i].Objects[j].SaveObject(SaveFile);
-		}
-	}
-}
-
-
-void LoadSceneObjects(QByteArray * Data, size_t Offset)
-{
-	Offset = LoadSceneObjectsFor(Data, Offset, OoTSceneObjects, OOT_NUM_SCENES);
-	Offset = LoadSceneObjectsFor(Data, Offset, MMSceneObjects, MM_NUM_SCENES);
-}
-
-size_t LoadSceneObjectsFor(QByteArray* Data, size_t Offset, SceneObjects * Array, size_t NumOfScenes)
-{
-	for (size_t i = 0; i < NumOfScenes; i++)
-	{	// Browse all scenes
-
-		// Load scene ID
-		uint32_t sceneID = 0;
-		memcpy_s(&sceneID, sizeof(sceneID), Data->data() + Offset, sizeof(sceneID));
-		Offset += sizeof(sceneID);
-
-		if (Array[i].SceneID == sceneID)
-		{	// The scene is correct
-
-			// Load number of objects
-			size_t numObjs = 0;
-			memcpy_s(&numObjs, sizeof(numObjs), Data->data() + Offset, sizeof(numObjs));
-			Offset += sizeof(numObjs);
-
-			if (numObjs == Array[i].NumOfObjs)
-			{	// It has the same number of objects
-
-				for (size_t j = 0; j < Array[i].NumOfObjs; j++)
-				{	// Load all objects
-
-					Offset = Array[i].Objects[j].LoadObject(Data, Offset);
-				}
-			}
-		}
-	}
-
-	return Offset;
-}
-
-SceneObjects* GetGameSceneObjects(uint32_t GameID)
-{
-	if (GameID == OOT_GAME)
-	{
-		return OoTSceneObjects;
-	}
-	else
-	{
-		return MMSceneObjects;
-	}
-}
-
+#pragma region ObjectInfo
 
 void ObjectInfo::SaveObject(QFile* SaveFile)
 {
@@ -136,7 +53,8 @@ size_t ObjectInfo::LoadObject(QByteArray* Data, size_t Offset)
 		Offset += sizeof(itemID);
 
 		if (itemID != 0)
-		{
+		{	// There is an item to load
+
 			this->Item = FindItem(itemID);
 		}
 	}
@@ -144,12 +62,15 @@ size_t ObjectInfo::LoadObject(QByteArray* Data, size_t Offset)
 	return Offset;
 }
 
+#pragma endregion
 
-ObjectInfo* FindObject(ComboItem Item) 
+#pragma region Object info getter
+
+ObjectInfo* FindObject(ComboItem Item)
 {
 	ObjectInfo* arrayObjs = nullptr;
 	size_t arraySize = 0;
-	ObjectInfo* currObj = nullptr;// { MAXUINT32, MAXUINT32, "Unknown Object", ObjectType::none, { 0, 0 }, MAXUINT32 };
+	ObjectInfo* currObj = nullptr;
 
 	if (Item.GameID == MM_GAME)
 	{	// Majora's Mask
@@ -174,7 +95,7 @@ ObjectInfo* FindObject(ComboItem Item)
 
 			if (Item.OvType > OV_FISH)
 			{	// We can check for the object only if its type is above the fish one
-				
+
 				if (currObj->Type > ObjectType::fish)
 				{	// We can check the object
 
@@ -202,3 +123,94 @@ ObjectInfo* FindObject(ComboItem Item)
 
 	return currObj;
 }
+
+
+SceneObjects* GetGameSceneObjects(uint32_t GameID)
+{
+	if (GameID == OOT_GAME)
+	{
+		return OoTSceneObjects;
+	}
+	else
+	{
+		return MMSceneObjects;
+	}
+}
+
+#pragma endregion
+
+#pragma region Saving / Loading
+
+void SaveSceneObjects(QFile* SaveFile)
+{
+	SaveSceneObjectsFor(SaveFile, OoTSceneObjects, OOT_NUM_SCENES);
+	SaveSceneObjectsFor(SaveFile, MMSceneObjects, MM_NUM_SCENES);
+}
+
+
+void SaveSceneObjectsFor(QFile* SaveFile, SceneObjects* Array, size_t NumOfScenes)
+{
+	QByteArray ID(sizeof(uint32_t), 0);
+	QByteArray numObj(sizeof(size_t), 0);
+	
+	for (size_t i = 0; i < NumOfScenes; i++)
+	{	// Browse all scenes
+
+		// Save scene ID
+		memcpy_s(ID.data(), sizeof(Array[i].SceneID), &Array[i].SceneID, sizeof(Array[i].SceneID));
+		SaveFile->write(ID);
+
+		// Save number of objects
+		memcpy_s(numObj.data(), sizeof(Array[i].NumOfObjs), &Array[i].NumOfObjs, sizeof(Array[i].NumOfObjs));
+		SaveFile->write(numObj);
+
+		for (size_t j = 0; j < Array[i].NumOfObjs; j++)
+		{	// Save all objects
+
+			Array[i].Objects[j].SaveObject(SaveFile);
+		}
+	}
+}
+
+
+void LoadSceneObjects(QByteArray * Data, size_t Offset)
+{
+	Offset = LoadSceneObjectsFor(Data, Offset, OoTSceneObjects, OOT_NUM_SCENES);
+	Offset = LoadSceneObjectsFor(Data, Offset, MMSceneObjects, MM_NUM_SCENES);
+}
+
+
+size_t LoadSceneObjectsFor(QByteArray* Data, size_t Offset, SceneObjects * Array, size_t NumOfScenes)
+{
+	for (size_t i = 0; i < NumOfScenes; i++)
+	{	// Browse all scenes
+
+		// Load scene ID
+		uint32_t sceneID = 0;
+		memcpy_s(&sceneID, sizeof(sceneID), Data->data() + Offset, sizeof(sceneID));
+		Offset += sizeof(sceneID);
+
+		if (Array[i].SceneID == sceneID)
+		{	// The scene is correct
+
+			// Load number of objects
+			size_t numObjs = 0;
+			memcpy_s(&numObjs, sizeof(numObjs), Data->data() + Offset, sizeof(numObjs));
+			Offset += sizeof(numObjs);
+
+			if (numObjs == Array[i].NumOfObjs)
+			{	// It has the same number of objects
+
+				for (size_t j = 0; j < Array[i].NumOfObjs; j++)
+				{	// Load all objects
+
+					Offset = Array[i].Objects[j].LoadObject(Data, Offset);
+				}
+			}
+		}
+	}
+
+	return Offset;
+}
+
+#pragma endregion

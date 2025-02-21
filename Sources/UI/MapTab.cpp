@@ -11,37 +11,40 @@
 
 ContextSwitchButton::ContextSwitchButton(MapTab* Owner, QWidget* parent) : QWidget(parent)
 {
-    this->Owner = Owner;
-    setFixedSize(70, 30);
+    int width = 70;
+    int height = 30;
 
-    // Création du fond
+    this->Owner = Owner;
+    this->setFixedSize(width, height);
+
+    // Background creation
     this->Background = new QFrame(this);
     this->Background->setStyleSheet("background-color: #ccc; border-radius: 15px;");
-    this->Background->setGeometry(0, 0, 70, 30);
+    this->Background->setGeometry(0, 0, width, height);
 
-    // Création du cercle mobile (le "point" du switch)
+    // Moving circle creation
     this->Circle = new QLabel(this);
     this->Circle->setFixedSize(26, 26);
     this->Circle->setStyleSheet("background-color: white; border-radius: 13px;");
     this->Circle->move(2, 2);
 
-    // Animation du déplacement
+    // Moving animation
     this->MoveAnimation = new QPropertyAnimation(this->Circle, "pos");
     this->MoveAnimation->setDuration(200);
     this->MoveAnimation->setEasingCurve(QEasingCurve::InOutQuad);
 
-    // Animation du fond
+    // Background animation
     this->ColorAnimation = new QPropertyAnimation(this, "backgroundColor");
     this->ColorAnimation->setDuration(200);
     this->ColorAnimation->setEasingCurve(QEasingCurve::InOutQuad);
 
-    // Bouton invisible qui détecte les clics
+    // Invisible button used to detects click events
     this->Button = new QPushButton(this);
     this->Button->setCheckable(true);
     this->Button->setStyleSheet("background: transparent;");
-    this->Button->setGeometry(0, 0, 70, 30);
+    this->Button->setGeometry(0, 0, width, height);
 
-    // Connexion du bouton à l'animation
+    // Connect the button to the animation
     connect(this->Button, &QPushButton::toggled, this, &ContextSwitchButton::AnimateSwitch);
 }
 
@@ -240,7 +243,7 @@ MapTab::MapTab(GameTab* Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes, 
             if (currRegion == nullptr)
             {   // Create a new region in the tree list
 
-                currRegion = new RegionTree(Owner, Game, sceneRegionID, this->MapList);
+                currRegion = new RegionTree(Owner, sceneRegionID, this->MapList);
                 this->Regions.push_back(currRegion);
             }
 
@@ -360,7 +363,7 @@ void MapTab::RefreshScenesObjectCounts()
 
         // Refresh the scene objects counters
         currScene->CountSceneObjects();
-        currScene->RefreshObjectCounts(currScene->GetCollectedObjects() - tmpCount);
+        currScene->UpdateObjectCounts(currScene->GetCollectedObjects() - tmpCount);
     }
 }
 

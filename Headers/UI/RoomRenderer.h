@@ -89,9 +89,9 @@ public:
 		this->SceneItem->UnloadScene();
 	}
 
-	void RefreshObjectCounts(int Count) override
+	void UpdateObjectCounts(int Count) override
 	{
-		this->SceneItem->RefreshObjectCounts(Count);
+		this->SceneItem->UpdateObjectCounts(Count);
 	}
 
 	bool HasContext() override

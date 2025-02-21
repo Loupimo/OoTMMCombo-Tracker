@@ -11,6 +11,8 @@ typedef struct SceneMetaInfo
 	bool HasContext;
 } SceneMetaInfo;
 
+#pragma region OoT
+
 #define DEKU_TREE								0x00
 #define DODONGO_CAVERN							0x01
 #define INSIDE_JABU_JABU						0x02
@@ -340,6 +342,22 @@ const SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 	{ "Market", "", (uint8_t)OoTRegions::None, false }
 };
 
+enum OoT_Shops
+{
+	OoT_Kokiri_Shop = 0x00,
+	OoT_Bombchu_Shop = 0x01,
+	OoT_Zora_Shop = 0x02,
+	OoT_Goron_Shop = 0x03,
+	OoT_Market_Bazaar = 0x04,
+	OoT_Market_Potion_Shop = 0x05,
+	OoT_Kakariko_Bazaar = 0x06,
+	OoT_Kakariko_Potion_Shop = 0x07
+};
+
+#pragma endregion
+
+#pragma region MM
+
 #define SOUTHERN_SWAMP_CLEAR					0x00
 #define MM_FAIRY_SNOWHEAD						0x01
 #define MM_FAIRY_GREAT_BAY_COAST				0x02
@@ -644,18 +662,6 @@ const SceneMetaInfo MMScenesMetaInfo[MM_NUM_SCENES] =
 	{ "Twin Islands", "", (uint8_t)MMRegions::Twin_Islands, true }
 };
 
-enum OoT_Shops
-{
-	OoT_Kokiri_Shop = 0x00,
-	OoT_Bombchu_Shop = 0x01,
-	OoT_Zora_Shop = 0x02,
-	OoT_Goron_Shop = 0x03,
-	OoT_Market_Bazaar = 0x04,
-	OoT_Market_Potion_Shop = 0x05,
-	OoT_Kakariko_Bazaar = 0x06,
-	OoT_Kakariko_Potion_Shop = 0x07
-};
-
 enum MM_Shops
 {
 	MM_Clock_Town_Shop = 0x00,
@@ -663,9 +669,61 @@ enum MM_Shops
 	MM_Goron_Zora_Shop = 0x02,
 };
 
+#pragma endregion
+
+/*
+*   Get the scene meta information that match the desired game and ID.
+*
+*   @param SceneID		The scene ID to retreive.
+*   @param Game			The game in which to get the scene from.
+* 
+*	@return The matching scene meta information.
+*/
 const SceneMetaInfo* GetSceneMetaInfo(uint32_t SceneID, uint32_t Game);
+
+/*
+*   Extract the shop scene ID from given item ID.
+*
+*   @param ItemID		The item ID to extract the scene from.
+*   @param Game			The game in which to get the scene from.
+*
+*	@return The matching shop scene ID.
+*/
 uint32_t GetSceneShop(uint32_t ItemID, uint32_t Game);
+
+/*
+*   Extract the scene ID from given NPC.
+*
+*   @param NPC			The NPC to extract the scene from.
+*   @param Game			The game in which to get the scene from.
+*
+*	@return The matching NPC scene ID.
+*/
 uint32_t GetSceneNPC(uint32_t NPC, uint32_t Game);
+
+/*
+*   Extract the scene ID from given silver rupee.
+*
+*   @param SilverRupee	The silver rupee ID to extract the scene from.
+*
+*	@return The matching silver rupee scene ID.
+*/
 uint32_t GetSceneSR(uint32_t SilverRupee);
+
+/*
+*   Extract the scene ID from given NPC.
+*
+*   @param GS			The gold skulltula ID to extract the scene from.
+*
+*	@return The matching gold skulltula scene ID.
+*/
 uint32_t GetSceneGS(uint32_t GS);
+
+/*
+*   Extract the scene ID from given scrub ID.
+*
+*   @param Scrub		The scrub ID to extract the scene from.
+*
+*	@return The matching scrub scene ID.
+*/
 uint32_t GetSceneScrub(uint32_t Scrub);

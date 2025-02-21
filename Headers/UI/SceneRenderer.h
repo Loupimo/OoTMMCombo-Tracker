@@ -24,7 +24,9 @@ enum SceneType
     Grotto = 4
 };
 
-
+/*
+*   The major scene information used by the renderer.
+*/
 class SceneInfo : public QObject
 {
     Q_OBJECT
@@ -45,7 +47,7 @@ public:
     int GameID;                             // The game scene come from
     SceneObjects* Objects;                  // The scene objects
     SceneType Type;                         // The type of scene
-    const SceneMetaInfo* Info;              // The scene name and image path
+    const SceneMetaInfo* Info;              // The scene meta information
 
 public:
 
@@ -61,7 +63,7 @@ public:
     /*
     *   Default destructor.
     */
-    ~SceneInfo();
+    ~SceneInfo() {}
 };
 
 
@@ -75,19 +77,24 @@ class SceneItemTree : public QTreeWidgetItem
 
 public:
 
-    int FoundObjects = 0;
-    int TotalObjects = 0;
+    int FoundObjects = 0;                   // The number forced / collected object in this scene.
+    int TotalObjects = 0;                   // The total number of object that can be found in this scene
 
-    SceneInfo* Scene = nullptr;
-    SceneRenderer* Renderer = nullptr;   // The associated scene to load when this item is active.
-    RoomInfo* ActiveRoom = nullptr;
+    SceneInfo* Scene = nullptr;             // The scene information.
+    SceneRenderer* Renderer = nullptr;      // The associated scene to load when this item is active.
+    RoomInfo* ActiveRoom = nullptr;         // The current active room.
 
-    std::vector<RoomItemTree*> Rooms;
+    std::vector<RoomItemTree*> Rooms;       // The available scene's rooms. If empty this means that the scene has only one room.
 
 #pragma endregion
 
 public:
 
+    /*
+    *   Default constructor.
+    * 
+    *   @param Parent              The parent tree item to attach this item to.
+    */
     SceneItemTree(QTreeWidgetItem* Parent = nullptr) {}
 
     /*
@@ -103,6 +110,17 @@ public:
     */
     ~SceneItemTree();
 
+#pragma region Rendering
+
+public:
+
+    /*
+    *   Gets the scene renderer.
+    *
+    *   @return The scene renderer.
+    */
+    virtual SceneRenderer* GetScene();
+
     /*
     *   Render the scene associated to this item.
     *
@@ -117,21 +135,81 @@ public:
     */
     virtual void UnloadScene();
 
-    virtual bool HasContext();
+#pragma endregion
 
+#pragma region Scene context / Info
+
+public:
+
+    /*
+    *   Gets the scene name.
+    *
+    *   @return The scene name.
+    */
+    const char* GetSceneName();
+
+    /*
+    *   Updates the current active room with the one matching the given ID.
+    *
+    *   @param RoomID   Update the current active room.
+    */
     void UpdateRoom(uint32_t RoomID);
 
-    virtual SceneRenderer* GetScene();
-    const char* GetSceneName();
+    /*
+    *   Tells if this scene has a context.
+    *
+    *   @return True means the scene has a context, false means no context.
+    */
+    virtual bool HasContext();
+
+#pragma endregion
+
+#pragma region Objects related
+
+public:
+
+    /*
+    *   Gets the number of collected item in this scene.
+    *
+    *   @return The number of collected items.
+    */
     int GetCollectedObjects();
 
+    /*
+    *   Gets the total number of object that can be rendered by this scene.
+    *
+    *   @return The total number of object that can be rendered by this scene.
+    */
     int GetTotalObjects();
 
-    void CountSceneObjects();
-    virtual void RefreshObjectCounts(int Count);
-    void UpdateCountsText();
-
+    /*
+    *   Update the scene with the given item and updated object.
+    *
+    *   @param Object   The object that has been updated.
+    *   @param Item     The item found in the object.
+    */
     void ItemFound(ObjectInfo* Object, const ItemInfo* Item);
+
+    /*
+    *   Counts the found and total number of objects of this scenes.
+    */
+    void CountSceneObjects();
+
+    /*
+    *   Increase / decrease the number of found object by the given amount.
+    *
+    *   @param Count  The number of found object to add or remove.
+    */
+    virtual void UpdateObjectCounts(int Count);
+
+    /*
+    *   Refresh the item name.
+    */
+    void RefreshItemName();
+
+
+#pragma endregion
+
 };
 
 
@@ -148,7 +226,6 @@ public:
 
     uint32_t ActiveRoom;                                                    // The current active room of the scene
     SceneInfo* CurrScene;                                                   // Contains all info for this scene.
-    bool IsRendered = false;                                                // Tells if the scene is currently being rendered by on the GUI
     QTreeWidget* ObjectsTree = nullptr;                                     // The object panel where to display the scene object list;
     SceneItemTree* ItemOwner = nullptr;                                     // The tree widget item that owns this scene
 
@@ -174,6 +251,67 @@ public:
     */
     ~SceneRenderer();
 
+#pragma region Rendering
+
+public:
+
+    /*
+    *   Render the scene elements.
+    */
+    void RenderScene(bool Context, RoomInfo* Room);
+
+    /*
+    *   Unload the scene elements.
+    */
+    void UnloadScene();
+
+    /*
+    *   Center the view on the given object.
+    *
+    *   @param Target   The object to center the view on.
+    */
+    void CenterViewOn(ObjectPixmapItem* Target);
+
+#pragma endregion
+
+#pragma region Objects related
+
+public:
+
+    /*
+    *   Increase / decrease the number of found objects by the given amount.
+    *
+    *   @param Count  The number of found object to add or remove.
+    */
+    void UpdateObjectCounts(int Count);
+
+    /*
+    *   Update the matching scene object.
+    *
+    *   @param Object       The object in which the item has been found.
+    *   @param ItemFound    The item that has been found.
+    *
+    *   @warning This should be executed by the main thread only at it can modify the GUI elements.
+    */
+    void ItemFound(ObjectInfo* Object, const ItemInfo* ItemFound);
+
+protected:
+
+    /*
+    *   Find the object renderer matching the given object.
+    *
+    *   @param Object   The object to find the matching renderer.
+    *
+    *   @return The object renderer that match the given object type.
+    */
+    ObjectRenderer* FindObjectRendererCategory(ObjectInfo* Object);
+
+#pragma endregion
+
+#pragma region Scene context / Info
+
+public:
+
     /*
     *   Get the scene name.
     *
@@ -189,44 +327,26 @@ public:
     uint8_t GetSceneParentRegion();
 
     /*
-    *   Render the scene elements.
-    */
-    void RenderScene(bool Context, RoomInfo* Room);
-
-    /*
-    *   Unload the scene elements.
-    */
-    void UnloadScene();
-
-    void RefreshObjectCounts(int Count);
-
-    void UpdateContext(ObjectContext Context);
-    void RefreshSceneContext(bool Context);
-
-//public slots:
-
-    /*
-    *   Update the matching scene object.
+    *   Update the room ID of the item that owns this renderer.
     *
-    *   @param Object       The object in which the item has been found.
-    *   @param ItemFound    The item that has been found.
-    * 
-    *   @warning This should be executed by the main thread only at it can modify the GUI elements.
+    *   @param RoomID   The new active room ID.
     */
-    void ItemFound(ObjectInfo* Object, const ItemInfo* ItemFound);
-
-    void CenterViewOn(ObjectPixmapItem* Target);
-
     void UpdateRoom(uint32_t RoomID);
 
-protected:
+    /*
+    *   Update the global game context.
+    *
+    *   @param Context  The new game context.
+    */
+    void UpdateContext(ObjectContext Context);
 
     /*
-    *   Find the object renderer matching the given object.
+    *   Refresh the scene based on the given context.
     *
-    *   @param Object       The object to find the matching renderer.
-    *
-    *   @return The object rendere that match the given object type.
+    *   @param Context  Refresh the scene based on the given context : true = Spring / Adult, false = Winter / Child.
     */
-    ObjectRenderer* FindObjectRendererCategory(ObjectInfo* Object);
+    void RefreshSceneContext(bool Context);
+
+#pragma endregion
+
 };

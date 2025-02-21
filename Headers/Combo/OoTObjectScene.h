@@ -4598,7 +4598,9 @@ CreateObjectsForScene(BACK_ALLEY_HOUSE, 3,
 		{ SHOOTING_GAME_CHILD, MARKET, "Reward", "OOT Shooting Gallery Child", ObjectType::none, {0, 0}, MARKET_SHOOTING, ObjectContext::All, 0 })
 
 
+#pragma endregion
 
+#pragma region SceneObjects
 
 // Empty Scenes
 CreateEmptyScene(GANON_TOWER_COLLAPSING)

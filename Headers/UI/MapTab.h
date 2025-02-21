@@ -18,7 +18,7 @@ class GameTab;
 class MapTab;
 
 /*
-*   This class is responsible for handling the context switch option.
+*   This class is responsible of handling the context switch option.
 */
 class ContextSwitchButton : public QWidget {
     Q_OBJECT
@@ -91,7 +91,7 @@ protected:
 
 
 /*
-*   This class is responsible for handling the view in which the scene is rendered.
+*   This class is responsible of handling the view in which the scene is rendered.
 */
 class MapView : public QGraphicsView
 {
@@ -130,7 +130,7 @@ protected:
 
 
 /*
-*   This class is responsible for holding all elements related to scene, region, object and graphical layout for a specific game.
+*   This class is responsible of holding all elements related to scene, region, object and graphical layout for a specific game.
 */
 class MapTab : public QWidget
 {

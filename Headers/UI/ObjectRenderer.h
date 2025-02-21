@@ -14,8 +14,8 @@ class ObjectItemTree;
 
 typedef struct ObjectIcon
 {
-    const char* IconPath;
-    int Scale[2];       // The scale of the image. ID 0 = width, ID 1 = height
+    const char* IconPath;   // The path to the object icon.
+    int Scale[2];           // The scale of the image. ID 0 = width, ID 1 = height.
 } ObjectIcon;
 
 const ObjectIcon IconsMetaInfo[23] =
@@ -45,71 +45,153 @@ const ObjectIcon IconsMetaInfo[23] =
     {"./Resources/Common/Fairy.png", { 30, 30 }}           // ObjectType::fairy
 };
 
-
-class CommonBaseItemTree : public QTreeWidgetItem
-{
-public:
-
-    bool CalledFromGraph = false;   // A flag that indicates if actions should be performed in a graph item context
-
-public:
-
-    CommonBaseItemTree(QTreeWidgetItem* Parent = nullptr) : QTreeWidgetItem(Parent) {}
-    virtual ~CommonBaseItemTree() { }
-    virtual void PerformAction() {}
-    virtual void ResetObjectEffect() {}
-    bool IsCalledFromGraph() { return this->CalledFromGraph; }
-    void SetCalledFromGraph(bool IsCalledFromGraph) { this->CalledFromGraph = IsCalledFromGraph; }
-};
-
-
+/*
+* The class containing all object icons and their pixmap reprensentation.
+*/
 class ObjectIcons
 {
 public:
 
-    QIcon Icons[23];
-    QPixmap PixmapIcons[23];
+    QIcon Icons[23];            // The matching icon.
+    QPixmap PixmapIcons[23];    // The matching pixmap.
 
 public:
 
+    /*
+    *   Default constructor.
+    */
     ObjectIcons();
+
+    /*
+    *   Default destructor.
+    */
     ~ObjectIcons();
+
+    /*
+    *   Create the object icon class if it doesn't exist.
+    */
     static void CreateObjectIcons();
 };
 
 
-class ObjectPixmapItem : public QGraphicsPixmapItem
+/*
+* The base class that all items that are added to the object list tree should inherit from.
+*/
+class CommonBaseItemTree : public QTreeWidgetItem
 {
 public:
 
-    ObjectRenderer* Owner;
-    ObjectItemTree* ItemOwner;
+    bool CalledFromGraph = false;   // A flag that indicates if actions should be performed in a graph item or item selection context.
 
 public:
 
+    /*
+    *   Default constructor.
+    *
+    *   @param Parent              The parent tree item to attach this item to.
+    */
+    CommonBaseItemTree(QTreeWidgetItem* Parent = nullptr) : QTreeWidgetItem(Parent) {}
+
+    /*
+    *   Default destructor.
+    */
+    virtual ~CommonBaseItemTree() {}
+
+    /*
+    *   Tells if the action should be perform in a graph context.
+    * 
+    *   @return True = graph context, false = selection context.
+    */
+    bool IsCalledFromGraph() { return this->CalledFromGraph; }
+
+    /*
+    *   Set the calling context.
+    *
+    *   @param IsCalledFromGraph     The new calling context : true = graph context, false = selection context.
+    */
+    void SetCalledFromGraph(bool IsCalledFromGraph) { this->CalledFromGraph = IsCalledFromGraph; }
+
+    /*
+    *   Perform the desired action when clicked.
+    */
+    virtual void PerformAction() {}
+
+    /*
+    *   Reset the graphical effect of the associated object.
+    */
+    virtual void ResetObjectEffect() {}
+};
+
+
+/*
+* This class is handling the graphical representation of each object in a scene.
+*/
+class ObjectPixmapItem : public QGraphicsPixmapItem
+{
+public:
+        
+    ObjectRenderer* Owner;          // The object renderer that owns this item.
+    ObjectItemTree* ItemOwner;      // The object item tree that owns this item.
+
+public:
+
+    /*
+    *   Construct a graph item using the given pixmap.
+    *
+    *   @param Pixmap              The pixmap that represent the object.
+    *   @param Parent              The renderer that owns this item.
+    *   @param Parent              The object item that owns this item.
+    */
     ObjectPixmapItem(const QPixmap& Pixmap, ObjectRenderer* Owner, ObjectItemTree* ItemOwner);
 
+    /*
+    *   Updates the graphical effect of the object based on the given status.
+    *
+    *   @param ObjStatus           Update the graphical effect based on the object status.
+    *   @param IsSelected          Adjust the effect based if the item is selected.
+    */
     void UpdateObjectRendering(ObjectState ObjStatus, bool IsSelected);
 
 protected:
 
+    /*
+    *   Perform action on the corresponding object when clicked.
+    *
+    *   @param event                The click event that triggered this function.
+    */
     void mousePressEvent(QGraphicsSceneMouseEvent* event) override;
 };
 
 
+/*
+* The object item tree that is added at the end of the tree.
+*/
 class ObjectItemTree : public CommonBaseItemTree
 {
-public:
-
-    ObjectRenderer* RendererOwner = nullptr;
-    ObjectInfo* Object;
-    ObjectPixmapItem* GraphItem = nullptr;
-    CommonBaseItemTree Item;
-    QColor DefaultTextColor;
 
 public:
 
+    ObjectRenderer* RendererOwner = nullptr;        // The object renderer that owns this item.
+    ObjectInfo* Object;                             // The actual object information.
+    ObjectPixmapItem* GraphItem = nullptr;          // The graphical representaion of the object.
+    CommonBaseItemTree Item;                        // The item to display when the object is considered as collected.
+    QColor DefaultTextColor;                        // The default text color to adapt the system color theme.
+
+public:
+
+    /*
+    *   Construct a object item tree using the given object information.
+    *
+    *   @param Obj              The object information used to correctly render the final object.
+    *   @param DefaultColor     The default text color.
+    *   @param Owner            The renderer that owns this item.
+    *   @param Parent           The parent tree item to attach this item to.
+    */
     ObjectItemTree(ObjectInfo* Obj, QColor DefaultColor, ObjectRenderer* Owner, QTreeWidgetItem* Parent = nullptr);
+
+    /*
+    *   Default destructor.
+    */
     ~ObjectItemTree();
 
     ObjectState GetStatus();
@@ -131,6 +213,9 @@ public:
 };
 
 
+/*
+* This class is handling the graphical representation of each object in a scene.
+*/
 class ObjectRenderer
 {
 
@@ -146,7 +231,18 @@ protected:
     QPixmap* Icon;					        // Image à afficher
 
 public:
+
+    /*
+    *   Construct an object renderer based on the given type.
+    *
+    *   @param Type             The object type to render.
+    *   @param Parent           The parent tree item to attach this item to.
+    */
     ObjectRenderer(ObjectType Type, SceneRenderer* Owner);
+
+    /*
+    *   Default destructor.
+    */
     ~ObjectRenderer();
 
     void AddObjectToScene(ObjectContext ActiveContext);

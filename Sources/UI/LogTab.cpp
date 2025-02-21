@@ -5,6 +5,7 @@
 #include "UI/OoTMMComboTracker.h"
 #include "Combo/Scenes.h"
 
+// Contains all the association between the spoiler location and their matching scene in this program
 const QHash<QString, QPair<uint32_t, uint32_t>> SpoilerMap =
 {
     { "Inside Eggs", { INSIDE_EGGS, OOT_GAME } },
@@ -97,7 +98,7 @@ LogTab::LogTab(OoTMMComboTracker* Owner, QWidget* parent) : QWidget(parent)
     this->IsRunning = false;
     this->EnableMultiplayer = false;
 
-    // Conteneur principal encadré
+    // Launch container
     this->LaunchGroup = new QGroupBox("Launch Options");
     this->FileLayout = new QHBoxLayout();
 
@@ -116,51 +117,48 @@ LogTab::LogTab(OoTMMComboTracker* Owner, QWidget* parent) : QWidget(parent)
     QObject::connect(this->LoadSpoilerButton, &QPushButton::pressed, this, &LogTab::LoadSpoiler);
     this->FileLayout->addWidget(this->LoadSpoilerButton);
 
-    // Bouton avec texte
+    // Start tracking
     this->LaunchButton = new QPushButton("Start Tracking");
     QObject::connect(this->LaunchButton, &QPushButton::pressed, this, &LogTab::PressLaunchButton);
 
-    // Checkbox avec texte à droite
+    // Multiplayer checkbox
     this->NetCheckBox = new QCheckBox("Use Multiplayer");
     this->NetCheckBox->setChecked(false);
     QObject::connect(this->NetCheckBox, &QCheckBox::checkStateChanged, this, &LogTab::ToggleNetOption);
 
-    // Champ pour URL
+    // Host field
     this->Host = new QLineEdit;
     this->Host->setPlaceholderText("Enter the host server address");
     this->Host->setToolTip("Example : multi.ootmm.com");
     this->Host->setText("multi.ootmm.com");
     this->Host->setEnabled(this->EnableMultiplayer);
 
-    // Champ pour un entier
+    // Port field
     this->Port = new QLineEdit;
     this->Port->setPlaceholderText("Enter the port to use");
     this->Port->setToolTip("Integer between 0 et 65535. Default: 13248");
     this->Port->setText("13248");
     this->Port->setEnabled(this->EnableMultiplayer);
 
-    // Ajout de validations
-    this->PortValidator = new QIntValidator(0, 65535); // Valide les entiers
+    // Port validator
+    this->PortValidator = new QIntValidator(0, 65535);
     this->Port->setValidator(this->PortValidator);
 
-    // Layout pour aligner les widgets horizontalement
+    // Network layout : checkbox -> host -> port
     this->MultiLayout = new QHBoxLayout;
-    this->MultiLayout->addWidget(this->NetCheckBox);   // Ajouter la checkbox
-    this->MultiLayout->addWidget(this->Host);  // Ajouter le champ URL
-    this->MultiLayout->addWidget(this->Port);  // Ajouter le champ Port
+    this->MultiLayout->addWidget(this->NetCheckBox);
+    this->MultiLayout->addWidget(this->Host);
+    this->MultiLayout->addWidget(this->Port);
 
 
-    // Layout pour aligner les widgets verticalement
+    // Launch layout
     this->NetLayout = new QVBoxLayout;
     this->NetLayout->addLayout(this->FileLayout);
     this->NetLayout->addLayout(this->MultiLayout);   // Ajouter la checkbox
     this->NetLayout->addWidget(this->LaunchButton);  // Ajouter le bouton
-
-
-    // Assigner le layout au conteneur encadré
     this->LaunchGroup->setLayout(this->NetLayout);
 
-    // Layout principal pour la fenêtre
+    // Main layout
     this->MainLayout = new QVBoxLayout;
     this->MainLayout->addWidget(this->LaunchGroup);
 
@@ -171,7 +169,9 @@ LogTab::LogTab(OoTMMComboTracker* Owner, QWidget* parent) : QWidget(parent)
 
     // Init other attribute
     this->Tracker = new App();
-    connect(MultiLogger::GetLogger(), &MultiLogger::LogMsgToView, this, &LogTab::LogMessage);
+
+    // Used to catch messages that come from non GUI thread
+    QObject::connect(MultiLogger::GetLogger(), &MultiLogger::LogMsgToView, this, &LogTab::LogMessage);
 }
 
 
@@ -211,6 +211,7 @@ void LogTab::ToggleNetOption(int state)
     this->Port->setEnabled(this->EnableMultiplayer);
 }
 
+
 void LogTab::PressLaunchButton()
 {
     if (this->Tracker)
@@ -226,8 +227,11 @@ void LogTab::PressLaunchButton()
         else
         {   // Start the auto-tracker
 
+            // Default host / ports from Nax's multi client app
             if (this->Tracker->appInit())
+            {
                 return;
+            }
             if (this->Tracker->appStartPj64("localhost", 13249))
             {
                 this->Tracker->appQuit();
@@ -246,11 +250,6 @@ void LogTab::PressLaunchButton()
     }
 }
 
-void LogTab::LogMessage(const QString& Message)
-{
-    this->LogViewer->appendPlainText(Message);
-    this->LogViewer->verticalScrollBar()->setValue(this->LogViewer->verticalScrollBar()->maximum());
-}
 
 void LogTab::SaveTracking()
 {
@@ -262,6 +261,7 @@ void LogTab::SaveTracking()
     }
 }
 
+
 void LogTab::LoadTracking()
 {
     QString filePath = QFileDialog::getOpenFileName(this, "Choose a tracking file", "", "Tracking Files (*.trck)");
@@ -272,87 +272,91 @@ void LogTab::LoadTracking()
     }
 }
 
+
 void LogTab::LoadSpoiler()
 {
     QString filePath = QFileDialog::getOpenFileName(this, "Choose a spoiler log", "", "Text Files (*.txt)");
 
     if (!filePath.isEmpty())
-    {
-        //this->WinOwner->LoadGameSpoiler(filePath);
-        QFile fichier(filePath);
+    {   // We have found a file
 
-        if (!fichier.open(QIODevice::ReadOnly | QIODevice::Text)) {
-            qWarning() << "Impossible d'ouvrir le fichier:" << fichier.errorString();
+        QFile file(filePath);
+
+        if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        {
+            qWarning() << "Can't open file:" << file.errorString();
             return;
         }
 
-        QTextStream in(&fichier);
-        QString contenu = in.readAll(); // Lire tout le fichier
-        fichier.close();
+        QTextStream in(&file);
+        QString content = in.readAll(); // Read all file
+        file.close();
 
-        // Découper en sections avec "==="
-        QStringList sections = contenu.split("===========================================================================", Qt::SkipEmptyParts, Qt::CaseSensitive);
+        // Split with "===" to find the right section
+        QStringList sections = content.split("===========================================================================", Qt::SkipEmptyParts, Qt::CaseSensitive);
 
-        // Vérifier si on a au moins 3 sections
-        if (sections.size() < 3) {
-            qWarning() << "Le fichier ne contient pas assez de sections.";
+        // Check that we have the correct number of sections
+        if (sections.size() < 3)
+        {
+            qWarning() << "The file does not have the correct number of sections.";
             return;
         }
 
-        QString t = "Location List (4273)\n  Inside Eggs(2) :\n    OOT Hatch Chicken : Rupoor(OoT)\n    OOT Hatch Pocket Cucco : Deku Shield\n\n  Kokiri Forest(99) :\n    OOT Kokiri Forest Cow : Green Rupee(MM)\n    OOT Link's House Pot: Recovery Heart (OoT)\n    OOT Kokiri Forest Kokiri Sword Chest : Rupoor(OoT)\n    OOT Kokiri Forest GS Soil : Rupoor(OoT)";
-
+        // Regex to split strings by location
         QRegularExpression reg("^\\s{2}(.+:(?:\n\\s{4}.*)+)\n*", QRegularExpression::MultilineOption);
         QRegularExpressionMatchIterator it = reg.globalMatch(sections[2]);
 
         QStringList maps;
         while (it.hasNext())
-        {
+        {   // Fill the maps array with all the gathered matches
+
             QRegularExpressionMatch match = it.next();
-            maps.append(match.captured(1)); // Capture complète du bloc
+            maps.append(match.captured(1));
         }
 
-        //QString finald = "";
-
         for (QString map : maps)
-        {   // Browse all sections
+        {   // Browse all maps
 
+            // All objects start with four spaces
             QStringList objects = map.split("    ");
             
+            // Regex to split map / object and their associated item 
             reg = QRegularExpression("^([\\w'-]+(?:\\s[\\w'-]+)*)", QRegularExpression::MultilineOption);
+            
+            // Get the map location
             it = reg.globalMatch(objects[0]);
             QString mapName = it.next().captured(1);
 
-            //finald += "{ \"" + mapName + "\", 0 },\n";
-
-            uint32_t sceneID = SpoilerMap[mapName].first;
-            SceneObjects* gameSceneObj = GetGameSceneObjects(SpoilerMap[mapName].second);
+            uint32_t sceneID = SpoilerMap[mapName].first;                                   // Get the scene ID that match the spoiler log location
+            SceneObjects* gameSceneObj = GetGameSceneObjects(SpoilerMap[mapName].second);   // Get the correct game objects
             
             for (qsizetype i = 1; i < objects.size(); i++)
             {   // Browse all the spoiler scene objects
 
-                QStringList spoilObject = objects[i].split(": ");
-                spoilObject[0] = spoilObject[0].replace("\n", "");
-                size_t len = spoilObject[0].length() + 1;
+                QStringList spoilObject = objects[i].split(": ");                           // Left part is object name, right is the item it contains
+                spoilObject[0] = spoilObject[0].replace("\n", "");                          // Sometimes the object has a line break, just get rid of it
+                
+                size_t len = spoilObject[0].length() + 1;                                   // We need to add 1 for the null terminator
                 char* tmpObjName = (char*)malloc(sizeof(char) * len);
                 memcpy_s(tmpObjName, len, spoilObject[0].toStdString().c_str(), len);
                 tmpObjName[len - 1] = '\0';
-
 
                 for (size_t j = 0; j < gameSceneObj[sceneID].NumOfObjs; j++)
                 {   // Browse all scenes objects
 
                     if (strcmp(gameSceneObj[sceneID].Objects[j].Location, tmpObjName) == 0)
-                    //if (gameSceneObj[sceneID].Objects[j].Location == spoilObject[0])
-                    { // We have found the object
+                    {   // We have found the object
                         
                         free(tmpObjName);
                         ObjectInfo* object = &gameSceneObj[sceneID].Objects[j];
 
+                        // Find and modify the object item
                         const ItemInfo* item = FindItemByName(spoilObject[1]);
                         object->Item = item;
 
                         if (object->RenderScene != sceneID)
-                        {
+                        {   // The current object will never be rendered, we need to update its counter part
+
                             for (size_t k = 0; k < gameSceneObj[object->RenderScene].NumOfObjs; k++)
                             {   // Find the object in the rendered scene
                                 
@@ -369,10 +373,15 @@ void LogTab::LoadSpoiler()
                     }
                 }
             }
-
-            //printf("%d", finald);
         }
 
         this->WinOwner->LoadGameSpoiler();
     }
+}
+
+
+void LogTab::LogMessage(const QString& Message)
+{
+    this->LogViewer->appendPlainText(Message);
+    this->LogViewer->verticalScrollBar()->setValue(this->LogViewer->verticalScrollBar()->maximum());
 }
