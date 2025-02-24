@@ -389,7 +389,7 @@ void SceneRenderer::ItemFound(ObjectInfo* Object, const ItemInfo* ItemFound)
     if (dest != nullptr)
     {	// Update the object renderer
 
-        dest->UpdateObjectState(Object);
+        dest->RefreshObject(Object);
         dest->UpdateText();
     }
 
@@ -456,9 +456,10 @@ void SceneRenderer::RefreshSceneContext(bool Context)
         ObjectRenderer* objRdr = FindObjectRendererCategory(&tmp);
 
         if (objRdr && objRdr->GetTotalObject() > 0)
-        {
+        {   // We only render object that are valid
+
             objRdr->UpdateText();
-            objRdr->AddObjectToScene(context);
+            objRdr->RenderObjectToScene(context);
             this->ObjectsTree->addTopLevelItem(objRdr->ObjCat);
             objRdr->ObjCat->setExpanded(true);
         }

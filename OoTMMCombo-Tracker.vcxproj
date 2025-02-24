@@ -127,6 +127,7 @@
     <ClCompile Include="Sources\UI\ObjectRenderer.cpp" />
     <ClCompile Include="Sources\UI\OoTMMComboTracker.cpp" />
     <ClCompile Include="Sources\UI\RegionTab.cpp" />
+    <ClCompile Include="Sources\UI\RoomRenderer.cpp" />
     <ClCompile Include="Sources\UI\SceneRenderer.cpp" />
     <QtUic Include="OoTMMComboTracker.ui" />
     <ClCompile Include="main.cpp" />

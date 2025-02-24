@@ -193,13 +193,38 @@ public:
     *   Default destructor.
     */
     ~ObjectItemTree();
-
+    
+    /*
+    *   Gets the discovery state of the associated object.
+    * 
+    *   @return The discovery state of the associated object.
+    */
     ObjectState GetStatus();
+
+    /*
+    *   Updates the object graphical icon based on the given type.
+    *
+    *   @param Type     The object type to use.
+    */
     void UpdateIcon(ObjectType Type);
+
+    /*
+    *   Updates the object text style based on its discovery state.
+    */
     void UpdateTextStyle();
 
+    /*
+    *   Remove the graphical item from the scene it rendered in.
+    */
     void RemoveObjectFromScene();
 
+    /*
+    *   The less operator used to sort the item in alphabetic order.
+    *
+    *   @param Other    The other item to compare to.
+    * 
+    *   @return True if the text item is alphabetically lower than the one of the given object, false otherwise.
+    */
     bool operator<(const QTreeWidgetItem& Other) const
     {
         QCollator collator;
@@ -208,7 +233,14 @@ public:
         return collator.compare(this->text(0), Other.text(0)) < 0;
     }
 
+    /*
+    *   Performs the matching actions corresponding to the object state.
+    */
     void PerformAction() override;
+
+    /*
+    *   Resets the object graphical icon effect to the state corresponding to its object discovery state.
+    */
     void ResetObjectEffect() override;
 };
 
@@ -221,14 +253,14 @@ class ObjectRenderer
 
 public:
 
-    SceneRenderer* SceneOwner = nullptr;
-    bool ShouldBeRendered = true;			// Tells if the objects should be rendered on the screen or not
-    ObjectType Type = ObjectType::none;     // The type of object, used to load the correct icon when needed
-    CommonBaseItemTree* ObjCat;
+    SceneRenderer* SceneOwner = nullptr;    // The scene where the object should be renderer to.
+    bool ShouldBeRendered = true;			// Tells if the objects should be rendered on the screen or not.
+    ObjectType Type = ObjectType::none;     // The type of object, used to load the correct icon when needed.
+    CommonBaseItemTree* ObjCat;             // The object category the rederer belongs to.
 
-    std::vector<ObjectItemTree*> Objects;
+    std::vector<ObjectItemTree*> Objects;   // The list of all objects associated to this renderer.
 protected:
-    QPixmap* Icon;					        // Image à afficher
+    QPixmap* Icon;					        // This icon that match the renderer category.
 
 public:
 
@@ -245,16 +277,77 @@ public:
     */
     ~ObjectRenderer();
 
-    void AddObjectToScene(ObjectContext ActiveContext);
+    /*
+    *   Renders the objects to the scene based on the given context.
+    *
+    *   @param ActiveContext    The active context to match.
+    */
+    void RenderObjectToScene(ObjectContext ActiveContext);
+
+    /*
+    *   Adds a new object to this renderer.
+    *
+    *   @param Obj              The object information used to create a new object to render.
+    *   @param DefaultColor     The default text color to use.
+    */
     void AddObjectToRender(ObjectInfo* Obj, QColor DefaultColor);
+
+    /*
+    *   Removes all objects from the scene that belongs to this renderer.
+    */
     void UnloadObjectsFromScene();
-    void UpdateObjectState(ObjectInfo* Object);
-    void UpdateContext(ObjectContext Context);
+
+    /*
+    *   Refreshes the object that match the given object information.
+    *
+    *   @param Object           The object to refresh.
+    */
+    void RefreshObject(ObjectInfo* Object);
+
+    /*
+    *   Updates the scene context with the given context.
+    *
+    *   @param Context          The new scene context.
+    */
+    void UpdateSceneContext(ObjectContext Context);
+
+    /*
+    *   Centers the view on the given target object.
+    *
+    *   @param Target           The object to center the view on.
+    */
     void CenterViewOn(ObjectPixmapItem* Target);
 
+    /*
+    *   Gets the number of collected objects in this renderer.
+    *
+    *   @return The number of collected objects in this renderer.
+    */
     size_t GetCollectedObject();
+
+    /*
+    *   Gets the number of objects in this renderer.
+    *
+    *   @return The number of objects in this renderer.
+    */
     size_t GetTotalObject();
+
+    /*
+    *   Update the object category text of this renderer.
+    */
     void UpdateText();
+
+    /*
+    *   Increase / decrease the number of found objects by the given amount.
+    *
+    *   @param Count  The number of found object to add or remove.
+    */
     void RefreshObjectCounts(int Count);
+
+    /*
+    *   Remove all objects of this renderer from the given tree widget without destroying the object itself.
+    *
+    *   @param Tree             The tree widget to remove the object from.
+    */
     void RemoveObjectFromList(QTreeWidget* Tree);
 };

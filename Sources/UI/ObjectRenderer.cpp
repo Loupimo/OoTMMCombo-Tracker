@@ -150,7 +150,7 @@ void ObjectItemTree::PerformAction()
         this->Object->Status = ObjectState::Forced;
         this->setExpanded(true);
         this->RendererOwner->SceneOwner->UpdateRoom(this->Object->RoomID);  // We need to update the room ID in case the selected object is in another room than the active one
-        this->RendererOwner->UpdateContext(this->Object->Context);          // We need to update the context in case the selected object is in a different context than the active one
+        this->RendererOwner->UpdateSceneContext(this->Object->Context);     // We need to update the context in case the selected object is in a different context than the active one
         this->RendererOwner->RefreshObjectCounts(1);                        // Increase the number of discovered object by one
         this->RendererOwner->CenterViewOn(this->GraphItem);                 // Center the scene view on the object
         this->GraphItem->UpdateObjectRendering(this->Object->Status, true); // Apply opacity and effect to the selected object
@@ -325,19 +325,21 @@ void ObjectRenderer::AddObjectToRender(ObjectInfo * Obj, QColor DefaultColor)
 }
 
 
-void ObjectRenderer::AddObjectToScene(ObjectContext ActiveContext)
+void ObjectRenderer::RenderObjectToScene(ObjectContext ActiveContext)
 {
     if (this->ShouldBeRendered)
     {
         for (ObjectItemTree* currObj : this->Objects)
-        {   // Render all objects
+        {   // Browse all objects
 
             if ((currObj->Object->Context == ObjectContext::All || currObj->Object->Context == ActiveContext) && (this->SceneOwner->ActiveRoom == -1 || currObj->Object->RoomID == this->SceneOwner->ActiveRoom))
-            {
+            {   // The object can be rendered
+
                 currObj->UpdateIcon(this->Type);
             }
             else
-            {
+            {   // The object should not be rendered and removed if it previously was
+
                 currObj->RemoveObjectFromScene();
             }
         }
@@ -350,7 +352,7 @@ void ObjectRenderer::UnloadObjectsFromScene()
     if (this->ShouldBeRendered)
     {
         for (ObjectItemTree* currObj : this->Objects)
-        {   // Render all objects
+        {   // Browse all objects
 
             currObj->RemoveObjectFromScene();
         }
@@ -358,12 +360,14 @@ void ObjectRenderer::UnloadObjectsFromScene()
 }
 
 
-void ObjectRenderer::UpdateObjectState(ObjectInfo* Object)
+void ObjectRenderer::RefreshObject(ObjectInfo* Object)
 {
     for (size_t i = 0; i < this->Objects.size(); i++)
-    {
+    {   // Browse all objects
+
         if (this->Objects[i]->Object == Object)
-        {
+        {   // This is the object we need to refresh
+
             this->Objects[i]->UpdateIcon(this->Type);
             this->Objects[i]->PerformAction();
             break;
@@ -371,7 +375,8 @@ void ObjectRenderer::UpdateObjectState(ObjectInfo* Object)
     }
 }
 
-void ObjectRenderer::UpdateContext(ObjectContext Context)
+
+void ObjectRenderer::UpdateSceneContext(ObjectContext Context)
 {
     this->SceneOwner->UpdateContext(Context);
 }

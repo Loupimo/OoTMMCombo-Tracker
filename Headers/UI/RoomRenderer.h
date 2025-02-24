@@ -6,13 +6,17 @@
 #include <QHash>
 #include "UI/SceneRenderer.h"
 
+/*
+*   Contains all information to defines a scene room.
+*/
 typedef struct RoomInfo
 {
-	uint32_t RoomID;
-	const char* RoomName;
-	const char* ImagePath;
+	uint32_t RoomID;		// The room ID.
+	const char* RoomName;	// The room Name.
+	const char* ImagePath;	// The image path that corresponding to the room.
 } RoomInfo;
 
+// An hash array that contains all OoT rooms for each scene that has more than one.
 const QHash<int, std::vector<RoomInfo>> OoTRooms(
 {
 	QPair<int, std::vector<RoomInfo>>(DEKU_TREE,
@@ -35,72 +39,74 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 
 });
 
-
+// An hash array that contains all MM rooms for each scene that has more than one.
 const QHash<int, std::vector<RoomInfo>> MMRooms(
 	{
 
 	});
 
 
-const QHash<int, std::vector<RoomInfo>>* GetSceneRooms(SceneInfo* Scene)
-{
-	if (Scene->GameID == OOT_GAME)
-	{
-		return &OoTRooms;
-	}
-	else
-	{
-		return &MMRooms;
-	}
-}
+/*
+*   Gets all rooms that belongs to the given scene.
+*
+*	@param Scene		The scene the rooms should belong to.
+* 
+*	@return All rooms that belongs to the given scene.
+*/
+const QHash<int, std::vector<RoomInfo>>* GetSceneRooms(SceneInfo* Scene);
 
 
+/*
+*   The class that handles the rooms information.
+*/
 class RoomItemTree : public SceneItemTree
 {
 
 public:
-	RoomInfo Info;
-	SceneItemTree* SceneItem;
 
-	RoomItemTree(RoomInfo* RInfo, SceneItemTree* ParentSceneItem)
-	{
-		this->Info.ImagePath = RInfo->ImagePath;
-		this->Info.RoomID = RInfo->RoomID;
-		this->Info.RoomName = RInfo->RoomName;
-		this->SceneItem = ParentSceneItem;
-	}
+	RoomInfo Info;				// The room inromation.
+	SceneItemTree* SceneItem;	// The parent item to attach this room to.
 
-	void RenderScene(QTreeWidget* ObjectsTreeWidget, bool Context, bool CreateNew) override
-	{
-		if (CreateNew)
-		{
-			this->SceneItem->ActiveRoom = &this->Info;
-		}
-		this->SceneItem->RenderScene(ObjectsTreeWidget, Context, CreateNew);
-		/*if (CreateNew)
-		{
-			this->Renderer = new SceneRenderer(this->SceneItem->Scene, ObjectsTreeWidget, this);
-		}
-		this->Renderer->RenderScene(Context, this->Info);*/
-	}
+	/*
+	*   Constructs the room based on the given information.
+	*
+	*   @param RInfo				The room information to use.
+	*   @param ParentSceneItem		The scene this room belongs to.
+	*/
+	RoomItemTree(RoomInfo* RInfo, SceneItemTree* ParentSceneItem);
 
-	void UnloadScene() override
-	{
-		this->SceneItem->UnloadScene();
-	}
+	/*
+	*   Renders the scene (here room).
+	*
+	*   @param ObjectsTreeWidget   The object tree list to fill when this scene is active.
+    *   @param Context             The context in which the scene should be rendered.
+    *   @param CreateNew           Tells if we should create a new scene renderer or not.
+    */
+	void RenderScene(QTreeWidget* ObjectsTreeWidget, bool Context, bool CreateNew) override;
 
-	void UpdateObjectCounts(int Count) override
-	{
-		this->SceneItem->UpdateObjectCounts(Count);
-	}
+	/*
+	*   Unload the scene associated to this item.
+	*/
+	void UnloadScene() override;
 
-	bool HasContext() override
-	{
-		return this->SceneItem->HasContext();
-	}
+	/*
+	*   Increase / decrease the number of found object by the given amount.
+	*
+	*   @param Count  The number of found object to add or remove.
+	*/
+	void UpdateObjectCounts(int Count) override;
 
-	SceneRenderer* GetScene() override
-	{
-		return this->SceneItem->GetScene();
-	}
+	/*
+	*   Tells if this scene has a context.
+	*
+	*   @return True means the scene has a context, false means no context.
+	*/
+	bool HasContext() override;
+
+	/*
+	*   Gets the scene renderer.
+	*
+	*   @return The scene renderer.
+	*/
+	SceneRenderer* GetScene() override;
 };
