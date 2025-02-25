@@ -11,6 +11,9 @@ QList<QPair<int, int>> FSPoints = {
 QList<QPair<int, int>> WonderPoints = {
 {661, 456},
 };
+QList<QPair<int, int>> GrottoPoints = {
+{472, 594},
+};
 QList<QPair<int, int>> NPCsPoints = {
 {236, 520},
 {468, 483},

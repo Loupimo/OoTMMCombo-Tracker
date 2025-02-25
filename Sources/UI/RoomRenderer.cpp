@@ -1,13 +1,5 @@
 #include "UI/RoomRenderer.h"
 
-#pragma once
-
-#include "Multi/Multi.h"
-#include "Combo/Scenes.h"
-#include "Multi/Game.h"
-#include <QHash>
-#include "UI/SceneRenderer.h"
-
 const QHash<int, std::vector<RoomInfo>>* GetSceneRooms(SceneInfo* Scene)
 {
 	if (Scene->GameID == OOT_GAME)

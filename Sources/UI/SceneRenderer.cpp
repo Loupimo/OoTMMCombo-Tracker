@@ -139,6 +139,24 @@ int SceneItemTree::GetTotalObjects()
 
 void SceneItemTree::ItemFound(ObjectInfo* Object, const ItemInfo* Item)
 {
+    if (Object->Scene != Object->RenderScene)
+    {   // The rendering scene is not the same
+
+        Object->Item = Item;
+        Object->Status = ObjectState::Collected;
+        SceneObjects* currScenes = GetGameSceneObjects(this->Scene->GameID);
+
+        for (size_t i = 0; i < currScenes->NumOfObjs; i++)
+        {
+            ObjectInfo* currObj = &currScenes[Object->RenderScene].Objects[i];
+            if (currObj->ObjectID == Object->ObjectID && currObj->Type == Object->Type)
+            {
+                Object = currObj;
+                break;
+            }
+        }
+    }
+
     if (this->Renderer)
     {   // The scene is rendered. We just need to call the scene item found function
 

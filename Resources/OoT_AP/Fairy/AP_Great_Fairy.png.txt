@@ -1,0 +1,3 @@
+QList<QPair<int, int>> FlyPoints = {
+{497, 351},
+};

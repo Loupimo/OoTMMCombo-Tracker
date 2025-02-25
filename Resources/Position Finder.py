@@ -4,6 +4,7 @@ import os
 
 colors = {"Grass": np.array([0, 128, 0]),
           "FS": np.array([255, 180, 255]),
+          "Hive": np.array([200, 150, 200]),
           "Pack": np.array([192, 192, 192]),
           "Chest": np.array([255, 0, 255]),
           "Cow": np.array([245, 245, 245]),
@@ -11,7 +12,7 @@ colors = {"Grass": np.array([0, 128, 0]),
           "GS": np.array([200, 50, 200]),
           "Fly": np.array([250, 105, 250]),
           "Wonder": np.array([200, 100, 200]),
-          "Crate": np.array([128, 0, 0]),
+          "Crate": np.array([0, 80, 0]),
           "Grotto": np.array([255, 50, 255]),
           "NPCs": np.array([255, 128, 255]),
           }

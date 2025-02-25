@@ -4,22 +4,22 @@ id;scene;friendly_name;location;type;x;y;renderscene;context;room
 0x0004;BACK_ALLEY_HOUSE;Pot 3;OOT Market Back Alley East House Pot 3;pot;0;0;BACK_ALLEY_HOUSE;All;0
 DOG_LADY;BACK_ALLEY_HOUSE2;Heart Piece;OOT Market Dog Lady HP;npc;0;0;BACK_ALLEY_HOUSE2;All;0
 0x00002;BACK_ALLEY_HOUSE2;Crate;OOT Market Dog Lady Crate;crate;0;0;BACK_ALLEY_HOUSE2;All;0
-0x30;BAZAAR;Item 1;OOT Kakariko Bazaar Item 1;shop;0;0;KAKARIKO_BAZAAR;All;0
-0x31;BAZAAR;Item 2;OOT Kakariko Bazaar Item 2;shop;0;0;KAKARIKO_BAZAAR;All;0
-0x32;BAZAAR;Item 3;OOT Kakariko Bazaar Item 3;shop;0;0;KAKARIKO_BAZAAR;All;0
-0x33;BAZAAR;Item 4;OOT Kakariko Bazaar Item 4;shop;0;0;KAKARIKO_BAZAAR;All;0
-0x34;BAZAAR;Item 5;OOT Kakariko Bazaar Item 5;shop;0;0;KAKARIKO_BAZAAR;All;0
-0x35;BAZAAR;Item 6;OOT Kakariko Bazaar Item 6;shop;0;0;KAKARIKO_BAZAAR;All;0
-0x36;BAZAAR;Item 7;OOT Kakariko Bazaar Item 7;shop;0;0;KAKARIKO_BAZAAR;All;0
-0x37;BAZAAR;Item 8;OOT Kakariko Bazaar Item 8;shop;0;0;KAKARIKO_BAZAAR;All;0
-0x20;BAZAAR;Item 1;OOT Market Bazaar Item 1;shop;0;0;MARKET_BAZAAR;All;0
-0x21;BAZAAR;Item 2;OOT Market Bazaar Item 2;shop;0;0;MARKET_BAZAAR;All;0
-0x22;BAZAAR;Item 3;OOT Market Bazaar Item 3;shop;0;0;MARKET_BAZAAR;All;0
-0x23;BAZAAR;Item 4;OOT Market Bazaar Item 4;shop;0;0;MARKET_BAZAAR;All;0
-0x24;BAZAAR;Item 5;OOT Market Bazaar Item 5;shop;0;0;MARKET_BAZAAR;All;0
-0x25;BAZAAR;Item 6;OOT Market Bazaar Item 6;shop;0;0;MARKET_BAZAAR;All;0
-0x26;BAZAAR;Item 7;OOT Market Bazaar Item 7;shop;0;0;MARKET_BAZAAR;All;0
-0x27;BAZAAR;Item 8;OOT Market Bazaar Item 8;shop;0;0;MARKET_BAZAAR;All;0
+0x30;BAZAAR;Item 1;OOT Kakariko Bazaar Item 1;shop;664;328;KAKARIKO_BAZAAR;All;0
+0x31;BAZAAR;Item 2;OOT Kakariko Bazaar Item 2;shop;624;328;KAKARIKO_BAZAAR;All;0
+0x32;BAZAAR;Item 3;OOT Kakariko Bazaar Item 3;shop;367;328;KAKARIKO_BAZAAR;All;0
+0x33;BAZAAR;Item 4;OOT Kakariko Bazaar Item 4;shop;327;328;KAKARIKO_BAZAAR;All;0
+0x34;BAZAAR;Item 5;OOT Kakariko Bazaar Item 5;shop;664;290;KAKARIKO_BAZAAR;All;0
+0x35;BAZAAR;Item 6;OOT Kakariko Bazaar Item 6;shop;624;290;KAKARIKO_BAZAAR;All;0
+0x36;BAZAAR;Item 7;OOT Kakariko Bazaar Item 7;shop;367;290;KAKARIKO_BAZAAR;All;0
+0x37;BAZAAR;Item 8;OOT Kakariko Bazaar Item 8;shop;327;290;KAKARIKO_BAZAAR;All;0
+0x20;BAZAAR;Item 1;OOT Market Bazaar Item 1;shop;664;328;MARKET_BAZAAR;All;0
+0x21;BAZAAR;Item 2;OOT Market Bazaar Item 2;shop;624;328;MARKET_BAZAAR;All;0
+0x22;BAZAAR;Item 3;OOT Market Bazaar Item 3;shop;367;328;MARKET_BAZAAR;All;0
+0x23;BAZAAR;Item 4;OOT Market Bazaar Item 4;shop;327;328;MARKET_BAZAAR;All;0
+0x24;BAZAAR;Item 5;OOT Market Bazaar Item 5;shop;664;290;MARKET_BAZAAR;All;0
+0x25;BAZAAR;Item 6;OOT Market Bazaar Item 6;shop;624;290;MARKET_BAZAAR;All;0
+0x26;BAZAAR;Item 7;OOT Market Bazaar Item 7;shop;367;290;MARKET_BAZAAR;All;0
+0x27;BAZAAR;Item 8;OOT Market Bazaar Item 8;shop;327;290;MARKET_BAZAAR;All;0
 BOMBCHU_BOWLING_1;BOMBCHU_BOWLING_ALLEY;Reward 1;OOT Bombchu Bowling Reward 1;npc;0;0;BOMBCHU_BOWLING_ALLEY;All;0
 BOMBCHU_BOWLING_2;BOMBCHU_BOWLING_ALLEY;Reward 2;OOT Bombchu Bowling Reward 2;npc;0;0;BOMBCHU_BOWLING_ALLEY;All;0
 0x08;BOMBCHU_SHOP;Item 1;OOT Market Bombchu Shop Item 1;shop;0;0;BOMBCHU_SHOP;All;0
@@ -206,8 +206,8 @@ TRADE_BIGGORON_SWORD;DEATH_MOUNTAIN_TRAIL;Biggoron Sword;OOT Death Mountain Trai
 0x00603;DEKU_TREE;Torch Room 2;OOT Deku Tree Grass Torch Room 2;grass;510;627;DEKU_TREE;All;7
 0x00702;DEKU_TREE;Larva Room 1;OOT Deku Tree Grass Larva Room 1;grass;445;629;DEKU_TREE;All;8
 0x00703;DEKU_TREE;Larva Room 2;OOT Deku Tree Grass Larva Room 2;grass;477;617;DEKU_TREE;All;8
-0x00900;DEKU_TREE;Pre-Boss Room 1;OOT Deku Tree Grass Pre-Boss Room 1;grass;940;513;DEKU_TREE;All;9
-0x00901;DEKU_TREE;Pre-Boss Room 2;OOT Deku Tree Grass Pre-Boss Room 2;grass;916;506;DEKU_TREE;All;9
+0x00900;DEKU_TREE;Pre-Boss Room 1;OOT Deku Tree Grass Pre-Boss Room 1;grass;916;506;DEKU_TREE;All;9
+0x00901;DEKU_TREE;Pre-Boss Room 2;OOT Deku Tree Grass Pre-Boss Room 2;grass;940;513;DEKU_TREE;All;9
 0x00902;DEKU_TREE;Pre-Boss Room 3;OOT Deku Tree Grass Pre-Boss Room 3;grass;895;498;DEKU_TREE;All;9
 0x00a02;DEKU_TREE;Compass Room 1;OOT Deku Tree Grass Compass Room 1;grass;1066;560;DEKU_TREE;All;1
 0x00a03;DEKU_TREE;Compass Room 2;OOT Deku Tree Grass Compass Room 2;grass;1143;563;DEKU_TREE;All;1
@@ -448,46 +448,46 @@ SHEIK_SPIRIT;DESERT_COLOSSUS;Requiem of Spirit;OOT Desert Colossus Song Spirit;n
 0x0060b;DODONGO_CAVERN;Larva Room 6;OOT MQ Dodongo Cavern Larve Room Large Crate 6;crate;0;0;MQ_DODONGO_CAVERN;All;0
 0x00c0a;DODONGO_CAVERN;After Upper Lizalfos 1;OOT MQ Dodongo Cavern Room After Upper Lizalfos Large Crate 1;crate;0;0;MQ_DODONGO_CAVERN;All;0
 0x00c0b;DODONGO_CAVERN;After Upper Lizalfos 2;OOT MQ Dodongo Cavern Room After Upper Lizalfos Large Crate 2;crate;0;0;MQ_DODONGO_CAVERN;All;0
-0x02200;FAIRY_FOUNTAIN;Fairy 1;OOT Sacred Meadow Fairy Fountain Fairy 1;fairy;0;0;OOT_FAIRY_SACRED_MEADOW;All;0
-0x12200;FAIRY_FOUNTAIN;Fairy 2;OOT Sacred Meadow Fairy Fountain Fairy 2;fairy;0;0;OOT_FAIRY_SACRED_MEADOW;All;0
-0x22200;FAIRY_FOUNTAIN;Fairy 3;OOT Sacred Meadow Fairy Fountain Fairy 3;fairy;0;0;OOT_FAIRY_SACRED_MEADOW;All;0
-0x32200;FAIRY_FOUNTAIN;Fairy 4;OOT Sacred Meadow Fairy Fountain Fairy 4;fairy;0;0;OOT_FAIRY_SACRED_MEADOW;All;0
-0x42200;FAIRY_FOUNTAIN;Fairy 5;OOT Sacred Meadow Fairy Fountain Fairy 5;fairy;0;0;OOT_FAIRY_SACRED_MEADOW;All;0
-0x52200;FAIRY_FOUNTAIN;Fairy 6;OOT Sacred Meadow Fairy Fountain Fairy 6;fairy;0;0;OOT_FAIRY_SACRED_MEADOW;All;0
-0x62200;FAIRY_FOUNTAIN;Fairy 7;OOT Sacred Meadow Fairy Fountain Fairy 7;fairy;0;0;OOT_FAIRY_SACRED_MEADOW;All;0
-0x72200;FAIRY_FOUNTAIN;Fairy 8;OOT Sacred Meadow Fairy Fountain Fairy 8;fairy;0;0;OOT_FAIRY_SACRED_MEADOW;All;0
-0x02100;FAIRY_FOUNTAIN;Fairy 1;OOT Zora River Fairy Fountain Fairy 1;fairy;0;0;OOT_FAIRY_ZORA_RIVER;All;0
-0x12100;FAIRY_FOUNTAIN;Fairy 2;OOT Zora River Fairy Fountain Fairy 2;fairy;0;0;OOT_FAIRY_ZORA_RIVER;All;0
-0x22100;FAIRY_FOUNTAIN;Fairy 3;OOT Zora River Fairy Fountain Fairy 3;fairy;0;0;OOT_FAIRY_ZORA_RIVER;All;0
-0x32100;FAIRY_FOUNTAIN;Fairy 4;OOT Zora River Fairy Fountain Fairy 4;fairy;0;0;OOT_FAIRY_ZORA_RIVER;All;0
-0x42100;FAIRY_FOUNTAIN;Fairy 5;OOT Zora River Fairy Fountain Fairy 5;fairy;0;0;OOT_FAIRY_ZORA_RIVER;All;0
-0x52100;FAIRY_FOUNTAIN;Fairy 6;OOT Zora River Fairy Fountain Fairy 6;fairy;0;0;OOT_FAIRY_ZORA_RIVER;All;0
-0x62100;FAIRY_FOUNTAIN;Fairy 7;OOT Zora River Fairy Fountain Fairy 7;fairy;0;0;OOT_FAIRY_ZORA_RIVER;All;0
-0x72100;FAIRY_FOUNTAIN;Fairy 8;OOT Zora River Fairy Fountain Fairy 8;fairy;0;0;OOT_FAIRY_ZORA_RIVER;All;0
-0x02300;FAIRY_FOUNTAIN;Fairy 1;OOT Zora Domain Fairy Fountain Fairy 1;fairy;0;0;OOT_FAIRY_ZORA_DOMAIN;All;0
-0x12300;FAIRY_FOUNTAIN;Fairy 2;OOT Zora Domain Fairy Fountain Fairy 2;fairy;0;0;OOT_FAIRY_ZORA_DOMAIN;All;0
-0x22300;FAIRY_FOUNTAIN;Fairy 3;OOT Zora Domain Fairy Fountain Fairy 3;fairy;0;0;OOT_FAIRY_ZORA_DOMAIN;All;0
-0x32300;FAIRY_FOUNTAIN;Fairy 4;OOT Zora Domain Fairy Fountain Fairy 4;fairy;0;0;OOT_FAIRY_ZORA_DOMAIN;All;0
-0x42300;FAIRY_FOUNTAIN;Fairy 5;OOT Zora Domain Fairy Fountain Fairy 5;fairy;0;0;OOT_FAIRY_ZORA_DOMAIN;All;0
-0x52300;FAIRY_FOUNTAIN;Fairy 6;OOT Zora Domain Fairy Fountain Fairy 6;fairy;0;0;OOT_FAIRY_ZORA_DOMAIN;All;0
-0x62300;FAIRY_FOUNTAIN;Fairy 7;OOT Zora Domain Fairy Fountain Fairy 7;fairy;0;0;OOT_FAIRY_ZORA_DOMAIN;All;0
-0x72300;FAIRY_FOUNTAIN;Fairy 8;OOT Zora Domain Fairy Fountain Fairy 8;fairy;0;0;OOT_FAIRY_ZORA_DOMAIN;All;0
-0x02000;FAIRY_FOUNTAIN;Fairy 1;OOT Hyrule Field Fairy Fountain Fairy 1;fairy;0;0;OOT_FAIRY_HYRULE;All;0
-0x12000;FAIRY_FOUNTAIN;Fairy 2;OOT Hyrule Field Fairy Fountain Fairy 2;fairy;0;0;OOT_FAIRY_HYRULE;All;0
-0x22000;FAIRY_FOUNTAIN;Fairy 3;OOT Hyrule Field Fairy Fountain Fairy 3;fairy;0;0;OOT_FAIRY_HYRULE;All;0
-0x32000;FAIRY_FOUNTAIN;Fairy 4;OOT Hyrule Field Fairy Fountain Fairy 4;fairy;0;0;OOT_FAIRY_HYRULE;All;0
-0x42000;FAIRY_FOUNTAIN;Fairy 5;OOT Hyrule Field Fairy Fountain Fairy 5;fairy;0;0;OOT_FAIRY_HYRULE;All;0
-0x52000;FAIRY_FOUNTAIN;Fairy 6;OOT Hyrule Field Fairy Fountain Fairy 6;fairy;0;0;OOT_FAIRY_HYRULE;All;0
-0x62000;FAIRY_FOUNTAIN;Fairy 7;OOT Hyrule Field Fairy Fountain Fairy 7;fairy;0;0;OOT_FAIRY_HYRULE;All;0
-0x72000;FAIRY_FOUNTAIN;Fairy 8;OOT Hyrule Field Fairy Fountain Fairy 8;fairy;0;0;OOT_FAIRY_HYRULE;All;0
-0x02400;FAIRY_FOUNTAIN;Fairy 1;OOT Gerudo Fortress Fairy Fountain Fairy 1;fairy;0;0;OOT_FAIRY_GERUDO_FORTRESS;All;0
-0x12400;FAIRY_FOUNTAIN;Fairy 2;OOT Gerudo Fortress Fairy Fountain Fairy 2;fairy;0;0;OOT_FAIRY_GERUDO_FORTRESS;All;0
-0x22400;FAIRY_FOUNTAIN;Fairy 3;OOT Gerudo Fortress Fairy Fountain Fairy 3;fairy;0;0;OOT_FAIRY_GERUDO_FORTRESS;All;0
-0x32400;FAIRY_FOUNTAIN;Fairy 4;OOT Gerudo Fortress Fairy Fountain Fairy 4;fairy;0;0;OOT_FAIRY_GERUDO_FORTRESS;All;0
-0x42400;FAIRY_FOUNTAIN;Fairy 5;OOT Gerudo Fortress Fairy Fountain Fairy 5;fairy;0;0;OOT_FAIRY_GERUDO_FORTRESS;All;0
-0x52400;FAIRY_FOUNTAIN;Fairy 6;OOT Gerudo Fortress Fairy Fountain Fairy 6;fairy;0;0;OOT_FAIRY_GERUDO_FORTRESS;All;0
-0x62400;FAIRY_FOUNTAIN;Fairy 7;OOT Gerudo Fortress Fairy Fountain Fairy 7;fairy;0;0;OOT_FAIRY_GERUDO_FORTRESS;All;0
-0x72400;FAIRY_FOUNTAIN;Fairy 8;OOT Gerudo Fortress Fairy Fountain Fairy 8;fairy;0;0;OOT_FAIRY_GERUDO_FORTRESS;All;0
+0x02200;FAIRY_FOUNTAIN;Fairy 1;OOT Sacred Meadow Fairy Fountain Fairy 1;fairy;484;209;OOT_FAIRY_SACRED_MEADOW;All;0
+0x12200;FAIRY_FOUNTAIN;Fairy 2;OOT Sacred Meadow Fairy Fountain Fairy 2;fairy;499;204;OOT_FAIRY_SACRED_MEADOW;All;0
+0x22200;FAIRY_FOUNTAIN;Fairy 3;OOT Sacred Meadow Fairy Fountain Fairy 3;fairy;469;203;OOT_FAIRY_SACRED_MEADOW;All;0
+0x32200;FAIRY_FOUNTAIN;Fairy 4;OOT Sacred Meadow Fairy Fountain Fairy 4;fairy;484;191;OOT_FAIRY_SACRED_MEADOW;All;0
+0x42200;FAIRY_FOUNTAIN;Fairy 5;OOT Sacred Meadow Fairy Fountain Fairy 5;fairy;502;189;OOT_FAIRY_SACRED_MEADOW;All;0
+0x52200;FAIRY_FOUNTAIN;Fairy 6;OOT Sacred Meadow Fairy Fountain Fairy 6;fairy;466;189;OOT_FAIRY_SACRED_MEADOW;All;0
+0x62200;FAIRY_FOUNTAIN;Fairy 7;OOT Sacred Meadow Fairy Fountain Fairy 7;fairy;491;176;OOT_FAIRY_SACRED_MEADOW;All;0
+0x72200;FAIRY_FOUNTAIN;Fairy 8;OOT Sacred Meadow Fairy Fountain Fairy 8;fairy;474;176;OOT_FAIRY_SACRED_MEADOW;All;0
+0x02100;FAIRY_FOUNTAIN;Fairy 1;OOT Zora River Fairy Fountain Fairy 1;fairy;484;209;OOT_FAIRY_ZORA_RIVER;All;0
+0x12100;FAIRY_FOUNTAIN;Fairy 2;OOT Zora River Fairy Fountain Fairy 2;fairy;499;204;OOT_FAIRY_ZORA_RIVER;All;0
+0x22100;FAIRY_FOUNTAIN;Fairy 3;OOT Zora River Fairy Fountain Fairy 3;fairy;469;203;OOT_FAIRY_ZORA_RIVER;All;0
+0x32100;FAIRY_FOUNTAIN;Fairy 4;OOT Zora River Fairy Fountain Fairy 4;fairy;484;191;OOT_FAIRY_ZORA_RIVER;All;0
+0x42100;FAIRY_FOUNTAIN;Fairy 5;OOT Zora River Fairy Fountain Fairy 5;fairy;502;189;OOT_FAIRY_ZORA_RIVER;All;0
+0x52100;FAIRY_FOUNTAIN;Fairy 6;OOT Zora River Fairy Fountain Fairy 6;fairy;466;189;OOT_FAIRY_ZORA_RIVER;All;0
+0x62100;FAIRY_FOUNTAIN;Fairy 7;OOT Zora River Fairy Fountain Fairy 7;fairy;491;176;OOT_FAIRY_ZORA_RIVER;All;0
+0x72100;FAIRY_FOUNTAIN;Fairy 8;OOT Zora River Fairy Fountain Fairy 8;fairy;474;176;OOT_FAIRY_ZORA_RIVER;All;0
+0x02300;FAIRY_FOUNTAIN;Fairy 1;OOT Zora Domain Fairy Fountain Fairy 1;fairy;484;209;OOT_FAIRY_ZORA_DOMAIN;All;0
+0x12300;FAIRY_FOUNTAIN;Fairy 2;OOT Zora Domain Fairy Fountain Fairy 2;fairy;499;204;OOT_FAIRY_ZORA_DOMAIN;All;0
+0x22300;FAIRY_FOUNTAIN;Fairy 3;OOT Zora Domain Fairy Fountain Fairy 3;fairy;469;203;OOT_FAIRY_ZORA_DOMAIN;All;0
+0x32300;FAIRY_FOUNTAIN;Fairy 4;OOT Zora Domain Fairy Fountain Fairy 4;fairy;484;191;OOT_FAIRY_ZORA_DOMAIN;All;0
+0x42300;FAIRY_FOUNTAIN;Fairy 5;OOT Zora Domain Fairy Fountain Fairy 5;fairy;502;189;OOT_FAIRY_ZORA_DOMAIN;All;0
+0x52300;FAIRY_FOUNTAIN;Fairy 6;OOT Zora Domain Fairy Fountain Fairy 6;fairy;466;189;OOT_FAIRY_ZORA_DOMAIN;All;0
+0x62300;FAIRY_FOUNTAIN;Fairy 7;OOT Zora Domain Fairy Fountain Fairy 7;fairy;491;176;OOT_FAIRY_ZORA_DOMAIN;All;0
+0x72300;FAIRY_FOUNTAIN;Fairy 8;OOT Zora Domain Fairy Fountain Fairy 8;fairy;474;176;OOT_FAIRY_ZORA_DOMAIN;All;0
+0x02000;FAIRY_FOUNTAIN;Fairy 1;OOT Hyrule Field Fairy Fountain Fairy 1;fairy;484;209;OOT_FAIRY_HYRULE;All;0
+0x12000;FAIRY_FOUNTAIN;Fairy 2;OOT Hyrule Field Fairy Fountain Fairy 2;fairy;499;204;OOT_FAIRY_HYRULE;All;0
+0x22000;FAIRY_FOUNTAIN;Fairy 3;OOT Hyrule Field Fairy Fountain Fairy 3;fairy;469;203;OOT_FAIRY_HYRULE;All;0
+0x32000;FAIRY_FOUNTAIN;Fairy 4;OOT Hyrule Field Fairy Fountain Fairy 4;fairy;484;191;OOT_FAIRY_HYRULE;All;0
+0x42000;FAIRY_FOUNTAIN;Fairy 5;OOT Hyrule Field Fairy Fountain Fairy 5;fairy;502;189;OOT_FAIRY_HYRULE;All;0
+0x52000;FAIRY_FOUNTAIN;Fairy 6;OOT Hyrule Field Fairy Fountain Fairy 6;fairy;466;189;OOT_FAIRY_HYRULE;All;0
+0x62000;FAIRY_FOUNTAIN;Fairy 7;OOT Hyrule Field Fairy Fountain Fairy 7;fairy;491;176;OOT_FAIRY_HYRULE;All;0
+0x72000;FAIRY_FOUNTAIN;Fairy 8;OOT Hyrule Field Fairy Fountain Fairy 8;fairy;474;176;OOT_FAIRY_HYRULE;All;0
+0x02400;FAIRY_FOUNTAIN;Fairy 1;OOT Gerudo Fortress Fairy Fountain Fairy 1;fairy;484;209;OOT_FAIRY_GERUDO_FORTRESS;All;0
+0x12400;FAIRY_FOUNTAIN;Fairy 2;OOT Gerudo Fortress Fairy Fountain Fairy 2;fairy;499;204;OOT_FAIRY_GERUDO_FORTRESS;All;0
+0x22400;FAIRY_FOUNTAIN;Fairy 3;OOT Gerudo Fortress Fairy Fountain Fairy 3;fairy;469;203;OOT_FAIRY_GERUDO_FORTRESS;All;0
+0x32400;FAIRY_FOUNTAIN;Fairy 4;OOT Gerudo Fortress Fairy Fountain Fairy 4;fairy;484;191;OOT_FAIRY_GERUDO_FORTRESS;All;0
+0x42400;FAIRY_FOUNTAIN;Fairy 5;OOT Gerudo Fortress Fairy Fountain Fairy 5;fairy;502;189;OOT_FAIRY_GERUDO_FORTRESS;All;0
+0x52400;FAIRY_FOUNTAIN;Fairy 6;OOT Gerudo Fortress Fairy Fountain Fairy 6;fairy;466;189;OOT_FAIRY_GERUDO_FORTRESS;All;0
+0x62400;FAIRY_FOUNTAIN;Fairy 7;OOT Gerudo Fortress Fairy Fountain Fairy 7;fairy;491;176;OOT_FAIRY_GERUDO_FORTRESS;All;0
+0x72400;FAIRY_FOUNTAIN;Fairy 8;OOT Gerudo Fortress Fairy Fountain Fairy 8;fairy;474;176;OOT_FAIRY_GERUDO_FORTRESS;All;0
 FISH_CHILD;FISHING_POND;Heart Piece;OOT Fishing Pond Child;npc;0;0;FISHING_POND;Child;0
 FISH_ADULT;FISHING_POND;Golden Scale;OOT Fishing Pond Adult;npc;0;0;FISHING_POND;Adult;0
 0x00;FISHING_POND;Child - Fish 1;OOT Fishing Pond Child Fish 1;fish;0;0;FISHING_POND;Child;0
@@ -717,176 +717,176 @@ MASK_SELL_SPOOKY;GRAVEYARD;Spooky Mask;OOT Graveyard Sell Spooky Mask;npc;0;0;GR
 0x90110;GRAVEYARD;Grass 10;OOT Graveyard Grass 10;grass;0;0;GRAVEYARD;All;0
 0xa0110;GRAVEYARD;Grass 11;OOT Graveyard Grass 11;grass;0;0;GRAVEYARD;All;0
 0xb0110;GRAVEYARD;Grass 12;OOT Graveyard Grass 12;grass;0;0;GRAVEYARD;All;0
-FAIRY_SPELL_FIRE;GREAT_FAIRY_FOUNTAIN_SPELLS;Din's Fire;OOT Great Fairy Din's Fire;npc;0;0;OOT_GREAT_FAIRY_DIN;All;0
-FAIRY_SPELL_WIND;GREAT_FAIRY_FOUNTAIN_SPELLS;Farore's Wind;OOT Great Fairy Farore's Wind;npc;0;0;OOT_GREAT_FAIRY_FARORE;All;0
-FAIRY_SPELL_LOVE;GREAT_FAIRY_FOUNTAIN_SPELLS;Nayru's Love;OOT Great Fairy Nayru's Love;npc;0;0;OOT_GREAT_FAIRY_NAYRU;All;0
-FAIRY_MAGIC_UPGRADE;GREAT_FAIRY_FOUNTAIN_UPGRADES;Magic Upgrade;OOT Great Fairy Magic Upgrade;npc;0;0;OOT_GREAT_FAIRY_MAGIC;All;0
-FAIRY_MAGIC_UPGRADE2;GREAT_FAIRY_FOUNTAIN_UPGRADES;Large Magic Upgrade;OOT Great Fairy Magic Upgrade 2;npc;0;0;OOT_GREAT_FAIRY_MAGIC2;All;0
-FAIRY_DEFENSE_UPGRADE;GREAT_FAIRY_FOUNTAIN_UPGRADES;Double Defense Upgrade;OOT Great Fairy Defense Upgrade;npc;0;0;OOT_GREAT_FAIRY_DEFENSE;All;0
-0x0c;GROTTOS;Chest;OOT Kokiri Forest Storms Grotto;chest;0;0;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
-0x02c02;GROTTOS;Grass 1;OOT Kokiri Forest Storms Grotto Grass 1;grass;0;0;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
-0x02c03;GROTTOS;Grass 2;OOT Kokiri Forest Storms Grotto Grass 2;grass;0;0;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
-0x02c04;GROTTOS;Grass 3;OOT Kokiri Forest Storms Grotto Grass 3;grass;0;0;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
-0x02c05;GROTTOS;Grass 4;OOT Kokiri Forest Storms Grotto Grass 4;grass;0;0;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
-0x02c07;GROTTOS;Hive 1;OOT Kokiri Forest Storms Grotto Hive 1;hive;0;0;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
-0x02c08;GROTTOS;Hive 2;OOT Kokiri Forest Storms Grotto Hive 2;hive;0;0;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
-0x02c06;GROTTOS;Butterfly 1;OOT Kokiri Forest Storms Grotto Butterfly 1;butterfly;0;0;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
-0x12c06;GROTTOS;Butterfly 2;OOT Kokiri Forest Storms Grotto Butterfly 2;butterfly;0;0;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
-0x22c06;GROTTOS;Butterfly 3;OOT Kokiri Forest Storms Grotto Butterfly 3;butterfly;0;0;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
-0x03;GROTTOS;Deku Nuts Upgrade;OOT Lost Woods Grotto Scrub Nuts Upgrade;scrub;0;0;OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;All;0
-0x04;GROTTOS;Back;OOT Lost Woods Grotto Scrub Back;scrub;0;0;OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;All;0
-0x00600;GROTTOS;Big Fairy;OOT Lost Woods Grotto Scrub Big Fairy;fairy_spot;0;0;OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;All;0
-0x00603;GROTTOS;Hive;OOT Lost Woods Grotto Scrub Hive;hive;0;0;OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;All;0
-0x14;GROTTOS;Chest;OOT Lost Woods Grotto Generic;chest;0;0;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
-0x03402;GROTTOS;Grass 1;OOT Lost Woods Grotto Generic Grass 1;grass;0;0;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
-0x03403;GROTTOS;Grass 2;OOT Lost Woods Grotto Generic Grass 2;grass;0;0;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
-0x03404;GROTTOS;Grass 3;OOT Lost Woods Grotto Generic Grass 3;grass;0;0;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
-0x03405;GROTTOS;Grass 4;OOT Lost Woods Grotto Generic Grass 4;grass;0;0;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
-0x03407;GROTTOS;Hive 1;OOT Lost Woods Grotto Generic Hive 1;hive;0;0;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
-0x03408;GROTTOS;Hive 2;OOT Lost Woods Grotto Generic Hive 2;hive;0;0;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
-0x03406;GROTTOS;Butterfly 1;OOT Lost Woods Grotto Generic Butterfly 1;butterfly;0;0;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
-0x13406;GROTTOS;Butterfly 2;OOT Lost Woods Grotto Generic Butterfly 2;butterfly;0;0;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
-0x23406;GROTTOS;Butterfly 3;OOT Lost Woods Grotto Generic Butterfly 3;butterfly;0;0;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
-THEATER_STICKS;GROTTOS;Deku Sticks Upgrade;OOT Deku Theater Sticks Upgrade;npc;0;0;OOT_GROTTO_LOST_WOODS_THEATER;All;0
-THEATER_NUTS;GROTTOS;Deku Nuts Upgrade;OOT Deku Theater Nuts Upgrade;npc;0;0;OOT_GROTTO_LOST_WOODS_THEATER;All;0
-0x11;GROTTOS;Chest;OOT Sacred Meadow Grotto;chest;0;0;OOT_GROTTO_SACRED_MEADOW_WOLFOS;All;0
-0x05;GROTTOS;Front;OOT Sacred Meadow Storms Grotto Front Scrub;scrub;0;0;OOT_GROTTO_SACRED_MEADOW_STORMS;All;0
-0x06;GROTTOS;Back;OOT Sacred Meadow Storms Grotto Back Scrub;scrub;0;0;OOT_GROTTO_SACRED_MEADOW_STORMS;All;0
-0x02102;GROTTOS;Hive;OOT Sacred Meadow Storms Grotto Hive;hive;0;0;OOT_GROTTO_SACRED_MEADOW_STORMS;All;0
-0x0a;GROTTOS;Redead;OOT Kakariko Grotto Front;chest;0;0;OOT_GROTTO_KAKARIKO_REDEAD;All;0
-0x08;GROTTOS;Chest;OOT Kakariko Grotto Back;chest;0;0;OOT_GROTTO_KAKARIKO_OPEN;All;0
-0x02802;GROTTOS;Grass 1;OOT Kakariko Grotto Back Grass 1;grass;0;0;OOT_GROTTO_KAKARIKO_OPEN;All;0
-0x02803;GROTTOS;Grass 2;OOT Kakariko Grotto Back Grass 2;grass;0;0;OOT_GROTTO_KAKARIKO_OPEN;All;0
-0x02804;GROTTOS;Grass 3;OOT Kakariko Grotto Back Grass 3;grass;0;0;OOT_GROTTO_KAKARIKO_OPEN;All;0
-0x02805;GROTTOS;Grass 4;OOT Kakariko Grotto Back Grass 4;grass;0;0;OOT_GROTTO_KAKARIKO_OPEN;All;0
-0x02807;GROTTOS;Hive 1;OOT Kakariko Grotto Back Hive 1;hive;0;0;OOT_GROTTO_KAKARIKO_OPEN;All;0
-0x02808;GROTTOS;Hive 2;OOT Kakariko Grotto Back Hive 2;hive;0;0;OOT_GROTTO_KAKARIKO_OPEN;All;0
-0x02806;GROTTOS;Butterfly 1;OOT Kakariko Grotto Butterfly 1;butterfly;0;0;OOT_GROTTO_KAKARIKO_OPEN;All;0
-0x12806;GROTTOS;Butterfly 2;OOT Kakariko Grotto Butterfly 2;butterfly;0;0;OOT_GROTTO_KAKARIKO_OPEN;All;0
-0x22806;GROTTOS;Butterfly 3;OOT Kakariko Grotto Butterfly 3;butterfly;0;0;OOT_GROTTO_KAKARIKO_OPEN;All;0
-0x17;GROTTOS;Chest;OOT Death Mountain Trail Grotto;chest;0;0;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
-0x03702;GROTTOS;Grass 1;OOT Death Mountain Trail Grotto Grass 1;grass;0;0;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
-0x03703;GROTTOS;Grass 2;OOT Death Mountain Trail Grotto Grass 2;grass;0;0;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
-0x03704;GROTTOS;Grass 3;OOT Death Mountain Trail Grotto Grass 3;grass;0;0;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
-0x03705;GROTTOS;Grass 4;OOT Death Mountain Trail Grotto Grass 4;grass;0;0;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
-0x03707;GROTTOS;Hive 1;OOT Death Mountain Trail Grotto Hive 1;hive;0;0;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
-0x03708;GROTTOS;Hive 2;OOT Death Mountain Trail Grotto Hive 2;hive;0;0;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
-0x03706;GROTTOS;Butterfly 1;OOT Death Mountain Trail Grotto Butterfly 1;butterfly;0;0;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
-0x13706;GROTTOS;Butterfly 2;OOT Death Mountain Trail Grotto Butterfly 2;butterfly;0;0;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
-0x23706;GROTTOS;Butterfly 3;OOT Death Mountain Trail Grotto Butterfly 3;butterfly;0;0;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
-0x00301;GROTTOS;Grass 1;OOT Death Mountain Trail Cow Grotto Grass 1;grass;0;0;OOT_GROTTO_DEATH_TRIAL_COW;All;0
-0x00302;GROTTOS;Grass 2;OOT Death Mountain Trail Cow Grotto Grass 2;grass;0;0;OOT_GROTTO_DEATH_TRIAL_COW;All;0
-0x00305;GROTTOS;Rupee 1;OOT Death Mountain Trail Cow Grotto Rupee 1;rupee;0;0;OOT_GROTTO_DEATH_TRIAL_COW;All;0
-0x10305;GROTTOS;Rupee 2;OOT Death Mountain Trail Cow Grotto Rupee 2;rupee;0;0;OOT_GROTTO_DEATH_TRIAL_COW;All;0
-0x20305;GROTTOS;Rupee 3;OOT Death Mountain Trail Cow Grotto Rupee 3;rupee;0;0;OOT_GROTTO_DEATH_TRIAL_COW;All;0
-0x30305;GROTTOS;Rupee 4;OOT Death Mountain Trail Cow Grotto Rupee 4;rupee;0;0;OOT_GROTTO_DEATH_TRIAL_COW;All;0
-0x40305;GROTTOS;Rupee 5;OOT Death Mountain Trail Cow Grotto Rupee 5;rupee;0;0;OOT_GROTTO_DEATH_TRIAL_COW;All;0
-0x50305;GROTTOS;Rupee 6;OOT Death Mountain Trail Cow Grotto Rupee 6;rupee;0;0;OOT_GROTTO_DEATH_TRIAL_COW;All;0
-0x60305;GROTTOS;Rupee 7;OOT Death Mountain Trail Cow Grotto Rupee 7;rupee;0;0;OOT_GROTTO_DEATH_TRIAL_COW;All;0
-0x00306;GROTTOS;Heart 1;OOT Death Mountain Trail Cow Grotto Heart 1;heart;0;0;OOT_GROTTO_DEATH_TRIAL_COW;All;0
-0x00307;GROTTOS;Heart 2;OOT Death Mountain Trail Cow Grotto Heart 2;heart;0;0;OOT_GROTTO_DEATH_TRIAL_COW;All;0
-0x00308;GROTTOS;Heart 3;OOT Death Mountain Trail Cow Grotto Heart 3;heart;0;0;OOT_GROTTO_DEATH_TRIAL_COW;All;0
-0x00309;GROTTOS;Heart 4;OOT Death Mountain Trail Cow Grotto Heart 4;heart;0;0;OOT_GROTTO_DEATH_TRIAL_COW;All;0
-0x00304;GROTTOS;Big Fairy;OOT Death Mountain Trail Cow Grotto Big Fairy;fairy_spot;0;0;OOT_GROTTO_DEATH_TRIAL_COW;All;0
-0x00303;GROTTOS;Hive;OOT Death Mountain Trail Cow Grotto Hive;hive;0;0;OOT_GROTTO_DEATH_TRIAL_COW;All;0
-0x0b;GROTTOS;Left;OOT Goron City Grotto Left Scrub;scrub;0;0;OOT_GROTTO_GORON_CITY_SCRUBS;All;0
-0x0c;GROTTOS;Center;OOT Goron City Grotto Center Scrub;scrub;0;0;OOT_GROTTO_GORON_CITY_SCRUBS;All;0
-0x0d;GROTTOS;Right;OOT Goron City Grotto Right Scrub;scrub;0;0;OOT_GROTTO_GORON_CITY_SCRUBS;All;0
-0x02a03;GROTTOS;Hive;OOT Goron City Grotto Hive;hive;0;0;OOT_GROTTO_GORON_CITY_SCRUBS;All;0
-0x1a;GROTTOS;Chest;OOT Death Mountain Crater Grotto;chest;0;0;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
-0x03a02;GROTTOS;Grass 1;OOT Death Mountain Crater Grotto Grass 1;grass;0;0;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
-0x03a03;GROTTOS;Grass 2;OOT Death Mountain Crater Grotto Grass 2;grass;0;0;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
-0x03a04;GROTTOS;Grass 3;OOT Death Mountain Crater Grotto Grass 3;grass;0;0;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
-0x03a05;GROTTOS;Grass 4;OOT Death Mountain Crater Grotto Grass 4;grass;0;0;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
-0x03a07;GROTTOS;Hive 1;OOT Death Mountain Crater Grotto Hive 1;hive;0;0;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
-0x03a08;GROTTOS;Hive 2;OOT Death Mountain Crater Grotto Hive 2;hive;0;0;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
-0x03a06;GROTTOS;Butterfly 1;OOT Death Mountain Crater Grotto Butterfly 1;butterfly;0;0;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
-0x13a06;GROTTOS;Butterfly 2;OOT Death Mountain Crater Grotto Butterfly 2;butterfly;0;0;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
-0x23a06;GROTTOS;Butterfly 3;OOT Death Mountain Crater Grotto Butterfly 3;butterfly;0;0;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
-0x0f;GROTTOS;Left;OOT Death Mountain Crater Grotto Left Scrub;scrub;0;0;OOT_GROTTO_DEATH_CRATER_SCRUBS;All;0
-0x10;GROTTOS;Center;OOT Death Mountain Crater Grotto Center Scrub;scrub;0;0;OOT_GROTTO_DEATH_CRATER_SCRUBS;All;0
-0x11;GROTTOS;Right;OOT Death Mountain Crater Grotto Right Scrub;scrub;0;0;OOT_GROTTO_DEATH_CRATER_SCRUBS;All;0
-0x02b03;GROTTOS;Hive;OOT Death Mountain Crater Scrub Grotto Hive;hive;0;0;OOT_GROTTO_DEATH_CRATER_SCRUBS;All;0
-0x09;GROTTOS;Chest;OOT Zora River Grotto;chest;0;0;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
-0x02902;GROTTOS;Grass 1;OOT Zora River Grotto Grass 1;grass;0;0;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
-0x02903;GROTTOS;Grass 2;OOT Zora River Grotto Grass 2;grass;0;0;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
-0x02904;GROTTOS;Grass 3;OOT Zora River Grotto Grass 3;grass;0;0;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
-0x02905;GROTTOS;Grass 4;OOT Zora River Grotto Grass 4;grass;0;0;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
-0x02907;GROTTOS;Hive 1;OOT Zora River Grotto Hive 1;hive;0;0;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
-0x02908;GROTTOS;Hive 2;OOT Zora River Grotto Hive 2;hive;0;0;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
-0x02906;GROTTOS;Butterfly 1;OOT Zora River Grotto Butterfly 1;butterfly;0;0;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
-0x12906;GROTTOS;Butterfly 2;OOT Zora River Grotto Butterfly 2;butterfly;0;0;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
-0x22906;GROTTOS;Butterfly 3;OOT Zora River Grotto Butterfly 3;butterfly;0;0;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
-0x12;GROTTOS;Scrub - Front;OOT Zora River Storms Grotto Front Scrub;scrub;0;0;OOT_GROTTO_ZORA_RIVER_STORMS;All;0
-0x13;GROTTOS;Scrub - Back;OOT Zora River Storms Grotto Back Scrub;scrub;0;0;OOT_GROTTO_ZORA_RIVER_STORMS;All;0
-0x02402;GROTTOS;Hive;OOT Zora River Storms Grotto Hive;hive;0;0;OOT_GROTTO_ZORA_RIVER_STORMS;All;0
-0x14;GROTTOS;Left;OOT Lake Hylia Grotto Left Scrub;scrub;0;0;OOT_GROTTO_LAKE_HYLIA_SCRUBS;All;0
-0x15;GROTTOS;Center;OOT Lake Hylia Grotto Center Scrub;scrub;0;0;OOT_GROTTO_LAKE_HYLIA_SCRUBS;All;0
-0x16;GROTTOS;Right;OOT Lake Hylia Grotto Right Scrub;scrub;0;0;OOT_GROTTO_LAKE_HYLIA_SCRUBS;All;0
-0x02d03;GROTTOS;Hive;OOT Lake Hylia Grotto Hive;hive;0;0;OOT_GROTTO_LAKE_HYLIA_SCRUBS;All;0
-0x08;GROTTOS;Left;OOT Lon Lon Ranch Grotto Left Scrub;scrub;0;0;OOT_GROTTO_LON_LON_SCRUBS;All;0
-0x09;GROTTOS;Center;OOT Lon Lon Ranch Grotto Center Scrub;scrub;0;0;OOT_GROTTO_LON_LON_SCRUBS;All;0
-0x0a;GROTTOS;Right;OOT Lon Lon Ranch Grotto Right Scrub;scrub;0;0;OOT_GROTTO_LON_LON_SCRUBS;All;0
-0x02703;GROTTOS;Hive;OOT Lon Lon Ranch Grotto Hive;hive;0;0;OOT_GROTTO_LON_LON_SCRUBS;All;0
-0x07;GROTTOS;Heart Piece;OOT Hyrule Field Grotto Scrub HP;scrub;0;0;OOT_GROTTO_HYRULE_SCRUBS;All;0
-0x00102;GROTTOS;Big Fairy;OOT Hyrule Field Grotto Scrub Big Fairy;fairy_spot;0;0;OOT_GROTTO_HYRULE_SCRUBS;All;0
-0x00101;GROTTOS;Hive;OOT Hyrule Field Grotto Scrub Hive;hive;0;0;OOT_GROTTO_HYRULE_SCRUBS;All;0
-0x02;GROTTOS;Chest;OOT Hyrule Field Grotto Southeast;chest;0;0;OOT_GROTTO_HYRULE_SE;All;0
-0x02202;GROTTOS;Grass 1;OOT Hyrule Field Grotto Southeast Grass 1;grass;0;0;OOT_GROTTO_HYRULE_SE;All;0
-0x02203;GROTTOS;Grass 2;OOT Hyrule Field Grotto Southeast Grass 2;grass;0;0;OOT_GROTTO_HYRULE_SE;All;0
-0x02204;GROTTOS;Grass 3;OOT Hyrule Field Grotto Southeast Grass 3;grass;0;0;OOT_GROTTO_HYRULE_SE;All;0
-0x02205;GROTTOS;Grass 4;OOT Hyrule Field Grotto Southeast Grass 4;grass;0;0;OOT_GROTTO_HYRULE_SE;All;0
-0x02207;GROTTOS;Hive 1;OOT Hyrule Field Grotto Southeast Hive 1;hive;0;0;OOT_GROTTO_HYRULE_SE;All;0
-0x02208;GROTTOS;Hive 2;OOT Hyrule Field Grotto Southeast Hive 2;hive;0;0;OOT_GROTTO_HYRULE_SE;All;0
-0x02206;GROTTOS;Butterfly 1;OOT Hyrule Field Grotto Southeast Butterfly 1;butterfly;0;0;OOT_GROTTO_HYRULE_SE;All;0
-0x12206;GROTTOS;Butterfly 2;OOT Hyrule Field Grotto Southeast Butterfly 2;butterfly;0;0;OOT_GROTTO_HYRULE_SE;All;0
-0x22206;GROTTOS;Butterfly 3;OOT Hyrule Field Grotto Southeast Butterfly 3;butterfly;0;0;OOT_GROTTO_HYRULE_SE;All;0
-0x03;GROTTOS;Chest;OOT Hyrule Field Grotto Open;chest;0;0;OOT_GROTTO_HYRULE_OPEN;All;0
-0x02302;GROTTOS;Grass 1;OOT Hyrule Field Grotto Open Grass 1;grass;0;0;OOT_GROTTO_HYRULE_OPEN;All;0
-0x02303;GROTTOS;Grass 2;OOT Hyrule Field Grotto Open Grass 2;grass;0;0;OOT_GROTTO_HYRULE_OPEN;All;0
-0x02304;GROTTOS;Grass 3;OOT Hyrule Field Grotto Open Grass 3;grass;0;0;OOT_GROTTO_HYRULE_OPEN;All;0
-0x02305;GROTTOS;Grass 4;OOT Hyrule Field Grotto Open Grass 4;grass;0;0;OOT_GROTTO_HYRULE_OPEN;All;0
-0x02307;GROTTOS;Hive 1;OOT Hyrule Field Grotto Open Hive 1;hive;0;0;OOT_GROTTO_HYRULE_OPEN;All;0
-0x02308;GROTTOS;Hive 2;OOT Hyrule Field Grotto Open Hive 2;hive;0;0;OOT_GROTTO_HYRULE_OPEN;All;0
-0x02306;GROTTOS;Butterfly 1;OOT Hyrule Field Grotto Open Butterfly 1;butterfly;0;0;OOT_GROTTO_HYRULE_OPEN;All;0
-0x12306;GROTTOS;Butterfly 2;OOT Hyrule Field Grotto Open Butterfly 2;butterfly;0;0;OOT_GROTTO_HYRULE_OPEN;All;0
-0x22306;GROTTOS;Butterfly 3;OOT Hyrule Field Grotto Open Butterfly 3;butterfly;0;0;OOT_GROTTO_HYRULE_OPEN;All;0
-0x00;GROTTOS;Chest;OOT Hyrule Field Grotto Market;chest;0;0;OOT_GROTTO_HYRULE_MARKET;All;0
-0x02002;GROTTOS;Grass 1;OOT Hyrule Field Grotto Market Grass 1;grass;0;0;OOT_GROTTO_HYRULE_MARKET;All;0
-0x02003;GROTTOS;Grass 2;OOT Hyrule Field Grotto Market Grass 2;grass;0;0;OOT_GROTTO_HYRULE_MARKET;All;0
-0x02004;GROTTOS;Grass 3;OOT Hyrule Field Grotto Market Grass 3;grass;0;0;OOT_GROTTO_HYRULE_MARKET;All;0
-0x02005;GROTTOS;Grass 4;OOT Hyrule Field Grotto Market Grass 4;grass;0;0;OOT_GROTTO_HYRULE_MARKET;All;0
-0x02007;GROTTOS;Hive 1;OOT Hyrule Field Grotto Market Hive 1;hive;0;0;OOT_GROTTO_HYRULE_MARKET;All;0
-0x02008;GROTTOS;Hive 2;OOT Hyrule Field Grotto Market Hive 2;hive;0;0;OOT_GROTTO_HYRULE_MARKET;All;0
-0x02006;GROTTOS;Butterfly 1;OOT Hyrule Field Grotto Market Butterfly 1;butterfly;0;0;OOT_GROTTO_HYRULE_MARKET;All;0
-0x12006;GROTTOS;Butterfly 2;OOT Hyrule Field Grotto Market Butterfly 2;butterfly;0;0;OOT_GROTTO_HYRULE_MARKET;All;0
-0x22006;GROTTOS;Butterfly 3;OOT Hyrule Field Grotto Market Butterfly 3;butterfly;0;0;OOT_GROTTO_HYRULE_MARKET;All;0
-0x01;GROTTOS;Heart Piece;OOT Hyrule Field Grotto Tektite HP;collectible;0;0;OOT_GROTTO_HYRULE_TEKTITE;All;0
-0x59;GROTTOS;Web;OOT Hyrule Field Grotto Near Kakariko GS;gs;0;0;OOT_GROTTO_HYRULE_KAKARIKO;All;0
-0x58;GROTTOS;Web;OOT Hyrule Field Grotto Near Gerudo GS;gs;0;0;OOT_GROTTO_HYRULE_GERUDO;All;0
-0x00402;GROTTOS;Grass 1;OOT Hyrule Field Grotto Near Gerudo Grass 1;grass;0;0;OOT_GROTTO_HYRULE_GERUDO;All;0
-0x00403;GROTTOS;Grass 2;OOT Hyrule Field Grotto Near Gerudo Grass 2;grass;0;0;OOT_GROTTO_HYRULE_GERUDO;All;0
-0x0405;GROTTOS;Pot 1;OOT Hyrule Field Cow Grotto Pot 1;pot;0;0;OOT_GROTTO_HYRULE_GERUDO;All;0
-0x0407;GROTTOS;Pot 2;OOT Hyrule Field Cow Grotto Pot 2;pot;0;0;OOT_GROTTO_HYRULE_GERUDO;All;0
-0x79;GROTTOS;Web;OOT Hyrule Castle GS Grotto;gs;0;0;OOT_GROTTO_CASTLE_STORMS;All;0
-0x0806;GROTTOS;Pot 1;OOT Hyrule Castle Grotto Pot 1;pot;0;0;OOT_GROTTO_CASTLE_STORMS;All;0
-0x0807;GROTTOS;Pot 2;OOT Hyrule Castle Grotto Pot 2;pot;0;0;OOT_GROTTO_CASTLE_STORMS;All;0
-0x0809;GROTTOS;Pot 3;OOT Hyrule Castle Grotto Pot 3;pot;0;0;OOT_GROTTO_CASTLE_STORMS;All;0
-0x080b;GROTTOS;Pot 4;OOT Hyrule Castle Grotto Pot 4;pot;0;0;OOT_GROTTO_CASTLE_STORMS;All;0
-0x17;GROTTOS;Front;OOT Gerudo Valley Grotto Front Scrub;scrub;0;0;OOT_GROTTO_VALLEY_STORMS;All;0
-0x18;GROTTOS;Back;OOT Gerudo Valley Grotto Back Scrub;scrub;0;0;OOT_GROTTO_VALLEY_STORMS;All;0
-0x02502;GROTTOS;Hive;OOT Gerudo Valley Grotto Hive;hive;0;0;OOT_GROTTO_VALLEY_STORMS;All;0
-0x00501;GROTTOS;Rupee 1;OOT Gerudo Valley Octorok Grotto Rupee 1;rupee;0;0;OOT_GROTTO_VALLEY_OCTOROK;All;0
-0x00502;GROTTOS;Rupee 2;OOT Gerudo Valley Octorok Grotto Rupee 2;rupee;0;0;OOT_GROTTO_VALLEY_OCTOROK;All;0
-0x00503;GROTTOS;Rupee 3;OOT Gerudo Valley Octorok Grotto Rupee 3;rupee;0;0;OOT_GROTTO_VALLEY_OCTOROK;All;0
-0x00504;GROTTOS;Rupee 4;OOT Gerudo Valley Octorok Grotto Rupee 4;rupee;0;0;OOT_GROTTO_VALLEY_OCTOROK;All;0
-0x00505;GROTTOS;Rupee 5;OOT Gerudo Valley Octorok Grotto Rupee 5;rupee;0;0;OOT_GROTTO_VALLEY_OCTOROK;All;0
-0x00506;GROTTOS;Rupee 6;OOT Gerudo Valley Octorok Grotto Rupee 6;rupee;0;0;OOT_GROTTO_VALLEY_OCTOROK;All;0
-0x00507;GROTTOS;Rupee 7;OOT Gerudo Valley Octorok Grotto Rupee 7;rupee;0;0;OOT_GROTTO_VALLEY_OCTOROK;All;0
-0x00508;GROTTOS;Rupee 8;OOT Gerudo Valley Octorok Grotto Rupee 8;rupee;0;0;OOT_GROTTO_VALLEY_OCTOROK;All;0
-0x19;GROTTOS;Front;OOT Desert Colossus Grotto Front Scrub;scrub;0;0;OOT_GROTTO_DESERT_SCRUBS;All;0
-0x1a;GROTTOS;Back;OOT Desert Colossus Grotto Back Scrub;scrub;0;0;OOT_GROTTO_DESERT_SCRUBS;All;0
-0x02602;GROTTOS;Hive;OOT Desert Colossus Grotto Hive;hive;0;0;OOT_GROTTO_DESERT_SCRUBS;All;0
+FAIRY_SPELL_FIRE;GREAT_FAIRY_FOUNTAIN_SPELLS;Din's Fire;OOT Great Fairy Din's Fire;npc;497;351;OOT_GREAT_FAIRY_CASTLE;Child;0
+FAIRY_SPELL_WIND;GREAT_FAIRY_FOUNTAIN_SPELLS;Farore's Wind;OOT Great Fairy Farore's Wind;npc;497;351;OOT_GREAT_FAIRY_FARORE;All;0
+FAIRY_SPELL_LOVE;GREAT_FAIRY_FOUNTAIN_SPELLS;Nayru's Love;OOT Great Fairy Nayru's Love;npc;497;351;OOT_GREAT_FAIRY_NAYRU;All;0
+FAIRY_MAGIC_UPGRADE;GREAT_FAIRY_FOUNTAIN_UPGRADES;Magic Upgrade;OOT Great Fairy Magic Upgrade;npc;497;351;OOT_GREAT_FAIRY_MAGIC;All;0
+FAIRY_MAGIC_UPGRADE2;GREAT_FAIRY_FOUNTAIN_UPGRADES;Large Magic Upgrade;OOT Great Fairy Magic Upgrade 2;npc;497;351;OOT_GREAT_FAIRY_MAGIC2;All;0
+FAIRY_DEFENSE_UPGRADE;GREAT_FAIRY_FOUNTAIN_UPGRADES;Double Defense Upgrade;OOT Great Fairy Defense Upgrade;npc;497;351;OOT_GREAT_FAIRY_CASTLE;Adult;0
+0x0c;GROTTOS;Chest;OOT Kokiri Forest Storms Grotto;chest;684;177;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
+0x02c02;GROTTOS;Grass 1;OOT Kokiri Forest Storms Grotto Grass 1;grass;660;320;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
+0x02c03;GROTTOS;Grass 2;OOT Kokiri Forest Storms Grotto Grass 2;grass;717;195;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
+0x02c04;GROTTOS;Grass 3;OOT Kokiri Forest Storms Grotto Grass 3;grass;658;192;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
+0x02c05;GROTTOS;Grass 4;OOT Kokiri Forest Storms Grotto Grass 4;grass;669;158;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
+0x02c07;GROTTOS;Hive 1;OOT Kokiri Forest Storms Grotto Hive 1;hive;551;157;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
+0x02c08;GROTTOS;Hive 2;OOT Kokiri Forest Storms Grotto Hive 2;hive;741;104;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
+0x02c06;GROTTOS;Butterfly 1;OOT Kokiri Forest Storms Grotto Butterfly 1;butterfly;651;645;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
+0x12c06;GROTTOS;Butterfly 2;OOT Kokiri Forest Storms Grotto Butterfly 2;butterfly;617;632;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
+0x22c06;GROTTOS;Butterfly 3;OOT Kokiri Forest Storms Grotto Butterfly 3;butterfly;637;631;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
+0x03;GROTTOS;Deku Nuts Upgrade;OOT Lost Woods Grotto Scrub Nuts Upgrade;scrub;718;246;OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;All;0
+0x04;GROTTOS;Back;OOT Lost Woods Grotto Scrub Back;scrub;642;328;OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;All;0
+0x00600;GROTTOS;Big Fairy;OOT Lost Woods Grotto Scrub Big Fairy;fairy_spot;673;245;OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;All;0
+0x00603;GROTTOS;Hive;OOT Lost Woods Grotto Scrub Hive;hive;770;410;OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;All;0
+0x14;GROTTOS;Chest;OOT Lost Woods Grotto Generic;chest;684;177;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
+0x03402;GROTTOS;Grass 1;OOT Lost Woods Grotto Generic Grass 1;grass;660;320;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
+0x03403;GROTTOS;Grass 2;OOT Lost Woods Grotto Generic Grass 2;grass;717;195;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
+0x03404;GROTTOS;Grass 3;OOT Lost Woods Grotto Generic Grass 3;grass;658;192;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
+0x03405;GROTTOS;Grass 4;OOT Lost Woods Grotto Generic Grass 4;grass;669;158;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
+0x03407;GROTTOS;Hive 1;OOT Lost Woods Grotto Generic Hive 1;hive;551;157;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
+0x03408;GROTTOS;Hive 2;OOT Lost Woods Grotto Generic Hive 2;hive;741;104;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
+0x03406;GROTTOS;Butterfly 1;OOT Lost Woods Grotto Generic Butterfly 1;butterfly;651;645;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
+0x13406;GROTTOS;Butterfly 2;OOT Lost Woods Grotto Generic Butterfly 2;butterfly;617;632;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
+0x23406;GROTTOS;Butterfly 3;OOT Lost Woods Grotto Generic Butterfly 3;butterfly;637;631;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
+THEATER_STICKS;GROTTOS;Deku Sticks Upgrade;OOT Deku Theater Sticks Upgrade;npc;727;561;OOT_GROTTO_LOST_WOODS_THEATER;All;0
+THEATER_NUTS;GROTTOS;Deku Nuts Upgrade;OOT Deku Theater Nuts Upgrade;npc;691;561;OOT_GROTTO_LOST_WOODS_THEATER;All;0
+0x11;GROTTOS;Chest;OOT Sacred Meadow Grotto;chest;670;308;OOT_GROTTO_SACRED_MEADOW_WOLFOS;All;0
+0x05;GROTTOS;Front;OOT Sacred Meadow Storms Grotto Front Scrub;scrub;714;302;OOT_GROTTO_SACRED_MEADOW_STORMS;All;0
+0x06;GROTTOS;Back;OOT Sacred Meadow Storms Grotto Back Scrub;scrub;649;207;OOT_GROTTO_SACRED_MEADOW_STORMS;All;0
+0x02102;GROTTOS;Hive;OOT Sacred Meadow Storms Grotto Hive;hive;551;157;OOT_GROTTO_SACRED_MEADOW_STORMS;All;0
+0x0a;GROTTOS;Redead;OOT Kakariko Grotto Front;chest;691;284;OOT_GROTTO_KAKARIKO_REDEAD;All;0
+0x08;GROTTOS;Chest;OOT Kakariko Grotto Back;chest;684;177;OOT_GROTTO_KAKARIKO_OPEN;All;0
+0x02802;GROTTOS;Grass 1;OOT Kakariko Grotto Back Grass 1;grass;660;320;OOT_GROTTO_KAKARIKO_OPEN;All;0
+0x02803;GROTTOS;Grass 2;OOT Kakariko Grotto Back Grass 2;grass;717;195;OOT_GROTTO_KAKARIKO_OPEN;All;0
+0x02804;GROTTOS;Grass 3;OOT Kakariko Grotto Back Grass 3;grass;658;192;OOT_GROTTO_KAKARIKO_OPEN;All;0
+0x02805;GROTTOS;Grass 4;OOT Kakariko Grotto Back Grass 4;grass;669;158;OOT_GROTTO_KAKARIKO_OPEN;All;0
+0x02807;GROTTOS;Hive 1;OOT Kakariko Grotto Back Hive 1;hive;551;157;OOT_GROTTO_KAKARIKO_OPEN;All;0
+0x02808;GROTTOS;Hive 2;OOT Kakariko Grotto Back Hive 2;hive;741;104;OOT_GROTTO_KAKARIKO_OPEN;All;0
+0x02806;GROTTOS;Butterfly 1;OOT Kakariko Grotto Butterfly 1;butterfly;651;645;OOT_GROTTO_KAKARIKO_OPEN;All;0
+0x12806;GROTTOS;Butterfly 2;OOT Kakariko Grotto Butterfly 2;butterfly;617;632;OOT_GROTTO_KAKARIKO_OPEN;All;0
+0x22806;GROTTOS;Butterfly 3;OOT Kakariko Grotto Butterfly 3;butterfly;637;631;OOT_GROTTO_KAKARIKO_OPEN;All;0
+0x17;GROTTOS;Chest;OOT Death Mountain Trail Grotto;chest;684;177;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
+0x03702;GROTTOS;Grass 1;OOT Death Mountain Trail Grotto Grass 1;grass;660;320;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
+0x03703;GROTTOS;Grass 2;OOT Death Mountain Trail Grotto Grass 2;grass;717;195;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
+0x03704;GROTTOS;Grass 3;OOT Death Mountain Trail Grotto Grass 3;grass;658;192;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
+0x03705;GROTTOS;Grass 4;OOT Death Mountain Trail Grotto Grass 4;grass;669;158;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
+0x03707;GROTTOS;Hive 1;OOT Death Mountain Trail Grotto Hive 1;hive;551;157;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
+0x03708;GROTTOS;Hive 2;OOT Death Mountain Trail Grotto Hive 2;hive;741;104;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
+0x03706;GROTTOS;Butterfly 1;OOT Death Mountain Trail Grotto Butterfly 1;butterfly;651;645;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
+0x13706;GROTTOS;Butterfly 2;OOT Death Mountain Trail Grotto Butterfly 2;butterfly;617;632;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
+0x23706;GROTTOS;Butterfly 3;OOT Death Mountain Trail Grotto Butterfly 3;butterfly;637;631;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
+0x00301;GROTTOS;Grass 1;OOT Death Mountain Trail Cow Grotto Grass 1;grass;717;250;OOT_GROTTO_DEATH_TRIAL_COW;All;0
+0x00302;GROTTOS;Grass 2;OOT Death Mountain Trail Cow Grotto Grass 2;grass;752;220;OOT_GROTTO_DEATH_TRIAL_COW;All;0
+0x00305;GROTTOS;Rupee 1;OOT Death Mountain Trail Cow Grotto Rupee 1;rupee;697;466;OOT_GROTTO_DEATH_TRIAL_COW;All;0
+0x10305;GROTTOS;Rupee 2;OOT Death Mountain Trail Cow Grotto Rupee 2;rupee;721;452;OOT_GROTTO_DEATH_TRIAL_COW;All;0
+0x20305;GROTTOS;Rupee 3;OOT Death Mountain Trail Cow Grotto Rupee 3;rupee;721;424;OOT_GROTTO_DEATH_TRIAL_COW;All;0
+0x30305;GROTTOS;Rupee 4;OOT Death Mountain Trail Cow Grotto Rupee 4;rupee;697;410;OOT_GROTTO_DEATH_TRIAL_COW;All;0
+0x40305;GROTTOS;Rupee 5;OOT Death Mountain Trail Cow Grotto Rupee 5;rupee;671;424;OOT_GROTTO_DEATH_TRIAL_COW;All;0
+0x50305;GROTTOS;Rupee 6;OOT Death Mountain Trail Cow Grotto Rupee 6;rupee;671;452;OOT_GROTTO_DEATH_TRIAL_COW;All;0
+0x60305;GROTTOS;Rupee 7;OOT Death Mountain Trail Cow Grotto Rupee 7;rupee;697;438;OOT_GROTTO_DEATH_TRIAL_COW;All;0
+0x00306;GROTTOS;Heart 1;OOT Death Mountain Trail Cow Grotto Heart 1;heart;613;238;OOT_GROTTO_DEATH_TRIAL_COW;All;0
+0x00307;GROTTOS;Heart 2;OOT Death Mountain Trail Cow Grotto Heart 2;heart;671;160;OOT_GROTTO_DEATH_TRIAL_COW;All;0
+0x00308;GROTTOS;Heart 3;OOT Death Mountain Trail Cow Grotto Heart 3;heart;723;161;OOT_GROTTO_DEATH_TRIAL_COW;All;0
+0x00309;GROTTOS;Heart 4;OOT Death Mountain Trail Cow Grotto Heart 4;heart;802;228;OOT_GROTTO_DEATH_TRIAL_COW;All;0
+0x00304;GROTTOS;Big Fairy;OOT Death Mountain Trail Cow Grotto Big Fairy;fairy_spot;753;308;OOT_GROTTO_DEATH_TRIAL_COW;All;0
+0x00303;GROTTOS;Hive;OOT Death Mountain Trail Cow Grotto Hive;hive;829;166;OOT_GROTTO_DEATH_TRIAL_COW;All;0
+0x0b;GROTTOS;Left;OOT Goron City Grotto Left Scrub;scrub;457;344;OOT_GROTTO_GORON_CITY_SCRUBS;All;0
+0x0c;GROTTOS;Center;OOT Goron City Grotto Center Scrub;scrub;691;124;OOT_GROTTO_GORON_CITY_SCRUBS;All;0
+0x0d;GROTTOS;Right;OOT Goron City Grotto Right Scrub;scrub;933;344;OOT_GROTTO_GORON_CITY_SCRUBS;All;0
+0x02a03;GROTTOS;Hive;OOT Goron City Grotto Hive;hive;982;210;OOT_GROTTO_GORON_CITY_SCRUBS;All;0
+0x1a;GROTTOS;Chest;OOT Death Mountain Crater Grotto;chest;684;177;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
+0x03a02;GROTTOS;Grass 1;OOT Death Mountain Crater Grotto Grass 1;grass;660;320;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
+0x03a03;GROTTOS;Grass 2;OOT Death Mountain Crater Grotto Grass 2;grass;717;195;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
+0x03a04;GROTTOS;Grass 3;OOT Death Mountain Crater Grotto Grass 3;grass;658;192;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
+0x03a05;GROTTOS;Grass 4;OOT Death Mountain Crater Grotto Grass 4;grass;669;158;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
+0x03a07;GROTTOS;Hive 1;OOT Death Mountain Crater Grotto Hive 1;hive;551;157;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
+0x03a08;GROTTOS;Hive 2;OOT Death Mountain Crater Grotto Hive 2;hive;741;104;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
+0x03a06;GROTTOS;Butterfly 1;OOT Death Mountain Crater Grotto Butterfly 1;butterfly;651;645;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
+0x13a06;GROTTOS;Butterfly 2;OOT Death Mountain Crater Grotto Butterfly 2;butterfly;617;632;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
+0x23a06;GROTTOS;Butterfly 3;OOT Death Mountain Crater Grotto Butterfly 3;butterfly;637;631;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
+0x0f;GROTTOS;Left;OOT Death Mountain Crater Grotto Left Scrub;scrub;457;344;OOT_GROTTO_DEATH_CRATER_SCRUBS;All;0
+0x10;GROTTOS;Center;OOT Death Mountain Crater Grotto Center Scrub;scrub;691;124;OOT_GROTTO_DEATH_CRATER_SCRUBS;All;0
+0x11;GROTTOS;Right;OOT Death Mountain Crater Grotto Right Scrub;scrub;933;344;OOT_GROTTO_DEATH_CRATER_SCRUBS;All;0
+0x02b03;GROTTOS;Hive;OOT Death Mountain Crater Scrub Grotto Hive;hive;982;210;OOT_GROTTO_DEATH_CRATER_SCRUBS;All;0
+0x09;GROTTOS;Chest;OOT Zora River Grotto;chest;684;177;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
+0x02902;GROTTOS;Grass 1;OOT Zora River Grotto Grass 1;grass;660;320;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
+0x02903;GROTTOS;Grass 2;OOT Zora River Grotto Grass 2;grass;717;195;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
+0x02904;GROTTOS;Grass 3;OOT Zora River Grotto Grass 3;grass;658;192;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
+0x02905;GROTTOS;Grass 4;OOT Zora River Grotto Grass 4;grass;669;158;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
+0x02907;GROTTOS;Hive 1;OOT Zora River Grotto Hive 1;hive;551;157;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
+0x02908;GROTTOS;Hive 2;OOT Zora River Grotto Hive 2;hive;741;104;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
+0x02906;GROTTOS;Butterfly 1;OOT Zora River Grotto Butterfly 1;butterfly;651;645;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
+0x12906;GROTTOS;Butterfly 2;OOT Zora River Grotto Butterfly 2;butterfly;617;632;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
+0x22906;GROTTOS;Butterfly 3;OOT Zora River Grotto Butterfly 3;butterfly;637;631;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
+0x12;GROTTOS;Scrub - Front;OOT Zora River Storms Grotto Front Scrub;scrub;714;302;OOT_GROTTO_ZORA_RIVER_STORMS;All;0
+0x13;GROTTOS;Scrub - Back;OOT Zora River Storms Grotto Back Scrub;scrub;649;207;OOT_GROTTO_ZORA_RIVER_STORMS;All;0
+0x02402;GROTTOS;Hive;OOT Zora River Storms Grotto Hive;hive;551;157;OOT_GROTTO_ZORA_RIVER_STORMS;All;0
+0x14;GROTTOS;Left;OOT Lake Hylia Grotto Left Scrub;scrub;457;344;OOT_GROTTO_LAKE_HYLIA_SCRUBS;All;0
+0x15;GROTTOS;Center;OOT Lake Hylia Grotto Center Scrub;scrub;691;124;OOT_GROTTO_LAKE_HYLIA_SCRUBS;All;0
+0x16;GROTTOS;Right;OOT Lake Hylia Grotto Right Scrub;scrub;933;344;OOT_GROTTO_LAKE_HYLIA_SCRUBS;All;0
+0x02d03;GROTTOS;Hive;OOT Lake Hylia Grotto Hive;hive;982;210;OOT_GROTTO_LAKE_HYLIA_SCRUBS;All;0
+0x08;GROTTOS;Left;OOT Lon Lon Ranch Grotto Left Scrub;scrub;457;344;OOT_GROTTO_LON_LON_SCRUBS;All;0
+0x09;GROTTOS;Center;OOT Lon Lon Ranch Grotto Center Scrub;scrub;691;124;OOT_GROTTO_LON_LON_SCRUBS;All;0
+0x0a;GROTTOS;Right;OOT Lon Lon Ranch Grotto Right Scrub;scrub;933;344;OOT_GROTTO_LON_LON_SCRUBS;All;0
+0x02703;GROTTOS;Hive;OOT Lon Lon Ranch Grotto Hive;hive;982;210;OOT_GROTTO_LON_LON_SCRUBS;All;0
+0x07;GROTTOS;Heart Piece;OOT Hyrule Field Grotto Scrub HP;scrub;703;186;OOT_GROTTO_HYRULE_SCRUBS;All;0
+0x00102;GROTTOS;Big Fairy;OOT Hyrule Field Grotto Scrub Big Fairy;fairy_spot;751;310;OOT_GROTTO_HYRULE_SCRUBS;All;0
+0x00101;GROTTOS;Hive;OOT Hyrule Field Grotto Scrub Hive;hive;840;179;OOT_GROTTO_HYRULE_SCRUBS;All;0
+0x02;GROTTOS;Chest;OOT Hyrule Field Grotto Southeast;chest;684;177;OOT_GROTTO_HYRULE_SE;All;0
+0x02202;GROTTOS;Grass 1;OOT Hyrule Field Grotto Southeast Grass 1;grass;660;320;OOT_GROTTO_HYRULE_SE;All;0
+0x02203;GROTTOS;Grass 2;OOT Hyrule Field Grotto Southeast Grass 2;grass;717;195;OOT_GROTTO_HYRULE_SE;All;0
+0x02204;GROTTOS;Grass 3;OOT Hyrule Field Grotto Southeast Grass 3;grass;658;192;OOT_GROTTO_HYRULE_SE;All;0
+0x02205;GROTTOS;Grass 4;OOT Hyrule Field Grotto Southeast Grass 4;grass;669;158;OOT_GROTTO_HYRULE_SE;All;0
+0x02207;GROTTOS;Hive 1;OOT Hyrule Field Grotto Southeast Hive 1;hive;551;157;OOT_GROTTO_HYRULE_SE;All;0
+0x02208;GROTTOS;Hive 2;OOT Hyrule Field Grotto Southeast Hive 2;hive;741;104;OOT_GROTTO_HYRULE_SE;All;0
+0x02206;GROTTOS;Butterfly 1;OOT Hyrule Field Grotto Southeast Butterfly 1;butterfly;651;645;OOT_GROTTO_HYRULE_SE;All;0
+0x12206;GROTTOS;Butterfly 2;OOT Hyrule Field Grotto Southeast Butterfly 2;butterfly;617;632;OOT_GROTTO_HYRULE_SE;All;0
+0x22206;GROTTOS;Butterfly 3;OOT Hyrule Field Grotto Southeast Butterfly 3;butterfly;637;631;OOT_GROTTO_HYRULE_SE;All;0
+0x03;GROTTOS;Chest;OOT Hyrule Field Grotto Open;chest;684;177;OOT_GROTTO_HYRULE_OPEN;All;0
+0x02302;GROTTOS;Grass 1;OOT Hyrule Field Grotto Open Grass 1;grass;660;320;OOT_GROTTO_HYRULE_OPEN;All;0
+0x02303;GROTTOS;Grass 2;OOT Hyrule Field Grotto Open Grass 2;grass;717;195;OOT_GROTTO_HYRULE_OPEN;All;0
+0x02304;GROTTOS;Grass 3;OOT Hyrule Field Grotto Open Grass 3;grass;658;192;OOT_GROTTO_HYRULE_OPEN;All;0
+0x02305;GROTTOS;Grass 4;OOT Hyrule Field Grotto Open Grass 4;grass;669;158;OOT_GROTTO_HYRULE_OPEN;All;0
+0x02307;GROTTOS;Hive 1;OOT Hyrule Field Grotto Open Hive 1;hive;551;157;OOT_GROTTO_HYRULE_OPEN;All;0
+0x02308;GROTTOS;Hive 2;OOT Hyrule Field Grotto Open Hive 2;hive;741;104;OOT_GROTTO_HYRULE_OPEN;All;0
+0x02306;GROTTOS;Butterfly 1;OOT Hyrule Field Grotto Open Butterfly 1;butterfly;651;645;OOT_GROTTO_HYRULE_OPEN;All;0
+0x12306;GROTTOS;Butterfly 2;OOT Hyrule Field Grotto Open Butterfly 2;butterfly;617;632;OOT_GROTTO_HYRULE_OPEN;All;0
+0x22306;GROTTOS;Butterfly 3;OOT Hyrule Field Grotto Open Butterfly 3;butterfly;637;631;OOT_GROTTO_HYRULE_OPEN;All;0
+0x00;GROTTOS;Chest;OOT Hyrule Field Grotto Market;chest;684;177;OOT_GROTTO_HYRULE_MARKET;All;0
+0x02002;GROTTOS;Grass 1;OOT Hyrule Field Grotto Market Grass 1;grass;660;320;OOT_GROTTO_HYRULE_MARKET;All;0
+0x02003;GROTTOS;Grass 2;OOT Hyrule Field Grotto Market Grass 2;grass;717;195;OOT_GROTTO_HYRULE_MARKET;All;0
+0x02004;GROTTOS;Grass 3;OOT Hyrule Field Grotto Market Grass 3;grass;658;192;OOT_GROTTO_HYRULE_MARKET;All;0
+0x02005;GROTTOS;Grass 4;OOT Hyrule Field Grotto Market Grass 4;grass;669;158;OOT_GROTTO_HYRULE_MARKET;All;0
+0x02007;GROTTOS;Hive 1;OOT Hyrule Field Grotto Market Hive 1;hive;551;157;OOT_GROTTO_HYRULE_MARKET;All;0
+0x02008;GROTTOS;Hive 2;OOT Hyrule Field Grotto Market Hive 2;hive;741;104;OOT_GROTTO_HYRULE_MARKET;All;0
+0x02006;GROTTOS;Butterfly 1;OOT Hyrule Field Grotto Market Butterfly 1;butterfly;651;645;OOT_GROTTO_HYRULE_MARKET;All;0
+0x12006;GROTTOS;Butterfly 2;OOT Hyrule Field Grotto Market Butterfly 2;butterfly;617;632;OOT_GROTTO_HYRULE_MARKET;All;0
+0x22006;GROTTOS;Butterfly 3;OOT Hyrule Field Grotto Market Butterfly 3;butterfly;637;631;OOT_GROTTO_HYRULE_MARKET;All;0
+0x01;GROTTOS;Heart Piece;OOT Hyrule Field Grotto Tektite HP;collectible;723;253;OOT_GROTTO_HYRULE_TEKTITE;All;0
+0x59;GROTTOS;Web;OOT Hyrule Field Grotto Near Kakariko GS;gs;802;162;OOT_GROTTO_HYRULE_KAKARIKO;All;0
+0x58;GROTTOS;Web;OOT Hyrule Field Grotto Near Gerudo GS;gs;160;690;OOT_GROTTO_HYRULE_GERUDO;All;0
+0x00402;GROTTOS;Grass 1;OOT Hyrule Field Grotto Near Gerudo Grass 1;grass;469;630;OOT_GROTTO_HYRULE_GERUDO;All;0
+0x00403;GROTTOS;Grass 2;OOT Hyrule Field Grotto Near Gerudo Grass 2;grass;387;620;OOT_GROTTO_HYRULE_GERUDO;All;0
+0x0405;GROTTOS;Pot 1;OOT Hyrule Field Cow Grotto Pot 1;pot;493;632;OOT_GROTTO_HYRULE_GERUDO;All;0
+0x0407;GROTTOS;Pot 2;OOT Hyrule Field Cow Grotto Pot 2;pot;476;603;OOT_GROTTO_HYRULE_GERUDO;All;0
+0x79;GROTTOS;Web;OOT Hyrule Castle GS Grotto;gs;520;715;OOT_GROTTO_CASTLE_STORMS;All;0
+0x0806;GROTTOS;Pot 1;OOT Hyrule Castle Grotto Pot 1;pot;708;422;OOT_GROTTO_CASTLE_STORMS;All;0
+0x0807;GROTTOS;Pot 2;OOT Hyrule Castle Grotto Pot 2;pot;659;381;OOT_GROTTO_CASTLE_STORMS;All;0
+0x0809;GROTTOS;Pot 3;OOT Hyrule Castle Grotto Pot 3;pot;720;345;OOT_GROTTO_CASTLE_STORMS;All;0
+0x080b;GROTTOS;Pot 4;OOT Hyrule Castle Grotto Pot 4;pot;658;312;OOT_GROTTO_CASTLE_STORMS;All;0
+0x17;GROTTOS;Front;OOT Gerudo Valley Grotto Front Scrub;scrub;714;302;OOT_GROTTO_VALLEY_STORMS;All;0
+0x18;GROTTOS;Back;OOT Gerudo Valley Grotto Back Scrub;scrub;649;207;OOT_GROTTO_VALLEY_STORMS;All;0
+0x02502;GROTTOS;Hive;OOT Gerudo Valley Grotto Hive;hive;551;157;OOT_GROTTO_VALLEY_STORMS;All;0
+0x00501;GROTTOS;Rupee 1;OOT Gerudo Valley Octorok Grotto Rupee 1;rupee;749;357;OOT_GROTTO_VALLEY_OCTOROK;All;0
+0x00502;GROTTOS;Rupee 2;OOT Gerudo Valley Octorok Grotto Rupee 2;rupee;623;354;OOT_GROTTO_VALLEY_OCTOROK;All;0
+0x00503;GROTTOS;Rupee 3;OOT Gerudo Valley Octorok Grotto Rupee 3;rupee;723;325;OOT_GROTTO_VALLEY_OCTOROK;All;0
+0x00504;GROTTOS;Rupee 4;OOT Gerudo Valley Octorok Grotto Rupee 4;rupee;640;305;OOT_GROTTO_VALLEY_OCTOROK;All;0
+0x00505;GROTTOS;Rupee 5;OOT Gerudo Valley Octorok Grotto Rupee 5;rupee;687;287;OOT_GROTTO_VALLEY_OCTOROK;All;0
+0x00506;GROTTOS;Rupee 6;OOT Gerudo Valley Octorok Grotto Rupee 6;rupee;704;257;OOT_GROTTO_VALLEY_OCTOROK;All;0
+0x00507;GROTTOS;Rupee 7;OOT Gerudo Valley Octorok Grotto Rupee 7;rupee;744;246;OOT_GROTTO_VALLEY_OCTOROK;All;0
+0x00508;GROTTOS;Rupee 8;OOT Gerudo Valley Octorok Grotto Rupee 8;rupee;644;236;OOT_GROTTO_VALLEY_OCTOROK;All;0
+0x19;GROTTOS;Front;OOT Desert Colossus Grotto Front Scrub;scrub;714;302;OOT_GROTTO_DESERT_SCRUBS;All;0
+0x1a;GROTTOS;Back;OOT Desert Colossus Grotto Back Scrub;scrub;649;207;OOT_GROTTO_DESERT_SCRUBS;All;0
+0x02602;GROTTOS;Hive;OOT Desert Colossus Grotto Hive;hive;551;157;OOT_GROTTO_DESERT_SCRUBS;All;0
 POE_COLLECTOR;GUARD_HOUSE;Bottle;OOT Market Pot House Big Poes;npc;0;0;GUARD_HOUSE;Adult;0
 0x7b;GUARD_HOUSE;Crate;OOT Market Pot House GS;gs;0;0;GUARD_HOUSE;Child;0
 0x0008;GUARD_HOUSE;Child - Ground 1;OOT Market Pot House Child Pot Ground 1;pot;0;0;GUARD_HOUSE;Child;0
@@ -995,62 +995,62 @@ MALON_EGG;HYRULE_CASTLE;Malon Egg;OOT Malon Egg;npc;0;0;HYRULE_CASTLE;All;0
 0x20036;HYRULE_CASTLE;Pack 4 - Butterfly 3;OOT Hyrule Castle Butterfly Pack 4 Butterfly 3;butterfly;0;0;HYRULE_CASTLE;All;0
 0x30036;HYRULE_CASTLE;Pack 4 - Butterfly 4;OOT Hyrule Castle Butterfly Pack 4 Butterfly 4;butterfly;0;0;HYRULE_CASTLE;All;0
 0x40036;HYRULE_CASTLE;Pack 4 - Butterfly 5;OOT Hyrule Castle Butterfly Pack 4 Butterfly 5;butterfly;0;0;HYRULE_CASTLE;All;0
-OCARINA_TIME_ITEM;HYRULE_FIELD;Ocarina of Time;OOT Hyrule Field Ocarina of Time;npc;0;0;HYRULE_FIELD;Child;0
-OCARINA_TIME_SONG;HYRULE_FIELD;Song of Time;OOT Hyrule Field Song of Time;npc;0;0;HYRULE_FIELD;Child;0
-MASK_SELL_BUNNY;HYRULE_FIELD;Bunny Mask;OOT Hyrule Field Sell Bunny Mask;npc;0;0;HYRULE_FIELD;Child;0
-0x01;HYRULE_FIELD;Cow;OOT Hyrule Field Cow;cow;0;0;OOT_GROTTO_HYRULE_GERUDO;All;0
-0x0003a;HYRULE_FIELD;Pack 1 - Bush 1;OOT Hyrule Field Grass Pack 1 Bush 01;grass;0;0;HYRULE_FIELD;All;0
-0x1003a;HYRULE_FIELD;Pack 1 - Bush 2;OOT Hyrule Field Grass Pack 1 Bush 02;grass;0;0;HYRULE_FIELD;All;0
-0x2003a;HYRULE_FIELD;Pack 1 - Bush 3;OOT Hyrule Field Grass Pack 1 Bush 03;grass;0;0;HYRULE_FIELD;All;0
-0x3003a;HYRULE_FIELD;Pack 1 - Bush 4;OOT Hyrule Field Grass Pack 1 Bush 04;grass;0;0;HYRULE_FIELD;All;0
-0x4003a;HYRULE_FIELD;Pack 1 - Bush 5;OOT Hyrule Field Grass Pack 1 Bush 05;grass;0;0;HYRULE_FIELD;All;0
-0x5003a;HYRULE_FIELD;Pack 1 - Bush 6;OOT Hyrule Field Grass Pack 1 Bush 06;grass;0;0;HYRULE_FIELD;All;0
-0x6003a;HYRULE_FIELD;Pack 1 - Bush 7;OOT Hyrule Field Grass Pack 1 Bush 07;grass;0;0;HYRULE_FIELD;All;0
-0x7003a;HYRULE_FIELD;Pack 1 - Bush 8;OOT Hyrule Field Grass Pack 1 Bush 08;grass;0;0;HYRULE_FIELD;All;0
-0x8003a;HYRULE_FIELD;Pack 1 - Bush 9;OOT Hyrule Field Grass Pack 1 Bush 09;grass;0;0;HYRULE_FIELD;All;0
-0x9003a;HYRULE_FIELD;Pack 1 - Bush 10;OOT Hyrule Field Grass Pack 1 Bush 10;grass;0;0;HYRULE_FIELD;All;0
-0xa003a;HYRULE_FIELD;Pack 1 - Bush 11;OOT Hyrule Field Grass Pack 1 Bush 11;grass;0;0;HYRULE_FIELD;All;0
-0xb003a;HYRULE_FIELD;Pack 1 - Bush 12;OOT Hyrule Field Grass Pack 1 Bush 12;grass;0;0;HYRULE_FIELD;All;0
-0x0003b;HYRULE_FIELD;Pack 2 - Bush 1;OOT Hyrule Field Grass Pack 2 Bush 01;grass;0;0;HYRULE_FIELD;All;0
-0x1003b;HYRULE_FIELD;Pack 2 - Bush 2;OOT Hyrule Field Grass Pack 2 Bush 02;grass;0;0;HYRULE_FIELD;All;0
-0x2003b;HYRULE_FIELD;Pack 2 - Bush 3;OOT Hyrule Field Grass Pack 2 Bush 03;grass;0;0;HYRULE_FIELD;All;0
-0x3003b;HYRULE_FIELD;Pack 2 - Bush 4;OOT Hyrule Field Grass Pack 2 Bush 04;grass;0;0;HYRULE_FIELD;All;0
-0x4003b;HYRULE_FIELD;Pack 2 - Bush 5;OOT Hyrule Field Grass Pack 2 Bush 05;grass;0;0;HYRULE_FIELD;All;0
-0x5003b;HYRULE_FIELD;Pack 2 - Bush 6;OOT Hyrule Field Grass Pack 2 Bush 06;grass;0;0;HYRULE_FIELD;All;0
-0x6003b;HYRULE_FIELD;Pack 2 - Bush 7;OOT Hyrule Field Grass Pack 2 Bush 07;grass;0;0;HYRULE_FIELD;All;0
-0x7003b;HYRULE_FIELD;Pack 2 - Bush 8;OOT Hyrule Field Grass Pack 2 Bush 08;grass;0;0;HYRULE_FIELD;All;0
-0x8003b;HYRULE_FIELD;Pack 2 - Bush 9;OOT Hyrule Field Grass Pack 2 Bush 09;grass;0;0;HYRULE_FIELD;All;0
-0x9003b;HYRULE_FIELD;Pack 2 - Bush 10;OOT Hyrule Field Grass Pack 2 Bush 10;grass;0;0;HYRULE_FIELD;All;0
-0xa003b;HYRULE_FIELD;Pack 2 - Bush 11;OOT Hyrule Field Grass Pack 2 Bush 11;grass;0;0;HYRULE_FIELD;All;0
-0xb003b;HYRULE_FIELD;Pack 2 - Bush 12;OOT Hyrule Field Grass Pack 2 Bush 12;grass;0;0;HYRULE_FIELD;All;0
-0x0003c;HYRULE_FIELD;Pack 3 - Bush 1;OOT Hyrule Field Grass Pack 3 Bush 01;grass;0;0;HYRULE_FIELD;All;0
-0x1003c;HYRULE_FIELD;Pack 3 - Bush 2;OOT Hyrule Field Grass Pack 3 Bush 02;grass;0;0;HYRULE_FIELD;All;0
-0x2003c;HYRULE_FIELD;Pack 3 - Bush 3;OOT Hyrule Field Grass Pack 3 Bush 03;grass;0;0;HYRULE_FIELD;All;0
-0x3003c;HYRULE_FIELD;Pack 3 - Bush 4;OOT Hyrule Field Grass Pack 3 Bush 04;grass;0;0;HYRULE_FIELD;All;0
-0x4003c;HYRULE_FIELD;Pack 3 - Bush 5;OOT Hyrule Field Grass Pack 3 Bush 05;grass;0;0;HYRULE_FIELD;All;0
-0x5003c;HYRULE_FIELD;Pack 3 - Bush 6;OOT Hyrule Field Grass Pack 3 Bush 06;grass;0;0;HYRULE_FIELD;All;0
-0x6003c;HYRULE_FIELD;Pack 3 - Bush 7;OOT Hyrule Field Grass Pack 3 Bush 07;grass;0;0;HYRULE_FIELD;All;0
-0x7003c;HYRULE_FIELD;Pack 3 - Bush 8;OOT Hyrule Field Grass Pack 3 Bush 08;grass;0;0;HYRULE_FIELD;All;0
-0x8003c;HYRULE_FIELD;Pack 3 - Bush 9;OOT Hyrule Field Grass Pack 3 Bush 09;grass;0;0;HYRULE_FIELD;All;0
-0x9003c;HYRULE_FIELD;Pack 3 - Bush 10;OOT Hyrule Field Grass Pack 3 Bush 10;grass;0;0;HYRULE_FIELD;All;0
-0xa003c;HYRULE_FIELD;Pack 3 - Bush 11;OOT Hyrule Field Grass Pack 3 Bush 11;grass;0;0;HYRULE_FIELD;All;0
-0xb003c;HYRULE_FIELD;Pack 3 - Bush 12;OOT Hyrule Field Grass Pack 3 Bush 12;grass;0;0;HYRULE_FIELD;All;0
-0x0003d;HYRULE_FIELD;Pack 4 - Bush 1;OOT Hyrule Field Grass Pack 4 Bush 01;grass;0;0;HYRULE_FIELD;All;0
-0x1003d;HYRULE_FIELD;Pack 4 - Bush 2;OOT Hyrule Field Grass Pack 4 Bush 02;grass;0;0;HYRULE_FIELD;All;0
-0x2003d;HYRULE_FIELD;Pack 4 - Bush 3;OOT Hyrule Field Grass Pack 4 Bush 03;grass;0;0;HYRULE_FIELD;All;0
-0x3003d;HYRULE_FIELD;Pack 4 - Bush 4;OOT Hyrule Field Grass Pack 4 Bush 04;grass;0;0;HYRULE_FIELD;All;0
-0x4003d;HYRULE_FIELD;Pack 4 - Bush 5;OOT Hyrule Field Grass Pack 4 Bush 05;grass;0;0;HYRULE_FIELD;All;0
-0x5003d;HYRULE_FIELD;Pack 4 - Bush 6;OOT Hyrule Field Grass Pack 4 Bush 06;grass;0;0;HYRULE_FIELD;All;0
-0x6003d;HYRULE_FIELD;Pack 4 - Bush 7;OOT Hyrule Field Grass Pack 4 Bush 07;grass;0;0;HYRULE_FIELD;All;0
-0x7003d;HYRULE_FIELD;Pack 4 - Bush 8;OOT Hyrule Field Grass Pack 4 Bush 08;grass;0;0;HYRULE_FIELD;All;0
-0x8003d;HYRULE_FIELD;Pack 4 - Bush 9;OOT Hyrule Field Grass Pack 4 Bush 09;grass;0;0;HYRULE_FIELD;All;0
-0x9003d;HYRULE_FIELD;Pack 4 - Bush 10;OOT Hyrule Field Grass Pack 4 Bush 10;grass;0;0;HYRULE_FIELD;All;0
-0xa003d;HYRULE_FIELD;Pack 4 - Bush 11;OOT Hyrule Field Grass Pack 4 Bush 11;grass;0;0;HYRULE_FIELD;All;0
-0xb003d;HYRULE_FIELD;Pack 4 - Bush 12;OOT Hyrule Field Grass Pack 4 Bush 12;grass;0;0;HYRULE_FIELD;All;0
-0x00048;HYRULE_FIELD;River Big Fairy;OOT Hyrule Field River Big Fairy;fairy_spot;0;0;HYRULE_FIELD;All;0
-0x00034;HYRULE_FIELD;Drawbridge 1;OOT Hyrule Field Wonder Item 1;wonder;0;0;HYRULE_FIELD;Child;0
-0x00035;HYRULE_FIELD;Drawbridge 2;OOT Hyrule Field Wonder Item 2;wonder;0;0;HYRULE_FIELD;Child;0
-0x00036;HYRULE_FIELD;Drawbridge 3;OOT Hyrule Field Wonder Item 3;wonder;0;0;HYRULE_FIELD;Child;0
+OCARINA_TIME_ITEM;HYRULE_FIELD;Ocarina of Time;OOT Hyrule Field Ocarina of Time;npc;793;155;HYRULE_FIELD;Child;0
+OCARINA_TIME_SONG;HYRULE_FIELD;Song of Time;OOT Hyrule Field Song of Time;npc;777;155;HYRULE_FIELD;Child;0
+MASK_SELL_BUNNY;HYRULE_FIELD;Bunny Mask;OOT Hyrule Field Sell Bunny Mask;npc;713;405;HYRULE_FIELD;Child;0
+0x01;HYRULE_FIELD;Cow;OOT Hyrule Field Cow;cow;414;662;OOT_GROTTO_HYRULE_GERUDO;All;0
+0x0003a;HYRULE_FIELD;Pack 1 - Bush 1;OOT Hyrule Field Grass Pack 1 Bush 01;grass;816;309;HYRULE_FIELD;All;0
+0x1003a;HYRULE_FIELD;Pack 1 - Bush 2;OOT Hyrule Field Grass Pack 1 Bush 02;grass;806;308;HYRULE_FIELD;All;0
+0x2003a;HYRULE_FIELD;Pack 1 - Bush 3;OOT Hyrule Field Grass Pack 1 Bush 03;grass;825;303;HYRULE_FIELD;All;0
+0x3003a;HYRULE_FIELD;Pack 1 - Bush 4;OOT Hyrule Field Grass Pack 1 Bush 04;grass;798;302;HYRULE_FIELD;All;0
+0x4003a;HYRULE_FIELD;Pack 1 - Bush 5;OOT Hyrule Field Grass Pack 1 Bush 05;grass;828;293;HYRULE_FIELD;All;0
+0x5003a;HYRULE_FIELD;Pack 1 - Bush 6;OOT Hyrule Field Grass Pack 1 Bush 06;grass;793;293;HYRULE_FIELD;All;0
+0x6003a;HYRULE_FIELD;Pack 1 - Bush 7;OOT Hyrule Field Grass Pack 1 Bush 07;grass;811;291;HYRULE_FIELD;All;0
+0x7003a;HYRULE_FIELD;Pack 1 - Bush 8;OOT Hyrule Field Grass Pack 1 Bush 08;grass;827;283;HYRULE_FIELD;All;0
+0x8003a;HYRULE_FIELD;Pack 1 - Bush 9;OOT Hyrule Field Grass Pack 1 Bush 09;grass;795;283;HYRULE_FIELD;All;0
+0x9003a;HYRULE_FIELD;Pack 1 - Bush 10;OOT Hyrule Field Grass Pack 1 Bush 10;grass;821;275;HYRULE_FIELD;All;0
+0xa003a;HYRULE_FIELD;Pack 1 - Bush 11;OOT Hyrule Field Grass Pack 1 Bush 11;grass;801;275;HYRULE_FIELD;All;0
+0xb003a;HYRULE_FIELD;Pack 1 - Bush 12;OOT Hyrule Field Grass Pack 1 Bush 12;grass;811;275;HYRULE_FIELD;All;0
+0x0003b;HYRULE_FIELD;Pack 2 - Bush 1;OOT Hyrule Field Grass Pack 2 Bush 01;grass;936;524;HYRULE_FIELD;All;0
+0x1003b;HYRULE_FIELD;Pack 2 - Bush 2;OOT Hyrule Field Grass Pack 2 Bush 02;grass;926;523;HYRULE_FIELD;All;0
+0x2003b;HYRULE_FIELD;Pack 2 - Bush 3;OOT Hyrule Field Grass Pack 2 Bush 03;grass;945;518;HYRULE_FIELD;All;0
+0x3003b;HYRULE_FIELD;Pack 2 - Bush 4;OOT Hyrule Field Grass Pack 2 Bush 04;grass;918;517;HYRULE_FIELD;All;0
+0x4003b;HYRULE_FIELD;Pack 2 - Bush 5;OOT Hyrule Field Grass Pack 2 Bush 05;grass;948;508;HYRULE_FIELD;All;0
+0x5003b;HYRULE_FIELD;Pack 2 - Bush 6;OOT Hyrule Field Grass Pack 2 Bush 06;grass;913;508;HYRULE_FIELD;All;0
+0x6003b;HYRULE_FIELD;Pack 2 - Bush 7;OOT Hyrule Field Grass Pack 2 Bush 07;grass;931;506;HYRULE_FIELD;All;0
+0x7003b;HYRULE_FIELD;Pack 2 - Bush 8;OOT Hyrule Field Grass Pack 2 Bush 08;grass;947;498;HYRULE_FIELD;All;0
+0x8003b;HYRULE_FIELD;Pack 2 - Bush 9;OOT Hyrule Field Grass Pack 2 Bush 09;grass;915;498;HYRULE_FIELD;All;0
+0x9003b;HYRULE_FIELD;Pack 2 - Bush 10;OOT Hyrule Field Grass Pack 2 Bush 10;grass;941;490;HYRULE_FIELD;All;0
+0xa003b;HYRULE_FIELD;Pack 2 - Bush 11;OOT Hyrule Field Grass Pack 2 Bush 11;grass;921;490;HYRULE_FIELD;All;0
+0xb003b;HYRULE_FIELD;Pack 2 - Bush 12;OOT Hyrule Field Grass Pack 2 Bush 12;grass;931;488;HYRULE_FIELD;All;0
+0x0003c;HYRULE_FIELD;Pack 3 - Bush 1;OOT Hyrule Field Grass Pack 3 Bush 01;grass;711;654;HYRULE_FIELD;All;0
+0x1003c;HYRULE_FIELD;Pack 3 - Bush 2;OOT Hyrule Field Grass Pack 3 Bush 02;grass;701;653;HYRULE_FIELD;All;0
+0x2003c;HYRULE_FIELD;Pack 3 - Bush 3;OOT Hyrule Field Grass Pack 3 Bush 03;grass;720;648;HYRULE_FIELD;All;0
+0x3003c;HYRULE_FIELD;Pack 3 - Bush 4;OOT Hyrule Field Grass Pack 3 Bush 04;grass;693;647;HYRULE_FIELD;All;0
+0x4003c;HYRULE_FIELD;Pack 3 - Bush 5;OOT Hyrule Field Grass Pack 3 Bush 05;grass;723;638;HYRULE_FIELD;All;0
+0x5003c;HYRULE_FIELD;Pack 3 - Bush 6;OOT Hyrule Field Grass Pack 3 Bush 06;grass;688;638;HYRULE_FIELD;All;0
+0x6003c;HYRULE_FIELD;Pack 3 - Bush 7;OOT Hyrule Field Grass Pack 3 Bush 07;grass;706;636;HYRULE_FIELD;All;0
+0x7003c;HYRULE_FIELD;Pack 3 - Bush 8;OOT Hyrule Field Grass Pack 3 Bush 08;grass;722;628;HYRULE_FIELD;All;0
+0x8003c;HYRULE_FIELD;Pack 3 - Bush 9;OOT Hyrule Field Grass Pack 3 Bush 09;grass;690;628;HYRULE_FIELD;All;0
+0x9003c;HYRULE_FIELD;Pack 3 - Bush 10;OOT Hyrule Field Grass Pack 3 Bush 10;grass;716;620;HYRULE_FIELD;All;0
+0xa003c;HYRULE_FIELD;Pack 3 - Bush 11;OOT Hyrule Field Grass Pack 3 Bush 11;grass;696;620;HYRULE_FIELD;All;0
+0xb003c;HYRULE_FIELD;Pack 3 - Bush 12;OOT Hyrule Field Grass Pack 3 Bush 12;grass;706;618;HYRULE_FIELD;All;0
+0x0003d;HYRULE_FIELD;Pack 4 - Bush 1;OOT Hyrule Field Grass Pack 4 Bush 01;grass;740;726;HYRULE_FIELD;All;0
+0x1003d;HYRULE_FIELD;Pack 4 - Bush 2;OOT Hyrule Field Grass Pack 4 Bush 02;grass;730;725;HYRULE_FIELD;All;0
+0x2003d;HYRULE_FIELD;Pack 4 - Bush 3;OOT Hyrule Field Grass Pack 4 Bush 03;grass;749;720;HYRULE_FIELD;All;0
+0x3003d;HYRULE_FIELD;Pack 4 - Bush 4;OOT Hyrule Field Grass Pack 4 Bush 04;grass;722;719;HYRULE_FIELD;All;0
+0x4003d;HYRULE_FIELD;Pack 4 - Bush 5;OOT Hyrule Field Grass Pack 4 Bush 05;grass;752;710;HYRULE_FIELD;All;0
+0x5003d;HYRULE_FIELD;Pack 4 - Bush 6;OOT Hyrule Field Grass Pack 4 Bush 06;grass;717;710;HYRULE_FIELD;All;0
+0x6003d;HYRULE_FIELD;Pack 4 - Bush 7;OOT Hyrule Field Grass Pack 4 Bush 07;grass;735;708;HYRULE_FIELD;All;0
+0x7003d;HYRULE_FIELD;Pack 4 - Bush 8;OOT Hyrule Field Grass Pack 4 Bush 08;grass;751;700;HYRULE_FIELD;All;0
+0x8003d;HYRULE_FIELD;Pack 4 - Bush 9;OOT Hyrule Field Grass Pack 4 Bush 09;grass;719;700;HYRULE_FIELD;All;0
+0x9003d;HYRULE_FIELD;Pack 4 - Bush 10;OOT Hyrule Field Grass Pack 4 Bush 10;grass;745;692;HYRULE_FIELD;All;0
+0xa003d;HYRULE_FIELD;Pack 4 - Bush 11;OOT Hyrule Field Grass Pack 4 Bush 11;grass;725;692;HYRULE_FIELD;All;0
+0xb003d;HYRULE_FIELD;Pack 4 - Bush 12;OOT Hyrule Field Grass Pack 4 Bush 12;grass;735;690;HYRULE_FIELD;All;0
+0x00048;HYRULE_FIELD;River Big Fairy;OOT Hyrule Field River Big Fairy;fairy_spot;1038;370;HYRULE_FIELD;All;0
+0x00034;HYRULE_FIELD;Drawbridge 1;OOT Hyrule Field Wonder Item 1;wonder;750;135;HYRULE_FIELD;Child;0
+0x00035;HYRULE_FIELD;Drawbridge 2;OOT Hyrule Field Wonder Item 2;wonder;762;135;HYRULE_FIELD;Child;0
+0x00036;HYRULE_FIELD;Drawbridge 3;OOT Hyrule Field Wonder Item 3;wonder;774;135;HYRULE_FIELD;Child;0
 0x02;ICE_CAVERN;Iron Boots;OOT Ice Cavern Iron Boots;chest;0;0;ICE_CAVERN;All;0
 0x00;ICE_CAVERN;Map;OOT Ice Cavern Map;chest;0;0;ICE_CAVERN;All;0
 0x01;ICE_CAVERN;Compass;OOT Ice Cavern Compass;chest;0;0;ICE_CAVERN;All;0
@@ -1105,8 +1105,8 @@ SHEIK_WATER;ICE_CAVERN;Serenade of Water;OOT MQ Ice Cavern Sheik Song;npc;0;0;MQ
 0x0606;ICE_CAVERN;Final Corridor 2;OOT MQ Ice Cavern Pot Final Corridor 2;pot;0;0;MQ_ICE_CAVERN;All;0
 0x090a;ICE_CAVERN;Compass Room 1;OOT MQ Ice Cavern Pot Compass Room 1;pot;0;0;MQ_ICE_CAVERN;All;0
 0x090b;ICE_CAVERN;Compass Room 2;OOT MQ Ice Cavern Pot Compass Room 2;pot;0;0;MQ_ICE_CAVERN;All;0
-0x01;IMPA_HOUSE;Heart Piece;OOT Kakariko Impa House HP;collectible;0;0;IMPA_HOUSE;All;0
-0x00006;IMPA_HOUSE;Above Jail;OOT Kakariko Impa House Wonder Item;wonder;0;0;IMPA_HOUSE;All;0
+0x01;IMPA_HOUSE;Heart Piece;OOT Kakariko Impa House HP;collectible;575;411;IMPA_HOUSE;All;0
+0x00006;IMPA_HOUSE;Above Jail;OOT Kakariko Impa House Wonder Item;wonder;643;295;IMPA_HOUSE;All;0
 0x06;INSIDE_GANON_CASTLE;Water Trial - Chest 1;OOT Ganon Castle Water Chest 1;chest;0;0;INSIDE_GANON_CASTLE;All;0
 0x07;INSIDE_GANON_CASTLE;Water Trial - Chest 2;OOT Ganon Castle Water Chest 2;chest;0;0;INSIDE_GANON_CASTLE;All;0
 0x09;INSIDE_GANON_CASTLE;Forest Trial - Torches;OOT Ganon Castle Forest Chest;chest;0;0;INSIDE_GANON_CASTLE;All;0
@@ -1325,69 +1325,69 @@ SHEIK_WATER;ICE_CAVERN;Serenade of Water;OOT MQ Ice Cavern Sheik Song;npc;0;0;MQ
 0x0040c;INSIDE_JABU_JABU;After Big Octo - Small Crate 2;OOT MQ Jabu-Jabu Room After Above Big Octo Small Crate 2;crate;0;0;MQ_INSIDE_JABU_JABU;All;0
 0x00705;INSIDE_JABU_JABU;Back Forked Paths Main Room - Small Crate 1;OOT MQ Jabu-Jabu Back Forked Paths Main Room Small Crate 1;crate;0;0;MQ_INSIDE_JABU_JABU;All;0
 0x00706;INSIDE_JABU_JABU;Back Forked Paths Main Room - Small Crate 2;OOT MQ Jabu-Jabu Back Forked Paths Main Room Small Crate 2;crate;0;0;MQ_INSIDE_JABU_JABU;All;0
-TRADE_ODD_POTION;KAKARIKO_POTION_SHOP;Odd Potion;OOT Kakariko Potion Shop Odd Potion;npc;0;0;GRANNY_POTION_SHOP;All;0
-0x38;KAKARIKO_POTION_SHOP;Item 1;OOT Kakariko Potion Shop Item 1;shop;0;0;KAKARIKO_POTION_SHOP;All;0
-0x39;KAKARIKO_POTION_SHOP;Item 2;OOT Kakariko Potion Shop Item 2;shop;0;0;KAKARIKO_POTION_SHOP;All;0
-0x3a;KAKARIKO_POTION_SHOP;Item 3;OOT Kakariko Potion Shop Item 3;shop;0;0;KAKARIKO_POTION_SHOP;All;0
-0x3b;KAKARIKO_POTION_SHOP;Item 4;OOT Kakariko Potion Shop Item 4;shop;0;0;KAKARIKO_POTION_SHOP;All;0
-0x3c;KAKARIKO_POTION_SHOP;Item 5;OOT Kakariko Potion Shop Item 5;shop;0;0;KAKARIKO_POTION_SHOP;All;0
-0x3d;KAKARIKO_POTION_SHOP;Item 6;OOT Kakariko Potion Shop Item 6;shop;0;0;KAKARIKO_POTION_SHOP;All;0
-0x3e;KAKARIKO_POTION_SHOP;Item 7;OOT Kakariko Potion Shop Item 7;shop;0;0;KAKARIKO_POTION_SHOP;All;0
-0x3f;KAKARIKO_POTION_SHOP;Item 8;OOT Kakariko Potion Shop Item 8;shop;0;0;KAKARIKO_POTION_SHOP;All;0
-POCKET_EGG;GROTTOS;Hatch - Pocket Cucco;OOT Hatch Pocket Cucco;npc;0;0;KAKARIKO_VILLAGE;All;0
-ANJU_BOTTLE;KAKARIKO_VILLAGE;Bottle;OOT Kakariko Anju Bottle;npc;0;0;KAKARIKO_VILLAGE;Child;0
-TRADE_POCKET_EGG;KAKARIKO_VILLAGE;Egg;OOT Kakariko Anju Egg;npc;0;0;KAKARIKO_VILLAGE;Adult;0
-TRADE_COJIRO;KAKARIKO_VILLAGE;Cojiro;OOT Kakariko Anju Cojiro;npc;0;0;KAKARIKO_VILLAGE;Adult;0
-SHEIK_SHADOW;KAKARIKO_VILLAGE;Nocture of Shadow;OOT Kakariko Song Shadow;npc;0;0;KAKARIKO_VILLAGE;Adult;0
-KAKARIKO_ROOF_MAN;KAKARIKO_VILLAGE;Man on Roof;OOT Kakariko Man on Roof;npc;0;0;KAKARIKO_VILLAGE;All;0
-MASK_SELL_KEATON;KAKARIKO_VILLAGE;Keaton Mask;OOT Kakariko Sell Keaton Mask;npc;0;0;KAKARIKO_VILLAGE;Child;0
-0x8e;KAKARIKO_VILLAGE;Impa's Roof;OOT Kakariko GS Roof;gs;0;0;KAKARIKO_VILLAGE;Adult;0
-0x8b;KAKARIKO_VILLAGE;Shooting Gallery;OOT Kakariko GS Shooting Gallery;gs;0;0;KAKARIKO_VILLAGE;Child;0
-0x8d;KAKARIKO_VILLAGE;Tree;OOT Kakariko GS Tree;gs;0;0;KAKARIKO_VILLAGE;Adult;0
-0x8c;KAKARIKO_VILLAGE;House of Skulltula;OOT Kakariko GS House of Skulltula;gs;0;0;KAKARIKO_VILLAGE;Child;0
-0x89;KAKARIKO_VILLAGE;Bazaar;OOT Kakariko GS Bazaar;gs;0;0;KAKARIKO_VILLAGE;Child;0
-0x8a;KAKARIKO_VILLAGE;Ladder;OOT Kakariko GS Ladder;gs;0;0;KAKARIKO_VILLAGE;Child;0
-0x06;KAKARIKO_VILLAGE;Cow;OOT Kakariko Cow;cow;0;0;KAKARIKO_VILLAGE;All;0
-0x0008;KAKARIKO_VILLAGE;Pot 1;OOT Kakariko Pot 01;pot;0;0;KAKARIKO_VILLAGE;All;0
-0x0009;KAKARIKO_VILLAGE;Pot 2;OOT Kakariko Pot 02;pot;0;0;KAKARIKO_VILLAGE;All;0
-0x000a;KAKARIKO_VILLAGE;Pot 3;OOT Kakariko Pot 03;pot;0;0;KAKARIKO_VILLAGE;All;0
-0x000b;KAKARIKO_VILLAGE;Pot 4;OOT Kakariko Pot 04;pot;0;0;KAKARIKO_VILLAGE;All;0
-0x000c;KAKARIKO_VILLAGE;Pot 5;OOT Kakariko Pot 05;pot;0;0;KAKARIKO_VILLAGE;All;0
-0x000d;KAKARIKO_VILLAGE;Pot 6;OOT Kakariko Pot 06;pot;0;0;KAKARIKO_VILLAGE;All;0
-0x000e;KAKARIKO_VILLAGE;Pot 7;OOT Kakariko Pot 07;pot;0;0;KAKARIKO_VILLAGE;All;0
-0x000f;KAKARIKO_VILLAGE;Pot 8;OOT Kakariko Pot 08;pot;0;0;KAKARIKO_VILLAGE;All;0
-0x0010;KAKARIKO_VILLAGE;Pot 9;OOT Kakariko Pot 09;pot;0;0;KAKARIKO_VILLAGE;All;0
-0x0011;KAKARIKO_VILLAGE;Back Pot 1;OOT Kakariko Back Pot 1;pot;0;0;KAKARIKO_VILLAGE;All;0
-0x0012;KAKARIKO_VILLAGE;Back Pot 2;OOT Kakariko Back Pot 2;pot;0;0;KAKARIKO_VILLAGE;All;0
-0x00031;KAKARIKO_VILLAGE;Child - Near Trail;OOT Kakariko Crate Child Near Trail;crate;0;0;KAKARIKO_VILLAGE;Child;0
-0x00032;KAKARIKO_VILLAGE;Child - Near House;OOT Kakariko Crate Child Near House;crate;0;0;KAKARIKO_VILLAGE;Child;0
-0x00033;KAKARIKO_VILLAGE;Child - Near Windmill Bottom;OOT Kakariko Crate Child Near Windmill Bottom;crate;0;0;KAKARIKO_VILLAGE;Child;0
-0x00034;KAKARIKO_VILLAGE;Child - Near Windmill Top;OOT Kakariko Crate Child Near Windmill Top;crate;0;0;KAKARIKO_VILLAGE;Child;0
-0x00035;KAKARIKO_VILLAGE;Child - Near Graveyard;OOT Kakariko Crate Child Near Graveyard;crate;0;0;KAKARIKO_VILLAGE;Child;0
-0x08022;KAKARIKO_VILLAGE;Adult - Near First House;OOT Kakariko Crate Adult Near First House;crate;0;0;KAKARIKO_VILLAGE;Adult;0
-0x08023;KAKARIKO_VILLAGE;Adult - Near Trail 1;OOT Kakariko Crate Adult Near Trail 1;crate;0;0;KAKARIKO_VILLAGE;Adult;0
-0x08024;KAKARIKO_VILLAGE;Adult - Near Trail 2;OOT Kakariko Crate Adult Near Trail 2;crate;0;0;KAKARIKO_VILLAGE;Adult;0
-0x08025;KAKARIKO_VILLAGE;Adult - Near Impa 1;OOT Kakariko Crate Adult Near Impa 1;crate;0;0;KAKARIKO_VILLAGE;Adult;0
-0x08026;KAKARIKO_VILLAGE;Adult - Near Impa 2;OOT Kakariko Crate Adult Near Impa 2;crate;0;0;KAKARIKO_VILLAGE;Adult;0
-0x08027;KAKARIKO_VILLAGE;Adult - Center 1;OOT Kakariko Crate Adult Center 1;crate;0;0;KAKARIKO_VILLAGE;Adult;0
-0x08028;KAKARIKO_VILLAGE;Adult - Center 2;OOT Kakariko Crate Adult Center 2;crate;0;0;KAKARIKO_VILLAGE;Adult;0
-0x08029;KAKARIKO_VILLAGE;Adult - Near Archery;OOT Kakariko Crate Adult Near Archery;crate;0;0;KAKARIKO_VILLAGE;Adult;0
-0x0802a;KAKARIKO_VILLAGE;Adult - Near Potion Shop;OOT Kakariko Crate Adult Near Potion Shop;crate;0;0;KAKARIKO_VILLAGE;Adult;0
-0x0802b;KAKARIKO_VILLAGE;Adult - Back 1;OOT Kakariko Crate Adult Back 1;crate;0;0;KAKARIKO_VILLAGE;Adult;0
-0x0802c;KAKARIKO_VILLAGE;Adult - Back 2;OOT Kakariko Crate Adult Back 2;crate;0;0;KAKARIKO_VILLAGE;Adult;0
-0x0802d;KAKARIKO_VILLAGE;Adult - Back 3;OOT Kakariko Crate Adult Back 3;crate;0;0;KAKARIKO_VILLAGE;Adult;0
-0x0802e;KAKARIKO_VILLAGE;Adult - Back 4;OOT Kakariko Crate Adult Back 4;crate;0;0;KAKARIKO_VILLAGE;Adult;0
-0x00024;KAKARIKO_VILLAGE;Grass 1;OOT Kakariko Grass 1;grass;0;0;KAKARIKO_VILLAGE;All;0
-0x00025;KAKARIKO_VILLAGE;Grass 2;OOT Kakariko Grass 2;grass;0;0;KAKARIKO_VILLAGE;All;0
-0x00026;KAKARIKO_VILLAGE;Grass 3;OOT Kakariko Grass 3;grass;0;0;KAKARIKO_VILLAGE;All;0
-0x00027;KAKARIKO_VILLAGE;Grass 4;OOT Kakariko Grass 4;grass;0;0;KAKARIKO_VILLAGE;All;0
-0x00028;KAKARIKO_VILLAGE;Grass 5;OOT Kakariko Grass 5;grass;0;0;KAKARIKO_VILLAGE;All;0
-0x00029;KAKARIKO_VILLAGE;Grass 6;OOT Kakariko Grass 6;grass;0;0;KAKARIKO_VILLAGE;All;0
-0x0002a;KAKARIKO_VILLAGE;Grass 7;OOT Kakariko Grass 7;grass;0;0;KAKARIKO_VILLAGE;All;0
-0x0002b;KAKARIKO_VILLAGE;Grass 8;OOT Kakariko Grass 8;grass;0;0;KAKARIKO_VILLAGE;All;0
-0x00037;KAKARIKO_VILLAGE;Carpenter's Beam End;OOT Kakariko Wonder Item;wonder;0;0;KAKARIKO_VILLAGE;Child;0
-0x0002e;KAKARIKO_VILLAGE;Butterfly 1;OOT Kakariko Butterfly 1;butterfly;0;0;KAKARIKO_VILLAGE;All;0
-0x1002e;KAKARIKO_VILLAGE;Butterfly 2;OOT Kakariko Butterfly 2;butterfly;0;0;KAKARIKO_VILLAGE;All;0
+TRADE_ODD_POTION;KAKARIKO_POTION_SHOP;Odd Potion;OOT Kakariko Potion Shop Odd Potion;npc;474;520;GRANNY_POTION_SHOP;All;0
+0x38;KAKARIKO_POTION_SHOP;Item 1;OOT Kakariko Potion Shop Item 1;shop;689;318;KAKARIKO_POTION_SHOP;All;0
+0x39;KAKARIKO_POTION_SHOP;Item 2;OOT Kakariko Potion Shop Item 2;shop;644;318;KAKARIKO_POTION_SHOP;All;0
+0x3a;KAKARIKO_POTION_SHOP;Item 3;OOT Kakariko Potion Shop Item 3;shop;510;318;KAKARIKO_POTION_SHOP;All;0
+0x3b;KAKARIKO_POTION_SHOP;Item 4;OOT Kakariko Potion Shop Item 4;shop;465;318;KAKARIKO_POTION_SHOP;All;0
+0x3c;KAKARIKO_POTION_SHOP;Item 5;OOT Kakariko Potion Shop Item 5;shop;689;277;KAKARIKO_POTION_SHOP;All;0
+0x3d;KAKARIKO_POTION_SHOP;Item 6;OOT Kakariko Potion Shop Item 6;shop;644;277;KAKARIKO_POTION_SHOP;All;0
+0x3e;KAKARIKO_POTION_SHOP;Item 7;OOT Kakariko Potion Shop Item 7;shop;510;277;KAKARIKO_POTION_SHOP;All;0
+0x3f;KAKARIKO_POTION_SHOP;Item 8;OOT Kakariko Potion Shop Item 8;shop;465;277;KAKARIKO_POTION_SHOP;All;0
+POCKET_EGG;GROTTOS;Hatch - Pocket Cucco;OOT Hatch Pocket Cucco;npc;396;132;KAKARIKO_VILLAGE;All;0
+ANJU_BOTTLE;KAKARIKO_VILLAGE;Bottle;OOT Kakariko Anju Bottle;npc;396;150;KAKARIKO_VILLAGE;Child;0
+TRADE_POCKET_EGG;KAKARIKO_VILLAGE;Egg;OOT Kakariko Anju Egg;npc;396;150;KAKARIKO_VILLAGE;Adult;0
+TRADE_COJIRO;KAKARIKO_VILLAGE;Cojiro;OOT Kakariko Anju Cojiro;npc;376;150;KAKARIKO_VILLAGE;Adult;0
+SHEIK_SHADOW;KAKARIKO_VILLAGE;Nocture of Shadow;OOT Kakariko Song Shadow;npc;383;279;KAKARIKO_VILLAGE;Adult;0
+KAKARIKO_ROOF_MAN;KAKARIKO_VILLAGE;Man on Roof;OOT Kakariko Man on Roof;npc;411;337;KAKARIKO_VILLAGE;All;0
+MASK_SELL_KEATON;KAKARIKO_VILLAGE;Keaton Mask;OOT Kakariko Sell Keaton Mask;npc;494;563;KAKARIKO_VILLAGE;Child;0
+0x8e;KAKARIKO_VILLAGE;Impa's Roof;OOT Kakariko GS Roof;gs;474;67;KAKARIKO_VILLAGE;Adult;0
+0x8b;KAKARIKO_VILLAGE;Shooting Gallery;OOT Kakariko GS Shooting Gallery;gs;422;217;KAKARIKO_VILLAGE;Child;0
+0x8d;KAKARIKO_VILLAGE;Tree;OOT Kakariko GS Tree;gs;596;280;KAKARIKO_VILLAGE;All;0
+0x8c;KAKARIKO_VILLAGE;House of Skulltula;OOT Kakariko GS House of Skulltula;gs;560;190;KAKARIKO_VILLAGE;Child;0
+0x89;KAKARIKO_VILLAGE;Bazaar;OOT Kakariko GS Bazaar;gs;550;498;KAKARIKO_VILLAGE;Child;0
+0x8a;KAKARIKO_VILLAGE;Ladder;OOT Kakariko GS Ladder;gs;471;381;KAKARIKO_VILLAGE;Child;0
+0x06;KAKARIKO_VILLAGE;Cow;OOT Kakariko Cow;cow;630;402;IMPA_HOUSE;All;0
+0x0008;KAKARIKO_VILLAGE;Pot 1;OOT Kakariko Pot 01;pot;440;415;KAKARIKO_VILLAGE;Child;0
+0x0009;KAKARIKO_VILLAGE;Pot 2;OOT Kakariko Pot 02;pot;429;410;KAKARIKO_VILLAGE;Child;0
+0x000a;KAKARIKO_VILLAGE;Pot 3;OOT Kakariko Pot 03;pot;418;405;KAKARIKO_VILLAGE;Child;0
+0x000b;KAKARIKO_VILLAGE;Pot 4;OOT Kakariko Pot 04;pot;532;114;KAKARIKO_VILLAGE;Child;0
+0x000c;KAKARIKO_VILLAGE;Pot 5;OOT Kakariko Pot 05;pot;532;126;KAKARIKO_VILLAGE;Child;0
+0x000d;KAKARIKO_VILLAGE;Pot 6;OOT Kakariko Pot 06;pot;532;138;KAKARIKO_VILLAGE;Child;0
+0x000e;KAKARIKO_VILLAGE;Pot 7;OOT Kakariko Pot 07;pot;538;499;KAKARIKO_VILLAGE;Child;0
+0x000f;KAKARIKO_VILLAGE;Pot 8;OOT Kakariko Pot 08;pot;527;494;KAKARIKO_VILLAGE;Child;0
+0x0010;KAKARIKO_VILLAGE;Pot 9;OOT Kakariko Pot 09;pot;516;489;KAKARIKO_VILLAGE;Child;0
+0x0011;KAKARIKO_VILLAGE;Back Pot 1;OOT Kakariko Back Pot 1;pot;343;343;KAKARIKO_VILLAGE;Child;0
+0x0012;KAKARIKO_VILLAGE;Back Pot 2;OOT Kakariko Back Pot 2;pot;330;343;KAKARIKO_VILLAGE;Child;0
+0x00031;KAKARIKO_VILLAGE;Child - Near Trail;OOT Kakariko Crate Child Near Trail;crate;570;429;KAKARIKO_VILLAGE;Child;0
+0x00032;KAKARIKO_VILLAGE;Child - Near House;OOT Kakariko Crate Child Near House;crate;480;363;KAKARIKO_VILLAGE;Child;0
+0x00033;KAKARIKO_VILLAGE;Child - Near Windmill Bottom;OOT Kakariko Crate Child Near Windmill Bottom;crate;296;339;KAKARIKO_VILLAGE;Child;0
+0x00034;KAKARIKO_VILLAGE;Child - Near Windmill Top;OOT Kakariko Crate Child Near Windmill Top;crate;292;262;KAKARIKO_VILLAGE;Child;0
+0x00035;KAKARIKO_VILLAGE;Child - Near Graveyard;OOT Kakariko Crate Child Near Graveyard;crate;213;151;KAKARIKO_VILLAGE;Child;0
+0x08022;KAKARIKO_VILLAGE;Adult - Near First House;OOT Kakariko Crate Adult Near First House;crate;578;227;KAKARIKO_VILLAGE;Adult;0
+0x08023;KAKARIKO_VILLAGE;Adult - Near Trail 1;OOT Kakariko Crate Adult Near Trail 1;crate;541;415;KAKARIKO_VILLAGE;Adult;0
+0x08024;KAKARIKO_VILLAGE;Adult - Near Trail 2;OOT Kakariko Crate Adult Near Trail 2;crate;555;422;KAKARIKO_VILLAGE;Adult;0
+0x08025;KAKARIKO_VILLAGE;Adult - Near Impa 1;OOT Kakariko Crate Adult Near Impa 1;crate;534;137;KAKARIKO_VILLAGE;Adult;0
+0x08026;KAKARIKO_VILLAGE;Adult - Near Impa 2;OOT Kakariko Crate Adult Near Impa 2;crate;534;122;KAKARIKO_VILLAGE;Adult;0
+0x08027;KAKARIKO_VILLAGE;Adult - Center 1;OOT Kakariko Crate Adult Center 1;crate;468;301;KAKARIKO_VILLAGE;Adult;0
+0x08028;KAKARIKO_VILLAGE;Adult - Center 2;OOT Kakariko Crate Adult Center 2;crate;452;301;KAKARIKO_VILLAGE;Adult;0
+0x08029;KAKARIKO_VILLAGE;Adult - Near Archery;OOT Kakariko Crate Adult Near Archery;crate;444;239;KAKARIKO_VILLAGE;Adult;0
+0x0802a;KAKARIKO_VILLAGE;Adult - Near Potion Shop;OOT Kakariko Crate Adult Near Potion Shop;crate;442;476;KAKARIKO_VILLAGE;Adult;0
+0x0802b;KAKARIKO_VILLAGE;Adult - Back 1;OOT Kakariko Crate Adult Back 1;crate;317;339;KAKARIKO_VILLAGE;Adult;0
+0x0802c;KAKARIKO_VILLAGE;Adult - Back 2;OOT Kakariko Crate Adult Back 2;crate;301;339;KAKARIKO_VILLAGE;Adult;0
+0x0802d;KAKARIKO_VILLAGE;Adult - Back 3;OOT Kakariko Crate Adult Back 3;crate;393;402;KAKARIKO_VILLAGE;Adult;0
+0x0802e;KAKARIKO_VILLAGE;Adult - Back 4;OOT Kakariko Crate Adult Back 4;crate;400;388;KAKARIKO_VILLAGE;Adult;0
+0x00024;KAKARIKO_VILLAGE;Grass 1;OOT Kakariko Grass 1;grass;605;291;KAKARIKO_VILLAGE;All;0
+0x00025;KAKARIKO_VILLAGE;Grass 2;OOT Kakariko Grass 2;grass;590;291;KAKARIKO_VILLAGE;All;0
+0x00026;KAKARIKO_VILLAGE;Grass 3;OOT Kakariko Grass 3;grass;585;280;KAKARIKO_VILLAGE;All;0
+0x00027;KAKARIKO_VILLAGE;Grass 4;OOT Kakariko Grass 4;grass;605;269;KAKARIKO_VILLAGE;All;0
+0x00028;KAKARIKO_VILLAGE;Grass 5;OOT Kakariko Grass 5;grass;590;269;KAKARIKO_VILLAGE;All;0
+0x00029;KAKARIKO_VILLAGE;Grass 6;OOT Kakariko Grass 6;grass;313;136;KAKARIKO_VILLAGE;All;0
+0x0002a;KAKARIKO_VILLAGE;Grass 7;OOT Kakariko Grass 7;grass;306;127;KAKARIKO_VILLAGE;All;0
+0x0002b;KAKARIKO_VILLAGE;Grass 8;OOT Kakariko Grass 8;grass;318;125;KAKARIKO_VILLAGE;All;0
+0x00037;KAKARIKO_VILLAGE;Carpenter's Beam End;OOT Kakariko Wonder Item;wonder;449;176;KAKARIKO_VILLAGE;Child;0
+0x0002e;KAKARIKO_VILLAGE;Butterfly 1;OOT Kakariko Butterfly 1;butterfly;456;372;KAKARIKO_VILLAGE;Child;0
+0x1002e;KAKARIKO_VILLAGE;Butterfly 2;OOT Kakariko Butterfly 2;butterfly;463;359;KAKARIKO_VILLAGE;Child;0
 0x00;KOKIRI_FOREST;Kokiri Sword;OOT Kokiri Forest Kokiri Sword Chest;chest;953;1406;KOKIRI_FOREST;Child;0
 0x68;KOKIRI_FOREST;Soil;OOT Kokiri Forest GS Soil;gs;1055;200;KOKIRI_FOREST;Child;0
 0x69;KOKIRI_FOREST;Child - Behind Know-It-All House;OOT Kokiri Forest GS Night Child;gs;412;708;KOKIRI_FOREST;Child;0
@@ -1625,8 +1625,8 @@ TRADE_POACHER_SAW;LOST_WOODS;Poacher's Saw;OOT Lost Woods Poacher's Saw;npc;301;
 0x00704;LOST_WOODS;Boulder;OOT Lost Woods Rupee Boulder;rupee;2281;230;LOST_WOODS;All;0
 0x00303;LOST_WOODS;Pool;OOT Lost Woods Pool Big Fairy;fairy_spot;2399;1504;LOST_WOODS;All;0
 0x00105;LOST_WOODS;Memory Game Grass 1;OOT Lost Woods Wonder Item 1;wonder;1975;2105;LOST_WOODS;All;0
-0x00106;LOST_WOODS;Memory Game Grass 2;OOT Lost Woods Wonder Item 2;wonder;2039;2274;LOST_WOODS;All;0
-0x00107;LOST_WOODS;Memory Game Grass 3;OOT Lost Woods Wonder Item 3;wonder;1847;2311;LOST_WOODS;All;0
+0x00106;LOST_WOODS;Memory Game Grass 2;OOT Lost Woods Wonder Item 2;wonder;1847;2311;LOST_WOODS;All;0
+0x00107;LOST_WOODS;Memory Game Grass 3;OOT Lost Woods Wonder Item 3;wonder;2039;2274;LOST_WOODS;All;0
 0x00601;LOST_WOODS;Butterfly 1;OOT Lost Woods Butterfly 1;butterfly;1042;907;LOST_WOODS;Child;0
 0x10601;LOST_WOODS;Butterfly 2;OOT Lost Woods Butterfly 2;butterfly;1018;914;LOST_WOODS;Child;0
 0x20601;LOST_WOODS;Butterfly 3;OOT Lost Woods Butterfly 3;butterfly;1037;926;LOST_WOODS;Child;0
@@ -1668,11 +1668,11 @@ SARIA_SONG;SACRED_FOREST_MEADOW;Saria's Song;OOT Saria's Song;npc;263;253;SACRED
 SHEIK_FOREST;SACRED_FOREST_MEADOW;Minuet of Forest;OOT Sacred Meadow Sheik Song;npc;399;391;SACRED_FOREST_MEADOW;Adult;0
 0x73;SACRED_FOREST_MEADOW;Night Adult;OOT Sacred Meadow GS Night Adult;gs;1001;90;SACRED_FOREST_MEADOW;Adult;0
 0x0000f;SACRED_FOREST_MEADOW;Entrance;OOT Sacred Meadow Wonder Item Entrance;wonder;1688;437;SACRED_FOREST_MEADOW;All;0
-0x0000c;SACRED_FOREST_MEADOW;Maze 1;OOT Sacred Meadow Wonder Item Maze 1;wonder;1418;277;SACRED_FOREST_MEADOW;All;0
-0x0000d;SACRED_FOREST_MEADOW;Maze 2;OOT Sacred Meadow Wonder Item Maze 2;wonder;1317;277;SACRED_FOREST_MEADOW;All;0
-0x0000e;SACRED_FOREST_MEADOW;Maze 3;OOT Sacred Meadow Wonder Item Maze 3;wonder;1388;384;SACRED_FOREST_MEADOW;All;0
-0x00010;SACRED_FOREST_MEADOW;Maze 4;OOT Sacred Meadow Wonder Item Maze 4;wonder;1039;209;SACRED_FOREST_MEADOW;All;0
-0x00011;SACRED_FOREST_MEADOW;Maze 5;OOT Sacred Meadow Wonder Item Maze 5;wonder;995;383;SACRED_FOREST_MEADOW;All;0
+0x0000c;SACRED_FOREST_MEADOW;Maze 1;OOT Sacred Meadow Wonder Item Maze 1;wonder;1388;384;SACRED_FOREST_MEADOW;All;0
+0x0000d;SACRED_FOREST_MEADOW;Maze 2;OOT Sacred Meadow Wonder Item Maze 2;wonder;1418;277;SACRED_FOREST_MEADOW;All;0
+0x0000e;SACRED_FOREST_MEADOW;Maze 3;OOT Sacred Meadow Wonder Item Maze 3;wonder;1039;209;SACRED_FOREST_MEADOW;All;0
+0x00010;SACRED_FOREST_MEADOW;Maze 4;OOT Sacred Meadow Wonder Item Maze 4;wonder;995;383;SACRED_FOREST_MEADOW;All;0
+0x00011;SACRED_FOREST_MEADOW;Maze 5;OOT Sacred Meadow Wonder Item Maze 5;wonder;1317;277;SACRED_FOREST_MEADOW;All;0
 SHOOTING_GAME_CHILD;SHOOTING_GALLERY;Reward;OOT Shooting Gallery Child;npc;0;0;MARKET_SHOOTING;All;0
 SHOOTING_GAME_ADULT;SHOOTING_GALLERY;Reward;OOT Shooting Gallery Adult;npc;0;0;KAKARIKO_SHOOTING;All;0
 0x01;TEMPLE_FIRE;Jail 1;OOT Fire Temple Jail 1 Chest;chest;0;0;TEMPLE_FIRE;All;0
@@ -3045,6 +3045,7 @@ TRADE_ODD_POTION;KAKARIKO_VILLAGE;Odd Potion;OOT Kakariko Potion Shop Odd Potion
 0x3f;KAKARIKO_VILLAGE;Item 8;OOT Kakariko Potion Shop Item 8;none;0;0;KAKARIKO_POTION_SHOP;All;0
 0x01;KAKARIKO_VILLAGE;Heart Piece;OOT Kakariko Impa House HP;none;0;0;IMPA_HOUSE;All;0
 0x00006;KAKARIKO_VILLAGE;Above Jail;OOT Kakariko Impa House Wonder Item;none;0;0;IMPA_HOUSE;All;0
+0x06;KAKARIKO_VILLAGE;Cow;OOT Kakariko Cow;none;0;0;IMPA_HOUSE;All;0
 0x0006;KOKIRI_FOREST;Pot 1;OOT Know It All House Pot 1;none;0;0;KOKIRI_KNOW_IT_ALL;All;0
 0x0007;KOKIRI_FOREST;Pot 2;OOT Know It All House Pot 2;none;0;0;KOKIRI_KNOW_IT_ALL;All;0
 0x00;KOKIRI_FOREST;Top Left;OOT Mido's House Top Left;none;0;0;KOKIRI_MIDO;All;0
@@ -3087,12 +3088,12 @@ CHEST_GAME_KEY;MARKET;Buy Key;OOT Treasure Chest Game Buy Key;none;0;0;TREASURE_
 0x17;ZORA_DOMAIN;Item 8;OOT Zora Shop Item 8;none;0;0;ZORA_SHOP;All;0
 SHOOTING_GAME_CHILD;MARKET;Reward;OOT Shooting Gallery Child;none;0;0;MARKET_SHOOTING;All;0
 SHOOTING_GAME_ADULT;KAKARIKO_VILLAGE;Reward;OOT Shooting Gallery Adult;none;0;0;KAKARIKO_SHOOTING;All;0
-FAIRY_SPELL_FIRE;HYRULE_CASTLE;Din's Fire;OOT Great Fairy Din's Fire;none;0;0;OOT_GREAT_FAIRY_DIN;All;0
+FAIRY_SPELL_FIRE;HYRULE_CASTLE;Din's Fire;OOT Great Fairy Din's Fire;none;0;0;OOT_GREAT_FAIRY_CASTLE;All;0
 FAIRY_SPELL_WIND;ZORA_FOUNTAIN;Farore's Wind;OOT Great Fairy Farore's Wind;none;0;0;OOT_GREAT_FAIRY_FARORE;All;0
 FAIRY_SPELL_LOVE;DESERT_COLOSSUS;Nayru's Love;OOT Great Fairy Nayru's Love;none;0;0;OOT_GREAT_FAIRY_NAYRU;All;0
 FAIRY_MAGIC_UPGRADE;DEATH_MOUNTAIN_TRAIL;Magic Upgrade;OOT Great Fairy Magic Upgrade;none;0;0;OOT_GREAT_FAIRY_MAGIC;All;0
 FAIRY_MAGIC_UPGRADE2;DEATH_MOUNTAIN_CRATER;Large Magic Upgrade;OOT Great Fairy Magic Upgrade 2;none;0;0;OOT_GREAT_FAIRY_MAGIC2;All;0
-FAIRY_DEFENSE_UPGRADE;GANON_CASTLE_EXTERIOR;Double Defense Upgrade;OOT Great Fairy Defense Upgrade;none;0;0;OOT_GREAT_FAIRY_DEFENSE;All;0
+FAIRY_DEFENSE_UPGRADE;GANON_CASTLE_EXTERIOR;Double Defense Upgrade;OOT Great Fairy Defense Upgrade;none;0;0;OOT_GREAT_FAIRY_CASTLE;All;0
 0x0b;TEMPLE_SPIRIT;Silver Gauntlets;OOT Spirit Temple Silver Gauntlets;none;0;0;DESERT_COLOSSUS;All;0
 0x09;TEMPLE_SPIRIT;Mirror Shield;OOT Spirit Temple Mirror Shield;none;0;0;DESERT_COLOSSUS;All;0
 0x00;GRAVEYARD;Hookshot;OOT Graveyard Dampe Tomb Reward 1;none;0;0;TOMB_DAMPE_WINDMILL;All;0

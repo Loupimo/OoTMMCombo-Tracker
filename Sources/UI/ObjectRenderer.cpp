@@ -368,6 +368,8 @@ void ObjectRenderer::RefreshObject(ObjectInfo* Object)
         if (this->Objects[i]->Object == Object)
         {   // This is the object we need to refresh
 
+            this->SceneOwner->UpdateRoom(Object->RoomID);  // We need to update the room ID in case the selected object is in another room than the active one
+            this->UpdateSceneContext(Object->Context);     // We need to update the context in case the selected object is in a different context than the active one
             this->Objects[i]->UpdateIcon(this->Type);
             this->Objects[i]->PerformAction();
             break;

@@ -153,34 +153,33 @@ typedef struct SceneMetaInfo
 #define OOT_FAIRY_GERUDO_FORTRESS				0x85	// Gerudo fortress fairy fountain
 
 // OoT detailed great fairy scene
-#define OOT_GREAT_FAIRY_DIN						0x86	// Din's fire fairy fountain
+#define OOT_GREAT_FAIRY_CASTLE					0x86	// Din's fire fairy fountain / Double defense upgrade fairy fountain
 #define OOT_GREAT_FAIRY_FARORE					0x87	// Farore's wind fairy fountain
 #define OOT_GREAT_FAIRY_NAYRU					0x88	// Nayru's love fairy fountain
 #define OOT_GREAT_FAIRY_MAGIC					0x89	// First magic upgrade fairy fountain
 #define OOT_GREAT_FAIRY_MAGIC2					0x8a	// Second magic upgrade fairy fountain
-#define OOT_GREAT_FAIRY_DEFENSE					0x8b	// Double defense upgrade fairy fountain
 
 // OoT detailed other scene
-#define KAKARIKO_BAZAAR							0x8c	// Kakariko's bazaar
-#define MARKET_BAZAAR							0x8d	// Market bazaar
-#define KAKARIKO_SHOOTING						0x8e	// Kakariko's shooting gallery
-#define MARKET_SHOOTING							0x8f	// Kakariko's shooting gallery
-#define SILO									0x90	// It the real Silo and not the "RANCH_HOUSE_SILO"
-#define WINDMILL								0x91	// Kakariko's windmill
+#define KAKARIKO_BAZAAR							0x8b	// Kakariko's bazaar
+#define MARKET_BAZAAR							0x8c	// Market bazaar
+#define KAKARIKO_SHOOTING						0x8d	// Kakariko's shooting gallery
+#define MARKET_SHOOTING							0x8e	// Kakariko's shooting gallery
+#define SILO									0x8f	// It the real Silo and not the "RANCH_HOUSE_SILO"
+#define WINDMILL								0x90	// Kakariko's windmill
 
 // MQ Scenes
-#define MQ_DEKU_TREE							0x92
-#define MQ_DODONGO_CAVERN						0x93
-#define MQ_INSIDE_JABU_JABU						0x94
-#define MQ_TEMPLE_FOREST						0x95
-#define MQ_TEMPLE_FIRE							0x96
-#define MQ_TEMPLE_WATER							0x97
-#define MQ_TEMPLE_SHADOW						0x98
-#define MQ_TEMPLE_SPIRIT						0x99
-#define MQ_BOTTOM_OF_THE_WELL					0x9a
-#define MQ_ICE_CAVERN							0x9b
-#define MQ_GERUDO_TRAINING_GROUND				0x9c
-#define MQ_INSIDE_GANON_CASTLE					0x9d
+#define MQ_DEKU_TREE							0x91
+#define MQ_DODONGO_CAVERN						0x92
+#define MQ_INSIDE_JABU_JABU						0x93
+#define MQ_TEMPLE_FOREST						0x94
+#define MQ_TEMPLE_FIRE							0x95
+#define MQ_TEMPLE_WATER							0x96
+#define MQ_TEMPLE_SHADOW						0x97
+#define MQ_TEMPLE_SPIRIT						0x98
+#define MQ_BOTTOM_OF_THE_WELL					0x99
+#define MQ_ICE_CAVERN							0x9a
+#define MQ_GERUDO_TRAINING_GROUND				0x9b
+#define MQ_INSIDE_GANON_CASTLE					0x9c
 
 // Spoiler Log only
 #define INSIDE_EGGS								WINDMILL + 1
@@ -272,7 +271,7 @@ const SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 	{ "Ganon Battle Arena", "", (uint8_t)OoTRegions::None, false },
 	{ "House of Skulltula", "./Resources/OoT/Kakariko/House_of_Skulltula.png", (uint8_t)OoTRegions::Kakariko, false },
 	{ "Hyrule Field", "./Resources/OoT/Hyrule/Hyrule_Field.png", (uint8_t)OoTRegions::Hyrule, true },
-	{ "Kakariko's Village", "./Resources/OoT/Kakariko/Kakariko_Village.png", (uint8_t)OoTRegions::Kakariko, true },
+	{ "Kakariko's Village", "./Resources/OoT/Kakariko/Kakariko.png", (uint8_t)OoTRegions::Kakariko, true },
 	{ "Graveyard", "./Resources/OoT/Graveyard/Graveyard.png", (uint8_t)OoTRegions::Graveyard, true },
 	{ "Zora's River", "./Resources/OoT/Zora_River/Zora_River.png", (uint8_t)OoTRegions::Zora_River, true },
 	{ "Kokiri Forest", "./Resources/OoT/Kokiri_Forest/Kokiri_Forest.png", (uint8_t)OoTRegions::Kokiri_Forest, true },
@@ -319,17 +318,16 @@ const SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 	{ "Song of Storms Grotto", "./Resources/OoT/Gerudo_Valley/Storms.png", (uint8_t)OoTRegions::Gerudo_Valley, false },
 	{ "Octorok Grotto", "./Resources/OoT/Gerudo_Valley/Octorok.png", (uint8_t)OoTRegions::Gerudo_Valley, false },
 	{ "Deku Scrubs Grotto", "./Resources/OoT/Desert_Colossus/Scrubs.png", (uint8_t)OoTRegions::Desert_Colossus, false },
-	{ "Fairy Fountain", "./Resources/OoT/Sacred_Forest_Meadow/Fountain.png", (uint8_t)OoTRegions::Sacred_Forest_Meadow, false },
-	{ "Fairy Fountain", "./Resources/OoT/Zora_River/Fountain.png", (uint8_t)OoTRegions::Zora_River, false },
-	{ "Fairy Fountain", "./Resources/OoT/Zora_Domain/Fountain.png", (uint8_t)OoTRegions::Zora_Domain, false },
-	{ "Fairy Fountain", "./Resources/OoT/Hyrule/Field_Fountain.png", (uint8_t)OoTRegions::Hyrule, false },
-	{ "Fairy Fountain", "./Resources/OoT/Gerudo_Fortress/Fountain.png", (uint8_t)OoTRegions::Gerudo_Fortress, false },
-	{ "Child Great Fairy Fountain", "./Resources/OoT/Hyrule/Great_Fairy.png", (uint8_t)OoTRegions::Castle, false },
-	{ "Great Fairy Fountain", "./Resources/OoT/Zora_Fountain/Great_Fairy.png", (uint8_t)OoTRegions::Zora_Fountain, false },
-	{ "Great Fairy Fountain", "./Resources/OoT/Desert_Colossus/Great_Fairy.png", (uint8_t)OoTRegions::Desert_Colossus, false },
-	{ "Great Fairy Fountain", "./Resources/OoT/Death_Moutain_Trail/Great_Fairy.png", (uint8_t)OoTRegions::Death_Mountain_Trial, false },
-	{ "Great Fairy Fountain", "./Resources/OoT/Death_Moutain_Crater/Great_Fairy.png", (uint8_t)OoTRegions::Death_Mountain_Crater, false },
-	{ "Adult Great Fairy Fountain", "./Resources/OoT/Ganon/Great_Fairy.png", (uint8_t)OoTRegions::Castle, false },
+	{ "Fairy Fountain", "./Resources/OoT/Fairy/Fountain.png", (uint8_t)OoTRegions::Sacred_Forest_Meadow, false },
+	{ "Fairy Fountain", "./Resources/OoT/Fairy/Fountain.png", (uint8_t)OoTRegions::Zora_River, false },
+	{ "Fairy Fountain", "./Resources/OoT/Fairy/Fountain.png", (uint8_t)OoTRegions::Zora_Domain, false },
+	{ "Fairy Fountain", "./Resources/OoT/Fairy/Fountain.png", (uint8_t)OoTRegions::Hyrule, false },
+	{ "Fairy Fountain", "./Resources/OoT/Fairy/Fountain.png", (uint8_t)OoTRegions::Gerudo_Fortress, false },
+	{ "Great Fairy Fountain", "./Resources/OoT/Fairy/Great_Fairy.png", (uint8_t)OoTRegions::Castle, true },
+	{ "Great Fairy Fountain", "./Resources/OoT/Fairy/Great_Fairy.png", (uint8_t)OoTRegions::Zora_Fountain, false },
+	{ "Great Fairy Fountain", "./Resources/OoT/Fairy/Great_Fairy.png", (uint8_t)OoTRegions::Desert_Colossus, false },
+	{ "Great Fairy Fountain", "./Resources/OoT/Fairy/Great_Fairy.png", (uint8_t)OoTRegions::Death_Mountain_Trial, false },
+	{ "Great Fairy Fountain", "./Resources/OoT/Fairy/Great_Fairy.png", (uint8_t)OoTRegions::Death_Mountain_Crater, false },
 	{ "Bazaar", "./Resources/OoT/Kakariko/Bazaar.png", (uint8_t)OoTRegions::Kakariko, false },
 	{ "Bazaar", "./Resources/OoT/Market/Bazaar.png", (uint8_t)OoTRegions::Market, false },
 	{ "Shooting Gallery", "./Resources/OoT/Kakariko/Shooting.png", (uint8_t)OoTRegions::Kakariko, false },
