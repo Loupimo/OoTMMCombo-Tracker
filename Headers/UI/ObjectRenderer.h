@@ -22,11 +22,11 @@ const ObjectIcon IconsMetaInfo[23] =
 {
     {"", {0, 0}},                                          // ObjectType::none
     {"./Resources/Common/Chest.png", { 40, 40 }},          // ObjectType::chest
-    {"./Resources/Common/Collectible.png", { 50, 50 }},    // ObjectType::collectible
-    {"./Resources/Common/NPC.png", { 50, 50 }},            // ObjectType::npc
-    {"./Resources/Common/Gold_Skulltula.png", { 50, 50 }}, // ObjectType::gs
+    {"./Resources/Common/Collectible.png", { 30, 30 }},    // ObjectType::collectible
+    {"./Resources/Common/NPC.png", { 40, 40 }},            // ObjectType::npc
+    {"./Resources/Common/Gold_Skulltula.png", { 40, 40 }}, // ObjectType::gs
     {"./Resources/Common/Stray_Fairy.png", { 30, 30 }},    // ObjectType::sf
-    {"./Resources/Common/Cow.png", { 100, 100 }},          // ObjectType::cow
+    {"./Resources/Common/Cow.png", { 70, 70 }},            // ObjectType::cow
     {"./Resources/Common/Shop.png", { 30, 30 }},           // ObjectType::shop
     {"./Resources/Common/Scrub.png", { 55, 55 }},          // ObjectType::scrub
     {"./Resources/Common/Silver_Rupee.png", { 30, 30 }},   // ObjectType::sr
@@ -34,7 +34,7 @@ const ObjectIcon IconsMetaInfo[23] =
     {"./Resources/Common/Wonder.png", { 40, 40 }},         // ObjectType::wonder
     {"./Resources/Common/Grass.png", { 30, 30 }},          // ObjectType::grass
     {"./Resources/Common/Crate.png", { 30, 30 }},          // ObjectType::crate
-    {"./Resources/Common/Pot.png", { 40, 40 }},            // ObjectType::pot
+    {"./Resources/Common/Pot.png", { 20, 20 }},            // ObjectType::pot
     {"./Resources/Common/Hive.png", { 40, 40 }},           // ObjectType::hive
     {"./Resources/Common/Butterfly.png", { 30, 30 }},      // ObjectType::butterfly
     {"./Resources/Common/Rupee.png", { 30, 30 }},          // ObjectType::rupee

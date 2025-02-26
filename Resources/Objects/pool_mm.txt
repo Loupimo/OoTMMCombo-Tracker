@@ -1,5 +1,7 @@
 
-CreateObjectsForScene(BENEATH_THE_GRAVEYARD, 22,
+const size_t BENEATH_THE_GRAVEYARDNumOfObjs = 22;
+ObjectInfo BENEATH_THE_GRAVEYARDSceneObjects [BENEATH_THE_GRAVEYARDNumOfObjs] =
+{
 	{ 0x03, BENEATH_THE_GRAVEYARD, "Chest", "MM Beneath The Graveyard Chest", ObjectType::chest, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT1, ObjectContext::All, 0 },
 	{ 0x00, BENEATH_THE_GRAVEYARD, "Heart Piece", "MM Beneath The Graveyard HP", ObjectType::chest, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT2, ObjectContext::All, 0 },
 	{ 0x0104, BENEATH_THE_GRAVEYARD, "Bats 1", "MM Beneath The Graveyard Pot Night 1 Bats 1", ObjectType::pot, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT1, ObjectContext::All, 0 },
@@ -21,18 +23,24 @@ CreateObjectsForScene(BENEATH_THE_GRAVEYARD, 22,
 	{ 0x40000, BENEATH_THE_GRAVEYARD, "Rupee 5", "MM Beneath The Graveyard Rupee 5", ObjectType::rupee, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT2, ObjectContext::All, 0 },
 	{ 0x50000, BENEATH_THE_GRAVEYARD, "Rupee 6", "MM Beneath The Graveyard Rupee 6", ObjectType::rupee, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT2, ObjectContext::All, 0 },
 	{ 0x60000, BENEATH_THE_GRAVEYARD, "Rupee 7", "MM Beneath The Graveyard Rupee 7", ObjectType::rupee, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT2, ObjectContext::All, 0 },
-	{ MM_SONG_STORMS, BENEATH_THE_GRAVEYARD, "Song of Storms", "MM Beneath The Graveyard Song of Storms", ObjectType::npc, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT1, ObjectContext::All, 0 })
+	{ MM_SONG_STORMS, BENEATH_THE_GRAVEYARD, "Song of Storms", "MM Beneath The Graveyard Song of Storms", ObjectType::npc, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT1, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(BENEATH_THE_GRAVEYARD_NIGHT1, 7,
+const size_t BENEATH_THE_GRAVEYARD_NIGHT1NumOfObjs = 7;
+ObjectInfo BENEATH_THE_GRAVEYARD_NIGHT1SceneObjects [BENEATH_THE_GRAVEYARD_NIGHT1NumOfObjs] =
+{
 	{ 0x03, BENEATH_THE_GRAVEYARD, "Chest", "MM Beneath The Graveyard Chest", ObjectType::chest, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT1, ObjectContext::All, 0 },
 	{ 0x0104, BENEATH_THE_GRAVEYARD, "Bats 1", "MM Beneath The Graveyard Pot Night 1 Bats 1", ObjectType::pot, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT1, ObjectContext::All, 0 },
 	{ 0x0105, BENEATH_THE_GRAVEYARD, "Bats 2", "MM Beneath The Graveyard Pot Night 1 Bats 2", ObjectType::pot, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT1, ObjectContext::All, 0 },
 	{ 0x0106, BENEATH_THE_GRAVEYARD, "Bats 3", "MM Beneath The Graveyard Pot Night 1 Bats 3", ObjectType::pot, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT1, ObjectContext::All, 0 },
 	{ 0x0004, BENEATH_THE_GRAVEYARD, "Early 1", "MM Beneath The Graveyard Pot Night 1 Early 1", ObjectType::pot, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT1, ObjectContext::All, 0 },
 	{ 0x0005, BENEATH_THE_GRAVEYARD, "Early 2", "MM Beneath The Graveyard Pot Night 1 Early 2", ObjectType::pot, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT1, ObjectContext::All, 0 },
-	{ MM_SONG_STORMS, BENEATH_THE_GRAVEYARD, "Song of Storms", "MM Beneath The Graveyard Song of Storms", ObjectType::npc, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT1, ObjectContext::All, 0 })
+	{ MM_SONG_STORMS, BENEATH_THE_GRAVEYARD, "Song of Storms", "MM Beneath The Graveyard Song of Storms", ObjectType::npc, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT1, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(BENEATH_THE_GRAVEYARD_NIGHT2, 15,
+const size_t BENEATH_THE_GRAVEYARD_NIGHT2NumOfObjs = 15;
+ObjectInfo BENEATH_THE_GRAVEYARD_NIGHT2SceneObjects [BENEATH_THE_GRAVEYARD_NIGHT2NumOfObjs] =
+{
 	{ 0x00, BENEATH_THE_GRAVEYARD, "Heart Piece", "MM Beneath The Graveyard HP", ObjectType::chest, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT2, ObjectContext::All, 0 },
 	{ 0x0307, BENEATH_THE_GRAVEYARD, "After Pit 1", "MM Beneath The Graveyard Pot Night 2 After Pit 1", ObjectType::pot, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT2, ObjectContext::All, 0 },
 	{ 0x0308, BENEATH_THE_GRAVEYARD, "After Pit 2", "MM Beneath The Graveyard Pot Night 2 After Pit 2", ObjectType::pot, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT2, ObjectContext::All, 0 },
@@ -47,9 +55,12 @@ CreateObjectsForScene(BENEATH_THE_GRAVEYARD_NIGHT2, 15,
 	{ 0x30000, BENEATH_THE_GRAVEYARD, "Rupee 4", "MM Beneath The Graveyard Rupee 4", ObjectType::rupee, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT2, ObjectContext::All, 0 },
 	{ 0x40000, BENEATH_THE_GRAVEYARD, "Rupee 5", "MM Beneath The Graveyard Rupee 5", ObjectType::rupee, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT2, ObjectContext::All, 0 },
 	{ 0x50000, BENEATH_THE_GRAVEYARD, "Rupee 6", "MM Beneath The Graveyard Rupee 6", ObjectType::rupee, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT2, ObjectContext::All, 0 },
-	{ 0x60000, BENEATH_THE_GRAVEYARD, "Rupee 7", "MM Beneath The Graveyard Rupee 7", ObjectType::rupee, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT2, ObjectContext::All, 0 })
+	{ 0x60000, BENEATH_THE_GRAVEYARD, "Rupee 7", "MM Beneath The Graveyard Rupee 7", ObjectType::rupee, {0, 0}, BENEATH_THE_GRAVEYARD_NIGHT2, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(BENEATH_THE_WELL, 45,
+const size_t BENEATH_THE_WELLNumOfObjs = 45;
+ObjectInfo BENEATH_THE_WELLSceneObjects [BENEATH_THE_WELLNumOfObjs] =
+{
 	{ 0x17, BENEATH_THE_WELL, "Cow", "MM Beneath The Well Cow", ObjectType::cow, {0, 0}, BENEATH_THE_WELL, ObjectContext::All, 0 },
 	{ 0x00b04, BENEATH_THE_WELL, "Fairy 1", "MM Beneath The Well Fairy Fountain Fairy 1", ObjectType::fairy, {0, 0}, BENEATH_THE_WELL, ObjectContext::All, 0 },
 	{ 0x10b04, BENEATH_THE_WELL, "Fairy 2", "MM Beneath The Well Fairy Fountain Fairy 2", ObjectType::fairy, {0, 0}, BENEATH_THE_WELL, ObjectContext::All, 0 },
@@ -94,23 +105,32 @@ CreateObjectsForScene(BENEATH_THE_WELL, 45,
 	{ 0x0615, BENEATH_THE_WELL, "Middle 8", "MM Beneath The Well Pot Middle 08", ObjectType::pot, {0, 0}, BENEATH_THE_WELL, ObjectContext::All, 0 },
 	{ 0x0616, BENEATH_THE_WELL, "Middle 9", "MM Beneath The Well Pot Middle 09", ObjectType::pot, {0, 0}, BENEATH_THE_WELL, ObjectContext::All, 0 },
 	{ 0x0617, BENEATH_THE_WELL, "Middle 10", "MM Beneath The Well Pot Middle 10", ObjectType::pot, {0, 0}, BENEATH_THE_WELL, ObjectContext::All, 0 },
-	{ 0x01, BENEATH_THE_WELL, "Skulltulla", "MM Beneath The Well Skulltulla Chest", ObjectType::chest, {0, 0}, BENEATH_THE_WELL, ObjectContext::All, 0 })
+	{ 0x01, BENEATH_THE_WELL, "Skulltulla", "MM Beneath The Well Skulltulla Chest", ObjectType::chest, {0, 0}, BENEATH_THE_WELL, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(BLACKSMITH, 6,
+const size_t BLACKSMITHNumOfObjs = 6;
+ObjectInfo BLACKSMITHSceneObjects [BLACKSMITHNumOfObjs] =
+{
 	{ SWORD_GILDED, BLACKSMITH, "Gilded Sword", "MM Blacksmith Gilded Sword", ObjectType::npc, {0, 0}, BLACKSMITH, ObjectContext::All, 0 },
 	{ 0x10004, BLACKSMITH, "Potted Plant 1", "MM Blacksmith Potted Plant 1 Grass", ObjectType::grass, {0, 0}, BLACKSMITH, ObjectContext::All, 0 },
 	{ 0x00004, BLACKSMITH, "Potted Plant 1", "MM Blacksmith Potted Plant 1 Pot", ObjectType::pot, {0, 0}, BLACKSMITH, ObjectContext::All, 0 },
 	{ 0x10008, BLACKSMITH, "Potted Plant 2", "MM Blacksmith Potted Plant 2 Grass", ObjectType::grass, {0, 0}, BLACKSMITH, ObjectContext::All, 0 },
 	{ 0x00008, BLACKSMITH, "Potted Plant 2", "MM Blacksmith Potted Plant 2 Pot", ObjectType::pot, {0, 0}, BLACKSMITH, ObjectContext::All, 0 },
-	{ SWORD_RAZOR, BLACKSMITH, "Razor Blade", "MM Blacksmith Razor Blade", ObjectType::npc, {0, 0}, BLACKSMITH, ObjectContext::All, 0 })
+	{ SWORD_RAZOR, BLACKSMITH, "Razor Blade", "MM Blacksmith Razor Blade", ObjectType::npc, {0, 0}, BLACKSMITH, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(BOMB_SHOP, 4,
+const size_t BOMB_SHOPNumOfObjs = 4;
+ObjectInfo BOMB_SHOPSceneObjects [BOMB_SHOPNumOfObjs] =
+{
 	{ 0x02, BOMB_SHOP, "Bomb Bag", "MM Bomb Shop Bomb Bag", ObjectType::shop, {0, 0}, BOMB_SHOP, ObjectContext::All, 0 },
 	{ 0x03, BOMB_SHOP, "Large Bomb Bag", "MM Bomb Shop Bomb Bag 2", ObjectType::shop, {0, 0}, BOMB_SHOP, ObjectContext::All, 0 },
 	{ 0x00, BOMB_SHOP, "Item 1", "MM Bomb Shop Item 1", ObjectType::shop, {0, 0}, BOMB_SHOP, ObjectContext::All, 0 },
-	{ 0x01, BOMB_SHOP, "Item 2", "MM Bomb Shop Item 2", ObjectType::shop, {0, 0}, BOMB_SHOP, ObjectContext::All, 0 })
+	{ 0x01, BOMB_SHOP, "Item 2", "MM Bomb Shop Item 2", ObjectType::shop, {0, 0}, BOMB_SHOP, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(CASTLE_IKANA, 35,
+const size_t CASTLE_IKANANumOfObjs = 35;
+ObjectInfo CASTLE_IKANASceneObjects [CASTLE_IKANANumOfObjs] =
+{
 	{ 0x00020, CASTLE_IKANA, "Grass 1", "MM Ancient Castle of Ikana Grass 01", ObjectType::grass, {0, 0}, CASTLE_IKANA, ObjectContext::All, 0 },
 	{ 0x00021, CASTLE_IKANA, "Grass 2", "MM Ancient Castle of Ikana Grass 02", ObjectType::grass, {0, 0}, CASTLE_IKANA, ObjectContext::All, 0 },
 	{ 0x00022, CASTLE_IKANA, "Grass 3", "MM Ancient Castle of Ikana Grass 03", ObjectType::grass, {0, 0}, CASTLE_IKANA, ObjectContext::All, 0 },
@@ -145,9 +165,12 @@ CreateObjectsForScene(CASTLE_IKANA, 35,
 	{ 0x0106, CASTLE_IKANA, "Boss 6", "MM Ancient Castle of Ikana Boss Pot 6", ObjectType::none, {0, 0}, INSIDE_CASTLE_IKANA, ObjectContext::All, 0 },
 	{ 0x0107, CASTLE_IKANA, "Boss 7", "MM Ancient Castle of Ikana Boss Pot 7", ObjectType::none, {0, 0}, INSIDE_CASTLE_IKANA, ObjectContext::All, 0 },
 	{ 0x0108, CASTLE_IKANA, "Boss 8", "MM Ancient Castle of Ikana Boss Pot 8", ObjectType::none, {0, 0}, INSIDE_CASTLE_IKANA, ObjectContext::All, 0 },
-	{ SONG_EMPTINESS, CASTLE_IKANA, "Elegy of Emptiness", "MM Ancient Castle of Ikana Song Emptiness", ObjectType::none, {0, 0}, INSIDE_CASTLE_IKANA, ObjectContext::All, 0 })
+	{ SONG_EMPTINESS, CASTLE_IKANA, "Elegy of Emptiness", "MM Ancient Castle of Ikana Song Emptiness", ObjectType::none, {0, 0}, INSIDE_CASTLE_IKANA, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(INSIDE_CASTLE_IKANA, 21,
+const size_t INSIDE_CASTLE_IKANANumOfObjs = 21;
+ObjectInfo INSIDE_CASTLE_IKANASceneObjects [INSIDE_CASTLE_IKANANumOfObjs] =
+{
 	{ 0x0107, CASTLE_IKANA, "Entrance 1", "MM Ancient Castle of Ikana Pot Entrance 1", ObjectType::pot, {0, 0}, INSIDE_CASTLE_IKANA, ObjectContext::All, 0 },
 	{ 0x0108, CASTLE_IKANA, "Entrance 2", "MM Ancient Castle of Ikana Pot Entrance 2", ObjectType::pot, {0, 0}, INSIDE_CASTLE_IKANA, ObjectContext::All, 0 },
 	{ 0x0208, CASTLE_IKANA, "Left - First Room 1", "MM Ancient Castle of Ikana Pot Left First Room 1", ObjectType::pot, {0, 0}, INSIDE_CASTLE_IKANA, ObjectContext::All, 0 },
@@ -168,17 +191,23 @@ CreateObjectsForScene(INSIDE_CASTLE_IKANA, 21,
 	{ 0x0106, LAIR_IKANA, "Boss 6", "MM Ancient Castle of Ikana Boss Pot 6", ObjectType::pot, {0, 0}, INSIDE_CASTLE_IKANA, ObjectContext::All, 0 },
 	{ 0x0107, LAIR_IKANA, "Boss 7", "MM Ancient Castle of Ikana Boss Pot 7", ObjectType::pot, {0, 0}, INSIDE_CASTLE_IKANA, ObjectContext::All, 0 },
 	{ 0x0108, LAIR_IKANA, "Boss 8", "MM Ancient Castle of Ikana Boss Pot 8", ObjectType::pot, {0, 0}, INSIDE_CASTLE_IKANA, ObjectContext::All, 0 },
-	{ SONG_EMPTINESS, LAIR_IKANA, "Elegy of Emptiness", "MM Ancient Castle of Ikana Song Emptiness", ObjectType::npc, {0, 0}, INSIDE_CASTLE_IKANA, ObjectContext::All, 0 })
+	{ SONG_EMPTINESS, LAIR_IKANA, "Elegy of Emptiness", "MM Ancient Castle of Ikana Song Emptiness", ObjectType::npc, {0, 0}, INSIDE_CASTLE_IKANA, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(CLOCK_TOWER_ROOFTOP, 6,
+const size_t CLOCK_TOWER_ROOFTOPNumOfObjs = 6;
+ObjectInfo CLOCK_TOWER_ROOFTOPSceneObjects [CLOCK_TOWER_ROOFTOPNumOfObjs] =
+{
 	{ 0x0003, CLOCK_TOWER_ROOFTOP, "Pot 1", "MM Clock Tower Roof Pot 1", ObjectType::pot, {0, 0}, CLOCK_TOWER_ROOFTOP, ObjectContext::All, 0 },
 	{ 0x0004, CLOCK_TOWER_ROOFTOP, "Pot 2", "MM Clock Tower Roof Pot 2", ObjectType::pot, {0, 0}, CLOCK_TOWER_ROOFTOP, ObjectContext::All, 0 },
 	{ 0x0005, CLOCK_TOWER_ROOFTOP, "Pot 3", "MM Clock Tower Roof Pot 3", ObjectType::pot, {0, 0}, CLOCK_TOWER_ROOFTOP, ObjectContext::All, 0 },
 	{ 0x0006, CLOCK_TOWER_ROOFTOP, "Pot 4", "MM Clock Tower Roof Pot 4", ObjectType::pot, {0, 0}, CLOCK_TOWER_ROOFTOP, ObjectContext::All, 0 },
 	{ SKULL_KID_OCARINA, CLOCK_TOWER_ROOFTOP, "Ocarina of Time", "MM Clock Tower Roof Skull Kid Ocarina", ObjectType::npc, {0, 0}, CLOCK_TOWER_ROOFTOP, ObjectContext::All, 0 },
-	{ SKULL_KID_SONG, CLOCK_TOWER_ROOFTOP, "Song of Time", "MM Clock Tower Roof Skull Kid Song of Time", ObjectType::npc, {0, 0}, CLOCK_TOWER_ROOFTOP, ObjectContext::All, 0 })
+	{ SKULL_KID_SONG, CLOCK_TOWER_ROOFTOP, "Song of Time", "MM Clock Tower Roof Skull Kid Song of Time", ObjectType::npc, {0, 0}, CLOCK_TOWER_ROOFTOP, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(CLOCK_TOWN_EAST, 33,
+const size_t CLOCK_TOWN_EASTNumOfObjs = 33;
+ObjectInfo CLOCK_TOWN_EASTSceneObjects [CLOCK_TOWN_EASTNumOfObjs] =
+{
 	{ 0x0000a, CLOCK_TOWN_EAST, "Small Crate 1", "MM Clock Town East Small Crate 1", ObjectType::crate, {0, 0}, CLOCK_TOWN_EAST, ObjectContext::All, 0 },
 	{ 0x0000b, CLOCK_TOWN_EAST, "Small Crate 2", "MM Clock Town East Small Crate 2", ObjectType::crate, {0, 0}, CLOCK_TOWN_EAST, ObjectContext::All, 0 },
 	{ 0x0002c, CLOCK_TOWN_EAST, "Basket Bomb 1", "MM Clock Town East Wonder Item Basket 1", ObjectType::wonder, {0, 0}, CLOCK_TOWN_EAST, ObjectContext::All, 0 },
@@ -211,9 +240,12 @@ CreateObjectsForScene(CLOCK_TOWN_EAST, 33,
 	{ 0x0013, CLOCK_TOWN_EAST, "Passage 4", "MM Astral Observatory Passage Pot 4", ObjectType::none, {0, 0}, OBSERVATORY, ObjectContext::All, 0 },
 	{ 0x0104, CLOCK_TOWN_EAST, "Astral Observatory 1", "MM Astral Observatory Pot 1", ObjectType::none, {0, 0}, OBSERVATORY, ObjectContext::All, 0 },
 	{ 0x0105, CLOCK_TOWN_EAST, "Astral Observatory 2", "MM Astral Observatory Pot 2", ObjectType::none, {0, 0}, OBSERVATORY, ObjectContext::All, 0 },
-	{ 0x0106, CLOCK_TOWN_EAST, "Astral Observatory 3", "MM Astral Observatory Pot 3", ObjectType::none, {0, 0}, OBSERVATORY, ObjectContext::All, 0 })
+	{ 0x0106, CLOCK_TOWN_EAST, "Astral Observatory 3", "MM Astral Observatory Pot 3", ObjectType::none, {0, 0}, OBSERVATORY, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(CLOCK_TOWN_NORTH, 23,
+const size_t CLOCK_TOWN_NORTHNumOfObjs = 23;
+ObjectInfo CLOCK_TOWN_NORTHSceneObjects [CLOCK_TOWN_NORTHNumOfObjs] =
+{
 	{ MASK_BLAST, CLOCK_TOWN_NORTH, "Blast Mask", "MM Clock Town Blast Mask", ObjectType::npc, {0, 0}, CLOCK_TOWN_NORTH, ObjectContext::All, 0 },
 	{ BOMBER_NOTEBOOK, CLOCK_TOWN_NORTH, "Bomber Notebook", "MM Clock Town Bomber Notebook", ObjectType::npc, {0, 0}, CLOCK_TOWN_NORTH, ObjectContext::All, 0 },
 	{ 0x00010, CLOCK_TOWN_NORTH, "Keaton Grass 1", "MM Clock Town Keaton Grass Reward 1", ObjectType::grass, {0, 0}, CLOCK_TOWN_NORTH, ObjectContext::All, 0 },
@@ -236,9 +268,12 @@ CreateObjectsForScene(CLOCK_TOWN_NORTH, 23,
 	{ TINGLE_MAP_STONE_TOWER, CLOCK_TOWN_SOUTH, "Tingle - Ikana Map", "MM Tingle Map Ikana", ObjectType::npc, {0, 0}, CLOCK_TOWN_NORTH, ObjectContext::All, 0 },
 	{ TINGLE_MAP_ROMANI_RANCH, CLOCK_TOWN_SOUTH, "Tingle - Ranch Map", "MM Tingle Map Ranch", ObjectType::npc, {0, 0}, CLOCK_TOWN_NORTH, ObjectContext::All, 0 },
 	{ TINGLE_MAP_SNOWHEAD, CLOCK_TOWN_SOUTH, "Tingle - Snowhead Map", "MM Tingle Map Snowhead", ObjectType::npc, {0, 0}, CLOCK_TOWN_NORTH, ObjectContext::All, 0 },
-	{ TINGLE_MAP_WOODFALL, CLOCK_TOWN_SOUTH, "Tingle - Woodfall Map", "MM Tingle Map Woodfall", ObjectType::npc, {0, 0}, CLOCK_TOWN_NORTH, ObjectContext::All, 0 })
+	{ TINGLE_MAP_WOODFALL, CLOCK_TOWN_SOUTH, "Tingle - Woodfall Map", "MM Tingle Map Woodfall", ObjectType::npc, {0, 0}, CLOCK_TOWN_NORTH, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(CLOCK_TOWN_SOUTH, 16,
+const size_t CLOCK_TOWN_SOUTHNumOfObjs = 16;
+ObjectInfo CLOCK_TOWN_SOUTHSceneObjects [CLOCK_TOWN_SOUTHNumOfObjs] =
+{
 	{ SCRUB_LAND, CLOCK_TOWN_SOUTH, "Title Deed", "MM Clock Town Business Scrub", ObjectType::npc, {0, 0}, CLOCK_TOWN_SOUTH, ObjectContext::All, 0 },
 	{ OWL_CLOCK_TOWN, CLOCK_TOWN_SOUTH, "Owl Statue", "MM Clock Town Owl Statue", ObjectType::npc, {0, 0}, CLOCK_TOWN_SOUTH, ObjectContext::All, 0 },
 	{ 0x0a, CLOCK_TOWN_SOUTH, "Platform - Heart Piece", "MM Clock Town Platform HP", ObjectType::collectible, {0, 0}, CLOCK_TOWN_SOUTH, ObjectContext::All, 0 },
@@ -254,9 +289,12 @@ CreateObjectsForScene(CLOCK_TOWN_SOUTH, 16,
 	{ TINGLE_MAP_STONE_TOWER, CLOCK_TOWN_SOUTH, "Tingle - Ikana Map", "MM Tingle Map Ikana", ObjectType::npc, {0, 0}, CLOCK_TOWN_NORTH, ObjectContext::All, 0 },
 	{ TINGLE_MAP_ROMANI_RANCH, CLOCK_TOWN_SOUTH, "Tingle - Ranch Map", "MM Tingle Map Ranch", ObjectType::npc, {0, 0}, CLOCK_TOWN_NORTH, ObjectContext::All, 0 },
 	{ TINGLE_MAP_SNOWHEAD, CLOCK_TOWN_SOUTH, "Tingle - Snowhead Map", "MM Tingle Map Snowhead", ObjectType::npc, {0, 0}, CLOCK_TOWN_NORTH, ObjectContext::All, 0 },
-	{ TINGLE_MAP_WOODFALL, CLOCK_TOWN_SOUTH, "Tingle - Woodfall Map", "MM Tingle Map Woodfall", ObjectType::npc, {0, 0}, CLOCK_TOWN_NORTH, ObjectContext::All, 0 })
+	{ TINGLE_MAP_WOODFALL, CLOCK_TOWN_SOUTH, "Tingle - Woodfall Map", "MM Tingle Map Woodfall", ObjectType::npc, {0, 0}, CLOCK_TOWN_NORTH, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(CLOCK_TOWN_WEST, 25,
+const size_t CLOCK_TOWN_WESTNumOfObjs = 25;
+ObjectInfo CLOCK_TOWN_WESTSceneObjects [CLOCK_TOWN_WESTNumOfObjs] =
+{
 	{ BANK_1, CLOCK_TOWN_WEST, "Bank Reward 1", "MM Clock Town Bank Reward 1", ObjectType::npc, {0, 0}, CLOCK_TOWN_WEST, ObjectContext::All, 0 },
 	{ BANK_2, CLOCK_TOWN_WEST, "Bank Reward 2", "MM Clock Town Bank Reward 2", ObjectType::npc, {0, 0}, CLOCK_TOWN_WEST, ObjectContext::All, 0 },
 	{ BANK_3, CLOCK_TOWN_WEST, "Bank Reward 3", "MM Clock Town Bank Reward 3", ObjectType::npc, {0, 0}, CLOCK_TOWN_WEST, ObjectContext::All, 0 },
@@ -281,9 +319,12 @@ CreateObjectsForScene(CLOCK_TOWN_WEST, 25,
 	{ 0x0008, CLOCK_TOWN_WEST, "Pot 3", "MM Swordsman School Pot 3", ObjectType::none, {0, 0}, SWORDSMAN_SCHOOL, ObjectContext::All, 0 },
 	{ 0x0009, CLOCK_TOWN_WEST, "Pot 4", "MM Swordsman School Pot 4", ObjectType::none, {0, 0}, SWORDSMAN_SCHOOL, ObjectContext::All, 0 },
 	{ 0x000a, CLOCK_TOWN_WEST, "Pot 5", "MM Swordsman School Pot 5", ObjectType::none, {0, 0}, SWORDSMAN_SCHOOL, ObjectContext::All, 0 },
-	{ POSTMAN_HEART_PIECE, CLOCK_TOWN_WEST, "Postman Game - Heart Piece", "MM Post Office HP", ObjectType::none, {0, 0}, POST_OFFICE, ObjectContext::All, 0 })
+	{ POSTMAN_HEART_PIECE, CLOCK_TOWN_WEST, "Postman Game - Heart Piece", "MM Post Office HP", ObjectType::none, {0, 0}, POST_OFFICE, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(CUCCO_SHACK, 14,
+const size_t CUCCO_SHACKNumOfObjs = 14;
+ObjectInfo CUCCO_SHACKSceneObjects [CUCCO_SHACKNumOfObjs] =
+{
 	{ MASK_BUNNY, CUCCO_SHACK, "Bunny Mask", "MM Cucco Shack Bunny Mask", ObjectType::npc, {0, 0}, CUCCO_SHACK, ObjectContext::All, 0 },
 	{ 0x0000e, CUCCO_SHACK, "Crate 1", "MM Cucco Shack Crate 1", ObjectType::crate, {0, 0}, CUCCO_SHACK, ObjectContext::All, 0 },
 	{ 0x0000f, CUCCO_SHACK, "Crate 2", "MM Cucco Shack Crate 2", ObjectType::crate, {0, 0}, CUCCO_SHACK, ObjectContext::All, 0 },
@@ -297,15 +338,21 @@ CreateObjectsForScene(CUCCO_SHACK, 14,
 	{ 0x20011, CUCCO_SHACK, "Wood Hole 3", "MM Cucco Shack Wonder Item 3", ObjectType::wonder, {0, 0}, CUCCO_SHACK, ObjectContext::All, 0 },
 	{ 0x00012, CUCCO_SHACK, "Wood Hole 4", "MM Cucco Shack Wonder Item 4", ObjectType::wonder, {0, 0}, CUCCO_SHACK, ObjectContext::All, 0 },
 	{ 0x10012, CUCCO_SHACK, "Wood Hole 5", "MM Cucco Shack Wonder Item 5", ObjectType::wonder, {0, 0}, CUCCO_SHACK, ObjectContext::All, 0 },
-	{ 0x20012, CUCCO_SHACK, "Wood Hole 6", "MM Cucco Shack Wonder Item 6", ObjectType::wonder, {0, 0}, CUCCO_SHACK, ObjectContext::All, 0 })
+	{ 0x20012, CUCCO_SHACK, "Wood Hole 6", "MM Cucco Shack Wonder Item 6", ObjectType::wonder, {0, 0}, CUCCO_SHACK, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(CURIOSITY_SHOP, 4,
+const size_t CURIOSITY_SHOPNumOfObjs = 4;
+ObjectInfo CURIOSITY_SHOPSceneObjects [CURIOSITY_SHOPNumOfObjs] =
+{
 	{ 0x04, CURIOSITY_SHOP, "All-Night Mask", "MM Curiosity Shop All-Night Mask", ObjectType::shop, {0, 0}, CURIOSITY_SHOP, ObjectContext::All, 0 },
 	{ MASK_KEATON, CURIOSITY_SHOP, "Owner Reward 1", "MM Kafei Hideout Owner Reward 1", ObjectType::npc, {0, 0}, CURIOSITY_SHOP, ObjectContext::All, 0 },
 	{ LETTER_TO_MAMA, CURIOSITY_SHOP, "Owner Reward 2", "MM Kafei Hideout Owner Reward 2", ObjectType::npc, {0, 0}, CURIOSITY_SHOP, ObjectContext::All, 0 },
-	{ PENDANT_OF_MEMORIES, CURIOSITY_SHOP, "Pendant of Memories", "MM Kafei Hideout Pendant of Memories", ObjectType::npc, {0, 0}, CURIOSITY_SHOP, ObjectContext::All, 0 })
+	{ PENDANT_OF_MEMORIES, CURIOSITY_SHOP, "Pendant of Memories", "MM Kafei Hideout Pendant of Memories", ObjectType::npc, {0, 0}, CURIOSITY_SHOP, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(DAMPE_HOUSE, 11,
+const size_t DAMPE_HOUSENumOfObjs = 11;
+ObjectInfo DAMPE_HOUSESceneObjects [DAMPE_HOUSENumOfObjs] =
+{
 	{ 0x00, DAMPE_HOUSE, "Bottle", "MM Beneath The Graveyard Dampe Chest", ObjectType::chest, {0, 0}, DAMPE_HOUSE, ObjectContext::All, 0 },
 	{ 0x0010, DAMPE_HOUSE, "Pot 1", "MM Beneath The Graveyard Pot Dampe 01", ObjectType::pot, {0, 0}, DAMPE_HOUSE, ObjectContext::All, 0 },
 	{ 0x0011, DAMPE_HOUSE, "Pot 2", "MM Beneath The Graveyard Pot Dampe 02", ObjectType::pot, {0, 0}, DAMPE_HOUSE, ObjectContext::All, 0 },
@@ -316,12 +363,18 @@ CreateObjectsForScene(DAMPE_HOUSE, 11,
 	{ 0x0016, DAMPE_HOUSE, "Pot 7", "MM Beneath The Graveyard Pot Dampe 07", ObjectType::pot, {0, 0}, DAMPE_HOUSE, ObjectContext::All, 0 },
 	{ 0x0017, DAMPE_HOUSE, "Pot 8", "MM Beneath The Graveyard Pot Dampe 08", ObjectType::pot, {0, 0}, DAMPE_HOUSE, ObjectContext::All, 0 },
 	{ 0x0018, DAMPE_HOUSE, "Pot 9", "MM Beneath The Graveyard Pot Dampe 09", ObjectType::pot, {0, 0}, DAMPE_HOUSE, ObjectContext::All, 0 },
-	{ 0x0019, DAMPE_HOUSE, "Pot 10", "MM Beneath The Graveyard Pot Dampe 10", ObjectType::pot, {0, 0}, DAMPE_HOUSE, ObjectContext::All, 0 })
+	{ 0x0019, DAMPE_HOUSE, "Pot 10", "MM Beneath The Graveyard Pot Dampe 10", ObjectType::pot, {0, 0}, DAMPE_HOUSE, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(DEKU_KING_CHAMBER, 1,
-	{ SONG_AWAKENING, DEKU_KING_CHAMBER, "Sonata of Awakening", "MM Deku Palace Sonata of Awakening", ObjectType::npc, {0, 0}, DEKU_KING_CHAMBER, ObjectContext::All, 0 })
+const size_t DEKU_KING_CHAMBERNumOfObjs = 1;
+ObjectInfo DEKU_KING_CHAMBERSceneObjects [DEKU_KING_CHAMBERNumOfObjs] =
+{
+	{ SONG_AWAKENING, DEKU_KING_CHAMBER, "Sonata of Awakening", "MM Deku Palace Sonata of Awakening", ObjectType::npc, {0, 0}, DEKU_KING_CHAMBER, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(DEKU_PALACE, 89,
+const size_t DEKU_PALACENumOfObjs = 89;
+ObjectInfo DEKU_PALACESceneObjects [DEKU_PALACENumOfObjs] =
+{
 	{ 0x1e, DEKU_PALACE, "Garden Heart Piece", "MM Deku Palace HP", ObjectType::collectible, {0, 0}, DEKU_PALACE, ObjectContext::All, 0 },
 	{ 0x010f, DEKU_PALACE, "Upper 1", "MM Deku Palace Pot 1", ObjectType::pot, {0, 0}, DEKU_PALACE, ObjectContext::All, 0 },
 	{ 0x0110, DEKU_PALACE, "Upper 2", "MM Deku Palace Pot 2", ObjectType::pot, {0, 0}, DEKU_PALACE, ObjectContext::All, 0 },
@@ -410,13 +463,19 @@ CreateObjectsForScene(DEKU_PALACE, 89,
 	{ 0x00601, DEKU_PALACE, "Grass 2", "MM Deku Palace JP Line Grotto Grass 2", ObjectType::none, {0, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectContext::All, 0 },
 	{ 0x00604, DEKU_PALACE, "Grass 3", "MM Deku Palace JP Line Grotto Grass 3", ObjectType::none, {0, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectContext::All, 0 },
 	{ 0x00605, DEKU_PALACE, "Grass 4", "MM Deku Palace JP Line Grotto Grass 4", ObjectType::none, {0, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectContext::All, 0 },
-	{ 0x00606, DEKU_PALACE, "Grass 5", "MM Deku Palace JP Line Grotto Grass 5", ObjectType::none, {0, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectContext::All, 0 })
+	{ 0x00606, DEKU_PALACE, "Grass 5", "MM Deku Palace JP Line Grotto Grass 5", ObjectType::none, {0, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(DEKU_PLAYGROUND, 2,
+const size_t DEKU_PLAYGROUNDNumOfObjs = 2;
+ObjectInfo DEKU_PLAYGROUNDSceneObjects [DEKU_PLAYGROUNDNumOfObjs] =
+{
 	{ DEKU_PLAYGROUND_2, DEKU_PLAYGROUND, "Reward - All Days", "MM Deku Playground Reward All Days", ObjectType::npc, {0, 0}, DEKU_PLAYGROUND, ObjectContext::All, 0 },
-	{ DEKU_PLAYGROUND_1, DEKU_PLAYGROUND, "Reward - Any Day", "MM Deku Playground Reward Any Day", ObjectType::npc, {0, 0}, DEKU_PLAYGROUND, ObjectContext::All, 0 })
+	{ DEKU_PLAYGROUND_1, DEKU_PLAYGROUND, "Reward - Any Day", "MM Deku Playground Reward Any Day", ObjectType::npc, {0, 0}, DEKU_PLAYGROUND, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(DEKU_SHRINE, 33,
+const size_t DEKU_SHRINENumOfObjs = 33;
+ObjectInfo DEKU_SHRINESceneObjects [DEKU_SHRINENumOfObjs] =
+{
 	{ MASK_SCENTS, DEKU_SHRINE, "Mask of Scents", "MM Deku Shrine Mask of Scents", ObjectType::npc, {0, 0}, DEKU_SHRINE, ObjectContext::All, 0 },
 	{ 0x000e, DEKU_SHRINE, "Pot 1", "MM Deku Shrine Pot 1", ObjectType::pot, {0, 0}, DEKU_SHRINE, ObjectContext::All, 0 },
 	{ 0x000f, DEKU_SHRINE, "Pot 2", "MM Deku Shrine Pot 2", ObjectType::pot, {0, 0}, DEKU_SHRINE, ObjectContext::All, 0 },
@@ -449,24 +508,33 @@ CreateObjectsForScene(DEKU_SHRINE, 33,
 	{ 0x00402, DEKU_SHRINE, "Main 17", "MM Deku Shrine Rupee Main 17", ObjectType::rupee, {0, 0}, DEKU_SHRINE, ObjectContext::All, 0 },
 	{ 0x00403, DEKU_SHRINE, "Main 18", "MM Deku Shrine Rupee Main 18", ObjectType::rupee, {0, 0}, DEKU_SHRINE, ObjectContext::All, 0 },
 	{ 0x00404, DEKU_SHRINE, "Main 19", "MM Deku Shrine Rupee Main 19", ObjectType::rupee, {0, 0}, DEKU_SHRINE, ObjectContext::All, 0 },
-	{ 0x00405, DEKU_SHRINE, "Main 20", "MM Deku Shrine Rupee Main 20", ObjectType::rupee, {0, 0}, DEKU_SHRINE, ObjectContext::All, 0 })
+	{ 0x00405, DEKU_SHRINE, "Main 20", "MM Deku Shrine Rupee Main 20", ObjectType::rupee, {0, 0}, DEKU_SHRINE, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(DOG_RACETRACK, 6,
+const size_t DOG_RACETRACKNumOfObjs = 6;
+ObjectInfo DOG_RACETRACKSceneObjects [DOG_RACETRACKNumOfObjs] =
+{
 	{ 0x00, DOG_RACETRACK, "Chest", "MM Doggy Racetrack Chest", ObjectType::chest, {0, 0}, DOG_RACETRACK, ObjectContext::All, 0 },
 	{ DOG_LADY_HEART_PIECE, DOG_RACETRACK, "Heart Piece", "MM Doggy Racetrack HP", ObjectType::npc, {0, 0}, DOG_RACETRACK, ObjectContext::All, 0 },
 	{ 0x0009, DOG_RACETRACK, "Pot 1", "MM Doggy Racetrack Pot 1", ObjectType::pot, {0, 0}, DOG_RACETRACK, ObjectContext::All, 0 },
 	{ 0x000a, DOG_RACETRACK, "Pot 2", "MM Doggy Racetrack Pot 2", ObjectType::pot, {0, 0}, DOG_RACETRACK, ObjectContext::All, 0 },
 	{ 0x000c, DOG_RACETRACK, "Pot 3", "MM Doggy Racetrack Pot 3", ObjectType::pot, {0, 0}, DOG_RACETRACK, ObjectContext::All, 0 },
-	{ 0x000d, DOG_RACETRACK, "Pot 4", "MM Doggy Racetrack Pot 4", ObjectType::pot, {0, 0}, DOG_RACETRACK, ObjectContext::All, 0 })
+	{ 0x000d, DOG_RACETRACK, "Pot 4", "MM Doggy Racetrack Pot 4", ObjectType::pot, {0, 0}, DOG_RACETRACK, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(EXTRA, 5,
+const size_t EXTRANumOfObjs = 5;
+ObjectInfo EXTRASceneObjects [EXTRANumOfObjs] =
+{
 	{ 0x0000, EXTRA, "Pot Game 1", "MM Zora Cape Pot Game 1", ObjectType::pot, {0, 0}, ZORA_CAPE, ObjectContext::All, 0 },
 	{ 0x0001, EXTRA, "Pot Game 2", "MM Zora Cape Pot Game 2", ObjectType::pot, {0, 0}, ZORA_CAPE, ObjectContext::All, 0 },
 	{ 0x0002, EXTRA, "Pot Game 3", "MM Zora Cape Pot Game 3", ObjectType::pot, {0, 0}, ZORA_CAPE, ObjectContext::All, 0 },
 	{ 0x0003, EXTRA, "Pot Game 4", "MM Zora Cape Pot Game 4", ObjectType::pot, {0, 0}, ZORA_CAPE, ObjectContext::All, 0 },
-	{ 0x0004, EXTRA, "Pot Game 5", "MM Zora Cape Pot Game 5", ObjectType::pot, {0, 0}, ZORA_CAPE, ObjectContext::All, 0 })
+	{ 0x0004, EXTRA, "Pot Game 5", "MM Zora Cape Pot Game 5", ObjectType::pot, {0, 0}, ZORA_CAPE, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(ZORA_CAPE, 34,
+const size_t ZORA_CAPENumOfObjs = 34;
+ObjectInfo ZORA_CAPESceneObjects [ZORA_CAPENumOfObjs] =
+{
 	{ 0x0000, EXTRA, "Pot Game 1", "MM Zora Cape Pot Game 1", ObjectType::pot, {0, 0}, ZORA_CAPE, ObjectContext::All, 0 },
 	{ 0x0001, EXTRA, "Pot Game 2", "MM Zora Cape Pot Game 2", ObjectType::pot, {0, 0}, ZORA_CAPE, ObjectContext::All, 0 },
 	{ 0x0002, EXTRA, "Pot Game 3", "MM Zora Cape Pot Game 3", ObjectType::pot, {0, 0}, ZORA_CAPE, ObjectContext::All, 0 },
@@ -500,31 +568,49 @@ CreateObjectsForScene(ZORA_CAPE, 34,
 	{ 0x03513, ZORA_CAPE, "Grass 14", "MM Zora Cape Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_ZORA_CAPE_GENERIC, ObjectContext::All, 0 },
 	{ BEAVER_1, ZORA_CAPE, "Race 1", "MM Waterfall Rapids Beaver Race 1", ObjectType::none, {0, 0}, WATERFALL_RAPIDS, ObjectContext::All, 0 },
 	{ BEAVER_2, ZORA_CAPE, "Race 2", "MM Waterfall Rapids Beaver Race 2", ObjectType::none, {0, 0}, WATERFALL_RAPIDS, ObjectContext::All, 0 },
-	{ GREAT_FAIRY_OCEAN, ZORA_CAPE, "Double Defense", "MM Great Bay Great Fairy", ObjectType::none, {0, 0}, MM_FAIRY_GREAT_BAY_COAST, ObjectContext::All, 0 })
+	{ GREAT_FAIRY_OCEAN, ZORA_CAPE, "Double Defense", "MM Great Bay Great Fairy", ObjectType::none, {0, 0}, MM_FAIRY_GREAT_BAY_COAST, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_FAIRY_FOUNTAIN, 7,
+const size_t MM_FAIRY_FOUNTAINNumOfObjs = 7;
+ObjectInfo MM_FAIRY_FOUNTAINSceneObjects [MM_FAIRY_FOUNTAINNumOfObjs] =
+{
 	{ GREAT_FAIRY_TOWN, MM_FAIRY_FOUNTAIN, "Great Fairy - Mojo", "MM Clock Town Great Fairy", ObjectType::npc, {0, 0}, MM_FAIRY_CLOCK_TOWN, ObjectContext::All, 0 },
 	{ GREAT_FAIRY_TOWN_ALT, MM_FAIRY_FOUNTAIN, "Great Fairy - Link", "MM Clock Town Great Fairy Alt", ObjectType::npc, {0, 0}, MM_FAIRY_CLOCK_TOWN, ObjectContext::All, 0 },
 	{ GREAT_FAIRY_OCEAN, MM_FAIRY_FOUNTAIN, "Double Defense", "MM Great Bay Great Fairy", ObjectType::npc, {0, 0}, MM_FAIRY_GREAT_BAY_COAST, ObjectContext::All, 0 },
 	{ GREAT_FAIRY_VALLEY, MM_FAIRY_FOUNTAIN, "Great Fairy's Sword", "MM Ikana Great Fairy", ObjectType::npc, {0, 0}, MM_FAIRY_IKANA, ObjectContext::All, 0 },
 	{ GREAT_FAIRY_MOUNTAIN, MM_FAIRY_FOUNTAIN, "Large Magic Upgrade", "MM Snowhead Great Fairy", ObjectType::npc, {0, 0}, MM_FAIRY_SNOWHEAD, ObjectContext::All, 0 },
 	{ OWL_SNOWHEAD, MM_FAIRY_FOUNTAIN, "Owl Statue", "MM Snowhead Owl Statue", ObjectType::npc, {0, 0}, SNOWHEAD, ObjectContext::Winter, 0 },
-	{ GREAT_FAIRY_SWAMP, MM_FAIRY_FOUNTAIN, "Super Spin Attack", "MM Woodfall Great Fairy", ObjectType::npc, {0, 0}, MM_FAIRY_WOODFALL, ObjectContext::All, 0 })
+	{ GREAT_FAIRY_SWAMP, MM_FAIRY_FOUNTAIN, "Super Spin Attack", "MM Woodfall Great Fairy", ObjectType::npc, {0, 0}, MM_FAIRY_WOODFALL, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_FAIRY_CLOCK_TOWN, 2,
+const size_t MM_FAIRY_CLOCK_TOWNNumOfObjs = 2;
+ObjectInfo MM_FAIRY_CLOCK_TOWNSceneObjects [MM_FAIRY_CLOCK_TOWNNumOfObjs] =
+{
 	{ GREAT_FAIRY_TOWN, MM_FAIRY_FOUNTAIN, "Great Fairy - Mojo", "MM Clock Town Great Fairy", ObjectType::npc, {0, 0}, MM_FAIRY_CLOCK_TOWN, ObjectContext::All, 0 },
-	{ GREAT_FAIRY_TOWN_ALT, MM_FAIRY_FOUNTAIN, "Great Fairy - Link", "MM Clock Town Great Fairy Alt", ObjectType::npc, {0, 0}, MM_FAIRY_CLOCK_TOWN, ObjectContext::All, 0 })
+	{ GREAT_FAIRY_TOWN_ALT, MM_FAIRY_FOUNTAIN, "Great Fairy - Link", "MM Clock Town Great Fairy Alt", ObjectType::npc, {0, 0}, MM_FAIRY_CLOCK_TOWN, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_FAIRY_GREAT_BAY_COAST, 1,
-	{ GREAT_FAIRY_OCEAN, MM_FAIRY_FOUNTAIN, "Double Defense", "MM Great Bay Great Fairy", ObjectType::npc, {0, 0}, MM_FAIRY_GREAT_BAY_COAST, ObjectContext::All, 0 })
+const size_t MM_FAIRY_GREAT_BAY_COASTNumOfObjs = 1;
+ObjectInfo MM_FAIRY_GREAT_BAY_COASTSceneObjects [MM_FAIRY_GREAT_BAY_COASTNumOfObjs] =
+{
+	{ GREAT_FAIRY_OCEAN, MM_FAIRY_FOUNTAIN, "Double Defense", "MM Great Bay Great Fairy", ObjectType::npc, {0, 0}, MM_FAIRY_GREAT_BAY_COAST, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_FAIRY_IKANA, 1,
-	{ GREAT_FAIRY_VALLEY, MM_FAIRY_FOUNTAIN, "Great Fairy's Sword", "MM Ikana Great Fairy", ObjectType::npc, {0, 0}, MM_FAIRY_IKANA, ObjectContext::All, 0 })
+const size_t MM_FAIRY_IKANANumOfObjs = 1;
+ObjectInfo MM_FAIRY_IKANASceneObjects [MM_FAIRY_IKANANumOfObjs] =
+{
+	{ GREAT_FAIRY_VALLEY, MM_FAIRY_FOUNTAIN, "Great Fairy's Sword", "MM Ikana Great Fairy", ObjectType::npc, {0, 0}, MM_FAIRY_IKANA, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_FAIRY_SNOWHEAD, 1,
-	{ GREAT_FAIRY_MOUNTAIN, MM_FAIRY_FOUNTAIN, "Large Magic Upgrade", "MM Snowhead Great Fairy", ObjectType::npc, {0, 0}, MM_FAIRY_SNOWHEAD, ObjectContext::All, 0 })
+const size_t MM_FAIRY_SNOWHEADNumOfObjs = 1;
+ObjectInfo MM_FAIRY_SNOWHEADSceneObjects [MM_FAIRY_SNOWHEADNumOfObjs] =
+{
+	{ GREAT_FAIRY_MOUNTAIN, MM_FAIRY_FOUNTAIN, "Large Magic Upgrade", "MM Snowhead Great Fairy", ObjectType::npc, {0, 0}, MM_FAIRY_SNOWHEAD, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(SNOWHEAD, 18,
+const size_t SNOWHEADNumOfObjs = 18;
+ObjectInfo SNOWHEADSceneObjects [SNOWHEADNumOfObjs] =
+{
 	{ OWL_SNOWHEAD, MM_FAIRY_FOUNTAIN, "Owl Statue", "MM Snowhead Owl Statue", ObjectType::npc, {0, 0}, SNOWHEAD, ObjectContext::Winter, 0 },
 	{ 0x0002e, SNOWHEAD, "Winter - Big Snowball 1", "MM Snowhead Big Snowball 1", ObjectType::snowball, {0, 0}, SNOWHEAD, ObjectContext::Winter, 0 },
 	{ 0x0002f, SNOWHEAD, "Winter - Big Snowball 2", "MM Snowhead Big Snowball 2", ObjectType::snowball, {0, 0}, SNOWHEAD, ObjectContext::Winter, 0 },
@@ -542,15 +628,24 @@ CreateObjectsForScene(SNOWHEAD, 18,
 	{ 0x04011, SNOWHEAD, "Spring - Small Snowball 4", "MM Snowhead Small Snowball Spring 4", ObjectType::snowball, {0, 0}, SNOWHEAD, ObjectContext::Spring, 0 },
 	{ 0x04013, SNOWHEAD, "Spring - Small Snowball 5", "MM Snowhead Small Snowball Spring 5", ObjectType::snowball, {0, 0}, SNOWHEAD, ObjectContext::Spring, 0 },
 	{ 0x04012, SNOWHEAD, "Out of Bounds", "MM Snowhead Small Snowball Spring Out of Bounds", ObjectType::snowball, {0, 0}, SNOWHEAD, ObjectContext::Spring, 0 },
-	{ GREAT_FAIRY_MOUNTAIN, SNOWHEAD, "Large Magic Upgrade", "MM Snowhead Great Fairy", ObjectType::none, {0, 0}, MM_FAIRY_SNOWHEAD, ObjectContext::All, 0 })
+	{ GREAT_FAIRY_MOUNTAIN, SNOWHEAD, "Large Magic Upgrade", "MM Snowhead Great Fairy", ObjectType::none, {0, 0}, MM_FAIRY_SNOWHEAD, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_FAIRY_WOODFALL, 1,
-	{ GREAT_FAIRY_SWAMP, MM_FAIRY_FOUNTAIN, "Super Spin Attack", "MM Woodfall Great Fairy", ObjectType::npc, {0, 0}, MM_FAIRY_WOODFALL, ObjectContext::All, 0 })
+const size_t MM_FAIRY_WOODFALLNumOfObjs = 1;
+ObjectInfo MM_FAIRY_WOODFALLSceneObjects [MM_FAIRY_WOODFALLNumOfObjs] =
+{
+	{ GREAT_FAIRY_SWAMP, MM_FAIRY_FOUNTAIN, "Super Spin Attack", "MM Woodfall Great Fairy", ObjectType::npc, {0, 0}, MM_FAIRY_WOODFALL, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(GHOST_HUT, 1,
-	{ GHOST_HUT_HEART_PIECE, GHOST_HUT, "Heart Piece", "MM Ghost Hut HP", ObjectType::npc, {0, 0}, GHOST_HUT, ObjectContext::All, 0 })
+const size_t GHOST_HUTNumOfObjs = 1;
+ObjectInfo GHOST_HUTSceneObjects [GHOST_HUTNumOfObjs] =
+{
+	{ GHOST_HUT_HEART_PIECE, GHOST_HUT, "Heart Piece", "MM Ghost Hut HP", ObjectType::npc, {0, 0}, GHOST_HUT, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(GORMAN_TRACK, 27,
+const size_t GORMAN_TRACKNumOfObjs = 27;
+ObjectInfo GORMAN_TRACKSceneObjects [GORMAN_TRACKNumOfObjs] =
+{
 	{ 0x00049, GORMAN_TRACK, "Crate", "MM Gorman Track Crate", ObjectType::crate, {0, 0}, GORMAN_TRACK, ObjectContext::All, 0 },
 	{ MASK_GARO, GORMAN_TRACK, "Garo Mask", "MM Gorman Track Garo Mask", ObjectType::npc, {0, 0}, GORMAN_TRACK, ObjectContext::All, 0 },
 	{ 0x00024, GORMAN_TRACK, "Pack 1 - Grass 1", "MM Gorman Track Grass Pack 1 Grass 01", ObjectType::grass, {0, 0}, GORMAN_TRACK, ObjectContext::All, 0 },
@@ -577,12 +672,18 @@ CreateObjectsForScene(GORMAN_TRACK, 27,
 	{ 0x90025, GORMAN_TRACK, "Pack 2 - Grass 10", "MM Gorman Track Grass Pack 2 Grass 10", ObjectType::grass, {0, 0}, GORMAN_TRACK, ObjectContext::All, 0 },
 	{ 0xa0025, GORMAN_TRACK, "Pack 2 - Grass 11", "MM Gorman Track Grass Pack 2 Grass 11", ObjectType::grass, {0, 0}, GORMAN_TRACK, ObjectContext::All, 0 },
 	{ 0xb0025, GORMAN_TRACK, "Pack 2 - Grass 12", "MM Gorman Track Grass Pack 2 Grass 12", ObjectType::grass, {0, 0}, GORMAN_TRACK, ObjectContext::All, 0 },
-	{ GORMAN_MILK, GORMAN_TRACK, "Purchase - Milk", "MM Gorman Track Milk Purchase", ObjectType::npc, {0, 0}, GORMAN_TRACK, ObjectContext::All, 0 })
+	{ GORMAN_MILK, GORMAN_TRACK, "Purchase - Milk", "MM Gorman Track Milk Purchase", ObjectType::npc, {0, 0}, GORMAN_TRACK, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(GORON_GRAVEYARD, 1,
-	{ MASK_GORON, GORON_GRAVEYARD, "Goron Mask", "MM Goron Graveyard Mask", ObjectType::npc, {0, 0}, GORON_GRAVEYARD, ObjectContext::All, 0 })
+const size_t GORON_GRAVEYARDNumOfObjs = 1;
+ObjectInfo GORON_GRAVEYARDSceneObjects [GORON_GRAVEYARDNumOfObjs] =
+{
+	{ MASK_GORON, GORON_GRAVEYARD, "Goron Mask", "MM Goron Graveyard Mask", ObjectType::npc, {0, 0}, GORON_GRAVEYARD, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(GORON_RACETRACK, 31,
+const size_t GORON_RACETRACKNumOfObjs = 31;
+ObjectInfo GORON_RACETRACKSceneObjects [GORON_RACETRACKNumOfObjs] =
+{
 	{ 0x0002, GORON_RACETRACK, "Pot 1", "MM Goron Race Pot 01", ObjectType::pot, {0, 0}, GORON_RACETRACK, ObjectContext::All, 0 },
 	{ 0x0003, GORON_RACETRACK, "Pot 2", "MM Goron Race Pot 02", ObjectType::pot, {0, 0}, GORON_RACETRACK, ObjectContext::All, 0 },
 	{ 0x0004, GORON_RACETRACK, "Pot 3", "MM Goron Race Pot 03", ObjectType::pot, {0, 0}, GORON_RACETRACK, ObjectContext::All, 0 },
@@ -613,14 +714,20 @@ CreateObjectsForScene(GORON_RACETRACK, 31,
 	{ 0x001d, GORON_RACETRACK, "Pot 28", "MM Goron Race Pot 28", ObjectType::pot, {0, 0}, GORON_RACETRACK, ObjectContext::All, 0 },
 	{ 0x001e, GORON_RACETRACK, "Pot 29", "MM Goron Race Pot 29", ObjectType::pot, {0, 0}, GORON_RACETRACK, ObjectContext::All, 0 },
 	{ 0x001f, GORON_RACETRACK, "Pot 30", "MM Goron Race Pot 30", ObjectType::pot, {0, 0}, GORON_RACETRACK, ObjectContext::All, 0 },
-	{ GORON_RACE, GORON_RACETRACK, "Reward", "MM Goron Race Reward", ObjectType::npc, {0, 0}, GORON_RACETRACK, ObjectContext::All, 0 })
+	{ GORON_RACE, GORON_RACETRACK, "Reward", "MM Goron Race Reward", ObjectType::npc, {0, 0}, GORON_RACETRACK, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GORON_SHOP, 3,
+const size_t MM_GORON_SHOPNumOfObjs = 3;
+ObjectInfo MM_GORON_SHOPSceneObjects [MM_GORON_SHOPNumOfObjs] =
+{
 	{ 0x10, MM_GORON_SHOP, "Item 1", "MM Goron Shop Item 1", ObjectType::shop, {0, 0}, MM_GORON_SHOP, ObjectContext::All, 0 },
 	{ 0x11, MM_GORON_SHOP, "Item 2", "MM Goron Shop Item 2", ObjectType::shop, {0, 0}, MM_GORON_SHOP, ObjectContext::All, 0 },
-	{ 0x12, MM_GORON_SHOP, "Item 3", "MM Goron Shop Item 3", ObjectType::shop, {0, 0}, MM_GORON_SHOP, ObjectContext::All, 0 })
+	{ 0x12, MM_GORON_SHOP, "Item 3", "MM Goron Shop Item 3", ObjectType::shop, {0, 0}, MM_GORON_SHOP, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(GORON_SHRINE, 12,
+const size_t GORON_SHRINENumOfObjs = 12;
+ObjectInfo GORON_SHRINESceneObjects [GORON_SHRINENumOfObjs] =
+{
 	{ GORON_BABY, GORON_SHRINE, "Goron's Lulluby", "MM Goron Baby", ObjectType::npc, {0, 0}, GORON_SHRINE, ObjectContext::All, 0 },
 	{ 0x0023, GORON_SHRINE, "Pot 1", "MM Goron Shrine Pot 01", ObjectType::pot, {0, 0}, GORON_SHRINE, ObjectContext::All, 0 },
 	{ 0x0024, GORON_SHRINE, "Pot 2", "MM Goron Shrine Pot 02", ObjectType::pot, {0, 0}, GORON_SHRINE, ObjectContext::All, 0 },
@@ -632,9 +739,12 @@ CreateObjectsForScene(GORON_SHRINE, 12,
 	{ 0x002a, GORON_SHRINE, "Pot 8", "MM Goron Shrine Pot 08", ObjectType::pot, {0, 0}, GORON_SHRINE, ObjectContext::All, 0 },
 	{ 0x0106, GORON_SHRINE, "Pot 9", "MM Goron Shrine Pot 09", ObjectType::pot, {0, 0}, GORON_SHRINE, ObjectContext::All, 0 },
 	{ 0x0107, GORON_SHRINE, "Pot 10", "MM Goron Shrine Pot 10", ObjectType::pot, {0, 0}, GORON_SHRINE, ObjectContext::All, 0 },
-	{ 0x0108, GORON_SHRINE, "Pot 11", "MM Goron Shrine Pot 11", ObjectType::pot, {0, 0}, GORON_SHRINE, ObjectContext::All, 0 })
+	{ 0x0108, GORON_SHRINE, "Pot 11", "MM Goron Shrine Pot 11", ObjectType::pot, {0, 0}, GORON_SHRINE, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(GORON_VILLAGE_WINTER, 68,
+const size_t GORON_VILLAGE_WINTERNumOfObjs = 68;
+ObjectInfo GORON_VILLAGE_WINTERSceneObjects [GORON_VILLAGE_WINTERNumOfObjs] =
+{
 	{ GORON_KEG, GORON_VILLAGE_WINTER, "Powder Keg", "MM Goron Powder Keg", ObjectType::npc, {0, 0}, GORON_VILLAGE_WINTER, ObjectContext::All, 0 },
 	{ 0x00032, GORON_VILLAGE_WINTER, "Big Snowball 1", "MM Goron Village Big Snowball 1", ObjectType::snowball, {0, 0}, GORON_VILLAGE_WINTER, ObjectContext::All, 0 },
 	{ 0x00033, GORON_VILLAGE_WINTER, "Big Snowball 2", "MM Goron Village Big Snowball 2", ObjectType::snowball, {0, 0}, GORON_VILLAGE_WINTER, ObjectContext::All, 0 },
@@ -702,9 +812,12 @@ CreateObjectsForScene(GORON_VILLAGE_WINTER, 68,
 	{ 0xa0502, GORON_VILLAGE_WINTER, "Pack 2 - Grass 11", "MM Lone Peak Shrine Grass Pack 2 Grass 11", ObjectType::none, {0, 0}, LONE_PEAK, ObjectContext::All, 0 },
 	{ 0xb0502, GORON_VILLAGE_WINTER, "Pack 2 - Grass 12", "MM Lone Peak Shrine Grass Pack 2 Grass 12", ObjectType::none, {0, 0}, LONE_PEAK, ObjectContext::All, 0 },
 	{ 0x03, GORON_VILLAGE_WINTER, "Invisible", "MM Lone Peak Shrine Invisible Chest", ObjectType::none, {0, 0}, LONE_PEAK, ObjectContext::All, 0 },
-	{ 0x01, GORON_VILLAGE_WINTER, "Lens of Truth", "MM Lone Peak Shrine Lens Chest", ObjectType::none, {0, 0}, LONE_PEAK, ObjectContext::All, 0 })
+	{ 0x01, GORON_VILLAGE_WINTER, "Lens of Truth", "MM Lone Peak Shrine Lens Chest", ObjectType::none, {0, 0}, LONE_PEAK, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(GREAT_BAY_COAST, 123,
+const size_t GREAT_BAY_COASTNumOfObjs = 123;
+ObjectInfo GREAT_BAY_COASTSceneObjects [GREAT_BAY_COASTNumOfObjs] =
+{
 	{ 0x24085, GREAT_BAY_COAST, "Cleared 1", "MM Great Bay Coast Cleared Butterfly 1", ObjectType::butterfly, {0, 0}, GREAT_BAY_COAST, ObjectContext::All, 0 },
 	{ 0x34085, GREAT_BAY_COAST, "Cleared 2", "MM Great Bay Coast Cleared Butterfly 2", ObjectType::butterfly, {0, 0}, GREAT_BAY_COAST, ObjectContext::All, 0 },
 	{ 0x04085, GREAT_BAY_COAST, "Common 1", "MM Great Bay Coast Common Butterfly 1", ObjectType::butterfly, {0, 0}, GREAT_BAY_COAST, ObjectContext::All, 0 },
@@ -827,9 +940,12 @@ CreateObjectsForScene(GREAT_BAY_COAST, 123,
 	{ 0x90f09, GREAT_BAY_COAST, "Grass 70", "MM Great Bay Cow Grotto Grass 70", ObjectType::none, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_COW, ObjectContext::All, 0 },
 	{ 0xa0f09, GREAT_BAY_COAST, "Grass 71", "MM Great Bay Cow Grotto Grass 71", ObjectType::none, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_COW, ObjectContext::All, 0 },
 	{ 0xb0f09, GREAT_BAY_COAST, "Grass 72", "MM Great Bay Cow Grotto Grass 72", ObjectType::none, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_COW, ObjectContext::All, 0 },
-	{ 0x00f02, GREAT_BAY_COAST, "Hive", "MM Great Bay Cow Grotto Hive", ObjectType::none, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_COW, ObjectContext::All, 0 })
+	{ 0x00f02, GREAT_BAY_COAST, "Hive", "MM Great Bay Cow Grotto Hive", ObjectType::none, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_COW, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_GREAT_BAY_COAST_COW, 78,
+const size_t MM_GROTTO_GREAT_BAY_COAST_COWNumOfObjs = 78;
+ObjectInfo MM_GROTTO_GREAT_BAY_COAST_COWSceneObjects [MM_GROTTO_GREAT_BAY_COAST_COWNumOfObjs] =
+{
 	{ 0x16, GREAT_BAY_COAST, "Back", "MM Great Bay Coast Cow Back", ObjectType::cow, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_COW, ObjectContext::All, 0 },
 	{ 0x15, GREAT_BAY_COAST, "Front", "MM Great Bay Coast Cow Front", ObjectType::cow, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_COW, ObjectContext::All, 0 },
 	{ 0x00f06, MM_GROTTOS, "Butterfly 1", "MM Great Bay Cow Grotto Butterfly 1", ObjectType::butterfly, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_COW, ObjectContext::All, 0 },
@@ -907,9 +1023,12 @@ CreateObjectsForScene(MM_GROTTO_GREAT_BAY_COAST_COW, 78,
 	{ 0x90f09, MM_GROTTOS, "Grass 70", "MM Great Bay Cow Grotto Grass 70", ObjectType::grass, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_COW, ObjectContext::All, 0 },
 	{ 0xa0f09, MM_GROTTOS, "Grass 71", "MM Great Bay Cow Grotto Grass 71", ObjectType::grass, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_COW, ObjectContext::All, 0 },
 	{ 0xb0f09, MM_GROTTOS, "Grass 72", "MM Great Bay Cow Grotto Grass 72", ObjectType::grass, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_COW, ObjectContext::All, 0 },
-	{ 0x00f02, MM_GROTTOS, "Hive", "MM Great Bay Cow Grotto Hive", ObjectType::hive, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_COW, ObjectContext::All, 0 })
+	{ 0x00f02, MM_GROTTOS, "Hive", "MM Great Bay Cow Grotto Hive", ObjectType::hive, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_COW, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTOS, 440,
+const size_t MM_GROTTOSNumOfObjs = 440;
+ObjectInfo MM_GROTTOSSceneObjects [MM_GROTTOSNumOfObjs] =
+{
 	{ 0x00b00, MM_GROTTOS, "Grass 1", "MM Bio Baba Grotto Grass 1", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_BIO_BABA, ObjectContext::All, 0 },
 	{ 0x00b03, MM_GROTTOS, "Grass 2", "MM Bio Baba Grotto Grass 2", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_BIO_BABA, ObjectContext::All, 0 },
 	{ 0x00200, MM_GROTTOS, "Grass 1", "MM Canyon Gossip Grotto Grass 1", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_CANYON_GOSSIP, ObjectContext::All, 0 },
@@ -1349,23 +1468,32 @@ CreateObjectsForScene(MM_GROTTOS, 440,
 	{ 0x03510, MM_GROTTOS, "Grass 11", "MM Zora Cape Grotto Grass 11", ObjectType::grass, {0, 0}, MM_GROTTO_ZORA_CAPE_GENERIC, ObjectContext::All, 0 },
 	{ 0x03511, MM_GROTTOS, "Grass 12", "MM Zora Cape Grotto Grass 12", ObjectType::grass, {0, 0}, MM_GROTTO_ZORA_CAPE_GENERIC, ObjectContext::All, 0 },
 	{ 0x03512, MM_GROTTOS, "Grass 13", "MM Zora Cape Grotto Grass 13", ObjectType::grass, {0, 0}, MM_GROTTO_ZORA_CAPE_GENERIC, ObjectContext::All, 0 },
-	{ 0x03513, MM_GROTTOS, "Grass 14", "MM Zora Cape Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_ZORA_CAPE_GENERIC, ObjectContext::All, 0 })
+	{ 0x03513, MM_GROTTOS, "Grass 14", "MM Zora Cape Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_ZORA_CAPE_GENERIC, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_TERMINA_BIO_BABA, 5,
+const size_t MM_GROTTO_TERMINA_BIO_BABANumOfObjs = 5;
+ObjectInfo MM_GROTTO_TERMINA_BIO_BABASceneObjects [MM_GROTTO_TERMINA_BIO_BABANumOfObjs] =
+{
 	{ 0x00b00, MM_GROTTOS, "Grass 1", "MM Bio Baba Grotto Grass 1", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_BIO_BABA, ObjectContext::All, 0 },
 	{ 0x00b03, MM_GROTTOS, "Grass 2", "MM Bio Baba Grotto Grass 2", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_BIO_BABA, ObjectContext::All, 0 },
 	{ 0x02, MM_GROTTOS, "Heart Piece", "MM Termina Field Bio Baba Grotto", ObjectType::collectible, {0, 0}, MM_GROTTO_TERMINA_BIO_BABA, ObjectContext::All, 0 },
 	{ 0x00b0a, MM_GROTTOS, "Left", "MM Termina Field Bio Baba Grotto Hive Left", ObjectType::hive, {0, 0}, MM_GROTTO_TERMINA_BIO_BABA, ObjectContext::All, 0 },
-	{ 0x00b09, MM_GROTTOS, "Middle", "MM Termina Field Bio Baba Grotto Hive Middle", ObjectType::hive, {0, 0}, MM_GROTTO_TERMINA_BIO_BABA, ObjectContext::All, 0 })
+	{ 0x00b09, MM_GROTTOS, "Middle", "MM Termina Field Bio Baba Grotto Hive Middle", ObjectType::hive, {0, 0}, MM_GROTTO_TERMINA_BIO_BABA, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_TERMINA_CANYON_GOSSIP, 5,
+const size_t MM_GROTTO_TERMINA_CANYON_GOSSIPNumOfObjs = 5;
+ObjectInfo MM_GROTTO_TERMINA_CANYON_GOSSIPSceneObjects [MM_GROTTO_TERMINA_CANYON_GOSSIPNumOfObjs] =
+{
 	{ 0x00200, MM_GROTTOS, "Grass 1", "MM Canyon Gossip Grotto Grass 1", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_CANYON_GOSSIP, ObjectContext::All, 0 },
 	{ 0x00201, MM_GROTTOS, "Grass 2", "MM Canyon Gossip Grotto Grass 2", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_CANYON_GOSSIP, ObjectContext::All, 0 },
 	{ 0x00202, MM_GROTTOS, "Grass 3", "MM Canyon Gossip Grotto Grass 3", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_CANYON_GOSSIP, ObjectContext::All, 0 },
 	{ 0x00203, MM_GROTTOS, "Grass 4", "MM Canyon Gossip Grotto Grass 4", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_CANYON_GOSSIP, ObjectContext::All, 0 },
-	{ 0x00204, MM_GROTTOS, "Grass 5", "MM Canyon Gossip Grotto Grass 5", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_CANYON_GOSSIP, ObjectContext::All, 0 })
+	{ 0x00204, MM_GROTTOS, "Grass 5", "MM Canyon Gossip Grotto Grass 5", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_CANYON_GOSSIP, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_DEKU_PALACE_BEANS, 17,
+const size_t MM_GROTTO_DEKU_PALACE_BEANSNumOfObjs = 17;
+ObjectInfo MM_GROTTO_DEKU_PALACE_BEANSSceneObjects [MM_GROTTO_DEKU_PALACE_BEANSNumOfObjs] =
+{
 	{ 0x00c04, MM_GROTTOS, "Butterfly 1", "MM Deku Palace Grotto Butterfly 1", ObjectType::butterfly, {0, 0}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectContext::All, 0 },
 	{ 0x10c04, MM_GROTTOS, "Butterfly 2", "MM Deku Palace Grotto Butterfly 2", ObjectType::butterfly, {0, 0}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectContext::All, 0 },
 	{ 0x20c04, MM_GROTTOS, "Butterfly 3", "MM Deku Palace Grotto Butterfly 3", ObjectType::butterfly, {0, 0}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectContext::All, 0 },
@@ -1382,9 +1510,12 @@ CreateObjectsForScene(MM_GROTTO_DEKU_PALACE_BEANS, 17,
 	{ 0x80c03, MM_GROTTOS, "Grass 9", "MM Deku Palace Grotto Grass 09", ObjectType::grass, {0, 0}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectContext::All, 0 },
 	{ 0x90c03, MM_GROTTOS, "Grass 10", "MM Deku Palace Grotto Grass 10", ObjectType::grass, {0, 0}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectContext::All, 0 },
 	{ 0xa0c03, MM_GROTTOS, "Grass 11", "MM Deku Palace Grotto Grass 11", ObjectType::grass, {0, 0}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectContext::All, 0 },
-	{ 0xb0c03, MM_GROTTOS, "Grass 12", "MM Deku Palace Grotto Grass 12", ObjectType::grass, {0, 0}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectContext::All, 0 })
+	{ 0xb0c03, MM_GROTTOS, "Grass 12", "MM Deku Palace Grotto Grass 12", ObjectType::grass, {0, 0}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_DEKU_PALACE_GENERIC, 10,
+const size_t MM_GROTTO_DEKU_PALACE_GENERICNumOfObjs = 10;
+ObjectInfo MM_GROTTO_DEKU_PALACE_GENERICSceneObjects [MM_GROTTO_DEKU_PALACE_GENERICNumOfObjs] =
+{
 	{ 0x00603, MM_GROTTOS, "Butterfly 1", "MM Deku Palace JP Line Grotto Butterfly 1", ObjectType::butterfly, {0, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectContext::All, 0 },
 	{ 0x10603, MM_GROTTOS, "Butterfly 2", "MM Deku Palace JP Line Grotto Butterfly 2", ObjectType::butterfly, {0, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectContext::All, 0 },
 	{ 0x20603, MM_GROTTOS, "Butterfly 3", "MM Deku Palace JP Line Grotto Butterfly 3", ObjectType::butterfly, {0, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectContext::All, 0 },
@@ -1394,9 +1525,12 @@ CreateObjectsForScene(MM_GROTTO_DEKU_PALACE_GENERIC, 10,
 	{ 0x00601, MM_GROTTOS, "Grass 2", "MM Deku Palace JP Line Grotto Grass 2", ObjectType::grass, {0, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectContext::All, 0 },
 	{ 0x00604, MM_GROTTOS, "Grass 3", "MM Deku Palace JP Line Grotto Grass 3", ObjectType::grass, {0, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectContext::All, 0 },
 	{ 0x00605, MM_GROTTOS, "Grass 4", "MM Deku Palace JP Line Grotto Grass 4", ObjectType::grass, {0, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectContext::All, 0 },
-	{ 0x00606, MM_GROTTOS, "Grass 5", "MM Deku Palace JP Line Grotto Grass 5", ObjectType::grass, {0, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectContext::All, 0 })
+	{ 0x00606, MM_GROTTOS, "Grass 5", "MM Deku Palace JP Line Grotto Grass 5", ObjectType::grass, {0, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_GREAT_BAY_COAST_FISHERMAN, 15,
+const size_t MM_GROTTO_GREAT_BAY_COAST_FISHERMANNumOfObjs = 15;
+ObjectInfo MM_GROTTO_GREAT_BAY_COAST_FISHERMANSceneObjects [MM_GROTTO_GREAT_BAY_COAST_FISHERMANNumOfObjs] =
+{
 	{ 0x17, MM_GROTTOS, "Chest", "MM Great Bay Coast Fisherman Grotto", ObjectType::chest, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_FISHERMAN, ObjectContext::All, 0 },
 	{ 0x03700, MM_GROTTOS, "Grass 1", "MM Great Bay Coast Fisherman Grotto Grass 01", ObjectType::grass, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_FISHERMAN, ObjectContext::All, 0 },
 	{ 0x03701, MM_GROTTOS, "Grass 2", "MM Great Bay Coast Fisherman Grotto Grass 02", ObjectType::grass, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_FISHERMAN, ObjectContext::All, 0 },
@@ -1411,9 +1545,12 @@ CreateObjectsForScene(MM_GROTTO_GREAT_BAY_COAST_FISHERMAN, 15,
 	{ 0x03710, MM_GROTTOS, "Grass 11", "MM Great Bay Coast Fisherman Grotto Grass 11", ObjectType::grass, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_FISHERMAN, ObjectContext::All, 0 },
 	{ 0x03711, MM_GROTTOS, "Grass 12", "MM Great Bay Coast Fisherman Grotto Grass 12", ObjectType::grass, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_FISHERMAN, ObjectContext::All, 0 },
 	{ 0x03712, MM_GROTTOS, "Grass 13", "MM Great Bay Coast Fisherman Grotto Grass 13", ObjectType::grass, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_FISHERMAN, ObjectContext::All, 0 },
-	{ 0x03713, MM_GROTTOS, "Grass 14", "MM Great Bay Coast Fisherman Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_FISHERMAN, ObjectContext::All, 0 })
+	{ 0x03713, MM_GROTTOS, "Grass 14", "MM Great Bay Coast Fisherman Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_FISHERMAN, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_IKANA_GRAVEYARD_GENERIC, 15,
+const size_t MM_GROTTO_IKANA_GRAVEYARD_GENERICNumOfObjs = 15;
+ObjectInfo MM_GROTTO_IKANA_GRAVEYARD_GENERICSceneObjects [MM_GROTTO_IKANA_GRAVEYARD_GENERICNumOfObjs] =
+{
 	{ 0x18, MM_GROTTOS, "Chest", "MM Ikana Graveyard Grotto", ObjectType::chest, {0, 0}, MM_GROTTO_IKANA_GRAVEYARD_GENERIC, ObjectContext::All, 0 },
 	{ 0x03800, MM_GROTTOS, "Grass 1", "MM Ikana Graveyard Grotto Grass 01", ObjectType::grass, {0, 0}, MM_GROTTO_IKANA_GRAVEYARD_GENERIC, ObjectContext::All, 0 },
 	{ 0x03801, MM_GROTTOS, "Grass 2", "MM Ikana Graveyard Grotto Grass 02", ObjectType::grass, {0, 0}, MM_GROTTO_IKANA_GRAVEYARD_GENERIC, ObjectContext::All, 0 },
@@ -1428,9 +1565,12 @@ CreateObjectsForScene(MM_GROTTO_IKANA_GRAVEYARD_GENERIC, 15,
 	{ 0x03810, MM_GROTTOS, "Grass 11", "MM Ikana Graveyard Grotto Grass 11", ObjectType::grass, {0, 0}, MM_GROTTO_IKANA_GRAVEYARD_GENERIC, ObjectContext::All, 0 },
 	{ 0x03811, MM_GROTTOS, "Grass 12", "MM Ikana Graveyard Grotto Grass 12", ObjectType::grass, {0, 0}, MM_GROTTO_IKANA_GRAVEYARD_GENERIC, ObjectContext::All, 0 },
 	{ 0x03812, MM_GROTTOS, "Grass 13", "MM Ikana Graveyard Grotto Grass 13", ObjectType::grass, {0, 0}, MM_GROTTO_IKANA_GRAVEYARD_GENERIC, ObjectContext::All, 0 },
-	{ 0x03813, MM_GROTTOS, "Grass 14", "MM Ikana Graveyard Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_IKANA_GRAVEYARD_GENERIC, ObjectContext::All, 0 })
+	{ 0x03813, MM_GROTTOS, "Grass 14", "MM Ikana Graveyard Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_IKANA_GRAVEYARD_GENERIC, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_IKANA_VALLEY_OPEN, 15,
+const size_t MM_GROTTO_IKANA_VALLEY_OPENNumOfObjs = 15;
+ObjectInfo MM_GROTTO_IKANA_VALLEY_OPENSceneObjects [MM_GROTTO_IKANA_VALLEY_OPENNumOfObjs] =
+{
 	{ 0x14, MM_GROTTOS, "Chest", "MM Ikana Valley Grotto", ObjectType::chest, {0, 0}, MM_GROTTO_IKANA_VALLEY_OPEN, ObjectContext::All, 0 },
 	{ 0x03400, MM_GROTTOS, "Grass 1", "MM Ikana Valley Grotto Grass 01", ObjectType::grass, {0, 0}, MM_GROTTO_IKANA_VALLEY_OPEN, ObjectContext::All, 0 },
 	{ 0x03401, MM_GROTTOS, "Grass 2", "MM Ikana Valley Grotto Grass 02", ObjectType::grass, {0, 0}, MM_GROTTO_IKANA_VALLEY_OPEN, ObjectContext::All, 0 },
@@ -1445,9 +1585,12 @@ CreateObjectsForScene(MM_GROTTO_IKANA_VALLEY_OPEN, 15,
 	{ 0x03410, MM_GROTTOS, "Grass 11", "MM Ikana Valley Grotto Grass 11", ObjectType::grass, {0, 0}, MM_GROTTO_IKANA_VALLEY_OPEN, ObjectContext::All, 0 },
 	{ 0x03411, MM_GROTTOS, "Grass 12", "MM Ikana Valley Grotto Grass 12", ObjectType::grass, {0, 0}, MM_GROTTO_IKANA_VALLEY_OPEN, ObjectContext::All, 0 },
 	{ 0x03412, MM_GROTTOS, "Grass 13", "MM Ikana Valley Grotto Grass 13", ObjectType::grass, {0, 0}, MM_GROTTO_IKANA_VALLEY_OPEN, ObjectContext::All, 0 },
-	{ 0x03413, MM_GROTTOS, "Grass 14", "MM Ikana Valley Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_IKANA_VALLEY_OPEN, ObjectContext::All, 0 })
+	{ 0x03413, MM_GROTTOS, "Grass 14", "MM Ikana Valley Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_IKANA_VALLEY_OPEN, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(LONE_PEAK, 27,
+const size_t LONE_PEAKNumOfObjs = 27;
+ObjectInfo LONE_PEAKSceneObjects [LONE_PEAKNumOfObjs] =
+{
 	{ 0x06, MM_GROTTOS, "Boulder", "MM Lone Peak Shrine Boulder Chest", ObjectType::chest, {0, 0}, LONE_PEAK, ObjectContext::All, 0 },
 	{ 0x00500, MM_GROTTOS, "Pack 1 - Grass 1", "MM Lone Peak Shrine Grass Pack 1 Grass 01", ObjectType::grass, {0, 0}, LONE_PEAK, ObjectContext::All, 0 },
 	{ 0x10500, MM_GROTTOS, "Pack 1 - Grass 2", "MM Lone Peak Shrine Grass Pack 1 Grass 02", ObjectType::grass, {0, 0}, LONE_PEAK, ObjectContext::All, 0 },
@@ -1474,9 +1617,12 @@ CreateObjectsForScene(LONE_PEAK, 27,
 	{ 0xa0502, MM_GROTTOS, "Pack 2 - Grass 11", "MM Lone Peak Shrine Grass Pack 2 Grass 11", ObjectType::grass, {0, 0}, LONE_PEAK, ObjectContext::All, 0 },
 	{ 0xb0502, MM_GROTTOS, "Pack 2 - Grass 12", "MM Lone Peak Shrine Grass Pack 2 Grass 12", ObjectType::grass, {0, 0}, LONE_PEAK, ObjectContext::All, 0 },
 	{ 0x03, MM_GROTTOS, "Invisible", "MM Lone Peak Shrine Invisible Chest", ObjectType::chest, {0, 0}, LONE_PEAK, ObjectContext::All, 0 },
-	{ 0x01, MM_GROTTOS, "Lens of Truth", "MM Lone Peak Shrine Lens Chest", ObjectType::chest, {0, 0}, LONE_PEAK, ObjectContext::All, 0 })
+	{ 0x01, MM_GROTTOS, "Lens of Truth", "MM Lone Peak Shrine Lens Chest", ObjectType::chest, {0, 0}, LONE_PEAK, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC, 15,
+const size_t MM_GROTTO_MOUNTAIN_VILLAGE_GENERICNumOfObjs = 15;
+ObjectInfo MM_GROTTO_MOUNTAIN_VILLAGE_GENERICSceneObjects [MM_GROTTO_MOUNTAIN_VILLAGE_GENERICNumOfObjs] =
+{
 	{ 0x1b, MM_GROTTOS, "Chest", "MM Mountain Village Tunnel Grotto", ObjectType::chest, {0, 0}, MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC, ObjectContext::All, 0 },
 	{ 0x03b00, MM_GROTTOS, "Grass 1", "MM Mountain Village Tunnel Grotto Grass 01", ObjectType::grass, {0, 0}, MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC, ObjectContext::All, 0 },
 	{ 0x03b01, MM_GROTTOS, "Grass 2", "MM Mountain Village Tunnel Grotto Grass 02", ObjectType::grass, {0, 0}, MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC, ObjectContext::All, 0 },
@@ -1491,9 +1637,12 @@ CreateObjectsForScene(MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC, 15,
 	{ 0x03b10, MM_GROTTOS, "Grass 11", "MM Mountain Village Tunnel Grotto Grass 11", ObjectType::grass, {0, 0}, MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC, ObjectContext::All, 0 },
 	{ 0x03b11, MM_GROTTOS, "Grass 12", "MM Mountain Village Tunnel Grotto Grass 12", ObjectType::grass, {0, 0}, MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC, ObjectContext::All, 0 },
 	{ 0x03b12, MM_GROTTOS, "Grass 13", "MM Mountain Village Tunnel Grotto Grass 13", ObjectType::grass, {0, 0}, MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC, ObjectContext::All, 0 },
-	{ 0x03b13, MM_GROTTOS, "Grass 14", "MM Mountain Village Tunnel Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC, ObjectContext::All, 0 })
+	{ 0x03b13, MM_GROTTOS, "Grass 14", "MM Mountain Village Tunnel Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_TERMINA_OCEAN_GOSSIP, 9,
+const size_t MM_GROTTO_TERMINA_OCEAN_GOSSIPNumOfObjs = 9;
+ObjectInfo MM_GROTTO_TERMINA_OCEAN_GOSSIPSceneObjects [MM_GROTTO_TERMINA_OCEAN_GOSSIPNumOfObjs] =
+{
 	{ 0x00002, MM_GROTTOS, "Butterfly 1", "MM Ocean Gossip Grotto Butterfly 1", ObjectType::butterfly, {0, 0}, MM_GROTTO_TERMINA_OCEAN_GOSSIP, ObjectContext::All, 0 },
 	{ 0x10002, MM_GROTTOS, "Butterfly 2", "MM Ocean Gossip Grotto Butterfly 2", ObjectType::butterfly, {0, 0}, MM_GROTTO_TERMINA_OCEAN_GOSSIP, ObjectContext::All, 0 },
 	{ 0x00001, MM_GROTTOS, "Grass 1", "MM Ocean Gossip Grotto Grass 1", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_OCEAN_GOSSIP, ObjectContext::All, 0 },
@@ -1502,9 +1651,12 @@ CreateObjectsForScene(MM_GROTTO_TERMINA_OCEAN_GOSSIP, 9,
 	{ 0x00007, MM_GROTTOS, "Grass 4", "MM Ocean Gossip Grotto Grass 4", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_OCEAN_GOSSIP, ObjectContext::All, 0 },
 	{ 0x00008, MM_GROTTOS, "Grass 5", "MM Ocean Gossip Grotto Grass 5", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_OCEAN_GOSSIP, ObjectContext::All, 0 },
 	{ 0x00000, MM_GROTTOS, "Hive", "MM Ocean Gossip Grotto Hive", ObjectType::hive, {0, 0}, MM_GROTTO_TERMINA_OCEAN_GOSSIP, ObjectContext::All, 0 },
-	{ GOSSIP_HEART_PIECE, MM_GROTTOS, "Gossip Stones - Heart Piece", "MM Termina Field Gossip Stones HP", ObjectType::npc, {0, 0}, MM_GROTTO_TERMINA_OCEAN_GOSSIP, ObjectContext::All, 0 })
+	{ GOSSIP_HEART_PIECE, MM_GROTTOS, "Gossip Stones - Heart Piece", "MM Termina Field Gossip Stones HP", ObjectType::npc, {0, 0}, MM_GROTTO_TERMINA_OCEAN_GOSSIP, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, 15,
+const size_t MM_GROTTO_PATH_TO_SNOWHEAD_GENERICNumOfObjs = 15;
+ObjectInfo MM_GROTTO_PATH_TO_SNOWHEAD_GENERICSceneObjects [MM_GROTTO_PATH_TO_SNOWHEAD_GENERICNumOfObjs] =
+{
 	{ 0x13, MM_GROTTOS, "Chest", "MM Path to Snowhead Grotto", ObjectType::chest, {0, 0}, MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, ObjectContext::All, 0 },
 	{ 0x03300, MM_GROTTOS, "Grass 1", "MM Path to Snowhead Grotto Grass 01", ObjectType::grass, {0, 0}, MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, ObjectContext::All, 0 },
 	{ 0x03301, MM_GROTTOS, "Grass 2", "MM Path to Snowhead Grotto Grass 02", ObjectType::grass, {0, 0}, MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, ObjectContext::All, 0 },
@@ -1519,9 +1671,12 @@ CreateObjectsForScene(MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, 15,
 	{ 0x03310, MM_GROTTOS, "Grass 11", "MM Path to Snowhead Grotto Grass 11", ObjectType::grass, {0, 0}, MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, ObjectContext::All, 0 },
 	{ 0x03311, MM_GROTTOS, "Grass 12", "MM Path to Snowhead Grotto Grass 12", ObjectType::grass, {0, 0}, MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, ObjectContext::All, 0 },
 	{ 0x03312, MM_GROTTOS, "Grass 13", "MM Path to Snowhead Grotto Grass 13", ObjectType::grass, {0, 0}, MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, ObjectContext::All, 0 },
-	{ 0x03313, MM_GROTTOS, "Grass 14", "MM Path to Snowhead Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, ObjectContext::All, 0 })
+	{ 0x03313, MM_GROTTOS, "Grass 14", "MM Path to Snowhead Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_TERMINA_PEEHAT, 13,
+const size_t MM_GROTTO_TERMINA_PEEHATNumOfObjs = 13;
+ObjectInfo MM_GROTTO_TERMINA_PEEHATSceneObjects [MM_GROTTO_TERMINA_PEEHATNumOfObjs] =
+{
 	{ 0x00d01, MM_GROTTOS, "Grass 1", "MM Peahat Grotto Grass 01", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_PEEHAT, ObjectContext::All, 0 },
 	{ 0x10d01, MM_GROTTOS, "Grass 2", "MM Peahat Grotto Grass 02", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_PEEHAT, ObjectContext::All, 0 },
 	{ 0x20d01, MM_GROTTOS, "Grass 3", "MM Peahat Grotto Grass 03", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_PEEHAT, ObjectContext::All, 0 },
@@ -1534,9 +1689,12 @@ CreateObjectsForScene(MM_GROTTO_TERMINA_PEEHAT, 13,
 	{ 0x90d01, MM_GROTTOS, "Grass 10", "MM Peahat Grotto Grass 10", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_PEEHAT, ObjectContext::All, 0 },
 	{ 0xa0d01, MM_GROTTOS, "Grass 11", "MM Peahat Grotto Grass 11", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_PEEHAT, ObjectContext::All, 0 },
 	{ 0xb0d01, MM_GROTTOS, "Grass 12", "MM Peahat Grotto Grass 12", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_PEEHAT, ObjectContext::All, 0 },
-	{ 0x04, MM_GROTTOS, "Peahat", "MM Termina Field Peahat Grotto", ObjectType::chest, {0, 0}, MM_GROTTO_TERMINA_PEEHAT, ObjectContext::All, 0 })
+	{ 0x04, MM_GROTTOS, "Peahat", "MM Termina Field Peahat Grotto", ObjectType::chest, {0, 0}, MM_GROTTO_TERMINA_PEEHAT, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_IKANA_ROAD_GENERIC, 15,
+const size_t MM_GROTTO_IKANA_ROAD_GENERICNumOfObjs = 15;
+ObjectInfo MM_GROTTO_IKANA_ROAD_GENERICSceneObjects [MM_GROTTO_IKANA_ROAD_GENERICNumOfObjs] =
+{
 	{ 0x16, MM_GROTTOS, "Chest", "MM Road to Ikana Grotto", ObjectType::chest, {0, 0}, MM_GROTTO_IKANA_ROAD_GENERIC, ObjectContext::All, 0 },
 	{ 0x03600, MM_GROTTOS, "Grass 1", "MM Road to Ikana Grotto Grass 01", ObjectType::grass, {0, 0}, MM_GROTTO_IKANA_ROAD_GENERIC, ObjectContext::All, 0 },
 	{ 0x03601, MM_GROTTOS, "Grass 2", "MM Road to Ikana Grotto Grass 02", ObjectType::grass, {0, 0}, MM_GROTTO_IKANA_ROAD_GENERIC, ObjectContext::All, 0 },
@@ -1551,9 +1709,12 @@ CreateObjectsForScene(MM_GROTTO_IKANA_ROAD_GENERIC, 15,
 	{ 0x03610, MM_GROTTOS, "Grass 11", "MM Road to Ikana Grotto Grass 11", ObjectType::grass, {0, 0}, MM_GROTTO_IKANA_ROAD_GENERIC, ObjectContext::All, 0 },
 	{ 0x03611, MM_GROTTOS, "Grass 12", "MM Road to Ikana Grotto Grass 12", ObjectType::grass, {0, 0}, MM_GROTTO_IKANA_ROAD_GENERIC, ObjectContext::All, 0 },
 	{ 0x03612, MM_GROTTOS, "Grass 13", "MM Road to Ikana Grotto Grass 13", ObjectType::grass, {0, 0}, MM_GROTTO_IKANA_ROAD_GENERIC, ObjectContext::All, 0 },
-	{ 0x03613, MM_GROTTOS, "Grass 14", "MM Road to Ikana Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_IKANA_ROAD_GENERIC, ObjectContext::All, 0 })
+	{ 0x03613, MM_GROTTOS, "Grass 14", "MM Road to Ikana Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_IKANA_ROAD_GENERIC, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, 15,
+const size_t MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPENNumOfObjs = 15;
+ObjectInfo MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPENSceneObjects [MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPENNumOfObjs] =
+{
 	{ 0x1e, MM_GROTTOS, "Chest", "MM Road to Southern Swamp Grotto", ObjectType::chest, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, ObjectContext::All, 0 },
 	{ 0x03e00, MM_GROTTOS, "Grass 1", "MM Road to Southern Swamp Grotto Grass 01", ObjectType::grass, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, ObjectContext::All, 0 },
 	{ 0x03e01, MM_GROTTOS, "Grass 2", "MM Road to Southern Swamp Grotto Grass 02", ObjectType::grass, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, ObjectContext::All, 0 },
@@ -1568,9 +1729,12 @@ CreateObjectsForScene(MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, 15,
 	{ 0x03e10, MM_GROTTOS, "Grass 11", "MM Road to Southern Swamp Grotto Grass 11", ObjectType::grass, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, ObjectContext::All, 0 },
 	{ 0x03e11, MM_GROTTOS, "Grass 12", "MM Road to Southern Swamp Grotto Grass 12", ObjectType::grass, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, ObjectContext::All, 0 },
 	{ 0x03e12, MM_GROTTOS, "Grass 13", "MM Road to Southern Swamp Grotto Grass 13", ObjectType::grass, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, ObjectContext::All, 0 },
-	{ 0x03e13, MM_GROTTOS, "Grass 14", "MM Road to Southern Swamp Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, ObjectContext::All, 0 })
+	{ 0x03e13, MM_GROTTOS, "Grass 14", "MM Road to Southern Swamp Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_SOUTHERN_SWAMP_OPEN, 15,
+const size_t MM_GROTTO_SOUTHERN_SWAMP_OPENNumOfObjs = 15;
+ObjectInfo MM_GROTTO_SOUTHERN_SWAMP_OPENSceneObjects [MM_GROTTO_SOUTHERN_SWAMP_OPENNumOfObjs] =
+{
 	{ 0x1d, MM_GROTTOS, "Chest", "MM Southern Swamp Grotto", ObjectType::chest, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_OPEN, ObjectContext::All, 0 },
 	{ 0x03d00, MM_GROTTOS, "Grass 1", "MM Southern Swamp Grotto Grass 01", ObjectType::grass, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_OPEN, ObjectContext::All, 0 },
 	{ 0x03d01, MM_GROTTOS, "Grass 2", "MM Southern Swamp Grotto Grass 02", ObjectType::grass, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_OPEN, ObjectContext::All, 0 },
@@ -1585,9 +1749,12 @@ CreateObjectsForScene(MM_GROTTO_SOUTHERN_SWAMP_OPEN, 15,
 	{ 0x03d10, MM_GROTTOS, "Grass 11", "MM Southern Swamp Grotto Grass 11", ObjectType::grass, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_OPEN, ObjectContext::All, 0 },
 	{ 0x03d11, MM_GROTTOS, "Grass 12", "MM Southern Swamp Grotto Grass 12", ObjectType::grass, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_OPEN, ObjectContext::All, 0 },
 	{ 0x03d12, MM_GROTTOS, "Grass 13", "MM Southern Swamp Grotto Grass 13", ObjectType::grass, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_OPEN, ObjectContext::All, 0 },
-	{ 0x03d13, MM_GROTTOS, "Grass 14", "MM Southern Swamp Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_OPEN, ObjectContext::All, 0 })
+	{ 0x03d13, MM_GROTTOS, "Grass 14", "MM Southern Swamp Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_OPEN, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_TERMINA_COW, 78,
+const size_t MM_GROTTO_TERMINA_COWNumOfObjs = 78;
+ObjectInfo MM_GROTTO_TERMINA_COWSceneObjects [MM_GROTTO_TERMINA_COWNumOfObjs] =
+{
 	{ 0x14, MM_GROTTOS, "Back", "MM Termina Field Cow Back", ObjectType::cow, {0, 0}, MM_GROTTO_TERMINA_COW, ObjectContext::All, 0 },
 	{ 0x13, MM_GROTTOS, "Front", "MM Termina Field Cow Front", ObjectType::cow, {0, 0}, MM_GROTTO_TERMINA_COW, ObjectContext::All, 0 },
 	{ 0x00a06, MM_GROTTOS, "Butterfly 1", "MM Termina Field Cow Grotto Butterfly 1", ObjectType::butterfly, {0, 0}, MM_GROTTO_TERMINA_COW, ObjectContext::All, 0 },
@@ -1665,12 +1832,18 @@ CreateObjectsForScene(MM_GROTTO_TERMINA_COW, 78,
 	{ 0x90a09, MM_GROTTOS, "Grass 70", "MM Termina Field Cow Grotto Grass 70", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_COW, ObjectContext::All, 0 },
 	{ 0xa0a09, MM_GROTTOS, "Grass 71", "MM Termina Field Cow Grotto Grass 71", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_COW, ObjectContext::All, 0 },
 	{ 0xb0a09, MM_GROTTOS, "Grass 72", "MM Termina Field Cow Grotto Grass 72", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_COW, ObjectContext::All, 0 },
-	{ 0x00a02, MM_GROTTOS, "Hive", "MM Termina Field Cow Grotto Hive", ObjectType::hive, {0, 0}, MM_GROTTO_TERMINA_COW, ObjectContext::All, 0 })
+	{ 0x00a02, MM_GROTTOS, "Hive", "MM Termina Field Cow Grotto Hive", ObjectType::hive, {0, 0}, MM_GROTTO_TERMINA_COW, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_TERMINA_DODONGO, 1,
-	{ 0x00, MM_GROTTOS, "Dodongo", "MM Termina Field Dodongo Grotto", ObjectType::chest, {0, 0}, MM_GROTTO_TERMINA_DODONGO, ObjectContext::All, 0 })
+const size_t MM_GROTTO_TERMINA_DODONGONumOfObjs = 1;
+ObjectInfo MM_GROTTO_TERMINA_DODONGOSceneObjects [MM_GROTTO_TERMINA_DODONGONumOfObjs] =
+{
+	{ 0x00, MM_GROTTOS, "Dodongo", "MM Termina Field Dodongo Grotto", ObjectType::chest, {0, 0}, MM_GROTTO_TERMINA_DODONGO, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_TERMINA_PILLAR, 15,
+const size_t MM_GROTTO_TERMINA_PILLARNumOfObjs = 15;
+ObjectInfo MM_GROTTO_TERMINA_PILLARSceneObjects [MM_GROTTO_TERMINA_PILLARNumOfObjs] =
+{
 	{ 0x1a, MM_GROTTOS, "Chest", "MM Termina Field Pillar Grotto", ObjectType::chest, {0, 0}, MM_GROTTO_TERMINA_PILLAR, ObjectContext::All, 0 },
 	{ 0x03a00, MM_GROTTOS, "Grass 1", "MM Termina Field Pillar Grotto Grass 01", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_PILLAR, ObjectContext::All, 0 },
 	{ 0x03a01, MM_GROTTOS, "Grass 2", "MM Termina Field Pillar Grotto Grass 02", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_PILLAR, ObjectContext::All, 0 },
@@ -1685,14 +1858,20 @@ CreateObjectsForScene(MM_GROTTO_TERMINA_PILLAR, 15,
 	{ 0x03a10, MM_GROTTOS, "Grass 11", "MM Termina Field Pillar Grotto Grass 11", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_PILLAR, ObjectContext::All, 0 },
 	{ 0x03a11, MM_GROTTOS, "Grass 12", "MM Termina Field Pillar Grotto Grass 12", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_PILLAR, ObjectContext::All, 0 },
 	{ 0x03a12, MM_GROTTOS, "Grass 13", "MM Termina Field Pillar Grotto Grass 13", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_PILLAR, ObjectContext::All, 0 },
-	{ 0x03a13, MM_GROTTOS, "Grass 14", "MM Termina Field Pillar Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_PILLAR, ObjectContext::All, 0 })
+	{ 0x03a13, MM_GROTTOS, "Grass 14", "MM Termina Field Pillar Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_PILLAR, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_TERMINA_SCRUB, 3,
+const size_t MM_GROTTO_TERMINA_SCRUBNumOfObjs = 3;
+ObjectInfo MM_GROTTO_TERMINA_SCRUBSceneObjects [MM_GROTTO_TERMINA_SCRUBNumOfObjs] =
+{
 	{ SCRUB_TELESCOPE, MM_GROTTOS, "Scrub", "MM Termina Field Scrub", ObjectType::npc, {0, 0}, MM_GROTTO_TERMINA_SCRUB, ObjectContext::All, 0 },
 	{ 0x00900, MM_GROTTOS, "Crate", "MM Termina Field Scrub Crate", ObjectType::crate, {0, 0}, MM_GROTTO_TERMINA_SCRUB, ObjectContext::All, 0 },
-	{ 0x0903, MM_GROTTOS, "Pot", "MM Termina Field Scrub Pot", ObjectType::pot, {0, 0}, MM_GROTTO_TERMINA_SCRUB, ObjectContext::All, 0 })
+	{ 0x0903, MM_GROTTOS, "Pot", "MM Termina Field Scrub Pot", ObjectType::pot, {0, 0}, MM_GROTTO_TERMINA_SCRUB, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_TERMINA_TALL_GRASS, 15,
+const size_t MM_GROTTO_TERMINA_TALL_GRASSNumOfObjs = 15;
+ObjectInfo MM_GROTTO_TERMINA_TALL_GRASSSceneObjects [MM_GROTTO_TERMINA_TALL_GRASSNumOfObjs] =
+{
 	{ 0x1f, MM_GROTTOS, "Chest", "MM Termina Field Tall Grass Grotto", ObjectType::chest, {0, 0}, MM_GROTTO_TERMINA_TALL_GRASS, ObjectContext::All, 0 },
 	{ 0x03f00, MM_GROTTOS, "Grass 1", "MM Termina Field Tall Grass Grotto Grass 01", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_TALL_GRASS, ObjectContext::All, 0 },
 	{ 0x03f01, MM_GROTTOS, "Grass 2", "MM Termina Field Tall Grass Grotto Grass 02", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_TALL_GRASS, ObjectContext::All, 0 },
@@ -1707,12 +1886,18 @@ CreateObjectsForScene(MM_GROTTO_TERMINA_TALL_GRASS, 15,
 	{ 0x03f10, MM_GROTTOS, "Grass 11", "MM Termina Field Tall Grass Grotto Grass 11", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_TALL_GRASS, ObjectContext::All, 0 },
 	{ 0x03f11, MM_GROTTOS, "Grass 12", "MM Termina Field Tall Grass Grotto Grass 12", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_TALL_GRASS, ObjectContext::All, 0 },
 	{ 0x03f12, MM_GROTTOS, "Grass 13", "MM Termina Field Tall Grass Grotto Grass 13", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_TALL_GRASS, ObjectContext::All, 0 },
-	{ 0x03f13, MM_GROTTOS, "Grass 14", "MM Termina Field Tall Grass Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_TALL_GRASS, ObjectContext::All, 0 })
+	{ 0x03f13, MM_GROTTOS, "Grass 14", "MM Termina Field Tall Grass Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_TERMINA_TALL_GRASS, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_TWIN_ISLANDS_FROZEN, 1,
-	{ 0x02, MM_GROTTOS, "Chest", "MM Twin Islands Frozen Grotto Chest", ObjectType::chest, {0, 0}, MM_GROTTO_TWIN_ISLANDS_FROZEN, ObjectContext::All, 0 })
+const size_t MM_GROTTO_TWIN_ISLANDS_FROZENNumOfObjs = 1;
+ObjectInfo MM_GROTTO_TWIN_ISLANDS_FROZENSceneObjects [MM_GROTTO_TWIN_ISLANDS_FROZENNumOfObjs] =
+{
+	{ 0x02, MM_GROTTOS, "Chest", "MM Twin Islands Frozen Grotto Chest", ObjectType::chest, {0, 0}, MM_GROTTO_TWIN_ISLANDS_FROZEN, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_TWIN_ISLANDS_RAMP, 15,
+const size_t MM_GROTTO_TWIN_ISLANDS_RAMPNumOfObjs = 15;
+ObjectInfo MM_GROTTO_TWIN_ISLANDS_RAMPSceneObjects [MM_GROTTO_TWIN_ISLANDS_RAMPNumOfObjs] =
+{
 	{ 0x19, MM_GROTTOS, "Chest", "MM Twin Islands Ramp Grotto Chest", ObjectType::chest, {0, 0}, MM_GROTTO_TWIN_ISLANDS_RAMP, ObjectContext::All, 0 },
 	{ 0x03900, MM_GROTTOS, "Grass 1", "MM Twin Islands Ramp Grotto Grass 01", ObjectType::grass, {0, 0}, MM_GROTTO_TWIN_ISLANDS_RAMP, ObjectContext::All, 0 },
 	{ 0x03901, MM_GROTTOS, "Grass 2", "MM Twin Islands Ramp Grotto Grass 02", ObjectType::grass, {0, 0}, MM_GROTTO_TWIN_ISLANDS_RAMP, ObjectContext::All, 0 },
@@ -1727,9 +1912,12 @@ CreateObjectsForScene(MM_GROTTO_TWIN_ISLANDS_RAMP, 15,
 	{ 0x03910, MM_GROTTOS, "Grass 11", "MM Twin Islands Ramp Grotto Grass 11", ObjectType::grass, {0, 0}, MM_GROTTO_TWIN_ISLANDS_RAMP, ObjectContext::All, 0 },
 	{ 0x03911, MM_GROTTOS, "Grass 12", "MM Twin Islands Ramp Grotto Grass 12", ObjectType::grass, {0, 0}, MM_GROTTO_TWIN_ISLANDS_RAMP, ObjectContext::All, 0 },
 	{ 0x03912, MM_GROTTOS, "Grass 13", "MM Twin Islands Ramp Grotto Grass 13", ObjectType::grass, {0, 0}, MM_GROTTO_TWIN_ISLANDS_RAMP, ObjectContext::All, 0 },
-	{ 0x03913, MM_GROTTOS, "Grass 14", "MM Twin Islands Ramp Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_TWIN_ISLANDS_RAMP, ObjectContext::All, 0 })
+	{ 0x03913, MM_GROTTOS, "Grass 14", "MM Twin Islands Ramp Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_TWIN_ISLANDS_RAMP, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_WOODS_OF_MYSTERY_OPEN, 15,
+const size_t MM_GROTTO_WOODS_OF_MYSTERY_OPENNumOfObjs = 15;
+ObjectInfo MM_GROTTO_WOODS_OF_MYSTERY_OPENSceneObjects [MM_GROTTO_WOODS_OF_MYSTERY_OPENNumOfObjs] =
+{
 	{ 0x1c, MM_GROTTOS, "Chest", "MM Woods of Mystery Grotto", ObjectType::chest, {0, 0}, MM_GROTTO_WOODS_OF_MYSTERY_OPEN, ObjectContext::All, 0 },
 	{ 0x03c00, MM_GROTTOS, "Grass 1", "MM Woods of Mystery Grotto Grass 01", ObjectType::grass, {0, 0}, MM_GROTTO_WOODS_OF_MYSTERY_OPEN, ObjectContext::All, 0 },
 	{ 0x03c01, MM_GROTTOS, "Grass 2", "MM Woods of Mystery Grotto Grass 02", ObjectType::grass, {0, 0}, MM_GROTTO_WOODS_OF_MYSTERY_OPEN, ObjectContext::All, 0 },
@@ -1744,9 +1932,12 @@ CreateObjectsForScene(MM_GROTTO_WOODS_OF_MYSTERY_OPEN, 15,
 	{ 0x03c10, MM_GROTTOS, "Grass 11", "MM Woods of Mystery Grotto Grass 11", ObjectType::grass, {0, 0}, MM_GROTTO_WOODS_OF_MYSTERY_OPEN, ObjectContext::All, 0 },
 	{ 0x03c11, MM_GROTTOS, "Grass 12", "MM Woods of Mystery Grotto Grass 12", ObjectType::grass, {0, 0}, MM_GROTTO_WOODS_OF_MYSTERY_OPEN, ObjectContext::All, 0 },
 	{ 0x03c12, MM_GROTTOS, "Grass 13", "MM Woods of Mystery Grotto Grass 13", ObjectType::grass, {0, 0}, MM_GROTTO_WOODS_OF_MYSTERY_OPEN, ObjectContext::All, 0 },
-	{ 0x03c13, MM_GROTTOS, "Grass 14", "MM Woods of Mystery Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_WOODS_OF_MYSTERY_OPEN, ObjectContext::All, 0 })
+	{ 0x03c13, MM_GROTTOS, "Grass 14", "MM Woods of Mystery Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_WOODS_OF_MYSTERY_OPEN, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_GROTTO_ZORA_CAPE_GENERIC, 15,
+const size_t MM_GROTTO_ZORA_CAPE_GENERICNumOfObjs = 15;
+ObjectInfo MM_GROTTO_ZORA_CAPE_GENERICSceneObjects [MM_GROTTO_ZORA_CAPE_GENERICNumOfObjs] =
+{
 	{ 0x15, MM_GROTTOS, "Chest", "MM Zora Cape Grotto", ObjectType::chest, {0, 0}, MM_GROTTO_ZORA_CAPE_GENERIC, ObjectContext::All, 0 },
 	{ 0x03500, MM_GROTTOS, "Grass 1", "MM Zora Cape Grotto Grass 01", ObjectType::grass, {0, 0}, MM_GROTTO_ZORA_CAPE_GENERIC, ObjectContext::All, 0 },
 	{ 0x03501, MM_GROTTOS, "Grass 2", "MM Zora Cape Grotto Grass 02", ObjectType::grass, {0, 0}, MM_GROTTO_ZORA_CAPE_GENERIC, ObjectContext::All, 0 },
@@ -1761,13 +1952,19 @@ CreateObjectsForScene(MM_GROTTO_ZORA_CAPE_GENERIC, 15,
 	{ 0x03510, MM_GROTTOS, "Grass 11", "MM Zora Cape Grotto Grass 11", ObjectType::grass, {0, 0}, MM_GROTTO_ZORA_CAPE_GENERIC, ObjectContext::All, 0 },
 	{ 0x03511, MM_GROTTOS, "Grass 12", "MM Zora Cape Grotto Grass 12", ObjectType::grass, {0, 0}, MM_GROTTO_ZORA_CAPE_GENERIC, ObjectContext::All, 0 },
 	{ 0x03512, MM_GROTTOS, "Grass 13", "MM Zora Cape Grotto Grass 13", ObjectType::grass, {0, 0}, MM_GROTTO_ZORA_CAPE_GENERIC, ObjectContext::All, 0 },
-	{ 0x03513, MM_GROTTOS, "Grass 14", "MM Zora Cape Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_ZORA_CAPE_GENERIC, ObjectContext::All, 0 })
+	{ 0x03513, MM_GROTTOS, "Grass 14", "MM Zora Cape Grotto Grass 14", ObjectType::grass, {0, 0}, MM_GROTTO_ZORA_CAPE_GENERIC, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(HONEY_DARLING, 2,
+const size_t HONEY_DARLINGNumOfObjs = 2;
+ObjectInfo HONEY_DARLINGSceneObjects [HONEY_DARLINGNumOfObjs] =
+{
 	{ HONEY_DARLING_2, HONEY_DARLING, "Reward - All Days", "MM Honey & Darling Reward All Days", ObjectType::npc, {0, 0}, HONEY_DARLING, ObjectContext::All, 0 },
-	{ HONEY_DARLING_1, HONEY_DARLING, "Reward - Any Day", "MM Honey & Darling Reward Any Day", ObjectType::npc, {0, 0}, HONEY_DARLING, ObjectContext::All, 0 })
+	{ HONEY_DARLING_1, HONEY_DARLING, "Reward - Any Day", "MM Honey & Darling Reward Any Day", ObjectType::npc, {0, 0}, HONEY_DARLING, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(IKANA_CANYON, 31,
+const size_t IKANA_CANYONNumOfObjs = 31;
+ObjectInfo IKANA_CANYONSceneObjects [IKANA_CANYONNumOfObjs] =
+{
 	{ 0x0003b, IKANA_CANYON, "Grass 1", "MM Ikana Canyon Grass 1", ObjectType::grass, {0, 0}, IKANA_CANYON, ObjectContext::All, 0 },
 	{ 0x0003c, IKANA_CANYON, "Grass 2", "MM Ikana Canyon Grass 2", ObjectType::grass, {0, 0}, IKANA_CANYON, ObjectContext::All, 0 },
 	{ 0x0003d, IKANA_CANYON, "Grass 3", "MM Ikana Canyon Grass 3", ObjectType::grass, {0, 0}, IKANA_CANYON, ObjectContext::All, 0 },
@@ -1798,9 +1995,12 @@ CreateObjectsForScene(IKANA_CANYON, 31,
 	{ 0x03410, IKANA_CANYON, "Grass 11", "MM Ikana Valley Grotto Grass 11", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_VALLEY_OPEN, ObjectContext::All, 0 },
 	{ 0x03411, IKANA_CANYON, "Grass 12", "MM Ikana Valley Grotto Grass 12", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_VALLEY_OPEN, ObjectContext::All, 0 },
 	{ 0x03412, IKANA_CANYON, "Grass 13", "MM Ikana Valley Grotto Grass 13", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_VALLEY_OPEN, ObjectContext::All, 0 },
-	{ 0x03413, IKANA_CANYON, "Grass 14", "MM Ikana Valley Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_VALLEY_OPEN, ObjectContext::All, 0 })
+	{ 0x03413, IKANA_CANYON, "Grass 14", "MM Ikana Valley Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_VALLEY_OPEN, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(IKANA_GRAVEYARD, 75,
+const size_t IKANA_GRAVEYARDNumOfObjs = 75;
+ObjectInfo IKANA_GRAVEYARDSceneObjects [IKANA_GRAVEYARDNumOfObjs] =
+{
 	{ 0x00, IKANA_GRAVEYARD, "Captain's Mask", "MM Ikana Graveyard Captain Mask", ObjectType::chest, {0, 0}, IKANA_GRAVEYARD, ObjectContext::All, 0 },
 	{ 0x0001f, IKANA_GRAVEYARD, "Grass 1", "MM Ikana Graveyard Grass 1", ObjectType::grass, {0, 0}, IKANA_GRAVEYARD, ObjectContext::All, 0 },
 	{ 0x00027, IKANA_GRAVEYARD, "Grass 2", "MM Ikana Graveyard Grass 2", ObjectType::grass, {0, 0}, IKANA_GRAVEYARD, ObjectContext::All, 0 },
@@ -1875,13 +2075,19 @@ CreateObjectsForScene(IKANA_GRAVEYARD, 75,
 	{ 0x03810, IKANA_GRAVEYARD, "Grass 11", "MM Ikana Graveyard Grotto Grass 11", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_GRAVEYARD_GENERIC, ObjectContext::All, 0 },
 	{ 0x03811, IKANA_GRAVEYARD, "Grass 12", "MM Ikana Graveyard Grotto Grass 12", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_GRAVEYARD_GENERIC, ObjectContext::All, 0 },
 	{ 0x03812, IKANA_GRAVEYARD, "Grass 13", "MM Ikana Graveyard Grotto Grass 13", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_GRAVEYARD_GENERIC, ObjectContext::All, 0 },
-	{ 0x03813, IKANA_GRAVEYARD, "Grass 14", "MM Ikana Graveyard Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_GRAVEYARD_GENERIC, ObjectContext::All, 0 })
+	{ 0x03813, IKANA_GRAVEYARD, "Grass 14", "MM Ikana Graveyard Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_GRAVEYARD_GENERIC, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_LABORATORY, 2,
+const size_t MM_LABORATORYNumOfObjs = 2;
+ObjectInfo MM_LABORATORYSceneObjects [MM_LABORATORYNumOfObjs] =
+{
 	{ LAB_FISH_HEART_PIECE, MM_LABORATORY, "Fish - Heart Piece", "MM Laboratory Fish HP", ObjectType::npc, {0, 0}, MM_LABORATORY, ObjectContext::All, 0 },
-	{ SONG_ZORA, MM_LABORATORY, "New Wave Bossa Nova", "MM Laboratory Zora Song", ObjectType::npc, {0, 0}, MM_LABORATORY, ObjectContext::All, 0 })
+	{ SONG_ZORA, MM_LABORATORY, "New Wave Bossa Nova", "MM Laboratory Zora Song", ObjectType::npc, {0, 0}, MM_LABORATORY, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(LAIR_GOHT, 16,
+const size_t LAIR_GOHTNumOfObjs = 16;
+ObjectInfo LAIR_GOHTSceneObjects [LAIR_GOHTNumOfObjs] =
+{
 	{ REMAINS_GOHT, LAIR_GOHT, "Goht's Remains", "MM Snowhead Temple Boss", ObjectType::npc, {0, 0}, TEMPLE_SNOWHEAD, ObjectContext::All, 0 },
 	{ 0x1f, LAIR_GOHT, "Heart Container", "MM Snowhead Temple Boss HC", ObjectType::collectible, {0, 0}, TEMPLE_SNOWHEAD, ObjectContext::All, 0 },
 	{ 0x0001, LAIR_GOHT, "Boss 1", "MM Snowhead Temple Boss Pot 01", ObjectType::pot, {0, 0}, TEMPLE_SNOWHEAD, ObjectContext::All, 0 },
@@ -1897,9 +2103,12 @@ CreateObjectsForScene(LAIR_GOHT, 16,
 	{ 0x000d, LAIR_GOHT, "Boss - Early 1", "MM Snowhead Temple Boss Pot Early 1", ObjectType::pot, {0, 0}, TEMPLE_SNOWHEAD, ObjectContext::All, 0 },
 	{ 0x000e, LAIR_GOHT, "Boss - Early 2", "MM Snowhead Temple Boss Pot Early 2", ObjectType::pot, {0, 0}, TEMPLE_SNOWHEAD, ObjectContext::All, 0 },
 	{ 0x0006, LAIR_GOHT, "Boss - Early 3", "MM Snowhead Temple Boss Pot Early 3", ObjectType::pot, {0, 0}, TEMPLE_SNOWHEAD, ObjectContext::All, 0 },
-	{ 0x0007, LAIR_GOHT, "Boss - Early 4", "MM Snowhead Temple Boss Pot Early 4", ObjectType::pot, {0, 0}, TEMPLE_SNOWHEAD, ObjectContext::All, 0 })
+	{ 0x0007, LAIR_GOHT, "Boss - Early 4", "MM Snowhead Temple Boss Pot Early 4", ObjectType::pot, {0, 0}, TEMPLE_SNOWHEAD, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(TEMPLE_SNOWHEAD, 131,
+const size_t TEMPLE_SNOWHEADNumOfObjs = 131;
+ObjectInfo TEMPLE_SNOWHEADSceneObjects [TEMPLE_SNOWHEADNumOfObjs] =
+{
 	{ REMAINS_GOHT, LAIR_GOHT, "Goht's Remains", "MM Snowhead Temple Boss", ObjectType::npc, {0, 0}, TEMPLE_SNOWHEAD, ObjectContext::All, 0 },
 	{ 0x1f, LAIR_GOHT, "Heart Container", "MM Snowhead Temple Boss HC", ObjectType::collectible, {0, 0}, TEMPLE_SNOWHEAD, ObjectContext::All, 0 },
 	{ 0x0001, LAIR_GOHT, "Boss 1", "MM Snowhead Temple Boss Pot 01", ObjectType::pot, {0, 0}, TEMPLE_SNOWHEAD, ObjectContext::All, 0 },
@@ -2030,9 +2239,12 @@ CreateObjectsForScene(TEMPLE_SNOWHEAD, 131,
 	{ 0x00a0c, TEMPLE_SNOWHEAD, "Snow Room 5", "MM Snowhead Temple Small Snowball Snow Room 5", ObjectType::snowball, {0, 0}, TEMPLE_SNOWHEAD, ObjectContext::All, 0 },
 	{ 0x00a0d, TEMPLE_SNOWHEAD, "Snow Room 6", "MM Snowhead Temple Small Snowball Snow Room 6", ObjectType::snowball, {0, 0}, TEMPLE_SNOWHEAD, ObjectContext::All, 0 },
 	{ 0x00a0e, TEMPLE_SNOWHEAD, "Snow Room 7", "MM Snowhead Temple Small Snowball Snow Room 7", ObjectType::snowball, {0, 0}, TEMPLE_SNOWHEAD, ObjectContext::All, 0 },
-	{ 0x00a0f, TEMPLE_SNOWHEAD, "Snow Room 8", "MM Snowhead Temple Small Snowball Snow Room 8", ObjectType::snowball, {0, 0}, TEMPLE_SNOWHEAD, ObjectContext::All, 0 })
+	{ 0x00a0f, TEMPLE_SNOWHEAD, "Snow Room 8", "MM Snowhead Temple Small Snowball Snow Room 8", ObjectType::snowball, {0, 0}, TEMPLE_SNOWHEAD, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(LAIR_GYORG, 10,
+const size_t LAIR_GYORGNumOfObjs = 10;
+ObjectInfo LAIR_GYORGSceneObjects [LAIR_GYORGNumOfObjs] =
+{
 	{ REMAINS_GYORG, LAIR_GYORG, "Gyorg's Remains", "MM Great Bay Temple Boss", ObjectType::npc, {0, 0}, TEMPLE_GREAT_BAY, ObjectContext::All, 0 },
 	{ 0x1f, LAIR_GYORG, "Heart Container", "MM Great Bay Temple Boss HC", ObjectType::collectible, {0, 0}, TEMPLE_GREAT_BAY, ObjectContext::All, 0 },
 	{ 0x0001, LAIR_GYORG, "Boss 1", "MM Great Bay Temple Boss Pot 1", ObjectType::pot, {0, 0}, TEMPLE_GREAT_BAY, ObjectContext::All, 0 },
@@ -2042,9 +2254,12 @@ CreateObjectsForScene(LAIR_GYORG, 10,
 	{ 0x0005, LAIR_GYORG, "Boss - Underwater 1", "MM Great Bay Temple Boss Pot Underwater 1", ObjectType::pot, {0, 0}, TEMPLE_GREAT_BAY, ObjectContext::All, 0 },
 	{ 0x0006, LAIR_GYORG, "Boss - Underwater 2", "MM Great Bay Temple Boss Pot Underwater 2", ObjectType::pot, {0, 0}, TEMPLE_GREAT_BAY, ObjectContext::All, 0 },
 	{ 0x0007, LAIR_GYORG, "Boss - Underwater 3", "MM Great Bay Temple Boss Pot Underwater 3", ObjectType::pot, {0, 0}, TEMPLE_GREAT_BAY, ObjectContext::All, 0 },
-	{ 0x0008, LAIR_GYORG, "Boss - Underwater 4", "MM Great Bay Temple Boss Pot Underwater 4", ObjectType::pot, {0, 0}, TEMPLE_GREAT_BAY, ObjectContext::All, 0 })
+	{ 0x0008, LAIR_GYORG, "Boss - Underwater 4", "MM Great Bay Temple Boss Pot Underwater 4", ObjectType::pot, {0, 0}, TEMPLE_GREAT_BAY, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(TEMPLE_GREAT_BAY, 152,
+const size_t TEMPLE_GREAT_BAYNumOfObjs = 152;
+ObjectInfo TEMPLE_GREAT_BAYSceneObjects [TEMPLE_GREAT_BAYNumOfObjs] =
+{
 	{ REMAINS_GYORG, LAIR_GYORG, "Gyorg's Remains", "MM Great Bay Temple Boss", ObjectType::npc, {0, 0}, TEMPLE_GREAT_BAY, ObjectContext::All, 0 },
 	{ 0x1f, LAIR_GYORG, "Heart Container", "MM Great Bay Temple Boss HC", ObjectType::collectible, {0, 0}, TEMPLE_GREAT_BAY, ObjectContext::All, 0 },
 	{ 0x0001, LAIR_GYORG, "Boss 1", "MM Great Bay Temple Boss Pot 1", ObjectType::pot, {0, 0}, TEMPLE_GREAT_BAY, ObjectContext::All, 0 },
@@ -2196,9 +2411,12 @@ CreateObjectsForScene(TEMPLE_GREAT_BAY, 152,
 	{ 0x31, TEMPLE_GREAT_BAY, "Pre-Boss - Above Water", "MM Great Bay Temple SF Pre-Boss Above Water", ObjectType::sf, {0, 0}, TEMPLE_GREAT_BAY, ObjectContext::All, 0 },
 	{ 0x2f, TEMPLE_GREAT_BAY, "Pre-Boss - Underwater", "MM Great Bay Temple SF Pre-Boss Underwater", ObjectType::sf, {0, 0}, TEMPLE_GREAT_BAY, ObjectContext::All, 0 },
 	{ 0x30, TEMPLE_GREAT_BAY, "Water Wheel - Platform", "MM Great Bay Temple SF Water Wheel Platform", ObjectType::sf, {0, 0}, TEMPLE_GREAT_BAY, ObjectContext::All, 0 },
-	{ 0x32, TEMPLE_GREAT_BAY, "Water Wheel - Skulltula", "MM Great Bay Temple SF Water Wheel Skulltula", ObjectType::sf, {0, 0}, TEMPLE_GREAT_BAY, ObjectContext::All, 0 })
+	{ 0x32, TEMPLE_GREAT_BAY, "Water Wheel - Skulltula", "MM Great Bay Temple SF Water Wheel Skulltula", ObjectType::sf, {0, 0}, TEMPLE_GREAT_BAY, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(LAIR_IKANA, 9,
+const size_t LAIR_IKANANumOfObjs = 9;
+ObjectInfo LAIR_IKANASceneObjects [LAIR_IKANANumOfObjs] =
+{
 	{ 0x0002, LAIR_IKANA, "Boss 1", "MM Ancient Castle of Ikana Boss Pot 1", ObjectType::pot, {0, 0}, INSIDE_CASTLE_IKANA, ObjectContext::All, 0 },
 	{ 0x0003, LAIR_IKANA, "Boss 2", "MM Ancient Castle of Ikana Boss Pot 2", ObjectType::pot, {0, 0}, INSIDE_CASTLE_IKANA, ObjectContext::All, 0 },
 	{ 0x0004, LAIR_IKANA, "Boss 3", "MM Ancient Castle of Ikana Boss Pot 3", ObjectType::pot, {0, 0}, INSIDE_CASTLE_IKANA, ObjectContext::All, 0 },
@@ -2207,13 +2425,19 @@ CreateObjectsForScene(LAIR_IKANA, 9,
 	{ 0x0106, LAIR_IKANA, "Boss 6", "MM Ancient Castle of Ikana Boss Pot 6", ObjectType::pot, {0, 0}, INSIDE_CASTLE_IKANA, ObjectContext::All, 0 },
 	{ 0x0107, LAIR_IKANA, "Boss 7", "MM Ancient Castle of Ikana Boss Pot 7", ObjectType::pot, {0, 0}, INSIDE_CASTLE_IKANA, ObjectContext::All, 0 },
 	{ 0x0108, LAIR_IKANA, "Boss 8", "MM Ancient Castle of Ikana Boss Pot 8", ObjectType::pot, {0, 0}, INSIDE_CASTLE_IKANA, ObjectContext::All, 0 },
-	{ SONG_EMPTINESS, LAIR_IKANA, "Elegy of Emptiness", "MM Ancient Castle of Ikana Song Emptiness", ObjectType::npc, {0, 0}, INSIDE_CASTLE_IKANA, ObjectContext::All, 0 })
+	{ SONG_EMPTINESS, LAIR_IKANA, "Elegy of Emptiness", "MM Ancient Castle of Ikana Song Emptiness", ObjectType::npc, {0, 0}, INSIDE_CASTLE_IKANA, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(LAIR_MAJORA, 2,
+const size_t LAIR_MAJORANumOfObjs = 2;
+ObjectInfo LAIR_MAJORASceneObjects [LAIR_MAJORANumOfObjs] =
+{
 	{ 0x0001, LAIR_MAJORA, "Pot 1", "MM Moon Majora Pot 1", ObjectType::pot, {0, 0}, LAIR_MAJORA, ObjectContext::All, 0 },
-	{ 0x0002, LAIR_MAJORA, "Pot 2", "MM Moon Majora Pot 2", ObjectType::pot, {0, 0}, LAIR_MAJORA, ObjectContext::All, 0 })
+	{ 0x0002, LAIR_MAJORA, "Pot 2", "MM Moon Majora Pot 2", ObjectType::pot, {0, 0}, LAIR_MAJORA, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(LAIR_ODOLWA, 19,
+const size_t LAIR_ODOLWANumOfObjs = 19;
+ObjectInfo LAIR_ODOLWASceneObjects [LAIR_ODOLWANumOfObjs] =
+{
 	{ SONG_ORDER, LAIR_ODOLWA, "Oath to Order", "MM Oath to Order", ObjectType::npc, {0, 0}, TEMPLE_WOODFALL, ObjectContext::All, 0 },
 	{ REMAINS_ODOLWA, LAIR_ODOLWA, "Oldolwa's Remain", "MM Woodfall Temple Boss", ObjectType::npc, {0, 0}, TEMPLE_WOODFALL, ObjectContext::All, 0 },
 	{ 0x1f, LAIR_ODOLWA, "Heart Container", "MM Woodfall Temple Boss Container", ObjectType::collectible, {0, 0}, TEMPLE_WOODFALL, ObjectContext::All, 0 },
@@ -2232,9 +2456,12 @@ CreateObjectsForScene(LAIR_ODOLWA, 19,
 	{ 0x00016, LAIR_ODOLWA, "Boss 13", "MM Woodfall Temple Boss Grass 13", ObjectType::grass, {0, 0}, TEMPLE_WOODFALL, ObjectContext::All, 0 },
 	{ 0x00017, LAIR_ODOLWA, "Boss 14", "MM Woodfall Temple Boss Grass 14", ObjectType::grass, {0, 0}, TEMPLE_WOODFALL, ObjectContext::All, 0 },
 	{ 0x00018, LAIR_ODOLWA, "Boss 15", "MM Woodfall Temple Boss Grass 15", ObjectType::grass, {0, 0}, TEMPLE_WOODFALL, ObjectContext::All, 0 },
-	{ 0x00019, LAIR_ODOLWA, "Boss 16", "MM Woodfall Temple Boss Grass 16", ObjectType::grass, {0, 0}, TEMPLE_WOODFALL, ObjectContext::All, 0 })
+	{ 0x00019, LAIR_ODOLWA, "Boss 16", "MM Woodfall Temple Boss Grass 16", ObjectType::grass, {0, 0}, TEMPLE_WOODFALL, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(TEMPLE_WOODFALL, 102,
+const size_t TEMPLE_WOODFALLNumOfObjs = 102;
+ObjectInfo TEMPLE_WOODFALLSceneObjects [TEMPLE_WOODFALLNumOfObjs] =
+{
 	{ SONG_ORDER, LAIR_ODOLWA, "Oath to Order", "MM Oath to Order", ObjectType::npc, {0, 0}, TEMPLE_WOODFALL, ObjectContext::All, 0 },
 	{ REMAINS_ODOLWA, LAIR_ODOLWA, "Oldolwa's Remain", "MM Woodfall Temple Boss", ObjectType::npc, {0, 0}, TEMPLE_WOODFALL, ObjectContext::All, 0 },
 	{ 0x1f, LAIR_ODOLWA, "Heart Container", "MM Woodfall Temple Boss Container", ObjectType::collectible, {0, 0}, TEMPLE_WOODFALL, ObjectContext::All, 0 },
@@ -2336,13 +2563,19 @@ CreateObjectsForScene(TEMPLE_WOODFALL, 102,
 	{ 0x2d, TEMPLE_WOODFALL, "Pre-Boss - Pillar", "MM Woodfall Temple SF Pre-Boss Pillar", ObjectType::sf, {0, 0}, TEMPLE_WOODFALL, ObjectContext::All, 0 },
 	{ 0x32, TEMPLE_WOODFALL, "Pre-Boss - Top Right", "MM Woodfall Temple SF Pre-Boss Top Right", ObjectType::sf, {0, 0}, TEMPLE_WOODFALL, ObjectContext::All, 0 },
 	{ 0x1e, TEMPLE_WOODFALL, "Water Room - Beehive", "MM Woodfall Temple SF Water Room Beehive", ObjectType::sf, {0, 0}, TEMPLE_WOODFALL, ObjectContext::All, 0 },
-	{ 0x01, TEMPLE_WOODFALL, "Water", "MM Woodfall Temple Water Chest", ObjectType::chest, {0, 0}, TEMPLE_WOODFALL, ObjectContext::All, 0 })
+	{ 0x01, TEMPLE_WOODFALL, "Water", "MM Woodfall Temple Water Chest", ObjectType::chest, {0, 0}, TEMPLE_WOODFALL, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(LAIR_TWINMOLD, 2,
+const size_t LAIR_TWINMOLDNumOfObjs = 2;
+ObjectInfo LAIR_TWINMOLDSceneObjects [LAIR_TWINMOLDNumOfObjs] =
+{
 	{ REMAINS_TWINMOLD, LAIR_TWINMOLD, "Twinmold's Remains", "MM Stone Tower Temple Inverted Boss", ObjectType::npc, {0, 0}, TEMPLE_STONE_TOWER_INVERTED, ObjectContext::All, 0 },
-	{ 0x1f, LAIR_TWINMOLD, "Heart Container", "MM Stone Tower Temple Inverted Boss HC", ObjectType::collectible, {0, 0}, TEMPLE_STONE_TOWER_INVERTED, ObjectContext::All, 0 })
+	{ 0x1f, LAIR_TWINMOLD, "Heart Container", "MM Stone Tower Temple Inverted Boss HC", ObjectType::collectible, {0, 0}, TEMPLE_STONE_TOWER_INVERTED, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(TEMPLE_STONE_TOWER_INVERTED, 69,
+const size_t TEMPLE_STONE_TOWER_INVERTEDNumOfObjs = 69;
+ObjectInfo TEMPLE_STONE_TOWER_INVERTEDSceneObjects [TEMPLE_STONE_TOWER_INVERTEDNumOfObjs] =
+{
 	{ REMAINS_TWINMOLD, LAIR_TWINMOLD, "Twinmold's Remains", "MM Stone Tower Temple Inverted Boss", ObjectType::npc, {0, 0}, TEMPLE_STONE_TOWER_INVERTED, ObjectContext::All, 0 },
 	{ 0x1f, LAIR_TWINMOLD, "Heart Container", "MM Stone Tower Temple Inverted Boss HC", ObjectType::collectible, {0, 0}, TEMPLE_STONE_TOWER_INVERTED, ObjectContext::All, 0 },
 	{ 0x1e, TEMPLE_STONE_TOWER, "Boss Key", "MM Stone Tower Temple Inverted Boss Key", ObjectType::chest, {0, 0}, TEMPLE_STONE_TOWER_INVERTED, ObjectContext::All, 0 },
@@ -2411,9 +2644,12 @@ CreateObjectsForScene(TEMPLE_STONE_TOWER_INVERTED, 69,
 	{ 0x0080a, TEMPLE_STONE_TOWER_INVERTED, "Pre-Boss - Front 4", "MM Stone Tower Temple Inverted Rupee Pre-Boss Front 4", ObjectType::rupee, {0, 0}, TEMPLE_STONE_TOWER_INVERTED, ObjectContext::All, 0 },
 	{ 0x00800, TEMPLE_STONE_TOWER_INVERTED, "Pre-Boss - Top 1", "MM Stone Tower Temple Inverted Rupee Pre-Boss Top 1", ObjectType::rupee, {0, 0}, TEMPLE_STONE_TOWER_INVERTED, ObjectContext::All, 0 },
 	{ 0x00801, TEMPLE_STONE_TOWER_INVERTED, "Pre-Boss - Top 2", "MM Stone Tower Temple Inverted Rupee Pre-Boss Top 2", ObjectType::rupee, {0, 0}, TEMPLE_STONE_TOWER_INVERTED, ObjectContext::All, 0 },
-	{ 0x00802, TEMPLE_STONE_TOWER_INVERTED, "Pre-Boss - Top 3", "MM Stone Tower Temple Inverted Rupee Pre-Boss Top 3", ObjectType::rupee, {0, 0}, TEMPLE_STONE_TOWER_INVERTED, ObjectContext::All, 0 })
+	{ 0x00802, TEMPLE_STONE_TOWER_INVERTED, "Pre-Boss - Top 3", "MM Stone Tower Temple Inverted Rupee Pre-Boss Top 3", ObjectType::rupee, {0, 0}, TEMPLE_STONE_TOWER_INVERTED, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(LAUNDRY_POOL, 12,
+const size_t LAUNDRY_POOLNumOfObjs = 12;
+ObjectInfo LAUNDRY_POOLSceneObjects [LAUNDRY_POOLNumOfObjs] =
+{
 	{ MASK_BREMEN, LAUNDRY_POOL, "Bremen Mask", "MM Clock Town Guru Guru Mask Bremen", ObjectType::npc, {0, 0}, LAUNDRY_POOL, ObjectContext::All, 0 },
 	{ 0x0000d, LAUNDRY_POOL, "Grass 1", "MM Clock Town Laundry Pool Grass 1", ObjectType::grass, {0, 0}, LAUNDRY_POOL, ObjectContext::All, 0 },
 	{ 0x0000e, LAUNDRY_POOL, "Grass 2", "MM Clock Town Laundry Pool Grass 2", ObjectType::grass, {0, 0}, LAUNDRY_POOL, ObjectContext::All, 0 },
@@ -2425,19 +2661,28 @@ CreateObjectsForScene(LAUNDRY_POOL, 12,
 	{ STRAY_FAIRY_TOWN, LAUNDRY_POOL, "Pool", "MM Clock Town Stray Fairy", ObjectType::npc, {0, 0}, LAUNDRY_POOL, ObjectContext::All, 0 },
 	{ MASK_KEATON, LAUNDRY_POOL, "Owner Reward 1", "MM Kafei Hideout Owner Reward 1", ObjectType::none, {0, 0}, CURIOSITY_SHOP, ObjectContext::All, 0 },
 	{ LETTER_TO_MAMA, LAUNDRY_POOL, "Owner Reward 2", "MM Kafei Hideout Owner Reward 2", ObjectType::none, {0, 0}, CURIOSITY_SHOP, ObjectContext::All, 0 },
-	{ PENDANT_OF_MEMORIES, LAUNDRY_POOL, "Pendant of Memories", "MM Kafei Hideout Pendant of Memories", ObjectType::none, {0, 0}, CURIOSITY_SHOP, ObjectContext::All, 0 })
+	{ PENDANT_OF_MEMORIES, LAUNDRY_POOL, "Pendant of Memories", "MM Kafei Hideout Pendant of Memories", ObjectType::none, {0, 0}, CURIOSITY_SHOP, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MAYOR_HOUSE, 2,
+const size_t MAYOR_HOUSENumOfObjs = 2;
+ObjectInfo MAYOR_HOUSESceneObjects [MAYOR_HOUSENumOfObjs] =
+{
 	{ MAYOR_HEART_PIECE, MAYOR_HOUSE, "Heart Piece", "MM Mayor's Office HP", ObjectType::npc, {0, 0}, MAYOR_HOUSE, ObjectContext::All, 0 },
-	{ MASK_KAFEI, MAYOR_HOUSE, "Kafei's Mask", "MM Mayor's Office Kafei's Mask", ObjectType::npc, {0, 0}, MAYOR_HOUSE, ObjectContext::All, 0 })
+	{ MASK_KAFEI, MAYOR_HOUSE, "Kafei's Mask", "MM Mayor's Office Kafei's Mask", ObjectType::npc, {0, 0}, MAYOR_HOUSE, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MILK_BAR, 4,
+const size_t MILK_BARNumOfObjs = 4;
+ObjectInfo MILK_BARSceneObjects [MILK_BARNumOfObjs] =
+{
 	{ CHATEAU_ROMANI, MILK_BAR, "Bottle", "MM Milk Bar Madame Aroma Bottle", ObjectType::npc, {0, 0}, MILK_BAR, ObjectContext::All, 0 },
 	{ MILK_BAR_CHATEAU, MILK_BAR, "Purchase - Chateau", "MM Milk Bar Purchase Chateau", ObjectType::npc, {0, 0}, MILK_BAR, ObjectContext::All, 0 },
 	{ MILK_BAR_MILK, MILK_BAR, "Purchase - Milk", "MM Milk Bar Purchase Milk", ObjectType::npc, {0, 0}, MILK_BAR, ObjectContext::All, 0 },
-	{ MASK_TROUPE_LEADER, MILK_BAR, "Circus Leader's Mask", "MM Milk Bar Troupe Leader Mask", ObjectType::npc, {0, 0}, MILK_BAR, ObjectContext::All, 0 })
+	{ MASK_TROUPE_LEADER, MILK_BAR, "Circus Leader's Mask", "MM Milk Bar Troupe Leader Mask", ObjectType::npc, {0, 0}, MILK_BAR, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MILK_ROAD, 40,
+const size_t MILK_ROADNumOfObjs = 40;
+ObjectInfo MILK_ROADSceneObjects [MILK_ROADNumOfObjs] =
+{
 	{ 0x00011, MILK_ROAD, "Grass 1", "MM Milk Road Grass 1", ObjectType::grass, {0, 0}, MILK_ROAD, ObjectContext::All, 0 },
 	{ 0x00012, MILK_ROAD, "Grass 2", "MM Milk Road Grass 2", ObjectType::grass, {0, 0}, MILK_ROAD, ObjectContext::All, 0 },
 	{ 0x00013, MILK_ROAD, "Grass 3", "MM Milk Road Grass 3", ObjectType::grass, {0, 0}, MILK_ROAD, ObjectContext::All, 0 },
@@ -2477,9 +2722,12 @@ CreateObjectsForScene(MILK_ROAD, 40,
 	{ 0x90025, MILK_ROAD, "Pack 2 - Grass 10", "MM Gorman Track Grass Pack 2 Grass 10", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectContext::All, 0 },
 	{ 0xa0025, MILK_ROAD, "Pack 2 - Grass 11", "MM Gorman Track Grass Pack 2 Grass 11", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectContext::All, 0 },
 	{ 0xb0025, MILK_ROAD, "Pack 2 - Grass 12", "MM Gorman Track Grass Pack 2 Grass 12", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectContext::All, 0 },
-	{ GORMAN_MILK, MILK_ROAD, "Purchase - Milk", "MM Gorman Track Milk Purchase", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectContext::All, 0 })
+	{ GORMAN_MILK, MILK_ROAD, "Purchase - Milk", "MM Gorman Track Milk Purchase", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MOON, 45,
+const size_t MOONNumOfObjs = 45;
+ObjectInfo MOONSceneObjects [MOONNumOfObjs] =
+{
 	{ 0x00005, MOON, "Butterfly 1", "MM Moon Butterfly 01", ObjectType::butterfly, {0, 0}, MOON, ObjectContext::All, 0 },
 	{ 0x00006, MOON, "Butterfly 2", "MM Moon Butterfly 02", ObjectType::butterfly, {0, 0}, MOON, ObjectContext::All, 0 },
 	{ 0x00007, MOON, "Butterfly 3", "MM Moon Butterfly 03", ObjectType::butterfly, {0, 0}, MOON, ObjectContext::All, 0 },
@@ -2524,12 +2772,18 @@ CreateObjectsForScene(MOON, 45,
 	{ 0x0006, MOON, "Pot 6", "MM Moon Trial Link Pot 6", ObjectType::none, {0, 0}, MOON_LINK, ObjectContext::All, 0 },
 	{ 0x0007, MOON, "Pot 7", "MM Moon Trial Link Pot 7", ObjectType::none, {0, 0}, MOON_LINK, ObjectContext::All, 0 },
 	{ 0x0008, MOON, "Pot 8", "MM Moon Trial Link Pot 8", ObjectType::none, {0, 0}, MOON_LINK, ObjectContext::All, 0 },
-	{ 0x01, MOON, "Heart Piece", "MM Moon Trial Zora HP", ObjectType::none, {0, 0}, MOON_ZORA, ObjectContext::All, 0 })
+	{ 0x01, MOON, "Heart Piece", "MM Moon Trial Zora HP", ObjectType::none, {0, 0}, MOON_ZORA, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MOON_DEKU, 1,
-	{ 0x01, MOON_DEKU, "Heart Piece", "MM Moon Trial Deku HP", ObjectType::collectible, {0, 0}, MOON_DEKU, ObjectContext::All, 0 })
+const size_t MOON_DEKUNumOfObjs = 1;
+ObjectInfo MOON_DEKUSceneObjects [MOON_DEKUNumOfObjs] =
+{
+	{ 0x01, MOON_DEKU, "Heart Piece", "MM Moon Trial Deku HP", ObjectType::collectible, {0, 0}, MOON_DEKU, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MOON_GORON, 16,
+const size_t MOON_GORONNumOfObjs = 16;
+ObjectInfo MOON_GORONSceneObjects [MOON_GORONNumOfObjs] =
+{
 	{ 0x01, MOON_GORON, "Heart Piece", "MM Moon Trial Goron HP", ObjectType::collectible, {0, 0}, MOON_GORON, ObjectContext::All, 0 },
 	{ 0x0015, MOON_GORON, "Pot 1", "MM Moon Trial Goron Pot 01", ObjectType::pot, {0, 0}, MOON_GORON, ObjectContext::All, 0 },
 	{ 0x0016, MOON_GORON, "Pot 2", "MM Moon Trial Goron Pot 02", ObjectType::pot, {0, 0}, MOON_GORON, ObjectContext::All, 0 },
@@ -2545,9 +2799,12 @@ CreateObjectsForScene(MOON_GORON, 16,
 	{ 0x001c, MOON_GORON, "Early 1", "MM Moon Trial Goron Pot Early 1", ObjectType::pot, {0, 0}, MOON_GORON, ObjectContext::All, 0 },
 	{ 0x001d, MOON_GORON, "Early 2", "MM Moon Trial Goron Pot Early 2", ObjectType::pot, {0, 0}, MOON_GORON, ObjectContext::All, 0 },
 	{ 0x001e, MOON_GORON, "Early 3", "MM Moon Trial Goron Pot Early 3", ObjectType::pot, {0, 0}, MOON_GORON, ObjectContext::All, 0 },
-	{ 0x001f, MOON_GORON, "Early 4", "MM Moon Trial Goron Pot Early 4", ObjectType::pot, {0, 0}, MOON_GORON, ObjectContext::All, 0 })
+	{ 0x001f, MOON_GORON, "Early 4", "MM Moon Trial Goron Pot Early 4", ObjectType::pot, {0, 0}, MOON_GORON, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MOON_LINK, 11,
+const size_t MOON_LINKNumOfObjs = 11;
+ObjectInfo MOON_LINKSceneObjects [MOON_LINKNumOfObjs] =
+{
 	{ 0x01, MOON_LINK, "Garo Master", "MM Moon Trial Link Garo Master Chest", ObjectType::chest, {0, 0}, MOON_LINK, ObjectContext::All, 0 },
 	{ 0x01, MOON_LINK, "Heart Piece", "MM Moon Trial Link HP", ObjectType::collectible, {0, 0}, MOON_LINK, ObjectContext::All, 0 },
 	{ 0x02, MOON_LINK, "Iron Knuckle", "MM Moon Trial Link Iron Knuckle Chest", ObjectType::chest, {0, 0}, MOON_LINK, ObjectContext::All, 0 },
@@ -2558,12 +2815,18 @@ CreateObjectsForScene(MOON_LINK, 11,
 	{ 0x0005, MOON_LINK, "Pot 5", "MM Moon Trial Link Pot 5", ObjectType::pot, {0, 0}, MOON_LINK, ObjectContext::All, 0 },
 	{ 0x0006, MOON_LINK, "Pot 6", "MM Moon Trial Link Pot 6", ObjectType::pot, {0, 0}, MOON_LINK, ObjectContext::All, 0 },
 	{ 0x0007, MOON_LINK, "Pot 7", "MM Moon Trial Link Pot 7", ObjectType::pot, {0, 0}, MOON_LINK, ObjectContext::All, 0 },
-	{ 0x0008, MOON_LINK, "Pot 8", "MM Moon Trial Link Pot 8", ObjectType::pot, {0, 0}, MOON_LINK, ObjectContext::All, 0 })
+	{ 0x0008, MOON_LINK, "Pot 8", "MM Moon Trial Link Pot 8", ObjectType::pot, {0, 0}, MOON_LINK, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MOON_ZORA, 1,
-	{ 0x01, MOON_ZORA, "Heart Piece", "MM Moon Trial Zora HP", ObjectType::collectible, {0, 0}, MOON_ZORA, ObjectContext::All, 0 })
+const size_t MOON_ZORANumOfObjs = 1;
+ObjectInfo MOON_ZORASceneObjects [MOON_ZORANumOfObjs] =
+{
+	{ 0x01, MOON_ZORA, "Heart Piece", "MM Moon Trial Zora HP", ObjectType::collectible, {0, 0}, MOON_ZORA, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MOUNTAIN_VILLAGE, 97,
+const size_t MOUNTAIN_VILLAGENumOfObjs = 97;
+ObjectInfo MOUNTAIN_VILLAGESceneObjects [MOUNTAIN_VILLAGENumOfObjs] =
+{
 	{ 0x00011, MOUNTAIN_VILLAGE, "Big Snowball 1", "MM Mountain Village Big Snowball 1", ObjectType::snowball, {0, 0}, MOUNTAIN_VILLAGE, ObjectContext::Winter, 0 },
 	{ 0x0000e, MOUNTAIN_VILLAGE, "Big Snowball 2", "MM Mountain Village Big Snowball 2", ObjectType::snowball, {0, 0}, MOUNTAIN_VILLAGE, ObjectContext::Winter, 0 },
 	{ 0x0002e, MOUNTAIN_VILLAGE, "Big Snowball 3", "MM Mountain Village Big Snowball 3", ObjectType::snowball, {0, 0}, MOUNTAIN_VILLAGE, ObjectContext::Winter, 0 },
@@ -2660,9 +2923,12 @@ CreateObjectsForScene(MOUNTAIN_VILLAGE, 97,
 	{ 0x03b11, MOUNTAIN_VILLAGE, "Grass 12", "MM Mountain Village Tunnel Grotto Grass 12", ObjectType::none, {0, 0}, MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC, ObjectContext::All, 0 },
 	{ 0x03b12, MOUNTAIN_VILLAGE, "Grass 13", "MM Mountain Village Tunnel Grotto Grass 13", ObjectType::none, {0, 0}, MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC, ObjectContext::All, 0 },
 	{ 0x03b13, MOUNTAIN_VILLAGE, "Grass 14", "MM Mountain Village Tunnel Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC, ObjectContext::All, 0 },
-	{ 0x00, MOUNTAIN_VILLAGE, "Waterfall", "MM Mountain Village Waterfall Chest", ObjectType::chest, {0, 0}, MOUNTAIN_VILLAGE, ObjectContext::Spring, 0 })
+	{ 0x00, MOUNTAIN_VILLAGE, "Waterfall", "MM Mountain Village Waterfall Chest", ObjectType::chest, {0, 0}, MOUNTAIN_VILLAGE, ObjectContext::Spring, 0 }
+};
 
-CreateObjectsForScene(MOUNTAIN_VILLAGE_SPRING, 50,
+const size_t MOUNTAIN_VILLAGE_SPRINGNumOfObjs = 50;
+ObjectInfo MOUNTAIN_VILLAGE_SPRINGSceneObjects [MOUNTAIN_VILLAGE_SPRINGNumOfObjs] =
+{
 	{ 0x00020, MOUNTAIN_VILLAGE_SPRING, "Pack 1 - Butterfly 1", "MM Mountain Village Butterfly Pack 1 Butterfly 1", ObjectType::none, {0, 0}, MOUNTAIN_VILLAGE, ObjectContext::Spring, 0 },
 	{ 0x10020, MOUNTAIN_VILLAGE_SPRING, "Pack 1 - Butterfly 2", "MM Mountain Village Butterfly Pack 1 Butterfly 2", ObjectType::none, {0, 0}, MOUNTAIN_VILLAGE, ObjectContext::Spring, 0 },
 	{ 0x20020, MOUNTAIN_VILLAGE_SPRING, "Pack 1 - Butterfly 3", "MM Mountain Village Butterfly Pack 1 Butterfly 3", ObjectType::none, {0, 0}, MOUNTAIN_VILLAGE, ObjectContext::Spring, 0 },
@@ -2712,9 +2978,12 @@ CreateObjectsForScene(MOUNTAIN_VILLAGE_SPRING, 50,
 	{ 0x6002c, MOUNTAIN_VILLAGE_SPRING, "Keaton Grass 7", "MM Mountain Village Keaton Grass Reward 7", ObjectType::none, {0, 0}, MOUNTAIN_VILLAGE, ObjectContext::Spring, 0 },
 	{ 0x7002c, MOUNTAIN_VILLAGE_SPRING, "Keaton Grass 8", "MM Mountain Village Keaton Grass Reward 8", ObjectType::none, {0, 0}, MOUNTAIN_VILLAGE, ObjectContext::Spring, 0 },
 	{ 0x8002c, MOUNTAIN_VILLAGE_SPRING, "Keaton Grass 9", "MM Mountain Village Keaton Grass Reward 9", ObjectType::none, {0, 0}, MOUNTAIN_VILLAGE, ObjectContext::Spring, 0 },
-	{ 0x00028, MOUNTAIN_VILLAGE_SPRING, "Rupee", "MM Mountain Village Rupee", ObjectType::none, {0, 0}, MOUNTAIN_VILLAGE, ObjectContext::Spring, 0 })
+	{ 0x00028, MOUNTAIN_VILLAGE_SPRING, "Rupee", "MM Mountain Village Rupee", ObjectType::none, {0, 0}, MOUNTAIN_VILLAGE, ObjectContext::Spring, 0 }
+};
 
-CreateObjectsForScene(MOUNTAIN_VILLAGE_WINTER, 25,
+const size_t MOUNTAIN_VILLAGE_WINTERNumOfObjs = 25;
+ObjectInfo MOUNTAIN_VILLAGE_WINTERSceneObjects [MOUNTAIN_VILLAGE_WINTERNumOfObjs] =
+{
 	{ 0x00011, MOUNTAIN_VILLAGE_WINTER, "Big Snowball 1", "MM Mountain Village Big Snowball 1", ObjectType::none, {0, 0}, MOUNTAIN_VILLAGE, ObjectContext::Winter, 0 },
 	{ 0x0000e, MOUNTAIN_VILLAGE_WINTER, "Big Snowball 2", "MM Mountain Village Big Snowball 2", ObjectType::none, {0, 0}, MOUNTAIN_VILLAGE, ObjectContext::Winter, 0 },
 	{ 0x0002e, MOUNTAIN_VILLAGE_WINTER, "Big Snowball 3", "MM Mountain Village Big Snowball 3", ObjectType::none, {0, 0}, MOUNTAIN_VILLAGE, ObjectContext::Winter, 0 },
@@ -2739,12 +3008,18 @@ CreateObjectsForScene(MOUNTAIN_VILLAGE_WINTER, 25,
 	{ 0x00028, MOUNTAIN_VILLAGE_WINTER, "Winter 2", "MM Mountain Village Small Snowball Winter 2", ObjectType::none, {0, 0}, MOUNTAIN_VILLAGE, ObjectContext::Winter, 0 },
 	{ 0x00027, MOUNTAIN_VILLAGE_WINTER, "Winter 3", "MM Mountain Village Small Snowball Winter 3", ObjectType::none, {0, 0}, MOUNTAIN_VILLAGE, ObjectContext::Winter, 0 },
 	{ 0x0002b, MOUNTAIN_VILLAGE_WINTER, "Winter 4", "MM Mountain Village Small Snowball Winter 4", ObjectType::none, {0, 0}, MOUNTAIN_VILLAGE, ObjectContext::Winter, 0 },
-	{ 0x00, MOUNTAIN_VILLAGE_WINTER, "Waterfall", "MM Mountain Village Waterfall Chest", ObjectType::none, {0, 0}, MOUNTAIN_VILLAGE, ObjectContext::Spring, 0 })
+	{ 0x00, MOUNTAIN_VILLAGE_WINTER, "Waterfall", "MM Mountain Village Waterfall Chest", ObjectType::none, {0, 0}, MOUNTAIN_VILLAGE, ObjectContext::Spring, 0 }
+};
 
-CreateObjectsForScene(MUSIC_BOX_HOUSE, 1,
-	{ MASK_GIBDO, MUSIC_BOX_HOUSE, "Gibdo Mask", "MM Music Box House Gibdo Mask", ObjectType::npc, {0, 0}, MUSIC_BOX_HOUSE, ObjectContext::All, 0 })
+const size_t MUSIC_BOX_HOUSENumOfObjs = 1;
+ObjectInfo MUSIC_BOX_HOUSESceneObjects [MUSIC_BOX_HOUSENumOfObjs] =
+{
+	{ MASK_GIBDO, MUSIC_BOX_HOUSE, "Gibdo Mask", "MM Music Box House Gibdo Mask", ObjectType::npc, {0, 0}, MUSIC_BOX_HOUSE, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(OBSERVATORY, 9,
+const size_t OBSERVATORYNumOfObjs = 9;
+ObjectInfo OBSERVATORYSceneObjects [OBSERVATORYNumOfObjs] =
+{
 	{ MOON_TEAR, OBSERVATORY, "Moon Tear", "MM Astral Observatory Moon Tear", ObjectType::npc, {0, 0}, TERMINA_FIELD, ObjectContext::All, 0 },
 	{ 0x00, OBSERVATORY, "Passage", "MM Astral Observatory Passage Chest", ObjectType::chest, {0, 0}, OBSERVATORY, ObjectContext::All, 0 },
 	{ 0x0010, OBSERVATORY, "Passage 1", "MM Astral Observatory Passage Pot 1", ObjectType::pot, {0, 0}, OBSERVATORY, ObjectContext::All, 0 },
@@ -2753,9 +3028,12 @@ CreateObjectsForScene(OBSERVATORY, 9,
 	{ 0x0013, OBSERVATORY, "Passage 4", "MM Astral Observatory Passage Pot 4", ObjectType::pot, {0, 0}, OBSERVATORY, ObjectContext::All, 0 },
 	{ 0x0104, OBSERVATORY, "Astral Observatory 1", "MM Astral Observatory Pot 1", ObjectType::pot, {0, 0}, OBSERVATORY, ObjectContext::All, 0 },
 	{ 0x0105, OBSERVATORY, "Astral Observatory 2", "MM Astral Observatory Pot 2", ObjectType::pot, {0, 0}, OBSERVATORY, ObjectContext::All, 0 },
-	{ 0x0106, OBSERVATORY, "Astral Observatory 3", "MM Astral Observatory Pot 3", ObjectType::pot, {0, 0}, OBSERVATORY, ObjectContext::All, 0 })
+	{ 0x0106, OBSERVATORY, "Astral Observatory 3", "MM Astral Observatory Pot 3", ObjectType::pot, {0, 0}, OBSERVATORY, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(TERMINA_FIELD, 389,
+const size_t TERMINA_FIELDNumOfObjs = 389;
+ObjectInfo TERMINA_FIELDSceneObjects [TERMINA_FIELDNumOfObjs] =
+{
 	{ MOON_TEAR, OBSERVATORY, "Moon Tear", "MM Astral Observatory Moon Tear", ObjectType::npc, {0, 0}, TERMINA_FIELD, ObjectContext::All, 0 },
 	{ 0x000ab, TERMINA_FIELD, "Butterfly 1", "MM Termina Field Butterfly 1", ObjectType::butterfly, {0, 0}, TERMINA_FIELD, ObjectContext::All, 0 },
 	{ 0x100ab, TERMINA_FIELD, "Butterfly 2", "MM Termina Field Butterfly 2", ObjectType::butterfly, {0, 0}, TERMINA_FIELD, ObjectContext::All, 0 },
@@ -3144,9 +3422,12 @@ CreateObjectsForScene(TERMINA_FIELD, 389,
 	{ 0x03f10, TERMINA_FIELD, "Grass 11", "MM Termina Field Tall Grass Grotto Grass 11", ObjectType::none, {0, 0}, MM_GROTTO_TERMINA_TALL_GRASS, ObjectContext::All, 0 },
 	{ 0x03f11, TERMINA_FIELD, "Grass 12", "MM Termina Field Tall Grass Grotto Grass 12", ObjectType::none, {0, 0}, MM_GROTTO_TERMINA_TALL_GRASS, ObjectContext::All, 0 },
 	{ 0x03f12, TERMINA_FIELD, "Grass 13", "MM Termina Field Tall Grass Grotto Grass 13", ObjectType::none, {0, 0}, MM_GROTTO_TERMINA_TALL_GRASS, ObjectContext::All, 0 },
-	{ 0x03f13, TERMINA_FIELD, "Grass 14", "MM Termina Field Tall Grass Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_TERMINA_TALL_GRASS, ObjectContext::All, 0 })
+	{ 0x03f13, TERMINA_FIELD, "Grass 14", "MM Termina Field Tall Grass Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_TERMINA_TALL_GRASS, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(PATH_MOUNTAIN_VILLAGE, 22,
+const size_t PATH_MOUNTAIN_VILLAGENumOfObjs = 22;
+ObjectInfo PATH_MOUNTAIN_VILLAGESceneObjects [PATH_MOUNTAIN_VILLAGENumOfObjs] =
+{
 	{ 0x0001a, PATH_MOUNTAIN_VILLAGE, "Lower - Big Snowball 1", "MM Path to Mountain Village Big Snowball Lower 1", ObjectType::snowball, {0, 0}, PATH_MOUNTAIN_VILLAGE, ObjectContext::Winter, 0 },
 	{ 0x0002a, PATH_MOUNTAIN_VILLAGE, "Lower - Big Snowball 2", "MM Path to Mountain Village Big Snowball Lower 2", ObjectType::snowball, {0, 0}, PATH_MOUNTAIN_VILLAGE, ObjectContext::Winter, 0 },
 	{ 0x0001e, PATH_MOUNTAIN_VILLAGE, "Lower - Big Snowball 3", "MM Path to Mountain Village Big Snowball Lower 3", ObjectType::snowball, {0, 0}, PATH_MOUNTAIN_VILLAGE, ObjectContext::Winter, 0 },
@@ -3168,9 +3449,12 @@ CreateObjectsForScene(PATH_MOUNTAIN_VILLAGE, 22,
 	{ 0x04010, PATH_MOUNTAIN_VILLAGE, "Spring - Lower 4", "MM Path to Mountain Village Small Snowball Lower Spring 4", ObjectType:: snowball, {0, 0}, PATH_MOUNTAIN_VILLAGE, ObjectContext::Spring, 0 },
 	{ 0x0400d, PATH_MOUNTAIN_VILLAGE, "Spring - Upper 1", "MM Path to Mountain Village Small Snowball Upper Spring 1", ObjectType:: snowball, {0, 0}, PATH_MOUNTAIN_VILLAGE, ObjectContext::Spring, 0 },
 	{ 0x0400b, PATH_MOUNTAIN_VILLAGE, "Spring - Upper 2", "MM Path to Mountain Village Small Snowball Upper Spring 2", ObjectType:: snowball, {0, 0}, PATH_MOUNTAIN_VILLAGE, ObjectContext::Spring, 0 },
-	{ 0x0400e, PATH_MOUNTAIN_VILLAGE, "Spring - Upper 3", "MM Path to Mountain Village Small Snowball Upper Spring 3", ObjectType:: snowball, {0, 0}, PATH_MOUNTAIN_VILLAGE, ObjectContext::Spring, 0 })
+	{ 0x0400e, PATH_MOUNTAIN_VILLAGE, "Spring - Upper 3", "MM Path to Mountain Village Small Snowball Upper Spring 3", ObjectType:: snowball, {0, 0}, PATH_MOUNTAIN_VILLAGE, ObjectContext::Spring, 0 }
+};
 
-CreateObjectsForScene(PATH_SNOWHEAD, 27,
+const size_t PATH_SNOWHEADNumOfObjs = 27;
+ObjectInfo PATH_SNOWHEADSceneObjects [PATH_SNOWHEADNumOfObjs] =
+{
 	{ 0x08, PATH_SNOWHEAD, "Pillar - Heart Piece", "MM Path to Snowhead HP", ObjectType::collectible, {0, 0}, PATH_SNOWHEAD, ObjectContext::All, 0 },
 	{ 0x00009, PATH_SNOWHEAD, "Back - Small Snowball 1", "MM Path to Snowhead Small Snowball Back 1", ObjectType::snowball, {0, 0}, PATH_SNOWHEAD, ObjectContext::Winter, 0 },
 	{ 0x0000a, PATH_SNOWHEAD, "Back - Small Snowball 2", "MM Path to Snowhead Small Snowball Back 2", ObjectType::snowball, {0, 0}, PATH_SNOWHEAD, ObjectContext::Winter, 0 },
@@ -3197,9 +3481,12 @@ CreateObjectsForScene(PATH_SNOWHEAD, 27,
 	{ 0x03310, PATH_SNOWHEAD, "Grass 11", "MM Path to Snowhead Grotto Grass 11", ObjectType::none, {0, 0}, MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, ObjectContext::All, 0 },
 	{ 0x03311, PATH_SNOWHEAD, "Grass 12", "MM Path to Snowhead Grotto Grass 12", ObjectType::none, {0, 0}, MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, ObjectContext::All, 0 },
 	{ 0x03312, PATH_SNOWHEAD, "Grass 13", "MM Path to Snowhead Grotto Grass 13", ObjectType::none, {0, 0}, MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, ObjectContext::All, 0 },
-	{ 0x03313, PATH_SNOWHEAD, "Grass 14", "MM Path to Snowhead Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, ObjectContext::All, 0 })
+	{ 0x03313, PATH_SNOWHEAD, "Grass 14", "MM Path to Snowhead Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(PINNACLE_ROCK, 14,
+const size_t PINNACLE_ROCKNumOfObjs = 14;
+ObjectInfo PINNACLE_ROCKSceneObjects [PINNACLE_ROCKNumOfObjs] =
+{
 	{ 0x01, PINNACLE_ROCK, "Chest 1", "MM Pinnacle Rock Chest 1", ObjectType::chest, {0, 0}, PINNACLE_ROCK, ObjectContext::All, 0 },
 	{ 0x02, PINNACLE_ROCK, "Chest 2", "MM Pinnacle Rock Chest 2", ObjectType::chest, {0, 0}, PINNACLE_ROCK, ObjectContext::All, 0 },
 	{ SEAHORSE_HEART_PIECE, PINNACLE_ROCK, "Seahorse - Heart Piece", "MM Pinnacle Rock HP", ObjectType::npc, {0, 0}, PINNACLE_ROCK, ObjectContext::All, 0 },
@@ -3213,15 +3500,21 @@ CreateObjectsForScene(PINNACLE_ROCK, 14,
 	{ 0x000a, PINNACLE_ROCK, "Pot 8", "MM Pinnacle Rock Pot 08", ObjectType::pot, {0, 0}, PINNACLE_ROCK, ObjectContext::All, 0 },
 	{ 0x000b, PINNACLE_ROCK, "Pot 9", "MM Pinnacle Rock Pot 09", ObjectType::pot, {0, 0}, PINNACLE_ROCK, ObjectContext::All, 0 },
 	{ 0x000c, PINNACLE_ROCK, "Pot 10", "MM Pinnacle Rock Pot 10", ObjectType::pot, {0, 0}, PINNACLE_ROCK, ObjectContext::All, 0 },
-	{ 0x000d, PINNACLE_ROCK, "Pot 11", "MM Pinnacle Rock Pot 11", ObjectType::pot, {0, 0}, PINNACLE_ROCK, ObjectContext::All, 0 })
+	{ 0x000d, PINNACLE_ROCK, "Pot 11", "MM Pinnacle Rock Pot 11", ObjectType::pot, {0, 0}, PINNACLE_ROCK, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(PIRATE_FORTRESS_ENTRANCE, 4,
+const size_t PIRATE_FORTRESS_ENTRANCENumOfObjs = 4;
+ObjectInfo PIRATE_FORTRESS_ENTRANCESceneObjects [PIRATE_FORTRESS_ENTRANCENumOfObjs] =
+{
 	{ 0x00007, PIRATE_FORTRESS_ENTRANCE, "Entrance", "MM Pirate Fortress Entrance Barrel", ObjectType::barrel, {0, 0}, PIRATE_FORTRESS_ENTRANCE, ObjectContext::All, 0 },
 	{ 0x00, PIRATE_FORTRESS_ENTRANCE, "Entrance - Underwater 1", "MM Pirate Fortress Entrance Chest 1", ObjectType::chest, {0, 0}, PIRATE_FORTRESS_ENTRANCE, ObjectContext::All, 0 },
 	{ 0x01, PIRATE_FORTRESS_ENTRANCE, "Entrance - Underwater 2", "MM Pirate Fortress Entrance Chest 2", ObjectType::chest, {0, 0}, PIRATE_FORTRESS_ENTRANCE, ObjectContext::All, 0 },
-	{ 0x02, PIRATE_FORTRESS_ENTRANCE, "Entrance - Underwater 3", "MM Pirate Fortress Entrance Chest 3", ObjectType::chest, {0, 0}, PIRATE_FORTRESS_ENTRANCE, ObjectContext::All, 0 })
+	{ 0x02, PIRATE_FORTRESS_ENTRANCE, "Entrance - Underwater 3", "MM Pirate Fortress Entrance Chest 3", ObjectType::chest, {0, 0}, PIRATE_FORTRESS_ENTRANCE, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(PIRATE_FORTRESS_EXTERIOR, 15,
+const size_t PIRATE_FORTRESS_EXTERIORNumOfObjs = 15;
+ObjectInfo PIRATE_FORTRESS_EXTERIORSceneObjects [PIRATE_FORTRESS_EXTERIORNumOfObjs] =
+{
 	{ 0x00008, PIRATE_FORTRESS_EXTERIOR, "Barrel Outside", "MM Pirate Fortress Interior Barrel Outside", ObjectType::barrel, {0, 0}, PIRATE_FORTRESS_EXTERIOR, ObjectContext::All, 0 },
 	{ 0x0001b, PIRATE_FORTRESS_EXTERIOR, "Entrance", "MM Pirate Fortress Interior Crate Entrance", ObjectType::crate, {0, 0}, PIRATE_FORTRESS_EXTERIOR, ObjectContext::All, 0 },
 	{ 0x0001c, PIRATE_FORTRESS_EXTERIOR, "Middle 1", "MM Pirate Fortress Interior Crate Middle 1", ObjectType::crate, {0, 0}, PIRATE_FORTRESS_EXTERIOR, ObjectContext::All, 0 },
@@ -3236,9 +3529,12 @@ CreateObjectsForScene(PIRATE_FORTRESS_EXTERIOR, 15,
 	{ 0x20018, PIRATE_FORTRESS_EXTERIOR, "Skull Eyes 3", "MM Pirate Fortress Interior Wonder Item Skull Eyes 3", ObjectType::wonder, {0, 0}, PIRATE_FORTRESS_EXTERIOR, ObjectContext::All, 0 },
 	{ 0x00019, PIRATE_FORTRESS_EXTERIOR, "Skull Eyes 4", "MM Pirate Fortress Interior Wonder Item Skull Eyes 4", ObjectType::wonder, {0, 0}, PIRATE_FORTRESS_EXTERIOR, ObjectContext::All, 0 },
 	{ 0x10019, PIRATE_FORTRESS_EXTERIOR, "Skull Eyes 5", "MM Pirate Fortress Interior Wonder Item Skull Eyes 5", ObjectType::wonder, {0, 0}, PIRATE_FORTRESS_EXTERIOR, ObjectContext::All, 0 },
-	{ 0x20019, PIRATE_FORTRESS_EXTERIOR, "Skull Eyes 6", "MM Pirate Fortress Interior Wonder Item Skull Eyes 6", ObjectType::wonder, {0, 0}, PIRATE_FORTRESS_EXTERIOR, ObjectContext::All, 0 })
+	{ 0x20019, PIRATE_FORTRESS_EXTERIOR, "Skull Eyes 6", "MM Pirate Fortress Interior Wonder Item Skull Eyes 6", ObjectType::wonder, {0, 0}, PIRATE_FORTRESS_EXTERIOR, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(PIRATE_FORTRESS_INTERIOR, 74,
+const size_t PIRATE_FORTRESS_INTERIORNumOfObjs = 74;
+ObjectInfo PIRATE_FORTRESS_INTERIORSceneObjects [PIRATE_FORTRESS_INTERIORNumOfObjs] =
+{
 	{ 0x00, PIRATE_FORTRESS_INTERIOR, "Aquarium", "MM Pirate Fortress Interior Aquarium", ObjectType::chest, {0, 0}, PIRATE_FORTRESS_INTERIOR, ObjectContext::All, 0 },
 	{ 0x00d01, PIRATE_FORTRESS_INTERIOR, "Aquarium", "MM Pirate Fortress Interior Barrel Aquarium", ObjectType::barrel, {0, 0}, PIRATE_FORTRESS_INTERIOR, ObjectContext::All, 0 },
 	{ 0x00306, PIRATE_FORTRESS_INTERIOR, "Hookshot Room 1", "MM Pirate Fortress Interior Barrel Hookshot Room 1", ObjectType::barrel, {0, 0}, PIRATE_FORTRESS_INTERIOR, ObjectContext::All, 0 },
@@ -3312,23 +3608,35 @@ CreateObjectsForScene(PIRATE_FORTRESS_INTERIOR, 74,
 	{ 0x20018, PIRATE_FORTRESS_INTERIOR, "Skull Eyes 3", "MM Pirate Fortress Interior Wonder Item Skull Eyes 3", ObjectType::none, {0, 0}, PIRATE_FORTRESS_EXTERIOR, ObjectContext::All, 0 },
 	{ 0x00019, PIRATE_FORTRESS_INTERIOR, "Skull Eyes 4", "MM Pirate Fortress Interior Wonder Item Skull Eyes 4", ObjectType::none, {0, 0}, PIRATE_FORTRESS_EXTERIOR, ObjectContext::All, 0 },
 	{ 0x10019, PIRATE_FORTRESS_INTERIOR, "Skull Eyes 5", "MM Pirate Fortress Interior Wonder Item Skull Eyes 5", ObjectType::none, {0, 0}, PIRATE_FORTRESS_EXTERIOR, ObjectContext::All, 0 },
-	{ 0x20019, PIRATE_FORTRESS_INTERIOR, "Skull Eyes 6", "MM Pirate Fortress Interior Wonder Item Skull Eyes 6", ObjectType::none, {0, 0}, PIRATE_FORTRESS_EXTERIOR, ObjectContext::All, 0 })
+	{ 0x20019, PIRATE_FORTRESS_INTERIOR, "Skull Eyes 6", "MM Pirate Fortress Interior Wonder Item Skull Eyes 6", ObjectType::none, {0, 0}, PIRATE_FORTRESS_EXTERIOR, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(POST_OFFICE, 1,
-	{ POSTMAN_HEART_PIECE, POST_OFFICE, "Postman Game - Heart Piece", "MM Post Office HP", ObjectType::npc, {0, 0}, POST_OFFICE, ObjectContext::All, 0 })
+const size_t POST_OFFICENumOfObjs = 1;
+ObjectInfo POST_OFFICESceneObjects [POST_OFFICENumOfObjs] =
+{
+	{ POSTMAN_HEART_PIECE, POST_OFFICE, "Postman Game - Heart Piece", "MM Post Office HP", ObjectType::npc, {0, 0}, POST_OFFICE, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(POTION_SHOP, 5,
+const size_t POTION_SHOPNumOfObjs = 5;
+ObjectInfo POTION_SHOPSceneObjects [POTION_SHOPNumOfObjs] =
+{
 	{ 0x0d, POTION_SHOP, "Item 1", "MM Swamp Potion Shop Item 1", ObjectType::shop, {0, 0}, POTION_SHOP, ObjectContext::All, 0 },
 	{ 0x0e, POTION_SHOP, "Item 2", "MM Swamp Potion Shop Item 2", ObjectType::shop, {0, 0}, POTION_SHOP, ObjectContext::All, 0 },
 	{ 0x0f, POTION_SHOP, "Item 3", "MM Swamp Potion Shop Item 3", ObjectType::shop, {0, 0}, POTION_SHOP, ObjectContext::All, 0 },
 	{ 0x00001, POTION_SHOP, "Rupee", "MM Swamp Potion Shop Rupee", ObjectType::rupee, {0, 0}, POTION_SHOP, ObjectContext::All, 0 },
-	{ KOTAKE_RED_POTION, WOODS_MYSTERY, "Red Potion Bottle", "MM Swamp Potion Shop Kotake", ObjectType::npc, {0, 0}, POTION_SHOP, ObjectContext::All, 0 })
+	{ KOTAKE_RED_POTION, WOODS_MYSTERY, "Red Potion Bottle", "MM Swamp Potion Shop Kotake", ObjectType::npc, {0, 0}, POTION_SHOP, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(RANCH_HOUSE_BARN, 2,
+const size_t RANCH_HOUSE_BARNNumOfObjs = 2;
+ObjectInfo RANCH_HOUSE_BARNSceneObjects [RANCH_HOUSE_BARNNumOfObjs] =
+{
 	{ 0x00000, RANCH_HOUSE_BARN, "Item 1", "MM Romani Ranch Barn Wonder Item 1", ObjectType::wonder, {0, 0}, RANCH_HOUSE_BARN, ObjectContext::All, 0 },
-	{ 0x00001, RANCH_HOUSE_BARN, "Item 2", "MM Romani Ranch Barn Wonder Item 2", ObjectType::wonder, {0, 0}, RANCH_HOUSE_BARN, ObjectContext::All, 0 })
+	{ 0x00001, RANCH_HOUSE_BARN, "Item 2", "MM Romani Ranch Barn Wonder Item 2", ObjectType::wonder, {0, 0}, RANCH_HOUSE_BARN, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(ROAD_IKANA, 18,
+const size_t ROAD_IKANANumOfObjs = 18;
+ObjectInfo ROAD_IKANASceneObjects [ROAD_IKANANumOfObjs] =
+{
 	{ 0x00, ROAD_IKANA, "Pillar", "MM Road to Ikana Chest", ObjectType::chest, {0, 0}, ROAD_IKANA, ObjectContext::All, 0 },
 	{ 0x004c, ROAD_IKANA, "Pot", "MM Road to Ikana Pot", ObjectType::pot, {0, 0}, ROAD_IKANA, ObjectContext::All, 0 },
 	{ MASK_STONE, ROAD_IKANA, "Stone Mask", "MM Road to Ikana Stone Mask", ObjectType::npc, {0, 0}, ROAD_IKANA, ObjectContext::All, 0 },
@@ -3346,9 +3654,12 @@ CreateObjectsForScene(ROAD_IKANA, 18,
 	{ 0x03610, ROAD_IKANA, "Grass 11", "MM Road to Ikana Grotto Grass 11", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_ROAD_GENERIC, ObjectContext::All, 0 },
 	{ 0x03611, ROAD_IKANA, "Grass 12", "MM Road to Ikana Grotto Grass 12", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_ROAD_GENERIC, ObjectContext::All, 0 },
 	{ 0x03612, ROAD_IKANA, "Grass 13", "MM Road to Ikana Grotto Grass 13", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_ROAD_GENERIC, ObjectContext::All, 0 },
-	{ 0x03613, ROAD_IKANA, "Grass 14", "MM Road to Ikana Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_ROAD_GENERIC, ObjectContext::All, 0 })
+	{ 0x03613, ROAD_IKANA, "Grass 14", "MM Road to Ikana Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_ROAD_GENERIC, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(ROAD_SOUTHERN_SWAMP, 42,
+const size_t ROAD_SOUTHERN_SWAMPNumOfObjs = 42;
+ObjectInfo ROAD_SOUTHERN_SWAMPSceneObjects [ROAD_SOUTHERN_SWAMPNumOfObjs] =
+{
 	{ 0x0002f, ROAD_SOUTHERN_SWAMP, "Grass 1", "MM Road to Southern Swamp Grass 1", ObjectType::grass, {0, 0}, ROAD_SOUTHERN_SWAMP, ObjectContext::All, 0 },
 	{ 0x00030, ROAD_SOUTHERN_SWAMP, "Grass 2", "MM Road to Southern Swamp Grass 2", ObjectType::grass, {0, 0}, ROAD_SOUTHERN_SWAMP, ObjectContext::All, 0 },
 	{ 0x00023, ROAD_SOUTHERN_SWAMP, "Pack 1 - Grass 1", "MM Road to Southern Swamp Grass Pack 1 Grass 01", ObjectType::grass, {0, 0}, ROAD_SOUTHERN_SWAMP, ObjectContext::All, 0 },
@@ -3390,9 +3701,12 @@ CreateObjectsForScene(ROAD_SOUTHERN_SWAMP, 42,
 	{ 0x03e10, ROAD_SOUTHERN_SWAMP, "Grass 11", "MM Road to Southern Swamp Grotto Grass 11", ObjectType::none, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, ObjectContext::All, 0 },
 	{ 0x03e11, ROAD_SOUTHERN_SWAMP, "Grass 12", "MM Road to Southern Swamp Grotto Grass 12", ObjectType::none, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, ObjectContext::All, 0 },
 	{ 0x03e12, ROAD_SOUTHERN_SWAMP, "Grass 13", "MM Road to Southern Swamp Grotto Grass 13", ObjectType::none, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, ObjectContext::All, 0 },
-	{ 0x03e13, ROAD_SOUTHERN_SWAMP, "Grass 14", "MM Road to Southern Swamp Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, ObjectContext::All, 0 })
+	{ 0x03e13, ROAD_SOUTHERN_SWAMP, "Grass 14", "MM Road to Southern Swamp Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(ROMANI_RANCH, 92,
+const size_t ROMANI_RANCHNumOfObjs = 92;
+ObjectInfo ROMANI_RANCHSceneObjects [ROMANI_RANCHNumOfObjs] =
+{
 	{ ROMANI_BOTTLE, ROMANI_RANCH, "Aliens", "MM Romani Ranch Aliens", ObjectType::npc, {0, 0}, ROMANI_RANCH, ObjectContext::All, 0 },
 	{ 0x10, ROMANI_RANCH, "Left", "MM Romani Ranch Barn Cow Left", ObjectType::cow, {0, 0}, ROMANI_RANCH_BARN, ObjectContext::All, 0 },
 	{ 0x12, ROMANI_RANCH, "Right Back", "MM Romani Ranch Barn Cow Right Back", ObjectType::cow, {0, 0}, ROMANI_RANCH_BARN, ObjectContext::All, 0 },
@@ -3484,21 +3798,30 @@ CreateObjectsForScene(ROMANI_RANCH, 92,
 	{ 0x10012, ROMANI_RANCH, "Wood Hole 5", "MM Cucco Shack Wonder Item 5", ObjectType::none, {0, 0}, CUCCO_SHACK, ObjectContext::All, 0 },
 	{ 0x20012, ROMANI_RANCH, "Wood Hole 6", "MM Cucco Shack Wonder Item 6", ObjectType::none, {0, 0}, CUCCO_SHACK, ObjectContext::All, 0 },
 	{ 0x00000, ROMANI_RANCH, "Item 1", "MM Romani Ranch Barn Wonder Item 1", ObjectType::none, {0, 0}, RANCH_HOUSE_BARN, ObjectContext::All, 0 },
-	{ 0x00001, ROMANI_RANCH, "Item 2", "MM Romani Ranch Barn Wonder Item 2", ObjectType::none, {0, 0}, RANCH_HOUSE_BARN, ObjectContext::All, 0 })
+	{ 0x00001, ROMANI_RANCH, "Item 2", "MM Romani Ranch Barn Wonder Item 2", ObjectType::none, {0, 0}, RANCH_HOUSE_BARN, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(ROMANI_RANCH_BARN, 3,
+const size_t ROMANI_RANCH_BARNNumOfObjs = 3;
+ObjectInfo ROMANI_RANCH_BARNSceneObjects [ROMANI_RANCH_BARNNumOfObjs] =
+{
 	{ 0x10, ROMANI_RANCH, "Left", "MM Romani Ranch Barn Cow Left", ObjectType::cow, {0, 0}, ROMANI_RANCH_BARN, ObjectContext::All, 0 },
 	{ 0x12, ROMANI_RANCH, "Right Back", "MM Romani Ranch Barn Cow Right Back", ObjectType::cow, {0, 0}, ROMANI_RANCH_BARN, ObjectContext::All, 0 },
-	{ 0x11, ROMANI_RANCH, "Right Front", "MM Romani Ranch Barn Cow Right Front", ObjectType::cow, {0, 0}, ROMANI_RANCH_BARN, ObjectContext::All, 0 })
+	{ 0x11, ROMANI_RANCH, "Right Front", "MM Romani Ranch Barn Cow Right Front", ObjectType::cow, {0, 0}, ROMANI_RANCH_BARN, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(SAKON_HIDEOUT, 5,
+const size_t SAKON_HIDEOUTNumOfObjs = 5;
+ObjectInfo SAKON_HIDEOUTSceneObjects [SAKON_HIDEOUTNumOfObjs] =
+{
 	{ 0x0129, SAKON_HIDEOUT, "First Room 1", "MM Sakon Hideout Pot First Room 1", ObjectType::pot, {0, 0}, SAKON_HIDEOUT, ObjectContext::All, 0 },
 	{ 0x012a, SAKON_HIDEOUT, "First Room 2", "MM Sakon Hideout Pot First Room 2", ObjectType::pot, {0, 0}, SAKON_HIDEOUT, ObjectContext::All, 0 },
 	{ 0x0127, SAKON_HIDEOUT, "Second Room 1", "MM Sakon Hideout Pot Second Room 1", ObjectType::pot, {0, 0}, SAKON_HIDEOUT, ObjectContext::All, 0 },
 	{ 0x0128, SAKON_HIDEOUT, "Second Room 2", "MM Sakon Hideout Pot Second Room 2", ObjectType::pot, {0, 0}, SAKON_HIDEOUT, ObjectContext::All, 0 },
-	{ 0x012b, SAKON_HIDEOUT, "Third Room", "MM Sakon Hideout Pot Third Room", ObjectType::pot, {0, 0}, SAKON_HIDEOUT, ObjectContext::All, 0 })
+	{ 0x012b, SAKON_HIDEOUT, "Third Room", "MM Sakon Hideout Pot Third Room", ObjectType::pot, {0, 0}, SAKON_HIDEOUT, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(SECRET_SHRINE, 60,
+const size_t SECRET_SHRINENumOfObjs = 60;
+ObjectInfo SECRET_SHRINESceneObjects [SECRET_SHRINENumOfObjs] =
+{
 	{ 0x00, SECRET_SHRINE, "Dinalfos", "MM Secret Shrine Dinalfos Chest", ObjectType::chest, {0, 0}, SECRET_SHRINE, ObjectContext::All, 0 },
 	{ 0x03, SECRET_SHRINE, "Garo Master", "MM Secret Shrine Garo Master Chest", ObjectType::chest, {0, 0}, SECRET_SHRINE, ObjectContext::All, 0 },
 	{ 0x00204, SECRET_SHRINE, "Dinolfos 1", "MM Secret Shrine Grass Dinolfos 1", ObjectType::grass, {0, 0}, SECRET_SHRINE, ObjectContext::All, 0 },
@@ -3558,17 +3881,26 @@ CreateObjectsForScene(SECRET_SHRINE, 60,
 	{ 0x0000f, SECRET_SHRINE, "Rupee 16", "MM Secret Shrine Rupee 16", ObjectType::rupee, {0, 0}, SECRET_SHRINE, ObjectContext::All, 0 },
 	{ 0x00010, SECRET_SHRINE, "Rupee 17", "MM Secret Shrine Rupee 17", ObjectType::rupee, {0, 0}, SECRET_SHRINE, ObjectContext::All, 0 },
 	{ 0x02, SECRET_SHRINE, "Wart", "MM Secret Shrine Wart Chest", ObjectType::chest, {0, 0}, SECRET_SHRINE, ObjectContext::All, 0 },
-	{ 0x01, SECRET_SHRINE, "Wizzrobe", "MM Secret Shrine Wizzrobe Chest", ObjectType::chest, {0, 0}, SECRET_SHRINE, ObjectContext::All, 0 })
+	{ 0x01, SECRET_SHRINE, "Wizzrobe", "MM Secret Shrine Wizzrobe Chest", ObjectType::chest, {0, 0}, SECRET_SHRINE, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_SHOOTING_GALLERY, 2,
+const size_t MM_SHOOTING_GALLERYNumOfObjs = 2;
+ObjectInfo MM_SHOOTING_GALLERYSceneObjects [MM_SHOOTING_GALLERYNumOfObjs] =
+{
 	{ SHOOTING_GAME_TOWN_1, MM_SHOOTING_GALLERY, "Reward 1", "MM Town Archery Reward 1", ObjectType::npc, {0, 0}, MM_SHOOTING_GALLERY, ObjectContext::All, 0 },
-	{ SHOOTING_GAME_TOWN_2, MM_SHOOTING_GALLERY, "Reward 2", "MM Town Archery Reward 2", ObjectType::npc, {0, 0}, MM_SHOOTING_GALLERY, ObjectContext::All, 0 })
+	{ SHOOTING_GAME_TOWN_2, MM_SHOOTING_GALLERY, "Reward 2", "MM Town Archery Reward 2", ObjectType::npc, {0, 0}, MM_SHOOTING_GALLERY, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(SHOOTING_GALLERY_SWAMP, 2,
+const size_t SHOOTING_GALLERY_SWAMPNumOfObjs = 2;
+ObjectInfo SHOOTING_GALLERY_SWAMPSceneObjects [SHOOTING_GALLERY_SWAMPNumOfObjs] =
+{
 	{ SHOOTING_GAME_SWAMP_1, SHOOTING_GALLERY_SWAMP, "Reward 1", "MM Swamp Archery Reward 1", ObjectType::npc, {0, 0}, SHOOTING_GALLERY_SWAMP, ObjectContext::All, 0 },
-	{ SHOOTING_GAME_SWAMP_2, SHOOTING_GALLERY_SWAMP, "Reward 2", "MM Swamp Archery Reward 2", ObjectType::npc, {0, 0}, SHOOTING_GALLERY_SWAMP, ObjectContext::All, 0 })
+	{ SHOOTING_GAME_SWAMP_2, SHOOTING_GALLERY_SWAMP, "Reward 2", "MM Swamp Archery Reward 2", ObjectType::npc, {0, 0}, SHOOTING_GALLERY_SWAMP, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(SOUTHERN_SWAMP, 106,
+const size_t SOUTHERN_SWAMPNumOfObjs = 106;
+ObjectInfo SOUTHERN_SWAMPSceneObjects [SOUTHERN_SWAMPNumOfObjs] =
+{
 	{ 0x0000b, SOUTHERN_SWAMP, "Front 1", "MM Southern Swamp Grass Front 01", ObjectType::grass, {0, 0}, SOUTHERN_SWAMP, ObjectContext::All, 0 },
 	{ 0x1000b, SOUTHERN_SWAMP, "Front 2", "MM Southern Swamp Grass Front 02", ObjectType::grass, {0, 0}, SOUTHERN_SWAMP, ObjectContext::All, 0 },
 	{ 0x2000b, SOUTHERN_SWAMP, "Front 3", "MM Southern Swamp Grass Front 03", ObjectType::grass, {0, 0}, SOUTHERN_SWAMP, ObjectContext::All, 0 },
@@ -3674,9 +4006,12 @@ CreateObjectsForScene(SOUTHERN_SWAMP, 106,
 	{ 0x03d10, SOUTHERN_SWAMP, "Grass 11", "MM Southern Swamp Grotto Grass 11", ObjectType::none, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_OPEN, ObjectContext::All, 0 },
 	{ 0x03d11, SOUTHERN_SWAMP, "Grass 12", "MM Southern Swamp Grotto Grass 12", ObjectType::none, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_OPEN, ObjectContext::All, 0 },
 	{ 0x03d12, SOUTHERN_SWAMP, "Grass 13", "MM Southern Swamp Grotto Grass 13", ObjectType::none, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_OPEN, ObjectContext::All, 0 },
-	{ 0x03d13, SOUTHERN_SWAMP, "Grass 14", "MM Southern Swamp Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_OPEN, ObjectContext::All, 0 })
+	{ 0x03d13, SOUTHERN_SWAMP, "Grass 14", "MM Southern Swamp Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_OPEN, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_SPIDER_HOUSE_OCEAN, 59,
+const size_t MM_SPIDER_HOUSE_OCEANNumOfObjs = 59;
+ObjectInfo MM_SPIDER_HOUSE_OCEANSceneObjects [MM_SPIDER_HOUSE_OCEANNumOfObjs] =
+{
 	{ 0x1d, MM_SPIDER_HOUSE_OCEAN, "2nd Room - Behind Skull 1", "MM Ocean Skulltula 2nd Room Behind Skull 1", ObjectType::chest, {0, 0}, MM_SPIDER_HOUSE_OCEAN, ObjectContext::All, 0 },
 	{ 0x1e, MM_SPIDER_HOUSE_OCEAN, "2nd Room - Behind Skull 2", "MM Ocean Skulltula 2nd Room Behind Skull 2", ObjectType::chest, {0, 0}, MM_SPIDER_HOUSE_OCEAN, ObjectContext::All, 0 },
 	{ 0x05, MM_SPIDER_HOUSE_OCEAN, "2nd Room - Ceiling Edge", "MM Ocean Skulltula 2nd Room Ceiling Edge", ObjectType::chest, {0, 0}, MM_SPIDER_HOUSE_OCEAN, ObjectContext::All, 0 },
@@ -3735,9 +4070,12 @@ CreateObjectsForScene(MM_SPIDER_HOUSE_OCEAN, 59,
 	{ 0x20101, MM_SPIDER_HOUSE_OCEAN, "Masks 6", "MM Ocean Spider House Wonder Item Masks 6", ObjectType::wonder, {0, 0}, MM_SPIDER_HOUSE_OCEAN, ObjectContext::All, 0 },
 	{ 0x00102, MM_SPIDER_HOUSE_OCEAN, "Masks 7", "MM Ocean Spider House Wonder Item Masks 7", ObjectType::wonder, {0, 0}, MM_SPIDER_HOUSE_OCEAN, ObjectContext::All, 0 },
 	{ 0x10102, MM_SPIDER_HOUSE_OCEAN, "Masks 8", "MM Ocean Spider House Wonder Item Masks 8", ObjectType::wonder, {0, 0}, MM_SPIDER_HOUSE_OCEAN, ObjectContext::All, 0 },
-	{ 0x20102, MM_SPIDER_HOUSE_OCEAN, "Masks 9", "MM Ocean Spider House Wonder Item Masks 9", ObjectType::wonder, {0, 0}, MM_SPIDER_HOUSE_OCEAN, ObjectContext::All, 0 })
+	{ 0x20102, MM_SPIDER_HOUSE_OCEAN, "Masks 9", "MM Ocean Spider House Wonder Item Masks 9", ObjectType::wonder, {0, 0}, MM_SPIDER_HOUSE_OCEAN, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_SPIDER_HOUSE_SWAMP, 87,
+const size_t MM_SPIDER_HOUSE_SWAMPNumOfObjs = 87;
+ObjectInfo MM_SPIDER_HOUSE_SWAMPSceneObjects [MM_SPIDER_HOUSE_SWAMPNumOfObjs] =
+{
 	{ 0x12, MM_SPIDER_HOUSE_SWAMP, "Gold Room - Hive", "MM Swamp Skulltula Gold Room Hive", ObjectType::chest, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectContext::All, 0 },
 	{ 0x01, MM_SPIDER_HOUSE_SWAMP, "Gold Room - Near Ceiling", "MM Swamp Skulltula Gold Room Near Ceiling", ObjectType::chest, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectContext::All, 0 },
 	{ 0x04, MM_SPIDER_HOUSE_SWAMP, "Gold Room - Pillar", "MM Swamp Skulltula Gold Room Pillar", ObjectType::chest, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectContext::All, 0 },
@@ -3824,9 +4162,12 @@ CreateObjectsForScene(MM_SPIDER_HOUSE_SWAMP, 87,
 	{ 0x0041a, MM_SPIDER_HOUSE_SWAMP, "Pot Room - Walking on Jar 2", "MM Swamp Spider House Wonder Item Pots 2", ObjectType::wonder, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectContext::All, 0 },
 	{ 0x0041b, MM_SPIDER_HOUSE_SWAMP, "Pot Room - Walking on Jar 3", "MM Swamp Spider House Wonder Item Pots 3", ObjectType::wonder, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectContext::All, 0 },
 	{ 0x0041c, MM_SPIDER_HOUSE_SWAMP, "Pot Room - Walking on Jar 4", "MM Swamp Spider House Wonder Item Pots 4", ObjectType::wonder, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectContext::All, 0 },
-	{ 0x0041d, MM_SPIDER_HOUSE_SWAMP, "Pot Room - Walking on Jar 5", "MM Swamp Spider House Wonder Item Pots 5", ObjectType::wonder, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectContext::All, 0 })
+	{ 0x0041d, MM_SPIDER_HOUSE_SWAMP, "Pot Room - Walking on Jar 5", "MM Swamp Spider House Wonder Item Pots 5", ObjectType::wonder, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(STOCK_POT_INN, 11,
+const size_t STOCK_POT_INNNumOfObjs = 11;
+ObjectInfo STOCK_POT_INNSceneObjects [STOCK_POT_INNNumOfObjs] =
+{
 	{ TOILET_HEART_PIECE, STOCK_POT_INN, "Toilet Paper - Heart Piece", "MM Stock Pot Inn ??? HP", ObjectType::npc, {0, 0}, STOCK_POT_INN, ObjectContext::All, 0 },
 	{ MASK_COUPLE, STOCK_POT_INN, "Couple's Mask", "MM Stock Pot Inn Couple's Mask", ObjectType::npc, {0, 0}, STOCK_POT_INN, ObjectContext::All, 0 },
 	{ GRANDMA_HEART_PIECE_1, STOCK_POT_INN, "Grandma - Heart Piece 1", "MM Stock Pot Inn Grandma HP 1", ObjectType::npc, {0, 0}, STOCK_POT_INN, ObjectContext::All, 0 },
@@ -3837,9 +4178,12 @@ CreateObjectsForScene(STOCK_POT_INN, 11,
 	{ 0x01, STOCK_POT_INN, "Staff Room", "MM Stock Pot Inn Staff Room Chest", ObjectType::chest, {0, 0}, STOCK_POT_INN, ObjectContext::All, 0 },
 	{ 0x0000e, STOCK_POT_INN, "Mask 1", "MM Stock Pot Inn Wonder Item 1", ObjectType::wonder, {0, 0}, STOCK_POT_INN, ObjectContext::All, 0 },
 	{ 0x1000e, STOCK_POT_INN, "Mask 2", "MM Stock Pot Inn Wonder Item 2", ObjectType::wonder, {0, 0}, STOCK_POT_INN, ObjectContext::All, 0 },
-	{ 0x2000e, STOCK_POT_INN, "Mask 3", "MM Stock Pot Inn Wonder Item 3", ObjectType::wonder, {0, 0}, STOCK_POT_INN, ObjectContext::All, 0 })
+	{ 0x2000e, STOCK_POT_INN, "Mask 3", "MM Stock Pot Inn Wonder Item 3", ObjectType::wonder, {0, 0}, STOCK_POT_INN, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(STONE_TOWER, 36,
+const size_t STONE_TOWERNumOfObjs = 36;
+ObjectInfo STONE_TOWERSceneObjects [STONE_TOWERNumOfObjs] =
+{
 	{ OWL_STONE_TOWER, STONE_TOWER, "Owl Statue", "MM Stone Tower Owl Statue", ObjectType::npc, {0, 0}, STONE_TOWER, ObjectContext::All, 0 },
 	{ 0x003c, STONE_TOWER, "Climb 1", "MM Stone Tower Pot Climb 1", ObjectType::pot, {0, 0}, STONE_TOWER, ObjectContext::All, 0 },
 	{ 0x003d, STONE_TOWER, "Climb 2", "MM Stone Tower Pot Climb 2", ObjectType::pot, {0, 0}, STONE_TOWER, ObjectContext::All, 0 },
@@ -3875,9 +4219,12 @@ CreateObjectsForScene(STONE_TOWER, 36,
 	{ 0x0009, STONE_TOWER, "Pot 2", "MM Stone Tower Inverted Pot 2", ObjectType::none, {0, 0}, STONE_TOWER_INVERTED, ObjectContext::All, 0 },
 	{ 0x000a, STONE_TOWER, "Pot 3", "MM Stone Tower Inverted Pot 3", ObjectType::none, {0, 0}, STONE_TOWER_INVERTED, ObjectContext::All, 0 },
 	{ 0x000b, STONE_TOWER, "Pot 4", "MM Stone Tower Inverted Pot 4", ObjectType::none, {0, 0}, STONE_TOWER_INVERTED, ObjectContext::All, 0 },
-	{ 0x000c, STONE_TOWER, "Pot 5", "MM Stone Tower Inverted Pot 5", ObjectType::none, {0, 0}, STONE_TOWER_INVERTED, ObjectContext::All, 0 })
+	{ 0x000c, STONE_TOWER, "Pot 5", "MM Stone Tower Inverted Pot 5", ObjectType::none, {0, 0}, STONE_TOWER_INVERTED, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(STONE_TOWER_INVERTED, 8,
+const size_t STONE_TOWER_INVERTEDNumOfObjs = 8;
+ObjectInfo STONE_TOWER_INVERTEDSceneObjects [STONE_TOWER_INVERTEDNumOfObjs] =
+{
 	{ 0x1d, STONE_TOWER_INVERTED, "Chest 1", "MM Stone Tower Inverted Chest 1", ObjectType::chest, {0, 0}, STONE_TOWER_INVERTED, ObjectContext::All, 0 },
 	{ 0x1e, STONE_TOWER_INVERTED, "Chest 2", "MM Stone Tower Inverted Chest 2", ObjectType::chest, {0, 0}, STONE_TOWER_INVERTED, ObjectContext::All, 0 },
 	{ 0x1f, STONE_TOWER_INVERTED, "Chest 3", "MM Stone Tower Inverted Chest 3", ObjectType::chest, {0, 0}, STONE_TOWER_INVERTED, ObjectContext::All, 0 },
@@ -3885,17 +4232,23 @@ CreateObjectsForScene(STONE_TOWER_INVERTED, 8,
 	{ 0x0009, STONE_TOWER_INVERTED, "Pot 2", "MM Stone Tower Inverted Pot 2", ObjectType::pot, {0, 0}, STONE_TOWER_INVERTED, ObjectContext::All, 0 },
 	{ 0x000a, STONE_TOWER_INVERTED, "Pot 3", "MM Stone Tower Inverted Pot 3", ObjectType::pot, {0, 0}, STONE_TOWER_INVERTED, ObjectContext::All, 0 },
 	{ 0x000b, STONE_TOWER_INVERTED, "Pot 4", "MM Stone Tower Inverted Pot 4", ObjectType::pot, {0, 0}, STONE_TOWER_INVERTED, ObjectContext::All, 0 },
-	{ 0x000c, STONE_TOWER_INVERTED, "Pot 5", "MM Stone Tower Inverted Pot 5", ObjectType::pot, {0, 0}, STONE_TOWER_INVERTED, ObjectContext::All, 0 })
+	{ 0x000c, STONE_TOWER_INVERTED, "Pot 5", "MM Stone Tower Inverted Pot 5", ObjectType::pot, {0, 0}, STONE_TOWER_INVERTED, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(SWORDSMAN_SCHOOL, 6,
+const size_t SWORDSMAN_SCHOOLNumOfObjs = 6;
+ObjectInfo SWORDSMAN_SCHOOLSceneObjects [SWORDSMAN_SCHOOLNumOfObjs] =
+{
 	{ SWORDSMAN_HEART_PIECE, SWORDSMAN_SCHOOL, "Heart Piece", "MM Swordsman School HP", ObjectType::npc, {0, 0}, SWORDSMAN_SCHOOL, ObjectContext::All, 0 },
 	{ 0x0006, SWORDSMAN_SCHOOL, "Pot 1", "MM Swordsman School Pot 1", ObjectType::pot, {0, 0}, SWORDSMAN_SCHOOL, ObjectContext::All, 0 },
 	{ 0x0007, SWORDSMAN_SCHOOL, "Pot 2", "MM Swordsman School Pot 2", ObjectType::pot, {0, 0}, SWORDSMAN_SCHOOL, ObjectContext::All, 0 },
 	{ 0x0008, SWORDSMAN_SCHOOL, "Pot 3", "MM Swordsman School Pot 3", ObjectType::pot, {0, 0}, SWORDSMAN_SCHOOL, ObjectContext::All, 0 },
 	{ 0x0009, SWORDSMAN_SCHOOL, "Pot 4", "MM Swordsman School Pot 4", ObjectType::pot, {0, 0}, SWORDSMAN_SCHOOL, ObjectContext::All, 0 },
-	{ 0x000a, SWORDSMAN_SCHOOL, "Pot 5", "MM Swordsman School Pot 5", ObjectType::pot, {0, 0}, SWORDSMAN_SCHOOL, ObjectContext::All, 0 })
+	{ 0x000a, SWORDSMAN_SCHOOL, "Pot 5", "MM Swordsman School Pot 5", ObjectType::pot, {0, 0}, SWORDSMAN_SCHOOL, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(TEMPLE_STONE_TOWER, 160,
+const size_t TEMPLE_STONE_TOWERNumOfObjs = 160;
+ObjectInfo TEMPLE_STONE_TOWERSceneObjects [TEMPLE_STONE_TOWERNumOfObjs] =
+{
 	{ 0x14, TEMPLE_STONE_TOWER, "Before Water Bridge", "MM Stone Tower Temple Before Water Bridge Chest", ObjectType::chest, {0, 0}, TEMPLE_STONE_TOWER, ObjectContext::All, 0 },
 	{ 0x01, TEMPLE_STONE_TOWER, "Center - Across Water", "MM Stone Tower Temple Center Across Water Chest", ObjectType::chest, {0, 0}, TEMPLE_STONE_TOWER, ObjectContext::All, 0 },
 	{ 0x18, TEMPLE_STONE_TOWER, "Center - Sun Block", "MM Stone Tower Temple Center Sun Block Chest", ObjectType::chest, {0, 0}, TEMPLE_STONE_TOWER, ObjectContext::All, 0 },
@@ -4055,14 +4408,20 @@ CreateObjectsForScene(TEMPLE_STONE_TOWER, 160,
 	{ 0x0080a, TEMPLE_STONE_TOWER, "Pre-Boss - Front 4", "MM Stone Tower Temple Inverted Rupee Pre-Boss Front 4", ObjectType::none, {0, 0}, TEMPLE_STONE_TOWER_INVERTED, ObjectContext::All, 0 },
 	{ 0x00800, TEMPLE_STONE_TOWER, "Pre-Boss - Top 1", "MM Stone Tower Temple Inverted Rupee Pre-Boss Top 1", ObjectType::none, {0, 0}, TEMPLE_STONE_TOWER_INVERTED, ObjectContext::All, 0 },
 	{ 0x00801, TEMPLE_STONE_TOWER, "Pre-Boss - Top 2", "MM Stone Tower Temple Inverted Rupee Pre-Boss Top 2", ObjectType::none, {0, 0}, TEMPLE_STONE_TOWER_INVERTED, ObjectContext::All, 0 },
-	{ 0x00802, TEMPLE_STONE_TOWER, "Pre-Boss - Top 3", "MM Stone Tower Temple Inverted Rupee Pre-Boss Top 3", ObjectType::none, {0, 0}, TEMPLE_STONE_TOWER_INVERTED, ObjectContext::All, 0 })
+	{ 0x00802, TEMPLE_STONE_TOWER, "Pre-Boss - Top 3", "MM Stone Tower Temple Inverted Rupee Pre-Boss Top 3", ObjectType::none, {0, 0}, TEMPLE_STONE_TOWER_INVERTED, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(TOURIST_INFORMATION, 3,
+const size_t TOURIST_INFORMATIONNumOfObjs = 3;
+ObjectInfo TOURIST_INFORMATIONSceneObjects [TOURIST_INFORMATIONNumOfObjs] =
+{
 	{ KOUME_HEART_PIECE, TOURIST_INFORMATION, "Archery", "MM Tourist Information Boat Archery", ObjectType::npc, {0, 0}, TOURIST_INFORMATION, ObjectContext::All, 0 },
 	{ KOUME_PICTOGRAPH_BOX, TOURIST_INFORMATION, "Pictobox", "MM Tourist Information Pictobox", ObjectType::npc, {0, 0}, TOURIST_INFORMATION, ObjectContext::All, 0 },
-	{ TOUR_GUIDE_HEART_PIECE, TOURIST_INFORMATION, "Deku's King Picture", "MM Tourist Information Tingle Picture", ObjectType::npc, {0, 0}, TOURIST_INFORMATION, ObjectContext::All, 0 })
+	{ TOUR_GUIDE_HEART_PIECE, TOURIST_INFORMATION, "Deku's King Picture", "MM Tourist Information Tingle Picture", ObjectType::npc, {0, 0}, TOURIST_INFORMATION, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(TRADING_POST, 9,
+const size_t TRADING_POSTNumOfObjs = 9;
+ObjectInfo TRADING_POSTSceneObjects [TRADING_POSTNumOfObjs] =
+{
 	{ 0x05, TRADING_POST, "Item 1", "MM Trading Post Item 1", ObjectType::shop, {0, 0}, TRADING_POST, ObjectContext::All, 0 },
 	{ 0x06, TRADING_POST, "Item 2", "MM Trading Post Item 2", ObjectType::shop, {0, 0}, TRADING_POST, ObjectContext::All, 0 },
 	{ 0x07, TRADING_POST, "Item 3", "MM Trading Post Item 3", ObjectType::shop, {0, 0}, TRADING_POST, ObjectContext::All, 0 },
@@ -4071,12 +4430,18 @@ CreateObjectsForScene(TRADING_POST, 9,
 	{ 0x0a, TRADING_POST, "Item 6", "MM Trading Post Item 6", ObjectType::shop, {0, 0}, TRADING_POST, ObjectContext::All, 0 },
 	{ 0x0b, TRADING_POST, "Item 7", "MM Trading Post Item 7", ObjectType::shop, {0, 0}, TRADING_POST, ObjectContext::All, 0 },
 	{ 0x0c, TRADING_POST, "Item 8", "MM Trading Post Item 8", ObjectType::shop, {0, 0}, TRADING_POST, ObjectContext::All, 0 },
-	{ 0x0008, TRADING_POST, "Pot", "MM Trading Post Pot", ObjectType::pot, {0, 0}, TRADING_POST, ObjectContext::All, 0 })
+	{ 0x0008, TRADING_POST, "Pot", "MM Trading Post Pot", ObjectType::pot, {0, 0}, TRADING_POST, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_TREASURE_SHOP, 1,
-	{ CHEST_GAME, MM_TREASURE_SHOP, "Heart Piece", "MM Chest Game HP", ObjectType::npc, {0, 0}, MM_TREASURE_SHOP, ObjectContext::All, 0 })
+const size_t MM_TREASURE_SHOPNumOfObjs = 1;
+ObjectInfo MM_TREASURE_SHOPSceneObjects [MM_TREASURE_SHOPNumOfObjs] =
+{
+	{ CHEST_GAME, MM_TREASURE_SHOP, "Heart Piece", "MM Chest Game HP", ObjectType::npc, {0, 0}, MM_TREASURE_SHOP, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(TWIN_ISLANDS, 85,
+const size_t TWIN_ISLANDSNumOfObjs = 85;
+ObjectInfo TWIN_ISLANDSSceneObjects [TWIN_ISLANDSNumOfObjs] =
+{
 	{ GORON_ELDER, TWIN_ISLANDS, "Goron's Lulluby - Intro", "MM Goron Elder", ObjectType::npc, {0, 0}, TWIN_ISLANDS, ObjectContext::Winter, 0 },
 	{ 0x0003b, TWIN_ISLANDS, "Big Snowball 1", "MM Twin Islands Big Snowball 01", ObjectType::snowball, {0, 0}, TWIN_ISLANDS, ObjectContext::Winter, 0 },
 	{ 0x0003a, TWIN_ISLANDS, "Big Snowball 2", "MM Twin Islands Big Snowball 02", ObjectType::snowball, {0, 0}, TWIN_ISLANDS, ObjectContext::Winter, 0 },
@@ -4161,9 +4526,12 @@ CreateObjectsForScene(TWIN_ISLANDS, 85,
 	{ 0x03911, TWIN_ISLANDS, "Grass 12", "MM Twin Islands Ramp Grotto Grass 12", ObjectType::none, {0, 0}, MM_GROTTO_TWIN_ISLANDS_RAMP, ObjectContext::All, 0 },
 	{ 0x03912, TWIN_ISLANDS, "Grass 13", "MM Twin Islands Ramp Grotto Grass 13", ObjectType::none, {0, 0}, MM_GROTTO_TWIN_ISLANDS_RAMP, ObjectContext::All, 0 },
 	{ 0x03913, TWIN_ISLANDS, "Grass 14", "MM Twin Islands Ramp Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_TWIN_ISLANDS_RAMP, ObjectContext::All, 0 },
-	{ 0x02, TWIN_ISLANDS, "Chest", "MM Twin Islands Frozen Grotto Chest", ObjectType::none, {0, 0}, MM_GROTTO_TWIN_ISLANDS_FROZEN, ObjectContext::All, 0 })
+	{ 0x02, TWIN_ISLANDS, "Chest", "MM Twin Islands Frozen Grotto Chest", ObjectType::none, {0, 0}, MM_GROTTO_TWIN_ISLANDS_FROZEN, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(TWIN_ISLANDS_SPRING, 16,
+const size_t TWIN_ISLANDS_SPRINGNumOfObjs = 16;
+ObjectInfo TWIN_ISLANDS_SPRINGSceneObjects [TWIN_ISLANDS_SPRINGNumOfObjs] =
+{
 	{ 0x0000b, TWIN_ISLANDS_SPRING, "Grass 1", "MM Twin Islands Grass 01", ObjectType::none, {0, 0}, TWIN_ISLANDS, ObjectContext::Spring, 0 },
 	{ 0x1000b, TWIN_ISLANDS_SPRING, "Grass 2", "MM Twin Islands Grass 02", ObjectType::none, {0, 0}, TWIN_ISLANDS, ObjectContext::Spring, 0 },
 	{ 0x2000b, TWIN_ISLANDS_SPRING, "Grass 3", "MM Twin Islands Grass 03", ObjectType::none, {0, 0}, TWIN_ISLANDS, ObjectContext::Spring, 0 },
@@ -4179,9 +4547,12 @@ CreateObjectsForScene(TWIN_ISLANDS_SPRING, 16,
 	{ 0x0000e, TWIN_ISLANDS_SPRING, "Rupee 1", "MM Twin Islands Rupee 1", ObjectType::none, {0, 0}, TWIN_ISLANDS, ObjectContext::Spring, 0 },
 	{ 0x0000f, TWIN_ISLANDS_SPRING, "Rupee 2", "MM Twin Islands Rupee 2", ObjectType::none, {0, 0}, TWIN_ISLANDS, ObjectContext::Spring, 0 },
 	{ 0x00010, TWIN_ISLANDS_SPRING, "Rupee 3", "MM Twin Islands Rupee 3", ObjectType::none, {0, 0}, TWIN_ISLANDS, ObjectContext::Spring, 0 },
-	{ 0x00012, TWIN_ISLANDS_SPRING, "Rupee 4", "MM Twin Islands Rupee 4", ObjectType::none, {0, 0}, TWIN_ISLANDS, ObjectContext::Spring, 0 })
+	{ 0x00012, TWIN_ISLANDS_SPRING, "Rupee 4", "MM Twin Islands Rupee 4", ObjectType::none, {0, 0}, TWIN_ISLANDS, ObjectContext::Spring, 0 }
+};
 
-CreateObjectsForScene(TWIN_ISLANDS_WINTER, 22,
+const size_t TWIN_ISLANDS_WINTERNumOfObjs = 22;
+ObjectInfo TWIN_ISLANDS_WINTERSceneObjects [TWIN_ISLANDS_WINTERNumOfObjs] =
+{
 	{ GORON_ELDER, TWIN_ISLANDS_WINTER, "Goron's Lulluby - Intro", "MM Goron Elder", ObjectType::none, {0, 0}, TWIN_ISLANDS, ObjectContext::Winter, 0 },
 	{ 0x0003b, TWIN_ISLANDS_WINTER, "Big Snowball 1", "MM Twin Islands Big Snowball 01", ObjectType::none, {0, 0}, TWIN_ISLANDS, ObjectContext::Winter, 0 },
 	{ 0x0003a, TWIN_ISLANDS_WINTER, "Big Snowball 2", "MM Twin Islands Big Snowball 02", ObjectType::none, {0, 0}, TWIN_ISLANDS, ObjectContext::Winter, 0 },
@@ -4203,13 +4574,19 @@ CreateObjectsForScene(TWIN_ISLANDS_WINTER, 22,
 	{ 0x00042, TWIN_ISLANDS_WINTER, "Ramp 2", "MM Twin Islands Small Snowball Ramp 2", ObjectType::none, {0, 0}, TWIN_ISLANDS, ObjectContext::Winter, 0 },
 	{ 0x00043, TWIN_ISLANDS_WINTER, "Ramp 3", "MM Twin Islands Small Snowball Ramp 3", ObjectType::none, {0, 0}, TWIN_ISLANDS, ObjectContext::Winter, 0 },
 	{ 0x06, TWIN_ISLANDS_WINTER, "Underwater 1", "MM Twin Islands Underwater Chest 1", ObjectType::none, {0, 0}, TWIN_ISLANDS, ObjectContext::Winter, 0 },
-	{ 0x00, TWIN_ISLANDS_WINTER, "Underwater 2", "MM Twin Islands Underwater Chest 2", ObjectType::none, {0, 0}, TWIN_ISLANDS, ObjectContext::Winter, 0 })
+	{ 0x00, TWIN_ISLANDS_WINTER, "Underwater 2", "MM Twin Islands Underwater Chest 2", ObjectType::none, {0, 0}, TWIN_ISLANDS, ObjectContext::Winter, 0 }
+};
 
-CreateObjectsForScene(WATERFALL_RAPIDS, 2,
+const size_t WATERFALL_RAPIDSNumOfObjs = 2;
+ObjectInfo WATERFALL_RAPIDSSceneObjects [WATERFALL_RAPIDSNumOfObjs] =
+{
 	{ BEAVER_1, WATERFALL_RAPIDS, "Race 1", "MM Waterfall Rapids Beaver Race 1", ObjectType::npc, {0, 0}, WATERFALL_RAPIDS, ObjectContext::All, 0 },
-	{ BEAVER_2, WATERFALL_RAPIDS, "Race 2", "MM Waterfall Rapids Beaver Race 2", ObjectType::npc, {0, 0}, WATERFALL_RAPIDS, ObjectContext::All, 0 })
+	{ BEAVER_2, WATERFALL_RAPIDS, "Race 2", "MM Waterfall Rapids Beaver Race 2", ObjectType::npc, {0, 0}, WATERFALL_RAPIDS, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(WOODFALL, 15,
+const size_t WOODFALLNumOfObjs = 15;
+ObjectInfo WOODFALLSceneObjects [WOODFALLNumOfObjs] =
+{
 	{ 0x00, WOODFALL, "Entrance", "MM Woodfall Entrance Chest", ObjectType::chest, {0, 0}, WOODFALL, ObjectContext::All, 0 },
 	{ 0x00011, WOODFALL, "Grass 1", "MM Woodfall Grass 1", ObjectType::grass, {0, 0}, WOODFALL, ObjectContext::All, 0 },
 	{ 0x00012, WOODFALL, "Grass 2", "MM Woodfall Grass 2", ObjectType::grass, {0, 0}, WOODFALL, ObjectContext::All, 0 },
@@ -4224,9 +4601,12 @@ CreateObjectsForScene(WOODFALL, 15,
 	{ 0x0007, WOODFALL, "Pot 2", "MM Woodfall Pot 2", ObjectType::pot, {0, 0}, WOODFALL, ObjectContext::All, 0 },
 	{ 0x0008, WOODFALL, "Pot 3", "MM Woodfall Pot 3", ObjectType::pot, {0, 0}, WOODFALL, ObjectContext::All, 0 },
 	{ 0x00000, WOODFALL, "Rupee", "MM Woodfall Rupee", ObjectType::rupee, {0, 0}, WOODFALL, ObjectContext::All, 0 },
-	{ GREAT_FAIRY_SWAMP, WOODFALL, "Super Spin Attack", "MM Woodfall Great Fairy", ObjectType::none, {0, 0}, MM_FAIRY_WOODFALL, ObjectContext::All, 0 })
+	{ GREAT_FAIRY_SWAMP, WOODFALL, "Super Spin Attack", "MM Woodfall Great Fairy", ObjectType::none, {0, 0}, MM_FAIRY_WOODFALL, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(WOODS_MYSTERY, 24,
+const size_t WOODS_MYSTERYNumOfObjs = 24;
+ObjectInfo WOODS_MYSTERYSceneObjects [WOODS_MYSTERYNumOfObjs] =
+{
 	{ KOTAKE_RED_POTION, WOODS_MYSTERY, "Red Potion Bottle", "MM Swamp Potion Shop Kotake", ObjectType::npc, {0, 0}, POTION_SHOP, ObjectContext::All, 0 },
 	{ 0x00406, WOODS_MYSTERY, "Center 1", "MM Woods of Mystery Grass Center 1", ObjectType::grass, {0, 0}, WOODS_MYSTERY, ObjectContext::All, 0 },
 	{ 0x00407, WOODS_MYSTERY, "Center 2", "MM Woods of Mystery Grass Center 2", ObjectType::grass, {0, 0}, WOODS_MYSTERY, ObjectContext::All, 0 },
@@ -4250,12 +4630,18 @@ CreateObjectsForScene(WOODS_MYSTERY, 24,
 	{ 0x00000, WOODS_MYSTERY, "South West 1", "MM Woods of Mystery Grass SW 1", ObjectType::grass, {0, 0}, WOODS_MYSTERY, ObjectContext::All, 0 },
 	{ 0x00001, WOODS_MYSTERY, "South West 2", "MM Woods of Mystery Grass SW 2", ObjectType::grass, {0, 0}, WOODS_MYSTERY, ObjectContext::All, 0 },
 	{ 0x00307, WOODS_MYSTERY, "West 1", "MM Woods of Mystery Grass W 1", ObjectType::grass, {0, 0}, WOODS_MYSTERY, ObjectContext::All, 0 },
-	{ 0x00308, WOODS_MYSTERY, "West 2", "MM Woods of Mystery Grass W 2", ObjectType::grass, {0, 0}, WOODS_MYSTERY, ObjectContext::All, 0 })
+	{ 0x00308, WOODS_MYSTERY, "West 2", "MM Woods of Mystery Grass W 2", ObjectType::grass, {0, 0}, WOODS_MYSTERY, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(ZORA_HALL, 1,
-	{ ZORA_HALL_LIGHTS, ZORA_HALL, "Scene Lights", "MM Zora Hall Scene Lights", ObjectType::npc, {0, 0}, ZORA_HALL, ObjectContext::All, 0 })
+const size_t ZORA_HALLNumOfObjs = 1;
+ObjectInfo ZORA_HALLSceneObjects [ZORA_HALLNumOfObjs] =
+{
+	{ ZORA_HALL_LIGHTS, ZORA_HALL, "Scene Lights", "MM Zora Hall Scene Lights", ObjectType::npc, {0, 0}, ZORA_HALL, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(ZORA_HALL_ROOMS, 8,
+const size_t ZORA_HALL_ROOMSNumOfObjs = 8;
+ObjectInfo ZORA_HALL_ROOMSSceneObjects [ZORA_HALL_ROOMSNumOfObjs] =
+{
 	{ ZORA_EVAN, ZORA_HALL_ROOMS, "Evan - Heart Piece", "MM Zora Hall Evan HP", ObjectType::npc, {0, 0}, ZORA_EVAN_ROOM, ObjectContext::All, 0 },
 	{ SCRUB_OCEAN, ZORA_HALL_ROOMS, "Titile Deed", "MM Zora Hall Scrub Deed", ObjectType::npc, {0, 0}, ZORA_HALL_ROOMS, ObjectContext::All, 0 },
 	{ 0x1e, ZORA_HALL_ROOMS, "Scrub - Heart Piece", "MM Zora Hall Scrub HP", ObjectType::collectible, {0, 0}, ZORA_HALL_ROOMS, ObjectContext::All, 0 },
@@ -4263,12 +4649,19 @@ CreateObjectsForScene(ZORA_HALL_ROOMS, 8,
 	{ 0x13, ZORA_HALL_ROOMS, "Item 1", "MM Zora Shop Item 1", ObjectType::shop, {0, 0}, MM_ZORA_SHOP, ObjectContext::All, 0 },
 	{ 0x14, ZORA_HALL_ROOMS, "Item 2", "MM Zora Shop Item 2", ObjectType::shop, {0, 0}, MM_ZORA_SHOP, ObjectContext::All, 0 },
 	{ 0x15, ZORA_HALL_ROOMS, "Item 3", "MM Zora Shop Item 3", ObjectType::shop, {0, 0}, MM_ZORA_SHOP, ObjectContext::All, 0 },
-	{ ZORA_HALL_LIGHTS, ZORA_HALL_ROOMS, "Scene Lights", "MM Zora Hall Scene Lights", ObjectType::none, {0, 0}, ZORA_HALL, ObjectContext::All, 0 })
+	{ ZORA_HALL_LIGHTS, ZORA_HALL_ROOMS, "Scene Lights", "MM Zora Hall Scene Lights", ObjectType::none, {0, 0}, ZORA_HALL, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(ZORA_EVAN_ROOM, 1,
-	{ ZORA_EVAN, ZORA_HALL_ROOMS, "Evan - Heart Piece", "MM Zora Hall Evan HP", ObjectType::npc, {0, 0}, ZORA_EVAN_ROOM, ObjectContext::All, 0 })
+const size_t ZORA_EVAN_ROOMNumOfObjs = 1;
+ObjectInfo ZORA_EVAN_ROOMSceneObjects [ZORA_EVAN_ROOMNumOfObjs] =
+{
+	{ ZORA_EVAN, ZORA_HALL_ROOMS, "Evan - Heart Piece", "MM Zora Hall Evan HP", ObjectType::npc, {0, 0}, ZORA_EVAN_ROOM, ObjectContext::All, 0 }
+};
 
-CreateObjectsForScene(MM_ZORA_SHOP, 3,
+const size_t MM_ZORA_SHOPNumOfObjs = 3;
+ObjectInfo MM_ZORA_SHOPSceneObjects [MM_ZORA_SHOPNumOfObjs] =
+{
 	{ 0x13, ZORA_HALL_ROOMS, "Item 1", "MM Zora Shop Item 1", ObjectType::shop, {0, 0}, MM_ZORA_SHOP, ObjectContext::All, 0 },
 	{ 0x14, ZORA_HALL_ROOMS, "Item 2", "MM Zora Shop Item 2", ObjectType::shop, {0, 0}, MM_ZORA_SHOP, ObjectContext::All, 0 },
-	{ 0x15, ZORA_HALL_ROOMS, "Item 3", "MM Zora Shop Item 3", ObjectType::shop, {0, 0}, MM_ZORA_SHOP, ObjectContext::All, 0 })
+	{ 0x15, ZORA_HALL_ROOMS, "Item 3", "MM Zora Shop Item 3", ObjectType::shop, {0, 0}, MM_ZORA_SHOP, ObjectContext::All, 0 }
+};

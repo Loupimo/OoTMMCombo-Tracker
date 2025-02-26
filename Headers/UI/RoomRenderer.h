@@ -35,6 +35,16 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 				{ 10, "Boss Room", "./Resources/OoT/Dungeons/Deku_Tree/Boss_Room.png" }
 			}
 		)
+	),
+
+	QPair<int, std::vector<RoomInfo>>(DEATH_MOUNTAIN_TRAIL,
+		std::vector<RoomInfo>(
+			{
+				{ 0, "Bottom", "./Resources/OoT/Death_Mountain_Trial/Bottom.png" },
+				{ 1, "Middle", "./Resources/OoT/Death_Mountain_Trial/Middle.png" },
+				{ 2, "Top", "./Resources/OoT/Death_Mountain_Trial/Top.png" }
+			}
+		)
 	)
 
 });

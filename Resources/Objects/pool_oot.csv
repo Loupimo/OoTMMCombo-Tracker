@@ -1,9 +1,9 @@
 id;scene;friendly_name;location;type;x;y;renderscene;context;room
-0x0002;BACK_ALLEY_HOUSE;Pot 1;OOT Market Back Alley East House Pot 1;pot;0;0;BACK_ALLEY_HOUSE;All;0
-0x0003;BACK_ALLEY_HOUSE;Pot 2;OOT Market Back Alley East House Pot 2;pot;0;0;BACK_ALLEY_HOUSE;All;0
-0x0004;BACK_ALLEY_HOUSE;Pot 3;OOT Market Back Alley East House Pot 3;pot;0;0;BACK_ALLEY_HOUSE;All;0
-DOG_LADY;BACK_ALLEY_HOUSE2;Heart Piece;OOT Market Dog Lady HP;npc;0;0;BACK_ALLEY_HOUSE2;All;0
-0x00002;BACK_ALLEY_HOUSE2;Crate;OOT Market Dog Lady Crate;crate;0;0;BACK_ALLEY_HOUSE2;All;0
+0x0002;BACK_ALLEY_HOUSE;Pot 1;OOT Market Back Alley East House Pot 1;pot;270;483;BACK_ALLEY_HOUSE;All;0
+0x0003;BACK_ALLEY_HOUSE;Pot 2;OOT Market Back Alley East House Pot 2;pot;442;429;BACK_ALLEY_HOUSE;All;0
+0x0004;BACK_ALLEY_HOUSE;Pot 3;OOT Market Back Alley East House Pot 3;pot;743;429;BACK_ALLEY_HOUSE;All;0
+DOG_LADY;BACK_ALLEY_HOUSE2;Heart Piece;OOT Market Dog Lady HP;npc;436;214;BACK_ALLEY_HOUSE2;All;0
+0x00002;BACK_ALLEY_HOUSE2;Crate;OOT Market Dog Lady Crate;crate;657;105;BACK_ALLEY_HOUSE2;All;0
 0x30;BAZAAR;Item 1;OOT Kakariko Bazaar Item 1;shop;664;328;KAKARIKO_BAZAAR;All;0
 0x31;BAZAAR;Item 2;OOT Kakariko Bazaar Item 2;shop;624;328;KAKARIKO_BAZAAR;All;0
 0x32;BAZAAR;Item 3;OOT Kakariko Bazaar Item 3;shop;367;328;KAKARIKO_BAZAAR;All;0
@@ -20,16 +20,16 @@ DOG_LADY;BACK_ALLEY_HOUSE2;Heart Piece;OOT Market Dog Lady HP;npc;0;0;BACK_ALLEY
 0x25;BAZAAR;Item 6;OOT Market Bazaar Item 6;shop;624;290;MARKET_BAZAAR;All;0
 0x26;BAZAAR;Item 7;OOT Market Bazaar Item 7;shop;367;290;MARKET_BAZAAR;All;0
 0x27;BAZAAR;Item 8;OOT Market Bazaar Item 8;shop;327;290;MARKET_BAZAAR;All;0
-BOMBCHU_BOWLING_1;BOMBCHU_BOWLING_ALLEY;Reward 1;OOT Bombchu Bowling Reward 1;npc;0;0;BOMBCHU_BOWLING_ALLEY;All;0
-BOMBCHU_BOWLING_2;BOMBCHU_BOWLING_ALLEY;Reward 2;OOT Bombchu Bowling Reward 2;npc;0;0;BOMBCHU_BOWLING_ALLEY;All;0
-0x08;BOMBCHU_SHOP;Item 1;OOT Market Bombchu Shop Item 1;shop;0;0;BOMBCHU_SHOP;All;0
-0x09;BOMBCHU_SHOP;Item 2;OOT Market Bombchu Shop Item 2;shop;0;0;BOMBCHU_SHOP;All;0
-0x0a;BOMBCHU_SHOP;Item 3;OOT Market Bombchu Shop Item 3;shop;0;0;BOMBCHU_SHOP;All;0
-0x0b;BOMBCHU_SHOP;Item 4;OOT Market Bombchu Shop Item 4;shop;0;0;BOMBCHU_SHOP;All;0
-0x0c;BOMBCHU_SHOP;Item 5;OOT Market Bombchu Shop Item 5;shop;0;0;BOMBCHU_SHOP;All;0
-0x0d;BOMBCHU_SHOP;Item 6;OOT Market Bombchu Shop Item 6;shop;0;0;BOMBCHU_SHOP;All;0
-0x0e;BOMBCHU_SHOP;Item 7;OOT Market Bombchu Shop Item 7;shop;0;0;BOMBCHU_SHOP;All;0
-0x0f;BOMBCHU_SHOP;Item 8;OOT Market Bombchu Shop Item 8;shop;0;0;BOMBCHU_SHOP;All;0
+BOMBCHU_BOWLING_1;BOMBCHU_BOWLING_ALLEY;Reward 1;OOT Bombchu Bowling Reward 1;npc;816;248;BOMBCHU_BOWLING_ALLEY;All;0
+BOMBCHU_BOWLING_2;BOMBCHU_BOWLING_ALLEY;Reward 2;OOT Bombchu Bowling Reward 2;npc;743;248;BOMBCHU_BOWLING_ALLEY;All;0
+0x08;BOMBCHU_SHOP;Item 1;OOT Market Bombchu Shop Item 1;shop;644;276;BOMBCHU_SHOP;All;0
+0x09;BOMBCHU_SHOP;Item 2;OOT Market Bombchu Shop Item 2;shop;574;276;BOMBCHU_SHOP;All;0
+0x0a;BOMBCHU_SHOP;Item 3;OOT Market Bombchu Shop Item 3;shop;412;276;BOMBCHU_SHOP;All;0
+0x0b;BOMBCHU_SHOP;Item 4;OOT Market Bombchu Shop Item 4;shop;342;276;BOMBCHU_SHOP;All;0
+0x0c;BOMBCHU_SHOP;Item 5;OOT Market Bombchu Shop Item 5;shop;644;226;BOMBCHU_SHOP;All;0
+0x0d;BOMBCHU_SHOP;Item 6;OOT Market Bombchu Shop Item 6;shop;574;226;BOMBCHU_SHOP;All;0
+0x0e;BOMBCHU_SHOP;Item 7;OOT Market Bombchu Shop Item 7;shop;412;226;BOMBCHU_SHOP;All;0
+0x0f;BOMBCHU_SHOP;Item 8;OOT Market Bombchu Shop Item 8;shop;342;226;BOMBCHU_SHOP;All;0
 0x01;BOTTOM_OF_THE_WELL;Compass;OOT Bottom of the Well Compass;chest;0;0;BOTTOM_OF_THE_WELL;All;0
 0x02;BOTTOM_OF_THE_WELL;Under Debris;OOT Bottom of the Well Under Debris;chest;0;0;BOTTOM_OF_THE_WELL;All;0
 0x04;BOTTOM_OF_THE_WELL;Back West;OOT Bottom of the Well Back West;chest;0;0;BOTTOM_OF_THE_WELL;All;0
@@ -134,9 +134,9 @@ BOMBCHU_BOWLING_2;BOMBCHU_BOWLING_ALLEY;Reward 2;OOT Bombchu Bowling Reward 2;np
 0x00501;BOTTOM_OF_THE_WELL;Side Room 2;OOT MQ Bottom of the Well Wonder Item Side Room 2;wonder;0;0;MQ_BOTTOM_OF_THE_WELL;All;0
 0x00502;BOTTOM_OF_THE_WELL;Side Room 3;OOT MQ Bottom of the Well Wonder Item Side Room 3;wonder;0;0;MQ_BOTTOM_OF_THE_WELL;All;0
 0x00503;BOTTOM_OF_THE_WELL;Side Room 4;OOT MQ Bottom of the Well Wonder Item Side Room 4;wonder;0;0;MQ_BOTTOM_OF_THE_WELL;All;0
-ZELDA_LETTER;CASTLE_COURTYARD;Zelda's Letter;OOT Zelda's Letter;npc;0;0;CASTLE_COURTYARD;All;0
-ZELDA_SONG;CASTLE_COURTYARD;Zelda's Song;OOT Zelda's Song;npc;0;0;CASTLE_COURTYARD;All;0
-0x00005;CASTLE_COURTYARD;Mario Painting;OOT Castle Courtyard Wonder Item;wonder;0;0;CASTLE_COURTYARD;All;0
+ZELDA_LETTER;CASTLE_COURTYARD;Zelda's Letter;OOT Zelda's Letter;npc;757;318;CASTLE_COURTYARD;All;0
+ZELDA_SONG;CASTLE_COURTYARD;Zelda's Song;OOT Zelda's Song;npc;174;470;CASTLE_COURTYARD;All;0
+0x00005;CASTLE_COURTYARD;Mario Painting;OOT Castle Courtyard Wonder Item;wonder;273;205;CASTLE_COURTYARD;All;0
 0x02;DEATH_MOUNTAIN_CRATER;Alcove - Heart Piece;OOT Death Mountain Crater Alcove HP;collectible;0;0;DEATH_MOUNTAIN_CRATER;All;0
 0x08;DEATH_MOUNTAIN_CRATER;Volcano - Heart Piece;OOT Death Mountain Crater Volcano HP;collectible;0;0;DEATH_MOUNTAIN_CRATER;All;0
 SHEIK_FIRE;DEATH_MOUNTAIN_CRATER;Bolero of Fire;OOT Death Mountain Crater Sheik Song;npc;0;0;DEATH_MOUNTAIN_CRATER;Adult;0
@@ -162,19 +162,19 @@ SHEIK_FIRE;DEATH_MOUNTAIN_CRATER;Bolero of Fire;OOT Death Mountain Crater Sheik 
 0x48112;DEATH_MOUNTAIN_CRATER;Adult 5;OOT Death Mountain Crater Rupee Adult 5;rupee;0;0;DEATH_MOUNTAIN_CRATER;Adult;0
 0x58112;DEATH_MOUNTAIN_CRATER;Adult 6;OOT Death Mountain Crater Rupee Adult 6;rupee;0;0;DEATH_MOUNTAIN_CRATER;Adult;0
 0x68112;DEATH_MOUNTAIN_CRATER;Adult 7;OOT Death Mountain Crater Rupee Adult 7;rupee;0;0;DEATH_MOUNTAIN_CRATER;Adult;0
-0x01;DEATH_MOUNTAIN_TRAIL;Bombable Wall - Goron City;OOT Death Mountain Trail Chest;chest;0;0;DEATH_MOUNTAIN_TRAIL;All;0
-0x1e;DEATH_MOUNTAIN_TRAIL;Above Cavern - Heart Piece;OOT Death Mountain Trail HP;collectible;0;0;DEATH_MOUNTAIN_TRAIL;All;0
-TRADE_PRESCRIPTION;DEATH_MOUNTAIN_TRAIL;Prescription;OOT Death Mountain Trail Prescription;npc;0;0;DEATH_MOUNTAIN_TRAIL;Adult;0
-TRADE_CLAIM_CHECK;DEATH_MOUNTAIN_TRAIL;Claim Check;OOT Death Mountain Trail Claim Check;npc;0;0;DEATH_MOUNTAIN_TRAIL;Adult;0
-TRADE_BIGGORON_SWORD;DEATH_MOUNTAIN_TRAIL;Biggoron Sword;OOT Death Mountain Trail Biggoron Sword;npc;0;0;DEATH_MOUNTAIN_TRAIL;Adult;0
-0x82;DEATH_MOUNTAIN_TRAIL;Bombable Wall - Entrance;OOT Death Mountain Trail GS Entrance;gs;0;0;DEATH_MOUNTAIN_TRAIL;All;0
-0x81;DEATH_MOUNTAIN_TRAIL;Soil;OOT Death Mountain Trail GS Soil;gs;0;0;DEATH_MOUNTAIN_TRAIL;Child;0
-0x83;DEATH_MOUNTAIN_TRAIL;Red Rock - Above Dodongo's Cavern;OOT Death Mountain Trail GS Above Dodongo;gs;0;0;DEATH_MOUNTAIN_TRAIL;Adult;0
-0x84;DEATH_MOUNTAIN_TRAIL;Red Rock - Before Climb;OOT Death Mountain Trail GS Before Climb;gs;0;0;DEATH_MOUNTAIN_TRAIL;Adult;0
-0x07;DEATH_MOUNTAIN_TRAIL;Cow;OOT Death Mountain Trail Cow;cow;0;0;DEATH_MOUNTAIN_TRAIL;All;0
-0x00001;DEATH_MOUNTAIN_TRAIL;Upper;OOT Death Mountain Trail Rupee Upper;rupee;0;0;DEATH_MOUNTAIN_TRAIL;Child;0
-0x00002;DEATH_MOUNTAIN_TRAIL;Lower;OOT Death Mountain Trail Rupee Lower;rupee;0;0;DEATH_MOUNTAIN_TRAIL;Child;0
-0x00026;DEATH_MOUNTAIN_TRAIL;Mast;OOT Death Mountain Trail Big Fairy;fairy_spot;0;0;DEATH_MOUNTAIN_TRAIL;All;0
+0x01;DEATH_MOUNTAIN_TRAIL;Bombable Wall - Goron City;OOT Death Mountain Trail Chest;chest;481;377;DEATH_MOUNTAIN_TRAIL;All;1
+0x1e;DEATH_MOUNTAIN_TRAIL;Above Cavern - Heart Piece;OOT Death Mountain Trail HP;collectible;44;222;DEATH_MOUNTAIN_TRAIL;All;0
+TRADE_PRESCRIPTION;DEATH_MOUNTAIN_TRAIL;Prescription;OOT Death Mountain Trail Prescription;npc;565;119;DEATH_MOUNTAIN_TRAIL;Adult;2
+TRADE_CLAIM_CHECK;DEATH_MOUNTAIN_TRAIL;Claim Check;OOT Death Mountain Trail Claim Check;npc;575;99;DEATH_MOUNTAIN_TRAIL;Adult;2
+TRADE_BIGGORON_SWORD;DEATH_MOUNTAIN_TRAIL;Biggoron Sword;OOT Death Mountain Trail Biggoron Sword;npc;586;81;DEATH_MOUNTAIN_TRAIL;Adult;2
+0x82;DEATH_MOUNTAIN_TRAIL;Bombable Wall - Entrance;OOT Death Mountain Trail GS Entrance;gs;799;480;DEATH_MOUNTAIN_TRAIL;All;0
+0x81;DEATH_MOUNTAIN_TRAIL;Soil;OOT Death Mountain Trail GS Soil;gs;126;344;DEATH_MOUNTAIN_TRAIL;Child;0
+0x83;DEATH_MOUNTAIN_TRAIL;Red Rock - Above Dodongo's Cavern;OOT Death Mountain Trail GS Above Dodongo;gs;176;89;DEATH_MOUNTAIN_TRAIL;Adult;0
+0x84;DEATH_MOUNTAIN_TRAIL;Red Rock - Before Climb;OOT Death Mountain Trail GS Before Climb;gs;685;515;DEATH_MOUNTAIN_TRAIL;Adult;2
+0x07;DEATH_MOUNTAIN_TRAIL;Cow;OOT Death Mountain Trail Cow;cow;719;198;OOT_GROTTO_DEATH_TRIAL_COW;All;0
+0x00001;DEATH_MOUNTAIN_TRAIL;Upper;OOT Death Mountain Trail Rupee Upper;rupee;465;264;DEATH_MOUNTAIN_TRAIL;Child;1
+0x00002;DEATH_MOUNTAIN_TRAIL;Lower;OOT Death Mountain Trail Rupee Lower;rupee;340;254;DEATH_MOUNTAIN_TRAIL;Child;1
+0x00026;DEATH_MOUNTAIN_TRAIL;Mast;OOT Death Mountain Trail Big Fairy;fairy_spot;276;514;DEATH_MOUNTAIN_TRAIL;All;1
 0x03;DEKU_TREE;Map;OOT Deku Tree Map Chest;chest;889;548;DEKU_TREE;All;0
 0x02;DEKU_TREE;Compass;OOT Deku Tree Compass Chest;chest;1174;584;DEKU_TREE;All;1
 0x06;DEKU_TREE;Compass Side Room;OOT Deku Tree Compass Room Side Chest;chest;730;552;DEKU_TREE;All;1
@@ -209,8 +209,8 @@ TRADE_BIGGORON_SWORD;DEATH_MOUNTAIN_TRAIL;Biggoron Sword;OOT Death Mountain Trai
 0x00900;DEKU_TREE;Pre-Boss Room 1;OOT Deku Tree Grass Pre-Boss Room 1;grass;916;506;DEKU_TREE;All;9
 0x00901;DEKU_TREE;Pre-Boss Room 2;OOT Deku Tree Grass Pre-Boss Room 2;grass;940;513;DEKU_TREE;All;9
 0x00902;DEKU_TREE;Pre-Boss Room 3;OOT Deku Tree Grass Pre-Boss Room 3;grass;895;498;DEKU_TREE;All;9
-0x00a02;DEKU_TREE;Compass Room 1;OOT Deku Tree Grass Compass Room 1;grass;1066;560;DEKU_TREE;All;1
-0x00a03;DEKU_TREE;Compass Room 2;OOT Deku Tree Grass Compass Room 2;grass;1143;563;DEKU_TREE;All;1
+0x00a02;DEKU_TREE;Compass Room 1;OOT Deku Tree Grass Compass Room 1;grass;1143;563;DEKU_TREE;All;1
+0x00a03;DEKU_TREE;Compass Room 2;OOT Deku Tree Grass Compass Room 2;grass;1066;560;DEKU_TREE;All;1
 0x00019;DEKU_TREE;Main Room - Lower;OOT Deku Tree Heart Main Room Lower;heart;674;626;DEKU_TREE;All;0
 0x0001a;DEKU_TREE;Main Room - Upper;OOT Deku Tree Heart Main Room Upper;heart;724;315;DEKU_TREE;All;0
 0x00906;DEKU_TREE;Pre-Boss 1;OOT Deku Tree Heart Pre-Boss 1;heart;532;762;DEKU_TREE;All;9
@@ -696,27 +696,27 @@ MEDIGORON;GORON_CITY;Giant Knife;OOT Goron City Medigoron Giant Knife;npc;0;0;GO
 0x1d;GORON_CITY;Item 6;OOT Goron Shop Item 6;shop;0;0;GORON_SHOP;All;0
 0x1e;GORON_CITY;Item 7;OOT Goron Shop Item 7;shop;0;0;GORON_SHOP;All;0
 0x1f;GORON_CITY;Item 8;OOT Goron Shop Item 8;shop;0;0;GORON_SHOP;All;0
-0x1f;GRAVEYARD;Dampe Game - Heart Piece;OOT Graveyard Dampe Game;collectible;0;0;GRAVEYARD;Child;0
-MASK_SELL_SPOOKY;GRAVEYARD;Spooky Mask;OOT Graveyard Sell Spooky Mask;npc;0;0;GRAVEYARD;Child;0
-0x00111;GRAVEYARD;Butterfly 1;OOT Graveyard Butterfly 1;butterfly;0;0;GRAVEYARD;All;0
-0x10111;GRAVEYARD;Butterfly 2;OOT Graveyard Butterfly 2;butterfly;0;0;GRAVEYARD;All;0
-0x20111;GRAVEYARD;Butterfly 3;OOT Graveyard Butterfly 3;butterfly;0;0;GRAVEYARD;All;0
-0x04;GRAVEYARD;Crate - Heart Piece;OOT Graveyard Crate HP;collectible;0;0;GRAVEYARD;All;0
-0x88;GRAVEYARD;Soil;OOT Graveyard GS Soil;gs;0;0;GRAVEYARD;Child;0
-0x8f;GRAVEYARD;Wall;OOT Graveyard GS Wall;gs;0;0;GRAVEYARD;Child;0
-0x00115;GRAVEYARD;Crate;OOT Graveyard Crate;crate;0;0;GRAVEYARD;All;0
-0x00110;GRAVEYARD;Grass 1;OOT Graveyard Grass 01;grass;0;0;GRAVEYARD;All;0
-0x10110;GRAVEYARD;Grass 2;OOT Graveyard Grass 02;grass;0;0;GRAVEYARD;All;0
-0x20110;GRAVEYARD;Grass 3;OOT Graveyard Grass 03;grass;0;0;GRAVEYARD;All;0
-0x30110;GRAVEYARD;Grass 4;OOT Graveyard Grass 04;grass;0;0;GRAVEYARD;All;0
-0x40110;GRAVEYARD;Grass 5;OOT Graveyard Grass 05;grass;0;0;GRAVEYARD;All;0
-0x50110;GRAVEYARD;Grass 6;OOT Graveyard Grass 06;grass;0;0;GRAVEYARD;All;0
-0x60110;GRAVEYARD;Grass 7;OOT Graveyard Grass 07;grass;0;0;GRAVEYARD;All;0
-0x70110;GRAVEYARD;Grass 8;OOT Graveyard Grass 08;grass;0;0;GRAVEYARD;All;0
-0x80110;GRAVEYARD;Grass 9;OOT Graveyard Grass 09;grass;0;0;GRAVEYARD;All;0
-0x90110;GRAVEYARD;Grass 10;OOT Graveyard Grass 10;grass;0;0;GRAVEYARD;All;0
-0xa0110;GRAVEYARD;Grass 11;OOT Graveyard Grass 11;grass;0;0;GRAVEYARD;All;0
-0xb0110;GRAVEYARD;Grass 12;OOT Graveyard Grass 12;grass;0;0;GRAVEYARD;All;0
+0x1f;GRAVEYARD;Dampe Game - Heart Piece;OOT Graveyard Dampe Game;collectible;566;298;GRAVEYARD;Child;0
+MASK_SELL_SPOOKY;GRAVEYARD;Spooky Mask;OOT Graveyard Sell Spooky Mask;npc;566;341;GRAVEYARD;Child;0
+0x00111;GRAVEYARD;Butterfly 1;OOT Graveyard Butterfly 1;butterfly;524;319;GRAVEYARD;Child;0
+0x10111;GRAVEYARD;Butterfly 2;OOT Graveyard Butterfly 2;butterfly;510;305;GRAVEYARD;Child;0
+0x20111;GRAVEYARD;Butterfly 3;OOT Graveyard Butterfly 3;butterfly;524;292;GRAVEYARD;Child;0
+0x04;GRAVEYARD;Crate - Heart Piece;OOT Graveyard Crate HP;collectible;738;445;GRAVEYARD;All;0
+0x88;GRAVEYARD;Soil;OOT Graveyard GS Soil;gs;635;439;GRAVEYARD;Child;0
+0x8f;GRAVEYARD;Wall;OOT Graveyard GS Wall;gs;401;130;GRAVEYARD;Child;0
+0x00115;GRAVEYARD;Crate;OOT Graveyard Crate;crate;712;445;GRAVEYARD;All;0
+0x00110;GRAVEYARD;Grass 1;OOT Graveyard Grass 01;grass;726;189;GRAVEYARD;All;0
+0x10110;GRAVEYARD;Grass 2;OOT Graveyard Grass 02;grass;740;201;GRAVEYARD;All;0
+0x20110;GRAVEYARD;Grass 3;OOT Graveyard Grass 03;grass;742;181;GRAVEYARD;All;0
+0x30110;GRAVEYARD;Grass 4;OOT Graveyard Grass 04;grass;721;206;GRAVEYARD;All;0
+0x40110;GRAVEYARD;Grass 5;OOT Graveyard Grass 05;grass;713;200;GRAVEYARD;All;0
+0x50110;GRAVEYARD;Grass 6;OOT Graveyard Grass 06;grass;708;191;GRAVEYARD;All;0
+0x60110;GRAVEYARD;Grass 7;OOT Graveyard Grass 07;grass;743;191;GRAVEYARD;All;0
+0x70110;GRAVEYARD;Grass 8;OOT Graveyard Grass 08;grass;710;181;GRAVEYARD;All;0
+0x80110;GRAVEYARD;Grass 9;OOT Graveyard Grass 09;grass;731;207;GRAVEYARD;All;0
+0x90110;GRAVEYARD;Grass 10;OOT Graveyard Grass 10;grass;736;173;GRAVEYARD;All;0
+0xa0110;GRAVEYARD;Grass 11;OOT Graveyard Grass 11;grass;726;171;GRAVEYARD;All;0
+0xb0110;GRAVEYARD;Grass 12;OOT Graveyard Grass 12;grass;716;173;GRAVEYARD;All;0
 FAIRY_SPELL_FIRE;GREAT_FAIRY_FOUNTAIN_SPELLS;Din's Fire;OOT Great Fairy Din's Fire;npc;497;351;OOT_GREAT_FAIRY_CASTLE;Child;0
 FAIRY_SPELL_WIND;GREAT_FAIRY_FOUNTAIN_SPELLS;Farore's Wind;OOT Great Fairy Farore's Wind;npc;497;351;OOT_GREAT_FAIRY_FARORE;All;0
 FAIRY_SPELL_LOVE;GREAT_FAIRY_FOUNTAIN_SPELLS;Nayru's Love;OOT Great Fairy Nayru's Love;npc;497;351;OOT_GREAT_FAIRY_NAYRU;All;0
@@ -724,10 +724,10 @@ FAIRY_MAGIC_UPGRADE;GREAT_FAIRY_FOUNTAIN_UPGRADES;Magic Upgrade;OOT Great Fairy 
 FAIRY_MAGIC_UPGRADE2;GREAT_FAIRY_FOUNTAIN_UPGRADES;Large Magic Upgrade;OOT Great Fairy Magic Upgrade 2;npc;497;351;OOT_GREAT_FAIRY_MAGIC2;All;0
 FAIRY_DEFENSE_UPGRADE;GREAT_FAIRY_FOUNTAIN_UPGRADES;Double Defense Upgrade;OOT Great Fairy Defense Upgrade;npc;497;351;OOT_GREAT_FAIRY_CASTLE;Adult;0
 0x0c;GROTTOS;Chest;OOT Kokiri Forest Storms Grotto;chest;684;177;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
-0x02c02;GROTTOS;Grass 1;OOT Kokiri Forest Storms Grotto Grass 1;grass;660;320;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
-0x02c03;GROTTOS;Grass 2;OOT Kokiri Forest Storms Grotto Grass 2;grass;717;195;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
-0x02c04;GROTTOS;Grass 3;OOT Kokiri Forest Storms Grotto Grass 3;grass;658;192;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
-0x02c05;GROTTOS;Grass 4;OOT Kokiri Forest Storms Grotto Grass 4;grass;669;158;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
+0x02c02;GROTTOS;Grass 1;OOT Kokiri Forest Storms Grotto Grass 1;grass;669;158;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
+0x02c03;GROTTOS;Grass 2;OOT Kokiri Forest Storms Grotto Grass 2;grass;658;192;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
+0x02c04;GROTTOS;Grass 3;OOT Kokiri Forest Storms Grotto Grass 3;grass;717;195;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
+0x02c05;GROTTOS;Grass 4;OOT Kokiri Forest Storms Grotto Grass 4;grass;660;320;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
 0x02c07;GROTTOS;Hive 1;OOT Kokiri Forest Storms Grotto Hive 1;hive;551;157;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
 0x02c08;GROTTOS;Hive 2;OOT Kokiri Forest Storms Grotto Hive 2;hive;741;104;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
 0x02c06;GROTTOS;Butterfly 1;OOT Kokiri Forest Storms Grotto Butterfly 1;butterfly;651;645;OOT_GROTTO_KOKIRI_FOREST_STORMS;All;0
@@ -738,10 +738,10 @@ FAIRY_DEFENSE_UPGRADE;GREAT_FAIRY_FOUNTAIN_UPGRADES;Double Defense Upgrade;OOT G
 0x00600;GROTTOS;Big Fairy;OOT Lost Woods Grotto Scrub Big Fairy;fairy_spot;673;245;OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;All;0
 0x00603;GROTTOS;Hive;OOT Lost Woods Grotto Scrub Hive;hive;770;410;OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;All;0
 0x14;GROTTOS;Chest;OOT Lost Woods Grotto Generic;chest;684;177;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
-0x03402;GROTTOS;Grass 1;OOT Lost Woods Grotto Generic Grass 1;grass;660;320;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
-0x03403;GROTTOS;Grass 2;OOT Lost Woods Grotto Generic Grass 2;grass;717;195;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
-0x03404;GROTTOS;Grass 3;OOT Lost Woods Grotto Generic Grass 3;grass;658;192;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
-0x03405;GROTTOS;Grass 4;OOT Lost Woods Grotto Generic Grass 4;grass;669;158;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
+0x03402;GROTTOS;Grass 1;OOT Lost Woods Grotto Generic Grass 1;grass;669;158;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
+0x03403;GROTTOS;Grass 2;OOT Lost Woods Grotto Generic Grass 2;grass;658;192;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
+0x03404;GROTTOS;Grass 3;OOT Lost Woods Grotto Generic Grass 3;grass;717;195;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
+0x03405;GROTTOS;Grass 4;OOT Lost Woods Grotto Generic Grass 4;grass;660;320;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
 0x03407;GROTTOS;Hive 1;OOT Lost Woods Grotto Generic Hive 1;hive;551;157;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
 0x03408;GROTTOS;Hive 2;OOT Lost Woods Grotto Generic Hive 2;hive;741;104;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
 0x03406;GROTTOS;Butterfly 1;OOT Lost Woods Grotto Generic Butterfly 1;butterfly;651;645;OOT_GROTTO_LOST_WOODS_GENERIC;All;0
@@ -755,20 +755,20 @@ THEATER_NUTS;GROTTOS;Deku Nuts Upgrade;OOT Deku Theater Nuts Upgrade;npc;691;561
 0x02102;GROTTOS;Hive;OOT Sacred Meadow Storms Grotto Hive;hive;551;157;OOT_GROTTO_SACRED_MEADOW_STORMS;All;0
 0x0a;GROTTOS;Redead;OOT Kakariko Grotto Front;chest;691;284;OOT_GROTTO_KAKARIKO_REDEAD;All;0
 0x08;GROTTOS;Chest;OOT Kakariko Grotto Back;chest;684;177;OOT_GROTTO_KAKARIKO_OPEN;All;0
-0x02802;GROTTOS;Grass 1;OOT Kakariko Grotto Back Grass 1;grass;660;320;OOT_GROTTO_KAKARIKO_OPEN;All;0
-0x02803;GROTTOS;Grass 2;OOT Kakariko Grotto Back Grass 2;grass;717;195;OOT_GROTTO_KAKARIKO_OPEN;All;0
-0x02804;GROTTOS;Grass 3;OOT Kakariko Grotto Back Grass 3;grass;658;192;OOT_GROTTO_KAKARIKO_OPEN;All;0
-0x02805;GROTTOS;Grass 4;OOT Kakariko Grotto Back Grass 4;grass;669;158;OOT_GROTTO_KAKARIKO_OPEN;All;0
+0x02802;GROTTOS;Grass 1;OOT Kakariko Grotto Back Grass 1;grass;669;158;OOT_GROTTO_KAKARIKO_OPEN;All;0
+0x02803;GROTTOS;Grass 2;OOT Kakariko Grotto Back Grass 2;grass;658;192;OOT_GROTTO_KAKARIKO_OPEN;All;0
+0x02804;GROTTOS;Grass 3;OOT Kakariko Grotto Back Grass 3;grass;717;195;OOT_GROTTO_KAKARIKO_OPEN;All;0
+0x02805;GROTTOS;Grass 4;OOT Kakariko Grotto Back Grass 4;grass;660;320;OOT_GROTTO_KAKARIKO_OPEN;All;0
 0x02807;GROTTOS;Hive 1;OOT Kakariko Grotto Back Hive 1;hive;551;157;OOT_GROTTO_KAKARIKO_OPEN;All;0
 0x02808;GROTTOS;Hive 2;OOT Kakariko Grotto Back Hive 2;hive;741;104;OOT_GROTTO_KAKARIKO_OPEN;All;0
 0x02806;GROTTOS;Butterfly 1;OOT Kakariko Grotto Butterfly 1;butterfly;651;645;OOT_GROTTO_KAKARIKO_OPEN;All;0
 0x12806;GROTTOS;Butterfly 2;OOT Kakariko Grotto Butterfly 2;butterfly;617;632;OOT_GROTTO_KAKARIKO_OPEN;All;0
 0x22806;GROTTOS;Butterfly 3;OOT Kakariko Grotto Butterfly 3;butterfly;637;631;OOT_GROTTO_KAKARIKO_OPEN;All;0
 0x17;GROTTOS;Chest;OOT Death Mountain Trail Grotto;chest;684;177;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
-0x03702;GROTTOS;Grass 1;OOT Death Mountain Trail Grotto Grass 1;grass;660;320;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
-0x03703;GROTTOS;Grass 2;OOT Death Mountain Trail Grotto Grass 2;grass;717;195;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
-0x03704;GROTTOS;Grass 3;OOT Death Mountain Trail Grotto Grass 3;grass;658;192;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
-0x03705;GROTTOS;Grass 4;OOT Death Mountain Trail Grotto Grass 4;grass;669;158;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
+0x03702;GROTTOS;Grass 1;OOT Death Mountain Trail Grotto Grass 1;grass;669;158;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
+0x03703;GROTTOS;Grass 2;OOT Death Mountain Trail Grotto Grass 2;grass;658;192;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
+0x03704;GROTTOS;Grass 3;OOT Death Mountain Trail Grotto Grass 3;grass;717;195;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
+0x03705;GROTTOS;Grass 4;OOT Death Mountain Trail Grotto Grass 4;grass;660;320;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
 0x03707;GROTTOS;Hive 1;OOT Death Mountain Trail Grotto Hive 1;hive;551;157;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
 0x03708;GROTTOS;Hive 2;OOT Death Mountain Trail Grotto Hive 2;hive;741;104;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
 0x03706;GROTTOS;Butterfly 1;OOT Death Mountain Trail Grotto Butterfly 1;butterfly;651;645;OOT_GROTTO_DEATH_TRIAL_STORMS;All;0
@@ -794,10 +794,10 @@ THEATER_NUTS;GROTTOS;Deku Nuts Upgrade;OOT Deku Theater Nuts Upgrade;npc;691;561
 0x0d;GROTTOS;Right;OOT Goron City Grotto Right Scrub;scrub;933;344;OOT_GROTTO_GORON_CITY_SCRUBS;All;0
 0x02a03;GROTTOS;Hive;OOT Goron City Grotto Hive;hive;982;210;OOT_GROTTO_GORON_CITY_SCRUBS;All;0
 0x1a;GROTTOS;Chest;OOT Death Mountain Crater Grotto;chest;684;177;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
-0x03a02;GROTTOS;Grass 1;OOT Death Mountain Crater Grotto Grass 1;grass;660;320;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
-0x03a03;GROTTOS;Grass 2;OOT Death Mountain Crater Grotto Grass 2;grass;717;195;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
-0x03a04;GROTTOS;Grass 3;OOT Death Mountain Crater Grotto Grass 3;grass;658;192;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
-0x03a05;GROTTOS;Grass 4;OOT Death Mountain Crater Grotto Grass 4;grass;669;158;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
+0x03a02;GROTTOS;Grass 1;OOT Death Mountain Crater Grotto Grass 1;grass;669;158;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
+0x03a03;GROTTOS;Grass 2;OOT Death Mountain Crater Grotto Grass 2;grass;658;192;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
+0x03a04;GROTTOS;Grass 3;OOT Death Mountain Crater Grotto Grass 3;grass;717;195;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
+0x03a05;GROTTOS;Grass 4;OOT Death Mountain Crater Grotto Grass 4;grass;660;320;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
 0x03a07;GROTTOS;Hive 1;OOT Death Mountain Crater Grotto Hive 1;hive;551;157;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
 0x03a08;GROTTOS;Hive 2;OOT Death Mountain Crater Grotto Hive 2;hive;741;104;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
 0x03a06;GROTTOS;Butterfly 1;OOT Death Mountain Crater Grotto Butterfly 1;butterfly;651;645;OOT_GROTTO_DEATH_CRATER_GENERIC;All;0
@@ -808,10 +808,10 @@ THEATER_NUTS;GROTTOS;Deku Nuts Upgrade;OOT Deku Theater Nuts Upgrade;npc;691;561
 0x11;GROTTOS;Right;OOT Death Mountain Crater Grotto Right Scrub;scrub;933;344;OOT_GROTTO_DEATH_CRATER_SCRUBS;All;0
 0x02b03;GROTTOS;Hive;OOT Death Mountain Crater Scrub Grotto Hive;hive;982;210;OOT_GROTTO_DEATH_CRATER_SCRUBS;All;0
 0x09;GROTTOS;Chest;OOT Zora River Grotto;chest;684;177;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
-0x02902;GROTTOS;Grass 1;OOT Zora River Grotto Grass 1;grass;660;320;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
-0x02903;GROTTOS;Grass 2;OOT Zora River Grotto Grass 2;grass;717;195;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
-0x02904;GROTTOS;Grass 3;OOT Zora River Grotto Grass 3;grass;658;192;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
-0x02905;GROTTOS;Grass 4;OOT Zora River Grotto Grass 4;grass;669;158;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
+0x02902;GROTTOS;Grass 1;OOT Zora River Grotto Grass 1;grass;669;158;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
+0x02903;GROTTOS;Grass 2;OOT Zora River Grotto Grass 2;grass;658;192;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
+0x02904;GROTTOS;Grass 3;OOT Zora River Grotto Grass 3;grass;717;195;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
+0x02905;GROTTOS;Grass 4;OOT Zora River Grotto Grass 4;grass;660;320;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
 0x02907;GROTTOS;Hive 1;OOT Zora River Grotto Hive 1;hive;551;157;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
 0x02908;GROTTOS;Hive 2;OOT Zora River Grotto Hive 2;hive;741;104;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
 0x02906;GROTTOS;Butterfly 1;OOT Zora River Grotto Butterfly 1;butterfly;651;645;OOT_GROTTO_ZORA_RIVER_GENERIC;All;0
@@ -832,30 +832,30 @@ THEATER_NUTS;GROTTOS;Deku Nuts Upgrade;OOT Deku Theater Nuts Upgrade;npc;691;561
 0x00102;GROTTOS;Big Fairy;OOT Hyrule Field Grotto Scrub Big Fairy;fairy_spot;751;310;OOT_GROTTO_HYRULE_SCRUBS;All;0
 0x00101;GROTTOS;Hive;OOT Hyrule Field Grotto Scrub Hive;hive;840;179;OOT_GROTTO_HYRULE_SCRUBS;All;0
 0x02;GROTTOS;Chest;OOT Hyrule Field Grotto Southeast;chest;684;177;OOT_GROTTO_HYRULE_SE;All;0
-0x02202;GROTTOS;Grass 1;OOT Hyrule Field Grotto Southeast Grass 1;grass;660;320;OOT_GROTTO_HYRULE_SE;All;0
-0x02203;GROTTOS;Grass 2;OOT Hyrule Field Grotto Southeast Grass 2;grass;717;195;OOT_GROTTO_HYRULE_SE;All;0
-0x02204;GROTTOS;Grass 3;OOT Hyrule Field Grotto Southeast Grass 3;grass;658;192;OOT_GROTTO_HYRULE_SE;All;0
-0x02205;GROTTOS;Grass 4;OOT Hyrule Field Grotto Southeast Grass 4;grass;669;158;OOT_GROTTO_HYRULE_SE;All;0
+0x02202;GROTTOS;Grass 1;OOT Hyrule Field Grotto Southeast Grass 1;grass;669;158;OOT_GROTTO_HYRULE_SE;All;0
+0x02203;GROTTOS;Grass 2;OOT Hyrule Field Grotto Southeast Grass 2;grass;658;192;OOT_GROTTO_HYRULE_SE;All;0
+0x02204;GROTTOS;Grass 3;OOT Hyrule Field Grotto Southeast Grass 3;grass;717;195;OOT_GROTTO_HYRULE_SE;All;0
+0x02205;GROTTOS;Grass 4;OOT Hyrule Field Grotto Southeast Grass 4;grass;660;320;OOT_GROTTO_HYRULE_SE;All;0
 0x02207;GROTTOS;Hive 1;OOT Hyrule Field Grotto Southeast Hive 1;hive;551;157;OOT_GROTTO_HYRULE_SE;All;0
 0x02208;GROTTOS;Hive 2;OOT Hyrule Field Grotto Southeast Hive 2;hive;741;104;OOT_GROTTO_HYRULE_SE;All;0
 0x02206;GROTTOS;Butterfly 1;OOT Hyrule Field Grotto Southeast Butterfly 1;butterfly;651;645;OOT_GROTTO_HYRULE_SE;All;0
 0x12206;GROTTOS;Butterfly 2;OOT Hyrule Field Grotto Southeast Butterfly 2;butterfly;617;632;OOT_GROTTO_HYRULE_SE;All;0
 0x22206;GROTTOS;Butterfly 3;OOT Hyrule Field Grotto Southeast Butterfly 3;butterfly;637;631;OOT_GROTTO_HYRULE_SE;All;0
 0x03;GROTTOS;Chest;OOT Hyrule Field Grotto Open;chest;684;177;OOT_GROTTO_HYRULE_OPEN;All;0
-0x02302;GROTTOS;Grass 1;OOT Hyrule Field Grotto Open Grass 1;grass;660;320;OOT_GROTTO_HYRULE_OPEN;All;0
-0x02303;GROTTOS;Grass 2;OOT Hyrule Field Grotto Open Grass 2;grass;717;195;OOT_GROTTO_HYRULE_OPEN;All;0
-0x02304;GROTTOS;Grass 3;OOT Hyrule Field Grotto Open Grass 3;grass;658;192;OOT_GROTTO_HYRULE_OPEN;All;0
-0x02305;GROTTOS;Grass 4;OOT Hyrule Field Grotto Open Grass 4;grass;669;158;OOT_GROTTO_HYRULE_OPEN;All;0
+0x02302;GROTTOS;Grass 1;OOT Hyrule Field Grotto Open Grass 1;grass;669;158;OOT_GROTTO_HYRULE_OPEN;All;0
+0x02303;GROTTOS;Grass 2;OOT Hyrule Field Grotto Open Grass 2;grass;658;192;OOT_GROTTO_HYRULE_OPEN;All;0
+0x02304;GROTTOS;Grass 3;OOT Hyrule Field Grotto Open Grass 3;grass;717;195;OOT_GROTTO_HYRULE_OPEN;All;0
+0x02305;GROTTOS;Grass 4;OOT Hyrule Field Grotto Open Grass 4;grass;660;320;OOT_GROTTO_HYRULE_OPEN;All;0
 0x02307;GROTTOS;Hive 1;OOT Hyrule Field Grotto Open Hive 1;hive;551;157;OOT_GROTTO_HYRULE_OPEN;All;0
 0x02308;GROTTOS;Hive 2;OOT Hyrule Field Grotto Open Hive 2;hive;741;104;OOT_GROTTO_HYRULE_OPEN;All;0
 0x02306;GROTTOS;Butterfly 1;OOT Hyrule Field Grotto Open Butterfly 1;butterfly;651;645;OOT_GROTTO_HYRULE_OPEN;All;0
 0x12306;GROTTOS;Butterfly 2;OOT Hyrule Field Grotto Open Butterfly 2;butterfly;617;632;OOT_GROTTO_HYRULE_OPEN;All;0
 0x22306;GROTTOS;Butterfly 3;OOT Hyrule Field Grotto Open Butterfly 3;butterfly;637;631;OOT_GROTTO_HYRULE_OPEN;All;0
 0x00;GROTTOS;Chest;OOT Hyrule Field Grotto Market;chest;684;177;OOT_GROTTO_HYRULE_MARKET;All;0
-0x02002;GROTTOS;Grass 1;OOT Hyrule Field Grotto Market Grass 1;grass;660;320;OOT_GROTTO_HYRULE_MARKET;All;0
-0x02003;GROTTOS;Grass 2;OOT Hyrule Field Grotto Market Grass 2;grass;717;195;OOT_GROTTO_HYRULE_MARKET;All;0
-0x02004;GROTTOS;Grass 3;OOT Hyrule Field Grotto Market Grass 3;grass;658;192;OOT_GROTTO_HYRULE_MARKET;All;0
-0x02005;GROTTOS;Grass 4;OOT Hyrule Field Grotto Market Grass 4;grass;669;158;OOT_GROTTO_HYRULE_MARKET;All;0
+0x02002;GROTTOS;Grass 1;OOT Hyrule Field Grotto Market Grass 1;grass;669;158;OOT_GROTTO_HYRULE_MARKET;All;0
+0x02003;GROTTOS;Grass 2;OOT Hyrule Field Grotto Market Grass 2;grass;658;192;OOT_GROTTO_HYRULE_MARKET;All;0
+0x02004;GROTTOS;Grass 3;OOT Hyrule Field Grotto Market Grass 3;grass;717;195;OOT_GROTTO_HYRULE_MARKET;All;0
+0x02005;GROTTOS;Grass 4;OOT Hyrule Field Grotto Market Grass 4;grass;660;320;OOT_GROTTO_HYRULE_MARKET;All;0
 0x02007;GROTTOS;Hive 1;OOT Hyrule Field Grotto Market Hive 1;hive;551;157;OOT_GROTTO_HYRULE_MARKET;All;0
 0x02008;GROTTOS;Hive 2;OOT Hyrule Field Grotto Market Hive 2;hive;741;104;OOT_GROTTO_HYRULE_MARKET;All;0
 0x02006;GROTTOS;Butterfly 1;OOT Hyrule Field Grotto Market Butterfly 1;butterfly;651;645;OOT_GROTTO_HYRULE_MARKET;All;0
@@ -887,67 +887,67 @@ THEATER_NUTS;GROTTOS;Deku Nuts Upgrade;OOT Deku Theater Nuts Upgrade;npc;691;561
 0x19;GROTTOS;Front;OOT Desert Colossus Grotto Front Scrub;scrub;714;302;OOT_GROTTO_DESERT_SCRUBS;All;0
 0x1a;GROTTOS;Back;OOT Desert Colossus Grotto Back Scrub;scrub;649;207;OOT_GROTTO_DESERT_SCRUBS;All;0
 0x02602;GROTTOS;Hive;OOT Desert Colossus Grotto Hive;hive;551;157;OOT_GROTTO_DESERT_SCRUBS;All;0
-POE_COLLECTOR;GUARD_HOUSE;Bottle;OOT Market Pot House Big Poes;npc;0;0;GUARD_HOUSE;Adult;0
-0x7b;GUARD_HOUSE;Crate;OOT Market Pot House GS;gs;0;0;GUARD_HOUSE;Child;0
-0x0008;GUARD_HOUSE;Child - Ground 1;OOT Market Pot House Child Pot Ground 1;pot;0;0;GUARD_HOUSE;Child;0
-0x0009;GUARD_HOUSE;Child - Ground 2;OOT Market Pot House Child Pot Ground 2;pot;0;0;GUARD_HOUSE;Child;0
-0x000a;GUARD_HOUSE;Child - Ground 3;OOT Market Pot House Child Pot Ground 3;pot;0;0;GUARD_HOUSE;Child;0
-0x000b;GUARD_HOUSE;Child - Ground 4;OOT Market Pot House Child Pot Ground 4;pot;0;0;GUARD_HOUSE;Child;0
-0x000c;GUARD_HOUSE;Child - Ground 5;OOT Market Pot House Child Pot Ground 5;pot;0;0;GUARD_HOUSE;Child;0
-0x000d;GUARD_HOUSE;Child - Ground 6;OOT Market Pot House Child Pot Ground 6;pot;0;0;GUARD_HOUSE;Child;0
-0x000e;GUARD_HOUSE;Child - Ground 7;OOT Market Pot House Child Pot Ground 7;pot;0;0;GUARD_HOUSE;Child;0
-0x000f;GUARD_HOUSE;Child - Ground 8;OOT Market Pot House Child Pot Ground 8;pot;0;0;GUARD_HOUSE;Child;0
-0x0010;GUARD_HOUSE;Child - Ground 9;OOT Market Pot House Child Pot Ground 9;pot;0;0;GUARD_HOUSE;Child;0
-0x0011;GUARD_HOUSE;Child - Ground 10;OOT Market Pot House Child Pot Ground 10;pot;0;0;GUARD_HOUSE;Child;0
-0x0012;GUARD_HOUSE;Child - Ground 11;OOT Market Pot House Child Pot Ground 11;pot;0;0;GUARD_HOUSE;Child;0
-0x0013;GUARD_HOUSE;Child - Ground 12;OOT Market Pot House Child Pot Ground 12;pot;0;0;GUARD_HOUSE;Child;0
-0x0014;GUARD_HOUSE;Child - Ground 13;OOT Market Pot House Child Pot Ground 13;pot;0;0;GUARD_HOUSE;Child;0
-0x0015;GUARD_HOUSE;Child - Ground 14;OOT Market Pot House Child Pot Ground 14;pot;0;0;GUARD_HOUSE;Child;0
-0x0016;GUARD_HOUSE;Child - Ground 15;OOT Market Pot House Child Pot Ground 15;pot;0;0;GUARD_HOUSE;Child;0
-0x0017;GUARD_HOUSE;Child - Ground 16;OOT Market Pot House Child Pot Ground 16;pot;0;0;GUARD_HOUSE;Child;0
-0x0018;GUARD_HOUSE;Child - Ground 17;OOT Market Pot House Child Pot Ground 17;pot;0;0;GUARD_HOUSE;Child;0
-0x0019;GUARD_HOUSE;Child - Ground 18;OOT Market Pot House Child Pot Ground 18;pot;0;0;GUARD_HOUSE;Child;0
-0x001a;GUARD_HOUSE;Child - Ground 19;OOT Market Pot House Child Pot Ground 19;pot;0;0;GUARD_HOUSE;Child;0
-0x001b;GUARD_HOUSE;Child - Ground 20;OOT Market Pot House Child Pot Ground 20;pot;0;0;GUARD_HOUSE;Child;0
-0x001c;GUARD_HOUSE;Child - Ground 21;OOT Market Pot House Child Pot Ground 21;pot;0;0;GUARD_HOUSE;Child;0
-0x001d;GUARD_HOUSE;Child - Ground 22;OOT Market Pot House Child Pot Ground 22;pot;0;0;GUARD_HOUSE;Child;0
-0x001e;GUARD_HOUSE;Child - Ground 23;OOT Market Pot House Child Pot Ground 23;pot;0;0;GUARD_HOUSE;Child;0
-0x001f;GUARD_HOUSE;Child - Ground 24;OOT Market Pot House Child Pot Ground 24;pot;0;0;GUARD_HOUSE;Child;0
-0x0020;GUARD_HOUSE;Child - Ground 25;OOT Market Pot House Child Pot Ground 25;pot;0;0;GUARD_HOUSE;Child;0
-0x0021;GUARD_HOUSE;Child - Ground 26;OOT Market Pot House Child Pot Ground 26;pot;0;0;GUARD_HOUSE;Child;0
-0x0022;GUARD_HOUSE;Child - Ground 27;OOT Market Pot House Child Pot Ground 27;pot;0;0;GUARD_HOUSE;Child;0
-0x0023;GUARD_HOUSE;Child - Ground 28;OOT Market Pot House Child Pot Ground 28;pot;0;0;GUARD_HOUSE;Child;0
-0x0024;GUARD_HOUSE;Child - Ground 29;OOT Market Pot House Child Pot Ground 29;pot;0;0;GUARD_HOUSE;Child;0
-0x0025;GUARD_HOUSE;Child - Ground 30;OOT Market Pot House Child Pot Ground 30;pot;0;0;GUARD_HOUSE;Child;0
-0x0026;GUARD_HOUSE;Child - Ground 31;OOT Market Pot House Child Pot Ground 31;pot;0;0;GUARD_HOUSE;Child;0
-0x0028;GUARD_HOUSE;Child - Ground 32;OOT Market Pot House Child Pot Ground 32;pot;0;0;GUARD_HOUSE;Child;0
-0x002a;GUARD_HOUSE;Child - Ground 33;OOT Market Pot House Child Pot Ground 33;pot;0;0;GUARD_HOUSE;Child;0
-0x002b;GUARD_HOUSE;Child - Ground 34;OOT Market Pot House Child Pot Ground 34;pot;0;0;GUARD_HOUSE;Child;0
-0x002c;GUARD_HOUSE;Child - Ground 35;OOT Market Pot House Child Pot Ground 35;pot;0;0;GUARD_HOUSE;Child;0
-0x002d;GUARD_HOUSE;Child - Ground 36;OOT Market Pot House Child Pot Ground 36;pot;0;0;GUARD_HOUSE;Child;0
-0x002e;GUARD_HOUSE;Child - Ground 37;OOT Market Pot House Child Pot Ground 37;pot;0;0;GUARD_HOUSE;Child;0
-0x002f;GUARD_HOUSE;Child - Ground 38;OOT Market Pot House Child Pot Ground 38;pot;0;0;GUARD_HOUSE;Child;0
-0x0030;GUARD_HOUSE;Child - Ground 39;OOT Market Pot House Child Pot Ground 39;pot;0;0;GUARD_HOUSE;Child;0
-0x0031;GUARD_HOUSE;Child - Ground 40;OOT Market Pot House Child Pot Ground 40;pot;0;0;GUARD_HOUSE;Child;0
-0x0032;GUARD_HOUSE;Child - Ground 41;OOT Market Pot House Child Pot Ground 41;pot;0;0;GUARD_HOUSE;Child;0
-0x0033;GUARD_HOUSE;Child - Ground 42;OOT Market Pot House Child Pot Ground 42;pot;0;0;GUARD_HOUSE;Child;0
-0x0027;GUARD_HOUSE;Child - Above 1;OOT Market Pot House Child Pot Above 1;pot;0;0;GUARD_HOUSE;Child;0
-0x0029;GUARD_HOUSE;Child - Above 2;OOT Market Pot House Child Pot Above 2;pot;0;0;GUARD_HOUSE;Child;0
-0x8001;GUARD_HOUSE;Adult - Ground 1;OOT Market Pot House Adult Pot 1;pot;0;0;GUARD_HOUSE;Adult;0
-0x8002;GUARD_HOUSE;Adult - Ground 2;OOT Market Pot House Adult Pot 2;pot;0;0;GUARD_HOUSE;Adult;0
-0x8003;GUARD_HOUSE;Adult - Ground 3;OOT Market Pot House Adult Pot 3;pot;0;0;GUARD_HOUSE;Adult;0
-0x8004;GUARD_HOUSE;Adult - Ground 4;OOT Market Pot House Adult Pot 4;pot;0;0;GUARD_HOUSE;Adult;0
-0x8005;GUARD_HOUSE;Adult - Ground 5;OOT Market Pot House Adult Pot 5;pot;0;0;GUARD_HOUSE;Adult;0
-0x8006;GUARD_HOUSE;Adult - Ground 6;OOT Market Pot House Adult Pot 6;pot;0;0;GUARD_HOUSE;Adult;0
-0x8007;GUARD_HOUSE;Adult - Ground 7;OOT Market Pot House Adult Pot 7;pot;0;0;GUARD_HOUSE;Adult;0
-0x8008;GUARD_HOUSE;Adult - Ground 8;OOT Market Pot House Adult Pot 8;pot;0;0;GUARD_HOUSE;Adult;0
-0x8009;GUARD_HOUSE;Adult - Ground 9;OOT Market Pot House Adult Pot 9;pot;0;0;GUARD_HOUSE;Adult;0
-0x800a;GUARD_HOUSE;Adult - Ground 10;OOT Market Pot House Adult Pot 10;pot;0;0;GUARD_HOUSE;Adult;0
-0x800b;GUARD_HOUSE;Adult - Ground 11;OOT Market Pot House Adult Pot 11;pot;0;0;GUARD_HOUSE;Adult;0
-0x00003;GUARD_HOUSE;Crate 1;OOT Market Pot House Crate 1;crate;0;0;GUARD_HOUSE;All;0
-0x00004;GUARD_HOUSE;Crate 2;OOT Market Pot House Crate 2;crate;0;0;GUARD_HOUSE;All;0
-0x00005;GUARD_HOUSE;Crate 3;OOT Market Pot House Crate 3;crate;0;0;GUARD_HOUSE;All;0
-0x00006;GUARD_HOUSE;Crate 4;OOT Market Pot House Crate 4;crate;0;0;GUARD_HOUSE;All;0
+POE_COLLECTOR;GUARD_HOUSE;Bottle;OOT Market Pot House Big Poes;npc;139;533;GUARD_HOUSE;Adult;0
+0x7b;GUARD_HOUSE;Crate;OOT Market Pot House GS;gs;195;426;GUARD_HOUSE;Child;0
+0x0008;GUARD_HOUSE;Child - Ground 1;OOT Market Pot House Child Pot Ground 1;pot;521;545;GUARD_HOUSE;Child;0
+0x0009;GUARD_HOUSE;Child - Ground 2;OOT Market Pot House Child Pot Ground 2;pot;367;431;GUARD_HOUSE;Child;0
+0x000a;GUARD_HOUSE;Child - Ground 3;OOT Market Pot House Child Pot Ground 3;pot;584;433;GUARD_HOUSE;Child;0
+0x000b;GUARD_HOUSE;Child - Ground 4;OOT Market Pot House Child Pot Ground 4;pot;389;602;GUARD_HOUSE;Child;0
+0x000c;GUARD_HOUSE;Child - Ground 5;OOT Market Pot House Child Pot Ground 5;pot;321;578;GUARD_HOUSE;Child;0
+0x000d;GUARD_HOUSE;Child - Ground 6;OOT Market Pot House Child Pot Ground 6;pot;615;341;GUARD_HOUSE;Child;0
+0x000e;GUARD_HOUSE;Child - Ground 7;OOT Market Pot House Child Pot Ground 7;pot;728;341;GUARD_HOUSE;Child;0
+0x000f;GUARD_HOUSE;Child - Ground 8;OOT Market Pot House Child Pot Ground 8;pot;486;602;GUARD_HOUSE;Child;0
+0x0010;GUARD_HOUSE;Child - Ground 9;OOT Market Pot House Child Pot Ground 9;pot;421;347;GUARD_HOUSE;Child;0
+0x0011;GUARD_HOUSE;Child - Ground 10;OOT Market Pot House Child Pot Ground 10;pot;521;348;GUARD_HOUSE;Child;0
+0x0012;GUARD_HOUSE;Child - Ground 11;OOT Market Pot House Child Pot Ground 11;pot;462;543;GUARD_HOUSE;Child;0
+0x0013;GUARD_HOUSE;Child - Ground 12;OOT Market Pot House Child Pot Ground 12;pot;222;340;GUARD_HOUSE;Child;0
+0x0014;GUARD_HOUSE;Child - Ground 13;OOT Market Pot House Child Pot Ground 13;pot;334;340;GUARD_HOUSE;Child;0
+0x0015;GUARD_HOUSE;Child - Ground 14;OOT Market Pot House Child Pot Ground 14;pot;467;451;GUARD_HOUSE;Child;0
+0x0016;GUARD_HOUSE;Child - Ground 15;OOT Market Pot House Child Pot Ground 15;pot;524;469;GUARD_HOUSE;Child;0
+0x0017;GUARD_HOUSE;Child - Ground 16;OOT Market Pot House Child Pot Ground 16;pot;417;455;GUARD_HOUSE;Child;0
+0x0018;GUARD_HOUSE;Child - Ground 17;OOT Market Pot House Child Pot Ground 17;pot;360;462;GUARD_HOUSE;Child;0
+0x0019;GUARD_HOUSE;Child - Ground 18;OOT Market Pot House Child Pot Ground 18;pot;317;453;GUARD_HOUSE;Child;0
+0x001a;GUARD_HOUSE;Child - Ground 19;OOT Market Pot House Child Pot Ground 19;pot;525;580;GUARD_HOUSE;Child;0
+0x001b;GUARD_HOUSE;Child - Ground 20;OOT Market Pot House Child Pot Ground 20;pot;280;340;GUARD_HOUSE;Child;0
+0x001c;GUARD_HOUSE;Child - Ground 21;OOT Market Pot House Child Pot Ground 21;pot;371;445;GUARD_HOUSE;Child;0
+0x001d;GUARD_HOUSE;Child - Ground 22;OOT Market Pot House Child Pot Ground 22;pot;337;552;GUARD_HOUSE;Child;0
+0x001e;GUARD_HOUSE;Child - Ground 23;OOT Market Pot House Child Pot Ground 23;pot;473;347;GUARD_HOUSE;Child;0
+0x001f;GUARD_HOUSE;Child - Ground 24;OOT Market Pot House Child Pot Ground 24;pot;400;573;GUARD_HOUSE;Child;0
+0x0020;GUARD_HOUSE;Child - Ground 25;OOT Market Pot House Child Pot Ground 25;pot;670;342;GUARD_HOUSE;Child;0
+0x0021;GUARD_HOUSE;Child - Ground 26;OOT Market Pot House Child Pot Ground 26;pot;764;432;GUARD_HOUSE;Child;0
+0x0022;GUARD_HOUSE;Child - Ground 27;OOT Market Pot House Child Pot Ground 27;pot;648;453;GUARD_HOUSE;Child;0
+0x0023;GUARD_HOUSE;Child - Ground 28;OOT Market Pot House Child Pot Ground 28;pot;415;432;GUARD_HOUSE;Child;0
+0x0024;GUARD_HOUSE;Child - Ground 29;OOT Market Pot House Child Pot Ground 29;pot;674;433;GUARD_HOUSE;Child;0
+0x0025;GUARD_HOUSE;Child - Ground 30;OOT Market Pot House Child Pot Ground 30;pot;581;468;GUARD_HOUSE;Child;0
+0x0026;GUARD_HOUSE;Child - Ground 31;OOT Market Pot House Child Pot Ground 31;pot;535;435;GUARD_HOUSE;Child;0
+0x0028;GUARD_HOUSE;Child - Ground 32;OOT Market Pot House Child Pot Ground 32;pot;458;431;GUARD_HOUSE;Child;0
+0x002a;GUARD_HOUSE;Child - Ground 33;OOT Market Pot House Child Pot Ground 33;pot;631;429;GUARD_HOUSE;Child;0
+0x002b;GUARD_HOUSE;Child - Above 1;OOT Market Pot House Child Pot Ground 34;pot;374;238;GUARD_HOUSE;Child;0
+0x002c;GUARD_HOUSE;Child - Ground 35;OOT Market Pot House Child Pot Ground 35;pot;472;418;GUARD_HOUSE;Child;0
+0x002d;GUARD_HOUSE;Child - Ground 36;OOT Market Pot House Child Pot Ground 36;pot;511;451;GUARD_HOUSE;Child;0
+0x002e;GUARD_HOUSE;Child - Ground 37;OOT Market Pot House Child Pot Ground 37;pot;436;335;GUARD_HOUSE;Child;0
+0x002f;GUARD_HOUSE;Child - Ground 38;OOT Market Pot House Child Pot Ground 38;pot;515;422;GUARD_HOUSE;Child;0
+0x0030;GUARD_HOUSE;Child - Ground 39;OOT Market Pot House Child Pot Ground 39;pot;489;334;GUARD_HOUSE;Child;0
+0x0031;GUARD_HOUSE;Child - Ground 40;OOT Market Pot House Child Pot Ground 40;pot;465;472;GUARD_HOUSE;Child;0
+0x0032;GUARD_HOUSE;Child - Ground 41;OOT Market Pot House Child Pot Ground 41;pot;396;550;GUARD_HOUSE;Child;0
+0x0033;GUARD_HOUSE;Child - Ground 42;OOT Market Pot House Child Pot Ground 42;pot;462;569;GUARD_HOUSE;Child;0
+0x0027;GUARD_HOUSE;Child - Ground 34;OOT Market Pot House Child Pot Above 1;pot;599;451;GUARD_HOUSE;Child;0
+0x0029;GUARD_HOUSE;Child - Above 2;OOT Market Pot House Child Pot Above 2;pot;578;236;GUARD_HOUSE;Child;0
+0x8001;GUARD_HOUSE;Adult - Ground 1;OOT Market Pot House Adult Pot 1;pot;480;453;GUARD_HOUSE;Adult;0
+0x8002;GUARD_HOUSE;Adult - Ground 2;OOT Market Pot House Adult Pot 2;pot;263;449;GUARD_HOUSE;Adult;0
+0x8003;GUARD_HOUSE;Adult - Ground 3;OOT Market Pot House Adult Pot 3;pot;197;449;GUARD_HOUSE;Adult;0
+0x8004;GUARD_HOUSE;Adult - Ground 4;OOT Market Pot House Adult Pot 4;pot;753;438;GUARD_HOUSE;Adult;0
+0x8005;GUARD_HOUSE;Adult - Ground 5;OOT Market Pot House Adult Pot 5;pot;651;431;GUARD_HOUSE;Adult;0
+0x8006;GUARD_HOUSE;Adult - Ground 6;OOT Market Pot House Adult Pot 6;pot;445;430;GUARD_HOUSE;Adult;0
+0x8007;GUARD_HOUSE;Adult - Ground 7;OOT Market Pot House Adult Pot 7;pot;505;428;GUARD_HOUSE;Adult;0
+0x8008;GUARD_HOUSE;Adult - Ground 8;OOT Market Pot House Adult Pot 8;pot;234;425;GUARD_HOUSE;Adult;0
+0x8009;GUARD_HOUSE;Adult - Ground 9;OOT Market Pot House Adult Pot 9;pot;721;342;GUARD_HOUSE;Adult;0
+0x800a;GUARD_HOUSE;Adult - Ground 10;OOT Market Pot House Adult Pot 10;pot;331;342;GUARD_HOUSE;Adult;0
+0x800b;GUARD_HOUSE;Adult - Ground 11;OOT Market Pot House Adult Pot 11;pot;228;342;GUARD_HOUSE;Adult;0
+0x00003;GUARD_HOUSE;Crate 1;OOT Market Pot House Crate 1;crate;870;582;GUARD_HOUSE;Child;0
+0x00004;GUARD_HOUSE;Crate 2;OOT Market Pot House Crate 2;crate;782;582;GUARD_HOUSE;Child;0
+0x00005;GUARD_HOUSE;Crate 3;OOT Market Pot House Crate 3;crate;694;582;GUARD_HOUSE;Child;0
+0x00006;GUARD_HOUSE;Crate 4;OOT Market Pot House Crate 4;crate;171;461;GUARD_HOUSE;Child;0
 0x00;HAUNTED_WASTELAND;Stele;OOT Haunted Wasteland Chest;chest;0;0;HAUNTED_WASTELAND;All;0
 0xb1;HAUNTED_WASTELAND;Stele;OOT Haunted Wasteland GS;gs;0;0;HAUNTED_WASTELAND;All;0
 0x0000;HAUNTED_WASTELAND;Pot 1;OOT Haunted Wasteland Pot 1;pot;0;0;HAUNTED_WASTELAND;All;0
@@ -959,94 +959,94 @@ POE_COLLECTOR;GUARD_HOUSE;Bottle;OOT Market Pot House Big Poes;npc;0;0;GUARD_HOU
 0x00123;HAUNTED_WASTELAND;After Pit 2;OOT Haunted Wasteland Crate After Pit 2;crate;0;0;HAUNTED_WASTELAND;All;0
 0x00124;HAUNTED_WASTELAND;After Pit 3;OOT Haunted Wasteland Crate After Pit 3;crate;0;0;HAUNTED_WASTELAND;All;0
 0x00121;HAUNTED_WASTELAND;Poe Chase;OOT Haunted Wasteland Crate Deep;crate;0;0;HAUNTED_WASTELAND;All;0
-GS_10;HOUSE_OF_SKULLTULA;10 Tokens;OOT Skulltula House 10 Tokens;npc;0;0;HOUSE_OF_SKULLTULA;All;0
-GS_20;HOUSE_OF_SKULLTULA;20 Tokens;OOT Skulltula House 20 Tokens;npc;0;0;HOUSE_OF_SKULLTULA;All;0
-GS_30;HOUSE_OF_SKULLTULA;30 Tokens;OOT Skulltula House 30 Tokens;npc;0;0;HOUSE_OF_SKULLTULA;All;0
-GS_40;HOUSE_OF_SKULLTULA;40 Tokens;OOT Skulltula House 40 Tokens;npc;0;0;HOUSE_OF_SKULLTULA;All;0
-GS_50;HOUSE_OF_SKULLTULA;50 Tokens;OOT Skulltula House 50 Tokens;npc;0;0;HOUSE_OF_SKULLTULA;All;0
-WEIRD_EGG;GROTTOS;Hatch - Chicken;OOT Hatch Chicken;npc;0;0;HYRULE_CASTLE;All;0
-MALON_EGG;HYRULE_CASTLE;Malon Egg;OOT Malon Egg;npc;0;0;HYRULE_CASTLE;All;0
-0x7a;HYRULE_CASTLE;Tree;OOT Hyrule Castle GS Tree;gs;0;0;HYRULE_CASTLE;All;0
-0x0008;HYRULE_CASTLE;Pot 1;OOT Hyrule Castle Pot 1;pot;0;0;HYRULE_CASTLE;All;0
-0x0009;HYRULE_CASTLE;Pot 2;OOT Hyrule Castle Pot 2;pot;0;0;HYRULE_CASTLE;All;0
-0x0002e;HYRULE_CASTLE;Grass 1;OOT Hyrule Castle Grass 1;grass;0;0;HYRULE_CASTLE;All;0
-0x0002f;HYRULE_CASTLE;Grass 2;OOT Hyrule Castle Grass 2;grass;0;0;HYRULE_CASTLE;All;0
-0x0000c;HYRULE_CASTLE;Torch 1;OOT Hyrule Castle Wonder Item Torch 1;wonder;0;0;HYRULE_CASTLE;All;0
-0x0000d;HYRULE_CASTLE;Torch 2;OOT Hyrule Castle Wonder Item Torch 2;wonder;0;0;HYRULE_CASTLE;All;0
-0x00020;HYRULE_CASTLE;Moat 1;OOT Hyrule Castle Wonder Item Moat 01;wonder;0;0;HYRULE_CASTLE;All;0
-0x00021;HYRULE_CASTLE;Moat 2;OOT Hyrule Castle Wonder Item Moat 02;wonder;0;0;HYRULE_CASTLE;All;0
-0x00022;HYRULE_CASTLE;Moat 3;OOT Hyrule Castle Wonder Item Moat 03;wonder;0;0;HYRULE_CASTLE;All;0
-0x00023;HYRULE_CASTLE;Moat 4;OOT Hyrule Castle Wonder Item Moat 04;wonder;0;0;HYRULE_CASTLE;All;0
-0x00024;HYRULE_CASTLE;Moat 5;OOT Hyrule Castle Wonder Item Moat 05;wonder;0;0;HYRULE_CASTLE;All;0
-0x00025;HYRULE_CASTLE;Moat 6;OOT Hyrule Castle Wonder Item Moat 06;wonder;0;0;HYRULE_CASTLE;All;0
-0x00026;HYRULE_CASTLE;Moat 7;OOT Hyrule Castle Wonder Item Moat 07;wonder;0;0;HYRULE_CASTLE;All;0
-0x00027;HYRULE_CASTLE;Moat 8;OOT Hyrule Castle Wonder Item Moat 08;wonder;0;0;HYRULE_CASTLE;All;0
-0x00028;HYRULE_CASTLE;Moat 9;OOT Hyrule Castle Wonder Item Moat 09;wonder;0;0;HYRULE_CASTLE;All;0
-0x00029;HYRULE_CASTLE;Moat 10;OOT Hyrule Castle Wonder Item Moat 10;wonder;0;0;HYRULE_CASTLE;All;0
-0x00033;HYRULE_CASTLE;Pack 1 - Butterfly 1;OOT Hyrule Castle Butterfly Pack 1 Butterfly 1;butterfly;0;0;HYRULE_CASTLE;All;0
-0x10033;HYRULE_CASTLE;Pack 1 - Butterfly 2;OOT Hyrule Castle Butterfly Pack 1 Butterfly 2;butterfly;0;0;HYRULE_CASTLE;All;0
-0x00034;HYRULE_CASTLE;Pack 2 - Butterfly 1;OOT Hyrule Castle Butterfly Pack 2 Butterfly 1;butterfly;0;0;HYRULE_CASTLE;All;0
-0x10034;HYRULE_CASTLE;Pack 2 - Butterfly 2;OOT Hyrule Castle Butterfly Pack 2 Butterfly 2;butterfly;0;0;HYRULE_CASTLE;All;0
-0x00035;HYRULE_CASTLE;Pack 3 - Butterfly 1;OOT Hyrule Castle Butterfly Pack 3 Butterfly 1;butterfly;0;0;HYRULE_CASTLE;All;0
-0x10035;HYRULE_CASTLE;Pack 3 - Butterfly 2;OOT Hyrule Castle Butterfly Pack 3 Butterfly 2;butterfly;0;0;HYRULE_CASTLE;All;0
-0x20035;HYRULE_CASTLE;Pack 3 - Butterfly 3;OOT Hyrule Castle Butterfly Pack 3 Butterfly 3;butterfly;0;0;HYRULE_CASTLE;All;0
-0x00036;HYRULE_CASTLE;Pack 4 - Butterfly 1;OOT Hyrule Castle Butterfly Pack 4 Butterfly 1;butterfly;0;0;HYRULE_CASTLE;All;0
-0x10036;HYRULE_CASTLE;Pack 4 - Butterfly 2;OOT Hyrule Castle Butterfly Pack 4 Butterfly 2;butterfly;0;0;HYRULE_CASTLE;All;0
-0x20036;HYRULE_CASTLE;Pack 4 - Butterfly 3;OOT Hyrule Castle Butterfly Pack 4 Butterfly 3;butterfly;0;0;HYRULE_CASTLE;All;0
-0x30036;HYRULE_CASTLE;Pack 4 - Butterfly 4;OOT Hyrule Castle Butterfly Pack 4 Butterfly 4;butterfly;0;0;HYRULE_CASTLE;All;0
-0x40036;HYRULE_CASTLE;Pack 4 - Butterfly 5;OOT Hyrule Castle Butterfly Pack 4 Butterfly 5;butterfly;0;0;HYRULE_CASTLE;All;0
+GS_10;HOUSE_OF_SKULLTULA;10 Tokens;OOT Skulltula House 10 Tokens;npc;657;431;HOUSE_OF_SKULLTULA;All;0
+GS_20;HOUSE_OF_SKULLTULA;20 Tokens;OOT Skulltula House 20 Tokens;npc;287;434;HOUSE_OF_SKULLTULA;All;0
+GS_30;HOUSE_OF_SKULLTULA;30 Tokens;OOT Skulltula House 30 Tokens;npc;469;126;HOUSE_OF_SKULLTULA;All;0
+GS_40;HOUSE_OF_SKULLTULA;40 Tokens;OOT Skulltula House 40 Tokens;npc;650;219;HOUSE_OF_SKULLTULA;All;0
+GS_50;HOUSE_OF_SKULLTULA;50 Tokens;OOT Skulltula House 50 Tokens;npc;290;222;HOUSE_OF_SKULLTULA;All;0
+WEIRD_EGG;GROTTOS;Hatch - Chicken;OOT Hatch Chicken;npc;138;210;HYRULE_CASTLE;All;0
+MALON_EGG;HYRULE_CASTLE;Malon Egg;OOT Malon Egg;npc;131;243;HYRULE_CASTLE;All;0
+0x7a;HYRULE_CASTLE;Tree;OOT Hyrule Castle GS Tree;gs;218;223;HYRULE_CASTLE;All;0
+0x0008;HYRULE_CASTLE;Pot 1;OOT Hyrule Castle Pot 1;pot;173;435;HYRULE_CASTLE;All;0
+0x0009;HYRULE_CASTLE;Pot 2;OOT Hyrule Castle Pot 2;pot;160;435;HYRULE_CASTLE;All;0
+0x0002e;HYRULE_CASTLE;Grass 1;OOT Hyrule Castle Grass 1;grass;600;350;HYRULE_CASTLE;All;0
+0x0002f;HYRULE_CASTLE;Grass 2;OOT Hyrule Castle Grass 2;grass;610;362;HYRULE_CASTLE;All;0
+0x0000c;HYRULE_CASTLE;Torch 1;OOT Hyrule Castle Wonder Item Torch 1;wonder;659;91;HYRULE_CASTLE;All;0
+0x0000d;HYRULE_CASTLE;Torch 2;OOT Hyrule Castle Wonder Item Torch 2;wonder;672;146;HYRULE_CASTLE;All;0
+0x00020;HYRULE_CASTLE;Moat 1;OOT Hyrule Castle Wonder Item Moat 01;wonder;615;70;HYRULE_CASTLE;All;0
+0x00021;HYRULE_CASTLE;Moat 2;OOT Hyrule Castle Wonder Item Moat 02;wonder;614;109;HYRULE_CASTLE;All;0
+0x00022;HYRULE_CASTLE;Moat 3;OOT Hyrule Castle Wonder Item Moat 03;wonder;627;138;HYRULE_CASTLE;All;0
+0x00023;HYRULE_CASTLE;Moat 4;OOT Hyrule Castle Wonder Item Moat 04;wonder;629;175;HYRULE_CASTLE;All;0
+0x00024;HYRULE_CASTLE;Moat 5;OOT Hyrule Castle Wonder Item Moat 05;wonder;644;216;HYRULE_CASTLE;All;0
+0x00025;HYRULE_CASTLE;Moat 6;OOT Hyrule Castle Wonder Item Moat 06;wonder;647;265;HYRULE_CASTLE;All;0
+0x00026;HYRULE_CASTLE;Moat 7;OOT Hyrule Castle Wonder Item Moat 07;wonder;749;314;HYRULE_CASTLE;All;0
+0x00027;HYRULE_CASTLE;Moat 8;OOT Hyrule Castle Wonder Item Moat 08;wonder;695;320;HYRULE_CASTLE;All;0
+0x00028;HYRULE_CASTLE;Moat 9;OOT Hyrule Castle Wonder Item Moat 09;wonder;795;318;HYRULE_CASTLE;All;0
+0x00029;HYRULE_CASTLE;Moat 10;OOT Hyrule Castle Wonder Item Moat 10;wonder;894;313;HYRULE_CASTLE;All;0
+0x00033;HYRULE_CASTLE;Pack 1 - Butterfly 1;OOT Hyrule Castle Butterfly Pack 1 Butterfly 1;butterfly;377;516;HYRULE_CASTLE;All;0
+0x10033;HYRULE_CASTLE;Pack 1 - Butterfly 2;OOT Hyrule Castle Butterfly Pack 1 Butterfly 2;butterfly;361;507;HYRULE_CASTLE;All;0
+0x00034;HYRULE_CASTLE;Pack 2 - Butterfly 1;OOT Hyrule Castle Butterfly Pack 2 Butterfly 1;butterfly;293;310;HYRULE_CASTLE;All;0
+0x10034;HYRULE_CASTLE;Pack 2 - Butterfly 2;OOT Hyrule Castle Butterfly Pack 2 Butterfly 2;butterfly;296;296;HYRULE_CASTLE;All;0
+0x00035;HYRULE_CASTLE;Pack 3 - Butterfly 1;OOT Hyrule Castle Butterfly Pack 3 Butterfly 1;butterfly;435;229;HYRULE_CASTLE;All;0
+0x10035;HYRULE_CASTLE;Pack 3 - Butterfly 2;OOT Hyrule Castle Butterfly Pack 3 Butterfly 2;butterfly;446;213;HYRULE_CASTLE;All;0
+0x20035;HYRULE_CASTLE;Pack 3 - Butterfly 3;OOT Hyrule Castle Butterfly Pack 3 Butterfly 3;butterfly;465;203;HYRULE_CASTLE;All;0
+0x00036;HYRULE_CASTLE;Pack 4 - Butterfly 1;OOT Hyrule Castle Butterfly Pack 4 Butterfly 1;butterfly;338;169;HYRULE_CASTLE;All;0
+0x10036;HYRULE_CASTLE;Pack 4 - Butterfly 2;OOT Hyrule Castle Butterfly Pack 4 Butterfly 2;butterfly;324;159;HYRULE_CASTLE;All;0
+0x20036;HYRULE_CASTLE;Pack 4 - Butterfly 3;OOT Hyrule Castle Butterfly Pack 4 Butterfly 3;butterfly;347;153;HYRULE_CASTLE;All;0
+0x30036;HYRULE_CASTLE;Pack 4 - Butterfly 4;OOT Hyrule Castle Butterfly Pack 4 Butterfly 4;butterfly;331;143;HYRULE_CASTLE;All;0
+0x40036;HYRULE_CASTLE;Pack 4 - Butterfly 5;OOT Hyrule Castle Butterfly Pack 4 Butterfly 5;butterfly;347;137;HYRULE_CASTLE;All;0
 OCARINA_TIME_ITEM;HYRULE_FIELD;Ocarina of Time;OOT Hyrule Field Ocarina of Time;npc;793;155;HYRULE_FIELD;Child;0
 OCARINA_TIME_SONG;HYRULE_FIELD;Song of Time;OOT Hyrule Field Song of Time;npc;777;155;HYRULE_FIELD;Child;0
 MASK_SELL_BUNNY;HYRULE_FIELD;Bunny Mask;OOT Hyrule Field Sell Bunny Mask;npc;713;405;HYRULE_FIELD;Child;0
 0x01;HYRULE_FIELD;Cow;OOT Hyrule Field Cow;cow;414;662;OOT_GROTTO_HYRULE_GERUDO;All;0
-0x0003a;HYRULE_FIELD;Pack 1 - Bush 1;OOT Hyrule Field Grass Pack 1 Bush 01;grass;816;309;HYRULE_FIELD;All;0
-0x1003a;HYRULE_FIELD;Pack 1 - Bush 2;OOT Hyrule Field Grass Pack 1 Bush 02;grass;806;308;HYRULE_FIELD;All;0
-0x2003a;HYRULE_FIELD;Pack 1 - Bush 3;OOT Hyrule Field Grass Pack 1 Bush 03;grass;825;303;HYRULE_FIELD;All;0
-0x3003a;HYRULE_FIELD;Pack 1 - Bush 4;OOT Hyrule Field Grass Pack 1 Bush 04;grass;798;302;HYRULE_FIELD;All;0
-0x4003a;HYRULE_FIELD;Pack 1 - Bush 5;OOT Hyrule Field Grass Pack 1 Bush 05;grass;828;293;HYRULE_FIELD;All;0
-0x5003a;HYRULE_FIELD;Pack 1 - Bush 6;OOT Hyrule Field Grass Pack 1 Bush 06;grass;793;293;HYRULE_FIELD;All;0
-0x6003a;HYRULE_FIELD;Pack 1 - Bush 7;OOT Hyrule Field Grass Pack 1 Bush 07;grass;811;291;HYRULE_FIELD;All;0
-0x7003a;HYRULE_FIELD;Pack 1 - Bush 8;OOT Hyrule Field Grass Pack 1 Bush 08;grass;827;283;HYRULE_FIELD;All;0
-0x8003a;HYRULE_FIELD;Pack 1 - Bush 9;OOT Hyrule Field Grass Pack 1 Bush 09;grass;795;283;HYRULE_FIELD;All;0
-0x9003a;HYRULE_FIELD;Pack 1 - Bush 10;OOT Hyrule Field Grass Pack 1 Bush 10;grass;821;275;HYRULE_FIELD;All;0
-0xa003a;HYRULE_FIELD;Pack 1 - Bush 11;OOT Hyrule Field Grass Pack 1 Bush 11;grass;801;275;HYRULE_FIELD;All;0
-0xb003a;HYRULE_FIELD;Pack 1 - Bush 12;OOT Hyrule Field Grass Pack 1 Bush 12;grass;811;275;HYRULE_FIELD;All;0
-0x0003b;HYRULE_FIELD;Pack 2 - Bush 1;OOT Hyrule Field Grass Pack 2 Bush 01;grass;936;524;HYRULE_FIELD;All;0
-0x1003b;HYRULE_FIELD;Pack 2 - Bush 2;OOT Hyrule Field Grass Pack 2 Bush 02;grass;926;523;HYRULE_FIELD;All;0
-0x2003b;HYRULE_FIELD;Pack 2 - Bush 3;OOT Hyrule Field Grass Pack 2 Bush 03;grass;945;518;HYRULE_FIELD;All;0
-0x3003b;HYRULE_FIELD;Pack 2 - Bush 4;OOT Hyrule Field Grass Pack 2 Bush 04;grass;918;517;HYRULE_FIELD;All;0
-0x4003b;HYRULE_FIELD;Pack 2 - Bush 5;OOT Hyrule Field Grass Pack 2 Bush 05;grass;948;508;HYRULE_FIELD;All;0
-0x5003b;HYRULE_FIELD;Pack 2 - Bush 6;OOT Hyrule Field Grass Pack 2 Bush 06;grass;913;508;HYRULE_FIELD;All;0
-0x6003b;HYRULE_FIELD;Pack 2 - Bush 7;OOT Hyrule Field Grass Pack 2 Bush 07;grass;931;506;HYRULE_FIELD;All;0
-0x7003b;HYRULE_FIELD;Pack 2 - Bush 8;OOT Hyrule Field Grass Pack 2 Bush 08;grass;947;498;HYRULE_FIELD;All;0
-0x8003b;HYRULE_FIELD;Pack 2 - Bush 9;OOT Hyrule Field Grass Pack 2 Bush 09;grass;915;498;HYRULE_FIELD;All;0
-0x9003b;HYRULE_FIELD;Pack 2 - Bush 10;OOT Hyrule Field Grass Pack 2 Bush 10;grass;941;490;HYRULE_FIELD;All;0
-0xa003b;HYRULE_FIELD;Pack 2 - Bush 11;OOT Hyrule Field Grass Pack 2 Bush 11;grass;921;490;HYRULE_FIELD;All;0
-0xb003b;HYRULE_FIELD;Pack 2 - Bush 12;OOT Hyrule Field Grass Pack 2 Bush 12;grass;931;488;HYRULE_FIELD;All;0
-0x0003c;HYRULE_FIELD;Pack 3 - Bush 1;OOT Hyrule Field Grass Pack 3 Bush 01;grass;711;654;HYRULE_FIELD;All;0
-0x1003c;HYRULE_FIELD;Pack 3 - Bush 2;OOT Hyrule Field Grass Pack 3 Bush 02;grass;701;653;HYRULE_FIELD;All;0
-0x2003c;HYRULE_FIELD;Pack 3 - Bush 3;OOT Hyrule Field Grass Pack 3 Bush 03;grass;720;648;HYRULE_FIELD;All;0
-0x3003c;HYRULE_FIELD;Pack 3 - Bush 4;OOT Hyrule Field Grass Pack 3 Bush 04;grass;693;647;HYRULE_FIELD;All;0
-0x4003c;HYRULE_FIELD;Pack 3 - Bush 5;OOT Hyrule Field Grass Pack 3 Bush 05;grass;723;638;HYRULE_FIELD;All;0
-0x5003c;HYRULE_FIELD;Pack 3 - Bush 6;OOT Hyrule Field Grass Pack 3 Bush 06;grass;688;638;HYRULE_FIELD;All;0
-0x6003c;HYRULE_FIELD;Pack 3 - Bush 7;OOT Hyrule Field Grass Pack 3 Bush 07;grass;706;636;HYRULE_FIELD;All;0
-0x7003c;HYRULE_FIELD;Pack 3 - Bush 8;OOT Hyrule Field Grass Pack 3 Bush 08;grass;722;628;HYRULE_FIELD;All;0
-0x8003c;HYRULE_FIELD;Pack 3 - Bush 9;OOT Hyrule Field Grass Pack 3 Bush 09;grass;690;628;HYRULE_FIELD;All;0
-0x9003c;HYRULE_FIELD;Pack 3 - Bush 10;OOT Hyrule Field Grass Pack 3 Bush 10;grass;716;620;HYRULE_FIELD;All;0
-0xa003c;HYRULE_FIELD;Pack 3 - Bush 11;OOT Hyrule Field Grass Pack 3 Bush 11;grass;696;620;HYRULE_FIELD;All;0
-0xb003c;HYRULE_FIELD;Pack 3 - Bush 12;OOT Hyrule Field Grass Pack 3 Bush 12;grass;706;618;HYRULE_FIELD;All;0
-0x0003d;HYRULE_FIELD;Pack 4 - Bush 1;OOT Hyrule Field Grass Pack 4 Bush 01;grass;740;726;HYRULE_FIELD;All;0
-0x1003d;HYRULE_FIELD;Pack 4 - Bush 2;OOT Hyrule Field Grass Pack 4 Bush 02;grass;730;725;HYRULE_FIELD;All;0
-0x2003d;HYRULE_FIELD;Pack 4 - Bush 3;OOT Hyrule Field Grass Pack 4 Bush 03;grass;749;720;HYRULE_FIELD;All;0
-0x3003d;HYRULE_FIELD;Pack 4 - Bush 4;OOT Hyrule Field Grass Pack 4 Bush 04;grass;722;719;HYRULE_FIELD;All;0
-0x4003d;HYRULE_FIELD;Pack 4 - Bush 5;OOT Hyrule Field Grass Pack 4 Bush 05;grass;752;710;HYRULE_FIELD;All;0
-0x5003d;HYRULE_FIELD;Pack 4 - Bush 6;OOT Hyrule Field Grass Pack 4 Bush 06;grass;717;710;HYRULE_FIELD;All;0
-0x6003d;HYRULE_FIELD;Pack 4 - Bush 7;OOT Hyrule Field Grass Pack 4 Bush 07;grass;735;708;HYRULE_FIELD;All;0
-0x7003d;HYRULE_FIELD;Pack 4 - Bush 8;OOT Hyrule Field Grass Pack 4 Bush 08;grass;751;700;HYRULE_FIELD;All;0
-0x8003d;HYRULE_FIELD;Pack 4 - Bush 9;OOT Hyrule Field Grass Pack 4 Bush 09;grass;719;700;HYRULE_FIELD;All;0
-0x9003d;HYRULE_FIELD;Pack 4 - Bush 10;OOT Hyrule Field Grass Pack 4 Bush 10;grass;745;692;HYRULE_FIELD;All;0
-0xa003d;HYRULE_FIELD;Pack 4 - Bush 11;OOT Hyrule Field Grass Pack 4 Bush 11;grass;725;692;HYRULE_FIELD;All;0
-0xb003d;HYRULE_FIELD;Pack 4 - Bush 12;OOT Hyrule Field Grass Pack 4 Bush 12;grass;735;690;HYRULE_FIELD;All;0
+0x0003a;HYRULE_FIELD;Pack 1 - Bush 1;OOT Hyrule Field Grass Pack 1 Bush 01;grass;706;636;HYRULE_FIELD;All;0
+0x1003a;HYRULE_FIELD;Pack 1 - Bush 2;OOT Hyrule Field Grass Pack 1 Bush 02;grass;720;648;HYRULE_FIELD;All;0
+0x2003a;HYRULE_FIELD;Pack 1 - Bush 3;OOT Hyrule Field Grass Pack 1 Bush 03;grass;722;628;HYRULE_FIELD;All;0
+0x3003a;HYRULE_FIELD;Pack 1 - Bush 4;OOT Hyrule Field Grass Pack 1 Bush 04;grass;701;653;HYRULE_FIELD;All;0
+0x4003a;HYRULE_FIELD;Pack 1 - Bush 5;OOT Hyrule Field Grass Pack 1 Bush 05;grass;693;647;HYRULE_FIELD;All;0
+0x5003a;HYRULE_FIELD;Pack 1 - Bush 6;OOT Hyrule Field Grass Pack 1 Bush 06;grass;688;638;HYRULE_FIELD;All;0
+0x6003a;HYRULE_FIELD;Pack 1 - Bush 7;OOT Hyrule Field Grass Pack 1 Bush 07;grass;723;638;HYRULE_FIELD;All;0
+0x7003a;HYRULE_FIELD;Pack 1 - Bush 8;OOT Hyrule Field Grass Pack 1 Bush 08;grass;690;628;HYRULE_FIELD;All;0
+0x8003a;HYRULE_FIELD;Pack 1 - Bush 9;OOT Hyrule Field Grass Pack 1 Bush 09;grass;711;654;HYRULE_FIELD;All;0
+0x9003a;HYRULE_FIELD;Pack 1 - Bush 10;OOT Hyrule Field Grass Pack 1 Bush 10;grass;716;620;HYRULE_FIELD;All;0
+0xa003a;HYRULE_FIELD;Pack 1 - Bush 11;OOT Hyrule Field Grass Pack 1 Bush 11;grass;706;618;HYRULE_FIELD;All;0
+0xb003a;HYRULE_FIELD;Pack 1 - Bush 12;OOT Hyrule Field Grass Pack 1 Bush 12;grass;696;620;HYRULE_FIELD;All;0
+0x0003b;HYRULE_FIELD;Pack 2 - Bush 1;OOT Hyrule Field Grass Pack 2 Bush 01;grass;735;708;HYRULE_FIELD;All;0
+0x1003b;HYRULE_FIELD;Pack 2 - Bush 2;OOT Hyrule Field Grass Pack 2 Bush 02;grass;749;720;HYRULE_FIELD;All;0
+0x2003b;HYRULE_FIELD;Pack 2 - Bush 3;OOT Hyrule Field Grass Pack 2 Bush 03;grass;751;700;HYRULE_FIELD;All;0
+0x3003b;HYRULE_FIELD;Pack 2 - Bush 4;OOT Hyrule Field Grass Pack 2 Bush 04;grass;730;725;HYRULE_FIELD;All;0
+0x4003b;HYRULE_FIELD;Pack 2 - Bush 5;OOT Hyrule Field Grass Pack 2 Bush 05;grass;722;719;HYRULE_FIELD;All;0
+0x5003b;HYRULE_FIELD;Pack 2 - Bush 6;OOT Hyrule Field Grass Pack 2 Bush 06;grass;717;710;HYRULE_FIELD;All;0
+0x6003b;HYRULE_FIELD;Pack 2 - Bush 7;OOT Hyrule Field Grass Pack 2 Bush 07;grass;752;710;HYRULE_FIELD;All;0
+0x7003b;HYRULE_FIELD;Pack 2 - Bush 8;OOT Hyrule Field Grass Pack 2 Bush 08;grass;719;700;HYRULE_FIELD;All;0
+0x8003b;HYRULE_FIELD;Pack 2 - Bush 9;OOT Hyrule Field Grass Pack 2 Bush 09;grass;740;726;HYRULE_FIELD;All;0
+0x9003b;HYRULE_FIELD;Pack 2 - Bush 10;OOT Hyrule Field Grass Pack 2 Bush 10;grass;745;692;HYRULE_FIELD;All;0
+0xa003b;HYRULE_FIELD;Pack 2 - Bush 11;OOT Hyrule Field Grass Pack 2 Bush 11;grass;735;690;HYRULE_FIELD;All;0
+0xb003b;HYRULE_FIELD;Pack 2 - Bush 12;OOT Hyrule Field Grass Pack 2 Bush 12;grass;725;692;HYRULE_FIELD;All;0
+0x0003c;HYRULE_FIELD;Pack 3 - Bush 1;OOT Hyrule Field Grass Pack 3 Bush 01;grass;795;283;HYRULE_FIELD;All;0
+0x1003c;HYRULE_FIELD;Pack 3 - Bush 2;OOT Hyrule Field Grass Pack 3 Bush 02;grass;798;302;HYRULE_FIELD;All;0
+0x2003c;HYRULE_FIELD;Pack 3 - Bush 3;OOT Hyrule Field Grass Pack 3 Bush 03;grass;806;308;HYRULE_FIELD;All;0
+0x3003c;HYRULE_FIELD;Pack 3 - Bush 4;OOT Hyrule Field Grass Pack 3 Bush 04;grass;828;293;HYRULE_FIELD;All;0
+0x4003c;HYRULE_FIELD;Pack 3 - Bush 5;OOT Hyrule Field Grass Pack 3 Bush 05;grass;811;291;HYRULE_FIELD;All;0
+0x5003c;HYRULE_FIELD;Pack 3 - Bush 6;OOT Hyrule Field Grass Pack 3 Bush 06;grass;793;293;HYRULE_FIELD;All;0
+0x6003c;HYRULE_FIELD;Pack 3 - Bush 7;OOT Hyrule Field Grass Pack 3 Bush 07;grass;816;309;HYRULE_FIELD;All;0
+0x7003c;HYRULE_FIELD;Pack 3 - Bush 8;OOT Hyrule Field Grass Pack 3 Bush 08;grass;825;303;HYRULE_FIELD;All;0
+0x8003c;HYRULE_FIELD;Pack 3 - Bush 9;OOT Hyrule Field Grass Pack 3 Bush 09;grass;827;283;HYRULE_FIELD;All;0
+0x9003c;HYRULE_FIELD;Pack 3 - Bush 10;OOT Hyrule Field Grass Pack 3 Bush 10;grass;821;275;HYRULE_FIELD;All;0
+0xa003c;HYRULE_FIELD;Pack 3 - Bush 11;OOT Hyrule Field Grass Pack 3 Bush 11;grass;811;275;HYRULE_FIELD;All;0
+0xb003c;HYRULE_FIELD;Pack 3 - Bush 12;OOT Hyrule Field Grass Pack 3 Bush 12;grass;801;275;HYRULE_FIELD;All;0
+0x0003d;HYRULE_FIELD;Pack 4 - Bush 1;OOT Hyrule Field Grass Pack 4 Bush 01;grass;931;506;HYRULE_FIELD;All;0
+0x1003d;HYRULE_FIELD;Pack 4 - Bush 2;OOT Hyrule Field Grass Pack 4 Bush 02;grass;945;518;HYRULE_FIELD;All;0
+0x2003d;HYRULE_FIELD;Pack 4 - Bush 3;OOT Hyrule Field Grass Pack 4 Bush 03;grass;947;498;HYRULE_FIELD;All;0
+0x3003d;HYRULE_FIELD;Pack 4 - Bush 4;OOT Hyrule Field Grass Pack 4 Bush 04;grass;926;523;HYRULE_FIELD;All;0
+0x4003d;HYRULE_FIELD;Pack 4 - Bush 5;OOT Hyrule Field Grass Pack 4 Bush 05;grass;918;517;HYRULE_FIELD;All;0
+0x5003d;HYRULE_FIELD;Pack 4 - Bush 6;OOT Hyrule Field Grass Pack 4 Bush 06;grass;913;508;HYRULE_FIELD;All;0
+0x6003d;HYRULE_FIELD;Pack 4 - Bush 7;OOT Hyrule Field Grass Pack 4 Bush 07;grass;948;508;HYRULE_FIELD;All;0
+0x7003d;HYRULE_FIELD;Pack 4 - Bush 8;OOT Hyrule Field Grass Pack 4 Bush 08;grass;915;498;HYRULE_FIELD;All;0
+0x8003d;HYRULE_FIELD;Pack 4 - Bush 9;OOT Hyrule Field Grass Pack 4 Bush 09;grass;936;524;HYRULE_FIELD;All;0
+0x9003d;HYRULE_FIELD;Pack 4 - Bush 10;OOT Hyrule Field Grass Pack 4 Bush 10;grass;941;490;HYRULE_FIELD;All;0
+0xa003d;HYRULE_FIELD;Pack 4 - Bush 11;OOT Hyrule Field Grass Pack 4 Bush 11;grass;931;488;HYRULE_FIELD;All;0
+0xb003d;HYRULE_FIELD;Pack 4 - Bush 12;OOT Hyrule Field Grass Pack 4 Bush 12;grass;921;490;HYRULE_FIELD;All;0
 0x00048;HYRULE_FIELD;River Big Fairy;OOT Hyrule Field River Big Fairy;fairy_spot;1038;370;HYRULE_FIELD;All;0
 0x00034;HYRULE_FIELD;Drawbridge 1;OOT Hyrule Field Wonder Item 1;wonder;750;135;HYRULE_FIELD;Child;0
 0x00035;HYRULE_FIELD;Drawbridge 2;OOT Hyrule Field Wonder Item 2;wonder;762;135;HYRULE_FIELD;Child;0
@@ -1378,13 +1378,13 @@ MASK_SELL_KEATON;KAKARIKO_VILLAGE;Keaton Mask;OOT Kakariko Sell Keaton Mask;npc;
 0x0802d;KAKARIKO_VILLAGE;Adult - Back 3;OOT Kakariko Crate Adult Back 3;crate;393;402;KAKARIKO_VILLAGE;Adult;0
 0x0802e;KAKARIKO_VILLAGE;Adult - Back 4;OOT Kakariko Crate Adult Back 4;crate;400;388;KAKARIKO_VILLAGE;Adult;0
 0x00024;KAKARIKO_VILLAGE;Grass 1;OOT Kakariko Grass 1;grass;605;291;KAKARIKO_VILLAGE;All;0
-0x00025;KAKARIKO_VILLAGE;Grass 2;OOT Kakariko Grass 2;grass;590;291;KAKARIKO_VILLAGE;All;0
-0x00026;KAKARIKO_VILLAGE;Grass 3;OOT Kakariko Grass 3;grass;585;280;KAKARIKO_VILLAGE;All;0
-0x00027;KAKARIKO_VILLAGE;Grass 4;OOT Kakariko Grass 4;grass;605;269;KAKARIKO_VILLAGE;All;0
-0x00028;KAKARIKO_VILLAGE;Grass 5;OOT Kakariko Grass 5;grass;590;269;KAKARIKO_VILLAGE;All;0
-0x00029;KAKARIKO_VILLAGE;Grass 6;OOT Kakariko Grass 6;grass;313;136;KAKARIKO_VILLAGE;All;0
-0x0002a;KAKARIKO_VILLAGE;Grass 7;OOT Kakariko Grass 7;grass;306;127;KAKARIKO_VILLAGE;All;0
-0x0002b;KAKARIKO_VILLAGE;Grass 8;OOT Kakariko Grass 8;grass;318;125;KAKARIKO_VILLAGE;All;0
+0x00025;KAKARIKO_VILLAGE;Grass 2;OOT Kakariko Grass 2;grass;605;269;KAKARIKO_VILLAGE;All;0
+0x00026;KAKARIKO_VILLAGE;Grass 3;OOT Kakariko Grass 3;grass;590;291;KAKARIKO_VILLAGE;All;0
+0x00027;KAKARIKO_VILLAGE;Grass 4;OOT Kakariko Grass 4;grass;590;269;KAKARIKO_VILLAGE;All;0
+0x00028;KAKARIKO_VILLAGE;Grass 5;OOT Kakariko Grass 5;grass;585;280;KAKARIKO_VILLAGE;All;0
+0x00029;KAKARIKO_VILLAGE;Grass 6;OOT Kakariko Grass 6;grass;318;125;KAKARIKO_VILLAGE;All;0
+0x0002a;KAKARIKO_VILLAGE;Grass 7;OOT Kakariko Grass 7;grass;313;136;KAKARIKO_VILLAGE;All;0
+0x0002b;KAKARIKO_VILLAGE;Grass 8;OOT Kakariko Grass 8;grass;306;127;KAKARIKO_VILLAGE;All;0
 0x00037;KAKARIKO_VILLAGE;Carpenter's Beam End;OOT Kakariko Wonder Item;wonder;449;176;KAKARIKO_VILLAGE;Child;0
 0x0002e;KAKARIKO_VILLAGE;Butterfly 1;OOT Kakariko Butterfly 1;butterfly;456;372;KAKARIKO_VILLAGE;Child;0
 0x1002e;KAKARIKO_VILLAGE;Butterfly 2;OOT Kakariko Butterfly 2;butterfly;463;359;KAKARIKO_VILLAGE;Child;0
@@ -1392,34 +1392,34 @@ MASK_SELL_KEATON;KAKARIKO_VILLAGE;Keaton Mask;OOT Kakariko Sell Keaton Mask;npc;
 0x68;KOKIRI_FOREST;Soil;OOT Kokiri Forest GS Soil;gs;1055;200;KOKIRI_FOREST;Child;0
 0x69;KOKIRI_FOREST;Child - Behind Know-It-All House;OOT Kokiri Forest GS Night Child;gs;412;708;KOKIRI_FOREST;Child;0
 0x6a;KOKIRI_FOREST;Adult - Twin's House Roof;OOT Kokiri Forest GS Night Adult;gs;1205;498;KOKIRI_FOREST;Adult;0
-0x0003c;KOKIRI_FOREST;Child - Near Crawl 1;OOT Kokiri Forest Grass Child Near Crawl 1;grass;706;698;KOKIRI_FOREST;Child;0
-0x0003d;KOKIRI_FOREST;Child - Near Crawl 2;OOT Kokiri Forest Grass Child Near Crawl 2;grass;626;705;KOKIRI_FOREST;Child;0
-0x0003e;KOKIRI_FOREST;Child - Near Crawl 3;OOT Kokiri Forest Grass Child Near Crawl 3;grass;597;706;KOKIRI_FOREST;Child;0
-0x0003f;KOKIRI_FOREST;Child - Near Crawl 4;OOT Kokiri Forest Grass Child Near Crawl 4;grass;652;709;KOKIRI_FOREST;Child;0
-0x00040;KOKIRI_FOREST;Child - Near Crawl 5;OOT Kokiri Forest Grass Child Near Crawl 5;grass;677;722;KOKIRI_FOREST;Child;0
-0x00041;KOKIRI_FOREST;Child - Near Crawl 6;OOT Kokiri Forest Grass Child Near Crawl 6;grass;607;723;KOKIRI_FOREST;Child;0
+0x0003c;KOKIRI_FOREST;Child - Near Crawl 1;OOT Kokiri Forest Grass Child Near Crawl 1;grass;597;706;KOKIRI_FOREST;Child;0
+0x0003d;KOKIRI_FOREST;Child - Near Crawl 2;OOT Kokiri Forest Grass Child Near Crawl 2;grass;607;723;KOKIRI_FOREST;Child;0
+0x0003e;KOKIRI_FOREST;Child - Near Crawl 3;OOT Kokiri Forest Grass Child Near Crawl 3;grass;631;729;KOKIRI_FOREST;Child;0
+0x0003f;KOKIRI_FOREST;Child - Near Crawl 4;OOT Kokiri Forest Grass Child Near Crawl 4;grass;626;705;KOKIRI_FOREST;Child;0
+0x00040;KOKIRI_FOREST;Child - Near Crawl 5;OOT Kokiri Forest Grass Child Near Crawl 5;grass;652;709;KOKIRI_FOREST;Child;0
+0x00041;KOKIRI_FOREST;Child - Near Crawl 6;OOT Kokiri Forest Grass Child Near Crawl 6;grass;677;722;KOKIRI_FOREST;Child;0
 0x00042;KOKIRI_FOREST;Child - Near Crawl 7;OOT Kokiri Forest Grass Child Near Crawl 7;grass;707;723;KOKIRI_FOREST;Child;0
-0x00043;KOKIRI_FOREST;Child - Near Crawl 8;OOT Kokiri Forest Grass Child Near Crawl 8;grass;631;729;KOKIRI_FOREST;Child;0
-0x00044;KOKIRI_FOREST;Child - Grass 1;OOT Kokiri Forest Grass Child 1;grass;999;538;KOKIRI_FOREST;Child;0
-0x00045;KOKIRI_FOREST;Child - Grass 2;OOT Kokiri Forest Grass Child 2;grass;1028;545;KOKIRI_FOREST;Child;0
-0x00046;KOKIRI_FOREST;Child - Grass 3;OOT Kokiri Forest Grass Child 3;grass;999;558;KOKIRI_FOREST;Child;0
-0x00047;KOKIRI_FOREST;Child - Grass 4;OOT Kokiri Forest Grass Child 4;grass;928;601;KOKIRI_FOREST;Child;0
+0x00043;KOKIRI_FOREST;Child - Near Crawl 8;OOT Kokiri Forest Grass Child Near Crawl 8;grass;706;698;KOKIRI_FOREST;Child;0
+0x00044;KOKIRI_FOREST;Child - Grass 1;OOT Kokiri Forest Grass Child 1;grass;928;601;KOKIRI_FOREST;Child;0
+0x00045;KOKIRI_FOREST;Child - Grass 2;OOT Kokiri Forest Grass Child 2;grass;999;558;KOKIRI_FOREST;Child;0
+0x00046;KOKIRI_FOREST;Child - Grass 3;OOT Kokiri Forest Grass Child 3;grass;999;538;KOKIRI_FOREST;Child;0
+0x00047;KOKIRI_FOREST;Child - Grass 4;OOT Kokiri Forest Grass Child 4;grass;1028;545;KOKIRI_FOREST;Child;0
 0x00202;KOKIRI_FOREST;Child - Crawl 1;OOT Kokiri Forest Grass Child Crawl 1;grass;562;1039;KOKIRI_FOREST;Child;0
 0x00203;KOKIRI_FOREST;Child - Crawl 2;OOT Kokiri Forest Grass Child Crawl 2;grass;715;1218;KOKIRI_FOREST;Child;0
 0x00204;KOKIRI_FOREST;Child - Crawl 3;OOT Kokiri Forest Grass Child Crawl 3;grass;919;1427;KOKIRI_FOREST;Child;0
 0x0003b;KOKIRI_FOREST;Child - Kokiri;OOT Kokiri Forest Grass Child Kokiri;grass;1018;525;KOKIRI_FOREST;Child;0
-0x08017;KOKIRI_FOREST;Adult - Grass 1;OOT Kokiri Forest Grass Adult 01;grass;1068;520;KOKIRI_FOREST;Adult;0
-0x18017;KOKIRI_FOREST;Adult - Grass 2;OOT Kokiri Forest Grass Adult 02;grass;1058;522;KOKIRI_FOREST;Adult;0
-0x28017;KOKIRI_FOREST;Adult - Grass 3;OOT Kokiri Forest Grass Adult 03;grass;1078;522;KOKIRI_FOREST;Adult;0
-0x38017;KOKIRI_FOREST;Adult - Grass 4;OOT Kokiri Forest Grass Adult 04;grass;1052;530;KOKIRI_FOREST;Adult;0
-0x48017;KOKIRI_FOREST;Adult - Grass 5;OOT Kokiri Forest Grass Adult 05;grass;1084;530;KOKIRI_FOREST;Adult;0
+0x08017;KOKIRI_FOREST;Adult - Grass 1;OOT Kokiri Forest Grass Adult 01;grass;1050;540;KOKIRI_FOREST;Adult;0
+0x18017;KOKIRI_FOREST;Adult - Grass 2;OOT Kokiri Forest Grass Adult 02;grass;1078;522;KOKIRI_FOREST;Adult;0
+0x28017;KOKIRI_FOREST;Adult - Grass 3;OOT Kokiri Forest Grass Adult 03;grass;1085;540;KOKIRI_FOREST;Adult;0
+0x38017;KOKIRI_FOREST;Adult - Grass 4;OOT Kokiri Forest Grass Adult 04;grass;1058;522;KOKIRI_FOREST;Adult;0
+0x48017;KOKIRI_FOREST;Adult - Grass 5;OOT Kokiri Forest Grass Adult 05;grass;1052;530;KOKIRI_FOREST;Adult;0
 0x58017;KOKIRI_FOREST;Adult - Grass 6;OOT Kokiri Forest Grass Adult 06;grass;1068;538;KOKIRI_FOREST;Adult;0
-0x68017;KOKIRI_FOREST;Adult - Grass 7;OOT Kokiri Forest Grass Adult 07;grass;1050;540;KOKIRI_FOREST;Adult;0
-0x78017;KOKIRI_FOREST;Adult - Grass 8;OOT Kokiri Forest Grass Adult 08;grass;1085;540;KOKIRI_FOREST;Adult;0
-0x88017;KOKIRI_FOREST;Adult - Grass 9;OOT Kokiri Forest Grass Adult 09;grass;1055;549;KOKIRI_FOREST;Adult;0
+0x68017;KOKIRI_FOREST;Adult - Grass 7;OOT Kokiri Forest Grass Adult 07;grass;1084;530;KOKIRI_FOREST;Adult;0
+0x78017;KOKIRI_FOREST;Adult - Grass 8;OOT Kokiri Forest Grass Adult 08;grass;1055;549;KOKIRI_FOREST;Adult;0
+0x88017;KOKIRI_FOREST;Adult - Grass 9;OOT Kokiri Forest Grass Adult 09;grass;1068;520;KOKIRI_FOREST;Adult;0
 0x98017;KOKIRI_FOREST;Adult - Grass 10;OOT Kokiri Forest Grass Adult 10;grass;1082;550;KOKIRI_FOREST;Adult;0
-0xa8017;KOKIRI_FOREST;Adult - Grass 11;OOT Kokiri Forest Grass Adult 11;grass;1063;555;KOKIRI_FOREST;Adult;0
-0xb8017;KOKIRI_FOREST;Adult - Grass 12;OOT Kokiri Forest Grass Adult 12;grass;1073;556;KOKIRI_FOREST;Adult;0
+0xa8017;KOKIRI_FOREST;Adult - Grass 11;OOT Kokiri Forest Grass Adult 11;grass;1073;556;KOKIRI_FOREST;Adult;0
+0xb8017;KOKIRI_FOREST;Adult - Grass 12;OOT Kokiri Forest Grass Adult 12;grass;1063;555;KOKIRI_FOREST;Adult;0
 0x0800f;KOKIRI_FOREST;Adult - Near Crawl 1;OOT Kokiri Forest Grass Adult Near Crawl 1;grass;698;699;KOKIRI_FOREST;Adult;0
 0x08010;KOKIRI_FOREST;Adult - Near Crawl 2;OOT Kokiri Forest Grass Adult Near Crawl 2;grass;615;706;KOKIRI_FOREST;Adult;0
 0x08011;KOKIRI_FOREST;Adult - Near Crawl 3;OOT Kokiri Forest Grass Adult Near Crawl 3;grass;597;707;KOKIRI_FOREST;Adult;0
@@ -1605,19 +1605,19 @@ TRADE_POACHER_SAW;LOST_WOODS;Poacher's Saw;OOT Lost Woods Poacher's Saw;npc;301;
 0x00202;LOST_WOODS;Grass 1;OOT Lost Woods Grass 1;grass;1544;1621;LOST_WOODS;All;0
 0x00203;LOST_WOODS;Grass 2;OOT Lost Woods Grass 2;grass;1518;1633;LOST_WOODS;All;0
 0x00204;LOST_WOODS;Grass 3;OOT Lost Woods Grass 3;grass;1508;1600;LOST_WOODS;All;0
-0x00701;LOST_WOODS;Deep 1;OOT Lost Woods Grass Deep 1;grass;2056;477;LOST_WOODS;All;0
-0x00702;LOST_WOODS;Deep 2;OOT Lost Woods Grass Deep 2;grass;2027;490;LOST_WOODS;All;0
-0x00703;LOST_WOODS;Deep 3;OOT Lost Woods Grass Deep 3;grass;2015;453;LOST_WOODS;All;0
+0x00701;LOST_WOODS;Deep 1;OOT Lost Woods Grass Deep 1;grass;2027;490;LOST_WOODS;All;0
+0x00702;LOST_WOODS;Deep 2;OOT Lost Woods Grass Deep 2;grass;2015;453;LOST_WOODS;All;0
+0x00703;LOST_WOODS;Deep 3;OOT Lost Woods Grass Deep 3;grass;2056;477;LOST_WOODS;All;0
 0x00803;LOST_WOODS;Deep 4;OOT Lost Woods Grass Deep 4;grass;1607;434;LOST_WOODS;All;0
 0x00804;LOST_WOODS;Deep 5;OOT Lost Woods Grass Deep 5;grass;1620;465;LOST_WOODS;All;0
 0x00805;LOST_WOODS;Deep 6;OOT Lost Woods Grass Deep 6;grass;1583;473;LOST_WOODS;All;0
 0x70;LOST_WOODS;Soil - Bridge;OOT Lost Woods GS Soil Bridge;gs;202;2443;LOST_WOODS;Child;0
 0x71;LOST_WOODS;Soil - Theater;OOT Lost Woods GS Soil Theater;gs;1395;830;LOST_WOODS;Child;0
 0x72;LOST_WOODS;Bean Ride - Theater;OOT Lost Woods GS Bean Ride;gs;1526;752;LOST_WOODS;Adult;0
-0x00304;LOST_WOODS;Underwater 1;OOT Lost Woods Rupee Arrow 1;rupee;2462;1463;LOST_WOODS;Child;0
-0x00305;LOST_WOODS;Underwater 2;OOT Lost Woods Rupee Arrow 2;rupee;2490;1465;LOST_WOODS;Child;0
-0x00306;LOST_WOODS;Underwater 3;OOT Lost Woods Rupee Arrow 3;rupee;2517;1466;LOST_WOODS;Child;0
-0x00307;LOST_WOODS;Underwater 4;OOT Lost Woods Rupee Arrow 4;rupee;2545;1466;LOST_WOODS;Child;0
+0x00304;LOST_WOODS;Underwater 1;OOT Lost Woods Rupee Arrow 1;rupee;2545;1466;LOST_WOODS;Child;0
+0x00305;LOST_WOODS;Underwater 2;OOT Lost Woods Rupee Arrow 2;rupee;2517;1466;LOST_WOODS;Child;0
+0x00306;LOST_WOODS;Underwater 3;OOT Lost Woods Rupee Arrow 3;rupee;2490;1465;LOST_WOODS;Child;0
+0x00307;LOST_WOODS;Underwater 4;OOT Lost Woods Rupee Arrow 4;rupee;2462;1463;LOST_WOODS;Child;0
 0x00308;LOST_WOODS;Underwater 5;OOT Lost Woods Rupee Arrow 5;rupee;2534;1441;LOST_WOODS;Child;0
 0x00309;LOST_WOODS;Underwater 6;OOT Lost Woods Rupee Arrow 6;rupee;2515;1418;LOST_WOODS;Child;0
 0x0030a;LOST_WOODS;Underwater 7;OOT Lost Woods Rupee Arrow 7;rupee;2533;1486;LOST_WOODS;Child;0
@@ -1632,33 +1632,33 @@ TRADE_POACHER_SAW;LOST_WOODS;Poacher's Saw;OOT Lost Woods Poacher's Saw;npc;301;
 0x20601;LOST_WOODS;Butterfly 3;OOT Lost Woods Butterfly 3;butterfly;1037;926;LOST_WOODS;Child;0
 0x30601;LOST_WOODS;Butterfly 4;OOT Lost Woods Butterfly 4;butterfly;1018;935;LOST_WOODS;Child;0
 0x40601;LOST_WOODS;Butterfly 5;OOT Lost Woods Butterfly 5;butterfly;1035;946;LOST_WOODS;Child;0
-0x00021;MARKET_CHILD_DAY;Crate 1;OOT Market Crate 1;crate;0;0;MARKET_CHILD_DAY;All;0
-0x00022;MARKET_CHILD_DAY;Crate 2;OOT Market Crate 2;crate;0;0;MARKET_CHILD_DAY;All;0
-0x00023;MARKET_CHILD_DAY;Crate 3;OOT Market Crate 3;crate;0;0;MARKET_CHILD_DAY;All;0
-0x00024;MARKET_CHILD_DAY;Crate 4;OOT Market Crate 4;crate;0;0;MARKET_CHILD_DAY;All;0
-0x00017;MARKET_CHILD_DAY;Grass 1;OOT Market Grass 1;grass;0;0;MARKET_CHILD_DAY;All;0
-0x00018;MARKET_CHILD_DAY;Grass 2;OOT Market Grass 2;grass;0;0;MARKET_CHILD_DAY;All;0
-0x00019;MARKET_CHILD_DAY;Grass 3;OOT Market Grass 3;grass;0;0;MARKET_CHILD_DAY;All;0
-0x0001a;MARKET_CHILD_DAY;Grass 4;OOT Market Grass 4;grass;0;0;MARKET_CHILD_DAY;All;0
-0x0001b;MARKET_CHILD_DAY;Grass 5;OOT Market Grass 5;grass;0;0;MARKET_CHILD_DAY;All;0
-0x0001c;MARKET_CHILD_DAY;Grass 6;OOT Market Grass 6;grass;0;0;MARKET_CHILD_DAY;All;0
-0x0001d;MARKET_CHILD_DAY;Grass 7;OOT Market Grass 7;grass;0;0;MARKET_CHILD_DAY;All;0
-0x0001e;MARKET_CHILD_DAY;Grass 8;OOT Market Grass 8;grass;0;0;MARKET_CHILD_DAY;All;0
-0x0000f;MARKET_CHILD_DAY;Day - Balcony 1;OOT Market Wonder Item Day 1;wonder;0;0;MARKET_CHILD_DAY;All;0
-0x00010;MARKET_CHILD_DAY;Day - Balcony 2;OOT Market Wonder Item Day 2;wonder;0;0;MARKET_CHILD_DAY;All;0
-0x00011;MARKET_CHILD_DAY;Day - Balcony 3;OOT Market Wonder Item Day 3;wonder;0;0;MARKET_CHILD_DAY;All;0
-0x00012;MARKET_CHILD_DAY;Day - Balcony 4;OOT Market Wonder Item Day 4;wonder;0;0;MARKET_CHILD_DAY;All;0
-0x00013;MARKET_CHILD_DAY;Day - Balcony 5;OOT Market Wonder Item Day 5;wonder;0;0;MARKET_CHILD_DAY;All;0
-0x00005;MARKET_CHILD_NIGHT;Night - Balcony 1;OOT Market Wonder Item Night 1;wonder;0;0;MARKET_CHILD_NIGHT;All;0
-0x00006;MARKET_CHILD_NIGHT;Night - Balcony 2;OOT Market Wonder Item Night 2;wonder;0;0;MARKET_CHILD_NIGHT;All;0
-0x28;MARKET_POTION_SHOP;Item 1;OOT Market Potion Shop Item 1;shop;0;0;MARKET_POTION_SHOP;All;0
-0x29;MARKET_POTION_SHOP;Item 2;OOT Market Potion Shop Item 2;shop;0;0;MARKET_POTION_SHOP;All;0
-0x2a;MARKET_POTION_SHOP;Item 3;OOT Market Potion Shop Item 3;shop;0;0;MARKET_POTION_SHOP;All;0
-0x2b;MARKET_POTION_SHOP;Item 4;OOT Market Potion Shop Item 4;shop;0;0;MARKET_POTION_SHOP;All;0
-0x2c;MARKET_POTION_SHOP;Item 5;OOT Market Potion Shop Item 5;shop;0;0;MARKET_POTION_SHOP;All;0
-0x2d;MARKET_POTION_SHOP;Item 6;OOT Market Potion Shop Item 6;shop;0;0;MARKET_POTION_SHOP;All;0
-0x2e;MARKET_POTION_SHOP;Item 7;OOT Market Potion Shop Item 7;shop;0;0;MARKET_POTION_SHOP;All;0
-0x2f;MARKET_POTION_SHOP;Item 8;OOT Market Potion Shop Item 8;shop;0;0;MARKET_POTION_SHOP;All;0
+0x00021;MARKET_CHILD_DAY;Crate 1;OOT Market Crate 1;crate;438;41;MARKET_CHILD_DAY;All;0
+0x00022;MARKET_CHILD_DAY;Crate 2;OOT Market Crate 2;crate;410;41;MARKET_CHILD_DAY;All;0
+0x00023;MARKET_CHILD_DAY;Crate 3;OOT Market Crate 3;crate;721;372;MARKET_CHILD_DAY;All;0
+0x00024;MARKET_CHILD_DAY;Crate 4;OOT Market Crate 4;crate;724;474;MARKET_CHILD_DAY;All;0
+0x00017;MARKET_CHILD_DAY;Grass 1;OOT Market Grass 1;grass;518;212;MARKET_CHILD_DAY;All;0
+0x00018;MARKET_CHILD_DAY;Grass 2;OOT Market Grass 2;grass;518;153;MARKET_CHILD_DAY;All;0
+0x00019;MARKET_CHILD_DAY;Grass 3;OOT Market Grass 3;grass;518;99;MARKET_CHILD_DAY;All;0
+0x0001a;MARKET_CHILD_DAY;Grass 4;OOT Market Grass 4;grass;682;52;MARKET_CHILD_DAY;All;0
+0x0001b;MARKET_CHILD_DAY;Grass 5;OOT Market Grass 5;grass;697;53;MARKET_CHILD_DAY;All;0
+0x0001c;MARKET_CHILD_DAY;Grass 6;OOT Market Grass 6;grass;716;53;MARKET_CHILD_DAY;All;0
+0x0001d;MARKET_CHILD_DAY;Grass 7;OOT Market Grass 7;grass;417;418;MARKET_CHILD_DAY;All;0
+0x0001e;MARKET_CHILD_DAY;Grass 8;OOT Market Grass 8;grass;429;444;MARKET_CHILD_DAY;All;0
+0x0000f;MARKET_CHILD_DAY;Day - Balcony 1;OOT Market Wonder Item Day 1;wonder;202;118;MARKET_CHILD_DAY;All;0
+0x00010;MARKET_CHILD_DAY;Day - Balcony 2;OOT Market Wonder Item Day 2;wonder;200;179;MARKET_CHILD_DAY;All;0
+0x00011;MARKET_CHILD_DAY;Day - Balcony 3;OOT Market Wonder Item Day 3;wonder;199;238;MARKET_CHILD_DAY;All;0
+0x00012;MARKET_CHILD_DAY;Day - Balcony 4;OOT Market Wonder Item Day 4;wonder;197;298;MARKET_CHILD_DAY;All;0
+0x00013;MARKET_CHILD_DAY;Day - Balcony 5;OOT Market Wonder Item Day 5;wonder;198;363;MARKET_CHILD_DAY;All;0
+0x00005;MARKET_CHILD_NIGHT;Night - Balcony 1;OOT Market Wonder Item Night 1;wonder;200;168;MARKET_CHILD_NIGHT;All;0
+0x00006;MARKET_CHILD_NIGHT;Night - Balcony 2;OOT Market Wonder Item Night 2;wonder;196;314;MARKET_CHILD_NIGHT;All;0
+0x28;MARKET_POTION_SHOP;Item 1;OOT Market Potion Shop Item 1;shop;556;340;MARKET_POTION_SHOP;All;0
+0x29;MARKET_POTION_SHOP;Item 2;OOT Market Potion Shop Item 2;shop;500;340;MARKET_POTION_SHOP;All;0
+0x2a;MARKET_POTION_SHOP;Item 3;OOT Market Potion Shop Item 3;shop;416;340;MARKET_POTION_SHOP;All;0
+0x2b;MARKET_POTION_SHOP;Item 4;OOT Market Potion Shop Item 4;shop;360;340;MARKET_POTION_SHOP;All;0
+0x2c;MARKET_POTION_SHOP;Item 5;OOT Market Potion Shop Item 5;shop;556;297;MARKET_POTION_SHOP;All;0
+0x2d;MARKET_POTION_SHOP;Item 6;OOT Market Potion Shop Item 6;shop;500;297;MARKET_POTION_SHOP;All;0
+0x2e;MARKET_POTION_SHOP;Item 7;OOT Market Potion Shop Item 7;shop;416;297;MARKET_POTION_SHOP;All;0
+0x2f;MARKET_POTION_SHOP;Item 8;OOT Market Potion Shop Item 8;shop;360;297;MARKET_POTION_SHOP;All;0
 0x01;RANCH_HOUSE_SILO;Heart Piece;OOT Lon Lon Ranch Silo HP;collectible;0;0;SILO;All;0
 TALON_BOTTLE;RANCH_HOUSE_SILO;Bottle;OOT Lon Lon Ranch Talon Bottle;npc;0;0;RANCH_HOUSE_SILO;Child;0
 0x0200;RANCH_HOUSE_SILO;Pot 1;OOT Lon Lon Ranch Talon House Pot 1;pot;0;0;RANCH_HOUSE_SILO;All;0
@@ -1673,8 +1673,8 @@ SHEIK_FOREST;SACRED_FOREST_MEADOW;Minuet of Forest;OOT Sacred Meadow Sheik Song;
 0x0000e;SACRED_FOREST_MEADOW;Maze 3;OOT Sacred Meadow Wonder Item Maze 3;wonder;1039;209;SACRED_FOREST_MEADOW;All;0
 0x00010;SACRED_FOREST_MEADOW;Maze 4;OOT Sacred Meadow Wonder Item Maze 4;wonder;995;383;SACRED_FOREST_MEADOW;All;0
 0x00011;SACRED_FOREST_MEADOW;Maze 5;OOT Sacred Meadow Wonder Item Maze 5;wonder;1317;277;SACRED_FOREST_MEADOW;All;0
-SHOOTING_GAME_CHILD;SHOOTING_GALLERY;Reward;OOT Shooting Gallery Child;npc;0;0;MARKET_SHOOTING;All;0
-SHOOTING_GAME_ADULT;SHOOTING_GALLERY;Reward;OOT Shooting Gallery Adult;npc;0;0;KAKARIKO_SHOOTING;All;0
+SHOOTING_GAME_CHILD;SHOOTING_GALLERY;Reward;OOT Shooting Gallery Child;npc;616;354;MARKET_SHOOTING;All;0
+SHOOTING_GAME_ADULT;SHOOTING_GALLERY;Reward;OOT Shooting Gallery Adult;npc;616;354;KAKARIKO_SHOOTING;All;0
 0x01;TEMPLE_FIRE;Jail 1;OOT Fire Temple Jail 1 Chest;chest;0;0;TEMPLE_FIRE;All;0
 0x00;TEMPLE_FIRE;Boss Key - Side;OOT Fire Temple Boss Key Side Chest;chest;0;0;TEMPLE_FIRE;All;0
 0x0c;TEMPLE_FIRE;Boss Key;OOT Fire Temple Boss Key Chest;chest;0;0;TEMPLE_FIRE;All;0
@@ -1902,10 +1902,10 @@ SHOOTING_GAME_ADULT;SHOOTING_GALLERY;Reward;OOT Shooting Gallery Adult;npc;0;0;K
 0x00e07;TEMPLE_FOREST;Red Pool Room - Small Crate 1;OOT MQ Forest Temple Spinning Red Pool Room Small Crate 1;crate;0;0;MQ_TEMPLE_FOREST;All;0
 0x00e08;TEMPLE_FOREST;Red Pool Room - Small Crate 2;OOT MQ Forest Temple Spinning Red Pool Room Small Crate 2;crate;0;0;MQ_TEMPLE_FOREST;All;0
 0x00e09;TEMPLE_FOREST;Red Pool Room - Small Crate 3;OOT MQ Forest Temple Spinning Red Pool Room Small Crate 3;crate;0;0;MQ_TEMPLE_FOREST;All;0
-MASTER_SWORD;TEMPLE_OF_TIME;Master Sword;OOT Temple of Time Master Sword;npc;0;0;TEMPLE_OF_TIME;All;0
-LIGHT_MEDALLION;TEMPLE_OF_TIME;Light Medallion;OOT Temple of Time Medallion;npc;0;0;TEMPLE_OF_TIME;All;0
-SHEIK_LIGHT;TEMPLE_OF_TIME;Prelude of Light;OOT Temple of Time Sheik Song;npc;0;0;TEMPLE_OF_TIME;All;0
-ZELDA_LIGHT_ARROW;TEMPLE_OF_TIME;Light Arrows;OOT Temple of Time Light Arrows;npc;0;0;TEMPLE_OF_TIME;All;0
+MASTER_SWORD;TEMPLE_OF_TIME;Master Sword;OOT Temple of Time Master Sword;npc;587;327;TEMPLE_OF_TIME;All;0
+LIGHT_MEDALLION;TEMPLE_OF_TIME;Light Medallion;OOT Temple of Time Medallion;npc;561;328;TEMPLE_OF_TIME;All;0
+SHEIK_LIGHT;TEMPLE_OF_TIME;Prelude of Light;OOT Temple of Time Sheik Song;npc;574;297;TEMPLE_OF_TIME;All;0
+ZELDA_LIGHT_ARROW;TEMPLE_OF_TIME;Light Arrows;OOT Temple of Time Light Arrows;npc;149;329;TEMPLE_OF_TIME;All;0
 0x01;TEMPLE_SHADOW;Map;OOT Shadow Temple Map;chest;0;0;TEMPLE_SHADOW;All;0
 0x07;TEMPLE_SHADOW;Hover Boots;OOT Shadow Temple Hover Boots;chest;0;0;TEMPLE_SHADOW;All;0
 0x02;TEMPLE_SHADOW;Silver Rupees;OOT Shadow Temple Silver Rupees;chest;0;0;TEMPLE_SHADOW;All;0
@@ -2474,64 +2474,64 @@ GERUDO_CARD;THIEVES_HIDEOUT;Gerudo Member Card;OOT Gerudo Member Card;npc;0;0;TH
 0x00003;THIEVES_HIDEOUT;Break Room - Top Skull;OOT Gerudo Fortress Wonder Item Break Room Top;wonder;0;0;THIEVES_HIDEOUT;All;0
 0x00303;THIEVES_HIDEOUT;Kitchen - Skull;OOT Gerudo Fortress Wonder Item Kitchen Skull;wonder;0;0;THIEVES_HIDEOUT;All;0
 0x00304;THIEVES_HIDEOUT;Kitchen - Soup;OOT Gerudo Fortress Wonder Item Kitchen Soup;wonder;0;0;THIEVES_HIDEOUT;All;0
-0x00;TOMB_DAMPE_WINDMILL;Hookshot;OOT Graveyard Dampe Tomb Reward 1;chest;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x07;TOMB_DAMPE_WINDMILL;Heart Piece;OOT Graveyard Dampe Tomb Reward 2;collectible;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x0000;TOMB_DAMPE_WINDMILL;Pot 1;OOT Graveyard Dampe Tomb Pot 1;pot;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x0001;TOMB_DAMPE_WINDMILL;Pot 2;OOT Graveyard Dampe Tomb Pot 2;pot;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x0002;TOMB_DAMPE_WINDMILL;Pot 3;OOT Graveyard Dampe Tomb Pot 3;pot;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x0003;TOMB_DAMPE_WINDMILL;Pot 4;OOT Graveyard Dampe Tomb Pot 4;pot;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x0004;TOMB_DAMPE_WINDMILL;Pot 5;OOT Graveyard Dampe Tomb Pot 5;pot;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x0005;TOMB_DAMPE_WINDMILL;Pot 6;OOT Graveyard Dampe Tomb Pot 6;pot;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x00100;TOMB_DAMPE_WINDMILL;Rupee 1;OOT Graveyard Dampe Tomb Rupee 1;rupee;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x00101;TOMB_DAMPE_WINDMILL;Rupee 2;OOT Graveyard Dampe Tomb Rupee 2;rupee;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x00102;TOMB_DAMPE_WINDMILL;Rupee 3;OOT Graveyard Dampe Tomb Rupee 3;rupee;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x00200;TOMB_DAMPE_WINDMILL;Rupee 4;OOT Graveyard Dampe Tomb Rupee 4;rupee;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x00201;TOMB_DAMPE_WINDMILL;Rupee 5;OOT Graveyard Dampe Tomb Rupee 5;rupee;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x00202;TOMB_DAMPE_WINDMILL;Rupee 6;OOT Graveyard Dampe Tomb Rupee 6;rupee;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x00300;TOMB_DAMPE_WINDMILL;Rupee 7;OOT Graveyard Dampe Tomb Rupee 7;rupee;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x00301;TOMB_DAMPE_WINDMILL;Rupee 8;OOT Graveyard Dampe Tomb Rupee 8;rupee;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x00105;TOMB_DAMPE_WINDMILL;Invisible Item 1;OOT Graveyard Dampe Tomb Wonder Item 01;wonder;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x00106;TOMB_DAMPE_WINDMILL;Invisible Item 2;OOT Graveyard Dampe Tomb Wonder Item 02;wonder;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x00107;TOMB_DAMPE_WINDMILL;Invisible Item 3;OOT Graveyard Dampe Tomb Wonder Item 03;wonder;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x00108;TOMB_DAMPE_WINDMILL;Invisible Item 4;OOT Graveyard Dampe Tomb Wonder Item 04;wonder;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x00109;TOMB_DAMPE_WINDMILL;Invisible Item 5;OOT Graveyard Dampe Tomb Wonder Item 05;wonder;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x00207;TOMB_DAMPE_WINDMILL;Invisible Item 6;OOT Graveyard Dampe Tomb Wonder Item 06;wonder;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x00208;TOMB_DAMPE_WINDMILL;Invisible Item 7;OOT Graveyard Dampe Tomb Wonder Item 07;wonder;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x00209;TOMB_DAMPE_WINDMILL;Invisible Item 8;OOT Graveyard Dampe Tomb Wonder Item 08;wonder;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x0020a;TOMB_DAMPE_WINDMILL;Invisible Item 9;OOT Graveyard Dampe Tomb Wonder Item 09;wonder;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x0020b;TOMB_DAMPE_WINDMILL;Invisible Item 10;OOT Graveyard Dampe Tomb Wonder Item 10;wonder;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x00308;TOMB_DAMPE_WINDMILL;Invisible Item 11;OOT Graveyard Dampe Tomb Wonder Item 11;wonder;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x00309;TOMB_DAMPE_WINDMILL;Invisible Item 12;OOT Graveyard Dampe Tomb Wonder Item 12;wonder;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x0030a;TOMB_DAMPE_WINDMILL;Invisible Item 13;OOT Graveyard Dampe Tomb Wonder Item 13;wonder;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x0030b;TOMB_DAMPE_WINDMILL;Invisible Item 14;OOT Graveyard Dampe Tomb Wonder Item 14;wonder;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x0030c;TOMB_DAMPE_WINDMILL;Invisible Item 15;OOT Graveyard Dampe Tomb Wonder Item 15;wonder;0;0;TOMB_DAMPE_WINDMILL;All;0
-0x01;TOMB_DAMPE_WINDMILL;Heart Piece;OOT Windmill HP;collectible;0;0;WINDMILL;All;0
-SONG_STORMS;TOMB_DAMPE_WINDMILL;Song of Storms;OOT Windmill Song of Storms;npc;0;0;WINDMILL;Adult;0
-0x00;TOMB_FAIRY;Chest;OOT Graveyard Fairy Tomb;chest;0;0;TOMB_FAIRY;All;0
-0x00005;TOMB_FAIRY;Fairy 1;OOT Graveyard Fairy Fountain Fairy 1;fairy;0;0;TOMB_FAIRY;All;0
-0x10005;TOMB_FAIRY;Fairy 2;OOT Graveyard Fairy Fountain Fairy 2;fairy;0;0;TOMB_FAIRY;All;0
-0x20005;TOMB_FAIRY;Fairy 3;OOT Graveyard Fairy Fountain Fairy 3;fairy;0;0;TOMB_FAIRY;All;0
-0x30005;TOMB_FAIRY;Fairy 4;OOT Graveyard Fairy Fountain Fairy 4;fairy;0;0;TOMB_FAIRY;All;0
-0x40005;TOMB_FAIRY;Fairy 5;OOT Graveyard Fairy Fountain Fairy 5;fairy;0;0;TOMB_FAIRY;All;0
-0x50005;TOMB_FAIRY;Fairy 6;OOT Graveyard Fairy Fountain Fairy 6;fairy;0;0;TOMB_FAIRY;All;0
-0x60005;TOMB_FAIRY;Fairy 7;OOT Graveyard Fairy Fountain Fairy 7;fairy;0;0;TOMB_FAIRY;All;0
-0x70005;TOMB_FAIRY;Fairy 8;OOT Graveyard Fairy Fountain Fairy 8;fairy;0;0;TOMB_FAIRY;All;0
-0x00;TOMB_REDEAD;ReDead;OOT Graveyard ReDead Tomb;chest;0;0;TOMB_REDEAD;All;0
-ROYAL_TOMB_SONG;TOMB_ROYAL;Sun's Song;OOT Graveyard Royal Tomb Song;npc;0;0;TOMB_ROYAL;All;0
-0x00;TOMB_ROYAL;Torches;OOT Graveyard Royal Tomb Chest;chest;0;0;TOMB_ROYAL;All;0
-0x00008;TOMB_ROYAL;Skull;OOT Graveyard Royal Tomb Big Fairy;fairy_spot;0;0;TOMB_ROYAL;All;0
-CHEST_GAME_KEY;TREASURE_SHOP;Buy Key;OOT Treasure Chest Game Buy Key;npc;0;0;TREASURE_SHOP;All;0
-0x00;TREASURE_SHOP;Room 1 - Left;OOT Treasure Chest Game Room 1 Chest Left;chest;0;0;TREASURE_SHOP;All;0
-0x01;TREASURE_SHOP;Room 1 - Right;OOT Treasure Chest Game Room 1 Chest Right;chest;0;0;TREASURE_SHOP;All;0
-0x02;TREASURE_SHOP;Room 2 - Left;OOT Treasure Chest Game Room 2 Chest Left;chest;0;0;TREASURE_SHOP;All;0
-0x03;TREASURE_SHOP;Room 2 - Right;OOT Treasure Chest Game Room 2 Chest Right;chest;0;0;TREASURE_SHOP;All;0
-0x04;TREASURE_SHOP;Room 3 - Left;OOT Treasure Chest Game Room 3 Chest Left;chest;0;0;TREASURE_SHOP;All;0
-0x05;TREASURE_SHOP;Room 3 - Right;OOT Treasure Chest Game Room 3 Chest Right;chest;0;0;TREASURE_SHOP;All;0
-0x06;TREASURE_SHOP;Room 4 - Left;OOT Treasure Chest Game Room 4 Chest Left;chest;0;0;TREASURE_SHOP;All;0
-0x07;TREASURE_SHOP;Room 4 - Right;OOT Treasure Chest Game Room 4 Chest Right;chest;0;0;TREASURE_SHOP;All;0
-0x08;TREASURE_SHOP;Room 5 - Left;OOT Treasure Chest Game Room 5 Chest Left;chest;0;0;TREASURE_SHOP;All;0
-0x09;TREASURE_SHOP;Room 5 - Right;OOT Treasure Chest Game Room 5 Chest Right;chest;0;0;TREASURE_SHOP;All;0
-0x0a;TREASURE_SHOP;Heart Piece;OOT Treasure Chest Game HP;chest;0;0;TREASURE_SHOP;All;0
+0x00;TOMB_DAMPE_WINDMILL;Hookshot;OOT Graveyard Dampe Tomb Reward 1;chest;196;728;TOMB_DAMPE_WINDMILL;All;0
+0x07;TOMB_DAMPE_WINDMILL;Heart Piece;OOT Graveyard Dampe Tomb Reward 2;collectible;196;750;TOMB_DAMPE_WINDMILL;All;0
+0x0000;TOMB_DAMPE_WINDMILL;Pot 1;OOT Graveyard Dampe Tomb Pot 1;pot;265;45;TOMB_DAMPE_WINDMILL;All;0
+0x0001;TOMB_DAMPE_WINDMILL;Pot 2;OOT Graveyard Dampe Tomb Pot 2;pot;249;45;TOMB_DAMPE_WINDMILL;All;0
+0x0002;TOMB_DAMPE_WINDMILL;Pot 3;OOT Graveyard Dampe Tomb Pot 3;pot;257;34;TOMB_DAMPE_WINDMILL;All;0
+0x0003;TOMB_DAMPE_WINDMILL;Pot 4;OOT Graveyard Dampe Tomb Pot 4;pot;265;146;TOMB_DAMPE_WINDMILL;All;0
+0x0004;TOMB_DAMPE_WINDMILL;Pot 5;OOT Graveyard Dampe Tomb Pot 5;pot;249;146;TOMB_DAMPE_WINDMILL;All;0
+0x0005;TOMB_DAMPE_WINDMILL;Pot 6;OOT Graveyard Dampe Tomb Pot 6;pot;257;157;TOMB_DAMPE_WINDMILL;All;0
+0x00100;TOMB_DAMPE_WINDMILL;Rupee 1;OOT Graveyard Dampe Tomb Rupee 1;rupee;505;185;TOMB_DAMPE_WINDMILL;All;0
+0x00101;TOMB_DAMPE_WINDMILL;Rupee 2;OOT Graveyard Dampe Tomb Rupee 2;rupee;599;211;TOMB_DAMPE_WINDMILL;All;0
+0x00102;TOMB_DAMPE_WINDMILL;Rupee 3;OOT Graveyard Dampe Tomb Rupee 3;rupee;940;259;TOMB_DAMPE_WINDMILL;All;0
+0x00200;TOMB_DAMPE_WINDMILL;Rupee 4;OOT Graveyard Dampe Tomb Rupee 4;rupee;1100;220;TOMB_DAMPE_WINDMILL;All;0
+0x00201;TOMB_DAMPE_WINDMILL;Rupee 5;OOT Graveyard Dampe Tomb Rupee 5;rupee;1125;410;TOMB_DAMPE_WINDMILL;All;0
+0x00202;TOMB_DAMPE_WINDMILL;Rupee 6;OOT Graveyard Dampe Tomb Rupee 6;rupee;904;603;TOMB_DAMPE_WINDMILL;All;0
+0x00300;TOMB_DAMPE_WINDMILL;Rupee 7;OOT Graveyard Dampe Tomb Rupee 7;rupee;717;646;TOMB_DAMPE_WINDMILL;All;0
+0x00301;TOMB_DAMPE_WINDMILL;Rupee 8;OOT Graveyard Dampe Tomb Rupee 8;rupee;581;422;TOMB_DAMPE_WINDMILL;All;0
+0x00105;TOMB_DAMPE_WINDMILL;Invisible Item 1;OOT Graveyard Dampe Tomb Wonder Item 01;wonder;488;188;TOMB_DAMPE_WINDMILL;All;0
+0x00106;TOMB_DAMPE_WINDMILL;Invisible Item 2;OOT Graveyard Dampe Tomb Wonder Item 02;wonder;469;189;TOMB_DAMPE_WINDMILL;All;0
+0x00107;TOMB_DAMPE_WINDMILL;Invisible Item 3;OOT Graveyard Dampe Tomb Wonder Item 03;wonder;469;205;TOMB_DAMPE_WINDMILL;All;0
+0x00108;TOMB_DAMPE_WINDMILL;Invisible Item 4;OOT Graveyard Dampe Tomb Wonder Item 04;wonder;468;223;TOMB_DAMPE_WINDMILL;All;0
+0x00109;TOMB_DAMPE_WINDMILL;Invisible Item 5;OOT Graveyard Dampe Tomb Wonder Item 05;wonder;600;230;TOMB_DAMPE_WINDMILL;All;0
+0x00207;TOMB_DAMPE_WINDMILL;Invisible Item 6;OOT Graveyard Dampe Tomb Wonder Item 06;wonder;1138;220;TOMB_DAMPE_WINDMILL;All;0
+0x00208;TOMB_DAMPE_WINDMILL;Invisible Item 7;OOT Graveyard Dampe Tomb Wonder Item 07;wonder;1146;176;TOMB_DAMPE_WINDMILL;All;0
+0x00209;TOMB_DAMPE_WINDMILL;Invisible Item 8;OOT Graveyard Dampe Tomb Wonder Item 08;wonder;1127;452;TOMB_DAMPE_WINDMILL;All;0
+0x0020a;TOMB_DAMPE_WINDMILL;Invisible Item 9;OOT Graveyard Dampe Tomb Wonder Item 09;wonder;895;640;TOMB_DAMPE_WINDMILL;All;0
+0x0020b;TOMB_DAMPE_WINDMILL;Invisible Item 10;OOT Graveyard Dampe Tomb Wonder Item 10;wonder;947;639;TOMB_DAMPE_WINDMILL;All;0
+0x00308;TOMB_DAMPE_WINDMILL;Invisible Item 11;OOT Graveyard Dampe Tomb Wonder Item 11;wonder;691;679;TOMB_DAMPE_WINDMILL;All;0
+0x00309;TOMB_DAMPE_WINDMILL;Invisible Item 12;OOT Graveyard Dampe Tomb Wonder Item 12;wonder;663;680;TOMB_DAMPE_WINDMILL;All;0
+0x0030a;TOMB_DAMPE_WINDMILL;Invisible Item 13;OOT Graveyard Dampe Tomb Wonder Item 13;wonder;640;660;TOMB_DAMPE_WINDMILL;All;0
+0x0030b;TOMB_DAMPE_WINDMILL;Invisible Item 14;OOT Graveyard Dampe Tomb Wonder Item 14;wonder;641;605;TOMB_DAMPE_WINDMILL;All;0
+0x0030c;TOMB_DAMPE_WINDMILL;Invisible Item 15;OOT Graveyard Dampe Tomb Wonder Item 15;wonder;583;380;TOMB_DAMPE_WINDMILL;All;0
+0x01;TOMB_DAMPE_WINDMILL;Heart Piece;OOT Windmill HP;collectible;692;527;WINDMILL;All;0
+SONG_STORMS;TOMB_DAMPE_WINDMILL;Song of Storms;OOT Windmill Song of Storms;npc;430;403;WINDMILL;Adult;0
+0x00;TOMB_FAIRY;Chest;OOT Graveyard Fairy Tomb;chest;650;240;TOMB_FAIRY;All;0
+0x00005;TOMB_FAIRY;Fairy 1;OOT Graveyard Fairy Fountain Fairy 1;fairy;296;439;TOMB_FAIRY;All;0
+0x10005;TOMB_FAIRY;Fairy 2;OOT Graveyard Fairy Fountain Fairy 2;fairy;311;434;TOMB_FAIRY;All;0
+0x20005;TOMB_FAIRY;Fairy 3;OOT Graveyard Fairy Fountain Fairy 3;fairy;281;433;TOMB_FAIRY;All;0
+0x30005;TOMB_FAIRY;Fairy 4;OOT Graveyard Fairy Fountain Fairy 4;fairy;296;421;TOMB_FAIRY;All;0
+0x40005;TOMB_FAIRY;Fairy 5;OOT Graveyard Fairy Fountain Fairy 5;fairy;314;419;TOMB_FAIRY;All;0
+0x50005;TOMB_FAIRY;Fairy 6;OOT Graveyard Fairy Fountain Fairy 6;fairy;278;419;TOMB_FAIRY;All;0
+0x60005;TOMB_FAIRY;Fairy 7;OOT Graveyard Fairy Fountain Fairy 7;fairy;303;406;TOMB_FAIRY;All;0
+0x70005;TOMB_FAIRY;Fairy 8;OOT Graveyard Fairy Fountain Fairy 8;fairy;286;406;TOMB_FAIRY;All;0
+0x00;TOMB_REDEAD;ReDead;OOT Graveyard ReDead Tomb;chest;470;495;TOMB_REDEAD;All;0
+ROYAL_TOMB_SONG;TOMB_ROYAL;Sun's Song;OOT Graveyard Royal Tomb Song;npc;149;24;TOMB_ROYAL;All;0
+0x00;TOMB_ROYAL;Torches;OOT Graveyard Royal Tomb Chest;chest;150;522;TOMB_ROYAL;All;0
+0x00008;TOMB_ROYAL;Skull;OOT Graveyard Royal Tomb Big Fairy;fairy_spot;111;506;TOMB_ROYAL;All;0
+CHEST_GAME_KEY;TREASURE_SHOP;Buy Key;OOT Treasure Chest Game Buy Key;npc;874;67;TREASURE_SHOP;All;0
+0x00;TREASURE_SHOP;Room 1 - Left;OOT Treasure Chest Game Room 1 Chest Left;chest;757;111;TREASURE_SHOP;All;0
+0x01;TREASURE_SHOP;Room 1 - Right;OOT Treasure Chest Game Room 1 Chest Right;chest;757;38;TREASURE_SHOP;All;0
+0x02;TREASURE_SHOP;Room 2 - Left;OOT Treasure Chest Game Room 2 Chest Left;chest;618;111;TREASURE_SHOP;All;0
+0x03;TREASURE_SHOP;Room 2 - Right;OOT Treasure Chest Game Room 2 Chest Right;chest;618;38;TREASURE_SHOP;All;0
+0x04;TREASURE_SHOP;Room 3 - Left;OOT Treasure Chest Game Room 3 Chest Left;chest;483;111;TREASURE_SHOP;All;0
+0x05;TREASURE_SHOP;Room 3 - Right;OOT Treasure Chest Game Room 3 Chest Right;chest;483;38;TREASURE_SHOP;All;0
+0x06;TREASURE_SHOP;Room 4 - Left;OOT Treasure Chest Game Room 4 Chest Left;chest;362;111;TREASURE_SHOP;All;0
+0x07;TREASURE_SHOP;Room 4 - Right;OOT Treasure Chest Game Room 4 Chest Right;chest;362;38;TREASURE_SHOP;All;0
+0x08;TREASURE_SHOP;Room 5 - Left;OOT Treasure Chest Game Room 5 Chest Left;chest;233;111;TREASURE_SHOP;All;0
+0x09;TREASURE_SHOP;Room 5 - Right;OOT Treasure Chest Game Room 5 Chest Right;chest;233;38;TREASURE_SHOP;All;0
+0x0a;TREASURE_SHOP;Heart Piece;OOT Treasure Chest Game HP;chest;86;74;TREASURE_SHOP;All;0
 0x00;ZORA_DOMAIN;Heart Piece;OOT Zora Domain Waterfall Chest;chest;0;0;ZORA_DOMAIN;Child;0
 ZORA_DIVING_GAME;ZORA_DOMAIN;Silver Scale;OOT Zora Domain Diving Game;npc;0;0;ZORA_DOMAIN;Child;0
 0x1;ZORA_DOMAIN;Diving Game - Green Rupee;OOT Zora Domain Diving Game Green Rupee;collectible;0;0;ZORA_DOMAIN;Child;0
@@ -2580,70 +2580,70 @@ TRADE_EYEBALL_FROG;ZORA_DOMAIN;Eyeball Frog;OOT Zora Domain Eyeball Frog;npc;0;0
 0x0800f;ZORA_FOUNTAIN;Underwater 16;OOT Zora Fountain Rupee 16;rupee;0;0;ZORA_FOUNTAIN;Adult;0
 0x08010;ZORA_FOUNTAIN;Underwater 17;OOT Zora Fountain Rupee 17;rupee;0;0;ZORA_FOUNTAIN;Adult;0
 0x08011;ZORA_FOUNTAIN;Underwater 18;OOT Zora Fountain Rupee 18;rupee;0;0;ZORA_FOUNTAIN;Adult;0
-0x0000e;ZORA_FOUNTAIN;Butterfly 1;OOT Zora Fountain Butterfly 1;butterfly;0;0;ZORA_FOUNTAIN;All;0
-0x1000e;ZORA_FOUNTAIN;Butterfly 2;OOT Zora Fountain Butterfly 2;butterfly;0;0;ZORA_FOUNTAIN;All;0
-0x04;ZORA_RIVER;Pillar - Heart Piece;OOT Zora River HP Pillar;collectible;0;0;ZORA_RIVER;All;0
-0x0b;ZORA_RIVER;Platform - Heart Piece;OOT Zora River HP Platform;collectible;0;0;ZORA_RIVER;All;0
-BEAN_SELLER;ZORA_RIVER;Bean Seller;OOT Zora River Bean Seller;npc;0;0;ZORA_RIVER;Child;0
-FROGS_STORMS;ZORA_RIVER;Frogs - Song of Storms;OOT Zora River Frogs Storms;npc;0;0;ZORA_RIVER;Child;0
-FROGS_GAME;ZORA_RIVER;Frogs - Game;OOT Zora River Frogs Game;npc;0;0;ZORA_RIVER;Child;0
-0x91;ZORA_RIVER;Tree;OOT Zora River GS Tree;gs;0;0;ZORA_RIVER;Child;0
-0x90;ZORA_RIVER;Ladder;OOT Zora River GS Ladder;gs;0;0;ZORA_RIVER;Child;0
-0x94;ZORA_RIVER;Near Grotto;OOT Zora River GS Near Grotto;gs;0;0;ZORA_RIVER;Adult;0
-0x93;ZORA_RIVER;Near Bridge;OOT Zora River GS Near Bridge;gs;0;0;ZORA_RIVER;Adult;0
-0x00034;ZORA_RIVER;Platform;OOT Zora River Grass;grass;0;0;ZORA_RIVER;All;0
-0x00035;ZORA_RIVER;Bush 1;OOT Zora River Grass Pack Bush 01;grass;0;0;ZORA_RIVER;All;0
-0x10035;ZORA_RIVER;Bush 2;OOT Zora River Grass Pack Bush 02;grass;0;0;ZORA_RIVER;All;0
-0x20035;ZORA_RIVER;Bush 3;OOT Zora River Grass Pack Bush 03;grass;0;0;ZORA_RIVER;All;0
-0x30035;ZORA_RIVER;Bush 4;OOT Zora River Grass Pack Bush 04;grass;0;0;ZORA_RIVER;All;0
-0x40035;ZORA_RIVER;Bush 5;OOT Zora River Grass Pack Bush 05;grass;0;0;ZORA_RIVER;All;0
-0x50035;ZORA_RIVER;Bush 6;OOT Zora River Grass Pack Bush 06;grass;0;0;ZORA_RIVER;All;0
-0x60035;ZORA_RIVER;Bush 7;OOT Zora River Grass Pack Bush 07;grass;0;0;ZORA_RIVER;All;0
-0x70035;ZORA_RIVER;Bush 8;OOT Zora River Grass Pack Bush 08;grass;0;0;ZORA_RIVER;All;0
-0x80035;ZORA_RIVER;Bush 9;OOT Zora River Grass Pack Bush 09;grass;0;0;ZORA_RIVER;All;0
-0x90035;ZORA_RIVER;Bush 10;OOT Zora River Grass Pack Bush 10;grass;0;0;ZORA_RIVER;All;0
-0xa0035;ZORA_RIVER;Bush 11;OOT Zora River Grass Pack Bush 11;grass;0;0;ZORA_RIVER;All;0
-0xb0035;ZORA_RIVER;Bush 12;OOT Zora River Grass Pack Bush 12;grass;0;0;ZORA_RIVER;All;0
-0x00037;ZORA_RIVER;Near Beans 1;OOT Zora River Butterfly Near Beans 1;butterfly;0;0;ZORA_RIVER;All;0
-0x10037;ZORA_RIVER;Near Beans 2;OOT Zora River Butterfly Near Beans 2;butterfly;0;0;ZORA_RIVER;All;0
-0x0010a;ZORA_RIVER;Near Waterfall 1;OOT Zora River Butterfly Near Waterfall 1;butterfly;0;0;ZORA_RIVER;All;0
-0x1010a;ZORA_RIVER;Near Waterfall 2;OOT Zora River Butterfly Near Waterfall 2;butterfly;0;0;ZORA_RIVER;All;0
-0x2010a;ZORA_RIVER;Near Waterfall 3;OOT Zora River Butterfly Near Waterfall 3;butterfly;0;0;ZORA_RIVER;All;0
-0x08101;ZORA_RIVER;River 1;OOT Zora River Rupee 1;rupee;0;0;ZORA_RIVER;All;0
-0x08102;ZORA_RIVER;River 2;OOT Zora River Rupee 2;rupee;0;0;ZORA_RIVER;All;0
-0x08103;ZORA_RIVER;River 3;OOT Zora River Rupee 3;rupee;0;0;ZORA_RIVER;All;0
-0x08104;ZORA_RIVER;River 4;OOT Zora River Rupee 4;rupee;0;0;ZORA_RIVER;All;0
-0x00010;ZORA_RIVER;Front 1;OOT Zora River Wonder Item Front 1;wonder;0;0;ZORA_RIVER;All;0
-0x00011;ZORA_RIVER;Front 2;OOT Zora River Wonder Item Front 2;wonder;0;0;ZORA_RIVER;All;0
-0x00012;ZORA_RIVER;Front 3;OOT Zora River Wonder Item Front 3;wonder;0;0;ZORA_RIVER;All;0
-0x00013;ZORA_RIVER;Front 4;OOT Zora River Wonder Item Front 4;wonder;0;0;ZORA_RIVER;All;0
-0x0000f;ZORA_RIVER;Back 1;OOT Zora River Wonder Item Back 01;wonder;0;0;ZORA_RIVER;All;0
-0x00014;ZORA_RIVER;Back 2;OOT Zora River Wonder Item Back 02;wonder;0;0;ZORA_RIVER;All;0
-0x00015;ZORA_RIVER;Back 3;OOT Zora River Wonder Item Back 03;wonder;0;0;ZORA_RIVER;All;0
-0x00016;ZORA_RIVER;Back 4;OOT Zora River Wonder Item Back 04;wonder;0;0;ZORA_RIVER;All;0
-0x00017;ZORA_RIVER;Back 5;OOT Zora River Wonder Item Back 05;wonder;0;0;ZORA_RIVER;All;0
-0x00018;ZORA_RIVER;Back 6;OOT Zora River Wonder Item Back 06;wonder;0;0;ZORA_RIVER;All;0
-0x00019;ZORA_RIVER;Back 7;OOT Zora River Wonder Item Back 07;wonder;0;0;ZORA_RIVER;All;0
-0x0001a;ZORA_RIVER;Back 8;OOT Zora River Wonder Item Back 08;wonder;0;0;ZORA_RIVER;All;0
-0x0001b;ZORA_RIVER;Back 9;OOT Zora River Wonder Item Back 09;wonder;0;0;ZORA_RIVER;All;0
-0x0001c;ZORA_RIVER;Back 10;OOT Zora River Wonder Item Back 10;wonder;0;0;ZORA_RIVER;All;0
-0x0001d;ZORA_RIVER;Back 11;OOT Zora River Wonder Item Back 11;wonder;0;0;ZORA_RIVER;All;0
-0x0001e;ZORA_RIVER;Back 12;OOT Zora River Wonder Item Back 12;wonder;0;0;ZORA_RIVER;All;0
-0x0001f;ZORA_RIVER;Back 13;OOT Zora River Wonder Item Back 13;wonder;0;0;ZORA_RIVER;All;0
-0x00020;ZORA_RIVER;Back 14;OOT Zora River Wonder Item Back 14;wonder;0;0;ZORA_RIVER;All;0
-0x00021;ZORA_RIVER;Back 15;OOT Zora River Wonder Item Back 15;wonder;0;0;ZORA_RIVER;All;0
-0x00022;ZORA_RIVER;Back 16;OOT Zora River Wonder Item Back 16;wonder;0;0;ZORA_RIVER;All;0
-0x00023;ZORA_RIVER;Back 17;OOT Zora River Wonder Item Back 17;wonder;0;0;ZORA_RIVER;All;0
-0x00024;ZORA_RIVER;Back 18;OOT Zora River Wonder Item Back 18;wonder;0;0;ZORA_RIVER;All;0
-0x00025;ZORA_RIVER;Back 19;OOT Zora River Wonder Item Back 19;wonder;0;0;ZORA_RIVER;All;0
-0x00026;ZORA_RIVER;Back 20;OOT Zora River Wonder Item Back 20;wonder;0;0;ZORA_RIVER;All;0
-0x00027;ZORA_RIVER;Back 21;OOT Zora River Wonder Item Back 21;wonder;0;0;ZORA_RIVER;All;0
-0x00028;ZORA_RIVER;Back 22;OOT Zora River Wonder Item Back 22;wonder;0;0;ZORA_RIVER;All;0
-0x00029;ZORA_RIVER;Back 23;OOT Zora River Wonder Item Back 23;wonder;0;0;ZORA_RIVER;All;0
-0x00105;ZORA_RIVER;Back 24;OOT Zora River Wonder Item Back 24;wonder;0;0;ZORA_RIVER;All;0
-0x00106;ZORA_RIVER;Back 25;OOT Zora River Wonder Item Back 25;wonder;0;0;ZORA_RIVER;All;0
-0x00107;ZORA_RIVER;Back 26;OOT Zora River Wonder Item Back 26;wonder;0;0;ZORA_RIVER;All;0
-0x00108;ZORA_RIVER;Back 27;OOT Zora River Wonder Item Back 27;wonder;0;0;ZORA_RIVER;All;0
+0x0000e;ZORA_FOUNTAIN;Butterfly 1;OOT Zora Fountain Butterfly 1;butterfly;0;0;ZORA_FOUNTAIN;Child;0
+0x1000e;ZORA_FOUNTAIN;Butterfly 2;OOT Zora Fountain Butterfly 2;butterfly;0;0;ZORA_FOUNTAIN;Child;0
+0x04;ZORA_RIVER;Pillar - Heart Piece;OOT Zora River HP Pillar;collectible;940;653;ZORA_RIVER;All;0
+0x0b;ZORA_RIVER;Platform - Heart Piece;OOT Zora River HP Platform;collectible;236;757;ZORA_RIVER;All;0
+BEAN_SELLER;ZORA_RIVER;Bean Seller;OOT Zora River Bean Seller;npc;1133;451;ZORA_RIVER;Child;0
+FROGS_STORMS;ZORA_RIVER;Frogs - Song of Storms;OOT Zora River Frogs Storms;npc;807;642;ZORA_RIVER;Child;0
+FROGS_GAME;ZORA_RIVER;Frogs - Game;OOT Zora River Frogs Game;npc;785;628;ZORA_RIVER;Child;0
+0x91;ZORA_RIVER;Tree;OOT Zora River GS Tree;gs;1318;306;ZORA_RIVER;Child;0
+0x90;ZORA_RIVER;Ladder;OOT Zora River GS Ladder;gs;226;736;ZORA_RIVER;Child;0
+0x94;ZORA_RIVER;Near Grotto;OOT Zora River GS Near Grotto;gs;1018;338;ZORA_RIVER;Adult;0
+0x93;ZORA_RIVER;Near Bridge;OOT Zora River GS Near Bridge;gs;394;718;ZORA_RIVER;Adult;0
+0x00034;ZORA_RIVER;Platform;OOT Zora River Grass;grass;971;704;ZORA_RIVER;All;0
+0x00035;ZORA_RIVER;Bush 1;OOT Zora River Grass Pack Bush 01;grass;1258;236;ZORA_RIVER;Child;0
+0x10035;ZORA_RIVER;Bush 2;OOT Zora River Grass Pack Bush 02;grass;1261;255;ZORA_RIVER;Child;0
+0x20035;ZORA_RIVER;Bush 3;OOT Zora River Grass Pack Bush 03;grass;1269;261;ZORA_RIVER;Child;0
+0x30035;ZORA_RIVER;Bush 4;OOT Zora River Grass Pack Bush 04;grass;1291;246;ZORA_RIVER;Child;0
+0x40035;ZORA_RIVER;Bush 5;OOT Zora River Grass Pack Bush 05;grass;1274;244;ZORA_RIVER;Child;0
+0x50035;ZORA_RIVER;Bush 6;OOT Zora River Grass Pack Bush 06;grass;1256;246;ZORA_RIVER;Child;0
+0x60035;ZORA_RIVER;Bush 7;OOT Zora River Grass Pack Bush 07;grass;1279;262;ZORA_RIVER;Child;0
+0x70035;ZORA_RIVER;Bush 8;OOT Zora River Grass Pack Bush 08;grass;1288;256;ZORA_RIVER;Child;0
+0x80035;ZORA_RIVER;Bush 9;OOT Zora River Grass Pack Bush 09;grass;1290;236;ZORA_RIVER;Child;0
+0x90035;ZORA_RIVER;Bush 10;OOT Zora River Grass Pack Bush 10;grass;1284;228;ZORA_RIVER;Child;0
+0xa0035;ZORA_RIVER;Bush 11;OOT Zora River Grass Pack Bush 11;grass;1274;226;ZORA_RIVER;Child;0
+0xb0035;ZORA_RIVER;Bush 12;OOT Zora River Grass Pack Bush 12;grass;1264;228;ZORA_RIVER;Child;0
+0x00037;ZORA_RIVER;Near Beans 1;OOT Zora River Butterfly Near Beans 1;butterfly;1332;434;ZORA_RIVER;Child;0
+0x10037;ZORA_RIVER;Near Beans 2;OOT Zora River Butterfly Near Beans 2;butterfly;1325;419;ZORA_RIVER;Child;0
+0x0010a;ZORA_RIVER;Near Waterfall 1;OOT Zora River Butterfly Near Waterfall 1;butterfly;110;707;ZORA_RIVER;Child;0
+0x1010a;ZORA_RIVER;Near Waterfall 2;OOT Zora River Butterfly Near Waterfall 2;butterfly;125;700;ZORA_RIVER;Child;0
+0x2010a;ZORA_RIVER;Near Waterfall 3;OOT Zora River Butterfly Near Waterfall 3;butterfly;115;687;ZORA_RIVER;Child;0
+0x08101;ZORA_RIVER;River 1;OOT Zora River Rupee 1;rupee;135;705;ZORA_RIVER;Adult;0
+0x08102;ZORA_RIVER;River 2;OOT Zora River Rupee 2;rupee;146;697;ZORA_RIVER;Adult;0
+0x08103;ZORA_RIVER;River 3;OOT Zora River Rupee 3;rupee;146;683;ZORA_RIVER;Adult;0
+0x08104;ZORA_RIVER;River 4;OOT Zora River Rupee 4;rupee;135;676;ZORA_RIVER;Adult;0
+0x00010;ZORA_RIVER;Front 1;OOT Zora River Wonder Item Front 1;wonder;1213;259;ZORA_RIVER;Child;0
+0x00011;ZORA_RIVER;Front 2;OOT Zora River Wonder Item Front 2;wonder;1214;294;ZORA_RIVER;Child;0
+0x00012;ZORA_RIVER;Front 3;OOT Zora River Wonder Item Front 3;wonder;1211;226;ZORA_RIVER;Child;0
+0x00013;ZORA_RIVER;Front 4;OOT Zora River Wonder Item Front 4;wonder;1216;332;ZORA_RIVER;Child;0
+0x0000f;ZORA_RIVER;Back 1;OOT Zora River Wonder Item Back 01;wonder;1229;366;ZORA_RIVER;Child;0
+0x00014;ZORA_RIVER;Back 2;OOT Zora River Wonder Item Back 02;wonder;1187;412;ZORA_RIVER;Child;0
+0x00015;ZORA_RIVER;Back 3;OOT Zora River Wonder Item Back 03;wonder;1151;418;ZORA_RIVER;Child;0
+0x00016;ZORA_RIVER;Back 4;OOT Zora River Wonder Item Back 04;wonder;1027;589;ZORA_RIVER;Child;0
+0x00017;ZORA_RIVER;Back 5;OOT Zora River Wonder Item Back 05;wonder;1017;483;ZORA_RIVER;Child;0
+0x00018;ZORA_RIVER;Back 6;OOT Zora River Wonder Item Back 06;wonder;1018;522;ZORA_RIVER;Child;0
+0x00019;ZORA_RIVER;Back 7;OOT Zora River Wonder Item Back 07;wonder;998;632;ZORA_RIVER;Child;0
+0x0001a;ZORA_RIVER;Back 8;OOT Zora River Wonder Item Back 08;wonder;962;408;ZORA_RIVER;Child;0
+0x0001b;ZORA_RIVER;Back 9;OOT Zora River Wonder Item Back 09;wonder;947;605;ZORA_RIVER;Child;0
+0x0001c;ZORA_RIVER;Back 10;OOT Zora River Wonder Item Back 10;wonder;925;408;ZORA_RIVER;Child;0
+0x0001d;ZORA_RIVER;Back 11;OOT Zora River Wonder Item Back 11;wonder;901;645;ZORA_RIVER;Child;0
+0x0001e;ZORA_RIVER;Back 12;OOT Zora River Wonder Item Back 12;wonder;893;407;ZORA_RIVER;Child;0
+0x0001f;ZORA_RIVER;Back 13;OOT Zora River Wonder Item Back 13;wonder;866;407;ZORA_RIVER;Child;0
+0x00020;ZORA_RIVER;Back 14;OOT Zora River Wonder Item Back 14;wonder;822;437;ZORA_RIVER;Child;0
+0x00021;ZORA_RIVER;Back 15;OOT Zora River Wonder Item Back 15;wonder;801;596;ZORA_RIVER;Child;0
+0x00022;ZORA_RIVER;Back 16;OOT Zora River Wonder Item Back 16;wonder;799;451;ZORA_RIVER;Child;0
+0x00023;ZORA_RIVER;Back 17;OOT Zora River Wonder Item Back 17;wonder;780;562;ZORA_RIVER;Child;0
+0x00024;ZORA_RIVER;Back 18;OOT Zora River Wonder Item Back 18;wonder;776;464;ZORA_RIVER;Child;0
+0x00025;ZORA_RIVER;Back 19;OOT Zora River Wonder Item Back 19;wonder;764;525;ZORA_RIVER;Child;0
+0x00026;ZORA_RIVER;Back 20;OOT Zora River Wonder Item Back 20;wonder;748;477;ZORA_RIVER;Child;0
+0x00027;ZORA_RIVER;Back 21;OOT Zora River Wonder Item Back 21;wonder;1020;550;ZORA_RIVER;Child;0
+0x00028;ZORA_RIVER;Back 22;OOT Zora River Wonder Item Back 22;wonder;844;422;ZORA_RIVER;Child;0
+0x00029;ZORA_RIVER;Back 23;OOT Zora River Wonder Item Back 23;wonder;1016;452;ZORA_RIVER;Child;0
+0x00105;ZORA_RIVER;Back 24;OOT Zora River Wonder Item Back 24;wonder;430;691;ZORA_RIVER;Child;0
+0x00106;ZORA_RIVER;Back 25;OOT Zora River Wonder Item Back 25;wonder;397;708;ZORA_RIVER;Child;0
+0x00107;ZORA_RIVER;Back 26;OOT Zora River Wonder Item Back 26;wonder;361;707;ZORA_RIVER;Child;0
+0x00108;ZORA_RIVER;Back 27;OOT Zora River Wonder Item Back 27;wonder;326;708;ZORA_RIVER;Child;0
 0x10;ZORA_SHOP;Item 1;OOT Zora Shop Item 1;shop;0;0;ZORA_SHOP;All;0
 0x11;ZORA_SHOP;Item 2;OOT Zora Shop Item 2;shop;0;0;ZORA_SHOP;All;0
 0x12;ZORA_SHOP;Item 3;OOT Zora Shop Item 3;shop;0;0;ZORA_SHOP;All;0
@@ -2667,43 +2667,43 @@ DOG_LADY;MARKET;Heart Piece;OOT Market Dog Lady HP;none;0;0;BACK_ALLEY_HOUSE2;Al
 0x25;MARKET;Item 6;OOT Market Bazaar Item 6;none;0;0;MARKET_BAZAAR;All;0
 0x26;MARKET;Item 7;OOT Market Bazaar Item 7;none;0;0;MARKET_BAZAAR;All;0
 0x27;MARKET;Item 8;OOT Market Bazaar Item 8;none;0;0;MARKET_BAZAAR;All;0
-BOMBCHU_BOWLING_1;MARKET;Reward 1;OOT Bombchu Bowling Reward 1;none;0;0;BOMBCHU_BOWLING_ALLEY;All;0
-BOMBCHU_BOWLING_2;MARKET;Reward 2;OOT Bombchu Bowling Reward 2;none;0;0;BOMBCHU_BOWLING_ALLEY;All;0
-0x08;MARKET;Item 1;OOT Market Bombchu Shop Item 1;none;0;0;BOMBCHU_SHOP;All;0
-0x09;MARKET;Item 2;OOT Market Bombchu Shop Item 2;none;0;0;BOMBCHU_SHOP;All;0
-0x0a;MARKET;Item 3;OOT Market Bombchu Shop Item 3;none;0;0;BOMBCHU_SHOP;All;0
-0x0b;MARKET;Item 4;OOT Market Bombchu Shop Item 4;none;0;0;BOMBCHU_SHOP;All;0
-0x0c;MARKET;Item 5;OOT Market Bombchu Shop Item 5;none;0;0;BOMBCHU_SHOP;All;0
-0x0d;MARKET;Item 6;OOT Market Bombchu Shop Item 6;none;0;0;BOMBCHU_SHOP;All;0
-0x0e;MARKET;Item 7;OOT Market Bombchu Shop Item 7;none;0;0;BOMBCHU_SHOP;All;0
-0x0f;MARKET;Item 8;OOT Market Bombchu Shop Item 8;none;0;0;BOMBCHU_SHOP;All;0
-0x00021;MARKET;Crate 1;OOT Market Crate 1;none;0;0;MARKET_CHILD_DAY;All;0
-0x00022;MARKET;Crate 2;OOT Market Crate 2;none;0;0;MARKET_CHILD_DAY;All;0
-0x00023;MARKET;Crate 3;OOT Market Crate 3;none;0;0;MARKET_CHILD_DAY;All;0
-0x00024;MARKET;Crate 4;OOT Market Crate 4;none;0;0;MARKET_CHILD_DAY;All;0
-0x00017;MARKET;Grass 1;OOT Market Grass 1;none;0;0;MARKET_CHILD_DAY;All;0
-0x00018;MARKET;Grass 2;OOT Market Grass 2;none;0;0;MARKET_CHILD_DAY;All;0
-0x00019;MARKET;Grass 3;OOT Market Grass 3;none;0;0;MARKET_CHILD_DAY;All;0
-0x0001a;MARKET;Grass 4;OOT Market Grass 4;none;0;0;MARKET_CHILD_DAY;All;0
-0x0001b;MARKET;Grass 5;OOT Market Grass 5;none;0;0;MARKET_CHILD_DAY;All;0
-0x0001c;MARKET;Grass 6;OOT Market Grass 6;none;0;0;MARKET_CHILD_DAY;All;0
-0x0001d;MARKET;Grass 7;OOT Market Grass 7;none;0;0;MARKET_CHILD_DAY;All;0
-0x0001e;MARKET;Grass 8;OOT Market Grass 8;none;0;0;MARKET_CHILD_DAY;All;0
-0x0000f;MARKET;Day - Balcony 1;OOT Market Wonder Item Day 1;none;0;0;MARKET_CHILD_DAY;All;0
-0x00010;MARKET;Day - Balcony 2;OOT Market Wonder Item Day 2;none;0;0;MARKET_CHILD_DAY;All;0
-0x00011;MARKET;Day - Balcony 3;OOT Market Wonder Item Day 3;none;0;0;MARKET_CHILD_DAY;All;0
-0x00012;MARKET;Day - Balcony 4;OOT Market Wonder Item Day 4;none;0;0;MARKET_CHILD_DAY;All;0
-0x00013;MARKET;Day - Balcony 5;OOT Market Wonder Item Day 5;none;0;0;MARKET_CHILD_DAY;All;0
-0x00005;MARKET;Night - Balcony 1;OOT Market Wonder Item Night 1;none;0;0;MARKET_CHILD_NIGHT;All;0
-0x00006;MARKET;Night - Balcony 2;OOT Market Wonder Item Night 2;none;0;0;MARKET_CHILD_NIGHT;All;0
-0x28;MARKET;Item 1;OOT Market Potion Shop Item 1;none;0;0;MARKET_POTION_SHOP;All;0
-0x29;MARKET;Item 2;OOT Market Potion Shop Item 2;none;0;0;MARKET_POTION_SHOP;All;0
-0x2a;MARKET;Item 3;OOT Market Potion Shop Item 3;none;0;0;MARKET_POTION_SHOP;All;0
-0x2b;MARKET;Item 4;OOT Market Potion Shop Item 4;none;0;0;MARKET_POTION_SHOP;All;0
-0x2c;MARKET;Item 5;OOT Market Potion Shop Item 5;none;0;0;MARKET_POTION_SHOP;All;0
-0x2d;MARKET;Item 6;OOT Market Potion Shop Item 6;none;0;0;MARKET_POTION_SHOP;All;0
-0x2e;MARKET;Item 7;OOT Market Potion Shop Item 7;none;0;0;MARKET_POTION_SHOP;All;0
-0x2f;MARKET;Item 8;OOT Market Potion Shop Item 8;none;0;0;MARKET_POTION_SHOP;All;0
+BOMBCHU_BOWLING_1;MARKET;Reward 1;OOT Bombchu Bowling Reward 1;none;816;248;BOMBCHU_BOWLING_ALLEY;All;0
+BOMBCHU_BOWLING_2;MARKET;Reward 2;OOT Bombchu Bowling Reward 2;none;743;248;BOMBCHU_BOWLING_ALLEY;All;0
+0x08;MARKET;Item 1;OOT Market Bombchu Shop Item 1;none;644;276;BOMBCHU_SHOP;All;0
+0x09;MARKET;Item 2;OOT Market Bombchu Shop Item 2;none;574;276;BOMBCHU_SHOP;All;0
+0x0a;MARKET;Item 3;OOT Market Bombchu Shop Item 3;none;412;276;BOMBCHU_SHOP;All;0
+0x0b;MARKET;Item 4;OOT Market Bombchu Shop Item 4;none;342;276;BOMBCHU_SHOP;All;0
+0x0c;MARKET;Item 5;OOT Market Bombchu Shop Item 5;none;644;226;BOMBCHU_SHOP;All;0
+0x0d;MARKET;Item 6;OOT Market Bombchu Shop Item 6;none;574;226;BOMBCHU_SHOP;All;0
+0x0e;MARKET;Item 7;OOT Market Bombchu Shop Item 7;none;412;226;BOMBCHU_SHOP;All;0
+0x0f;MARKET;Item 8;OOT Market Bombchu Shop Item 8;none;342;226;BOMBCHU_SHOP;All;0
+0x00021;MARKET;Crate 1;OOT Market Crate 1;none;410;41;MARKET_CHILD_DAY;All;0
+0x00022;MARKET;Crate 2;OOT Market Crate 2;none;438;41;MARKET_CHILD_DAY;All;0
+0x00023;MARKET;Crate 3;OOT Market Crate 3;none;721;372;MARKET_CHILD_DAY;All;0
+0x00024;MARKET;Crate 4;OOT Market Crate 4;none;724;474;MARKET_CHILD_DAY;All;0
+0x00017;MARKET;Grass 1;OOT Market Grass 1;none;417;418;MARKET_CHILD_DAY;All;0
+0x00018;MARKET;Grass 2;OOT Market Grass 2;none;429;444;MARKET_CHILD_DAY;All;0
+0x00019;MARKET;Grass 3;OOT Market Grass 3;none;518;212;MARKET_CHILD_DAY;All;0
+0x0001a;MARKET;Grass 4;OOT Market Grass 4;none;518;153;MARKET_CHILD_DAY;All;0
+0x0001b;MARKET;Grass 5;OOT Market Grass 5;none;518;99;MARKET_CHILD_DAY;All;0
+0x0001c;MARKET;Grass 6;OOT Market Grass 6;none;716;53;MARKET_CHILD_DAY;All;0
+0x0001d;MARKET;Grass 7;OOT Market Grass 7;none;687;53;MARKET_CHILD_DAY;All;0
+0x0001e;MARKET;Grass 8;OOT Market Grass 8;none;682;52;MARKET_CHILD_DAY;All;0
+0x0000f;MARKET;Day - Balcony 1;OOT Market Wonder Item Day 1;none;202;118;MARKET_CHILD_DAY;All;0
+0x00010;MARKET;Day - Balcony 2;OOT Market Wonder Item Day 2;none;200;179;MARKET_CHILD_DAY;All;0
+0x00011;MARKET;Day - Balcony 3;OOT Market Wonder Item Day 3;none;199;238;MARKET_CHILD_DAY;All;0
+0x00012;MARKET;Day - Balcony 4;OOT Market Wonder Item Day 4;none;197;298;MARKET_CHILD_DAY;All;0
+0x00013;MARKET;Day - Balcony 5;OOT Market Wonder Item Day 5;none;198;363;MARKET_CHILD_DAY;All;0
+0x00005;MARKET;Night - Balcony 1;OOT Market Wonder Item Night 1;none;200;168;MARKET_CHILD_NIGHT;All;0
+0x00006;MARKET;Night - Balcony 2;OOT Market Wonder Item Night 2;none;196;314;MARKET_CHILD_NIGHT;All;0
+0x28;MARKET;Item 1;OOT Market Potion Shop Item 1;none;556;340;MARKET_POTION_SHOP;All;0
+0x29;MARKET;Item 2;OOT Market Potion Shop Item 2;none;500;340;MARKET_POTION_SHOP;All;0
+0x2a;MARKET;Item 3;OOT Market Potion Shop Item 3;none;416;340;MARKET_POTION_SHOP;All;0
+0x2b;MARKET;Item 4;OOT Market Potion Shop Item 4;none;360;340;MARKET_POTION_SHOP;All;0
+0x2c;MARKET;Item 5;OOT Market Potion Shop Item 5;none;556;297;MARKET_POTION_SHOP;All;0
+0x2d;MARKET;Item 6;OOT Market Potion Shop Item 6;none;500;297;MARKET_POTION_SHOP;All;0
+0x2e;MARKET;Item 7;OOT Market Potion Shop Item 7;none;416;297;MARKET_POTION_SHOP;All;0
+0x2f;MARKET;Item 8;OOT Market Potion Shop Item 8;none;360;297;MARKET_POTION_SHOP;All;0
 0x08;LON_LON_RANCH;Left;OOT Lon Lon Ranch Grotto Left Scrub;none;0;0;OOT_GROTTO_LON_LON_SCRUBS;All;0
 0x09;LON_LON_RANCH;Center;OOT Lon Lon Ranch Grotto Center Scrub;none;0;0;OOT_GROTTO_LON_LON_SCRUBS;All;0
 0x0a;LON_LON_RANCH;Right;OOT Lon Lon Ranch Grotto Right Scrub;none;0;0;OOT_GROTTO_LON_LON_SCRUBS;All;0
@@ -3008,7 +3008,7 @@ POE_COLLECTOR;MARKET;Adult - Poe Bottle;OOT Market Pot House Big Poes;none;0;0;G
 0x0026;MARKET;Child - Ground 31;OOT Market Pot House Child Pot Ground 31;none;0;0;GUARD_HOUSE;All;0
 0x0028;MARKET;Child - Ground 32;OOT Market Pot House Child Pot Ground 32;none;0;0;GUARD_HOUSE;All;0
 0x002a;MARKET;Child - Ground 33;OOT Market Pot House Child Pot Ground 33;none;0;0;GUARD_HOUSE;All;0
-0x002b;MARKET;Child - Ground 34;OOT Market Pot House Child Pot Ground 34;none;0;0;GUARD_HOUSE;All;0
+0x002b;MARKET;Child - Above 1;OOT Market Pot House Child Pot Ground 34;none;0;0;GUARD_HOUSE;All;0
 0x002c;MARKET;Child - Ground 35;OOT Market Pot House Child Pot Ground 35;none;0;0;GUARD_HOUSE;All;0
 0x002d;MARKET;Child - Ground 36;OOT Market Pot House Child Pot Ground 36;none;0;0;GUARD_HOUSE;All;0
 0x002e;MARKET;Child - Ground 37;OOT Market Pot House Child Pot Ground 37;none;0;0;GUARD_HOUSE;All;0
@@ -3017,7 +3017,7 @@ POE_COLLECTOR;MARKET;Adult - Poe Bottle;OOT Market Pot House Big Poes;none;0;0;G
 0x0031;MARKET;Child - Ground 40;OOT Market Pot House Child Pot Ground 40;none;0;0;GUARD_HOUSE;All;0
 0x0032;MARKET;Child - Ground 41;OOT Market Pot House Child Pot Ground 41;none;0;0;GUARD_HOUSE;All;0
 0x0033;MARKET;Child - Ground 42;OOT Market Pot House Child Pot Ground 42;none;0;0;GUARD_HOUSE;All;0
-0x0027;MARKET;Child - Above 1;OOT Market Pot House Child Pot Above 1;none;0;0;GUARD_HOUSE;All;0
+0x0027;MARKET;Child - Ground 34;OOT Market Pot House Child Pot Above 1;none;0;0;GUARD_HOUSE;All;0
 0x0029;MARKET;Child - Above 2;OOT Market Pot House Child Pot Above 2;none;0;0;GUARD_HOUSE;All;0
 0x8001;MARKET;Adult - Ground 1;OOT Market Pot House Adult Pot 1;none;0;0;GUARD_HOUSE;All;0
 0x8002;MARKET;Adult - Ground 2;OOT Market Pot House Adult Pot 2;none;0;0;GUARD_HOUSE;All;0

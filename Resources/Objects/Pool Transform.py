@@ -59,7 +59,7 @@ def parse_file2(input_file, output_file, arrayname, prefix):
             if fin.__contains__(scenestr) == False:
                 fin[scenestr] = []
 
-            objectstr = "\t{ " + idstr + ", " + scenestr + ", \"" + str(row["friendly_name"]) + "\", \"" + str(row["location"]) + "\", ObjectType::" + str(row["type"]) + ", {" + str(row["x"]) + ", " + str(row["y"]) + "}, " + renderscene + ", ObjectContext::" + str(row["context"]) + ", " + str(row["room"]) + " }"
+            objectstr = "\t{ " + idstr + ", " + scenestr + ", \"" + str(row["friendly_name"]) + "\", \"" + str(row["location"]) + "\", ObjectType::" + str(row["type"]) + ", {" + str(int(row["x"])) + ", " + str(int(row["y"])) + "}, " + renderscene + ", ObjectContext::" + str(row["context"]) + ", " + str(row["room"]) + " }"
             fin[scenestr].append(objectstr)
             
             if renderscene != scenestr:
@@ -74,13 +74,15 @@ def parse_file2(input_file, output_file, arrayname, prefix):
         for r in fin:
             le = len(fin[r])
             i = 0
-            strb = "\nCreateObjectsForScene(" + r + ", " + str(le) + ",\n"
+            strb = "\nconst size_t " + r + "NumOfObjs = " + str(le) + ";\nObjectInfo " + r + "SceneObjects [" + r + "NumOfObjs" + "] =\n{\n"
+            #strb = "\nCreateObjectsForScene(" + r + ", " + str(le) + ",\n"
             for u in fin[r]:
                 i = i + 1
                 strb = strb + u 
                 if i < le:
                     strb = strb + ",\n"
-            strb = strb + ")\n"
+            strb = strb + "\n};\n"
+            #strb = strb + ")\n"
             #print(strb)
             outfile.write(strb)
 
