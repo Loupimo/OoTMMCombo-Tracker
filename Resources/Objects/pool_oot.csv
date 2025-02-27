@@ -198,10 +198,10 @@ TRADE_BIGGORON_SWORD;DEATH_MOUNTAIN_TRAIL;Biggoron Sword;OOT Death Mountain Trai
 0x00302;DEKU_TREE;Basement - Main 2;OOT Deku Tree Grass Basement Main 2;grass;1019;653;DEKU_TREE;All;3
 0x00400;DEKU_TREE;Eye Switch Room 1;OOT Deku Tree Grass Eye Switch Room 1;grass;923;606;DEKU_TREE;All;5
 0x00401;DEKU_TREE;Eye Switch Room 2;OOT Deku Tree Grass Eye Switch Room 2;grass;978;618;DEKU_TREE;All;5
-0x00402;DEKU_TREE;Eye Switch Room 3;OOT Deku Tree Grass Eye Switch Room 3;grass;520;614;DEKU_TREE;All;5
-0x00403;DEKU_TREE;Eye Switch Room 4;OOT Deku Tree Grass Eye Switch Room 4;grass;568;603;DEKU_TREE;All;5
-0x00501;DEKU_TREE;Water Room 1;OOT Deku Tree Grass Water Room 1;grass;425;553;DEKU_TREE;All;6
-0x00502;DEKU_TREE;Water Room 2;OOT Deku Tree Grass Water Room 2;grass;385;553;DEKU_TREE;All;6
+0x00402;DEKU_TREE;Eye Switch Room 3;OOT Deku Tree Grass Eye Switch Room 3;grass;568;603;DEKU_TREE;All;5
+0x00403;DEKU_TREE;Eye Switch Room 4;OOT Deku Tree Grass Eye Switch Room 4;grass;520;614;DEKU_TREE;All;5
+0x00501;DEKU_TREE;Water Room 1;OOT Deku Tree Grass Water Room 1;grass;385;553;DEKU_TREE;All;6
+0x00502;DEKU_TREE;Water Room 2;OOT Deku Tree Grass Water Room 2;grass;425;553;DEKU_TREE;All;6
 0x00602;DEKU_TREE;Torch Room 1;OOT Deku Tree Grass Torch Room 1;grass;416;657;DEKU_TREE;All;7
 0x00603;DEKU_TREE;Torch Room 2;OOT Deku Tree Grass Torch Room 2;grass;510;627;DEKU_TREE;All;7
 0x00702;DEKU_TREE;Larva Room 1;OOT Deku Tree Grass Larva Room 1;grass;445;629;DEKU_TREE;All;8
@@ -488,41 +488,41 @@ SHEIK_SPIRIT;DESERT_COLOSSUS;Requiem of Spirit;OOT Desert Colossus Song Spirit;n
 0x52400;FAIRY_FOUNTAIN;Fairy 6;OOT Gerudo Fortress Fairy Fountain Fairy 6;fairy;466;189;OOT_FAIRY_GERUDO_FORTRESS;All;0
 0x62400;FAIRY_FOUNTAIN;Fairy 7;OOT Gerudo Fortress Fairy Fountain Fairy 7;fairy;491;176;OOT_FAIRY_GERUDO_FORTRESS;All;0
 0x72400;FAIRY_FOUNTAIN;Fairy 8;OOT Gerudo Fortress Fairy Fountain Fairy 8;fairy;474;176;OOT_FAIRY_GERUDO_FORTRESS;All;0
-FISH_CHILD;FISHING_POND;Heart Piece;OOT Fishing Pond Child;npc;0;0;FISHING_POND;Child;0
-FISH_ADULT;FISHING_POND;Golden Scale;OOT Fishing Pond Adult;npc;0;0;FISHING_POND;Adult;0
-0x00;FISHING_POND;Child - Fish 1;OOT Fishing Pond Child Fish 1;fish;0;0;FISHING_POND;Child;0
-0x01;FISHING_POND;Child - Fish 2;OOT Fishing Pond Child Fish 2;fish;0;0;FISHING_POND;Child;0
-0x02;FISHING_POND;Child - Fish 3;OOT Fishing Pond Child Fish 3;fish;0;0;FISHING_POND;Child;0
-0x03;FISHING_POND;Child - Fish 4;OOT Fishing Pond Child Fish 4;fish;0;0;FISHING_POND;Child;0
-0x04;FISHING_POND;Child - Fish 5;OOT Fishing Pond Child Fish 5;fish;0;0;FISHING_POND;Child;0
-0x05;FISHING_POND;Child - Fish 6;OOT Fishing Pond Child Fish 6;fish;0;0;FISHING_POND;Child;0
-0x06;FISHING_POND;Child - Fish 7;OOT Fishing Pond Child Fish 7;fish;0;0;FISHING_POND;Child;0
-0x07;FISHING_POND;Child - Fish 8;OOT Fishing Pond Child Fish 8;fish;0;0;FISHING_POND;Child;0
-0x08;FISHING_POND;Child - Fish 9;OOT Fishing Pond Child Fish 9;fish;0;0;FISHING_POND;Child;0
-0x09;FISHING_POND;Child - Fish 10;OOT Fishing Pond Child Fish 10;fish;0;0;FISHING_POND;Child;0
-0x0a;FISHING_POND;Child - Fish 11;OOT Fishing Pond Child Fish 11;fish;0;0;FISHING_POND;Child;0
-0x0b;FISHING_POND;Child - Fish 12;OOT Fishing Pond Child Fish 12;fish;0;0;FISHING_POND;Child;0
-0x0c;FISHING_POND;Child - Fish 13;OOT Fishing Pond Child Fish 13;fish;0;0;FISHING_POND;Child;0
-0x0d;FISHING_POND;Child - Fish 14;OOT Fishing Pond Child Fish 14;fish;0;0;FISHING_POND;Child;0
-0x0e;FISHING_POND;Child - Fish 15;OOT Fishing Pond Child Fish 15;fish;0;0;FISHING_POND;Child;0
-0x0f;FISHING_POND;Child - Loach 1;OOT Fishing Pond Child Loach 1;fish;0;0;FISHING_POND;Child;0
-0x10;FISHING_POND;Child - Loach 2;OOT Fishing Pond Child Loach 2;fish;0;0;FISHING_POND;Child;0
-0x11;FISHING_POND;Adult - Fish 1;OOT Fishing Pond Adult Fish 1;fish;0;0;FISHING_POND;Adult;0
-0x12;FISHING_POND;Adult - Fish 2;OOT Fishing Pond Adult Fish 2;fish;0;0;FISHING_POND;Adult;0
-0x13;FISHING_POND;Adult - Fish 3;OOT Fishing Pond Adult Fish 3;fish;0;0;FISHING_POND;Adult;0
-0x14;FISHING_POND;Adult - Fish 4;OOT Fishing Pond Adult Fish 4;fish;0;0;FISHING_POND;Adult;0
-0x15;FISHING_POND;Adult - Fish 5;OOT Fishing Pond Adult Fish 5;fish;0;0;FISHING_POND;Adult;0
-0x16;FISHING_POND;Adult - Fish 6;OOT Fishing Pond Adult Fish 6;fish;0;0;FISHING_POND;Adult;0
-0x17;FISHING_POND;Adult - Fish 7;OOT Fishing Pond Adult Fish 7;fish;0;0;FISHING_POND;Adult;0
-0x18;FISHING_POND;Adult - Fish 8;OOT Fishing Pond Adult Fish 8;fish;0;0;FISHING_POND;Adult;0
-0x19;FISHING_POND;Adult - Fish 9;OOT Fishing Pond Adult Fish 9;fish;0;0;FISHING_POND;Adult;0
-0x1a;FISHING_POND;Adult - Fish 10;OOT Fishing Pond Adult Fish 10;fish;0;0;FISHING_POND;Adult;0
-0x1b;FISHING_POND;Adult - Fish 11;OOT Fishing Pond Adult Fish 11;fish;0;0;FISHING_POND;Adult;0
-0x1c;FISHING_POND;Adult - Fish 12;OOT Fishing Pond Adult Fish 12;fish;0;0;FISHING_POND;Adult;0
-0x1d;FISHING_POND;Adult - Fish 13;OOT Fishing Pond Adult Fish 13;fish;0;0;FISHING_POND;Adult;0
-0x1e;FISHING_POND;Adult - Fish 14;OOT Fishing Pond Adult Fish 14;fish;0;0;FISHING_POND;Adult;0
-0x1f;FISHING_POND;Adult - Fish 15;OOT Fishing Pond Adult Fish 15;fish;0;0;FISHING_POND;Adult;0
-0x20;FISHING_POND;Adult - Loach;OOT Fishing Pond Adult Loach;fish;0;0;FISHING_POND;Adult;0
+FISH_CHILD;FISHING_POND;Heart Piece;OOT Fishing Pond Child;npc;651;51;FISHING_POND;Child;0
+FISH_ADULT;FISHING_POND;Golden Scale;OOT Fishing Pond Adult;npc;651;51;FISHING_POND;Adult;0
+0x00;FISHING_POND;Child - Fish 1;OOT Fishing Pond Child Fish 1;fish;767;637;FISHING_POND;Child;0
+0x01;FISHING_POND;Child - Fish 2;OOT Fishing Pond Child Fish 2;fish;642;596;FISHING_POND;Child;0
+0x02;FISHING_POND;Child - Fish 3;OOT Fishing Pond Child Fish 3;fish;516;573;FISHING_POND;Child;0
+0x03;FISHING_POND;Child - Fish 4;OOT Fishing Pond Child Fish 4;fish;621;514;FISHING_POND;Child;0
+0x04;FISHING_POND;Child - Fish 5;OOT Fishing Pond Child Fish 5;fish;481;514;FISHING_POND;Child;0
+0x05;FISHING_POND;Child - Fish 6;OOT Fishing Pond Child Fish 6;fish;845;508;FISHING_POND;Child;0
+0x06;FISHING_POND;Child - Fish 7;OOT Fishing Pond Child Fish 7;fish;719;489;FISHING_POND;Child;0
+0x07;FISHING_POND;Child - Fish 8;OOT Fishing Pond Child Fish 8;fish;560;470;FISHING_POND;Child;0
+0x08;FISHING_POND;Child - Fish 9;OOT Fishing Pond Child Fish 9;fish;831;432;FISHING_POND;Child;0
+0x09;FISHING_POND;Child - Fish 10;OOT Fishing Pond Child Fish 10;fish;635;425;FISHING_POND;Child;0
+0x0a;FISHING_POND;Child - Fish 11;OOT Fishing Pond Child Fish 11;fish;726;401;FISHING_POND;Child;0
+0x0b;FISHING_POND;Child - Fish 12;OOT Fishing Pond Child Fish 12;fish;523;401;FISHING_POND;Child;0
+0x0c;FISHING_POND;Child - Fish 13;OOT Fishing Pond Child Fish 13;fish;767;361;FISHING_POND;Child;0
+0x0d;FISHING_POND;Child - Fish 14;OOT Fishing Pond Child Fish 14;fish;635;348;FISHING_POND;Child;0
+0x0e;FISHING_POND;Child - Fish 15;OOT Fishing Pond Child Fish 15;fish;733;297;FISHING_POND;Child;0
+0x0f;FISHING_POND;Child - Loach 1;OOT Fishing Pond Child Loach 1;fish;553;297;FISHING_POND;Child;0
+0x10;FISHING_POND;Child - Loach 2;OOT Fishing Pond Child Loach 2;fish;649;248;FISHING_POND;Child;0
+0x11;FISHING_POND;Adult - Fish 1;OOT Fishing Pond Adult Fish 1;fish;767;637;FISHING_POND;Adult;0
+0x12;FISHING_POND;Adult - Fish 2;OOT Fishing Pond Adult Fish 2;fish;642;596;FISHING_POND;Adult;0
+0x13;FISHING_POND;Adult - Fish 3;OOT Fishing Pond Adult Fish 3;fish;516;573;FISHING_POND;Adult;0
+0x14;FISHING_POND;Adult - Fish 4;OOT Fishing Pond Adult Fish 4;fish;621;514;FISHING_POND;Adult;0
+0x15;FISHING_POND;Adult - Fish 5;OOT Fishing Pond Adult Fish 5;fish;481;514;FISHING_POND;Adult;0
+0x16;FISHING_POND;Adult - Fish 6;OOT Fishing Pond Adult Fish 6;fish;845;508;FISHING_POND;Adult;0
+0x17;FISHING_POND;Adult - Fish 7;OOT Fishing Pond Adult Fish 7;fish;719;489;FISHING_POND;Adult;0
+0x18;FISHING_POND;Adult - Fish 8;OOT Fishing Pond Adult Fish 8;fish;560;470;FISHING_POND;Adult;0
+0x19;FISHING_POND;Adult - Fish 9;OOT Fishing Pond Adult Fish 9;fish;831;432;FISHING_POND;Adult;0
+0x1a;FISHING_POND;Adult - Fish 10;OOT Fishing Pond Adult Fish 10;fish;635;425;FISHING_POND;Adult;0
+0x1b;FISHING_POND;Adult - Fish 11;OOT Fishing Pond Adult Fish 11;fish;726;401;FISHING_POND;Adult;0
+0x1c;FISHING_POND;Adult - Fish 12;OOT Fishing Pond Adult Fish 12;fish;523;401;FISHING_POND;Adult;0
+0x1d;FISHING_POND;Adult - Fish 13;OOT Fishing Pond Adult Fish 13;fish;767;361;FISHING_POND;Adult;0
+0x1e;FISHING_POND;Adult - Fish 14;OOT Fishing Pond Adult Fish 14;fish;635;348;FISHING_POND;Adult;0
+0x1f;FISHING_POND;Adult - Fish 15;OOT Fishing Pond Adult Fish 15;fish;733;297;FISHING_POND;Adult;0
+0x20;FISHING_POND;Adult - Loach;OOT Fishing Pond Adult Loach;fish;553;297;FISHING_POND;Adult;0
 0x78;GANON_CASTLE_EXTERIOR;Side Arch;OOT Ganon Castle Exterior GS;gs;0;0;GANON_CASTLE_EXTERIOR;All;0
 0x0b;GANON_TOWER;Boss Key;OOT Ganon Castle Boss Key;chest;0;0;GANON_TOWER;All;0
 0x0801;GANON_TOWER;Tower 1;OOT Ganon Tower Pot 01;pot;0;0;GANON_TOWER;All;0
@@ -705,18 +705,18 @@ MASK_SELL_SPOOKY;GRAVEYARD;Spooky Mask;OOT Graveyard Sell Spooky Mask;npc;566;34
 0x88;GRAVEYARD;Soil;OOT Graveyard GS Soil;gs;635;439;GRAVEYARD;Child;0
 0x8f;GRAVEYARD;Wall;OOT Graveyard GS Wall;gs;401;130;GRAVEYARD;Child;0
 0x00115;GRAVEYARD;Crate;OOT Graveyard Crate;crate;712;445;GRAVEYARD;All;0
-0x00110;GRAVEYARD;Grass 1;OOT Graveyard Grass 01;grass;726;189;GRAVEYARD;All;0
-0x10110;GRAVEYARD;Grass 2;OOT Graveyard Grass 02;grass;740;201;GRAVEYARD;All;0
-0x20110;GRAVEYARD;Grass 3;OOT Graveyard Grass 03;grass;742;181;GRAVEYARD;All;0
-0x30110;GRAVEYARD;Grass 4;OOT Graveyard Grass 04;grass;721;206;GRAVEYARD;All;0
-0x40110;GRAVEYARD;Grass 5;OOT Graveyard Grass 05;grass;713;200;GRAVEYARD;All;0
-0x50110;GRAVEYARD;Grass 6;OOT Graveyard Grass 06;grass;708;191;GRAVEYARD;All;0
-0x60110;GRAVEYARD;Grass 7;OOT Graveyard Grass 07;grass;743;191;GRAVEYARD;All;0
-0x70110;GRAVEYARD;Grass 8;OOT Graveyard Grass 08;grass;710;181;GRAVEYARD;All;0
-0x80110;GRAVEYARD;Grass 9;OOT Graveyard Grass 09;grass;731;207;GRAVEYARD;All;0
-0x90110;GRAVEYARD;Grass 10;OOT Graveyard Grass 10;grass;736;173;GRAVEYARD;All;0
-0xa0110;GRAVEYARD;Grass 11;OOT Graveyard Grass 11;grass;726;171;GRAVEYARD;All;0
-0xb0110;GRAVEYARD;Grass 12;OOT Graveyard Grass 12;grass;716;173;GRAVEYARD;All;0
+0x00110;GRAVEYARD;Grass 1;OOT Graveyard Grass 01;grass;708;191;GRAVEYARD;All;0
+0x10110;GRAVEYARD;Grass 2;OOT Graveyard Grass 02;grass;721;206;GRAVEYARD;All;0
+0x20110;GRAVEYARD;Grass 3;OOT Graveyard Grass 03;grass;740;201;GRAVEYARD;All;0
+0x30110;GRAVEYARD;Grass 4;OOT Graveyard Grass 04;grass;742;181;GRAVEYARD;All;0
+0x40110;GRAVEYARD;Grass 5;OOT Graveyard Grass 05;grass;726;189;GRAVEYARD;All;0
+0x50110;GRAVEYARD;Grass 6;OOT Graveyard Grass 06;grass;713;200;GRAVEYARD;All;0
+0x60110;GRAVEYARD;Grass 7;OOT Graveyard Grass 07;grass;731;207;GRAVEYARD;All;0
+0x70110;GRAVEYARD;Grass 8;OOT Graveyard Grass 08;grass;743;191;GRAVEYARD;All;0
+0x80110;GRAVEYARD;Grass 9;OOT Graveyard Grass 09;grass;736;173;GRAVEYARD;All;0
+0x90110;GRAVEYARD;Grass 10;OOT Graveyard Grass 10;grass;726;171;GRAVEYARD;All;0
+0xa0110;GRAVEYARD;Grass 11;OOT Graveyard Grass 11;grass;716;173;GRAVEYARD;All;0
+0xb0110;GRAVEYARD;Grass 12;OOT Graveyard Grass 12;grass;710;181;GRAVEYARD;All;0
 FAIRY_SPELL_FIRE;GREAT_FAIRY_FOUNTAIN_SPELLS;Din's Fire;OOT Great Fairy Din's Fire;npc;497;351;OOT_GREAT_FAIRY_CASTLE;Child;0
 FAIRY_SPELL_WIND;GREAT_FAIRY_FOUNTAIN_SPELLS;Farore's Wind;OOT Great Fairy Farore's Wind;npc;497;351;OOT_GREAT_FAIRY_FARORE;All;0
 FAIRY_SPELL_LOVE;GREAT_FAIRY_FOUNTAIN_SPELLS;Nayru's Love;OOT Great Fairy Nayru's Love;npc;497;351;OOT_GREAT_FAIRY_NAYRU;All;0
@@ -983,10 +983,10 @@ MALON_EGG;HYRULE_CASTLE;Malon Egg;OOT Malon Egg;npc;131;243;HYRULE_CASTLE;All;0
 0x00027;HYRULE_CASTLE;Moat 8;OOT Hyrule Castle Wonder Item Moat 08;wonder;695;320;HYRULE_CASTLE;All;0
 0x00028;HYRULE_CASTLE;Moat 9;OOT Hyrule Castle Wonder Item Moat 09;wonder;795;318;HYRULE_CASTLE;All;0
 0x00029;HYRULE_CASTLE;Moat 10;OOT Hyrule Castle Wonder Item Moat 10;wonder;894;313;HYRULE_CASTLE;All;0
-0x00033;HYRULE_CASTLE;Pack 1 - Butterfly 1;OOT Hyrule Castle Butterfly Pack 1 Butterfly 1;butterfly;377;516;HYRULE_CASTLE;All;0
-0x10033;HYRULE_CASTLE;Pack 1 - Butterfly 2;OOT Hyrule Castle Butterfly Pack 1 Butterfly 2;butterfly;361;507;HYRULE_CASTLE;All;0
-0x00034;HYRULE_CASTLE;Pack 2 - Butterfly 1;OOT Hyrule Castle Butterfly Pack 2 Butterfly 1;butterfly;293;310;HYRULE_CASTLE;All;0
-0x10034;HYRULE_CASTLE;Pack 2 - Butterfly 2;OOT Hyrule Castle Butterfly Pack 2 Butterfly 2;butterfly;296;296;HYRULE_CASTLE;All;0
+0x00033;HYRULE_CASTLE;Pack 1 - Butterfly 1;OOT Hyrule Castle Butterfly Pack 1 Butterfly 1;butterfly;293;310;HYRULE_CASTLE;All;0
+0x10033;HYRULE_CASTLE;Pack 1 - Butterfly 2;OOT Hyrule Castle Butterfly Pack 1 Butterfly 2;butterfly;296;296;HYRULE_CASTLE;All;0
+0x00034;HYRULE_CASTLE;Pack 2 - Butterfly 1;OOT Hyrule Castle Butterfly Pack 2 Butterfly 1;butterfly;377;516;HYRULE_CASTLE;All;0
+0x10034;HYRULE_CASTLE;Pack 2 - Butterfly 2;OOT Hyrule Castle Butterfly Pack 2 Butterfly 2;butterfly;361;507;HYRULE_CASTLE;All;0
 0x00035;HYRULE_CASTLE;Pack 3 - Butterfly 1;OOT Hyrule Castle Butterfly Pack 3 Butterfly 1;butterfly;435;229;HYRULE_CASTLE;All;0
 0x10035;HYRULE_CASTLE;Pack 3 - Butterfly 2;OOT Hyrule Castle Butterfly Pack 3 Butterfly 2;butterfly;446;213;HYRULE_CASTLE;All;0
 0x20035;HYRULE_CASTLE;Pack 3 - Butterfly 3;OOT Hyrule Castle Butterfly Pack 3 Butterfly 3;butterfly;465;203;HYRULE_CASTLE;All;0
@@ -999,54 +999,54 @@ OCARINA_TIME_ITEM;HYRULE_FIELD;Ocarina of Time;OOT Hyrule Field Ocarina of Time;
 OCARINA_TIME_SONG;HYRULE_FIELD;Song of Time;OOT Hyrule Field Song of Time;npc;777;155;HYRULE_FIELD;Child;0
 MASK_SELL_BUNNY;HYRULE_FIELD;Bunny Mask;OOT Hyrule Field Sell Bunny Mask;npc;713;405;HYRULE_FIELD;Child;0
 0x01;HYRULE_FIELD;Cow;OOT Hyrule Field Cow;cow;414;662;OOT_GROTTO_HYRULE_GERUDO;All;0
-0x0003a;HYRULE_FIELD;Pack 1 - Bush 1;OOT Hyrule Field Grass Pack 1 Bush 01;grass;706;636;HYRULE_FIELD;All;0
-0x1003a;HYRULE_FIELD;Pack 1 - Bush 2;OOT Hyrule Field Grass Pack 1 Bush 02;grass;720;648;HYRULE_FIELD;All;0
-0x2003a;HYRULE_FIELD;Pack 1 - Bush 3;OOT Hyrule Field Grass Pack 1 Bush 03;grass;722;628;HYRULE_FIELD;All;0
-0x3003a;HYRULE_FIELD;Pack 1 - Bush 4;OOT Hyrule Field Grass Pack 1 Bush 04;grass;701;653;HYRULE_FIELD;All;0
-0x4003a;HYRULE_FIELD;Pack 1 - Bush 5;OOT Hyrule Field Grass Pack 1 Bush 05;grass;693;647;HYRULE_FIELD;All;0
-0x5003a;HYRULE_FIELD;Pack 1 - Bush 6;OOT Hyrule Field Grass Pack 1 Bush 06;grass;688;638;HYRULE_FIELD;All;0
-0x6003a;HYRULE_FIELD;Pack 1 - Bush 7;OOT Hyrule Field Grass Pack 1 Bush 07;grass;723;638;HYRULE_FIELD;All;0
+0x0003a;HYRULE_FIELD;Pack 1 - Bush 1;OOT Hyrule Field Grass Pack 1 Bush 01;grass;723;638;HYRULE_FIELD;All;0
+0x1003a;HYRULE_FIELD;Pack 1 - Bush 2;OOT Hyrule Field Grass Pack 1 Bush 02;grass;716;620;HYRULE_FIELD;All;0
+0x2003a;HYRULE_FIELD;Pack 1 - Bush 3;OOT Hyrule Field Grass Pack 1 Bush 03;grass;696;620;HYRULE_FIELD;All;0
+0x3003a;HYRULE_FIELD;Pack 1 - Bush 4;OOT Hyrule Field Grass Pack 1 Bush 04;grass;688;638;HYRULE_FIELD;All;0
+0x4003a;HYRULE_FIELD;Pack 1 - Bush 5;OOT Hyrule Field Grass Pack 1 Bush 05;grass;706;636;HYRULE_FIELD;All;0
+0x5003a;HYRULE_FIELD;Pack 1 - Bush 6;OOT Hyrule Field Grass Pack 1 Bush 06;grass;722;628;HYRULE_FIELD;All;0
+0x6003a;HYRULE_FIELD;Pack 1 - Bush 7;OOT Hyrule Field Grass Pack 1 Bush 07;grass;706;618;HYRULE_FIELD;All;0
 0x7003a;HYRULE_FIELD;Pack 1 - Bush 8;OOT Hyrule Field Grass Pack 1 Bush 08;grass;690;628;HYRULE_FIELD;All;0
-0x8003a;HYRULE_FIELD;Pack 1 - Bush 9;OOT Hyrule Field Grass Pack 1 Bush 09;grass;711;654;HYRULE_FIELD;All;0
-0x9003a;HYRULE_FIELD;Pack 1 - Bush 10;OOT Hyrule Field Grass Pack 1 Bush 10;grass;716;620;HYRULE_FIELD;All;0
-0xa003a;HYRULE_FIELD;Pack 1 - Bush 11;OOT Hyrule Field Grass Pack 1 Bush 11;grass;706;618;HYRULE_FIELD;All;0
-0xb003a;HYRULE_FIELD;Pack 1 - Bush 12;OOT Hyrule Field Grass Pack 1 Bush 12;grass;696;620;HYRULE_FIELD;All;0
-0x0003b;HYRULE_FIELD;Pack 2 - Bush 1;OOT Hyrule Field Grass Pack 2 Bush 01;grass;735;708;HYRULE_FIELD;All;0
-0x1003b;HYRULE_FIELD;Pack 2 - Bush 2;OOT Hyrule Field Grass Pack 2 Bush 02;grass;749;720;HYRULE_FIELD;All;0
-0x2003b;HYRULE_FIELD;Pack 2 - Bush 3;OOT Hyrule Field Grass Pack 2 Bush 03;grass;751;700;HYRULE_FIELD;All;0
-0x3003b;HYRULE_FIELD;Pack 2 - Bush 4;OOT Hyrule Field Grass Pack 2 Bush 04;grass;730;725;HYRULE_FIELD;All;0
-0x4003b;HYRULE_FIELD;Pack 2 - Bush 5;OOT Hyrule Field Grass Pack 2 Bush 05;grass;722;719;HYRULE_FIELD;All;0
-0x5003b;HYRULE_FIELD;Pack 2 - Bush 6;OOT Hyrule Field Grass Pack 2 Bush 06;grass;717;710;HYRULE_FIELD;All;0
-0x6003b;HYRULE_FIELD;Pack 2 - Bush 7;OOT Hyrule Field Grass Pack 2 Bush 07;grass;752;710;HYRULE_FIELD;All;0
+0x8003a;HYRULE_FIELD;Pack 1 - Bush 9;OOT Hyrule Field Grass Pack 1 Bush 09;grass;693;647;HYRULE_FIELD;All;0
+0x9003a;HYRULE_FIELD;Pack 1 - Bush 10;OOT Hyrule Field Grass Pack 1 Bush 10;grass;701;653;HYRULE_FIELD;All;0
+0xa003a;HYRULE_FIELD;Pack 1 - Bush 11;OOT Hyrule Field Grass Pack 1 Bush 11;grass;711;654;HYRULE_FIELD;All;0
+0xb003a;HYRULE_FIELD;Pack 1 - Bush 12;OOT Hyrule Field Grass Pack 1 Bush 12;grass;720;648;HYRULE_FIELD;All;0
+0x0003b;HYRULE_FIELD;Pack 2 - Bush 1;OOT Hyrule Field Grass Pack 2 Bush 01;grass;752;710;HYRULE_FIELD;All;0
+0x1003b;HYRULE_FIELD;Pack 2 - Bush 2;OOT Hyrule Field Grass Pack 2 Bush 02;grass;745;692;HYRULE_FIELD;All;0
+0x2003b;HYRULE_FIELD;Pack 2 - Bush 3;OOT Hyrule Field Grass Pack 2 Bush 03;grass;725;692;HYRULE_FIELD;All;0
+0x3003b;HYRULE_FIELD;Pack 2 - Bush 4;OOT Hyrule Field Grass Pack 2 Bush 04;grass;717;710;HYRULE_FIELD;All;0
+0x4003b;HYRULE_FIELD;Pack 2 - Bush 5;OOT Hyrule Field Grass Pack 2 Bush 05;grass;735;708;HYRULE_FIELD;All;0
+0x5003b;HYRULE_FIELD;Pack 2 - Bush 6;OOT Hyrule Field Grass Pack 2 Bush 06;grass;751;700;HYRULE_FIELD;All;0
+0x6003b;HYRULE_FIELD;Pack 2 - Bush 7;OOT Hyrule Field Grass Pack 2 Bush 07;grass;735;690;HYRULE_FIELD;All;0
 0x7003b;HYRULE_FIELD;Pack 2 - Bush 8;OOT Hyrule Field Grass Pack 2 Bush 08;grass;719;700;HYRULE_FIELD;All;0
-0x8003b;HYRULE_FIELD;Pack 2 - Bush 9;OOT Hyrule Field Grass Pack 2 Bush 09;grass;740;726;HYRULE_FIELD;All;0
-0x9003b;HYRULE_FIELD;Pack 2 - Bush 10;OOT Hyrule Field Grass Pack 2 Bush 10;grass;745;692;HYRULE_FIELD;All;0
-0xa003b;HYRULE_FIELD;Pack 2 - Bush 11;OOT Hyrule Field Grass Pack 2 Bush 11;grass;735;690;HYRULE_FIELD;All;0
-0xb003b;HYRULE_FIELD;Pack 2 - Bush 12;OOT Hyrule Field Grass Pack 2 Bush 12;grass;725;692;HYRULE_FIELD;All;0
-0x0003c;HYRULE_FIELD;Pack 3 - Bush 1;OOT Hyrule Field Grass Pack 3 Bush 01;grass;795;283;HYRULE_FIELD;All;0
-0x1003c;HYRULE_FIELD;Pack 3 - Bush 2;OOT Hyrule Field Grass Pack 3 Bush 02;grass;798;302;HYRULE_FIELD;All;0
-0x2003c;HYRULE_FIELD;Pack 3 - Bush 3;OOT Hyrule Field Grass Pack 3 Bush 03;grass;806;308;HYRULE_FIELD;All;0
-0x3003c;HYRULE_FIELD;Pack 3 - Bush 4;OOT Hyrule Field Grass Pack 3 Bush 04;grass;828;293;HYRULE_FIELD;All;0
+0x8003b;HYRULE_FIELD;Pack 2 - Bush 9;OOT Hyrule Field Grass Pack 2 Bush 09;grass;722;719;HYRULE_FIELD;All;0
+0x9003b;HYRULE_FIELD;Pack 2 - Bush 10;OOT Hyrule Field Grass Pack 2 Bush 10;grass;730;725;HYRULE_FIELD;All;0
+0xa003b;HYRULE_FIELD;Pack 2 - Bush 11;OOT Hyrule Field Grass Pack 2 Bush 11;grass;740;726;HYRULE_FIELD;All;0
+0xb003b;HYRULE_FIELD;Pack 2 - Bush 12;OOT Hyrule Field Grass Pack 2 Bush 12;grass;749;720;HYRULE_FIELD;All;0
+0x0003c;HYRULE_FIELD;Pack 3 - Bush 1;OOT Hyrule Field Grass Pack 3 Bush 01;grass;828;293;HYRULE_FIELD;All;0
+0x1003c;HYRULE_FIELD;Pack 3 - Bush 2;OOT Hyrule Field Grass Pack 3 Bush 02;grass;821;275;HYRULE_FIELD;All;0
+0x2003c;HYRULE_FIELD;Pack 3 - Bush 3;OOT Hyrule Field Grass Pack 3 Bush 03;grass;801;275;HYRULE_FIELD;All;0
+0x3003c;HYRULE_FIELD;Pack 3 - Bush 4;OOT Hyrule Field Grass Pack 3 Bush 04;grass;793;293;HYRULE_FIELD;All;0
 0x4003c;HYRULE_FIELD;Pack 3 - Bush 5;OOT Hyrule Field Grass Pack 3 Bush 05;grass;811;291;HYRULE_FIELD;All;0
-0x5003c;HYRULE_FIELD;Pack 3 - Bush 6;OOT Hyrule Field Grass Pack 3 Bush 06;grass;793;293;HYRULE_FIELD;All;0
-0x6003c;HYRULE_FIELD;Pack 3 - Bush 7;OOT Hyrule Field Grass Pack 3 Bush 07;grass;816;309;HYRULE_FIELD;All;0
-0x7003c;HYRULE_FIELD;Pack 3 - Bush 8;OOT Hyrule Field Grass Pack 3 Bush 08;grass;825;303;HYRULE_FIELD;All;0
-0x8003c;HYRULE_FIELD;Pack 3 - Bush 9;OOT Hyrule Field Grass Pack 3 Bush 09;grass;827;283;HYRULE_FIELD;All;0
-0x9003c;HYRULE_FIELD;Pack 3 - Bush 10;OOT Hyrule Field Grass Pack 3 Bush 10;grass;821;275;HYRULE_FIELD;All;0
-0xa003c;HYRULE_FIELD;Pack 3 - Bush 11;OOT Hyrule Field Grass Pack 3 Bush 11;grass;811;275;HYRULE_FIELD;All;0
-0xb003c;HYRULE_FIELD;Pack 3 - Bush 12;OOT Hyrule Field Grass Pack 3 Bush 12;grass;801;275;HYRULE_FIELD;All;0
-0x0003d;HYRULE_FIELD;Pack 4 - Bush 1;OOT Hyrule Field Grass Pack 4 Bush 01;grass;931;506;HYRULE_FIELD;All;0
-0x1003d;HYRULE_FIELD;Pack 4 - Bush 2;OOT Hyrule Field Grass Pack 4 Bush 02;grass;945;518;HYRULE_FIELD;All;0
-0x2003d;HYRULE_FIELD;Pack 4 - Bush 3;OOT Hyrule Field Grass Pack 4 Bush 03;grass;947;498;HYRULE_FIELD;All;0
-0x3003d;HYRULE_FIELD;Pack 4 - Bush 4;OOT Hyrule Field Grass Pack 4 Bush 04;grass;926;523;HYRULE_FIELD;All;0
-0x4003d;HYRULE_FIELD;Pack 4 - Bush 5;OOT Hyrule Field Grass Pack 4 Bush 05;grass;918;517;HYRULE_FIELD;All;0
-0x5003d;HYRULE_FIELD;Pack 4 - Bush 6;OOT Hyrule Field Grass Pack 4 Bush 06;grass;913;508;HYRULE_FIELD;All;0
-0x6003d;HYRULE_FIELD;Pack 4 - Bush 7;OOT Hyrule Field Grass Pack 4 Bush 07;grass;948;508;HYRULE_FIELD;All;0
+0x5003c;HYRULE_FIELD;Pack 3 - Bush 6;OOT Hyrule Field Grass Pack 3 Bush 06;grass;827;283;HYRULE_FIELD;All;0
+0x6003c;HYRULE_FIELD;Pack 3 - Bush 7;OOT Hyrule Field Grass Pack 3 Bush 07;grass;811;275;HYRULE_FIELD;All;0
+0x7003c;HYRULE_FIELD;Pack 3 - Bush 8;OOT Hyrule Field Grass Pack 3 Bush 08;grass;795;283;HYRULE_FIELD;All;0
+0x8003c;HYRULE_FIELD;Pack 3 - Bush 9;OOT Hyrule Field Grass Pack 3 Bush 09;grass;798;302;HYRULE_FIELD;All;0
+0x9003c;HYRULE_FIELD;Pack 3 - Bush 10;OOT Hyrule Field Grass Pack 3 Bush 10;grass;806;308;HYRULE_FIELD;All;0
+0xa003c;HYRULE_FIELD;Pack 3 - Bush 11;OOT Hyrule Field Grass Pack 3 Bush 11;grass;816;309;HYRULE_FIELD;All;0
+0xb003c;HYRULE_FIELD;Pack 3 - Bush 12;OOT Hyrule Field Grass Pack 3 Bush 12;grass;825;303;HYRULE_FIELD;All;0
+0x0003d;HYRULE_FIELD;Pack 4 - Bush 1;OOT Hyrule Field Grass Pack 4 Bush 01;grass;948;508;HYRULE_FIELD;All;0
+0x1003d;HYRULE_FIELD;Pack 4 - Bush 2;OOT Hyrule Field Grass Pack 4 Bush 02;grass;941;490;HYRULE_FIELD;All;0
+0x2003d;HYRULE_FIELD;Pack 4 - Bush 3;OOT Hyrule Field Grass Pack 4 Bush 03;grass;921;490;HYRULE_FIELD;All;0
+0x3003d;HYRULE_FIELD;Pack 4 - Bush 4;OOT Hyrule Field Grass Pack 4 Bush 04;grass;913;508;HYRULE_FIELD;All;0
+0x4003d;HYRULE_FIELD;Pack 4 - Bush 5;OOT Hyrule Field Grass Pack 4 Bush 05;grass;931;506;HYRULE_FIELD;All;0
+0x5003d;HYRULE_FIELD;Pack 4 - Bush 6;OOT Hyrule Field Grass Pack 4 Bush 06;grass;947;498;HYRULE_FIELD;All;0
+0x6003d;HYRULE_FIELD;Pack 4 - Bush 7;OOT Hyrule Field Grass Pack 4 Bush 07;grass;931;488;HYRULE_FIELD;All;0
 0x7003d;HYRULE_FIELD;Pack 4 - Bush 8;OOT Hyrule Field Grass Pack 4 Bush 08;grass;915;498;HYRULE_FIELD;All;0
-0x8003d;HYRULE_FIELD;Pack 4 - Bush 9;OOT Hyrule Field Grass Pack 4 Bush 09;grass;936;524;HYRULE_FIELD;All;0
-0x9003d;HYRULE_FIELD;Pack 4 - Bush 10;OOT Hyrule Field Grass Pack 4 Bush 10;grass;941;490;HYRULE_FIELD;All;0
-0xa003d;HYRULE_FIELD;Pack 4 - Bush 11;OOT Hyrule Field Grass Pack 4 Bush 11;grass;931;488;HYRULE_FIELD;All;0
-0xb003d;HYRULE_FIELD;Pack 4 - Bush 12;OOT Hyrule Field Grass Pack 4 Bush 12;grass;921;490;HYRULE_FIELD;All;0
+0x8003d;HYRULE_FIELD;Pack 4 - Bush 9;OOT Hyrule Field Grass Pack 4 Bush 09;grass;918;517;HYRULE_FIELD;All;0
+0x9003d;HYRULE_FIELD;Pack 4 - Bush 10;OOT Hyrule Field Grass Pack 4 Bush 10;grass;926;523;HYRULE_FIELD;All;0
+0xa003d;HYRULE_FIELD;Pack 4 - Bush 11;OOT Hyrule Field Grass Pack 4 Bush 11;grass;936;524;HYRULE_FIELD;All;0
+0xb003d;HYRULE_FIELD;Pack 4 - Bush 12;OOT Hyrule Field Grass Pack 4 Bush 12;grass;945;518;HYRULE_FIELD;All;0
 0x00048;HYRULE_FIELD;River Big Fairy;OOT Hyrule Field River Big Fairy;fairy_spot;1038;370;HYRULE_FIELD;All;0
 0x00034;HYRULE_FIELD;Drawbridge 1;OOT Hyrule Field Wonder Item 1;wonder;750;135;HYRULE_FIELD;Child;0
 0x00035;HYRULE_FIELD;Drawbridge 2;OOT Hyrule Field Wonder Item 2;wonder;762;135;HYRULE_FIELD;Child;0
@@ -1475,12 +1475,12 @@ MASK_SELL_KEATON;KAKARIKO_VILLAGE;Keaton Mask;OOT Kakariko Sell Keaton Mask;npc;
 0x00004;KOKIRI_SHOP;Behind Shop;OOT Kokiri Shop Wonder Item;wonder;661;456;KOKIRI_SHOP;All;0
 0x0002;KOKIRI_TWINS;Pot 1;OOT Twins House Pot 1;pot;663;558;KOKIRI_TWINS;All;0
 0x0003;KOKIRI_TWINS;Pot 2;OOT Twins House Pot 2;pot;660;394;KOKIRI_TWINS;All;0
-LABORATORY_DIVE;LABORATORY;Golden Scale Dive;OOT Laboratory Dive;npc;0;0;LABORATORY;All;0
-TRADE_EYE_DROPS;LABORATORY;Eye Drops;OOT Laboratory Eye Drops;npc;0;0;LABORATORY;All;0
-0x9b;LABORATORY;Underwater Crate;OOT Laboratory GS Crate;gs;0;0;LABORATORY;All;0
-0x00001;LABORATORY;Rupee 1;OOT Laboratory Rupee 1;rupee;0;0;LABORATORY;All;0
-0x00002;LABORATORY;Rupee 2;OOT Laboratory Rupee 2;rupee;0;0;LABORATORY;All;0
-0x00003;LABORATORY;Rupee 3;OOT Laboratory Rupee 3;rupee;0;0;LABORATORY;All;0
+LABORATORY_DIVE;LABORATORY;Golden Scale Dive;OOT Laboratory Dive;npc;499;476;LABORATORY;All;0
+TRADE_EYE_DROPS;LABORATORY;Eye Drops;OOT Laboratory Eye Drops;npc;592;449;LABORATORY;All;0
+0x9b;LABORATORY;Underwater Crate;OOT Laboratory GS Crate;gs;427;630;LABORATORY;All;0
+0x00001;LABORATORY;Rupee 1;OOT Laboratory Rupee 1;rupee;444;702;LABORATORY;All;0
+0x00002;LABORATORY;Rupee 2;OOT Laboratory Rupee 2;rupee;541;559;LABORATORY;All;0
+0x00003;LABORATORY;Rupee 3;OOT Laboratory Rupee 3;rupee;636;634;LABORATORY;All;0
 0x1f;LAIR_BARINADE;Heart Container;OOT Jabu-Jabu Boss Container;collectible;0;0;INSIDE_JABU_JABU;All;0
 BLUE_WARP_BARINADE;LAIR_BARINADE;Zora's Sapphire;OOT Jabu-Jabu Boss;npc;0;0;INSIDE_JABU_JABU;All;0
 0x0101;LAIR_BARINADE;Boss Pot 1;OOT Jabu-Jabu Boss Pot 1;pot;0;0;INSIDE_JABU_JABU;All;0
@@ -1512,65 +1512,65 @@ BLUE_WARP_PHANTOM_GANON;LAIR_PHANTOM_GANON;Forest Medaillon;OOT Forest Temple Bo
 BLUE_WARP_TWINROVA;LAIR_TWINROVA;Spirit Medaillon;OOT Spirit Temple Boss;npc;0;0;TEMPLE_SPIRIT;All;0
 0x1f;LAIR_VOLVAGIA;Heart Container;OOT Fire Temple Boss Container;collectible;0;0;TEMPLE_FIRE;All;0
 BLUE_WARP_VOLVAGIA;LAIR_VOLVAGIA;Fire Medaillon;OOT Fire Temple Boss;npc;0;0;TEMPLE_FIRE;All;0
-RUTO_LETTER;LAKE_HYLIA;Ruto's Letter;OOT Lake Hylia Underwater Bottle;npc;0;0;LAKE_HYLIA;Child;0
-FIRE_ARROW;LAKE_HYLIA;Fire Arrow;OOT Lake Hylia Fire Arrow;npc;0;0;LAKE_HYLIA;Adult;0
-0x1e;LAKE_HYLIA;Heart Piece;OOT Lake Hylia HP;collectible;0;0;LAKE_HYLIA;All;0
-0x9a;LAKE_HYLIA;Laboratory Wall;OOT Lake Hylia GS Lab Wall;gs;0;0;LAKE_HYLIA;Child;0
-0x99;LAKE_HYLIA;Fire Arrow Island;OOT Lake Hylia GS Island;gs;0;0;LAKE_HYLIA;Child;0
-0x98;LAKE_HYLIA;Soil;OOT Lake Hylia GS Soil;gs;0;0;LAKE_HYLIA;Child;0
-0x9c;LAKE_HYLIA;Big Tree;OOT Lake Hylia GS Big Tree;gs;0;0;LAKE_HYLIA;Adult;0
-0x000a;LAKE_HYLIA;Pot 1;OOT Lake Hylia Pot 1;pot;0;0;LAKE_HYLIA;All;0
-0x000b;LAKE_HYLIA;Pot 2;OOT Lake Hylia Pot 2;pot;0;0;LAKE_HYLIA;All;0
-0x00018;LAKE_HYLIA;Grass 1;OOT Lake Hylia Grass 1;grass;0;0;LAKE_HYLIA;All;0
-0x00019;LAKE_HYLIA;Grass 2;OOT Lake Hylia Grass 2;grass;0;0;LAKE_HYLIA;All;0
-0x0001a;LAKE_HYLIA;Child - Grass 1;OOT Lake Hylia Grass Child 1;grass;0;0;LAKE_HYLIA;Child;0
-0x0001b;LAKE_HYLIA;Child - Grass 2;OOT Lake Hylia Grass Child 2;grass;0;0;LAKE_HYLIA;Child;0
-0x0001c;LAKE_HYLIA;Child - Grass 3;OOT Lake Hylia Grass Child 3;grass;0;0;LAKE_HYLIA;Child;0
-0x0001d;LAKE_HYLIA;Child - Grass 4;OOT Lake Hylia Grass Child 4;grass;0;0;LAKE_HYLIA;Child;0
-0x00006;LAKE_HYLIA;Child - Grass 5;OOT Lake Hylia Grass Child 5;grass;0;0;LAKE_HYLIA;Child;0
-0x0001e;LAKE_HYLIA;Pack 1 - Bush 1;OOT Lake Hylia Grass Pack 1 Bush 01;grass;0;0;LAKE_HYLIA;All;0
-0x1001e;LAKE_HYLIA;Pack 1 - Bush 2;OOT Lake Hylia Grass Pack 1 Bush 02;grass;0;0;LAKE_HYLIA;All;0
-0x2001e;LAKE_HYLIA;Pack 1 - Bush 3;OOT Lake Hylia Grass Pack 1 Bush 03;grass;0;0;LAKE_HYLIA;All;0
-0x3001e;LAKE_HYLIA;Pack 1 - Bush 4;OOT Lake Hylia Grass Pack 1 Bush 04;grass;0;0;LAKE_HYLIA;All;0
-0x4001e;LAKE_HYLIA;Pack 1 - Bush 5;OOT Lake Hylia Grass Pack 1 Bush 05;grass;0;0;LAKE_HYLIA;All;0
-0x5001e;LAKE_HYLIA;Pack 1 - Bush 6;OOT Lake Hylia Grass Pack 1 Bush 06;grass;0;0;LAKE_HYLIA;All;0
-0x6001e;LAKE_HYLIA;Pack 1 - Bush 7;OOT Lake Hylia Grass Pack 1 Bush 07;grass;0;0;LAKE_HYLIA;All;0
-0x7001e;LAKE_HYLIA;Pack 1 - Bush 8;OOT Lake Hylia Grass Pack 1 Bush 08;grass;0;0;LAKE_HYLIA;All;0
-0x8001e;LAKE_HYLIA;Pack 1 - Bush 9;OOT Lake Hylia Grass Pack 1 Bush 09;grass;0;0;LAKE_HYLIA;All;0
-0x9001e;LAKE_HYLIA;Pack 1 - Bush 10;OOT Lake Hylia Grass Pack 1 Bush 10;grass;0;0;LAKE_HYLIA;All;0
-0xa001e;LAKE_HYLIA;Pack 1 - Bush 11;OOT Lake Hylia Grass Pack 1 Bush 11;grass;0;0;LAKE_HYLIA;All;0
-0xb001e;LAKE_HYLIA;Pack 1 - Bush 12;OOT Lake Hylia Grass Pack 1 Bush 12;grass;0;0;LAKE_HYLIA;All;0
-0x0001f;LAKE_HYLIA;Pack 2 - Bush 1;OOT Lake Hylia Grass Pack 2 Bush 01;grass;0;0;LAKE_HYLIA;All;0
-0x1001f;LAKE_HYLIA;Pack 2 - Bush 2;OOT Lake Hylia Grass Pack 2 Bush 02;grass;0;0;LAKE_HYLIA;All;0
-0x2001f;LAKE_HYLIA;Pack 2 - Bush 3;OOT Lake Hylia Grass Pack 2 Bush 03;grass;0;0;LAKE_HYLIA;All;0
-0x3001f;LAKE_HYLIA;Pack 2 - Bush 4;OOT Lake Hylia Grass Pack 2 Bush 04;grass;0;0;LAKE_HYLIA;All;0
-0x4001f;LAKE_HYLIA;Pack 2 - Bush 5;OOT Lake Hylia Grass Pack 2 Bush 05;grass;0;0;LAKE_HYLIA;All;0
-0x5001f;LAKE_HYLIA;Pack 2 - Bush 6;OOT Lake Hylia Grass Pack 2 Bush 06;grass;0;0;LAKE_HYLIA;All;0
-0x6001f;LAKE_HYLIA;Pack 2 - Bush 7;OOT Lake Hylia Grass Pack 2 Bush 07;grass;0;0;LAKE_HYLIA;All;0
-0x7001f;LAKE_HYLIA;Pack 2 - Bush 8;OOT Lake Hylia Grass Pack 2 Bush 08;grass;0;0;LAKE_HYLIA;All;0
-0x8001f;LAKE_HYLIA;Pack 2 - Bush 9;OOT Lake Hylia Grass Pack 2 Bush 09;grass;0;0;LAKE_HYLIA;All;0
-0x9001f;LAKE_HYLIA;Pack 2 - Bush 10;OOT Lake Hylia Grass Pack 2 Bush 10;grass;0;0;LAKE_HYLIA;All;0
-0xa001f;LAKE_HYLIA;Pack 2 - Bush 11;OOT Lake Hylia Grass Pack 2 Bush 11;grass;0;0;LAKE_HYLIA;All;0
-0xb001f;LAKE_HYLIA;Pack 2 - Bush 12;OOT Lake Hylia Grass Pack 2 Bush 12;grass;0;0;LAKE_HYLIA;All;0
-0x00020;LAKE_HYLIA;Pack 3 - Bush 1;OOT Lake Hylia Grass Pack 3 Bush 01;grass;0;0;LAKE_HYLIA;All;0
-0x10020;LAKE_HYLIA;Pack 3 - Bush 2;OOT Lake Hylia Grass Pack 3 Bush 02;grass;0;0;LAKE_HYLIA;All;0
-0x20020;LAKE_HYLIA;Pack 3 - Bush 3;OOT Lake Hylia Grass Pack 3 Bush 03;grass;0;0;LAKE_HYLIA;All;0
-0x30020;LAKE_HYLIA;Pack 3 - Bush 4;OOT Lake Hylia Grass Pack 3 Bush 04;grass;0;0;LAKE_HYLIA;All;0
-0x40020;LAKE_HYLIA;Pack 3 - Bush 5;OOT Lake Hylia Grass Pack 3 Bush 05;grass;0;0;LAKE_HYLIA;All;0
-0x50020;LAKE_HYLIA;Pack 3 - Bush 6;OOT Lake Hylia Grass Pack 3 Bush 06;grass;0;0;LAKE_HYLIA;All;0
-0x60020;LAKE_HYLIA;Pack 3 - Bush 7;OOT Lake Hylia Grass Pack 3 Bush 07;grass;0;0;LAKE_HYLIA;All;0
-0x70020;LAKE_HYLIA;Pack 3 - Bush 8;OOT Lake Hylia Grass Pack 3 Bush 08;grass;0;0;LAKE_HYLIA;All;0
-0x80020;LAKE_HYLIA;Pack 3 - Bush 9;OOT Lake Hylia Grass Pack 3 Bush 09;grass;0;0;LAKE_HYLIA;All;0
-0x90020;LAKE_HYLIA;Pack 3 - Bush 10;OOT Lake Hylia Grass Pack 3 Bush 10;grass;0;0;LAKE_HYLIA;All;0
-0xa0020;LAKE_HYLIA;Pack 3 - Bush 11;OOT Lake Hylia Grass Pack 3 Bush 11;grass;0;0;LAKE_HYLIA;All;0
-0xb0020;LAKE_HYLIA;Pack 3 - Bush 12;OOT Lake Hylia Grass Pack 3 Bush 12;grass;0;0;LAKE_HYLIA;All;0
-0x00031;LAKE_HYLIA;Rupee 1;OOT Lake Hylia Rupee 1;rupee;0;0;LAKE_HYLIA;All;0
-0x00032;LAKE_HYLIA;Rupee 2;OOT Lake Hylia Rupee 2;rupee;0;0;LAKE_HYLIA;All;0
-0x00033;LAKE_HYLIA;Rupee 3;OOT Lake Hylia Rupee 3;rupee;0;0;LAKE_HYLIA;All;0
-0x00037;LAKE_HYLIA;Fire Arrow Island;OOT Lake Hylia Island Big Fairy;fairy_spot;0;0;LAKE_HYLIA;All;0
-0x00021;LAKE_HYLIA;Butterfly 1;OOT Lake Hylia Butterfly 1;butterfly;0;0;LAKE_HYLIA;All;0
-0x10021;LAKE_HYLIA;Butterfly 2;OOT Lake Hylia Butterfly 2;butterfly;0;0;LAKE_HYLIA;All;0
-0x20021;LAKE_HYLIA;Butterfly 3;OOT Lake Hylia Butterfly 3;butterfly;0;0;LAKE_HYLIA;All;0
+RUTO_LETTER;LAKE_HYLIA;Ruto's Letter;OOT Lake Hylia Underwater Bottle;npc;680;543;LAKE_HYLIA;Child;0
+FIRE_ARROW;LAKE_HYLIA;Fire Arrow;OOT Lake Hylia Fire Arrow;npc;521;238;LAKE_HYLIA;Adult;0
+0x1e;LAKE_HYLIA;Heart Piece;OOT Lake Hylia HP;collectible;867;577;LAKE_HYLIA;All;0
+0x9a;LAKE_HYLIA;Laboratory Wall;OOT Lake Hylia GS Lab Wall;gs;895;572;LAKE_HYLIA;Child;0
+0x99;LAKE_HYLIA;Fire Arrow Island;OOT Lake Hylia GS Island;gs;504;246;LAKE_HYLIA;Child;0
+0x98;LAKE_HYLIA;Soil;OOT Lake Hylia GS Soil;gs;864;617;LAKE_HYLIA;Child;0
+0x9c;LAKE_HYLIA;Big Tree;OOT Lake Hylia GS Big Tree;gs;661;201;LAKE_HYLIA;Adult;0
+0x000a;LAKE_HYLIA;Pot 1;OOT Lake Hylia Pot 1;pot;839;587;LAKE_HYLIA;Child;0
+0x000b;LAKE_HYLIA;Pot 2;OOT Lake Hylia Pot 2;pot;839;578;LAKE_HYLIA;Child;0
+0x00018;LAKE_HYLIA;Grass 1;OOT Lake Hylia Grass 1;grass;659;229;LAKE_HYLIA;All;0
+0x00019;LAKE_HYLIA;Grass 2;OOT Lake Hylia Grass 2;grass;650;227;LAKE_HYLIA;All;0
+0x0001a;LAKE_HYLIA;Child - Grass 1;OOT Lake Hylia Grass Child 1;grass;621;679;LAKE_HYLIA;Child;0
+0x0001b;LAKE_HYLIA;Child - Grass 2;OOT Lake Hylia Grass Child 2;grass;623;693;LAKE_HYLIA;Child;0
+0x0001c;LAKE_HYLIA;Child - Grass 3;OOT Lake Hylia Grass Child 3;grass;593;702;LAKE_HYLIA;Child;0
+0x0001d;LAKE_HYLIA;Child - Grass 4;OOT Lake Hylia Grass Child 4;grass;583;728;LAKE_HYLIA;Child;0
+0x00006;LAKE_HYLIA;Child - Grass 5;OOT Lake Hylia Grass Child 5;grass;598;736;LAKE_HYLIA;Child;0
+0x0001e;LAKE_HYLIA;Pack 1 - Bush 1;OOT Lake Hylia Grass Pack 1 Bush 01;grass;812;679;LAKE_HYLIA;All;0
+0x1001e;LAKE_HYLIA;Pack 1 - Bush 2;OOT Lake Hylia Grass Pack 1 Bush 02;grass;815;698;LAKE_HYLIA;All;0
+0x2001e;LAKE_HYLIA;Pack 1 - Bush 3;OOT Lake Hylia Grass Pack 1 Bush 03;grass;833;705;LAKE_HYLIA;All;0
+0x3001e;LAKE_HYLIA;Pack 1 - Bush 4;OOT Lake Hylia Grass Pack 1 Bush 04;grass;845;689;LAKE_HYLIA;All;0
+0x4001e;LAKE_HYLIA;Pack 1 - Bush 5;OOT Lake Hylia Grass Pack 1 Bush 05;grass;828;687;LAKE_HYLIA;All;0
+0x5001e;LAKE_HYLIA;Pack 1 - Bush 6;OOT Lake Hylia Grass Pack 1 Bush 06;grass;810;689;LAKE_HYLIA;All;0
+0x6001e;LAKE_HYLIA;Pack 1 - Bush 7;OOT Lake Hylia Grass Pack 1 Bush 07;grass;823;704;LAKE_HYLIA;All;0
+0x7001e;LAKE_HYLIA;Pack 1 - Bush 8;OOT Lake Hylia Grass Pack 1 Bush 08;grass;842;699;LAKE_HYLIA;All;0
+0x8001e;LAKE_HYLIA;Pack 1 - Bush 9;OOT Lake Hylia Grass Pack 1 Bush 09;grass;844;679;LAKE_HYLIA;All;0
+0x9001e;LAKE_HYLIA;Pack 1 - Bush 10;OOT Lake Hylia Grass Pack 1 Bush 10;grass;838;671;LAKE_HYLIA;All;0
+0xa001e;LAKE_HYLIA;Pack 1 - Bush 11;OOT Lake Hylia Grass Pack 1 Bush 11;grass;828;669;LAKE_HYLIA;All;0
+0xb001e;LAKE_HYLIA;Pack 1 - Bush 12;OOT Lake Hylia Grass Pack 1 Bush 12;grass;818;671;LAKE_HYLIA;All;0
+0x0001f;LAKE_HYLIA;Pack 2 - Bush 1;OOT Lake Hylia Grass Pack 2 Bush 01;grass;795;737;LAKE_HYLIA;All;0
+0x1001f;LAKE_HYLIA;Pack 2 - Bush 2;OOT Lake Hylia Grass Pack 2 Bush 02;grass;798;756;LAKE_HYLIA;All;0
+0x2001f;LAKE_HYLIA;Pack 2 - Bush 3;OOT Lake Hylia Grass Pack 2 Bush 03;grass;816;763;LAKE_HYLIA;All;0
+0x3001f;LAKE_HYLIA;Pack 2 - Bush 4;OOT Lake Hylia Grass Pack 2 Bush 04;grass;828;747;LAKE_HYLIA;All;0
+0x4001f;LAKE_HYLIA;Pack 2 - Bush 5;OOT Lake Hylia Grass Pack 2 Bush 05;grass;811;745;LAKE_HYLIA;All;0
+0x5001f;LAKE_HYLIA;Pack 2 - Bush 6;OOT Lake Hylia Grass Pack 2 Bush 06;grass;793;747;LAKE_HYLIA;All;0
+0x6001f;LAKE_HYLIA;Pack 2 - Bush 7;OOT Lake Hylia Grass Pack 2 Bush 07;grass;806;762;LAKE_HYLIA;All;0
+0x7001f;LAKE_HYLIA;Pack 2 - Bush 8;OOT Lake Hylia Grass Pack 2 Bush 08;grass;825;757;LAKE_HYLIA;All;0
+0x8001f;LAKE_HYLIA;Pack 2 - Bush 9;OOT Lake Hylia Grass Pack 2 Bush 09;grass;827;737;LAKE_HYLIA;All;0
+0x9001f;LAKE_HYLIA;Pack 2 - Bush 10;OOT Lake Hylia Grass Pack 2 Bush 10;grass;821;729;LAKE_HYLIA;All;0
+0xa001f;LAKE_HYLIA;Pack 2 - Bush 11;OOT Lake Hylia Grass Pack 2 Bush 11;grass;811;727;LAKE_HYLIA;All;0
+0xb001f;LAKE_HYLIA;Pack 2 - Bush 12;OOT Lake Hylia Grass Pack 2 Bush 12;grass;801;729;LAKE_HYLIA;All;0
+0x00020;LAKE_HYLIA;Pack 3 - Bush 1;OOT Lake Hylia Grass Pack 3 Bush 01;grass;750;702;LAKE_HYLIA;All;0
+0x10020;LAKE_HYLIA;Pack 3 - Bush 2;OOT Lake Hylia Grass Pack 3 Bush 02;grass;753;721;LAKE_HYLIA;All;0
+0x20020;LAKE_HYLIA;Pack 3 - Bush 3;OOT Lake Hylia Grass Pack 3 Bush 03;grass;771;728;LAKE_HYLIA;All;0
+0x30020;LAKE_HYLIA;Pack 3 - Bush 4;OOT Lake Hylia Grass Pack 3 Bush 04;grass;783;712;LAKE_HYLIA;All;0
+0x40020;LAKE_HYLIA;Pack 3 - Bush 5;OOT Lake Hylia Grass Pack 3 Bush 05;grass;766;710;LAKE_HYLIA;All;0
+0x50020;LAKE_HYLIA;Pack 3 - Bush 6;OOT Lake Hylia Grass Pack 3 Bush 06;grass;748;712;LAKE_HYLIA;All;0
+0x60020;LAKE_HYLIA;Pack 3 - Bush 7;OOT Lake Hylia Grass Pack 3 Bush 07;grass;761;727;LAKE_HYLIA;All;0
+0x70020;LAKE_HYLIA;Pack 3 - Bush 8;OOT Lake Hylia Grass Pack 3 Bush 08;grass;780;722;LAKE_HYLIA;All;0
+0x80020;LAKE_HYLIA;Pack 3 - Bush 9;OOT Lake Hylia Grass Pack 3 Bush 09;grass;782;702;LAKE_HYLIA;All;0
+0x90020;LAKE_HYLIA;Pack 3 - Bush 10;OOT Lake Hylia Grass Pack 3 Bush 10;grass;776;694;LAKE_HYLIA;All;0
+0xa0020;LAKE_HYLIA;Pack 3 - Bush 11;OOT Lake Hylia Grass Pack 3 Bush 11;grass;766;692;LAKE_HYLIA;All;0
+0xb0020;LAKE_HYLIA;Pack 3 - Bush 12;OOT Lake Hylia Grass Pack 3 Bush 12;grass;756;694;LAKE_HYLIA;All;0
+0x00031;LAKE_HYLIA;Rupee 1;OOT Lake Hylia Rupee 1;rupee;690;577;LAKE_HYLIA;All;0
+0x00032;LAKE_HYLIA;Rupee 2;OOT Lake Hylia Rupee 2;rupee;683;564;LAKE_HYLIA;All;0
+0x00033;LAKE_HYLIA;Rupee 3;OOT Lake Hylia Rupee 3;rupee;676;553;LAKE_HYLIA;All;0
+0x00037;LAKE_HYLIA;Fire Arrow Island;OOT Lake Hylia Island Big Fairy;fairy_spot;505;225;LAKE_HYLIA;All;0
+0x00021;LAKE_HYLIA;Butterfly 1;OOT Lake Hylia Butterfly 1;butterfly;601;680;LAKE_HYLIA;All;0
+0x10021;LAKE_HYLIA;Butterfly 2;OOT Lake Hylia Butterfly 2;butterfly;608;695;LAKE_HYLIA;All;0
+0x20021;LAKE_HYLIA;Butterfly 3;OOT Lake Hylia Butterfly 3;butterfly;615;709;LAKE_HYLIA;All;0
 0x00;KOKIRI_FOREST;Cow;OOT Kokiri Forest Cow;cow;910;611;LINK_HOUSE;All;0
 0x0002;LINK_HOUSE;Pot;OOT Link's House Pot;pot;997;296;LINK_HOUSE;All;0
 MALON_SONG;LON_LON_RANCH;Epona's Song;OOT Lon Lon Ranch Malon Song;npc;0;0;LON_LON_RANCH;Child;0

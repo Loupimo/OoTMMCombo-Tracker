@@ -262,7 +262,7 @@ const SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 	{ "Castle Maze - Night", "", (uint8_t)OoTRegions::None, false },
 	{ "Cutscene Map", "", (uint8_t)OoTRegions::None, false },
 	{ "Dampe's Tomb", "./Resources/OoT/Graveyard/Dampe_Tomb.png", (uint8_t)OoTRegions::Graveyard, false },
-	{ "Fishing Pond", "./Resources/OoT/Lake_Hylia/Fishing_Pond.png", (uint8_t)OoTRegions::Lake_Hylia, true },
+	{ "Fishing Pond", "./Resources/OoT/Lake_Hylia/Pond.png", (uint8_t)OoTRegions::Lake_Hylia, true },
 	{ "Castle Courtyard", "./Resources/OoT/Hyrule/Castle_Courtyard.png", (uint8_t)OoTRegions::Castle, false },
 	{ "Bombchu Bowling", "./Resources/OoT/Market/Bombchu_Bowling.png", (uint8_t)OoTRegions::Market, false },
 	{ "Talon's House", "./Resources/OoT/Ranch/Ranch_House_Silo.png", (uint8_t)OoTRegions::Lon_Lon_Ranch, false },
