@@ -1,0 +1,4 @@
+QList<QPair<int, int>> PotPoints = {
+{293, 512},
+{294, 446},
+};

@@ -1,0 +1,21 @@
+QList<QPair<int, int>> FSPoints = {
+{471, 37},
+};
+QList<QPair<int, int>> CowPoints = {
+{422, 358},
+};
+QList<QPair<int, int>> GSPoints = {
+{413, 368},
+{751, 292},
+};
+QList<QPair<int, int>> CratePoints = {
+{422, 564},
+{421, 369},
+{348, 366},
+{334, 329},
+{332, 322},
+{334, 317},
+};
+QList<QPair<int, int>> GrottoPoints = {
+{515, 561},
+};

@@ -45,8 +45,125 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 				{ 2, "Top", "./Resources/OoT/Death_Mountain_Trial/Top.png" }
 			}
 		)
-	)
+	),
 
+	QPair<int, std::vector<RoomInfo>>(GANON_TOWER,
+		std::vector<RoomInfo>(
+			{
+				{ 0, "Boss Key Room", "./Resources/OoT/Ganon/Boss_Key_Room.png" },
+				{ 1, "Pots Room", "./Resources/OoT/Ganon/Pots_Room.png" }
+			}
+		)
+	),
+
+	QPair<int, std::vector<RoomInfo>>(INSIDE_GANON_CASTLE,
+		std::vector<RoomInfo>(
+			{
+				{ 0, "Lobby", "./Resources/OoT/Ganon/Lobby.png" },
+				{ 1, "Water Trial", "./Resources/OoT/Ganon/Water.png" },
+				{ 2, "Forest Trial", "./Resources/OoT/Ganon/Forest.png" },
+				{ 3, "Light Trial", "./Resources/OoT/Ganon/Light.png" },
+				{ 4, "Shadow Trial", "./Resources/OoT/Ganon/Shadow.png" },
+				{ 5, "Spirit Trial", "./Resources/OoT/Ganon/Spirit.png" },
+				{ 6, "Fire Trial", "./Resources/OoT/Ganon/Fire.png" }
+			}
+		)
+	),
+
+	QPair<int, std::vector<RoomInfo>>(BOTTOM_OF_THE_WELL,
+		std::vector<RoomInfo>(
+			{
+				{ 0, "Main", "./Resources/OoT/Dungeons/Well/Main.png" },
+				{ 1, "Underground", "./Resources/OoT/Dungeons/Well/Underground.png" }
+			}
+		)
+	),
+
+	QPair<int, std::vector<RoomInfo>>(DODONGO_CAVERN,
+		std::vector<RoomInfo>(
+			{
+				{ 0, "Lobby", "./Resources/OoT/Dungeons/Cavern/Lobby.png" },
+				{ 1, "Right Corridor", "./Resources/OoT/Dungeons/Cavern/Right_Corridor.png" },
+				{ 2, "Bombable Stairs", "./Resources/OoT/Dungeons/Cavern/Stairs.png" },
+				{ 3, "Lizalfos", "./Resources/OoT/Dungeons/Cavern/Lizalfos.png" },
+				{ 4, "Blue Room", "./Resources/OoT/Dungeons/Cavern/Blue_Room.png" },
+				{ 5, "Bomb Bag Room", "./Resources/OoT/Dungeons/Cavern/Bomb_Bag_Room.png" },
+				{ 6, "Pre-Boss", "./Resources/OoT/Dungeons/Cavern/Pre-Boss.png" },
+				{ 7, "Side Mini-Boss", "./Resources/OoT/Dungeons/Cavern/Side_Mini-Boss.png" },
+				{ 8, "Boss Room", "./Resources/OoT/Dungeons/Cavern/Boss_Room.png" }
+			}
+		)
+	),
+	
+	QPair<int, std::vector<RoomInfo>>(INSIDE_JABU_JABU,
+		std::vector<RoomInfo>(
+			{
+				{ 0, "First Room", "./Resources/OoT/Dungeons/Jabu-Jabu/First_Room.png" },
+				{ 1, "Main Corridor", "./Resources/OoT/Dungeons/Jabu-Jabu/Main_Corridor.png" },
+				{ 2, "Holes Room", "./Resources/OoT/Dungeons/Jabu-Jabu/Holes_Room.png" },
+				{ 3, "Water Room", "./Resources/OoT/Dungeons/Jabu-Jabu/Water_Room.png" },
+				{ 4, "Mini-Boss", "./Resources/OoT/Dungeons/Jabu-Jabu/Mini-Boss.png" },
+				{ 5, "Muscle Block Room", "./Resources/OoT/Dungeons/Jabu-Jabu/Muscle_Block.png" },
+				{ 6, "Pre Boss Room", "./Resources/OoT/Dungeons/Jabu-Jabu/Pre-Boss.png" },
+				{ 7, "Boss Room", "./Resources/OoT/Dungeons/Jabu-Jabu/Boss_Room.png" }
+			}
+		)
+	),
+
+	QPair<int, std::vector<RoomInfo>>(ICE_CAVERN,
+		std::vector<RoomInfo>(
+			{
+				{ 0, "First Room", "./Resources/OoT/Dungeons/Ice/First_Room.png" },
+				{ 1, "Central Room", "./Resources/OoT/Dungeons/Ice/Central_Room.png" },
+				{ 2, "Right Room", "./Resources/OoT/Dungeons/Ice/Right_Room.png" },
+				{ 3, "Back Room", "./Resources/OoT/Dungeons/Ice/Back_Room.png" },
+				{ 4, "Pre Mini-Boss", "./Resources/OoT/Dungeons/Ice/Pre-Mini-Boss.png" },
+				{ 5, "Mini-Boss", "./Resources/OoT/Dungeons/Ice/Mini-Boss.png" }
+			}
+		)
+	),
+	
+	QPair<int, std::vector<RoomInfo>>(TEMPLE_FOREST,
+		std::vector<RoomInfo>(
+			{
+				{ 0, "Entrance", "./Resources/OoT/Dungeons/Forest/Entrance.png" },
+				{ 1, "Lobby", "./Resources/OoT/Dungeons/Forest/Lobby.png" },
+				{ 2, "Garden West", "./Resources/OoT/Dungeons/Forest/Garden_West.png" },
+				{ 3, "Garden East", "./Resources/OoT/Dungeons/Forest/Garden_East.png" },
+				{ 4, "Well", "./Resources/OoT/Dungeons/Forest/Underwater.png" },
+				{ 5, "Mini-Boss", "./Resources/OoT/Dungeons/Forest/Mini-Boss.png" },
+				{ 6, "Maze Room", "./Resources/OoT/Dungeons/Forest/Blocks_Room.png" },
+				{ 7, "Boss Key Room", "./Resources/OoT/Dungeons/Forest/Boss_Key.png" },
+				{ 8, "Map Room", "./Resources/OoT/Dungeons/Forest/Map.png" },
+				{ 9, "Red Poe", "./Resources/OoT/Dungeons/Forest/Red_Poe.png" },
+				{ 10, "Blue Poe", "./Resources/OoT/Dungeons/Forest/Blue_Poe.png" },
+				{ 11, "Green Poe", "./Resources/OoT/Dungeons/Forest/Green_Poe.png" },
+				{ 12, "Spinning Room", "./Resources/OoT/Dungeons/Forest/Spinning_Room.png" },
+				{ 13, "Check Room", "./Resources/OoT/Dungeons/Forest/Check_Room.png" },
+				{ 14, "Floormaster Room", "./Resources/OoT/Dungeons/Forest/Wallmaster.png" },
+				{ 15, "Pre-Boss", "./Resources/OoT/Dungeons/Forest/Pre-Boss.png" },
+				{ 16, "Boss Room", "./Resources/OoT/Dungeons/Forest/Boss.png" }
+			}
+		)
+	),
+
+	QPair<int, std::vector<RoomInfo>>(TEMPLE_FIRE,
+		std::vector<RoomInfo>(
+			{
+				{ 0, "Lava Room", "./Resources/OoT/Dungeons/Fire/Lava_Room.png" },
+				{ 1, "Above Lava Room", "./Resources/OoT/Dungeons/Fire/Above_Lava.png" },
+				{ 2, "Lava Side Room", "./Resources/OoT/Dungeons/Fire/Lava_Side.png" },
+				{ 3, "Boulder Maze", "./Resources/OoT/Dungeons/Fire/Boulder_Maze.png" },
+				{ 4, "Fire Column", "./Resources/OoT/Dungeons/Fire/Fire_Column.png" },
+				{ 5, "Fire Wall", "./Resources/OoT/Dungeons/Fire/Fire_Wall.png" },
+				{ 6, "Fire Maze", "./Resources/OoT/Dungeons/Fire/Fire_Maze.png" },
+				{ 7, "Hammer", "./Resources/OoT/Dungeons/Fire/Hammer.png" },
+				{ 8, "Boss Key Room", "./Resources/OoT/Dungeons/Fire/Boss_Key.png" },
+				{ 9, "Darunia Room", "./Resources/OoT/Dungeons/Fire/Darunia.png" },
+				{ 10, "Boss Room", "./Resources/OoT/Dungeons/Fire/Boss.png" }
+			}
+		)
+	),
 });
 
 // An hash array that contains all MM rooms for each scene that has more than one.
