@@ -356,6 +356,7 @@ void SceneRenderer::UnloadScene()
         if (objRdr && objRdr->GetTotalObject() > 0)
         {   // Remove all object from the object list and the scene
 
+            objRdr->ShouldBeRendered = false;
             objRdr->RemoveObjectFromList(this->ObjectsTree);
             objRdr->UnloadObjectsFromScene();
         }
@@ -476,6 +477,7 @@ void SceneRenderer::RefreshSceneContext(bool Context)
         if (objRdr && objRdr->GetTotalObject() > 0)
         {   // We only render object that are valid
 
+            objRdr->ShouldBeRendered = true;
             objRdr->UpdateText();
             objRdr->RenderObjectToScene(context);
             this->ObjectsTree->addTopLevelItem(objRdr->ObjCat);

@@ -9,7 +9,7 @@ ObjectIcons::ObjectIcons()
     for (size_t i = 0; i < 23; i++)
     {
         this->PixmapIcons[i] = QPixmap(IconsMetaInfo[i].IconPath);
-        this->PixmapIcons[i] = this->PixmapIcons[i].scaled(IconsMetaInfo[i].Scale[0], IconsMetaInfo[i].Scale[1], Qt::KeepAspectRatio);
+        //this->PixmapIcons[i] = this->PixmapIcons[i].scaled(IconsMetaInfo[i].Scale[0], IconsMetaInfo[i].Scale[1], Qt::KeepAspectRatio);
 
         this->Icons[i] = QIcon(IconsMetaInfo[i].IconPath);
     }
@@ -68,10 +68,29 @@ ObjectState ObjectItemTree::GetStatus()
 
 void ObjectItemTree::UpdateIcon(ObjectType Type)
 {
-    if (this->GraphItem == nullptr)
+    if (this->GraphItem == nullptr && this->RendererOwner->ShouldBeRendered)
     {
-        this->GraphItem = new ObjectPixmapItem(IconsRef->PixmapIcons[Type], this->RendererOwner, this);
+        this->GraphItem = new ObjectPixmapItem(this->RendererOwner->Icon, this->RendererOwner, this);
+
+        if (!this->Object->PosSet)
+        {
+            this->Object->Position[0] = this->Object->Position[0] - (this->RendererOwner->Icon.width() / 2);
+
+            if (this->Object->Position[0] < 0)
+            {
+                this->Object->Position[0] = 0;
+            }
+
+            this->Object->Position[1] = this->Object->Position[1] - (this->RendererOwner->Icon.height() / 2);
+
+            if (this->Object->Position[1] < 0)
+            {
+                this->Object->Position[1] = 0;
+            }
+            this->Object->PosSet = true;
+        }
     }
+
     this->GraphItem->UpdateObjectRendering(this->Object->Status, false);
     this->GraphItem->setPos(this->Object->Position[0], this->Object->Position[1]);
     this->RendererOwner->SceneOwner->addItem(this->GraphItem);
@@ -278,7 +297,7 @@ ObjectRenderer::ObjectRenderer(ObjectType Type, SceneRenderer* Owner)
     ObjectIcons::CreateObjectIcons();
 
     this->Type = Type;
-    this->Icon = &IconsRef->PixmapIcons[this->Type];
+    //this->Icon = IconsRef->PixmapIcons[this->Type];
     this->SceneOwner = Owner;
     this->ObjCat = new CommonBaseItemTree();
     QFont font = this->ObjCat->font(0);
@@ -291,20 +310,20 @@ ObjectRenderer::ObjectRenderer(ObjectType Type, SceneRenderer* Owner)
 
 ObjectRenderer::~ObjectRenderer()
 {
-    this->Icon = nullptr;
     this->SceneOwner = nullptr;
     for (ObjectItemTree * currObj : this->Objects)
     {
         delete currObj;
     }
 
+    //this->Icon.~QPixmap();
     delete this->ObjCat;
 }
 
 
 void ObjectRenderer::AddObjectToRender(ObjectInfo * Obj, QColor DefaultColor)
 {
-    if (!Obj->PosSet)
+    /*if (!Obj->PosSet)
     {
         Obj->Position[0] = Obj->Position[0] - (this->Icon->width() / 2);
 
@@ -320,7 +339,7 @@ void ObjectRenderer::AddObjectToRender(ObjectInfo * Obj, QColor DefaultColor)
             Obj->Position[1] = 0;
         }
         Obj->PosSet = true;
-    }
+    }*/
     this->Objects.push_back(new ObjectItemTree(Obj, DefaultColor, this, this->ObjCat));
 }
 
@@ -329,6 +348,15 @@ void ObjectRenderer::RenderObjectToScene(ObjectContext ActiveContext)
 {
     if (this->ShouldBeRendered)
     {
+        double scaleFactor = 0.02;
+        int iconWidth = this->SceneOwner->SceneImage->rect().width() * scaleFactor/* + IconsMetaInfo[Type].Scale[0]*/;
+        int iconHeight = this->SceneOwner->SceneImage->rect().height() * scaleFactor /* + IconsMetaInfo[Type].Scale[1]*/;
+
+        iconWidth = iconWidth < IconsMetaInfo[this->Type].Scale[0] ? IconsMetaInfo[this->Type].Scale[0] : iconWidth;
+        iconHeight = iconHeight < IconsMetaInfo[this->Type].Scale[1] ? IconsMetaInfo[this->Type].Scale[1] : iconWidth;
+
+        this->Icon = IconsRef->PixmapIcons[this->Type].scaled(iconWidth, iconHeight, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+
         for (ObjectItemTree* currObj : this->Objects)
         {   // Browse all objects
 
