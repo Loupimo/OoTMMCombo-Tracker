@@ -164,6 +164,76 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 			}
 		)
 	),
+
+	QPair<int, std::vector<RoomInfo>>(TEMPLE_WATER,
+		std::vector<RoomInfo>(
+			{
+				{ 0, "Lobby", "./Resources/OoT/Dungeons/Water/Lobby.png" },
+				{ 1, "Waterfalls Room", "./Resources/OoT/Dungeons/Water/Waterfalls.png" },
+				{ 2, "Ruto Room", "./Resources/OoT/Dungeons/Water/Ruto.png" },
+				{ 3, "Boulder Room", "./Resources/OoT/Dungeons/Water/Boulder.png" },
+				{ 4, "Block Room", "./Resources/OoT/Dungeons/Water/Block.png" },
+				{ 5, "Dragon Room", "./Resources/OoT/Dungeons/Water/Dragon.png" },
+				{ 6, "Pre-Mini-Boss Room", "./Resources/OoT/Dungeons/Water/Pre-Mini-Boss.png" },
+				{ 7, "Compass Room", "./Resources/OoT/Dungeons/Water/Compass.png" },
+				{ 8, "Central Room", "./Resources/OoT/Dungeons/Water/Central_Room.png" },
+				{ 9, "Boss Room", "./Resources/OoT/Dungeons/Water/Boss.png" }
+			}
+		)
+	),
+
+	QPair<int, std::vector<RoomInfo>>(TEMPLE_SHADOW,
+		std::vector<RoomInfo>(
+			{
+				{ 0, "Lobby", "./Resources/OoT/Dungeons/Shadow/Lobby.png" },
+				{ 1, "Scythe Room", "./Resources/OoT/Dungeons/Shadow/Scythe.png" },
+				{ 2, "Stalfos Room", "./Resources/OoT/Dungeons/Shadow/Stalfos.png" },
+				{ 3, "Invisible Scythe Room", "./Resources/OoT/Dungeons/Shadow/Invisible_Scythe.png" },
+				{ 4, "Falling Spikes Room", "./Resources/OoT/Dungeons/Shadow/Falling_Spikes.png" },
+				{ 5, "Boat Room", "./Resources/OoT/Dungeons/Shadow/Boat.png" },
+				{ 6, "Maze Room", "./Resources/OoT/Dungeons/Shadow/Maze.png" },
+				{ 7, "Pre-Boss Room", "./Resources/OoT/Dungeons/Shadow/Pre-Boss.png" },
+				{ 8, "Boss Room", "./Resources/OoT/Dungeons/Shadow/Boss.png" }
+			}
+		)
+	),
+
+	QPair<int, std::vector<RoomInfo>>(GERUDO_TRAINING_GROUND,
+		std::vector<RoomInfo>(
+			{
+				{ 0, "Entrance", "./Resources/OoT/Dungeons/GTG/Entrance.png" },
+				{ 1, "Stalfos Room", "./Resources/OoT/Dungeons/GTG/Stalfos.png" },
+				{ 2, "Boulders Room", "./Resources/OoT/Dungeons/GTG/Boulders.png" },
+				{ 3, "Wolfos Room", "./Resources/OoT/Dungeons/GTG/Wolfos.png" },
+				{ 4, "Like Like Room", "./Resources/OoT/Dungeons/GTG/Like_Like.png" },
+				{ 5, "Statue Room", "./Resources/OoT/Dungeons/GTG/Statue.png" },
+				{ 6, "Flamming Room", "./Resources/OoT/Dungeons/GTG/Flamming.png" },
+				{ 7, "Lava Room", "./Resources/OoT/Dungeons/GTG/Lava.png" },
+				{ 8, "Water Room", "./Resources/OoT/Dungeons/GTG/Water.png" },
+				{ 9, "Dinalfos Room", "./Resources/OoT/Dungeons/GTG/Dinalfos.png" },
+				{ 10, "Maze", "./Resources/OoT/Dungeons/GTG/Maze.png" }
+			}
+		)
+	),
+	
+	QPair<int, std::vector<RoomInfo>>(TEMPLE_SPIRIT,
+		std::vector<RoomInfo>(
+			{
+				{ 0, "Entrance", "./Resources/OoT/Dungeons/Spirit/Entrance.png" },
+				{ 1, "Child Lobby", "./Resources/OoT/Dungeons/Spirit/Lobby_Child.png" },
+				{ 2, "Child Climb", "./Resources/OoT/Dungeons/Spirit/Climb_Child.png" },
+				{ 3, "Sun Block", "./Resources/OoT/Dungeons/Spirit/Sun_Block.png" },
+				{ 4, "Adult Lobby", "./Resources/OoT/Dungeons/Spirit/Lobby_Adult.png" },
+				{ 5, "Adult Climb", "./Resources/OoT/Dungeons/Spirit/Climb_Adult.png" },
+				{ 6, "Main Room", "./Resources/OoT/Dungeons/Spirit/Main.png" },
+				{ 7, "Main Room Shortcut", "./Resources/OoT/Dungeons/Spirit/Main_Shortcut.png" },
+				{ 8, "Mirror Shield", "./Resources/OoT/Dungeons/Spirit/Mirror_Shield.png" },
+				{ 9, "Boss Key Room", "./Resources/OoT/Dungeons/Spirit/Boss_Key.png" },
+				{ 10, "Elevator", "./Resources/OoT/Dungeons/Spirit/Elevator.png" },
+				{ 11, "Boss Room", "./Resources/OoT/Dungeons/Spirit/Boss.png" }
+			}
+		)
+	)
 });
 
 // An hash array that contains all MM rooms for each scene that has more than one.

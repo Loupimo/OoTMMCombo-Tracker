@@ -571,49 +571,49 @@ GERUDO_ARCHERY_2;GERUDO_FORTRESS;Biggest Quiver;OOT Gerudo Fortress Archery Rewa
 0x0010d;GERUDO_FORTRESS;Archery 13;OOT Gerudo Fortress Crate Archery 13;crate;681;138;GERUDO_FORTRESS;All;0
 0x00007;GERUDO_FORTRESS;Sign - Archery;OOT Gerudo Fortress Wonder Item Sign Archery;wonder;655;415;GERUDO_FORTRESS;All;0
 0x00008;GERUDO_FORTRESS;Sign - Entrance;OOT Gerudo Fortress Wonder Item Sign Entrance;wonder;606;595;GERUDO_FORTRESS;All;0
-0x07;GERUDO_TRAINING_GROUND;Entrance 1;OOT Gerudo Training Grounds Entrance 1;chest;0;0;GERUDO_TRAINING_GROUND;All;0
-0x13;GERUDO_TRAINING_GROUND;Entrance 2;OOT Gerudo Training Grounds Entrance 2;chest;0;0;GERUDO_TRAINING_GROUND;All;0
-0x00;GERUDO_TRAINING_GROUND;Stalfos;OOT Gerudo Training Grounds Stalfos;chest;0;0;GERUDO_TRAINING_GROUND;All;0
-0x11;GERUDO_TRAINING_GROUND;Near Block;OOT Gerudo Training Grounds Near Block;chest;0;0;GERUDO_TRAINING_GROUND;All;0
-0x14;GERUDO_TRAINING_GROUND;Behind Block - Invisible;OOT Gerudo Training Grounds Behind Block Invisible;chest;0;0;GERUDO_TRAINING_GROUND;All;0
-0x02;GERUDO_TRAINING_GROUND;Behind Block - Visible;OOT Gerudo Training Grounds Behind Block Visible;chest;0;0;GERUDO_TRAINING_GROUND;All;0
-0x0e;GERUDO_TRAINING_GROUND;Behind Block Enemy - Back;OOT Gerudo Training Grounds Behind Block Enemy Back;chest;0;0;GERUDO_TRAINING_GROUND;All;0
-0x0f;GERUDO_TRAINING_GROUND;Behind Block Enemy - Front;OOT Gerudo Training Grounds Behind Block Enemy Front;chest;0;0;GERUDO_TRAINING_GROUND;All;0
-0x03;GERUDO_TRAINING_GROUND;Eye Statue;OOT Gerudo Training Grounds Eye Statue;chest;0;0;GERUDO_TRAINING_GROUND;All;0
-0x10;GERUDO_TRAINING_GROUND;Hammer Room Switch;OOT Gerudo Training Grounds Hammer Room Switch;chest;0;0;GERUDO_TRAINING_GROUND;All;0
-0x12;GERUDO_TRAINING_GROUND;Hammer Room;OOT Gerudo Training Grounds Hammer Room;chest;0;0;GERUDO_TRAINING_GROUND;All;0
-0x01;GERUDO_TRAINING_GROUND;Lizalfos Room;OOT Gerudo Training Grounds Lizalfos;chest;0;0;GERUDO_TRAINING_GROUND;All;0
-0x0d;GERUDO_TRAINING_GROUND;Water Room;OOT Gerudo Training Water;chest;0;0;GERUDO_TRAINING_GROUND;All;0
-0x01;GERUDO_TRAINING_GROUND;Small Key;OOT Gerudo Training Freestanding Key;collectible;0;0;GERUDO_TRAINING_GROUND;All;0
-0x04;GERUDO_TRAINING_GROUND;Maze - Upper Cage;OOT Gerudo Training Maze Upper Cage;chest;0;0;GERUDO_TRAINING_GROUND;All;0
-0x0b;GERUDO_TRAINING_GROUND;Maze - Upper Fake Ceiling;OOT Gerudo Training Maze Upper Fake Ceiling;chest;0;0;GERUDO_TRAINING_GROUND;All;0
-0x05;GERUDO_TRAINING_GROUND;Maze - Side Chest 1;OOT Gerudo Training Maze Side Chest 1;chest;0;0;GERUDO_TRAINING_GROUND;All;0
-0x08;GERUDO_TRAINING_GROUND;Maze - Side Chest 2;OOT Gerudo Training Maze Side Chest 2;chest;0;0;GERUDO_TRAINING_GROUND;All;0
-0x06;GERUDO_TRAINING_GROUND;Maze - Chest 1;OOT Gerudo Training Maze Chest 1;chest;0;0;GERUDO_TRAINING_GROUND;All;0
-0x0a;GERUDO_TRAINING_GROUND;Maze - Chest 2;OOT Gerudo Training Maze Chest 2;chest;0;0;GERUDO_TRAINING_GROUND;All;0
-0x09;GERUDO_TRAINING_GROUND;Maze - Chest 3;OOT Gerudo Training Maze Chest 3;chest;0;0;GERUDO_TRAINING_GROUND;All;0
-0x0c;GERUDO_TRAINING_GROUND;Maze - Chest 4;OOT Gerudo Training Maze Chest 4;chest;0;0;GERUDO_TRAINING_GROUND;All;0
-0x41;GERUDO_TRAINING_GROUND;Slope - Front Right;OOT Gerudo Training Grounds SR Slope Front Right;sr;0;0;GERUDO_TRAINING_GROUND;All;0
-0x42;GERUDO_TRAINING_GROUND;Slope - Front Left;OOT Gerudo Training Grounds SR Slope Front Left;sr;0;0;GERUDO_TRAINING_GROUND;All;0
-0x43;GERUDO_TRAINING_GROUND;Slope - Front Above;OOT Gerudo Training Grounds SR Slope Front Above;sr;0;0;GERUDO_TRAINING_GROUND;All;0
-0x44;GERUDO_TRAINING_GROUND;Slope - Center;OOT Gerudo Training Grounds SR Slope Center;sr;0;0;GERUDO_TRAINING_GROUND;All;0
-0x45;GERUDO_TRAINING_GROUND;Slope - Back;OOT Gerudo Training Grounds SR Slope Back;sr;0;0;GERUDO_TRAINING_GROUND;All;0
-0x46;GERUDO_TRAINING_GROUND;Lava - Front Left;OOT Gerudo Training Grounds SR Lava Front Left;sr;0;0;GERUDO_TRAINING_GROUND;All;0
-0x47;GERUDO_TRAINING_GROUND;Lava - Front Right;OOT Gerudo Training Grounds SR Lava Front Right;sr;0;0;GERUDO_TRAINING_GROUND;All;0
-0x48;GERUDO_TRAINING_GROUND;Lava - Back Left;OOT Gerudo Training Grounds SR Lava Back Left;sr;0;0;GERUDO_TRAINING_GROUND;All;0
-0x49;GERUDO_TRAINING_GROUND;Lava - Back Center;OOT Gerudo Training Grounds SR Lava Back Center;sr;0;0;GERUDO_TRAINING_GROUND;All;0
-0x4a;GERUDO_TRAINING_GROUND;Lava - Back Right;OOT Gerudo Training Grounds SR Lava Back Right;sr;0;0;GERUDO_TRAINING_GROUND;All;0
-0x4c;GERUDO_TRAINING_GROUND;Water 1;OOT Gerudo Training Grounds SR Water 1;sr;0;0;GERUDO_TRAINING_GROUND;All;0
-0x4d;GERUDO_TRAINING_GROUND;Water 2;OOT Gerudo Training Grounds SR Water 2;sr;0;0;GERUDO_TRAINING_GROUND;All;0
-0x4e;GERUDO_TRAINING_GROUND;Water 3;OOT Gerudo Training Grounds SR Water 3;sr;0;0;GERUDO_TRAINING_GROUND;All;0
-0x4f;GERUDO_TRAINING_GROUND;Water 4;OOT Gerudo Training Grounds SR Water 4;sr;0;0;GERUDO_TRAINING_GROUND;All;0
-0x50;GERUDO_TRAINING_GROUND;Water 5;OOT Gerudo Training Grounds SR Water 5;sr;0;0;GERUDO_TRAINING_GROUND;All;0
-0x0070a;GERUDO_TRAINING_GROUND;Heart 1;OOT Gerudo Training Grounds Heart 1;heart;0;0;GERUDO_TRAINING_GROUND;All;0
-0x0070b;GERUDO_TRAINING_GROUND;Heart 2;OOT Gerudo Training Grounds Heart 2;heart;0;0;GERUDO_TRAINING_GROUND;All;0
-0x00008;GERUDO_TRAINING_GROUND;Entrance;OOT Gerudo Training Grounds Entrance Big Fairy;fairy_spot;0;0;GERUDO_TRAINING_GROUND;All;0
-0x00402;GERUDO_TRAINING_GROUND;Eye Statue Room;OOT Gerudo Training Grounds Wonder Item Eye Statue Room;wonder;0;0;GERUDO_TRAINING_GROUND;All;0
-0x00510;GERUDO_TRAINING_GROUND;Torch Slugs Room;OOT Gerudo Training Grounds Wonder Item Torch Slugs Room;wonder;0;0;GERUDO_TRAINING_GROUND;All;0
-0x0070c;GERUDO_TRAINING_GROUND;Beamos Room;OOT Gerudo Training Grounds Wonder Item Beamos Room;wonder;0;0;GERUDO_TRAINING_GROUND;All;0
+0x07;GERUDO_TRAINING_GROUND;Entrance 1;OOT Gerudo Training Grounds Entrance 1;chest;409;256;GERUDO_TRAINING_GROUND;All;0
+0x13;GERUDO_TRAINING_GROUND;Entrance 2;OOT Gerudo Training Grounds Entrance 2;chest;554;256;GERUDO_TRAINING_GROUND;All;0
+0x00;GERUDO_TRAINING_GROUND;Stalfos;OOT Gerudo Training Grounds Stalfos;chest;428;270;GERUDO_TRAINING_GROUND;All;1
+0x11;GERUDO_TRAINING_GROUND;Near Block;OOT Gerudo Training Grounds Near Block;chest;465;254;GERUDO_TRAINING_GROUND;All;3
+0x14;GERUDO_TRAINING_GROUND;Behind Block - Invisible;OOT Gerudo Training Grounds Behind Block Invisible;chest;590;397;GERUDO_TRAINING_GROUND;All;4
+0x02;GERUDO_TRAINING_GROUND;Behind Block - Visible;OOT Gerudo Training Grounds Behind Block Visible;chest;401;321;GERUDO_TRAINING_GROUND;All;4
+0x0e;GERUDO_TRAINING_GROUND;Behind Block Enemy - Back;OOT Gerudo Training Grounds Behind Block Enemy Back;chest;593;281;GERUDO_TRAINING_GROUND;All;4
+0x0f;GERUDO_TRAINING_GROUND;Behind Block Enemy - Front;OOT Gerudo Training Grounds Behind Block Enemy Front;chest;420;205;GERUDO_TRAINING_GROUND;All;4
+0x03;GERUDO_TRAINING_GROUND;Eye Statue;OOT Gerudo Training Grounds Eye Statue;chest;427;386;GERUDO_TRAINING_GROUND;All;5
+0x10;GERUDO_TRAINING_GROUND;Hammer Room Switch;OOT Gerudo Training Grounds Hammer Room Switch;chest;246;386;GERUDO_TRAINING_GROUND;All;6
+0x12;GERUDO_TRAINING_GROUND;Hammer Room;OOT Gerudo Training Grounds Hammer Room;chest;440;324;GERUDO_TRAINING_GROUND;All;6
+0x01;GERUDO_TRAINING_GROUND;Dinalfos Room;OOT Gerudo Training Grounds Lizalfos;chest;529;307;GERUDO_TRAINING_GROUND;All;9
+0x0d;GERUDO_TRAINING_GROUND;Water Room;OOT Gerudo Training Water;chest;534;154;GERUDO_TRAINING_GROUND;All;8
+0x01;GERUDO_TRAINING_GROUND;Small Key;OOT Gerudo Training Freestanding Key;collectible;436;197;GERUDO_TRAINING_GROUND;All;7
+0x04;GERUDO_TRAINING_GROUND;Maze - Upper Cage;OOT Gerudo Training Maze Upper Cage;chest;472;180;GERUDO_TRAINING_GROUND;All;10
+0x0b;GERUDO_TRAINING_GROUND;Maze - Upper Fake Ceiling;OOT Gerudo Training Maze Upper Fake Ceiling;chest;267;183;GERUDO_TRAINING_GROUND;All;10
+0x05;GERUDO_TRAINING_GROUND;Maze - Side Chest 1;OOT Gerudo Training Maze Side Chest 1;chest;454;236;GERUDO_TRAINING_GROUND;All;10
+0x08;GERUDO_TRAINING_GROUND;Maze - Side Chest 2;OOT Gerudo Training Maze Side Chest 2;chest;651;262;GERUDO_TRAINING_GROUND;All;10
+0x06;GERUDO_TRAINING_GROUND;Maze - Chest 1;OOT Gerudo Training Maze Chest 1;chest;655;282;GERUDO_TRAINING_GROUND;All;10
+0x0a;GERUDO_TRAINING_GROUND;Maze - Chest 2;OOT Gerudo Training Maze Chest 2;chest;420;381;GERUDO_TRAINING_GROUND;All;10
+0x09;GERUDO_TRAINING_GROUND;Maze - Chest 3;OOT Gerudo Training Maze Chest 3;chest;521;433;GERUDO_TRAINING_GROUND;All;10
+0x0c;GERUDO_TRAINING_GROUND;Maze - Chest 4;OOT Gerudo Training Maze Chest 4;chest;471;323;GERUDO_TRAINING_GROUND;All;10
+0x41;GERUDO_TRAINING_GROUND;Slope - Front Right;OOT Gerudo Training Grounds SR Slope Front Right;sr;571;500;GERUDO_TRAINING_GROUND;All;2
+0x42;GERUDO_TRAINING_GROUND;Slope - Front Left;OOT Gerudo Training Grounds SR Slope Front Left;sr;347;513;GERUDO_TRAINING_GROUND;All;2
+0x43;GERUDO_TRAINING_GROUND;Slope - Front Above;OOT Gerudo Training Grounds SR Slope Front Above;sr;454;296;GERUDO_TRAINING_GROUND;All;2
+0x44;GERUDO_TRAINING_GROUND;Slope - Center;OOT Gerudo Training Grounds SR Slope Center;sr;473;571;GERUDO_TRAINING_GROUND;All;2
+0x45;GERUDO_TRAINING_GROUND;Slope - Back;OOT Gerudo Training Grounds SR Slope Back;sr;380;165;GERUDO_TRAINING_GROUND;All;2
+0x46;GERUDO_TRAINING_GROUND;Lava - Front Left;OOT Gerudo Training Grounds SR Lava Front Left;sr;345;392;GERUDO_TRAINING_GROUND;All;7
+0x47;GERUDO_TRAINING_GROUND;Lava - Front Right;OOT Gerudo Training Grounds SR Lava Front Right;sr;302;320;GERUDO_TRAINING_GROUND;All;7
+0x48;GERUDO_TRAINING_GROUND;Lava - Back Left;OOT Gerudo Training Grounds SR Lava Back Left;sr;617;393;GERUDO_TRAINING_GROUND;All;7
+0x49;GERUDO_TRAINING_GROUND;Lava - Back Center;OOT Gerudo Training Grounds SR Lava Back Center;sr;811;228;GERUDO_TRAINING_GROUND;All;7
+0x4a;GERUDO_TRAINING_GROUND;Lava - Back Right;OOT Gerudo Training Grounds SR Lava Back Right;sr;577;275;GERUDO_TRAINING_GROUND;All;7
+0x4c;GERUDO_TRAINING_GROUND;Water 1;OOT Gerudo Training Grounds SR Water 1;sr;539;541;GERUDO_TRAINING_GROUND;All;8
+0x4d;GERUDO_TRAINING_GROUND;Water 2;OOT Gerudo Training Grounds SR Water 2;sr;464;515;GERUDO_TRAINING_GROUND;All;8
+0x4e;GERUDO_TRAINING_GROUND;Water 3;OOT Gerudo Training Grounds SR Water 3;sr;401;445;GERUDO_TRAINING_GROUND;All;8
+0x4f;GERUDO_TRAINING_GROUND;Water 4;OOT Gerudo Training Grounds SR Water 4;sr;457;426;GERUDO_TRAINING_GROUND;All;8
+0x50;GERUDO_TRAINING_GROUND;Water 5;OOT Gerudo Training Grounds SR Water 5;sr;468;392;GERUDO_TRAINING_GROUND;All;8
+0x0070a;GERUDO_TRAINING_GROUND;Heart 1;OOT Gerudo Training Grounds Heart 1;heart;601;218;GERUDO_TRAINING_GROUND;All;9
+0x0070b;GERUDO_TRAINING_GROUND;Heart 2;OOT Gerudo Training Grounds Heart 2;heart;771;338;GERUDO_TRAINING_GROUND;All;9
+0x00008;GERUDO_TRAINING_GROUND;Entrance;OOT Gerudo Training Grounds Entrance Big Fairy;fairy_spot;484;238;GERUDO_TRAINING_GROUND;All;0
+0x00402;GERUDO_TRAINING_GROUND;Eye Statue Room;OOT Gerudo Training Grounds Wonder Item Eye Statue Room;wonder;475;338;GERUDO_TRAINING_GROUND;All;5
+0x00510;GERUDO_TRAINING_GROUND;Torch Slugs Room;OOT Gerudo Training Grounds Wonder Item Torch Slugs Room;wonder;605;179;GERUDO_TRAINING_GROUND;All;6
+0x0070c;GERUDO_TRAINING_GROUND;Beamos Room;OOT Gerudo Training Grounds Wonder Item Beamos Room;wonder;335;179;GERUDO_TRAINING_GROUND;All;9
 0x13;GERUDO_TRAINING_GROUND;Entryway - Left;OOT MQ Gerudo Training Grounds Entryway Left Chest;chest;0;0;MQ_GERUDO_TRAINING_GROUND;All;0
 0x07;GERUDO_TRAINING_GROUND;Entryway - Right;OOT MQ Gerudo Training Grounds Entryway Right Chest;chest;0;0;MQ_GERUDO_TRAINING_GROUND;All;0
 0x0b;GERUDO_TRAINING_GROUND;Maze - Chest 1;OOT MQ Gerudo Training Grounds Maze First Chest;chest;0;0;MQ_GERUDO_TRAINING_GROUND;All;0
@@ -1489,8 +1489,8 @@ BLUE_WARP_BARINADE;LAIR_BARINADE;Zora's Sapphire;OOT Jabu-Jabu Boss;npc;471;311;
 0x0104;LAIR_BARINADE;Boss Pot 4;OOT Jabu-Jabu Boss Pot 4;pot;170;309;INSIDE_JABU_JABU;All;7
 0x0105;LAIR_BARINADE;Boss Pot 5;OOT Jabu-Jabu Boss Pot 5;pot;256;227;INSIDE_JABU_JABU;All;7
 0x0106;LAIR_BARINADE;Boss Pot 6;OOT Jabu-Jabu Boss Pot 6;pot;445;182;INSIDE_JABU_JABU;All;7
-0x1f;LAIR_BONGO_BONGO;Heart Container;OOT Shadow Temple Boss HC;collectible;0;0;TEMPLE_SHADOW;All;0
-BLUE_WARP_BONGO_BONGO;LAIR_BONGO_BONGO;Shadow Medaillon;OOT Shadow Temple Boss;npc;0;0;TEMPLE_SHADOW;All;0
+0x1f;LAIR_BONGO_BONGO;Heart Container;OOT Shadow Temple Boss HC;collectible;491;316;TEMPLE_SHADOW;All;8
+BLUE_WARP_BONGO_BONGO;LAIR_BONGO_BONGO;Shadow Medaillon;OOT Shadow Temple Boss;npc;491;385;TEMPLE_SHADOW;All;8
 0x1f;LAIR_GOHMA;Heart Container;OOT Deku Tree Boss Container;collectible;614;592;DEKU_TREE;All;10
 BLUE_WARP_GOHMA;LAIR_GOHMA;Kokiri's Emerald;OOT Deku Tree Boss;npc;690;592;DEKU_TREE;All;10
 0x00101;LAIR_GOHMA;Boss 1;OOT Deku Tree Boss Grass 1;grass;909;553;DEKU_TREE;All;10
@@ -1504,12 +1504,12 @@ BLUE_WARP_GOHMA;LAIR_GOHMA;Kokiri's Emerald;OOT Deku Tree Boss;npc;690;592;DEKU_
 0x00;LAIR_KING_DODONGO;Small Chest;OOT Dodongo Cavern Boss Chest;chest;345;126;DODONGO_CAVERN;All;8
 0x1f;LAIR_KING_DODONGO;Heart Container;OOT Dodongo Cavern Boss Container;collectible;453;438;DODONGO_CAVERN;All;8
 BLUE_WARP_KING_DODONGO;LAIR_KING_DODONGO;Goron's Ruby;OOT Dodongo Cavern Boss;npc;476;385;DODONGO_CAVERN;All;8
-0x1f;LAIR_MORPHA;Heart Container;OOT Water Temple Boss HC;collectible;0;0;TEMPLE_WATER;All;0
-BLUE_WARP_MORPHA;LAIR_MORPHA;Water Medaillon;OOT Water Temple Boss;npc;0;0;TEMPLE_WATER;All;0
+0x1f;LAIR_MORPHA;Heart Container;OOT Water Temple Boss HC;collectible;359;321;TEMPLE_WATER;All;9
+BLUE_WARP_MORPHA;LAIR_MORPHA;Water Medaillon;OOT Water Temple Boss;npc;471;321;TEMPLE_WATER;All;9
 0x1f;LAIR_PHANTOM_GANON;Heart Container;OOT Forest Temple Boss Container;collectible;491;295;TEMPLE_FOREST;All;16
 BLUE_WARP_PHANTOM_GANON;LAIR_PHANTOM_GANON;Forest Medaillon;OOT Forest Temple Boss;npc;491;356;TEMPLE_FOREST;All;16
-0x1f;LAIR_TWINROVA;Heart Container;OOT Spirit Temple Boss HC;collectible;0;0;TEMPLE_SPIRIT;All;0
-BLUE_WARP_TWINROVA;LAIR_TWINROVA;Spirit Medaillon;OOT Spirit Temple Boss;npc;0;0;TEMPLE_SPIRIT;All;0
+0x1f;LAIR_TWINROVA;Heart Container;OOT Spirit Temple Boss HC;collectible;363;414;TEMPLE_SPIRIT;All;11
+BLUE_WARP_TWINROVA;LAIR_TWINROVA;Spirit Medaillon;OOT Spirit Temple Boss;npc;497;283;TEMPLE_SPIRIT;All;11
 0x1f;LAIR_VOLVAGIA;Heart Container;OOT Fire Temple Boss Container;collectible;491;283;TEMPLE_FIRE;All;10
 BLUE_WARP_VOLVAGIA;LAIR_VOLVAGIA;Fire Medaillon;OOT Fire Temple Boss;npc;491;316;TEMPLE_FIRE;All;10
 RUTO_LETTER;LAKE_HYLIA;Ruto's Letter;OOT Lake Hylia Underwater Bottle;npc;680;543;LAKE_HYLIA;Child;0
@@ -1906,78 +1906,78 @@ MASTER_SWORD;TEMPLE_OF_TIME;Master Sword;OOT Temple of Time Master Sword;npc;587
 LIGHT_MEDALLION;TEMPLE_OF_TIME;Light Medallion;OOT Temple of Time Medallion;npc;561;328;TEMPLE_OF_TIME;All;0
 SHEIK_LIGHT;TEMPLE_OF_TIME;Prelude of Light;OOT Temple of Time Sheik Song;npc;574;297;TEMPLE_OF_TIME;All;0
 ZELDA_LIGHT_ARROW;TEMPLE_OF_TIME;Light Arrows;OOT Temple of Time Light Arrows;npc;149;329;TEMPLE_OF_TIME;All;0
-0x01;TEMPLE_SHADOW;Map;OOT Shadow Temple Map;chest;0;0;TEMPLE_SHADOW;All;0
-0x07;TEMPLE_SHADOW;Hover Boots;OOT Shadow Temple Hover Boots;chest;0;0;TEMPLE_SHADOW;All;0
-0x02;TEMPLE_SHADOW;Silver Rupees;OOT Shadow Temple Silver Rupees;chest;0;0;TEMPLE_SHADOW;All;0
-0x03;TEMPLE_SHADOW;Compass;OOT Shadow Temple Compass;chest;0;0;TEMPLE_SHADOW;All;0
-0x05;TEMPLE_SHADOW;Falling Spikes - Lower;OOT Shadow Temple Falling Spikes Lower;chest;0;0;TEMPLE_SHADOW;All;0
-0x04;TEMPLE_SHADOW;Falling Spikes - Upper 1;OOT Shadow Temple Falling Spikes Upper 1;chest;0;0;TEMPLE_SHADOW;All;0
-0x06;TEMPLE_SHADOW;Falling Spikes - Upper 2;OOT Shadow Temple Falling Spikes Upper 2;chest;0;0;TEMPLE_SHADOW;All;0
-0x09;TEMPLE_SHADOW;Invisible Spike Room;OOT Shadow Temple Invisible Spike Room;chest;0;0;TEMPLE_SHADOW;All;0
-0x0a;TEMPLE_SHADOW;Boss Key Room 1;OOT Shadow Temple Boss Key Room 1;chest;0;0;TEMPLE_SHADOW;All;0
-0x0b;TEMPLE_SHADOW;Boss Key Room 2;OOT Shadow Temple Boss Key Room 2;chest;0;0;TEMPLE_SHADOW;All;0
-0x01;TEMPLE_SHADOW;Skull - Small Key;OOT Shadow Temple Skull;collectible;0;0;TEMPLE_SHADOW;All;0
-0x0c;TEMPLE_SHADOW;Spinning Blades - Visible;OOT Shadow Temple Spinning Blades Visible;chest;0;0;TEMPLE_SHADOW;All;0
-0x16;TEMPLE_SHADOW;Spinning Blades - Invisible;OOT Shadow Temple Spinning Blades Invisible;chest;0;0;TEMPLE_SHADOW;All;0
-0x0d;TEMPLE_SHADOW;Invisible Floormaster;OOT Shadow Temple Invisible Floormaster;chest;0;0;TEMPLE_SHADOW;All;0
-0x15;TEMPLE_SHADOW;Wind Room - Hint;OOT Shadow Temple Wind Room Hint;chest;0;0;TEMPLE_SHADOW;All;0
-0x08;TEMPLE_SHADOW;After Wind - Visible;OOT Shadow Temple After Wind;chest;0;0;TEMPLE_SHADOW;All;0
-0x14;TEMPLE_SHADOW;After Wind - Invisible;OOT Shadow Temple After Wind Invisible;chest;0;0;TEMPLE_SHADOW;All;0
-0x43;TEMPLE_SHADOW;Invisible Scythe;OOT Shadow Temple GS Invisible Scythe;gs;0;0;TEMPLE_SHADOW;All;0
-0x40;TEMPLE_SHADOW;Skull Pot;OOT Shadow Temple GS Skull Pot;gs;0;0;TEMPLE_SHADOW;All;0
-0x42;TEMPLE_SHADOW;Triple Skull Pot;OOT Shadow Temple GS Triple Skull Pot;gs;0;0;TEMPLE_SHADOW;All;0
-0x44;TEMPLE_SHADOW;Near Boat;OOT Shadow Temple GS Near Boat;gs;0;0;TEMPLE_SHADOW;All;0
-0x41;TEMPLE_SHADOW;Falling Spikes;OOT Shadow Temple GS Falling Spikes;gs;0;0;TEMPLE_SHADOW;All;0
-0x19;TEMPLE_SHADOW;Scythe 1;OOT Shadow Temple SR Scythe 1;sr;0;0;TEMPLE_SHADOW;All;0
-0x1a;TEMPLE_SHADOW;Scythe 2;OOT Shadow Temple SR Scythe 2;sr;0;0;TEMPLE_SHADOW;All;0
-0x1b;TEMPLE_SHADOW;Scythe 3;OOT Shadow Temple SR Scythe 3;sr;0;0;TEMPLE_SHADOW;All;0
-0x1c;TEMPLE_SHADOW;Scythe 4;OOT Shadow Temple SR Scythe 4;sr;0;0;TEMPLE_SHADOW;All;0
-0x1d;TEMPLE_SHADOW;Scythe 5;OOT Shadow Temple SR Scythe 5;sr;0;0;TEMPLE_SHADOW;All;0
-0x28;TEMPLE_SHADOW;Pit 1;OOT Shadow Temple SR Pit 1;sr;0;0;TEMPLE_SHADOW;All;0
-0x29;TEMPLE_SHADOW;Pit 2;OOT Shadow Temple SR Pit 2;sr;0;0;TEMPLE_SHADOW;All;0
-0x2a;TEMPLE_SHADOW;Pit 3;OOT Shadow Temple SR Pit 3;sr;0;0;TEMPLE_SHADOW;All;0
-0x2b;TEMPLE_SHADOW;Pit 4;OOT Shadow Temple SR Pit 4;sr;0;0;TEMPLE_SHADOW;All;0
-0x2c;TEMPLE_SHADOW;Pit 5;OOT Shadow Temple SR Pit 5;sr;0;0;TEMPLE_SHADOW;All;0
-0x2d;TEMPLE_SHADOW;Spikes - Back Left;OOT Shadow Temple SR Spikes Back Left;sr;0;0;TEMPLE_SHADOW;All;0
-0x2e;TEMPLE_SHADOW;Spikes - Right;OOT Shadow Temple SR Spikes Right;sr;0;0;TEMPLE_SHADOW;All;0
-0x2f;TEMPLE_SHADOW;Spikes - Center;OOT Shadow Temple SR Spikes Center;sr;0;0;TEMPLE_SHADOW;All;0
-0x30;TEMPLE_SHADOW;Spikes - Front Left;OOT Shadow Temple SR Spikes Front Left;sr;0;0;TEMPLE_SHADOW;All;0
-0x31;TEMPLE_SHADOW;Spikes - Midair;OOT Shadow Temple SR Spikes Midair;sr;0;0;TEMPLE_SHADOW;All;0
-0x0000;TEMPLE_SHADOW;Early Maze 1;OOT Shadow Temple Pot Early Maze 1;pot;0;0;TEMPLE_SHADOW;All;0
-0x0001;TEMPLE_SHADOW;Early Maze 2;OOT Shadow Temple Pot Early Maze 2;pot;0;0;TEMPLE_SHADOW;All;0
-0x0002;TEMPLE_SHADOW;Early Maze 3;OOT Shadow Temple Pot Early Maze 3;pot;0;0;TEMPLE_SHADOW;All;0
-0x0003;TEMPLE_SHADOW;Early Maze 4;OOT Shadow Temple Pot Early Maze 4;pot;0;0;TEMPLE_SHADOW;All;0
-0x0004;TEMPLE_SHADOW;Early Maze 5;OOT Shadow Temple Pot Early Maze 5;pot;0;0;TEMPLE_SHADOW;All;0
-0x0005;TEMPLE_SHADOW;Early Maze 6;OOT Shadow Temple Pot Early Maze 6;pot;0;0;TEMPLE_SHADOW;All;0
-0x0103;TEMPLE_SHADOW;Map Room 1;OOT Shadow Temple Pot Map Room 1;pot;0;0;TEMPLE_SHADOW;All;0
-0x0104;TEMPLE_SHADOW;Map Room 2;OOT Shadow Temple Pot Map Room 2;pot;0;0;TEMPLE_SHADOW;All;0
-0x0a03;TEMPLE_SHADOW;Falling Spikes - Bottom 1;OOT Shadow Temple Pot Falling Spikes Bottom 1;pot;0;0;TEMPLE_SHADOW;All;0
-0x0a04;TEMPLE_SHADOW;Falling Spikes - Bottom 2;OOT Shadow Temple Pot Falling Spikes Bottom 2;pot;0;0;TEMPLE_SHADOW;All;0
-0x0a05;TEMPLE_SHADOW;Falling Spikes - Top 1;OOT Shadow Temple Pot Falling Spikes Top 1;pot;0;0;TEMPLE_SHADOW;All;0
-0x0a06;TEMPLE_SHADOW;Falling Spikes - Top 2;OOT Shadow Temple Pot Falling Spikes Top 2;pot;0;0;TEMPLE_SHADOW;All;0
-0x0d02;TEMPLE_SHADOW;Boss Key Room;OOT Shadow Temple Pot Boss Key Room;pot;0;0;TEMPLE_SHADOW;All;0
-0x1101;TEMPLE_SHADOW;Invisible Floormaster Room 1;OOT Shadow Temple Pot Invisible Floormaster Room 1;pot;0;0;TEMPLE_SHADOW;All;0
-0x1102;TEMPLE_SHADOW;Invisible Floormaster Room 2;OOT Shadow Temple Pot Invisible Floormaster Room 2;pot;0;0;TEMPLE_SHADOW;All;0
-0x1402;TEMPLE_SHADOW;After Wind 1;OOT Shadow Temple Pot After Wind 1;pot;0;0;TEMPLE_SHADOW;All;0
-0x1403;TEMPLE_SHADOW;After Wind 2;OOT Shadow Temple Pot After Wind 2;pot;0;0;TEMPLE_SHADOW;All;0
-0x1510;TEMPLE_SHADOW;Boat - Before Bridge 1;OOT Shadow Temple Pot Boat Before Bridge 1;pot;0;0;TEMPLE_SHADOW;All;0
-0x1511;TEMPLE_SHADOW;Boat - Before Bridge 2;OOT Shadow Temple Pot Boat Before Bridge 2;pot;0;0;TEMPLE_SHADOW;All;0
-0x1512;TEMPLE_SHADOW;Boat - After Bridge 1;OOT Shadow Temple Pot Boat After Bridge 1;pot;0;0;TEMPLE_SHADOW;All;0
-0x1513;TEMPLE_SHADOW;Boat - After Bridge 2;OOT Shadow Temple Pot Boat After Bridge 2;pot;0;0;TEMPLE_SHADOW;All;0
-0x0006;TEMPLE_SHADOW;Early Maze - Flying Pot;OOT Shadow Temple Flying Pot Early Maze;pot;0;0;TEMPLE_SHADOW;All;0
-0x1404;TEMPLE_SHADOW;After Wind - Flying Pot 1;OOT Shadow Temple Flying Pot After Wind 1;pot;0;0;TEMPLE_SHADOW;All;0
-0x1405;TEMPLE_SHADOW;After Wind - Flying Pot 2;OOT Shadow Temple Flying Pot After Wind 2;pot;0;0;TEMPLE_SHADOW;All;0
-0x01004;TEMPLE_SHADOW;Scythe 1;OOT Shadow Temple Heart Scythe 1;heart;0;0;TEMPLE_SHADOW;All;0
-0x01005;TEMPLE_SHADOW;Scythe 2;OOT Shadow Temple Heart Scythe 2;heart;0;0;TEMPLE_SHADOW;All;0
-0x01506;TEMPLE_SHADOW;Shortcut 1;OOT Shadow Temple Heart Shortcut 1;heart;0;0;TEMPLE_SHADOW;All;0
-0x01507;TEMPLE_SHADOW;Shortcut 2;OOT Shadow Temple Heart Shortcut 2;heart;0;0;TEMPLE_SHADOW;All;0
-0x01508;TEMPLE_SHADOW;Pre-Boss 1;OOT Shadow Temple Heart Pre-Boss 1;heart;0;0;TEMPLE_SHADOW;All;0
-0x01509;TEMPLE_SHADOW;Pre-Boss 2;OOT Shadow Temple Heart Pre-Boss 2;heart;0;0;TEMPLE_SHADOW;All;0
-0x0150a;TEMPLE_SHADOW;Pre-Boss 3;OOT Shadow Temple Heart Pre-Boss 3;heart;0;0;TEMPLE_SHADOW;All;0
-0x00503;TEMPLE_SHADOW;Beamos;OOT Shadow Temple Beamos Big Fairy;fairy_spot;0;0;TEMPLE_SHADOW;All;0
-0x00915;TEMPLE_SHADOW;Stalfos;OOT Shadow Temple Stalfos Big Fairy;fairy_spot;0;0;TEMPLE_SHADOW;All;0
-0x01302;TEMPLE_SHADOW;After Wind;OOT Shadow Temple Big Fairy After Wind;fairy_spot;0;0;TEMPLE_SHADOW;All;0
-0x00c01;TEMPLE_SHADOW;Triple Pot Room - Painting;OOT Shadow Temple Wonder Item;wonder;0;0;TEMPLE_SHADOW;All;0
+0x01;TEMPLE_SHADOW;Map;OOT Shadow Temple Map;chest;687;258;TEMPLE_SHADOW;All;0
+0x07;TEMPLE_SHADOW;Hover Boots;OOT Shadow Temple Hover Boots;chest;142;137;TEMPLE_SHADOW;All;0
+0x02;TEMPLE_SHADOW;Silver Rupees;OOT Shadow Temple Silver Rupees;chest;311;140;TEMPLE_SHADOW;All;1
+0x03;TEMPLE_SHADOW;Compass;OOT Shadow Temple Compass;chest;877;365;TEMPLE_SHADOW;All;1
+0x05;TEMPLE_SHADOW;Falling Spikes - Lower;OOT Shadow Temple Falling Spikes Lower;chest;644;551;TEMPLE_SHADOW;All;4
+0x04;TEMPLE_SHADOW;Falling Spikes - Upper 1;OOT Shadow Temple Falling Spikes Upper 1;chest;755;369;TEMPLE_SHADOW;All;4
+0x06;TEMPLE_SHADOW;Falling Spikes - Upper 2;OOT Shadow Temple Falling Spikes Upper 2;chest;83;417;TEMPLE_SHADOW;All;4
+0x09;TEMPLE_SHADOW;Invisible Spike Room;OOT Shadow Temple Invisible Spike Room;chest;521;539;TEMPLE_SHADOW;All;2
+0x0a;TEMPLE_SHADOW;Boss Key Room 1;OOT Shadow Temple Boss Key Room 1;chest;748;351;TEMPLE_SHADOW;All;6
+0x0b;TEMPLE_SHADOW;Boss Key Room 2;OOT Shadow Temple Boss Key Room 2;chest;791;512;TEMPLE_SHADOW;All;6
+0x01;TEMPLE_SHADOW;Skull - Small Key;OOT Shadow Temple Skull;collectible;709;547;TEMPLE_SHADOW;All;2
+0x0c;TEMPLE_SHADOW;Spinning Blades - Visible;OOT Shadow Temple Spinning Blades Visible;chest;447;69;TEMPLE_SHADOW;All;3
+0x16;TEMPLE_SHADOW;Spinning Blades - Invisible;OOT Shadow Temple Spinning Blades Invisible;chest;492;69;TEMPLE_SHADOW;All;3
+0x0d;TEMPLE_SHADOW;Invisible Floormaster;OOT Shadow Temple Invisible Floormaster;chest;153;431;TEMPLE_SHADOW;All;6
+0x15;TEMPLE_SHADOW;Wind Room - Hint;OOT Shadow Temple Wind Room Hint;chest;64;473;TEMPLE_SHADOW;All;5
+0x08;TEMPLE_SHADOW;After Wind - Visible;OOT Shadow Temple After Wind;chest;388;413;TEMPLE_SHADOW;All;5
+0x14;TEMPLE_SHADOW;After Wind - Invisible;OOT Shadow Temple After Wind Invisible;chest;544;404;TEMPLE_SHADOW;All;5
+0x43;TEMPLE_SHADOW;Invisible Scythe;OOT Shadow Temple GS Invisible Scythe;gs;467;26;TEMPLE_SHADOW;All;3
+0x40;TEMPLE_SHADOW;Skull Pot;OOT Shadow Temple GS Skull Pot;gs;746;551;TEMPLE_SHADOW;All;2
+0x42;TEMPLE_SHADOW;Triple Skull Pot;OOT Shadow Temple GS Triple Skull Pot;gs;479;116;TEMPLE_SHADOW;All;6
+0x44;TEMPLE_SHADOW;Near Boat;OOT Shadow Temple GS Near Boat;gs;700;216;TEMPLE_SHADOW;All;5
+0x41;TEMPLE_SHADOW;Falling Spikes;OOT Shadow Temple GS Falling Spikes;gs;439;421;TEMPLE_SHADOW;All;4
+0x19;TEMPLE_SHADOW;Scythe 1;OOT Shadow Temple SR Scythe 1;sr;284;342;TEMPLE_SHADOW;All;1
+0x1a;TEMPLE_SHADOW;Scythe 2;OOT Shadow Temple SR Scythe 2;sr;236;531;TEMPLE_SHADOW;All;1
+0x1b;TEMPLE_SHADOW;Scythe 3;OOT Shadow Temple SR Scythe 3;sr;203;395;TEMPLE_SHADOW;All;1
+0x1c;TEMPLE_SHADOW;Scythe 4;OOT Shadow Temple SR Scythe 4;sr;121;484;TEMPLE_SHADOW;All;1
+0x1d;TEMPLE_SHADOW;Scythe 5;OOT Shadow Temple SR Scythe 5;sr;80;284;TEMPLE_SHADOW;All;1
+0x28;TEMPLE_SHADOW;Pit 1;OOT Shadow Temple SR Pit 1;sr;599;245;TEMPLE_SHADOW;All;2
+0x29;TEMPLE_SHADOW;Pit 2;OOT Shadow Temple SR Pit 2;sr;620;209;TEMPLE_SHADOW;All;2
+0x2a;TEMPLE_SHADOW;Pit 3;OOT Shadow Temple SR Pit 3;sr;604;207;TEMPLE_SHADOW;All;2
+0x2b;TEMPLE_SHADOW;Pit 4;OOT Shadow Temple SR Pit 4;sr;585;206;TEMPLE_SHADOW;All;2
+0x2c;TEMPLE_SHADOW;Pit 5;OOT Shadow Temple SR Pit 5;sr;605;167;TEMPLE_SHADOW;All;2
+0x2d;TEMPLE_SHADOW;Spikes - Back Left;OOT Shadow Temple SR Spikes Back Left;sr;590;488;TEMPLE_SHADOW;All;2
+0x2e;TEMPLE_SHADOW;Spikes - Right;OOT Shadow Temple SR Spikes Right;sr;436;513;TEMPLE_SHADOW;All;2
+0x2f;TEMPLE_SHADOW;Spikes - Center;OOT Shadow Temple SR Spikes Center;sr;524;503;TEMPLE_SHADOW;All;2
+0x30;TEMPLE_SHADOW;Spikes - Front Left;OOT Shadow Temple SR Spikes Front Left;sr;606;574;TEMPLE_SHADOW;All;2
+0x31;TEMPLE_SHADOW;Spikes - Midair;OOT Shadow Temple SR Spikes Midair;sr;565;541;TEMPLE_SHADOW;All;2
+0x0000;TEMPLE_SHADOW;Early Maze 1;OOT Shadow Temple Pot Early Maze 1;pot;501;437;TEMPLE_SHADOW;All;0
+0x0001;TEMPLE_SHADOW;Early Maze 2;OOT Shadow Temple Pot Early Maze 2;pot;518;403;TEMPLE_SHADOW;All;0
+0x0002;TEMPLE_SHADOW;Early Maze 3;OOT Shadow Temple Pot Early Maze 3;pot;371;428;TEMPLE_SHADOW;All;0
+0x0003;TEMPLE_SHADOW;Early Maze 4;OOT Shadow Temple Pot Early Maze 4;pot;314;394;TEMPLE_SHADOW;All;0
+0x0004;TEMPLE_SHADOW;Early Maze 5;OOT Shadow Temple Pot Early Maze 5;pot;343;274;TEMPLE_SHADOW;All;0
+0x0005;TEMPLE_SHADOW;Early Maze 6;OOT Shadow Temple Pot Early Maze 6;pot;530;450;TEMPLE_SHADOW;All;0
+0x0103;TEMPLE_SHADOW;Map Room 1;OOT Shadow Temple Pot Map Room 1;pot;620;299;TEMPLE_SHADOW;All;0
+0x0104;TEMPLE_SHADOW;Map Room 2;OOT Shadow Temple Pot Map Room 2;pot;689;334;TEMPLE_SHADOW;All;0
+0x0a03;TEMPLE_SHADOW;Falling Spikes - Bottom 1;OOT Shadow Temple Pot Falling Spikes Bottom 1;pot;390;579;TEMPLE_SHADOW;All;4
+0x0a04;TEMPLE_SHADOW;Falling Spikes - Bottom 2;OOT Shadow Temple Pot Falling Spikes Bottom 2;pot;559;577;TEMPLE_SHADOW;All;4
+0x0a05;TEMPLE_SHADOW;Falling Spikes - Top 1;OOT Shadow Temple Pot Falling Spikes Top 1;pot;56;425;TEMPLE_SHADOW;All;4
+0x0a06;TEMPLE_SHADOW;Falling Spikes - Top 2;OOT Shadow Temple Pot Falling Spikes Top 2;pot;102;408;TEMPLE_SHADOW;All;4
+0x0d02;TEMPLE_SHADOW;Boss Key Room;OOT Shadow Temple Pot Boss Key Room;pot;776;426;TEMPLE_SHADOW;All;6
+0x1101;TEMPLE_SHADOW;Invisible Floormaster Room 1;OOT Shadow Temple Pot Invisible Floormaster Room 1;pot;263;499;TEMPLE_SHADOW;All;6
+0x1102;TEMPLE_SHADOW;Invisible Floormaster Room 2;OOT Shadow Temple Pot Invisible Floormaster Room 2;pot;285;368;TEMPLE_SHADOW;All;6
+0x1402;TEMPLE_SHADOW;After Wind 1;OOT Shadow Temple Pot After Wind 1;pot;559;368;TEMPLE_SHADOW;All;5
+0x1403;TEMPLE_SHADOW;After Wind 2;OOT Shadow Temple Pot After Wind 2;pot;532;442;TEMPLE_SHADOW;All;5
+0x1510;TEMPLE_SHADOW;Boat - Before Bridge 1;OOT Shadow Temple Pot Boat Before Bridge 1;pot;264;457;TEMPLE_SHADOW;All;7
+0x1511;TEMPLE_SHADOW;Boat - Before Bridge 2;OOT Shadow Temple Pot Boat Before Bridge 2;pot;332;457;TEMPLE_SHADOW;All;7
+0x1512;TEMPLE_SHADOW;Boat - After Bridge 1;OOT Shadow Temple Pot Boat After Bridge 1;pot;432;163;TEMPLE_SHADOW;All;7
+0x1513;TEMPLE_SHADOW;Boat - After Bridge 2;OOT Shadow Temple Pot Boat After Bridge 2;pot;505;164;TEMPLE_SHADOW;All;7
+0x0006;TEMPLE_SHADOW;Early Maze - Flying Pot;OOT Shadow Temple Flying Pot Early Maze;pot;342;411;TEMPLE_SHADOW;All;0
+0x1404;TEMPLE_SHADOW;After Wind - Flying Pot 1;OOT Shadow Temple Flying Pot After Wind 1;pot;480;347;TEMPLE_SHADOW;All;5
+0x1405;TEMPLE_SHADOW;After Wind - Flying Pot 2;OOT Shadow Temple Flying Pot After Wind 2;pot;445;419;TEMPLE_SHADOW;All;5
+0x01004;TEMPLE_SHADOW;Scythe 1;OOT Shadow Temple Heart Scythe 1;heart;215;161;TEMPLE_SHADOW;All;3
+0x01005;TEMPLE_SHADOW;Scythe 2;OOT Shadow Temple Heart Scythe 2;heart;226;153;TEMPLE_SHADOW;All;3
+0x01506;TEMPLE_SHADOW;Shortcut 1;OOT Shadow Temple Heart Shortcut 1;heart;768;273;TEMPLE_SHADOW;All;5
+0x01507;TEMPLE_SHADOW;Shortcut 2;OOT Shadow Temple Heart Shortcut 2;heart;713;262;TEMPLE_SHADOW;All;5
+0x01508;TEMPLE_SHADOW;Pre-Boss 1;OOT Shadow Temple Heart Pre-Boss 1;heart;764;194;TEMPLE_SHADOW;All;7
+0x01509;TEMPLE_SHADOW;Pre-Boss 2;OOT Shadow Temple Heart Pre-Boss 2;heart;760;181;TEMPLE_SHADOW;All;7
+0x0150a;TEMPLE_SHADOW;Pre-Boss 3;OOT Shadow Temple Heart Pre-Boss 3;heart;614;164;TEMPLE_SHADOW;All;7
+0x00503;TEMPLE_SHADOW;Beamos;OOT Shadow Temple Beamos Big Fairy;fairy_spot;596;360;TEMPLE_SHADOW;All;1
+0x00915;TEMPLE_SHADOW;Stalfos;OOT Shadow Temple Stalfos Big Fairy;fairy_spot;369;168;TEMPLE_SHADOW;All;2
+0x01302;TEMPLE_SHADOW;After Wind;OOT Shadow Temple Big Fairy After Wind;fairy_spot;131;445;TEMPLE_SHADOW;All;5
+0x00c01;TEMPLE_SHADOW;Triple Pot Room - Painting;OOT Shadow Temple Wonder Item;wonder;483;220;TEMPLE_SHADOW;All;6
 0x01;TEMPLE_SHADOW;Compass;OOT MQ Shadow Temple Compass Chest;chest;0;0;MQ_TEMPLE_SHADOW;All;0
 0x07;TEMPLE_SHADOW;Hover Boots;OOT MQ Shadow Temple Hover Boots Chest;chest;0;0;MQ_TEMPLE_SHADOW;All;0
 0x03;TEMPLE_SHADOW;First Gibdos;OOT MQ Shadow Temple First Gibdos Chest;chest;0;0;MQ_TEMPLE_SHADOW;All;0
@@ -2071,79 +2071,79 @@ ZELDA_LIGHT_ARROW;TEMPLE_OF_TIME;Light Arrows;OOT Temple of Time Light Arrows;np
 0x00212;TEMPLE_SHADOW;Truth Spinner Room - Small Crate 2;OOT MQ Shadow Temple Truth Spinner Room Small Crate 2;crate;0;0;MQ_TEMPLE_SHADOW;All;0
 0x00213;TEMPLE_SHADOW;Truth Spinner Room - Small Crate 3;OOT MQ Shadow Temple Truth Spinner Room Small Crate 3;crate;0;0;MQ_TEMPLE_SHADOW;All;0
 0x00214;TEMPLE_SHADOW;Truth Spinner Room - Small Crate 4;OOT MQ Shadow Temple Truth Spinner Room Small Crate 4;crate;0;0;MQ_TEMPLE_SHADOW;All;0
-0x08;TEMPLE_SPIRIT;Child - First;OOT Spirit Temple Child First Chest;chest;0;0;TEMPLE_SPIRIT;All;0
-0x00;TEMPLE_SPIRIT;Child - Second;OOT Spirit Temple Child Second Chest;chest;0;0;TEMPLE_SPIRIT;All;0
-0x0c;TEMPLE_SPIRIT;Child - Climb 1;OOT Spirit Temple Child Climb 1;chest;0;0;TEMPLE_SPIRIT;All;0
-0x06;TEMPLE_SPIRIT;Child - Climb 2;OOT Spirit Temple Child Climb 2;chest;0;0;TEMPLE_SPIRIT;All;0
-0x03;TEMPLE_SPIRIT;Map;OOT Spirit Temple Statue Base;chest;0;0;TEMPLE_SPIRIT;All;0
-0x02;TEMPLE_SPIRIT;Statue - Hands;OOT Spirit Temple Statue Hands;chest;0;0;TEMPLE_SPIRIT;All;0
-0x0f;TEMPLE_SPIRIT;Statue - Upper Right;OOT Spirit Temple Statue Upper Right;chest;0;0;TEMPLE_SPIRIT;All;0
-0x01;TEMPLE_SPIRIT;Sun Block Room - Torches;OOT Spirit Temple Sun Block Room Torches;chest;0;0;TEMPLE_SPIRIT;All;0
-0x07;TEMPLE_SPIRIT;Adult - Silver Rupees;OOT Spirit Temple Adult Silver Rupees;chest;0;0;TEMPLE_SPIRIT;All;0
-0x04;TEMPLE_SPIRIT;Adult - Zelda's Lullaby;OOT Spirit Temple Adult Lullaby;chest;0;0;TEMPLE_SPIRIT;All;0
-0x0d;TEMPLE_SPIRIT;Adult - Suns on Wall 1;OOT Spirit Temple Adult Suns on Wall 1;chest;0;0;TEMPLE_SPIRIT;All;0
-0x0e;TEMPLE_SPIRIT;Adult - Suns on Wall 2;OOT Spirit Temple Adult Suns on Wall 2;chest;0;0;TEMPLE_SPIRIT;All;0
-0x14;TEMPLE_SPIRIT;Adult - Invisible 1;OOT Spirit Temple Adult Invisible 1;chest;0;0;TEMPLE_SPIRIT;All;0
-0x15;TEMPLE_SPIRIT;Adult - Invisible 2;OOT Spirit Temple Adult Invisible 2;chest;0;0;TEMPLE_SPIRIT;All;0
-0x05;TEMPLE_SPIRIT;Adult - Late Sun on Wall;OOT Spirit Temple Adult Late Sun on Wall;chest;0;0;TEMPLE_SPIRIT;All;0
-0x0a;TEMPLE_SPIRIT;Adult - Boss Key;OOT Spirit Temple Adult Boss Key Chest;chest;0;0;TEMPLE_SPIRIT;All;0
-0x12;TEMPLE_SPIRIT;Adult - Topmost Sun on Wall;OOT Spirit Temple Adult Topmost Sun on Wall;chest;0;0;TEMPLE_SPIRIT;All;0
-0x3b;TEMPLE_SPIRIT;Child - Climb;OOT Spirit Temple GS Child Climb;gs;0;0;TEMPLE_SPIRIT;All;0
-0x3c;TEMPLE_SPIRIT;Child - Fence;OOT Spirit Temple GS Child Fence;gs;0;0;TEMPLE_SPIRIT;All;0
-0x38;TEMPLE_SPIRIT;Iron Knuckle;OOT Spirit Temple GS Iron Knuckle;gs;0;0;TEMPLE_SPIRIT;All;0
-0x39;TEMPLE_SPIRIT;Boulders;OOT Spirit Temple GS Boulders;gs;0;0;TEMPLE_SPIRIT;All;0
-0x3a;TEMPLE_SPIRIT;Statue;OOT Spirit Temple GS Statue;gs;0;0;TEMPLE_SPIRIT;All;0
-0x0a;TEMPLE_SPIRIT;Child 1;OOT Spirit Temple SR Child 1;sr;0;0;TEMPLE_SPIRIT;All;0
-0x0b;TEMPLE_SPIRIT;Child 2;OOT Spirit Temple SR Child 2;sr;0;0;TEMPLE_SPIRIT;All;0
-0x0c;TEMPLE_SPIRIT;Child 3;OOT Spirit Temple SR Child 3;sr;0;0;TEMPLE_SPIRIT;All;0
-0x0d;TEMPLE_SPIRIT;Child 4;OOT Spirit Temple SR Child 4;sr;0;0;TEMPLE_SPIRIT;All;0
-0x0e;TEMPLE_SPIRIT;Child 5;OOT Spirit Temple SR Child 5;sr;0;0;TEMPLE_SPIRIT;All;0
-0x0f;TEMPLE_SPIRIT;Sun 1;OOT Spirit Temple SR Sun 1;sr;0;0;TEMPLE_SPIRIT;All;0
-0x10;TEMPLE_SPIRIT;Sun 2;OOT Spirit Temple SR Sun 2;sr;0;0;TEMPLE_SPIRIT;All;0
-0x11;TEMPLE_SPIRIT;Sun 3;OOT Spirit Temple SR Sun 3;sr;0;0;TEMPLE_SPIRIT;All;0
-0x12;TEMPLE_SPIRIT;Sun 4;OOT Spirit Temple SR Sun 4;sr;0;0;TEMPLE_SPIRIT;All;0
-0x13;TEMPLE_SPIRIT;Sun 5;OOT Spirit Temple SR Sun 5;sr;0;0;TEMPLE_SPIRIT;All;0
-0x14;TEMPLE_SPIRIT;Boulders 1;OOT Spirit Temple SR Boulders 1;sr;0;0;TEMPLE_SPIRIT;All;0
-0x15;TEMPLE_SPIRIT;Boulders 2;OOT Spirit Temple SR Boulders 2;sr;0;0;TEMPLE_SPIRIT;All;0
-0x16;TEMPLE_SPIRIT;Boulders 3;OOT Spirit Temple SR Boulders 3;sr;0;0;TEMPLE_SPIRIT;All;0
-0x17;TEMPLE_SPIRIT;Boulders 4;OOT Spirit Temple SR Boulders 4;sr;0;0;TEMPLE_SPIRIT;All;0
-0x18;TEMPLE_SPIRIT;Boulders 5;OOT Spirit Temple SR Boulders 5;sr;0;0;TEMPLE_SPIRIT;All;0
-0x000a;TEMPLE_SPIRIT;Lobby 1;OOT Spirit Temple Pot Lobby 1;pot;0;0;TEMPLE_SPIRIT;All;0
-0x000b;TEMPLE_SPIRIT;Lobby 2;OOT Spirit Temple Pot Lobby 2;pot;0;0;TEMPLE_SPIRIT;All;0
-0x040a;TEMPLE_SPIRIT;Child - Climb;OOT Spirit Temple Pot Child Climb;pot;0;0;TEMPLE_SPIRIT;All;0
-0x0517;TEMPLE_SPIRIT;Statue Room 1;OOT Spirit Temple Pot Statue Room 1;pot;0;0;TEMPLE_SPIRIT;All;0
-0x0518;TEMPLE_SPIRIT;Statue Room 2;OOT Spirit Temple Pot Statue Room 2;pot;0;0;TEMPLE_SPIRIT;All;0
-0x0519;TEMPLE_SPIRIT;Statue Room 3;OOT Spirit Temple Pot Statue Room 3;pot;0;0;TEMPLE_SPIRIT;All;0
-0x051a;TEMPLE_SPIRIT;Statue Room 4;OOT Spirit Temple Pot Statue Room 4;pot;0;0;TEMPLE_SPIRIT;All;0
-0x051b;TEMPLE_SPIRIT;Statue Room 5;OOT Spirit Temple Pot Statue Room 5;pot;0;0;TEMPLE_SPIRIT;All;0
-0x051c;TEMPLE_SPIRIT;Statue Room 6;OOT Spirit Temple Pot Statue Room 6;pot;0;0;TEMPLE_SPIRIT;All;0
-0x0907;TEMPLE_SPIRIT;Child - Hand Stairway 1;OOT Spirit Temple Pot Child Hand Stairway 1;pot;0;0;TEMPLE_SPIRIT;All;0
-0x0908;TEMPLE_SPIRIT;Child - Hand Stairway 2;OOT Spirit Temple Pot Child Hand Stairway 2;pot;0;0;TEMPLE_SPIRIT;All;0
-0x1005;TEMPLE_SPIRIT;Adult - Upper;OOT Spirit Temple Pot Adult Upper;pot;0;0;TEMPLE_SPIRIT;All;0
-0x1b04;TEMPLE_SPIRIT;Child - Anubis Room 1;OOT Spirit Temple Pot Child Anubis Room 1;pot;0;0;TEMPLE_SPIRIT;All;0
-0x1b05;TEMPLE_SPIRIT;Child - Anubis Room 2;OOT Spirit Temple Pot Child Anubis Room 2;pot;0;0;TEMPLE_SPIRIT;All;0
-0x1b06;TEMPLE_SPIRIT;Child - Anubis Room 3;OOT Spirit Temple Pot Child Anubis Room 3;pot;0;0;TEMPLE_SPIRIT;All;0
-0x1b07;TEMPLE_SPIRIT;Child - Anubis Room 4;OOT Spirit Temple Pot Child Anubis Room 4;pot;0;0;TEMPLE_SPIRIT;All;0
-0x000c;TEMPLE_SPIRIT;Lobby - Flying Pot 1;OOT Spirit Temple Flying Pot Lobby 1;pot;0;0;TEMPLE_SPIRIT;All;0
-0x000d;TEMPLE_SPIRIT;Lobby - Flying Pot 2;OOT Spirit Temple Flying Pot Lobby 2;pot;0;0;TEMPLE_SPIRIT;All;0
-0x0304;TEMPLE_SPIRIT;Child - After Bridge 1;OOT Spirit Temple Flying Pot Child After Bridge 1;pot;0;0;TEMPLE_SPIRIT;All;0
-0x0305;TEMPLE_SPIRIT;Child - After Bridge 2;OOT Spirit Temple Flying Pot Child After Bridge 2;pot;0;0;TEMPLE_SPIRIT;All;0
-0x0514;TEMPLE_SPIRIT;Statue Room - Flying Pot 1;OOT Spirit Temple Flying Pot Statue Room 1;pot;0;0;TEMPLE_SPIRIT;All;0
-0x0515;TEMPLE_SPIRIT;Statue Room - Flying Pot 2;OOT Spirit Temple Flying Pot Statue Room 2;pot;0;0;TEMPLE_SPIRIT;All;0
-0x0f0a;TEMPLE_SPIRIT;Adult - Climb 1;OOT Spirit Temple Flying Pot Adult Climb 1;pot;0;0;TEMPLE_SPIRIT;All;0
-0x0f0b;TEMPLE_SPIRIT;Adult - Climb 2;OOT Spirit Temple Flying Pot Adult Climb 2;pot;0;0;TEMPLE_SPIRIT;All;0
-0x1904;TEMPLE_SPIRIT;Topmost - Flying Pot 1;OOT Spirit Temple Flying Pot Topmost 1;pot;0;0;TEMPLE_SPIRIT;All;0
-0x1905;TEMPLE_SPIRIT;Topmost - Flying Pot 2;OOT Spirit Temple Flying Pot Topmost 2;pot;0;0;TEMPLE_SPIRIT;All;0
-0x1906;TEMPLE_SPIRIT;Topmost - Flying Pot 3;OOT Spirit Temple Flying Pot Topmost 3;pot;0;0;TEMPLE_SPIRIT;All;0
-0x1907;TEMPLE_SPIRIT;Topmost - Flying Pot 4;OOT Spirit Temple Flying Pot Topmost 4;pot;0;0;TEMPLE_SPIRIT;All;0
-0x1908;TEMPLE_SPIRIT;Topmost - Flying Pot 5;OOT Spirit Temple Flying Pot Topmost 5;pot;0;0;TEMPLE_SPIRIT;All;0
-0x1909;TEMPLE_SPIRIT;Topmost - Flying Pot 6;OOT Spirit Temple Flying Pot Topmost 6;pot;0;0;TEMPLE_SPIRIT;All;0
-0x00109;TEMPLE_SPIRIT;Crate 1;OOT Spirit Temple Crate 1;crate;0;0;TEMPLE_SPIRIT;All;0
-0x0010a;TEMPLE_SPIRIT;Crate 2;OOT Spirit Temple Crate 2;crate;0;0;TEMPLE_SPIRIT;All;0
-0x01702;TEMPLE_SPIRIT;Heart 1;OOT Spirit Temple Heart 1;heart;0;0;TEMPLE_SPIRIT;All;0
-0x01703;TEMPLE_SPIRIT;Heart 2;OOT Spirit Temple Heart 2;heart;0;0;TEMPLE_SPIRIT;All;0
-0x00c01;TEMPLE_SPIRIT;Adult - Silver Rupees;OOT Spirit Temple Adult Silver Rupees Big Fairy;fairy_spot;0;0;TEMPLE_SPIRIT;All;0
-0x01206;TEMPLE_SPIRIT;Adult - Sunlight;OOT Spirit Temple Adult Sunlight Big Fairy;fairy_spot;0;0;TEMPLE_SPIRIT;All;0
+0x08;TEMPLE_SPIRIT;Child - First;OOT Spirit Temple Child First Chest;chest;291;183;TEMPLE_SPIRIT;All;1
+0x00;TEMPLE_SPIRIT;Child - Second;OOT Spirit Temple Child Second Chest;chest;702;229;TEMPLE_SPIRIT;All;1
+0x0c;TEMPLE_SPIRIT;Child - Climb 1;OOT Spirit Temple Child Climb 1;chest;346;358;TEMPLE_SPIRIT;All;2
+0x06;TEMPLE_SPIRIT;Child - Climb 2;OOT Spirit Temple Child Climb 2;chest;551;279;TEMPLE_SPIRIT;All;2
+0x03;TEMPLE_SPIRIT;Map;OOT Spirit Temple Statue Base;chest;484;493;TEMPLE_SPIRIT;All;6
+0x02;TEMPLE_SPIRIT;Statue - Hands;OOT Spirit Temple Statue Hands;chest;278;366;TEMPLE_SPIRIT;All;6
+0x0f;TEMPLE_SPIRIT;Statue - Upper Right;OOT Spirit Temple Statue Upper Right;chest;808;235;TEMPLE_SPIRIT;All;6
+0x01;TEMPLE_SPIRIT;Sun Block Room - Torches;OOT Spirit Temple Sun Block Room Torches;chest;503;273;TEMPLE_SPIRIT;All;3
+0x07;TEMPLE_SPIRIT;Adult - Silver Rupees;OOT Spirit Temple Adult Silver Rupees;chest;590;118;TEMPLE_SPIRIT;All;4
+0x04;TEMPLE_SPIRIT;Adult - Zelda's Lullaby;OOT Spirit Temple Adult Lullaby;chest;193;260;TEMPLE_SPIRIT;All;4
+0x0d;TEMPLE_SPIRIT;Adult - Suns on Wall 1;OOT Spirit Temple Adult Suns on Wall 1;chest;423;330;TEMPLE_SPIRIT;All;5
+0x0e;TEMPLE_SPIRIT;Adult - Suns on Wall 2;OOT Spirit Temple Adult Suns on Wall 2;chest;347;330;TEMPLE_SPIRIT;All;5
+0x14;TEMPLE_SPIRIT;Adult - Invisible 1;OOT Spirit Temple Adult Invisible 1;chest;429;136;TEMPLE_SPIRIT;All;8
+0x15;TEMPLE_SPIRIT;Adult - Invisible 2;OOT Spirit Temple Adult Invisible 2;chest;478;136;TEMPLE_SPIRIT;All;8
+0x05;TEMPLE_SPIRIT;Adult - Late Sun on Wall;OOT Spirit Temple Adult Late Sun on Wall;chest;468;595;TEMPLE_SPIRIT;All;8
+0x0a;TEMPLE_SPIRIT;Adult - Boss Key;OOT Spirit Temple Adult Boss Key Chest;chest;809;265;TEMPLE_SPIRIT;All;9
+0x12;TEMPLE_SPIRIT;Adult - Topmost Sun on Wall;OOT Spirit Temple Adult Topmost Sun on Wall;chest;770;380;TEMPLE_SPIRIT;All;10
+0x3b;TEMPLE_SPIRIT;Child - Climb;OOT Spirit Temple GS Child Climb;gs;637;343;TEMPLE_SPIRIT;All;2
+0x3c;TEMPLE_SPIRIT;Child - Fence;OOT Spirit Temple GS Child Fence;gs;732;272;TEMPLE_SPIRIT;All;1
+0x38;TEMPLE_SPIRIT;Iron Knuckle;OOT Spirit Temple GS Iron Knuckle;gs;549;377;TEMPLE_SPIRIT;All;3
+0x39;TEMPLE_SPIRIT;Boulders;OOT Spirit Temple GS Boulders;gs;495;360;TEMPLE_SPIRIT;All;4
+0x3a;TEMPLE_SPIRIT;Statue;OOT Spirit Temple GS Statue;gs;142;195;TEMPLE_SPIRIT;All;6
+0x0a;TEMPLE_SPIRIT;Child 1;OOT Spirit Temple SR Child 1;sr;709;188;TEMPLE_SPIRIT;All;1
+0x0b;TEMPLE_SPIRIT;Child 2;OOT Spirit Temple SR Child 2;sr;740;247;TEMPLE_SPIRIT;All;1
+0x0c;TEMPLE_SPIRIT;Child 3;OOT Spirit Temple SR Child 3;sr;588;244;TEMPLE_SPIRIT;All;1
+0x0d;TEMPLE_SPIRIT;Child 4;OOT Spirit Temple SR Child 4;sr;611;276;TEMPLE_SPIRIT;All;1
+0x0e;TEMPLE_SPIRIT;Child 5;OOT Spirit Temple SR Child 5;sr;665;276;TEMPLE_SPIRIT;All;1
+0x0f;TEMPLE_SPIRIT;Sun 1;OOT Spirit Temple SR Sun 1;sr;181;199;TEMPLE_SPIRIT;All;3
+0x10;TEMPLE_SPIRIT;Sun 2;OOT Spirit Temple SR Sun 2;sr;500;231;TEMPLE_SPIRIT;All;3
+0x11;TEMPLE_SPIRIT;Sun 3;OOT Spirit Temple SR Sun 3;sr;236;276;TEMPLE_SPIRIT;All;3
+0x12;TEMPLE_SPIRIT;Sun 4;OOT Spirit Temple SR Sun 4;sr;210;327;TEMPLE_SPIRIT;All;3
+0x13;TEMPLE_SPIRIT;Sun 5;OOT Spirit Temple SR Sun 5;sr;88;480;TEMPLE_SPIRIT;All;3
+0x14;TEMPLE_SPIRIT;Boulders 1;OOT Spirit Temple SR Boulders 1;sr;601;415;TEMPLE_SPIRIT;All;4
+0x15;TEMPLE_SPIRIT;Boulders 2;OOT Spirit Temple SR Boulders 2;sr;503;452;TEMPLE_SPIRIT;All;4
+0x16;TEMPLE_SPIRIT;Boulders 3;OOT Spirit Temple SR Boulders 3;sr;696;407;TEMPLE_SPIRIT;All;4
+0x17;TEMPLE_SPIRIT;Boulders 4;OOT Spirit Temple SR Boulders 4;sr;693;315;TEMPLE_SPIRIT;All;4
+0x18;TEMPLE_SPIRIT;Boulders 5;OOT Spirit Temple SR Boulders 5;sr;502;270;TEMPLE_SPIRIT;All;4
+0x000a;TEMPLE_SPIRIT;Lobby 1;OOT Spirit Temple Pot Lobby 1;pot;347;455;TEMPLE_SPIRIT;All;0
+0x000b;TEMPLE_SPIRIT;Lobby 2;OOT Spirit Temple Pot Lobby 2;pot;613;456;TEMPLE_SPIRIT;All;0
+0x040a;TEMPLE_SPIRIT;Child - Climb;OOT Spirit Temple Pot Child Climb;pot;634;592;TEMPLE_SPIRIT;All;2
+0x0517;TEMPLE_SPIRIT;Statue Room 1;OOT Spirit Temple Pot Statue Room 1;pot;169;499;TEMPLE_SPIRIT;All;6
+0x0518;TEMPLE_SPIRIT;Statue Room 2;OOT Spirit Temple Pot Statue Room 2;pot;204;499;TEMPLE_SPIRIT;All;6
+0x0519;TEMPLE_SPIRIT;Statue Room 3;OOT Spirit Temple Pot Statue Room 3;pot;762;502;TEMPLE_SPIRIT;All;6
+0x051a;TEMPLE_SPIRIT;Statue Room 4;OOT Spirit Temple Pot Statue Room 4;pot;793;502;TEMPLE_SPIRIT;All;6
+0x051b;TEMPLE_SPIRIT;Statue Room 5;OOT Spirit Temple Pot Statue Room 5;pot;352;349;TEMPLE_SPIRIT;All;7
+0x051c;TEMPLE_SPIRIT;Statue Room 6;OOT Spirit Temple Pot Statue Room 6;pot;239;350;TEMPLE_SPIRIT;All;7
+0x0907;TEMPLE_SPIRIT;Child - Hand Stairway 1;OOT Spirit Temple Pot Child Hand Stairway 1;pot;686;383;TEMPLE_SPIRIT;All;3
+0x0908;TEMPLE_SPIRIT;Child - Hand Stairway 2;OOT Spirit Temple Pot Child Hand Stairway 2;pot;702;447;TEMPLE_SPIRIT;All;3
+0x1005;TEMPLE_SPIRIT;Adult - Upper;OOT Spirit Temple Pot Adult Upper;pot;644;245;TEMPLE_SPIRIT;All;5
+0x1b04;TEMPLE_SPIRIT;Child - Anubis Room 1;OOT Spirit Temple Pot Child Anubis Room 1;pot;437;154;TEMPLE_SPIRIT;All;1
+0x1b05;TEMPLE_SPIRIT;Child - Anubis Room 2;OOT Spirit Temple Pot Child Anubis Room 2;pot;485;118;TEMPLE_SPIRIT;All;1
+0x1b06;TEMPLE_SPIRIT;Child - Anubis Room 3;OOT Spirit Temple Pot Child Anubis Room 3;pot;509;102;TEMPLE_SPIRIT;All;1
+0x1b07;TEMPLE_SPIRIT;Child - Anubis Room 4;OOT Spirit Temple Pot Child Anubis Room 4;pot;522;85;TEMPLE_SPIRIT;All;1
+0x000c;TEMPLE_SPIRIT;Lobby - Flying Pot 1;OOT Spirit Temple Flying Pot Lobby 1;pot;386;545;TEMPLE_SPIRIT;All;0
+0x000d;TEMPLE_SPIRIT;Lobby - Flying Pot 2;OOT Spirit Temple Flying Pot Lobby 2;pot;573;546;TEMPLE_SPIRIT;All;0
+0x0304;TEMPLE_SPIRIT;Child - After Bridge 1;OOT Spirit Temple Flying Pot Child After Bridge 1;pot;257;182;TEMPLE_SPIRIT;All;1
+0x0305;TEMPLE_SPIRIT;Child - After Bridge 2;OOT Spirit Temple Flying Pot Child After Bridge 2;pot;323;181;TEMPLE_SPIRIT;All;1
+0x0514;TEMPLE_SPIRIT;Statue Room - Flying Pot 1;OOT Spirit Temple Flying Pot Statue Room 1;pot;306;369;TEMPLE_SPIRIT;All;6
+0x0515;TEMPLE_SPIRIT;Statue Room - Flying Pot 2;OOT Spirit Temple Flying Pot Statue Room 2;pot;665;372;TEMPLE_SPIRIT;All;6
+0x0f0a;TEMPLE_SPIRIT;Adult - Climb 1;OOT Spirit Temple Flying Pot Adult Climb 1;pot;338;527;TEMPLE_SPIRIT;All;5
+0x0f0b;TEMPLE_SPIRIT;Adult - Climb 2;OOT Spirit Temple Flying Pot Adult Climb 2;pot;290;526;TEMPLE_SPIRIT;All;5
+0x1904;TEMPLE_SPIRIT;Topmost - Flying Pot 1;OOT Spirit Temple Flying Pot Topmost 1;pot;153;588;TEMPLE_SPIRIT;All;10
+0x1905;TEMPLE_SPIRIT;Topmost - Flying Pot 2;OOT Spirit Temple Flying Pot Topmost 2;pot;377;588;TEMPLE_SPIRIT;All;10
+0x1906;TEMPLE_SPIRIT;Topmost - Flying Pot 3;OOT Spirit Temple Flying Pot Topmost 3;pot;108;587;TEMPLE_SPIRIT;All;10
+0x1907;TEMPLE_SPIRIT;Topmost - Flying Pot 4;OOT Spirit Temple Flying Pot Topmost 4;pot;422;586;TEMPLE_SPIRIT;All;10
+0x1908;TEMPLE_SPIRIT;Topmost - Flying Pot 5;OOT Spirit Temple Flying Pot Topmost 5;pot;373;365;TEMPLE_SPIRIT;All;10
+0x1909;TEMPLE_SPIRIT;Topmost - Flying Pot 6;OOT Spirit Temple Flying Pot Topmost 6;pot;273;366;TEMPLE_SPIRIT;All;10
+0x00109;TEMPLE_SPIRIT;Crate 1;OOT Spirit Temple Crate 1;crate;450;313;TEMPLE_SPIRIT;All;1
+0x0010a;TEMPLE_SPIRIT;Crate 2;OOT Spirit Temple Crate 2;crate;511;314;TEMPLE_SPIRIT;All;1
+0x01702;TEMPLE_SPIRIT;Heart 1;OOT Spirit Temple Heart 1;heart;120;250;TEMPLE_SPIRIT;All;9
+0x01703;TEMPLE_SPIRIT;Heart 2;OOT Spirit Temple Heart 2;heart;113;259;TEMPLE_SPIRIT;All;9
+0x00c01;TEMPLE_SPIRIT;Adult - Silver Rupees;OOT Spirit Temple Adult Silver Rupees Big Fairy;fairy_spot;589;89;TEMPLE_SPIRIT;All;4
+0x01206;TEMPLE_SPIRIT;Adult - Sunlight;OOT Spirit Temple Adult Sunlight Big Fairy;fairy_spot;415;421;TEMPLE_SPIRIT;All;8
 0x1a;TEMPLE_SPIRIT;Entrance - Initial;OOT MQ Spirit Temple Entrance Initial Chest;chest;0;0;MQ_TEMPLE_SPIRIT;All;0
 0x1e;TEMPLE_SPIRIT;Lobby - Back-Left;OOT MQ Spirit Temple Lobby Back-Left Chest;chest;0;0;MQ_TEMPLE_SPIRIT;All;0
 0x1f;TEMPLE_SPIRIT;Lobby - Back-Right;OOT MQ Spirit Temple Lobby Back-Right Chest;chest;0;0;MQ_TEMPLE_SPIRIT;All;0
@@ -2224,48 +2224,48 @@ ZELDA_LIGHT_ARROW;TEMPLE_OF_TIME;Light Arrows;OOT Temple of Time Light Arrows;np
 0x01902;TEMPLE_SPIRIT;Top - Near Lowering Platform 2;OOT MQ Spirit Temple Top Near Lowering Platform Large Crate 2;crate;0;0;MQ_TEMPLE_SPIRIT;All;0
 0x01903;TEMPLE_SPIRIT;Top - Near Lowering Platform 3;OOT MQ Spirit Temple Top Near Lowering Platform Large Crate 3;crate;0;0;MQ_TEMPLE_SPIRIT;All;0
 0x01904;TEMPLE_SPIRIT;Top - Near Lowering Platform 4;OOT MQ Spirit Temple Top Near Lowering Platform Large Crate 4;crate;0;0;MQ_TEMPLE_SPIRIT;All;0
-0x06;TEMPLE_WATER;Under Center;OOT Water Temple Under Center;chest;0;0;TEMPLE_WATER;All;0
-0x09;TEMPLE_WATER;Compass;OOT Water Temple Compass;chest;0;0;TEMPLE_WATER;All;0
-0x07;TEMPLE_WATER;Longshot;OOT Water Temple Longshot;chest;0;0;TEMPLE_WATER;All;0
-0x0a;TEMPLE_WATER;Dragon;OOT Water Temple Dragon Chest;chest;0;0;TEMPLE_WATER;All;0
-0x05;TEMPLE_WATER;Boss Key;OOT Water Temple Boss Key Chest;chest;0;0;TEMPLE_WATER;All;0
-0x00;TEMPLE_WATER;Bombable Wall;OOT Water Temple Bombable Chest;chest;0;0;TEMPLE_WATER;All;0
-0x01;TEMPLE_WATER;Shell;OOT Water Temple Shell Chest;chest;0;0;TEMPLE_WATER;All;0
-0x02;TEMPLE_WATER;Map;OOT Water Temple Map;chest;0;0;TEMPLE_WATER;All;0
-0x08;TEMPLE_WATER;Corridor;OOT Water Temple Corridor Chest;chest;0;0;TEMPLE_WATER;All;0
-0x03;TEMPLE_WATER;River;OOT Water Temple River Chest;chest;0;0;TEMPLE_WATER;All;0
-0x34;TEMPLE_WATER;River;OOT Water Temple GS River;gs;0;0;TEMPLE_WATER;All;0
-0x32;TEMPLE_WATER;Center;OOT Water Temple GS Center;gs;0;0;TEMPLE_WATER;All;0
-0x31;TEMPLE_WATER;Large Pit;OOT Water Temple GS Large Pit;gs;0;0;TEMPLE_WATER;All;0
-0x33;TEMPLE_WATER;Waterfalls;OOT Water Temple GS Waterfalls;gs;0;0;TEMPLE_WATER;All;0
-0x30;TEMPLE_WATER;Cage;OOT Water Temple GS Cage;gs;0;0;TEMPLE_WATER;All;0
-0x0017;TEMPLE_WATER;Main Room - Near Block 1;OOT Water Temple Pot Main Room Near Block 1;pot;0;0;TEMPLE_WATER;All;0
-0x0018;TEMPLE_WATER;Main Room - Near Block 2;OOT Water Temple Pot Main Room Near Block 2;pot;0;0;TEMPLE_WATER;All;0
-0x0019;TEMPLE_WATER;Main Room - Near Boss 1;OOT Water Temple Pot Main Room Near Boss 1;pot;0;0;TEMPLE_WATER;All;0
-0x001a;TEMPLE_WATER;Main Room - Near Boss 2;OOT Water Temple Pot Main Room Near Boss 2;pot;0;0;TEMPLE_WATER;All;0
-0x0309;TEMPLE_WATER;Skull Cage 1;OOT Water Temple Pot Skull Cage 1;pot;0;0;TEMPLE_WATER;All;0
-0x030a;TEMPLE_WATER;Skull Cage 2;OOT Water Temple Pot Skull Cage 2;pot;0;0;TEMPLE_WATER;All;0
-0x030d;TEMPLE_WATER;Skull Cage 3;OOT Water Temple Pot Skull Cage 3;pot;0;0;TEMPLE_WATER;All;0
-0x030e;TEMPLE_WATER;Skull Cage 4;OOT Water Temple Pot Skull Cage 4;pot;0;0;TEMPLE_WATER;All;0
-0x0408;TEMPLE_WATER;Compass Room 1;OOT Water Temple Pot Compass Room 1;pot;0;0;TEMPLE_WATER;All;0
-0x0409;TEMPLE_WATER;Compass Room 2;OOT Water Temple Pot Compass Room 2;pot;0;0;TEMPLE_WATER;All;0
-0x040a;TEMPLE_WATER;Compass Room 3;OOT Water Temple Pot Compass Room 3;pot;0;0;TEMPLE_WATER;All;0
-0x0606;TEMPLE_WATER;Before Dark Link 1;OOT Water Temple Pot Before Dark Link 1;pot;0;0;TEMPLE_WATER;All;0
-0x0607;TEMPLE_WATER;Before Dark Link 2;OOT Water Temple Pot Before Dark Link 2;pot;0;0;TEMPLE_WATER;All;0
-0x0e0b;TEMPLE_WATER;Blocks Room 1;OOT Water Temple Pot Blocks Room 1;pot;0;0;TEMPLE_WATER;All;0
-0x0e0c;TEMPLE_WATER;Blocks Room 2;OOT Water Temple Pot Blocks Room 2;pot;0;0;TEMPLE_WATER;All;0
-0x1001;TEMPLE_WATER;Boss Key Room 1;OOT Water Temple Pot Boss Key Room 1;pot;0;0;TEMPLE_WATER;All;0
-0x1002;TEMPLE_WATER;Boss Key Room 2;OOT Water Temple Pot Boss Key Room 2;pot;0;0;TEMPLE_WATER;All;0
-0x1107;TEMPLE_WATER;Ruto Room 1;OOT Water Temple Pot Ruto Room 1;pot;0;0;TEMPLE_WATER;All;0
-0x1108;TEMPLE_WATER;Ruto Room 2;OOT Water Temple Pot Ruto Room 2;pot;0;0;TEMPLE_WATER;All;0
-0x1403;TEMPLE_WATER;Corridor 1;OOT Water Temple Pot Corridor 1;pot;0;0;TEMPLE_WATER;All;0
-0x1404;TEMPLE_WATER;Corridor 2;OOT Water Temple Pot Corridor 2;pot;0;0;TEMPLE_WATER;All;0
-0x150d;TEMPLE_WATER;River 1;OOT Water Temple Pot River 1;pot;0;0;TEMPLE_WATER;All;0
-0x150e;TEMPLE_WATER;River 2;OOT Water Temple Pot River 2;pot;0;0;TEMPLE_WATER;All;0
-0x0150b;TEMPLE_WATER;Heart 1;OOT Water Temple Heart 1;heart;0;0;TEMPLE_WATER;All;0
-0x0150c;TEMPLE_WATER;Heart 2;OOT Water Temple Heart 2;heart;0;0;TEMPLE_WATER;All;0
-0x0150f;TEMPLE_WATER;Heart 3;OOT Water Temple Heart 3;heart;0;0;TEMPLE_WATER;All;0
-0x01510;TEMPLE_WATER;Heart 4;OOT Water Temple Heart 4;heart;0;0;TEMPLE_WATER;All;0
+0x06;TEMPLE_WATER;Under Center;OOT Water Temple Under Center;chest;651;458;TEMPLE_WATER;All;8
+0x09;TEMPLE_WATER;Compass;OOT Water Temple Compass;chest;194;217;TEMPLE_WATER;All;7
+0x07;TEMPLE_WATER;Longshot;OOT Water Temple Longshot;chest;154;174;TEMPLE_WATER;All;5
+0x0a;TEMPLE_WATER;Dragon;OOT Water Temple Dragon Chest;chest;746;519;TEMPLE_WATER;All;5
+0x05;TEMPLE_WATER;Boss Key;OOT Water Temple Boss Key Chest;chest;775;390;TEMPLE_WATER;All;3
+0x00;TEMPLE_WATER;Bombable Wall;OOT Water Temple Bombable Chest;chest;300;274;TEMPLE_WATER;All;2
+0x01;TEMPLE_WATER;Shell;OOT Water Temple Shell Chest;chest;275;416;TEMPLE_WATER;All;2
+0x02;TEMPLE_WATER;Map;OOT Water Temple Map;chest;238;153;TEMPLE_WATER;All;2
+0x08;TEMPLE_WATER;Corridor;OOT Water Temple Corridor Chest;chest;588;541;TEMPLE_WATER;All;0
+0x03;TEMPLE_WATER;River;OOT Water Temple River Chest;chest;675;320;TEMPLE_WATER;All;5
+0x34;TEMPLE_WATER;River;OOT Water Temple GS River;gs;433;300;TEMPLE_WATER;All;5
+0x32;TEMPLE_WATER;Center;OOT Water Temple GS Center;gs;233;43;TEMPLE_WATER;All;8
+0x31;TEMPLE_WATER;Large Pit;OOT Water Temple GS Large Pit;gs;503;204;TEMPLE_WATER;All;1
+0x33;TEMPLE_WATER;Waterfalls;OOT Water Temple GS Waterfalls;gs;657;194;TEMPLE_WATER;All;3
+0x30;TEMPLE_WATER;Cage;OOT Water Temple GS Cage;gs;47;261;TEMPLE_WATER;All;0
+0x0017;TEMPLE_WATER;Main Room - Near Block 1;OOT Water Temple Pot Main Room Near Block 1;pot;664;342;TEMPLE_WATER;All;0
+0x0018;TEMPLE_WATER;Main Room - Near Block 2;OOT Water Temple Pot Main Room Near Block 2;pot;669;337;TEMPLE_WATER;All;0
+0x0019;TEMPLE_WATER;Main Room - Near Boss 1;OOT Water Temple Pot Main Room Near Boss 1;pot;662;159;TEMPLE_WATER;All;0
+0x001a;TEMPLE_WATER;Main Room - Near Boss 2;OOT Water Temple Pot Main Room Near Boss 2;pot;686;164;TEMPLE_WATER;All;0
+0x0309;TEMPLE_WATER;Skull Cage 1;OOT Water Temple Pot Skull Cage 1;pot;33;284;TEMPLE_WATER;All;0
+0x030a;TEMPLE_WATER;Skull Cage 2;OOT Water Temple Pot Skull Cage 2;pot;43;281;TEMPLE_WATER;All;0
+0x030d;TEMPLE_WATER;Skull Cage 3;OOT Water Temple Pot Skull Cage 3;pot;63;275;TEMPLE_WATER;All;0
+0x030e;TEMPLE_WATER;Skull Cage 4;OOT Water Temple Pot Skull Cage 4;pot;72;272;TEMPLE_WATER;All;0
+0x0408;TEMPLE_WATER;Compass Room 1;OOT Water Temple Pot Compass Room 1;pot;473;220;TEMPLE_WATER;All;7
+0x0409;TEMPLE_WATER;Compass Room 2;OOT Water Temple Pot Compass Room 2;pot;447;216;TEMPLE_WATER;All;7
+0x040a;TEMPLE_WATER;Compass Room 3;OOT Water Temple Pot Compass Room 3;pot;421;213;TEMPLE_WATER;All;7
+0x0606;TEMPLE_WATER;Before Dark Link 1;OOT Water Temple Pot Before Dark Link 1;pot;483;128;TEMPLE_WATER;All;6
+0x0607;TEMPLE_WATER;Before Dark Link 2;OOT Water Temple Pot Before Dark Link 2;pot;523;128;TEMPLE_WATER;All;6
+0x0e0b;TEMPLE_WATER;Blocks Room 1;OOT Water Temple Pot Blocks Room 1;pot;457;518;TEMPLE_WATER;All;4
+0x0e0c;TEMPLE_WATER;Blocks Room 2;OOT Water Temple Pot Blocks Room 2;pot;486;494;TEMPLE_WATER;All;4
+0x1001;TEMPLE_WATER;Boss Key Room 1;OOT Water Temple Pot Boss Key Room 1;pot;866;438;TEMPLE_WATER;All;3
+0x1002;TEMPLE_WATER;Boss Key Room 2;OOT Water Temple Pot Boss Key Room 2;pot;736;447;TEMPLE_WATER;All;3
+0x1107;TEMPLE_WATER;Ruto Room 1;OOT Water Temple Pot Ruto Room 1;pot;397;453;TEMPLE_WATER;All;2
+0x1108;TEMPLE_WATER;Ruto Room 2;OOT Water Temple Pot Ruto Room 2;pot;416;412;TEMPLE_WATER;All;2
+0x1403;TEMPLE_WATER;Corridor 1;OOT Water Temple Pot Corridor 1;pot;548;566;TEMPLE_WATER;All;0
+0x1404;TEMPLE_WATER;Corridor 2;OOT Water Temple Pot Corridor 2;pot;569;578;TEMPLE_WATER;All;0
+0x150d;TEMPLE_WATER;River 1;OOT Water Temple Pot River 1;pot;625;414;TEMPLE_WATER;All;5
+0x150e;TEMPLE_WATER;River 2;OOT Water Temple Pot River 2;pot;637;412;TEMPLE_WATER;All;5
+0x0150b;TEMPLE_WATER;Heart 1;OOT Water Temple Heart 1;heart;525;505;TEMPLE_WATER;All;5
+0x0150c;TEMPLE_WATER;Heart 2;OOT Water Temple Heart 2;heart;524;439;TEMPLE_WATER;All;5
+0x0150f;TEMPLE_WATER;Heart 3;OOT Water Temple Heart 3;heart;428;357;TEMPLE_WATER;All;5
+0x01510;TEMPLE_WATER;Heart 4;OOT Water Temple Heart 4;heart;561;353;TEMPLE_WATER;All;5
 0x02;TEMPLE_WATER;Map;OOT MQ Water Temple Map Chest;chest;0;0;MQ_TEMPLE_WATER;All;0
 0x01;TEMPLE_WATER;Compass;OOT MQ Water Temple Compass Chest;chest;0;0;MQ_TEMPLE_WATER;All;0
 0x00;TEMPLE_WATER;Longshot;OOT MQ Water Temple Longshot Chest;chest;0;0;MQ_TEMPLE_WATER;All;0
