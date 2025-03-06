@@ -106,9 +106,5 @@ def perform_action(root_folder):
                     #coord, coordstr = detect_blobs(file, colorstr)
                     f.write(coordstr)
 
-perform_action("D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\OoT_AP")
-#image_path = "D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\OoT_AP\\Kokiri_Forest\\AP_KIA_House.png"  # Chemin de l'image
-#coordinates = find_points(image_path, "Pot")
-#coordinates = find_points(image_path, "Cow")
-#coordinates = detect_blobs(image_path, "Pot")
-#coordinates = detect_blobs(image_path, "Cow")
+#perform_action("D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\OoT_AP")
+perform_action("D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\MM_AP")

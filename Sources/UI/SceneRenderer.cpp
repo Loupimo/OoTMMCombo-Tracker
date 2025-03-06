@@ -145,11 +145,11 @@ void SceneItemTree::ItemFound(ObjectInfo* Object, const ItemInfo* Item)
         Object->Item = Item;
         Object->Status = ObjectState::Collected;
         SceneObjects* currScenes = GetGameSceneObjects(this->Scene->GameID);
-
-        for (size_t i = 0; i < currScenes->NumOfObjs; i++)
+        
+        for (size_t i = 0; i < currScenes[Object->RenderScene].NumOfObjs; i++)
         {
             ObjectInfo* currObj = &currScenes[Object->RenderScene].Objects[i];
-            if (currObj->ObjectID == Object->ObjectID && currObj->Type == Object->Type)
+            if (currObj->ObjectID == Object->ObjectID && currObj->Type == Object->Type && currObj->Scene == Object->Scene)
             {
                 Object = currObj;
                 break;

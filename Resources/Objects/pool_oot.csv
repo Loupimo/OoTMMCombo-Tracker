@@ -148,13 +148,13 @@ SHEIK_FIRE;DEATH_MOUNTAIN_CRATER;Bolero of Fire;OOT Death Mountain Crater Sheik 
 0x810f;DEATH_MOUNTAIN_CRATER;Pot 3;OOT Death Mountain Crater Pot 3;pot;721;365;DEATH_MOUNTAIN_CRATER;All;0
 0x8110;DEATH_MOUNTAIN_CRATER;Pot 4;OOT Death Mountain Crater Pot 4;pot;713;364;DEATH_MOUNTAIN_CRATER;All;0
 0x00101;DEATH_MOUNTAIN_CRATER;Child 1;OOT Death Mountain Crater Rupee Child 1;rupee;371;494;DEATH_MOUNTAIN_CRATER;Child;0
-0x00102;DEATH_MOUNTAIN_CRATER;Child 2;OOT Death Mountain Crater Rupee Child 2;rupee;308;424;DEATH_MOUNTAIN_CRATER;Child;0
-0x00103;DEATH_MOUNTAIN_CRATER;Child 3;OOT Death Mountain Crater Rupee Child 3;rupee;314;419;DEATH_MOUNTAIN_CRATER;Child;0
-0x00104;DEATH_MOUNTAIN_CRATER;Child 4;OOT Death Mountain Crater Rupee Child 4;rupee;301;420;DEATH_MOUNTAIN_CRATER;Child;0
-0x00105;DEATH_MOUNTAIN_CRATER;Child 5;OOT Death Mountain Crater Rupee Child 5;rupee;308;413;DEATH_MOUNTAIN_CRATER;Child;0
-0x00106;DEATH_MOUNTAIN_CRATER;Child 6;OOT Death Mountain Crater Rupee Child 6;rupee;317;410;DEATH_MOUNTAIN_CRATER;Child;0
-0x00107;DEATH_MOUNTAIN_CRATER;Child 7;OOT Death Mountain Crater Rupee Child 7;rupee;300;410;DEATH_MOUNTAIN_CRATER;Child;0
-0x00108;DEATH_MOUNTAIN_CRATER;Child 8;OOT Death Mountain Crater Rupee Child 8;rupee;307;404;DEATH_MOUNTAIN_CRATER;Child;0
+0x00102;DEATH_MOUNTAIN_CRATER;Child 2;OOT Death Mountain Crater Rupee Child 2;rupee;308;413;DEATH_MOUNTAIN_CRATER;Child;0
+0x00103;DEATH_MOUNTAIN_CRATER;Child 3;OOT Death Mountain Crater Rupee Child 3;rupee;308;424;DEATH_MOUNTAIN_CRATER;Child;0
+0x00104;DEATH_MOUNTAIN_CRATER;Child 4;OOT Death Mountain Crater Rupee Child 4;rupee;308;404;DEATH_MOUNTAIN_CRATER;Child;0
+0x00105;DEATH_MOUNTAIN_CRATER;Child 5;OOT Death Mountain Crater Rupee Child 5;rupee;300;410;DEATH_MOUNTAIN_CRATER;Child;0
+0x00106;DEATH_MOUNTAIN_CRATER;Child 6;OOT Death Mountain Crater Rupee Child 6;rupee;301;420;DEATH_MOUNTAIN_CRATER;Child;0
+0x00107;DEATH_MOUNTAIN_CRATER;Child 7;OOT Death Mountain Crater Rupee Child 7;rupee;314;420;DEATH_MOUNTAIN_CRATER;Child;0
+0x00108;DEATH_MOUNTAIN_CRATER;Child 8;OOT Death Mountain Crater Rupee Child 8;rupee;315;410;DEATH_MOUNTAIN_CRATER;Child;0
 0x08112;DEATH_MOUNTAIN_CRATER;Adult 1;OOT Death Mountain Crater Rupee Adult 1;rupee;310;332;DEATH_MOUNTAIN_CRATER;Adult;0
 0x18112;DEATH_MOUNTAIN_CRATER;Adult 2;OOT Death Mountain Crater Rupee Adult 2;rupee;316;327;DEATH_MOUNTAIN_CRATER;Adult;0
 0x28112;DEATH_MOUNTAIN_CRATER;Adult 3;OOT Death Mountain Crater Rupee Adult 3;rupee;303;3328;DEATH_MOUNTAIN_CRATER;Adult;0
@@ -309,8 +309,8 @@ SHEIK_SPIRIT;DESERT_COLOSSUS;Requiem of Spirit;OOT Desert Colossus Song Spirit;n
 0x00013;DESERT_COLOSSUS;Oasis 1;OOT Desert Colossus Wonder Item Oasis 1;wonder;284;59;DESERT_COLOSSUS;All;0
 0x00015;DESERT_COLOSSUS;Oasis 2;OOT Desert Colossus Wonder Item Oasis 2;wonder;289;84;DESERT_COLOSSUS;All;0
 0x00016;DESERT_COLOSSUS;Oasis - Child;OOT Desert Colossus Wonder Item Oasis Child;wonder;372;50;DESERT_COLOSSUS;Child;0
-0x00014;DESERT_COLOSSUS;Fountain 1;OOT Desert Colossus Wonder Item Fountain 1;wonder;353;601;DESERT_COLOSSUS;All;0
-0x00017;DESERT_COLOSSUS;Fountain 2;OOT Desert Colossus Wonder Item Fountain 2;wonder;391;582;DESERT_COLOSSUS;All;0
+0x00014;DESERT_COLOSSUS;Fountain 1;OOT Desert Colossus Wonder Item Fountain 1;wonder;391;582;DESERT_COLOSSUS;All;0
+0x00017;DESERT_COLOSSUS;Fountain 2;OOT Desert Colossus Wonder Item Fountain 2;wonder;353;601;DESERT_COLOSSUS;All;0
 0x0b;DESERT_COLOSSUS;Silver Gauntlets;OOT Spirit Temple Silver Gauntlets;chest;734;127;DESERT_COLOSSUS;All;0
 0x09;DESERT_COLOSSUS;Mirror Shield;OOT Spirit Temple Mirror Shield;chest;786;222;DESERT_COLOSSUS;All;0
 0x08;DODONGO_CAVERN;Map;OOT Dodongo Cavern Map Chest;chest;410;297;DODONGO_CAVERN;All;0
@@ -318,7 +318,7 @@ SHEIK_SPIRIT;DESERT_COLOSSUS;Requiem of Spirit;OOT Desert Colossus Song Spirit;n
 0x06;DODONGO_CAVERN;Bomb Bag - Side;OOT Dodongo Cavern Bomb Bag Side Chest;chest;147;277;DODONGO_CAVERN;All;5
 0x04;DODONGO_CAVERN;Bomb Bag;OOT Dodongo Cavern Bomb Bag Chest;chest;524;183;DODONGO_CAVERN;All;5
 0x0a;DODONGO_CAVERN;Bridge;OOT Dodongo Cavern Bridge Chest;chest;557;176;DODONGO_CAVERN;All;0
-0x1f;DODONGO_CAVERN;Lobby;OOT Dodongo Cavern Lobby Scrub;scrub;812;471;DODONGO_CAVERN;All;0
+0x1f;DODONGO_CAVERN;Lobby;OOT Dodongo Cavern Lobby Scrub;scrub;274;304;DODONGO_CAVERN;All;0
 0x1d;DODONGO_CAVERN;Blue Side Room;OOT Dodongo Cavern Green Side Room Scrub;scrub;781;230;DODONGO_CAVERN;All;4
 0x1e;DODONGO_CAVERN;Bomb Bag Side Room - Left;OOT Dodongo Cavern Bomb Bag Side Room Left Scrub;scrub;817;227;DODONGO_CAVERN;All;5
 0x1c;DODONGO_CAVERN;Bomb Bag Side Room - Right;OOT Dodongo Cavern Bomb Bag Side Room Right Scrub;scrub;828;380;DODONGO_CAVERN;All;5
@@ -331,30 +331,30 @@ SHEIK_SPIRIT;DESERT_COLOSSUS;Requiem of Spirit;OOT Desert Colossus Song Spirit;n
 0x010d;DODONGO_CAVERN;Right Corridor 2;OOT Dodongo Cavern Pot Right Corridor Pot 2;pot;221;244;DODONGO_CAVERN;All;1
 0x010f;DODONGO_CAVERN;Right Corridor 3;OOT Dodongo Cavern Pot Right Corridor Pot 3;pot;473;234;DODONGO_CAVERN;All;1
 0x0110;DODONGO_CAVERN;Right Corridor 4;OOT Dodongo Cavern Pot Right Corridor Pot 4;pot;488;234;DODONGO_CAVERN;All;1
-0x0111;DODONGO_CAVERN;Right Corridor 5;OOT Dodongo Cavern Pot Right Corridor Pot 5;pot;769;134;DODONGO_CAVERN;All;1
-0x0112;DODONGO_CAVERN;Right Corridor 6;OOT Dodongo Cavern Pot Right Corridor Pot 6;pot;735;125;DODONGO_CAVERN;All;1
-0x0217;DODONGO_CAVERN;Stairs 1;OOT Dodongo Cavern Pot Stairs Pot 1;pot;109;254;DODONGO_CAVERN;All;2
-0x0218;DODONGO_CAVERN;Stairs 2;OOT Dodongo Cavern Pot Stairs Pot 2;pot;92;261;DODONGO_CAVERN;All;2
+0x0111;DODONGO_CAVERN;Right Corridor 5;OOT Dodongo Cavern Pot Right Corridor Pot 5;pot;735;125;DODONGO_CAVERN;All;1
+0x0112;DODONGO_CAVERN;Right Corridor 6;OOT Dodongo Cavern Pot Right Corridor Pot 6;pot;769;134;DODONGO_CAVERN;All;1
+0x0217;DODONGO_CAVERN;Stairs 1;OOT Dodongo Cavern Pot Stairs Pot 1;pot;92;261;DODONGO_CAVERN;All;2
+0x0218;DODONGO_CAVERN;Stairs 2;OOT Dodongo Cavern Pot Stairs Pot 2;pot;109;254;DODONGO_CAVERN;All;2
 0x0219;DODONGO_CAVERN;Stairs 3;OOT Dodongo Cavern Pot Stairs Pot 3;pot;336;161;DODONGO_CAVERN;All;2
 0x021a;DODONGO_CAVERN;Stairs 4;OOT Dodongo Cavern Pot Stairs Pot 4;pot;347;158;DODONGO_CAVERN;All;2
-0x0308;DODONGO_CAVERN;Miniboss 1;OOT Dodongo Cavern Pot Miniboss 1;pot;672;253;DODONGO_CAVERN;All;3
-0x0309;DODONGO_CAVERN;Miniboss 2;OOT Dodongo Cavern Pot Miniboss 2;pot;663;250;DODONGO_CAVERN;All;3
+0x0308;DODONGO_CAVERN;Miniboss 1;OOT Dodongo Cavern Pot Miniboss 1;pot;663;250;DODONGO_CAVERN;All;3
+0x0309;DODONGO_CAVERN;Miniboss 2;OOT Dodongo Cavern Pot Miniboss 2;pot;672;253;DODONGO_CAVERN;All;3
 0x030a;DODONGO_CAVERN;Miniboss 3;OOT Dodongo Cavern Pot Miniboss 3;pot;840;396;DODONGO_CAVERN;All;3
 0x030b;DODONGO_CAVERN;Miniboss 4;OOT Dodongo Cavern Pot Miniboss 4;pot;838;408;DODONGO_CAVERN;All;3
 0x040a;DODONGO_CAVERN;Blue Room 1;OOT Dodongo Cavern Pot Green Room Pot 1;pot;455;327;DODONGO_CAVERN;All;4
-0x040b;DODONGO_CAVERN;Blue Room 2;OOT Dodongo Cavern Pot Green Room Pot 2;pot;454;403;DODONGO_CAVERN;All;4
+0x040b;DODONGO_CAVERN;Blue Room 2;OOT Dodongo Cavern Pot Green Room Pot 2;pot;236;394;DODONGO_CAVERN;All;4
 0x040c;DODONGO_CAVERN;Blue Room 3;OOT Dodongo Cavern Pot Green Room Pot 3;pot;401;299;DODONGO_CAVERN;All;4
-0x040d;DODONGO_CAVERN;Blue Room 4;OOT Dodongo Cavern Pot Green Room Pot 4;pot;236;394;DODONGO_CAVERN;All;4
-0x0706;DODONGO_CAVERN;Skull 1;OOT Dodongo Cavern Pot Skull 1;pot;513;374;DODONGO_CAVERN;All;6
-0x0707;DODONGO_CAVERN;Skull 2;OOT Dodongo Cavern Pot Skull 2;pot;513;358;DODONGO_CAVERN;All;6
-0x0806;DODONGO_CAVERN;Skull 3;OOT Dodongo Cavern Pot Skull 3;pot;548;153;DODONGO_CAVERN;All;6
-0x0807;DODONGO_CAVERN;Skull 4;OOT Dodongo Cavern Pot Skull 4;pot;543;143;DODONGO_CAVERN;All;6
+0x040d;DODONGO_CAVERN;Blue Room 4;OOT Dodongo Cavern Pot Green Room Pot 4;pot;454;403;DODONGO_CAVERN;All;4
+0x0706;DODONGO_CAVERN;Skull 1;OOT Dodongo Cavern Pot Skull 1;pot;543;143;DODONGO_CAVERN;All;6
+0x0707;DODONGO_CAVERN;Skull 2;OOT Dodongo Cavern Pot Skull 2;pot;548;153;DODONGO_CAVERN;All;6
+0x0806;DODONGO_CAVERN;Skull 3;OOT Dodongo Cavern Pot Skull 3;pot;513;358;DODONGO_CAVERN;All;6
+0x0807;DODONGO_CAVERN;Skull 4;OOT Dodongo Cavern Pot Skull 4;pot;513;374;DODONGO_CAVERN;All;6
 0x090e;DODONGO_CAVERN;Bomb Bag Room 1;OOT Dodongo Cavern Pot Bomb Bag Room 1;pot;265;219;DODONGO_CAVERN;All;5
 0x090f;DODONGO_CAVERN;Bomb Bag Room 2;OOT Dodongo Cavern Pot Bomb Bag Room 2;pot;289;291;DODONGO_CAVERN;All;5
 0x0a06;DODONGO_CAVERN;Before Miniboss 1;OOT Dodongo Cavern Pot Room Before Miniboss 1;pot;687;215;DODONGO_CAVERN;All;7
 0x0a07;DODONGO_CAVERN;Before Miniboss 2;OOT Dodongo Cavern Pot Room Before Miniboss 2;pot;535;458;DODONGO_CAVERN;All;7
-0x0c05;DODONGO_CAVERN;After Miniboss 1;OOT Dodongo Cavern Pot Room After Miniboss 1;pot;398;157;DODONGO_CAVERN;All;7
-0x0c06;DODONGO_CAVERN;After Miniboss 2;OOT Dodongo Cavern Pot Room After Miniboss 2;pot;234;463;DODONGO_CAVERN;All;7
+0x0c05;DODONGO_CAVERN;After Miniboss 1;OOT Dodongo Cavern Pot Room After Miniboss 1;pot;234;463;DODONGO_CAVERN;All;7
+0x0c06;DODONGO_CAVERN;After Miniboss 2;OOT Dodongo Cavern Pot Room After Miniboss 2;pot;398;157;DODONGO_CAVERN;All;7
 0x00002;DODONGO_CAVERN;Lobby;OOT Dodongo Cavern Grass Lobby;grass;303;181;DODONGO_CAVERN;All;0
 0x00700;DODONGO_CAVERN;Pre-Boss;OOT Dodongo Cavern Grass Pre-Boss;grass;235;94;DODONGO_CAVERN;All;6
 0x00900;DODONGO_CAVERN;Bomb Bag Room;OOT Dodongo Cavern Grass Bomb Bag Room;grass;552;255;DODONGO_CAVERN;All;5
@@ -548,27 +548,27 @@ GERUDO_ARCHERY_1;GERUDO_FORTRESS;Big Quiver;OOT Gerudo Fortress Archery Reward 1
 GERUDO_ARCHERY_2;GERUDO_FORTRESS;Biggest Quiver;OOT Gerudo Fortress Archery Reward 2;npc;668;154;GERUDO_FORTRESS;All;0
 0xa9;GERUDO_FORTRESS;Scarecrow Wall;OOT Gerudo Fortress GS Wall;gs;495;362;GERUDO_FORTRESS;All;0
 0xa8;GERUDO_FORTRESS;Target;OOT Gerudo Fortress GS Target;gs;177;161;GERUDO_FORTRESS;All;0
-0x0800c;GERUDO_FORTRESS;Main 1;OOT Gerudo Fortress Crate Main 1;crate;473;529;GERUDO_FORTRESS;All;0
-0x0800d;GERUDO_FORTRESS;Main 2;OOT Gerudo Fortress Crate Main 2;crate;473;521;GERUDO_FORTRESS;All;0
+0x0800c;GERUDO_FORTRESS;Main 1;OOT Gerudo Fortress Crate Main 1;crate;473;530;GERUDO_FORTRESS;All;0
+0x0800d;GERUDO_FORTRESS;Main 2;OOT Gerudo Fortress Crate Main 2;crate;473;515;GERUDO_FORTRESS;All;0
 0x0800e;GERUDO_FORTRESS;Main 3;OOT Gerudo Fortress Crate Main 3;crate;507;487;GERUDO_FORTRESS;All;0
 0x0800f;GERUDO_FORTRESS;Main 4;OOT Gerudo Fortress Crate Main 4;crate;515;487;GERUDO_FORTRESS;All;0
 0x08010;GERUDO_FORTRESS;Main 5;OOT Gerudo Fortress Crate Main 5;crate;530;486;GERUDO_FORTRESS;All;0
 0x08011;GERUDO_FORTRESS;Main 6;OOT Gerudo Fortress Crate Main 6;crate;538;486;GERUDO_FORTRESS;All;0
-0x08012;GERUDO_FORTRESS;Jail - Top;OOT Gerudo Fortress Crate Jail Top;crate;390;524;GERUDO_FORTRESS;All;0
+0x01;GERUDO_FORTRESS;Jail - Top;OOT Gerudo Fortress Crate Jail Top;collectible;390;524;GERUDO_FORTRESS;All;0
 0x00103;GERUDO_FORTRESS;Archery - Child;OOT Gerudo Fortress Crate Archery Child;crate;195;158;GERUDO_FORTRESS;Child;0
-0x00100;GERUDO_FORTRESS;Archery 1;OOT Gerudo Fortress Crate Archery 01;crate;546;102;GERUDO_FORTRESS;All;0
-0x00101;GERUDO_FORTRESS;Archery 2;OOT Gerudo Fortress Crate Archery 02;crate;521;101;GERUDO_FORTRESS;All;0
-0x00102;GERUDO_FORTRESS;Archery 3;OOT Gerudo Fortress Crate Archery 03;crate;496;101;GERUDO_FORTRESS;All;0
-0x00104;GERUDO_FORTRESS;Archery 4;OOT Gerudo Fortress Crate Archery 04;crate;471;101;GERUDO_FORTRESS;All;0
-0x00105;GERUDO_FORTRESS;Archery 5;OOT Gerudo Fortress Crate Archery 05;crate;446;101;GERUDO_FORTRESS;All;0
-0x00106;GERUDO_FORTRESS;Archery 6;OOT Gerudo Fortress Crate Archery 06;crate;421;101;GERUDO_FORTRESS;All;0
+0x00100;GERUDO_FORTRESS;Archery 1;OOT Gerudo Fortress Crate Archery 01;crate;180;178;GERUDO_FORTRESS;All;0
+0x00101;GERUDO_FORTRESS;Archery 2;OOT Gerudo Fortress Crate Archery 02;crate;752;180;GERUDO_FORTRESS;All;0
+0x00102;GERUDO_FORTRESS;Archery 3;OOT Gerudo Fortress Crate Archery 03;crate;752;171;GERUDO_FORTRESS;All;0
+0x00104;GERUDO_FORTRESS;Archery 4;OOT Gerudo Fortress Crate Archery 04;crate;195;163;GERUDO_FORTRESS;All;0
+0x00105;GERUDO_FORTRESS;Archery 5;OOT Gerudo Fortress Crate Archery 05;crate;681;138;GERUDO_FORTRESS;All;0
+0x00106;GERUDO_FORTRESS;Archery 6;OOT Gerudo Fortress Crate Archery 06;crate;681;166;GERUDO_FORTRESS;All;0
 0x00107;GERUDO_FORTRESS;Archery 7;OOT Gerudo Fortress Crate Archery 07;crate;396;101;GERUDO_FORTRESS;All;0
-0x00108;GERUDO_FORTRESS;Archery 8;OOT Gerudo Fortress Crate Archery 08;crate;752;180;GERUDO_FORTRESS;All;0
-0x00109;GERUDO_FORTRESS;Archery 9;OOT Gerudo Fortress Crate Archery 09;crate;180;178;GERUDO_FORTRESS;All;0
-0x0010a;GERUDO_FORTRESS;Archery 10;OOT Gerudo Fortress Crate Archery 10;crate;752;171;GERUDO_FORTRESS;All;0
-0x0010b;GERUDO_FORTRESS;Archery 11;OOT Gerudo Fortress Crate Archery 11;crate;195;163;GERUDO_FORTRESS;All;0
-0x0010c;GERUDO_FORTRESS;Archery 12;OOT Gerudo Fortress Crate Archery 12;crate;681;146;GERUDO_FORTRESS;All;0
-0x0010d;GERUDO_FORTRESS;Archery 13;OOT Gerudo Fortress Crate Archery 13;crate;681;138;GERUDO_FORTRESS;All;0
+0x00108;GERUDO_FORTRESS;Archery 8;OOT Gerudo Fortress Crate Archery 08;crate;421;101;GERUDO_FORTRESS;All;0
+0x00109;GERUDO_FORTRESS;Archery 9;OOT Gerudo Fortress Crate Archery 09;crate;446;101;GERUDO_FORTRESS;All;0
+0x0010a;GERUDO_FORTRESS;Archery 10;OOT Gerudo Fortress Crate Archery 10;crate;471;101;GERUDO_FORTRESS;All;0
+0x0010b;GERUDO_FORTRESS;Archery 11;OOT Gerudo Fortress Crate Archery 11;crate;496;101;GERUDO_FORTRESS;All;0
+0x0010c;GERUDO_FORTRESS;Archery 12;OOT Gerudo Fortress Crate Archery 12;crate;521;101;GERUDO_FORTRESS;All;0
+0x0010d;GERUDO_FORTRESS;Archery 13;OOT Gerudo Fortress Crate Archery 13;crate;546;102;GERUDO_FORTRESS;All;0
 0x00007;GERUDO_FORTRESS;Sign - Archery;OOT Gerudo Fortress Wonder Item Sign Archery;wonder;655;415;GERUDO_FORTRESS;All;0
 0x00008;GERUDO_FORTRESS;Sign - Entrance;OOT Gerudo Fortress Wonder Item Sign Entrance;wonder;606;595;GERUDO_FORTRESS;All;0
 0x07;GERUDO_TRAINING_GROUND;Entrance 1;OOT Gerudo Training Grounds Entrance 1;chest;409;256;GERUDO_TRAINING_GROUND;All;0
@@ -667,8 +667,8 @@ TRADE_BROKEN_GORON_SWORD;GERUDO_VALLEY;Broken Goron Sword;OOT Gerudo Valley Brok
 0x00024;GERUDO_VALLEY;Child - Unreachable 4;OOT Gerudo Valley Crate Child Unreachable 4;crate;348;366;GERUDO_VALLEY;Child;0
 0x00025;GERUDO_VALLEY;Child - Bottom;OOT Gerudo Valley Crate Child Bottom;crate;421;369;GERUDO_VALLEY;Child;0
 0x00026;GERUDO_VALLEY;Ledge;OOT Gerudo Valley Crate Ledge;crate;422;560;GERUDO_VALLEY;All;0
-0x08028;GERUDO_VALLEY;Lower Waterfall;OOT Gerudo Valley Wonder Item Lower;wonder;473;62;GERUDO_VALLEY;All;0
-0x08029;GERUDO_VALLEY;Upper Waterfall;OOT Gerudo Valley Wonder Item Upper;wonder;466;325;GERUDO_VALLEY;All;0
+0x08028;GERUDO_VALLEY;Lower Waterfall;OOT Gerudo Valley Wonder Item Lower;wonder;473;62;GERUDO_VALLEY;Adult;0
+0x08029;GERUDO_VALLEY;Upper Waterfall;OOT Gerudo Valley Wonder Item Upper;wonder;466;325;GERUDO_VALLEY;Adult;0
 DARUNIA_BRACELET;GORON_CITY;Darunia's Dance;OOT Darunia;npc;709;360;GORON_CITY;Child;0
 0x02;GORON_CITY;Maze - Center 1;OOT Goron City Maze Center 1;chest;726;71;GORON_CITY;All;0
 0x01;GORON_CITY;Maze - Center 2;OOT Goron City Maze Center 2;chest;728;93;GORON_CITY;All;0
@@ -683,11 +683,11 @@ MEDIGORON;GORON_CITY;Giant Knife;OOT Goron City Medigoron Giant Knife;npc;202;18
 0x0106;GORON_CITY;Darunia Room 2;OOT Goron City Pot Darunia Room 2;pot;710;392;GORON_CITY;All;0
 0x0107;GORON_CITY;Darunia Room 3;OOT Goron City Pot Darunia Room 3;pot;733;392;GORON_CITY;All;0
 0x0203;GORON_CITY;Medigoron Room;OOT Goron City Pot Medigoron Room;pot;228;203;GORON_CITY;All;0
-0x0329;GORON_CITY;Stairs 1;OOT Goron City Pot Stairs 1;pot;448;104;GORON_CITY;All;0
+0x0329;GORON_CITY;Stairs 1;OOT Goron City Pot Stairs 1;pot;309;311;GORON_CITY;All;0
 0x032a;GORON_CITY;Stairs 2;OOT Goron City Pot Stairs 2;pot;457;102;GORON_CITY;All;0
 0x032b;GORON_CITY;Stairs 3;OOT Goron City Pot Stairs 3;pot;458;112;GORON_CITY;All;0
-0x032c;GORON_CITY;Stairs 4;OOT Goron City Pot Stairs 4;pot;317;295;GORON_CITY;All;0
-0x032d;GORON_CITY;Stairs 5;OOT Goron City Pot Stairs 5;pot;309;311;GORON_CITY;All;0
+0x032c;GORON_CITY;Stairs 4;OOT Goron City Pot Stairs 4;pot;448;104;GORON_CITY;All;0
+0x032d;GORON_CITY;Stairs 5;OOT Goron City Pot Stairs 5;pot;317;295;GORON_CITY;All;0
 0x18;GORON_CITY;Item 1;OOT Goron Shop Item 1;shop;669;288;GORON_SHOP;All;0
 0x19;GORON_CITY;Item 2;OOT Goron Shop Item 2;shop;582;288;GORON_SHOP;All;0
 0x1a;GORON_CITY;Item 3;OOT Goron Shop Item 3;shop;330;288;GORON_SHOP;All;0
@@ -955,9 +955,9 @@ POE_COLLECTOR;GUARD_HOUSE;Bottle;OOT Market Pot House Big Poes;npc;139;533;GUARD
 0x0002;HAUNTED_WASTELAND;Pot 3;OOT Haunted Wasteland Pot 3;pot;171;229;HAUNTED_WASTELAND;All;0
 0x0003;HAUNTED_WASTELAND;Pot 4;OOT Haunted Wasteland Pot 4;pot;177;232;HAUNTED_WASTELAND;All;0
 0x00125;HAUNTED_WASTELAND;Entrance;OOT Haunted Wasteland Crate Entrance;crate;866;211;HAUNTED_WASTELAND;All;0
-0x00122;HAUNTED_WASTELAND;After Pit 1;OOT Haunted Wasteland Crate After Pit 1;crate;785;236;HAUNTED_WASTELAND;All;0
-0x00123;HAUNTED_WASTELAND;After Pit 2;OOT Haunted Wasteland Crate After Pit 2;crate;794;255;HAUNTED_WASTELAND;All;0
-0x00124;HAUNTED_WASTELAND;After Pit 3;OOT Haunted Wasteland Crate After Pit 3;crate;806;275;HAUNTED_WASTELAND;All;0
+0x00122;HAUNTED_WASTELAND;After Pit 1;OOT Haunted Wasteland Crate After Pit 1;crate;794;255;HAUNTED_WASTELAND;All;0
+0x00123;HAUNTED_WASTELAND;After Pit 2;OOT Haunted Wasteland Crate After Pit 2;crate;806;275;HAUNTED_WASTELAND;All;0
+0x00124;HAUNTED_WASTELAND;After Pit 3;OOT Haunted Wasteland Crate After Pit 3;crate;785;236;HAUNTED_WASTELAND;All;0
 0x00121;HAUNTED_WASTELAND;Poe Chase;OOT Haunted Wasteland Crate Deep;crate;159;520;HAUNTED_WASTELAND;All;0
 GS_10;HOUSE_OF_SKULLTULA;10 Tokens;OOT Skulltula House 10 Tokens;npc;657;431;HOUSE_OF_SKULLTULA;All;0
 GS_20;HOUSE_OF_SKULLTULA;20 Tokens;OOT Skulltula House 20 Tokens;npc;287;434;HOUSE_OF_SKULLTULA;All;0
@@ -971,8 +971,8 @@ MALON_EGG;HYRULE_CASTLE;Malon Egg;OOT Malon Egg;npc;131;243;HYRULE_CASTLE;All;0
 0x0009;HYRULE_CASTLE;Pot 2;OOT Hyrule Castle Pot 2;pot;160;435;HYRULE_CASTLE;All;0
 0x0002e;HYRULE_CASTLE;Grass 1;OOT Hyrule Castle Grass 1;grass;600;350;HYRULE_CASTLE;All;0
 0x0002f;HYRULE_CASTLE;Grass 2;OOT Hyrule Castle Grass 2;grass;610;362;HYRULE_CASTLE;All;0
-0x0000c;HYRULE_CASTLE;Torch 1;OOT Hyrule Castle Wonder Item Torch 1;wonder;659;91;HYRULE_CASTLE;All;0
-0x0000d;HYRULE_CASTLE;Torch 2;OOT Hyrule Castle Wonder Item Torch 2;wonder;672;146;HYRULE_CASTLE;All;0
+0x0000c;HYRULE_CASTLE;Torch 1;OOT Hyrule Castle Wonder Item Torch 1;wonder;672;146;HYRULE_CASTLE;All;0
+0x0000d;HYRULE_CASTLE;Torch 2;OOT Hyrule Castle Wonder Item Torch 2;wonder;659;91;HYRULE_CASTLE;All;0
 0x00020;HYRULE_CASTLE;Moat 1;OOT Hyrule Castle Wonder Item Moat 01;wonder;615;70;HYRULE_CASTLE;All;0
 0x00021;HYRULE_CASTLE;Moat 2;OOT Hyrule Castle Wonder Item Moat 02;wonder;614;109;HYRULE_CASTLE;All;0
 0x00022;HYRULE_CASTLE;Moat 3;OOT Hyrule Castle Wonder Item Moat 03;wonder;627;138;HYRULE_CASTLE;All;0
@@ -1241,17 +1241,17 @@ SHEIK_WATER;ICE_CAVERN;Serenade of Water;OOT MQ Ice Cavern Sheik Song;npc;0;0;MQ
 0x18;INSIDE_JABU_JABU;Bottom - Lower;OOT Jabu-Jabu GS Bottom Lower;gs;568;272;INSIDE_JABU_JABU;All;2
 0x19;INSIDE_JABU_JABU;Bottom - Upper;OOT Jabu-Jabu GS Bottom Upper;gs;430;249;INSIDE_JABU_JABU;All;2
 0x1a;INSIDE_JABU_JABU;Near Boss;OOT Jabu-Jabu GS Near Boss;gs;367;379;INSIDE_JABU_JABU;All;6
-0x0606;INSIDE_JABU_JABU;Big Octo Room 1;OOT Jabu-Jabu Pot Big Octo Room 1;pot;563;169;INSIDE_JABU_JABU;All;4
-0x0607;INSIDE_JABU_JABU;Big Octo Room 2;OOT Jabu-Jabu Pot Big Octo Room 2;pot;582;174;INSIDE_JABU_JABU;All;4
+0x0606;INSIDE_JABU_JABU;Big Octo Room 1;OOT Jabu-Jabu Pot Big Octo Room 1;pot;582;174;INSIDE_JABU_JABU;All;4
+0x0607;INSIDE_JABU_JABU;Big Octo Room 2;OOT Jabu-Jabu Pot Big Octo Room 2;pot;563;169;INSIDE_JABU_JABU;All;4
 0x0608;INSIDE_JABU_JABU;Big Octo Room 3;OOT Jabu-Jabu Pot Big Octo Room 3;pot;600;178;INSIDE_JABU_JABU;All;4
-0x0d03;INSIDE_JABU_JABU;Muscle Block Room 1;OOT Jabu-Jabu Pot Muscle Block Room 1;pot;298;447;INSIDE_JABU_JABU;All;5
-0x0d04;INSIDE_JABU_JABU;Muscle Block Room 2;OOT Jabu-Jabu Pot Muscle Block Room 2;pot;272;435;INSIDE_JABU_JABU;All;5
-0x0d05;INSIDE_JABU_JABU;Muscle Block Room 3;OOT Jabu-Jabu Pot Muscle Block Room 3;pot;296;428;INSIDE_JABU_JABU;All;5
-0x0d06;INSIDE_JABU_JABU;Muscle Block Room 4;OOT Jabu-Jabu Pot Muscle Block Room 4;pot;320;421;INSIDE_JABU_JABU;All;5
-0x0d07;INSIDE_JABU_JABU;Muscle Block Room 5;OOT Jabu-Jabu Pot Muscle Block Room 5;pot;287;411;INSIDE_JABU_JABU;All;5
-0x0e07;INSIDE_JABU_JABU;Alcove 1;OOT Jabu-Jabu Pot Alcove 1;pot;447;234;INSIDE_JABU_JABU;All;3
-0x0e08;INSIDE_JABU_JABU;Alcove 2;OOT Jabu-Jabu Pot Alcove 2;pot;476;234;INSIDE_JABU_JABU;All;3
-0x0e09;INSIDE_JABU_JABU;Alcove 3;OOT Jabu-Jabu Pot Alcove 3;pot;457;243;INSIDE_JABU_JABU;All;3
+0x0d03;INSIDE_JABU_JABU;Muscle Block Room 1;OOT Jabu-Jabu Pot Muscle Block Room 1;pot;296;428;INSIDE_JABU_JABU;All;5
+0x0d04;INSIDE_JABU_JABU;Muscle Block Room 2;OOT Jabu-Jabu Pot Muscle Block Room 2;pot;320;421;INSIDE_JABU_JABU;All;5
+0x0d05;INSIDE_JABU_JABU;Muscle Block Room 3;OOT Jabu-Jabu Pot Muscle Block Room 3;pot;287;411;INSIDE_JABU_JABU;All;5
+0x0d06;INSIDE_JABU_JABU;Muscle Block Room 4;OOT Jabu-Jabu Pot Muscle Block Room 4;pot;298;447;INSIDE_JABU_JABU;All;5
+0x0d07;INSIDE_JABU_JABU;Muscle Block Room 5;OOT Jabu-Jabu Pot Muscle Block Room 5;pot;272;435;INSIDE_JABU_JABU;All;5
+0x0e07;INSIDE_JABU_JABU;Alcove 1;OOT Jabu-Jabu Pot Alcove 1;pot;476;234;INSIDE_JABU_JABU;All;3
+0x0e08;INSIDE_JABU_JABU;Alcove 2;OOT Jabu-Jabu Pot Alcove 2;pot;457;243;INSIDE_JABU_JABU;All;3
+0x0e09;INSIDE_JABU_JABU;Alcove 3;OOT Jabu-Jabu Pot Alcove 3;pot;447;234;INSIDE_JABU_JABU;All;3
 0x00106;INSIDE_JABU_JABU;Small Crate 1;OOT Jabu-Jabu Small Crate 1;crate;489;246;INSIDE_JABU_JABU;All;0
 0x00107;INSIDE_JABU_JABU;Small Crate 2;OOT Jabu-Jabu Small Crate 2;crate;503;247;INSIDE_JABU_JABU;All;0
 0x03;INSIDE_JABU_JABU;Map;OOT MQ Jabu-Jabu Map Chest;chest;0;0;MQ_INSIDE_JABU_JABU;All;0
@@ -1464,14 +1464,14 @@ MASK_SELL_KEATON;KAKARIKO_VILLAGE;Keaton Mask;OOT Kakariko Sell Keaton Mask;npc;
 0x00003;KOKIRI_SARIA;Heart 2;OOT Saria's House Heart 2;heart;420;256;KOKIRI_SARIA;All;0
 0x00004;KOKIRI_SARIA;Heart 3;OOT Saria's House Heart 3;heart;523;255;KOKIRI_SARIA;All;0
 0x00005;KOKIRI_SARIA;Heart 4;OOT Saria's House Heart 4;heart;524;376;KOKIRI_SARIA;All;0
-0x00;KOKIRI_SHOP;Item 1;OOT Kokiri Shop Item 1;shop;623;386;KOKIRI_SHOP;All;0
-0x01;KOKIRI_SHOP;Item 2;OOT Kokiri Shop Item 2;shop;573;386;KOKIRI_SHOP;All;0
-0x02;KOKIRI_SHOP;Item 3;OOT Kokiri Shop Item 3;shop;387;386;KOKIRI_SHOP;All;0
-0x03;KOKIRI_SHOP;Item 4;OOT Kokiri Shop Item 4;shop;337;386;KOKIRI_SHOP;All;0
-0x04;KOKIRI_SHOP;Item 5;OOT Kokiri Shop Item 5;shop;623;334;KOKIRI_SHOP;All;0
-0x05;KOKIRI_SHOP;Item 6;OOT Kokiri Shop Item 6;shop;573;334;KOKIRI_SHOP;All;0
-0x06;KOKIRI_SHOP;Item 7;OOT Kokiri Shop Item 7;shop;387;334;KOKIRI_SHOP;All;0
-0x07;KOKIRI_SHOP;Item 8;OOT Kokiri Shop Item 8;shop;337;334;KOKIRI_SHOP;All;0
+0x00;KOKIRI_SHOP;Item 1;OOT Kokiri Shop Item 1;shop;337;334;KOKIRI_SHOP;All;0
+0x01;KOKIRI_SHOP;Item 2;OOT Kokiri Shop Item 2;shop;387;334;KOKIRI_SHOP;All;0
+0x02;KOKIRI_SHOP;Item 3;OOT Kokiri Shop Item 3;shop;337;386;KOKIRI_SHOP;All;0
+0x03;KOKIRI_SHOP;Item 4;OOT Kokiri Shop Item 4;shop;387;386;KOKIRI_SHOP;All;0
+0x04;KOKIRI_SHOP;Item 5;OOT Kokiri Shop Item 5;shop;573;334;KOKIRI_SHOP;All;0
+0x05;KOKIRI_SHOP;Item 6;OOT Kokiri Shop Item 6;shop;623;386;KOKIRI_SHOP;All;0
+0x06;KOKIRI_SHOP;Item 7;OOT Kokiri Shop Item 7;shop;623;334;KOKIRI_SHOP;All;0
+0x07;KOKIRI_SHOP;Item 8;OOT Kokiri Shop Item 8;shop;573;386;KOKIRI_SHOP;All;0
 0x00004;KOKIRI_SHOP;Behind Shop;OOT Kokiri Shop Wonder Item;wonder;661;456;KOKIRI_SHOP;All;0
 0x0002;KOKIRI_TWINS;Pot 1;OOT Twins House Pot 1;pot;663;558;KOKIRI_TWINS;All;0
 0x0003;KOKIRI_TWINS;Pot 2;OOT Twins House Pot 2;pot;660;394;KOKIRI_TWINS;All;0
@@ -1483,12 +1483,12 @@ TRADE_EYE_DROPS;LABORATORY;Eye Drops;OOT Laboratory Eye Drops;npc;592;449;LABORA
 0x00003;LABORATORY;Rupee 3;OOT Laboratory Rupee 3;rupee;636;634;LABORATORY;All;0
 0x1f;LAIR_BARINADE;Heart Container;OOT Jabu-Jabu Boss Container;collectible;431;276;INSIDE_JABU_JABU;All;7
 BLUE_WARP_BARINADE;LAIR_BARINADE;Zora's Sapphire;OOT Jabu-Jabu Boss;npc;471;311;INSIDE_JABU_JABU;All;7
-0x0101;LAIR_BARINADE;Boss Pot 1;OOT Jabu-Jabu Boss Pot 1;pot;772;400;INSIDE_JABU_JABU;All;7
-0x0102;LAIR_BARINADE;Boss Pot 2;OOT Jabu-Jabu Boss Pot 2;pot;510;525;INSIDE_JABU_JABU;All;7
-0x0103;LAIR_BARINADE;Boss Pot 3;OOT Jabu-Jabu Boss Pot 3;pot;242;483;INSIDE_JABU_JABU;All;7
-0x0104;LAIR_BARINADE;Boss Pot 4;OOT Jabu-Jabu Boss Pot 4;pot;170;309;INSIDE_JABU_JABU;All;7
-0x0105;LAIR_BARINADE;Boss Pot 5;OOT Jabu-Jabu Boss Pot 5;pot;256;227;INSIDE_JABU_JABU;All;7
-0x0106;LAIR_BARINADE;Boss Pot 6;OOT Jabu-Jabu Boss Pot 6;pot;445;182;INSIDE_JABU_JABU;All;7
+0x0101;LAIR_BARINADE;Boss Pot 1;OOT Jabu-Jabu Boss Pot 1;pot;170;309;INSIDE_JABU_JABU;All;7
+0x0102;LAIR_BARINADE;Boss Pot 2;OOT Jabu-Jabu Boss Pot 2;pot;242;483;INSIDE_JABU_JABU;All;7
+0x0103;LAIR_BARINADE;Boss Pot 3;OOT Jabu-Jabu Boss Pot 3;pot;510;525;INSIDE_JABU_JABU;All;7
+0x0104;LAIR_BARINADE;Boss Pot 4;OOT Jabu-Jabu Boss Pot 4;pot;256;227;INSIDE_JABU_JABU;All;7
+0x0105;LAIR_BARINADE;Boss Pot 5;OOT Jabu-Jabu Boss Pot 5;pot;445;182;INSIDE_JABU_JABU;All;7
+0x0106;LAIR_BARINADE;Boss Pot 6;OOT Jabu-Jabu Boss Pot 6;pot;772;400;INSIDE_JABU_JABU;All;7
 0x1f;LAIR_BONGO_BONGO;Heart Container;OOT Shadow Temple Boss HC;collectible;491;316;TEMPLE_SHADOW;All;8
 BLUE_WARP_BONGO_BONGO;LAIR_BONGO_BONGO;Shadow Medaillon;OOT Shadow Temple Boss;npc;491;385;TEMPLE_SHADOW;All;8
 0x1f;LAIR_GOHMA;Heart Container;OOT Deku Tree Boss Container;collectible;614;592;DEKU_TREE;All;10
@@ -1582,13 +1582,13 @@ MALON_SONG;LON_LON_RANCH;Epona's Song;OOT Lon Lon Ranch Malon Song;npc;472;310;L
 0x03;LON_LON_RANCH;Right;OOT Lon Lon Ranch Stables Cow Right;cow;604;531;STABLE;All;0
 0x04;LON_LON_RANCH;Front;OOT Lon Lon Ranch Silo Cow Front;cow;510;405;SILO;All;0
 0x05;LON_LON_RANCH;Back;OOT Lon Lon Ranch Silo Cow Back;cow;554;384;SILO;All;0
-0x0003;LON_LON_RANCH;Pot 1;OOT Lon Lon Ranch Pot 1;pot;800;410;LON_LON_RANCH;All;0
-0x0004;LON_LON_RANCH;Pot 2;OOT Lon Lon Ranch Pot 2;pot;795;410;LON_LON_RANCH;All;0
-0x0005;LON_LON_RANCH;Pot 3;OOT Lon Lon Ranch Pot 3;pot;791;410;LON_LON_RANCH;All;0
-0x0006;LON_LON_RANCH;Pot 4;OOT Lon Lon Ranch Pot 4;pot;785;410;LON_LON_RANCH;All;0
-0x0007;LON_LON_RANCH;Pot 5;OOT Lon Lon Ranch Pot 5;pot;351;429;LON_LON_RANCH;All;0
-0x0008;LON_LON_RANCH;Pot 6;OOT Lon Lon Ranch Pot 6;pot;359;424;LON_LON_RANCH;All;0
-0x0009;LON_LON_RANCH;Pot 7;OOT Lon Lon Ranch Pot 7;pot;352;421;LON_LON_RANCH;All;0
+0x0003;LON_LON_RANCH;Pot 1;OOT Lon Lon Ranch Pot 1;pot;815;410;LON_LON_RANCH;All;0
+0x0004;LON_LON_RANCH;Pot 2;OOT Lon Lon Ranch Pot 2;pot;780;410;LON_LON_RANCH;All;0
+0x0005;LON_LON_RANCH;Pot 3;OOT Lon Lon Ranch Pot 3;pot;825;410;LON_LON_RANCH;All;0
+0x0006;LON_LON_RANCH;Pot 4;OOT Lon Lon Ranch Pot 4;pot;795;410;LON_LON_RANCH;All;0
+0x0007;LON_LON_RANCH;Pot 5;OOT Lon Lon Ranch Pot 5;pot;370;424;LON_LON_RANCH;All;0
+0x0008;LON_LON_RANCH;Pot 6;OOT Lon Lon Ranch Pot 6;pot;351;435;LON_LON_RANCH;All;0
+0x0009;LON_LON_RANCH;Pot 7;OOT Lon Lon Ranch Pot 7;pot;352;420;LON_LON_RANCH;All;0
 0x00018;LON_LON_RANCH;Crate;OOT Lon Lon Ranch Crate;crate;691;465;LON_LON_RANCH;All;0
 0x08018;LON_LON_RANCH;Hurdles 1;OOT Lon Lon Ranch Wonder Item 1;wonder;508;351;LON_LON_RANCH;Adult;0
 0x08019;LON_LON_RANCH;Hurdles 2;OOT Lon Lon Ranch Wonder Item 2;wonder;421;255;LON_LON_RANCH;Adult;0
@@ -1661,9 +1661,9 @@ TRADE_POACHER_SAW;LOST_WOODS;Poacher's Saw;OOT Lost Woods Poacher's Saw;npc;301;
 0x2f;MARKET_POTION_SHOP;Item 8;OOT Market Potion Shop Item 8;shop;360;297;MARKET_POTION_SHOP;All;0
 0x01;RANCH_HOUSE_SILO;Heart Piece;OOT Lon Lon Ranch Silo HP;collectible;751;262;SILO;All;0
 TALON_BOTTLE;RANCH_HOUSE_SILO;Bottle;OOT Lon Lon Ranch Talon Bottle;npc;485;402;RANCH_HOUSE_SILO;Child;0
-0x0200;RANCH_HOUSE_SILO;Pot 1;OOT Lon Lon Ranch Talon House Pot 1;pot;359;421;RANCH_HOUSE_SILO;All;0
-0x0201;RANCH_HOUSE_SILO;Pot 2;OOT Lon Lon Ranch Talon House Pot 2;pot;359;439;RANCH_HOUSE_SILO;All;0
-0x0202;RANCH_HOUSE_SILO;Pot 3;OOT Lon Lon Ranch Talon House Pot 3;pot;137;263;RANCH_HOUSE_SILO;All;0
+0x0200;RANCH_HOUSE_SILO;Pot 1;OOT Lon Lon Ranch Talon House Pot 1;pot;359;439;RANCH_HOUSE_SILO;All;0
+0x0201;RANCH_HOUSE_SILO;Pot 2;OOT Lon Lon Ranch Talon House Pot 2;pot;359;421;RANCH_HOUSE_SILO;All;0
+0x0202;RANCH_HOUSE_SILO;Pot 3;OOT Lon Lon Ranch Talon House Pot 3;pot;358;355;RANCH_HOUSE_SILO;All;0
 SARIA_SONG;SACRED_FOREST_MEADOW;Saria's Song;OOT Saria's Song;npc;263;253;SACRED_FOREST_MEADOW;Child;0
 SHEIK_FOREST;SACRED_FOREST_MEADOW;Minuet of Forest;OOT Sacred Meadow Sheik Song;npc;399;391;SACRED_FOREST_MEADOW;Adult;0
 0x73;SACRED_FOREST_MEADOW;Night Adult;OOT Sacred Meadow GS Night Adult;gs;1001;90;SACRED_FOREST_MEADOW;Adult;0
@@ -1697,10 +1697,10 @@ SHOOTING_GAME_ADULT;SHOOTING_GALLERY;Reward;OOT Shooting Gallery Adult;npc;616;3
 0x011a;TEMPLE_FIRE;Lava Room 1;OOT Fire Temple Pot Lava Room 1;pot;287;247;TEMPLE_FIRE;All;0
 0x011b;TEMPLE_FIRE;Lava Room 2;OOT Fire Temple Pot Lava Room 2;pot;299;246;TEMPLE_FIRE;All;0
 0x011c;TEMPLE_FIRE;Lava Room 3;OOT Fire Temple Pot Lava Room 3;pot;310;245;TEMPLE_FIRE;All;0
-0x0208;TEMPLE_FIRE;Pre-Boss Room 1;OOT Fire Temple Pot Pre-Boss Room 1;pot;750;204;TEMPLE_FIRE;All;9
-0x0209;TEMPLE_FIRE;Pre-Boss Room 2;OOT Fire Temple Pot Pre-Boss Room 2;pot;763;200;TEMPLE_FIRE;All;9
-0x020a;TEMPLE_FIRE;Pre-Boss Room 3;OOT Fire Temple Pot Pre-Boss Room 3;pot;737;197;TEMPLE_FIRE;All;9
-0x020b;TEMPLE_FIRE;Pre-Boss Room 4;OOT Fire Temple Pot Pre-Boss Room 4;pot;750;194;TEMPLE_FIRE;All;9
+0x0208;TEMPLE_FIRE;Pre-Boss Room 1;OOT Fire Temple Pot Pre-Boss Room 1;pot;750;194;TEMPLE_FIRE;All;9
+0x0209;TEMPLE_FIRE;Pre-Boss Room 2;OOT Fire Temple Pot Pre-Boss Room 2;pot;737;197;TEMPLE_FIRE;All;9
+0x020a;TEMPLE_FIRE;Pre-Boss Room 3;OOT Fire Temple Pot Pre-Boss Room 3;pot;763;200;TEMPLE_FIRE;All;9
+0x020b;TEMPLE_FIRE;Pre-Boss Room 4;OOT Fire Temple Pot Pre-Boss Room 4;pot;750;204;TEMPLE_FIRE;All;9
 0x0a33;TEMPLE_FIRE;Before Miniboss 1;OOT Fire Temple Pot Before Miniboss 1;pot;657;338;TEMPLE_FIRE;All;6
 0x0a34;TEMPLE_FIRE;Before Miniboss 2;OOT Fire Temple Pot Before Miniboss 2;pot;670;342;TEMPLE_FIRE;All;6
 0x0a35;TEMPLE_FIRE;Before Miniboss 3;OOT Fire Temple Pot Before Miniboss 3;pot;775;468;TEMPLE_FIRE;All;6
@@ -1824,7 +1824,7 @@ SHOOTING_GAME_ADULT;SHOOTING_GALLERY;Reward;OOT Shooting Gallery Adult;npc;616;3
 0x0c;TEMPLE_FOREST;Bow;OOT Forest Temple Bow;chest;475;310;TEMPLE_FOREST;All;5
 0x0f;TEMPLE_FOREST;Compass;OOT Forest Temple Compass;chest;185;489;TEMPLE_FOREST;All;10
 0x07;TEMPLE_FOREST;Checkerboard;OOT Forest Temple Checkerboard;chest;269;445;TEMPLE_FOREST;All;13
-0x0e;TEMPLE_FOREST;Boss Key;OOT Forest Temple Boss Key;chest;551;443;TEMPLE_FOREST;All;7
+0x0e;TEMPLE_FOREST;Boss Key;OOT Forest Temple Boss Key;chest;547;511;TEMPLE_FOREST;All;7
 0x02;TEMPLE_FOREST;Floormaster;OOT Forest Temple Floormaster;chest;453;547;TEMPLE_FOREST;All;14
 0x0b;TEMPLE_FOREST;Antichamber;OOT Forest Temple Antichamber;chest;214;410;TEMPLE_FOREST;All;15
 0x21;TEMPLE_FOREST;Entrance;OOT Forest Temple GS Entrance;gs;137;140;TEMPLE_FOREST;All;0
@@ -1832,18 +1832,18 @@ SHOOTING_GAME_ADULT;SHOOTING_GALLERY;Reward;OOT Shooting Gallery Adult;npc;616;3
 0x22;TEMPLE_FOREST;Garden - West;OOT Forest Temple GS Garden West;gs;495;225;TEMPLE_FOREST;All;2
 0x20;TEMPLE_FOREST;Garden - East;OOT Forest Temple GS Garden East;gs;492;46;TEMPLE_FOREST;All;3
 0x24;TEMPLE_FOREST;Antichamber;OOT Forest Temple GS Antichamber;gs;241;312;TEMPLE_FOREST;All;15
-0x020b;TEMPLE_FOREST;Main Room 1;OOT Forest Temple Pot Main Room 1;pot;338;504;TEMPLE_FOREST;All;1
+0x020b;TEMPLE_FOREST;Main Room 1;OOT Forest Temple Pot Main Room 1;pot;631;488;TEMPLE_FOREST;All;1
 0x020c;TEMPLE_FOREST;Main Room 2;OOT Forest Temple Pot Main Room 2;pot;326;491;TEMPLE_FOREST;All;1
-0x020d;TEMPLE_FOREST;Main Room 3;OOT Forest Temple Pot Main Room 3;pot;312;476;TEMPLE_FOREST;All;1
-0x020e;TEMPLE_FOREST;Main Room 4;OOT Forest Temple Pot Main Room 4;pot;619;501;TEMPLE_FOREST;All;1
-0x020f;TEMPLE_FOREST;Main Room 5;OOT Forest Temple Pot Main Room 5;pot;631;488;TEMPLE_FOREST;All;1
-0x0210;TEMPLE_FOREST;Main Room 6;OOT Forest Temple Pot Main Room 6;pot;643;474;TEMPLE_FOREST;All;1
-0x0605;TEMPLE_FOREST;Stalfos - Lower 1;OOT Forest Temple Pot Miniboss Lower 1;pot;480;464;TEMPLE_FOREST;All;5
-0x0606;TEMPLE_FOREST;Stalfos - Lower 2;OOT Forest Temple Pot Miniboss Lower 2;pot;455;464;TEMPLE_FOREST;All;5
-0x0607;TEMPLE_FOREST;Stalfos - Upper 1;OOT Forest Temple Pot Miniboss Upper 1;pot;535;346;TEMPLE_FOREST;All;5
-0x0608;TEMPLE_FOREST;Stalfos - Upper 2;OOT Forest Temple Pot Miniboss Upper 2;pot;511;288;TEMPLE_FOREST;All;5
-0x0609;TEMPLE_FOREST;Stalfos - Upper 3;OOT Forest Temple Pot Miniboss Upper 3;pot;398;346;TEMPLE_FOREST;All;5
-0x060a;TEMPLE_FOREST;Stalfos - Upper 4;OOT Forest Temple Pot Miniboss Upper 4;pot;425;288;TEMPLE_FOREST;All;5
+0x020d;TEMPLE_FOREST;Main Room 3;OOT Forest Temple Pot Main Room 3;pot;643;474;TEMPLE_FOREST;All;1
+0x020e;TEMPLE_FOREST;Main Room 4;OOT Forest Temple Pot Main Room 4;pot;312;476;TEMPLE_FOREST;All;1
+0x020f;TEMPLE_FOREST;Main Room 5;OOT Forest Temple Pot Main Room 5;pot;619;501;TEMPLE_FOREST;All;1
+0x0210;TEMPLE_FOREST;Main Room 6;OOT Forest Temple Pot Main Room 6;pot;338;504;TEMPLE_FOREST;All;1
+0x0605;TEMPLE_FOREST;Stalfos - Lower 1;OOT Forest Temple Pot Miniboss Lower 1;pot;455;464;TEMPLE_FOREST;All;5
+0x0606;TEMPLE_FOREST;Stalfos - Lower 2;OOT Forest Temple Pot Miniboss Lower 2;pot;480;464;TEMPLE_FOREST;All;5
+0x0607;TEMPLE_FOREST;Stalfos - Upper 1;OOT Forest Temple Pot Miniboss Upper 1;pot;511;288;TEMPLE_FOREST;All;5
+0x0608;TEMPLE_FOREST;Stalfos - Upper 2;OOT Forest Temple Pot Miniboss Upper 2;pot;398;346;TEMPLE_FOREST;All;5
+0x0609;TEMPLE_FOREST;Stalfos - Upper 3;OOT Forest Temple Pot Miniboss Upper 3;pot;425;288;TEMPLE_FOREST;All;5
+0x060a;TEMPLE_FOREST;Stalfos - Upper 4;OOT Forest Temple Pot Miniboss Upper 4;pot;535;346;TEMPLE_FOREST;All;5
 0x0d05;TEMPLE_FOREST;Blue Poe 1;OOT Forest Temple Pot Blue Poe 1;pot;339;464;TEMPLE_FOREST;All;10
 0x0d06;TEMPLE_FOREST;Blue Poe 2;OOT Forest Temple Pot Blue Poe 2;pot;366;464;TEMPLE_FOREST;All;10
 0x0d07;TEMPLE_FOREST;Blue Poe 3;OOT Forest Temple Pot Blue Poe 3;pot;395;464;TEMPLE_FOREST;All;10
@@ -1851,10 +1851,10 @@ SHOOTING_GAME_ADULT;SHOOTING_GALLERY;Reward;OOT Shooting Gallery Adult;npc;616;3
 0x0e06;TEMPLE_FOREST;Rotating Room 2;OOT Forest Temple Pot Rotating Room 2;pot;739;594;TEMPLE_FOREST;All;12
 0x1006;TEMPLE_FOREST;Green Poe 1;OOT Forest Temple Pot Green Poe Pot 1;pot;529;294;TEMPLE_FOREST;All;11
 0x1007;TEMPLE_FOREST;Green Poe 2;OOT Forest Temple Pot Green Poe Pot 2;pot;558;294;TEMPLE_FOREST;All;11
-0x00809;TEMPLE_FOREST;Garden 1;OOT Forest Temple Heart Garden 1;heart;475;180;TEMPLE_FOREST;All;3
-0x0080a;TEMPLE_FOREST;Garden 2;OOT Forest Temple Heart Garden 2;heart;490;158;TEMPLE_FOREST;All;3
-0x00902;TEMPLE_FOREST;Well 1;OOT Forest Temple Heart Well 1;heart;431;124;TEMPLE_FOREST;All;4
-0x00903;TEMPLE_FOREST;Well 2;OOT Forest Temple Heart Well 2;heart;413;124;TEMPLE_FOREST;All;4
+0x00809;TEMPLE_FOREST;Garden 1;OOT Forest Temple Heart Garden 1;heart;490;158;TEMPLE_FOREST;All;3
+0x0080a;TEMPLE_FOREST;Garden 2;OOT Forest Temple Heart Garden 2;heart;475;180;TEMPLE_FOREST;All;3
+0x00902;TEMPLE_FOREST;Well 1;OOT Forest Temple Heart Well 1;heart;413;124;TEMPLE_FOREST;All;4
+0x00903;TEMPLE_FOREST;Well 2;OOT Forest Temple Heart Well 2;heart;431;124;TEMPLE_FOREST;All;4
 0x03;TEMPLE_FOREST;First Room;OOT MQ Forest Temple First Room Chest;chest;0;0;MQ_TEMPLE_FOREST;All;0
 0x00;TEMPLE_FOREST;Wolfos;OOT MQ Forest Temple Wolfos Chest;chest;0;0;MQ_TEMPLE_FOREST;All;0
 0x0e;TEMPLE_FOREST;Boss Key;OOT MQ Forest Temple Boss Key Chest;chest;0;0;MQ_TEMPLE_FOREST;All;0
@@ -2074,15 +2074,15 @@ ZELDA_LIGHT_ARROW;TEMPLE_OF_TIME;Light Arrows;OOT Temple of Time Light Arrows;np
 0x08;TEMPLE_SPIRIT;Child - First;OOT Spirit Temple Child First Chest;chest;291;183;TEMPLE_SPIRIT;All;1
 0x00;TEMPLE_SPIRIT;Child - Second;OOT Spirit Temple Child Second Chest;chest;702;229;TEMPLE_SPIRIT;All;1
 0x0c;TEMPLE_SPIRIT;Child - Climb 1;OOT Spirit Temple Child Climb 1;chest;346;358;TEMPLE_SPIRIT;All;2
-0x06;TEMPLE_SPIRIT;Child - Climb 2;OOT Spirit Temple Child Climb 2;chest;551;279;TEMPLE_SPIRIT;All;2
+0x06;TEMPLE_SPIRIT;Child - Climb 2;OOT Spirit Temple Child Climb 2;chest;551;352;TEMPLE_SPIRIT;All;2
 0x03;TEMPLE_SPIRIT;Map;OOT Spirit Temple Statue Base;chest;484;493;TEMPLE_SPIRIT;All;6
 0x02;TEMPLE_SPIRIT;Statue - Hands;OOT Spirit Temple Statue Hands;chest;278;366;TEMPLE_SPIRIT;All;6
 0x0f;TEMPLE_SPIRIT;Statue - Upper Right;OOT Spirit Temple Statue Upper Right;chest;808;235;TEMPLE_SPIRIT;All;6
 0x01;TEMPLE_SPIRIT;Sun Block Room - Torches;OOT Spirit Temple Sun Block Room Torches;chest;503;273;TEMPLE_SPIRIT;All;3
 0x07;TEMPLE_SPIRIT;Adult - Silver Rupees;OOT Spirit Temple Adult Silver Rupees;chest;590;118;TEMPLE_SPIRIT;All;4
 0x04;TEMPLE_SPIRIT;Adult - Zelda's Lullaby;OOT Spirit Temple Adult Lullaby;chest;193;260;TEMPLE_SPIRIT;All;4
-0x0d;TEMPLE_SPIRIT;Adult - Suns on Wall 1;OOT Spirit Temple Adult Suns on Wall 1;chest;423;330;TEMPLE_SPIRIT;All;5
-0x0e;TEMPLE_SPIRIT;Adult - Suns on Wall 2;OOT Spirit Temple Adult Suns on Wall 2;chest;347;330;TEMPLE_SPIRIT;All;5
+0x0d;TEMPLE_SPIRIT;Adult - Suns on Wall 1;OOT Spirit Temple Adult Suns on Wall 1;chest;347;330;TEMPLE_SPIRIT;All;5
+0x0e;TEMPLE_SPIRIT;Adult - Suns on Wall 2;OOT Spirit Temple Adult Suns on Wall 2;chest;423;330;TEMPLE_SPIRIT;All;5
 0x14;TEMPLE_SPIRIT;Adult - Invisible 1;OOT Spirit Temple Adult Invisible 1;chest;429;136;TEMPLE_SPIRIT;All;8
 0x15;TEMPLE_SPIRIT;Adult - Invisible 2;OOT Spirit Temple Adult Invisible 2;chest;478;136;TEMPLE_SPIRIT;All;8
 0x05;TEMPLE_SPIRIT;Adult - Late Sun on Wall;OOT Spirit Temple Adult Late Sun on Wall;chest;468;595;TEMPLE_SPIRIT;All;8
@@ -2112,13 +2112,13 @@ ZELDA_LIGHT_ARROW;TEMPLE_OF_TIME;Light Arrows;OOT Temple of Time Light Arrows;np
 0x000b;TEMPLE_SPIRIT;Lobby 2;OOT Spirit Temple Pot Lobby 2;pot;613;456;TEMPLE_SPIRIT;All;0
 0x040a;TEMPLE_SPIRIT;Child - Climb;OOT Spirit Temple Pot Child Climb;pot;634;592;TEMPLE_SPIRIT;All;2
 0x0517;TEMPLE_SPIRIT;Statue Room 1;OOT Spirit Temple Pot Statue Room 1;pot;169;499;TEMPLE_SPIRIT;All;6
-0x0518;TEMPLE_SPIRIT;Statue Room 2;OOT Spirit Temple Pot Statue Room 2;pot;204;499;TEMPLE_SPIRIT;All;6
-0x0519;TEMPLE_SPIRIT;Statue Room 3;OOT Spirit Temple Pot Statue Room 3;pot;762;502;TEMPLE_SPIRIT;All;6
-0x051a;TEMPLE_SPIRIT;Statue Room 4;OOT Spirit Temple Pot Statue Room 4;pot;793;502;TEMPLE_SPIRIT;All;6
-0x051b;TEMPLE_SPIRIT;Statue Room 5;OOT Spirit Temple Pot Statue Room 5;pot;352;349;TEMPLE_SPIRIT;All;7
-0x051c;TEMPLE_SPIRIT;Statue Room 6;OOT Spirit Temple Pot Statue Room 6;pot;239;350;TEMPLE_SPIRIT;All;7
-0x0907;TEMPLE_SPIRIT;Child - Hand Stairway 1;OOT Spirit Temple Pot Child Hand Stairway 1;pot;686;383;TEMPLE_SPIRIT;All;3
-0x0908;TEMPLE_SPIRIT;Child - Hand Stairway 2;OOT Spirit Temple Pot Child Hand Stairway 2;pot;702;447;TEMPLE_SPIRIT;All;3
+0x0518;TEMPLE_SPIRIT;Statue Room 2;OOT Spirit Temple Pot Statue Room 2;pot;184;514;TEMPLE_SPIRIT;All;6
+0x0519;TEMPLE_SPIRIT;Statue Room 3;OOT Spirit Temple Pot Statue Room 3;pot;204;499;TEMPLE_SPIRIT;All;6
+0x051a;TEMPLE_SPIRIT;Statue Room 4;OOT Spirit Temple Pot Statue Room 4;pot;762;502;TEMPLE_SPIRIT;All;6
+0x051b;TEMPLE_SPIRIT;Statue Room 5;OOT Spirit Temple Pot Statue Room 5;pot;779;519;TEMPLE_SPIRIT;All;6
+0x051c;TEMPLE_SPIRIT;Statue Room 6;OOT Spirit Temple Pot Statue Room 6;pot;793;502;TEMPLE_SPIRIT;All;6
+0x0907;TEMPLE_SPIRIT;Child - Hand Stairway 1;OOT Spirit Temple Pot Child Hand Stairway 1;pot;702;447;TEMPLE_SPIRIT;All;3
+0x0908;TEMPLE_SPIRIT;Child - Hand Stairway 2;OOT Spirit Temple Pot Child Hand Stairway 2;pot;686;383;TEMPLE_SPIRIT;All;3
 0x1005;TEMPLE_SPIRIT;Adult - Upper;OOT Spirit Temple Pot Adult Upper;pot;644;245;TEMPLE_SPIRIT;All;5
 0x1b04;TEMPLE_SPIRIT;Child - Anubis Room 1;OOT Spirit Temple Pot Child Anubis Room 1;pot;437;154;TEMPLE_SPIRIT;All;1
 0x1b05;TEMPLE_SPIRIT;Child - Anubis Room 2;OOT Spirit Temple Pot Child Anubis Room 2;pot;485;118;TEMPLE_SPIRIT;All;1
@@ -2432,44 +2432,44 @@ ZELDA_LIGHT_ARROW;TEMPLE_OF_TIME;Light Arrows;OOT Temple of Time Light Arrows;np
 0x0a;THIEVES_HIDEOUT;Small Key - Jail 3;OOT Gerudo Fortress Jail 3;collectible;560;240;THIEVES_HIDEOUT;All;0
 0x0e;THIEVES_HIDEOUT;Small Key - Jail 4;OOT Gerudo Fortress Jail 4;collectible;312;465;THIEVES_HIDEOUT;All;0
 GERUDO_CARD;THIEVES_HIDEOUT;Gerudo Member Card;OOT Gerudo Member Card;npc;312;487;THIEVES_HIDEOUT;All;0
-0x0004;THIEVES_HIDEOUT;Break Room 1;OOT Gerudo Fortress Pot Break Room 1;pot;381;588;THIEVES_HIDEOUT;All;0
-0x0005;THIEVES_HIDEOUT;Break Room 2;OOT Gerudo Fortress Pot Break Room 2;pot;376;581;THIEVES_HIDEOUT;All;0
-0x0206;THIEVES_HIDEOUT;Jail 1 - Pot 1;OOT Gerudo Fortress Pot Jail 1 1;pot;648;433;THIEVES_HIDEOUT;All;0
-0x0207;THIEVES_HIDEOUT;Jail 1 - Pot 2;OOT Gerudo Fortress Pot Jail 1 2;pot;641;441;THIEVES_HIDEOUT;All;0
+0x0004;THIEVES_HIDEOUT;Break Room 1;OOT Gerudo Fortress Pot Break Room 1;pot;376;581;THIEVES_HIDEOUT;All;0
+0x0005;THIEVES_HIDEOUT;Break Room 2;OOT Gerudo Fortress Pot Break Room 2;pot;381;588;THIEVES_HIDEOUT;All;0
+0x0206;THIEVES_HIDEOUT;Jail 1 - Pot 1;OOT Gerudo Fortress Pot Jail 1 1;pot;641;441;THIEVES_HIDEOUT;All;0
+0x0207;THIEVES_HIDEOUT;Jail 1 - Pot 2;OOT Gerudo Fortress Pot Jail 1 2;pot;648;433;THIEVES_HIDEOUT;All;0
 0x0208;THIEVES_HIDEOUT;Jail 1 - Pot 3;OOT Gerudo Fortress Pot Jail 1 3;pot;648;441;THIEVES_HIDEOUT;All;0
 0x0305;THIEVES_HIDEOUT;Kitchen 1;OOT Gerudo Fortress Pot Kitchen 1;pot;314;188;THIEVES_HIDEOUT;All;0
 0x0306;THIEVES_HIDEOUT;Kitchen 2;OOT Gerudo Fortress Pot Kitchen 2;pot;308;196;THIEVES_HIDEOUT;All;0
 0x0409;THIEVES_HIDEOUT;Jail 3 - Pot 1;OOT Gerudo Fortress Pot Jail 3 1;pot;563;351;THIEVES_HIDEOUT;All;0
 0x040a;THIEVES_HIDEOUT;Jail 3 - Pot 2;OOT Gerudo Fortress Pot Jail 3 2;pot;569;345;THIEVES_HIDEOUT;All;0
-0x0507;THIEVES_HIDEOUT;Jail 2 - Pot 1;OOT Gerudo Fortress Pot Jail 2 1;pot;478;86;THIEVES_HIDEOUT;All;0
-0x0508;THIEVES_HIDEOUT;Jail 2 - Pot 2;OOT Gerudo Fortress Pot Jail 2 2;pot;485;85;THIEVES_HIDEOUT;All;0
-0x0509;THIEVES_HIDEOUT;Jail 2 - Pot 3;OOT Gerudo Fortress Pot Jail 2 3;pot;479;80;THIEVES_HIDEOUT;All;0
-0x050a;THIEVES_HIDEOUT;Jail 2 - Pot 4;OOT Gerudo Fortress Pot Jail 2 4;pot;568;21;THIEVES_HIDEOUT;All;0
-0x050b;THIEVES_HIDEOUT;Jail 2 - Pot 5;OOT Gerudo Fortress Pot Jail 2 5;pot;536;20;THIEVES_HIDEOUT;All;0
-0x050c;THIEVES_HIDEOUT;Jail 2 - Pot 6;OOT Gerudo Fortress Pot Jail 2 6;pot;562;17;THIEVES_HIDEOUT;All;0
-0x050d;THIEVES_HIDEOUT;Jail 2 - Pot 7;OOT Gerudo Fortress Pot Jail 2 7;pot;542;17;THIEVES_HIDEOUT;All;0
-0x00006;THIEVES_HIDEOUT;Break Room 1;OOT Thieves Hideout Crate Break Room 1;crate;402;512;THIEVES_HIDEOUT;All;0
-0x00007;THIEVES_HIDEOUT;Break Room 2;OOT Thieves Hideout Crate Break Room 2;crate;388;536;THIEVES_HIDEOUT;All;0
-0x00008;THIEVES_HIDEOUT;Break Room 3;OOT Thieves Hideout Crate Break Room 3;crate;355;560;THIEVES_HIDEOUT;All;0
-0x00009;THIEVES_HIDEOUT;Break Room 4;OOT Thieves Hideout Crate Break Room 4;crate;355;568;THIEVES_HIDEOUT;All;0
+0x0507;THIEVES_HIDEOUT;Jail 2 - Pot 1;OOT Gerudo Fortress Pot Jail 2 1;pot;485;85;THIEVES_HIDEOUT;All;0
+0x0508;THIEVES_HIDEOUT;Jail 2 - Pot 2;OOT Gerudo Fortress Pot Jail 2 2;pot;479;80;THIEVES_HIDEOUT;All;0
+0x0509;THIEVES_HIDEOUT;Jail 2 - Pot 3;OOT Gerudo Fortress Pot Jail 2 3;pot;478;86;THIEVES_HIDEOUT;All;0
+0x050a;THIEVES_HIDEOUT;Jail 2 - Pot 4;OOT Gerudo Fortress Pot Jail 2 4;pot;536;20;THIEVES_HIDEOUT;All;0
+0x050b;THIEVES_HIDEOUT;Jail 2 - Pot 5;OOT Gerudo Fortress Pot Jail 2 5;pot;542;17;THIEVES_HIDEOUT;All;0
+0x050c;THIEVES_HIDEOUT;Jail 2 - Pot 6;OOT Gerudo Fortress Pot Jail 2 6;pot;568;21;THIEVES_HIDEOUT;All;0
+0x050d;THIEVES_HIDEOUT;Jail 2 - Pot 7;OOT Gerudo Fortress Pot Jail 2 7;pot;562;17;THIEVES_HIDEOUT;All;0
+0x00006;THIEVES_HIDEOUT;Break Room 1;OOT Thieves Hideout Crate Break Room 1;crate;355;568;THIEVES_HIDEOUT;All;0
+0x00007;THIEVES_HIDEOUT;Break Room 2;OOT Thieves Hideout Crate Break Room 2;crate;355;560;THIEVES_HIDEOUT;All;0
+0x00008;THIEVES_HIDEOUT;Break Room 3;OOT Thieves Hideout Crate Break Room 3;crate;388;536;THIEVES_HIDEOUT;All;0
+0x00009;THIEVES_HIDEOUT;Break Room 4;OOT Thieves Hideout Crate Break Room 4;crate;402;512;THIEVES_HIDEOUT;All;0
 0x0010a;THIEVES_HIDEOUT;Jail 4;OOT Thieves Hideout Crate Jail 3;crate;425;382;THIEVES_HIDEOUT;All;0
-0x0020a;THIEVES_HIDEOUT;Jail 1;OOT Thieves Hideout Crate Jail 1;crate;646;413;THIEVES_HIDEOUT;All;0
+0x0020a;THIEVES_HIDEOUT;Jail 1;OOT Thieves Hideout Crate Jail 1;crate;646;383;THIEVES_HIDEOUT;All;0
 0x00307;THIEVES_HIDEOUT;Kitchen;OOT Thieves Hideout Crate Kitchen;crate;356;168;THIEVES_HIDEOUT;All;0
-0x0030a;THIEVES_HIDEOUT;Kitchen Corridor 1;OOT Thieves Hideout Crate Kitchen Corridor 1;crate;418;252;THIEVES_HIDEOUT;All;0
-0x0030b;THIEVES_HIDEOUT;Kitchen Corridor 2;OOT Thieves Hideout Crate Kitchen Corridor 2;crate;418;243;THIEVES_HIDEOUT;All;0
-0x0030c;THIEVES_HIDEOUT;Kitchen Corridor 3;OOT Thieves Hideout Crate Kitchen Corridor 3;crate;403;198;THIEVES_HIDEOUT;All;0
-0x0030d;THIEVES_HIDEOUT;Kitchen Corridor 4;OOT Thieves Hideout Crate Kitchen Corridor 4;crate;403;189;THIEVES_HIDEOUT;All;0
-0x0050f;THIEVES_HIDEOUT;Jail 2 - Crate 1;OOT Thieves Hideout Crate Jail 2 1;crate;578;86;THIEVES_HIDEOUT;All;0
-0x00510;THIEVES_HIDEOUT;Jail 2 - Crate 2;OOT Thieves Hideout Crate Jail 2 2;crate;570;86;THIEVES_HIDEOUT;All;0
+0x0030a;THIEVES_HIDEOUT;Kitchen Corridor 1;OOT Thieves Hideout Crate Kitchen Corridor 1;crate;403;189;THIEVES_HIDEOUT;All;0
+0x0030b;THIEVES_HIDEOUT;Kitchen Corridor 2;OOT Thieves Hideout Crate Kitchen Corridor 2;crate;403;198;THIEVES_HIDEOUT;All;0
+0x0030c;THIEVES_HIDEOUT;Kitchen Corridor 3;OOT Thieves Hideout Crate Kitchen Corridor 3;crate;418;252;THIEVES_HIDEOUT;All;0
+0x0030d;THIEVES_HIDEOUT;Kitchen Corridor 4;OOT Thieves Hideout Crate Kitchen Corridor 4;crate;418;243;THIEVES_HIDEOUT;All;0
+0x0050f;THIEVES_HIDEOUT;Jail 2 - Crate 1;OOT Thieves Hideout Crate Jail 2 1;crate;563;86;THIEVES_HIDEOUT;All;0
+0x00510;THIEVES_HIDEOUT;Jail 2 - Crate 2;OOT Thieves Hideout Crate Jail 2 2;crate;578;86;THIEVES_HIDEOUT;All;0
 0x00309;THIEVES_HIDEOUT;Kitchen;OOT Gerudo Fortress Kitchen Big Fairy;fairy_spot;285;168;THIEVES_HIDEOUT;All;0
 0x00202;THIEVES_HIDEOUT;Jail 1 - Skull 1;OOT Gerudo Fortress Wonder Item Jail 1 1;wonder;623;381;THIEVES_HIDEOUT;All;0
 0x00203;THIEVES_HIDEOUT;Jail 1 - Skull 2;OOT Gerudo Fortress Wonder Item Jail 1 2;wonder;624;443;THIEVES_HIDEOUT;All;0
 0x00502;THIEVES_HIDEOUT;Jail 2 - Skull 1;OOT Gerudo Fortress Wonder Item Jail 2 1;wonder;583;55;THIEVES_HIDEOUT;All;0
 0x00503;THIEVES_HIDEOUT;Jail 2 - Skull 2;OOT Gerudo Fortress Wonder Item Jail 2 2;wonder;477;54;THIEVES_HIDEOUT;All;0
-0x00103;THIEVES_HIDEOUT;Jail 3 - Skull 1;OOT Gerudo Fortress Wonder Item Jail 3 1;wonder;562;210;THIEVES_HIDEOUT;All;0
-0x00104;THIEVES_HIDEOUT;Jail 3 - Skull 2;OOT Gerudo Fortress Wonder Item Jail 3 2;wonder;562;266;THIEVES_HIDEOUT;All;0
-0x00402;THIEVES_HIDEOUT;Jail 4 - Skull 1;OOT Gerudo Fortress Wonder Item Jail 4 1;wonder;342;398;THIEVES_HIDEOUT;All;0
-0x00403;THIEVES_HIDEOUT;Jail 4 - Skull 2;OOT Gerudo Fortress Wonder Item Jail 4 2;wonder;382;471;THIEVES_HIDEOUT;All;0
+0x00103;THIEVES_HIDEOUT;Jail 4 - Skull 1;OOT Gerudo Fortress Wonder Item Jail 3 1;wonder;342;398;THIEVES_HIDEOUT;All;0
+0x00104;THIEVES_HIDEOUT;Jail 4 - Skull 2;OOT Gerudo Fortress Wonder Item Jail 3 2;wonder;382;471;THIEVES_HIDEOUT;All;0
+0x00402;THIEVES_HIDEOUT;Jail 3 - Skull 1;OOT Gerudo Fortress Wonder Item Jail 4 1;wonder;562;266;THIEVES_HIDEOUT;All;0
+0x00403;THIEVES_HIDEOUT;Jail 3 - Skull 2;OOT Gerudo Fortress Wonder Item Jail 4 2;wonder;562;210;THIEVES_HIDEOUT;All;0
 0x00002;THIEVES_HIDEOUT;Break Room - Bottom Skull;OOT Gerudo Fortress Wonder Item Break Room Bottom;wonder;461;575;THIEVES_HIDEOUT;All;0
 0x00003;THIEVES_HIDEOUT;Break Room - Top Skull;OOT Gerudo Fortress Wonder Item Break Room Top;wonder;577;575;THIEVES_HIDEOUT;All;0
 0x00303;THIEVES_HIDEOUT;Kitchen - Skull;OOT Gerudo Fortress Wonder Item Kitchen Skull;wonder;410;163;THIEVES_HIDEOUT;All;0
@@ -2542,11 +2542,11 @@ ZORA_DIVING_GAME;ZORA_DOMAIN;Silver Scale;OOT Zora Domain Diving Game;npc;415;27
 ZORA_KING_TUNIC;ZORA_DOMAIN;Zora Tunic;OOT Zora Domain Tunic;npc;572;179;ZORA_DOMAIN;Adult;0
 TRADE_EYEBALL_FROG;ZORA_DOMAIN;Eyeball Frog;OOT Zora Domain Eyeball Frog;npc;556;126;ZORA_DOMAIN;Adult;0
 0x96;ZORA_DOMAIN;Frozen Waterfall;OOT Zora Domain GS Waterfall;gs;453;298;ZORA_DOMAIN;Adult;0
-0x0115;ZORA_DOMAIN;Pot 1;OOT Zora Domain Pot 1;pot;508;512;ZORA_DOMAIN;All;0
-0x0116;ZORA_DOMAIN;Pot 2;OOT Zora Domain Pot 2;pot;496;528;ZORA_DOMAIN;All;0
-0x0117;ZORA_DOMAIN;Pot 3;OOT Zora Domain Pot 3;pot;508;533;ZORA_DOMAIN;All;0
-0x0118;ZORA_DOMAIN;Pot 4;OOT Zora Domain Pot 4;pot;561;531;ZORA_DOMAIN;All;0
-0x0119;ZORA_DOMAIN;Pot 5;OOT Zora Domain Pot 5;pot;571;524;ZORA_DOMAIN;All;0
+0x0115;ZORA_DOMAIN;Pot 1;OOT Zora Domain Pot 1;pot;561;531;ZORA_DOMAIN;All;0
+0x0116;ZORA_DOMAIN;Pot 2;OOT Zora Domain Pot 2;pot;508;533;ZORA_DOMAIN;All;0
+0x0117;ZORA_DOMAIN;Pot 3;OOT Zora Domain Pot 3;pot;571;524;ZORA_DOMAIN;All;0
+0x0118;ZORA_DOMAIN;Pot 4;OOT Zora Domain Pot 4;pot;508;512;ZORA_DOMAIN;All;0
+0x0119;ZORA_DOMAIN;Pot 5;OOT Zora Domain Pot 5;pot;496;528;ZORA_DOMAIN;All;0
 0x00009;ZORA_DOMAIN;Front 1;OOT Zora Domain Hive Front 1;hive;533;202;ZORA_DOMAIN;Child;0
 0x0000a;ZORA_DOMAIN;Front 2;OOT Zora Domain Hive Front 2;hive;651;166;ZORA_DOMAIN;Child;0
 0x0000b;ZORA_DOMAIN;Back;OOT Zora Domain Hive Back;hive;598;51;ZORA_DOMAIN;Child;0
@@ -2555,10 +2555,10 @@ TRADE_EYEBALL_FROG;ZORA_DOMAIN;Eyeball Frog;OOT Zora Domain Eyeball Frog;npc;556
 0x92;ZORA_FOUNTAIN;Child - Wall;OOT Zora Fountain GS Wall;gs;700;159;ZORA_FOUNTAIN;Child;0
 0x97;ZORA_FOUNTAIN;Tree;OOT Zora Fountain GS Tree;gs;412;117;ZORA_FOUNTAIN;All;0
 0x95;ZORA_FOUNTAIN;Adult - Upper;OOT Zora Fountain GS Upper;gs;331;144;ZORA_FOUNTAIN;Adult;0
-0x0013;ZORA_FOUNTAIN;Child 1;OOT Zora Fountain Child Pot 1;pot;672;365;ZORA_FOUNTAIN;Child;0
-0x0015;ZORA_FOUNTAIN;Child 2;OOT Zora Fountain Child Pot 2;pot;662;365;ZORA_FOUNTAIN;Child;0
-0x0016;ZORA_FOUNTAIN;Child 3;OOT Zora Fountain Child Pot 3;pot;663;418;ZORA_FOUNTAIN;Child;0
-0x0017;ZORA_FOUNTAIN;Child 4;OOT Zora Fountain Child Pot 4;pot;673;418;ZORA_FOUNTAIN;Child;0
+0x0013;ZORA_FOUNTAIN;Child 1;OOT Zora Fountain Child Pot 1;pot;673;418;ZORA_FOUNTAIN;Child;0
+0x0015;ZORA_FOUNTAIN;Child 2;OOT Zora Fountain Child Pot 2;pot;663;418;ZORA_FOUNTAIN;Child;0
+0x0016;ZORA_FOUNTAIN;Child 3;OOT Zora Fountain Child Pot 3;pot;662;365;ZORA_FOUNTAIN;Child;0
+0x0017;ZORA_FOUNTAIN;Child 4;OOT Zora Fountain Child Pot 4;pot;672;365;ZORA_FOUNTAIN;Child;0
 0x802a;ZORA_FOUNTAIN;Adult 1;OOT Zora Fountain Adult Pot 1;pot;422;98;ZORA_FOUNTAIN;Adult;0
 0x802b;ZORA_FOUNTAIN;Adult 2;OOT Zora Fountain Adult Pot 2;pot;424;91;ZORA_FOUNTAIN;Adult;0
 0x802c;ZORA_FOUNTAIN;Adult 3;OOT Zora Fountain Adult Pot 3;pot;430;92;ZORA_FOUNTAIN;Adult;0
@@ -2580,8 +2580,8 @@ TRADE_EYEBALL_FROG;ZORA_DOMAIN;Eyeball Frog;OOT Zora Domain Eyeball Frog;npc;556
 0x0800f;ZORA_FOUNTAIN;Underwater 16;OOT Zora Fountain Rupee 16;rupee;488;343;ZORA_FOUNTAIN;Adult;0
 0x08010;ZORA_FOUNTAIN;Underwater 17;OOT Zora Fountain Rupee 17;rupee;410;338;ZORA_FOUNTAIN;Adult;0
 0x08011;ZORA_FOUNTAIN;Underwater 18;OOT Zora Fountain Rupee 18;rupee;495;315;ZORA_FOUNTAIN;Adult;0
-0x0000e;ZORA_FOUNTAIN;Butterfly 1;OOT Zora Fountain Butterfly 1;butterfly;0;0;ZORA_FOUNTAIN;Child;0
-0x1000e;ZORA_FOUNTAIN;Butterfly 2;OOT Zora Fountain Butterfly 2;butterfly;0;0;ZORA_FOUNTAIN;Child;0
+0x0000e;ZORA_FOUNTAIN;Butterfly 1;OOT Zora Fountain Butterfly 1;butterfly;641;206;ZORA_FOUNTAIN;Child;0
+0x1000e;ZORA_FOUNTAIN;Butterfly 2;OOT Zora Fountain Butterfly 2;butterfly;649;198;ZORA_FOUNTAIN;Child;0
 0x04;ZORA_RIVER;Pillar - Heart Piece;OOT Zora River HP Pillar;collectible;940;653;ZORA_RIVER;All;0
 0x0b;ZORA_RIVER;Platform - Heart Piece;OOT Zora River HP Platform;collectible;236;757;ZORA_RIVER;All;0
 BEAN_SELLER;ZORA_RIVER;Bean Seller;OOT Zora River Bean Seller;npc;1133;451;ZORA_RIVER;Child;0

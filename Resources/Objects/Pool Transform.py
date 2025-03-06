@@ -179,13 +179,13 @@ print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_fil
 
 input_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Scenes\scenes_oot.csv'
 output_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Scenes\scenes_oot.txt'
-parse_scene(input_file, output_file, "OOT")
+#parse_scene(input_file, output_file, "OOT")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
 
 input_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Scenes\scenes_mm.csv'
 output_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Scenes\scenes_mm.txt'
-parse_scene(input_file, output_file, "MM")
+#parse_scene(input_file, output_file, "MM")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
 #
