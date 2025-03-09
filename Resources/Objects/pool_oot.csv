@@ -1,7 +1,7 @@
 id;scene;friendly_name;location;type;x;y;renderscene;context;room
-0x0002;BACK_ALLEY_HOUSE;Pot 1;OOT Market Back Alley East House Pot 1;pot;270;483;BACK_ALLEY_HOUSE;All;0
-0x0003;BACK_ALLEY_HOUSE;Pot 2;OOT Market Back Alley East House Pot 2;pot;442;429;BACK_ALLEY_HOUSE;All;0
-0x0004;BACK_ALLEY_HOUSE;Pot 3;OOT Market Back Alley East House Pot 3;pot;743;429;BACK_ALLEY_HOUSE;All;0
+0x0002;BACK_ALLEY_HOUSE;Pot 1;OOT Market Back Alley East House Pot 1;pot;765;483;BACK_ALLEY_HOUSE;All;0
+0x0003;BACK_ALLEY_HOUSE;Pot 2;OOT Market Back Alley East House Pot 2;pot;521;429;BACK_ALLEY_HOUSE;All;0
+0x0004;BACK_ALLEY_HOUSE;Pot 3;OOT Market Back Alley East House Pot 3;pot;442;429;BACK_ALLEY_HOUSE;All;0
 DOG_LADY;BACK_ALLEY_HOUSE2;Heart Piece;OOT Market Dog Lady HP;npc;436;214;BACK_ALLEY_HOUSE2;All;0
 0x00002;BACK_ALLEY_HOUSE2;Crate;OOT Market Dog Lady Crate;crate;657;105;BACK_ALLEY_HOUSE2;All;0
 0x30;BAZAAR;Item 1;OOT Kakariko Bazaar Item 1;shop;664;328;KAKARIKO_BAZAAR;All;0
@@ -12,14 +12,14 @@ DOG_LADY;BACK_ALLEY_HOUSE2;Heart Piece;OOT Market Dog Lady HP;npc;436;214;BACK_A
 0x35;BAZAAR;Item 6;OOT Kakariko Bazaar Item 6;shop;624;290;KAKARIKO_BAZAAR;All;0
 0x36;BAZAAR;Item 7;OOT Kakariko Bazaar Item 7;shop;367;290;KAKARIKO_BAZAAR;All;0
 0x37;BAZAAR;Item 8;OOT Kakariko Bazaar Item 8;shop;327;290;KAKARIKO_BAZAAR;All;0
-0x20;BAZAAR;Item 1;OOT Market Bazaar Item 1;shop;664;328;MARKET_BAZAAR;All;0
-0x21;BAZAAR;Item 2;OOT Market Bazaar Item 2;shop;624;328;MARKET_BAZAAR;All;0
-0x22;BAZAAR;Item 3;OOT Market Bazaar Item 3;shop;367;328;MARKET_BAZAAR;All;0
+0x20;BAZAAR;Item 1;OOT Market Bazaar Item 1;shop;367;328;MARKET_BAZAAR;All;0
+0x21;BAZAAR;Item 2;OOT Market Bazaar Item 2;shop;327;290;MARKET_BAZAAR;All;0
+0x22;BAZAAR;Item 3;OOT Market Bazaar Item 3;shop;367;290;MARKET_BAZAAR;All;0
 0x23;BAZAAR;Item 4;OOT Market Bazaar Item 4;shop;327;328;MARKET_BAZAAR;All;0
-0x24;BAZAAR;Item 5;OOT Market Bazaar Item 5;shop;664;290;MARKET_BAZAAR;All;0
-0x25;BAZAAR;Item 6;OOT Market Bazaar Item 6;shop;624;290;MARKET_BAZAAR;All;0
-0x26;BAZAAR;Item 7;OOT Market Bazaar Item 7;shop;367;290;MARKET_BAZAAR;All;0
-0x27;BAZAAR;Item 8;OOT Market Bazaar Item 8;shop;327;290;MARKET_BAZAAR;All;0
+0x24;BAZAAR;Item 5;OOT Market Bazaar Item 5;shop;624;290;MARKET_BAZAAR;All;0
+0x25;BAZAAR;Item 6;OOT Market Bazaar Item 6;shop;664;290;MARKET_BAZAAR;All;0
+0x26;BAZAAR;Item 7;OOT Market Bazaar Item 7;shop;664;328;MARKET_BAZAAR;All;0
+0x27;BAZAAR;Item 8;OOT Market Bazaar Item 8;shop;624;328;MARKET_BAZAAR;All;0
 BOMBCHU_BOWLING_1;BOMBCHU_BOWLING_ALLEY;Reward 1;OOT Bombchu Bowling Reward 1;npc;816;248;BOMBCHU_BOWLING_ALLEY;All;0
 BOMBCHU_BOWLING_2;BOMBCHU_BOWLING_ALLEY;Reward 2;OOT Bombchu Bowling Reward 2;npc;743;248;BOMBCHU_BOWLING_ALLEY;All;0
 0x08;BOMBCHU_SHOP;Item 1;OOT Market Bombchu Shop Item 1;shop;644;276;BOMBCHU_SHOP;All;0
@@ -2644,14 +2644,14 @@ FROGS_GAME;ZORA_RIVER;Frogs - Game;OOT Zora River Frogs Game;npc;785;628;ZORA_RI
 0x00106;ZORA_RIVER;Back 25;OOT Zora River Wonder Item Back 25;wonder;397;708;ZORA_RIVER;Child;0
 0x00107;ZORA_RIVER;Back 26;OOT Zora River Wonder Item Back 26;wonder;361;707;ZORA_RIVER;Child;0
 0x00108;ZORA_RIVER;Back 27;OOT Zora River Wonder Item Back 27;wonder;326;708;ZORA_RIVER;Child;0
-0x10;ZORA_SHOP;Item 1;OOT Zora Shop Item 1;shop;677;350;ZORA_SHOP;All;0
-0x11;ZORA_SHOP;Item 2;OOT Zora Shop Item 2;shop;606;350;ZORA_SHOP;All;0
-0x12;ZORA_SHOP;Item 3;OOT Zora Shop Item 3;shop;400;350;ZORA_SHOP;All;0
-0x13;ZORA_SHOP;Item 4;OOT Zora Shop Item 4;shop;329;350;ZORA_SHOP;All;0
-0x14;ZORA_SHOP;Item 5;OOT Zora Shop Item 5;shop;677;302;ZORA_SHOP;All;0
-0x15;ZORA_SHOP;Item 6;OOT Zora Shop Item 6;shop;606;302;ZORA_SHOP;All;0
-0x16;ZORA_SHOP;Item 7;OOT Zora Shop Item 7;shop;400;302;ZORA_SHOP;All;0
-0x17;ZORA_SHOP;Item 8;OOT Zora Shop Item 8;shop;329;302;ZORA_SHOP;All;0
+0x10;ZORA_SHOP;Item 1;OOT Zora Shop Item 1;shop;329;302;ZORA_SHOP;All;0
+0x11;ZORA_SHOP;Item 2;OOT Zora Shop Item 2;shop;400;302;ZORA_SHOP;All;0
+0x12;ZORA_SHOP;Item 3;OOT Zora Shop Item 3;shop;329;350;ZORA_SHOP;All;0
+0x13;ZORA_SHOP;Item 4;OOT Zora Shop Item 4;shop;400;350;ZORA_SHOP;All;0
+0x14;ZORA_SHOP;Item 5;OOT Zora Shop Item 5;shop;606;302;ZORA_SHOP;All;0
+0x15;ZORA_SHOP;Item 6;OOT Zora Shop Item 6;shop;677;302;ZORA_SHOP;All;0
+0x16;ZORA_SHOP;Item 7;OOT Zora Shop Item 7;shop;606;350;ZORA_SHOP;All;0
+0x17;ZORA_SHOP;Item 8;OOT Zora Shop Item 8;shop;677;350;ZORA_SHOP;All;0
 WEIRD_EGG;INSIDE_EGGS;Hatch - Chicken;OOT Hatch Chicken;none;0;0;HYRULE_CASTLE;All;0
 POCKET_EGG;INSIDE_EGGS;Hatch - Pocket Cucco;OOT Hatch Pocket Cucco;none;0;0;KAKARIKO_VILLAGE;All;0
 0x0002;MARKET;Pot 1;OOT Market Back Alley East House Pot 1;none;0;0;BACK_ALLEY_HOUSE;All;0

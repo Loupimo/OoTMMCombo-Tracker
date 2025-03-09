@@ -238,9 +238,26 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 
 // An hash array that contains all MM rooms for each scene that has more than one.
 const QHash<int, std::vector<RoomInfo>> MMRooms(
-	{
-
-	});
+{
+	QPair<int, std::vector<RoomInfo>>(OBSERVATORY,
+		std::vector<RoomInfo>(
+			{
+				{ 0, "Observatory", "./Resources/MM/Clock_Town/Observatory.png" },
+				{ 1, "Passage", "./Resources/MM/Clock_Town/Passage.png" }
+			}
+		)
+	),
+	
+	QPair<int, std::vector<RoomInfo>>(STOCK_POT_INN,
+		std::vector<RoomInfo>(
+			{
+				{ 0, "Lobby", "./Resources/MM/Clock_Town/SPI_Lobby.png" },
+				{ 1, "Back", "./Resources/MM/Clock_Town/SPI_Back.png" },
+				{ 2, "Rooms", "./Resources/MM/Clock_Town/SPI_Rooms.png" }
+			}
+		)
+	),
+});
 
 
 /*

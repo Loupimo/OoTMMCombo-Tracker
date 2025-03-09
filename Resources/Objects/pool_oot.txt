@@ -2,9 +2,9 @@
 const size_t BACK_ALLEY_HOUSENumOfObjs = 3;
 ObjectInfo BACK_ALLEY_HOUSESceneObjects [BACK_ALLEY_HOUSENumOfObjs] =
 {
-	{ 0x0002, BACK_ALLEY_HOUSE, "Pot 1", "OOT Market Back Alley East House Pot 1", ObjectType::pot, {270, 483}, BACK_ALLEY_HOUSE, ObjectContext::All, 0 },
-	{ 0x0003, BACK_ALLEY_HOUSE, "Pot 2", "OOT Market Back Alley East House Pot 2", ObjectType::pot, {442, 429}, BACK_ALLEY_HOUSE, ObjectContext::All, 0 },
-	{ 0x0004, BACK_ALLEY_HOUSE, "Pot 3", "OOT Market Back Alley East House Pot 3", ObjectType::pot, {743, 429}, BACK_ALLEY_HOUSE, ObjectContext::All, 0 }
+	{ 0x0002, BACK_ALLEY_HOUSE, "Pot 1", "OOT Market Back Alley East House Pot 1", ObjectType::pot, {765, 483}, BACK_ALLEY_HOUSE, ObjectContext::All, 0 },
+	{ 0x0003, BACK_ALLEY_HOUSE, "Pot 2", "OOT Market Back Alley East House Pot 2", ObjectType::pot, {521, 429}, BACK_ALLEY_HOUSE, ObjectContext::All, 0 },
+	{ 0x0004, BACK_ALLEY_HOUSE, "Pot 3", "OOT Market Back Alley East House Pot 3", ObjectType::pot, {442, 429}, BACK_ALLEY_HOUSE, ObjectContext::All, 0 }
 };
 
 const size_t BACK_ALLEY_HOUSE2NumOfObjs = 2;
@@ -25,14 +25,14 @@ ObjectInfo BAZAARSceneObjects [BAZAARNumOfObjs] =
 	{ 0x35, BAZAAR, "Item 6", "OOT Kakariko Bazaar Item 6", ObjectType::shop, {624, 290}, KAKARIKO_BAZAAR, ObjectContext::All, 0 },
 	{ 0x36, BAZAAR, "Item 7", "OOT Kakariko Bazaar Item 7", ObjectType::shop, {367, 290}, KAKARIKO_BAZAAR, ObjectContext::All, 0 },
 	{ 0x37, BAZAAR, "Item 8", "OOT Kakariko Bazaar Item 8", ObjectType::shop, {327, 290}, KAKARIKO_BAZAAR, ObjectContext::All, 0 },
-	{ 0x20, BAZAAR, "Item 1", "OOT Market Bazaar Item 1", ObjectType::shop, {664, 328}, MARKET_BAZAAR, ObjectContext::All, 0 },
-	{ 0x21, BAZAAR, "Item 2", "OOT Market Bazaar Item 2", ObjectType::shop, {624, 328}, MARKET_BAZAAR, ObjectContext::All, 0 },
-	{ 0x22, BAZAAR, "Item 3", "OOT Market Bazaar Item 3", ObjectType::shop, {367, 328}, MARKET_BAZAAR, ObjectContext::All, 0 },
+	{ 0x20, BAZAAR, "Item 1", "OOT Market Bazaar Item 1", ObjectType::shop, {367, 328}, MARKET_BAZAAR, ObjectContext::All, 0 },
+	{ 0x21, BAZAAR, "Item 2", "OOT Market Bazaar Item 2", ObjectType::shop, {327, 290}, MARKET_BAZAAR, ObjectContext::All, 0 },
+	{ 0x22, BAZAAR, "Item 3", "OOT Market Bazaar Item 3", ObjectType::shop, {367, 290}, MARKET_BAZAAR, ObjectContext::All, 0 },
 	{ 0x23, BAZAAR, "Item 4", "OOT Market Bazaar Item 4", ObjectType::shop, {327, 328}, MARKET_BAZAAR, ObjectContext::All, 0 },
-	{ 0x24, BAZAAR, "Item 5", "OOT Market Bazaar Item 5", ObjectType::shop, {664, 290}, MARKET_BAZAAR, ObjectContext::All, 0 },
-	{ 0x25, BAZAAR, "Item 6", "OOT Market Bazaar Item 6", ObjectType::shop, {624, 290}, MARKET_BAZAAR, ObjectContext::All, 0 },
-	{ 0x26, BAZAAR, "Item 7", "OOT Market Bazaar Item 7", ObjectType::shop, {367, 290}, MARKET_BAZAAR, ObjectContext::All, 0 },
-	{ 0x27, BAZAAR, "Item 8", "OOT Market Bazaar Item 8", ObjectType::shop, {327, 290}, MARKET_BAZAAR, ObjectContext::All, 0 }
+	{ 0x24, BAZAAR, "Item 5", "OOT Market Bazaar Item 5", ObjectType::shop, {624, 290}, MARKET_BAZAAR, ObjectContext::All, 0 },
+	{ 0x25, BAZAAR, "Item 6", "OOT Market Bazaar Item 6", ObjectType::shop, {664, 290}, MARKET_BAZAAR, ObjectContext::All, 0 },
+	{ 0x26, BAZAAR, "Item 7", "OOT Market Bazaar Item 7", ObjectType::shop, {664, 328}, MARKET_BAZAAR, ObjectContext::All, 0 },
+	{ 0x27, BAZAAR, "Item 8", "OOT Market Bazaar Item 8", ObjectType::shop, {624, 328}, MARKET_BAZAAR, ObjectContext::All, 0 }
 };
 
 const size_t KAKARIKO_BAZAARNumOfObjs = 8;
@@ -51,14 +51,14 @@ ObjectInfo KAKARIKO_BAZAARSceneObjects [KAKARIKO_BAZAARNumOfObjs] =
 const size_t MARKET_BAZAARNumOfObjs = 8;
 ObjectInfo MARKET_BAZAARSceneObjects [MARKET_BAZAARNumOfObjs] =
 {
-	{ 0x20, BAZAAR, "Item 1", "OOT Market Bazaar Item 1", ObjectType::shop, {664, 328}, MARKET_BAZAAR, ObjectContext::All, 0 },
-	{ 0x21, BAZAAR, "Item 2", "OOT Market Bazaar Item 2", ObjectType::shop, {624, 328}, MARKET_BAZAAR, ObjectContext::All, 0 },
-	{ 0x22, BAZAAR, "Item 3", "OOT Market Bazaar Item 3", ObjectType::shop, {367, 328}, MARKET_BAZAAR, ObjectContext::All, 0 },
+	{ 0x20, BAZAAR, "Item 1", "OOT Market Bazaar Item 1", ObjectType::shop, {367, 328}, MARKET_BAZAAR, ObjectContext::All, 0 },
+	{ 0x21, BAZAAR, "Item 2", "OOT Market Bazaar Item 2", ObjectType::shop, {327, 290}, MARKET_BAZAAR, ObjectContext::All, 0 },
+	{ 0x22, BAZAAR, "Item 3", "OOT Market Bazaar Item 3", ObjectType::shop, {367, 290}, MARKET_BAZAAR, ObjectContext::All, 0 },
 	{ 0x23, BAZAAR, "Item 4", "OOT Market Bazaar Item 4", ObjectType::shop, {327, 328}, MARKET_BAZAAR, ObjectContext::All, 0 },
-	{ 0x24, BAZAAR, "Item 5", "OOT Market Bazaar Item 5", ObjectType::shop, {664, 290}, MARKET_BAZAAR, ObjectContext::All, 0 },
-	{ 0x25, BAZAAR, "Item 6", "OOT Market Bazaar Item 6", ObjectType::shop, {624, 290}, MARKET_BAZAAR, ObjectContext::All, 0 },
-	{ 0x26, BAZAAR, "Item 7", "OOT Market Bazaar Item 7", ObjectType::shop, {367, 290}, MARKET_BAZAAR, ObjectContext::All, 0 },
-	{ 0x27, BAZAAR, "Item 8", "OOT Market Bazaar Item 8", ObjectType::shop, {327, 290}, MARKET_BAZAAR, ObjectContext::All, 0 }
+	{ 0x24, BAZAAR, "Item 5", "OOT Market Bazaar Item 5", ObjectType::shop, {624, 290}, MARKET_BAZAAR, ObjectContext::All, 0 },
+	{ 0x25, BAZAAR, "Item 6", "OOT Market Bazaar Item 6", ObjectType::shop, {664, 290}, MARKET_BAZAAR, ObjectContext::All, 0 },
+	{ 0x26, BAZAAR, "Item 7", "OOT Market Bazaar Item 7", ObjectType::shop, {664, 328}, MARKET_BAZAAR, ObjectContext::All, 0 },
+	{ 0x27, BAZAAR, "Item 8", "OOT Market Bazaar Item 8", ObjectType::shop, {624, 328}, MARKET_BAZAAR, ObjectContext::All, 0 }
 };
 
 const size_t BOMBCHU_BOWLING_ALLEYNumOfObjs = 2;
@@ -4849,14 +4849,14 @@ ObjectInfo ZORA_RIVERSceneObjects [ZORA_RIVERNumOfObjs] =
 const size_t ZORA_SHOPNumOfObjs = 8;
 ObjectInfo ZORA_SHOPSceneObjects [ZORA_SHOPNumOfObjs] =
 {
-	{ 0x10, ZORA_SHOP, "Item 1", "OOT Zora Shop Item 1", ObjectType::shop, {677, 350}, ZORA_SHOP, ObjectContext::All, 0 },
-	{ 0x11, ZORA_SHOP, "Item 2", "OOT Zora Shop Item 2", ObjectType::shop, {606, 350}, ZORA_SHOP, ObjectContext::All, 0 },
-	{ 0x12, ZORA_SHOP, "Item 3", "OOT Zora Shop Item 3", ObjectType::shop, {400, 350}, ZORA_SHOP, ObjectContext::All, 0 },
-	{ 0x13, ZORA_SHOP, "Item 4", "OOT Zora Shop Item 4", ObjectType::shop, {329, 350}, ZORA_SHOP, ObjectContext::All, 0 },
-	{ 0x14, ZORA_SHOP, "Item 5", "OOT Zora Shop Item 5", ObjectType::shop, {677, 302}, ZORA_SHOP, ObjectContext::All, 0 },
-	{ 0x15, ZORA_SHOP, "Item 6", "OOT Zora Shop Item 6", ObjectType::shop, {606, 302}, ZORA_SHOP, ObjectContext::All, 0 },
-	{ 0x16, ZORA_SHOP, "Item 7", "OOT Zora Shop Item 7", ObjectType::shop, {400, 302}, ZORA_SHOP, ObjectContext::All, 0 },
-	{ 0x17, ZORA_SHOP, "Item 8", "OOT Zora Shop Item 8", ObjectType::shop, {329, 302}, ZORA_SHOP, ObjectContext::All, 0 }
+	{ 0x10, ZORA_SHOP, "Item 1", "OOT Zora Shop Item 1", ObjectType::shop, {329, 302}, ZORA_SHOP, ObjectContext::All, 0 },
+	{ 0x11, ZORA_SHOP, "Item 2", "OOT Zora Shop Item 2", ObjectType::shop, {400, 302}, ZORA_SHOP, ObjectContext::All, 0 },
+	{ 0x12, ZORA_SHOP, "Item 3", "OOT Zora Shop Item 3", ObjectType::shop, {329, 350}, ZORA_SHOP, ObjectContext::All, 0 },
+	{ 0x13, ZORA_SHOP, "Item 4", "OOT Zora Shop Item 4", ObjectType::shop, {400, 350}, ZORA_SHOP, ObjectContext::All, 0 },
+	{ 0x14, ZORA_SHOP, "Item 5", "OOT Zora Shop Item 5", ObjectType::shop, {606, 302}, ZORA_SHOP, ObjectContext::All, 0 },
+	{ 0x15, ZORA_SHOP, "Item 6", "OOT Zora Shop Item 6", ObjectType::shop, {677, 302}, ZORA_SHOP, ObjectContext::All, 0 },
+	{ 0x16, ZORA_SHOP, "Item 7", "OOT Zora Shop Item 7", ObjectType::shop, {606, 350}, ZORA_SHOP, ObjectContext::All, 0 },
+	{ 0x17, ZORA_SHOP, "Item 8", "OOT Zora Shop Item 8", ObjectType::shop, {677, 350}, ZORA_SHOP, ObjectContext::All, 0 }
 };
 
 const size_t INSIDE_EGGSNumOfObjs = 2;

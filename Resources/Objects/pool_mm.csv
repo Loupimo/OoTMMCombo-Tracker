@@ -72,10 +72,10 @@ SWORD_GILDED;BLACKSMITH;Gilded Sword;MM Blacksmith Gilded Sword;npc;0;0;BLACKSMI
 0x10008;BLACKSMITH;Potted Plant 2;MM Blacksmith Potted Plant 2 Grass;grass;0;0;BLACKSMITH;All;0
 0x00008;BLACKSMITH;Potted Plant 2;MM Blacksmith Potted Plant 2 Pot;pot;0;0;BLACKSMITH;All;0
 SWORD_RAZOR;BLACKSMITH;Razor Blade;MM Blacksmith Razor Blade;npc;0;0;BLACKSMITH;All;0
-0x02;BOMB_SHOP;Bomb Bag;MM Bomb Shop Bomb Bag;shop;0;0;BOMB_SHOP;All;0
-0x03;BOMB_SHOP;Large Bomb Bag;MM Bomb Shop Bomb Bag 2;shop;0;0;BOMB_SHOP;All;0
-0x00;BOMB_SHOP;Item 1;MM Bomb Shop Item 1;shop;0;0;BOMB_SHOP;All;0
-0x01;BOMB_SHOP;Item 2;MM Bomb Shop Item 2;shop;0;0;BOMB_SHOP;All;0
+0x02;BOMB_SHOP;Bomb Bag;MM Bomb Shop Bomb Bag;shop;489;290;BOMB_SHOP;All;0
+0x03;BOMB_SHOP;Large Bomb Bag;MM Bomb Shop Bomb Bag 2;shop;521;295;BOMB_SHOP;All;0
+0x00;BOMB_SHOP;Item 1;MM Bomb Shop Item 1;shop;424;281;BOMB_SHOP;All;0
+0x01;BOMB_SHOP;Item 2;MM Bomb Shop Item 2;shop;455;286;BOMB_SHOP;All;0
 0x00020;CASTLE_IKANA;Grass 1;MM Ancient Castle of Ikana Grass 01;grass;0;0;CASTLE_IKANA;All;0
 0x00021;CASTLE_IKANA;Grass 2;MM Ancient Castle of Ikana Grass 02;grass;0;0;CASTLE_IKANA;All;0
 0x00022;CASTLE_IKANA;Grass 3;MM Ancient Castle of Ikana Grass 03;grass;0;0;CASTLE_IKANA;All;0
@@ -111,25 +111,25 @@ SWORD_RAZOR;BLACKSMITH;Razor Blade;MM Blacksmith Razor Blade;npc;0;0;BLACKSMITH;
 0x0107;CASTLE_IKANA;Boss 7;MM Ancient Castle of Ikana Boss Pot 7;none;0;0;INSIDE_CASTLE_IKANA;All;0
 0x0108;CASTLE_IKANA;Boss 8;MM Ancient Castle of Ikana Boss Pot 8;none;0;0;INSIDE_CASTLE_IKANA;All;0
 SONG_EMPTINESS;CASTLE_IKANA;Elegy of Emptiness;MM Ancient Castle of Ikana Song Emptiness;none;0;0;INSIDE_CASTLE_IKANA;All;0
-0x0003;CLOCK_TOWER_ROOFTOP;Pot 1;MM Clock Tower Roof Pot 1;pot;0;0;CLOCK_TOWER_ROOFTOP;All;0
-0x0004;CLOCK_TOWER_ROOFTOP;Pot 2;MM Clock Tower Roof Pot 2;pot;0;0;CLOCK_TOWER_ROOFTOP;All;0
-0x0005;CLOCK_TOWER_ROOFTOP;Pot 3;MM Clock Tower Roof Pot 3;pot;0;0;CLOCK_TOWER_ROOFTOP;All;0
-0x0006;CLOCK_TOWER_ROOFTOP;Pot 4;MM Clock Tower Roof Pot 4;pot;0;0;CLOCK_TOWER_ROOFTOP;All;0
-SKULL_KID_OCARINA;CLOCK_TOWER_ROOFTOP;Ocarina of Time;MM Clock Tower Roof Skull Kid Ocarina;npc;0;0;CLOCK_TOWER_ROOFTOP;All;0
-SKULL_KID_SONG;CLOCK_TOWER_ROOFTOP;Song of Time;MM Clock Tower Roof Skull Kid Song of Time;npc;0;0;CLOCK_TOWER_ROOFTOP;All;0
-0x0000a;CLOCK_TOWN_EAST;Small Crate 1;MM Clock Town East Small Crate 1;crate;0;0;CLOCK_TOWN_EAST;All;0
-0x0000b;CLOCK_TOWN_EAST;Small Crate 2;MM Clock Town East Small Crate 2;crate;0;0;CLOCK_TOWN_EAST;All;0
-0x0002c;CLOCK_TOWN_EAST;Basket Bomb 1;MM Clock Town East Wonder Item Basket 1;wonder;0;0;CLOCK_TOWN_EAST;All;0
-0x1002c;CLOCK_TOWN_EAST;Basket Bomb 2;MM Clock Town East Wonder Item Basket 2;wonder;0;0;CLOCK_TOWN_EAST;All;0
-0x2002c;CLOCK_TOWN_EAST;Basket Bomb 3;MM Clock Town East Wonder Item Basket 3;wonder;0;0;CLOCK_TOWN_EAST;All;0
-0x0002a;CLOCK_TOWN_EAST;Target Left 1;MM Clock Town East Wonder Item Target Left 1;wonder;0;0;CLOCK_TOWN_EAST;All;0
-0x1002a;CLOCK_TOWN_EAST;Target Left 2;MM Clock Town East Wonder Item Target Left 2;wonder;0;0;CLOCK_TOWN_EAST;All;0
-0x2002a;CLOCK_TOWN_EAST;Target Left 3;MM Clock Town East Wonder Item Target Left 3;wonder;0;0;CLOCK_TOWN_EAST;All;0
-0x0002b;CLOCK_TOWN_EAST;Target Right 1;MM Clock Town East Wonder Item Target Right 1;wonder;0;0;CLOCK_TOWN_EAST;All;0
-0x1002b;CLOCK_TOWN_EAST;Target Right 2;MM Clock Town East Wonder Item Target Right 2;wonder;0;0;CLOCK_TOWN_EAST;All;0
-0x2002b;CLOCK_TOWN_EAST;Target Right 3;MM Clock Town East Wonder Item Target Right 3;wonder;0;0;CLOCK_TOWN_EAST;All;0
-MASK_POSTMAN;CLOCK_TOWN_EAST;Postman Hat;MM Clock Town Postman Hat;npc;0;0;CLOCK_TOWN_EAST;All;0
-0x0a;CLOCK_TOWN_EAST;Silver Rupee;MM Clock Town Silver Rupee Chest;chest;0;0;CLOCK_TOWN_EAST;All;0
+0x0003;CLOCK_TOWER_ROOFTOP;Pot 1;MM Clock Tower Roof Pot 1;pot;362;414;CLOCK_TOWER_ROOFTOP;All;0
+0x0004;CLOCK_TOWER_ROOFTOP;Pot 2;MM Clock Tower Roof Pot 2;pot;362;195;CLOCK_TOWER_ROOFTOP;All;0
+0x0005;CLOCK_TOWER_ROOFTOP;Pot 3;MM Clock Tower Roof Pot 3;pot;580;195;CLOCK_TOWER_ROOFTOP;All;0
+0x0006;CLOCK_TOWER_ROOFTOP;Pot 4;MM Clock Tower Roof Pot 4;pot;580;414;CLOCK_TOWER_ROOFTOP;All;0
+SKULL_KID_OCARINA;CLOCK_TOWER_ROOFTOP;Ocarina of Time;MM Clock Tower Roof Skull Kid Ocarina;npc;471;193;CLOCK_TOWER_ROOFTOP;All;0
+SKULL_KID_SONG;CLOCK_TOWER_ROOFTOP;Song of Time;MM Clock Tower Roof Skull Kid Song of Time;npc;471;310;CLOCK_TOWER_ROOFTOP;All;0
+0x0000a;CLOCK_TOWN_EAST;Small Crate 1;MM Clock Town East Small Crate 1;crate;407;413;CLOCK_TOWN_EAST;All;0
+0x0000b;CLOCK_TOWN_EAST;Small Crate 2;MM Clock Town East Small Crate 2;crate;449;352;CLOCK_TOWN_EAST;All;0
+0x0002c;CLOCK_TOWN_EAST;Basket Bomb 1;MM Clock Town East Wonder Item Basket 1;wonder;533;285;CLOCK_TOWN_EAST;All;0
+0x1002c;CLOCK_TOWN_EAST;Basket Bomb 2;MM Clock Town East Wonder Item Basket 2;wonder;542;280;CLOCK_TOWN_EAST;All;0
+0x2002c;CLOCK_TOWN_EAST;Basket Bomb 3;MM Clock Town East Wonder Item Basket 3;wonder;549;287;CLOCK_TOWN_EAST;All;0
+0x0002a;CLOCK_TOWN_EAST;Target Left 1;MM Clock Town East Wonder Item Target Left 1;wonder;512;271;CLOCK_TOWN_EAST;All;0
+0x1002a;CLOCK_TOWN_EAST;Target Left 2;MM Clock Town East Wonder Item Target Left 2;wonder;521;266;CLOCK_TOWN_EAST;All;0
+0x2002a;CLOCK_TOWN_EAST;Target Left 3;MM Clock Town East Wonder Item Target Left 3;wonder;528;273;CLOCK_TOWN_EAST;All;0
+0x0002b;CLOCK_TOWN_EAST;Target Right 1;MM Clock Town East Wonder Item Target Right 1;wonder;559;281;CLOCK_TOWN_EAST;All;0
+0x1002b;CLOCK_TOWN_EAST;Target Right 2;MM Clock Town East Wonder Item Target Right 2;wonder;568;275;CLOCK_TOWN_EAST;All;0
+0x2002b;CLOCK_TOWN_EAST;Target Right 3;MM Clock Town East Wonder Item Target Right 3;wonder;576;282;CLOCK_TOWN_EAST;All;0
+MASK_POSTMAN;CLOCK_TOWN_EAST;Postman Hat;MM Clock Town Postman Hat;npc;356;299;CLOCK_TOWN_EAST;All;0
+0x0a;CLOCK_TOWN_EAST;Silver Rupee;MM Clock Town Silver Rupee Chest;chest;795;571;CLOCK_TOWN_EAST;All;0
 CHEST_GAME;CLOCK_TOWN_EAST;Heart Piece;MM Chest Game HP;none;0;0;TREASURE_SHOP;All;0
 SHOOTING_GAME_TOWN_1;CLOCK_TOWN_EAST;Reward 1;MM Town Archery Reward 1;none;0;0;SHOOTING_GALLERY;All;0
 SHOOTING_GAME_TOWN_2;CLOCK_TOWN_EAST;Reward 2;MM Town Archery Reward 2;none;0;0;SHOOTING_GALLERY;All;0
@@ -150,19 +150,19 @@ MOON_TEAR;CLOCK_TOWN_EAST;Moon Tear;MM Astral Observatory Moon Tear;none;0;0;TER
 0x0104;CLOCK_TOWN_EAST;Astral Observatory 1;MM Astral Observatory Pot 1;none;0;0;OBSERVATORY;All;0
 0x0105;CLOCK_TOWN_EAST;Astral Observatory 2;MM Astral Observatory Pot 2;none;0;0;OBSERVATORY;All;0
 0x0106;CLOCK_TOWN_EAST;Astral Observatory 3;MM Astral Observatory Pot 3;none;0;0;OBSERVATORY;All;0
-MASK_BLAST;CLOCK_TOWN_NORTH;Blast Mask;MM Clock Town Blast Mask;npc;0;0;CLOCK_TOWN_NORTH;All;0
-BOMBER_NOTEBOOK;CLOCK_TOWN_NORTH;Bomber Notebook;MM Clock Town Bomber Notebook;npc;0;0;CLOCK_TOWN_NORTH;All;0
-0x00010;CLOCK_TOWN_NORTH;Keaton Grass 1;MM Clock Town Keaton Grass Reward 1;grass;0;0;CLOCK_TOWN_NORTH;All;0
-0x10010;CLOCK_TOWN_NORTH;Keaton Grass 2;MM Clock Town Keaton Grass Reward 2;grass;0;0;CLOCK_TOWN_NORTH;All;0
-0x20010;CLOCK_TOWN_NORTH;Keaton Grass 3;MM Clock Town Keaton Grass Reward 3;grass;0;0;CLOCK_TOWN_NORTH;All;0
-0x30010;CLOCK_TOWN_NORTH;Keaton Grass 4;MM Clock Town Keaton Grass Reward 4;grass;0;0;CLOCK_TOWN_NORTH;All;0
-0x40010;CLOCK_TOWN_NORTH;Keaton Grass 5;MM Clock Town Keaton Grass Reward 5;grass;0;0;CLOCK_TOWN_NORTH;All;0
-0x50010;CLOCK_TOWN_NORTH;Keaton Grass 6;MM Clock Town Keaton Grass Reward 6;grass;0;0;CLOCK_TOWN_NORTH;All;0
-0x60010;CLOCK_TOWN_NORTH;Keaton Grass 7;MM Clock Town Keaton Grass Reward 7;grass;0;0;CLOCK_TOWN_NORTH;All;0
-0x70010;CLOCK_TOWN_NORTH;Keaton Grass 8;MM Clock Town Keaton Grass Reward 8;grass;0;0;CLOCK_TOWN_NORTH;All;0
-0x80010;CLOCK_TOWN_NORTH;Keaton Grass 9;MM Clock Town Keaton Grass Reward 9;grass;0;0;CLOCK_TOWN_NORTH;All;0
-KEATON_HEART_PIECE;CLOCK_TOWN_NORTH;Keaton - Heart Piece;MM Clock Town Keaton HP;npc;0;0;CLOCK_TOWN_NORTH;All;0
-0x0a;CLOCK_TOWN_NORTH;Tree - Heart Piece;MM Clock Town Tree HP;collectible;0;0;CLOCK_TOWN_NORTH;All;0
+MASK_BLAST;CLOCK_TOWN_NORTH;Blast Mask;MM Clock Town Blast Mask;npc;379;315;CLOCK_TOWN_NORTH;All;0
+BOMBER_NOTEBOOK;CLOCK_TOWN_NORTH;Bomber Notebook;MM Clock Town Bomber Notebook;npc;566;148;CLOCK_TOWN_NORTH;All;0
+0x00010;CLOCK_TOWN_NORTH;Keaton Grass 1;MM Clock Town Keaton Grass Reward 1;grass;686;411;CLOCK_TOWN_NORTH;All;0
+0x10010;CLOCK_TOWN_NORTH;Keaton Grass 2;MM Clock Town Keaton Grass Reward 2;grass;709;411;CLOCK_TOWN_NORTH;All;0
+0x20010;CLOCK_TOWN_NORTH;Keaton Grass 3;MM Clock Town Keaton Grass Reward 3;grass;699;423;CLOCK_TOWN_NORTH;All;0
+0x30010;CLOCK_TOWN_NORTH;Keaton Grass 4;MM Clock Town Keaton Grass Reward 4;grass;686;432;CLOCK_TOWN_NORTH;All;0
+0x40010;CLOCK_TOWN_NORTH;Keaton Grass 5;MM Clock Town Keaton Grass Reward 5;grass;673;423;CLOCK_TOWN_NORTH;All;0
+0x50010;CLOCK_TOWN_NORTH;Keaton Grass 6;MM Clock Town Keaton Grass Reward 6;grass;663;411;CLOCK_TOWN_NORTH;All;0
+0x60010;CLOCK_TOWN_NORTH;Keaton Grass 7;MM Clock Town Keaton Grass Reward 7;grass;673;399;CLOCK_TOWN_NORTH;All;0
+0x70010;CLOCK_TOWN_NORTH;Keaton Grass 8;MM Clock Town Keaton Grass Reward 8;grass;686;390;CLOCK_TOWN_NORTH;All;0
+0x80010;CLOCK_TOWN_NORTH;Keaton Grass 9;MM Clock Town Keaton Grass Reward 9;grass;699;399;CLOCK_TOWN_NORTH;All;0
+KEATON_HEART_PIECE;CLOCK_TOWN_NORTH;Keaton - Heart Piece;MM Clock Town Keaton HP;npc;686;359;CLOCK_TOWN_NORTH;All;0
+0x0a;CLOCK_TOWN_NORTH;Tree - Heart Piece;MM Clock Town Tree HP;collectible;614;369;CLOCK_TOWN_NORTH;All;0
 DEKU_PLAYGROUND_2;CLOCK_TOWN_NORTH;Reward - All Days;MM Deku Playground Reward All Days;none;0;0;DEKU_PLAYGROUND;All;0
 DEKU_PLAYGROUND_1;CLOCK_TOWN_NORTH;Reward - Any Day;MM Deku Playground Reward Any Day;none;0;0;DEKU_PLAYGROUND;All;0
 GREAT_FAIRY_TOWN;CLOCK_TOWN_NORTH;Great Fairy - Mojo;MM Clock Town Great Fairy;none;0;0;MM_FAIRY_CLOCK_TOWN;All;0
@@ -177,16 +177,16 @@ POSTBOX;CLOCK_TOWN_SOUTH;Post Box - Heart Piece;MM Clock Town Post Box;npc;649;5
 0x1001d;CLOCK_TOWN_SOUTH;Item 2;MM Clock Town South Wonder Item 2;wonder;327;118;CLOCK_TOWN_SOUTH;All;0
 0x2001d;CLOCK_TOWN_SOUTH;Item 3;MM Clock Town South Wonder Item 3;wonder;315;110;CLOCK_TOWN_SOUTH;All;0
 SONG_HEALING;CLOCK_TOWN_SOUTH;Song of Healing;MM Initial Song of Healing;npc;368;302;CLOCK_TOWN_SOUTH;All;0
-TINGLE_MAP_CLOCK_TOWN;CLOCK_TOWN_SOUTH;Tingle - Clock Town Map;MM Tingle Map Clock Town;npc;0;0;CLOCK_TOWN_NORTH;All;0
-TINGLE_MAP_GREAT_BAY;CLOCK_TOWN_SOUTH;Tingle - Great Bay Map;MM Tingle Map Great Bay;npc;0;0;CLOCK_TOWN_NORTH;All;0
-TINGLE_MAP_STONE_TOWER;CLOCK_TOWN_SOUTH;Tingle - Ikana Map;MM Tingle Map Ikana;npc;0;0;CLOCK_TOWN_NORTH;All;0
-TINGLE_MAP_ROMANI_RANCH;CLOCK_TOWN_SOUTH;Tingle - Ranch Map;MM Tingle Map Ranch;npc;0;0;CLOCK_TOWN_NORTH;All;0
-TINGLE_MAP_SNOWHEAD;CLOCK_TOWN_SOUTH;Tingle - Snowhead Map;MM Tingle Map Snowhead;npc;0;0;CLOCK_TOWN_NORTH;All;0
-TINGLE_MAP_WOODFALL;CLOCK_TOWN_SOUTH;Tingle - Woodfall Map;MM Tingle Map Woodfall;npc;0;0;CLOCK_TOWN_NORTH;All;0
-BANK_1;CLOCK_TOWN_WEST;Bank Reward 1;MM Clock Town Bank Reward 1;npc;0;0;CLOCK_TOWN_WEST;All;0
-BANK_2;CLOCK_TOWN_WEST;Bank Reward 2;MM Clock Town Bank Reward 2;npc;0;0;CLOCK_TOWN_WEST;All;0
-BANK_3;CLOCK_TOWN_WEST;Bank Reward 3;MM Clock Town Bank Reward 3;npc;0;0;CLOCK_TOWN_WEST;All;0
-ROSA_HEART_PIECE;CLOCK_TOWN_WEST;Rosa Sisters - Heart Piece;MM Clock Town Rosa Sisters HP;npc;0;0;CLOCK_TOWN_WEST;All;0
+TINGLE_MAP_CLOCK_TOWN;CLOCK_TOWN_SOUTH;Tingle - Clock Town Map;MM Tingle Map Clock Town;npc;394;148;CLOCK_TOWN_NORTH;All;0
+TINGLE_MAP_GREAT_BAY;CLOCK_TOWN_SOUTH;Tingle - Great Bay Map;MM Tingle Map Great Bay;npc;0;0;GREAT_BAY_COAST;All;0
+TINGLE_MAP_STONE_TOWER;CLOCK_TOWN_SOUTH;Tingle - Ikana Map;MM Tingle Map Ikana;npc;0;0;IKANA_CANYON;All;0
+TINGLE_MAP_ROMANI_RANCH;CLOCK_TOWN_SOUTH;Tingle - Ranch Map;MM Tingle Map Ranch;npc;639;200;MILK_ROAD;All;0
+TINGLE_MAP_SNOWHEAD;CLOCK_TOWN_SOUTH;Tingle - Snowhead Map;MM Tingle Map Snowhead;npc;0;0;TWIN_ISLANDS;All;0
+TINGLE_MAP_WOODFALL;CLOCK_TOWN_SOUTH;Tingle - Woodfall Map;MM Tingle Map Woodfall;npc;0;0;ROAD_SOUTHERN_SWAMP;All;0
+BANK_1;CLOCK_TOWN_WEST;Bank Reward 1;MM Clock Town Bank Reward 1;npc;641;328;CLOCK_TOWN_WEST;All;0
+BANK_2;CLOCK_TOWN_WEST;Bank Reward 2;MM Clock Town Bank Reward 2;npc;659;317;CLOCK_TOWN_WEST;All;0
+BANK_3;CLOCK_TOWN_WEST;Bank Reward 3;MM Clock Town Bank Reward 3;npc;675;306;CLOCK_TOWN_WEST;All;0
+ROSA_HEART_PIECE;CLOCK_TOWN_WEST;Rosa Sisters - Heart Piece;MM Clock Town Rosa Sisters HP;npc;403;284;CLOCK_TOWN_WEST;All;0
 0x02;CLOCK_TOWN_WEST;Bomb Bag;MM Bomb Shop Bomb Bag;none;0;0;BOMB_SHOP;All;0
 0x03;CLOCK_TOWN_WEST;Large Bomb Bag;MM Bomb Shop Bomb Bag 2;none;0;0;BOMB_SHOP;All;0
 0x00;CLOCK_TOWN_WEST;Item 1;MM Bomb Shop Item 1;none;0;0;BOMB_SHOP;All;0
@@ -208,24 +208,24 @@ SWORDSMAN_HEART_PIECE;CLOCK_TOWN_WEST;Heart Piece;MM Swordsman School HP;none;0;
 0x0009;CLOCK_TOWN_WEST;Pot 4;MM Swordsman School Pot 4;none;0;0;SWORDSMAN_SCHOOL;All;0
 0x000a;CLOCK_TOWN_WEST;Pot 5;MM Swordsman School Pot 5;none;0;0;SWORDSMAN_SCHOOL;All;0
 POSTMAN_HEART_PIECE;CLOCK_TOWN_WEST;Postman Game - Heart Piece;MM Post Office HP;none;0;0;POST_OFFICE;All;0
-MASK_BUNNY;CUCCO_SHACK;Bunny Mask;MM Cucco Shack Bunny Mask;npc;0;0;CUCCO_SHACK;All;0
-0x0000e;CUCCO_SHACK;Crate 1;MM Cucco Shack Crate 1;crate;0;0;CUCCO_SHACK;All;0
-0x0000f;CUCCO_SHACK;Crate 2;MM Cucco Shack Crate 2;crate;0;0;CUCCO_SHACK;All;0
-0x00016;CUCCO_SHACK;Crate 3;MM Cucco Shack Crate 3;crate;0;0;CUCCO_SHACK;All;0
-0x1000d;CUCCO_SHACK;Potted Plant 1;MM Cucco Shack Potted Plant 1 Grass;grass;0;0;CUCCO_SHACK;All;0
-0x0000d;CUCCO_SHACK;Potted Plant 1;MM Cucco Shack Potted Plant 1 Pot;pot;0;0;CUCCO_SHACK;All;0
-0x10017;CUCCO_SHACK;Potted Plant 2;MM Cucco Shack Potted Plant 2 Grass;grass;0;0;CUCCO_SHACK;All;0
-0x00017;CUCCO_SHACK;Potted Plant 2;MM Cucco Shack Potted Plant 2 Pot;pot;0;0;CUCCO_SHACK;All;0
-0x00011;CUCCO_SHACK;Wood Hole 1;MM Cucco Shack Wonder Item 1;wonder;0;0;CUCCO_SHACK;All;0
-0x10011;CUCCO_SHACK;Wood Hole 2;MM Cucco Shack Wonder Item 2;wonder;0;0;CUCCO_SHACK;All;0
-0x20011;CUCCO_SHACK;Wood Hole 3;MM Cucco Shack Wonder Item 3;wonder;0;0;CUCCO_SHACK;All;0
-0x00012;CUCCO_SHACK;Wood Hole 4;MM Cucco Shack Wonder Item 4;wonder;0;0;CUCCO_SHACK;All;0
-0x10012;CUCCO_SHACK;Wood Hole 5;MM Cucco Shack Wonder Item 5;wonder;0;0;CUCCO_SHACK;All;0
-0x20012;CUCCO_SHACK;Wood Hole 6;MM Cucco Shack Wonder Item 6;wonder;0;0;CUCCO_SHACK;All;0
-0x04;CURIOSITY_SHOP;All-Night Mask;MM Curiosity Shop All-Night Mask;shop;0;0;CURIOSITY_SHOP;All;0
-MASK_KEATON;CURIOSITY_SHOP;Owner Reward 1;MM Kafei Hideout Owner Reward 1;npc;0;0;CURIOSITY_SHOP;All;0
-LETTER_TO_MAMA;CURIOSITY_SHOP;Owner Reward 2;MM Kafei Hideout Owner Reward 2;npc;0;0;CURIOSITY_SHOP;All;0
-PENDANT_OF_MEMORIES;CURIOSITY_SHOP;Pendant of Memories;MM Kafei Hideout Pendant of Memories;npc;0;0;CURIOSITY_SHOP;All;0
+MASK_BUNNY;CUCCO_SHACK;Bunny Mask;MM Cucco Shack Bunny Mask;npc;407;318;CUCCO_SHACK;All;0
+0x0000e;CUCCO_SHACK;Crate 1;MM Cucco Shack Crate 1;crate;871;317;CUCCO_SHACK;All;0
+0x0000f;CUCCO_SHACK;Crate 2;MM Cucco Shack Crate 2;crate;851;317;CUCCO_SHACK;All;0
+0x00016;CUCCO_SHACK;Crate 3;MM Cucco Shack Crate 3;crate;831;317;CUCCO_SHACK;All;0
+0x1000d;CUCCO_SHACK;Potted Plant 1;MM Cucco Shack Potted Plant 1 Grass;grass;740;507;CUCCO_SHACK;All;0
+0x0000d;CUCCO_SHACK;Potted Plant 1;MM Cucco Shack Potted Plant 1 Pot;pot;755;507;CUCCO_SHACK;All;0
+0x10017;CUCCO_SHACK;Potted Plant 2;MM Cucco Shack Potted Plant 2 Grass;grass;705;507;CUCCO_SHACK;All;0
+0x00017;CUCCO_SHACK;Potted Plant 2;MM Cucco Shack Potted Plant 2 Pot;pot;720;507;CUCCO_SHACK;All;0
+0x00011;CUCCO_SHACK;Wood Hole 1;MM Cucco Shack Wonder Item 1;wonder;284;357;CUCCO_SHACK;All;0
+0x10011;CUCCO_SHACK;Wood Hole 2;MM Cucco Shack Wonder Item 2;wonder;279;347;CUCCO_SHACK;All;0
+0x20011;CUCCO_SHACK;Wood Hole 3;MM Cucco Shack Wonder Item 3;wonder;284;335;CUCCO_SHACK;All;0
+0x00012;CUCCO_SHACK;Wood Hole 4;MM Cucco Shack Wonder Item 4;wonder;284;300;CUCCO_SHACK;All;0
+0x10012;CUCCO_SHACK;Wood Hole 5;MM Cucco Shack Wonder Item 5;wonder;279;289;CUCCO_SHACK;All;0
+0x20012;CUCCO_SHACK;Wood Hole 6;MM Cucco Shack Wonder Item 6;wonder;284;278;CUCCO_SHACK;All;0
+0x04;CURIOSITY_SHOP;All-Night Mask;MM Curiosity Shop All-Night Mask;shop;307;397;CURIOSITY_SHOP;All;0
+MASK_KEATON;CURIOSITY_SHOP;Owner Reward 1;MM Kafei Hideout Owner Reward 1;npc;541;252;CURIOSITY_SHOP;All;0
+LETTER_TO_MAMA;CURIOSITY_SHOP;Owner Reward 2;MM Kafei Hideout Owner Reward 2;npc;532;224;CURIOSITY_SHOP;All;0
+PENDANT_OF_MEMORIES;CURIOSITY_SHOP;Pendant of Memories;MM Kafei Hideout Pendant of Memories;npc;548;373;CURIOSITY_SHOP;All;0
 0x00;DAMPE_HOUSE;Bottle;MM Beneath The Graveyard Dampe Chest;chest;0;0;DAMPE_HOUSE;All;0
 0x0010;DAMPE_HOUSE;Pot 1;MM Beneath The Graveyard Pot Dampe 01;pot;0;0;DAMPE_HOUSE;All;0
 0x0011;DAMPE_HOUSE;Pot 2;MM Beneath The Graveyard Pot Dampe 02;pot;0;0;DAMPE_HOUSE;All;0
@@ -327,8 +327,8 @@ MASK_SCENTS;DEKU_PALACE;Mask of Scents;MM Deku Shrine Mask of Scents;none;0;0;DE
 0x00604;DEKU_PALACE;Grass 3;MM Deku Palace JP Line Grotto Grass 3;none;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;All;0
 0x00605;DEKU_PALACE;Grass 4;MM Deku Palace JP Line Grotto Grass 4;none;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;All;0
 0x00606;DEKU_PALACE;Grass 5;MM Deku Palace JP Line Grotto Grass 5;none;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;All;0
-DEKU_PLAYGROUND_2;DEKU_PLAYGROUND;Reward - All Days;MM Deku Playground Reward All Days;npc;0;0;DEKU_PLAYGROUND;All;0
-DEKU_PLAYGROUND_1;DEKU_PLAYGROUND;Reward - Any Day;MM Deku Playground Reward Any Day;npc;0;0;DEKU_PLAYGROUND;All;0
+DEKU_PLAYGROUND_2;DEKU_PLAYGROUND;Reward - All Days;MM Deku Playground Reward All Days;npc;399;341;DEKU_PLAYGROUND;All;0
+DEKU_PLAYGROUND_1;DEKU_PLAYGROUND;Reward - Any Day;MM Deku Playground Reward Any Day;npc;399;299;DEKU_PLAYGROUND;All;0
 MASK_SCENTS;DEKU_SHRINE;Mask of Scents;MM Deku Shrine Mask of Scents;npc;0;0;DEKU_SHRINE;All;0
 0x000e;DEKU_SHRINE;Pot 1;MM Deku Shrine Pot 1;pot;0;0;DEKU_SHRINE;All;0
 0x000f;DEKU_SHRINE;Pot 2;MM Deku Shrine Pot 2;pot;0;0;DEKU_SHRINE;All;0
@@ -362,52 +362,52 @@ MASK_SCENTS;DEKU_SHRINE;Mask of Scents;MM Deku Shrine Mask of Scents;npc;0;0;DEK
 0x00403;DEKU_SHRINE;Main 18;MM Deku Shrine Rupee Main 18;rupee;0;0;DEKU_SHRINE;All;0
 0x00404;DEKU_SHRINE;Main 19;MM Deku Shrine Rupee Main 19;rupee;0;0;DEKU_SHRINE;All;0
 0x00405;DEKU_SHRINE;Main 20;MM Deku Shrine Rupee Main 20;rupee;0;0;DEKU_SHRINE;All;0
-0x00;DOG_RACETRACK;Chest;MM Doggy Racetrack Chest;chest;0;0;DOG_RACETRACK;All;0
-DOG_LADY_HEART_PIECE;DOG_RACETRACK;Heart Piece;MM Doggy Racetrack HP;npc;0;0;DOG_RACETRACK;All;0
-0x0009;DOG_RACETRACK;Pot 1;MM Doggy Racetrack Pot 1;pot;0;0;DOG_RACETRACK;All;0
-0x000a;DOG_RACETRACK;Pot 2;MM Doggy Racetrack Pot 2;pot;0;0;DOG_RACETRACK;All;0
-0x000c;DOG_RACETRACK;Pot 3;MM Doggy Racetrack Pot 3;pot;0;0;DOG_RACETRACK;All;0
-0x000d;DOG_RACETRACK;Pot 4;MM Doggy Racetrack Pot 4;pot;0;0;DOG_RACETRACK;All;0
+0x00;DOG_RACETRACK;Chest;MM Doggy Racetrack Chest;chest;268;259;DOG_RACETRACK;All;0
+DOG_LADY_HEART_PIECE;DOG_RACETRACK;Heart Piece;MM Doggy Racetrack HP;npc;650;377;DOG_RACETRACK;All;0
+0x0009;DOG_RACETRACK;Pot 1;MM Doggy Racetrack Pot 1;pot;265;319;DOG_RACETRACK;All;0
+0x000a;DOG_RACETRACK;Pot 2;MM Doggy Racetrack Pot 2;pot;281;307;DOG_RACETRACK;All;0
+0x000c;DOG_RACETRACK;Pot 3;MM Doggy Racetrack Pot 3;pot;295;294;DOG_RACETRACK;All;0
+0x000d;DOG_RACETRACK;Pot 4;MM Doggy Racetrack Pot 4;pot;308;284;DOG_RACETRACK;All;0
 0x0000;EXTRA;Pot Game 1;MM Zora Cape Pot Game 1;pot;0;0;ZORA_CAPE;All;0
 0x0001;EXTRA;Pot Game 2;MM Zora Cape Pot Game 2;pot;0;0;ZORA_CAPE;All;0
 0x0002;EXTRA;Pot Game 3;MM Zora Cape Pot Game 3;pot;0;0;ZORA_CAPE;All;0
 0x0003;EXTRA;Pot Game 4;MM Zora Cape Pot Game 4;pot;0;0;ZORA_CAPE;All;0
 0x0004;EXTRA;Pot Game 5;MM Zora Cape Pot Game 5;pot;0;0;ZORA_CAPE;All;0
-GREAT_FAIRY_TOWN;FAIRY_FOUNTAIN;Great Fairy - Mojo;MM Clock Town Great Fairy;npc;0;0;MM_FAIRY_CLOCK_TOWN;All;0
-GREAT_FAIRY_TOWN_ALT;FAIRY_FOUNTAIN;Great Fairy - Link;MM Clock Town Great Fairy Alt;npc;0;0;MM_FAIRY_CLOCK_TOWN;All;0
+GREAT_FAIRY_TOWN;FAIRY_FOUNTAIN;Great Fairy - Mojo;MM Clock Town Great Fairy;npc;471;310;MM_FAIRY_CLOCK_TOWN;All;0
+GREAT_FAIRY_TOWN_ALT;FAIRY_FOUNTAIN;Great Fairy - Link;MM Clock Town Great Fairy Alt;npc;471;266;MM_FAIRY_CLOCK_TOWN;All;0
 GREAT_FAIRY_OCEAN;FAIRY_FOUNTAIN;Double Defense;MM Great Bay Great Fairy;npc;0;0;MM_FAIRY_GREAT_BAY_COAST;All;0
 GREAT_FAIRY_VALLEY;FAIRY_FOUNTAIN;Great Fairy's Sword;MM Ikana Great Fairy;npc;0;0;MM_FAIRY_IKANA;All;0
 GREAT_FAIRY_MOUNTAIN;FAIRY_FOUNTAIN;Large Magic Upgrade;MM Snowhead Great Fairy;npc;0;0;MM_FAIRY_SNOWHEAD;All;0
-OWL_SNOWHEAD;FAIRY_FOUNTAIN;Owl Statue;MM Snowhead Owl Statue;npc;0;0;SNOWHEAD;Winter;0
+OWL_SNOWHEAD;FAIRY_FOUNTAIN;Owl Statue;MM Snowhead Owl Statue;npc;0;0;SNOWHEAD;All;0
 GREAT_FAIRY_SWAMP;FAIRY_FOUNTAIN;Super Spin Attack;MM Woodfall Great Fairy;npc;0;0;MM_FAIRY_WOODFALL;All;0
 GHOST_HUT_HEART_PIECE;GHOST_HUT;Heart Piece;MM Ghost Hut HP;npc;0;0;GHOST_HUT;All;0
-0x00049;GORMAN_TRACK;Crate;MM Gorman Track Crate;crate;0;0;GORMAN_TRACK;All;0
-MASK_GARO;GORMAN_TRACK;Garo Mask;MM Gorman Track Garo Mask;npc;0;0;GORMAN_TRACK;All;0
-0x00024;GORMAN_TRACK;Pack 1 - Grass 1;MM Gorman Track Grass Pack 1 Grass 01;grass;0;0;GORMAN_TRACK;All;0
-0x10024;GORMAN_TRACK;Pack 1 - Grass 2;MM Gorman Track Grass Pack 1 Grass 02;grass;0;0;GORMAN_TRACK;All;0
-0x20024;GORMAN_TRACK;Pack 1 - Grass 3;MM Gorman Track Grass Pack 1 Grass 03;grass;0;0;GORMAN_TRACK;All;0
-0x30024;GORMAN_TRACK;Pack 1 - Grass 4;MM Gorman Track Grass Pack 1 Grass 04;grass;0;0;GORMAN_TRACK;All;0
-0x40024;GORMAN_TRACK;Pack 1 - Grass 5;MM Gorman Track Grass Pack 1 Grass 05;grass;0;0;GORMAN_TRACK;All;0
-0x50024;GORMAN_TRACK;Pack 1 - Grass 6;MM Gorman Track Grass Pack 1 Grass 06;grass;0;0;GORMAN_TRACK;All;0
-0x60024;GORMAN_TRACK;Pack 1 - Grass 7;MM Gorman Track Grass Pack 1 Grass 07;grass;0;0;GORMAN_TRACK;All;0
-0x70024;GORMAN_TRACK;Pack 1 - Grass 8;MM Gorman Track Grass Pack 1 Grass 08;grass;0;0;GORMAN_TRACK;All;0
-0x80024;GORMAN_TRACK;Pack 1 - Grass 9;MM Gorman Track Grass Pack 1 Grass 09;grass;0;0;GORMAN_TRACK;All;0
-0x90024;GORMAN_TRACK;Pack 1 - Grass 10;MM Gorman Track Grass Pack 1 Grass 10;grass;0;0;GORMAN_TRACK;All;0
-0xa0024;GORMAN_TRACK;Pack 1 - Grass 11;MM Gorman Track Grass Pack 1 Grass 11;grass;0;0;GORMAN_TRACK;All;0
-0xb0024;GORMAN_TRACK;Pack 1 - Grass 12;MM Gorman Track Grass Pack 1 Grass 12;grass;0;0;GORMAN_TRACK;All;0
-0x00025;GORMAN_TRACK;Pack 2 - Grass 1;MM Gorman Track Grass Pack 2 Grass 01;grass;0;0;GORMAN_TRACK;All;0
-0x10025;GORMAN_TRACK;Pack 2 - Grass 2;MM Gorman Track Grass Pack 2 Grass 02;grass;0;0;GORMAN_TRACK;All;0
-0x20025;GORMAN_TRACK;Pack 2 - Grass 3;MM Gorman Track Grass Pack 2 Grass 03;grass;0;0;GORMAN_TRACK;All;0
-0x30025;GORMAN_TRACK;Pack 2 - Grass 4;MM Gorman Track Grass Pack 2 Grass 04;grass;0;0;GORMAN_TRACK;All;0
-0x40025;GORMAN_TRACK;Pack 2 - Grass 5;MM Gorman Track Grass Pack 2 Grass 05;grass;0;0;GORMAN_TRACK;All;0
-0x50025;GORMAN_TRACK;Pack 2 - Grass 6;MM Gorman Track Grass Pack 2 Grass 06;grass;0;0;GORMAN_TRACK;All;0
-0x60025;GORMAN_TRACK;Pack 2 - Grass 7;MM Gorman Track Grass Pack 2 Grass 07;grass;0;0;GORMAN_TRACK;All;0
-0x70025;GORMAN_TRACK;Pack 2 - Grass 8;MM Gorman Track Grass Pack 2 Grass 08;grass;0;0;GORMAN_TRACK;All;0
-0x80025;GORMAN_TRACK;Pack 2 - Grass 9;MM Gorman Track Grass Pack 2 Grass 09;grass;0;0;GORMAN_TRACK;All;0
-0x90025;GORMAN_TRACK;Pack 2 - Grass 10;MM Gorman Track Grass Pack 2 Grass 10;grass;0;0;GORMAN_TRACK;All;0
-0xa0025;GORMAN_TRACK;Pack 2 - Grass 11;MM Gorman Track Grass Pack 2 Grass 11;grass;0;0;GORMAN_TRACK;All;0
-0xb0025;GORMAN_TRACK;Pack 2 - Grass 12;MM Gorman Track Grass Pack 2 Grass 12;grass;0;0;GORMAN_TRACK;All;0
-GORMAN_MILK;GORMAN_TRACK;Purchase - Milk;MM Gorman Track Milk Purchase;npc;0;0;GORMAN_TRACK;All;0
+0x00049;GORMAN_TRACK;Crate;MM Gorman Track Crate;crate;640;242;GORMAN_TRACK;All;0
+MASK_GARO;GORMAN_TRACK;Garo Mask;MM Gorman Track Garo Mask;npc;628;231;GORMAN_TRACK;All;0
+0x00024;GORMAN_TRACK;Pack 1 - Grass 1;MM Gorman Track Grass Pack 1 Grass 01;grass;174;456;GORMAN_TRACK;All;0
+0x10024;GORMAN_TRACK;Pack 1 - Grass 2;MM Gorman Track Grass Pack 1 Grass 02;grass;157;453;GORMAN_TRACK;All;0
+0x20024;GORMAN_TRACK;Pack 1 - Grass 3;MM Gorman Track Grass Pack 1 Grass 03;grass;189;446;GORMAN_TRACK;All;0
+0x30024;GORMAN_TRACK;Pack 1 - Grass 4;MM Gorman Track Grass Pack 1 Grass 04;grass;144;444;GORMAN_TRACK;All;0
+0x40024;GORMAN_TRACK;Pack 1 - Grass 5;MM Gorman Track Grass Pack 1 Grass 05;grass;194;429;GORMAN_TRACK;All;0
+0x50024;GORMAN_TRACK;Pack 1 - Grass 6;MM Gorman Track Grass Pack 1 Grass 06;grass;135;429;GORMAN_TRACK;All;0
+0x60024;GORMAN_TRACK;Pack 1 - Grass 7;MM Gorman Track Grass Pack 1 Grass 07;grass;165;425;GORMAN_TRACK;All;0
+0x70024;GORMAN_TRACK;Pack 1 - Grass 8;MM Gorman Track Grass Pack 1 Grass 08;grass;138;412;GORMAN_TRACK;All;0
+0x80024;GORMAN_TRACK;Pack 1 - Grass 9;MM Gorman Track Grass Pack 1 Grass 09;grass;193;412;GORMAN_TRACK;All;0
+0x90024;GORMAN_TRACK;Pack 1 - Grass 10;MM Gorman Track Grass Pack 1 Grass 10;grass;182;398;GORMAN_TRACK;All;0
+0xa0024;GORMAN_TRACK;Pack 1 - Grass 11;MM Gorman Track Grass Pack 1 Grass 11;grass;148;397;GORMAN_TRACK;All;0
+0xb0024;GORMAN_TRACK;Pack 1 - Grass 12;MM Gorman Track Grass Pack 1 Grass 12;grass;166;395;GORMAN_TRACK;All;0
+0x00025;GORMAN_TRACK;Pack 2 - Grass 1;MM Gorman Track Grass Pack 2 Grass 01;grass;104;383;GORMAN_TRACK;All;0
+0x10025;GORMAN_TRACK;Pack 2 - Grass 2;MM Gorman Track Grass Pack 2 Grass 02;grass;84;410;GORMAN_TRACK;All;0
+0x20025;GORMAN_TRACK;Pack 2 - Grass 3;MM Gorman Track Grass Pack 2 Grass 03;grass;67;407;GORMAN_TRACK;All;0
+0x30025;GORMAN_TRACK;Pack 2 - Grass 4;MM Gorman Track Grass Pack 2 Grass 04;grass;99;400;GORMAN_TRACK;All;0
+0x40025;GORMAN_TRACK;Pack 2 - Grass 5;MM Gorman Track Grass Pack 2 Grass 05;grass;54;398;GORMAN_TRACK;All;0
+0x50025;GORMAN_TRACK;Pack 2 - Grass 6;MM Gorman Track Grass Pack 2 Grass 06;grass;45;383;GORMAN_TRACK;All;0
+0x60025;GORMAN_TRACK;Pack 2 - Grass 7;MM Gorman Track Grass Pack 2 Grass 07;grass;75;379;GORMAN_TRACK;All;0
+0x70025;GORMAN_TRACK;Pack 2 - Grass 8;MM Gorman Track Grass Pack 2 Grass 08;grass;48;366;GORMAN_TRACK;All;0
+0x80025;GORMAN_TRACK;Pack 2 - Grass 9;MM Gorman Track Grass Pack 2 Grass 09;grass;103;366;GORMAN_TRACK;All;0
+0x90025;GORMAN_TRACK;Pack 2 - Grass 10;MM Gorman Track Grass Pack 2 Grass 10;grass;92;352;GORMAN_TRACK;All;0
+0xa0025;GORMAN_TRACK;Pack 2 - Grass 11;MM Gorman Track Grass Pack 2 Grass 11;grass;58;351;GORMAN_TRACK;All;0
+0xb0025;GORMAN_TRACK;Pack 2 - Grass 12;MM Gorman Track Grass Pack 2 Grass 12;grass;76;349;GORMAN_TRACK;All;0
+GORMAN_MILK;GORMAN_TRACK;Purchase - Milk;MM Gorman Track Milk Purchase;npc;663;235;GORMAN_TRACK;All;0
 MASK_GORON;GORON_GRAVEYARD;Goron Mask;MM Goron Graveyard Mask;npc;0;0;GORON_GRAVEYARD;All;0
 0x0002;GORON_RACETRACK;Pot 1;MM Goron Race Pot 01;pot;0;0;GORON_RACETRACK;All;0
 0x0003;GORON_RACETRACK;Pot 2;MM Goron Race Pot 02;pot;0;0;GORON_RACETRACK;All;0
@@ -527,8 +527,8 @@ GORON_BABY;GORON_VILLAGE_WINTER;Goron's Lulluby;MM Goron Baby;none;0;0;GORON_SHR
 0x34085;GREAT_BAY_COAST;Cleared 2;MM Great Bay Coast Cleared Butterfly 2;butterfly;0;0;GREAT_BAY_COAST;All;0
 0x04085;GREAT_BAY_COAST;Common 1;MM Great Bay Coast Common Butterfly 1;butterfly;0;0;GREAT_BAY_COAST;All;0
 0x14085;GREAT_BAY_COAST;Common 2;MM Great Bay Coast Common Butterfly 2;butterfly;0;0;GREAT_BAY_COAST;All;0
-0x16;GREAT_BAY_COAST;Back;MM Great Bay Coast Cow Back;cow;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x15;GREAT_BAY_COAST;Front;MM Great Bay Coast Cow Front;cow;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x16;GREAT_BAY_COAST;Back;MM Great Bay Coast Cow Back;cow;568;417;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x15;GREAT_BAY_COAST;Front;MM Great Bay Coast Cow Front;cow;572;378;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
 FISHERMAN_HEART_PIECE;GREAT_BAY_COAST;Fisherman Game - Heart Piece;MM Great Bay Coast Fisherman HP;npc;0;0;GREAT_BAY_COAST;All;0
 0x0006e;GREAT_BAY_COAST;Grass 1;MM Great Bay Coast Grass 1;grass;0;0;GREAT_BAY_COAST;All;0
 0x0006f;GREAT_BAY_COAST;Grass 2;MM Great Bay Coast Grass 2;grass;0;0;GREAT_BAY_COAST;All;0
@@ -646,30 +646,30 @@ SONG_ZORA;GREAT_BAY_COAST;New Wave Bossa Nova;MM Laboratory Zora Song;none;0;0;L
 0xa0f09;GREAT_BAY_COAST;Grass 71;MM Great Bay Cow Grotto Grass 71;none;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
 0xb0f09;GREAT_BAY_COAST;Grass 72;MM Great Bay Cow Grotto Grass 72;none;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
 0x00f02;GREAT_BAY_COAST;Hive;MM Great Bay Cow Grotto Hive;none;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x00b00;GROTTOS;Grass 1;MM Bio Baba Grotto Grass 1;grass;0;0;MM_GROTTO_TERMINA_BIO_BABA;All;0
-0x00b03;GROTTOS;Grass 2;MM Bio Baba Grotto Grass 2;grass;0;0;MM_GROTTO_TERMINA_BIO_BABA;All;0
-0x00200;GROTTOS;Grass 1;MM Canyon Gossip Grotto Grass 1;grass;0;0;MM_GROTTO_TERMINA_CANYON_GOSSIP;All;0
-0x00201;GROTTOS;Grass 2;MM Canyon Gossip Grotto Grass 2;grass;0;0;MM_GROTTO_TERMINA_CANYON_GOSSIP;All;0
-0x00202;GROTTOS;Grass 3;MM Canyon Gossip Grotto Grass 3;grass;0;0;MM_GROTTO_TERMINA_CANYON_GOSSIP;All;0
-0x00203;GROTTOS;Grass 4;MM Canyon Gossip Grotto Grass 4;grass;0;0;MM_GROTTO_TERMINA_CANYON_GOSSIP;All;0
-0x00204;GROTTOS;Grass 5;MM Canyon Gossip Grotto Grass 5;grass;0;0;MM_GROTTO_TERMINA_CANYON_GOSSIP;All;0
-0x00c04;GROTTOS;Butterfly 1;MM Deku Palace Grotto Butterfly 1;butterfly;0;0;MM_GROTTO_DEKU_PALACE_BEANS;All;0
-0x10c04;GROTTOS;Butterfly 2;MM Deku Palace Grotto Butterfly 2;butterfly;0;0;MM_GROTTO_DEKU_PALACE_BEANS;All;0
-0x20c04;GROTTOS;Butterfly 3;MM Deku Palace Grotto Butterfly 3;butterfly;0;0;MM_GROTTO_DEKU_PALACE_BEANS;All;0
-0x30c04;GROTTOS;Butterfly 4;MM Deku Palace Grotto Butterfly 4;butterfly;0;0;MM_GROTTO_DEKU_PALACE_BEANS;All;0
-0x05;GROTTOS;Chest;MM Deku Palace Grotto Chest;chest;0;0;MM_GROTTO_DEKU_PALACE_BEANS;All;0
-0x00c03;GROTTOS;Grass 1;MM Deku Palace Grotto Grass 01;grass;0;0;MM_GROTTO_DEKU_PALACE_BEANS;All;0
-0x10c03;GROTTOS;Grass 2;MM Deku Palace Grotto Grass 02;grass;0;0;MM_GROTTO_DEKU_PALACE_BEANS;All;0
-0x20c03;GROTTOS;Grass 3;MM Deku Palace Grotto Grass 03;grass;0;0;MM_GROTTO_DEKU_PALACE_BEANS;All;0
-0x30c03;GROTTOS;Grass 4;MM Deku Palace Grotto Grass 04;grass;0;0;MM_GROTTO_DEKU_PALACE_BEANS;All;0
-0x40c03;GROTTOS;Grass 5;MM Deku Palace Grotto Grass 05;grass;0;0;MM_GROTTO_DEKU_PALACE_BEANS;All;0
-0x50c03;GROTTOS;Grass 6;MM Deku Palace Grotto Grass 06;grass;0;0;MM_GROTTO_DEKU_PALACE_BEANS;All;0
-0x60c03;GROTTOS;Grass 7;MM Deku Palace Grotto Grass 07;grass;0;0;MM_GROTTO_DEKU_PALACE_BEANS;All;0
-0x70c03;GROTTOS;Grass 8;MM Deku Palace Grotto Grass 08;grass;0;0;MM_GROTTO_DEKU_PALACE_BEANS;All;0
-0x80c03;GROTTOS;Grass 9;MM Deku Palace Grotto Grass 09;grass;0;0;MM_GROTTO_DEKU_PALACE_BEANS;All;0
-0x90c03;GROTTOS;Grass 10;MM Deku Palace Grotto Grass 10;grass;0;0;MM_GROTTO_DEKU_PALACE_BEANS;All;0
-0xa0c03;GROTTOS;Grass 11;MM Deku Palace Grotto Grass 11;grass;0;0;MM_GROTTO_DEKU_PALACE_BEANS;All;0
-0xb0c03;GROTTOS;Grass 12;MM Deku Palace Grotto Grass 12;grass;0;0;MM_GROTTO_DEKU_PALACE_BEANS;All;0
+0x00b00;GROTTOS;Grass 1;MM Bio Baba Grotto Grass 1;grass;685;369;MM_GROTTO_TERMINA_BIO_BABA;All;0
+0x00b03;GROTTOS;Grass 2;MM Bio Baba Grotto Grass 2;grass;799;365;MM_GROTTO_TERMINA_BIO_BABA;All;0
+0x00200;GROTTOS;Grass 1;MM Canyon Gossip Grotto Grass 1;grass;829;547;MM_GROTTO_TERMINA_CANYON_GOSSIP;All;0
+0x00201;GROTTOS;Grass 2;MM Canyon Gossip Grotto Grass 2;grass;253;426;MM_GROTTO_TERMINA_CANYON_GOSSIP;All;0
+0x00202;GROTTOS;Grass 3;MM Canyon Gossip Grotto Grass 3;grass;620;424;MM_GROTTO_TERMINA_CANYON_GOSSIP;All;0
+0x00203;GROTTOS;Grass 4;MM Canyon Gossip Grotto Grass 4;grass;702;422;MM_GROTTO_TERMINA_CANYON_GOSSIP;All;0
+0x00204;GROTTOS;Grass 5;MM Canyon Gossip Grotto Grass 5;grass;270;396;MM_GROTTO_TERMINA_CANYON_GOSSIP;All;0
+0x00c04;GROTTOS;Butterfly 1;MM Deku Palace Grotto Butterfly 1;butterfly;148;524;MM_GROTTO_DEKU_PALACE_BEANS;All;0
+0x10c04;GROTTOS;Butterfly 2;MM Deku Palace Grotto Butterfly 2;butterfly;109;524;MM_GROTTO_DEKU_PALACE_BEANS;All;0
+0x20c04;GROTTOS;Butterfly 3;MM Deku Palace Grotto Butterfly 3;butterfly;128;515;MM_GROTTO_DEKU_PALACE_BEANS;All;0
+0x30c04;GROTTOS;Butterfly 4;MM Deku Palace Grotto Butterfly 4;butterfly;143;506;MM_GROTTO_DEKU_PALACE_BEANS;All;0
+0x05;GROTTOS;Chest;MM Deku Palace Grotto Chest;chest;579;263;MM_GROTTO_DEKU_PALACE_BEANS;All;0
+0x00c03;GROTTOS;Grass 1;MM Deku Palace Grotto Grass 01;grass;230;545;MM_GROTTO_DEKU_PALACE_BEANS;All;0
+0x10c03;GROTTOS;Grass 2;MM Deku Palace Grotto Grass 02;grass;214;544;MM_GROTTO_DEKU_PALACE_BEANS;All;0
+0x20c03;GROTTOS;Grass 3;MM Deku Palace Grotto Grass 03;grass;243;537;MM_GROTTO_DEKU_PALACE_BEANS;All;0
+0x30c03;GROTTOS;Grass 4;MM Deku Palace Grotto Grass 04;grass;203;535;MM_GROTTO_DEKU_PALACE_BEANS;All;0
+0x40c03;GROTTOS;Grass 5;MM Deku Palace Grotto Grass 05;grass;247;522;MM_GROTTO_DEKU_PALACE_BEANS;All;0
+0x50c03;GROTTOS;Grass 6;MM Deku Palace Grotto Grass 06;grass;196;522;MM_GROTTO_DEKU_PALACE_BEANS;All;0
+0x60c03;GROTTOS;Grass 7;MM Deku Palace Grotto Grass 07;grass;222;519;MM_GROTTO_DEKU_PALACE_BEANS;All;0
+0x70c03;GROTTOS;Grass 8;MM Deku Palace Grotto Grass 08;grass;245;508;MM_GROTTO_DEKU_PALACE_BEANS;All;0
+0x80c03;GROTTOS;Grass 9;MM Deku Palace Grotto Grass 09;grass;199;508;MM_GROTTO_DEKU_PALACE_BEANS;All;0
+0x90c03;GROTTOS;Grass 10;MM Deku Palace Grotto Grass 10;grass;236;496;MM_GROTTO_DEKU_PALACE_BEANS;All;0
+0xa0c03;GROTTOS;Grass 11;MM Deku Palace Grotto Grass 11;grass;207;496;MM_GROTTO_DEKU_PALACE_BEANS;All;0
+0xb0c03;GROTTOS;Grass 12;MM Deku Palace Grotto Grass 12;grass;222;493;MM_GROTTO_DEKU_PALACE_BEANS;All;0
 0x00603;GROTTOS;Butterfly 1;MM Deku Palace JP Line Grotto Butterfly 1;butterfly;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;All;0
 0x10603;GROTTOS;Butterfly 2;MM Deku Palace JP Line Grotto Butterfly 2;butterfly;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;All;0
 0x20603;GROTTOS;Butterfly 3;MM Deku Palace JP Line Grotto Butterfly 3;butterfly;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;All;0
@@ -680,414 +680,414 @@ SONG_ZORA;GREAT_BAY_COAST;New Wave Bossa Nova;MM Laboratory Zora Song;none;0;0;L
 0x00604;GROTTOS;Grass 3;MM Deku Palace JP Line Grotto Grass 3;grass;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;All;0
 0x00605;GROTTOS;Grass 4;MM Deku Palace JP Line Grotto Grass 4;grass;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;All;0
 0x00606;GROTTOS;Grass 5;MM Deku Palace JP Line Grotto Grass 5;grass;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;All;0
-0x17;GROTTOS;Chest;MM Great Bay Coast Fisherman Grotto;chest;0;0;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
-0x03700;GROTTOS;Grass 1;MM Great Bay Coast Fisherman Grotto Grass 01;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
-0x03701;GROTTOS;Grass 2;MM Great Bay Coast Fisherman Grotto Grass 02;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
-0x03702;GROTTOS;Grass 3;MM Great Bay Coast Fisherman Grotto Grass 03;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
-0x03703;GROTTOS;Grass 4;MM Great Bay Coast Fisherman Grotto Grass 04;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
-0x03705;GROTTOS;Grass 5;MM Great Bay Coast Fisherman Grotto Grass 05;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
-0x03706;GROTTOS;Grass 6;MM Great Bay Coast Fisherman Grotto Grass 06;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
-0x0370a;GROTTOS;Grass 7;MM Great Bay Coast Fisherman Grotto Grass 07;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
-0x0370b;GROTTOS;Grass 8;MM Great Bay Coast Fisherman Grotto Grass 08;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
-0x0370c;GROTTOS;Grass 9;MM Great Bay Coast Fisherman Grotto Grass 09;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
-0x0370e;GROTTOS;Grass 10;MM Great Bay Coast Fisherman Grotto Grass 10;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
-0x03710;GROTTOS;Grass 11;MM Great Bay Coast Fisherman Grotto Grass 11;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
-0x03711;GROTTOS;Grass 12;MM Great Bay Coast Fisherman Grotto Grass 12;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
-0x03712;GROTTOS;Grass 13;MM Great Bay Coast Fisherman Grotto Grass 13;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
-0x03713;GROTTOS;Grass 14;MM Great Bay Coast Fisherman Grotto Grass 14;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
-0x00f06;GROTTOS;Butterfly 1;MM Great Bay Cow Grotto Butterfly 1;butterfly;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x10f06;GROTTOS;Butterfly 2;MM Great Bay Cow Grotto Butterfly 2;butterfly;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x20f06;GROTTOS;Butterfly 3;MM Great Bay Cow Grotto Butterfly 3;butterfly;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x00f00;GROTTOS;Grass 1;MM Great Bay Cow Grotto Grass 01;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x10f00;GROTTOS;Grass 2;MM Great Bay Cow Grotto Grass 02;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x20f00;GROTTOS;Grass 3;MM Great Bay Cow Grotto Grass 03;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x30f00;GROTTOS;Grass 4;MM Great Bay Cow Grotto Grass 04;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x40f00;GROTTOS;Grass 5;MM Great Bay Cow Grotto Grass 05;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x50f00;GROTTOS;Grass 6;MM Great Bay Cow Grotto Grass 06;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x60f00;GROTTOS;Grass 7;MM Great Bay Cow Grotto Grass 07;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x70f00;GROTTOS;Grass 8;MM Great Bay Cow Grotto Grass 08;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x80f00;GROTTOS;Grass 9;MM Great Bay Cow Grotto Grass 09;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x90f00;GROTTOS;Grass 10;MM Great Bay Cow Grotto Grass 10;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0xa0f00;GROTTOS;Grass 11;MM Great Bay Cow Grotto Grass 11;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0xb0f00;GROTTOS;Grass 12;MM Great Bay Cow Grotto Grass 12;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x00f01;GROTTOS;Grass 13;MM Great Bay Cow Grotto Grass 13;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x10f01;GROTTOS;Grass 14;MM Great Bay Cow Grotto Grass 14;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x20f01;GROTTOS;Grass 15;MM Great Bay Cow Grotto Grass 15;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x30f01;GROTTOS;Grass 16;MM Great Bay Cow Grotto Grass 16;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x40f01;GROTTOS;Grass 17;MM Great Bay Cow Grotto Grass 17;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x50f01;GROTTOS;Grass 18;MM Great Bay Cow Grotto Grass 18;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x60f01;GROTTOS;Grass 19;MM Great Bay Cow Grotto Grass 19;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x70f01;GROTTOS;Grass 20;MM Great Bay Cow Grotto Grass 20;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x80f01;GROTTOS;Grass 21;MM Great Bay Cow Grotto Grass 21;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x90f01;GROTTOS;Grass 22;MM Great Bay Cow Grotto Grass 22;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0xa0f01;GROTTOS;Grass 23;MM Great Bay Cow Grotto Grass 23;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0xb0f01;GROTTOS;Grass 24;MM Great Bay Cow Grotto Grass 24;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x00f04;GROTTOS;Grass 25;MM Great Bay Cow Grotto Grass 25;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x10f04;GROTTOS;Grass 26;MM Great Bay Cow Grotto Grass 26;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x20f04;GROTTOS;Grass 27;MM Great Bay Cow Grotto Grass 27;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x30f04;GROTTOS;Grass 28;MM Great Bay Cow Grotto Grass 28;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x40f04;GROTTOS;Grass 29;MM Great Bay Cow Grotto Grass 29;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x50f04;GROTTOS;Grass 30;MM Great Bay Cow Grotto Grass 30;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x60f04;GROTTOS;Grass 31;MM Great Bay Cow Grotto Grass 31;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x70f04;GROTTOS;Grass 32;MM Great Bay Cow Grotto Grass 32;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x80f04;GROTTOS;Grass 33;MM Great Bay Cow Grotto Grass 33;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x90f04;GROTTOS;Grass 34;MM Great Bay Cow Grotto Grass 34;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0xa0f04;GROTTOS;Grass 35;MM Great Bay Cow Grotto Grass 35;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0xb0f04;GROTTOS;Grass 36;MM Great Bay Cow Grotto Grass 36;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x00f05;GROTTOS;Grass 37;MM Great Bay Cow Grotto Grass 37;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x10f05;GROTTOS;Grass 38;MM Great Bay Cow Grotto Grass 38;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x20f05;GROTTOS;Grass 39;MM Great Bay Cow Grotto Grass 39;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x30f05;GROTTOS;Grass 40;MM Great Bay Cow Grotto Grass 40;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x40f05;GROTTOS;Grass 41;MM Great Bay Cow Grotto Grass 41;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x50f05;GROTTOS;Grass 42;MM Great Bay Cow Grotto Grass 42;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x60f05;GROTTOS;Grass 43;MM Great Bay Cow Grotto Grass 43;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x70f05;GROTTOS;Grass 44;MM Great Bay Cow Grotto Grass 44;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x80f05;GROTTOS;Grass 45;MM Great Bay Cow Grotto Grass 45;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x90f05;GROTTOS;Grass 46;MM Great Bay Cow Grotto Grass 46;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0xa0f05;GROTTOS;Grass 47;MM Great Bay Cow Grotto Grass 47;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0xb0f05;GROTTOS;Grass 48;MM Great Bay Cow Grotto Grass 48;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x00f08;GROTTOS;Grass 49;MM Great Bay Cow Grotto Grass 49;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x10f08;GROTTOS;Grass 50;MM Great Bay Cow Grotto Grass 50;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x20f08;GROTTOS;Grass 51;MM Great Bay Cow Grotto Grass 51;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x30f08;GROTTOS;Grass 52;MM Great Bay Cow Grotto Grass 52;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x40f08;GROTTOS;Grass 53;MM Great Bay Cow Grotto Grass 53;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x50f08;GROTTOS;Grass 54;MM Great Bay Cow Grotto Grass 54;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x60f08;GROTTOS;Grass 55;MM Great Bay Cow Grotto Grass 55;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x70f08;GROTTOS;Grass 56;MM Great Bay Cow Grotto Grass 56;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x80f08;GROTTOS;Grass 57;MM Great Bay Cow Grotto Grass 57;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x90f08;GROTTOS;Grass 58;MM Great Bay Cow Grotto Grass 58;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0xa0f08;GROTTOS;Grass 59;MM Great Bay Cow Grotto Grass 59;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0xb0f08;GROTTOS;Grass 60;MM Great Bay Cow Grotto Grass 60;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x00f09;GROTTOS;Grass 61;MM Great Bay Cow Grotto Grass 61;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x10f09;GROTTOS;Grass 62;MM Great Bay Cow Grotto Grass 62;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x20f09;GROTTOS;Grass 63;MM Great Bay Cow Grotto Grass 63;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x30f09;GROTTOS;Grass 64;MM Great Bay Cow Grotto Grass 64;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x40f09;GROTTOS;Grass 65;MM Great Bay Cow Grotto Grass 65;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x50f09;GROTTOS;Grass 66;MM Great Bay Cow Grotto Grass 66;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x60f09;GROTTOS;Grass 67;MM Great Bay Cow Grotto Grass 67;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x70f09;GROTTOS;Grass 68;MM Great Bay Cow Grotto Grass 68;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x80f09;GROTTOS;Grass 69;MM Great Bay Cow Grotto Grass 69;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x90f09;GROTTOS;Grass 70;MM Great Bay Cow Grotto Grass 70;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0xa0f09;GROTTOS;Grass 71;MM Great Bay Cow Grotto Grass 71;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0xb0f09;GROTTOS;Grass 72;MM Great Bay Cow Grotto Grass 72;grass;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x00f02;GROTTOS;Hive;MM Great Bay Cow Grotto Hive;hive;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
-0x18;GROTTOS;Chest;MM Ikana Graveyard Grotto;chest;0;0;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
-0x03800;GROTTOS;Grass 1;MM Ikana Graveyard Grotto Grass 01;grass;0;0;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
-0x03801;GROTTOS;Grass 2;MM Ikana Graveyard Grotto Grass 02;grass;0;0;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
-0x03802;GROTTOS;Grass 3;MM Ikana Graveyard Grotto Grass 03;grass;0;0;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
-0x03803;GROTTOS;Grass 4;MM Ikana Graveyard Grotto Grass 04;grass;0;0;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
-0x03805;GROTTOS;Grass 5;MM Ikana Graveyard Grotto Grass 05;grass;0;0;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
-0x03806;GROTTOS;Grass 6;MM Ikana Graveyard Grotto Grass 06;grass;0;0;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
-0x0380a;GROTTOS;Grass 7;MM Ikana Graveyard Grotto Grass 07;grass;0;0;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
-0x0380b;GROTTOS;Grass 8;MM Ikana Graveyard Grotto Grass 08;grass;0;0;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
-0x0380c;GROTTOS;Grass 9;MM Ikana Graveyard Grotto Grass 09;grass;0;0;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
-0x0380e;GROTTOS;Grass 10;MM Ikana Graveyard Grotto Grass 10;grass;0;0;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
-0x03810;GROTTOS;Grass 11;MM Ikana Graveyard Grotto Grass 11;grass;0;0;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
-0x03811;GROTTOS;Grass 12;MM Ikana Graveyard Grotto Grass 12;grass;0;0;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
-0x03812;GROTTOS;Grass 13;MM Ikana Graveyard Grotto Grass 13;grass;0;0;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
-0x03813;GROTTOS;Grass 14;MM Ikana Graveyard Grotto Grass 14;grass;0;0;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
-0x14;GROTTOS;Chest;MM Ikana Valley Grotto;chest;0;0;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
-0x03400;GROTTOS;Grass 1;MM Ikana Valley Grotto Grass 01;grass;0;0;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
-0x03401;GROTTOS;Grass 2;MM Ikana Valley Grotto Grass 02;grass;0;0;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
-0x03402;GROTTOS;Grass 3;MM Ikana Valley Grotto Grass 03;grass;0;0;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
-0x03403;GROTTOS;Grass 4;MM Ikana Valley Grotto Grass 04;grass;0;0;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
-0x03405;GROTTOS;Grass 5;MM Ikana Valley Grotto Grass 05;grass;0;0;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
-0x03406;GROTTOS;Grass 6;MM Ikana Valley Grotto Grass 06;grass;0;0;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
-0x0340a;GROTTOS;Grass 7;MM Ikana Valley Grotto Grass 07;grass;0;0;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
-0x0340b;GROTTOS;Grass 8;MM Ikana Valley Grotto Grass 08;grass;0;0;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
-0x0340c;GROTTOS;Grass 9;MM Ikana Valley Grotto Grass 09;grass;0;0;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
-0x0340e;GROTTOS;Grass 10;MM Ikana Valley Grotto Grass 10;grass;0;0;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
-0x03410;GROTTOS;Grass 11;MM Ikana Valley Grotto Grass 11;grass;0;0;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
-0x03411;GROTTOS;Grass 12;MM Ikana Valley Grotto Grass 12;grass;0;0;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
-0x03412;GROTTOS;Grass 13;MM Ikana Valley Grotto Grass 13;grass;0;0;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
-0x03413;GROTTOS;Grass 14;MM Ikana Valley Grotto Grass 14;grass;0;0;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
-0x06;GROTTOS;Boulder;MM Lone Peak Shrine Boulder Chest;chest;0;0;LONE_PEAK;All;0
-0x00500;GROTTOS;Pack 1 - Grass 1;MM Lone Peak Shrine Grass Pack 1 Grass 01;grass;0;0;LONE_PEAK;All;0
-0x10500;GROTTOS;Pack 1 - Grass 2;MM Lone Peak Shrine Grass Pack 1 Grass 02;grass;0;0;LONE_PEAK;All;0
-0x20500;GROTTOS;Pack 1 - Grass 3;MM Lone Peak Shrine Grass Pack 1 Grass 03;grass;0;0;LONE_PEAK;All;0
-0x30500;GROTTOS;Pack 1 - Grass 4;MM Lone Peak Shrine Grass Pack 1 Grass 04;grass;0;0;LONE_PEAK;All;0
-0x40500;GROTTOS;Pack 1 - Grass 5;MM Lone Peak Shrine Grass Pack 1 Grass 05;grass;0;0;LONE_PEAK;All;0
-0x50500;GROTTOS;Pack 1 - Grass 6;MM Lone Peak Shrine Grass Pack 1 Grass 06;grass;0;0;LONE_PEAK;All;0
-0x60500;GROTTOS;Pack 1 - Grass 7;MM Lone Peak Shrine Grass Pack 1 Grass 07;grass;0;0;LONE_PEAK;All;0
-0x70500;GROTTOS;Pack 1 - Grass 8;MM Lone Peak Shrine Grass Pack 1 Grass 08;grass;0;0;LONE_PEAK;All;0
-0x80500;GROTTOS;Pack 1 - Grass 9;MM Lone Peak Shrine Grass Pack 1 Grass 09;grass;0;0;LONE_PEAK;All;0
-0x90500;GROTTOS;Pack 1 - Grass 10;MM Lone Peak Shrine Grass Pack 1 Grass 10;grass;0;0;LONE_PEAK;All;0
-0xa0500;GROTTOS;Pack 1 - Grass 11;MM Lone Peak Shrine Grass Pack 1 Grass 11;grass;0;0;LONE_PEAK;All;0
-0xb0500;GROTTOS;Pack 1 - Grass 12;MM Lone Peak Shrine Grass Pack 1 Grass 12;grass;0;0;LONE_PEAK;All;0
-0x00502;GROTTOS;Pack 2 - Grass 1;MM Lone Peak Shrine Grass Pack 2 Grass 01;grass;0;0;LONE_PEAK;All;0
-0x10502;GROTTOS;Pack 2 - Grass 2;MM Lone Peak Shrine Grass Pack 2 Grass 02;grass;0;0;LONE_PEAK;All;0
-0x20502;GROTTOS;Pack 2 - Grass 3;MM Lone Peak Shrine Grass Pack 2 Grass 03;grass;0;0;LONE_PEAK;All;0
-0x30502;GROTTOS;Pack 2 - Grass 4;MM Lone Peak Shrine Grass Pack 2 Grass 04;grass;0;0;LONE_PEAK;All;0
-0x40502;GROTTOS;Pack 2 - Grass 5;MM Lone Peak Shrine Grass Pack 2 Grass 05;grass;0;0;LONE_PEAK;All;0
-0x50502;GROTTOS;Pack 2 - Grass 6;MM Lone Peak Shrine Grass Pack 2 Grass 06;grass;0;0;LONE_PEAK;All;0
-0x60502;GROTTOS;Pack 2 - Grass 7;MM Lone Peak Shrine Grass Pack 2 Grass 07;grass;0;0;LONE_PEAK;All;0
-0x70502;GROTTOS;Pack 2 - Grass 8;MM Lone Peak Shrine Grass Pack 2 Grass 08;grass;0;0;LONE_PEAK;All;0
-0x80502;GROTTOS;Pack 2 - Grass 9;MM Lone Peak Shrine Grass Pack 2 Grass 09;grass;0;0;LONE_PEAK;All;0
-0x90502;GROTTOS;Pack 2 - Grass 10;MM Lone Peak Shrine Grass Pack 2 Grass 10;grass;0;0;LONE_PEAK;All;0
-0xa0502;GROTTOS;Pack 2 - Grass 11;MM Lone Peak Shrine Grass Pack 2 Grass 11;grass;0;0;LONE_PEAK;All;0
-0xb0502;GROTTOS;Pack 2 - Grass 12;MM Lone Peak Shrine Grass Pack 2 Grass 12;grass;0;0;LONE_PEAK;All;0
-0x03;GROTTOS;Invisible;MM Lone Peak Shrine Invisible Chest;chest;0;0;LONE_PEAK;All;0
-0x01;GROTTOS;Lens of Truth;MM Lone Peak Shrine Lens Chest;chest;0;0;LONE_PEAK;All;0
-0x1b;GROTTOS;Chest;MM Mountain Village Tunnel Grotto;chest;0;0;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
-0x03b00;GROTTOS;Grass 1;MM Mountain Village Tunnel Grotto Grass 01;grass;0;0;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
-0x03b01;GROTTOS;Grass 2;MM Mountain Village Tunnel Grotto Grass 02;grass;0;0;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
-0x03b02;GROTTOS;Grass 3;MM Mountain Village Tunnel Grotto Grass 03;grass;0;0;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
-0x03b03;GROTTOS;Grass 4;MM Mountain Village Tunnel Grotto Grass 04;grass;0;0;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
-0x03b05;GROTTOS;Grass 5;MM Mountain Village Tunnel Grotto Grass 05;grass;0;0;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
-0x03b06;GROTTOS;Grass 6;MM Mountain Village Tunnel Grotto Grass 06;grass;0;0;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
-0x03b0a;GROTTOS;Grass 7;MM Mountain Village Tunnel Grotto Grass 07;grass;0;0;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
-0x03b0b;GROTTOS;Grass 8;MM Mountain Village Tunnel Grotto Grass 08;grass;0;0;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
-0x03b0c;GROTTOS;Grass 9;MM Mountain Village Tunnel Grotto Grass 09;grass;0;0;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
-0x03b0e;GROTTOS;Grass 10;MM Mountain Village Tunnel Grotto Grass 10;grass;0;0;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
-0x03b10;GROTTOS;Grass 11;MM Mountain Village Tunnel Grotto Grass 11;grass;0;0;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
-0x03b11;GROTTOS;Grass 12;MM Mountain Village Tunnel Grotto Grass 12;grass;0;0;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
-0x03b12;GROTTOS;Grass 13;MM Mountain Village Tunnel Grotto Grass 13;grass;0;0;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
-0x03b13;GROTTOS;Grass 14;MM Mountain Village Tunnel Grotto Grass 14;grass;0;0;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
-0x00002;GROTTOS;Butterfly 1;MM Ocean Gossip Grotto Butterfly 1;butterfly;0;0;MM_GROTTO_TERMINA_OCEAN_GOSSIP;All;0
-0x10002;GROTTOS;Butterfly 2;MM Ocean Gossip Grotto Butterfly 2;butterfly;0;0;MM_GROTTO_TERMINA_OCEAN_GOSSIP;All;0
-0x00001;GROTTOS;Grass 1;MM Ocean Gossip Grotto Grass 1;grass;0;0;MM_GROTTO_TERMINA_OCEAN_GOSSIP;All;0
-0x00004;GROTTOS;Grass 2;MM Ocean Gossip Grotto Grass 2;grass;0;0;MM_GROTTO_TERMINA_OCEAN_GOSSIP;All;0
-0x00006;GROTTOS;Grass 3;MM Ocean Gossip Grotto Grass 3;grass;0;0;MM_GROTTO_TERMINA_OCEAN_GOSSIP;All;0
-0x00007;GROTTOS;Grass 4;MM Ocean Gossip Grotto Grass 4;grass;0;0;MM_GROTTO_TERMINA_OCEAN_GOSSIP;All;0
-0x00008;GROTTOS;Grass 5;MM Ocean Gossip Grotto Grass 5;grass;0;0;MM_GROTTO_TERMINA_OCEAN_GOSSIP;All;0
-0x00000;GROTTOS;Hive;MM Ocean Gossip Grotto Hive;hive;0;0;MM_GROTTO_TERMINA_OCEAN_GOSSIP;All;0
-0x13;GROTTOS;Chest;MM Path to Snowhead Grotto;chest;0;0;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
-0x03300;GROTTOS;Grass 1;MM Path to Snowhead Grotto Grass 01;grass;0;0;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
-0x03301;GROTTOS;Grass 2;MM Path to Snowhead Grotto Grass 02;grass;0;0;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
-0x03302;GROTTOS;Grass 3;MM Path to Snowhead Grotto Grass 03;grass;0;0;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
-0x03303;GROTTOS;Grass 4;MM Path to Snowhead Grotto Grass 04;grass;0;0;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
-0x03305;GROTTOS;Grass 5;MM Path to Snowhead Grotto Grass 05;grass;0;0;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
-0x03306;GROTTOS;Grass 6;MM Path to Snowhead Grotto Grass 06;grass;0;0;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
-0x0330a;GROTTOS;Grass 7;MM Path to Snowhead Grotto Grass 07;grass;0;0;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
-0x0330b;GROTTOS;Grass 8;MM Path to Snowhead Grotto Grass 08;grass;0;0;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
-0x0330c;GROTTOS;Grass 9;MM Path to Snowhead Grotto Grass 09;grass;0;0;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
-0x0330e;GROTTOS;Grass 10;MM Path to Snowhead Grotto Grass 10;grass;0;0;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
-0x03310;GROTTOS;Grass 11;MM Path to Snowhead Grotto Grass 11;grass;0;0;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
-0x03311;GROTTOS;Grass 12;MM Path to Snowhead Grotto Grass 12;grass;0;0;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
-0x03312;GROTTOS;Grass 13;MM Path to Snowhead Grotto Grass 13;grass;0;0;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
-0x03313;GROTTOS;Grass 14;MM Path to Snowhead Grotto Grass 14;grass;0;0;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
-0x00d01;GROTTOS;Grass 1;MM Peahat Grotto Grass 01;grass;0;0;MM_GROTTO_TERMINA_PEEHAT;All;0
-0x10d01;GROTTOS;Grass 2;MM Peahat Grotto Grass 02;grass;0;0;MM_GROTTO_TERMINA_PEEHAT;All;0
-0x20d01;GROTTOS;Grass 3;MM Peahat Grotto Grass 03;grass;0;0;MM_GROTTO_TERMINA_PEEHAT;All;0
-0x30d01;GROTTOS;Grass 4;MM Peahat Grotto Grass 04;grass;0;0;MM_GROTTO_TERMINA_PEEHAT;All;0
-0x40d01;GROTTOS;Grass 5;MM Peahat Grotto Grass 05;grass;0;0;MM_GROTTO_TERMINA_PEEHAT;All;0
-0x50d01;GROTTOS;Grass 6;MM Peahat Grotto Grass 06;grass;0;0;MM_GROTTO_TERMINA_PEEHAT;All;0
-0x60d01;GROTTOS;Grass 7;MM Peahat Grotto Grass 07;grass;0;0;MM_GROTTO_TERMINA_PEEHAT;All;0
-0x70d01;GROTTOS;Grass 8;MM Peahat Grotto Grass 08;grass;0;0;MM_GROTTO_TERMINA_PEEHAT;All;0
-0x80d01;GROTTOS;Grass 9;MM Peahat Grotto Grass 09;grass;0;0;MM_GROTTO_TERMINA_PEEHAT;All;0
-0x90d01;GROTTOS;Grass 10;MM Peahat Grotto Grass 10;grass;0;0;MM_GROTTO_TERMINA_PEEHAT;All;0
-0xa0d01;GROTTOS;Grass 11;MM Peahat Grotto Grass 11;grass;0;0;MM_GROTTO_TERMINA_PEEHAT;All;0
-0xb0d01;GROTTOS;Grass 12;MM Peahat Grotto Grass 12;grass;0;0;MM_GROTTO_TERMINA_PEEHAT;All;0
-0x16;GROTTOS;Chest;MM Road to Ikana Grotto;chest;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
-0x03600;GROTTOS;Grass 1;MM Road to Ikana Grotto Grass 01;grass;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
-0x03601;GROTTOS;Grass 2;MM Road to Ikana Grotto Grass 02;grass;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
-0x03602;GROTTOS;Grass 3;MM Road to Ikana Grotto Grass 03;grass;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
-0x03603;GROTTOS;Grass 4;MM Road to Ikana Grotto Grass 04;grass;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
-0x03605;GROTTOS;Grass 5;MM Road to Ikana Grotto Grass 05;grass;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
-0x03606;GROTTOS;Grass 6;MM Road to Ikana Grotto Grass 06;grass;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
-0x0360a;GROTTOS;Grass 7;MM Road to Ikana Grotto Grass 07;grass;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
-0x0360b;GROTTOS;Grass 8;MM Road to Ikana Grotto Grass 08;grass;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
-0x0360c;GROTTOS;Grass 9;MM Road to Ikana Grotto Grass 09;grass;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
-0x0360e;GROTTOS;Grass 10;MM Road to Ikana Grotto Grass 10;grass;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
-0x03610;GROTTOS;Grass 11;MM Road to Ikana Grotto Grass 11;grass;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
-0x03611;GROTTOS;Grass 12;MM Road to Ikana Grotto Grass 12;grass;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
-0x03612;GROTTOS;Grass 13;MM Road to Ikana Grotto Grass 13;grass;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
-0x03613;GROTTOS;Grass 14;MM Road to Ikana Grotto Grass 14;grass;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
-0x1e;GROTTOS;Chest;MM Road to Southern Swamp Grotto;chest;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
-0x03e00;GROTTOS;Grass 1;MM Road to Southern Swamp Grotto Grass 01;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
-0x03e01;GROTTOS;Grass 2;MM Road to Southern Swamp Grotto Grass 02;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
-0x03e02;GROTTOS;Grass 3;MM Road to Southern Swamp Grotto Grass 03;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
-0x03e03;GROTTOS;Grass 4;MM Road to Southern Swamp Grotto Grass 04;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
-0x03e05;GROTTOS;Grass 5;MM Road to Southern Swamp Grotto Grass 05;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
-0x03e06;GROTTOS;Grass 6;MM Road to Southern Swamp Grotto Grass 06;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
-0x03e0a;GROTTOS;Grass 7;MM Road to Southern Swamp Grotto Grass 07;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
-0x03e0b;GROTTOS;Grass 8;MM Road to Southern Swamp Grotto Grass 08;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
-0x03e0c;GROTTOS;Grass 9;MM Road to Southern Swamp Grotto Grass 09;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
-0x03e0e;GROTTOS;Grass 10;MM Road to Southern Swamp Grotto Grass 10;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
-0x03e10;GROTTOS;Grass 11;MM Road to Southern Swamp Grotto Grass 11;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
-0x03e11;GROTTOS;Grass 12;MM Road to Southern Swamp Grotto Grass 12;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
-0x03e12;GROTTOS;Grass 13;MM Road to Southern Swamp Grotto Grass 13;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
-0x03e13;GROTTOS;Grass 14;MM Road to Southern Swamp Grotto Grass 14;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
-0x1d;GROTTOS;Chest;MM Southern Swamp Grotto;chest;0;0;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
-0x03d00;GROTTOS;Grass 1;MM Southern Swamp Grotto Grass 01;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
-0x03d01;GROTTOS;Grass 2;MM Southern Swamp Grotto Grass 02;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
-0x03d02;GROTTOS;Grass 3;MM Southern Swamp Grotto Grass 03;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
-0x03d03;GROTTOS;Grass 4;MM Southern Swamp Grotto Grass 04;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
-0x03d05;GROTTOS;Grass 5;MM Southern Swamp Grotto Grass 05;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
-0x03d06;GROTTOS;Grass 6;MM Southern Swamp Grotto Grass 06;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
-0x03d0a;GROTTOS;Grass 7;MM Southern Swamp Grotto Grass 07;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
-0x03d0b;GROTTOS;Grass 8;MM Southern Swamp Grotto Grass 08;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
-0x03d0c;GROTTOS;Grass 9;MM Southern Swamp Grotto Grass 09;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
-0x03d0e;GROTTOS;Grass 10;MM Southern Swamp Grotto Grass 10;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
-0x03d10;GROTTOS;Grass 11;MM Southern Swamp Grotto Grass 11;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
-0x03d11;GROTTOS;Grass 12;MM Southern Swamp Grotto Grass 12;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
-0x03d12;GROTTOS;Grass 13;MM Southern Swamp Grotto Grass 13;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
-0x03d13;GROTTOS;Grass 14;MM Southern Swamp Grotto Grass 14;grass;0;0;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
-0x02;GROTTOS;Heart Piece;MM Termina Field Bio Baba Grotto;collectible;0;0;MM_GROTTO_TERMINA_BIO_BABA;All;0
-0x00b0a;GROTTOS;Left;MM Termina Field Bio Baba Grotto Hive Left;hive;0;0;MM_GROTTO_TERMINA_BIO_BABA;All;0
-0x00b09;GROTTOS;Middle;MM Termina Field Bio Baba Grotto Hive Middle;hive;0;0;MM_GROTTO_TERMINA_BIO_BABA;All;0
-0x14;GROTTOS;Back;MM Termina Field Cow Back;cow;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x13;GROTTOS;Front;MM Termina Field Cow Front;cow;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x00a06;GROTTOS;Butterfly 1;MM Termina Field Cow Grotto Butterfly 1;butterfly;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x10a06;GROTTOS;Butterfly 2;MM Termina Field Cow Grotto Butterfly 2;butterfly;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x20a06;GROTTOS;Butterfly 3;MM Termina Field Cow Grotto Butterfly 3;butterfly;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x00a00;GROTTOS;Grass 1;MM Termina Field Cow Grotto Grass 01;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x10a00;GROTTOS;Grass 2;MM Termina Field Cow Grotto Grass 02;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x20a00;GROTTOS;Grass 3;MM Termina Field Cow Grotto Grass 03;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x30a00;GROTTOS;Grass 4;MM Termina Field Cow Grotto Grass 04;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x40a00;GROTTOS;Grass 5;MM Termina Field Cow Grotto Grass 05;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x50a00;GROTTOS;Grass 6;MM Termina Field Cow Grotto Grass 06;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x60a00;GROTTOS;Grass 7;MM Termina Field Cow Grotto Grass 07;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x70a00;GROTTOS;Grass 8;MM Termina Field Cow Grotto Grass 08;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x80a00;GROTTOS;Grass 9;MM Termina Field Cow Grotto Grass 09;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x90a00;GROTTOS;Grass 10;MM Termina Field Cow Grotto Grass 10;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0xa0a00;GROTTOS;Grass 11;MM Termina Field Cow Grotto Grass 11;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0xb0a00;GROTTOS;Grass 12;MM Termina Field Cow Grotto Grass 12;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x00a01;GROTTOS;Grass 13;MM Termina Field Cow Grotto Grass 13;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x10a01;GROTTOS;Grass 14;MM Termina Field Cow Grotto Grass 14;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x20a01;GROTTOS;Grass 15;MM Termina Field Cow Grotto Grass 15;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x30a01;GROTTOS;Grass 16;MM Termina Field Cow Grotto Grass 16;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x40a01;GROTTOS;Grass 17;MM Termina Field Cow Grotto Grass 17;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x50a01;GROTTOS;Grass 18;MM Termina Field Cow Grotto Grass 18;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x60a01;GROTTOS;Grass 19;MM Termina Field Cow Grotto Grass 19;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x70a01;GROTTOS;Grass 20;MM Termina Field Cow Grotto Grass 20;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x80a01;GROTTOS;Grass 21;MM Termina Field Cow Grotto Grass 21;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x90a01;GROTTOS;Grass 22;MM Termina Field Cow Grotto Grass 22;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0xa0a01;GROTTOS;Grass 23;MM Termina Field Cow Grotto Grass 23;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0xb0a01;GROTTOS;Grass 24;MM Termina Field Cow Grotto Grass 24;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x00a04;GROTTOS;Grass 25;MM Termina Field Cow Grotto Grass 25;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x10a04;GROTTOS;Grass 26;MM Termina Field Cow Grotto Grass 26;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x20a04;GROTTOS;Grass 27;MM Termina Field Cow Grotto Grass 27;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x30a04;GROTTOS;Grass 28;MM Termina Field Cow Grotto Grass 28;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x40a04;GROTTOS;Grass 29;MM Termina Field Cow Grotto Grass 29;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x50a04;GROTTOS;Grass 30;MM Termina Field Cow Grotto Grass 30;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x60a04;GROTTOS;Grass 31;MM Termina Field Cow Grotto Grass 31;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x70a04;GROTTOS;Grass 32;MM Termina Field Cow Grotto Grass 32;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x80a04;GROTTOS;Grass 33;MM Termina Field Cow Grotto Grass 33;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x90a04;GROTTOS;Grass 34;MM Termina Field Cow Grotto Grass 34;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0xa0a04;GROTTOS;Grass 35;MM Termina Field Cow Grotto Grass 35;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0xb0a04;GROTTOS;Grass 36;MM Termina Field Cow Grotto Grass 36;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x00a05;GROTTOS;Grass 37;MM Termina Field Cow Grotto Grass 37;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x10a05;GROTTOS;Grass 38;MM Termina Field Cow Grotto Grass 38;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x20a05;GROTTOS;Grass 39;MM Termina Field Cow Grotto Grass 39;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x30a05;GROTTOS;Grass 40;MM Termina Field Cow Grotto Grass 40;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x40a05;GROTTOS;Grass 41;MM Termina Field Cow Grotto Grass 41;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x50a05;GROTTOS;Grass 42;MM Termina Field Cow Grotto Grass 42;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x60a05;GROTTOS;Grass 43;MM Termina Field Cow Grotto Grass 43;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x70a05;GROTTOS;Grass 44;MM Termina Field Cow Grotto Grass 44;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x80a05;GROTTOS;Grass 45;MM Termina Field Cow Grotto Grass 45;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x90a05;GROTTOS;Grass 46;MM Termina Field Cow Grotto Grass 46;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0xa0a05;GROTTOS;Grass 47;MM Termina Field Cow Grotto Grass 47;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0xb0a05;GROTTOS;Grass 48;MM Termina Field Cow Grotto Grass 48;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x00a08;GROTTOS;Grass 49;MM Termina Field Cow Grotto Grass 49;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x10a08;GROTTOS;Grass 50;MM Termina Field Cow Grotto Grass 50;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x20a08;GROTTOS;Grass 51;MM Termina Field Cow Grotto Grass 51;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x30a08;GROTTOS;Grass 52;MM Termina Field Cow Grotto Grass 52;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x40a08;GROTTOS;Grass 53;MM Termina Field Cow Grotto Grass 53;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x50a08;GROTTOS;Grass 54;MM Termina Field Cow Grotto Grass 54;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x60a08;GROTTOS;Grass 55;MM Termina Field Cow Grotto Grass 55;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x70a08;GROTTOS;Grass 56;MM Termina Field Cow Grotto Grass 56;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x80a08;GROTTOS;Grass 57;MM Termina Field Cow Grotto Grass 57;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x90a08;GROTTOS;Grass 58;MM Termina Field Cow Grotto Grass 58;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0xa0a08;GROTTOS;Grass 59;MM Termina Field Cow Grotto Grass 59;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0xb0a08;GROTTOS;Grass 60;MM Termina Field Cow Grotto Grass 60;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x00a09;GROTTOS;Grass 61;MM Termina Field Cow Grotto Grass 61;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x10a09;GROTTOS;Grass 62;MM Termina Field Cow Grotto Grass 62;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x20a09;GROTTOS;Grass 63;MM Termina Field Cow Grotto Grass 63;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x30a09;GROTTOS;Grass 64;MM Termina Field Cow Grotto Grass 64;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x40a09;GROTTOS;Grass 65;MM Termina Field Cow Grotto Grass 65;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x50a09;GROTTOS;Grass 66;MM Termina Field Cow Grotto Grass 66;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x60a09;GROTTOS;Grass 67;MM Termina Field Cow Grotto Grass 67;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x70a09;GROTTOS;Grass 68;MM Termina Field Cow Grotto Grass 68;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x80a09;GROTTOS;Grass 69;MM Termina Field Cow Grotto Grass 69;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x90a09;GROTTOS;Grass 70;MM Termina Field Cow Grotto Grass 70;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0xa0a09;GROTTOS;Grass 71;MM Termina Field Cow Grotto Grass 71;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0xb0a09;GROTTOS;Grass 72;MM Termina Field Cow Grotto Grass 72;grass;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x00a02;GROTTOS;Hive;MM Termina Field Cow Grotto Hive;hive;0;0;MM_GROTTO_TERMINA_COW;All;0
-0x00;GROTTOS;Dodongo;MM Termina Field Dodongo Grotto;chest;0;0;MM_GROTTO_TERMINA_DODONGO;All;0
-GOSSIP_HEART_PIECE;GROTTOS;Gossip Stones - Heart Piece;MM Termina Field Gossip Stones HP;npc;0;0;MM_GROTTO_TERMINA_OCEAN_GOSSIP;All;0
-0x04;GROTTOS;Peahat;MM Termina Field Peahat Grotto;chest;0;0;MM_GROTTO_TERMINA_PEEHAT;All;0
-0x1a;GROTTOS;Chest;MM Termina Field Pillar Grotto;chest;0;0;MM_GROTTO_TERMINA_PILLAR;All;0
-0x03a00;GROTTOS;Grass 1;MM Termina Field Pillar Grotto Grass 01;grass;0;0;MM_GROTTO_TERMINA_PILLAR;All;0
-0x03a01;GROTTOS;Grass 2;MM Termina Field Pillar Grotto Grass 02;grass;0;0;MM_GROTTO_TERMINA_PILLAR;All;0
-0x03a02;GROTTOS;Grass 3;MM Termina Field Pillar Grotto Grass 03;grass;0;0;MM_GROTTO_TERMINA_PILLAR;All;0
-0x03a03;GROTTOS;Grass 4;MM Termina Field Pillar Grotto Grass 04;grass;0;0;MM_GROTTO_TERMINA_PILLAR;All;0
-0x03a05;GROTTOS;Grass 5;MM Termina Field Pillar Grotto Grass 05;grass;0;0;MM_GROTTO_TERMINA_PILLAR;All;0
-0x03a06;GROTTOS;Grass 6;MM Termina Field Pillar Grotto Grass 06;grass;0;0;MM_GROTTO_TERMINA_PILLAR;All;0
-0x03a0a;GROTTOS;Grass 7;MM Termina Field Pillar Grotto Grass 07;grass;0;0;MM_GROTTO_TERMINA_PILLAR;All;0
-0x03a0b;GROTTOS;Grass 8;MM Termina Field Pillar Grotto Grass 08;grass;0;0;MM_GROTTO_TERMINA_PILLAR;All;0
-0x03a0c;GROTTOS;Grass 9;MM Termina Field Pillar Grotto Grass 09;grass;0;0;MM_GROTTO_TERMINA_PILLAR;All;0
-0x03a0e;GROTTOS;Grass 10;MM Termina Field Pillar Grotto Grass 10;grass;0;0;MM_GROTTO_TERMINA_PILLAR;All;0
-0x03a10;GROTTOS;Grass 11;MM Termina Field Pillar Grotto Grass 11;grass;0;0;MM_GROTTO_TERMINA_PILLAR;All;0
-0x03a11;GROTTOS;Grass 12;MM Termina Field Pillar Grotto Grass 12;grass;0;0;MM_GROTTO_TERMINA_PILLAR;All;0
-0x03a12;GROTTOS;Grass 13;MM Termina Field Pillar Grotto Grass 13;grass;0;0;MM_GROTTO_TERMINA_PILLAR;All;0
-0x03a13;GROTTOS;Grass 14;MM Termina Field Pillar Grotto Grass 14;grass;0;0;MM_GROTTO_TERMINA_PILLAR;All;0
-SCRUB_TELESCOPE;GROTTOS;Scrub;MM Termina Field Scrub;npc;0;0;MM_GROTTO_TERMINA_SCRUB;All;0
-0x00900;GROTTOS;Crate;MM Termina Field Scrub Crate;crate;0;0;MM_GROTTO_TERMINA_SCRUB;All;0
-0x0903;GROTTOS;Pot;MM Termina Field Scrub Pot;pot;0;0;MM_GROTTO_TERMINA_SCRUB;All;0
-0x1f;GROTTOS;Chest;MM Termina Field Tall Grass Grotto;chest;0;0;MM_GROTTO_TERMINA_TALL_GRASS;All;0
-0x03f00;GROTTOS;Grass 1;MM Termina Field Tall Grass Grotto Grass 01;grass;0;0;MM_GROTTO_TERMINA_TALL_GRASS;All;0
-0x03f01;GROTTOS;Grass 2;MM Termina Field Tall Grass Grotto Grass 02;grass;0;0;MM_GROTTO_TERMINA_TALL_GRASS;All;0
-0x03f02;GROTTOS;Grass 3;MM Termina Field Tall Grass Grotto Grass 03;grass;0;0;MM_GROTTO_TERMINA_TALL_GRASS;All;0
-0x03f03;GROTTOS;Grass 4;MM Termina Field Tall Grass Grotto Grass 04;grass;0;0;MM_GROTTO_TERMINA_TALL_GRASS;All;0
-0x03f05;GROTTOS;Grass 5;MM Termina Field Tall Grass Grotto Grass 05;grass;0;0;MM_GROTTO_TERMINA_TALL_GRASS;All;0
-0x03f06;GROTTOS;Grass 6;MM Termina Field Tall Grass Grotto Grass 06;grass;0;0;MM_GROTTO_TERMINA_TALL_GRASS;All;0
-0x03f0a;GROTTOS;Grass 7;MM Termina Field Tall Grass Grotto Grass 07;grass;0;0;MM_GROTTO_TERMINA_TALL_GRASS;All;0
-0x03f0b;GROTTOS;Grass 8;MM Termina Field Tall Grass Grotto Grass 08;grass;0;0;MM_GROTTO_TERMINA_TALL_GRASS;All;0
-0x03f0c;GROTTOS;Grass 9;MM Termina Field Tall Grass Grotto Grass 09;grass;0;0;MM_GROTTO_TERMINA_TALL_GRASS;All;0
-0x03f0e;GROTTOS;Grass 10;MM Termina Field Tall Grass Grotto Grass 10;grass;0;0;MM_GROTTO_TERMINA_TALL_GRASS;All;0
-0x03f10;GROTTOS;Grass 11;MM Termina Field Tall Grass Grotto Grass 11;grass;0;0;MM_GROTTO_TERMINA_TALL_GRASS;All;0
-0x03f11;GROTTOS;Grass 12;MM Termina Field Tall Grass Grotto Grass 12;grass;0;0;MM_GROTTO_TERMINA_TALL_GRASS;All;0
-0x03f12;GROTTOS;Grass 13;MM Termina Field Tall Grass Grotto Grass 13;grass;0;0;MM_GROTTO_TERMINA_TALL_GRASS;All;0
-0x03f13;GROTTOS;Grass 14;MM Termina Field Tall Grass Grotto Grass 14;grass;0;0;MM_GROTTO_TERMINA_TALL_GRASS;All;0
-0x02;GROTTOS;Chest;MM Twin Islands Frozen Grotto Chest;chest;0;0;MM_GROTTO_TWIN_ISLANDS_FROZEN;All;0
-0x19;GROTTOS;Chest;MM Twin Islands Ramp Grotto Chest;chest;0;0;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
-0x03900;GROTTOS;Grass 1;MM Twin Islands Ramp Grotto Grass 01;grass;0;0;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
-0x03901;GROTTOS;Grass 2;MM Twin Islands Ramp Grotto Grass 02;grass;0;0;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
-0x03902;GROTTOS;Grass 3;MM Twin Islands Ramp Grotto Grass 03;grass;0;0;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
-0x03903;GROTTOS;Grass 4;MM Twin Islands Ramp Grotto Grass 04;grass;0;0;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
-0x03905;GROTTOS;Grass 5;MM Twin Islands Ramp Grotto Grass 05;grass;0;0;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
-0x03906;GROTTOS;Grass 6;MM Twin Islands Ramp Grotto Grass 06;grass;0;0;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
-0x0390a;GROTTOS;Grass 7;MM Twin Islands Ramp Grotto Grass 07;grass;0;0;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
-0x0390b;GROTTOS;Grass 8;MM Twin Islands Ramp Grotto Grass 08;grass;0;0;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
-0x0390c;GROTTOS;Grass 9;MM Twin Islands Ramp Grotto Grass 09;grass;0;0;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
-0x0390e;GROTTOS;Grass 10;MM Twin Islands Ramp Grotto Grass 10;grass;0;0;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
-0x03910;GROTTOS;Grass 11;MM Twin Islands Ramp Grotto Grass 11;grass;0;0;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
-0x03911;GROTTOS;Grass 12;MM Twin Islands Ramp Grotto Grass 12;grass;0;0;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
-0x03912;GROTTOS;Grass 13;MM Twin Islands Ramp Grotto Grass 13;grass;0;0;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
-0x03913;GROTTOS;Grass 14;MM Twin Islands Ramp Grotto Grass 14;grass;0;0;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
-0x1c;GROTTOS;Chest;MM Woods of Mystery Grotto;chest;0;0;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
-0x03c00;GROTTOS;Grass 1;MM Woods of Mystery Grotto Grass 01;grass;0;0;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
-0x03c01;GROTTOS;Grass 2;MM Woods of Mystery Grotto Grass 02;grass;0;0;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
-0x03c02;GROTTOS;Grass 3;MM Woods of Mystery Grotto Grass 03;grass;0;0;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
-0x03c03;GROTTOS;Grass 4;MM Woods of Mystery Grotto Grass 04;grass;0;0;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
-0x03c05;GROTTOS;Grass 5;MM Woods of Mystery Grotto Grass 05;grass;0;0;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
-0x03c06;GROTTOS;Grass 6;MM Woods of Mystery Grotto Grass 06;grass;0;0;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
-0x03c0a;GROTTOS;Grass 7;MM Woods of Mystery Grotto Grass 07;grass;0;0;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
-0x03c0b;GROTTOS;Grass 8;MM Woods of Mystery Grotto Grass 08;grass;0;0;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
-0x03c0c;GROTTOS;Grass 9;MM Woods of Mystery Grotto Grass 09;grass;0;0;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
-0x03c0e;GROTTOS;Grass 10;MM Woods of Mystery Grotto Grass 10;grass;0;0;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
-0x03c10;GROTTOS;Grass 11;MM Woods of Mystery Grotto Grass 11;grass;0;0;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
-0x03c11;GROTTOS;Grass 12;MM Woods of Mystery Grotto Grass 12;grass;0;0;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
-0x03c12;GROTTOS;Grass 13;MM Woods of Mystery Grotto Grass 13;grass;0;0;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
-0x03c13;GROTTOS;Grass 14;MM Woods of Mystery Grotto Grass 14;grass;0;0;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
-0x15;GROTTOS;Chest;MM Zora Cape Grotto;chest;0;0;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
-0x03500;GROTTOS;Grass 1;MM Zora Cape Grotto Grass 01;grass;0;0;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
-0x03501;GROTTOS;Grass 2;MM Zora Cape Grotto Grass 02;grass;0;0;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
-0x03502;GROTTOS;Grass 3;MM Zora Cape Grotto Grass 03;grass;0;0;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
-0x03503;GROTTOS;Grass 4;MM Zora Cape Grotto Grass 04;grass;0;0;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
-0x03505;GROTTOS;Grass 5;MM Zora Cape Grotto Grass 05;grass;0;0;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
-0x03506;GROTTOS;Grass 6;MM Zora Cape Grotto Grass 06;grass;0;0;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
-0x0350a;GROTTOS;Grass 7;MM Zora Cape Grotto Grass 07;grass;0;0;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
-0x0350b;GROTTOS;Grass 8;MM Zora Cape Grotto Grass 08;grass;0;0;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
-0x0350c;GROTTOS;Grass 9;MM Zora Cape Grotto Grass 09;grass;0;0;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
-0x0350e;GROTTOS;Grass 10;MM Zora Cape Grotto Grass 10;grass;0;0;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
-0x03510;GROTTOS;Grass 11;MM Zora Cape Grotto Grass 11;grass;0;0;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
-0x03511;GROTTOS;Grass 12;MM Zora Cape Grotto Grass 12;grass;0;0;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
-0x03512;GROTTOS;Grass 13;MM Zora Cape Grotto Grass 13;grass;0;0;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
-0x03513;GROTTOS;Grass 14;MM Zora Cape Grotto Grass 14;grass;0;0;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
-HONEY_DARLING_2;HONEY_DARLING;Reward - All Days;MM Honey & Darling Reward All Days;npc;0;0;HONEY_DARLING;All;0
-HONEY_DARLING_1;HONEY_DARLING;Reward - Any Day;MM Honey & Darling Reward Any Day;npc;0;0;HONEY_DARLING;All;0
+0x17;GROTTOS;Chest;MM Great Bay Coast Fisherman Grotto;chest;231;410;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
+0x03700;GROTTOS;Grass 1;MM Great Bay Coast Fisherman Grotto Grass 01;grass;612;542;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
+0x03701;GROTTOS;Grass 2;MM Great Bay Coast Fisherman Grotto Grass 02;grass;699;497;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
+0x03702;GROTTOS;Grass 3;MM Great Bay Coast Fisherman Grotto Grass 03;grass;371;494;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
+0x03703;GROTTOS;Grass 4;MM Great Bay Coast Fisherman Grotto Grass 04;grass;339;480;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
+0x03705;GROTTOS;Grass 5;MM Great Bay Coast Fisherman Grotto Grass 05;grass;651;467;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
+0x03706;GROTTOS;Grass 6;MM Great Bay Coast Fisherman Grotto Grass 06;grass;281;467;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
+0x0370a;GROTTOS;Grass 7;MM Great Bay Coast Fisherman Grotto Grass 07;grass;556;453;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
+0x0370b;GROTTOS;Grass 8;MM Great Bay Coast Fisherman Grotto Grass 08;grass;294;449;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
+0x0370c;GROTTOS;Grass 9;MM Great Bay Coast Fisherman Grotto Grass 09;grass;583;448;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
+0x0370e;GROTTOS;Grass 10;MM Great Bay Coast Fisherman Grotto Grass 10;grass;270;444;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
+0x03710;GROTTOS;Grass 11;MM Great Bay Coast Fisherman Grotto Grass 11;grass;390;431;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
+0x03711;GROTTOS;Grass 12;MM Great Bay Coast Fisherman Grotto Grass 12;grass;382;418;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
+0x03712;GROTTOS;Grass 13;MM Great Bay Coast Fisherman Grotto Grass 13;grass;418;418;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
+0x03713;GROTTOS;Grass 14;MM Great Bay Coast Fisherman Grotto Grass 14;grass;255;388;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;All;0
+0x00f06;GROTTOS;Butterfly 1;MM Great Bay Cow Grotto Butterfly 1;butterfly;626;355;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x10f06;GROTTOS;Butterfly 2;MM Great Bay Cow Grotto Butterfly 2;butterfly;606;355;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x20f06;GROTTOS;Butterfly 3;MM Great Bay Cow Grotto Butterfly 3;butterfly;584;355;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x00f00;GROTTOS;Grass 1;MM Great Bay Cow Grotto Grass 01;grass;520;514;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x10f00;GROTTOS;Grass 2;MM Great Bay Cow Grotto Grass 02;grass;504;513;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x20f00;GROTTOS;Grass 3;MM Great Bay Cow Grotto Grass 03;grass;533;506;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x30f00;GROTTOS;Grass 4;MM Great Bay Cow Grotto Grass 04;grass;493;504;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x40f00;GROTTOS;Grass 5;MM Great Bay Cow Grotto Grass 05;grass;537;491;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x50f00;GROTTOS;Grass 6;MM Great Bay Cow Grotto Grass 06;grass;486;491;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x60f00;GROTTOS;Grass 7;MM Great Bay Cow Grotto Grass 07;grass;512;488;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x70f00;GROTTOS;Grass 8;MM Great Bay Cow Grotto Grass 08;grass;689;481;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x80f00;GROTTOS;Grass 9;MM Great Bay Cow Grotto Grass 09;grass;673;480;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x90f00;GROTTOS;Grass 10;MM Great Bay Cow Grotto Grass 10;grass;535;477;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0xa0f00;GROTTOS;Grass 11;MM Great Bay Cow Grotto Grass 11;grass;489;477;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0xb0f00;GROTTOS;Grass 12;MM Great Bay Cow Grotto Grass 12;grass;702;473;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x00f01;GROTTOS;Grass 13;MM Great Bay Cow Grotto Grass 13;grass;662;471;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x10f01;GROTTOS;Grass 14;MM Great Bay Cow Grotto Grass 14;grass;526;465;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x20f01;GROTTOS;Grass 15;MM Great Bay Cow Grotto Grass 15;grass;497;465;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x30f01;GROTTOS;Grass 16;MM Great Bay Cow Grotto Grass 16;grass;512;462;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x40f01;GROTTOS;Grass 17;MM Great Bay Cow Grotto Grass 17;grass;706;458;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x50f01;GROTTOS;Grass 18;MM Great Bay Cow Grotto Grass 18;grass;655;458;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x60f01;GROTTOS;Grass 19;MM Great Bay Cow Grotto Grass 19;grass;681;455;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x70f01;GROTTOS;Grass 20;MM Great Bay Cow Grotto Grass 20;grass;704;444;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x80f01;GROTTOS;Grass 21;MM Great Bay Cow Grotto Grass 21;grass;658;444;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x90f01;GROTTOS;Grass 22;MM Great Bay Cow Grotto Grass 22;grass;695;432;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0xa0f01;GROTTOS;Grass 23;MM Great Bay Cow Grotto Grass 23;grass;666;432;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0xb0f01;GROTTOS;Grass 24;MM Great Bay Cow Grotto Grass 24;grass;681;429;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x00f04;GROTTOS;Grass 25;MM Great Bay Cow Grotto Grass 25;grass;526;419;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x10f04;GROTTOS;Grass 26;MM Great Bay Cow Grotto Grass 26;grass;510;418;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x20f04;GROTTOS;Grass 27;MM Great Bay Cow Grotto Grass 27;grass;539;411;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x30f04;GROTTOS;Grass 28;MM Great Bay Cow Grotto Grass 28;grass;499;409;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x40f04;GROTTOS;Grass 29;MM Great Bay Cow Grotto Grass 29;grass;543;396;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x50f04;GROTTOS;Grass 30;MM Great Bay Cow Grotto Grass 30;grass;492;396;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x60f04;GROTTOS;Grass 31;MM Great Bay Cow Grotto Grass 31;grass;518;393;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x70f04;GROTTOS;Grass 32;MM Great Bay Cow Grotto Grass 32;grass;698;390;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x80f04;GROTTOS;Grass 33;MM Great Bay Cow Grotto Grass 33;grass;682;389;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x90f04;GROTTOS;Grass 34;MM Great Bay Cow Grotto Grass 34;grass;437;385;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0xa0f04;GROTTOS;Grass 35;MM Great Bay Cow Grotto Grass 35;grass;421;384;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0xb0f04;GROTTOS;Grass 36;MM Great Bay Cow Grotto Grass 36;grass;711;382;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x00f05;GROTTOS;Grass 37;MM Great Bay Cow Grotto Grass 37;grass;541;382;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x10f05;GROTTOS;Grass 38;MM Great Bay Cow Grotto Grass 38;grass;495;382;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x20f05;GROTTOS;Grass 39;MM Great Bay Cow Grotto Grass 39;grass;671;380;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x30f05;GROTTOS;Grass 40;MM Great Bay Cow Grotto Grass 40;grass;450;377;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x40f05;GROTTOS;Grass 41;MM Great Bay Cow Grotto Grass 41;grass;410;375;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x50f05;GROTTOS;Grass 42;MM Great Bay Cow Grotto Grass 42;grass;532;370;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x60f05;GROTTOS;Grass 43;MM Great Bay Cow Grotto Grass 43;grass;503;370;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x70f05;GROTTOS;Grass 44;MM Great Bay Cow Grotto Grass 44;grass;715;367;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x80f05;GROTTOS;Grass 45;MM Great Bay Cow Grotto Grass 45;grass;664;367;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x90f05;GROTTOS;Grass 46;MM Great Bay Cow Grotto Grass 46;grass;518;367;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0xa0f05;GROTTOS;Grass 47;MM Great Bay Cow Grotto Grass 47;grass;690;364;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0xb0f05;GROTTOS;Grass 48;MM Great Bay Cow Grotto Grass 48;grass;454;362;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x00f08;GROTTOS;Grass 49;MM Great Bay Cow Grotto Grass 49;grass;403;362;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x10f08;GROTTOS;Grass 50;MM Great Bay Cow Grotto Grass 50;grass;429;359;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x20f08;GROTTOS;Grass 51;MM Great Bay Cow Grotto Grass 51;grass;713;353;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x30f08;GROTTOS;Grass 52;MM Great Bay Cow Grotto Grass 52;grass;667;353;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x40f08;GROTTOS;Grass 53;MM Great Bay Cow Grotto Grass 53;grass;452;348;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x50f08;GROTTOS;Grass 54;MM Great Bay Cow Grotto Grass 54;grass;406;348;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x60f08;GROTTOS;Grass 55;MM Great Bay Cow Grotto Grass 55;grass;550;345;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x70f08;GROTTOS;Grass 56;MM Great Bay Cow Grotto Grass 56;grass;534;344;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x80f08;GROTTOS;Grass 57;MM Great Bay Cow Grotto Grass 57;grass;704;341;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x90f08;GROTTOS;Grass 58;MM Great Bay Cow Grotto Grass 58;grass;675;341;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0xa0f08;GROTTOS;Grass 59;MM Great Bay Cow Grotto Grass 59;grass;690;338;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0xb0f08;GROTTOS;Grass 60;MM Great Bay Cow Grotto Grass 60;grass;443;336;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x00f09;GROTTOS;Grass 61;MM Great Bay Cow Grotto Grass 61;grass;563;337;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x10f09;GROTTOS;Grass 62;MM Great Bay Cow Grotto Grass 62;grass;414;336;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x20f09;GROTTOS;Grass 63;MM Great Bay Cow Grotto Grass 63;grass;523;335;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x30f09;GROTTOS;Grass 64;MM Great Bay Cow Grotto Grass 64;grass;429;333;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x40f09;GROTTOS;Grass 65;MM Great Bay Cow Grotto Grass 65;grass;567;322;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x50f09;GROTTOS;Grass 66;MM Great Bay Cow Grotto Grass 66;grass;516;322;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x60f09;GROTTOS;Grass 67;MM Great Bay Cow Grotto Grass 67;grass;542;319;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x70f09;GROTTOS;Grass 68;MM Great Bay Cow Grotto Grass 68;grass;565;308;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x80f09;GROTTOS;Grass 69;MM Great Bay Cow Grotto Grass 69;grass;519;308;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x90f09;GROTTOS;Grass 70;MM Great Bay Cow Grotto Grass 70;grass;556;296;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0xa0f09;GROTTOS;Grass 71;MM Great Bay Cow Grotto Grass 71;grass;527;296;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0xb0f09;GROTTOS;Grass 72;MM Great Bay Cow Grotto Grass 72;grass;542;293;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x00f02;GROTTOS;Hive;MM Great Bay Cow Grotto Hive;hive;519;87;MM_GROTTO_GREAT_BAY_COAST_COW;All;0
+0x18;GROTTOS;Chest;MM Ikana Graveyard Grotto;chest;231;410;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
+0x03800;GROTTOS;Grass 1;MM Ikana Graveyard Grotto Grass 01;grass;612;542;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
+0x03801;GROTTOS;Grass 2;MM Ikana Graveyard Grotto Grass 02;grass;699;497;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
+0x03802;GROTTOS;Grass 3;MM Ikana Graveyard Grotto Grass 03;grass;371;494;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
+0x03803;GROTTOS;Grass 4;MM Ikana Graveyard Grotto Grass 04;grass;339;480;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
+0x03805;GROTTOS;Grass 5;MM Ikana Graveyard Grotto Grass 05;grass;651;467;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
+0x03806;GROTTOS;Grass 6;MM Ikana Graveyard Grotto Grass 06;grass;281;467;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
+0x0380a;GROTTOS;Grass 7;MM Ikana Graveyard Grotto Grass 07;grass;556;453;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
+0x0380b;GROTTOS;Grass 8;MM Ikana Graveyard Grotto Grass 08;grass;294;449;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
+0x0380c;GROTTOS;Grass 9;MM Ikana Graveyard Grotto Grass 09;grass;583;448;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
+0x0380e;GROTTOS;Grass 10;MM Ikana Graveyard Grotto Grass 10;grass;270;444;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
+0x03810;GROTTOS;Grass 11;MM Ikana Graveyard Grotto Grass 11;grass;390;431;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
+0x03811;GROTTOS;Grass 12;MM Ikana Graveyard Grotto Grass 12;grass;382;418;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
+0x03812;GROTTOS;Grass 13;MM Ikana Graveyard Grotto Grass 13;grass;418;418;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
+0x03813;GROTTOS;Grass 14;MM Ikana Graveyard Grotto Grass 14;grass;255;388;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;All;0
+0x14;GROTTOS;Chest;MM Ikana Valley Grotto;chest;231;410;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
+0x03400;GROTTOS;Grass 1;MM Ikana Valley Grotto Grass 01;grass;612;542;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
+0x03401;GROTTOS;Grass 2;MM Ikana Valley Grotto Grass 02;grass;699;497;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
+0x03402;GROTTOS;Grass 3;MM Ikana Valley Grotto Grass 03;grass;371;494;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
+0x03403;GROTTOS;Grass 4;MM Ikana Valley Grotto Grass 04;grass;339;480;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
+0x03405;GROTTOS;Grass 5;MM Ikana Valley Grotto Grass 05;grass;651;467;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
+0x03406;GROTTOS;Grass 6;MM Ikana Valley Grotto Grass 06;grass;281;467;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
+0x0340a;GROTTOS;Grass 7;MM Ikana Valley Grotto Grass 07;grass;556;453;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
+0x0340b;GROTTOS;Grass 8;MM Ikana Valley Grotto Grass 08;grass;294;449;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
+0x0340c;GROTTOS;Grass 9;MM Ikana Valley Grotto Grass 09;grass;583;448;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
+0x0340e;GROTTOS;Grass 10;MM Ikana Valley Grotto Grass 10;grass;270;444;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
+0x03410;GROTTOS;Grass 11;MM Ikana Valley Grotto Grass 11;grass;390;431;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
+0x03411;GROTTOS;Grass 12;MM Ikana Valley Grotto Grass 12;grass;382;418;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
+0x03412;GROTTOS;Grass 13;MM Ikana Valley Grotto Grass 13;grass;418;418;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
+0x03413;GROTTOS;Grass 14;MM Ikana Valley Grotto Grass 14;grass;255;388;MM_GROTTO_IKANA_VALLEY_OPEN;All;0
+0x06;GROTTOS;Boulder;MM Lone Peak Shrine Boulder Chest;chest;320;429;LONE_PEAK;All;0
+0x00500;GROTTOS;Pack 1 - Grass 1;MM Lone Peak Shrine Grass Pack 1 Grass 01;grass;562;479;LONE_PEAK;All;0
+0x10500;GROTTOS;Pack 1 - Grass 2;MM Lone Peak Shrine Grass Pack 1 Grass 02;grass;546;478;LONE_PEAK;All;0
+0x20500;GROTTOS;Pack 1 - Grass 3;MM Lone Peak Shrine Grass Pack 1 Grass 03;grass;575;471;LONE_PEAK;All;0
+0x30500;GROTTOS;Pack 1 - Grass 4;MM Lone Peak Shrine Grass Pack 1 Grass 04;grass;535;469;LONE_PEAK;All;0
+0x40500;GROTTOS;Pack 1 - Grass 5;MM Lone Peak Shrine Grass Pack 1 Grass 05;grass;579;456;LONE_PEAK;All;0
+0x50500;GROTTOS;Pack 1 - Grass 6;MM Lone Peak Shrine Grass Pack 1 Grass 06;grass;528;456;LONE_PEAK;All;0
+0x60500;GROTTOS;Pack 1 - Grass 7;MM Lone Peak Shrine Grass Pack 1 Grass 07;grass;554;453;LONE_PEAK;All;0
+0x70500;GROTTOS;Pack 1 - Grass 8;MM Lone Peak Shrine Grass Pack 1 Grass 08;grass;577;442;LONE_PEAK;All;0
+0x80500;GROTTOS;Pack 1 - Grass 9;MM Lone Peak Shrine Grass Pack 1 Grass 09;grass;531;442;LONE_PEAK;All;0
+0x90500;GROTTOS;Pack 1 - Grass 10;MM Lone Peak Shrine Grass Pack 1 Grass 10;grass;568;430;LONE_PEAK;All;0
+0xa0500;GROTTOS;Pack 1 - Grass 11;MM Lone Peak Shrine Grass Pack 1 Grass 11;grass;539;430;LONE_PEAK;All;0
+0xb0500;GROTTOS;Pack 1 - Grass 12;MM Lone Peak Shrine Grass Pack 1 Grass 12;grass;554;427;LONE_PEAK;All;0
+0x00502;GROTTOS;Pack 2 - Grass 1;MM Lone Peak Shrine Grass Pack 2 Grass 01;grass;444;321;LONE_PEAK;All;0
+0x10502;GROTTOS;Pack 2 - Grass 2;MM Lone Peak Shrine Grass Pack 2 Grass 02;grass;428;320;LONE_PEAK;All;0
+0x20502;GROTTOS;Pack 2 - Grass 3;MM Lone Peak Shrine Grass Pack 2 Grass 03;grass;457;313;LONE_PEAK;All;0
+0x30502;GROTTOS;Pack 2 - Grass 4;MM Lone Peak Shrine Grass Pack 2 Grass 04;grass;417;311;LONE_PEAK;All;0
+0x40502;GROTTOS;Pack 2 - Grass 5;MM Lone Peak Shrine Grass Pack 2 Grass 05;grass;461;298;LONE_PEAK;All;0
+0x50502;GROTTOS;Pack 2 - Grass 6;MM Lone Peak Shrine Grass Pack 2 Grass 06;grass;410;298;LONE_PEAK;All;0
+0x60502;GROTTOS;Pack 2 - Grass 7;MM Lone Peak Shrine Grass Pack 2 Grass 07;grass;436;295;LONE_PEAK;All;0
+0x70502;GROTTOS;Pack 2 - Grass 8;MM Lone Peak Shrine Grass Pack 2 Grass 08;grass;459;284;LONE_PEAK;All;0
+0x80502;GROTTOS;Pack 2 - Grass 9;MM Lone Peak Shrine Grass Pack 2 Grass 09;grass;413;284;LONE_PEAK;All;0
+0x90502;GROTTOS;Pack 2 - Grass 10;MM Lone Peak Shrine Grass Pack 2 Grass 10;grass;450;272;LONE_PEAK;All;0
+0xa0502;GROTTOS;Pack 2 - Grass 11;MM Lone Peak Shrine Grass Pack 2 Grass 11;grass;421;272;LONE_PEAK;All;0
+0xb0502;GROTTOS;Pack 2 - Grass 12;MM Lone Peak Shrine Grass Pack 2 Grass 12;grass;436;269;LONE_PEAK;All;0
+0x03;GROTTOS;Invisible;MM Lone Peak Shrine Invisible Chest;chest;501;237;LONE_PEAK;All;0
+0x01;GROTTOS;Lens of Truth;MM Lone Peak Shrine Lens Chest;chest;507;346;LONE_PEAK;All;0
+0x1b;GROTTOS;Chest;MM Mountain Village Tunnel Grotto;chest;231;410;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
+0x03b00;GROTTOS;Grass 1;MM Mountain Village Tunnel Grotto Grass 01;grass;612;542;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
+0x03b01;GROTTOS;Grass 2;MM Mountain Village Tunnel Grotto Grass 02;grass;699;497;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
+0x03b02;GROTTOS;Grass 3;MM Mountain Village Tunnel Grotto Grass 03;grass;371;494;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
+0x03b03;GROTTOS;Grass 4;MM Mountain Village Tunnel Grotto Grass 04;grass;339;480;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
+0x03b05;GROTTOS;Grass 5;MM Mountain Village Tunnel Grotto Grass 05;grass;651;467;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
+0x03b06;GROTTOS;Grass 6;MM Mountain Village Tunnel Grotto Grass 06;grass;281;467;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
+0x03b0a;GROTTOS;Grass 7;MM Mountain Village Tunnel Grotto Grass 07;grass;556;453;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
+0x03b0b;GROTTOS;Grass 8;MM Mountain Village Tunnel Grotto Grass 08;grass;294;449;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
+0x03b0c;GROTTOS;Grass 9;MM Mountain Village Tunnel Grotto Grass 09;grass;583;448;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
+0x03b0e;GROTTOS;Grass 10;MM Mountain Village Tunnel Grotto Grass 10;grass;270;444;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
+0x03b10;GROTTOS;Grass 11;MM Mountain Village Tunnel Grotto Grass 11;grass;390;431;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
+0x03b11;GROTTOS;Grass 12;MM Mountain Village Tunnel Grotto Grass 12;grass;382;418;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
+0x03b12;GROTTOS;Grass 13;MM Mountain Village Tunnel Grotto Grass 13;grass;418;418;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
+0x03b13;GROTTOS;Grass 14;MM Mountain Village Tunnel Grotto Grass 14;grass;255;388;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
+0x00002;GROTTOS;Butterfly 1;MM Ocean Gossip Grotto Butterfly 1;butterfly;282;425;MM_GROTTO_TERMINA_OCEAN_GOSSIP;All;0
+0x10002;GROTTOS;Butterfly 2;MM Ocean Gossip Grotto Butterfly 2;butterfly;307;422;MM_GROTTO_TERMINA_OCEAN_GOSSIP;All;0
+0x00001;GROTTOS;Grass 1;MM Ocean Gossip Grotto Grass 1;grass;333;544;MM_GROTTO_TERMINA_OCEAN_GOSSIP;All;0
+0x00004;GROTTOS;Grass 2;MM Ocean Gossip Grotto Grass 2;grass;386;506;MM_GROTTO_TERMINA_OCEAN_GOSSIP;All;0
+0x00006;GROTTOS;Grass 3;MM Ocean Gossip Grotto Grass 3;grass;453;484;MM_GROTTO_TERMINA_OCEAN_GOSSIP;All;0
+0x00007;GROTTOS;Grass 4;MM Ocean Gossip Grotto Grass 4;grass;540;480;MM_GROTTO_TERMINA_OCEAN_GOSSIP;All;0
+0x00008;GROTTOS;Grass 5;MM Ocean Gossip Grotto Grass 5;grass;397;416;MM_GROTTO_TERMINA_OCEAN_GOSSIP;All;0
+0x00000;GROTTOS;Hive;MM Ocean Gossip Grotto Hive;hive;581;227;MM_GROTTO_TERMINA_OCEAN_GOSSIP;All;0
+0x13;GROTTOS;Chest;MM Path to Snowhead Grotto;chest;231;410;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
+0x03300;GROTTOS;Grass 1;MM Path to Snowhead Grotto Grass 01;grass;612;542;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
+0x03301;GROTTOS;Grass 2;MM Path to Snowhead Grotto Grass 02;grass;699;497;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
+0x03302;GROTTOS;Grass 3;MM Path to Snowhead Grotto Grass 03;grass;371;494;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
+0x03303;GROTTOS;Grass 4;MM Path to Snowhead Grotto Grass 04;grass;339;480;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
+0x03305;GROTTOS;Grass 5;MM Path to Snowhead Grotto Grass 05;grass;651;467;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
+0x03306;GROTTOS;Grass 6;MM Path to Snowhead Grotto Grass 06;grass;281;467;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
+0x0330a;GROTTOS;Grass 7;MM Path to Snowhead Grotto Grass 07;grass;556;453;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
+0x0330b;GROTTOS;Grass 8;MM Path to Snowhead Grotto Grass 08;grass;294;449;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
+0x0330c;GROTTOS;Grass 9;MM Path to Snowhead Grotto Grass 09;grass;583;448;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
+0x0330e;GROTTOS;Grass 10;MM Path to Snowhead Grotto Grass 10;grass;270;444;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
+0x03310;GROTTOS;Grass 11;MM Path to Snowhead Grotto Grass 11;grass;390;431;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
+0x03311;GROTTOS;Grass 12;MM Path to Snowhead Grotto Grass 12;grass;382;418;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
+0x03312;GROTTOS;Grass 13;MM Path to Snowhead Grotto Grass 13;grass;418;418;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
+0x03313;GROTTOS;Grass 14;MM Path to Snowhead Grotto Grass 14;grass;255;388;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
+0x00d01;GROTTOS;Grass 1;MM Peahat Grotto Grass 01;grass;475;395;MM_GROTTO_TERMINA_PEEHAT;All;0
+0x10d01;GROTTOS;Grass 2;MM Peahat Grotto Grass 02;grass;459;394;MM_GROTTO_TERMINA_PEEHAT;All;0
+0x20d01;GROTTOS;Grass 3;MM Peahat Grotto Grass 03;grass;488;387;MM_GROTTO_TERMINA_PEEHAT;All;0
+0x30d01;GROTTOS;Grass 4;MM Peahat Grotto Grass 04;grass;448;385;MM_GROTTO_TERMINA_PEEHAT;All;0
+0x40d01;GROTTOS;Grass 5;MM Peahat Grotto Grass 05;grass;492;372;MM_GROTTO_TERMINA_PEEHAT;All;0
+0x50d01;GROTTOS;Grass 6;MM Peahat Grotto Grass 06;grass;441;372;MM_GROTTO_TERMINA_PEEHAT;All;0
+0x60d01;GROTTOS;Grass 7;MM Peahat Grotto Grass 07;grass;467;369;MM_GROTTO_TERMINA_PEEHAT;All;0
+0x70d01;GROTTOS;Grass 8;MM Peahat Grotto Grass 08;grass;490;358;MM_GROTTO_TERMINA_PEEHAT;All;0
+0x80d01;GROTTOS;Grass 9;MM Peahat Grotto Grass 09;grass;444;358;MM_GROTTO_TERMINA_PEEHAT;All;0
+0x90d01;GROTTOS;Grass 10;MM Peahat Grotto Grass 10;grass;481;346;MM_GROTTO_TERMINA_PEEHAT;All;0
+0xa0d01;GROTTOS;Grass 11;MM Peahat Grotto Grass 11;grass;452;346;MM_GROTTO_TERMINA_PEEHAT;All;0
+0xb0d01;GROTTOS;Grass 12;MM Peahat Grotto Grass 12;grass;467;343;MM_GROTTO_TERMINA_PEEHAT;All;0
+0x16;GROTTOS;Chest;MM Road to Ikana Grotto;chest;231;410;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
+0x03600;GROTTOS;Grass 1;MM Road to Ikana Grotto Grass 01;grass;612;542;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
+0x03601;GROTTOS;Grass 2;MM Road to Ikana Grotto Grass 02;grass;699;497;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
+0x03602;GROTTOS;Grass 3;MM Road to Ikana Grotto Grass 03;grass;371;494;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
+0x03603;GROTTOS;Grass 4;MM Road to Ikana Grotto Grass 04;grass;339;480;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
+0x03605;GROTTOS;Grass 5;MM Road to Ikana Grotto Grass 05;grass;651;467;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
+0x03606;GROTTOS;Grass 6;MM Road to Ikana Grotto Grass 06;grass;281;467;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
+0x0360a;GROTTOS;Grass 7;MM Road to Ikana Grotto Grass 07;grass;556;453;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
+0x0360b;GROTTOS;Grass 8;MM Road to Ikana Grotto Grass 08;grass;294;449;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
+0x0360c;GROTTOS;Grass 9;MM Road to Ikana Grotto Grass 09;grass;583;448;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
+0x0360e;GROTTOS;Grass 10;MM Road to Ikana Grotto Grass 10;grass;270;444;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
+0x03610;GROTTOS;Grass 11;MM Road to Ikana Grotto Grass 11;grass;390;431;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
+0x03611;GROTTOS;Grass 12;MM Road to Ikana Grotto Grass 12;grass;382;418;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
+0x03612;GROTTOS;Grass 13;MM Road to Ikana Grotto Grass 13;grass;418;418;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
+0x03613;GROTTOS;Grass 14;MM Road to Ikana Grotto Grass 14;grass;255;388;MM_GROTTO_IKANA_ROAD_GENERIC;All;0
+0x1e;GROTTOS;Chest;MM Road to Southern Swamp Grotto;chest;231;410;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
+0x03e00;GROTTOS;Grass 1;MM Road to Southern Swamp Grotto Grass 01;grass;612;542;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
+0x03e01;GROTTOS;Grass 2;MM Road to Southern Swamp Grotto Grass 02;grass;699;497;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
+0x03e02;GROTTOS;Grass 3;MM Road to Southern Swamp Grotto Grass 03;grass;371;494;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
+0x03e03;GROTTOS;Grass 4;MM Road to Southern Swamp Grotto Grass 04;grass;339;480;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
+0x03e05;GROTTOS;Grass 5;MM Road to Southern Swamp Grotto Grass 05;grass;651;467;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
+0x03e06;GROTTOS;Grass 6;MM Road to Southern Swamp Grotto Grass 06;grass;281;467;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
+0x03e0a;GROTTOS;Grass 7;MM Road to Southern Swamp Grotto Grass 07;grass;556;453;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
+0x03e0b;GROTTOS;Grass 8;MM Road to Southern Swamp Grotto Grass 08;grass;294;449;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
+0x03e0c;GROTTOS;Grass 9;MM Road to Southern Swamp Grotto Grass 09;grass;583;448;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
+0x03e0e;GROTTOS;Grass 10;MM Road to Southern Swamp Grotto Grass 10;grass;270;444;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
+0x03e10;GROTTOS;Grass 11;MM Road to Southern Swamp Grotto Grass 11;grass;390;431;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
+0x03e11;GROTTOS;Grass 12;MM Road to Southern Swamp Grotto Grass 12;grass;382;418;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
+0x03e12;GROTTOS;Grass 13;MM Road to Southern Swamp Grotto Grass 13;grass;418;418;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
+0x03e13;GROTTOS;Grass 14;MM Road to Southern Swamp Grotto Grass 14;grass;255;388;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
+0x1d;GROTTOS;Chest;MM Southern Swamp Grotto;chest;231;410;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
+0x03d00;GROTTOS;Grass 1;MM Southern Swamp Grotto Grass 01;grass;612;542;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
+0x03d01;GROTTOS;Grass 2;MM Southern Swamp Grotto Grass 02;grass;699;497;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
+0x03d02;GROTTOS;Grass 3;MM Southern Swamp Grotto Grass 03;grass;371;494;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
+0x03d03;GROTTOS;Grass 4;MM Southern Swamp Grotto Grass 04;grass;339;480;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
+0x03d05;GROTTOS;Grass 5;MM Southern Swamp Grotto Grass 05;grass;651;467;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
+0x03d06;GROTTOS;Grass 6;MM Southern Swamp Grotto Grass 06;grass;281;467;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
+0x03d0a;GROTTOS;Grass 7;MM Southern Swamp Grotto Grass 07;grass;556;453;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
+0x03d0b;GROTTOS;Grass 8;MM Southern Swamp Grotto Grass 08;grass;294;449;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
+0x03d0c;GROTTOS;Grass 9;MM Southern Swamp Grotto Grass 09;grass;583;448;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
+0x03d0e;GROTTOS;Grass 10;MM Southern Swamp Grotto Grass 10;grass;270;444;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
+0x03d10;GROTTOS;Grass 11;MM Southern Swamp Grotto Grass 11;grass;390;431;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
+0x03d11;GROTTOS;Grass 12;MM Southern Swamp Grotto Grass 12;grass;382;418;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
+0x03d12;GROTTOS;Grass 13;MM Southern Swamp Grotto Grass 13;grass;418;418;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
+0x03d13;GROTTOS;Grass 14;MM Southern Swamp Grotto Grass 14;grass;255;388;MM_GROTTO_SOUTHERN_SWAMP_OPEN;All;0
+0x02;GROTTOS;Heart Piece;MM Termina Field Bio Baba Grotto;collectible;152;168;MM_GROTTO_TERMINA_BIO_BABA;All;0
+0x00b0a;GROTTOS;Left;MM Termina Field Bio Baba Grotto Hive Left;hive;266;143;MM_GROTTO_TERMINA_BIO_BABA;All;0
+0x00b09;GROTTOS;Middle;MM Termina Field Bio Baba Grotto Hive Middle;hive;235;140;MM_GROTTO_TERMINA_BIO_BABA;All;0
+0x14;GROTTOS;Back;MM Termina Field Cow Back;cow;568;417;MM_GROTTO_TERMINA_COW;All;0
+0x13;GROTTOS;Front;MM Termina Field Cow Front;cow;572;378;MM_GROTTO_TERMINA_COW;All;0
+0x00a06;GROTTOS;Butterfly 1;MM Termina Field Cow Grotto Butterfly 1;butterfly;626;355;MM_GROTTO_TERMINA_COW;All;0
+0x10a06;GROTTOS;Butterfly 2;MM Termina Field Cow Grotto Butterfly 2;butterfly;606;355;MM_GROTTO_TERMINA_COW;All;0
+0x20a06;GROTTOS;Butterfly 3;MM Termina Field Cow Grotto Butterfly 3;butterfly;584;355;MM_GROTTO_TERMINA_COW;All;0
+0x00a00;GROTTOS;Grass 1;MM Termina Field Cow Grotto Grass 01;grass;520;514;MM_GROTTO_TERMINA_COW;All;0
+0x10a00;GROTTOS;Grass 2;MM Termina Field Cow Grotto Grass 02;grass;504;513;MM_GROTTO_TERMINA_COW;All;0
+0x20a00;GROTTOS;Grass 3;MM Termina Field Cow Grotto Grass 03;grass;533;506;MM_GROTTO_TERMINA_COW;All;0
+0x30a00;GROTTOS;Grass 4;MM Termina Field Cow Grotto Grass 04;grass;493;504;MM_GROTTO_TERMINA_COW;All;0
+0x40a00;GROTTOS;Grass 5;MM Termina Field Cow Grotto Grass 05;grass;537;491;MM_GROTTO_TERMINA_COW;All;0
+0x50a00;GROTTOS;Grass 6;MM Termina Field Cow Grotto Grass 06;grass;486;491;MM_GROTTO_TERMINA_COW;All;0
+0x60a00;GROTTOS;Grass 7;MM Termina Field Cow Grotto Grass 07;grass;512;488;MM_GROTTO_TERMINA_COW;All;0
+0x70a00;GROTTOS;Grass 8;MM Termina Field Cow Grotto Grass 08;grass;689;481;MM_GROTTO_TERMINA_COW;All;0
+0x80a00;GROTTOS;Grass 9;MM Termina Field Cow Grotto Grass 09;grass;673;480;MM_GROTTO_TERMINA_COW;All;0
+0x90a00;GROTTOS;Grass 10;MM Termina Field Cow Grotto Grass 10;grass;535;477;MM_GROTTO_TERMINA_COW;All;0
+0xa0a00;GROTTOS;Grass 11;MM Termina Field Cow Grotto Grass 11;grass;489;477;MM_GROTTO_TERMINA_COW;All;0
+0xb0a00;GROTTOS;Grass 12;MM Termina Field Cow Grotto Grass 12;grass;702;473;MM_GROTTO_TERMINA_COW;All;0
+0x00a01;GROTTOS;Grass 13;MM Termina Field Cow Grotto Grass 13;grass;662;471;MM_GROTTO_TERMINA_COW;All;0
+0x10a01;GROTTOS;Grass 14;MM Termina Field Cow Grotto Grass 14;grass;526;465;MM_GROTTO_TERMINA_COW;All;0
+0x20a01;GROTTOS;Grass 15;MM Termina Field Cow Grotto Grass 15;grass;497;465;MM_GROTTO_TERMINA_COW;All;0
+0x30a01;GROTTOS;Grass 16;MM Termina Field Cow Grotto Grass 16;grass;512;462;MM_GROTTO_TERMINA_COW;All;0
+0x40a01;GROTTOS;Grass 17;MM Termina Field Cow Grotto Grass 17;grass;706;458;MM_GROTTO_TERMINA_COW;All;0
+0x50a01;GROTTOS;Grass 18;MM Termina Field Cow Grotto Grass 18;grass;655;458;MM_GROTTO_TERMINA_COW;All;0
+0x60a01;GROTTOS;Grass 19;MM Termina Field Cow Grotto Grass 19;grass;681;455;MM_GROTTO_TERMINA_COW;All;0
+0x70a01;GROTTOS;Grass 20;MM Termina Field Cow Grotto Grass 20;grass;704;444;MM_GROTTO_TERMINA_COW;All;0
+0x80a01;GROTTOS;Grass 21;MM Termina Field Cow Grotto Grass 21;grass;658;444;MM_GROTTO_TERMINA_COW;All;0
+0x90a01;GROTTOS;Grass 22;MM Termina Field Cow Grotto Grass 22;grass;695;432;MM_GROTTO_TERMINA_COW;All;0
+0xa0a01;GROTTOS;Grass 23;MM Termina Field Cow Grotto Grass 23;grass;666;432;MM_GROTTO_TERMINA_COW;All;0
+0xb0a01;GROTTOS;Grass 24;MM Termina Field Cow Grotto Grass 24;grass;681;429;MM_GROTTO_TERMINA_COW;All;0
+0x00a04;GROTTOS;Grass 25;MM Termina Field Cow Grotto Grass 25;grass;526;419;MM_GROTTO_TERMINA_COW;All;0
+0x10a04;GROTTOS;Grass 26;MM Termina Field Cow Grotto Grass 26;grass;510;418;MM_GROTTO_TERMINA_COW;All;0
+0x20a04;GROTTOS;Grass 27;MM Termina Field Cow Grotto Grass 27;grass;539;411;MM_GROTTO_TERMINA_COW;All;0
+0x30a04;GROTTOS;Grass 28;MM Termina Field Cow Grotto Grass 28;grass;499;409;MM_GROTTO_TERMINA_COW;All;0
+0x40a04;GROTTOS;Grass 29;MM Termina Field Cow Grotto Grass 29;grass;543;396;MM_GROTTO_TERMINA_COW;All;0
+0x50a04;GROTTOS;Grass 30;MM Termina Field Cow Grotto Grass 30;grass;492;396;MM_GROTTO_TERMINA_COW;All;0
+0x60a04;GROTTOS;Grass 31;MM Termina Field Cow Grotto Grass 31;grass;518;393;MM_GROTTO_TERMINA_COW;All;0
+0x70a04;GROTTOS;Grass 32;MM Termina Field Cow Grotto Grass 32;grass;698;390;MM_GROTTO_TERMINA_COW;All;0
+0x80a04;GROTTOS;Grass 33;MM Termina Field Cow Grotto Grass 33;grass;682;389;MM_GROTTO_TERMINA_COW;All;0
+0x90a04;GROTTOS;Grass 34;MM Termina Field Cow Grotto Grass 34;grass;437;385;MM_GROTTO_TERMINA_COW;All;0
+0xa0a04;GROTTOS;Grass 35;MM Termina Field Cow Grotto Grass 35;grass;421;384;MM_GROTTO_TERMINA_COW;All;0
+0xb0a04;GROTTOS;Grass 36;MM Termina Field Cow Grotto Grass 36;grass;711;382;MM_GROTTO_TERMINA_COW;All;0
+0x00a05;GROTTOS;Grass 37;MM Termina Field Cow Grotto Grass 37;grass;541;382;MM_GROTTO_TERMINA_COW;All;0
+0x10a05;GROTTOS;Grass 38;MM Termina Field Cow Grotto Grass 38;grass;495;382;MM_GROTTO_TERMINA_COW;All;0
+0x20a05;GROTTOS;Grass 39;MM Termina Field Cow Grotto Grass 39;grass;671;380;MM_GROTTO_TERMINA_COW;All;0
+0x30a05;GROTTOS;Grass 40;MM Termina Field Cow Grotto Grass 40;grass;450;377;MM_GROTTO_TERMINA_COW;All;0
+0x40a05;GROTTOS;Grass 41;MM Termina Field Cow Grotto Grass 41;grass;410;375;MM_GROTTO_TERMINA_COW;All;0
+0x50a05;GROTTOS;Grass 42;MM Termina Field Cow Grotto Grass 42;grass;532;370;MM_GROTTO_TERMINA_COW;All;0
+0x60a05;GROTTOS;Grass 43;MM Termina Field Cow Grotto Grass 43;grass;503;370;MM_GROTTO_TERMINA_COW;All;0
+0x70a05;GROTTOS;Grass 44;MM Termina Field Cow Grotto Grass 44;grass;715;367;MM_GROTTO_TERMINA_COW;All;0
+0x80a05;GROTTOS;Grass 45;MM Termina Field Cow Grotto Grass 45;grass;664;367;MM_GROTTO_TERMINA_COW;All;0
+0x90a05;GROTTOS;Grass 46;MM Termina Field Cow Grotto Grass 46;grass;518;367;MM_GROTTO_TERMINA_COW;All;0
+0xa0a05;GROTTOS;Grass 47;MM Termina Field Cow Grotto Grass 47;grass;690;364;MM_GROTTO_TERMINA_COW;All;0
+0xb0a05;GROTTOS;Grass 48;MM Termina Field Cow Grotto Grass 48;grass;454;362;MM_GROTTO_TERMINA_COW;All;0
+0x00a08;GROTTOS;Grass 49;MM Termina Field Cow Grotto Grass 49;grass;403;362;MM_GROTTO_TERMINA_COW;All;0
+0x10a08;GROTTOS;Grass 50;MM Termina Field Cow Grotto Grass 50;grass;429;359;MM_GROTTO_TERMINA_COW;All;0
+0x20a08;GROTTOS;Grass 51;MM Termina Field Cow Grotto Grass 51;grass;713;353;MM_GROTTO_TERMINA_COW;All;0
+0x30a08;GROTTOS;Grass 52;MM Termina Field Cow Grotto Grass 52;grass;667;353;MM_GROTTO_TERMINA_COW;All;0
+0x40a08;GROTTOS;Grass 53;MM Termina Field Cow Grotto Grass 53;grass;452;348;MM_GROTTO_TERMINA_COW;All;0
+0x50a08;GROTTOS;Grass 54;MM Termina Field Cow Grotto Grass 54;grass;406;348;MM_GROTTO_TERMINA_COW;All;0
+0x60a08;GROTTOS;Grass 55;MM Termina Field Cow Grotto Grass 55;grass;550;345;MM_GROTTO_TERMINA_COW;All;0
+0x70a08;GROTTOS;Grass 56;MM Termina Field Cow Grotto Grass 56;grass;534;344;MM_GROTTO_TERMINA_COW;All;0
+0x80a08;GROTTOS;Grass 57;MM Termina Field Cow Grotto Grass 57;grass;704;341;MM_GROTTO_TERMINA_COW;All;0
+0x90a08;GROTTOS;Grass 58;MM Termina Field Cow Grotto Grass 58;grass;675;341;MM_GROTTO_TERMINA_COW;All;0
+0xa0a08;GROTTOS;Grass 59;MM Termina Field Cow Grotto Grass 59;grass;690;338;MM_GROTTO_TERMINA_COW;All;0
+0xb0a08;GROTTOS;Grass 60;MM Termina Field Cow Grotto Grass 60;grass;443;336;MM_GROTTO_TERMINA_COW;All;0
+0x00a09;GROTTOS;Grass 61;MM Termina Field Cow Grotto Grass 61;grass;563;337;MM_GROTTO_TERMINA_COW;All;0
+0x10a09;GROTTOS;Grass 62;MM Termina Field Cow Grotto Grass 62;grass;414;336;MM_GROTTO_TERMINA_COW;All;0
+0x20a09;GROTTOS;Grass 63;MM Termina Field Cow Grotto Grass 63;grass;523;335;MM_GROTTO_TERMINA_COW;All;0
+0x30a09;GROTTOS;Grass 64;MM Termina Field Cow Grotto Grass 64;grass;429;333;MM_GROTTO_TERMINA_COW;All;0
+0x40a09;GROTTOS;Grass 65;MM Termina Field Cow Grotto Grass 65;grass;567;322;MM_GROTTO_TERMINA_COW;All;0
+0x50a09;GROTTOS;Grass 66;MM Termina Field Cow Grotto Grass 66;grass;516;322;MM_GROTTO_TERMINA_COW;All;0
+0x60a09;GROTTOS;Grass 67;MM Termina Field Cow Grotto Grass 67;grass;542;319;MM_GROTTO_TERMINA_COW;All;0
+0x70a09;GROTTOS;Grass 68;MM Termina Field Cow Grotto Grass 68;grass;565;308;MM_GROTTO_TERMINA_COW;All;0
+0x80a09;GROTTOS;Grass 69;MM Termina Field Cow Grotto Grass 69;grass;519;308;MM_GROTTO_TERMINA_COW;All;0
+0x90a09;GROTTOS;Grass 70;MM Termina Field Cow Grotto Grass 70;grass;556;296;MM_GROTTO_TERMINA_COW;All;0
+0xa0a09;GROTTOS;Grass 71;MM Termina Field Cow Grotto Grass 71;grass;527;296;MM_GROTTO_TERMINA_COW;All;0
+0xb0a09;GROTTOS;Grass 72;MM Termina Field Cow Grotto Grass 72;grass;542;293;MM_GROTTO_TERMINA_COW;All;0
+0x00a02;GROTTOS;Hive;MM Termina Field Cow Grotto Hive;hive;519;87;MM_GROTTO_TERMINA_COW;All;0
+0x00;GROTTOS;Dodongo;MM Termina Field Dodongo Grotto;chest;725;373;MM_GROTTO_TERMINA_DODONGO;All;0
+GOSSIP_HEART_PIECE;GROTTOS;Gossip Stones - Heart Piece;MM Termina Field Gossip Stones HP;npc;281;408;MM_GROTTO_TERMINA_CANYON_GOSSIP;All;0
+0x04;GROTTOS;Peahat;MM Termina Field Peahat Grotto;chest;400;392;MM_GROTTO_TERMINA_PEEHAT;All;0
+0x1a;GROTTOS;Chest;MM Termina Field Pillar Grotto;chest;231;410;MM_GROTTO_TERMINA_PILLAR;All;0
+0x03a00;GROTTOS;Grass 1;MM Termina Field Pillar Grotto Grass 01;grass;612;542;MM_GROTTO_TERMINA_PILLAR;All;0
+0x03a01;GROTTOS;Grass 2;MM Termina Field Pillar Grotto Grass 02;grass;699;497;MM_GROTTO_TERMINA_PILLAR;All;0
+0x03a02;GROTTOS;Grass 3;MM Termina Field Pillar Grotto Grass 03;grass;371;494;MM_GROTTO_TERMINA_PILLAR;All;0
+0x03a03;GROTTOS;Grass 4;MM Termina Field Pillar Grotto Grass 04;grass;339;480;MM_GROTTO_TERMINA_PILLAR;All;0
+0x03a05;GROTTOS;Grass 5;MM Termina Field Pillar Grotto Grass 05;grass;651;467;MM_GROTTO_TERMINA_PILLAR;All;0
+0x03a06;GROTTOS;Grass 6;MM Termina Field Pillar Grotto Grass 06;grass;281;467;MM_GROTTO_TERMINA_PILLAR;All;0
+0x03a0a;GROTTOS;Grass 7;MM Termina Field Pillar Grotto Grass 07;grass;556;453;MM_GROTTO_TERMINA_PILLAR;All;0
+0x03a0b;GROTTOS;Grass 8;MM Termina Field Pillar Grotto Grass 08;grass;294;449;MM_GROTTO_TERMINA_PILLAR;All;0
+0x03a0c;GROTTOS;Grass 9;MM Termina Field Pillar Grotto Grass 09;grass;583;448;MM_GROTTO_TERMINA_PILLAR;All;0
+0x03a0e;GROTTOS;Grass 10;MM Termina Field Pillar Grotto Grass 10;grass;270;444;MM_GROTTO_TERMINA_PILLAR;All;0
+0x03a10;GROTTOS;Grass 11;MM Termina Field Pillar Grotto Grass 11;grass;390;431;MM_GROTTO_TERMINA_PILLAR;All;0
+0x03a11;GROTTOS;Grass 12;MM Termina Field Pillar Grotto Grass 12;grass;382;418;MM_GROTTO_TERMINA_PILLAR;All;0
+0x03a12;GROTTOS;Grass 13;MM Termina Field Pillar Grotto Grass 13;grass;418;418;MM_GROTTO_TERMINA_PILLAR;All;0
+0x03a13;GROTTOS;Grass 14;MM Termina Field Pillar Grotto Grass 14;grass;255;388;MM_GROTTO_TERMINA_PILLAR;All;0
+SCRUB_TELESCOPE;GROTTOS;Scrub;MM Termina Field Scrub;npc;239;428;MM_GROTTO_TERMINA_SCRUB;All;0
+0x00900;GROTTOS;Crate;MM Termina Field Scrub Crate;crate;268;474;MM_GROTTO_TERMINA_SCRUB;All;0
+0x0903;GROTTOS;Pot;MM Termina Field Scrub Pot;pot;226;406;MM_GROTTO_TERMINA_SCRUB;All;0
+0x1f;GROTTOS;Chest;MM Termina Field Tall Grass Grotto;chest;231;410;MM_GROTTO_TERMINA_TALL_GRASS;All;0
+0x03f00;GROTTOS;Grass 1;MM Termina Field Tall Grass Grotto Grass 01;grass;612;542;MM_GROTTO_TERMINA_TALL_GRASS;All;0
+0x03f01;GROTTOS;Grass 2;MM Termina Field Tall Grass Grotto Grass 02;grass;699;497;MM_GROTTO_TERMINA_TALL_GRASS;All;0
+0x03f02;GROTTOS;Grass 3;MM Termina Field Tall Grass Grotto Grass 03;grass;371;494;MM_GROTTO_TERMINA_TALL_GRASS;All;0
+0x03f03;GROTTOS;Grass 4;MM Termina Field Tall Grass Grotto Grass 04;grass;339;480;MM_GROTTO_TERMINA_TALL_GRASS;All;0
+0x03f05;GROTTOS;Grass 5;MM Termina Field Tall Grass Grotto Grass 05;grass;651;467;MM_GROTTO_TERMINA_TALL_GRASS;All;0
+0x03f06;GROTTOS;Grass 6;MM Termina Field Tall Grass Grotto Grass 06;grass;281;467;MM_GROTTO_TERMINA_TALL_GRASS;All;0
+0x03f0a;GROTTOS;Grass 7;MM Termina Field Tall Grass Grotto Grass 07;grass;556;453;MM_GROTTO_TERMINA_TALL_GRASS;All;0
+0x03f0b;GROTTOS;Grass 8;MM Termina Field Tall Grass Grotto Grass 08;grass;294;449;MM_GROTTO_TERMINA_TALL_GRASS;All;0
+0x03f0c;GROTTOS;Grass 9;MM Termina Field Tall Grass Grotto Grass 09;grass;583;448;MM_GROTTO_TERMINA_TALL_GRASS;All;0
+0x03f0e;GROTTOS;Grass 10;MM Termina Field Tall Grass Grotto Grass 10;grass;270;444;MM_GROTTO_TERMINA_TALL_GRASS;All;0
+0x03f10;GROTTOS;Grass 11;MM Termina Field Tall Grass Grotto Grass 11;grass;390;431;MM_GROTTO_TERMINA_TALL_GRASS;All;0
+0x03f11;GROTTOS;Grass 12;MM Termina Field Tall Grass Grotto Grass 12;grass;382;418;MM_GROTTO_TERMINA_TALL_GRASS;All;0
+0x03f12;GROTTOS;Grass 13;MM Termina Field Tall Grass Grotto Grass 13;grass;418;418;MM_GROTTO_TERMINA_TALL_GRASS;All;0
+0x03f13;GROTTOS;Grass 14;MM Termina Field Tall Grass Grotto Grass 14;grass;255;388;MM_GROTTO_TERMINA_TALL_GRASS;All;0
+0x02;GROTTOS;Chest;MM Twin Islands Frozen Grotto Chest;chest;147;420;MM_GROTTO_TWIN_ISLANDS_FROZEN;All;0
+0x19;GROTTOS;Chest;MM Twin Islands Ramp Grotto Chest;chest;231;410;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
+0x03900;GROTTOS;Grass 1;MM Twin Islands Ramp Grotto Grass 01;grass;612;542;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
+0x03901;GROTTOS;Grass 2;MM Twin Islands Ramp Grotto Grass 02;grass;699;497;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
+0x03902;GROTTOS;Grass 3;MM Twin Islands Ramp Grotto Grass 03;grass;371;494;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
+0x03903;GROTTOS;Grass 4;MM Twin Islands Ramp Grotto Grass 04;grass;339;480;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
+0x03905;GROTTOS;Grass 5;MM Twin Islands Ramp Grotto Grass 05;grass;651;467;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
+0x03906;GROTTOS;Grass 6;MM Twin Islands Ramp Grotto Grass 06;grass;281;467;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
+0x0390a;GROTTOS;Grass 7;MM Twin Islands Ramp Grotto Grass 07;grass;556;453;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
+0x0390b;GROTTOS;Grass 8;MM Twin Islands Ramp Grotto Grass 08;grass;294;449;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
+0x0390c;GROTTOS;Grass 9;MM Twin Islands Ramp Grotto Grass 09;grass;583;448;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
+0x0390e;GROTTOS;Grass 10;MM Twin Islands Ramp Grotto Grass 10;grass;270;444;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
+0x03910;GROTTOS;Grass 11;MM Twin Islands Ramp Grotto Grass 11;grass;390;431;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
+0x03911;GROTTOS;Grass 12;MM Twin Islands Ramp Grotto Grass 12;grass;382;418;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
+0x03912;GROTTOS;Grass 13;MM Twin Islands Ramp Grotto Grass 13;grass;418;418;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
+0x03913;GROTTOS;Grass 14;MM Twin Islands Ramp Grotto Grass 14;grass;255;388;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
+0x1c;GROTTOS;Chest;MM Woods of Mystery Grotto;chest;231;410;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
+0x03c00;GROTTOS;Grass 1;MM Woods of Mystery Grotto Grass 01;grass;612;542;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
+0x03c01;GROTTOS;Grass 2;MM Woods of Mystery Grotto Grass 02;grass;699;497;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
+0x03c02;GROTTOS;Grass 3;MM Woods of Mystery Grotto Grass 03;grass;371;494;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
+0x03c03;GROTTOS;Grass 4;MM Woods of Mystery Grotto Grass 04;grass;339;480;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
+0x03c05;GROTTOS;Grass 5;MM Woods of Mystery Grotto Grass 05;grass;651;467;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
+0x03c06;GROTTOS;Grass 6;MM Woods of Mystery Grotto Grass 06;grass;281;467;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
+0x03c0a;GROTTOS;Grass 7;MM Woods of Mystery Grotto Grass 07;grass;556;453;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
+0x03c0b;GROTTOS;Grass 8;MM Woods of Mystery Grotto Grass 08;grass;294;449;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
+0x03c0c;GROTTOS;Grass 9;MM Woods of Mystery Grotto Grass 09;grass;583;448;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
+0x03c0e;GROTTOS;Grass 10;MM Woods of Mystery Grotto Grass 10;grass;270;444;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
+0x03c10;GROTTOS;Grass 11;MM Woods of Mystery Grotto Grass 11;grass;390;431;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
+0x03c11;GROTTOS;Grass 12;MM Woods of Mystery Grotto Grass 12;grass;382;418;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
+0x03c12;GROTTOS;Grass 13;MM Woods of Mystery Grotto Grass 13;grass;418;418;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
+0x03c13;GROTTOS;Grass 14;MM Woods of Mystery Grotto Grass 14;grass;255;388;MM_GROTTO_WOODS_OF_MYSTERY_OPEN;All;0
+0x15;GROTTOS;Chest;MM Zora Cape Grotto;chest;231;410;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
+0x03500;GROTTOS;Grass 1;MM Zora Cape Grotto Grass 01;grass;612;542;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
+0x03501;GROTTOS;Grass 2;MM Zora Cape Grotto Grass 02;grass;699;497;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
+0x03502;GROTTOS;Grass 3;MM Zora Cape Grotto Grass 03;grass;371;494;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
+0x03503;GROTTOS;Grass 4;MM Zora Cape Grotto Grass 04;grass;339;480;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
+0x03505;GROTTOS;Grass 5;MM Zora Cape Grotto Grass 05;grass;651;467;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
+0x03506;GROTTOS;Grass 6;MM Zora Cape Grotto Grass 06;grass;281;467;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
+0x0350a;GROTTOS;Grass 7;MM Zora Cape Grotto Grass 07;grass;556;453;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
+0x0350b;GROTTOS;Grass 8;MM Zora Cape Grotto Grass 08;grass;294;449;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
+0x0350c;GROTTOS;Grass 9;MM Zora Cape Grotto Grass 09;grass;583;448;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
+0x0350e;GROTTOS;Grass 10;MM Zora Cape Grotto Grass 10;grass;270;444;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
+0x03510;GROTTOS;Grass 11;MM Zora Cape Grotto Grass 11;grass;390;431;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
+0x03511;GROTTOS;Grass 12;MM Zora Cape Grotto Grass 12;grass;382;418;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
+0x03512;GROTTOS;Grass 13;MM Zora Cape Grotto Grass 13;grass;418;418;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
+0x03513;GROTTOS;Grass 14;MM Zora Cape Grotto Grass 14;grass;255;388;MM_GROTTO_ZORA_CAPE_GENERIC;All;0
+HONEY_DARLING_2;HONEY_DARLING;Reward - All Days;MM Honey & Darling Reward All Days;npc;471;310;HONEY_DARLING;All;0
+HONEY_DARLING_1;HONEY_DARLING;Reward - Any Day;MM Honey & Darling Reward Any Day;npc;471;273;HONEY_DARLING;All;0
 0x0003b;IKANA_CANYON;Grass 1;MM Ikana Canyon Grass 1;grass;0;0;IKANA_CANYON;All;0
 0x0003c;IKANA_CANYON;Grass 2;MM Ikana Canyon Grass 2;grass;0;0;IKANA_CANYON;All;0
 0x0003d;IKANA_CANYON;Grass 3;MM Ikana Canyon Grass 3;grass;0;0;IKANA_CANYON;All;0
@@ -1254,37 +1254,37 @@ REMAINS_ODOLWA;LAIR_ODOLWA;Oldolwa's Remain;MM Woodfall Temple Boss;npc;0;0;TEMP
 0x00019;LAIR_ODOLWA;Boss 16;MM Woodfall Temple Boss Grass 16;grass;0;0;TEMPLE_WOODFALL;All;0
 REMAINS_TWINMOLD;LAIR_TWINMOLD;Twinmold's Remains;MM Stone Tower Temple Inverted Boss;npc;0;0;TEMPLE_STONE_TOWER_INVERTED;All;0
 0x1f;LAIR_TWINMOLD;Heart Container;MM Stone Tower Temple Inverted Boss HC;collectible;0;0;TEMPLE_STONE_TOWER_INVERTED;All;0
-MASK_BREMEN;LAUNDRY_POOL;Bremen Mask;MM Clock Town Guru Guru Mask Bremen;npc;0;0;LAUNDRY_POOL;All;0
-0x0000d;LAUNDRY_POOL;Grass 1;MM Clock Town Laundry Pool Grass 1;grass;0;0;LAUNDRY_POOL;All;0
-0x0000e;LAUNDRY_POOL;Grass 2;MM Clock Town Laundry Pool Grass 2;grass;0;0;LAUNDRY_POOL;All;0
-0x0000f;LAUNDRY_POOL;Grass 3;MM Clock Town Laundry Pool Grass 3;grass;0;0;LAUNDRY_POOL;All;0
-0x00013;LAUNDRY_POOL;Rupee 1;MM Clock Town Laundry Pool Rupee 1;rupee;0;0;LAUNDRY_POOL;All;0
-0x00016;LAUNDRY_POOL;Rupee 2;MM Clock Town Laundry Pool Rupee 2;rupee;0;0;LAUNDRY_POOL;All;0
-0x00019;LAUNDRY_POOL;Rupee 3;MM Clock Town Laundry Pool Rupee 3;rupee;0;0;LAUNDRY_POOL;All;0
-0x00007;LAUNDRY_POOL;Small Crate;MM Clock Town Laundry Pool Small Crate;crate;0;0;LAUNDRY_POOL;All;0
-STRAY_FAIRY_TOWN;LAUNDRY_POOL;Pool;MM Clock Town Stray Fairy;npc;0;0;LAUNDRY_POOL;All;0
+MASK_BREMEN;LAUNDRY_POOL;Bremen Mask;MM Clock Town Guru Guru Mask Bremen;npc;743;134;LAUNDRY_POOL;All;0
+0x0000d;LAUNDRY_POOL;Grass 1;MM Clock Town Laundry Pool Grass 1;grass;466;263;LAUNDRY_POOL;All;0
+0x0000e;LAUNDRY_POOL;Grass 2;MM Clock Town Laundry Pool Grass 2;grass;542;249;LAUNDRY_POOL;All;0
+0x0000f;LAUNDRY_POOL;Grass 3;MM Clock Town Laundry Pool Grass 3;grass;458;214;LAUNDRY_POOL;All;0
+0x00013;LAUNDRY_POOL;Rupee 1;MM Clock Town Laundry Pool Rupee 1;rupee;438;416;LAUNDRY_POOL;All;0
+0x00016;LAUNDRY_POOL;Rupee 2;MM Clock Town Laundry Pool Rupee 2;rupee;452;387;LAUNDRY_POOL;All;0
+0x00019;LAUNDRY_POOL;Rupee 3;MM Clock Town Laundry Pool Rupee 3;rupee;467;356;LAUNDRY_POOL;All;0
+0x00007;LAUNDRY_POOL;Small Crate;MM Clock Town Laundry Pool Small Crate;crate;800;75;LAUNDRY_POOL;All;0
+STRAY_FAIRY_TOWN;LAUNDRY_POOL;Pool;MM Clock Town Stray Fairy;npc;647;411;LAUNDRY_POOL;All;0
 MASK_KEATON;LAUNDRY_POOL;Owner Reward 1;MM Kafei Hideout Owner Reward 1;none;0;0;CURIOSITY_SHOP;All;0
 LETTER_TO_MAMA;LAUNDRY_POOL;Owner Reward 2;MM Kafei Hideout Owner Reward 2;none;0;0;CURIOSITY_SHOP;All;0
 PENDANT_OF_MEMORIES;LAUNDRY_POOL;Pendant of Memories;MM Kafei Hideout Pendant of Memories;none;0;0;CURIOSITY_SHOP;All;0
-MAYOR_HEART_PIECE;MAYOR_HOUSE;Heart Piece;MM Mayor's Office HP;npc;0;0;MAYOR_HOUSE;All;0
-MASK_KAFEI;MAYOR_HOUSE;Kafei's Mask;MM Mayor's Office Kafei's Mask;npc;0;0;MAYOR_HOUSE;All;0
-CHATEAU_ROMANI;MILK_BAR;Bottle;MM Milk Bar Madame Aroma Bottle;npc;0;0;MILK_BAR;All;0
-MILK_BAR_CHATEAU;MILK_BAR;Purchase - Chateau;MM Milk Bar Purchase Chateau;npc;0;0;MILK_BAR;All;0
-MILK_BAR_MILK;MILK_BAR;Purchase - Milk;MM Milk Bar Purchase Milk;npc;0;0;MILK_BAR;All;0
-MASK_TROUPE_LEADER;MILK_BAR;Circus Leader's Mask;MM Milk Bar Troupe Leader Mask;npc;0;0;MILK_BAR;All;0
-0x00011;MILK_ROAD;Grass 1;MM Milk Road Grass 1;grass;0;0;MILK_ROAD;All;0
-0x00012;MILK_ROAD;Grass 2;MM Milk Road Grass 2;grass;0;0;MILK_ROAD;All;0
-0x00013;MILK_ROAD;Grass 3;MM Milk Road Grass 3;grass;0;0;MILK_ROAD;All;0
-0x00006;MILK_ROAD;Keaton Grass 1;MM Milk Road Keaton Grass Reward 1;grass;0;0;MILK_ROAD;All;0
-0x10006;MILK_ROAD;Keaton Grass 2;MM Milk Road Keaton Grass Reward 2;grass;0;0;MILK_ROAD;All;0
-0x20006;MILK_ROAD;Keaton Grass 3;MM Milk Road Keaton Grass Reward 3;grass;0;0;MILK_ROAD;All;0
-0x30006;MILK_ROAD;Keaton Grass 4;MM Milk Road Keaton Grass Reward 4;grass;0;0;MILK_ROAD;All;0
-0x40006;MILK_ROAD;Keaton Grass 5;MM Milk Road Keaton Grass Reward 5;grass;0;0;MILK_ROAD;All;0
-0x50006;MILK_ROAD;Keaton Grass 6;MM Milk Road Keaton Grass Reward 6;grass;0;0;MILK_ROAD;All;0
-0x60006;MILK_ROAD;Keaton Grass 7;MM Milk Road Keaton Grass Reward 7;grass;0;0;MILK_ROAD;All;0
-0x70006;MILK_ROAD;Keaton Grass 8;MM Milk Road Keaton Grass Reward 8;grass;0;0;MILK_ROAD;All;0
-0x80006;MILK_ROAD;Keaton Grass 9;MM Milk Road Keaton Grass Reward 9;grass;0;0;MILK_ROAD;All;0
-OWL_MILK_ROAD;MILK_ROAD;Owl Statue;MM Milk Road Owl Statue;npc;0;0;MILK_ROAD;All;0
+MAYOR_HEART_PIECE;MAYOR_HOUSE;Heart Piece;MM Mayor's Office HP;npc;358;77;MAYOR_HOUSE;All;0
+MASK_KAFEI;MAYOR_HOUSE;Kafei's Mask;MM Mayor's Office Kafei's Mask;npc;538;85;MAYOR_HOUSE;All;0
+CHATEAU_ROMANI;MILK_BAR;Bottle;MM Milk Bar Madame Aroma Bottle;npc;646;270;MILK_BAR;All;0
+MILK_BAR_CHATEAU;MILK_BAR;Purchase - Chateau;MM Milk Bar Purchase Chateau;npc;597;270;MILK_BAR;All;0
+MILK_BAR_MILK;MILK_BAR;Purchase - Milk;MM Milk Bar Purchase Milk;npc;572;270;MILK_BAR;All;0
+MASK_TROUPE_LEADER;MILK_BAR;Circus Leader's Mask;MM Milk Bar Troupe Leader Mask;npc;550;274;MILK_BAR;All;0
+0x00011;MILK_ROAD;Grass 1;MM Milk Road Grass 1;grass;407;256;MILK_ROAD;All;0
+0x00012;MILK_ROAD;Grass 2;MM Milk Road Grass 2;grass;447;251;MILK_ROAD;All;0
+0x00013;MILK_ROAD;Grass 3;MM Milk Road Grass 3;grass;417;241;MILK_ROAD;All;0
+0x00006;MILK_ROAD;Keaton Grass 1;MM Milk Road Keaton Grass Reward 1;grass;634;386;MILK_ROAD;All;0
+0x10006;MILK_ROAD;Keaton Grass 2;MM Milk Road Keaton Grass Reward 2;grass;657;386;MILK_ROAD;All;0
+0x20006;MILK_ROAD;Keaton Grass 3;MM Milk Road Keaton Grass Reward 3;grass;647;398;MILK_ROAD;All;0
+0x30006;MILK_ROAD;Keaton Grass 4;MM Milk Road Keaton Grass Reward 4;grass;634;407;MILK_ROAD;All;0
+0x40006;MILK_ROAD;Keaton Grass 5;MM Milk Road Keaton Grass Reward 5;grass;621;398;MILK_ROAD;All;0
+0x50006;MILK_ROAD;Keaton Grass 6;MM Milk Road Keaton Grass Reward 6;grass;611;386;MILK_ROAD;All;0
+0x60006;MILK_ROAD;Keaton Grass 7;MM Milk Road Keaton Grass Reward 7;grass;621;374;MILK_ROAD;All;0
+0x70006;MILK_ROAD;Keaton Grass 8;MM Milk Road Keaton Grass Reward 8;grass;634;365;MILK_ROAD;All;0
+0x80006;MILK_ROAD;Keaton Grass 9;MM Milk Road Keaton Grass Reward 9;grass;647;374;MILK_ROAD;All;0
+OWL_MILK_ROAD;MILK_ROAD;Owl Statue;MM Milk Road Owl Statue;npc;400;221;MILK_ROAD;All;0
 0x00049;MILK_ROAD;Crate;MM Gorman Track Crate;none;0;0;GORMAN_TRACK;All;0
 MASK_GARO;MILK_ROAD;Garo Mask;MM Gorman Track Garo Mask;none;0;0;GORMAN_TRACK;All;0
 0x00024;MILK_ROAD;Pack 1 - Grass 1;MM Gorman Track Grass Pack 1 Grass 01;none;0;0;GORMAN_TRACK;All;0
@@ -1560,14 +1560,14 @@ OWL_MOUNTAIN_VILLAGE;MOUNTAIN_VILLAGE_WINTER;Owl Statue;MM Mountain Village Owl 
 0x00;MOUNTAIN_VILLAGE_WINTER;Waterfall;MM Mountain Village Waterfall Chest;none;0;0;MOUNTAIN_VILLAGE;Spring;0
 MASK_GIBDO;MUSIC_BOX_HOUSE;Gibdo Mask;MM Music Box House Gibdo Mask;npc;0;0;MUSIC_BOX_HOUSE;All;0
 MOON_TEAR;OBSERVATORY;Moon Tear;MM Astral Observatory Moon Tear;npc;2199;1058;TERMINA_FIELD;All;0
-0x00;OBSERVATORY;Passage;MM Astral Observatory Passage Chest;chest;0;0;OBSERVATORY;All;0
-0x0010;OBSERVATORY;Passage 1;MM Astral Observatory Passage Pot 1;pot;0;0;OBSERVATORY;All;0
-0x0011;OBSERVATORY;Passage 2;MM Astral Observatory Passage Pot 2;pot;0;0;OBSERVATORY;All;0
-0x0012;OBSERVATORY;Passage 3;MM Astral Observatory Passage Pot 3;pot;0;0;OBSERVATORY;All;0
-0x0013;OBSERVATORY;Passage 4;MM Astral Observatory Passage Pot 4;pot;0;0;OBSERVATORY;All;0
-0x0104;OBSERVATORY;Astral Observatory 1;MM Astral Observatory Pot 1;pot;0;0;OBSERVATORY;All;0
-0x0105;OBSERVATORY;Astral Observatory 2;MM Astral Observatory Pot 2;pot;0;0;OBSERVATORY;All;0
-0x0106;OBSERVATORY;Astral Observatory 3;MM Astral Observatory Pot 3;pot;0;0;OBSERVATORY;All;0
+0x00;OBSERVATORY;Passage;MM Astral Observatory Passage Chest;chest;678;525;OBSERVATORY;All;1
+0x0010;OBSERVATORY;Passage 1;MM Astral Observatory Passage Pot 1;pot;87;366;OBSERVATORY;All;1
+0x0011;OBSERVATORY;Passage 2;MM Astral Observatory Passage Pot 2;pot;85;384;OBSERVATORY;All;1
+0x0012;OBSERVATORY;Passage 3;MM Astral Observatory Passage Pot 3;pot;92;263;OBSERVATORY;All;1
+0x0013;OBSERVATORY;Passage 4;MM Astral Observatory Passage Pot 4;pot;94;246;OBSERVATORY;All;1
+0x0104;OBSERVATORY;Astral Observatory 1;MM Astral Observatory Pot 1;pot;479;471;OBSERVATORY;All;0
+0x0105;OBSERVATORY;Astral Observatory 2;MM Astral Observatory Pot 2;pot;478;458;OBSERVATORY;All;0
+0x0106;OBSERVATORY;Astral Observatory 3;MM Astral Observatory Pot 3;pot;508;463;OBSERVATORY;All;0
 0x0001a;PATH_MOUNTAIN_VILLAGE;Lower - Big Snowball 1;MM Path to Mountain Village Big Snowball Lower 1;snowball;0;0;PATH_MOUNTAIN_VILLAGE;Winter;0
 0x0002a;PATH_MOUNTAIN_VILLAGE;Lower - Big Snowball 2;MM Path to Mountain Village Big Snowball Lower 2;snowball;0;0;PATH_MOUNTAIN_VILLAGE;Winter;0
 0x0001e;PATH_MOUNTAIN_VILLAGE;Lower - Big Snowball 3;MM Path to Mountain Village Big Snowball Lower 3;snowball;0;0;PATH_MOUNTAIN_VILLAGE;Winter;0
@@ -1724,13 +1724,13 @@ SEAHORSE_HEART_PIECE;PINNACLE_ROCK;Seahorse - Heart Piece;MM Pinnacle Rock HP;np
 0x00019;PIRATE_FORTRESS_INTERIOR;Skull Eyes 4;MM Pirate Fortress Interior Wonder Item Skull Eyes 4;none;0;0;PIRATE_FORTRESS_EXTERIOR;All;0
 0x10019;PIRATE_FORTRESS_INTERIOR;Skull Eyes 5;MM Pirate Fortress Interior Wonder Item Skull Eyes 5;none;0;0;PIRATE_FORTRESS_EXTERIOR;All;0
 0x20019;PIRATE_FORTRESS_INTERIOR;Skull Eyes 6;MM Pirate Fortress Interior Wonder Item Skull Eyes 6;none;0;0;PIRATE_FORTRESS_EXTERIOR;All;0
-POSTMAN_HEART_PIECE;POST_OFFICE;Postman Game - Heart Piece;MM Post Office HP;npc;0;0;POST_OFFICE;All;0
+POSTMAN_HEART_PIECE;POST_OFFICE;Postman Game - Heart Piece;MM Post Office HP;npc;225;176;POST_OFFICE;All;0
 0x0d;POTION_SHOP;Item 1;MM Swamp Potion Shop Item 1;shop;0;0;POTION_SHOP;All;0
 0x0e;POTION_SHOP;Item 2;MM Swamp Potion Shop Item 2;shop;0;0;POTION_SHOP;All;0
 0x0f;POTION_SHOP;Item 3;MM Swamp Potion Shop Item 3;shop;0;0;POTION_SHOP;All;0
 0x00001;POTION_SHOP;Rupee;MM Swamp Potion Shop Rupee;rupee;0;0;POTION_SHOP;All;0
-0x00000;RANCH_HOUSE_BARN;Item 1;MM Romani Ranch Barn Wonder Item 1;wonder;0;0;RANCH_HOUSE_BARN;All;0
-0x00001;RANCH_HOUSE_BARN;Item 2;MM Romani Ranch Barn Wonder Item 2;wonder;0;0;RANCH_HOUSE_BARN;All;0
+0x00000;RANCH_HOUSE_BARN;Item 1;MM Romani Ranch Barn Wonder Item 1;wonder;587;527;RANCH_HOUSE_BARN;All;0
+0x00001;RANCH_HOUSE_BARN;Item 2;MM Romani Ranch Barn Wonder Item 2;wonder;524;525;RANCH_HOUSE_BARN;All;0
 0x00;ROAD_IKANA;Pillar;MM Road to Ikana Chest;chest;0;0;ROAD_IKANA;All;0
 0x004c;ROAD_IKANA;Pot;MM Road to Ikana Pot;pot;0;0;ROAD_IKANA;All;0
 MASK_STONE;ROAD_IKANA;Stone Mask;MM Road to Ikana Stone Mask;npc;0;0;ROAD_IKANA;All;0
@@ -1792,9 +1792,9 @@ SHOOTING_GAME_SWAMP_2;ROAD_SOUTHERN_SWAMP;Reward 2;MM Swamp Archery Reward 2;non
 0x03e12;ROAD_SOUTHERN_SWAMP;Grass 13;MM Road to Southern Swamp Grotto Grass 13;none;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
 0x03e13;ROAD_SOUTHERN_SWAMP;Grass 14;MM Road to Southern Swamp Grotto Grass 14;none;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;All;0
 ROMANI_BOTTLE;ROMANI_RANCH;Aliens;MM Romani Ranch Aliens;npc;350;162;ROMANI_RANCH;All;0
-0x10;ROMANI_RANCH;Left;MM Romani Ranch Barn Cow Left;cow;0;0;ROMANI_RANCH_BARN;All;0
-0x12;ROMANI_RANCH;Right Back;MM Romani Ranch Barn Cow Right Back;cow;0;0;ROMANI_RANCH_BARN;All;0
-0x11;ROMANI_RANCH;Right Front;MM Romani Ranch Barn Cow Right Front;cow;0;0;ROMANI_RANCH_BARN;All;0
+0x10;ROMANI_RANCH;Left;MM Romani Ranch Barn Cow Left;cow;383;393;RANCH_HOUSE_BARN;All;0
+0x12;ROMANI_RANCH;Right Back;MM Romani Ranch Barn Cow Right Back;cow;360;199;RANCH_HOUSE_BARN;All;0
+0x11;ROMANI_RANCH;Right Front;MM Romani Ranch Barn Cow Right Front;cow;440;200;RANCH_HOUSE_BARN;All;0
 0x00023;ROMANI_RANCH;Flooting Balloon;MM Romani Ranch Crate;crate;367;172;ROMANI_RANCH;All;0
 CREMIA_ESCORT;ROMANI_RANCH;Cremia Escort;MM Romani Ranch Cremia Escort;npc;359;122;ROMANI_RANCH;All;0
 SONG_EPONA;ROMANI_RANCH;Epona's Song;MM Romani Ranch Epona Song;npc;270;165;ROMANI_RANCH;All;0
@@ -1948,8 +1948,8 @@ MASK_BUNNY;ROMANI_RANCH;Bunny Mask;MM Cucco Shack Bunny Mask;none;0;0;CUCCO_SHAC
 0x00010;SECRET_SHRINE;Rupee 17;MM Secret Shrine Rupee 17;rupee;0;0;SECRET_SHRINE;All;0
 0x02;SECRET_SHRINE;Wart;MM Secret Shrine Wart Chest;chest;0;0;SECRET_SHRINE;All;0
 0x01;SECRET_SHRINE;Wizzrobe;MM Secret Shrine Wizzrobe Chest;chest;0;0;SECRET_SHRINE;All;0
-SHOOTING_GAME_TOWN_1;SHOOTING_GALLERY;Reward 1;MM Town Archery Reward 1;npc;0;0;SHOOTING_GALLERY;All;0
-SHOOTING_GAME_TOWN_2;SHOOTING_GALLERY;Reward 2;MM Town Archery Reward 2;npc;0;0;SHOOTING_GALLERY;All;0
+SHOOTING_GAME_TOWN_1;SHOOTING_GALLERY;Reward 1;MM Town Archery Reward 1;npc;620;364;SHOOTING_GALLERY;All;0
+SHOOTING_GAME_TOWN_2;SHOOTING_GALLERY;Reward 2;MM Town Archery Reward 2;npc;728;297;SHOOTING_GALLERY;All;0
 SHOOTING_GAME_SWAMP_1;SHOOTING_GALLERY_SWAMP;Reward 1;MM Swamp Archery Reward 1;npc;0;0;SHOOTING_GALLERY_SWAMP;All;0
 SHOOTING_GAME_SWAMP_2;SHOOTING_GALLERY_SWAMP;Reward 2;MM Swamp Archery Reward 2;npc;0;0;SHOOTING_GALLERY_SWAMP;All;0
 0x0002e;SNOWHEAD;Winter - Big Snowball 1;MM Snowhead Big Snowball 1;snowball;0;0;SNOWHEAD;Winter;0
@@ -2221,17 +2221,17 @@ SPIDER_HOUSE_SWAMP;SPIDER_HOUSE_SWAMP;Mask of Truth;MM Swamp Spider House Mask o
 0x0041b;SPIDER_HOUSE_SWAMP;Pot Room - Walking on Jar 3;MM Swamp Spider House Wonder Item Pots 3;wonder;0;0;SPIDER_HOUSE_SWAMP;All;0
 0x0041c;SPIDER_HOUSE_SWAMP;Pot Room - Walking on Jar 4;MM Swamp Spider House Wonder Item Pots 4;wonder;0;0;SPIDER_HOUSE_SWAMP;All;0
 0x0041d;SPIDER_HOUSE_SWAMP;Pot Room - Walking on Jar 5;MM Swamp Spider House Wonder Item Pots 5;wonder;0;0;SPIDER_HOUSE_SWAMP;All;0
-TOILET_HEART_PIECE;STOCK_POT_INN;Toilet Paper - Heart Piece;MM Stock Pot Inn ??? HP;npc;0;0;STOCK_POT_INN;All;0
-MASK_COUPLE;STOCK_POT_INN;Couple's Mask;MM Stock Pot Inn Couple's Mask;npc;0;0;STOCK_POT_INN;All;0
-GRANDMA_HEART_PIECE_1;STOCK_POT_INN;Grandma - Heart Piece 1;MM Stock Pot Inn Grandma HP 1;npc;0;0;STOCK_POT_INN;All;0
-GRANDMA_HEART_PIECE_2;STOCK_POT_INN;Grandma - Heart Piece 2;MM Stock Pot Inn Grandma HP 2;npc;0;0;STOCK_POT_INN;All;0
-0x00;STOCK_POT_INN;Guest Room;MM Stock Pot Inn Guest Room Chest;chest;0;0;STOCK_POT_INN;All;0
-LETTER_TO_KAFEI;STOCK_POT_INN;Letter to Kafei;MM Stock Pot Inn Letter to Kafei;npc;0;0;STOCK_POT_INN;All;0
-ROOM_KEY;STOCK_POT_INN;Room Key;MM Stock Pot Inn Room Key;npc;0;0;STOCK_POT_INN;All;0
-0x01;STOCK_POT_INN;Staff Room;MM Stock Pot Inn Staff Room Chest;chest;0;0;STOCK_POT_INN;All;0
-0x0000e;STOCK_POT_INN;Mask 1;MM Stock Pot Inn Wonder Item 1;wonder;0;0;STOCK_POT_INN;All;0
-0x1000e;STOCK_POT_INN;Mask 2;MM Stock Pot Inn Wonder Item 2;wonder;0;0;STOCK_POT_INN;All;0
-0x2000e;STOCK_POT_INN;Mask 3;MM Stock Pot Inn Wonder Item 3;wonder;0;0;STOCK_POT_INN;All;0
+TOILET_HEART_PIECE;STOCK_POT_INN;Toilet Paper - Heart Piece;MM Stock Pot Inn ??? HP;npc;162;288;STOCK_POT_INN;All;1
+MASK_COUPLE;STOCK_POT_INN;Couple's Mask;MM Stock Pot Inn Couple's Mask;npc;219;315;STOCK_POT_INN;All;2
+GRANDMA_HEART_PIECE_1;STOCK_POT_INN;Grandma - Heart Piece 1;MM Stock Pot Inn Grandma HP 1;npc;338;468;STOCK_POT_INN;All;2
+GRANDMA_HEART_PIECE_2;STOCK_POT_INN;Grandma - Heart Piece 2;MM Stock Pot Inn Grandma HP 2;npc;339;444;STOCK_POT_INN;All;2
+0x00;STOCK_POT_INN;Guest Room;MM Stock Pot Inn Guest Room Chest;chest;725;313;STOCK_POT_INN;All;2
+LETTER_TO_KAFEI;STOCK_POT_INN;Letter to Kafei;MM Stock Pot Inn Letter to Kafei;npc;631;358;STOCK_POT_INN;All;1
+ROOM_KEY;STOCK_POT_INN;Room Key;MM Stock Pot Inn Room Key;npc;378;371;STOCK_POT_INN;All;0
+0x01;STOCK_POT_INN;Staff Room;MM Stock Pot Inn Staff Room Chest;chest;420;298;STOCK_POT_INN;All;2
+0x0000e;STOCK_POT_INN;Mask 1;MM Stock Pot Inn Wonder Item 1;wonder;681;180;STOCK_POT_INN;All;0
+0x1000e;STOCK_POT_INN;Mask 2;MM Stock Pot Inn Wonder Item 2;wonder;697;165;STOCK_POT_INN;All;0
+0x2000e;STOCK_POT_INN;Mask 3;MM Stock Pot Inn Wonder Item 3;wonder;713;180;STOCK_POT_INN;All;0
 OWL_STONE_TOWER;STONE_TOWER;Owl Statue;MM Stone Tower Owl Statue;npc;0;0;STONE_TOWER;All;0
 0x003c;STONE_TOWER;Climb 1;MM Stone Tower Pot Climb 1;pot;0;0;STONE_TOWER;All;0
 0x003d;STONE_TOWER;Climb 2;MM Stone Tower Pot Climb 2;pot;0;0;STONE_TOWER;All;0
@@ -2276,12 +2276,12 @@ OWL_STONE_TOWER;STONE_TOWER;Owl Statue;MM Stone Tower Owl Statue;npc;0;0;STONE_T
 0x000a;STONE_TOWER_INVERTED;Pot 3;MM Stone Tower Inverted Pot 3;pot;0;0;STONE_TOWER_INVERTED;All;0
 0x000b;STONE_TOWER_INVERTED;Pot 4;MM Stone Tower Inverted Pot 4;pot;0;0;STONE_TOWER_INVERTED;All;0
 0x000c;STONE_TOWER_INVERTED;Pot 5;MM Stone Tower Inverted Pot 5;pot;0;0;STONE_TOWER_INVERTED;All;0
-SWORDSMAN_HEART_PIECE;SWORDSMAN_SCHOOL;Heart Piece;MM Swordsman School HP;npc;0;0;SWORDSMAN_SCHOOL;All;0
-0x0006;SWORDSMAN_SCHOOL;Pot 1;MM Swordsman School Pot 1;pot;0;0;SWORDSMAN_SCHOOL;All;0
-0x0007;SWORDSMAN_SCHOOL;Pot 2;MM Swordsman School Pot 2;pot;0;0;SWORDSMAN_SCHOOL;All;0
-0x0008;SWORDSMAN_SCHOOL;Pot 3;MM Swordsman School Pot 3;pot;0;0;SWORDSMAN_SCHOOL;All;0
-0x0009;SWORDSMAN_SCHOOL;Pot 4;MM Swordsman School Pot 4;pot;0;0;SWORDSMAN_SCHOOL;All;0
-0x000a;SWORDSMAN_SCHOOL;Pot 5;MM Swordsman School Pot 5;pot;0;0;SWORDSMAN_SCHOOL;All;0
+SWORDSMAN_HEART_PIECE;SWORDSMAN_SCHOOL;Heart Piece;MM Swordsman School HP;npc;496;359;SWORDSMAN_SCHOOL;All;0
+0x0006;SWORDSMAN_SCHOOL;Pot 1;MM Swordsman School Pot 1;pot;752;430;SWORDSMAN_SCHOOL;All;0
+0x0007;SWORDSMAN_SCHOOL;Pot 2;MM Swordsman School Pot 2;pot;796;383;SWORDSMAN_SCHOOL;All;0
+0x0008;SWORDSMAN_SCHOOL;Pot 3;MM Swordsman School Pot 3;pot;749;383;SWORDSMAN_SCHOOL;All;0
+0x0009;SWORDSMAN_SCHOOL;Pot 4;MM Swordsman School Pot 4;pot;793;337;SWORDSMAN_SCHOOL;All;0
+0x000a;SWORDSMAN_SCHOOL;Pot 5;MM Swordsman School Pot 5;pot;747;337;SWORDSMAN_SCHOOL;All;0
 0x19;TEMPLE_GREAT_BAY;Bio Baba;MM Great Bay Temple Baba Chest;chest;0;0;TEMPLE_GREAT_BAY;All;0
 0x00202;TEMPLE_GREAT_BAY;Chu-Chu Room 1;MM Great Bay Temple Barrel Chu Room 1;barrel;0;0;TEMPLE_GREAT_BAY;All;0
 0x00203;TEMPLE_GREAT_BAY;Chu-Chu Room 2;MM Great Bay Temple Barrel Chu Room 2;barrel;0;0;TEMPLE_GREAT_BAY;All;0
@@ -3068,8 +3068,8 @@ MASK_KAMARO;TERMINA_FIELD;Kamaro's Mask;MM Termina Field Kamaro Mask;npc;1084;32
 0x00;TERMINA_FIELD;Underwater;MM Termina Field Water Chest;chest;768;1179;TERMINA_FIELD;All;0
 0x0005f;TERMINA_FIELD;Fountains 1;MM Termina Field Wonder Item Fountains 1;wonder;921;684;TERMINA_FIELD;All;0
 0x00060;TERMINA_FIELD;Fountains 2;MM Termina Field Wonder Item Fountains 2;wonder;921;835;TERMINA_FIELD;All;0
-0x00066;TERMINA_FIELD;Graffiti 1;MM Termina Field Wonder Item Graffiti 1;wonder;1486;1734;TERMINA_FIELD;All;0
-0x10066;TERMINA_FIELD;Graffiti 2;MM Termina Field Wonder Item Graffiti 2;wonder;1448;1734;TERMINA_FIELD;All;0
+0x00066;TERMINA_FIELD;Graffiti 1;MM Termina Field Wonder Item Graffiti 1;wonder;1448;1734;TERMINA_FIELD;All;0
+0x10066;TERMINA_FIELD;Graffiti 2;MM Termina Field Wonder Item Graffiti 2;wonder;1486;1734;TERMINA_FIELD;All;0
 0x20066;TERMINA_FIELD;Graffiti 3;MM Termina Field Wonder Item Graffiti 3;wonder;1468;1745;TERMINA_FIELD;All;0
 0x00059;TERMINA_FIELD;Grass 1;MM Termina Field Wonder Item Grass 1;wonder;1172;1395;TERMINA_FIELD;All;0
 0x0005a;TERMINA_FIELD;Grass 2;MM Termina Field Wonder Item Grass 2;wonder;1184;1471;TERMINA_FIELD;All;0
@@ -3082,8 +3082,8 @@ MASK_KAMARO;TERMINA_FIELD;Kamaro's Mask;MM Termina Field Kamaro Mask;npc;1084;32
 0x10064;TERMINA_FIELD;West Door - Shell 2;MM Termina Field Wonder Item Shell 2;wonder;1092;748;TERMINA_FIELD;All;0
 0x20064;TERMINA_FIELD;West Door - Shell 3;MM Termina Field Wonder Item Shell 3;wonder;1084;770;TERMINA_FIELD;All;0
 0x00065;TERMINA_FIELD;West Door - Shell Side 1;MM Termina Field Wonder Item Shell Side 1;wonder;1092;683;TERMINA_FIELD;All;0
-0x10065;TERMINA_FIELD;West Door - Shell Side 2;MM Termina Field Wonder Item Shell Side 2;wonder;1106;700;TERMINA_FIELD;All;0
-0x20065;TERMINA_FIELD;West Door - Shell Side 3;MM Termina Field Wonder Item Shell Side 3;wonder;1092;714;TERMINA_FIELD;All;0
+0x10065;TERMINA_FIELD;West Door - Shell Side 2;MM Termina Field Wonder Item Shell Side 2;wonder;1092;714;TERMINA_FIELD;All;0
+0x20065;TERMINA_FIELD;West Door - Shell Side 3;MM Termina Field Wonder Item Shell Side 3;wonder;1106;700;TERMINA_FIELD;All;0
 0x00063;TERMINA_FIELD;South West - Ramp;MM Termina Field Wonder Item South West Ramp;wonder;826;1137;TERMINA_FIELD;All;0
 0x00062;TERMINA_FIELD;West - Ramp;MM Termina Field Wonder Item West Ramp;wonder;956;732;TERMINA_FIELD;All;0
 0x00200;TERMINA_FIELD;Grass 1;MM Canyon Gossip Grotto Grass 1;none;0;0;MM_GROTTO_TERMINA_CANYON_GOSSIP;All;0
@@ -3233,16 +3233,16 @@ SCRUB_TELESCOPE;TERMINA_FIELD;Scrub;MM Termina Field Scrub;none;0;0;MM_GROTTO_TE
 KOUME_HEART_PIECE;TOURIST_INFORMATION;Archery;MM Tourist Information Boat Archery;npc;0;0;TOURIST_INFORMATION;All;0
 KOUME_PICTOGRAPH_BOX;TOURIST_INFORMATION;Pictobox;MM Tourist Information Pictobox;npc;0;0;TOURIST_INFORMATION;All;0
 TOUR_GUIDE_HEART_PIECE;TOURIST_INFORMATION;Deku's King Picture;MM Tourist Information Tingle Picture;npc;0;0;TOURIST_INFORMATION;All;0
-0x05;TRADING_POST;Item 1;MM Trading Post Item 1;shop;0;0;TRADING_POST;All;0
-0x06;TRADING_POST;Item 2;MM Trading Post Item 2;shop;0;0;TRADING_POST;All;0
-0x07;TRADING_POST;Item 3;MM Trading Post Item 3;shop;0;0;TRADING_POST;All;0
-0x08;TRADING_POST;Item 4;MM Trading Post Item 4;shop;0;0;TRADING_POST;All;0
-0x09;TRADING_POST;Item 5;MM Trading Post Item 5;shop;0;0;TRADING_POST;All;0
-0x0a;TRADING_POST;Item 6;MM Trading Post Item 6;shop;0;0;TRADING_POST;All;0
-0x0b;TRADING_POST;Item 7;MM Trading Post Item 7;shop;0;0;TRADING_POST;All;0
-0x0c;TRADING_POST;Item 8;MM Trading Post Item 8;shop;0;0;TRADING_POST;All;0
-0x0008;TRADING_POST;Pot;MM Trading Post Pot;pot;0;0;TRADING_POST;All;0
-CHEST_GAME;TREASURE_SHOP;Heart Piece;MM Chest Game HP;npc;0;0;TREASURE_SHOP;All;0
+0x05;TRADING_POST;Item 1;MM Trading Post Item 1;shop;580;294;TRADING_POST;All;0
+0x06;TRADING_POST;Item 2;MM Trading Post Item 2;shop;580;261;TRADING_POST;All;0
+0x07;TRADING_POST;Item 3;MM Trading Post Item 3;shop;542;294;TRADING_POST;All;0
+0x08;TRADING_POST;Item 4;MM Trading Post Item 4;shop;542;261;TRADING_POST;All;0
+0x09;TRADING_POST;Item 5;MM Trading Post Item 5;shop;422;294;TRADING_POST;All;0
+0x0a;TRADING_POST;Item 6;MM Trading Post Item 6;shop;422;261;TRADING_POST;All;0
+0x0b;TRADING_POST;Item 7;MM Trading Post Item 7;shop;384;294;TRADING_POST;All;0
+0x0c;TRADING_POST;Item 8;MM Trading Post Item 8;shop;384;261;TRADING_POST;All;0
+0x0008;TRADING_POST;Pot;MM Trading Post Pot;pot;756;427;TRADING_POST;All;0
+CHEST_GAME;TREASURE_SHOP;Heart Piece;MM Chest Game HP;npc;259;447;TREASURE_SHOP;All;0
 GORON_ELDER;TWIN_ISLANDS;Goron's Lulluby - Intro;MM Goron Elder;npc;0;0;TWIN_ISLANDS;Winter;0
 0x0003b;TWIN_ISLANDS;Big Snowball 1;MM Twin Islands Big Snowball 01;snowball;0;0;TWIN_ISLANDS;Winter;0
 0x0003a;TWIN_ISLANDS;Big Snowball 2;MM Twin Islands Big Snowball 02;snowball;0;0;TWIN_ISLANDS;Winter;0
