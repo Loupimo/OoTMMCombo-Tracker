@@ -39,7 +39,7 @@ const ObjectIcon IconsMetaInfo[23] =
     {"./Resources/Common/Butterfly.png", { 20, 20 }},      // ObjectType::butterfly
     {"./Resources/Common/Rupee.png", { 20, 20 }},          // ObjectType::rupee
     {"./Resources/Common/Snowball.png", { 30, 30 }},       // ObjectType::snowball
-    {"./Resources/Common/Barrel.png", { 30, 30 }},         // ObjectType::barrel
+    {"./Resources/Common/Barrel.png", { 20, 20 }},         // ObjectType::barrel
     {"./Resources/Common/Heart.png", { 30, 30 }},          // ObjectType::heart
     {"./Resources/Common/Fairy_Spot.png", { 30, 30 }},     // ObjectType::fairy_spot
     {"./Resources/Common/Fairy.png", { 25, 25 }}           // ObjectType::fairy

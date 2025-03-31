@@ -269,7 +269,7 @@ SceneRenderer::SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeW
     {   // Browse each scene objects
 
         ObjectInfo* currObject = &this->CurrScene->Objects->Objects[i];
-        if (currObject->RenderScene != this->CurrScene->SceneID)
+        if (currObject->RenderScene != this->CurrScene->SceneID || currObject->Type == ObjectType::none)
         {   // Ignore the object if the render scene ID is different from this scene ID
 
             continue;
@@ -323,9 +323,9 @@ void SceneRenderer::RenderScene(bool Context, RoomInfo* Room)
     if (Room != nullptr && this->ActiveRoom != Room->RoomID)
     {   // The active room has changed
 
+        delete this->SceneImage;            // Delete the previously rendered scene image
         path = Room->ImagePath;             // Change the scene image path
         this->ActiveRoom = Room->RoomID;    // Change the scene rendere active room ID
-        delete this->SceneImage;            // Delete the previously rendered scene image
         this->SceneImage = nullptr;
     }
 
