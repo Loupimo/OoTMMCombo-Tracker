@@ -971,8 +971,8 @@ MALON_EGG;HYRULE_CASTLE;Malon Egg;OOT Malon Egg;npc;131;243;HYRULE_CASTLE;All;0
 0x0009;HYRULE_CASTLE;Pot 2;OOT Hyrule Castle Pot 2;pot;160;435;HYRULE_CASTLE;All;0
 0x0002e;HYRULE_CASTLE;Grass 1;OOT Hyrule Castle Grass 1;grass;600;350;HYRULE_CASTLE;All;0
 0x0002f;HYRULE_CASTLE;Grass 2;OOT Hyrule Castle Grass 2;grass;610;362;HYRULE_CASTLE;All;0
-0x0000c;HYRULE_CASTLE;Torch 1;OOT Hyrule Castle Wonder Item Torch 1;wonder;672;146;HYRULE_CASTLE;All;0
-0x0000d;HYRULE_CASTLE;Torch 2;OOT Hyrule Castle Wonder Item Torch 2;wonder;659;91;HYRULE_CASTLE;All;0
+0x0000c;HYRULE_CASTLE;Torch 1;OOT Hyrule Castle Wonder Item Torch 1;wonder;659;91;HYRULE_CASTLE;All;0
+0x0000d;HYRULE_CASTLE;Torch 2;OOT Hyrule Castle Wonder Item Torch 2;wonder;672;146;HYRULE_CASTLE;All;0
 0x00020;HYRULE_CASTLE;Moat 1;OOT Hyrule Castle Wonder Item Moat 01;wonder;615;70;HYRULE_CASTLE;All;0
 0x00021;HYRULE_CASTLE;Moat 2;OOT Hyrule Castle Wonder Item Moat 02;wonder;614;109;HYRULE_CASTLE;All;0
 0x00022;HYRULE_CASTLE;Moat 3;OOT Hyrule Castle Wonder Item Moat 03;wonder;627;138;HYRULE_CASTLE;All;0

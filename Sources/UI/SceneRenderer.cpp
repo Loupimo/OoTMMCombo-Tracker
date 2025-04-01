@@ -75,7 +75,10 @@ void SceneItemTree::RenderScene(QTreeWidget* ObjectsTreeWidget, bool Context, bo
         if (this->ActiveRoom != nullptr)
         {   // Maybe the room has been changed by object selection. We need to unselect the previous room
 
-            this->Rooms[this->Renderer->ActiveRoom]->setSelected(false);
+            if (this->Rooms.size() > this->Renderer->ActiveRoom)
+            {
+                this->Rooms[this->Renderer->ActiveRoom]->setSelected(false);
+            }
             this->Rooms[this->ActiveRoom->RoomID]->setSelected(true);
         }
     }
@@ -89,8 +92,10 @@ void SceneItemTree::UnloadScene()
 {
     if (this->Renderer)
     {
+        this->Renderer->UnloadScene();
         delete this->Renderer;
         this->Renderer = nullptr;
+        this->ActiveRoom = nullptr;
     }
 }
 
@@ -282,6 +287,7 @@ SceneRenderer::SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeW
 
             this->ObjectsRen[currObject->Type - 1] = new ObjectRenderer(currObject->Type, this);
             dest = this->ObjectsRen[currObject->Type - 1];
+            this->ObjectsTree->addTopLevelItem(dest->ObjCat);
         }
 
         if (dest != nullptr)
@@ -325,7 +331,7 @@ void SceneRenderer::RenderScene(bool Context, RoomInfo* Room)
 
         delete this->SceneImage;            // Delete the previously rendered scene image
         path = Room->ImagePath;             // Change the scene image path
-        this->ActiveRoom = Room->RoomID;    // Change the scene rendere active room ID
+        this->ActiveRoom = Room->RoomID;    // Change the scene renderer active room ID
         this->SceneImage = nullptr;
     }
 
@@ -356,9 +362,9 @@ void SceneRenderer::UnloadScene()
         if (objRdr && objRdr->GetTotalObject() > 0)
         {   // Remove all object from the object list and the scene
 
-            objRdr->ShouldBeRendered = false;
             objRdr->RemoveObjectFromList(this->ObjectsTree);
             objRdr->UnloadObjectsFromScene();
+            objRdr->ShouldBeRendered = false;
         }
     }
 }
@@ -480,7 +486,7 @@ void SceneRenderer::RefreshSceneContext(bool Context)
             objRdr->ShouldBeRendered = true;
             objRdr->UpdateText();
             objRdr->RenderObjectToScene(context);
-            this->ObjectsTree->addTopLevelItem(objRdr->ObjCat);
+            //this->ObjectsTree->addTopLevelItem(objRdr->ObjCat);
             objRdr->ObjCat->setExpanded(true);
         }
     }

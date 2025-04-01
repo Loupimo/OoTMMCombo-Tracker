@@ -4,6 +4,7 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QGraphicsProxyWidget>
+#include "UI/RoomRenderer.h"
 #include "UI/MapTab.h"
 #include "UI/GameTab.h"
 
@@ -465,7 +466,7 @@ void MapTab::UnloadMap()
         this->RenderedScene->UnloadScene();
         this->RenderedScene = nullptr;
         this->View->setScene(nullptr);
-        this->ObjectList->clear();
+        //this->ObjectList->clear();
         this->SwitchContainer->setVisible(false);
 
         // Don't forget to reconnect the signal
@@ -499,6 +500,23 @@ void MapTab::ChangeActiveScene(QTreeWidgetItem* Current, QTreeWidgetItem* Previo
 
 void MapTab::ItemFound(ObjectInfo* Object, const ItemInfo* ItemFound)
 {
+    if (this->Scenes[Object->RenderScene]->Renderer == nullptr)
+    {   // Force the scene to load
+
+        if (this->RenderedScene && this->RenderedScene->childCount() == 0)
+        {   // The previous selected item was a scene
+
+            this->UnloadMap();
+            //this->RenderedScene->UnloadScene();
+        }
+
+        this->RenderedScene = this->Scenes[Object->RenderScene];
+        if (this->RenderedScene->childCount() != 0)
+        {
+            this->RenderedScene->ActiveRoom = &this->RenderedScene->Rooms[Object->RoomID]->Info;
+        }
+        this->RenderMap();
+    }
     this->Scenes[Object->RenderScene]->ItemFound(Object, ItemFound);
 }
 

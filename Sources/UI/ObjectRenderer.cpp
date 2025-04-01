@@ -208,6 +208,11 @@ void ObjectItemTree::PerformAction()
             }
             return;
         }
+        if (this->Object->RoomID != this->RendererOwner->SceneOwner->ActiveRoom)
+        {
+            this->RendererOwner->SceneOwner->UpdateRoom(this->Object->RoomID);  // We need to update the room ID in case the selected object is in another room than the active one
+            this->RendererOwner->UpdateSceneContext(this->Object->Context);     // We need to update the context in case the selected object is in a different context than the active one
+        }
         this->RendererOwner->CenterViewOn(this->GraphItem);                 // Center the scene view on the object
     }
 
@@ -310,14 +315,18 @@ ObjectRenderer::ObjectRenderer(ObjectType Type, SceneRenderer* Owner)
 
 ObjectRenderer::~ObjectRenderer()
 {
-    this->SceneOwner = nullptr;
-    for (ObjectItemTree * currObj : this->Objects)
+    // This should be deleted by the clear function of the object tree
+    for (ObjectItemTree* currObj : this->Objects)
     {
+        //this->SceneOwner->ObjectsTree->removeItemWidget(currObj, 0);
+        this->ObjCat->removeChild(currObj);
         delete currObj;
     }
 
     //this->Icon.~QPixmap();
+    //this->SceneOwner->ObjectsTree->removeItemWidget(this->ObjCat, 0);
     delete this->ObjCat;
+    this->SceneOwner = nullptr;
 }
 
 
