@@ -206,15 +206,15 @@ TRADE_BIGGORON_SWORD;DEATH_MOUNTAIN_TRAIL;Biggoron Sword;OOT Death Mountain Trai
 0x00603;DEKU_TREE;Torch Room 2;OOT Deku Tree Grass Torch Room 2;grass;510;627;DEKU_TREE;All;7
 0x00702;DEKU_TREE;Larva Room 1;OOT Deku Tree Grass Larva Room 1;grass;445;629;DEKU_TREE;All;8
 0x00703;DEKU_TREE;Larva Room 2;OOT Deku Tree Grass Larva Room 2;grass;477;617;DEKU_TREE;All;8
-0x00900;DEKU_TREE;Pre-Boss Room 1;OOT Deku Tree Grass Pre-Boss Room 1;grass;916;506;DEKU_TREE;All;9
-0x00901;DEKU_TREE;Pre-Boss Room 2;OOT Deku Tree Grass Pre-Boss Room 2;grass;940;513;DEKU_TREE;All;9
-0x00902;DEKU_TREE;Pre-Boss Room 3;OOT Deku Tree Grass Pre-Boss Room 3;grass;895;498;DEKU_TREE;All;9
+0x00900;DEKU_TREE;Pre-Boss Room 1;OOT Deku Tree Grass Pre-Boss Room 1;grass;895;498;DEKU_TREE;All;9
+0x00901;DEKU_TREE;Pre-Boss Room 2;OOT Deku Tree Grass Pre-Boss Room 2;grass;916;506;DEKU_TREE;All;9
+0x00902;DEKU_TREE;Pre-Boss Room 3;OOT Deku Tree Grass Pre-Boss Room 3;grass;940;513;DEKU_TREE;All;9
 0x00a02;DEKU_TREE;Compass Room 1;OOT Deku Tree Grass Compass Room 1;grass;1143;563;DEKU_TREE;All;1
 0x00a03;DEKU_TREE;Compass Room 2;OOT Deku Tree Grass Compass Room 2;grass;1066;560;DEKU_TREE;All;1
 0x00019;DEKU_TREE;Main Room - Lower;OOT Deku Tree Heart Main Room Lower;heart;674;626;DEKU_TREE;All;0
 0x0001a;DEKU_TREE;Main Room - Upper;OOT Deku Tree Heart Main Room Upper;heart;724;315;DEKU_TREE;All;0
-0x00906;DEKU_TREE;Pre-Boss 1;OOT Deku Tree Heart Pre-Boss 1;heart;532;762;DEKU_TREE;All;9
-0x00907;DEKU_TREE;Pre-Boss 2;OOT Deku Tree Heart Pre-Boss 2;heart;427;706;DEKU_TREE;All;9
+0x00906;DEKU_TREE;Pre-Boss 1;OOT Deku Tree Heart Pre-Boss 1;heart;427;706;DEKU_TREE;All;9
+0x00907;DEKU_TREE;Pre-Boss 2;OOT Deku Tree Heart Pre-Boss 2;heart;532;762;DEKU_TREE;All;9
 0x00908;DEKU_TREE;Pre-Boss 3;OOT Deku Tree Heart Pre-Boss 3;heart;1023;636;DEKU_TREE;All;9
 0x03;DEKU_TREE;Map;OOT MQ Deku Tree Map Chest;chest;0;0;MQ_DEKU_TREE;All;0
 0x01;DEKU_TREE;Compass;OOT MQ Deku Tree Compass Chest;chest;0;0;MQ_DEKU_TREE;All;0
@@ -490,39 +490,39 @@ SHEIK_SPIRIT;DESERT_COLOSSUS;Requiem of Spirit;OOT Desert Colossus Song Spirit;n
 0x72400;FAIRY_FOUNTAIN;Fairy 8;OOT Gerudo Fortress Fairy Fountain Fairy 8;fairy;474;176;OOT_FAIRY_GERUDO_FORTRESS;All;0
 FISH_CHILD;FISHING_POND;Heart Piece;OOT Fishing Pond Child;npc;651;51;FISHING_POND;Child;0
 FISH_ADULT;FISHING_POND;Golden Scale;OOT Fishing Pond Adult;npc;651;51;FISHING_POND;Adult;0
-0x00;FISHING_POND;Child - Fish 1;OOT Fishing Pond Child Fish 1;fish;767;637;FISHING_POND;Child;0
-0x01;FISHING_POND;Child - Fish 2;OOT Fishing Pond Child Fish 2;fish;642;596;FISHING_POND;Child;0
-0x02;FISHING_POND;Child - Fish 3;OOT Fishing Pond Child Fish 3;fish;516;573;FISHING_POND;Child;0
-0x03;FISHING_POND;Child - Fish 4;OOT Fishing Pond Child Fish 4;fish;621;514;FISHING_POND;Child;0
-0x04;FISHING_POND;Child - Fish 5;OOT Fishing Pond Child Fish 5;fish;481;514;FISHING_POND;Child;0
-0x05;FISHING_POND;Child - Fish 6;OOT Fishing Pond Child Fish 6;fish;845;508;FISHING_POND;Child;0
-0x06;FISHING_POND;Child - Fish 7;OOT Fishing Pond Child Fish 7;fish;719;489;FISHING_POND;Child;0
-0x07;FISHING_POND;Child - Fish 8;OOT Fishing Pond Child Fish 8;fish;560;470;FISHING_POND;Child;0
-0x08;FISHING_POND;Child - Fish 9;OOT Fishing Pond Child Fish 9;fish;831;432;FISHING_POND;Child;0
-0x09;FISHING_POND;Child - Fish 10;OOT Fishing Pond Child Fish 10;fish;635;425;FISHING_POND;Child;0
-0x0a;FISHING_POND;Child - Fish 11;OOT Fishing Pond Child Fish 11;fish;726;401;FISHING_POND;Child;0
-0x0b;FISHING_POND;Child - Fish 12;OOT Fishing Pond Child Fish 12;fish;523;401;FISHING_POND;Child;0
-0x0c;FISHING_POND;Child - Fish 13;OOT Fishing Pond Child Fish 13;fish;767;361;FISHING_POND;Child;0
-0x0d;FISHING_POND;Child - Fish 14;OOT Fishing Pond Child Fish 14;fish;635;348;FISHING_POND;Child;0
-0x0e;FISHING_POND;Child - Fish 15;OOT Fishing Pond Child Fish 15;fish;733;297;FISHING_POND;Child;0
-0x0f;FISHING_POND;Child - Loach 1;OOT Fishing Pond Child Loach 1;fish;553;297;FISHING_POND;Child;0
-0x10;FISHING_POND;Child - Loach 2;OOT Fishing Pond Child Loach 2;fish;649;248;FISHING_POND;Child;0
-0x11;FISHING_POND;Adult - Fish 1;OOT Fishing Pond Adult Fish 1;fish;767;637;FISHING_POND;Adult;0
-0x12;FISHING_POND;Adult - Fish 2;OOT Fishing Pond Adult Fish 2;fish;642;596;FISHING_POND;Adult;0
-0x13;FISHING_POND;Adult - Fish 3;OOT Fishing Pond Adult Fish 3;fish;516;573;FISHING_POND;Adult;0
-0x14;FISHING_POND;Adult - Fish 4;OOT Fishing Pond Adult Fish 4;fish;621;514;FISHING_POND;Adult;0
-0x15;FISHING_POND;Adult - Fish 5;OOT Fishing Pond Adult Fish 5;fish;481;514;FISHING_POND;Adult;0
-0x16;FISHING_POND;Adult - Fish 6;OOT Fishing Pond Adult Fish 6;fish;845;508;FISHING_POND;Adult;0
-0x17;FISHING_POND;Adult - Fish 7;OOT Fishing Pond Adult Fish 7;fish;719;489;FISHING_POND;Adult;0
-0x18;FISHING_POND;Adult - Fish 8;OOT Fishing Pond Adult Fish 8;fish;560;470;FISHING_POND;Adult;0
-0x19;FISHING_POND;Adult - Fish 9;OOT Fishing Pond Adult Fish 9;fish;831;432;FISHING_POND;Adult;0
-0x1a;FISHING_POND;Adult - Fish 10;OOT Fishing Pond Adult Fish 10;fish;635;425;FISHING_POND;Adult;0
-0x1b;FISHING_POND;Adult - Fish 11;OOT Fishing Pond Adult Fish 11;fish;726;401;FISHING_POND;Adult;0
-0x1c;FISHING_POND;Adult - Fish 12;OOT Fishing Pond Adult Fish 12;fish;523;401;FISHING_POND;Adult;0
-0x1d;FISHING_POND;Adult - Fish 13;OOT Fishing Pond Adult Fish 13;fish;767;361;FISHING_POND;Adult;0
-0x1e;FISHING_POND;Adult - Fish 14;OOT Fishing Pond Adult Fish 14;fish;635;348;FISHING_POND;Adult;0
-0x1f;FISHING_POND;Adult - Fish 15;OOT Fishing Pond Adult Fish 15;fish;733;297;FISHING_POND;Adult;0
-0x20;FISHING_POND;Adult - Loach;OOT Fishing Pond Adult Loach;fish;553;297;FISHING_POND;Adult;0
+0x00;FISHING_POND;Child - Fish 1;OOT Fishing Pond Child Fish 1;fish;557;254;FISHING_POND;Child;0
+0x01;FISHING_POND;Child - Fish 2;OOT Fishing Pond Child Fish 2;fish;510;299;FISHING_POND;Child;0
+0x02;FISHING_POND;Child - Fish 3;OOT Fishing Pond Child Fish 3;fish;478;360;FISHING_POND;Child;0
+0x03;FISHING_POND;Child - Fish 4;OOT Fishing Pond Child Fish 4;fish;502;555;FISHING_POND;Child;0
+0x04;FISHING_POND;Child - Fish 5;OOT Fishing Pond Child Fish 5;fish;510;631;FISHING_POND;Child;0
+0x05;FISHING_POND;Child - Fish 6;OOT Fishing Pond Child Fish 6;fish;704;618;FISHING_POND;Child;0
+0x06;FISHING_POND;Child - Fish 7;OOT Fishing Pond Child Fish 7;fish;728;655;FISHING_POND;Child;0
+0x07;FISHING_POND;Child - Fish 8;OOT Fishing Pond Child Fish 8;fish;783;631;FISHING_POND;Child;0
+0x08;FISHING_POND;Child - Fish 9;OOT Fishing Pond Child Fish 9;fish;826;603;FISHING_POND;Child;0
+0x09;FISHING_POND;Child - Fish 10;OOT Fishing Pond Child Fish 10;fish;697;439;FISHING_POND;Child;0
+0x0a;FISHING_POND;Child - Fish 11;OOT Fishing Pond Child Fish 11;fish;868;360;FISHING_POND;Child;0
+0x0b;FISHING_POND;Child - Fish 12;OOT Fishing Pond Child Fish 12;fish;541;580;FISHING_POND;Child;0
+0x0c;FISHING_POND;Child - Fish 13;OOT Fishing Pond Child Fish 13;fish;557;540;FISHING_POND;Child;0
+0x0d;FISHING_POND;Child - Fish 14;OOT Fishing Pond Child Fish 14;fish;632;525;FISHING_POND;Child;0
+0x0e;FISHING_POND;Child - Fish 15;OOT Fishing Pond Child Fish 15;fish;720;501;FISHING_POND;Child;0
+0x0f;FISHING_POND;Child - Loach 1;OOT Fishing Pond Child Loach 1;fish;758;596;FISHING_POND;Child;0
+0x10;FISHING_POND;Child - Loach 2;OOT Fishing Pond Child Loach 2;fish;549;324;FISHING_POND;Child;0
+0x11;FISHING_POND;Adult - Fish 1;OOT Fishing Pond Adult Fish 1;fish;557;254;FISHING_POND;Adult;0
+0x12;FISHING_POND;Adult - Fish 2;OOT Fishing Pond Adult Fish 2;fish;510;299;FISHING_POND;Adult;0
+0x13;FISHING_POND;Adult - Fish 3;OOT Fishing Pond Adult Fish 3;fish;478;360;FISHING_POND;Adult;0
+0x14;FISHING_POND;Adult - Fish 4;OOT Fishing Pond Adult Fish 4;fish;502;555;FISHING_POND;Adult;0
+0x15;FISHING_POND;Adult - Fish 5;OOT Fishing Pond Adult Fish 5;fish;510;631;FISHING_POND;Adult;0
+0x16;FISHING_POND;Adult - Fish 6;OOT Fishing Pond Adult Fish 6;fish;704;618;FISHING_POND;Adult;0
+0x17;FISHING_POND;Adult - Fish 7;OOT Fishing Pond Adult Fish 7;fish;728;655;FISHING_POND;Adult;0
+0x18;FISHING_POND;Adult - Fish 8;OOT Fishing Pond Adult Fish 8;fish;783;631;FISHING_POND;Adult;0
+0x19;FISHING_POND;Adult - Fish 9;OOT Fishing Pond Adult Fish 9;fish;826;603;FISHING_POND;Adult;0
+0x1a;FISHING_POND;Adult - Fish 10;OOT Fishing Pond Adult Fish 10;fish;697;439;FISHING_POND;Adult;0
+0x1b;FISHING_POND;Adult - Fish 11;OOT Fishing Pond Adult Fish 11;fish;868;360;FISHING_POND;Adult;0
+0x1c;FISHING_POND;Adult - Fish 12;OOT Fishing Pond Adult Fish 12;fish;541;580;FISHING_POND;Adult;0
+0x1d;FISHING_POND;Adult - Fish 13;OOT Fishing Pond Adult Fish 13;fish;557;540;FISHING_POND;Adult;0
+0x1e;FISHING_POND;Adult - Fish 14;OOT Fishing Pond Adult Fish 14;fish;632;525;FISHING_POND;Adult;0
+0x1f;FISHING_POND;Adult - Fish 15;OOT Fishing Pond Adult Fish 15;fish;720;501;FISHING_POND;Adult;0
+0x20;FISHING_POND;Adult - Loach;OOT Fishing Pond Adult Loach;fish;549;324;FISHING_POND;Adult;0
 0x78;GANON_CASTLE_EXTERIOR;Side Arch;OOT Ganon Castle Exterior GS;gs;373;413;GANON_CASTLE_EXTERIOR;All;0
 0x0b;GANON_TOWER;Boss Key;OOT Ganon Castle Boss Key;chest;472;320;GANON_TOWER;All;0
 0x0801;GANON_TOWER;Tower 1;OOT Ganon Tower Pot 01;pot;252;171;GANON_TOWER;All;1

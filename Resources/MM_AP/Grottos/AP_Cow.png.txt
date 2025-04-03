@@ -80,7 +80,7 @@ QList<QPair<int, int>> CowPoints = {
 {572, 378},
 };
 QList<QPair<int, int>> NPCsPoints = {
-{626, 355},
-{606, 355},
-{584, 355},
+{128, 495},
+{134, 472},
+{159, 453},
 };

@@ -106,5 +106,5 @@ def perform_action(root_folder):
                     #coord, coordstr = detect_blobs(file, colorstr)
                     f.write(coordstr)
 
-#perform_action("D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\OoT_AP")
+perform_action("D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\OoT_AP")
 perform_action("D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\MM_AP")

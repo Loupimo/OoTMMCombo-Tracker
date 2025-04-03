@@ -462,11 +462,17 @@ void MapTab::UnloadMap()
         // We need to disconnect it in order to not call the perform function if an object was selected and destroyed
         QObject::disconnect(this->ObjectList, &QTreeWidget::itemSelectionChanged, this, &MapTab::UpdateObjectSelection);
 
+        /*int numOfObjs = this->ObjectList->topLevelItemCount();
+        for (int i = 0; i < numOfObjs; i++)
+        {
+            this->ObjectList->takeTopLevelItem(0);
+        }
+        this->ObjectList->clear();
+        numOfObjs = this->ObjectList->topLevelItemCount();*/
         this->PrevSelected = nullptr;
         this->RenderedScene->UnloadScene();
         this->RenderedScene = nullptr;
         this->View->setScene(nullptr);
-        //this->ObjectList->clear();
         this->SwitchContainer->setVisible(false);
 
         // Don't forget to reconnect the signal
@@ -483,7 +489,7 @@ void MapTab::ChangeActiveScene(QTreeWidgetItem* Current, QTreeWidgetItem* Previo
         return;
     }
 
-    if (this->RenderedScene && this->RenderedScene->childCount() == 0)
+    if (this->RenderedScene)
     {   // The previous selected item was a scene
 
         this->UnloadMap();
@@ -503,7 +509,7 @@ void MapTab::ItemFound(ObjectInfo* Object, const ItemInfo* ItemFound)
     if (this->Scenes[Object->RenderScene]->Renderer == nullptr)
     {   // Force the scene to load
 
-        if (this->RenderedScene && this->RenderedScene->childCount() == 0)
+        if (this->RenderedScene)
         {   // The previous selected item was a scene
 
             this->UnloadMap();
