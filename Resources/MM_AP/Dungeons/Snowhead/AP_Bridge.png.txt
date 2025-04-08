@@ -14,8 +14,8 @@ QList<QPair<int, int>> PotPoints = {
 };
 QList<QPair<int, int>> FlyPoints = {
 {582, 425},
-{453, 362},
+{829, 373},
 };
 QList<QPair<int, int>> CratePoints = {
-{410, 358},
+{821, 279},
 };

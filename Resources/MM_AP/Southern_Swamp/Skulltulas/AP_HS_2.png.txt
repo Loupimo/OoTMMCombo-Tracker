@@ -1,8 +1,7 @@
 QList<QPair<int, int>> HivePoints = {
-{405, 120},
-{463, 104},
 {500, 96},
-{440, 81},
+{440, 95},
+{472, 57},
 };
 QList<QPair<int, int>> PotPoints = {
 {493, 426},
@@ -17,6 +16,7 @@ QList<QPair<int, int>> GSPoints = {
 {275, 322},
 {592, 213},
 {472, 177},
+{471, 95},
 };
 QList<QPair<int, int>> CratePoints = {
 {220, 385},

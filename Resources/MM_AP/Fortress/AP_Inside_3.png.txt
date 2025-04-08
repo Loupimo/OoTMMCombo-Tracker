@@ -1,22 +1,22 @@
 QList<QPair<int, int>> FSPoints = {
-{495, 81},
+{670, 111},
 };
 QList<QPair<int, int>> HivePoints = {
-{532, 41},
+{721, 56},
 };
 QList<QPair<int, int>> ChestPoints = {
-{529, 85},
+{717, 116},
 };
 QList<QPair<int, int>> PotPoints = {
-{558, 22},
-{558, 11},
+{756, 30},
+{756, 15},
 };
 QList<QPair<int, int>> WonderPoints = {
-{540, 34},
-{524, 34},
-{532, 26},
+{732, 46},
+{711, 46},
+{721, 35},
 };
 QList<QPair<int, int>> CratePoints = {
-{536, 120},
-{525, 120},
+{726, 163},
+{712, 163},
 };

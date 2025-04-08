@@ -16,12 +16,11 @@ QList<QPair<int, int>> FSPoints = {
 {497, 391},
 };
 QList<QPair<int, int>> ChestPoints = {
-{579, 263},
+{140, 227},
 };
 QList<QPair<int, int>> NPCsPoints = {
-{148, 524},
-{109, 524},
-{128, 515},
-{143, 506},
-{109, 506},
+{848, 516},
+{827, 516},
+{848, 501},
+{827, 501},
 };

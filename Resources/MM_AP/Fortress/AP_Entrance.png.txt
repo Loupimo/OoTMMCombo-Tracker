@@ -4,5 +4,5 @@ QList<QPair<int, int>> ChestPoints = {
 {480, 357},
 };
 QList<QPair<int, int>> CratePoints = {
-{733, 210},
+{472, 222},
 };

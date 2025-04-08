@@ -6,7 +6,7 @@ QList<QPair<int, int>> PotPoints = {
 };
 QList<QPair<int, int>> GSPoints = {
 {273, 371},
-{648, 345},
+{472, 327},
 {417, 297},
 };
 QList<QPair<int, int>> CratePoints = {
