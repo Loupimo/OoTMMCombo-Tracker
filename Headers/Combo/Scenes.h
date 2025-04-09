@@ -680,6 +680,16 @@ enum MM_Shops
 const SceneMetaInfo* GetSceneMetaInfo(uint32_t SceneID, uint32_t Game);
 
 /*
+*   Extract the cow scene ID from given item ID.
+*
+*   @param ItemID		The item ID to extract the scene from.
+*   @param Game			The game in which to get the scene from.
+*
+*	@return The matching cow scene ID.
+*/
+uint32_t GetSceneCow(uint32_t ItemID, uint32_t Game);
+
+/*
 *   Extract the shop scene ID from given item ID.
 *
 *   @param ItemID		The item ID to extract the scene from.

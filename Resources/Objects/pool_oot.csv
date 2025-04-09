@@ -22,23 +22,23 @@ DOG_LADY;BACK_ALLEY_HOUSE2;Heart Piece;OOT Market Dog Lady HP;npc;436;214;BACK_A
 0x27;BAZAAR;Item 8;OOT Market Bazaar Item 8;shop;624;328;MARKET_BAZAAR;All;0
 BOMBCHU_BOWLING_1;BOMBCHU_BOWLING_ALLEY;Reward 1;OOT Bombchu Bowling Reward 1;npc;816;248;BOMBCHU_BOWLING_ALLEY;All;0
 BOMBCHU_BOWLING_2;BOMBCHU_BOWLING_ALLEY;Reward 2;OOT Bombchu Bowling Reward 2;npc;743;248;BOMBCHU_BOWLING_ALLEY;All;0
-0x08;BOMBCHU_SHOP;Item 1;OOT Market Bombchu Shop Item 1;shop;644;276;BOMBCHU_SHOP;All;0
-0x09;BOMBCHU_SHOP;Item 2;OOT Market Bombchu Shop Item 2;shop;574;276;BOMBCHU_SHOP;All;0
+0x08;BOMBCHU_SHOP;Item 1;OOT Market Bombchu Shop Item 1;shop;412;226;BOMBCHU_SHOP;All;0
+0x09;BOMBCHU_SHOP;Item 2;OOT Market Bombchu Shop Item 2;shop;342;226;BOMBCHU_SHOP;All;0
 0x0a;BOMBCHU_SHOP;Item 3;OOT Market Bombchu Shop Item 3;shop;412;276;BOMBCHU_SHOP;All;0
 0x0b;BOMBCHU_SHOP;Item 4;OOT Market Bombchu Shop Item 4;shop;342;276;BOMBCHU_SHOP;All;0
 0x0c;BOMBCHU_SHOP;Item 5;OOT Market Bombchu Shop Item 5;shop;644;226;BOMBCHU_SHOP;All;0
-0x0d;BOMBCHU_SHOP;Item 6;OOT Market Bombchu Shop Item 6;shop;574;226;BOMBCHU_SHOP;All;0
-0x0e;BOMBCHU_SHOP;Item 7;OOT Market Bombchu Shop Item 7;shop;412;226;BOMBCHU_SHOP;All;0
-0x0f;BOMBCHU_SHOP;Item 8;OOT Market Bombchu Shop Item 8;shop;342;226;BOMBCHU_SHOP;All;0
+0x0d;BOMBCHU_SHOP;Item 6;OOT Market Bombchu Shop Item 6;shop;574;276;BOMBCHU_SHOP;All;0
+0x0e;BOMBCHU_SHOP;Item 7;OOT Market Bombchu Shop Item 7;shop;644;276;BOMBCHU_SHOP;All;0
+0x0f;BOMBCHU_SHOP;Item 8;OOT Market Bombchu Shop Item 8;shop;574;226;BOMBCHU_SHOP;All;0
 0x01;BOTTOM_OF_THE_WELL;Compass;OOT Bottom of the Well Compass;chest;744;471;BOTTOM_OF_THE_WELL;All;0
 0x02;BOTTOM_OF_THE_WELL;Under Debris;OOT Bottom of the Well Under Debris;chest;805;517;BOTTOM_OF_THE_WELL;All;0
-0x04;BOTTOM_OF_THE_WELL;Back West;OOT Bottom of the Well Back West;chest;706;542;BOTTOM_OF_THE_WELL;All;0
+0x04;BOTTOM_OF_THE_WELL;Back West;OOT Bottom of the Well Back West;chest;511;144;BOTTOM_OF_THE_WELL;All;0
 0x05;BOTTOM_OF_THE_WELL;East;OOT Bottom of the Well East;chest;984;546;BOTTOM_OF_THE_WELL;All;0
-0x08;BOTTOM_OF_THE_WELL;Front West;OOT Bottom of the Well Front West;chest;511;144;BOTTOM_OF_THE_WELL;All;0
-0x09;BOTTOM_OF_THE_WELL;Underwater;OOT Bottom of the Well Underwater;chest;837;666;BOTTOM_OF_THE_WELL;All;0
+0x08;BOTTOM_OF_THE_WELL;Front West;OOT Bottom of the Well Front West;chest;706;542;BOTTOM_OF_THE_WELL;All;0
+0x09;BOTTOM_OF_THE_WELL;Underwater;OOT Bottom of the Well Underwater;chest;443;381;BOTTOM_OF_THE_WELL;All;0
 0x0c;BOTTOM_OF_THE_WELL;East Cage;OOT Bottom of the Well East Cage;chest;1168;373;BOTTOM_OF_THE_WELL;All;0
 0x0e;BOTTOM_OF_THE_WELL;Blood;OOT Bottom of the Well Blood Chest;chest;943;474;BOTTOM_OF_THE_WELL;All;0
-0x10;BOTTOM_OF_THE_WELL;Underwater 2;OOT Bottom of the Well Underwater 2;chest;443;381;BOTTOM_OF_THE_WELL;All;0
+0x10;BOTTOM_OF_THE_WELL;Underwater 2;OOT Bottom of the Well Underwater 2;chest;837;666;BOTTOM_OF_THE_WELL;All;0
 0x07;BOTTOM_OF_THE_WELL;Map;OOT Bottom of the Well Map;chest;880;674;BOTTOM_OF_THE_WELL;All;1
 0x01;BOTTOM_OF_THE_WELL;Coffin - Small Key;OOT Bottom of the Well Coffin;collectible;122;405;BOTTOM_OF_THE_WELL;All;0
 0x0a;BOTTOM_OF_THE_WELL;Pits;OOT Bottom of the Well Pits;chest;1189;324;BOTTOM_OF_THE_WELL;All;0
@@ -47,50 +47,50 @@ BOMBCHU_BOWLING_2;BOMBCHU_BOWLING_ALLEY;Reward 2;OOT Bombchu Bowling Reward 2;np
 0x48;BOTTOM_OF_THE_WELL;East Cage;OOT Bottom of the Well GS East Cage;gs;1201;368;BOTTOM_OF_THE_WELL;All;0
 0x4a;BOTTOM_OF_THE_WELL;Inner West;OOT Bottom of the Well GS Inner West;gs;743;199;BOTTOM_OF_THE_WELL;All;0
 0x49;BOTTOM_OF_THE_WELL;Inner East;OOT Bottom of the Well GS Inner East;gs;875;222;BOTTOM_OF_THE_WELL;All;0
-0x05;BOTTOM_OF_THE_WELL;Silver Rupee 1;OOT Bottom of the Well SR 1;sr;609;584;BOTTOM_OF_THE_WELL;All;1
-0x06;BOTTOM_OF_THE_WELL;Silver Rupee 2;OOT Bottom of the Well SR 2;sr;568;536;BOTTOM_OF_THE_WELL;All;1
+0x05;BOTTOM_OF_THE_WELL;Silver Rupee 1;OOT Bottom of the Well SR 1;sr;396;618;BOTTOM_OF_THE_WELL;All;1
+0x06;BOTTOM_OF_THE_WELL;Silver Rupee 2;OOT Bottom of the Well SR 2;sr;494;566;BOTTOM_OF_THE_WELL;All;1
 0x07;BOTTOM_OF_THE_WELL;Silver Rupee 3;OOT Bottom of the Well SR 3;sr;523;568;BOTTOM_OF_THE_WELL;All;1
-0x08;BOTTOM_OF_THE_WELL;Silver Rupee 4;OOT Bottom of the Well SR 4;sr;494;566;BOTTOM_OF_THE_WELL;All;1
-0x09;BOTTOM_OF_THE_WELL;Silver Rupee 5;OOT Bottom of the Well SR 5;sr;396;618;BOTTOM_OF_THE_WELL;All;1
-0x0016;BOTTOM_OF_THE_WELL;Main Room 1;OOT Bottom of the Well Pot Main Room 1;pot;829;723;BOTTOM_OF_THE_WELL;All;0
-0x0017;BOTTOM_OF_THE_WELL;Main Room 2;OOT Bottom of the Well Pot Main Room 2;pot;853;723;BOTTOM_OF_THE_WELL;All;0
-0x0018;BOTTOM_OF_THE_WELL;Main Room 3;OOT Bottom of the Well Pot Main Room 3;pot;540;615;BOTTOM_OF_THE_WELL;All;0
-0x001a;BOTTOM_OF_THE_WELL;Main Room 4;OOT Bottom of the Well Pot Main Room 4;pot;540;600;BOTTOM_OF_THE_WELL;All;0
-0x001b;BOTTOM_OF_THE_WELL;Main Room 5;OOT Bottom of the Well Pot Main Room 5;pot;540;588;BOTTOM_OF_THE_WELL;All;0
+0x08;BOTTOM_OF_THE_WELL;Silver Rupee 4;OOT Bottom of the Well SR 4;sr;568;536;BOTTOM_OF_THE_WELL;All;1
+0x09;BOTTOM_OF_THE_WELL;Silver Rupee 5;OOT Bottom of the Well SR 5;sr;609;584;BOTTOM_OF_THE_WELL;All;1
+0x0016;BOTTOM_OF_THE_WELL;Main Room 1;OOT Bottom of the Well Pot Main Room 1;pot;540;615;BOTTOM_OF_THE_WELL;All;0
+0x0017;BOTTOM_OF_THE_WELL;Main Room 2;OOT Bottom of the Well Pot Main Room 2;pot;540;600;BOTTOM_OF_THE_WELL;All;0
+0x0018;BOTTOM_OF_THE_WELL;Main Room 3;OOT Bottom of the Well Pot Main Room 3;pot;540;588;BOTTOM_OF_THE_WELL;All;0
+0x001a;BOTTOM_OF_THE_WELL;Main Room 4;OOT Bottom of the Well Pot Main Room 4;pot;829;723;BOTTOM_OF_THE_WELL;All;0
+0x001b;BOTTOM_OF_THE_WELL;Main Room 5;OOT Bottom of the Well Pot Main Room 5;pot;853;723;BOTTOM_OF_THE_WELL;All;0
 0x001d;BOTTOM_OF_THE_WELL;Main Room - Underwater;OOT Bottom of the Well Pot Main Room Underwater;pot;835;119;BOTTOM_OF_THE_WELL;All;0
-0x012c;BOTTOM_OF_THE_WELL;Basement 1;OOT Bottom of the Well Pot Basement 01;pot;705;481;BOTTOM_OF_THE_WELL;All;1
-0x012d;BOTTOM_OF_THE_WELL;Basement 2;OOT Bottom of the Well Pot Basement 02;pot;657;459;BOTTOM_OF_THE_WELL;All;1
-0x012e;BOTTOM_OF_THE_WELL;Basement 3;OOT Bottom of the Well Pot Basement 03;pot;790;344;BOTTOM_OF_THE_WELL;All;1
-0x012f;BOTTOM_OF_THE_WELL;Basement 4;OOT Bottom of the Well Pot Basement 04;pot;771;345;BOTTOM_OF_THE_WELL;All;1
-0x0130;BOTTOM_OF_THE_WELL;Basement 5;OOT Bottom of the Well Pot Basement 05;pot;756;341;BOTTOM_OF_THE_WELL;All;1
-0x0131;BOTTOM_OF_THE_WELL;Basement 6;OOT Bottom of the Well Pot Basement 06;pot;759;327;BOTTOM_OF_THE_WELL;All;1
-0x0132;BOTTOM_OF_THE_WELL;Basement 7;OOT Bottom of the Well Pot Basement 07;pot;767;312;BOTTOM_OF_THE_WELL;All;1
-0x0133;BOTTOM_OF_THE_WELL;Basement 8;OOT Bottom of the Well Pot Basement 08;pot;869;300;BOTTOM_OF_THE_WELL;All;1
-0x0134;BOTTOM_OF_THE_WELL;Basement 9;OOT Bottom of the Well Pot Basement 09;pot;856;299;BOTTOM_OF_THE_WELL;All;1
-0x0135;BOTTOM_OF_THE_WELL;Basement 10;OOT Bottom of the Well Pot Basement 10;pot;842;299;BOTTOM_OF_THE_WELL;All;1
-0x0136;BOTTOM_OF_THE_WELL;Basement 11;OOT Bottom of the Well Pot Basement 11;pot;840;285;BOTTOM_OF_THE_WELL;All;1
-0x0137;BOTTOM_OF_THE_WELL;Basement 12;OOT Bottom of the Well Pot Basement 12;pot;841;274;BOTTOM_OF_THE_WELL;All;1
+0x012c;BOTTOM_OF_THE_WELL;Basement 1;OOT Bottom of the Well Pot Basement 01;pot;657;459;BOTTOM_OF_THE_WELL;All;1
+0x012d;BOTTOM_OF_THE_WELL;Basement 2;OOT Bottom of the Well Pot Basement 02;pot;705;481;BOTTOM_OF_THE_WELL;All;1
+0x012e;BOTTOM_OF_THE_WELL;Basement 3;OOT Bottom of the Well Pot Basement 03;pot;759;327;BOTTOM_OF_THE_WELL;All;1
+0x012f;BOTTOM_OF_THE_WELL;Basement 4;OOT Bottom of the Well Pot Basement 04;pot;842;299;BOTTOM_OF_THE_WELL;All;1
+0x0130;BOTTOM_OF_THE_WELL;Basement 5;OOT Bottom of the Well Pot Basement 05;pot;790;344;BOTTOM_OF_THE_WELL;All;1
+0x0131;BOTTOM_OF_THE_WELL;Basement 6;OOT Bottom of the Well Pot Basement 06;pot;869;300;BOTTOM_OF_THE_WELL;All;1
+0x0132;BOTTOM_OF_THE_WELL;Basement 7;OOT Bottom of the Well Pot Basement 07;pot;841;274;BOTTOM_OF_THE_WELL;All;1
+0x0133;BOTTOM_OF_THE_WELL;Basement 8;OOT Bottom of the Well Pot Basement 08;pot;840;285;BOTTOM_OF_THE_WELL;All;1
+0x0134;BOTTOM_OF_THE_WELL;Basement 9;OOT Bottom of the Well Pot Basement 09;pot;771;345;BOTTOM_OF_THE_WELL;All;1
+0x0135;BOTTOM_OF_THE_WELL;Basement 10;OOT Bottom of the Well Pot Basement 10;pot;856;299;BOTTOM_OF_THE_WELL;All;1
+0x0136;BOTTOM_OF_THE_WELL;Basement 11;OOT Bottom of the Well Pot Basement 11;pot;756;341;BOTTOM_OF_THE_WELL;All;1
+0x0137;BOTTOM_OF_THE_WELL;Basement 12;OOT Bottom of the Well Pot Basement 12;pot;767;312;BOTTOM_OF_THE_WELL;All;1
 0x0306;BOTTOM_OF_THE_WELL;Side Room;OOT Bottom of the Well Pot Side Room;pot;1101;210;BOTTOM_OF_THE_WELL;All;0
-0x0602;BOTTOM_OF_THE_WELL;Flying Pot 1;OOT Bottom of the Well Flying Pot 1;pot;715;224;BOTTOM_OF_THE_WELL;All;0
-0x0603;BOTTOM_OF_THE_WELL;Flying Pot 2;OOT Bottom of the Well Flying Pot 2;pot;741;224;BOTTOM_OF_THE_WELL;All;0
-0x0604;BOTTOM_OF_THE_WELL;Flying Pot 3;OOT Bottom of the Well Flying Pot 3;pot;767;224;BOTTOM_OF_THE_WELL;All;0
-0x00101;BOTTOM_OF_THE_WELL;Grass 1;OOT Bottom of the Well Grass 01;grass;526;462;BOTTOM_OF_THE_WELL;All;1
-0x00102;BOTTOM_OF_THE_WELL;Grass 2;OOT Bottom of the Well Grass 02;grass;511;467;BOTTOM_OF_THE_WELL;All;1
-0x00103;BOTTOM_OF_THE_WELL;Grass 3;OOT Bottom of the Well Grass 03;grass;528;449;BOTTOM_OF_THE_WELL;All;1
-0x00104;BOTTOM_OF_THE_WELL;Grass 4;OOT Bottom of the Well Grass 04;grass;440;362;BOTTOM_OF_THE_WELL;All;1
-0x00105;BOTTOM_OF_THE_WELL;Grass 5;OOT Bottom of the Well Grass 05;grass;428;332;BOTTOM_OF_THE_WELL;All;1
-0x00106;BOTTOM_OF_THE_WELL;Grass 6;OOT Bottom of the Well Grass 06;grass;438;296;BOTTOM_OF_THE_WELL;All;1
-0x00107;BOTTOM_OF_THE_WELL;Grass 7;OOT Bottom of the Well Grass 07;grass;422;281;BOTTOM_OF_THE_WELL;All;1
-0x00108;BOTTOM_OF_THE_WELL;Grass 8;OOT Bottom of the Well Grass 08;grass;446;278;BOTTOM_OF_THE_WELL;All;1
-0x00109;BOTTOM_OF_THE_WELL;Grass 9;OOT Bottom of the Well Grass 09;grass;419;265;BOTTOM_OF_THE_WELL;All;1
-0x0010a;BOTTOM_OF_THE_WELL;Grass 10;OOT Bottom of the Well Grass 10;grass;443;263;BOTTOM_OF_THE_WELL;All;1
-0x0010b;BOTTOM_OF_THE_WELL;Grass 11;OOT Bottom of the Well Grass 11;grass;420;246;BOTTOM_OF_THE_WELL;All;1
-0x0010c;BOTTOM_OF_THE_WELL;Grass 12;OOT Bottom of the Well Grass 12;grass;442;242;BOTTOM_OF_THE_WELL;All;1
-0x0011a;BOTTOM_OF_THE_WELL;Rupee 1;OOT Bottom of the Well Rupee 1;rupee;663;433;BOTTOM_OF_THE_WELL;All;1
-0x0011b;BOTTOM_OF_THE_WELL;Rupee 2;OOT Bottom of the Well Rupee 2;rupee;677;410;BOTTOM_OF_THE_WELL;All;1
-0x0011c;BOTTOM_OF_THE_WELL;Rupee 3;OOT Bottom of the Well Rupee 3;rupee;696;416;BOTTOM_OF_THE_WELL;All;1
-0x0011d;BOTTOM_OF_THE_WELL;Rupee 4;OOT Bottom of the Well Rupee 4;rupee;710;429;BOTTOM_OF_THE_WELL;All;1
-0x0011e;BOTTOM_OF_THE_WELL;Rupee 5;OOT Bottom of the Well Rupee 5;rupee;707;444;BOTTOM_OF_THE_WELL;All;1
+0x0602;BOTTOM_OF_THE_WELL;Flying Pot 1;OOT Bottom of the Well Flying Pot 1;pot;767;224;BOTTOM_OF_THE_WELL;All;0
+0x0603;BOTTOM_OF_THE_WELL;Flying Pot 2;OOT Bottom of the Well Flying Pot 2;pot;715;224;BOTTOM_OF_THE_WELL;All;0
+0x0604;BOTTOM_OF_THE_WELL;Flying Pot 3;OOT Bottom of the Well Flying Pot 3;pot;741;224;BOTTOM_OF_THE_WELL;All;0
+0x00101;BOTTOM_OF_THE_WELL;Grass 1;OOT Bottom of the Well Grass 01;grass;420;246;BOTTOM_OF_THE_WELL;All;1
+0x00102;BOTTOM_OF_THE_WELL;Grass 2;OOT Bottom of the Well Grass 02;grass;419;265;BOTTOM_OF_THE_WELL;All;1
+0x00103;BOTTOM_OF_THE_WELL;Grass 3;OOT Bottom of the Well Grass 03;grass;422;281;BOTTOM_OF_THE_WELL;All;1
+0x00104;BOTTOM_OF_THE_WELL;Grass 4;OOT Bottom of the Well Grass 04;grass;428;332;BOTTOM_OF_THE_WELL;All;1
+0x00105;BOTTOM_OF_THE_WELL;Grass 5;OOT Bottom of the Well Grass 05;grass;438;296;BOTTOM_OF_THE_WELL;All;1
+0x00106;BOTTOM_OF_THE_WELL;Grass 6;OOT Bottom of the Well Grass 06;grass;442;242;BOTTOM_OF_THE_WELL;All;1
+0x00107;BOTTOM_OF_THE_WELL;Grass 7;OOT Bottom of the Well Grass 07;grass;443;263;BOTTOM_OF_THE_WELL;All;1
+0x00108;BOTTOM_OF_THE_WELL;Grass 8;OOT Bottom of the Well Grass 08;grass;440;362;BOTTOM_OF_THE_WELL;All;1
+0x00109;BOTTOM_OF_THE_WELL;Grass 9;OOT Bottom of the Well Grass 09;grass;446;278;BOTTOM_OF_THE_WELL;All;1
+0x0010a;BOTTOM_OF_THE_WELL;Grass 10;OOT Bottom of the Well Grass 10;grass;511;467;BOTTOM_OF_THE_WELL;All;1
+0x0010b;BOTTOM_OF_THE_WELL;Grass 11;OOT Bottom of the Well Grass 11;grass;526;462;BOTTOM_OF_THE_WELL;All;1
+0x0010c;BOTTOM_OF_THE_WELL;Grass 12;OOT Bottom of the Well Grass 12;grass;528;449;BOTTOM_OF_THE_WELL;All;1
+0x0011a;BOTTOM_OF_THE_WELL;Rupee 1;OOT Bottom of the Well Rupee 1;rupee;696;416;BOTTOM_OF_THE_WELL;All;1
+0x0011b;BOTTOM_OF_THE_WELL;Rupee 2;OOT Bottom of the Well Rupee 2;rupee;710;429;BOTTOM_OF_THE_WELL;All;1
+0x0011c;BOTTOM_OF_THE_WELL;Rupee 3;OOT Bottom of the Well Rupee 3;rupee;707;444;BOTTOM_OF_THE_WELL;All;1
+0x0011d;BOTTOM_OF_THE_WELL;Rupee 4;OOT Bottom of the Well Rupee 4;rupee;663;433;BOTTOM_OF_THE_WELL;All;1
+0x0011e;BOTTOM_OF_THE_WELL;Rupee 5;OOT Bottom of the Well Rupee 5;rupee;677;410;BOTTOM_OF_THE_WELL;All;1
 0x0020d;BOTTOM_OF_THE_WELL;Heart 1;OOT Bottom of the Well Heart 1;heart;245;403;BOTTOM_OF_THE_WELL;All;0
 0x0020e;BOTTOM_OF_THE_WELL;Heart 2;OOT Bottom of the Well Heart 2;heart;188;332;BOTTOM_OF_THE_WELL;All;0
 0x00113;BOTTOM_OF_THE_WELL;Basement;OOT Bottom of the Well Basement Big Fairy;fairy_spot;862;224;BOTTOM_OF_THE_WELL;All;1
@@ -190,10 +190,10 @@ TRADE_BIGGORON_SWORD;DEATH_MOUNTAIN_TRAIL;Biggoron Sword;OOT Death Mountain Trai
 0x00008;DEKU_TREE;Lobby 3;OOT Deku Tree Grass Lobby 3;grass;582;749;DEKU_TREE;All;0
 0x00009;DEKU_TREE;Lobby 4;OOT Deku Tree Grass Lobby 4;grass;474;603;DEKU_TREE;All;0
 0x0000a;DEKU_TREE;Lobby 5;OOT Deku Tree Grass Lobby 5;grass;494;589;DEKU_TREE;All;0
-0x00200;DEKU_TREE;Slingshot Room 1;OOT Deku Tree Grass Slingshot Room 1;grass;559;710;DEKU_TREE;All;2
-0x00201;DEKU_TREE;Slingshot Room 2;OOT Deku Tree Grass Slingshot Room 2;grass;608;703;DEKU_TREE;All;2
-0x00202;DEKU_TREE;Slingshot Room 3;OOT Deku Tree Grass Slingshot Room 3;grass;551;850;DEKU_TREE;All;2
-0x00203;DEKU_TREE;Slingshot Room 4;OOT Deku Tree Grass Slingshot Room 4;grass;586;864;DEKU_TREE;All;2
+0x00200;DEKU_TREE;Slingshot Room 1;OOT Deku Tree Grass Slingshot Room 1;grass;551;850;DEKU_TREE;All;2
+0x00201;DEKU_TREE;Slingshot Room 2;OOT Deku Tree Grass Slingshot Room 2;grass;586;864;DEKU_TREE;All;2
+0x00202;DEKU_TREE;Slingshot Room 3;OOT Deku Tree Grass Slingshot Room 3;grass;559;710;DEKU_TREE;All;2
+0x00203;DEKU_TREE;Slingshot Room 4;OOT Deku Tree Grass Slingshot Room 4;grass;608;703;DEKU_TREE;All;2
 0x00301;DEKU_TREE;Basement - Main 1;OOT Deku Tree Grass Basement Main 1;grass;975;645;DEKU_TREE;All;3
 0x00302;DEKU_TREE;Basement - Main 2;OOT Deku Tree Grass Basement Main 2;grass;1019;653;DEKU_TREE;All;3
 0x00400;DEKU_TREE;Eye Switch Room 1;OOT Deku Tree Grass Eye Switch Room 1;grass;923;606;DEKU_TREE;All;5
@@ -864,14 +864,14 @@ THEATER_NUTS;GROTTOS;Deku Nuts Upgrade;OOT Deku Theater Nuts Upgrade;npc;691;561
 0x01;GROTTOS;Heart Piece;OOT Hyrule Field Grotto Tektite HP;collectible;723;253;OOT_GROTTO_HYRULE_TEKTITE;All;0
 0x59;GROTTOS;Web;OOT Hyrule Field Grotto Near Kakariko GS;gs;802;162;OOT_GROTTO_HYRULE_KAKARIKO;All;0
 0x58;GROTTOS;Web;OOT Hyrule Field Grotto Near Gerudo GS;gs;160;690;OOT_GROTTO_HYRULE_GERUDO;All;0
-0x00402;GROTTOS;Grass 1;OOT Hyrule Field Grotto Near Gerudo Grass 1;grass;469;630;OOT_GROTTO_HYRULE_GERUDO;All;0
-0x00403;GROTTOS;Grass 2;OOT Hyrule Field Grotto Near Gerudo Grass 2;grass;387;620;OOT_GROTTO_HYRULE_GERUDO;All;0
+0x00402;GROTTOS;Grass 1;OOT Hyrule Field Grotto Near Gerudo Grass 1;grass;387;620;OOT_GROTTO_HYRULE_GERUDO;All;0
+0x00403;GROTTOS;Grass 2;OOT Hyrule Field Grotto Near Gerudo Grass 2;grass;469;630;OOT_GROTTO_HYRULE_GERUDO;All;0
 0x0405;GROTTOS;Pot 1;OOT Hyrule Field Cow Grotto Pot 1;pot;493;632;OOT_GROTTO_HYRULE_GERUDO;All;0
 0x0407;GROTTOS;Pot 2;OOT Hyrule Field Cow Grotto Pot 2;pot;476;603;OOT_GROTTO_HYRULE_GERUDO;All;0
 0x79;GROTTOS;Web;OOT Hyrule Castle GS Grotto;gs;520;715;OOT_GROTTO_CASTLE_STORMS;All;0
 0x0806;GROTTOS;Pot 1;OOT Hyrule Castle Grotto Pot 1;pot;708;422;OOT_GROTTO_CASTLE_STORMS;All;0
-0x0807;GROTTOS;Pot 2;OOT Hyrule Castle Grotto Pot 2;pot;659;381;OOT_GROTTO_CASTLE_STORMS;All;0
-0x0809;GROTTOS;Pot 3;OOT Hyrule Castle Grotto Pot 3;pot;720;345;OOT_GROTTO_CASTLE_STORMS;All;0
+0x0807;GROTTOS;Pot 2;OOT Hyrule Castle Grotto Pot 2;pot;720;345;OOT_GROTTO_CASTLE_STORMS;All;0
+0x0809;GROTTOS;Pot 3;OOT Hyrule Castle Grotto Pot 3;pot;659;381;OOT_GROTTO_CASTLE_STORMS;All;0
 0x080b;GROTTOS;Pot 4;OOT Hyrule Castle Grotto Pot 4;pot;658;312;OOT_GROTTO_CASTLE_STORMS;All;0
 0x17;GROTTOS;Front;OOT Gerudo Valley Grotto Front Scrub;scrub;714;302;OOT_GROTTO_VALLEY_STORMS;All;0
 0x18;GROTTOS;Back;OOT Gerudo Valley Grotto Back Scrub;scrub;649;207;OOT_GROTTO_VALLEY_STORMS;All;0
@@ -962,8 +962,8 @@ POE_COLLECTOR;GUARD_HOUSE;Bottle;OOT Market Pot House Big Poes;npc;139;533;GUARD
 GS_10;HOUSE_OF_SKULLTULA;10 Tokens;OOT Skulltula House 10 Tokens;npc;657;431;HOUSE_OF_SKULLTULA;All;0
 GS_20;HOUSE_OF_SKULLTULA;20 Tokens;OOT Skulltula House 20 Tokens;npc;287;434;HOUSE_OF_SKULLTULA;All;0
 GS_30;HOUSE_OF_SKULLTULA;30 Tokens;OOT Skulltula House 30 Tokens;npc;469;126;HOUSE_OF_SKULLTULA;All;0
-GS_40;HOUSE_OF_SKULLTULA;40 Tokens;OOT Skulltula House 40 Tokens;npc;650;219;HOUSE_OF_SKULLTULA;All;0
-GS_50;HOUSE_OF_SKULLTULA;50 Tokens;OOT Skulltula House 50 Tokens;npc;290;222;HOUSE_OF_SKULLTULA;All;0
+GS_40;HOUSE_OF_SKULLTULA;40 Tokens;OOT Skulltula House 40 Tokens;npc;290;222;HOUSE_OF_SKULLTULA;All;0
+GS_50;HOUSE_OF_SKULLTULA;50 Tokens;OOT Skulltula House 50 Tokens;npc;650;219;HOUSE_OF_SKULLTULA;All;0
 WEIRD_EGG;GROTTOS;Hatch - Chicken;OOT Hatch Chicken;npc;138;210;HYRULE_CASTLE;All;0
 MALON_EGG;HYRULE_CASTLE;Malon Egg;OOT Malon Egg;npc;131;243;HYRULE_CASTLE;All;0
 0x7a;HYRULE_CASTLE;Tree;OOT Hyrule Castle GS Tree;gs;218;223;HYRULE_CASTLE;All;0
@@ -1334,7 +1334,7 @@ TRADE_ODD_POTION;KAKARIKO_POTION_SHOP;Odd Potion;OOT Kakariko Potion Shop Odd Po
 0x3d;KAKARIKO_POTION_SHOP;Item 6;OOT Kakariko Potion Shop Item 6;shop;644;277;KAKARIKO_POTION_SHOP;All;0
 0x3e;KAKARIKO_POTION_SHOP;Item 7;OOT Kakariko Potion Shop Item 7;shop;510;277;KAKARIKO_POTION_SHOP;All;0
 0x3f;KAKARIKO_POTION_SHOP;Item 8;OOT Kakariko Potion Shop Item 8;shop;465;277;KAKARIKO_POTION_SHOP;All;0
-POCKET_EGG;GROTTOS;Hatch - Pocket Cucco;OOT Hatch Pocket Cucco;npc;396;132;KAKARIKO_VILLAGE;All;0
+POCKET_EGG;GROTTOS;Hatch - Pocket Cucco;OOT Hatch Pocket Cucco;npc;396;132;KAKARIKO_VILLAGE;Adult;0
 ANJU_BOTTLE;KAKARIKO_VILLAGE;Bottle;OOT Kakariko Anju Bottle;npc;396;150;KAKARIKO_VILLAGE;Child;0
 TRADE_POCKET_EGG;KAKARIKO_VILLAGE;Egg;OOT Kakariko Anju Egg;npc;396;150;KAKARIKO_VILLAGE;Adult;0
 TRADE_COJIRO;KAKARIKO_VILLAGE;Cojiro;OOT Kakariko Anju Cojiro;npc;376;150;KAKARIKO_VILLAGE;Adult;0
@@ -1493,12 +1493,12 @@ BLUE_WARP_BARINADE;LAIR_BARINADE;Zora's Sapphire;OOT Jabu-Jabu Boss;npc;471;311;
 BLUE_WARP_BONGO_BONGO;LAIR_BONGO_BONGO;Shadow Medaillon;OOT Shadow Temple Boss;npc;491;385;TEMPLE_SHADOW;All;8
 0x1f;LAIR_GOHMA;Heart Container;OOT Deku Tree Boss Container;collectible;614;592;DEKU_TREE;All;10
 BLUE_WARP_GOHMA;LAIR_GOHMA;Kokiri's Emerald;OOT Deku Tree Boss;npc;690;592;DEKU_TREE;All;10
-0x00101;LAIR_GOHMA;Boss 1;OOT Deku Tree Boss Grass 1;grass;909;553;DEKU_TREE;All;10
-0x00102;LAIR_GOHMA;Boss 2;OOT Deku Tree Boss Grass 2;grass;981;572;DEKU_TREE;All;10
-0x00103;LAIR_GOHMA;Boss 3;OOT Deku Tree Boss Grass 3;grass;1070;602;DEKU_TREE;All;10
-0x00104;LAIR_GOHMA;Boss 4;OOT Deku Tree Boss Grass 4;grass;1056;655;DEKU_TREE;All;10
-0x00105;LAIR_GOHMA;Boss 5;OOT Deku Tree Boss Grass 5;grass;330;649;DEKU_TREE;All;10
-0x00106;LAIR_GOHMA;Boss 6;OOT Deku Tree Boss Grass 6;grass;316;601;DEKU_TREE;All;10
+0x00101;LAIR_GOHMA;Boss 1;OOT Deku Tree Boss Grass 1;grass;330;649;DEKU_TREE;All;10
+0x00102;LAIR_GOHMA;Boss 2;OOT Deku Tree Boss Grass 2;grass;316;601;DEKU_TREE;All;10
+0x00103;LAIR_GOHMA;Boss 3;OOT Deku Tree Boss Grass 3;grass;1056;655;DEKU_TREE;All;10
+0x00104;LAIR_GOHMA;Boss 4;OOT Deku Tree Boss Grass 4;grass;1070;602;DEKU_TREE;All;10
+0x00105;LAIR_GOHMA;Boss 5;OOT Deku Tree Boss Grass 5;grass;909;553;DEKU_TREE;All;10
+0x00106;LAIR_GOHMA;Boss 6;OOT Deku Tree Boss Grass 6;grass;981;572;DEKU_TREE;All;10
 0x00107;LAIR_GOHMA;Boss 7;OOT Deku Tree Boss Grass 7;grass;398;573;DEKU_TREE;All;10
 0x00108;LAIR_GOHMA;Boss 8;OOT Deku Tree Boss Grass 8;grass;470;553;DEKU_TREE;All;10
 0x00;LAIR_KING_DODONGO;Small Chest;OOT Dodongo Cavern Boss Chest;chest;345;126;DODONGO_CAVERN;All;8
@@ -1651,14 +1651,14 @@ TRADE_POACHER_SAW;LOST_WOODS;Poacher's Saw;OOT Lost Woods Poacher's Saw;npc;301;
 0x00013;MARKET_CHILD_DAY;Day - Balcony 5;OOT Market Wonder Item Day 5;wonder;198;363;MARKET_CHILD_DAY;All;0
 0x00005;MARKET_CHILD_NIGHT;Night - Balcony 1;OOT Market Wonder Item Night 1;wonder;200;168;MARKET_CHILD_NIGHT;All;0
 0x00006;MARKET_CHILD_NIGHT;Night - Balcony 2;OOT Market Wonder Item Night 2;wonder;196;314;MARKET_CHILD_NIGHT;All;0
-0x28;MARKET_POTION_SHOP;Item 1;OOT Market Potion Shop Item 1;shop;556;340;MARKET_POTION_SHOP;All;0
-0x29;MARKET_POTION_SHOP;Item 2;OOT Market Potion Shop Item 2;shop;500;340;MARKET_POTION_SHOP;All;0
-0x2a;MARKET_POTION_SHOP;Item 3;OOT Market Potion Shop Item 3;shop;416;340;MARKET_POTION_SHOP;All;0
-0x2b;MARKET_POTION_SHOP;Item 4;OOT Market Potion Shop Item 4;shop;360;340;MARKET_POTION_SHOP;All;0
-0x2c;MARKET_POTION_SHOP;Item 5;OOT Market Potion Shop Item 5;shop;556;297;MARKET_POTION_SHOP;All;0
-0x2d;MARKET_POTION_SHOP;Item 6;OOT Market Potion Shop Item 6;shop;500;297;MARKET_POTION_SHOP;All;0
-0x2e;MARKET_POTION_SHOP;Item 7;OOT Market Potion Shop Item 7;shop;416;297;MARKET_POTION_SHOP;All;0
-0x2f;MARKET_POTION_SHOP;Item 8;OOT Market Potion Shop Item 8;shop;360;297;MARKET_POTION_SHOP;All;0
+0x28;MARKET_POTION_SHOP;Item 1;OOT Market Potion Shop Item 1;shop;360;297;MARKET_POTION_SHOP;All;0
+0x29;MARKET_POTION_SHOP;Item 2;OOT Market Potion Shop Item 2;shop;416;297;MARKET_POTION_SHOP;All;0
+0x2a;MARKET_POTION_SHOP;Item 3;OOT Market Potion Shop Item 3;shop;360;340;MARKET_POTION_SHOP;All;0
+0x2b;MARKET_POTION_SHOP;Item 4;OOT Market Potion Shop Item 4;shop;416;340;MARKET_POTION_SHOP;All;0
+0x2c;MARKET_POTION_SHOP;Item 5;OOT Market Potion Shop Item 5;shop;500;297;MARKET_POTION_SHOP;All;0
+0x2d;MARKET_POTION_SHOP;Item 6;OOT Market Potion Shop Item 6;shop;556;297;MARKET_POTION_SHOP;All;0
+0x2e;MARKET_POTION_SHOP;Item 7;OOT Market Potion Shop Item 7;shop;500;340;MARKET_POTION_SHOP;All;0
+0x2f;MARKET_POTION_SHOP;Item 8;OOT Market Potion Shop Item 8;shop;556;340;MARKET_POTION_SHOP;All;0
 0x01;RANCH_HOUSE_SILO;Heart Piece;OOT Lon Lon Ranch Silo HP;collectible;751;262;SILO;All;0
 TALON_BOTTLE;RANCH_HOUSE_SILO;Bottle;OOT Lon Lon Ranch Talon Bottle;npc;485;402;RANCH_HOUSE_SILO;Child;0
 0x0200;RANCH_HOUSE_SILO;Pot 1;OOT Lon Lon Ranch Talon House Pot 1;pot;359;439;RANCH_HOUSE_SILO;All;0
@@ -1818,7 +1818,7 @@ SHOOTING_GAME_ADULT;SHOOTING_GALLERY;Reward;OOT Shooting Gallery Adult;npc;616;3
 0x00;TEMPLE_FOREST;Stalfos - Lower;OOT Forest Temple Mini-Boss Key;chest;472;517;TEMPLE_FOREST;All;5
 0x01;TEMPLE_FOREST;Map;OOT Forest Temple Map;chest;475;442;TEMPLE_FOREST;All;8
 0x04;TEMPLE_FOREST;Maze;OOT Forest Temple Maze;chest;423;335;TEMPLE_FOREST;All;6
-0x05;TEMPLE_FOREST;Garden - West;OOT Forest Temple Garden;chest;581;233;TEMPLE_FOREST;All;2
+0x05;TEMPLE_FOREST;Garden - East;OOT Forest Temple Garden;chest;581;233;TEMPLE_FOREST;All;2
 0x09;TEMPLE_FOREST;Well;OOT Forest Temple Well;chest;846;125;TEMPLE_FOREST;All;4
 0x0d;TEMPLE_FOREST;Poe Key;OOT Forest Temple Poe Key;chest;746;477;TEMPLE_FOREST;All;9
 0x0c;TEMPLE_FOREST;Bow;OOT Forest Temple Bow;chest;475;310;TEMPLE_FOREST;All;5
@@ -1829,8 +1829,8 @@ SHOOTING_GAME_ADULT;SHOOTING_GALLERY;Reward;OOT Shooting Gallery Adult;npc;616;3
 0x0b;TEMPLE_FOREST;Antichamber;OOT Forest Temple Antichamber;chest;214;410;TEMPLE_FOREST;All;15
 0x21;TEMPLE_FOREST;Entrance;OOT Forest Temple GS Entrance;gs;137;140;TEMPLE_FOREST;All;0
 0x23;TEMPLE_FOREST;Main;OOT Forest Temple GS Main;gs;574;74;TEMPLE_FOREST;All;1
-0x22;TEMPLE_FOREST;Garden - West;OOT Forest Temple GS Garden West;gs;495;225;TEMPLE_FOREST;All;2
-0x20;TEMPLE_FOREST;Garden - East;OOT Forest Temple GS Garden East;gs;492;46;TEMPLE_FOREST;All;3
+0x22;TEMPLE_FOREST;Garden - West;OOT Forest Temple GS Garden West;gs;492;46;TEMPLE_FOREST;All;3
+0x20;TEMPLE_FOREST;Garden - East;OOT Forest Temple GS Garden East;gs;495;225;TEMPLE_FOREST;All;2
 0x24;TEMPLE_FOREST;Antichamber;OOT Forest Temple GS Antichamber;gs;241;312;TEMPLE_FOREST;All;15
 0x020b;TEMPLE_FOREST;Main Room 1;OOT Forest Temple Pot Main Room 1;pot;631;488;TEMPLE_FOREST;All;1
 0x020c;TEMPLE_FOREST;Main Room 2;OOT Forest Temple Pot Main Room 2;pot;326;491;TEMPLE_FOREST;All;1
@@ -1845,10 +1845,10 @@ SHOOTING_GAME_ADULT;SHOOTING_GALLERY;Reward;OOT Shooting Gallery Adult;npc;616;3
 0x0609;TEMPLE_FOREST;Stalfos - Upper 3;OOT Forest Temple Pot Miniboss Upper 3;pot;425;288;TEMPLE_FOREST;All;5
 0x060a;TEMPLE_FOREST;Stalfos - Upper 4;OOT Forest Temple Pot Miniboss Upper 4;pot;535;346;TEMPLE_FOREST;All;5
 0x0d05;TEMPLE_FOREST;Blue Poe 1;OOT Forest Temple Pot Blue Poe 1;pot;339;464;TEMPLE_FOREST;All;10
-0x0d06;TEMPLE_FOREST;Blue Poe 2;OOT Forest Temple Pot Blue Poe 2;pot;366;464;TEMPLE_FOREST;All;10
-0x0d07;TEMPLE_FOREST;Blue Poe 3;OOT Forest Temple Pot Blue Poe 3;pot;395;464;TEMPLE_FOREST;All;10
-0x0e05;TEMPLE_FOREST;Rotating Room 1;OOT Forest Temple Pot Rotating Room 1;pot;782;595;TEMPLE_FOREST;All;12
-0x0e06;TEMPLE_FOREST;Rotating Room 2;OOT Forest Temple Pot Rotating Room 2;pot;739;594;TEMPLE_FOREST;All;12
+0x0d06;TEMPLE_FOREST;Blue Poe 2;OOT Forest Temple Pot Blue Poe 2;pot;395;464;TEMPLE_FOREST;All;10
+0x0d07;TEMPLE_FOREST;Blue Poe 3;OOT Forest Temple Pot Blue Poe 3;pot;366;464;TEMPLE_FOREST;All;10
+0x0e05;TEMPLE_FOREST;Rotating Room 1;OOT Forest Temple Pot Rotating Room 1;pot;739;594;TEMPLE_FOREST;All;12
+0x0e06;TEMPLE_FOREST;Rotating Room 2;OOT Forest Temple Pot Rotating Room 2;pot;782;595;TEMPLE_FOREST;All;12
 0x1006;TEMPLE_FOREST;Green Poe 1;OOT Forest Temple Pot Green Poe Pot 1;pot;529;294;TEMPLE_FOREST;All;11
 0x1007;TEMPLE_FOREST;Green Poe 2;OOT Forest Temple Pot Green Poe Pot 2;pot;558;294;TEMPLE_FOREST;All;11
 0x00809;TEMPLE_FOREST;Garden 1;OOT Forest Temple Heart Garden 1;heart;490;158;TEMPLE_FOREST;All;3
@@ -1858,7 +1858,7 @@ SHOOTING_GAME_ADULT;SHOOTING_GALLERY;Reward;OOT Shooting Gallery Adult;npc;616;3
 0x03;TEMPLE_FOREST;First Room;OOT MQ Forest Temple First Room Chest;chest;0;0;MQ_TEMPLE_FOREST;All;0
 0x00;TEMPLE_FOREST;Wolfos;OOT MQ Forest Temple Wolfos Chest;chest;0;0;MQ_TEMPLE_FOREST;All;0
 0x0e;TEMPLE_FOREST;Boss Key;OOT MQ Forest Temple Boss Key Chest;chest;0;0;MQ_TEMPLE_FOREST;All;0
-0x02;TEMPLE_FOREST;ReDead;OOT MQ Forest Temple ReDead Chest;chest;0;0;MQ_TEMPLE_FOREST;All;0
+0x02;TEMPLE_FOREST;Redead;OOT MQ Forest Temple ReDead Chest;chest;0;0;MQ_TEMPLE_FOREST;All;0
 0x09;TEMPLE_FOREST;Well;OOT MQ Forest Temple Well Chest;chest;0;0;MQ_TEMPLE_FOREST;All;0
 0x05;TEMPLE_FOREST;East Garden - High Ledge;OOT MQ Forest Temple East Garden High Ledge Chest;chest;0;0;MQ_TEMPLE_FOREST;All;0
 0x01;TEMPLE_FOREST;East Garden - Ledge;OOT MQ Forest Temple East Garden Ledge Chest;chest;0;0;MQ_TEMPLE_FOREST;All;0
@@ -2534,8 +2534,8 @@ CHEST_GAME_KEY;TREASURE_SHOP;Buy Key;OOT Treasure Chest Game Buy Key;npc;874;67;
 0x0a;TREASURE_SHOP;Heart Piece;OOT Treasure Chest Game HP;chest;86;74;TREASURE_SHOP;All;0
 0x00;ZORA_DOMAIN;Heart Piece;OOT Zora Domain Waterfall Chest;chest;420;302;ZORA_DOMAIN;Child;0
 ZORA_DIVING_GAME;ZORA_DOMAIN;Silver Scale;OOT Zora Domain Diving Game;npc;415;278;ZORA_DOMAIN;Child;0
-0x1;ZORA_DOMAIN;Diving Game - Green Rupee;OOT Zora Domain Diving Game Green Rupee;collectible;425;372;ZORA_DOMAIN;Child;0
-0x2;ZORA_DOMAIN;Diving Game - Blue Rupee;OOT Zora Domain Diving Game Blue Rupee;collectible;384;372;ZORA_DOMAIN;Child;0
+0x1;ZORA_DOMAIN;Diving Game - Green Rupee;OOT Zora Domain Diving Game Green Rupee;collectible;384;372;ZORA_DOMAIN;Child;0
+0x2;ZORA_DOMAIN;Diving Game - Blue Rupee;OOT Zora Domain Diving Game Blue Rupee;collectible;425;372;ZORA_DOMAIN;Child;0
 0x3;ZORA_DOMAIN;Diving Game - Red Rupee;OOT Zora Domain Diving Game Red Rupee;collectible;403;353;ZORA_DOMAIN;Child;0
 0x5;ZORA_DOMAIN;Diving Game - Purple Rupee;OOT Zora Domain Diving Game Purple Rupee;collectible;429;336;ZORA_DOMAIN;Child;0
 0x4;ZORA_DOMAIN;Diving Game - Huge Rupee;OOT Zora Domain Diving Game Huge Rupee;collectible;375;336;ZORA_DOMAIN;Child;0
@@ -2592,18 +2592,18 @@ FROGS_GAME;ZORA_RIVER;Frogs - Game;OOT Zora River Frogs Game;npc;785;628;ZORA_RI
 0x94;ZORA_RIVER;Near Grotto;OOT Zora River GS Near Grotto;gs;1018;338;ZORA_RIVER;Adult;0
 0x93;ZORA_RIVER;Near Bridge;OOT Zora River GS Near Bridge;gs;394;718;ZORA_RIVER;Adult;0
 0x00034;ZORA_RIVER;Platform;OOT Zora River Grass;grass;971;704;ZORA_RIVER;All;0
-0x00035;ZORA_RIVER;Bush 1;OOT Zora River Grass Pack Bush 01;grass;1258;236;ZORA_RIVER;Child;0
-0x10035;ZORA_RIVER;Bush 2;OOT Zora River Grass Pack Bush 02;grass;1261;255;ZORA_RIVER;Child;0
-0x20035;ZORA_RIVER;Bush 3;OOT Zora River Grass Pack Bush 03;grass;1269;261;ZORA_RIVER;Child;0
-0x30035;ZORA_RIVER;Bush 4;OOT Zora River Grass Pack Bush 04;grass;1291;246;ZORA_RIVER;Child;0
+0x00035;ZORA_RIVER;Bush 1;OOT Zora River Grass Pack Bush 01;grass;1256;246;ZORA_RIVER;Child;0
+0x10035;ZORA_RIVER;Bush 2;OOT Zora River Grass Pack Bush 02;grass;1269;261;ZORA_RIVER;Child;0
+0x20035;ZORA_RIVER;Bush 3;OOT Zora River Grass Pack Bush 03;grass;1288;256;ZORA_RIVER;Child;0
+0x30035;ZORA_RIVER;Bush 4;OOT Zora River Grass Pack Bush 04;grass;1290;236;ZORA_RIVER;Child;0
 0x40035;ZORA_RIVER;Bush 5;OOT Zora River Grass Pack Bush 05;grass;1274;244;ZORA_RIVER;Child;0
-0x50035;ZORA_RIVER;Bush 6;OOT Zora River Grass Pack Bush 06;grass;1256;246;ZORA_RIVER;Child;0
+0x50035;ZORA_RIVER;Bush 6;OOT Zora River Grass Pack Bush 06;grass;1261;255;ZORA_RIVER;Child;0
 0x60035;ZORA_RIVER;Bush 7;OOT Zora River Grass Pack Bush 07;grass;1279;262;ZORA_RIVER;Child;0
-0x70035;ZORA_RIVER;Bush 8;OOT Zora River Grass Pack Bush 08;grass;1288;256;ZORA_RIVER;Child;0
-0x80035;ZORA_RIVER;Bush 9;OOT Zora River Grass Pack Bush 09;grass;1290;236;ZORA_RIVER;Child;0
-0x90035;ZORA_RIVER;Bush 10;OOT Zora River Grass Pack Bush 10;grass;1284;228;ZORA_RIVER;Child;0
-0xa0035;ZORA_RIVER;Bush 11;OOT Zora River Grass Pack Bush 11;grass;1274;226;ZORA_RIVER;Child;0
-0xb0035;ZORA_RIVER;Bush 12;OOT Zora River Grass Pack Bush 12;grass;1264;228;ZORA_RIVER;Child;0
+0x70035;ZORA_RIVER;Bush 8;OOT Zora River Grass Pack Bush 08;grass;1291;246;ZORA_RIVER;Child;0
+0x80035;ZORA_RIVER;Bush 9;OOT Zora River Grass Pack Bush 09;grass;1284;228;ZORA_RIVER;Child;0
+0x90035;ZORA_RIVER;Bush 10;OOT Zora River Grass Pack Bush 10;grass;1274;226;ZORA_RIVER;Child;0
+0xa0035;ZORA_RIVER;Bush 11;OOT Zora River Grass Pack Bush 11;grass;1264;228;ZORA_RIVER;Child;0
+0xb0035;ZORA_RIVER;Bush 12;OOT Zora River Grass Pack Bush 12;grass;1258;236;ZORA_RIVER;Child;0
 0x00037;ZORA_RIVER;Near Beans 1;OOT Zora River Butterfly Near Beans 1;butterfly;1332;434;ZORA_RIVER;Child;0
 0x10037;ZORA_RIVER;Near Beans 2;OOT Zora River Butterfly Near Beans 2;butterfly;1325;419;ZORA_RIVER;Child;0
 0x0010a;ZORA_RIVER;Near Waterfall 1;OOT Zora River Butterfly Near Waterfall 1;butterfly;110;707;ZORA_RIVER;Child;0

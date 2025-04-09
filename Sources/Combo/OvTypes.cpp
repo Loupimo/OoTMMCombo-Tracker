@@ -16,8 +16,9 @@ void CorrectComboItem(ComboItem* Item)
 					break;
 				case OV_CHEST:
 				case OV_COLLECTIBLE:
+					break;
 				case OV_COW:
-					//Item->ObjectID >>= 3;
+					Item->SceneID = GetSceneCow(Item->ObjectID, OOT_GAME);
 					break;
 				case OV_SHOP:
 					Item->SceneID = GetSceneShop(Item->ObjectID, OOT_GAME);
@@ -59,6 +60,7 @@ void CorrectComboItem(ComboItem* Item)
 					//setStrayFairyMarkMm(play, sceneId, id);
 					break;
 				case OV_COW:
+					Item->SceneID = GetSceneCow(Item->ObjectID, MM_GAME);
 					break;
 				case OV_NPC:
 					Item->SceneID = GetSceneNPC(Item->ObjectID, MM_GAME);

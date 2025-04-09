@@ -16,6 +16,67 @@ const SceneMetaInfo* GetSceneMetaInfo(uint32_t SceneID, uint32_t Game)
 }
 
 
+uint32_t GetSceneCow(uint32_t ItemID, uint32_t Game)
+{
+	if (Game == OOT_GAME)
+	{
+		switch (ItemID)
+		{
+			case 0x00:
+				return KOKIRI_FOREST;
+
+			case 0x01:
+				return HYRULE_FIELD;
+
+			case 0x02:
+			case 0x03:
+			case 0x04:
+			case 0x05:
+				return LON_LON_RANCH;
+
+			case 0x06:
+				return KAKARIKO_VILLAGE;
+
+			case 0x07:
+				return DEATH_MOUNTAIN_TRAIL;
+
+			case 0x08:
+				return GERUDO_VALLEY;
+
+			case 0x09:
+				return INSIDE_JABU_JABU;
+
+			default:
+				return ItemID;
+		}
+	}
+	else
+	{
+		switch (ItemID)
+		{
+			case 0x10:
+			case 0x11:
+			case 0x12:
+				return ROMANI_RANCH;
+
+			case 0x13:
+			case 0x14:
+				return MM_GROTTOS;
+
+			case 0x15:
+			case 0x16:
+				return GREAT_BAY_COAST;
+
+			case 0x17:
+				return BENEATH_THE_WELL;
+
+			default:
+				return ItemID;
+		}
+	}
+}
+
+
 uint32_t GetSceneShop(uint32_t ItemID, uint32_t Game)
 {
 	uint32_t ShopID = ItemID >> 3;
@@ -45,6 +106,7 @@ uint32_t GetSceneShop(uint32_t ItemID, uint32_t Game)
 
 			case OoT_Kakariko_Potion_Shop:
 				return KAKARIKO_POTION_SHOP;
+
 			default:
 				return ShopID;
 		}
