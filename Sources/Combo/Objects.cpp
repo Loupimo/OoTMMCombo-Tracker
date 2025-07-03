@@ -152,7 +152,7 @@ void SaveSceneObjectsFor(QFile* SaveFile, SceneObjects* Array, size_t NumOfScene
 {
 	QByteArray ID(sizeof(uint32_t), 0);
 	QByteArray numObj(sizeof(size_t), 0);
-	
+
 	for (size_t i = 0; i < NumOfScenes; i++)
 	{	// Browse all scenes
 
