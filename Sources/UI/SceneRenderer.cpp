@@ -190,7 +190,7 @@ void SceneItemTree::CountSceneObjects()
     {   // Browse each scene objects
 
         ObjectInfo* currObject = &this->Scene->Objects->Objects[i];
-        if (currObject->RenderScene != this->Scene->SceneID)
+        if (currObject->RenderScene != this->Scene->SceneID || currObject->Type == ObjectType::none)
         {   // Ignore the object if the render scene ID is different from this scene ID
 
             continue;

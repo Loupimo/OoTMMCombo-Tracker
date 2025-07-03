@@ -226,11 +226,10 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 				{ 4, "Adult Lobby", "./Resources/OoT/Dungeons/Spirit/Lobby_Adult.png" },
 				{ 5, "Adult Climb", "./Resources/OoT/Dungeons/Spirit/Climb_Adult.png" },
 				{ 6, "Main Room", "./Resources/OoT/Dungeons/Spirit/Main.png" },
-				{ 7, "Main Room Shortcut", "./Resources/OoT/Dungeons/Spirit/Main_Shortcut.png" },
-				{ 8, "Mirror Shield", "./Resources/OoT/Dungeons/Spirit/Mirror_Shield.png" },
-				{ 9, "Boss Key Room", "./Resources/OoT/Dungeons/Spirit/Boss_Key.png" },
-				{ 10, "Elevator", "./Resources/OoT/Dungeons/Spirit/Elevator.png" },
-				{ 11, "Boss Room", "./Resources/OoT/Dungeons/Spirit/Boss.png" }
+				{ 7, "Mirror Shield", "./Resources/OoT/Dungeons/Spirit/Mirror_Shield.png" },
+				{ 8, "Boss Key Room", "./Resources/OoT/Dungeons/Spirit/Boss_Key.png" },
+				{ 9, "Elevator", "./Resources/OoT/Dungeons/Spirit/Elevator.png" },
+				{ 10, "Boss Room", "./Resources/OoT/Dungeons/Spirit/Boss.png" }
 			}
 		)
 	)

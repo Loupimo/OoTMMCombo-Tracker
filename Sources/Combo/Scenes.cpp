@@ -113,40 +113,29 @@ uint32_t GetSceneShop(uint32_t ItemID, uint32_t Game)
 	}
 	else
 	{
-		switch (ShopID)
+		if (ItemID <= 0x03)
+		{	// Bomb shop
+			return BOMB_SHOP;
+		}
+		else if (ItemID == 0x04)
+		{	// Curiosity shop
+			return CURIOSITY_SHOP;
+		}
+		else if (ItemID <= 0x0C)
+		{	// Trading post shop
+			return TRADING_POST;
+		}
+		else if (ItemID <= 0x0f)
 		{
-			case MM_Clock_Town_Shop:
-			{
-				if (ItemID <= 0x03)
-				{	// Bomb shop
-					return BOMB_SHOP;
-				}
-				else if (ItemID == 0x04)
-				{	// Curiosity shop
-					return CURIOSITY_SHOP;
-				}
-				else
-				{	// Trading post shop
-					return TRADING_POST;
-				}
-			}
-			case MM_Swamp_Potion_Shop:
-			{
-				return POTION_SHOP;
-			}
-			case MM_Goron_Zora_Shop:
-			{
-				if (ItemID <= 0x12)
-				{	// Goron shop
-					return MM_GORON_SHOP;
-				}
-				else
-				{	// Zora shop
-					return ZORA_HALL_ROOMS;
-				}
-			}
-			default:
-				return ShopID;
+			return POTION_SHOP;
+		}
+		else if (ItemID <= 0x12)
+		{
+			return MM_GORON_SHOP;
+		}
+		else
+		{	// Zora shop
+			return ZORA_HALL_ROOMS;
 		}
 	}
 }
@@ -535,7 +524,7 @@ uint32_t GetSceneNPC(uint32_t NPC, uint32_t Game)
 
 			// Spider House Swamp
 			case SPIDER_HOUSE_SWAMP:
-				MM_SPIDER_HOUSE_SWAMP;
+				return MM_SPIDER_HOUSE_SWAMP;
 
 			// Mountain Village Winter
 			case MASK_DON_GERO:

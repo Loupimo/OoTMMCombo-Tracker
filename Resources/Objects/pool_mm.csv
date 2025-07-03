@@ -30,13 +30,13 @@ SONG_STORMS;BENEATH_THE_GRAVEYARD;Song of Storms;MM Beneath The Graveyard Song o
 0x50b04;BENEATH_THE_WELL;Fairy 6;MM Beneath The Well Fairy Fountain Fairy 6;fairy;604;80;BENEATH_THE_WELL;All;0
 0x60b04;BENEATH_THE_WELL;Fairy 7;MM Beneath The Well Fairy Fountain Fairy 7;fairy;629;67;BENEATH_THE_WELL;All;0
 0x70b04;BENEATH_THE_WELL;Fairy 8;MM Beneath The Well Fairy Fountain Fairy 8;fairy;612;67;BENEATH_THE_WELL;All;0
-0x00309;BENEATH_THE_WELL;Before Poe 1;MM Beneath The Well Grass Before Poe 1;grass;1059;996;BENEATH_THE_WELL;All;0
-0x0030a;BENEATH_THE_WELL;Before Poe 2;MM Beneath The Well Grass Before Poe 2;grass;1067;1010;BENEATH_THE_WELL;All;0
-0x0030b;BENEATH_THE_WELL;Before Poe 3;MM Beneath The Well Grass Before Poe 3;grass;1082;1006;BENEATH_THE_WELL;All;0
-0x0030c;BENEATH_THE_WELL;Before Poe 4;MM Beneath The Well Grass Before Poe 4;grass;1077;1017;BENEATH_THE_WELL;All;0
-0x00906;BENEATH_THE_WELL;Cow 1;MM Beneath The Well Grass Cow 1;grass;1294;915;BENEATH_THE_WELL;All;0
+0x00309;BENEATH_THE_WELL;Before Poe 1;MM Beneath The Well Grass Before Poe 1;grass;1082;1006;BENEATH_THE_WELL;All;0
+0x0030a;BENEATH_THE_WELL;Before Poe 2;MM Beneath The Well Grass Before Poe 2;grass;1077;1017;BENEATH_THE_WELL;All;0
+0x0030b;BENEATH_THE_WELL;Before Poe 3;MM Beneath The Well Grass Before Poe 3;grass;1067;1010;BENEATH_THE_WELL;All;0
+0x0030c;BENEATH_THE_WELL;Before Poe 4;MM Beneath The Well Grass Before Poe 4;grass;1059;996;BENEATH_THE_WELL;All;0
+0x00906;BENEATH_THE_WELL;Cow 1;MM Beneath The Well Grass Cow 1;grass;1318;935;BENEATH_THE_WELL;All;0
 0x00907;BENEATH_THE_WELL;Cow 2;MM Beneath The Well Grass Cow 2;grass;1303;928;BENEATH_THE_WELL;All;0
-0x00908;BENEATH_THE_WELL;Cow 3;MM Beneath The Well Grass Cow 3;grass;1318;935;BENEATH_THE_WELL;All;0
+0x00908;BENEATH_THE_WELL;Cow 3;MM Beneath The Well Grass Cow 3;grass;1294;915;BENEATH_THE_WELL;All;0
 0x00516;BENEATH_THE_WELL;Left Side 1;MM Beneath The Well Grass Left Side 1;grass;543;538;BENEATH_THE_WELL;All;0
 0x00517;BENEATH_THE_WELL;Left Side 2;MM Beneath The Well Grass Left Side 2;grass;536;558;BENEATH_THE_WELL;All;0
 0x00713;BENEATH_THE_WELL;Near End 1;MM Beneath The Well Grass Near End 1;grass;832;537;BENEATH_THE_WELL;All;0
@@ -44,17 +44,17 @@ SONG_STORMS;BENEATH_THE_GRAVEYARD;Song of Storms;MM Beneath The Graveyard Song o
 0x00715;BENEATH_THE_WELL;Near End 3;MM Beneath The Well Grass Near End 3;grass;819;557;BENEATH_THE_WELL;All;0
 0x00716;BENEATH_THE_WELL;Near End 4;MM Beneath The Well Grass Near End 4;grass;819;531;BENEATH_THE_WELL;All;0
 0x00717;BENEATH_THE_WELL;Near End 5;MM Beneath The Well Grass Near End 5;grass;809;540;BENEATH_THE_WELL;All;0
-0x02;BENEATH_THE_WELL;Keese;MM Beneath The Well Keese Chest;chest;715;719;BENEATH_THE_WELL;All;0
+0x02;BENEATH_THE_WELL;Keese;MM Beneath The Well Keese Chest;chest;842;452;BENEATH_THE_WELL;All;0
 0x1b;BENEATH_THE_WELL;Mirror Shield;MM Beneath The Well Mirror Shield;chest;1086;431;BENEATH_THE_WELL;All;0
 0x0c05;BENEATH_THE_WELL;Big Poe 1;MM Beneath The Well Pot Big Poe 1;pot;1167;738;BENEATH_THE_WELL;All;0
 0x0c06;BENEATH_THE_WELL;Big Poe 2;MM Beneath The Well Pot Big Poe 2;pot;1163;603;BENEATH_THE_WELL;All;0
-0x0c07;BENEATH_THE_WELL;Big Poe 3;MM Beneath The Well Pot Big Poe 3;pot;1016;603;BENEATH_THE_WELL;All;0
-0x0c08;BENEATH_THE_WELL;Big Poe 4;MM Beneath The Well Pot Big Poe 4;pot;1019;738;BENEATH_THE_WELL;All;0
-0x0511;BENEATH_THE_WELL;Left Side 1;MM Beneath The Well Pot Left Side 1;pot;710;560;BENEATH_THE_WELL;All;0
+0x0c07;BENEATH_THE_WELL;Big Poe 3;MM Beneath The Well Pot Big Poe 3;pot;1019;738;BENEATH_THE_WELL;All;0
+0x0c08;BENEATH_THE_WELL;Big Poe 4;MM Beneath The Well Pot Big Poe 4;pot;1016;603;BENEATH_THE_WELL;All;0
+0x0511;BENEATH_THE_WELL;Left Side 1;MM Beneath The Well Pot Left Side 1;pot;710;530;BENEATH_THE_WELL;All;0
 0x0512;BENEATH_THE_WELL;Left Side 2;MM Beneath The Well Pot Left Side 2;pot;710;550;BENEATH_THE_WELL;All;0
-0x0513;BENEATH_THE_WELL;Left Side 3;MM Beneath The Well Pot Left Side 3;pot;710;540;BENEATH_THE_WELL;All;0
-0x0514;BENEATH_THE_WELL;Left Side 4;MM Beneath The Well Pot Left Side 4;pot;710;530;BENEATH_THE_WELL;All;0
-0x0515;BENEATH_THE_WELL;Left Side 5;MM Beneath The Well Pot Left Side 5;pot;710;520;BENEATH_THE_WELL;All;0
+0x0513;BENEATH_THE_WELL;Left Side 3;MM Beneath The Well Pot Left Side 3;pot;710;520;BENEATH_THE_WELL;All;0
+0x0514;BENEATH_THE_WELL;Left Side 4;MM Beneath The Well Pot Left Side 4;pot;710;560;BENEATH_THE_WELL;All;0
+0x0515;BENEATH_THE_WELL;Left Side 5;MM Beneath The Well Pot Left Side 5;pot;710;540;BENEATH_THE_WELL;All;0
 0x060e;BENEATH_THE_WELL;Middle 1;MM Beneath The Well Pot Middle 01;pot;921;750;BENEATH_THE_WELL;All;0
 0x060f;BENEATH_THE_WELL;Middle 2;MM Beneath The Well Pot Middle 02;pot;921;740;BENEATH_THE_WELL;All;0
 0x0610;BENEATH_THE_WELL;Middle 3;MM Beneath The Well Pot Middle 03;pot;921;730;BENEATH_THE_WELL;All;0
@@ -65,12 +65,12 @@ SONG_STORMS;BENEATH_THE_GRAVEYARD;Song of Storms;MM Beneath The Graveyard Song o
 0x0615;BENEATH_THE_WELL;Middle 8;MM Beneath The Well Pot Middle 08;pot;921;680;BENEATH_THE_WELL;All;0
 0x0616;BENEATH_THE_WELL;Middle 9;MM Beneath The Well Pot Middle 09;pot;921;670;BENEATH_THE_WELL;All;0
 0x0617;BENEATH_THE_WELL;Middle 10;MM Beneath The Well Pot Middle 10;pot;921;660;BENEATH_THE_WELL;All;0
-0x01;BENEATH_THE_WELL;Skulltulla;MM Beneath The Well Skulltulla Chest;chest;842;452;BENEATH_THE_WELL;All;0
+0x01;BENEATH_THE_WELL;Skulltulla;MM Beneath The Well Skulltulla Chest;chest;715;719;BENEATH_THE_WELL;All;0
 SWORD_GILDED;BLACKSMITH;Gilded Sword;MM Blacksmith Gilded Sword;npc;543;204;BLACKSMITH;All;0
-0x10004;BLACKSMITH;Potted Plant 1;MM Blacksmith Potted Plant 1 Grass;grass;690;395;BLACKSMITH;All;0
-0x00004;BLACKSMITH;Potted Plant 1;MM Blacksmith Potted Plant 1 Pot;pot;690;379;BLACKSMITH;All;0
-0x10008;BLACKSMITH;Potted Plant 2;MM Blacksmith Potted Plant 2 Grass;grass;687;308;BLACKSMITH;All;0
-0x00008;BLACKSMITH;Potted Plant 2;MM Blacksmith Potted Plant 2 Pot;pot;687;294;BLACKSMITH;All;0
+0x10004;BLACKSMITH;Potted Plant 1;MM Blacksmith Potted Plant 1 Grass;grass;687;308;BLACKSMITH;All;0
+0x00004;BLACKSMITH;Potted Plant 1;MM Blacksmith Potted Plant 1 Pot;pot;687;294;BLACKSMITH;All;0
+0x10008;BLACKSMITH;Potted Plant 2;MM Blacksmith Potted Plant 2 Grass;grass;690;395;BLACKSMITH;All;0
+0x00008;BLACKSMITH;Potted Plant 2;MM Blacksmith Potted Plant 2 Pot;pot;690;379;BLACKSMITH;All;0
 SWORD_RAZOR;BLACKSMITH;Razor Blade;MM Blacksmith Razor Blade;npc;394;309;BLACKSMITH;All;0
 0x02;BOMB_SHOP;Bomb Bag;MM Bomb Shop Bomb Bag;shop;489;290;BOMB_SHOP;All;0
 0x03;BOMB_SHOP;Large Bomb Bag;MM Bomb Shop Bomb Bag 2;shop;521;295;BOMB_SHOP;All;0
@@ -330,38 +330,38 @@ MASK_SCENTS;DEKU_PALACE;Mask of Scents;MM Deku Shrine Mask of Scents;none;0;0;DE
 DEKU_PLAYGROUND_2;DEKU_PLAYGROUND;Reward - All Days;MM Deku Playground Reward All Days;npc;399;341;DEKU_PLAYGROUND;All;0
 DEKU_PLAYGROUND_1;DEKU_PLAYGROUND;Reward - Any Day;MM Deku Playground Reward Any Day;npc;399;299;DEKU_PLAYGROUND;All;0
 MASK_SCENTS;DEKU_SHRINE;Mask of Scents;MM Deku Shrine Mask of Scents;npc;166;206;DEKU_SHRINE;All;0
-0x000e;DEKU_SHRINE;Pot 1;MM Deku Shrine Pot 1;pot;829;427;DEKU_SHRINE;All;0
-0x000f;DEKU_SHRINE;Pot 2;MM Deku Shrine Pot 2;pot;777;544;DEKU_SHRINE;All;0
-0x00800;DEKU_SHRINE;End 1;MM Deku Shrine Rupee End 01;rupee;191;387;DEKU_SHRINE;All;0
-0x00801;DEKU_SHRINE;End 2;MM Deku Shrine Rupee End 02;rupee;171;388;DEKU_SHRINE;All;0
-0x00802;DEKU_SHRINE;End 3;MM Deku Shrine Rupee End 03;rupee;159;363;DEKU_SHRINE;All;0
-0x00803;DEKU_SHRINE;End 4;MM Deku Shrine Rupee End 04;rupee;244;358;DEKU_SHRINE;All;0
-0x00804;DEKU_SHRINE;End 5;MM Deku Shrine Rupee End 05;rupee;160;342;DEKU_SHRINE;All;0
-0x00805;DEKU_SHRINE;End 6;MM Deku Shrine Rupee End 06;rupee;244;337;DEKU_SHRINE;All;0
-0x00806;DEKU_SHRINE;End 7;MM Deku Shrine Rupee End 07;rupee;229;327;DEKU_SHRINE;All;0
-0x00807;DEKU_SHRINE;End 8;MM Deku Shrine Rupee End 08;rupee;214;327;DEKU_SHRINE;All;0
-0x00808;DEKU_SHRINE;End 9;MM Deku Shrine Rupee End 09;rupee;198;327;DEKU_SHRINE;All;0
-0x00809;DEKU_SHRINE;End 10;MM Deku Shrine Rupee End 10;rupee;162;321;DEKU_SHRINE;All;0
-0x00200;DEKU_SHRINE;Main 1;MM Deku Shrine Rupee Main 01;rupee;378;473;DEKU_SHRINE;All;0
+0x000e;DEKU_SHRINE;Pot 1;MM Deku Shrine Pot 1;pot;777;544;DEKU_SHRINE;All;0
+0x000f;DEKU_SHRINE;Pot 2;MM Deku Shrine Pot 2;pot;829;427;DEKU_SHRINE;All;0
+0x00800;DEKU_SHRINE;End 1;MM Deku Shrine Rupee End 01;rupee;159;363;DEKU_SHRINE;All;0
+0x00801;DEKU_SHRINE;End 2;MM Deku Shrine Rupee End 02;rupee;160;342;DEKU_SHRINE;All;0
+0x00802;DEKU_SHRINE;End 3;MM Deku Shrine Rupee End 03;rupee;162;321;DEKU_SHRINE;All;0
+0x00803;DEKU_SHRINE;End 4;MM Deku Shrine Rupee End 04;rupee;171;388;DEKU_SHRINE;All;0
+0x00804;DEKU_SHRINE;End 5;MM Deku Shrine Rupee End 05;rupee;191;387;DEKU_SHRINE;All;0
+0x00805;DEKU_SHRINE;End 6;MM Deku Shrine Rupee End 06;rupee;198;327;DEKU_SHRINE;All;0
+0x00806;DEKU_SHRINE;End 7;MM Deku Shrine Rupee End 07;rupee;214;327;DEKU_SHRINE;All;0
+0x00807;DEKU_SHRINE;End 8;MM Deku Shrine Rupee End 08;rupee;229;327;DEKU_SHRINE;All;0
+0x00808;DEKU_SHRINE;End 9;MM Deku Shrine Rupee End 09;rupee;244;337;DEKU_SHRINE;All;0
+0x00809;DEKU_SHRINE;End 10;MM Deku Shrine Rupee End 10;rupee;244;358;DEKU_SHRINE;All;0
+0x00200;DEKU_SHRINE;Main 1;MM Deku Shrine Rupee Main 01;rupee;323;424;DEKU_SHRINE;All;0
 0x00201;DEKU_SHRINE;Main 2;MM Deku Shrine Rupee Main 02;rupee;339;463;DEKU_SHRINE;All;0
-0x00202;DEKU_SHRINE;Main 3;MM Deku Shrine Rupee Main 03;rupee;400;449;DEKU_SHRINE;All;0
-0x00203;DEKU_SHRINE;Main 4;MM Deku Shrine Rupee Main 04;rupee;323;424;DEKU_SHRINE;All;0
-0x00204;DEKU_SHRINE;Main 5;MM Deku Shrine Rupee Main 05;rupee;345;396;DEKU_SHRINE;All;0
-0x00205;DEKU_SHRINE;Main 6;MM Deku Shrine Rupee Main 06;rupee;401;376;DEKU_SHRINE;All;0
-0x00206;DEKU_SHRINE;Main 7;MM Deku Shrine Rupee Main 07;rupee;349;368;DEKU_SHRINE;All;0
-0x00207;DEKU_SHRINE;Main 8;MM Deku Shrine Rupee Main 08;rupee;394;349;DEKU_SHRINE;All;0
-0x00300;DEKU_SHRINE;Main 9;MM Deku Shrine Rupee Main 09;rupee;424;178;DEKU_SHRINE;All;0
-0x00301;DEKU_SHRINE;Main 10;MM Deku Shrine Rupee Main 10;rupee;433;177;DEKU_SHRINE;All;0
-0x00302;DEKU_SHRINE;Main 11;MM Deku Shrine Rupee Main 11;rupee;440;170;DEKU_SHRINE;All;0
-0x00303;DEKU_SHRINE;Main 12;MM Deku Shrine Rupee Main 12;rupee;368;163;DEKU_SHRINE;All;0
-0x00304;DEKU_SHRINE;Main 13;MM Deku Shrine Rupee Main 13;rupee;374;158;DEKU_SHRINE;All;0
-0x00305;DEKU_SHRINE;Main 14;MM Deku Shrine Rupee Main 14;rupee;383;156;DEKU_SHRINE;All;0
-0x00400;DEKU_SHRINE;Main 15;MM Deku Shrine Rupee Main 15;rupee;564;108;DEKU_SHRINE;All;0
+0x00202;DEKU_SHRINE;Main 3;MM Deku Shrine Rupee Main 03;rupee;345;396;DEKU_SHRINE;All;0
+0x00203;DEKU_SHRINE;Main 4;MM Deku Shrine Rupee Main 04;rupee;349;368;DEKU_SHRINE;All;0
+0x00204;DEKU_SHRINE;Main 5;MM Deku Shrine Rupee Main 05;rupee;378;473;DEKU_SHRINE;All;0
+0x00205;DEKU_SHRINE;Main 6;MM Deku Shrine Rupee Main 06;rupee;400;449;DEKU_SHRINE;All;0
+0x00206;DEKU_SHRINE;Main 7;MM Deku Shrine Rupee Main 07;rupee;394;349;DEKU_SHRINE;All;0
+0x00207;DEKU_SHRINE;Main 8;MM Deku Shrine Rupee Main 08;rupee;401;376;DEKU_SHRINE;All;0
+0x00300;DEKU_SHRINE;Main 9;MM Deku Shrine Rupee Main 09;rupee;368;163;DEKU_SHRINE;All;0
+0x00301;DEKU_SHRINE;Main 10;MM Deku Shrine Rupee Main 10;rupee;374;158;DEKU_SHRINE;All;0
+0x00302;DEKU_SHRINE;Main 11;MM Deku Shrine Rupee Main 11;rupee;383;156;DEKU_SHRINE;All;0
+0x00303;DEKU_SHRINE;Main 12;MM Deku Shrine Rupee Main 12;rupee;424;178;DEKU_SHRINE;All;0
+0x00304;DEKU_SHRINE;Main 13;MM Deku Shrine Rupee Main 13;rupee;433;177;DEKU_SHRINE;All;0
+0x00305;DEKU_SHRINE;Main 14;MM Deku Shrine Rupee Main 14;rupee;440;170;DEKU_SHRINE;All;0
+0x00400;DEKU_SHRINE;Main 15;MM Deku Shrine Rupee Main 15;rupee;538;108;DEKU_SHRINE;All;0
 0x00401;DEKU_SHRINE;Main 16;MM Deku Shrine Rupee Main 16;rupee;551;108;DEKU_SHRINE;All;0
-0x00402;DEKU_SHRINE;Main 17;MM Deku Shrine Rupee Main 17;rupee;538;108;DEKU_SHRINE;All;0
-0x00403;DEKU_SHRINE;Main 18;MM Deku Shrine Rupee Main 18;rupee;578;85;DEKU_SHRINE;All;0
-0x00404;DEKU_SHRINE;Main 19;MM Deku Shrine Rupee Main 19;rupee;577;72;DEKU_SHRINE;All;0
-0x00405;DEKU_SHRINE;Main 20;MM Deku Shrine Rupee Main 20;rupee;577;60;DEKU_SHRINE;All;0
+0x00402;DEKU_SHRINE;Main 17;MM Deku Shrine Rupee Main 17;rupee;564;108;DEKU_SHRINE;All;0
+0x00403;DEKU_SHRINE;Main 18;MM Deku Shrine Rupee Main 18;rupee;577;60;DEKU_SHRINE;All;0
+0x00404;DEKU_SHRINE;Main 19;MM Deku Shrine Rupee Main 19;rupee;578;85;DEKU_SHRINE;All;0
+0x00405;DEKU_SHRINE;Main 20;MM Deku Shrine Rupee Main 20;rupee;577;72;DEKU_SHRINE;All;0
 0x00;DOG_RACETRACK;Chest;MM Doggy Racetrack Chest;chest;268;259;DOG_RACETRACK;All;0
 DOG_LADY_HEART_PIECE;DOG_RACETRACK;Heart Piece;MM Doggy Racetrack HP;npc;650;377;DOG_RACETRACK;All;0
 0x0009;DOG_RACETRACK;Pot 1;MM Doggy Racetrack Pot 1;pot;295;294;DOG_RACETRACK;All;0
@@ -650,9 +650,9 @@ SONG_ZORA;GREAT_BAY_COAST;New Wave Bossa Nova;MM Laboratory Zora Song;none;0;0;L
 0x00b03;GROTTOS;Grass 2;MM Bio Baba Grotto Grass 2;grass;799;365;MM_GROTTO_TERMINA_BIO_BABA;All;0
 0x00200;GROTTOS;Grass 1;MM Canyon Gossip Grotto Grass 1;grass;829;547;MM_GROTTO_TERMINA_CANYON_GOSSIP;All;0
 0x00201;GROTTOS;Grass 2;MM Canyon Gossip Grotto Grass 2;grass;253;426;MM_GROTTO_TERMINA_CANYON_GOSSIP;All;0
-0x00202;GROTTOS;Grass 3;MM Canyon Gossip Grotto Grass 3;grass;620;424;MM_GROTTO_TERMINA_CANYON_GOSSIP;All;0
-0x00203;GROTTOS;Grass 4;MM Canyon Gossip Grotto Grass 4;grass;702;422;MM_GROTTO_TERMINA_CANYON_GOSSIP;All;0
-0x00204;GROTTOS;Grass 5;MM Canyon Gossip Grotto Grass 5;grass;270;396;MM_GROTTO_TERMINA_CANYON_GOSSIP;All;0
+0x00202;GROTTOS;Grass 3;MM Canyon Gossip Grotto Grass 3;grass;270;396;MM_GROTTO_TERMINA_CANYON_GOSSIP;All;0
+0x00203;GROTTOS;Grass 4;MM Canyon Gossip Grotto Grass 4;grass;620;424;MM_GROTTO_TERMINA_CANYON_GOSSIP;All;0
+0x00204;GROTTOS;Grass 5;MM Canyon Gossip Grotto Grass 5;grass;702;422;MM_GROTTO_TERMINA_CANYON_GOSSIP;All;0
 0x00c04;GROTTOS;Butterfly 1;MM Deku Palace Grotto Butterfly 1;butterfly;848;516;MM_GROTTO_DEKU_PALACE_BEANS;All;0
 0x10c04;GROTTOS;Butterfly 2;MM Deku Palace Grotto Butterfly 2;butterfly;827;516;MM_GROTTO_DEKU_PALACE_BEANS;All;0
 0x20c04;GROTTOS;Butterfly 3;MM Deku Palace Grotto Butterfly 3;butterfly;848;501;MM_GROTTO_DEKU_PALACE_BEANS;All;0
@@ -1198,30 +1198,30 @@ LAB_FISH_HEART_PIECE;LABORATORY;Fish - Heart Piece;MM Laboratory Fish HP;npc;624
 SONG_ZORA;LABORATORY;New Wave Bossa Nova;MM Laboratory Zora Song;npc;226;454;LABORATORY;All;0
 REMAINS_GOHT;LAIR_GOHT;Goht's Remains;MM Snowhead Temple Boss;npc;468;472;TEMPLE_SNOWHEAD;All;13
 0x1f;LAIR_GOHT;Heart Container;MM Snowhead Temple Boss HC;collectible;487;472;TEMPLE_SNOWHEAD;All;13
-0x0001;LAIR_GOHT;Boss 1;MM Snowhead Temple Boss Pot 01;pot;677;484;TEMPLE_SNOWHEAD;All;13
-0x0002;LAIR_GOHT;Boss 2;MM Snowhead Temple Boss Pot 02;pot;658;352;TEMPLE_SNOWHEAD;All;13
-0x0003;LAIR_GOHT;Boss 3;MM Snowhead Temple Boss Pot 03;pot;256;482;TEMPLE_SNOWHEAD;All;13
-0x0004;LAIR_GOHT;Boss 4;MM Snowhead Temple Boss Pot 04;pot;281;331;TEMPLE_SNOWHEAD;All;13
-0x0005;LAIR_GOHT;Boss 5;MM Snowhead Temple Boss Pot 05;pot;406;113;TEMPLE_SNOWHEAD;All;13
-0x0008;LAIR_GOHT;Boss 6;MM Snowhead Temple Boss Pot 06;pot;715;223;TEMPLE_SNOWHEAD;All;13
-0x0009;LAIR_GOHT;Boss 7;MM Snowhead Temple Boss Pot 07;pot;667;101;TEMPLE_SNOWHEAD;All;13
-0x000a;LAIR_GOHT;Boss 8;MM Snowhead Temple Boss Pot 08;pot;527;50;TEMPLE_SNOWHEAD;All;13
-0x000b;LAIR_GOHT;Boss 9;MM Snowhead Temple Boss Pot 09;pot;275;100;TEMPLE_SNOWHEAD;All;13
-0x000c;LAIR_GOHT;Boss 10;MM Snowhead Temple Boss Pot 10;pot;231;208;TEMPLE_SNOWHEAD;All;13
-0x000d;LAIR_GOHT;Boss - Early 1;MM Snowhead Temple Boss Pot Early 1;pot;489;455;TEMPLE_SNOWHEAD;All;13
-0x000e;LAIR_GOHT;Boss - Early 2;MM Snowhead Temple Boss Pot Early 2;pot;444;455;TEMPLE_SNOWHEAD;All;13
-0x0006;LAIR_GOHT;Boss - Early 3;MM Snowhead Temple Boss Pot Early 3;pot;466;490;TEMPLE_SNOWHEAD;All;13
-0x0007;LAIR_GOHT;Boss - Early 4;MM Snowhead Temple Boss Pot Early 4;pot;466;520;TEMPLE_SNOWHEAD;All;13
-REMAINS_GYORG;LAIR_GYORG;Gyorg's Remains;MM Great Bay Temple Boss;npc;484;258;TEMPLE_GREAT_BAY;All;15
-0x1f;LAIR_GYORG;Heart Container;MM Great Bay Temple Boss HC;collectible;517;258;TEMPLE_GREAT_BAY;All;15
-0x0001;LAIR_GYORG;Boss 1;MM Great Bay Temple Boss Pot 1;pot;453;233;TEMPLE_GREAT_BAY;All;15
-0x0002;LAIR_GYORG;Boss 2;MM Great Bay Temple Boss Pot 2;pot;517;233;TEMPLE_GREAT_BAY;All;15
-0x0003;LAIR_GYORG;Boss 3;MM Great Bay Temple Boss Pot 3;pot;519;279;TEMPLE_GREAT_BAY;All;15
-0x0004;LAIR_GYORG;Boss 4;MM Great Bay Temple Boss Pot 4;pot;452;279;TEMPLE_GREAT_BAY;All;15
-0x0005;LAIR_GYORG;Boss - Underwater 1;MM Great Bay Temple Boss Pot Underwater 1;pot;483;223;TEMPLE_GREAT_BAY;All;15
-0x0006;LAIR_GYORG;Boss - Underwater 2;MM Great Bay Temple Boss Pot Underwater 2;pot;627;319;TEMPLE_GREAT_BAY;All;15
-0x0007;LAIR_GYORG;Boss - Underwater 3;MM Great Bay Temple Boss Pot Underwater 3;pot;486;442;TEMPLE_GREAT_BAY;All;15
-0x0008;LAIR_GYORG;Boss - Underwater 4;MM Great Bay Temple Boss Pot Underwater 4;pot;342;319;TEMPLE_GREAT_BAY;All;15
+0x0001;LAIR_GOHT;Boss 1;MM Snowhead Temple Boss Pot 01;pot;658;352;TEMPLE_SNOWHEAD;All;13
+0x0002;LAIR_GOHT;Boss 2;MM Snowhead Temple Boss Pot 02;pot;281;331;TEMPLE_SNOWHEAD;All;13
+0x0003;LAIR_GOHT;Boss 3;MM Snowhead Temple Boss Pot 03;pot;716;288;TEMPLE_SNOWHEAD;All;13
+0x0004;LAIR_GOHT;Boss 4;MM Snowhead Temple Boss Pot 04;pot;276;288;TEMPLE_SNOWHEAD;All;13
+0x0005;LAIR_GOHT;Boss - Early 4;MM Snowhead Temple Boss Pot 05;pot;466;490;TEMPLE_SNOWHEAD;All;13
+0x0008;LAIR_GOHT;Boss 6;MM Snowhead Temple Boss Pot 06;pot;472;49;TEMPLE_SNOWHEAD;All;13
+0x0009;LAIR_GOHT;Boss 7;MM Snowhead Temple Boss Pot 07;pot;677;484;TEMPLE_SNOWHEAD;All;13
+0x000a;LAIR_GOHT;Boss 8;MM Snowhead Temple Boss Pot 08;pot;666;288;TEMPLE_SNOWHEAD;All;13
+0x000b;LAIR_GOHT;Boss 9;MM Snowhead Temple Boss Pot 09;pot;226;288;TEMPLE_SNOWHEAD;All;13
+0x000c;LAIR_GOHT;Boss 10;MM Snowhead Temple Boss Pot 10;pot;256;482;TEMPLE_SNOWHEAD;All;13
+0x000d;LAIR_GOHT;Boss - Early 1;MM Snowhead Temple Boss Pot Early 1;pot;444;455;TEMPLE_SNOWHEAD;All;13
+0x000e;LAIR_GOHT;Boss - Early 2;MM Snowhead Temple Boss Pot Early 2;pot;489;455;TEMPLE_SNOWHEAD;All;13
+0x0006;LAIR_GOHT;Boss - Early 3;MM Snowhead Temple Boss Pot Early 3;pot;466;520;TEMPLE_SNOWHEAD;All;13
+0x0007;LAIR_GOHT;Boss 5;MM Snowhead Temple Boss Pot Early 4;pot;472;112;TEMPLE_SNOWHEAD;All;13
+REMAINS_GYORG;LAIR_GYORG;Gyorg's Remains;MM Great Bay Temple Boss;npc;517;258;TEMPLE_GREAT_BAY;All;15
+0x1f;LAIR_GYORG;Heart Container;MM Great Bay Temple Boss HC;collectible;484;258;TEMPLE_GREAT_BAY;All;15
+0x0001;LAIR_GYORG;Boss 1;MM Great Bay Temple Boss Pot 1;pot;517;233;TEMPLE_GREAT_BAY;All;15
+0x0002;LAIR_GYORG;Boss 2;MM Great Bay Temple Boss Pot 2;pot;519;279;TEMPLE_GREAT_BAY;All;15
+0x0003;LAIR_GYORG;Boss 3;MM Great Bay Temple Boss Pot 3;pot;452;279;TEMPLE_GREAT_BAY;All;15
+0x0004;LAIR_GYORG;Boss 4;MM Great Bay Temple Boss Pot 4;pot;453;233;TEMPLE_GREAT_BAY;All;15
+0x0005;LAIR_GYORG;Boss - Underwater 1;MM Great Bay Temple Boss Pot Underwater 1;pot;691;161;TEMPLE_GREAT_BAY;All;15
+0x0006;LAIR_GYORG;Boss - Underwater 2;MM Great Bay Temple Boss Pot Underwater 2;pot;273;161;TEMPLE_GREAT_BAY;All;15
+0x0007;LAIR_GYORG;Boss - Underwater 3;MM Great Bay Temple Boss Pot Underwater 3;pot;164;565;TEMPLE_GREAT_BAY;All;15
+0x0008;LAIR_GYORG;Boss - Underwater 4;MM Great Bay Temple Boss Pot Underwater 4;pot;820;565;TEMPLE_GREAT_BAY;All;15
 0x0002;LAIR_IKANA;Boss 1;MM Ancient Castle of Ikana Boss Pot 1;pot;456;307;CASTLE_IKANA;All;1
 0x0003;LAIR_IKANA;Boss 2;MM Ancient Castle of Ikana Boss Pot 2;pot;456;318;CASTLE_IKANA;All;1
 0x0004;LAIR_IKANA;Boss 3;MM Ancient Castle of Ikana Boss Pot 3;pot;505;318;CASTLE_IKANA;All;1
@@ -1233,8 +1233,8 @@ REMAINS_GYORG;LAIR_GYORG;Gyorg's Remains;MM Great Bay Temple Boss;npc;484;258;TE
 SONG_EMPTINESS;LAIR_IKANA;Elegy of Emptiness;MM Ancient Castle of Ikana Song Emptiness;npc;479;99;CASTLE_IKANA;All;1
 0x0001;LAIR_MAJORA;Pot 1;MM Moon Majora Pot 1;pot;493;99;LAIR_MAJORA;All;0
 0x0002;LAIR_MAJORA;Pot 2;MM Moon Majora Pot 2;pot;450;99;LAIR_MAJORA;All;0
-SONG_ORDER;LAIR_ODOLWA;Oath to Order;MM Oath to Order;npc;372;302;TEMPLE_WOODFALL;All;11
-REMAINS_ODOLWA;LAIR_ODOLWA;Oldolwa's Remain;MM Woodfall Temple Boss;npc;468;302;TEMPLE_WOODFALL;All;11
+SONG_ORDER;LAIR_ODOLWA;Oath to Order;MM Oath to Order;npc;468;302;TEMPLE_WOODFALL;All;11
+REMAINS_ODOLWA;LAIR_ODOLWA;Oldolwa's Remain;MM Woodfall Temple Boss;npc;372;302;TEMPLE_WOODFALL;All;11
 0x1f;LAIR_ODOLWA;Heart Container;MM Woodfall Temple Boss Container;collectible;565;303;TEMPLE_WOODFALL;All;11
 0x0000a;LAIR_ODOLWA;Boss 1;MM Woodfall Temple Boss Grass 01;grass;377;101;TEMPLE_WOODFALL;All;11
 0x0000b;LAIR_ODOLWA;Boss 2;MM Woodfall Temple Boss Grass 02;grass;562;101;TEMPLE_WOODFALL;All;11
@@ -1312,19 +1312,19 @@ MASK_GARO;MILK_ROAD;Garo Mask;MM Gorman Track Garo Mask;none;0;0;GORMAN_TRACK;Al
 0xa0025;MILK_ROAD;Pack 2 - Grass 11;MM Gorman Track Grass Pack 2 Grass 11;none;0;0;GORMAN_TRACK;All;0
 0xb0025;MILK_ROAD;Pack 2 - Grass 12;MM Gorman Track Grass Pack 2 Grass 12;none;0;0;GORMAN_TRACK;All;0
 GORMAN_MILK;MILK_ROAD;Purchase - Milk;MM Gorman Track Milk Purchase;none;0;0;GORMAN_TRACK;All;0
-0x00005;MOON;Butterfly 1;MM Moon Butterfly 01;butterfly;311;498;MOON;All;0
-0x00006;MOON;Butterfly 2;MM Moon Butterfly 02;butterfly;316;437;MOON;All;0
-0x00007;MOON;Butterfly 3;MM Moon Butterfly 03;butterfly;387;415;MOON;All;0
-0x00008;MOON;Butterfly 4;MM Moon Butterfly 04;butterfly;436;372;MOON;All;0
-0x00009;MOON;Butterfly 5;MM Moon Butterfly 05;butterfly;495;372;MOON;All;0
-0x0000a;MOON;Butterfly 6;MM Moon Butterfly 06;butterfly;581;331;MOON;All;0
-0x0000b;MOON;Butterfly 7;MM Moon Butterfly 07;butterfly;398;324;MOON;All;0
-0x0000c;MOON;Butterfly 8;MM Moon Butterfly 08;butterfly;486;291;MOON;All;0
-0x0000d;MOON;Butterfly 9;MM Moon Butterfly 09;butterfly;375;261;MOON;All;0
-0x0000e;MOON;Butterfly 10;MM Moon Butterfly 10;butterfly;536;255;MOON;All;0
-0x0000f;MOON;Butterfly 11;MM Moon Butterfly 11;butterfly;427;226;MOON;All;0
+0x00005;MOON;Butterfly 1;MM Moon Butterfly 01;butterfly;486;291;MOON;All;0
+0x00006;MOON;Butterfly 2;MM Moon Butterfly 02;butterfly;495;372;MOON;All;0
+0x00007;MOON;Butterfly 3;MM Moon Butterfly 03;butterfly;398;324;MOON;All;0
+0x00008;MOON;Butterfly 4;MM Moon Butterfly 04;butterfly;387;415;MOON;All;0
+0x00009;MOON;Butterfly 5;MM Moon Butterfly 05;butterfly;316;437;MOON;All;0
+0x0000a;MOON;Butterfly 6;MM Moon Butterfly 06;butterfly;436;372;MOON;All;0
+0x0000b;MOON;Butterfly 7;MM Moon Butterfly 07;butterfly;427;226;MOON;All;0
+0x0000c;MOON;Butterfly 8;MM Moon Butterfly 08;butterfly;505;195;MOON;All;0
+0x0000d;MOON;Butterfly 9;MM Moon Butterfly 09;butterfly;581;331;MOON;All;0
+0x0000e;MOON;Butterfly 10;MM Moon Butterfly 10;butterfly;375;261;MOON;All;0
+0x0000f;MOON;Butterfly 11;MM Moon Butterfly 11;butterfly;536;255;MOON;All;0
 0x00010;MOON;Butterfly 12;MM Moon Butterfly 12;butterfly;592;223;MOON;All;0
-0x00011;MOON;Butterfly 13;MM Moon Butterfly 13;butterfly;505;195;MOON;All;0
+0x00011;MOON;Butterfly 13;MM Moon Butterfly 13;butterfly;311;498;MOON;All;0
 MASK_FIERCE_DEITY;MOON;Fierce Deity's Mask;MM Moon Fierce Deity Mask;npc;514;305;MOON;All;0
 0x0001;MOON;Pot 1;MM Moon Majora Pot 1;none;0;0;LAIR_MAJORA;All;0
 0x0002;MOON;Pot 2;MM Moon Majora Pot 2;none;0;0;LAIR_MAJORA;All;0
@@ -1359,32 +1359,32 @@ MASK_FIERCE_DEITY;MOON;Fierce Deity's Mask;MM Moon Fierce Deity Mask;npc;514;305
 0x01;MOON;Heart Piece;MM Moon Trial Zora HP;none;0;0;MOON_ZORA;All;0
 0x01;MOON_DEKU;Heart Piece;MM Moon Trial Deku HP;collectible;222;166;MOON_DEKU;All;0
 0x01;MOON_GORON;Heart Piece;MM Moon Trial Goron HP;collectible;217;433;MOON_GORON;All;0
-0x0015;MOON_GORON;Pot 1;MM Moon Trial Goron Pot 01;pot;162;378;MOON_GORON;All;0
-0x0016;MOON_GORON;Pot 2;MM Moon Trial Goron Pot 02;pot;153;379;MOON_GORON;All;0
-0x0017;MOON_GORON;Pot 3;MM Moon Trial Goron Pot 03;pot;423;375;MOON_GORON;All;0
-0x0018;MOON_GORON;Pot 4;MM Moon Trial Goron Pot 04;pot;423;367;MOON_GORON;All;0
-0x0019;MOON_GORON;Pot 5;MM Moon Trial Goron Pot 05;pot;162;365;MOON_GORON;All;0
-0x001a;MOON_GORON;Pot 6;MM Moon Trial Goron Pot 06;pot;154;365;MOON_GORON;All;0
-0x001b;MOON_GORON;Pot 7;MM Moon Trial Goron Pot 07;pot;347;270;MOON_GORON;All;0
-0x0020;MOON_GORON;Pot 8;MM Moon Trial Goron Pot 08;pot;338;270;MOON_GORON;All;0
-0x0021;MOON_GORON;Pot 9;MM Moon Trial Goron Pot 09;pot;680;243;MOON_GORON;All;0
-0x0022;MOON_GORON;Pot 10;MM Moon Trial Goron Pot 10;pot;673;243;MOON_GORON;All;0
-0x0023;MOON_GORON;Pot 11;MM Moon Trial Goron Pot 11;pot;665;243;MOON_GORON;All;0
-0x001c;MOON_GORON;Early 1;MM Moon Trial Goron Pot Early 1;pot;918;378;MOON_GORON;All;0
-0x001d;MOON_GORON;Early 2;MM Moon Trial Goron Pot Early 2;pot;910;378;MOON_GORON;All;0
-0x001e;MOON_GORON;Early 3;MM Moon Trial Goron Pot Early 3;pot;917;361;MOON_GORON;All;0
-0x001f;MOON_GORON;Early 4;MM Moon Trial Goron Pot Early 4;pot;909;361;MOON_GORON;All;0
+0x0015;MOON_GORON;Pot 1;MM Moon Trial Goron Pot 01;pot;347;270;MOON_GORON;All;0
+0x0016;MOON_GORON;Pot 2;MM Moon Trial Goron Pot 02;pot;338;270;MOON_GORON;All;0
+0x0017;MOON_GORON;Pot 3;MM Moon Trial Goron Pot 03;pot;673;243;MOON_GORON;All;0
+0x0018;MOON_GORON;Pot 4;MM Moon Trial Goron Pot 04;pot;680;243;MOON_GORON;All;0
+0x0019;MOON_GORON;Pot 5;MM Moon Trial Goron Pot 05;pot;665;243;MOON_GORON;All;0
+0x001a;MOON_GORON;Pot 6;MM Moon Trial Goron Pot 06;pot;423;367;MOON_GORON;All;0
+0x001b;MOON_GORON;Pot 7;MM Moon Trial Goron Pot 07;pot;423;375;MOON_GORON;All;0
+0x0020;MOON_GORON;Pot 8;MM Moon Trial Goron Pot 08;pot;154;365;MOON_GORON;All;0
+0x0021;MOON_GORON;Pot 9;MM Moon Trial Goron Pot 09;pot;153;379;MOON_GORON;All;0
+0x0022;MOON_GORON;Pot 10;MM Moon Trial Goron Pot 10;pot;162;365;MOON_GORON;All;0
+0x0023;MOON_GORON;Pot 11;MM Moon Trial Goron Pot 11;pot;162;378;MOON_GORON;All;0
+0x001c;MOON_GORON;Early 1;MM Moon Trial Goron Pot Early 1;pot;909;361;MOON_GORON;All;0
+0x001d;MOON_GORON;Early 2;MM Moon Trial Goron Pot Early 2;pot;917;361;MOON_GORON;All;0
+0x001e;MOON_GORON;Early 3;MM Moon Trial Goron Pot Early 3;pot;910;378;MOON_GORON;All;0
+0x001f;MOON_GORON;Early 4;MM Moon Trial Goron Pot Early 4;pot;918;378;MOON_GORON;All;0
 0x01;MOON_LINK;Garo Master;MM Moon Trial Link Garo Master Chest;chest;471;301;MOON_LINK;All;0
 0x01;MOON_LINK;Heart Piece;MM Moon Trial Link HP;collectible;827;295;MOON_LINK;All;0
 0x02;MOON_LINK;Iron Knuckle;MM Moon Trial Link Iron Knuckle Chest;chest;672;300;MOON_LINK;All;0
-0x0001;MOON_LINK;Pot 1;MM Moon Trial Link Pot 1;pot;131;358;MOON_LINK;All;0
-0x0002;MOON_LINK;Pot 2;MM Moon Trial Link Pot 2;pot;119;358;MOON_LINK;All;0
-0x0003;MOON_LINK;Pot 3;MM Moon Trial Link Pot 3;pot;131;347;MOON_LINK;All;0
-0x0004;MOON_LINK;Pot 4;MM Moon Trial Link Pot 4;pot;120;347;MOON_LINK;All;0
-0x0005;MOON_LINK;Pot 5;MM Moon Trial Link Pot 5;pot;135;265;MOON_LINK;All;0
-0x0006;MOON_LINK;Pot 6;MM Moon Trial Link Pot 6;pot;123;266;MOON_LINK;All;0
-0x0007;MOON_LINK;Pot 7;MM Moon Trial Link Pot 7;pot;135;254;MOON_LINK;All;0
-0x0008;MOON_LINK;Pot 8;MM Moon Trial Link Pot 8;pot;124;254;MOON_LINK;All;0
+0x0001;MOON_LINK;Pot 1;MM Moon Trial Link Pot 1;pot;135;254;MOON_LINK;All;0
+0x0002;MOON_LINK;Pot 2;MM Moon Trial Link Pot 2;pot;135;265;MOON_LINK;All;0
+0x0003;MOON_LINK;Pot 3;MM Moon Trial Link Pot 3;pot;124;254;MOON_LINK;All;0
+0x0004;MOON_LINK;Pot 4;MM Moon Trial Link Pot 4;pot;123;266;MOON_LINK;All;0
+0x0005;MOON_LINK;Pot 5;MM Moon Trial Link Pot 5;pot;131;347;MOON_LINK;All;0
+0x0006;MOON_LINK;Pot 6;MM Moon Trial Link Pot 6;pot;131;358;MOON_LINK;All;0
+0x0007;MOON_LINK;Pot 7;MM Moon Trial Link Pot 7;pot;120;347;MOON_LINK;All;0
+0x0008;MOON_LINK;Pot 8;MM Moon Trial Link Pot 8;pot;119;358;MOON_LINK;All;0
 0x01;MOON_ZORA;Heart Piece;MM Moon Trial Zora HP;collectible;71;366;MOON_ZORA;All;0
 0x00011;MOUNTAIN_VILLAGE;Big Snowball 1;MM Mountain Village Big Snowball 1;none;268;455;MOUNTAIN_VILLAGE;Winter;0
 0x0000e;MOUNTAIN_VILLAGE;Big Snowball 2;MM Mountain Village Big Snowball 2;none;737;417;MOUNTAIN_VILLAGE;Winter;0
@@ -1482,7 +1482,7 @@ SWORD_RAZOR;MOUNTAIN_VILLAGE;Razor Blade;MM Blacksmith Razor Blade;none;0;0;BLAC
 0x03b11;MOUNTAIN_VILLAGE;Grass 12;MM Mountain Village Tunnel Grotto Grass 12;none;0;0;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
 0x03b12;MOUNTAIN_VILLAGE;Grass 13;MM Mountain Village Tunnel Grotto Grass 13;none;0;0;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
 0x03b13;MOUNTAIN_VILLAGE;Grass 14;MM Mountain Village Tunnel Grotto Grass 14;none;0;0;MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;All;0
-0x00;MOUNTAIN_VILLAGE;Waterfall;MM Mountain Village Waterfall Chest;chest;217;392;MOUNTAIN_VILLAGE;Spring;0
+0x00;MOUNTAIN_VILLAGE;Waterfall;MM Mountain Village Waterfall Chest;none;217;392;MOUNTAIN_VILLAGE;Spring;0
 0x00020;MOUNTAIN_VILLAGE_SPRING;Pack 1 - Butterfly 1;MM Mountain Village Butterfly Pack 1 Butterfly 1;butterfly;495;329;MOUNTAIN_VILLAGE;Spring;0
 0x10020;MOUNTAIN_VILLAGE_SPRING;Pack 1 - Butterfly 2;MM Mountain Village Butterfly Pack 1 Butterfly 2;butterfly;508;321;MOUNTAIN_VILLAGE;Spring;0
 0x20020;MOUNTAIN_VILLAGE_SPRING;Pack 1 - Butterfly 3;MM Mountain Village Butterfly Pack 1 Butterfly 3;butterfly;482;321;MOUNTAIN_VILLAGE;Spring;0
@@ -1492,46 +1492,46 @@ SWORD_RAZOR;MOUNTAIN_VILLAGE;Razor Blade;MM Blacksmith Razor Blade;none;0;0;BLAC
 0x20021;MOUNTAIN_VILLAGE_SPRING;Pack 2 - Butterfly 3;MM Mountain Village Butterfly Pack 2 Butterfly 3;butterfly;438;481;MOUNTAIN_VILLAGE;Spring;0
 0x30021;MOUNTAIN_VILLAGE_SPRING;Pack 2 - Butterfly 4;MM Mountain Village Butterfly Pack 2 Butterfly 4;butterfly;412;481;MOUNTAIN_VILLAGE;Spring;0
 0x40021;MOUNTAIN_VILLAGE_SPRING;Pack 2 - Butterfly 5;MM Mountain Village Butterfly Pack 2 Butterfly 5;butterfly;425;475;MOUNTAIN_VILLAGE;Spring;0
-0x0001a;MOUNTAIN_VILLAGE_SPRING;Grass 1;MM Mountain Village Grass 1;grass;349;334;MOUNTAIN_VILLAGE;Spring;0
-0x0001b;MOUNTAIN_VILLAGE_SPRING;Grass 2;MM Mountain Village Grass 2;grass;333;333;MOUNTAIN_VILLAGE;Spring;0
-0x0001c;MOUNTAIN_VILLAGE_SPRING;Grass 3;MM Mountain Village Grass 3;grass;358;324;MOUNTAIN_VILLAGE;Spring;0
-0x0001d;MOUNTAIN_VILLAGE_SPRING;Pack 1 - Grass 1;MM Mountain Village Grass Pack 1 Grass 1;grass;421;549;MOUNTAIN_VILLAGE;Spring;0
-0x1001d;MOUNTAIN_VILLAGE_SPRING;Pack 1 - Grass 2;MM Mountain Village Grass Pack 1 Grass 2;grass;433;544;MOUNTAIN_VILLAGE;Spring;0
-0x2001d;MOUNTAIN_VILLAGE_SPRING;Pack 1 - Grass 3;MM Mountain Village Grass Pack 1 Grass 3;grass;409;544;MOUNTAIN_VILLAGE;Spring;0
-0x3001d;MOUNTAIN_VILLAGE_SPRING;Pack 1 - Grass 4;MM Mountain Village Grass Pack 1 Grass 4;grass;438;533;MOUNTAIN_VILLAGE;Spring;0
-0x4001d;MOUNTAIN_VILLAGE_SPRING;Pack 1 - Grass 5;MM Mountain Village Grass Pack 1 Grass 5;grass;421;533;MOUNTAIN_VILLAGE;Spring;0
-0x5001d;MOUNTAIN_VILLAGE_SPRING;Pack 1 - Grass 6;MM Mountain Village Grass Pack 1 Grass 6;grass;405;533;MOUNTAIN_VILLAGE;Spring;0
-0x6001d;MOUNTAIN_VILLAGE_SPRING;Pack 1 - Grass 7;MM Mountain Village Grass Pack 1 Grass 7;grass;433;522;MOUNTAIN_VILLAGE;Spring;0
-0x7001d;MOUNTAIN_VILLAGE_SPRING;Pack 1 - Grass 8;MM Mountain Village Grass Pack 1 Grass 8;grass;409;522;MOUNTAIN_VILLAGE;Spring;0
-0x8001d;MOUNTAIN_VILLAGE_SPRING;Pack 1 - Grass 9;MM Mountain Village Grass Pack 1 Grass 9;grass;421;519;MOUNTAIN_VILLAGE;Spring;0
-0x0001e;MOUNTAIN_VILLAGE_SPRING;Pack 2 - Grass 1;MM Mountain Village Grass Pack 2 Grass 1;grass;300;371;MOUNTAIN_VILLAGE;Spring;0
-0x1001e;MOUNTAIN_VILLAGE_SPRING;Pack 2 - Grass 2;MM Mountain Village Grass Pack 2 Grass 2;grass;312;366;MOUNTAIN_VILLAGE;Spring;0
-0x2001e;MOUNTAIN_VILLAGE_SPRING;Pack 2 - Grass 3;MM Mountain Village Grass Pack 2 Grass 3;grass;288;366;MOUNTAIN_VILLAGE;Spring;0
-0x3001e;MOUNTAIN_VILLAGE_SPRING;Pack 2 - Grass 4;MM Mountain Village Grass Pack 2 Grass 4;grass;300;356;MOUNTAIN_VILLAGE;Spring;0
-0x4001e;MOUNTAIN_VILLAGE_SPRING;Pack 2 - Grass 5;MM Mountain Village Grass Pack 2 Grass 5;grass;317;355;MOUNTAIN_VILLAGE;Spring;0
-0x5001e;MOUNTAIN_VILLAGE_SPRING;Pack 2 - Grass 6;MM Mountain Village Grass Pack 2 Grass 6;grass;284;355;MOUNTAIN_VILLAGE;Spring;0
-0x6001e;MOUNTAIN_VILLAGE_SPRING;Pack 2 - Grass 7;MM Mountain Village Grass Pack 2 Grass 7;grass;312;344;MOUNTAIN_VILLAGE;Spring;0
-0x7001e;MOUNTAIN_VILLAGE_SPRING;Pack 2 - Grass 8;MM Mountain Village Grass Pack 2 Grass 8;grass;288;344;MOUNTAIN_VILLAGE;Spring;0
-0x8001e;MOUNTAIN_VILLAGE_SPRING;Pack 2 - Grass 9;MM Mountain Village Grass Pack 2 Grass 9;grass;300;341;MOUNTAIN_VILLAGE;Spring;0
-0x0001f;MOUNTAIN_VILLAGE_SPRING;Pack 3 - Grass 1;MM Mountain Village Grass Pack 3 Grass 1;grass;405;420;MOUNTAIN_VILLAGE;Spring;0
-0x1001f;MOUNTAIN_VILLAGE_SPRING;Pack 3 - Grass 2;MM Mountain Village Grass Pack 3 Grass 2;grass;417;415;MOUNTAIN_VILLAGE;Spring;0
-0x2001f;MOUNTAIN_VILLAGE_SPRING;Pack 3 - Grass 3;MM Mountain Village Grass Pack 3 Grass 3;grass;393;415;MOUNTAIN_VILLAGE;Spring;0
-0x3001f;MOUNTAIN_VILLAGE_SPRING;Pack 3 - Grass 4;MM Mountain Village Grass Pack 3 Grass 4;grass;405;406;MOUNTAIN_VILLAGE;Spring;0
-0x4001f;MOUNTAIN_VILLAGE_SPRING;Pack 3 - Grass 5;MM Mountain Village Grass Pack 3 Grass 5;grass;422;404;MOUNTAIN_VILLAGE;Spring;0
-0x5001f;MOUNTAIN_VILLAGE_SPRING;Pack 3 - Grass 6;MM Mountain Village Grass Pack 3 Grass 6;grass;389;404;MOUNTAIN_VILLAGE;Spring;0
-0x6001f;MOUNTAIN_VILLAGE_SPRING;Pack 3 - Grass 7;MM Mountain Village Grass Pack 3 Grass 7;grass;417;393;MOUNTAIN_VILLAGE;Spring;0
-0x7001f;MOUNTAIN_VILLAGE_SPRING;Pack 3 - Grass 8;MM Mountain Village Grass Pack 3 Grass 8;grass;393;393;MOUNTAIN_VILLAGE;Spring;0
-0x8001f;MOUNTAIN_VILLAGE_SPRING;Pack 3 - Grass 9;MM Mountain Village Grass Pack 3 Grass 9;grass;405;390;MOUNTAIN_VILLAGE;Spring;0
+0x0001a;MOUNTAIN_VILLAGE_SPRING;Grass 1;MM Mountain Village Grass 1;grass;421;533;MOUNTAIN_VILLAGE;Spring;0
+0x0001b;MOUNTAIN_VILLAGE_SPRING;Grass 2;MM Mountain Village Grass 2;grass;431;462;MOUNTAIN_VILLAGE;Spring;0
+0x0001c;MOUNTAIN_VILLAGE_SPRING;Grass 3;MM Mountain Village Grass 3;grass;375;448;MOUNTAIN_VILLAGE;Spring;0
+0x0001d;MOUNTAIN_VILLAGE_SPRING;Pack 1 - Grass 1;MM Mountain Village Grass Pack 1 Grass 1;grass;499;360;MOUNTAIN_VILLAGE;Spring;0
+0x1001d;MOUNTAIN_VILLAGE_SPRING;Pack 1 - Grass 2;MM Mountain Village Grass Pack 1 Grass 2;grass;499;375;MOUNTAIN_VILLAGE;Spring;0
+0x2001d;MOUNTAIN_VILLAGE_SPRING;Pack 1 - Grass 3;MM Mountain Village Grass Pack 1 Grass 3;grass;511;370;MOUNTAIN_VILLAGE;Spring;0
+0x3001d;MOUNTAIN_VILLAGE_SPRING;Pack 1 - Grass 4;MM Mountain Village Grass Pack 1 Grass 4;grass;516;359;MOUNTAIN_VILLAGE;Spring;0
+0x4001d;MOUNTAIN_VILLAGE_SPRING;Pack 1 - Grass 5;MM Mountain Village Grass Pack 1 Grass 5;grass;511;348;MOUNTAIN_VILLAGE;Spring;0
+0x5001d;MOUNTAIN_VILLAGE_SPRING;Pack 1 - Grass 6;MM Mountain Village Grass Pack 1 Grass 6;grass;499;345;MOUNTAIN_VILLAGE;Spring;0
+0x6001d;MOUNTAIN_VILLAGE_SPRING;Pack 1 - Grass 7;MM Mountain Village Grass Pack 1 Grass 7;grass;487;348;MOUNTAIN_VILLAGE;Spring;0
+0x7001d;MOUNTAIN_VILLAGE_SPRING;Pack 1 - Grass 8;MM Mountain Village Grass Pack 1 Grass 8;grass;483;359;MOUNTAIN_VILLAGE;Spring;0
+0x8001d;MOUNTAIN_VILLAGE_SPRING;Pack 1 - Grass 9;MM Mountain Village Grass Pack 1 Grass 9;grass;487;370;MOUNTAIN_VILLAGE;Spring;0
+0x0001e;MOUNTAIN_VILLAGE_SPRING;Pack 2 - Grass 1;MM Mountain Village Grass Pack 2 Grass 1;grass;456;340;MOUNTAIN_VILLAGE;Spring;0
+0x1001e;MOUNTAIN_VILLAGE_SPRING;Pack 2 - Grass 2;MM Mountain Village Grass Pack 2 Grass 2;grass;456;355;MOUNTAIN_VILLAGE;Spring;0
+0x2001e;MOUNTAIN_VILLAGE_SPRING;Pack 2 - Grass 3;MM Mountain Village Grass Pack 2 Grass 3;grass;468;350;MOUNTAIN_VILLAGE;Spring;0
+0x3001e;MOUNTAIN_VILLAGE_SPRING;Pack 2 - Grass 4;MM Mountain Village Grass Pack 2 Grass 4;grass;473;339;MOUNTAIN_VILLAGE;Spring;0
+0x4001e;MOUNTAIN_VILLAGE_SPRING;Pack 2 - Grass 5;MM Mountain Village Grass Pack 2 Grass 5;grass;468;328;MOUNTAIN_VILLAGE;Spring;0
+0x5001e;MOUNTAIN_VILLAGE_SPRING;Pack 2 - Grass 6;MM Mountain Village Grass Pack 2 Grass 6;grass;456;325;MOUNTAIN_VILLAGE;Spring;0
+0x6001e;MOUNTAIN_VILLAGE_SPRING;Pack 2 - Grass 7;MM Mountain Village Grass Pack 2 Grass 7;grass;444;328;MOUNTAIN_VILLAGE;Spring;0
+0x7001e;MOUNTAIN_VILLAGE_SPRING;Pack 2 - Grass 8;MM Mountain Village Grass Pack 2 Grass 8;grass;440;339;MOUNTAIN_VILLAGE;Spring;0
+0x8001e;MOUNTAIN_VILLAGE_SPRING;Pack 2 - Grass 9;MM Mountain Village Grass Pack 2 Grass 9;grass;444;350;MOUNTAIN_VILLAGE;Spring;0
+0x0001f;MOUNTAIN_VILLAGE_SPRING;Pack 3 - Grass 1;MM Mountain Village Grass Pack 3 Grass 1;grass;567;325;MOUNTAIN_VILLAGE;Spring;0
+0x1001f;MOUNTAIN_VILLAGE_SPRING;Pack 3 - Grass 2;MM Mountain Village Grass Pack 3 Grass 2;grass;567;340;MOUNTAIN_VILLAGE;Spring;0
+0x2001f;MOUNTAIN_VILLAGE_SPRING;Pack 3 - Grass 3;MM Mountain Village Grass Pack 3 Grass 3;grass;579;335;MOUNTAIN_VILLAGE;Spring;0
+0x3001f;MOUNTAIN_VILLAGE_SPRING;Pack 3 - Grass 4;MM Mountain Village Grass Pack 3 Grass 4;grass;584;324;MOUNTAIN_VILLAGE;Spring;0
+0x4001f;MOUNTAIN_VILLAGE_SPRING;Pack 3 - Grass 5;MM Mountain Village Grass Pack 3 Grass 5;grass;579;313;MOUNTAIN_VILLAGE;Spring;0
+0x5001f;MOUNTAIN_VILLAGE_SPRING;Pack 3 - Grass 6;MM Mountain Village Grass Pack 3 Grass 6;grass;567;310;MOUNTAIN_VILLAGE;Spring;0
+0x6001f;MOUNTAIN_VILLAGE_SPRING;Pack 3 - Grass 7;MM Mountain Village Grass Pack 3 Grass 7;grass;555;313;MOUNTAIN_VILLAGE;Spring;0
+0x7001f;MOUNTAIN_VILLAGE_SPRING;Pack 3 - Grass 8;MM Mountain Village Grass Pack 3 Grass 8;grass;551;324;MOUNTAIN_VILLAGE;Spring;0
+0x8001f;MOUNTAIN_VILLAGE_SPRING;Pack 3 - Grass 9;MM Mountain Village Grass Pack 3 Grass 9;grass;555;335;MOUNTAIN_VILLAGE;Spring;0
 0x00024;MOUNTAIN_VILLAGE_SPRING;Hive;MM Mountain Village Hive;hive;663;373;MOUNTAIN_VILLAGE;Spring;0
-0x0002c;MOUNTAIN_VILLAGE_SPRING;Keaton Grass 1;MM Mountain Village Keaton Grass Reward 1;grass;629;493;MOUNTAIN_VILLAGE;Spring;0
-0x1002c;MOUNTAIN_VILLAGE_SPRING;Keaton Grass 2;MM Mountain Village Keaton Grass Reward 2;grass;641;488;MOUNTAIN_VILLAGE;Spring;0
-0x2002c;MOUNTAIN_VILLAGE_SPRING;Keaton Grass 3;MM Mountain Village Keaton Grass Reward 3;grass;617;488;MOUNTAIN_VILLAGE;Spring;0
-0x3002c;MOUNTAIN_VILLAGE_SPRING;Keaton Grass 4;MM Mountain Village Keaton Grass Reward 4;grass;629;477;MOUNTAIN_VILLAGE;Spring;0
-0x4002c;MOUNTAIN_VILLAGE_SPRING;Keaton Grass 5;MM Mountain Village Keaton Grass Reward 5;grass;646;477;MOUNTAIN_VILLAGE;Spring;0
-0x5002c;MOUNTAIN_VILLAGE_SPRING;Keaton Grass 6;MM Mountain Village Keaton Grass Reward 6;grass;613;477;MOUNTAIN_VILLAGE;Spring;0
-0x6002c;MOUNTAIN_VILLAGE_SPRING;Keaton Grass 7;MM Mountain Village Keaton Grass Reward 7;grass;641;466;MOUNTAIN_VILLAGE;Spring;0
-0x7002c;MOUNTAIN_VILLAGE_SPRING;Keaton Grass 8;MM Mountain Village Keaton Grass Reward 8;grass;617;466;MOUNTAIN_VILLAGE;Spring;0
-0x8002c;MOUNTAIN_VILLAGE_SPRING;Keaton Grass 9;MM Mountain Village Keaton Grass Reward 9;grass;629;463;MOUNTAIN_VILLAGE;Spring;0
+0x0002c;MOUNTAIN_VILLAGE_SPRING;Keaton Grass 1;MM Mountain Village Keaton Grass Reward 1;grass;629;477;MOUNTAIN_VILLAGE;Spring;0
+0x1002c;MOUNTAIN_VILLAGE_SPRING;Keaton Grass 2;MM Mountain Village Keaton Grass Reward 2;grass;629;493;MOUNTAIN_VILLAGE;Spring;0
+0x2002c;MOUNTAIN_VILLAGE_SPRING;Keaton Grass 3;MM Mountain Village Keaton Grass Reward 3;grass;641;488;MOUNTAIN_VILLAGE;Spring;0
+0x3002c;MOUNTAIN_VILLAGE_SPRING;Keaton Grass 4;MM Mountain Village Keaton Grass Reward 4;grass;646;477;MOUNTAIN_VILLAGE;Spring;0
+0x4002c;MOUNTAIN_VILLAGE_SPRING;Keaton Grass 5;MM Mountain Village Keaton Grass Reward 5;grass;641;466;MOUNTAIN_VILLAGE;Spring;0
+0x5002c;MOUNTAIN_VILLAGE_SPRING;Keaton Grass 6;MM Mountain Village Keaton Grass Reward 6;grass;629;463;MOUNTAIN_VILLAGE;Spring;0
+0x6002c;MOUNTAIN_VILLAGE_SPRING;Keaton Grass 7;MM Mountain Village Keaton Grass Reward 7;grass;617;466;MOUNTAIN_VILLAGE;Spring;0
+0x7002c;MOUNTAIN_VILLAGE_SPRING;Keaton Grass 8;MM Mountain Village Keaton Grass Reward 8;grass;613;477;MOUNTAIN_VILLAGE;Spring;0
+0x8002c;MOUNTAIN_VILLAGE_SPRING;Keaton Grass 9;MM Mountain Village Keaton Grass Reward 9;grass;617;488;MOUNTAIN_VILLAGE;Spring;0
 0x00028;MOUNTAIN_VILLAGE_SPRING;Rupee;MM Mountain Village Rupee;rupee;474;439;MOUNTAIN_VILLAGE;Spring;0
 0x00011;MOUNTAIN_VILLAGE_WINTER;Big Snowball 1;MM Mountain Village Big Snowball 1;snowball;268;455;MOUNTAIN_VILLAGE;Winter;0
 0x0000e;MOUNTAIN_VILLAGE_WINTER;Big Snowball 2;MM Mountain Village Big Snowball 2;snowball;292;363;MOUNTAIN_VILLAGE;Winter;0
@@ -1539,7 +1539,7 @@ SWORD_RAZOR;MOUNTAIN_VILLAGE;Razor Blade;MM Blacksmith Razor Blade;none;0;0;BLAC
 0x00034;MOUNTAIN_VILLAGE_WINTER;Big Snowball 4;MM Mountain Village Big Snowball 4;snowball;737;417;MOUNTAIN_VILLAGE;Winter;0
 0x00012;MOUNTAIN_VILLAGE_WINTER;Big Snowball 5;MM Mountain Village Big Snowball 5;snowball;800;403;MOUNTAIN_VILLAGE;Winter;0
 MASK_DON_GERO;MOUNTAIN_VILLAGE_WINTER;Don Gero's Mask;MM Mountain Village Don Gero Mask;npc;244;385;MOUNTAIN_VILLAGE;Winter;0
-FROG_HEART_PIECE;MOUNTAIN_VILLAGE_WINTER;Frog Choir - Heart Piece;MM Mountain Village Frog Choir HP;collectible;325;434;MOUNTAIN_VILLAGE;Spring;0
+FROG_HEART_PIECE;MOUNTAIN_VILLAGE_WINTER;Frog Choir - Heart Piece;MM Mountain Village Frog Choir HP;npc;325;434;MOUNTAIN_VILLAGE;Spring;0
 OWL_MOUNTAIN_VILLAGE;MOUNTAIN_VILLAGE_WINTER;Owl Statue;MM Mountain Village Owl Statue;npc;345;325;MOUNTAIN_VILLAGE;Winter;0
 0x0026;MOUNTAIN_VILLAGE_WINTER;Roof;MM Mountain Village Pot;pot;566;365;MOUNTAIN_VILLAGE;Winter;0
 0x10023;MOUNTAIN_VILLAGE_WINTER;Potted Plant 1;MM Mountain Village Potted Plant 1 Grass;grass;472;415;MOUNTAIN_VILLAGE;Winter;0
@@ -1598,8 +1598,8 @@ MOON_TEAR;OBSERVATORY;Moon Tear;MM Astral Observatory Moon Tear;npc;2199;1058;TE
 0x0001d;PATH_SNOWHEAD;Back - Big Snowball 2;MM Path to Snowhead Big Snowball Back 2;snowball;731;159;PATH_SNOWHEAD;Winter;0
 0x0001e;PATH_SNOWHEAD;Middle - Big Snowball 1;MM Path to Snowhead Big Snowball Middle 1;snowball;593;159;PATH_SNOWHEAD;Winter;0
 0x0001f;PATH_SNOWHEAD;Middle - Big Snowball 2;MM Path to Snowhead Big Snowball Middle 2;snowball;210;235;PATH_SNOWHEAD;Winter;0
-0x04007;PATH_SNOWHEAD;Spring - Back 1;MM Path to Snowhead Small Snowball Spring Back 1;snowball;817;147;PATH_SNOWHEAD;Spring;0
-0x04008;PATH_SNOWHEAD;Spring - Back 2;MM Path to Snowhead Small Snowball Spring Back 2;snowball;731;159;PATH_SNOWHEAD;Spring;0
+0x04007;PATH_SNOWHEAD;Spring - Back 1;MM Path to Snowhead Small Snowball Spring Back 1;snowball;731;159;PATH_SNOWHEAD;Spring;0
+0x04008;PATH_SNOWHEAD;Spring - Back 2;MM Path to Snowhead Small Snowball Spring Back 2;snowball;817;147;PATH_SNOWHEAD;Spring;0
 0x04005;PATH_SNOWHEAD;Spring - Middle 1;MM Path to Snowhead Small Snowball Spring Middle 1;snowball;593;159;PATH_SNOWHEAD;Spring;0
 0x04006;PATH_SNOWHEAD;Spring - Middle 2;MM Path to Snowhead Small Snowball Spring Middle 2;snowball;210;235;PATH_SNOWHEAD;Spring;0
 0x13;PATH_SNOWHEAD;Chest;MM Path to Snowhead Grotto;none;0;0;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;All;0
@@ -1660,9 +1660,9 @@ SEAHORSE_HEART_PIECE;PINNACLE_ROCK;Seahorse - Heart Piece;MM Pinnacle Rock HP;np
 0x0806;PIRATE_FORTRESS_INTERIOR;Barrel Maze 3;MM Pirate Fortress Interior Pot Barrel Maze 3;pot;999;245;PIRATE_FORTRESS_INTERIOR;All;0
 0x030c;PIRATE_FORTRESS_INTERIOR;Beehive 1;MM Pirate Fortress Interior Pot Beehive 1;pot;756;30;PIRATE_FORTRESS_INTERIOR;All;0
 0x030d;PIRATE_FORTRESS_INTERIOR;Beehive 2;MM Pirate Fortress Interior Pot Beehive 2;pot;756;15;PIRATE_FORTRESS_INTERIOR;All;0
-0x0603;PIRATE_FORTRESS_INTERIOR;Aquarium 1;MM Pirate Fortress Interior Pot Chest Aquarium 1;pot;499;682;PIRATE_FORTRESS_INTERIOR;All;0
+0x0603;PIRATE_FORTRESS_INTERIOR;Aquarium 1;MM Pirate Fortress Interior Pot Chest Aquarium 1;pot;452;652;PIRATE_FORTRESS_INTERIOR;All;0
 0x0604;PIRATE_FORTRESS_INTERIOR;Aquarium 2;MM Pirate Fortress Interior Pot Chest Aquarium 2;pot;500;652;PIRATE_FORTRESS_INTERIOR;All;0
-0x0605;PIRATE_FORTRESS_INTERIOR;Aquarium 3;MM Pirate Fortress Interior Pot Chest Aquarium 3;pot;452;652;PIRATE_FORTRESS_INTERIOR;All;0
+0x0605;PIRATE_FORTRESS_INTERIOR;Aquarium 3;MM Pirate Fortress Interior Pot Chest Aquarium 3;pot;499;682;PIRATE_FORTRESS_INTERIOR;All;0
 0x0d06;PIRATE_FORTRESS_INTERIOR;Guarded 1;MM Pirate Fortress Interior Pot Guarded 1;pot;569;172;PIRATE_FORTRESS_INTERIOR;All;0
 0x0d07;PIRATE_FORTRESS_INTERIOR;Guarded 2;MM Pirate Fortress Interior Pot Guarded 2;pot;594;173;PIRATE_FORTRESS_INTERIOR;All;0
 0x03;PIRATE_FORTRESS_INTERIOR;Silver Rupee;MM Pirate Fortress Interior Silver Rupee Chest;chest;473;99;PIRATE_FORTRESS_INTERIOR;All;0
@@ -1962,12 +1962,12 @@ SHOOTING_GAME_SWAMP_2;SHOOTING_GALLERY_SWAMP;Reward 2;MM Swamp Archery Reward 2;
 0x0002b;SNOWHEAD;Winter - Small Snowball 2;MM Snowhead Small Snowball 2;snowball;171;513;SNOWHEAD;Winter;0
 0x0002c;SNOWHEAD;Winter - Small Snowball 3;MM Snowhead Small Snowball 3;snowball;220;465;SNOWHEAD;Winter;0
 0x0002d;SNOWHEAD;Winter - Small Snowball 4;MM Snowhead Small Snowball 4;snowball;198;472;SNOWHEAD;Winter;0
-0x0400e;SNOWHEAD;Spring - Small Snowball 1;MM Snowhead Small Snowball Spring 1;snowball;700;363;SNOWHEAD;Spring;0
-0x0400f;SNOWHEAD;Spring - Small Snowball 2;MM Snowhead Small Snowball Spring 2;snowball;759;348;SNOWHEAD;Spring;0
-0x04010;SNOWHEAD;Spring - Small Snowball 3;MM Snowhead Small Snowball Spring 3;snowball;715;339;SNOWHEAD;Spring;0
-0x04011;SNOWHEAD;Spring - Small Snowball 4;MM Snowhead Small Snowball Spring 4;snowball;619;306;SNOWHEAD;Spring;0
-0x04013;SNOWHEAD;Spring - Small Snowball 5;MM Snowhead Small Snowball Spring 5;snowball;608;228;SNOWHEAD;Spring;0
-0x04012;SNOWHEAD;Out of Bounds;MM Snowhead Small Snowball Spring Out of Bounds;snowball;636;225;SNOWHEAD;Spring;0
+0x0400e;SNOWHEAD;Spring - Small Snowball 1;MM Snowhead Small Snowball Spring 1;snowball;619;306;SNOWHEAD;Spring;0
+0x0400f;SNOWHEAD;Spring - Small Snowball 2;MM Snowhead Small Snowball Spring 2;snowball;608;228;SNOWHEAD;Spring;0
+0x04010;SNOWHEAD;Spring - Small Snowball 3;MM Snowhead Small Snowball Spring 3;snowball;700;363;SNOWHEAD;Spring;0
+0x04011;SNOWHEAD;Spring - Small Snowball 4;MM Snowhead Small Snowball Spring 4;snowball;636;225;SNOWHEAD;Spring;0
+0x04013;SNOWHEAD;Spring - Small Snowball 5;MM Snowhead Small Snowball Spring 5;snowball;759;348;SNOWHEAD;Spring;0
+0x04012;SNOWHEAD;Out of Bounds;MM Snowhead Small Snowball Spring Out of Bounds;none;715;339;SNOWHEAD;Spring;0
 GREAT_FAIRY_MOUNTAIN;SNOWHEAD;Large Magic Upgrade;MM Snowhead Great Fairy;none;0;0;MM_FAIRY_SNOWHEAD;All;0
 0x0000b;SOUTHERN_SWAMP;Front 1;MM Southern Swamp Grass Front 01;grass;469;732;SOUTHERN_SWAMP;All;0
 0x1000b;SOUTHERN_SWAMP;Front 2;MM Southern Swamp Grass Front 02;grass;492;718;SOUTHERN_SWAMP;All;0
@@ -2580,13 +2580,13 @@ SWORDSMAN_HEART_PIECE;SWORDSMAN_SCHOOL;Heart Piece;MM Swordsman School HP;npc;49
 0x1d;TEMPLE_STONE_TOWER;Map;MM Stone Tower Temple Map;chest;484;564;TEMPLE_STONE_TOWER;All;4
 0x0f;TEMPLE_STONE_TOWER;Mirrors Room - Center;MM Stone Tower Temple Mirrors Room Center Chest;chest;441;390;TEMPLE_STONE_TOWER;All;5
 0x0b;TEMPLE_STONE_TOWER;Mirrors Room - Right;MM Stone Tower Temple Mirrors Room Right Chest;chest;486;103;TEMPLE_STONE_TOWER;All;5
-0x080e;TEMPLE_STONE_TOWER;Hipoloop Bridge 1;MM Stone Tower Temple Pot Before Water Bridge 1;pot;244;525;TEMPLE_STONE_TOWER;All;6
-0x080f;TEMPLE_STONE_TOWER;Hipoloop Bridge 2;MM Stone Tower Temple Pot Before Water Bridge 2;pot;227;525;TEMPLE_STONE_TOWER;All;6
-0x0810;TEMPLE_STONE_TOWER;Hipoloop Bridge 3;MM Stone Tower Temple Pot Before Water Bridge 3;pot;209;524;TEMPLE_STONE_TOWER;All;6
-0x0811;TEMPLE_STONE_TOWER;Hipoloop Bridge 4;MM Stone Tower Temple Pot Before Water Bridge 4;pot;192;524;TEMPLE_STONE_TOWER;All;6
-0x0812;TEMPLE_STONE_TOWER;Hipoloop Bridge 5;MM Stone Tower Temple Pot Before Water Bridge 5;pot;253;497;TEMPLE_STONE_TOWER;All;6
-0x0813;TEMPLE_STONE_TOWER;Hipoloop Bridge 6;MM Stone Tower Temple Pot Before Water Bridge 6;pot;236;497;TEMPLE_STONE_TOWER;All;6
-0x0814;TEMPLE_STONE_TOWER;Hipoloop Bridge 7;MM Stone Tower Temple Pot Before Water Bridge 7;pot;219;496;TEMPLE_STONE_TOWER;All;6
+0x080e;TEMPLE_STONE_TOWER;Hipoloop Bridge 1;MM Stone Tower Temple Pot Before Water Bridge 1;pot;253;497;TEMPLE_STONE_TOWER;All;6
+0x080f;TEMPLE_STONE_TOWER;Hipoloop Bridge 2;MM Stone Tower Temple Pot Before Water Bridge 2;pot;236;497;TEMPLE_STONE_TOWER;All;6
+0x0810;TEMPLE_STONE_TOWER;Hipoloop Bridge 3;MM Stone Tower Temple Pot Before Water Bridge 3;pot;244;525;TEMPLE_STONE_TOWER;All;6
+0x0811;TEMPLE_STONE_TOWER;Hipoloop Bridge 4;MM Stone Tower Temple Pot Before Water Bridge 4;pot;227;525;TEMPLE_STONE_TOWER;All;6
+0x0812;TEMPLE_STONE_TOWER;Hipoloop Bridge 5;MM Stone Tower Temple Pot Before Water Bridge 5;pot;219;496;TEMPLE_STONE_TOWER;All;6
+0x0813;TEMPLE_STONE_TOWER;Hipoloop Bridge 6;MM Stone Tower Temple Pot Before Water Bridge 6;pot;209;524;TEMPLE_STONE_TOWER;All;6
+0x0814;TEMPLE_STONE_TOWER;Hipoloop Bridge 7;MM Stone Tower Temple Pot Before Water Bridge 7;pot;192;524;TEMPLE_STONE_TOWER;All;6
 0x0815;TEMPLE_STONE_TOWER;Hipoloop Bridge 8;MM Stone Tower Temple Pot Before Water Bridge 8;pot;203;496;TEMPLE_STONE_TOWER;All;6
 0x0007;TEMPLE_STONE_TOWER;Entrance 1;MM Stone Tower Temple Pot Entrance 1;pot;487;286;TEMPLE_STONE_TOWER;All;0
 0x0008;TEMPLE_STONE_TOWER;Entrance 2;MM Stone Tower Temple Pot Entrance 2;pot;457;286;TEMPLE_STONE_TOWER;All;0
@@ -2611,14 +2611,14 @@ SWORDSMAN_HEART_PIECE;SWORDSMAN_SCHOOL;Heart Piece;MM Swordsman School HP;npc;49
 0x090c;TEMPLE_STONE_TOWER;Wind Room 2;MM Stone Tower Temple Pot Wind Room 2;pot;181;160;TEMPLE_STONE_TOWER;All;7
 0x090d;TEMPLE_STONE_TOWER;Wind Room 3;MM Stone Tower Temple Pot Wind Room 3;pot;221;147;TEMPLE_STONE_TOWER;All;7
 0x090e;TEMPLE_STONE_TOWER;Wind Room 4;MM Stone Tower Temple Pot Wind Room 4;pot;182;147;TEMPLE_STONE_TOWER;All;7
-0x00800;TEMPLE_STONE_TOWER;Hiploop Bridge 1;MM Stone Tower Temple Rupee Before Water Bridge 1;rupee;438;356;TEMPLE_STONE_TOWER;All;6
-0x00801;TEMPLE_STONE_TOWER;Hiploop Bridge 2;MM Stone Tower Temple Rupee Before Water Bridge 2;rupee;405;356;TEMPLE_STONE_TOWER;All;6
+0x00800;TEMPLE_STONE_TOWER;Hiploop Bridge 1;MM Stone Tower Temple Rupee Before Water Bridge 1;rupee;239;354;TEMPLE_STONE_TOWER;All;6
+0x00801;TEMPLE_STONE_TOWER;Hiploop Bridge 2;MM Stone Tower Temple Rupee Before Water Bridge 2;rupee;260;301;TEMPLE_STONE_TOWER;All;6
 0x00802;TEMPLE_STONE_TOWER;Hiploop Bridge 3;MM Stone Tower Temple Rupee Before Water Bridge 3;rupee;272;354;TEMPLE_STONE_TOWER;All;6
-0x00803;TEMPLE_STONE_TOWER;Hiploop Bridge 4;MM Stone Tower Temple Rupee Before Water Bridge 4;rupee;239;354;TEMPLE_STONE_TOWER;All;6
-0x00804;TEMPLE_STONE_TOWER;Hiploop Bridge 5;MM Stone Tower Temple Rupee Before Water Bridge 5;rupee;443;303;TEMPLE_STONE_TOWER;All;6
+0x00803;TEMPLE_STONE_TOWER;Hiploop Bridge 4;MM Stone Tower Temple Rupee Before Water Bridge 4;rupee;290;301;TEMPLE_STONE_TOWER;All;6
+0x00804;TEMPLE_STONE_TOWER;Hiploop Bridge 5;MM Stone Tower Temple Rupee Before Water Bridge 5;rupee;405;356;TEMPLE_STONE_TOWER;All;6
 0x00805;TEMPLE_STONE_TOWER;Hiploop Bridge 6;MM Stone Tower Temple Rupee Before Water Bridge 6;rupee;412;303;TEMPLE_STONE_TOWER;All;6
-0x00806;TEMPLE_STONE_TOWER;Hiploop Bridge 7;MM Stone Tower Temple Rupee Before Water Bridge 7;rupee;290;301;TEMPLE_STONE_TOWER;All;6
-0x00807;TEMPLE_STONE_TOWER;Hiploop Bridge 8;MM Stone Tower Temple Rupee Before Water Bridge 8;rupee;260;301;TEMPLE_STONE_TOWER;All;6
+0x00806;TEMPLE_STONE_TOWER;Hiploop Bridge 7;MM Stone Tower Temple Rupee Before Water Bridge 7;rupee;438;356;TEMPLE_STONE_TOWER;All;6
+0x00807;TEMPLE_STONE_TOWER;Hiploop Bridge 8;MM Stone Tower Temple Rupee Before Water Bridge 8;rupee;443;303;TEMPLE_STONE_TOWER;All;6
 0x00101;TEMPLE_STONE_TOWER;Center Room - Left;MM Stone Tower Temple Rupee Center Room Left;rupee;653;539;TEMPLE_STONE_TOWER;All;1
 0x00100;TEMPLE_STONE_TOWER;Center Room - Right;MM Stone Tower Temple Rupee Center Room Right;rupee;233;539;TEMPLE_STONE_TOWER;All;1
 0x00900;TEMPLE_STONE_TOWER;Wind Room 1;MM Stone Tower Temple Rupee Wind Room 1;rupee;481;304;TEMPLE_STONE_TOWER;All;7
@@ -2712,10 +2712,10 @@ REMAINS_TWINMOLD;TEMPLE_STONE_TOWER;Twinmold's Remains;MM Stone Tower Temple Inv
 0x0000c;TEMPLE_STONE_TOWER_INVERTED;Entrance - Right 2;MM Stone Tower Temple Inverted Crate Entrance Right 2;crate;662;98;TEMPLE_STONE_TOWER_INVERTED;All;0
 0x010d;TEMPLE_STONE_TOWER_INVERTED;Center - Flying Pot 1;MM Stone Tower Temple Inverted Flying Pot Center 1;pot;505;359;TEMPLE_STONE_TOWER_INVERTED;All;1
 0x010e;TEMPLE_STONE_TOWER_INVERTED;Center - Flying Pot 2;MM Stone Tower Temple Inverted Flying Pot Center 2;pot;454;359;TEMPLE_STONE_TOWER_INVERTED;All;1
-0x081a;TEMPLE_STONE_TOWER_INVERTED;Pre-Boss - Flying Pot 1;MM Stone Tower Temple Inverted Flying Pot Pre-Boss 1;pot;292;547;TEMPLE_STONE_TOWER_INVERTED;All;5
-0x081b;TEMPLE_STONE_TOWER_INVERTED;Pre-Boss - Flying Pot 2;MM Stone Tower Temple Inverted Flying Pot Pre-Boss 2;pot;283;574;TEMPLE_STONE_TOWER_INVERTED;All;5
-0x081c;TEMPLE_STONE_TOWER_INVERTED;Pre-Boss - Flying Pot 3;MM Stone Tower Temple Inverted Flying Pot Pre-Boss 3;pot;274;547;TEMPLE_STONE_TOWER_INVERTED;All;5
-0x081d;TEMPLE_STONE_TOWER_INVERTED;Pre-Boss - Flying Pot 4;MM Stone Tower Temple Inverted Flying Pot Pre-Boss 4;pot;264;574;TEMPLE_STONE_TOWER_INVERTED;All;5
+0x081a;TEMPLE_STONE_TOWER_INVERTED;Pre-Boss - Flying Pot 1;MM Stone Tower Temple Inverted Flying Pot Pre-Boss 1;pot;264;574;TEMPLE_STONE_TOWER_INVERTED;All;5
+0x081b;TEMPLE_STONE_TOWER_INVERTED;Pre-Boss - Flying Pot 2;MM Stone Tower Temple Inverted Flying Pot Pre-Boss 2;pot;274;547;TEMPLE_STONE_TOWER_INVERTED;All;5
+0x081c;TEMPLE_STONE_TOWER_INVERTED;Pre-Boss - Flying Pot 3;MM Stone Tower Temple Inverted Flying Pot Pre-Boss 3;pot;283;574;TEMPLE_STONE_TOWER_INVERTED;All;5
+0x081d;TEMPLE_STONE_TOWER_INVERTED;Pre-Boss - Flying Pot 4;MM Stone Tower Temple Inverted Flying Pot Pre-Boss 4;pot;292;547;TEMPLE_STONE_TOWER_INVERTED;All;5
 0x0b01;TEMPLE_STONE_TOWER_INVERTED;Gomess 1;MM Stone Tower Temple Inverted Pot Gomess 1;pot;625;446;TEMPLE_STONE_TOWER_INVERTED;All;6
 0x0b02;TEMPLE_STONE_TOWER_INVERTED;Gomess 2;MM Stone Tower Temple Inverted Pot Gomess 2;pot;345;446;TEMPLE_STONE_TOWER_INVERTED;All;6
 0x0b03;TEMPLE_STONE_TOWER_INVERTED;Gomess 3;MM Stone Tower Temple Inverted Pot Gomess 3;pot;350;172;TEMPLE_STONE_TOWER_INVERTED;All;6
@@ -2815,8 +2815,8 @@ REMAINS_TWINMOLD;TEMPLE_STONE_TOWER;Twinmold's Remains;MM Stone Tower Temple Inv
 0x030e;TEMPLE_WOODFALL;Maze 2;MM Woodfall Temple Pot Maze 2;pot;466;288;TEMPLE_WOODFALL;All;3
 0x0806;TEMPLE_WOODFALL;Miniboss Room 1;MM Woodfall Temple Pot Miniboss Room 1;pot;509;496;TEMPLE_WOODFALL;All;8
 0x0807;TEMPLE_WOODFALL;Miniboss Room 2;MM Woodfall Temple Pot Miniboss Room 2;pot;489;496;TEMPLE_WOODFALL;All;8
-0x0808;TEMPLE_WOODFALL;Miniboss Room 3;MM Woodfall Temple Pot Miniboss Room 3;pot;406;496;TEMPLE_WOODFALL;All;8
-0x0809;TEMPLE_WOODFALL;Miniboss Room 4;MM Woodfall Temple Pot Miniboss Room 4;pot;386;495;TEMPLE_WOODFALL;All;8
+0x0808;TEMPLE_WOODFALL;Miniboss Room 3;MM Woodfall Temple Pot Miniboss Room 3;pot;386;495;TEMPLE_WOODFALL;All;8
+0x0809;TEMPLE_WOODFALL;Miniboss Room 4;MM Woodfall Temple Pot Miniboss Room 4;pot;406;496;TEMPLE_WOODFALL;All;8
 0x001c;TEMPLE_WOODFALL;Pre-Boss 1;MM Woodfall Temple Pot Pre-Boss 1;pot;537;610;TEMPLE_WOODFALL;All;1
 0x001d;TEMPLE_WOODFALL;Pre-Boss 2;MM Woodfall Temple Pot Pre-Boss 2;pot;406;610;TEMPLE_WOODFALL;All;1
 0x050e;TEMPLE_WOODFALL;Water Room 1;MM Woodfall Temple Pot Water Room 1;pot;530;545;TEMPLE_WOODFALL;All;5
@@ -3233,14 +3233,14 @@ SCRUB_TELESCOPE;TERMINA_FIELD;Scrub;MM Termina Field Scrub;none;0;0;MM_GROTTO_TE
 KOUME_HEART_PIECE;TOURIST_INFORMATION;Archery;MM Tourist Information Boat Archery;npc;617;205;TOURIST_INFORMATION;All;0
 KOUME_PICTOGRAPH_BOX;TOURIST_INFORMATION;Pictobox;MM Tourist Information Pictobox;npc;299;334;TOURIST_INFORMATION;All;0
 TOUR_GUIDE_HEART_PIECE;TOURIST_INFORMATION;Deku's King Picture;MM Tourist Information Tingle Picture;npc;376;335;TOURIST_INFORMATION;All;0
-0x05;TRADING_POST;Item 1;MM Trading Post Item 1;shop;580;294;TRADING_POST;All;0
-0x06;TRADING_POST;Item 2;MM Trading Post Item 2;shop;580;261;TRADING_POST;All;0
-0x07;TRADING_POST;Item 3;MM Trading Post Item 3;shop;542;294;TRADING_POST;All;0
-0x08;TRADING_POST;Item 4;MM Trading Post Item 4;shop;542;261;TRADING_POST;All;0
-0x09;TRADING_POST;Item 5;MM Trading Post Item 5;shop;422;294;TRADING_POST;All;0
-0x0a;TRADING_POST;Item 6;MM Trading Post Item 6;shop;422;261;TRADING_POST;All;0
-0x0b;TRADING_POST;Item 7;MM Trading Post Item 7;shop;384;294;TRADING_POST;All;0
-0x0c;TRADING_POST;Item 8;MM Trading Post Item 8;shop;384;261;TRADING_POST;All;0
+0x05;TRADING_POST;Item 1;MM Trading Post Item 1;shop;384;261;TRADING_POST;All;0
+0x06;TRADING_POST;Item 2;MM Trading Post Item 2;shop;422;261;TRADING_POST;All;0
+0x07;TRADING_POST;Item 3;MM Trading Post Item 3;shop;384;294;TRADING_POST;All;0
+0x08;TRADING_POST;Item 4;MM Trading Post Item 4;shop;422;294;TRADING_POST;All;0
+0x09;TRADING_POST;Item 5;MM Trading Post Item 5;shop;542;261;TRADING_POST;All;0
+0x0a;TRADING_POST;Item 6;MM Trading Post Item 6;shop;580;261;TRADING_POST;All;0
+0x0b;TRADING_POST;Item 7;MM Trading Post Item 7;shop;542;294;TRADING_POST;All;0
+0x0c;TRADING_POST;Item 8;MM Trading Post Item 8;shop;580;294;TRADING_POST;All;0
 0x0008;TRADING_POST;Pot;MM Trading Post Pot;pot;756;427;TRADING_POST;All;0
 CHEST_GAME;TREASURE_SHOP;Heart Piece;MM Chest Game HP;npc;259;447;TREASURE_SHOP;All;0
 GORON_ELDER;TWIN_ISLANDS;Goron's Lulluby - Intro;MM Goron Elder;none;0;0;TWIN_ISLANDS_WINTER;Winter;0
@@ -3328,22 +3328,22 @@ GORON_RACE;TWIN_ISLANDS;Reward;MM Goron Race Reward;none;0;0;GORON_RACETRACK;All
 0x03912;TWIN_ISLANDS;Grass 13;MM Twin Islands Ramp Grotto Grass 13;none;0;0;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
 0x03913;TWIN_ISLANDS;Grass 14;MM Twin Islands Ramp Grotto Grass 14;none;0;0;MM_GROTTO_TWIN_ISLANDS_RAMP;All;0
 0x02;TWIN_ISLANDS;Chest;MM Twin Islands Frozen Grotto Chest;none;0;0;MM_GROTTO_TWIN_ISLANDS_FROZEN;All;0
-0x0000b;TWIN_ISLANDS_SPRING;Grass 1;MM Twin Islands Grass 01;grass;173;497;TWIN_ISLANDS;Spring;0
-0x1000b;TWIN_ISLANDS_SPRING;Grass 2;MM Twin Islands Grass 02;grass;156;494;TWIN_ISLANDS;Spring;0
-0x2000b;TWIN_ISLANDS_SPRING;Grass 3;MM Twin Islands Grass 03;grass;188;487;TWIN_ISLANDS;Spring;0
-0x3000b;TWIN_ISLANDS_SPRING;Grass 4;MM Twin Islands Grass 04;grass;143;485;TWIN_ISLANDS;Spring;0
-0x4000b;TWIN_ISLANDS_SPRING;Grass 5;MM Twin Islands Grass 05;grass;193;470;TWIN_ISLANDS;Spring;0
-0x5000b;TWIN_ISLANDS_SPRING;Grass 6;MM Twin Islands Grass 06;grass;134;470;TWIN_ISLANDS;Spring;0
-0x6000b;TWIN_ISLANDS_SPRING;Grass 7;MM Twin Islands Grass 07;grass;164;466;TWIN_ISLANDS;Spring;0
-0x7000b;TWIN_ISLANDS_SPRING;Grass 8;MM Twin Islands Grass 08;grass;137;453;TWIN_ISLANDS;Spring;0
-0x8000b;TWIN_ISLANDS_SPRING;Grass 9;MM Twin Islands Grass 09;grass;192;453;TWIN_ISLANDS;Spring;0
-0x9000b;TWIN_ISLANDS_SPRING;Grass 10;MM Twin Islands Grass 10;grass;181;439;TWIN_ISLANDS;Spring;0
-0xa000b;TWIN_ISLANDS_SPRING;Grass 11;MM Twin Islands Grass 11;grass;147;438;TWIN_ISLANDS;Spring;0
-0xb000b;TWIN_ISLANDS_SPRING;Grass 12;MM Twin Islands Grass 12;grass;165;436;TWIN_ISLANDS;Spring;0
-0x0000e;TWIN_ISLANDS_SPRING;Rupee 1;MM Twin Islands Rupee 1;rupee;596;517;TWIN_ISLANDS;Spring;0
-0x0000f;TWIN_ISLANDS_SPRING;Rupee 2;MM Twin Islands Rupee 2;rupee;780;349;TWIN_ISLANDS;Spring;0
-0x00010;TWIN_ISLANDS_SPRING;Rupee 3;MM Twin Islands Rupee 3;rupee;684;211;TWIN_ISLANDS;Spring;0
-0x00012;TWIN_ISLANDS_SPRING;Rupee 4;MM Twin Islands Rupee 4;rupee;495;185;TWIN_ISLANDS;Spring;0
+0x0000b;TWIN_ISLANDS_SPRING;Grass 1;MM Twin Islands Grass 01;grass;193;470;TWIN_ISLANDS;Spring;0
+0x1000b;TWIN_ISLANDS_SPRING;Grass 2;MM Twin Islands Grass 02;grass;173;497;TWIN_ISLANDS;Spring;0
+0x2000b;TWIN_ISLANDS_SPRING;Grass 3;MM Twin Islands Grass 03;grass;143;485;TWIN_ISLANDS;Spring;0
+0x3000b;TWIN_ISLANDS_SPRING;Grass 4;MM Twin Islands Grass 04;grass;137;453;TWIN_ISLANDS;Spring;0
+0x4000b;TWIN_ISLANDS_SPRING;Grass 5;MM Twin Islands Grass 05;grass;164;466;TWIN_ISLANDS;Spring;0
+0x5000b;TWIN_ISLANDS_SPRING;Grass 6;MM Twin Islands Grass 06;grass;188;487;TWIN_ISLANDS;Spring;0
+0x6000b;TWIN_ISLANDS_SPRING;Grass 7;MM Twin Islands Grass 07;grass;156;494;TWIN_ISLANDS;Spring;0
+0x7000b;TWIN_ISLANDS_SPRING;Grass 8;MM Twin Islands Grass 08;grass;134;470;TWIN_ISLANDS;Spring;0
+0x8000b;TWIN_ISLANDS_SPRING;Grass 9;MM Twin Islands Grass 09;grass;147;438;TWIN_ISLANDS;Spring;0
+0x9000b;TWIN_ISLANDS_SPRING;Grass 10;MM Twin Islands Grass 10;grass;165;436;TWIN_ISLANDS;Spring;0
+0xa000b;TWIN_ISLANDS_SPRING;Grass 11;MM Twin Islands Grass 11;grass;181;439;TWIN_ISLANDS;Spring;0
+0xb000b;TWIN_ISLANDS_SPRING;Grass 12;MM Twin Islands Grass 12;grass;192;453;TWIN_ISLANDS;Spring;0
+0x0000e;TWIN_ISLANDS_SPRING;Rupee 1;MM Twin Islands Rupee 1;rupee;684;211;TWIN_ISLANDS;Spring;0
+0x0000f;TWIN_ISLANDS_SPRING;Rupee 2;MM Twin Islands Rupee 2;rupee;495;185;TWIN_ISLANDS;Spring;0
+0x00010;TWIN_ISLANDS_SPRING;Rupee 3;MM Twin Islands Rupee 3;rupee;596;517;TWIN_ISLANDS;Spring;0
+0x00012;TWIN_ISLANDS_SPRING;Rupee 4;MM Twin Islands Rupee 4;rupee;780;349;TWIN_ISLANDS;Spring;0
 GORON_ELDER;TWIN_ISLANDS_WINTER;Goron's Lulluby - Intro;MM Goron Elder;npc;738;268;TWIN_ISLANDS;Winter;0
 0x0003b;TWIN_ISLANDS_WINTER;Big Snowball 1;MM Twin Islands Big Snowball 01;snowball;412;438;TWIN_ISLANDS;Winter;0
 0x0003a;TWIN_ISLANDS_WINTER;Big Snowball 2;MM Twin Islands Big Snowball 02;snowball;322;376;TWIN_ISLANDS;Winter;0
