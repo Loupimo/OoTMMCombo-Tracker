@@ -28,7 +28,7 @@ def parse_file(input_file, output_file, arrayname, prefix):
             if row["renderscene"] in commonScenes:
                 renderscene = prefix + renderscene
             
-            objectstr = objectstr + "\t{ " + idstr + ", " + scenestr + ", \"" + str(row["location"]) + "\", ObjectType::" + str(row["type"]) + ", {" + str(row["x"]) + ", " + str(row["y"]) + "}, " + renderscene + " }"
+            objectstr = objectstr + "\t{ " + idstr + ", " + scenestr + ", \"" + str(row["location"]) + "\", ObjectType::" + str(row["type"]) + ", {" + str(row["x"]) + ", " + str(row["y"]) + "}, " + renderscene + ", ObjectType::" + str(row["rendertype"]) + " }"
             outfile.write(objectstr)
         outfile.write("\n};")
 
@@ -59,7 +59,7 @@ def parse_file2(input_file, output_file, arrayname, prefix):
             if fin.__contains__(scenestr) == False:
                 fin[scenestr] = []
 
-            objectstr = "\t{ " + idstr + ", " + scenestr + ", \"" + str(row["friendly_name"]) + "\", \"" + str(row["location"]) + "\", ObjectType::" + str(row["type"]) + ", {" + str(int(row["x"])) + ", " + str(int(row["y"])) + "}, " + renderscene + ", ObjectContext::" + str(row["context"]) + ", " + str(row["room"]) + " }"
+            objectstr = "\t{ " + idstr + ", " + scenestr + ", \"" + str(row["friendly_name"]) + "\", \"" + str(row["location"]) + "\", ObjectType::" + str(row["type"]) + ", {" + str(int(row["x"])) + ", " + str(int(row["y"])) + "}, " + renderscene + ", ObjectType::" + str(row["rendertype"]) + ", ObjectContext::" + str(row["context"]) + ", " + str(row["room"]) + " }"
             fin[scenestr].append(objectstr)
             
             if renderscene != scenestr:
@@ -164,27 +164,27 @@ def match_items(spoiler_log, input_file, output_file):
             outfile.flush()
 
 # Exemple d'utilisation
-input_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Objects\pool_mm.csv'
-output_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Objects\pool_mm.txt'
+input_file = 'D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\Objects\\pool_mm.csv'
+output_file = 'D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\Objects\\pool_mm.txt'
 parse_file2(input_file, output_file, "MMObjects", "MM_")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
 #
-input_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Objects\pool_oot.csv'
-output_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Objects\pool_oot.txt'
+input_file = 'D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\Objects\\pool_oot.csv'
+output_file = 'D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\Objects\\pool_oot.txt'
 parse_file2(input_file, output_file, "OoTObjects", "OOT_")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
 
 
-input_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Scenes\scenes_oot.csv'
-output_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Scenes\scenes_oot.txt'
+input_file = 'D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\Scenes\\scenes_oot.csv'
+output_file = 'D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\Scenes\\scenes_oot.txt'
 #parse_scene(input_file, output_file, "OOT")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
 
-input_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Scenes\scenes_mm.csv'
-output_file = 'D:\Emulation\OoTMMCombo-Tracker\Resources\Scenes\scenes_mm.txt'
+input_file = 'D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\Scenes\\scenes_mm.csv'
+output_file = 'D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\Scenes\\scenes_mm.txt'
 #parse_scene(input_file, output_file, "MM")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")

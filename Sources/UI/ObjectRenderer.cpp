@@ -6,7 +6,7 @@ static ObjectIcons* IconsRef = nullptr;
 
 ObjectIcons::ObjectIcons()
 {
-    for (size_t i = 0; i < 23; i++)
+    for (size_t i = 0; i < ObjectType::last; i++)
     {
         this->PixmapIcons[i] = QPixmap(IconsMetaInfo[i].IconPath);
         //this->PixmapIcons[i] = this->PixmapIcons[i].scaled(IconsMetaInfo[i].Scale[0], IconsMetaInfo[i].Scale[1], Qt::KeepAspectRatio);
@@ -18,7 +18,7 @@ ObjectIcons::ObjectIcons()
 
 ObjectIcons::~ObjectIcons()
 {
-    for (size_t i = 0; i < 23; i++)
+    for (size_t i = 0; i < ObjectType::last; i++)
     {
         this->Icons[i].~QIcon();
         this->PixmapIcons[i].~QPixmap();
@@ -170,7 +170,7 @@ void ObjectItemTree::PerformAction()
         this->setExpanded(true);
         this->RendererOwner->SceneOwner->UpdateRoom(this->Object->RoomID);  // We need to update the room ID in case the selected object is in another room than the active one
         this->RendererOwner->UpdateSceneContext(this->Object->Context);     // We need to update the context in case the selected object is in a different context than the active one
-        this->RendererOwner->RefreshObjectCounts(1);                        // Increase the number of discovered object by one
+        this->RendererOwner->RefreshObjectCounts(this, 1);                  // Increase the number of discovered object by one
         this->RendererOwner->CenterViewOn(this->GraphItem);                 // Center the scene view on the object
         this->GraphItem->UpdateObjectRendering(this->Object->Status, true); // Apply opacity and effect to the selected object
     }
@@ -184,7 +184,7 @@ void ObjectItemTree::PerformAction()
         }
         this->Object->Status = ObjectState::Hidden;
         this->setExpanded(false);
-        this->RendererOwner->RefreshObjectCounts(-1);                       // Decrease the number of discovered object by one
+        this->RendererOwner->RefreshObjectCounts(this, -1);                 // Decrease the number of discovered object by one
         
         if (this->GraphItem)
         {   // It can be null when the object has been forced and is only present in a context / room that is different from the current active one
@@ -482,10 +482,10 @@ void ObjectRenderer::UpdateText()
     this->ObjCat->setText(0, finalName);
 }
 
-void ObjectRenderer::RefreshObjectCounts(int Count)
+void ObjectRenderer::RefreshObjectCounts(ObjectItemTree * Caller, int Count)
 {
     this->UpdateText();
-    this->SceneOwner->UpdateObjectCounts(Count);
+    this->SceneOwner->UpdateObjectCounts(Caller, Count);
 }
 
 

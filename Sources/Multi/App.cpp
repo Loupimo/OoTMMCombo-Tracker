@@ -135,8 +135,7 @@ int App::appStartAres(const char* host, uint16_t port)
     ret = getaddrinfo(host, buf, &hints, &result);
     if (ret != 0)
     {
-        strerror_s(buf, WSAGetLastError());
-        fprintf_s(stderr, "Unable to resolve %s:%d: %s\n", host, port, buf);
+        fprintf(stderr, "Unable to resolve %s:%d: %s\n", host, port, GetErrorMsg(WSAGetLastError()));
         closesocket(sock);
         return 1;
     }
@@ -155,7 +154,7 @@ int App::appStartAres(const char* host, uint16_t port)
     for (ptr = result; ptr != NULL; ptr = ptr->ai_next)
     {
         ret = connect(sock, ptr->ai_addr, (int)ptr->ai_addrlen);
-        // printf("[ares] connect: %d %d %s %p\n", ret, WSAGetLastError(), strerror(WSAGetLastError()), ptr);
+        // printf("[ares] connect: %d %d %s %p\n", ret, WSAGetLastError(), GetErrorMsg(WSAGetLastError()), ptr);
         if (ret == 0 || (ret == SOCKET_ERROR && (WSAGetLastError() == WSAEINPROGRESS || WSAGetLastError() == WSAEWOULDBLOCK))) {
             // printf("[ares] connection in progress...\n");
             break;

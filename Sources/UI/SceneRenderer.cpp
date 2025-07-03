@@ -37,7 +37,6 @@ SceneItemTree::SceneItemTree(SceneInfo* SceneToRender, QTreeWidgetItem* Parent) 
 
             // Add a new room item to the map tree
             RoomItemTree* roomItem = new RoomItemTree(&currRoom, this);
-            roomItem->setText(0, roomItem->Info.RoomName);
             this->addChild(roomItem);
             this->Rooms.push_back(roomItem);
         }
@@ -263,7 +262,7 @@ SceneRenderer::SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeW
     this->ObjectsTree = ObjectsTreeWidget;
     this->ItemOwner = Owner;
 
-    for (size_t i = 0; i < ObjectType::fairy; i++)
+    for (size_t i = 0; i < ObjectType::last - 1; i++)
     {   // Creates all objects renderer
 
         this->ObjectsRen[i] = nullptr;
@@ -285,8 +284,8 @@ SceneRenderer::SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeW
         if (dest == nullptr)
         {   // The object renderer for this type of object doesn't exist yet
 
-            this->ObjectsRen[currObject->Type - 1] = new ObjectRenderer(currObject->Type, this);
-            dest = this->ObjectsRen[currObject->Type - 1];
+            this->ObjectsRen[currObject->RenderType - 1] = new ObjectRenderer(currObject->RenderType, this);
+            dest = this->ObjectsRen[currObject->RenderType - 1];
             this->ObjectsTree->addTopLevelItem(dest->ObjCat);
         }
 
@@ -309,7 +308,7 @@ SceneRenderer::~SceneRenderer()
         this->SceneImage = nullptr;
     }
 
-    for (size_t i = 0; i < ObjectType::fairy; i++)
+    for (size_t i = 0; i < ObjectType::last - 1; i++)
     {   // Destroys all objects renderer
 
         if (this->ObjectsRen[i])
@@ -353,10 +352,11 @@ void SceneRenderer::UnloadScene()
 {
 
     ObjectInfo tmp;
-    for (size_t i = 1; i <= ObjectType::fairy; i++)
+    for (size_t i = 1; i < ObjectType::last; i++)
     {   // Browse all type of objects
 
         tmp.Type = (ObjectType)i;
+        tmp.RenderType = (ObjectType)i;
         ObjectRenderer* objRdr = FindObjectRendererCategory(&tmp);
 
         if (objRdr && objRdr->GetTotalObject() > 0)
@@ -389,10 +389,17 @@ void SceneRenderer::CenterViewOn(ObjectPixmapItem* Target)
 
 #pragma region Objects related
 
-void SceneRenderer::UpdateObjectCounts(int Count)
+void SceneRenderer::UpdateObjectCounts(ObjectItemTree * Caller, int Count)
 {
     this->ItemOwner->FoundObjects += Count;
-    this->ItemOwner->UpdateObjectCounts(Count);
+    if (this->ItemOwner->ActiveRoom)
+    {
+        this->ItemOwner->Rooms[Caller->Object->RoomID]->UpdateObjectCounts(Count);
+    }
+    else
+    {
+        this->ItemOwner->UpdateObjectCounts(Count);
+    }
 }
 
 
@@ -423,11 +430,11 @@ void SceneRenderer::ItemFound(ObjectInfo* Object, const ItemInfo* ItemFound)
 
 ObjectRenderer* SceneRenderer::FindObjectRendererCategory(ObjectInfo* Object)
 {
-    if (Object->Type == ObjectType::none)
+    if (Object->RenderType == ObjectType::none)
     {
         return nullptr;
     }
-    return this->ObjectsRen[Object->Type - 1];
+    return this->ObjectsRen[Object->RenderType - 1];
 }
 
 #pragma endregion
@@ -475,9 +482,10 @@ void SceneRenderer::RefreshSceneContext(bool Context)
     }
 
     ObjectInfo tmp;
-    for (size_t i = 1; i <= ObjectType::fairy; i++)
+    for (size_t i = 1; i < ObjectType::last; i++)
     {
         tmp.Type = (ObjectType)i;
+        tmp.RenderType = (ObjectType)i;
         ObjectRenderer* objRdr = FindObjectRendererCategory(&tmp);
 
         if (objRdr && objRdr->GetTotalObject() > 0)

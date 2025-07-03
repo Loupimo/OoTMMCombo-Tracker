@@ -146,7 +146,7 @@ public:
     *
     *   @return The scene name.
     */
-    const char* GetSceneName();
+    virtual const char* GetSceneName();
 
     /*
     *   Updates the current active room with the one matching the given ID.
@@ -231,7 +231,7 @@ public:
 
     QPixmap* SceneImage = nullptr;                                          // The scene image to render
 
-    ObjectRenderer* ObjectsRen[ObjectType::fairy] = { nullptr };
+    ObjectRenderer* ObjectsRen[ObjectType::redice] = { nullptr };
 
 #pragma endregion
 
@@ -283,7 +283,7 @@ public:
     *
     *   @param Count  The number of found object to add or remove.
     */
-    void UpdateObjectCounts(int Count);
+    void UpdateObjectCounts(ObjectItemTree* Caller, int Count);
 
     /*
     *   Update the matching scene object.

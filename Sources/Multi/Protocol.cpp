@@ -186,6 +186,7 @@ static int aresCommandWrite(Game* game, uint32_t addr, int size, uint8_t *value)
 static uint32_t aresReadInt(Game* game, uint32_t addr, int size)
 {
     uint8_t buf[4];
+    uint32_t value;
     if (!aresCommandRead(game, addr, size, buf))
     {
         game->apiError = 1;
@@ -193,11 +194,11 @@ static uint32_t aresReadInt(Game* game, uint32_t addr, int size)
         game->socketApi = INVALID_SOCKET;
         return 0;
     }
-    uint32_t value;
     switch (size) {
     case 4: value = (buf[0] << 24) | (buf[1] << 16) | (buf[2] << 8) | buf[3]; break;
     case 2: value = (buf[0] << 8) | buf[1]; break;
     case 1: value = buf[0]; break;
+    default: value = 0; break;
     }
     return value;
 }

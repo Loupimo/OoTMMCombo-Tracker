@@ -19,6 +19,16 @@ RoomItemTree::RoomItemTree(RoomInfo* RInfo, SceneItemTree* ParentSceneItem)
 	this->Info.RoomID = RInfo->RoomID;
 	this->Info.RoomName = RInfo->RoomName;
 	this->SceneItem = ParentSceneItem;
+	this->FoundObjects = 0;
+	this->TotalObjects = 0;
+	for (size_t i = 0; i < this->SceneItem->Scene->Objects->NumOfObjs; i++)
+	{
+		if (this->SceneItem->Scene->Objects->Objects[i].Type != ObjectType::none && this->SceneItem->Scene->Objects->Objects[i].RenderScene == this->SceneItem->Scene->SceneID && this->SceneItem->Scene->Objects->Objects[i].RoomID == this->Info.RoomID)
+		{
+			this->TotalObjects++;
+		}
+	}
+	this->RefreshItemName();
 }
 
 
@@ -40,7 +50,9 @@ void RoomItemTree::UnloadScene()
 
 void RoomItemTree::UpdateObjectCounts(int Count)
 {
+	this->FoundObjects += Count;
 	this->SceneItem->UpdateObjectCounts(Count);
+	this->RefreshItemName();
 }
 
 
@@ -53,4 +65,10 @@ bool RoomItemTree::HasContext()
 SceneRenderer* RoomItemTree::GetScene()
 {
 	return this->SceneItem->GetScene();
+}
+
+
+const char* RoomItemTree::GetSceneName()
+{
+    return this->Info.RoomName;
 }

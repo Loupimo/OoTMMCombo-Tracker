@@ -59,7 +59,7 @@ public:
     void gameLoadLedger();
     void gameLoadApiData();
     static uint64_t crc64(const void* data, size_t size);
-    static void memcpy_rev(uint8_t* dest, uint8_t* src, size_t n);
+    static void memcpy_rev(void* dest, void* src, size_t n);
     static uint64_t itemKey(uint32_t checkKey, uint8_t gameId, uint8_t playerFrom, uint32_t entriesCount);
     int writeItemLedger(uint8_t playerFrom, uint8_t playerTo, uint8_t gameId, uint32_t k, uint16_t gi, uint16_t flags);
     void gameApiItemOut();

@@ -18,7 +18,7 @@ typedef struct ObjectIcon
     int Scale[2];           // The scale of the image. ID 0 = width, ID 1 = height.
 } ObjectIcon;
 
-const ObjectIcon IconsMetaInfo[23] =
+const ObjectIcon IconsMetaInfo[ObjectType::last] =
 {
     {"", {0, 0}},                                          // ObjectType::none
     {"./Resources/Common/Chest.png", { 35, 35 }},          // ObjectType::chest
@@ -42,7 +42,10 @@ const ObjectIcon IconsMetaInfo[23] =
     {"./Resources/Common/Barrel.png", { 20, 20 }},         // ObjectType::barrel
     {"./Resources/Common/Heart.png", { 30, 30 }},          // ObjectType::heart
     {"./Resources/Common/Fairy_Spot.png", { 30, 30 }},     // ObjectType::fairy_spot
-    {"./Resources/Common/Fairy.png", { 25, 25 }}           // ObjectType::fairy
+    {"./Resources/Common/Fairy.png", { 25, 25 }},          // ObjectType::fairy
+    {"./Resources/Common/Icicle.png", { 25, 25 }},         // ObjectType::icicle
+    {"./Resources/Common/Red_Boulder.png", { 25, 25 }},    // ObjectType::redboulder
+    {"./Resources/Common/Red_Ice.png", { 25, 25 }}         // ObjectType::redice
 };
 
 /*
@@ -52,8 +55,8 @@ class ObjectIcons
 {
 public:
 
-    QIcon Icons[23];            // The matching icon.
-    QPixmap PixmapIcons[23];    // The matching pixmap.
+    QIcon Icons[ObjectType::last];            // The matching icon.
+    QPixmap PixmapIcons[ObjectType::last];    // The matching pixmap.
 
 public:
 
@@ -339,9 +342,10 @@ public:
     /*
     *   Increase / decrease the number of found objects by the given amount.
     *
-    *   @param Count  The number of found object to add or remove.
+    *   @param Caller  The tree item that triggered the call.
+    *   @param Count   The number of found object to add or remove.
     */
-    void RefreshObjectCounts(int Count);
+    void RefreshObjectCounts(ObjectItemTree* Caller, int Count);
 
     /*
     *   Remove all objects of this renderer from the given tree widget without destroying the object itself.

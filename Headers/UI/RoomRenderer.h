@@ -405,7 +405,7 @@ class RoomItemTree : public SceneItemTree
 
 public:
 
-	RoomInfo Info;				// The room inromation.
+	RoomInfo Info;				// The room information.
 	SceneItemTree* SceneItem;	// The parent item to attach this room to.
 
 	/*
@@ -445,9 +445,21 @@ public:
 	bool HasContext() override;
 
 	/*
+	*   Refresh the room text name.
+	*/
+	void RefreshObjsCountText();
+
+	/*
 	*   Gets the scene renderer.
 	*
 	*   @return The scene renderer.
 	*/
 	SceneRenderer* GetScene() override;
+
+	/*
+	*   Gets the scene name.
+	*
+	*   @return The scene name.
+	*/
+	const char* GetSceneName() override;
 };

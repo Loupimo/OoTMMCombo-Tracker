@@ -8,6 +8,7 @@
 #include "Combo/Objects.h"
 #include "Combo/OvTypes.h"
 #include "UI/SceneRenderer.h"
+#include <direct.h>
 
 FILE * game_file_log = nullptr;
 
@@ -164,8 +165,11 @@ uint64_t Game::crc64(const void* data, size_t size)
     return crc;
 }
 
-void Game::memcpy_rev(uint8_t* dest, uint8_t *src, size_t n) {
-    for (int i = 0; i < n; i++) dest[n - 1 - i] = src[i];
+void Game::memcpy_rev(void* dest, void* src, size_t n) {
+    char* destc = (char*)dest;
+    char* srcc = (char*)src;
+
+    for (int i = 0; i < n; i++) destc[n - 1 - i] = srcc[i];
 }
 
 uint64_t Game::itemKey(uint32_t checkKey, uint8_t gameId, uint8_t playerFrom, uint32_t entriesCount)
