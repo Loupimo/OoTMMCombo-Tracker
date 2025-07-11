@@ -23,8 +23,125 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionSaveSession"/>
+    <addaction name="actionLoadSession"/>
+   </widget>
+   <widget class="QMenu" name="menuOptions">
+    <property name="title">
+     <string>Options</string>
+    </property>
+    <addaction name="actionAutoSnapView"/>
+    <addaction name="actionAutoZoom"/>
+    <addaction name="separator"/>
+    <addaction name="actionAutoSaving"/>
+   </widget>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>?</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuOptions"/>
+   <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionSaveSession">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::DocumentSave"/>
+   </property>
+   <property name="text">
+    <string>Save Tracking</string>
+   </property>
+   <property name="toolTip">
+    <string>Save the current tracking session</string>
+   </property>
+   <property name="shortcut">
+    <string>F8</string>
+   </property>
+  </action>
+  <action name="actionLoadSession">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::DocumentOpen"/>
+   </property>
+   <property name="text">
+    <string>Load Tracking</string>
+   </property>
+   <property name="toolTip">
+    <string>Load a tracking session</string>
+   </property>
+   <property name="shortcut">
+    <string>F10</string>
+   </property>
+  </action>
+  <action name="actionAutoSnapView">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Auto Snap View</string>
+   </property>
+   <property name="toolTip">
+    <string>Automatically snap the view to the last collected object</string>
+   </property>
+  </action>
+  <action name="actionAutoZoom">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Auto Zoom</string>
+   </property>
+   <property name="toolTip">
+    <string>Automatically zoom in to the last collected object</string>
+   </property>
+  </action>
+  <action name="actionCreateBackup">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Create Backup When Saving</string>
+   </property>
+   <property name="toolTip">
+    <string>Create a backup file when saving the current session if the file already exist</string>
+   </property>
+  </action>
+  <action name="actionAutoSaving">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Auto Saving</string>
+   </property>
+   <property name="toolTip">
+    <string>Automatically save the session when a new object is collected</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::HelpAbout"/>
+   </property>
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

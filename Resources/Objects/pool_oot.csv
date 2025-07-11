@@ -1,7 +1,7 @@
 id;scene;friendly_name;location;type;x;y;renderscene;rendertype;context;room
 0x0002;BACK_ALLEY_HOUSE;Pot 1;OOT Market Back Alley East House Pot 1;pot;765;483;BACK_ALLEY_HOUSE;pot;All;0
-0x0003;BACK_ALLEY_HOUSE;Pot 2;OOT Market Back Alley East House Pot 2;pot;521;429;BACK_ALLEY_HOUSE;pot;All;0
-0x0004;BACK_ALLEY_HOUSE;Pot 3;OOT Market Back Alley East House Pot 3;pot;442;429;BACK_ALLEY_HOUSE;pot;All;0
+0x0003;BACK_ALLEY_HOUSE;Pot 2;OOT Market Back Alley East House Pot 2;pot;442;429;BACK_ALLEY_HOUSE;pot;All;0
+0x0004;BACK_ALLEY_HOUSE;Pot 3;OOT Market Back Alley East House Pot 3;pot;521;429;BACK_ALLEY_HOUSE;pot;All;0
 DOG_LADY;BACK_ALLEY_HOUSE2;Heart Piece;OOT Market Dog Lady HP;npc;436;214;BACK_ALLEY_HOUSE2;npc;All;0
 0x00002;BACK_ALLEY_HOUSE2;Crate;OOT Market Dog Lady Crate;crate;657;105;BACK_ALLEY_HOUSE2;crate;All;0
 0x30;BAZAAR;Item 1;OOT Kakariko Bazaar Item 1;shop;367;328;KAKARIKO_BAZAAR;shop;All;0
@@ -1602,9 +1602,9 @@ LOST_WOODS_MEMORY;LOST_WOODS;Memory Game;OOT Lost Woods Memory Game;npc;1896;219
 0x02;LOST_WOODS;Near Theater - Right;OOT Lost Woods Scrub Near Theater Right;scrub;1423;859;LOST_WOODS;scrub;All;0
 TRADE_ODD_MUSHROOM;LOST_WOODS;Odd Mushroom;OOT Lost Woods Odd Mushroom;npc;289;1981;LOST_WOODS;npc;Adult;0
 TRADE_POACHER_SAW;LOST_WOODS;Poacher's Saw;OOT Lost Woods Poacher's Saw;npc;301;1960;LOST_WOODS;npc;Adult;0
-0x00202;LOST_WOODS;Grass 1;OOT Lost Woods Grass 1;grass;1544;1621;LOST_WOODS;grass;All;0
-0x00203;LOST_WOODS;Grass 2;OOT Lost Woods Grass 2;grass;1518;1633;LOST_WOODS;grass;All;0
-0x00204;LOST_WOODS;Grass 3;OOT Lost Woods Grass 3;grass;1508;1600;LOST_WOODS;grass;All;0
+0x00202;LOST_WOODS;Grass 1;OOT Lost Woods Grass 1;grass;1518;1633;LOST_WOODS;grass;All;0
+0x00203;LOST_WOODS;Grass 2;OOT Lost Woods Grass 2;grass;1508;1600;LOST_WOODS;grass;All;0
+0x00204;LOST_WOODS;Grass 3;OOT Lost Woods Grass 3;grass;1544;1621;LOST_WOODS;grass;All;0
 0x00701;LOST_WOODS;Deep 1;OOT Lost Woods Grass Deep 1;grass;2027;490;LOST_WOODS;grass;All;0
 0x00702;LOST_WOODS;Deep 2;OOT Lost Woods Grass Deep 2;grass;2015;453;LOST_WOODS;grass;All;0
 0x00703;LOST_WOODS;Deep 3;OOT Lost Woods Grass Deep 3;grass;2056;477;LOST_WOODS;grass;All;0

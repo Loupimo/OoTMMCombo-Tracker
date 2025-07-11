@@ -121,6 +121,8 @@
     <ClCompile Include="Sources\Multi\Multi.cpp" />
     <ClCompile Include="Sources\Multi\Protocol.cpp" />
     <ClCompile Include="Sources\Multi\Sendq.cpp" />
+    <ClCompile Include="Sources\UI\AppConfig.cpp" />
+    <ClCompile Include="Sources\UI\AppStyle.cpp" />
     <ClCompile Include="Sources\UI\GameTab.cpp" />
     <ClCompile Include="Sources\UI\LogTab.cpp" />
     <ClCompile Include="Sources\UI\MapTab.cpp" />
@@ -145,6 +147,8 @@
     <ClInclude Include="Headers\Multi\App.h" />
     <ClInclude Include="Headers\Multi\Buffer.h" />
     <ClInclude Include="Headers\Multi\Game.h" />
+    <ClInclude Include="Headers\UI\AppConfig.h" />
+    <ClInclude Include="Headers\UI\AppStyle.h" />
     <ClInclude Include="Headers\UI\RegionTab.h" />
     <ClInclude Include="Headers\UI\RoomRenderer.h" />
     <ClInclude Include="resource.h" />
@@ -167,6 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="OoTMMComboTracker.qrc" />
+    <QtRcc Include="Resources\Styles\darkstyle.qrc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

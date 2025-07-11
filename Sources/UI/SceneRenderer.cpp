@@ -2,6 +2,7 @@
 #include "UI/RegionTab.h"
 #include "UI/MapTab.h"
 #include "UI/RoomRenderer.h"
+#include "UI/AppConfig.h"
 
 #pragma region SceneItemTree
 
@@ -164,7 +165,18 @@ void SceneItemTree::ItemFound(ObjectInfo* Object, const ItemInfo* Item)
     if (this->Renderer)
     {   // The scene is rendered. We just need to call the scene item found function
 
+        if (Object->Status == ObjectState::Hidden)
+        {   // The object is not already counted
+
+            if (this->Rooms.size() > 0)
+            {   // We can't use the room update function otherwise it will be counted twice
+
+                this->Rooms[Object->RoomID]->FoundObjects++;
+                this->Rooms[Object->RoomID]->RefreshItemName();
+            };
+        }
         this->Renderer->ItemFound(Object, Item);
+        
     }
     else
     {   // The scene is not rendered. We just need to update the object and the scene count
@@ -172,8 +184,15 @@ void SceneItemTree::ItemFound(ObjectInfo* Object, const ItemInfo* Item)
         if (Object->Status == ObjectState::Hidden)
         {   // The object is not already counted
 
-            this->FoundObjects++;
-            this->UpdateObjectCounts(1);
+            if (this->Rooms.size() > 0)
+            {
+                this->Rooms[Object->RoomID]->UpdateObjectCounts(1);
+            }
+            else
+            {
+                this->FoundObjects++;
+                this->UpdateObjectCounts(1);
+            }
         }
         Object->Status = ObjectState::Collected;
         Object->Item = Item;
@@ -372,17 +391,23 @@ void SceneRenderer::UnloadScene()
 
 void SceneRenderer::CenterViewOn(ObjectPixmapItem* Target)
 {
-    QGraphicsView* currView = this->views()[0];
-    currView->resetTransform();
+    if (AppConfig::GetAutoSnapView())
+    {
+        QGraphicsView* currView = this->views()[0];
+        currView->resetTransform();
 
-    // Find the target bounding box
-    QRectF itemRect = Target->sceneBoundingRect();
+        // Find the target bounding box
+        QRectF itemRect = Target->sceneBoundingRect();
 
-    // Compute a zoom factor based on the object size
-    double scaleFactor = min(currView->viewport()->width() / itemRect.width(), currView->viewport()->height() / itemRect.height()) * 0.15;
+        // Compute a zoom factor based on the object size
+        if (AppConfig::GetAutoZoom())
+        {
+            double scaleFactor = min(currView->viewport()->width() / itemRect.width(), currView->viewport()->height() / itemRect.height()) * 0.15;
+            currView->scale(scaleFactor, scaleFactor);
+        }
 
-    currView->scale(scaleFactor, scaleFactor);
-    currView->centerOn(Target);
+        currView->centerOn(Target);
+    }
 }
 
 #pragma endregion

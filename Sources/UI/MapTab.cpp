@@ -218,6 +218,8 @@ MapTab::MapTab(GameTab* Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes, 
     this->MapSearchBar->setPlaceholderText("Find...");
     this->MapList = new QTreeWidget();
     this->MapList->setHeaderHidden(true);
+    this->MapTreeToggleButton = new QPushButton("Expand All", this);
+    this->MapTreeToggleButton->setCheckable(true);
 
     // Object Tree
     QLabel* objectLabel = new QLabel("Objects");
@@ -226,9 +228,12 @@ MapTab::MapTab(GameTab* Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes, 
     this->ObjectSearchBar->setPlaceholderText("Find...");
     this->ObjectList = new QTreeWidget();
     this->ObjectList->setHeaderHidden(true);
+    this->ObjectTreeToggleButton = new QPushButton("Collapse All", this);
     this->ObjectTreeLayout->addWidget(this->ObjectSearchBar);
+    this->ObjectTreeLayout->addWidget(this->ObjectTreeToggleButton);
     this->ObjectTreeLayout->addWidget(this->ObjectList);
     this->ObjectContainer->setHidden(true);
+    this->ObjectTreeToggleButton->setCheckable(true);
 
     // Rendering view
     this->View = new MapView(this);
@@ -261,6 +266,7 @@ MapTab::MapTab(GameTab* Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes, 
     // Sort the final map list by alphabetic oder
     this->MapList->sortItems(0, Qt::AscendingOrder);
     this->MapTreeLayout->addWidget(this->MapSearchBar);
+    this->MapTreeLayout->addWidget(this->MapTreeToggleButton);
     this->MapTreeLayout->addWidget(this->MapList);
     this->MapTreeLayout->setStretch(0, 0);  // No stretch for label
     this->MapTreeLayout->setStretch(1, 0);  // No stretch for search bar
@@ -298,6 +304,20 @@ MapTab::MapTab(GameTab* Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes, 
     });
 
     QObject::connect(this->ObjectList, &QTreeWidget::itemSelectionChanged, this, &MapTab::UpdateObjectSelection);
+
+    QObject::connect(this->MapTreeToggleButton, &QPushButton::clicked, this, [&]()
+    {
+        this->IsMapExpanded = !this->IsMapExpanded;
+        this->MapTreeToggleButton->setText(this->IsMapExpanded ? "Collapse All" : "Expand All");
+        this->OnToggleExpandCollapse(this->MapList, this->IsMapExpanded);
+    });
+
+    QObject::connect(this->ObjectTreeToggleButton, &QPushButton::clicked, this, [&]()
+    {
+        this->IsObjectExpanded = !this->IsObjectExpanded;
+        this->ObjectTreeToggleButton->setText(this->IsObjectExpanded ? "Collapse All" : "Expand All");
+        this->OnToggleExpandCollapse(this->ObjectList, this->IsObjectExpanded);
+    });
 }
 
 
@@ -305,7 +325,7 @@ MapTab::~MapTab()
 {
     this->RenderedScene = nullptr;
 
-    // Disconnect singals in order to not trigger event on partially destroyed object
+    // Disconnect signals in order to not trigger event on partially destroyed object
     QObject::disconnect(this->MapList, nullptr, nullptr, nullptr);
     QObject::disconnect(this->ObjectList, nullptr, nullptr, nullptr);
 
@@ -316,7 +336,9 @@ MapTab::~MapTab()
 
     this->Scenes.clear();
     delete this->MapList;
+    delete this->MapTreeToggleButton;
     delete this->ObjectList;
+    delete this->ObjectTreeToggleButton;
     delete this->SwitchButton;
     delete this->LeftIcon;
     delete this->RightIcon;
@@ -410,6 +432,18 @@ void MapTab::FilterTree(QTreeWidget* TreeWidget, const QString& SearchText)
     }
 }
 
+void MapTab::OnToggleExpandCollapse(QTreeWidget* TreeWidget, bool Expand)
+{
+    if (!Expand)
+    {
+        TreeWidget->collapseAll();
+    }
+    else
+    {
+        TreeWidget->expandAll();
+    }
+}
+
 #pragma endregion
 
 #pragma region Context
@@ -417,6 +451,9 @@ void MapTab::FilterTree(QTreeWidget* TreeWidget, const QString& SearchText)
 void MapTab::UpdateContext(ObjectContext Context)
 {
     this->SwitchButton->UpdateContext(Context);
+
+    this->ObjectTreeToggleButton->setText("Collapse All");
+    this->IsObjectExpanded = true;
 }
 
 
@@ -426,6 +463,9 @@ void MapTab::ContextSwitch(bool NewState)
     {
         this->RenderedScene->RenderScene(this->ObjectList, NewState, false);
     }
+
+    this->ObjectTreeToggleButton->setText("Collapse All");
+    this->IsObjectExpanded = true;
 }
 
 #pragma endregion
@@ -474,6 +514,8 @@ void MapTab::UnloadMap()
         this->RenderedScene = nullptr;
         this->View->setScene(nullptr);
         this->SwitchContainer->setVisible(false);
+        this->ObjectTreeToggleButton->setText("Collapse All");
+        this->IsObjectExpanded = true;
 
         // Don't forget to reconnect the signal
         QObject::connect(this->ObjectList, &QTreeWidget::itemSelectionChanged, this, &MapTab::UpdateObjectSelection);

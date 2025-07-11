@@ -386,7 +386,7 @@ void GameTab::LoadGameTab()
 void GameTab::SaveGameScenes(QString FilePath)
 {
     QFile saveFile(FilePath);
-    if (!saveFile.open(QIODevice::WriteOnly))
+    if (!saveFile.open(QIODevice::WriteOnly | QIODevice::Truncate))
     {
         MultiLogger::LogMessage("Can't open file: %s\n", FilePath.toStdString().c_str());
         return;

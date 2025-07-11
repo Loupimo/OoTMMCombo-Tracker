@@ -3,8 +3,8 @@ const size_t BACK_ALLEY_HOUSENumOfObjs = 3;
 ObjectInfo BACK_ALLEY_HOUSESceneObjects [BACK_ALLEY_HOUSENumOfObjs] =
 {
 	{ 0x0002, BACK_ALLEY_HOUSE, "Pot 1", "OOT Market Back Alley East House Pot 1", ObjectType::pot, {765, 483}, BACK_ALLEY_HOUSE, ObjectType::pot, ObjectContext::All, 0 },
-	{ 0x0003, BACK_ALLEY_HOUSE, "Pot 2", "OOT Market Back Alley East House Pot 2", ObjectType::pot, {521, 429}, BACK_ALLEY_HOUSE, ObjectType::pot, ObjectContext::All, 0 },
-	{ 0x0004, BACK_ALLEY_HOUSE, "Pot 3", "OOT Market Back Alley East House Pot 3", ObjectType::pot, {442, 429}, BACK_ALLEY_HOUSE, ObjectType::pot, ObjectContext::All, 0 }
+	{ 0x0003, BACK_ALLEY_HOUSE, "Pot 2", "OOT Market Back Alley East House Pot 2", ObjectType::pot, {442, 429}, BACK_ALLEY_HOUSE, ObjectType::pot, ObjectContext::All, 0 },
+	{ 0x0004, BACK_ALLEY_HOUSE, "Pot 3", "OOT Market Back Alley East House Pot 3", ObjectType::pot, {521, 429}, BACK_ALLEY_HOUSE, ObjectType::pot, ObjectContext::All, 0 }
 };
 
 const size_t BACK_ALLEY_HOUSE2NumOfObjs = 2;
@@ -4043,9 +4043,9 @@ ObjectInfo OOT_LOST_WOODSSceneObjects [OOT_LOST_WOODSNumOfObjs] =
 	{ 0x02, OOT_LOST_WOODS, "Near Theater - Right", "OOT Lost Woods Scrub Near Theater Right", ObjectType::scrub, {1423, 859}, OOT_LOST_WOODS, ObjectType::scrub, ObjectContext::All, 0 },
 	{ TRADE_ODD_MUSHROOM, OOT_LOST_WOODS, "Odd Mushroom", "OOT Lost Woods Odd Mushroom", ObjectType::npc, {289, 1981}, OOT_LOST_WOODS, ObjectType::npc, ObjectContext::Adult, 0 },
 	{ TRADE_POACHER_SAW, OOT_LOST_WOODS, "Poacher's Saw", "OOT Lost Woods Poacher's Saw", ObjectType::npc, {301, 1960}, OOT_LOST_WOODS, ObjectType::npc, ObjectContext::Adult, 0 },
-	{ 0x00202, OOT_LOST_WOODS, "Grass 1", "OOT Lost Woods Grass 1", ObjectType::grass, {1544, 1621}, OOT_LOST_WOODS, ObjectType::grass, ObjectContext::All, 0 },
-	{ 0x00203, OOT_LOST_WOODS, "Grass 2", "OOT Lost Woods Grass 2", ObjectType::grass, {1518, 1633}, OOT_LOST_WOODS, ObjectType::grass, ObjectContext::All, 0 },
-	{ 0x00204, OOT_LOST_WOODS, "Grass 3", "OOT Lost Woods Grass 3", ObjectType::grass, {1508, 1600}, OOT_LOST_WOODS, ObjectType::grass, ObjectContext::All, 0 },
+	{ 0x00202, OOT_LOST_WOODS, "Grass 1", "OOT Lost Woods Grass 1", ObjectType::grass, {1518, 1633}, OOT_LOST_WOODS, ObjectType::grass, ObjectContext::All, 0 },
+	{ 0x00203, OOT_LOST_WOODS, "Grass 2", "OOT Lost Woods Grass 2", ObjectType::grass, {1508, 1600}, OOT_LOST_WOODS, ObjectType::grass, ObjectContext::All, 0 },
+	{ 0x00204, OOT_LOST_WOODS, "Grass 3", "OOT Lost Woods Grass 3", ObjectType::grass, {1544, 1621}, OOT_LOST_WOODS, ObjectType::grass, ObjectContext::All, 0 },
 	{ 0x00701, OOT_LOST_WOODS, "Deep 1", "OOT Lost Woods Grass Deep 1", ObjectType::grass, {2027, 490}, OOT_LOST_WOODS, ObjectType::grass, ObjectContext::All, 0 },
 	{ 0x00702, OOT_LOST_WOODS, "Deep 2", "OOT Lost Woods Grass Deep 2", ObjectType::grass, {2015, 453}, OOT_LOST_WOODS, ObjectType::grass, ObjectContext::All, 0 },
 	{ 0x00703, OOT_LOST_WOODS, "Deep 3", "OOT Lost Woods Grass Deep 3", ObjectType::grass, {2056, 477}, OOT_LOST_WOODS, ObjectType::grass, ObjectContext::All, 0 },

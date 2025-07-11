@@ -1,5 +1,8 @@
 #include "Combo/Objects.h"
+#include "UI/AppConfig.h"
 #include "UI/OoTMMComboTracker.h"
+#include <QMessageBox>
+#include <QFileDialog>
 
 OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     : QMainWindow(parent)
@@ -13,9 +16,9 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     this->Log = new LogTab(this);
 
     // Create OoT and MM game tabs
-    this->OoTTab = new GameTab(OOT_GAME);
+    this->OoTTab = new GameTab(OOT_GAME, this);
     this->OoTTab->Owner = this;
-    this->MMTab = new GameTab(MM_GAME);
+    this->MMTab = new GameTab(MM_GAME, this);
     this->MMTab->Owner = this;
     
     // Add the tabs to the widget : Log -> OoT -> MM
@@ -30,7 +33,18 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     this->setWindowTitle("OoTMMCombo Auto Tracker");
     this->setWindowIcon(QIcon("./Resources/Logo.ico"));
 
+    // Loads default value
+    this->ui.actionAutoSnapView->setChecked(AppConfig::GetAutoSnapView());
+    this->ui.actionAutoZoom->setChecked(AppConfig::GetAutoZoom());
+    this->ui.actionAutoSaving->setChecked(AppConfig::GetAutoSave());
+
     connect(MultiLogger::GetLogger(), &MultiLogger::NotifyObjectFound, this, &OoTMMComboTracker::UpdateTrackedObject);
+    connect(this->ui.actionSaveSession, &QAction::triggered, this->Log, &LogTab::SaveTracking);
+    connect(this->ui.actionLoadSession, &QAction::triggered, this->Log, &LogTab::LoadTracking);
+    connect(this->ui.actionAutoSnapView, &QAction::toggled, this, &AppConfig::SetAutoSnapView);
+    connect(this->ui.actionAutoZoom, &QAction::toggled, this, &AppConfig::SetAutoZoom);
+    connect(this->ui.actionAutoSaving, &QAction::toggled, this, &AppConfig::SetAutoSave);
+    connect(this->ui.actionAbout, &QAction::triggered, this, &OoTMMComboTracker::ShowAboutDialog);
 }
 
 OoTMMComboTracker::~OoTMMComboTracker()
@@ -39,6 +53,28 @@ OoTMMComboTracker::~OoTMMComboTracker()
     delete this->OoTTab;
     delete this->MMTab;
     delete this->TabWidget;
+}
+
+void OoTMMComboTracker::ShowAboutDialog()
+{
+    QMessageBox::about(this, "About", "OoTMMCombo Tracker\nVersion 1.0\n(c) 2025 Loupimo");
+}
+
+void OoTMMComboTracker::CreatePath(QString PathToCreate)
+{
+    QDir dir(PathToCreate);
+
+    if (!dir.exists())
+    {
+        if (dir.mkpath("."))
+        {
+            MultiLogger::LogMessage("Created path : %s", PathToCreate.toStdString().c_str());
+        }
+        else
+        {
+            MultiLogger::LogMessage("Can't created path : %s", PathToCreate.toStdString().c_str());
+        }
+    }
 }
 
 #pragma region Object related
@@ -50,11 +86,21 @@ void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, c
         case OOT_GAME:
         {
             this->OoTTab->ItemFound(ObjectFound, ItemFound);
+            if (AppConfig::GetAutoSave())
+            {
+                this->CreatePath(AppConfig::GetAutoSavePath());
+                GameTab::SaveGameScenes(AppConfig::GetAutoSaveFullPath());
+            }
             break;
         }
         case MM_GAME:
         {
             this->MMTab->ItemFound(ObjectFound, ItemFound);
+            if (AppConfig::GetAutoSave())
+            {
+                this->CreatePath(AppConfig::GetAutoSavePath());
+                GameTab::SaveGameScenes(AppConfig::GetAutoSaveFullPath());
+            }
             break;
         }
         default:

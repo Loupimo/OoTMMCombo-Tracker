@@ -164,27 +164,27 @@ def match_items(spoiler_log, input_file, output_file):
             outfile.flush()
 
 # Exemple d'utilisation
-input_file = 'D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\Objects\\pool_mm.csv'
-output_file = 'D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\Objects\\pool_mm.txt'
+input_file = 'D:\\Jeux\\Multi\\OoTMMCombo-Tracker\\Resources\\Objects\\pool_mm.csv'
+output_file = 'D:\\Jeux\\Multi\\OoTMMCombo-Tracker\\Resources\\Objects\\pool_mm.txt'
 parse_file2(input_file, output_file, "MMObjects", "MM_")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
 #
-input_file = 'D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\Objects\\pool_oot.csv'
-output_file = 'D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\Objects\\pool_oot.txt'
+input_file = 'D:\\Jeux\\Multi\\OoTMMCombo-Tracker\\Resources\\Objects\\pool_oot.csv'
+output_file = 'D:\\Jeux\\Multi\\OoTMMCombo-Tracker\\Resources\\Objects\\pool_oot.txt'
 parse_file2(input_file, output_file, "OoTObjects", "OOT_")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
 
 
-input_file = 'D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\Scenes\\scenes_oot.csv'
-output_file = 'D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\Scenes\\scenes_oot.txt'
+input_file = 'D:\\Jeux\\Multi\\OoTMMCombo-Tracker\\Resources\\Scenes\\scenes_oot.csv'
+output_file = 'D:\\Jeux\\Multi\\OoTMMCombo-Tracker\\Resources\\Scenes\\scenes_oot.txt'
 #parse_scene(input_file, output_file, "OOT")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
 
-input_file = 'D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\Scenes\\scenes_mm.csv'
-output_file = 'D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\Scenes\\scenes_mm.txt'
+input_file = 'D:\\Jeux\\Multi\\OoTMMCombo-Tracker\\Resources\\Scenes\\scenes_mm.csv'
+output_file = 'D:\\Jeux\\Multi\\OoTMMCombo-Tracker\\Resources\\Scenes\\scenes_mm.txt'
 #parse_scene(input_file, output_file, "MM")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")

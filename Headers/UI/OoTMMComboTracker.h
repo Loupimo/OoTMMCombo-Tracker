@@ -36,6 +36,18 @@ public:
     */
     ~OoTMMComboTracker();
 
+    /*
+    *   Shows the about dialog message.
+    */
+    void ShowAboutDialog();
+
+    /*
+    *   Creates the given path if not exist.
+    * 
+    *   @param PathToCreate   The path to create.
+    */
+    void CreatePath(QString PathToCreate);
+
 #pragma region Object related
 
 public:

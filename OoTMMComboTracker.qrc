@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/OoTMMComboTracker">
         <file>Resources/Logo.ico</file>
+        <file>Resources/Styles/DarkStyle.qss</file>
     </qresource>
 </RCC>

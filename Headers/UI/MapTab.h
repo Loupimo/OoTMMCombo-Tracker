@@ -163,10 +163,14 @@ public:
     // Map Tree
     QLineEdit* MapSearchBar;
     QTreeWidget* MapList;
+    QPushButton* MapTreeToggleButton;
+    bool IsMapExpanded = false;
 
     // Object Tree
     QLineEdit* ObjectSearchBar;
     QTreeWidget* ObjectList;
+    QPushButton* ObjectTreeToggleButton;
+    bool IsObjectExpanded = true;
 
     // Scenes
     std::vector<RegionTree*> Regions;           // The list of all available regions
@@ -215,6 +219,8 @@ public:
     *   @param SearchText      The text to match.
     */
     void FilterTree(QTreeWidget* TreeWidget, const QString& SearchText);
+
+    void OnToggleExpandCollapse(QTreeWidget* TreeWidget, bool Expand);
 
 #pragma endregion
 

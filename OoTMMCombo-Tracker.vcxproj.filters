@@ -47,6 +47,9 @@
     <QtUic Include="OoTMMComboTracker.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtRcc Include="Resources\Styles\darkstyle.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -109,6 +112,12 @@
     <ClCompile Include="Sources\UI\RoomRenderer.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\UI\AppStyle.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\AppConfig.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Multi\API.h">
@@ -163,6 +172,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\UI\RoomRenderer.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\UI\AppStyle.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\UI\AppConfig.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>
