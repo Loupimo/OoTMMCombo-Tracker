@@ -99,8 +99,8 @@ ObjectInfo* FindObject(ComboItem Item)
 				if (currObj->Type > ObjectType::fish)
 				{	// We can check the object
 
-					if (currObj->ObjectID == Item.ObjectID)
-					{	// This is the correct object
+					if (currObj->ObjectID == Item.ObjectID && currObj->GameID == Item.GameID)
+					{	// This is the correct object. We need to check for game ID as there might be conflict between OoT and OoT_MQ object ID
 
 						return currObj;
 					}

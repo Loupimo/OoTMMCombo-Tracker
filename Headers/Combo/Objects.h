@@ -6,6 +6,7 @@
 #include "Scenes.h"
 #include "NPC.h"
 #include "Items.h"
+#include "Multi/Game.h"
 
 class SceneInfo;
 
@@ -70,6 +71,7 @@ typedef struct ObjectInfo
 	ObjectType RenderType;							// The type to use to render the object
 	ObjectContext Context;							// The context in which the object appears
 	uint32_t RoomID;								// The room in which the object should be put
+	ZGame GameID;									// The actual game to which this object belongs to.
 	const ItemInfo* Item;							// The item contained in the object
 	ObjectState Status = ObjectState::Hidden;		// The status object
 	bool PosSet = false;							// Tells if the position has already been set.

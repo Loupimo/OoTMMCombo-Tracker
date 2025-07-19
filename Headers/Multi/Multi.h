@@ -4,7 +4,6 @@
 
 #include <QPlainTextEdit>
 #include <QScrollBar>
-#include "Combo/Objects.h"
 
 #ifdef _WIN32
 #define _WIN32_LEAN_AND_MEAN 1
@@ -176,7 +175,7 @@ signals:
     *   @param ObjectFound    The object in which the item has been found.
     *   @param ItemFound      The item that has been found.
     */
-    void NotifyObjectFound(int Game, ObjectInfo * ObjectFound, const ItemInfo* ItemFound);
+    void NotifyObjectFound(int Game, struct ObjectInfo * ObjectFound, const struct ItemInfo* ItemFound);
 
 public:
 

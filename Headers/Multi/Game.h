@@ -2,12 +2,19 @@
 
 #include "Multi.h"
 #include "Buffer.h"
-#include "Combo/Objects.h"
 
 #define OOT_GAME 0x00
 #define MM_GAME 0x01
+#define OOT_MQ_GAME 0x02
 
 class App;
+
+enum ZGame
+{
+    oot = OOT_GAME,
+    mm = MM_GAME,
+    oot_mq = OOT_MQ_GAME
+};
 
 class Game
 {

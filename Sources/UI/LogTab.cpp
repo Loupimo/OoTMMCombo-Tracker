@@ -119,6 +119,7 @@ LogTab::LogTab(OoTMMComboTracker* Owner, QWidget* parent) : QWidget(parent)
 
     // Start tracking
     this->LaunchButton = new QPushButton("Start Tracking");
+    this->LaunchButton->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackStart));
     QObject::connect(this->LaunchButton, &QPushButton::pressed, this, &LogTab::PressLaunchButton);
 
     // Multiplayer checkbox
@@ -197,6 +198,12 @@ LogTab::~LogTab()
 }
 
 
+const QHash<QString, QPair<uint32_t, uint32_t>> LogTab::GetSpoilerMap()
+{
+    return SpoilerMap;
+}
+
+
 void LogTab::ToggleNetOption(int state)
 {
     if (state == Qt::Checked)
@@ -216,11 +223,12 @@ void LogTab::PressLaunchButton()
 {
     if (this->Tracker)
     {
+        QIcon launchIcon(QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackStart));
+        QString trackText = "Start Tracking";
         if (this->Tracker->IsRunning)
         {   // Stop the auto-tracker
 
             this->Tracker->IsRunning = false;
-            this->LaunchButton->setText("Start Tracking");
             this->TrackerThread.join();
             this->Tracker->appQuit();
         }
@@ -242,11 +250,16 @@ void LogTab::PressLaunchButton()
                 this->Tracker->appQuit();
                 return;
             }
-            this->LaunchButton->setText("Stop Tracking");
+            trackText = "Stop Tracking";
+            launchIcon = QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackStop);
             this->Tracker->IsRunning = true;
 
             this->TrackerThread = std::thread(&App::appRun, this->Tracker, this->EnableMultiplayer, this->Host, this->Port->text().toUShort());
         }
+
+        this->LaunchButton->setIcon(launchIcon);
+        this->LaunchButton->setText(trackText);
+        this->WinOwner->UpdateTrackingState(trackText, launchIcon);
     }
 }
 
@@ -280,102 +293,7 @@ void LogTab::LoadSpoiler()
     if (!filePath.isEmpty())
     {   // We have found a file
 
-        QFile file(filePath);
-
-        if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-        {
-            qWarning() << "Can't open file:" << file.errorString();
-            return;
-        }
-
-        QTextStream in(&file);
-        QString content = in.readAll(); // Read all file
-        file.close();
-
-        // Split with "===" to find the right section
-        QStringList sections = content.split("===========================================================================", Qt::SkipEmptyParts, Qt::CaseSensitive);
-
-        // Check that we have the correct number of sections
-        if (sections.size() < 3)
-        {
-            qWarning() << "The file does not have the correct number of sections.";
-            return;
-        }
-
-        // Regex to split strings by location
-        QRegularExpression reg("^\\s{2}(.+:(?:\n\\s{4}.*)+)\n*", QRegularExpression::MultilineOption);
-        QRegularExpressionMatchIterator it = reg.globalMatch(sections[2]);
-
-        QStringList maps;
-        while (it.hasNext())
-        {   // Fill the maps array with all the gathered matches
-
-            QRegularExpressionMatch match = it.next();
-            maps.append(match.captured(1));
-        }
-
-        for (QString map : maps)
-        {   // Browse all maps
-
-            // All objects start with four spaces
-            QStringList objects = map.split("    ");
-            
-            // Regex to split map / object and their associated item 
-            reg = QRegularExpression("^([\\w'-]+(?:\\s[\\w'-]+)*)", QRegularExpression::MultilineOption);
-            
-            // Get the map location
-            it = reg.globalMatch(objects[0]);
-            QString mapName = it.next().captured(1);
-
-            uint32_t sceneID = SpoilerMap[mapName].first;                                   // Get the scene ID that match the spoiler log location
-            SceneObjects* gameSceneObj = GetGameSceneObjects(SpoilerMap[mapName].second);   // Get the correct game objects
-            
-            for (qsizetype i = 1; i < objects.size(); i++)
-            {   // Browse all the spoiler scene objects
-
-                QStringList spoilObject = objects[i].split(": ");                           // Left part is object name, right is the item it contains
-                spoilObject[0] = spoilObject[0].replace("\n", "");                          // Sometimes the object has a line break, just get rid of it
-                
-                size_t len = spoilObject[0].length() + 1;                                   // We need to add 1 for the null terminator
-                char* tmpObjName = (char*)malloc(sizeof(char) * len);
-                memcpy_s(tmpObjName, len, spoilObject[0].toStdString().c_str(), len);
-                tmpObjName[len - 1] = '\0';
-
-                for (size_t j = 0; j < gameSceneObj[sceneID].NumOfObjs; j++)
-                {   // Browse all scenes objects
-
-                    if (strcmp(gameSceneObj[sceneID].Objects[j].Location, tmpObjName) == 0)
-                    {   // We have found the object
-                        
-                        free(tmpObjName);
-                        ObjectInfo* object = &gameSceneObj[sceneID].Objects[j];
-
-                        // Find and modify the object item
-                        const ItemInfo* item = FindItemByName(spoilObject[1]);
-                        object->Item = item;
-
-                        if (object->RenderScene != sceneID)
-                        {   // The current object will never be rendered, we need to update its counter part
-
-                            for (size_t k = 0; k < gameSceneObj[object->RenderScene].NumOfObjs; k++)
-                            {   // Find the object in the rendered scene
-                                
-                                if (strcmp(gameSceneObj[object->RenderScene].Objects[k].Location, object->Location) == 0)
-                                {   // Object found
-
-                                    gameSceneObj[object->RenderScene].Objects[k].Item = item;
-                                    break;
-                                }
-                            }
-                        }
-
-                        break;
-                    }
-                }
-            }
-        }
-
-        this->WinOwner->LoadGameSpoiler();
+        this->WinOwner->LoadGameSpoiler(filePath);
     }
 }
 

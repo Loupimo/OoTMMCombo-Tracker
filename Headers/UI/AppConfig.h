@@ -2,6 +2,7 @@
 
 #include <QSettings>
 #include <QDateTime>
+#include <QStringList>
 
 class AppConfig
 {
@@ -12,13 +13,74 @@ public:
 
 public:
 
-
     /*
     *   Get the configuration instance.
     *
     *   @return The application configuration instance.
     */
     static AppConfig* Instance();
+
+#pragma region Tracking Menu
+    
+    /*
+    *   Gets the list of rencently opened files.
+    *
+    *   @return The list of the last opened files.
+    */
+    static QStringList GetRecentFiles();
+
+    /*
+    *   Tells if the last recent save should be automatically loaded.
+    *
+    *   @return <b>True</b> if the most recent file should be automatically loaded, <b>false</b> otherwise.
+    */
+    static bool GetAutoLoadTrackingFile();
+
+    /*
+    *   Tells if the last recent spoiler log should be automatically loaded.
+    *
+    *   @return <b>True</b> if the most recent spoiler log should be automatically loaded, <b>false</b> otherwise.
+    */
+    static bool GetAutoLoadSpoilerLog();
+
+    /*
+    *   Gets the path of the last opened spoiler log.
+    *
+    *   @return The path of the last opened spoiler log.
+    */
+    static QString GetLastSpoilerLogPath();
+
+    /*
+    *   Sets the list of the last opened files.
+    *
+    *   @param NewValue The new list of the last opened files.
+    */
+    static void SetRecentFiles(QStringList NewValue);
+
+    /*
+    *   Sets the auto load most recent file state.
+    *
+    *   @param NewValue The new auto load most recent file state.
+    */
+    static void SetAutoLoadTrackingFile(bool NewValue);
+
+    /*
+    *   Sets the auto load most recent spoiler log state.
+    *
+    *   @param NewValue The new auto load most recent spoiler log state.
+    */
+    
+    static void SetAutoLoadSpoilerLog(bool NewValue);
+    /*
+    *   Sets the most recent spoiler log path.
+    *
+    *   @param NewValue The new most recent spoiler log path.
+    */
+    static void SetLastSpoilerLogPath(QString NewValue);
+    
+#pragma endregion
+
+#pragma region Options Menu
 
     /*
     *   Tells if the view should automatically be snapped to the last collected object.
@@ -76,4 +138,7 @@ public:
     *   @param NewValue The new auto save value.
     */
     static void SetAutoSave(bool NewValue);
+
+#pragma endregion
+
 };

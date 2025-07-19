@@ -4,3 +4,16 @@ QList<QPair<int, int>> FSPoints = {
 QList<QPair<int, int>> FlyPoints = {
 {510, 349},
 };
+QList<QPair<int, int>> CratePoints = {
+{134, 582},
+{117, 565},
+{134, 549},
+{300, 358},
+{283, 341},
+{300, 325},
+};
+QList<QPair<int, int>> GrottoPoints = {
+{148, 566},
+{649, 373},
+{649, 311},
+};

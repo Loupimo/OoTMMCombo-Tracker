@@ -73,6 +73,13 @@ public:
     ~LogTab();
 
     /*
+    *   Gets the spoiler log map array.
+    *
+    *   @return The spoiler log map array
+    */
+    const QHash<QString, QPair<uint32_t, uint32_t>> GetSpoilerMap();
+
+    /*
     *   Toggle the network option regarding the given state.
     *
     *   @param State    The networking state : true = network enabled, false = network disabled.

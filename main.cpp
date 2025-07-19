@@ -1,9 +1,14 @@
 #include <QtWidgets/QApplication>
 #include "UI/AppStyle.h"
-#include "UI/OoTMMComboTracker.h"
 #include "UI/ObjectRenderer.h"
+#include "main.h"
 
+OoTMMComboTracker* MainWindow = nullptr;
 
+OoTMMComboTracker* GetMainWindow()
+{
+    return MainWindow;
+}
 
 int main(int argc, char *argv[])
 {
@@ -18,9 +23,12 @@ int main(int argc, char *argv[])
     a.setStyleSheet(GetDarkStyle());
 
     // Create the main window
-    OoTMMComboTracker w;
-    w.showMaximized();
+    MainWindow = new OoTMMComboTracker();
+    MainWindow->showMaximized();
 
     // Start the main loop
-    return a.exec();
+    int ret = a.exec();
+
+    delete MainWindow;
+    return ret;
 }

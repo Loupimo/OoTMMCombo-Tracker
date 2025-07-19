@@ -71,7 +71,7 @@ void Game::gameClose()
 
 void Game::gameServerReconnect()
 {
-    printf("Disconnected from server, reconnecting...\n");
+    MultiLogger::LogMessage("Disconnected from server, reconnecting...\n");
     this->gameServerClose();
     this->state = STATE_CONNECT;
 }
@@ -320,7 +320,7 @@ void Game::gameApiApplyLedger()
         return;
 
     /* Apply the ledger entry */
-    LOGF("LEDGER APPLY #%d\n", entryId);
+    MultiLogger::LogMessage("LEDGER APPLY #%d\n", entryId);
     fe = this->entries + entryId;
     protocolWrite8(this, this->apiNetAddr + 0x18, 0x01);
     cmdBase = this->apiNetAddr + 0x1c;
@@ -502,7 +502,7 @@ int Game::gameProcessRxLedgerEntry()
     fe.size = extraSize;
     memcpy(fe.data, this->rxBuffer + 10, extraSize);
 
-    LOGF("LEDGER ENTRY: %d bytes\n", extraSize);
+    MultiLogger::LogMessage("LEDGER ENTRY: %d bytes\n", extraSize);
     this->rxBufferSize = 0;
 
     /* Save the ledger entry */
@@ -582,7 +582,7 @@ void Game::gameProcessInput()
                 return;
             break;
         default:
-            fprintf(stderr, "Unknown opcode: %02x\n", op);
+            MultiLogger::LogMessage("Unknown opcode: %02x\n", op);
             this->rxBufferSize = 0;
             break;
         }

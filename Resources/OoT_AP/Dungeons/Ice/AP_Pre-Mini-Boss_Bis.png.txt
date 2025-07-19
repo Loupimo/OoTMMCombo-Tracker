@@ -2,3 +2,18 @@ QList<QPair<int, int>> PotPoints = {
 {139, 247},
 {114, 229},
 };
+QList<QPair<int, int>> CratePoints = {
+{295, 308},
+{259, 299},
+{282, 282},
+{228, 244},
+{195, 236},
+{214, 219},
+{191, 212},
+{166, 195},
+};
+QList<QPair<int, int>> GrottoPoints = {
+{130, 265},
+{114, 254},
+{98, 242},
+};

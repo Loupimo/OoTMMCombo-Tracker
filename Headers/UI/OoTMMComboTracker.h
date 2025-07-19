@@ -2,6 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include <QTabWidget>
+#include <QStringList>
 #include "ui_OoTMMComboTracker.h"
 #include "LogTab.h"
 #include "GameTab.h"
@@ -16,11 +17,15 @@ class OoTMMComboTracker : public QMainWindow
 
 private:
 
-    Ui::OoTMMComboTrackerClass ui;  // The main window UI.
-    QTabWidget* TabWidget;          // The main tab widget.
-    LogTab* Log;                    // Log / Launch tab.
-    GameTab* OoTTab;                // Ocarina of Time game tab.
-    GameTab* MMTab;                 // Majora's Mask game tab.
+    Ui::OoTMMComboTrackerClass ui;   // The main window UI.
+    QTabWidget* TabWidget;           // The main tab widget.
+    LogTab* Log;                     // Log / Launch tab.
+    GameTab* OoTTab;                 // Ocarina of Time game tab.
+    GameTab* MMTab;                  // Majora's Mask game tab.
+    QStringList RecentFiles;         // The list of the last opened files.
+    byte MaxRecentFiles = 5;         // The maximum number of recent files to show (auto save not counted).
+    QList<QAction*> RecentActions;   // The actual recent files options.
+
 
 public:
 
@@ -72,9 +77,13 @@ public slots:
 
 #pragma endregion
 
-#pragma region Saving / Loading
+#pragma region Saving / Loading / Menu
 
 public:
+
+    void UpdateRecentFiles();
+    void AddRecentFile(const QString& filePath);
+    void UpdateTrackingState(QString NewState, QIcon NewIcon);
 
     /*
     *   Loads the game scenes using the giving tracking session.
@@ -85,8 +94,10 @@ public:
 
     /*
     *   Loads the game spoiler log.
+    * 
+    *   @param FilePath       The file path to the spoiler log to load.
     */
-    void LoadGameSpoiler();
+    void LoadGameSpoiler(QString FilePath);
 
 #pragma endregion
 

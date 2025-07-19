@@ -7,7 +7,7 @@
 OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     : QMainWindow(parent)
 {
-    ui.setupUi(this);
+    this->ui.setupUi(this);
 
     // The main tab widget
     this->TabWidget = new QTabWidget;
@@ -37,14 +37,44 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     this->ui.actionAutoSnapView->setChecked(AppConfig::GetAutoSnapView());
     this->ui.actionAutoZoom->setChecked(AppConfig::GetAutoZoom());
     this->ui.actionAutoSaving->setChecked(AppConfig::GetAutoSave());
+    this->ui.actionAutoLoadTrackingFile->setChecked(AppConfig::GetAutoLoadTrackingFile());
+    this->ui.actionAutoLoadSpoilerLog->setChecked(AppConfig::GetAutoLoadSpoilerLog());
 
+    // Recent files sub menu
+    for (int i = 0; i < MaxRecentFiles; ++i)
+    {
+        QAction* recentAction = new QAction(this);
+        recentAction->setVisible(false);
+        connect(recentAction, &QAction::triggered, this, [this, i](){
+            this->LoadGameScenes(this->RecentFiles[i]);
+        });
+        this->RecentActions.append(recentAction);
+        this->ui.menuRecents->addAction(recentAction);
+    }
+
+    this->RecentFiles = AppConfig::GetRecentFiles();
+    this->UpdateRecentFiles();
+    if (AppConfig::GetAutoLoadTrackingFile() && this->RecentFiles.size())
+    {
+        this->LoadGameScenes(this->RecentFiles.front());
+    }
+
+    if (AppConfig::GetAutoLoadSpoilerLog())
+    {
+        this->LoadGameSpoiler(AppConfig::GetLastSpoilerLogPath());
+    }
+
+    // Connections
     connect(MultiLogger::GetLogger(), &MultiLogger::NotifyObjectFound, this, &OoTMMComboTracker::UpdateTrackedObject);
     connect(this->ui.actionSaveSession, &QAction::triggered, this->Log, &LogTab::SaveTracking);
     connect(this->ui.actionLoadSession, &QAction::triggered, this->Log, &LogTab::LoadTracking);
+    connect(this->ui.actionStartTracking, &QAction::triggered, this->Log, &LogTab::PressLaunchButton);
     connect(this->ui.actionAutoSnapView, &QAction::toggled, this, &AppConfig::SetAutoSnapView);
     connect(this->ui.actionAutoZoom, &QAction::toggled, this, &AppConfig::SetAutoZoom);
     connect(this->ui.actionAutoSaving, &QAction::toggled, this, &AppConfig::SetAutoSave);
     connect(this->ui.actionAbout, &QAction::triggered, this, &OoTMMComboTracker::ShowAboutDialog);
+    connect(this->ui.actionAutoLoadTrackingFile, &QAction::triggered, this, &AppConfig::SetAutoLoadTrackingFile);
+    connect(this->ui.actionAutoLoadSpoilerLog, &QAction::triggered, this, &AppConfig::SetAutoLoadSpoilerLog);
 }
 
 OoTMMComboTracker::~OoTMMComboTracker()
@@ -158,7 +188,58 @@ void OoTMMComboTracker::UpdateTabNameText(int TabID)
 
 #pragma endregion
 
-#pragma region Saving / Loading
+#pragma region Saving / Loading / Menu
+
+void OoTMMComboTracker::UpdateRecentFiles()
+{
+    if (this->RecentFiles.size() > 0)
+    {
+        this->ui.menuRecents->setEnabled(true);
+    }
+    else
+    {
+        this->ui.menuRecents->setEnabled(true);
+        return;
+    }
+    
+    int numRecentFiles = min(this->RecentFiles.size(), this->MaxRecentFiles);
+
+    for (byte i = 0; i < this->MaxRecentFiles; ++i)
+    {
+        if (i < numRecentFiles)
+        {
+            QString text = this->RecentFiles[i]; //QFileInfo(this->RecentFiles[i]).fileName();
+            this->RecentActions[i]->setText(text);
+            this->RecentActions[i]->setVisible(true);
+        }
+        else
+        {
+            this->RecentActions[i]->setVisible(false);
+        }
+    }
+}
+
+
+void OoTMMComboTracker::AddRecentFile(const QString& filePath)
+{
+    this->RecentFiles.removeAll(filePath);
+    this->RecentFiles.prepend(filePath);
+
+    while (this->RecentFiles.size() > this->MaxRecentFiles)
+    {
+        this->RecentFiles.removeLast();
+    }
+
+    this->UpdateRecentFiles();
+    AppConfig::SetRecentFiles(this->RecentFiles);
+}
+
+
+void OoTMMComboTracker::UpdateTrackingState(QString NewState, QIcon NewIcon)
+{
+    this->ui.actionStartTracking->setText(NewState);
+    this->ui.actionStartTracking->setIcon(NewIcon);
+}
 
 void OoTMMComboTracker::LoadGameScenes(QString FilePath)
 {
@@ -168,6 +249,8 @@ void OoTMMComboTracker::LoadGameScenes(QString FilePath)
         MultiLogger::LogMessage("Can't open file: %s\n", FilePath.toStdString().c_str());
         return;
     }
+
+    this->AddRecentFile(FilePath);
 
     // Load file data
     QByteArray data = loadFile.readAll();
@@ -183,10 +266,109 @@ void OoTMMComboTracker::LoadGameScenes(QString FilePath)
 }
 
 
-void OoTMMComboTracker::LoadGameSpoiler()
+void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
 {
+    QFile file(FilePath);
+
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        qWarning() << "Can't open file:" << file.errorString();
+        return;
+    }
+
+    QTextStream in(&file);
+    QString content = in.readAll(); // Read all file
+    file.close();
+
+    // Split with "===" to find the right section
+    QStringList sections = content.split("===========================================================================", Qt::SkipEmptyParts, Qt::CaseSensitive);
+
+    // Check that we have the correct number of sections
+    if (sections.size() < 3)
+    {
+        qWarning() << "The file does not have the correct number of sections.";
+        return;
+    }
+
+    // Regex to split strings by location
+    QRegularExpression reg("^\\s{2}(.+:(?:\n\\s{4}.*)+)\n*", QRegularExpression::MultilineOption);
+    QRegularExpressionMatchIterator it = reg.globalMatch(sections[2]);
+
+    QStringList maps;
+    while (it.hasNext())
+    {   // Fill the maps array with all the gathered matches
+
+        QRegularExpressionMatch match = it.next();
+        maps.append(match.captured(1));
+    }
+
+    const QHash<QString, QPair<uint32_t, uint32_t>> spoilerMap = this->Log->GetSpoilerMap();
+
+    for (QString map : maps)
+    {   // Browse all maps
+
+        // All objects start with four spaces
+        QStringList objects = map.split("    ");
+
+        // Regex to split map / object and their associated item 
+        reg = QRegularExpression("^([\\w'-]+(?:\\s[\\w'-]+)*)", QRegularExpression::MultilineOption);
+
+        // Get the map location
+        it = reg.globalMatch(objects[0]);
+        QString mapName = it.next().captured(1);
+
+        uint32_t sceneID = spoilerMap[mapName].first;                                   // Get the scene ID that match the spoiler log location
+        SceneObjects* gameSceneObj = GetGameSceneObjects(spoilerMap[mapName].second);   // Get the correct game objects
+
+        for (qsizetype i = 1; i < objects.size(); i++)
+        {   // Browse all the spoiler scene objects
+
+            QStringList spoilObject = objects[i].split(": ");                           // Left part is object name, right is the item it contains
+            spoilObject[0] = spoilObject[0].replace("\n", "");                          // Sometimes the object has a line break, just get rid of it
+
+            size_t len = spoilObject[0].length() + 1;                                   // We need to add 1 for the null terminator
+            char* tmpObjName = (char*)malloc(sizeof(char) * len);
+            memcpy_s(tmpObjName, len, spoilObject[0].toStdString().c_str(), len);
+            tmpObjName[len - 1] = '\0';
+
+            for (size_t j = 0; j < gameSceneObj[sceneID].NumOfObjs; j++)
+            {   // Browse all scenes objects
+
+                if (strcmp(gameSceneObj[sceneID].Objects[j].Location, tmpObjName) == 0)
+                {   // We have found the object
+
+                    free(tmpObjName);
+                    ObjectInfo* object = &gameSceneObj[sceneID].Objects[j];
+
+                    // Find and modify the object item
+                    const ItemInfo* item = FindItemByName(spoilObject[1]);
+                    object->Item = item;
+
+                    if (object->RenderScene != sceneID)
+                    {   // The current object will never be rendered, we need to update its counter part
+
+                        for (size_t k = 0; k < gameSceneObj[object->RenderScene].NumOfObjs; k++)
+                        {   // Find the object in the rendered scene
+
+                            if (strcmp(gameSceneObj[object->RenderScene].Objects[k].Location, object->Location) == 0)
+                            {   // Object found
+
+                                gameSceneObj[object->RenderScene].Objects[k].Item = item;
+                                break;
+                            }
+                        }
+                    }
+
+                    break;
+                }
+            }
+        }
+    }
+
     this->OoTTab->RefreshGameTab();
     this->MMTab->RefreshGameTab();
+
+    AppConfig::SetLastSpoilerLogPath(FilePath);
 }
 
 #pragma endregion

@@ -19,6 +19,11 @@ QList<QPair<int, int>> GSPoints = {
 };
 QList<QPair<int, int>> CratePoints = {
 {743, 107},
+{697, 32},
+{669, 31},
+{641, 30},
+{614, 29},
+{586, 28},
 };
 QList<QPair<int, int>> GrottoPoints = {
 {737, 580},

@@ -25,10 +25,36 @@
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>File</string>
+     <string>Tracking</string>
     </property>
+    <widget class="QMenu" name="menuRecents">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="title">
+      <string>Recents</string>
+     </property>
+     <property name="icon">
+      <iconset theme="QIcon::ThemeIcon::DocumentOpenRecent"/>
+     </property>
+     <property name="separatorsCollapsible">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QMenu" name="menuAutoLoadMostRecent">
+     <property name="title">
+      <string>Auto Load Most Recent</string>
+     </property>
+     <addaction name="actionAutoLoadTrackingFile"/>
+     <addaction name="actionAutoLoadSpoilerLog"/>
+    </widget>
     <addaction name="actionSaveSession"/>
     <addaction name="actionLoadSession"/>
+    <addaction name="actionLoadSpoilerLog"/>
+    <addaction name="menuRecents"/>
+    <addaction name="menuAutoLoadMostRecent"/>
+    <addaction name="separator"/>
+    <addaction name="actionStartTracking"/>
    </widget>
    <widget class="QMenu" name="menuOptions">
     <property name="title">
@@ -140,6 +166,55 @@
    </property>
    <property name="text">
     <string>About</string>
+   </property>
+  </action>
+  <action name="actionfrf">
+   <property name="text">
+    <string>frf</string>
+   </property>
+  </action>
+  <action name="actionStartTracking">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::MediaPlaybackStart"/>
+   </property>
+   <property name="text">
+    <string>Start Tracking</string>
+   </property>
+   <property name="shortcut">
+    <string>F3</string>
+   </property>
+  </action>
+  <action name="actionLoadSpoilerLog">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::SystemLogOut"/>
+   </property>
+   <property name="text">
+    <string>Load Spoiler Log</string>
+   </property>
+   <property name="shortcut">
+    <string>F11</string>
+   </property>
+  </action>
+  <action name="actionAutoLoadTrackingFile">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Tracking File</string>
+   </property>
+  </action>
+  <action name="actionAutoLoadSpoilerLog">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Spoiler Log</string>
    </property>
   </action>
  </widget>

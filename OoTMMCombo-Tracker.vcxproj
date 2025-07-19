@@ -151,6 +151,7 @@
     <ClInclude Include="Headers\UI\AppStyle.h" />
     <ClInclude Include="Headers\UI\RegionTab.h" />
     <ClInclude Include="Headers\UI\RoomRenderer.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="resource.h" />
     <QtMoc Include="Headers\UI\SceneRenderer.h" />
     <QtMoc Include="Headers\Multi\Multi.h" />

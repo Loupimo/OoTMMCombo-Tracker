@@ -3,6 +3,7 @@
 #include "Multi/Game.h"
 #include "UI/SceneRenderer.h"
 #include "Combo/Regions.h"
+#include "Main.h"
 
 #define CreateOverworldScene(SceneID, GameID) SceneInfo (SceneID, GameID, SceneType::Overworld)
 #define CreateTempleScene(SceneID, GameID) SceneInfo (SceneID,  GameID, SceneType::Temple)
@@ -392,6 +393,7 @@ void GameTab::SaveGameScenes(QString FilePath)
         return;
     }
     
+    GetMainWindow()->AddRecentFile(FilePath);
     SaveSceneObjects(&saveFile);
     saveFile.close();
 

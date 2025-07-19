@@ -9,3 +9,7 @@ QList<QPair<int, int>> ChestPoints = {
 QList<QPair<int, int>> PotPoints = {
 {297, 198},
 };
+QList<QPair<int, int>> GrottoPoints = {
+{317, 198},
+{519, 129},
+};
