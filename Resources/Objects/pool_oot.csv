@@ -554,7 +554,8 @@ GERUDO_ARCHERY_2;GERUDO_FORTRESS;Biggest Quiver;OOT Gerudo Fortress Archery Rewa
 0x0800f;GERUDO_FORTRESS;Main 4;OOT Gerudo Fortress Crate Main 4;crate;515;487;GERUDO_FORTRESS;crate;All;0;oot
 0x08010;GERUDO_FORTRESS;Main 5;OOT Gerudo Fortress Crate Main 5;crate;530;486;GERUDO_FORTRESS;crate;All;0;oot
 0x08011;GERUDO_FORTRESS;Main 6;OOT Gerudo Fortress Crate Main 6;crate;538;486;GERUDO_FORTRESS;crate;All;0;oot
-0x01;GERUDO_FORTRESS;Jail - Top;OOT Gerudo Fortress Crate Jail Top;collectible;390;524;GERUDO_FORTRESS;collectible;All;0;oot
+0x08012;GERUDO_FORTRESS;Jail - Top;OOT Gerudo Fortress Crate Jail Top;crate;390;524;GERUDO_FORTRESS;crate;Adult;0;oot
+0x01;GERUDO_FORTRESS;Jail - Top;OOT Gerudo Fortress Crate Jail Top;collectible;390;524;GERUDO_FORTRESS;collectible;Child;0;oot
 0x00103;GERUDO_FORTRESS;Archery - Child;OOT Gerudo Fortress Crate Archery Child;none;195;158;GERUDO_FORTRESS;none;Child;0;oot
 0x00100;GERUDO_FORTRESS;Archery 1;OOT Gerudo Fortress Crate Archery 01;crate;180;178;GERUDO_FORTRESS;crate;All;0;oot
 0x00101;GERUDO_FORTRESS;Archery 2;OOT Gerudo Fortress Crate Archery 02;crate;752;180;GERUDO_FORTRESS;crate;All;0;oot
@@ -959,6 +960,7 @@ POE_COLLECTOR;GUARD_HOUSE;Bottle;OOT Market Pot House Big Poes;npc;139;533;GUARD
 0x00123;HAUNTED_WASTELAND;After Pit 2;OOT Haunted Wasteland Crate After Pit 2;crate;806;275;HAUNTED_WASTELAND;crate;All;0;oot
 0x00124;HAUNTED_WASTELAND;After Pit 3;OOT Haunted Wasteland Crate After Pit 3;crate;785;236;HAUNTED_WASTELAND;crate;All;0;oot
 0x00121;HAUNTED_WASTELAND;Poe Chase;OOT Haunted Wasteland Crate Deep;crate;159;520;HAUNTED_WASTELAND;crate;All;0;oot
+CARPET_MERCHANT;HAUNTED_WASTELAND;Carpet Merchant;OOT Haunted Wasteland Carpet Merchant;npc;800;471;HAUNTED_WASTELAND;npc;All;0;oot
 GS_10;HOUSE_OF_SKULLTULA;10 Tokens;OOT Skulltula House 10 Tokens;npc;657;431;HOUSE_OF_SKULLTULA;npc;All;0;oot
 GS_20;HOUSE_OF_SKULLTULA;20 Tokens;OOT Skulltula House 20 Tokens;npc;287;434;HOUSE_OF_SKULLTULA;npc;All;0;oot
 GS_30;HOUSE_OF_SKULLTULA;30 Tokens;OOT Skulltula House 30 Tokens;npc;469;126;HOUSE_OF_SKULLTULA;npc;All;0;oot
@@ -1420,14 +1422,14 @@ MASK_SELL_KEATON;KAKARIKO_VILLAGE;Keaton Mask;OOT Kakariko Sell Keaton Mask;npc;
 0x98017;KOKIRI_FOREST;Adult - Grass 10;OOT Kokiri Forest Grass Adult 10;grass;1063;555;KOKIRI_FOREST;grass;Adult;0;oot
 0xa8017;KOKIRI_FOREST;Adult - Grass 11;OOT Kokiri Forest Grass Adult 11;grass;1073;556;KOKIRI_FOREST;grass;Adult;0;oot
 0xb8017;KOKIRI_FOREST;Adult - Grass 12;OOT Kokiri Forest Grass Adult 12;grass;1082;550;KOKIRI_FOREST;grass;Adult;0;oot
-0x0800f;KOKIRI_FOREST;Adult - Near Crawl 1;OOT Kokiri Forest Grass Adult Near Crawl 1;grass;698;699;KOKIRI_FOREST;grass;Adult;0;oot
-0x08010;KOKIRI_FOREST;Adult - Near Crawl 2;OOT Kokiri Forest Grass Adult Near Crawl 2;grass;698;724;KOKIRI_FOREST;grass;Adult;0;oot
-0x08011;KOKIRI_FOREST;Adult - Near Crawl 3;OOT Kokiri Forest Grass Adult Near Crawl 3;grass;625;719;KOKIRI_FOREST;grass;Adult;0;oot
-0x08012;KOKIRI_FOREST;Adult - Near Crawl 4;OOT Kokiri Forest Grass Adult Near Crawl 4;grass;615;706;KOKIRI_FOREST;grass;Adult;0;oot
-0x08013;KOKIRI_FOREST;Adult - Near Crawl 5;OOT Kokiri Forest Grass Adult Near Crawl 5;grass;617;732;KOKIRI_FOREST;grass;Adult;0;oot
-0x08014;KOKIRI_FOREST;Adult - Near Crawl 6;OOT Kokiri Forest Grass Adult Near Crawl 6;grass;607;720;KOKIRI_FOREST;grass;Adult;0;oot
-0x08015;KOKIRI_FOREST;Adult - Near Crawl 7;OOT Kokiri Forest Grass Adult Near Crawl 7;grass;597;707;KOKIRI_FOREST;grass;Adult;0;oot
-0x08016;KOKIRI_FOREST;Adult - Near Crawl 8;OOT Kokiri Forest Grass Adult Near Crawl 8;grass;597;733;KOKIRI_FOREST;grass;Adult;0;oot
+0x0800f;KOKIRI_FOREST;Adult - Near Crawl 1;OOT Kokiri Forest Grass Adult Near Crawl 1;grass;597;733;KOKIRI_FOREST;grass;Adult;0;oot
+0x08010;KOKIRI_FOREST;Adult - Near Crawl 2;OOT Kokiri Forest Grass Adult Near Crawl 2;grass;597;707;KOKIRI_FOREST;grass;Adult;0;oot
+0x08011;KOKIRI_FOREST;Adult - Near Crawl 3;OOT Kokiri Forest Grass Adult Near Crawl 3;grass;607;720;KOKIRI_FOREST;grass;Adult;0;oot
+0x08012;KOKIRI_FOREST;Adult - Near Crawl 4;OOT Kokiri Forest Grass Adult Near Crawl 4;grass;617;732;KOKIRI_FOREST;grass;Adult;0;oot
+0x08013;KOKIRI_FOREST;Adult - Near Crawl 5;OOT Kokiri Forest Grass Adult Near Crawl 5;grass;615;706;KOKIRI_FOREST;grass;Adult;0;oot
+0x08014;KOKIRI_FOREST;Adult - Near Crawl 6;OOT Kokiri Forest Grass Adult Near Crawl 6;grass;625;719;KOKIRI_FOREST;grass;Adult;0;oot
+0x08015;KOKIRI_FOREST;Adult - Near Crawl 7;OOT Kokiri Forest Grass Adult Near Crawl 7;grass;698;724;KOKIRI_FOREST;grass;Adult;0;oot
+0x08016;KOKIRI_FOREST;Adult - Near Crawl 8;OOT Kokiri Forest Grass Adult Near Crawl 8;grass;698;699;KOKIRI_FOREST;grass;Adult;0;oot
 0x00005;KOKIRI_FOREST;Child - Rupee 1;OOT Kokiri Forest Rupee Child 1;rupee;591;251;KOKIRI_FOREST;rupee;Child;0;oot
 0x00006;KOKIRI_FOREST;Child - Rupee 2;OOT Kokiri Forest Rupee Child 2;rupee;779;430;KOKIRI_FOREST;rupee;Child;0;oot
 0x00200;KOKIRI_FOREST;Crawl 1;OOT Kokiri Forest Rupee Crawl 1;rupee;555;1052;KOKIRI_FOREST;rupee;Child;0;oot
@@ -3176,17 +3178,17 @@ GS_50;KAKARIKO_VILLAGE;50 Tokens;OOT Skulltula House 50 Tokens;none;0;0;HOUSE_OF
 0x1d;GORON_CITY;Item 6;OOT Goron Shop Item 6;none;0;0;GORON_SHOP;none;All;0;oot
 0x1e;GORON_CITY;Item 7;OOT Goron Shop Item 7;none;0;0;GORON_SHOP;none;All;0;oot
 0x1f;GORON_CITY;Item 8;OOT Goron Shop Item 8;none;0;0;GORON_SHOP;none;All;0;oot
-0x0800a;DEATH_MOUNTAIN_TRAIL;Near Lower Skulltula;OOT Death Mountain Trail Red Boulder Near Lower GS;redboulder;0;0;DEATH_MOUNTAIN_TRAIL;redboulder;Adult;0;oot
-0x0800b;DEATH_MOUNTAIN_TRAIL;Lower 1;OOT Death Mountain Trail Red Boulder Lower 1;redboulder;0;0;DEATH_MOUNTAIN_TRAIL;redboulder;Adult;0;oot
-0x0800c;DEATH_MOUNTAIN_TRAIL;Lower 2;OOT Death Mountain Trail Red Boulder Lower 2;redboulder;0;0;DEATH_MOUNTAIN_TRAIL;redboulder;Adult;0;oot
-0x08014;DEATH_MOUNTAIN_TRAIL;Lower 3;OOT Death Mountain Trail Red Boulder Lower 3;redboulder;0;0;DEATH_MOUNTAIN_TRAIL;redboulder;Adult;0;oot
-0x0800d;DEATH_MOUNTAIN_TRAIL;Lower 4;OOT Death Mountain Trail Red Boulder Lower 4;redboulder;0;0;DEATH_MOUNTAIN_TRAIL;redboulder;Adult;0;oot
-0x08010;DEATH_MOUNTAIN_TRAIL;Lower 5;OOT Death Mountain Trail Red Boulder Lower 5;redboulder;0;0;DEATH_MOUNTAIN_TRAIL;redboulder;Adult;0;oot
-0x0800e;DEATH_MOUNTAIN_TRAIL;Lower 6;OOT Death Mountain Trail Red Boulder Lower 6;redboulder;0;0;DEATH_MOUNTAIN_TRAIL;redboulder;Adult;0;oot
-0x0800f;DEATH_MOUNTAIN_TRAIL;Lower 7;OOT Death Mountain Trail Red Boulder Lower 7;redboulder;0;0;DEATH_MOUNTAIN_TRAIL;redboulder;Adult;0;oot
-0x08011;DEATH_MOUNTAIN_TRAIL;Near Upper Skulltula;OOT Death Mountain Trail Red Boulder Near Upper GS;redboulder;0;0;DEATH_MOUNTAIN_TRAIL;redboulder;Adult;2;oot
-0x08013;DEATH_MOUNTAIN_TRAIL;Upper 1;OOT Death Mountain Trail Red Boulder Upper 1;redboulder;0;0;DEATH_MOUNTAIN_TRAIL;redboulder;Adult;2;oot
-0x08012;DEATH_MOUNTAIN_TRAIL;Upper 2;OOT Death Mountain Trail Red Boulder Upper 2;redboulder;0;0;DEATH_MOUNTAIN_TRAIL;redboulder;Adult;2;oot
+0x0800a;DEATH_MOUNTAIN_TRAIL;Near Lower Skulltula;OOT Death Mountain Trail Red Boulder Near Lower GS;redboulder;158;89;DEATH_MOUNTAIN_TRAIL;redboulder;Adult;0;oot
+0x0800b;DEATH_MOUNTAIN_TRAIL;Lower 1;OOT Death Mountain Trail Red Boulder Lower 1;redboulder;924;613;DEATH_MOUNTAIN_TRAIL;redboulder;Adult;0;oot
+0x0800c;DEATH_MOUNTAIN_TRAIL;Lower 2;OOT Death Mountain Trail Red Boulder Lower 2;redboulder;767;605;DEATH_MOUNTAIN_TRAIL;redboulder;Adult;0;oot
+0x08014;DEATH_MOUNTAIN_TRAIL;Lower 3;OOT Death Mountain Trail Red Boulder Lower 3;redboulder;215;336;DEATH_MOUNTAIN_TRAIL;redboulder;Adult;0;oot
+0x0800d;DEATH_MOUNTAIN_TRAIL;Lower 4;OOT Death Mountain Trail Red Boulder Lower 4;redboulder;310;336;DEATH_MOUNTAIN_TRAIL;redboulder;Adult;0;oot
+0x08010;DEATH_MOUNTAIN_TRAIL;Lower 5;OOT Death Mountain Trail Red Boulder Lower 5;redboulder;586;553;DEATH_MOUNTAIN_TRAIL;redboulder;Adult;0;oot
+0x0800e;DEATH_MOUNTAIN_TRAIL;Lower 6;OOT Death Mountain Trail Red Boulder Lower 6;redboulder;481;293;DEATH_MOUNTAIN_TRAIL;redboulder;Adult;0;oot
+0x0800f;DEATH_MOUNTAIN_TRAIL;Lower 7;OOT Death Mountain Trail Red Boulder Lower 7;redboulder;830;197;DEATH_MOUNTAIN_TRAIL;redboulder;Adult;0;oot
+0x08011;DEATH_MOUNTAIN_TRAIL;Near Upper Skulltula;OOT Death Mountain Trail Red Boulder Near Upper GS;redboulder;671;502;DEATH_MOUNTAIN_TRAIL;redboulder;Adult;2;oot
+0x08013;DEATH_MOUNTAIN_TRAIL;Upper 1;OOT Death Mountain Trail Red Boulder Upper 1;redboulder;878;114;DEATH_MOUNTAIN_TRAIL;redboulder;Adult;1;oot
+0x08012;DEATH_MOUNTAIN_TRAIL;Upper 2;OOT Death Mountain Trail Red Boulder Upper 2;redboulder;869;59;DEATH_MOUNTAIN_TRAIL;redboulder;Adult;1;oot
 0x00029;GORON_CITY;Boulder 1;OOT Goron City Red Boulder 1;redboulder;586;28;GORON_CITY;redboulder;All;0;oot
 0x0002d;GORON_CITY;Boulder 2;OOT Goron City Red Boulder 2;redboulder;614;29;GORON_CITY;redboulder;All;0;oot
 0x0002a;GORON_CITY;Boulder 3;OOT Goron City Red Boulder 3;redboulder;641;30;GORON_CITY;redboulder;All;0;oot
@@ -3196,31 +3198,31 @@ GS_50;KAKARIKO_VILLAGE;50 Tokens;OOT Skulltula House 50 Tokens;none;0;0;HOUSE_OF
 0x0010c;DEATH_MOUNTAIN_CRATER;Great Fairy 1;OOT Death Mountain Crater Red Boulder Great Fairy 1;redboulder;687;240;DEATH_MOUNTAIN_CRATER;redboulder;All;0;oot
 0x0010d;DEATH_MOUNTAIN_CRATER;Great Fairy 2;OOT Death Mountain Crater Red Boulder Great Fairy 2;redboulder;681;228;DEATH_MOUNTAIN_CRATER;redboulder;All;0;oot
 0x0010e;DEATH_MOUNTAIN_CRATER;Shortcut;OOT Death Mountain Crater Red Boulder Shortcut;redboulder;641;240;DEATH_MOUNTAIN_CRATER;redboulder;All;0;oot
-0x08008;HYRULE_FIELD;Boulder 1;OOT Hyrule Field Red Boulder 1;redboulder;0;0;HYRULE_FIELD;redboulder;All;0;oot
-0x08009;HYRULE_FIELD;Boulder 2;OOT Hyrule Field Red Boulder 2;redboulder;0;0;HYRULE_FIELD;redboulder;All;0;oot
-0x0800a;HYRULE_FIELD;Boulder 3;OOT Hyrule Field Red Boulder 3;redboulder;0;0;HYRULE_FIELD;redboulder;All;0;oot
-0x0800b;HYRULE_FIELD;Boulder 4;OOT Hyrule Field Red Boulder 4;redboulder;0;0;HYRULE_FIELD;redboulder;All;0;oot
-0x00003;GANON_CASTLE_EXTERIOR;Boulder 1;OOT Ganon Castle Exterior Red Boulder 1;redboulder;0;0;GANON_CASTLE_EXTERIOR;redboulder;All;0;oot
-0x00004;GANON_CASTLE_EXTERIOR;Boulder 2;OOT Ganon Castle Exterior Red Boulder 2;redboulder;0;0;GANON_CASTLE_EXTERIOR;redboulder;All;0;oot
-0x00005;GANON_CASTLE_EXTERIOR;Boulder 3;OOT Ganon Castle Exterior Red Boulder 3;redboulder;0;0;GANON_CASTLE_EXTERIOR;redboulder;All;0;oot
-0x08010;GERUDO_VALLEY;Before Bridge 1;OOT Gerudo Valley Red Boulder Before Bridge 1;redboulder;0;0;GERUDO_VALLEY;redboulder;All;0;oot
-0x08011;GERUDO_VALLEY;Before Bridge 2;OOT Gerudo Valley Red Boulder Before Bridge 2;redboulder;0;0;GERUDO_VALLEY;redboulder;All;0;oot
-0x08012;GERUDO_VALLEY;After Bridge 1;OOT Gerudo Valley Red Boulder After Bridge 1;redboulder;0;0;GERUDO_VALLEY;redboulder;All;0;oot
-0x08013;GERUDO_VALLEY;After Bridge 2;OOT Gerudo Valley Red Boulder After Bridge 2;redboulder;0;0;GERUDO_VALLEY;redboulder;All;0;oot
-0x0800f;GERUDO_VALLEY;Around Chest 1;OOT Gerudo Valley Red Boulder Around Chest 1;redboulder;0;0;GERUDO_VALLEY;redboulder;All;0;oot
-0x08014;GERUDO_VALLEY;Around Chest 2;OOT Gerudo Valley Red Boulder Around Chest 2;redboulder;0;0;GERUDO_VALLEY;redboulder;All;0;oot
-0x08015;GERUDO_VALLEY;Around Chest 3;OOT Gerudo Valley Red Boulder Around Chest 3;redboulder;0;0;GERUDO_VALLEY;redboulder;All;0;oot
-0x08016;GERUDO_VALLEY;Around Chest 4;OOT Gerudo Valley Red Boulder Around Chest 4;redboulder;0;0;GERUDO_VALLEY;redboulder;All;0;oot
-0x00000;ICE_CAVERN;Before Entrance 1;OOT Ice Cavern Icicle Before Entrance 1;icicle;117;565;ICE_CAVERN;icicle;All;0;oot
-0x00001;ICE_CAVERN;Before Entrance 2;OOT Ice Cavern Icicle Before Entrance 2;icicle;134;582;ICE_CAVERN;icicle;All;0;oot
-0x00002;ICE_CAVERN;Before Entrance 3;OOT Ice Cavern Icicle Before Entrance 3;icicle;134;549;ICE_CAVERN;icicle;All;0;oot
-0x00103;ICE_CAVERN;Entrance 1;OOT Ice Cavern Icicle Entrance 1;icicle;283;341;ICE_CAVERN;icicle;All;0;oot
-0x00104;ICE_CAVERN;Entrance 2;OOT Ice Cavern Icicle Entrance 2;icicle;300;358;ICE_CAVERN;icicle;All;0;oot
-0x00105;ICE_CAVERN;Entrance 3;OOT Ice Cavern Icicle Entrance 3;icicle;300;325;ICE_CAVERN;icicle;All;0;oot
-0x00202;ICE_CAVERN;Before Scythe 1;OOT Ice Cavern Icicle Before Scythe 1;icicle;804;270;ICE_CAVERN;icicle;All;0;oot
-0x00203;ICE_CAVERN;Before Scythe 2;OOT Ice Cavern Icicle Before Scythe 2;icicle;800;255;ICE_CAVERN;icicle;All;0;oot
-0x00204;ICE_CAVERN;Before Scythe 3;OOT Ice Cavern Icicle Before Scythe 3;icicle;795;240;ICE_CAVERN;icicle;All;0;oot
-0x00205;ICE_CAVERN;Before Scythe 4;OOT Ice Cavern Icicle Before Scythe 4;icicle;791;226;ICE_CAVERN;icicle;All;0;oot
+0x08008;HYRULE_FIELD;Boulder 1;OOT Hyrule Field Red Boulder 1;redboulder;320;468;HYRULE_FIELD;redboulder;Adult;0;oot
+0x08009;HYRULE_FIELD;Boulder 2;OOT Hyrule Field Red Boulder 2;redboulder;350;531;HYRULE_FIELD;redboulder;Adult;0;oot
+0x0800a;HYRULE_FIELD;Boulder 3;OOT Hyrule Field Red Boulder 3;redboulder;303;523;HYRULE_FIELD;redboulder;Adult;0;oot
+0x0800b;HYRULE_FIELD;Boulder 4;OOT Hyrule Field Red Boulder 4;redboulder;407;531;HYRULE_FIELD;redboulder;Adult;0;oot
+0x00003;GANON_CASTLE_EXTERIOR;Boulder 1;OOT Ganon Castle Exterior Red Boulder 1;redboulder;130;319;GANON_CASTLE_EXTERIOR;redboulder;All;0;oot
+0x00004;GANON_CASTLE_EXTERIOR;Boulder 2;OOT Ganon Castle Exterior Red Boulder 2;redboulder;265;373;GANON_CASTLE_EXTERIOR;redboulder;All;0;oot
+0x00005;GANON_CASTLE_EXTERIOR;Boulder 3;OOT Ganon Castle Exterior Red Boulder 3;redboulder;240;365;GANON_CASTLE_EXTERIOR;redboulder;All;0;oot
+0x08010;GERUDO_VALLEY;Before Bridge 1;OOT Gerudo Valley Red Boulder Before Bridge 1;redboulder;613;208;GERUDO_VALLEY;redboulder;All;0;oot
+0x08011;GERUDO_VALLEY;Before Bridge 2;OOT Gerudo Valley Red Boulder Before Bridge 2;redboulder;596;401;GERUDO_VALLEY;redboulder;All;0;oot
+0x08012;GERUDO_VALLEY;After Bridge 1;OOT Gerudo Valley Red Boulder After Bridge 1;redboulder;154;282;GERUDO_VALLEY;redboulder;All;0;oot
+0x08013;GERUDO_VALLEY;After Bridge 2;OOT Gerudo Valley Red Boulder After Bridge 2;redboulder;312;444;GERUDO_VALLEY;redboulder;All;0;oot
+0x0800f;GERUDO_VALLEY;Around Chest 1;OOT Gerudo Valley Red Boulder Around Chest 1;redboulder;253;461;GERUDO_VALLEY;redboulder;All;0;oot
+0x08014;GERUDO_VALLEY;Around Chest 2;OOT Gerudo Valley Red Boulder Around Chest 2;redboulder;272;472;GERUDO_VALLEY;redboulder;All;0;oot
+0x08015;GERUDO_VALLEY;Around Chest 3;OOT Gerudo Valley Red Boulder Around Chest 3;redboulder;233;461;GERUDO_VALLEY;redboulder;All;0;oot
+0x08016;GERUDO_VALLEY;Around Chest 4;OOT Gerudo Valley Red Boulder Around Chest 4;redboulder;275;492;GERUDO_VALLEY;redboulder;All;0;oot
+0x00000;ICE_CAVERN;Before Entrance 1;OOT Ice Cavern Icicle Before Entrance 1;icicle;134;549;ICE_CAVERN;icicle;All;0;oot
+0x00001;ICE_CAVERN;Before Entrance 2;OOT Ice Cavern Icicle Before Entrance 2;icicle;117;565;ICE_CAVERN;icicle;All;0;oot
+0x00002;ICE_CAVERN;Before Entrance 3;OOT Ice Cavern Icicle Before Entrance 3;icicle;134;582;ICE_CAVERN;icicle;All;0;oot
+0x00103;ICE_CAVERN;Entrance 1;OOT Ice Cavern Icicle Entrance 1;icicle;300;325;ICE_CAVERN;icicle;All;0;oot
+0x00104;ICE_CAVERN;Entrance 2;OOT Ice Cavern Icicle Entrance 2;icicle;283;341;ICE_CAVERN;icicle;All;0;oot
+0x00105;ICE_CAVERN;Entrance 3;OOT Ice Cavern Icicle Entrance 3;icicle;300;358;ICE_CAVERN;icicle;All;0;oot
+0x00202;ICE_CAVERN;Before Scythe 1;OOT Ice Cavern Icicle Before Scythe 1;icicle;791;226;ICE_CAVERN;icicle;All;0;oot
+0x00203;ICE_CAVERN;Before Scythe 2;OOT Ice Cavern Icicle Before Scythe 2;icicle;795;240;ICE_CAVERN;icicle;All;0;oot
+0x00204;ICE_CAVERN;Before Scythe 3;OOT Ice Cavern Icicle Before Scythe 3;icicle;800;255;ICE_CAVERN;icicle;All;0;oot
+0x00205;ICE_CAVERN;Before Scythe 4;OOT Ice Cavern Icicle Before Scythe 4;icicle;804;270;ICE_CAVERN;icicle;All;0;oot
 0x0030c;ICE_CAVERN;Scythe 1;OOT Ice Cavern Icicle Scythe 1;icicle;244;458;ICE_CAVERN;icicle;All;1;oot
 0x0030d;ICE_CAVERN;Scythe 2;OOT Ice Cavern Icicle Scythe 2;icicle;264;463;ICE_CAVERN;icicle;All;1;oot
 0x0030e;ICE_CAVERN;Scythe 3;OOT Ice Cavern Icicle Scythe 3;icicle;280;479;ICE_CAVERN;icicle;All;1;oot
@@ -3264,20 +3266,20 @@ GS_50;KAKARIKO_VILLAGE;50 Tokens;OOT Skulltula House 50 Tokens;none;0;0;HOUSE_OF
 0x0090c;ICE_CAVERN;Map 2;OOT Ice Cavern Red Ice Map 2;redice;519;129;ICE_CAVERN;redice;All;3;oot
 0x00b1a;ICE_CAVERN;Compass 1;OOT Ice Cavern Red Ice Compass 1;redice;477;311;ICE_CAVERN;redice;All;2;oot
 0x00b1b;ICE_CAVERN;Compass 2;OOT Ice Cavern Red Ice Compass 2;redice;496;570;ICE_CAVERN;redice;All;2;oot
-0x00202;INSIDE_GANON_CASTLE;Water Trial 1;OOT Ganon Castle Icicle Water 01;icicle;0;0;INSIDE_GANON_CASTLE;icicle;All;1;oot
-0x00203;INSIDE_GANON_CASTLE;Water Trial 2;OOT Ganon Castle Icicle Water 02;icicle;0;0;INSIDE_GANON_CASTLE;icicle;All;1;oot
-0x00204;INSIDE_GANON_CASTLE;Water Trial 3;OOT Ganon Castle Icicle Water 03;icicle;0;0;INSIDE_GANON_CASTLE;icicle;All;1;oot
-0x00205;INSIDE_GANON_CASTLE;Water Trial 4;OOT Ganon Castle Icicle Water 04;icicle;0;0;INSIDE_GANON_CASTLE;icicle;All;1;oot
-0x00206;INSIDE_GANON_CASTLE;Water Trial 5;OOT Ganon Castle Icicle Water 05;icicle;0;0;INSIDE_GANON_CASTLE;icicle;All;1;oot
-0x00207;INSIDE_GANON_CASTLE;Water Trial 6;OOT Ganon Castle Icicle Water 06;icicle;0;0;INSIDE_GANON_CASTLE;icicle;All;1;oot
-0x00208;INSIDE_GANON_CASTLE;Water Trial 7;OOT Ganon Castle Icicle Water 07;icicle;0;0;INSIDE_GANON_CASTLE;icicle;All;1;oot
-0x00209;INSIDE_GANON_CASTLE;Water Trial 8;OOT Ganon Castle Icicle Water 08;icicle;0;0;INSIDE_GANON_CASTLE;icicle;All;1;oot
-0x0020a;INSIDE_GANON_CASTLE;Water Trial 9;OOT Ganon Castle Icicle Water 09;icicle;0;0;INSIDE_GANON_CASTLE;icicle;All;1;oot
-0x0020b;INSIDE_GANON_CASTLE;Water Trial 10;OOT Ganon Castle Icicle Water 10;icicle;0;0;INSIDE_GANON_CASTLE;icicle;All;1;oot
-0x0020c;INSIDE_GANON_CASTLE;Water Trial 11;OOT Ganon Castle Icicle Water 11;icicle;0;0;INSIDE_GANON_CASTLE;icicle;All;1;oot
-0x0020d;INSIDE_GANON_CASTLE;Water Trial 12;OOT Ganon Castle Icicle Water 12;icicle;0;0;INSIDE_GANON_CASTLE;icicle;All;1;oot
-0x0020e;INSIDE_GANON_CASTLE;Water Trial 13;OOT Ganon Castle Icicle Water 13;icicle;0;0;INSIDE_GANON_CASTLE;icicle;All;1;oot
-0x0020f;INSIDE_GANON_CASTLE;Water Trial 14;OOT Ganon Castle Icicle Water 14;icicle;0;0;INSIDE_GANON_CASTLE;icicle;All;1;oot
+0x00202;INSIDE_GANON_CASTLE;Water Trial 1;OOT Ganon Castle Icicle Water 01;icicle;781;311;INSIDE_GANON_CASTLE;icicle;All;1;oot
+0x00203;INSIDE_GANON_CASTLE;Water Trial 2;OOT Ganon Castle Icicle Water 02;icicle;804;319;INSIDE_GANON_CASTLE;icicle;All;1;oot
+0x00204;INSIDE_GANON_CASTLE;Water Trial 3;OOT Ganon Castle Icicle Water 03;icicle;766;331;INSIDE_GANON_CASTLE;icicle;All;1;oot
+0x00205;INSIDE_GANON_CASTLE;Water Trial 4;OOT Ganon Castle Icicle Water 04;icicle;781;350;INSIDE_GANON_CASTLE;icicle;All;1;oot
+0x00206;INSIDE_GANON_CASTLE;Water Trial 5;OOT Ganon Castle Icicle Water 05;icicle;794;350;INSIDE_GANON_CASTLE;icicle;All;1;oot
+0x00207;INSIDE_GANON_CASTLE;Water Trial 6;OOT Ganon Castle Icicle Water 06;icicle;805;343;INSIDE_GANON_CASTLE;icicle;All;1;oot
+0x00208;INSIDE_GANON_CASTLE;Water Trial 7;OOT Ganon Castle Icicle Water 07;icicle;771;319;INSIDE_GANON_CASTLE;icicle;All;1;oot
+0x00209;INSIDE_GANON_CASTLE;Water Trial 8;OOT Ganon Castle Icicle Water 08;icicle;794;311;INSIDE_GANON_CASTLE;icicle;All;1;oot
+0x0020a;INSIDE_GANON_CASTLE;Water Trial 9;OOT Ganon Castle Icicle Water 09;icicle;771;343;INSIDE_GANON_CASTLE;icicle;All;1;oot
+0x0020b;INSIDE_GANON_CASTLE;Water Trial 10;OOT Ganon Castle Icicle Water 10;icicle;810;331;INSIDE_GANON_CASTLE;icicle;All;1;oot
+0x0020c;INSIDE_GANON_CASTLE;Water Trial 11;OOT Ganon Castle Icicle Water 11;icicle;715;411;INSIDE_GANON_CASTLE;icicle;All;1;oot
+0x0020d;INSIDE_GANON_CASTLE;Water Trial 12;OOT Ganon Castle Icicle Water 12;icicle;680;384;INSIDE_GANON_CASTLE;icicle;All;1;oot
+0x0020e;INSIDE_GANON_CASTLE;Water Trial 13;OOT Ganon Castle Icicle Water 13;icicle;712;254;INSIDE_GANON_CASTLE;icicle;All;1;oot
+0x0020f;INSIDE_GANON_CASTLE;Water Trial 14;OOT Ganon Castle Icicle Water 14;icicle;676;279;INSIDE_GANON_CASTLE;icicle;All;1;oot
 0x00000;ICE_CAVERN;Entrance 1;OOT MQ Ice Cavern Icicle Entrance 1;icicle;0;0;MQ_ICE_CAVERN;icicle;All;0;oot_mq
 0x00001;ICE_CAVERN;Entrance 2;OOT MQ Ice Cavern Icicle Entrance 2;icicle;0;0;MQ_ICE_CAVERN;icicle;All;0;oot_mq
 0x00200;ICE_CAVERN;Before Main Room 1;OOT MQ Ice Cavern Icicle Before Main Room 1;icicle;0;0;MQ_ICE_CAVERN;icicle;All;0;oot_mq

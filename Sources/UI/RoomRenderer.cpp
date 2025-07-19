@@ -56,6 +56,27 @@ void RoomItemTree::UpdateObjectCounts(int Count)
 }
 
 
+uint32_t RoomItemTree::RefreshRoomObjectsCount()
+{
+	this->FoundObjects = 0;
+	uint32_t tmpCount = 0;
+
+	for (size_t i = 0; i < this->SceneItem->Scene->Objects->NumOfObjs; i++)
+	{   // Browse each scene objects
+
+		ObjectInfo* currObject = &this->SceneItem->Scene->Objects->Objects[i];
+		if (currObject->Type != ObjectType::none && currObject->RenderScene == this->SceneItem->Scene->SceneID && currObject->RoomID == this->Info.RoomID && currObject->Status != ObjectState::Hidden)
+		{   // Ignore the object if the render scene ID is different from this scene ID
+
+			tmpCount++;
+		}
+	}
+
+	this->UpdateObjectCounts(tmpCount);
+	return tmpCount;
+}
+
+
 bool RoomItemTree::HasContext()
 {
 	return this->SceneItem->HasContext();

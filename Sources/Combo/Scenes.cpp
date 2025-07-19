@@ -299,6 +299,10 @@ uint32_t GetSceneNPC(uint32_t NPC, uint32_t Game)
 			case GERUDO_ARCHERY_2:
 				return GERUDO_FORTRESS;
 
+			// Haunted Wasteland
+			case CARPET_MERCHANT:
+				return HAUNTED_WASTELAND;
+
 			// Desert Colossus
 			case SHEIK_SPIRIT:
 				return DESERT_COLOSSUS;

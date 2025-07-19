@@ -445,6 +445,13 @@ public:
 	bool HasContext() override;
 
 	/*
+	*   Refresh the object count of the room and its scene.
+	* 
+	*	@return The number of collected objects.
+	*/
+	uint32_t RefreshRoomObjectsCount();
+
+	/*
 	*   Refresh the room text name.
 	*/
 	void RefreshObjsCountText();

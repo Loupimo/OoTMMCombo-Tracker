@@ -8,6 +8,10 @@ QList<QPair<int, int>> ChestPoints = {
 QList<QPair<int, int>> FlyPoints = {
 {276, 514},
 };
+QList<QPair<int, int>> CratePoints = {
+{878, 114},
+{869, 59},
+};
 QList<QPair<int, int>> GrottoPoints = {
 {15, 574},
 {739, 281},
