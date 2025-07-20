@@ -374,6 +374,8 @@ void MapTab::RefreshScenesObjectCounts()
     for (SceneItemTree* currScene : this->Scenes)
     {   // Browse all scenes
 
+        uint32_t tmpCount = currScene->GetCollectedObjects();
+
         if (currScene->Rooms.size() > 0)
         {   // Refresh count by using room
 
@@ -383,13 +385,10 @@ void MapTab::RefreshScenesObjectCounts()
             {
                 currScene->FoundObjects+= currScene->Rooms[i]->RefreshRoomObjectsCount();
             }
-
-            currScene->RefreshItemName();
         }
         else
         {   // Use the global scene count
 
-            uint32_t tmpCount = currScene->GetCollectedObjects();
 
             if (currScene == this->RenderedScene)
             {   // Update the object list and the renderer
@@ -401,9 +400,10 @@ void MapTab::RefreshScenesObjectCounts()
 
             // Refresh the scene objects counters
             currScene->CountSceneObjects();
-            currScene->UpdateObjectCounts(currScene->GetCollectedObjects() - tmpCount);
 
         }
+
+        currScene->UpdateObjectCounts(currScene->GetCollectedObjects() - tmpCount);
     }
 }
 

@@ -68,12 +68,12 @@ uint32_t RoomItemTree::RefreshRoomObjectsCount()
 		if (currObject->Type != ObjectType::none && currObject->RenderScene == this->SceneItem->Scene->SceneID && currObject->RoomID == this->Info.RoomID && currObject->Status != ObjectState::Hidden)
 		{   // Ignore the object if the render scene ID is different from this scene ID
 
-			tmpCount++;
+			this->FoundObjects++;
 		}
 	}
 
-	this->UpdateObjectCounts(tmpCount);
-	return tmpCount;
+	this->RefreshItemName();
+	return this->FoundObjects;
 }
 
 

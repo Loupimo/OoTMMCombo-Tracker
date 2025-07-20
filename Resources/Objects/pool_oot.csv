@@ -156,11 +156,11 @@ SHEIK_FIRE;DEATH_MOUNTAIN_CRATER;Bolero of Fire;OOT Death Mountain Crater Sheik 
 0x00107;DEATH_MOUNTAIN_CRATER;Child 7;OOT Death Mountain Crater Rupee Child 7;rupee;314;420;DEATH_MOUNTAIN_CRATER;rupee;Child;0;oot
 0x00108;DEATH_MOUNTAIN_CRATER;Child 8;OOT Death Mountain Crater Rupee Child 8;rupee;315;410;DEATH_MOUNTAIN_CRATER;rupee;Child;0;oot
 0x08112;DEATH_MOUNTAIN_CRATER;Adult 1;OOT Death Mountain Crater Rupee Adult 1;rupee;309;312;DEATH_MOUNTAIN_CRATER;rupee;Adult;0;oot
-0x18112;DEATH_MOUNTAIN_CRATER;Adult 2;OOT Death Mountain Crater Rupee Adult 2;rupee;316;318;DEATH_MOUNTAIN_CRATER;rupee;Adult;0;oot
+0x18112;DEATH_MOUNTAIN_CRATER;Adult 2;OOT Death Mountain Crater Rupee Adult 2;rupee;302;318;DEATH_MOUNTAIN_CRATER;rupee;Adult;0;oot
 0x28112;DEATH_MOUNTAIN_CRATER;Adult 3;OOT Death Mountain Crater Rupee Adult 3;rupee;303;328;DEATH_MOUNTAIN_CRATER;rupee;Adult;0;oot
 0x38112;DEATH_MOUNTAIN_CRATER;Adult 4;OOT Death Mountain Crater Rupee Adult 4;rupee;310;332;DEATH_MOUNTAIN_CRATER;rupee;Adult;0;oot
-0x48112;DEATH_MOUNTAIN_CRATER;Adult 5;OOT Death Mountain Crater Rupee Adult 5;rupee;302;318;DEATH_MOUNTAIN_CRATER;rupee;Adult;0;oot
-0x58112;DEATH_MOUNTAIN_CRATER;Adult 6;OOT Death Mountain Crater Rupee Adult 6;rupee;316;327;DEATH_MOUNTAIN_CRATER;rupee;Adult;0;oot
+0x48112;DEATH_MOUNTAIN_CRATER;Adult 5;OOT Death Mountain Crater Rupee Adult 5;rupee;316;327;DEATH_MOUNTAIN_CRATER;rupee;Adult;0;oot
+0x58112;DEATH_MOUNTAIN_CRATER;Adult 6;OOT Death Mountain Crater Rupee Adult 6;rupee;316;318;DEATH_MOUNTAIN_CRATER;rupee;Adult;0;oot
 0x68112;DEATH_MOUNTAIN_CRATER;Adult 7;OOT Death Mountain Crater Rupee Adult 7;rupee;310;321;DEATH_MOUNTAIN_CRATER;rupee;Adult;0;oot
 0x01;DEATH_MOUNTAIN_TRAIL;Bombable Wall - Goron City;OOT Death Mountain Trail Chest;chest;481;377;DEATH_MOUNTAIN_TRAIL;chest;All;1;oot
 0x1e;DEATH_MOUNTAIN_TRAIL;Above Cavern - Heart Piece;OOT Death Mountain Trail HP;collectible;44;222;DEATH_MOUNTAIN_TRAIL;collectible;All;0;oot
@@ -526,23 +526,23 @@ FISH_ADULT;FISHING_POND;Golden Scale;OOT Fishing Pond Adult;npc;651;51;FISHING_P
 0x78;GANON_CASTLE_EXTERIOR;Side Arch;OOT Ganon Castle Exterior GS;gs;373;413;GANON_CASTLE_EXTERIOR;gs;All;0;oot
 0x0b;GANON_TOWER;Boss Key;OOT Ganon Castle Boss Key;chest;472;320;GANON_TOWER;chest;All;0;oot
 0x0801;GANON_TOWER;Tower 1;OOT Ganon Tower Pot 01;pot;252;171;GANON_TOWER;pot;All;1;oot
-0x0802;GANON_TOWER;Tower 2;OOT Ganon Tower Pot 02;pot;273;171;GANON_TOWER;pot;All;1;oot
-0x0803;GANON_TOWER;Tower 3;OOT Ganon Tower Pot 03;pot;685;166;GANON_TOWER;pot;All;1;oot
-0x0804;GANON_TOWER;Tower 4;OOT Ganon Tower Pot 04;pot;665;166;GANON_TOWER;pot;All;1;oot
-0x0805;GANON_TOWER;Tower 5;OOT Ganon Tower Pot 05;pot;273;150;GANON_TOWER;pot;All;1;oot
-0x0806;GANON_TOWER;Tower 6;OOT Ganon Tower Pot 06;pot;294;150;GANON_TOWER;pot;All;1;oot
-0x0807;GANON_TOWER;Tower 7;OOT Ganon Tower Pot 07;pot;643;147;GANON_TOWER;pot;All;1;oot
-0x0808;GANON_TOWER;Tower 8;OOT Ganon Tower Pot 08;pot;663;146;GANON_TOWER;pot;All;1;oot
-0x0809;GANON_TOWER;Tower 9;OOT Ganon Tower Pot 09;pot;315;129;GANON_TOWER;pot;All;1;oot
-0x080a;GANON_TOWER;Tower 10;OOT Ganon Tower Pot 10;pot;294;129;GANON_TOWER;pot;All;1;oot
-0x080b;GANON_TOWER;Tower 11;OOT Ganon Tower Pot 11;pot;643;127;GANON_TOWER;pot;All;1;oot
-0x080c;GANON_TOWER;Tower 12;OOT Ganon Tower Pot 12;pot;623;127;GANON_TOWER;pot;All;1;oot
-0x080d;GANON_TOWER;Tower 13;OOT Ganon Tower Pot 13;pot;337;108;GANON_TOWER;pot;All;1;oot
-0x080e;GANON_TOWER;Tower 14;OOT Ganon Tower Pot 14;pot;317;108;GANON_TOWER;pot;All;1;oot
-0x080f;GANON_TOWER;Tower 15;OOT Ganon Tower Pot 15;pot;623;107;GANON_TOWER;pot;All;1;oot
-0x0810;GANON_TOWER;Tower 16;OOT Ganon Tower Pot 16;pot;602;107;GANON_TOWER;pot;All;1;oot
-0x0811;GANON_TOWER;Tower 17;OOT Ganon Tower Pot 17;pot;338;88;GANON_TOWER;pot;All;1;oot
-0x0812;GANON_TOWER;Tower 18;OOT Ganon Tower Pot 18;pot;602;88;GANON_TOWER;pot;All;1;oot
+0x0802;GANON_TOWER;Tower 2;OOT Ganon Tower Pot 02;pot;273;150;GANON_TOWER;pot;All;1;oot
+0x0803;GANON_TOWER;Tower 3;OOT Ganon Tower Pot 03;pot;294;129;GANON_TOWER;pot;All;1;oot
+0x0804;GANON_TOWER;Tower 4;OOT Ganon Tower Pot 04;pot;317;108;GANON_TOWER;pot;All;1;oot
+0x0805;GANON_TOWER;Tower 5;OOT Ganon Tower Pot 05;pot;338;88;GANON_TOWER;pot;All;1;oot
+0x0806;GANON_TOWER;Tower 6;OOT Ganon Tower Pot 06;pot;273;171;GANON_TOWER;pot;All;1;oot
+0x0807;GANON_TOWER;Tower 7;OOT Ganon Tower Pot 07;pot;294;150;GANON_TOWER;pot;All;1;oot
+0x0808;GANON_TOWER;Tower 8;OOT Ganon Tower Pot 08;pot;315;129;GANON_TOWER;pot;All;1;oot
+0x0809;GANON_TOWER;Tower 9;OOT Ganon Tower Pot 09;pot;337;108;GANON_TOWER;pot;All;1;oot
+0x080a;GANON_TOWER;Tower 10;OOT Ganon Tower Pot 10;pot;685;166;GANON_TOWER;pot;All;1;oot
+0x080b;GANON_TOWER;Tower 11;OOT Ganon Tower Pot 11;pot;663;146;GANON_TOWER;pot;All;1;oot
+0x080c;GANON_TOWER;Tower 12;OOT Ganon Tower Pot 12;pot;643;127;GANON_TOWER;pot;All;1;oot
+0x080d;GANON_TOWER;Tower 13;OOT Ganon Tower Pot 13;pot;623;107;GANON_TOWER;pot;All;1;oot
+0x080e;GANON_TOWER;Tower 14;OOT Ganon Tower Pot 14;pot;602;88;GANON_TOWER;pot;All;1;oot
+0x080f;GANON_TOWER;Tower 15;OOT Ganon Tower Pot 15;pot;665;166;GANON_TOWER;pot;All;1;oot
+0x0810;GANON_TOWER;Tower 16;OOT Ganon Tower Pot 16;pot;643;147;GANON_TOWER;pot;All;1;oot
+0x0811;GANON_TOWER;Tower 17;OOT Ganon Tower Pot 17;pot;623;127;GANON_TOWER;pot;All;1;oot
+0x0812;GANON_TOWER;Tower 18;OOT Ganon Tower Pot 18;pot;602;107;GANON_TOWER;pot;All;1;oot
 0x00;GERUDO_FORTRESS;Heart Piece;OOT Gerudo Fortress Chest;chest;443;431;GERUDO_FORTRESS;chest;All;0;oot
 GERUDO_ARCHERY_1;GERUDO_FORTRESS;Big Quiver;OOT Gerudo Fortress Archery Reward 1;npc;644;154;GERUDO_FORTRESS;npc;Adult;0;oot
 GERUDO_ARCHERY_2;GERUDO_FORTRESS;Biggest Quiver;OOT Gerudo Fortress Archery Reward 2;npc;668;154;GERUDO_FORTRESS;npc;Adult;0;oot
@@ -2137,9 +2137,9 @@ ZELDA_LIGHT_ARROW;TEMPLE_OF_TIME;Light Arrows;OOT Temple of Time Light Arrows;np
 0x1904;TEMPLE_SPIRIT;Topmost - Flying Pot 1;OOT Spirit Temple Flying Pot Topmost 1;pot;377;588;TEMPLE_SPIRIT;pot;All;9;oot
 0x1905;TEMPLE_SPIRIT;Topmost - Flying Pot 2;OOT Spirit Temple Flying Pot Topmost 2;pot;373;365;TEMPLE_SPIRIT;pot;All;9;oot
 0x1906;TEMPLE_SPIRIT;Topmost - Flying Pot 3;OOT Spirit Temple Flying Pot Topmost 3;pot;273;366;TEMPLE_SPIRIT;pot;All;9;oot
-0x1907;TEMPLE_SPIRIT;Topmost - Flying Pot 4;OOT Spirit Temple Flying Pot Topmost 4;pot;108;587;TEMPLE_SPIRIT;pot;All;9;oot
+0x1907;TEMPLE_SPIRIT;Topmost - Flying Pot 4;OOT Spirit Temple Flying Pot Topmost 4;pot;153;588;TEMPLE_SPIRIT;pot;All;9;oot
 0x1908;TEMPLE_SPIRIT;Topmost - Flying Pot 5;OOT Spirit Temple Flying Pot Topmost 5;pot;422;586;TEMPLE_SPIRIT;pot;All;9;oot
-0x1909;TEMPLE_SPIRIT;Topmost - Flying Pot 6;OOT Spirit Temple Flying Pot Topmost 6;pot;153;588;TEMPLE_SPIRIT;pot;All;9;oot
+0x1909;TEMPLE_SPIRIT;Topmost - Flying Pot 6;OOT Spirit Temple Flying Pot Topmost 6;pot;108;587;TEMPLE_SPIRIT;pot;All;9;oot
 0x00109;TEMPLE_SPIRIT;Crate 1;OOT Spirit Temple Crate 1;crate;450;313;TEMPLE_SPIRIT;crate;All;1;oot
 0x0010a;TEMPLE_SPIRIT;Crate 2;OOT Spirit Temple Crate 2;crate;511;314;TEMPLE_SPIRIT;crate;All;1;oot
 0x01702;TEMPLE_SPIRIT;Heart 1;OOT Spirit Temple Heart 1;heart;113;259;TEMPLE_SPIRIT;heart;All;8;oot
