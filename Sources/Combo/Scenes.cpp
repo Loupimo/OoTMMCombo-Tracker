@@ -220,6 +220,11 @@ uint32_t GetSceneNPC(uint32_t NPC, uint32_t Game)
 			case BEAN_SELLER:
 			case FROGS_STORMS:
 			case FROGS_GAME:
+			case FROGS_ZL:
+			case FROGS_EPONA:
+			case FROGS_SARIA:
+			case FROGS_SUNS:
+			case FROGS_SOT:
 				return ZORA_RIVER;
 
 			// Zora Domain

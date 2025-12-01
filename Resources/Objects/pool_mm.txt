@@ -962,8 +962,8 @@ ObjectInfo SNOWHEADSceneObjects [SNOWHEADNumOfObjs] =
 	{ 0x0400e, SNOWHEAD, "Spring - Small Snowball 1", "MM Snowhead Small Snowball Spring 1", ObjectType::snowball, {619, 306}, SNOWHEAD, ObjectType::snowball, ObjectContext::Spring, 0, ZGame::mm },
 	{ 0x0400f, SNOWHEAD, "Spring - Small Snowball 2", "MM Snowhead Small Snowball Spring 2", ObjectType::snowball, {608, 228}, SNOWHEAD, ObjectType::snowball, ObjectContext::Spring, 0, ZGame::mm },
 	{ 0x04010, SNOWHEAD, "Spring - Small Snowball 3", "MM Snowhead Small Snowball Spring 3", ObjectType::snowball, {700, 363}, SNOWHEAD, ObjectType::snowball, ObjectContext::Spring, 0, ZGame::mm },
-	{ 0x04011, SNOWHEAD, "Spring - Small Snowball 4", "MM Snowhead Small Snowball Spring 4", ObjectType::snowball, {636, 225}, SNOWHEAD, ObjectType::snowball, ObjectContext::Spring, 0, ZGame::mm },
-	{ 0x04013, SNOWHEAD, "Spring - Small Snowball 5", "MM Snowhead Small Snowball Spring 5", ObjectType::snowball, {759, 348}, SNOWHEAD, ObjectType::snowball, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x04011, SNOWHEAD, "Spring - Small Snowball 4", "MM Snowhead Small Snowball Spring 4", ObjectType::snowball, {759, 348}, SNOWHEAD, ObjectType::snowball, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x04013, SNOWHEAD, "Spring - Small Snowball 5", "MM Snowhead Small Snowball Spring 5", ObjectType::snowball, {636, 225}, SNOWHEAD, ObjectType::snowball, ObjectContext::Spring, 0, ZGame::mm },
 	{ 0x04012, SNOWHEAD, "Out of Bounds", "MM Snowhead Small Snowball Spring Out of Bounds", ObjectType::none, {715, 339}, SNOWHEAD, ObjectType::none, ObjectContext::Spring, 0, ZGame::mm },
 	{ GREAT_FAIRY_MOUNTAIN, SNOWHEAD, "Large Magic Upgrade", "MM Snowhead Great Fairy", ObjectType::none, {0, 0}, MM_FAIRY_SNOWHEAD, ObjectType::none, ObjectContext::All, 0, ZGame::mm }
 };
@@ -2601,11 +2601,11 @@ ObjectInfo TEMPLE_GREAT_BAYSceneObjects [TEMPLE_GREAT_BAYNumOfObjs] =
 	{ 0x2f, TEMPLE_GREAT_BAY, "Pre-Boss - Underwater", "MM Great Bay Temple SF Pre-Boss Underwater", ObjectType::sf, {181, 546}, TEMPLE_GREAT_BAY, ObjectType::sf, ObjectContext::All, 12, ZGame::mm },
 	{ 0x30, TEMPLE_GREAT_BAY, "Water Wheel - Platform", "MM Great Bay Temple SF Water Wheel Platform", ObjectType::sf, {479, 567}, TEMPLE_GREAT_BAY, ObjectType::sf, ObjectContext::All, 1, ZGame::mm },
 	{ 0x32, TEMPLE_GREAT_BAY, "Water Wheel - Skulltula", "MM Great Bay Temple SF Water Wheel Skulltula", ObjectType::sf, {142, 264}, TEMPLE_GREAT_BAY, ObjectType::sf, ObjectContext::All, 1, ZGame::mm },
-	{ 0x00403, TEMPLE_GREAT_BAY, "Compass Room 1", "MM Great Bay Temple Icicle Compass Room 1", ObjectType::icicle, {0, 0}, TEMPLE_GREAT_BAY, ObjectType::icicle, ObjectContext::All, 7, ZGame::mm },
-	{ 0x00404, TEMPLE_GREAT_BAY, "Compass Room 2", "MM Great Bay Temple Icicle Compass Room 2", ObjectType::icicle, {0, 0}, TEMPLE_GREAT_BAY, ObjectType::icicle, ObjectContext::All, 7, ZGame::mm },
-	{ 0x00405, TEMPLE_GREAT_BAY, "Compass Room 3", "MM Great Bay Temple Icicle Compass Room 3", ObjectType::icicle, {0, 0}, TEMPLE_GREAT_BAY, ObjectType::icicle, ObjectContext::All, 7, ZGame::mm },
-	{ 0x00406, TEMPLE_GREAT_BAY, "Compass Room 4", "MM Great Bay Temple Icicle Compass Room 4", ObjectType::icicle, {0, 0}, TEMPLE_GREAT_BAY, ObjectType::icicle, ObjectContext::All, 7, ZGame::mm },
-	{ 0x00407, TEMPLE_GREAT_BAY, "Compass Room 5", "MM Great Bay Temple Icicle Compass Room 5", ObjectType::icicle, {0, 0}, TEMPLE_GREAT_BAY, ObjectType::icicle, ObjectContext::All, 7, ZGame::mm }
+	{ 0x00403, TEMPLE_GREAT_BAY, "Compass Room 1", "MM Great Bay Temple Icicle Compass Room 1", ObjectType::icicle, {701, 102}, TEMPLE_GREAT_BAY, ObjectType::icicle, ObjectContext::All, 7, ZGame::mm },
+	{ 0x00404, TEMPLE_GREAT_BAY, "Compass Room 2", "MM Great Bay Temple Icicle Compass Room 2", ObjectType::icicle, {606, 166}, TEMPLE_GREAT_BAY, ObjectType::icicle, ObjectContext::All, 7, ZGame::mm },
+	{ 0x00405, TEMPLE_GREAT_BAY, "Compass Room 3", "MM Great Bay Temple Icicle Compass Room 3", ObjectType::icicle, {692, 149}, TEMPLE_GREAT_BAY, ObjectType::icicle, ObjectContext::All, 7, ZGame::mm },
+	{ 0x00406, TEMPLE_GREAT_BAY, "Compass Room 4", "MM Great Bay Temple Icicle Compass Room 4", ObjectType::icicle, {672, 110}, TEMPLE_GREAT_BAY, ObjectType::icicle, ObjectContext::All, 7, ZGame::mm },
+	{ 0x00407, TEMPLE_GREAT_BAY, "Compass Room 5", "MM Great Bay Temple Icicle Compass Room 5", ObjectType::icicle, {655, 158}, TEMPLE_GREAT_BAY, ObjectType::icicle, ObjectContext::All, 7, ZGame::mm }
 };
 
 const size_t LAIR_IKANANumOfObjs = 9;
@@ -2954,10 +2954,10 @@ ObjectInfo MOON_GORONSceneObjects [MOON_GORONNumOfObjs] =
 	{ 0x001d, MOON_GORON, "Early 2", "MM Moon Trial Goron Pot Early 2", ObjectType::pot, {917, 361}, MOON_GORON, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
 	{ 0x001e, MOON_GORON, "Early 3", "MM Moon Trial Goron Pot Early 3", ObjectType::pot, {910, 378}, MOON_GORON, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
 	{ 0x001f, MOON_GORON, "Early 4", "MM Moon Trial Goron Pot Early 4", ObjectType::pot, {918, 378}, MOON_GORON, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
-	{ 0x00000, MOON_GORON, "Icicle 1", "MM Moon Trial Goron Icicle 1", ObjectType::icicle, {0, 0}, MOON_GORON, ObjectType::icicle, ObjectContext::All, 0, ZGame::mm },
-	{ 0x00001, MOON_GORON, "Icicle 2", "MM Moon Trial Goron Icicle 2", ObjectType::icicle, {0, 0}, MOON_GORON, ObjectType::icicle, ObjectContext::All, 0, ZGame::mm },
-	{ 0x00002, MOON_GORON, "Icicle 3", "MM Moon Trial Goron Icicle 3", ObjectType::icicle, {0, 0}, MOON_GORON, ObjectType::icicle, ObjectContext::All, 0, ZGame::mm },
-	{ 0x00003, MOON_GORON, "Icicle 4", "MM Moon Trial Goron Icicle 4", ObjectType::icicle, {0, 0}, MOON_GORON, ObjectType::icicle, ObjectContext::All, 0, ZGame::mm }
+	{ 0x00000, MOON_GORON, "Icicle 1", "MM Moon Trial Goron Icicle 1", ObjectType::icicle, {413, 51}, MOON_GORON, ObjectType::icicle, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00001, MOON_GORON, "Icicle 2", "MM Moon Trial Goron Icicle 2", ObjectType::icicle, {433, 51}, MOON_GORON, ObjectType::icicle, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00002, MOON_GORON, "Icicle 3", "MM Moon Trial Goron Icicle 3", ObjectType::icicle, {413, 69}, MOON_GORON, ObjectType::icicle, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00003, MOON_GORON, "Icicle 4", "MM Moon Trial Goron Icicle 4", ObjectType::icicle, {433, 69}, MOON_GORON, ObjectType::icicle, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t MOON_LINKNumOfObjs = 11;
@@ -3157,9 +3157,9 @@ ObjectInfo MOUNTAIN_VILLAGESceneObjects [MOUNTAIN_VILLAGENumOfObjs] =
 	{ 0x00027, MOUNTAIN_VILLAGE_WINTER, "Winter 3", "MM Mountain Village Small Snowball Winter 3", ObjectType::snowball, {740, 388}, MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectContext::Winter, 0, ZGame::mm },
 	{ 0x0002b, MOUNTAIN_VILLAGE_WINTER, "Winter 4", "MM Mountain Village Small Snowball Winter 4", ObjectType::snowball, {596, 317}, MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectContext::Winter, 0, ZGame::mm },
 	{ 0x00, MOUNTAIN_VILLAGE_WINTER, "Waterfall", "MM Mountain Village Waterfall Chest", ObjectType::chest, {217, 392}, MOUNTAIN_VILLAGE, ObjectType::chest, ObjectContext::Spring, 0, ZGame::mm },
-	{ 0x00000, MOUNTAIN_VILLAGE_SPRING, "Boulder 1", "MM Mountain Village Spring Red Boulder 1", ObjectType::redboulder, {0, 0}, MOUNTAIN_VILLAGE, ObjectType::redboulder, ObjectContext::Spring, 0, ZGame::mm },
-	{ 0x00001, MOUNTAIN_VILLAGE_SPRING, "Boulder 2", "MM Mountain Village Spring Red Boulder 2", ObjectType::redboulder, {0, 0}, MOUNTAIN_VILLAGE, ObjectType::redboulder, ObjectContext::Spring, 0, ZGame::mm },
-	{ 0x00002, MOUNTAIN_VILLAGE_SPRING, "Boulder 3", "MM Mountain Village Spring Red Boulder 3", ObjectType::redboulder, {0, 0}, MOUNTAIN_VILLAGE, ObjectType::redboulder, ObjectContext::Spring, 0, ZGame::mm }
+	{ 0x00000, MOUNTAIN_VILLAGE_SPRING, "Boulder 1", "MM Mountain Village Spring Red Boulder 1", ObjectType::redboulder, {484, 426}, MOUNTAIN_VILLAGE, ObjectType::redboulder, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00001, MOUNTAIN_VILLAGE_SPRING, "Boulder 2", "MM Mountain Village Spring Red Boulder 2", ObjectType::redboulder, {478, 411}, MOUNTAIN_VILLAGE, ObjectType::redboulder, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00002, MOUNTAIN_VILLAGE_SPRING, "Boulder 3", "MM Mountain Village Spring Red Boulder 3", ObjectType::redboulder, {467, 428}, MOUNTAIN_VILLAGE, ObjectType::redboulder, ObjectContext::Spring, 0, ZGame::mm }
 };
 
 const size_t MOUNTAIN_VILLAGE_SPRINGNumOfObjs = 53;
@@ -3215,9 +3215,9 @@ ObjectInfo MOUNTAIN_VILLAGE_SPRINGSceneObjects [MOUNTAIN_VILLAGE_SPRINGNumOfObjs
 	{ 0x7002c, MOUNTAIN_VILLAGE_SPRING, "Keaton Grass 8", "MM Mountain Village Keaton Grass Reward 8", ObjectType::grass, {629, 463}, MOUNTAIN_VILLAGE, ObjectType::grass, ObjectContext::Spring, 0, ZGame::mm },
 	{ 0x8002c, MOUNTAIN_VILLAGE_SPRING, "Keaton Grass 9", "MM Mountain Village Keaton Grass Reward 9", ObjectType::grass, {641, 466}, MOUNTAIN_VILLAGE, ObjectType::grass, ObjectContext::Spring, 0, ZGame::mm },
 	{ 0x00028, MOUNTAIN_VILLAGE_SPRING, "Rupee", "MM Mountain Village Rupee", ObjectType::rupee, {474, 439}, MOUNTAIN_VILLAGE, ObjectType::rupee, ObjectContext::Spring, 0, ZGame::mm },
-	{ 0x00000, MOUNTAIN_VILLAGE_SPRING, "Boulder 1", "MM Mountain Village Spring Red Boulder 1", ObjectType::redboulder, {0, 0}, MOUNTAIN_VILLAGE, ObjectType::redboulder, ObjectContext::Spring, 0, ZGame::mm },
-	{ 0x00001, MOUNTAIN_VILLAGE_SPRING, "Boulder 2", "MM Mountain Village Spring Red Boulder 2", ObjectType::redboulder, {0, 0}, MOUNTAIN_VILLAGE, ObjectType::redboulder, ObjectContext::Spring, 0, ZGame::mm },
-	{ 0x00002, MOUNTAIN_VILLAGE_SPRING, "Boulder 3", "MM Mountain Village Spring Red Boulder 3", ObjectType::redboulder, {0, 0}, MOUNTAIN_VILLAGE, ObjectType::redboulder, ObjectContext::Spring, 0, ZGame::mm }
+	{ 0x00000, MOUNTAIN_VILLAGE_SPRING, "Boulder 1", "MM Mountain Village Spring Red Boulder 1", ObjectType::redboulder, {484, 426}, MOUNTAIN_VILLAGE, ObjectType::redboulder, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00001, MOUNTAIN_VILLAGE_SPRING, "Boulder 2", "MM Mountain Village Spring Red Boulder 2", ObjectType::redboulder, {478, 411}, MOUNTAIN_VILLAGE, ObjectType::redboulder, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00002, MOUNTAIN_VILLAGE_SPRING, "Boulder 3", "MM Mountain Village Spring Red Boulder 3", ObjectType::redboulder, {467, 428}, MOUNTAIN_VILLAGE, ObjectType::redboulder, ObjectContext::Spring, 0, ZGame::mm }
 };
 
 const size_t MOUNTAIN_VILLAGE_WINTERNumOfObjs = 25;
@@ -3627,7 +3627,7 @@ ObjectInfo TERMINA_FIELDSceneObjects [TERMINA_FIELDNumOfObjs] =
 	{ 0xb0a09, TERMINA_FIELD, "Grass 72", "MM Termina Field Cow Grotto Grass 72", ObjectType::none, {0, 0}, MM_GROTTO_TERMINA_COW, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x00a02, TERMINA_FIELD, "Hive", "MM Termina Field Cow Grotto Hive", ObjectType::none, {0, 0}, MM_GROTTO_TERMINA_COW, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x00, TERMINA_FIELD, "Dodongo", "MM Termina Field Dodongo Grotto", ObjectType::none, {0, 0}, MM_GROTTO_TERMINA_DODONGO, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
-	{ GOSSIP_HEART_PIECE, TERMINA_FIELD, "Gossip Stones - Heart Piece", "MM Termina Field Gossip Stones HP", ObjectType::none, {0, 0}, MM_GROTTO_TERMINA_OCEAN_GOSSIP, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ GOSSIP_HEART_PIECE, TERMINA_FIELD, "Gossip Stones - Heart Piece", "MM Termina Field Gossip Stones HP", ObjectType::none, {0, 0}, MM_GROTTO_TERMINA_CANYON_GOSSIP, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x04, TERMINA_FIELD, "Peahat", "MM Termina Field Peahat Grotto", ObjectType::none, {0, 0}, MM_GROTTO_TERMINA_PEEHAT, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x1a, TERMINA_FIELD, "Chest", "MM Termina Field Pillar Grotto", ObjectType::none, {0, 0}, MM_GROTTO_TERMINA_PILLAR, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x03a00, TERMINA_FIELD, "Grass 1", "MM Termina Field Pillar Grotto Grass 01", ObjectType::none, {0, 0}, MM_GROTTO_TERMINA_PILLAR, ObjectType::none, ObjectContext::All, 0, ZGame::mm },

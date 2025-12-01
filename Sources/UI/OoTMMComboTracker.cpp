@@ -337,7 +337,6 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
                 if (strcmp(gameSceneObj[sceneID].Objects[j].Location, tmpObjName) == 0)
                 {   // We have found the object
 
-                    free(tmpObjName);
                     ObjectInfo* object = &gameSceneObj[sceneID].Objects[j];
 
                     // Find and modify the object item
@@ -358,7 +357,13 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
                             }
                         }
                     }
+                    if (object->Type == ObjectType::none)
+                    {   // The object is in the good renderer however in some cases it might be not rendered (e.g. MM Mountain village Spring / Winter)
 
+                        continue;   // We should do another loop and not break in order to find the real rendered item
+                    }
+
+                    free(tmpObjName);
                     break;
                 }
             }

@@ -59,6 +59,11 @@ QList<QPair<int, int>> FlyPoints = {
 {482, 321},
 {495, 315},
 };
+QList<QPair<int, int>> CratePoints = {
+{467, 428},
+{484, 426},
+{478, 411},
+};
 QList<QPair<int, int>> NPCsPoints = {
 {325, 434},
 };

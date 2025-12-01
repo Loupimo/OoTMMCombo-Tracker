@@ -61,6 +61,13 @@ QList<QPair<int, int>> WonderPoints = {
 {1213, 259},
 {1211, 226},
 };
+QList<QPair<int, int>> CratePoints = {
+{805, 657},
+{820, 651},
+{793, 643},
+{822, 634},
+{807, 626},
+};
 QList<QPair<int, int>> GrottoPoints = {
 {69, 700},
 {130, 621},

@@ -4988,13 +4988,18 @@ ObjectInfo ZORA_FOUNTAINSceneObjects [ZORA_FOUNTAINNumOfObjs] =
 	{ FAIRY_SPELL_WIND, ZORA_FOUNTAIN, "Farore's Wind", "OOT Great Fairy Farore's Wind", ObjectType::none, {0, 0}, OOT_GREAT_FAIRY_FARORE, ObjectType::none, ObjectContext::All, 0, ZGame::oot }
 };
 
-const size_t ZORA_RIVERNumOfObjs = 83;
+const size_t ZORA_RIVERNumOfObjs = 88;
 ObjectInfo ZORA_RIVERSceneObjects [ZORA_RIVERNumOfObjs] =
 {
 	{ 0x04, ZORA_RIVER, "Pillar - Heart Piece", "OOT Zora River HP Pillar", ObjectType::collectible, {940, 653}, ZORA_RIVER, ObjectType::collectible, ObjectContext::All, 0, ZGame::oot },
 	{ 0x0b, ZORA_RIVER, "Platform - Heart Piece", "OOT Zora River HP Platform", ObjectType::collectible, {236, 757}, ZORA_RIVER, ObjectType::collectible, ObjectContext::All, 0, ZGame::oot },
 	{ BEAN_SELLER, ZORA_RIVER, "Bean Seller", "OOT Zora River Bean Seller", ObjectType::npc, {1133, 451}, ZORA_RIVER, ObjectType::npc, ObjectContext::Child, 0, ZGame::oot },
 	{ FROGS_STORMS, ZORA_RIVER, "Frogs - Song of Storms", "OOT Zora River Frogs Storms", ObjectType::npc, {807, 642}, ZORA_RIVER, ObjectType::npc, ObjectContext::Child, 0, ZGame::oot },
+	{ FROGS_ZL, ZORA_RIVER, "Frogs - Zelda's Lullaby", "OOT Zora River Frogs Zeldas Lullaby", ObjectType::npc, {805, 657}, ZORA_RIVER, ObjectType::npc, ObjectContext::Child, 0, ZGame::oot },
+	{ FROGS_EPONA, ZORA_RIVER, "Frogs - Epona's Song", "OOT Zora River Frogs Eponas Song", ObjectType::npc, {820, 651}, ZORA_RIVER, ObjectType::npc, ObjectContext::Child, 0, ZGame::oot },
+	{ FROGS_SARIA, ZORA_RIVER, "Frogs - Saria's Song", "OOT Zora River Frogs Sarias Song", ObjectType::npc, {793, 643}, ZORA_RIVER, ObjectType::npc, ObjectContext::Child, 0, ZGame::oot },
+	{ FROGS_SUNS, ZORA_RIVER, "Frogs - Sun's Song", "OOT Zora River Frogs Suns Song", ObjectType::npc, {822, 634}, ZORA_RIVER, ObjectType::npc, ObjectContext::Child, 0, ZGame::oot },
+	{ FROGS_SOT, ZORA_RIVER, "Frogs - Song of Time", "OOT Zora River Frogs Song of Time", ObjectType::npc, {807, 626}, ZORA_RIVER, ObjectType::npc, ObjectContext::Child, 0, ZGame::oot },
 	{ FROGS_GAME, ZORA_RIVER, "Frogs - Game", "OOT Zora River Frogs Game", ObjectType::npc, {785, 628}, ZORA_RIVER, ObjectType::npc, ObjectContext::Child, 0, ZGame::oot },
 	{ 0x91, ZORA_RIVER, "Tree", "OOT Zora River GS Tree", ObjectType::gs, {1318, 306}, ZORA_RIVER, ObjectType::gs, ObjectContext::Child, 0, ZGame::oot },
 	{ 0x90, ZORA_RIVER, "Ladder", "OOT Zora River GS Ladder", ObjectType::gs, {226, 736}, ZORA_RIVER, ObjectType::gs, ObjectContext::Child, 0, ZGame::oot },
