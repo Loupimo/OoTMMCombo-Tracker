@@ -5,7 +5,7 @@ This app automatically tracks which object has been collected and update it with
 
 # How to use
 
-First you need to be sure that your ROM has been created using the coop or multi parameter.
+First you need to be sure that your ROM has been created using the coop or multi world parameter.
 
 ## Playing in singleplayer
 
@@ -13,11 +13,8 @@ First you need to be sure that your ROM has been created using the coop or multi
 2. Then open your project64 with lua script, launch your and game and start the adpater script.
 3. Now you can create a new save and start playing.
 
-Once you have finished to play press the "Stop tracking" button (not mandatory) and click the "Save Tracking" button in order to save the current session state.\
-On your next launch just press the "Load tracking" button to get your progress back.\
-If you forgot to save your session it is possible to get everything back by doing the first 3 steps. Once all items are collected you can play normally.
-
-If you decide to play in coop later on just read the next section.
+There is an auto-saving feature that is enabled by default. When an item is collected the progress will be saved.\
+You can also save your progress manually.
 
 ## Playing in multiplayer
 
@@ -27,8 +24,9 @@ Then follow the "Playing in singleplayer" section.
 
 ## Side notes
 
-Master Quest is current not supported (same MM JP layouts).\
-Playing in multi world is not recommended as they is no distinction of which world the collected is coming from.
+The program is not reading game memory. Therefore, it can't retreive items that have been collected without using the tracker.
+Master Quest is currently not supported (same for MM JP layouts).\
+Playing in multi world is not recommended as there is no distinction of which world the collected item is coming from.
 
 # 📜 Licenses used in this project
 
