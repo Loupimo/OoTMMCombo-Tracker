@@ -24,7 +24,7 @@ Then follow the "Playing in singleplayer" section.
 
 ## Side notes
 
-The program is not reading game memory. Therefore, it can't retreive items that have been collected without using the tracker.
+The program is not reading game memory. Therefore, it can't retreive items that have been collected without using the tracker.\
 Master Quest is currently not supported (same for MM JP layouts).\
 Playing in multi world is not recommended as there is no distinction of which world the collected item is coming from.
 
