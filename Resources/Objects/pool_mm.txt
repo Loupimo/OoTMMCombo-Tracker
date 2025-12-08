@@ -26,7 +26,7 @@ ObjectInfo BENEATH_THE_GRAVEYARDSceneObjects [BENEATH_THE_GRAVEYARDNumOfObjs] =
 	{ MM_SONG_STORMS, BENEATH_THE_GRAVEYARD, "Song of Storms", "MM Beneath The Graveyard Song of Storms", ObjectType::npc, {902, 492}, BENEATH_THE_GRAVEYARD, ObjectType::npc, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t BENEATH_THE_WELLNumOfObjs = 45;
+const size_t BENEATH_THE_WELLNumOfObjs = 48;
 ObjectInfo BENEATH_THE_WELLSceneObjects [BENEATH_THE_WELLNumOfObjs] =
 {
 	{ 0x17, BENEATH_THE_WELL, "Cow", "MM Beneath The Well Cow", ObjectType::cow, {1313, 914}, BENEATH_THE_WELL, ObjectType::cow, ObjectContext::All, 0, ZGame::mm },
@@ -73,7 +73,10 @@ ObjectInfo BENEATH_THE_WELLSceneObjects [BENEATH_THE_WELLNumOfObjs] =
 	{ 0x0615, BENEATH_THE_WELL, "Middle 8", "MM Beneath The Well Pot Middle 08", ObjectType::pot, {921, 680}, BENEATH_THE_WELL, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
 	{ 0x0616, BENEATH_THE_WELL, "Middle 9", "MM Beneath The Well Pot Middle 09", ObjectType::pot, {921, 670}, BENEATH_THE_WELL, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
 	{ 0x0617, BENEATH_THE_WELL, "Middle 10", "MM Beneath The Well Pot Middle 10", ObjectType::pot, {921, 660}, BENEATH_THE_WELL, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
-	{ 0x01, BENEATH_THE_WELL, "Skulltulla", "MM Beneath The Well Skulltulla Chest", ObjectType::chest, {715, 719}, BENEATH_THE_WELL, ObjectType::chest, ObjectContext::All, 0, ZGame::mm }
+	{ 0x01, BENEATH_THE_WELL, "Skulltulla", "MM Beneath The Well Skulltulla Chest", ObjectType::chest, {715, 719}, BENEATH_THE_WELL, ObjectType::chest, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00903, BENEATH_THE_WELL, "MM Beneath The Well Tree", "MM Beneath The Well Tree", ObjectType::tree, {0, 0}, BENEATH_THE_WELL, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00901, BENEATH_THE_WELL, "MM Beneath The Well Bush 1", "MM Beneath The Well Bush 1", ObjectType::bush, {0, 0}, BENEATH_THE_WELL, ObjectType::bush, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00902, BENEATH_THE_WELL, "MM Beneath The Well Bush 2", "MM Beneath The Well Bush 2", ObjectType::bush, {0, 0}, BENEATH_THE_WELL, ObjectType::bush, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t BLACKSMITHNumOfObjs = 6;
@@ -194,7 +197,7 @@ ObjectInfo CLOCK_TOWN_EASTSceneObjects [CLOCK_TOWN_EASTNumOfObjs] =
 	{ 0x0106, CLOCK_TOWN_EAST, "Astral Observatory 3", "MM Astral Observatory Pot 3", ObjectType::none, {0, 0}, OBSERVATORY, ObjectType::none, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t CLOCK_TOWN_NORTHNumOfObjs = 18;
+const size_t CLOCK_TOWN_NORTHNumOfObjs = 20;
 ObjectInfo CLOCK_TOWN_NORTHSceneObjects [CLOCK_TOWN_NORTHNumOfObjs] =
 {
 	{ MASK_BLAST, CLOCK_TOWN_NORTH, "Blast Mask", "MM Clock Town Blast Mask", ObjectType::npc, {379, 315}, CLOCK_TOWN_NORTH, ObjectType::npc, ObjectContext::All, 0, ZGame::mm },
@@ -214,7 +217,9 @@ ObjectInfo CLOCK_TOWN_NORTHSceneObjects [CLOCK_TOWN_NORTHNumOfObjs] =
 	{ DEKU_PLAYGROUND_1, CLOCK_TOWN_NORTH, "Reward - Any Day", "MM Deku Playground Reward Any Day", ObjectType::none, {0, 0}, DEKU_PLAYGROUND, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ GREAT_FAIRY_TOWN, CLOCK_TOWN_NORTH, "Great Fairy - Mojo", "MM Clock Town Great Fairy", ObjectType::none, {0, 0}, MM_FAIRY_CLOCK_TOWN, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ GREAT_FAIRY_TOWN_ALT, CLOCK_TOWN_NORTH, "Great Fairy - Link", "MM Clock Town Great Fairy Alt", ObjectType::none, {0, 0}, MM_FAIRY_CLOCK_TOWN, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
-	{ TINGLE_MAP_CLOCK_TOWN, CLOCK_TOWN_SOUTH, "Tingle - Clock Town Map", "MM Tingle Map Clock Town", ObjectType::npc, {394, 148}, CLOCK_TOWN_NORTH, ObjectType::npc, ObjectContext::All, 0, ZGame::mm }
+	{ TINGLE_MAP_CLOCK_TOWN, CLOCK_TOWN_SOUTH, "Tingle - Clock Town Map", "MM Tingle Map Clock Town", ObjectType::npc, {394, 148}, CLOCK_TOWN_NORTH, ObjectType::npc, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00007, CLOCK_TOWN_NORTH, "MM Clock Town North Forked Tree 1", "MM Clock Town North Forked Tree 1", ObjectType::tree, {0, 0}, CLOCK_TOWN_NORTH, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00015, CLOCK_TOWN_NORTH, "MM Clock Town North Forked Tree 2", "MM Clock Town North Forked Tree 2", ObjectType::tree, {0, 0}, CLOCK_TOWN_NORTH, ObjectType::tree, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t CLOCK_TOWN_SOUTHNumOfObjs = 16;
@@ -238,7 +243,7 @@ ObjectInfo CLOCK_TOWN_SOUTHSceneObjects [CLOCK_TOWN_SOUTHNumOfObjs] =
 	{ TINGLE_MAP_WOODFALL, CLOCK_TOWN_SOUTH, "Tingle - Woodfall Map", "MM Tingle Map Woodfall", ObjectType::npc, {468, 149}, ROAD_SOUTHERN_SWAMP, ObjectType::npc, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t GREAT_BAY_COASTNumOfObjs = 124;
+const size_t GREAT_BAY_COASTNumOfObjs = 167;
 ObjectInfo GREAT_BAY_COASTSceneObjects [GREAT_BAY_COASTNumOfObjs] =
 {
 	{ TINGLE_MAP_GREAT_BAY, CLOCK_TOWN_SOUTH, "Tingle - Great Bay Map", "MM Tingle Map Great Bay", ObjectType::npc, {310, 504}, GREAT_BAY_COAST, ObjectType::npc, ObjectContext::All, 0, ZGame::mm },
@@ -364,7 +369,50 @@ ObjectInfo GREAT_BAY_COASTSceneObjects [GREAT_BAY_COASTNumOfObjs] =
 	{ 0x90f09, GREAT_BAY_COAST, "Grass 70", "MM Great Bay Cow Grotto Grass 70", ObjectType::none, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_COW, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0xa0f09, GREAT_BAY_COAST, "Grass 71", "MM Great Bay Cow Grotto Grass 71", ObjectType::none, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_COW, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0xb0f09, GREAT_BAY_COAST, "Grass 72", "MM Great Bay Cow Grotto Grass 72", ObjectType::none, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_COW, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
-	{ 0x00f02, GREAT_BAY_COAST, "Hive", "MM Great Bay Cow Grotto Hive", ObjectType::none, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_COW, ObjectType::none, ObjectContext::All, 0, ZGame::mm }
+	{ 0x00f02, GREAT_BAY_COAST, "Hive", "MM Great Bay Cow Grotto Hive", ObjectType::none, {0, 0}, MM_GROTTO_GREAT_BAY_COAST_COW, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000a, GREAT_BAY_COAST, "Island", "MM Great Bay Coast Palm Tree Island", ObjectType::tree, {0, 0}, GREAT_BAY_COAST, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000b, GREAT_BAY_COAST, "Beach 1", "MM Great Bay Coast Palm Tree Beach 1", ObjectType::tree, {0, 0}, GREAT_BAY_COAST, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000c, GREAT_BAY_COAST, "Beach 2", "MM Great Bay Coast Palm Tree Beach 2", ObjectType::tree, {0, 0}, GREAT_BAY_COAST, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000d, GREAT_BAY_COAST, "Beach 3", "MM Great Bay Coast Palm Tree Beach 3", ObjectType::tree, {0, 0}, GREAT_BAY_COAST, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00045, GREAT_BAY_COAST, "Cleared - Water 1", "MM Great Bay Coast Rock Water Cleared 1", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00042, GREAT_BAY_COAST, "Cleared - Water 2", "MM Great Bay Coast Rock Water Cleared 2", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00043, GREAT_BAY_COAST, "Water 1", "MM Great Bay Coast Rock Water 01", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00044, GREAT_BAY_COAST, "Water 2", "MM Great Bay Coast Rock Water 02", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00046, GREAT_BAY_COAST, "Water 3", "MM Great Bay Coast Rock Water 03", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00047, GREAT_BAY_COAST, "Water 4", "MM Great Bay Coast Rock Water 04", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00048, GREAT_BAY_COAST, "Water 5", "MM Great Bay Coast Rock Water 05", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00049, GREAT_BAY_COAST, "Water 6", "MM Great Bay Coast Rock Water 06", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0004a, GREAT_BAY_COAST, "Water 7", "MM Great Bay Coast Rock Water 07", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0004b, GREAT_BAY_COAST, "Water 8", "MM Great Bay Coast Rock Water 08", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0004c, GREAT_BAY_COAST, "Water 9", "MM Great Bay Coast Rock Water 09", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0004d, GREAT_BAY_COAST, "Water 10", "MM Great Bay Coast Rock Water 10", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0004e, GREAT_BAY_COAST, "Water 11", "MM Great Bay Coast Rock Water 11", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0004f, GREAT_BAY_COAST, "Water 12", "MM Great Bay Coast Rock Water 12", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00050, GREAT_BAY_COAST, "Water 13", "MM Great Bay Coast Rock Water 13", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00051, GREAT_BAY_COAST, "Water 14", "MM Great Bay Coast Rock Water 14", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00052, GREAT_BAY_COAST, "Water 15", "MM Great Bay Coast Rock Water 15", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00053, GREAT_BAY_COAST, "Water 16", "MM Great Bay Coast Rock Water 16", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00054, GREAT_BAY_COAST, "Water 17", "MM Great Bay Coast Rock Water 17", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00055, GREAT_BAY_COAST, "Water 18", "MM Great Bay Coast Rock Water 18", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00056, GREAT_BAY_COAST, "Water 19", "MM Great Bay Coast Rock Water 19", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00057, GREAT_BAY_COAST, "Water 20", "MM Great Bay Coast Rock Water 20", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00058, GREAT_BAY_COAST, "Water 21", "MM Great Bay Coast Rock Water 21", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00059, GREAT_BAY_COAST, "Water 22", "MM Great Bay Coast Rock Water 22", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0005a, GREAT_BAY_COAST, "Water 23", "MM Great Bay Coast Rock Water 23", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0005b, GREAT_BAY_COAST, "Water 24", "MM Great Bay Coast Rock Water 24", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0005c, GREAT_BAY_COAST, "Water 25", "MM Great Bay Coast Rock Water 25", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0005d, GREAT_BAY_COAST, "Water 26", "MM Great Bay Coast Rock Water 26", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0005e, GREAT_BAY_COAST, "Water 27", "MM Great Bay Coast Rock Water 27", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00067, GREAT_BAY_COAST, "Water 28", "MM Great Bay Coast Rock Water 28", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0005f, GREAT_BAY_COAST, "Sand 1", "MM Great Bay Coast Rock Sand 1", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00060, GREAT_BAY_COAST, "Sand 2", "MM Great Bay Coast Rock Sand 2", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00061, GREAT_BAY_COAST, "Sand 3", "MM Great Bay Coast Rock Sand 3", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00062, GREAT_BAY_COAST, "Sand 4", "MM Great Bay Coast Rock Sand 4", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00063, GREAT_BAY_COAST, "Sand 5", "MM Great Bay Coast Rock Sand 5", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00064, GREAT_BAY_COAST, "Ledge 1", "MM Great Bay Coast Rock Ledge 1", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00065, GREAT_BAY_COAST, "Ledge 2", "MM Great Bay Coast Rock Ledge 2", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00066, GREAT_BAY_COAST, "Ledge 3", "MM Great Bay Coast Rock Ledge 3", ObjectType::rock, {0, 0}, GREAT_BAY_COAST, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00000, GREAT_BAY_COAST, "Soil", "MM Great Bay Coast Soil", ObjectType::soil, {0, 0}, GREAT_BAY_COAST, ObjectType::soil, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t IKANA_CANYONNumOfObjs = 32;
@@ -404,7 +452,7 @@ ObjectInfo IKANA_CANYONSceneObjects [IKANA_CANYONNumOfObjs] =
 	{ 0x03413, IKANA_CANYON, "Grass 14", "MM Ikana Valley Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_VALLEY_OPEN, ObjectType::none, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t MILK_ROADNumOfObjs = 41;
+const size_t MILK_ROADNumOfObjs = 66;
 ObjectInfo MILK_ROADSceneObjects [MILK_ROADNumOfObjs] =
 {
 	{ TINGLE_MAP_ROMANI_RANCH, CLOCK_TOWN_SOUTH, "Tingle - Ranch Map", "MM Tingle Map Ranch", ObjectType::npc, {639, 200}, MILK_ROAD, ObjectType::npc, ObjectContext::All, 0, ZGame::mm },
@@ -447,10 +495,35 @@ ObjectInfo MILK_ROADSceneObjects [MILK_ROADNumOfObjs] =
 	{ 0x90025, MILK_ROAD, "Pack 2 - Grass 10", "MM Gorman Track Grass Pack 2 Grass 10", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0xa0025, MILK_ROAD, "Pack 2 - Grass 11", "MM Gorman Track Grass Pack 2 Grass 11", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0xb0025, MILK_ROAD, "Pack 2 - Grass 12", "MM Gorman Track Grass Pack 2 Grass 12", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
-	{ GORMAN_MILK, MILK_ROAD, "Purchase - Milk", "MM Gorman Track Milk Purchase", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm }
+	{ GORMAN_MILK, MILK_ROAD, "Purchase - Milk", "MM Gorman Track Milk Purchase", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000b, MILK_ROAD, "Tree 1", "MM Gorman Track Tree 01", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000c, MILK_ROAD, "Tree 2", "MM Gorman Track Tree 02", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000d, MILK_ROAD, "Tree 3", "MM Gorman Track Tree 03", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000e, MILK_ROAD, "Tree 4", "MM Gorman Track Tree 04", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000f, MILK_ROAD, "Tree 5", "MM Gorman Track Tree 05", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00010, MILK_ROAD, "Tree 6", "MM Gorman Track Tree 06", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00011, MILK_ROAD, "Tree 7", "MM Gorman Track Tree 07", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00012, MILK_ROAD, "Tree 8", "MM Gorman Track Tree 08", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00013, MILK_ROAD, "Tree 9", "MM Gorman Track Tree 09", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00014, MILK_ROAD, "Tree 10", "MM Gorman Track Tree 10", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00015, MILK_ROAD, "Tree 11", "MM Gorman Track Tree 11", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00016, MILK_ROAD, "Tree 12", "MM Gorman Track Tree 12", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00017, MILK_ROAD, "Tree 13", "MM Gorman Track Tree 13", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00018, MILK_ROAD, "Tree 14", "MM Gorman Track Tree 14", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00019, MILK_ROAD, "Tree 15", "MM Gorman Track Tree 15", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001a, MILK_ROAD, "Tree 16", "MM Gorman Track Tree 16", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001b, MILK_ROAD, "Tree 17", "MM Gorman Track Tree 17", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001c, MILK_ROAD, "Tree 18", "MM Gorman Track Tree 18", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001d, MILK_ROAD, "Tree 19", "MM Gorman Track Tree 19", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001e, MILK_ROAD, "Tree 20", "MM Gorman Track Tree 20", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001f, MILK_ROAD, "Tree 21", "MM Gorman Track Tree 21", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00020, MILK_ROAD, "Tree 22", "MM Gorman Track Tree 22", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00021, MILK_ROAD, "Tree 23", "MM Gorman Track Tree 23", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00022, MILK_ROAD, "Tree 24", "MM Gorman Track Tree 24", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00023, MILK_ROAD, "Tree 25", "MM Gorman Track Tree 25", ObjectType::none, {0, 0}, GORMAN_TRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t TWIN_ISLANDSNumOfObjs = 124;
+const size_t TWIN_ISLANDSNumOfObjs = 152;
 ObjectInfo TWIN_ISLANDSSceneObjects [TWIN_ISLANDSNumOfObjs] =
 {
 	{ TINGLE_MAP_SNOWHEAD, CLOCK_TOWN_SOUTH, "Tingle - Snowhead Map", "MM Tingle Map Snowhead", ObjectType::npc, {561, 248}, TWIN_ISLANDS, ObjectType::npc, ObjectContext::All, 0, ZGame::mm },
@@ -576,10 +649,38 @@ ObjectInfo TWIN_ISLANDSSceneObjects [TWIN_ISLANDSNumOfObjs] =
 	{ 0x00042, TWIN_ISLANDS_WINTER, "Ramp 2", "MM Twin Islands Small Snowball Ramp 2", ObjectType::snowball, {242, 280}, TWIN_ISLANDS, ObjectType::snowball, ObjectContext::Winter, 0, ZGame::mm },
 	{ 0x00043, TWIN_ISLANDS_WINTER, "Ramp 3", "MM Twin Islands Small Snowball Ramp 3", ObjectType::snowball, {227, 279}, TWIN_ISLANDS, ObjectType::snowball, ObjectContext::Winter, 0, ZGame::mm },
 	{ 0x06, TWIN_ISLANDS_WINTER, "Underwater 1", "MM Twin Islands Underwater Chest 1", ObjectType::chest, {450, 479}, TWIN_ISLANDS, ObjectType::chest, ObjectContext::Spring, 0, ZGame::mm },
-	{ 0x00, TWIN_ISLANDS_WINTER, "Underwater 2", "MM Twin Islands Underwater Chest 2", ObjectType::chest, {630, 74}, TWIN_ISLANDS, ObjectType::chest, ObjectContext::Spring, 0, ZGame::mm }
+	{ 0x00, TWIN_ISLANDS_WINTER, "Underwater 2", "MM Twin Islands Underwater Chest 2", ObjectType::chest, {630, 74}, TWIN_ISLANDS, ObjectType::chest, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00007, TWIN_ISLANDS_SPRING, "Spring - Island 1", "MM Twin Islands Tree Island 1", ObjectType::tree, {0, 0}, TWIN_ISLANDS, ObjectType::tree, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00008, TWIN_ISLANDS_SPRING, "Spring - Island 2", "MM Twin Islands Tree Island 2", ObjectType::tree, {0, 0}, TWIN_ISLANDS, ObjectType::tree, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00009, TWIN_ISLANDS_SPRING, "Spring - Ramp", "MM Twin Islands Tree Ramp", ObjectType::tree, {0, 0}, TWIN_ISLANDS, ObjectType::tree, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00018, TWIN_ISLANDS_SPRING, "Rock 1", "MM Twin Islands Rock 1", ObjectType::rock, {0, 0}, TWIN_ISLANDS, ObjectType::rock, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00019, TWIN_ISLANDS_SPRING, "Rock 2", "MM Twin Islands Rock 2", ObjectType::rock, {0, 0}, TWIN_ISLANDS, ObjectType::rock, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x0001a, TWIN_ISLANDS_SPRING, "Rock 3", "MM Twin Islands Rock 3", ObjectType::rock, {0, 0}, TWIN_ISLANDS, ObjectType::rock, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00007, TWIN_ISLANDS_WINTER, "Winter - Island 1", "MM Twin Islands Snow Tree Island 1", ObjectType::tree, {0, 0}, TWIN_ISLANDS, ObjectType::tree, ObjectContext::Winter, 0, ZGame::mm },
+	{ 0x00008, TWIN_ISLANDS_WINTER, "Winter - Island 2", "MM Twin Islands Snow Tree Island 2", ObjectType::tree, {0, 0}, TWIN_ISLANDS, ObjectType::tree, ObjectContext::Winter, 0, ZGame::mm },
+	{ 0x00009, TWIN_ISLANDS_WINTER, "Winter - Ramp", "MM Twin Islands Snow Tree Ramp", ObjectType::tree, {0, 0}, TWIN_ISLANDS, ObjectType::tree, ObjectContext::Winter, 0, ZGame::mm },
+	{ 0x0003b, TWIN_ISLANDS, "Tree 1", "MM Goron Race Forked Tree 1", ObjectType::none, {0, 0}, GORON_RACETRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0003c, TWIN_ISLANDS, "Tree 2", "MM Goron Race Forked Tree 2", ObjectType::none, {0, 0}, GORON_RACETRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0003d, TWIN_ISLANDS, "Tree 3", "MM Goron Race Forked Tree 3", ObjectType::none, {0, 0}, GORON_RACETRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0003e, TWIN_ISLANDS, "Tree 4", "MM Goron Race Forked Tree 4", ObjectType::none, {0, 0}, GORON_RACETRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0003f, TWIN_ISLANDS, "Tree 5", "MM Goron Race Forked Tree 5", ObjectType::none, {0, 0}, GORON_RACETRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00040, TWIN_ISLANDS, "Tree 6", "MM Goron Race Forked Tree 6", ObjectType::none, {0, 0}, GORON_RACETRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00041, TWIN_ISLANDS, "Tree 7", "MM Goron Race Forked Tree 7", ObjectType::none, {0, 0}, GORON_RACETRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00042, TWIN_ISLANDS, "Tree 8", "MM Goron Race Forked Tree 8", ObjectType::none, {0, 0}, GORON_RACETRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00043, TWIN_ISLANDS, "Tree 9", "MM Goron Race Forked Tree 9", ObjectType::none, {0, 0}, GORON_RACETRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00044, TWIN_ISLANDS, "Tree 10", "MM Goron Race Forked Tree 10", ObjectType::none, {0, 0}, GORON_RACETRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00007, TWIN_ISLANDS, "Spring - Island 1", "MM Twin Islands Tree Island 1", ObjectType::none, {0, 0}, TWIN_ISLANDS_SPRING, ObjectType::none, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00008, TWIN_ISLANDS, "Spring - Island 2", "MM Twin Islands Tree Island 2", ObjectType::none, {0, 0}, TWIN_ISLANDS_SPRING, ObjectType::none, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00009, TWIN_ISLANDS, "Spring - Ramp", "MM Twin Islands Tree Ramp", ObjectType::none, {0, 0}, TWIN_ISLANDS_SPRING, ObjectType::none, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00018, TWIN_ISLANDS, "Rock 1", "MM Twin Islands Rock 1", ObjectType::none, {0, 0}, TWIN_ISLANDS_SPRING, ObjectType::none, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00019, TWIN_ISLANDS, "Rock 2", "MM Twin Islands Rock 2", ObjectType::none, {0, 0}, TWIN_ISLANDS_SPRING, ObjectType::none, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x0001a, TWIN_ISLANDS, "Rock 3", "MM Twin Islands Rock 3", ObjectType::none, {0, 0}, TWIN_ISLANDS_SPRING, ObjectType::none, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00007, TWIN_ISLANDS, "Winter - Island 1", "MM Twin Islands Snow Tree Island 1", ObjectType::none, {0, 0}, TWIN_ISLANDS_WINTER, ObjectType::none, ObjectContext::Winter, 0, ZGame::mm },
+	{ 0x00008, TWIN_ISLANDS, "Winter - Island 2", "MM Twin Islands Snow Tree Island 2", ObjectType::none, {0, 0}, TWIN_ISLANDS_WINTER, ObjectType::none, ObjectContext::Winter, 0, ZGame::mm },
+	{ 0x00009, TWIN_ISLANDS, "Winter - Ramp", "MM Twin Islands Snow Tree Ramp", ObjectType::none, {0, 0}, TWIN_ISLANDS_WINTER, ObjectType::none, ObjectContext::Winter, 0, ZGame::mm }
 };
 
-const size_t ROAD_SOUTHERN_SWAMPNumOfObjs = 43;
+const size_t ROAD_SOUTHERN_SWAMPNumOfObjs = 49;
 ObjectInfo ROAD_SOUTHERN_SWAMPSceneObjects [ROAD_SOUTHERN_SWAMPNumOfObjs] =
 {
 	{ TINGLE_MAP_WOODFALL, CLOCK_TOWN_SOUTH, "Tingle - Woodfall Map", "MM Tingle Map Woodfall", ObjectType::npc, {468, 149}, ROAD_SOUTHERN_SWAMP, ObjectType::npc, ObjectContext::All, 0, ZGame::mm },
@@ -624,10 +725,16 @@ ObjectInfo ROAD_SOUTHERN_SWAMPSceneObjects [ROAD_SOUTHERN_SWAMPNumOfObjs] =
 	{ 0x03e10, ROAD_SOUTHERN_SWAMP, "Grass 11", "MM Road to Southern Swamp Grotto Grass 11", ObjectType::none, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x03e11, ROAD_SOUTHERN_SWAMP, "Grass 12", "MM Road to Southern Swamp Grotto Grass 12", ObjectType::none, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x03e12, ROAD_SOUTHERN_SWAMP, "Grass 13", "MM Road to Southern Swamp Grotto Grass 13", ObjectType::none, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
-	{ 0x03e13, ROAD_SOUTHERN_SWAMP, "Grass 14", "MM Road to Southern Swamp Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, ObjectType::none, ObjectContext::All, 0, ZGame::mm }
+	{ 0x03e13, ROAD_SOUTHERN_SWAMP, "Grass 14", "MM Road to Southern Swamp Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001a, ROAD_SOUTHERN_SWAMP, "Tree 1", "MM Road to Southern Swanp Forked Tree 1", ObjectType::tree, {0, 0}, ROAD_SOUTHERN_SWAMP, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001b, ROAD_SOUTHERN_SWAMP, "Tree 2", "MM Road to Southern Swanp Forked Tree 2", ObjectType::tree, {0, 0}, ROAD_SOUTHERN_SWAMP, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001c, ROAD_SOUTHERN_SWAMP, "Tree 3", "MM Road to Southern Swanp Forked Tree 3", ObjectType::tree, {0, 0}, ROAD_SOUTHERN_SWAMP, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001d, ROAD_SOUTHERN_SWAMP, "Tree 4", "MM Road to Southern Swanp Forked Tree 4", ObjectType::tree, {0, 0}, ROAD_SOUTHERN_SWAMP, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001e, ROAD_SOUTHERN_SWAMP, "Tree 5", "MM Road to Southern Swanp Forked Tree 5", ObjectType::tree, {0, 0}, ROAD_SOUTHERN_SWAMP, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001f, ROAD_SOUTHERN_SWAMP, "Tree 6", "MM Road to Southern Swanp Forked Tree 6", ObjectType::tree, {0, 0}, ROAD_SOUTHERN_SWAMP, ObjectType::tree, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t CLOCK_TOWN_WESTNumOfObjs = 25;
+const size_t CLOCK_TOWN_WESTNumOfObjs = 29;
 ObjectInfo CLOCK_TOWN_WESTSceneObjects [CLOCK_TOWN_WESTNumOfObjs] =
 {
 	{ BANK_1, CLOCK_TOWN_WEST, "Bank Reward 1", "MM Clock Town Bank Reward 1", ObjectType::npc, {641, 328}, CLOCK_TOWN_WEST, ObjectType::npc, ObjectContext::All, 0, ZGame::mm },
@@ -654,10 +761,14 @@ ObjectInfo CLOCK_TOWN_WESTSceneObjects [CLOCK_TOWN_WESTNumOfObjs] =
 	{ 0x0008, CLOCK_TOWN_WEST, "Pot 3", "MM Swordsman School Pot 3", ObjectType::none, {0, 0}, SWORDSMAN_SCHOOL, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x0009, CLOCK_TOWN_WEST, "Pot 4", "MM Swordsman School Pot 4", ObjectType::none, {0, 0}, SWORDSMAN_SCHOOL, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x000a, CLOCK_TOWN_WEST, "Pot 5", "MM Swordsman School Pot 5", ObjectType::none, {0, 0}, SWORDSMAN_SCHOOL, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
-	{ POSTMAN_HEART_PIECE, CLOCK_TOWN_WEST, "Postman Game - Heart Piece", "MM Post Office HP", ObjectType::none, {0, 0}, POST_OFFICE, ObjectType::none, ObjectContext::All, 0, ZGame::mm }
+	{ POSTMAN_HEART_PIECE, CLOCK_TOWN_WEST, "Postman Game - Heart Piece", "MM Post Office HP", ObjectType::none, {0, 0}, POST_OFFICE, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00002, CLOCK_TOWN_WEST, "Bush 1", "MM Trading Post Bush 1", ObjectType::none, {0, 0}, TRADING_POST, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00003, CLOCK_TOWN_WEST, "Bush 2", "MM Trading Post Bush 2", ObjectType::none, {0, 0}, TRADING_POST, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00004, CLOCK_TOWN_WEST, "Bush 3", "MM Trading Post Bush 3", ObjectType::none, {0, 0}, TRADING_POST, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00005, CLOCK_TOWN_WEST, "Bush 4", "MM Trading Post Bush 4", ObjectType::none, {0, 0}, TRADING_POST, ObjectType::none, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t CUCCO_SHACKNumOfObjs = 14;
+const size_t CUCCO_SHACKNumOfObjs = 22;
 ObjectInfo CUCCO_SHACKSceneObjects [CUCCO_SHACKNumOfObjs] =
 {
 	{ MASK_BUNNY, CUCCO_SHACK, "Bunny Mask", "MM Cucco Shack Bunny Mask", ObjectType::npc, {407, 318}, CUCCO_SHACK, ObjectType::npc, ObjectContext::All, 0, ZGame::mm },
@@ -673,7 +784,15 @@ ObjectInfo CUCCO_SHACKSceneObjects [CUCCO_SHACKNumOfObjs] =
 	{ 0x20011, CUCCO_SHACK, "Wood Hole 3", "MM Cucco Shack Wonder Item 3", ObjectType::wonder, {284, 278}, CUCCO_SHACK, ObjectType::wonder, ObjectContext::All, 0, ZGame::mm },
 	{ 0x00012, CUCCO_SHACK, "Wood Hole 4", "MM Cucco Shack Wonder Item 4", ObjectType::wonder, {284, 357}, CUCCO_SHACK, ObjectType::wonder, ObjectContext::All, 0, ZGame::mm },
 	{ 0x10012, CUCCO_SHACK, "Wood Hole 5", "MM Cucco Shack Wonder Item 5", ObjectType::wonder, {279, 347}, CUCCO_SHACK, ObjectType::wonder, ObjectContext::All, 0, ZGame::mm },
-	{ 0x20012, CUCCO_SHACK, "Wood Hole 6", "MM Cucco Shack Wonder Item 6", ObjectType::wonder, {284, 335}, CUCCO_SHACK, ObjectType::wonder, ObjectContext::All, 0, ZGame::mm }
+	{ 0x20012, CUCCO_SHACK, "Wood Hole 6", "MM Cucco Shack Wonder Item 6", ObjectType::wonder, {284, 335}, CUCCO_SHACK, ObjectType::wonder, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000c, CUCCO_SHACK, "Tree", "MM Cucco Shack Tree", ObjectType::tree, {0, 0}, CUCCO_SHACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000b, CUCCO_SHACK, "Bush 1", "MM Cucco Shack Bush 1", ObjectType::bush, {0, 0}, CUCCO_SHACK, ObjectType::bush, ObjectContext::All, 0, ZGame::mm },
+	{ 0x1000b, CUCCO_SHACK, "Bush 2", "MM Cucco Shack Bush 2", ObjectType::bush, {0, 0}, CUCCO_SHACK, ObjectType::bush, ObjectContext::All, 0, ZGame::mm },
+	{ 0x2000b, CUCCO_SHACK, "Bush 3", "MM Cucco Shack Bush 3", ObjectType::bush, {0, 0}, CUCCO_SHACK, ObjectType::bush, ObjectContext::All, 0, ZGame::mm },
+	{ 0x3000b, CUCCO_SHACK, "Bush 4", "MM Cucco Shack Bush 4", ObjectType::bush, {0, 0}, CUCCO_SHACK, ObjectType::bush, ObjectContext::All, 0, ZGame::mm },
+	{ 0x4000b, CUCCO_SHACK, "Bush 5", "MM Cucco Shack Bush 5", ObjectType::bush, {0, 0}, CUCCO_SHACK, ObjectType::bush, ObjectContext::All, 0, ZGame::mm },
+	{ 0x5000b, CUCCO_SHACK, "Bush 6", "MM Cucco Shack Bush 6", ObjectType::bush, {0, 0}, CUCCO_SHACK, ObjectType::bush, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00013, CUCCO_SHACK, "Bush 7", "MM Cucco Shack Bush 7", ObjectType::bush, {0, 0}, CUCCO_SHACK, ObjectType::bush, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t CURIOSITY_SHOPNumOfObjs = 4;
@@ -707,7 +826,7 @@ ObjectInfo DEKU_KING_CHAMBERSceneObjects [DEKU_KING_CHAMBERNumOfObjs] =
 	{ SONG_AWAKENING, DEKU_KING_CHAMBER, "Sonata of Awakening", "MM Deku Palace Sonata of Awakening", ObjectType::npc, {180, 314}, DEKU_KING_CHAMBER, ObjectType::npc, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t DEKU_PALACENumOfObjs = 92;
+const size_t DEKU_PALACENumOfObjs = 95;
 ObjectInfo DEKU_PALACESceneObjects [DEKU_PALACENumOfObjs] =
 {
 	{ 0x1e, DEKU_PALACE, "Garden Heart Piece", "MM Deku Palace HP", ObjectType::collectible, {210, 133}, DEKU_PALACE, ObjectType::collectible, ObjectContext::All, 0, ZGame::mm },
@@ -801,7 +920,10 @@ ObjectInfo DEKU_PALACESceneObjects [DEKU_PALACENumOfObjs] =
 	{ 0x00606, DEKU_PALACE, "Grass 5", "MM Deku Palace JP Line Grotto Grass 5", ObjectType::none, {0, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x0010c, DEKU_PALACE, "Boulder 1", "MM Deku Palace Red Boulder 1", ObjectType::redboulder, {691, 259}, DEKU_PALACE, ObjectType::redboulder, ObjectContext::All, 0, ZGame::mm },
 	{ 0x0010d, DEKU_PALACE, "Boulder 2", "MM Deku Palace Red Boulder 2", ObjectType::redboulder, {635, 222}, DEKU_PALACE, ObjectType::redboulder, ObjectContext::All, 0, ZGame::mm },
-	{ 0x0010e, DEKU_PALACE, "Boulder 3", "MM Deku Palace Red Boulder 3", ObjectType::redboulder, {644, 36}, DEKU_PALACE, ObjectType::redboulder, ObjectContext::All, 0, ZGame::mm }
+	{ 0x0010e, DEKU_PALACE, "Boulder 3", "MM Deku Palace Red Boulder 3", ObjectType::redboulder, {644, 36}, DEKU_PALACE, ObjectType::redboulder, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00000, DEKU_PALACE, "MM Deku Palace Soil Item 1", "MM Deku Palace Soil Item 1", ObjectType::soil, {0, 0}, DEKU_PALACE, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x10000, DEKU_PALACE, "MM Deku Palace Soil Item 2", "MM Deku Palace Soil Item 2", ObjectType::soil, {0, 0}, DEKU_PALACE, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x20000, DEKU_PALACE, "MM Deku Palace Soil Item 3", "MM Deku Palace Soil Item 3", ObjectType::soil, {0, 0}, DEKU_PALACE, ObjectType::soil, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t DEKU_PLAYGROUNDNumOfObjs = 2;
@@ -849,7 +971,7 @@ ObjectInfo DEKU_SHRINESceneObjects [DEKU_SHRINENumOfObjs] =
 	{ 0x00405, DEKU_SHRINE, "Main 20", "MM Deku Shrine Rupee Main 20", ObjectType::rupee, {577, 72}, DEKU_SHRINE, ObjectType::rupee, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t DOG_RACETRACKNumOfObjs = 6;
+const size_t DOG_RACETRACKNumOfObjs = 7;
 ObjectInfo DOG_RACETRACKSceneObjects [DOG_RACETRACKNumOfObjs] =
 {
 	{ 0x00, DOG_RACETRACK, "Chest", "MM Doggy Racetrack Chest", ObjectType::chest, {268, 259}, DOG_RACETRACK, ObjectType::chest, ObjectContext::All, 0, ZGame::mm },
@@ -857,7 +979,8 @@ ObjectInfo DOG_RACETRACKSceneObjects [DOG_RACETRACKNumOfObjs] =
 	{ 0x0009, DOG_RACETRACK, "Pot 1", "MM Doggy Racetrack Pot 1", ObjectType::pot, {308, 284}, DOG_RACETRACK, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
 	{ 0x000a, DOG_RACETRACK, "Pot 2", "MM Doggy Racetrack Pot 2", ObjectType::pot, {295, 294}, DOG_RACETRACK, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
 	{ 0x000c, DOG_RACETRACK, "Pot 3", "MM Doggy Racetrack Pot 3", ObjectType::pot, {281, 307}, DOG_RACETRACK, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
-	{ 0x000d, DOG_RACETRACK, "Pot 4", "MM Doggy Racetrack Pot 4", ObjectType::pot, {265, 319}, DOG_RACETRACK, ObjectType::pot, ObjectContext::All, 0, ZGame::mm }
+	{ 0x000d, DOG_RACETRACK, "Pot 4", "MM Doggy Racetrack Pot 4", ObjectType::pot, {265, 319}, DOG_RACETRACK, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00008, DOG_RACETRACK, "Soil", "MM Doggy Racetrack Soil", ObjectType::soil, {0, 0}, DOG_RACETRACK, ObjectType::soil, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t EXTRANumOfObjs = 5;
@@ -870,7 +993,7 @@ ObjectInfo EXTRASceneObjects [EXTRANumOfObjs] =
 	{ 0x0004, EXTRA, "Pot Game 5", "MM Zora Cape Pot Game 5", ObjectType::pot, {557, 180}, ZORA_CAPE, ObjectType::pot, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t ZORA_CAPENumOfObjs = 34;
+const size_t ZORA_CAPENumOfObjs = 54;
 ObjectInfo ZORA_CAPESceneObjects [ZORA_CAPENumOfObjs] =
 {
 	{ 0x0000, EXTRA, "Pot Game 1", "MM Zora Cape Pot Game 1", ObjectType::pot, {559, 168}, ZORA_CAPE, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
@@ -906,7 +1029,27 @@ ObjectInfo ZORA_CAPESceneObjects [ZORA_CAPENumOfObjs] =
 	{ 0x03513, ZORA_CAPE, "Grass 14", "MM Zora Cape Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_ZORA_CAPE_GENERIC, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ BEAVER_1, ZORA_CAPE, "Race 1", "MM Waterfall Rapids Beaver Race 1", ObjectType::none, {0, 0}, WATERFALL_RAPIDS, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ BEAVER_2, ZORA_CAPE, "Race 2", "MM Waterfall Rapids Beaver Race 2", ObjectType::none, {0, 0}, WATERFALL_RAPIDS, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
-	{ GREAT_FAIRY_OCEAN, ZORA_CAPE, "Double Defense", "MM Great Bay Great Fairy", ObjectType::none, {0, 0}, MM_FAIRY_GREAT_BAY_COAST, ObjectType::none, ObjectContext::All, 0, ZGame::mm }
+	{ GREAT_FAIRY_OCEAN, ZORA_CAPE, "Double Defense", "MM Great Bay Great Fairy", ObjectType::none, {0, 0}, MM_FAIRY_GREAT_BAY_COAST, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00020, ZORA_CAPE, "Island 1", "MM Zora Cape Rock Island 1", ObjectType::rock, {0, 0}, ZORA_CAPE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00021, ZORA_CAPE, "Island 2", "MM Zora Cape Rock Island 2", ObjectType::rock, {0, 0}, ZORA_CAPE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00022, ZORA_CAPE, "Island 3", "MM Zora Cape Rock Island 3", ObjectType::rock, {0, 0}, ZORA_CAPE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00023, ZORA_CAPE, "Island 4", "MM Zora Cape Rock Island 4", ObjectType::rock, {0, 0}, ZORA_CAPE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00024, ZORA_CAPE, "Island 5", "MM Zora Cape Rock Island 5", ObjectType::rock, {0, 0}, ZORA_CAPE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00025, ZORA_CAPE, "Water 1", "MM Zora Cape Rock Water 1", ObjectType::rock, {0, 0}, ZORA_CAPE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00026, ZORA_CAPE, "Water 2", "MM Zora Cape Rock Water 2", ObjectType::rock, {0, 0}, ZORA_CAPE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00027, ZORA_CAPE, "Water 3", "MM Zora Cape Rock Water 3", ObjectType::rock, {0, 0}, ZORA_CAPE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00028, ZORA_CAPE, "Water 4", "MM Zora Cape Rock Water 4", ObjectType::rock, {0, 0}, ZORA_CAPE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00029, ZORA_CAPE, "Water 5", "MM Zora Cape Rock Water 5", ObjectType::rock, {0, 0}, ZORA_CAPE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00035, ZORA_CAPE, "Sand 1", "MM Zora Cape Rock Sand 1", ObjectType::rock, {0, 0}, ZORA_CAPE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00036, ZORA_CAPE, "Sand 2", "MM Zora Cape Rock Sand 2", ObjectType::rock, {0, 0}, ZORA_CAPE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00037, ZORA_CAPE, "Sand 3", "MM Zora Cape Rock Sand 3", ObjectType::rock, {0, 0}, ZORA_CAPE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00038, ZORA_CAPE, "Sand 4", "MM Zora Cape Rock Sand 4", ObjectType::rock, {0, 0}, ZORA_CAPE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00039, ZORA_CAPE, "Sand 5", "MM Zora Cape Rock Sand 5", ObjectType::rock, {0, 0}, ZORA_CAPE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00018, ZORA_CAPE, "Beach 1", "MM Zora Cape Palm Tree Beach 1", ObjectType::tree, {0, 0}, ZORA_CAPE, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00019, ZORA_CAPE, "Beach 2", "MM Zora Cape Palm Tree Beach 2", ObjectType::tree, {0, 0}, ZORA_CAPE, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001a, ZORA_CAPE, "Island Near Fountain", "MM Zora Cape Palm Tree Island Near Fountain", ObjectType::tree, {0, 0}, ZORA_CAPE, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001b, ZORA_CAPE, "Near Beach", "MM Zora Cape Palm Tree Island Near Beach", ObjectType::tree, {0, 0}, ZORA_CAPE, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001c, ZORA_CAPE, "Island Center", "MM Zora Cape Palm Tree Island Center", ObjectType::tree, {0, 0}, ZORA_CAPE, ObjectType::tree, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t MM_FAIRY_FOUNTAINNumOfObjs = 6;
@@ -980,7 +1123,7 @@ ObjectInfo GHOST_HUTSceneObjects [GHOST_HUTNumOfObjs] =
 	{ GHOST_HUT_HEART_PIECE, GHOST_HUT, "Heart Piece", "MM Ghost Hut HP", ObjectType::npc, {473, 179}, GHOST_HUT, ObjectType::npc, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t GORMAN_TRACKNumOfObjs = 27;
+const size_t GORMAN_TRACKNumOfObjs = 52;
 ObjectInfo GORMAN_TRACKSceneObjects [GORMAN_TRACKNumOfObjs] =
 {
 	{ 0x00049, GORMAN_TRACK, "Crate", "MM Gorman Track Crate", ObjectType::crate, {640, 242}, GORMAN_TRACK, ObjectType::crate, ObjectContext::All, 0, ZGame::mm },
@@ -1009,7 +1152,32 @@ ObjectInfo GORMAN_TRACKSceneObjects [GORMAN_TRACKNumOfObjs] =
 	{ 0x90025, GORMAN_TRACK, "Pack 2 - Grass 10", "MM Gorman Track Grass Pack 2 Grass 10", ObjectType::grass, {189, 446}, GORMAN_TRACK, ObjectType::grass, ObjectContext::All, 0, ZGame::mm },
 	{ 0xa0025, GORMAN_TRACK, "Pack 2 - Grass 11", "MM Gorman Track Grass Pack 2 Grass 11", ObjectType::grass, {174, 456}, GORMAN_TRACK, ObjectType::grass, ObjectContext::All, 0, ZGame::mm },
 	{ 0xb0025, GORMAN_TRACK, "Pack 2 - Grass 12", "MM Gorman Track Grass Pack 2 Grass 12", ObjectType::grass, {157, 453}, GORMAN_TRACK, ObjectType::grass, ObjectContext::All, 0, ZGame::mm },
-	{ GORMAN_MILK, GORMAN_TRACK, "Purchase - Milk", "MM Gorman Track Milk Purchase", ObjectType::npc, {663, 235}, GORMAN_TRACK, ObjectType::npc, ObjectContext::All, 0, ZGame::mm }
+	{ GORMAN_MILK, GORMAN_TRACK, "Purchase - Milk", "MM Gorman Track Milk Purchase", ObjectType::npc, {663, 235}, GORMAN_TRACK, ObjectType::npc, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000b, GORMAN_TRACK, "Tree 1", "MM Gorman Track Tree 01", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000c, GORMAN_TRACK, "Tree 2", "MM Gorman Track Tree 02", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000d, GORMAN_TRACK, "Tree 3", "MM Gorman Track Tree 03", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000e, GORMAN_TRACK, "Tree 4", "MM Gorman Track Tree 04", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000f, GORMAN_TRACK, "Tree 5", "MM Gorman Track Tree 05", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00010, GORMAN_TRACK, "Tree 6", "MM Gorman Track Tree 06", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00011, GORMAN_TRACK, "Tree 7", "MM Gorman Track Tree 07", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00012, GORMAN_TRACK, "Tree 8", "MM Gorman Track Tree 08", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00013, GORMAN_TRACK, "Tree 9", "MM Gorman Track Tree 09", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00014, GORMAN_TRACK, "Tree 10", "MM Gorman Track Tree 10", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00015, GORMAN_TRACK, "Tree 11", "MM Gorman Track Tree 11", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00016, GORMAN_TRACK, "Tree 12", "MM Gorman Track Tree 12", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00017, GORMAN_TRACK, "Tree 13", "MM Gorman Track Tree 13", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00018, GORMAN_TRACK, "Tree 14", "MM Gorman Track Tree 14", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00019, GORMAN_TRACK, "Tree 15", "MM Gorman Track Tree 15", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001a, GORMAN_TRACK, "Tree 16", "MM Gorman Track Tree 16", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001b, GORMAN_TRACK, "Tree 17", "MM Gorman Track Tree 17", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001c, GORMAN_TRACK, "Tree 18", "MM Gorman Track Tree 18", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001d, GORMAN_TRACK, "Tree 19", "MM Gorman Track Tree 19", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001e, GORMAN_TRACK, "Tree 20", "MM Gorman Track Tree 20", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001f, GORMAN_TRACK, "Tree 21", "MM Gorman Track Tree 21", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00020, GORMAN_TRACK, "Tree 22", "MM Gorman Track Tree 22", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00021, GORMAN_TRACK, "Tree 23", "MM Gorman Track Tree 23", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00022, GORMAN_TRACK, "Tree 24", "MM Gorman Track Tree 24", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00023, GORMAN_TRACK, "Tree 25", "MM Gorman Track Tree 25", ObjectType::tree, {0, 0}, GORMAN_TRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t GORON_GRAVEYARDNumOfObjs = 1;
@@ -1018,7 +1186,7 @@ ObjectInfo GORON_GRAVEYARDSceneObjects [GORON_GRAVEYARDNumOfObjs] =
 	{ MASK_GORON, GORON_GRAVEYARD, "Goron Mask", "MM Goron Graveyard Mask", ObjectType::npc, {474, 289}, GORON_GRAVEYARD, ObjectType::npc, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t GORON_RACETRACKNumOfObjs = 31;
+const size_t GORON_RACETRACKNumOfObjs = 41;
 ObjectInfo GORON_RACETRACKSceneObjects [GORON_RACETRACKNumOfObjs] =
 {
 	{ 0x0002, GORON_RACETRACK, "Pot 1", "MM Goron Race Pot 01", ObjectType::pot, {346, 247}, GORON_RACETRACK, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
@@ -1051,7 +1219,17 @@ ObjectInfo GORON_RACETRACKSceneObjects [GORON_RACETRACKNumOfObjs] =
 	{ 0x001d, GORON_RACETRACK, "Pot 28", "MM Goron Race Pot 28", ObjectType::pot, {678, 238}, GORON_RACETRACK, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
 	{ 0x001e, GORON_RACETRACK, "Pot 29", "MM Goron Race Pot 29", ObjectType::pot, {681, 230}, GORON_RACETRACK, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
 	{ 0x001f, GORON_RACETRACK, "Pot 30", "MM Goron Race Pot 30", ObjectType::pot, {670, 233}, GORON_RACETRACK, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
-	{ GORON_RACE, GORON_RACETRACK, "Reward", "MM Goron Race Reward", ObjectType::npc, {679, 442}, GORON_RACETRACK, ObjectType::npc, ObjectContext::All, 0, ZGame::mm }
+	{ GORON_RACE, GORON_RACETRACK, "Reward", "MM Goron Race Reward", ObjectType::npc, {679, 442}, GORON_RACETRACK, ObjectType::npc, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0003b, GORON_RACETRACK, "Tree 1", "MM Goron Race Forked Tree 1", ObjectType::tree, {0, 0}, GORON_RACETRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0003c, GORON_RACETRACK, "Tree 2", "MM Goron Race Forked Tree 2", ObjectType::tree, {0, 0}, GORON_RACETRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0003d, GORON_RACETRACK, "Tree 3", "MM Goron Race Forked Tree 3", ObjectType::tree, {0, 0}, GORON_RACETRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0003e, GORON_RACETRACK, "Tree 4", "MM Goron Race Forked Tree 4", ObjectType::tree, {0, 0}, GORON_RACETRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0003f, GORON_RACETRACK, "Tree 5", "MM Goron Race Forked Tree 5", ObjectType::tree, {0, 0}, GORON_RACETRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00040, GORON_RACETRACK, "Tree 6", "MM Goron Race Forked Tree 6", ObjectType::tree, {0, 0}, GORON_RACETRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00041, GORON_RACETRACK, "Tree 7", "MM Goron Race Forked Tree 7", ObjectType::tree, {0, 0}, GORON_RACETRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00042, GORON_RACETRACK, "Tree 8", "MM Goron Race Forked Tree 8", ObjectType::tree, {0, 0}, GORON_RACETRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00043, GORON_RACETRACK, "Tree 9", "MM Goron Race Forked Tree 9", ObjectType::tree, {0, 0}, GORON_RACETRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00044, GORON_RACETRACK, "Tree 10", "MM Goron Race Forked Tree 10", ObjectType::tree, {0, 0}, GORON_RACETRACK, ObjectType::tree, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t MM_GORON_SHOPNumOfObjs = 3;
@@ -1062,7 +1240,7 @@ ObjectInfo MM_GORON_SHOPSceneObjects [MM_GORON_SHOPNumOfObjs] =
 	{ 0x12, MM_GORON_SHOP, "Item 3", "MM Goron Shop Item 3", ObjectType::shop, {392, 191}, MM_GORON_SHOP, ObjectType::shop, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t GORON_SHRINENumOfObjs = 12;
+const size_t GORON_SHRINENumOfObjs = 28;
 ObjectInfo GORON_SHRINESceneObjects [GORON_SHRINENumOfObjs] =
 {
 	{ GORON_BABY, GORON_SHRINE, "Goron's Lulluby", "MM Goron Baby", ObjectType::npc, {855, 284}, GORON_SHRINE, ObjectType::npc, ObjectContext::All, 0, ZGame::mm },
@@ -1076,10 +1254,26 @@ ObjectInfo GORON_SHRINESceneObjects [GORON_SHRINENumOfObjs] =
 	{ 0x002a, GORON_SHRINE, "Pot 8", "MM Goron Shrine Pot 08", ObjectType::pot, {231, 362}, GORON_SHRINE, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
 	{ 0x0106, GORON_SHRINE, "Pot 9", "MM Goron Shrine Pot 09", ObjectType::pot, {795, 333}, GORON_SHRINE, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
 	{ 0x0107, GORON_SHRINE, "Pot 10", "MM Goron Shrine Pot 10", ObjectType::pot, {811, 333}, GORON_SHRINE, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
-	{ 0x0108, GORON_SHRINE, "Pot 11", "MM Goron Shrine Pot 11", ObjectType::pot, {826, 333}, GORON_SHRINE, ObjectType::pot, ObjectContext::All, 0, ZGame::mm }
+	{ 0x0108, GORON_SHRINE, "Pot 11", "MM Goron Shrine Pot 11", ObjectType::pot, {826, 333}, GORON_SHRINE, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00002, GORON_SHRINE, "Rock 1", "MM Goron Shrine Rock 01", ObjectType::rock, {0, 0}, GORON_SHRINE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00003, GORON_SHRINE, "Rock 2", "MM Goron Shrine Rock 02", ObjectType::rock, {0, 0}, GORON_SHRINE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00004, GORON_SHRINE, "Rock 3", "MM Goron Shrine Rock 03", ObjectType::rock, {0, 0}, GORON_SHRINE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00005, GORON_SHRINE, "Rock 4", "MM Goron Shrine Rock 04", ObjectType::rock, {0, 0}, GORON_SHRINE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00006, GORON_SHRINE, "Rock 5", "MM Goron Shrine Rock 05", ObjectType::rock, {0, 0}, GORON_SHRINE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00007, GORON_SHRINE, "Rock 6", "MM Goron Shrine Rock 06", ObjectType::rock, {0, 0}, GORON_SHRINE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00008, GORON_SHRINE, "Rock 7", "MM Goron Shrine Rock 07", ObjectType::rock, {0, 0}, GORON_SHRINE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00009, GORON_SHRINE, "Rock 8", "MM Goron Shrine Rock 08", ObjectType::rock, {0, 0}, GORON_SHRINE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000a, GORON_SHRINE, "Rock 9", "MM Goron Shrine Rock 09", ObjectType::rock, {0, 0}, GORON_SHRINE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000b, GORON_SHRINE, "Rock 10", "MM Goron Shrine Rock 10", ObjectType::rock, {0, 0}, GORON_SHRINE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000c, GORON_SHRINE, "Rock 11", "MM Goron Shrine Rock 11", ObjectType::rock, {0, 0}, GORON_SHRINE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000d, GORON_SHRINE, "Rock 12", "MM Goron Shrine Rock 12", ObjectType::rock, {0, 0}, GORON_SHRINE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000e, GORON_SHRINE, "Rock 13", "MM Goron Shrine Rock 13", ObjectType::rock, {0, 0}, GORON_SHRINE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000f, GORON_SHRINE, "Rock 14", "MM Goron Shrine Rock 14", ObjectType::rock, {0, 0}, GORON_SHRINE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00010, GORON_SHRINE, "Rock 15", "MM Goron Shrine Rock 15", ObjectType::rock, {0, 0}, GORON_SHRINE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00011, GORON_SHRINE, "Rock 16", "MM Goron Shrine Rock 16", ObjectType::rock, {0, 0}, GORON_SHRINE, ObjectType::rock, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t GORON_VILLAGE_WINTERNumOfObjs = 68;
+const size_t GORON_VILLAGE_WINTERNumOfObjs = 84;
 ObjectInfo GORON_VILLAGE_WINTERSceneObjects [GORON_VILLAGE_WINTERNumOfObjs] =
 {
 	{ GORON_KEG, GORON_VILLAGE_WINTER, "Powder Keg", "MM Goron Powder Keg", ObjectType::npc, {117, 323}, GORON_VILLAGE_WINTER, ObjectType::npc, ObjectContext::All, 0, ZGame::mm },
@@ -1149,7 +1343,23 @@ ObjectInfo GORON_VILLAGE_WINTERSceneObjects [GORON_VILLAGE_WINTERNumOfObjs] =
 	{ 0xa0502, GORON_VILLAGE_WINTER, "Pack 2 - Grass 11", "MM Lone Peak Shrine Grass Pack 2 Grass 11", ObjectType::none, {0, 0}, LONE_PEAK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0xb0502, GORON_VILLAGE_WINTER, "Pack 2 - Grass 12", "MM Lone Peak Shrine Grass Pack 2 Grass 12", ObjectType::none, {0, 0}, LONE_PEAK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x03, GORON_VILLAGE_WINTER, "Invisible", "MM Lone Peak Shrine Invisible Chest", ObjectType::none, {0, 0}, LONE_PEAK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
-	{ 0x01, GORON_VILLAGE_WINTER, "Lens of Truth", "MM Lone Peak Shrine Lens Chest", ObjectType::none, {0, 0}, LONE_PEAK, ObjectType::none, ObjectContext::All, 0, ZGame::mm }
+	{ 0x01, GORON_VILLAGE_WINTER, "Lens of Truth", "MM Lone Peak Shrine Lens Chest", ObjectType::none, {0, 0}, LONE_PEAK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00002, GORON_VILLAGE_WINTER, "Rock 1", "MM Goron Shrine Rock 01", ObjectType::none, {0, 0}, GORON_SHRINE, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00003, GORON_VILLAGE_WINTER, "Rock 2", "MM Goron Shrine Rock 02", ObjectType::none, {0, 0}, GORON_SHRINE, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00004, GORON_VILLAGE_WINTER, "Rock 3", "MM Goron Shrine Rock 03", ObjectType::none, {0, 0}, GORON_SHRINE, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00005, GORON_VILLAGE_WINTER, "Rock 4", "MM Goron Shrine Rock 04", ObjectType::none, {0, 0}, GORON_SHRINE, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00006, GORON_VILLAGE_WINTER, "Rock 5", "MM Goron Shrine Rock 05", ObjectType::none, {0, 0}, GORON_SHRINE, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00007, GORON_VILLAGE_WINTER, "Rock 6", "MM Goron Shrine Rock 06", ObjectType::none, {0, 0}, GORON_SHRINE, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00008, GORON_VILLAGE_WINTER, "Rock 7", "MM Goron Shrine Rock 07", ObjectType::none, {0, 0}, GORON_SHRINE, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00009, GORON_VILLAGE_WINTER, "Rock 8", "MM Goron Shrine Rock 08", ObjectType::none, {0, 0}, GORON_SHRINE, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000a, GORON_VILLAGE_WINTER, "Rock 9", "MM Goron Shrine Rock 09", ObjectType::none, {0, 0}, GORON_SHRINE, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000b, GORON_VILLAGE_WINTER, "Rock 10", "MM Goron Shrine Rock 10", ObjectType::none, {0, 0}, GORON_SHRINE, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000c, GORON_VILLAGE_WINTER, "Rock 11", "MM Goron Shrine Rock 11", ObjectType::none, {0, 0}, GORON_SHRINE, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000d, GORON_VILLAGE_WINTER, "Rock 12", "MM Goron Shrine Rock 12", ObjectType::none, {0, 0}, GORON_SHRINE, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000e, GORON_VILLAGE_WINTER, "Rock 13", "MM Goron Shrine Rock 13", ObjectType::none, {0, 0}, GORON_SHRINE, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000f, GORON_VILLAGE_WINTER, "Rock 14", "MM Goron Shrine Rock 14", ObjectType::none, {0, 0}, GORON_SHRINE, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00010, GORON_VILLAGE_WINTER, "Rock 15", "MM Goron Shrine Rock 15", ObjectType::none, {0, 0}, GORON_SHRINE, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00011, GORON_VILLAGE_WINTER, "Rock 16", "MM Goron Shrine Rock 16", ObjectType::none, {0, 0}, GORON_SHRINE, ObjectType::none, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t MM_GROTTO_GREAT_BAY_COAST_COWNumOfObjs = 78;
@@ -1235,7 +1445,7 @@ ObjectInfo MM_GROTTO_GREAT_BAY_COAST_COWSceneObjects [MM_GROTTO_GREAT_BAY_COAST_
 	{ 0x00f02, MM_GROTTOS, "Hive", "MM Great Bay Cow Grotto Hive", ObjectType::hive, {519, 87}, MM_GROTTO_GREAT_BAY_COAST_COW, ObjectType::hive, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t MM_GROTTOSNumOfObjs = 440;
+const size_t MM_GROTTOSNumOfObjs = 444;
 ObjectInfo MM_GROTTOSSceneObjects [MM_GROTTOSNumOfObjs] =
 {
 	{ 0x00b00, MM_GROTTOS, "Grass 1", "MM Bio Baba Grotto Grass 1", ObjectType::grass, {685, 369}, MM_GROTTO_TERMINA_BIO_BABA, ObjectType::grass, ObjectContext::All, 0, ZGame::mm },
@@ -1677,17 +1887,22 @@ ObjectInfo MM_GROTTOSSceneObjects [MM_GROTTOSNumOfObjs] =
 	{ 0x03510, MM_GROTTOS, "Grass 11", "MM Zora Cape Grotto Grass 11", ObjectType::grass, {255, 388}, MM_GROTTO_ZORA_CAPE_GENERIC, ObjectType::grass, ObjectContext::All, 0, ZGame::mm },
 	{ 0x03511, MM_GROTTOS, "Grass 12", "MM Zora Cape Grotto Grass 12", ObjectType::grass, {382, 418}, MM_GROTTO_ZORA_CAPE_GENERIC, ObjectType::grass, ObjectContext::All, 0, ZGame::mm },
 	{ 0x03512, MM_GROTTOS, "Grass 13", "MM Zora Cape Grotto Grass 13", ObjectType::grass, {583, 448}, MM_GROTTO_ZORA_CAPE_GENERIC, ObjectType::grass, ObjectContext::All, 0, ZGame::mm },
-	{ 0x03513, MM_GROTTOS, "Grass 14", "MM Zora Cape Grotto Grass 14", ObjectType::grass, {418, 418}, MM_GROTTO_ZORA_CAPE_GENERIC, ObjectType::grass, ObjectContext::All, 0, ZGame::mm }
+	{ 0x03513, MM_GROTTOS, "Grass 14", "MM Zora Cape Grotto Grass 14", ObjectType::grass, {418, 418}, MM_GROTTO_ZORA_CAPE_GENERIC, ObjectType::grass, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00b01, MM_GROTTOS, "Rock", "MM Bio Baba Grotto Rock", ObjectType::rock, {0, 0}, MM_GROTTO_TERMINA_BIO_BABA, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00c09, MM_GROTTOS, "Item 1", "MM Beans Grotto Soil Item 1", ObjectType::soil, {0, 0}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x10c09, MM_GROTTOS, "Item 2", "MM Beans Grotto Soil Item 2", ObjectType::soil, {0, 0}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x20c09, MM_GROTTOS, "Item 3", "MM Beans Grotto Soil Item 3", ObjectType::soil, {0, 0}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectType::soil, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t MM_GROTTO_TERMINA_BIO_BABANumOfObjs = 5;
+const size_t MM_GROTTO_TERMINA_BIO_BABANumOfObjs = 6;
 ObjectInfo MM_GROTTO_TERMINA_BIO_BABASceneObjects [MM_GROTTO_TERMINA_BIO_BABANumOfObjs] =
 {
 	{ 0x00b00, MM_GROTTOS, "Grass 1", "MM Bio Baba Grotto Grass 1", ObjectType::grass, {685, 369}, MM_GROTTO_TERMINA_BIO_BABA, ObjectType::grass, ObjectContext::All, 0, ZGame::mm },
 	{ 0x00b03, MM_GROTTOS, "Grass 2", "MM Bio Baba Grotto Grass 2", ObjectType::grass, {799, 365}, MM_GROTTO_TERMINA_BIO_BABA, ObjectType::grass, ObjectContext::All, 0, ZGame::mm },
 	{ 0x02, MM_GROTTOS, "Heart Piece", "MM Termina Field Bio Baba Grotto", ObjectType::collectible, {235, 140}, MM_GROTTO_TERMINA_BIO_BABA, ObjectType::collectible, ObjectContext::All, 0, ZGame::mm },
 	{ 0x00b0a, MM_GROTTOS, "Left", "MM Termina Field Bio Baba Grotto Hive Left", ObjectType::hive, {266, 143}, MM_GROTTO_TERMINA_BIO_BABA, ObjectType::hive, ObjectContext::All, 0, ZGame::mm },
-	{ 0x00b09, MM_GROTTOS, "Middle", "MM Termina Field Bio Baba Grotto Hive Middle", ObjectType::hive, {152, 168}, MM_GROTTO_TERMINA_BIO_BABA, ObjectType::hive, ObjectContext::All, 0, ZGame::mm }
+	{ 0x00b09, MM_GROTTOS, "Middle", "MM Termina Field Bio Baba Grotto Hive Middle", ObjectType::hive, {152, 168}, MM_GROTTO_TERMINA_BIO_BABA, ObjectType::hive, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00b01, MM_GROTTOS, "Rock", "MM Bio Baba Grotto Rock", ObjectType::rock, {0, 0}, MM_GROTTO_TERMINA_BIO_BABA, ObjectType::rock, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t MM_GROTTO_TERMINA_CANYON_GOSSIPNumOfObjs = 6;
@@ -1701,7 +1916,7 @@ ObjectInfo MM_GROTTO_TERMINA_CANYON_GOSSIPSceneObjects [MM_GROTTO_TERMINA_CANYON
 	{ GOSSIP_HEART_PIECE, MM_GROTTOS, "Gossip Stones - Heart Piece", "MM Termina Field Gossip Stones HP", ObjectType::npc, {281, 408}, MM_GROTTO_TERMINA_CANYON_GOSSIP, ObjectType::npc, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t MM_GROTTO_DEKU_PALACE_BEANSNumOfObjs = 17;
+const size_t MM_GROTTO_DEKU_PALACE_BEANSNumOfObjs = 20;
 ObjectInfo MM_GROTTO_DEKU_PALACE_BEANSSceneObjects [MM_GROTTO_DEKU_PALACE_BEANSNumOfObjs] =
 {
 	{ 0x00c04, MM_GROTTOS, "Butterfly 1", "MM Deku Palace Grotto Butterfly 1", ObjectType::butterfly, {848, 516}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectType::butterfly, ObjectContext::All, 0, ZGame::mm },
@@ -1720,7 +1935,10 @@ ObjectInfo MM_GROTTO_DEKU_PALACE_BEANSSceneObjects [MM_GROTTO_DEKU_PALACE_BEANSN
 	{ 0x80c03, MM_GROTTOS, "Grass 9", "MM Deku Palace Grotto Grass 09", ObjectType::grass, {203, 535}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectType::grass, ObjectContext::All, 0, ZGame::mm },
 	{ 0x90c03, MM_GROTTOS, "Grass 10", "MM Deku Palace Grotto Grass 10", ObjectType::grass, {196, 522}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectType::grass, ObjectContext::All, 0, ZGame::mm },
 	{ 0xa0c03, MM_GROTTOS, "Grass 11", "MM Deku Palace Grotto Grass 11", ObjectType::grass, {199, 508}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectType::grass, ObjectContext::All, 0, ZGame::mm },
-	{ 0xb0c03, MM_GROTTOS, "Grass 12", "MM Deku Palace Grotto Grass 12", ObjectType::grass, {207, 496}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectType::grass, ObjectContext::All, 0, ZGame::mm }
+	{ 0xb0c03, MM_GROTTOS, "Grass 12", "MM Deku Palace Grotto Grass 12", ObjectType::grass, {207, 496}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectType::grass, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00c09, MM_GROTTOS, "Item 1", "MM Beans Grotto Soil Item 1", ObjectType::soil, {0, 0}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x10c09, MM_GROTTOS, "Item 2", "MM Beans Grotto Soil Item 2", ObjectType::soil, {0, 0}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x20c09, MM_GROTTOS, "Item 3", "MM Beans Grotto Soil Item 3", ObjectType::soil, {0, 0}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectType::soil, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t MM_GROTTO_DEKU_PALACE_GENERICNumOfObjs = 10;
@@ -2171,7 +2389,7 @@ ObjectInfo HONEY_DARLINGSceneObjects [HONEY_DARLINGNumOfObjs] =
 	{ HONEY_DARLING_1, HONEY_DARLING, "Reward - Any Day", "MM Honey & Darling Reward Any Day", ObjectType::npc, {471, 273}, HONEY_DARLING, ObjectType::npc, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t IKANA_GRAVEYARDNumOfObjs = 75;
+const size_t IKANA_GRAVEYARDNumOfObjs = 88;
 ObjectInfo IKANA_GRAVEYARDSceneObjects [IKANA_GRAVEYARDNumOfObjs] =
 {
 	{ 0x00, IKANA_GRAVEYARD, "Captain's Mask", "MM Ikana Graveyard Captain Mask", ObjectType::chest, {597, 198}, IKANA_GRAVEYARD, ObjectType::chest, ObjectContext::All, 0, ZGame::mm },
@@ -2248,7 +2466,20 @@ ObjectInfo IKANA_GRAVEYARDSceneObjects [IKANA_GRAVEYARDNumOfObjs] =
 	{ 0x03810, IKANA_GRAVEYARD, "Grass 11", "MM Ikana Graveyard Grotto Grass 11", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_GRAVEYARD_GENERIC, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x03811, IKANA_GRAVEYARD, "Grass 12", "MM Ikana Graveyard Grotto Grass 12", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_GRAVEYARD_GENERIC, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x03812, IKANA_GRAVEYARD, "Grass 13", "MM Ikana Graveyard Grotto Grass 13", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_GRAVEYARD_GENERIC, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
-	{ 0x03813, IKANA_GRAVEYARD, "Grass 14", "MM Ikana Graveyard Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_GRAVEYARD_GENERIC, ObjectType::none, ObjectContext::All, 0, ZGame::mm }
+	{ 0x03813, IKANA_GRAVEYARD, "Grass 14", "MM Ikana Graveyard Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_GRAVEYARD_GENERIC, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00122, IKANA_GRAVEYARD, "Wall 1", "MM Ikana Graveyard Rock Wall 1", ObjectType::rock, {0, 0}, IKANA_GRAVEYARD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00123, IKANA_GRAVEYARD, "Wall 2", "MM Ikana Graveyard Rock Wall 2", ObjectType::rock, {0, 0}, IKANA_GRAVEYARD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00124, IKANA_GRAVEYARD, "Wall 3", "MM Ikana Graveyard Rock Wall 3", ObjectType::rock, {0, 0}, IKANA_GRAVEYARD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00125, IKANA_GRAVEYARD, "Wall 4", "MM Ikana Graveyard Rock Wall 4", ObjectType::rock, {0, 0}, IKANA_GRAVEYARD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00126, IKANA_GRAVEYARD, "Wall 5", "MM Ikana Graveyard Rock Wall 5", ObjectType::rock, {0, 0}, IKANA_GRAVEYARD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0012c, IKANA_GRAVEYARD, "Circle Rock 1", "MM Ikana Graveyard Rock Circle Rock 1", ObjectType::rock, {0, 0}, IKANA_GRAVEYARD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x1012c, IKANA_GRAVEYARD, "Circle Rock 2", "MM Ikana Graveyard Rock Circle Rock 2", ObjectType::rock, {0, 0}, IKANA_GRAVEYARD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x2012c, IKANA_GRAVEYARD, "Circle Rock 3", "MM Ikana Graveyard Rock Circle Rock 3", ObjectType::rock, {0, 0}, IKANA_GRAVEYARD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x3012c, IKANA_GRAVEYARD, "Circle Rock 4", "MM Ikana Graveyard Rock Circle Rock 4", ObjectType::rock, {0, 0}, IKANA_GRAVEYARD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x4012c, IKANA_GRAVEYARD, "Circle Rock 5", "MM Ikana Graveyard Rock Circle Rock 5", ObjectType::rock, {0, 0}, IKANA_GRAVEYARD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x5012c, IKANA_GRAVEYARD, "Circle Rock 6", "MM Ikana Graveyard Rock Circle Rock 6", ObjectType::rock, {0, 0}, IKANA_GRAVEYARD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x6012c, IKANA_GRAVEYARD, "Circle Rock 7", "MM Ikana Graveyard Rock Circle Rock 7", ObjectType::rock, {0, 0}, IKANA_GRAVEYARD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x7012c, IKANA_GRAVEYARD, "Circle Rock 8", "MM Ikana Graveyard Rock Circle Rock 8", ObjectType::rock, {0, 0}, IKANA_GRAVEYARD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t MM_LABORATORYNumOfObjs = 2;
@@ -2982,7 +3213,7 @@ ObjectInfo MOON_ZORASceneObjects [MOON_ZORANumOfObjs] =
 	{ 0x01, MOON_ZORA, "Heart Piece", "MM Moon Trial Zora HP", ObjectType::collectible, {71, 366}, MOON_ZORA, ObjectType::collectible, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t MOUNTAIN_VILLAGENumOfObjs = 175;
+const size_t MOUNTAIN_VILLAGENumOfObjs = 182;
 ObjectInfo MOUNTAIN_VILLAGESceneObjects [MOUNTAIN_VILLAGENumOfObjs] =
 {
 	{ 0x00011, MOUNTAIN_VILLAGE, "Big Snowball 1", "MM Mountain Village Big Snowball 1", ObjectType::none, {268, 455}, MOUNTAIN_VILLAGE, ObjectType::none, ObjectContext::Winter, 0, ZGame::mm },
@@ -3159,10 +3390,17 @@ ObjectInfo MOUNTAIN_VILLAGESceneObjects [MOUNTAIN_VILLAGENumOfObjs] =
 	{ 0x00, MOUNTAIN_VILLAGE_WINTER, "Waterfall", "MM Mountain Village Waterfall Chest", ObjectType::chest, {217, 392}, MOUNTAIN_VILLAGE, ObjectType::chest, ObjectContext::Spring, 0, ZGame::mm },
 	{ 0x00000, MOUNTAIN_VILLAGE_SPRING, "Boulder 1", "MM Mountain Village Spring Red Boulder 1", ObjectType::redboulder, {484, 426}, MOUNTAIN_VILLAGE, ObjectType::redboulder, ObjectContext::Spring, 0, ZGame::mm },
 	{ 0x00001, MOUNTAIN_VILLAGE_SPRING, "Boulder 2", "MM Mountain Village Spring Red Boulder 2", ObjectType::redboulder, {478, 411}, MOUNTAIN_VILLAGE, ObjectType::redboulder, ObjectContext::Spring, 0, ZGame::mm },
-	{ 0x00002, MOUNTAIN_VILLAGE_SPRING, "Boulder 3", "MM Mountain Village Spring Red Boulder 3", ObjectType::redboulder, {467, 428}, MOUNTAIN_VILLAGE, ObjectType::redboulder, ObjectContext::Spring, 0, ZGame::mm }
+	{ 0x00002, MOUNTAIN_VILLAGE_SPRING, "Boulder 3", "MM Mountain Village Spring Red Boulder 3", ObjectType::redboulder, {467, 428}, MOUNTAIN_VILLAGE, ObjectType::redboulder, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x0000e, MOUNTAIN_VILLAGE_SPRING, "Cliff 1", "MM Mountain Village Rock Cliff 1", ObjectType::rock, {0, 0}, MOUNTAIN_VILLAGE, ObjectType::rock, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x0000f, MOUNTAIN_VILLAGE_SPRING, "Cliff 2", "MM Mountain Village Rock Cliff 2", ObjectType::rock, {0, 0}, MOUNTAIN_VILLAGE, ObjectType::rock, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00010, MOUNTAIN_VILLAGE_SPRING, "Ground 1", "MM Mountain Village Rock Ground 1", ObjectType::rock, {0, 0}, MOUNTAIN_VILLAGE, ObjectType::rock, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00011, MOUNTAIN_VILLAGE_SPRING, "Ground 2", "MM Mountain Village Rock Ground 2", ObjectType::rock, {0, 0}, MOUNTAIN_VILLAGE, ObjectType::rock, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00012, MOUNTAIN_VILLAGE_SPRING, "Ground 3", "MM Mountain Village Rock Ground 3", ObjectType::rock, {0, 0}, MOUNTAIN_VILLAGE, ObjectType::rock, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00013, MOUNTAIN_VILLAGE_SPRING, "Ground 4", "MM Mountain Village Rock Ground 4", ObjectType::rock, {0, 0}, MOUNTAIN_VILLAGE, ObjectType::rock, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00014, MOUNTAIN_VILLAGE_SPRING, "Ground 5", "MM Mountain Village Rock Ground 5", ObjectType::rock, {0, 0}, MOUNTAIN_VILLAGE, ObjectType::rock, ObjectContext::Spring, 0, ZGame::mm }
 };
 
-const size_t MOUNTAIN_VILLAGE_SPRINGNumOfObjs = 53;
+const size_t MOUNTAIN_VILLAGE_SPRINGNumOfObjs = 60;
 ObjectInfo MOUNTAIN_VILLAGE_SPRINGSceneObjects [MOUNTAIN_VILLAGE_SPRINGNumOfObjs] =
 {
 	{ 0x00020, MOUNTAIN_VILLAGE_SPRING, "Pack 1 - Butterfly 1", "MM Mountain Village Butterfly Pack 1 Butterfly 1", ObjectType::butterfly, {495, 329}, MOUNTAIN_VILLAGE, ObjectType::butterfly, ObjectContext::Spring, 0, ZGame::mm },
@@ -3217,7 +3455,14 @@ ObjectInfo MOUNTAIN_VILLAGE_SPRINGSceneObjects [MOUNTAIN_VILLAGE_SPRINGNumOfObjs
 	{ 0x00028, MOUNTAIN_VILLAGE_SPRING, "Rupee", "MM Mountain Village Rupee", ObjectType::rupee, {474, 439}, MOUNTAIN_VILLAGE, ObjectType::rupee, ObjectContext::Spring, 0, ZGame::mm },
 	{ 0x00000, MOUNTAIN_VILLAGE_SPRING, "Boulder 1", "MM Mountain Village Spring Red Boulder 1", ObjectType::redboulder, {484, 426}, MOUNTAIN_VILLAGE, ObjectType::redboulder, ObjectContext::Spring, 0, ZGame::mm },
 	{ 0x00001, MOUNTAIN_VILLAGE_SPRING, "Boulder 2", "MM Mountain Village Spring Red Boulder 2", ObjectType::redboulder, {478, 411}, MOUNTAIN_VILLAGE, ObjectType::redboulder, ObjectContext::Spring, 0, ZGame::mm },
-	{ 0x00002, MOUNTAIN_VILLAGE_SPRING, "Boulder 3", "MM Mountain Village Spring Red Boulder 3", ObjectType::redboulder, {467, 428}, MOUNTAIN_VILLAGE, ObjectType::redboulder, ObjectContext::Spring, 0, ZGame::mm }
+	{ 0x00002, MOUNTAIN_VILLAGE_SPRING, "Boulder 3", "MM Mountain Village Spring Red Boulder 3", ObjectType::redboulder, {467, 428}, MOUNTAIN_VILLAGE, ObjectType::redboulder, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x0000e, MOUNTAIN_VILLAGE_SPRING, "Cliff 1", "MM Mountain Village Rock Cliff 1", ObjectType::rock, {0, 0}, MOUNTAIN_VILLAGE, ObjectType::rock, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x0000f, MOUNTAIN_VILLAGE_SPRING, "Cliff 2", "MM Mountain Village Rock Cliff 2", ObjectType::rock, {0, 0}, MOUNTAIN_VILLAGE, ObjectType::rock, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00010, MOUNTAIN_VILLAGE_SPRING, "Ground 1", "MM Mountain Village Rock Ground 1", ObjectType::rock, {0, 0}, MOUNTAIN_VILLAGE, ObjectType::rock, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00011, MOUNTAIN_VILLAGE_SPRING, "Ground 2", "MM Mountain Village Rock Ground 2", ObjectType::rock, {0, 0}, MOUNTAIN_VILLAGE, ObjectType::rock, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00012, MOUNTAIN_VILLAGE_SPRING, "Ground 3", "MM Mountain Village Rock Ground 3", ObjectType::rock, {0, 0}, MOUNTAIN_VILLAGE, ObjectType::rock, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00013, MOUNTAIN_VILLAGE_SPRING, "Ground 4", "MM Mountain Village Rock Ground 4", ObjectType::rock, {0, 0}, MOUNTAIN_VILLAGE, ObjectType::rock, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00014, MOUNTAIN_VILLAGE_SPRING, "Ground 5", "MM Mountain Village Rock Ground 5", ObjectType::rock, {0, 0}, MOUNTAIN_VILLAGE, ObjectType::rock, ObjectContext::Spring, 0, ZGame::mm }
 };
 
 const size_t MOUNTAIN_VILLAGE_WINTERNumOfObjs = 25;
@@ -3270,7 +3515,7 @@ ObjectInfo OBSERVATORYSceneObjects [OBSERVATORYNumOfObjs] =
 	{ 0x0106, OBSERVATORY, "Astral Observatory 3", "MM Astral Observatory Pot 3", ObjectType::pot, {478, 458}, OBSERVATORY, ObjectType::pot, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t TERMINA_FIELDNumOfObjs = 389;
+const size_t TERMINA_FIELDNumOfObjs = 420;
 ObjectInfo TERMINA_FIELDSceneObjects [TERMINA_FIELDNumOfObjs] =
 {
 	{ MOON_TEAR, OBSERVATORY, "Moon Tear", "MM Astral Observatory Moon Tear", ObjectType::npc, {2199, 1058}, TERMINA_FIELD, ObjectType::npc, ObjectContext::All, 0, ZGame::mm },
@@ -3661,10 +3906,41 @@ ObjectInfo TERMINA_FIELDSceneObjects [TERMINA_FIELDNumOfObjs] =
 	{ 0x03f10, TERMINA_FIELD, "Grass 11", "MM Termina Field Tall Grass Grotto Grass 11", ObjectType::none, {0, 0}, MM_GROTTO_TERMINA_TALL_GRASS, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x03f11, TERMINA_FIELD, "Grass 12", "MM Termina Field Tall Grass Grotto Grass 12", ObjectType::none, {0, 0}, MM_GROTTO_TERMINA_TALL_GRASS, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x03f12, TERMINA_FIELD, "Grass 13", "MM Termina Field Tall Grass Grotto Grass 13", ObjectType::none, {0, 0}, MM_GROTTO_TERMINA_TALL_GRASS, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
-	{ 0x03f13, TERMINA_FIELD, "Grass 14", "MM Termina Field Tall Grass Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_TERMINA_TALL_GRASS, ObjectType::none, ObjectContext::All, 0, ZGame::mm }
+	{ 0x03f13, TERMINA_FIELD, "Grass 14", "MM Termina Field Tall Grass Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_TERMINA_TALL_GRASS, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x000a8, TERMINA_FIELD, "Tree 1", "MM Termina Field Tree 1", ObjectType::tree, {0, 0}, TERMINA_FIELD, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x000a9, TERMINA_FIELD, "Tree 2", "MM Termina Field Tree 2", ObjectType::tree, {0, 0}, TERMINA_FIELD, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0007f, TERMINA_FIELD, "Near Ocean", "MM Termina Field Rock Near Ocean", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00080, TERMINA_FIELD, "Wall Mountain 1", "MM Termina Field Rock Wall Mountain 1", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00082, TERMINA_FIELD, "Wall Mountain 2", "MM Termina Field Rock Wall Mountain 2", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00083, TERMINA_FIELD, "Wall Mountain 3", "MM Termina Field Rock Wall Mountain 3", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00086, TERMINA_FIELD, "Wall Mountain 4", "MM Termina Field Rock Wall Mountain 4", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00087, TERMINA_FIELD, "Wall Mountain 5", "MM Termina Field Rock Wall Mountain 5", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00088, TERMINA_FIELD, "Wall Mountain 6", "MM Termina Field Rock Wall Mountain 6", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0008b, TERMINA_FIELD, "Wall Mountain 7", "MM Termina Field Rock Wall Mountain 7", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00081, TERMINA_FIELD, "Wall Ocean 1", "MM Termina Field Rock Wall Ocean 1", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00084, TERMINA_FIELD, "Wall Ocean 2", "MM Termina Field Rock Wall Ocean 2", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00085, TERMINA_FIELD, "Wall Ocean 3", "MM Termina Field Rock Wall Ocean 3", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00089, TERMINA_FIELD, "Wall Ocean 4", "MM Termina Field Rock Wall Ocean 4", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0008a, TERMINA_FIELD, "Wall Ocean 5", "MM Termina Field Rock Wall Ocean 5", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0008c, TERMINA_FIELD, "Circle Rock 1", "MM Termina Field Rock Circle Rock 1", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x1008c, TERMINA_FIELD, "Circle Rock 2", "MM Termina Field Rock Circle Rock 2", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x2008c, TERMINA_FIELD, "Circle Rock 3", "MM Termina Field Rock Circle Rock 3", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x3008c, TERMINA_FIELD, "Circle Rock 4", "MM Termina Field Rock Circle Rock 4", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x4008c, TERMINA_FIELD, "Circle Rock 5", "MM Termina Field Rock Circle Rock 5", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x5008c, TERMINA_FIELD, "Circle Rock 6", "MM Termina Field Rock Circle Rock 6", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x6008c, TERMINA_FIELD, "Circle Rock 7", "MM Termina Field Rock Circle Rock 7", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x7008c, TERMINA_FIELD, "Circle Rock 8", "MM Termina Field Rock Circle Rock 8", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00005, TERMINA_FIELD, "Tree Stump", "MM Termina Field Soil Tree Stump", ObjectType::soil, {0, 0}, TERMINA_FIELD, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00006, TERMINA_FIELD, "MM Termina Field Soil Observatory Item 1", "MM Termina Field Soil Observatory Item 1", ObjectType::soil, {0, 0}, TERMINA_FIELD, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x10006, TERMINA_FIELD, "Observatory Item 2", "MM Termina Field Soil Observatory Item 2", ObjectType::soil, {0, 0}, TERMINA_FIELD, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x20006, TERMINA_FIELD, "Observatory Item 3", "MM Termina Field Soil Observatory Item 3", ObjectType::soil, {0, 0}, TERMINA_FIELD, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00007, TERMINA_FIELD, "Wall Item 1", "MM Termina Field Soil Wall Item 1", ObjectType::soil, {0, 0}, TERMINA_FIELD, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x10007, TERMINA_FIELD, "Wall Item 2", "MM Termina Field Soil Wall Item 2", ObjectType::soil, {0, 0}, TERMINA_FIELD, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x20007, TERMINA_FIELD, "Wall Item 3", "MM Termina Field Soil Wall Item 3", ObjectType::soil, {0, 0}, TERMINA_FIELD, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00008, TERMINA_FIELD, "Pillar", "MM Termina Field Soil Pillar", ObjectType::soil, {0, 0}, TERMINA_FIELD, ObjectType::soil, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t PATH_MOUNTAIN_VILLAGENumOfObjs = 22;
+const size_t PATH_MOUNTAIN_VILLAGENumOfObjs = 26;
 ObjectInfo PATH_MOUNTAIN_VILLAGESceneObjects [PATH_MOUNTAIN_VILLAGENumOfObjs] =
 {
 	{ 0x0001a, PATH_MOUNTAIN_VILLAGE, "Lower - Big Snowball 1", "MM Path to Mountain Village Big Snowball Lower 1", ObjectType::snowball, {639, 175}, PATH_MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectContext::Winter, 0, ZGame::mm },
@@ -3688,10 +3964,14 @@ ObjectInfo PATH_MOUNTAIN_VILLAGESceneObjects [PATH_MOUNTAIN_VILLAGENumOfObjs] =
 	{ 0x04010, PATH_MOUNTAIN_VILLAGE, "Spring - Lower 4", "MM Path to Mountain Village Small Snowball Lower Spring 4", ObjectType:: snowball, {466, 423}, PATH_MOUNTAIN_VILLAGE, ObjectType:: snowball, ObjectContext::Spring, 0, ZGame::mm },
 	{ 0x0400d, PATH_MOUNTAIN_VILLAGE, "Spring - Upper 1", "MM Path to Mountain Village Small Snowball Upper Spring 1", ObjectType:: snowball, {201, 218}, PATH_MOUNTAIN_VILLAGE, ObjectType:: snowball, ObjectContext::Spring, 0, ZGame::mm },
 	{ 0x0400b, PATH_MOUNTAIN_VILLAGE, "Spring - Upper 2", "MM Path to Mountain Village Small Snowball Upper Spring 2", ObjectType:: snowball, {184, 214}, PATH_MOUNTAIN_VILLAGE, ObjectType:: snowball, ObjectContext::Spring, 0, ZGame::mm },
-	{ 0x0400e, PATH_MOUNTAIN_VILLAGE, "Spring - Upper 3", "MM Path to Mountain Village Small Snowball Upper Spring 3", ObjectType:: snowball, {164, 212}, PATH_MOUNTAIN_VILLAGE, ObjectType:: snowball, ObjectContext::Spring, 0, ZGame::mm }
+	{ 0x0400e, PATH_MOUNTAIN_VILLAGE, "Spring - Upper 3", "MM Path to Mountain Village Small Snowball Upper Spring 3", ObjectType:: snowball, {164, 212}, PATH_MOUNTAIN_VILLAGE, ObjectType:: snowball, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x0000e, PATH_MOUNTAIN_VILLAGE, "Lower 1", "MM Path to Mountain Village Snow Tree Lower 1", ObjectType::tree, {0, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType::tree, ObjectContext::Winter, 0, ZGame::mm },
+	{ 0x0000f, PATH_MOUNTAIN_VILLAGE, "Lower 2", "MM Path to Mountain Village Snow Tree Lower 2", ObjectType::tree, {0, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType::tree, ObjectContext::Winter, 0, ZGame::mm },
+	{ 0x00010, PATH_MOUNTAIN_VILLAGE, "Upper 1", "MM Path to Mountain Village Snow Tree Upper 1", ObjectType::tree, {0, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType::tree, ObjectContext::Winter, 0, ZGame::mm },
+	{ 0x00011, PATH_MOUNTAIN_VILLAGE, "Upper 2", "MM Path to Mountain Village Snow Tree Upper 2", ObjectType::tree, {0, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType::tree, ObjectContext::Winter, 0, ZGame::mm }
 };
 
-const size_t PATH_SNOWHEADNumOfObjs = 27;
+const size_t PATH_SNOWHEADNumOfObjs = 31;
 ObjectInfo PATH_SNOWHEADSceneObjects [PATH_SNOWHEADNumOfObjs] =
 {
 	{ 0x08, PATH_SNOWHEAD, "Pillar - Heart Piece", "MM Path to Snowhead HP", ObjectType::collectible, {422, 350}, PATH_SNOWHEAD, ObjectType::collectible, ObjectContext::All, 0, ZGame::mm },
@@ -3720,10 +4000,14 @@ ObjectInfo PATH_SNOWHEADSceneObjects [PATH_SNOWHEADNumOfObjs] =
 	{ 0x03310, PATH_SNOWHEAD, "Grass 11", "MM Path to Snowhead Grotto Grass 11", ObjectType::none, {0, 0}, MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x03311, PATH_SNOWHEAD, "Grass 12", "MM Path to Snowhead Grotto Grass 12", ObjectType::none, {0, 0}, MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x03312, PATH_SNOWHEAD, "Grass 13", "MM Path to Snowhead Grotto Grass 13", ObjectType::none, {0, 0}, MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
-	{ 0x03313, PATH_SNOWHEAD, "Grass 14", "MM Path to Snowhead Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, ObjectType::none, ObjectContext::All, 0, ZGame::mm }
+	{ 0x03313, PATH_SNOWHEAD, "Grass 14", "MM Path to Snowhead Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00016, PATH_SNOWHEAD, "End 1", "MM Path to Snowhead Snow Tree End 1", ObjectType::tree, {0, 0}, PATH_SNOWHEAD, ObjectType::tree, ObjectContext::Winter, 0, ZGame::mm },
+	{ 0x00017, PATH_SNOWHEAD, "End 2", "MM Path to Snowhead Snow Tree End 2", ObjectType::tree, {0, 0}, PATH_SNOWHEAD, ObjectType::tree, ObjectContext::Winter, 0, ZGame::mm },
+	{ 0x00018, PATH_SNOWHEAD, "End 3", "MM Path to Snowhead Snow Tree End 3", ObjectType::tree, {0, 0}, PATH_SNOWHEAD, ObjectType::tree, ObjectContext::Winter, 0, ZGame::mm },
+	{ 0x00019, PATH_SNOWHEAD, "Entrance", "MM Path to Snowhead Snow Tree Entrance", ObjectType::tree, {0, 0}, PATH_SNOWHEAD, ObjectType::tree, ObjectContext::Winter, 0, ZGame::mm }
 };
 
-const size_t PINNACLE_ROCKNumOfObjs = 14;
+const size_t PINNACLE_ROCKNumOfObjs = 16;
 ObjectInfo PINNACLE_ROCKSceneObjects [PINNACLE_ROCKNumOfObjs] =
 {
 	{ 0x01, PINNACLE_ROCK, "Chest 1", "MM Pinnacle Rock Chest 1", ObjectType::chest, {258, 585}, PINNACLE_ROCK, ObjectType::chest, ObjectContext::All, 0, ZGame::mm },
@@ -3739,7 +4023,9 @@ ObjectInfo PINNACLE_ROCKSceneObjects [PINNACLE_ROCKNumOfObjs] =
 	{ 0x000a, PINNACLE_ROCK, "Pot 8", "MM Pinnacle Rock Pot 08", ObjectType::pot, {596, 177}, PINNACLE_ROCK, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
 	{ 0x000b, PINNACLE_ROCK, "Pot 9", "MM Pinnacle Rock Pot 09", ObjectType::pot, {466, 437}, PINNACLE_ROCK, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
 	{ 0x000c, PINNACLE_ROCK, "Pot 10", "MM Pinnacle Rock Pot 10", ObjectType::pot, {408, 421}, PINNACLE_ROCK, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
-	{ 0x000d, PINNACLE_ROCK, "Pot 11", "MM Pinnacle Rock Pot 11", ObjectType::pot, {467, 405}, PINNACLE_ROCK, ObjectType::pot, ObjectContext::All, 0, ZGame::mm }
+	{ 0x000d, PINNACLE_ROCK, "Pot 11", "MM Pinnacle Rock Pot 11", ObjectType::pot, {467, 405}, PINNACLE_ROCK, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001c, PINNACLE_ROCK, "Unreachable 1", "MM Pinnacle Rock Rock Unreachable 1", ObjectType::none, {0, 0}, PINNACLE_ROCK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001d, PINNACLE_ROCK, "Unreachable 2", "MM Pinnacle Rock Rock Unreachable 2", ObjectType::none, {0, 0}, PINNACLE_ROCK, ObjectType::none, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t PIRATE_FORTRESS_ENTRANCENumOfObjs = 4;
@@ -3876,7 +4162,7 @@ ObjectInfo RANCH_HOUSE_BARNSceneObjects [RANCH_HOUSE_BARNNumOfObjs] =
 	{ 0x11, ROMANI_RANCH, "Right Front", "MM Romani Ranch Barn Cow Right Front", ObjectType::cow, {440, 200}, RANCH_HOUSE_BARN, ObjectType::cow, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t ROAD_IKANANumOfObjs = 19;
+const size_t ROAD_IKANANumOfObjs = 27;
 ObjectInfo ROAD_IKANASceneObjects [ROAD_IKANANumOfObjs] =
 {
 	{ 0x00, ROAD_IKANA, "Pillar", "MM Road to Ikana Chest", ObjectType::chest, {696, 261}, ROAD_IKANA, ObjectType::chest, ObjectContext::All, 0, ZGame::mm },
@@ -3897,10 +4183,18 @@ ObjectInfo ROAD_IKANASceneObjects [ROAD_IKANANumOfObjs] =
 	{ 0x03611, ROAD_IKANA, "Grass 12", "MM Road to Ikana Grotto Grass 12", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_ROAD_GENERIC, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x03612, ROAD_IKANA, "Grass 13", "MM Road to Ikana Grotto Grass 13", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_ROAD_GENERIC, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x03613, ROAD_IKANA, "Grass 14", "MM Road to Ikana Grotto Grass 14", ObjectType::none, {0, 0}, MM_GROTTO_IKANA_ROAD_GENERIC, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
-	{ 0x00005, ROAD_IKANA, "Boulder", "MM Road to Ikana Red Boulder", ObjectType::redboulder, {455, 263}, ROAD_IKANA, ObjectType::redboulder, ObjectContext::All, 0, ZGame::mm }
+	{ 0x00005, ROAD_IKANA, "Boulder", "MM Road to Ikana Red Boulder", ObjectType::redboulder, {455, 263}, ROAD_IKANA, ObjectType::redboulder, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00023, ROAD_IKANA, "Circle Rock 1", "MM Road to Ikana Rock Circle Rock 1", ObjectType::rock, {0, 0}, ROAD_IKANA, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x10023, ROAD_IKANA, "Circle Rock 2", "MM Road to Ikana Rock Circle Rock 2", ObjectType::rock, {0, 0}, ROAD_IKANA, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x20023, ROAD_IKANA, "Circle Rock 3", "MM Road to Ikana Rock Circle Rock 3", ObjectType::rock, {0, 0}, ROAD_IKANA, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x30023, ROAD_IKANA, "Circle Rock 4", "MM Road to Ikana Rock Circle Rock 4", ObjectType::rock, {0, 0}, ROAD_IKANA, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x40023, ROAD_IKANA, "Circle Rock 5", "MM Road to Ikana Rock Circle Rock 5", ObjectType::rock, {0, 0}, ROAD_IKANA, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x50023, ROAD_IKANA, "Circle Rock 6", "MM Road to Ikana Rock Circle Rock 6", ObjectType::rock, {0, 0}, ROAD_IKANA, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x60023, ROAD_IKANA, "Circle Rock 7", "MM Road to Ikana Rock Circle Rock 7", ObjectType::rock, {0, 0}, ROAD_IKANA, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x70023, ROAD_IKANA, "Circle Rock 8", "MM Road to Ikana Rock Circle Rock 8", ObjectType::rock, {0, 0}, ROAD_IKANA, ObjectType::rock, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t ROMANI_RANCHNumOfObjs = 92;
+const size_t ROMANI_RANCHNumOfObjs = 116;
 ObjectInfo ROMANI_RANCHSceneObjects [ROMANI_RANCHNumOfObjs] =
 {
 	{ ROMANI_BOTTLE, ROMANI_RANCH, "Aliens", "MM Romani Ranch Aliens", ObjectType::npc, {350, 162}, ROMANI_RANCH, ObjectType::npc, ObjectContext::All, 0, ZGame::mm },
@@ -3994,7 +4288,31 @@ ObjectInfo ROMANI_RANCHSceneObjects [ROMANI_RANCHNumOfObjs] =
 	{ 0x10012, ROMANI_RANCH, "Wood Hole 5", "MM Cucco Shack Wonder Item 5", ObjectType::none, {0, 0}, CUCCO_SHACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x20012, ROMANI_RANCH, "Wood Hole 6", "MM Cucco Shack Wonder Item 6", ObjectType::none, {0, 0}, CUCCO_SHACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x00000, ROMANI_RANCH, "Item 1", "MM Romani Ranch Barn Wonder Item 1", ObjectType::none, {0, 0}, RANCH_HOUSE_BARN, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
-	{ 0x00001, ROMANI_RANCH, "Item 2", "MM Romani Ranch Barn Wonder Item 2", ObjectType::none, {0, 0}, RANCH_HOUSE_BARN, ObjectType::none, ObjectContext::All, 0, ZGame::mm }
+	{ 0x00001, ROMANI_RANCH, "Item 2", "MM Romani Ranch Barn Wonder Item 2", ObjectType::none, {0, 0}, RANCH_HOUSE_BARN, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00014, ROMANI_RANCH, "Tree 1", "MM Romani Ranch Tree 1", ObjectType::tree, {0, 0}, ROMANI_RANCH, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00015, ROMANI_RANCH, "Tree 2", "MM Romani Ranch Tree 2", ObjectType::tree, {0, 0}, ROMANI_RANCH, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00016, ROMANI_RANCH, "Tree 3", "MM Romani Ranch Tree 3", ObjectType::tree, {0, 0}, ROMANI_RANCH, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00017, ROMANI_RANCH, "Tree 4", "MM Romani Ranch Tree 4", ObjectType::tree, {0, 0}, ROMANI_RANCH, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00018, ROMANI_RANCH, "Tree 5", "MM Romani Ranch Tree 5", ObjectType::tree, {0, 0}, ROMANI_RANCH, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00019, ROMANI_RANCH, "Tree 6", "MM Romani Ranch Tree 6", ObjectType::tree, {0, 0}, ROMANI_RANCH, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0001a, ROMANI_RANCH, "Tree 7", "MM Romani Ranch Tree 7", ObjectType::tree, {0, 0}, ROMANI_RANCH, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00010, ROMANI_RANCH, "Bush 1", "MM Romani Ranch Bush 1", ObjectType::bush, {0, 0}, ROMANI_RANCH, ObjectType::bush, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00011, ROMANI_RANCH, "Bush 2", "MM Romani Ranch Bush 2", ObjectType::bush, {0, 0}, ROMANI_RANCH, ObjectType::bush, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00012, ROMANI_RANCH, "Bush 3", "MM Romani Ranch Bush 3", ObjectType::bush, {0, 0}, ROMANI_RANCH, ObjectType::bush, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00013, ROMANI_RANCH, "Bush 4", "MM Romani Ranch Bush 4", ObjectType::bush, {0, 0}, ROMANI_RANCH, ObjectType::bush, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00030, ROMANI_RANCH, "Days 2-3 Item 1", "MM Romani Ranch Soil Days 2-3 Item 1", ObjectType::soil, {0, 0}, ROMANI_RANCH, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x10030, ROMANI_RANCH, "Days 2-3 Item 2", "MM Romani Ranch Soil Days 2-3 Item 2", ObjectType::soil, {0, 0}, ROMANI_RANCH, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x20030, ROMANI_RANCH, "Days 2-3 Item 3", "MM Romani Ranch Soil Days 2-3 Item 3", ObjectType::soil, {0, 0}, ROMANI_RANCH, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00031, ROMANI_RANCH, "Day 1", "MM Romani Ranch Soil Day 1", ObjectType::soil, {0, 0}, ROMANI_RANCH, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000c, ROMANI_RANCH, "Tree", "MM Cucco Shack Tree", ObjectType::none, {0, 0}, CUCCO_SHACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x0000b, ROMANI_RANCH, "Bush 1", "MM Cucco Shack Bush 1", ObjectType::none, {0, 0}, CUCCO_SHACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x1000b, ROMANI_RANCH, "Bush 2", "MM Cucco Shack Bush 2", ObjectType::none, {0, 0}, CUCCO_SHACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x2000b, ROMANI_RANCH, "Bush 3", "MM Cucco Shack Bush 3", ObjectType::none, {0, 0}, CUCCO_SHACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x3000b, ROMANI_RANCH, "Bush 4", "MM Cucco Shack Bush 4", ObjectType::none, {0, 0}, CUCCO_SHACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x4000b, ROMANI_RANCH, "Bush 5", "MM Cucco Shack Bush 5", ObjectType::none, {0, 0}, CUCCO_SHACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x5000b, ROMANI_RANCH, "Bush 6", "MM Cucco Shack Bush 6", ObjectType::none, {0, 0}, CUCCO_SHACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00013, ROMANI_RANCH, "Bush 7", "MM Cucco Shack Bush 7", ObjectType::none, {0, 0}, CUCCO_SHACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00008, ROMANI_RANCH, "Soil", "MM Doggy Racetrack Soil", ObjectType::none, {0, 0}, DOG_RACETRACK, ObjectType::none, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t SAKON_HIDEOUTNumOfObjs = 5;
@@ -4007,7 +4325,7 @@ ObjectInfo SAKON_HIDEOUTSceneObjects [SAKON_HIDEOUTNumOfObjs] =
 	{ 0x012b, SAKON_HIDEOUT, "Third Room", "MM Sakon Hideout Pot Third Room", ObjectType::pot, {697, 257}, SAKON_HIDEOUT, ObjectType::pot, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t SECRET_SHRINENumOfObjs = 60;
+const size_t SECRET_SHRINENumOfObjs = 63;
 ObjectInfo SECRET_SHRINESceneObjects [SECRET_SHRINENumOfObjs] =
 {
 	{ 0x00, SECRET_SHRINE, "Dinalfos", "MM Secret Shrine Dinalfos Chest", ObjectType::chest, {128, 522}, SECRET_SHRINE, ObjectType::chest, ObjectContext::All, 0, ZGame::mm },
@@ -4069,7 +4387,10 @@ ObjectInfo SECRET_SHRINESceneObjects [SECRET_SHRINENumOfObjs] =
 	{ 0x0000f, SECRET_SHRINE, "Rupee 16", "MM Secret Shrine Rupee 16", ObjectType::rupee, {532, 460}, SECRET_SHRINE, ObjectType::rupee, ObjectContext::All, 0, ZGame::mm },
 	{ 0x00010, SECRET_SHRINE, "Rupee 17", "MM Secret Shrine Rupee 17", ObjectType::rupee, {531, 446}, SECRET_SHRINE, ObjectType::rupee, ObjectContext::All, 0, ZGame::mm },
 	{ 0x02, SECRET_SHRINE, "Wart", "MM Secret Shrine Wart Chest", ObjectType::chest, {791, 172}, SECRET_SHRINE, ObjectType::chest, ObjectContext::All, 0, ZGame::mm },
-	{ 0x01, SECRET_SHRINE, "Wizzrobe", "MM Secret Shrine Wizzrobe Chest", ObjectType::chest, {128, 171}, SECRET_SHRINE, ObjectType::chest, ObjectContext::All, 0, ZGame::mm }
+	{ 0x01, SECRET_SHRINE, "Wizzrobe", "MM Secret Shrine Wizzrobe Chest", ObjectType::chest, {128, 171}, SECRET_SHRINE, ObjectType::chest, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00013, SECRET_SHRINE, "Item 1", "MM Secret Shrine Soil Item 1", ObjectType::soil, {0, 0}, SECRET_SHRINE, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x10013, SECRET_SHRINE, "Item 2", "MM Secret Shrine Soil Item 2", ObjectType::soil, {0, 0}, SECRET_SHRINE, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x20013, SECRET_SHRINE, "Item 3", "MM Secret Shrine Soil Item 3", ObjectType::soil, {0, 0}, SECRET_SHRINE, ObjectType::soil, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t MM_SHOOTING_GALLERYNumOfObjs = 2;
@@ -4261,7 +4582,7 @@ ObjectInfo MM_SPIDER_HOUSE_OCEANSceneObjects [MM_SPIDER_HOUSE_OCEANNumOfObjs] =
 	{ 0x20102, MM_SPIDER_HOUSE_OCEAN, "Masks 9", "MM Ocean Spider House Wonder Item Masks 9", ObjectType::wonder, {448, 386}, MM_SPIDER_HOUSE_OCEAN, ObjectType::wonder, ObjectContext::All, 1, ZGame::mm }
 };
 
-const size_t MM_SPIDER_HOUSE_SWAMPNumOfObjs = 87;
+const size_t MM_SPIDER_HOUSE_SWAMPNumOfObjs = 94;
 ObjectInfo MM_SPIDER_HOUSE_SWAMPSceneObjects [MM_SPIDER_HOUSE_SWAMPNumOfObjs] =
 {
 	{ 0x12, MM_SPIDER_HOUSE_SWAMP, "Gold Room - Hive", "MM Swamp Skulltula Gold Room Hive", ObjectType::chest, {471, 95}, MM_SPIDER_HOUSE_SWAMP, ObjectType::gs, ObjectContext::All, 2, ZGame::mm },
@@ -4350,7 +4671,14 @@ ObjectInfo MM_SPIDER_HOUSE_SWAMPSceneObjects [MM_SPIDER_HOUSE_SWAMPNumOfObjs] =
 	{ 0x0041a, MM_SPIDER_HOUSE_SWAMP, "Pot Room - Walking on Jar 2", "MM Swamp Spider House Wonder Item Pots 2", ObjectType::wonder, {491, 454}, MM_SPIDER_HOUSE_SWAMP, ObjectType::wonder, ObjectContext::All, 4, ZGame::mm },
 	{ 0x0041b, MM_SPIDER_HOUSE_SWAMP, "Pot Room - Walking on Jar 3", "MM Swamp Spider House Wonder Item Pots 3", ObjectType::wonder, {560, 454}, MM_SPIDER_HOUSE_SWAMP, ObjectType::wonder, ObjectContext::All, 4, ZGame::mm },
 	{ 0x0041c, MM_SPIDER_HOUSE_SWAMP, "Pot Room - Walking on Jar 4", "MM Swamp Spider House Wonder Item Pots 4", ObjectType::wonder, {629, 453}, MM_SPIDER_HOUSE_SWAMP, ObjectType::wonder, ObjectContext::All, 4, ZGame::mm },
-	{ 0x0041d, MM_SPIDER_HOUSE_SWAMP, "Pot Room - Walking on Jar 5", "MM Swamp Spider House Wonder Item Pots 5", ObjectType::wonder, {730, 460}, MM_SPIDER_HOUSE_SWAMP, ObjectType::wonder, ObjectContext::All, 4, ZGame::mm }
+	{ 0x0041d, MM_SPIDER_HOUSE_SWAMP, "Pot Room - Walking on Jar 5", "MM Swamp Spider House Wonder Item Pots 5", ObjectType::wonder, {730, 460}, MM_SPIDER_HOUSE_SWAMP, ObjectType::wonder, ObjectContext::All, 4, ZGame::mm },
+	{ 0x00003, MM_SPIDER_HOUSE_SWAMP, "Entrance 1", "MM Swamp Spider House Rock Entrance 1", ObjectType::rock, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00004, MM_SPIDER_HOUSE_SWAMP, "Entrance 2", "MM Swamp Spider House Rock Entrance 2", ObjectType::rock, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00405, MM_SPIDER_HOUSE_SWAMP, "Pots Room", "MM Swamp Spider House Rock Pots Room", ObjectType::rock, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::rock, ObjectContext::All, 4, ZGame::mm },
+	{ 0x0020d, MM_SPIDER_HOUSE_SWAMP, "Gold Room", "MM Swamp Spider House Soil Gold", ObjectType::soil, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::soil, ObjectContext::All, 4, ZGame::mm },
+	{ 0x0030e, MM_SPIDER_HOUSE_SWAMP, "Monument Item 1", "MM Swamp Spider House Soil Monument Item 1", ObjectType::soil, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::soil, ObjectContext::All, 3, ZGame::mm },
+	{ 0x1030e, MM_SPIDER_HOUSE_SWAMP, "Monument Item 2", "MM Swamp Spider House Soil Monument Item 2", ObjectType::soil, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::soil, ObjectContext::All, 3, ZGame::mm },
+	{ 0x2030e, MM_SPIDER_HOUSE_SWAMP, "Monument Item 3", "MM Swamp Spider House Soil Monument Item 3", ObjectType::soil, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::soil, ObjectContext::All, 3, ZGame::mm }
 };
 
 const size_t STOCK_POT_INNNumOfObjs = 11;
@@ -4369,7 +4697,7 @@ ObjectInfo STOCK_POT_INNSceneObjects [STOCK_POT_INNNumOfObjs] =
 	{ 0x2000e, STOCK_POT_INN, "Mask 3", "MM Stock Pot Inn Wonder Item 3", ObjectType::wonder, {697, 165}, STOCK_POT_INN, ObjectType::wonder, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t STONE_TOWERNumOfObjs = 36;
+const size_t STONE_TOWERNumOfObjs = 40;
 ObjectInfo STONE_TOWERSceneObjects [STONE_TOWERNumOfObjs] =
 {
 	{ OWL_STONE_TOWER, STONE_TOWER, "Owl Statue", "MM Stone Tower Owl Statue", ObjectType::npc, {440, 84}, STONE_TOWER, ObjectType::npc, ObjectContext::All, 0, ZGame::mm },
@@ -4407,10 +4735,14 @@ ObjectInfo STONE_TOWERSceneObjects [STONE_TOWERNumOfObjs] =
 	{ 0x0009, STONE_TOWER, "Pot 2", "MM Stone Tower Inverted Pot 2", ObjectType::none, {0, 0}, STONE_TOWER_INVERTED, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x000a, STONE_TOWER, "Pot 3", "MM Stone Tower Inverted Pot 3", ObjectType::none, {0, 0}, STONE_TOWER_INVERTED, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ 0x000b, STONE_TOWER, "Pot 4", "MM Stone Tower Inverted Pot 4", ObjectType::none, {0, 0}, STONE_TOWER_INVERTED, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
-	{ 0x000c, STONE_TOWER, "Pot 5", "MM Stone Tower Inverted Pot 5", ObjectType::none, {0, 0}, STONE_TOWER_INVERTED, ObjectType::none, ObjectContext::All, 0, ZGame::mm }
+	{ 0x000c, STONE_TOWER, "Pot 5", "MM Stone Tower Inverted Pot 5", ObjectType::none, {0, 0}, STONE_TOWER_INVERTED, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00015, STONE_TOWER, "Rock 1", "MM Stone Tower Inverted Rock 1", ObjectType::none, {0, 0}, STONE_TOWER_INVERTED, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00016, STONE_TOWER, "Rock 2", "MM Stone Tower Inverted Rock 2", ObjectType::none, {0, 0}, STONE_TOWER_INVERTED, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00000, STONE_TOWER, "Lower", "MM Stone Tower Inverted Soil Lower", ObjectType::none, {0, 0}, STONE_TOWER_INVERTED, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00001, STONE_TOWER, "Upper", "MM Stone Tower Inverted Soil Upper", ObjectType::none, {0, 0}, STONE_TOWER_INVERTED, ObjectType::none, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t STONE_TOWER_INVERTEDNumOfObjs = 8;
+const size_t STONE_TOWER_INVERTEDNumOfObjs = 12;
 ObjectInfo STONE_TOWER_INVERTEDSceneObjects [STONE_TOWER_INVERTEDNumOfObjs] =
 {
 	{ 0x1d, STONE_TOWER_INVERTED, "Chest 1", "MM Stone Tower Inverted Chest 1", ObjectType::chest, {275, 366}, STONE_TOWER_INVERTED, ObjectType::chest, ObjectContext::All, 0, ZGame::mm },
@@ -4420,7 +4752,11 @@ ObjectInfo STONE_TOWER_INVERTEDSceneObjects [STONE_TOWER_INVERTEDNumOfObjs] =
 	{ 0x0009, STONE_TOWER_INVERTED, "Pot 2", "MM Stone Tower Inverted Pot 2", ObjectType::pot, {341, 344}, STONE_TOWER_INVERTED, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
 	{ 0x000a, STONE_TOWER_INVERTED, "Pot 3", "MM Stone Tower Inverted Pot 3", ObjectType::pot, {335, 368}, STONE_TOWER_INVERTED, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
 	{ 0x000b, STONE_TOWER_INVERTED, "Pot 4", "MM Stone Tower Inverted Pot 4", ObjectType::pot, {309, 364}, STONE_TOWER_INVERTED, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
-	{ 0x000c, STONE_TOWER_INVERTED, "Pot 5", "MM Stone Tower Inverted Pot 5", ObjectType::pot, {329, 392}, STONE_TOWER_INVERTED, ObjectType::pot, ObjectContext::All, 0, ZGame::mm }
+	{ 0x000c, STONE_TOWER_INVERTED, "Pot 5", "MM Stone Tower Inverted Pot 5", ObjectType::pot, {329, 392}, STONE_TOWER_INVERTED, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00015, STONE_TOWER_INVERTED, "Rock 1", "MM Stone Tower Inverted Rock 1", ObjectType::rock, {0, 0}, STONE_TOWER_INVERTED, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00016, STONE_TOWER_INVERTED, "Rock 2", "MM Stone Tower Inverted Rock 2", ObjectType::rock, {0, 0}, STONE_TOWER_INVERTED, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00000, STONE_TOWER_INVERTED, "Lower", "MM Stone Tower Inverted Soil Lower", ObjectType::soil, {0, 0}, STONE_TOWER_INVERTED, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00001, STONE_TOWER_INVERTED, "Upper", "MM Stone Tower Inverted Soil Upper", ObjectType::soil, {0, 0}, STONE_TOWER_INVERTED, ObjectType::soil, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t SWORDSMAN_SCHOOLNumOfObjs = 6;
@@ -4607,7 +4943,7 @@ ObjectInfo TOURIST_INFORMATIONSceneObjects [TOURIST_INFORMATIONNumOfObjs] =
 	{ TOUR_GUIDE_HEART_PIECE, TOURIST_INFORMATION, "Deku's King Picture", "MM Tourist Information Tingle Picture", ObjectType::npc, {376, 335}, TOURIST_INFORMATION, ObjectType::npc, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t TRADING_POSTNumOfObjs = 9;
+const size_t TRADING_POSTNumOfObjs = 13;
 ObjectInfo TRADING_POSTSceneObjects [TRADING_POSTNumOfObjs] =
 {
 	{ 0x05, TRADING_POST, "Item 1", "MM Trading Post Item 1", ObjectType::shop, {384, 261}, TRADING_POST, ObjectType::shop, ObjectContext::All, 0, ZGame::mm },
@@ -4618,7 +4954,11 @@ ObjectInfo TRADING_POSTSceneObjects [TRADING_POSTNumOfObjs] =
 	{ 0x0a, TRADING_POST, "Item 6", "MM Trading Post Item 6", ObjectType::shop, {580, 261}, TRADING_POST, ObjectType::shop, ObjectContext::All, 0, ZGame::mm },
 	{ 0x0b, TRADING_POST, "Item 7", "MM Trading Post Item 7", ObjectType::shop, {542, 294}, TRADING_POST, ObjectType::shop, ObjectContext::All, 0, ZGame::mm },
 	{ 0x0c, TRADING_POST, "Item 8", "MM Trading Post Item 8", ObjectType::shop, {580, 294}, TRADING_POST, ObjectType::shop, ObjectContext::All, 0, ZGame::mm },
-	{ 0x0008, TRADING_POST, "Pot", "MM Trading Post Pot", ObjectType::pot, {756, 427}, TRADING_POST, ObjectType::pot, ObjectContext::All, 0, ZGame::mm }
+	{ 0x0008, TRADING_POST, "Pot", "MM Trading Post Pot", ObjectType::pot, {756, 427}, TRADING_POST, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00002, TRADING_POST, "Bush 1", "MM Trading Post Bush 1", ObjectType::bush, {0, 0}, TRADING_POST, ObjectType::bush, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00003, TRADING_POST, "Bush 2", "MM Trading Post Bush 2", ObjectType::bush, {0, 0}, TRADING_POST, ObjectType::bush, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00004, TRADING_POST, "Bush 3", "MM Trading Post Bush 3", ObjectType::bush, {0, 0}, TRADING_POST, ObjectType::bush, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00005, TRADING_POST, "Bush 4", "MM Trading Post Bush 4", ObjectType::bush, {0, 0}, TRADING_POST, ObjectType::bush, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t MM_TREASURE_SHOPNumOfObjs = 1;
@@ -4627,7 +4967,7 @@ ObjectInfo MM_TREASURE_SHOPSceneObjects [MM_TREASURE_SHOPNumOfObjs] =
 	{ CHEST_GAME, MM_TREASURE_SHOP, "Heart Piece", "MM Chest Game HP", ObjectType::npc, {259, 447}, MM_TREASURE_SHOP, ObjectType::npc, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t TWIN_ISLANDS_SPRINGNumOfObjs = 16;
+const size_t TWIN_ISLANDS_SPRINGNumOfObjs = 22;
 ObjectInfo TWIN_ISLANDS_SPRINGSceneObjects [TWIN_ISLANDS_SPRINGNumOfObjs] =
 {
 	{ 0x0000b, TWIN_ISLANDS_SPRING, "Grass 1", "MM Twin Islands Grass 01", ObjectType::grass, {193, 470}, TWIN_ISLANDS, ObjectType::grass, ObjectContext::Spring, 0, ZGame::mm },
@@ -4645,10 +4985,16 @@ ObjectInfo TWIN_ISLANDS_SPRINGSceneObjects [TWIN_ISLANDS_SPRINGNumOfObjs] =
 	{ 0x0000e, TWIN_ISLANDS_SPRING, "Rupee 1", "MM Twin Islands Rupee 1", ObjectType::rupee, {684, 211}, TWIN_ISLANDS, ObjectType::rupee, ObjectContext::Spring, 0, ZGame::mm },
 	{ 0x0000f, TWIN_ISLANDS_SPRING, "Rupee 2", "MM Twin Islands Rupee 2", ObjectType::rupee, {495, 185}, TWIN_ISLANDS, ObjectType::rupee, ObjectContext::Spring, 0, ZGame::mm },
 	{ 0x00010, TWIN_ISLANDS_SPRING, "Rupee 3", "MM Twin Islands Rupee 3", ObjectType::rupee, {596, 517}, TWIN_ISLANDS, ObjectType::rupee, ObjectContext::Spring, 0, ZGame::mm },
-	{ 0x00012, TWIN_ISLANDS_SPRING, "Rupee 4", "MM Twin Islands Rupee 4", ObjectType::rupee, {780, 349}, TWIN_ISLANDS, ObjectType::rupee, ObjectContext::Spring, 0, ZGame::mm }
+	{ 0x00012, TWIN_ISLANDS_SPRING, "Rupee 4", "MM Twin Islands Rupee 4", ObjectType::rupee, {780, 349}, TWIN_ISLANDS, ObjectType::rupee, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00007, TWIN_ISLANDS_SPRING, "Spring - Island 1", "MM Twin Islands Tree Island 1", ObjectType::tree, {0, 0}, TWIN_ISLANDS, ObjectType::tree, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00008, TWIN_ISLANDS_SPRING, "Spring - Island 2", "MM Twin Islands Tree Island 2", ObjectType::tree, {0, 0}, TWIN_ISLANDS, ObjectType::tree, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00009, TWIN_ISLANDS_SPRING, "Spring - Ramp", "MM Twin Islands Tree Ramp", ObjectType::tree, {0, 0}, TWIN_ISLANDS, ObjectType::tree, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00018, TWIN_ISLANDS_SPRING, "Rock 1", "MM Twin Islands Rock 1", ObjectType::rock, {0, 0}, TWIN_ISLANDS, ObjectType::rock, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00019, TWIN_ISLANDS_SPRING, "Rock 2", "MM Twin Islands Rock 2", ObjectType::rock, {0, 0}, TWIN_ISLANDS, ObjectType::rock, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x0001a, TWIN_ISLANDS_SPRING, "Rock 3", "MM Twin Islands Rock 3", ObjectType::rock, {0, 0}, TWIN_ISLANDS, ObjectType::rock, ObjectContext::Spring, 0, ZGame::mm }
 };
 
-const size_t TWIN_ISLANDS_WINTERNumOfObjs = 22;
+const size_t TWIN_ISLANDS_WINTERNumOfObjs = 25;
 ObjectInfo TWIN_ISLANDS_WINTERSceneObjects [TWIN_ISLANDS_WINTERNumOfObjs] =
 {
 	{ GORON_ELDER, TWIN_ISLANDS_WINTER, "Goron's Lulluby - Intro", "MM Goron Elder", ObjectType::npc, {738, 268}, TWIN_ISLANDS, ObjectType::npc, ObjectContext::Winter, 0, ZGame::mm },
@@ -4672,7 +5018,10 @@ ObjectInfo TWIN_ISLANDS_WINTERSceneObjects [TWIN_ISLANDS_WINTERNumOfObjs] =
 	{ 0x00042, TWIN_ISLANDS_WINTER, "Ramp 2", "MM Twin Islands Small Snowball Ramp 2", ObjectType::snowball, {242, 280}, TWIN_ISLANDS, ObjectType::snowball, ObjectContext::Winter, 0, ZGame::mm },
 	{ 0x00043, TWIN_ISLANDS_WINTER, "Ramp 3", "MM Twin Islands Small Snowball Ramp 3", ObjectType::snowball, {227, 279}, TWIN_ISLANDS, ObjectType::snowball, ObjectContext::Winter, 0, ZGame::mm },
 	{ 0x06, TWIN_ISLANDS_WINTER, "Underwater 1", "MM Twin Islands Underwater Chest 1", ObjectType::chest, {450, 479}, TWIN_ISLANDS, ObjectType::chest, ObjectContext::Spring, 0, ZGame::mm },
-	{ 0x00, TWIN_ISLANDS_WINTER, "Underwater 2", "MM Twin Islands Underwater Chest 2", ObjectType::chest, {630, 74}, TWIN_ISLANDS, ObjectType::chest, ObjectContext::Spring, 0, ZGame::mm }
+	{ 0x00, TWIN_ISLANDS_WINTER, "Underwater 2", "MM Twin Islands Underwater Chest 2", ObjectType::chest, {630, 74}, TWIN_ISLANDS, ObjectType::chest, ObjectContext::Spring, 0, ZGame::mm },
+	{ 0x00007, TWIN_ISLANDS_WINTER, "Winter - Island 1", "MM Twin Islands Snow Tree Island 1", ObjectType::tree, {0, 0}, TWIN_ISLANDS, ObjectType::tree, ObjectContext::Winter, 0, ZGame::mm },
+	{ 0x00008, TWIN_ISLANDS_WINTER, "Winter - Island 2", "MM Twin Islands Snow Tree Island 2", ObjectType::tree, {0, 0}, TWIN_ISLANDS, ObjectType::tree, ObjectContext::Winter, 0, ZGame::mm },
+	{ 0x00009, TWIN_ISLANDS_WINTER, "Winter - Ramp", "MM Twin Islands Snow Tree Ramp", ObjectType::tree, {0, 0}, TWIN_ISLANDS, ObjectType::tree, ObjectContext::Winter, 0, ZGame::mm }
 };
 
 const size_t WATERFALL_RAPIDSNumOfObjs = 2;

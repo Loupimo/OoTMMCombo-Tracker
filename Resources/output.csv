@@ -1,827 +1,827 @@
-{ 0x1, "5 Bombs (OoT)" },
-{ 0x2, "5 Deku Nuts (OoT)" },
-{ 0x3, "10 Bombchu (OoT)" },
-{ 0x4, "Fairy Bow" },
-{ 0x5, "Fairy Slingshot" },
-{ 0x6, "Boomerang" },
-{ 0x7, "Deku Stick (OoT)" },
-{ 0x8, "Hookshot (OoT)" },
-{ 0x9, "Longshot (OoT)" },
-{ 0xA, "Lens of Truth (OoT)" },
-{ 0xB, "Zelda's Letter" },
-{ 0xC, "Ocarina of Time (OoT)" },
-{ 0xD, "Megaton Hammer (OoT)" },
-{ 0xE, "Cojiro" },
-{ 0xF, "Empty Bottle (OoT)" },
-{ 0x10, "Red Potion (OoT)" },
-{ 0x11, "Green Potion (OoT)" },
-{ 0x12, "Blue Potion (OoT)" },
-{ 0x13, "Fairy (OoT)" },
-{ 0x14, "Bottle of Lon Lon Milk" },
-{ 0x15, "Ruto's Letter" },
-{ 0x16, "Magic Bean (OoT)" },
-{ 0x17, "Skull Mask" },
-{ 0x18, "Spooky Mask" },
-{ 0x19, "Chicken" },
-{ 0x1A, "Keaton Mask (OoT)" },
-{ 0x1B, "Bunny Hood (OoT)" },
-{ 0x1C, "Mask of Truth (OoT)" },
-{ 0x1D, "Pocket Egg" },
-{ 0x1E, "Pocket Cucco" },
-{ 0x1F, "Odd Mushroom" },
-{ 0x20, "Odd Potion" },
-{ 0x21, "Poacher's Saw" },
-{ 0x22, "Broken Goron's Sword" },
-{ 0x23, "Prescription" },
-{ 0x24, "Eyeball Frog" },
-{ 0x25, "Eye Drops" },
-{ 0x26, "Claim Check" },
-{ 0x27, "Kokiri Sword (OoT)" },
-{ 0x28, "Giant's Knife" },
-{ 0x29, "Deku Shield (OoT)" },
-{ 0x2A, "Hylian Shield" },
-{ 0x2B, "Mirror Shield (OoT)" },
-{ 0x2C, "Goron Tunic (OoT)" },
-{ 0x2D, "Zora Tunic (OoT)" },
-{ 0x2E, "Iron Boots (OoT)" },
-{ 0x2F, "Hover Boots (OoT)" },
-{ 0x30, "Big Quiver (OoT)" },
-{ 0x31, "Biggest Quiver (OoT)" },
-{ 0x32, "Bomb Bag (OoT)" },
-{ 0x33, "Big Bomb Bag (OoT)" },
-{ 0x34, "Biggest Bomb Bag (OoT)" },
-{ 0x35, "Silver Gauntlets (OoT)" },
-{ 0x36, "Golden Gauntlets (OoT)" },
-{ 0x37, "Silver Scale (OoT)" },
-{ 0x38, "Golden Scale (OoT)" },
-{ 0x39, "Stone of Agony (OoT)" },
-{ 0x3A, "Gerudo's Card" },
-{ 0x3B, "Fairy Ocarina (OoT)" },
-{ 0x3C, "5 Deku Seeds (OoT)" },
-{ 0x3D, "Heart Container (OoT)" },
-{ 0x3E, "Piece of Heart (OoT)" },
-{ 0x3F, "Boss Key (OoT)" },
-{ 0x40, "Compass (OoT)" },
-{ 0x41, "Dungeon Map (OoT)" },
-{ 0x42, "Small Key (OoT)" },
-{ 0x43, "Small Magic Jar (OoT)" },
-{ 0x44, "Large Magic Jar (OoT)" },
-{ 0x45, "Adult's Wallet (OoT)" },
-{ 0x46, "Giant's Wallet (OoT)" },
-{ 0x47, "Weird Egg" },
-{ 0x48, "Recovery Heart (OoT)" },
-{ 0x49, "5 Arrows (OoT)" },
-{ 0x4A, "10 Arrows (OoT)" },
-{ 0x4B, "30 Arrows (OoT)" },
-{ 0x4C, "Green Rupee (OoT)" },
-{ 0x4D, "Blue Rupee (OoT)" },
-{ 0x4E, "Red Rupee (OoT)" },
-{ 0x4F, "Heart Container (OoT)" },
-{ 0x50, "Lon Lon Milk" },
-{ 0x51, "Goron Mask (OoT)" },
-{ 0x52, "Zora Mask (OoT)" },
-{ 0x53, "Gerudo Mask" },
-{ 0x54, "Goron's Bracelet (OoT)" },
-{ 0x55, "Purple Rupee (OoT)" },
-{ 0x56, "Huge Rupee" },
-{ 0x57, "Biggoron's Sword" },
-{ 0x58, "Fire Arrow (OoT)" },
-{ 0x59, "Ice Arrow (OoT)" },
-{ 0x5A, "Light Arrow (OoT)" },
-{ 0x5B, "Gold Skulltula Token" },
-{ 0x5C, "Din's Fire (OoT)" },
-{ 0x5D, "Farore's Wind (OoT)" },
-{ 0x5E, "Nayru's Love (OoT)" },
-{ 0x5F, "Bullet Bag" },
-{ 0x60, "Large Bullet Bag" },
-{ 0x61, "5 Deku Sticks (OoT)" },
-{ 0x62, "10 Deku Sticks (OoT)" },
-{ 0x63, "5 Deku Nuts (OoT)" },
-{ 0x64, "10 Deku Nuts (OoT)" },
-{ 0x65, "Bomb (OoT)" },
-{ 0x66, "10 Bombs (OoT)" },
-{ 0x67, "20 Bombs (OoT)" },
-{ 0x68, "30 Bombs (OoT)" },
-{ 0x69, "30 Deku Seeds" },
-{ 0x6A, "5 Bombchu (OoT)" },
-{ 0x6B, "20 Bombchu (OoT)" },
-{ 0x6C, "Fish (OoT)" },
-{ 0x6D, "Bug (OoT)" },
-{ 0x6E, "Blue Fire (OoT)" },
-{ 0x6F, "Poe (OoT)" },
-{ 0x70, "Big Poe (OoT)" },
-{ 0x71, "Small Key (OoT)" },
-{ 0x72, "Green Rupee (OoT)" },
-{ 0x73, "Blue Rupee (OoT)" },
-{ 0x74, "Red Rupee (OoT)" },
-{ 0x75, "Purple Rupee (OoT)" },
-{ 0x76, "Piece of Heart (OoT)" },
-{ 0x77, "Deku Stick Upgrade (OoT)" },
-{ 0x78, "Second Deku Stick Upgrade (OoT)" },
-{ 0x79, "Deku Nut Upgrade (OoT)" },
-{ 0x7A, "Second Deku Nut Upgrade (OoT)" },
-{ 0x7B, "Largest Bullet Bag" },
-{ 0x7C, "IceTrap (OoT)" },
-{ 0x7D, "Unknown" },
-{ 0x7E, "Unknown" },
-{ 0x7F, "Unknown" },
-{ 0x80, "Rainbow Rupee" },
-{ 0x81, "Minuet of Forest" },
-{ 0x82, "Bolero of Fire" },
-{ 0x83, "Serenade of Water" },
-{ 0x84, "Requiem of Spirit" },
-{ 0x85, "Nocturne of Shadow" },
-{ 0x86, "Prelude of Light" },
-{ 0x87, "Zelda's Lullaby" },
-{ 0x88, "Epona's Song (OoT)" },
-{ 0x89, "Saria's Song" },
-{ 0x8A, "Sun's Song (OoT)" },
-{ 0x8B, "Song of Time (OoT)" },
-{ 0x8C, "Song of Storms (OoT)" },
-{ 0x8D, "Elegy of Emptiness (OoT)" },
-{ 0x8E, "Minuet of Forest Note" },
-{ 0x8F, "Bolero of Fire Note" },
-{ 0x90, "Serenade of Water Note" },
-{ 0x91, "Requiem of Spirit Note" },
-{ 0x92, "Nocturne of Shadow Note" },
-{ 0x93, "Prelude of Light Note" },
-{ 0x94, "Zelda's Lullaby Note" },
-{ 0x95, "Epona's Song Note (OoT)" },
-{ 0x96, "Saria's Song Note" },
-{ 0x97, "Sun's Song Note (OoT)" },
-{ 0x98, "Song of Time Note (OoT)" },
-{ 0x99, "Song of Storms Note (OoT)" },
-{ 0x9A, "Elegy of Emptiness Note (OoT)" },
-{ 0x9B, "Master Sword" },
-{ 0x9C, "Kokiri's Emerald" },
-{ 0x9D, "Goron's Ruby" },
-{ 0x9E, "Zora's Sapphire" },
-{ 0x9F, "Forest Medallion" },
-{ 0xA0, "Fire Medallion" },
-{ 0xA1, "Water Medallion" },
-{ 0xA2, "Spirit Medallion" },
-{ 0xA3, "Shadow Medallion" },
-{ 0xA4, "Light Medallion" },
-{ 0xA5, "Magic Upgrade (OoT)" },
-{ 0xA6, "Larger Magic Upgrade (OoT)" },
-{ 0xA7, "Defense Upgrade (OoT)" },
-{ 0xA8, "Progressive Deku Shield (OoT)" },
-{ 0xA9, "Progressive Hylian Shield" },
-{ 0xAA, "Small Key (Forest)" },
-{ 0xAB, "Small Key (Fire)" },
-{ 0xAC, "Small Key (Water)" },
-{ 0xAD, "Small Key (Spirit)" },
-{ 0xAE, "Small Key (Shadow)" },
-{ 0xAF, "Small Key (Ganon)" },
-{ 0xB0, "Small Key (Well)" },
-{ 0xB1, "Small Key (Hideout)" },
-{ 0xB2, "Small Key (GTG)" },
-{ 0xB3, "Boss Key (Forest)" },
-{ 0xB4, "Boss Key (Fire)" },
-{ 0xB5, "Boss Key (Water)" },
-{ 0xB6, "Boss Key (Spirit)" },
-{ 0xB7, "Boss Key (Shadow)" },
-{ 0xB8, "Boss Key (Ganon)" },
-{ 0xB9, "Dungeon Map (Deku)" },
-{ 0xBA, "Dungeon Map (Dodongo)" },
-{ 0xBB, "Dungeon Map (Jabu)" },
-{ 0xBC, "Dungeon Map (Forest)" },
-{ 0xBD, "Dungeon Map (Fire)" },
-{ 0xBE, "Dungeon Map (Water)" },
-{ 0xBF, "Dungeon Map (Spirit)" },
-{ 0xC0, "Dungeon Map (Shadow)" },
-{ 0xC1, "Dungeon Map (Well)" },
-{ 0xC2, "Dungeon Map (Ice)" },
-{ 0xC3, "Compass (Deku)" },
-{ 0xC4, "Compass (Dodongo)" },
-{ 0xC5, "Compass (Jabu)" },
-{ 0xC6, "Compass (Forest)" },
-{ 0xC7, "Compass (Fire)" },
-{ 0xC8, "Compass (Water)" },
-{ 0xC9, "Compass (Spirit)" },
-{ 0xCA, "Compass (Shadow)" },
-{ 0xCB, "Compass (Well)" },
-{ 0xCC, "Compass (Ice)" },
-{ 0xCD, "Child's Wallet (OoT)" },
-{ 0xCE, "Colossal Wallet (OoT)" },
-{ 0xCF, "Triforce Piece" },
-{ 0xD0, "Bottomless Wallet (OoT)" },
-{ 0xD1, "Silver Rupee (DC)" },
-{ 0xD2, "Silver Rupee (Well)" },
-{ 0xD3, "Silver Rupee (Spirit Child)" },
-{ 0xD4, "Silver Rupee (Spirit Sun)" },
-{ 0xD5, "Silver Rupee (Spirit Boulders)" },
-{ 0xD6, "Silver Rupee (Spirit Lobby)" },
-{ 0xD7, "Silver Rupee (Spirit Adult)" },
-{ 0xD8, "Silver Rupee (Shadow Scythe)" },
-{ 0xD9, "Silver Rupee (Shadow Pit)" },
-{ 0xDA, "Silver Rupee (Shadow Spikes)" },
-{ 0xDB, "Silver Rupee (Shadow Blades)" },
-{ 0xDC, "Silver Rupee (Ice Scythe)" },
-{ 0xDD, "Silver Rupee (Ice Block)" },
-{ 0xDE, "Silver Rupee (GTG Slopes)" },
-{ 0xDF, "Silver Rupee (GTG Lava)" },
-{ 0xE0, "Silver Rupee (GTG Water)" },
-{ 0xE1, "Silver Rupee (Ganon Spirit)" },
-{ 0xE2, "Silver Rupee (Ganon Light)" },
-{ 0xE3, "Silver Rupee (Ganon Fire)" },
-{ 0xE4, "Silver Rupee (Ganon Forest)" },
-{ 0xE5, "Silver Rupee (Ganon Shadow)" },
-{ 0xE6, "Silver Rupee (Ganon Water)" },
-{ 0xE7, "Soul of Stalfos" },
-{ 0xE8, "Soul of Octoroks (OoT)" },
-{ 0xE9, "Soul of Wallmasters (OoT)" },
-{ 0xEA, "Soul of Dodongos (OoT)" },
-{ 0xEB, "Soul of Keeses (OoT)" },
-{ 0xEC, "Soul of Tektites (OoT)" },
-{ 0xED, "Soul of Leevers (OoT)" },
-{ 0xEE, "Soul of Peahats (OoT)" },
-{ 0xEF, "Soul of Lizalfos / Dinolfos (OoT)" },
-{ 0xF0, "Soul of Gohma Larvae" },
-{ 0xF1, "Soul of Shaboms" },
-{ 0xF2, "Soul of Baby Dodongos" },
-{ 0xF3, "Soul of Dark Link" },
-{ 0xF4, "Soul of Biris / Baris" },
-{ 0xF5, "Soul of Tailpasarans" },
-{ 0xF6, "Soul of Jabu-Jabu's Parasites" },
-{ 0xF7, "Soul of Skulltulas (OoT)" },
-{ 0xF8, "Soul of Torch Slugs" },
-{ 0xF9, "Soul of Moblins" },
-{ 0xFA, "Soul of Armos (OoT)" },
-{ 0xFB, "Soul of Deku Babas (OoT)" },
-{ 0xFC, "Soul of Deku Scrubs (OoT)" },
-{ 0xFD, "Soul of Bubbles (OoT)" },
-{ 0xFE, "Soul of Beamos (OoT)" },
-{ 0xFF, "Soul of Floormasters (OoT) (OoT)" },
-{ 0x100, "Soul of ReDeads / Gibdos" },
-{ 0x101, "Soul of Skullwalltulas (OoT)" },
-{ 0x102, "Soul of Flare Dancers" },
-{ 0x103, "Soul of Dead Hands" },
-{ 0x104, "Soul of Shell Blades (OoT)" },
-{ 0x105, "Soul of Like-Likes (OoT)" },
-{ 0x106, "Soul of Spikes" },
-{ 0x107, "Soul of Anubis" },
-{ 0x108, "Soul of Iron Knuckles (OoT)" },
-{ 0x109, "Soul of Skull Kids" },
-{ 0x10A, "Soul of Flying Pots (OoT)" },
-{ 0x10B, "Soul of Freezards (OoT)" },
-{ 0x10C, "Soul of Stingers" },
-{ 0x10D, "Soul of Wolfos (OoT)" },
-{ 0x10E, "Soul of Stalchildren (OoT)" },
-{ 0x10F, "Soul of Guays (OoT)" },
-{ 0x110, "Soul of the Fighting Gerudos" },
-{ 0x111, "Soul of Poes (OoT)" },
-{ 0x112, "Soul of Queen Gohma" },
-{ 0x113, "Soul of King Dodongo" },
-{ 0x114, "Soul of Barinade" },
-{ 0x115, "Soul of Phantom Ganon" },
-{ 0x116, "Soul of Volvagia" },
-{ 0x117, "Soul of Morpha" },
-{ 0x118, "Soul of Bongo-Bongo" },
-{ 0x119, "Soul of Twinrova" },
-{ 0x11A, "Soul of Saria" },
-{ 0x11B, "Soul of Darunia" },
-{ 0x11C, "Soul of Ruto" },
-{ 0x11D, "Soul of King Zora" },
-{ 0x11E, "Soul of Zelda" },
-{ 0x11F, "Soul of Sheik" },
-{ 0x120, "Soul of Cucco Lady" },
-{ 0x121, "Soul of Carpenters (OoT)" },
-{ 0x122, "Soul of Guru-Guru (OoT)" },
-{ 0x123, "Soul of Mido" },
-{ 0x124, "Soul of Kokiri" },
-{ 0x125, "Soul of Kokiri Shopkeeper" },
-{ 0x126, "Soul of Hylian Guard" },
-{ 0x127, "Soul of Citizens (OoT)" },
-{ 0x128, "Soul of Malon" },
-{ 0x129, "Soul of Talon" },
-{ 0x12A, "Soul of Fishing Pond Owner" },
-{ 0x12B, "Soul of Goron" },
-{ 0x12C, "Soul of Medigoron" },
-{ 0x12D, "Soul of Biggoron (OoT)" },
-{ 0x12E, "Soul of Child Goron" },
-{ 0x12F, "Soul of Goron Shopkeeper (OoT)" },
-{ 0x130, "Soul of Zora (OoT)" },
-{ 0x131, "Soul of Zora Shopkeeper (OoT)" },
-{ 0x132, "Soul of Bazaar Shopkeeper" },
-{ 0x133, "Soul of Bombchu Shopkeeper" },
-{ 0x134, "Soul of Potion Shopkeeper" },
-{ 0x135, "Soul of Bowling Lady" },
-{ 0x136, "Soul of Chest Game Owner" },
-{ 0x137, "Soul of Shooting Gallery Owner" },
-{ 0x138, "Soul of Dampe (OoT)" },
-{ 0x139, "Soul of Graveyard Kid" },
-{ 0x13A, "Soul of Poe Collector" },
-{ 0x13B, "Soul of Composer Bros. (OoT)" },
-{ 0x13C, "Soul of Honey & Darling (OoT)" },
-{ 0x13D, "Soul of the Astronomer (OoT)" },
-{ 0x13E, "Soul of the Rooftop Man" },
-{ 0x13F, "Soul of the Bean Salesman (OoT)" },
-{ 0x140, "Soul of the Scientist (OoT)" },
-{ 0x141, "Soul of Ingo" },
-{ 0x142, "Soul of the Punk Boy" },
-{ 0x143, "Soul of the Dog Lady (OoT)" },
-{ 0x144, "Soul of the Carpet Man" },
-{ 0x145, "Soul of the Old Hag" },
-{ 0x146, "Soul of the Beggar" },
-{ 0x147, "Soul of the Patrolling Gerudos" },
-{ 0x148, "Soul of Cuccos (OoT)" },
-{ 0x149, "Soul of Cows (OoT)" },
-{ 0x14A, "Soul of Dogs (OoT)" },
-{ 0x14B, "Soul of Butterflies (OoT)" },
-{ 0x14C, "Soul of Gold Skulltulas (OoT)" },
-{ 0x14D, "Soul of Business Scrubs (OoT)" },
-{ 0x14E, "Key Ring (OoT)" },
-{ 0x14F, "Key Ring (Forest)" },
-{ 0x150, "Key Ring (Fire)" },
-{ 0x151, "Key Ring (Water)" },
-{ 0x152, "Key Ring (Spirit)" },
-{ 0x153, "Key Ring (Shadow)" },
-{ 0x154, "Key Ring (Ganon)" },
-{ 0x155, "Key Ring (Well)" },
-{ 0x156, "Key Ring (Hideout)" },
-{ 0x157, "Key Ring (GTG)" },
-{ 0x158, "Skeleton Key (OoT)" },
-{ 0x159, "Red Coin (OoT)" },
-{ 0x15A, "Green Coin (OoT)" },
-{ 0x15B, "Blue Coin (OoT)" },
-{ 0x15C, "Yellow Coin (OoT)" },
-{ 0x15D, "Triforce of Power" },
-{ 0x15E, "Triforce of Courage" },
-{ 0x15F, "Triforce of Wisdom" },
-{ 0x160, "Silver Pouch (DC)" },
-{ 0x161, "Silver Pouch (Well)" },
-{ 0x162, "Silver Pouch (Spirit Child)" },
-{ 0x163, "Silver Pouch (Spirit Sun)" },
-{ 0x164, "Silver Pouch (Spirit Boulders)" },
-{ 0x165, "Silver Pouch (Spirit Lobby)" },
-{ 0x166, "Silver Pouch (Spirit Adult)" },
-{ 0x167, "Silver Pouch (Shadow Scythe)" },
-{ 0x168, "Silver Pouch (Shadow Pit)" },
-{ 0x169, "Silver Pouch (Shadow Spikes)" },
-{ 0x16A, "Silver Pouch (Shadow Blades)" },
-{ 0x16B, "Silver Pouch (Ice Scythe)" },
-{ 0x16C, "Silver Pouch (Ice Block)" },
-{ 0x16D, "Silver Pouch (GTG Slopes)" },
-{ 0x16E, "Silver Pouch (GTG Lava)" },
-{ 0x16F, "Silver Pouch (GTG Water)" },
-{ 0x170, "Silver Pouch (Ganon Spirit)" },
-{ 0x171, "Silver Pouch (Ganon Light)" },
-{ 0x172, "Silver Pouch (Ganon Fire)" },
-{ 0x173, "Silver Pouch (Ganon Forest)" },
-{ 0x174, "Silver Pouch (Ganon Shadow)" },
-{ 0x175, "Silver Pouch (Ganon Water)" },
-{ 0x176, "Magical Rupee" },
-{ 0x177, "A Button" },
-{ 0x178, "C-Right Button" },
-{ 0x179, "C-Left Button" },
-{ 0x17A, "C-Up Button" },
-{ 0x17B, "C-Down Button" },
-{ 0x17C, "Small Key (Chest Game)" },
-{ 0x17D, "Key Ring (Chest Game)" },
-{ 0x17E, "Bottle of Red Potion (OoT)" },
-{ 0x17F, "Bottle of Green Potion (OoT)" },
-{ 0x180, "Bottle of Blue Potion (OoT)" },
-{ 0x181, "Bottled Fairy (OoT)" },
-{ 0x182, "Bottled Poe (OoT)" },
-{ 0x183, "Bottled Big Poe (OoT)" },
-{ 0x184, "Bottle of Blue Fire" },
-{ 0x185, "Child Fish (2 pounds)" },
-{ 0x186, "Child Fish (3 pounds)" },
-{ 0x187, "Child Fish (4 pounds)" },
-{ 0x188, "Child Fish (5 pounds)" },
-{ 0x189, "Child Fish (6 pounds)" },
-{ 0x18A, "Child Fish (7 pounds)" },
-{ 0x18B, "Child Fish (8 pounds)" },
-{ 0x18C, "Child Fish (9 pounds)" },
-{ 0x18D, "Child Fish (10 pounds)" },
-{ 0x18E, "Child Fish (11 pounds)" },
-{ 0x18F, "Child Fish (12 pounds)" },
-{ 0x190, "Child Fish (13 pounds)" },
-{ 0x191, "Child Fish (14 pounds)" },
-{ 0x192, "Adult Fish (4 pounds)" },
-{ 0x193, "Adult Fish (5 pounds)" },
-{ 0x194, "Adult Fish (6 pounds)" },
-{ 0x195, "Adult Fish (7 pounds)" },
-{ 0x196, "Adult Fish (8 pounds)" },
-{ 0x197, "Adult Fish (9 pounds)" },
-{ 0x198, "Adult Fish (10 pounds)" },
-{ 0x199, "Adult Fish (11 pounds)" },
-{ 0x19A, "Adult Fish (12 pounds)" },
-{ 0x19B, "Adult Fish (13 pounds)" },
-{ 0x19C, "Adult Fish (14 pounds)" },
-{ 0x19D, "Adult Fish (15 pounds)" },
-{ 0x19E, "Adult Fish (16 pounds)" },
-{ 0x19F, "Adult Fish (17 pounds)" },
-{ 0x1A0, "Adult Fish (18 pounds)" },
-{ 0x1A1, "Adult Fish (19 pounds)" },
-{ 0x1A2, "Adult Fish (20 pounds)" },
-{ 0x1A3, "Adult Fish (21 pounds)" },
-{ 0x1A4, "Adult Fish (22 pounds)" },
-{ 0x1A5, "Adult Fish (23 pounds)" },
-{ 0x1A6, "Adult Fish (24 pounds)" },
-{ 0x1A7, "Adult Fish (25 pounds)" },
-{ 0x1A8, "Child Loach (14 pounds)" },
-{ 0x1A9, "Child Loach (15 pounds)" },
-{ 0x1AA, "Child Loach (16 pounds)" },
-{ 0x1AB, "Child Loach (17 pounds)" },
-{ 0x1AC, "Child Loach (18 pounds)" },
-{ 0x1AD, "Child Loach (19 pounds)" },
-{ 0x1AE, "Adult Loach (29 pounds)" },
-{ 0x1AF, "Adult Loach (30 pounds)" },
-{ 0x1B0, "Adult Loach (31 pounds)" },
-{ 0x1B1, "Adult Loach (32 pounds)" },
-{ 0x1B2, "Adult Loach (33 pounds)" },
-{ 0x1B3, "Adult Loach (34 pounds)" },
-{ 0x1B4, "Adult Loach (35 pounds)" },
-{ 0x1B5, "Adult Loach (36 pounds)" },
-{ 0x1B6, "Bombchu Bag (OoT)" },
-{ 0x1B7, "Big Bombchu Bag (OoT)" },
-{ 0x1B8, "Biggest Bombchu Bag (OoT)" },
-{ 0x1B9, "Bombchu Bag (OoT)" },
-{ 0x1BA, "Bombchu Bag (OoT)" },
-{ 0x1BB, "Bombchu Bag (OoT)" },
-{ 0x1BC, "Razor Sword (OoT)" },
-{ 0x1BD, "Gilded Sword (OoT)" },
-{ 0x1BE, "Spin Attack Upgrade (OoT)" },
-{ 0x1BF, "Triforce (OoT)" },
-{ 0x1C0, "Big Fairy (OoT)" },
-{ 0x1C1, "Blast Mask (OoT)" },
-{ 0x1C2, "Stone Mask (OoT)" },
-{ 0x1C3, "Bronze Scale (OoT)" },
-{ 0x1C4, "Magic Mushroom" },
-{ 0x1C5, "Chateau Romani" },
-{ 0x1C6, "Gold Dust" },
-{ 0x1C7, "Seahorse" },
-{ 0x1C8, "Bottle of Gold Dust" },
-{ 0x1C9, "Bottle of Chateau Romani" },
-{ 0x1CA, "Ice Trap" },
-{ 0x1CB, "Fire Trap" },
-{ 0x1CC, "Shock Trap" },
-{ 0x1CD, "Drain Trap" },
-{ 0x1CE, "Anti-Magic Trap" },
-{ 0x1CF, "Knockback Trap" },
-{ 0x1D0, "Rupoor (OoT)" },
-{ 0x1D1, "Green Rupee (MM)" },
-{ 0x1D2, "Blue Rupee (MM)" },
-{ 0x1D3, "Red Rupee (MM)" },
-{ 0x1D4, "Red Rupee (MM)" },
-{ 0x1D5, "Purple Rupee (MM)" },
-{ 0x1D6, "Silver Rupee (MM)" },
-{ 0x1D7, "Gold Rupee (MM)" },
-{ 0x1D8, "Adult Wallet (MM)" },
-{ 0x1D9, "Giant Wallet (MM)" },
-{ 0x1DA, "Recovery Heart (MM)" },
-{ 0x1DB, "Piece of Heart (MM)" },
-{ 0x1DC, "Heart Container (MM)" },
-{ 0x1DD, "Small Magic Jar (MM)" },
-{ 0x1DE, "Large Magic Jar (MM)" },
-{ 0x1DF, "Stray Fairy (MM)" },
-{ 0x1E0, "Stray Fairy (Woodfall)" },
-{ 0x1E1, "Stray Fairy (Snowhead)" },
-{ 0x1E2, "Stray Fairy (Great Bay)" },
-{ 0x1E3, "Stray Fairy (Stone Tower)" },
-{ 0x1E4, "Stray Fairy (Town)" },
-{ 0x1E5, "Transcendent Fairy" },
-{ 0x1E6, "Bomb (MM)" },
-{ 0x1E7, "5 Bombs (MM)" },
-{ 0x1E8, "10 Bombs (MM)" },
-{ 0x1E9, "20 Bombs (MM)" },
-{ 0x1EA, "30 Bombs (MM)" },
-{ 0x1EB, "Deku Stick (MM)" },
-{ 0x1EC, "10 Bombchu (MM)" },
-{ 0x1ED, "Bomb Bag (MM)" },
-{ 0x1EE, "Big Bomb Bag (MM)" },
-{ 0x1EF, "Biggest Bomb Bag (MM)" },
-{ 0x1F0, "10 Arrows (MM)" },
-{ 0x1F1, "30 Arrows (MM)" },
-{ 0x1F2, "40 Arrows (MM)" },
-{ 0x1F3, "40 Arrows (MM)" },
-{ 0x1F4, "Hero's Bow (MM)" },
-{ 0x1F5, "Big Quiver (MM)" },
-{ 0x1F6, "Biggest Quiver (MM)" },
-{ 0x1F7, "Fire Arrow (MM)" },
-{ 0x1F8, "Ice Arrow (MM)" },
-{ 0x1F9, "Light Arrow (MM)" },
-{ 0x1FA, "Deku Nut (MM)" },
-{ 0x1FB, "5 Deku Nuts (MM)" },
-{ 0x1FC, "10 Deku Nuts (MM)" },
-{ 0x1FD, "30 Deku Nuts (MM)" },
-{ 0x1FE, "30 Deku Nuts (MM)" },
-{ 0x1FF, "40 Deku Nuts (MM)" },
-{ 0x200, "20 Bombchu" },
-{ 0x201, "20 Deku Sticks (MM)" },
-{ 0x202, "20 Deku Sticks (MM)" },
-{ 0x203, "30 Deku Sticks (MM)" },
-{ 0x204, "Deku Shield (MM)" },
-{ 0x205, "Hero's Shield (MM)" },
-{ 0x206, "Mirror Shield (MM)" },
-{ 0x207, "Progressive Deku Shield (MM)" },
-{ 0x208, "Progressive Hero's Shield" },
-{ 0x209, "Powder Keg" },
-{ 0x20A, "Magic Bean (MM)" },
-{ 0x20B, "Bombchu (MM)" },
-{ 0x20C, "Kokiri Sword (MM)" },
-{ 0x20D, "Razor Sword (MM)" },
-{ 0x20E, "Gilded Sword (MM)" },
-{ 0x20F, "5 Bombchu (MM)" },
-{ 0x210, "Great Fairy's Sword (MM)" },
-{ 0x211, "Small Key (MM)" },
-{ 0x212, "Boss Key (MM)" },
-{ 0x213, "Dungeon Map (MM)" },
-{ 0x214, "Compass (MM)" },
-{ 0x215, "Hookshot (MM)" },
-{ 0x216, "Lens of Truth (MM)" },
-{ 0x217, "Pictograph Box" },
-{ 0x218, "Ocarina of Time (MM)" },
-{ 0x219, "Bomber's Notebook" },
-{ 0x21A, "Bottle of Red Potion (MM)" },
-{ 0x21B, "Empty Bottle (MM)" },
-{ 0x21C, "Red Potion (MM)" },
-{ 0x21D, "Green Potion (MM)" },
-{ 0x21E, "Blue Potion (MM)" },
-{ 0x21F, "Fairy (MM)" },
-{ 0x220, "Bottle of Milk (MM)" },
-{ 0x221, "Fish (MM)" },
-{ 0x222, "Bug (MM)" },
-{ 0x223, "Big Poe (MM)" },
-{ 0x224, "Bottle of Gold Dust" },
-{ 0x225, "Magic Mushroom" },
-{ 0x226, "Bottle of Chateau Romani" },
-{ 0x227, "Deku Mask" },
-{ 0x228, "Goron Mask (MM)" },
-{ 0x229, "Zora Mask (MM)" },
-{ 0x22A, "Fierce Deity's Mask" },
-{ 0x22B, "Captain's Hat" },
-{ 0x22C, "Giant's Mask" },
-{ 0x22D, "All Night Mask" },
-{ 0x22E, "Bunny Hood (MM)" },
-{ 0x22F, "Keaton Mask (MM)" },
-{ 0x230, "Garo's Mask" },
-{ 0x231, "Romani's Mask" },
-{ 0x232, "Circus Leader's Mask" },
-{ 0x233, "Postman's Hat" },
-{ 0x234, "Couple's Mask" },
-{ 0x235, "Great Fairy Mask" },
-{ 0x236, "Gibdo Mask" },
-{ 0x237, "Don Gero's Mask" },
-{ 0x238, "Kamaro's Mask" },
-{ 0x239, "Mask of Truth (MM)" },
-{ 0x23A, "Stone Mask (MM)" },
-{ 0x23B, "Bremen Mask" },
-{ 0x23C, "Blast Mask (MM)" },
-{ 0x23D, "Mask of Scents" },
-{ 0x23E, "Kafei's Mask" },
-{ 0x23F, "Chateau Romani" },
-{ 0x240, "Milk (MM)" },
-{ 0x241, "Gold Dust" },
-{ 0x242, "Seahorse" },
-{ 0x243, "Moon's Tear" },
-{ 0x244, "Land Title Deed" },
-{ 0x245, "Swamp Title Deed" },
-{ 0x246, "Mountain Title Deed" },
-{ 0x247, "Ocean Title Deed" },
-{ 0x248, "Room Key" },
-{ 0x249, "Letter to Mama" },
-{ 0x24A, "Letter to Kafei" },
-{ 0x24B, "Pendant of Memories" },
-{ 0x24C, "World Map (Clock Town)" },
-{ 0x24D, "World Map (Woodfall)" },
-{ 0x24E, "World Map (Snowhead)" },
-{ 0x24F, "World Map (Romani Ranch)" },
-{ 0x250, "World Map (Great Bay)" },
-{ 0x251, "World Map (Stone Tower)" },
-{ 0x252, "Magic Upgrade (MM)" },
-{ 0x253, "Larger Magic Upgrade (MM)" },
-{ 0x254, "Defense Upgrade (MM)" },
-{ 0x255, "Spin Attack Upgrade (MM)" },
-{ 0x256, "Sonata of Awakening" },
-{ 0x257, "Goron Lullaby" },
-{ 0x258, "New Wave Bossa Nova" },
-{ 0x259, "Elegy of Emptiness (MM)" },
-{ 0x25A, "Oath to Order" },
-{ 0x25B, "Song of Time (MM)" },
-{ 0x25C, "Song of Healing" },
-{ 0x25D, "Epona's Song (MM)" },
-{ 0x25E, "Song of Soaring" },
-{ 0x25F, "Song of Storms (MM)" },
-{ 0x260, "Sun's Song (MM)" },
-{ 0x261, "Lullaby Intro" },
-{ 0x262, "Sonata of Awakening Note" },
-{ 0x263, "Goron Lullaby Note" },
-{ 0x264, "New Wave Bossa Nova Note" },
-{ 0x265, "Elegy of Emptiness Note (MM)" },
-{ 0x266, "Oath to Order Note" },
-{ 0x267, "Song of Time Note (MM)" },
-{ 0x268, "Song of Healing Note" },
-{ 0x269, "Epona's Song Note (MM)" },
-{ 0x26A, "Song of Soaring Note" },
-{ 0x26B, "Song of Storms Note (MM)" },
-{ 0x26C, "Sun's Song Note (MM)" },
-{ 0x26D, "Odolwa's Remains" },
-{ 0x26E, "Goht's Remains" },
-{ 0x26F, "Gyorg's Remains" },
-{ 0x270, "Twinmold's Remains" },
-{ 0x271, "Swamp Skulltula Token" },
-{ 0x272, "Ocean Skulltula Token" },
-{ 0x273, "Small Key (Woodfall)" },
-{ 0x274, "Small Key (Snowhead)" },
-{ 0x275, "Small Key (Great Bay)" },
-{ 0x276, "Small Key (Stone Tower)" },
-{ 0x277, "Boss Key (Woodfall)" },
-{ 0x278, "Boss Key (Snowhead)" },
-{ 0x279, "Boss Key (Great Bay)" },
-{ 0x27A, "Boss Key (Stone Tower)" },
-{ 0x27B, "Dungeon Map (Woodfall)" },
-{ 0x27C, "Dungeon Map (Snowhead)" },
-{ 0x27D, "Dungeon Map (Great Bay)" },
-{ 0x27E, "Dungeon Map (Stone Tower)" },
-{ 0x27F, "Compass (Woodfall)" },
-{ 0x280, "Compass (Snowhead)" },
-{ 0x281, "Compass (Great Bay)" },
-{ 0x282, "Compass (Stone Tower)" },
-{ 0x283, "Fairy Ocarina (MM)" },
-{ 0x284, "Short Hookshot (MM)" },
-{ 0x285, "Child Wallet (MM)" },
-{ 0x286, "Colossal Wallet (MM)" },
-{ 0x287, "Owl Statue (Great Bay)" },
-{ 0x288, "Owl Statue (Zora Cape)" },
-{ 0x289, "Owl Statue (Snowhead)" },
-{ 0x28A, "Owl Statue (Mountain Village)" },
-{ 0x28B, "Owl Statue (Clock Town)" },
-{ 0x28C, "Owl Statue (Milk Road)" },
-{ 0x28D, "Owl Statue (Woodfall)" },
-{ 0x28E, "Owl Statue (Southern Swamp)" },
-{ 0x28F, "Owl Statue (Ikana Canyon)" },
-{ 0x290, "Owl Statue (Stone Tower)" },
-{ 0x291, "Owl Statue (Hidden)" },
-{ 0x292, "Bottomless Wallet (MM)" },
-{ 0x293, "Soul of Octoroks (MM)" },
-{ 0x294, "Soul of Wallmasters (MM)" },
-{ 0x295, "Soul of Dodongos (MM)" },
-{ 0x296, "Soul of Keeses (MM)" },
-{ 0x297, "Soul of Tektites (MM)" },
-{ 0x298, "Soul of Peahats (MM)" },
-{ 0x299, "Soul of Lizalfos / Dinolfos (MM)" },
-{ 0x29A, "Soul of Skulltulas (MM)" },
-{ 0x29B, "Soul of Armos (MM)" },
-{ 0x29C, "Soul of Deku Babas (MM)" },
-{ 0x29D, "Soul of Deku Scrubs (MM)" },
-{ 0x29E, "Soul of Bubbles (MM)" },
-{ 0x29F, "Soul of Beamos (MM)" },
-{ 0x2A0, "Soul of ReDeads / Gibdos (MM)" },
-{ 0x2A1, "Soul of Skullwalltulas (MM)" },
-{ 0x2A2, "Soul of Shell Blades (MM)" },
-{ 0x2A3, "Soul of Like-Likes (MM)" },
-{ 0x2A4, "Soul of Iron Knuckles (MM)" },
-{ 0x2A5, "Soul of Freezards (MM)" },
-{ 0x2A6, "Soul of Wolfos (MM)" },
-{ 0x2A7, "Soul of Guays (MM)" },
-{ 0x2A8, "Soul of Flying Pots (MM)" },
-{ 0x2A9, "Soul of Floormasters (MM)" },
-{ 0x2AA, "Soul of Chuchus" },
-{ 0x2AB, "Soul of Deep Pythons" },
-{ 0x2AC, "Soul of Stalchildren (MM)" },
-{ 0x2AD, "Soul of Leevers (MM)" },
-{ 0x2AE, "Soul of Skullfish" },
-{ 0x2AF, "Soul of Dexihands" },
-{ 0x2B0, "Soul of Dragonflies" },
-{ 0x2B1, "Soul of Eenos" },
-{ 0x2B2, "Soul of Eyegores" },
-{ 0x2B3, "Soul of Hiploops" },
-{ 0x2B4, "Soul of Real Bombchu" },
-{ 0x2B5, "Soul of Takkuri" },
-{ 0x2B6, "Soul of Boes" },
-{ 0x2B7, "Soul of Nejirons" },
-{ 0x2B8, "Soul of Bio Babas" },
-{ 0x2B9, "Soul of Garo" },
-{ 0x2BA, "Soul of Wizzrobes" },
-{ 0x2BB, "Soul of Gomess" },
-{ 0x2BC, "Soul of Gekkos" },
-{ 0x2BD, "Soul of Bad Bats" },
-{ 0x2BE, "Soul of Snappers" },
-{ 0x2BF, "Soul of Warts" },
-{ 0x2C0, "Soul of Captain Keeta" },
-{ 0x2C1, "Soul of the Fighting Pirates" },
-{ 0x2C2, "Soul of Poes (MM)" },
-{ 0x2C3, "Soul of Odolwa" },
-{ 0x2C4, "Soul of Goht" },
-{ 0x2C5, "Soul of Gyorg" },
-{ 0x2C6, "Soul of Twinmold" },
-{ 0x2C7, "Soul of Igos" },
-{ 0x2C8, "Soul of Madame Aroma" },
-{ 0x2C9, "Soul of Town Archery Owner" },
-{ 0x2CA, "Soul of Swamp Archery Owner" },
-{ 0x2CB, "Soul of Gorons (MM)" },
-{ 0x2CC, "Soul of Baby Goron" },
-{ 0x2CD, "Soul of Bombs Shopkeeper" },
-{ 0x2CE, "Soul of Bombers' Kids" },
-{ 0x2CF, "Soul of Deku Butler" },
-{ 0x2D0, "Soul of Citizens (MM)" },
-{ 0x2D1, "Soul of Composer Bros (MM)" },
-{ 0x2D2, "Soul of Dampe (MM)" },
-{ 0x2D3, "Soul of Deku King" },
-{ 0x2D4, "Soul of Deku Princess" },
-{ 0x2D5, "Soul of Playground Scrubs" },
-{ 0x2D6, "Soul of Goron Elder" },
-{ 0x2D7, "Soul of Fisherman" },
-{ 0x2D8, "Soul of Goron Shopkeeper (MM)" },
-{ 0x2D9, "Soul of Honey & Darling (MM)" },
-{ 0x2DA, "Soul of Toto" },
-{ 0x2DB, "Soul of Lulu" },
-{ 0x2DC, "Soul of Zora Musicians" },
-{ 0x2DD, "Soul of Kafei" },
-{ 0x2DE, "Soul of Keaton" },
-{ 0x2DF, "Soul of Koume & Kotake" },
-{ 0x2E0, "Soul of Mayor Dotour" },
-{ 0x2E1, "Soul of Keg Trial Goron" },
-{ 0x2E2, "Soul of Biggoron (MM)" },
-{ 0x2E3, "Soul of Mr. Barten" },
-{ 0x2E4, "Soul of Astronomer (MM)" },
-{ 0x2E5, "Soul of Poe Hut Owner" },
-{ 0x2E6, "Soul of Blacksmiths" },
-{ 0x2E7, "Soul of Chest Game Lady" },
-{ 0x2E8, "Soul of Tingle" },
-{ 0x2E9, "Soul of Toilet Hand" },
-{ 0x2EA, "Soul of Trading Post Owner" },
-{ 0x2EB, "Soul of the Part-Timer" },
-{ 0x2EC, "Soul of Zoras (MM)" },
-{ 0x2ED, "Soul of Zora Shopkeeper (MM)" },
-{ 0x2EE, "Soul of Romani/Cremia" },
-{ 0x2EF, "Soul of the Bean Salesman" },
-{ 0x2F0, "Soul of Carpenters (MM)" },
-{ 0x2F1, "Soul of Anju" },
-{ 0x2F2, "Soul of Guru-Guru (MM)" },
-{ 0x2F3, "Soul of the Scientist (MM)" },
-{ 0x2F4, "Soul of Gorman & Bros." },
-{ 0x2F5, "Soul of Grog" },
-{ 0x2F6, "Soul of the Dog Lady (MM)" },
-{ 0x2F7, "Soul of Swordsman" },
-{ 0x2F8, "Soul of Anju's Grandmother" },
-{ 0x2F9, "Soul of Boat Cruise Man" },
-{ 0x2FA, "Soul of the Banker" },
-{ 0x2FB, "Soul of Moon Children" },
-{ 0x2FC, "Soul of Patrolling Pirates and their Chief" },
-{ 0x2FD, "Soul of Cuccos (MM)" },
-{ 0x2FE, "Soul of Cows (MM)" },
-{ 0x2FF, "Soul of Dogs (MM)" },
-{ 0x300, "Soul of Butterflies (MM)" },
-{ 0x301, "Soul of Gold Skulltulas (MM)" },
-{ 0x302, "Soul of Business Scrubs (MM)" },
-{ 0x303, "Key Ring (MM)" },
-{ 0x304, "Key Ring (Woodfall)" },
-{ 0x305, "Key Ring (Snowhead)" },
-{ 0x306, "Key Ring (Great Bay)" },
-{ 0x307, "Key Ring (Stone Tower)" },
-{ 0x308, "Skeleton Key (MM)" },
-{ 0x309, "A Button (MM)" },
-{ 0x30A, "C-Right Button (MM)" },
-{ 0x30B, "C-Left Button (MM)" },
-{ 0x30C, "C-Up Button (MM)" },
-{ 0x30D, "C-Down Button (MM)" },
-{ 0x30E, "Bottle of Green Potion (MM)" },
-{ 0x30F, "Bottle of Blue Potion (MM)" },
-{ 0x310, "Bottled Fairy (MM)" },
-{ 0x311, "Poe (MM)" },
-{ 0x312, "Bottled Poe (MM)" },
-{ 0x313, "Bottled Big Poe (MM)" },
-{ 0x314, "Bombchu Bag (MM)" },
-{ 0x315, "Big Bombchu Bag (MM)" },
-{ 0x316, "Biggest Bombchu Bag (MM)" },
-{ 0x317, "Bombchu Bag (MM)" },
-{ 0x318, "Bombchu Bag (MM)" },
-{ 0x319, "Bombchu Bag (MM)" },
-{ 0x31A, "Bombchu Bag (MM)" },
-{ 0x31B, "Big Fairy (MM)" },
-{ 0x31C, "Din's Fire (MM)" },
-{ 0x31D, "Farore's Wind (MM)" },
-{ 0x31E, "Nayru's Love (MM)" },
-{ 0x31F, "Iron Boots (MM)" },
-{ 0x320, "Hover Boots (MM)" },
-{ 0x321, "Goron Tunic (MM)" },
-{ 0x322, "Zora Tunic (MM)" },
-{ 0x323, "Bronze Scale (MM)" },
-{ 0x324, "Silver Scale (MM)" },
-{ 0x325, "Golden Scale (MM)" },
-{ 0x326, "Goron's Bracelet (MM)" },
-{ 0x327, "Silver Gauntlets (MM)" },
-{ 0x328, "Golden Gauntlets (MM)" },
-{ 0x329, "Clock (Day 1)" },
-{ 0x32A, "Clock (Night 1)" },
-{ 0x32B, "Clock (Day 2)" },
-{ 0x32C, "Clock (Night 2)" },
-{ 0x32D, "Clock (Day 3)" },
-{ 0x32E, "Clock (Night 3)" },
-{ 0x32F, "Megaton Hammer (MM)" },
-{ 0x330, "Deku Stick Upgrade (MM)" },
-{ 0x331, "Second Deku Stick Upgrade (MM)" },
-{ 0x332, "Deku Nut Upgrade (MM)" },
-{ 0x333, "Second Deku Nut Upgrade (MM)" },
-{ 0x334, "Stone of Agony (MM)" },
-{ 0x335, "Ruto's Letter" },
-{ 0x336, "Bottle of Blue Fire (MM)" },
-{ 0x337, "Blue Fire (MM)" },
-{ 0x338, "Majora's Mask (MM)" },
-{ 0x339, "Sold Out" },
-{ 0x33A, "Nothing" },
-{ 0x33B, "MM Scoop" },
+"{ 0x1, ""5 Bombs (OoT)"" },"
+"{ 0x2, ""5 Deku Nuts (OoT)"" },"
+"{ 0x3, ""10 Bombchu (OoT)"" },"
+"{ 0x4, ""Fairy Bow"" },"
+"{ 0x5, ""Fairy Slingshot"" },"
+"{ 0x6, ""Boomerang"" },"
+"{ 0x7, ""Deku Stick (OoT)"" },"
+"{ 0x8, ""Hookshot (OoT)"" },"
+"{ 0x9, ""Longshot (OoT)"" },"
+"{ 0xA, ""Lens of Truth (OoT)"" },"
+"{ 0xB, ""Zelda's Letter"" },"
+"{ 0xC, ""Ocarina of Time (OoT)"" },"
+"{ 0xD, ""Megaton Hammer (OoT)"" },"
+"{ 0xE, ""Cojiro"" },"
+"{ 0xF, ""Empty Bottle (OoT)"" },"
+"{ 0x10, ""Red Potion (OoT)"" },"
+"{ 0x11, ""Green Potion (OoT)"" },"
+"{ 0x12, ""Blue Potion (OoT)"" },"
+"{ 0x13, ""Fairy (OoT)"" },"
+"{ 0x14, ""Bottle of Lon Lon Milk"" },"
+"{ 0x15, ""Ruto's Letter"" },"
+"{ 0x16, ""Magic Bean (OoT)"" },"
+"{ 0x17, ""Skull Mask"" },"
+"{ 0x18, ""Spooky Mask"" },"
+"{ 0x19, ""Chicken"" },"
+"{ 0x1A, ""Keaton Mask (OoT)"" },"
+"{ 0x1B, ""Bunny Hood (OoT)"" },"
+"{ 0x1C, ""Mask of Truth (OoT)"" },"
+"{ 0x1D, ""Pocket Egg"" },"
+"{ 0x1E, ""Pocket Cucco"" },"
+"{ 0x1F, ""Odd Mushroom"" },"
+"{ 0x20, ""Odd Potion"" },"
+"{ 0x21, ""Poacher's Saw"" },"
+"{ 0x22, ""Broken Goron's Sword"" },"
+"{ 0x23, ""Prescription"" },"
+"{ 0x24, ""Eyeball Frog"" },"
+"{ 0x25, ""Eye Drops"" },"
+"{ 0x26, ""Claim Check"" },"
+"{ 0x27, ""Kokiri Sword (OoT)"" },"
+"{ 0x28, ""Giant's Knife"" },"
+"{ 0x29, ""Deku Shield (OoT)"" },"
+"{ 0x2A, ""Hylian Shield"" },"
+"{ 0x2B, ""Mirror Shield (OoT)"" },"
+"{ 0x2C, ""Goron Tunic (OoT)"" },"
+"{ 0x2D, ""Zora Tunic (OoT)"" },"
+"{ 0x2E, ""Iron Boots (OoT)"" },"
+"{ 0x2F, ""Hover Boots (OoT)"" },"
+"{ 0x30, ""Big Quiver (OoT)"" },"
+"{ 0x31, ""Biggest Quiver (OoT)"" },"
+"{ 0x32, ""Bomb Bag (OoT)"" },"
+"{ 0x33, ""Big Bomb Bag (OoT)"" },"
+"{ 0x34, ""Biggest Bomb Bag (OoT)"" },"
+"{ 0x35, ""Silver Gauntlets (OoT)"" },"
+"{ 0x36, ""Golden Gauntlets (OoT)"" },"
+"{ 0x37, ""Silver Scale (OoT)"" },"
+"{ 0x38, ""Golden Scale (OoT)"" },"
+"{ 0x39, ""Stone of Agony (OoT)"" },"
+"{ 0x3A, ""Gerudo's Card"" },"
+"{ 0x3B, ""Fairy Ocarina (OoT)"" },"
+"{ 0x3C, ""5 Deku Seeds"" },"
+"{ 0x3D, ""Heart Container (OoT)"" },"
+"{ 0x3E, ""Piece of Heart (OoT)"" },"
+"{ 0x3F, ""Boss Key (OoT)"" },"
+"{ 0x40, ""Compass (OoT)"" },"
+"{ 0x41, ""Dungeon Map (OoT)"" },"
+"{ 0x42, ""Small Key (OoT)"" },"
+"{ 0x43, ""Small Magic Jar (OoT)"" },"
+"{ 0x44, ""Large Magic Jar (OoT)"" },"
+"{ 0x45, ""Adult's Wallet (OoT)"" },"
+"{ 0x46, ""Giant's Wallet (OoT)"" },"
+"{ 0x47, ""Weird Egg"" },"
+"{ 0x48, ""Recovery Heart (OoT)"" },"
+"{ 0x49, ""5 Arrows (OoT)"" },"
+"{ 0x4A, ""10 Arrows (OoT)"" },"
+"{ 0x4B, ""30 Arrows (OoT)"" },"
+"{ 0x4C, ""Green Rupee (OoT)"" },"
+"{ 0x4D, ""Blue Rupee (OoT)"" },"
+"{ 0x4E, ""Red Rupee (OoT)"" },"
+"{ 0x4F, ""Heart Container (OoT)"" },"
+"{ 0x50, ""Lon Lon Milk"" },"
+"{ 0x51, ""Goron Mask (OoT)"" },"
+"{ 0x52, ""Zora Mask (OoT)"" },"
+"{ 0x53, ""Gerudo Mask"" },"
+"{ 0x54, ""Goron's Bracelet (OoT)"" },"
+"{ 0x55, ""Purple Rupee (OoT)"" },"
+"{ 0x56, ""Huge Rupee"" },"
+"{ 0x57, ""Biggoron's Sword"" },"
+"{ 0x58, ""Fire Arrow (OoT)"" },"
+"{ 0x59, ""Ice Arrow (OoT)"" },"
+"{ 0x5A, ""Light Arrow (OoT)"" },"
+"{ 0x5B, ""Gold Skulltula Token"" },"
+"{ 0x5C, ""Din's Fire (OoT)"" },"
+"{ 0x5D, ""Farore's Wind (OoT)"" },"
+"{ 0x5E, ""Nayru's Love (OoT)"" },"
+"{ 0x5F, ""Bullet Bag"" },"
+"{ 0x60, ""Large Bullet Bag"" },"
+"{ 0x61, ""5 Deku Sticks (OoT)"" },"
+"{ 0x62, ""10 Deku Sticks (OoT)"" },"
+"{ 0x63, ""5 Deku Nuts (OoT)"" },"
+"{ 0x64, ""10 Deku Nuts (OoT)"" },"
+"{ 0x65, ""Bomb (OoT)"" },"
+"{ 0x66, ""10 Bombs (OoT)"" },"
+"{ 0x67, ""20 Bombs (OoT)"" },"
+"{ 0x68, ""30 Bombs (OoT)"" },"
+"{ 0x69, ""30 Deku Seeds"" },"
+"{ 0x6A, ""5 Bombchu (OoT)"" },"
+"{ 0x6B, ""20 Bombchu (OoT)"" },"
+"{ 0x6C, ""Fish (OoT)"" },"
+"{ 0x6D, ""Bug (OoT)"" },"
+"{ 0x6E, ""Blue Fire (OoT)"" },"
+"{ 0x6F, ""Poe (OoT)"" },"
+"{ 0x70, ""Big Poe (OoT)"" },"
+"{ 0x71, ""Small Key (OoT)"" },"
+"{ 0x72, ""Green Rupee (OoT)"" },"
+"{ 0x73, ""Blue Rupee (OoT)"" },"
+"{ 0x74, ""Red Rupee (OoT)"" },"
+"{ 0x75, ""Purple Rupee (OoT)"" },"
+"{ 0x76, ""Piece of Heart (OoT)"" },"
+"{ 0x77, ""Deku Stick Upgrade (OoT)"" },"
+"{ 0x78, ""Second Deku Stick Upgrade (OoT)"" },"
+"{ 0x79, ""Deku Nut Upgrade (OoT)"" },"
+"{ 0x7A, ""Second Deku Nut Upgrade (OoT)"" },"
+"{ 0x7B, ""Largest Bullet Bag"" },"
+"{ 0x7C, ""IceTrap (OoT)"" },"
+"{ 0x7D, ""Unknown"" },"
+"{ 0x7E, ""Unknown"" },"
+"{ 0x7F, ""Unknown"" },"
+"{ 0x80, ""Rainbow Rupee"" },"
+"{ 0x81, ""Minuet of Forest"" },"
+"{ 0x82, ""Bolero of Fire"" },"
+"{ 0x83, ""Serenade of Water"" },"
+"{ 0x84, ""Requiem of Spirit"" },"
+"{ 0x85, ""Nocturne of Shadow"" },"
+"{ 0x86, ""Prelude of Light"" },"
+"{ 0x87, ""Zelda's Lullaby"" },"
+"{ 0x88, ""Epona's Song (OoT)"" },"
+"{ 0x89, ""Saria's Song"" },"
+"{ 0x8A, ""Sun's Song (OoT)"" },"
+"{ 0x8B, ""Song of Time (OoT)"" },"
+"{ 0x8C, ""Song of Storms (OoT)"" },"
+"{ 0x8D, ""Elegy of Emptiness (OoT)"" },"
+"{ 0x8E, ""Minuet of Forest Note"" },"
+"{ 0x8F, ""Bolero of Fire Note"" },"
+"{ 0x90, ""Serenade of Water Note"" },"
+"{ 0x91, ""Requiem of Spirit Note"" },"
+"{ 0x92, ""Nocturne of Shadow Note"" },"
+"{ 0x93, ""Prelude of Light Note"" },"
+"{ 0x94, ""Zelda's Lullaby Note"" },"
+"{ 0x95, ""Epona's Song Note (OoT)"" },"
+"{ 0x96, ""Saria's Song Note"" },"
+"{ 0x97, ""Sun's Song Note (OoT)"" },"
+"{ 0x98, ""Song of Time Note (OoT)"" },"
+"{ 0x99, ""Song of Storms Note (OoT)"" },"
+"{ 0x9A, ""Elegy of Emptiness Note (OoT)"" },"
+"{ 0x9B, ""Master Sword"" },"
+"{ 0x9C, ""Kokiri's Emerald"" },"
+"{ 0x9D, ""Goron's Ruby"" },"
+"{ 0x9E, ""Zora's Sapphire"" },"
+"{ 0x9F, ""Forest Medallion"" },"
+"{ 0xA0, ""Fire Medallion"" },"
+"{ 0xA1, ""Water Medallion"" },"
+"{ 0xA2, ""Spirit Medallion"" },"
+"{ 0xA3, ""Shadow Medallion"" },"
+"{ 0xA4, ""Light Medallion"" },"
+"{ 0xA5, ""Magic Upgrade (OoT)"" },"
+"{ 0xA6, ""Larger Magic Upgrade (OoT)"" },"
+"{ 0xA7, ""Defense Upgrade (OoT)"" },"
+"{ 0xA8, ""Progressive Deku Shield (OoT)"" },"
+"{ 0xA9, ""Progressive Hylian Shield"" },"
+"{ 0xAA, ""Small Key (Forest)"" },"
+"{ 0xAB, ""Small Key (Fire)"" },"
+"{ 0xAC, ""Small Key (Water)"" },"
+"{ 0xAD, ""Small Key (Spirit)"" },"
+"{ 0xAE, ""Small Key (Shadow)"" },"
+"{ 0xAF, ""Small Key (Ganon)"" },"
+"{ 0xB0, ""Small Key (Well)"" },"
+"{ 0xB1, ""Small Key (Hideout)"" },"
+"{ 0xB2, ""Small Key (GTG)"" },"
+"{ 0xB3, ""Boss Key (Forest)"" },"
+"{ 0xB4, ""Boss Key (Fire)"" },"
+"{ 0xB5, ""Boss Key (Water)"" },"
+"{ 0xB6, ""Boss Key (Spirit)"" },"
+"{ 0xB7, ""Boss Key (Shadow)"" },"
+"{ 0xB8, ""Boss Key (Ganon)"" },"
+"{ 0xB9, ""Dungeon Map (Deku)"" },"
+"{ 0xBA, ""Dungeon Map (Dodongo)"" },"
+"{ 0xBB, ""Dungeon Map (Jabu)"" },"
+"{ 0xBC, ""Dungeon Map (Forest)"" },"
+"{ 0xBD, ""Dungeon Map (Fire)"" },"
+"{ 0xBE, ""Dungeon Map (Water)"" },"
+"{ 0xBF, ""Dungeon Map (Spirit)"" },"
+"{ 0xC0, ""Dungeon Map (Shadow)"" },"
+"{ 0xC1, ""Dungeon Map (Well)"" },"
+"{ 0xC2, ""Dungeon Map (Ice)"" },"
+"{ 0xC3, ""Compass (Deku)"" },"
+"{ 0xC4, ""Compass (Dodongo)"" },"
+"{ 0xC5, ""Compass (Jabu)"" },"
+"{ 0xC6, ""Compass (Forest)"" },"
+"{ 0xC7, ""Compass (Fire)"" },"
+"{ 0xC8, ""Compass (Water)"" },"
+"{ 0xC9, ""Compass (Spirit)"" },"
+"{ 0xCA, ""Compass (Shadow)"" },"
+"{ 0xCB, ""Compass (Well)"" },"
+"{ 0xCC, ""Compass (Ice)"" },"
+"{ 0xCD, ""Child's Wallet (OoT)"" },"
+"{ 0xCE, ""Colossal Wallet (OoT)"" },"
+"{ 0xCF, ""Triforce Piece"" },"
+"{ 0xD0, ""Bottomless Wallet (OoT)"" },"
+"{ 0xD1, ""Silver Rupee (DC)"" },"
+"{ 0xD2, ""Silver Rupee (Well)"" },"
+"{ 0xD3, ""Silver Rupee (Spirit Child)"" },"
+"{ 0xD4, ""Silver Rupee (Spirit Sun)"" },"
+"{ 0xD5, ""Silver Rupee (Spirit Boulders)"" },"
+"{ 0xD6, ""Silver Rupee (Spirit Lobby)"" },"
+"{ 0xD7, ""Silver Rupee (Spirit Adult)"" },"
+"{ 0xD8, ""Silver Rupee (Shadow Scythe)"" },"
+"{ 0xD9, ""Silver Rupee (Shadow Pit)"" },"
+"{ 0xDA, ""Silver Rupee (Shadow Spikes)"" },"
+"{ 0xDB, ""Silver Rupee (Shadow Blades)"" },"
+"{ 0xDC, ""Silver Rupee (Ice Scythe)"" },"
+"{ 0xDD, ""Silver Rupee (Ice Block)"" },"
+"{ 0xDE, ""Silver Rupee (GTG Slopes)"" },"
+"{ 0xDF, ""Silver Rupee (GTG Lava)"" },"
+"{ 0xE0, ""Silver Rupee (GTG Water)"" },"
+"{ 0xE1, ""Silver Rupee (Ganon Spirit)"" },"
+"{ 0xE2, ""Silver Rupee (Ganon Light)"" },"
+"{ 0xE3, ""Silver Rupee (Ganon Fire)"" },"
+"{ 0xE4, ""Silver Rupee (Ganon Forest)"" },"
+"{ 0xE5, ""Silver Rupee (Ganon Shadow)"" },"
+"{ 0xE6, ""Silver Rupee (Ganon Water)"" },"
+"{ 0xE7, ""Soul of Stalfos"" },"
+"{ 0xE8, ""Soul of Octoroks (OoT)"" },"
+"{ 0xE9, ""Soul of Wallmasters (OoT)"" },"
+"{ 0xEA, ""Soul of Dodongos (OoT)"" },"
+"{ 0xEB, ""Soul of Keeses (OoT)"" },"
+"{ 0xEC, ""Soul of Tektites (OoT)"" },"
+"{ 0xED, ""Soul of Leevers (OoT)"" },"
+"{ 0xEE, ""Soul of Peahats (OoT)"" },"
+"{ 0xEF, ""Soul of Lizalfos / Dinolfos (OoT)"" },"
+"{ 0xF0, ""Soul of Gohma Larvae"" },"
+"{ 0xF1, ""Soul of Shaboms"" },"
+"{ 0xF2, ""Soul of Baby Dodongos"" },"
+"{ 0xF3, ""Soul of Dark Link"" },"
+"{ 0xF4, ""Soul of Biris / Baris"" },"
+"{ 0xF5, ""Soul of Tailpasarans"" },"
+"{ 0xF6, ""Soul of Jabu-Jabu's Parasites"" },"
+"{ 0xF7, ""Soul of Skulltulas (OoT)"" },"
+"{ 0xF8, ""Soul of Torch Slugs"" },"
+"{ 0xF9, ""Soul of Moblins"" },"
+"{ 0xFA, ""Soul of Armos (OoT)"" },"
+"{ 0xFB, ""Soul of Deku Babas (OoT)"" },"
+"{ 0xFC, ""Soul of Deku Scrubs (OoT)"" },"
+"{ 0xFD, ""Soul of Bubbles (OoT)"" },"
+"{ 0xFE, ""Soul of Beamos (OoT)"" },"
+"{ 0xFF, ""Soul of Floormasters (OoT) (OoT)"" },"
+"{ 0x100, ""Soul of ReDeads / Gibdos"" },"
+"{ 0x101, ""Soul of Skullwalltulas (OoT)"" },"
+"{ 0x102, ""Soul of Flare Dancers"" },"
+"{ 0x103, ""Soul of Dead Hands"" },"
+"{ 0x104, ""Soul of Shell Blades (OoT)"" },"
+"{ 0x105, ""Soul of Like-Likes (OoT)"" },"
+"{ 0x106, ""Soul of Spikes"" },"
+"{ 0x107, ""Soul of Anubis"" },"
+"{ 0x108, ""Soul of Iron Knuckles (OoT)"" },"
+"{ 0x109, ""Soul of Skull Kids"" },"
+"{ 0x10A, ""Soul of Flying Pots (OoT)"" },"
+"{ 0x10B, ""Soul of Freezards (OoT)"" },"
+"{ 0x10C, ""Soul of Stingers"" },"
+"{ 0x10D, ""Soul of Wolfos (OoT)"" },"
+"{ 0x10E, ""Soul of Stalchildren (OoT)"" },"
+"{ 0x10F, ""Soul of Guays (OoT)"" },"
+"{ 0x110, ""Soul of the Fighting Gerudos"" },"
+"{ 0x111, ""Soul of Poes (OoT)"" },"
+"{ 0x112, ""Soul of Queen Gohma"" },"
+"{ 0x113, ""Soul of King Dodongo"" },"
+"{ 0x114, ""Soul of Barinade"" },"
+"{ 0x115, ""Soul of Phantom Ganon"" },"
+"{ 0x116, ""Soul of Volvagia"" },"
+"{ 0x117, ""Soul of Morpha"" },"
+"{ 0x118, ""Soul of Bongo-Bongo"" },"
+"{ 0x119, ""Soul of Twinrova"" },"
+"{ 0x11A, ""Soul of Saria"" },"
+"{ 0x11B, ""Soul of Darunia"" },"
+"{ 0x11C, ""Soul of Ruto"" },"
+"{ 0x11D, ""Soul of King Zora"" },"
+"{ 0x11E, ""Soul of Zelda"" },"
+"{ 0x11F, ""Soul of Sheik"" },"
+"{ 0x120, ""Soul of Cucco Lady"" },"
+"{ 0x121, ""Soul of Carpenters (OoT)"" },"
+"{ 0x122, ""Soul of Guru-Guru (OoT)"" },"
+"{ 0x123, ""Soul of Mido"" },"
+"{ 0x124, ""Soul of Kokiri"" },"
+"{ 0x125, ""Soul of Kokiri Shopkeeper"" },"
+"{ 0x126, ""Soul of Hylian Guard"" },"
+"{ 0x127, ""Soul of Citizens (OoT)"" },"
+"{ 0x128, ""Soul of Malon"" },"
+"{ 0x129, ""Soul of Talon"" },"
+"{ 0x12A, ""Soul of Fishing Pond Owner"" },"
+"{ 0x12B, ""Soul of Goron"" },"
+"{ 0x12C, ""Soul of Medigoron"" },"
+"{ 0x12D, ""Soul of Biggoron (OoT)"" },"
+"{ 0x12E, ""Soul of Child Goron"" },"
+"{ 0x12F, ""Soul of Goron Shopkeeper (OoT)"" },"
+"{ 0x130, ""Soul of Zora (OoT)"" },"
+"{ 0x131, ""Soul of Zora Shopkeeper (OoT)"" },"
+"{ 0x132, ""Soul of Bazaar Shopkeeper"" },"
+"{ 0x133, ""Soul of Bombchu Shopkeeper"" },"
+"{ 0x134, ""Soul of Potion Shopkeeper"" },"
+"{ 0x135, ""Soul of Bowling Lady"" },"
+"{ 0x136, ""Soul of Chest Game Owner"" },"
+"{ 0x137, ""Soul of Shooting Gallery Owner"" },"
+"{ 0x138, ""Soul of Dampe (OoT)"" },"
+"{ 0x139, ""Soul of Graveyard Kid"" },"
+"{ 0x13A, ""Soul of Poe Collector"" },"
+"{ 0x13B, ""Soul of Composer Bros. (OoT)"" },"
+"{ 0x13C, ""Soul of Honey & Darling (OoT)"" },"
+"{ 0x13D, ""Soul of the Astronomer (OoT)"" },"
+"{ 0x13E, ""Soul of the Rooftop Man"" },"
+"{ 0x13F, ""Soul of the Bean Salesman (OoT)"" },"
+"{ 0x140, ""Soul of the Scientist (OoT)"" },"
+"{ 0x141, ""Soul of Ingo"" },"
+"{ 0x142, ""Soul of the Punk Boy"" },"
+"{ 0x143, ""Soul of the Dog Lady (OoT)"" },"
+"{ 0x144, ""Soul of the Carpet Man"" },"
+"{ 0x145, ""Soul of the Old Hag"" },"
+"{ 0x146, ""Soul of the Beggar"" },"
+"{ 0x147, ""Soul of the Patrolling Gerudos"" },"
+"{ 0x148, ""Soul of Cuccos (OoT)"" },"
+"{ 0x149, ""Soul of Cows (OoT)"" },"
+"{ 0x14A, ""Soul of Dogs (OoT)"" },"
+"{ 0x14B, ""Soul of Butterflies (OoT)"" },"
+"{ 0x14C, ""Soul of Gold Skulltulas (OoT)"" },"
+"{ 0x14D, ""Soul of Business Scrubs (OoT)"" },"
+"{ 0x14E, ""Key Ring (OoT)"" },"
+"{ 0x14F, ""Key Ring (Forest)"" },"
+"{ 0x150, ""Key Ring (Fire)"" },"
+"{ 0x151, ""Key Ring (Water)"" },"
+"{ 0x152, ""Key Ring (Spirit)"" },"
+"{ 0x153, ""Key Ring (Shadow)"" },"
+"{ 0x154, ""Key Ring (Ganon)"" },"
+"{ 0x155, ""Key Ring (Well)"" },"
+"{ 0x156, ""Key Ring (Hideout)"" },"
+"{ 0x157, ""Key Ring (GTG)"" },"
+"{ 0x158, ""Skeleton Key (OoT)"" },"
+"{ 0x159, ""Red Coin (OoT)"" },"
+"{ 0x15A, ""Green Coin (OoT)"" },"
+"{ 0x15B, ""Blue Coin (OoT)"" },"
+"{ 0x15C, ""Yellow Coin (OoT)"" },"
+"{ 0x15D, ""Triforce of Power"" },"
+"{ 0x15E, ""Triforce of Courage"" },"
+"{ 0x15F, ""Triforce of Wisdom"" },"
+"{ 0x160, ""Silver Pouch (DC)"" },"
+"{ 0x161, ""Silver Pouch (Well)"" },"
+"{ 0x162, ""Silver Pouch (Spirit Child)"" },"
+"{ 0x163, ""Silver Pouch (Spirit Sun)"" },"
+"{ 0x164, ""Silver Pouch (Spirit Boulders)"" },"
+"{ 0x165, ""Silver Pouch (Spirit Lobby)"" },"
+"{ 0x166, ""Silver Pouch (Spirit Adult)"" },"
+"{ 0x167, ""Silver Pouch (Shadow Scythe)"" },"
+"{ 0x168, ""Silver Pouch (Shadow Pit)"" },"
+"{ 0x169, ""Silver Pouch (Shadow Spikes)"" },"
+"{ 0x16A, ""Silver Pouch (Shadow Blades)"" },"
+"{ 0x16B, ""Silver Pouch (Ice Scythe)"" },"
+"{ 0x16C, ""Silver Pouch (Ice Block)"" },"
+"{ 0x16D, ""Silver Pouch (GTG Slopes)"" },"
+"{ 0x16E, ""Silver Pouch (GTG Lava)"" },"
+"{ 0x16F, ""Silver Pouch (GTG Water)"" },"
+"{ 0x170, ""Silver Pouch (Ganon Spirit)"" },"
+"{ 0x171, ""Silver Pouch (Ganon Light)"" },"
+"{ 0x172, ""Silver Pouch (Ganon Fire)"" },"
+"{ 0x173, ""Silver Pouch (Ganon Forest)"" },"
+"{ 0x174, ""Silver Pouch (Ganon Shadow)"" },"
+"{ 0x175, ""Silver Pouch (Ganon Water)"" },"
+"{ 0x176, ""Magical Rupee"" },"
+"{ 0x177, ""A Button"" },"
+"{ 0x178, ""C-Right Button"" },"
+"{ 0x179, ""C-Left Button"" },"
+"{ 0x17A, ""C-Up Button"" },"
+"{ 0x17B, ""C-Down Button"" },"
+"{ 0x17C, ""Small Key (Chest Game)"" },"
+"{ 0x17D, ""Key Ring (Chest Game)"" },"
+"{ 0x17E, ""Bottle of Red Potion (OoT)"" },"
+"{ 0x17F, ""Bottle of Green Potion (OoT)"" },"
+"{ 0x180, ""Bottle of Blue Potion (OoT)"" },"
+"{ 0x181, ""Bottled Fairy (OoT)"" },"
+"{ 0x182, ""Bottled Poe (OoT)"" },"
+"{ 0x183, ""Bottled Big Poe (OoT)"" },"
+"{ 0x184, ""Bottle of Blue Fire"" },"
+"{ 0x185, ""Child Fish (2 pounds)"" },"
+"{ 0x186, ""Child Fish (3 pounds)"" },"
+"{ 0x187, ""Child Fish (4 pounds)"" },"
+"{ 0x188, ""Child Fish (5 pounds)"" },"
+"{ 0x189, ""Child Fish (6 pounds)"" },"
+"{ 0x18A, ""Child Fish (7 pounds)"" },"
+"{ 0x18B, ""Child Fish (8 pounds)"" },"
+"{ 0x18C, ""Child Fish (9 pounds)"" },"
+"{ 0x18D, ""Child Fish (10 pounds)"" },"
+"{ 0x18E, ""Child Fish (11 pounds)"" },"
+"{ 0x18F, ""Child Fish (12 pounds)"" },"
+"{ 0x190, ""Child Fish (13 pounds)"" },"
+"{ 0x191, ""Child Fish (14 pounds)"" },"
+"{ 0x192, ""Adult Fish (4 pounds)"" },"
+"{ 0x193, ""Adult Fish (5 pounds)"" },"
+"{ 0x194, ""Adult Fish (6 pounds)"" },"
+"{ 0x195, ""Adult Fish (7 pounds)"" },"
+"{ 0x196, ""Adult Fish (8 pounds)"" },"
+"{ 0x197, ""Adult Fish (9 pounds)"" },"
+"{ 0x198, ""Adult Fish (10 pounds)"" },"
+"{ 0x199, ""Adult Fish (11 pounds)"" },"
+"{ 0x19A, ""Adult Fish (12 pounds)"" },"
+"{ 0x19B, ""Adult Fish (13 pounds)"" },"
+"{ 0x19C, ""Adult Fish (14 pounds)"" },"
+"{ 0x19D, ""Adult Fish (15 pounds)"" },"
+"{ 0x19E, ""Adult Fish (16 pounds)"" },"
+"{ 0x19F, ""Adult Fish (17 pounds)"" },"
+"{ 0x1A0, ""Adult Fish (18 pounds)"" },"
+"{ 0x1A1, ""Adult Fish (19 pounds)"" },"
+"{ 0x1A2, ""Adult Fish (20 pounds)"" },"
+"{ 0x1A3, ""Adult Fish (21 pounds)"" },"
+"{ 0x1A4, ""Adult Fish (22 pounds)"" },"
+"{ 0x1A5, ""Adult Fish (23 pounds)"" },"
+"{ 0x1A6, ""Adult Fish (24 pounds)"" },"
+"{ 0x1A7, ""Adult Fish (25 pounds)"" },"
+"{ 0x1A8, ""Child Loach (14 pounds)"" },"
+"{ 0x1A9, ""Child Loach (15 pounds)"" },"
+"{ 0x1AA, ""Child Loach (16 pounds)"" },"
+"{ 0x1AB, ""Child Loach (17 pounds)"" },"
+"{ 0x1AC, ""Child Loach (18 pounds)"" },"
+"{ 0x1AD, ""Child Loach (19 pounds)"" },"
+"{ 0x1AE, ""Adult Loach (29 pounds)"" },"
+"{ 0x1AF, ""Adult Loach (30 pounds)"" },"
+"{ 0x1B0, ""Adult Loach (31 pounds)"" },"
+"{ 0x1B1, ""Adult Loach (32 pounds)"" },"
+"{ 0x1B2, ""Adult Loach (33 pounds)"" },"
+"{ 0x1B3, ""Adult Loach (34 pounds)"" },"
+"{ 0x1B4, ""Adult Loach (35 pounds)"" },"
+"{ 0x1B5, ""Adult Loach (36 pounds)"" },"
+"{ 0x1B6, ""Bombchu Bag (OoT)"" },"
+"{ 0x1B7, ""Big Bombchu Bag (OoT)"" },"
+"{ 0x1B8, ""Biggest Bombchu Bag (OoT)"" },"
+"{ 0x1B9, ""Bombchu Bag (OoT)"" },"
+"{ 0x1BA, ""Bombchu Bag (OoT)"" },"
+"{ 0x1BB, ""Bombchu Bag (OoT)"" },"
+"{ 0x1BC, ""Razor Sword (OoT)"" },"
+"{ 0x1BD, ""Gilded Sword (OoT)"" },"
+"{ 0x1BE, ""Spin Attack Upgrade (OoT)"" },"
+"{ 0x1BF, ""Triforce (OoT)"" },"
+"{ 0x1C0, ""Big Fairy (OoT)"" },"
+"{ 0x1C1, ""Blast Mask (OoT)"" },"
+"{ 0x1C2, ""Stone Mask (OoT)"" },"
+"{ 0x1C3, ""Bronze Scale (OoT)"" },"
+"{ 0x1C4, ""Magic Mushroom"" },"
+"{ 0x1C5, ""Chateau Romani"" },"
+"{ 0x1C6, ""Gold Dust"" },"
+"{ 0x1C7, ""Seahorse"" },"
+"{ 0x1C8, ""Bottle of Gold Dust"" },"
+"{ 0x1C9, ""Bottle of Chateau Romani"" },"
+"{ 0x1CA, ""Ice Trap"" },"
+"{ 0x1CB, ""Fire Trap"" },"
+"{ 0x1CC, ""Shock Trap"" },"
+"{ 0x1CD, ""Drain Trap"" },"
+"{ 0x1CE, ""Anti-Magic Trap"" },"
+"{ 0x1CF, ""Knockback Trap"" },"
+"{ 0x1D0, ""Rupoor (OoT)"" },"
+"{ 0x1D1, ""Green Rupee (MM)"" },"
+"{ 0x1D2, ""Blue Rupee (MM)"" },"
+"{ 0x1D3, ""Red Rupee (MM)"" },"
+"{ 0x1D4, ""Red Rupee (MM)"" },"
+"{ 0x1D5, ""Purple Rupee (MM)"" },"
+"{ 0x1D6, ""Silver Rupee (MM)"" },"
+"{ 0x1D7, ""Gold Rupee (MM)"" },"
+"{ 0x1D8, ""Adult Wallet (MM)"" },"
+"{ 0x1D9, ""Giant Wallet (MM)"" },"
+"{ 0x1DA, ""Recovery Heart (MM)"" },"
+"{ 0x1DB, ""Piece of Heart (MM)"" },"
+"{ 0x1DC, ""Heart Container (MM)"" },"
+"{ 0x1DD, ""Small Magic Jar (MM)"" },"
+"{ 0x1DE, ""Large Magic Jar (MM)"" },"
+"{ 0x1DF, ""Stray Fairy (MM)"" },"
+"{ 0x1E0, ""Stray Fairy (Woodfall)"" },"
+"{ 0x1E1, ""Stray Fairy (Snowhead)"" },"
+"{ 0x1E2, ""Stray Fairy (Great Bay)"" },"
+"{ 0x1E3, ""Stray Fairy (Stone Tower)"" },"
+"{ 0x1E4, ""Stray Fairy (Town)"" },"
+"{ 0x1E5, ""Transcendent Fairy"" },"
+"{ 0x1E6, ""Bomb (MM)"" },"
+"{ 0x1E7, ""5 Bombs (MM)"" },"
+"{ 0x1E8, ""10 Bombs (MM)"" },"
+"{ 0x1E9, ""20 Bombs (MM)"" },"
+"{ 0x1EA, ""30 Bombs (MM)"" },"
+"{ 0x1EB, ""Deku Stick (MM)"" },"
+"{ 0x1EC, ""10 Bombchu (MM)"" },"
+"{ 0x1ED, ""Bomb Bag (MM)"" },"
+"{ 0x1EE, ""Big Bomb Bag (MM)"" },"
+"{ 0x1EF, ""Biggest Bomb Bag (MM)"" },"
+"{ 0x1F0, ""10 Arrows (MM)"" },"
+"{ 0x1F1, ""30 Arrows (MM)"" },"
+"{ 0x1F2, ""40 Arrows (MM)"" },"
+"{ 0x1F3, ""40 Arrows (MM)"" },"
+"{ 0x1F4, ""Hero's Bow (MM)"" },"
+"{ 0x1F5, ""Big Quiver (MM)"" },"
+"{ 0x1F6, ""Biggest Quiver (MM)"" },"
+"{ 0x1F7, ""Fire Arrow (MM)"" },"
+"{ 0x1F8, ""Ice Arrow (MM)"" },"
+"{ 0x1F9, ""Light Arrow (MM)"" },"
+"{ 0x1FA, ""Deku Nut (MM)"" },"
+"{ 0x1FB, ""5 Deku Nuts (MM)"" },"
+"{ 0x1FC, ""10 Deku Nuts (MM)"" },"
+"{ 0x1FD, ""30 Deku Nuts (MM)"" },"
+"{ 0x1FE, ""30 Deku Nuts (MM)"" },"
+"{ 0x1FF, ""40 Deku Nuts (MM)"" },"
+"{ 0x200, ""20 Bombchu"" },"
+"{ 0x201, ""20 Deku Sticks (MM)"" },"
+"{ 0x202, ""20 Deku Sticks (MM)"" },"
+"{ 0x203, ""30 Deku Sticks (MM)"" },"
+"{ 0x204, ""Deku Shield (MM)"" },"
+"{ 0x205, ""Hero's Shield (MM)"" },"
+"{ 0x206, ""Mirror Shield (MM)"" },"
+"{ 0x207, ""Progressive Deku Shield (MM)"" },"
+"{ 0x208, ""Progressive Hero's Shield"" },"
+"{ 0x209, ""Powder Keg"" },"
+"{ 0x20A, ""Magic Bean (MM)"" },"
+"{ 0x20B, ""Bombchu (MM)"" },"
+"{ 0x20C, ""Kokiri Sword (MM)"" },"
+"{ 0x20D, ""Razor Sword (MM)"" },"
+"{ 0x20E, ""Gilded Sword (MM)"" },"
+"{ 0x20F, ""5 Bombchu (MM)"" },"
+"{ 0x210, ""Great Fairy's Sword (MM)"" },"
+"{ 0x211, ""Small Key (MM)"" },"
+"{ 0x212, ""Boss Key (MM)"" },"
+"{ 0x213, ""Dungeon Map (MM)"" },"
+"{ 0x214, ""Compass (MM)"" },"
+"{ 0x215, ""Hookshot (MM)"" },"
+"{ 0x216, ""Lens of Truth (MM)"" },"
+"{ 0x217, ""Pictograph Box"" },"
+"{ 0x218, ""Ocarina of Time (MM)"" },"
+"{ 0x219, ""Bomber's Notebook"" },"
+"{ 0x21A, ""Bottle of Red Potion (MM)"" },"
+"{ 0x21B, ""Empty Bottle (MM)"" },"
+"{ 0x21C, ""Red Potion (MM)"" },"
+"{ 0x21D, ""Green Potion (MM)"" },"
+"{ 0x21E, ""Blue Potion (MM)"" },"
+"{ 0x21F, ""Fairy (MM)"" },"
+"{ 0x220, ""Bottle of Milk (MM)"" },"
+"{ 0x221, ""Fish (MM)"" },"
+"{ 0x222, ""Bug (MM)"" },"
+"{ 0x223, ""Big Poe (MM)"" },"
+"{ 0x224, ""Bottle of Gold Dust"" },"
+"{ 0x225, ""Magic Mushroom"" },"
+"{ 0x226, ""Bottle of Chateau Romani"" },"
+"{ 0x227, ""Deku Mask"" },"
+"{ 0x228, ""Goron Mask (MM)"" },"
+"{ 0x229, ""Zora Mask (MM)"" },"
+"{ 0x22A, ""Fierce Deity's Mask"" },"
+"{ 0x22B, ""Captain's Hat"" },"
+"{ 0x22C, ""Giant's Mask"" },"
+"{ 0x22D, ""All Night Mask"" },"
+"{ 0x22E, ""Bunny Hood (MM)"" },"
+"{ 0x22F, ""Keaton Mask (MM)"" },"
+"{ 0x230, ""Garo's Mask"" },"
+"{ 0x231, ""Romani's Mask"" },"
+"{ 0x232, ""Circus Leader's Mask"" },"
+"{ 0x233, ""Postman's Hat"" },"
+"{ 0x234, ""Couple's Mask"" },"
+"{ 0x235, ""Great Fairy Mask"" },"
+"{ 0x236, ""Gibdo Mask"" },"
+"{ 0x237, ""Don Gero's Mask"" },"
+"{ 0x238, ""Kamaro's Mask"" },"
+"{ 0x239, ""Mask of Truth (MM)"" },"
+"{ 0x23A, ""Stone Mask (MM)"" },"
+"{ 0x23B, ""Bremen Mask"" },"
+"{ 0x23C, ""Blast Mask (MM)"" },"
+"{ 0x23D, ""Mask of Scents"" },"
+"{ 0x23E, ""Kafei's Mask"" },"
+"{ 0x23F, ""Chateau Romani"" },"
+"{ 0x240, ""Milk (MM)"" },"
+"{ 0x241, ""Gold Dust"" },"
+"{ 0x242, ""Seahorse"" },"
+"{ 0x243, ""Moon's Tear"" },"
+"{ 0x244, ""Land Title Deed"" },"
+"{ 0x245, ""Swamp Title Deed"" },"
+"{ 0x246, ""Mountain Title Deed"" },"
+"{ 0x247, ""Ocean Title Deed"" },"
+"{ 0x248, ""Room Key"" },"
+"{ 0x249, ""Letter to Mama"" },"
+"{ 0x24A, ""Letter to Kafei"" },"
+"{ 0x24B, ""Pendant of Memories"" },"
+"{ 0x24C, ""World Map (Clock Town)"" },"
+"{ 0x24D, ""World Map (Woodfall)"" },"
+"{ 0x24E, ""World Map (Snowhead)"" },"
+"{ 0x24F, ""World Map (Romani Ranch)"" },"
+"{ 0x250, ""World Map (Great Bay)"" },"
+"{ 0x251, ""World Map (Stone Tower)"" },"
+"{ 0x252, ""Magic Upgrade (MM)"" },"
+"{ 0x253, ""Larger Magic Upgrade (MM)"" },"
+"{ 0x254, ""Defense Upgrade (MM)"" },"
+"{ 0x255, ""Spin Attack Upgrade (MM)"" },"
+"{ 0x256, ""Sonata of Awakening"" },"
+"{ 0x257, ""Goron Lullaby"" },"
+"{ 0x258, ""New Wave Bossa Nova"" },"
+"{ 0x259, ""Elegy of Emptiness (MM)"" },"
+"{ 0x25A, ""Oath to Order"" },"
+"{ 0x25B, ""Song of Time (MM)"" },"
+"{ 0x25C, ""Song of Healing"" },"
+"{ 0x25D, ""Epona's Song (MM)"" },"
+"{ 0x25E, ""Song of Soaring"" },"
+"{ 0x25F, ""Song of Storms (MM)"" },"
+"{ 0x260, ""Sun's Song (MM)"" },"
+"{ 0x261, ""Lullaby Intro"" },"
+"{ 0x262, ""Sonata of Awakening Note"" },"
+"{ 0x263, ""Goron Lullaby Note"" },"
+"{ 0x264, ""New Wave Bossa Nova Note"" },"
+"{ 0x265, ""Elegy of Emptiness Note (MM)"" },"
+"{ 0x266, ""Oath to Order Note"" },"
+"{ 0x267, ""Song of Time Note (MM)"" },"
+"{ 0x268, ""Song of Healing Note"" },"
+"{ 0x269, ""Epona's Song Note (MM)"" },"
+"{ 0x26A, ""Song of Soaring Note"" },"
+"{ 0x26B, ""Song of Storms Note (MM)"" },"
+"{ 0x26C, ""Sun's Song Note (MM)"" },"
+"{ 0x26D, ""Odolwa's Remains"" },"
+"{ 0x26E, ""Goht's Remains"" },"
+"{ 0x26F, ""Gyorg's Remains"" },"
+"{ 0x270, ""Twinmold's Remains"" },"
+"{ 0x271, ""Swamp Skulltula Token"" },"
+"{ 0x272, ""Ocean Skulltula Token"" },"
+"{ 0x273, ""Small Key (Woodfall)"" },"
+"{ 0x274, ""Small Key (Snowhead)"" },"
+"{ 0x275, ""Small Key (Great Bay)"" },"
+"{ 0x276, ""Small Key (Stone Tower)"" },"
+"{ 0x277, ""Boss Key (Woodfall)"" },"
+"{ 0x278, ""Boss Key (Snowhead)"" },"
+"{ 0x279, ""Boss Key (Great Bay)"" },"
+"{ 0x27A, ""Boss Key (Stone Tower)"" },"
+"{ 0x27B, ""Dungeon Map (Woodfall)"" },"
+"{ 0x27C, ""Dungeon Map (Snowhead)"" },"
+"{ 0x27D, ""Dungeon Map (Great Bay)"" },"
+"{ 0x27E, ""Dungeon Map (Stone Tower)"" },"
+"{ 0x27F, ""Compass (Woodfall)"" },"
+"{ 0x280, ""Compass (Snowhead)"" },"
+"{ 0x281, ""Compass (Great Bay)"" },"
+"{ 0x282, ""Compass (Stone Tower)"" },"
+"{ 0x283, ""Fairy Ocarina (MM)"" },"
+"{ 0x284, ""Short Hookshot (MM)"" },"
+"{ 0x285, ""Child Wallet (MM)"" },"
+"{ 0x286, ""Colossal Wallet (MM)"" },"
+"{ 0x287, ""Owl Statue (Great Bay)"" },"
+"{ 0x288, ""Owl Statue (Zora Cape)"" },"
+"{ 0x289, ""Owl Statue (Snowhead)"" },"
+"{ 0x28A, ""Owl Statue (Mountain Village)"" },"
+"{ 0x28B, ""Owl Statue (Clock Town)"" },"
+"{ 0x28C, ""Owl Statue (Milk Road)"" },"
+"{ 0x28D, ""Owl Statue (Woodfall)"" },"
+"{ 0x28E, ""Owl Statue (Southern Swamp)"" },"
+"{ 0x28F, ""Owl Statue (Ikana Canyon)"" },"
+"{ 0x290, ""Owl Statue (Stone Tower)"" },"
+"{ 0x291, ""Owl Statue (Hidden)"" },"
+"{ 0x292, ""Bottomless Wallet (MM)"" },"
+"{ 0x293, ""Soul of Octoroks (MM)"" },"
+"{ 0x294, ""Soul of Wallmasters (MM)"" },"
+"{ 0x295, ""Soul of Dodongos (MM)"" },"
+"{ 0x296, ""Soul of Keeses (MM)"" },"
+"{ 0x297, ""Soul of Tektites (MM)"" },"
+"{ 0x298, ""Soul of Peahats (MM)"" },"
+"{ 0x299, ""Soul of Lizalfos / Dinolfos (MM)"" },"
+"{ 0x29A, ""Soul of Skulltulas (MM)"" },"
+"{ 0x29B, ""Soul of Armos (MM)"" },"
+"{ 0x29C, ""Soul of Deku Babas (MM)"" },"
+"{ 0x29D, ""Soul of Deku Scrubs (MM)"" },"
+"{ 0x29E, ""Soul of Bubbles (MM)"" },"
+"{ 0x29F, ""Soul of Beamos (MM)"" },"
+"{ 0x2A0, ""Soul of ReDeads / Gibdos (MM)"" },"
+"{ 0x2A1, ""Soul of Skullwalltulas (MM)"" },"
+"{ 0x2A2, ""Soul of Shell Blades (MM)"" },"
+"{ 0x2A3, ""Soul of Like-Likes (MM)"" },"
+"{ 0x2A4, ""Soul of Iron Knuckles (MM)"" },"
+"{ 0x2A5, ""Soul of Freezards (MM)"" },"
+"{ 0x2A6, ""Soul of Wolfos (MM)"" },"
+"{ 0x2A7, ""Soul of Guays (MM)"" },"
+"{ 0x2A8, ""Soul of Flying Pots (MM)"" },"
+"{ 0x2A9, ""Soul of Floormasters (MM)"" },"
+"{ 0x2AA, ""Soul of Chuchus"" },"
+"{ 0x2AB, ""Soul of Deep Pythons"" },"
+"{ 0x2AC, ""Soul of Stalchildren (MM)"" },"
+"{ 0x2AD, ""Soul of Leevers (MM)"" },"
+"{ 0x2AE, ""Soul of Skullfish"" },"
+"{ 0x2AF, ""Soul of Dexihands"" },"
+"{ 0x2B0, ""Soul of Dragonflies"" },"
+"{ 0x2B1, ""Soul of Eenos"" },"
+"{ 0x2B2, ""Soul of Eyegores"" },"
+"{ 0x2B3, ""Soul of Hiploops"" },"
+"{ 0x2B4, ""Soul of Real Bombchu"" },"
+"{ 0x2B5, ""Soul of Takkuri"" },"
+"{ 0x2B6, ""Soul of Boes"" },"
+"{ 0x2B7, ""Soul of Nejirons"" },"
+"{ 0x2B8, ""Soul of Bio Babas"" },"
+"{ 0x2B9, ""Soul of Garo"" },"
+"{ 0x2BA, ""Soul of Wizzrobes"" },"
+"{ 0x2BB, ""Soul of Gomess"" },"
+"{ 0x2BC, ""Soul of Gekkos"" },"
+"{ 0x2BD, ""Soul of Bad Bats"" },"
+"{ 0x2BE, ""Soul of Snappers"" },"
+"{ 0x2BF, ""Soul of Warts"" },"
+"{ 0x2C0, ""Soul of Captain Keeta"" },"
+"{ 0x2C1, ""Soul of the Fighting Pirates"" },"
+"{ 0x2C2, ""Soul of Poes (MM)"" },"
+"{ 0x2C3, ""Soul of Odolwa"" },"
+"{ 0x2C4, ""Soul of Goht"" },"
+"{ 0x2C5, ""Soul of Gyorg"" },"
+"{ 0x2C6, ""Soul of Twinmold"" },"
+"{ 0x2C7, ""Soul of Igos"" },"
+"{ 0x2C8, ""Soul of Madame Aroma"" },"
+"{ 0x2C9, ""Soul of Town Archery Owner"" },"
+"{ 0x2CA, ""Soul of Swamp Archery Owner"" },"
+"{ 0x2CB, ""Soul of Gorons (MM)"" },"
+"{ 0x2CC, ""Soul of Baby Goron"" },"
+"{ 0x2CD, ""Soul of Bombs Shopkeeper"" },"
+"{ 0x2CE, ""Soul of Bombers' Kids"" },"
+"{ 0x2CF, ""Soul of Deku Butler"" },"
+"{ 0x2D0, ""Soul of Citizens (MM)"" },"
+"{ 0x2D1, ""Soul of Composer Bros (MM)"" },"
+"{ 0x2D2, ""Soul of Dampe (MM)"" },"
+"{ 0x2D3, ""Soul of Deku King"" },"
+"{ 0x2D4, ""Soul of Deku Princess"" },"
+"{ 0x2D5, ""Soul of Playground Scrubs"" },"
+"{ 0x2D6, ""Soul of Goron Elder"" },"
+"{ 0x2D7, ""Soul of Fisherman"" },"
+"{ 0x2D8, ""Soul of Goron Shopkeeper (MM)"" },"
+"{ 0x2D9, ""Soul of Honey & Darling (MM)"" },"
+"{ 0x2DA, ""Soul of Toto"" },"
+"{ 0x2DB, ""Soul of Lulu"" },"
+"{ 0x2DC, ""Soul of Zora Musicians"" },"
+"{ 0x2DD, ""Soul of Kafei"" },"
+"{ 0x2DE, ""Soul of Keaton"" },"
+"{ 0x2DF, ""Soul of Koume & Kotake"" },"
+"{ 0x2E0, ""Soul of Mayor Dotour"" },"
+"{ 0x2E1, ""Soul of Keg Trial Goron"" },"
+"{ 0x2E2, ""Soul of Biggoron (MM)"" },"
+"{ 0x2E3, ""Soul of Mr. Barten"" },"
+"{ 0x2E4, ""Soul of Astronomer (MM)"" },"
+"{ 0x2E5, ""Soul of Poe Hut Owner"" },"
+"{ 0x2E6, ""Soul of Blacksmiths"" },"
+"{ 0x2E7, ""Soul of Chest Game Lady"" },"
+"{ 0x2E8, ""Soul of Tingle"" },"
+"{ 0x2E9, ""Soul of Toilet Hand"" },"
+"{ 0x2EA, ""Soul of Trading Post Owner"" },"
+"{ 0x2EB, ""Soul of the Part-Timer"" },"
+"{ 0x2EC, ""Soul of Zoras (MM)"" },"
+"{ 0x2ED, ""Soul of Zora Shopkeeper (MM)"" },"
+"{ 0x2EE, ""Soul of Romani/Cremia"" },"
+"{ 0x2EF, ""Soul of the Bean Salesman"" },"
+"{ 0x2F0, ""Soul of Carpenters (MM)"" },"
+"{ 0x2F1, ""Soul of Anju"" },"
+"{ 0x2F2, ""Soul of Guru-Guru (MM)"" },"
+"{ 0x2F3, ""Soul of the Scientist (MM)"" },"
+"{ 0x2F4, ""Soul of Gorman & Bros."" },"
+"{ 0x2F5, ""Soul of Grog"" },"
+"{ 0x2F6, ""Soul of the Dog Lady (MM)"" },"
+"{ 0x2F7, ""Soul of Swordsman"" },"
+"{ 0x2F8, ""Soul of Anju's Grandmother"" },"
+"{ 0x2F9, ""Soul of Boat Cruise Man"" },"
+"{ 0x2FA, ""Soul of the Banker"" },"
+"{ 0x2FB, ""Soul of Moon Children"" },"
+"{ 0x2FC, ""Soul of Patrolling Pirates and their Chief"" },"
+"{ 0x2FD, ""Soul of Cuccos (MM)"" },"
+"{ 0x2FE, ""Soul of Cows (MM)"" },"
+"{ 0x2FF, ""Soul of Dogs (MM)"" },"
+"{ 0x300, ""Soul of Butterflies (MM)"" },"
+"{ 0x301, ""Soul of Gold Skulltulas (MM)"" },"
+"{ 0x302, ""Soul of Business Scrubs (MM)"" },"
+"{ 0x303, ""Key Ring (MM)"" },"
+"{ 0x304, ""Key Ring (Woodfall)"" },"
+"{ 0x305, ""Key Ring (Snowhead)"" },"
+"{ 0x306, ""Key Ring (Great Bay)"" },"
+"{ 0x307, ""Key Ring (Stone Tower)"" },"
+"{ 0x308, ""Skeleton Key (MM)"" },"
+"{ 0x309, ""A Button (MM)"" },"
+"{ 0x30A, ""C-Right Button (MM)"" },"
+"{ 0x30B, ""C-Left Button (MM)"" },"
+"{ 0x30C, ""C-Up Button (MM)"" },"
+"{ 0x30D, ""C-Down Button (MM)"" },"
+"{ 0x30E, ""Bottle of Green Potion (MM)"" },"
+"{ 0x30F, ""Bottle of Blue Potion (MM)"" },"
+"{ 0x310, ""Bottled Fairy (MM)"" },"
+"{ 0x311, ""Poe (MM)"" },"
+"{ 0x312, ""Bottled Poe (MM)"" },"
+"{ 0x313, ""Bottled Big Poe (MM)"" },"
+"{ 0x314, ""Bombchu Bag (MM)"" },"
+"{ 0x315, ""Big Bombchu Bag (MM)"" },"
+"{ 0x316, ""Biggest Bombchu Bag (MM)"" },"
+"{ 0x317, ""Bombchu Bag (MM)"" },"
+"{ 0x318, ""Bombchu Bag (MM)"" },"
+"{ 0x319, ""Bombchu Bag (MM)"" },"
+"{ 0x31A, ""Bombchu Bag (MM)"" },"
+"{ 0x31B, ""Big Fairy (MM)"" },"
+"{ 0x31C, ""Din's Fire (MM)"" },"
+"{ 0x31D, ""Farore's Wind (MM)"" },"
+"{ 0x31E, ""Nayru's Love (MM)"" },"
+"{ 0x31F, ""Iron Boots (MM)"" },"
+"{ 0x320, ""Hover Boots (MM)"" },"
+"{ 0x321, ""Goron Tunic (MM)"" },"
+"{ 0x322, ""Zora Tunic (MM)"" },"
+"{ 0x323, ""Bronze Scale (MM)"" },"
+"{ 0x324, ""Silver Scale (MM)"" },"
+"{ 0x325, ""Golden Scale (MM)"" },"
+"{ 0x326, ""Goron's Bracelet (MM)"" },"
+"{ 0x327, ""Silver Gauntlets (MM)"" },"
+"{ 0x328, ""Golden Gauntlets (MM)"" },"
+"{ 0x329, ""Clock (Day 1)"" },"
+"{ 0x32A, ""Clock (Night 1)"" },"
+"{ 0x32B, ""Clock (Day 2)"" },"
+"{ 0x32C, ""Clock (Night 2)"" },"
+"{ 0x32D, ""Clock (Day 3)"" },"
+"{ 0x32E, ""Clock (Night 3)"" },"
+"{ 0x32F, ""Megaton Hammer (MM)"" },"
+"{ 0x330, ""Deku Stick Upgrade (MM)"" },"
+"{ 0x331, ""Second Deku Stick Upgrade (MM)"" },"
+"{ 0x332, ""Deku Nut Upgrade (MM)"" },"
+"{ 0x333, ""Second Deku Nut Upgrade (MM)"" },"
+"{ 0x334, ""Stone of Agony (MM)"" },"
+"{ 0x335, ""Ruto's Letter"" },"
+"{ 0x336, ""Bottle of Blue Fire (MM)"" },"
+"{ 0x337, ""Blue Fire (MM)"" },"
+"{ 0x338, ""Majora's Mask (MM)"" },"
+"{ 0x339, ""Sold Out"" },"
+"{ 0x33A, ""Nothing"" },"
+"{ 0x33B, ""MM Scoop"" },"

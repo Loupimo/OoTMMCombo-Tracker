@@ -231,7 +231,7 @@ public:
 
     QPixmap* SceneImage = nullptr;                                          // The scene image to render
 
-    ObjectRenderer* ObjectsRen[ObjectType::redice] = { nullptr };
+    ObjectRenderer* ObjectsRen[ObjectType::last - 1] = { nullptr };
 
 #pragma endregion
 

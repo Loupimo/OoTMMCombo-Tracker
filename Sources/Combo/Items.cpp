@@ -65,7 +65,7 @@ const ItemInfo ItemList[NUM_ITEM] =
 	{ 0x39, "Stone of Agony (OoT)" },
 	{ 0x3A, "Gerudo's Card" },
 	{ 0x3B, "Fairy Ocarina (OoT)" },
-	{ 0x3C, "5 Deku Seeds (OoT)" },
+	{ 0x3C, "5 Deku Seeds" },
 	{ 0x3D, "Heart Container (OoT)" },
 	{ 0x3E, "Piece of Heart (OoT)" },
 	{ 0x3F, "Boss Key (OoT)" },

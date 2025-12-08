@@ -45,7 +45,11 @@ const ObjectIcon IconsMetaInfo[ObjectType::last] =
     {"./Resources/Common/Fairy.png", { 25, 25 }},          // ObjectType::fairy
     {"./Resources/Common/Icicle.png", { 25, 25 }},         // ObjectType::icicle
     {"./Resources/Common/Red_Boulder.png", { 25, 25 }},    // ObjectType::redboulder
-    {"./Resources/Common/Red_Ice.png", { 25, 25 }}         // ObjectType::redice
+    {"./Resources/Common/Red_Ice.png", { 25, 25 }},        // ObjectType::redice
+    {"./Resources/Common/Rock.png", { 25, 25 }},           // ObjectType::rock
+    {"./Resources/Common/Soil.png", { 25, 25 }},           // ObjectType::soil
+    {"./Resources/Common/Tree.png", { 25, 25 }},           // ObjectType::tree
+    {"./Resources/Common/Bush.png", { 25, 25 }}            // ObjectType::bush
 };
 
 /*

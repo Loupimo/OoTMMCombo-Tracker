@@ -1,6 +1,7 @@
 #include "UI/ObjectRenderer.h"
 #include "UI/SceneRenderer.h"
 #include <QGraphicsColorizeEffect>
+#include <UI/AppConfig.h>
 
 static ObjectIcons* IconsRef = nullptr;
 
@@ -193,7 +194,8 @@ void ObjectItemTree::PerformAction()
         }
     }
     else
-    {
+    {   // The item was forced or hidden and is now considered as collected
+
         if (this->CalledFromGraph)
         {
             if (this->isSelected() == true)
@@ -214,6 +216,14 @@ void ObjectItemTree::PerformAction()
             this->RendererOwner->UpdateSceneContext(this->Object->Context);     // We need to update the context in case the selected object is in a different context than the active one
         }
         this->RendererOwner->CenterViewOn(this->GraphItem);                 // Center the scene view on the object
+
+        if (AppConfig::GetAutoSnapView())
+        {
+            this->parent()->setExpanded(true);
+            this->setExpanded(true);
+            this->treeWidget()->scrollToItem(this, QAbstractItemView::PositionAtCenter);
+            this->treeWidget()->setCurrentItem(this); // The PerformAction will be triggered
+        }
     }
 
     this->UpdateTextStyle();

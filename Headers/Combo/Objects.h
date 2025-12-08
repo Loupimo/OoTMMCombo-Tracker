@@ -54,8 +54,12 @@ enum ObjectType
 	icicle = 23,
 	redboulder = 24,
 	redice = 25,
+	rock = 26,
+	soil = 27,
+	tree = 28,
+	bush = 29,
 
-	last = redice + 1
+	last = bush + 1
 };
 
 
@@ -147,7 +151,11 @@ const char* const ObjTypeName[ObjectType::last] =
 	"Fairy",
 	"Icicle",
 	"Red Boulder",
-	"Red Ice"
+	"Red Ice",
+	"Rock",
+	"Soil",
+	"Tree",
+	"Bush"
 };
 
 #pragma region Object getters
