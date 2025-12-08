@@ -68,6 +68,7 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     connect(MultiLogger::GetLogger(), &MultiLogger::NotifyObjectFound, this, &OoTMMComboTracker::UpdateTrackedObject);
     connect(this->ui.actionSaveSession, &QAction::triggered, this->Log, &LogTab::SaveTracking);
     connect(this->ui.actionLoadSession, &QAction::triggered, this->Log, &LogTab::LoadTracking);
+    connect(this->ui.actionLoadSpoilerLog, &QAction::triggered, this->Log, &LogTab::LoadSpoiler);
     connect(this->ui.actionStartTracking, &QAction::triggered, this->Log, &LogTab::PressLaunchButton);
     connect(this->ui.actionAutoSnapView, &QAction::toggled, this, &AppConfig::SetAutoSnapView);
     connect(this->ui.actionAutoZoom, &QAction::toggled, this, &AppConfig::SetAutoZoom);
@@ -316,7 +317,7 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
         // Get the map location
         it = reg.globalMatch(objects[0]);
         QString mapName = it.next().captured(1);
-
+        
         uint32_t sceneID = spoilerMap[mapName].first;                                   // Get the scene ID that match the spoiler log location
         SceneObjects* gameSceneObj = GetGameSceneObjects(spoilerMap[mapName].second);   // Get the correct game objects
 

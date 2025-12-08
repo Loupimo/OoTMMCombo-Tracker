@@ -3481,11 +3481,11 @@ ZORA_HALL_LIGHTS;ZORA_HALL_ROOMS;Scene Lights;MM Zora Hall Scene Lights;none;0;0
 0x00001;MOON;Icicle 2;MM Moon Trial Goron Icicle 2;none;0;0;MOON_GORON;none;All;0;mm
 0x00002;MOON;Icicle 3;MM Moon Trial Goron Icicle 3;none;0;0;MOON_GORON;none;All;0;mm
 0x00003;MOON;Icicle 4;MM Moon Trial Goron Icicle 4;none;0;0;MOON_GORON;none;All;0;mm
-0x00903;BENEATH_THE_WELL;MM Beneath The Well Tree;MM Beneath The Well Tree;tree;0;0;BENEATH_THE_WELL;tree;All;0;mm
-0x00901;BENEATH_THE_WELL;MM Beneath The Well Bush 1;MM Beneath The Well Bush 1;bush;0;0;BENEATH_THE_WELL;bush;All;0;mm
-0x00902;BENEATH_THE_WELL;MM Beneath The Well Bush 2;MM Beneath The Well Bush 2;bush;0;0;BENEATH_THE_WELL;bush;All;0;mm
-0x00007;CLOCK_TOWN_NORTH;MM Clock Town North Forked Tree 1;MM Clock Town North Forked Tree 1;tree;0;0;CLOCK_TOWN_NORTH;tree;All;0;mm
-0x00015;CLOCK_TOWN_NORTH;MM Clock Town North Forked Tree 2;MM Clock Town North Forked Tree 2;tree;0;0;CLOCK_TOWN_NORTH;tree;All;0;mm
+0x00903;BENEATH_THE_WELL;Tree;MM Beneath The Well Tree;tree;0;0;BENEATH_THE_WELL;tree;All;0;mm
+0x00901;BENEATH_THE_WELL;Bush 1;MM Beneath The Well Bush 1;bush;0;0;BENEATH_THE_WELL;bush;All;0;mm
+0x00902;BENEATH_THE_WELL;Bush 2;MM Beneath The Well Bush 2;bush;0;0;BENEATH_THE_WELL;bush;All;0;mm
+0x00007;CLOCK_TOWN_NORTH;Tree 1;MM Clock Town North Forked Tree 1;tree;0;0;CLOCK_TOWN_NORTH;tree;All;0;mm
+0x00015;CLOCK_TOWN_NORTH;Tree 2;MM Clock Town North Forked Tree 2;tree;0;0;CLOCK_TOWN_NORTH;tree;All;0;mm
 0x0000c;CUCCO_SHACK;Tree;MM Cucco Shack Tree;tree;0;0;CUCCO_SHACK;tree;All;0;mm
 0x0000b;CUCCO_SHACK;Bush 1;MM Cucco Shack Bush 1;bush;0;0;CUCCO_SHACK;bush;All;0;mm
 0x1000b;CUCCO_SHACK;Bush 2;MM Cucco Shack Bush 2;bush;0;0;CUCCO_SHACK;bush;All;0;mm
@@ -3494,9 +3494,9 @@ ZORA_HALL_LIGHTS;ZORA_HALL_ROOMS;Scene Lights;MM Zora Hall Scene Lights;none;0;0
 0x4000b;CUCCO_SHACK;Bush 5;MM Cucco Shack Bush 5;bush;0;0;CUCCO_SHACK;bush;All;0;mm
 0x5000b;CUCCO_SHACK;Bush 6;MM Cucco Shack Bush 6;bush;0;0;CUCCO_SHACK;bush;All;0;mm
 0x00013;CUCCO_SHACK;Bush 7;MM Cucco Shack Bush 7;bush;0;0;CUCCO_SHACK;bush;All;0;mm
-0x00000;DEKU_PALACE;MM Deku Palace Soil Item 1;MM Deku Palace Soil Item 1;soil;0;0;DEKU_PALACE;soil;All;0;mm
-0x10000;DEKU_PALACE;MM Deku Palace Soil Item 2;MM Deku Palace Soil Item 2;soil;0;0;DEKU_PALACE;soil;All;0;mm
-0x20000;DEKU_PALACE;MM Deku Palace Soil Item 3;MM Deku Palace Soil Item 3;soil;0;0;DEKU_PALACE;soil;All;0;mm
+0x00000;DEKU_PALACE;Item 1;MM Deku Palace Soil Item 1;soil;0;0;DEKU_PALACE;soil;All;0;mm
+0x10000;DEKU_PALACE;Item 2;MM Deku Palace Soil Item 2;soil;0;0;DEKU_PALACE;soil;All;0;mm
+0x20000;DEKU_PALACE;Item 3;MM Deku Palace Soil Item 3;soil;0;0;DEKU_PALACE;soil;All;0;mm
 0x00008;DOG_RACETRACK;Soil;MM Doggy Racetrack Soil;soil;0;0;DOG_RACETRACK;soil;All;0;mm
 0x0000b;GORMAN_TRACK;Tree 1;MM Gorman Track Tree 01;tree;0;0;GORMAN_TRACK;tree;All;0;mm
 0x0000c;GORMAN_TRACK;Tree 2;MM Gorman Track Tree 02;tree;0;0;GORMAN_TRACK;tree;All;0;mm
@@ -3661,7 +3661,7 @@ ZORA_HALL_LIGHTS;ZORA_HALL_ROOMS;Scene Lights;MM Zora Hall Scene Lights;none;0;0
 0x00003;SPIDER_HOUSE_SWAMP;Entrance 1;MM Swamp Spider House Rock Entrance 1;rock;0;0;SPIDER_HOUSE_SWAMP;rock;All;0;mm
 0x00004;SPIDER_HOUSE_SWAMP;Entrance 2;MM Swamp Spider House Rock Entrance 2;rock;0;0;SPIDER_HOUSE_SWAMP;rock;All;0;mm
 0x00405;SPIDER_HOUSE_SWAMP;Pots Room;MM Swamp Spider House Rock Pots Room;rock;0;0;SPIDER_HOUSE_SWAMP;rock;All;4;mm
-0x0020d;SPIDER_HOUSE_SWAMP;Gold Room;MM Swamp Spider House Soil Gold;soil;0;0;SPIDER_HOUSE_SWAMP;soil;All;4;mm
+0x0020d;SPIDER_HOUSE_SWAMP;Gold Room;MM Swamp Spider House Soil Gold;soil;0;0;SPIDER_HOUSE_SWAMP;soil;All;2;mm
 0x0030e;SPIDER_HOUSE_SWAMP;Monument Item 1;MM Swamp Spider House Soil Monument Item 1;soil;0;0;SPIDER_HOUSE_SWAMP;soil;All;3;mm
 0x1030e;SPIDER_HOUSE_SWAMP;Monument Item 2;MM Swamp Spider House Soil Monument Item 2;soil;0;0;SPIDER_HOUSE_SWAMP;soil;All;3;mm
 0x2030e;SPIDER_HOUSE_SWAMP;Monument Item 3;MM Swamp Spider House Soil Monument Item 3;soil;0;0;SPIDER_HOUSE_SWAMP;soil;All;3;mm
@@ -3810,3 +3810,7 @@ ZORA_HALL_LIGHTS;ZORA_HALL_ROOMS;Scene Lights;MM Zora Hall Scene Lights;none;0;0
 0x00007;TWIN_ISLANDS;Winter - Island 1;MM Twin Islands Snow Tree Island 1;none;0;0;TWIN_ISLANDS_WINTER;none;Winter;0;mm
 0x00008;TWIN_ISLANDS;Winter - Island 2;MM Twin Islands Snow Tree Island 2;none;0;0;TWIN_ISLANDS_WINTER;none;Winter;0;mm
 0x00009;TWIN_ISLANDS;Winter - Ramp;MM Twin Islands Snow Tree Ramp;none;0;0;TWIN_ISLANDS_WINTER;none;Winter;0;mm
+0x00b01;TERMINA_FIELD;Rock;MM Bio Baba Grotto Rock;none;0;0;MM_GROTTO_TERMINA_BIO_BABA;none;All;0;mm
+0x00c09;DEKU_PALACE;Item 1;MM Beans Grotto Soil Item 1;none;0;0;MM_GROTTO_DEKU_PALACE_BEANS;none;All;0;mm
+0x10c09;DEKU_PALACE;Item 2;MM Beans Grotto Soil Item 2;none;0;0;MM_GROTTO_DEKU_PALACE_BEANS;none;All;0;mm
+0x20c09;DEKU_PALACE;Item 3;MM Beans Grotto Soil Item 3;none;0;0;MM_GROTTO_DEKU_PALACE_BEANS;none;All;0;mm

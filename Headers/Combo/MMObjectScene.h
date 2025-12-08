@@ -87,9 +87,9 @@ ObjectInfo BENEATH_THE_WELLSceneObjects[BENEATH_THE_WELLNumOfObjs] =
 	{ 0x0616, BENEATH_THE_WELL, "Middle 9", "MM Beneath The Well Pot Middle 09", ObjectType::pot, {921, 670}, BENEATH_THE_WELL, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
 	{ 0x0617, BENEATH_THE_WELL, "Middle 10", "MM Beneath The Well Pot Middle 10", ObjectType::pot, {921, 660}, BENEATH_THE_WELL, ObjectType::pot, ObjectContext::All, 0, ZGame::mm },
 	{ 0x01, BENEATH_THE_WELL, "Skulltulla", "MM Beneath The Well Skulltulla Chest", ObjectType::chest, {715, 719}, BENEATH_THE_WELL, ObjectType::chest, ObjectContext::All, 0, ZGame::mm },
-	{ 0x00903, BENEATH_THE_WELL, "MM Beneath The Well Tree", "MM Beneath The Well Tree", ObjectType::tree, {0, 0}, BENEATH_THE_WELL, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
-	{ 0x00901, BENEATH_THE_WELL, "MM Beneath The Well Bush 1", "MM Beneath The Well Bush 1", ObjectType::bush, {0, 0}, BENEATH_THE_WELL, ObjectType::bush, ObjectContext::All, 0, ZGame::mm },
-	{ 0x00902, BENEATH_THE_WELL, "MM Beneath The Well Bush 2", "MM Beneath The Well Bush 2", ObjectType::bush, {0, 0}, BENEATH_THE_WELL, ObjectType::bush, ObjectContext::All, 0, ZGame::mm }
+	{ 0x00903, BENEATH_THE_WELL, "Tree", "MM Beneath The Well Tree", ObjectType::tree, {0, 0}, BENEATH_THE_WELL, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00901, BENEATH_THE_WELL, "Bush 1", "MM Beneath The Well Bush 1", ObjectType::bush, {0, 0}, BENEATH_THE_WELL, ObjectType::bush, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00902, BENEATH_THE_WELL, "Bush 2", "MM Beneath The Well Bush 2", ObjectType::bush, {0, 0}, BENEATH_THE_WELL, ObjectType::bush, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t BLACKSMITHNumOfObjs = 6;
@@ -231,8 +231,8 @@ ObjectInfo CLOCK_TOWN_NORTHSceneObjects[CLOCK_TOWN_NORTHNumOfObjs] =
 	{ GREAT_FAIRY_TOWN, CLOCK_TOWN_NORTH, "Great Fairy - Mojo", "MM Clock Town Great Fairy", ObjectType::none, {0, 0}, MM_FAIRY_CLOCK_TOWN, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ GREAT_FAIRY_TOWN_ALT, CLOCK_TOWN_NORTH, "Great Fairy - Link", "MM Clock Town Great Fairy Alt", ObjectType::none, {0, 0}, MM_FAIRY_CLOCK_TOWN, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
 	{ TINGLE_MAP_CLOCK_TOWN, CLOCK_TOWN_SOUTH, "Tingle - Clock Town Map", "MM Tingle Map Clock Town", ObjectType::npc, {394, 148}, CLOCK_TOWN_NORTH, ObjectType::npc, ObjectContext::All, 0, ZGame::mm },
-	{ 0x00007, CLOCK_TOWN_NORTH, "MM Clock Town North Forked Tree 1", "MM Clock Town North Forked Tree 1", ObjectType::tree, {0, 0}, CLOCK_TOWN_NORTH, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
-	{ 0x00015, CLOCK_TOWN_NORTH, "MM Clock Town North Forked Tree 2", "MM Clock Town North Forked Tree 2", ObjectType::tree, {0, 0}, CLOCK_TOWN_NORTH, ObjectType::tree, ObjectContext::All, 0, ZGame::mm }
+	{ 0x00007, CLOCK_TOWN_NORTH, "Tree 1", "MM Clock Town North Forked Tree 1", ObjectType::tree, {0, 0}, CLOCK_TOWN_NORTH, ObjectType::tree, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00015, CLOCK_TOWN_NORTH, "Tree 2", "MM Clock Town North Forked Tree 2", ObjectType::tree, {0, 0}, CLOCK_TOWN_NORTH, ObjectType::tree, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t CLOCK_TOWN_SOUTHNumOfObjs = 16;
@@ -839,7 +839,7 @@ ObjectInfo DEKU_KING_CHAMBERSceneObjects[DEKU_KING_CHAMBERNumOfObjs] =
 	{ SONG_AWAKENING, DEKU_KING_CHAMBER, "Sonata of Awakening", "MM Deku Palace Sonata of Awakening", ObjectType::npc, {180, 314}, DEKU_KING_CHAMBER, ObjectType::npc, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t DEKU_PALACENumOfObjs = 95;
+const size_t DEKU_PALACENumOfObjs = 98;
 ObjectInfo DEKU_PALACESceneObjects[DEKU_PALACENumOfObjs] =
 {
 	{ 0x1e, DEKU_PALACE, "Garden Heart Piece", "MM Deku Palace HP", ObjectType::collectible, {210, 133}, DEKU_PALACE, ObjectType::collectible, ObjectContext::All, 0, ZGame::mm },
@@ -934,9 +934,12 @@ ObjectInfo DEKU_PALACESceneObjects[DEKU_PALACENumOfObjs] =
 	{ 0x0010c, DEKU_PALACE, "Boulder 1", "MM Deku Palace Red Boulder 1", ObjectType::redboulder, {691, 259}, DEKU_PALACE, ObjectType::redboulder, ObjectContext::All, 0, ZGame::mm },
 	{ 0x0010d, DEKU_PALACE, "Boulder 2", "MM Deku Palace Red Boulder 2", ObjectType::redboulder, {635, 222}, DEKU_PALACE, ObjectType::redboulder, ObjectContext::All, 0, ZGame::mm },
 	{ 0x0010e, DEKU_PALACE, "Boulder 3", "MM Deku Palace Red Boulder 3", ObjectType::redboulder, {644, 36}, DEKU_PALACE, ObjectType::redboulder, ObjectContext::All, 0, ZGame::mm },
-	{ 0x00000, DEKU_PALACE, "MM Deku Palace Soil Item 1", "MM Deku Palace Soil Item 1", ObjectType::soil, {0, 0}, DEKU_PALACE, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
-	{ 0x10000, DEKU_PALACE, "MM Deku Palace Soil Item 2", "MM Deku Palace Soil Item 2", ObjectType::soil, {0, 0}, DEKU_PALACE, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
-	{ 0x20000, DEKU_PALACE, "MM Deku Palace Soil Item 3", "MM Deku Palace Soil Item 3", ObjectType::soil, {0, 0}, DEKU_PALACE, ObjectType::soil, ObjectContext::All, 0, ZGame::mm }
+	{ 0x00000, DEKU_PALACE, "Item 1", "MM Deku Palace Soil Item 1", ObjectType::soil, {0, 0}, DEKU_PALACE, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x10000, DEKU_PALACE, "Item 2", "MM Deku Palace Soil Item 2", ObjectType::soil, {0, 0}, DEKU_PALACE, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x20000, DEKU_PALACE, "Item 3", "MM Deku Palace Soil Item 3", ObjectType::soil, {0, 0}, DEKU_PALACE, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00c09, DEKU_PALACE, "Item 1", "MM Beans Grotto Soil Item 1", ObjectType::none, {0, 0}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x10c09, DEKU_PALACE, "Item 2", "MM Beans Grotto Soil Item 2", ObjectType::none, {0, 0}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectType::none, ObjectContext::All, 0, ZGame::mm },
+	{ 0x20c09, DEKU_PALACE, "Item 3", "MM Beans Grotto Soil Item 3", ObjectType::none, {0, 0}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectType::none, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t DEKU_PLAYGROUNDNumOfObjs = 2;
@@ -3528,7 +3531,7 @@ ObjectInfo OBSERVATORYSceneObjects[OBSERVATORYNumOfObjs] =
 	{ 0x0106, OBSERVATORY, "Astral Observatory 3", "MM Astral Observatory Pot 3", ObjectType::pot, {478, 458}, OBSERVATORY, ObjectType::pot, ObjectContext::All, 0, ZGame::mm }
 };
 
-const size_t TERMINA_FIELDNumOfObjs = 420;
+const size_t TERMINA_FIELDNumOfObjs = 421;
 ObjectInfo TERMINA_FIELDSceneObjects[TERMINA_FIELDNumOfObjs] =
 {
 	{ MOON_TEAR, OBSERVATORY, "Moon Tear", "MM Astral Observatory Moon Tear", ObjectType::npc, {2199, 1058}, TERMINA_FIELD, ObjectType::npc, ObjectContext::All, 0, ZGame::mm },
@@ -3950,7 +3953,8 @@ ObjectInfo TERMINA_FIELDSceneObjects[TERMINA_FIELDNumOfObjs] =
 	{ 0x00007, TERMINA_FIELD, "Wall Item 1", "MM Termina Field Soil Wall Item 1", ObjectType::soil, {0, 0}, TERMINA_FIELD, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
 	{ 0x10007, TERMINA_FIELD, "Wall Item 2", "MM Termina Field Soil Wall Item 2", ObjectType::soil, {0, 0}, TERMINA_FIELD, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
 	{ 0x20007, TERMINA_FIELD, "Wall Item 3", "MM Termina Field Soil Wall Item 3", ObjectType::soil, {0, 0}, TERMINA_FIELD, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
-	{ 0x00008, TERMINA_FIELD, "Pillar", "MM Termina Field Soil Pillar", ObjectType::soil, {0, 0}, TERMINA_FIELD, ObjectType::soil, ObjectContext::All, 0, ZGame::mm }
+	{ 0x00008, TERMINA_FIELD, "Pillar", "MM Termina Field Soil Pillar", ObjectType::soil, {0, 0}, TERMINA_FIELD, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00b01, TERMINA_FIELD, "Rock", "MM Bio Baba Grotto Rock", ObjectType::none, {0, 0}, MM_GROTTO_TERMINA_BIO_BABA, ObjectType::none, ObjectContext::All, 0, ZGame::mm }
 };
 
 const size_t PATH_MOUNTAIN_VILLAGENumOfObjs = 26;
@@ -4688,7 +4692,7 @@ ObjectInfo MM_SPIDER_HOUSE_SWAMPSceneObjects[MM_SPIDER_HOUSE_SWAMPNumOfObjs] =
 	{ 0x00003, MM_SPIDER_HOUSE_SWAMP, "Entrance 1", "MM Swamp Spider House Rock Entrance 1", ObjectType::rock, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
 	{ 0x00004, MM_SPIDER_HOUSE_SWAMP, "Entrance 2", "MM Swamp Spider House Rock Entrance 2", ObjectType::rock, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
 	{ 0x00405, MM_SPIDER_HOUSE_SWAMP, "Pots Room", "MM Swamp Spider House Rock Pots Room", ObjectType::rock, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::rock, ObjectContext::All, 4, ZGame::mm },
-	{ 0x0020d, MM_SPIDER_HOUSE_SWAMP, "Gold Room", "MM Swamp Spider House Soil Gold", ObjectType::soil, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::soil, ObjectContext::All, 4, ZGame::mm },
+	{ 0x0020d, MM_SPIDER_HOUSE_SWAMP, "Gold Room", "MM Swamp Spider House Soil Gold", ObjectType::soil, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::soil, ObjectContext::All, 2, ZGame::mm },
 	{ 0x0030e, MM_SPIDER_HOUSE_SWAMP, "Monument Item 1", "MM Swamp Spider House Soil Monument Item 1", ObjectType::soil, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::soil, ObjectContext::All, 3, ZGame::mm },
 	{ 0x1030e, MM_SPIDER_HOUSE_SWAMP, "Monument Item 2", "MM Swamp Spider House Soil Monument Item 2", ObjectType::soil, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::soil, ObjectContext::All, 3, ZGame::mm },
 	{ 0x2030e, MM_SPIDER_HOUSE_SWAMP, "Monument Item 3", "MM Swamp Spider House Soil Monument Item 3", ObjectType::soil, {0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::soil, ObjectContext::All, 3, ZGame::mm }
