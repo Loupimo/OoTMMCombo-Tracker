@@ -20,6 +20,14 @@ QList<QPair<int, int>> FSPoints = {
 {2515, 1418},
 {2281, 230},
 };
+QList<QPair<int, int>> HivePoints = {
+{203, 2469},
+{211, 2457},
+{194, 2457},
+{1395, 811},
+{1403, 799},
+{1386, 799},
+};
 QList<QPair<int, int>> GSPoints = {
 {202, 2443},
 {1395, 830},

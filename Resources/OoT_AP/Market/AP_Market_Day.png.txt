@@ -8,6 +8,9 @@ QList<QPair<int, int>> GrassPoints = {
 {697, 53},
 {682, 52},
 };
+QList<QPair<int, int>> HivePoints = {
+{433, 427},
+};
 QList<QPair<int, int>> WonderPoints = {
 {198, 363},
 {197, 298},

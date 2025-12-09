@@ -3693,7 +3693,7 @@ ZORA_HALL_LIGHTS;ZORA_HALL_ROOMS;Scene Lights;MM Zora Hall Scene Lights;none;0;0
 0x6008c;TERMINA_FIELD;Circle Rock 7;MM Termina Field Rock Circle Rock 7;rock;0;0;TERMINA_FIELD;rock;All;0;mm
 0x7008c;TERMINA_FIELD;Circle Rock 8;MM Termina Field Rock Circle Rock 8;rock;0;0;TERMINA_FIELD;rock;All;0;mm
 0x00005;TERMINA_FIELD;Tree Stump;MM Termina Field Soil Tree Stump;soil;0;0;TERMINA_FIELD;soil;All;0;mm
-0x00006;TERMINA_FIELD;MM Termina Field Soil Observatory Item 1;MM Termina Field Soil Observatory Item 1;soil;0;0;TERMINA_FIELD;soil;All;0;mm
+0x00006;TERMINA_FIELD;Observatory Item 1;MM Termina Field Soil Observatory Item 1;soil;0;0;TERMINA_FIELD;soil;All;0;mm
 0x10006;TERMINA_FIELD;Observatory Item 2;MM Termina Field Soil Observatory Item 2;soil;0;0;TERMINA_FIELD;soil;All;0;mm
 0x20006;TERMINA_FIELD;Observatory Item 3;MM Termina Field Soil Observatory Item 3;soil;0;0;TERMINA_FIELD;soil;All;0;mm
 0x00007;TERMINA_FIELD;Wall Item 1;MM Termina Field Soil Wall Item 1;soil;0;0;TERMINA_FIELD;soil;All;0;mm

@@ -50,6 +50,11 @@ QList<QPair<int, int>> FSPoints = {
 {676, 553},
 {680, 543},
 };
+QList<QPair<int, int>> HivePoints = {
+{862, 640},
+{867, 630},
+{856, 630},
+};
 QList<QPair<int, int>> PotPoints = {
 {839, 587},
 {839, 578},
@@ -64,6 +69,9 @@ QList<QPair<int, int>> FlyPoints = {
 {608, 695},
 {601, 680},
 {505, 233},
+};
+QList<QPair<int, int>> CratePoints = {
+{458, 574},
 };
 QList<QPair<int, int>> GrottoPoints = {
 {907, 354},

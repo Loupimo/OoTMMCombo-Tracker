@@ -3934,7 +3934,7 @@ ObjectInfo TERMINA_FIELDSceneObjects [TERMINA_FIELDNumOfObjs] =
 	{ 0x6008c, TERMINA_FIELD, "Circle Rock 7", "MM Termina Field Rock Circle Rock 7", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
 	{ 0x7008c, TERMINA_FIELD, "Circle Rock 8", "MM Termina Field Rock Circle Rock 8", ObjectType::rock, {0, 0}, TERMINA_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::mm },
 	{ 0x00005, TERMINA_FIELD, "Tree Stump", "MM Termina Field Soil Tree Stump", ObjectType::soil, {0, 0}, TERMINA_FIELD, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
-	{ 0x00006, TERMINA_FIELD, "MM Termina Field Soil Observatory Item 1", "MM Termina Field Soil Observatory Item 1", ObjectType::soil, {0, 0}, TERMINA_FIELD, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
+	{ 0x00006, TERMINA_FIELD, "Observatory Item 1", "MM Termina Field Soil Observatory Item 1", ObjectType::soil, {0, 0}, TERMINA_FIELD, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
 	{ 0x10006, TERMINA_FIELD, "Observatory Item 2", "MM Termina Field Soil Observatory Item 2", ObjectType::soil, {0, 0}, TERMINA_FIELD, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
 	{ 0x20006, TERMINA_FIELD, "Observatory Item 3", "MM Termina Field Soil Observatory Item 3", ObjectType::soil, {0, 0}, TERMINA_FIELD, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },
 	{ 0x00007, TERMINA_FIELD, "Wall Item 1", "MM Termina Field Soil Wall Item 1", ObjectType::soil, {0, 0}, TERMINA_FIELD, ObjectType::soil, ObjectContext::All, 0, ZGame::mm },

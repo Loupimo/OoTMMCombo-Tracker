@@ -24,7 +24,7 @@ const ObjectIcon IconsMetaInfo[ObjectType::last] =
     {"./Resources/Common/Chest.png", { 35, 35 }},          // ObjectType::chest
     {"./Resources/Common/Collectible.png", { 30, 30 }},    // ObjectType::collectible
     {"./Resources/Common/NPC.png", { 30, 30 }},            // ObjectType::npc
-    {"./Resources/Common/Gold_Skulltula.png", { 50, 50 }}, // ObjectType::gs
+    {"./Resources/Common/Gold_Skulltula.png", { 40, 40 }}, // ObjectType::gs
     {"./Resources/Common/Stray_Fairy.png", { 30, 30 }},    // ObjectType::sf
     {"./Resources/Common/Cow.png", { 50, 50 }},            // ObjectType::cow
     {"./Resources/Common/Shop.png", { 30, 30 }},           // ObjectType::shop
@@ -46,7 +46,7 @@ const ObjectIcon IconsMetaInfo[ObjectType::last] =
     {"./Resources/Common/Icicle.png", { 25, 25 }},         // ObjectType::icicle
     {"./Resources/Common/Red_Boulder.png", { 25, 25 }},    // ObjectType::redboulder
     {"./Resources/Common/Red_Ice.png", { 25, 25 }},        // ObjectType::redice
-    {"./Resources/Common/Rock.png", { 25, 25 }},           // ObjectType::rock
+    {"./Resources/Common/Rock.png", { 20, 20 }},           // ObjectType::rock
     {"./Resources/Common/Soil.png", { 25, 25 }},           // ObjectType::soil
     {"./Resources/Common/Tree.png", { 25, 25 }},           // ObjectType::tree
     {"./Resources/Common/Bush.png", { 25, 25 }}            // ObjectType::bush
