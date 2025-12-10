@@ -48,6 +48,15 @@ QList<QPair<int, int>> HivePoints = {
 QList<QPair<int, int>> ChestPoints = {
 {217, 392},
 };
+QList<QPair<int, int>> GSPoints = {
+{618, 435},
+{604, 430},
+{591, 423},
+{598, 411},
+{609, 399},
+{544, 49},
+{484, 45},
+};
 QList<QPair<int, int>> FlyPoints = {
 {434, 493},
 {417, 493},

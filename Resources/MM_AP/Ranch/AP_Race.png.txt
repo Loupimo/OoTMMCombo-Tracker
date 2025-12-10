@@ -7,6 +7,9 @@ QList<QPair<int, int>> PotPoints = {
 {295, 294},
 {308, 284},
 };
+QList<QPair<int, int>> GSPoints = {
+{384, 391},
+};
 QList<QPair<int, int>> NPCsPoints = {
 {650, 377},
 };

@@ -7,3 +7,13 @@ QList<QPair<int, int>> PotPoints = {
 QList<QPair<int, int>> GSPoints = {
 {520, 715},
 };
+QList<QPair<int, int>> FlyPoints = {
+{698, 243},
+{721, 233},
+{676, 233},
+{729, 212},
+{668, 212},
+{720, 191},
+{676, 191},
+{698, 180},
+};

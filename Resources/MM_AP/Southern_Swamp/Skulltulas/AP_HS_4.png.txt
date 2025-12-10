@@ -28,3 +28,6 @@ QList<QPair<int, int>> WonderPoints = {
 {560, 454},
 {491, 454},
 };
+QList<QPair<int, int>> CratePoints = {
+{205, 412},
+};

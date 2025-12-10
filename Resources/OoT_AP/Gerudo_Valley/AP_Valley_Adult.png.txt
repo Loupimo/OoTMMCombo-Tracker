@@ -5,6 +5,12 @@ QList<QPair<int, int>> GSPoints = {
 {241, 399},
 {281, 146},
 };
+QList<QPair<int, int>> FlyPoints = {
+{364, 223},
+{393, 215},
+{343, 199},
+{374, 192},
+};
 QList<QPair<int, int>> WonderPoints = {
 {466, 325},
 {473, 62},

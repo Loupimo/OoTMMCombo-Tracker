@@ -57,6 +57,27 @@ QList<QPair<int, int>> GrassPoints = {
 {387, 20},
 {400, 11},
 };
+QList<QPair<int, int>> HivePoints = {
+{372, 568},
+{184, 444},
+{327, 412},
+{635, 365},
+{458, 359},
+{647, 280},
+{446, 274},
+};
+QList<QPair<int, int>> ChestPoints = {
+{234, 89},
+{245, 83},
+{256, 78},
+{240, 72},
+};
+QList<QPair<int, int>> GSPoints = {
+{557, 518},
+{412, 405},
+{197, 311},
+{181, 144},
+};
 QList<QPair<int, int>> WonderPoints = {
 {752, 419},
 {746, 380},

@@ -7,6 +7,9 @@ QList<QPair<int, int>> HivePoints = {
 {266, 143},
 {235, 140},
 };
+QList<QPair<int, int>> CratePoints = {
+{738, 380},
+};
 QList<QPair<int, int>> NPCsPoints = {
 {756, 307},
 };

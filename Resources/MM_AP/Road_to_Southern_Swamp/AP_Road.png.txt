@@ -30,3 +30,11 @@ QList<QPair<int, int>> PotPoints = {
 {67, 342},
 {74, 320},
 };
+QList<QPair<int, int>> CratePoints = {
+{299, 387},
+{258, 374},
+{377, 368},
+{452, 359},
+{333, 352},
+{413, 339},
+};
