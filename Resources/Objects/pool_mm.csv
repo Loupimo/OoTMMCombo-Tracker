@@ -165,8 +165,8 @@ KEATON_HEART_PIECE;CLOCK_TOWN_NORTH;Keaton - Heart Piece;MM Clock Town Keaton HP
 0x0a;CLOCK_TOWN_NORTH;Tree - Heart Piece;MM Clock Town Tree HP;collectible;614;369;CLOCK_TOWN_NORTH;collectible;All;0;mm
 DEKU_PLAYGROUND_2;CLOCK_TOWN_NORTH;Reward - All Days;MM Deku Playground Reward All Days;none;0;0;DEKU_PLAYGROUND;none;All;0;mm
 DEKU_PLAYGROUND_1;CLOCK_TOWN_NORTH;Reward - Any Day;MM Deku Playground Reward Any Day;none;0;0;DEKU_PLAYGROUND;none;All;0;mm
-GREAT_FAIRY_TOWN;CLOCK_TOWN_NORTH;Great Fairy - Mojo;MM Clock Town Great Fairy;none;0;0;MM_FAIRY_CLOCK_TOWN;none;All;0;mm
-GREAT_FAIRY_TOWN_ALT;CLOCK_TOWN_NORTH;Great Fairy - Link;MM Clock Town Great Fairy Alt;none;0;0;MM_FAIRY_CLOCK_TOWN;none;All;0;mm
+GREAT_FAIRY_TOWN;CLOCK_TOWN_NORTH;Great Fairy - Link;MM Clock Town Great Fairy;none;0;0;MM_FAIRY_CLOCK_TOWN;none;All;0;mm
+GREAT_FAIRY_TOWN_ALT;CLOCK_TOWN_NORTH;Great Fairy - Mojo;MM Clock Town Great Fairy Alt;none;0;0;MM_FAIRY_CLOCK_TOWN;none;All;0;mm
 SCRUB_LAND;CLOCK_TOWN_SOUTH;Title Deed;MM Clock Town Business Scrub;npc;375;420;CLOCK_TOWN_SOUTH;scrub;All;0;mm
 OWL_CLOCK_TOWN;CLOCK_TOWN_SOUTH;Owl Statue;MM Clock Town Owl Statue;npc;193;275;CLOCK_TOWN_SOUTH;npc;All;0;mm
 0x0a;CLOCK_TOWN_SOUTH;Platform - Heart Piece;MM Clock Town Platform HP;collectible;348;226;CLOCK_TOWN_SOUTH;collectible;All;0;mm
@@ -373,8 +373,8 @@ DOG_LADY_HEART_PIECE;DOG_RACETRACK;Heart Piece;MM Doggy Racetrack HP;npc;650;377
 0x0002;EXTRA;Pot Game 3;MM Zora Cape Pot Game 3;pot;569;177;ZORA_CAPE;pot;All;0;mm
 0x0003;EXTRA;Pot Game 4;MM Zora Cape Pot Game 4;pot;565;188;ZORA_CAPE;pot;All;0;mm
 0x0004;EXTRA;Pot Game 5;MM Zora Cape Pot Game 5;pot;557;180;ZORA_CAPE;pot;All;0;mm
-GREAT_FAIRY_TOWN;FAIRY_FOUNTAIN;Great Fairy - Mojo;MM Clock Town Great Fairy;npc;471;310;MM_FAIRY_CLOCK_TOWN;npc;All;0;mm
-GREAT_FAIRY_TOWN_ALT;FAIRY_FOUNTAIN;Great Fairy - Link;MM Clock Town Great Fairy Alt;npc;471;266;MM_FAIRY_CLOCK_TOWN;npc;All;0;mm
+GREAT_FAIRY_TOWN;FAIRY_FOUNTAIN;Great Fairy - Link;MM Clock Town Great Fairy;npc;471;310;MM_FAIRY_CLOCK_TOWN;npc;All;0;mm
+GREAT_FAIRY_TOWN_ALT;FAIRY_FOUNTAIN;Great Fairy - Mojo;MM Clock Town Great Fairy Alt;npc;471;266;MM_FAIRY_CLOCK_TOWN;npc;All;0;mm
 GREAT_FAIRY_OCEAN;FAIRY_FOUNTAIN;Double Defense;MM Great Bay Great Fairy;npc;490;188;MM_FAIRY_GREAT_BAY_COAST;npc;All;0;mm
 GREAT_FAIRY_VALLEY;FAIRY_FOUNTAIN;Great Fairy's Sword;MM Ikana Great Fairy;npc;460;195;MM_FAIRY_IKANA;npc;All;0;mm
 GREAT_FAIRY_MOUNTAIN;FAIRY_FOUNTAIN;Large Magic Upgrade;MM Snowhead Great Fairy;npc;478;173;MM_FAIRY_SNOWHEAD;npc;All;0;mm
@@ -3438,7 +3438,7 @@ BEAVER_2;ZORA_CAPE;Race 2;MM Waterfall Rapids Beaver Race 2;none;0;0;WATERFALL_R
 GREAT_FAIRY_OCEAN;ZORA_CAPE;Double Defense;MM Great Bay Great Fairy;none;0;0;MM_FAIRY_GREAT_BAY_COAST;none;All;0;mm
 ZORA_HALL_LIGHTS;ZORA_HALL;Scene Lights;MM Zora Hall Scene Lights;npc;510;234;ZORA_HALL;npc;All;0;mm
 ZORA_EVAN;ZORA_HALL_ROOMS;Evan - Heart Piece;MM Zora Hall Evan HP;npc;385;421;ZORA_EVAN_ROOM;npc;All;0;mm
-SCRUB_OCEAN;ZORA_HALL_ROOMS;Titile Deed;MM Zora Hall Scrub Deed;npc;481;296;ZORA_HALL_ROOMS;scrub;All;0;mm
+SCRUB_OCEAN;ZORA_HALL_ROOMS;Title Deed;MM Zora Hall Scrub Deed;npc;481;296;ZORA_HALL_ROOMS;scrub;All;0;mm
 0x1e;ZORA_HALL_ROOMS;Scrub - Heart Piece;MM Zora Hall Scrub HP;collectible;604;257;ZORA_HALL_ROOMS;collectible;All;0;mm
 SCRUB_SHOP_POTION_GREEN;ZORA_HALL_ROOMS;Scrub - Shop;MM Zora Hall Scrub Shop;npc;497;296;ZORA_HALL_ROOMS;shop;All;0;mm
 0x13;ZORA_HALL_ROOMS;Item 1;MM Zora Shop Item 1;shop;497;250;MM_ZORA_SHOP;shop;All;0;mm
@@ -3487,13 +3487,13 @@ ZORA_HALL_LIGHTS;ZORA_HALL_ROOMS;Scene Lights;MM Zora Hall Scene Lights;none;0;0
 0x00007;CLOCK_TOWN_NORTH;Tree 1;MM Clock Town North Forked Tree 1;tree;615;353;CLOCK_TOWN_NORTH;tree;All;0;mm
 0x00015;CLOCK_TOWN_NORTH;Tree 2;MM Clock Town North Forked Tree 2;tree;382;161;CLOCK_TOWN_NORTH;tree;All;0;mm
 0x0000c;CUCCO_SHACK;Tree;MM Cucco Shack Tree;tree;389;317;CUCCO_SHACK;tree;All;0;mm
-0x0000b;CUCCO_SHACK;Bush 1;MM Cucco Shack Bush 1;bush;265;488;CUCCO_SHACK;bush;All;0;mm
+0x0000b;CUCCO_SHACK;Bush 1;MM Cucco Shack Bush 1;bush;363;333;CUCCO_SHACK;bush;All;0;mm
 0x1000b;CUCCO_SHACK;Bush 2;MM Cucco Shack Bush 2;bush;643;473;CUCCO_SHACK;bush;All;0;mm
-0x2000b;CUCCO_SHACK;Bush 3;MM Cucco Shack Bush 3;bush;363;333;CUCCO_SHACK;bush;All;0;mm
-0x3000b;CUCCO_SHACK;Bush 4;MM Cucco Shack Bush 4;bush;240;304;CUCCO_SHACK;bush;All;0;mm
-0x4000b;CUCCO_SHACK;Bush 5;MM Cucco Shack Bush 5;bush;562;259;CUCCO_SHACK;bush;All;0;mm
-0x5000b;CUCCO_SHACK;Bush 6;MM Cucco Shack Bush 6;bush;643;188;CUCCO_SHACK;bush;All;0;mm
-0x00013;CUCCO_SHACK;Bush 7;MM Cucco Shack Bush 7;bush;390;181;CUCCO_SHACK;bush;All;0;mm
+0x2000b;CUCCO_SHACK;Bush 3;MM Cucco Shack Bush 3;bush;562;259;CUCCO_SHACK;bush;All;0;mm
+0x3000b;CUCCO_SHACK;Bush 4;MM Cucco Shack Bush 4;bush;390;181;CUCCO_SHACK;bush;All;0;mm
+0x4000b;CUCCO_SHACK;Bush 5;MM Cucco Shack Bush 5;bush;240;304;CUCCO_SHACK;bush;All;0;mm
+0x5000b;CUCCO_SHACK;Bush 6;MM Cucco Shack Bush 6;bush;265;488;CUCCO_SHACK;bush;All;0;mm
+0x00013;CUCCO_SHACK;Bush 7;MM Cucco Shack Bush 7;bush;643;188;CUCCO_SHACK;bush;All;0;mm
 0x00000;DEKU_PALACE;Item 1;MM Deku Palace Soil Item 1;soil;876;111;DEKU_PALACE;soil;All;0;mm
 0x10000;DEKU_PALACE;Item 2;MM Deku Palace Soil Item 2;soil;889;101;DEKU_PALACE;soil;All;0;mm
 0x20000;DEKU_PALACE;Item 3;MM Deku Palace Soil Item 3;soil;876;88;DEKU_PALACE;soil;All;0;mm
@@ -3523,16 +3523,16 @@ ZORA_HALL_LIGHTS;ZORA_HALL_ROOMS;Scene Lights;MM Zora Hall Scene Lights;none;0;0
 0x00021;GORMAN_TRACK;Tree 23;MM Gorman Track Tree 23;tree;195;63;GORMAN_TRACK;tree;All;0;mm
 0x00022;GORMAN_TRACK;Tree 24;MM Gorman Track Tree 24;tree;225;57;GORMAN_TRACK;tree;All;0;mm
 0x00023;GORMAN_TRACK;Tree 25;MM Gorman Track Tree 25;tree;257;51;GORMAN_TRACK;tree;All;0;mm
-0x0003b;GORON_RACETRACK;Tree 1;MM Goron Race Forked Tree 1;tree;146;352;GORON_RACETRACK;tree;All;0;mm
+0x0003b;GORON_RACETRACK;Tree 1;MM Goron Race Forked Tree 1;tree;134;338;GORON_RACETRACK;tree;All;0;mm
 0x0003c;GORON_RACETRACK;Tree 2;MM Goron Race Forked Tree 2;tree;106;352;GORON_RACETRACK;tree;All;0;mm
-0x0003d;GORON_RACETRACK;Tree 3;MM Goron Race Forked Tree 3;tree;134;349;GORON_RACETRACK;tree;All;0;mm
-0x0003e;GORON_RACETRACK;Tree 4;MM Goron Race Forked Tree 4;tree;166;339;GORON_RACETRACK;tree;All;0;mm
-0x0003f;GORON_RACETRACK;Tree 5;MM Goron Race Forked Tree 5;tree;151;338;GORON_RACETRACK;tree;All;0;mm
-0x00040;GORON_RACETRACK;Tree 6;MM Goron Race Forked Tree 6;tree;134;338;GORON_RACETRACK;tree;All;0;mm
-0x00041;GORON_RACETRACK;Tree 7;MM Goron Race Forked Tree 7;tree;181;333;GORON_RACETRACK;tree;All;0;mm
-0x00042;GORON_RACETRACK;Tree 8;MM Goron Race Forked Tree 8;tree;154;325;GORON_RACETRACK;tree;All;0;mm
-0x00043;GORON_RACETRACK;Tree 9;MM Goron Race Forked Tree 9;tree;169;321;GORON_RACETRACK;tree;All;0;mm
-0x00044;GORON_RACETRACK;Tree 10;MM Goron Race Forked Tree 10;tree;192;314;GORON_RACETRACK;tree;All;0;mm
+0x0003d;GORON_RACETRACK;Tree 3;MM Goron Race Forked Tree 3;tree;169;321;GORON_RACETRACK;tree;All;0;mm
+0x0003e;GORON_RACETRACK;Tree 4;MM Goron Race Forked Tree 4;tree;154;325;GORON_RACETRACK;tree;All;0;mm
+0x0003f;GORON_RACETRACK;Tree 5;MM Goron Race Forked Tree 5;tree;134;349;GORON_RACETRACK;tree;All;0;mm
+0x00040;GORON_RACETRACK;Tree 6;MM Goron Race Forked Tree 6;tree;151;338;GORON_RACETRACK;tree;All;0;mm
+0x00041;GORON_RACETRACK;Tree 7;MM Goron Race Forked Tree 7;tree;192;314;GORON_RACETRACK;tree;All;0;mm
+0x00042;GORON_RACETRACK;Tree 8;MM Goron Race Forked Tree 8;tree;181;333;GORON_RACETRACK;tree;All;0;mm
+0x00043;GORON_RACETRACK;Tree 9;MM Goron Race Forked Tree 9;tree;166;339;GORON_RACETRACK;tree;All;0;mm
+0x00044;GORON_RACETRACK;Tree 10;MM Goron Race Forked Tree 10;tree;146;352;GORON_RACETRACK;tree;All;0;mm
 0x00002;GORON_SHRINE;Rock 1;MM Goron Shrine Rock 01;rock;430;409;GORON_SHRINE;rock;All;0;mm
 0x00003;GORON_SHRINE;Rock 2;MM Goron Shrine Rock 02;rock;518;399;GORON_SHRINE;rock;All;0;mm
 0x00004;GORON_SHRINE;Rock 3;MM Goron Shrine Rock 03;rock;412;399;GORON_SHRINE;rock;All;0;mm
@@ -3553,62 +3553,62 @@ ZORA_HALL_LIGHTS;ZORA_HALL_ROOMS;Scene Lights;MM Zora Hall Scene Lights;none;0;0
 0x0000b;GREAT_BAY_COAST;Beach 1;MM Great Bay Coast Palm Tree Beach 1;tree;597;436;GREAT_BAY_COAST;tree;All;0;mm
 0x0000c;GREAT_BAY_COAST;Beach 2;MM Great Bay Coast Palm Tree Beach 2;tree;593;519;GREAT_BAY_COAST;tree;All;0;mm
 0x0000d;GREAT_BAY_COAST;Beach 3;MM Great Bay Coast Palm Tree Beach 3;tree;558;557;GREAT_BAY_COAST;tree;All;0;mm
-0x00045;GREAT_BAY_COAST;Cleared - Water 1;MM Great Bay Coast Rock Water Cleared 1;rock;424;601;GREAT_BAY_COAST;rock;All;0;mm
-0x00042;GREAT_BAY_COAST;Cleared - Water 2;MM Great Bay Coast Rock Water Cleared 2;rock;367;555;GREAT_BAY_COAST;rock;All;0;mm
-0x00043;GREAT_BAY_COAST;Water 1;MM Great Bay Coast Rock Water 01;rock;455;595;GREAT_BAY_COAST;rock;All;0;mm
-0x00044;GREAT_BAY_COAST;Water 2;MM Great Bay Coast Rock Water 02;rock;365;589;GREAT_BAY_COAST;rock;All;0;mm
-0x00046;GREAT_BAY_COAST;Water 3;MM Great Bay Coast Rock Water 03;rock;474;574;GREAT_BAY_COAST;rock;All;0;mm
-0x00047;GREAT_BAY_COAST;Water 4;MM Great Bay Coast Rock Water 04;rock;432;571;GREAT_BAY_COAST;rock;All;0;mm
-0x00048;GREAT_BAY_COAST;Water 5;MM Great Bay Coast Rock Water 05;rock;289;565;GREAT_BAY_COAST;rock;All;0;mm
-0x00049;GREAT_BAY_COAST;Water 6;MM Great Bay Coast Rock Water 06;rock;461;543;GREAT_BAY_COAST;rock;All;0;mm
-0x0004a;GREAT_BAY_COAST;Water 7;MM Great Bay Coast Rock Water 07;rock;413;533;GREAT_BAY_COAST;rock;All;0;mm
-0x0004b;GREAT_BAY_COAST;Water 8;MM Great Bay Coast Rock Water 08;rock;371;511;GREAT_BAY_COAST;rock;All;0;mm
-0x0004c;GREAT_BAY_COAST;Water 9;MM Great Bay Coast Rock Water 09;rock;239;424;GREAT_BAY_COAST;rock;All;0;mm
-0x0004d;GREAT_BAY_COAST;Water 10;MM Great Bay Coast Rock Water 10;rock;389;422;GREAT_BAY_COAST;rock;All;0;mm
-0x0004e;GREAT_BAY_COAST;Water 11;MM Great Bay Coast Rock Water 11;rock;353;393;GREAT_BAY_COAST;rock;All;0;mm
-0x0004f;GREAT_BAY_COAST;Water 12;MM Great Bay Coast Rock Water 12;rock;306;361;GREAT_BAY_COAST;rock;All;0;mm
-0x00050;GREAT_BAY_COAST;Water 13;MM Great Bay Coast Rock Water 13;rock;347;329;GREAT_BAY_COAST;rock;All;0;mm
-0x00051;GREAT_BAY_COAST;Water 14;MM Great Bay Coast Rock Water 14;rock;462;317;GREAT_BAY_COAST;rock;All;0;mm
-0x00052;GREAT_BAY_COAST;Water 15;MM Great Bay Coast Rock Water 15;rock;545;308;GREAT_BAY_COAST;rock;All;0;mm
-0x00053;GREAT_BAY_COAST;Water 16;MM Great Bay Coast Rock Water 16;rock;227;293;GREAT_BAY_COAST;rock;All;0;mm
+0x00045;GREAT_BAY_COAST;Cleared - Water 1;MM Great Bay Coast Rock Water Cleared 1;rock;367;555;GREAT_BAY_COAST;rock;All;0;mm
+0x00042;GREAT_BAY_COAST;Cleared - Water 2;MM Great Bay Coast Rock Water Cleared 2;rock;424;601;GREAT_BAY_COAST;rock;All;0;mm
+0x00043;GREAT_BAY_COAST;Water 1;MM Great Bay Coast Rock Water 01;rock;474;574;GREAT_BAY_COAST;rock;All;0;mm
+0x00044;GREAT_BAY_COAST;Water 2;MM Great Bay Coast Rock Water 02;rock;461;543;GREAT_BAY_COAST;rock;All;0;mm
+0x00046;GREAT_BAY_COAST;Water 3;MM Great Bay Coast Rock Water 03;rock;239;226;GREAT_BAY_COAST;rock;All;0;mm
+0x00047;GREAT_BAY_COAST;Water 4;MM Great Bay Coast Rock Water 04;rock;283;226;GREAT_BAY_COAST;rock;All;0;mm
+0x00048;GREAT_BAY_COAST;Water 5;MM Great Bay Coast Rock Water 05;rock;335;192;GREAT_BAY_COAST;rock;All;0;mm
+0x00049;GREAT_BAY_COAST;Water 6;MM Great Bay Coast Rock Water 06;rock;347;329;GREAT_BAY_COAST;rock;All;0;mm
+0x0004a;GREAT_BAY_COAST;Water 7;MM Great Bay Coast Rock Water 07;rock;306;361;GREAT_BAY_COAST;rock;All;0;mm
+0x0004b;GREAT_BAY_COAST;Water 8;MM Great Bay Coast Rock Water 08;rock;389;422;GREAT_BAY_COAST;rock;All;0;mm
+0x0004c;GREAT_BAY_COAST;Water 9;MM Great Bay Coast Rock Water 09;rock;353;393;GREAT_BAY_COAST;rock;All;0;mm
+0x0004d;GREAT_BAY_COAST;Water 10;MM Great Bay Coast Rock Water 10;rock;227;293;GREAT_BAY_COAST;rock;All;0;mm
+0x0004e;GREAT_BAY_COAST;Water 11;MM Great Bay Coast Rock Water 11;rock;239;424;GREAT_BAY_COAST;rock;All;0;mm
+0x0004f;GREAT_BAY_COAST;Water 12;MM Great Bay Coast Rock Water 12;rock;371;220;GREAT_BAY_COAST;rock;All;0;mm
+0x00050;GREAT_BAY_COAST;Water 13;MM Great Bay Coast Rock Water 13;rock;444;220;GREAT_BAY_COAST;rock;All;0;mm
+0x00051;GREAT_BAY_COAST;Water 14;MM Great Bay Coast Rock Water 14;rock;486;220;GREAT_BAY_COAST;rock;All;0;mm
+0x00052;GREAT_BAY_COAST;Water 15;MM Great Bay Coast Rock Water 15;rock;545;123;GREAT_BAY_COAST;rock;All;0;mm
+0x00053;GREAT_BAY_COAST;Water 16;MM Great Bay Coast Rock Water 16;rock;592;180;GREAT_BAY_COAST;rock;All;0;mm
 0x00054;GREAT_BAY_COAST;Water 17;MM Great Bay Coast Rock Water 17;rock;498;272;GREAT_BAY_COAST;rock;All;0;mm
-0x00055;GREAT_BAY_COAST;Water 18;MM Great Bay Coast Rock Water 18;rock;283;226;GREAT_BAY_COAST;rock;All;0;mm
-0x00056;GREAT_BAY_COAST;Water 19;MM Great Bay Coast Rock Water 19;rock;239;226;GREAT_BAY_COAST;rock;All;0;mm
-0x00057;GREAT_BAY_COAST;Water 20;MM Great Bay Coast Rock Water 20;rock;486;220;GREAT_BAY_COAST;rock;All;0;mm
-0x00058;GREAT_BAY_COAST;Water 21;MM Great Bay Coast Rock Water 21;rock;444;220;GREAT_BAY_COAST;rock;All;0;mm
-0x00059;GREAT_BAY_COAST;Water 22;MM Great Bay Coast Rock Water 22;rock;371;220;GREAT_BAY_COAST;rock;All;0;mm
-0x0005a;GREAT_BAY_COAST;Water 23;MM Great Bay Coast Rock Water 23;rock;335;192;GREAT_BAY_COAST;rock;All;0;mm
-0x0005b;GREAT_BAY_COAST;Water 24;MM Great Bay Coast Rock Water 24;rock;592;180;GREAT_BAY_COAST;rock;All;0;mm
-0x0005c;GREAT_BAY_COAST;Water 25;MM Great Bay Coast Rock Water 25;rock;289;169;GREAT_BAY_COAST;rock;All;0;mm
-0x0005d;GREAT_BAY_COAST;Water 26;MM Great Bay Coast Rock Water 26;rock;455;147;GREAT_BAY_COAST;rock;All;0;mm
-0x0005e;GREAT_BAY_COAST;Water 27;MM Great Bay Coast Rock Water 27;rock;545;123;GREAT_BAY_COAST;rock;All;0;mm
-0x00067;GREAT_BAY_COAST;Water 28;MM Great Bay Coast Rock Water 28;rock;630;117;GREAT_BAY_COAST;rock;All;0;mm
-0x0005f;GREAT_BAY_COAST;Sand 1;MM Great Bay Coast Rock Sand 1;rock;574;418;GREAT_BAY_COAST;rock;All;0;mm
+0x00055;GREAT_BAY_COAST;Water 18;MM Great Bay Coast Rock Water 18;rock;545;308;GREAT_BAY_COAST;rock;All;0;mm
+0x00056;GREAT_BAY_COAST;Water 19;MM Great Bay Coast Rock Water 19;rock;289;169;GREAT_BAY_COAST;rock;All;0;mm
+0x00057;GREAT_BAY_COAST;Water 20;MM Great Bay Coast Rock Water 20;rock;383;96;GREAT_BAY_COAST;rock;All;0;mm
+0x00058;GREAT_BAY_COAST;Water 21;MM Great Bay Coast Rock Water 21;rock;455;147;GREAT_BAY_COAST;rock;All;0;mm
+0x00059;GREAT_BAY_COAST;Water 22;MM Great Bay Coast Rock Water 22;rock;371;511;GREAT_BAY_COAST;rock;All;0;mm
+0x0005a;GREAT_BAY_COAST;Water 23;MM Great Bay Coast Rock Water 23;rock;413;533;GREAT_BAY_COAST;rock;All;0;mm
+0x0005b;GREAT_BAY_COAST;Water 24;MM Great Bay Coast Rock Water 24;rock;365;589;GREAT_BAY_COAST;rock;All;0;mm
+0x0005c;GREAT_BAY_COAST;Water 25;MM Great Bay Coast Rock Water 25;rock;432;571;GREAT_BAY_COAST;rock;All;0;mm
+0x0005d;GREAT_BAY_COAST;Water 26;MM Great Bay Coast Rock Water 26;rock;455;595;GREAT_BAY_COAST;rock;All;0;mm
+0x0005e;GREAT_BAY_COAST;Water 27;MM Great Bay Coast Rock Water 27;rock;289;565;GREAT_BAY_COAST;rock;All;0;mm
+0x00067;GREAT_BAY_COAST;Water 28;MM Great Bay Coast Rock Water 28;rock;462;317;GREAT_BAY_COAST;rock;All;0;mm
+0x0005f;GREAT_BAY_COAST;Sand 1;MM Great Bay Coast Rock Sand 1;rock;592;614;GREAT_BAY_COAST;rock;All;0;mm
 0x00060;GREAT_BAY_COAST;Sand 2;MM Great Bay Coast Rock Sand 2;rock;647;436;GREAT_BAY_COAST;rock;All;0;mm
-0x00061;GREAT_BAY_COAST;Sand 3;MM Great Bay Coast Rock Sand 3;rock;609;589;GREAT_BAY_COAST;rock;All;0;mm
-0x00062;GREAT_BAY_COAST;Sand 4;MM Great Bay Coast Rock Sand 4;rock;557;608;GREAT_BAY_COAST;rock;All;0;mm
-0x00063;GREAT_BAY_COAST;Sand 5;MM Great Bay Coast Rock Sand 5;rock;592;614;GREAT_BAY_COAST;rock;All;0;mm
+0x00061;GREAT_BAY_COAST;Sand 3;MM Great Bay Coast Rock Sand 3;rock;574;418;GREAT_BAY_COAST;rock;All;0;mm
+0x00062;GREAT_BAY_COAST;Sand 4;MM Great Bay Coast Rock Sand 4;rock;609;589;GREAT_BAY_COAST;rock;All;0;mm
+0x00063;GREAT_BAY_COAST;Sand 5;MM Great Bay Coast Rock Sand 5;rock;557;608;GREAT_BAY_COAST;rock;All;0;mm
 0x00064;GREAT_BAY_COAST;Ledge 1;MM Great Bay Coast Rock Ledge 1;rock;691;220;GREAT_BAY_COAST;rock;All;0;mm
-0x00065;GREAT_BAY_COAST;Ledge 2;MM Great Bay Coast Rock Ledge 2;rock;666;302;GREAT_BAY_COAST;rock;All;0;mm
-0x00066;GREAT_BAY_COAST;Ledge 3;MM Great Bay Coast Rock Ledge 3;rock;383;96;GREAT_BAY_COAST;rock;All;0;mm
+0x00065;GREAT_BAY_COAST;Ledge 2;MM Great Bay Coast Rock Ledge 2;rock;630;117;GREAT_BAY_COAST;rock;All;0;mm
+0x00066;GREAT_BAY_COAST;Ledge 3;MM Great Bay Coast Rock Ledge 3;rock;666;302;GREAT_BAY_COAST;rock;All;0;mm
 0x00000;GREAT_BAY_COAST;Soil;MM Great Bay Coast Soil;soil;696;129;GREAT_BAY_COAST;soil;All;0;mm
 0x00b01;GROTTOS;Rock;MM Bio Baba Grotto Rock;rock;738;380;MM_GROTTO_TERMINA_BIO_BABA;rock;All;0;mm
 0x00c09;GROTTOS;Item 1;MM Beans Grotto Soil Item 1;soil;303;524;MM_GROTTO_DEKU_PALACE_BEANS;soil;All;0;mm
 0x10c09;GROTTOS;Item 2;MM Beans Grotto Soil Item 2;soil;316;514;MM_GROTTO_DEKU_PALACE_BEANS;soil;All;0;mm
 0x20c09;GROTTOS;Item 3;MM Beans Grotto Soil Item 3;soil;303;501;MM_GROTTO_DEKU_PALACE_BEANS;soil;All;0;mm
-0x00122;IKANA_GRAVEYARD;Wall 1;MM Ikana Graveyard Rock Wall 1;rock;692;220;IKANA_GRAVEYARD;rock;All;0;mm
-0x00123;IKANA_GRAVEYARD;Wall 2;MM Ikana Graveyard Rock Wall 2;rock;735;215;IKANA_GRAVEYARD;rock;All;0;mm
+0x00122;IKANA_GRAVEYARD;Wall 1;MM Ikana Graveyard Rock Wall 1;rock;707;200;IKANA_GRAVEYARD;rock;All;0;mm
+0x00123;IKANA_GRAVEYARD;Wall 2;MM Ikana Graveyard Rock Wall 2;rock;692;220;IKANA_GRAVEYARD;rock;All;0;mm
 0x00124;IKANA_GRAVEYARD;Wall 3;MM Ikana Graveyard Rock Wall 3;rock;718;213;IKANA_GRAVEYARD;rock;All;0;mm
-0x00125;IKANA_GRAVEYARD;Wall 4;MM Ikana Graveyard Rock Wall 4;rock;695;208;IKANA_GRAVEYARD;rock;All;0;mm
-0x00126;IKANA_GRAVEYARD;Wall 5;MM Ikana Graveyard Rock Wall 5;rock;707;200;IKANA_GRAVEYARD;rock;All;0;mm
-0x0012c;IKANA_GRAVEYARD;Circle Rock 1;MM Ikana Graveyard Rock Circle Rock 1;rock;507;292;IKANA_GRAVEYARD;rock;All;0;mm
+0x00125;IKANA_GRAVEYARD;Wall 4;MM Ikana Graveyard Rock Wall 4;rock;735;215;IKANA_GRAVEYARD;rock;All;0;mm
+0x00126;IKANA_GRAVEYARD;Wall 5;MM Ikana Graveyard Rock Wall 5;rock;695;208;IKANA_GRAVEYARD;rock;All;0;mm
+0x0012c;IKANA_GRAVEYARD;Circle Rock 1;MM Ikana Graveyard Rock Circle Rock 1;rock;484;276;IKANA_GRAVEYARD;rock;All;0;mm
 0x1012c;IKANA_GRAVEYARD;Circle Rock 2;MM Ikana Graveyard Rock Circle Rock 2;rock;491;289;IKANA_GRAVEYARD;rock;All;0;mm
-0x2012c;IKANA_GRAVEYARD;Circle Rock 3;MM Ikana Graveyard Rock Circle Rock 3;rock;521;283;IKANA_GRAVEYARD;rock;All;0;mm
-0x3012c;IKANA_GRAVEYARD;Circle Rock 4;MM Ikana Graveyard Rock Circle Rock 4;rock;484;276;IKANA_GRAVEYARD;rock;All;0;mm
+0x2012c;IKANA_GRAVEYARD;Circle Rock 3;MM Ikana Graveyard Rock Circle Rock 3;rock;507;292;IKANA_GRAVEYARD;rock;All;0;mm
+0x3012c;IKANA_GRAVEYARD;Circle Rock 4;MM Ikana Graveyard Rock Circle Rock 4;rock;521;283;IKANA_GRAVEYARD;rock;All;0;mm
 0x4012c;IKANA_GRAVEYARD;Circle Rock 5;MM Ikana Graveyard Rock Circle Rock 5;rock;522;269;IKANA_GRAVEYARD;rock;All;0;mm
-0x5012c;IKANA_GRAVEYARD;Circle Rock 6;MM Ikana Graveyard Rock Circle Rock 6;rock;486;261;IKANA_GRAVEYARD;rock;All;0;mm
-0x6012c;IKANA_GRAVEYARD;Circle Rock 7;MM Ikana Graveyard Rock Circle Rock 7;rock;515;256;IKANA_GRAVEYARD;rock;All;0;mm
-0x7012c;IKANA_GRAVEYARD;Circle Rock 8;MM Ikana Graveyard Rock Circle Rock 8;rock;499;254;IKANA_GRAVEYARD;rock;All;0;mm
+0x5012c;IKANA_GRAVEYARD;Circle Rock 6;MM Ikana Graveyard Rock Circle Rock 6;rock;515;256;IKANA_GRAVEYARD;rock;All;0;mm
+0x6012c;IKANA_GRAVEYARD;Circle Rock 7;MM Ikana Graveyard Rock Circle Rock 7;rock;499;254;IKANA_GRAVEYARD;rock;All;0;mm
+0x7012c;IKANA_GRAVEYARD;Circle Rock 8;MM Ikana Graveyard Rock Circle Rock 8;rock;486;261;IKANA_GRAVEYARD;rock;All;0;mm
 0x0000e;MOUNTAIN_VILLAGE_SPRING;Cliff 1;MM Mountain Village Rock Cliff 1;rock;544;49;MOUNTAIN_VILLAGE;rock;Spring;0;mm
 0x0000f;MOUNTAIN_VILLAGE_SPRING;Cliff 2;MM Mountain Village Rock Cliff 2;rock;484;45;MOUNTAIN_VILLAGE;rock;Spring;0;mm
 0x00010;MOUNTAIN_VILLAGE_SPRING;Ground 1;MM Mountain Village Rock Ground 1;rock;618;435;MOUNTAIN_VILLAGE;rock;Spring;0;mm
@@ -3620,36 +3620,36 @@ ZORA_HALL_LIGHTS;ZORA_HALL_ROOMS;Scene Lights;MM Zora Hall Scene Lights;none;0;0
 0x0000f;PATH_MOUNTAIN_VILLAGE;Lower 2;MM Path to Mountain Village Snow Tree Lower 2;tree;429;352;PATH_MOUNTAIN_VILLAGE;tree;Winter;0;mm
 0x00010;PATH_MOUNTAIN_VILLAGE;Upper 1;MM Path to Mountain Village Snow Tree Upper 1;tree;265;380;PATH_MOUNTAIN_VILLAGE;tree;Winter;0;mm
 0x00011;PATH_MOUNTAIN_VILLAGE;Upper 2;MM Path to Mountain Village Snow Tree Upper 2;tree;160;306;PATH_MOUNTAIN_VILLAGE;tree;Winter;0;mm
-0x00016;PATH_SNOWHEAD;End 1;MM Path to Snowhead Snow Tree End 1;tree;735;178;PATH_SNOWHEAD;tree;Winter;0;mm
+0x00016;PATH_SNOWHEAD;End 1;MM Path to Snowhead Snow Tree End 1;tree;868;105;PATH_SNOWHEAD;tree;Winter;0;mm
 0x00017;PATH_SNOWHEAD;End 2;MM Path to Snowhead Snow Tree End 2;tree;795;139;PATH_SNOWHEAD;tree;Winter;0;mm
-0x00018;PATH_SNOWHEAD;End 3;MM Path to Snowhead Snow Tree End 3;tree;868;105;PATH_SNOWHEAD;tree;Winter;0;mm
+0x00018;PATH_SNOWHEAD;End 3;MM Path to Snowhead Snow Tree End 3;tree;735;178;PATH_SNOWHEAD;tree;Winter;0;mm
 0x00019;PATH_SNOWHEAD;Entrance;MM Path to Snowhead Snow Tree Entrance;tree;97;246;PATH_SNOWHEAD;tree;Winter;0;mm
 0x0001c;PINNACLE_ROCK;Unreachable 1;MM Pinnacle Rock Rock Unreachable 1;none;0;0;PINNACLE_ROCK;none;All;0;mm
 0x0001d;PINNACLE_ROCK;Unreachable 2;MM Pinnacle Rock Rock Unreachable 2;none;0;0;PINNACLE_ROCK;none;All;0;mm
-0x00023;ROAD_IKANA;Circle Rock 1;MM Road to Ikana Rock Circle Rock 1;rock;256;245;ROAD_IKANA;rock;All;0;mm
-0x10023;ROAD_IKANA;Circle Rock 2;MM Road to Ikana Rock Circle Rock 2;rock;240;237;ROAD_IKANA;rock;All;0;mm
-0x20023;ROAD_IKANA;Circle Rock 3;MM Road to Ikana Rock Circle Rock 3;rock;271;237;ROAD_IKANA;rock;All;0;mm
-0x30023;ROAD_IKANA;Circle Rock 4;MM Road to Ikana Rock Circle Rock 4;rock;277;222;ROAD_IKANA;rock;All;0;mm
-0x40023;ROAD_IKANA;Circle Rock 5;MM Road to Ikana Rock Circle Rock 5;rock;233;222;ROAD_IKANA;rock;All;0;mm
-0x50023;ROAD_IKANA;Circle Rock 6;MM Road to Ikana Rock Circle Rock 6;rock;270;207;ROAD_IKANA;rock;All;0;mm
-0x60023;ROAD_IKANA;Circle Rock 7;MM Road to Ikana Rock Circle Rock 7;rock;240;206;ROAD_IKANA;rock;All;0;mm
-0x70023;ROAD_IKANA;Circle Rock 8;MM Road to Ikana Rock Circle Rock 8;rock;255;197;ROAD_IKANA;rock;All;0;mm
-0x0001a;ROAD_SOUTHERN_SWAMP;Tree 1;MM Road to Southern Swanp Forked Tree 1;tree;299;387;ROAD_SOUTHERN_SWAMP;tree;All;0;mm
-0x0001b;ROAD_SOUTHERN_SWAMP;Tree 2;MM Road to Southern Swanp Forked Tree 2;tree;258;374;ROAD_SOUTHERN_SWAMP;tree;All;0;mm
-0x0001c;ROAD_SOUTHERN_SWAMP;Tree 3;MM Road to Southern Swanp Forked Tree 3;tree;377;368;ROAD_SOUTHERN_SWAMP;tree;All;0;mm
-0x0001d;ROAD_SOUTHERN_SWAMP;Tree 4;MM Road to Southern Swanp Forked Tree 4;tree;452;359;ROAD_SOUTHERN_SWAMP;tree;All;0;mm
-0x0001e;ROAD_SOUTHERN_SWAMP;Tree 5;MM Road to Southern Swanp Forked Tree 5;tree;333;352;ROAD_SOUTHERN_SWAMP;tree;All;0;mm
-0x0001f;ROAD_SOUTHERN_SWAMP;Tree 6;MM Road to Southern Swanp Forked Tree 6;tree;413;339;ROAD_SOUTHERN_SWAMP;tree;All;0;mm
-0x00014;ROMANI_RANCH;Tree 1;MM Romani Ranch Tree 1;tree;372;568;ROMANI_RANCH;tree;All;0;mm
-0x00015;ROMANI_RANCH;Tree 2;MM Romani Ranch Tree 2;tree;184;444;ROMANI_RANCH;tree;All;0;mm
-0x00016;ROMANI_RANCH;Tree 3;MM Romani Ranch Tree 3;tree;327;412;ROMANI_RANCH;tree;All;0;mm
+0x00023;ROAD_IKANA;Circle Rock 1;MM Road to Ikana Rock Circle Rock 1;rock;270;207;ROAD_IKANA;rock;All;0;mm
+0x10023;ROAD_IKANA;Circle Rock 2;MM Road to Ikana Rock Circle Rock 2;rock;255;197;ROAD_IKANA;rock;All;0;mm
+0x20023;ROAD_IKANA;Circle Rock 3;MM Road to Ikana Rock Circle Rock 3;rock;240;206;ROAD_IKANA;rock;All;0;mm
+0x30023;ROAD_IKANA;Circle Rock 4;MM Road to Ikana Rock Circle Rock 4;rock;233;222;ROAD_IKANA;rock;All;0;mm
+0x40023;ROAD_IKANA;Circle Rock 5;MM Road to Ikana Rock Circle Rock 5;rock;240;237;ROAD_IKANA;rock;All;0;mm
+0x50023;ROAD_IKANA;Circle Rock 6;MM Road to Ikana Rock Circle Rock 6;rock;256;245;ROAD_IKANA;rock;All;0;mm
+0x60023;ROAD_IKANA;Circle Rock 7;MM Road to Ikana Rock Circle Rock 7;rock;271;237;ROAD_IKANA;rock;All;0;mm
+0x70023;ROAD_IKANA;Circle Rock 8;MM Road to Ikana Rock Circle Rock 8;rock;277;222;ROAD_IKANA;rock;All;0;mm
+0x0001a;ROAD_SOUTHERN_SWAMP;Tree 1;MM Road to Southern Swanp Forked Tree 1;tree;377;368;ROAD_SOUTHERN_SWAMP;tree;All;0;mm
+0x0001b;ROAD_SOUTHERN_SWAMP;Tree 2;MM Road to Southern Swanp Forked Tree 2;tree;452;359;ROAD_SOUTHERN_SWAMP;tree;All;0;mm
+0x0001c;ROAD_SOUTHERN_SWAMP;Tree 3;MM Road to Southern Swanp Forked Tree 3;tree;333;352;ROAD_SOUTHERN_SWAMP;tree;All;0;mm
+0x0001d;ROAD_SOUTHERN_SWAMP;Tree 4;MM Road to Southern Swanp Forked Tree 4;tree;258;374;ROAD_SOUTHERN_SWAMP;tree;All;0;mm
+0x0001e;ROAD_SOUTHERN_SWAMP;Tree 5;MM Road to Southern Swanp Forked Tree 5;tree;413;339;ROAD_SOUTHERN_SWAMP;tree;All;0;mm
+0x0001f;ROAD_SOUTHERN_SWAMP;Tree 6;MM Road to Southern Swanp Forked Tree 6;tree;299;387;ROAD_SOUTHERN_SWAMP;tree;All;0;mm
+0x00014;ROMANI_RANCH;Tree 1;MM Romani Ranch Tree 1;tree;458;359;ROMANI_RANCH;tree;All;0;mm
+0x00015;ROMANI_RANCH;Tree 2;MM Romani Ranch Tree 2;tree;446;274;ROMANI_RANCH;tree;All;0;mm
+0x00016;ROMANI_RANCH;Tree 3;MM Romani Ranch Tree 3;tree;647;280;ROMANI_RANCH;tree;All;0;mm
 0x00017;ROMANI_RANCH;Tree 4;MM Romani Ranch Tree 4;tree;635;365;ROMANI_RANCH;tree;All;0;mm
-0x00018;ROMANI_RANCH;Tree 5;MM Romani Ranch Tree 5;tree;458;359;ROMANI_RANCH;tree;All;0;mm
-0x00019;ROMANI_RANCH;Tree 6;MM Romani Ranch Tree 6;tree;647;280;ROMANI_RANCH;tree;All;0;mm
-0x0001a;ROMANI_RANCH;Tree 7;MM Romani Ranch Tree 7;tree;446;274;ROMANI_RANCH;tree;All;0;mm
-0x00010;ROMANI_RANCH;Bush 1;MM Romani Ranch Bush 1;bush;557;518;ROMANI_RANCH;bush;All;0;mm
+0x00018;ROMANI_RANCH;Tree 5;MM Romani Ranch Tree 5;tree;327;412;ROMANI_RANCH;tree;All;0;mm
+0x00019;ROMANI_RANCH;Tree 6;MM Romani Ranch Tree 6;tree;184;444;ROMANI_RANCH;tree;All;0;mm
+0x0001a;ROMANI_RANCH;Tree 7;MM Romani Ranch Tree 7;tree;372;568;ROMANI_RANCH;tree;All;0;mm
+0x00010;ROMANI_RANCH;Bush 1;MM Romani Ranch Bush 1;bush;197;311;ROMANI_RANCH;bush;All;0;mm
 0x00011;ROMANI_RANCH;Bush 2;MM Romani Ranch Bush 2;bush;412;405;ROMANI_RANCH;bush;All;0;mm
-0x00012;ROMANI_RANCH;Bush 3;MM Romani Ranch Bush 3;bush;197;311;ROMANI_RANCH;bush;All;0;mm
+0x00012;ROMANI_RANCH;Bush 3;MM Romani Ranch Bush 3;bush;557;518;ROMANI_RANCH;bush;All;0;mm
 0x00013;ROMANI_RANCH;Bush 4;MM Romani Ranch Bush 4;bush;181;144;ROMANI_RANCH;bush;All;0;mm
 0x00030;ROMANI_RANCH;Days 2-3 Item 1;MM Romani Ranch Soil Days 2-3 Item 1;soil;234;89;ROMANI_RANCH;soil;All;0;mm
 0x10030;ROMANI_RANCH;Days 2-3 Item 2;MM Romani Ranch Soil Days 2-3 Item 2;soil;245;83;ROMANI_RANCH;soil;All;0;mm
@@ -3658,8 +3658,8 @@ ZORA_HALL_LIGHTS;ZORA_HALL_ROOMS;Scene Lights;MM Zora Hall Scene Lights;none;0;0
 0x00013;SECRET_SHRINE;Item 1;MM Secret Shrine Soil Item 1;soil;488;479;SECRET_SHRINE;soil;All;0;mm
 0x10013;SECRET_SHRINE;Item 2;MM Secret Shrine Soil Item 2;soil;471;479;SECRET_SHRINE;soil;All;0;mm
 0x20013;SECRET_SHRINE;Item 3;MM Secret Shrine Soil Item 3;soil;454;479;SECRET_SHRINE;soil;All;0;mm
-0x00003;SPIDER_HOUSE_SWAMP;Entrance 1;MM Swamp Spider House Rock Entrance 1;rock;566;266;SPIDER_HOUSE_SWAMP;rock;All;0;mm
-0x00004;SPIDER_HOUSE_SWAMP;Entrance 2;MM Swamp Spider House Rock Entrance 2;rock;375;231;SPIDER_HOUSE_SWAMP;rock;All;0;mm
+0x00003;SPIDER_HOUSE_SWAMP;Entrance 1;MM Swamp Spider House Rock Entrance 1;rock;375;231;SPIDER_HOUSE_SWAMP;rock;All;0;mm
+0x00004;SPIDER_HOUSE_SWAMP;Entrance 2;MM Swamp Spider House Rock Entrance 2;rock;566;266;SPIDER_HOUSE_SWAMP;rock;All;0;mm
 0x00405;SPIDER_HOUSE_SWAMP;Pots Room;MM Swamp Spider House Rock Pots Room;rock;205;412;SPIDER_HOUSE_SWAMP;rock;All;4;mm
 0x0020d;SPIDER_HOUSE_SWAMP;Gold Room;MM Swamp Spider House Soil Gold;soil;275;322;SPIDER_HOUSE_SWAMP;soil;All;2;mm
 0x0030e;SPIDER_HOUSE_SWAMP;Monument Item 1;MM Swamp Spider House Soil Monument Item 1;soil;757;480;SPIDER_HOUSE_SWAMP;soil;All;3;mm
@@ -3679,19 +3679,19 @@ ZORA_HALL_LIGHTS;ZORA_HALL_ROOMS;Scene Lights;MM Zora Hall Scene Lights;none;0;0
 0x00087;TERMINA_FIELD;Wall Mountain 5;MM Termina Field Rock Wall Mountain 5;rock;990;510;TERMINA_FIELD;rock;All;0;mm
 0x00088;TERMINA_FIELD;Wall Mountain 6;MM Termina Field Rock Wall Mountain 6;rock;1004;494;TERMINA_FIELD;rock;All;0;mm
 0x0008b;TERMINA_FIELD;Wall Mountain 7;MM Termina Field Rock Wall Mountain 7;rock;1017;478;TERMINA_FIELD;rock;All;0;mm
-0x00081;TERMINA_FIELD;Wall Ocean 1;MM Termina Field Rock Wall Ocean 1;rock;1043;1178;TERMINA_FIELD;rock;All;0;mm
-0x00084;TERMINA_FIELD;Wall Ocean 2;MM Termina Field Rock Wall Ocean 2;rock;1030;1162;TERMINA_FIELD;rock;All;0;mm
+0x00081;TERMINA_FIELD;Wall Ocean 1;MM Termina Field Rock Wall Ocean 1;rock;990;1113;TERMINA_FIELD;rock;All;0;mm
+0x00084;TERMINA_FIELD;Wall Ocean 2;MM Termina Field Rock Wall Ocean 2;rock;1003;1129;TERMINA_FIELD;rock;All;0;mm
 0x00085;TERMINA_FIELD;Wall Ocean 3;MM Termina Field Rock Wall Ocean 3;rock;1017;1145;TERMINA_FIELD;rock;All;0;mm
-0x00089;TERMINA_FIELD;Wall Ocean 4;MM Termina Field Rock Wall Ocean 4;rock;1003;1129;TERMINA_FIELD;rock;All;0;mm
-0x0008a;TERMINA_FIELD;Wall Ocean 5;MM Termina Field Rock Wall Ocean 5;rock;990;1113;TERMINA_FIELD;rock;All;0;mm
+0x00089;TERMINA_FIELD;Wall Ocean 4;MM Termina Field Rock Wall Ocean 4;rock;1030;1162;TERMINA_FIELD;rock;All;0;mm
+0x0008a;TERMINA_FIELD;Wall Ocean 5;MM Termina Field Rock Wall Ocean 5;rock;1043;1178;TERMINA_FIELD;rock;All;0;mm
 0x0008c;TERMINA_FIELD;Circle Rock 1;MM Termina Field Rock Circle Rock 1;rock;1084;358;TERMINA_FIELD;rock;All;0;mm
 0x1008c;TERMINA_FIELD;Circle Rock 2;MM Termina Field Rock Circle Rock 2;rock;1110;349;TERMINA_FIELD;rock;All;0;mm
-0x2008c;TERMINA_FIELD;Circle Rock 3;MM Termina Field Rock Circle Rock 3;rock;1057;349;TERMINA_FIELD;rock;All;0;mm
-0x3008c;TERMINA_FIELD;Circle Rock 4;MM Termina Field Rock Circle Rock 4;rock;1117;322;TERMINA_FIELD;rock;All;0;mm
-0x4008c;TERMINA_FIELD;Circle Rock 5;MM Termina Field Rock Circle Rock 5;rock;1048;322;TERMINA_FIELD;rock;All;0;mm
-0x5008c;TERMINA_FIELD;Circle Rock 6;MM Termina Field Rock Circle Rock 6;rock;1108;296;TERMINA_FIELD;rock;All;0;mm
-0x6008c;TERMINA_FIELD;Circle Rock 7;MM Termina Field Rock Circle Rock 7;rock;1057;295;TERMINA_FIELD;rock;All;0;mm
-0x7008c;TERMINA_FIELD;Circle Rock 8;MM Termina Field Rock Circle Rock 8;rock;1083;285;TERMINA_FIELD;rock;All;0;mm
+0x2008c;TERMINA_FIELD;Circle Rock 3;MM Termina Field Rock Circle Rock 3;rock;1117;322;TERMINA_FIELD;rock;All;0;mm
+0x3008c;TERMINA_FIELD;Circle Rock 4;MM Termina Field Rock Circle Rock 4;rock;1108;296;TERMINA_FIELD;rock;All;0;mm
+0x4008c;TERMINA_FIELD;Circle Rock 5;MM Termina Field Rock Circle Rock 5;rock;1083;285;TERMINA_FIELD;rock;All;0;mm
+0x5008c;TERMINA_FIELD;Circle Rock 6;MM Termina Field Rock Circle Rock 6;rock;1057;295;TERMINA_FIELD;rock;All;0;mm
+0x6008c;TERMINA_FIELD;Circle Rock 7;MM Termina Field Rock Circle Rock 7;rock;1048;322;TERMINA_FIELD;rock;All;0;mm
+0x7008c;TERMINA_FIELD;Circle Rock 8;MM Termina Field Rock Circle Rock 8;rock;1057;349;TERMINA_FIELD;rock;All;0;mm
 0x00005;TERMINA_FIELD;Tree Stump;MM Termina Field Soil Tree Stump;soil;1605;1504;TERMINA_FIELD;soil;All;0;mm
 0x00006;TERMINA_FIELD;Observatory Item 1;MM Termina Field Soil Observatory Item 1;soil;2241;1141;TERMINA_FIELD;soil;All;0;mm
 0x10006;TERMINA_FIELD;Observatory Item 2;MM Termina Field Soil Observatory Item 2;soil;2227;1141;TERMINA_FIELD;soil;All;0;mm
@@ -3700,10 +3700,10 @@ ZORA_HALL_LIGHTS;ZORA_HALL_ROOMS;Scene Lights;MM Zora Hall Scene Lights;none;0;0
 0x10007;TERMINA_FIELD;Wall Item 2;MM Termina Field Soil Wall Item 2;soil;1628;1077;TERMINA_FIELD;soil;All;0;mm
 0x20007;TERMINA_FIELD;Wall Item 3;MM Termina Field Soil Wall Item 3;soil;1634;1065;TERMINA_FIELD;soil;All;0;mm
 0x00008;TERMINA_FIELD;Pillar;MM Termina Field Soil Pillar;soil;1953;670;TERMINA_FIELD;soil;All;0;mm
-0x00002;TRADING_POST;Bush 1;MM Trading Post Bush 1;bush;929;598;TRADING_POST;bush;All;0;mm
-0x00003;TRADING_POST;Bush 2;MM Trading Post Bush 2;bush;879;474;TRADING_POST;bush;All;0;mm
-0x00004;TRADING_POST;Bush 3;MM Trading Post Bush 3;bush;151;430;TRADING_POST;bush;All;0;mm
-0x00005;TRADING_POST;Bush 4;MM Trading Post Bush 4;bush;218;403;TRADING_POST;bush;All;0;mm
+0x00002;TRADING_POST;Bush 1;MM Trading Post Bush 1;bush;151;430;TRADING_POST;bush;All;0;mm
+0x00003;TRADING_POST;Bush 2;MM Trading Post Bush 2;bush;218;403;TRADING_POST;bush;All;0;mm
+0x00004;TRADING_POST;Bush 3;MM Trading Post Bush 3;bush;879;474;TRADING_POST;bush;All;0;mm
+0x00005;TRADING_POST;Bush 4;MM Trading Post Bush 4;bush;929;598;TRADING_POST;bush;All;0;mm
 0x00007;TWIN_ISLANDS_SPRING;Spring - Island 1;MM Twin Islands Tree Island 1;tree;424;299;TWIN_ISLANDS;tree;Spring;0;mm
 0x00008;TWIN_ISLANDS_SPRING;Spring - Island 2;MM Twin Islands Tree Island 2;tree;672;317;TWIN_ISLANDS;tree;Spring;0;mm
 0x00009;TWIN_ISLANDS_SPRING;Spring - Ramp;MM Twin Islands Tree Ramp;tree;242;265;TWIN_ISLANDS;tree;Spring;0;mm
@@ -3713,21 +3713,21 @@ ZORA_HALL_LIGHTS;ZORA_HALL_ROOMS;Scene Lights;MM Zora Hall Scene Lights;none;0;0
 0x00007;TWIN_ISLANDS_WINTER;Winter - Island 1;MM Twin Islands Snow Tree Island 1;tree;424;299;TWIN_ISLANDS;tree;Winter;0;mm
 0x00008;TWIN_ISLANDS_WINTER;Winter - Island 2;MM Twin Islands Snow Tree Island 2;tree;672;317;TWIN_ISLANDS;tree;Winter;0;mm
 0x00009;TWIN_ISLANDS_WINTER;Winter - Ramp;MM Twin Islands Snow Tree Ramp;tree;242;265;TWIN_ISLANDS;tree;Winter;0;mm
-0x00020;ZORA_CAPE;Island 1;MM Zora Cape Rock Island 1;rock;338;455;ZORA_CAPE;rock;All;0;mm
+0x00020;ZORA_CAPE;Island 1;MM Zora Cape Rock Island 1;rock;345;432;ZORA_CAPE;rock;All;0;mm
 0x00021;ZORA_CAPE;Island 2;MM Zora Cape Rock Island 2;rock;344;444;ZORA_CAPE;rock;All;0;mm
-0x00022;ZORA_CAPE;Island 3;MM Zora Cape Rock Island 3;rock;321;438;ZORA_CAPE;rock;All;0;mm
-0x00023;ZORA_CAPE;Island 4;MM Zora Cape Rock Island 4;rock;345;432;ZORA_CAPE;rock;All;0;mm
-0x00024;ZORA_CAPE;Island 5;MM Zora Cape Rock Island 5;rock;332;431;ZORA_CAPE;rock;All;0;mm
-0x00025;ZORA_CAPE;Water 1;MM Zora Cape Rock Water 1;rock;750;299;ZORA_CAPE;rock;All;0;mm
-0x00026;ZORA_CAPE;Water 2;MM Zora Cape Rock Water 2;rock;738;299;ZORA_CAPE;rock;All;0;mm
-0x00027;ZORA_CAPE;Water 3;MM Zora Cape Rock Water 3;rock;762;297;ZORA_CAPE;rock;All;0;mm
-0x00028;ZORA_CAPE;Water 4;MM Zora Cape Rock Water 4;rock;740;287;ZORA_CAPE;rock;All;0;mm
-0x00029;ZORA_CAPE;Water 5;MM Zora Cape Rock Water 5;rock;746;275;ZORA_CAPE;rock;All;0;mm
-0x00035;ZORA_CAPE;Sand 1;MM Zora Cape Rock Sand 1;rock;754;257;ZORA_CAPE;rock;All;0;mm
-0x00036;ZORA_CAPE;Sand 2;MM Zora Cape Rock Sand 2;rock;624;220;ZORA_CAPE;rock;All;0;mm
+0x00022;ZORA_CAPE;Island 3;MM Zora Cape Rock Island 3;rock;332;431;ZORA_CAPE;rock;All;0;mm
+0x00023;ZORA_CAPE;Island 4;MM Zora Cape Rock Island 4;rock;338;455;ZORA_CAPE;rock;All;0;mm
+0x00024;ZORA_CAPE;Island 5;MM Zora Cape Rock Island 5;rock;321;438;ZORA_CAPE;rock;All;0;mm
+0x00025;ZORA_CAPE;Water 1;MM Zora Cape Rock Water 1;rock;738;299;ZORA_CAPE;rock;All;0;mm
+0x00026;ZORA_CAPE;Water 2;MM Zora Cape Rock Water 2;rock;740;287;ZORA_CAPE;rock;All;0;mm
+0x00027;ZORA_CAPE;Water 3;MM Zora Cape Rock Water 3;rock;750;299;ZORA_CAPE;rock;All;0;mm
+0x00028;ZORA_CAPE;Water 4;MM Zora Cape Rock Water 4;rock;746;275;ZORA_CAPE;rock;All;0;mm
+0x00029;ZORA_CAPE;Water 5;MM Zora Cape Rock Water 5;rock;762;297;ZORA_CAPE;rock;All;0;mm
+0x00035;ZORA_CAPE;Sand 1;MM Zora Cape Rock Sand 1;rock;509;167;ZORA_CAPE;rock;All;0;mm
+0x00036;ZORA_CAPE;Sand 2;MM Zora Cape Rock Sand 2;rock;461;179;ZORA_CAPE;rock;All;0;mm
 0x00037;ZORA_CAPE;Sand 3;MM Zora Cape Rock Sand 3;rock;593;201;ZORA_CAPE;rock;All;0;mm
-0x00038;ZORA_CAPE;Sand 4;MM Zora Cape Rock Sand 4;rock;461;179;ZORA_CAPE;rock;All;0;mm
-0x00039;ZORA_CAPE;Sand 5;MM Zora Cape Rock Sand 5;rock;509;167;ZORA_CAPE;rock;All;0;mm
+0x00038;ZORA_CAPE;Sand 4;MM Zora Cape Rock Sand 4;rock;624;220;ZORA_CAPE;rock;All;0;mm
+0x00039;ZORA_CAPE;Sand 5;MM Zora Cape Rock Sand 5;rock;754;257;ZORA_CAPE;rock;All;0;mm
 0x00018;ZORA_CAPE;Beach 1;MM Zora Cape Palm Tree Beach 1;tree;530;172;ZORA_CAPE;tree;All;0;mm
 0x00019;ZORA_CAPE;Beach 2;MM Zora Cape Palm Tree Beach 2;tree;575;199;ZORA_CAPE;tree;All;0;mm
 0x0001a;ZORA_CAPE;Island Near Fountain;MM Zora Cape Palm Tree Island Near Fountain;tree;331;443;ZORA_CAPE;tree;All;0;mm
