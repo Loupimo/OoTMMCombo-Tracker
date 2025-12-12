@@ -70,12 +70,13 @@ typedef struct ObjectInfo
 	const char* Name;								// The object friendly name
 	const char* Location;							// The string location of the object (should be greatly similar as the spoiler log location)
 	ObjectType Type;								// The actual OOTMM rom type of object
-	int Position[2];								// Object position on its corresponding scene image. ID 0 = X, ID 1 = Y
+	int Position[3];								// Object position on its corresponding scene image. ID 0 = X, ID 1 = Y, ID 2 = Z
 	uint32_t RenderScene;							// The scene where the object should be rendered
 	ObjectType RenderType;							// The type to use to render the object
 	ObjectContext Context;							// The context in which the object appears
 	uint32_t RoomID;								// The room in which the object should be put
 	ZGame GameID;									// The actual game to which this object belongs to.
+	const char* Tooltip;							// The text to display in tooltip to give some hint on how to get the object.
 	const ItemInfo* Item;							// The item contained in the object
 	ObjectState Status = ObjectState::Hidden;		// The status object
 	bool PosSet = false;							// Tells if the position has already been set.

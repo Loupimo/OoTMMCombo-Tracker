@@ -147,9 +147,6 @@
     <ClInclude Include="Headers\Combo\Scenes.h">
       <Filter>Header Files\Combo</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\UI\ObjectRenderer.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\Multi\Game.h">
       <Filter>Header Files\Multi</Filter>
     </ClInclude>
@@ -182,6 +179,9 @@
     </ClInclude>
     <ClInclude Include="main.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\UI\ObjectRenderer.h">
+      <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

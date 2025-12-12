@@ -27,8 +27,14 @@ def parse_file(input_file, output_file, arrayname, prefix):
             renderscene = row["renderscene"]
             if row["renderscene"] in commonScenes:
                 renderscene = prefix + renderscene
+
+            tooltip = str(row["tooltip"])
+            if len(tooltip) == 0 or tooltip == "nan":
+                tooltip = "NULL"
+            else:
+                tooltip = "\"" + tooltip + "\""
             
-            objectstr = objectstr + "\t{ " + idstr + ", " + scenestr + ", \"" + str(row["location"]) + "\", ObjectType::" + str(row["type"]) + ", {" + str(row["x"]) + ", " + str(row["y"]) + "}, " + renderscene + ", ObjectType::" + str(row["rendertype"]) + ", ZGame::" + str(row['game']) + " }"
+            objectstr = objectstr + "\t{ " + idstr + ", " + scenestr + ", \"" + str(row["location"]) + "\", ObjectType::" + str(row["type"]) + ", {" + str(row["x"]) + ", " + str(row["y"]) + ", " + str(row["z"]) + "}, " + renderscene + ", ObjectType::" + str(row["rendertype"]) + ", ZGame::" + str(row['game']) + ", " + tooltip + " }"
             outfile.write(objectstr)
         outfile.write("\n};")
 
@@ -59,7 +65,13 @@ def parse_file2(input_file, output_file, arrayname, prefix):
             if fin.__contains__(scenestr) == False:
                 fin[scenestr] = []
 
-            objectstr = "\t{ " + idstr + ", " + scenestr + ", \"" + str(row["friendly_name"]) + "\", \"" + str(row["location"]) + "\", ObjectType::" + str(row["type"]) + ", {" + str(int(row["x"])) + ", " + str(int(row["y"])) + "}, " + renderscene + ", ObjectType::" + str(row["rendertype"]) + ", ObjectContext::" + str(row["context"]) + ", " + str(row["room"]) + ", ZGame::" + str(row['game']) + " }"
+            tooltip = str(row["tooltip"])
+            if len(tooltip) == 0 or tooltip == "nan":
+                tooltip = "NULL"
+            else:
+                tooltip = "\"" + tooltip + "\""
+
+            objectstr = "\t{ " + idstr + ", " + scenestr + ", \"" + str(row["friendly_name"]) + "\", \"" + str(row["location"]) + "\", ObjectType::" + str(row["type"]) + ", {" + str(int(row["x"])) + ", " + str(int(row["y"])) + ", " + str(int(row["z"])) + "}, " + renderscene + ", ObjectType::" + str(row["rendertype"]) + ", ObjectContext::" + str(row["context"]) + ", " + str(row["room"]) + ", ZGame::" + str(row['game']) + ", " + tooltip  + " }"
             fin[scenestr].append(objectstr)
             
             if renderscene != scenestr:

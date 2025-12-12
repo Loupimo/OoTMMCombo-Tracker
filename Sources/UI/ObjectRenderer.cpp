@@ -1,6 +1,9 @@
-#include "UI/ObjectRenderer.h"
+﻿#include "UI/ObjectRenderer.h"
 #include "UI/SceneRenderer.h"
 #include <QGraphicsColorizeEffect>
+#include <QGraphicsSceneHoverEvent>
+#include <QToolTip>
+#include <QCursor>
 #include <UI/AppConfig.h>
 
 static ObjectIcons* IconsRef = nullptr;
@@ -94,6 +97,7 @@ void ObjectItemTree::UpdateIcon(ObjectType Type)
 
     this->GraphItem->UpdateObjectRendering(this->Object->Status, false);
     this->GraphItem->setPos(this->Object->Position[0], this->Object->Position[1]);
+    this->GraphItem->setZValue(this->Object->Position[2]);
     this->RendererOwner->SceneOwner->addItem(this->GraphItem);
     this->UpdateTextStyle();
 }
@@ -238,10 +242,31 @@ void ObjectItemTree::ResetObjectEffect()
 }
 
 
+const char* ObjectItemTree::GetObjectToolTip()
+{
+    return this->Object->Tooltip;
+}
+
+
 ObjectPixmapItem::ObjectPixmapItem(const QPixmap& Pixmap, ObjectRenderer* Owner, ObjectItemTree* ItemOwner) : QGraphicsPixmapItem(Pixmap)
 {
     this->Owner = Owner;
     this->ItemOwner = ItemOwner;
+
+    this->setAcceptHoverEvents(true);
+
+    this->HoverTimer = new QTimer();
+    this->HoverTimer->setSingleShot(true);
+    this->HoverTimer->setInterval(600); // 600 ms = temps à attendre
+
+    // Quand le timer expire → montrer le tooltip
+    QObject::connect(this->HoverTimer, &QTimer::timeout, [this]()
+        {
+        if (this->ItemOwner->GetObjectToolTip() != NULL)
+        {
+            QToolTip::showText(QCursor::pos(), this->ItemOwner->GetObjectToolTip());
+        }
+    });
 }
 
 void ObjectPixmapItem::UpdateObjectRendering(ObjectState ObjStatus, bool IsSelected)
@@ -304,6 +329,32 @@ void ObjectPixmapItem::mousePressEvent(QGraphicsSceneMouseEvent* event)
         this->ItemOwner->PerformAction();           // Update the object
     }
     QGraphicsPixmapItem::mousePressEvent(event);
+}
+
+
+void ObjectPixmapItem::hoverEnterEvent(QGraphicsSceneHoverEvent* event)
+{
+    if (this->ItemOwner->GetObjectToolTip() != NULL)
+    {
+        this->HoverTimer->start();
+    }
+
+    QGraphicsPixmapItem::hoverEnterEvent(event);
+}
+
+
+void ObjectPixmapItem::hoverMoveEvent(QGraphicsSceneHoverEvent* event)
+{
+    // Empêche la disparition : ne relance pas le timer !
+    QGraphicsPixmapItem::hoverMoveEvent(event);
+}
+
+
+void ObjectPixmapItem::hoverLeaveEvent(QGraphicsSceneHoverEvent* event)
+{
+    this->HoverTimer->stop();
+    QToolTip::hideText();
+    QGraphicsPixmapItem::hoverLeaveEvent(event);
 }
 
 

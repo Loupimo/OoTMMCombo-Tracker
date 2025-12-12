@@ -241,7 +241,7 @@ const SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 	{ "Potion Shop", "./Resources/OoT/Market/Potion_Shop.png", (uint8_t)OoTRegions::Market, false },
 	{ "Bombchu Shop", "./Resources/OoT/Market/Bombchu_Shop.png", (uint8_t)OoTRegions::Market, false },
 	{ "Happy Mask Shop", "", (uint8_t)OoTRegions::None, false },
-	{ "Link's House", "./Resources/OoT/Kokiri_Forest/Link_House.png", (uint8_t)OoTRegions::Kokiri_Forest, false },
+	{ "Link's House", "./Resources/OoT/Kokiri_Forest/Link_House.png", (uint8_t)OoTRegions::Kokiri_Forest, true },
 	{ "Dog Lady's House", "./Resources/OoT/Market/Dog_Lady_House.png", (uint8_t)OoTRegions::Market, false },
 	{ "Stable", "./Resources/OoT/Ranch/Stable.png", (uint8_t)OoTRegions::Lon_Lon_Ranch, false },
 	{ "Impa's House", "./Resources/OoT/Kakariko/Impa_House.png", (uint8_t)OoTRegions::Kakariko, false },

@@ -6,6 +6,9 @@
 #include <QPair>
 #include <QTreeWidget>
 #include <QCollator>
+#include <QGraphicsPixmapItem>
+#include <QTimer>
+#include <QString>
 #include "Combo/Objects.h"
 
 class SceneRenderer;
@@ -28,7 +31,7 @@ const ObjectIcon IconsMetaInfo[ObjectType::last] =
     {"./Resources/Common/Stray_Fairy.png", { 30, 30 }},    // ObjectType::sf
     {"./Resources/Common/Cow.png", { 50, 50 }},            // ObjectType::cow
     {"./Resources/Common/Shop.png", { 30, 30 }},           // ObjectType::shop
-    {"./Resources/Common/Scrub.png", { 55, 55 }},          // ObjectType::scrub
+    {"./Resources/Common/Scrub.png", { 50, 50 }},          // ObjectType::scrub
     {"./Resources/Common/Silver_Rupee.png", { 20, 20 }},   // ObjectType::sr
     {"./Resources/Common/Fish.png", { 30, 30 }},           // ObjectType::fish
     {"./Resources/Common/Wonder.png", { 30, 30 }},         // ObjectType::wonder
@@ -38,7 +41,7 @@ const ObjectIcon IconsMetaInfo[ObjectType::last] =
     {"./Resources/Common/Hive.png", { 40, 40 }},           // ObjectType::hive
     {"./Resources/Common/Butterfly.png", { 20, 20 }},      // ObjectType::butterfly
     {"./Resources/Common/Rupee.png", { 20, 20 }},          // ObjectType::rupee
-    {"./Resources/Common/Snowball.png", { 30, 30 }},       // ObjectType::snowball
+    {"./Resources/Common/Snowball.png", { 25, 25 }},       // ObjectType::snowball
     {"./Resources/Common/Barrel.png", { 20, 20 }},         // ObjectType::barrel
     {"./Resources/Common/Heart.png", { 30, 30 }},          // ObjectType::heart
     {"./Resources/Common/Fairy_Spot.png", { 30, 30 }},     // ObjectType::fairy_spot
@@ -135,10 +138,12 @@ public:
 */
 class ObjectPixmapItem : public QGraphicsPixmapItem
 {
+
 public:
         
     ObjectRenderer* Owner;          // The object renderer that owns this item.
     ObjectItemTree* ItemOwner;      // The object item tree that owns this item.
+    QTimer* HoverTimer;           // The timer to wait before printing the tooltip
 
 public:
 
@@ -167,6 +172,27 @@ protected:
     *   @param event                The click event that triggered this function.
     */
     void mousePressEvent(QGraphicsSceneMouseEvent* event) override;
+
+    /*
+    *   Perform action on the corresponding object when the mouse is hover it.
+    *
+    *   @param event                The mouse hover move event that triggered this function.
+    */
+    void hoverMoveEvent(QGraphicsSceneHoverEvent* event) override;
+
+    /*
+    *   Perform action on the corresponding object when the mouse is moving hover it.
+    *
+    *   @param event                The mouse hover enter event that triggered this function.
+    */
+    void hoverEnterEvent(QGraphicsSceneHoverEvent* event) override;
+
+    /*
+    *   Perform action on the corresponding object when the mouse is not hover it anymore.
+    *
+    *   @param event                The mouse hover leave event that triggered this function.
+    */
+    void hoverLeaveEvent(QGraphicsSceneHoverEvent* event) override;
 };
 
 
@@ -249,6 +275,13 @@ public:
     *   Resets the object graphical icon effect to the state corresponding to its object discovery state.
     */
     void ResetObjectEffect() override;
+
+    /*
+    *   Gets the tooltip text associated to this object.
+    * 
+    *   @return The tooltip associated to this object.
+    */
+    const char* GetObjectToolTip();
 };
 
 
