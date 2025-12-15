@@ -138,12 +138,13 @@ public:
 */
 class ObjectPixmapItem : public QGraphicsPixmapItem
 {
-
+    
 public:
         
     ObjectRenderer* Owner;          // The object renderer that owns this item.
     ObjectItemTree* ItemOwner;      // The object item tree that owns this item.
-    QTimer* HoverTimer;           // The timer to wait before printing the tooltip
+    QTimer* HoverTimer;             // The timer to wait before printing the tooltip
+    bool TimerStart;                // Tells if the timer is already started or not
 
 public:
 

@@ -28,11 +28,23 @@ def parse_file(input_file, output_file, arrayname, prefix):
             if row["renderscene"] in commonScenes:
                 renderscene = prefix + renderscene
 
+            requierements = str(row["requierements"])
+            if len(requierements) == 0 or requierements == "nan":
+                requierements = None
+            else:
+                reqs = requierements.split(", ")
+                requierements = "<b>Requirements:</b>"
+                for req in reqs:
+                    requierements += "<br>- " + req
+
             tooltip = str(row["tooltip"])
             if len(tooltip) == 0 or tooltip == "nan":
-                tooltip = "NULL"
+                if requierements is None:
+                    tooltip = "NULL"
+                else:
+                    tooltip = "\"" + requierements + "\""
             else:
-                tooltip = "\"" + tooltip + "\""
+                tooltip = "\"" + tooltip + "<br><br>" + requierements + "\""
             
             objectstr = objectstr + "\t{ " + idstr + ", " + scenestr + ", \"" + str(row["location"]) + "\", ObjectType::" + str(row["type"]) + ", {" + str(row["x"]) + ", " + str(row["y"]) + ", " + str(row["z"]) + "}, " + renderscene + ", ObjectType::" + str(row["rendertype"]) + ", ZGame::" + str(row['game']) + ", " + tooltip + " }"
             outfile.write(objectstr)
@@ -65,9 +77,23 @@ def parse_file2(input_file, output_file, arrayname, prefix):
             if fin.__contains__(scenestr) == False:
                 fin[scenestr] = []
 
+            requierements = str(row["requierements"])
+            if len(requierements) == 0 or requierements == "nan":
+                requierements = None
+            else:
+                reqs = requierements.split(", ")
+                requierements = "<b>Requirements:</b>"
+                for req in reqs:
+                    requierements += "<br>- " + req
+
             tooltip = str(row["tooltip"])
             if len(tooltip) == 0 or tooltip == "nan":
-                tooltip = "NULL"
+                if requierements is None:
+                    tooltip = "NULL"
+                else:
+                    tooltip = "\"" + requierements + "\""
+            elif requierements is not None:
+                tooltip = "\"" + tooltip + "<br><br>" + requierements + "\""
             else:
                 tooltip = "\"" + tooltip + "\""
 

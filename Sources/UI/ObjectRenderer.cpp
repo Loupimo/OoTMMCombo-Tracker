@@ -254,7 +254,9 @@ ObjectPixmapItem::ObjectPixmapItem(const QPixmap& Pixmap, ObjectRenderer* Owner,
     this->ItemOwner = ItemOwner;
 
     this->setAcceptHoverEvents(true);
-
+    this->TimerStart = false;
+    this->setToolTip(this->ItemOwner->GetObjectToolTip());
+    /*this->TimerStart = false;
     this->HoverTimer = new QTimer();
     this->HoverTimer->setSingleShot(true);
     this->HoverTimer->setInterval(600); // 600 ms = temps à attendre
@@ -266,7 +268,7 @@ ObjectPixmapItem::ObjectPixmapItem(const QPixmap& Pixmap, ObjectRenderer* Owner,
         {
             QToolTip::showText(QCursor::pos(), this->ItemOwner->GetObjectToolTip());
         }
-    });
+    });*/
 }
 
 void ObjectPixmapItem::UpdateObjectRendering(ObjectState ObjStatus, bool IsSelected)
@@ -334,12 +336,14 @@ void ObjectPixmapItem::mousePressEvent(QGraphicsSceneMouseEvent* event)
 
 void ObjectPixmapItem::hoverEnterEvent(QGraphicsSceneHoverEvent* event)
 {
-    if (this->ItemOwner->GetObjectToolTip() != NULL)
+    /*QGraphicsPixmapItem::hoverEnterEvent(event);
+    if (this->TimerStart == false && this->ItemOwner->GetObjectToolTip() != NULL)
     {
-        this->HoverTimer->start();
+        //this->HoverTimer->start();
+        this->TimerStart = true;
+        QToolTip::showText(QCursor::pos(), QString(this->ItemOwner->GetObjectToolTip()), this, {}, 100000000000);
     }
-
-    QGraphicsPixmapItem::hoverEnterEvent(event);
+    */
 }
 
 
@@ -352,9 +356,10 @@ void ObjectPixmapItem::hoverMoveEvent(QGraphicsSceneHoverEvent* event)
 
 void ObjectPixmapItem::hoverLeaveEvent(QGraphicsSceneHoverEvent* event)
 {
-    this->HoverTimer->stop();
+    //this->HoverTimer->stop();
+    /*this->TimerStart = false;
     QToolTip::hideText();
-    QGraphicsPixmapItem::hoverLeaveEvent(event);
+    QGraphicsPixmapItem::hoverLeaveEvent(event);*/
 }
 
 
