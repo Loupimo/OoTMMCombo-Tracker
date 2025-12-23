@@ -2,6 +2,7 @@
 #include <QRegularExpression>
 #include "UI/LogTab.h"
 #include "UI/GameTab.h"
+#include "UI/AppConfig.h"
 #include "UI/OoTMMComboTracker.h"
 #include "Combo/Scenes.h"
 
@@ -123,8 +124,9 @@ LogTab::LogTab(OoTMMComboTracker* Owner, QWidget* parent) : QWidget(parent)
     QObject::connect(this->LaunchButton, &QPushButton::pressed, this, &LogTab::PressLaunchButton);
 
     // Multiplayer checkbox
+    this->EnableMultiplayer = AppConfig::GetUseMultiplayer();
     this->NetCheckBox = new QCheckBox("Use Multiplayer");
-    this->NetCheckBox->setChecked(false);
+    this->NetCheckBox->setChecked(this->EnableMultiplayer);
     QObject::connect(this->NetCheckBox, &QCheckBox::checkStateChanged, this, &LogTab::ToggleNetOption);
 
     // Host field
@@ -214,6 +216,7 @@ void LogTab::ToggleNetOption(int state)
     {
         this->EnableMultiplayer = false;
     }
+    AppConfig::SetUseMultiplayer(this->EnableMultiplayer);
     this->Host->setEnabled(this->EnableMultiplayer);
     this->Port->setEnabled(this->EnableMultiplayer);
 }

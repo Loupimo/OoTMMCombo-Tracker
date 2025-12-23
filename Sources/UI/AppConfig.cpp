@@ -30,6 +30,11 @@ QString AppConfig::GetLastSpoilerLogPath()
     return Config.Settings.value("LastSpoilerPath").toString();
 }
 
+bool AppConfig::GetUseMultiplayer()
+{
+    return Config.Settings.value("UseMultiplay", false).toBool();
+}
+
 void AppConfig::SetRecentFiles(QStringList NewValue)
 {
     Config.Settings.setValue("RecentFiles", NewValue);
@@ -48,6 +53,11 @@ void AppConfig::SetAutoLoadSpoilerLog(bool NewValue)
 void AppConfig::SetLastSpoilerLogPath(QString NewValue)
 {
     Config.Settings.setValue("LastSpoilerPath", NewValue);
+}
+
+void AppConfig::SetUseMultiplayer(bool NewValue)
+{
+    Config.Settings.setValue("UseMultiplay", NewValue);
 }
 
 #pragma endregion

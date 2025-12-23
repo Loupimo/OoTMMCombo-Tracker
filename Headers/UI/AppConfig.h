@@ -51,6 +51,13 @@ public:
     static QString GetLastSpoilerLogPath();
 
     /*
+    *   Gets the use multiplayer state.
+    *
+    *   @return The use multiplayer state.
+    */
+    static bool GetUseMultiplayer();
+
+    /*
     *   Sets the list of the last opened files.
     *
     *   @param NewValue The new list of the last opened files.
@@ -69,8 +76,8 @@ public:
     *
     *   @param NewValue The new auto load most recent spoiler log state.
     */
-    
     static void SetAutoLoadSpoilerLog(bool NewValue);
+    
     /*
     *   Sets the most recent spoiler log path.
     *
@@ -78,6 +85,13 @@ public:
     */
     static void SetLastSpoilerLogPath(QString NewValue);
     
+    /*
+    *   Sets the use multiplayer state.
+    *
+    *   @param NewValue The new use multiplayer state.
+    */
+    static void SetUseMultiplayer(bool NewValue);
+
 #pragma endregion
 
 #pragma region Options Menu
