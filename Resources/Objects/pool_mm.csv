@@ -3498,31 +3498,31 @@ ZORA_HALL_LIGHTS;ZORA_HALL_ROOMS;Scene Lights;MM Zora Hall Scene Lights;none;0;0
 0x10000;DEKU_PALACE;Item 2;MM Deku Palace Soil Item 2;soil;889;101;0;DEKU_PALACE;soil;All;0;mm;;
 0x20000;DEKU_PALACE;Item 3;MM Deku Palace Soil Item 3;soil;876;88;0;DEKU_PALACE;soil;All;0;mm;;
 0x00008;DOG_RACETRACK;Soil;MM Doggy Racetrack Soil;soil;384;391;0;DOG_RACETRACK;soil;All;0;mm;;
-0x0000b;GORMAN_TRACK;Tree 1;MM Gorman Track Tree 01;tree;697;589;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0000c;GORMAN_TRACK;Tree 2;MM Gorman Track Tree 02;tree;636;572;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0000d;GORMAN_TRACK;Tree 3;MM Gorman Track Tree 03;tree;732;560;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0000e;GORMAN_TRACK;Tree 4;MM Gorman Track Tree 04;tree;386;554;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0000f;GORMAN_TRACK;Tree 5;MM Gorman Track Tree 05;tree;828;548;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00010;GORMAN_TRACK;Tree 6;MM Gorman Track Tree 06;tree;510;548;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00011;GORMAN_TRACK;Tree 7;MM Gorman Track Tree 07;tree;663;542;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00012;GORMAN_TRACK;Tree 8;MM Gorman Track Tree 08;tree;498;526;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00013;GORMAN_TRACK;Tree 9;MM Gorman Track Tree 09;tree;576;520;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00014;GORMAN_TRACK;Tree 10;MM Gorman Track Tree 10;tree;364;520;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00015;GORMAN_TRACK;Tree 11;MM Gorman Track Tree 11;tree;398;494;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00016;GORMAN_TRACK;Tree 12;MM Gorman Track Tree 12;tree;303;488;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00017;GORMAN_TRACK;Tree 13;MM Gorman Track Tree 13;tree;852;482;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00018;GORMAN_TRACK;Tree 14;MM Gorman Track Tree 14;tree;108;102;1;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00019;GORMAN_TRACK;Tree 15;MM Gorman Track Tree 15;tree;139;91;1;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0001a;GORMAN_TRACK;Tree 16;MM Gorman Track Tree 16;tree;117;87;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0001b;GORMAN_TRACK;Tree 17;MM Gorman Track Tree 17;tree;163;83;1;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0001c;GORMAN_TRACK;Tree 18;MM Gorman Track Tree 18;tree;183;81;1;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0001d;GORMAN_TRACK;Tree 19;MM Gorman Track Tree 19;tree;145;75;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0001e;GORMAN_TRACK;Tree 20;MM Gorman Track Tree 20;tree;213;74;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0001f;GORMAN_TRACK;Tree 21;MM Gorman Track Tree 21;tree;173;68;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00020;GORMAN_TRACK;Tree 22;MM Gorman Track Tree 22;tree;245;66;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00021;GORMAN_TRACK;Tree 23;MM Gorman Track Tree 23;tree;195;63;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00022;GORMAN_TRACK;Tree 24;MM Gorman Track Tree 24;tree;225;57;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00023;GORMAN_TRACK;Tree 25;MM Gorman Track Tree 25;tree;257;51;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0000b;GORMAN_TRACK;Tree 1;MM Gorman Track Tree 01;tree;108;102;1;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0000c;GORMAN_TRACK;Tree 2;MM Gorman Track Tree 02;tree;117;87;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0000d;GORMAN_TRACK;Tree 3;MM Gorman Track Tree 03;tree;139;91;1;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0000e;GORMAN_TRACK;Tree 4;MM Gorman Track Tree 04;tree;145;75;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0000f;GORMAN_TRACK;Tree 5;MM Gorman Track Tree 05;tree;163;83;1;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00010;GORMAN_TRACK;Tree 6;MM Gorman Track Tree 06;tree;213;74;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00011;GORMAN_TRACK;Tree 7;MM Gorman Track Tree 07;tree;183;81;1;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00012;GORMAN_TRACK;Tree 8;MM Gorman Track Tree 08;tree;173;68;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00013;GORMAN_TRACK;Tree 9;MM Gorman Track Tree 09;tree;195;63;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00014;GORMAN_TRACK;Tree 10;MM Gorman Track Tree 10;tree;245;66;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00015;GORMAN_TRACK;Tree 11;MM Gorman Track Tree 11;tree;225;57;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00016;GORMAN_TRACK;Tree 12;MM Gorman Track Tree 12;tree;257;51;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00017;GORMAN_TRACK;Tree 13;MM Gorman Track Tree 13;tree;828;548;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00018;GORMAN_TRACK;Tree 14;MM Gorman Track Tree 14;tree;732;560;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00019;GORMAN_TRACK;Tree 15;MM Gorman Track Tree 15;tree;663;542;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0001a;GORMAN_TRACK;Tree 16;MM Gorman Track Tree 16;tree;498;526;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0001b;GORMAN_TRACK;Tree 17;MM Gorman Track Tree 17;tree;364;520;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0001c;GORMAN_TRACK;Tree 18;MM Gorman Track Tree 18;tree;852;482;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0001d;GORMAN_TRACK;Tree 19;MM Gorman Track Tree 19;tree;697;589;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0001e;GORMAN_TRACK;Tree 20;MM Gorman Track Tree 20;tree;636;572;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0001f;GORMAN_TRACK;Tree 21;MM Gorman Track Tree 21;tree;576;520;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00020;GORMAN_TRACK;Tree 22;MM Gorman Track Tree 22;tree;510;548;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00021;GORMAN_TRACK;Tree 23;MM Gorman Track Tree 23;tree;398;494;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00022;GORMAN_TRACK;Tree 24;MM Gorman Track Tree 24;tree;386;554;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00023;GORMAN_TRACK;Tree 25;MM Gorman Track Tree 25;tree;303;488;0;GORMAN_TRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
 0x0003b;GORON_RACETRACK;Tree 1;MM Goron Race Forked Tree 1;tree;134;338;0;GORON_RACETRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
 0x0003c;GORON_RACETRACK;Tree 2;MM Goron Race Forked Tree 2;tree;106;352;0;GORON_RACETRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
 0x0003d;GORON_RACETRACK;Tree 3;MM Goron Race Forked Tree 3;tree;169;321;0;GORON_RACETRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
@@ -3609,8 +3609,8 @@ ZORA_HALL_LIGHTS;ZORA_HALL_ROOMS;Scene Lights;MM Zora Hall Scene Lights;none;0;0
 0x5012c;IKANA_GRAVEYARD;Circle Rock 6;MM Ikana Graveyard Rock Circle Rock 6;rock;515;256;0;IKANA_GRAVEYARD;rock;All;0;mm;;
 0x6012c;IKANA_GRAVEYARD;Circle Rock 7;MM Ikana Graveyard Rock Circle Rock 7;rock;499;254;0;IKANA_GRAVEYARD;rock;All;0;mm;;
 0x7012c;IKANA_GRAVEYARD;Circle Rock 8;MM Ikana Graveyard Rock Circle Rock 8;rock;486;261;0;IKANA_GRAVEYARD;rock;All;0;mm;;
-0x0000e;MOUNTAIN_VILLAGE_SPRING;Cliff 1;MM Mountain Village Rock Cliff 1;rock;544;49;0;MOUNTAIN_VILLAGE;rock;Spring;0;mm;;
-0x0000f;MOUNTAIN_VILLAGE_SPRING;Cliff 2;MM Mountain Village Rock Cliff 2;rock;484;45;0;MOUNTAIN_VILLAGE;rock;Spring;0;mm;;
+0x0000e;MOUNTAIN_VILLAGE_SPRING;Cliff 1;MM Mountain Village Rock Cliff 1;rock;484;45;0;MOUNTAIN_VILLAGE;rock;Spring;0;mm;;
+0x0000f;MOUNTAIN_VILLAGE_SPRING;Cliff 2;MM Mountain Village Rock Cliff 2;rock;544;49;0;MOUNTAIN_VILLAGE;rock;Spring;0;mm;;
 0x00010;MOUNTAIN_VILLAGE_SPRING;Ground 1;MM Mountain Village Rock Ground 1;rock;618;435;0;MOUNTAIN_VILLAGE;rock;Spring;0;mm;;
 0x00011;MOUNTAIN_VILLAGE_SPRING;Ground 2;MM Mountain Village Rock Ground 2;rock;604;430;0;MOUNTAIN_VILLAGE;rock;Spring;0;mm;;
 0x00012;MOUNTAIN_VILLAGE_SPRING;Ground 3;MM Mountain Village Rock Ground 3;rock;591;423;0;MOUNTAIN_VILLAGE;rock;Spring;0;mm;;
@@ -3665,8 +3665,8 @@ ZORA_HALL_LIGHTS;ZORA_HALL_ROOMS;Scene Lights;MM Zora Hall Scene Lights;none;0;0
 0x0030e;SPIDER_HOUSE_SWAMP;Monument Item 1;MM Swamp Spider House Soil Monument Item 1;soil;757;480;0;SPIDER_HOUSE_SWAMP;soil;All;3;mm;Bug (MM);Free some bugs next to the soil
 0x1030e;SPIDER_HOUSE_SWAMP;Monument Item 2;MM Swamp Spider House Soil Monument Item 2;soil;726;480;0;SPIDER_HOUSE_SWAMP;soil;All;3;mm;Bug (MM);Free some bugs next to the soil
 0x2030e;SPIDER_HOUSE_SWAMP;Monument Item 3;MM Swamp Spider House Soil Monument Item 3;soil;741;471;0;SPIDER_HOUSE_SWAMP;soil;All;3;mm;Bug (MM);Free some bugs next to the soil
-0x00015;STONE_TOWER_INVERTED;Rock 1;MM Stone Tower Inverted Rock 1;rock;255;589;0;STONE_TOWER_INVERTED;rock;All;0;mm;;
-0x00016;STONE_TOWER_INVERTED;Rock 2;MM Stone Tower Inverted Rock 2;rock;307;268;0;STONE_TOWER_INVERTED;rock;All;0;mm;;
+0x00015;STONE_TOWER_INVERTED;Rock 1;MM Stone Tower Inverted Rock 1;rock;307;268;0;STONE_TOWER_INVERTED;rock;All;0;mm;;
+0x00016;STONE_TOWER_INVERTED;Rock 2;MM Stone Tower Inverted Rock 2;rock;255;589;0;STONE_TOWER_INVERTED;rock;All;0;mm;;
 0x00000;STONE_TOWER_INVERTED;Lower;MM Stone Tower Inverted Soil Lower;soil;205;288;0;STONE_TOWER_INVERTED;soil;All;0;mm;Bug (MM);Free some bugs next to the soil
 0x00001;STONE_TOWER_INVERTED;Upper;MM Stone Tower Inverted Soil Upper;soil;272;282;0;STONE_TOWER_INVERTED;soil;All;0;mm;Bean (MM), Spring Water, Bug (MM);Plant the bean in the lower soil and free some bugs next to the upper soil
 0x000a8;TERMINA_FIELD;Tree 1;MM Termina Field Tree 1;tree;2011;1100;0;TERMINA_FIELD;tree;All;0;mm;;
@@ -3707,9 +3707,9 @@ ZORA_HALL_LIGHTS;ZORA_HALL_ROOMS;Scene Lights;MM Zora Hall Scene Lights;none;0;0
 0x00007;TWIN_ISLANDS_SPRING;Spring - Island 1;MM Twin Islands Tree Island 1;tree;424;299;0;TWIN_ISLANDS;tree;Spring;0;mm;;
 0x00008;TWIN_ISLANDS_SPRING;Spring - Island 2;MM Twin Islands Tree Island 2;tree;672;317;0;TWIN_ISLANDS;tree;Spring;0;mm;;
 0x00009;TWIN_ISLANDS_SPRING;Spring - Ramp;MM Twin Islands Tree Ramp;tree;242;265;1;TWIN_ISLANDS;tree;Spring;0;mm;;
-0x00018;TWIN_ISLANDS_SPRING;Rock 1;MM Twin Islands Rock 1;rock;226;265;0;TWIN_ISLANDS;rock;Spring;0;mm;;
-0x00019;TWIN_ISLANDS_SPRING;Rock 2;MM Twin Islands Rock 2;rock;242;280;1;TWIN_ISLANDS;rock;Spring;0;mm;;
-0x0001a;TWIN_ISLANDS_SPRING;Rock 3;MM Twin Islands Rock 3;rock;227;279;0;TWIN_ISLANDS;rock;Spring;0;mm;;
+0x00018;TWIN_ISLANDS_SPRING;Rock 1;MM Twin Islands Rock 1;rock;227;279;1;TWIN_ISLANDS;rock;Spring;0;mm;;
+0x00019;TWIN_ISLANDS_SPRING;Rock 2;MM Twin Islands Rock 2;rock;226;265;0;TWIN_ISLANDS;rock;Spring;0;mm;;
+0x0001a;TWIN_ISLANDS_SPRING;Rock 3;MM Twin Islands Rock 3;rock;242;280;2;TWIN_ISLANDS;rock;Spring;0;mm;;
 0x00007;TWIN_ISLANDS_WINTER;Winter - Island 1;MM Twin Islands Snow Tree Island 1;tree;424;299;0;TWIN_ISLANDS;tree;Winter;0;mm;;
 0x00008;TWIN_ISLANDS_WINTER;Winter - Island 2;MM Twin Islands Snow Tree Island 2;tree;672;317;0;TWIN_ISLANDS;tree;Winter;0;mm;;
 0x00009;TWIN_ISLANDS_WINTER;Winter - Ramp;MM Twin Islands Snow Tree Ramp;tree;242;265;1;TWIN_ISLANDS;tree;Winter;0;mm;;
