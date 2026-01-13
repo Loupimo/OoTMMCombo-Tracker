@@ -1570,9 +1570,9 @@ FIRE_ARROW;LAKE_HYLIA;Fire Arrow;OOT Lake Hylia Fire Arrow;npc;521;238;0;LAKE_HY
 0x00032;LAKE_HYLIA;Rupee 2;OOT Lake Hylia Rupee 2;rupee;683;564;2;LAKE_HYLIA;rupee;Child;0;oot;;
 0x00033;LAKE_HYLIA;Rupee 3;OOT Lake Hylia Rupee 3;rupee;676;553;1;LAKE_HYLIA;rupee;Child;0;oot;;
 0x00037;LAKE_HYLIA;Fire Arrow Island;OOT Lake Hylia Island Big Fairy;fairy_spot;505;225;0;LAKE_HYLIA;fairy_spot;All;0;oot;;
-0x00021;LAKE_HYLIA;Butterfly 1;OOT Lake Hylia Butterfly 1;butterfly;601;680;0;LAKE_HYLIA;butterfly;All;0;oot;;
-0x10021;LAKE_HYLIA;Butterfly 2;OOT Lake Hylia Butterfly 2;butterfly;608;695;0;LAKE_HYLIA;butterfly;All;0;oot;;
-0x20021;LAKE_HYLIA;Butterfly 3;OOT Lake Hylia Butterfly 3;butterfly;615;709;0;LAKE_HYLIA;butterfly;All;0;oot;;
+0x00021;LAKE_HYLIA;Butterfly 1;OOT Lake Hylia Butterfly 1;butterfly;601;680;0;LAKE_HYLIA;butterfly;Child;0;oot;;
+0x10021;LAKE_HYLIA;Butterfly 2;OOT Lake Hylia Butterfly 2;butterfly;608;695;0;LAKE_HYLIA;butterfly;Child;0;oot;;
+0x20021;LAKE_HYLIA;Butterfly 3;OOT Lake Hylia Butterfly 3;butterfly;615;709;0;LAKE_HYLIA;butterfly;Child;0;oot;;
 0x00;KOKIRI_FOREST;Cow;OOT Kokiri Forest Cow;cow;910;611;0;LINK_HOUSE;cow;Adult;0;oot;;
 0x0002;LINK_HOUSE;Pot;OOT Link's House Pot;pot;997;296;0;LINK_HOUSE;pot;All;0;oot;;
 MALON_SONG;LON_LON_RANCH;Epona's Song;OOT Lon Lon Ranch Malon Song;npc;472;310;0;LON_LON_RANCH;npc;Child;0;oot;;
@@ -1663,6 +1663,7 @@ TRADE_POACHER_SAW;LOST_WOODS;Poacher's Saw;OOT Lost Woods Poacher's Saw;npc;301;
 0x2f;MARKET_POTION_SHOP;Item 8;OOT Market Potion Shop Item 8;shop;556;340;0;MARKET_POTION_SHOP;shop;All;0;oot;;
 0x01;RANCH_HOUSE_SILO;Heart Piece;OOT Lon Lon Ranch Silo HP;collectible;751;262;0;SILO;collectible;All;0;oot;;
 TALON_BOTTLE;RANCH_HOUSE_SILO;Bottle;OOT Lon Lon Ranch Talon Bottle;npc;485;402;0;RANCH_HOUSE_SILO;npc;Child;0;oot;;
+TALON_MILK;LON_LON_RANCH;Buy Milk;OOT Lon Lon Ranch Talon Buy Milk;npc;505;402;0;RANCH_HOUSE_SILO;npc;Child;0;oot;;
 0x0200;RANCH_HOUSE_SILO;Pot 1;OOT Lon Lon Ranch Talon House Pot 1;pot;359;439;1;RANCH_HOUSE_SILO;pot;All;0;oot;;
 0x0201;RANCH_HOUSE_SILO;Pot 2;OOT Lon Lon Ranch Talon House Pot 2;pot;359;421;0;RANCH_HOUSE_SILO;pot;All;0;oot;;
 0x0202;RANCH_HOUSE_SILO;Pot 3;OOT Lon Lon Ranch Talon House Pot 3;pot;358;355;0;RANCH_HOUSE_SILO;pot;All;0;oot;;
@@ -2720,6 +2721,7 @@ TALON_BOTTLE;LON_LON_RANCH;Bottle;OOT Lon Lon Ranch Talon Bottle;none;0;0;0;RANC
 0x0200;LON_LON_RANCH;Pot 1;OOT Lon Lon Ranch Talon House Pot 1;none;0;0;0;RANCH_HOUSE_SILO;none;All;0;oot;;
 0x0201;LON_LON_RANCH;Pot 2;OOT Lon Lon Ranch Talon House Pot 2;none;0;0;0;RANCH_HOUSE_SILO;none;All;0;oot;;
 0x0202;LON_LON_RANCH;Pot 3;OOT Lon Lon Ranch Talon House Pot 3;none;0;0;0;RANCH_HOUSE_SILO;none;All;0;oot;;
+TALON_MILK;LON_LON_RANCH;Buy Milk;OOT Lon Lon Ranch Talon Buy Milk;none;0;0;0;RANCH_HOUSE_SILO;none;Child;0;oot;;
 0x0c;KOKIRI_FOREST;Chest;OOT Kokiri Forest Storms Grotto;none;0;0;0;OOT_GROTTO_KOKIRI_FOREST_STORMS;none;All;0;oot;;
 0x02c02;KOKIRI_FOREST;Grass 1;OOT Kokiri Forest Storms Grotto Grass 1;none;0;0;0;OOT_GROTTO_KOKIRI_FOREST_STORMS;none;All;0;oot;;
 0x02c03;KOKIRI_FOREST;Grass 2;OOT Kokiri Forest Storms Grotto Grass 2;none;0;0;0;OOT_GROTTO_KOKIRI_FOREST_STORMS;none;All;0;oot;;

@@ -4239,9 +4239,9 @@ ObjectInfo LAKE_HYLIASceneObjects[LAKE_HYLIANumOfObjs] =
 	{ 0x00032, LAKE_HYLIA, "Rupee 2", "OOT Lake Hylia Rupee 2", ObjectType::rupee, {683, 564, 2}, LAKE_HYLIA, ObjectType::rupee, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x00033, LAKE_HYLIA, "Rupee 3", "OOT Lake Hylia Rupee 3", ObjectType::rupee, {676, 553, 1}, LAKE_HYLIA, ObjectType::rupee, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x00037, LAKE_HYLIA, "Fire Arrow Island", "OOT Lake Hylia Island Big Fairy", ObjectType::fairy_spot, {505, 225, 0}, LAKE_HYLIA, ObjectType::fairy_spot, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x00021, LAKE_HYLIA, "Butterfly 1", "OOT Lake Hylia Butterfly 1", ObjectType::butterfly, {601, 680, 0}, LAKE_HYLIA, ObjectType::butterfly, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x10021, LAKE_HYLIA, "Butterfly 2", "OOT Lake Hylia Butterfly 2", ObjectType::butterfly, {608, 695, 0}, LAKE_HYLIA, ObjectType::butterfly, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x20021, LAKE_HYLIA, "Butterfly 3", "OOT Lake Hylia Butterfly 3", ObjectType::butterfly, {615, 709, 0}, LAKE_HYLIA, ObjectType::butterfly, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x00021, LAKE_HYLIA, "Butterfly 1", "OOT Lake Hylia Butterfly 1", ObjectType::butterfly, {601, 680, 0}, LAKE_HYLIA, ObjectType::butterfly, ObjectContext::Child, 0, ZGame::oot, NULL },
+	{ 0x10021, LAKE_HYLIA, "Butterfly 2", "OOT Lake Hylia Butterfly 2", ObjectType::butterfly, {608, 695, 0}, LAKE_HYLIA, ObjectType::butterfly, ObjectContext::Child, 0, ZGame::oot, NULL },
+	{ 0x20021, LAKE_HYLIA, "Butterfly 3", "OOT Lake Hylia Butterfly 3", ObjectType::butterfly, {615, 709, 0}, LAKE_HYLIA, ObjectType::butterfly, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x14, LAKE_HYLIA, "Left", "OOT Lake Hylia Grotto Left Scrub", ObjectType::none, {0, 0, 0}, OOT_GROTTO_LAKE_HYLIA_SCRUBS, ObjectType::none, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x15, LAKE_HYLIA, "Center", "OOT Lake Hylia Grotto Center Scrub", ObjectType::none, {0, 0, 0}, OOT_GROTTO_LAKE_HYLIA_SCRUBS, ObjectType::none, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x16, LAKE_HYLIA, "Right", "OOT Lake Hylia Grotto Right Scrub", ObjectType::none, {0, 0, 0}, OOT_GROTTO_LAKE_HYLIA_SCRUBS, ObjectType::none, ObjectContext::All, 0, ZGame::oot, NULL },
@@ -4300,7 +4300,7 @@ ObjectInfo LINK_HOUSESceneObjects[LINK_HOUSENumOfObjs] =
 	{ 0x0002, LINK_HOUSE, "Pot", "OOT Link's House Pot", ObjectType::pot, {997, 296, 0}, LINK_HOUSE, ObjectType::pot, ObjectContext::All, 0, ZGame::oot, NULL }
 };
 
-const size_t LON_LON_RANCHNumOfObjs = 28;
+const size_t LON_LON_RANCHNumOfObjs = 30;
 ObjectInfo LON_LON_RANCHSceneObjects[LON_LON_RANCHNumOfObjs] =
 {
 	{ MALON_SONG, LON_LON_RANCH, "Epona's Song", "OOT Lon Lon Ranch Malon Song", ObjectType::npc, {472, 310, 0}, LON_LON_RANCH, ObjectType::npc, ObjectContext::Child, 0, ZGame::oot, NULL },
@@ -4322,6 +4322,7 @@ ObjectInfo LON_LON_RANCHSceneObjects[LON_LON_RANCHNumOfObjs] =
 	{ 0x00018, LON_LON_RANCH, "Crate", "OOT Lon Lon Ranch Crate", ObjectType::crate, {691, 465, 0}, LON_LON_RANCH, ObjectType::crate, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x08018, LON_LON_RANCH, "Hurdles 1", "OOT Lon Lon Ranch Wonder Item 1", ObjectType::wonder, {508, 351, 0}, LON_LON_RANCH, ObjectType::wonder, ObjectContext::Adult, 0, ZGame::oot, NULL },
 	{ 0x08019, LON_LON_RANCH, "Hurdles 2", "OOT Lon Lon Ranch Wonder Item 2", ObjectType::wonder, {421, 255, 0}, LON_LON_RANCH, ObjectType::wonder, ObjectContext::Adult, 0, ZGame::oot, NULL },
+	{ TALON_MILK, LON_LON_RANCH, "Buy Milk", "OOT Lon Lon Ranch Talon Buy Milk", ObjectType::npc, {505, 402, 0}, RANCH_HOUSE_SILO, ObjectType::npc, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x08, LON_LON_RANCH, "Left", "OOT Lon Lon Ranch Grotto Left Scrub", ObjectType::none, {0, 0, 0}, OOT_GROTTO_LON_LON_SCRUBS, ObjectType::none, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x09, LON_LON_RANCH, "Center", "OOT Lon Lon Ranch Grotto Center Scrub", ObjectType::none, {0, 0, 0}, OOT_GROTTO_LON_LON_SCRUBS, ObjectType::none, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x0a, LON_LON_RANCH, "Right", "OOT Lon Lon Ranch Grotto Right Scrub", ObjectType::none, {0, 0, 0}, OOT_GROTTO_LON_LON_SCRUBS, ObjectType::none, ObjectContext::All, 0, ZGame::oot, NULL },
@@ -4330,7 +4331,8 @@ ObjectInfo LON_LON_RANCHSceneObjects[LON_LON_RANCHNumOfObjs] =
 	{ TALON_BOTTLE, LON_LON_RANCH, "Bottle", "OOT Lon Lon Ranch Talon Bottle", ObjectType::none, {0, 0, 0}, RANCH_HOUSE_SILO, ObjectType::none, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x0200, LON_LON_RANCH, "Pot 1", "OOT Lon Lon Ranch Talon House Pot 1", ObjectType::none, {0, 0, 0}, RANCH_HOUSE_SILO, ObjectType::none, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x0201, LON_LON_RANCH, "Pot 2", "OOT Lon Lon Ranch Talon House Pot 2", ObjectType::none, {0, 0, 0}, RANCH_HOUSE_SILO, ObjectType::none, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x0202, LON_LON_RANCH, "Pot 3", "OOT Lon Lon Ranch Talon House Pot 3", ObjectType::none, {0, 0, 0}, RANCH_HOUSE_SILO, ObjectType::none, ObjectContext::All, 0, ZGame::oot, NULL }
+	{ 0x0202, LON_LON_RANCH, "Pot 3", "OOT Lon Lon Ranch Talon House Pot 3", ObjectType::none, {0, 0, 0}, RANCH_HOUSE_SILO, ObjectType::none, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ TALON_MILK, LON_LON_RANCH, "Buy Milk", "OOT Lon Lon Ranch Talon Buy Milk", ObjectType::none, {0, 0, 0}, RANCH_HOUSE_SILO, ObjectType::none, ObjectContext::Child, 0, ZGame::oot, NULL }
 };
 
 const size_t STABLENumOfObjs = 2;
@@ -4458,14 +4460,16 @@ ObjectInfo MARKET_POTION_SHOPSceneObjects[MARKET_POTION_SHOPNumOfObjs] =
 	{ 0x2f, MARKET_POTION_SHOP, "Item 8", "OOT Market Potion Shop Item 8", ObjectType::shop, {556, 340, 0}, MARKET_POTION_SHOP, ObjectType::shop, ObjectContext::All, 0, ZGame::oot, NULL }
 };
 
-const size_t RANCH_HOUSE_SILONumOfObjs = 5;
+const size_t RANCH_HOUSE_SILONumOfObjs = 7;
 ObjectInfo RANCH_HOUSE_SILOSceneObjects[RANCH_HOUSE_SILONumOfObjs] =
 {
 	{ 0x01, RANCH_HOUSE_SILO, "Heart Piece", "OOT Lon Lon Ranch Silo HP", ObjectType::collectible, {751, 262, 0}, SILO, ObjectType::collectible, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ TALON_BOTTLE, RANCH_HOUSE_SILO, "Bottle", "OOT Lon Lon Ranch Talon Bottle", ObjectType::npc, {485, 402, 0}, RANCH_HOUSE_SILO, ObjectType::npc, ObjectContext::Child, 0, ZGame::oot, NULL },
+	{ TALON_MILK, LON_LON_RANCH, "Buy Milk", "OOT Lon Lon Ranch Talon Buy Milk", ObjectType::npc, {505, 402, 0}, RANCH_HOUSE_SILO, ObjectType::npc, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x0200, RANCH_HOUSE_SILO, "Pot 1", "OOT Lon Lon Ranch Talon House Pot 1", ObjectType::pot, {359, 439, 1}, RANCH_HOUSE_SILO, ObjectType::pot, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x0201, RANCH_HOUSE_SILO, "Pot 2", "OOT Lon Lon Ranch Talon House Pot 2", ObjectType::pot, {359, 421, 0}, RANCH_HOUSE_SILO, ObjectType::pot, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x0202, RANCH_HOUSE_SILO, "Pot 3", "OOT Lon Lon Ranch Talon House Pot 3", ObjectType::pot, {358, 355, 0}, RANCH_HOUSE_SILO, ObjectType::pot, ObjectContext::All, 0, ZGame::oot, NULL }
+	{ 0x0202, RANCH_HOUSE_SILO, "Pot 3", "OOT Lon Lon Ranch Talon House Pot 3", ObjectType::pot, {358, 355, 0}, RANCH_HOUSE_SILO, ObjectType::pot, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ TALON_MILK, LON_LON_RANCH, "Buy Milk", "OOT Lon Lon Ranch Talon Buy Milk", ObjectType::none, {0, 0, 0}, RANCH_HOUSE_SILO, ObjectType::none, ObjectContext::Child, 0, ZGame::oot, NULL }
 };
 
 const size_t SACRED_FOREST_MEADOWNumOfObjs = 21;
