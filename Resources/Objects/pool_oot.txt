@@ -252,8 +252,8 @@ ObjectInfo DEATH_MOUNTAIN_CRATERSceneObjects [DEATH_MOUNTAIN_CRATERNumOfObjs] =
 	{ 0x0e, DEATH_MOUNTAIN_CRATER, "Child - Ladder", "OOT Death Mountain Crater Scrub Child", ObjectType::scrub, {603, 200, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::scrub, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x80, DEATH_MOUNTAIN_CRATER, "Soil", "OOT Death Mountain Crater GS Soil", ObjectType::gs, {490, 411, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::gs, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x87, DEATH_MOUNTAIN_CRATER, "Crate", "OOT Death Mountain Crater GS Crate", ObjectType::gs, {636, 57, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::gs, ObjectContext::Child, 0, ZGame::oot, NULL },
-	{ 0x810d, DEATH_MOUNTAIN_CRATER, "Pot 1", "OOT Death Mountain Crater Pot 1", ObjectType::pot, {730, 406, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::pot, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x810e, DEATH_MOUNTAIN_CRATER, "Pot 2", "OOT Death Mountain Crater Pot 2", ObjectType::pot, {724, 412, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::pot, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x810d, DEATH_MOUNTAIN_CRATER, "Pot 1", "OOT Death Mountain Crater Pot 1", ObjectType::pot, {724, 412, 1}, DEATH_MOUNTAIN_CRATER, ObjectType::pot, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x810e, DEATH_MOUNTAIN_CRATER, "Pot 2", "OOT Death Mountain Crater Pot 2", ObjectType::pot, {730, 406, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::pot, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x810f, DEATH_MOUNTAIN_CRATER, "Pot 3", "OOT Death Mountain Crater Pot 3", ObjectType::pot, {721, 365, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::pot, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x8110, DEATH_MOUNTAIN_CRATER, "Pot 4", "OOT Death Mountain Crater Pot 4", ObjectType::pot, {713, 364, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::pot, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x00101, DEATH_MOUNTAIN_CRATER, "Child 1", "OOT Death Mountain Crater Rupee Child 1", ObjectType::rupee, {371, 494, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::rupee, ObjectContext::Child, 0, ZGame::oot, NULL },
@@ -292,15 +292,15 @@ ObjectInfo DEATH_MOUNTAIN_CRATERSceneObjects [DEATH_MOUNTAIN_CRATERNumOfObjs] =
 	{ 0x0010e, DEATH_MOUNTAIN_CRATER, "Shortcut", "OOT Death Mountain Crater Red Boulder Shortcut", ObjectType::redboulder, {641, 240, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::redboulder, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x0011e, DEATH_MOUNTAIN_CRATER, "Child 1", "OOT Death Mountain Crater Rock Child 1", ObjectType::rock, {247, 110, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::rock, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x0011f, DEATH_MOUNTAIN_CRATER, "Child 2", "OOT Death Mountain Crater Rock Child 2", ObjectType::rock, {221, 110, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::rock, ObjectContext::Child, 0, ZGame::oot, NULL },
-	{ 0x08121, DEATH_MOUNTAIN_CRATER, "Adult 1", "OOT Death Mountain Crater Rock Adult 1", ObjectType::rock, {476, 501, 2}, DEATH_MOUNTAIN_CRATER, ObjectType::rock, ObjectContext::Adult, 0, ZGame::oot, NULL },
-	{ 0x08122, DEATH_MOUNTAIN_CRATER, "Adult 2", "OOT Death Mountain Crater Rock Adult 2", ObjectType::rock, {478, 485, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::rock, ObjectContext::Adult, 0, ZGame::oot, NULL },
+	{ 0x08121, DEATH_MOUNTAIN_CRATER, "Adult 1", "OOT Death Mountain Crater Rock Adult 1", ObjectType::rock, {478, 485, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::rock, ObjectContext::Adult, 0, ZGame::oot, NULL },
+	{ 0x08122, DEATH_MOUNTAIN_CRATER, "Adult 2", "OOT Death Mountain Crater Rock Adult 2", ObjectType::rock, {476, 501, 2}, DEATH_MOUNTAIN_CRATER, ObjectType::rock, ObjectContext::Adult, 0, ZGame::oot, NULL },
 	{ 0x08123, DEATH_MOUNTAIN_CRATER, "Adult 3", "OOT Death Mountain Crater Rock Adult 3", ObjectType::rock, {463, 495, 1}, DEATH_MOUNTAIN_CRATER, ObjectType::rock, ObjectContext::Adult, 0, ZGame::oot, NULL },
 	{ 0x08124, DEATH_MOUNTAIN_CRATER, "Adult 4", "OOT Death Mountain Crater Rock Adult 4", ObjectType::rock, {463, 469, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::rock, ObjectContext::Adult, 0, ZGame::oot, NULL },
 	{ 0x08125, DEATH_MOUNTAIN_CRATER, "Adult 5", "OOT Death Mountain Crater Rock Adult 5", ObjectType::rock, {460, 482, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::rock, ObjectContext::Adult, 0, ZGame::oot, NULL },
 	{ 0x00120, DEATH_MOUNTAIN_CRATER, "Circle Rock 1", "OOT Death Mountain Crater Rock Circle Rock 1", ObjectType::rock, {437, 93, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x10120, DEATH_MOUNTAIN_CRATER, "Circle Rock 2", "OOT Death Mountain Crater Rock Circle Rock 2", ObjectType::rock, {444, 127, 1}, DEATH_MOUNTAIN_CRATER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x20120, DEATH_MOUNTAIN_CRATER, "Circle Rock 3", "OOT Death Mountain Crater Rock Circle Rock 3", ObjectType::rock, {429, 105, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x30120, DEATH_MOUNTAIN_CRATER, "Circle Rock 4", "OOT Death Mountain Crater Rock Circle Rock 4", ObjectType::rock, {432, 119, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x10120, DEATH_MOUNTAIN_CRATER, "Circle Rock 2", "OOT Death Mountain Crater Rock Circle Rock 2", ObjectType::rock, {429, 105, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x20120, DEATH_MOUNTAIN_CRATER, "Circle Rock 3", "OOT Death Mountain Crater Rock Circle Rock 3", ObjectType::rock, {432, 119, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x30120, DEATH_MOUNTAIN_CRATER, "Circle Rock 4", "OOT Death Mountain Crater Rock Circle Rock 4", ObjectType::rock, {444, 127, 1}, DEATH_MOUNTAIN_CRATER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x40120, DEATH_MOUNTAIN_CRATER, "Circle Rock 5", "OOT Death Mountain Crater Rock Circle Rock 5", ObjectType::rock, {458, 124, 1}, DEATH_MOUNTAIN_CRATER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x50120, DEATH_MOUNTAIN_CRATER, "Circle Rock 6", "OOT Death Mountain Crater Rock Circle Rock 6", ObjectType::rock, {467, 112, 1}, DEATH_MOUNTAIN_CRATER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x60120, DEATH_MOUNTAIN_CRATER, "Circle Rock 7", "OOT Death Mountain Crater Rock Circle Rock 7", ObjectType::rock, {463, 98, 1}, DEATH_MOUNTAIN_CRATER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
@@ -1104,8 +1104,8 @@ ObjectInfo GERUDO_FORTRESSSceneObjects [GERUDO_FORTRESSNumOfObjs] =
 	{ 0x00101, GERUDO_FORTRESS, "Archery 2", "OOT Gerudo Fortress Crate Archery 02", ObjectType::crate, {752, 180, 1}, GERUDO_FORTRESS, ObjectType::crate, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x00102, GERUDO_FORTRESS, "Archery 3", "OOT Gerudo Fortress Crate Archery 03", ObjectType::crate, {752, 171, 0}, GERUDO_FORTRESS, ObjectType::crate, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x00104, GERUDO_FORTRESS, "Archery 4", "OOT Gerudo Fortress Crate Archery 04", ObjectType::crate, {195, 163, 0}, GERUDO_FORTRESS, ObjectType::crate, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x00105, GERUDO_FORTRESS, "Archery 5", "OOT Gerudo Fortress Crate Archery 05", ObjectType::crate, {681, 138, 0}, GERUDO_FORTRESS, ObjectType::crate, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x00106, GERUDO_FORTRESS, "Archery 6", "OOT Gerudo Fortress Crate Archery 06", ObjectType::crate, {681, 166, 0}, GERUDO_FORTRESS, ObjectType::crate, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x00105, GERUDO_FORTRESS, "Archery 5", "OOT Gerudo Fortress Crate Archery 05", ObjectType::crate, {681, 166, 0}, GERUDO_FORTRESS, ObjectType::crate, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x00106, GERUDO_FORTRESS, "Archery 6", "OOT Gerudo Fortress Crate Archery 06", ObjectType::crate, {681, 138, 0}, GERUDO_FORTRESS, ObjectType::crate, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x00107, GERUDO_FORTRESS, "Archery 7", "OOT Gerudo Fortress Crate Archery 07", ObjectType::crate, {396, 101, 0}, GERUDO_FORTRESS, ObjectType::crate, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x00108, GERUDO_FORTRESS, "Archery 8", "OOT Gerudo Fortress Crate Archery 08", ObjectType::crate, {421, 101, 0}, GERUDO_FORTRESS, ObjectType::crate, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x00109, GERUDO_FORTRESS, "Archery 9", "OOT Gerudo Fortress Crate Archery 09", ObjectType::crate, {446, 101, 0}, GERUDO_FORTRESS, ObjectType::crate, ObjectContext::All, 0, ZGame::oot, NULL },
@@ -1330,7 +1330,7 @@ ObjectInfo GORON_CITYSceneObjects [GORON_CITYNumOfObjs] =
 	{ GORON_BOMB_BAG, GORON_CITY, "Big Bomb Bag", "OOT Goron City Bomb Bag", ObjectType::npc, {647, 348, 0}, GORON_CITY, ObjectType::npc, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ MEDIGORON, GORON_CITY, "Giant Knife", "OOT Goron City Medigoron Giant Knife", ObjectType::npc, {202, 189, 0}, GORON_CITY, ObjectType::npc, ObjectContext::Adult, 0, ZGame::oot, NULL },
 	{ 0x85, GORON_CITY, "Platform", "OOT Goron City GS Platform", ObjectType::gs, {437, 340, 0}, GORON_CITY, ObjectType::gs, ObjectContext::Adult, 0, ZGame::oot, NULL },
-	{ 0x86, GORON_CITY, "Maze", "OOT Goron City GS Maze", ObjectType::gs, {743, 107, 0}, GORON_CITY, ObjectType::gs, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x86, GORON_CITY, "Maze", "OOT Goron City GS Maze", ObjectType::gs, {743, 107, 0}, GORON_CITY, ObjectType::gs, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x0105, GORON_CITY, "Darunia Room 1", "OOT Goron City Pot Darunia Room 1", ObjectType::pot, {699, 392, 1}, GORON_CITY, ObjectType::pot, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x0106, GORON_CITY, "Darunia Room 2", "OOT Goron City Pot Darunia Room 2", ObjectType::pot, {710, 392, 0}, GORON_CITY, ObjectType::pot, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x0107, GORON_CITY, "Darunia Room 3", "OOT Goron City Pot Darunia Room 3", ObjectType::pot, {733, 392, 0}, GORON_CITY, ObjectType::pot, ObjectContext::All, 0, ZGame::oot, NULL },
@@ -1665,12 +1665,12 @@ ObjectInfo OOT_GROTTOSSceneObjects [OOT_GROTTOSNumOfObjs] =
 	{ POCKET_EGG, OOT_GROTTOS, "Hatch - Pocket Cucco", "OOT Hatch Pocket Cucco", ObjectType::npc, {396, 132, 0}, KAKARIKO_VILLAGE, ObjectType::npc, ObjectContext::Adult, 0, ZGame::oot, NULL },
 	{ 0x00802, OOT_GROTTOS, "Circle Rock 1", "OOT Hyrule Castle Grotto Rock Circle Rock 1", ObjectType::rock, {698, 243, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x10802, OOT_GROTTOS, "Circle Rock 2", "OOT Hyrule Castle Grotto Rock Circle Rock 2", ObjectType::rock, {721, 233, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x20802, OOT_GROTTOS, "Circle Rock 3", "OOT Hyrule Castle Grotto Rock Circle Rock 3", ObjectType::rock, {676, 233, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x30802, OOT_GROTTOS, "Circle Rock 4", "OOT Hyrule Castle Grotto Rock Circle Rock 4", ObjectType::rock, {729, 212, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x40802, OOT_GROTTOS, "Circle Rock 5", "OOT Hyrule Castle Grotto Rock Circle Rock 5", ObjectType::rock, {668, 212, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x50802, OOT_GROTTOS, "Circle Rock 6", "OOT Hyrule Castle Grotto Rock Circle Rock 6", ObjectType::rock, {720, 191, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x60802, OOT_GROTTOS, "Circle Rock 7", "OOT Hyrule Castle Grotto Rock Circle Rock 7", ObjectType::rock, {676, 191, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x70802, OOT_GROTTOS, "Circle Rock 8", "OOT Hyrule Castle Grotto Rock Circle Rock 8", ObjectType::rock, {698, 180, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL }
+	{ 0x20802, OOT_GROTTOS, "Circle Rock 3", "OOT Hyrule Castle Grotto Rock Circle Rock 3", ObjectType::rock, {729, 212, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x30802, OOT_GROTTOS, "Circle Rock 4", "OOT Hyrule Castle Grotto Rock Circle Rock 4", ObjectType::rock, {720, 191, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x40802, OOT_GROTTOS, "Circle Rock 5", "OOT Hyrule Castle Grotto Rock Circle Rock 5", ObjectType::rock, {698, 180, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x50802, OOT_GROTTOS, "Circle Rock 6", "OOT Hyrule Castle Grotto Rock Circle Rock 6", ObjectType::rock, {676, 191, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x60802, OOT_GROTTOS, "Circle Rock 7", "OOT Hyrule Castle Grotto Rock Circle Rock 7", ObjectType::rock, {668, 212, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x70802, OOT_GROTTOS, "Circle Rock 8", "OOT Hyrule Castle Grotto Rock Circle Rock 8", ObjectType::rock, {676, 233, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL }
 };
 
 const size_t OOT_GROTTO_KOKIRI_FOREST_STORMSNumOfObjs = 10;
@@ -1929,12 +1929,12 @@ ObjectInfo OOT_GROTTO_CASTLE_STORMSSceneObjects [OOT_GROTTO_CASTLE_STORMSNumOfOb
 	{ 0x080b, OOT_GROTTOS, "Pot 4", "OOT Hyrule Castle Grotto Pot 4", ObjectType::pot, {658, 312, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::pot, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x00802, OOT_GROTTOS, "Circle Rock 1", "OOT Hyrule Castle Grotto Rock Circle Rock 1", ObjectType::rock, {698, 243, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x10802, OOT_GROTTOS, "Circle Rock 2", "OOT Hyrule Castle Grotto Rock Circle Rock 2", ObjectType::rock, {721, 233, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x20802, OOT_GROTTOS, "Circle Rock 3", "OOT Hyrule Castle Grotto Rock Circle Rock 3", ObjectType::rock, {676, 233, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x30802, OOT_GROTTOS, "Circle Rock 4", "OOT Hyrule Castle Grotto Rock Circle Rock 4", ObjectType::rock, {729, 212, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x40802, OOT_GROTTOS, "Circle Rock 5", "OOT Hyrule Castle Grotto Rock Circle Rock 5", ObjectType::rock, {668, 212, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x50802, OOT_GROTTOS, "Circle Rock 6", "OOT Hyrule Castle Grotto Rock Circle Rock 6", ObjectType::rock, {720, 191, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x60802, OOT_GROTTOS, "Circle Rock 7", "OOT Hyrule Castle Grotto Rock Circle Rock 7", ObjectType::rock, {676, 191, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x70802, OOT_GROTTOS, "Circle Rock 8", "OOT Hyrule Castle Grotto Rock Circle Rock 8", ObjectType::rock, {698, 180, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL }
+	{ 0x20802, OOT_GROTTOS, "Circle Rock 3", "OOT Hyrule Castle Grotto Rock Circle Rock 3", ObjectType::rock, {729, 212, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x30802, OOT_GROTTOS, "Circle Rock 4", "OOT Hyrule Castle Grotto Rock Circle Rock 4", ObjectType::rock, {720, 191, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x40802, OOT_GROTTOS, "Circle Rock 5", "OOT Hyrule Castle Grotto Rock Circle Rock 5", ObjectType::rock, {698, 180, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x50802, OOT_GROTTOS, "Circle Rock 6", "OOT Hyrule Castle Grotto Rock Circle Rock 6", ObjectType::rock, {676, 191, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x60802, OOT_GROTTOS, "Circle Rock 7", "OOT Hyrule Castle Grotto Rock Circle Rock 7", ObjectType::rock, {668, 212, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x70802, OOT_GROTTOS, "Circle Rock 8", "OOT Hyrule Castle Grotto Rock Circle Rock 8", ObjectType::rock, {676, 233, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL }
 };
 
 const size_t OOT_GROTTO_VALLEY_STORMSNumOfObjs = 3;
@@ -2136,7 +2136,7 @@ ObjectInfo HYRULE_FIELDSceneObjects [HYRULE_FIELDNumOfObjs] =
 	{ 0xa003a, HYRULE_FIELD, "Pack 1 - Bush 11", "OOT Hyrule Field Grass Pack 1 Bush 11", ObjectType::grass, {711, 654, 0}, HYRULE_FIELD, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0xb003a, HYRULE_FIELD, "Pack 1 - Bush 12", "OOT Hyrule Field Grass Pack 1 Bush 12", ObjectType::grass, {720, 648, 0}, HYRULE_FIELD, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x0003b, HYRULE_FIELD, "Pack 2 - Bush 1", "OOT Hyrule Field Grass Pack 2 Bush 01", ObjectType::grass, {757, 694, 0}, HYRULE_FIELD, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x1003b, HYRULE_FIELD, "Pack 2 - Bush 2", "OOT Hyrule Field Grass Pack 2 Bush 02", ObjectType::grass, {757, 679, 0}, HYRULE_FIELD, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x1003b, HYRULE_FIELD, "Pack 2 - Bush 2", "OOT Hyrule Field Grass Pack 2 Bush 02", ObjectType::grass, {752, 679, 0}, HYRULE_FIELD, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x2003b, HYRULE_FIELD, "Pack 2 - Bush 3", "OOT Hyrule Field Grass Pack 2 Bush 03", ObjectType::grass, {735, 679, 0}, HYRULE_FIELD, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x3003b, HYRULE_FIELD, "Pack 2 - Bush 4", "OOT Hyrule Field Grass Pack 2 Bush 04", ObjectType::grass, {728, 694, 0}, HYRULE_FIELD, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x4003b, HYRULE_FIELD, "Pack 2 - Bush 5", "OOT Hyrule Field Grass Pack 2 Bush 05", ObjectType::grass, {743, 692, 0}, HYRULE_FIELD, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
@@ -2333,14 +2333,14 @@ ObjectInfo HYRULE_FIELDSceneObjects [HYRULE_FIELDNumOfObjs] =
 	{ 0x3402f, HYRULE_FIELD, "Child - Bush 21", "OOT Hyrule Field Bush Child 21", ObjectType::bush, {844, 725, 0}, HYRULE_FIELD, ObjectType::bush, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x4402f, HYRULE_FIELD, "Child - Bush 22", "OOT Hyrule Field Bush Child 22", ObjectType::bush, {806, 746, 0}, HYRULE_FIELD, ObjectType::bush, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x5402f, HYRULE_FIELD, "Child - Bush 23", "OOT Hyrule Field Bush Child 23", ObjectType::bush, {809, 784, 0}, HYRULE_FIELD, ObjectType::bush, ObjectContext::Child, 0, ZGame::oot, NULL },
-	{ 0x00037, HYRULE_FIELD, "Circle Rock 1", "OOT Hyrule Field Rock Circle Rock 1", ObjectType::rock, {307, 481, 1}, HYRULE_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x00037, HYRULE_FIELD, "Circle Rock 1", "OOT Hyrule Field Rock Circle Rock 1", ObjectType::rock, {319, 487, 1}, HYRULE_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x10037, HYRULE_FIELD, "Circle Rock 2", "OOT Hyrule Field Rock Circle Rock 2", ObjectType::rock, {332, 481, 0}, HYRULE_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x20037, HYRULE_FIELD, "Circle Rock 3", "OOT Hyrule Field Rock Circle Rock 3", ObjectType::rock, {339, 469, 0}, HYRULE_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x30037, HYRULE_FIELD, "Circle Rock 4", "OOT Hyrule Field Rock Circle Rock 4", ObjectType::rock, {332, 456, 0}, HYRULE_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x40037, HYRULE_FIELD, "Circle Rock 5", "OOT Hyrule Field Rock Circle Rock 5", ObjectType::rock, {319, 450, 0}, HYRULE_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x50037, HYRULE_FIELD, "Circle Rock 6", "OOT Hyrule Field Rock Circle Rock 6", ObjectType::rock, {307, 456, 0}, HYRULE_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x60037, HYRULE_FIELD, "Circle Rock 7", "OOT Hyrule Field Rock Circle Rock 7", ObjectType::rock, {301, 468, 0}, HYRULE_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x70037, HYRULE_FIELD, "Circle Rock 8", "OOT Hyrule Field Rock Circle Rock 8", ObjectType::rock, {319, 487, 1}, HYRULE_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL }
+	{ 0x70037, HYRULE_FIELD, "Circle Rock 8", "OOT Hyrule Field Rock Circle Rock 8", ObjectType::rock, {307, 481, 1}, HYRULE_FIELD, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL }
 };
 
 const size_t ICE_CAVERNNumOfObjs = 144;
@@ -3042,7 +3042,7 @@ ObjectInfo KAKARIKO_VILLAGESceneObjects [KAKARIKO_VILLAGENumOfObjs] =
 	{ MASK_SELL_KEATON, KAKARIKO_VILLAGE, "Keaton Mask", "OOT Kakariko Sell Keaton Mask", ObjectType::npc, {494, 563, 0}, KAKARIKO_VILLAGE, ObjectType::npc, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x8e, KAKARIKO_VILLAGE, "Impa's Roof", "OOT Kakariko GS Roof", ObjectType::gs, {474, 67, 0}, KAKARIKO_VILLAGE, ObjectType::gs, ObjectContext::Adult, 0, ZGame::oot, NULL },
 	{ 0x8b, KAKARIKO_VILLAGE, "Shooting Gallery", "OOT Kakariko GS Shooting Gallery", ObjectType::gs, {422, 217, 0}, KAKARIKO_VILLAGE, ObjectType::gs, ObjectContext::Child, 0, ZGame::oot, NULL },
-	{ 0x8d, KAKARIKO_VILLAGE, "Tree", "OOT Kakariko GS Tree", ObjectType::gs, {596, 280, 0}, KAKARIKO_VILLAGE, ObjectType::gs, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x8d, KAKARIKO_VILLAGE, "Tree", "OOT Kakariko GS Tree", ObjectType::gs, {596, 280, 0}, KAKARIKO_VILLAGE, ObjectType::gs, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x8c, KAKARIKO_VILLAGE, "House of Skulltula", "OOT Kakariko GS House of Skulltula", ObjectType::gs, {560, 190, 0}, KAKARIKO_VILLAGE, ObjectType::gs, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x89, KAKARIKO_VILLAGE, "Bazaar", "OOT Kakariko GS Bazaar", ObjectType::gs, {550, 498, 2}, KAKARIKO_VILLAGE, ObjectType::gs, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x8a, KAKARIKO_VILLAGE, "Ladder", "OOT Kakariko GS Ladder", ObjectType::gs, {471, 381, 0}, KAKARIKO_VILLAGE, ObjectType::gs, ObjectContext::Child, 0, ZGame::oot, NULL },
@@ -4287,7 +4287,7 @@ ObjectInfo LINK_HOUSESceneObjects [LINK_HOUSENumOfObjs] =
 	{ 0x0002, LINK_HOUSE, "Pot", "OOT Link's House Pot", ObjectType::pot, {997, 296, 0}, LINK_HOUSE, ObjectType::pot, ObjectContext::All, 0, ZGame::oot, NULL }
 };
 
-const size_t LON_LON_RANCHNumOfObjs = 30;
+const size_t LON_LON_RANCHNumOfObjs = 29;
 ObjectInfo LON_LON_RANCHSceneObjects [LON_LON_RANCHNumOfObjs] =
 {
 	{ MALON_SONG, LON_LON_RANCH, "Epona's Song", "OOT Lon Lon Ranch Malon Song", ObjectType::npc, {472, 310, 0}, LON_LON_RANCH, ObjectType::npc, ObjectContext::Child, 0, ZGame::oot, NULL },
@@ -4309,7 +4309,6 @@ ObjectInfo LON_LON_RANCHSceneObjects [LON_LON_RANCHNumOfObjs] =
 	{ 0x00018, LON_LON_RANCH, "Crate", "OOT Lon Lon Ranch Crate", ObjectType::crate, {691, 465, 0}, LON_LON_RANCH, ObjectType::crate, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x08018, LON_LON_RANCH, "Hurdles 1", "OOT Lon Lon Ranch Wonder Item 1", ObjectType::wonder, {508, 351, 0}, LON_LON_RANCH, ObjectType::wonder, ObjectContext::Adult, 0, ZGame::oot, NULL },
 	{ 0x08019, LON_LON_RANCH, "Hurdles 2", "OOT Lon Lon Ranch Wonder Item 2", ObjectType::wonder, {421, 255, 0}, LON_LON_RANCH, ObjectType::wonder, ObjectContext::Adult, 0, ZGame::oot, NULL },
-	{ TALON_MILK, LON_LON_RANCH, "Buy Milk", "OOT Lon Lon Ranch Talon Buy Milk", ObjectType::nan, {505, 402, 0}, RANCH_HOUSE_SILO, ObjectType::npc, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x08, LON_LON_RANCH, "Left", "OOT Lon Lon Ranch Grotto Left Scrub", ObjectType::none, {0, 0, 0}, OOT_GROTTO_LON_LON_SCRUBS, ObjectType::none, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x09, LON_LON_RANCH, "Center", "OOT Lon Lon Ranch Grotto Center Scrub", ObjectType::none, {0, 0, 0}, OOT_GROTTO_LON_LON_SCRUBS, ObjectType::none, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x0a, LON_LON_RANCH, "Right", "OOT Lon Lon Ranch Grotto Right Scrub", ObjectType::none, {0, 0, 0}, OOT_GROTTO_LON_LON_SCRUBS, ObjectType::none, ObjectContext::All, 0, ZGame::oot, NULL },
@@ -4319,7 +4318,7 @@ ObjectInfo LON_LON_RANCHSceneObjects [LON_LON_RANCHNumOfObjs] =
 	{ 0x0200, LON_LON_RANCH, "Pot 1", "OOT Lon Lon Ranch Talon House Pot 1", ObjectType::none, {0, 0, 0}, RANCH_HOUSE_SILO, ObjectType::none, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x0201, LON_LON_RANCH, "Pot 2", "OOT Lon Lon Ranch Talon House Pot 2", ObjectType::none, {0, 0, 0}, RANCH_HOUSE_SILO, ObjectType::none, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x0202, LON_LON_RANCH, "Pot 3", "OOT Lon Lon Ranch Talon House Pot 3", ObjectType::none, {0, 0, 0}, RANCH_HOUSE_SILO, ObjectType::none, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ TALON_MILK, LON_LON_RANCH, "Buy Milk", "OOT Lon Lon Ranch Talon Buy Milk", ObjectType::nan, {0, 0, 0}, RANCH_HOUSE_SILO, ObjectType::none, ObjectContext::Child, 0, ZGame::oot, NULL }
+	{ TALON_MILK, LON_LON_RANCH, "Buy Milk", "OOT Lon Lon Ranch Talon Buy Milk", ObjectType::none, {0, 0, 0}, RANCH_HOUSE_SILO, ObjectType::none, ObjectContext::Child, 0, ZGame::oot, NULL }
 };
 
 const size_t STABLENumOfObjs = 2;
@@ -4351,11 +4350,11 @@ ObjectInfo OOT_LOST_WOODSSceneObjects [OOT_LOST_WOODSNumOfObjs] =
 	{ TRADE_ODD_MUSHROOM, OOT_LOST_WOODS, "Odd Mushroom", "OOT Lost Woods Odd Mushroom", ObjectType::npc, {289, 1981, 1}, OOT_LOST_WOODS, ObjectType::npc, ObjectContext::Adult, 0, ZGame::oot, NULL },
 	{ TRADE_POACHER_SAW, OOT_LOST_WOODS, "Poacher's Saw", "OOT Lost Woods Poacher's Saw", ObjectType::npc, {301, 1960, 0}, OOT_LOST_WOODS, ObjectType::npc, ObjectContext::Adult, 0, ZGame::oot, NULL },
 	{ 0x00202, OOT_LOST_WOODS, "Grass 1", "OOT Lost Woods Grass 1", ObjectType::grass, {1518, 1633, 0}, OOT_LOST_WOODS, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x00203, OOT_LOST_WOODS, "Grass 2", "OOT Lost Woods Grass 2", ObjectType::grass, {1508, 1600, 0}, OOT_LOST_WOODS, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x00204, OOT_LOST_WOODS, "Grass 3", "OOT Lost Woods Grass 3", ObjectType::grass, {1544, 1621, 0}, OOT_LOST_WOODS, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x00203, OOT_LOST_WOODS, "Grass 2", "OOT Lost Woods Grass 2", ObjectType::grass, {1544, 1621, 0}, OOT_LOST_WOODS, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x00204, OOT_LOST_WOODS, "Grass 3", "OOT Lost Woods Grass 3", ObjectType::grass, {1508, 1600, 0}, OOT_LOST_WOODS, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x00701, OOT_LOST_WOODS, "Deep 1", "OOT Lost Woods Grass Deep 1", ObjectType::grass, {2027, 490, 0}, OOT_LOST_WOODS, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x00702, OOT_LOST_WOODS, "Deep 2", "OOT Lost Woods Grass Deep 2", ObjectType::grass, {2015, 453, 0}, OOT_LOST_WOODS, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x00703, OOT_LOST_WOODS, "Deep 3", "OOT Lost Woods Grass Deep 3", ObjectType::grass, {2056, 477, 0}, OOT_LOST_WOODS, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x00702, OOT_LOST_WOODS, "Deep 2", "OOT Lost Woods Grass Deep 2", ObjectType::grass, {2056, 477, 0}, OOT_LOST_WOODS, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x00703, OOT_LOST_WOODS, "Deep 3", "OOT Lost Woods Grass Deep 3", ObjectType::grass, {2015, 453, 0}, OOT_LOST_WOODS, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x00803, OOT_LOST_WOODS, "Deep 4", "OOT Lost Woods Grass Deep 4", ObjectType::grass, {1607, 434, 0}, OOT_LOST_WOODS, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x00804, OOT_LOST_WOODS, "Deep 5", "OOT Lost Woods Grass Deep 5", ObjectType::grass, {1620, 465, 0}, OOT_LOST_WOODS, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x00805, OOT_LOST_WOODS, "Deep 6", "OOT Lost Woods Grass Deep 6", ObjectType::grass, {1583, 473, 0}, OOT_LOST_WOODS, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
@@ -4447,16 +4446,15 @@ ObjectInfo MARKET_POTION_SHOPSceneObjects [MARKET_POTION_SHOPNumOfObjs] =
 	{ 0x2f, MARKET_POTION_SHOP, "Item 8", "OOT Market Potion Shop Item 8", ObjectType::shop, {556, 340, 0}, MARKET_POTION_SHOP, ObjectType::shop, ObjectContext::All, 0, ZGame::oot, NULL }
 };
 
-const size_t RANCH_HOUSE_SILONumOfObjs = 7;
+const size_t RANCH_HOUSE_SILONumOfObjs = 6;
 ObjectInfo RANCH_HOUSE_SILOSceneObjects [RANCH_HOUSE_SILONumOfObjs] =
 {
 	{ 0x01, RANCH_HOUSE_SILO, "Heart Piece", "OOT Lon Lon Ranch Silo HP", ObjectType::collectible, {751, 262, 0}, SILO, ObjectType::collectible, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ TALON_BOTTLE, RANCH_HOUSE_SILO, "Bottle", "OOT Lon Lon Ranch Talon Bottle", ObjectType::npc, {485, 402, 0}, RANCH_HOUSE_SILO, ObjectType::npc, ObjectContext::Child, 0, ZGame::oot, NULL },
-	{ TALON_MILK, LON_LON_RANCH, "Buy Milk", "OOT Lon Lon Ranch Talon Buy Milk", ObjectType::nan, {505, 402, 0}, RANCH_HOUSE_SILO, ObjectType::npc, ObjectContext::Child, 0, ZGame::oot, NULL },
+	{ TALON_MILK, RANCH_HOUSE_SILO, "Buy Milk", "OOT Lon Lon Ranch Talon Buy Milk", ObjectType::npc, {505, 402, 0}, RANCH_HOUSE_SILO, ObjectType::npc, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x0200, RANCH_HOUSE_SILO, "Pot 1", "OOT Lon Lon Ranch Talon House Pot 1", ObjectType::pot, {359, 439, 1}, RANCH_HOUSE_SILO, ObjectType::pot, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x0201, RANCH_HOUSE_SILO, "Pot 2", "OOT Lon Lon Ranch Talon House Pot 2", ObjectType::pot, {359, 421, 0}, RANCH_HOUSE_SILO, ObjectType::pot, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x0202, RANCH_HOUSE_SILO, "Pot 3", "OOT Lon Lon Ranch Talon House Pot 3", ObjectType::pot, {358, 355, 0}, RANCH_HOUSE_SILO, ObjectType::pot, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ TALON_MILK, LON_LON_RANCH, "Buy Milk", "OOT Lon Lon Ranch Talon Buy Milk", ObjectType::nan, {0, 0, 0}, RANCH_HOUSE_SILO, ObjectType::none, ObjectContext::Child, 0, ZGame::oot, NULL }
+	{ 0x0202, RANCH_HOUSE_SILO, "Pot 3", "OOT Lon Lon Ranch Talon House Pot 3", ObjectType::pot, {358, 355, 0}, RANCH_HOUSE_SILO, ObjectType::pot, ObjectContext::All, 0, ZGame::oot, NULL }
 };
 
 const size_t SACRED_FOREST_MEADOWNumOfObjs = 21;
@@ -5207,7 +5205,7 @@ ObjectInfo ZORA_FOUNTAINSceneObjects [ZORA_FOUNTAINNumOfObjs] =
 	{ 0x01, ZORA_FOUNTAIN, "Iceberg - Heart Piece", "OOT Zora Fountain Iceberg HP", ObjectType::collectible, {352, 375, 0}, ZORA_FOUNTAIN, ObjectType::collectible, ObjectContext::Adult, 0, ZGame::oot, NULL },
 	{ 0x14, ZORA_FOUNTAIN, "Underwater - Heart Piece", "OOT Zora Fountain Bottom HP", ObjectType::collectible, {473, 386, 0}, ZORA_FOUNTAIN, ObjectType::collectible, ObjectContext::Adult, 0, ZGame::oot, NULL },
 	{ 0x92, ZORA_FOUNTAIN, "Child - Wall", "OOT Zora Fountain GS Wall", ObjectType::gs, {700, 159, 0}, ZORA_FOUNTAIN, ObjectType::gs, ObjectContext::Child, 0, ZGame::oot, NULL },
-	{ 0x97, ZORA_FOUNTAIN, "Tree", "OOT Zora Fountain GS Tree", ObjectType::gs, {447, 119, 0}, ZORA_FOUNTAIN, ObjectType::gs, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x97, ZORA_FOUNTAIN, "Tree", "OOT Zora Fountain GS Tree", ObjectType::gs, {447, 119, 0}, ZORA_FOUNTAIN, ObjectType::gs, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x95, ZORA_FOUNTAIN, "Adult - Upper", "OOT Zora Fountain GS Upper", ObjectType::gs, {331, 144, 0}, ZORA_FOUNTAIN, ObjectType::gs, ObjectContext::Adult, 0, ZGame::oot, NULL },
 	{ 0x0013, ZORA_FOUNTAIN, "Child 1", "OOT Zora Fountain Child Pot 1", ObjectType::pot, {673, 418, 1}, ZORA_FOUNTAIN, ObjectType::pot, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x0015, ZORA_FOUNTAIN, "Child 2", "OOT Zora Fountain Child Pot 2", ObjectType::pot, {663, 418, 0}, ZORA_FOUNTAIN, ObjectType::pot, ObjectContext::Child, 0, ZGame::oot, NULL },
@@ -5245,12 +5243,12 @@ ObjectInfo ZORA_FOUNTAINSceneObjects [ZORA_FOUNTAINNumOfObjs] =
 	{ 0x62300, ZORA_FOUNTAIN, "Fairy 7", "OOT Zora Domain Fairy Fountain Fairy 7", ObjectType::none, {0, 0, 0}, OOT_FAIRY_ZORA_DOMAIN, ObjectType::none, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x72300, ZORA_FOUNTAIN, "Fairy 8", "OOT Zora Domain Fairy Fountain Fairy 8", ObjectType::none, {0, 0, 0}, OOT_FAIRY_ZORA_DOMAIN, ObjectType::none, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ FAIRY_SPELL_WIND, ZORA_FOUNTAIN, "Farore's Wind", "OOT Great Fairy Farore's Wind", ObjectType::none, {0, 0, 0}, OOT_GREAT_FAIRY_FARORE, ObjectType::none, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x00006, ZORA_FOUNTAIN, "Bush 1", "OOT Zora Fountain Bush 1", ObjectType::bush, {398, 131, 0}, ZORA_FOUNTAIN, ObjectType::bush, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x00007, ZORA_FOUNTAIN, "Bush 2", "OOT Zora Fountain Bush 2", ObjectType::bush, {418, 126, 0}, ZORA_FOUNTAIN, ObjectType::bush, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x00008, ZORA_FOUNTAIN, "Bush 3", "OOT Zora Fountain Bush 3", ObjectType::bush, {407, 106, 0}, ZORA_FOUNTAIN, ObjectType::bush, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x00009, ZORA_FOUNTAIN, "Bush 4", "OOT Zora Fountain Bush 4", ObjectType::bush, {441, 99, 0}, ZORA_FOUNTAIN, ObjectType::bush, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x0000a, ZORA_FOUNTAIN, "Bush 5", "OOT Zora Fountain Bush 5", ObjectType::bush, {426, 88, 0}, ZORA_FOUNTAIN, ObjectType::bush, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x0000b, ZORA_FOUNTAIN, "Bush 6", "OOT Zora Fountain Bush 6", ObjectType::bush, {452, 83, 0}, ZORA_FOUNTAIN, ObjectType::bush, ObjectContext::All, 0, ZGame::oot, NULL }
+	{ 0x00006, ZORA_FOUNTAIN, "Bush 1", "OOT Zora Fountain Bush 1", ObjectType::bush, {398, 131, 0}, ZORA_FOUNTAIN, ObjectType::bush, ObjectContext::Child, 0, ZGame::oot, NULL },
+	{ 0x00007, ZORA_FOUNTAIN, "Bush 2", "OOT Zora Fountain Bush 2", ObjectType::bush, {418, 126, 0}, ZORA_FOUNTAIN, ObjectType::bush, ObjectContext::Child, 0, ZGame::oot, NULL },
+	{ 0x00008, ZORA_FOUNTAIN, "Bush 3", "OOT Zora Fountain Bush 3", ObjectType::bush, {407, 106, 0}, ZORA_FOUNTAIN, ObjectType::bush, ObjectContext::Child, 0, ZGame::oot, NULL },
+	{ 0x00009, ZORA_FOUNTAIN, "Bush 4", "OOT Zora Fountain Bush 4", ObjectType::bush, {441, 99, 0}, ZORA_FOUNTAIN, ObjectType::bush, ObjectContext::Child, 0, ZGame::oot, NULL },
+	{ 0x0000a, ZORA_FOUNTAIN, "Bush 5", "OOT Zora Fountain Bush 5", ObjectType::bush, {426, 88, 0}, ZORA_FOUNTAIN, ObjectType::bush, ObjectContext::Child, 0, ZGame::oot, NULL },
+	{ 0x0000b, ZORA_FOUNTAIN, "Bush 6", "OOT Zora Fountain Bush 6", ObjectType::bush, {452, 83, 0}, ZORA_FOUNTAIN, ObjectType::bush, ObjectContext::Child, 0, ZGame::oot, NULL }
 };
 
 const size_t ZORA_RIVERNumOfObjs = 112;
@@ -5271,18 +5269,18 @@ ObjectInfo ZORA_RIVERSceneObjects [ZORA_RIVERNumOfObjs] =
 	{ 0x94, ZORA_RIVER, "Near Grotto", "OOT Zora River GS Near Grotto", ObjectType::gs, {1018, 338, 0}, ZORA_RIVER, ObjectType::gs, ObjectContext::Adult, 0, ZGame::oot, NULL },
 	{ 0x93, ZORA_RIVER, "Near Bridge", "OOT Zora River GS Near Bridge", ObjectType::gs, {394, 718, 0}, ZORA_RIVER, ObjectType::gs, ObjectContext::Adult, 0, ZGame::oot, NULL },
 	{ 0x00034, ZORA_RIVER, "Platform", "OOT Zora River Grass", ObjectType::grass, {971, 704, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x00035, ZORA_RIVER, "Bush 1", "OOT Zora River Grass Pack Bush 01", ObjectType::grass, {1256, 246, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::Child, 0, ZGame::oot, NULL },
-	{ 0x10035, ZORA_RIVER, "Bush 2", "OOT Zora River Grass Pack Bush 02", ObjectType::grass, {1269, 261, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::Child, 0, ZGame::oot, NULL },
-	{ 0x20035, ZORA_RIVER, "Bush 3", "OOT Zora River Grass Pack Bush 03", ObjectType::grass, {1288, 256, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::Child, 0, ZGame::oot, NULL },
-	{ 0x30035, ZORA_RIVER, "Bush 4", "OOT Zora River Grass Pack Bush 04", ObjectType::grass, {1290, 236, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::Child, 0, ZGame::oot, NULL },
-	{ 0x40035, ZORA_RIVER, "Bush 5", "OOT Zora River Grass Pack Bush 05", ObjectType::grass, {1274, 244, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::Child, 0, ZGame::oot, NULL },
-	{ 0x50035, ZORA_RIVER, "Bush 6", "OOT Zora River Grass Pack Bush 06", ObjectType::grass, {1261, 255, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::Child, 0, ZGame::oot, NULL },
-	{ 0x60035, ZORA_RIVER, "Bush 7", "OOT Zora River Grass Pack Bush 07", ObjectType::grass, {1279, 262, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::Child, 0, ZGame::oot, NULL },
-	{ 0x70035, ZORA_RIVER, "Bush 8", "OOT Zora River Grass Pack Bush 08", ObjectType::grass, {1291, 246, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::Child, 0, ZGame::oot, NULL },
-	{ 0x80035, ZORA_RIVER, "Bush 9", "OOT Zora River Grass Pack Bush 09", ObjectType::grass, {1284, 228, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::Child, 0, ZGame::oot, NULL },
-	{ 0x90035, ZORA_RIVER, "Bush 10", "OOT Zora River Grass Pack Bush 10", ObjectType::grass, {1274, 226, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::Child, 0, ZGame::oot, NULL },
-	{ 0xa0035, ZORA_RIVER, "Bush 11", "OOT Zora River Grass Pack Bush 11", ObjectType::grass, {1264, 228, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::Child, 0, ZGame::oot, NULL },
-	{ 0xb0035, ZORA_RIVER, "Bush 12", "OOT Zora River Grass Pack Bush 12", ObjectType::grass, {1258, 236, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::Child, 0, ZGame::oot, NULL },
+	{ 0x00035, ZORA_RIVER, "Bush 1", "OOT Zora River Grass Pack Bush 01", ObjectType::grass, {1256, 246, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x10035, ZORA_RIVER, "Bush 2", "OOT Zora River Grass Pack Bush 02", ObjectType::grass, {1269, 261, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x20035, ZORA_RIVER, "Bush 3", "OOT Zora River Grass Pack Bush 03", ObjectType::grass, {1288, 256, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x30035, ZORA_RIVER, "Bush 4", "OOT Zora River Grass Pack Bush 04", ObjectType::grass, {1290, 236, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x40035, ZORA_RIVER, "Bush 5", "OOT Zora River Grass Pack Bush 05", ObjectType::grass, {1274, 244, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x50035, ZORA_RIVER, "Bush 6", "OOT Zora River Grass Pack Bush 06", ObjectType::grass, {1261, 255, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x60035, ZORA_RIVER, "Bush 7", "OOT Zora River Grass Pack Bush 07", ObjectType::grass, {1279, 262, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x70035, ZORA_RIVER, "Bush 8", "OOT Zora River Grass Pack Bush 08", ObjectType::grass, {1291, 246, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x80035, ZORA_RIVER, "Bush 9", "OOT Zora River Grass Pack Bush 09", ObjectType::grass, {1284, 228, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x90035, ZORA_RIVER, "Bush 10", "OOT Zora River Grass Pack Bush 10", ObjectType::grass, {1274, 226, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0xa0035, ZORA_RIVER, "Bush 11", "OOT Zora River Grass Pack Bush 11", ObjectType::grass, {1264, 228, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0xb0035, ZORA_RIVER, "Bush 12", "OOT Zora River Grass Pack Bush 12", ObjectType::grass, {1258, 236, 0}, ZORA_RIVER, ObjectType::grass, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x00037, ZORA_RIVER, "Near Beans 1", "OOT Zora River Butterfly Near Beans 1", ObjectType::butterfly, {1332, 434, 0}, ZORA_RIVER, ObjectType::butterfly, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x10037, ZORA_RIVER, "Near Beans 2", "OOT Zora River Butterfly Near Beans 2", ObjectType::butterfly, {1325, 419, 0}, ZORA_RIVER, ObjectType::butterfly, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x0010a, ZORA_RIVER, "Near Waterfall 1", "OOT Zora River Butterfly Near Waterfall 1", ObjectType::butterfly, {110, 707, 0}, ZORA_RIVER, ObjectType::butterfly, ObjectContext::Child, 0, ZGame::oot, NULL },
@@ -5349,22 +5347,22 @@ ObjectInfo ZORA_RIVERSceneObjects [ZORA_RIVERNumOfObjs] =
 	{ 0x0002f, ZORA_RIVER, "Water 2", "OOT Zora River Rock Water 2", ObjectType::rock, {527, 510, 1}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x00030, ZORA_RIVER, "Water 3", "OOT Zora River Rock Water 3", ObjectType::rock, {527, 494, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x00031, ZORA_RIVER, "Water 4", "OOT Zora River Rock Water 4", ObjectType::rock, {506, 489, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x00032, ZORA_RIVER, "Upper - Circle Rock 1", "OOT Zora River Rock Circle Upper Rock 1", ObjectType::rock, {1301, 418, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x10032, ZORA_RIVER, "Upper - Circle Rock 2", "OOT Zora River Rock Circle Upper Rock 2", ObjectType::rock, {1284, 421, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x20032, ZORA_RIVER, "Upper - Circle Rock 3", "OOT Zora River Rock Circle Upper Rock 3", ObjectType::rock, {1276, 435, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x30032, ZORA_RIVER, "Upper - Circle Rock 4", "OOT Zora River Rock Circle Upper Rock 4", ObjectType::rock, {1279, 452, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x40032, ZORA_RIVER, "Upper - Circle Rock 5", "OOT Zora River Rock Circle Upper Rock 5", ObjectType::rock, {1293, 460, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x50032, ZORA_RIVER, "Upper - Circle Rock 6", "OOT Zora River Rock Circle Upper Rock 6", ObjectType::rock, {1309, 457, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x60032, ZORA_RIVER, "Upper - Circle Rock 7", "OOT Zora River Rock Circle Upper Rock 7", ObjectType::rock, {1319, 444, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x70032, ZORA_RIVER, "Upper - Circle Rock 8", "OOT Zora River Rock Circle Upper Rock 8", ObjectType::rock, {1314, 427, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x00033, ZORA_RIVER, "Lower - Circle Rock 1", "OOT Zora River Rock Circle Lower Rock 1", ObjectType::rock, {883, 450, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x10033, ZORA_RIVER, "Lower - Circle Rock 2", "OOT Zora River Rock Circle Lower Rock 2", ObjectType::rock, {866, 453, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x20033, ZORA_RIVER, "Lower - Circle Rock 3", "OOT Zora River Rock Circle Lower Rock 3", ObjectType::rock, {858, 467, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x30033, ZORA_RIVER, "Lower - Circle Rock 4", "OOT Zora River Rock Circle Lower Rock 4", ObjectType::rock, {861, 484, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x40033, ZORA_RIVER, "Lower - Circle Rock 5", "OOT Zora River Rock Circle Lower Rock 5", ObjectType::rock, {875, 492, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x50033, ZORA_RIVER, "Lower - Circle Rock 6", "OOT Zora River Rock Circle Lower Rock 6", ObjectType::rock, {891, 489, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x60033, ZORA_RIVER, "Lower - Circle Rock 7", "OOT Zora River Rock Circle Lower Rock 7", ObjectType::rock, {901, 476, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
-	{ 0x70033, ZORA_RIVER, "Lower - Circle Rock 8", "OOT Zora River Rock Circle Lower Rock 8", ObjectType::rock, {896, 459, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x00032, ZORA_RIVER, "Upper - Circle Rock 1", "OOT Zora River Rock Circle Upper Rock 1", ObjectType::rock, {883, 450, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x10032, ZORA_RIVER, "Upper - Circle Rock 2", "OOT Zora River Rock Circle Upper Rock 2", ObjectType::rock, {866, 453, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x20032, ZORA_RIVER, "Upper - Circle Rock 3", "OOT Zora River Rock Circle Upper Rock 3", ObjectType::rock, {858, 467, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x30032, ZORA_RIVER, "Upper - Circle Rock 4", "OOT Zora River Rock Circle Upper Rock 4", ObjectType::rock, {861, 484, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x40032, ZORA_RIVER, "Upper - Circle Rock 5", "OOT Zora River Rock Circle Upper Rock 5", ObjectType::rock, {875, 492, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x50032, ZORA_RIVER, "Upper - Circle Rock 6", "OOT Zora River Rock Circle Upper Rock 6", ObjectType::rock, {891, 489, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x60032, ZORA_RIVER, "Upper - Circle Rock 7", "OOT Zora River Rock Circle Upper Rock 7", ObjectType::rock, {901, 476, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x70032, ZORA_RIVER, "Upper - Circle Rock 8", "OOT Zora River Rock Circle Upper Rock 8", ObjectType::rock, {896, 459, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x00033, ZORA_RIVER, "Lower - Circle Rock 1", "OOT Zora River Rock Circle Lower Rock 1", ObjectType::rock, {1301, 418, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x10033, ZORA_RIVER, "Lower - Circle Rock 2", "OOT Zora River Rock Circle Lower Rock 2", ObjectType::rock, {1284, 421, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x20033, ZORA_RIVER, "Lower - Circle Rock 3", "OOT Zora River Rock Circle Lower Rock 3", ObjectType::rock, {1276, 435, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x30033, ZORA_RIVER, "Lower - Circle Rock 4", "OOT Zora River Rock Circle Lower Rock 4", ObjectType::rock, {1279, 452, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x40033, ZORA_RIVER, "Lower - Circle Rock 5", "OOT Zora River Rock Circle Lower Rock 5", ObjectType::rock, {1293, 460, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x50033, ZORA_RIVER, "Lower - Circle Rock 6", "OOT Zora River Rock Circle Lower Rock 6", ObjectType::rock, {1309, 457, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x60033, ZORA_RIVER, "Lower - Circle Rock 7", "OOT Zora River Rock Circle Lower Rock 7", ObjectType::rock, {1319, 444, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
+	{ 0x70033, ZORA_RIVER, "Lower - Circle Rock 8", "OOT Zora River Rock Circle Lower Rock 8", ObjectType::rock, {1314, 427, 0}, ZORA_RIVER, ObjectType::rock, ObjectContext::All, 0, ZGame::oot, NULL },
 	{ 0x00038, ZORA_RIVER, "Soil 1", "OOT Zora River Soil 1", ObjectType::soil, {1141, 474, 0}, ZORA_RIVER, ObjectType::soil, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x10038, ZORA_RIVER, "Soil 2", "OOT Zora River Soil 2", ObjectType::soil, {1131, 465, 0}, ZORA_RIVER, ObjectType::soil, ObjectContext::Child, 0, ZGame::oot, NULL },
 	{ 0x20038, ZORA_RIVER, "Soil 3", "OOT Zora River Soil 3", ObjectType::soil, {1144, 461, 0}, ZORA_RIVER, ObjectType::soil, ObjectContext::Child, 0, ZGame::oot, NULL }
