@@ -3533,22 +3533,22 @@ ZORA_HALL_LIGHTS;ZORA_HALL_ROOMS;Scene Lights;MM Zora Hall Scene Lights;none;0;0
 0x00042;GORON_RACETRACK;Tree 8;MM Goron Race Forked Tree 8;tree;181;333;0;GORON_RACETRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
 0x00043;GORON_RACETRACK;Tree 9;MM Goron Race Forked Tree 9;tree;166;339;0;GORON_RACETRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
 0x00044;GORON_RACETRACK;Tree 10;MM Goron Race Forked Tree 10;tree;146;352;0;GORON_RACETRACK;tree;All;0;mm;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00002;GORON_SHRINE;Rock 1;MM Goron Shrine Rock 01;rock;430;409;0;GORON_SHRINE;rock;All;0;mm;;
-0x00003;GORON_SHRINE;Rock 2;MM Goron Shrine Rock 02;rock;518;399;0;GORON_SHRINE;rock;All;0;mm;;
+0x00002;GORON_SHRINE;Rock 1;MM Goron Shrine Rock 01;rock;405;229;0;GORON_SHRINE;rock;All;0;mm;;
+0x00003;GORON_SHRINE;Rock 2;MM Goron Shrine Rock 02;rock;430;409;0;GORON_SHRINE;rock;All;0;mm;;
 0x00004;GORON_SHRINE;Rock 3;MM Goron Shrine Rock 03;rock;412;399;0;GORON_SHRINE;rock;All;0;mm;;
 0x00005;GORON_SHRINE;Rock 4;MM Goron Shrine Rock 04;rock;430;390;0;GORON_SHRINE;rock;All;0;mm;;
-0x00006;GORON_SHRINE;Rock 5;MM Goron Shrine Rock 05;rock;149;390;0;GORON_SHRINE;rock;All;0;mm;;
-0x00007;GORON_SHRINE;Rock 6;MM Goron Shrine Rock 06;rock;459;381;0;GORON_SHRINE;rock;All;0;mm;;
-0x00008;GORON_SHRINE;Rock 7;MM Goron Shrine Rock 07;rock;465;365;0;GORON_SHRINE;rock;All;0;mm;;
-0x00009;GORON_SHRINE;Rock 8;MM Goron Shrine Rock 08;rock;143;365;0;GORON_SHRINE;rock;All;0;mm;;
-0x0000a;GORON_SHRINE;Rock 9;MM Goron Shrine Rock 09;rock;593;359;0;GORON_SHRINE;rock;All;0;mm;;
-0x0000b;GORON_SHRINE;Rock 10;MM Goron Shrine Rock 10;rock;561;359;0;GORON_SHRINE;rock;All;0;mm;;
-0x0000c;GORON_SHRINE;Rock 11;MM Goron Shrine Rock 11;rock;150;275;0;GORON_SHRINE;rock;All;0;mm;;
-0x0000d;GORON_SHRINE;Rock 12;MM Goron Shrine Rock 12;rock;405;229;0;GORON_SHRINE;rock;All;0;mm;;
-0x0000e;GORON_SHRINE;Rock 13;MM Goron Shrine Rock 13;rock;555;187;0;GORON_SHRINE;rock;All;0;mm;;
+0x00006;GORON_SHRINE;Rock 5;MM Goron Shrine Rock 05;rock;236;156;0;GORON_SHRINE;rock;All;0;mm;;
+0x00007;GORON_SHRINE;Rock 6;MM Goron Shrine Rock 06;rock;150;275;0;GORON_SHRINE;rock;All;0;mm;;
+0x00008;GORON_SHRINE;Rock 7;MM Goron Shrine Rock 07;rock;143;365;0;GORON_SHRINE;rock;All;0;mm;;
+0x00009;GORON_SHRINE;Rock 8;MM Goron Shrine Rock 08;rock;149;390;0;GORON_SHRINE;rock;All;0;mm;;
+0x0000a;GORON_SHRINE;Rock 9;MM Goron Shrine Rock 09;rock;459;381;0;GORON_SHRINE;rock;All;0;mm;;
+0x0000b;GORON_SHRINE;Rock 10;MM Goron Shrine Rock 10;rock;465;365;0;GORON_SHRINE;rock;All;0;mm;;
+0x0000c;GORON_SHRINE;Rock 11;MM Goron Shrine Rock 11;rock;593;359;0;GORON_SHRINE;rock;All;0;mm;;
+0x0000d;GORON_SHRINE;Rock 12;MM Goron Shrine Rock 12;rock;518;399;0;GORON_SHRINE;rock;All;0;mm;;
+0x0000e;GORON_SHRINE;Rock 13;MM Goron Shrine Rock 13;rock;518;162;0;GORON_SHRINE;rock;All;0;mm;;
 0x0000f;GORON_SHRINE;Rock 14;MM Goron Shrine Rock 14;rock;486;187;0;GORON_SHRINE;rock;All;0;mm;;
-0x00010;GORON_SHRINE;Rock 15;MM Goron Shrine Rock 15;rock;518;162;0;GORON_SHRINE;rock;All;0;mm;;
-0x00011;GORON_SHRINE;Rock 16;MM Goron Shrine Rock 16;rock;236;156;0;GORON_SHRINE;rock;All;0;mm;;
+0x00010;GORON_SHRINE;Rock 15;MM Goron Shrine Rock 15;rock;555;187;0;GORON_SHRINE;rock;All;0;mm;;
+0x00011;GORON_SHRINE;Rock 16;MM Goron Shrine Rock 16;rock;561;359;0;GORON_SHRINE;rock;All;0;mm;;
 0x0000a;GREAT_BAY_COAST;Island;MM Great Bay Coast Palm Tree Island;tree;516;168;0;GREAT_BAY_COAST;tree;All;0;mm;;
 0x0000b;GREAT_BAY_COAST;Beach 1;MM Great Bay Coast Palm Tree Beach 1;tree;597;436;0;GREAT_BAY_COAST;tree;All;0;mm;;
 0x0000c;GREAT_BAY_COAST;Beach 2;MM Great Bay Coast Palm Tree Beach 2;tree;593;519;0;GREAT_BAY_COAST;tree;All;0;mm;;
