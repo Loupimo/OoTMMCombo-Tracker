@@ -253,6 +253,7 @@ uint32_t GetSceneNPC(uint32_t NPC, uint32_t Game)
 				return LON_LON_RANCH;
 
 			// Lon Lon Ranch Silo
+			case TALON_MILK:
 			case TALON_BOTTLE:
 				return RANCH_HOUSE_SILO;
 
