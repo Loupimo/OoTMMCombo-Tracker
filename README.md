@@ -10,7 +10,7 @@ First you need to be sure that your ROM has been created using the coop or multi
 ## Playing in singleplayer
 
 1. In the "Launch" tab click the "Start Tracking" button.
-2. Then open your project64 with lua script, launch your and game and start the adpater script.
+2. Then open your project64 with lua script, launch your game and start the adpater script.
 3. Now you can create a new save and start playing.
 
 There is an auto-saving feature that is enabled by default. When an item is collected the progress will be saved.\
