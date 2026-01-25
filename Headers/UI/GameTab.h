@@ -65,6 +65,11 @@ public:
     */
     void RefreshTabCountText();
 
+    /*
+    *   Refresh the object visibility of the tab.
+    */
+    void UpdateObjectVisibility();
+
 #pragma endregion
 
 #pragma region Saving / Loading

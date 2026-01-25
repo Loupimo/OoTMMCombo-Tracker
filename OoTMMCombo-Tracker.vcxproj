@@ -123,6 +123,7 @@
     <ClCompile Include="Sources\Multi\Sendq.cpp" />
     <ClCompile Include="Sources\UI\AppConfig.cpp" />
     <ClCompile Include="Sources\UI\AppStyle.cpp" />
+    <ClCompile Include="Sources\UI\FilterManager.cpp" />
     <ClCompile Include="Sources\UI\GameTab.cpp" />
     <ClCompile Include="Sources\UI\LogTab.cpp" />
     <ClCompile Include="Sources\UI\MapTab.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="Headers\Multi\Game.h" />
     <ClInclude Include="Headers\UI\AppConfig.h" />
     <ClInclude Include="Headers\UI\AppStyle.h" />
+    <QtMoc Include="Headers\UI\FilterManager.h" />
     <ClInclude Include="Headers\UI\RegionTab.h" />
     <ClInclude Include="Headers\UI\RoomRenderer.h" />
     <ClInclude Include="main.h" />

@@ -3,6 +3,7 @@
 #include "UI/MapTab.h"
 #include "UI/RoomRenderer.h"
 #include "UI/AppConfig.h"
+#include "UI/FilterManager.h"
 
 #pragma region SceneItemTree
 
@@ -20,11 +21,12 @@ SceneInfo::SceneInfo(int PSceneID, int PGameID, SceneType PType)
 
 #pragma region SceneItemTree
 
-SceneItemTree::SceneItemTree(SceneInfo* SceneToRender, QTreeWidgetItem* Parent) : QTreeWidgetItem(Parent)
+SceneItemTree::SceneItemTree(SceneInfo* SceneToRender, FilterManager * Filter, QTreeWidgetItem* Parent) : QTreeWidgetItem(Parent)
 {
     this->Scene = SceneToRender;
     this->CountSceneObjects();      // Count the scene objects
     this->UpdateObjectCounts(0);    // Used to refresh region counters and item name
+    this->Filter = Filter;
 
     const QHash<int, std::vector<RoomInfo>>* tmp = GetSceneRooms(this->Scene);
 
@@ -68,7 +70,7 @@ void SceneItemTree::RenderScene(QTreeWidget* ObjectsTreeWidget, bool Context, bo
     if (CreateNew)
     {   // We need to create a new renderer
 
-        this->Renderer = new SceneRenderer(this->Scene, ObjectsTreeWidget, this);
+        this->Renderer = new SceneRenderer(this->Scene, ObjectsTreeWidget, this, this->Filter);
     }
     else
     {
@@ -278,12 +280,13 @@ void SceneItemTree::RefreshItemName()
 
 #pragma region SceneRenderer
 
-SceneRenderer::SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeWidget, SceneItemTree* Owner) : QGraphicsScene()
+SceneRenderer::SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeWidget, SceneItemTree* Owner, FilterManager * Filter) : QGraphicsScene()
 {
     this->ActiveRoom = -1;
     this->CurrScene = SceneToRender;
     this->ObjectsTree = ObjectsTreeWidget;
     this->ItemOwner = Owner;
+    this->Filter = Filter;
 
     for (size_t i = 0; i < ObjectType::last - 1; i++)
     {   // Creates all objects renderer
@@ -307,7 +310,7 @@ SceneRenderer::SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeW
         if (dest == nullptr)
         {   // The object renderer for this type of object doesn't exist yet
 
-            this->ObjectsRen[currObject->RenderType - 1] = new ObjectRenderer(currObject->RenderType, this);
+            this->ObjectsRen[currObject->RenderType - 1] = new ObjectRenderer(currObject->RenderType, this, this->Filter->ActiveFilter.contains(currObject->RenderType));
             dest = this->ObjectsRen[currObject->RenderType - 1];
             this->ObjectsTree->addTopLevelItem(dest->ObjCat);
         }
@@ -325,6 +328,8 @@ SceneRenderer::SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeW
 SceneRenderer::~SceneRenderer()
 {
     this->CurrScene = nullptr;  // Do not destroy this, is it static data
+    this->Filter = nullptr;
+
     if (this->SceneImage)
     {
         delete this->SceneImage;
@@ -395,7 +400,7 @@ void SceneRenderer::UnloadScene()
 
 void SceneRenderer::CenterViewOn(ObjectPixmapItem* Target)
 {
-    if (AppConfig::GetAutoSnapView())
+    if (AppConfig::GetAutoSnapView() && Target != nullptr)
     {
         QGraphicsView* currView = this->views()[0];
         currView->resetTransform();
@@ -494,20 +499,36 @@ void SceneRenderer::UpdateContext(ObjectContext Context)
 }
 
 
+void SceneRenderer::UpdateSceneObjectVisibility()
+{
+    for (size_t i = 0; i < ObjectType::last - 1; i++)
+    {
+        if (this->ObjectsRen[i] != nullptr)
+        {   // The scene contains object of this type
+
+            this->ObjectsRen[i]->ShouldBeRendered = this->Filter->ActiveFilter.contains((ObjectType) (i + 1));
+            this->ObjectsRen[i]->RenderObjectToScene(this->CurrContext);
+        }
+    }
+}
+
+
 void SceneRenderer::RefreshSceneContext(bool Context)
 {
-    ObjectContext context = ObjectContext::All;
-
     if (this->ItemOwner->Scene->Info->HasContext)
     {
         if (this->ItemOwner->Scene->GameID == OOT_GAME)
         {
-            context = Context ? ObjectContext::Adult : ObjectContext::Child;
+            this->CurrContext = Context ? ObjectContext::Adult : ObjectContext::Child;
         }
         else
         {
-            context = Context ? ObjectContext::Spring : ObjectContext::Winter;
+            this->CurrContext = Context ? ObjectContext::Spring : ObjectContext::Winter;
         }
+    }
+    else
+    {
+        this->CurrContext = ObjectContext::All;
     }
 
     ObjectInfo tmp;
@@ -520,9 +541,9 @@ void SceneRenderer::RefreshSceneContext(bool Context)
         if (objRdr && objRdr->GetTotalObject() > 0)
         {   // We only render object that are valid
 
-            objRdr->ShouldBeRendered = true;
+            //objRdr->ShouldBeRendered = true;
             objRdr->UpdateText();
-            objRdr->RenderObjectToScene(context);
+            objRdr->RenderObjectToScene(this->CurrContext);
             //this->ObjectsTree->addTopLevelItem(objRdr->ObjCat);
             objRdr->ObjCat->setExpanded(true);
         }

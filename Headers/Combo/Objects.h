@@ -62,6 +62,20 @@ enum ObjectType
 	last = bush + 1
 };
 
+const QSet<ObjectType> OoTTypes =
+{
+	ObjectType::chest, ObjectType::collectible, ObjectType::npc, ObjectType::gs, ObjectType::cow, ObjectType::shop, ObjectType::scrub,
+	ObjectType::sr, ObjectType::fish, ObjectType::wonder, ObjectType::grass, ObjectType::crate, ObjectType::pot, ObjectType::hive,
+	ObjectType::butterfly, ObjectType::rupee, ObjectType::heart, ObjectType::fairy, ObjectType::fairy_spot, ObjectType::icicle, ObjectType::redboulder, ObjectType::redice,
+	ObjectType::rock, ObjectType::soil, ObjectType::tree, ObjectType::bush
+};
+
+const QSet<ObjectType> MMTypes =
+{
+	ObjectType::chest, ObjectType::collectible, ObjectType::npc, ObjectType::gs, ObjectType::sf, ObjectType::cow, ObjectType::shop, ObjectType::scrub,
+	ObjectType::wonder, ObjectType::grass, ObjectType::crate, ObjectType::pot, ObjectType::hive, ObjectType::butterfly, ObjectType::rupee, ObjectType::snowball,
+	ObjectType::barrel, ObjectType::heart, ObjectType::icicle, ObjectType::redboulder, ObjectType::rock, ObjectType::soil, ObjectType::tree
+};
 
 typedef struct ObjectInfo
 {

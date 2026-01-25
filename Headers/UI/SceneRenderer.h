@@ -13,6 +13,7 @@
 
 class SceneRenderer;
 class RoomItemTree;
+class FilterManager;
 struct RoomInfo;
 
 enum SceneType
@@ -83,6 +84,7 @@ public:
     SceneInfo* Scene = nullptr;             // The scene information.
     SceneRenderer* Renderer = nullptr;      // The associated scene to load when this item is active.
     RoomInfo* ActiveRoom = nullptr;         // The current active room.
+    FilterManager* Filter = nullptr;        // A reference to the filter manager.
 
     std::vector<RoomItemTree*> Rooms;       // The available scene's rooms. If empty this means that the scene has only one room.
 
@@ -102,8 +104,9 @@ public:
     *
     *   @param SceneToRender       The actual scene information used to create the scene.
     *   @param Parent              The parent tree item to attach this item to.
+    *   @param Filter              A reference to the filter manager to use.
     */
-    SceneItemTree(SceneInfo* SceneToRender, QTreeWidgetItem* Parent = nullptr);
+    SceneItemTree(SceneInfo* SceneToRender, FilterManager* Filter, QTreeWidgetItem* Parent = nullptr);
 
     /*
     *   Default destructor.
@@ -127,6 +130,7 @@ public:
     *   @param ObjectsTreeWidget   The object tree list to fill when this scene is active.
     *   @param Context             The context in which the scene should be rendered.
     *   @param CreateNew           Tells if we should create a new scene renderer or not.
+    *   @param Filter              The reference to the filter manager to use.
     */
     virtual void RenderScene(QTreeWidget* ObjectsTreeWidget, bool Context, bool CreateNew);
 
@@ -226,8 +230,10 @@ public:
 
     uint32_t ActiveRoom;                                                    // The current active room of the scene
     SceneInfo* CurrScene;                                                   // Contains all info for this scene.
-    QTreeWidget* ObjectsTree = nullptr;                                     // The object panel where to display the scene object list;
+    QTreeWidget* ObjectsTree = nullptr;                                     // The object panel where to display the scene object list.
     SceneItemTree* ItemOwner = nullptr;                                     // The tree widget item that owns this scene
+    ObjectContext CurrContext = ObjectContext::All;                         // The current context of the scene
+    FilterManager* Filter = nullptr;                                        // A reference to the filter manager.
 
     QPixmap* SceneImage = nullptr;                                          // The scene image to render
 
@@ -243,8 +249,9 @@ public:
     *   @param SceneToRender       The actual scene information used to create the scene.
     *   @param ObjectsTreeWidget   The object tree list to fill when this scene is active.
     *   @param Owner               The item tree list that owns this scene.
+    *   @param Filter              A reference to the filter manager.
     */
-    SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeWidget, SceneItemTree* Owner);
+    SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeWidget, SceneItemTree* Owner, FilterManager* Filter);
 
     /*
     *   Default destructor.
@@ -339,6 +346,13 @@ public:
     *   @param Context  The new game context.
     */
     void UpdateContext(ObjectContext Context);
+
+    /*
+    *   Update the scene object visibility based on the given filter.
+    *
+    *   @param Context  The filter containing the object types to display.
+    */
+    void UpdateSceneObjectVisibility();
 
     /*
     *   Refresh the scene based on the given context.

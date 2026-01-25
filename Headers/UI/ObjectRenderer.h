@@ -81,6 +81,13 @@ public:
     *   Create the object icon class if it doesn't exist.
     */
     static void CreateObjectIcons();
+
+    /*
+    *   Get the object icons.
+    * 
+    *   @return The object icons.
+    */
+    static QIcon* GetObjectIcons();
 };
 
 
@@ -309,8 +316,9 @@ public:
     *
     *   @param Type             The object type to render.
     *   @param Parent           The parent tree item to attach this item to.
+    *   @param ShoulBeRendered  Tells if the objects should be rendered.
     */
-    ObjectRenderer(ObjectType Type, SceneRenderer* Owner);
+    ObjectRenderer(ObjectType Type, SceneRenderer* Owner, bool ShouldBeRendered);
 
     /*
     *   Default destructor.

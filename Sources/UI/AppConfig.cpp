@@ -89,6 +89,11 @@ QString AppConfig::GetAutoSaveFullPath()
     return  AppConfig::GetAutoSavePath() + Config.CurrentAutoSaveFile;
 }
 
+bool AppConfig::GetHideCollectedObject()
+{
+    return Config.Settings.value("HideCollectedObject", false).toBool();
+}
+
 void AppConfig::SetAutoSavePath(QString NewFilePath)
 {
     Config.CurrentAutoSaveFile = NewFilePath;
@@ -107,6 +112,11 @@ void AppConfig::SetAutoZoom(bool NewValue)
 void AppConfig::SetAutoSave(bool NewValue)
 {
     Config.Settings.setValue("AutoSave", NewValue);
+}
+
+void AppConfig::SetHideCollectedObject(bool NewValue)
+{
+    Config.Settings.setValue("HideCollectedObject", NewValue);
 }
 
 #pragma endregion

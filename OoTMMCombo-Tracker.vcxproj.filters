@@ -118,6 +118,9 @@
     <ClCompile Include="Sources\UI\AppConfig.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\UI\FilterManager.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Multi\API.h">
@@ -201,6 +204,9 @@
       <Filter>Header Files\UI</Filter>
     </QtMoc>
     <QtMoc Include="Headers\UI\GameTab.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="Headers\UI\FilterManager.h">
       <Filter>Header Files\UI</Filter>
     </QtMoc>
   </ItemGroup>

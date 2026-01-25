@@ -349,6 +349,12 @@ void GameTab::RefreshTabCountText()
     }
 }
 
+
+void GameTab::UpdateObjectVisibility()
+{
+    this->GameMaps->UpdateObjectVisibility();
+}
+
 #pragma endregion
 
 #pragma region Saving / Loading

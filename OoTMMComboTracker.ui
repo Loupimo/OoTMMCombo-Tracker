@@ -63,6 +63,7 @@
     </property>
     <addaction name="actionAutoSnapView"/>
     <addaction name="actionAutoZoom"/>
+    <addaction name="actionHideCollectedObject"/>
     <addaction name="separator"/>
     <addaction name="actionAutoSaving"/>
    </widget>
@@ -224,6 +225,14 @@
    </property>
    <property name="text">
     <string>Reset Tracking</string>
+   </property>
+  </action>
+  <action name="actionHideCollectedObject">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Hide Collected Object</string>
    </property>
   </action>
  </widget>

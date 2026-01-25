@@ -39,6 +39,17 @@ void ObjectIcons::CreateObjectIcons()
 }
 
 
+QIcon* ObjectIcons::GetObjectIcons()
+{
+    if (IconsRef == nullptr)
+    {
+        IconsRef = new ObjectIcons();
+    }
+
+    return IconsRef->Icons;
+}
+
+
 ObjectItemTree::ObjectItemTree(ObjectInfo* Obj, QColor DefaultColor, ObjectRenderer* Owner, QTreeWidgetItem* Parent) : CommonBaseItemTree(Parent)
 {
     this->Object = Obj;
@@ -95,10 +106,15 @@ void ObjectItemTree::UpdateIcon(ObjectType Type)
         }
     }
 
-    this->GraphItem->UpdateObjectRendering(this->Object->Status, false);
-    this->GraphItem->setPos(this->Object->Position[0], this->Object->Position[1]);
-    this->GraphItem->setZValue(this->Object->Position[2]);
-    this->RendererOwner->SceneOwner->addItem(this->GraphItem);
+    if (this->GraphItem != nullptr)
+    {   // Only valid if the item is rendered
+
+        this->GraphItem->UpdateObjectRendering(this->Object->Status, false);
+        this->GraphItem->setPos(this->Object->Position[0], this->Object->Position[1]);
+        this->GraphItem->setZValue(this->Object->Position[2]);
+        this->RendererOwner->SceneOwner->addItem(this->GraphItem);
+    }
+
     this->UpdateTextStyle();
 }
 
@@ -177,7 +193,11 @@ void ObjectItemTree::PerformAction()
         this->RendererOwner->UpdateSceneContext(this->Object->Context);     // We need to update the context in case the selected object is in a different context than the active one
         this->RendererOwner->RefreshObjectCounts(this, 1);                  // Increase the number of discovered object by one
         this->RendererOwner->CenterViewOn(this->GraphItem);                 // Center the scene view on the object
-        this->GraphItem->UpdateObjectRendering(this->Object->Status, true); // Apply opacity and effect to the selected object
+        if (this->GraphItem)
+        {   // It can be null when collected object should be hidden
+
+            this->GraphItem->UpdateObjectRendering(this->Object->Status, true); // Apply opacity and effect to the selected object
+        }
     }
     else if (this->Object->Status == ObjectState::Forced)
     {   // The item was forced to be shown and should now be hidden
@@ -195,6 +215,10 @@ void ObjectItemTree::PerformAction()
         {   // It can be null when the object has been forced and is only present in a context / room that is different from the current active one
 
             this->GraphItem->UpdateObjectRendering(this->Object->Status, false);
+        }
+        else
+        {
+            this->UpdateIcon(this->Object->RenderType);
         }
     }
     else
@@ -321,6 +345,7 @@ void ObjectPixmapItem::UpdateObjectRendering(ObjectState ObjStatus, bool IsSelec
 
 void ObjectPixmapItem::mousePressEvent(QGraphicsSceneMouseEvent* event)
 {
+    QGraphicsPixmapItem::mousePressEvent(event);
     if (this->Owner)
     {
         this->Owner->CenterViewOn(this);            // Center the scene view on this object
@@ -330,7 +355,6 @@ void ObjectPixmapItem::mousePressEvent(QGraphicsSceneMouseEvent* event)
         this->ItemOwner->SetCalledFromGraph(true);  // Update the caller status
         this->ItemOwner->PerformAction();           // Update the object
     }
-    QGraphicsPixmapItem::mousePressEvent(event);
 }
 
 
@@ -363,11 +387,12 @@ void ObjectPixmapItem::hoverLeaveEvent(QGraphicsSceneHoverEvent* event)
 }
 
 
-ObjectRenderer::ObjectRenderer(ObjectType Type, SceneRenderer* Owner)
+ObjectRenderer::ObjectRenderer(ObjectType Type, SceneRenderer* Owner, bool ShouldBeRendered)
 {
     ObjectIcons::CreateObjectIcons();
 
     this->Type = Type;
+    this->ShouldBeRendered = ShouldBeRendered;
     //this->Icon = IconsRef->PixmapIcons[this->Type];
     this->SceneOwner = Owner;
     this->ObjCat = new CommonBaseItemTree();
@@ -435,7 +460,12 @@ void ObjectRenderer::RenderObjectToScene(ObjectContext ActiveContext)
         for (ObjectItemTree* currObj : this->Objects)
         {   // Browse all objects
 
-            if ((currObj->Object->Context == ObjectContext::All || currObj->Object->Context == ActiveContext) && (this->SceneOwner->ActiveRoom == -1 || currObj->Object->RoomID == this->SceneOwner->ActiveRoom))
+            if (AppConfig::GetHideCollectedObject() && currObj->GetStatus() != ObjectState::Hidden)
+            {   // The object is not hidden and should be hidden when collected
+
+                currObj->RemoveObjectFromScene();
+            }
+            else if ((currObj->Object->Context == ObjectContext::All || currObj->Object->Context == ActiveContext) && (this->SceneOwner->ActiveRoom == -1 || currObj->Object->RoomID == this->SceneOwner->ActiveRoom))
             {   // The object can be rendered
 
                 currObj->UpdateIcon(this->Type);
@@ -447,18 +477,19 @@ void ObjectRenderer::RenderObjectToScene(ObjectContext ActiveContext)
             }
         }
     }
+    else
+    {
+        this->UnloadObjectsFromScene();
+    }
 }
 
 
 void ObjectRenderer::UnloadObjectsFromScene()
 {
-    if (this->ShouldBeRendered)
-    {
-        for (ObjectItemTree* currObj : this->Objects)
-        {   // Browse all objects
+    for (ObjectItemTree* currObj : this->Objects)
+    {   // Browse all objects
 
-            currObj->RemoveObjectFromScene();
-        }
+        currObj->RemoveObjectFromScene();
     }
 }
 

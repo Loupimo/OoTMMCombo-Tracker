@@ -7,6 +7,8 @@
 #include "UI/RoomRenderer.h"
 #include "UI/MapTab.h"
 #include "UI/GameTab.h"
+#include "UI/FilterManager.h"
+#include "UI/AppConfig.h"
 
 #pragma region ContextSwitchButton
 
@@ -176,6 +178,7 @@ MapTab::MapTab(GameTab* Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes, 
     this->LayoutSplitter = new QSplitter(Qt::Horizontal);
     this->MainLayout = new QHBoxLayout;
     this->SwitchLayout = new QHBoxLayout;
+    this->ObjectBarLayout = new QHBoxLayout;
     this->MapTreeLayout = new QVBoxLayout(this->MapContainer);
     this->ObjectTreeLayout = new QVBoxLayout(this->ObjectContainer);
 
@@ -221,15 +224,21 @@ MapTab::MapTab(GameTab* Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes, 
     this->MapTreeToggleButton = new QPushButton("Expand All", this);
     this->MapTreeToggleButton->setCheckable(true);
 
+    // Filter Button
+    this->FilterButton = new FilterManager(Owner);
+
     // Object Tree
     QLabel* objectLabel = new QLabel("Objects");
     this->ObjectTreeLayout->addWidget(objectLabel);
     this->ObjectSearchBar = new QLineEdit();
     this->ObjectSearchBar->setPlaceholderText("Find...");
+    this->ObjectBarLayout->addWidget(this->ObjectSearchBar);
+    this->ObjectBarLayout->addWidget(this->FilterButton);
+
     this->ObjectList = new QTreeWidget();
     this->ObjectList->setHeaderHidden(true);
     this->ObjectTreeToggleButton = new QPushButton("Collapse All", this);
-    this->ObjectTreeLayout->addWidget(this->ObjectSearchBar);
+    this->ObjectTreeLayout->addLayout(this->ObjectBarLayout);
     this->ObjectTreeLayout->addWidget(this->ObjectTreeToggleButton);
     this->ObjectTreeLayout->addWidget(this->ObjectList);
     this->ObjectContainer->setHidden(true);
@@ -254,7 +263,7 @@ MapTab::MapTab(GameTab* Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes, 
             }
 
             // Create a new scene item and add it to the region
-            SceneItemTree* tmp = new SceneItemTree(&Scenes[i], currRegion);
+            SceneItemTree* tmp = new SceneItemTree(&Scenes[i], this->FilterButton, currRegion);
 
             // Update the region object counts
             currRegion->AddObjectCounts(tmp->GetCollectedObjects(), tmp->GetTotalObjects());
@@ -304,6 +313,7 @@ MapTab::MapTab(GameTab* Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes, 
     });
 
     QObject::connect(this->ObjectList, &QTreeWidget::itemSelectionChanged, this, &MapTab::UpdateObjectSelection);
+    QObject::connect(this->FilterButton, &FilterManager::filterChanged, this, &MapTab::UpdateObjectVisibility);
 
     QObject::connect(this->MapTreeToggleButton, &QPushButton::clicked, this, [&]()
     {
@@ -318,6 +328,7 @@ MapTab::MapTab(GameTab* Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes, 
         this->ObjectTreeToggleButton->setText(this->IsObjectExpanded ? "Collapse All" : "Expand All");
         this->OnToggleExpandCollapse(this->ObjectList, this->IsObjectExpanded);
     });
+
 }
 
 
@@ -681,6 +692,40 @@ void MapTab::UpdateObjectSelection()
 
     // Reconnect the selection changed signal
     QObject::connect(this->ObjectList, &QTreeWidget::itemSelectionChanged, this, &MapTab::UpdateObjectSelection);
+}
+
+
+void MapTab::UpdateObjectVisibility()
+{
+    ObjectType currType = ObjectType::none;
+    bool isCurrTypeActive = false;
+
+    /*for (int i = 0; i < this->ObjectList->topLevelItemCount(); ++i)
+    {   // Browse all tree item from the top
+
+        ObjectItemTree* object = (ObjectItemTree*) this->ObjectList->topLevelItem(i);
+        object->setHidden(false);
+        
+        if (currType != object->Object->Type)
+        {
+            currType = object->Object->Type;
+            isCurrTypeActive = this->FilterButton->ActiveFilter.contains(currType);
+        }
+
+        if (isCurrTypeActive)
+        {   // We need to check for the collected object option
+
+            if (AppConfig::GetHideCollectedObject() && object->GetStatus() != Hidden)
+            {
+                object->setHidden(true);
+            }
+        }
+    }*/
+
+    if (this->RenderedScene != nullptr)
+    {
+        this->RenderedScene->GetScene()->UpdateSceneObjectVisibility();
+    }
 }
 
 #pragma endregion

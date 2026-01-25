@@ -39,6 +39,7 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     this->ui.actionAutoSaving->setChecked(AppConfig::GetAutoSave());
     this->ui.actionAutoLoadTrackingFile->setChecked(AppConfig::GetAutoLoadTrackingFile());
     this->ui.actionAutoLoadSpoilerLog->setChecked(AppConfig::GetAutoLoadSpoilerLog());
+    this->ui.actionHideCollectedObject->setChecked(AppConfig::GetHideCollectedObject());
 
     // Recent files sub menu
     for (int i = 0; i < MaxRecentFiles; ++i)
@@ -73,6 +74,7 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     connect(this->ui.actionStartTracking, &QAction::triggered, this->Log, &LogTab::PressLaunchButton);
     connect(this->ui.actionAutoSnapView, &QAction::toggled, this, &AppConfig::SetAutoSnapView);
     connect(this->ui.actionAutoZoom, &QAction::toggled, this, &AppConfig::SetAutoZoom);
+    connect(this->ui.actionHideCollectedObject, &QAction::toggled, this, &OoTMMComboTracker::UpdateObjectVisibility);
     connect(this->ui.actionAutoSaving, &QAction::toggled, this, &AppConfig::SetAutoSave);
     connect(this->ui.actionAbout, &QAction::triggered, this, &OoTMMComboTracker::ShowAboutDialog);
     connect(this->ui.actionAutoLoadTrackingFile, &QAction::triggered, this, &AppConfig::SetAutoLoadTrackingFile);
@@ -186,6 +188,14 @@ void OoTMMComboTracker::UpdateTabNameText(int TabID)
     finalName[offset] = ')';
     finalName[offset + 1] = '\0';
     this->TabWidget->setTabText(TabID + 1, finalName);
+}
+
+
+void OoTMMComboTracker::UpdateObjectVisibility(bool NewValue)
+{
+    AppConfig::SetHideCollectedObject(NewValue);
+    this->OoTTab->UpdateObjectVisibility();
+    this->MMTab->UpdateObjectVisibility();
 }
 
 #pragma endregion

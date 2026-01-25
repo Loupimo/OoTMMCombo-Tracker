@@ -113,7 +113,7 @@ public:
     /*
     *   Tells if the session should automatically be saved when a new object is collected.
     *
-    *   @return <b>True</b> if the should be automatically be saved when a new object is collected, <b>false</b> otherwise.
+    *   @return <b>True</b> if the session should be automatically be saved when a new object is collected, <b>false</b> otherwise.
     */
     static bool GetAutoSave();
 
@@ -124,13 +124,19 @@ public:
     */
     static QString GetAutoSavePath();
 
-
     /*
     *   Gets the auto save full file path.
     *
     *   @return The auto save full file path.
     */
     static QString GetAutoSaveFullPath();
+
+    /*
+    *   Tells if the object should be hidden when collected.
+    *
+    *   @return <b>True</b> if the object should be hidden when collected, <b>false</b> otherwise.
+    */
+    static bool GetHideCollectedObject();
 
     /*
     *   Sets the auto save file path.
@@ -159,6 +165,13 @@ public:
     *   @param NewValue The new auto save value.
     */
     static void SetAutoSave(bool NewValue);
+
+    /*
+    *   Sets the hide collected object value.
+    *
+    *   @param NewValue The new hide collected object value.
+    */
+    static void SetHideCollectedObject(bool NewValue);
 
 #pragma endregion
 

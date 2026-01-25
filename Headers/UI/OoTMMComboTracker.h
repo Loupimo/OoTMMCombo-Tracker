@@ -61,8 +61,15 @@ public:
     *   Refresh the game tab name corresponding to the given ID.
     *
     *   @param TabID       The game tab to refresh.
-   */
+    */
     void UpdateTabNameText(int TabID);
+
+    /*
+    *   Refresh the collected object visibility.
+    *
+    *   @param NewValue       The new visibility state.
+    */
+    void UpdateObjectVisibility(bool NewValue);
 
 public slots:
 

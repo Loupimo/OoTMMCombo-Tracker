@@ -16,6 +16,7 @@
 
 class GameTab;
 class MapTab;
+class FilterManager;
 
 /*
 *   This class is responsible of handling the context switch option.
@@ -148,6 +149,7 @@ public:
     // Layouts
     QHBoxLayout* MainLayout;
     QHBoxLayout* SwitchLayout;
+    QHBoxLayout* ObjectBarLayout;
     QVBoxLayout* MapTreeLayout;
     QVBoxLayout* ObjectTreeLayout;
     QSplitter* LayoutSplitter;
@@ -168,6 +170,7 @@ public:
 
     // Object Tree
     QLineEdit* ObjectSearchBar;
+    FilterManager* FilterButton;
     QTreeWidget* ObjectList;
     QPushButton* ObjectTreeToggleButton;
     bool IsObjectExpanded = true;
@@ -296,6 +299,12 @@ public:
     *   @warning This function does a lot of things that modify some flags that could have potential side effect on other function.
     */
     void UpdateObjectSelection();
+
+
+    /*
+    *   Update the object visibility based on the map filter and object option.
+    */
+    void UpdateObjectVisibility();
 
 #pragma endregion
 
