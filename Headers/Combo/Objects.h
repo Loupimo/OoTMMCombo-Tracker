@@ -100,6 +100,11 @@ public:
 	*/
 	size_t LoadObject(QByteArray* Data, size_t Offset);
 
+	/*
+	*   Reset the object.
+	*/
+	void ResetObject();
+
 } ObjectInfo;
 
 
@@ -218,5 +223,18 @@ void LoadSceneObjects(QByteArray* Data, size_t Offset);
 *	@return The end offset of the last loaded scene object.
 */
 size_t LoadSceneObjectsFor(QByteArray* Data, size_t Offset, SceneObjects* Array, size_t NumOfScenes);
+
+/*
+*   Reset all scene objects of both game.
+*/
+void ResetSceneObjects();
+
+/*
+*   Reset all scene objects of a specific game.
+*
+*   @param Array		The array containing the scene object to load.
+*   @param NumOfScenes	The the number of scenes in the array.
+*/
+void ResetSceneObjectsFor(SceneObjects* Array, size_t NumOfScenes);
 
 #pragma endregion

@@ -31,9 +31,11 @@ public:
     QVBoxLayout* NetLayout;
     QHBoxLayout* MultiLayout;
     QHBoxLayout* FileLayout;
+    QGridLayout* TrackLayout;
     QGroupBox* LaunchGroup;
     
     // Launch button
+    QPushButton* ResetButton;
     QPushButton* LaunchButton;
 
     // Save / Load options
@@ -97,6 +99,11 @@ public:
     void SaveTracking();
 
     /*
+    *   Reset the tracker state.
+    */
+    void ResetTracking();
+
+    /*
     *   Open a file dialog picker to load the desired tracking session.
     */
     void LoadTracking();
@@ -105,6 +112,7 @@ public:
     *   Open a file dialog picker to load the desired spoiler log in order to load items names and attached them to their matching object.
     */
     void LoadSpoiler();
+
 
 public slots:
 

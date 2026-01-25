@@ -69,6 +69,7 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     connect(this->ui.actionSaveSession, &QAction::triggered, this->Log, &LogTab::SaveTracking);
     connect(this->ui.actionLoadSession, &QAction::triggered, this->Log, &LogTab::LoadTracking);
     connect(this->ui.actionLoadSpoilerLog, &QAction::triggered, this->Log, &LogTab::LoadSpoiler);
+    connect(this->ui.actionResetTracking, &QAction::triggered, this->Log, &LogTab::ResetTracking);
     connect(this->ui.actionStartTracking, &QAction::triggered, this->Log, &LogTab::PressLaunchButton);
     connect(this->ui.actionAutoSnapView, &QAction::toggled, this, &AppConfig::SetAutoSnapView);
     connect(this->ui.actionAutoZoom, &QAction::toggled, this, &AppConfig::SetAutoZoom);
@@ -242,6 +243,14 @@ void OoTMMComboTracker::UpdateTrackingState(QString NewState, QIcon NewIcon)
     this->ui.actionStartTracking->setIcon(NewIcon);
 }
 
+
+void OoTMMComboTracker::RefreshTracker()
+{
+    this->OoTTab->RefreshGameTab();
+    this->MMTab->RefreshGameTab();
+}
+
+
 void OoTMMComboTracker::LoadGameScenes(QString FilePath)
 {
     QFile loadFile(FilePath);
@@ -261,9 +270,7 @@ void OoTMMComboTracker::LoadGameScenes(QString FilePath)
 
     MultiLogger::LogMessage("File loaded: %s\n", FilePath.toStdString().c_str());
 
-    // Refresh game tabs
-    this->OoTTab->RefreshGameTab();
-    this->MMTab->RefreshGameTab();
+    this->RefreshTracker();
 }
 
 
@@ -371,8 +378,7 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
         }
     }
 
-    this->OoTTab->RefreshGameTab();
-    this->MMTab->RefreshGameTab();
+    this->RefreshTracker();
 
     AppConfig::SetLastSpoilerLogPath(FilePath);
 }

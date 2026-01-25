@@ -89,6 +89,11 @@ QString AppConfig::GetAutoSaveFullPath()
     return  AppConfig::GetAutoSavePath() + Config.CurrentAutoSaveFile;
 }
 
+void AppConfig::SetAutoSavePath(QString NewFilePath)
+{
+    Config.CurrentAutoSaveFile = NewFilePath;
+}
+
 void AppConfig::SetAutoSnapView(bool NewValue)
 {
     Config.Settings.setValue("AutoSnapView", NewValue);

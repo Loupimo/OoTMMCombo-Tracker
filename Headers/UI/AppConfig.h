@@ -133,9 +133,16 @@ public:
     static QString GetAutoSaveFullPath();
 
     /*
-    *   Sets the auto snap view state.
+    *   Sets the auto save file path.
     *
     *   @param NewValue The new auto snap view value.
+    */
+    static void SetAutoSavePath(QString NewFilePath);
+
+    /*
+    *   Sets the auto snap view state.
+    *
+    *   @param NewFilePath The new auto save file path.
     */
     static void SetAutoSnapView(bool NewValue);
 

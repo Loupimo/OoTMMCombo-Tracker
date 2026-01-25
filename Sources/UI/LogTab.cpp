@@ -102,21 +102,31 @@ LogTab::LogTab(OoTMMComboTracker* Owner, QWidget* parent) : QWidget(parent)
     // Launch container
     this->LaunchGroup = new QGroupBox("Launch Options");
     this->FileLayout = new QHBoxLayout();
+    this->TrackLayout = new QGridLayout();
 
     // Save tracking
     this->SaveButton = new QPushButton("Save Tracking");
+    this->SaveButton->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::DocumentSave));
     QObject::connect(this->SaveButton, &QPushButton::pressed, this, &LogTab::SaveTracking);
     this->FileLayout->addWidget(this->SaveButton);
 
     // Load tracking
     this->LoadButton = new QPushButton("Load Tracking");
+    this->LoadButton->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::DocumentOpen));
     QObject::connect(this->LoadButton, &QPushButton::pressed, this, &LogTab::LoadTracking);
     this->FileLayout->addWidget(this->LoadButton);
 
     // Load spoiler
     this->LoadSpoilerButton = new QPushButton("Load Spoiler Log");
+    this->LoadSpoilerButton->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::SystemLogOut));
     QObject::connect(this->LoadSpoilerButton, &QPushButton::pressed, this, &LogTab::LoadSpoiler);
     this->FileLayout->addWidget(this->LoadSpoilerButton);
+
+    // Reset tracking
+    this->ResetButton = new QPushButton("Reset Tracking");
+    this->ResetButton->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::SystemReboot));
+    QObject::connect(this->ResetButton, &QPushButton::pressed, this, &LogTab::ResetTracking);
+    this->FileLayout->addWidget(this->ResetButton);
 
     // Start tracking
     this->LaunchButton = new QPushButton("Start Tracking");
@@ -275,6 +285,22 @@ void LogTab::SaveTracking()
     {
         GameTab::SaveGameScenes(filePath);
     }
+}
+
+
+void LogTab::ResetTracking()
+{
+    if (AppConfig::GetAutoSave())
+    {
+        this->WinOwner->CreatePath(AppConfig::GetAutoSavePath());
+        GameTab::SaveGameScenes(AppConfig::GetAutoSaveFullPath());
+        LogTab::LogMessage("Closing auto save file.\n");
+        LogTab::LogMessage("Creating a new auto save file.\n");
+        AppConfig::SetAutoSavePath("AutoSave-" + QDateTime::currentDateTime().toString("dd_MM_yyyy_hh_mm_ss") + ".trck");
+    }
+    LogTab::LogMessage("Resetting tracked items.");
+    GameTab::ResetScenes();
+    this->WinOwner->RefreshTracker();
 }
 
 

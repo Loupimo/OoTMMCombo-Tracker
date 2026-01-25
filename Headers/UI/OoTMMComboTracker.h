@@ -86,6 +86,11 @@ public:
     void UpdateTrackingState(QString NewState, QIcon NewIcon);
 
     /*
+    *   Resfresh the tracker game tabs.
+    */
+    void RefreshTracker();
+
+    /*
     *   Loads the game scenes using the giving tracking session.
     * 
     *   @param FilePath       The file path to the tracking session to load.

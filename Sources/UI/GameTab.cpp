@@ -400,4 +400,11 @@ void GameTab::SaveGameScenes(QString FilePath)
     MultiLogger::LogMessage("File saved: %s\n", FilePath.toStdString().c_str());
 }
 
+
+void GameTab::ResetScenes()
+{
+    ResetSceneObjects();
+    MultiLogger::LogMessage("Resetting done.\n");
+}
+
 #pragma endregion

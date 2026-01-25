@@ -88,5 +88,11 @@ public:
     */
     static void SaveGameScenes(QString FilePath);
 
+
+    /*
+    *   Reset all objects / scenes.
+    */
+    static void ResetScenes();
+
 #pragma endregion
 };

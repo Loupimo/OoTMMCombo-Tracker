@@ -62,6 +62,12 @@ size_t ObjectInfo::LoadObject(QByteArray* Data, size_t Offset)
 	return Offset;
 }
 
+void ObjectInfo::ResetObject()
+{
+	this->Status = ObjectState::Hidden;
+	this->Item = nullptr;
+}
+
 #pragma endregion
 
 #pragma region Object info getter
@@ -211,6 +217,27 @@ size_t LoadSceneObjectsFor(QByteArray* Data, size_t Offset, SceneObjects * Array
 	}
 
 	return Offset;
+}
+
+
+void ResetSceneObjects()
+{
+	ResetSceneObjectsFor(OoTSceneObjects, OOT_NUM_SCENES);
+	ResetSceneObjectsFor(MMSceneObjects, MM_NUM_SCENES);
+}
+
+
+void ResetSceneObjectsFor(SceneObjects* Array, size_t NumOfScenes)
+{
+	for (size_t i = 0; i < NumOfScenes; i++)
+	{	// Browse all scenes
+		
+		for (size_t j = 0; j < Array[i].NumOfObjs; j++)
+		{	// Reset all objects
+
+			Array[i].Objects[j].ResetObject();
+		}
+	}
 }
 
 #pragma endregion

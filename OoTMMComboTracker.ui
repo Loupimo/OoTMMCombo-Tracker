@@ -54,6 +54,7 @@
     <addaction name="menuRecents"/>
     <addaction name="menuAutoLoadMostRecent"/>
     <addaction name="separator"/>
+    <addaction name="actionResetTracking"/>
     <addaction name="actionStartTracking"/>
    </widget>
    <widget class="QMenu" name="menuOptions">
@@ -215,6 +216,14 @@
    </property>
    <property name="text">
     <string>Spoiler Log</string>
+   </property>
+  </action>
+  <action name="actionResetTracking">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::SystemReboot"/>
+   </property>
+   <property name="text">
+    <string>Reset Tracking</string>
    </property>
   </action>
  </widget>
