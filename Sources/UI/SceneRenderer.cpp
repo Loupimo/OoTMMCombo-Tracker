@@ -147,7 +147,11 @@ void SceneItemTree::ItemFound(ObjectInfo* Object, const ItemInfo* Item)
     if (Object->Scene != Object->RenderScene)
     {   // The rendering scene is not the same
 
-        Object->Item = Item;
+        if (Object->Item == nullptr || Object->Item->ItemID != -1)
+        {   // Only overwrite item if there is no existing item or the item is "Unknown"
+
+            Object->Item = Item;
+        }
         Object->Status = ObjectState::Collected;
         SceneObjects* currScenes = GetGameSceneObjects(this->Scene->GameID);
         
