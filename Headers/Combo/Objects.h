@@ -74,7 +74,7 @@ const QSet<ObjectType> MMTypes =
 {
 	ObjectType::chest, ObjectType::collectible, ObjectType::npc, ObjectType::gs, ObjectType::sf, ObjectType::cow, ObjectType::shop, ObjectType::scrub,
 	ObjectType::wonder, ObjectType::grass, ObjectType::crate, ObjectType::pot, ObjectType::hive, ObjectType::butterfly, ObjectType::rupee, ObjectType::snowball,
-	ObjectType::barrel, ObjectType::heart, ObjectType::icicle, ObjectType::redboulder, ObjectType::rock, ObjectType::soil, ObjectType::tree
+	ObjectType::barrel, ObjectType::heart, ObjectType::icicle, ObjectType::redboulder, ObjectType::rock, ObjectType::soil, ObjectType::tree, ObjectType::bush
 };
 
 typedef struct ObjectInfo
