@@ -458,6 +458,11 @@ void MapTab::FilterTree(QTreeWidget* TreeWidget, const QString& SearchText)
         bool matchParent = parentItem->text(0).contains(SearchText, Qt::CaseInsensitive);
         parentItem->setHidden(!parentVisible && !matchParent);
     }
+
+    if (TreeWidget == this->ObjectList && SearchText.isEmpty())
+    {
+        this->UpdateObjectVisibility();
+    }
 }
 
 void MapTab::OnToggleExpandCollapse(QTreeWidget* TreeWidget, bool Expand)
@@ -697,31 +702,6 @@ void MapTab::UpdateObjectSelection()
 
 void MapTab::UpdateObjectVisibility()
 {
-    ObjectType currType = ObjectType::none;
-    bool isCurrTypeActive = false;
-
-    /*for (int i = 0; i < this->ObjectList->topLevelItemCount(); ++i)
-    {   // Browse all tree item from the top
-
-        ObjectItemTree* object = (ObjectItemTree*) this->ObjectList->topLevelItem(i);
-        object->setHidden(false);
-        
-        if (currType != object->Object->Type)
-        {
-            currType = object->Object->Type;
-            isCurrTypeActive = this->FilterButton->ActiveFilter.contains(currType);
-        }
-
-        if (isCurrTypeActive)
-        {   // We need to check for the collected object option
-
-            if (AppConfig::GetHideCollectedObject() && object->GetStatus() != Hidden)
-            {
-                object->setHidden(true);
-            }
-        }
-    }*/
-
     if (this->RenderedScene != nullptr)
     {
         this->RenderedScene->GetScene()->UpdateSceneObjectVisibility();

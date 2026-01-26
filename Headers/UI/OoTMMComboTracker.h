@@ -65,11 +65,18 @@ public:
     void UpdateTabNameText(int TabID);
 
     /*
-    *   Refresh the collected object visibility.
+    *   Refresh the collected object map visibility.
     *
     *   @param NewValue       The new visibility state.
     */
-    void UpdateObjectVisibility(bool NewValue);
+    void UpdateObjectMapVisibility(bool NewValue);
+
+    /*
+    *   Refresh the collected object list visibility.
+    *
+    *   @param NewValue       The new visibility state.
+    */
+    void UpdateObjectListVisibility(bool NewValue);
 
 public slots:
 

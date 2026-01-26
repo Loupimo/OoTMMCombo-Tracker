@@ -132,11 +132,18 @@ public:
     static QString GetAutoSaveFullPath();
 
     /*
-    *   Tells if the object should be hidden when collected.
+    *   Tells if the object should be hidden from the map when collected.
     *
-    *   @return <b>True</b> if the object should be hidden when collected, <b>false</b> otherwise.
+    *   @return <b>True</b> if the object should be hidden from the map when collected, <b>false</b> otherwise.
     */
-    static bool GetHideCollectedObject();
+    static bool GetHideCollectedFromMap();
+
+    /*
+    *   Tells if the object should be hidden from object list when collected.
+    *
+    *   @return <b>True</b> if the object should be hidden from the object list when collected, <b>false</b> otherwise.
+    */
+    static bool GetHideCollectedFromObjectList();
 
     /*
     *   Sets the auto save file path.
@@ -167,11 +174,18 @@ public:
     static void SetAutoSave(bool NewValue);
 
     /*
-    *   Sets the hide collected object value.
+    *   Sets the hide collected object from map value.
     *
-    *   @param NewValue The new hide collected object value.
+    *   @param NewValue The new hide collected object from map value.
     */
-    static void SetHideCollectedObject(bool NewValue);
+    static void SetHideCollectedFromMap(bool NewValue);
+
+    /*
+    *   Sets the hide collected object from object list value.
+    *
+    *   @param NewValue The new hide collected object from object list value.
+    */
+    static void SetHideCollectedFromObjectList(bool NewValue);
 
 #pragma endregion
 

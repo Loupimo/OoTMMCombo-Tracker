@@ -89,9 +89,14 @@ QString AppConfig::GetAutoSaveFullPath()
     return  AppConfig::GetAutoSavePath() + Config.CurrentAutoSaveFile;
 }
 
-bool AppConfig::GetHideCollectedObject()
+bool AppConfig::GetHideCollectedFromMap()
 {
-    return Config.Settings.value("HideCollectedObject", false).toBool();
+    return Config.Settings.value("HideCollectedFromMap", false).toBool();
+}
+
+bool AppConfig::GetHideCollectedFromObjectList()
+{
+    return Config.Settings.value("HideCollectedFromObjectList", false).toBool();
 }
 
 void AppConfig::SetAutoSavePath(QString NewFilePath)
@@ -114,9 +119,14 @@ void AppConfig::SetAutoSave(bool NewValue)
     Config.Settings.setValue("AutoSave", NewValue);
 }
 
-void AppConfig::SetHideCollectedObject(bool NewValue)
+void AppConfig::SetHideCollectedFromMap(bool NewValue)
 {
-    Config.Settings.setValue("HideCollectedObject", NewValue);
+    Config.Settings.setValue("HideCollectedFromMap", NewValue);
+}
+
+void AppConfig::SetHideCollectedFromObjectList(bool NewValue)
+{
+    Config.Settings.setValue("HideCollectedFromObjectList", NewValue);
 }
 
 #pragma endregion

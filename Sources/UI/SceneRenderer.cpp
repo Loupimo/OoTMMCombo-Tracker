@@ -507,9 +507,17 @@ void SceneRenderer::UpdateSceneObjectVisibility()
         {   // The scene contains object of this type
 
             this->ObjectsRen[i]->ShouldBeRendered = this->Filter->ActiveFilter.contains((ObjectType) (i + 1));
+
+            if (this->ObjectsRen[i]->ShouldBeRendered && this->ObjectsRen[i]->ObjCat->treeWidget() == nullptr)
+            {   // The object category should be added to the tree
+
+                this->ObjectsTree->addTopLevelItem(this->ObjectsRen[i]->ObjCat);
+            }
             this->ObjectsRen[i]->RenderObjectToScene(this->CurrContext);
         }
     }
+
+    this->ObjectsTree->sortItems(0, Qt::AscendingOrder);
 }
 
 

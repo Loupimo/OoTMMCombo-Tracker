@@ -61,9 +61,16 @@
     <property name="title">
      <string>Options</string>
     </property>
+    <widget class="QMenu" name="menuHideCollectedObject">
+     <property name="title">
+      <string>Hide Collected Object</string>
+     </property>
+     <addaction name="actionHideCollectedFromMap"/>
+     <addaction name="actionHideCollectedFromObjectList"/>
+    </widget>
     <addaction name="actionAutoSnapView"/>
     <addaction name="actionAutoZoom"/>
-    <addaction name="actionHideCollectedObject"/>
+    <addaction name="menuHideCollectedObject"/>
     <addaction name="separator"/>
     <addaction name="actionAutoSaving"/>
    </widget>
@@ -227,12 +234,20 @@
     <string>Reset Tracking</string>
    </property>
   </action>
-  <action name="actionHideCollectedObject">
+  <action name="actionHideCollectedFromMap">
    <property name="checkable">
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Hide Collected Object</string>
+    <string>From Map</string>
+   </property>
+  </action>
+  <action name="actionHideCollectedFromObjectList">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>From Object List</string>
    </property>
   </action>
  </widget>

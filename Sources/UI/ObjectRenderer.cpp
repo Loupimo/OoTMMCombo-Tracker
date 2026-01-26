@@ -112,7 +112,12 @@ void ObjectItemTree::UpdateIcon(ObjectType Type)
         this->GraphItem->UpdateObjectRendering(this->Object->Status, false);
         this->GraphItem->setPos(this->Object->Position[0], this->Object->Position[1]);
         this->GraphItem->setZValue(this->Object->Position[2]);
-        this->RendererOwner->SceneOwner->addItem(this->GraphItem);
+
+        if (this->GraphItem->scene() == nullptr)
+        {   // Only add the item if it is not already in the scene
+
+            this->RendererOwner->SceneOwner->addItem(this->GraphItem);
+        }
     }
 
     this->UpdateTextStyle();
@@ -126,6 +131,19 @@ void ObjectItemTree::RemoveObjectFromScene()
         delete this->GraphItem;
         this->GraphItem = nullptr;
     }
+}
+
+void ObjectItemTree::SetSceneObjectVisibility(bool Visibility)
+{
+    if (this->GraphItem)
+    {
+        this->GraphItem->setVisible(Visibility);
+    }
+}
+
+void ObjectItemTree::SetListObjectVisibility(bool Visibility)
+{
+    this->setHidden(!Visibility);
 }
 
 void ObjectItemTree::UpdateTextStyle()
@@ -345,7 +363,8 @@ void ObjectPixmapItem::UpdateObjectRendering(ObjectState ObjStatus, bool IsSelec
 
 void ObjectPixmapItem::mousePressEvent(QGraphicsSceneMouseEvent* event)
 {
-    QGraphicsPixmapItem::mousePressEvent(event);
+    event->accept();
+
     if (this->Owner)
     {
         this->Owner->CenterViewOn(this);            // Center the scene view on this object
@@ -393,7 +412,6 @@ ObjectRenderer::ObjectRenderer(ObjectType Type, SceneRenderer* Owner, bool Shoul
 
     this->Type = Type;
     this->ShouldBeRendered = ShouldBeRendered;
-    //this->Icon = IconsRef->PixmapIcons[this->Type];
     this->SceneOwner = Owner;
     this->ObjCat = new CommonBaseItemTree();
     QFont font = this->ObjCat->font(0);
@@ -423,23 +441,6 @@ ObjectRenderer::~ObjectRenderer()
 
 void ObjectRenderer::AddObjectToRender(ObjectInfo * Obj, QColor DefaultColor)
 {
-    /*if (!Obj->PosSet)
-    {
-        Obj->Position[0] = Obj->Position[0] - (this->Icon->width() / 2);
-
-        if (Obj->Position[0] < 0)
-        {
-            Obj->Position[0] = 0;
-        }
-
-        Obj->Position[1] = Obj->Position[1] - (this->Icon->height() / 2);
-
-        if (Obj->Position[1] < 0)
-        {
-            Obj->Position[1] = 0;
-        }
-        Obj->PosSet = true;
-    }*/
     this->Objects.push_back(new ObjectItemTree(Obj, DefaultColor, this, this->ObjCat));
 }
 
@@ -448,6 +449,8 @@ void ObjectRenderer::RenderObjectToScene(ObjectContext ActiveContext)
 {
     if (this->ShouldBeRendered)
     {
+        this->ObjCat->setHidden(false);
+
         double scaleFactor = 0.02;
         int iconWidth = this->SceneOwner->SceneImage->rect().width() * scaleFactor/* + IconsMetaInfo[Type].Scale[0]*/;
         int iconHeight = this->SceneOwner->SceneImage->rect().height() * scaleFactor /* + IconsMetaInfo[Type].Scale[1]*/;
@@ -460,14 +463,16 @@ void ObjectRenderer::RenderObjectToScene(ObjectContext ActiveContext)
         for (ObjectItemTree* currObj : this->Objects)
         {   // Browse all objects
 
-            if (AppConfig::GetHideCollectedObject() && currObj->GetStatus() != ObjectState::Hidden)
+            if (AppConfig::GetHideCollectedFromMap() && currObj->GetStatus() != ObjectState::Hidden)
             {   // The object is not hidden and should be hidden when collected
 
-                currObj->RemoveObjectFromScene();
+                //currObj->RemoveObjectFromScene();
+                currObj->SetSceneObjectVisibility(false);
             }
             else if ((currObj->Object->Context == ObjectContext::All || currObj->Object->Context == ActiveContext) && (this->SceneOwner->ActiveRoom == -1 || currObj->Object->RoomID == this->SceneOwner->ActiveRoom))
             {   // The object can be rendered
 
+                currObj->SetSceneObjectVisibility(true);
                 currObj->UpdateIcon(this->Type);
             }
             else
@@ -475,11 +480,27 @@ void ObjectRenderer::RenderObjectToScene(ObjectContext ActiveContext)
 
                 currObj->RemoveObjectFromScene();
             }
+
+            if (AppConfig::GetHideCollectedFromObjectList() && currObj->GetStatus() != ObjectState::Hidden)
+            {   // The object is not hidden and should be hidden from the list when collected
+
+                currObj->SetListObjectVisibility(false);
+            }
+            else
+            {
+                currObj->SetListObjectVisibility(true);
+            }
         }
     }
     else
     {
-        this->UnloadObjectsFromScene();
+        for (ObjectItemTree* currObj : this->Objects)
+        {   // Browse all objects
+
+            currObj->SetSceneObjectVisibility(false);
+        }
+
+        this->ObjCat->setHidden(true);
     }
 }
 

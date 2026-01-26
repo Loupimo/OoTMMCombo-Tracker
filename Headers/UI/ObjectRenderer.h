@@ -255,6 +255,20 @@ public:
     void UpdateTextStyle();
 
     /*
+    *   Set the scene object visibility.
+    *
+    *   @param Visivility    <b>True</b> if the object should be rendered on the scene, <b>false</b> otherwise.
+    */
+    void SetSceneObjectVisibility(bool Visivility);
+
+    /*
+    *   Set the list object visibility.
+    *
+    *   @param Visivility    <b>True</b> if the object should be rendered on the object list, <b>false</b> otherwise.
+    */
+    void SetListObjectVisibility(bool Visivility);
+
+    /*
     *   Remove the graphical item from the scene it rendered in.
     */
     void RemoveObjectFromScene();

@@ -39,7 +39,8 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     this->ui.actionAutoSaving->setChecked(AppConfig::GetAutoSave());
     this->ui.actionAutoLoadTrackingFile->setChecked(AppConfig::GetAutoLoadTrackingFile());
     this->ui.actionAutoLoadSpoilerLog->setChecked(AppConfig::GetAutoLoadSpoilerLog());
-    this->ui.actionHideCollectedObject->setChecked(AppConfig::GetHideCollectedObject());
+    this->ui.actionHideCollectedFromObjectList->setChecked(AppConfig::GetHideCollectedFromObjectList());
+    this->ui.actionHideCollectedFromMap->setChecked(AppConfig::GetHideCollectedFromMap());
 
     // Recent files sub menu
     for (int i = 0; i < MaxRecentFiles; ++i)
@@ -74,7 +75,8 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     connect(this->ui.actionStartTracking, &QAction::triggered, this->Log, &LogTab::PressLaunchButton);
     connect(this->ui.actionAutoSnapView, &QAction::toggled, this, &AppConfig::SetAutoSnapView);
     connect(this->ui.actionAutoZoom, &QAction::toggled, this, &AppConfig::SetAutoZoom);
-    connect(this->ui.actionHideCollectedObject, &QAction::toggled, this, &OoTMMComboTracker::UpdateObjectVisibility);
+    connect(this->ui.actionHideCollectedFromMap, &QAction::toggled, this, &OoTMMComboTracker::UpdateObjectMapVisibility);
+    connect(this->ui.actionHideCollectedFromObjectList, &QAction::toggled, this, &OoTMMComboTracker::UpdateObjectListVisibility);
     connect(this->ui.actionAutoSaving, &QAction::toggled, this, &AppConfig::SetAutoSave);
     connect(this->ui.actionAbout, &QAction::triggered, this, &OoTMMComboTracker::ShowAboutDialog);
     connect(this->ui.actionAutoLoadTrackingFile, &QAction::triggered, this, &AppConfig::SetAutoLoadTrackingFile);
@@ -191,9 +193,17 @@ void OoTMMComboTracker::UpdateTabNameText(int TabID)
 }
 
 
-void OoTMMComboTracker::UpdateObjectVisibility(bool NewValue)
+void OoTMMComboTracker::UpdateObjectMapVisibility(bool NewValue)
 {
-    AppConfig::SetHideCollectedObject(NewValue);
+    AppConfig::SetHideCollectedFromMap(NewValue);
+    this->OoTTab->UpdateObjectVisibility();
+    this->MMTab->UpdateObjectVisibility();
+}
+
+
+void OoTMMComboTracker::UpdateObjectListVisibility(bool NewValue)
+{
+    AppConfig::SetHideCollectedFromObjectList(NewValue);
     this->OoTTab->UpdateObjectVisibility();
     this->MMTab->UpdateObjectVisibility();
 }
