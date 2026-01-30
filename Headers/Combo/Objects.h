@@ -59,7 +59,22 @@ enum ObjectType
 	tree = 28,
 	bush = 29,
 
-	last = bush + 1
+	// Extra type used for rendering
+	song = bush + 1,
+	heart_piece = song + 1,
+	heart_container = heart_piece + 1,
+	small_key = heart_container + 1,
+	boss_key = small_key + 1,
+	map = boss_key + 1,
+	compass = map + 1,
+	sword = compass + 1,
+	ocarina = sword + 1,
+	merchant = ocarina + 1,
+	mask = merchant + 1,
+	egg = mask + 1,
+	owl = egg + 1,
+
+	last = owl + 1
 };
 
 const QSet<ObjectType> OoTTypes =
@@ -67,14 +82,19 @@ const QSet<ObjectType> OoTTypes =
 	ObjectType::chest, ObjectType::collectible, ObjectType::npc, ObjectType::gs, ObjectType::cow, ObjectType::shop, ObjectType::scrub,
 	ObjectType::sr, ObjectType::fish, ObjectType::wonder, ObjectType::grass, ObjectType::crate, ObjectType::pot, ObjectType::hive,
 	ObjectType::butterfly, ObjectType::rupee, ObjectType::heart, ObjectType::fairy, ObjectType::fairy_spot, ObjectType::icicle, ObjectType::redboulder, ObjectType::redice,
-	ObjectType::rock, ObjectType::soil, ObjectType::tree, ObjectType::bush
+	ObjectType::rock, ObjectType::soil, ObjectType::tree, ObjectType::bush,
+	ObjectType::song, ObjectType::heart_piece, ObjectType::heart_container, ObjectType::small_key, ObjectType::boss_key,
+	ObjectType::map, ObjectType::compass, ObjectType::sword, ObjectType::ocarina,
+	ObjectType::merchant, ObjectType::mask, ObjectType::egg
 };
 
 const QSet<ObjectType> MMTypes =
 {
 	ObjectType::chest, ObjectType::collectible, ObjectType::npc, ObjectType::gs, ObjectType::sf, ObjectType::cow, ObjectType::shop, ObjectType::scrub,
 	ObjectType::wonder, ObjectType::grass, ObjectType::crate, ObjectType::pot, ObjectType::hive, ObjectType::butterfly, ObjectType::rupee, ObjectType::snowball,
-	ObjectType::barrel, ObjectType::heart, ObjectType::icicle, ObjectType::redboulder, ObjectType::rock, ObjectType::soil, ObjectType::tree, ObjectType::bush
+	ObjectType::barrel, ObjectType::heart, ObjectType::fairy, ObjectType::icicle, ObjectType::redboulder, ObjectType::rock, ObjectType::soil, ObjectType::tree, ObjectType::bush,
+	ObjectType::song, ObjectType::heart_piece, ObjectType::heart_container, ObjectType::small_key, ObjectType::boss_key, ObjectType::map, ObjectType::compass,
+	ObjectType::sword, ObjectType::merchant, ObjectType::mask, ObjectType::owl
 };
 
 typedef struct ObjectInfo
@@ -90,6 +110,7 @@ typedef struct ObjectInfo
 	ObjectContext Context;							// The context in which the object appears
 	uint32_t RoomID;								// The room in which the object should be put
 	ZGame GameID;									// The actual game to which this object belongs to.
+	LocType LocationType;							// The type of location the object is located to.
 	const char* Tooltip;							// The text to display in tooltip to give some hint on how to get the object.
 	const ItemInfo* Item;							// The item contained in the object
 	ObjectState Status = ObjectState::Hidden;		// The status object
@@ -175,7 +196,22 @@ const char* const ObjTypeName[ObjectType::last] =
 	"Rock",
 	"Soil",
 	"Tree",
-	"Bush"
+	"Bush",
+
+	// Extra types
+	"Song",
+	"Heart Piece",
+	"Heart Container",
+	"Small Key",
+	"Boss Key",
+	"Map",
+	"Compass",
+	"Sword",
+	"Ocarina",
+	"Merchant",
+	"Mask",
+	"Egg",
+	"Owl"
 };
 
 #pragma region Object getters

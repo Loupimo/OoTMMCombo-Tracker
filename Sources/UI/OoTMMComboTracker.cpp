@@ -318,6 +318,9 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
         return;
     }
 
+    // Loads Settings section
+    this->Log->LoadSpoilerShuffleParam(sections[0]);
+
     // Regex to split strings by location
     QRegularExpression reg("^\\s{2}(.+:(?:\n\\s{4}.*)+)\n*", QRegularExpression::MultilineOption);
     QRegularExpressionMatchIterator it = reg.globalMatch(sections[2]);

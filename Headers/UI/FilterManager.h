@@ -57,6 +57,7 @@ public:
     GameTab * TabOwner = nullptr;                   // A reference to the owning game tab
     const QSet<ObjectType>* FilterTypes = nullptr;  // The list of associated filtering types
     QSet<ObjectType> ActiveFilter;                  // The list of all active object types
+    QMap<uint32_t, QSet<ObjectInfo*>> ExcludedObj;  // The list of all excluded object ID per scene
 
 public:
 

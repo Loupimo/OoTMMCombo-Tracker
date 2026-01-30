@@ -3,6 +3,13 @@
 #include "Multi/API.h"
 #include "Regions.h"
 
+enum LocType
+{
+	overworld,
+	dungeon,
+	minigame
+};
+
 typedef struct SceneMetaInfo
 {
 	const char* Name;

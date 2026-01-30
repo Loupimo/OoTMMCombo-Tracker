@@ -121,6 +121,9 @@
     <ClCompile Include="Sources\UI\FilterManager.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\UI\Settings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Multi\API.h">
@@ -184,6 +187,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Headers\UI\ObjectRenderer.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\UI\Settings.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>

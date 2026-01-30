@@ -132,6 +132,7 @@
     <ClCompile Include="Sources\UI\RegionTab.cpp" />
     <ClCompile Include="Sources\UI\RoomRenderer.cpp" />
     <ClCompile Include="Sources\UI\SceneRenderer.cpp" />
+    <ClCompile Include="Sources\UI\Settings.cpp" />
     <QtUic Include="OoTMMComboTracker.ui" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -153,6 +154,7 @@
     <QtMoc Include="Headers\UI\FilterManager.h" />
     <ClInclude Include="Headers\UI\RegionTab.h" />
     <ClInclude Include="Headers\UI\RoomRenderer.h" />
+    <ClInclude Include="Headers\UI\Settings.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="resource.h" />
     <QtMoc Include="Headers\UI\SceneRenderer.h" />

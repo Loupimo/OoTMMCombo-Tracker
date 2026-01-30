@@ -114,6 +114,9 @@ public:
     void LoadSpoiler();
 
 
+    void LoadSpoilerShuffleParam(QString & SettingsSection);
+
+
 public slots:
 
     /*

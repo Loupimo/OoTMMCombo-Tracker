@@ -299,8 +299,8 @@ SceneRenderer::SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeW
     {   // Browse each scene objects
 
         ObjectInfo* currObject = &this->CurrScene->Objects->Objects[i];
-        if (currObject->RenderScene != this->CurrScene->SceneID || currObject->Type == ObjectType::none)
-        {   // Ignore the object if the render scene ID is different from this scene ID
+        if (currObject->RenderScene != this->CurrScene->SceneID || currObject->Type == ObjectType::none || Filter->ExcludedObj[this->CurrScene->SceneID].contains(currObject))
+        {   // Ignore the object if the render scene ID is different from this scene ID or if the object is excluded by the filter
 
             continue;
         }
