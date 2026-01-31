@@ -55,19 +55,19 @@ const ObjectIcon IconsMetaInfo[ObjectType::last] =
     {"./Resources/Common/Bush.png", { 25, 25 }},           // ObjectType::bush
 
     // Extra types
-    {"./Resources/Common/Song.png", { 25, 25 }},
+    {"./Resources/Common/Song.png", { 30, 30 }},
     {"./Resources/Common/HP.png", { 30, 30 }},
     {"./Resources/Common/HC.png", { 30, 30 }},
     {"./Resources/Common/Small_Key.png", { 30, 30 }},
-    {"./Resources/Common/Boss_Key.png", { 25, 25 }},
+    {"./Resources/Common/Boss_Key.png", { 30, 30 }},
     {"./Resources/Common/Map.png", { 30, 30 }},
-    {"./Resources/Common/Compass.png", { 25, 25 }},
-    {"./Resources/Common/Sword.png", { 25, 25 }},
-    {"./Resources/Common/Ocarina.png", { 25, 25 }},
+    {"./Resources/Common/Compass.png", { 30, 30 }},
+    {"./Resources/Common/Sword.png", { 30, 30 }},
+    {"./Resources/Common/Ocarina.png", { 30, 30 }},
     {"./Resources/Common/Shop.png", { 25, 25 }},
     {"./Resources/Common/Mask.png", { 30, 30 }},
-    {"./Resources/Common/Egg.png", { 25, 25 }},
-    {"./Resources/Common/Owl.png", { 25, 25 }}
+    {"./Resources/Common/Egg.png", { 30, 30 }},
+    {"./Resources/Common/Owl.png", { 30, 30 }}
 };
 
 /*

@@ -1,6 +1,6 @@
 id;scene;friendly_name;location;type;x;y;z;renderscene;rendertype;context;room;game;loc_type;requierements;tooltip
 0x03;BENEATH_THE_GRAVEYARD;Chest;MM Beneath The Graveyard Chest;chest;606;476;0;BENEATH_THE_GRAVEYARD;chest;All;0;mm;overworld;Soul of Bad Bats, Soul of Stalchildren (MM), Captain's Hat, Clock (Night 1) / Clock (Night 2) + Bunny Hood (MM) + Hover Boots (MM);Defeat all <b>Bad Bats</b>
-0x00;BENEATH_THE_GRAVEYARD;Heart Piece;MM Beneath The Graveyard HP;chest;113;332;0;BENEATH_THE_GRAVEYARD;chest;All;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM), Soul of Iron Knuckles (MM), Soul of Stalchildren (MM), Captain's Hat, Clock (Night 2) / Clock (Night 1) + Bunny Hood (MM) + Hover Boots (MM);Defeat the <b>Iron Knuckle</b>
+0x00;BENEATH_THE_GRAVEYARD;Chest;MM Beneath The Graveyard HP;chest;113;332;0;BENEATH_THE_GRAVEYARD;heart_piece;All;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM), Soul of Iron Knuckles (MM), Soul of Stalchildren (MM), Captain's Hat, Clock (Night 2) / Clock (Night 1) + Bunny Hood (MM) + Hover Boots (MM);Defeat the <b>Iron Knuckle</b>
 0x0104;BENEATH_THE_GRAVEYARD;Bats 1;MM Beneath The Graveyard Pot Night 1 Bats 1;pot;548;454;0;BENEATH_THE_GRAVEYARD;pot;All;0;mm;overworld;Soul of Stalchildren (MM), Captain's Hat, Clock (Night 1) / Clock (Night 2) + Bunny Hood (MM) + Hover Boots (MM);
 0x0105;BENEATH_THE_GRAVEYARD;Bats 2;MM Beneath The Graveyard Pot Night 1 Bats 2;pot;549;494;0;BENEATH_THE_GRAVEYARD;pot;All;0;mm;overworld;Soul of Stalchildren (MM), Captain's Hat, Clock (Night 1) / Clock (Night 2) + Bunny Hood (MM) + Hover Boots (MM);
 0x0106;BENEATH_THE_GRAVEYARD;Bats 3;MM Beneath The Graveyard Pot Night 1 Bats 3;pot;647;491;0;BENEATH_THE_GRAVEYARD;pot;All;0;mm;overworld;Soul of Stalchildren (MM), Captain's Hat, Clock (Night 1) / Clock (Night 2) + Bunny Hood (MM) + Hover Boots (MM);
@@ -20,7 +20,7 @@ id;scene;friendly_name;location;type;x;y;z;renderscene;rendertype;context;room;g
 0x40000;BENEATH_THE_GRAVEYARD;Rupee 5;MM Beneath The Graveyard Rupee 5;rupee;327;291;0;BENEATH_THE_GRAVEYARD;rupee;All;0;mm;overworld;Soul of Stalchildren (MM), Captain's Hat, Clock (Night 2) / Clock (Night 1) + Bunny Hood (MM) + Hover Boots (MM);
 0x50000;BENEATH_THE_GRAVEYARD;Rupee 6;MM Beneath The Graveyard Rupee 6;rupee;327;305;0;BENEATH_THE_GRAVEYARD;rupee;All;0;mm;overworld;Soul of Stalchildren (MM), Captain's Hat, Clock (Night 2) / Clock (Night 1) + Bunny Hood (MM) + Hover Boots (MM);
 0x60000;BENEATH_THE_GRAVEYARD;Rupee 7;MM Beneath The Graveyard Rupee 7;rupee;341;299;0;BENEATH_THE_GRAVEYARD;rupee;All;0;mm;overworld;Soul of Stalchildren (MM), Captain's Hat, Clock (Night 2) / Clock (Night 1) + Bunny Hood (MM) + Hover Boots (MM);
-SONG_STORMS;BENEATH_THE_GRAVEYARD;Song of Storms;MM Beneath The Graveyard Song of Storms;npc;902;492;0;BENEATH_THE_GRAVEYARD;npc;All;0;mm;overworld;Din's fire (MM) / Bow (MM) + Fire Arrow (MM), Magic Upgrade (MM), Soul of Iron Knuckles (MM), Soul of Composer Bros. (MM), Clock (Night 1) / Clock (Night 2) + Bunny Hood (MM) + Hover Boots (MM);Defeat the <b>Iron Knuckle</b>
+SONG_STORMS;BENEATH_THE_GRAVEYARD;Song of Storms;MM Beneath The Graveyard Song of Storms;npc;902;492;0;BENEATH_THE_GRAVEYARD;song;All;0;mm;overworld;Din's fire (MM) / Bow (MM) + Fire Arrow (MM), Magic Upgrade (MM), Soul of Iron Knuckles (MM), Soul of Composer Bros. (MM), Clock (Night 1) / Clock (Night 2) + Bunny Hood (MM) + Hover Boots (MM);Defeat the <b>Iron Knuckle</b>
 0x17;BENEATH_THE_WELL;Cow;MM Beneath The Well Cow;cow;1313;914;0;BENEATH_THE_WELL;cow;All;0;mm;dungeon;Hot Spring Water, Fairy Ocarina / Ocarina of Time, Epona's Song (MM), C-Up + C-Left + C-Right buttons (MM), Soul of Cows (MM), Soul of ReDeads / Gibdos (MM), Gibdo Mask;Play <b>Epona's Song</b> next to the cow
 0x00b04;BENEATH_THE_WELL;Fairy 1;MM Beneath The Well Fairy Fountain Fairy 1;fairy;622;100;0;BENEATH_THE_WELL;fairy;All;0;mm;dungeon;Bugs, Soul of ReDeads / Gibdos (MM), Gibdo Mask;
 0x10b04;BENEATH_THE_WELL;Fairy 2;MM Beneath The Well Fairy Fountain Fairy 2;fairy;637;95;0;BENEATH_THE_WELL;fairy;All;0;mm;dungeon;Bugs, Soul of ReDeads / Gibdos (MM), Gibdo Mask;
@@ -66,12 +66,12 @@ SONG_STORMS;BENEATH_THE_GRAVEYARD;Song of Storms;MM Beneath The Graveyard Song o
 0x0616;BENEATH_THE_WELL;Middle 9;MM Beneath The Well Pot Middle 09;pot;921;670;1;BENEATH_THE_WELL;pot;All;0;mm;dungeon;Fish, Soul of ReDeads / Gibdos (MM), Gibdo Mask;
 0x0617;BENEATH_THE_WELL;Middle 10;MM Beneath The Well Pot Middle 10;pot;921;660;0;BENEATH_THE_WELL;pot;All;0;mm;dungeon;Fish, Soul of ReDeads / Gibdos (MM), Gibdo Mask;
 0x01;BENEATH_THE_WELL;Skulltulla;MM Beneath The Well Skulltulla Chest;chest;715;719;0;BENEATH_THE_WELL;chest;All;0;mm;dungeon;Bugs, Soul of ReDeads / Gibdos (MM), Gibdo Mask;
-SWORD_GILDED;BLACKSMITH;Gilded Sword;MM Blacksmith Gilded Sword;npc;543;204;0;BLACKSMITH;npc;All;0;mm;overworld;Din's Fire / Bow (MM) + Fire Arrow (MM), Magic Upgrade, Soul of Blacksmiths;Give the <b>Gold Dust</b> to <b>Zubora</b>
+SWORD_GILDED;BLACKSMITH;Gilded Sword;MM Blacksmith Gilded Sword;npc;543;204;0;BLACKSMITH;sword;All;0;mm;overworld;Din's Fire / Bow (MM) + Fire Arrow (MM), Magic Upgrade, Soul of Blacksmiths;Give the <b>Gold Dust</b> to <b>Zubora</b>
 0x10004;BLACKSMITH;Potted Plant 1;MM Blacksmith Potted Plant 1 Grass;grass;687;308;1;BLACKSMITH;grass;All;0;mm;overworld;;
 0x00004;BLACKSMITH;Potted Plant 1;MM Blacksmith Potted Plant 1 Pot;pot;687;294;0;BLACKSMITH;pot;All;0;mm;overworld;;
 0x10008;BLACKSMITH;Potted Plant 2;MM Blacksmith Potted Plant 2 Grass;grass;690;395;1;BLACKSMITH;grass;All;0;mm;overworld;;
 0x00008;BLACKSMITH;Potted Plant 2;MM Blacksmith Potted Plant 2 Pot;pot;690;379;0;BLACKSMITH;pot;All;0;mm;overworld;;
-SWORD_RAZOR;BLACKSMITH;Razor Blade;MM Blacksmith Razor Blade;npc;394;309;0;BLACKSMITH;npc;All;0;mm;overworld;Din's Fire / Bow (MM) + Fire Arrow (MM), Magic Upgrade, Soul of Blacksmiths;Pay <b>100</b> rupees to get the sword upgrade
+SWORD_RAZOR;BLACKSMITH;Razor Blade;MM Blacksmith Razor Blade;npc;394;309;0;BLACKSMITH;sword;All;0;mm;overworld;Din's Fire / Bow (MM) + Fire Arrow (MM), Magic Upgrade, Soul of Blacksmiths;Pay <b>100</b> rupees to get the sword upgrade
 0x02;BOMB_SHOP;Bomb Bag;MM Bomb Shop Bomb Bag;shop;489;290;0;BOMB_SHOP;shop;All;0;mm;overworld;Soul of Citizens (MM);
 0x03;BOMB_SHOP;Large Bomb Bag;MM Bomb Shop Bomb Bag 2;shop;521;295;0;BOMB_SHOP;shop;All;0;mm;overworld;Clock (Night 1), Soul of Citizens (MM);Save the old lady from being robbed by <b>Sakon</b> in <b>North Clock Town</b> at 12AM on first night
 0x00;BOMB_SHOP;Item 1;MM Bomb Shop Item 1;shop;424;281;0;BOMB_SHOP;shop;All;0;mm;overworld;Soul of Citizens (MM);
@@ -88,7 +88,7 @@ SWORD_RAZOR;BLACKSMITH;Razor Blade;MM Blacksmith Razor Blade;npc;394;309;0;BLACK
 0x00029;CASTLE_IKANA;Grass 10;MM Ancient Castle of Ikana Grass 10;grass;215;40;0;CASTLE_IKANA;grass;All;0;mm;dungeon;;
 0x0002a;CASTLE_IKANA;Grass 11;MM Ancient Castle of Ikana Grass 11;grass;214;59;0;CASTLE_IKANA;grass;All;0;mm;dungeon;;
 0x0002b;CASTLE_IKANA;Grass 12;MM Ancient Castle of Ikana Grass 12;grass;239;40;0;CASTLE_IKANA;grass;All;0;mm;dungeon;;
-0x0a;CASTLE_IKANA;Pillar - Heart Piece;MM Ancient Castle of Ikana HP;collectible;249;19;0;CASTLE_IKANA;collectible;All;0;mm;dungeon;Deku Mask;Shoot the crystal switch and use the deku flowers to reach the last pillar
+0x0a;CASTLE_IKANA;Pillar;MM Ancient Castle of Ikana HP;collectible;249;19;0;CASTLE_IKANA;heart_piece;All;0;mm;dungeon;Deku Mask;Shoot the crystal switch and use the deku flowers to reach the last pillar
 0x0107;CASTLE_IKANA;Entrance 1;MM Ancient Castle of Ikana Pot Entrance 1;pot;447;588;0;CASTLE_IKANA;pot;All;1;mm;dungeon;;
 0x0108;CASTLE_IKANA;Entrance 2;MM Ancient Castle of Ikana Pot Entrance 2;pot;505;588;0;CASTLE_IKANA;pot;All;1;mm;dungeon;;
 0x001e;CASTLE_IKANA;Exterior;MM Ancient Castle of Ikana Pot Exterior;pot;719;65;0;CASTLE_IKANA;pot;All;0;mm;dungeon;;
@@ -115,8 +115,8 @@ SONG_EMPTINESS;CASTLE_IKANA;Elegy of Emptiness;MM Ancient Castle of Ikana Song E
 0x0004;CLOCK_TOWER_ROOFTOP;Pot 2;MM Clock Tower Roof Pot 2;pot;362;195;0;CLOCK_TOWER_ROOFTOP;pot;All;0;mm;overworld;Clock (Night 3);
 0x0005;CLOCK_TOWER_ROOFTOP;Pot 3;MM Clock Tower Roof Pot 3;pot;362;414;0;CLOCK_TOWER_ROOFTOP;pot;All;0;mm;overworld;Clock (Night 3);
 0x0006;CLOCK_TOWER_ROOFTOP;Pot 4;MM Clock Tower Roof Pot 4;pot;580;414;0;CLOCK_TOWER_ROOFTOP;pot;All;0;mm;overworld;Clock (Night 3);
-SKULL_KID_OCARINA;CLOCK_TOWER_ROOFTOP;Ocarina of Time;MM Clock Tower Roof Skull Kid Ocarina;npc;471;193;0;CLOCK_TOWER_ROOFTOP;npc;All;0;mm;overworld;Deku Mask + Magic Upgrade / Bow (MM) / Hookshot (MM) / Zora Mask (MM), Clock (Night 3);
-SKULL_KID_SONG;CLOCK_TOWER_ROOFTOP;Song of Time;MM Clock Tower Roof Skull Kid Song of Time;npc;471;310;0;CLOCK_TOWER_ROOFTOP;npc;All;0;mm;overworld;Deku Mask + Magic Upgrade / Bow (MM) / Hookshot (MM) / Zora Mask (MM), Clock (Night 3);
+SKULL_KID_OCARINA;CLOCK_TOWER_ROOFTOP;Ocarina of Time;MM Clock Tower Roof Skull Kid Ocarina;npc;471;193;0;CLOCK_TOWER_ROOFTOP;ocarina;All;0;mm;overworld;Deku Mask + Magic Upgrade / Bow (MM) / Hookshot (MM) / Zora Mask (MM), Clock (Night 3);
+SKULL_KID_SONG;CLOCK_TOWER_ROOFTOP;Song of Time;MM Clock Tower Roof Skull Kid Song of Time;npc;471;310;0;CLOCK_TOWER_ROOFTOP;song;All;0;mm;overworld;Deku Mask + Magic Upgrade / Bow (MM) / Hookshot (MM) / Zora Mask (MM), Clock (Night 3);
 0x0000a;CLOCK_TOWN_EAST;Small Crate 1;MM Clock Town East Small Crate 1;crate;449;352;0;CLOCK_TOWN_EAST;crate;All;0;mm;overworld;;
 0x0000b;CLOCK_TOWN_EAST;Small Crate 2;MM Clock Town East Small Crate 2;crate;407;413;0;CLOCK_TOWN_EAST;crate;All;0;mm;overworld;;
 0x0002c;CLOCK_TOWN_EAST;Basket Bomb 1;MM Clock Town East Wonder Item Basket 1;wonder;549;287;0;CLOCK_TOWN_EAST;wonder;All;0;mm;overworld;Bomb (MM) / Bombchu (MM);Throw a bomb into the basket
@@ -130,7 +130,7 @@ SKULL_KID_SONG;CLOCK_TOWER_ROOFTOP;Song of Time;MM Clock Tower Roof Skull Kid So
 0x2002b;CLOCK_TOWN_EAST;Target Right 3;MM Clock Town East Wonder Item Target Right 3;wonder;559;281;2;CLOCK_TOWN_EAST;wonder;All;0;mm;overworld;Bow (MM) / Hookshot (MM) / Bomb (MM) / Bombchu (MM);Touch the target with an arrow / hookshot / bomb explosion
 MASK_POSTMAN;CLOCK_TOWN_EAST;Postman Hat;MM Clock Town Postman Hat;npc;356;299;0;CLOCK_TOWN_EAST;npc;All;0;mm;overworld;Letter to Mama, Soul of Citizens (MM), Clock (Night 3);Give the <b>Letter to Mama</b> to the Postman on last night
 0x0a;CLOCK_TOWN_EAST;Silver Rupee;MM Clock Town Silver Rupee Chest;chest;795;571;0;CLOCK_TOWN_EAST;chest;All;0;mm;overworld;;Jump on the targets to reach the top of the archery, then continue until you find the chest
-CHEST_GAME;CLOCK_TOWN_EAST;Heart Piece;MM Chest Game HP;none;0;0;0;TREASURE_SHOP;none;All;0;mm;minigame;;
+CHEST_GAME;CLOCK_TOWN_EAST;Game Prize;MM Chest Game HP;none;0;0;0;TREASURE_SHOP;none;All;0;mm;minigame;;
 SHOOTING_GAME_TOWN_1;CLOCK_TOWN_EAST;Reward 1;MM Town Archery Reward 1;none;0;0;0;SHOOTING_GALLERY;none;All;0;mm;minigame;;
 SHOOTING_GAME_TOWN_2;CLOCK_TOWN_EAST;Reward 2;MM Town Archery Reward 2;none;0;0;0;SHOOTING_GALLERY;none;All;0;mm;minigame;;
 HONEY_DARLING_2;CLOCK_TOWN_EAST;Reward - All Days;MM Honey & Darling Reward All Days;none;0;0;0;HONEY_DARLING;none;All;0;mm;minigame;;
@@ -161,22 +161,22 @@ BOMBER_NOTEBOOK;CLOCK_TOWN_NORTH;Bomber Notebook;MM Clock Town Bomber Notebook;n
 0x60010;CLOCK_TOWN_NORTH;Keaton Grass 7;MM Clock Town Keaton Grass Reward 7;grass;673;399;0;CLOCK_TOWN_NORTH;grass;All;0;mm;overworld;Spin Attack Upgrade (MM);
 0x70010;CLOCK_TOWN_NORTH;Keaton Grass 8;MM Clock Town Keaton Grass Reward 8;grass;686;390;0;CLOCK_TOWN_NORTH;grass;All;0;mm;overworld;Spin Attack Upgrade (MM);
 0x80010;CLOCK_TOWN_NORTH;Keaton Grass 9;MM Clock Town Keaton Grass Reward 9;grass;699;399;0;CLOCK_TOWN_NORTH;grass;All;0;mm;overworld;Spin Attack Upgrade (MM);
-KEATON_HEART_PIECE;CLOCK_TOWN_NORTH;Keaton - Heart Piece;MM Clock Town Keaton HP;npc;686;359;0;CLOCK_TOWN_NORTH;npc;All;0;mm;overworld;Keaton Mask (MM), Soul of Keaton;Cut the keaton grass while wearing the <b>Keaton Mask</b> and answer the questions asked by <b>Keaton</b>
-0x0a;CLOCK_TOWN_NORTH;Tree - Heart Piece;MM Clock Town Tree HP;collectible;614;369;0;CLOCK_TOWN_NORTH;collectible;All;0;mm;overworld;;Jump from platform to the tree to get the <b>Heart Piece</b>
+KEATON_HEART_PIECE;CLOCK_TOWN_NORTH;Keaton;MM Clock Town Keaton HP;npc;686;359;0;CLOCK_TOWN_NORTH;heart_piece;All;0;mm;overworld;Keaton Mask (MM), Soul of Keaton;Cut the keaton grass while wearing the <b>Keaton Mask</b> and answer the questions asked by <b>Keaton</b>
+0x0a;CLOCK_TOWN_NORTH;Tree;MM Clock Town Tree HP;collectible;614;369;0;CLOCK_TOWN_NORTH;heart_piece;All;0;mm;overworld;;Jump from platform to the tree to get the <b>Heart Piece</b>
 DEKU_PLAYGROUND_2;CLOCK_TOWN_NORTH;Reward - All Days;MM Deku Playground Reward All Days;none;0;0;0;DEKU_PLAYGROUND;none;All;0;mm;minigame;;
 DEKU_PLAYGROUND_1;CLOCK_TOWN_NORTH;Reward - Any Day;MM Deku Playground Reward Any Day;none;0;0;0;DEKU_PLAYGROUND;none;All;0;mm;minigame;;
 GREAT_FAIRY_TOWN;CLOCK_TOWN_NORTH;Great Fairy - Link;MM Clock Town Great Fairy;none;0;0;0;MM_FAIRY_CLOCK_TOWN;none;All;0;mm;overworld;;
 GREAT_FAIRY_TOWN_ALT;CLOCK_TOWN_NORTH;Great Fairy - Mojo;MM Clock Town Great Fairy Alt;none;0;0;0;MM_FAIRY_CLOCK_TOWN;none;All;0;mm;overworld;;
 SCRUB_LAND;CLOCK_TOWN_SOUTH;Land Title Deed;MM Clock Town Business Scrub;npc;375;420;0;CLOCK_TOWN_SOUTH;scrub;All;0;mm;overworld;Moon Tear, Soul of Business Scrubs (MM);Give the <b>Moon Tear</b> to the scrub
-OWL_CLOCK_TOWN;CLOCK_TOWN_SOUTH;Owl Statue;MM Clock Town Owl Statue;npc;193;275;0;CLOCK_TOWN_SOUTH;npc;All;0;mm;overworld;Sword (MM);Hit the statue with a sword
-0x0a;CLOCK_TOWN_SOUTH;Platform - Heart Piece;MM Clock Town Platform HP;collectible;348;226;0;CLOCK_TOWN_SOUTH;collectible;All;0;mm;overworld;;Reach the platform using the deku flower or Link
-POSTBOX;CLOCK_TOWN_SOUTH;Post Box - Heart Piece;MM Clock Town Post Box;npc;649;564;0;CLOCK_TOWN_SOUTH;collectible;All;0;mm;overworld;Postman's Hat;Check any mailbox while wearing the <b>Postman's Hat</b>
+OWL_CLOCK_TOWN;CLOCK_TOWN_SOUTH;Owl Statue;MM Clock Town Owl Statue;npc;193;275;0;CLOCK_TOWN_SOUTH;owl;All;0;mm;overworld;Sword (MM);Hit the statue with a sword
+0x0a;CLOCK_TOWN_SOUTH;Platform;MM Clock Town Platform HP;collectible;348;226;0;CLOCK_TOWN_SOUTH;heart_piece;All;0;mm;overworld;;Reach the platform using the deku flower or Link
+POSTBOX;CLOCK_TOWN_SOUTH;Post Box;MM Clock Town Post Box;npc;649;564;0;CLOCK_TOWN_SOUTH;heart_piece;All;0;mm;overworld;Postman's Hat;Check any mailbox while wearing the <b>Postman's Hat</b>
 0x00;CLOCK_TOWN_SOUTH;South East Stairs - Roof;MM Clock Town South Chest Lower;chest;894;248;0;CLOCK_TOWN_SOUTH;chest;All;0;mm;overworld;Deku Mask, Moon Tear, Soul of Business Scrubs (MM);Use the deku flower to reach the south east platform
 0x01;CLOCK_TOWN_SOUTH;Day 3 - Central Platform;MM Clock Town South Chest Upper;chest;649;398;0;CLOCK_TOWN_SOUTH;chest;All;0;mm;overworld;Deku Mask, Moon Tear, Clock (Day 3) / Clock (Night 3), Soul of Business Scrubs (MM);Use the deku flower to reach the top of the center platform on day 3
 0x0001d;CLOCK_TOWN_SOUTH;Item 1;MM Clock Town South Wonder Item 1;wonder;305;122;2;CLOCK_TOWN_SOUTH;wonder;All;0;mm;overworld;Bow (MM) / Hookshot (MM) / Zora Mask (MM) / Deku Mask (MM) + Magic Upgrade (MM);Shoot at the center of the clock
 0x1001d;CLOCK_TOWN_SOUTH;Item 2;MM Clock Town South Wonder Item 2;wonder;327;118;1;CLOCK_TOWN_SOUTH;wonder;All;0;mm;overworld;Bow (MM) / Hookshot (MM) / Zora Mask (MM) / Deku Mask (MM) + Magic Upgrade (MM);Shoot at the center of the clock
 0x2001d;CLOCK_TOWN_SOUTH;Item 3;MM Clock Town South Wonder Item 3;wonder;315;110;0;CLOCK_TOWN_SOUTH;wonder;All;0;mm;overworld;Bow (MM) / Hookshot (MM) / Zora Mask (MM) / Deku Mask (MM) + Magic Upgrade (MM);Shoot at the center of the clock
-SONG_HEALING;CLOCK_TOWN_SOUTH;Song of Healing;MM Initial Song of Healing;npc;368;302;0;CLOCK_TOWN_SOUTH;npc;All;0;mm;overworld;;Welcome to Majora's Mask
+SONG_HEALING;CLOCK_TOWN_SOUTH;Song of Healing;MM Initial Song of Healing;npc;368;302;0;CLOCK_TOWN_SOUTH;song;All;0;mm;overworld;;Welcome to Majora's Mask
 TINGLE_MAP_CLOCK_TOWN;CLOCK_TOWN_SOUTH;Tingle - Clock Town Map;MM Tingle Map Clock Town;npc;394;148;0;CLOCK_TOWN_NORTH;npc;All;0;mm;overworld;Hookshot (MM) / Bow (MM) / Deku Mask + Magic Upgrade (MM) / Zora Mask (MM), Soul of Tingle;Buy the Clock Town map from <b>Tingle</b>
 TINGLE_MAP_GREAT_BAY;CLOCK_TOWN_SOUTH;Tingle - Great Bay Map;MM Tingle Map Great Bay;npc;310;504;0;GREAT_BAY_COAST;npc;All;0;mm;overworld;Hookshot (MM) / Bow (MM) / Deku Mask + Magic Upgrade (MM) / Zora Mask (MM), Soul of Tingle;Buy the Great Bay Coast map from <b>Tingle</b>
 TINGLE_MAP_STONE_TOWER;CLOCK_TOWN_SOUTH;Tingle - Ikana Map;MM Tingle Map Ikana;npc;344;455;0;IKANA_CANYON;npc;All;0;mm;overworld;Hookshot (MM) / Bow (MM) / Deku Mask + Magic Upgrade (MM) / Zora Mask (MM), Soul of Tingle;Buy the Ikana map from <b>Tingle</b>
@@ -185,8 +185,8 @@ TINGLE_MAP_SNOWHEAD;CLOCK_TOWN_SOUTH;Tingle - Snowhead Map;MM Tingle Map Snowhea
 TINGLE_MAP_WOODFALL;CLOCK_TOWN_SOUTH;Tingle - Woodfall Map;MM Tingle Map Woodfall;npc;468;149;0;ROAD_SOUTHERN_SWAMP;npc;All;0;mm;overworld;Hookshot (MM) / Bow (MM) / Deku Mask + Magic Upgrade (MM) / Zora Mask (MM), Soul of Tingle;Buy the Woodfall map from <b>Tingle</b>
 BANK_1;CLOCK_TOWN_WEST;Bank Reward 1;MM Clock Town Bank Reward 1;npc;641;328;0;CLOCK_TOWN_WEST;npc;All;0;mm;overworld;Soul of the Banker;Obtained after depositing <b>200</b> rupees
 BANK_2;CLOCK_TOWN_WEST;Bank Reward 2;MM Clock Town Bank Reward 2;npc;659;317;0;CLOCK_TOWN_WEST;npc;All;0;mm;overworld;Soul of the Banker;Obtained after depositing <b>500</b> rupees
-BANK_3;CLOCK_TOWN_WEST;Bank Reward 3;MM Clock Town Bank Reward 3;npc;675;306;0;CLOCK_TOWN_WEST;npc;All;0;mm;overworld;Soul of the Banker;Obtained after depositing <b>1000</b> rupees
-ROSA_HEART_PIECE;CLOCK_TOWN_WEST;Rosa Sisters - Heart Piece;MM Clock Town Rosa Sisters HP;npc;403;284;0;CLOCK_TOWN_WEST;npc;All;0;mm;overworld;Soul of Citizens (MM), Kamaro's Mask;Teach the Rosa Sisters how to dance
+BANK_3;CLOCK_TOWN_WEST;Bank Reward 3;MM Clock Town Bank Reward 3;npc;675;306;0;CLOCK_TOWN_WEST;heart_piece;All;0;mm;overworld;Soul of the Banker;Obtained after depositing <b>1000</b> rupees
+ROSA_HEART_PIECE;CLOCK_TOWN_WEST;Rosa Sisters;MM Clock Town Rosa Sisters HP;npc;403;284;0;CLOCK_TOWN_WEST;heart_piece;All;0;mm;overworld;Soul of Citizens (MM), Kamaro's Mask;Teach the Rosa Sisters how to dance
 0x02;CLOCK_TOWN_WEST;Bomb Bag;MM Bomb Shop Bomb Bag;none;0;0;0;BOMB_SHOP;none;All;0;mm;overworld;;
 0x03;CLOCK_TOWN_WEST;Large Bomb Bag;MM Bomb Shop Bomb Bag 2;none;0;0;0;BOMB_SHOP;none;All;0;mm;overworld;;
 0x00;CLOCK_TOWN_WEST;Item 1;MM Bomb Shop Item 1;none;0;0;0;BOMB_SHOP;none;All;0;mm;overworld;;
@@ -201,13 +201,13 @@ ROSA_HEART_PIECE;CLOCK_TOWN_WEST;Rosa Sisters - Heart Piece;MM Clock Town Rosa S
 0x0c;CLOCK_TOWN_WEST;Item 8;MM Trading Post Item 8;none;0;0;0;TRADING_POST;none;All;0;mm;overworld;;
 0x0008;CLOCK_TOWN_WEST;Pot;MM Trading Post Pot;none;0;0;0;TRADING_POST;none;All;0;mm;overworld;;
 0x04;CLOCK_TOWN_WEST;All-Night Mask;MM Curiosity Shop All-Night Mask;none;0;0;0;CURIOSITY_SHOP;none;All;0;mm;overworld;;
-SWORDSMAN_HEART_PIECE;CLOCK_TOWN_WEST;Heart Piece;MM Swordsman School HP;none;0;0;0;SWORDSMAN_SCHOOL;none;All;0;mm;overworld;;
+SWORDSMAN_HEART_PIECE;CLOCK_TOWN_WEST;Game Prize;MM Swordsman School HP;none;0;0;0;SWORDSMAN_SCHOOL;none;All;0;mm;overworld;;
 0x0006;CLOCK_TOWN_WEST;Pot 1;MM Swordsman School Pot 1;none;0;0;0;SWORDSMAN_SCHOOL;none;All;0;mm;overworld;;
 0x0007;CLOCK_TOWN_WEST;Pot 2;MM Swordsman School Pot 2;none;0;0;0;SWORDSMAN_SCHOOL;none;All;0;mm;overworld;;
 0x0008;CLOCK_TOWN_WEST;Pot 3;MM Swordsman School Pot 3;none;0;0;0;SWORDSMAN_SCHOOL;none;All;0;mm;overworld;;
 0x0009;CLOCK_TOWN_WEST;Pot 4;MM Swordsman School Pot 4;none;0;0;0;SWORDSMAN_SCHOOL;none;All;0;mm;overworld;;
 0x000a;CLOCK_TOWN_WEST;Pot 5;MM Swordsman School Pot 5;none;0;0;0;SWORDSMAN_SCHOOL;none;All;0;mm;overworld;;
-POSTMAN_HEART_PIECE;CLOCK_TOWN_WEST;Postman Game - Heart Piece;MM Post Office HP;none;0;0;0;POST_OFFICE;none;All;0;mm;overworld;;
+POSTMAN_HEART_PIECE;CLOCK_TOWN_WEST;Game Prize;MM Post Office HP;none;0;0;0;POST_OFFICE;none;All;0;mm;overworld;;
 MASK_BUNNY;CUCCO_SHACK;Bunny Mask;MM Cucco Shack Bunny Mask;npc;407;318;0;CUCCO_SHACK;npc;All;0;mm;overworld;Bremen Mask, Soul of Grog;Make the chick become cuccos by wearing the <b>Bremen Mask</b>
 0x0000e;CUCCO_SHACK;Crate 1;MM Cucco Shack Crate 1;crate;871;317;0;CUCCO_SHACK;crate;All;0;mm;overworld;;
 0x0000f;CUCCO_SHACK;Crate 2;MM Cucco Shack Crate 2;crate;851;317;0;CUCCO_SHACK;crate;All;0;mm;overworld;;
@@ -237,8 +237,8 @@ PENDANT_OF_MEMORIES;CURIOSITY_SHOP;Pendant of Memories;MM Kafei Hideout Pendant 
 0x0017;DAMPE_HOUSE;Pot 8;MM Beneath The Graveyard Pot Dampe 08;pot;818;267;0;DAMPE_HOUSE;pot;All;0;mm;overworld;Soul of Stalchildren (MM), Captain's Hat, Clock (Night 3);
 0x0018;DAMPE_HOUSE;Pot 9;MM Beneath The Graveyard Pot Dampe 09;pot;772;350;0;DAMPE_HOUSE;pot;All;0;mm;overworld;Soul of Stalchildren (MM), Captain's Hat, Clock (Night 3);
 0x0019;DAMPE_HOUSE;Pot 10;MM Beneath The Graveyard Pot Dampe 10;pot;768;267;0;DAMPE_HOUSE;pot;All;0;mm;overworld;Soul of Stalchildren (MM), Captain's Hat, Clock (Night 3);
-SONG_AWAKENING;DEKU_KING_CHAMBER;Sonata of Awakening;MM Deku Palace Sonata of Awakening;npc;180;314;0;DEKU_KING_CHAMBER;npc;All;0;mm;overworld;Deku Mask, Fairy Ocarina (MM) / Ocarina of Time (MM);Pull out your ocarina in front of the monkey while wearing the <b>Deku  Mask</b>
-0x1e;DEKU_PALACE;Garden Heart Piece;MM Deku Palace HP;collectible;210;133;0;DEKU_PALACE;collectible;All;0;mm;overworld;;Avoid the deku guards to reach the heart piece
+SONG_AWAKENING;DEKU_KING_CHAMBER;Sonata of Awakening;MM Deku Palace Sonata of Awakening;npc;180;314;0;DEKU_KING_CHAMBER;song;All;0;mm;overworld;Deku Mask, Fairy Ocarina (MM) / Ocarina of Time (MM);Pull out your ocarina in front of the monkey while wearing the <b>Deku  Mask</b>
+0x1e;DEKU_PALACE;Garden;MM Deku Palace HP;collectible;210;133;0;DEKU_PALACE;heart_piece;All;0;mm;overworld;;Avoid the deku guards to reach the heart piece
 0x010f;DEKU_PALACE;Upper 1;MM Deku Palace Pot 1;pot;571;327;1;DEKU_PALACE;pot;All;0;mm;overworld;Deku Mask, Beans (MM), Spring Water;Plant a bean on the top right soil of the deku palace and use the deku flowers to reach the pots
 0x0110;DEKU_PALACE;Upper 2;MM Deku Palace Pot 2;pot;571;312;0;DEKU_PALACE;pot;All;0;mm;overworld;Deku Mask, Beans (MM), Spring Water;Plant a bean on the top right soil of the deku palace and use the deku flowers to reach the pots
 0x00200;DEKU_PALACE;Left 1;MM Deku Palace Rupee Left 1;rupee;271;292;0;DEKU_PALACE;rupee;All;0;mm;overworld;;
@@ -327,7 +327,7 @@ MASK_SCENTS;DEKU_PALACE;Mask of Scents;MM Deku Shrine Mask of Scents;none;0;0;0;
 0x00604;DEKU_PALACE;Grass 3;MM Deku Palace JP Line Grotto Grass 3;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;All;0;mm;overworld;;
 0x00605;DEKU_PALACE;Grass 4;MM Deku Palace JP Line Grotto Grass 4;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;All;0;mm;overworld;;
 0x00606;DEKU_PALACE;Grass 5;MM Deku Palace JP Line Grotto Grass 5;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;All;0;mm;overworld;;
-DEKU_PLAYGROUND_2;DEKU_PLAYGROUND;Reward - All Days;MM Deku Playground Reward All Days;npc;399;341;0;DEKU_PLAYGROUND;npc;All;0;mm;minigame;Clock (Day 1) / Clock (Night 1), Clock (Day 2) / Clock (Night 2), Clock (Day 3) / Clock (Night 3),  Soul of Playground Scrubs;Win the game on all days
+DEKU_PLAYGROUND_2;DEKU_PLAYGROUND;Reward - All Days;MM Deku Playground Reward All Days;npc;399;341;0;DEKU_PLAYGROUND;heart_piece;All;0;mm;minigame;Clock (Day 1) / Clock (Night 1), Clock (Day 2) / Clock (Night 2), Clock (Day 3) / Clock (Night 3),  Soul of Playground Scrubs;Win the game on all days
 DEKU_PLAYGROUND_1;DEKU_PLAYGROUND;Reward - Any Day;MM Deku Playground Reward Any Day;npc;399;299;0;DEKU_PLAYGROUND;npc;All;0;mm;minigame;Soul of Playground Scrubs;Win the game on any day
 MASK_SCENTS;DEKU_SHRINE;Mask of Scents;MM Deku Shrine Mask of Scents;npc;166;206;0;DEKU_SHRINE;npc;All;0;mm;overworld;Soul of Deku Princess, Soul of Deku Butler;Follow the <b>Deku Butler</b> to the end of the race
 0x000e;DEKU_SHRINE;Pot 1;MM Deku Shrine Pot 1;pot;777;544;0;DEKU_SHRINE;pot;All;0;mm;overworld;Soul of Deku Princess, Soul of Deku Butler;
@@ -363,7 +363,7 @@ MASK_SCENTS;DEKU_SHRINE;Mask of Scents;MM Deku Shrine Mask of Scents;npc;166;206
 0x00404;DEKU_SHRINE;Main 19;MM Deku Shrine Rupee Main 19;rupee;578;85;1;DEKU_SHRINE;rupee;All;0;mm;overworld;Soul of Deku Princess, Soul of Deku Butler;
 0x00405;DEKU_SHRINE;Main 20;MM Deku Shrine Rupee Main 20;rupee;577;72;0;DEKU_SHRINE;rupee;All;0;mm;overworld;Soul of Deku Princess, Soul of Deku Butler;
 0x00;DOG_RACETRACK;Chest;MM Doggy Racetrack Chest;chest;268;259;0;DOG_RACETRACK;chest;All;0;mm;overworld;Beans (MM), Spring Water;Plant the bean in the soil and spread some spring water on it to reach the chest
-DOG_LADY_HEART_PIECE;DOG_RACETRACK;Heart Piece;MM Doggy Racetrack HP;npc;650;377;0;DOG_RACETRACK;npc;All;0;mm;overworld;Soul of the Dog Lady (MM), Soul of Dogs (MM);Choose the right dog and win the race
+DOG_LADY_HEART_PIECE;DOG_RACETRACK;Game Prize;MM Doggy Racetrack HP;npc;650;377;0;DOG_RACETRACK;heart_piece;All;0;mm;overworld;Soul of the Dog Lady (MM), Soul of Dogs (MM);Choose the right dog and win the race
 0x0009;DOG_RACETRACK;Pot 1;MM Doggy Racetrack Pot 1;pot;308;284;0;DOG_RACETRACK;pot;All;0;mm;overworld;;
 0x000a;DOG_RACETRACK;Pot 2;MM Doggy Racetrack Pot 2;pot;295;294;0;DOG_RACETRACK;pot;All;0;mm;overworld;;
 0x000c;DOG_RACETRACK;Pot 3;MM Doggy Racetrack Pot 3;pot;281;307;0;DOG_RACETRACK;pot;All;0;mm;overworld;;
@@ -378,9 +378,9 @@ GREAT_FAIRY_TOWN_ALT;FAIRY_FOUNTAIN;Great Fairy - Mojo;MM Clock Town Great Fairy
 GREAT_FAIRY_OCEAN;FAIRY_FOUNTAIN;Double Defense;MM Great Bay Great Fairy;npc;490;188;0;MM_FAIRY_GREAT_BAY_COAST;npc;All;0;mm;overworld;Stray Fairy (Great Bay);Bring all the <b>Stray Fairy (Great Bay)</b> back to the fountain
 GREAT_FAIRY_VALLEY;FAIRY_FOUNTAIN;Great Fairy's Sword;MM Ikana Great Fairy;npc;460;195;0;MM_FAIRY_IKANA;npc;All;0;mm;overworld;Stray Fairy (Stone Tower);Bring all the <b>Stray Fairy (Stone Tower)</b> back to the fountain
 GREAT_FAIRY_MOUNTAIN;FAIRY_FOUNTAIN;Large Magic Upgrade;MM Snowhead Great Fairy;npc;478;173;0;MM_FAIRY_SNOWHEAD;npc;All;0;mm;overworld;Stray Fairy (Snowhead);Bring all the <b>Stray Fairy (Snowhead)</b> back to the fountain
-OWL_SNOWHEAD;SNOWHEAD;Owl Statue;MM Snowhead Owl Statue;npc;186;509;1;SNOWHEAD;npc;All;0;mm;overworld;Sword (MM);Hit the statue with a sword
+OWL_SNOWHEAD;SNOWHEAD;Owl Statue;MM Snowhead Owl Statue;npc;186;509;1;SNOWHEAD;owl;All;0;mm;overworld;Sword (MM);Hit the statue with a sword
 GREAT_FAIRY_SWAMP;FAIRY_FOUNTAIN;Super Spin Attack;MM Woodfall Great Fairy;npc;478;159;0;MM_FAIRY_WOODFALL;npc;All;0;mm;overworld;Stray Fairy (Woodfall);Bring all the <b>Stray Fairy (Woodfall)</b> back to the fountain
-GHOST_HUT_HEART_PIECE;GHOST_HUT;Heart Piece;MM Ghost Hut HP;npc;473;179;0;GHOST_HUT;npc;All;0;mm;overworld;Soul of Poe Hut Owner;Complete the challenge of the <b>Poe Hut Owner</b>
+GHOST_HUT_HEART_PIECE;GHOST_HUT;Game Prize;MM Ghost Hut HP;npc;473;179;0;GHOST_HUT;heart_piece;All;0;mm;overworld;Soul of Poe Hut Owner;Complete the challenge of the <b>Poe Hut Owner</b>
 0x00049;GORMAN_TRACK;Crate;MM Gorman Track Crate;crate;640;242;0;GORMAN_TRACK;crate;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
 MASK_GARO;GORMAN_TRACK;Garo Mask;MM Gorman Track Garo Mask;npc;628;231;0;GORMAN_TRACK;npc;All;0;mm;overworld;Epona's Song (MM), C-Up + C-Left + C-Right buttons, Fairy Ocarina (MM) / Ocarina of Time (MM), Soul of Gorman & Bros.;Win the race against the <b>Gorman Bros.</b>
 0x00024;GORMAN_TRACK;Pack 1 - Grass 1;MM Gorman Track Grass Pack 1 Grass 01;grass;54;398;0;GORMAN_TRACK;grass;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
@@ -407,7 +407,7 @@ MASK_GARO;GORMAN_TRACK;Garo Mask;MM Gorman Track Garo Mask;npc;628;231;0;GORMAN_
 0x90025;GORMAN_TRACK;Pack 2 - Grass 10;MM Gorman Track Grass Pack 2 Grass 10;grass;189;446;0;GORMAN_TRACK;grass;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
 0xa0025;GORMAN_TRACK;Pack 2 - Grass 11;MM Gorman Track Grass Pack 2 Grass 11;grass;174;456;0;GORMAN_TRACK;grass;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
 0xb0025;GORMAN_TRACK;Pack 2 - Grass 12;MM Gorman Track Grass Pack 2 Grass 12;grass;157;453;0;GORMAN_TRACK;grass;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-GORMAN_MILK;GORMAN_TRACK;Purchase - Milk;MM Gorman Track Milk Purchase;npc;663;235;0;GORMAN_TRACK;npc;All;0;mm;overworld;Soul of Gorman & Bros.;Buy milk from the <b>Gorman Bros.</b>
+GORMAN_MILK;GORMAN_TRACK;Purchase - Milk;MM Gorman Track Milk Purchase;npc;663;235;0;GORMAN_TRACK;merchant;All;0;mm;overworld;Soul of Gorman & Bros.;Buy milk from the <b>Gorman Bros.</b>
 MASK_GORON;GORON_GRAVEYARD;Goron Mask;MM Goron Graveyard Mask;npc;474;289;0;GORON_GRAVEYARD;npc;All;0;mm;overworld;Lens of Truth (MM), Magic Upgrade (MM), Song of Healing, C-Left + C-Right + C-Down buttons (MM), Fairy Ocarina (MM) / Ocarina of Time (MM);Use your <b>Lens of Truth</b> to speak to <b>Darmani</b> and play the <b>Song of Healing</b> to heal his wounds
 0x0002;GORON_RACETRACK;Pot 1;MM Goron Race Pot 01;pot;346;247;0;GORON_RACETRACK;pot;All;0;mm;overworld;Goron Mask (MM), Powder Keg / Soul of Biggoron (MM) + Bow (MM) + Fire Arrow (MM) + Magic Upgrade (MM) / Soul of Biggoron (MM) + Din's Fire (MM) + Magic Upgrade (MM);Break the rock that blocks the goron racetrack entrance
 0x0003;GORON_RACETRACK;Pot 2;MM Goron Race Pot 02;pot;284;276;0;GORON_RACETRACK;pot;All;0;mm;overworld;Goron Mask (MM), Powder Keg / Soul of Biggoron (MM) + Bow (MM) + Fire Arrow (MM) + Magic Upgrade (MM);Break the rock that blocks the goron racetrack entrance
@@ -466,7 +466,7 @@ GORON_KEG;GORON_VILLAGE_WINTER;Powder Keg;MM Goron Powder Keg;npc;117;323;0;GORO
 0x00039;GORON_VILLAGE_WINTER;Big Snowball 8;MM Goron Village Big Snowball 8;snowball;635;479;1;GORON_VILLAGE_WINTER;snowball;All;0;mm;overworld;Goron Mask (MM) / Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Megaton Hammer (MM);
 0x0003a;GORON_VILLAGE_WINTER;Big Snowball 9;MM Goron Village Big Snowball 9;snowball;423;327;0;GORON_VILLAGE_WINTER;snowball;All;0;mm;overworld;Goron Mask (MM) / Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Megaton Hammer (MM);
 0x00103;GORON_VILLAGE_WINTER;Crate;MM Goron Village Crate;crate;188;354;0;GORON_VILLAGE_WINTER;crate;All;0;mm;overworld;Bow (MM) + Fire Arrow (MM) / Din's Fire (MM), Magic Upgrade (MM);
-0x1e;GORON_VILLAGE_WINTER;Scrub - Heart Piece;MM Goron Village HP;collectible;721;320;0;GORON_VILLAGE_WINTER;collectible;All;0;mm;overworld;Swamp Title Deed, Deku Mask, Soul of Business Scrubs (MM);Give the <b>Swamp Title Deed</b> to the scrub and use its flower to reach the alcove where the heart piece is
+0x1e;GORON_VILLAGE_WINTER;Ledge;MM Goron Village HP;collectible;721;320;0;GORON_VILLAGE_WINTER;heart_piece;All;0;mm;overworld;Swamp Title Deed, Deku Mask, Soul of Business Scrubs (MM);Give the <b>Swamp Title Deed</b> to the scrub and use its flower to reach the alcove where the heart piece is
 SCRUB_BOMB_BAG;GORON_VILLAGE_WINTER;Scrub - Shop;MM Goron Village Scrub Bomb Bag;npc;685;310;1;GORON_VILLAGE_WINTER;shop;All;0;mm;overworld;Goron Mask (MM), Soul of Business Scrubs (MM);While wearing the <b>Goron Mask</b> speak to the scrub and buy its product
 SCRUB_MOUNTAIN;GORON_VILLAGE_WINTER;Title Deed;MM Goron Village Scrub Deed;npc;685;332;0;GORON_VILLAGE_WINTER;scrub;All;0;mm;overworld;Swamp Title Deed, Deku Mask, Soul of Business Scrubs (MM);Give the <b>Swamp Title Deed</b> to the scrub
 0x0001d;GORON_VILLAGE_WINTER;Small Snowball 1;MM Goron Village Small Snowball 01;snowball;510;331;0;GORON_VILLAGE_WINTER;snowball;All;0;mm;overworld;;
@@ -529,14 +529,14 @@ GORON_BABY;GORON_VILLAGE_WINTER;Goron's Lulluby;MM Goron Baby;none;0;0;0;GORON_S
 0x14085;GREAT_BAY_COAST;Common 2;MM Great Bay Coast Common Butterfly 2;butterfly;673;595;0;GREAT_BAY_COAST;butterfly;All;0;mm;overworld;Soul of Butterflies (MM), Deku Stick (MM);Pull out a deku stick near the butterfly
 0x16;GREAT_BAY_COAST;Back;MM Great Bay Coast Cow Back;cow;572;378;0;MM_GROTTO_GREAT_BAY_COAST_COW;cow;All;0;mm;overworld;Hookshot (MM), Fairy Ocarina / Ocarina of Time, Epona's Song (MM), C-Up + C-Left + C-Right buttons (MM), Soul of Cows (MM);Play <b>Epona's Song</b> next to the cow
 0x15;GREAT_BAY_COAST;Front;MM Great Bay Coast Cow Front;cow;568;417;0;MM_GROTTO_GREAT_BAY_COAST_COW;cow;All;0;mm;overworld;Hookshot (MM), Fairy Ocarina / Ocarina of Time, Epona's Song (MM), C-Up + C-Left + C-Right buttons (MM), Soul of Cows (MM);Play <b>Epona's Song</b> next to the cow
-FISHERMAN_HEART_PIECE;GREAT_BAY_COAST;Fisherman Game - Heart Piece;MM Great Bay Coast Fisherman HP;npc;516;179;0;GREAT_BAY_COAST;npc;All;0;mm;overworld;Soul of Gyorg, Soul of Fisherman;After defeating Gyorg, win the <b>Fisherman</b> minigame
+FISHERMAN_HEART_PIECE;GREAT_BAY_COAST;Fisherman Game Prize;MM Great Bay Coast Fisherman HP;npc;516;179;0;GREAT_BAY_COAST;heart_piece;All;0;mm;overworld;Soul of Gyorg, Soul of Fisherman;After defeating Gyorg, win the <b>Fisherman</b> minigame
 0x0006e;GREAT_BAY_COAST;Grass 1;MM Great Bay Coast Grass 1;grass;654;563;0;GREAT_BAY_COAST;grass;All;0;mm;overworld;;
 0x0006f;GREAT_BAY_COAST;Grass 2;MM Great Bay Coast Grass 2;grass;646;563;0;GREAT_BAY_COAST;grass;All;0;mm;overworld;;
 0x00070;GREAT_BAY_COAST;Grass 3;MM Great Bay Coast Grass 3;grass;655;579;0;GREAT_BAY_COAST;grass;All;0;mm;overworld;;
 0x00071;GREAT_BAY_COAST;Grass 4;MM Great Bay Coast Grass 4;grass;647;581;0;GREAT_BAY_COAST;grass;All;0;mm;overworld;;
 0x00072;GREAT_BAY_COAST;Grass 5;MM Great Bay Coast Grass 5;grass;646;572;0;GREAT_BAY_COAST;grass;All;0;mm;overworld;;
-0x05;GREAT_BAY_COAST;Magic Bean - Heart Piece;MM Great Bay Coast HP;collectible;678;83;0;GREAT_BAY_COAST;collectible;All;0;mm;overworld;Hookshot (MM), Beans (MM), Spring Water;Plant the bean to reach the platform where the heart piece is located
-OWL_GREAT_BAY;GREAT_BAY_COAST;Owl Statue;MM Great Bay Coast Owl Statue;npc;320;492;0;GREAT_BAY_COAST;npc;All;0;mm;overworld;Sword (MM);Hit the statue with a sword
+0x05;GREAT_BAY_COAST;Ledge;MM Great Bay Coast HP;collectible;678;83;0;GREAT_BAY_COAST;heart_piece;All;0;mm;overworld;Hookshot (MM), Beans (MM), Spring Water;Plant the bean to reach the platform where the heart piece is located
+OWL_GREAT_BAY;GREAT_BAY_COAST;Owl Statue;MM Great Bay Coast Owl Statue;npc;320;492;0;GREAT_BAY_COAST;owl;All;0;mm;overworld;Sword (MM);Hit the statue with a sword
 0x0076;GREAT_BAY_COAST;Pot 1;MM Great Bay Coast Pot 01;pot;479;80;1;GREAT_BAY_COAST;pot;All;0;mm;overworld;;
 0x0077;GREAT_BAY_COAST;Pot 2;MM Great Bay Coast Pot 02;pot;396;254;0;GREAT_BAY_COAST;pot;All;0;mm;overworld;;
 0x0078;GREAT_BAY_COAST;Pot 3;MM Great Bay Coast Pot 03;pot;674;132;1;GREAT_BAY_COAST;pot;All;0;mm;overworld;;
@@ -568,7 +568,7 @@ MASK_ZORA;GREAT_BAY_COAST;Zora Mask;MM Great Bay Coast Zora Mask;npc;545;573;0;G
 0x03711;GREAT_BAY_COAST;Grass 12;MM Great Bay Coast Fisherman Grotto Grass 12;none;0;0;0;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;none;All;0;mm;overworld;;
 0x03712;GREAT_BAY_COAST;Grass 13;MM Great Bay Coast Fisherman Grotto Grass 13;none;0;0;0;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;none;All;0;mm;overworld;;
 0x03713;GREAT_BAY_COAST;Grass 14;MM Great Bay Coast Fisherman Grotto Grass 14;none;0;0;0;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;none;All;0;mm;overworld;;
-LAB_FISH_HEART_PIECE;GREAT_BAY_COAST;Fish - Heart Piece;MM Laboratory Fish HP;none;0;0;0;LABORATORY;none;All;0;mm;overworld;;
+LAB_FISH_HEART_PIECE;GREAT_BAY_COAST;Fish;MM Laboratory Fish HP;none;0;0;0;LABORATORY;none;All;0;mm;overworld;;
 SONG_ZORA;GREAT_BAY_COAST;New Wave Bossa Nova;MM Laboratory Zora Song;none;0;0;0;LABORATORY;none;All;0;mm;overworld;;
 0x00f06;GREAT_BAY_COAST;Butterfly 1;MM Great Bay Cow Grotto Butterfly 1;none;0;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;none;All;0;mm;overworld;;
 0x10f06;GREAT_BAY_COAST;Butterfly 2;MM Great Bay Cow Grotto Butterfly 2;none;0;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;none;All;0;mm;overworld;;
@@ -923,7 +923,7 @@ SONG_ZORA;GREAT_BAY_COAST;New Wave Bossa Nova;MM Laboratory Zora Song;none;0;0;0
 0x03d11;GROTTOS;Grass 12;MM Southern Swamp Grotto Grass 12;grass;382;418;0;MM_GROTTO_SOUTHERN_SWAMP_OPEN;grass;All;0;mm;overworld;;
 0x03d12;GROTTOS;Grass 13;MM Southern Swamp Grotto Grass 13;grass;583;448;0;MM_GROTTO_SOUTHERN_SWAMP_OPEN;grass;All;0;mm;overworld;;
 0x03d13;GROTTOS;Grass 14;MM Southern Swamp Grotto Grass 14;grass;418;418;0;MM_GROTTO_SOUTHERN_SWAMP_OPEN;grass;All;0;mm;overworld;;
-0x02;GROTTOS;Heart Piece;MM Termina Field Bio Baba Grotto;collectible;235;140;0;MM_GROTTO_TERMINA_BIO_BABA;collectible;All;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM), Bow (MM) / Hookshot (MM), Zora Mask (MM) / Iron Boots (MM) / Golden Scale (MM);Shoot the hive and go underwater to get the item
+0x02;GROTTOS;Hive;MM Termina Field Bio Baba Grotto;collectible;235;140;0;MM_GROTTO_TERMINA_BIO_BABA;heart_piece;All;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM), Bow (MM) / Hookshot (MM), Zora Mask (MM) / Iron Boots (MM) / Golden Scale (MM);Shoot the hive and go underwater to get the item
 0x00b0a;GROTTOS;Left;MM Termina Field Bio Baba Grotto Hive Left;hive;266;143;0;MM_GROTTO_TERMINA_BIO_BABA;hive;All;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM), Bow (MM) / Hookshot (MM), Zora Mask (MM) / Iron Boots (MM) / Golden Scale (MM);Shoot the hive and go underwater to get the item
 0x00b09;GROTTOS;Middle;MM Termina Field Bio Baba Grotto Hive Middle;hive;152;168;0;MM_GROTTO_TERMINA_BIO_BABA;hive;All;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM), Bow (MM) / Hookshot (MM), Zora Mask (MM) / Iron Boots (MM) / Golden Scale (MM);Shoot the hive and go underwater to get the item
 0x14;GROTTOS;Back;MM Termina Field Cow Back;cow;572;378;0;MM_GROTTO_TERMINA_COW;cow;All;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM), Fairy Ocarina / Ocarina of Time, Epona's Song (MM), C-Up + C-Left + C-Right buttons (MM), Soul of Cows (MM);Play <b>Epona's Song</b> next to the cow
@@ -1004,9 +1004,9 @@ SONG_ZORA;GREAT_BAY_COAST;New Wave Bossa Nova;MM Laboratory Zora Song;none;0;0;0
 0xa0a09;GROTTOS;Grass 71;MM Termina Field Cow Grotto Grass 71;grass;537;491;0;MM_GROTTO_TERMINA_COW;grass;All;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM);
 0xb0a09;GROTTOS;Grass 72;MM Termina Field Cow Grotto Grass 72;grass;533;506;0;MM_GROTTO_TERMINA_COW;grass;All;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM);
 0x00a02;GROTTOS;Hive;MM Termina Field Cow Grotto Hive;hive;519;87;0;MM_GROTTO_TERMINA_COW;hive;All;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM), Hookshot (MM) / Bow (MM);
-0x00;GROTTOS;Dodongo;MM Termina Field Dodongo Grotto;chest;725;373;0;MM_GROTTO_TERMINA_DODONGO;chest;All;0;mm;overworld;Soul of Dodongos (MM);Defeat all the <b>Dodongos</b>
-GOSSIP_HEART_PIECE;GROTTOS;Gossip Stones - Heart Piece;MM Termina Field Gossip Stones HP;npc;281;408;0;MM_GROTTO_TERMINA_CANYON_GOSSIP;npc;All;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM), Deku Mask, Goron Mask (MM), Zora Mask (MM), Goron's Lullaby / Sonata of Awakening / New Wave Bossa Nova, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Up + C-Left buttons (MM) / A + C-Up + C-Left + C-Right buttons (MM) / C-Left + C-Up + C-Right + C-Down buttons (MM);Play one of the major songs (the same) to all gossip stones wearing a different form
-0x04;GROTTOS;Peahat;MM Termina Field Peahat Grotto;chest;400;392;0;MM_GROTTO_TERMINA_PEEHAT;chest;All;0;mm;overworld;Clock (Day 1) / Clock (Day 2) / Clock (Day 3), Soul of Peahats (MM);Defeat the <b>Peahat</b> during any day
+0x00;GROTTOS;Dodongo;MM Termina Field Dodongo Grotto;chest;725;373;0;MM_GROTTO_TERMINA_DODONGO;heart_piece;All;0;mm;overworld;Soul of Dodongos (MM);Defeat all the <b>Dodongos</b>
+GOSSIP_HEART_PIECE;GROTTOS;Gossip Stones;MM Termina Field Gossip Stones HP;npc;281;408;0;MM_GROTTO_TERMINA_CANYON_GOSSIP;heart_piece;All;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM), Deku Mask, Goron Mask (MM), Zora Mask (MM), Goron's Lullaby / Sonata of Awakening / New Wave Bossa Nova, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Up + C-Left buttons (MM) / A + C-Up + C-Left + C-Right buttons (MM) / C-Left + C-Up + C-Right + C-Down buttons (MM);Play one of the major songs (the same) to all gossip stones wearing a different form
+0x04;GROTTOS;Peahat;MM Termina Field Peahat Grotto;chest;400;392;0;MM_GROTTO_TERMINA_PEEHAT;heart_piece;All;0;mm;overworld;Clock (Day 1) / Clock (Day 2) / Clock (Day 3), Soul of Peahats (MM);Defeat the <b>Peahat</b> during any day
 0x1a;GROTTOS;Chest;MM Termina Field Pillar Grotto;chest;231;410;0;MM_GROTTO_TERMINA_PILLAR;chest;All;0;mm;overworld;;Climb the ladder next to pillar to find the grotto
 0x03a00;GROTTOS;Grass 1;MM Termina Field Pillar Grotto Grass 01;grass;612;542;0;MM_GROTTO_TERMINA_PILLAR;grass;All;0;mm;overworld;;Climb the ladder next to pillar to find the grotto
 0x03a01;GROTTOS;Grass 2;MM Termina Field Pillar Grotto Grass 02;grass;371;494;0;MM_GROTTO_TERMINA_PILLAR;grass;All;0;mm;overworld;;Climb the ladder next to pillar to find the grotto
@@ -1022,7 +1022,7 @@ GOSSIP_HEART_PIECE;GROTTOS;Gossip Stones - Heart Piece;MM Termina Field Gossip S
 0x03a11;GROTTOS;Grass 12;MM Termina Field Pillar Grotto Grass 12;grass;382;418;0;MM_GROTTO_TERMINA_PILLAR;grass;All;0;mm;overworld;;Climb the ladder next to pillar to find the grotto
 0x03a12;GROTTOS;Grass 13;MM Termina Field Pillar Grotto Grass 13;grass;583;448;0;MM_GROTTO_TERMINA_PILLAR;grass;All;0;mm;overworld;;Climb the ladder next to pillar to find the grotto
 0x03a13;GROTTOS;Grass 14;MM Termina Field Pillar Grotto Grass 14;grass;418;418;0;MM_GROTTO_TERMINA_PILLAR;grass;All;0;mm;overworld;;Climb the ladder next to pillar to find the grotto
-SCRUB_TELESCOPE;GROTTOS;Scrub;MM Termina Field Scrub;npc;239;428;0;MM_GROTTO_TERMINA_SCRUB;scrub;All;0;mm;overworld;Soul of Astronomer, Soul of Business Scrubs (MM);Watch and follow the business scrub using the telescope. Then go to its grotto and buy its item
+SCRUB_TELESCOPE;GROTTOS;Scrub;MM Termina Field Scrub;npc;239;428;0;MM_GROTTO_TERMINA_SCRUB;heart_piece;All;0;mm;overworld;Soul of Astronomer, Soul of Business Scrubs (MM);Watch and follow the business scrub using the telescope. Then go to its grotto and buy its item
 0x00900;GROTTOS;Crate;MM Termina Field Scrub Crate;crate;268;474;0;MM_GROTTO_TERMINA_SCRUB;crate;All;0;mm;overworld;;
 0x0903;GROTTOS;Pot;MM Termina Field Scrub Pot;pot;226;406;0;MM_GROTTO_TERMINA_SCRUB;pot;All;0;mm;overworld;;
 0x1f;GROTTOS;Chest;MM Termina Field Tall Grass Grotto;chest;231;410;0;MM_GROTTO_TERMINA_TALL_GRASS;chest;All;0;mm;overworld;;
@@ -1086,17 +1086,17 @@ SCRUB_TELESCOPE;GROTTOS;Scrub;MM Termina Field Scrub;npc;239;428;0;MM_GROTTO_TER
 0x03511;GROTTOS;Grass 12;MM Zora Cape Grotto Grass 12;grass;382;418;0;MM_GROTTO_ZORA_CAPE_GENERIC;grass;All;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM);
 0x03512;GROTTOS;Grass 13;MM Zora Cape Grotto Grass 13;grass;583;448;0;MM_GROTTO_ZORA_CAPE_GENERIC;grass;All;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM);
 0x03513;GROTTOS;Grass 14;MM Zora Cape Grotto Grass 14;grass;418;418;0;MM_GROTTO_ZORA_CAPE_GENERIC;grass;All;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM);
-HONEY_DARLING_2;HONEY_DARLING;Reward - All Days;MM Honey & Darling Reward All Days;npc;471;310;0;HONEY_DARLING;npc;All;0;mm;minigame;Win the game on all days;
+HONEY_DARLING_2;HONEY_DARLING;Reward - All Days;MM Honey & Darling Reward All Days;npc;471;310;0;HONEY_DARLING;heart_piece;All;0;mm;minigame;Win the game on all days;
 HONEY_DARLING_1;HONEY_DARLING;Reward - Any Day;MM Honey & Darling Reward Any Day;npc;471;273;0;HONEY_DARLING;npc;All;0;mm;minigame;Win the game on any day;
 0x0003b;IKANA_CANYON;Grass 1;MM Ikana Canyon Grass 1;grass;425;421;0;IKANA_CANYON;grass;All;0;mm;overworld;;
 0x0003c;IKANA_CANYON;Grass 2;MM Ikana Canyon Grass 2;grass;408;413;0;IKANA_CANYON;grass;All;0;mm;overworld;;
 0x0003d;IKANA_CANYON;Grass 3;MM Ikana Canyon Grass 3;grass;417;421;0;IKANA_CANYON;grass;All;0;mm;overworld;;
 0x0003e;IKANA_CANYON;Grass 4;MM Ikana Canyon Grass 4;grass;399;483;0;IKANA_CANYON;grass;All;0;mm;overworld;;
-OWL_IKANA_CANYON;IKANA_CANYON;Owl Statue;MM Ikana Canyon Owl Statue;npc;389;465;0;IKANA_CANYON;npc;All;0;mm;overworld;Sword (MM);Hit the statue with a sword
-0x1e;IKANA_CANYON;Scrub - Heart Piece;MM Ikana Valley Scrub HP;collectible;791;200;0;IKANA_CANYON;collectible;All;0;mm;overworld;Zora Mask (MM), Deku Mask, Ocean Title Deed, Soul of Business Scrubs (MM);Use the deku flower to reach the ledge
+OWL_IKANA_CANYON;IKANA_CANYON;Owl Statue;MM Ikana Canyon Owl Statue;npc;389;465;0;IKANA_CANYON;owl;All;0;mm;overworld;Sword (MM);Hit the statue with a sword
+0x1e;IKANA_CANYON;Ledge;MM Ikana Valley Scrub HP;collectible;791;200;0;IKANA_CANYON;heart_piece;All;0;mm;overworld;Zora Mask (MM), Deku Mask, Ocean Title Deed, Soul of Business Scrubs (MM);Use the deku flower to reach the ledge
 SCRUB_VALLEY;IKANA_CANYON;Scrub - Rupee;MM Ikana Valley Scrub Rupee;npc;779;277;0;IKANA_CANYON;scrub;All;0;mm;overworld;Zora Mask (MM), Ocean Title Deed, Soul of Business Scrubs (MM);Give the <b>Ocean Title Deed</b> while wearing the <b>Zora Mask</b>
 SCRUB_SHOP_POTION_BLUE;IKANA_CANYON;Scrub - Shop;MM Ikana Valley Scrub Shop;npc;767;276;1;IKANA_CANYON;shop;All;0;mm;overworld;Soul of Business Scrubs (MM);Buy the item from the scrub while in human form
-GHOST_HUT_HEART_PIECE;IKANA_CANYON;Heart Piece;MM Ghost Hut HP;none;0;0;0;GHOST_HUT;none;All;0;mm;overworld;;
+GHOST_HUT_HEART_PIECE;IKANA_CANYON;Game Prize;MM Ghost Hut HP;none;0;0;0;GHOST_HUT;none;All;0;mm;overworld;;
 MASK_GIBDO;IKANA_CANYON;Gibdo Mask;MM Music Box House Gibdo Mask;none;0;0;0;MUSIC_BOX_HOUSE;none;All;0;mm;overworld;;
 0x0129;IKANA_CANYON;First Room 1;MM Sakon Hideout Pot First Room 1;none;0;0;0;SAKON_HIDEOUT;none;All;0;mm;overworld;;
 0x012a;IKANA_CANYON;First Room 2;MM Sakon Hideout Pot First Room 2;none;0;0;0;SAKON_HIDEOUT;none;All;0;mm;overworld;;
@@ -1148,7 +1148,7 @@ GREAT_FAIRY_VALLEY;IKANA_CANYON;Great Fairy's Sword;MM Ikana Great Fairy;none;0;
 0x20109;IKANA_GRAVEYARD;Item 12;MM Ikana Graveyard Wonder Item 12;wonder;568;209;0;IKANA_GRAVEYARD;wonder;All;0;mm;overworld;Hookshot (MM) / Bow (MM);Shoot at the lantern to reveal the item
 0x03;IKANA_GRAVEYARD;Chest;MM Beneath The Graveyard Chest;none;0;0;0;BENEATH_THE_GRAVEYARD_NIGHT1;none;All;0;mm;overworld;;
 0x00;IKANA_GRAVEYARD;Bottle;MM Beneath The Graveyard Dampe Chest;none;0;0;0;DAMPE_HOUSE;none;All;0;mm;overworld;;
-0x00;IKANA_GRAVEYARD;Heart Piece;MM Beneath The Graveyard HP;none;0;0;0;BENEATH_THE_GRAVEYARD_NIGHT2;none;All;0;mm;overworld;;
+0x00;IKANA_GRAVEYARD;Chest;MM Beneath The Graveyard HP;none;0;0;0;BENEATH_THE_GRAVEYARD_NIGHT2;none;All;0;mm;overworld;;
 0x0010;IKANA_GRAVEYARD;Pot 1;MM Beneath The Graveyard Pot Dampe 01;none;0;0;0;DAMPE_HOUSE;none;All;0;mm;overworld;;
 0x0011;IKANA_GRAVEYARD;Pot 2;MM Beneath The Graveyard Pot Dampe 02;none;0;0;0;DAMPE_HOUSE;none;All;0;mm;overworld;;
 0x0012;IKANA_GRAVEYARD;Pot 3;MM Beneath The Graveyard Pot Dampe 03;none;0;0;0;DAMPE_HOUSE;none;All;0;mm;overworld;;
@@ -1194,10 +1194,10 @@ SONG_STORMS;IKANA_GRAVEYARD;Song of Storms;MM Beneath The Graveyard Song of Stor
 0x03811;IKANA_GRAVEYARD;Grass 12;MM Ikana Graveyard Grotto Grass 12;none;0;0;0;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;none;All;0;mm;overworld;;
 0x03812;IKANA_GRAVEYARD;Grass 13;MM Ikana Graveyard Grotto Grass 13;none;0;0;0;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;none;All;0;mm;overworld;;
 0x03813;IKANA_GRAVEYARD;Grass 14;MM Ikana Graveyard Grotto Grass 14;none;0;0;0;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;none;All;0;mm;overworld;;
-LAB_FISH_HEART_PIECE;LABORATORY;Fish - Heart Piece;MM Laboratory Fish HP;npc;624;209;0;LABORATORY;npc;All;0;mm;overworld;Fish (MM);Free a fish above the red fish aquarium
-SONG_ZORA;LABORATORY;New Wave Bossa Nova;MM Laboratory Zora Song;npc;226;454;0;LABORATORY;npc;All;0;mm;overworld;Empty Bottle (MM), Zora Mask (MM), Fairy Ocarina (MM) / Ocarina of Time (MM), Soul of the Scientist (MM);Bring back all the <b>Zora's eggs</b> to the main aquarium and pull out your ocarina while in wearing the <b>Zora Mask</b>
-REMAINS_GOHT;LAIR_GOHT;Goht's Remains;MM Snowhead Temple Boss;npc;468;472;0;TEMPLE_SNOWHEAD;npc;All;13;mm;dungeon;Bow (MM) + Fire Arrow (MM) / Din's Fire (MM), Magic Upgrade (MM), Boss Key (Snowhead) / Goht's Remains, Soul of Goht;Defeat <b>Goht</b>
-0x1f;LAIR_GOHT;Heart Container;MM Snowhead Temple Boss HC;collectible;487;472;1;TEMPLE_SNOWHEAD;collectible;All;13;mm;dungeon;Bow (MM) + Fire Arrow (MM) / Din's Fire (MM), Magic Upgrade (MM), Boss Key (Snowhead) / Goht's Remains, Soul of Goht;Defeat <b>Goht</b>
+LAB_FISH_HEART_PIECE;LABORATORY;Fish;MM Laboratory Fish HP;npc;624;209;0;LABORATORY;heart_piece;All;0;mm;overworld;Fish (MM);Free a fish above the red fish aquarium
+SONG_ZORA;LABORATORY;New Wave Bossa Nova;MM Laboratory Zora Song;npc;226;454;0;LABORATORY;song;All;0;mm;overworld;Empty Bottle (MM), Zora Mask (MM), Fairy Ocarina (MM) / Ocarina of Time (MM), Soul of the Scientist (MM);Bring back all the <b>Zora's eggs</b> to the main aquarium and pull out your ocarina while in wearing the <b>Zora Mask</b>
+REMAINS_GOHT;LAIR_GOHT;Goht's Remains;MM Snowhead Temple Boss;npc;468;472;0;TEMPLE_SNOWHEAD;mask;All;13;mm;dungeon;Bow (MM) + Fire Arrow (MM) / Din's Fire (MM), Magic Upgrade (MM), Boss Key (Snowhead) / Goht's Remains, Soul of Goht;Defeat <b>Goht</b>
+0x1f;LAIR_GOHT;Heart Container;MM Snowhead Temple Boss HC;collectible;487;472;1;TEMPLE_SNOWHEAD;heart_container;All;13;mm;dungeon;Bow (MM) + Fire Arrow (MM) / Din's Fire (MM), Magic Upgrade (MM), Boss Key (Snowhead) / Goht's Remains, Soul of Goht;Defeat <b>Goht</b>
 0x0001;LAIR_GOHT;Boss 1;MM Snowhead Temple Boss Pot 01;pot;666;288;0;TEMPLE_SNOWHEAD;pot;All;13;mm;dungeon;Bow (MM) + Fire Arrow (MM) / Din's Fire (MM), Magic Upgrade (MM), Boss Key (Snowhead) / Goht's Remains, Soul of Goht;
 0x0002;LAIR_GOHT;Boss 2;MM Snowhead Temple Boss Pot 02;pot;276;288;0;TEMPLE_SNOWHEAD;pot;All;13;mm;dungeon;Bow (MM) + Fire Arrow (MM) / Din's Fire (MM), Magic Upgrade (MM), Boss Key (Snowhead) / Goht's Remains, Soul of Goht;
 0x0003;LAIR_GOHT;Boss 3;MM Snowhead Temple Boss Pot 03;pot;716;288;0;TEMPLE_SNOWHEAD;pot;All;13;mm;dungeon;Bow (MM) + Fire Arrow (MM) / Din's Fire (MM), Magic Upgrade (MM), Boss Key (Snowhead) / Goht's Remains, Soul of Goht;
@@ -1212,8 +1212,8 @@ REMAINS_GOHT;LAIR_GOHT;Goht's Remains;MM Snowhead Temple Boss;npc;468;472;0;TEMP
 0x000e;LAIR_GOHT;Boss - Early 2;MM Snowhead Temple Boss Pot Early 2;pot;489;455;0;TEMPLE_SNOWHEAD;pot;All;13;mm;dungeon;Boss Key (Snowhead) / Goht's Remains,;
 0x0006;LAIR_GOHT;Boss - Early 3;MM Snowhead Temple Boss Pot Early 3;pot;466;520;0;TEMPLE_SNOWHEAD;pot;All;13;mm;dungeon;Boss Key (Snowhead) / Goht's Remains,;
 0x0007;LAIR_GOHT;Boss 5;MM Snowhead Temple Boss Pot Early 4;pot;472;112;0;TEMPLE_SNOWHEAD;pot;All;13;mm;dungeon;Bow (MM) + Fire Arrow (MM) / Din's Fire (MM), Magic Upgrade (MM), Boss Key (Snowhead) / Goht's Remains, Soul of Goht;
-REMAINS_GYORG;LAIR_GYORG;Gyorg's Remains;MM Great Bay Temple Boss;npc;517;258;0;TEMPLE_GREAT_BAY;npc;All;15;mm;dungeon;Bow (MM) / Zora Mask (MM), Boss Key (Great Bay) / Gyorg's Remains, Soul of Gyorg;
-0x1f;LAIR_GYORG;Heart Container;MM Great Bay Temple Boss HC;collectible;484;258;0;TEMPLE_GREAT_BAY;collectible;All;15;mm;dungeon;Bow (MM) / Zora Mask (MM), Boss Key (Great Bay) / Gyorg's Remains, Soul of Gyorg;
+REMAINS_GYORG;LAIR_GYORG;Gyorg's Remains;MM Great Bay Temple Boss;npc;484;258;0;TEMPLE_GREAT_BAY;mask;All;15;mm;dungeon;Bow (MM) / Zora Mask (MM), Boss Key (Great Bay) / Gyorg's Remains, Soul of Gyorg;
+0x1f;LAIR_GYORG;Heart Container;MM Great Bay Temple Boss HC;collectible;484;233;0;TEMPLE_GREAT_BAY;heart_container;All;15;mm;dungeon;Bow (MM) / Zora Mask (MM), Boss Key (Great Bay) / Gyorg's Remains, Soul of Gyorg;
 0x0001;LAIR_GYORG;Boss 1;MM Great Bay Temple Boss Pot 1;pot;517;233;0;TEMPLE_GREAT_BAY;pot;All;15;mm;dungeon;Boss Key (Great Bay) / Gyorg's Remains;
 0x0002;LAIR_GYORG;Boss 2;MM Great Bay Temple Boss Pot 2;pot;519;279;0;TEMPLE_GREAT_BAY;pot;All;15;mm;dungeon;Boss Key (Great Bay) / Gyorg's Remains;
 0x0003;LAIR_GYORG;Boss 3;MM Great Bay Temple Boss Pot 3;pot;452;279;0;TEMPLE_GREAT_BAY;pot;All;15;mm;dungeon;Boss Key (Great Bay) / Gyorg's Remains;
@@ -1230,12 +1230,12 @@ REMAINS_GYORG;LAIR_GYORG;Gyorg's Remains;MM Great Bay Temple Boss;npc;517;258;0;
 0x0106;LAIR_IKANA;Boss 6;MM Ancient Castle of Ikana Boss Pot 6;pot;412;265;0;CASTLE_IKANA;pot;All;1;mm;dungeon;Mirror Shield (MM) / Bow (MM) + Light Arrows (MM) + Magic Upgrade;
 0x0107;LAIR_IKANA;Boss 7;MM Ancient Castle of Ikana Boss Pot 7;pot;547;122;0;CASTLE_IKANA;pot;All;1;mm;dungeon;Mirror Shield (MM) / Bow (MM) + Light Arrows (MM) + Magic Upgrade;
 0x0108;LAIR_IKANA;Boss 8;MM Ancient Castle of Ikana Boss Pot 8;pot;412;122;0;CASTLE_IKANA;pot;All;1;mm;dungeon;Mirror Shield (MM) / Bow (MM) + Light Arrows (MM) + Magic Upgrade;
-SONG_EMPTINESS;LAIR_IKANA;Elegy of Emptiness;MM Ancient Castle of Ikana Song Emptiness;npc;479;99;0;CASTLE_IKANA;npc;All;1;mm;dungeon;Mirror Shield (MM), Din's Fire (MM) / Bow (MM) + Fire Arrows (MM), Magic Upgrade, Soul of Igos;Defeat <b>Igos and his Lackeys</b>
+SONG_EMPTINESS;LAIR_IKANA;Elegy of Emptiness;MM Ancient Castle of Ikana Song Emptiness;npc;479;99;0;CASTLE_IKANA;song;All;1;mm;dungeon;Mirror Shield (MM), Din's Fire (MM) / Bow (MM) + Fire Arrows (MM), Magic Upgrade, Soul of Igos;Defeat <b>Igos and his Lackeys</b>
 0x0001;LAIR_MAJORA;Pot 1;MM Moon Majora Pot 1;pot;493;99;0;LAIR_MAJORA;pot;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Soul of Moon Children;
 0x0002;LAIR_MAJORA;Pot 2;MM Moon Majora Pot 2;pot;450;99;0;LAIR_MAJORA;pot;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Soul of Moon Children;
-SONG_ORDER;LAIR_ODOLWA;Oath to Order;MM Oath to Order;npc;468;302;0;TEMPLE_WOODFALL;npc;All;11;mm;dungeon;Soul of Odolwa / Soul of Goht / Soul of Gyorg / Soul of Twinmold;Defeat one of the main boss
-REMAINS_ODOLWA;LAIR_ODOLWA;Oldolwa's Remain;MM Woodfall Temple Boss;npc;372;302;0;TEMPLE_WOODFALL;npc;All;11;mm;dungeon;Boss Key (Woodfall) / Odolwa's Remains, Soul of Odolwa;Defeat <b>Odolwa</b>
-0x1f;LAIR_ODOLWA;Heart Container;MM Woodfall Temple Boss Container;collectible;565;303;0;TEMPLE_WOODFALL;collectible;All;11;mm;dungeon;Boss Key (Woodfall) / Odolwa's Remains, Soul of Odolwa;Defeat <b>Odolwa</b>
+SONG_ORDER;LAIR_ODOLWA;Oath to Order;MM Oath to Order;npc;468;302;0;TEMPLE_WOODFALL;song;All;11;mm;dungeon;Soul of Odolwa / Soul of Goht / Soul of Gyorg / Soul of Twinmold;Defeat one of the main boss
+REMAINS_ODOLWA;LAIR_ODOLWA;Oldolwa's Remain;MM Woodfall Temple Boss;npc;372;302;0;TEMPLE_WOODFALL;mask;All;11;mm;dungeon;Boss Key (Woodfall) / Odolwa's Remains, Soul of Odolwa;Defeat <b>Odolwa</b>
+0x1f;LAIR_ODOLWA;Heart Container;MM Woodfall Temple Boss Container;collectible;565;303;0;TEMPLE_WOODFALL;heart_container;All;11;mm;dungeon;Boss Key (Woodfall) / Odolwa's Remains, Soul of Odolwa;Defeat <b>Odolwa</b>
 0x0000a;LAIR_ODOLWA;Boss 1;MM Woodfall Temple Boss Grass 01;grass;377;101;0;TEMPLE_WOODFALL;grass;All;11;mm;dungeon;Boss Key (Woodfall) / Odolwa's Remains;
 0x0000b;LAIR_ODOLWA;Boss 2;MM Woodfall Temple Boss Grass 02;grass;562;101;0;TEMPLE_WOODFALL;grass;All;11;mm;dungeon;Boss Key (Woodfall) / Odolwa's Remains;
 0x0000c;LAIR_ODOLWA;Boss 3;MM Woodfall Temple Boss Grass 03;grass;354;109;0;TEMPLE_WOODFALL;grass;All;11;mm;dungeon;Boss Key (Woodfall) / Odolwa's Remains;
@@ -1252,8 +1252,8 @@ REMAINS_ODOLWA;LAIR_ODOLWA;Oldolwa's Remain;MM Woodfall Temple Boss;npc;372;302;
 0x00017;LAIR_ODOLWA;Boss 14;MM Woodfall Temple Boss Grass 14;grass;347;505;0;TEMPLE_WOODFALL;grass;All;11;mm;dungeon;Boss Key (Woodfall) / Odolwa's Remains;
 0x00018;LAIR_ODOLWA;Boss 15;MM Woodfall Temple Boss Grass 15;grass;565;515;0;TEMPLE_WOODFALL;grass;All;11;mm;dungeon;Boss Key (Woodfall) / Odolwa's Remains;
 0x00019;LAIR_ODOLWA;Boss 16;MM Woodfall Temple Boss Grass 16;grass;370;515;0;TEMPLE_WOODFALL;grass;All;11;mm;dungeon;Boss Key (Woodfall) / Odolwa's Remains;
-REMAINS_TWINMOLD;LAIR_TWINMOLD;Twinmold's Remains;MM Stone Tower Temple Inverted Boss;npc;472;325;0;TEMPLE_STONE_TOWER_INVERTED;npc;All;7;mm;dungeon;Boss Key (Stone Tower) / Twinmold's Remains, Soul of Twinmold;Defeat <b>Twinmold</b>
-0x1f;LAIR_TWINMOLD;Heart Container;MM Stone Tower Temple Inverted Boss HC;collectible;472;301;0;TEMPLE_STONE_TOWER_INVERTED;collectible;All;7;mm;dungeon;Boss Key (Stone Tower) / Twinmold's Remains, Soul of Twinmold;Defeat <b>Twinmold</b>
+REMAINS_TWINMOLD;LAIR_TWINMOLD;Twinmold's Remains;MM Stone Tower Temple Inverted Boss;npc;472;325;0;TEMPLE_STONE_TOWER_INVERTED;mask;All;7;mm;dungeon;Boss Key (Stone Tower) / Twinmold's Remains, Soul of Twinmold;Defeat <b>Twinmold</b>
+0x1f;LAIR_TWINMOLD;Heart Container;MM Stone Tower Temple Inverted Boss HC;collectible;472;301;0;TEMPLE_STONE_TOWER_INVERTED;heart_container;All;7;mm;dungeon;Boss Key (Stone Tower) / Twinmold's Remains, Soul of Twinmold;Defeat <b>Twinmold</b>
 MASK_BREMEN;LAUNDRY_POOL;Bremen Mask;MM Clock Town Guru Guru Mask Bremen;npc;743;134;0;LAUNDRY_POOL;npc;All;0;mm;overworld;Clock (Night 2), Soul of Guru-Guru;Speak to <b>Guru-Guru</b>
 0x0000d;LAUNDRY_POOL;Grass 1;MM Clock Town Laundry Pool Grass 1;grass;542;249;0;LAUNDRY_POOL;grass;All;0;mm;overworld;;
 0x0000e;LAUNDRY_POOL;Grass 2;MM Clock Town Laundry Pool Grass 2;grass;466;263;0;LAUNDRY_POOL;grass;All;0;mm;overworld;;
@@ -1266,11 +1266,11 @@ STRAY_FAIRY_TOWN;LAUNDRY_POOL;Pool;MM Clock Town Stray Fairy;npc;647;411;0;LAUND
 MASK_KEATON;LAUNDRY_POOL;Owner Reward 1;MM Kafei Hideout Owner Reward 1;none;0;0;0;CURIOSITY_SHOP;none;All;0;mm;overworld;;
 LETTER_TO_MAMA;LAUNDRY_POOL;Owner Reward 2;MM Kafei Hideout Owner Reward 2;none;0;0;0;CURIOSITY_SHOP;none;All;0;mm;overworld;;
 PENDANT_OF_MEMORIES;LAUNDRY_POOL;Pendant of Memories;MM Kafei Hideout Pendant of Memories;none;0;0;0;CURIOSITY_SHOP;none;All;0;mm;overworld;;
-MAYOR_HEART_PIECE;MAYOR_HOUSE;Heart Piece;MM Mayor's Office HP;npc;358;77;0;MAYOR_HOUSE;npc;All;0;mm;overworld;Couple's Mask, Soul of Mayor Dotour;Speak to the <b>Mayor Dotour</b> while wearing the <b>Couple's Mask</b>
+MAYOR_HEART_PIECE;MAYOR_HOUSE;Heart Piece;MM Mayor's Office HP;npc;358;77;0;MAYOR_HOUSE;heart_piece;All;0;mm;overworld;Couple's Mask, Soul of Mayor Dotour;Speak to the <b>Mayor Dotour</b> while wearing the <b>Couple's Mask</b>
 MASK_KAFEI;MAYOR_HOUSE;Kafei's Mask;MM Mayor's Office Kafei's Mask;npc;538;85;0;MAYOR_HOUSE;npc;All;0;mm;overworld;Soul of Madame Aroma;Speak to <b>Madame Aroma</b>
 CHATEAU_ROMANI;MILK_BAR;Bottle;MM Milk Bar Madame Aroma Bottle;npc;646;270;0;MILK_BAR;npc;All;0;mm;overworld;Romani's Mask, Clock (Night 3), Letter to Mama, Soul of Madame Aroma;Give the <b>Letter to Mama</b> to <b>Madame Aroma</b> on night 3
-MILK_BAR_CHATEAU;MILK_BAR;Purchase - Chateau;MM Milk Bar Purchase Chateau;npc;597;270;0;MILK_BAR;npc;All;0;mm;overworld;Romani's Mask, Clock (Night 1) / Clock (Night 2) / Clock (Night 3), Soul of Mr. Barten;Buy the <b>Chateau Romani</b> from <b>Mr. Barten</b>
-MILK_BAR_MILK;MILK_BAR;Purchase - Milk;MM Milk Bar Purchase Milk;npc;572;270;0;MILK_BAR;npc;All;0;mm;overworld;Romani's Mask, Clock (Night 1) / Clock (Night 2) / Clock (Night 3), Soul of Mr. Barten;Buy the <b>Milk</b> from <b>Mr. Barten</b>
+MILK_BAR_CHATEAU;MILK_BAR;Purchase - Chateau;MM Milk Bar Purchase Chateau;npc;597;270;0;MILK_BAR;merchant;All;0;mm;overworld;Romani's Mask, Clock (Night 1) / Clock (Night 2) / Clock (Night 3), Soul of Mr. Barten;Buy the <b>Chateau Romani</b> from <b>Mr. Barten</b>
+MILK_BAR_MILK;MILK_BAR;Purchase - Milk;MM Milk Bar Purchase Milk;npc;572;270;0;MILK_BAR;merchant;All;0;mm;overworld;Romani's Mask, Clock (Night 1) / Clock (Night 2) / Clock (Night 3), Soul of Mr. Barten;Buy the <b>Milk</b> from <b>Mr. Barten</b>
 MASK_TROUPE_LEADER;MILK_BAR;Circus Leader's Mask;MM Milk Bar Troupe Leader Mask;npc;550;274;0;MILK_BAR;npc;All;0;mm;overworld;Romani's Mask, Deku Mask, Goron Mask (MM), Zora Mask (MM), Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Up + C-Down + C-Left + C-Right buttons (MM), Soul of Toto, Soul of Gorman & Bros.;Play the asked note by <b>Toto</b> in all forms
 0x00011;MILK_ROAD;Grass 1;MM Milk Road Grass 1;grass;407;256;0;MILK_ROAD;grass;All;0;mm;overworld;;
 0x00012;MILK_ROAD;Grass 2;MM Milk Road Grass 2;grass;447;251;0;MILK_ROAD;grass;All;0;mm;overworld;;
@@ -1284,7 +1284,7 @@ MASK_TROUPE_LEADER;MILK_BAR;Circus Leader's Mask;MM Milk Bar Troupe Leader Mask;
 0x60006;MILK_ROAD;Keaton Grass 7;MM Milk Road Keaton Grass Reward 7;grass;621;398;0;MILK_ROAD;grass;All;0;mm;overworld;Spin Attack Upgrade (MM);
 0x70006;MILK_ROAD;Keaton Grass 8;MM Milk Road Keaton Grass Reward 8;grass;634;365;0;MILK_ROAD;grass;All;0;mm;overworld;Spin Attack Upgrade (MM);
 0x80006;MILK_ROAD;Keaton Grass 9;MM Milk Road Keaton Grass Reward 9;grass;647;398;0;MILK_ROAD;grass;All;0;mm;overworld;Spin Attack Upgrade (MM);
-OWL_MILK_ROAD;MILK_ROAD;Owl Statue;MM Milk Road Owl Statue;npc;400;221;0;MILK_ROAD;npc;All;0;mm;overworld;Sword (MM);Hit the statue with a sword
+OWL_MILK_ROAD;MILK_ROAD;Owl Statue;MM Milk Road Owl Statue;npc;400;221;0;MILK_ROAD;owl;All;0;mm;overworld;Sword (MM);Hit the statue with a sword
 0x00049;MILK_ROAD;Crate;MM Gorman Track Crate;none;0;0;0;GORMAN_TRACK;none;All;0;mm;overworld;;
 MASK_GARO;MILK_ROAD;Garo Mask;MM Gorman Track Garo Mask;none;0;0;0;GORMAN_TRACK;none;All;0;mm;overworld;;
 0x00024;MILK_ROAD;Pack 1 - Grass 1;MM Gorman Track Grass Pack 1 Grass 01;none;0;0;0;GORMAN_TRACK;none;All;0;mm;overworld;;
@@ -1357,8 +1357,8 @@ MASK_FIERCE_DEITY;MOON;Fierce Deity's Mask;MM Moon Fierce Deity Mask;npc;514;305
 0x0007;MOON;Pot 7;MM Moon Trial Link Pot 7;none;0;0;0;MOON_LINK;none;All;0;mm;dungeon;;
 0x0008;MOON;Pot 8;MM Moon Trial Link Pot 8;none;0;0;0;MOON_LINK;none;All;0;mm;dungeon;;
 0x01;MOON;Heart Piece;MM Moon Trial Zora HP;none;0;0;0;MOON_ZORA;none;All;0;mm;dungeon;;
-0x01;MOON_DEKU;Heart Piece;MM Moon Trial Deku HP;collectible;222;166;0;MOON_DEKU;collectible;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Deku Mask, Soul of Moon Children;Reach the platform using the deku flowers
-0x01;MOON_GORON;Heart Piece;MM Moon Trial Goron HP;collectible;217;433;0;MOON_GORON;collectible;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;Reach the platform using the <b>Goron Mask</b>
+0x01;MOON_DEKU;Heart Piece;MM Moon Trial Deku HP;collectible;222;166;0;MOON_DEKU;heart_piece;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Deku Mask, Soul of Moon Children;Reach the platform using the deku flowers
+0x01;MOON_GORON;Heart Piece;MM Moon Trial Goron HP;collectible;217;433;0;MOON_GORON;heart_piece;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;Reach the platform using the <b>Goron Mask</b>
 0x0015;MOON_GORON;Pot 1;MM Moon Trial Goron Pot 01;pot;347;270;0;MOON_GORON;pot;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;
 0x0016;MOON_GORON;Pot 2;MM Moon Trial Goron Pot 02;pot;338;270;0;MOON_GORON;pot;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;
 0x0017;MOON_GORON;Pot 3;MM Moon Trial Goron Pot 03;pot;673;243;0;MOON_GORON;pot;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;
@@ -1375,7 +1375,7 @@ MASK_FIERCE_DEITY;MOON;Fierce Deity's Mask;MM Moon Fierce Deity Mask;npc;514;305
 0x001e;MOON_GORON;Early 3;MM Moon Trial Goron Pot Early 3;pot;910;378;0;MOON_GORON;pot;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;
 0x001f;MOON_GORON;Early 4;MM Moon Trial Goron Pot Early 4;pot;918;378;0;MOON_GORON;pot;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;
 0x01;MOON_LINK;Garo Master;MM Moon Trial Link Garo Master Chest;chest;471;301;0;MOON_LINK;chest;All;0;mm;dungeon;Song of Storms (MM) / Bombchu (MM) + Bow (MM) / Hookshot (MM), Soul of Lizalfos / Dinolfos (MM), Soul of Garo, Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;Defeat the <b>Garo Master</b> and reach the chest using either the <b>Hookshot</b>, bombchu on the ceilling and shooting at the eye switch or by playing the <b>Song of Storms</b> behind the previous <b>Gossip Stone</b>
-0x01;MOON_LINK;Heart Piece;MM Moon Trial Link HP;collectible;827;295;0;MOON_LINK;collectible;All;0;mm;dungeon;Song of Storms (MM) / Bombchu (MM) + Bow (MM), Soul of Lizalfos / Dinolfos (MM), Soul of Iron Knuckles (MM),  Soul of Garo, Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;After defeating all mini bosses reach the last room using either eye switch shooting of by playing <b>Song of Storms</b> behind the previous <b>Gossip Stone</b>
+0x01;MOON_LINK;Heart Piece;MM Moon Trial Link HP;collectible;827;295;0;MOON_LINK;heart_piece;All;0;mm;dungeon;Song of Storms (MM) / Bombchu (MM) + Bow (MM), Soul of Lizalfos / Dinolfos (MM), Soul of Iron Knuckles (MM),  Soul of Garo, Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;After defeating all mini bosses reach the last room using either eye switch shooting of by playing <b>Song of Storms</b> behind the previous <b>Gossip Stone</b>
 0x02;MOON_LINK;Iron Knuckle;MM Moon Trial Link Iron Knuckle Chest;chest;672;300;0;MOON_LINK;chest;All;0;mm;dungeon;Song of Storms (MM) / Bombchu (MM) + Bow (MM), Soul of Lizalfos / Dinolfos (MM), Soul of Iron Knuckles (MM),  Soul of Garo, Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;Defeat the <b>Iron Knuckle</b>
 0x0001;MOON_LINK;Pot 1;MM Moon Trial Link Pot 1;pot;135;254;0;MOON_LINK;pot;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;
 0x0002;MOON_LINK;Pot 2;MM Moon Trial Link Pot 2;pot;135;265;0;MOON_LINK;pot;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;
@@ -1385,7 +1385,7 @@ MASK_FIERCE_DEITY;MOON;Fierce Deity's Mask;MM Moon Fierce Deity Mask;npc;514;305
 0x0006;MOON_LINK;Pot 6;MM Moon Trial Link Pot 6;pot;131;358;0;MOON_LINK;pot;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;
 0x0007;MOON_LINK;Pot 7;MM Moon Trial Link Pot 7;pot;120;347;0;MOON_LINK;pot;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;
 0x0008;MOON_LINK;Pot 8;MM Moon Trial Link Pot 8;pot;119;358;0;MOON_LINK;pot;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;
-0x01;MOON_ZORA;Heart Piece;MM Moon Trial Zora HP;collectible;71;366;0;MOON_ZORA;collectible;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;Go to the left, then right, then left
+0x01;MOON_ZORA;Heart Piece;MM Moon Trial Zora HP;collectible;71;366;0;MOON_ZORA;heart_piece;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;Go to the left, then right, then left
 0x00011;MOUNTAIN_VILLAGE;Big Snowball 1;MM Mountain Village Big Snowball 1;none;268;455;0;MOUNTAIN_VILLAGE;none;Winter;0;mm;overworld;;
 0x0000e;MOUNTAIN_VILLAGE;Big Snowball 2;MM Mountain Village Big Snowball 2;none;737;417;0;MOUNTAIN_VILLAGE;none;Winter;0;mm;overworld;;
 0x0002e;MOUNTAIN_VILLAGE;Big Snowball 3;MM Mountain Village Big Snowball 3;none;800;403;0;MOUNTAIN_VILLAGE;none;Winter;0;mm;overworld;;
@@ -1401,7 +1401,7 @@ MASK_FIERCE_DEITY;MOON;Fierce Deity's Mask;MM Moon Fierce Deity Mask;npc;514;305
 0x30021;MOUNTAIN_VILLAGE;Pack 2 - Butterfly 4;MM Mountain Village Butterfly Pack 2 Butterfly 4;none;412;481;0;MOUNTAIN_VILLAGE;none;Spring;0;mm;overworld;;
 0x40021;MOUNTAIN_VILLAGE;Pack 2 - Butterfly 5;MM Mountain Village Butterfly Pack 2 Butterfly 5;none;425;475;0;MOUNTAIN_VILLAGE;none;Spring;0;mm;overworld;;
 MASK_DON_GERO;MOUNTAIN_VILLAGE;Don Gero's Mask;MM Mountain Village Don Gero Mask;none;244;385;0;MOUNTAIN_VILLAGE;none;Winter;0;mm;overworld;;
-FROG_HEART_PIECE;MOUNTAIN_VILLAGE;Frog Choir - Heart Piece;MM Mountain Village Frog Choir HP;none;325;434;0;MOUNTAIN_VILLAGE;none;Spring;0;mm;overworld;;
+FROG_HEART_PIECE;MOUNTAIN_VILLAGE;Frog Choir;MM Mountain Village Frog Choir HP;none;325;434;0;MOUNTAIN_VILLAGE;none;Spring;0;mm;overworld;;
 0x0001a;MOUNTAIN_VILLAGE;Grass 1;MM Mountain Village Grass 1;none;349;334;0;MOUNTAIN_VILLAGE;none;Spring;0;mm;overworld;;
 0x0001b;MOUNTAIN_VILLAGE;Grass 2;MM Mountain Village Grass 2;none;333;333;0;MOUNTAIN_VILLAGE;none;Spring;0;mm;overworld;;
 0x0001c;MOUNTAIN_VILLAGE;Grass 3;MM Mountain Village Grass 3;none;358;324;0;MOUNTAIN_VILLAGE;none;Spring;0;mm;overworld;;
@@ -1539,8 +1539,8 @@ SWORD_RAZOR;MOUNTAIN_VILLAGE;Razor Blade;MM Blacksmith Razor Blade;none;0;0;0;BL
 0x00034;MOUNTAIN_VILLAGE_WINTER;Big Snowball 4;MM Mountain Village Big Snowball 4;snowball;737;417;0;MOUNTAIN_VILLAGE;snowball;Winter;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM);
 0x00012;MOUNTAIN_VILLAGE_WINTER;Big Snowball 5;MM Mountain Village Big Snowball 5;snowball;800;403;0;MOUNTAIN_VILLAGE;snowball;Winter;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM);
 MASK_DON_GERO;MOUNTAIN_VILLAGE_WINTER;Don Gero's Mask;MM Mountain Village Don Gero Mask;npc;244;385;0;MOUNTAIN_VILLAGE;npc;Winter;0;mm;overworld;Goron Mask (MM);Bring the meat located in the ceiling pot light of the <b>Goron Shrine</b>
-FROG_HEART_PIECE;MOUNTAIN_VILLAGE_WINTER;Frog Choir - Heart Piece;MM Mountain Village Frog Choir HP;npc;325;434;0;MOUNTAIN_VILLAGE;npc;Spring;0;mm;overworld;Don Gero's Mask, Soul of Goht, Soul of Gekko;After defeating Goht, find and talk to all frogs while wearing the <b>Don Gero's Mask</b>
-OWL_MOUNTAIN_VILLAGE;MOUNTAIN_VILLAGE_WINTER;Owl Statue;MM Mountain Village Owl Statue;npc;345;325;1;MOUNTAIN_VILLAGE;npc;Winter;0;mm;overworld;Sword (MM);Hit the statue with a sword
+FROG_HEART_PIECE;MOUNTAIN_VILLAGE_WINTER;Frog Choir;MM Mountain Village Frog Choir HP;npc;325;434;0;MOUNTAIN_VILLAGE;heart_piece;Spring;0;mm;overworld;Don Gero's Mask, Soul of Goht, Soul of Gekko;After defeating Goht, find and talk to all frogs while wearing the <b>Don Gero's Mask</b>
+OWL_MOUNTAIN_VILLAGE;MOUNTAIN_VILLAGE_WINTER;Owl Statue;MM Mountain Village Owl Statue;npc;345;325;1;MOUNTAIN_VILLAGE;owl;Winter;0;mm;overworld;Sword (MM);Hit the statue with a sword
 0x0026;MOUNTAIN_VILLAGE_WINTER;Roof;MM Mountain Village Pot;pot;566;365;0;MOUNTAIN_VILLAGE;pot;Winter;0;mm;overworld;Hookshot (MM) / Bow (MM);
 0x10023;MOUNTAIN_VILLAGE_WINTER;Potted Plant 1;MM Mountain Village Potted Plant 1 Grass;grass;472;415;1;MOUNTAIN_VILLAGE;grass;Winter;0;mm;overworld;Clock (Day 1) / Clock (Day 2) / Clock (Day 3);The pot can be found in front of the Blacksmith house during the day
 0x00023;MOUNTAIN_VILLAGE_WINTER;Potted Plant 1;MM Mountain Village Potted Plant 1 Pot;pot;485;413;0;MOUNTAIN_VILLAGE;pot;Winter;0;mm;overworld;Clock (Day 1) / Clock (Day 2) / Clock (Day 3);The pot can be found in front of the Blacksmith house during the day
@@ -1590,7 +1590,7 @@ MOON_TEAR;OBSERVATORY;Moon Tear;MM Astral Observatory Moon Tear;npc;2199;1058;0;
 0x0400d;PATH_MOUNTAIN_VILLAGE;Spring - Upper 1;MM Path to Mountain Village Small Snowball Upper Spring 1;snowball;201;218;2;PATH_MOUNTAIN_VILLAGE; snowball;Spring;0;mm;overworld;Boss Key (Snowhead) / Goht's Remains, Soul Goht;After defeating <b>Goht</b> you will find the small snowball on the path
 0x0400b;PATH_MOUNTAIN_VILLAGE;Spring - Upper 2;MM Path to Mountain Village Small Snowball Upper Spring 2;snowball;184;214;1;PATH_MOUNTAIN_VILLAGE; snowball;Spring;0;mm;overworld;Boss Key (Snowhead) / Goht's Remains, Soul Goht;After defeating <b>Goht</b> you will find the small snowball on the path
 0x0400e;PATH_MOUNTAIN_VILLAGE;Spring - Upper 3;MM Path to Mountain Village Small Snowball Upper Spring 3;snowball;164;212;0;PATH_MOUNTAIN_VILLAGE; snowball;Spring;0;mm;overworld;Boss Key (Snowhead) / Goht's Remains, Soul Goht;After defeating <b>Goht</b> you will find the small snowball on the path
-0x08;PATH_SNOWHEAD;Pillar - Heart Piece;MM Path to Snowhead HP;collectible;422;350;0;PATH_SNOWHEAD;collectible;All;0;mm;overworld;;Jump through all invisble platforms to reach the pillar.<br>The <b>Lens of Truth</b> is not mandatory but highly recommanded
+0x08;PATH_SNOWHEAD;Pillar;MM Path to Snowhead HP;collectible;422;350;0;PATH_SNOWHEAD;heart_piece;All;0;mm;overworld;;Jump through all invisble platforms to reach the pillar.<br>The <b>Lens of Truth</b> is not mandatory but highly recommanded
 0x00009;PATH_SNOWHEAD;Back - Small Snowball 1;MM Path to Snowhead Small Snowball Back 1;snowball;708;202;1;PATH_SNOWHEAD;snowball;Winter;0;mm;overworld;;
 0x0000a;PATH_SNOWHEAD;Back - Small Snowball 2;MM Path to Snowhead Small Snowball Back 2;snowball;690;210;0;PATH_SNOWHEAD;snowball;Winter;0;mm;overworld;;
 0x0000b;PATH_SNOWHEAD;Back - Small Snowball 3;MM Path to Snowhead Small Snowball Back 3;snowball;691;192;0;PATH_SNOWHEAD;snowball;Winter;0;mm;overworld;;
@@ -1619,7 +1619,7 @@ MOON_TEAR;OBSERVATORY;Moon Tear;MM Astral Observatory Moon Tear;npc;2199;1058;0;
 0x03313;PATH_SNOWHEAD;Grass 14;MM Path to Snowhead Grotto Grass 14;none;0;0;0;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;none;All;0;mm;overworld;;
 0x01;PINNACLE_ROCK;Chest 1;MM Pinnacle Rock Chest 1;chest;258;585;0;PINNACLE_ROCK;chest;All;0;mm;overworld;Zora Mask (MM) / Iron Boots (MM);The chest can be found at the end of the <b>Python</b> hole.
 0x02;PINNACLE_ROCK;Chest 2;MM Pinnacle Rock Chest 2;chest;764;322;0;PINNACLE_ROCK;chest;All;0;mm;overworld;Zora Mask (MM) / Iron Boots (MM);The chest can be found at the end of the <b>Python</b> hole.
-SEAHORSE_HEART_PIECE;PINNACLE_ROCK;Seahorse - Heart Piece;MM Pinnacle Rock HP;npc;311;235;0;PINNACLE_ROCK;npc;All;0;mm;overworld;Pictobox, Empty Bottle, Zora Mask (MM), Magic Upgrade (MM), Soul of Deep Pythons, Soul of Patrolling Pirates and their Chief / Soul of the Fighting Pirates, Soul of Fisherman;You first need to take a picture of a <b>Pirate</b> and bring it to the <b>Fisherman</b>. Then, you need to kill all <b>Pythons</b> and reunite the seahorses
+SEAHORSE_HEART_PIECE;PINNACLE_ROCK;Seahorse;MM Pinnacle Rock HP;npc;311;235;0;PINNACLE_ROCK;heart_piece;All;0;mm;overworld;Pictobox, Empty Bottle, Zora Mask (MM), Magic Upgrade (MM), Soul of Deep Pythons, Soul of Patrolling Pirates and their Chief / Soul of the Fighting Pirates, Soul of Fisherman;You first need to take a picture of a <b>Pirate</b> and bring it to the <b>Fisherman</b>. Then, you need to kill all <b>Pythons</b> and reunite the seahorses
 0x0003;PINNACLE_ROCK;Pot 1;MM Pinnacle Rock Pot 01;pot;526;438;0;PINNACLE_ROCK;pot;All;0;mm;overworld;Zora Mask (MM) / Iron Boots (MM) + Blast Mask (MM);
 0x0004;PINNACLE_ROCK;Pot 2;MM Pinnacle Rock Pot 02;pot;586;429;0;PINNACLE_ROCK;pot;All;0;mm;overworld;Zora Mask (MM) / Iron Boots (MM) + Blast Mask (MM);
 0x0005;PINNACLE_ROCK;Pot 3;MM Pinnacle Rock Pot 03;pot;504;482;0;PINNACLE_ROCK;pot;All;0;mm;overworld;Zora Mask (MM) / Iron Boots (MM) + Blast Mask (MM);
@@ -1693,7 +1693,7 @@ SEAHORSE_HEART_PIECE;PINNACLE_ROCK;Seahorse - Heart Piece;MM Pinnacle Rock HP;np
 0x01;PIRATE_FORTRESS_INTERIOR;Sewers 1;MM Pirate Fortress Sewers Chest 1;chest;923;587;0;PIRATE_FORTRESS_INTERIOR;chest;All;0;mm;dungeon;Zora Mask (MM) / Iron Boots (MM);Open the chest in the cage
 0x04;PIRATE_FORTRESS_INTERIOR;Sewers 2;MM Pirate Fortress Sewers Chest 2;chest;504;484;0;PIRATE_FORTRESS_INTERIOR;chest;All;0;mm;dungeon;Zora Mask (MM) / Iron Boots (MM);Open the chest underwater
 0x06;PIRATE_FORTRESS_INTERIOR;Sewers 3;MM Pirate Fortress Sewers Chest 3;chest;516;441;0;PIRATE_FORTRESS_INTERIOR;chest;All;0;mm;dungeon;Zora Mask (MM) / Iron Boots (MM);Open the chest underwater
-0x0c;PIRATE_FORTRESS_INTERIOR;Sewers - Heart Piece;MM Pirate Fortress Sewers HP;collectible;623;482;0;PIRATE_FORTRESS_INTERIOR;collectible;All;0;mm;dungeon;Bunny Hoods  (MM) / Goron Mask (MM);Activate the switch and run to the cage
+0x0c;PIRATE_FORTRESS_INTERIOR;Sewers - Jail;MM Pirate Fortress Sewers HP;collectible;623;482;0;PIRATE_FORTRESS_INTERIOR;heart_piece;All;0;mm;dungeon;Bunny Hoods  (MM) / Goron Mask (MM);Activate the switch and run to the cage
 0x0913;PIRATE_FORTRESS_INTERIOR;Sewers - End 1;MM Pirate Fortress Sewers Pot End 1;pot;913;355;0;PIRATE_FORTRESS_INTERIOR;pot;All;0;mm;dungeon;;
 0x0914;PIRATE_FORTRESS_INTERIOR;Sewers - End 2;MM Pirate Fortress Sewers Pot End 2;pot;879;404;0;PIRATE_FORTRESS_INTERIOR;pot;All;0;mm;dungeon;;
 0x0915;PIRATE_FORTRESS_INTERIOR;Sewers - End 3;MM Pirate Fortress Sewers Pot End 3;pot;931;355;0;PIRATE_FORTRESS_INTERIOR;pot;All;0;mm;dungeon;;
@@ -1724,7 +1724,7 @@ SEAHORSE_HEART_PIECE;PINNACLE_ROCK;Seahorse - Heart Piece;MM Pinnacle Rock HP;np
 0x00019;PIRATE_FORTRESS_INTERIOR;Skull Eyes 4;MM Pirate Fortress Interior Wonder Item Skull Eyes 4;none;0;0;0;PIRATE_FORTRESS_EXTERIOR;none;All;0;mm;dungeon;;
 0x10019;PIRATE_FORTRESS_INTERIOR;Skull Eyes 5;MM Pirate Fortress Interior Wonder Item Skull Eyes 5;none;0;0;0;PIRATE_FORTRESS_EXTERIOR;none;All;0;mm;dungeon;;
 0x20019;PIRATE_FORTRESS_INTERIOR;Skull Eyes 6;MM Pirate Fortress Interior Wonder Item Skull Eyes 6;none;0;0;0;PIRATE_FORTRESS_EXTERIOR;none;All;0;mm;dungeon;;
-POSTMAN_HEART_PIECE;POST_OFFICE;Postman Game - Heart Piece;MM Post Office HP;npc;225;176;0;POST_OFFICE;npc;All;0;mm;overworld;Soul of Citizens (MM);Counts to 10 seconds to win the game
+POSTMAN_HEART_PIECE;POST_OFFICE;Game Prize;MM Post Office HP;npc;225;176;0;POST_OFFICE;heart_piece;All;0;mm;overworld;Soul of Citizens (MM);Counts to 10 seconds to win the game
 0x0d;POTION_SHOP;Item 1;MM Swamp Potion Shop Item 1;shop;424;299;0;POTION_SHOP;shop;All;0;mm;overworld;Mask of Scents, Soul of Koume & Kotake;You first need to find a mushroom in the <b>Woods of Mistery</b> by wearing the <b>Mask of Scents</b>. Then give the mushroom to <b>Koume</b> and buy the item,
 0x0e;POTION_SHOP;Item 2;MM Swamp Potion Shop Item 2;shop;448;299;0;POTION_SHOP;shop;All;0;mm;overworld;Soul of Koume & Kotake;Buy the item from <b>Koume</b>
 0x0f;POTION_SHOP;Item 3;MM Swamp Potion Shop Item 3;shop;472;299;0;POTION_SHOP;shop;All;0;mm;overworld;Soul of Koume & Kotake;Buy the item from <b>Koume</b>
@@ -1769,7 +1769,7 @@ MASK_STONE;ROAD_IKANA;Stone Mask;MM Road to Ikana Stone Mask;npc;255;220;0;ROAD_
 0x60024;ROAD_SOUTHERN_SWAMP;Pack 2 - Grass 7;MM Road to Southern Swamp Grass Pack 2 Grass 07;grass;638;349;0;ROAD_SOUTHERN_SWAMP;grass;All;0;mm;overworld;;
 0x70024;ROAD_SOUTHERN_SWAMP;Pack 2 - Grass 8;MM Road to Southern Swamp Grass Pack 2 Grass 08;grass;648;343;0;ROAD_SOUTHERN_SWAMP;grass;All;0;mm;overworld;;
 0x80024;ROAD_SOUTHERN_SWAMP;Pack 2 - Grass 9;MM Road to Southern Swamp Grass Pack 2 Grass 09;grass;658;349;0;ROAD_SOUTHERN_SWAMP;grass;All;0;mm;overworld;;
-0x01;ROAD_SOUTHERN_SWAMP;Tree - Heart Piece;MM Road to Southern Swamp HP;collectible;609;293;0;ROAD_SOUTHERN_SWAMP;collectible;All;0;mm;overworld;;
+0x01;ROAD_SOUTHERN_SWAMP;Tree;MM Road to Southern Swamp HP;collectible;609;293;0;ROAD_SOUTHERN_SWAMP;heart_piece;All;0;mm;overworld;;
 0x10028;ROAD_SOUTHERN_SWAMP;Potted Plant 1;MM Road to Southern Swamp Potted Plant 1 Grass;grass;86;321;1;ROAD_SOUTHERN_SWAMP;grass;All;0;mm;overworld;;
 0x00028;ROAD_SOUTHERN_SWAMP;Potted Plant 1;MM Road to Southern Swamp Potted Plant 1 Pot;pot;74;320;0;ROAD_SOUTHERN_SWAMP;pot;All;0;mm;overworld;;
 0x10029;ROAD_SOUTHERN_SWAMP;Potted Plant 2;MM Road to Southern Swamp Potted Plant 2 Grass;grass;78;341;1;ROAD_SOUTHERN_SWAMP;grass;All;0;mm;overworld;;
@@ -1797,7 +1797,7 @@ ROMANI_BOTTLE;ROMANI_RANCH;Aliens;MM Romani Ranch Aliens;npc;350;162;0;ROMANI_RA
 0x11;ROMANI_RANCH;Right Front;MM Romani Ranch Barn Cow Right Front;cow;440;200;0;RANCH_HOUSE_BARN;cow;All;0;mm;overworld;Powder Keg, Goron Mask (MM), Clock (Day 1), Fairy Ocarina / Ocarina of Time, Epona's Song (MM), C-Up + C-Left + C-Right buttons (MM), Soul of Cows (MM);Play <b>Epona's Song</b> next to the cow
 0x00023;ROMANI_RANCH;Flooting Balloon;MM Romani Ranch Crate;crate;367;172;0;ROMANI_RANCH;crate;All;0;mm;overworld;Powder Keg + Goron Mask (MM) / Clock (Day 3) ;
 CREMIA_ESCORT;ROMANI_RANCH;Cremia Escort;MM Romani Ranch Cremia Escort;npc;359;122;0;ROMANI_RANCH;npc;All;0;mm;overworld;Powder Keg, Goron Mask (MM), Bow (MM), Clock (Night 1), Clock (Night 2), Soul of Romani/Cremia;After saving the cows from the <b>Aliens</b> speak to <b>Romani</b> on night 2 to escort her to town
-SONG_EPONA;ROMANI_RANCH;Epona's Song;MM Romani Ranch Epona Song;npc;270;165;0;ROMANI_RANCH;npc;All;0;mm;overworld;Powder Keg, Goron Mask (MM), Bow (MM), Soul of Romani/Cremia;Speak to <b>Cremia</b> and shoot all balloons within the given time
+SONG_EPONA;ROMANI_RANCH;Epona's Song;MM Romani Ranch Epona Song;npc;270;165;0;ROMANI_RANCH;song;All;0;mm;overworld;Powder Keg, Goron Mask (MM), Bow (MM), Soul of Romani/Cremia;Speak to <b>Cremia</b> and shoot all balloons within the given time
 0x0001c;ROMANI_RANCH;Pack 1 - Grass 1;MM Romani Ranch Grass Pack 1 Grass 01;grass;478;534;0;ROMANI_RANCH;grass;All;0;mm;overworld;Powder Keg + Goron Mask (MM) / Clock (Day 3) ;
 0x1001c;ROMANI_RANCH;Pack 1 - Grass 2;MM Romani Ranch Grass Pack 1 Grass 02;grass;463;553;0;ROMANI_RANCH;grass;All;0;mm;overworld;Powder Keg + Goron Mask (MM) / Clock (Day 3) ;
 0x2001c;ROMANI_RANCH;Pack 1 - Grass 3;MM Romani Ranch Grass Pack 1 Grass 03;grass;440;545;0;ROMANI_RANCH;grass;All;0;mm;overworld;Powder Keg + Goron Mask (MM) / Clock (Day 3) ;
@@ -1862,7 +1862,7 @@ SONG_EPONA;ROMANI_RANCH;Epona's Song;MM Romani Ranch Epona Song;npc;270;165;0;RO
 0x0002e;ROMANI_RANCH;Entrance - Fence 5;MM Romani Ranch Wonder Item Fence 5;wonder;746;380;0;ROMANI_RANCH;wonder;All;0;mm;overworld;Powder Keg + Goron Mask (MM) / Clock (Day 3) ;Climb on the fence to get the item
 0x0002f;ROMANI_RANCH;Entrance - Fence 6;MM Romani Ranch Wonder Item Fence 6;wonder;752;419;0;ROMANI_RANCH;wonder;All;0;mm;overworld;Powder Keg + Goron Mask (MM) / Clock (Day 3) ;Climb on the fence to get the item
 0x00;ROMANI_RANCH;Chest;MM Doggy Racetrack Chest;none;0;0;0;DOG_RACETRACK;none;All;0;mm;overworld;;
-DOG_LADY_HEART_PIECE;ROMANI_RANCH;Heart Piece;MM Doggy Racetrack HP;none;0;0;0;DOG_RACETRACK;none;All;0;mm;overworld;;
+DOG_LADY_HEART_PIECE;ROMANI_RANCH;Game Prize;MM Doggy Racetrack HP;none;0;0;0;DOG_RACETRACK;none;All;0;mm;overworld;;
 0x0009;ROMANI_RANCH;Pot 1;MM Doggy Racetrack Pot 1;none;0;0;0;DOG_RACETRACK;none;All;0;mm;overworld;;
 0x000a;ROMANI_RANCH;Pot 2;MM Doggy Racetrack Pot 2;none;0;0;0;DOG_RACETRACK;none;All;0;mm;overworld;;
 0x000c;ROMANI_RANCH;Pot 3;MM Doggy Racetrack Pot 3;none;0;0;0;DOG_RACETRACK;none;All;0;mm;overworld;;
@@ -1919,7 +1919,7 @@ MASK_BUNNY;ROMANI_RANCH;Bunny Mask;MM Cucco Shack Bunny Mask;none;0;0;0;CUCCO_SH
 0x00308;SECRET_SHRINE;Wizzrobe 3;MM Secret Shrine Grass Wizzrobe 3;grass;151;68;0;SECRET_SHRINE;grass;All;0;mm;dungeon;;
 0x00309;SECRET_SHRINE;Wizzrobe 4;MM Secret Shrine Grass Wizzrobe 4;grass;322;77;0;SECRET_SHRINE;grass;All;0;mm;dungeon;;
 0x0030a;SECRET_SHRINE;Wizzrobe 5;MM Secret Shrine Grass Wizzrobe 5;grass;330;254;0;SECRET_SHRINE;grass;All;0;mm;dungeon;;
-0x0a;SECRET_SHRINE;Heart Piece;MM Secret Shrine HP Chest;chest;472;304;0;SECRET_SHRINE;chest;All;0;mm;dungeon;Soul of Lizalfos / Dinalfos (MM), Soul of Garo, Soul Wizzrobe, Soul of Wart, Soul of Poe Hut Owner;Defeat all mini-bosses and speak to the <b>Poe Hut Owner</b> in the lobby
+0x0a;SECRET_SHRINE;Chest;MM Secret Shrine HP Chest;chest;472;304;0;SECRET_SHRINE;heart_piece;All;0;mm;dungeon;Soul of Lizalfos / Dinalfos (MM), Soul of Garo, Soul Wizzrobe, Soul of Wart, Soul of Poe Hut Owner;Defeat all mini-bosses and speak to the <b>Poe Hut Owner</b> in the lobby
 0x0017;SECRET_SHRINE;Pot 1;MM Secret Shrine Pot 1;pot;545;466;0;SECRET_SHRINE;pot;All;0;mm;dungeon;;
 0x0018;SECRET_SHRINE;Pot 2;MM Secret Shrine Pot 2;pot;545;498;1;SECRET_SHRINE;pot;All;0;mm;dungeon;;
 0x0019;SECRET_SHRINE;Pot 3;MM Secret Shrine Pot 3;pot;545;482;0;SECRET_SHRINE;pot;All;0;mm;dungeon;;
@@ -1949,9 +1949,9 @@ MASK_BUNNY;ROMANI_RANCH;Bunny Mask;MM Cucco Shack Bunny Mask;none;0;0;0;CUCCO_SH
 0x02;SECRET_SHRINE;Wart;MM Secret Shrine Wart Chest;chest;791;172;0;SECRET_SHRINE;chest;All;0;mm;dungeon;Soul of Wart;Defeat <b>Wart</b>
 0x01;SECRET_SHRINE;Wizzrobe;MM Secret Shrine Wizzrobe Chest;chest;128;171;0;SECRET_SHRINE;chest;All;0;mm;dungeon;Soul of Wizzrobe;Defeat <b>Wizzrobe</b>
 SHOOTING_GAME_TOWN_1;SHOOTING_GALLERY;Reward 1;MM Town Archery Reward 1;npc;620;364;0;SHOOTING_GALLERY;npc;All;0;mm;minigame;Bow (MM), Soul of Town Archery Owner;Win the game
-SHOOTING_GAME_TOWN_2;SHOOTING_GALLERY;Reward 2;MM Town Archery Reward 2;npc;728;297;0;SHOOTING_GALLERY;npc;All;0;mm;minigame;Bow (MM), Soul of Town Archery Owner;Win the game with a perfect score
+SHOOTING_GAME_TOWN_2;SHOOTING_GALLERY;Reward 2;MM Town Archery Reward 2;npc;728;297;0;SHOOTING_GALLERY;heart_piece;All;0;mm;minigame;Bow (MM), Soul of Town Archery Owner;Win the game with a perfect score of 50
 SHOOTING_GAME_SWAMP_1;SHOOTING_GALLERY_SWAMP;Reward 1;MM Swamp Archery Reward 1;npc;465;178;0;SHOOTING_GALLERY_SWAMP;npc;All;0;mm;minigame;Bow (MM), Soul of Swamp Archery Owner;Win the game
-SHOOTING_GAME_SWAMP_2;SHOOTING_GALLERY_SWAMP;Reward 2;MM Swamp Archery Reward 2;npc;516;178;0;SHOOTING_GALLERY_SWAMP;npc;All;0;mm;minigame;Bow (MM), Soul of Swamp Archery Owner;Win the game with a perfect score
+SHOOTING_GAME_SWAMP_2;SHOOTING_GALLERY_SWAMP;Reward 2;MM Swamp Archery Reward 2;npc;516;178;0;SHOOTING_GALLERY_SWAMP;heart_piece;All;0;mm;minigame;Bow (MM), Soul of Swamp Archery Owner;Win the game with a score of 2180 points or more
 0x0002e;SNOWHEAD;Winter - Big Snowball 1;MM Snowhead Big Snowball 1;snowball;619;306;0;SNOWHEAD;snowball;Winter;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM);
 0x0002f;SNOWHEAD;Winter - Big Snowball 2;MM Snowhead Big Snowball 2;snowball;608;228;0;SNOWHEAD;snowball;Winter;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM);
 0x00030;SNOWHEAD;Winter - Big Snowball 3;MM Snowhead Big Snowball 3;snowball;700;363;0;SNOWHEAD;snowball;Winter;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM);
@@ -2004,8 +2004,8 @@ GREAT_FAIRY_MOUNTAIN;SNOWHEAD;Large Magic Upgrade;MM Snowhead Great Fairy;none;0
 0x0002d;SOUTHERN_SWAMP;Owl 1;MM Southern Swamp Grass Owl 1;grass;603;787;0;SOUTHERN_SWAMP;grass;All;0;mm;overworld;;
 0x0002e;SOUTHERN_SWAMP;Owl 2;MM Southern Swamp Grass Owl 2;grass;622;793;0;SOUTHERN_SWAMP;grass;All;0;mm;overworld;;
 0x0002b;SOUTHERN_SWAMP;Hive;MM Southern Swamp Hive;hive;559;361;0;SOUTHERN_SWAMP;hive;All;0;mm;overworld;Bow (MM) / Hookshot (MM);Shoot the hive to get the item
-0x1e;SOUTHERN_SWAMP;Scrub - Heart Piece;MM Southern Swamp HP;collectible;598;665;0;SOUTHERN_SWAMP;collectible;All;0;mm;overworld;Land Tittle Deed, Deku Mask, Soul of Business Scrubs (MM);While human, give the <b>Land Tittle Deed</b> to the scrub. Then use the deku flower to get on the top of the house. You can also directly use the flower if you don't have the <b>Soul of Business Scrubs (MM)</b> yet
-OWL_SOUTHERN_SWAMP;SOUTHERN_SWAMP;Owl Statue;MM Southern Swamp Owl Statue;npc;632;775;0;SOUTHERN_SWAMP;npc;All;0;mm;overworld;Sword (MM);Hit the statue with a sword
+0x1e;SOUTHERN_SWAMP;Rooftop;MM Southern Swamp HP;collectible;598;665;0;SOUTHERN_SWAMP;heart_piece;All;0;mm;overworld;Land Tittle Deed, Deku Mask, Soul of Business Scrubs (MM);While human, give the <b>Land Tittle Deed</b> to the scrub. Then use the deku flower to get on the top of the house. You can also directly use the flower if you don't have the <b>Soul of Business Scrubs (MM)</b> yet
+OWL_SOUTHERN_SWAMP;SOUTHERN_SWAMP;Owl Statue;MM Southern Swamp Owl Statue;npc;632;775;0;SOUTHERN_SWAMP;owl;All;0;mm;overworld;Sword (MM);Hit the statue with a sword
 0x020e;SOUTHERN_SWAMP;Pot 1;MM Southern Swamp Pot 1;pot;199;409;0;SOUTHERN_SWAMP;pot;All;0;mm;overworld;;
 0x020f;SOUTHERN_SWAMP;Pot 2;MM Southern Swamp Pot 2;pot;208;409;0;SOUTHERN_SWAMP;pot;All;0;mm;overworld;;
 0x0210;SOUTHERN_SWAMP;Pot 3;MM Southern Swamp Pot 3;pot;217;409;0;SOUTHERN_SWAMP;pot;All;0;mm;overworld;;
@@ -2013,7 +2013,7 @@ OWL_SOUTHERN_SWAMP;SOUTHERN_SWAMP;Owl Statue;MM Southern Swamp Owl Statue;npc;63
 0x00029;SOUTHERN_SWAMP;Flower 2;MM Southern Swamp Rupee 2;rupee;778;230;0;SOUTHERN_SWAMP;rupee;All;0;mm;overworld;;
 SCRUB_SWAMP;SOUTHERN_SWAMP;Swamp Title Deed;MM Southern Swamp Scrub Deed;npc;566;654;0;SOUTHERN_SWAMP;scrub;All;0;mm;overworld;Land Tittle Deed, Soul of Business Scrubs (MM);While human, give the <b>Land Tittle Deed</b> to the scrub
 SCRUB_SHOP_BEANS;SOUTHERN_SWAMP;Scrub - Shop;MM Southern Swamp Scrub Shop;npc;574;666;1;SOUTHERN_SWAMP;shop;All;0;mm;overworld;Deku Mask, Soul of Business Scrubs (MM);While wearing the <b>Deku Mask</b> buy the item from the scrub
-SONG_SOARING;SOUTHERN_SWAMP;Song of Soaring;MM Southern Swamp Song of Soaring;npc;853;464;0;SOUTHERN_SWAMP;npc;All;0;mm;overworld;Deku Mask;Read the tablet
+SONG_SOARING;SOUTHERN_SWAMP;Song of Soaring;MM Southern Swamp Song of Soaring;npc;853;464;0;SOUTHERN_SWAMP;song;All;0;mm;overworld;Deku Mask;Read the tablet
 0x00406;SOUTHERN_SWAMP;Center 1;MM Woods of Mystery Grass Center 1;none;0;0;0;WOODS_MYSTERY;none;All;0;mm;overworld;;
 0x00407;SOUTHERN_SWAMP;Center 2;MM Woods of Mystery Grass Center 2;none;0;0;0;WOODS_MYSTERY;none;All;0;mm;overworld;;
 0x00408;SOUTHERN_SWAMP;Center 3;MM Woods of Mystery Grass Center 3;none;0;0;0;WOODS_MYSTERY;none;All;0;mm;overworld;;
@@ -2105,7 +2105,7 @@ TOUR_GUIDE_HEART_PIECE;SOUTHERN_SWAMP;Deku's King Picture;MM Tourist Information
 0x09;SPIDER_HOUSE_OCEAN;Storage Room - Ceiling Web;MM Ocean Skulltula Storage Room Ceiling Web;chest;417;297;0;SPIDER_HOUSE_OCEAN;gs;All;4;mm;dungeon;Bomb (MM) / Bombchu (MM) / Blast Mask (MM), Hookshot (MM), Soul of Gold Skulltulas (MM);
 0x16;SPIDER_HOUSE_OCEAN;Storage Room - Crate;MM Ocean Skulltula Storage Room Crate;chest;698;459;0;SPIDER_HOUSE_OCEAN;gs;All;4;mm;dungeon;Bomb (MM) / Bombchu (MM) / Blast Mask (MM), Hookshot (MM), Soul of Gold Skulltulas (MM);
 0x1a;SPIDER_HOUSE_OCEAN;Storage Room - Jar;MM Ocean Skulltula Storage Room Jar;chest;450;282;0;SPIDER_HOUSE_OCEAN;gs;All;4;mm;dungeon;Bomb (MM) / Bombchu (MM) / Blast Mask (MM), Hookshot (MM), Soul of Gold Skulltulas (MM);
-0x00;SPIDER_HOUSE_OCEAN;House Chest - Heart Piece;MM Ocean Spider House Chest HP;chest;222;342;0;SPIDER_HOUSE_OCEAN;chest;All;3;mm;dungeon;Bomb (MM) / Bombchu (MM) / Blast Mask (MM), Hookshot (MM), Soul of Gold Skulltulas (MM);
+0x00;SPIDER_HOUSE_OCEAN;Chest;MM Ocean Spider House Chest HP;chest;222;342;0;SPIDER_HOUSE_OCEAN;heart_piece;All;3;mm;dungeon;Bomb (MM) / Bombchu (MM) / Blast Mask (MM), Hookshot (MM), Soul of Gold Skulltulas (MM);
 0x00504;SPIDER_HOUSE_OCEAN;Storage Room;MM Ocean Spider House Crate;crate;330;446;0;SPIDER_HOUSE_OCEAN;crate;All;4;mm;dungeon;Bomb (MM) / Bombchu (MM) / Blast Mask (MM), Hookshot (MM), Soul of Gold Skulltulas (MM);
 0x0304;SPIDER_HOUSE_OCEAN;Colored Skulls 1;MM Ocean Spider House Pot Colored Skulls 1;pot;826;383;1;SPIDER_HOUSE_OCEAN;pot;All;3;mm;dungeon;Bomb (MM) / Bombchu (MM) / Blast Mask (MM), Hookshot (MM), Soul of Gold Skulltulas (MM);
 0x0305;SPIDER_HOUSE_OCEAN;Colored Skulls 2;MM Ocean Spider House Pot Colored Skulls 2;pot;814;367;0;SPIDER_HOUSE_OCEAN;pot;All;3;mm;dungeon;Bomb (MM) / Bombchu (MM) / Blast Mask (MM), Hookshot (MM), Soul of Gold Skulltulas (MM);
@@ -2221,10 +2221,10 @@ SPIDER_HOUSE_SWAMP;SPIDER_HOUSE_SWAMP;Mask of Truth;MM Swamp Spider House Mask o
 0x0041b;SPIDER_HOUSE_SWAMP;Pot Room - Walking on Jar 3;MM Swamp Spider House Wonder Item Pots 3;wonder;560;454;0;SPIDER_HOUSE_SWAMP;wonder;All;4;mm;dungeon;;
 0x0041c;SPIDER_HOUSE_SWAMP;Pot Room - Walking on Jar 4;MM Swamp Spider House Wonder Item Pots 4;wonder;629;453;0;SPIDER_HOUSE_SWAMP;wonder;All;4;mm;dungeon;;
 0x0041d;SPIDER_HOUSE_SWAMP;Pot Room - Walking on Jar 5;MM Swamp Spider House Wonder Item Pots 5;wonder;730;460;0;SPIDER_HOUSE_SWAMP;wonder;All;4;mm;dungeon;;
-TOILET_HEART_PIECE;STOCK_POT_INN;Toilet Paper - Heart Piece;MM Stock Pot Inn ??? HP;npc;162;288;0;STOCK_POT_INN;npc;All;1;mm;overworld;Land Tittle Deed / Swamp Tittle Deed / Ocean Title Deed / Letter to Kafei / Letter to Mama, Clock (Night 1) / Clock (Night 2), Soul of Toilet Hand;Give one of your paper item to the <b>Toilet Hand</b> in the toilet room during a night after 12 AM
+TOILET_HEART_PIECE;STOCK_POT_INN;Toilet Paper;MM Stock Pot Inn ??? HP;npc;162;288;0;STOCK_POT_INN;heart_piece;All;1;mm;overworld;Land Tittle Deed / Swamp Tittle Deed / Ocean Title Deed / Letter to Kafei / Letter to Mama, Clock (Night 1) / Clock (Night 2), Soul of Toilet Hand;Give one of your paper item to the <b>Toilet Hand</b> in the toilet room during a night after 12 AM
 MASK_COUPLE;STOCK_POT_INN;Couple's Mask;MM Stock Pot Inn Couple's Mask;npc;219;315;0;STOCK_POT_INN;npc;All;2;mm;overworld;Pendant of Memories, Letter To Kafei, Clock (Day 1), Clock (Night 1), Clock (Day 2), Clock (Night 3), Soul of Kafei, Soul of Anju, Soul of Citizens (MM), Soul of Deku Babas (MM), Soul of Wolfos (MM);You first need to give the <b>Pendant of Memories</b> to <b>Anju</b> in order for her to be here on night 3. Then you need to help kafei to get the <b>Sun's Mask</b>. Once that is done, head back to the <b>Stock Pot Inn</b> and speak to <b>Anju & Kafei</b> in the staff room
-GRANDMA_HEART_PIECE_1;STOCK_POT_INN;Grandma - Heart Piece 1;MM Stock Pot Inn Grandma HP 1;npc;338;468;0;STOCK_POT_INN;npc;All;2;mm;overworld;Clock (Day 1) / Clock (Night 1) / Clock (Day 2) / Clock (Night 2), All-Night Mask, Soul of Anju's Grandmother;Listen to the first <b>Anju's Grandmother</b> story and answer : On the eve of the carnival
-GRANDMA_HEART_PIECE_2;STOCK_POT_INN;Grandma - Heart Piece 2;MM Stock Pot Inn Grandma HP 2;npc;339;444;0;STOCK_POT_INN;npc;All;2;mm;overworld;Clock (Day 1) + Clock (Day 2) / Clock (Night 1) + Clock (Day 2) / Clock (Day 2) + Clock (Day 3) / Clock (Night 2) + Clock (Day 3), All-Night Mask, Soul of Anju's Grandmother;Listen to the second <b>Anju's Grandmother</b> story and answer : I dunno
+GRANDMA_HEART_PIECE_1;STOCK_POT_INN;Grandma - Short Story;MM Stock Pot Inn Grandma HP 1;npc;338;468;0;STOCK_POT_INN;heart_piece;All;2;mm;overworld;Clock (Day 1) / Clock (Night 1) / Clock (Day 2) / Clock (Night 2), All-Night Mask, Soul of Anju's Grandmother;Listen to the first <b>Anju's Grandmother</b> story and answer : On the eve of the carnival
+GRANDMA_HEART_PIECE_2;STOCK_POT_INN;Grandma - Long Story;MM Stock Pot Inn Grandma HP 2;npc;339;444;0;STOCK_POT_INN;heart_piece;All;2;mm;overworld;Clock (Day 1) + Clock (Day 2) / Clock (Night 1) + Clock (Day 2) / Clock (Day 2) + Clock (Day 3) / Clock (Night 2) + Clock (Day 3), All-Night Mask, Soul of Anju's Grandmother;Listen to the second <b>Anju's Grandmother</b> story and answer : I dunno
 0x00;STOCK_POT_INN;Guest Room;MM Stock Pot Inn Guest Room Chest;chest;725;313;0;STOCK_POT_INN;chest;All;2;mm;overworld;Room Key;Enter the guest room using the <b>Room Key</b> to find the chest
 LETTER_TO_KAFEI;STOCK_POT_INN;Letter to Kafei;MM Stock Pot Inn Letter to Kafei;npc;631;358;0;STOCK_POT_INN;npc;All;1;mm;overworld;Kafei's Mask, Clock (Day 1), Clock (Night 1), Soul of Anju;Talk to <b>Anju</b> between 2:20PM and 9:05PM on the first day while wearing the <b>Kafei's Mask</b>. Then meet her at 12AM and speak to her
 ROOM_KEY;STOCK_POT_INN;Room Key;MM Stock Pot Inn Room Key;npc;378;371;0;STOCK_POT_INN;npc;All;0;mm;overworld;Clock (Day 1), Soul of Anju;Talk to <b>Anju</b> for the first time between 1:50PM and 4PM of the first day
@@ -2232,7 +2232,7 @@ ROOM_KEY;STOCK_POT_INN;Room Key;MM Stock Pot Inn Room Key;npc;378;371;0;STOCK_PO
 0x0000e;STOCK_POT_INN;Mask 1;MM Stock Pot Inn Wonder Item 1;wonder;681;180;0;STOCK_POT_INN;wonder;All;0;mm;overworld;Zora Mask (MM), Magic Upgrade (MM);While wearing the <b>Zora Mask</b> use the special defense spell under the mask to get the item
 0x1000e;STOCK_POT_INN;Mask 2;MM Stock Pot Inn Wonder Item 2;wonder;713;180;0;STOCK_POT_INN;wonder;All;0;mm;overworld;Zora Mask (MM), Magic Upgrade (MM);While wearing the <b>Zora Mask</b> use the special defense spell under the mask to get the item
 0x2000e;STOCK_POT_INN;Mask 3;MM Stock Pot Inn Wonder Item 3;wonder;697;165;0;STOCK_POT_INN;wonder;All;0;mm;overworld;Zora Mask (MM), Magic Upgrade (MM);While wearing the <b>Zora Mask</b> use the special defense spell under the mask to get the item
-OWL_STONE_TOWER;STONE_TOWER;Owl Statue;MM Stone Tower Owl Statue;npc;440;84;0;STONE_TOWER;npc;All;0;mm;overworld;Sword (MM);Hit the statue with a sword
+OWL_STONE_TOWER;STONE_TOWER;Owl Statue;MM Stone Tower Owl Statue;npc;440;84;0;STONE_TOWER;owl;All;0;mm;overworld;Sword (MM);Hit the statue with a sword
 0x003c;STONE_TOWER;Climb 1;MM Stone Tower Pot Climb 1;pot;577;504;0;STONE_TOWER;pot;All;0;mm;overworld;;
 0x003d;STONE_TOWER;Climb 2;MM Stone Tower Pot Climb 2;pot;577;515;0;STONE_TOWER;pot;All;0;mm;overworld;;
 0x0032;STONE_TOWER;Scarecrow - Higher 1;MM Stone Tower Pot Higher Scarecrow 1;pot;151;416;2;STONE_TOWER;pot;All;0;mm;overworld;;
@@ -2276,13 +2276,13 @@ OWL_STONE_TOWER;STONE_TOWER;Owl Statue;MM Stone Tower Owl Statue;npc;440;84;0;ST
 0x000a;STONE_TOWER_INVERTED;Pot 3;MM Stone Tower Inverted Pot 3;pot;335;368;0;STONE_TOWER_INVERTED;pot;All;0;mm;overworld;;
 0x000b;STONE_TOWER_INVERTED;Pot 4;MM Stone Tower Inverted Pot 4;pot;309;364;0;STONE_TOWER_INVERTED;pot;All;0;mm;overworld;;
 0x000c;STONE_TOWER_INVERTED;Pot 5;MM Stone Tower Inverted Pot 5;pot;329;392;0;STONE_TOWER_INVERTED;pot;All;0;mm;overworld;;
-SWORDSMAN_HEART_PIECE;SWORDSMAN_SCHOOL;Heart Piece;MM Swordsman School HP;npc;496;359;0;SWORDSMAN_SCHOOL;npc;All;0;mm;overworld;Soul of Swordsman;Win the game with a score of 30
+SWORDSMAN_HEART_PIECE;SWORDSMAN_SCHOOL;Game Prize;MM Swordsman School HP;npc;496;359;0;SWORDSMAN_SCHOOL;heart_piece;All;0;mm;overworld;Soul of Swordsman;Win the game with a score of 30
 0x0006;SWORDSMAN_SCHOOL;Pot 1;MM Swordsman School Pot 1;pot;752;430;0;SWORDSMAN_SCHOOL;pot;All;0;mm;overworld;;If you have the <b>Soul of Swordsman</b> you will need to wait for night 3 in order to cut the rear wall. If not you can do it at any time
 0x0007;SWORDSMAN_SCHOOL;Pot 2;MM Swordsman School Pot 2;pot;749;383;0;SWORDSMAN_SCHOOL;pot;All;0;mm;overworld;;If you have the <b>Soul of Swordsman</b> you will need to wait for night 3 in order to cut the rear wall. If not you can do it at any time
 0x0008;SWORDSMAN_SCHOOL;Pot 3;MM Swordsman School Pot 3;pot;796;383;0;SWORDSMAN_SCHOOL;pot;All;0;mm;overworld;;If you have the <b>Soul of Swordsman</b> you will need to wait for night 3 in order to cut the rear wall. If not you can do it at any time
 0x0009;SWORDSMAN_SCHOOL;Pot 4;MM Swordsman School Pot 4;pot;793;337;0;SWORDSMAN_SCHOOL;pot;All;0;mm;overworld;;If you have the <b>Soul of Swordsman</b> you will need to wait for night 3 in order to cut the rear wall. If not you can do it at any time
 0x000a;SWORDSMAN_SCHOOL;Pot 5;MM Swordsman School Pot 5;pot;747;337;0;SWORDSMAN_SCHOOL;pot;All;0;mm;overworld;;If you have the <b>Soul of Swordsman</b> you will need to wait for night 3 in order to cut the rear wall. If not you can do it at any time
-0x19;TEMPLE_GREAT_BAY;Bio Baba;MM Great Bay Temple Baba Chest;chest;471;164;0;TEMPLE_GREAT_BAY;chest;All;6;mm;dungeon;;
+0x19;TEMPLE_GREAT_BAY;Bio Baba;MM Great Bay Temple Baba Chest;chest;471;164;0;TEMPLE_GREAT_BAY;sf;All;6;mm;dungeon;Soul of Bio Deku Baba;Kill all of the <b>Bio Deku Babas</b> to make the chest appear.
 0x00202;TEMPLE_GREAT_BAY;Red Pipe Room 1;MM Great Bay Temple Barrel Chu Room 1;barrel;339;403;0;TEMPLE_GREAT_BAY;barrel;All;5;mm;dungeon;;
 0x00203;TEMPLE_GREAT_BAY;Red Pipe Room 2;MM Great Bay Temple Barrel Chu Room 2;barrel;593;505;0;TEMPLE_GREAT_BAY;barrel;All;5;mm;dungeon;;
 0x00204;TEMPLE_GREAT_BAY;Red Pipe Room 3;MM Great Bay Temple Barrel Chu Room 3;barrel;593;473;0;TEMPLE_GREAT_BAY;barrel;All;5;mm;dungeon;;
@@ -2301,9 +2301,9 @@ SWORDSMAN_HEART_PIECE;SWORDSMAN_SCHOOL;Heart Piece;MM Swordsman School HP;npc;49
 0x00c0c;TEMPLE_GREAT_BAY;Green Pipe 1 - Barrel 3;MM Great Bay Temple Barrel Green Pipe 1 3;barrel;497;292;0;TEMPLE_GREAT_BAY;barrel;All;13;mm;dungeon;;
 0x00906;TEMPLE_GREAT_BAY;Green Pipe 2 - Barrel 1;MM Great Bay Temple Barrel Green Pipe 2 1;barrel;389;289;0;TEMPLE_GREAT_BAY;barrel;All;10;mm;dungeon;;
 0x00907;TEMPLE_GREAT_BAY;Green Pipe 2 - Barrel 2;MM Great Bay Temple Barrel Green Pipe 2 2;barrel;379;294;0;TEMPLE_GREAT_BAY;barrel;All;10;mm;dungeon;;
-0x1e;TEMPLE_GREAT_BAY;Boss Key;MM Great Bay Temple Boss Key;chest;714;343;0;TEMPLE_GREAT_BAY;chest;All;7;mm;dungeon;;
-0x1c;TEMPLE_GREAT_BAY;Compass;MM Great Bay Temple Compass;chest;361;171;0;TEMPLE_GREAT_BAY;chest;All;7;mm;dungeon;;
-0x01;TEMPLE_GREAT_BAY;Compass Room - Underwater;MM Great Bay Temple Compass Room Underwater;chest;460;345;0;TEMPLE_GREAT_BAY;chest;All;7;mm;dungeon;;
+0x1e;TEMPLE_GREAT_BAY;Chest;MM Great Bay Temple Boss Key;chest;714;343;0;TEMPLE_GREAT_BAY;boss_key;All;7;mm;dungeon;;
+0x1c;TEMPLE_GREAT_BAY;Chest;MM Great Bay Temple Compass;chest;361;171;0;TEMPLE_GREAT_BAY;compass;All;7;mm;dungeon;;
+0x01;TEMPLE_GREAT_BAY;Compass Room - Underwater;MM Great Bay Temple Compass Room Underwater;chest;460;345;0;TEMPLE_GREAT_BAY;small_key;All;7;mm;dungeon;Zora Mask (MM) / Iron Boots (MM);Sink down to the bottom of the water to open the chest.
 0x00502;TEMPLE_GREAT_BAY;Before Boss Key 1;MM Great Bay Temple Crate Before Boss Key 01;crate;300;185;0;TEMPLE_GREAT_BAY;crate;All;3;mm;dungeon;;
 0x00503;TEMPLE_GREAT_BAY;Before Boss Key 2;MM Great Bay Temple Crate Before Boss Key 02;crate;300;500;0;TEMPLE_GREAT_BAY;crate;All;3;mm;dungeon;;
 0x00504;TEMPLE_GREAT_BAY;Before Boss Key 3;MM Great Bay Temple Crate Before Boss Key 03;crate;325;160;0;TEMPLE_GREAT_BAY;crate;All;3;mm;dungeon;;
@@ -2332,13 +2332,13 @@ SWORDSMAN_HEART_PIECE;SWORDSMAN_SCHOOL;Heart Piece;MM Swordsman School HP;npc;49
 0x00a1a;TEMPLE_GREAT_BAY;Green Pipe 5;MM Great Bay Temple Crate Green Pipe 5;crate;148;515;0;TEMPLE_GREAT_BAY;crate;All;11;mm;dungeon;;
 0x00a1b;TEMPLE_GREAT_BAY;Green Pipe 6;MM Great Bay Temple Crate Green Pipe 6;crate;178;516;0;TEMPLE_GREAT_BAY;crate;All;11;mm;dungeon;;
 0x00a1c;TEMPLE_GREAT_BAY;Green Pipe 7;MM Great Bay Temple Crate Green Pipe 7;crate;209;517;0;TEMPLE_GREAT_BAY;crate;All;11;mm;dungeon;;
-0x18;TEMPLE_GREAT_BAY;Entrance - Torches;MM Great Bay Temple Entrance Chest;chest;398;323;0;TEMPLE_GREAT_BAY;chest;All;0;mm;dungeon;;
-0x15;TEMPLE_GREAT_BAY;Green Pipe 1;MM Great Bay Temple Green Pipe 1 Chest;chest;482;182;0;TEMPLE_GREAT_BAY;chest;All;13;mm;dungeon;;
-0x17;TEMPLE_GREAT_BAY;Green Pipe 2 - Lower;MM Great Bay Temple Green Pipe 2 Lower Chest;chest;668;428;0;TEMPLE_GREAT_BAY;chest;All;10;mm;dungeon;;
-0x14;TEMPLE_GREAT_BAY;Green Pipe 2 - Upper;MM Great Bay Temple Green Pipe 2 Upper Chest;chest;565;144;0;TEMPLE_GREAT_BAY;chest;All;10;mm;dungeon;;
-0x16;TEMPLE_GREAT_BAY;Green Pipe 3;MM Great Bay Temple Green Pipe 3 Chest;chest;712;372;0;TEMPLE_GREAT_BAY;chest;All;11;mm;dungeon;;
+0x18;TEMPLE_GREAT_BAY;Entrance - Torches;MM Great Bay Temple Entrance Chest;chest;398;323;0;TEMPLE_GREAT_BAY;sf;All;0;mm;dungeon;Bow (MM) + Fire Arrows (MM) + Magic Upgrade (MM) / Din's Fire (MM) + Magic Upgrade (MM) / Deku Stick (MM);Light all of the unlit torches to make the chest appear.
+0x15;TEMPLE_GREAT_BAY;Green Pipe 1;MM Great Bay Temple Green Pipe 1 Chest;chest;482;182;0;TEMPLE_GREAT_BAY;sf;All;13;mm;dungeon;Bow (MM), Ice Arrows (MM), Magic Upgrade (MM), Hookshot (MM);Shoot an Ice Arrow fairly close to the northern wall. Hop to it, turn around and now you should be far enough back that you can use the Hookshot on the target above.
+0x17;TEMPLE_GREAT_BAY;Green Pipe 2 - Lower;MM Great Bay Temple Green Pipe 2 Lower Chest;chest;668;428;0;TEMPLE_GREAT_BAY;sf;All;10;mm;dungeon;Hookshot (MM);Hookshot over to the torch at the southeast corner of the room.
+0x14;TEMPLE_GREAT_BAY;Green Pipe 2 - Upper;MM Great Bay Temple Green Pipe 2 Upper Chest;chest;565;144;0;TEMPLE_GREAT_BAY;sf;All;10;mm;dungeon;Bow (MM), Ice Arrows (MM), Magic Upgrade (MM), Hookshot (MM);After freezing the waterwheel, hookshot to the treasure chest higher up at the north end of the room.
+0x16;TEMPLE_GREAT_BAY;Green Pipe 3;MM Great Bay Temple Green Pipe 3 Chest;chest;712;372;0;TEMPLE_GREAT_BAY;sf;All;11;mm;dungeon;Bow (MM), Ice Arrows (MM), Magic Upgrade (MM), Zora Mask (MM) / Fierce Diety's Mask;Hop down into the enclosed area to reach the chest.
 0x1b;TEMPLE_GREAT_BAY;Ice Arrow;MM Great Bay Temple Ice Arrow;chest;474;385;0;TEMPLE_GREAT_BAY;chest;All;9;mm;dungeon;;
-0x1d;TEMPLE_GREAT_BAY;Map;MM Great Bay Temple Map;chest;406;269;0;TEMPLE_GREAT_BAY;chest;All;4;mm;dungeon;;
+0x1d;TEMPLE_GREAT_BAY;Chest;MM Great Bay Temple Map;chest;406;269;0;TEMPLE_GREAT_BAY;map;All;4;mm;dungeon;;
 0x0e02;TEMPLE_GREAT_BAY;Before Wart 1;MM Great Bay Temple Pot Before Wart 01;pot;435;168;0;TEMPLE_GREAT_BAY;pot;All;14;mm;dungeon;;
 0x0e03;TEMPLE_GREAT_BAY;Before Wart 2;MM Great Bay Temple Pot Before Wart 02;pot;434;473;0;TEMPLE_GREAT_BAY;pot;All;14;mm;dungeon;;
 0x0e04;TEMPLE_GREAT_BAY;Before Wart 3;MM Great Bay Temple Pot Before Wart 03;pot;529;168;0;TEMPLE_GREAT_BAY;pot;All;14;mm;dungeon;;
@@ -2429,14 +2429,14 @@ SWORDSMAN_HEART_PIECE;SWORDSMAN_SCHOOL;Heart Piece;MM Swordsman School HP;npc;49
 0x0044d;TEMPLE_SNOWHEAD;Central Room - Big Snowball 3;MM Snowhead Temple Big Snowball Central Room 3;snowball;374;182;1;TEMPLE_SNOWHEAD;snowball;All;1;mm;dungeon;;
 0x0044e;TEMPLE_SNOWHEAD;Central Room - Big Snowball 4;MM Snowhead Temple Big Snowball Central Room 4;snowball;354;182;0;TEMPLE_SNOWHEAD;snowball;All;1;mm;dungeon;;
 0x0071a;TEMPLE_SNOWHEAD;Icicle Room - Big Snowball;MM Snowhead Temple Big Snowball Icicle Room;snowball;302;291;2;TEMPLE_SNOWHEAD;snowball;All;7;mm;dungeon;;
-0x03;TEMPLE_SNOWHEAD;Block Room;MM Snowhead Temple Block Room;chest;319;103;0;TEMPLE_SNOWHEAD;chest;All;4;mm;dungeon;;
-0x15;TEMPLE_SNOWHEAD;Block Room - Ledge;MM Snowhead Temple Block Room Ledge;chest;464;433;0;TEMPLE_SNOWHEAD;chest;All;4;mm;dungeon;;
-0x1e;TEMPLE_SNOWHEAD;Boss Key;MM Snowhead Temple Boss Key;chest;638;99;0;TEMPLE_SNOWHEAD;chest;All;1;mm;dungeon;;
-0x01;TEMPLE_SNOWHEAD;Bridge Room;MM Snowhead Temple Bridge Room;chest;408;206;0;TEMPLE_SNOWHEAD;chest;All;2;mm;dungeon;;
-0x17;TEMPLE_SNOWHEAD;Central Room - Alcove;MM Snowhead Temple Central Room Alcove;chest;573;254;0;TEMPLE_SNOWHEAD;chest;All;1;mm;dungeon;;
-0x14;TEMPLE_SNOWHEAD;Central Room - Bottom;MM Snowhead Temple Central Room Bottom;chest;403;553;0;TEMPLE_SNOWHEAD;chest;All;1;mm;dungeon;;
-0x1c;TEMPLE_SNOWHEAD;Compass;MM Snowhead Temple Compass;chest;354;304;0;TEMPLE_SNOWHEAD;chest;All;3;mm;dungeon;;
-0x19;TEMPLE_SNOWHEAD;Compass Room - Ledge;MM Snowhead Temple Compass Room Ledge;chest;645;484;0;TEMPLE_SNOWHEAD;chest;All;3;mm;dungeon;;
+0x03;TEMPLE_SNOWHEAD;Block Room - Alcove;MM Snowhead Temple Block Room;chest;319;103;0;TEMPLE_SNOWHEAD;small_key;All;4;mm;dungeon;Goron Mask (MM);back on the two stones stacked on top of each other. This will reveal an alcove with a chest containing a chest.
+0x15;TEMPLE_SNOWHEAD;Block Room - Ledge;MM Snowhead Temple Block Room Ledge;chest;464;433;0;TEMPLE_SNOWHEAD;sf;All;4;mm;dungeon;Goron Mask (MM);Push the two blocks all the way to the farthest edge of the snowy area. This will snap it on top of a floor switch that reveals a chest.
+0x1e;TEMPLE_SNOWHEAD;Chest;MM Snowhead Temple Boss Key;chest;638;99;0;TEMPLE_SNOWHEAD;boss_key;All;1;mm;dungeon;;
+0x01;TEMPLE_SNOWHEAD;Bridge Room;MM Snowhead Temple Bridge Room;chest;408;206;0;TEMPLE_SNOWHEAD;small_key;All;2;mm;dungeon;Soul of Freezard (MM);Defeat all three of the <b>Frezzard</b> to make a chest appear on the ledge.
+0x17;TEMPLE_SNOWHEAD;Central Room - Alcove;MM Snowhead Temple Central Room Alcove;chest;573;254;0;TEMPLE_SNOWHEAD;sf;All;1;mm;dungeon;Bunny Hood (MM) / Hover Boots (MM);Make your way to the top of the central pillar after you’ve punched out the ice cylinders. Walk to the north end of the room along the narrow platform and then face westward. Line yourself up so that directly ahead you can see the Deku Flower below. Use the <b>Bunny Hood</b> or the <b>Hover boots</b> and leap down, holding forward and you should land right on top of the Deku Flower. 
+0x14;TEMPLE_SNOWHEAD;Central Room - Bottom;MM Snowhead Temple Central Room Bottom;chest;403;553;0;TEMPLE_SNOWHEAD;sf;All;1;mm;dungeon;Goron Mask (MM);Find the patch of lava that has a large floor switch in it and step on it while wearing the <b>Goron Mask</b>.
+0x1c;TEMPLE_SNOWHEAD;Chest;MM Snowhead Temple Compass;chest;354;304;0;TEMPLE_SNOWHEAD;compass;All;3;mm;dungeon;;
+0x19;TEMPLE_SNOWHEAD;Compass Room - Ledge;MM Snowhead Temple Compass Room Ledge;chest;645;484;0;TEMPLE_SNOWHEAD;sf;All;3;mm;dungeon;Bow (MM) + Fire Arrows (MM) / Din's Fire (MM), Magic Upgrade (MM);Use <b>Fire Arrows</b> to melt the giant chunk of ice that encase the floor switch. Step on the switch to reveal a chest.
 0x00211;TEMPLE_SNOWHEAD;Bridge;MM Snowhead Temple Crate Bridge;crate;821;279;0;TEMPLE_SNOWHEAD;crate;All;2;mm;dungeon;;
 0x0080f;TEMPLE_SNOWHEAD;Dual Switches 1;MM Snowhead Temple Crate Dual Switches 1;crate;679;326;0;TEMPLE_SNOWHEAD;crate;All;8;mm;dungeon;;
 0x00810;TEMPLE_SNOWHEAD;Dual Switches 2;MM Snowhead Temple Crate Dual Switches 2;crate;699;331;0;TEMPLE_SNOWHEAD;crate;All;8;mm;dungeon;;
@@ -2445,7 +2445,7 @@ SWORDSMAN_HEART_PIECE;SWORDSMAN_SCHOOL;Heart Piece;MM Swordsman School HP;npc;49
 0x00908;TEMPLE_SNOWHEAD;Map Room 3;MM Snowhead Temple Crate Map Room 3;crate;494;453;0;TEMPLE_SNOWHEAD;crate;All;9;mm;dungeon;;
 0x00909;TEMPLE_SNOWHEAD;Map Room 4;MM Snowhead Temple Crate Map Room 4;crate;541;453;0;TEMPLE_SNOWHEAD;crate;All;9;mm;dungeon;;
 0x0090a;TEMPLE_SNOWHEAD;Map Room 5;MM Snowhead Temple Crate Map Room 5;crate;518;453;0;TEMPLE_SNOWHEAD;crate;All;9;mm;dungeon;;
-0x1b;TEMPLE_SNOWHEAD;Fire Arrow;MM Snowhead Temple Fire Arrow;chest;471;332;0;TEMPLE_SNOWHEAD;chest;All;6;mm;dungeon;;
+0x1b;TEMPLE_SNOWHEAD;Fire Arrow;MM Snowhead Temple Fire Arrow;chest;471;332;0;TEMPLE_SNOWHEAD;chest;All;6;mm;dungeon;Soul of Wizzrobe;Defeat <b>Wizzrobe</b> to make the chest appear.
 0x0308;TEMPLE_SNOWHEAD;Flying Pot 1;MM Snowhead Temple Flying Pot 1;pot;527;579;0;TEMPLE_SNOWHEAD;pot;All;4;mm;dungeon;;
 0x0309;TEMPLE_SNOWHEAD;Flying Pot 2;MM Snowhead Temple Flying Pot 2;pot;636;533;0;TEMPLE_SNOWHEAD;pot;All;4;mm;dungeon;;
 0x0043c;TEMPLE_SNOWHEAD;Grass 1;MM Snowhead Temple Grass 01;grass;562;577;0;TEMPLE_SNOWHEAD;grass;All;1;mm;dungeon;;
@@ -2458,11 +2458,11 @@ SWORDSMAN_HEART_PIECE;SWORDSMAN_SCHOOL;Heart Piece;MM Swordsman School HP;npc;49
 0x00443;TEMPLE_SNOWHEAD;Grass 8;MM Snowhead Temple Grass 08;grass;512;573;0;TEMPLE_SNOWHEAD;grass;All;1;mm;dungeon;;
 0x00444;TEMPLE_SNOWHEAD;Grass 9;MM Snowhead Temple Grass 09;grass;515;564;0;TEMPLE_SNOWHEAD;grass;All;1;mm;dungeon;;
 0x00445;TEMPLE_SNOWHEAD;Grass 10;MM Snowhead Temple Grass 10;grass;506;566;0;TEMPLE_SNOWHEAD;grass;All;1;mm;dungeon;;
-0x04;TEMPLE_SNOWHEAD;Icicle Room;MM Snowhead Temple Icicle Room;chest;305;272;1;TEMPLE_SNOWHEAD;chest;All;7;mm;dungeon;;
-0x16;TEMPLE_SNOWHEAD;Icicle Room - Alcove;MM Snowhead Temple Icicle Room Alcove;chest;815;332;0;TEMPLE_SNOWHEAD;chest;All;7;mm;dungeon;;
-0x1d;TEMPLE_SNOWHEAD;Map;MM Snowhead Temple Map;chest;576;233;0;TEMPLE_SNOWHEAD;chest;All;9;mm;dungeon;;
-0x13;TEMPLE_SNOWHEAD;Map - Alcove;MM Snowhead Temple Map Alcove;chest;456;34;0;TEMPLE_SNOWHEAD;chest;All;9;mm;dungeon;;
-0x18;TEMPLE_SNOWHEAD;Pillars Room;MM Snowhead Temple Pillars Room;chest;338;525;0;TEMPLE_SNOWHEAD;chest;All;5;mm;dungeon;;
+0x04;TEMPLE_SNOWHEAD;Icicle Room - Big Snowball;MM Snowhead Temple Icicle Room;chest;305;272;1;TEMPLE_SNOWHEAD;small_key;All;7;mm;dungeon;Goron Mask (MM) / Bomb (MM) / Bombchu (MM);Explode the big snowball to reveal the chest.
+0x16;TEMPLE_SNOWHEAD;Icicle Room - Alcove;MM Snowhead Temple Icicle Room Alcove;chest;815;332;0;TEMPLE_SNOWHEAD;sf;All;7;mm;dungeon;Bunny Hood (MM) / Bow (MM);Run to a patch of frosty snow on the wall to reach the chest.
+0x1d;TEMPLE_SNOWHEAD;Chest;MM Snowhead Temple Map;chest;576;233;0;TEMPLE_SNOWHEAD;map;All;9;mm;dungeon;;
+0x13;TEMPLE_SNOWHEAD;Map - Alcove;MM Snowhead Temple Map Alcove;chest;456;34;0;TEMPLE_SNOWHEAD;sf;All;9;mm;dungeon;Lens of Truth (MM) / Hookshot (MM);Face towards the center of the room and use the <b>Lens of Truth</b> to see invisible blocks floating in the air. Jump across them (without wearing the Bunny Hood) and follow them to an alcove in the southern wall that contains a chest.
+0x18;TEMPLE_SNOWHEAD;Pillars Room;MM Snowhead Temple Pillars Room;chest;338;525;0;TEMPLE_SNOWHEAD;sf;All;5;mm;dungeon;Soul of Freezard (MM);Defeat all three of the <b>Frezzard</b> to make a chest appear on the ledge.
 0x0300;TEMPLE_SNOWHEAD;Block Room 1;MM Snowhead Temple Pot Block Room 1;pot;422;217;0;TEMPLE_SNOWHEAD;pot;All;4;mm;dungeon;;
 0x0307;TEMPLE_SNOWHEAD;Block Room 2;MM Snowhead Temple Pot Block Room 2;pot;401;211;0;TEMPLE_SNOWHEAD;pot;All;4;mm;dungeon;;
 0x0207;TEMPLE_SNOWHEAD;Bridge Room 1;MM Snowhead Temple Pot Bridge Room 1;pot;302;520;0;TEMPLE_SNOWHEAD;pot;All;2;mm;dungeon;;
@@ -2539,10 +2539,10 @@ SWORDSMAN_HEART_PIECE;SWORDSMAN_SCHOOL;Heart Piece;MM Swordsman School HP;npc;49
 0x00a0d;TEMPLE_SNOWHEAD;Snow Room 6;MM Snowhead Temple Small Snowball Snow Room 6;snowball;761;387;0;TEMPLE_SNOWHEAD;snowball;All;10;mm;dungeon;;
 0x00a0e;TEMPLE_SNOWHEAD;Snow Room 7;MM Snowhead Temple Small Snowball Snow Room 7;snowball;740;369;0;TEMPLE_SNOWHEAD;snowball;All;10;mm;dungeon;;
 0x00a0f;TEMPLE_SNOWHEAD;Snow Room 8;MM Snowhead Temple Small Snowball Snow Room 8;snowball;730;378;0;TEMPLE_SNOWHEAD;snowball;All;10;mm;dungeon;;
-0x14;TEMPLE_STONE_TOWER;Hiploop Bridge;MM Stone Tower Temple Before Water Bridge Chest;chest;292;511;0;TEMPLE_STONE_TOWER;chest;All;6;mm;dungeon;;
+0x14;TEMPLE_STONE_TOWER;Hiploop Bridge;MM Stone Tower Temple Before Water Bridge Chest;chest;292;511;0;TEMPLE_STONE_TOWER;sf;All;6;mm;dungeon;;In the inverted version, hit the crystal to make the chest appear. Then open it in the normal version.
 0x01;TEMPLE_STONE_TOWER;Center - Across Water;MM Stone Tower Temple Center Across Water Chest;chest;202;300;0;TEMPLE_STONE_TOWER;chest;All;1;mm;dungeon;;
-0x18;TEMPLE_STONE_TOWER;Center - Sun Block;MM Stone Tower Temple Center Sun Block Chest;chest;559;539;0;TEMPLE_STONE_TOWER;chest;All;1;mm;dungeon;;
-0x1c;TEMPLE_STONE_TOWER;Compass;MM Stone Tower Temple Compass;chest;785;382;0;TEMPLE_STONE_TOWER;chest;All;3;mm;dungeon;;
+0x18;TEMPLE_STONE_TOWER;Center - Sun Block;MM Stone Tower Temple Center Sun Block Chest;chest;559;539;0;TEMPLE_STONE_TOWER;sf;All;1;mm;dungeon;;
+0x1c;TEMPLE_STONE_TOWER;Chest;MM Stone Tower Temple Compass;chest;785;382;0;TEMPLE_STONE_TOWER;compass;All;3;mm;dungeon;;
 0x00011;TEMPLE_STONE_TOWER;Entrance 1;MM Stone Tower Temple Crate Entrance 1;crate;635;220;0;TEMPLE_STONE_TOWER;crate;All;0;mm;dungeon;;
 0x00012;TEMPLE_STONE_TOWER;Entrance 2;MM Stone Tower Temple Crate Entrance 2;crate;668;220;0;TEMPLE_STONE_TOWER;crate;All;0;mm;dungeon;;
 0x00218;TEMPLE_STONE_TOWER;Maze - Large 1;MM Stone Tower Temple Crate Maze Large 1;crate;685;445;0;TEMPLE_STONE_TOWER;crate;All;2;mm;dungeon;;
@@ -2557,8 +2557,8 @@ SWORDSMAN_HEART_PIECE;SWORDSMAN_SCHOOL;Heart Piece;MM Swordsman School HP;npc;49
 0x00116;TEMPLE_STONE_TOWER;Center 1;MM Stone Tower Temple Crate Water 1;crate;232;136;0;TEMPLE_STONE_TOWER;crate;All;1;mm;dungeon;;
 0x00117;TEMPLE_STONE_TOWER;Center 2;MM Stone Tower Temple Crate Water 2;crate;232;113;0;TEMPLE_STONE_TOWER;crate;All;1;mm;dungeon;;
 0x00118;TEMPLE_STONE_TOWER;Center 3;MM Stone Tower Temple Crate Water 3;crate;232;90;0;TEMPLE_STONE_TOWER;crate;All;1;mm;dungeon;;
-0x16;TEMPLE_STONE_TOWER;Entrance;MM Stone Tower Temple Entrance Chest;chest;473;371;0;TEMPLE_STONE_TOWER;chest;All;0;mm;dungeon;;
-0x12;TEMPLE_STONE_TOWER;Entrance - Switch;MM Stone Tower Temple Entrance Switch Chest;chest;473;401;0;TEMPLE_STONE_TOWER;chest;All;0;mm;dungeon;;
+0x16;TEMPLE_STONE_TOWER;Entrance - Eye Switch;MM Stone Tower Temple Entrance Chest;chest;473;371;0;TEMPLE_STONE_TOWER;sf;All;0;mm;dungeon;Bow (MM);Shoot to the statue's eye to make the chest appear.
+0x12;TEMPLE_STONE_TOWER;Entrance - Switch;MM Stone Tower Temple Entrance Switch Chest;chest;473;401;0;TEMPLE_STONE_TOWER;sf;All;0;mm;dungeon;;In the inverted version step on the switch protected by the Death Armos to make the chest appear. Then you can open it in the normal version.
 0x0000a;TEMPLE_STONE_TOWER;Entrance 1;MM Stone Tower Temple Grass Entrance 1;grass;610;234;0;TEMPLE_STONE_TOWER;grass;All;0;mm;dungeon;;
 0x0000b;TEMPLE_STONE_TOWER;Entrance 2;MM Stone Tower Temple Grass Entrance 2;grass;619;216;1;TEMPLE_STONE_TOWER;grass;All;0;mm;dungeon;;
 0x0000c;TEMPLE_STONE_TOWER;Entrance 3;MM Stone Tower Temple Grass Entrance 3;grass;638;234;1;TEMPLE_STONE_TOWER;grass;All;0;mm;dungeon;;
@@ -2568,18 +2568,18 @@ SWORDSMAN_HEART_PIECE;SWORDSMAN_SCHOOL;Heart Piece;MM Swordsman School HP;npc;49
 0x00215;TEMPLE_STONE_TOWER;Garden 4;MM Stone Tower Temple Grass Garden 4;grass;256;239;0;TEMPLE_STONE_TOWER;grass;All;2;mm;dungeon;;
 0x00216;TEMPLE_STONE_TOWER;Garden 5;MM Stone Tower Temple Grass Garden 5;grass;300;236;0;TEMPLE_STONE_TOWER;grass;All;2;mm;dungeon;;
 0x00217;TEMPLE_STONE_TOWER;Garden 6;MM Stone Tower Temple Grass Garden 6;grass;293;209;0;TEMPLE_STONE_TOWER;grass;All;2;mm;dungeon;;
-0x1e;TEMPLE_STONE_TOWER;Boss Key;MM Stone Tower Temple Inverted Boss Key;chest;485;554;0;TEMPLE_STONE_TOWER_INVERTED;chest;All;6;mm;dungeon;;
-0x05;TEMPLE_STONE_TOWER;Armos;MM Stone Tower Temple Inverted Death Armos Chest;chest;676;440;0;TEMPLE_STONE_TOWER_INVERTED;chest;All;2;mm;dungeon;;
-0x13;TEMPLE_STONE_TOWER;East - Lower;MM Stone Tower Temple Inverted East Lower Chest;chest;465;504;0;TEMPLE_STONE_TOWER_INVERTED;chest;All;3;mm;dungeon;;
-0x04;TEMPLE_STONE_TOWER;East - Middle;MM Stone Tower Temple Inverted East Middle Chest;chest;464;250;1;TEMPLE_STONE_TOWER_INVERTED;chest;All;3;mm;dungeon;;
-0x0e;TEMPLE_STONE_TOWER;East - Upper;MM Stone Tower Temple Inverted East Upper Chest;chest;462;226;0;TEMPLE_STONE_TOWER_INVERTED;chest;All;3;mm;dungeon;;
-0x10;TEMPLE_STONE_TOWER;Entrance;MM Stone Tower Temple Inverted Entrance Chest;chest;480;296;0;TEMPLE_STONE_TOWER_INVERTED;chest;All;0;mm;dungeon;;
+0x1e;TEMPLE_STONE_TOWER;Chest;MM Stone Tower Temple Inverted Boss Key;chest;485;554;0;TEMPLE_STONE_TOWER_INVERTED;boss_key;All;6;mm;dungeon;;
+0x05;TEMPLE_STONE_TOWER;Death Armos - Chest;MM Stone Tower Temple Inverted Death Armos Chest;chest;676;440;0;TEMPLE_STONE_TOWER_INVERTED;small_key;All;2;mm;dungeon;;
+0x13;TEMPLE_STONE_TOWER;East - Lower;MM Stone Tower Temple Inverted East Lower Chest;chest;465;504;0;TEMPLE_STONE_TOWER_INVERTED;sf;All;3;mm;dungeon;Bow (MM), Fire Arrows (MM) / Din's Fire (MM), Magic Upgrade (MM);Underneath the platform with the flower you start at, shoot the Frozen Eye Switch with a Fire Arrow. Use the middle air pump to get to the platform where a chest appears.
+0x04;TEMPLE_STONE_TOWER;East - Middle;MM Stone Tower Temple Inverted East Middle Chest;chest;464;250;1;TEMPLE_STONE_TOWER_INVERTED;small_key;All;3;mm;dungeon;;Fly up to the platform in the middle with the Masked Hiploop. Walk into the opening at one end and go step on the floor switch to make a chest appear back at the other side of the bridge.
+0x0e;TEMPLE_STONE_TOWER;East - Upper;MM Stone Tower Temple Inverted East Upper Chest;chest;462;226;0;TEMPLE_STONE_TOWER_INVERTED;sf;All;3;mm;dungeon;Zora Mask (MM) / Iron Boots (MM), Bow (MM), Light Arrows (MM), Magic Upgrade (MM);In the normal version of the temple step on the switch at the bottom of the water to make the chest appear. Then play the <b>Elegy of Emptiness</b> on the blue switch to remove the fire.
+0x10;TEMPLE_STONE_TOWER;Entrance - Sun Switch;MM Stone Tower Temple Inverted Entrance Chest;chest;480;296;0;TEMPLE_STONE_TOWER_INVERTED;sf;All;0;mm;dungeon;Bow (MM), Light Arrows (MM), Magic Upgrade (MM);Shoot the Sun Face with a Light Arrow to create a treasure chest.
 0x1a;TEMPLE_STONE_TOWER;Giant Mask;MM Stone Tower Temple Inverted Giant Mask;chest;478;212;0;TEMPLE_STONE_TOWER_INVERTED;chest;All;1;mm;dungeon;;
-0x11;TEMPLE_STONE_TOWER;Wizzrobe;MM Stone Tower Temple Inverted Wizzrobe Chest;chest;616;502;0;TEMPLE_STONE_TOWER_INVERTED;chest;All;4;mm;dungeon;;
-0x1b;TEMPLE_STONE_TOWER;Light Arrow;MM Stone Tower Temple Light Arrow;chest;476;353;0;TEMPLE_STONE_TOWER;chest;All;8;mm;dungeon;;
-0x1d;TEMPLE_STONE_TOWER;Map;MM Stone Tower Temple Map;chest;484;564;0;TEMPLE_STONE_TOWER;chest;All;4;mm;dungeon;;
-0x0f;TEMPLE_STONE_TOWER;Mirrors Room - Center;MM Stone Tower Temple Mirrors Room Center Chest;chest;441;390;0;TEMPLE_STONE_TOWER;chest;All;5;mm;dungeon;;
-0x0b;TEMPLE_STONE_TOWER;Mirrors Room - Right;MM Stone Tower Temple Mirrors Room Right Chest;chest;486;103;0;TEMPLE_STONE_TOWER;chest;All;5;mm;dungeon;;
+0x11;TEMPLE_STONE_TOWER;Wizzrobe;MM Stone Tower Temple Inverted Wizzrobe Chest;chest;616;502;0;TEMPLE_STONE_TOWER_INVERTED;sf;All;4;mm;dungeon;;
+0x1b;TEMPLE_STONE_TOWER;Light Arrow;MM Stone Tower Temple Light Arrow;chest;476;353;0;TEMPLE_STONE_TOWER;chest;All;8;mm;dungeon;Soul of Wizzrobe, Hookshot (MM);After defeating <b>Wizzrobe</b>, use the <b>Hookshot</b> on the chest that appears.
+0x1d;TEMPLE_STONE_TOWER;Chest;MM Stone Tower Temple Map;chest;484;564;0;TEMPLE_STONE_TOWER;map;All;4;mm;dungeon;Bow (MM), Light Arrows (MM), Magic Upgrade (MM);Shoot the Sun Block to reveal the chest.
+0x0f;TEMPLE_STONE_TOWER;Mirrors Room - Center;MM Stone Tower Temple Mirrors Room Center Chest;chest;441;390;0;TEMPLE_STONE_TOWER;sf;All;5;mm;dungeon;Mirror Shield (MM) + Goron Mask (MM) / Bow (MM) + Light Arrows (MM) + Magic Upgrade (MM);When facing away from the door, turn right and light on the far left one.
+0x0b;TEMPLE_STONE_TOWER;Mirrors Room - Right;MM Stone Tower Temple Mirrors Room Right Chest;chest;486;103;0;TEMPLE_STONE_TOWER;sf;All;5;mm;dungeon;Mirror Shield (MM) + Goron Mask (MM) / Bow (MM) + Light Arrows (MM) + Magic Upgrade (MM);When standing in the light and facing the center of the room, reflect light onto the mirror on the right side of the central pillar. Once it’s charged up, run over and reflect light to make the Sun Block on your right disappear.
 0x080e;TEMPLE_STONE_TOWER;Hipoloop Bridge 1;MM Stone Tower Temple Pot Before Water Bridge 1;pot;253;497;3;TEMPLE_STONE_TOWER;pot;All;6;mm;dungeon;;
 0x080f;TEMPLE_STONE_TOWER;Hipoloop Bridge 2;MM Stone Tower Temple Pot Before Water Bridge 2;pot;236;497;2;TEMPLE_STONE_TOWER;pot;All;6;mm;dungeon;;
 0x0810;TEMPLE_STONE_TOWER;Hipoloop Bridge 3;MM Stone Tower Temple Pot Before Water Bridge 3;pot;244;525;3;TEMPLE_STONE_TOWER;pot;All;6;mm;dungeon;;
@@ -2627,12 +2627,12 @@ SWORDSMAN_HEART_PIECE;SWORDSMAN_SCHOOL;Heart Piece;MM Swordsman School HP;npc;49
 0x00903;TEMPLE_STONE_TOWER;Wind Room 4;MM Stone Tower Temple Rupee Wind Room 4;rupee;521;304;0;TEMPLE_STONE_TOWER;rupee;All;7;mm;dungeon;;
 0x00904;TEMPLE_STONE_TOWER;Wind Room 5;MM Stone Tower Temple Rupee Wind Room 5;rupee;501;294;0;TEMPLE_STONE_TOWER;rupee;All;7;mm;dungeon;;
 0x00905;TEMPLE_STONE_TOWER;Wind Room 6;MM Stone Tower Temple Rupee Wind Room 6;rupee;501;313;0;TEMPLE_STONE_TOWER;rupee;All;7;mm;dungeon;;
-0x02;TEMPLE_STONE_TOWER;Lava;MM Stone Tower Temple Under West Garden Lava Chest;chest;482;318;0;TEMPLE_STONE_TOWER;chest;All;4;mm;dungeon;;
-0x15;TEMPLE_STONE_TOWER;Lava - Ledge;MM Stone Tower Temple Under West Garden Ledge Chest;chest;344;119;0;TEMPLE_STONE_TOWER;chest;All;4;mm;dungeon;;
-0x0c;TEMPLE_STONE_TOWER;Center - Bridge;MM Stone Tower Temple Water Bridge Chest;chest;474;518;0;TEMPLE_STONE_TOWER;chest;All;1;mm;dungeon;;
-0x17;TEMPLE_STONE_TOWER;Water - Sun Switch;MM Stone Tower Temple Water Sun Switch Chest;chest;567;374;0;TEMPLE_STONE_TOWER;chest;All;3;mm;dungeon;;
-0x0d;TEMPLE_STONE_TOWER;Wind Room - Jail;MM Stone Tower Temple Wind Room Jail Chest;chest;195;309;0;TEMPLE_STONE_TOWER;chest;All;7;mm;dungeon;;
-0x19;TEMPLE_STONE_TOWER;Wind Room - Ledge;MM Stone Tower Temple Wind Room Ledge Chest;chest;427;303;0;TEMPLE_STONE_TOWER;chest;All;7;mm;dungeon;;
+0x02;TEMPLE_STONE_TOWER;Lava;MM Stone Tower Temple Under West Garden Lava Chest;chest;482;318;0;TEMPLE_STONE_TOWER;small_key;All;4;mm;dungeon;Soul of Armos (MM);Defeat all <b>Armos</b> to make the chest appear.
+0x15;TEMPLE_STONE_TOWER;Lava - Ledge;MM Stone Tower Temple Under West Garden Ledge Chest;chest;344;119;0;TEMPLE_STONE_TOWER;sf;All;4;mm;dungeon;Hookshot (MM);Hookshot the target on the ceiling to reach a hidden ledge with a chest.
+0x0c;TEMPLE_STONE_TOWER;Center - Bridge;MM Stone Tower Temple Water Bridge Chest;chest;474;518;0;TEMPLE_STONE_TOWER;sf;All;1;mm;dungeon;Soul of Eyegore (MM);Defeat the <b>Eyegore</b> to make the chest appear.
+0x17;TEMPLE_STONE_TOWER;Water - Sun Switch;MM Stone Tower Temple Water Sun Switch Chest;chest;567;374;0;TEMPLE_STONE_TOWER;sf;All;3;mm;dungeon;Bow (MM), Light Arrows (MM), Magic Upgrade (MM);In the inverted version, shoot a <b>light arrow</b> at the sun switch to make the chest appear. Then back in the normal version you can open it.
+0x0d;TEMPLE_STONE_TOWER;Wind Room - Jail;MM Stone Tower Temple Wind Room Jail Chest;chest;195;309;0;TEMPLE_STONE_TOWER;sf;All;7;mm;dungeon;Deku Mask (MM) / Bow (MM) + Light Arrows (MM) + Magic Upgrade (MM);Fly over the wind turbine with the <b>Deku Mask</b> or simply shoot a <b>Light Arrow</b> on the sun switch above the fired switch to make a ladder appear.
+0x19;TEMPLE_STONE_TOWER;Wind Room - Ledge;MM Stone Tower Temple Wind Room Ledge Chest;chest;427;303;0;TEMPLE_STONE_TOWER;sf;All;7;mm;dungeon;Goron Mask (MM), Deku Mask (MM);Pound the switch in the lava and roll to the other side of the room to press down the other switch to make the chest appear.
 REMAINS_TWINMOLD;TEMPLE_STONE_TOWER;Twinmold's Remains;MM Stone Tower Temple Inverted Boss;none;0;0;0;TEMPLE_STONE_TOWER_INVERTED;none;All;0;mm;dungeon;;
 0x1f;TEMPLE_STONE_TOWER;Heart Container;MM Stone Tower Temple Inverted Boss HC;none;0;0;0;TEMPLE_STONE_TOWER_INVERTED;none;All;0;mm;dungeon;;
 0x00327;TEMPLE_STONE_TOWER;Before Gomess 1;MM Stone Tower Temple Inverted Crate Before Gomess 1;none;0;0;0;TEMPLE_STONE_TOWER_INVERTED;none;All;0;mm;dungeon;;
@@ -2759,12 +2759,12 @@ REMAINS_TWINMOLD;TEMPLE_STONE_TOWER;Twinmold's Remains;MM Stone Tower Temple Inv
 0x00800;TEMPLE_STONE_TOWER_INVERTED;Pre-Boss - Top 1;MM Stone Tower Temple Inverted Rupee Pre-Boss Top 1;rupee;626;440;0;TEMPLE_STONE_TOWER_INVERTED;rupee;All;5;mm;dungeon;;
 0x00801;TEMPLE_STONE_TOWER_INVERTED;Pre-Boss - Top 2;MM Stone Tower Temple Inverted Rupee Pre-Boss Top 2;rupee;585;440;0;TEMPLE_STONE_TOWER_INVERTED;rupee;All;5;mm;dungeon;;
 0x00802;TEMPLE_STONE_TOWER_INVERTED;Pre-Boss - Top 3;MM Stone Tower Temple Inverted Rupee Pre-Boss Top 3;rupee;544;440;0;TEMPLE_STONE_TOWER_INVERTED;rupee;All;5;mm;dungeon;;
-0x1e;TEMPLE_WOODFALL;Boss Key;MM Woodfall Temple Boss Key Chest;chest;446;568;0;TEMPLE_WOODFALL;chest;All;8;mm;dungeon;;
+0x1e;TEMPLE_WOODFALL;Chest;MM Woodfall Temple Boss Key Chest;chest;446;568;0;TEMPLE_WOODFALL;boss_key;All;8;mm;dungeon;;
 0x1b;TEMPLE_WOODFALL;Bow;MM Woodfall Temple Bow;chest;469;217;0;TEMPLE_WOODFALL;chest;All;7;mm;dungeon;;
-0x17;TEMPLE_WOODFALL;Center;MM Woodfall Temple Center Chest;chest;660;310;0;TEMPLE_WOODFALL;chest;All;2;mm;dungeon;;
-0x1c;TEMPLE_WOODFALL;Compass;MM Woodfall Temple Compass;chest;467;154;0;TEMPLE_WOODFALL;chest;All;4;mm;dungeon;;
-0x19;TEMPLE_WOODFALL;Dark;MM Woodfall Temple Dark Chest;chest;231;340;0;TEMPLE_WOODFALL;chest;All;9;mm;dungeon;;
-0x18;TEMPLE_WOODFALL;Entrance;MM Woodfall Temple Entrance Chest;chest;611;441;0;TEMPLE_WOODFALL;chest;All;0;mm;dungeon;;
+0x17;TEMPLE_WOODFALL;Center - Chest;MM Woodfall Temple Center Chest;chest;660;310;0;TEMPLE_WOODFALL;sf;All;2;mm;dungeon;;
+0x1c;TEMPLE_WOODFALL;Chest;MM Woodfall Temple Compass;chest;467;154;0;TEMPLE_WOODFALL;compass;All;4;mm;dungeon;;
+0x19;TEMPLE_WOODFALL;Dark - Chest;MM Woodfall Temple Dark Chest;chest;231;340;0;TEMPLE_WOODFALL;sf;All;9;mm;dungeon;;
+0x18;TEMPLE_WOODFALL;Entrance - Chest;MM Woodfall Temple Entrance Chest;chest;611;441;0;TEMPLE_WOODFALL;sf;All;0;mm;dungeon;;
 0x00405;TEMPLE_WOODFALL;Compass Room 1;MM Woodfall Temple Grass Compass Room 1;grass;302;418;0;TEMPLE_WOODFALL;grass;All;4;mm;dungeon;;
 0x00406;TEMPLE_WOODFALL;Compass Room 2;MM Woodfall Temple Grass Compass Room 2;grass;267;360;0;TEMPLE_WOODFALL;grass;All;4;mm;dungeon;;
 0x00407;TEMPLE_WOODFALL;Compass Room 3;MM Woodfall Temple Grass Compass Room 3;grass;283;317;0;TEMPLE_WOODFALL;grass;All;4;mm;dungeon;;
@@ -2801,7 +2801,7 @@ REMAINS_TWINMOLD;TEMPLE_STONE_TOWER;Twinmold's Remains;MM Stone Tower Temple Inv
 0x00513;TEMPLE_WOODFALL;Water Room 2;MM Woodfall Temple Grass Water Room 2;grass;676;411;0;TEMPLE_WOODFALL;grass;All;5;mm;dungeon;;
 0x0021d;TEMPLE_WOODFALL;Entrance;MM Woodfall Temple Hive Entrance;hive;442;352;0;TEMPLE_WOODFALL;hive;All;0;mm;dungeon;;
 0x00311;TEMPLE_WOODFALL;Maze;MM Woodfall Temple Hive Maze;hive;357;353;0;TEMPLE_WOODFALL;hive;All;3;mm;dungeon;;
-0x1d;TEMPLE_WOODFALL;Map;MM Woodfall Temple Map;chest;470;294;0;TEMPLE_WOODFALL;chest;All;6;mm;dungeon;;
+0x1d;TEMPLE_WOODFALL;Chest;MM Woodfall Temple Map;chest;470;294;0;TEMPLE_WOODFALL;map;All;6;mm;dungeon;;
 0x0216;TEMPLE_WOODFALL;Entrance;MM Woodfall Temple Pot Entrance;pot;505;506;0;TEMPLE_WOODFALL;pot;All;0;mm;dungeon;;
 0x0115;TEMPLE_WOODFALL;Main Room - Lower 1;MM Woodfall Temple Pot Main Room Lower 1;pot;642;188;0;TEMPLE_WOODFALL;pot;All;2;mm;dungeon;;
 0x0116;TEMPLE_WOODFALL;Main Room - Lower 2;MM Woodfall Temple Pot Main Room Lower 2;pot;443;147;0;TEMPLE_WOODFALL;pot;All;2;mm;dungeon;;
@@ -2841,7 +2841,7 @@ REMAINS_TWINMOLD;TEMPLE_STONE_TOWER;Twinmold's Remains;MM Stone Tower Temple Inv
 0x2d;TEMPLE_WOODFALL;Pre-Boss - Pillar;MM Woodfall Temple SF Pre-Boss Pillar;sf;550;302;0;TEMPLE_WOODFALL;sf;All;1;mm;dungeon;;
 0x32;TEMPLE_WOODFALL;Pre-Boss - Top Right;MM Woodfall Temple SF Pre-Boss Top Right;sf;381;60;0;TEMPLE_WOODFALL;sf;All;1;mm;dungeon;;
 0x1e;TEMPLE_WOODFALL;Water Room - Beehive;MM Woodfall Temple SF Water Room Beehive;sf;367;194;0;TEMPLE_WOODFALL;sf;All;5;mm;dungeon;;
-0x01;TEMPLE_WOODFALL;Water;MM Woodfall Temple Water Chest;chest;468;231;0;TEMPLE_WOODFALL;chest;All;5;mm;dungeon;;
+0x01;TEMPLE_WOODFALL;Chest;MM Woodfall Temple Water Chest;chest;468;231;0;TEMPLE_WOODFALL;small_key;All;5;mm;dungeon;;
 0x000ab;TERMINA_FIELD;Butterfly 1;MM Termina Field Butterfly 1;butterfly;1152;1447;0;TERMINA_FIELD;butterfly;All;0;mm;overworld;;
 0x100ab;TERMINA_FIELD;Butterfly 2;MM Termina Field Butterfly 2;butterfly;1153;1415;0;TERMINA_FIELD;butterfly;All;0;mm;overworld;;
 0x000ac;TERMINA_FIELD;Pack 1 - Grass 1;MM Termina Field Grass Pack 01 Grass 01;grass;875;1204;0;TERMINA_FIELD;grass;All;0;mm;overworld;;
@@ -3195,7 +3195,7 @@ MASK_KAMARO;TERMINA_FIELD;Kamaro's Mask;MM Termina Field Kamaro Mask;npc;1084;32
 0xb0a09;TERMINA_FIELD;Grass 72;MM Termina Field Cow Grotto Grass 72;none;0;0;0;MM_GROTTO_TERMINA_COW;none;All;0;mm;overworld;;
 0x00a02;TERMINA_FIELD;Hive;MM Termina Field Cow Grotto Hive;none;0;0;0;MM_GROTTO_TERMINA_COW;none;All;0;mm;overworld;;
 0x00;TERMINA_FIELD;Dodongo;MM Termina Field Dodongo Grotto;none;0;0;0;MM_GROTTO_TERMINA_DODONGO;none;All;0;mm;overworld;;
-GOSSIP_HEART_PIECE;TERMINA_FIELD;Gossip Stones - Heart Piece;MM Termina Field Gossip Stones HP;none;0;0;0;MM_GROTTO_TERMINA_CANYON_GOSSIP;none;All;0;mm;overworld;;
+GOSSIP_HEART_PIECE;TERMINA_FIELD;Gossip Stones;MM Termina Field Gossip Stones HP;none;0;0;0;MM_GROTTO_TERMINA_CANYON_GOSSIP;none;All;0;mm;overworld;;
 0x04;TERMINA_FIELD;Peahat;MM Termina Field Peahat Grotto;none;0;0;0;MM_GROTTO_TERMINA_PEEHAT;none;All;0;mm;overworld;;
 0x1a;TERMINA_FIELD;Chest;MM Termina Field Pillar Grotto;none;0;0;0;MM_GROTTO_TERMINA_PILLAR;none;All;0;mm;overworld;;
 0x03a00;TERMINA_FIELD;Grass 1;MM Termina Field Pillar Grotto Grass 01;none;0;0;0;MM_GROTTO_TERMINA_PILLAR;none;All;0;mm;overworld;;
@@ -3230,9 +3230,9 @@ SCRUB_TELESCOPE;TERMINA_FIELD;Scrub;MM Termina Field Scrub;none;0;0;0;MM_GROTTO_
 0x03f11;TERMINA_FIELD;Grass 12;MM Termina Field Tall Grass Grotto Grass 12;none;0;0;0;MM_GROTTO_TERMINA_TALL_GRASS;none;All;0;mm;overworld;;
 0x03f12;TERMINA_FIELD;Grass 13;MM Termina Field Tall Grass Grotto Grass 13;none;0;0;0;MM_GROTTO_TERMINA_TALL_GRASS;none;All;0;mm;overworld;;
 0x03f13;TERMINA_FIELD;Grass 14;MM Termina Field Tall Grass Grotto Grass 14;none;0;0;0;MM_GROTTO_TERMINA_TALL_GRASS;none;All;0;mm;overworld;;
-KOUME_HEART_PIECE;TOURIST_INFORMATION;Archery;MM Tourist Information Boat Archery;npc;617;205;0;TOURIST_INFORMATION;npc;All;0;mm;overworld;;
+KOUME_HEART_PIECE;TOURIST_INFORMATION;Archery;MM Tourist Information Boat Archery;npc;617;205;0;TOURIST_INFORMATION;heart_piece;All;0;mm;overworld;;
 KOUME_PICTOGRAPH_BOX;TOURIST_INFORMATION;Pictobox;MM Tourist Information Pictobox;npc;299;334;0;TOURIST_INFORMATION;npc;All;0;mm;overworld;;
-TOUR_GUIDE_HEART_PIECE;TOURIST_INFORMATION;Deku's King Picture;MM Tourist Information Tingle Picture;npc;376;335;0;TOURIST_INFORMATION;npc;All;0;mm;overworld;;
+TOUR_GUIDE_HEART_PIECE;TOURIST_INFORMATION;Deku's King or Tingle Picture;MM Tourist Information Tingle Picture;npc;376;335;0;TOURIST_INFORMATION;heart_piece;All;0;mm;overworld;Soul of Boat Cruise Man, Soul of Deku's King / Soul of Tingle, Pictobox;Take a picture of either the <b>Deku King</b> or <b>Tingle</b> and show it to the <b>Boat Cruise Owner</b>.
 0x05;TRADING_POST;Item 1;MM Trading Post Item 1;shop;384;261;0;TRADING_POST;shop;All;0;mm;overworld;;
 0x06;TRADING_POST;Item 2;MM Trading Post Item 2;shop;422;261;0;TRADING_POST;shop;All;0;mm;overworld;;
 0x07;TRADING_POST;Item 3;MM Trading Post Item 3;shop;384;294;0;TRADING_POST;shop;All;0;mm;overworld;;
@@ -3242,7 +3242,7 @@ TOUR_GUIDE_HEART_PIECE;TOURIST_INFORMATION;Deku's King Picture;MM Tourist Inform
 0x0b;TRADING_POST;Item 7;MM Trading Post Item 7;shop;542;294;0;TRADING_POST;shop;All;0;mm;overworld;;
 0x0c;TRADING_POST;Item 8;MM Trading Post Item 8;shop;580;294;0;TRADING_POST;shop;All;0;mm;overworld;;
 0x0008;TRADING_POST;Pot;MM Trading Post Pot;pot;756;427;0;TRADING_POST;pot;All;0;mm;overworld;;
-CHEST_GAME;TREASURE_SHOP;Heart Piece;MM Chest Game HP;npc;259;447;0;TREASURE_SHOP;npc;All;0;mm;minigame;;
+CHEST_GAME;TREASURE_SHOP;Game Prize;MM Chest Game HP;npc;259;447;0;TREASURE_SHOP;heart_piece;All;0;mm;minigame;;
 GORON_ELDER;TWIN_ISLANDS;Goron's Lulluby - Intro;MM Goron Elder;none;0;0;0;TWIN_ISLANDS_WINTER;none;Winter;0;mm;overworld;;
 0x0003b;TWIN_ISLANDS;Big Snowball 1;MM Twin Islands Big Snowball 01;none;0;0;0;TWIN_ISLANDS_WINTER;none;Winter;0;mm;overworld;;
 0x0003a;TWIN_ISLANDS;Big Snowball 2;MM Twin Islands Big Snowball 02;none;0;0;0;TWIN_ISLANDS_WINTER;none;Winter;0;mm;overworld;;
@@ -3364,10 +3364,10 @@ GORON_ELDER;TWIN_ISLANDS_WINTER;Goron's Lulluby - Intro;MM Goron Elder;npc;738;2
 0x00041;TWIN_ISLANDS_WINTER;Ramp 1;MM Twin Islands Small Snowball Ramp 1;snowball;226;265;0;TWIN_ISLANDS;snowball;Winter;0;mm;overworld;;
 0x00042;TWIN_ISLANDS_WINTER;Ramp 2;MM Twin Islands Small Snowball Ramp 2;snowball;242;280;1;TWIN_ISLANDS;snowball;Winter;0;mm;overworld;;
 0x00043;TWIN_ISLANDS_WINTER;Ramp 3;MM Twin Islands Small Snowball Ramp 3;snowball;227;279;0;TWIN_ISLANDS;snowball;Winter;0;mm;overworld;;
-0x06;TWIN_ISLANDS_WINTER;Underwater 1;MM Twin Islands Underwater Chest 1;chest;450;479;0;TWIN_ISLANDS;chest;Spring;0;mm;overworld;;
+0x06;TWIN_ISLANDS_WINTER;Underwater 1;MM Twin Islands Underwater Chest 1;chest;450;479;0;TWIN_ISLANDS;heart_piece;Spring;0;mm;overworld;;
 0x00;TWIN_ISLANDS_WINTER;Underwater 2;MM Twin Islands Underwater Chest 2;chest;630;74;0;TWIN_ISLANDS;chest;Spring;0;mm;overworld;;
 BEAVER_1;WATERFALL_RAPIDS;Race 1;MM Waterfall Rapids Beaver Race 1;npc;650;340;0;WATERFALL_RAPIDS;npc;All;0;mm;minigame;;
-BEAVER_2;WATERFALL_RAPIDS;Race 2;MM Waterfall Rapids Beaver Race 2;npc;682;338;0;WATERFALL_RAPIDS;npc;All;0;mm;minigame;;
+BEAVER_2;WATERFALL_RAPIDS;Race 2;MM Waterfall Rapids Beaver Race 2;npc;682;338;0;WATERFALL_RAPIDS;heart_piece;All;0;mm;minigame;;
 0x00;WOODFALL;Entrance;MM Woodfall Entrance Chest;chest;377;484;0;WOODFALL;chest;All;0;mm;overworld;;
 0x00011;WOODFALL;Grass 1;MM Woodfall Grass 1;grass;502;504;0;WOODFALL;grass;All;0;mm;overworld;;
 0x00012;WOODFALL;Grass 2;MM Woodfall Grass 2;grass;492;497;0;WOODFALL;grass;All;0;mm;overworld;;
@@ -3375,9 +3375,9 @@ BEAVER_2;WATERFALL_RAPIDS;Race 2;MM Waterfall Rapids Beaver Race 2;npc;682;338;0
 0x00014;WOODFALL;Grass 4;MM Woodfall Grass 4;grass;454;493;0;WOODFALL;grass;All;0;mm;overworld;;
 0x00015;WOODFALL;Grass 5;MM Woodfall Grass 5;grass;453;505;0;WOODFALL;grass;All;0;mm;overworld;;
 0x00016;WOODFALL;Grass 6;MM Woodfall Grass 6;grass;461;498;0;WOODFALL;grass;All;0;mm;overworld;;
-0x01;WOODFALL;Heart Piece;MM Woodfall HP Chest;chest;275;433;0;WOODFALL;chest;All;0;mm;overworld;;
+0x01;WOODFALL;Chest;MM Woodfall HP Chest;chest;275;433;0;WOODFALL;heart_piece;All;0;mm;overworld;;
 0x02;WOODFALL;Near Owl;MM Woodfall Near Owl Chest;chest;465;54;0;WOODFALL;chest;All;0;mm;overworld;;
-OWL_WOODFALL;WOODFALL;Owl Statue;MM Woodfall Owl Statue;npc;472;115;0;WOODFALL;npc;All;0;mm;overworld;Sword (MM);Hit the statue with a sword
+OWL_WOODFALL;WOODFALL;Owl Statue;MM Woodfall Owl Statue;npc;472;115;0;WOODFALL;owl;All;0;mm;overworld;Sword (MM);Hit the statue with a sword
 0x0006;WOODFALL;Pot 1;MM Woodfall Pot 1;pot;460;130;1;WOODFALL;pot;All;0;mm;overworld;;
 0x0007;WOODFALL;Pot 2;MM Woodfall Pot 2;pot;460;122;0;WOODFALL;pot;All;0;mm;overworld;;
 0x0008;WOODFALL;Pot 3;MM Woodfall Pot 3;pot;460;138;1;WOODFALL;pot;All;0;mm;overworld;;
@@ -3409,7 +3409,7 @@ KOTAKE_RED_POTION;WOODS_MYSTERY;Red Potion Bottle;MM Swamp Potion Shop Kotake;np
 0x00308;WOODS_MYSTERY;West 2;MM Woods of Mystery Grass W 2;grass;273;289;0;WOODS_MYSTERY;grass;All;0;mm;overworld;Clock (Day 1) / Clock (Night 1) / Clock (Day 2) / Clock (Night 2) / Clock (Day 3) / Clock (Night 3);
 0x01;ZORA_CAPE;Ledge 1;MM Zora Cape Ledge Chest 1;chest;783;239;0;ZORA_CAPE;chest;All;0;mm;overworld;;
 0x02;ZORA_CAPE;Ledge 2;MM Zora Cape Ledge Chest 2;chest;753;364;0;ZORA_CAPE;chest;All;0;mm;overworld;;
-OWL_ZORA_CAPE;ZORA_CAPE;Owl Statue;MM Zora Cape Owl Statue;npc;65;335;0;ZORA_CAPE;npc;All;0;mm;overworld;Sword (MM);Hit the statue with a sword
+OWL_ZORA_CAPE;ZORA_CAPE;Owl Statue;MM Zora Cape Owl Statue;npc;65;335;0;ZORA_CAPE;owl;All;0;mm;overworld;Sword (MM);Hit the statue with a sword
 0x0043;ZORA_CAPE;Near Beavers 1;MM Zora Cape Pot Near Beavers 1;pot;769;366;0;ZORA_CAPE;pot;All;0;mm;overworld;;
 0x0044;ZORA_CAPE;Near Beavers 2;MM Zora Cape Pot Near Beavers 2;pot;780;363;0;ZORA_CAPE;pot;All;0;mm;overworld;;
 0x0045;ZORA_CAPE;Near Owl Statue 1;MM Zora Cape Pot Near Owl Statue 1;pot;78;350;1;ZORA_CAPE;pot;All;0;mm;overworld;;
@@ -3417,7 +3417,7 @@ OWL_ZORA_CAPE;ZORA_CAPE;Owl Statue;MM Zora Cape Owl Statue;npc;65;335;0;ZORA_CAP
 0x0047;ZORA_CAPE;Near Owl Statue 3;MM Zora Cape Pot Near Owl Statue 3;pot;93;350;1;ZORA_CAPE;pot;All;0;mm;overworld;;
 0x0048;ZORA_CAPE;Near Owl Statue 4;MM Zora Cape Pot Near Owl Statue 4;pot;93;340;0;ZORA_CAPE;pot;All;0;mm;overworld;;
 0x00;ZORA_CAPE;Underwater;MM Zora Cape Underwater Chest;chest;361;465;0;ZORA_CAPE;chest;All;0;mm;overworld;;
-0x07;ZORA_CAPE;Waterfall - Heart Piece;MM Zora Cape Waterfall HP;collectible;797;406;0;ZORA_CAPE;collectible;All;0;mm;overworld;;
+0x07;ZORA_CAPE;Waterfall;MM Zora Cape Waterfall HP;collectible;797;406;0;ZORA_CAPE;heart_piece;All;0;mm;overworld;;
 0x15;ZORA_CAPE;Chest;MM Zora Cape Grotto;none;0;0;0;MM_GROTTO_ZORA_CAPE_GENERIC;none;All;0;mm;overworld;;
 0x03500;ZORA_CAPE;Grass 1;MM Zora Cape Grotto Grass 01;none;0;0;0;MM_GROTTO_ZORA_CAPE_GENERIC;none;All;0;mm;overworld;;
 0x03501;ZORA_CAPE;Grass 2;MM Zora Cape Grotto Grass 02;none;0;0;0;MM_GROTTO_ZORA_CAPE_GENERIC;none;All;0;mm;overworld;;
@@ -3437,9 +3437,9 @@ BEAVER_1;ZORA_CAPE;Race 1;MM Waterfall Rapids Beaver Race 1;none;0;0;0;WATERFALL
 BEAVER_2;ZORA_CAPE;Race 2;MM Waterfall Rapids Beaver Race 2;none;0;0;0;WATERFALL_RAPIDS;none;All;0;mm;overworld;;
 GREAT_FAIRY_OCEAN;ZORA_CAPE;Double Defense;MM Great Bay Great Fairy;none;0;0;0;MM_FAIRY_GREAT_BAY_COAST;none;All;0;mm;overworld;;
 ZORA_HALL_LIGHTS;ZORA_HALL;Scene Lights;MM Zora Hall Scene Lights;npc;510;234;0;ZORA_HALL;npc;All;0;mm;overworld;;
-ZORA_EVAN;ZORA_HALL_ROOMS;Evan - Heart Piece;MM Zora Hall Evan HP;npc;385;421;0;ZORA_EVAN_ROOM;npc;All;0;mm;overworld;;
+ZORA_EVAN;ZORA_HALL_ROOMS;Evan;MM Zora Hall Evan HP;npc;385;421;0;ZORA_EVAN_ROOM;heart_piece;All;0;mm;overworld;;
 SCRUB_OCEAN;ZORA_HALL_ROOMS;Title Deed;MM Zora Hall Scrub Deed;npc;481;296;0;ZORA_HALL_ROOMS;scrub;All;0;mm;overworld;;
-0x1e;ZORA_HALL_ROOMS;Scrub - Heart Piece;MM Zora Hall Scrub HP;collectible;604;257;0;ZORA_HALL_ROOMS;collectible;All;0;mm;overworld;;
+0x1e;ZORA_HALL_ROOMS;Shell;MM Zora Hall Scrub HP;collectible;604;257;0;ZORA_HALL_ROOMS;heart_piece;All;0;mm;overworld;;
 SCRUB_SHOP_POTION_GREEN;ZORA_HALL_ROOMS;Scrub - Shop;MM Zora Hall Scrub Shop;npc;497;296;1;ZORA_HALL_ROOMS;shop;All;0;mm;overworld;;
 0x13;ZORA_HALL_ROOMS;Item 1;MM Zora Shop Item 1;shop;497;250;0;MM_ZORA_SHOP;shop;All;0;mm;overworld;;
 0x14;ZORA_HALL_ROOMS;Item 2;MM Zora Shop Item 2;shop;476;250;0;MM_ZORA_SHOP;shop;All;0;mm;overworld;;
