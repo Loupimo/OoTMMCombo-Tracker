@@ -336,7 +336,7 @@ public:
     CommonBaseItemTree* ObjCat;             // The object category the rederer belongs to.
 
     std::vector<ObjectItemTree*> Objects;   // The list of all objects associated to this renderer.
-    QPixmap Icon;					        // This icon that match the renderer category.
+    QPixmap Icon;					        // This icon that match the item or category to render.
 
 public:
 

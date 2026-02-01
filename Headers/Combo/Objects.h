@@ -26,6 +26,45 @@ enum ObjectContext
 	Spring		// The object is only present when season is spring
 };
 
+enum ObjectIconMap
+{
+	// Masks
+	skull,
+	spooky,
+	keaton,
+	bunny,
+	truth,
+	blast,
+	bremen,
+	captain,
+	couple,
+	deity,
+	fairy_mask,
+	garo,
+	gero,
+	giant,
+	gibdo,
+	goht,
+	goron,
+	gyorg,
+	kafei,
+	kamaro,
+	night,
+	odolwa,
+	postman,
+	romani,
+	scents,
+	stone,
+	troupe,
+	twinmold,
+	zora,
+
+	// Special : must be at the end
+
+	type,			// Tells to use the ID matching the type of the object
+	render_type		// Tells to use the ID matching the render type of the obejct
+};
+
 enum ObjectType
 {
 	none = 0,
@@ -107,6 +146,7 @@ typedef struct ObjectInfo
 	int Position[3];								// Object position on its corresponding scene image. ID 0 = X, ID 1 = Y, ID 2 = Z
 	uint32_t RenderScene;							// The scene where the object should be rendered
 	ObjectType RenderType;							// The type to use to render the object
+	ObjectIconMap MapIcon;							// The icon to use to render the object on the map
 	ObjectContext Context;							// The context in which the object appears
 	uint32_t RoomID;								// The room in which the object should be put
 	ZGame GameID;									// The actual game to which this object belongs to.

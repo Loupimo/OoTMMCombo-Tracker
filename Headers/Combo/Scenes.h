@@ -7,7 +7,8 @@ enum LocType
 {
 	overworld,
 	dungeon,
-	minigame
+	minigame,
+	broken
 };
 
 typedef struct SceneMetaInfo
