@@ -216,12 +216,18 @@ public:
     void RefreshScenesObjectCounts();
 
     /*
+    *   Reset all map, region, scenes counters.
+    */
+    void ResetAllObjectCounts();
+
+    /*
     *   Hide or unhide tree elements regarding the given string.
     *
     *   @param TreeWidget      The tree to filter.
     *   @param SearchText      The text to match.
     */
     void FilterTree(QTreeWidget* TreeWidget, const QString& SearchText);
+
 
     void OnToggleExpandCollapse(QTreeWidget* TreeWidget, bool Expand);
 

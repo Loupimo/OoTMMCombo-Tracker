@@ -64,6 +64,9 @@ public:
     FilterManager(GameTab * TabRef = nullptr);
 
     void ToggleActiveType(ObjectType Target);
+    void ExcludeNewObject(ObjectInfo* ToExclude);
+
+    bool IsObjectExcluded(ObjectInfo* Target);
 
 signals:
     void filterChanged();

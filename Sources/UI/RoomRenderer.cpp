@@ -1,4 +1,5 @@
 #include "UI/RoomRenderer.h"
+#include "UI/FilterManager.h"
 
 const QHash<int, std::vector<RoomInfo>>* GetSceneRooms(SceneInfo* Scene)
 {
@@ -19,15 +20,19 @@ RoomItemTree::RoomItemTree(RoomInfo* RInfo, SceneItemTree* ParentSceneItem)
 	this->Info.RoomID = RInfo->RoomID;
 	this->Info.RoomName = RInfo->RoomName;
 	this->SceneItem = ParentSceneItem;
+	this->Filter = ParentSceneItem->Filter;
 	this->FoundObjects = 0;
 	this->TotalObjects = 0;
-	for (size_t i = 0; i < this->SceneItem->Scene->Objects->NumOfObjs; i++)
+	this->InitRoomCounters();
+	/*for (size_t i = 0; i < this->SceneItem->Scene->Objects->NumOfObjs; i++)
 	{
-		if (this->SceneItem->Scene->Objects->Objects[i].Type != ObjectType::none && this->SceneItem->Scene->Objects->Objects[i].RenderScene == this->SceneItem->Scene->SceneID && this->SceneItem->Scene->Objects->Objects[i].RoomID == this->Info.RoomID)
+		ObjectInfo* currObj = &this->SceneItem->Scene->Objects->Objects[i];
+
+		if (currObj->Type != ObjectType::none && currObj->RenderScene == this->SceneItem->Scene->SceneID && currObj->RoomID == this->Info.RoomID && !ParentSceneItem->Filter->IsObjectExcluded(currObj))
 		{
 			this->TotalObjects++;
 		}
-	}
+	}*/
 	this->RefreshItemName();
 }
 
@@ -65,7 +70,7 @@ uint32_t RoomItemTree::RefreshRoomObjectsCount()
 	{   // Browse each scene objects
 
 		ObjectInfo* currObject = &this->SceneItem->Scene->Objects->Objects[i];
-		if (currObject->Type != ObjectType::none && currObject->RenderScene == this->SceneItem->Scene->SceneID && currObject->RoomID == this->Info.RoomID && currObject->Status != ObjectState::Hidden)
+		if (currObject->Type != ObjectType::none && currObject->RenderScene == this->SceneItem->Scene->SceneID && currObject->RoomID == this->Info.RoomID && currObject->Status != ObjectState::Hidden && !this->Filter->IsObjectExcluded(currObject))
 		{   // Ignore the object if the render scene ID is different from this scene ID
 
 			this->FoundObjects++;
@@ -74,6 +79,27 @@ uint32_t RoomItemTree::RefreshRoomObjectsCount()
 
 	this->RefreshItemName();
 	return this->FoundObjects;
+}
+
+
+void RoomItemTree::InitRoomCounters()
+{
+	this->FoundObjects = 0;
+	this->TotalObjects = 0;
+	for (size_t i = 0; i < this->SceneItem->Scene->Objects->NumOfObjs; i++)
+	{
+		ObjectInfo* currObj = &this->SceneItem->Scene->Objects->Objects[i];
+
+		if (currObj->Type != ObjectType::none && currObj->RenderScene == this->SceneItem->Scene->SceneID && currObj->RoomID == this->Info.RoomID && !this->Filter->IsObjectExcluded(currObj))
+		{
+			this->TotalObjects++;
+
+			if (currObj->Status != ObjectState::Hidden)
+			{
+				this->FoundObjects++;
+			}
+		}
+	}
 }
 
 

@@ -47,4 +47,11 @@ public:
 	*   Refresh the region text name.
 	*/
 	void RefreshObjsCountText();
+
+	/*
+	*   Reset the region counters.
+	*/
+	void ResetRegion();
+
+
 };

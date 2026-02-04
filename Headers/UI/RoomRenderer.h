@@ -450,6 +450,11 @@ public:
 	*	@return The number of collected objects.
 	*/
 	uint32_t RefreshRoomObjectsCount();
+	
+	/*
+	*   Initialize the room counters
+	*/
+	void InitRoomCounters();
 
 	/*
 	*   Refresh the room text name.

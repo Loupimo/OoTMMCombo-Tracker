@@ -25,6 +25,8 @@
 
 FilterManager::FilterManager(GameTab* TabRef) : QToolButton(TabRef)
 {
+    this->ActiveFilter = QSet<ObjectType>();
+    this->ExcludedObj = QMap<uint32_t, QSet<ObjectInfo*>> ();
 	this->TabOwner = TabRef;
     this->setIcon(QIcon("./Resources/Common/Filter.png"));
     this->setPopupMode(QToolButton::InstantPopup);
@@ -94,4 +96,24 @@ void FilterManager::ToggleActiveType(ObjectType Target)
 
         this->ActiveFilter.insert(Target);
     }
+}
+
+void FilterManager::ExcludeNewObject(ObjectInfo* ToExclude)
+{
+    if (!this->ExcludedObj.contains(ToExclude->Scene))
+    {
+        this->ExcludedObj.insert(ToExclude->Scene, QSet<ObjectInfo*>());
+    }
+
+    this->ExcludedObj[ToExclude->Scene].insert(ToExclude);
+}
+
+
+bool FilterManager::IsObjectExcluded(ObjectInfo* Target)
+{
+    auto it = ExcludedObj.constFind(Target->Scene);
+    if (it == ExcludedObj.constEnd())
+        return false;
+
+    return it.value().contains(Target);
 }

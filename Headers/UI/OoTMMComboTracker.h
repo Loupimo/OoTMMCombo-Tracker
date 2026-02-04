@@ -4,6 +4,7 @@
 #include <QTabWidget>
 #include <QStringList>
 #include "ui_OoTMMComboTracker.h"
+#include "UI/Settings.h"
 #include "LogTab.h"
 #include "GameTab.h"
 
@@ -15,6 +16,9 @@ class OoTMMComboTracker : public QMainWindow
 {
     Q_OBJECT
 
+public:
+    Settings ROMSettings;            // The settings used when the ROM was built.
+
 private:
 
     Ui::OoTMMComboTrackerClass ui;   // The main window UI.
@@ -25,7 +29,6 @@ private:
     QStringList RecentFiles;         // The list of the last opened files.
     byte MaxRecentFiles = 5;         // The maximum number of recent files to show (auto save not counted).
     QList<QAction*> RecentActions;   // The actual recent files options.
-
 
 public:
 
@@ -98,6 +101,7 @@ public:
     void UpdateRecentFiles();
     void AddRecentFile(const QString& filePath);
     void UpdateTrackingState(QString NewState, QIcon NewIcon);
+    void ApplySettings();
 
     /*
     *   Resfresh the tracker game tabs.

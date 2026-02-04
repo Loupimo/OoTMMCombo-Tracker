@@ -108,7 +108,39 @@ void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
 
 			switch (currObj->RenderType)
 			{	
+				case ObjectType::gs:
+				{	// OoT gold skulltula shuffling
 
+					switch (this->ROMSettings["goldSkulltulaTokens"])
+					{
+						case ShuffleSetting::vanilla:
+						{
+							Filter->ExcludeNewObject(currObj);
+							break;
+						}
+
+						case ShuffleSetting::overworld:
+						{
+							if (currObj->LocationType != LocType::overworld)
+							{
+								Filter->ExcludeNewObject(currObj);
+							}
+							break;
+						}
+
+						case ShuffleSetting::dungeons:
+						{
+							if (currObj->LocationType != LocType::dungeon)
+							{
+								Filter->ExcludeNewObject(currObj);
+							}
+							break;
+						}
+
+						default:
+							break;
+					}
+				}
 
 				case ObjectType::none:
 				default:
@@ -118,17 +150,7 @@ void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
 				}
 			}
 
-			switch (this->ROMSettings["songs"])
-			{
-			case ShuffleSetting::vanilla:
-			{
-
-				break;
-			}
-
-			default:
-				break;
-			}
+			
 		}
 	}
 }

@@ -190,7 +190,7 @@ typedef struct SceneMetaInfo
 #define MQ_INSIDE_GANON_CASTLE					0x9c
 
 // Spoiler Log only
-#define INSIDE_EGGS								WINDMILL + 1
+#define INSIDE_EGGS								MQ_INSIDE_GANON_CASTLE + 1
 #define MARKET									INSIDE_EGGS + 1
 
 #define OOT_NUM_SCENES							MARKET + 1	// OOT and OOT MQ have the same number of scenes
@@ -342,6 +342,19 @@ const SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 	{ "Shooting Gallery", "./Resources/OoT/Market/Shooting.png", (uint8_t)OoTRegions::Market, false },
 	{ "Silo", "./Resources/OoT/Ranch/Silo.png", (uint8_t)OoTRegions::Lon_Lon_Ranch, false },
 	{ "Windmill", "./Resources/OoT/Kakariko/Windmill.png", (uint8_t)OoTRegions::Kakariko, true },
+
+	// MQ
+	{ "MQ Deku Tree", "./Resources/OoT/Dungeons/Deku_Tree.png", (uint8_t)OoTRegions::Dungeons, false },
+	{ "MQ Dodongo's Cavern", "./Resources/OoT/Dungeons/Dodongo_Cavern.png", (uint8_t)OoTRegions::Dungeons, false },
+	{ "MQ Inside Jabu-Jabu", "./Resources/OoT/Dungeons/Jabu_Jabu.png", (uint8_t)OoTRegions::Dungeons, false },
+	{ "MQ Forest Temple", "./Resources/OoT/Dungeons/Forest_Temple.png", (uint8_t)OoTRegions::Dungeons, false },
+	{ "MQ Fire Temple", "./Resources/OoT/Dungeons/Fire_Temple.png", (uint8_t)OoTRegions::Dungeons, false },
+	{ "MQ Water Temple", "./Resources/OoT/Dungeons/Water_Temple.png", (uint8_t)OoTRegions::Dungeons, false },
+	{ "MQ Spirit Temple", "./Resources/OoT/Dungeons/Spirit_Temple.png", (uint8_t)OoTRegions::Dungeons, false },
+	{ "MQ Shadow Temple", "./Resources/OoT/Dungeons/Shadow_Temple.png", (uint8_t)OoTRegions::Dungeons, false },
+	{ "MQ Bottom of the Well", "./Resources/OoT/Dungeons/Well.png", (uint8_t)OoTRegions::Dungeons, false },
+	{ "MQ Ice Cavern", "./Resources/OoT/Dungeons/Ice_Cavern.png", (uint8_t)OoTRegions::Dungeons, false },
+	{ "MQ Ganon Tower", "./Resources/OoT/Ganon/Tower.png", (uint8_t)OoTRegions::Dungeons, false },
 
 	// Spoiler log
 	{ "Inside Eggs", "", (uint8_t)OoTRegions::None, false },

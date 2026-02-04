@@ -5715,6 +5715,20 @@ SceneObjects OoTSceneObjects[OOT_NUM_SCENES] =
 	CreateSceneObjects(SILO),
 	CreateSceneObjects(WINDMILL),
 
+	// MQ Scenes
+	CreateSceneObjects(MQ_DEKU_TREE),
+	CreateSceneObjects(MQ_DODONGO_CAVERN),
+	CreateSceneObjects(MQ_INSIDE_JABU_JABU),
+	CreateSceneObjects(MQ_TEMPLE_FOREST),
+	CreateSceneObjects(MQ_TEMPLE_FIRE),
+	CreateSceneObjects(MQ_TEMPLE_WATER),
+	CreateSceneObjects(MQ_TEMPLE_SHADOW),
+	CreateSceneObjects(MQ_TEMPLE_SPIRIT),
+	CreateSceneObjects(MQ_BOTTOM_OF_THE_WELL),
+	CreateSceneObjects(MQ_ICE_CAVERN),
+	CreateSceneObjects(MQ_GERUDO_TRAINING_GROUND),
+	CreateSceneObjects(MQ_INSIDE_GANON_CASTLE),
+
 	// Spoiler Log
 	CreateSceneObjects(INSIDE_EGGS),
 	CreateSceneObjects(MARKET)

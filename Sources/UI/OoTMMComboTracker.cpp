@@ -401,9 +401,42 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
         }
     }
 
+    this->ApplySettings();
     this->RefreshTracker();
 
     AppConfig::SetLastSpoilerLogPath(FilePath);
+}
+
+
+void OoTMMComboTracker::ApplySettings()
+{
+    switch (this->ROMSettings.Game)
+    {
+        case ROMGame::oot:
+        {
+            this->TabWidget->setTabVisible(this->TabWidget->indexOf(this->OoTTab), true);
+            this->TabWidget->setTabVisible(this->TabWidget->indexOf(this->MMTab), false);
+            this->ROMSettings.ApplyOoTSettingsToFilter(this->OoTTab->GameMaps->FilterButton);
+            break;
+        }
+        
+        case ROMGame::mm:
+        {
+            this->TabWidget->setTabVisible(this->TabWidget->indexOf(this->OoTTab), false);
+            this->TabWidget->setTabVisible(this->TabWidget->indexOf(this->MMTab), true);
+            this->ROMSettings.ApplyMMSettingsToFilter(this->MMTab->GameMaps->FilterButton);
+            break;
+        }
+
+        case ROMGame::ootmm:
+        default:
+        {
+            this->TabWidget->setTabVisible(this->TabWidget->indexOf(this->OoTTab), true);
+            this->TabWidget->setTabVisible(this->TabWidget->indexOf(this->MMTab), true);
+            this->ROMSettings.ApplySettings(this->OoTTab->GameMaps->FilterButton, this->MMTab->GameMaps->FilterButton);
+            break;
+        }
+    }
 }
 
 #pragma endregion

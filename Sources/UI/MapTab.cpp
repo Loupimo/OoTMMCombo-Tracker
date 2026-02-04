@@ -419,6 +419,49 @@ void MapTab::RefreshScenesObjectCounts()
 }
 
 
+void MapTab::ResetAllObjectCounts()
+{
+    // Reset game tab counters
+    this->FilterButton->TabOwner->FoundObjects = 0;
+    this->FilterButton->TabOwner->TotalObjects = 0;
+
+    for (size_t i = 0; i < this->Regions.size(); i++)
+    {   // Reset all region counters
+
+        this->Regions[i]->ResetRegion();
+    }
+
+    for (SceneItemTree * currScene : this->Scenes.values())
+    {   // Creates all the scenes that match this map category
+
+        uint8_t sceneRegionID = currScene->Scene->Info->ParentRegion;
+        if (sceneRegionID != 0)
+        {   // We don't want to add scene that has no object
+
+            RegionTree* currRegion = this->FindRegionTree(sceneRegionID);
+
+            // Reset scene object counters
+            currScene->CountSceneObjects();
+            currScene->RefreshItemName();
+
+            if (currScene->Rooms.size() > 0)
+            {   // Refresh count by using room
+
+                for (size_t i = 0; i < currScene->Rooms.size(); i++)
+                {
+                    currScene->Rooms[i]->InitRoomCounters();
+                    currScene->Rooms[i]->RefreshItemName();
+                }
+            }
+
+            // Update the region object counts
+            currRegion->AddObjectCounts(currScene->GetCollectedObjects(), currScene->GetTotalObjects());
+            currRegion->RefreshObjsCountText();
+        }
+    }
+}
+
+
 void MapTab::FilterTree(QTreeWidget* TreeWidget, const QString& SearchText)
 {
     for (int i = 0; i < TreeWidget->topLevelItemCount(); ++i)

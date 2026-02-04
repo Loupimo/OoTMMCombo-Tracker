@@ -160,6 +160,18 @@ CreateInfoScenes(OOT_NUM_SCENES, OoTOverworld,
     CreateOverworldScene(MARKET_SHOOTING, OOT_GAME),
     CreateOverworldScene(SILO, OOT_GAME),
     CreateOverworldScene(WINDMILL, OOT_GAME),
+    CreateOverworldScene(MQ_DEKU_TREE, OOT_GAME),
+    CreateOverworldScene(MQ_DODONGO_CAVERN, OOT_GAME),
+    CreateOverworldScene(MQ_INSIDE_JABU_JABU, OOT_GAME),
+    CreateOverworldScene(MQ_TEMPLE_FOREST, OOT_GAME),
+    CreateOverworldScene(MQ_TEMPLE_FIRE, OOT_GAME),
+    CreateOverworldScene(MQ_TEMPLE_WATER, OOT_GAME),
+    CreateOverworldScene(MQ_TEMPLE_SPIRIT, OOT_GAME),
+    CreateOverworldScene(MQ_TEMPLE_SHADOW, OOT_GAME),
+    CreateOverworldScene(MQ_BOTTOM_OF_THE_WELL, OOT_GAME),
+    CreateOverworldScene(MQ_ICE_CAVERN, OOT_GAME),
+    CreateOverworldScene(MQ_GERUDO_TRAINING_GROUND, OOT_GAME),
+    CreateOverworldScene(MQ_INSIDE_GANON_CASTLE, OOT_GAME),
     CreateOverworldScene(INSIDE_EGGS, OOT_GAME),
     CreateOverworldScene(MARKET, OOT_GAME)
 )
@@ -361,7 +373,8 @@ void GameTab::UpdateObjectVisibility()
 
 void GameTab::RefreshGameTab()
 {
-    this->GameMaps->RefreshScenesObjectCounts();
+    //this->GameMaps->RefreshScenesObjectCounts();
+    this->GameMaps->ResetAllObjectCounts();
 }
 
 void GameTab::LoadGameTab()

@@ -339,7 +339,8 @@ void LogTab::LoadSpoilerShuffleParam(QString& SettingsSection)
     QRegularExpressionMatchIterator it = reg.globalMatch(sections[1]);
 
     QStringList settings;
-    Settings sets = Settings();
+    this->WinOwner->ROMSettings.~Settings();
+    this->WinOwner->ROMSettings = Settings();
     while (it.hasNext())
     {   // Fill the maps array with all the gathered matches
 
@@ -347,7 +348,7 @@ void LogTab::LoadSpoilerShuffleParam(QString& SettingsSection)
         settings.append(match.captured(1));
         reg = QRegularExpression("^(.+):\\s(.+)", QRegularExpression::MultilineOption);
         match = reg.globalMatch(match.captured(1)).next();
-        sets.AddSetting(match.captured(1), match.captured(2));
+        this->WinOwner->ROMSettings.AddSetting(match.captured(1), match.captured(2));
     }
 }
 

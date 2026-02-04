@@ -64,3 +64,10 @@ void RegionTree::RefreshObjsCountText()
     finalName[offset + 1] = '\0';
     this->setText(0, finalName);
 }
+
+
+void RegionTree::ResetRegion()
+{
+    this->FoundObjs = 0;
+    this->TotalObjs = 0;
+}

@@ -24,9 +24,9 @@ SceneInfo::SceneInfo(int PSceneID, int PGameID, SceneType PType)
 SceneItemTree::SceneItemTree(SceneInfo* SceneToRender, FilterManager * Filter, QTreeWidgetItem* Parent) : QTreeWidgetItem(Parent)
 {
     this->Scene = SceneToRender;
+    this->Filter = Filter;
     this->CountSceneObjects();      // Count the scene objects
     this->UpdateObjectCounts(0);    // Used to refresh region counters and item name
-    this->Filter = Filter;
 
     const QHash<int, std::vector<RoomInfo>>* tmp = GetSceneRooms(this->Scene);
 
@@ -214,7 +214,7 @@ void SceneItemTree::CountSceneObjects()
     {   // Browse each scene objects
 
         ObjectInfo* currObject = &this->Scene->Objects->Objects[i];
-        if (currObject->RenderScene != this->Scene->SceneID || currObject->Type == ObjectType::none)
+        if (currObject->RenderScene != this->Scene->SceneID || currObject->Type == ObjectType::none || Filter->IsObjectExcluded(currObject))
         {   // Ignore the object if the render scene ID is different from this scene ID
 
             continue;
@@ -299,7 +299,7 @@ SceneRenderer::SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeW
     {   // Browse each scene objects
 
         ObjectInfo* currObject = &this->CurrScene->Objects->Objects[i];
-        if (currObject->RenderScene != this->CurrScene->SceneID || currObject->Type == ObjectType::none || Filter->ExcludedObj[this->CurrScene->SceneID].contains(currObject))
+        if (currObject->RenderScene != this->CurrScene->SceneID || currObject->Type == ObjectType::none || Filter->IsObjectExcluded(currObject))
         {   // Ignore the object if the render scene ID is different from this scene ID or if the object is excluded by the filter
 
             continue;
