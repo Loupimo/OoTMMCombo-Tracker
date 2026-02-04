@@ -77,8 +77,8 @@ ObjectInfo MARKET_BAZAARSceneObjects[MARKET_BAZAARNumOfObjs] =
 const size_t BOMBCHU_BOWLING_ALLEYNumOfObjs = 2;
 ObjectInfo BOMBCHU_BOWLING_ALLEYSceneObjects[BOMBCHU_BOWLING_ALLEYNumOfObjs] =
 {
-	{ BOMBCHU_BOWLING_1, BOMBCHU_BOWLING_ALLEY, "Reward 1", "OOT Bombchu Bowling Reward 1", ObjectType::npc, {816, 248, 0}, BOMBCHU_BOWLING_ALLEY, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::minigame, NULL },
-	{ BOMBCHU_BOWLING_2, BOMBCHU_BOWLING_ALLEY, "Reward 2", "OOT Bombchu Bowling Reward 2", ObjectType::npc, {743, 248, 0}, BOMBCHU_BOWLING_ALLEY, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::minigame, NULL }
+	{ BOMBCHU_BOWLING_1, BOMBCHU_BOWLING_ALLEY, "Reward 1", "OOT Bombchu Bowling Reward 1", ObjectType::npc, {816, 248, 0}, BOMBCHU_BOWLING_ALLEY, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::minigame, NULL },
+	{ BOMBCHU_BOWLING_2, BOMBCHU_BOWLING_ALLEY, "Reward 2", "OOT Bombchu Bowling Reward 2", ObjectType::npc, {743, 248, 0}, BOMBCHU_BOWLING_ALLEY, ObjectType::npc, ObjectIconMap::biggest_bomb, ObjectContext::All, 0, ZGame::oot, LocType::minigame, NULL }
 };
 
 const size_t BOMBCHU_SHOPNumOfObjs = 8;
@@ -109,7 +109,7 @@ ObjectInfo BOTTOM_OF_THE_WELLSceneObjects[BOTTOM_OF_THE_WELLNumOfObjs] =
 	{ 0x07, BOTTOM_OF_THE_WELL, "Chest", "OOT Bottom of the Well Map", ObjectType::chest, {880, 674, 0}, BOTTOM_OF_THE_WELL, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 1, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x01, BOTTOM_OF_THE_WELL, "Coffin", "OOT Bottom of the Well Coffin", ObjectType::collectible, {122, 405, 0}, BOTTOM_OF_THE_WELL, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x0a, BOTTOM_OF_THE_WELL, "Pits", "OOT Bottom of the Well Pits", ObjectType::chest, {1189, 324, 0}, BOTTOM_OF_THE_WELL, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
-	{ 0x03, BOTTOM_OF_THE_WELL, "Lens of Truth", "OOT Bottom of the Well Lens", ObjectType::chest, {1239, 668, 0}, BOTTOM_OF_THE_WELL, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
+	{ 0x03, BOTTOM_OF_THE_WELL, "Lens of Truth", "OOT Bottom of the Well Lens", ObjectType::chest, {1239, 668, 0}, BOTTOM_OF_THE_WELL, ObjectType::chest, ObjectIconMap::lens, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x14, BOTTOM_OF_THE_WELL, "Lens of Truth - Side", "OOT Bottom of the Well Lens Side Chest", ObjectType::chest, {1330, 668, 0}, BOTTOM_OF_THE_WELL, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x48, BOTTOM_OF_THE_WELL, "East Cage", "OOT Bottom of the Well GS East Cage", ObjectType::gs, {1201, 368, 0}, BOTTOM_OF_THE_WELL, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x4a, BOTTOM_OF_THE_WELL, "Inner West", "OOT Bottom of the Well GS Inner West", ObjectType::gs, {743, 199, 0}, BOTTOM_OF_THE_WELL, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
@@ -161,9 +161,9 @@ ObjectInfo BOTTOM_OF_THE_WELLSceneObjects[BOTTOM_OF_THE_WELLNumOfObjs] =
 	{ 0x0020d, BOTTOM_OF_THE_WELL, "Heart 1", "OOT Bottom of the Well Heart 1", ObjectType::heart, {245, 403, 0}, BOTTOM_OF_THE_WELL, ObjectType::heart, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x0020e, BOTTOM_OF_THE_WELL, "Heart 2", "OOT Bottom of the Well Heart 2", ObjectType::heart, {188, 332, 0}, BOTTOM_OF_THE_WELL, ObjectType::heart, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x00113, BOTTOM_OF_THE_WELL, "Basement", "OOT Bottom of the Well Basement Big Fairy", ObjectType::fairy_spot, {862, 224, 0}, BOTTOM_OF_THE_WELL, ObjectType::fairy_spot, ObjectIconMap::render_type, ObjectContext::All, 1, ZGame::oot, LocType::dungeon, NULL },
-	{ 0x03, BOTTOM_OF_THE_WELL, "Map", "OOT MQ Bottom of the Well Map Chest", ObjectType::chest, {0, 0, 0}, MQ_BOTTOM_OF_THE_WELL, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x02, BOTTOM_OF_THE_WELL, "Compass", "OOT MQ Bottom of the Well Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_BOTTOM_OF_THE_WELL, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x01, BOTTOM_OF_THE_WELL, "Lens of Truth", "OOT MQ Bottom of the Well Lens Chest", ObjectType::chest, {0, 0, 0}, MQ_BOTTOM_OF_THE_WELL, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x03, BOTTOM_OF_THE_WELL, "Map", "OOT MQ Bottom of the Well Map Chest", ObjectType::chest, {0, 0, 0}, MQ_BOTTOM_OF_THE_WELL, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x02, BOTTOM_OF_THE_WELL, "Compass", "OOT MQ Bottom of the Well Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_BOTTOM_OF_THE_WELL, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x01, BOTTOM_OF_THE_WELL, "Lens of Truth", "OOT MQ Bottom of the Well Lens Chest", ObjectType::chest, {0, 0, 0}, MQ_BOTTOM_OF_THE_WELL, ObjectType::chest, ObjectIconMap::lens, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x02, BOTTOM_OF_THE_WELL, "Dead Hand", "OOT MQ Bottom of the Well Dead Hand Key", ObjectType::collectible, {0, 0, 0}, MQ_BOTTOM_OF_THE_WELL, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x01, BOTTOM_OF_THE_WELL, "East Middle Room", "OOT MQ Bottom of the Well East Middle Room Key", ObjectType::collectible, {0, 0, 0}, MQ_BOTTOM_OF_THE_WELL, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x48, BOTTOM_OF_THE_WELL, "Basement", "OOT MQ Bottom of the Well GS Basement", ObjectType::gs, {0, 0, 0}, MQ_BOTTOM_OF_THE_WELL, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
@@ -206,9 +206,9 @@ ObjectInfo BOTTOM_OF_THE_WELLSceneObjects[BOTTOM_OF_THE_WELLNumOfObjs] =
 const size_t MQ_BOTTOM_OF_THE_WELLNumOfObjs = 40;
 ObjectInfo MQ_BOTTOM_OF_THE_WELLSceneObjects[MQ_BOTTOM_OF_THE_WELLNumOfObjs] =
 {
-	{ 0x03, BOTTOM_OF_THE_WELL, "Map", "OOT MQ Bottom of the Well Map Chest", ObjectType::chest, {0, 0, 0}, MQ_BOTTOM_OF_THE_WELL, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x02, BOTTOM_OF_THE_WELL, "Compass", "OOT MQ Bottom of the Well Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_BOTTOM_OF_THE_WELL, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x01, BOTTOM_OF_THE_WELL, "Lens of Truth", "OOT MQ Bottom of the Well Lens Chest", ObjectType::chest, {0, 0, 0}, MQ_BOTTOM_OF_THE_WELL, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x03, BOTTOM_OF_THE_WELL, "Map", "OOT MQ Bottom of the Well Map Chest", ObjectType::chest, {0, 0, 0}, MQ_BOTTOM_OF_THE_WELL, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x02, BOTTOM_OF_THE_WELL, "Compass", "OOT MQ Bottom of the Well Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_BOTTOM_OF_THE_WELL, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x01, BOTTOM_OF_THE_WELL, "Lens of Truth", "OOT MQ Bottom of the Well Lens Chest", ObjectType::chest, {0, 0, 0}, MQ_BOTTOM_OF_THE_WELL, ObjectType::chest, ObjectIconMap::lens, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x02, BOTTOM_OF_THE_WELL, "Dead Hand", "OOT MQ Bottom of the Well Dead Hand Key", ObjectType::collectible, {0, 0, 0}, MQ_BOTTOM_OF_THE_WELL, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x01, BOTTOM_OF_THE_WELL, "East Middle Room", "OOT MQ Bottom of the Well East Middle Room Key", ObjectType::collectible, {0, 0, 0}, MQ_BOTTOM_OF_THE_WELL, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x48, BOTTOM_OF_THE_WELL, "Basement", "OOT MQ Bottom of the Well GS Basement", ObjectType::gs, {0, 0, 0}, MQ_BOTTOM_OF_THE_WELL, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
@@ -251,7 +251,7 @@ ObjectInfo MQ_BOTTOM_OF_THE_WELLSceneObjects[MQ_BOTTOM_OF_THE_WELLNumOfObjs] =
 const size_t CASTLE_COURTYARDNumOfObjs = 3;
 ObjectInfo CASTLE_COURTYARDSceneObjects[CASTLE_COURTYARDNumOfObjs] =
 {
-	{ ZELDA_LETTER, CASTLE_COURTYARD, "Zelda's Letter", "OOT Zelda's Letter", ObjectType::npc, {757, 318, 0}, CASTLE_COURTYARD, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
+	{ ZELDA_LETTER, CASTLE_COURTYARD, "Zelda's Letter", "OOT Zelda's Letter", ObjectType::npc, {757, 318, 0}, CASTLE_COURTYARD, ObjectType::npc, ObjectIconMap::letter, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ ZELDA_SONG, CASTLE_COURTYARD, "Zelda's Song", "OOT Zelda's Song", ObjectType::npc, {174, 470, 0}, CASTLE_COURTYARD, ObjectType::song, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x00005, CASTLE_COURTYARD, "Mario Painting", "OOT Castle Courtyard Wonder Item", ObjectType::wonder, {273, 205, 0}, CASTLE_COURTYARD, ObjectType::wonder, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL }
 };
@@ -328,9 +328,9 @@ ObjectInfo DEATH_MOUNTAIN_TRAILSceneObjects[DEATH_MOUNTAIN_TRAILNumOfObjs] =
 {
 	{ 0x01, DEATH_MOUNTAIN_TRAIL, "Bombable Wall - Goron City", "OOT Death Mountain Trail Chest", ObjectType::chest, {481, 377, 0}, DEATH_MOUNTAIN_TRAIL, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 1, ZGame::oot, LocType::overworld, NULL },
 	{ 0x1e, DEATH_MOUNTAIN_TRAIL, "Above Cavern", "OOT Death Mountain Trail HP", ObjectType::collectible, {44, 222, 0}, DEATH_MOUNTAIN_TRAIL, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
-	{ TRADE_PRESCRIPTION, DEATH_MOUNTAIN_TRAIL, "Prescription", "OOT Death Mountain Trail Prescription", ObjectType::npc, {565, 119, 0}, DEATH_MOUNTAIN_TRAIL, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Adult, 2, ZGame::oot, LocType::overworld, NULL },
-	{ TRADE_CLAIM_CHECK, DEATH_MOUNTAIN_TRAIL, "Claim Check", "OOT Death Mountain Trail Claim Check", ObjectType::npc, {575, 99, 0}, DEATH_MOUNTAIN_TRAIL, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Adult, 2, ZGame::oot, LocType::overworld, NULL },
-	{ TRADE_BIGGORON_SWORD, DEATH_MOUNTAIN_TRAIL, "Biggoron Sword", "OOT Death Mountain Trail Biggoron Sword", ObjectType::npc, {586, 81, 0}, DEATH_MOUNTAIN_TRAIL, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Adult, 2, ZGame::oot, LocType::overworld, NULL },
+	{ TRADE_PRESCRIPTION, DEATH_MOUNTAIN_TRAIL, "Prescription", "OOT Death Mountain Trail Prescription", ObjectType::npc, {565, 119, 2}, DEATH_MOUNTAIN_TRAIL, ObjectType::npc, ObjectIconMap::broken_big, ObjectContext::Adult, 2, ZGame::oot, LocType::overworld, "Show the <b>Broken Goron's Sword</b> to <b>Biggoron</b>.<br><br><b>Requirements:</b><br>- Soul of Biggoron (OoT)<br>- Broken Goron's Sword" },
+	{ TRADE_CLAIM_CHECK, DEATH_MOUNTAIN_TRAIL, "Claim Check", "OOT Death Mountain Trail Claim Check", ObjectType::npc, {575, 99, 1}, DEATH_MOUNTAIN_TRAIL, ObjectType::npc, ObjectIconMap::eye_drops, ObjectContext::Adult, 2, ZGame::oot, LocType::overworld, "Show the <b>Eye Drops</b> to <b>Biggoron</b>.<br><br><b>Requirements:</b><br>- Soul of Biggoron (OoT)<br>- Eye Drops" },
+	{ TRADE_BIGGORON_SWORD, DEATH_MOUNTAIN_TRAIL, "Biggoron Sword", "OOT Death Mountain Trail Biggoron Sword", ObjectType::npc, {586, 81, 0}, DEATH_MOUNTAIN_TRAIL, ObjectType::npc, ObjectIconMap::claim, ObjectContext::Adult, 2, ZGame::oot, LocType::overworld, "Show the <b>Claim Check</b> to <b>Biggoron</b>.<br><br><b>Requirements:</b><br>- Soul of Biggoron (OoT)<br>- Claim Check" },
 	{ 0x82, DEATH_MOUNTAIN_TRAIL, "Bombable Wall - Entrance", "OOT Death Mountain Trail GS Entrance", ObjectType::gs, {799, 480, 0}, DEATH_MOUNTAIN_TRAIL, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x81, DEATH_MOUNTAIN_TRAIL, "Soil", "OOT Death Mountain Trail GS Soil", ObjectType::gs, {126, 344, 1}, DEATH_MOUNTAIN_TRAIL, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x83, DEATH_MOUNTAIN_TRAIL, "Red Rock - Above Dodongo's Cavern", "OOT Death Mountain Trail GS Above Dodongo", ObjectType::gs, {176, 89, 0}, DEATH_MOUNTAIN_TRAIL, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
@@ -419,10 +419,10 @@ ObjectInfo OOT_GROTTO_DEATH_TRIAL_COWSceneObjects[OOT_GROTTO_DEATH_TRIAL_COWNumO
 const size_t DEKU_TREENumOfObjs = 128;
 ObjectInfo DEKU_TREESceneObjects[DEKU_TREENumOfObjs] =
 {
-	{ 0x03, DEKU_TREE, "Map", "OOT Deku Tree Map Chest", ObjectType::chest, {889, 548, 0}, DEKU_TREE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
-	{ 0x02, DEKU_TREE, "Compass", "OOT Deku Tree Compass Chest", ObjectType::chest, {1174, 584, 0}, DEKU_TREE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 1, ZGame::oot, LocType::dungeon, NULL },
+	{ 0x03, DEKU_TREE, "Chest", "OOT Deku Tree Map Chest", ObjectType::chest, {889, 548, 0}, DEKU_TREE, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
+	{ 0x02, DEKU_TREE, "Chest", "OOT Deku Tree Compass Chest", ObjectType::chest, {1174, 584, 0}, DEKU_TREE, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 1, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x06, DEKU_TREE, "Compass Side Room", "OOT Deku Tree Compass Room Side Chest", ObjectType::chest, {730, 552, 0}, DEKU_TREE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 1, ZGame::oot, LocType::dungeon, NULL },
-	{ 0x01, DEKU_TREE, "Slingshot", "OOT Deku Tree Slingshot Chest", ObjectType::chest, {1043, 512, 0}, DEKU_TREE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 2, ZGame::oot, LocType::dungeon, NULL },
+	{ 0x01, DEKU_TREE, "Slingshot", "OOT Deku Tree Slingshot Chest", ObjectType::chest, {1043, 512, 0}, DEKU_TREE, ObjectType::chest, ObjectIconMap::slingshot, ObjectContext::All, 2, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x05, DEKU_TREE, "Slingshot - Side", "OOT Deku Tree Slingshot Side Chest", ObjectType::chest, {889, 313, 0}, DEKU_TREE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 2, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x04, DEKU_TREE, "Basement", "OOT Deku Tree Basement Chest", ObjectType::chest, {714, 578, 0}, DEKU_TREE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 3, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x0b, DEKU_TREE, "Behind Chest", "OOT Deku Tree GS Compass", ObjectType::gs, {729, 508, 0}, DEKU_TREE, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 1, ZGame::oot, LocType::dungeon, NULL },
@@ -460,9 +460,9 @@ ObjectInfo DEKU_TREESceneObjects[DEKU_TREENumOfObjs] =
 	{ 0x00906, DEKU_TREE, "Pre-Boss 1", "OOT Deku Tree Heart Pre-Boss 1", ObjectType::heart, {427, 706, 0}, DEKU_TREE, ObjectType::heart, ObjectIconMap::render_type, ObjectContext::All, 9, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x00907, DEKU_TREE, "Pre-Boss 2", "OOT Deku Tree Heart Pre-Boss 2", ObjectType::heart, {532, 762, 0}, DEKU_TREE, ObjectType::heart, ObjectIconMap::render_type, ObjectContext::All, 9, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x00908, DEKU_TREE, "Pre-Boss 3", "OOT Deku Tree Heart Pre-Boss 3", ObjectType::heart, {1023, 636, 0}, DEKU_TREE, ObjectType::heart, ObjectIconMap::render_type, ObjectContext::All, 9, ZGame::oot, LocType::dungeon, NULL },
-	{ 0x03, DEKU_TREE, "Map", "OOT MQ Deku Tree Map Chest", ObjectType::chest, {0, 0, 0}, MQ_DEKU_TREE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x01, DEKU_TREE, "Compass", "OOT MQ Deku Tree Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_DEKU_TREE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x06, DEKU_TREE, "Slingshot", "OOT MQ Deku Tree Slingshot Chest", ObjectType::chest, {0, 0, 0}, MQ_DEKU_TREE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x03, DEKU_TREE, "Chest", "OOT MQ Deku Tree Map Chest", ObjectType::chest, {0, 0, 0}, MQ_DEKU_TREE, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x01, DEKU_TREE, "Chest", "OOT MQ Deku Tree Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_DEKU_TREE, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x06, DEKU_TREE, "Slingshot", "OOT MQ Deku Tree Slingshot Chest", ObjectType::chest, {0, 0, 0}, MQ_DEKU_TREE, ObjectType::chest, ObjectIconMap::slingshot, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x02, DEKU_TREE, "Slingshot Room Far Chest", "OOT MQ Deku Tree Slingshot Room Far Chest", ObjectType::chest, {0, 0, 0}, MQ_DEKU_TREE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x04, DEKU_TREE, "Basement Chest", "OOT MQ Deku Tree Basement Chest", ObjectType::chest, {0, 0, 0}, MQ_DEKU_TREE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x05, DEKU_TREE, "Before Water Platform", "OOT MQ Deku Tree Before Water Platform Chest", ObjectType::chest, {0, 0, 0}, MQ_DEKU_TREE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
@@ -538,7 +538,7 @@ ObjectInfo DEKU_TREESceneObjects[DEKU_TREENumOfObjs] =
 	{ 0x00a10, DEKU_TREE, "Slingshot Room Large Crate 1", "OOT MQ Deku Tree Slingshot Room Large Crate 1", ObjectType::crate, {0, 0, 0}, MQ_DEKU_TREE, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x00a11, DEKU_TREE, "Slingshot Room Large Crate 2", "OOT MQ Deku Tree Slingshot Room Large Crate 2", ObjectType::crate, {0, 0, 0}, MQ_DEKU_TREE, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x1f, LAIR_GOHMA, "Heart Container", "OOT Deku Tree Boss Container", ObjectType::collectible, {614, 592, 0}, DEKU_TREE, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
-	{ BLUE_WARP_GOHMA, LAIR_GOHMA, "Kokiri's Emerald", "OOT Deku Tree Boss", ObjectType::npc, {690, 592, 0}, DEKU_TREE, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
+	{ BLUE_WARP_GOHMA, LAIR_GOHMA, "Kokiri's Emerald", "OOT Deku Tree Boss", ObjectType::npc, {690, 592, 0}, DEKU_TREE, ObjectType::npc, ObjectIconMap::emerald, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x00101, LAIR_GOHMA, "Boss 1", "OOT Deku Tree Boss Grass 1", ObjectType::grass, {330, 649, 0}, DEKU_TREE, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x00102, LAIR_GOHMA, "Boss 2", "OOT Deku Tree Boss Grass 2", ObjectType::grass, {316, 601, 0}, DEKU_TREE, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x00103, LAIR_GOHMA, "Boss 3", "OOT Deku Tree Boss Grass 3", ObjectType::grass, {1056, 655, 0}, DEKU_TREE, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
@@ -552,9 +552,9 @@ ObjectInfo DEKU_TREESceneObjects[DEKU_TREENumOfObjs] =
 const size_t MQ_DEKU_TREENumOfObjs = 77;
 ObjectInfo MQ_DEKU_TREESceneObjects[MQ_DEKU_TREENumOfObjs] =
 {
-	{ 0x03, DEKU_TREE, "Map", "OOT MQ Deku Tree Map Chest", ObjectType::chest, {0, 0, 0}, MQ_DEKU_TREE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x01, DEKU_TREE, "Compass", "OOT MQ Deku Tree Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_DEKU_TREE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x06, DEKU_TREE, "Slingshot", "OOT MQ Deku Tree Slingshot Chest", ObjectType::chest, {0, 0, 0}, MQ_DEKU_TREE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x03, DEKU_TREE, "Chest", "OOT MQ Deku Tree Map Chest", ObjectType::chest, {0, 0, 0}, MQ_DEKU_TREE, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x01, DEKU_TREE, "Chest", "OOT MQ Deku Tree Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_DEKU_TREE, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x06, DEKU_TREE, "Slingshot", "OOT MQ Deku Tree Slingshot Chest", ObjectType::chest, {0, 0, 0}, MQ_DEKU_TREE, ObjectType::chest, ObjectIconMap::slingshot, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x02, DEKU_TREE, "Slingshot Room Far Chest", "OOT MQ Deku Tree Slingshot Room Far Chest", ObjectType::chest, {0, 0, 0}, MQ_DEKU_TREE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x04, DEKU_TREE, "Basement Chest", "OOT MQ Deku Tree Basement Chest", ObjectType::chest, {0, 0, 0}, MQ_DEKU_TREE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x05, DEKU_TREE, "Before Water Platform", "OOT MQ Deku Tree Before Water Platform Chest", ObjectType::chest, {0, 0, 0}, MQ_DEKU_TREE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
@@ -652,8 +652,8 @@ ObjectInfo DESERT_COLOSSUSSceneObjects[DESERT_COLOSSUSNumOfObjs] =
 	{ 0x00016, DESERT_COLOSSUS, "Oasis - Child", "OOT Desert Colossus Wonder Item Oasis Child", ObjectType::wonder, {372, 50, 0}, DESERT_COLOSSUS, ObjectType::wonder, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x00014, DESERT_COLOSSUS, "Fountain 1", "OOT Desert Colossus Wonder Item Fountain 1", ObjectType::wonder, {391, 582, 0}, DESERT_COLOSSUS, ObjectType::wonder, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x00017, DESERT_COLOSSUS, "Fountain 2", "OOT Desert Colossus Wonder Item Fountain 2", ObjectType::wonder, {353, 601, 0}, DESERT_COLOSSUS, ObjectType::wonder, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
-	{ 0x0b, DESERT_COLOSSUS, "Silver Gauntlets", "OOT Spirit Temple Silver Gauntlets", ObjectType::chest, {734, 127, 0}, DESERT_COLOSSUS, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
-	{ 0x09, DESERT_COLOSSUS, "Mirror Shield", "OOT Spirit Temple Mirror Shield", ObjectType::chest, {786, 222, 0}, DESERT_COLOSSUS, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
+	{ 0x0b, DESERT_COLOSSUS, "Silver Gauntlets", "OOT Spirit Temple Silver Gauntlets", ObjectType::chest, {734, 127, 0}, DESERT_COLOSSUS, ObjectType::chest, ObjectIconMap::silver_gauntlet, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
+	{ 0x09, DESERT_COLOSSUS, "Mirror Shield", "OOT Spirit Temple Mirror Shield", ObjectType::chest, {786, 222, 0}, DESERT_COLOSSUS, ObjectType::chest, ObjectIconMap::mirror_oot, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x19, DESERT_COLOSSUS, "Front", "OOT Desert Colossus Grotto Front Scrub", ObjectType::none, {0, 0, 0}, OOT_GROTTO_DESERT_SCRUBS, ObjectType::none, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x1a, DESERT_COLOSSUS, "Back", "OOT Desert Colossus Grotto Back Scrub", ObjectType::none, {0, 0, 0}, OOT_GROTTO_DESERT_SCRUBS, ObjectType::none, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x02602, DESERT_COLOSSUS, "Hive", "OOT Desert Colossus Grotto Hive", ObjectType::none, {0, 0, 0}, OOT_GROTTO_DESERT_SCRUBS, ObjectType::none, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
@@ -683,10 +683,10 @@ ObjectInfo DESERT_COLOSSUSSceneObjects[DESERT_COLOSSUSNumOfObjs] =
 const size_t DODONGO_CAVERNNumOfObjs = 138;
 ObjectInfo DODONGO_CAVERNSceneObjects[DODONGO_CAVERNNumOfObjs] =
 {
-	{ 0x08, DODONGO_CAVERN, "Map", "OOT Dodongo Cavern Map Chest", ObjectType::chest, {410, 297, 0}, DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
-	{ 0x05, DODONGO_CAVERN, "Compass", "OOT Dodongo Cavern Compass Chest", ObjectType::chest, {809, 529, 0}, DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 2, ZGame::oot, LocType::dungeon, NULL },
+	{ 0x08, DODONGO_CAVERN, "Chest", "OOT Dodongo Cavern Map Chest", ObjectType::chest, {410, 297, 0}, DODONGO_CAVERN, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
+	{ 0x05, DODONGO_CAVERN, "Chest", "OOT Dodongo Cavern Compass Chest", ObjectType::chest, {809, 529, 0}, DODONGO_CAVERN, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 2, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x06, DODONGO_CAVERN, "Bomb Bag - Side", "OOT Dodongo Cavern Bomb Bag Side Chest", ObjectType::chest, {147, 277, 0}, DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 5, ZGame::oot, LocType::dungeon, NULL },
-	{ 0x04, DODONGO_CAVERN, "Bomb Bag", "OOT Dodongo Cavern Bomb Bag Chest", ObjectType::chest, {524, 183, 0}, DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 5, ZGame::oot, LocType::dungeon, NULL },
+	{ 0x04, DODONGO_CAVERN, "Bomb Bag", "OOT Dodongo Cavern Bomb Bag Chest", ObjectType::chest, {524, 183, 0}, DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::bomb_bag, ObjectContext::All, 5, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x0a, DODONGO_CAVERN, "Bridge", "OOT Dodongo Cavern Bridge Chest", ObjectType::chest, {557, 176, 0}, DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x1f, DODONGO_CAVERN, "Lobby", "OOT Dodongo Cavern Lobby Scrub", ObjectType::scrub, {274, 304, 0}, DODONGO_CAVERN, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x1d, DODONGO_CAVERN, "Blue Side Room", "OOT Dodongo Cavern Green Side Room Scrub", ObjectType::scrub, {781, 230, 0}, DODONGO_CAVERN, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 4, ZGame::oot, LocType::dungeon, NULL },
@@ -734,11 +734,11 @@ ObjectInfo DODONGO_CAVERNSceneObjects[DODONGO_CAVERNNumOfObjs] =
 	{ 0x00306, DODONGO_CAVERN, "Miniboss Upper 1", "OOT Dodongo Cavern Heart Miniboss Upper 1", ObjectType::heart, {535, 132, 1}, DODONGO_CAVERN, ObjectType::heart, ObjectIconMap::render_type, ObjectContext::All, 3, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x00307, DODONGO_CAVERN, "Miniboss Upper 2", "OOT Dodongo Cavern Heart Miniboss Upper 2", ObjectType::heart, {521, 129, 0}, DODONGO_CAVERN, ObjectType::heart, ObjectIconMap::render_type, ObjectContext::All, 3, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x0090d, DODONGO_CAVERN, "Bomb Bag Room", "OOT Dodongo Cavern Heart Bomb Bag Room", ObjectType::heart, {206, 378, 0}, DODONGO_CAVERN, ObjectType::heart, ObjectIconMap::render_type, ObjectContext::All, 5, ZGame::oot, LocType::dungeon, NULL },
-	{ 0x00, DODONGO_CAVERN, "Map", "OOT MQ Dodongo Cavern Map Chest", ObjectType::chest, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x05, DODONGO_CAVERN, "Compass", "OOT MQ Dodongo Cavern Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x00, DODONGO_CAVERN, "Chest", "OOT MQ Dodongo Cavern Map Chest", ObjectType::chest, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x05, DODONGO_CAVERN, "Chest", "OOT MQ Dodongo Cavern Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x02, DODONGO_CAVERN, "Larva Room", "OOT MQ Dodongo Cavern Larvae Room Chest", ObjectType::chest, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x03, DODONGO_CAVERN, "Upper Ledge", "OOT MQ Dodongo Cavern Upper Ledge Chest", ObjectType::chest, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x04, DODONGO_CAVERN, "Bomb Bag", "OOT MQ Dodongo Cavern Bomb Bag Chest", ObjectType::chest, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x04, DODONGO_CAVERN, "Bomb Bag", "OOT MQ Dodongo Cavern Bomb Bag Chest", ObjectType::chest, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::bomb_bag, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x01, DODONGO_CAVERN, "Under Grave", "OOT MQ Dodongo Cavern Chest Under Grave", ObjectType::chest, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x1c, DODONGO_CAVERN, "Lobby - Front", "OOT MQ Dodongo Cavern Lobby Scrub Front", ObjectType::scrub, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x1d, DODONGO_CAVERN, "Lobby - Back", "OOT MQ Dodongo Cavern Lobby Scrub Back", ObjectType::scrub, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
@@ -820,17 +820,17 @@ ObjectInfo DODONGO_CAVERNSceneObjects[DODONGO_CAVERNNumOfObjs] =
 	{ 0x00c0b, DODONGO_CAVERN, "After Upper Lizalfos 2", "OOT MQ Dodongo Cavern Room After Upper Lizalfos Large Crate 2", ObjectType::crate, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x00, LAIR_KING_DODONGO, "Small Chest", "OOT Dodongo Cavern Boss Chest", ObjectType::chest, {345, 126, 0}, DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 8, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x1f, LAIR_KING_DODONGO, "Heart Container", "OOT Dodongo Cavern Boss Container", ObjectType::collectible, {453, 438, 0}, DODONGO_CAVERN, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 8, ZGame::oot, LocType::dungeon, NULL },
-	{ BLUE_WARP_KING_DODONGO, LAIR_KING_DODONGO, "Goron's Ruby", "OOT Dodongo Cavern Boss", ObjectType::npc, {476, 385, 0}, DODONGO_CAVERN, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 8, ZGame::oot, LocType::dungeon, NULL }
+	{ BLUE_WARP_KING_DODONGO, LAIR_KING_DODONGO, "Goron's Ruby", "OOT Dodongo Cavern Boss", ObjectType::npc, {476, 385, 0}, DODONGO_CAVERN, ObjectType::npc, ObjectIconMap::ruby, ObjectContext::All, 8, ZGame::oot, LocType::dungeon, NULL }
 };
 
 const size_t MQ_DODONGO_CAVERNNumOfObjs = 84;
 ObjectInfo MQ_DODONGO_CAVERNSceneObjects[MQ_DODONGO_CAVERNNumOfObjs] =
 {
-	{ 0x00, DODONGO_CAVERN, "Map", "OOT MQ Dodongo Cavern Map Chest", ObjectType::chest, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x05, DODONGO_CAVERN, "Compass", "OOT MQ Dodongo Cavern Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x00, DODONGO_CAVERN, "Chest", "OOT MQ Dodongo Cavern Map Chest", ObjectType::chest, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x05, DODONGO_CAVERN, "Chest", "OOT MQ Dodongo Cavern Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x02, DODONGO_CAVERN, "Larva Room", "OOT MQ Dodongo Cavern Larvae Room Chest", ObjectType::chest, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x03, DODONGO_CAVERN, "Upper Ledge", "OOT MQ Dodongo Cavern Upper Ledge Chest", ObjectType::chest, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x04, DODONGO_CAVERN, "Bomb Bag", "OOT MQ Dodongo Cavern Bomb Bag Chest", ObjectType::chest, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x04, DODONGO_CAVERN, "Bomb Bag", "OOT MQ Dodongo Cavern Bomb Bag Chest", ObjectType::chest, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::bomb_bag, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x01, DODONGO_CAVERN, "Under Grave", "OOT MQ Dodongo Cavern Chest Under Grave", ObjectType::chest, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x1c, DODONGO_CAVERN, "Lobby - Front", "OOT MQ Dodongo Cavern Lobby Scrub Front", ObjectType::scrub, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x1d, DODONGO_CAVERN, "Lobby - Back", "OOT MQ Dodongo Cavern Lobby Scrub Back", ObjectType::scrub, {0, 0, 0}, MQ_DODONGO_CAVERN, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
@@ -1026,7 +1026,7 @@ const size_t FISHING_PONDNumOfObjs = 35;
 ObjectInfo FISHING_PONDSceneObjects[FISHING_PONDNumOfObjs] =
 {
 	{ FISH_CHILD, FISHING_POND, "Fish Prize", "OOT Fishing Pond Child", ObjectType::npc, {651, 51, 0}, FISHING_POND, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
-	{ FISH_ADULT, FISHING_POND, "Golden Scale", "OOT Fishing Pond Adult", ObjectType::npc, {651, 51, 0}, FISHING_POND, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
+	{ FISH_ADULT, FISHING_POND, "Golden Scale", "OOT Fishing Pond Adult", ObjectType::npc, {651, 51, 0}, FISHING_POND, ObjectType::npc, ObjectIconMap::golden, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x00, FISHING_POND, "Child - Fish 1", "OOT Fishing Pond Child Fish 1", ObjectType::fish, {557, 254, 0}, FISHING_POND, ObjectType::fish, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x01, FISHING_POND, "Child - Fish 2", "OOT Fishing Pond Child Fish 2", ObjectType::fish, {510, 299, 0}, FISHING_POND, ObjectType::fish, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x02, FISHING_POND, "Child - Fish 3", "OOT Fishing Pond Child Fish 3", ObjectType::fish, {478, 360, 0}, FISHING_POND, ObjectType::fish, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
@@ -1100,8 +1100,8 @@ const size_t GERUDO_FORTRESSNumOfObjs = 37;
 ObjectInfo GERUDO_FORTRESSSceneObjects[GERUDO_FORTRESSNumOfObjs] =
 {
 	{ 0x00, GERUDO_FORTRESS, "Scarecrow Chest", "OOT Gerudo Fortress Chest", ObjectType::chest, {443, 431, 0}, GERUDO_FORTRESS, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
-	{ GERUDO_ARCHERY_1, GERUDO_FORTRESS, "Big Quiver", "OOT Gerudo Fortress Archery Reward 1", ObjectType::npc, {644, 154, 2}, GERUDO_FORTRESS, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::minigame, NULL },
-	{ GERUDO_ARCHERY_2, GERUDO_FORTRESS, "Biggest Quiver", "OOT Gerudo Fortress Archery Reward 2", ObjectType::npc, {668, 154, 1}, GERUDO_FORTRESS, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::minigame, NULL },
+	{ GERUDO_ARCHERY_1, GERUDO_FORTRESS, "Game Prize", "OOT Gerudo Fortress Archery Reward 1", ObjectType::npc, {644, 154, 2}, GERUDO_FORTRESS, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::minigame, "Scores at least 1000 points.<br><br><b>Requirements:</b><br>- Soul of the Patrolling Gerudos<br>- Gerudo Card" },
+	{ GERUDO_ARCHERY_2, GERUDO_FORTRESS, "Biggest Quiver", "OOT Gerudo Fortress Archery Reward 2", ObjectType::npc, {668, 154, 1}, GERUDO_FORTRESS, ObjectType::npc, ObjectIconMap::biggest_quiver, ObjectContext::Adult, 0, ZGame::oot, LocType::minigame, "Scores at least 1500 points.<br><br><b>Requirements:</b><br>- Soul of the Patrolling Gerudos<br>- Gerudo Card" },
 	{ 0xa9, GERUDO_FORTRESS, "Scarecrow Wall", "OOT Gerudo Fortress GS Wall", ObjectType::gs, {495, 362, 0}, GERUDO_FORTRESS, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0xa8, GERUDO_FORTRESS, "Target", "OOT Gerudo Fortress GS Target", ObjectType::gs, {177, 161, 2}, GERUDO_FORTRESS, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x0800c, GERUDO_FORTRESS, "Main 1", "OOT Gerudo Fortress Crate Main 1", ObjectType::crate, {473, 530, 1}, GERUDO_FORTRESS, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
@@ -1111,7 +1111,7 @@ ObjectInfo GERUDO_FORTRESSSceneObjects[GERUDO_FORTRESSNumOfObjs] =
 	{ 0x08010, GERUDO_FORTRESS, "Main 5", "OOT Gerudo Fortress Crate Main 5", ObjectType::crate, {530, 486, 0}, GERUDO_FORTRESS, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x08011, GERUDO_FORTRESS, "Main 6", "OOT Gerudo Fortress Crate Main 6", ObjectType::crate, {538, 486, 0}, GERUDO_FORTRESS, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x08012, GERUDO_FORTRESS, "Jail - Top", "OOT Gerudo Fortress Crate Jail Top", ObjectType::crate, {390, 524, 0}, GERUDO_FORTRESS, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
-	{ 0x01, GERUDO_FORTRESS, "Jail - Top", "OOT Gerudo Fortress Crate Jail Top", ObjectType::collectible, {390, 524, 0}, GERUDO_FORTRESS, ObjectType::collectible, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
+	{ 0x01, GERUDO_FORTRESS, "Jail - Top", "OOT Gerudo Fortress Crate Jail Top", ObjectType::collectible, {390, 524, 0}, GERUDO_FORTRESS, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x00103, GERUDO_FORTRESS, "Archery - Child", "OOT Gerudo Fortress Crate Archery Child", ObjectType::none, {195, 158, 0}, GERUDO_FORTRESS, ObjectType::none, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x00100, GERUDO_FORTRESS, "Archery 1", "OOT Gerudo Fortress Crate Archery 01", ObjectType::crate, {180, 178, 1}, GERUDO_FORTRESS, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x00101, GERUDO_FORTRESS, "Archery 2", "OOT Gerudo Fortress Crate Archery 02", ObjectType::crate, {752, 180, 1}, GERUDO_FORTRESS, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
@@ -1162,7 +1162,7 @@ ObjectInfo GERUDO_TRAINING_GROUNDSceneObjects[GERUDO_TRAINING_GROUNDNumOfObjs] =
 	{ 0x06, GERUDO_TRAINING_GROUND, "Maze - Chest 1", "OOT Gerudo Training Maze Chest 1", ObjectType::chest, {454, 236, 0}, GERUDO_TRAINING_GROUND, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x0a, GERUDO_TRAINING_GROUND, "Maze - Chest 2", "OOT Gerudo Training Maze Chest 2", ObjectType::chest, {651, 262, 0}, GERUDO_TRAINING_GROUND, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x09, GERUDO_TRAINING_GROUND, "Maze - Chest 3", "OOT Gerudo Training Maze Chest 3", ObjectType::chest, {655, 282, 0}, GERUDO_TRAINING_GROUND, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
-	{ 0x0c, GERUDO_TRAINING_GROUND, "Maze - Ice Arrow", "OOT Gerudo Training Maze Chest 4", ObjectType::chest, {471, 323, 0}, GERUDO_TRAINING_GROUND, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
+	{ 0x0c, GERUDO_TRAINING_GROUND, "Maze - Ice Arrow", "OOT Gerudo Training Maze Chest 4", ObjectType::chest, {471, 323, 0}, GERUDO_TRAINING_GROUND, ObjectType::chest, ObjectIconMap::ice_arrow, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x41, GERUDO_TRAINING_GROUND, "Slope - Front Right", "OOT Gerudo Training Grounds SR Slope Front Right", ObjectType::sr, {571, 500, 0}, GERUDO_TRAINING_GROUND, ObjectType::sr, ObjectIconMap::render_type, ObjectContext::All, 2, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x42, GERUDO_TRAINING_GROUND, "Slope - Front Left", "OOT Gerudo Training Grounds SR Slope Front Left", ObjectType::sr, {347, 513, 0}, GERUDO_TRAINING_GROUND, ObjectType::sr, ObjectIconMap::render_type, ObjectContext::All, 2, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x43, GERUDO_TRAINING_GROUND, "Slope - Front Above", "OOT Gerudo Training Grounds SR Slope Front Above", ObjectType::sr, {473, 571, 0}, GERUDO_TRAINING_GROUND, ObjectType::sr, ObjectIconMap::render_type, ObjectContext::All, 2, ZGame::oot, LocType::dungeon, NULL },
@@ -1200,7 +1200,7 @@ ObjectInfo GERUDO_TRAINING_GROUNDSceneObjects[GERUDO_TRAINING_GROUNDNumOfObjs] =
 	{ 0x0e, GERUDO_TRAINING_GROUND, "Torch Slug Room - Switch Chest", "OOT MQ Gerudo Training Grounds Torch Slug Room Switch Chest", ObjectType::chest, {0, 0, 0}, MQ_GERUDO_TRAINING_GROUND, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x05, GERUDO_TRAINING_GROUND, "Maze - Right Side Middle Chest", "OOT MQ Gerudo Training Grounds Maze Right Side Middle Chest", ObjectType::chest, {0, 0, 0}, MQ_GERUDO_TRAINING_GROUND, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x08, GERUDO_TRAINING_GROUND, "Maze - Right Side Right Chest", "OOT MQ Gerudo Training Grounds Maze Right Side Right Chest", ObjectType::chest, {0, 0, 0}, MQ_GERUDO_TRAINING_GROUND, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x04, GERUDO_TRAINING_GROUND, "Ice Arrows", "OOT MQ Gerudo Training Grounds Ice Arrows Chest", ObjectType::chest, {0, 0, 0}, MQ_GERUDO_TRAINING_GROUND, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x04, GERUDO_TRAINING_GROUND, "Ice Arrows", "OOT MQ Gerudo Training Grounds Ice Arrows Chest", ObjectType::chest, {0, 0, 0}, MQ_GERUDO_TRAINING_GROUND, ObjectType::chest, ObjectIconMap::ice_arrow, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x41, GERUDO_TRAINING_GROUND, "Slopes - Top Right", "OOT MQ Gerudo Training Grounds SR Slopes Top Right", ObjectType::sr, {0, 0, 0}, MQ_GERUDO_TRAINING_GROUND, ObjectType::sr, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x42, GERUDO_TRAINING_GROUND, "Slopes - Middle", "OOT MQ Gerudo Training Grounds SR Slopes Middle", ObjectType::sr, {0, 0, 0}, MQ_GERUDO_TRAINING_GROUND, ObjectType::sr, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x43, GERUDO_TRAINING_GROUND, "Slopes - Front", "OOT MQ Gerudo Training Grounds SR Slopes Front", ObjectType::sr, {0, 0, 0}, MQ_GERUDO_TRAINING_GROUND, ObjectType::sr, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
@@ -1248,7 +1248,7 @@ ObjectInfo MQ_GERUDO_TRAINING_GROUNDSceneObjects[MQ_GERUDO_TRAINING_GROUNDNumOfO
 	{ 0x0e, GERUDO_TRAINING_GROUND, "Torch Slug Room - Switch Chest", "OOT MQ Gerudo Training Grounds Torch Slug Room Switch Chest", ObjectType::chest, {0, 0, 0}, MQ_GERUDO_TRAINING_GROUND, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x05, GERUDO_TRAINING_GROUND, "Maze - Right Side Middle Chest", "OOT MQ Gerudo Training Grounds Maze Right Side Middle Chest", ObjectType::chest, {0, 0, 0}, MQ_GERUDO_TRAINING_GROUND, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x08, GERUDO_TRAINING_GROUND, "Maze - Right Side Right Chest", "OOT MQ Gerudo Training Grounds Maze Right Side Right Chest", ObjectType::chest, {0, 0, 0}, MQ_GERUDO_TRAINING_GROUND, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x04, GERUDO_TRAINING_GROUND, "Ice Arrows", "OOT MQ Gerudo Training Grounds Ice Arrows Chest", ObjectType::chest, {0, 0, 0}, MQ_GERUDO_TRAINING_GROUND, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x04, GERUDO_TRAINING_GROUND, "Ice Arrows", "OOT MQ Gerudo Training Grounds Ice Arrows Chest", ObjectType::chest, {0, 0, 0}, MQ_GERUDO_TRAINING_GROUND, ObjectType::chest, ObjectIconMap::ice_arrow, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x41, GERUDO_TRAINING_GROUND, "Slopes - Top Right", "OOT MQ Gerudo Training Grounds SR Slopes Top Right", ObjectType::sr, {0, 0, 0}, MQ_GERUDO_TRAINING_GROUND, ObjectType::sr, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x42, GERUDO_TRAINING_GROUND, "Slopes - Middle", "OOT MQ Gerudo Training Grounds SR Slopes Middle", ObjectType::sr, {0, 0, 0}, MQ_GERUDO_TRAINING_GROUND, ObjectType::sr, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x43, GERUDO_TRAINING_GROUND, "Slopes - Front", "OOT MQ Gerudo Training Grounds SR Slopes Front", ObjectType::sr, {0, 0, 0}, MQ_GERUDO_TRAINING_GROUND, ObjectType::sr, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
@@ -1283,7 +1283,7 @@ ObjectInfo GERUDO_VALLEYSceneObjects[GERUDO_VALLEYNumOfObjs] =
 	{ 0x00, GERUDO_VALLEY, "Red Rock Chest", "OOT Gerudo Valley Chest", ObjectType::chest, {252, 484, 0}, GERUDO_VALLEY, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x02, GERUDO_VALLEY, "Crate", "OOT Gerudo Valley Crate HP", ObjectType::collectible, {422, 574, 0}, GERUDO_VALLEY, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x01, GERUDO_VALLEY, "Waterfall", "OOT Gerudo Valley Waterfall HP", ObjectType::collectible, {471, 37, 0}, GERUDO_VALLEY, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
-	{ TRADE_BROKEN_GORON_SWORD, GERUDO_VALLEY, "Broken Goron Sword", "OOT Gerudo Valley Broken Goron Sword", ObjectType::npc, {335, 281, 0}, GERUDO_VALLEY, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
+	{ TRADE_BROKEN_GORON_SWORD, GERUDO_VALLEY, "Broken Goron Sword", "OOT Gerudo Valley Broken Goron Sword", ObjectType::npc, {335, 281, 0}, GERUDO_VALLEY, ObjectType::npc, ObjectIconMap::saw, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0xa0, GERUDO_VALLEY, "Soil", "OOT Gerudo Valley GS Soil", ObjectType::gs, {403, 368, 0}, GERUDO_VALLEY, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0xa1, GERUDO_VALLEY, "Wall", "OOT Gerudo Valley GS Wall", ObjectType::gs, {751, 292, 0}, GERUDO_VALLEY, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0xa3, GERUDO_VALLEY, "Tent", "OOT Gerudo Valley GS Tent", ObjectType::gs, {281, 146, 0}, GERUDO_VALLEY, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
@@ -1334,14 +1334,14 @@ ObjectInfo GERUDO_VALLEYSceneObjects[GERUDO_VALLEYNumOfObjs] =
 const size_t GORON_CITYNumOfObjs = 37;
 ObjectInfo GORON_CITYSceneObjects[GORON_CITYNumOfObjs] =
 {
-	{ DARUNIA_BRACELET, GORON_CITY, "Darunia's Dance", "OOT Darunia", ObjectType::npc, {709, 360, 0}, GORON_CITY, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
+	{ DARUNIA_BRACELET, GORON_CITY, "Darunia's Dance", "OOT Darunia", ObjectType::npc, {709, 360, 0}, GORON_CITY, ObjectType::npc, ObjectIconMap::bracelet, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x02, GORON_CITY, "Maze - Center 1", "OOT Goron City Maze Center 1", ObjectType::chest, {726, 71, 0}, GORON_CITY, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x01, GORON_CITY, "Maze - Center 2", "OOT Goron City Maze Center 2", ObjectType::chest, {728, 93, 0}, GORON_CITY, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x00, GORON_CITY, "Maze - Left", "OOT Goron City Maze Left", ObjectType::chest, {727, 32, 0}, GORON_CITY, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x1f, GORON_CITY, "Big Pot", "OOT Goron City Big Pot HP", ObjectType::collectible, {478, 343, 0}, GORON_CITY, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
-	{ GORON_LINK_TUNIC, GORON_CITY, "Goron Tunic", "OOT Goron City Tunic", ObjectType::npc, {381, 246, 0}, GORON_CITY, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
-	{ GORON_BOMB_BAG, GORON_CITY, "Big Bomb Bag", "OOT Goron City Bomb Bag", ObjectType::npc, {647, 348, 0}, GORON_CITY, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
-	{ MEDIGORON, GORON_CITY, "Giant Knife", "OOT Goron City Medigoron Giant Knife", ObjectType::npc, {202, 189, 0}, GORON_CITY, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
+	{ GORON_LINK_TUNIC, GORON_CITY, "Goron Tunic", "OOT Goron City Tunic", ObjectType::npc, {381, 246, 0}, GORON_CITY, ObjectType::npc, ObjectIconMap::goron_tunic, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
+	{ GORON_BOMB_BAG, GORON_CITY, "Big Bomb Bag", "OOT Goron City Bomb Bag", ObjectType::npc, {647, 348, 0}, GORON_CITY, ObjectType::npc, ObjectIconMap::big_bomb, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
+	{ MEDIGORON, GORON_CITY, "Giant Knife", "OOT Goron City Medigoron Giant Knife", ObjectType::npc, {202, 189, 0}, GORON_CITY, ObjectType::npc, ObjectIconMap::biggoron, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x85, GORON_CITY, "Platform", "OOT Goron City GS Platform", ObjectType::gs, {437, 340, 0}, GORON_CITY, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x86, GORON_CITY, "Maze", "OOT Goron City GS Maze", ObjectType::gs, {743, 107, 0}, GORON_CITY, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x0105, GORON_CITY, "Darunia Room 1", "OOT Goron City Pot Darunia Room 1", ObjectType::pot, {699, 392, 1}, GORON_CITY, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
@@ -1463,48 +1463,48 @@ ObjectInfo GRAVEYARDSceneObjects[GRAVEYARDNumOfObjs] =
 const size_t GREAT_FAIRY_FOUNTAIN_SPELLSNumOfObjs = 3;
 ObjectInfo GREAT_FAIRY_FOUNTAIN_SPELLSSceneObjects[GREAT_FAIRY_FOUNTAIN_SPELLSNumOfObjs] =
 {
-	{ FAIRY_SPELL_FIRE, GREAT_FAIRY_FOUNTAIN_SPELLS, "Din's Fire", "OOT Great Fairy Din's Fire", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_CASTLE, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
-	{ FAIRY_SPELL_WIND, GREAT_FAIRY_FOUNTAIN_SPELLS, "Farore's Wind", "OOT Great Fairy Farore's Wind", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_FARORE, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
-	{ FAIRY_SPELL_LOVE, GREAT_FAIRY_FOUNTAIN_SPELLS, "Nayru's Love", "OOT Great Fairy Nayru's Love", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_NAYRU, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL }
+	{ FAIRY_SPELL_FIRE, GREAT_FAIRY_FOUNTAIN_SPELLS, "Din's Fire", "OOT Great Fairy Din's Fire", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_CASTLE, ObjectType::npc, ObjectIconMap::din, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
+	{ FAIRY_SPELL_WIND, GREAT_FAIRY_FOUNTAIN_SPELLS, "Farore's Wind", "OOT Great Fairy Farore's Wind", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_FARORE, ObjectType::npc, ObjectIconMap::farore, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
+	{ FAIRY_SPELL_LOVE, GREAT_FAIRY_FOUNTAIN_SPELLS, "Nayru's Love", "OOT Great Fairy Nayru's Love", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_NAYRU, ObjectType::npc, ObjectIconMap::nayru, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL }
 };
 
 const size_t OOT_GREAT_FAIRY_CASTLENumOfObjs = 2;
 ObjectInfo OOT_GREAT_FAIRY_CASTLESceneObjects[OOT_GREAT_FAIRY_CASTLENumOfObjs] =
 {
-	{ FAIRY_SPELL_FIRE, GREAT_FAIRY_FOUNTAIN_SPELLS, "Din's Fire", "OOT Great Fairy Din's Fire", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_CASTLE, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
-	{ FAIRY_DEFENSE_UPGRADE, GREAT_FAIRY_FOUNTAIN_UPGRADES, "Double Defense Upgrade", "OOT Great Fairy Defense Upgrade", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_CASTLE, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL }
+	{ FAIRY_SPELL_FIRE, GREAT_FAIRY_FOUNTAIN_SPELLS, "Din's Fire", "OOT Great Fairy Din's Fire", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_CASTLE, ObjectType::npc, ObjectIconMap::din, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
+	{ FAIRY_DEFENSE_UPGRADE, GREAT_FAIRY_FOUNTAIN_UPGRADES, "Double Defense Upgrade", "OOT Great Fairy Defense Upgrade", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_CASTLE, ObjectType::npc, ObjectIconMap::defense, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL }
 };
 
 const size_t OOT_GREAT_FAIRY_FARORENumOfObjs = 1;
 ObjectInfo OOT_GREAT_FAIRY_FARORESceneObjects[OOT_GREAT_FAIRY_FARORENumOfObjs] =
 {
-	{ FAIRY_SPELL_WIND, GREAT_FAIRY_FOUNTAIN_SPELLS, "Farore's Wind", "OOT Great Fairy Farore's Wind", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_FARORE, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL }
+	{ FAIRY_SPELL_WIND, GREAT_FAIRY_FOUNTAIN_SPELLS, "Farore's Wind", "OOT Great Fairy Farore's Wind", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_FARORE, ObjectType::npc, ObjectIconMap::farore, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL }
 };
 
 const size_t OOT_GREAT_FAIRY_NAYRUNumOfObjs = 1;
 ObjectInfo OOT_GREAT_FAIRY_NAYRUSceneObjects[OOT_GREAT_FAIRY_NAYRUNumOfObjs] =
 {
-	{ FAIRY_SPELL_LOVE, GREAT_FAIRY_FOUNTAIN_SPELLS, "Nayru's Love", "OOT Great Fairy Nayru's Love", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_NAYRU, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL }
+	{ FAIRY_SPELL_LOVE, GREAT_FAIRY_FOUNTAIN_SPELLS, "Nayru's Love", "OOT Great Fairy Nayru's Love", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_NAYRU, ObjectType::npc, ObjectIconMap::nayru, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL }
 };
 
 const size_t GREAT_FAIRY_FOUNTAIN_UPGRADESNumOfObjs = 3;
 ObjectInfo GREAT_FAIRY_FOUNTAIN_UPGRADESSceneObjects[GREAT_FAIRY_FOUNTAIN_UPGRADESNumOfObjs] =
 {
-	{ FAIRY_MAGIC_UPGRADE, GREAT_FAIRY_FOUNTAIN_UPGRADES, "Magic Upgrade", "OOT Great Fairy Magic Upgrade", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
-	{ FAIRY_MAGIC_UPGRADE2, GREAT_FAIRY_FOUNTAIN_UPGRADES, "Large Magic Upgrade", "OOT Great Fairy Magic Upgrade 2", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC2, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
-	{ FAIRY_DEFENSE_UPGRADE, GREAT_FAIRY_FOUNTAIN_UPGRADES, "Double Defense Upgrade", "OOT Great Fairy Defense Upgrade", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_CASTLE, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL }
+	{ FAIRY_MAGIC_UPGRADE, GREAT_FAIRY_FOUNTAIN_UPGRADES, "Magic Upgrade", "OOT Great Fairy Magic Upgrade", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC, ObjectType::npc, ObjectIconMap::magic, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
+	{ FAIRY_MAGIC_UPGRADE2, GREAT_FAIRY_FOUNTAIN_UPGRADES, "Large Magic Upgrade", "OOT Great Fairy Magic Upgrade 2", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC2, ObjectType::npc, ObjectIconMap::double_magic, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
+	{ FAIRY_DEFENSE_UPGRADE, GREAT_FAIRY_FOUNTAIN_UPGRADES, "Double Defense Upgrade", "OOT Great Fairy Defense Upgrade", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_CASTLE, ObjectType::npc, ObjectIconMap::defense, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL }
 };
 
 const size_t OOT_GREAT_FAIRY_MAGICNumOfObjs = 1;
 ObjectInfo OOT_GREAT_FAIRY_MAGICSceneObjects[OOT_GREAT_FAIRY_MAGICNumOfObjs] =
 {
-	{ FAIRY_MAGIC_UPGRADE, GREAT_FAIRY_FOUNTAIN_UPGRADES, "Magic Upgrade", "OOT Great Fairy Magic Upgrade", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL }
+	{ FAIRY_MAGIC_UPGRADE, GREAT_FAIRY_FOUNTAIN_UPGRADES, "Magic Upgrade", "OOT Great Fairy Magic Upgrade", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC, ObjectType::npc, ObjectIconMap::magic, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL }
 };
 
 const size_t OOT_GREAT_FAIRY_MAGIC2NumOfObjs = 1;
 ObjectInfo OOT_GREAT_FAIRY_MAGIC2SceneObjects[OOT_GREAT_FAIRY_MAGIC2NumOfObjs] =
 {
-	{ FAIRY_MAGIC_UPGRADE2, GREAT_FAIRY_FOUNTAIN_UPGRADES, "Large Magic Upgrade", "OOT Great Fairy Magic Upgrade 2", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC2, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL }
+	{ FAIRY_MAGIC_UPGRADE2, GREAT_FAIRY_FOUNTAIN_UPGRADES, "Large Magic Upgrade", "OOT Great Fairy Magic Upgrade 2", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC2, ObjectType::npc, ObjectIconMap::double_magic, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL }
 };
 
 const size_t OOT_GROTTOSNumOfObjs = 174;
@@ -1982,7 +1982,7 @@ ObjectInfo OOT_GROTTO_DESERT_SCRUBSSceneObjects[OOT_GROTTO_DESERT_SCRUBSNumOfObj
 const size_t GUARD_HOUSENumOfObjs = 61;
 ObjectInfo GUARD_HOUSESceneObjects[GUARD_HOUSENumOfObjs] =
 {
-	{ POE_COLLECTOR, GUARD_HOUSE, "Bottle", "OOT Market Pot House Big Poes", ObjectType::npc, {139, 533, 0}, GUARD_HOUSE, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
+	{ POE_COLLECTOR, GUARD_HOUSE, "Bottle", "OOT Market Pot House Big Poes", ObjectType::npc, {139, 533, 0}, GUARD_HOUSE, ObjectType::npc, ObjectIconMap::bottle, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x7b, GUARD_HOUSE, "Crate", "OOT Market Pot House GS", ObjectType::gs, {195, 426, 0}, GUARD_HOUSE, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x0008, GUARD_HOUSE, "Child - Ground 1", "OOT Market Pot House Child Pot Ground 1", ObjectType::pot, {521, 545, 0}, GUARD_HOUSE, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x0009, GUARD_HOUSE, "Child - Ground 2", "OOT Market Pot House Child Pot Ground 2", ObjectType::pot, {367, 431, 0}, GUARD_HOUSE, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
@@ -2059,17 +2059,17 @@ ObjectInfo HAUNTED_WASTELANDSceneObjects[HAUNTED_WASTELANDNumOfObjs] =
 	{ 0x00123, HAUNTED_WASTELAND, "After Pit 2", "OOT Haunted Wasteland Crate After Pit 2", ObjectType::crate, {806, 275, 1}, HAUNTED_WASTELAND, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x00124, HAUNTED_WASTELAND, "After Pit 3", "OOT Haunted Wasteland Crate After Pit 3", ObjectType::crate, {785, 236, 0}, HAUNTED_WASTELAND, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x00121, HAUNTED_WASTELAND, "Poe Chase", "OOT Haunted Wasteland Crate Deep", ObjectType::crate, {159, 520, 0}, HAUNTED_WASTELAND, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
-	{ CARPET_MERCHANT, HAUNTED_WASTELAND, "Carpet Merchant", "OOT Haunted Wasteland Carpet Merchant", ObjectType::npc, {800, 471, 0}, HAUNTED_WASTELAND, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL }
+	{ CARPET_MERCHANT, HAUNTED_WASTELAND, "Carpet Merchant", "OOT Haunted Wasteland Carpet Merchant", ObjectType::npc, {800, 471, 0}, HAUNTED_WASTELAND, ObjectType::npc, ObjectIconMap::bombchu, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL }
 };
 
 const size_t HOUSE_OF_SKULLTULANumOfObjs = 5;
 ObjectInfo HOUSE_OF_SKULLTULASceneObjects[HOUSE_OF_SKULLTULANumOfObjs] =
 {
-	{ GS_10, HOUSE_OF_SKULLTULA, "10 Tokens", "OOT Skulltula House 10 Tokens", ObjectType::npc, {657, 431, 0}, HOUSE_OF_SKULLTULA, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
-	{ GS_20, HOUSE_OF_SKULLTULA, "20 Tokens", "OOT Skulltula House 20 Tokens", ObjectType::npc, {287, 434, 0}, HOUSE_OF_SKULLTULA, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
-	{ GS_30, HOUSE_OF_SKULLTULA, "30 Tokens", "OOT Skulltula House 30 Tokens", ObjectType::npc, {469, 126, 0}, HOUSE_OF_SKULLTULA, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
-	{ GS_40, HOUSE_OF_SKULLTULA, "40 Tokens", "OOT Skulltula House 40 Tokens", ObjectType::npc, {290, 222, 0}, HOUSE_OF_SKULLTULA, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
-	{ GS_50, HOUSE_OF_SKULLTULA, "50 Tokens", "OOT Skulltula House 50 Tokens", ObjectType::npc, {650, 219, 0}, HOUSE_OF_SKULLTULA, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL }
+	{ GS_10, HOUSE_OF_SKULLTULA, "10 Tokens", "OOT Skulltula House 10 Tokens", ObjectType::npc, {657, 431, 0}, HOUSE_OF_SKULLTULA, ObjectType::npc, ObjectIconMap::wallet, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
+	{ GS_20, HOUSE_OF_SKULLTULA, "20 Tokens", "OOT Skulltula House 20 Tokens", ObjectType::npc, {287, 434, 0}, HOUSE_OF_SKULLTULA, ObjectType::npc, ObjectIconMap::agony, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
+	{ GS_30, HOUSE_OF_SKULLTULA, "30 Tokens", "OOT Skulltula House 30 Tokens", ObjectType::npc, {469, 126, 0}, HOUSE_OF_SKULLTULA, ObjectType::npc, ObjectIconMap::big_wallet, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
+	{ GS_40, HOUSE_OF_SKULLTULA, "40 Tokens", "OOT Skulltula House 40 Tokens", ObjectType::npc, {290, 222, 0}, HOUSE_OF_SKULLTULA, ObjectType::npc, ObjectIconMap::bombchu, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
+	{ GS_50, HOUSE_OF_SKULLTULA, "50 Tokens", "OOT Skulltula House 50 Tokens", ObjectType::npc, {650, 219, 0}, HOUSE_OF_SKULLTULA, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL }
 };
 
 const size_t HYRULE_CASTLENumOfObjs = 52;
@@ -2359,9 +2359,9 @@ ObjectInfo HYRULE_FIELDSceneObjects[HYRULE_FIELDNumOfObjs] =
 const size_t ICE_CAVERNNumOfObjs = 144;
 ObjectInfo ICE_CAVERNSceneObjects[ICE_CAVERNNumOfObjs] =
 {
-	{ 0x02, ICE_CAVERN, "Iron Boots", "OOT Ice Cavern Iron Boots", ObjectType::chest, {560, 347, 0}, ICE_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 5, ZGame::oot, LocType::dungeon, NULL },
-	{ 0x00, ICE_CAVERN, "Map", "OOT Ice Cavern Map", ObjectType::chest, {538, 129, 0}, ICE_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 3, ZGame::oot, LocType::dungeon, NULL },
-	{ 0x01, ICE_CAVERN, "Compass", "OOT Ice Cavern Compass", ObjectType::chest, {456, 311, 0}, ICE_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 2, ZGame::oot, LocType::dungeon, NULL },
+	{ 0x02, ICE_CAVERN, "Iron Boots", "OOT Ice Cavern Iron Boots", ObjectType::chest, {560, 347, 0}, ICE_CAVERN, ObjectType::chest, ObjectIconMap::iron, ObjectContext::All, 5, ZGame::oot, LocType::dungeon, NULL },
+	{ 0x00, ICE_CAVERN, "Chest", "OOT Ice Cavern Map", ObjectType::chest, {538, 129, 0}, ICE_CAVERN, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 3, ZGame::oot, LocType::dungeon, NULL },
+	{ 0x01, ICE_CAVERN, "Chest", "OOT Ice Cavern Compass", ObjectType::chest, {456, 311, 0}, ICE_CAVERN, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 2, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x01, ICE_CAVERN, "Red Ice", "OOT Ice Cavern HP", ObjectType::collectible, {470, 569, 0}, ICE_CAVERN, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 2, ZGame::oot, LocType::dungeon, NULL },
 	{ SHEIK_WATER, ICE_CAVERN, "Serenade of Water", "OOT Ice Cavern Sheik Song", ObjectType::npc, {335, 328, 0}, ICE_CAVERN, ObjectType::song, ObjectIconMap::render_type, ObjectContext::All, 5, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x51, ICE_CAVERN, "Scythe Room", "OOT Ice Cavern GS Scythe Room", ObjectType::gs, {194, 352, 0}, ICE_CAVERN, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 1, ZGame::oot, LocType::dungeon, NULL },
@@ -2394,9 +2394,9 @@ ObjectInfo ICE_CAVERNSceneObjects[ICE_CAVERNNumOfObjs] =
 	{ 0x00907, ICE_CAVERN, "Heart 2", "OOT Ice Cavern Heart 2", ObjectType::heart, {616, 444, 0}, ICE_CAVERN, ObjectType::heart, ObjectIconMap::render_type, ObjectContext::All, 3, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x00908, ICE_CAVERN, "Heart 3", "OOT Ice Cavern Heart 3", ObjectType::heart, {565, 430, 0}, ICE_CAVERN, ObjectType::heart, ObjectIconMap::render_type, ObjectContext::All, 3, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x0010d, ICE_CAVERN, "Entrance", "OOT Ice Cavern Entrance Big Fairy", ObjectType::fairy_spot, {510, 349, 0}, ICE_CAVERN, ObjectType::fairy_spot, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
-	{ 0x01, ICE_CAVERN, "Map", "OOT MQ Ice Cavern Map Chest", ObjectType::chest, {0, 0, 0}, MQ_ICE_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x00, ICE_CAVERN, "Compass", "OOT MQ Ice Cavern Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_ICE_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x02, ICE_CAVERN, "Iron Boots", "OOT MQ Ice Cavern Iron Boots", ObjectType::chest, {0, 0, 0}, MQ_ICE_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x01, ICE_CAVERN, "Chest", "OOT MQ Ice Cavern Map Chest", ObjectType::chest, {0, 0, 0}, MQ_ICE_CAVERN, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x00, ICE_CAVERN, "Chest", "OOT MQ Ice Cavern Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_ICE_CAVERN, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x02, ICE_CAVERN, "Iron Boots", "OOT MQ Ice Cavern Iron Boots", ObjectType::chest, {0, 0, 0}, MQ_ICE_CAVERN, ObjectType::chest, ObjectIconMap::iron, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x01, ICE_CAVERN, "Piece of Heart", "OOT MQ Ice Cavern Piece of Heart", ObjectType::collectible, {0, 0, 0}, MQ_ICE_CAVERN, ObjectType::collectible, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ SHEIK_WATER, ICE_CAVERN, "Serenade of Water", "OOT MQ Ice Cavern Sheik Song", ObjectType::npc, {0, 0, 0}, MQ_ICE_CAVERN, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x51, ICE_CAVERN, "Compass Room", "OOT MQ Ice Cavern GS Compass Room", ObjectType::gs, {0, 0, 0}, MQ_ICE_CAVERN, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
@@ -2508,9 +2508,9 @@ ObjectInfo ICE_CAVERNSceneObjects[ICE_CAVERNNumOfObjs] =
 const size_t MQ_ICE_CAVERNNumOfObjs = 56;
 ObjectInfo MQ_ICE_CAVERNSceneObjects[MQ_ICE_CAVERNNumOfObjs] =
 {
-	{ 0x01, ICE_CAVERN, "Map", "OOT MQ Ice Cavern Map Chest", ObjectType::chest, {0, 0, 0}, MQ_ICE_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x00, ICE_CAVERN, "Compass", "OOT MQ Ice Cavern Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_ICE_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x02, ICE_CAVERN, "Iron Boots", "OOT MQ Ice Cavern Iron Boots", ObjectType::chest, {0, 0, 0}, MQ_ICE_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x01, ICE_CAVERN, "Chest", "OOT MQ Ice Cavern Map Chest", ObjectType::chest, {0, 0, 0}, MQ_ICE_CAVERN, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x00, ICE_CAVERN, "Chest", "OOT MQ Ice Cavern Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_ICE_CAVERN, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x02, ICE_CAVERN, "Iron Boots", "OOT MQ Ice Cavern Iron Boots", ObjectType::chest, {0, 0, 0}, MQ_ICE_CAVERN, ObjectType::chest, ObjectIconMap::iron, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x01, ICE_CAVERN, "Piece of Heart", "OOT MQ Ice Cavern Piece of Heart", ObjectType::collectible, {0, 0, 0}, MQ_ICE_CAVERN, ObjectType::collectible, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ SHEIK_WATER, ICE_CAVERN, "Serenade of Water", "OOT MQ Ice Cavern Sheik Song", ObjectType::npc, {0, 0, 0}, MQ_ICE_CAVERN, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x51, ICE_CAVERN, "Compass Room", "OOT MQ Ice Cavern GS Compass Room", ObjectType::gs, {0, 0, 0}, MQ_ICE_CAVERN, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
@@ -2845,9 +2845,9 @@ ObjectInfo MQ_INSIDE_GANON_CASTLESceneObjects[MQ_INSIDE_GANON_CASTLENumOfObjs] =
 const size_t INSIDE_JABU_JABUNumOfObjs = 100;
 ObjectInfo INSIDE_JABU_JABUSceneObjects[INSIDE_JABU_JABUNumOfObjs] =
 {
-	{ 0x02, INSIDE_JABU_JABU, "Map", "OOT Jabu-Jabu Map Chest", ObjectType::chest, {101, 387, 0}, INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 1, ZGame::oot, LocType::dungeon, NULL },
-	{ 0x04, INSIDE_JABU_JABU, "Compass", "OOT Jabu-Jabu Compass Chest", ObjectType::chest, {345, 184, 0}, INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 1, ZGame::oot, LocType::dungeon, NULL },
-	{ 0x01, INSIDE_JABU_JABU, "Boomerang", "OOT Jabu-Jabu Boomerang Chest", ObjectType::chest, {807, 399, 0}, INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 1, ZGame::oot, LocType::dungeon, NULL },
+	{ 0x02, INSIDE_JABU_JABU, "Chest", "OOT Jabu-Jabu Map Chest", ObjectType::chest, {101, 387, 0}, INSIDE_JABU_JABU, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 1, ZGame::oot, LocType::dungeon, NULL },
+	{ 0x04, INSIDE_JABU_JABU, "Chest", "OOT Jabu-Jabu Compass Chest", ObjectType::chest, {345, 184, 0}, INSIDE_JABU_JABU, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 1, ZGame::oot, LocType::dungeon, NULL },
+	{ 0x01, INSIDE_JABU_JABU, "Boomerang", "OOT Jabu-Jabu Boomerang Chest", ObjectType::chest, {807, 399, 0}, INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::boomrang, ObjectContext::All, 1, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x20, INSIDE_JABU_JABU, "Water", "OOT Jabu-Jabu Scrub", ObjectType::scrub, {350, 442, 0}, INSIDE_JABU_JABU, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x1b, INSIDE_JABU_JABU, "Water Switch", "OOT Jabu-Jabu GS Water Switch", ObjectType::gs, {456, 284, 0}, INSIDE_JABU_JABU, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 3, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x18, INSIDE_JABU_JABU, "Bottom - Lower", "OOT Jabu-Jabu GS Bottom Lower", ObjectType::gs, {568, 272, 0}, INSIDE_JABU_JABU, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 2, ZGame::oot, LocType::dungeon, NULL },
@@ -2866,15 +2866,15 @@ ObjectInfo INSIDE_JABU_JABUSceneObjects[INSIDE_JABU_JABUNumOfObjs] =
 	{ 0x0e09, INSIDE_JABU_JABU, "Alcove 3", "OOT Jabu-Jabu Pot Alcove 3", ObjectType::pot, {447, 234, 0}, INSIDE_JABU_JABU, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 3, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x00106, INSIDE_JABU_JABU, "Small Crate 1", "OOT Jabu-Jabu Small Crate 1", ObjectType::crate, {489, 246, 0}, INSIDE_JABU_JABU, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x00107, INSIDE_JABU_JABU, "Small Crate 2", "OOT Jabu-Jabu Small Crate 2", ObjectType::crate, {503, 247, 0}, INSIDE_JABU_JABU, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
-	{ 0x03, INSIDE_JABU_JABU, "Map", "OOT MQ Jabu-Jabu Map Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x03, INSIDE_JABU_JABU, "Chest", "OOT MQ Jabu-Jabu Map Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x05, INSIDE_JABU_JABU, "Entry", "OOT MQ Jabu-Jabu Entry Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x00, INSIDE_JABU_JABU, "Compass", "OOT MQ Jabu-Jabu Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x00, INSIDE_JABU_JABU, "Chest", "OOT MQ Jabu-Jabu Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x02, INSIDE_JABU_JABU, "Second Room - B1", "OOT MQ Jabu-Jabu Second Room B1 Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x07, INSIDE_JABU_JABU, "Second Room - 1F", "OOT MQ Jabu-Jabu Second Room 1F Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x04, INSIDE_JABU_JABU, "Third Room - West Chest", "OOT MQ Jabu-Jabu Third Room West Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x08, INSIDE_JABU_JABU, "Third Room - East Chest", "OOT MQ Jabu-Jabu Third Room East Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x01, INSIDE_JABU_JABU, "Song of Time Room - Lower Chest", "OOT MQ Jabu-Jabu SoT Room Lower Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x06, INSIDE_JABU_JABU, "Boomerang", "OOT MQ Jabu-Jabu Boomerang Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x06, INSIDE_JABU_JABU, "Boomerang", "OOT MQ Jabu-Jabu Boomerang Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::boomrang, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x09, INSIDE_JABU_JABU, "Back", "OOT MQ Jabu-Jabu Back Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x0a, INSIDE_JABU_JABU, "Pre-Boss", "OOT MQ Jabu-Jabu Pre-Boss Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x18, INSIDE_JABU_JABU, "Song of Time Block", "OOT MQ Jabu-Jabu GS SoT Block", ObjectType::gs, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
@@ -2938,7 +2938,7 @@ ObjectInfo INSIDE_JABU_JABUSceneObjects[INSIDE_JABU_JABUNumOfObjs] =
 	{ 0x00705, INSIDE_JABU_JABU, "Back Forked Paths Main Room - Small Crate 1", "OOT MQ Jabu-Jabu Back Forked Paths Main Room Small Crate 1", ObjectType::crate, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x00706, INSIDE_JABU_JABU, "Back Forked Paths Main Room - Small Crate 2", "OOT MQ Jabu-Jabu Back Forked Paths Main Room Small Crate 2", ObjectType::crate, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x1f, LAIR_BARINADE, "Heart Container", "OOT Jabu-Jabu Boss Container", ObjectType::collectible, {431, 276, 0}, INSIDE_JABU_JABU, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 7, ZGame::oot, LocType::dungeon, NULL },
-	{ BLUE_WARP_BARINADE, LAIR_BARINADE, "Zora's Sapphire", "OOT Jabu-Jabu Boss", ObjectType::npc, {471, 311, 0}, INSIDE_JABU_JABU, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 7, ZGame::oot, LocType::dungeon, NULL },
+	{ BLUE_WARP_BARINADE, LAIR_BARINADE, "Zora's Sapphire", "OOT Jabu-Jabu Boss", ObjectType::npc, {471, 311, 0}, INSIDE_JABU_JABU, ObjectType::npc, ObjectIconMap::saphir, ObjectContext::All, 7, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x0101, LAIR_BARINADE, "Boss Pot 1", "OOT Jabu-Jabu Boss Pot 1", ObjectType::pot, {170, 309, 0}, INSIDE_JABU_JABU, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 7, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x0102, LAIR_BARINADE, "Boss Pot 2", "OOT Jabu-Jabu Boss Pot 2", ObjectType::pot, {242, 483, 0}, INSIDE_JABU_JABU, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 7, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x0103, LAIR_BARINADE, "Boss Pot 3", "OOT Jabu-Jabu Boss Pot 3", ObjectType::pot, {510, 525, 0}, INSIDE_JABU_JABU, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 7, ZGame::oot, LocType::dungeon, NULL },
@@ -2950,15 +2950,15 @@ ObjectInfo INSIDE_JABU_JABUSceneObjects[INSIDE_JABU_JABUNumOfObjs] =
 const size_t MQ_INSIDE_JABU_JABUNumOfObjs = 71;
 ObjectInfo MQ_INSIDE_JABU_JABUSceneObjects[MQ_INSIDE_JABU_JABUNumOfObjs] =
 {
-	{ 0x03, INSIDE_JABU_JABU, "Map", "OOT MQ Jabu-Jabu Map Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x03, INSIDE_JABU_JABU, "Chest", "OOT MQ Jabu-Jabu Map Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x05, INSIDE_JABU_JABU, "Entry", "OOT MQ Jabu-Jabu Entry Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x00, INSIDE_JABU_JABU, "Compass", "OOT MQ Jabu-Jabu Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x00, INSIDE_JABU_JABU, "Chest", "OOT MQ Jabu-Jabu Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x02, INSIDE_JABU_JABU, "Second Room - B1", "OOT MQ Jabu-Jabu Second Room B1 Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x07, INSIDE_JABU_JABU, "Second Room - 1F", "OOT MQ Jabu-Jabu Second Room 1F Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x04, INSIDE_JABU_JABU, "Third Room - West Chest", "OOT MQ Jabu-Jabu Third Room West Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x08, INSIDE_JABU_JABU, "Third Room - East Chest", "OOT MQ Jabu-Jabu Third Room East Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x01, INSIDE_JABU_JABU, "Song of Time Room - Lower Chest", "OOT MQ Jabu-Jabu SoT Room Lower Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x06, INSIDE_JABU_JABU, "Boomerang", "OOT MQ Jabu-Jabu Boomerang Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x06, INSIDE_JABU_JABU, "Boomerang", "OOT MQ Jabu-Jabu Boomerang Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::boomrang, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x09, INSIDE_JABU_JABU, "Back", "OOT MQ Jabu-Jabu Back Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x0a, INSIDE_JABU_JABU, "Pre-Boss", "OOT MQ Jabu-Jabu Pre-Boss Chest", ObjectType::chest, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x18, INSIDE_JABU_JABU, "Song of Time Block", "OOT MQ Jabu-Jabu GS SoT Block", ObjectType::gs, {0, 0, 0}, MQ_INSIDE_JABU_JABU, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
@@ -3026,7 +3026,7 @@ ObjectInfo MQ_INSIDE_JABU_JABUSceneObjects[MQ_INSIDE_JABU_JABUNumOfObjs] =
 const size_t KAKARIKO_POTION_SHOPNumOfObjs = 9;
 ObjectInfo KAKARIKO_POTION_SHOPSceneObjects[KAKARIKO_POTION_SHOPNumOfObjs] =
 {
-	{ TRADE_ODD_POTION, KAKARIKO_POTION_SHOP, "Odd Potion", "OOT Kakariko Potion Shop Odd Potion", ObjectType::npc, {474, 520, 0}, GRANNY_POTION_SHOP, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
+	{ TRADE_ODD_POTION, KAKARIKO_POTION_SHOP, "Odd Potion", "OOT Kakariko Potion Shop Odd Potion", ObjectType::npc, {474, 520, 0}, GRANNY_POTION_SHOP, ObjectType::npc, ObjectIconMap::mushroom, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x38, KAKARIKO_POTION_SHOP, "Item 1", "OOT Kakariko Potion Shop Item 1", ObjectType::shop, {465, 277, 0}, KAKARIKO_POTION_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x39, KAKARIKO_POTION_SHOP, "Item 2", "OOT Kakariko Potion Shop Item 2", ObjectType::shop, {510, 277, 0}, KAKARIKO_POTION_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x3a, KAKARIKO_POTION_SHOP, "Item 3", "OOT Kakariko Potion Shop Item 3", ObjectType::shop, {465, 318, 0}, KAKARIKO_POTION_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
@@ -3040,18 +3040,18 @@ ObjectInfo KAKARIKO_POTION_SHOPSceneObjects[KAKARIKO_POTION_SHOPNumOfObjs] =
 const size_t GRANNY_POTION_SHOPNumOfObjs = 1;
 ObjectInfo GRANNY_POTION_SHOPSceneObjects[GRANNY_POTION_SHOPNumOfObjs] =
 {
-	{ TRADE_ODD_POTION, KAKARIKO_POTION_SHOP, "Odd Potion", "OOT Kakariko Potion Shop Odd Potion", ObjectType::npc, {474, 520, 0}, GRANNY_POTION_SHOP, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL }
+	{ TRADE_ODD_POTION, KAKARIKO_POTION_SHOP, "Odd Potion", "OOT Kakariko Potion Shop Odd Potion", ObjectType::npc, {474, 520, 0}, GRANNY_POTION_SHOP, ObjectType::npc, ObjectIconMap::mushroom, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL }
 };
 
 const size_t KAKARIKO_VILLAGENumOfObjs = 95;
 ObjectInfo KAKARIKO_VILLAGESceneObjects[KAKARIKO_VILLAGENumOfObjs] =
 {
 	{ POCKET_EGG, OOT_GROTTOS, "Hatch - Pocket Cucco", "OOT Hatch Pocket Cucco", ObjectType::npc, {396, 132, 0}, KAKARIKO_VILLAGE, ObjectType::egg, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
-	{ ANJU_BOTTLE, KAKARIKO_VILLAGE, "Bottle", "OOT Kakariko Anju Bottle", ObjectType::npc, {396, 150, 0}, KAKARIKO_VILLAGE, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
+	{ ANJU_BOTTLE, KAKARIKO_VILLAGE, "Bottle", "OOT Kakariko Anju Bottle", ObjectType::npc, {396, 150, 0}, KAKARIKO_VILLAGE, ObjectType::npc, ObjectIconMap::bottle, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ TRADE_POCKET_EGG, KAKARIKO_VILLAGE, "Egg", "OOT Kakariko Anju Egg", ObjectType::npc, {396, 150, 0}, KAKARIKO_VILLAGE, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
-	{ TRADE_COJIRO, KAKARIKO_VILLAGE, "Cojiro", "OOT Kakariko Anju Cojiro", ObjectType::npc, {376, 150, 0}, KAKARIKO_VILLAGE, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
+	{ TRADE_COJIRO, KAKARIKO_VILLAGE, "Cojiro", "OOT Kakariko Anju Cojiro", ObjectType::npc, {376, 150, 0}, KAKARIKO_VILLAGE, ObjectType::npc, ObjectIconMap::cucco, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
 	{ SHEIK_SHADOW, KAKARIKO_VILLAGE, "Nocture of Shadow", "OOT Kakariko Song Shadow", ObjectType::npc, {383, 279, 0}, KAKARIKO_VILLAGE, ObjectType::song, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
-	{ KAKARIKO_ROOF_MAN, KAKARIKO_VILLAGE, "Man on Roof", "OOT Kakariko Man on Roof", ObjectType::npc, {411, 337, 0}, KAKARIKO_VILLAGE, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
+	{ KAKARIKO_ROOF_MAN, KAKARIKO_VILLAGE, "Man on Roof", "OOT Kakariko Man on Roof", ObjectType::npc, {411, 337, 0}, KAKARIKO_VILLAGE, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ MASK_SELL_KEATON, KAKARIKO_VILLAGE, "Keaton Mask", "OOT Kakariko Sell Keaton Mask", ObjectType::npc, {494, 563, 0}, KAKARIKO_VILLAGE, ObjectType::mask, ObjectIconMap::keaton, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x8e, KAKARIKO_VILLAGE, "Impa's Roof", "OOT Kakariko GS Roof", ObjectType::gs, {474, 67, 0}, KAKARIKO_VILLAGE, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x8b, KAKARIKO_VILLAGE, "Shooting Gallery", "OOT Kakariko GS Shooting Gallery", ObjectType::gs, {422, 217, 0}, KAKARIKO_VILLAGE, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
@@ -3146,7 +3146,7 @@ ObjectInfo KAKARIKO_VILLAGESceneObjects[KAKARIKO_VILLAGENumOfObjs] =
 const size_t KOKIRI_FORESTNumOfObjs = 119;
 ObjectInfo KOKIRI_FORESTSceneObjects[KOKIRI_FORESTNumOfObjs] =
 {
-	{ 0x00, KOKIRI_FOREST, "Kokiri Sword", "OOT Kokiri Forest Kokiri Sword Chest", ObjectType::chest, {953, 1406, 0}, KOKIRI_FOREST, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
+	{ 0x00, KOKIRI_FOREST, "Kokiri Sword", "OOT Kokiri Forest Kokiri Sword Chest", ObjectType::chest, {953, 1406, 0}, KOKIRI_FOREST, ObjectType::chest, ObjectIconMap::kokiri, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x68, KOKIRI_FOREST, "Soil", "OOT Kokiri Forest GS Soil", ObjectType::gs, {1055, 200, 0}, KOKIRI_FOREST, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x69, KOKIRI_FOREST, "Child - Behind Know-It-All House", "OOT Kokiri Forest GS Night Child", ObjectType::gs, {412, 708, 0}, KOKIRI_FOREST, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x6a, KOKIRI_FOREST, "Adult - Twin's House Roof", "OOT Kokiri Forest GS Night Adult", ObjectType::gs, {1205, 498, 0}, KOKIRI_FOREST, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
@@ -3316,8 +3316,8 @@ ObjectInfo KOKIRI_TWINSSceneObjects[KOKIRI_TWINSNumOfObjs] =
 const size_t OOT_LABORATORYNumOfObjs = 6;
 ObjectInfo OOT_LABORATORYSceneObjects[OOT_LABORATORYNumOfObjs] =
 {
-	{ LABORATORY_DIVE, OOT_LABORATORY, "Golden Scale Dive", "OOT Laboratory Dive", ObjectType::npc, {499, 476, 0}, OOT_LABORATORY, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
-	{ TRADE_EYE_DROPS, OOT_LABORATORY, "Eye Drops", "OOT Laboratory Eye Drops", ObjectType::npc, {592, 449, 0}, OOT_LABORATORY, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
+	{ LABORATORY_DIVE, OOT_LABORATORY, "Golden Scale Dive", "OOT Laboratory Dive", ObjectType::npc, {499, 476, 0}, OOT_LABORATORY, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
+	{ TRADE_EYE_DROPS, OOT_LABORATORY, "Eye Drops", "OOT Laboratory Eye Drops", ObjectType::npc, {592, 449, 0}, OOT_LABORATORY, ObjectType::npc, ObjectIconMap::frog, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x9b, OOT_LABORATORY, "Underwater Crate", "OOT Laboratory GS Crate", ObjectType::gs, {427, 630, 0}, OOT_LABORATORY, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x00001, OOT_LABORATORY, "Rupee 1", "OOT Laboratory Rupee 1", ObjectType::rupee, {444, 702, 0}, OOT_LABORATORY, ObjectType::rupee, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x00002, OOT_LABORATORY, "Rupee 2", "OOT Laboratory Rupee 2", ObjectType::rupee, {541, 559, 0}, OOT_LABORATORY, ObjectType::rupee, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
@@ -3328,7 +3328,7 @@ const size_t LAIR_BARINADENumOfObjs = 8;
 ObjectInfo LAIR_BARINADESceneObjects[LAIR_BARINADENumOfObjs] =
 {
 	{ 0x1f, LAIR_BARINADE, "Heart Container", "OOT Jabu-Jabu Boss Container", ObjectType::collectible, {431, 276, 0}, INSIDE_JABU_JABU, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 7, ZGame::oot, LocType::dungeon, NULL },
-	{ BLUE_WARP_BARINADE, LAIR_BARINADE, "Zora's Sapphire", "OOT Jabu-Jabu Boss", ObjectType::npc, {471, 311, 0}, INSIDE_JABU_JABU, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 7, ZGame::oot, LocType::dungeon, NULL },
+	{ BLUE_WARP_BARINADE, LAIR_BARINADE, "Zora's Sapphire", "OOT Jabu-Jabu Boss", ObjectType::npc, {471, 311, 0}, INSIDE_JABU_JABU, ObjectType::npc, ObjectIconMap::saphir, ObjectContext::All, 7, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x0101, LAIR_BARINADE, "Boss Pot 1", "OOT Jabu-Jabu Boss Pot 1", ObjectType::pot, {170, 309, 0}, INSIDE_JABU_JABU, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 7, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x0102, LAIR_BARINADE, "Boss Pot 2", "OOT Jabu-Jabu Boss Pot 2", ObjectType::pot, {242, 483, 0}, INSIDE_JABU_JABU, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 7, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x0103, LAIR_BARINADE, "Boss Pot 3", "OOT Jabu-Jabu Boss Pot 3", ObjectType::pot, {510, 525, 0}, INSIDE_JABU_JABU, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 7, ZGame::oot, LocType::dungeon, NULL },
@@ -3341,16 +3341,16 @@ const size_t LAIR_BONGO_BONGONumOfObjs = 2;
 ObjectInfo LAIR_BONGO_BONGOSceneObjects[LAIR_BONGO_BONGONumOfObjs] =
 {
 	{ 0x1f, LAIR_BONGO_BONGO, "Heart Container", "OOT Shadow Temple Boss HC", ObjectType::collectible, {491, 316, 0}, TEMPLE_SHADOW, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 8, ZGame::oot, LocType::dungeon, NULL },
-	{ BLUE_WARP_BONGO_BONGO, LAIR_BONGO_BONGO, "Shadow Medaillon", "OOT Shadow Temple Boss", ObjectType::npc, {491, 385, 0}, TEMPLE_SHADOW, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 8, ZGame::oot, LocType::dungeon, NULL }
+	{ BLUE_WARP_BONGO_BONGO, LAIR_BONGO_BONGO, "Shadow Medaillon", "OOT Shadow Temple Boss", ObjectType::npc, {491, 385, 0}, TEMPLE_SHADOW, ObjectType::npc, ObjectIconMap::shadow, ObjectContext::All, 8, ZGame::oot, LocType::dungeon, NULL }
 };
 
 const size_t TEMPLE_SHADOWNumOfObjs = 167;
 ObjectInfo TEMPLE_SHADOWSceneObjects[TEMPLE_SHADOWNumOfObjs] =
 {
 	{ 0x1f, LAIR_BONGO_BONGO, "Heart Container", "OOT Shadow Temple Boss HC", ObjectType::collectible, {491, 316, 0}, TEMPLE_SHADOW, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 8, ZGame::oot, LocType::dungeon, NULL },
-	{ BLUE_WARP_BONGO_BONGO, LAIR_BONGO_BONGO, "Shadow Medaillon", "OOT Shadow Temple Boss", ObjectType::npc, {491, 385, 0}, TEMPLE_SHADOW, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 8, ZGame::oot, LocType::dungeon, NULL },
+	{ BLUE_WARP_BONGO_BONGO, LAIR_BONGO_BONGO, "Shadow Medaillon", "OOT Shadow Temple Boss", ObjectType::npc, {491, 385, 0}, TEMPLE_SHADOW, ObjectType::npc, ObjectIconMap::shadow, ObjectContext::All, 8, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x01, TEMPLE_SHADOW, "Chest", "OOT Shadow Temple Map", ObjectType::chest, {687, 258, 0}, TEMPLE_SHADOW, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
-	{ 0x07, TEMPLE_SHADOW, "Hover Boots", "OOT Shadow Temple Hover Boots", ObjectType::chest, {142, 137, 0}, TEMPLE_SHADOW, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
+	{ 0x07, TEMPLE_SHADOW, "Hover Boots", "OOT Shadow Temple Hover Boots", ObjectType::chest, {142, 137, 0}, TEMPLE_SHADOW, ObjectType::chest, ObjectIconMap::hover, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x02, TEMPLE_SHADOW, "Silver Rupees", "OOT Shadow Temple Silver Rupees", ObjectType::chest, {311, 140, 0}, TEMPLE_SHADOW, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 1, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x03, TEMPLE_SHADOW, "Chest", "OOT Shadow Temple Compass", ObjectType::chest, {877, 365, 0}, TEMPLE_SHADOW, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 1, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x05, TEMPLE_SHADOW, "Falling Spikes - Lower", "OOT Shadow Temple Falling Spikes Lower", ObjectType::chest, {644, 551, 0}, TEMPLE_SHADOW, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 4, ZGame::oot, LocType::dungeon, NULL },
@@ -3421,10 +3421,10 @@ ObjectInfo TEMPLE_SHADOWSceneObjects[TEMPLE_SHADOWNumOfObjs] =
 	{ 0x00915, TEMPLE_SHADOW, "Stalfos", "OOT Shadow Temple Stalfos Big Fairy", ObjectType::fairy_spot, {369, 168, 0}, TEMPLE_SHADOW, ObjectType::fairy_spot, ObjectIconMap::render_type, ObjectContext::All, 2, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x01302, TEMPLE_SHADOW, "After Wind", "OOT Shadow Temple Big Fairy After Wind", ObjectType::fairy_spot, {131, 445, 0}, TEMPLE_SHADOW, ObjectType::fairy_spot, ObjectIconMap::render_type, ObjectContext::All, 5, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x00c01, TEMPLE_SHADOW, "Triple Pot Room - Painting", "OOT Shadow Temple Wonder Item", ObjectType::wonder, {483, 200, 0}, TEMPLE_SHADOW, ObjectType::wonder, ObjectIconMap::render_type, ObjectContext::All, 6, ZGame::oot, LocType::dungeon, NULL },
-	{ 0x01, TEMPLE_SHADOW, "Compass", "OOT MQ Shadow Temple Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SHADOW, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x07, TEMPLE_SHADOW, "Hover Boots", "OOT MQ Shadow Temple Hover Boots Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SHADOW, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x01, TEMPLE_SHADOW, "Chest", "OOT MQ Shadow Temple Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SHADOW, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x07, TEMPLE_SHADOW, "Hover Boots", "OOT MQ Shadow Temple Hover Boots Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SHADOW, ObjectType::chest, ObjectIconMap::hover, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x03, TEMPLE_SHADOW, "First Gibdos", "OOT MQ Shadow Temple First Gibdos Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SHADOW, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x02, TEMPLE_SHADOW, "Map", "OOT MQ Shadow Temple Map Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SHADOW, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x02, TEMPLE_SHADOW, "Chest", "OOT MQ Shadow Temple Map Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SHADOW, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x0e, TEMPLE_SHADOW, "Boat Passage", "OOT MQ Shadow Temple Boat Passage Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SHADOW, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x0c, TEMPLE_SHADOW, "Second Silver Rupee - Visible", "OOT MQ Shadow Temple Second Silver Rupee Visible Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SHADOW, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x16, TEMPLE_SHADOW, "Second Silver Rupee - Invisible", "OOT MQ Shadow Temple Second Silver Rupee Invisible Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SHADOW, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
@@ -3520,7 +3520,7 @@ const size_t LAIR_GOHMANumOfObjs = 10;
 ObjectInfo LAIR_GOHMASceneObjects[LAIR_GOHMANumOfObjs] =
 {
 	{ 0x1f, LAIR_GOHMA, "Heart Container", "OOT Deku Tree Boss Container", ObjectType::collectible, {614, 592, 0}, DEKU_TREE, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
-	{ BLUE_WARP_GOHMA, LAIR_GOHMA, "Kokiri's Emerald", "OOT Deku Tree Boss", ObjectType::npc, {690, 592, 0}, DEKU_TREE, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
+	{ BLUE_WARP_GOHMA, LAIR_GOHMA, "Kokiri's Emerald", "OOT Deku Tree Boss", ObjectType::npc, {690, 592, 0}, DEKU_TREE, ObjectType::npc, ObjectIconMap::emerald, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x00101, LAIR_GOHMA, "Boss 1", "OOT Deku Tree Boss Grass 1", ObjectType::grass, {330, 649, 0}, DEKU_TREE, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x00102, LAIR_GOHMA, "Boss 2", "OOT Deku Tree Boss Grass 2", ObjectType::grass, {316, 601, 0}, DEKU_TREE, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x00103, LAIR_GOHMA, "Boss 3", "OOT Deku Tree Boss Grass 3", ObjectType::grass, {1056, 655, 0}, DEKU_TREE, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
@@ -3536,24 +3536,24 @@ ObjectInfo LAIR_KING_DODONGOSceneObjects[LAIR_KING_DODONGONumOfObjs] =
 {
 	{ 0x00, LAIR_KING_DODONGO, "Small Chest", "OOT Dodongo Cavern Boss Chest", ObjectType::chest, {345, 126, 0}, DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 8, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x1f, LAIR_KING_DODONGO, "Heart Container", "OOT Dodongo Cavern Boss Container", ObjectType::collectible, {453, 438, 0}, DODONGO_CAVERN, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 8, ZGame::oot, LocType::dungeon, NULL },
-	{ BLUE_WARP_KING_DODONGO, LAIR_KING_DODONGO, "Goron's Ruby", "OOT Dodongo Cavern Boss", ObjectType::npc, {476, 385, 0}, DODONGO_CAVERN, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 8, ZGame::oot, LocType::dungeon, NULL }
+	{ BLUE_WARP_KING_DODONGO, LAIR_KING_DODONGO, "Goron's Ruby", "OOT Dodongo Cavern Boss", ObjectType::npc, {476, 385, 0}, DODONGO_CAVERN, ObjectType::npc, ObjectIconMap::ruby, ObjectContext::All, 8, ZGame::oot, LocType::dungeon, NULL }
 };
 
 const size_t LAIR_MORPHANumOfObjs = 2;
 ObjectInfo LAIR_MORPHASceneObjects[LAIR_MORPHANumOfObjs] =
 {
 	{ 0x1f, LAIR_MORPHA, "Heart Container", "OOT Water Temple Boss HC", ObjectType::collectible, {359, 321, 0}, TEMPLE_WATER, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 9, ZGame::oot, LocType::dungeon, NULL },
-	{ BLUE_WARP_MORPHA, LAIR_MORPHA, "Water Medaillon", "OOT Water Temple Boss", ObjectType::npc, {471, 321, 0}, TEMPLE_WATER, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 9, ZGame::oot, LocType::dungeon, NULL }
+	{ BLUE_WARP_MORPHA, LAIR_MORPHA, "Water Medaillon", "OOT Water Temple Boss", ObjectType::npc, {471, 321, 0}, TEMPLE_WATER, ObjectType::npc, ObjectIconMap::water, ObjectContext::All, 9, ZGame::oot, LocType::dungeon, NULL }
 };
 
 const size_t TEMPLE_WATERNumOfObjs = 205;
 ObjectInfo TEMPLE_WATERSceneObjects[TEMPLE_WATERNumOfObjs] =
 {
 	{ 0x1f, LAIR_MORPHA, "Heart Container", "OOT Water Temple Boss HC", ObjectType::collectible, {359, 321, 0}, TEMPLE_WATER, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 9, ZGame::oot, LocType::dungeon, NULL },
-	{ BLUE_WARP_MORPHA, LAIR_MORPHA, "Water Medaillon", "OOT Water Temple Boss", ObjectType::npc, {471, 321, 0}, TEMPLE_WATER, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 9, ZGame::oot, LocType::dungeon, NULL },
+	{ BLUE_WARP_MORPHA, LAIR_MORPHA, "Water Medaillon", "OOT Water Temple Boss", ObjectType::npc, {471, 321, 0}, TEMPLE_WATER, ObjectType::npc, ObjectIconMap::water, ObjectContext::All, 9, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x06, TEMPLE_WATER, "Under Center", "OOT Water Temple Under Center", ObjectType::chest, {651, 458, 0}, TEMPLE_WATER, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 8, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x09, TEMPLE_WATER, "Chest", "OOT Water Temple Compass", ObjectType::chest, {194, 217, 0}, TEMPLE_WATER, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 7, ZGame::oot, LocType::dungeon, NULL },
-	{ 0x07, TEMPLE_WATER, "Longshot", "OOT Water Temple Longshot", ObjectType::chest, {154, 174, 0}, TEMPLE_WATER, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 5, ZGame::oot, LocType::dungeon, NULL },
+	{ 0x07, TEMPLE_WATER, "Longshot", "OOT Water Temple Longshot", ObjectType::chest, {154, 174, 0}, TEMPLE_WATER, ObjectType::chest, ObjectIconMap::longshot, ObjectContext::All, 5, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x0a, TEMPLE_WATER, "Dragon", "OOT Water Temple Dragon Chest", ObjectType::chest, {746, 519, 0}, TEMPLE_WATER, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 5, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x05, TEMPLE_WATER, "Chest", "OOT Water Temple Boss Key Chest", ObjectType::chest, {775, 390, 0}, TEMPLE_WATER, ObjectType::boss_key, ObjectIconMap::render_type, ObjectContext::All, 3, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x00, TEMPLE_WATER, "Bombable Wall", "OOT Water Temple Bombable Chest", ObjectType::chest, {300, 274, 0}, TEMPLE_WATER, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 2, ZGame::oot, LocType::dungeon, NULL },
@@ -3593,9 +3593,9 @@ ObjectInfo TEMPLE_WATERSceneObjects[TEMPLE_WATERNumOfObjs] =
 	{ 0x0150c, TEMPLE_WATER, "Heart 2", "OOT Water Temple Heart 2", ObjectType::heart, {524, 439, 0}, TEMPLE_WATER, ObjectType::heart, ObjectIconMap::render_type, ObjectContext::All, 5, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x0150f, TEMPLE_WATER, "Heart 3", "OOT Water Temple Heart 3", ObjectType::heart, {428, 357, 0}, TEMPLE_WATER, ObjectType::heart, ObjectIconMap::render_type, ObjectContext::All, 5, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x01510, TEMPLE_WATER, "Heart 4", "OOT Water Temple Heart 4", ObjectType::heart, {561, 353, 0}, TEMPLE_WATER, ObjectType::heart, ObjectIconMap::render_type, ObjectContext::All, 5, ZGame::oot, LocType::dungeon, NULL },
-	{ 0x02, TEMPLE_WATER, "Map", "OOT MQ Water Temple Map Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_WATER, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x01, TEMPLE_WATER, "Compass", "OOT MQ Water Temple Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_WATER, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x00, TEMPLE_WATER, "Longshot", "OOT MQ Water Temple Longshot Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_WATER, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x02, TEMPLE_WATER, "Chest", "OOT MQ Water Temple Map Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_WATER, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x01, TEMPLE_WATER, "Chest", "OOT MQ Water Temple Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_WATER, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x00, TEMPLE_WATER, "Longshot", "OOT MQ Water Temple Longshot Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_WATER, ObjectType::chest, ObjectIconMap::longshot, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x06, TEMPLE_WATER, "Central Pillar", "OOT MQ Water Temple Central Pillar Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_WATER, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x05, TEMPLE_WATER, "Boss Key", "OOT MQ Water Temple Boss Key Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_WATER, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x01, TEMPLE_WATER, "Side Loop - Small Key", "OOT MQ Water Temple Side Loop Key", ObjectType::collectible, {0, 0, 0}, MQ_TEMPLE_WATER, ObjectType::collectible, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
@@ -3760,14 +3760,14 @@ const size_t LAIR_PHANTOM_GANONNumOfObjs = 2;
 ObjectInfo LAIR_PHANTOM_GANONSceneObjects[LAIR_PHANTOM_GANONNumOfObjs] =
 {
 	{ 0x1f, LAIR_PHANTOM_GANON, "Heart Container", "OOT Forest Temple Boss Container", ObjectType::collectible, {491, 295, 0}, TEMPLE_FOREST, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 16, ZGame::oot, LocType::dungeon, NULL },
-	{ BLUE_WARP_PHANTOM_GANON, LAIR_PHANTOM_GANON, "Forest Medaillon", "OOT Forest Temple Boss", ObjectType::npc, {491, 356, 0}, TEMPLE_FOREST, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 16, ZGame::oot, LocType::dungeon, NULL }
+	{ BLUE_WARP_PHANTOM_GANON, LAIR_PHANTOM_GANON, "Forest Medaillon", "OOT Forest Temple Boss", ObjectType::npc, {491, 356, 0}, TEMPLE_FOREST, ObjectType::npc, ObjectIconMap::forest, ObjectContext::All, 16, ZGame::oot, LocType::dungeon, NULL }
 };
 
 const size_t TEMPLE_FORESTNumOfObjs = 90;
 ObjectInfo TEMPLE_FORESTSceneObjects[TEMPLE_FORESTNumOfObjs] =
 {
 	{ 0x1f, LAIR_PHANTOM_GANON, "Heart Container", "OOT Forest Temple Boss Container", ObjectType::collectible, {491, 295, 0}, TEMPLE_FOREST, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 16, ZGame::oot, LocType::dungeon, NULL },
-	{ BLUE_WARP_PHANTOM_GANON, LAIR_PHANTOM_GANON, "Forest Medaillon", "OOT Forest Temple Boss", ObjectType::npc, {491, 356, 0}, TEMPLE_FOREST, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 16, ZGame::oot, LocType::dungeon, NULL },
+	{ BLUE_WARP_PHANTOM_GANON, LAIR_PHANTOM_GANON, "Forest Medaillon", "OOT Forest Temple Boss", ObjectType::npc, {491, 356, 0}, TEMPLE_FOREST, ObjectType::npc, ObjectIconMap::forest, ObjectContext::All, 16, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x03, TEMPLE_FOREST, "Tree", "OOT Forest Temple Tree Small Key", ObjectType::chest, {705, 245, 0}, TEMPLE_FOREST, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x00, TEMPLE_FOREST, "Stalfos - Lower", "OOT Forest Temple Mini-Boss Key", ObjectType::chest, {472, 517, 0}, TEMPLE_FOREST, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 5, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x01, TEMPLE_FOREST, "Chest", "OOT Forest Temple Map", ObjectType::chest, {475, 442, 0}, TEMPLE_FOREST, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 8, ZGame::oot, LocType::dungeon, NULL },
@@ -3775,7 +3775,7 @@ ObjectInfo TEMPLE_FORESTSceneObjects[TEMPLE_FORESTNumOfObjs] =
 	{ 0x05, TEMPLE_FOREST, "Garden - East", "OOT Forest Temple Garden", ObjectType::chest, {581, 233, 0}, TEMPLE_FOREST, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 2, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x09, TEMPLE_FOREST, "Well", "OOT Forest Temple Well", ObjectType::chest, {846, 125, 0}, TEMPLE_FOREST, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 4, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x0d, TEMPLE_FOREST, "Joelle", "OOT Forest Temple Poe Key", ObjectType::chest, {746, 477, 0}, TEMPLE_FOREST, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 9, ZGame::oot, LocType::dungeon, NULL },
-	{ 0x0c, TEMPLE_FOREST, "Bow", "OOT Forest Temple Bow", ObjectType::chest, {475, 310, 0}, TEMPLE_FOREST, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 5, ZGame::oot, LocType::dungeon, NULL },
+	{ 0x0c, TEMPLE_FOREST, "Bow", "OOT Forest Temple Bow", ObjectType::chest, {475, 310, 0}, TEMPLE_FOREST, ObjectType::chest, ObjectIconMap::bow_oot, ObjectContext::All, 5, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x0f, TEMPLE_FOREST, "Chest", "OOT Forest Temple Compass", ObjectType::chest, {185, 489, 0}, TEMPLE_FOREST, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x07, TEMPLE_FOREST, "Checkerboard", "OOT Forest Temple Checkerboard", ObjectType::chest, {269, 445, 0}, TEMPLE_FOREST, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 13, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x0e, TEMPLE_FOREST, "Chest", "OOT Forest Temple Boss Key", ObjectType::chest, {547, 511, 0}, TEMPLE_FOREST, ObjectType::boss_key, ObjectIconMap::render_type, ObjectContext::All, 7, ZGame::oot, LocType::dungeon, NULL },
@@ -3817,7 +3817,7 @@ ObjectInfo TEMPLE_FORESTSceneObjects[TEMPLE_FORESTNumOfObjs] =
 	{ 0x05, TEMPLE_FOREST, "East Garden - High Ledge", "OOT MQ Forest Temple East Garden High Ledge Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FOREST, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x01, TEMPLE_FOREST, "East Garden - Ledge", "OOT MQ Forest Temple East Garden Ledge Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FOREST, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x0d, TEMPLE_FOREST, "Map", "OOT MQ Forest Temple Map Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FOREST, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x0c, TEMPLE_FOREST, "Bow", "OOT MQ Forest Temple Bow Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FOREST, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x0c, TEMPLE_FOREST, "Bow", "OOT MQ Forest Temple Bow Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FOREST, ObjectType::chest, ObjectIconMap::bow_oot, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x0f, TEMPLE_FOREST, "Compass", "OOT MQ Forest Temple Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FOREST, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x06, TEMPLE_FOREST, "Falling Ceiling", "OOT MQ Forest Temple Falling Ceiling Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FOREST, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x0b, TEMPLE_FOREST, "Antichamber", "OOT MQ Forest Temple Antichamber", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FOREST, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
@@ -3862,14 +3862,14 @@ const size_t LAIR_TWINROVANumOfObjs = 2;
 ObjectInfo LAIR_TWINROVASceneObjects[LAIR_TWINROVANumOfObjs] =
 {
 	{ 0x1f, LAIR_TWINROVA, "Heart Container", "OOT Spirit Temple Boss HC", ObjectType::collectible, {363, 414, 0}, TEMPLE_SPIRIT, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
-	{ BLUE_WARP_TWINROVA, LAIR_TWINROVA, "Spirit Medaillon", "OOT Spirit Temple Boss", ObjectType::npc, {497, 283, 0}, TEMPLE_SPIRIT, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL }
+	{ BLUE_WARP_TWINROVA, LAIR_TWINROVA, "Spirit Medaillon", "OOT Spirit Temple Boss", ObjectType::npc, {497, 283, 0}, TEMPLE_SPIRIT, ObjectType::npc, ObjectIconMap::spirit, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL }
 };
 
 const size_t TEMPLE_SPIRITNumOfObjs = 157;
 ObjectInfo TEMPLE_SPIRITSceneObjects[TEMPLE_SPIRITNumOfObjs] =
 {
 	{ 0x1f, LAIR_TWINROVA, "Heart Container", "OOT Spirit Temple Boss HC", ObjectType::collectible, {363, 414, 0}, TEMPLE_SPIRIT, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
-	{ BLUE_WARP_TWINROVA, LAIR_TWINROVA, "Spirit Medaillon", "OOT Spirit Temple Boss", ObjectType::npc, {497, 283, 0}, TEMPLE_SPIRIT, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
+	{ BLUE_WARP_TWINROVA, LAIR_TWINROVA, "Spirit Medaillon", "OOT Spirit Temple Boss", ObjectType::npc, {497, 283, 0}, TEMPLE_SPIRIT, ObjectType::npc, ObjectIconMap::spirit, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x08, TEMPLE_SPIRIT, "Child - First", "OOT Spirit Temple Child First Chest", ObjectType::chest, {291, 183, 0}, TEMPLE_SPIRIT, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 1, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x00, TEMPLE_SPIRIT, "Child - Second", "OOT Spirit Temple Child Second Chest", ObjectType::chest, {702, 229, 0}, TEMPLE_SPIRIT, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 1, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x0c, TEMPLE_SPIRIT, "Child - Climb 1", "OOT Spirit Temple Child Climb 1", ObjectType::chest, {346, 358, 0}, TEMPLE_SPIRIT, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 2, ZGame::oot, LocType::dungeon, NULL },
@@ -3946,9 +3946,9 @@ ObjectInfo TEMPLE_SPIRITSceneObjects[TEMPLE_SPIRITNumOfObjs] =
 	{ 0x1a, TEMPLE_SPIRIT, "Entrance - Initial", "OOT MQ Spirit Temple Entrance Initial Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SPIRIT, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x1e, TEMPLE_SPIRIT, "Lobby - Back-Left", "OOT MQ Spirit Temple Lobby Back-Left Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SPIRIT, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x1f, TEMPLE_SPIRIT, "Lobby - Back-Right", "OOT MQ Spirit Temple Lobby Back-Right Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SPIRIT, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x03, TEMPLE_SPIRIT, "Compass", "OOT MQ Spirit Temple Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SPIRIT, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x03, TEMPLE_SPIRIT, "Chest", "OOT MQ Spirit Temple Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SPIRIT, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x01, TEMPLE_SPIRIT, "Sun Block Room", "OOT MQ Spirit Temple Sun Block Room Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SPIRIT, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x00, TEMPLE_SPIRIT, "Map", "OOT MQ Spirit Temple Map Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SPIRIT, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x00, TEMPLE_SPIRIT, "Chest", "OOT MQ Spirit Temple Map Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SPIRIT, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x08, TEMPLE_SPIRIT, "Map Room - Back", "OOT MQ Spirit Temple Map Room Back Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SPIRIT, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x1d, TEMPLE_SPIRIT, "Paradox", "OOT MQ Spirit Temple Paradox Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SPIRIT, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x06, TEMPLE_SPIRIT, "Child - Upper Ground", "OOT MQ Spirit Temple Child Upper Ground Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SPIRIT, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
@@ -4031,14 +4031,14 @@ const size_t LAIR_VOLVAGIANumOfObjs = 2;
 ObjectInfo LAIR_VOLVAGIASceneObjects[LAIR_VOLVAGIANumOfObjs] =
 {
 	{ 0x1f, LAIR_VOLVAGIA, "Heart Container", "OOT Fire Temple Boss Container", ObjectType::collectible, {491, 283, 0}, TEMPLE_FIRE, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
-	{ BLUE_WARP_VOLVAGIA, LAIR_VOLVAGIA, "Fire Medaillon", "OOT Fire Temple Boss", ObjectType::npc, {491, 316, 0}, TEMPLE_FIRE, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL }
+	{ BLUE_WARP_VOLVAGIA, LAIR_VOLVAGIA, "Fire Medaillon", "OOT Fire Temple Boss", ObjectType::npc, {491, 316, 0}, TEMPLE_FIRE, ObjectType::npc, ObjectIconMap::fire, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL }
 };
 
 const size_t TEMPLE_FIRENumOfObjs = 141;
 ObjectInfo TEMPLE_FIRESceneObjects[TEMPLE_FIRENumOfObjs] =
 {
 	{ 0x1f, LAIR_VOLVAGIA, "Heart Container", "OOT Fire Temple Boss Container", ObjectType::collectible, {491, 283, 0}, TEMPLE_FIRE, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
-	{ BLUE_WARP_VOLVAGIA, LAIR_VOLVAGIA, "Fire Medaillon", "OOT Fire Temple Boss", ObjectType::npc, {491, 316, 0}, TEMPLE_FIRE, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
+	{ BLUE_WARP_VOLVAGIA, LAIR_VOLVAGIA, "Fire Medaillon", "OOT Fire Temple Boss", ObjectType::npc, {491, 316, 0}, TEMPLE_FIRE, ObjectType::npc, ObjectIconMap::fire, ObjectContext::All, 10, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x01, TEMPLE_FIRE, "Jail 1", "OOT Fire Temple Jail 1 Chest", ObjectType::chest, {138, 367, 0}, TEMPLE_FIRE, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 9, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x00, TEMPLE_FIRE, "Flare Dancer", "OOT Fire Temple Boss Key Side Chest", ObjectType::chest, {687, 179, 0}, TEMPLE_FIRE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 8, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x0c, TEMPLE_FIRE, "Chest", "OOT Fire Temple Boss Key Chest", ObjectType::chest, {278, 235, 0}, TEMPLE_FIRE, ObjectType::boss_key, ObjectIconMap::render_type, ObjectContext::All, 8, ZGame::oot, LocType::dungeon, NULL },
@@ -4050,7 +4050,7 @@ ObjectInfo TEMPLE_FIRESceneObjects[TEMPLE_FIRENumOfObjs] =
 	{ 0x06, TEMPLE_FIRE, "Above Maze", "OOT Fire Temple Above Maze Chest", ObjectType::chest, {70, 183, 0}, TEMPLE_FIRE, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 3, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x0b, TEMPLE_FIRE, "Below Maze", "OOT Fire Temple Below Maze Chest", ObjectType::chest, {350, 514, 0}, TEMPLE_FIRE, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 3, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x07, TEMPLE_FIRE, "Chest", "OOT Fire Temple Compass", ObjectType::chest, {52, 402, 0}, TEMPLE_FIRE, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 6, ZGame::oot, LocType::dungeon, NULL },
-	{ 0x05, TEMPLE_FIRE, "Megaton Hammer", "OOT Fire Temple Hammer", ObjectType::chest, {640, 142, 0}, TEMPLE_FIRE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 7, ZGame::oot, LocType::dungeon, NULL },
+	{ 0x05, TEMPLE_FIRE, "Megaton Hammer", "OOT Fire Temple Hammer", ObjectType::chest, {640, 142, 0}, TEMPLE_FIRE, ObjectType::chest, ObjectIconMap::hammer, ObjectContext::All, 7, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x09, TEMPLE_FIRE, "Ring Jail", "OOT Fire Temple Ring Jail", ObjectType::chest, {430, 552, 0}, TEMPLE_FIRE, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 7, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x0d, TEMPLE_FIRE, "Scarecrow", "OOT Fire Temple Scarecrow Chest", ObjectType::chest, {352, 126, 0}, TEMPLE_FIRE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 1, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x28, TEMPLE_FIRE, "Lava Side Room", "OOT Fire Temple GS Lava Side Room", ObjectType::gs, {472, 176, 0}, TEMPLE_FIRE, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 2, ZGame::oot, LocType::dungeon, NULL },
@@ -4086,7 +4086,7 @@ ObjectInfo TEMPLE_FIRESceneObjects[TEMPLE_FIRENumOfObjs] =
 	{ 0x01508, TEMPLE_FIRE, "Elevator 3", "OOT Fire Temple Heart Elevator 3", ObjectType::heart, {329, 162, 0}, TEMPLE_FIRE, ObjectType::heart, ObjectIconMap::render_type, ObjectContext::All, 4, ZGame::oot, LocType::dungeon, NULL },
 	{ 0x02, TEMPLE_FIRE, "Early Lower Left", "OOT MQ Fire Temple Early Lower Left Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FIRE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x07, TEMPLE_FIRE, "Pre-Boss", "OOT MQ Fire Temple Pre-Boss Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FIRE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x00, TEMPLE_FIRE, "Megaton Hammer", "OOT MQ Fire Temple Hammer Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FIRE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x00, TEMPLE_FIRE, "Megaton Hammer", "OOT MQ Fire Temple Hammer Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FIRE, ObjectType::chest, ObjectIconMap::hammer, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x0c, TEMPLE_FIRE, "Chest", "OOT MQ Fire Temple Map Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FIRE, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x04, TEMPLE_FIRE, "Chest", "OOT MQ Fire Temple Boss Key Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FIRE, ObjectType::boss_key, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x01, TEMPLE_FIRE, "Lava Room - Goron", "OOT MQ Fire Temple 1f Lava Room Goron Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FIRE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
@@ -4183,8 +4183,8 @@ ObjectInfo TEMPLE_FIRESceneObjects[TEMPLE_FIRENumOfObjs] =
 const size_t LAKE_HYLIANumOfObjs = 108;
 ObjectInfo LAKE_HYLIASceneObjects[LAKE_HYLIANumOfObjs] =
 {
-	{ RUTO_LETTER, LAKE_HYLIA, "Ruto's Letter", "OOT Lake Hylia Underwater Bottle", ObjectType::npc, {680, 543, 0}, LAKE_HYLIA, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
-	{ FIRE_ARROW, LAKE_HYLIA, "Fire Arrow", "OOT Lake Hylia Fire Arrow", ObjectType::npc, {521, 238, 0}, LAKE_HYLIA, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
+	{ RUTO_LETTER, LAKE_HYLIA, "Ruto's Letter", "OOT Lake Hylia Underwater Bottle", ObjectType::npc, {680, 543, 0}, LAKE_HYLIA, ObjectType::npc, ObjectIconMap::ruto, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
+	{ FIRE_ARROW, LAKE_HYLIA, "Fire Arrow", "OOT Lake Hylia Fire Arrow", ObjectType::npc, {521, 238, 0}, LAKE_HYLIA, ObjectType::npc, ObjectIconMap::fire_arrow, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x1e, LAKE_HYLIA, "Rooftop", "OOT Lake Hylia HP", ObjectType::collectible, {867, 577, 0}, LAKE_HYLIA, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x9a, LAKE_HYLIA, "Laboratory Wall", "OOT Lake Hylia GS Lab Wall", ObjectType::gs, {895, 572, 0}, LAKE_HYLIA, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x99, LAKE_HYLIA, "Fire Arrow Island", "OOT Lake Hylia GS Island", ObjectType::gs, {504, 246, 0}, LAKE_HYLIA, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
@@ -4352,16 +4352,16 @@ ObjectInfo SILOSceneObjects[SILONumOfObjs] =
 const size_t OOT_LOST_WOODSNumOfObjs = 62;
 ObjectInfo OOT_LOST_WOODSSceneObjects[OOT_LOST_WOODSNumOfObjs] =
 {
-	{ SARIA_OCARINA, OOT_LOST_WOODS, "Fairy Ocarina", "OOT Lost Woods Gift from Saria", ObjectType::npc, {211, 2800, 0}, OOT_LOST_WOODS, ObjectType::ocarina, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
-	{ LOST_WOODS_TARGET, OOT_LOST_WOODS, "Slingshot Target", "OOT Lost Woods Target", ObjectType::npc, {2069, 1966, 0}, OOT_LOST_WOODS, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
-	{ LOST_WOODS_SKULL_KID, OOT_LOST_WOODS, "Skull Kid", "OOT Lost Woods Skull Kid", ObjectType::npc, {380, 2066, 0}, OOT_LOST_WOODS, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
+	{ SARIA_OCARINA, OOT_LOST_WOODS, "Fairy Ocarina", "OOT Lost Woods Gift from Saria", ObjectType::npc, {211, 2800, 0}, OOT_LOST_WOODS, ObjectType::ocarina, ObjectIconMap::fairy_ocarina, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
+	{ LOST_WOODS_TARGET, OOT_LOST_WOODS, "Slingshot Target", "OOT Lost Woods Target", ObjectType::npc, {2069, 1966, 0}, OOT_LOST_WOODS, ObjectType::npc, ObjectIconMap::big_seed, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
+	{ LOST_WOODS_SKULL_KID, OOT_LOST_WOODS, "Skull Kid", "OOT Lost Woods Skull Kid", ObjectType::npc, {380, 2066, 0}, OOT_LOST_WOODS, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ MASK_SELL_SKULL, OOT_LOST_WOODS, "Skull Mask", "OOT Lost Woods Sell Skull Mask", ObjectType::npc, {262, 1954, 0}, OOT_LOST_WOODS, ObjectType::mask, ObjectIconMap::skull, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
-	{ LOST_WOODS_MEMORY, OOT_LOST_WOODS, "Memory Game", "OOT Lost Woods Memory Game", ObjectType::npc, {1896, 2195, 0}, OOT_LOST_WOODS, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
+	{ LOST_WOODS_MEMORY, OOT_LOST_WOODS, "Memory Game", "OOT Lost Woods Memory Game", ObjectType::npc, {1896, 2195, 0}, OOT_LOST_WOODS, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x00, OOT_LOST_WOODS, "Deku Sticks Upgrade", "OOT Lost Woods Scrub Sticks Upgrade", ObjectType::scrub, {238, 3051, 0}, OOT_LOST_WOODS, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x01, OOT_LOST_WOODS, "Near Theater - Left", "OOT Lost Woods Scrub Near Theater Left", ObjectType::scrub, {1264, 1102, 0}, OOT_LOST_WOODS, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x02, OOT_LOST_WOODS, "Near Theater - Right", "OOT Lost Woods Scrub Near Theater Right", ObjectType::scrub, {1423, 859, 1}, OOT_LOST_WOODS, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
-	{ TRADE_ODD_MUSHROOM, OOT_LOST_WOODS, "Odd Mushroom", "OOT Lost Woods Odd Mushroom", ObjectType::npc, {289, 1981, 1}, OOT_LOST_WOODS, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
-	{ TRADE_POACHER_SAW, OOT_LOST_WOODS, "Poacher's Saw", "OOT Lost Woods Poacher's Saw", ObjectType::npc, {301, 1960, 0}, OOT_LOST_WOODS, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
+	{ TRADE_ODD_MUSHROOM, OOT_LOST_WOODS, "Odd Mushroom", "OOT Lost Woods Odd Mushroom", ObjectType::npc, {289, 1981, 1}, OOT_LOST_WOODS, ObjectType::npc, ObjectIconMap::cojiro, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
+	{ TRADE_POACHER_SAW, OOT_LOST_WOODS, "Poacher's Saw", "OOT Lost Woods Poacher's Saw", ObjectType::npc, {301, 1960, 0}, OOT_LOST_WOODS, ObjectType::npc, ObjectIconMap::potion, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x00202, OOT_LOST_WOODS, "Grass 1", "OOT Lost Woods Grass 1", ObjectType::grass, {1518, 1633, 0}, OOT_LOST_WOODS, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x00203, OOT_LOST_WOODS, "Grass 2", "OOT Lost Woods Grass 2", ObjectType::grass, {1544, 1621, 0}, OOT_LOST_WOODS, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x00204, OOT_LOST_WOODS, "Grass 3", "OOT Lost Woods Grass 3", ObjectType::grass, {1508, 1600, 0}, OOT_LOST_WOODS, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
@@ -4463,8 +4463,8 @@ const size_t RANCH_HOUSE_SILONumOfObjs = 6;
 ObjectInfo RANCH_HOUSE_SILOSceneObjects[RANCH_HOUSE_SILONumOfObjs] =
 {
 	{ 0x01, RANCH_HOUSE_SILO, "Straw", "OOT Lon Lon Ranch Silo HP", ObjectType::collectible, {751, 262, 0}, SILO, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
-	{ TALON_BOTTLE, RANCH_HOUSE_SILO, "Bottle", "OOT Lon Lon Ranch Talon Bottle", ObjectType::npc, {485, 402, 0}, RANCH_HOUSE_SILO, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
-	{ TALON_MILK, RANCH_HOUSE_SILO, "Buy Milk", "OOT Lon Lon Ranch Talon Buy Milk", ObjectType::npc, {505, 402, 0}, RANCH_HOUSE_SILO, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
+	{ TALON_BOTTLE, RANCH_HOUSE_SILO, "Bottle", "OOT Lon Lon Ranch Talon Bottle", ObjectType::npc, {485, 402, 0}, RANCH_HOUSE_SILO, ObjectType::npc, ObjectIconMap::bottle, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
+	{ TALON_MILK, RANCH_HOUSE_SILO, "Buy Milk", "OOT Lon Lon Ranch Talon Buy Milk", ObjectType::npc, {505, 402, 0}, RANCH_HOUSE_SILO, ObjectType::npc, ObjectIconMap::milk, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x0200, RANCH_HOUSE_SILO, "Pot 1", "OOT Lon Lon Ranch Talon House Pot 1", ObjectType::pot, {359, 439, 1}, RANCH_HOUSE_SILO, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x0201, RANCH_HOUSE_SILO, "Pot 2", "OOT Lon Lon Ranch Talon House Pot 2", ObjectType::pot, {359, 421, 0}, RANCH_HOUSE_SILO, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x0202, RANCH_HOUSE_SILO, "Pot 3", "OOT Lon Lon Ranch Talon House Pot 3", ObjectType::pot, {358, 355, 0}, RANCH_HOUSE_SILO, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL }
@@ -4499,20 +4499,20 @@ ObjectInfo SACRED_FOREST_MEADOWSceneObjects[SACRED_FOREST_MEADOWNumOfObjs] =
 const size_t OOT_SHOOTING_GALLERYNumOfObjs = 2;
 ObjectInfo OOT_SHOOTING_GALLERYSceneObjects[OOT_SHOOTING_GALLERYNumOfObjs] =
 {
-	{ SHOOTING_GAME_CHILD, OOT_SHOOTING_GALLERY, "Reward", "OOT Shooting Gallery Child", ObjectType::npc, {616, 354, 0}, MARKET_SHOOTING, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::minigame, NULL },
-	{ SHOOTING_GAME_ADULT, OOT_SHOOTING_GALLERY, "Reward", "OOT Shooting Gallery Adult", ObjectType::npc, {616, 354, 0}, KAKARIKO_SHOOTING, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::minigame, NULL }
+	{ SHOOTING_GAME_CHILD, OOT_SHOOTING_GALLERY, "Reward", "OOT Shooting Gallery Child", ObjectType::npc, {616, 354, 0}, MARKET_SHOOTING, ObjectType::npc, ObjectIconMap::biggest_seed, ObjectContext::All, 0, ZGame::oot, LocType::minigame, NULL },
+	{ SHOOTING_GAME_ADULT, OOT_SHOOTING_GALLERY, "Reward", "OOT Shooting Gallery Adult", ObjectType::npc, {616, 354, 0}, KAKARIKO_SHOOTING, ObjectType::npc, ObjectIconMap::big_quiver, ObjectContext::All, 0, ZGame::oot, LocType::minigame, NULL }
 };
 
 const size_t MARKET_SHOOTINGNumOfObjs = 1;
 ObjectInfo MARKET_SHOOTINGSceneObjects[MARKET_SHOOTINGNumOfObjs] =
 {
-	{ SHOOTING_GAME_CHILD, OOT_SHOOTING_GALLERY, "Reward", "OOT Shooting Gallery Child", ObjectType::npc, {616, 354, 0}, MARKET_SHOOTING, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::minigame, NULL }
+	{ SHOOTING_GAME_CHILD, OOT_SHOOTING_GALLERY, "Reward", "OOT Shooting Gallery Child", ObjectType::npc, {616, 354, 0}, MARKET_SHOOTING, ObjectType::npc, ObjectIconMap::biggest_seed, ObjectContext::All, 0, ZGame::oot, LocType::minigame, NULL }
 };
 
 const size_t KAKARIKO_SHOOTINGNumOfObjs = 1;
 ObjectInfo KAKARIKO_SHOOTINGSceneObjects[KAKARIKO_SHOOTINGNumOfObjs] =
 {
-	{ SHOOTING_GAME_ADULT, OOT_SHOOTING_GALLERY, "Reward", "OOT Shooting Gallery Adult", ObjectType::npc, {616, 354, 0}, KAKARIKO_SHOOTING, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::minigame, NULL }
+	{ SHOOTING_GAME_ADULT, OOT_SHOOTING_GALLERY, "Reward", "OOT Shooting Gallery Adult", ObjectType::npc, {616, 354, 0}, KAKARIKO_SHOOTING, ObjectType::npc, ObjectIconMap::big_quiver, ObjectContext::All, 0, ZGame::oot, LocType::minigame, NULL }
 };
 
 const size_t MQ_TEMPLE_FIRENumOfObjs = 94;
@@ -4520,7 +4520,7 @@ ObjectInfo MQ_TEMPLE_FIRESceneObjects[MQ_TEMPLE_FIRENumOfObjs] =
 {
 	{ 0x02, TEMPLE_FIRE, "Early Lower Left", "OOT MQ Fire Temple Early Lower Left Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FIRE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x07, TEMPLE_FIRE, "Pre-Boss", "OOT MQ Fire Temple Pre-Boss Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FIRE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x00, TEMPLE_FIRE, "Megaton Hammer", "OOT MQ Fire Temple Hammer Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FIRE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x00, TEMPLE_FIRE, "Megaton Hammer", "OOT MQ Fire Temple Hammer Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FIRE, ObjectType::chest, ObjectIconMap::hammer, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x0c, TEMPLE_FIRE, "Chest", "OOT MQ Fire Temple Map Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FIRE, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x04, TEMPLE_FIRE, "Chest", "OOT MQ Fire Temple Boss Key Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FIRE, ObjectType::boss_key, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x01, TEMPLE_FIRE, "Lava Room - Goron", "OOT MQ Fire Temple 1f Lava Room Goron Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FIRE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
@@ -4625,7 +4625,7 @@ ObjectInfo MQ_TEMPLE_FORESTSceneObjects[MQ_TEMPLE_FORESTNumOfObjs] =
 	{ 0x05, TEMPLE_FOREST, "East Garden - High Ledge", "OOT MQ Forest Temple East Garden High Ledge Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FOREST, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x01, TEMPLE_FOREST, "East Garden - Ledge", "OOT MQ Forest Temple East Garden Ledge Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FOREST, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x0d, TEMPLE_FOREST, "Map", "OOT MQ Forest Temple Map Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FOREST, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x0c, TEMPLE_FOREST, "Bow", "OOT MQ Forest Temple Bow Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FOREST, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x0c, TEMPLE_FOREST, "Bow", "OOT MQ Forest Temple Bow Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FOREST, ObjectType::chest, ObjectIconMap::bow_oot, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x0f, TEMPLE_FOREST, "Compass", "OOT MQ Forest Temple Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FOREST, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x06, TEMPLE_FOREST, "Falling Ceiling", "OOT MQ Forest Temple Falling Ceiling Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FOREST, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x0b, TEMPLE_FOREST, "Antichamber", "OOT MQ Forest Temple Antichamber", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_FOREST, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
@@ -4669,19 +4669,19 @@ ObjectInfo MQ_TEMPLE_FORESTSceneObjects[MQ_TEMPLE_FORESTNumOfObjs] =
 const size_t TEMPLE_OF_TIMENumOfObjs = 4;
 ObjectInfo TEMPLE_OF_TIMESceneObjects[TEMPLE_OF_TIMENumOfObjs] =
 {
-	{ MASTER_SWORD, TEMPLE_OF_TIME, "Master Sword", "OOT Temple of Time Master Sword", ObjectType::npc, {587, 327, 0}, TEMPLE_OF_TIME, ObjectType::sword, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
-	{ LIGHT_MEDALLION, TEMPLE_OF_TIME, "Light Medallion", "OOT Temple of Time Medallion", ObjectType::npc, {561, 328, 0}, TEMPLE_OF_TIME, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
+	{ MASTER_SWORD, TEMPLE_OF_TIME, "Master Sword", "OOT Temple of Time Master Sword", ObjectType::npc, {587, 327, 0}, TEMPLE_OF_TIME, ObjectType::sword, ObjectIconMap::master, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
+	{ LIGHT_MEDALLION, TEMPLE_OF_TIME, "Light Medallion", "OOT Temple of Time Medallion", ObjectType::npc, {561, 328, 0}, TEMPLE_OF_TIME, ObjectType::npc, ObjectIconMap::light, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ SHEIK_LIGHT, TEMPLE_OF_TIME, "Prelude of Light", "OOT Temple of Time Sheik Song", ObjectType::npc, {574, 297, 0}, TEMPLE_OF_TIME, ObjectType::song, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
-	{ ZELDA_LIGHT_ARROW, TEMPLE_OF_TIME, "Light Arrows", "OOT Temple of Time Light Arrows", ObjectType::npc, {149, 329, 0}, TEMPLE_OF_TIME, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL }
+	{ ZELDA_LIGHT_ARROW, TEMPLE_OF_TIME, "Light Arrows", "OOT Temple of Time Light Arrows", ObjectType::npc, {149, 329, 0}, TEMPLE_OF_TIME, ObjectType::npc, ObjectIconMap::light_arrow, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL }
 };
 
 const size_t MQ_TEMPLE_SHADOWNumOfObjs = 93;
 ObjectInfo MQ_TEMPLE_SHADOWSceneObjects[MQ_TEMPLE_SHADOWNumOfObjs] =
 {
-	{ 0x01, TEMPLE_SHADOW, "Compass", "OOT MQ Shadow Temple Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SHADOW, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x07, TEMPLE_SHADOW, "Hover Boots", "OOT MQ Shadow Temple Hover Boots Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SHADOW, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x01, TEMPLE_SHADOW, "Chest", "OOT MQ Shadow Temple Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SHADOW, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x07, TEMPLE_SHADOW, "Hover Boots", "OOT MQ Shadow Temple Hover Boots Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SHADOW, ObjectType::chest, ObjectIconMap::hover, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x03, TEMPLE_SHADOW, "First Gibdos", "OOT MQ Shadow Temple First Gibdos Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SHADOW, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x02, TEMPLE_SHADOW, "Map", "OOT MQ Shadow Temple Map Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SHADOW, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x02, TEMPLE_SHADOW, "Chest", "OOT MQ Shadow Temple Map Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SHADOW, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x0e, TEMPLE_SHADOW, "Boat Passage", "OOT MQ Shadow Temple Boat Passage Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SHADOW, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x0c, TEMPLE_SHADOW, "Second Silver Rupee - Visible", "OOT MQ Shadow Temple Second Silver Rupee Visible Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SHADOW, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x16, TEMPLE_SHADOW, "Second Silver Rupee - Invisible", "OOT MQ Shadow Temple Second Silver Rupee Invisible Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SHADOW, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
@@ -4779,9 +4779,9 @@ ObjectInfo MQ_TEMPLE_SPIRITSceneObjects[MQ_TEMPLE_SPIRITNumOfObjs] =
 	{ 0x1a, TEMPLE_SPIRIT, "Entrance - Initial", "OOT MQ Spirit Temple Entrance Initial Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SPIRIT, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x1e, TEMPLE_SPIRIT, "Lobby - Back-Left", "OOT MQ Spirit Temple Lobby Back-Left Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SPIRIT, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x1f, TEMPLE_SPIRIT, "Lobby - Back-Right", "OOT MQ Spirit Temple Lobby Back-Right Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SPIRIT, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x03, TEMPLE_SPIRIT, "Compass", "OOT MQ Spirit Temple Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SPIRIT, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x03, TEMPLE_SPIRIT, "Chest", "OOT MQ Spirit Temple Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SPIRIT, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x01, TEMPLE_SPIRIT, "Sun Block Room", "OOT MQ Spirit Temple Sun Block Room Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SPIRIT, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x00, TEMPLE_SPIRIT, "Map", "OOT MQ Spirit Temple Map Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SPIRIT, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x00, TEMPLE_SPIRIT, "Chest", "OOT MQ Spirit Temple Map Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SPIRIT, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x08, TEMPLE_SPIRIT, "Map Room - Back", "OOT MQ Spirit Temple Map Room Back Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SPIRIT, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x1d, TEMPLE_SPIRIT, "Paradox", "OOT MQ Spirit Temple Paradox Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SPIRIT, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x06, TEMPLE_SPIRIT, "Child - Upper Ground", "OOT MQ Spirit Temple Child Upper Ground Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_SPIRIT, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
@@ -4861,9 +4861,9 @@ ObjectInfo MQ_TEMPLE_SPIRITSceneObjects[MQ_TEMPLE_SPIRITNumOfObjs] =
 const size_t MQ_TEMPLE_WATERNumOfObjs = 161;
 ObjectInfo MQ_TEMPLE_WATERSceneObjects[MQ_TEMPLE_WATERNumOfObjs] =
 {
-	{ 0x02, TEMPLE_WATER, "Map", "OOT MQ Water Temple Map Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_WATER, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x01, TEMPLE_WATER, "Compass", "OOT MQ Water Temple Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_WATER, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
-	{ 0x00, TEMPLE_WATER, "Longshot", "OOT MQ Water Temple Longshot Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_WATER, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x02, TEMPLE_WATER, "Chest", "OOT MQ Water Temple Map Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_WATER, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x01, TEMPLE_WATER, "Chest", "OOT MQ Water Temple Compass Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_WATER, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
+	{ 0x00, TEMPLE_WATER, "Longshot", "OOT MQ Water Temple Longshot Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_WATER, ObjectType::chest, ObjectIconMap::longshot, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x06, TEMPLE_WATER, "Central Pillar", "OOT MQ Water Temple Central Pillar Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_WATER, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x05, TEMPLE_WATER, "Boss Key", "OOT MQ Water Temple Boss Key Chest", ObjectType::chest, {0, 0, 0}, MQ_TEMPLE_WATER, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
 	{ 0x01, TEMPLE_WATER, "Side Loop - Small Key", "OOT MQ Water Temple Side Loop Key", ObjectType::collectible, {0, 0, 0}, MQ_TEMPLE_WATER, ObjectType::collectible, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot_mq, LocType::dungeon, NULL },
@@ -5031,7 +5031,7 @@ ObjectInfo THIEVES_HIDEOUTSceneObjects[THIEVES_HIDEOUTNumOfObjs] =
 	{ 0x0f, THIEVES_HIDEOUT, "Small Key - Jail 2", "OOT Gerudo Fortress Jail 2", ObjectType::collectible, {532, 56, 0}, THIEVES_HIDEOUT, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x0a, THIEVES_HIDEOUT, "Small Key - Jail 4", "OOT Gerudo Fortress Jail 3", ObjectType::collectible, {312, 465, 0}, THIEVES_HIDEOUT, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x0e, THIEVES_HIDEOUT, "Small Key - Jail 3", "OOT Gerudo Fortress Jail 4", ObjectType::collectible, {560, 240, 0}, THIEVES_HIDEOUT, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
-	{ GERUDO_CARD, THIEVES_HIDEOUT, "Gerudo Member Card", "OOT Gerudo Member Card", ObjectType::npc, {312, 487, 0}, THIEVES_HIDEOUT, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
+	{ GERUDO_CARD, THIEVES_HIDEOUT, "Gerudo Member Card", "OOT Gerudo Member Card", ObjectType::npc, {312, 487, 0}, THIEVES_HIDEOUT, ObjectType::npc, ObjectIconMap::card, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x0004, THIEVES_HIDEOUT, "Break Room 1", "OOT Gerudo Fortress Pot Break Room 1", ObjectType::pot, {376, 581, 0}, THIEVES_HIDEOUT, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x0005, THIEVES_HIDEOUT, "Break Room 2", "OOT Gerudo Fortress Pot Break Room 2", ObjectType::pot, {381, 588, 0}, THIEVES_HIDEOUT, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x0206, THIEVES_HIDEOUT, "Jail 1 - Pot 1", "OOT Gerudo Fortress Pot Jail 1 1", ObjectType::pot, {641, 441, 1}, THIEVES_HIDEOUT, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
@@ -5079,7 +5079,7 @@ ObjectInfo THIEVES_HIDEOUTSceneObjects[THIEVES_HIDEOUTNumOfObjs] =
 const size_t TOMB_DAMPE_WINDMILLNumOfObjs = 33;
 ObjectInfo TOMB_DAMPE_WINDMILLSceneObjects[TOMB_DAMPE_WINDMILLNumOfObjs] =
 {
-	{ 0x00, TOMB_DAMPE_WINDMILL, "Hookshot", "OOT Graveyard Dampe Tomb Reward 1", ObjectType::chest, {196, 728, 0}, TOMB_DAMPE_WINDMILL, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
+	{ 0x00, TOMB_DAMPE_WINDMILL, "Hookshot", "OOT Graveyard Dampe Tomb Reward 1", ObjectType::chest, {196, 728, 0}, TOMB_DAMPE_WINDMILL, ObjectType::chest, ObjectIconMap::hookshot_oot, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x07, TOMB_DAMPE_WINDMILL, "Race Game", "OOT Graveyard Dampe Tomb Reward 2", ObjectType::collectible, {196, 750, 0}, TOMB_DAMPE_WINDMILL, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x0000, TOMB_DAMPE_WINDMILL, "Pot 1", "OOT Graveyard Dampe Tomb Pot 1", ObjectType::pot, {265, 146, 1}, TOMB_DAMPE_WINDMILL, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x0001, TOMB_DAMPE_WINDMILL, "Pot 2", "OOT Graveyard Dampe Tomb Pot 2", ObjectType::pot, {257, 157, 2}, TOMB_DAMPE_WINDMILL, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
@@ -5138,7 +5138,7 @@ ObjectInfo TOMB_FAIRYSceneObjects[TOMB_FAIRYNumOfObjs] =
 const size_t TOMB_REDEADNumOfObjs = 1;
 ObjectInfo TOMB_REDEADSceneObjects[TOMB_REDEADNumOfObjs] =
 {
-	{ 0x00, TOMB_REDEAD, "ReDead", "OOT Graveyard ReDead Tomb", ObjectType::chest, {470, 495, 0}, TOMB_REDEAD, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL }
+	{ 0x00, TOMB_REDEAD, "ReDead", "OOT Graveyard ReDead Tomb", ObjectType::chest, {470, 495, 0}, TOMB_REDEAD, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL }
 };
 
 const size_t TOMB_ROYALNumOfObjs = 3;
@@ -5170,14 +5170,14 @@ const size_t ZORA_DOMAINNumOfObjs = 41;
 ObjectInfo ZORA_DOMAINSceneObjects[ZORA_DOMAINNumOfObjs] =
 {
 	{ 0x00, ZORA_DOMAIN, "Waterfall Chest", "OOT Zora Domain Waterfall Chest", ObjectType::chest, {420, 302, 0}, ZORA_DOMAIN, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
-	{ ZORA_DIVING_GAME, ZORA_DOMAIN, "Silver Scale", "OOT Zora Domain Diving Game", ObjectType::npc, {415, 278, 0}, ZORA_DOMAIN, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
+	{ ZORA_DIVING_GAME, ZORA_DOMAIN, "Silver Scale", "OOT Zora Domain Diving Game", ObjectType::npc, {415, 278, 0}, ZORA_DOMAIN, ObjectType::npc, ObjectIconMap::silver, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x1, ZORA_DOMAIN, "Diving Game - Green Rupee", "OOT Zora Domain Diving Game Green Rupee", ObjectType::collectible, {384, 372, 0}, ZORA_DOMAIN, ObjectType::rupee, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x2, ZORA_DOMAIN, "Diving Game - Blue Rupee", "OOT Zora Domain Diving Game Blue Rupee", ObjectType::collectible, {425, 372, 0}, ZORA_DOMAIN, ObjectType::rupee, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x3, ZORA_DOMAIN, "Diving Game - Red Rupee", "OOT Zora Domain Diving Game Red Rupee", ObjectType::collectible, {403, 353, 0}, ZORA_DOMAIN, ObjectType::rupee, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x5, ZORA_DOMAIN, "Diving Game - Purple Rupee", "OOT Zora Domain Diving Game Purple Rupee", ObjectType::collectible, {429, 336, 0}, ZORA_DOMAIN, ObjectType::rupee, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x4, ZORA_DOMAIN, "Diving Game - Huge Rupee", "OOT Zora Domain Diving Game Huge Rupee", ObjectType::collectible, {375, 336, 0}, ZORA_DOMAIN, ObjectType::rupee, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
-	{ ZORA_KING_TUNIC, ZORA_DOMAIN, "Zora Tunic", "OOT Zora Domain Tunic", ObjectType::npc, {572, 179, 0}, ZORA_DOMAIN, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
-	{ TRADE_EYEBALL_FROG, ZORA_DOMAIN, "Eyeball Frog", "OOT Zora Domain Eyeball Frog", ObjectType::npc, {556, 126, 0}, ZORA_DOMAIN, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
+	{ ZORA_KING_TUNIC, ZORA_DOMAIN, "Zora Tunic", "OOT Zora Domain Tunic", ObjectType::npc, {572, 179, 0}, ZORA_DOMAIN, ObjectType::npc, ObjectIconMap::zora_tunic, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
+	{ TRADE_EYEBALL_FROG, ZORA_DOMAIN, "Eyeball Frog", "OOT Zora Domain Eyeball Frog", ObjectType::npc, {556, 126, 0}, ZORA_DOMAIN, ObjectType::npc, ObjectIconMap::prescription, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x96, ZORA_DOMAIN, "Frozen Waterfall", "OOT Zora Domain GS Waterfall", ObjectType::gs, {453, 298, 0}, ZORA_DOMAIN, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::Adult, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x0115, ZORA_DOMAIN, "Pot 1", "OOT Zora Domain Pot 1", ObjectType::pot, {561, 531, 1}, ZORA_DOMAIN, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x0116, ZORA_DOMAIN, "Pot 2", "OOT Zora Domain Pot 2", ObjectType::pot, {508, 533, 2}, ZORA_DOMAIN, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
@@ -5269,7 +5269,7 @@ ObjectInfo ZORA_RIVERSceneObjects[ZORA_RIVERNumOfObjs] =
 {
 	{ 0x04, ZORA_RIVER, "Pillar", "OOT Zora River HP Pillar", ObjectType::collectible, {940, 653, 0}, ZORA_RIVER, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
 	{ 0x0b, ZORA_RIVER, "Platform", "OOT Zora River HP Platform", ObjectType::collectible, {236, 757, 0}, ZORA_RIVER, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, ZGame::oot, LocType::overworld, NULL },
-	{ BEAN_SELLER, ZORA_RIVER, "Bean Seller", "OOT Zora River Bean Seller", ObjectType::npc, {1133, 451, 0}, ZORA_RIVER, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
+	{ BEAN_SELLER, ZORA_RIVER, "Bean Seller", "OOT Zora River Bean Seller", ObjectType::npc, {1133, 451, 1}, ZORA_RIVER, ObjectType::npc, ObjectIconMap::bean, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ FROGS_STORMS, ZORA_RIVER, "Frogs - Song of Storms", "OOT Zora River Frogs Storms", ObjectType::npc, {807, 642, 3}, ZORA_RIVER, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ FROGS_ZL, ZORA_RIVER, "Frogs - Zelda's Lullaby", "OOT Zora River Frogs Zeldas Lullaby", ObjectType::npc, {805, 657, 2}, ZORA_RIVER, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },
 	{ FROGS_EPONA, ZORA_RIVER, "Frogs - Epona's Song", "OOT Zora River Frogs Eponas Song", ObjectType::npc, {820, 651, 1}, ZORA_RIVER, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::Child, 0, ZGame::oot, LocType::overworld, NULL },

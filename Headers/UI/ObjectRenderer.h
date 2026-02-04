@@ -56,18 +56,150 @@ const ObjectIcon IconsMetaInfo[ObjectType::last] =
 
     // Extra types
     {"./Resources/Common/Song.png", { 30, 30 }},
-    {"./Resources/Common/HP.png", { 30, 30 }},
+    {"./Resources/Common/HP.png", { 28, 28 }},
     {"./Resources/Common/HC.png", { 30, 30 }},
     {"./Resources/Common/Small_Key.png", { 30, 30 }},
     {"./Resources/Common/Boss_Key.png", { 30, 30 }},
     {"./Resources/Common/Map.png", { 30, 30 }},
     {"./Resources/Common/Compass.png", { 30, 30 }},
-    {"./Resources/Common/Sword.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Equipment/Master.png", { 30, 30 }},
     {"./Resources/Common/Ocarina.png", { 30, 30 }},
     {"./Resources/Common/Shop.png", { 25, 25 }},
     {"./Resources/Common/Mask.png", { 30, 30 }},
     {"./Resources/Common/Egg.png", { 30, 30 }},
     {"./Resources/Common/Owl.png", { 30, 30 }}
+};
+
+const ObjectIcon SpecificIconsMetaInfo[ObjectIconMap::type] =
+{
+    // Masks
+    {"./Resources/OoT/Icons/Masks/Skull.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Masks/Spooky.png", { 30, 30 }},
+    {"./Resources/Common/Masks/Keaton.png", { 30, 30 }},
+    {"./Resources/Common/Masks/Bunny.png", { 30, 30 }},
+    {"./Resources/Common/Masks/Truth.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Blast.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Bremen.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Captain.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Couple.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Deity.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Fairy.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Garo.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Gero.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Giant.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Gibdo.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Goht.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Goron.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Gyorg.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Kafei.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Kamaro.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Night.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Odolwa.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Postman.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Romani.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Scents.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Stone.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Troupe.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Twinmold.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Masks/Zora.png", { 30, 30 }},
+
+    // Swords
+    {"./Resources/OoT/Icons/Equipment/Kokiri.png", { 40, 40 }},
+    {"./Resources/OoT/Icons/Equipment/Master.png", { 40, 40 }},
+    {"./Resources/OoT/Icons/Equipment/Broken.png", { 40, 40 }},
+    {"./Resources/OoT/Icons/Equipment/Biggoron.png", { 40, 40 }},
+    {"./Resources/MM/Icons/Equipment/Razor.png", { 40, 40 }},
+    {"./Resources/MM/Icons/Equipment/Gilded.png", { 40, 40 }},
+    {"./Resources/MM/Icons/Equipment/Fairy.png", { 40, 40 }},
+
+    // Quest
+    {"./Resources/OoT/Icons/Quest/Agony.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Quest/Card.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Quest/Emerald.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Quest/Ruby.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Quest/Saphir.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Quest/Light.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Quest/Forest.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Quest/Fire.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Quest/Water.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Quest/Shadow.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Quest/Spirit.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Quest/Bombers.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Quest/Spin.png", { 30, 30 }},
+    {"./Resources/Common/Quest/Defense.png", { 30, 30 }},
+    {"./Resources/Common/Quest/Magic.png", { 30, 30 }},
+    {"./Resources/Common/Quest/Double_Magic.png", { 30, 30 }},
+
+    // Equipment
+    {"./Resources/OoT/Icons/Equipment/Big_Seed.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Equipment/Biggest_Seed.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Equipment/Silver.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Equipment/Golden.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Equipment/Bracelet.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Equipment/Silver_Gauntlet.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Equipment/Golden_Gauntlet.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Equipment/Goron.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Equipment/Zora.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Equipment/Hover.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Equipment/Iron.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Equipment/Mirror.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Equipment/Mirror.png", { 30, 30 }},
+    {"./Resources/Common/Equipment/Bomb_Bag.png", { 30, 30 }},
+    {"./Resources/Common/Equipment/Big_Bomb_Bag.png", { 30, 30 }},
+    {"./Resources/Common/Equipment/Biggest_Bomb_Bag.png", { 30, 30 }},
+    {"./Resources/Common/Equipment/Big_Quiver.png", { 30, 30 }},
+    {"./Resources/Common/Equipment/Biggest_Quiver.png", { 30, 30 }},
+    {"./Resources/Common/Equipment/Wallet.png", { 30, 30 }},
+    {"./Resources/Common/Equipment/Big_Wallet.png", { 30, 30 }},
+
+    // Trade
+    {"./Resources/OoT/Icons/Trade/Letter.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Trade/Cucco.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Trade/Cojiro.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Trade/Mushroom.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Trade/Potion.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Trade/Saw.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Trade/Prescription.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Trade/Frog.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Trade/Eye.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Trade/Claim.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Trade/Land.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Trade/Swamp.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Trade/Mountain.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Trade/Ocean.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Trade/Key.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Trade/Letter_Kafei.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Trade/Letter_Mama.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Trade/Pendant.png", { 30, 30 }},
+
+    // Items
+    {"./Resources/OoT/Icons/Items/Fairy.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Items/Boomrang.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Items/Slingshot.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Items/Bow.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Items/Din.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Items/Farore.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Items/Nayru.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Items/Hammer.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Items/Hookshot.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Items/Longshot.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Items/Ruto.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Items/Bow.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Items/Chateau.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Items/Dust.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Items/Hookshot.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Items/Moon.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Items/Picto.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Items/Powder.png", { 30, 30 }},
+    {"./Resources/Common/Items/Bean.png", { 30, 30 }},
+    {"./Resources/Common/Items/Bottle.png", { 30, 30 }},
+    {"./Resources/Common/Items/Milk.png", { 30, 30 }},
+    {"./Resources/Common/Items/Red_Potion.png", { 30, 30 }},
+    {"./Resources/Common/Items/Lens.png", { 30, 30 }},
+    {"./Resources/Common/Items/Fire.png", { 30, 30 }},
+    {"./Resources/Common/Items/Ice.png", { 30, 30 }},
+    {"./Resources/Common/Items/Light.png", { 30, 30 }},
+    {"./Resources/Common/Items/Bombchu.png", { 30, 30 }}
 };
 
 /*
@@ -77,8 +209,10 @@ class ObjectIcons
 {
 public:
 
-    QIcon Icons[ObjectType::last];            // The matching icon.
-    QPixmap PixmapIcons[ObjectType::last];    // The matching pixmap.
+    QIcon Icons[ObjectType::last];            // The matching icon for common item and list category.
+    QPixmap PixmapIcons[ObjectType::last];    // The matching pixmap for common item and list category.
+
+    QPixmap PixmapSpeIcons[ObjectIconMap::type];    // The matching pixmap for specific item.
 
 public:
 

@@ -59,8 +59,106 @@ enum ObjectIconMap
 	twinmold,
 	zora,
 
-	// Special : must be at the end
+	// Swords
+	kokiri,
+	master,
+	broken_big,
+	biggoron,
+	razor,
+	gilded,
+	fairy_sword,
 
+	// Quest
+	agony,
+	card,
+	emerald,
+	ruby,
+	saphir,
+	light,
+	forest,
+	fire,
+	water,
+	shadow,
+	spirit,
+	bombers,
+	spin,
+	defense,
+	magic,
+	double_magic,
+
+	// Equipment
+	big_seed,
+	biggest_seed,
+	silver,
+	golden,
+	bracelet,
+	silver_gauntlet,
+	golden_gauntlet,
+	goron_tunic,
+	zora_tunic,
+	hover,
+	iron,
+	mirror_oot,
+	mirror_mm,
+	bomb_bag,
+	big_bomb,
+	biggest_bomb,
+	big_quiver,
+	biggest_quiver,
+	wallet,
+	big_wallet,
+
+	// Trade
+	letter,
+	cucco,
+	cojiro,
+	mushroom,
+	potion,
+	saw,
+	prescription,
+	frog,
+	eye_drops,
+	claim,
+	land,
+	swamp,
+	mountain,
+	ocean,
+	key,
+	letter_kafei,
+	letter_mama,
+	pendant,
+
+	// Items
+	fairy_ocarina,
+	boomrang,
+	slingshot,
+	bow_oot,
+	din,
+	farore,
+	nayru,
+	hammer,
+	hookshot_oot,
+	longshot,
+	ruto,
+	bow_mm,
+	chateau,
+	dust,
+	hookshot_mm,
+	moon,
+	picto,
+	powder,
+	bean,
+	bottle,
+	milk,
+	red_potion,
+	lens,
+	fire_arrow,
+	ice_arrow,
+	light_arrow,
+	bombchu,
+
+
+	// Special : must be at the end
 	type,			// Tells to use the ID matching the type of the object
 	render_type		// Tells to use the ID matching the render type of the obejct
 };
@@ -133,7 +231,7 @@ const QSet<ObjectType> MMTypes =
 	ObjectType::wonder, ObjectType::grass, ObjectType::crate, ObjectType::pot, ObjectType::hive, ObjectType::butterfly, ObjectType::rupee, ObjectType::snowball,
 	ObjectType::barrel, ObjectType::heart, ObjectType::fairy, ObjectType::icicle, ObjectType::redboulder, ObjectType::rock, ObjectType::soil, ObjectType::tree, ObjectType::bush,
 	ObjectType::song, ObjectType::heart_piece, ObjectType::heart_container, ObjectType::small_key, ObjectType::boss_key, ObjectType::map, ObjectType::compass,
-	ObjectType::sword, ObjectType::merchant, ObjectType::mask, ObjectType::owl
+	ObjectType::sword, ObjectType::ocarina, ObjectType::merchant, ObjectType::mask, ObjectType::owl
 };
 
 typedef struct ObjectInfo
