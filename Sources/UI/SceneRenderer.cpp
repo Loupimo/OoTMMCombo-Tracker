@@ -214,8 +214,8 @@ void SceneItemTree::CountSceneObjects()
     {   // Browse each scene objects
 
         ObjectInfo* currObject = &this->Scene->Objects->Objects[i];
-        if (currObject->RenderScene != this->Scene->SceneID || currObject->Type == ObjectType::none || Filter->IsObjectExcluded(currObject))
-        {   // Ignore the object if the render scene ID is different from this scene ID
+        if (currObject->RenderScene != this->Scene->SceneID || currObject->Type == ObjectType::none || currObject->Layout != this->Scene->Info->ActiveLayout || Filter->IsObjectExcluded(currObject))
+        {   // Ignore the object if the render scene ID is different from this scene ID or if the current active layout does not match the object like OoT MQ or MM JP
 
             continue;
         }
@@ -299,7 +299,7 @@ SceneRenderer::SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeW
     {   // Browse each scene objects
 
         ObjectInfo* currObject = &this->CurrScene->Objects->Objects[i];
-        if (currObject->RenderScene != this->CurrScene->SceneID || currObject->Type == ObjectType::none || Filter->IsObjectExcluded(currObject))
+        if (currObject->RenderScene != this->CurrScene->SceneID || currObject->Type == ObjectType::none || currObject->Layout != this->ItemOwner->Scene->Info->ActiveLayout || Filter->IsObjectExcluded(currObject))
         {   // Ignore the object if the render scene ID is different from this scene ID or if the object is excluded by the filter
 
             continue;

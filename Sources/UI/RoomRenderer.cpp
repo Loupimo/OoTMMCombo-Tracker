@@ -24,15 +24,6 @@ RoomItemTree::RoomItemTree(RoomInfo* RInfo, SceneItemTree* ParentSceneItem)
 	this->FoundObjects = 0;
 	this->TotalObjects = 0;
 	this->InitRoomCounters();
-	/*for (size_t i = 0; i < this->SceneItem->Scene->Objects->NumOfObjs; i++)
-	{
-		ObjectInfo* currObj = &this->SceneItem->Scene->Objects->Objects[i];
-
-		if (currObj->Type != ObjectType::none && currObj->RenderScene == this->SceneItem->Scene->SceneID && currObj->RoomID == this->Info.RoomID && !ParentSceneItem->Filter->IsObjectExcluded(currObj))
-		{
-			this->TotalObjects++;
-		}
-	}*/
 	this->RefreshItemName();
 }
 
@@ -90,7 +81,7 @@ void RoomItemTree::InitRoomCounters()
 	{
 		ObjectInfo* currObj = &this->SceneItem->Scene->Objects->Objects[i];
 
-		if (currObj->Type != ObjectType::none && currObj->RenderScene == this->SceneItem->Scene->SceneID && currObj->RoomID == this->Info.RoomID && !this->Filter->IsObjectExcluded(currObj))
+		if (currObj->Type != ObjectType::none && currObj->RenderScene == this->SceneItem->Scene->SceneID && currObj->RoomID == this->Info.RoomID && currObj->Layout == this->SceneItem->Scene->Info->ActiveLayout && !this->Filter->IsObjectExcluded(currObj))
 		{
 			this->TotalObjects++;
 

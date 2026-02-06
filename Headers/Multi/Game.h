@@ -5,15 +5,15 @@
 
 #define OOT_GAME 0x00
 #define MM_GAME 0x01
-#define OOT_MQ_GAME 0x02
 
 class App;
 
-enum ZGame
+enum GameLayout
 {
-    oot = OOT_GAME,
-    mm = MM_GAME,
-    oot_mq = OOT_MQ_GAME
+    oot,
+    oot_mq,
+    mm,
+    mm_jp
 };
 
 class Game

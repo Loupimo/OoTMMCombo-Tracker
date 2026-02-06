@@ -46,7 +46,7 @@ def parse_file(input_file, output_file, arrayname, prefix):
             else:
                 tooltip = "\"" + tooltip + "<br><br>" + requierements + "\""
             
-            objectstr = objectstr + "\t{ " + idstr + ", " + scenestr + ", \"" + str(row["location"]) + "\", ObjectType::" + str(row["type"]) + ", {" + str(row["x"]) + ", " + str(row["y"]) + ", " + str(row["z"]) + "}, " + renderscene + ", ObjectType::" + str(row["rendertype"]) + ", ObjectIconMap::" + str(row["icontype"]) + ", ZGame::" + str(row['game']) + ", LocType::" + str(row["loc_type"]) + ", " + tooltip + " }"
+            objectstr = objectstr + "\t{ " + idstr + ", " + scenestr + ", \"" + str(row["location"]) + "\", ObjectType::" + str(row["type"]) + ", {" + str(row["x"]) + ", " + str(row["y"]) + ", " + str(row["z"]) + "}, " + renderscene + ", ObjectType::" + str(row["rendertype"]) + ", ObjectIconMap::" + str(row["icontype"]) + ", GameLayout::" + str(row['game_layout']) + ", LocType::" + str(row["loc_type"]) + ", " + tooltip + " }"
             outfile.write(objectstr)
         outfile.write("\n};")
 
@@ -97,7 +97,7 @@ def parse_file2(input_file, output_file, arrayname, prefix):
             else:
                 tooltip = "\"" + tooltip + "\""
 
-            objectstr = "\t{ " + idstr + ", " + scenestr + ", \"" + str(row["friendly_name"]) + "\", \"" + str(row["location"]) + "\", ObjectType::" + str(row["type"]) + ", {" + str(int(row["x"])) + ", " + str(int(row["y"])) + ", " + str(int(row["z"])) + "}, " + renderscene + ", ObjectType::" + str(row["rendertype"]) + ", ObjectIconMap::" + str(row["icontype"]) + ", ObjectContext::" + str(row["context"]) + ", " + str(row["room"]) + ", ZGame::" + str(row['game']) + ", LocType::" + str(row["loc_type"]) + ", " + tooltip  + " }"
+            objectstr = "\t{ " + idstr + ", " + scenestr + ", \"" + str(row["friendly_name"]) + "\", \"" + str(row["location"]) + "\", ObjectType::" + str(row["type"]) + ", {" + str(int(row["x"])) + ", " + str(int(row["y"])) + ", " + str(int(row["z"])) + "}, " + renderscene + ", ObjectType::" + str(row["rendertype"]) + ", ObjectIconMap::" + str(row["icontype"]) + ", ObjectContext::" + str(row["context"]) + ", " + str(row["room"]) + ", GameLayout::" + str(row['game_layout']) + ", LocType::" + str(row["loc_type"]) + ", " + tooltip  + " }"
             fin[scenestr].append(objectstr)
             
             if renderscene != scenestr:
@@ -140,13 +140,15 @@ def parse_scene(input_file, output_file, game):
             scenestr = row["scene_name"]
             image_path = row["image_path"]
             parent_region = row["parent_region"]
+            has_context = row["has_context"]
+            active_layout = row["active_layout"]
 
             if game == "OOT":
                 parent_region = "OoTRegions::" + parent_region
             else:
                 parent_region = "MMRegions::" + parent_region
 
-            objectstr = objectstr + "\t{ \"" + scenestr + "\", \"" + image_path + "\", (uint8_t) " + parent_region + " }"
+            objectstr = objectstr + "\t{ \"" + scenestr + "\", \"" + image_path + "\", (uint8_t) " + parent_region + ", " + str(has_context).lower() + ", GameLayout::" + active_layout + "}"
             outfile.write(objectstr)
 
 def parse_items(input_file, output_file, arrayname):
@@ -217,13 +219,13 @@ print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_fil
 
 input_file = '..\\Scenes\\scenes_oot.csv'
 output_file = '..\\Scenes\\scenes_oot.txt'
-#parse_scene(input_file, output_file, "OOT")
+parse_scene(input_file, output_file, "OOT")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
 
 input_file = '..\\Scenes\\scenes_mm.csv'
 output_file = '..\\Scenes\\scenes_mm.txt'
-#parse_scene(input_file, output_file, "MM")
+parse_scene(input_file, output_file, "MM")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
 #

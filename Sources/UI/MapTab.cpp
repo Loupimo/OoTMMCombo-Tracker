@@ -265,9 +265,18 @@ MapTab::MapTab(GameTab* Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes, 
             // Create a new scene item and add it to the region
             SceneItemTree* tmp = new SceneItemTree(&Scenes[i], this->FilterButton, currRegion);
 
-            // Update the region object counts
-            currRegion->AddObjectCounts(tmp->GetCollectedObjects(), tmp->GetTotalObjects());
-            currRegion->RefreshObjsCountText();
+            if (tmp->GetTotalObjects() == 0)
+            {   // Scene has no item to show. Hide it
+
+                currRegion->child(currRegion->indexOfChild(tmp))->setHidden(true);
+            }
+            else
+            {   // Update the region object counts
+            
+                currRegion->AddObjectCounts(tmp->GetCollectedObjects(), tmp->GetTotalObjects());
+                currRegion->RefreshObjsCountText();
+            }
+
             this->Scenes.insert(Scenes[i].SceneID, tmp);
         }
     }
@@ -454,9 +463,32 @@ void MapTab::ResetAllObjectCounts()
                 }
             }
 
-            // Update the region object counts
-            currRegion->AddObjectCounts(currScene->GetCollectedObjects(), currScene->GetTotalObjects());
-            currRegion->RefreshObjsCountText();
+            if (currScene->GetTotalObjects() == 0)
+            {   // Scene has no item to show. Hide it
+
+                currRegion->child(currRegion->indexOfChild(currScene))->setHidden(true);
+
+                if (currScene == this->RenderedScene)
+                {   // Update the object list and the renderer
+
+                    this->UnloadMap();
+                }
+            }
+            else
+            {   // Update the region object counts
+
+                currRegion->child(currRegion->indexOfChild(currScene))->setHidden(false);   // The scene could previously be hidden depending on the settings
+                currRegion->AddObjectCounts(currScene->GetCollectedObjects(), currScene->GetTotalObjects());
+                currRegion->RefreshObjsCountText();
+
+                if (currScene == this->RenderedScene)
+                {   // Update the object list and the renderer
+
+                    this->UnloadMap();
+                    this->RenderedScene = currScene;
+                    this->RenderMap();
+                }
+            }
         }
     }
 }

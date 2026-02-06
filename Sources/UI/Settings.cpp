@@ -1,5 +1,6 @@
 #include "UI/FilterManager.h"
 #include "UI/Settings.h"
+#include "Combo/Scenes.h"
 
 
 
@@ -13,6 +14,194 @@ Settings::Settings()
 Settings::~Settings()
 {
 	this->ROMSettings.clear();
+}
+
+
+void Settings::ParseSettings(QString& SettingsSection)
+{	// Split with "===" to find the right section
+
+	this->ROMSettings.clear();
+
+	QRegularExpression reg("^([^\\s].*(?:\n(?![^\\s]).*)*)", QRegularExpression::MultilineOption);
+	QRegularExpressionMatchIterator it = reg.globalMatch(SettingsSection);
+
+	QStringList sections;
+	while (it.hasNext())
+	{   // Fill the section array with all the gathered matches
+
+		QRegularExpressionMatch match = it.next();
+		sections.append(match.captured(1));
+	}
+
+	for (size_t i = 0; i < sections.size(); i++)
+	{
+		QString currSection = sections.at(i);
+
+		if (currSection.startsWith("Settings"))
+		{	// Settings
+
+			// Regex to split strings by location
+			QRegularExpression reg("^\\s{2}(.+)\n", QRegularExpression::MultilineOption);
+			QRegularExpressionMatchIterator it = reg.globalMatch(currSection);
+
+			QStringList settings;
+
+			while (it.hasNext())
+			{   // Fill the maps array with all the gathered matches
+
+				QRegularExpressionMatch match = it.next();
+				settings.append(match.captured(1));
+				reg = QRegularExpression("^(.+):\\s(.+)", QRegularExpression::MultilineOption);
+				match = reg.globalMatch(match.captured(1)).next();
+				this->AddSetting(match.captured(1), match.captured(2));
+			}
+
+		}
+		else if (currSection.startsWith("World"))
+		{	// World flags
+
+			this->ParseGamesLayouts(currSection);
+		}
+	}
+}
+
+
+void Settings::ParseGamesLayouts(QString& LayoutSection)
+{
+	// Reset layouts
+	GetSceneMetaInfo(DEKU_TREE, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(DODONGO_CAVERN, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(INSIDE_JABU_JABU, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(TEMPLE_FOREST, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(TEMPLE_FIRE, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(TEMPLE_WATER, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(TEMPLE_SHADOW, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(TEMPLE_SPIRIT, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(BOTTOM_OF_THE_WELL, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(GERUDO_TRAINING_GROUND, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(ICE_CAVERN, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(INSIDE_GANON_CASTLE, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(MM_GROTTO_DEKU_PALACE_GENERIC, MM_GAME)->ActiveLayout = GameLayout::mm;
+
+	QRegularExpression reg("^  ((?:Master Quest Dungeons|Majora's Mask JP Layouts):(?: \\w*|(?:\n    - .+)*))", QRegularExpression::MultilineOption);
+	QRegularExpressionMatchIterator it = reg.globalMatch(LayoutSection);
+
+	while (it.hasNext())
+	{
+		QRegularExpressionMatch match = it.next();
+		QStringList layoutParams = match.captured(1).split("\n");
+
+		if (layoutParams.size() == 1)
+		{	// None or all
+
+			layoutParams = layoutParams.at(0).split(": ");
+			if (layoutParams.at(0) == "Master Quest Dungeons")
+			{	// Ocarina of Time
+
+				if (layoutParams.at(1) == "all")
+				{	// All MQ
+
+					GetSceneMetaInfo(DEKU_TREE, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(DODONGO_CAVERN, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(INSIDE_JABU_JABU, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(TEMPLE_FOREST, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(TEMPLE_FIRE, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(TEMPLE_WATER, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(TEMPLE_SHADOW, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(TEMPLE_SPIRIT, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(BOTTOM_OF_THE_WELL, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(ICE_CAVERN, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(GERUDO_TRAINING_GROUND, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(INSIDE_GANON_CASTLE, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+				}
+			}
+			else
+			{	// Majora's mask
+
+				if (layoutParams.at(1) == "all")
+				{	// All JP
+
+					GetSceneMetaInfo(MM_GROTTO_DEKU_PALACE_GENERIC, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
+				}
+			}
+		}
+		else
+		{
+			if (layoutParams.at(0) == "Master Quest Dungeons:")
+			{	// Ocarina of Time
+
+				for (size_t i = 1; i < layoutParams.size(); i++)
+				{
+					QString currScene = layoutParams.at(i);
+					currScene = currScene.replace("    - ", "");
+
+					if (currScene == "Deku Tree")
+					{
+						GetSceneMetaInfo(DEKU_TREE, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					}
+					else if (currScene == "Dodongo cavern")
+					{
+						GetSceneMetaInfo(DODONGO_CAVERN, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					}
+					else if (currScene == "Jabu-Jabu")
+					{
+						GetSceneMetaInfo(INSIDE_JABU_JABU, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					}
+					else if (currScene == "Forest Temple")
+					{
+						GetSceneMetaInfo(TEMPLE_FOREST, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					}
+					else if (currScene == "Fire Temple")
+					{
+						GetSceneMetaInfo(TEMPLE_FIRE, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					}
+					else if (currScene == "Water Temple")
+					{
+						GetSceneMetaInfo(TEMPLE_WATER, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					}
+					else if (currScene == "Shadow Temple")
+					{
+						GetSceneMetaInfo(TEMPLE_SHADOW, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					}
+					else if (currScene == "Spirit Temple")
+					{
+						GetSceneMetaInfo(TEMPLE_SPIRIT, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					}
+					else if (currScene == "Bottom of the Well")
+					{
+						GetSceneMetaInfo(BOTTOM_OF_THE_WELL, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					}
+					else if (currScene == "Ice Cavern")
+					{
+						GetSceneMetaInfo(ICE_CAVERN, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					}
+					else if (currScene == "Gerudo Training Grounds")
+					{
+						GetSceneMetaInfo(GERUDO_TRAINING_GROUND, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					}
+					else if (currScene == "Ganon's Castle")
+					{
+						GetSceneMetaInfo(INSIDE_GANON_CASTLE, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					}
+				}
+			}
+			else
+			{	// Majora's mask
+
+				for (size_t i = 1; i < layoutParams.size(); i++)
+				{
+					QString currScene = layoutParams.at(i);
+					currScene = currScene.replace("    - ", "");
+
+					if (currScene == "Deku Palace")
+					{	// Deku Palace layout
+
+						GetSceneMetaInfo(MM_GROTTO_DEKU_PALACE_GENERIC, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
+					}
+				}
+			}
+		}
+	}
 }
 
 

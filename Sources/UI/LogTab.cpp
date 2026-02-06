@@ -328,31 +328,6 @@ void LogTab::LoadSpoiler()
 }
 
 
-void LogTab::LoadSpoilerShuffleParam(QString& SettingsSection)
-{
-
-    // Split with "===" to find the right section
-    QStringList sections = SettingsSection.split("\n\n", Qt::SkipEmptyParts, Qt::CaseSensitive);
-
-    // Regex to split strings by location
-    QRegularExpression reg("^\\s{2}(.+)\n", QRegularExpression::MultilineOption);
-    QRegularExpressionMatchIterator it = reg.globalMatch(sections[1]);
-
-    QStringList settings;
-    this->WinOwner->ROMSettings.~Settings();
-    this->WinOwner->ROMSettings = Settings();
-    while (it.hasNext())
-    {   // Fill the maps array with all the gathered matches
-
-        QRegularExpressionMatch match = it.next();
-        settings.append(match.captured(1));
-        reg = QRegularExpression("^(.+):\\s(.+)", QRegularExpression::MultilineOption);
-        match = reg.globalMatch(match.captured(1)).next();
-        this->WinOwner->ROMSettings.AddSetting(match.captured(1), match.captured(2));
-    }
-}
-
-
 void LogTab::LogMessage(const QString& Message)
 {
     this->LogViewer->appendPlainText(Message);

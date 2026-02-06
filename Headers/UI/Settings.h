@@ -39,6 +39,8 @@ public:
 	Settings();
 	~Settings();
 
+	void ParseSettings(QString& SettingsSection);
+	void ParseGamesLayouts(QString& LayoutSection);
 	void AddSetting(QString Name, QString Value);
 
 	void ApplySettings(FilterManager* FilterOoT, FilterManager* FilterMM);

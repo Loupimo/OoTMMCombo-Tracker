@@ -48,7 +48,7 @@ public:
     int GameID;                             // The game scene come from
     SceneObjects* Objects;                  // The scene objects
     SceneType Type;                         // The type of scene
-    const SceneMetaInfo* Info;              // The scene meta information
+    SceneMetaInfo* Info;                    // The scene meta information
 
 public:
 

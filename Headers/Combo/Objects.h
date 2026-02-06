@@ -247,7 +247,7 @@ typedef struct ObjectInfo
 	ObjectIconMap MapIcon;							// The icon to use to render the object on the map
 	ObjectContext Context;							// The context in which the object appears
 	uint32_t RoomID;								// The room in which the object should be put
-	ZGame GameID;									// The actual game to which this object belongs to.
+	GameLayout Layout;								// The actual game layout to which this object belongs to.
 	LocType LocationType;							// The type of location the object is located to.
 	const char* Tooltip;							// The text to display in tooltip to give some hint on how to get the object.
 	const ItemInfo* Item;							// The item contained in the object

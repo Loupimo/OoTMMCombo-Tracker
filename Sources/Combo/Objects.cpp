@@ -74,6 +74,7 @@ void ObjectInfo::ResetObject()
 
 ObjectInfo* FindObject(ComboItem Item)
 {
+	SceneMetaInfo* arraySceneMeta = nullptr;
 	ObjectInfo* arrayObjs = nullptr;
 	size_t arraySize = 0;
 	ObjectInfo* currObj = nullptr;
@@ -99,28 +100,34 @@ ObjectInfo* FindObject(ComboItem Item)
 		if (currObj->Scene == Item.SceneID)
 		{	// They have the same scene ID
 
-			if (Item.OvType > OV_FISH)
-			{	// We can check for the object only if its type is above the fish one
+			SceneMetaInfo* currSceneMeta = GetSceneMetaInfo(Item.SceneID, Item.GameID);
 
-				if (currObj->Type > ObjectType::fish)
-				{	// We can check the object
+			if (currObj->Layout == currSceneMeta->ActiveLayout)
+			{	// We need to check for game ID as there might be conflict between OoT and OoT_MQ and MM and MM_JP object ID
 
-					if (currObj->ObjectID == Item.ObjectID && currObj->GameID == Item.GameID)
-					{	// This is the correct object. We need to check for game ID as there might be conflict between OoT and OoT_MQ object ID
+				if (Item.OvType > OV_FISH)
+				{	// We can check for the object only if its type is above the fish one
 
-						return currObj;
+					if (currObj->Type > ObjectType::fish)
+					{	// We can check the object
+
+						if (currObj->ObjectID == Item.ObjectID)
+						{	// This is the correct object.
+
+							return currObj;
+						}
 					}
 				}
-			}
-			else
-			{	// The object should have the exact same type
+				else
+				{	// The object should have the exact same type
 
-				if (currObj->Type == Item.OvType)
-				{
-					if (currObj->ObjectID == Item.ObjectID)
-					{	// This is the correct object
+					if (currObj->Type == Item.OvType)
+					{
+						if (currObj->ObjectID == Item.ObjectID)
+						{	// This is the correct object
 
-						return currObj;
+							return currObj;
+						}
 					}
 				}
 			}
