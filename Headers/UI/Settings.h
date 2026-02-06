@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QMap>
+#include <QFile>
 
 class FilterManager;
 
@@ -13,11 +14,10 @@ enum class ROMGame
 
 enum class ShuffleSetting
 {
-	none,		// Not shuffled
+	vanilla,	// Objects for this parameter are vanilla (not shuffled)
 	all,		// All objects of this parameter are shuffled
 	dungeons,	// Only dungeons objects of this parameter are shuffled
 	overworld,	// Only overworld objects of this parameter are shuffled
-	vanilla		// Objects for this parameter are vanilla
 };
 
 class Settings
@@ -38,6 +38,9 @@ public:
 
 	Settings();
 	~Settings();
+
+	void SaveFileSettings(QFile* SaveFile);
+	size_t LoadFileSettings(QByteArray* Data, size_t Offset);
 
 	void ParseSettings(QString& SettingsSection);
 	void ParseGamesLayouts(QString& LayoutSection);

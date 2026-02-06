@@ -7,6 +7,7 @@
 #include "SceneRenderer.h"
 
 class OoTMMComboTracker;
+class Settings;
 
 /*
 *   This class is responsible of holding all maps of a specific game.
@@ -91,7 +92,7 @@ public:
     * 
     *   @param FilePath    The file where to save the game objects.
     */
-    static void SaveGameScenes(QString FilePath);
+    static void SaveGameScenes(QString FilePath, Settings* FileSettings);
 
 
     /*

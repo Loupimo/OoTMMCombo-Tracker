@@ -4,10 +4,18 @@
 #include <QDateTime>
 #include <QStringList>
 
+enum class TrackerVersion
+{
+    V1_0,		// Original release
+    V1_1		// Filtering, Settings, MQ / JP layouts support
+};
+
+
 class AppConfig
 {
 public:
 
+    TrackerVersion Version = TrackerVersion::V1_1;
     QSettings Settings = QSettings("Loupimo", "OoTMMComboTracker");                                                          // The application persistant settings
     QString CurrentAutoSaveFile = "AutoSave-" + QDateTime::currentDateTime().toString("dd_MM_yyyy_hh_mm_ss") + ".trck";      // The current auto save file
 
@@ -19,6 +27,14 @@ public:
     *   @return The application configuration instance.
     */
     static AppConfig* Instance();
+
+
+    /*
+    *   Get the tracker version.
+    *
+    *   @return The tracker version.
+    */
+    static TrackerVersion GetTrackerVersion();
 
 #pragma region Tracking Menu
     

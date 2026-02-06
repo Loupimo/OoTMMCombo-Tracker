@@ -125,7 +125,7 @@ void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, c
             if (AppConfig::GetAutoSave())
             {
                 this->CreatePath(AppConfig::GetAutoSavePath());
-                GameTab::SaveGameScenes(AppConfig::GetAutoSaveFullPath());
+                GameTab::SaveGameScenes(AppConfig::GetAutoSaveFullPath(), &this->ROMSettings);
             }
             break;
         }
@@ -135,7 +135,7 @@ void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, c
             if (AppConfig::GetAutoSave())
             {
                 this->CreatePath(AppConfig::GetAutoSavePath());
-                GameTab::SaveGameScenes(AppConfig::GetAutoSaveFullPath());
+                GameTab::SaveGameScenes(AppConfig::GetAutoSaveFullPath(), &this->ROMSettings);
             }
             break;
         }
@@ -285,7 +285,28 @@ void OoTMMComboTracker::LoadGameScenes(QString FilePath)
     // Load file data
     QByteArray data = loadFile.readAll();
 
-    LoadSceneObjects(&data, 0);
+    // Check tracker version
+    uint32_t version = 0;
+    memcpy_s(&version, sizeof(version), data.data(), sizeof(version));
+    size_t offset = sizeof(version);
+
+    switch ((TrackerVersion)version)
+    {
+        case TrackerVersion::V1_1:
+        {
+            this->ROMSettings.LoadFileSettings(&data, offset);
+            LoadSceneObjects(&data, 0);
+            break;
+        }
+
+        case TrackerVersion::V1_0:
+        default:
+        {
+            LoadSceneObjects(&data, 0);
+            break;
+        }
+    }
+
     loadFile.close();
 
     MultiLogger::LogMessage("File loaded: %s\n", FilePath.toStdString().c_str());

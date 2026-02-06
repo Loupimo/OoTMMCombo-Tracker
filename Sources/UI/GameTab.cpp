@@ -1,7 +1,8 @@
 #include "UI/GameTab.h"
 #include "UI/OoTMMComboTracker.h"
-#include "Multi/Game.h"
 #include "UI/SceneRenderer.h"
+#include "UI/AppConfig.h"
+#include "Multi/Game.h"
 #include "Combo/Regions.h"
 #include "Main.h"
 
@@ -391,7 +392,7 @@ void GameTab::LoadGameTab()
 }
 
 
-void GameTab::SaveGameScenes(QString FilePath)
+void GameTab::SaveGameScenes(QString FilePath, Settings * FileSettings)
 {
     QFile saveFile(FilePath);
     if (!saveFile.open(QIODevice::WriteOnly | QIODevice::Truncate))
@@ -399,9 +400,25 @@ void GameTab::SaveGameScenes(QString FilePath)
         MultiLogger::LogMessage("Can't open file: %s\n", FilePath.toStdString().c_str());
         return;
     }
-    
+
     GetMainWindow()->AddRecentFile(FilePath);
-    SaveSceneObjects(&saveFile);
+
+    switch (AppConfig::GetTrackerVersion())
+    {
+        case TrackerVersion::V1_1:
+        {
+            FileSettings->SaveFileSettings(&saveFile);
+            SaveSceneObjects(&saveFile);
+            break;
+        }
+
+        case TrackerVersion::V1_0:
+        default:
+        {
+            SaveSceneObjects(&saveFile);
+            break;
+        }
+    }
     saveFile.close();
 
     MultiLogger::LogMessage("File saved: %s\n", FilePath.toStdString().c_str());

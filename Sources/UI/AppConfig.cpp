@@ -8,6 +8,11 @@ AppConfig* AppConfig::Instance()
     return &Config;
 }
 
+TrackerVersion AppConfig::GetTrackerVersion()
+{
+    return Config.Version;
+}
+
 #pragma region Tracking Menu
 
 QStringList AppConfig::GetRecentFiles()

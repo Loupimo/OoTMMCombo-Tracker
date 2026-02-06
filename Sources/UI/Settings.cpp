@@ -1,4 +1,5 @@
 #include "UI/FilterManager.h"
+#include "UI/AppConfig.h"
 #include "UI/Settings.h"
 #include "Combo/Scenes.h"
 
@@ -14,6 +15,32 @@ Settings::Settings()
 Settings::~Settings()
 {
 	this->ROMSettings.clear();
+}
+
+
+void Settings::SaveFileSettings(QFile* SaveFile)
+{
+	QByteArray tmpVersion(sizeof(uint32_t), 0);
+	QByteArray tmpParams(sizeof(qsizetype), 0);
+	QByteArray tmpSetting(sizeof(uint8_t), 0);
+
+
+	uint32_t currVersion = (uint32_t)AppConfig::GetTrackerVersion();
+
+	// Save tracker version
+	memcpy_s(tmpVersion.data(), 4, &currVersion, sizeof(currVersion));
+	SaveFile->write(tmpVersion);
+
+	// Save num of parameters
+	qsizetype numOfParams = this->ROMSettings.size();
+	memcpy_s(tmpParams.data(), sizeof(qsizetype), &numOfParams, sizeof(qsizetype));
+	SaveFile->write(tmpParams);
+}
+
+
+size_t Settings::LoadFileSettings(QByteArray* Data, size_t Offset)
+{
+	return 0;
 }
 
 
@@ -33,7 +60,7 @@ void Settings::ParseSettings(QString& SettingsSection)
 		sections.append(match.captured(1));
 	}
 
-	for (size_t i = 0; i < sections.size(); i++)
+	for (qsizetype i = 0; i < sections.size(); i++)
 	{
 		QString currSection = sections.at(i);
 
@@ -130,7 +157,7 @@ void Settings::ParseGamesLayouts(QString& LayoutSection)
 			if (layoutParams.at(0) == "Master Quest Dungeons:")
 			{	// Ocarina of Time
 
-				for (size_t i = 1; i < layoutParams.size(); i++)
+				for (qsizetype i = 1; i < layoutParams.size(); i++)
 				{
 					QString currScene = layoutParams.at(i);
 					currScene = currScene.replace("    - ", "");
@@ -188,7 +215,7 @@ void Settings::ParseGamesLayouts(QString& LayoutSection)
 			else
 			{	// Majora's mask
 
-				for (size_t i = 1; i < layoutParams.size(); i++)
+				for (qsizetype i = 1; i < layoutParams.size(); i++)
 				{
 					QString currScene = layoutParams.at(i);
 					currScene = currScene.replace("    - ", "");
@@ -226,11 +253,7 @@ void Settings::AddSetting(QString Name, QString Value)
 	{
 		ShuffleSetting setting;
 
-		if (Value == "none" || Value == "false")
-		{
-			setting = ShuffleSetting::none;
-		}
-		else if (Value == "all" || Value == "true" || Value == "anywhere" || Value == "starting" || Value == "removed")
+		if (Value == "all" || Value == "true" || Value == "anywhere" || Value == "starting" || Value == "removed" || "cross")
 		{
 			setting = ShuffleSetting::all;
 		}

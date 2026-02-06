@@ -284,7 +284,7 @@ void LogTab::SaveTracking()
 
     if (!filePath.isEmpty())
     {
-        GameTab::SaveGameScenes(filePath);
+        GameTab::SaveGameScenes(filePath, &this->WinOwner->ROMSettings);
     }
 }
 
@@ -294,7 +294,7 @@ void LogTab::ResetTracking()
     if (AppConfig::GetAutoSave())
     {
         this->WinOwner->CreatePath(AppConfig::GetAutoSavePath());
-        GameTab::SaveGameScenes(AppConfig::GetAutoSaveFullPath());
+        GameTab::SaveGameScenes(AppConfig::GetAutoSaveFullPath(), &this->WinOwner->ROMSettings);
         LogTab::LogMessage("Closing auto save file.\n");
         LogTab::LogMessage("Creating a new auto save file.\n");
         AppConfig::SetAutoSavePath("AutoSave-" + QDateTime::currentDateTime().toString("dd_MM_yyyy_hh_mm_ss") + ".trck");
