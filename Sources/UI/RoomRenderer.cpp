@@ -81,7 +81,7 @@ void RoomItemTree::InitRoomCounters()
 	{
 		ObjectInfo* currObj = &this->SceneItem->Scene->Objects->Objects[i];
 
-		if (currObj->Type != ObjectType::none && currObj->RenderScene == this->SceneItem->Scene->SceneID && currObj->RoomID == this->Info.RoomID && currObj->Layout == this->SceneItem->Scene->Info->ActiveLayout && !this->Filter->IsObjectExcluded(currObj))
+		if (currObj->Type != ObjectType::none && currObj->RenderScene == this->SceneItem->Scene->SceneID && currObj->RoomID == this->Info.RoomID && currObj->HasCorrectLayout(this->SceneItem->Scene->Info->ActiveLayout) && !this->Filter->IsObjectExcluded(currObj))
 		{
 			this->TotalObjects++;
 

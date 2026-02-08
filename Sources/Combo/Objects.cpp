@@ -68,6 +68,12 @@ void ObjectInfo::ResetObject()
 	this->Item = nullptr;
 }
 
+
+bool ObjectInfo::HasCorrectLayout(GameLayout ActiveLayout)
+{
+	return this->Layout == GameLayout::all || this->Layout == ActiveLayout;
+}
+
 #pragma endregion
 
 #pragma region Object info getter
@@ -102,7 +108,7 @@ ObjectInfo* FindObject(ComboItem Item)
 
 			SceneMetaInfo* currSceneMeta = GetSceneMetaInfo(Item.SceneID, Item.GameID);
 
-			if (currObj->Layout == currSceneMeta->ActiveLayout)
+			if (currObj->HasCorrectLayout(currSceneMeta->ActiveLayout))
 			{	// We need to check for game ID as there might be conflict between OoT and OoT_MQ and MM and MM_JP object ID
 
 				if (Item.OvType > OV_FISH)

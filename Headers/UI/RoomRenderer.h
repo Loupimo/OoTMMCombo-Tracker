@@ -177,7 +177,11 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 				{ 6, "Pre-Mini-Boss Room", "./Resources/OoT/Dungeons/Water/Pre-Mini-Boss.png" },
 				{ 7, "Compass Room", "./Resources/OoT/Dungeons/Water/Compass.png" },
 				{ 8, "Central Room", "./Resources/OoT/Dungeons/Water/Central_Room.png" },
-				{ 9, "Boss Room", "./Resources/OoT/Dungeons/Water/Boss.png" }
+				{ 9, "Boss Room", "./Resources/OoT/Dungeons/Water/Boss.png" },
+				{ 10, "Before High Water", "./Resources/OoT/Dungeons/Water/MQ/Before_High_Water.png" },
+				{ 11, "Boss Key Room", "./Resources/OoT/Dungeons/Water/MQ/Boss_Key_Room.png" },
+				{ 12, "Triple Geyser Room", "./Resources/OoT/Dungeons/Water/MQ/Triple_Geyser_Room.png" },
+				{ 13, "Pre Boss Room", "./Resources/OoT/Dungeons/Water/MQ/Pre_Boss.png" }
 			}
 		)
 	),

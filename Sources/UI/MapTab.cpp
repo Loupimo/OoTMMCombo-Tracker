@@ -459,7 +459,17 @@ void MapTab::ResetAllObjectCounts()
                 for (size_t i = 0; i < currScene->Rooms.size(); i++)
                 {
                     currScene->Rooms[i]->InitRoomCounters();
-                    currScene->Rooms[i]->RefreshItemName();
+                    if (currScene->Rooms[i]->GetTotalObjects() > 0)
+                    {   // The room has items
+
+                        currScene->child(currScene->indexOfChild(currScene->Rooms[i]))->setHidden(false);
+                        currScene->Rooms[i]->RefreshItemName();
+                    }
+                    else
+                    {   // The room has no item, we need to hide it
+
+                        currScene->child(currScene->indexOfChild(currScene->Rooms[i]))->setHidden(true);
+                    }
                 }
             }
 

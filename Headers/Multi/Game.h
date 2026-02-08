@@ -10,6 +10,7 @@ class App;
 
 enum GameLayout
 {
+    all,
     oot,
     oot_mq,
     mm,

@@ -84,6 +84,15 @@ FilterManager::FilterManager(GameTab* TabRef) : QToolButton(TabRef)
 }
 
 
+FilterManager::~FilterManager()
+{
+    this->TabOwner = nullptr;
+    this->FilterTypes = nullptr;
+    this->ActiveFilter.clear();
+    this->ExcludedObj.clear();
+}
+
+
 void FilterManager::ToggleActiveType(ObjectType Target)
 {
     if (this->ActiveFilter.contains(Target))

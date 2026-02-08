@@ -203,6 +203,29 @@ def match_items(spoiler_log, input_file, output_file):
             outfile.write(objectstr)
             outfile.flush()
 
+def parse_settings(input_file, output_file):
+    """Parse un fichier pour convertir les lignes RGB en hexadécimal."""
+    with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
+        filereader = pd.read_csv(infile, delimiter=";", header=0)
+        isFirst = True
+        for i, row in filereader.iterrows():
+            objectstr = ""
+            if isFirst == False :
+                objectstr = ",\n"
+            else:
+                isFirst = False
+
+            log_name = row["log_name"]
+            friendly_name = row["friendly_name"]
+            type = row["type"]
+            value = row["value"]
+
+            if type == "boolean" or type == "shuffle":
+                value = "ShuffleSetting::" + value
+
+            objectstr = objectstr + "\t{ \"" + log_name + "\", { \"" + friendly_name + "\", ParamType::" + type + ", " + str(value) + " } }"
+            outfile.write(objectstr)
+
 # Exemple d'utilisation
 input_file = '.\\pool_mm.csv'
 output_file = '.\\pool_mm.txt'
@@ -244,3 +267,10 @@ print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_fil
 #input_file = 'D:\Emulation\OoTMMCombo-Tracker\Logs\Output.csv'
 #output_file = 'D:\Emulation\OoTMMCombo-Tracker\Logs\Items.txt'
 #parse_items(input_file, output_file, "ItemList")
+
+
+input_file = '..\\Scenes\\settings.csv'
+output_file = '..\\Scenes\\settings.txt'
+parse_settings(input_file, output_file)
+#
+print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")

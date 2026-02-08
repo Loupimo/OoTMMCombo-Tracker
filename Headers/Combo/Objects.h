@@ -278,6 +278,15 @@ public:
 	*/
 	void ResetObject();
 
+	/*
+	*   Tells if the object layout does match the active one.
+	*
+	*   @param ActiveLayout		The active layout
+	*
+	*	@return <b>True</b> if the object layout matches the active layout, <b>false</b> otherwise.
+	*/
+	bool HasCorrectLayout(GameLayout ActiveLayout);
+
 } ObjectInfo;
 
 

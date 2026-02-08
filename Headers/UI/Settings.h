@@ -12,6 +12,21 @@ enum class ROMGame
 	ootmm
 };
 
+enum class GameMode
+{
+	coop,
+	multi
+};
+
+enum class ParamType
+{
+	game,
+	mode,
+	uint,
+	boolean,
+	shuffle,
+};
+
 enum class ShuffleSetting
 {
 	vanilla,	// Objects for this parameter are vanilla (not shuffled)
@@ -19,6 +34,17 @@ enum class ShuffleSetting
 	dungeons,	// Only dungeons objects of this parameter are shuffled
 	overworld,	// Only overworld objects of this parameter are shuffled
 };
+
+
+typedef struct Parameter
+{
+public:
+
+	QString Name;
+	ParamType Type;
+	ShuffleSetting Value;
+} Parameter;
+
 
 class Settings
 {
@@ -28,7 +54,9 @@ class Settings
 public:
 
 	ROMGame Game;
-	QMap<QString, ShuffleSetting> ROMSettings;
+	GameMode Mode;
+	size_t NumOfTeams;
+	QMap<QString, Parameter> ROMSettings;
 
 #pragma endregion
 

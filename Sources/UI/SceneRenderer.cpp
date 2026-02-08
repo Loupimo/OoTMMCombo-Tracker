@@ -41,6 +41,16 @@ SceneItemTree::SceneItemTree(SceneInfo* SceneToRender, FilterManager * Filter, Q
             // Add a new room item to the map tree
             RoomItemTree* roomItem = new RoomItemTree(&currRoom, this);
             this->addChild(roomItem);
+            if (roomItem->GetTotalObjects() > 0)
+            {   // The room has items
+
+                this->child(this->indexOfChild(roomItem))->setHidden(false);
+            }
+            else
+            {   // The room has no item, we need to hide it
+
+                this->child(this->indexOfChild(roomItem))->setHidden(true);
+            }
             this->Rooms.push_back(roomItem);
         }
     }
@@ -214,7 +224,7 @@ void SceneItemTree::CountSceneObjects()
     {   // Browse each scene objects
 
         ObjectInfo* currObject = &this->Scene->Objects->Objects[i];
-        if (currObject->RenderScene != this->Scene->SceneID || currObject->Type == ObjectType::none || currObject->Layout != this->Scene->Info->ActiveLayout || Filter->IsObjectExcluded(currObject))
+        if (currObject->RenderScene != this->Scene->SceneID || currObject->Type == ObjectType::none || !currObject->HasCorrectLayout(this->Scene->Info->ActiveLayout) || Filter->IsObjectExcluded(currObject))
         {   // Ignore the object if the render scene ID is different from this scene ID or if the current active layout does not match the object like OoT MQ or MM JP
 
             continue;
@@ -299,7 +309,7 @@ SceneRenderer::SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeW
     {   // Browse each scene objects
 
         ObjectInfo* currObject = &this->CurrScene->Objects->Objects[i];
-        if (currObject->RenderScene != this->CurrScene->SceneID || currObject->Type == ObjectType::none || currObject->Layout != this->ItemOwner->Scene->Info->ActiveLayout || Filter->IsObjectExcluded(currObject))
+        if (currObject->RenderScene != this->CurrScene->SceneID || currObject->Type == ObjectType::none || !currObject->HasCorrectLayout(this->ItemOwner->Scene->Info->ActiveLayout) || Filter->IsObjectExcluded(currObject))
         {   // Ignore the object if the render scene ID is different from this scene ID or if the object is excluded by the filter
 
             continue;

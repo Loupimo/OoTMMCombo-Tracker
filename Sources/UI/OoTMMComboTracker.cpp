@@ -294,8 +294,8 @@ void OoTMMComboTracker::LoadGameScenes(QString FilePath)
     {
         case TrackerVersion::V1_1:
         {
-            this->ROMSettings.LoadFileSettings(&data, offset);
-            LoadSceneObjects(&data, 0);
+            offset = this->ROMSettings.LoadFileSettings(&data, offset);
+            LoadSceneObjects(&data, offset);
             break;
         }
 

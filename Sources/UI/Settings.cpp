@@ -8,7 +8,73 @@
 Settings::Settings()
 {
 	this->Game = ROMGame::ootmm;
-	this->ROMSettings = QMap<QString, ShuffleSetting>();
+	this->ROMSettings = QMap<QString, Parameter>({
+		{ "goldSkulltulaTokens", { "Gold Skulltula (OoT)", ParamType::shuffle, ShuffleSetting::all } },
+		{ "housesSkulltulaTokens", { "Gold Skulltula (MM)", ParamType::boolean, ShuffleSetting::all } },
+		{ "tingleShuffle", { "Tingle Maps", ParamType::boolean, ShuffleSetting::all } },
+		{ "smallKeyShuffleHideout", { "Small Key - Hideout", ParamType::boolean, ShuffleSetting::all } },
+		{ "smallKeyShuffleChestGame", { "Small Key - Chest Game", ParamType::boolean, ShuffleSetting::all } },
+		{ "bossKeyShuffleOot", { "Boss Key - OoT", ParamType::boolean, ShuffleSetting::all } },
+		{ "bossKeyShuffleMm", { "Boss Key - MM", ParamType::boolean, ShuffleSetting::all } },
+		{ "silverRupeeShuffle", { "Silver Rupee", ParamType::boolean, ShuffleSetting::all } },
+		{ "townFairyShuffle", { "Town Fairy", ParamType::boolean, ShuffleSetting::all } },
+		{ "strayFairyChestShuffle", { "Stray Fairy - Chest", ParamType::boolean, ShuffleSetting::all } },
+		{ "strayFairyOtherShuffle", { "Stray Fairy - Other", ParamType::boolean, ShuffleSetting::all } },
+		{ "ganonBossKey", { "Boss Key - Ganon", ParamType::boolean, ShuffleSetting::all } },
+		{ "scrubShuffleOot", { "Scrub - OoT", ParamType::boolean, ShuffleSetting::all } },
+		{ "scrubShuffleMm", { "Scrub - MM", ParamType::boolean, ShuffleSetting::all } },
+		{ "cowShuffleOot", { "Cow - OoT", ParamType::boolean, ShuffleSetting::all } },
+		{ "cowShuffleMm", { "Cow - MM", ParamType::boolean, ShuffleSetting::all } },
+		{ "shopShuffleOot", { "Shop - OoT", ParamType::boolean, ShuffleSetting::all } },
+		{ "shopShuffleMm", { "Shop - MM", ParamType::boolean, ShuffleSetting::all } },
+		{ "owlShuffle", { "Owl", ParamType::boolean, ShuffleSetting::all } },
+		{ "shufflePotsOot", { "Pots - OoT", ParamType::shuffle, ShuffleSetting::all } },
+		{ "shufflePotsMm", { "Pots - MM", ParamType::shuffle, ShuffleSetting::all } },
+		{ "shuffleCratesOot", { "Crates - OoT", ParamType::shuffle, ShuffleSetting::all } },
+		{ "shuffleCratesMm", { "Crates - MM", ParamType::shuffle, ShuffleSetting::all } },
+		{ "shuffleBarrelsMm", { "Barrels - MM", ParamType::shuffle, ShuffleSetting::all } },
+		{ "shuffleHivesOot", { "Hives - OoT", ParamType::boolean, ShuffleSetting::all } },
+		{ "shuffleHivesMm", { "Hives - MM", ParamType::boolean, ShuffleSetting::all } },
+		{ "shuffleGrassOot", { "Grass - OoT", ParamType::shuffle, ShuffleSetting::all } },
+		{ "shuffleRocksOot", { "Rocks - OoT", ParamType::boolean, ShuffleSetting::all } },
+		{ "shuffleRocksMm", { "Rocks - MM", ParamType::shuffle, ShuffleSetting::all } },
+		{ "shuffleGrassMm", { "Grass - MM", ParamType::shuffle, ShuffleSetting::all } },
+		{ "shuffleTFGrassMm", { "Termina Field Grass", ParamType::boolean, ShuffleSetting::all } },
+		{ "shuffleTreesOot", { "Trees - OoT", ParamType::boolean, ShuffleSetting::all } },
+		{ "shuffleTreesMm", { "Trees - MM", ParamType::shuffle, ShuffleSetting::all } },
+		{ "shuffleBushOot", { "Bush - OoT", ParamType::boolean, ShuffleSetting::all } },
+		{ "shuffleBushMm", { "Bush - MM", ParamType::shuffle, ShuffleSetting::all } },
+		{ "shuffleSoilOot", { "Soil - OoT", ParamType::boolean, ShuffleSetting::all } },
+		{ "shuffleSoilMm", { "Soil - MM", ParamType::shuffle, ShuffleSetting::all } },
+		{ "shuffleFreeRupeesOot", { "Freestanding Rupees - OoT", ParamType::shuffle, ShuffleSetting::all } },
+		{ "shuffleFreeRupeesMm", { "Freestanding Rupees - MM", ParamType::shuffle, ShuffleSetting::all } },
+		{ "shuffleFreeHeartsOot", { "Freestanding Hearts - OoT", ParamType::shuffle, ShuffleSetting::all } },
+		{ "shuffleFreeHeartsMm", { "Freestanding Hearts - MM", ParamType::boolean, ShuffleSetting::all } },
+		{ "shuffleWonderItemsOot", { "Wonder Items - OoT", ParamType::shuffle, ShuffleSetting::all } },
+		{ "shuffleWonderItemsMm", { "Wonder Items - MM", ParamType::boolean, ShuffleSetting::all } },
+		{ "shuffleSnowballsMm", { "Snowballs - MM", ParamType::shuffle, ShuffleSetting::all } },
+		{ "shuffleButterfliesOot", { "Butterflies - OoT", ParamType::boolean, ShuffleSetting::all } },
+		{ "shuffleButterfliesMm", { "Butterflies - MM", ParamType::boolean, ShuffleSetting::all } },
+		{ "shuffleRedBouldersOot", { "Red Boulders - OoT", ParamType::boolean, ShuffleSetting::all } },
+		{ "shuffleRedBouldersMm", { "Red Boulders - MM", ParamType::boolean, ShuffleSetting::all } },
+		{ "shuffleFrogsRupeesOot", { "Frogs Rupees", ParamType::boolean, ShuffleSetting::all } },
+		{ "shuffleIciclesOot", { "Icicles - OoT", ParamType::boolean, ShuffleSetting::all } },
+		{ "shuffleIciclesMm", { "Icicles - MM", ParamType::boolean, ShuffleSetting::all } },
+		{ "shuffleRedIceOot", { "Red Ice", ParamType::boolean, ShuffleSetting::all } },
+		{ "shuffleOcarinasOot", { "Ocarinas", ParamType::boolean, ShuffleSetting::all } },
+		{ "shuffleMasterSword", { "Master Sword", ParamType::boolean, ShuffleSetting::all } },
+		{ "shuffleGerudoCard", { "Gerudo Card", ParamType::boolean, ShuffleSetting::all } },
+		{ "shuffleMaskTrades", { "Mask Trades", ParamType::boolean, ShuffleSetting::all } },
+		{ "shuffleMerchantsOot", { "Merchants - OoT", ParamType::boolean, ShuffleSetting::all } },
+		{ "shuffleMerchantsMm", { "Merchants - MM", ParamType::boolean, ShuffleSetting::all } },
+		{ "pondFishShuffle", { "Pond Fish", ParamType::boolean, ShuffleSetting::all } },
+		{ "divingGameRupeeShuffle", { "Diving Game Rupees", ParamType::boolean, ShuffleSetting::all } },
+		{ "fairyFountainFairyShuffleOot", { "Fairy Fountain - OoT", ParamType::boolean, ShuffleSetting::all } },
+		{ "fairyFountainFairyShuffleMm", { "Fairy Fountain - MM", ParamType::boolean, ShuffleSetting::all } },
+		{ "fairySpotShuffleOot", { "Fairy Spot", ParamType::boolean, ShuffleSetting::all } },
+		{ "eggShuffle", { "Egg Content", ParamType::boolean, ShuffleSetting::all } },
+		{ "restoreBrokenActors", { "Restore Broken Actors", ParamType::boolean, ShuffleSetting::all } }
+	});
 }
 
 
@@ -40,14 +106,16 @@ void Settings::SaveFileSettings(QFile* SaveFile)
 
 size_t Settings::LoadFileSettings(QByteArray* Data, size_t Offset)
 {
-	return 0;
+	// Load number of parameters
+	qsizetype numParams = 0;
+	memcpy_s(&numParams, sizeof(numParams), Data->data() + Offset, sizeof(numParams));
+	Offset += sizeof(numParams);
+	return Offset;
 }
 
 
 void Settings::ParseSettings(QString& SettingsSection)
 {	// Split with "===" to find the right section
-
-	this->ROMSettings.clear();
 
 	QRegularExpression reg("^([^\\s].*(?:\n(?![^\\s]).*)*)", QRegularExpression::MultilineOption);
 	QRegularExpressionMatchIterator it = reg.globalMatch(SettingsSection);
@@ -249,7 +317,22 @@ void Settings::AddSetting(QString Name, QString Value)
 			this->Game = ROMGame::ootmm;
 		}
 	}
-	else
+	else if (Name == "mode")
+	{
+		if (Value == "coop")
+		{
+			this->Mode = GameMode::coop;
+		}
+		else if (Value == "mm")
+		{
+			this->Mode = GameMode::multi;
+		}
+	}
+	else if (Name == "teams")
+	{
+		this->NumOfTeams = (size_t)atoi(Value.toStdString().c_str());
+	}
+	else if (this->ROMSettings.contains(Name))
 	{
 		ShuffleSetting setting;
 
@@ -270,7 +353,7 @@ void Settings::AddSetting(QString Name, QString Value)
 			setting = ShuffleSetting::vanilla;
 		}
 
-		this->ROMSettings.insert(Name, setting);
+		this->ROMSettings[Name].Value = setting;
 	}
 }
 
@@ -323,7 +406,7 @@ void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
 				case ObjectType::gs:
 				{	// OoT gold skulltula shuffling
 
-					switch (this->ROMSettings["goldSkulltulaTokens"])
+					switch (this->ROMSettings["goldSkulltulaTokens"].Value)
 					{
 						case ShuffleSetting::vanilla:
 						{
@@ -352,6 +435,8 @@ void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
 						default:
 							break;
 					}
+
+					break;
 				}
 
 				case ObjectType::none:
