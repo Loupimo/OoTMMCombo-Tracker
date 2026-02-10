@@ -13,7 +13,7 @@
 #pragma region MM
 
 const size_t BENEATH_THE_GRAVEYARDNumOfObjs = 22;
-ObjectInfo BENEATH_THE_GRAVEYARDSceneObjects[BENEATH_THE_GRAVEYARDNumOfObjs] =
+ObjectInfo BENEATH_THE_GRAVEYARDSceneObjects [BENEATH_THE_GRAVEYARDNumOfObjs] =
 {
 	{ 0x03, BENEATH_THE_GRAVEYARD, "Chest", "MM Beneath The Graveyard Chest", ObjectType::chest, {606, 476, 0}, BENEATH_THE_GRAVEYARD, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Defeat all <b>Bad Bats</b><br><br><b>Requirements:</b><br>- Soul of Bad Bats<br>- Soul of Stalchildren (MM)<br>- Captain's Hat<br>- Clock (Night 1) / Clock (Night 2) + Bunny Hood (MM) + Hover Boots (MM)" },
 	{ 0x00, BENEATH_THE_GRAVEYARD, "Chest", "MM Beneath The Graveyard HP", ObjectType::chest, {113, 332, 0}, BENEATH_THE_GRAVEYARD, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Defeat the <b>Iron Knuckle</b><br><br><b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM)<br>- Soul of Iron Knuckles (MM)<br>- Soul of Stalchildren (MM)<br>- Captain's Hat<br>- Clock (Night 2) / Clock (Night 1) + Bunny Hood (MM) + Hover Boots (MM)" },
@@ -40,7 +40,7 @@ ObjectInfo BENEATH_THE_GRAVEYARDSceneObjects[BENEATH_THE_GRAVEYARDNumOfObjs] =
 };
 
 const size_t BENEATH_THE_WELLNumOfObjs = 48;
-ObjectInfo BENEATH_THE_WELLSceneObjects[BENEATH_THE_WELLNumOfObjs] =
+ObjectInfo BENEATH_THE_WELLSceneObjects [BENEATH_THE_WELLNumOfObjs] =
 {
 	{ 0x17, BENEATH_THE_WELL, "Cow", "MM Beneath The Well Cow", ObjectType::cow, {1313, 914, 0}, BENEATH_THE_WELL, ObjectType::cow, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::dungeon, "Play <b>Epona's Song</b> next to the cow<br><br><b>Requirements:</b><br>- Hot Spring Water<br>- Fairy Ocarina / Ocarina of Time<br>- Epona's Song (MM)<br>- C-Up + C-Left + C-Right buttons (MM)<br>- Soul of Cows (MM)<br>- Soul of ReDeads / Gibdos (MM)<br>- Gibdo Mask" },
 	{ 0x00b04, BENEATH_THE_WELL, "Fairy 1", "MM Beneath The Well Fairy Fountain Fairy 1", ObjectType::fairy, {622, 100, 0}, BENEATH_THE_WELL, ObjectType::fairy, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::dungeon, "<b>Requirements:</b><br>- Bugs<br>- Soul of ReDeads / Gibdos (MM)<br>- Gibdo Mask" },
@@ -93,7 +93,7 @@ ObjectInfo BENEATH_THE_WELLSceneObjects[BENEATH_THE_WELLNumOfObjs] =
 };
 
 const size_t BLACKSMITHNumOfObjs = 6;
-ObjectInfo BLACKSMITHSceneObjects[BLACKSMITHNumOfObjs] =
+ObjectInfo BLACKSMITHSceneObjects [BLACKSMITHNumOfObjs] =
 {
 	{ SWORD_GILDED, BLACKSMITH, "Gilded Sword", "MM Blacksmith Gilded Sword", ObjectType::npc, {543, 204, 0}, BLACKSMITH, ObjectType::sword, ObjectIconMap::gilded, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Give the <b>Gold Dust</b> to <b>Zubora</b><br><br><b>Requirements:</b><br>- Din's Fire / Bow (MM) + Fire Arrow (MM)<br>- Magic Upgrade<br>- Soul of Blacksmiths" },
 	{ 0x10004, BLACKSMITH, "Potted Plant 1", "MM Blacksmith Potted Plant 1 Grass", ObjectType::grass, {687, 294, 1}, BLACKSMITH, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "The potted plant can be found inside the Blacksmith's house during the night<br><br><b>Requirements:</b><br>- Clock (Night 1) / Clock (Night 2) / Clock (Night 3)" },
@@ -104,7 +104,7 @@ ObjectInfo BLACKSMITHSceneObjects[BLACKSMITHNumOfObjs] =
 };
 
 const size_t BOMB_SHOPNumOfObjs = 4;
-ObjectInfo BOMB_SHOPSceneObjects[BOMB_SHOPNumOfObjs] =
+ObjectInfo BOMB_SHOPSceneObjects [BOMB_SHOPNumOfObjs] =
 {
 	{ 0x02, BOMB_SHOP, "Bomb Bag", "MM Bomb Shop Bomb Bag", ObjectType::shop, {489, 290, 0}, BOMB_SHOP, ObjectType::shop, ObjectIconMap::bomb_bag, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Soul of Citizens (MM)" },
 	{ 0x03, BOMB_SHOP, "Large Bomb Bag", "MM Bomb Shop Bomb Bag 2", ObjectType::shop, {521, 295, 0}, BOMB_SHOP, ObjectType::shop, ObjectIconMap::big_bomb, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Save the old lady from being robbed by <b>Sakon</b> in <b>North Clock Town</b> at 12AM on first night<br><br><b>Requirements:</b><br>- Clock (Night 1)<br>- Soul of Citizens (MM)" },
@@ -113,7 +113,7 @@ ObjectInfo BOMB_SHOPSceneObjects[BOMB_SHOPNumOfObjs] =
 };
 
 const size_t CASTLE_IKANANumOfObjs = 44;
-ObjectInfo CASTLE_IKANASceneObjects[CASTLE_IKANANumOfObjs] =
+ObjectInfo CASTLE_IKANASceneObjects [CASTLE_IKANANumOfObjs] =
 {
 	{ 0x00020, CASTLE_IKANA, "Grass 1", "MM Ancient Castle of Ikana Grass 01", ObjectType::grass, {692, 175, 0}, CASTLE_IKANA, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::dungeon, NULL },
 	{ 0x00021, CASTLE_IKANA, "Grass 2", "MM Ancient Castle of Ikana Grass 02", ObjectType::grass, {671, 165, 0}, CASTLE_IKANA, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::dungeon, NULL },
@@ -162,7 +162,7 @@ ObjectInfo CASTLE_IKANASceneObjects[CASTLE_IKANANumOfObjs] =
 };
 
 const size_t CLOCK_TOWER_ROOFTOPNumOfObjs = 6;
-ObjectInfo CLOCK_TOWER_ROOFTOPSceneObjects[CLOCK_TOWER_ROOFTOPNumOfObjs] =
+ObjectInfo CLOCK_TOWER_ROOFTOPSceneObjects [CLOCK_TOWER_ROOFTOPNumOfObjs] =
 {
 	{ 0x0003, CLOCK_TOWER_ROOFTOP, "Pot 1", "MM Clock Tower Roof Pot 1", ObjectType::pot, {580, 195, 0}, CLOCK_TOWER_ROOFTOP, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Clock (Night 3)" },
 	{ 0x0004, CLOCK_TOWER_ROOFTOP, "Pot 2", "MM Clock Tower Roof Pot 2", ObjectType::pot, {362, 195, 0}, CLOCK_TOWER_ROOFTOP, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Clock (Night 3)" },
@@ -173,7 +173,7 @@ ObjectInfo CLOCK_TOWER_ROOFTOPSceneObjects[CLOCK_TOWER_ROOFTOPNumOfObjs] =
 };
 
 const size_t CLOCK_TOWN_EASTNumOfObjs = 33;
-ObjectInfo CLOCK_TOWN_EASTSceneObjects[CLOCK_TOWN_EASTNumOfObjs] =
+ObjectInfo CLOCK_TOWN_EASTSceneObjects [CLOCK_TOWN_EASTNumOfObjs] =
 {
 	{ 0x0000a, CLOCK_TOWN_EAST, "Small Crate 1", "MM Clock Town East Small Crate 1", ObjectType::crate, {449, 352, 0}, CLOCK_TOWN_EAST, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x0000b, CLOCK_TOWN_EAST, "Small Crate 2", "MM Clock Town East Small Crate 2", ObjectType::crate, {407, 413, 0}, CLOCK_TOWN_EAST, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -211,7 +211,7 @@ ObjectInfo CLOCK_TOWN_EASTSceneObjects[CLOCK_TOWN_EASTNumOfObjs] =
 };
 
 const size_t CLOCK_TOWN_NORTHNumOfObjs = 20;
-ObjectInfo CLOCK_TOWN_NORTHSceneObjects[CLOCK_TOWN_NORTHNumOfObjs] =
+ObjectInfo CLOCK_TOWN_NORTHSceneObjects [CLOCK_TOWN_NORTHNumOfObjs] =
 {
 	{ MASK_BLAST, CLOCK_TOWN_NORTH, "Blast Mask", "MM Clock Town Blast Mask", ObjectType::npc, {379, 315, 0}, CLOCK_TOWN_NORTH, ObjectType::mask, ObjectIconMap::blast, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Save the old lady from being robbed by <b>Sakon</b> in <b>North Clock Town</b> at 12AM on first night<br><br><b>Requirements:</b><br>- Clock (Night 1)<br>- Soul of Citizens (MM)" },
 	{ BOMBER_NOTEBOOK, CLOCK_TOWN_NORTH, "Bomber Notebook", "MM Clock Town Bomber Notebook", ObjectType::npc, {566, 148, 0}, CLOCK_TOWN_NORTH, ObjectType::npc, ObjectIconMap::bombers, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Find all <b>Bombers' Kids</b> as human<br><br><b>Requirements:</b><br>- Soul of Bombers' Kids" },
@@ -236,7 +236,7 @@ ObjectInfo CLOCK_TOWN_NORTHSceneObjects[CLOCK_TOWN_NORTHNumOfObjs] =
 };
 
 const size_t CLOCK_TOWN_SOUTHNumOfObjs = 16;
-ObjectInfo CLOCK_TOWN_SOUTHSceneObjects[CLOCK_TOWN_SOUTHNumOfObjs] =
+ObjectInfo CLOCK_TOWN_SOUTHSceneObjects [CLOCK_TOWN_SOUTHNumOfObjs] =
 {
 	{ SCRUB_LAND, CLOCK_TOWN_SOUTH, "Land Title Deed", "MM Clock Town Business Scrub", ObjectType::npc, {375, 420, 0}, CLOCK_TOWN_SOUTH, ObjectType::scrub, ObjectIconMap::land, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Give the <b>Moon Tear</b> to the scrub<br><br><b>Requirements:</b><br>- Moon Tear<br>- Soul of Business Scrubs (MM)" },
 	{ OWL_CLOCK_TOWN, CLOCK_TOWN_SOUTH, "Owl Statue", "MM Clock Town Owl Statue", ObjectType::npc, {193, 275, 0}, CLOCK_TOWN_SOUTH, ObjectType::owl, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Hit the statue with a sword<br><br><b>Requirements:</b><br>- Sword (MM)" },
@@ -257,7 +257,7 @@ ObjectInfo CLOCK_TOWN_SOUTHSceneObjects[CLOCK_TOWN_SOUTHNumOfObjs] =
 };
 
 const size_t GREAT_BAY_COASTNumOfObjs = 167;
-ObjectInfo GREAT_BAY_COASTSceneObjects[GREAT_BAY_COASTNumOfObjs] =
+ObjectInfo GREAT_BAY_COASTSceneObjects [GREAT_BAY_COASTNumOfObjs] =
 {
 	{ TINGLE_MAP_GREAT_BAY, CLOCK_TOWN_SOUTH, "Tingle - Great Bay Map", "MM Tingle Map Great Bay", ObjectType::npc, {310, 504, 0}, GREAT_BAY_COAST, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Buy the Great Bay Coast map from <b>Tingle</b><br><br><b>Requirements:</b><br>- Hookshot (MM) / Bow (MM) / Deku Mask + Magic Upgrade (MM) / Zora Mask (MM)<br>- Soul of Tingle" },
 	{ 0x24085, GREAT_BAY_COAST, "Cleared 1", "MM Great Bay Coast Cleared Butterfly 1", ObjectType::butterfly, {655, 601, 0}, GREAT_BAY_COAST, ObjectType::butterfly, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "After defeating Gyorg, pull out a deku stick near the butterfly<br><br><b>Requirements:</b><br>- Soul of Butterflies (MM)<br>- Deku Stick (MM)<br>- Soul of Gyorg" },
@@ -429,7 +429,7 @@ ObjectInfo GREAT_BAY_COASTSceneObjects[GREAT_BAY_COASTNumOfObjs] =
 };
 
 const size_t IKANA_CANYONNumOfObjs = 32;
-ObjectInfo IKANA_CANYONSceneObjects[IKANA_CANYONNumOfObjs] =
+ObjectInfo IKANA_CANYONSceneObjects [IKANA_CANYONNumOfObjs] =
 {
 	{ TINGLE_MAP_STONE_TOWER, CLOCK_TOWN_SOUTH, "Tingle - Ikana Map", "MM Tingle Map Ikana", ObjectType::npc, {344, 455, 0}, IKANA_CANYON, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Buy the Ikana map from <b>Tingle</b><br><br><b>Requirements:</b><br>- Hookshot (MM) / Bow (MM) / Deku Mask + Magic Upgrade (MM) / Zora Mask (MM)<br>- Soul of Tingle" },
 	{ 0x0003b, IKANA_CANYON, "Grass 1", "MM Ikana Canyon Grass 1", ObjectType::grass, {425, 421, 0}, IKANA_CANYON, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -466,7 +466,7 @@ ObjectInfo IKANA_CANYONSceneObjects[IKANA_CANYONNumOfObjs] =
 };
 
 const size_t MILK_ROADNumOfObjs = 66;
-ObjectInfo MILK_ROADSceneObjects[MILK_ROADNumOfObjs] =
+ObjectInfo MILK_ROADSceneObjects [MILK_ROADNumOfObjs] =
 {
 	{ TINGLE_MAP_ROMANI_RANCH, CLOCK_TOWN_SOUTH, "Tingle - Ranch Map", "MM Tingle Map Ranch", ObjectType::npc, {639, 200, 0}, MILK_ROAD, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Buy the Milk Road map from <b>Tingle</b><br><br><b>Requirements:</b><br>- Hookshot (MM) / Bow (MM) / Deku Mask + Magic Upgrade (MM) / Zora Mask (MM)<br>- Soul of Tingle" },
 	{ 0x00011, MILK_ROAD, "Grass 1", "MM Milk Road Grass 1", ObjectType::grass, {407, 256, 0}, MILK_ROAD, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -537,7 +537,7 @@ ObjectInfo MILK_ROADSceneObjects[MILK_ROADNumOfObjs] =
 };
 
 const size_t TWIN_ISLANDSNumOfObjs = 152;
-ObjectInfo TWIN_ISLANDSSceneObjects[TWIN_ISLANDSNumOfObjs] =
+ObjectInfo TWIN_ISLANDSSceneObjects [TWIN_ISLANDSNumOfObjs] =
 {
 	{ TINGLE_MAP_SNOWHEAD, CLOCK_TOWN_SOUTH, "Tingle - Snowhead Map", "MM Tingle Map Snowhead", ObjectType::npc, {561, 248, 0}, TWIN_ISLANDS, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Buy the Snowhead map from <b>Tingle</b><br><br><b>Requirements:</b><br>- Hookshot (MM) / Bow (MM) / Deku Mask + Magic Upgrade (MM) / Zora Mask (MM)<br>- Soul of Tingle" },
 	{ GORON_ELDER, TWIN_ISLANDS, "Goron's Lulluby - Intro", "MM Goron Elder", ObjectType::none, {0, 0, 0}, TWIN_ISLANDS_WINTER, ObjectType::none, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -694,7 +694,7 @@ ObjectInfo TWIN_ISLANDSSceneObjects[TWIN_ISLANDSNumOfObjs] =
 };
 
 const size_t ROAD_SOUTHERN_SWAMPNumOfObjs = 49;
-ObjectInfo ROAD_SOUTHERN_SWAMPSceneObjects[ROAD_SOUTHERN_SWAMPNumOfObjs] =
+ObjectInfo ROAD_SOUTHERN_SWAMPSceneObjects [ROAD_SOUTHERN_SWAMPNumOfObjs] =
 {
 	{ TINGLE_MAP_WOODFALL, CLOCK_TOWN_SOUTH, "Tingle - Woodfall Map", "MM Tingle Map Woodfall", ObjectType::npc, {468, 149, 0}, ROAD_SOUTHERN_SWAMP, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Buy the Woodfall map from <b>Tingle</b><br><br><b>Requirements:</b><br>- Hookshot (MM) / Bow (MM) / Deku Mask + Magic Upgrade (MM) / Zora Mask (MM)<br>- Soul of Tingle" },
 	{ 0x0002f, ROAD_SOUTHERN_SWAMP, "Grass 1", "MM Road to Southern Swamp Grass 1", ObjectType::grass, {108, 303, 0}, ROAD_SOUTHERN_SWAMP, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -748,7 +748,7 @@ ObjectInfo ROAD_SOUTHERN_SWAMPSceneObjects[ROAD_SOUTHERN_SWAMPNumOfObjs] =
 };
 
 const size_t CLOCK_TOWN_WESTNumOfObjs = 29;
-ObjectInfo CLOCK_TOWN_WESTSceneObjects[CLOCK_TOWN_WESTNumOfObjs] =
+ObjectInfo CLOCK_TOWN_WESTSceneObjects [CLOCK_TOWN_WESTNumOfObjs] =
 {
 	{ BANK_1, CLOCK_TOWN_WEST, "Bank Reward 1", "MM Clock Town Bank Reward 1", ObjectType::npc, {641, 328, 0}, CLOCK_TOWN_WEST, ObjectType::npc, ObjectIconMap::wallet, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Obtained after depositing <b>200</b> rupees<br><br><b>Requirements:</b><br>- Soul of the Banker" },
 	{ BANK_2, CLOCK_TOWN_WEST, "Bank Reward 2", "MM Clock Town Bank Reward 2", ObjectType::npc, {659, 317, 0}, CLOCK_TOWN_WEST, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Obtained after depositing <b>500</b> rupees<br><br><b>Requirements:</b><br>- Soul of the Banker" },
@@ -782,7 +782,7 @@ ObjectInfo CLOCK_TOWN_WESTSceneObjects[CLOCK_TOWN_WESTNumOfObjs] =
 };
 
 const size_t CUCCO_SHACKNumOfObjs = 22;
-ObjectInfo CUCCO_SHACKSceneObjects[CUCCO_SHACKNumOfObjs] =
+ObjectInfo CUCCO_SHACKSceneObjects [CUCCO_SHACKNumOfObjs] =
 {
 	{ MASK_BUNNY, CUCCO_SHACK, "Bunny Mask", "MM Cucco Shack Bunny Mask", ObjectType::npc, {407, 318, 0}, CUCCO_SHACK, ObjectType::mask, ObjectIconMap::bunny, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Make the chick become cuccos by wearing the <b>Bremen Mask</b><br><br><b>Requirements:</b><br>- Bremen Mask<br>- Soul of Grog" },
 	{ 0x0000e, CUCCO_SHACK, "Crate 1", "MM Cucco Shack Crate 1", ObjectType::crate, {871, 317, 0}, CUCCO_SHACK, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -809,7 +809,7 @@ ObjectInfo CUCCO_SHACKSceneObjects[CUCCO_SHACKNumOfObjs] =
 };
 
 const size_t CURIOSITY_SHOPNumOfObjs = 4;
-ObjectInfo CURIOSITY_SHOPSceneObjects[CURIOSITY_SHOPNumOfObjs] =
+ObjectInfo CURIOSITY_SHOPSceneObjects [CURIOSITY_SHOPNumOfObjs] =
 {
 	{ 0x04, CURIOSITY_SHOP, "All-Night Mask", "MM Curiosity Shop All-Night Mask", ObjectType::shop, {307, 397, 0}, CURIOSITY_SHOP, ObjectType::mask, ObjectIconMap::night, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "On night 3, buy the <b>All-Night Mask</b> from the <b>Trading Post Owner</b><br><br><b>Requirements:</b><br>- Clock (Night 3)<br>- Soul of Trading Post Owner" },
 	{ MASK_KEATON, CURIOSITY_SHOP, "Owner Reward 1", "MM Kafei Hideout Owner Reward 1", ObjectType::npc, {541, 252, 0}, CURIOSITY_SHOP, ObjectType::mask, ObjectIconMap::keaton, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Speak to the <b>Trading Post Owner</b> on day 3 after you previously met <b>Kafei</b> on day 2<br><br><b>Requirements:</b><br>- Clock (Day 3)<br>- Soul of Trading Post Owner<br>- Soul of Kafei" },
@@ -818,7 +818,7 @@ ObjectInfo CURIOSITY_SHOPSceneObjects[CURIOSITY_SHOPNumOfObjs] =
 };
 
 const size_t DAMPE_HOUSENumOfObjs = 11;
-ObjectInfo DAMPE_HOUSESceneObjects[DAMPE_HOUSENumOfObjs] =
+ObjectInfo DAMPE_HOUSESceneObjects [DAMPE_HOUSENumOfObjs] =
 {
 	{ 0x00, DAMPE_HOUSE, "Bottle", "MM Beneath The Graveyard Dampe Chest", ObjectType::chest, {284, 311, 0}, DAMPE_HOUSE, ObjectType::chest, ObjectIconMap::bottle, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Find the 3 blue flames and defeat the <b>Big Poe</b><br><br><b>Requirements:</b><br>- Soul of Stalchildren (MM)<br>- Captain's Hat<br>- Clock (Night 3)<br>- Soul of Dampe (MM)<br>- Soul of Poes (MM)" },
 	{ 0x0010, DAMPE_HOUSE, "Pot 1", "MM Beneath The Graveyard Pot Dampe 01", ObjectType::pot, {136, 347, 0}, DAMPE_HOUSE, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Soul of Stalchildren (MM)<br>- Captain's Hat<br>- Clock (Night 3)" },
@@ -834,13 +834,13 @@ ObjectInfo DAMPE_HOUSESceneObjects[DAMPE_HOUSENumOfObjs] =
 };
 
 const size_t DEKU_KING_CHAMBERNumOfObjs = 1;
-ObjectInfo DEKU_KING_CHAMBERSceneObjects[DEKU_KING_CHAMBERNumOfObjs] =
+ObjectInfo DEKU_KING_CHAMBERSceneObjects [DEKU_KING_CHAMBERNumOfObjs] =
 {
 	{ SONG_AWAKENING, DEKU_KING_CHAMBER, "Sonata of Awakening", "MM Deku Palace Sonata of Awakening", ObjectType::npc, {180, 314, 0}, DEKU_KING_CHAMBER, ObjectType::song, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Pull out your ocarina in front of the monkey while wearing the <b>Deku  Mask</b><br><br><b>Requirements:</b><br>- Deku Mask<br>- Fairy Ocarina (MM) / Ocarina of Time (MM)" }
 };
 
 const size_t DEKU_PALACENumOfObjs = 98;
-ObjectInfo DEKU_PALACESceneObjects[DEKU_PALACENumOfObjs] =
+ObjectInfo DEKU_PALACESceneObjects [DEKU_PALACENumOfObjs] =
 {
 	{ 0x1e, DEKU_PALACE, "Garden", "MM Deku Palace HP", ObjectType::collectible, {210, 133, 0}, DEKU_PALACE, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Avoid the deku guards to reach the heart piece" },
 	{ 0x010f, DEKU_PALACE, "Upper 1", "MM Deku Palace Pot 1", ObjectType::pot, {571, 327, 1}, DEKU_PALACE, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Plant a bean on the top right soil of the deku palace and use the deku flowers to reach the pots<br><br><b>Requirements:</b><br>- Deku Mask<br>- Beans (MM)<br>- Spring Water" },
@@ -943,14 +943,14 @@ ObjectInfo DEKU_PALACESceneObjects[DEKU_PALACENumOfObjs] =
 };
 
 const size_t DEKU_PLAYGROUNDNumOfObjs = 2;
-ObjectInfo DEKU_PLAYGROUNDSceneObjects[DEKU_PLAYGROUNDNumOfObjs] =
+ObjectInfo DEKU_PLAYGROUNDSceneObjects [DEKU_PLAYGROUNDNumOfObjs] =
 {
 	{ DEKU_PLAYGROUND_2, DEKU_PLAYGROUND, "Reward - All Days", "MM Deku Playground Reward All Days", ObjectType::npc, {399, 341, 0}, DEKU_PLAYGROUND, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::minigame, "Win the game on all days<br><br><b>Requirements:</b><br>- Clock (Day 1) / Clock (Night 1)<br>- Clock (Day 2) / Clock (Night 2)<br>- Clock (Day 3) / Clock (Night 3)<br>-  Soul of Playground Scrubs" },
 	{ DEKU_PLAYGROUND_1, DEKU_PLAYGROUND, "Reward - Any Day", "MM Deku Playground Reward Any Day", ObjectType::npc, {399, 299, 0}, DEKU_PLAYGROUND, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::minigame, "Win the game on any day<br><br><b>Requirements:</b><br>- Soul of Playground Scrubs" }
 };
 
 const size_t DEKU_SHRINENumOfObjs = 33;
-ObjectInfo DEKU_SHRINESceneObjects[DEKU_SHRINENumOfObjs] =
+ObjectInfo DEKU_SHRINESceneObjects [DEKU_SHRINENumOfObjs] =
 {
 	{ MASK_SCENTS, DEKU_SHRINE, "Mask of Scents", "MM Deku Shrine Mask of Scents", ObjectType::npc, {166, 206, 0}, DEKU_SHRINE, ObjectType::mask, ObjectIconMap::scents, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Follow the <b>Deku Butler</b> to the end of the race<br><br><b>Requirements:</b><br>- Soul of Deku Princess<br>- Soul of Deku Butler" },
 	{ 0x000e, DEKU_SHRINE, "Pot 1", "MM Deku Shrine Pot 1", ObjectType::pot, {777, 544, 0}, DEKU_SHRINE, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Soul of Deku Princess<br>- Soul of Deku Butler" },
@@ -988,7 +988,7 @@ ObjectInfo DEKU_SHRINESceneObjects[DEKU_SHRINENumOfObjs] =
 };
 
 const size_t DOG_RACETRACKNumOfObjs = 7;
-ObjectInfo DOG_RACETRACKSceneObjects[DOG_RACETRACKNumOfObjs] =
+ObjectInfo DOG_RACETRACKSceneObjects [DOG_RACETRACKNumOfObjs] =
 {
 	{ 0x00, DOG_RACETRACK, "Chest", "MM Doggy Racetrack Chest", ObjectType::chest, {268, 259, 0}, DOG_RACETRACK, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Plant the bean in the soil and spread some spring water on it to reach the chest<br><br><b>Requirements:</b><br>- Beans (MM)<br>- Spring Water" },
 	{ DOG_LADY_HEART_PIECE, DOG_RACETRACK, "Game Prize", "MM Doggy Racetrack HP", ObjectType::npc, {650, 377, 0}, DOG_RACETRACK, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Choose the right dog and win the race<br><br><b>Requirements:</b><br>- Soul of the Dog Lady (MM)<br>- Soul of Dogs (MM)" },
@@ -1000,7 +1000,7 @@ ObjectInfo DOG_RACETRACKSceneObjects[DOG_RACETRACKNumOfObjs] =
 };
 
 const size_t EXTRANumOfObjs = 5;
-ObjectInfo EXTRASceneObjects[EXTRANumOfObjs] =
+ObjectInfo EXTRASceneObjects [EXTRANumOfObjs] =
 {
 	{ 0x0000, EXTRA, "Pot Game 1", "MM Zora Cape Pot Game 1", ObjectType::pot, {559, 168, 0}, ZORA_CAPE, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Soul of Zoras (MM)" },
 	{ 0x0001, EXTRA, "Pot Game 2", "MM Zora Cape Pot Game 2", ObjectType::pot, {547, 175, 0}, ZORA_CAPE, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Soul of Zoras (MM)" },
@@ -1010,7 +1010,7 @@ ObjectInfo EXTRASceneObjects[EXTRANumOfObjs] =
 };
 
 const size_t ZORA_CAPENumOfObjs = 54;
-ObjectInfo ZORA_CAPESceneObjects[ZORA_CAPENumOfObjs] =
+ObjectInfo ZORA_CAPESceneObjects [ZORA_CAPENumOfObjs] =
 {
 	{ 0x0000, EXTRA, "Pot Game 1", "MM Zora Cape Pot Game 1", ObjectType::pot, {559, 168, 0}, ZORA_CAPE, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Soul of Zoras (MM)" },
 	{ 0x0001, EXTRA, "Pot Game 2", "MM Zora Cape Pot Game 2", ObjectType::pot, {547, 175, 0}, ZORA_CAPE, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Soul of Zoras (MM)" },
@@ -1069,7 +1069,7 @@ ObjectInfo ZORA_CAPESceneObjects[ZORA_CAPENumOfObjs] =
 };
 
 const size_t MM_FAIRY_FOUNTAINNumOfObjs = 6;
-ObjectInfo MM_FAIRY_FOUNTAINSceneObjects[MM_FAIRY_FOUNTAINNumOfObjs] =
+ObjectInfo MM_FAIRY_FOUNTAINSceneObjects [MM_FAIRY_FOUNTAINNumOfObjs] =
 {
 	{ GREAT_FAIRY_TOWN, MM_FAIRY_FOUNTAIN, "Great Fairy - Link", "MM Clock Town Great Fairy", ObjectType::npc, {471, 310, 0}, MM_FAIRY_CLOCK_TOWN, ObjectType::mask, ObjectIconMap::fairy_mask, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Bring the <b>Stray Fairy (Town)</b> back in human form<br><br><b>Requirements:</b><br>- Stray Fairy (Town)" },
 	{ GREAT_FAIRY_TOWN_ALT, MM_FAIRY_FOUNTAIN, "Great Fairy - Mojo", "MM Clock Town Great Fairy Alt", ObjectType::npc, {471, 266, 0}, MM_FAIRY_CLOCK_TOWN, ObjectType::npc, ObjectIconMap::magic, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Bring the <b>Stray Fairy (Town)</b> back in deku form<br><br><b>Requirements:</b><br>- Stray Fairy (Town)<br>- Deku Mask" },
@@ -1080,32 +1080,32 @@ ObjectInfo MM_FAIRY_FOUNTAINSceneObjects[MM_FAIRY_FOUNTAINNumOfObjs] =
 };
 
 const size_t MM_FAIRY_CLOCK_TOWNNumOfObjs = 2;
-ObjectInfo MM_FAIRY_CLOCK_TOWNSceneObjects[MM_FAIRY_CLOCK_TOWNNumOfObjs] =
+ObjectInfo MM_FAIRY_CLOCK_TOWNSceneObjects [MM_FAIRY_CLOCK_TOWNNumOfObjs] =
 {
 	{ GREAT_FAIRY_TOWN, MM_FAIRY_FOUNTAIN, "Great Fairy - Link", "MM Clock Town Great Fairy", ObjectType::npc, {471, 310, 0}, MM_FAIRY_CLOCK_TOWN, ObjectType::mask, ObjectIconMap::fairy_mask, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Bring the <b>Stray Fairy (Town)</b> back in human form<br><br><b>Requirements:</b><br>- Stray Fairy (Town)" },
 	{ GREAT_FAIRY_TOWN_ALT, MM_FAIRY_FOUNTAIN, "Great Fairy - Mojo", "MM Clock Town Great Fairy Alt", ObjectType::npc, {471, 266, 0}, MM_FAIRY_CLOCK_TOWN, ObjectType::npc, ObjectIconMap::magic, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Bring the <b>Stray Fairy (Town)</b> back in deku form<br><br><b>Requirements:</b><br>- Stray Fairy (Town)<br>- Deku Mask" }
 };
 
 const size_t MM_FAIRY_GREAT_BAY_COASTNumOfObjs = 1;
-ObjectInfo MM_FAIRY_GREAT_BAY_COASTSceneObjects[MM_FAIRY_GREAT_BAY_COASTNumOfObjs] =
+ObjectInfo MM_FAIRY_GREAT_BAY_COASTSceneObjects [MM_FAIRY_GREAT_BAY_COASTNumOfObjs] =
 {
 	{ GREAT_FAIRY_OCEAN, MM_FAIRY_FOUNTAIN, "Double Defense", "MM Great Bay Great Fairy", ObjectType::npc, {490, 188, 0}, MM_FAIRY_GREAT_BAY_COAST, ObjectType::npc, ObjectIconMap::defense, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Bring all the <b>Stray Fairy (Great Bay)</b> back to the fountain<br><br><b>Requirements:</b><br>- Stray Fairy (Great Bay)" }
 };
 
 const size_t MM_FAIRY_IKANANumOfObjs = 1;
-ObjectInfo MM_FAIRY_IKANASceneObjects[MM_FAIRY_IKANANumOfObjs] =
+ObjectInfo MM_FAIRY_IKANASceneObjects [MM_FAIRY_IKANANumOfObjs] =
 {
 	{ GREAT_FAIRY_VALLEY, MM_FAIRY_FOUNTAIN, "Great Fairy's Sword", "MM Ikana Great Fairy", ObjectType::npc, {460, 195, 0}, MM_FAIRY_IKANA, ObjectType::sword, ObjectIconMap::fairy_sword, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Bring all the <b>Stray Fairy (Stone Tower)</b> back to the fountain<br><br><b>Requirements:</b><br>- Stray Fairy (Stone Tower)" }
 };
 
 const size_t MM_FAIRY_SNOWHEADNumOfObjs = 1;
-ObjectInfo MM_FAIRY_SNOWHEADSceneObjects[MM_FAIRY_SNOWHEADNumOfObjs] =
+ObjectInfo MM_FAIRY_SNOWHEADSceneObjects [MM_FAIRY_SNOWHEADNumOfObjs] =
 {
 	{ GREAT_FAIRY_MOUNTAIN, MM_FAIRY_FOUNTAIN, "Large Magic Upgrade", "MM Snowhead Great Fairy", ObjectType::npc, {478, 173, 0}, MM_FAIRY_SNOWHEAD, ObjectType::npc, ObjectIconMap::double_magic, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Bring all the <b>Stray Fairy (Snowhead)</b> back to the fountain<br><br><b>Requirements:</b><br>- Stray Fairy (Snowhead)" }
 };
 
 const size_t SNOWHEADNumOfObjs = 18;
-ObjectInfo SNOWHEADSceneObjects[SNOWHEADNumOfObjs] =
+ObjectInfo SNOWHEADSceneObjects [SNOWHEADNumOfObjs] =
 {
 	{ OWL_SNOWHEAD, SNOWHEAD, "Owl Statue", "MM Snowhead Owl Statue", ObjectType::npc, {186, 509, 1}, SNOWHEAD, ObjectType::owl, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Hit the statue with a sword<br><br><b>Requirements:</b><br>- Sword (MM)" },
 	{ 0x0002e, SNOWHEAD, "Winter - Big Snowball 1", "MM Snowhead Big Snowball 1", ObjectType::snowball, {619, 306, 0}, SNOWHEAD, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)" },
@@ -1128,19 +1128,19 @@ ObjectInfo SNOWHEADSceneObjects[SNOWHEADNumOfObjs] =
 };
 
 const size_t MM_FAIRY_WOODFALLNumOfObjs = 1;
-ObjectInfo MM_FAIRY_WOODFALLSceneObjects[MM_FAIRY_WOODFALLNumOfObjs] =
+ObjectInfo MM_FAIRY_WOODFALLSceneObjects [MM_FAIRY_WOODFALLNumOfObjs] =
 {
 	{ GREAT_FAIRY_SWAMP, MM_FAIRY_FOUNTAIN, "Super Spin Attack", "MM Woodfall Great Fairy", ObjectType::npc, {478, 159, 0}, MM_FAIRY_WOODFALL, ObjectType::npc, ObjectIconMap::spin, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Bring all the <b>Stray Fairy (Woodfall)</b> back to the fountain<br><br><b>Requirements:</b><br>- Stray Fairy (Woodfall)" }
 };
 
 const size_t GHOST_HUTNumOfObjs = 1;
-ObjectInfo GHOST_HUTSceneObjects[GHOST_HUTNumOfObjs] =
+ObjectInfo GHOST_HUTSceneObjects [GHOST_HUTNumOfObjs] =
 {
 	{ GHOST_HUT_HEART_PIECE, GHOST_HUT, "Game Prize", "MM Ghost Hut HP", ObjectType::npc, {473, 179, 0}, GHOST_HUT, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Complete the challenge of the <b>Poe Hut Owner</b><br><br><b>Requirements:</b><br>- Soul of Poe Hut Owner" }
 };
 
 const size_t GORMAN_TRACKNumOfObjs = 52;
-ObjectInfo GORMAN_TRACKSceneObjects[GORMAN_TRACKNumOfObjs] =
+ObjectInfo GORMAN_TRACKSceneObjects [GORMAN_TRACKNumOfObjs] =
 {
 	{ 0x00049, GORMAN_TRACK, "Crate", "MM Gorman Track Crate", ObjectType::crate, {640, 242, 0}, GORMAN_TRACK, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence<br><br><b>Requirements:</b><br>- Goron Mask (MM)" },
 	{ MASK_GARO, GORMAN_TRACK, "Garo Mask", "MM Gorman Track Garo Mask", ObjectType::npc, {628, 231, 0}, GORMAN_TRACK, ObjectType::mask, ObjectIconMap::garo, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Win the race against the <b>Gorman Bros.</b><br><br><b>Requirements:</b><br>- Epona's Song (MM)<br>- C-Up + C-Left + C-Right buttons<br>- Fairy Ocarina (MM) / Ocarina of Time (MM)<br>- Soul of Gorman & Bros." },
@@ -1197,13 +1197,13 @@ ObjectInfo GORMAN_TRACKSceneObjects[GORMAN_TRACKNumOfObjs] =
 };
 
 const size_t GORON_GRAVEYARDNumOfObjs = 1;
-ObjectInfo GORON_GRAVEYARDSceneObjects[GORON_GRAVEYARDNumOfObjs] =
+ObjectInfo GORON_GRAVEYARDSceneObjects [GORON_GRAVEYARDNumOfObjs] =
 {
 	{ MASK_GORON, GORON_GRAVEYARD, "Goron Mask", "MM Goron Graveyard Mask", ObjectType::npc, {474, 289, 0}, GORON_GRAVEYARD, ObjectType::mask, ObjectIconMap::goron, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Use your <b>Lens of Truth</b> to speak to <b>Darmani</b> and play the <b>Song of Healing</b> to heal his wounds<br><br><b>Requirements:</b><br>- Lens of Truth (MM)<br>- Magic Upgrade (MM)<br>- Song of Healing<br>- C-Left + C-Right + C-Down buttons (MM)<br>- Fairy Ocarina (MM) / Ocarina of Time (MM)" }
 };
 
 const size_t GORON_RACETRACKNumOfObjs = 41;
-ObjectInfo GORON_RACETRACKSceneObjects[GORON_RACETRACKNumOfObjs] =
+ObjectInfo GORON_RACETRACKSceneObjects [GORON_RACETRACKNumOfObjs] =
 {
 	{ 0x0002, GORON_RACETRACK, "Pot 1", "MM Goron Race Pot 01", ObjectType::pot, {346, 247, 0}, GORON_RACETRACK, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Break the rock that blocks the goron racetrack entrance<br><br><b>Requirements:</b><br>- Goron Mask (MM)<br>- Powder Keg / Soul of Biggoron (MM) + Bow (MM) + Fire Arrow (MM) + Magic Upgrade (MM) / Soul of Biggoron (MM) + Din's Fire (MM) + Magic Upgrade (MM)" },
 	{ 0x0003, GORON_RACETRACK, "Pot 2", "MM Goron Race Pot 02", ObjectType::pot, {284, 276, 0}, GORON_RACETRACK, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Break the rock that blocks the goron racetrack entrance<br><br><b>Requirements:</b><br>- Goron Mask (MM)<br>- Powder Keg / Soul of Biggoron (MM) + Bow (MM) + Fire Arrow (MM) + Magic Upgrade (MM)" },
@@ -1249,7 +1249,7 @@ ObjectInfo GORON_RACETRACKSceneObjects[GORON_RACETRACKNumOfObjs] =
 };
 
 const size_t MM_GORON_SHOPNumOfObjs = 3;
-ObjectInfo MM_GORON_SHOPSceneObjects[MM_GORON_SHOPNumOfObjs] =
+ObjectInfo MM_GORON_SHOPSceneObjects [MM_GORON_SHOPNumOfObjs] =
 {
 	{ 0x10, MM_GORON_SHOP, "Item 1", "MM Goron Shop Item 1", ObjectType::shop, {302, 191, 0}, MM_GORON_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Goron Mask (MM) / Soul of Gorons (MM)<br>- Soul of the Goron Shopkeeper (MM)" },
 	{ 0x11, MM_GORON_SHOP, "Item 2", "MM Goron Shop Item 2", ObjectType::shop, {347, 191, 0}, MM_GORON_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Goron Mask (MM) / Soul of Gorons (MM)<br>- Soul of the Goron Shopkeeper (MM)" },
@@ -1257,7 +1257,7 @@ ObjectInfo MM_GORON_SHOPSceneObjects[MM_GORON_SHOPNumOfObjs] =
 };
 
 const size_t GORON_SHRINENumOfObjs = 28;
-ObjectInfo GORON_SHRINESceneObjects[GORON_SHRINENumOfObjs] =
+ObjectInfo GORON_SHRINESceneObjects [GORON_SHRINENumOfObjs] =
 {
 	{ GORON_BABY, GORON_SHRINE, "Goron's Lulluby", "MM Goron Baby", ObjectType::npc, {855, 284, 0}, GORON_SHRINE, ObjectType::song, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Play the <b>Lullaby Intro</b> to the baby goron while wearing the <b>Goron Mask</b><br><br><b>Requirements:</b><br>- Lullaby Intro<br>- A + C-Right + C-Left buttons (MM)<br>- Fairy Ocarina (MM) / Ocarina of Time (MM)<br>- Goron Mask (MM) / Soul of Gorons (MM)<br>- Soul of Baby Goron" },
 	{ 0x0023, GORON_SHRINE, "Pot 1", "MM Goron Shrine Pot 01", ObjectType::pot, {452, 418, 0}, GORON_SHRINE, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Goron Mask (MM) / Soul of Gorons (MM" },
@@ -1290,7 +1290,7 @@ ObjectInfo GORON_SHRINESceneObjects[GORON_SHRINENumOfObjs] =
 };
 
 const size_t GORON_VILLAGE_WINTERNumOfObjs = 84;
-ObjectInfo GORON_VILLAGE_WINTERSceneObjects[GORON_VILLAGE_WINTERNumOfObjs] =
+ObjectInfo GORON_VILLAGE_WINTERSceneObjects [GORON_VILLAGE_WINTERNumOfObjs] =
 {
 	{ GORON_KEG, GORON_VILLAGE_WINTER, "Powder Keg", "MM Goron Powder Keg", ObjectType::npc, {117, 323, 0}, GORON_VILLAGE_WINTER, ObjectType::npc, ObjectIconMap::powder, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Break the rock at the entrance of the goron racetrack and speak to <b>Biggoron</b> to get your reward<br><br><b>Requirements:</b><br>- Goron Mask (MM)<br>- Bow (MM) + Fire Arrow (MM) / Din's Fire (MM)<br>- Magic Upgrade (MM)<br>- Soul of Biggoron (MM)" },
 	{ 0x00032, GORON_VILLAGE_WINTER, "Big Snowball 1", "MM Goron Village Big Snowball 1", ObjectType::snowball, {668, 281, 0}, GORON_VILLAGE_WINTER, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Goron Mask (MM) / Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Megaton Hammer (MM)" },
@@ -1379,7 +1379,7 @@ ObjectInfo GORON_VILLAGE_WINTERSceneObjects[GORON_VILLAGE_WINTERNumOfObjs] =
 };
 
 const size_t MM_GROTTO_GREAT_BAY_COAST_COWNumOfObjs = 78;
-ObjectInfo MM_GROTTO_GREAT_BAY_COAST_COWSceneObjects[MM_GROTTO_GREAT_BAY_COAST_COWNumOfObjs] =
+ObjectInfo MM_GROTTO_GREAT_BAY_COAST_COWSceneObjects [MM_GROTTO_GREAT_BAY_COAST_COWNumOfObjs] =
 {
 	{ 0x16, GREAT_BAY_COAST, "Back", "MM Great Bay Coast Cow Back", ObjectType::cow, {572, 378, 0}, MM_GROTTO_GREAT_BAY_COAST_COW, ObjectType::cow, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Play <b>Epona's Song</b> next to the cow<br><br><b>Requirements:</b><br>- Hookshot (MM)<br>- Fairy Ocarina / Ocarina of Time<br>- Epona's Song (MM)<br>- C-Up + C-Left + C-Right buttons (MM)<br>- Soul of Cows (MM)" },
 	{ 0x15, GREAT_BAY_COAST, "Front", "MM Great Bay Coast Cow Front", ObjectType::cow, {568, 417, 0}, MM_GROTTO_GREAT_BAY_COAST_COW, ObjectType::cow, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Play <b>Epona's Song</b> next to the cow<br><br><b>Requirements:</b><br>- Hookshot (MM)<br>- Fairy Ocarina / Ocarina of Time<br>- Epona's Song (MM)<br>- C-Up + C-Left + C-Right buttons (MM)<br>- Soul of Cows (MM)" },
@@ -1462,7 +1462,7 @@ ObjectInfo MM_GROTTO_GREAT_BAY_COAST_COWSceneObjects[MM_GROTTO_GREAT_BAY_COAST_C
 };
 
 const size_t MM_GROTTOSNumOfObjs = 444;
-ObjectInfo MM_GROTTOSSceneObjects[MM_GROTTOSNumOfObjs] =
+ObjectInfo MM_GROTTOSSceneObjects [MM_GROTTOSNumOfObjs] =
 {
 	{ 0x00b00, MM_GROTTOS, "Grass 1", "MM Bio Baba Grotto Grass 1", ObjectType::grass, {685, 369, 0}, MM_GROTTO_TERMINA_BIO_BABA, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x00b03, MM_GROTTOS, "Grass 2", "MM Bio Baba Grotto Grass 2", ObjectType::grass, {799, 365, 0}, MM_GROTTO_TERMINA_BIO_BABA, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)" },
@@ -1911,7 +1911,7 @@ ObjectInfo MM_GROTTOSSceneObjects[MM_GROTTOSNumOfObjs] =
 };
 
 const size_t MM_GROTTO_TERMINA_BIO_BABANumOfObjs = 6;
-ObjectInfo MM_GROTTO_TERMINA_BIO_BABASceneObjects[MM_GROTTO_TERMINA_BIO_BABANumOfObjs] =
+ObjectInfo MM_GROTTO_TERMINA_BIO_BABASceneObjects [MM_GROTTO_TERMINA_BIO_BABANumOfObjs] =
 {
 	{ 0x00b00, MM_GROTTOS, "Grass 1", "MM Bio Baba Grotto Grass 1", ObjectType::grass, {685, 369, 0}, MM_GROTTO_TERMINA_BIO_BABA, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x00b03, MM_GROTTOS, "Grass 2", "MM Bio Baba Grotto Grass 2", ObjectType::grass, {799, 365, 0}, MM_GROTTO_TERMINA_BIO_BABA, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)" },
@@ -1922,7 +1922,7 @@ ObjectInfo MM_GROTTO_TERMINA_BIO_BABASceneObjects[MM_GROTTO_TERMINA_BIO_BABANumO
 };
 
 const size_t MM_GROTTO_TERMINA_CANYON_GOSSIPNumOfObjs = 6;
-ObjectInfo MM_GROTTO_TERMINA_CANYON_GOSSIPSceneObjects[MM_GROTTO_TERMINA_CANYON_GOSSIPNumOfObjs] =
+ObjectInfo MM_GROTTO_TERMINA_CANYON_GOSSIPSceneObjects [MM_GROTTO_TERMINA_CANYON_GOSSIPNumOfObjs] =
 {
 	{ 0x00200, MM_GROTTOS, "Grass 1", "MM Canyon Gossip Grotto Grass 1", ObjectType::grass, {829, 547, 0}, MM_GROTTO_TERMINA_CANYON_GOSSIP, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)" },
 	{ 0x00201, MM_GROTTOS, "Grass 2", "MM Canyon Gossip Grotto Grass 2", ObjectType::grass, {253, 426, 0}, MM_GROTTO_TERMINA_CANYON_GOSSIP, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)" },
@@ -1933,7 +1933,7 @@ ObjectInfo MM_GROTTO_TERMINA_CANYON_GOSSIPSceneObjects[MM_GROTTO_TERMINA_CANYON_
 };
 
 const size_t MM_GROTTO_DEKU_PALACE_BEANSNumOfObjs = 20;
-ObjectInfo MM_GROTTO_DEKU_PALACE_BEANSSceneObjects[MM_GROTTO_DEKU_PALACE_BEANSNumOfObjs] =
+ObjectInfo MM_GROTTO_DEKU_PALACE_BEANSSceneObjects [MM_GROTTO_DEKU_PALACE_BEANSNumOfObjs] =
 {
 	{ 0x00c04, MM_GROTTOS, "Butterfly 1", "MM Deku Palace Grotto Butterfly 1", ObjectType::butterfly, {848, 516, 0}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectType::butterfly, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Pull out a deku stick near the butterfly<br><br><b>Requirements:</b><br>- Deku Stick (MM)<br>- Soul of Butterflies (MM)" },
 	{ 0x10c04, MM_GROTTOS, "Butterfly 2", "MM Deku Palace Grotto Butterfly 2", ObjectType::butterfly, {827, 516, 0}, MM_GROTTO_DEKU_PALACE_BEANS, ObjectType::butterfly, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Pull out a deku stick near the butterfly<br><br><b>Requirements:</b><br>- Deku Stick (MM)<br>- Soul of Butterflies (MM)" },
@@ -1958,7 +1958,7 @@ ObjectInfo MM_GROTTO_DEKU_PALACE_BEANSSceneObjects[MM_GROTTO_DEKU_PALACE_BEANSNu
 };
 
 const size_t MM_GROTTO_DEKU_PALACE_GENERICNumOfObjs = 10;
-ObjectInfo MM_GROTTO_DEKU_PALACE_GENERICSceneObjects[MM_GROTTO_DEKU_PALACE_GENERICNumOfObjs] =
+ObjectInfo MM_GROTTO_DEKU_PALACE_GENERICSceneObjects [MM_GROTTO_DEKU_PALACE_GENERICNumOfObjs] =
 {
 	{ 0x00603, MM_GROTTOS, "Butterfly 1", "MM Deku Palace JP Line Grotto Butterfly 1", ObjectType::butterfly, {0, 0, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectType::butterfly, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm_jp, LocType::overworld, "Pull out a deku stick near the butterfly<br><br><b>Requirements:</b><br>- Deku Stick (MM)<br>- Soul of Butterflies (MM)" },
 	{ 0x10603, MM_GROTTOS, "Butterfly 2", "MM Deku Palace JP Line Grotto Butterfly 2", ObjectType::butterfly, {0, 0, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectType::butterfly, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm_jp, LocType::overworld, "Pull out a deku stick near the butterfly<br><br><b>Requirements:</b><br>- Deku Stick (MM)<br>- Soul of Butterflies (MM)" },
@@ -1973,7 +1973,7 @@ ObjectInfo MM_GROTTO_DEKU_PALACE_GENERICSceneObjects[MM_GROTTO_DEKU_PALACE_GENER
 };
 
 const size_t MM_GROTTO_GREAT_BAY_COAST_FISHERMANNumOfObjs = 15;
-ObjectInfo MM_GROTTO_GREAT_BAY_COAST_FISHERMANSceneObjects[MM_GROTTO_GREAT_BAY_COAST_FISHERMANNumOfObjs] =
+ObjectInfo MM_GROTTO_GREAT_BAY_COAST_FISHERMANSceneObjects [MM_GROTTO_GREAT_BAY_COAST_FISHERMANNumOfObjs] =
 {
 	{ 0x17, MM_GROTTOS, "Chest", "MM Great Bay Coast Fisherman Grotto", ObjectType::chest, {231, 410, 0}, MM_GROTTO_GREAT_BAY_COAST_FISHERMAN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x03700, MM_GROTTOS, "Grass 1", "MM Great Bay Coast Fisherman Grotto Grass 01", ObjectType::grass, {612, 542, 0}, MM_GROTTO_GREAT_BAY_COAST_FISHERMAN, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -1993,7 +1993,7 @@ ObjectInfo MM_GROTTO_GREAT_BAY_COAST_FISHERMANSceneObjects[MM_GROTTO_GREAT_BAY_C
 };
 
 const size_t MM_GROTTO_IKANA_GRAVEYARD_GENERICNumOfObjs = 15;
-ObjectInfo MM_GROTTO_IKANA_GRAVEYARD_GENERICSceneObjects[MM_GROTTO_IKANA_GRAVEYARD_GENERICNumOfObjs] =
+ObjectInfo MM_GROTTO_IKANA_GRAVEYARD_GENERICSceneObjects [MM_GROTTO_IKANA_GRAVEYARD_GENERICNumOfObjs] =
 {
 	{ 0x18, MM_GROTTOS, "Chest", "MM Ikana Graveyard Grotto", ObjectType::chest, {231, 410, 0}, MM_GROTTO_IKANA_GRAVEYARD_GENERIC, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)" },
 	{ 0x03800, MM_GROTTOS, "Grass 1", "MM Ikana Graveyard Grotto Grass 01", ObjectType::grass, {612, 542, 0}, MM_GROTTO_IKANA_GRAVEYARD_GENERIC, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)" },
@@ -2013,7 +2013,7 @@ ObjectInfo MM_GROTTO_IKANA_GRAVEYARD_GENERICSceneObjects[MM_GROTTO_IKANA_GRAVEYA
 };
 
 const size_t MM_GROTTO_IKANA_VALLEY_OPENNumOfObjs = 15;
-ObjectInfo MM_GROTTO_IKANA_VALLEY_OPENSceneObjects[MM_GROTTO_IKANA_VALLEY_OPENNumOfObjs] =
+ObjectInfo MM_GROTTO_IKANA_VALLEY_OPENSceneObjects [MM_GROTTO_IKANA_VALLEY_OPENNumOfObjs] =
 {
 	{ 0x14, MM_GROTTOS, "Chest", "MM Ikana Valley Grotto", ObjectType::chest, {231, 410, 0}, MM_GROTTO_IKANA_VALLEY_OPEN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x03400, MM_GROTTOS, "Grass 1", "MM Ikana Valley Grotto Grass 01", ObjectType::grass, {612, 542, 0}, MM_GROTTO_IKANA_VALLEY_OPEN, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -2033,7 +2033,7 @@ ObjectInfo MM_GROTTO_IKANA_VALLEY_OPENSceneObjects[MM_GROTTO_IKANA_VALLEY_OPENNu
 };
 
 const size_t LONE_PEAKNumOfObjs = 27;
-ObjectInfo LONE_PEAKSceneObjects[LONE_PEAKNumOfObjs] =
+ObjectInfo LONE_PEAKSceneObjects [LONE_PEAKNumOfObjs] =
 {
 	{ 0x06, MM_GROTTOS, "Boulder", "MM Lone Peak Shrine Boulder Chest", ObjectType::chest, {320, 429, 0}, LONE_PEAK, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Explode the rock to reveal the chest<br><br><b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)" },
 	{ 0x00500, MM_GROTTOS, "Pack 1 - Grass 1", "MM Lone Peak Shrine Grass Pack 1 Grass 01", ObjectType::grass, {554, 427, 0}, LONE_PEAK, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -2065,7 +2065,7 @@ ObjectInfo LONE_PEAKSceneObjects[LONE_PEAKNumOfObjs] =
 };
 
 const size_t MM_GROTTO_MOUNTAIN_VILLAGE_GENERICNumOfObjs = 15;
-ObjectInfo MM_GROTTO_MOUNTAIN_VILLAGE_GENERICSceneObjects[MM_GROTTO_MOUNTAIN_VILLAGE_GENERICNumOfObjs] =
+ObjectInfo MM_GROTTO_MOUNTAIN_VILLAGE_GENERICSceneObjects [MM_GROTTO_MOUNTAIN_VILLAGE_GENERICNumOfObjs] =
 {
 	{ 0x1b, MM_GROTTOS, "Chest", "MM Mountain Village Tunnel Grotto", ObjectType::chest, {231, 410, 0}, MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "After defeating Goht you have access to the ramp where is located the grotto entrance<br><br><b>Requirements:</b><br>- Soul of Goht" },
 	{ 0x03b00, MM_GROTTOS, "Grass 1", "MM Mountain Village Tunnel Grotto Grass 01", ObjectType::grass, {612, 542, 0}, MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "After defeating Goht you have access to the ramp where is located the grotto entrance<br><br><b>Requirements:</b><br>- Soul of Goht" },
@@ -2085,7 +2085,7 @@ ObjectInfo MM_GROTTO_MOUNTAIN_VILLAGE_GENERICSceneObjects[MM_GROTTO_MOUNTAIN_VIL
 };
 
 const size_t MM_GROTTO_TERMINA_OCEAN_GOSSIPNumOfObjs = 8;
-ObjectInfo MM_GROTTO_TERMINA_OCEAN_GOSSIPSceneObjects[MM_GROTTO_TERMINA_OCEAN_GOSSIPNumOfObjs] =
+ObjectInfo MM_GROTTO_TERMINA_OCEAN_GOSSIPSceneObjects [MM_GROTTO_TERMINA_OCEAN_GOSSIPNumOfObjs] =
 {
 	{ 0x00002, MM_GROTTOS, "Butterfly 1", "MM Ocean Gossip Grotto Butterfly 1", ObjectType::butterfly, {282, 425, 0}, MM_GROTTO_TERMINA_OCEAN_GOSSIP, ObjectType::butterfly, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Pull out a deku stick near the butterfly<br><br><b>Requirements:</b><br>- Deku Stick (MM)<br>- Soul of Butterflies (MM)" },
 	{ 0x10002, MM_GROTTOS, "Butterfly 2", "MM Ocean Gossip Grotto Butterfly 2", ObjectType::butterfly, {307, 422, 0}, MM_GROTTO_TERMINA_OCEAN_GOSSIP, ObjectType::butterfly, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Pull out a deku stick near the butterfly<br><br><b>Requirements:</b><br>- Deku Stick (MM)<br>- Soul of Butterflies (MM)" },
@@ -2098,7 +2098,7 @@ ObjectInfo MM_GROTTO_TERMINA_OCEAN_GOSSIPSceneObjects[MM_GROTTO_TERMINA_OCEAN_GO
 };
 
 const size_t MM_GROTTO_PATH_TO_SNOWHEAD_GENERICNumOfObjs = 15;
-ObjectInfo MM_GROTTO_PATH_TO_SNOWHEAD_GENERICSceneObjects[MM_GROTTO_PATH_TO_SNOWHEAD_GENERICNumOfObjs] =
+ObjectInfo MM_GROTTO_PATH_TO_SNOWHEAD_GENERICSceneObjects [MM_GROTTO_PATH_TO_SNOWHEAD_GENERICNumOfObjs] =
 {
 	{ 0x13, MM_GROTTOS, "Chest", "MM Path to Snowhead Grotto", ObjectType::chest, {231, 410, 0}, MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM)" },
 	{ 0x03300, MM_GROTTOS, "Grass 1", "MM Path to Snowhead Grotto Grass 01", ObjectType::grass, {612, 542, 0}, MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM)" },
@@ -2118,7 +2118,7 @@ ObjectInfo MM_GROTTO_PATH_TO_SNOWHEAD_GENERICSceneObjects[MM_GROTTO_PATH_TO_SNOW
 };
 
 const size_t MM_GROTTO_TERMINA_PEEHATNumOfObjs = 13;
-ObjectInfo MM_GROTTO_TERMINA_PEEHATSceneObjects[MM_GROTTO_TERMINA_PEEHATNumOfObjs] =
+ObjectInfo MM_GROTTO_TERMINA_PEEHATSceneObjects [MM_GROTTO_TERMINA_PEEHATNumOfObjs] =
 {
 	{ 0x00d01, MM_GROTTOS, "Grass 1", "MM Peahat Grotto Grass 01", ObjectType::grass, {492, 372, 0}, MM_GROTTO_TERMINA_PEEHAT, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x10d01, MM_GROTTOS, "Grass 2", "MM Peahat Grotto Grass 02", ObjectType::grass, {475, 395, 0}, MM_GROTTO_TERMINA_PEEHAT, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -2136,7 +2136,7 @@ ObjectInfo MM_GROTTO_TERMINA_PEEHATSceneObjects[MM_GROTTO_TERMINA_PEEHATNumOfObj
 };
 
 const size_t MM_GROTTO_IKANA_ROAD_GENERICNumOfObjs = 15;
-ObjectInfo MM_GROTTO_IKANA_ROAD_GENERICSceneObjects[MM_GROTTO_IKANA_ROAD_GENERICNumOfObjs] =
+ObjectInfo MM_GROTTO_IKANA_ROAD_GENERICSceneObjects [MM_GROTTO_IKANA_ROAD_GENERICNumOfObjs] =
 {
 	{ 0x16, MM_GROTTOS, "Chest", "MM Road to Ikana Grotto", ObjectType::chest, {231, 410, 0}, MM_GROTTO_IKANA_ROAD_GENERIC, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Goron Mask (MM) / Megaton Hammer (MM)" },
 	{ 0x03600, MM_GROTTOS, "Grass 1", "MM Road to Ikana Grotto Grass 01", ObjectType::grass, {612, 542, 0}, MM_GROTTO_IKANA_ROAD_GENERIC, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Goron Mask (MM) / Megaton Hammer (MM)" },
@@ -2156,7 +2156,7 @@ ObjectInfo MM_GROTTO_IKANA_ROAD_GENERICSceneObjects[MM_GROTTO_IKANA_ROAD_GENERIC
 };
 
 const size_t MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPENNumOfObjs = 15;
-ObjectInfo MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPENSceneObjects[MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPENNumOfObjs] =
+ObjectInfo MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPENSceneObjects [MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPENNumOfObjs] =
 {
 	{ 0x1e, MM_GROTTOS, "Chest", "MM Road to Southern Swamp Grotto", ObjectType::chest, {231, 410, 0}, MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x03e00, MM_GROTTOS, "Grass 1", "MM Road to Southern Swamp Grotto Grass 01", ObjectType::grass, {612, 542, 0}, MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -2176,7 +2176,7 @@ ObjectInfo MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPENSceneObjects[MM_GROTTO_SOUTHERN_SWA
 };
 
 const size_t MM_GROTTO_SOUTHERN_SWAMP_OPENNumOfObjs = 15;
-ObjectInfo MM_GROTTO_SOUTHERN_SWAMP_OPENSceneObjects[MM_GROTTO_SOUTHERN_SWAMP_OPENNumOfObjs] =
+ObjectInfo MM_GROTTO_SOUTHERN_SWAMP_OPENSceneObjects [MM_GROTTO_SOUTHERN_SWAMP_OPENNumOfObjs] =
 {
 	{ 0x1d, MM_GROTTOS, "Chest", "MM Southern Swamp Grotto", ObjectType::chest, {231, 410, 0}, MM_GROTTO_SOUTHERN_SWAMP_OPEN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x03d00, MM_GROTTOS, "Grass 1", "MM Southern Swamp Grotto Grass 01", ObjectType::grass, {612, 542, 0}, MM_GROTTO_SOUTHERN_SWAMP_OPEN, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -2196,7 +2196,7 @@ ObjectInfo MM_GROTTO_SOUTHERN_SWAMP_OPENSceneObjects[MM_GROTTO_SOUTHERN_SWAMP_OP
 };
 
 const size_t MM_GROTTO_TERMINA_COWNumOfObjs = 78;
-ObjectInfo MM_GROTTO_TERMINA_COWSceneObjects[MM_GROTTO_TERMINA_COWNumOfObjs] =
+ObjectInfo MM_GROTTO_TERMINA_COWSceneObjects [MM_GROTTO_TERMINA_COWNumOfObjs] =
 {
 	{ 0x14, MM_GROTTOS, "Back", "MM Termina Field Cow Back", ObjectType::cow, {572, 378, 0}, MM_GROTTO_TERMINA_COW, ObjectType::cow, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Play <b>Epona's Song</b> next to the cow<br><br><b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM)<br>- Fairy Ocarina / Ocarina of Time<br>- Epona's Song (MM)<br>- C-Up + C-Left + C-Right buttons (MM)<br>- Soul of Cows (MM)" },
 	{ 0x13, MM_GROTTOS, "Front", "MM Termina Field Cow Front", ObjectType::cow, {568, 417, 0}, MM_GROTTO_TERMINA_COW, ObjectType::cow, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Play <b>Epona's Song</b> next to the cow<br><br><b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM)<br>- Fairy Ocarina / Ocarina of Time<br>- Epona's Song (MM)<br>- C-Up + C-Left + C-Right buttons (MM)<br>- Soul of Cows (MM)" },
@@ -2279,13 +2279,13 @@ ObjectInfo MM_GROTTO_TERMINA_COWSceneObjects[MM_GROTTO_TERMINA_COWNumOfObjs] =
 };
 
 const size_t MM_GROTTO_TERMINA_DODONGONumOfObjs = 1;
-ObjectInfo MM_GROTTO_TERMINA_DODONGOSceneObjects[MM_GROTTO_TERMINA_DODONGONumOfObjs] =
+ObjectInfo MM_GROTTO_TERMINA_DODONGOSceneObjects [MM_GROTTO_TERMINA_DODONGONumOfObjs] =
 {
 	{ 0x00, MM_GROTTOS, "Dodongo", "MM Termina Field Dodongo Grotto", ObjectType::chest, {725, 373, 0}, MM_GROTTO_TERMINA_DODONGO, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Defeat all the <b>Dodongos</b><br><br><b>Requirements:</b><br>- Soul of Dodongos (MM)" }
 };
 
 const size_t MM_GROTTO_TERMINA_PILLARNumOfObjs = 15;
-ObjectInfo MM_GROTTO_TERMINA_PILLARSceneObjects[MM_GROTTO_TERMINA_PILLARNumOfObjs] =
+ObjectInfo MM_GROTTO_TERMINA_PILLARSceneObjects [MM_GROTTO_TERMINA_PILLARNumOfObjs] =
 {
 	{ 0x1a, MM_GROTTOS, "Chest", "MM Termina Field Pillar Grotto", ObjectType::chest, {231, 410, 0}, MM_GROTTO_TERMINA_PILLAR, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Climb the ladder next to pillar to find the grotto" },
 	{ 0x03a00, MM_GROTTOS, "Grass 1", "MM Termina Field Pillar Grotto Grass 01", ObjectType::grass, {612, 542, 0}, MM_GROTTO_TERMINA_PILLAR, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Climb the ladder next to pillar to find the grotto" },
@@ -2305,7 +2305,7 @@ ObjectInfo MM_GROTTO_TERMINA_PILLARSceneObjects[MM_GROTTO_TERMINA_PILLARNumOfObj
 };
 
 const size_t MM_GROTTO_TERMINA_SCRUBNumOfObjs = 3;
-ObjectInfo MM_GROTTO_TERMINA_SCRUBSceneObjects[MM_GROTTO_TERMINA_SCRUBNumOfObjs] =
+ObjectInfo MM_GROTTO_TERMINA_SCRUBSceneObjects [MM_GROTTO_TERMINA_SCRUBNumOfObjs] =
 {
 	{ SCRUB_TELESCOPE, MM_GROTTOS, "Scrub", "MM Termina Field Scrub", ObjectType::npc, {239, 428, 0}, MM_GROTTO_TERMINA_SCRUB, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Watch and follow the business scrub using the telescope. Then go to its grotto and buy its item<br><br><b>Requirements:</b><br>- Soul of Astronomer<br>- Soul of Business Scrubs (MM)" },
 	{ 0x00900, MM_GROTTOS, "Crate", "MM Termina Field Scrub Crate", ObjectType::crate, {268, 474, 0}, MM_GROTTO_TERMINA_SCRUB, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -2313,7 +2313,7 @@ ObjectInfo MM_GROTTO_TERMINA_SCRUBSceneObjects[MM_GROTTO_TERMINA_SCRUBNumOfObjs]
 };
 
 const size_t MM_GROTTO_TERMINA_TALL_GRASSNumOfObjs = 15;
-ObjectInfo MM_GROTTO_TERMINA_TALL_GRASSSceneObjects[MM_GROTTO_TERMINA_TALL_GRASSNumOfObjs] =
+ObjectInfo MM_GROTTO_TERMINA_TALL_GRASSSceneObjects [MM_GROTTO_TERMINA_TALL_GRASSNumOfObjs] =
 {
 	{ 0x1f, MM_GROTTOS, "Chest", "MM Termina Field Tall Grass Grotto", ObjectType::chest, {231, 410, 0}, MM_GROTTO_TERMINA_TALL_GRASS, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x03f00, MM_GROTTOS, "Grass 1", "MM Termina Field Tall Grass Grotto Grass 01", ObjectType::grass, {612, 542, 0}, MM_GROTTO_TERMINA_TALL_GRASS, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -2333,13 +2333,13 @@ ObjectInfo MM_GROTTO_TERMINA_TALL_GRASSSceneObjects[MM_GROTTO_TERMINA_TALL_GRASS
 };
 
 const size_t MM_GROTTO_TWIN_ISLANDS_FROZENNumOfObjs = 1;
-ObjectInfo MM_GROTTO_TWIN_ISLANDS_FROZENSceneObjects[MM_GROTTO_TWIN_ISLANDS_FROZENNumOfObjs] =
+ObjectInfo MM_GROTTO_TWIN_ISLANDS_FROZENSceneObjects [MM_GROTTO_TWIN_ISLANDS_FROZENNumOfObjs] =
 {
 	{ 0x02, MM_GROTTOS, "Chest", "MM Twin Islands Frozen Grotto Chest", ObjectType::chest, {147, 420, 0}, MM_GROTTO_TWIN_ISLANDS_FROZEN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Once inside the grotto, destroy the left boulder to reveal the chest<br><br><b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)<br>- Hot Spring Water / Bow (MM) + Fire Arrow (MM) + Magic Upgrade (MM) / Din's Fire (MM) + Magic Upgrade (MM) / Soul of Goht" }
 };
 
 const size_t MM_GROTTO_TWIN_ISLANDS_RAMPNumOfObjs = 15;
-ObjectInfo MM_GROTTO_TWIN_ISLANDS_RAMPSceneObjects[MM_GROTTO_TWIN_ISLANDS_RAMPNumOfObjs] =
+ObjectInfo MM_GROTTO_TWIN_ISLANDS_RAMPSceneObjects [MM_GROTTO_TWIN_ISLANDS_RAMPNumOfObjs] =
 {
 	{ 0x19, MM_GROTTOS, "Chest", "MM Twin Islands Ramp Grotto Chest", ObjectType::chest, {231, 410, 0}, MM_GROTTO_TWIN_ISLANDS_RAMP, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM)" },
 	{ 0x03900, MM_GROTTOS, "Grass 1", "MM Twin Islands Ramp Grotto Grass 01", ObjectType::grass, {612, 542, 0}, MM_GROTTO_TWIN_ISLANDS_RAMP, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM)" },
@@ -2359,7 +2359,7 @@ ObjectInfo MM_GROTTO_TWIN_ISLANDS_RAMPSceneObjects[MM_GROTTO_TWIN_ISLANDS_RAMPNu
 };
 
 const size_t MM_GROTTO_WOODS_OF_MYSTERY_OPENNumOfObjs = 15;
-ObjectInfo MM_GROTTO_WOODS_OF_MYSTERY_OPENSceneObjects[MM_GROTTO_WOODS_OF_MYSTERY_OPENNumOfObjs] =
+ObjectInfo MM_GROTTO_WOODS_OF_MYSTERY_OPENSceneObjects [MM_GROTTO_WOODS_OF_MYSTERY_OPENNumOfObjs] =
 {
 	{ 0x1c, MM_GROTTOS, "Chest", "MM Woods of Mystery Grotto", ObjectType::chest, {231, 410, 0}, MM_GROTTO_WOODS_OF_MYSTERY_OPEN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "On the second day, enter the open grotto in the south west area of the woods<br><br><b>Requirements:</b><br>- Clock (Day 2) / Clock (Night 2)" },
 	{ 0x03c00, MM_GROTTOS, "Grass 1", "MM Woods of Mystery Grotto Grass 01", ObjectType::grass, {612, 542, 0}, MM_GROTTO_WOODS_OF_MYSTERY_OPEN, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "On the second day, enter the open grotto in the south west area of the woods<br><br><b>Requirements:</b><br>- Clock (Day 2) / Clock (Night 2)" },
@@ -2379,7 +2379,7 @@ ObjectInfo MM_GROTTO_WOODS_OF_MYSTERY_OPENSceneObjects[MM_GROTTO_WOODS_OF_MYSTER
 };
 
 const size_t MM_GROTTO_ZORA_CAPE_GENERICNumOfObjs = 15;
-ObjectInfo MM_GROTTO_ZORA_CAPE_GENERICSceneObjects[MM_GROTTO_ZORA_CAPE_GENERICNumOfObjs] =
+ObjectInfo MM_GROTTO_ZORA_CAPE_GENERICSceneObjects [MM_GROTTO_ZORA_CAPE_GENERICNumOfObjs] =
 {
 	{ 0x15, MM_GROTTOS, "Chest", "MM Zora Cape Grotto", ObjectType::chest, {231, 410, 0}, MM_GROTTO_ZORA_CAPE_GENERIC, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)" },
 	{ 0x03500, MM_GROTTOS, "Grass 1", "MM Zora Cape Grotto Grass 01", ObjectType::grass, {612, 542, 0}, MM_GROTTO_ZORA_CAPE_GENERIC, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)" },
@@ -2399,14 +2399,14 @@ ObjectInfo MM_GROTTO_ZORA_CAPE_GENERICSceneObjects[MM_GROTTO_ZORA_CAPE_GENERICNu
 };
 
 const size_t HONEY_DARLINGNumOfObjs = 2;
-ObjectInfo HONEY_DARLINGSceneObjects[HONEY_DARLINGNumOfObjs] =
+ObjectInfo HONEY_DARLINGSceneObjects [HONEY_DARLINGNumOfObjs] =
 {
 	{ HONEY_DARLING_2, HONEY_DARLING, "Reward - All Days", "MM Honey & Darling Reward All Days", ObjectType::npc, {471, 310, 0}, HONEY_DARLING, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::minigame, "<b>Requirements:</b><br>- Win the game on all days" },
 	{ HONEY_DARLING_1, HONEY_DARLING, "Reward - Any Day", "MM Honey & Darling Reward Any Day", ObjectType::npc, {471, 273, 0}, HONEY_DARLING, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::minigame, "<b>Requirements:</b><br>- Win the game on any day" }
 };
 
 const size_t IKANA_GRAVEYARDNumOfObjs = 88;
-ObjectInfo IKANA_GRAVEYARDSceneObjects[IKANA_GRAVEYARDNumOfObjs] =
+ObjectInfo IKANA_GRAVEYARDSceneObjects [IKANA_GRAVEYARDNumOfObjs] =
 {
 	{ 0x00, IKANA_GRAVEYARD, "Captain's Hat", "MM Ikana Graveyard Captain Mask", ObjectType::chest, {597, 198, 0}, IKANA_GRAVEYARD, ObjectType::mask, ObjectIconMap::captain, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Play the <b>Sonata of Awakening</b> next to the capitain Keeta and defeat him<br><br><b>Requirements:</b><br>- Hookshot (MM) / Bunny Hood (MM) / Hover Boots (MM)<br>- Soul of Capitain Keeta<br>- Sonata of Awakening<br>- Fairy Ocarina (MM) / Ocarina of Time (MM)<br>- A + C-Up + C-Left + C-Right buttons (MM)" },
 	{ 0x0001f, IKANA_GRAVEYARD, "Grass 1", "MM Ikana Graveyard Grass 1", ObjectType::grass, {297, 354, 0}, IKANA_GRAVEYARD, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -2499,14 +2499,14 @@ ObjectInfo IKANA_GRAVEYARDSceneObjects[IKANA_GRAVEYARDNumOfObjs] =
 };
 
 const size_t MM_LABORATORYNumOfObjs = 2;
-ObjectInfo MM_LABORATORYSceneObjects[MM_LABORATORYNumOfObjs] =
+ObjectInfo MM_LABORATORYSceneObjects [MM_LABORATORYNumOfObjs] =
 {
 	{ LAB_FISH_HEART_PIECE, MM_LABORATORY, "Fish", "MM Laboratory Fish HP", ObjectType::npc, {624, 209, 0}, MM_LABORATORY, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Free a fish above the red fish aquarium<br><br><b>Requirements:</b><br>- Fish (MM)" },
 	{ SONG_ZORA, MM_LABORATORY, "New Wave Bossa Nova", "MM Laboratory Zora Song", ObjectType::npc, {226, 454, 0}, MM_LABORATORY, ObjectType::song, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Bring back all the <b>Zora's eggs</b> to the main aquarium and pull out your ocarina while in wearing the <b>Zora Mask</b><br><br><b>Requirements:</b><br>- Empty Bottle (MM)<br>- Zora Mask (MM)<br>- Fairy Ocarina (MM) / Ocarina of Time (MM)<br>- Soul of the Scientist (MM)" }
 };
 
 const size_t LAIR_GOHTNumOfObjs = 16;
-ObjectInfo LAIR_GOHTSceneObjects[LAIR_GOHTNumOfObjs] =
+ObjectInfo LAIR_GOHTSceneObjects [LAIR_GOHTNumOfObjs] =
 {
 	{ REMAINS_GOHT, LAIR_GOHT, "Goht's Remains", "MM Snowhead Temple Boss", ObjectType::npc, {468, 472, 2}, TEMPLE_SNOWHEAD, ObjectType::mask, ObjectIconMap::goht, ObjectContext::All, 13, GameLayout::mm, LocType::dungeon, "Defeat <b>Goht</b><br><br><b>Requirements:</b><br>- Bow (MM) + Fire Arrow (MM) / Din's Fire (MM)<br>- Magic Upgrade (MM)<br>- Boss Key (Snowhead) / Goht's Remains<br>- Soul of Goht" },
 	{ 0x1f, LAIR_GOHT, "Heart Container", "MM Snowhead Temple Boss HC", ObjectType::collectible, {487, 472, 1}, TEMPLE_SNOWHEAD, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 13, GameLayout::mm, LocType::dungeon, "Defeat <b>Goht</b><br><br><b>Requirements:</b><br>- Bow (MM) + Fire Arrow (MM) / Din's Fire (MM)<br>- Magic Upgrade (MM)<br>- Boss Key (Snowhead) / Goht's Remains<br>- Soul of Goht" },
@@ -2527,7 +2527,7 @@ ObjectInfo LAIR_GOHTSceneObjects[LAIR_GOHTNumOfObjs] =
 };
 
 const size_t TEMPLE_SNOWHEADNumOfObjs = 147;
-ObjectInfo TEMPLE_SNOWHEADSceneObjects[TEMPLE_SNOWHEADNumOfObjs] =
+ObjectInfo TEMPLE_SNOWHEADSceneObjects [TEMPLE_SNOWHEADNumOfObjs] =
 {
 	{ REMAINS_GOHT, LAIR_GOHT, "Goht's Remains", "MM Snowhead Temple Boss", ObjectType::npc, {468, 472, 2}, TEMPLE_SNOWHEAD, ObjectType::mask, ObjectIconMap::goht, ObjectContext::All, 13, GameLayout::mm, LocType::dungeon, "Defeat <b>Goht</b><br><br><b>Requirements:</b><br>- Bow (MM) + Fire Arrow (MM) / Din's Fire (MM)<br>- Magic Upgrade (MM)<br>- Boss Key (Snowhead) / Goht's Remains<br>- Soul of Goht" },
 	{ 0x1f, LAIR_GOHT, "Heart Container", "MM Snowhead Temple Boss HC", ObjectType::collectible, {487, 472, 1}, TEMPLE_SNOWHEAD, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 13, GameLayout::mm, LocType::dungeon, "Defeat <b>Goht</b><br><br><b>Requirements:</b><br>- Bow (MM) + Fire Arrow (MM) / Din's Fire (MM)<br>- Magic Upgrade (MM)<br>- Boss Key (Snowhead) / Goht's Remains<br>- Soul of Goht" },
@@ -2554,7 +2554,7 @@ ObjectInfo TEMPLE_SNOWHEADSceneObjects[TEMPLE_SNOWHEADNumOfObjs] =
 	{ 0x15, TEMPLE_SNOWHEAD, "Block Room - Ledge", "MM Snowhead Temple Block Room Ledge", ObjectType::chest, {464, 433, 0}, TEMPLE_SNOWHEAD, ObjectType::sf, ObjectIconMap::render_type, ObjectContext::All, 4, GameLayout::mm, LocType::dungeon, "Push the two blocks all the way to the farthest edge of the snowy area. This will snap it on top of a floor switch that reveals a chest.<br><br><b>Requirements:</b><br>- Goron Mask (MM)" },
 	{ 0x1e, TEMPLE_SNOWHEAD, "Chest", "MM Snowhead Temple Boss Key", ObjectType::chest, {638, 99, 0}, TEMPLE_SNOWHEAD, ObjectType::boss_key, ObjectIconMap::render_type, ObjectContext::All, 1, GameLayout::mm, LocType::dungeon, NULL },
 	{ 0x01, TEMPLE_SNOWHEAD, "Bridge Room", "MM Snowhead Temple Bridge Room", ObjectType::chest, {408, 206, 0}, TEMPLE_SNOWHEAD, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 2, GameLayout::mm, LocType::dungeon, "Defeat all three of the <b>Frezzard</b> to make a chest appear on the ledge.<br><br><b>Requirements:</b><br>- Soul of Freezard (MM)" },
-	{ 0x17, TEMPLE_SNOWHEAD, "Central Room - Alcove", "MM Snowhead Temple Central Room Alcove", ObjectType::chest, {573, 254, 0}, TEMPLE_SNOWHEAD, ObjectType::sf, ObjectIconMap::render_type, ObjectContext::All, 1, GameLayout::mm, LocType::dungeon, "Make your way to the top of the central pillar after you ve punched out the ice cylinders. Walk to the north end of the room along the narrow platform and then face westward. Line yourself up so that directly ahead you can see the Deku Flower below. Use the <b>Bunny Hood</b> or the <b>Hover boots</b> and leap down, holding forward and you should land right on top of the Deku Flower. <br><br><b>Requirements:</b><br>- Bunny Hood (MM) / Hover Boots (MM)" },
+	{ 0x17, TEMPLE_SNOWHEAD, "Central Room - Alcove", "MM Snowhead Temple Central Room Alcove", ObjectType::chest, {573, 254, 0}, TEMPLE_SNOWHEAD, ObjectType::sf, ObjectIconMap::render_type, ObjectContext::All, 1, GameLayout::mm, LocType::dungeon, "Make your way to the top of the central pillar after you’ve punched out the ice cylinders. Walk to the north end of the room along the narrow platform and then face westward. Line yourself up so that directly ahead you can see the Deku Flower below. Use the <b>Bunny Hood</b> or the <b>Hover boots</b> and leap down, holding forward and you should land right on top of the Deku Flower. <br><br><b>Requirements:</b><br>- Bunny Hood (MM) / Hover Boots (MM)" },
 	{ 0x14, TEMPLE_SNOWHEAD, "Central Room - Bottom", "MM Snowhead Temple Central Room Bottom", ObjectType::chest, {403, 553, 0}, TEMPLE_SNOWHEAD, ObjectType::sf, ObjectIconMap::render_type, ObjectContext::All, 1, GameLayout::mm, LocType::dungeon, "Find the patch of lava that has a large floor switch in it and step on it while wearing the <b>Goron Mask</b>.<br><br><b>Requirements:</b><br>- Goron Mask (MM)" },
 	{ 0x1c, TEMPLE_SNOWHEAD, "Chest", "MM Snowhead Temple Compass", ObjectType::chest, {354, 304, 0}, TEMPLE_SNOWHEAD, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 3, GameLayout::mm, LocType::dungeon, NULL },
 	{ 0x19, TEMPLE_SNOWHEAD, "Compass Room - Ledge", "MM Snowhead Temple Compass Room Ledge", ObjectType::chest, {645, 484, 0}, TEMPLE_SNOWHEAD, ObjectType::sf, ObjectIconMap::render_type, ObjectContext::All, 3, GameLayout::mm, LocType::dungeon, "Use <b>Fire Arrows</b> to melt the giant chunk of ice that encase the floor switch. Step on the switch to reveal a chest.<br><br><b>Requirements:</b><br>- Bow (MM) + Fire Arrows (MM) / Din's Fire (MM)<br>- Magic Upgrade (MM)" },
@@ -2679,7 +2679,7 @@ ObjectInfo TEMPLE_SNOWHEADSceneObjects[TEMPLE_SNOWHEADNumOfObjs] =
 };
 
 const size_t LAIR_GYORGNumOfObjs = 10;
-ObjectInfo LAIR_GYORGSceneObjects[LAIR_GYORGNumOfObjs] =
+ObjectInfo LAIR_GYORGSceneObjects [LAIR_GYORGNumOfObjs] =
 {
 	{ REMAINS_GYORG, LAIR_GYORG, "Gyorg's Remains", "MM Great Bay Temple Boss", ObjectType::npc, {484, 258, 1}, TEMPLE_GREAT_BAY, ObjectType::mask, ObjectIconMap::gyorg, ObjectContext::All, 15, GameLayout::mm, LocType::dungeon, "<b>Requirements:</b><br>- Bow (MM) / Zora Mask (MM)<br>- Boss Key (Great Bay) / Gyorg's Remains<br>- Soul of Gyorg" },
 	{ 0x1f, LAIR_GYORG, "Heart Container", "MM Great Bay Temple Boss HC", ObjectType::collectible, {484, 233, 0}, TEMPLE_GREAT_BAY, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 15, GameLayout::mm, LocType::dungeon, "<b>Requirements:</b><br>- Bow (MM) / Zora Mask (MM)<br>- Boss Key (Great Bay) / Gyorg's Remains<br>- Soul of Gyorg" },
@@ -2694,7 +2694,7 @@ ObjectInfo LAIR_GYORGSceneObjects[LAIR_GYORGNumOfObjs] =
 };
 
 const size_t TEMPLE_GREAT_BAYNumOfObjs = 157;
-ObjectInfo TEMPLE_GREAT_BAYSceneObjects[TEMPLE_GREAT_BAYNumOfObjs] =
+ObjectInfo TEMPLE_GREAT_BAYSceneObjects [TEMPLE_GREAT_BAYNumOfObjs] =
 {
 	{ REMAINS_GYORG, LAIR_GYORG, "Gyorg's Remains", "MM Great Bay Temple Boss", ObjectType::npc, {484, 258, 1}, TEMPLE_GREAT_BAY, ObjectType::mask, ObjectIconMap::gyorg, ObjectContext::All, 15, GameLayout::mm, LocType::dungeon, "<b>Requirements:</b><br>- Bow (MM) / Zora Mask (MM)<br>- Boss Key (Great Bay) / Gyorg's Remains<br>- Soul of Gyorg" },
 	{ 0x1f, LAIR_GYORG, "Heart Container", "MM Great Bay Temple Boss HC", ObjectType::collectible, {484, 233, 0}, TEMPLE_GREAT_BAY, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 15, GameLayout::mm, LocType::dungeon, "<b>Requirements:</b><br>- Bow (MM) / Zora Mask (MM)<br>- Boss Key (Great Bay) / Gyorg's Remains<br>- Soul of Gyorg" },
@@ -2856,7 +2856,7 @@ ObjectInfo TEMPLE_GREAT_BAYSceneObjects[TEMPLE_GREAT_BAYNumOfObjs] =
 };
 
 const size_t LAIR_IKANANumOfObjs = 9;
-ObjectInfo LAIR_IKANASceneObjects[LAIR_IKANANumOfObjs] =
+ObjectInfo LAIR_IKANASceneObjects [LAIR_IKANANumOfObjs] =
 {
 	{ 0x0002, LAIR_IKANA, "Boss 1", "MM Ancient Castle of Ikana Boss Pot 1", ObjectType::pot, {456, 318, 1}, CASTLE_IKANA, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 1, GameLayout::mm, LocType::dungeon, "<b>Requirements:</b><br>- Mirror Shield (MM) / Bow (MM) + Light Arrows (MM) + Magic Upgrade" },
 	{ 0x0003, LAIR_IKANA, "Boss 2", "MM Ancient Castle of Ikana Boss Pot 2", ObjectType::pot, {456, 307, 0}, CASTLE_IKANA, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 1, GameLayout::mm, LocType::dungeon, "<b>Requirements:</b><br>- Mirror Shield (MM) / Bow (MM) + Light Arrows (MM) + Magic Upgrade" },
@@ -2870,14 +2870,14 @@ ObjectInfo LAIR_IKANASceneObjects[LAIR_IKANANumOfObjs] =
 };
 
 const size_t LAIR_MAJORANumOfObjs = 2;
-ObjectInfo LAIR_MAJORASceneObjects[LAIR_MAJORANumOfObjs] =
+ObjectInfo LAIR_MAJORASceneObjects [LAIR_MAJORANumOfObjs] =
 {
 	{ 0x0001, LAIR_MAJORA, "Pot 1", "MM Moon Majora Pot 1", ObjectType::pot, {493, 99, 0}, LAIR_MAJORA, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::dungeon, "<b>Requirements:</b><br>- Odolwa's Remains<br>- Goht's Remains<br>- Gyorg's Remains<br>- Twinmold's Remains<br>- Oath To Order<br>- Fairy Ocarina (MM) / Ocarina of Time (MM)<br>- A + C-Right + C-Down + C-Up buttons (MM)<br>- Soul of Moon Children" },
 	{ 0x0002, LAIR_MAJORA, "Pot 2", "MM Moon Majora Pot 2", ObjectType::pot, {450, 99, 0}, LAIR_MAJORA, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::dungeon, "<b>Requirements:</b><br>- Odolwa's Remains<br>- Goht's Remains<br>- Gyorg's Remains<br>- Twinmold's Remains<br>- Soul of Moon Children" }
 };
 
 const size_t LAIR_ODOLWANumOfObjs = 19;
-ObjectInfo LAIR_ODOLWASceneObjects[LAIR_ODOLWANumOfObjs] =
+ObjectInfo LAIR_ODOLWASceneObjects [LAIR_ODOLWANumOfObjs] =
 {
 	{ SONG_ORDER, LAIR_ODOLWA, "Oath to Order", "MM Oath to Order", ObjectType::npc, {372, 302, 0}, TEMPLE_WOODFALL, ObjectType::song, ObjectIconMap::render_type, ObjectContext::All, 11, GameLayout::mm, LocType::dungeon, "Defeat one of the main boss<br><br><b>Requirements:</b><br>- Soul of Odolwa / Soul of Goht / Soul of Gyorg / Soul of Twinmold" },
 	{ REMAINS_ODOLWA, LAIR_ODOLWA, "Oldolwa's Remain", "MM Woodfall Temple Boss", ObjectType::npc, {468, 302, 0}, TEMPLE_WOODFALL, ObjectType::mask, ObjectIconMap::odolwa, ObjectContext::All, 11, GameLayout::mm, LocType::dungeon, "Defeat <b>Odolwa</b><br><br><b>Requirements:</b><br>- Boss Key (Woodfall) / Odolwa's Remains<br>- Soul of Odolwa" },
@@ -2901,7 +2901,7 @@ ObjectInfo LAIR_ODOLWASceneObjects[LAIR_ODOLWANumOfObjs] =
 };
 
 const size_t TEMPLE_WOODFALLNumOfObjs = 102;
-ObjectInfo TEMPLE_WOODFALLSceneObjects[TEMPLE_WOODFALLNumOfObjs] =
+ObjectInfo TEMPLE_WOODFALLSceneObjects [TEMPLE_WOODFALLNumOfObjs] =
 {
 	{ SONG_ORDER, LAIR_ODOLWA, "Oath to Order", "MM Oath to Order", ObjectType::npc, {372, 302, 0}, TEMPLE_WOODFALL, ObjectType::song, ObjectIconMap::render_type, ObjectContext::All, 11, GameLayout::mm, LocType::dungeon, "Defeat one of the main boss<br><br><b>Requirements:</b><br>- Soul of Odolwa / Soul of Goht / Soul of Gyorg / Soul of Twinmold" },
 	{ REMAINS_ODOLWA, LAIR_ODOLWA, "Oldolwa's Remain", "MM Woodfall Temple Boss", ObjectType::npc, {468, 302, 0}, TEMPLE_WOODFALL, ObjectType::mask, ObjectIconMap::odolwa, ObjectContext::All, 11, GameLayout::mm, LocType::dungeon, "Defeat <b>Odolwa</b><br><br><b>Requirements:</b><br>- Boss Key (Woodfall) / Odolwa's Remains<br>- Soul of Odolwa" },
@@ -3008,14 +3008,14 @@ ObjectInfo TEMPLE_WOODFALLSceneObjects[TEMPLE_WOODFALLNumOfObjs] =
 };
 
 const size_t LAIR_TWINMOLDNumOfObjs = 2;
-ObjectInfo LAIR_TWINMOLDSceneObjects[LAIR_TWINMOLDNumOfObjs] =
+ObjectInfo LAIR_TWINMOLDSceneObjects [LAIR_TWINMOLDNumOfObjs] =
 {
 	{ REMAINS_TWINMOLD, LAIR_TWINMOLD, "Twinmold's Remains", "MM Stone Tower Temple Inverted Boss", ObjectType::npc, {472, 325, 0}, TEMPLE_STONE_TOWER_INVERTED, ObjectType::mask, ObjectIconMap::twinmold, ObjectContext::All, 7, GameLayout::mm, LocType::dungeon, "Defeat <b>Twinmold</b><br><br><b>Requirements:</b><br>- Boss Key (Stone Tower) / Twinmold's Remains<br>- Soul of Twinmold" },
 	{ 0x1f, LAIR_TWINMOLD, "Heart Container", "MM Stone Tower Temple Inverted Boss HC", ObjectType::collectible, {472, 301, 0}, TEMPLE_STONE_TOWER_INVERTED, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 7, GameLayout::mm, LocType::dungeon, "Defeat <b>Twinmold</b><br><br><b>Requirements:</b><br>- Boss Key (Stone Tower) / Twinmold's Remains<br>- Soul of Twinmold" }
 };
 
 const size_t TEMPLE_STONE_TOWER_INVERTEDNumOfObjs = 70;
-ObjectInfo TEMPLE_STONE_TOWER_INVERTEDSceneObjects[TEMPLE_STONE_TOWER_INVERTEDNumOfObjs] =
+ObjectInfo TEMPLE_STONE_TOWER_INVERTEDSceneObjects [TEMPLE_STONE_TOWER_INVERTEDNumOfObjs] =
 {
 	{ REMAINS_TWINMOLD, LAIR_TWINMOLD, "Twinmold's Remains", "MM Stone Tower Temple Inverted Boss", ObjectType::npc, {472, 325, 0}, TEMPLE_STONE_TOWER_INVERTED, ObjectType::mask, ObjectIconMap::twinmold, ObjectContext::All, 7, GameLayout::mm, LocType::dungeon, "Defeat <b>Twinmold</b><br><br><b>Requirements:</b><br>- Boss Key (Stone Tower) / Twinmold's Remains<br>- Soul of Twinmold" },
 	{ 0x1f, LAIR_TWINMOLD, "Heart Container", "MM Stone Tower Temple Inverted Boss HC", ObjectType::collectible, {472, 301, 0}, TEMPLE_STONE_TOWER_INVERTED, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 7, GameLayout::mm, LocType::dungeon, "Defeat <b>Twinmold</b><br><br><b>Requirements:</b><br>- Boss Key (Stone Tower) / Twinmold's Remains<br>- Soul of Twinmold" },
@@ -3090,7 +3090,7 @@ ObjectInfo TEMPLE_STONE_TOWER_INVERTEDSceneObjects[TEMPLE_STONE_TOWER_INVERTEDNu
 };
 
 const size_t LAUNDRY_POOLNumOfObjs = 12;
-ObjectInfo LAUNDRY_POOLSceneObjects[LAUNDRY_POOLNumOfObjs] =
+ObjectInfo LAUNDRY_POOLSceneObjects [LAUNDRY_POOLNumOfObjs] =
 {
 	{ MASK_BREMEN, LAUNDRY_POOL, "Bremen Mask", "MM Clock Town Guru Guru Mask Bremen", ObjectType::npc, {743, 134, 0}, LAUNDRY_POOL, ObjectType::mask, ObjectIconMap::bremen, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Speak to <b>Guru-Guru</b><br><br><b>Requirements:</b><br>- Clock (Night 2)<br>- Soul of Guru-Guru" },
 	{ 0x0000d, LAUNDRY_POOL, "Grass 1", "MM Clock Town Laundry Pool Grass 1", ObjectType::grass, {542, 249, 0}, LAUNDRY_POOL, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -3107,14 +3107,14 @@ ObjectInfo LAUNDRY_POOLSceneObjects[LAUNDRY_POOLNumOfObjs] =
 };
 
 const size_t MAYOR_HOUSENumOfObjs = 2;
-ObjectInfo MAYOR_HOUSESceneObjects[MAYOR_HOUSENumOfObjs] =
+ObjectInfo MAYOR_HOUSESceneObjects [MAYOR_HOUSENumOfObjs] =
 {
 	{ MAYOR_HEART_PIECE, MAYOR_HOUSE, "Heart Piece", "MM Mayor's Office HP", ObjectType::npc, {358, 77, 0}, MAYOR_HOUSE, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Speak to the <b>Mayor Dotour</b> while wearing the <b>Couple's Mask</b><br><br><b>Requirements:</b><br>- Couple's Mask<br>- Soul of Mayor Dotour" },
 	{ MASK_KAFEI, MAYOR_HOUSE, "Kafei's Mask", "MM Mayor's Office Kafei's Mask", ObjectType::npc, {538, 85, 0}, MAYOR_HOUSE, ObjectType::mask, ObjectIconMap::kafei, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Speak to <b>Madame Aroma</b><br><br><b>Requirements:</b><br>- Soul of Madame Aroma" }
 };
 
 const size_t MILK_BARNumOfObjs = 4;
-ObjectInfo MILK_BARSceneObjects[MILK_BARNumOfObjs] =
+ObjectInfo MILK_BARSceneObjects [MILK_BARNumOfObjs] =
 {
 	{ CHATEAU_ROMANI, MILK_BAR, "Bottle", "MM Milk Bar Madame Aroma Bottle", ObjectType::npc, {646, 270, 0}, MILK_BAR, ObjectType::npc, ObjectIconMap::bottle, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Give the <b>Letter to Mama</b> to <b>Madame Aroma</b> on night 3<br><br><b>Requirements:</b><br>- Romani's Mask<br>- Clock (Night 3)<br>- Letter to Mama<br>- Soul of Madame Aroma" },
 	{ MILK_BAR_CHATEAU, MILK_BAR, "Purchase - Chateau", "MM Milk Bar Purchase Chateau", ObjectType::npc, {597, 270, 0}, MILK_BAR, ObjectType::merchant, ObjectIconMap::chateau, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Buy the <b>Chateau Romani</b> from <b>Mr. Barten</b><br><br><b>Requirements:</b><br>- Romani's Mask<br>- Clock (Night 1) / Clock (Night 2) / Clock (Night 3)<br>- Soul of Mr. Barten" },
@@ -3123,7 +3123,7 @@ ObjectInfo MILK_BARSceneObjects[MILK_BARNumOfObjs] =
 };
 
 const size_t MOONNumOfObjs = 49;
-ObjectInfo MOONSceneObjects[MOONNumOfObjs] =
+ObjectInfo MOONSceneObjects [MOONNumOfObjs] =
 {
 	{ 0x00005, MOON, "Butterfly 1", "MM Moon Butterfly 01", ObjectType::butterfly, {486, 291, 0}, MOON, ObjectType::butterfly, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::dungeon, "Pull out a deku stick near the butterfly<br><br><b>Requirements:</b><br>- Odolwa's Remains<br>- Goht's Remains<br>- Gyorg's Remains<br>- Twinmold's Remains<br>- Oath To Order<br>- Fairy Ocarina (MM) / Ocarina of Time (MM)<br>- A + C-Right + C-Down + C-Up buttons (MM)<br>- Deku Stick (MM)<br>- Soul of Butterflies (MM)" },
 	{ 0x00006, MOON, "Butterfly 2", "MM Moon Butterfly 02", ObjectType::butterfly, {495, 372, 0}, MOON, ObjectType::butterfly, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::dungeon, "Pull out a deku stick near the butterfly<br><br><b>Requirements:</b><br>- Odolwa's Remains<br>- Goht's Remains<br>- Gyorg's Remains<br>- Twinmold's Remains<br>- Oath To Order<br>- Fairy Ocarina (MM) / Ocarina of Time (MM)<br>- A + C-Right + C-Down + C-Up buttons (MM)<br>- Deku Stick (MM)<br>- Soul of Butterflies (MM)" },
@@ -3177,13 +3177,13 @@ ObjectInfo MOONSceneObjects[MOONNumOfObjs] =
 };
 
 const size_t MOON_DEKUNumOfObjs = 1;
-ObjectInfo MOON_DEKUSceneObjects[MOON_DEKUNumOfObjs] =
+ObjectInfo MOON_DEKUSceneObjects [MOON_DEKUNumOfObjs] =
 {
 	{ 0x01, MOON_DEKU, "Heart Piece", "MM Moon Trial Deku HP", ObjectType::collectible, {222, 166, 0}, MOON_DEKU, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::dungeon, "Reach the platform using the deku flowers<br><br><b>Requirements:</b><br>- Odolwa's Remains<br>- Goht's Remains<br>- Gyorg's Remains<br>- Twinmold's Remains<br>- Oath To Order<br>- Fairy Ocarina (MM) / Ocarina of Time (MM)<br>- A + C-Right + C-Down + C-Up buttons (MM)<br>- Deku Mask<br>- Soul of Moon Children" }
 };
 
 const size_t MOON_GORONNumOfObjs = 20;
-ObjectInfo MOON_GORONSceneObjects[MOON_GORONNumOfObjs] =
+ObjectInfo MOON_GORONSceneObjects [MOON_GORONNumOfObjs] =
 {
 	{ 0x01, MOON_GORON, "Heart Piece", "MM Moon Trial Goron HP", ObjectType::collectible, {217, 433, 0}, MOON_GORON, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::dungeon, "Reach the platform using the <b>Goron Mask</b><br><br><b>Requirements:</b><br>- Odolwa's Remains<br>- Goht's Remains<br>- Gyorg's Remains<br>- Twinmold's Remains<br>- Oath To Order<br>- Fairy Ocarina (MM) / Ocarina of Time (MM)<br>- A + C-Right + C-Down + C-Up buttons (MM)<br>- Goron Mask (MM)<br>- Soul of Moon Children" },
 	{ 0x0015, MOON_GORON, "Pot 1", "MM Moon Trial Goron Pot 01", ObjectType::pot, {347, 270, 0}, MOON_GORON, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::dungeon, "<b>Requirements:</b><br>- Odolwa's Remains<br>- Goht's Remains<br>- Gyorg's Remains<br>- Twinmold's Remains<br>- Oath To Order<br>- Fairy Ocarina (MM) / Ocarina of Time (MM)<br>- A + C-Right + C-Down + C-Up buttons (MM)<br>- Goron Mask (MM)<br>- Soul of Moon Children" },
@@ -3208,7 +3208,7 @@ ObjectInfo MOON_GORONSceneObjects[MOON_GORONNumOfObjs] =
 };
 
 const size_t MOON_LINKNumOfObjs = 11;
-ObjectInfo MOON_LINKSceneObjects[MOON_LINKNumOfObjs] =
+ObjectInfo MOON_LINKSceneObjects [MOON_LINKNumOfObjs] =
 {
 	{ 0x01, MOON_LINK, "Garo Master", "MM Moon Trial Link Garo Master Chest", ObjectType::chest, {471, 301, 0}, MOON_LINK, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::dungeon, "Defeat the <b>Garo Master</b> and reach the chest using either the <b>Hookshot</b>, bombchu on the ceilling and shooting at the eye switch or by playing the <b>Song of Storms</b> behind the previous <b>Gossip Stone</b><br><br><b>Requirements:</b><br>- Song of Storms (MM) / Bombchu (MM) + Bow (MM) / Hookshot (MM)<br>- Soul of Lizalfos / Dinolfos (MM)<br>- Soul of Garo<br>- Odolwa's Remains<br>- Goht's Remains<br>- Gyorg's Remains<br>- Twinmold's Remains<br>- Oath To Order<br>- Fairy Ocarina (MM) / Ocarina of Time (MM)<br>- A + C-Right + C-Down + C-Up buttons (MM)<br>- Goron Mask (MM)<br>- Soul of Moon Children" },
 	{ 0x01, MOON_LINK, "Heart Piece", "MM Moon Trial Link HP", ObjectType::collectible, {827, 295, 0}, MOON_LINK, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::dungeon, "After defeating all mini bosses reach the last room using either eye switch shooting of by playing <b>Song of Storms</b> behind the previous <b>Gossip Stone</b><br><br><b>Requirements:</b><br>- Song of Storms (MM) / Bombchu (MM) + Bow (MM)<br>- Soul of Lizalfos / Dinolfos (MM)<br>- Soul of Iron Knuckles (MM)<br>-  Soul of Garo<br>- Odolwa's Remains<br>- Goht's Remains<br>- Gyorg's Remains<br>- Twinmold's Remains<br>- Oath To Order<br>- Fairy Ocarina (MM) / Ocarina of Time (MM)<br>- A + C-Right + C-Down + C-Up buttons (MM)<br>- Goron Mask (MM)<br>- Soul of Moon Children" },
@@ -3224,13 +3224,13 @@ ObjectInfo MOON_LINKSceneObjects[MOON_LINKNumOfObjs] =
 };
 
 const size_t MOON_ZORANumOfObjs = 1;
-ObjectInfo MOON_ZORASceneObjects[MOON_ZORANumOfObjs] =
+ObjectInfo MOON_ZORASceneObjects [MOON_ZORANumOfObjs] =
 {
 	{ 0x01, MOON_ZORA, "Heart Piece", "MM Moon Trial Zora HP", ObjectType::collectible, {71, 366, 0}, MOON_ZORA, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::dungeon, "Go to the left, then right, then left<br><br><b>Requirements:</b><br>- Odolwa's Remains<br>- Goht's Remains<br>- Gyorg's Remains<br>- Twinmold's Remains<br>- Oath To Order<br>- Fairy Ocarina (MM) / Ocarina of Time (MM)<br>- A + C-Right + C-Down + C-Up buttons (MM)<br>- Goron Mask (MM)<br>- Soul of Moon Children" }
 };
 
 const size_t MOUNTAIN_VILLAGENumOfObjs = 182;
-ObjectInfo MOUNTAIN_VILLAGESceneObjects[MOUNTAIN_VILLAGENumOfObjs] =
+ObjectInfo MOUNTAIN_VILLAGESceneObjects [MOUNTAIN_VILLAGENumOfObjs] =
 {
 	{ 0x00011, MOUNTAIN_VILLAGE, "Big Snowball 1", "MM Mountain Village Big Snowball 1", ObjectType::none, {268, 455, 0}, MOUNTAIN_VILLAGE, ObjectType::none, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x0000e, MOUNTAIN_VILLAGE, "Big Snowball 2", "MM Mountain Village Big Snowball 2", ObjectType::none, {737, 417, 0}, MOUNTAIN_VILLAGE, ObjectType::none, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -3417,7 +3417,7 @@ ObjectInfo MOUNTAIN_VILLAGESceneObjects[MOUNTAIN_VILLAGENumOfObjs] =
 };
 
 const size_t MOUNTAIN_VILLAGE_SPRINGNumOfObjs = 60;
-ObjectInfo MOUNTAIN_VILLAGE_SPRINGSceneObjects[MOUNTAIN_VILLAGE_SPRINGNumOfObjs] =
+ObjectInfo MOUNTAIN_VILLAGE_SPRINGSceneObjects [MOUNTAIN_VILLAGE_SPRINGNumOfObjs] =
 {
 	{ 0x00020, MOUNTAIN_VILLAGE_SPRING, "Pack 1 - Butterfly 1", "MM Mountain Village Butterfly Pack 1 Butterfly 1", ObjectType::butterfly, {495, 329, 0}, MOUNTAIN_VILLAGE, ObjectType::butterfly, ObjectIconMap::render_type, ObjectContext::Spring, 0, GameLayout::mm, LocType::overworld, "After defeating Goht, pull out a deku stick near the butterfly<br><br><b>Requirements:</b><br>- Deku Stick (MM)<br>- Soul of Butterflies (MM)<br>- Soul of Goht" },
 	{ 0x10020, MOUNTAIN_VILLAGE_SPRING, "Pack 1 - Butterfly 2", "MM Mountain Village Butterfly Pack 1 Butterfly 2", ObjectType::butterfly, {508, 321, 0}, MOUNTAIN_VILLAGE, ObjectType::butterfly, ObjectIconMap::render_type, ObjectContext::Spring, 0, GameLayout::mm, LocType::overworld, "After defeating Goht, pull out a deku stick near the butterfly<br><br><b>Requirements:</b><br>- Deku Stick (MM)<br>- Soul of Butterflies (MM)<br>- Soul of Goht" },
@@ -3482,7 +3482,7 @@ ObjectInfo MOUNTAIN_VILLAGE_SPRINGSceneObjects[MOUNTAIN_VILLAGE_SPRINGNumOfObjs]
 };
 
 const size_t MOUNTAIN_VILLAGE_WINTERNumOfObjs = 25;
-ObjectInfo MOUNTAIN_VILLAGE_WINTERSceneObjects[MOUNTAIN_VILLAGE_WINTERNumOfObjs] =
+ObjectInfo MOUNTAIN_VILLAGE_WINTERSceneObjects [MOUNTAIN_VILLAGE_WINTERNumOfObjs] =
 {
 	{ 0x00011, MOUNTAIN_VILLAGE_WINTER, "Big Snowball 1", "MM Mountain Village Big Snowball 1", ObjectType::snowball, {268, 455, 0}, MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)" },
 	{ 0x0000e, MOUNTAIN_VILLAGE_WINTER, "Big Snowball 2", "MM Mountain Village Big Snowball 2", ObjectType::snowball, {292, 363, 0}, MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)" },
@@ -3512,13 +3512,13 @@ ObjectInfo MOUNTAIN_VILLAGE_WINTERSceneObjects[MOUNTAIN_VILLAGE_WINTERNumOfObjs]
 };
 
 const size_t MUSIC_BOX_HOUSENumOfObjs = 1;
-ObjectInfo MUSIC_BOX_HOUSESceneObjects[MUSIC_BOX_HOUSENumOfObjs] =
+ObjectInfo MUSIC_BOX_HOUSESceneObjects [MUSIC_BOX_HOUSENumOfObjs] =
 {
 	{ MASK_GIBDO, MUSIC_BOX_HOUSE, "Gibdo Mask", "MM Music Box House Gibdo Mask", ObjectType::npc, {477, 515, 0}, MUSIC_BOX_HOUSE, ObjectType::mask, ObjectIconMap::gibdo, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Play <b>Song of Healing</b> next to <b>Pamela's Father</b> to heal his wounds<br><br><b>Requirements:</b><br>- Song of Healing<br>- C-Left + C-Right + C-Down buttons (MM)<br>- Fairy Ocarina (MM) / Ocarina of Time (MM)<br>- Soul of Citizens (MM)" }
 };
 
 const size_t OBSERVATORYNumOfObjs = 9;
-ObjectInfo OBSERVATORYSceneObjects[OBSERVATORYNumOfObjs] =
+ObjectInfo OBSERVATORYSceneObjects [OBSERVATORYNumOfObjs] =
 {
 	{ MOON_TEAR, OBSERVATORY, "Moon Tear", "MM Astral Observatory Moon Tear", ObjectType::npc, {2199, 1058, 0}, TERMINA_FIELD, ObjectType::collectible, ObjectIconMap::moon, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Talk to the <b>Astronomer</b> and watch the moon through the telescope to see the <b>Moon Tear</b> falling down. Then go outside to collect it<br><br><b>Requirements:</b><br>- Soul of Astronomer (MM)" },
 	{ 0x00, OBSERVATORY, "Passage", "MM Astral Observatory Passage Chest", ObjectType::chest, {678, 525, 0}, OBSERVATORY, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 1, GameLayout::mm, LocType::overworld, "Explode the wall to reveal the chest<br><br><b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM)" },
@@ -3532,7 +3532,7 @@ ObjectInfo OBSERVATORYSceneObjects[OBSERVATORYNumOfObjs] =
 };
 
 const size_t TERMINA_FIELDNumOfObjs = 421;
-ObjectInfo TERMINA_FIELDSceneObjects[TERMINA_FIELDNumOfObjs] =
+ObjectInfo TERMINA_FIELDSceneObjects [TERMINA_FIELDNumOfObjs] =
 {
 	{ MOON_TEAR, OBSERVATORY, "Moon Tear", "MM Astral Observatory Moon Tear", ObjectType::npc, {2199, 1058, 0}, TERMINA_FIELD, ObjectType::collectible, ObjectIconMap::moon, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Talk to the <b>Astronomer</b> and watch the moon through the telescope to see the <b>Moon Tear</b> falling down. Then go outside to collect it<br><br><b>Requirements:</b><br>- Soul of Astronomer (MM)" },
 	{ 0x000ab, TERMINA_FIELD, "Butterfly 1", "MM Termina Field Butterfly 1", ObjectType::butterfly, {1152, 1447, 0}, TERMINA_FIELD, ObjectType::butterfly, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -3958,7 +3958,7 @@ ObjectInfo TERMINA_FIELDSceneObjects[TERMINA_FIELDNumOfObjs] =
 };
 
 const size_t PATH_MOUNTAIN_VILLAGENumOfObjs = 26;
-ObjectInfo PATH_MOUNTAIN_VILLAGESceneObjects[PATH_MOUNTAIN_VILLAGENumOfObjs] =
+ObjectInfo PATH_MOUNTAIN_VILLAGESceneObjects [PATH_MOUNTAIN_VILLAGENumOfObjs] =
 {
 	{ 0x0001a, PATH_MOUNTAIN_VILLAGE, "Lower - Big Snowball 1", "MM Path to Mountain Village Big Snowball Lower 1", ObjectType::snowball, {639, 175, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)" },
 	{ 0x0002a, PATH_MOUNTAIN_VILLAGE, "Lower - Big Snowball 2", "MM Path to Mountain Village Big Snowball Lower 2", ObjectType::snowball, {636, 107, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)" },
@@ -3968,20 +3968,20 @@ ObjectInfo PATH_MOUNTAIN_VILLAGESceneObjects[PATH_MOUNTAIN_VILLAGENumOfObjs] =
 	{ 0x00022, PATH_MOUNTAIN_VILLAGE, "Middle - Big Snowball 2", "MM Path to Mountain Village Big Snowball Middle 2", ObjectType::snowball, {361, 383, 2}, PATH_MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)" },
 	{ 0x00021, PATH_MOUNTAIN_VILLAGE, "Middle - Big Snowball 3", "MM Path to Mountain Village Big Snowball Middle 3", ObjectType::snowball, {351, 367, 1}, PATH_MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)" },
 	{ 0x00024, PATH_MOUNTAIN_VILLAGE, "Middle - Big Snowball 4", "MM Path to Mountain Village Big Snowball Middle 4", ObjectType::snowball, {353, 352, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)" },
-	{ 0x00025, PATH_MOUNTAIN_VILLAGE, "Lower - Small Snowball 1", "MM Path to Mountain Village Small Snowball Lower Winter 1", ObjectType::snowball, {594, 141, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, NULL },
-	{ 0x00026, PATH_MOUNTAIN_VILLAGE, "Lower - Small Snowball 2", "MM Path to Mountain Village Small Snowball Lower Winter 2", ObjectType::snowball, {472, 342, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, NULL },
-	{ 0x00027, PATH_MOUNTAIN_VILLAGE, "Lower - Small Snowball 3", "MM Path to Mountain Village Small Snowball Lower Winter 3", ObjectType::snowball, {505, 390, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, NULL },
+	{ 0x00025, PATH_MOUNTAIN_VILLAGE, "Lower - Small Snowball 1", "MM Path to Mountain Village Small Snowball Lower Winter 1", ObjectType::snowball, {594, 141, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType:: snowball, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, NULL },
+	{ 0x00026, PATH_MOUNTAIN_VILLAGE, "Lower - Small Snowball 2", "MM Path to Mountain Village Small Snowball Lower Winter 2", ObjectType::snowball, {472, 342, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType:: snowball, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, NULL },
+	{ 0x00027, PATH_MOUNTAIN_VILLAGE, "Lower - Small Snowball 3", "MM Path to Mountain Village Small Snowball Lower Winter 3", ObjectType::snowball, {505, 390, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType:: snowball, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x00028, PATH_MOUNTAIN_VILLAGE, "Upper - Small Snowball", "MM Path to Mountain Village Small Snowball Upper Winter", ObjectType::snowball, {185, 280, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x0002b, PATH_MOUNTAIN_VILLAGE, "Upper - Big Snowball 1", "MM Path to Mountain Village Big Snowball Upper 1", ObjectType::snowball, {201, 218, 2}, PATH_MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)" },
 	{ 0x00029, PATH_MOUNTAIN_VILLAGE, "Upper - Big Snowball 2", "MM Path to Mountain Village Big Snowball Upper 2", ObjectType::snowball, {184, 214, 1}, PATH_MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)" },
 	{ 0x0002c, PATH_MOUNTAIN_VILLAGE, "Upper - Big Snowball 3", "MM Path to Mountain Village Big Snowball Upper 3", ObjectType::snowball, {164, 212, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)" },
-	{ 0x0400c, PATH_MOUNTAIN_VILLAGE, "Spring - Lower 1", "MM Path to Mountain Village Small Snowball Lower Spring 1", ObjectType::snowball, {636, 107, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Spring, 0, GameLayout::mm, LocType::overworld, "After defeating <b>Goht</b> you will find the small snowball on the path<br><br><b>Requirements:</b><br>- Boss Key (Snowhead) / Goht's Remains<br>- Soul Goht" },
-	{ 0x04011, PATH_MOUNTAIN_VILLAGE, "Spring - Lower 2", "MM Path to Mountain Village Small Snowball Lower Spring 2", ObjectType::snowball, {627, 174, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Spring, 0, GameLayout::mm, LocType::overworld, "After defeating <b>Goht</b> you will find the small snowball on the path<br><br><b>Requirements:</b><br>- Boss Key (Snowhead) / Goht's Remains<br>- Soul Goht" },
-	{ 0x0400f, PATH_MOUNTAIN_VILLAGE, "Spring - Lower 3", "MM Path to Mountain Village Small Snowball Lower Spring 3", ObjectType::snowball, {511, 345, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Spring, 0, GameLayout::mm, LocType::overworld, "After defeating <b>Goht</b> you will find the small snowball on the path<br><br><b>Requirements:</b><br>- Boss Key (Snowhead) / Goht's Remains<br>- Soul Goht" },
-	{ 0x04010, PATH_MOUNTAIN_VILLAGE, "Spring - Lower 4", "MM Path to Mountain Village Small Snowball Lower Spring 4", ObjectType::snowball, {466, 423, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Spring, 0, GameLayout::mm, LocType::overworld, "After defeating <b>Goht</b> you will find the small snowball on the path<br><br><b>Requirements:</b><br>- Boss Key (Snowhead) / Goht's Remains<br>- Soul Goht" },
-	{ 0x0400d, PATH_MOUNTAIN_VILLAGE, "Spring - Upper 1", "MM Path to Mountain Village Small Snowball Upper Spring 1", ObjectType::snowball, {201, 218, 2}, PATH_MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Spring, 0, GameLayout::mm, LocType::overworld, "After defeating <b>Goht</b> you will find the small snowball on the path<br><br><b>Requirements:</b><br>- Boss Key (Snowhead) / Goht's Remains<br>- Soul Goht" },
-	{ 0x0400b, PATH_MOUNTAIN_VILLAGE, "Spring - Upper 2", "MM Path to Mountain Village Small Snowball Upper Spring 2", ObjectType::snowball, {184, 214, 1}, PATH_MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Spring, 0, GameLayout::mm, LocType::overworld, "After defeating <b>Goht</b> you will find the small snowball on the path<br><br><b>Requirements:</b><br>- Boss Key (Snowhead) / Goht's Remains<br>- Soul Goht" },
-	{ 0x0400e, PATH_MOUNTAIN_VILLAGE, "Spring - Upper 3", "MM Path to Mountain Village Small Snowball Upper Spring 3", ObjectType::snowball, {164, 212, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Spring, 0, GameLayout::mm, LocType::overworld, "After defeating <b>Goht</b> you will find the small snowball on the path<br><br><b>Requirements:</b><br>- Boss Key (Snowhead) / Goht's Remains<br>- Soul Goht" },
+	{ 0x0400c, PATH_MOUNTAIN_VILLAGE, "Spring - Lower 1", "MM Path to Mountain Village Small Snowball Lower Spring 1", ObjectType::snowball, {636, 107, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType:: snowball, ObjectIconMap::render_type, ObjectContext::Spring, 0, GameLayout::mm, LocType::overworld, "After defeating <b>Goht</b> you will find the small snowball on the path<br><br><b>Requirements:</b><br>- Boss Key (Snowhead) / Goht's Remains<br>- Soul Goht" },
+	{ 0x04011, PATH_MOUNTAIN_VILLAGE, "Spring - Lower 2", "MM Path to Mountain Village Small Snowball Lower Spring 2", ObjectType::snowball, {627, 174, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType:: snowball, ObjectIconMap::render_type, ObjectContext::Spring, 0, GameLayout::mm, LocType::overworld, "After defeating <b>Goht</b> you will find the small snowball on the path<br><br><b>Requirements:</b><br>- Boss Key (Snowhead) / Goht's Remains<br>- Soul Goht" },
+	{ 0x0400f, PATH_MOUNTAIN_VILLAGE, "Spring - Lower 3", "MM Path to Mountain Village Small Snowball Lower Spring 3", ObjectType::snowball, {511, 345, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType:: snowball, ObjectIconMap::render_type, ObjectContext::Spring, 0, GameLayout::mm, LocType::overworld, "After defeating <b>Goht</b> you will find the small snowball on the path<br><br><b>Requirements:</b><br>- Boss Key (Snowhead) / Goht's Remains<br>- Soul Goht" },
+	{ 0x04010, PATH_MOUNTAIN_VILLAGE, "Spring - Lower 4", "MM Path to Mountain Village Small Snowball Lower Spring 4", ObjectType::snowball, {466, 423, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType:: snowball, ObjectIconMap::render_type, ObjectContext::Spring, 0, GameLayout::mm, LocType::overworld, "After defeating <b>Goht</b> you will find the small snowball on the path<br><br><b>Requirements:</b><br>- Boss Key (Snowhead) / Goht's Remains<br>- Soul Goht" },
+	{ 0x0400d, PATH_MOUNTAIN_VILLAGE, "Spring - Upper 1", "MM Path to Mountain Village Small Snowball Upper Spring 1", ObjectType::snowball, {201, 218, 2}, PATH_MOUNTAIN_VILLAGE, ObjectType:: snowball, ObjectIconMap::render_type, ObjectContext::Spring, 0, GameLayout::mm, LocType::overworld, "After defeating <b>Goht</b> you will find the small snowball on the path<br><br><b>Requirements:</b><br>- Boss Key (Snowhead) / Goht's Remains<br>- Soul Goht" },
+	{ 0x0400b, PATH_MOUNTAIN_VILLAGE, "Spring - Upper 2", "MM Path to Mountain Village Small Snowball Upper Spring 2", ObjectType::snowball, {184, 214, 1}, PATH_MOUNTAIN_VILLAGE, ObjectType:: snowball, ObjectIconMap::render_type, ObjectContext::Spring, 0, GameLayout::mm, LocType::overworld, "After defeating <b>Goht</b> you will find the small snowball on the path<br><br><b>Requirements:</b><br>- Boss Key (Snowhead) / Goht's Remains<br>- Soul Goht" },
+	{ 0x0400e, PATH_MOUNTAIN_VILLAGE, "Spring - Upper 3", "MM Path to Mountain Village Small Snowball Upper Spring 3", ObjectType::snowball, {164, 212, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType:: snowball, ObjectIconMap::render_type, ObjectContext::Spring, 0, GameLayout::mm, LocType::overworld, "After defeating <b>Goht</b> you will find the small snowball on the path<br><br><b>Requirements:</b><br>- Boss Key (Snowhead) / Goht's Remains<br>- Soul Goht" },
 	{ 0x0000e, PATH_MOUNTAIN_VILLAGE, "Lower 1", "MM Path to Mountain Village Snow Tree Lower 1", ObjectType::tree, {604, 186, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType::tree, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x0000f, PATH_MOUNTAIN_VILLAGE, "Lower 2", "MM Path to Mountain Village Snow Tree Lower 2", ObjectType::tree, {429, 352, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType::tree, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x00010, PATH_MOUNTAIN_VILLAGE, "Upper 1", "MM Path to Mountain Village Snow Tree Upper 1", ObjectType::tree, {265, 380, 0}, PATH_MOUNTAIN_VILLAGE, ObjectType::tree, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -3989,7 +3989,7 @@ ObjectInfo PATH_MOUNTAIN_VILLAGESceneObjects[PATH_MOUNTAIN_VILLAGENumOfObjs] =
 };
 
 const size_t PATH_SNOWHEADNumOfObjs = 31;
-ObjectInfo PATH_SNOWHEADSceneObjects[PATH_SNOWHEADNumOfObjs] =
+ObjectInfo PATH_SNOWHEADSceneObjects [PATH_SNOWHEADNumOfObjs] =
 {
 	{ 0x08, PATH_SNOWHEAD, "Pillar", "MM Path to Snowhead HP", ObjectType::collectible, {422, 350, 0}, PATH_SNOWHEAD, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Jump through all invisble platforms to reach the pillar.<br>The <b>Lens of Truth</b> is not mandatory but highly recommanded" },
 	{ 0x00009, PATH_SNOWHEAD, "Back - Small Snowball 1", "MM Path to Snowhead Small Snowball Back 1", ObjectType::snowball, {708, 202, 1}, PATH_SNOWHEAD, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -4025,7 +4025,7 @@ ObjectInfo PATH_SNOWHEADSceneObjects[PATH_SNOWHEADNumOfObjs] =
 };
 
 const size_t PINNACLE_ROCKNumOfObjs = 16;
-ObjectInfo PINNACLE_ROCKSceneObjects[PINNACLE_ROCKNumOfObjs] =
+ObjectInfo PINNACLE_ROCKSceneObjects [PINNACLE_ROCKNumOfObjs] =
 {
 	{ 0x01, PINNACLE_ROCK, "Chest 1", "MM Pinnacle Rock Chest 1", ObjectType::chest, {258, 585, 0}, PINNACLE_ROCK, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "The chest can be found at the end of the <b>Python</b> hole.<br><br><b>Requirements:</b><br>- Zora Mask (MM) / Iron Boots (MM)" },
 	{ 0x02, PINNACLE_ROCK, "Chest 2", "MM Pinnacle Rock Chest 2", ObjectType::chest, {764, 322, 0}, PINNACLE_ROCK, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "The chest can be found at the end of the <b>Python</b> hole.<br><br><b>Requirements:</b><br>- Zora Mask (MM) / Iron Boots (MM)" },
@@ -4046,7 +4046,7 @@ ObjectInfo PINNACLE_ROCKSceneObjects[PINNACLE_ROCKNumOfObjs] =
 };
 
 const size_t PIRATE_FORTRESS_ENTRANCENumOfObjs = 4;
-ObjectInfo PIRATE_FORTRESS_ENTRANCESceneObjects[PIRATE_FORTRESS_ENTRANCENumOfObjs] =
+ObjectInfo PIRATE_FORTRESS_ENTRANCESceneObjects [PIRATE_FORTRESS_ENTRANCENumOfObjs] =
 {
 	{ 0x00007, PIRATE_FORTRESS_ENTRANCE, "Entrance", "MM Pirate Fortress Entrance Barrel", ObjectType::barrel, {472, 222, 0}, PIRATE_FORTRESS_ENTRANCE, ObjectType::barrel, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::dungeon, NULL },
 	{ 0x00, PIRATE_FORTRESS_ENTRANCE, "Entrance - Underwater 1", "MM Pirate Fortress Entrance Chest 1", ObjectType::chest, {514, 463, 0}, PIRATE_FORTRESS_ENTRANCE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::dungeon, "<b>Requirements:</b><br>- Zora Mask (MM) / Iron Boots (MM)" },
@@ -4055,7 +4055,7 @@ ObjectInfo PIRATE_FORTRESS_ENTRANCESceneObjects[PIRATE_FORTRESS_ENTRANCENumOfObj
 };
 
 const size_t PIRATE_FORTRESS_EXTERIORNumOfObjs = 15;
-ObjectInfo PIRATE_FORTRESS_EXTERIORSceneObjects[PIRATE_FORTRESS_EXTERIORNumOfObjs] =
+ObjectInfo PIRATE_FORTRESS_EXTERIORSceneObjects [PIRATE_FORTRESS_EXTERIORNumOfObjs] =
 {
 	{ 0x00008, PIRATE_FORTRESS_EXTERIOR, "Outside", "MM Pirate Fortress Interior Barrel Outside", ObjectType::barrel, {142, 40, 0}, PIRATE_FORTRESS_EXTERIOR, ObjectType::barrel, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::dungeon, NULL },
 	{ 0x0001b, PIRATE_FORTRESS_EXTERIOR, "Entrance", "MM Pirate Fortress Interior Crate Entrance", ObjectType::crate, {266, 404, 0}, PIRATE_FORTRESS_EXTERIOR, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::dungeon, NULL },
@@ -4075,7 +4075,7 @@ ObjectInfo PIRATE_FORTRESS_EXTERIORSceneObjects[PIRATE_FORTRESS_EXTERIORNumOfObj
 };
 
 const size_t PIRATE_FORTRESS_INTERIORNumOfObjs = 74;
-ObjectInfo PIRATE_FORTRESS_INTERIORSceneObjects[PIRATE_FORTRESS_INTERIORNumOfObjs] =
+ObjectInfo PIRATE_FORTRESS_INTERIORSceneObjects [PIRATE_FORTRESS_INTERIORNumOfObjs] =
 {
 	{ 0x00, PIRATE_FORTRESS_INTERIOR, "Aquarium", "MM Pirate Fortress Interior Aquarium", ObjectType::chest, {486, 699, 1}, PIRATE_FORTRESS_INTERIOR, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::dungeon, "<b>Requirements:</b><br>- Zora Mask (MM) / Iron Boots (MM)<br>- Soul of the Fighting Pirates" },
 	{ 0x00d01, PIRATE_FORTRESS_INTERIOR, "Aquarium", "MM Pirate Fortress Interior Barrel Aquarium", ObjectType::barrel, {564, 213, 0}, PIRATE_FORTRESS_INTERIOR, ObjectType::barrel, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::dungeon, NULL },
@@ -4154,13 +4154,13 @@ ObjectInfo PIRATE_FORTRESS_INTERIORSceneObjects[PIRATE_FORTRESS_INTERIORNumOfObj
 };
 
 const size_t POST_OFFICENumOfObjs = 1;
-ObjectInfo POST_OFFICESceneObjects[POST_OFFICENumOfObjs] =
+ObjectInfo POST_OFFICESceneObjects [POST_OFFICENumOfObjs] =
 {
 	{ POSTMAN_HEART_PIECE, POST_OFFICE, "Game Prize", "MM Post Office HP", ObjectType::npc, {225, 176, 0}, POST_OFFICE, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Counts to 10 seconds to win the game<br><br><b>Requirements:</b><br>- Soul of Citizens (MM)" }
 };
 
 const size_t POTION_SHOPNumOfObjs = 5;
-ObjectInfo POTION_SHOPSceneObjects[POTION_SHOPNumOfObjs] =
+ObjectInfo POTION_SHOPSceneObjects [POTION_SHOPNumOfObjs] =
 {
 	{ 0x0d, POTION_SHOP, "Item 1", "MM Swamp Potion Shop Item 1", ObjectType::shop, {424, 299, 0}, POTION_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "You first need to find a mushroom in the <b>Woods of Mistery</b> by wearing the <b>Mask of Scents</b>. Then give the mushroom to <b>Koume</b> and buy the item,<br><br><b>Requirements:</b><br>- Mask of Scents<br>- Soul of Koume & Kotake" },
 	{ 0x0e, POTION_SHOP, "Item 2", "MM Swamp Potion Shop Item 2", ObjectType::shop, {448, 299, 0}, POTION_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Buy the item from <b>Koume</b><br><br><b>Requirements:</b><br>- Soul of Koume & Kotake" },
@@ -4170,7 +4170,7 @@ ObjectInfo POTION_SHOPSceneObjects[POTION_SHOPNumOfObjs] =
 };
 
 const size_t RANCH_HOUSE_BARNNumOfObjs = 5;
-ObjectInfo RANCH_HOUSE_BARNSceneObjects[RANCH_HOUSE_BARNNumOfObjs] =
+ObjectInfo RANCH_HOUSE_BARNSceneObjects [RANCH_HOUSE_BARNNumOfObjs] =
 {
 	{ 0x00000, RANCH_HOUSE_BARN, "Item 1", "MM Romani Ranch Barn Wonder Item 1", ObjectType::wonder, {524, 525, 0}, RANCH_HOUSE_BARN, ObjectType::wonder, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Can be found by walking in the hay" },
 	{ 0x00001, RANCH_HOUSE_BARN, "Item 2", "MM Romani Ranch Barn Wonder Item 2", ObjectType::wonder, {587, 527, 0}, RANCH_HOUSE_BARN, ObjectType::wonder, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Can be found by walking in the hay" },
@@ -4180,7 +4180,7 @@ ObjectInfo RANCH_HOUSE_BARNSceneObjects[RANCH_HOUSE_BARNNumOfObjs] =
 };
 
 const size_t ROAD_IKANANumOfObjs = 27;
-ObjectInfo ROAD_IKANASceneObjects[ROAD_IKANANumOfObjs] =
+ObjectInfo ROAD_IKANASceneObjects [ROAD_IKANANumOfObjs] =
 {
 	{ 0x00, ROAD_IKANA, "Pillar", "MM Road to Ikana Chest", ObjectType::chest, {696, 261, 0}, ROAD_IKANA, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Grab the chest with your hookshot<br><br><b>Requirements:</b><br>- Hookshot (MM)" },
 	{ 0x004c, ROAD_IKANA, "Pot", "MM Road to Ikana Pot", ObjectType::pot, {305, 239, 0}, ROAD_IKANA, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Hookshot (MM) / Bow (MM)" },
@@ -4212,7 +4212,7 @@ ObjectInfo ROAD_IKANASceneObjects[ROAD_IKANANumOfObjs] =
 };
 
 const size_t ROMANI_RANCHNumOfObjs = 116;
-ObjectInfo ROMANI_RANCHSceneObjects[ROMANI_RANCHNumOfObjs] =
+ObjectInfo ROMANI_RANCHSceneObjects [ROMANI_RANCHNumOfObjs] =
 {
 	{ ROMANI_BOTTLE, ROMANI_RANCH, "Aliens", "MM Romani Ranch Aliens", ObjectType::npc, {350, 162, 0}, ROMANI_RANCH, ObjectType::npc, ObjectIconMap::bottle, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Protect the barn from the <b>Aliens</b><br><br><b>Requirements:</b><br>- Powder Keg<br>- Goron Mask (MM)<br>- Bow (MM)<br>- Clock (Night 1)<br>- Soul of Romani/Cremia" },
 	{ 0x10, ROMANI_RANCH, "Left", "MM Romani Ranch Barn Cow Left", ObjectType::cow, {383, 393, 0}, RANCH_HOUSE_BARN, ObjectType::cow, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Play <b>Epona's Song</b> next to the cow<br><br><b>Requirements:</b><br>- Powder Keg<br>- Goron Mask (MM)<br>- Clock (Day 1)<br>- Fairy Ocarina / Ocarina of Time<br>- Epona's Song (MM)<br>- C-Up + C-Left + C-Right buttons (MM)<br>- Soul of Cows (MM)" },
@@ -4333,7 +4333,7 @@ ObjectInfo ROMANI_RANCHSceneObjects[ROMANI_RANCHNumOfObjs] =
 };
 
 const size_t SAKON_HIDEOUTNumOfObjs = 5;
-ObjectInfo SAKON_HIDEOUTSceneObjects[SAKON_HIDEOUTNumOfObjs] =
+ObjectInfo SAKON_HIDEOUTSceneObjects [SAKON_HIDEOUTNumOfObjs] =
 {
 	{ 0x0129, SAKON_HIDEOUT, "First Room 1", "MM Sakon Hideout Pot First Room 1", ObjectType::pot, {529, 257, 0}, SAKON_HIDEOUT, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Letter To Kafei<br>- Clock (Day 2)<br>- Clock (Night 3)<br>- Soul of Kafei<br>- Soul of Citizens (MM)" },
 	{ 0x012a, SAKON_HIDEOUT, "First Room 2", "MM Sakon Hideout Pot First Room 2", ObjectType::pot, {472, 257, 0}, SAKON_HIDEOUT, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Letter To Kafei<br>- Clock (Day 2)<br>- Clock (Night 3)<br>- Soul of Kafei<br>- Soul of Citizens (MM)" },
@@ -4343,7 +4343,7 @@ ObjectInfo SAKON_HIDEOUTSceneObjects[SAKON_HIDEOUTNumOfObjs] =
 };
 
 const size_t SECRET_SHRINENumOfObjs = 63;
-ObjectInfo SECRET_SHRINESceneObjects[SECRET_SHRINENumOfObjs] =
+ObjectInfo SECRET_SHRINESceneObjects [SECRET_SHRINENumOfObjs] =
 {
 	{ 0x00, SECRET_SHRINE, "Dinalfos", "MM Secret Shrine Dinalfos Chest", ObjectType::chest, {128, 522, 0}, SECRET_SHRINE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::dungeon, "Defeat the <b>Dinalfos</b><br><br><b>Requirements:</b><br>- Soul of Lizalfos / Dinalfos (MM)" },
 	{ 0x03, SECRET_SHRINE, "Garo Master", "MM Secret Shrine Garo Master Chest", ObjectType::chest, {811, 533, 0}, SECRET_SHRINE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::dungeon, "Defeat the <b>Garo Master</b><br><br><b>Requirements:</b><br>- Soul of Garo" },
@@ -4411,21 +4411,21 @@ ObjectInfo SECRET_SHRINESceneObjects[SECRET_SHRINENumOfObjs] =
 };
 
 const size_t MM_SHOOTING_GALLERYNumOfObjs = 2;
-ObjectInfo MM_SHOOTING_GALLERYSceneObjects[MM_SHOOTING_GALLERYNumOfObjs] =
+ObjectInfo MM_SHOOTING_GALLERYSceneObjects [MM_SHOOTING_GALLERYNumOfObjs] =
 {
 	{ SHOOTING_GAME_TOWN_1, MM_SHOOTING_GALLERY, "Reward 1", "MM Town Archery Reward 1", ObjectType::npc, {620, 364, 0}, MM_SHOOTING_GALLERY, ObjectType::npc, ObjectIconMap::big_quiver, ObjectContext::All, 0, GameLayout::mm, LocType::minigame, "Win the game<br><br><b>Requirements:</b><br>- Bow (MM)<br>- Soul of Town Archery Owner" },
 	{ SHOOTING_GAME_TOWN_2, MM_SHOOTING_GALLERY, "Reward 2", "MM Town Archery Reward 2", ObjectType::npc, {728, 297, 0}, MM_SHOOTING_GALLERY, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::minigame, "Win the game with a perfect score of 50<br><br><b>Requirements:</b><br>- Bow (MM)<br>- Soul of Town Archery Owner" }
 };
 
 const size_t SHOOTING_GALLERY_SWAMPNumOfObjs = 2;
-ObjectInfo SHOOTING_GALLERY_SWAMPSceneObjects[SHOOTING_GALLERY_SWAMPNumOfObjs] =
+ObjectInfo SHOOTING_GALLERY_SWAMPSceneObjects [SHOOTING_GALLERY_SWAMPNumOfObjs] =
 {
 	{ SHOOTING_GAME_SWAMP_1, SHOOTING_GALLERY_SWAMP, "Reward 1", "MM Swamp Archery Reward 1", ObjectType::npc, {465, 178, 0}, SHOOTING_GALLERY_SWAMP, ObjectType::npc, ObjectIconMap::biggest_quiver, ObjectContext::All, 0, GameLayout::mm, LocType::minigame, "Win the game<br><br><b>Requirements:</b><br>- Bow (MM)<br>- Soul of Swamp Archery Owner" },
 	{ SHOOTING_GAME_SWAMP_2, SHOOTING_GALLERY_SWAMP, "Reward 2", "MM Swamp Archery Reward 2", ObjectType::npc, {516, 178, 0}, SHOOTING_GALLERY_SWAMP, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::minigame, "Win the game with a score of 2180 points or more<br><br><b>Requirements:</b><br>- Bow (MM)<br>- Soul of Swamp Archery Owner" }
 };
 
 const size_t SOUTHERN_SWAMPNumOfObjs = 106;
-ObjectInfo SOUTHERN_SWAMPSceneObjects[SOUTHERN_SWAMPNumOfObjs] =
+ObjectInfo SOUTHERN_SWAMPSceneObjects [SOUTHERN_SWAMPNumOfObjs] =
 {
 	{ 0x0000b, SOUTHERN_SWAMP, "Front 1", "MM Southern Swamp Grass Front 01", ObjectType::grass, {469, 732, 0}, SOUTHERN_SWAMP, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x1000b, SOUTHERN_SWAMP, "Front 2", "MM Southern Swamp Grass Front 02", ObjectType::grass, {492, 718, 0}, SOUTHERN_SWAMP, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -4536,7 +4536,7 @@ ObjectInfo SOUTHERN_SWAMPSceneObjects[SOUTHERN_SWAMPNumOfObjs] =
 };
 
 const size_t MM_SPIDER_HOUSE_OCEANNumOfObjs = 59;
-ObjectInfo MM_SPIDER_HOUSE_OCEANSceneObjects[MM_SPIDER_HOUSE_OCEANNumOfObjs] =
+ObjectInfo MM_SPIDER_HOUSE_OCEANSceneObjects [MM_SPIDER_HOUSE_OCEANNumOfObjs] =
 {
 	{ 0x1d, MM_SPIDER_HOUSE_OCEAN, "2nd Room - Behind Skull 1", "MM Ocean Skulltula 2nd Room Behind Skull 1", ObjectType::chest, {682, 216, 0}, MM_SPIDER_HOUSE_OCEAN, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 1, GameLayout::mm, LocType::dungeon, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM)<br>- Hookshot (MM)<br>- Soul of Gold Skulltulas (MM)" },
 	{ 0x1e, MM_SPIDER_HOUSE_OCEAN, "2nd Room - Behind Skull 2", "MM Ocean Skulltula 2nd Room Behind Skull 2", ObjectType::chest, {498, 406, 0}, MM_SPIDER_HOUSE_OCEAN, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 1, GameLayout::mm, LocType::dungeon, "<b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM)<br>- Hookshot (MM)<br>- Soul of Gold Skulltulas (MM)" },
@@ -4600,7 +4600,7 @@ ObjectInfo MM_SPIDER_HOUSE_OCEANSceneObjects[MM_SPIDER_HOUSE_OCEANNumOfObjs] =
 };
 
 const size_t MM_SPIDER_HOUSE_SWAMPNumOfObjs = 94;
-ObjectInfo MM_SPIDER_HOUSE_SWAMPSceneObjects[MM_SPIDER_HOUSE_SWAMPNumOfObjs] =
+ObjectInfo MM_SPIDER_HOUSE_SWAMPSceneObjects [MM_SPIDER_HOUSE_SWAMPNumOfObjs] =
 {
 	{ 0x12, MM_SPIDER_HOUSE_SWAMP, "Gold Room - Hive", "MM Swamp Skulltula Gold Room Hive", ObjectType::chest, {471, 95, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 2, GameLayout::mm, LocType::dungeon, NULL },
 	{ 0x01, MM_SPIDER_HOUSE_SWAMP, "Gold Room - Near Ceiling", "MM Swamp Skulltula Gold Room Near Ceiling", ObjectType::chest, {472, 177, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 2, GameLayout::mm, LocType::dungeon, NULL },
@@ -4699,7 +4699,7 @@ ObjectInfo MM_SPIDER_HOUSE_SWAMPSceneObjects[MM_SPIDER_HOUSE_SWAMPNumOfObjs] =
 };
 
 const size_t STOCK_POT_INNNumOfObjs = 11;
-ObjectInfo STOCK_POT_INNSceneObjects[STOCK_POT_INNNumOfObjs] =
+ObjectInfo STOCK_POT_INNSceneObjects [STOCK_POT_INNNumOfObjs] =
 {
 	{ TOILET_HEART_PIECE, STOCK_POT_INN, "Toilet Paper", "MM Stock Pot Inn ??? HP", ObjectType::npc, {162, 288, 0}, STOCK_POT_INN, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 1, GameLayout::mm, LocType::overworld, "Give one of your paper item to the <b>Toilet Hand</b> in the toilet room during a night after 12 AM<br><br><b>Requirements:</b><br>- Land Tittle Deed / Swamp Tittle Deed / Ocean Title Deed / Letter to Kafei / Letter to Mama<br>- Clock (Night 1) / Clock (Night 2)<br>- Soul of Toilet Hand" },
 	{ MASK_COUPLE, STOCK_POT_INN, "Couple's Mask", "MM Stock Pot Inn Couple's Mask", ObjectType::npc, {219, 315, 0}, STOCK_POT_INN, ObjectType::mask, ObjectIconMap::couple, ObjectContext::All, 2, GameLayout::mm, LocType::overworld, "You first need to give the <b>Pendant of Memories</b> to <b>Anju</b> in order for her to be here on night 3. Then you need to help kafei to get the <b>Sun's Mask</b>. Once that is done, head back to the <b>Stock Pot Inn</b> and speak to <b>Anju & Kafei</b> in the staff room<br><br><b>Requirements:</b><br>- Pendant of Memories<br>- Letter To Kafei<br>- Clock (Day 1)<br>- Clock (Night 1)<br>- Clock (Day 2)<br>- Clock (Night 3)<br>- Soul of Kafei<br>- Soul of Anju<br>- Soul of Citizens (MM)<br>- Soul of Deku Babas (MM)<br>- Soul of Wolfos (MM)" },
@@ -4715,7 +4715,7 @@ ObjectInfo STOCK_POT_INNSceneObjects[STOCK_POT_INNNumOfObjs] =
 };
 
 const size_t STONE_TOWERNumOfObjs = 40;
-ObjectInfo STONE_TOWERSceneObjects[STONE_TOWERNumOfObjs] =
+ObjectInfo STONE_TOWERSceneObjects [STONE_TOWERNumOfObjs] =
 {
 	{ OWL_STONE_TOWER, STONE_TOWER, "Owl Statue", "MM Stone Tower Owl Statue", ObjectType::npc, {440, 84, 0}, STONE_TOWER, ObjectType::owl, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Hit the statue with a sword<br><br><b>Requirements:</b><br>- Sword (MM)" },
 	{ 0x003c, STONE_TOWER, "Climb 1", "MM Stone Tower Pot Climb 1", ObjectType::pot, {577, 504, 0}, STONE_TOWER, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -4760,7 +4760,7 @@ ObjectInfo STONE_TOWERSceneObjects[STONE_TOWERNumOfObjs] =
 };
 
 const size_t STONE_TOWER_INVERTEDNumOfObjs = 12;
-ObjectInfo STONE_TOWER_INVERTEDSceneObjects[STONE_TOWER_INVERTEDNumOfObjs] =
+ObjectInfo STONE_TOWER_INVERTEDSceneObjects [STONE_TOWER_INVERTEDNumOfObjs] =
 {
 	{ 0x1d, STONE_TOWER_INVERTED, "Chest 1", "MM Stone Tower Inverted Chest 1", ObjectType::chest, {275, 366, 0}, STONE_TOWER_INVERTED, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x1e, STONE_TOWER_INVERTED, "Chest 2", "MM Stone Tower Inverted Chest 2", ObjectType::chest, {294, 394, 0}, STONE_TOWER_INVERTED, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -4777,7 +4777,7 @@ ObjectInfo STONE_TOWER_INVERTEDSceneObjects[STONE_TOWER_INVERTEDNumOfObjs] =
 };
 
 const size_t SWORDSMAN_SCHOOLNumOfObjs = 6;
-ObjectInfo SWORDSMAN_SCHOOLSceneObjects[SWORDSMAN_SCHOOLNumOfObjs] =
+ObjectInfo SWORDSMAN_SCHOOLSceneObjects [SWORDSMAN_SCHOOLNumOfObjs] =
 {
 	{ SWORDSMAN_HEART_PIECE, SWORDSMAN_SCHOOL, "Game Prize", "MM Swordsman School HP", ObjectType::npc, {496, 359, 0}, SWORDSMAN_SCHOOL, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "Win the game with a score of 30<br><br><b>Requirements:</b><br>- Soul of Swordsman" },
 	{ 0x0006, SWORDSMAN_SCHOOL, "Pot 1", "MM Swordsman School Pot 1", ObjectType::pot, {752, 430, 0}, SWORDSMAN_SCHOOL, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "If you have the <b>Soul of Swordsman</b> you will need to wait for night 3 in order to cut the rear wall. If not you can do it at any time" },
@@ -4788,7 +4788,7 @@ ObjectInfo SWORDSMAN_SCHOOLSceneObjects[SWORDSMAN_SCHOOLNumOfObjs] =
 };
 
 const size_t TEMPLE_STONE_TOWERNumOfObjs = 160;
-ObjectInfo TEMPLE_STONE_TOWERSceneObjects[TEMPLE_STONE_TOWERNumOfObjs] =
+ObjectInfo TEMPLE_STONE_TOWERSceneObjects [TEMPLE_STONE_TOWERNumOfObjs] =
 {
 	{ 0x14, TEMPLE_STONE_TOWER, "Hiploop Bridge", "MM Stone Tower Temple Before Water Bridge Chest", ObjectType::chest, {292, 511, 0}, TEMPLE_STONE_TOWER, ObjectType::sf, ObjectIconMap::render_type, ObjectContext::All, 6, GameLayout::mm, LocType::dungeon, "In the inverted version, hit the crystal to make the chest appear. Then open it in the normal version." },
 	{ 0x01, TEMPLE_STONE_TOWER, "Center - Across Water", "MM Stone Tower Temple Center Across Water Chest", ObjectType::chest, {202, 300, 0}, TEMPLE_STONE_TOWER, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 1, GameLayout::mm, LocType::dungeon, NULL },
@@ -4830,7 +4830,7 @@ ObjectInfo TEMPLE_STONE_TOWERSceneObjects[TEMPLE_STONE_TOWERNumOfObjs] =
 	{ 0x1b, TEMPLE_STONE_TOWER, "Light Arrow", "MM Stone Tower Temple Light Arrow", ObjectType::chest, {476, 353, 0}, TEMPLE_STONE_TOWER, ObjectType::chest, ObjectIconMap::light_arrow, ObjectContext::All, 8, GameLayout::mm, LocType::dungeon, "After defeating <b>Wizzrobe</b>, use the <b>Hookshot</b> on the chest that appears.<br><br><b>Requirements:</b><br>- Soul of Wizzrobe<br>- Hookshot (MM)" },
 	{ 0x1d, TEMPLE_STONE_TOWER, "Chest", "MM Stone Tower Temple Map", ObjectType::chest, {484, 564, 0}, TEMPLE_STONE_TOWER, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 4, GameLayout::mm, LocType::dungeon, "Shoot the Sun Block to reveal the chest.<br><br><b>Requirements:</b><br>- Bow (MM)<br>- Light Arrows (MM)<br>- Magic Upgrade (MM)" },
 	{ 0x0f, TEMPLE_STONE_TOWER, "Mirrors Room - Center", "MM Stone Tower Temple Mirrors Room Center Chest", ObjectType::chest, {441, 390, 0}, TEMPLE_STONE_TOWER, ObjectType::sf, ObjectIconMap::render_type, ObjectContext::All, 5, GameLayout::mm, LocType::dungeon, "When facing away from the door, turn right and light on the far left one.<br><br><b>Requirements:</b><br>- Mirror Shield (MM) + Goron Mask (MM) / Bow (MM) + Light Arrows (MM) + Magic Upgrade (MM)" },
-	{ 0x0b, TEMPLE_STONE_TOWER, "Mirrors Room - Right", "MM Stone Tower Temple Mirrors Room Right Chest", ObjectType::chest, {486, 103, 0}, TEMPLE_STONE_TOWER, ObjectType::sf, ObjectIconMap::render_type, ObjectContext::All, 5, GameLayout::mm, LocType::dungeon, "When standing in the light and facing the center of the room, reflect light onto the mirror on the right side of the central pillar. Once it s charged up, run over and reflect light to make the Sun Block on your right disappear.<br><br><b>Requirements:</b><br>- Mirror Shield (MM) + Goron Mask (MM) / Bow (MM) + Light Arrows (MM) + Magic Upgrade (MM)" },
+	{ 0x0b, TEMPLE_STONE_TOWER, "Mirrors Room - Right", "MM Stone Tower Temple Mirrors Room Right Chest", ObjectType::chest, {486, 103, 0}, TEMPLE_STONE_TOWER, ObjectType::sf, ObjectIconMap::render_type, ObjectContext::All, 5, GameLayout::mm, LocType::dungeon, "When standing in the light and facing the center of the room, reflect light onto the mirror on the right side of the central pillar. Once it’s charged up, run over and reflect light to make the Sun Block on your right disappear.<br><br><b>Requirements:</b><br>- Mirror Shield (MM) + Goron Mask (MM) / Bow (MM) + Light Arrows (MM) + Magic Upgrade (MM)" },
 	{ 0x080e, TEMPLE_STONE_TOWER, "Hipoloop Bridge 1", "MM Stone Tower Temple Pot Before Water Bridge 1", ObjectType::pot, {253, 497, 3}, TEMPLE_STONE_TOWER, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 6, GameLayout::mm, LocType::dungeon, NULL },
 	{ 0x080f, TEMPLE_STONE_TOWER, "Hipoloop Bridge 2", "MM Stone Tower Temple Pot Before Water Bridge 2", ObjectType::pot, {236, 497, 2}, TEMPLE_STONE_TOWER, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 6, GameLayout::mm, LocType::dungeon, NULL },
 	{ 0x0810, TEMPLE_STONE_TOWER, "Hipoloop Bridge 3", "MM Stone Tower Temple Pot Before Water Bridge 3", ObjectType::pot, {244, 525, 3}, TEMPLE_STONE_TOWER, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 6, GameLayout::mm, LocType::dungeon, NULL },
@@ -4953,7 +4953,7 @@ ObjectInfo TEMPLE_STONE_TOWERSceneObjects[TEMPLE_STONE_TOWERNumOfObjs] =
 };
 
 const size_t TOURIST_INFORMATIONNumOfObjs = 3;
-ObjectInfo TOURIST_INFORMATIONSceneObjects[TOURIST_INFORMATIONNumOfObjs] =
+ObjectInfo TOURIST_INFORMATIONSceneObjects [TOURIST_INFORMATIONNumOfObjs] =
 {
 	{ KOUME_HEART_PIECE, TOURIST_INFORMATION, "Archery", "MM Tourist Information Boat Archery", ObjectType::npc, {617, 205, 0}, TOURIST_INFORMATION, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ KOUME_PICTOGRAPH_BOX, TOURIST_INFORMATION, "Pictobox", "MM Tourist Information Pictobox", ObjectType::npc, {299, 334, 0}, TOURIST_INFORMATION, ObjectType::npc, ObjectIconMap::picto, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -4961,7 +4961,7 @@ ObjectInfo TOURIST_INFORMATIONSceneObjects[TOURIST_INFORMATIONNumOfObjs] =
 };
 
 const size_t TRADING_POSTNumOfObjs = 13;
-ObjectInfo TRADING_POSTSceneObjects[TRADING_POSTNumOfObjs] =
+ObjectInfo TRADING_POSTSceneObjects [TRADING_POSTNumOfObjs] =
 {
 	{ 0x05, TRADING_POST, "Item 1", "MM Trading Post Item 1", ObjectType::shop, {384, 261, 0}, TRADING_POST, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x06, TRADING_POST, "Item 2", "MM Trading Post Item 2", ObjectType::shop, {422, 261, 0}, TRADING_POST, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -4979,13 +4979,13 @@ ObjectInfo TRADING_POSTSceneObjects[TRADING_POSTNumOfObjs] =
 };
 
 const size_t MM_TREASURE_SHOPNumOfObjs = 1;
-ObjectInfo MM_TREASURE_SHOPSceneObjects[MM_TREASURE_SHOPNumOfObjs] =
+ObjectInfo MM_TREASURE_SHOPSceneObjects [MM_TREASURE_SHOPNumOfObjs] =
 {
 	{ CHEST_GAME, MM_TREASURE_SHOP, "Game Prize", "MM Chest Game HP", ObjectType::npc, {259, 447, 0}, MM_TREASURE_SHOP, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::minigame, NULL }
 };
 
 const size_t TWIN_ISLANDS_SPRINGNumOfObjs = 22;
-ObjectInfo TWIN_ISLANDS_SPRINGSceneObjects[TWIN_ISLANDS_SPRINGNumOfObjs] =
+ObjectInfo TWIN_ISLANDS_SPRINGSceneObjects [TWIN_ISLANDS_SPRINGNumOfObjs] =
 {
 	{ 0x0000b, TWIN_ISLANDS_SPRING, "Grass 1", "MM Twin Islands Grass 01", ObjectType::grass, {193, 470, 0}, TWIN_ISLANDS, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::Spring, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x1000b, TWIN_ISLANDS_SPRING, "Grass 2", "MM Twin Islands Grass 02", ObjectType::grass, {173, 497, 0}, TWIN_ISLANDS, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::Spring, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -5012,7 +5012,7 @@ ObjectInfo TWIN_ISLANDS_SPRINGSceneObjects[TWIN_ISLANDS_SPRINGNumOfObjs] =
 };
 
 const size_t TWIN_ISLANDS_WINTERNumOfObjs = 25;
-ObjectInfo TWIN_ISLANDS_WINTERSceneObjects[TWIN_ISLANDS_WINTERNumOfObjs] =
+ObjectInfo TWIN_ISLANDS_WINTERSceneObjects [TWIN_ISLANDS_WINTERNumOfObjs] =
 {
 	{ GORON_ELDER, TWIN_ISLANDS_WINTER, "Goron's Lulluby - Intro", "MM Goron Elder", ObjectType::npc, {738, 268, 0}, TWIN_ISLANDS, ObjectType::song, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x0003b, TWIN_ISLANDS_WINTER, "Big Snowball 1", "MM Twin Islands Big Snowball 01", ObjectType::snowball, {412, 438, 0}, TWIN_ISLANDS, ObjectType::snowball, ObjectIconMap::render_type, ObjectContext::Winter, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -5042,14 +5042,14 @@ ObjectInfo TWIN_ISLANDS_WINTERSceneObjects[TWIN_ISLANDS_WINTERNumOfObjs] =
 };
 
 const size_t WATERFALL_RAPIDSNumOfObjs = 2;
-ObjectInfo WATERFALL_RAPIDSSceneObjects[WATERFALL_RAPIDSNumOfObjs] =
+ObjectInfo WATERFALL_RAPIDSSceneObjects [WATERFALL_RAPIDSNumOfObjs] =
 {
 	{ BEAVER_1, WATERFALL_RAPIDS, "Race 1", "MM Waterfall Rapids Beaver Race 1", ObjectType::npc, {650, 340, 0}, WATERFALL_RAPIDS, ObjectType::npc, ObjectIconMap::bottle, ObjectContext::All, 0, GameLayout::mm, LocType::minigame, NULL },
 	{ BEAVER_2, WATERFALL_RAPIDS, "Race 2", "MM Waterfall Rapids Beaver Race 2", ObjectType::npc, {682, 338, 0}, WATERFALL_RAPIDS, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::minigame, NULL }
 };
 
 const size_t WOODFALLNumOfObjs = 15;
-ObjectInfo WOODFALLSceneObjects[WOODFALLNumOfObjs] =
+ObjectInfo WOODFALLSceneObjects [WOODFALLNumOfObjs] =
 {
 	{ 0x00, WOODFALL, "Entrance", "MM Woodfall Entrance Chest", ObjectType::chest, {377, 484, 0}, WOODFALL, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x00011, WOODFALL, "Grass 1", "MM Woodfall Grass 1", ObjectType::grass, {502, 504, 0}, WOODFALL, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -5069,7 +5069,7 @@ ObjectInfo WOODFALLSceneObjects[WOODFALLNumOfObjs] =
 };
 
 const size_t WOODS_MYSTERYNumOfObjs = 24;
-ObjectInfo WOODS_MYSTERYSceneObjects[WOODS_MYSTERYNumOfObjs] =
+ObjectInfo WOODS_MYSTERYSceneObjects [WOODS_MYSTERYNumOfObjs] =
 {
 	{ KOTAKE_RED_POTION, WOODS_MYSTERY, "Red Potion Bottle", "MM Swamp Potion Shop Kotake", ObjectType::npc, {472, 349, 0}, POTION_SHOP, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x00406, WOODS_MYSTERY, "Center 1", "MM Woods of Mystery Grass Center 1", ObjectType::grass, {455, 347, 0}, WOODS_MYSTERY, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, "<b>Requirements:</b><br>- Clock (Day 1) / Clock (Night 1) / Clock (Day 2) / Clock (Night 2) / Clock (Day 3) / Clock (Night 3)" },
@@ -5098,13 +5098,13 @@ ObjectInfo WOODS_MYSTERYSceneObjects[WOODS_MYSTERYNumOfObjs] =
 };
 
 const size_t ZORA_HALLNumOfObjs = 1;
-ObjectInfo ZORA_HALLSceneObjects[ZORA_HALLNumOfObjs] =
+ObjectInfo ZORA_HALLSceneObjects [ZORA_HALLNumOfObjs] =
 {
 	{ ZORA_HALL_LIGHTS, ZORA_HALL, "Scene Lights", "MM Zora Hall Scene Lights", ObjectType::npc, {510, 234, 0}, ZORA_HALL, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL }
 };
 
 const size_t ZORA_HALL_ROOMSNumOfObjs = 8;
-ObjectInfo ZORA_HALL_ROOMSSceneObjects[ZORA_HALL_ROOMSNumOfObjs] =
+ObjectInfo ZORA_HALL_ROOMSSceneObjects [ZORA_HALL_ROOMSNumOfObjs] =
 {
 	{ ZORA_EVAN, ZORA_HALL_ROOMS, "Evan", "MM Zora Hall Evan HP", ObjectType::npc, {385, 421, 0}, ZORA_EVAN_ROOM, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ SCRUB_OCEAN, ZORA_HALL_ROOMS, "Title Deed", "MM Zora Hall Scrub Deed", ObjectType::npc, {481, 296, 0}, ZORA_HALL_ROOMS, ObjectType::scrub, ObjectIconMap::ocean, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
@@ -5117,193 +5117,17 @@ ObjectInfo ZORA_HALL_ROOMSSceneObjects[ZORA_HALL_ROOMSNumOfObjs] =
 };
 
 const size_t ZORA_EVAN_ROOMNumOfObjs = 1;
-ObjectInfo ZORA_EVAN_ROOMSceneObjects[ZORA_EVAN_ROOMNumOfObjs] =
+ObjectInfo ZORA_EVAN_ROOMSceneObjects [ZORA_EVAN_ROOMNumOfObjs] =
 {
 	{ ZORA_EVAN, ZORA_HALL_ROOMS, "Evan", "MM Zora Hall Evan HP", ObjectType::npc, {385, 421, 0}, ZORA_EVAN_ROOM, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL }
 };
 
 const size_t MM_ZORA_SHOPNumOfObjs = 3;
-ObjectInfo MM_ZORA_SHOPSceneObjects[MM_ZORA_SHOPNumOfObjs] =
+ObjectInfo MM_ZORA_SHOPSceneObjects [MM_ZORA_SHOPNumOfObjs] =
 {
 	{ 0x13, ZORA_HALL_ROOMS, "Item 1", "MM Zora Shop Item 1", ObjectType::shop, {497, 250, 0}, MM_ZORA_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x14, ZORA_HALL_ROOMS, "Item 2", "MM Zora Shop Item 2", ObjectType::shop, {476, 250, 0}, MM_ZORA_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x15, ZORA_HALL_ROOMS, "Item 3", "MM Zora Shop Item 3", ObjectType::shop, {455, 250, 0}, MM_ZORA_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL }
 };
-
-#pragma endregion
-
-#pragma region SceneObjects
-
-// Empty scene objects
-CreateEmptyScene(FISHERMAN_HUT)
-CreateEmptyScene(BENEATH_THE_GRAVEYARD_NIGHT1)
-CreateEmptyScene(BENEATH_THE_GRAVEYARD_NIGHT2)
-CreateEmptyScene(INSIDE_CASTLE_IKANA)
-CreateEmptyScene(SOUTHERN_SWAMP_CLEAR)
-CreateEmptyScene(MM_CUTSCENE_MAP)
-CreateEmptyScene(OPENING)
-CreateEmptyScene(LOTTERY)
-CreateEmptyScene(GORON_VILLAGE_SPRING)
-CreateEmptyScene(GREAT_BAY_CUTSCENE)
-CreateEmptyScene(CLOCK_TOWER_INTERIOR)
-CreateEmptyScene(MM_LOST_WOODS)
-CreateEmptyScene(GIANT_CHAMBER)
-CreateEmptyScene(PATH_SNOWHEAD_SPRING)
-CreateEmptyScene(PATH_MOUNTAIN_VILLAGE_SPRING)
-CreateEmptyScene(SNOWHEAD_SPRING)
-CreateEmptyScene(ROMANI_RANCH_BARN)
-
-SceneObjects MMSceneObjects[MM_NUM_SCENES] =
-{
-	CreateSceneObjects(SOUTHERN_SWAMP_CLEAR),
-	CreateSceneObjects(MM_FAIRY_SNOWHEAD),
-	CreateSceneObjects(MM_FAIRY_GREAT_BAY_COAST),
-	CreateSceneObjects(MM_FAIRY_WOODFALL),
-	CreateSceneObjects(MM_FAIRY_CLOCK_TOWN),
-	CreateSceneObjects(MM_FAIRY_IKANA),
-	CreateSceneObjects(PATH_SNOWHEAD_SPRING),
-	CreateSceneObjects(MM_GROTTOS),
-	CreateSceneObjects(MM_CUTSCENE_MAP),
-	CreateSceneObjects(PATH_MOUNTAIN_VILLAGE_SPRING),
-	CreateSceneObjects(POTION_SHOP),
-	CreateSceneObjects(LAIR_MAJORA),
-	CreateSceneObjects(BENEATH_THE_GRAVEYARD),
-	CreateSceneObjects(CURIOSITY_SHOP),
-	CreateSceneObjects(BENEATH_THE_GRAVEYARD_NIGHT1),
-	CreateSceneObjects(BENEATH_THE_GRAVEYARD_NIGHT2),
-	CreateSceneObjects(RANCH_HOUSE_BARN),
-	CreateSceneObjects(HONEY_DARLING),
-	CreateSceneObjects(MAYOR_HOUSE),
-	CreateSceneObjects(IKANA_CANYON),
-	CreateSceneObjects(PIRATE_FORTRESS_EXTERIOR),
-	CreateSceneObjects(MILK_BAR),
-	CreateSceneObjects(TEMPLE_STONE_TOWER),
-	CreateSceneObjects(MM_TREASURE_SHOP),
-	CreateSceneObjects(TEMPLE_STONE_TOWER_INVERTED),
-	CreateSceneObjects(CLOCK_TOWER_ROOFTOP),
-	CreateSceneObjects(OPENING),
-	CreateSceneObjects(TEMPLE_WOODFALL),
-	CreateSceneObjects(PATH_MOUNTAIN_VILLAGE),
-	CreateSceneObjects(CASTLE_IKANA),
-	CreateSceneObjects(DEKU_PLAYGROUND),
-	CreateSceneObjects(LAIR_ODOLWA),
-	CreateSceneObjects(MM_SHOOTING_GALLERY),
-	CreateSceneObjects(TEMPLE_SNOWHEAD),
-	CreateSceneObjects(MILK_ROAD),
-	CreateSceneObjects(PIRATE_FORTRESS_INTERIOR),
-	CreateSceneObjects(SHOOTING_GALLERY_SWAMP),
-	CreateSceneObjects(PINNACLE_ROCK),
-	CreateSceneObjects(MM_FAIRY_FOUNTAIN),
-	CreateSceneObjects(MM_SPIDER_HOUSE_SWAMP),
-	CreateSceneObjects(MM_SPIDER_HOUSE_OCEAN),
-	CreateSceneObjects(OBSERVATORY),
-	CreateSceneObjects(MOON_DEKU),
-	CreateSceneObjects(DEKU_PALACE),
-	CreateSceneObjects(BLACKSMITH),
-	CreateSceneObjects(TERMINA_FIELD),
-	CreateSceneObjects(POST_OFFICE),
-	CreateSceneObjects(MM_LABORATORY),
-	CreateSceneObjects(DAMPE_HOUSE),
-	CreateSceneObjects(INSIDE_CASTLE_IKANA),
-	CreateSceneObjects(GORON_SHRINE),
-	CreateSceneObjects(ZORA_HALL),
-	CreateSceneObjects(TRADING_POST),
-	CreateSceneObjects(ROMANI_RANCH),
-	CreateSceneObjects(LAIR_TWINMOLD),
-	CreateSceneObjects(GREAT_BAY_COAST),
-	CreateSceneObjects(ZORA_CAPE),
-	CreateSceneObjects(LOTTERY),
-	CreateSceneObjects(SNOWHEAD_SPRING),
-	CreateSceneObjects(PIRATE_FORTRESS_ENTRANCE),
-	CreateSceneObjects(FISHERMAN_HUT),
-	CreateSceneObjects(MM_GORON_SHOP),
-	CreateSceneObjects(DEKU_KING_CHAMBER),
-	CreateSceneObjects(MOON_GORON),
-	CreateSceneObjects(ROAD_SOUTHERN_SWAMP),
-	CreateSceneObjects(DOG_RACETRACK),
-	CreateSceneObjects(CUCCO_SHACK),
-	CreateSceneObjects(IKANA_GRAVEYARD),
-	CreateSceneObjects(LAIR_GOHT),
-	CreateSceneObjects(SOUTHERN_SWAMP),
-	CreateSceneObjects(WOODFALL),
-	CreateSceneObjects(MOON_ZORA),
-	CreateSceneObjects(GORON_VILLAGE_SPRING),
-	CreateSceneObjects(TEMPLE_GREAT_BAY),
-	CreateSceneObjects(WATERFALL_RAPIDS),
-	CreateSceneObjects(BENEATH_THE_WELL),
-	CreateSceneObjects(ZORA_HALL_ROOMS),
-	CreateSceneObjects(GORON_VILLAGE_WINTER),
-	CreateSceneObjects(GORON_GRAVEYARD),
-	CreateSceneObjects(SAKON_HIDEOUT),
-	CreateSceneObjects(MOUNTAIN_VILLAGE_WINTER),
-	CreateSceneObjects(GHOST_HUT),
-	CreateSceneObjects(DEKU_SHRINE),
-	CreateSceneObjects(ROAD_IKANA),
-	CreateSceneObjects(SWORDSMAN_SCHOOL),
-	CreateSceneObjects(MUSIC_BOX_HOUSE),
-	CreateSceneObjects(LAIR_IKANA),
-	CreateSceneObjects(TOURIST_INFORMATION),
-	CreateSceneObjects(STONE_TOWER),
-	CreateSceneObjects(STONE_TOWER_INVERTED),
-	CreateSceneObjects(MOUNTAIN_VILLAGE_SPRING),
-	CreateSceneObjects(PATH_SNOWHEAD),
-	CreateSceneObjects(SNOWHEAD),
-	CreateSceneObjects(TWIN_ISLANDS_WINTER),
-	CreateSceneObjects(TWIN_ISLANDS_SPRING),
-	CreateSceneObjects(LAIR_GYORG),
-	CreateSceneObjects(SECRET_SHRINE),
-	CreateSceneObjects(STOCK_POT_INN),
-	CreateSceneObjects(GREAT_BAY_CUTSCENE),
-	CreateSceneObjects(CLOCK_TOWER_INTERIOR),
-	CreateSceneObjects(WOODS_MYSTERY),
-	CreateSceneObjects(MM_LOST_WOODS),
-	CreateSceneObjects(MOON_LINK),
-	CreateSceneObjects(MOON),
-	CreateSceneObjects(BOMB_SHOP),
-	CreateSceneObjects(GIANT_CHAMBER),
-	CreateSceneObjects(GORMAN_TRACK),
-	CreateSceneObjects(GORON_RACETRACK),
-	CreateSceneObjects(CLOCK_TOWN_EAST),
-	CreateSceneObjects(CLOCK_TOWN_WEST),
-	CreateSceneObjects(CLOCK_TOWN_NORTH),
-	CreateSceneObjects(CLOCK_TOWN_SOUTH),
-	CreateSceneObjects(LAUNDRY_POOL),
-	CreateSceneObjects(EXTRA),
-
-	CreateSceneObjects(LONE_PEAK),
-	CreateSceneObjects(MM_ZORA_SHOP),
-	CreateSceneObjects(ZORA_EVAN_ROOM),
-	CreateSceneObjects(ROMANI_RANCH_BARN),
-
-	CreateSceneObjects(MM_GROTTO_TERMINA_DODONGO),
-	CreateSceneObjects(MM_GROTTO_TERMINA_OCEAN_GOSSIP),
-	CreateSceneObjects(MM_GROTTO_TERMINA_CANYON_GOSSIP),
-	CreateSceneObjects(MM_GROTTO_TERMINA_BIO_BABA),
-	CreateSceneObjects(MM_GROTTO_TERMINA_PEEHAT),
-	CreateSceneObjects(MM_GROTTO_TERMINA_SCRUB),
-	CreateSceneObjects(MM_GROTTO_TERMINA_TALL_GRASS),
-	CreateSceneObjects(MM_GROTTO_TERMINA_COW),
-	CreateSceneObjects(MM_GROTTO_TERMINA_PILLAR),
-	CreateSceneObjects(MM_GROTTO_GREAT_BAY_COAST_FISHERMAN),
-	CreateSceneObjects(MM_GROTTO_GREAT_BAY_COAST_COW),
-	CreateSceneObjects(MM_GROTTO_ZORA_CAPE_GENERIC),
-	CreateSceneObjects(MM_GROTTO_IKANA_GRAVEYARD_GENERIC),
-	CreateSceneObjects(MM_GROTTO_IKANA_VALLEY_OPEN),
-	CreateSceneObjects(MM_GROTTO_IKANA_ROAD_GENERIC),
-	CreateSceneObjects(MM_GROTTO_TWIN_ISLANDS_FROZEN),
-	CreateSceneObjects(MM_GROTTO_TWIN_ISLANDS_RAMP),
-	CreateSceneObjects(MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC),
-	CreateSceneObjects(MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC),
-	CreateSceneObjects(MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN),
-	CreateSceneObjects(MM_GROTTO_SOUTHERN_SWAMP_OPEN),
-	CreateSceneObjects(MM_GROTTO_WOODS_OF_MYSTERY_OPEN),
-	CreateSceneObjects(MM_GROTTO_DEKU_PALACE_BEANS),
-	CreateSceneObjects(MM_GROTTO_DEKU_PALACE_GENERIC),
-
-	// Spoiler Log
-	CreateSceneObjects(MOUNTAIN_VILLAGE),
-	CreateSceneObjects(TWIN_ISLANDS)
-};
-
 
 #pragma endregion

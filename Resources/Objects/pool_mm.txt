@@ -1,3 +1,16 @@
+#pragma once
+
+/*
+*	IMPORTANT NOTE: This file should only be include one time as all of these object arrays are not constant / static and should exist only one time !
+*					They were part of Objects.cpp but were moved here for clarity and IDE lagging
+*
+*	Currently included by Objects.cpp
+*/
+
+#include "Objects.h"
+#include "Scenes.h"
+
+#pragma region MM
 
 const size_t BENEATH_THE_GRAVEYARDNumOfObjs = 22;
 ObjectInfo BENEATH_THE_GRAVEYARDSceneObjects [BENEATH_THE_GRAVEYARDNumOfObjs] =
@@ -5116,3 +5129,5 @@ ObjectInfo MM_ZORA_SHOPSceneObjects [MM_ZORA_SHOPNumOfObjs] =
 	{ 0x14, ZORA_HALL_ROOMS, "Item 2", "MM Zora Shop Item 2", ObjectType::shop, {476, 250, 0}, MM_ZORA_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL },
 	{ 0x15, ZORA_HALL_ROOMS, "Item 3", "MM Zora Shop Item 3", ObjectType::shop, {455, 250, 0}, MM_ZORA_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm, LocType::overworld, NULL }
 };
+
+pragma endregion

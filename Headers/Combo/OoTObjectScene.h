@@ -1,19 +1,19 @@
 #pragma once
 
 /*
-*	IMPORTANT NOTE: This file should only be include one time as all of these object arrays are not constant / static and should exist only one time ! 
+*	IMPORTANT NOTE: This file should only be include one time as all of these object arrays are not constant / static and should exist only one time !
 *					They were part of Objects.cpp but were moved here for clarity and IDE lagging
-* 
+*
 *	Currently included by Objects.cpp
 */
 
 #include "Objects.h"
 #include "Scenes.h"
 
-#pragma region OoT
+#pragma region OOT
 
 const size_t BACK_ALLEY_HOUSENumOfObjs = 3;
-ObjectInfo BACK_ALLEY_HOUSESceneObjects[BACK_ALLEY_HOUSENumOfObjs] =
+ObjectInfo BACK_ALLEY_HOUSESceneObjects [BACK_ALLEY_HOUSENumOfObjs] =
 {
 	{ 0x0002, BACK_ALLEY_HOUSE, "Pot 1", "OOT Market Back Alley East House Pot 1", ObjectType::pot, {765, 483, 0}, BACK_ALLEY_HOUSE, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0003, BACK_ALLEY_HOUSE, "Pot 2", "OOT Market Back Alley East House Pot 2", ObjectType::pot, {442, 429, 0}, BACK_ALLEY_HOUSE, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -21,14 +21,14 @@ ObjectInfo BACK_ALLEY_HOUSESceneObjects[BACK_ALLEY_HOUSENumOfObjs] =
 };
 
 const size_t BACK_ALLEY_HOUSE2NumOfObjs = 2;
-ObjectInfo BACK_ALLEY_HOUSE2SceneObjects[BACK_ALLEY_HOUSE2NumOfObjs] =
+ObjectInfo BACK_ALLEY_HOUSE2SceneObjects [BACK_ALLEY_HOUSE2NumOfObjs] =
 {
 	{ DOG_LADY, BACK_ALLEY_HOUSE2, "Dog Lady", "OOT Market Dog Lady HP", ObjectType::npc, {436, 214, 0}, BACK_ALLEY_HOUSE2, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00002, BACK_ALLEY_HOUSE2, "Crate", "OOT Market Dog Lady Crate", ObjectType::crate, {657, 105, 0}, BACK_ALLEY_HOUSE2, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 
 const size_t BAZAARNumOfObjs = 16;
-ObjectInfo BAZAARSceneObjects[BAZAARNumOfObjs] =
+ObjectInfo BAZAARSceneObjects [BAZAARNumOfObjs] =
 {
 	{ 0x30, BAZAAR, "Item 1", "OOT Kakariko Bazaar Item 1", ObjectType::shop, {367, 328, 0}, KAKARIKO_BAZAAR, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x31, BAZAAR, "Item 2", "OOT Kakariko Bazaar Item 2", ObjectType::shop, {327, 290, 0}, KAKARIKO_BAZAAR, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -49,7 +49,7 @@ ObjectInfo BAZAARSceneObjects[BAZAARNumOfObjs] =
 };
 
 const size_t KAKARIKO_BAZAARNumOfObjs = 8;
-ObjectInfo KAKARIKO_BAZAARSceneObjects[KAKARIKO_BAZAARNumOfObjs] =
+ObjectInfo KAKARIKO_BAZAARSceneObjects [KAKARIKO_BAZAARNumOfObjs] =
 {
 	{ 0x30, BAZAAR, "Item 1", "OOT Kakariko Bazaar Item 1", ObjectType::shop, {367, 328, 0}, KAKARIKO_BAZAAR, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x31, BAZAAR, "Item 2", "OOT Kakariko Bazaar Item 2", ObjectType::shop, {327, 290, 0}, KAKARIKO_BAZAAR, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -62,7 +62,7 @@ ObjectInfo KAKARIKO_BAZAARSceneObjects[KAKARIKO_BAZAARNumOfObjs] =
 };
 
 const size_t MARKET_BAZAARNumOfObjs = 8;
-ObjectInfo MARKET_BAZAARSceneObjects[MARKET_BAZAARNumOfObjs] =
+ObjectInfo MARKET_BAZAARSceneObjects [MARKET_BAZAARNumOfObjs] =
 {
 	{ 0x20, BAZAAR, "Item 1", "OOT Market Bazaar Item 1", ObjectType::shop, {367, 328, 0}, MARKET_BAZAAR, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x21, BAZAAR, "Item 2", "OOT Market Bazaar Item 2", ObjectType::shop, {327, 290, 0}, MARKET_BAZAAR, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -75,14 +75,14 @@ ObjectInfo MARKET_BAZAARSceneObjects[MARKET_BAZAARNumOfObjs] =
 };
 
 const size_t BOMBCHU_BOWLING_ALLEYNumOfObjs = 2;
-ObjectInfo BOMBCHU_BOWLING_ALLEYSceneObjects[BOMBCHU_BOWLING_ALLEYNumOfObjs] =
+ObjectInfo BOMBCHU_BOWLING_ALLEYSceneObjects [BOMBCHU_BOWLING_ALLEYNumOfObjs] =
 {
 	{ BOMBCHU_BOWLING_1, BOMBCHU_BOWLING_ALLEY, "Reward 1", "OOT Bombchu Bowling Reward 1", ObjectType::npc, {816, 248, 0}, BOMBCHU_BOWLING_ALLEY, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::minigame, NULL },
 	{ BOMBCHU_BOWLING_2, BOMBCHU_BOWLING_ALLEY, "Reward 2", "OOT Bombchu Bowling Reward 2", ObjectType::npc, {743, 248, 0}, BOMBCHU_BOWLING_ALLEY, ObjectType::npc, ObjectIconMap::biggest_bomb, ObjectContext::All, 0, GameLayout::oot, LocType::minigame, NULL }
 };
 
 const size_t BOMBCHU_SHOPNumOfObjs = 8;
-ObjectInfo BOMBCHU_SHOPSceneObjects[BOMBCHU_SHOPNumOfObjs] =
+ObjectInfo BOMBCHU_SHOPSceneObjects [BOMBCHU_SHOPNumOfObjs] =
 {
 	{ 0x08, BOMBCHU_SHOP, "Item 1", "OOT Market Bombchu Shop Item 1", ObjectType::shop, {412, 226, 0}, BOMBCHU_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x09, BOMBCHU_SHOP, "Item 2", "OOT Market Bombchu Shop Item 2", ObjectType::shop, {342, 226, 0}, BOMBCHU_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -95,7 +95,7 @@ ObjectInfo BOMBCHU_SHOPSceneObjects[BOMBCHU_SHOPNumOfObjs] =
 };
 
 const size_t BOTTOM_OF_THE_WELLNumOfObjs = 104;
-ObjectInfo BOTTOM_OF_THE_WELLSceneObjects[BOTTOM_OF_THE_WELLNumOfObjs] =
+ObjectInfo BOTTOM_OF_THE_WELLSceneObjects [BOTTOM_OF_THE_WELLNumOfObjs] =
 {
 	{ 0x01, BOTTOM_OF_THE_WELL, "Chest", "OOT Bottom of the Well Compass", ObjectType::chest, {744, 471, 0}, BOTTOM_OF_THE_WELL, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::dungeon, NULL },
 	{ 0x02, BOTTOM_OF_THE_WELL, "Under Debris", "OOT Bottom of the Well Under Debris", ObjectType::chest, {805, 517, 0}, BOTTOM_OF_THE_WELL, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::dungeon, NULL },
@@ -204,7 +204,7 @@ ObjectInfo BOTTOM_OF_THE_WELLSceneObjects[BOTTOM_OF_THE_WELLNumOfObjs] =
 };
 
 const size_t CASTLE_COURTYARDNumOfObjs = 3;
-ObjectInfo CASTLE_COURTYARDSceneObjects[CASTLE_COURTYARDNumOfObjs] =
+ObjectInfo CASTLE_COURTYARDSceneObjects [CASTLE_COURTYARDNumOfObjs] =
 {
 	{ ZELDA_LETTER, CASTLE_COURTYARD, "Zelda's Letter", "OOT Zelda's Letter", ObjectType::npc, {757, 318, 0}, CASTLE_COURTYARD, ObjectType::npc, ObjectIconMap::letter, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ ZELDA_SONG, CASTLE_COURTYARD, "Zelda's Song", "OOT Zelda's Song", ObjectType::npc, {174, 470, 0}, CASTLE_COURTYARD, ObjectType::song, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -212,7 +212,7 @@ ObjectInfo CASTLE_COURTYARDSceneObjects[CASTLE_COURTYARDNumOfObjs] =
 };
 
 const size_t DEATH_MOUNTAIN_CRATERNumOfObjs = 62;
-ObjectInfo DEATH_MOUNTAIN_CRATERSceneObjects[DEATH_MOUNTAIN_CRATERNumOfObjs] =
+ObjectInfo DEATH_MOUNTAIN_CRATERSceneObjects [DEATH_MOUNTAIN_CRATERNumOfObjs] =
 {
 	{ 0x02, DEATH_MOUNTAIN_CRATER, "Alcove", "OOT Death Mountain Crater Alcove HP", ObjectType::collectible, {470, 211, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x08, DEATH_MOUNTAIN_CRATER, "Volcano", "OOT Death Mountain Crater Volcano HP", ObjectType::collectible, {597, 363, 0}, DEATH_MOUNTAIN_CRATER, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -279,7 +279,7 @@ ObjectInfo DEATH_MOUNTAIN_CRATERSceneObjects[DEATH_MOUNTAIN_CRATERNumOfObjs] =
 };
 
 const size_t DEATH_MOUNTAIN_TRAILNumOfObjs = 67;
-ObjectInfo DEATH_MOUNTAIN_TRAILSceneObjects[DEATH_MOUNTAIN_TRAILNumOfObjs] =
+ObjectInfo DEATH_MOUNTAIN_TRAILSceneObjects [DEATH_MOUNTAIN_TRAILNumOfObjs] =
 {
 	{ 0x01, DEATH_MOUNTAIN_TRAIL, "Bombable Wall - Goron City", "OOT Death Mountain Trail Chest", ObjectType::chest, {481, 377, 0}, DEATH_MOUNTAIN_TRAIL, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 1, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x1e, DEATH_MOUNTAIN_TRAIL, "Above Cavern", "OOT Death Mountain Trail HP", ObjectType::collectible, {44, 222, 0}, DEATH_MOUNTAIN_TRAIL, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -351,7 +351,7 @@ ObjectInfo DEATH_MOUNTAIN_TRAILSceneObjects[DEATH_MOUNTAIN_TRAILNumOfObjs] =
 };
 
 const size_t OOT_GROTTO_DEATH_TRIAL_COWNumOfObjs = 16;
-ObjectInfo OOT_GROTTO_DEATH_TRIAL_COWSceneObjects[OOT_GROTTO_DEATH_TRIAL_COWNumOfObjs] =
+ObjectInfo OOT_GROTTO_DEATH_TRIAL_COWSceneObjects [OOT_GROTTO_DEATH_TRIAL_COWNumOfObjs] =
 {
 	{ 0x07, DEATH_MOUNTAIN_TRAIL, "Cow", "OOT Death Mountain Trail Cow", ObjectType::cow, {719, 198, 0}, OOT_GROTTO_DEATH_TRIAL_COW, ObjectType::cow, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00301, OOT_GROTTOS, "Grass 1", "OOT Death Mountain Trail Cow Grotto Grass 1", ObjectType::grass, {717, 250, 0}, OOT_GROTTO_DEATH_TRIAL_COW, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -372,7 +372,7 @@ ObjectInfo OOT_GROTTO_DEATH_TRIAL_COWSceneObjects[OOT_GROTTO_DEATH_TRIAL_COWNumO
 };
 
 const size_t DEKU_TREENumOfObjs = 128;
-ObjectInfo DEKU_TREESceneObjects[DEKU_TREENumOfObjs] =
+ObjectInfo DEKU_TREESceneObjects [DEKU_TREENumOfObjs] =
 {
 	{ 0x03, DEKU_TREE, "Chest", "OOT Deku Tree Map Chest", ObjectType::chest, {889, 548, 0}, DEKU_TREE, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::dungeon, NULL },
 	{ 0x02, DEKU_TREE, "Chest", "OOT Deku Tree Compass Chest", ObjectType::chest, {1174, 584, 0}, DEKU_TREE, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 1, GameLayout::oot, LocType::dungeon, NULL },
@@ -505,7 +505,7 @@ ObjectInfo DEKU_TREESceneObjects[DEKU_TREENumOfObjs] =
 };
 
 const size_t DESERT_COLOSSUSNumOfObjs = 44;
-ObjectInfo DESERT_COLOSSUSSceneObjects[DESERT_COLOSSUSNumOfObjs] =
+ObjectInfo DESERT_COLOSSUSSceneObjects [DESERT_COLOSSUSNumOfObjs] =
 {
 	{ 0x0d, DESERT_COLOSSUS, "Above Arch", "OOT Desert Colossus HP", ObjectType::collectible, {631, 248, 0}, DESERT_COLOSSUS, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ SHEIK_SPIRIT, DESERT_COLOSSUS, "Requiem of Spirit", "OOT Desert Colossus Song Spirit", ObjectType::npc, {687, 223, 0}, DESERT_COLOSSUS, ObjectType::song, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -554,7 +554,7 @@ ObjectInfo DESERT_COLOSSUSSceneObjects[DESERT_COLOSSUSNumOfObjs] =
 };
 
 const size_t DODONGO_CAVERNNumOfObjs = 138;
-ObjectInfo DODONGO_CAVERNSceneObjects[DODONGO_CAVERNNumOfObjs] =
+ObjectInfo DODONGO_CAVERNSceneObjects [DODONGO_CAVERNNumOfObjs] =
 {
 	{ 0x08, DODONGO_CAVERN, "Chest", "OOT Dodongo Cavern Map Chest", ObjectType::chest, {410, 297, 0}, DODONGO_CAVERN, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::dungeon, NULL },
 	{ 0x05, DODONGO_CAVERN, "Chest", "OOT Dodongo Cavern Compass Chest", ObjectType::chest, {809, 529, 0}, DODONGO_CAVERN, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 2, GameLayout::oot, LocType::dungeon, NULL },
@@ -697,7 +697,7 @@ ObjectInfo DODONGO_CAVERNSceneObjects[DODONGO_CAVERNNumOfObjs] =
 };
 
 const size_t OOT_FAIRY_FOUNTAINNumOfObjs = 40;
-ObjectInfo OOT_FAIRY_FOUNTAINSceneObjects[OOT_FAIRY_FOUNTAINNumOfObjs] =
+ObjectInfo OOT_FAIRY_FOUNTAINSceneObjects [OOT_FAIRY_FOUNTAINNumOfObjs] =
 {
 	{ 0x02200, OOT_FAIRY_FOUNTAIN, "Fairy 1", "OOT Sacred Meadow Fairy Fountain Fairy 1", ObjectType::fairy, {484, 209, 0}, OOT_FAIRY_SACRED_MEADOW, ObjectType::fairy, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x12200, OOT_FAIRY_FOUNTAIN, "Fairy 2", "OOT Sacred Meadow Fairy Fountain Fairy 2", ObjectType::fairy, {499, 204, 0}, OOT_FAIRY_SACRED_MEADOW, ObjectType::fairy, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -742,7 +742,7 @@ ObjectInfo OOT_FAIRY_FOUNTAINSceneObjects[OOT_FAIRY_FOUNTAINNumOfObjs] =
 };
 
 const size_t OOT_FAIRY_SACRED_MEADOWNumOfObjs = 8;
-ObjectInfo OOT_FAIRY_SACRED_MEADOWSceneObjects[OOT_FAIRY_SACRED_MEADOWNumOfObjs] =
+ObjectInfo OOT_FAIRY_SACRED_MEADOWSceneObjects [OOT_FAIRY_SACRED_MEADOWNumOfObjs] =
 {
 	{ 0x02200, OOT_FAIRY_FOUNTAIN, "Fairy 1", "OOT Sacred Meadow Fairy Fountain Fairy 1", ObjectType::fairy, {484, 209, 0}, OOT_FAIRY_SACRED_MEADOW, ObjectType::fairy, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x12200, OOT_FAIRY_FOUNTAIN, "Fairy 2", "OOT Sacred Meadow Fairy Fountain Fairy 2", ObjectType::fairy, {499, 204, 0}, OOT_FAIRY_SACRED_MEADOW, ObjectType::fairy, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -755,7 +755,7 @@ ObjectInfo OOT_FAIRY_SACRED_MEADOWSceneObjects[OOT_FAIRY_SACRED_MEADOWNumOfObjs]
 };
 
 const size_t OOT_FAIRY_ZORA_RIVERNumOfObjs = 8;
-ObjectInfo OOT_FAIRY_ZORA_RIVERSceneObjects[OOT_FAIRY_ZORA_RIVERNumOfObjs] =
+ObjectInfo OOT_FAIRY_ZORA_RIVERSceneObjects [OOT_FAIRY_ZORA_RIVERNumOfObjs] =
 {
 	{ 0x02100, OOT_FAIRY_FOUNTAIN, "Fairy 1", "OOT Zora River Fairy Fountain Fairy 1", ObjectType::fairy, {484, 209, 0}, OOT_FAIRY_ZORA_RIVER, ObjectType::fairy, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x12100, OOT_FAIRY_FOUNTAIN, "Fairy 2", "OOT Zora River Fairy Fountain Fairy 2", ObjectType::fairy, {499, 204, 0}, OOT_FAIRY_ZORA_RIVER, ObjectType::fairy, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -768,7 +768,7 @@ ObjectInfo OOT_FAIRY_ZORA_RIVERSceneObjects[OOT_FAIRY_ZORA_RIVERNumOfObjs] =
 };
 
 const size_t OOT_FAIRY_ZORA_DOMAINNumOfObjs = 8;
-ObjectInfo OOT_FAIRY_ZORA_DOMAINSceneObjects[OOT_FAIRY_ZORA_DOMAINNumOfObjs] =
+ObjectInfo OOT_FAIRY_ZORA_DOMAINSceneObjects [OOT_FAIRY_ZORA_DOMAINNumOfObjs] =
 {
 	{ 0x02300, OOT_FAIRY_FOUNTAIN, "Fairy 1", "OOT Zora Domain Fairy Fountain Fairy 1", ObjectType::fairy, {484, 209, 0}, OOT_FAIRY_ZORA_DOMAIN, ObjectType::fairy, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x12300, OOT_FAIRY_FOUNTAIN, "Fairy 2", "OOT Zora Domain Fairy Fountain Fairy 2", ObjectType::fairy, {499, 204, 0}, OOT_FAIRY_ZORA_DOMAIN, ObjectType::fairy, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -781,7 +781,7 @@ ObjectInfo OOT_FAIRY_ZORA_DOMAINSceneObjects[OOT_FAIRY_ZORA_DOMAINNumOfObjs] =
 };
 
 const size_t OOT_FAIRY_HYRULENumOfObjs = 8;
-ObjectInfo OOT_FAIRY_HYRULESceneObjects[OOT_FAIRY_HYRULENumOfObjs] =
+ObjectInfo OOT_FAIRY_HYRULESceneObjects [OOT_FAIRY_HYRULENumOfObjs] =
 {
 	{ 0x02000, OOT_FAIRY_FOUNTAIN, "Fairy 1", "OOT Hyrule Field Fairy Fountain Fairy 1", ObjectType::fairy, {484, 209, 0}, OOT_FAIRY_HYRULE, ObjectType::fairy, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x12000, OOT_FAIRY_FOUNTAIN, "Fairy 2", "OOT Hyrule Field Fairy Fountain Fairy 2", ObjectType::fairy, {499, 204, 0}, OOT_FAIRY_HYRULE, ObjectType::fairy, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -794,7 +794,7 @@ ObjectInfo OOT_FAIRY_HYRULESceneObjects[OOT_FAIRY_HYRULENumOfObjs] =
 };
 
 const size_t OOT_FAIRY_GERUDO_FORTRESSNumOfObjs = 8;
-ObjectInfo OOT_FAIRY_GERUDO_FORTRESSSceneObjects[OOT_FAIRY_GERUDO_FORTRESSNumOfObjs] =
+ObjectInfo OOT_FAIRY_GERUDO_FORTRESSSceneObjects [OOT_FAIRY_GERUDO_FORTRESSNumOfObjs] =
 {
 	{ 0x02400, OOT_FAIRY_FOUNTAIN, "Fairy 1", "OOT Gerudo Fortress Fairy Fountain Fairy 1", ObjectType::fairy, {484, 209, 0}, OOT_FAIRY_GERUDO_FORTRESS, ObjectType::fairy, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x12400, OOT_FAIRY_FOUNTAIN, "Fairy 2", "OOT Gerudo Fortress Fairy Fountain Fairy 2", ObjectType::fairy, {499, 204, 0}, OOT_FAIRY_GERUDO_FORTRESS, ObjectType::fairy, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -807,7 +807,7 @@ ObjectInfo OOT_FAIRY_GERUDO_FORTRESSSceneObjects[OOT_FAIRY_GERUDO_FORTRESSNumOfO
 };
 
 const size_t FISHING_PONDNumOfObjs = 35;
-ObjectInfo FISHING_PONDSceneObjects[FISHING_PONDNumOfObjs] =
+ObjectInfo FISHING_PONDSceneObjects [FISHING_PONDNumOfObjs] =
 {
 	{ FISH_CHILD, FISHING_POND, "Fish Prize", "OOT Fishing Pond Child", ObjectType::npc, {651, 51, 0}, FISHING_POND, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ FISH_ADULT, FISHING_POND, "Golden Scale", "OOT Fishing Pond Adult", ObjectType::npc, {651, 51, 0}, FISHING_POND, ObjectType::npc, ObjectIconMap::golden, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -847,7 +847,7 @@ ObjectInfo FISHING_PONDSceneObjects[FISHING_PONDNumOfObjs] =
 };
 
 const size_t GANON_CASTLE_EXTERIORNumOfObjs = 5;
-ObjectInfo GANON_CASTLE_EXTERIORSceneObjects[GANON_CASTLE_EXTERIORNumOfObjs] =
+ObjectInfo GANON_CASTLE_EXTERIORSceneObjects [GANON_CASTLE_EXTERIORNumOfObjs] =
 {
 	{ 0x78, GANON_CASTLE_EXTERIOR, "Side Arch", "OOT Ganon Castle Exterior GS", ObjectType::gs, {373, 413, 0}, GANON_CASTLE_EXTERIOR, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ FAIRY_DEFENSE_UPGRADE, GANON_CASTLE_EXTERIOR, "Double Defense Upgrade", "OOT Great Fairy Defense Upgrade", ObjectType::none, {0, 0, 0}, OOT_GREAT_FAIRY_CASTLE, ObjectType::none, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -857,7 +857,7 @@ ObjectInfo GANON_CASTLE_EXTERIORSceneObjects[GANON_CASTLE_EXTERIORNumOfObjs] =
 };
 
 const size_t GANON_TOWERNumOfObjs = 19;
-ObjectInfo GANON_TOWERSceneObjects[GANON_TOWERNumOfObjs] =
+ObjectInfo GANON_TOWERSceneObjects [GANON_TOWERNumOfObjs] =
 {
 	{ 0x0b, GANON_TOWER, "Boss Key Chest", "OOT Ganon Castle Boss Key", ObjectType::chest, {472, 320, 0}, GANON_TOWER, ObjectType::boss_key, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::dungeon, NULL },
 	{ 0x0801, GANON_TOWER, "Tower 1", "OOT Ganon Tower Pot 01", ObjectType::pot, {252, 171, 0}, GANON_TOWER, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 1, GameLayout::oot, LocType::dungeon, NULL },
@@ -881,7 +881,7 @@ ObjectInfo GANON_TOWERSceneObjects[GANON_TOWERNumOfObjs] =
 };
 
 const size_t GERUDO_FORTRESSNumOfObjs = 37;
-ObjectInfo GERUDO_FORTRESSSceneObjects[GERUDO_FORTRESSNumOfObjs] =
+ObjectInfo GERUDO_FORTRESSSceneObjects [GERUDO_FORTRESSNumOfObjs] =
 {
 	{ 0x00, GERUDO_FORTRESS, "Scarecrow Chest", "OOT Gerudo Fortress Chest", ObjectType::chest, {443, 431, 0}, GERUDO_FORTRESS, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ GERUDO_ARCHERY_1, GERUDO_FORTRESS, "Game Prize", "OOT Gerudo Fortress Archery Reward 1", ObjectType::npc, {644, 154, 2}, GERUDO_FORTRESS, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::minigame, "Scores at least 1000 points.<br><br><b>Requirements:</b><br>- Soul of the Patrolling Gerudos<br>- Gerudo Card" },
@@ -923,7 +923,7 @@ ObjectInfo GERUDO_FORTRESSSceneObjects[GERUDO_FORTRESSNumOfObjs] =
 };
 
 const size_t GERUDO_TRAINING_GROUNDNumOfObjs = 107;
-ObjectInfo GERUDO_TRAINING_GROUNDSceneObjects[GERUDO_TRAINING_GROUNDNumOfObjs] =
+ObjectInfo GERUDO_TRAINING_GROUNDSceneObjects [GERUDO_TRAINING_GROUNDNumOfObjs] =
 {
 	{ 0x07, GERUDO_TRAINING_GROUND, "Entrance 1", "OOT Gerudo Training Grounds Entrance 1", ObjectType::chest, {554, 256, 0}, GERUDO_TRAINING_GROUND, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::dungeon, NULL },
 	{ 0x13, GERUDO_TRAINING_GROUND, "Entrance 2", "OOT Gerudo Training Grounds Entrance 2", ObjectType::chest, {409, 256, 0}, GERUDO_TRAINING_GROUND, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::dungeon, NULL },
@@ -1035,7 +1035,7 @@ ObjectInfo GERUDO_TRAINING_GROUNDSceneObjects[GERUDO_TRAINING_GROUNDNumOfObjs] =
 };
 
 const size_t GERUDO_VALLEYNumOfObjs = 49;
-ObjectInfo GERUDO_VALLEYSceneObjects[GERUDO_VALLEYNumOfObjs] =
+ObjectInfo GERUDO_VALLEYSceneObjects [GERUDO_VALLEYNumOfObjs] =
 {
 	{ 0x00, GERUDO_VALLEY, "Red Rock Chest", "OOT Gerudo Valley Chest", ObjectType::chest, {252, 484, 0}, GERUDO_VALLEY, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x02, GERUDO_VALLEY, "Crate", "OOT Gerudo Valley Crate HP", ObjectType::collectible, {422, 574, 0}, GERUDO_VALLEY, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1089,7 +1089,7 @@ ObjectInfo GERUDO_VALLEYSceneObjects[GERUDO_VALLEYNumOfObjs] =
 };
 
 const size_t GORON_CITYNumOfObjs = 37;
-ObjectInfo GORON_CITYSceneObjects[GORON_CITYNumOfObjs] =
+ObjectInfo GORON_CITYSceneObjects [GORON_CITYNumOfObjs] =
 {
 	{ DARUNIA_BRACELET, GORON_CITY, "Darunia's Dance", "OOT Darunia", ObjectType::npc, {709, 360, 0}, GORON_CITY, ObjectType::npc, ObjectIconMap::bracelet, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x02, GORON_CITY, "Maze - Center 1", "OOT Goron City Maze Center 1", ObjectType::chest, {726, 71, 0}, GORON_CITY, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1131,7 +1131,7 @@ ObjectInfo GORON_CITYSceneObjects[GORON_CITYNumOfObjs] =
 };
 
 const size_t OOT_GORON_SHOPNumOfObjs = 8;
-ObjectInfo OOT_GORON_SHOPSceneObjects[OOT_GORON_SHOPNumOfObjs] =
+ObjectInfo OOT_GORON_SHOPSceneObjects [OOT_GORON_SHOPNumOfObjs] =
 {
 	{ 0x18, OOT_GORON_SHOP, "Item 1", "OOT Goron Shop Item 1", ObjectType::shop, {243, 229, 0}, OOT_GORON_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x19, OOT_GORON_SHOP, "Item 2", "OOT Goron Shop Item 2", ObjectType::shop, {330, 229, 0}, OOT_GORON_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1144,7 +1144,7 @@ ObjectInfo OOT_GORON_SHOPSceneObjects[OOT_GORON_SHOPNumOfObjs] =
 };
 
 const size_t GRAVEYARDNumOfObjs = 69;
-ObjectInfo GRAVEYARDSceneObjects[GRAVEYARDNumOfObjs] =
+ObjectInfo GRAVEYARDSceneObjects [GRAVEYARDNumOfObjs] =
 {
 	{ 0x1f, GRAVEYARD, "Dampe Game", "OOT Graveyard Dampe Game", ObjectType::collectible, {566, 298, 0}, GRAVEYARD, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ MASK_SELL_SPOOKY, GRAVEYARD, "Spooky Mask", "OOT Graveyard Sell Spooky Mask", ObjectType::npc, {566, 341, 0}, GRAVEYARD, ObjectType::mask, ObjectIconMap::spooky, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1218,7 +1218,7 @@ ObjectInfo GRAVEYARDSceneObjects[GRAVEYARDNumOfObjs] =
 };
 
 const size_t GREAT_FAIRY_FOUNTAIN_SPELLSNumOfObjs = 3;
-ObjectInfo GREAT_FAIRY_FOUNTAIN_SPELLSSceneObjects[GREAT_FAIRY_FOUNTAIN_SPELLSNumOfObjs] =
+ObjectInfo GREAT_FAIRY_FOUNTAIN_SPELLSSceneObjects [GREAT_FAIRY_FOUNTAIN_SPELLSNumOfObjs] =
 {
 	{ FAIRY_SPELL_FIRE, GREAT_FAIRY_FOUNTAIN_SPELLS, "Din's Fire", "OOT Great Fairy Din's Fire", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_CASTLE, ObjectType::npc, ObjectIconMap::din, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ FAIRY_SPELL_WIND, GREAT_FAIRY_FOUNTAIN_SPELLS, "Farore's Wind", "OOT Great Fairy Farore's Wind", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_FARORE, ObjectType::npc, ObjectIconMap::farore, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1226,26 +1226,26 @@ ObjectInfo GREAT_FAIRY_FOUNTAIN_SPELLSSceneObjects[GREAT_FAIRY_FOUNTAIN_SPELLSNu
 };
 
 const size_t OOT_GREAT_FAIRY_CASTLENumOfObjs = 2;
-ObjectInfo OOT_GREAT_FAIRY_CASTLESceneObjects[OOT_GREAT_FAIRY_CASTLENumOfObjs] =
+ObjectInfo OOT_GREAT_FAIRY_CASTLESceneObjects [OOT_GREAT_FAIRY_CASTLENumOfObjs] =
 {
 	{ FAIRY_SPELL_FIRE, GREAT_FAIRY_FOUNTAIN_SPELLS, "Din's Fire", "OOT Great Fairy Din's Fire", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_CASTLE, ObjectType::npc, ObjectIconMap::din, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ FAIRY_DEFENSE_UPGRADE, GREAT_FAIRY_FOUNTAIN_UPGRADES, "Double Defense Upgrade", "OOT Great Fairy Defense Upgrade", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_CASTLE, ObjectType::npc, ObjectIconMap::defense, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 
 const size_t OOT_GREAT_FAIRY_FARORENumOfObjs = 1;
-ObjectInfo OOT_GREAT_FAIRY_FARORESceneObjects[OOT_GREAT_FAIRY_FARORENumOfObjs] =
+ObjectInfo OOT_GREAT_FAIRY_FARORESceneObjects [OOT_GREAT_FAIRY_FARORENumOfObjs] =
 {
 	{ FAIRY_SPELL_WIND, GREAT_FAIRY_FOUNTAIN_SPELLS, "Farore's Wind", "OOT Great Fairy Farore's Wind", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_FARORE, ObjectType::npc, ObjectIconMap::farore, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 
 const size_t OOT_GREAT_FAIRY_NAYRUNumOfObjs = 1;
-ObjectInfo OOT_GREAT_FAIRY_NAYRUSceneObjects[OOT_GREAT_FAIRY_NAYRUNumOfObjs] =
+ObjectInfo OOT_GREAT_FAIRY_NAYRUSceneObjects [OOT_GREAT_FAIRY_NAYRUNumOfObjs] =
 {
 	{ FAIRY_SPELL_LOVE, GREAT_FAIRY_FOUNTAIN_SPELLS, "Nayru's Love", "OOT Great Fairy Nayru's Love", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_NAYRU, ObjectType::npc, ObjectIconMap::nayru, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 
 const size_t GREAT_FAIRY_FOUNTAIN_UPGRADESNumOfObjs = 3;
-ObjectInfo GREAT_FAIRY_FOUNTAIN_UPGRADESSceneObjects[GREAT_FAIRY_FOUNTAIN_UPGRADESNumOfObjs] =
+ObjectInfo GREAT_FAIRY_FOUNTAIN_UPGRADESSceneObjects [GREAT_FAIRY_FOUNTAIN_UPGRADESNumOfObjs] =
 {
 	{ FAIRY_MAGIC_UPGRADE, GREAT_FAIRY_FOUNTAIN_UPGRADES, "Magic Upgrade", "OOT Great Fairy Magic Upgrade", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC, ObjectType::npc, ObjectIconMap::magic, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ FAIRY_MAGIC_UPGRADE2, GREAT_FAIRY_FOUNTAIN_UPGRADES, "Large Magic Upgrade", "OOT Great Fairy Magic Upgrade 2", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC2, ObjectType::npc, ObjectIconMap::double_magic, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1253,19 +1253,19 @@ ObjectInfo GREAT_FAIRY_FOUNTAIN_UPGRADESSceneObjects[GREAT_FAIRY_FOUNTAIN_UPGRAD
 };
 
 const size_t OOT_GREAT_FAIRY_MAGICNumOfObjs = 1;
-ObjectInfo OOT_GREAT_FAIRY_MAGICSceneObjects[OOT_GREAT_FAIRY_MAGICNumOfObjs] =
+ObjectInfo OOT_GREAT_FAIRY_MAGICSceneObjects [OOT_GREAT_FAIRY_MAGICNumOfObjs] =
 {
 	{ FAIRY_MAGIC_UPGRADE, GREAT_FAIRY_FOUNTAIN_UPGRADES, "Magic Upgrade", "OOT Great Fairy Magic Upgrade", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC, ObjectType::npc, ObjectIconMap::magic, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 
 const size_t OOT_GREAT_FAIRY_MAGIC2NumOfObjs = 1;
-ObjectInfo OOT_GREAT_FAIRY_MAGIC2SceneObjects[OOT_GREAT_FAIRY_MAGIC2NumOfObjs] =
+ObjectInfo OOT_GREAT_FAIRY_MAGIC2SceneObjects [OOT_GREAT_FAIRY_MAGIC2NumOfObjs] =
 {
 	{ FAIRY_MAGIC_UPGRADE2, GREAT_FAIRY_FOUNTAIN_UPGRADES, "Large Magic Upgrade", "OOT Great Fairy Magic Upgrade 2", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC2, ObjectType::npc, ObjectIconMap::double_magic, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 
 const size_t OOT_GROTTOSNumOfObjs = 174;
-ObjectInfo OOT_GROTTOSSceneObjects[OOT_GROTTOSNumOfObjs] =
+ObjectInfo OOT_GROTTOSSceneObjects [OOT_GROTTOSNumOfObjs] =
 {
 	{ 0x0c, OOT_GROTTOS, "Chest", "OOT Kokiri Forest Storms Grotto", ObjectType::chest, {684, 177, 0}, OOT_GROTTO_KOKIRI_FOREST_STORMS, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x02c02, OOT_GROTTOS, "Grass 1", "OOT Kokiri Forest Storms Grotto Grass 1", ObjectType::grass, {669, 158, 0}, OOT_GROTTO_KOKIRI_FOREST_STORMS, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1444,7 +1444,7 @@ ObjectInfo OOT_GROTTOSSceneObjects[OOT_GROTTOSNumOfObjs] =
 };
 
 const size_t OOT_GROTTO_KOKIRI_FOREST_STORMSNumOfObjs = 10;
-ObjectInfo OOT_GROTTO_KOKIRI_FOREST_STORMSSceneObjects[OOT_GROTTO_KOKIRI_FOREST_STORMSNumOfObjs] =
+ObjectInfo OOT_GROTTO_KOKIRI_FOREST_STORMSSceneObjects [OOT_GROTTO_KOKIRI_FOREST_STORMSNumOfObjs] =
 {
 	{ 0x0c, OOT_GROTTOS, "Chest", "OOT Kokiri Forest Storms Grotto", ObjectType::chest, {684, 177, 0}, OOT_GROTTO_KOKIRI_FOREST_STORMS, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x02c02, OOT_GROTTOS, "Grass 1", "OOT Kokiri Forest Storms Grotto Grass 1", ObjectType::grass, {669, 158, 0}, OOT_GROTTO_KOKIRI_FOREST_STORMS, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1459,7 +1459,7 @@ ObjectInfo OOT_GROTTO_KOKIRI_FOREST_STORMSSceneObjects[OOT_GROTTO_KOKIRI_FOREST_
 };
 
 const size_t OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADENumOfObjs = 4;
-ObjectInfo OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADESceneObjects[OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADENumOfObjs] =
+ObjectInfo OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADESceneObjects [OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADENumOfObjs] =
 {
 	{ 0x03, OOT_GROTTOS, "Deku Nuts Upgrade", "OOT Lost Woods Grotto Scrub Nuts Upgrade", ObjectType::scrub, {642, 328, 0}, OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x04, OOT_GROTTOS, "Back", "OOT Lost Woods Grotto Scrub Back", ObjectType::scrub, {718, 246, 0}, OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1468,7 +1468,7 @@ ObjectInfo OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADESceneObjects[OOT_GROTTO_LOST_WOODS
 };
 
 const size_t OOT_GROTTO_LOST_WOODS_GENERICNumOfObjs = 10;
-ObjectInfo OOT_GROTTO_LOST_WOODS_GENERICSceneObjects[OOT_GROTTO_LOST_WOODS_GENERICNumOfObjs] =
+ObjectInfo OOT_GROTTO_LOST_WOODS_GENERICSceneObjects [OOT_GROTTO_LOST_WOODS_GENERICNumOfObjs] =
 {
 	{ 0x14, OOT_GROTTOS, "Chest", "OOT Lost Woods Grotto Generic", ObjectType::chest, {684, 177, 0}, OOT_GROTTO_LOST_WOODS_GENERIC, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x03402, OOT_GROTTOS, "Grass 1", "OOT Lost Woods Grotto Generic Grass 1", ObjectType::grass, {669, 158, 0}, OOT_GROTTO_LOST_WOODS_GENERIC, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1483,20 +1483,20 @@ ObjectInfo OOT_GROTTO_LOST_WOODS_GENERICSceneObjects[OOT_GROTTO_LOST_WOODS_GENER
 };
 
 const size_t OOT_GROTTO_LOST_WOODS_THEATERNumOfObjs = 2;
-ObjectInfo OOT_GROTTO_LOST_WOODS_THEATERSceneObjects[OOT_GROTTO_LOST_WOODS_THEATERNumOfObjs] =
+ObjectInfo OOT_GROTTO_LOST_WOODS_THEATERSceneObjects [OOT_GROTTO_LOST_WOODS_THEATERNumOfObjs] =
 {
 	{ THEATER_STICKS, OOT_GROTTOS, "Deku Sticks Upgrade", "OOT Deku Theater Sticks Upgrade", ObjectType::npc, {727, 561, 0}, OOT_GROTTO_LOST_WOODS_THEATER, ObjectType::mask, ObjectIconMap::skull, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, "Speak to the dekus while wearing the <b>Skull Mask</b>.<br><br><b>Requirements:</b><br>- Skull Mask" },
 	{ THEATER_NUTS, OOT_GROTTOS, "Deku Nuts Upgrade", "OOT Deku Theater Nuts Upgrade", ObjectType::npc, {691, 561, 0}, OOT_GROTTO_LOST_WOODS_THEATER, ObjectType::mask, ObjectIconMap::truth, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, "Speak to the dekus while wearing the <b>Mask of Truth</b>.<br><br><b>Requirements:</b><br>- Mask of Truth (OoT)" }
 };
 
 const size_t OOT_GROTTO_SACRED_MEADOW_WOLFOSNumOfObjs = 1;
-ObjectInfo OOT_GROTTO_SACRED_MEADOW_WOLFOSSceneObjects[OOT_GROTTO_SACRED_MEADOW_WOLFOSNumOfObjs] =
+ObjectInfo OOT_GROTTO_SACRED_MEADOW_WOLFOSSceneObjects [OOT_GROTTO_SACRED_MEADOW_WOLFOSNumOfObjs] =
 {
 	{ 0x11, OOT_GROTTOS, "Chest", "OOT Sacred Meadow Grotto", ObjectType::chest, {670, 308, 0}, OOT_GROTTO_SACRED_MEADOW_WOLFOS, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 
 const size_t OOT_GROTTO_SACRED_MEADOW_STORMSNumOfObjs = 3;
-ObjectInfo OOT_GROTTO_SACRED_MEADOW_STORMSSceneObjects[OOT_GROTTO_SACRED_MEADOW_STORMSNumOfObjs] =
+ObjectInfo OOT_GROTTO_SACRED_MEADOW_STORMSSceneObjects [OOT_GROTTO_SACRED_MEADOW_STORMSNumOfObjs] =
 {
 	{ 0x05, OOT_GROTTOS, "Front", "OOT Sacred Meadow Storms Grotto Front Scrub", ObjectType::scrub, {714, 302, 0}, OOT_GROTTO_SACRED_MEADOW_STORMS, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x06, OOT_GROTTOS, "Back", "OOT Sacred Meadow Storms Grotto Back Scrub", ObjectType::scrub, {649, 207, 0}, OOT_GROTTO_SACRED_MEADOW_STORMS, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1504,13 +1504,13 @@ ObjectInfo OOT_GROTTO_SACRED_MEADOW_STORMSSceneObjects[OOT_GROTTO_SACRED_MEADOW_
 };
 
 const size_t OOT_GROTTO_KAKARIKO_REDEADNumOfObjs = 1;
-ObjectInfo OOT_GROTTO_KAKARIKO_REDEADSceneObjects[OOT_GROTTO_KAKARIKO_REDEADNumOfObjs] =
+ObjectInfo OOT_GROTTO_KAKARIKO_REDEADSceneObjects [OOT_GROTTO_KAKARIKO_REDEADNumOfObjs] =
 {
 	{ 0x0a, OOT_GROTTOS, "Redead", "OOT Kakariko Grotto Front", ObjectType::chest, {691, 284, 0}, OOT_GROTTO_KAKARIKO_REDEAD, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 
 const size_t OOT_GROTTO_KAKARIKO_OPENNumOfObjs = 10;
-ObjectInfo OOT_GROTTO_KAKARIKO_OPENSceneObjects[OOT_GROTTO_KAKARIKO_OPENNumOfObjs] =
+ObjectInfo OOT_GROTTO_KAKARIKO_OPENSceneObjects [OOT_GROTTO_KAKARIKO_OPENNumOfObjs] =
 {
 	{ 0x08, OOT_GROTTOS, "Chest", "OOT Kakariko Grotto Back", ObjectType::chest, {684, 177, 0}, OOT_GROTTO_KAKARIKO_OPEN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x02802, OOT_GROTTOS, "Grass 1", "OOT Kakariko Grotto Back Grass 1", ObjectType::grass, {669, 158, 0}, OOT_GROTTO_KAKARIKO_OPEN, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1525,7 +1525,7 @@ ObjectInfo OOT_GROTTO_KAKARIKO_OPENSceneObjects[OOT_GROTTO_KAKARIKO_OPENNumOfObj
 };
 
 const size_t OOT_GROTTO_DEATH_TRIAL_STORMSNumOfObjs = 10;
-ObjectInfo OOT_GROTTO_DEATH_TRIAL_STORMSSceneObjects[OOT_GROTTO_DEATH_TRIAL_STORMSNumOfObjs] =
+ObjectInfo OOT_GROTTO_DEATH_TRIAL_STORMSSceneObjects [OOT_GROTTO_DEATH_TRIAL_STORMSNumOfObjs] =
 {
 	{ 0x17, OOT_GROTTOS, "Chest", "OOT Death Mountain Trail Grotto", ObjectType::chest, {684, 177, 0}, OOT_GROTTO_DEATH_TRIAL_STORMS, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x03702, OOT_GROTTOS, "Grass 1", "OOT Death Mountain Trail Grotto Grass 1", ObjectType::grass, {669, 158, 0}, OOT_GROTTO_DEATH_TRIAL_STORMS, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1540,7 +1540,7 @@ ObjectInfo OOT_GROTTO_DEATH_TRIAL_STORMSSceneObjects[OOT_GROTTO_DEATH_TRIAL_STOR
 };
 
 const size_t OOT_GROTTO_GORON_CITY_SCRUBSNumOfObjs = 4;
-ObjectInfo OOT_GROTTO_GORON_CITY_SCRUBSSceneObjects[OOT_GROTTO_GORON_CITY_SCRUBSNumOfObjs] =
+ObjectInfo OOT_GROTTO_GORON_CITY_SCRUBSSceneObjects [OOT_GROTTO_GORON_CITY_SCRUBSNumOfObjs] =
 {
 	{ 0x0b, OOT_GROTTOS, "Left", "OOT Goron City Grotto Left Scrub", ObjectType::scrub, {457, 344, 0}, OOT_GROTTO_GORON_CITY_SCRUBS, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0c, OOT_GROTTOS, "Center", "OOT Goron City Grotto Center Scrub", ObjectType::scrub, {691, 124, 0}, OOT_GROTTO_GORON_CITY_SCRUBS, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1549,7 +1549,7 @@ ObjectInfo OOT_GROTTO_GORON_CITY_SCRUBSSceneObjects[OOT_GROTTO_GORON_CITY_SCRUBS
 };
 
 const size_t OOT_GROTTO_DEATH_CRATER_GENERICNumOfObjs = 10;
-ObjectInfo OOT_GROTTO_DEATH_CRATER_GENERICSceneObjects[OOT_GROTTO_DEATH_CRATER_GENERICNumOfObjs] =
+ObjectInfo OOT_GROTTO_DEATH_CRATER_GENERICSceneObjects [OOT_GROTTO_DEATH_CRATER_GENERICNumOfObjs] =
 {
 	{ 0x1a, OOT_GROTTOS, "Chest", "OOT Death Mountain Crater Grotto", ObjectType::chest, {684, 177, 0}, OOT_GROTTO_DEATH_CRATER_GENERIC, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x03a02, OOT_GROTTOS, "Grass 1", "OOT Death Mountain Crater Grotto Grass 1", ObjectType::grass, {669, 158, 0}, OOT_GROTTO_DEATH_CRATER_GENERIC, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1564,7 +1564,7 @@ ObjectInfo OOT_GROTTO_DEATH_CRATER_GENERICSceneObjects[OOT_GROTTO_DEATH_CRATER_G
 };
 
 const size_t OOT_GROTTO_DEATH_CRATER_SCRUBSNumOfObjs = 4;
-ObjectInfo OOT_GROTTO_DEATH_CRATER_SCRUBSSceneObjects[OOT_GROTTO_DEATH_CRATER_SCRUBSNumOfObjs] =
+ObjectInfo OOT_GROTTO_DEATH_CRATER_SCRUBSSceneObjects [OOT_GROTTO_DEATH_CRATER_SCRUBSNumOfObjs] =
 {
 	{ 0x0f, OOT_GROTTOS, "Left", "OOT Death Mountain Crater Grotto Left Scrub", ObjectType::scrub, {457, 344, 0}, OOT_GROTTO_DEATH_CRATER_SCRUBS, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x10, OOT_GROTTOS, "Center", "OOT Death Mountain Crater Grotto Center Scrub", ObjectType::scrub, {691, 124, 0}, OOT_GROTTO_DEATH_CRATER_SCRUBS, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1573,7 +1573,7 @@ ObjectInfo OOT_GROTTO_DEATH_CRATER_SCRUBSSceneObjects[OOT_GROTTO_DEATH_CRATER_SC
 };
 
 const size_t OOT_GROTTO_ZORA_RIVER_GENERICNumOfObjs = 10;
-ObjectInfo OOT_GROTTO_ZORA_RIVER_GENERICSceneObjects[OOT_GROTTO_ZORA_RIVER_GENERICNumOfObjs] =
+ObjectInfo OOT_GROTTO_ZORA_RIVER_GENERICSceneObjects [OOT_GROTTO_ZORA_RIVER_GENERICNumOfObjs] =
 {
 	{ 0x09, OOT_GROTTOS, "Chest", "OOT Zora River Grotto", ObjectType::chest, {684, 177, 0}, OOT_GROTTO_ZORA_RIVER_GENERIC, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x02902, OOT_GROTTOS, "Grass 1", "OOT Zora River Grotto Grass 1", ObjectType::grass, {669, 158, 0}, OOT_GROTTO_ZORA_RIVER_GENERIC, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1588,7 +1588,7 @@ ObjectInfo OOT_GROTTO_ZORA_RIVER_GENERICSceneObjects[OOT_GROTTO_ZORA_RIVER_GENER
 };
 
 const size_t OOT_GROTTO_ZORA_RIVER_STORMSNumOfObjs = 3;
-ObjectInfo OOT_GROTTO_ZORA_RIVER_STORMSSceneObjects[OOT_GROTTO_ZORA_RIVER_STORMSNumOfObjs] =
+ObjectInfo OOT_GROTTO_ZORA_RIVER_STORMSSceneObjects [OOT_GROTTO_ZORA_RIVER_STORMSNumOfObjs] =
 {
 	{ 0x12, OOT_GROTTOS, "Scrub - Front", "OOT Zora River Storms Grotto Front Scrub", ObjectType::scrub, {714, 302, 0}, OOT_GROTTO_ZORA_RIVER_STORMS, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x13, OOT_GROTTOS, "Scrub - Back", "OOT Zora River Storms Grotto Back Scrub", ObjectType::scrub, {649, 207, 0}, OOT_GROTTO_ZORA_RIVER_STORMS, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1596,7 +1596,7 @@ ObjectInfo OOT_GROTTO_ZORA_RIVER_STORMSSceneObjects[OOT_GROTTO_ZORA_RIVER_STORMS
 };
 
 const size_t OOT_GROTTO_LAKE_HYLIA_SCRUBSNumOfObjs = 4;
-ObjectInfo OOT_GROTTO_LAKE_HYLIA_SCRUBSSceneObjects[OOT_GROTTO_LAKE_HYLIA_SCRUBSNumOfObjs] =
+ObjectInfo OOT_GROTTO_LAKE_HYLIA_SCRUBSSceneObjects [OOT_GROTTO_LAKE_HYLIA_SCRUBSNumOfObjs] =
 {
 	{ 0x14, OOT_GROTTOS, "Left", "OOT Lake Hylia Grotto Left Scrub", ObjectType::scrub, {457, 344, 0}, OOT_GROTTO_LAKE_HYLIA_SCRUBS, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x15, OOT_GROTTOS, "Center", "OOT Lake Hylia Grotto Center Scrub", ObjectType::scrub, {691, 124, 0}, OOT_GROTTO_LAKE_HYLIA_SCRUBS, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1605,7 +1605,7 @@ ObjectInfo OOT_GROTTO_LAKE_HYLIA_SCRUBSSceneObjects[OOT_GROTTO_LAKE_HYLIA_SCRUBS
 };
 
 const size_t OOT_GROTTO_LON_LON_SCRUBSNumOfObjs = 4;
-ObjectInfo OOT_GROTTO_LON_LON_SCRUBSSceneObjects[OOT_GROTTO_LON_LON_SCRUBSNumOfObjs] =
+ObjectInfo OOT_GROTTO_LON_LON_SCRUBSSceneObjects [OOT_GROTTO_LON_LON_SCRUBSNumOfObjs] =
 {
 	{ 0x08, OOT_GROTTOS, "Left", "OOT Lon Lon Ranch Grotto Left Scrub", ObjectType::scrub, {457, 344, 0}, OOT_GROTTO_LON_LON_SCRUBS, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x09, OOT_GROTTOS, "Center", "OOT Lon Lon Ranch Grotto Center Scrub", ObjectType::scrub, {691, 124, 0}, OOT_GROTTO_LON_LON_SCRUBS, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1614,7 +1614,7 @@ ObjectInfo OOT_GROTTO_LON_LON_SCRUBSSceneObjects[OOT_GROTTO_LON_LON_SCRUBSNumOfO
 };
 
 const size_t OOT_GROTTO_HYRULE_SCRUBSNumOfObjs = 3;
-ObjectInfo OOT_GROTTO_HYRULE_SCRUBSSceneObjects[OOT_GROTTO_HYRULE_SCRUBSNumOfObjs] =
+ObjectInfo OOT_GROTTO_HYRULE_SCRUBSSceneObjects [OOT_GROTTO_HYRULE_SCRUBSNumOfObjs] =
 {
 	{ 0x07, OOT_GROTTOS, "Scrub", "OOT Hyrule Field Grotto Scrub HP", ObjectType::scrub, {703, 186, 0}, OOT_GROTTO_HYRULE_SCRUBS, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00102, OOT_GROTTOS, "Big Fairy", "OOT Hyrule Field Grotto Scrub Big Fairy", ObjectType::fairy_spot, {751, 310, 0}, OOT_GROTTO_HYRULE_SCRUBS, ObjectType::fairy_spot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1622,7 +1622,7 @@ ObjectInfo OOT_GROTTO_HYRULE_SCRUBSSceneObjects[OOT_GROTTO_HYRULE_SCRUBSNumOfObj
 };
 
 const size_t OOT_GROTTO_HYRULE_SENumOfObjs = 10;
-ObjectInfo OOT_GROTTO_HYRULE_SESceneObjects[OOT_GROTTO_HYRULE_SENumOfObjs] =
+ObjectInfo OOT_GROTTO_HYRULE_SESceneObjects [OOT_GROTTO_HYRULE_SENumOfObjs] =
 {
 	{ 0x02, OOT_GROTTOS, "Chest", "OOT Hyrule Field Grotto Southeast", ObjectType::chest, {684, 177, 0}, OOT_GROTTO_HYRULE_SE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x02202, OOT_GROTTOS, "Grass 1", "OOT Hyrule Field Grotto Southeast Grass 1", ObjectType::grass, {669, 158, 0}, OOT_GROTTO_HYRULE_SE, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1637,7 +1637,7 @@ ObjectInfo OOT_GROTTO_HYRULE_SESceneObjects[OOT_GROTTO_HYRULE_SENumOfObjs] =
 };
 
 const size_t OOT_GROTTO_HYRULE_OPENNumOfObjs = 10;
-ObjectInfo OOT_GROTTO_HYRULE_OPENSceneObjects[OOT_GROTTO_HYRULE_OPENNumOfObjs] =
+ObjectInfo OOT_GROTTO_HYRULE_OPENSceneObjects [OOT_GROTTO_HYRULE_OPENNumOfObjs] =
 {
 	{ 0x03, OOT_GROTTOS, "Chest", "OOT Hyrule Field Grotto Open", ObjectType::chest, {684, 177, 0}, OOT_GROTTO_HYRULE_OPEN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x02302, OOT_GROTTOS, "Grass 1", "OOT Hyrule Field Grotto Open Grass 1", ObjectType::grass, {669, 158, 0}, OOT_GROTTO_HYRULE_OPEN, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1652,7 +1652,7 @@ ObjectInfo OOT_GROTTO_HYRULE_OPENSceneObjects[OOT_GROTTO_HYRULE_OPENNumOfObjs] =
 };
 
 const size_t OOT_GROTTO_HYRULE_MARKETNumOfObjs = 10;
-ObjectInfo OOT_GROTTO_HYRULE_MARKETSceneObjects[OOT_GROTTO_HYRULE_MARKETNumOfObjs] =
+ObjectInfo OOT_GROTTO_HYRULE_MARKETSceneObjects [OOT_GROTTO_HYRULE_MARKETNumOfObjs] =
 {
 	{ 0x00, OOT_GROTTOS, "Chest", "OOT Hyrule Field Grotto Market", ObjectType::chest, {684, 177, 0}, OOT_GROTTO_HYRULE_MARKET, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x02002, OOT_GROTTOS, "Grass 1", "OOT Hyrule Field Grotto Market Grass 1", ObjectType::grass, {669, 158, 0}, OOT_GROTTO_HYRULE_MARKET, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1667,19 +1667,19 @@ ObjectInfo OOT_GROTTO_HYRULE_MARKETSceneObjects[OOT_GROTTO_HYRULE_MARKETNumOfObj
 };
 
 const size_t OOT_GROTTO_HYRULE_TEKTITENumOfObjs = 1;
-ObjectInfo OOT_GROTTO_HYRULE_TEKTITESceneObjects[OOT_GROTTO_HYRULE_TEKTITENumOfObjs] =
+ObjectInfo OOT_GROTTO_HYRULE_TEKTITESceneObjects [OOT_GROTTO_HYRULE_TEKTITENumOfObjs] =
 {
 	{ 0x01, OOT_GROTTOS, "Underwater", "OOT Hyrule Field Grotto Tektite HP", ObjectType::collectible, {723, 253, 0}, OOT_GROTTO_HYRULE_TEKTITE, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 
 const size_t OOT_GROTTO_HYRULE_KAKARIKONumOfObjs = 1;
-ObjectInfo OOT_GROTTO_HYRULE_KAKARIKOSceneObjects[OOT_GROTTO_HYRULE_KAKARIKONumOfObjs] =
+ObjectInfo OOT_GROTTO_HYRULE_KAKARIKOSceneObjects [OOT_GROTTO_HYRULE_KAKARIKONumOfObjs] =
 {
 	{ 0x59, OOT_GROTTOS, "Web", "OOT Hyrule Field Grotto Near Kakariko GS", ObjectType::gs, {802, 162, 0}, OOT_GROTTO_HYRULE_KAKARIKO, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 
 const size_t OOT_GROTTO_HYRULE_GERUDONumOfObjs = 6;
-ObjectInfo OOT_GROTTO_HYRULE_GERUDOSceneObjects[OOT_GROTTO_HYRULE_GERUDONumOfObjs] =
+ObjectInfo OOT_GROTTO_HYRULE_GERUDOSceneObjects [OOT_GROTTO_HYRULE_GERUDONumOfObjs] =
 {
 	{ 0x58, OOT_GROTTOS, "Web", "OOT Hyrule Field Grotto Near Gerudo GS", ObjectType::gs, {160, 690, 0}, OOT_GROTTO_HYRULE_GERUDO, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00402, OOT_GROTTOS, "Grass 1", "OOT Hyrule Field Grotto Near Gerudo Grass 1", ObjectType::grass, {387, 620, 0}, OOT_GROTTO_HYRULE_GERUDO, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1690,7 +1690,7 @@ ObjectInfo OOT_GROTTO_HYRULE_GERUDOSceneObjects[OOT_GROTTO_HYRULE_GERUDONumOfObj
 };
 
 const size_t OOT_GROTTO_CASTLE_STORMSNumOfObjs = 13;
-ObjectInfo OOT_GROTTO_CASTLE_STORMSSceneObjects[OOT_GROTTO_CASTLE_STORMSNumOfObjs] =
+ObjectInfo OOT_GROTTO_CASTLE_STORMSSceneObjects [OOT_GROTTO_CASTLE_STORMSNumOfObjs] =
 {
 	{ 0x79, OOT_GROTTOS, "Web", "OOT Hyrule Castle GS Grotto", ObjectType::gs, {520, 715, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0806, OOT_GROTTOS, "Pot 1", "OOT Hyrule Castle Grotto Pot 1", ObjectType::pot, {708, 422, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1708,7 +1708,7 @@ ObjectInfo OOT_GROTTO_CASTLE_STORMSSceneObjects[OOT_GROTTO_CASTLE_STORMSNumOfObj
 };
 
 const size_t OOT_GROTTO_VALLEY_STORMSNumOfObjs = 3;
-ObjectInfo OOT_GROTTO_VALLEY_STORMSSceneObjects[OOT_GROTTO_VALLEY_STORMSNumOfObjs] =
+ObjectInfo OOT_GROTTO_VALLEY_STORMSSceneObjects [OOT_GROTTO_VALLEY_STORMSNumOfObjs] =
 {
 	{ 0x17, OOT_GROTTOS, "Front", "OOT Gerudo Valley Grotto Front Scrub", ObjectType::scrub, {714, 302, 0}, OOT_GROTTO_VALLEY_STORMS, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x18, OOT_GROTTOS, "Back", "OOT Gerudo Valley Grotto Back Scrub", ObjectType::scrub, {649, 207, 0}, OOT_GROTTO_VALLEY_STORMS, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1716,7 +1716,7 @@ ObjectInfo OOT_GROTTO_VALLEY_STORMSSceneObjects[OOT_GROTTO_VALLEY_STORMSNumOfObj
 };
 
 const size_t OOT_GROTTO_VALLEY_OCTOROKNumOfObjs = 8;
-ObjectInfo OOT_GROTTO_VALLEY_OCTOROKSceneObjects[OOT_GROTTO_VALLEY_OCTOROKNumOfObjs] =
+ObjectInfo OOT_GROTTO_VALLEY_OCTOROKSceneObjects [OOT_GROTTO_VALLEY_OCTOROKNumOfObjs] =
 {
 	{ 0x00501, OOT_GROTTOS, "Rupee 1", "OOT Gerudo Valley Octorok Grotto Rupee 1", ObjectType::rupee, {640, 305, 0}, OOT_GROTTO_VALLEY_OCTOROK, ObjectType::rupee, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00502, OOT_GROTTOS, "Rupee 2", "OOT Gerudo Valley Octorok Grotto Rupee 2", ObjectType::rupee, {704, 257, 0}, OOT_GROTTO_VALLEY_OCTOROK, ObjectType::rupee, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1729,7 +1729,7 @@ ObjectInfo OOT_GROTTO_VALLEY_OCTOROKSceneObjects[OOT_GROTTO_VALLEY_OCTOROKNumOfO
 };
 
 const size_t OOT_GROTTO_DESERT_SCRUBSNumOfObjs = 3;
-ObjectInfo OOT_GROTTO_DESERT_SCRUBSSceneObjects[OOT_GROTTO_DESERT_SCRUBSNumOfObjs] =
+ObjectInfo OOT_GROTTO_DESERT_SCRUBSSceneObjects [OOT_GROTTO_DESERT_SCRUBSNumOfObjs] =
 {
 	{ 0x19, OOT_GROTTOS, "Front", "OOT Desert Colossus Grotto Front Scrub", ObjectType::scrub, {714, 302, 0}, OOT_GROTTO_DESERT_SCRUBS, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x1a, OOT_GROTTOS, "Back", "OOT Desert Colossus Grotto Back Scrub", ObjectType::scrub, {649, 207, 0}, OOT_GROTTO_DESERT_SCRUBS, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1737,7 +1737,7 @@ ObjectInfo OOT_GROTTO_DESERT_SCRUBSSceneObjects[OOT_GROTTO_DESERT_SCRUBSNumOfObj
 };
 
 const size_t GUARD_HOUSENumOfObjs = 61;
-ObjectInfo GUARD_HOUSESceneObjects[GUARD_HOUSENumOfObjs] =
+ObjectInfo GUARD_HOUSESceneObjects [GUARD_HOUSENumOfObjs] =
 {
 	{ POE_COLLECTOR, GUARD_HOUSE, "Bottle", "OOT Market Pot House Big Poes", ObjectType::npc, {139, 533, 0}, GUARD_HOUSE, ObjectType::npc, ObjectIconMap::bottle, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x7b, GUARD_HOUSE, "Crate", "OOT Market Pot House GS", ObjectType::gs, {195, 426, 0}, GUARD_HOUSE, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1803,7 +1803,7 @@ ObjectInfo GUARD_HOUSESceneObjects[GUARD_HOUSENumOfObjs] =
 };
 
 const size_t HAUNTED_WASTELANDNumOfObjs = 12;
-ObjectInfo HAUNTED_WASTELANDSceneObjects[HAUNTED_WASTELANDNumOfObjs] =
+ObjectInfo HAUNTED_WASTELANDSceneObjects [HAUNTED_WASTELANDNumOfObjs] =
 {
 	{ 0x00, HAUNTED_WASTELAND, "Stele", "OOT Haunted Wasteland Chest", ObjectType::chest, {199, 225, 0}, HAUNTED_WASTELAND, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0xb1, HAUNTED_WASTELAND, "Stele", "OOT Haunted Wasteland GS", ObjectType::gs, {169, 208, 0}, HAUNTED_WASTELAND, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1820,7 +1820,7 @@ ObjectInfo HAUNTED_WASTELANDSceneObjects[HAUNTED_WASTELANDNumOfObjs] =
 };
 
 const size_t HOUSE_OF_SKULLTULANumOfObjs = 5;
-ObjectInfo HOUSE_OF_SKULLTULASceneObjects[HOUSE_OF_SKULLTULANumOfObjs] =
+ObjectInfo HOUSE_OF_SKULLTULASceneObjects [HOUSE_OF_SKULLTULANumOfObjs] =
 {
 	{ GS_10, HOUSE_OF_SKULLTULA, "10 Tokens", "OOT Skulltula House 10 Tokens", ObjectType::npc, {657, 431, 0}, HOUSE_OF_SKULLTULA, ObjectType::npc, ObjectIconMap::wallet, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ GS_20, HOUSE_OF_SKULLTULA, "20 Tokens", "OOT Skulltula House 20 Tokens", ObjectType::npc, {287, 434, 0}, HOUSE_OF_SKULLTULA, ObjectType::npc, ObjectIconMap::agony, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1830,7 +1830,7 @@ ObjectInfo HOUSE_OF_SKULLTULASceneObjects[HOUSE_OF_SKULLTULANumOfObjs] =
 };
 
 const size_t HYRULE_CASTLENumOfObjs = 52;
-ObjectInfo HYRULE_CASTLESceneObjects[HYRULE_CASTLENumOfObjs] =
+ObjectInfo HYRULE_CASTLESceneObjects [HYRULE_CASTLENumOfObjs] =
 {
 	{ WEIRD_EGG, OOT_GROTTOS, "Hatch - Chicken", "OOT Hatch Chicken", ObjectType::npc, {138, 210, 0}, HYRULE_CASTLE, ObjectType::egg, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ MALON_EGG, HYRULE_CASTLE, "Malon Egg", "OOT Malon Egg", ObjectType::npc, {131, 243, 0}, HYRULE_CASTLE, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1887,7 +1887,7 @@ ObjectInfo HYRULE_CASTLESceneObjects[HYRULE_CASTLENumOfObjs] =
 };
 
 const size_t HYRULE_FIELDNumOfObjs = 222;
-ObjectInfo HYRULE_FIELDSceneObjects[HYRULE_FIELDNumOfObjs] =
+ObjectInfo HYRULE_FIELDSceneObjects [HYRULE_FIELDNumOfObjs] =
 {
 	{ OCARINA_TIME_ITEM, HYRULE_FIELD, "Ocarina of Time", "OOT Hyrule Field Ocarina of Time", ObjectType::npc, {793, 155, 0}, HYRULE_FIELD, ObjectType::ocarina, ObjectIconMap::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ OCARINA_TIME_SONG, HYRULE_FIELD, "Song of Time", "OOT Hyrule Field Song of Time", ObjectType::npc, {777, 155, 0}, HYRULE_FIELD, ObjectType::song, ObjectIconMap::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -2114,7 +2114,7 @@ ObjectInfo HYRULE_FIELDSceneObjects[HYRULE_FIELDNumOfObjs] =
 };
 
 const size_t ICE_CAVERNNumOfObjs = 144;
-ObjectInfo ICE_CAVERNSceneObjects[ICE_CAVERNNumOfObjs] =
+ObjectInfo ICE_CAVERNSceneObjects [ICE_CAVERNNumOfObjs] =
 {
 	{ 0x02, ICE_CAVERN, "Iron Boots", "OOT Ice Cavern Iron Boots", ObjectType::chest, {560, 347, 0}, ICE_CAVERN, ObjectType::chest, ObjectIconMap::iron, ObjectContext::All, 5, GameLayout::oot, LocType::dungeon, NULL },
 	{ 0x00, ICE_CAVERN, "Chest", "OOT Ice Cavern Map", ObjectType::chest, {538, 129, 0}, ICE_CAVERN, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 3, GameLayout::oot, LocType::dungeon, NULL },
@@ -2263,7 +2263,7 @@ ObjectInfo ICE_CAVERNSceneObjects[ICE_CAVERNNumOfObjs] =
 };
 
 const size_t IMPA_HOUSENumOfObjs = 3;
-ObjectInfo IMPA_HOUSESceneObjects[IMPA_HOUSENumOfObjs] =
+ObjectInfo IMPA_HOUSESceneObjects [IMPA_HOUSENumOfObjs] =
 {
 	{ 0x01, IMPA_HOUSE, "Jail", "OOT Kakariko Impa House HP", ObjectType::collectible, {575, 411, 0}, IMPA_HOUSE, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00006, IMPA_HOUSE, "Above Jail", "OOT Kakariko Impa House Wonder Item", ObjectType::wonder, {643, 295, 0}, IMPA_HOUSE, ObjectType::wonder, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -2271,7 +2271,7 @@ ObjectInfo IMPA_HOUSESceneObjects[IMPA_HOUSENumOfObjs] =
 };
 
 const size_t INSIDE_GANON_CASTLENumOfObjs = 180;
-ObjectInfo INSIDE_GANON_CASTLESceneObjects[INSIDE_GANON_CASTLENumOfObjs] =
+ObjectInfo INSIDE_GANON_CASTLESceneObjects [INSIDE_GANON_CASTLENumOfObjs] =
 {
 	{ 0x06, INSIDE_GANON_CASTLE, "Water Trial - Chest 1", "OOT Ganon Castle Water Chest 1", ObjectType::chest, {687, 259, 0}, INSIDE_GANON_CASTLE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 1, GameLayout::oot, LocType::dungeon, NULL },
 	{ 0x07, INSIDE_GANON_CASTLE, "Water Trial - Chest 2", "OOT Ganon Castle Water Chest 2", ObjectType::chest, {692, 404, 0}, INSIDE_GANON_CASTLE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 1, GameLayout::oot, LocType::dungeon, NULL },
@@ -2456,7 +2456,7 @@ ObjectInfo INSIDE_GANON_CASTLESceneObjects[INSIDE_GANON_CASTLENumOfObjs] =
 };
 
 const size_t INSIDE_JABU_JABUNumOfObjs = 100;
-ObjectInfo INSIDE_JABU_JABUSceneObjects[INSIDE_JABU_JABUNumOfObjs] =
+ObjectInfo INSIDE_JABU_JABUSceneObjects [INSIDE_JABU_JABUNumOfObjs] =
 {
 	{ 0x02, INSIDE_JABU_JABU, "Chest", "OOT Jabu-Jabu Map Chest", ObjectType::chest, {101, 387, 0}, INSIDE_JABU_JABU, ObjectType::map, ObjectIconMap::render_type, ObjectContext::All, 1, GameLayout::oot, LocType::dungeon, NULL },
 	{ 0x04, INSIDE_JABU_JABU, "Chest", "OOT Jabu-Jabu Compass Chest", ObjectType::chest, {345, 184, 0}, INSIDE_JABU_JABU, ObjectType::compass, ObjectIconMap::render_type, ObjectContext::All, 1, GameLayout::oot, LocType::dungeon, NULL },
@@ -2561,7 +2561,7 @@ ObjectInfo INSIDE_JABU_JABUSceneObjects[INSIDE_JABU_JABUNumOfObjs] =
 };
 
 const size_t KAKARIKO_POTION_SHOPNumOfObjs = 9;
-ObjectInfo KAKARIKO_POTION_SHOPSceneObjects[KAKARIKO_POTION_SHOPNumOfObjs] =
+ObjectInfo KAKARIKO_POTION_SHOPSceneObjects [KAKARIKO_POTION_SHOPNumOfObjs] =
 {
 	{ TRADE_ODD_POTION, KAKARIKO_POTION_SHOP, "Odd Potion", "OOT Kakariko Potion Shop Odd Potion", ObjectType::npc, {474, 520, 0}, GRANNY_POTION_SHOP, ObjectType::npc, ObjectIconMap::mushroom, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x38, KAKARIKO_POTION_SHOP, "Item 1", "OOT Kakariko Potion Shop Item 1", ObjectType::shop, {465, 277, 0}, KAKARIKO_POTION_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -2575,13 +2575,13 @@ ObjectInfo KAKARIKO_POTION_SHOPSceneObjects[KAKARIKO_POTION_SHOPNumOfObjs] =
 };
 
 const size_t GRANNY_POTION_SHOPNumOfObjs = 1;
-ObjectInfo GRANNY_POTION_SHOPSceneObjects[GRANNY_POTION_SHOPNumOfObjs] =
+ObjectInfo GRANNY_POTION_SHOPSceneObjects [GRANNY_POTION_SHOPNumOfObjs] =
 {
 	{ TRADE_ODD_POTION, KAKARIKO_POTION_SHOP, "Odd Potion", "OOT Kakariko Potion Shop Odd Potion", ObjectType::npc, {474, 520, 0}, GRANNY_POTION_SHOP, ObjectType::npc, ObjectIconMap::mushroom, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 
 const size_t KAKARIKO_VILLAGENumOfObjs = 95;
-ObjectInfo KAKARIKO_VILLAGESceneObjects[KAKARIKO_VILLAGENumOfObjs] =
+ObjectInfo KAKARIKO_VILLAGESceneObjects [KAKARIKO_VILLAGENumOfObjs] =
 {
 	{ POCKET_EGG, OOT_GROTTOS, "Hatch - Pocket Cucco", "OOT Hatch Pocket Cucco", ObjectType::npc, {396, 132, 0}, KAKARIKO_VILLAGE, ObjectType::egg, ObjectIconMap::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ ANJU_BOTTLE, KAKARIKO_VILLAGE, "Bottle", "OOT Kakariko Anju Bottle", ObjectType::npc, {396, 150, 0}, KAKARIKO_VILLAGE, ObjectType::npc, ObjectIconMap::bottle, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -2681,7 +2681,7 @@ ObjectInfo KAKARIKO_VILLAGESceneObjects[KAKARIKO_VILLAGENumOfObjs] =
 };
 
 const size_t KOKIRI_FORESTNumOfObjs = 119;
-ObjectInfo KOKIRI_FORESTSceneObjects[KOKIRI_FORESTNumOfObjs] =
+ObjectInfo KOKIRI_FORESTSceneObjects [KOKIRI_FORESTNumOfObjs] =
 {
 	{ 0x00, KOKIRI_FOREST, "Kokiri Sword", "OOT Kokiri Forest Kokiri Sword Chest", ObjectType::chest, {953, 1406, 0}, KOKIRI_FOREST, ObjectType::chest, ObjectIconMap::kokiri, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x68, KOKIRI_FOREST, "Soil", "OOT Kokiri Forest GS Soil", ObjectType::gs, {1055, 200, 0}, KOKIRI_FOREST, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -2805,14 +2805,14 @@ ObjectInfo KOKIRI_FORESTSceneObjects[KOKIRI_FORESTNumOfObjs] =
 };
 
 const size_t KOKIRI_KNOW_IT_ALLNumOfObjs = 2;
-ObjectInfo KOKIRI_KNOW_IT_ALLSceneObjects[KOKIRI_KNOW_IT_ALLNumOfObjs] =
+ObjectInfo KOKIRI_KNOW_IT_ALLSceneObjects [KOKIRI_KNOW_IT_ALLNumOfObjs] =
 {
 	{ 0x0006, KOKIRI_KNOW_IT_ALL, "Pot 1", "OOT Know It All House Pot 1", ObjectType::pot, {972, 505, 0}, KOKIRI_KNOW_IT_ALL, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0007, KOKIRI_KNOW_IT_ALL, "Pot 2", "OOT Know It All House Pot 2", ObjectType::pot, {840, 234, 0}, KOKIRI_KNOW_IT_ALL, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 
 const size_t KOKIRI_MIDONumOfObjs = 4;
-ObjectInfo KOKIRI_MIDOSceneObjects[KOKIRI_MIDONumOfObjs] =
+ObjectInfo KOKIRI_MIDOSceneObjects [KOKIRI_MIDONumOfObjs] =
 {
 	{ 0x00, KOKIRI_MIDO, "Top Left", "OOT Mido's House Top Left", ObjectType::chest, {618, 558, 0}, KOKIRI_MIDO, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x01, KOKIRI_MIDO, "Top Right", "OOT Mido's House Top Right", ObjectType::chest, {619, 414, 0}, KOKIRI_MIDO, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -2821,7 +2821,7 @@ ObjectInfo KOKIRI_MIDOSceneObjects[KOKIRI_MIDONumOfObjs] =
 };
 
 const size_t KOKIRI_SARIANumOfObjs = 4;
-ObjectInfo KOKIRI_SARIASceneObjects[KOKIRI_SARIANumOfObjs] =
+ObjectInfo KOKIRI_SARIASceneObjects [KOKIRI_SARIANumOfObjs] =
 {
 	{ 0x00002, KOKIRI_SARIA, "Heart 1", "OOT Saria's House Heart 1", ObjectType::heart, {420, 377, 0}, KOKIRI_SARIA, ObjectType::heart, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00003, KOKIRI_SARIA, "Heart 2", "OOT Saria's House Heart 2", ObjectType::heart, {420, 256, 0}, KOKIRI_SARIA, ObjectType::heart, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -2830,7 +2830,7 @@ ObjectInfo KOKIRI_SARIASceneObjects[KOKIRI_SARIANumOfObjs] =
 };
 
 const size_t KOKIRI_SHOPNumOfObjs = 9;
-ObjectInfo KOKIRI_SHOPSceneObjects[KOKIRI_SHOPNumOfObjs] =
+ObjectInfo KOKIRI_SHOPSceneObjects [KOKIRI_SHOPNumOfObjs] =
 {
 	{ 0x00, KOKIRI_SHOP, "Item 1", "OOT Kokiri Shop Item 1", ObjectType::shop, {337, 334, 0}, KOKIRI_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x01, KOKIRI_SHOP, "Item 2", "OOT Kokiri Shop Item 2", ObjectType::shop, {387, 334, 0}, KOKIRI_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -2844,14 +2844,14 @@ ObjectInfo KOKIRI_SHOPSceneObjects[KOKIRI_SHOPNumOfObjs] =
 };
 
 const size_t KOKIRI_TWINSNumOfObjs = 2;
-ObjectInfo KOKIRI_TWINSSceneObjects[KOKIRI_TWINSNumOfObjs] =
+ObjectInfo KOKIRI_TWINSSceneObjects [KOKIRI_TWINSNumOfObjs] =
 {
 	{ 0x0002, KOKIRI_TWINS, "Pot 1", "OOT Twins House Pot 1", ObjectType::pot, {663, 558, 0}, KOKIRI_TWINS, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0003, KOKIRI_TWINS, "Pot 2", "OOT Twins House Pot 2", ObjectType::pot, {660, 394, 0}, KOKIRI_TWINS, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 
 const size_t OOT_LABORATORYNumOfObjs = 6;
-ObjectInfo OOT_LABORATORYSceneObjects[OOT_LABORATORYNumOfObjs] =
+ObjectInfo OOT_LABORATORYSceneObjects [OOT_LABORATORYNumOfObjs] =
 {
 	{ LABORATORY_DIVE, OOT_LABORATORY, "Golden Scale Dive", "OOT Laboratory Dive", ObjectType::npc, {499, 476, 0}, OOT_LABORATORY, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ TRADE_EYE_DROPS, OOT_LABORATORY, "Eye Drops", "OOT Laboratory Eye Drops", ObjectType::npc, {592, 449, 0}, OOT_LABORATORY, ObjectType::npc, ObjectIconMap::frog, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -2862,7 +2862,7 @@ ObjectInfo OOT_LABORATORYSceneObjects[OOT_LABORATORYNumOfObjs] =
 };
 
 const size_t LAIR_BARINADENumOfObjs = 8;
-ObjectInfo LAIR_BARINADESceneObjects[LAIR_BARINADENumOfObjs] =
+ObjectInfo LAIR_BARINADESceneObjects [LAIR_BARINADENumOfObjs] =
 {
 	{ 0x1f, LAIR_BARINADE, "Heart Container", "OOT Jabu-Jabu Boss Container", ObjectType::collectible, {431, 276, 0}, INSIDE_JABU_JABU, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 7, GameLayout::all, LocType::dungeon, NULL },
 	{ BLUE_WARP_BARINADE, LAIR_BARINADE, "Zora's Sapphire", "OOT Jabu-Jabu Boss", ObjectType::npc, {471, 311, 0}, INSIDE_JABU_JABU, ObjectType::npc, ObjectIconMap::saphir, ObjectContext::All, 7, GameLayout::all, LocType::dungeon, NULL },
@@ -2875,14 +2875,14 @@ ObjectInfo LAIR_BARINADESceneObjects[LAIR_BARINADENumOfObjs] =
 };
 
 const size_t LAIR_BONGO_BONGONumOfObjs = 2;
-ObjectInfo LAIR_BONGO_BONGOSceneObjects[LAIR_BONGO_BONGONumOfObjs] =
+ObjectInfo LAIR_BONGO_BONGOSceneObjects [LAIR_BONGO_BONGONumOfObjs] =
 {
 	{ 0x1f, LAIR_BONGO_BONGO, "Heart Container", "OOT Shadow Temple Boss HC", ObjectType::collectible, {491, 316, 0}, TEMPLE_SHADOW, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 8, GameLayout::all, LocType::dungeon, NULL },
 	{ BLUE_WARP_BONGO_BONGO, LAIR_BONGO_BONGO, "Shadow Medaillon", "OOT Shadow Temple Boss", ObjectType::npc, {491, 385, 0}, TEMPLE_SHADOW, ObjectType::npc, ObjectIconMap::shadow, ObjectContext::All, 8, GameLayout::all, LocType::dungeon, NULL }
 };
 
 const size_t TEMPLE_SHADOWNumOfObjs = 167;
-ObjectInfo TEMPLE_SHADOWSceneObjects[TEMPLE_SHADOWNumOfObjs] =
+ObjectInfo TEMPLE_SHADOWSceneObjects [TEMPLE_SHADOWNumOfObjs] =
 {
 	{ 0x1f, LAIR_BONGO_BONGO, "Heart Container", "OOT Shadow Temple Boss HC", ObjectType::collectible, {491, 316, 0}, TEMPLE_SHADOW, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 8, GameLayout::all, LocType::dungeon, NULL },
 	{ BLUE_WARP_BONGO_BONGO, LAIR_BONGO_BONGO, "Shadow Medaillon", "OOT Shadow Temple Boss", ObjectType::npc, {491, 385, 0}, TEMPLE_SHADOW, ObjectType::npc, ObjectIconMap::shadow, ObjectContext::All, 8, GameLayout::all, LocType::dungeon, NULL },
@@ -3054,7 +3054,7 @@ ObjectInfo TEMPLE_SHADOWSceneObjects[TEMPLE_SHADOWNumOfObjs] =
 };
 
 const size_t LAIR_GOHMANumOfObjs = 10;
-ObjectInfo LAIR_GOHMASceneObjects[LAIR_GOHMANumOfObjs] =
+ObjectInfo LAIR_GOHMASceneObjects [LAIR_GOHMANumOfObjs] =
 {
 	{ 0x1f, LAIR_GOHMA, "Heart Container", "OOT Deku Tree Boss Container", ObjectType::collectible, {614, 592, 0}, DEKU_TREE, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 10, GameLayout::all, LocType::dungeon, NULL },
 	{ BLUE_WARP_GOHMA, LAIR_GOHMA, "Kokiri's Emerald", "OOT Deku Tree Boss", ObjectType::npc, {690, 592, 0}, DEKU_TREE, ObjectType::npc, ObjectIconMap::emerald, ObjectContext::All, 10, GameLayout::all, LocType::dungeon, NULL },
@@ -3069,7 +3069,7 @@ ObjectInfo LAIR_GOHMASceneObjects[LAIR_GOHMANumOfObjs] =
 };
 
 const size_t LAIR_KING_DODONGONumOfObjs = 3;
-ObjectInfo LAIR_KING_DODONGOSceneObjects[LAIR_KING_DODONGONumOfObjs] =
+ObjectInfo LAIR_KING_DODONGOSceneObjects [LAIR_KING_DODONGONumOfObjs] =
 {
 	{ 0x00, LAIR_KING_DODONGO, "Small Chest", "OOT Dodongo Cavern Boss Chest", ObjectType::chest, {345, 126, 0}, DODONGO_CAVERN, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 8, GameLayout::all, LocType::dungeon, NULL },
 	{ 0x1f, LAIR_KING_DODONGO, "Heart Container", "OOT Dodongo Cavern Boss Container", ObjectType::collectible, {453, 438, 0}, DODONGO_CAVERN, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 8, GameLayout::all, LocType::dungeon, NULL },
@@ -3077,14 +3077,14 @@ ObjectInfo LAIR_KING_DODONGOSceneObjects[LAIR_KING_DODONGONumOfObjs] =
 };
 
 const size_t LAIR_MORPHANumOfObjs = 2;
-ObjectInfo LAIR_MORPHASceneObjects[LAIR_MORPHANumOfObjs] =
+ObjectInfo LAIR_MORPHASceneObjects [LAIR_MORPHANumOfObjs] =
 {
 	{ 0x1f, LAIR_MORPHA, "Heart Container", "OOT Water Temple Boss HC", ObjectType::collectible, {359, 321, 0}, TEMPLE_WATER, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 9, GameLayout::all, LocType::dungeon, NULL },
 	{ BLUE_WARP_MORPHA, LAIR_MORPHA, "Water Medaillon", "OOT Water Temple Boss", ObjectType::npc, {471, 321, 0}, TEMPLE_WATER, ObjectType::npc, ObjectIconMap::water, ObjectContext::All, 9, GameLayout::all, LocType::dungeon, NULL }
 };
 
 const size_t TEMPLE_WATERNumOfObjs = 205;
-ObjectInfo TEMPLE_WATERSceneObjects[TEMPLE_WATERNumOfObjs] =
+ObjectInfo TEMPLE_WATERSceneObjects [TEMPLE_WATERNumOfObjs] =
 {
 	{ 0x1f, LAIR_MORPHA, "Heart Container", "OOT Water Temple Boss HC", ObjectType::collectible, {359, 321, 0}, TEMPLE_WATER, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 9, GameLayout::all, LocType::dungeon, NULL },
 	{ BLUE_WARP_MORPHA, LAIR_MORPHA, "Water Medaillon", "OOT Water Temple Boss", ObjectType::npc, {471, 321, 0}, TEMPLE_WATER, ObjectType::npc, ObjectIconMap::water, ObjectContext::All, 9, GameLayout::all, LocType::dungeon, NULL },
@@ -3294,14 +3294,14 @@ ObjectInfo TEMPLE_WATERSceneObjects[TEMPLE_WATERNumOfObjs] =
 };
 
 const size_t LAIR_PHANTOM_GANONNumOfObjs = 2;
-ObjectInfo LAIR_PHANTOM_GANONSceneObjects[LAIR_PHANTOM_GANONNumOfObjs] =
+ObjectInfo LAIR_PHANTOM_GANONSceneObjects [LAIR_PHANTOM_GANONNumOfObjs] =
 {
 	{ 0x1f, LAIR_PHANTOM_GANON, "Heart Container", "OOT Forest Temple Boss Container", ObjectType::collectible, {491, 295, 0}, TEMPLE_FOREST, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 16, GameLayout::all, LocType::dungeon, NULL },
 	{ BLUE_WARP_PHANTOM_GANON, LAIR_PHANTOM_GANON, "Forest Medaillon", "OOT Forest Temple Boss", ObjectType::npc, {491, 356, 0}, TEMPLE_FOREST, ObjectType::npc, ObjectIconMap::forest, ObjectContext::All, 16, GameLayout::all, LocType::dungeon, NULL }
 };
 
 const size_t TEMPLE_FORESTNumOfObjs = 90;
-ObjectInfo TEMPLE_FORESTSceneObjects[TEMPLE_FORESTNumOfObjs] =
+ObjectInfo TEMPLE_FORESTSceneObjects [TEMPLE_FORESTNumOfObjs] =
 {
 	{ 0x1f, LAIR_PHANTOM_GANON, "Heart Container", "OOT Forest Temple Boss Container", ObjectType::collectible, {491, 295, 0}, TEMPLE_FOREST, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 16, GameLayout::all, LocType::dungeon, NULL },
 	{ BLUE_WARP_PHANTOM_GANON, LAIR_PHANTOM_GANON, "Forest Medaillon", "OOT Forest Temple Boss", ObjectType::npc, {491, 356, 0}, TEMPLE_FOREST, ObjectType::npc, ObjectIconMap::forest, ObjectContext::All, 16, GameLayout::all, LocType::dungeon, NULL },
@@ -3396,14 +3396,14 @@ ObjectInfo TEMPLE_FORESTSceneObjects[TEMPLE_FORESTNumOfObjs] =
 };
 
 const size_t LAIR_TWINROVANumOfObjs = 2;
-ObjectInfo LAIR_TWINROVASceneObjects[LAIR_TWINROVANumOfObjs] =
+ObjectInfo LAIR_TWINROVASceneObjects [LAIR_TWINROVANumOfObjs] =
 {
 	{ 0x1f, LAIR_TWINROVA, "Heart Container", "OOT Spirit Temple Boss HC", ObjectType::collectible, {363, 414, 0}, TEMPLE_SPIRIT, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 10, GameLayout::all, LocType::dungeon, NULL },
 	{ BLUE_WARP_TWINROVA, LAIR_TWINROVA, "Spirit Medaillon", "OOT Spirit Temple Boss", ObjectType::npc, {497, 283, 0}, TEMPLE_SPIRIT, ObjectType::npc, ObjectIconMap::spirit, ObjectContext::All, 10, GameLayout::all, LocType::dungeon, NULL }
 };
 
 const size_t TEMPLE_SPIRITNumOfObjs = 157;
-ObjectInfo TEMPLE_SPIRITSceneObjects[TEMPLE_SPIRITNumOfObjs] =
+ObjectInfo TEMPLE_SPIRITSceneObjects [TEMPLE_SPIRITNumOfObjs] =
 {
 	{ 0x1f, LAIR_TWINROVA, "Heart Container", "OOT Spirit Temple Boss HC", ObjectType::collectible, {363, 414, 0}, TEMPLE_SPIRIT, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 10, GameLayout::all, LocType::dungeon, NULL },
 	{ BLUE_WARP_TWINROVA, LAIR_TWINROVA, "Spirit Medaillon", "OOT Spirit Temple Boss", ObjectType::npc, {497, 283, 0}, TEMPLE_SPIRIT, ObjectType::npc, ObjectIconMap::spirit, ObjectContext::All, 10, GameLayout::all, LocType::dungeon, NULL },
@@ -3565,14 +3565,14 @@ ObjectInfo TEMPLE_SPIRITSceneObjects[TEMPLE_SPIRITNumOfObjs] =
 };
 
 const size_t LAIR_VOLVAGIANumOfObjs = 2;
-ObjectInfo LAIR_VOLVAGIASceneObjects[LAIR_VOLVAGIANumOfObjs] =
+ObjectInfo LAIR_VOLVAGIASceneObjects [LAIR_VOLVAGIANumOfObjs] =
 {
 	{ 0x1f, LAIR_VOLVAGIA, "Heart Container", "OOT Fire Temple Boss Container", ObjectType::collectible, {491, 283, 0}, TEMPLE_FIRE, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 10, GameLayout::all, LocType::dungeon, NULL },
 	{ BLUE_WARP_VOLVAGIA, LAIR_VOLVAGIA, "Fire Medaillon", "OOT Fire Temple Boss", ObjectType::npc, {491, 316, 0}, TEMPLE_FIRE, ObjectType::npc, ObjectIconMap::fire, ObjectContext::All, 10, GameLayout::all, LocType::dungeon, NULL }
 };
 
 const size_t TEMPLE_FIRENumOfObjs = 141;
-ObjectInfo TEMPLE_FIRESceneObjects[TEMPLE_FIRENumOfObjs] =
+ObjectInfo TEMPLE_FIRESceneObjects [TEMPLE_FIRENumOfObjs] =
 {
 	{ 0x1f, LAIR_VOLVAGIA, "Heart Container", "OOT Fire Temple Boss Container", ObjectType::collectible, {491, 283, 0}, TEMPLE_FIRE, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 10, GameLayout::all, LocType::dungeon, NULL },
 	{ BLUE_WARP_VOLVAGIA, LAIR_VOLVAGIA, "Fire Medaillon", "OOT Fire Temple Boss", ObjectType::npc, {491, 316, 0}, TEMPLE_FIRE, ObjectType::npc, ObjectIconMap::fire, ObjectContext::All, 10, GameLayout::all, LocType::dungeon, NULL },
@@ -3718,7 +3718,7 @@ ObjectInfo TEMPLE_FIRESceneObjects[TEMPLE_FIRENumOfObjs] =
 };
 
 const size_t LAKE_HYLIANumOfObjs = 108;
-ObjectInfo LAKE_HYLIASceneObjects[LAKE_HYLIANumOfObjs] =
+ObjectInfo LAKE_HYLIASceneObjects [LAKE_HYLIANumOfObjs] =
 {
 	{ RUTO_LETTER, LAKE_HYLIA, "Ruto's Letter", "OOT Lake Hylia Underwater Bottle", ObjectType::npc, {680, 543, 0}, LAKE_HYLIA, ObjectType::npc, ObjectIconMap::ruto, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ FIRE_ARROW, LAKE_HYLIA, "Fire Arrow", "OOT Lake Hylia Fire Arrow", ObjectType::npc, {521, 238, 0}, LAKE_HYLIA, ObjectType::npc, ObjectIconMap::fire_arrow, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -3831,14 +3831,14 @@ ObjectInfo LAKE_HYLIASceneObjects[LAKE_HYLIANumOfObjs] =
 };
 
 const size_t LINK_HOUSENumOfObjs = 2;
-ObjectInfo LINK_HOUSESceneObjects[LINK_HOUSENumOfObjs] =
+ObjectInfo LINK_HOUSESceneObjects [LINK_HOUSENumOfObjs] =
 {
 	{ 0x00, KOKIRI_FOREST, "Cow", "OOT Kokiri Forest Cow", ObjectType::cow, {910, 611, 0}, LINK_HOUSE, ObjectType::cow, ObjectIconMap::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0002, LINK_HOUSE, "Pot", "OOT Link's House Pot", ObjectType::pot, {997, 296, 0}, LINK_HOUSE, ObjectType::pot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 
 const size_t LON_LON_RANCHNumOfObjs = 29;
-ObjectInfo LON_LON_RANCHSceneObjects[LON_LON_RANCHNumOfObjs] =
+ObjectInfo LON_LON_RANCHSceneObjects [LON_LON_RANCHNumOfObjs] =
 {
 	{ MALON_SONG, LON_LON_RANCH, "Epona's Song", "OOT Lon Lon Ranch Malon Song", ObjectType::npc, {472, 310, 0}, LON_LON_RANCH, ObjectType::song, ObjectIconMap::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x63, LON_LON_RANCH, "Tree", "OOT Lon Lon Ranch GS Tree", ObjectType::gs, {663, 489, 0}, LON_LON_RANCH, ObjectType::gs, ObjectIconMap::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -3872,14 +3872,14 @@ ObjectInfo LON_LON_RANCHSceneObjects[LON_LON_RANCHNumOfObjs] =
 };
 
 const size_t STABLENumOfObjs = 2;
-ObjectInfo STABLESceneObjects[STABLENumOfObjs] =
+ObjectInfo STABLESceneObjects [STABLENumOfObjs] =
 {
 	{ 0x02, LON_LON_RANCH, "Left", "OOT Lon Lon Ranch Stables Cow Left", ObjectType::cow, {701, 531, 0}, STABLE, ObjectType::cow, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x03, LON_LON_RANCH, "Right", "OOT Lon Lon Ranch Stables Cow Right", ObjectType::cow, {604, 531, 0}, STABLE, ObjectType::cow, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 
 const size_t SILONumOfObjs = 3;
-ObjectInfo SILOSceneObjects[SILONumOfObjs] =
+ObjectInfo SILOSceneObjects [SILONumOfObjs] =
 {
 	{ 0x04, LON_LON_RANCH, "Front", "OOT Lon Lon Ranch Silo Cow Front", ObjectType::cow, {510, 405, 0}, SILO, ObjectType::cow, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x05, LON_LON_RANCH, "Back", "OOT Lon Lon Ranch Silo Cow Back", ObjectType::cow, {554, 384, 0}, SILO, ObjectType::cow, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -3887,7 +3887,7 @@ ObjectInfo SILOSceneObjects[SILONumOfObjs] =
 };
 
 const size_t OOT_LOST_WOODSNumOfObjs = 62;
-ObjectInfo OOT_LOST_WOODSSceneObjects[OOT_LOST_WOODSNumOfObjs] =
+ObjectInfo OOT_LOST_WOODSSceneObjects [OOT_LOST_WOODSNumOfObjs] =
 {
 	{ SARIA_OCARINA, OOT_LOST_WOODS, "Fairy Ocarina", "OOT Lost Woods Gift from Saria", ObjectType::npc, {211, 2800, 0}, OOT_LOST_WOODS, ObjectType::ocarina, ObjectIconMap::fairy_ocarina, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ LOST_WOODS_TARGET, OOT_LOST_WOODS, "Slingshot Target", "OOT Lost Woods Target", ObjectType::npc, {2069, 1966, 0}, OOT_LOST_WOODS, ObjectType::npc, ObjectIconMap::big_seed, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -3954,7 +3954,7 @@ ObjectInfo OOT_LOST_WOODSSceneObjects[OOT_LOST_WOODSNumOfObjs] =
 };
 
 const size_t MARKET_CHILD_DAYNumOfObjs = 18;
-ObjectInfo MARKET_CHILD_DAYSceneObjects[MARKET_CHILD_DAYNumOfObjs] =
+ObjectInfo MARKET_CHILD_DAYSceneObjects [MARKET_CHILD_DAYNumOfObjs] =
 {
 	{ 0x00021, MARKET_CHILD_DAY, "Crate 1", "OOT Market Crate 1", ObjectType::crate, {438, 41, 0}, MARKET_CHILD_DAY, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00022, MARKET_CHILD_DAY, "Crate 2", "OOT Market Crate 2", ObjectType::crate, {410, 41, 0}, MARKET_CHILD_DAY, ObjectType::crate, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -3977,14 +3977,14 @@ ObjectInfo MARKET_CHILD_DAYSceneObjects[MARKET_CHILD_DAYNumOfObjs] =
 };
 
 const size_t MARKET_CHILD_NIGHTNumOfObjs = 2;
-ObjectInfo MARKET_CHILD_NIGHTSceneObjects[MARKET_CHILD_NIGHTNumOfObjs] =
+ObjectInfo MARKET_CHILD_NIGHTSceneObjects [MARKET_CHILD_NIGHTNumOfObjs] =
 {
 	{ 0x00005, MARKET_CHILD_NIGHT, "Night - Balcony 1", "OOT Market Wonder Item Night 1", ObjectType::wonder, {200, 168, 0}, MARKET_CHILD_NIGHT, ObjectType::wonder, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00006, MARKET_CHILD_NIGHT, "Night - Balcony 2", "OOT Market Wonder Item Night 2", ObjectType::wonder, {196, 314, 0}, MARKET_CHILD_NIGHT, ObjectType::wonder, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 
 const size_t MARKET_POTION_SHOPNumOfObjs = 8;
-ObjectInfo MARKET_POTION_SHOPSceneObjects[MARKET_POTION_SHOPNumOfObjs] =
+ObjectInfo MARKET_POTION_SHOPSceneObjects [MARKET_POTION_SHOPNumOfObjs] =
 {
 	{ 0x28, MARKET_POTION_SHOP, "Item 1", "OOT Market Potion Shop Item 1", ObjectType::shop, {360, 297, 0}, MARKET_POTION_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x29, MARKET_POTION_SHOP, "Item 2", "OOT Market Potion Shop Item 2", ObjectType::shop, {416, 297, 0}, MARKET_POTION_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -3997,7 +3997,7 @@ ObjectInfo MARKET_POTION_SHOPSceneObjects[MARKET_POTION_SHOPNumOfObjs] =
 };
 
 const size_t RANCH_HOUSE_SILONumOfObjs = 6;
-ObjectInfo RANCH_HOUSE_SILOSceneObjects[RANCH_HOUSE_SILONumOfObjs] =
+ObjectInfo RANCH_HOUSE_SILOSceneObjects [RANCH_HOUSE_SILONumOfObjs] =
 {
 	{ 0x01, RANCH_HOUSE_SILO, "Straw", "OOT Lon Lon Ranch Silo HP", ObjectType::collectible, {751, 262, 0}, SILO, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ TALON_BOTTLE, RANCH_HOUSE_SILO, "Bottle", "OOT Lon Lon Ranch Talon Bottle", ObjectType::npc, {485, 402, 0}, RANCH_HOUSE_SILO, ObjectType::npc, ObjectIconMap::bottle, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -4008,7 +4008,7 @@ ObjectInfo RANCH_HOUSE_SILOSceneObjects[RANCH_HOUSE_SILONumOfObjs] =
 };
 
 const size_t SACRED_FOREST_MEADOWNumOfObjs = 21;
-ObjectInfo SACRED_FOREST_MEADOWSceneObjects[SACRED_FOREST_MEADOWNumOfObjs] =
+ObjectInfo SACRED_FOREST_MEADOWSceneObjects [SACRED_FOREST_MEADOWNumOfObjs] =
 {
 	{ SARIA_SONG, SACRED_FOREST_MEADOW, "Saria's Song", "OOT Saria's Song", ObjectType::npc, {263, 253, 0}, SACRED_FOREST_MEADOW, ObjectType::song, ObjectIconMap::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ SHEIK_FOREST, SACRED_FOREST_MEADOW, "Minuet of Forest", "OOT Sacred Meadow Sheik Song", ObjectType::npc, {399, 391, 0}, SACRED_FOREST_MEADOW, ObjectType::song, ObjectIconMap::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -4034,26 +4034,26 @@ ObjectInfo SACRED_FOREST_MEADOWSceneObjects[SACRED_FOREST_MEADOWNumOfObjs] =
 };
 
 const size_t OOT_SHOOTING_GALLERYNumOfObjs = 2;
-ObjectInfo OOT_SHOOTING_GALLERYSceneObjects[OOT_SHOOTING_GALLERYNumOfObjs] =
+ObjectInfo OOT_SHOOTING_GALLERYSceneObjects [OOT_SHOOTING_GALLERYNumOfObjs] =
 {
 	{ SHOOTING_GAME_CHILD, OOT_SHOOTING_GALLERY, "Reward", "OOT Shooting Gallery Child", ObjectType::npc, {616, 354, 0}, MARKET_SHOOTING, ObjectType::npc, ObjectIconMap::biggest_seed, ObjectContext::All, 0, GameLayout::oot, LocType::minigame, NULL },
 	{ SHOOTING_GAME_ADULT, OOT_SHOOTING_GALLERY, "Reward", "OOT Shooting Gallery Adult", ObjectType::npc, {616, 354, 0}, KAKARIKO_SHOOTING, ObjectType::npc, ObjectIconMap::big_quiver, ObjectContext::All, 0, GameLayout::oot, LocType::minigame, NULL }
 };
 
 const size_t MARKET_SHOOTINGNumOfObjs = 1;
-ObjectInfo MARKET_SHOOTINGSceneObjects[MARKET_SHOOTINGNumOfObjs] =
+ObjectInfo MARKET_SHOOTINGSceneObjects [MARKET_SHOOTINGNumOfObjs] =
 {
 	{ SHOOTING_GAME_CHILD, OOT_SHOOTING_GALLERY, "Reward", "OOT Shooting Gallery Child", ObjectType::npc, {616, 354, 0}, MARKET_SHOOTING, ObjectType::npc, ObjectIconMap::biggest_seed, ObjectContext::All, 0, GameLayout::oot, LocType::minigame, NULL }
 };
 
 const size_t KAKARIKO_SHOOTINGNumOfObjs = 1;
-ObjectInfo KAKARIKO_SHOOTINGSceneObjects[KAKARIKO_SHOOTINGNumOfObjs] =
+ObjectInfo KAKARIKO_SHOOTINGSceneObjects [KAKARIKO_SHOOTINGNumOfObjs] =
 {
 	{ SHOOTING_GAME_ADULT, OOT_SHOOTING_GALLERY, "Reward", "OOT Shooting Gallery Adult", ObjectType::npc, {616, 354, 0}, KAKARIKO_SHOOTING, ObjectType::npc, ObjectIconMap::big_quiver, ObjectContext::All, 0, GameLayout::oot, LocType::minigame, NULL }
 };
 
 const size_t TEMPLE_OF_TIMENumOfObjs = 4;
-ObjectInfo TEMPLE_OF_TIMESceneObjects[TEMPLE_OF_TIMENumOfObjs] =
+ObjectInfo TEMPLE_OF_TIMESceneObjects [TEMPLE_OF_TIMENumOfObjs] =
 {
 	{ MASTER_SWORD, TEMPLE_OF_TIME, "Master Sword", "OOT Temple of Time Master Sword", ObjectType::npc, {587, 327, 0}, TEMPLE_OF_TIME, ObjectType::sword, ObjectIconMap::master, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ LIGHT_MEDALLION, TEMPLE_OF_TIME, "Light Medallion", "OOT Temple of Time Medallion", ObjectType::npc, {561, 328, 0}, TEMPLE_OF_TIME, ObjectType::npc, ObjectIconMap::light, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -4062,7 +4062,7 @@ ObjectInfo TEMPLE_OF_TIMESceneObjects[TEMPLE_OF_TIMENumOfObjs] =
 };
 
 const size_t THIEVES_HIDEOUTNumOfObjs = 47;
-ObjectInfo THIEVES_HIDEOUTSceneObjects[THIEVES_HIDEOUTNumOfObjs] =
+ObjectInfo THIEVES_HIDEOUTSceneObjects [THIEVES_HIDEOUTNumOfObjs] =
 {
 	{ 0x0c, THIEVES_HIDEOUT, "Small Key - Jail 1", "OOT Gerudo Fortress Jail 1", ObjectType::collectible, {620, 413, 0}, THIEVES_HIDEOUT, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0f, THIEVES_HIDEOUT, "Small Key - Jail 2", "OOT Gerudo Fortress Jail 2", ObjectType::collectible, {532, 56, 0}, THIEVES_HIDEOUT, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -4114,7 +4114,7 @@ ObjectInfo THIEVES_HIDEOUTSceneObjects[THIEVES_HIDEOUTNumOfObjs] =
 };
 
 const size_t TOMB_DAMPE_WINDMILLNumOfObjs = 33;
-ObjectInfo TOMB_DAMPE_WINDMILLSceneObjects[TOMB_DAMPE_WINDMILLNumOfObjs] =
+ObjectInfo TOMB_DAMPE_WINDMILLSceneObjects [TOMB_DAMPE_WINDMILLNumOfObjs] =
 {
 	{ 0x00, TOMB_DAMPE_WINDMILL, "Hookshot", "OOT Graveyard Dampe Tomb Reward 1", ObjectType::chest, {196, 728, 0}, TOMB_DAMPE_WINDMILL, ObjectType::chest, ObjectIconMap::hookshot_oot, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x07, TOMB_DAMPE_WINDMILL, "Race Game", "OOT Graveyard Dampe Tomb Reward 2", ObjectType::collectible, {196, 750, 0}, TOMB_DAMPE_WINDMILL, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -4152,14 +4152,14 @@ ObjectInfo TOMB_DAMPE_WINDMILLSceneObjects[TOMB_DAMPE_WINDMILLNumOfObjs] =
 };
 
 const size_t WINDMILLNumOfObjs = 2;
-ObjectInfo WINDMILLSceneObjects[WINDMILLNumOfObjs] =
+ObjectInfo WINDMILLSceneObjects [WINDMILLNumOfObjs] =
 {
 	{ 0x01, TOMB_DAMPE_WINDMILL, "Platform", "OOT Windmill HP", ObjectType::collectible, {692, 527, 0}, WINDMILL, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ OOT_SONG_STORMS, TOMB_DAMPE_WINDMILL, "Song of Storms", "OOT Windmill Song of Storms", ObjectType::npc, {430, 403, 0}, WINDMILL, ObjectType::song, ObjectIconMap::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 
 const size_t TOMB_FAIRYNumOfObjs = 9;
-ObjectInfo TOMB_FAIRYSceneObjects[TOMB_FAIRYNumOfObjs] =
+ObjectInfo TOMB_FAIRYSceneObjects [TOMB_FAIRYNumOfObjs] =
 {
 	{ 0x00, TOMB_FAIRY, "Chest", "OOT Graveyard Fairy Tomb", ObjectType::chest, {650, 240, 0}, TOMB_FAIRY, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00005, TOMB_FAIRY, "Fairy 1", "OOT Graveyard Fairy Fountain Fairy 1", ObjectType::fairy, {296, 439, 0}, TOMB_FAIRY, ObjectType::fairy, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -4173,13 +4173,13 @@ ObjectInfo TOMB_FAIRYSceneObjects[TOMB_FAIRYNumOfObjs] =
 };
 
 const size_t TOMB_REDEADNumOfObjs = 1;
-ObjectInfo TOMB_REDEADSceneObjects[TOMB_REDEADNumOfObjs] =
+ObjectInfo TOMB_REDEADSceneObjects [TOMB_REDEADNumOfObjs] =
 {
 	{ 0x00, TOMB_REDEAD, "ReDead", "OOT Graveyard ReDead Tomb", ObjectType::chest, {470, 495, 0}, TOMB_REDEAD, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 
 const size_t TOMB_ROYALNumOfObjs = 3;
-ObjectInfo TOMB_ROYALSceneObjects[TOMB_ROYALNumOfObjs] =
+ObjectInfo TOMB_ROYALSceneObjects [TOMB_ROYALNumOfObjs] =
 {
 	{ ROYAL_TOMB_SONG, TOMB_ROYAL, "Sun's Song", "OOT Graveyard Royal Tomb Song", ObjectType::npc, {149, 24, 0}, TOMB_ROYAL, ObjectType::song, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00, TOMB_ROYAL, "Torches", "OOT Graveyard Royal Tomb Chest", ObjectType::chest, {150, 522, 0}, TOMB_ROYAL, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -4187,7 +4187,7 @@ ObjectInfo TOMB_ROYALSceneObjects[TOMB_ROYALNumOfObjs] =
 };
 
 const size_t OOT_TREASURE_SHOPNumOfObjs = 12;
-ObjectInfo OOT_TREASURE_SHOPSceneObjects[OOT_TREASURE_SHOPNumOfObjs] =
+ObjectInfo OOT_TREASURE_SHOPSceneObjects [OOT_TREASURE_SHOPNumOfObjs] =
 {
 	{ CHEST_GAME_KEY, OOT_TREASURE_SHOP, "Buy Key", "OOT Treasure Chest Game Buy Key", ObjectType::npc, {874, 67, 0}, OOT_TREASURE_SHOP, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::minigame, NULL },
 	{ 0x00, OOT_TREASURE_SHOP, "Room 1 - Left", "OOT Treasure Chest Game Room 1 Chest Left", ObjectType::chest, {757, 111, 0}, OOT_TREASURE_SHOP, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::minigame, NULL },
@@ -4204,7 +4204,7 @@ ObjectInfo OOT_TREASURE_SHOPSceneObjects[OOT_TREASURE_SHOPNumOfObjs] =
 };
 
 const size_t ZORA_DOMAINNumOfObjs = 41;
-ObjectInfo ZORA_DOMAINSceneObjects[ZORA_DOMAINNumOfObjs] =
+ObjectInfo ZORA_DOMAINSceneObjects [ZORA_DOMAINNumOfObjs] =
 {
 	{ 0x00, ZORA_DOMAIN, "Waterfall Chest", "OOT Zora Domain Waterfall Chest", ObjectType::chest, {420, 302, 0}, ZORA_DOMAIN, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ ZORA_DIVING_GAME, ZORA_DOMAIN, "Silver Scale", "OOT Zora Domain Diving Game", ObjectType::npc, {415, 278, 0}, ZORA_DOMAIN, ObjectType::npc, ObjectIconMap::silver, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -4250,7 +4250,7 @@ ObjectInfo ZORA_DOMAINSceneObjects[ZORA_DOMAINNumOfObjs] =
 };
 
 const size_t ZORA_FOUNTAINNumOfObjs = 47;
-ObjectInfo ZORA_FOUNTAINSceneObjects[ZORA_FOUNTAINNumOfObjs] =
+ObjectInfo ZORA_FOUNTAINSceneObjects [ZORA_FOUNTAINNumOfObjs] =
 {
 	{ 0x01, ZORA_FOUNTAIN, "Iceberg", "OOT Zora Fountain Iceberg HP", ObjectType::collectible, {352, 375, 0}, ZORA_FOUNTAIN, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x14, ZORA_FOUNTAIN, "Underwater", "OOT Zora Fountain Bottom HP", ObjectType::collectible, {473, 386, 0}, ZORA_FOUNTAIN, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -4302,7 +4302,7 @@ ObjectInfo ZORA_FOUNTAINSceneObjects[ZORA_FOUNTAINNumOfObjs] =
 };
 
 const size_t ZORA_RIVERNumOfObjs = 112;
-ObjectInfo ZORA_RIVERSceneObjects[ZORA_RIVERNumOfObjs] =
+ObjectInfo ZORA_RIVERSceneObjects [ZORA_RIVERNumOfObjs] =
 {
 	{ 0x04, ZORA_RIVER, "Pillar", "OOT Zora River HP Pillar", ObjectType::collectible, {940, 653, 0}, ZORA_RIVER, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0b, ZORA_RIVER, "Platform", "OOT Zora River HP Platform", ObjectType::collectible, {236, 757, 0}, ZORA_RIVER, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -4419,7 +4419,7 @@ ObjectInfo ZORA_RIVERSceneObjects[ZORA_RIVERNumOfObjs] =
 };
 
 const size_t ZORA_SHOPNumOfObjs = 8;
-ObjectInfo ZORA_SHOPSceneObjects[ZORA_SHOPNumOfObjs] =
+ObjectInfo ZORA_SHOPSceneObjects [ZORA_SHOPNumOfObjs] =
 {
 	{ 0x10, ZORA_SHOP, "Item 1", "OOT Zora Shop Item 1", ObjectType::shop, {329, 302, 0}, ZORA_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x11, ZORA_SHOP, "Item 2", "OOT Zora Shop Item 2", ObjectType::shop, {400, 302, 0}, ZORA_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -4432,14 +4432,14 @@ ObjectInfo ZORA_SHOPSceneObjects[ZORA_SHOPNumOfObjs] =
 };
 
 const size_t INSIDE_EGGSNumOfObjs = 2;
-ObjectInfo INSIDE_EGGSSceneObjects[INSIDE_EGGSNumOfObjs] =
+ObjectInfo INSIDE_EGGSSceneObjects [INSIDE_EGGSNumOfObjs] =
 {
 	{ WEIRD_EGG, INSIDE_EGGS, "Hatch - Chicken", "OOT Hatch Chicken", ObjectType::none, {0, 0, 0}, HYRULE_CASTLE, ObjectType::none, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ POCKET_EGG, INSIDE_EGGS, "Hatch - Pocket Cucco", "OOT Hatch Pocket Cucco", ObjectType::none, {0, 0, 0}, KAKARIKO_VILLAGE, ObjectType::none, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 
 const size_t MARKETNumOfObjs = 125;
-ObjectInfo MARKETSceneObjects[MARKETNumOfObjs] =
+ObjectInfo MARKETSceneObjects [MARKETNumOfObjs] =
 {
 	{ 0x0002, MARKET, "Pot 1", "OOT Market Back Alley East House Pot 1", ObjectType::none, {0, 0, 0}, BACK_ALLEY_HOUSE, ObjectType::none, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0003, MARKET, "Pot 2", "OOT Market Back Alley East House Pot 2", ObjectType::none, {0, 0, 0}, BACK_ALLEY_HOUSE, ObjectType::none, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -4566,209 +4566,6 @@ ObjectInfo MARKETSceneObjects[MARKETNumOfObjs] =
 	{ 0x0a, MARKET, "Game Prize", "OOT Treasure Chest Game HP", ObjectType::none, {0, 0, 0}, OOT_TREASURE_SHOP, ObjectType::none, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::minigame, NULL },
 	{ SHOOTING_GAME_CHILD, MARKET, "Reward", "OOT Shooting Gallery Child", ObjectType::none, {0, 0, 0}, MARKET_SHOOTING, ObjectType::none, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::minigame, NULL },
 	{ 0x0000e, MARKET, "Tree", "OOT Market Tree", ObjectType::none, {0, 0, 0}, MARKET_CHILD_DAY, ObjectType::none, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
-};
-
-#pragma endregion
-
-#pragma region SceneObjects
-
-// Empty Scenes
-CreateEmptyScene(GANON_TOWER_COLLAPSING)
-CreateEmptyScene(INSIDE_GANON_CASTLE_COLLAPSING)
-CreateEmptyScene(LAIR_GANONDORF)
-CreateEmptyScene(TOWER_COLLAPSE_EXTERIOR)
-CreateEmptyScene(MARKET_ENTRANCE_CHILD_DAY)
-CreateEmptyScene(MARKET_ENTRANCE_CHILD_NIGHT)
-CreateEmptyScene(MARKET_ENTRANCE_ADULT)
-CreateEmptyScene(BACK_ALLEY_DAY)
-CreateEmptyScene(BACK_ALLEY_NIGHT)
-CreateEmptyScene(MARKET_ADULT)
-CreateEmptyScene(TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY)
-CreateEmptyScene(TEMPLE_OF_TIME_EXTERIOR_CHILD_NIGHT)
-CreateEmptyScene(TEMPLE_OF_TIME_EXTERIOR_ADULT)
-CreateEmptyScene(CARPENTER_BOSS_HOUSE)
-CreateEmptyScene(HAPPY_MASK_SHOP)
-CreateEmptyScene(CARPENTER_TENT)
-CreateEmptyScene(GRAVEKEEPER_HUT)
-CreateEmptyScene(CHAMBER_OF_THE_SAGES)
-CreateEmptyScene(CASTLE_MAZE_DAY)
-CreateEmptyScene(CASTLE_MAZE_NIGHT)
-CreateEmptyScene(OOT_CUTSCENE_MAP)
-CreateEmptyScene(GANON_BATTLE_ARENA)
-
-SceneObjects OoTSceneObjects[OOT_NUM_SCENES] =
-{
-	CreateSceneObjects(DEKU_TREE),
-	CreateSceneObjects(DODONGO_CAVERN),
-	CreateSceneObjects(INSIDE_JABU_JABU),
-	CreateSceneObjects(TEMPLE_FOREST),
-	CreateSceneObjects(TEMPLE_FIRE),
-	CreateSceneObjects(TEMPLE_WATER),
-	CreateSceneObjects(TEMPLE_SPIRIT),
-	CreateSceneObjects(TEMPLE_SHADOW),
-	CreateSceneObjects(BOTTOM_OF_THE_WELL),
-	CreateSceneObjects(ICE_CAVERN),
-	CreateSceneObjects(GANON_TOWER),
-	CreateSceneObjects(GERUDO_TRAINING_GROUND),
-	CreateSceneObjects(THIEVES_HIDEOUT),
-	CreateSceneObjects(INSIDE_GANON_CASTLE),
-	CreateSceneObjects(GANON_TOWER_COLLAPSING),
-	CreateSceneObjects(INSIDE_GANON_CASTLE_COLLAPSING),
-	CreateSceneObjects(OOT_TREASURE_SHOP),
-	CreateSceneObjects(LAIR_GOHMA),
-	CreateSceneObjects(LAIR_KING_DODONGO),
-	CreateSceneObjects(LAIR_BARINADE),
-	CreateSceneObjects(LAIR_PHANTOM_GANON),
-	CreateSceneObjects(LAIR_VOLVAGIA),
-	CreateSceneObjects(LAIR_MORPHA),
-	CreateSceneObjects(LAIR_TWINROVA),
-	CreateSceneObjects(LAIR_BONGO_BONGO),
-	CreateSceneObjects(LAIR_GANONDORF),
-	CreateSceneObjects(TOWER_COLLAPSE_EXTERIOR),
-	CreateSceneObjects(MARKET_ENTRANCE_CHILD_DAY),
-	CreateSceneObjects(MARKET_ENTRANCE_CHILD_NIGHT),
-	CreateSceneObjects(MARKET_ENTRANCE_ADULT),
-	CreateSceneObjects(BACK_ALLEY_DAY),
-	CreateSceneObjects(BACK_ALLEY_NIGHT),
-	CreateSceneObjects(MARKET_CHILD_DAY),
-	CreateSceneObjects(MARKET_CHILD_NIGHT),
-	CreateSceneObjects(MARKET_ADULT),
-	CreateSceneObjects(TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY),
-	CreateSceneObjects(TEMPLE_OF_TIME_EXTERIOR_CHILD_NIGHT),
-	CreateSceneObjects(TEMPLE_OF_TIME_EXTERIOR_ADULT),
-	CreateSceneObjects(KOKIRI_KNOW_IT_ALL),
-	CreateSceneObjects(KOKIRI_TWINS),
-	CreateSceneObjects(KOKIRI_MIDO),
-	CreateSceneObjects(KOKIRI_SARIA),
-	CreateSceneObjects(CARPENTER_BOSS_HOUSE),
-	CreateSceneObjects(BACK_ALLEY_HOUSE),
-	CreateSceneObjects(BAZAAR),
-	CreateSceneObjects(KOKIRI_SHOP),
-	CreateSceneObjects(OOT_GORON_SHOP),
-	CreateSceneObjects(ZORA_SHOP),
-	CreateSceneObjects(KAKARIKO_POTION_SHOP),
-	CreateSceneObjects(MARKET_POTION_SHOP),
-	CreateSceneObjects(BOMBCHU_SHOP),
-	CreateSceneObjects(HAPPY_MASK_SHOP),
-	CreateSceneObjects(LINK_HOUSE),
-	CreateSceneObjects(BACK_ALLEY_HOUSE2),
-	CreateSceneObjects(STABLE),
-	CreateSceneObjects(IMPA_HOUSE),
-	CreateSceneObjects(OOT_LABORATORY),
-	CreateSceneObjects(CARPENTER_TENT),
-	CreateSceneObjects(GRAVEKEEPER_HUT),
-	CreateSceneObjects(GREAT_FAIRY_FOUNTAIN_UPGRADES),
-	CreateSceneObjects(OOT_FAIRY_FOUNTAIN),
-	CreateSceneObjects(GREAT_FAIRY_FOUNTAIN_SPELLS),
-	CreateSceneObjects(OOT_GROTTOS),
-	CreateSceneObjects(TOMB_REDEAD),
-	CreateSceneObjects(TOMB_FAIRY),
-	CreateSceneObjects(TOMB_ROYAL),
-	CreateSceneObjects(OOT_SHOOTING_GALLERY),
-	CreateSceneObjects(TEMPLE_OF_TIME),
-	CreateSceneObjects(CHAMBER_OF_THE_SAGES),
-	CreateSceneObjects(CASTLE_MAZE_DAY),
-	CreateSceneObjects(CASTLE_MAZE_NIGHT),
-	CreateSceneObjects(OOT_CUTSCENE_MAP),
-	CreateSceneObjects(TOMB_DAMPE_WINDMILL),
-	CreateSceneObjects(FISHING_POND),
-	CreateSceneObjects(CASTLE_COURTYARD),
-	CreateSceneObjects(BOMBCHU_BOWLING_ALLEY),
-	CreateSceneObjects(RANCH_HOUSE_SILO),
-	CreateSceneObjects(GUARD_HOUSE),
-	CreateSceneObjects(GRANNY_POTION_SHOP),
-	CreateSceneObjects(GANON_BATTLE_ARENA),
-	CreateSceneObjects(HOUSE_OF_SKULLTULA),
-	CreateSceneObjects(HYRULE_FIELD),
-	CreateSceneObjects(KAKARIKO_VILLAGE),
-	CreateSceneObjects(GRAVEYARD),
-	CreateSceneObjects(ZORA_RIVER),
-	CreateSceneObjects(KOKIRI_FOREST),
-	CreateSceneObjects(SACRED_FOREST_MEADOW),
-	CreateSceneObjects(LAKE_HYLIA),
-	CreateSceneObjects(ZORA_DOMAIN),
-	CreateSceneObjects(ZORA_FOUNTAIN),
-	CreateSceneObjects(GERUDO_VALLEY),
-	CreateSceneObjects(OOT_LOST_WOODS),
-	CreateSceneObjects(DESERT_COLOSSUS),
-	CreateSceneObjects(GERUDO_FORTRESS),
-	CreateSceneObjects(HAUNTED_WASTELAND),
-	CreateSceneObjects(HYRULE_CASTLE),
-	CreateSceneObjects(DEATH_MOUNTAIN_TRAIL),
-	CreateSceneObjects(DEATH_MOUNTAIN_CRATER),
-	CreateSceneObjects(GORON_CITY),
-	CreateSceneObjects(LON_LON_RANCH),
-	CreateSceneObjects(GANON_CASTLE_EXTERIOR),
-
-	// OoT detailed grotto scene
-	CreateSceneObjects(OOT_GROTTO_KOKIRI_FOREST_STORMS),
-	CreateSceneObjects(OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE),
-	CreateSceneObjects(OOT_GROTTO_LOST_WOODS_GENERIC),
-	CreateSceneObjects(OOT_GROTTO_LOST_WOODS_THEATER),
-	CreateSceneObjects(OOT_GROTTO_SACRED_MEADOW_WOLFOS),
-	CreateSceneObjects(OOT_GROTTO_SACRED_MEADOW_STORMS),
-	CreateSceneObjects(OOT_GROTTO_KAKARIKO_REDEAD),
-	CreateSceneObjects(OOT_GROTTO_KAKARIKO_OPEN),
-	CreateSceneObjects(OOT_GROTTO_DEATH_TRIAL_STORMS),
-	CreateSceneObjects(OOT_GROTTO_DEATH_TRIAL_COW),
-	CreateSceneObjects(OOT_GROTTO_GORON_CITY_SCRUBS),
-	CreateSceneObjects(OOT_GROTTO_DEATH_CRATER_GENERIC),
-	CreateSceneObjects(OOT_GROTTO_DEATH_CRATER_SCRUBS),
-	CreateSceneObjects(OOT_GROTTO_ZORA_RIVER_STORMS),
-	CreateSceneObjects(OOT_GROTTO_ZORA_RIVER_GENERIC),
-	CreateSceneObjects(OOT_GROTTO_LAKE_HYLIA_SCRUBS),
-	CreateSceneObjects(OOT_GROTTO_LON_LON_SCRUBS),
-	CreateSceneObjects(OOT_GROTTO_HYRULE_SCRUBS),
-	CreateSceneObjects(OOT_GROTTO_HYRULE_SE),
-	CreateSceneObjects(OOT_GROTTO_HYRULE_OPEN),
-	CreateSceneObjects(OOT_GROTTO_HYRULE_MARKET),
-	CreateSceneObjects(OOT_GROTTO_HYRULE_TEKTITE),
-	CreateSceneObjects(OOT_GROTTO_HYRULE_KAKARIKO),
-	CreateSceneObjects(OOT_GROTTO_HYRULE_GERUDO),
-	CreateSceneObjects(OOT_GROTTO_CASTLE_STORMS),
-	CreateSceneObjects(OOT_GROTTO_VALLEY_STORMS),
-	CreateSceneObjects(OOT_GROTTO_VALLEY_OCTOROK),
-	CreateSceneObjects(OOT_GROTTO_DESERT_SCRUBS),
-
-	// OoT detailed fairy scene
-	CreateSceneObjects(OOT_FAIRY_SACRED_MEADOW),
-	CreateSceneObjects(OOT_FAIRY_ZORA_RIVER),
-	CreateSceneObjects(OOT_FAIRY_ZORA_DOMAIN),
-	CreateSceneObjects(OOT_FAIRY_HYRULE),
-	CreateSceneObjects(OOT_FAIRY_GERUDO_FORTRESS),
-
-	// OoT detailed great fairy scene
-	CreateSceneObjects(OOT_GREAT_FAIRY_CASTLE),
-	CreateSceneObjects(OOT_GREAT_FAIRY_FARORE),
-	CreateSceneObjects(OOT_GREAT_FAIRY_NAYRU),
-	CreateSceneObjects(OOT_GREAT_FAIRY_MAGIC),
-	CreateSceneObjects(OOT_GREAT_FAIRY_MAGIC2),
-
-	// OoT detailed other scene
-	CreateSceneObjects(KAKARIKO_BAZAAR),
-	CreateSceneObjects(MARKET_BAZAAR),
-	CreateSceneObjects(KAKARIKO_SHOOTING),
-	CreateSceneObjects(MARKET_SHOOTING),
-	CreateSceneObjects(SILO),
-	CreateSceneObjects(WINDMILL),
-
-	// MQ Scenes
-	/*CreateSceneObjects(MQ_DEKU_TREE),
-	CreateSceneObjects(MQ_DODONGO_CAVERN),
-	CreateSceneObjects(MQ_INSIDE_JABU_JABU),
-	CreateSceneObjects(MQ_TEMPLE_FOREST),
-	CreateSceneObjects(MQ_TEMPLE_FIRE),
-	CreateSceneObjects(MQ_TEMPLE_WATER),
-	CreateSceneObjects(MQ_TEMPLE_SHADOW),
-	CreateSceneObjects(MQ_TEMPLE_SPIRIT),
-	CreateSceneObjects(MQ_BOTTOM_OF_THE_WELL),
-	CreateSceneObjects(MQ_ICE_CAVERN),
-	CreateSceneObjects(MQ_GERUDO_TRAINING_GROUND),
-	CreateSceneObjects(MQ_INSIDE_GANON_CASTLE),*/
-
-	// Spoiler Log
-	CreateSceneObjects(INSIDE_EGGS),
-	CreateSceneObjects(MARKET)
 };
 
 #pragma endregion

@@ -4,6 +4,16 @@ commonScenes = ["FAIRY_FOUNTAIN", "GROTTOS", "GORON_SHOP", "LOST_WOODS", "SHOOTI
 commonID = ["SONG_STORMS"]
 excludeSpoiler = ["INSIDE_EGGS", "MARKET", "MOUNTAIN_VILLAGE", "TWIN_ISLANDS", "MOON", "GORON_SHRINE", "MILK_ROAD", "GORON_VILLAGE_WINTER", "ROMANI_RANCH"]
 
+def wrap_cpp_file(outfile, content, game):
+    if (game == "OOT_"):
+        pragmaGame = "OOT"
+    else:
+        pragmaGame = "MM"
+
+    header = "#pragma once\n\n/*\n*	IMPORTANT NOTE: This file should only be include one time as all of these object arrays are not constant / static and should exist only one time !\n*\t\t\t\t\tThey were part of Objects.cpp but were moved here for clarity and IDE lagging\n*\n*	Currently included by Objects.cpp\n*/\n\n#include \"Objects.h\"\n#include \"Scenes.h\"\n\n#pragma region " + pragmaGame
+    outfile.write(header + "\n" + content + "\n" + "#pragma endregion")
+    
+
 def parse_file(input_file, output_file, arrayname, prefix):
     """Parse un fichier pour convertir les lignes RGB en hexadécimal."""
     with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
@@ -50,7 +60,7 @@ def parse_file(input_file, output_file, arrayname, prefix):
             outfile.write(objectstr)
         outfile.write("\n};")
 
-def parse_file2(input_file, output_file, arrayname, prefix):
+def parse_file2(input_file, output_file, prefix):
     """Parse un fichier pour convertir les lignes RGB en hexadécimal."""
     with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
         filereader = pd.read_csv(infile, delimiter=";", header=0)
@@ -109,6 +119,7 @@ def parse_file2(input_file, output_file, arrayname, prefix):
 
 
             #outfile.write(objectstr)
+        content = ""
         for r in fin:
             le = len(fin[r])
             i = 0
@@ -122,7 +133,10 @@ def parse_file2(input_file, output_file, arrayname, prefix):
             strb = strb + "\n};\n"
             #strb = strb + ")\n"
             #print(strb)
-            outfile.write(strb)
+            content += strb
+#            outfile.write(strb)
+        wrap_cpp_file(outfile, content, prefix)
+
 
 def parse_scene(input_file, output_file, game):
     """Parse un fichier pour convertir les lignes en SceneMetaInfo."""
@@ -228,16 +242,18 @@ def parse_settings(input_file, output_file):
 
 # Exemple d'utilisation
 input_file = '.\\pool_mm.csv'
-output_file = '.\\pool_mm.txt'
-parse_file2(input_file, output_file, "MMObjects", "MM_")
+#output_file = '.\\pool_mm.txt'
+cpp_file = '..\\..\\Headers\\Combo\\MMObjectScene.h'
+parse_file2(input_file, cpp_file, "MM_")
 #
-print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
+print(f"Conversion terminée. Les résultats sont enregistrés dans '{cpp_file}'.")
 #
 input_file = '.\\pool_oot.csv'
-output_file = '.\\pool_oot.txt'
-parse_file2(input_file, output_file, "OoTObjects", "OOT_")
+#output_file = '.\\pool_oot.txt'
+cpp_file = '..\\..\\Headers\\Combo\\OoTObjectScene.h'
+parse_file2(input_file, cpp_file, "OOT_")
 #
-print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
+print(f"Conversion terminée. Les résultats sont enregistrés dans '{cpp_file}'.")
 
 
 input_file = '..\\Scenes\\scenes_oot.csv'

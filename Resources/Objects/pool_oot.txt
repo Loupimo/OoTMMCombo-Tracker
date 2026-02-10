@@ -1,3 +1,16 @@
+#pragma once
+
+/*
+*	IMPORTANT NOTE: This file should only be include one time as all of these object arrays are not constant / static and should exist only one time !
+*					They were part of Objects.cpp but were moved here for clarity and IDE lagging
+*
+*	Currently included by Objects.cpp
+*/
+
+#include "Objects.h"
+#include "Scenes.h"
+
+#pragma region OOT
 
 const size_t BACK_ALLEY_HOUSENumOfObjs = 3;
 ObjectInfo BACK_ALLEY_HOUSESceneObjects [BACK_ALLEY_HOUSENumOfObjs] =
@@ -4554,3 +4567,5 @@ ObjectInfo MARKETSceneObjects [MARKETNumOfObjs] =
 	{ SHOOTING_GAME_CHILD, MARKET, "Reward", "OOT Shooting Gallery Child", ObjectType::none, {0, 0, 0}, MARKET_SHOOTING, ObjectType::none, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::minigame, NULL },
 	{ 0x0000e, MARKET, "Tree", "OOT Market Tree", ObjectType::none, {0, 0, 0}, MARKET_CHILD_DAY, ObjectType::none, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
+
+pragma endregion
