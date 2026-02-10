@@ -15,6 +15,9 @@ colors = {"Grass": np.array([0, 128, 0]),
           "Crate": np.array([0, 80, 0]),
           "Grotto": np.array([255, 50, 255]),
           "NPCs": np.array([255, 128, 255]),
+          "Foes": np.array([0,250,0])
+          
+          #"Foes": np.array([0,180,0])
           }
 
 def find_points(image_path, colorstr):
@@ -96,14 +99,15 @@ def perform_action(root_folder):
     data = []
     for root, dirs, files in os.walk(root_folder):
         for f in files:
-            if f.startswith("AP") and f.endswith(".png"):
+            if f.startswith("AP") and (f.endswith(".png") or f.endswith(".jpg")):
                 data.append(os.path.join(root,f))
     for file in data:
         if os.path.isfile(file + ".txt") == False:
             with open(file + ".txt", 'w') as f:
                 for colorstr in colors.keys():
                     coord, coordstr = find_points(file, colorstr)
-                    #coord, coordstr = detect_blobs(file, colorstr)
+                    #coord, coordstr2 = detect_blobs(file, colorstr)
+                    #f.write(coordstr + coordstr2)
                     f.write(coordstr)
 
 perform_action("D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\OoT_AP")

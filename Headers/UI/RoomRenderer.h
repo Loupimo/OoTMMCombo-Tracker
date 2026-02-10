@@ -168,7 +168,7 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 	QPair<int, std::vector<RoomInfo>>(TEMPLE_WATER,
 		std::vector<RoomInfo>(
 			{
-				{ 0, "Lobby", "./Resources/OoT/Dungeons/Water/Lobby.png" },
+				{ 0, "1F", "./Resources/OoT/Dungeons/Water/WT_1F.jpg" },
 				{ 1, "Waterfalls Room", "./Resources/OoT/Dungeons/Water/Waterfalls.png" },
 				{ 2, "Ruto Room", "./Resources/OoT/Dungeons/Water/Ruto.png" },
 				{ 3, "Boulder Room", "./Resources/OoT/Dungeons/Water/Boulder.png" },
