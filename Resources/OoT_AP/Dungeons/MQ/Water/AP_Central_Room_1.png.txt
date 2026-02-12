@@ -1,4 +1,0 @@
-QList<QPair<int, int>> CratePoints = {
-{266, 131},
-{287, 130},
-};

@@ -1,3 +1,0 @@
-QList<QPair<int, int>> ChestPoints = {
-{238, 153},
-};

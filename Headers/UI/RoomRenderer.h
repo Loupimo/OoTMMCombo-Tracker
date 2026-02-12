@@ -169,19 +169,9 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 		std::vector<RoomInfo>(
 			{
 				{ 0, "1F", "./Resources/OoT/Dungeons/Water/WT_1F.jpg" },
-				{ 1, "Waterfalls Room", "./Resources/OoT/Dungeons/Water/Waterfalls.png" },
-				{ 2, "Ruto Room", "./Resources/OoT/Dungeons/Water/Ruto.png" },
-				{ 3, "Boulder Room", "./Resources/OoT/Dungeons/Water/Boulder.png" },
-				{ 4, "Block Room", "./Resources/OoT/Dungeons/Water/Block.png" },
-				{ 5, "Dragon Room", "./Resources/OoT/Dungeons/Water/Dragon.png" },
-				{ 6, "Pre-Mini-Boss Room", "./Resources/OoT/Dungeons/Water/Pre-Mini-Boss.png" },
-				{ 7, "Compass Room", "./Resources/OoT/Dungeons/Water/Compass.png" },
-				{ 8, "Central Room", "./Resources/OoT/Dungeons/Water/Central_Room.png" },
-				{ 9, "Boss Room", "./Resources/OoT/Dungeons/Water/Boss.png" },
-				{ 10, "Before High Water", "./Resources/OoT/Dungeons/Water/MQ/Before_High_Water.png" },
-				{ 11, "Boss Key Room", "./Resources/OoT/Dungeons/Water/MQ/Boss_Key_Room.png" },
-				{ 12, "Triple Geyser Room", "./Resources/OoT/Dungeons/Water/MQ/Triple_Geyser_Room.png" },
-				{ 13, "Pre Boss Room", "./Resources/OoT/Dungeons/Water/MQ/Pre_Boss.png" }
+				{ 1, "2F", "./Resources/OoT/Dungeons/Water/WT_2F.jpg" },
+				{ 2, "3F", "./Resources/OoT/Dungeons/Water/WT_3F.jpg" },
+				{ 3, "B1", "./Resources/OoT/Dungeons/Water/WT_B1.jpg" }
 			}
 		)
 	),

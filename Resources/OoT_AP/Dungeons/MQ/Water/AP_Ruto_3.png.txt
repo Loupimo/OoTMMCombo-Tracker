@@ -1,6 +1,0 @@
-QList<QPair<int, int>> ChestPoints = {
-{238, 153},
-};
-QList<QPair<int, int>> WonderPoints = {
-{118, 120},
-};
