@@ -150,9 +150,9 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 	QPair<int, std::vector<RoomInfo>>(TEMPLE_FIRE,
 		std::vector<RoomInfo>(
 			{
-				{ 0, "Lava Room", "./Resources/OoT/Dungeons/Fire/Lava_Room.png" },
-				{ 1, "Above Lava Room", "./Resources/OoT/Dungeons/Fire/Above_Lava.png" },
-				{ 2, "Lava Side Room", "./Resources/OoT/Dungeons/Fire/Lava_Side.png" },
+				{ 0, "1F", "./Resources/OoT/Dungeons/Fire/FIT_1F.jpg" },
+				{ 1, "2F", "./Resources/OoT/Dungeons/Fire/FIT_2F.jpg" },
+				{ 2, "3F", "./Resources/OoT/Dungeons/Fire/FIT_3F.jpg" },
 				{ 3, "Boulder Maze", "./Resources/OoT/Dungeons/Fire/Boulder_Maze.png" },
 				{ 4, "Fire Column", "./Resources/OoT/Dungeons/Fire/Fire_Column.png" },
 				{ 5, "Fire Wall", "./Resources/OoT/Dungeons/Fire/Fire_Wall.png" },
