@@ -236,6 +236,7 @@ public:
     FilterManager* Filter = nullptr;                                        // A reference to the filter manager.
 
     QPixmap* SceneImage = nullptr;                                          // The scene image to render
+    QGraphicsPixmapItem* SceneImageItem = nullptr;                          // The scene item image that is actually rendered
 
     ObjectRenderer* ObjectsRen[ObjectType::last - 1] = { nullptr };
 

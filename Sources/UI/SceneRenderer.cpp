@@ -92,6 +92,10 @@ void SceneItemTree::RenderScene(QTreeWidget* ObjectsTreeWidget, bool Context, bo
                 this->Rooms[this->Renderer->ActiveRoom]->setSelected(false);
             }
             this->Rooms[this->ActiveRoom->RoomID]->setSelected(true);
+
+            // We need to clean the previous loaded room
+            //this->Renderer->UnloadScene();
+            //this->Renderer->views()[0]->setScene(nullptr);
         }
     }
 
@@ -346,6 +350,13 @@ SceneRenderer::~SceneRenderer()
         this->SceneImage = nullptr;
     }
 
+    if (this->SceneImageItem)
+    {
+        this->removeItem(this->SceneImageItem);
+        delete this->SceneImageItem;
+        this->SceneImageItem = nullptr;
+    }
+
     for (size_t i = 0; i < ObjectType::last - 1; i++)
     {   // Destroys all objects renderer
 
@@ -366,17 +377,24 @@ void SceneRenderer::RenderScene(bool Context, RoomInfo* Room)
     if (Room != nullptr && this->ActiveRoom != Room->RoomID)
     {   // The active room has changed
 
-        delete this->SceneImage;            // Delete the previously rendered scene image
-        path = Room->ImagePath;             // Change the scene image path
-        this->ActiveRoom = Room->RoomID;    // Change the scene renderer active room ID
+        delete this->SceneImage;                // Delete the previously rendered scene image
+        path = Room->ImagePath;                 // Change the scene image path
+        this->ActiveRoom = Room->RoomID;        // Change the scene renderer active room ID
         this->SceneImage = nullptr;
+        if (this->SceneImageItem)
+        {   // Remove the graphic item matching the previously rendered scene image
+
+            this->removeItem(this->SceneImageItem); 
+            delete this->SceneImageItem;
+            this->SceneImageItem = nullptr;
+        }
     }
 
     if (this->SceneImage == nullptr)
     {   // This is the first time the scene is rendered
 
         this->SceneImage = new QPixmap(path);
-        this->addPixmap(*this->SceneImage);
+        this->SceneImageItem = this->addPixmap(*this->SceneImage);
     }
 
     // Refresh the scene content based on the context

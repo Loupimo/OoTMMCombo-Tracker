@@ -153,14 +153,8 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 				{ 0, "1F", "./Resources/OoT/Dungeons/Fire/FIT_1F.jpg" },
 				{ 1, "2F", "./Resources/OoT/Dungeons/Fire/FIT_2F.jpg" },
 				{ 2, "3F", "./Resources/OoT/Dungeons/Fire/FIT_3F.jpg" },
-				{ 3, "Boulder Maze", "./Resources/OoT/Dungeons/Fire/Boulder_Maze.png" },
-				{ 4, "Fire Column", "./Resources/OoT/Dungeons/Fire/Fire_Column.png" },
-				{ 5, "Fire Wall", "./Resources/OoT/Dungeons/Fire/Fire_Wall.png" },
-				{ 6, "Fire Maze", "./Resources/OoT/Dungeons/Fire/Fire_Maze.png" },
-				{ 7, "Hammer", "./Resources/OoT/Dungeons/Fire/Hammer.png" },
-				{ 8, "Boss Key Room", "./Resources/OoT/Dungeons/Fire/Boss_Key.png" },
-				{ 9, "Darunia Room", "./Resources/OoT/Dungeons/Fire/Darunia.png" },
-				{ 10, "Boss Room", "./Resources/OoT/Dungeons/Fire/Boss.png" }
+				{ 3, "4F", "./Resources/OoT/Dungeons/Fire/FIT_4F.jpg" },
+				{ 4, "5F", "./Resources/OoT/Dungeons/Fire/FIT_5F.jpg" }
 			}
 		)
 	),
