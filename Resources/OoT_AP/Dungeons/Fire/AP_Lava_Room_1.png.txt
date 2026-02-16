@@ -1,8 +1,0 @@
-QList<QPair<int, int>> FSPoints = {
-{175, 346},
-};
-QList<QPair<int, int>> PotPoints = {
-{287, 247},
-{299, 246},
-{310, 245},
-};
