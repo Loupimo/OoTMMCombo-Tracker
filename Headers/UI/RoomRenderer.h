@@ -126,10 +126,10 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 	QPair<int, std::vector<RoomInfo>>(TEMPLE_FOREST,
 		std::vector<RoomInfo>(
 			{
-				{ 0, "Entrance", "./Resources/OoT/Dungeons/Forest/Entrance.png" },
-				{ 1, "Lobby", "./Resources/OoT/Dungeons/Forest/Lobby.png" },
-				{ 2, "Garden West", "./Resources/OoT/Dungeons/Forest/Garden_West.png" },
-				{ 3, "Garden East", "./Resources/OoT/Dungeons/Forest/Garden_East.png" },
+				{ 0, "1F", "./Resources/OoT/Dungeons/Forest/1F.jpg" },
+				{ 1, "2F", "./Resources/OoT/Dungeons/Forest/2F.jpg" },
+				{ 2, "B1", "./Resources/OoT/Dungeons/Forest/B1.jpg" },
+				{ 3, "B2", "./Resources/OoT/Dungeons/Forest/B2.jpg" },
 				{ 4, "Well", "./Resources/OoT/Dungeons/Forest/Underwater.png" },
 				{ 5, "Mini-Boss", "./Resources/OoT/Dungeons/Forest/Mini-Boss.png" },
 				{ 6, "Maze Room", "./Resources/OoT/Dungeons/Forest/Blocks_Room.png" },

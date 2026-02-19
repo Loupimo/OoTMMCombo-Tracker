@@ -1,0 +1,4 @@
+QList<QPair<int, int>> FoesPoints = {
+{806, 366},
+{693, 260},
+};
