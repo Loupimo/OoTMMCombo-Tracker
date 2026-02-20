@@ -1,9 +1,3 @@
-QList<QPair<int, int>> HivePoints = {
-{1440, 642},
-{1346, 643},
-{1345, 305},
-{1439, 305},
-};
 QList<QPair<int, int>> ChestPoints = {
 {1394, 406},
 };

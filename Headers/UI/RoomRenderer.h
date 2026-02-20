@@ -126,23 +126,10 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 	QPair<int, std::vector<RoomInfo>>(TEMPLE_FOREST,
 		std::vector<RoomInfo>(
 			{
-				{ 0, "1F", "./Resources/OoT/Dungeons/Forest/1F.jpg" },
-				{ 1, "2F", "./Resources/OoT/Dungeons/Forest/2F.jpg" },
-				{ 2, "B1", "./Resources/OoT/Dungeons/Forest/B1.jpg" },
-				{ 3, "B2", "./Resources/OoT/Dungeons/Forest/B2.jpg" },
-				{ 4, "Well", "./Resources/OoT/Dungeons/Forest/Underwater.png" },
-				{ 5, "Mini-Boss", "./Resources/OoT/Dungeons/Forest/Mini-Boss.png" },
-				{ 6, "Maze Room", "./Resources/OoT/Dungeons/Forest/Blocks_Room.png" },
-				{ 7, "Boss Key Room", "./Resources/OoT/Dungeons/Forest/Boss_Key.png" },
-				{ 8, "Map Room", "./Resources/OoT/Dungeons/Forest/Map.png" },
-				{ 9, "Red Poe", "./Resources/OoT/Dungeons/Forest/Red_Poe.png" },
-				{ 10, "Blue Poe", "./Resources/OoT/Dungeons/Forest/Blue_Poe.png" },
-				{ 11, "Green Poe", "./Resources/OoT/Dungeons/Forest/Green_Poe.png" },
-				{ 12, "Spinning Room", "./Resources/OoT/Dungeons/Forest/Spinning_Room.png" },
-				{ 13, "Check Room", "./Resources/OoT/Dungeons/Forest/Check_Room.png" },
-				{ 14, "Floormaster Room", "./Resources/OoT/Dungeons/Forest/Wallmaster.png" },
-				{ 15, "Pre-Boss", "./Resources/OoT/Dungeons/Forest/Pre-Boss.png" },
-				{ 16, "Boss Room", "./Resources/OoT/Dungeons/Forest/Boss.png" }
+				{ 0, "1F", "./Resources/OoT/Dungeons/Forest/FOT_1F.jpg" },
+				{ 1, "2F", "./Resources/OoT/Dungeons/Forest/FOT_2F.jpg" },
+				{ 2, "B1", "./Resources/OoT/Dungeons/Forest/FOT_B1.jpg" },
+				{ 3, "B2", "./Resources/OoT/Dungeons/Forest/FOT_B2.jpg" }
 			}
 		)
 	),
