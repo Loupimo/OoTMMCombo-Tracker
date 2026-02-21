@@ -1,3 +1,0 @@
-QList<QPair<int, int>> FlyPoints = {
-{596, 360},
-};
