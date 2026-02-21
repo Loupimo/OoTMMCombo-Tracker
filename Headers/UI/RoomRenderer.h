@@ -160,15 +160,11 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 	QPair<int, std::vector<RoomInfo>>(TEMPLE_SHADOW,
 		std::vector<RoomInfo>(
 			{
-				{ 0, "Lobby", "./Resources/OoT/Dungeons/Shadow/Lobby.png" },
-				{ 1, "Scythe Room", "./Resources/OoT/Dungeons/Shadow/Scythe.png" },
-				{ 2, "Stalfos Room", "./Resources/OoT/Dungeons/Shadow/Stalfos.png" },
-				{ 3, "Invisible Scythe Room", "./Resources/OoT/Dungeons/Shadow/Invisible_Scythe.png" },
-				{ 4, "Falling Spikes Room", "./Resources/OoT/Dungeons/Shadow/Falling_Spikes.png" },
-				{ 5, "Boat Room", "./Resources/OoT/Dungeons/Shadow/Boat.png" },
-				{ 6, "Maze Room", "./Resources/OoT/Dungeons/Shadow/Maze.png" },
-				{ 7, "Pre-Boss Room", "./Resources/OoT/Dungeons/Shadow/Pre-Boss.png" },
-				{ 8, "Boss Room", "./Resources/OoT/Dungeons/Shadow/Boss.png" }
+				{ 0, "B1", "./Resources/OoT/Dungeons/Shadow/SHT_B1.jpg" },
+				{ 1, "B2", "./Resources/OoT/Dungeons/Shadow/SHT_B2.jpg" },
+				{ 2, "B3", "./Resources/OoT/Dungeons/Shadow/SHT_B3.jpg" },
+				{ 3, "B4", "./Resources/OoT/Dungeons/Shadow/SHT_B4.jpg" },
+				{ 4, "B5", "./Resources/OoT/Dungeons/Shadow/SHT_B5.jpg" }
 			}
 		)
 	),
