@@ -1,0 +1,13 @@
+QList<QPair<int, int>> FSPoints = {
+{825, 797},
+{769, 797},
+};
+QList<QPair<int, int>> GSPoints = {
+{762, 580},
+};
+QList<QPair<int, int>> FoesPoints = {
+{818, 703},
+{690, 703},
+{866, 303},
+{679, 301},
+};

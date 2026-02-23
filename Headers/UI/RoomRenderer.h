@@ -169,6 +169,17 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 		)
 	),
 
+	QPair<int, std::vector<RoomInfo>>(TEMPLE_SPIRIT,
+		std::vector<RoomInfo>(
+			{
+				{ 0, "1F", "./Resources/OoT/Dungeons/Spirit/SPT_1F.jpg" },
+				{ 1, "2F", "./Resources/OoT/Dungeons/Spirit/SPT_2F.jpg" },
+				{ 2, "3F", "./Resources/OoT/Dungeons/Spirit/SPT_3F.jpg" },
+				{ 3, "4F", "./Resources/OoT/Dungeons/Spirit/SPT_4F.jpg" }
+			}
+		)
+	),
+
 	QPair<int, std::vector<RoomInfo>>(GERUDO_TRAINING_GROUND,
 		std::vector<RoomInfo>(
 			{
@@ -183,24 +194,6 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 				{ 8, "Water Room", "./Resources/OoT/Dungeons/GTG/Water.png" },
 				{ 9, "Dinalfos Room", "./Resources/OoT/Dungeons/GTG/Dinalfos.png" },
 				{ 10, "Maze", "./Resources/OoT/Dungeons/GTG/Maze.png" }
-			}
-		)
-	),
-	
-	QPair<int, std::vector<RoomInfo>>(TEMPLE_SPIRIT,
-		std::vector<RoomInfo>(
-			{
-				{ 0, "Entrance", "./Resources/OoT/Dungeons/Spirit/Entrance.png" },
-				{ 1, "Child Lobby", "./Resources/OoT/Dungeons/Spirit/Lobby_Child.png" },
-				{ 2, "Child Climb", "./Resources/OoT/Dungeons/Spirit/Climb_Child.png" },
-				{ 3, "Sun Block", "./Resources/OoT/Dungeons/Spirit/Sun_Block.png" },
-				{ 4, "Adult Lobby", "./Resources/OoT/Dungeons/Spirit/Lobby_Adult.png" },
-				{ 5, "Adult Climb", "./Resources/OoT/Dungeons/Spirit/Climb_Adult.png" },
-				{ 6, "Main Room", "./Resources/OoT/Dungeons/Spirit/Main.png" },
-				{ 7, "Mirror Shield", "./Resources/OoT/Dungeons/Spirit/Mirror_Shield.png" },
-				{ 8, "Boss Key Room", "./Resources/OoT/Dungeons/Spirit/Boss_Key.png" },
-				{ 9, "Elevator", "./Resources/OoT/Dungeons/Spirit/Elevator.png" },
-				{ 10, "Boss Room", "./Resources/OoT/Dungeons/Spirit/Boss.png" }
 			}
 		)
 	)

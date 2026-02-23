@@ -2540,7 +2540,7 @@ SWORDSMAN_HEART_PIECE;SWORDSMAN_SCHOOL;Game Prize;MM Swordsman School HP;npc;496
 0x00a0e;TEMPLE_SNOWHEAD;Snow Room 7;MM Snowhead Temple Small Snowball Snow Room 7;snowball;740;369;0;TEMPLE_SNOWHEAD;snowball;render_type;All;10;mm;dungeon;;
 0x00a0f;TEMPLE_SNOWHEAD;Snow Room 8;MM Snowhead Temple Small Snowball Snow Room 8;snowball;730;378;0;TEMPLE_SNOWHEAD;snowball;render_type;All;10;mm;dungeon;;
 0x14;TEMPLE_STONE_TOWER;Hiploop Bridge;MM Stone Tower Temple Before Water Bridge Chest;chest;292;511;0;TEMPLE_STONE_TOWER;sf;render_type;All;6;mm;dungeon;;In the inverted version, hit the crystal to make the chest appear. Then open it in the normal version.
-0x01;TEMPLE_STONE_TOWER;Center - Across Water;MM Stone Tower Temple Center Across Water Chest;chest;202;300;0;TEMPLE_STONE_TOWER;chest;render_type;All;1;mm;dungeon;;
+0x01;TEMPLE_STONE_TOWER;Center - Across Water;MM Stone Tower Temple Center Across Water Chest;chest;202;300;0;TEMPLE_STONE_TOWER;small_key;render_type;All;1;mm;dungeon;;
 0x18;TEMPLE_STONE_TOWER;Center - Sun Block;MM Stone Tower Temple Center Sun Block Chest;chest;559;539;0;TEMPLE_STONE_TOWER;sf;render_type;All;1;mm;dungeon;;
 0x1c;TEMPLE_STONE_TOWER;Chest;MM Stone Tower Temple Compass;chest;785;382;0;TEMPLE_STONE_TOWER;compass;render_type;All;3;mm;dungeon;;
 0x00011;TEMPLE_STONE_TOWER;Entrance 1;MM Stone Tower Temple Crate Entrance 1;crate;635;220;0;TEMPLE_STONE_TOWER;crate;render_type;All;0;mm;dungeon;;

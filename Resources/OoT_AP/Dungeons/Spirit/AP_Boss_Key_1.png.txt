@@ -1,7 +1,0 @@
-QList<QPair<int, int>> FSPoints = {
-{113, 259},
-{120, 250},
-};
-QList<QPair<int, int>> GSPoints = {
-{266, 394},
-};
