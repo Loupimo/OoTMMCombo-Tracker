@@ -1,4 +1,0 @@
-QList<QPair<int, int>> GrassPoints = {
-{425, 553},
-{385, 553},
-};
