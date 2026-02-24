@@ -22,17 +22,11 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 	QPair<int, std::vector<RoomInfo>>(DEKU_TREE,
 		std::vector<RoomInfo>(
 			{
-				{ 0, "Lobby", "./Resources/OoT/Dungeons/Deku_Tree/Lobby.png" },
-				{ 1, "Compass Room", "./Resources/OoT/Dungeons/Deku_Tree/Compass_Room.png" },
-				{ 2, "Slingshot Room", "./Resources/OoT/Dungeons/Deku_Tree/Sling_Room.png" },
-				{ 3, "Basement", "./Resources/OoT/Dungeons/Deku_Tree/Basement.png" },
-				{ 4, "Back Room", "./Resources/OoT/Dungeons/Deku_Tree/Basement_Back_Room.png" },
-				{ 5, "Eye Switch Room", "./Resources/OoT/Dungeons/Deku_Tree/Eye_Switch_Room.png" },
-				{ 6, "Water Room", "./Resources/OoT/Dungeons/Deku_Tree/Water_Room.png" },
-				{ 7, "Torch Room", "./Resources/OoT/Dungeons/Deku_Tree/Torch_Room.png" },
-				{ 8, "Larva Room", "./Resources/OoT/Dungeons/Deku_Tree/Larva_Room.png" },
-				{ 9, "Pre-Boss Room", "./Resources/OoT/Dungeons/Deku_Tree/Pre-Boss_Room.png" },
-				{ 10, "Boss Room", "./Resources/OoT/Dungeons/Deku_Tree/Boss_Room.png" }
+				{ 0, "1F", "./Resources/OoT/Dungeons/Deku_Tree/DEK_1F.jpg" },
+				{ 1, "2F", "./Resources/OoT/Dungeons/Deku_Tree/DEK_2F.jpg" },
+				{ 2, "3F", "./Resources/OoT/Dungeons/Deku_Tree/DEK_3F.jpg" },
+				{ 3, "B1", "./Resources/OoT/Dungeons/Deku_Tree/DEK_B1.jpg" },
+				{ 4, "B2", "./Resources/OoT/Dungeons/Deku_Tree/DEK_B2.jpg" }
 			}
 		)
 	),
