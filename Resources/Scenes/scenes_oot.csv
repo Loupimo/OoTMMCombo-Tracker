@@ -95,7 +95,7 @@ DESERT_COLOSSUS;Desert Colossus;./Resources/OoT/Desert_Colossus/Desert_Colossus.
 GERUDO_FORTRESS;Gerudo's Fortress;./Resources/OoT/Gerudo_Fortress/Fortress.png;Gerudo_Fortress;true;oot
 HAUNTED_WASTELAND;Haunted Wasteland;./Resources/OoT/Haunted_Wasteland/Haunted_Wasteland.png;Haunted_Wasteland;false;oot
 HYRULE_CASTLE;Hyrule Castle;./Resources/OoT/Hyrule/Hyrule_Castle.png;Castle;false;oot
-DEATH_MOUNTAIN_TRAIL;Death Mountain Trail;;Death_Mountain_Trial;true;oot
+DEATH_MOUNTAIN_TRAIL;Death Mountain Trail;;Death_Mountain_Trail;true;oot
 DEATH_MOUNTAIN_CRATER;Death Mountain Crater;./Resources/OoT/Death_Mountain_Crater/Crater.png;Death_Mountain_Crater;true;oot
 GORON_CITY;Goron City;./Resources/OoT/Goron_City/Goron_City.png;Goron_City;true;oot
 LON_LON_RANCH;Lon Lon's Ranch;./Resources/OoT/Ranch/Lon_Lon_Ranch.png;Lon_Lon_Ranch;true;oot
@@ -108,8 +108,8 @@ OOT_GROTTO_SACRED_MEADOW_WOLFOS;Wolfos Grotto;./Resources/OoT/Sacred_Forest_Mead
 OOT_GROTTO_SACRED_MEADOW_STORMS;Song of Storms Grotto;./Resources/OoT/Sacred_Forest_Meadow/Storms.png;Sacred_Forest_Meadow;false;oot
 OOT_GROTTO_KAKARIKO_REDEAD;Redead Grotto;./Resources/OoT/Kakariko/Redead.png;Kakariko;false;oot
 OOT_GROTTO_KAKARIKO_OPEN;Open Grotto;./Resources/OoT/Kakariko/Open.png;Kakariko;false;oot
-OOT_GROTTO_DEATH_TRIAL_STORMS;Song of Storms Grotto;./Resources/OoT/Death_Mountain_Trial/Storms.png;Death_Mountain_Trial;false;oot
-OOT_GROTTO_DEATH_TRIAL_COW;Cow Grotto;./Resources/OoT/Death_Mountain_Trial/Cow.png;Death_Mountain_Trial;false;oot
+OOT_GROTTO_DEATH_TRIAL_STORMS;Song of Storms Grotto;./Resources/OoT/Death_Mountain_Trail/Storms.png;Death_Mountain_Trail;false;oot
+OOT_GROTTO_DEATH_TRIAL_COW;Cow Grotto;./Resources/OoT/Death_Mountain_Trail/Cow.png;Death_Mountain_Trail;false;oot
 OOT_GROTTO_GORON_CITY_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Goron_City/Scrubs.png;Goron_City;false;oot
 OOT_GROTTO_DEATH_CRATER_GENERIC;Generic Grotto;./Resources/OoT/Death_Mountain_Crater/Generic.png;Death_Mountain_Crater;false;oot
 OOT_GROTTO_DEATH_CRATER_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Death_Mountain_Crater/Scrubs.png;Death_Mountain_Crater;false;oot
@@ -136,13 +136,13 @@ OOT_FAIRY_GERUDO_FORTRESS;Fairy Fountain;./Resources/OoT/Fairy/Fountain.png;Geru
 OOT_GREAT_FAIRY_DIN;Great Fairy Fountain;./Resources/OoT/Fairy/Great_Fairy.png;Castle;true;oot
 OOT_GREAT_FAIRY_FARORE;Great Fairy Fountain;./Resources/OoT/Fairy/Great_Fairy.png;Zora_Fountain;false;oot
 OOT_GREAT_FAIRY_NAYRU;Great Fairy Fountain;./Resources/OoT/Fairy/Great_Fairy.png;Desert_Colossus;false;oot
-OOT_GREAT_FAIRY_MAGIC;Great Fairy Fountain;./Resources/OoT/Fairy/Great_Fairy.png;Death_Mountain_Trial;false;oot
+OOT_GREAT_FAIRY_MAGIC;Great Fairy Fountain;./Resources/OoT/Fairy/Great_Fairy.png;Death_Mountain_Trail;false;oot
 OOT_GREAT_FAIRY_MAGIC2;Great Fairy Fountain;./Resources/OoT/Fairy/Great_Fairy.png;Death_Mountain_Crater;false;oot
 OOT_GREAT_FAIRY_DEFENSE;Bazaar;./Resources/OoT/Kakariko/Bazaar.png;Kakariko;false;oot
 KAKARIKO_BAZAAR;Bazaar;./Resources/OoT/Market/Bazaar.png;Market;false;oot
 MARKET_BAZAAR;Shooting Gallery;./Resources/OoT/Kakariko/Shooting.png;Kakariko;false;oot
 KAKARIKO_SHOOTING;Shooting Gallery;./Resources/OoT/Market/Shooting.png;Market;false;oot
-SILO;Windmill;./Resources/OoT/Ranch/Silo.png;Lon_Lon_Ranch;false;oot
-WINDMILL;Inside Eggs;./Resources/OoT/Kakariko/Windmill.png;Kakariko;true;oot
-INSIDE_EGGS;Market;;None;false;oot
+SILO;Silo;./Resources/OoT/Ranch/Silo.png;Lon_Lon_Ranch;false;oot
+WINDMILL;Windmill;./Resources/OoT/Kakariko/Windmill.png;Kakariko;true;oot
+INSIDE_EGGS;Inside Eggs;;None;false;oot
 MARKET;Market;;None;false;oot

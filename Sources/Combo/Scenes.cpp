@@ -7,7 +7,7 @@
 
 SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 {
-	{ "Deku Tree", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
+{ "Deku Tree", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
 	{ "Dodongo's Cavern", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
 	{ "Inside Jabu-Jabu", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
 	{ "Forest Temple", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
@@ -116,8 +116,8 @@ SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 	{ "Song of Storms Grotto", "./Resources/OoT/Sacred_Forest_Meadow/Storms.png", (uint8_t)OoTRegions::Sacred_Forest_Meadow, false, GameLayout::oot},
 	{ "Redead Grotto", "./Resources/OoT/Kakariko/Redead.png", (uint8_t)OoTRegions::Kakariko, false, GameLayout::oot},
 	{ "Open Grotto", "./Resources/OoT/Kakariko/Open.png", (uint8_t)OoTRegions::Kakariko, false, GameLayout::oot},
-	{ "Song of Storms Grotto", "./Resources/OoT/Death_Mountain_Trial/Storms.png", (uint8_t)OoTRegions::Death_Mountain_Trail, false, GameLayout::oot},
-	{ "Cow Grotto", "./Resources/OoT/Death_Mountain_Trial/Cow.png", (uint8_t)OoTRegions::Death_Mountain_Trail, false, GameLayout::oot},
+	{ "Song of Storms Grotto", "./Resources/OoT/Death_Mountain_Trail/Storms.png", (uint8_t)OoTRegions::Death_Mountain_Trail, false, GameLayout::oot},
+	{ "Cow Grotto", "./Resources/OoT/Death_Mountain_Trail/Cow.png", (uint8_t)OoTRegions::Death_Mountain_Trail, false, GameLayout::oot},
 	{ "Deku Scrubs Grotto", "./Resources/OoT/Goron_City/Scrubs.png", (uint8_t)OoTRegions::Goron_City, false, GameLayout::oot},
 	{ "Generic Grotto", "./Resources/OoT/Death_Mountain_Crater/Generic.png", (uint8_t)OoTRegions::Death_Mountain_Crater, false, GameLayout::oot},
 	{ "Deku Scrubs Grotto", "./Resources/OoT/Death_Mountain_Crater/Scrubs.png", (uint8_t)OoTRegions::Death_Mountain_Crater, false, GameLayout::oot},
@@ -150,9 +150,9 @@ SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 	{ "Bazaar", "./Resources/OoT/Market/Bazaar.png", (uint8_t)OoTRegions::Market, false, GameLayout::oot},
 	{ "Shooting Gallery", "./Resources/OoT/Kakariko/Shooting.png", (uint8_t)OoTRegions::Kakariko, false, GameLayout::oot},
 	{ "Shooting Gallery", "./Resources/OoT/Market/Shooting.png", (uint8_t)OoTRegions::Market, false, GameLayout::oot},
-	{ "Windmill", "./Resources/OoT/Ranch/Silo.png", (uint8_t)OoTRegions::Lon_Lon_Ranch, false, GameLayout::oot},
-	{ "Inside Eggs", "./Resources/OoT/Kakariko/Windmill.png", (uint8_t)OoTRegions::Kakariko, true, GameLayout::oot},
-	{ "Market", "", (uint8_t)OoTRegions::None, false, GameLayout::oot},
+	{ "Silo", "./Resources/OoT/Ranch/Silo.png", (uint8_t)OoTRegions::Lon_Lon_Ranch, false, GameLayout::oot},
+	{ "Windmill", "./Resources/OoT/Kakariko/Windmill.png", (uint8_t)OoTRegions::Kakariko, true, GameLayout::oot},
+	{ "Inside Eggs", "", (uint8_t)OoTRegions::None, false, GameLayout::oot},
 	{ "Market", "", (uint8_t)OoTRegions::None, false, GameLayout::oot}
 };
 

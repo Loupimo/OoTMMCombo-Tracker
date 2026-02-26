@@ -76,15 +76,8 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 	QPair<int, std::vector<RoomInfo>>(DODONGO_CAVERN,
 		std::vector<RoomInfo>(
 			{
-				{ 0, "Lobby", "./Resources/OoT/Dungeons/Cavern/Lobby.png" },
-				{ 1, "Right Corridor", "./Resources/OoT/Dungeons/Cavern/Right_Corridor.png" },
-				{ 2, "Bombable Stairs", "./Resources/OoT/Dungeons/Cavern/Stairs.png" },
-				{ 3, "Lizalfos", "./Resources/OoT/Dungeons/Cavern/Lizalfos.png" },
-				{ 4, "Blue Room", "./Resources/OoT/Dungeons/Cavern/Blue_Room.png" },
-				{ 5, "Bomb Bag Room", "./Resources/OoT/Dungeons/Cavern/Bomb_Bag_Room.png" },
-				{ 6, "Pre-Boss", "./Resources/OoT/Dungeons/Cavern/Pre-Boss.png" },
-				{ 7, "Side Mini-Boss", "./Resources/OoT/Dungeons/Cavern/Side_Mini-Boss.png" },
-				{ 8, "Boss Room", "./Resources/OoT/Dungeons/Cavern/Boss_Room.png" }
+				{ 0, "1F", "./Resources/OoT/Dungeons/Cavern/CAV_1F.jpg" },
+				{ 1, "2F", "./Resources/OoT/Dungeons/Cavern/CAV_2F.jpg" }
 			}
 		)
 	),
