@@ -85,14 +85,8 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 	QPair<int, std::vector<RoomInfo>>(INSIDE_JABU_JABU,
 		std::vector<RoomInfo>(
 			{
-				{ 0, "First Room", "./Resources/OoT/Dungeons/Jabu-Jabu/First_Room.png" },
-				{ 1, "Main Corridor", "./Resources/OoT/Dungeons/Jabu-Jabu/Main_Corridor.png" },
-				{ 2, "Holes Room", "./Resources/OoT/Dungeons/Jabu-Jabu/Holes_Room.png" },
-				{ 3, "Water Room", "./Resources/OoT/Dungeons/Jabu-Jabu/Water_Room.png" },
-				{ 4, "Mini-Boss", "./Resources/OoT/Dungeons/Jabu-Jabu/Mini-Boss.png" },
-				{ 5, "Muscle Block Room", "./Resources/OoT/Dungeons/Jabu-Jabu/Muscle_Block.png" },
-				{ 6, "Pre Boss Room", "./Resources/OoT/Dungeons/Jabu-Jabu/Pre-Boss.png" },
-				{ 7, "Boss Room", "./Resources/OoT/Dungeons/Jabu-Jabu/Boss_Room.png" }
+				{ 0, "1F", "./Resources/OoT/Dungeons/Jabu-Jabu/JAB_1F.jpg" },
+				{ 1, "B1", "./Resources/OoT/Dungeons/Jabu-Jabu/JAB_B1.jpg" }
 			}
 		)
 	),
