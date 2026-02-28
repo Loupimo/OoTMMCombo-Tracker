@@ -90,19 +90,6 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 			}
 		)
 	),
-
-	QPair<int, std::vector<RoomInfo>>(ICE_CAVERN,
-		std::vector<RoomInfo>(
-			{
-				{ 0, "First Room", "./Resources/OoT/Dungeons/Ice/First_Room.png" },
-				{ 1, "Central Room", "./Resources/OoT/Dungeons/Ice/Central_Room.png" },
-				{ 2, "Right Room", "./Resources/OoT/Dungeons/Ice/Right_Room.png" },
-				{ 3, "Back Room", "./Resources/OoT/Dungeons/Ice/Back_Room.png" },
-				{ 4, "Pre Mini-Boss", "./Resources/OoT/Dungeons/Ice/Pre-Mini-Boss.png" },
-				{ 5, "Mini-Boss", "./Resources/OoT/Dungeons/Ice/Mini-Boss.png" }
-			}
-		)
-	),
 	
 	QPair<int, std::vector<RoomInfo>>(TEMPLE_FOREST,
 		std::vector<RoomInfo>(

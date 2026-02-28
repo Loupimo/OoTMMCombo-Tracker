@@ -8,7 +8,7 @@ TEMPLE_WATER;Water Temple;;Dungeons;false;oot
 TEMPLE_SPIRIT;Spirit Temple;;Dungeons;false;oot
 TEMPLE_SHADOW;Shadow Temple;;Dungeons;false;oot
 BOTTOM_OF_THE_WELL;Bottom of the Well;;Dungeons;false;oot
-ICE_CAVERN;Ice Cavern;;Dungeons;false;oot
+ICE_CAVERN;Ice Cavern;./Resources/OoT/Dungeons/Ice/ICE.jpg;Dungeons;false;oot
 GANON_TOWER;Ganon Tower;;Dungeons;false;oot
 GERUDO_TRAINING_GROUND;Gerudo Training Ground;;Gerudo_Fortress;false;oot
 THIEVES_HIDEOUT;Thieves Hideout;./Resources/OoT/Gerudo_Fortress/Hideout.png;Gerudo_Fortress;false;oot

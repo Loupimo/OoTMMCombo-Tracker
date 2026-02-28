@@ -7,7 +7,7 @@
 
 SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 {
-{ "Deku Tree", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
+	{ "Deku Tree", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
 	{ "Dodongo's Cavern", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
 	{ "Inside Jabu-Jabu", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
 	{ "Forest Temple", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
@@ -16,7 +16,7 @@ SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 	{ "Spirit Temple", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
 	{ "Shadow Temple", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
 	{ "Bottom of the Well", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
-	{ "Ice Cavern", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
+	{ "Ice Cavern", "./Resources/OoT/Dungeons/Ice/ICE.jpg", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
 	{ "Ganon Tower", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
 	{ "Gerudo Training Ground", "", (uint8_t)OoTRegions::Gerudo_Fortress, false, GameLayout::oot},
 	{ "Thieves Hideout", "./Resources/OoT/Gerudo_Fortress/Hideout.png", (uint8_t)OoTRegions::Gerudo_Fortress, false, GameLayout::oot},
