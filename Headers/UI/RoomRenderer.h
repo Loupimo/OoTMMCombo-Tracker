@@ -146,24 +146,6 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 				{ 3, "4F", "./Resources/OoT/Dungeons/Spirit/SPT_4F.jpg" }
 			}
 		)
-	),
-
-	QPair<int, std::vector<RoomInfo>>(GERUDO_TRAINING_GROUND,
-		std::vector<RoomInfo>(
-			{
-				{ 0, "Entrance", "./Resources/OoT/Dungeons/GTG/Entrance.png" },
-				{ 1, "Stalfos Room", "./Resources/OoT/Dungeons/GTG/Stalfos.png" },
-				{ 2, "Boulders Room", "./Resources/OoT/Dungeons/GTG/Boulders.png" },
-				{ 3, "Wolfos Room", "./Resources/OoT/Dungeons/GTG/Wolfos.png" },
-				{ 4, "Like Like Room", "./Resources/OoT/Dungeons/GTG/Like_Like.png" },
-				{ 5, "Statue Room", "./Resources/OoT/Dungeons/GTG/Statue.png" },
-				{ 6, "Flamming Room", "./Resources/OoT/Dungeons/GTG/Flamming.png" },
-				{ 7, "Lava Room", "./Resources/OoT/Dungeons/GTG/Lava.png" },
-				{ 8, "Water Room", "./Resources/OoT/Dungeons/GTG/Water.png" },
-				{ 9, "Dinalfos Room", "./Resources/OoT/Dungeons/GTG/Dinalfos.png" },
-				{ 10, "Maze", "./Resources/OoT/Dungeons/GTG/Maze.png" }
-			}
-		)
 	)
 });
 

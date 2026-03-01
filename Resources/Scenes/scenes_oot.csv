@@ -10,7 +10,7 @@ TEMPLE_SHADOW;Shadow Temple;;Dungeons;false;oot
 BOTTOM_OF_THE_WELL;Bottom of the Well;;Dungeons;false;oot
 ICE_CAVERN;Ice Cavern;./Resources/OoT/Dungeons/Ice/ICE.jpg;Dungeons;false;oot
 GANON_TOWER;Ganon Tower;;Dungeons;false;oot
-GERUDO_TRAINING_GROUND;Gerudo Training Ground;;Gerudo_Fortress;false;oot
+GERUDO_TRAINING_GROUND;Gerudo Training Ground;./Resources/OoT/Dungeons/GTG/GTG.jpg;Gerudo_Fortress;false;oot
 THIEVES_HIDEOUT;Thieves Hideout;./Resources/OoT/Gerudo_Fortress/Hideout.png;Gerudo_Fortress;false;oot
 INSIDE_GANON_CASTLE;Inside Ganon Castle;;Dungeons;false;oot
 GANON_TOWER_COLLAPSING;Ganon Tower - Collapsing;;None;false;oot

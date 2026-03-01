@@ -18,7 +18,7 @@ SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 	{ "Bottom of the Well", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
 	{ "Ice Cavern", "./Resources/OoT/Dungeons/Ice/ICE.jpg", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
 	{ "Ganon Tower", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
-	{ "Gerudo Training Ground", "", (uint8_t)OoTRegions::Gerudo_Fortress, false, GameLayout::oot},
+	{ "Gerudo Training Ground", "./Resources/OoT/Dungeons/GTG/GTG.jpg", (uint8_t)OoTRegions::Gerudo_Fortress, false, GameLayout::oot},
 	{ "Thieves Hideout", "./Resources/OoT/Gerudo_Fortress/Hideout.png", (uint8_t)OoTRegions::Gerudo_Fortress, false, GameLayout::oot},
 	{ "Inside Ganon Castle", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
 	{ "Ganon Tower - Collapsing", "", (uint8_t)OoTRegions::None, false, GameLayout::oot},
