@@ -107,6 +107,7 @@ void ObjectItemTree::UpdateIcon(ObjectType Type)
                 iconHeight = this->RendererOwner->Icon.height();
 
                 this->GraphItem = new ObjectPixmapItem(this->RendererOwner->Icon, this->RendererOwner, this);
+                this->GraphItem->setOpacity(IconsMetaInfo[Type].Alpha);
                 break;
             }
 
@@ -117,7 +118,6 @@ void ObjectItemTree::UpdateIcon(ObjectType Type)
                 iconHeight = iconHeight < SpecificIconsMetaInfo[this->Object->MapIcon].Scale[1] ? SpecificIconsMetaInfo[this->Object->MapIcon].Scale[1] : iconHeight;
 
                 this->GraphItem = new ObjectPixmapItem(IconsRef->PixmapSpeIcons[this->Object->MapIcon].scaled(iconWidth, iconHeight, Qt::KeepAspectRatio, Qt::SmoothTransformation), this->RendererOwner, this);
-
                 break;
             }
         }
@@ -390,7 +390,8 @@ void ObjectPixmapItem::UpdateObjectRendering(ObjectState ObjStatus, bool IsSelec
         // The object is considered as not revealed
         default:
         {
-            this->setOpacity(1);
+            this->setOpacity(IconsMetaInfo[this->Owner->Type].Alpha);
+            //this->setOpacity(1);
             break;
         }
     }

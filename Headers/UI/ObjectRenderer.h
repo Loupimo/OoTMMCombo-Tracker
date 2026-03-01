@@ -19,6 +19,7 @@ typedef struct ObjectIcon
 {
     const char* IconPath;   // The path to the object icon.
     int Scale[2];           // The scale of the image. ID 0 = width, ID 1 = height.
+    double Alpha = 1.0;        // The defaut alpha to applay to the image.
 } ObjectIcon;
 
 const ObjectIcon IconsMetaInfo[ObjectType::last] =
@@ -46,9 +47,9 @@ const ObjectIcon IconsMetaInfo[ObjectType::last] =
     {"./Resources/Common/Heart.png", { 30, 30 }},          // ObjectType::heart
     {"./Resources/Common/Fairy_Spot.png", { 30, 30 }},     // ObjectType::fairy_spot
     {"./Resources/Common/Fairy.png", { 25, 25 }},          // ObjectType::fairy
-    {"./Resources/Common/Icicle.png", { 25, 25 }},         // ObjectType::icicle
+    {"./Resources/Common/Icicle.png", { 25, 25 }, 0.83},   // ObjectType::icicle
     {"./Resources/Common/Red_Boulder.png", { 25, 25 }},    // ObjectType::redboulder
-    {"./Resources/Common/Red_Ice.png", { 25, 25 }},        // ObjectType::redice
+    {"./Resources/Common/Red_Ice.png", { 25, 25 }, 0.78},  // ObjectType::redice
     {"./Resources/Common/Rock.png", { 20, 20 }},           // ObjectType::rock
     {"./Resources/Common/Soil.png", { 25, 25 }},           // ObjectType::soil
     {"./Resources/Common/Tree.png", { 25, 25 }},           // ObjectType::tree
