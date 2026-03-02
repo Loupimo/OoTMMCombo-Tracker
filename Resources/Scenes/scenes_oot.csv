@@ -12,7 +12,7 @@ ICE_CAVERN;Ice Cavern;./Resources/OoT/Dungeons/Ice/ICE.jpg;Dungeons;false;oot
 GANON_TOWER;Ganon Tower;;Dungeons;false;oot
 GERUDO_TRAINING_GROUND;Gerudo Training Ground;./Resources/OoT/Dungeons/GTG/GTG.jpg;Gerudo_Fortress;false;oot
 THIEVES_HIDEOUT;Thieves Hideout;./Resources/OoT/Gerudo_Fortress/Hideout.png;Gerudo_Fortress;false;oot
-INSIDE_GANON_CASTLE;Inside Ganon Castle;;Dungeons;false;oot
+INSIDE_GANON_CASTLE;Inside Ganon Castle;./Resources/OoT/Ganon/GT_1F.jpg;Dungeons;false;oot
 GANON_TOWER_COLLAPSING;Ganon Tower - Collapsing;;None;false;oot
 INSIDE_GANON_CASTLE_COLLAPSING;Inside Ganon Castle - Collapsing;;None;false;oot
 OOT_TREASURE_SHOP;Treasure Shop;./Resources/OoT/Market/Treasure_Game.png;Market;false;oot
@@ -99,35 +99,35 @@ DEATH_MOUNTAIN_TRAIL;Death Mountain Trail;;Death_Mountain_Trail;true;oot
 DEATH_MOUNTAIN_CRATER;Death Mountain Crater;./Resources/OoT/Death_Mountain_Crater/Crater.png;Death_Mountain_Crater;true;oot
 GORON_CITY;Goron City;./Resources/OoT/Goron_City/Goron_City.png;Goron_City;true;oot
 LON_LON_RANCH;Lon Lon's Ranch;./Resources/OoT/Ranch/Lon_Lon_Ranch.png;Lon_Lon_Ranch;true;oot
-GANON_CASTLE_EXTERIOR;Ganon Castle Exterior;./Resources/OoT/Ganon/Exterior.png;Castle;false;oot
-OOT_GROTTO_KOKIRI_FOREST_STORMS;Song of Storms Grotto;./Resources/OoT/Kokiri_Forest/Storms.png;Kokiri_Forest;false;oot
-OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;Deku Scrubs Grotto;./Resources/OoT/Lost_Woods/Scrub_Upgrade.png;Lost_Woods;false;oot
-OOT_GROTTO_LOST_WOODS_GENERIC;Generic Grotto;./Resources/OoT/Lost_Woods/Generic.png;Lost_Woods;false;oot
+GANON_CASTLE_EXTERIOR;Ganon Castle Exterior;./Resources/OoT/Ganon/Exterior.jpg;Castle;false;oot
+OOT_GROTTO_KOKIRI_FOREST_STORMS;Song of Storms Grotto;./Resources/OoT/Grottos/Open.png;Kokiri_Forest;false;oot
+OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;Deku Scrubs Grotto;./Resources/OoT/Grottos/Double_Scrubs.png;Lost_Woods;false;oot
+OOT_GROTTO_LOST_WOODS_GENERIC;Generic Grotto;./Resources/OoT/Grottos/Open.png;Lost_Woods;false;oot
 OOT_GROTTO_LOST_WOODS_THEATER;Deku's Theater Grotto;./Resources/OoT/Lost_Woods/Theater.png;Lost_Woods;false;oot
 OOT_GROTTO_SACRED_MEADOW_WOLFOS;Wolfos Grotto;./Resources/OoT/Sacred_Forest_Meadow/Wolfos.png;Sacred_Forest_Meadow;false;oot
-OOT_GROTTO_SACRED_MEADOW_STORMS;Song of Storms Grotto;./Resources/OoT/Sacred_Forest_Meadow/Storms.png;Sacred_Forest_Meadow;false;oot
+OOT_GROTTO_SACRED_MEADOW_STORMS;Song of Storms Grotto;./Resources/OoT/Grottos/Double_Scrubs.png;Sacred_Forest_Meadow;false;oot
 OOT_GROTTO_KAKARIKO_REDEAD;Redead Grotto;./Resources/OoT/Kakariko/Redead.png;Kakariko;false;oot
-OOT_GROTTO_KAKARIKO_OPEN;Open Grotto;./Resources/OoT/Kakariko/Open.png;Kakariko;false;oot
-OOT_GROTTO_DEATH_TRIAL_STORMS;Song of Storms Grotto;./Resources/OoT/Death_Mountain_Trail/Storms.png;Death_Mountain_Trail;false;oot
-OOT_GROTTO_DEATH_TRIAL_COW;Cow Grotto;./Resources/OoT/Death_Mountain_Trail/Cow.png;Death_Mountain_Trail;false;oot
-OOT_GROTTO_GORON_CITY_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Goron_City/Scrubs.png;Goron_City;false;oot
-OOT_GROTTO_DEATH_CRATER_GENERIC;Generic Grotto;./Resources/OoT/Death_Mountain_Crater/Generic.png;Death_Mountain_Crater;false;oot
-OOT_GROTTO_DEATH_CRATER_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Death_Mountain_Crater/Scrubs.png;Death_Mountain_Crater;false;oot
-OOT_GROTTO_ZORA_RIVER_STORMS;Song of Storms Grotto;./Resources/OoT/Zora_River/Storms.png;Zora_River;false;oot
-OOT_GROTTO_ZORA_RIVER_GENERIC;Generic Grotto;./Resources/OoT/Zora_River/Generic.png;Zora_River;false;oot
-OOT_GROTTO_LAKE_HYLIA_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Lake_Hylia/Scrubs.png;Lake_Hylia;false;oot
-OOT_GROTTO_LON_LON_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Ranch/Scrubs.png;Lon_Lon_Ranch;false;oot
-OOT_GROTTO_HYRULE_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Hyrule/Field_Scrubs.png;Hyrule;false;oot
-OOT_GROTTO_HYRULE_SE;Southeast Grotto;./Resources/OoT/Hyrule/Field_SE.png;Hyrule;false;oot
-OOT_GROTTO_HYRULE_OPEN;Open Grotto;./Resources/OoT/Hyrule/Field_Open.png;Hyrule;false;oot
-OOT_GROTTO_HYRULE_MARKET;Market Side Grotto;./Resources/OoT/Hyrule/Field_Market.png;Hyrule;false;oot
+OOT_GROTTO_KAKARIKO_OPEN;Open Grotto;./Resources/OoT/Grottos/Open.png;Kakariko;false;oot
+OOT_GROTTO_DEATH_TRIAL_STORMS;Song of Storms Grotto;./Resources/OoT/Grottos/Open.png;Death_Mountain_Trail;false;oot
+OOT_GROTTO_DEATH_TRIAL_COW;Cow Grotto;./Resources/OoT/Grottos/Cow.png;Death_Mountain_Trail;false;oot
+OOT_GROTTO_GORON_CITY_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Grottos/Triple_Scrubs.png;Goron_City;false;oot
+OOT_GROTTO_DEATH_CRATER_GENERIC;Generic Grotto;./Resources/OoT/Grottos/Open.png;Death_Mountain_Crater;false;oot
+OOT_GROTTO_DEATH_CRATER_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Grottos/Triple_Scrubs.png;Death_Mountain_Crater;false;oot
+OOT_GROTTO_ZORA_RIVER_STORMS;Song of Storms Grotto;./Resources/OoT/Grottos/Double_Scrubs.png;Zora_River;false;oot
+OOT_GROTTO_ZORA_RIVER_GENERIC;Generic Grotto;./Resources/OoT/Grottos/Open.png;Zora_River;false;oot
+OOT_GROTTO_LAKE_HYLIA_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Grottos/Triple_Scrubs.png;Lake_Hylia;false;oot
+OOT_GROTTO_LON_LON_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Grottos/Triple_Scrubs.png;Lon_Lon_Ranch;false;oot
+OOT_GROTTO_HYRULE_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Grottos/Cow.png;Hyrule;false;oot
+OOT_GROTTO_HYRULE_SE;Southeast Grotto;./Resources/OoT/Grottos/Open.png;Hyrule;false;oot
+OOT_GROTTO_HYRULE_OPEN;Open Grotto;./Resources/OoT/Grottos/Open.png;Hyrule;false;oot
+OOT_GROTTO_HYRULE_MARKET;Market Side Grotto;./Resources/OoT/Grottos/Open.png;Hyrule;false;oot
 OOT_GROTTO_HYRULE_TEKTITE;Tektite Grotto;./Resources/OoT/Hyrule/Field_Tektite.png;Hyrule;false;oot
 OOT_GROTTO_HYRULE_KAKARIKO;Kakariko Side Grotto;./Resources/OoT/Hyrule/Field_Kakariko.png;Hyrule;false;oot
 OOT_GROTTO_HYRULE_GERUDO;Gerudo Side Grotto;./Resources/OoT/Hyrule/Field_Gerudo.png;Hyrule;false;oot
 OOT_GROTTO_CASTLE_STORMS;Song of Storms Grotto;./Resources/OoT/Hyrule/Castle_Storms.png;Castle;false;oot
-OOT_GROTTO_VALLEY_STORMS;Song of Storms Grotto;./Resources/OoT/Gerudo_Valley/Storms.png;Gerudo_Valley;false;oot
+OOT_GROTTO_VALLEY_STORMS;Song of Storms Grotto;./Resources/OoT/Grottos/Double_Scrubs.png;Gerudo_Valley;false;oot
 OOT_GROTTO_VALLEY_OCTOROK;Octorok Grotto;./Resources/OoT/Gerudo_Valley/Octorok.png;Gerudo_Valley;false;oot
-OOT_GROTTO_DESERT_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Desert_Colossus/Scrubs.png;Desert_Colossus;false;oot
+OOT_GROTTO_DESERT_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Grottos/Double_Scrubs.png;Desert_Colossus;false;oot
 OOT_FAIRY_SACRED_MEADOW;Fairy Fountain;./Resources/OoT/Fairy/Fountain.png;Sacred_Forest_Meadow;false;oot
 OOT_FAIRY_ZORA_RIVER;Fairy Fountain;./Resources/OoT/Fairy/Fountain.png;Zora_River;false;oot
 OOT_FAIRY_ZORA_DOMAIN;Fairy Fountain;./Resources/OoT/Fairy/Fountain.png;Zora_Domain;false;oot

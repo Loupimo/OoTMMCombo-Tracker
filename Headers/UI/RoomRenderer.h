@@ -50,20 +50,6 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 		)
 	),
 
-	QPair<int, std::vector<RoomInfo>>(INSIDE_GANON_CASTLE,
-		std::vector<RoomInfo>(
-			{
-				{ 0, "Lobby", "./Resources/OoT/Ganon/Lobby.png" },
-				{ 1, "Water Trial", "./Resources/OoT/Ganon/Water.png" },
-				{ 2, "Forest Trial", "./Resources/OoT/Ganon/Forest.png" },
-				{ 3, "Light Trial", "./Resources/OoT/Ganon/Light.png" },
-				{ 4, "Shadow Trial", "./Resources/OoT/Ganon/Shadow.png" },
-				{ 5, "Spirit Trial", "./Resources/OoT/Ganon/Spirit.png" },
-				{ 6, "Fire Trial", "./Resources/OoT/Ganon/Fire.png" }
-			}
-		)
-	),
-
 	QPair<int, std::vector<RoomInfo>>(BOTTOM_OF_THE_WELL,
 		std::vector<RoomInfo>(
 			{

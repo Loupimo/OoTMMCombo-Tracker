@@ -6,7 +6,6 @@
 #include <QPair>
 #include <QTreeWidget>
 #include <QCollator>
-#include <QGraphicsPixmapItem>
 #include <QTimer>
 #include <QString>
 #include "Combo/Objects.h"
@@ -17,43 +16,44 @@ class ObjectItemTree;
 
 typedef struct ObjectIcon
 {
-    const char* IconPath;   // The path to the object icon.
-    int Scale[2];           // The scale of the image. ID 0 = width, ID 1 = height.
-    double Alpha = 1.0;        // The defaut alpha to applay to the image.
+    const char* IconPath;           // The path to the object icon.
+    int Scale[2];                   // The scale of the image. ID 0 = width, ID 1 = height.
+    int MaxScale[2] = { 40, 40 };   // The maximum scale of the image. ID 0 = width, ID 1 = height.
+    double Alpha = 1.0;             // The defaut alpha to applay to the image.
 } ObjectIcon;
 
 const ObjectIcon IconsMetaInfo[ObjectType::last] =
 {
-    {"", {0, 0}},                                          // ObjectType::none
-    {"./Resources/Common/Chest.png", { 35, 35 }},          // ObjectType::chest
-    {"./Resources/Common/Collectible.png", { 30, 30 }},    // ObjectType::collectible
-    {"./Resources/Common/NPC.png", { 30, 30 }},            // ObjectType::npc
-    {"./Resources/Common/Gold_Skulltula.png", { 40, 40 }}, // ObjectType::gs
-    {"./Resources/Common/Stray_Fairy.png", { 30, 30 }},    // ObjectType::sf
-    {"./Resources/Common/Cow.png", { 50, 50 }},            // ObjectType::cow
-    {"./Resources/Common/Shop.png", { 30, 30 }},           // ObjectType::shop
-    {"./Resources/Common/Scrub.png", { 50, 50 }},          // ObjectType::scrub
-    {"./Resources/Common/Silver_Rupee.png", { 20, 20 }},   // ObjectType::sr
-    {"./Resources/Common/Fish.png", { 30, 30 }},           // ObjectType::fish
-    {"./Resources/Common/Wonder.png", { 30, 30 }},         // ObjectType::wonder
-    {"./Resources/Common/Grass.png", { 20, 20 }},          // ObjectType::grass
-    {"./Resources/Common/Crate.png", { 25, 25 }},          // ObjectType::crate
-    {"./Resources/Common/Pot.png", { 25, 25 }},            // ObjectType::pot
-    {"./Resources/Common/Hive.png", { 40, 40 }},           // ObjectType::hive
-    {"./Resources/Common/Butterfly.png", { 20, 20 }},      // ObjectType::butterfly
-    {"./Resources/Common/Rupee.png", { 20, 20 }},          // ObjectType::rupee
-    {"./Resources/Common/Snowball.png", { 25, 25 }},       // ObjectType::snowball
-    {"./Resources/Common/Barrel.png", { 20, 20 }},         // ObjectType::barrel
-    {"./Resources/Common/Heart.png", { 30, 30 }},          // ObjectType::heart
-    {"./Resources/Common/Fairy_Spot.png", { 30, 30 }},     // ObjectType::fairy_spot
-    {"./Resources/Common/Fairy.png", { 25, 25 }},          // ObjectType::fairy
-    {"./Resources/Common/Icicle.png", { 25, 25 }, 0.83},   // ObjectType::icicle
-    {"./Resources/Common/Red_Boulder.png", { 25, 25 }},    // ObjectType::redboulder
-    {"./Resources/Common/Red_Ice.png", { 25, 25 }, 0.78},  // ObjectType::redice
-    {"./Resources/Common/Rock.png", { 20, 20 }},           // ObjectType::rock
-    {"./Resources/Common/Soil.png", { 25, 25 }},           // ObjectType::soil
-    {"./Resources/Common/Tree.png", { 25, 25 }},           // ObjectType::tree
-    {"./Resources/Common/Bush.png", { 25, 25 }},           // ObjectType::bush
+    {"", {0, 0}},                                                       // ObjectType::none
+    {"./Resources/Common/Chest.png", { 35, 35 }},                       // ObjectType::chest
+    {"./Resources/Common/Collectible.png", { 30, 30 }},                 // ObjectType::collectible
+    {"./Resources/Common/NPC.png", { 30, 30 }},                         // ObjectType::npc
+    {"./Resources/Common/Gold_Skulltula.png", { 40, 40 }},              // ObjectType::gs
+    {"./Resources/Common/Stray_Fairy.png", { 30, 30 }},                 // ObjectType::sf
+    {"./Resources/Common/Cow.png", { 50, 50 }, { 70, 70 }},             // ObjectType::cow
+    {"./Resources/Common/Shop.png", { 30, 30 }},                        // ObjectType::shop
+    {"./Resources/Common/Scrub.png", { 50, 50 }, { 70, 70 }},           // ObjectType::scrub
+    {"./Resources/Common/Silver_Rupee.png", { 20, 20 }, { 35, 35 }},    // ObjectType::sr
+    {"./Resources/Common/Fish.png", { 30, 30 }},                        // ObjectType::fish
+    {"./Resources/Common/Wonder.png", { 30, 30 }},                      // ObjectType::wonder
+    {"./Resources/Common/Grass.png", { 20, 20 }},                       // ObjectType::grass
+    {"./Resources/Common/Crate.png", { 25, 25 }},                       // ObjectType::crate
+    {"./Resources/Common/Pot.png", { 25, 25 }, { 35, 35 }},             // ObjectType::pot
+    {"./Resources/Common/Hive.png", { 40, 40 }},                        // ObjectType::hive
+    {"./Resources/Common/Butterfly.png", { 20, 20 }},                   // ObjectType::butterfly
+    {"./Resources/Common/Rupee.png", { 20, 20 }, { 35, 35 }},           // ObjectType::rupee
+    {"./Resources/Common/Snowball.png", { 25, 25 }},                    // ObjectType::snowball
+    {"./Resources/Common/Barrel.png", { 20, 20 }},                      // ObjectType::barrel
+    {"./Resources/Common/Heart.png", { 30, 30 }, { 35, 35 }},           // ObjectType::heart
+    {"./Resources/Common/Fairy_Spot.png", { 30, 30 }},                  // ObjectType::fairy_spot
+    {"./Resources/Common/Fairy.png", { 25, 25 }, { 35, 35 }},           // ObjectType::fairy
+    {"./Resources/Common/Icicle.png", { 25, 25 }, { 25, 25 }, 0.83},    // ObjectType::icicle
+    {"./Resources/Common/Red_Boulder.png", { 25, 25 }},                 // ObjectType::redboulder
+    {"./Resources/Common/Red_Ice.png", { 25, 25 }, { 25, 25 }, 0.78},   // ObjectType::redice
+    {"./Resources/Common/Rock.png", { 20, 20 }},                        // ObjectType::rock
+    {"./Resources/Common/Soil.png", { 25, 25 }},                        // ObjectType::soil
+    {"./Resources/Common/Tree.png", { 25, 25 }},                        // ObjectType::tree
+    {"./Resources/Common/Bush.png", { 25, 25 }},                        // ObjectType::bush
 
     // Extra types
     {"./Resources/Common/Song.png", { 30, 30 }},

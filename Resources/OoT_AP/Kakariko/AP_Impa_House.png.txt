@@ -1,9 +1,9 @@
 QList<QPair<int, int>> FSPoints = {
-{575, 411},
+{900, 503},
 };
 QList<QPair<int, int>> CowPoints = {
-{630, 402},
+{981, 476},
 };
 QList<QPair<int, int>> WonderPoints = {
-{643, 295},
+{1010, 311},
 };

@@ -114,8 +114,8 @@ void ObjectItemTree::UpdateIcon(ObjectType Type)
             default:
             {   // This is a specific icon
 
-                iconWidth = iconWidth < SpecificIconsMetaInfo[this->Object->MapIcon].Scale[0] ? SpecificIconsMetaInfo[this->Object->MapIcon].Scale[0] : iconWidth;
-                iconHeight = iconHeight < SpecificIconsMetaInfo[this->Object->MapIcon].Scale[1] ? SpecificIconsMetaInfo[this->Object->MapIcon].Scale[1] : iconHeight;
+                iconWidth = iconWidth < IconsMetaInfo[this->Type].Scale[0] ? IconsMetaInfo[this->Type].Scale[0] : iconWidth > IconsMetaInfo[this->Type].MaxScale[0] ? IconsMetaInfo[this->Type].MaxScale[0] : iconWidth;
+                iconHeight = iconHeight < IconsMetaInfo[this->Type].Scale[1] ? IconsMetaInfo[this->Type].Scale[1] : iconHeight > IconsMetaInfo[this->Type].MaxScale[1] ? IconsMetaInfo[this->Type].MaxScale[1] : iconHeight;
 
                 this->GraphItem = new ObjectPixmapItem(IconsRef->PixmapSpeIcons[this->Object->MapIcon].scaled(iconWidth, iconHeight, Qt::KeepAspectRatio, Qt::SmoothTransformation), this->RendererOwner, this);
                 break;
@@ -491,8 +491,8 @@ void ObjectRenderer::RenderObjectToScene(ObjectContext ActiveContext)
         int iconWidth = this->SceneOwner->SceneImage->rect().width() * scaleFactor;
         int iconHeight = this->SceneOwner->SceneImage->rect().height() * scaleFactor;
 
-        iconWidth = iconWidth < IconsMetaInfo[this->Type].Scale[0] ? IconsMetaInfo[this->Type].Scale[0] : iconWidth;
-        iconHeight = iconHeight < IconsMetaInfo[this->Type].Scale[1] ? IconsMetaInfo[this->Type].Scale[1] : iconHeight;
+        iconWidth = iconWidth < IconsMetaInfo[this->Type].Scale[0] ? IconsMetaInfo[this->Type].Scale[0] : iconWidth > IconsMetaInfo[this->Type].MaxScale[0] ? IconsMetaInfo[this->Type].MaxScale[0] : iconWidth;
+        iconHeight = iconHeight < IconsMetaInfo[this->Type].Scale[1] ? IconsMetaInfo[this->Type].Scale[1] : iconHeight > IconsMetaInfo[this->Type].MaxScale[1] ? IconsMetaInfo[this->Type].MaxScale[1] : iconHeight;
 
         this->Icon = IconsRef->PixmapIcons[this->Type].scaled(iconWidth, iconHeight, Qt::KeepAspectRatio, Qt::SmoothTransformation);
 
