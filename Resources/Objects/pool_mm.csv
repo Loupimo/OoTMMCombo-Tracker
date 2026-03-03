@@ -3060,7 +3060,7 @@ REMAINS_TWINMOLD;TEMPLE_STONE_TOWER;Twinmold's Remains;MM Stone Tower Temple Inv
 0x900bd;TERMINA_FIELD;Pack 18 - Grass 10;MM Termina Field Grass Pack 18 Grass 10;grass;2277;845;0;TERMINA_FIELD;grass;render_type;All;0;mm;overworld;;
 0xa00bd;TERMINA_FIELD;Pack 18 - Grass 11;MM Termina Field Grass Pack 18 Grass 11;grass;2295;843;0;TERMINA_FIELD;grass;render_type;All;0;mm;overworld;;
 0xb00bd;TERMINA_FIELD;Pack 18 - Grass 12;MM Termina Field Grass Pack 18 Grass 12;grass;2311;846;0;TERMINA_FIELD;grass;render_type;All;0;mm;overworld;;
-MASK_KAMARO;TERMINA_FIELD;Kamaro's Mask;MM Termina Field Kamaro Mask;npc;1095;321;0;TERMINA_FIELD;mask;kamaro;All;0;mm;overworld;;
+MASK_KAMARO;TERMINA_FIELD;Kamaro's Mask;MM Termina Field Kamaro Mask;npc;1085;321;0;TERMINA_FIELD;mask;kamaro;All;0;mm;overworld;;
 0x0040;TERMINA_FIELD;Pillar;MM Termina Field Pot;pot;2269;622;0;TERMINA_FIELD;pot;render_type;All;0;mm;overworld;;
 0x00004;TERMINA_FIELD;Pillar;MM Termina Field Rupee;rupee;2174;643;0;TERMINA_FIELD;rupee;render_type;All;0;mm;overworld;;
 0x01;TERMINA_FIELD;Tall Grass;MM Termina Field Tall Grass Chest;chest;1929;1536;0;TERMINA_FIELD;chest;render_type;All;0;mm;overworld;;
