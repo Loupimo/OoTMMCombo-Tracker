@@ -55,7 +55,7 @@
 	{ "Twinmold Lair", "", (uint8_t) MMRegions::None, false, GameLayout::mm},
 	{ "Great Bay Coast", "./Resources/MM/Great_Bay_Coast/Great_Bay.png", (uint8_t) MMRegions::Great_Bay_Coast, false, GameLayout::mm},
 	{ "Zora Cape", "./Resources/MM/Zora_Cape/Cape.png", (uint8_t) MMRegions::Zora_Cape, false, GameLayout::mm},
-	{ "Lottery", "", (uint8_t) MMRegions::None, false, GameLayout::mm},
+	{ "Lottery", "./Resources/MM/Clock_Town/Lottery.jpg", (uint8_t) MMRegions::Clock_Town, false, GameLayout::mm},
 	{ "Snowhead, Spring", "", (uint8_t) MMRegions::None, false, GameLayout::mm},
 	{ "Pirate's Fortress, Entrance", "./Resources/MM/Fortress/Entrance.png", (uint8_t) MMRegions::Fortress, false, GameLayout::mm},
 	{ "Fisherman's Hut", "", (uint8_t) MMRegions::None, false, GameLayout::mm},

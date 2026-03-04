@@ -218,3 +218,6 @@
 #define MILK_BAR_CHATEAU          0x77
 #define OWL_HIDDEN                0x78
 #define MAJORA                    0x79
+#define LOTTERY_NIGHT_1           0x7a
+#define LOTTERY_NIGHT_2           0x7b
+#define LOTTERY_NIGHT_3           0x7c

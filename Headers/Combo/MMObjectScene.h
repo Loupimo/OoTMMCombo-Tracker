@@ -747,7 +747,7 @@ ObjectInfo ROAD_SOUTHERN_SWAMPSceneObjects [ROAD_SOUTHERN_SWAMPNumOfObjs] =
 	{ 0x0001f, ROAD_SOUTHERN_SWAMP, "Tree 6", "MM Road to Southern Swanp Forked Tree 6", ObjectType::tree, {299, 387, 0}, ROAD_SOUTHERN_SWAMP, ObjectType::tree, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL }
 };
 
-const size_t CLOCK_TOWN_WESTNumOfObjs = 29;
+const size_t CLOCK_TOWN_WESTNumOfObjs = 32;
 ObjectInfo CLOCK_TOWN_WESTSceneObjects [CLOCK_TOWN_WESTNumOfObjs] =
 {
 	{ BANK_1, CLOCK_TOWN_WEST, "Bank Reward 1", "MM Clock Town Bank Reward 1", ObjectType::npc, {641, 328, 0}, CLOCK_TOWN_WEST, ObjectType::npc, ObjectIconMap::wallet, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Obtained after depositing <b>200</b> rupees<br><br><b>Requirements:</b><br>- Soul of the Banker" },
@@ -778,7 +778,10 @@ ObjectInfo CLOCK_TOWN_WESTSceneObjects [CLOCK_TOWN_WESTNumOfObjs] =
 	{ 0x00002, CLOCK_TOWN_WEST, "Bush 1", "MM Trading Post Bush 1", ObjectType::none, {0, 0, 0}, TRADING_POST, ObjectType::none, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
 	{ 0x00003, CLOCK_TOWN_WEST, "Bush 2", "MM Trading Post Bush 2", ObjectType::none, {0, 0, 0}, TRADING_POST, ObjectType::none, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
 	{ 0x00004, CLOCK_TOWN_WEST, "Bush 3", "MM Trading Post Bush 3", ObjectType::none, {0, 0, 0}, TRADING_POST, ObjectType::none, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
-	{ 0x00005, CLOCK_TOWN_WEST, "Bush 4", "MM Trading Post Bush 4", ObjectType::none, {0, 0, 0}, TRADING_POST, ObjectType::none, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL }
+	{ 0x00005, CLOCK_TOWN_WEST, "Bush 4", "MM Trading Post Bush 4", ObjectType::none, {0, 0, 0}, TRADING_POST, ObjectType::none, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ LOTTERY_NIGHT_1, CLOCK_TOWN_WEST, "Prize Night 1", "MM Lottery Prize Night 1", ObjectType::none, {0, 0, 0}, LOTTERY, ObjectType::none, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ LOTTERY_NIGHT_2, CLOCK_TOWN_WEST, "Prize Night 2", "MM Lottery Prize Night 2", ObjectType::none, {0, 0, 0}, LOTTERY, ObjectType::none, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ LOTTERY_NIGHT_3, CLOCK_TOWN_WEST, "Prize Night 3", "MM Lottery Prize Night 3", ObjectType::none, {0, 0, 0}, LOTTERY, ObjectType::none, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL }
 };
 
 const size_t CUCCO_SHACKNumOfObjs = 22;
@@ -5137,6 +5140,14 @@ ObjectInfo MM_GROTTO_DEKU_PALACE_GENERICSceneObjects [MM_GROTTO_DEKU_PALACE_GENE
 	{ 0x00604, MM_GROTTOS, "Grass 3", "MM Deku Palace JP Line Grotto Grass 3", ObjectType::grass, {108, 528, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm_jp, LocType::overworld, NULL },
 	{ 0x00605, MM_GROTTOS, "Grass 4", "MM Deku Palace JP Line Grotto Grass 4", ObjectType::grass, {107, 613, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm_jp, LocType::overworld, NULL },
 	{ 0x00606, MM_GROTTOS, "Grass 5", "MM Deku Palace JP Line Grotto Grass 5", ObjectType::grass, {102, 245, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectType::grass, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::mm_jp, LocType::overworld, NULL }
+};
+
+const size_t LOTTERYNumOfObjs = 3;
+ObjectInfo LOTTERYSceneObjects [LOTTERYNumOfObjs] =
+{
+	{ LOTTERY_NIGHT_1, LOTTERY, "Prize Night 1", "MM Lottery Prize Night 1", ObjectType::npc, {153, 222, 0}, LOTTERY, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ LOTTERY_NIGHT_2, LOTTERY, "Prize Night 2", "MM Lottery Prize Night 2", ObjectType::npc, {193, 222, 0}, LOTTERY, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ LOTTERY_NIGHT_3, LOTTERY, "Prize Night 3", "MM Lottery Prize Night 3", ObjectType::npc, {231, 222, 0}, LOTTERY, ObjectType::npc, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL }
 };
 
 #pragma endregion

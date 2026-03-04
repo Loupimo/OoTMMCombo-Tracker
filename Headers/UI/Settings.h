@@ -4,6 +4,7 @@
 #include <QFile>
 
 class FilterManager;
+struct ObjectInfo;
 
 enum class ROMGame
 {
@@ -77,6 +78,8 @@ public:
 	void ApplySettings(FilterManager* FilterOoT, FilterManager* FilterMM);
 	void ApplyOoTSettingsToFilter(FilterManager* Filter);
 	void ApplyMMSettingsToFilter(FilterManager* Filter);
+
+	void CheckObjectExclusion(ObjectInfo* ToCheck, ShuffleSetting SettingValue, FilterManager* Filter);
 
 #pragma endregion
 

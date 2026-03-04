@@ -1,9 +1,12 @@
 	{ "games", { "Games", ParamType::game, ootmm } },
 	{ "mode", { "Mode", ParamType::mode, coop } },
 	{ "teams", { "Number of teams", ParamType::uint, 1 } },
-	{ "goldSkulltulaTokens", { "Gold Skulltula (OoT)", ParamType::shuffle, ShuffleSetting::all } },
-	{ "housesSkulltulaTokens", { "Gold Skulltula (MM)", ParamType::boolean, ShuffleSetting::all } },
+	{ "goldSkulltulaTokens", { "Gold Skulltula - OoT", ParamType::shuffle, ShuffleSetting::all } },
+	{ "housesSkulltulaTokens", { "Gold Skulltula - MM", ParamType::boolean, ShuffleSetting::all } },
 	{ "tingleShuffle", { "Tingle Maps", ParamType::boolean, ShuffleSetting::all } },
+	{ "mapCompassShuffle", { "Map / Compass", ParamType::boolean, ShuffleSetting::all } },
+	{ "smallKeyShuffleOot", { "Small Key - OoT", ParamType::shuffle, ShuffleSetting::all } },
+	{ "smallKeyShuffleMm", { "Small Key - MM", ParamType::shuffle, ShuffleSetting::all } },
 	{ "smallKeyShuffleHideout", { "Small Key - Hideout", ParamType::boolean, ShuffleSetting::all } },
 	{ "smallKeyShuffleChestGame", { "Small Key - Chest Game", ParamType::boolean, ShuffleSetting::all } },
 	{ "bossKeyShuffleOot", { "Boss Key - OoT", ParamType::boolean, ShuffleSetting::all } },
@@ -65,4 +68,5 @@
 	{ "fairyFountainFairyShuffleMm", { "Fairy Fountain - MM", ParamType::boolean, ShuffleSetting::all } },
 	{ "fairySpotShuffleOot", { "Fairy Spot", ParamType::boolean, ShuffleSetting::all } },
 	{ "eggShuffle", { "Egg Content", ParamType::boolean, ShuffleSetting::all } },
-	{ "restoreBrokenActors", { "Restore Broken Actors", ParamType::boolean, ShuffleSetting::all } }
+	{ "restoreBrokenActors", { "Restore Broken Actors", ParamType::boolean, ShuffleSetting::all } },
+	{ "shuffleLotteryMm", { "Lottery Prizes", ParamType::boolean, ShuffleSetting::all } }

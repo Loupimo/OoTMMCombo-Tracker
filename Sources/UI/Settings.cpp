@@ -9,71 +9,75 @@ Settings::Settings()
 {
 	this->Game = ROMGame::ootmm;
 	this->ROMSettings = QMap<QString, Parameter>({
-		{ "goldSkulltulaTokens", { "Gold Skulltula (OoT)", ParamType::shuffle, ShuffleSetting::all } },
-		{ "housesSkulltulaTokens", { "Gold Skulltula (MM)", ParamType::boolean, ShuffleSetting::all } },
-		{ "tingleShuffle", { "Tingle Maps", ParamType::boolean, ShuffleSetting::all } },
-		{ "smallKeyShuffleHideout", { "Small Key - Hideout", ParamType::boolean, ShuffleSetting::all } },
-		{ "smallKeyShuffleChestGame", { "Small Key - Chest Game", ParamType::boolean, ShuffleSetting::all } },
-		{ "bossKeyShuffleOot", { "Boss Key - OoT", ParamType::boolean, ShuffleSetting::all } },
-		{ "bossKeyShuffleMm", { "Boss Key - MM", ParamType::boolean, ShuffleSetting::all } },
-		{ "silverRupeeShuffle", { "Silver Rupee", ParamType::boolean, ShuffleSetting::all } },
-		{ "townFairyShuffle", { "Town Fairy", ParamType::boolean, ShuffleSetting::all } },
-		{ "strayFairyChestShuffle", { "Stray Fairy - Chest", ParamType::boolean, ShuffleSetting::all } },
-		{ "strayFairyOtherShuffle", { "Stray Fairy - Other", ParamType::boolean, ShuffleSetting::all } },
-		{ "ganonBossKey", { "Boss Key - Ganon", ParamType::boolean, ShuffleSetting::all } },
-		{ "scrubShuffleOot", { "Scrub - OoT", ParamType::boolean, ShuffleSetting::all } },
-		{ "scrubShuffleMm", { "Scrub - MM", ParamType::boolean, ShuffleSetting::all } },
-		{ "cowShuffleOot", { "Cow - OoT", ParamType::boolean, ShuffleSetting::all } },
-		{ "cowShuffleMm", { "Cow - MM", ParamType::boolean, ShuffleSetting::all } },
-		{ "shopShuffleOot", { "Shop - OoT", ParamType::boolean, ShuffleSetting::all } },
-		{ "shopShuffleMm", { "Shop - MM", ParamType::boolean, ShuffleSetting::all } },
-		{ "owlShuffle", { "Owl", ParamType::boolean, ShuffleSetting::all } },
-		{ "shufflePotsOot", { "Pots - OoT", ParamType::shuffle, ShuffleSetting::all } },
-		{ "shufflePotsMm", { "Pots - MM", ParamType::shuffle, ShuffleSetting::all } },
-		{ "shuffleCratesOot", { "Crates - OoT", ParamType::shuffle, ShuffleSetting::all } },
-		{ "shuffleCratesMm", { "Crates - MM", ParamType::shuffle, ShuffleSetting::all } },
-		{ "shuffleBarrelsMm", { "Barrels - MM", ParamType::shuffle, ShuffleSetting::all } },
-		{ "shuffleHivesOot", { "Hives - OoT", ParamType::boolean, ShuffleSetting::all } },
-		{ "shuffleHivesMm", { "Hives - MM", ParamType::boolean, ShuffleSetting::all } },
-		{ "shuffleGrassOot", { "Grass - OoT", ParamType::shuffle, ShuffleSetting::all } },
-		{ "shuffleRocksOot", { "Rocks - OoT", ParamType::boolean, ShuffleSetting::all } },
-		{ "shuffleRocksMm", { "Rocks - MM", ParamType::shuffle, ShuffleSetting::all } },
-		{ "shuffleGrassMm", { "Grass - MM", ParamType::shuffle, ShuffleSetting::all } },
-		{ "shuffleTFGrassMm", { "Termina Field Grass", ParamType::boolean, ShuffleSetting::all } },
-		{ "shuffleTreesOot", { "Trees - OoT", ParamType::boolean, ShuffleSetting::all } },
-		{ "shuffleTreesMm", { "Trees - MM", ParamType::shuffle, ShuffleSetting::all } },
-		{ "shuffleBushOot", { "Bush - OoT", ParamType::boolean, ShuffleSetting::all } },
-		{ "shuffleBushMm", { "Bush - MM", ParamType::shuffle, ShuffleSetting::all } },
-		{ "shuffleSoilOot", { "Soil - OoT", ParamType::boolean, ShuffleSetting::all } },
-		{ "shuffleSoilMm", { "Soil - MM", ParamType::shuffle, ShuffleSetting::all } },
-		{ "shuffleFreeRupeesOot", { "Freestanding Rupees - OoT", ParamType::shuffle, ShuffleSetting::all } },
-		{ "shuffleFreeRupeesMm", { "Freestanding Rupees - MM", ParamType::shuffle, ShuffleSetting::all } },
-		{ "shuffleFreeHeartsOot", { "Freestanding Hearts - OoT", ParamType::shuffle, ShuffleSetting::all } },
-		{ "shuffleFreeHeartsMm", { "Freestanding Hearts - MM", ParamType::boolean, ShuffleSetting::all } },
-		{ "shuffleWonderItemsOot", { "Wonder Items - OoT", ParamType::shuffle, ShuffleSetting::all } },
-		{ "shuffleWonderItemsMm", { "Wonder Items - MM", ParamType::boolean, ShuffleSetting::all } },
-		{ "shuffleSnowballsMm", { "Snowballs - MM", ParamType::shuffle, ShuffleSetting::all } },
-		{ "shuffleButterfliesOot", { "Butterflies - OoT", ParamType::boolean, ShuffleSetting::all } },
-		{ "shuffleButterfliesMm", { "Butterflies - MM", ParamType::boolean, ShuffleSetting::all } },
-		{ "shuffleRedBouldersOot", { "Red Boulders - OoT", ParamType::boolean, ShuffleSetting::all } },
-		{ "shuffleRedBouldersMm", { "Red Boulders - MM", ParamType::boolean, ShuffleSetting::all } },
-		{ "shuffleFrogsRupeesOot", { "Frogs Rupees", ParamType::boolean, ShuffleSetting::all } },
-		{ "shuffleIciclesOot", { "Icicles - OoT", ParamType::boolean, ShuffleSetting::all } },
-		{ "shuffleIciclesMm", { "Icicles - MM", ParamType::boolean, ShuffleSetting::all } },
-		{ "shuffleRedIceOot", { "Red Ice", ParamType::boolean, ShuffleSetting::all } },
-		{ "shuffleOcarinasOot", { "Ocarinas", ParamType::boolean, ShuffleSetting::all } },
-		{ "shuffleMasterSword", { "Master Sword", ParamType::boolean, ShuffleSetting::all } },
-		{ "shuffleGerudoCard", { "Gerudo Card", ParamType::boolean, ShuffleSetting::all } },
-		{ "shuffleMaskTrades", { "Mask Trades", ParamType::boolean, ShuffleSetting::all } },
-		{ "shuffleMerchantsOot", { "Merchants - OoT", ParamType::boolean, ShuffleSetting::all } },
-		{ "shuffleMerchantsMm", { "Merchants - MM", ParamType::boolean, ShuffleSetting::all } },
-		{ "pondFishShuffle", { "Pond Fish", ParamType::boolean, ShuffleSetting::all } },
-		{ "divingGameRupeeShuffle", { "Diving Game Rupees", ParamType::boolean, ShuffleSetting::all } },
-		{ "fairyFountainFairyShuffleOot", { "Fairy Fountain - OoT", ParamType::boolean, ShuffleSetting::all } },
-		{ "fairyFountainFairyShuffleMm", { "Fairy Fountain - MM", ParamType::boolean, ShuffleSetting::all } },
-		{ "fairySpotShuffleOot", { "Fairy Spot", ParamType::boolean, ShuffleSetting::all } },
-		{ "eggShuffle", { "Egg Content", ParamType::boolean, ShuffleSetting::all } },
-		{ "restoreBrokenActors", { "Restore Broken Actors", ParamType::boolean, ShuffleSetting::all } }
+				{ "goldSkulltulaTokens", { "Gold Skulltula - OoT", ParamType::shuffle, ShuffleSetting::all } },
+				{ "housesSkulltulaTokens", { "Gold Skulltula - MM", ParamType::boolean, ShuffleSetting::all } },
+				{ "tingleShuffle", { "Tingle Maps", ParamType::boolean, ShuffleSetting::all } },
+				{ "mapCompassShuffle", { "Map / Compass", ParamType::boolean, ShuffleSetting::all } },
+				{ "smallKeyShuffleOot", { "Small Key - OoT", ParamType::shuffle, ShuffleSetting::all } },
+				{ "smallKeyShuffleMm", { "Small Key - MM", ParamType::shuffle, ShuffleSetting::all } },
+				{ "smallKeyShuffleHideout", { "Small Key - Hideout", ParamType::boolean, ShuffleSetting::all } },
+				{ "smallKeyShuffleChestGame", { "Small Key - Chest Game", ParamType::boolean, ShuffleSetting::all } },
+				{ "bossKeyShuffleOot", { "Boss Key - OoT", ParamType::boolean, ShuffleSetting::all } },
+				{ "bossKeyShuffleMm", { "Boss Key - MM", ParamType::boolean, ShuffleSetting::all } },
+				{ "silverRupeeShuffle", { "Silver Rupee", ParamType::boolean, ShuffleSetting::all } },
+				{ "townFairyShuffle", { "Town Fairy", ParamType::boolean, ShuffleSetting::all } },
+				{ "strayFairyChestShuffle", { "Stray Fairy - Chest", ParamType::boolean, ShuffleSetting::all } },
+				{ "strayFairyOtherShuffle", { "Stray Fairy - Other", ParamType::boolean, ShuffleSetting::all } },
+				{ "ganonBossKey", { "Boss Key - Ganon", ParamType::boolean, ShuffleSetting::all } },
+				{ "scrubShuffleOot", { "Scrub - OoT", ParamType::boolean, ShuffleSetting::all } },
+				{ "scrubShuffleMm", { "Scrub - MM", ParamType::boolean, ShuffleSetting::all } },
+				{ "cowShuffleOot", { "Cow - OoT", ParamType::boolean, ShuffleSetting::all } },
+				{ "cowShuffleMm", { "Cow - MM", ParamType::boolean, ShuffleSetting::all } },
+				{ "shopShuffleOot", { "Shop - OoT", ParamType::boolean, ShuffleSetting::all } },
+				{ "shopShuffleMm", { "Shop - MM", ParamType::boolean, ShuffleSetting::all } },
+				{ "owlShuffle", { "Owl", ParamType::boolean, ShuffleSetting::all } },
+				{ "shufflePotsOot", { "Pots - OoT", ParamType::shuffle, ShuffleSetting::all } },
+				{ "shufflePotsMm", { "Pots - MM", ParamType::shuffle, ShuffleSetting::all } },
+				{ "shuffleCratesOot", { "Crates - OoT", ParamType::shuffle, ShuffleSetting::all } },
+				{ "shuffleCratesMm", { "Crates - MM", ParamType::shuffle, ShuffleSetting::all } },
+				{ "shuffleBarrelsMm", { "Barrels - MM", ParamType::shuffle, ShuffleSetting::all } },
+				{ "shuffleHivesOot", { "Hives - OoT", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleHivesMm", { "Hives - MM", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleGrassOot", { "Grass - OoT", ParamType::shuffle, ShuffleSetting::all } },
+				{ "shuffleRocksOot", { "Rocks - OoT", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleRocksMm", { "Rocks - MM", ParamType::shuffle, ShuffleSetting::all } },
+				{ "shuffleGrassMm", { "Grass - MM", ParamType::shuffle, ShuffleSetting::all } },
+				{ "shuffleTFGrassMm", { "Termina Field Grass", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleTreesOot", { "Trees - OoT", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleTreesMm", { "Trees - MM", ParamType::shuffle, ShuffleSetting::all } },
+				{ "shuffleBushOot", { "Bush - OoT", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleBushMm", { "Bush - MM", ParamType::shuffle, ShuffleSetting::all } },
+				{ "shuffleSoilOot", { "Soil - OoT", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleSoilMm", { "Soil - MM", ParamType::shuffle, ShuffleSetting::all } },
+				{ "shuffleFreeRupeesOot", { "Freestanding Rupees - OoT", ParamType::shuffle, ShuffleSetting::all } },
+				{ "shuffleFreeRupeesMm", { "Freestanding Rupees - MM", ParamType::shuffle, ShuffleSetting::all } },
+				{ "shuffleFreeHeartsOot", { "Freestanding Hearts - OoT", ParamType::shuffle, ShuffleSetting::all } },
+				{ "shuffleFreeHeartsMm", { "Freestanding Hearts - MM", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleWonderItemsOot", { "Wonder Items - OoT", ParamType::shuffle, ShuffleSetting::all } },
+				{ "shuffleWonderItemsMm", { "Wonder Items - MM", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleSnowballsMm", { "Snowballs - MM", ParamType::shuffle, ShuffleSetting::all } },
+				{ "shuffleButterfliesOot", { "Butterflies - OoT", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleButterfliesMm", { "Butterflies - MM", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleRedBouldersOot", { "Red Boulders - OoT", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleRedBouldersMm", { "Red Boulders - MM", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleFrogsRupeesOot", { "Frogs Rupees", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleIciclesOot", { "Icicles - OoT", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleIciclesMm", { "Icicles - MM", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleRedIceOot", { "Red Ice", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleOcarinasOot", { "Ocarinas", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleMasterSword", { "Master Sword", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleGerudoCard", { "Gerudo Card", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleMaskTrades", { "Mask Trades", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleMerchantsOot", { "Merchants - OoT", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleMerchantsMm", { "Merchants - MM", ParamType::boolean, ShuffleSetting::all } },
+				{ "pondFishShuffle", { "Pond Fish", ParamType::boolean, ShuffleSetting::all } },
+				{ "divingGameRupeeShuffle", { "Diving Game Rupees", ParamType::boolean, ShuffleSetting::all } },
+				{ "fairyFountainFairyShuffleOot", { "Fairy Fountain - OoT", ParamType::boolean, ShuffleSetting::all } },
+				{ "fairyFountainFairyShuffleMm", { "Fairy Fountain - MM", ParamType::boolean, ShuffleSetting::all } },
+				{ "fairySpotShuffleOot", { "Fairy Spot", ParamType::boolean, ShuffleSetting::all } },
+				{ "eggShuffle", { "Egg Content", ParamType::boolean, ShuffleSetting::all } },
+				{ "restoreBrokenActors", { "Restore Broken Actors", ParamType::boolean, ShuffleSetting::all } },
+				{ "shuffleLotteryMm", { "Lottery Prizes", ParamType::boolean, ShuffleSetting::all } }
 	});
 }
 
@@ -343,7 +347,7 @@ void Settings::AddSetting(QString Name, QString Value)
 	{
 		ShuffleSetting setting;
 
-		if (Value == "all" || Value == "true" || Value == "anywhere" || Value == "starting" || Value == "removed" || "cross")
+		if (Value == "all" || Value == "true" || Value == "full" || Value == "anywhere" || Value == "starting" || Value == "removed" || Value == "cross")
 		{
 			setting = ShuffleSetting::all;
 		}
@@ -411,39 +415,258 @@ void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
 			switch (currObj->RenderType)
 			{	
 				case ObjectType::gs:
-				{	// OoT gold skulltula shuffling
-
-					switch (this->ROMSettings["goldSkulltulaTokens"].Value)
-					{
-						case ShuffleSetting::vanilla:
-						{
-							Filter->ExcludeNewObject(currObj);
-							break;
-						}
-
-						case ShuffleSetting::overworld:
-						{
-							if (currObj->LocationType != LocType::overworld)
-							{
-								Filter->ExcludeNewObject(currObj);
-							}
-							break;
-						}
-
-						case ShuffleSetting::dungeons:
-						{
-							if (currObj->LocationType != LocType::dungeon)
-							{
-								Filter->ExcludeNewObject(currObj);
-							}
-							break;
-						}
-
-						default:
-							break;
-					}
-
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["goldSkulltulaTokens"].Value, Filter);
 					break;
+				}
+
+				case ObjectType::map:
+				case ObjectType::compass:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["mapCompassShuffle"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::small_key:
+				{
+					if (currObj->Scene == THIEVES_HIDEOUT)
+					{	// Hideout small key
+
+						this->CheckObjectExclusion(currObj, this->ROMSettings["smallKeyShuffleHideout"].Value, Filter);
+					}
+					else if (currObj->LocationType == LocType::minigame)
+					{	// Treasure chest small key
+
+						this->CheckObjectExclusion(currObj, this->ROMSettings["smallKeyShuffleChestGame"].Value, Filter);
+					}
+					else
+					{	// Dungeon small key
+
+						this->CheckObjectExclusion(currObj, this->ROMSettings["smallKeyShuffleOot"].Value, Filter);
+					}
+					break;
+				}
+
+				case ObjectType::boss_key:
+				{
+					if (currObj->Scene == GANON_TOWER)
+					{	// Ganon boss key
+
+						this->CheckObjectExclusion(currObj, this->ROMSettings["ganonBossKey"].Value, Filter);
+					}
+					else
+					{	// Other boss key
+
+						this->CheckObjectExclusion(currObj, this->ROMSettings["bossKeyShuffleOot"].Value, Filter);
+					}
+					break;
+				}
+
+				case ObjectType::sr:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["silverRupeeShuffle"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::scrub:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["scrubShuffleOot"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::cow:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["cowShuffleOot"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::shop:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shopShuffleOot"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::pot:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shufflePotsOot"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::crate:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleCratesOot"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::hive:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleHivesOot"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::grass:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleGrassOot"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::rock:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleRocksOot"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::tree:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleTreesOot"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::bush:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleBushOot"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::soil:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleSoilOot"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::rupee:
+				{
+					if (currObj->LocationType == LocType::minigame)
+					{	// Diving game rupee
+
+						this->CheckObjectExclusion(currObj, this->ROMSettings["divingGameRupeeShuffle"].Value, Filter);
+					}
+					else
+					{	// Normal freestanding rupee
+
+						this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleFreeRupeesOot"].Value, Filter);
+					}
+					break;
+				}
+
+				case ObjectType::heart:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleFreeHeartsOot"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::wonder:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleWonderItemsOot"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::butterfly:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleButterfliesOot"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::redboulder:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleRedBouldersOot"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::frog_npc:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleFrogsRupeesOot"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::icicle:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleIciclesOot"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::redice:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleRedIceOot"].Value, Filter);
+					break;
+				}
+				
+				case ObjectType::ocarina:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleOcarinasOot"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::sword:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleMasterSword"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::card_npc:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleGerudoCard"].Value, Filter);
+					break;
+				}
+
+
+				case ObjectType::mask:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleMaskTrades"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::merchant:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleMerchantsOot"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::fish:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["pondFishShuffle"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::fairy:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["fairyFountainFairyShuffleOot"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::fairy_spot:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["fairySpotShuffleOot"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::egg:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["eggShuffle"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::npc:
+				{
+					switch (currObj->MapIcon)
+					{
+						case ObjectIconMap::card:
+						{	// Check for gerudo card
+
+							this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleGerudoCard"].Value, Filter);
+							break;
+						}
+
+						case ObjectIconMap::frog:
+						{	// Check for frog rupees rewards
+
+							if (currObj->LocationType == LocType::minigame)
+							{
+								this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleFrogsRupeesOot"].Value, Filter);
+							}
+							break;
+						}
+					}
 				}
 
 				case ObjectType::none:
@@ -457,9 +680,64 @@ void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
 			
 		}
 	}
+
+	if (this->ROMSettings["restoreBrokenActors"].Value != ShuffleSetting::all)
+	{	// Restore broken actor is not active. Hide broken actors
+
+		uint32_t sceneToCheck[3] = { DODONGO_CAVERN, HYRULE_CASTLE, LAKE_HYLIA };
+
+		for (uint32_t i = 0; i < 3; i++)
+		{	// Browse all scenes that contains broken actors
+
+			for (uint32_t j = 0; j < scenes[sceneToCheck[i]].NumOfObjs; j++)
+			{	// Find all broken actors
+
+				ObjectInfo* currObj = &scenes[sceneToCheck[i]].Objects[j];
+
+				if (currObj->LocationType == LocType::broken)
+				{	// The actor is broken
+
+					Filter->ExcludeNewObject(currObj);
+				}
+			}
+		}
+	}
 }
 
 void Settings::ApplyMMSettingsToFilter(FilterManager* Filter)
 {
 
+}
+
+void Settings::CheckObjectExclusion(ObjectInfo* ToCheck, ShuffleSetting SettingValue, FilterManager* Filter)
+{
+	switch (SettingValue)
+	{
+		case ShuffleSetting::vanilla:
+		{
+			Filter->ExcludeNewObject(ToCheck);
+			break;
+		}
+
+		case ShuffleSetting::overworld:
+		{
+			if (ToCheck->LocationType != LocType::overworld)
+			{
+				Filter->ExcludeNewObject(ToCheck);
+			}
+			break;
+		}
+
+		case ShuffleSetting::dungeons:
+		{
+			if (ToCheck->LocationType != LocType::dungeon)
+			{
+				Filter->ExcludeNewObject(ToCheck);
+			}
+			break;
+		}
+
+		default:
+			break;
+	}
 }

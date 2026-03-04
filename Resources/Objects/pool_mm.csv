@@ -3823,3 +3823,9 @@ ZORA_HALL_LIGHTS;ZORA_HALL_ROOMS;Scene Lights;MM Zora Hall Scene Lights;none;0;0
 0x00604;GROTTOS;Grass 3;MM Deku Palace JP Line Grotto Grass 3;grass;108;528;0;MM_GROTTO_DEKU_PALACE_GENERIC;grass;render_type;All;0;mm_jp;overworld;;
 0x00605;GROTTOS;Grass 4;MM Deku Palace JP Line Grotto Grass 4;grass;107;613;0;MM_GROTTO_DEKU_PALACE_GENERIC;grass;render_type;All;0;mm_jp;overworld;;
 0x00606;GROTTOS;Grass 5;MM Deku Palace JP Line Grotto Grass 5;grass;102;245;0;MM_GROTTO_DEKU_PALACE_GENERIC;grass;render_type;All;0;mm_jp;overworld;;
+LOTTERY_NIGHT_1;LOTTERY;Prize Night 1;MM Lottery Prize Night 1;npc;153;222;0;LOTTERY;npc;render_type;All;0;all;overworld;;
+LOTTERY_NIGHT_2;LOTTERY;Prize Night 2;MM Lottery Prize Night 2;npc;193;222;0;LOTTERY;npc;render_type;All;0;all;overworld;;
+LOTTERY_NIGHT_3;LOTTERY;Prize Night 3;MM Lottery Prize Night 3;npc;231;222;0;LOTTERY;npc;render_type;All;0;all;overworld;;
+LOTTERY_NIGHT_1;CLOCK_TOWN_WEST;Prize Night 1;MM Lottery Prize Night 1;none;0;0;0;LOTTERY;none;render_type;All;0;all;overworld;;
+LOTTERY_NIGHT_2;CLOCK_TOWN_WEST;Prize Night 2;MM Lottery Prize Night 2;none;0;0;0;LOTTERY;none;render_type;All;0;all;overworld;;
+LOTTERY_NIGHT_3;CLOCK_TOWN_WEST;Prize Night 3;MM Lottery Prize Night 3;none;0;0;0;LOTTERY;none;render_type;All;0;all;overworld;;

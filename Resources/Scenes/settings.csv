@@ -2,9 +2,12 @@ log_name;friendly_name;type;value
 games;Games;game;ootmm
 mode;Mode;mode;coop
 teams;Number of teams;uint;1
-goldSkulltulaTokens;Gold Skulltula (OoT);shuffle;all
-housesSkulltulaTokens;Gold Skulltula (MM);boolean;all
+goldSkulltulaTokens;Gold Skulltula - OoT;shuffle;all
+housesSkulltulaTokens;Gold Skulltula - MM;boolean;all
 tingleShuffle;Tingle Maps;boolean;all
+mapCompassShuffle;Map / Compass;boolean;all
+smallKeyShuffleOot;Small Key - OoT;shuffle;all
+smallKeyShuffleMm;Small Key - MM;shuffle;all
 smallKeyShuffleHideout;Small Key - Hideout;boolean;all
 smallKeyShuffleChestGame;Small Key - Chest Game;boolean;all
 bossKeyShuffleOot;Boss Key - OoT;boolean;all
@@ -67,3 +70,4 @@ fairyFountainFairyShuffleMm;Fairy Fountain - MM;boolean;all
 fairySpotShuffleOot;Fairy Spot;boolean;all
 eggShuffle;Egg Content;boolean;all
 restoreBrokenActors;Restore Broken Actors;boolean;all
+shuffleLotteryMm;Lottery Prizes;boolean;all
