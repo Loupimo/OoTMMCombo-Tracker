@@ -176,6 +176,8 @@ void Settings::ParseGamesLayouts(QString& LayoutSection)
 	GetSceneMetaInfo(GERUDO_TRAINING_GROUND, OOT_GAME)->ActiveLayout = GameLayout::oot;
 	GetSceneMetaInfo(ICE_CAVERN, OOT_GAME)->ActiveLayout = GameLayout::oot;
 	GetSceneMetaInfo(INSIDE_GANON_CASTLE, OOT_GAME)->ActiveLayout = GameLayout::oot;
+
+	GetSceneMetaInfo(MM_GROTTOS, MM_GAME)->ActiveLayout = GameLayout::mm;
 	GetSceneMetaInfo(DEKU_PALACE, MM_GAME)->ActiveLayout = GameLayout::mm;
 	GetSceneMetaInfo(MM_GROTTO_DEKU_PALACE_GENERIC, MM_GAME)->ActiveLayout = GameLayout::mm;
 
@@ -217,6 +219,7 @@ void Settings::ParseGamesLayouts(QString& LayoutSection)
 				if (layoutParams.at(1) == "all")
 				{	// All JP
 
+					GetSceneMetaInfo(MM_GROTTOS, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
 					GetSceneMetaInfo(DEKU_PALACE, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
 					GetSceneMetaInfo(MM_GROTTO_DEKU_PALACE_GENERIC, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
 				}
@@ -293,6 +296,7 @@ void Settings::ParseGamesLayouts(QString& LayoutSection)
 					if (currScene == "Deku Palace")
 					{	// Deku Palace layout
 
+						GetSceneMetaInfo(MM_GROTTOS, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
 						GetSceneMetaInfo(DEKU_PALACE, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
 						GetSceneMetaInfo(MM_GROTTO_DEKU_PALACE_GENERIC, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
 					}

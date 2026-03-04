@@ -391,7 +391,7 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
             {   // Browse all scenes objects
                 
                 // Some layout have the same object name but different object position. We need to check if the active layout match the obejct one in order to fill the right one)
-                if (gameSceneObj[sceneID].Objects[j].Layout == sceneActiveLayout)
+                if (gameSceneObj[sceneID].Objects[j].Layout == GameLayout::all || gameSceneObj[sceneID].Objects[j].Layout == sceneActiveLayout)
                 {   // The layout does match
 
                     if (strcmp(gameSceneObj[sceneID].Objects[j].Location, tmpObjName) == 0)

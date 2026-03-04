@@ -2,7 +2,7 @@
 
 #pragma region Items
 
-#define NUM_ITEM 0x33E
+#define NUM_ITEM 0x33D
 
 const ItemInfo ItemList[NUM_ITEM] =
 {
