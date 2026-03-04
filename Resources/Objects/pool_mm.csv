@@ -66,6 +66,9 @@ SONG_STORMS;BENEATH_THE_GRAVEYARD;Song of Storms;MM Beneath The Graveyard Song o
 0x0616;BENEATH_THE_WELL;Middle 9;MM Beneath The Well Pot Middle 09;pot;921;670;1;BENEATH_THE_WELL;pot;render_type;All;0;mm;dungeon;Fish, Soul of ReDeads / Gibdos (MM), Gibdo Mask;
 0x0617;BENEATH_THE_WELL;Middle 10;MM Beneath The Well Pot Middle 10;pot;921;660;0;BENEATH_THE_WELL;pot;render_type;All;0;mm;dungeon;Fish, Soul of ReDeads / Gibdos (MM), Gibdo Mask;
 0x01;BENEATH_THE_WELL;Skulltulla;MM Beneath The Well Skulltulla Chest;chest;715;719;0;BENEATH_THE_WELL;chest;render_type;All;0;mm;dungeon;Bugs, Soul of ReDeads / Gibdos (MM), Gibdo Mask;
+0x00903;BENEATH_THE_WELL;Tree;MM Beneath The Well Tree;tree;1322;949;0;BENEATH_THE_WELL;tree;render_type;All;0;mm;dungeon;Hot Spring Water, Soul of ReDeads / Gibdos (MM), Gibdo Mask;
+0x00901;BENEATH_THE_WELL;Bush 1;MM Beneath The Well Bush 1;bush;1303;951;0;BENEATH_THE_WELL;bush;render_type;All;0;mm;dungeon;Hot Spring Water, Soul of ReDeads / Gibdos (MM), Gibdo Mask;
+0x00902;BENEATH_THE_WELL;Bush 2;MM Beneath The Well Bush 2;bush;1303;900;0;BENEATH_THE_WELL;bush;render_type;All;0;mm;dungeon;Hot Spring Water, Soul of ReDeads / Gibdos (MM), Gibdo Mask;
 SWORD_GILDED;BLACKSMITH;Gilded Sword;MM Blacksmith Gilded Sword;npc;543;204;0;BLACKSMITH;sword;gilded;All;0;mm;overworld;Din's Fire / Bow (MM) + Fire Arrow (MM), Magic Upgrade, Soul of Blacksmiths;Give the <b>Gold Dust</b> to <b>Zubora</b>
 0x10004;BLACKSMITH;Potted Plant 1;MM Blacksmith Potted Plant 1 Grass;grass;687;294;1;BLACKSMITH;grass;render_type;All;0;mm;overworld;Clock (Night 1) / Clock (Night 2) / Clock (Night 3);The potted plant can be found inside the Blacksmith's house during the night
 0x00004;BLACKSMITH;Potted Plant 1;MM Blacksmith Potted Plant 1 Pot;pot;687;308;0;BLACKSMITH;pot;render_type;All;0;mm;overworld;Clock (Night 1) / Clock (Night 2) / Clock (Night 3);The potted plant can be found inside the Blacksmith's house during the night
@@ -167,6 +170,8 @@ DEKU_PLAYGROUND_2;CLOCK_TOWN_NORTH;Reward - All Days;MM Deku Playground Reward A
 DEKU_PLAYGROUND_1;CLOCK_TOWN_NORTH;Reward - Any Day;MM Deku Playground Reward Any Day;none;0;0;0;DEKU_PLAYGROUND;none;render_type;All;0;mm;minigame;;
 GREAT_FAIRY_TOWN;CLOCK_TOWN_NORTH;Great Fairy - Link;MM Clock Town Great Fairy;none;0;0;0;MM_FAIRY_CLOCK_TOWN;none;render_type;All;0;mm;overworld;;
 GREAT_FAIRY_TOWN_ALT;CLOCK_TOWN_NORTH;Great Fairy - Mojo;MM Clock Town Great Fairy Alt;none;0;0;0;MM_FAIRY_CLOCK_TOWN;none;render_type;All;0;mm;overworld;;
+0x00007;CLOCK_TOWN_NORTH;Tree 1;MM Clock Town North Forked Tree 1;tree;615;353;0;CLOCK_TOWN_NORTH;tree;render_type;All;0;mm;overworld;;
+0x00015;CLOCK_TOWN_NORTH;Tree 2;MM Clock Town North Forked Tree 2;tree;382;161;1;CLOCK_TOWN_NORTH;tree;render_type;All;0;mm;overworld;;
 SCRUB_LAND;CLOCK_TOWN_SOUTH;Land Title Deed;MM Clock Town Business Scrub;npc;375;420;0;CLOCK_TOWN_SOUTH;scrub;land;All;0;mm;overworld;Moon Tear, Soul of Business Scrubs (MM);Give the <b>Moon Tear</b> to the scrub
 OWL_CLOCK_TOWN;CLOCK_TOWN_SOUTH;Owl Statue;MM Clock Town Owl Statue;npc;193;275;0;CLOCK_TOWN_SOUTH;owl;render_type;All;0;mm;overworld;Sword (MM);Hit the statue with a sword
 0x0a;CLOCK_TOWN_SOUTH;Platform;MM Clock Town Platform HP;collectible;348;226;0;CLOCK_TOWN_SOUTH;heart_piece;render_type;All;0;mm;overworld;;Reach the platform using the deku flower or Link
@@ -208,6 +213,10 @@ SWORDSMAN_HEART_PIECE;CLOCK_TOWN_WEST;Game Prize;MM Swordsman School HP;none;0;0
 0x0009;CLOCK_TOWN_WEST;Pot 4;MM Swordsman School Pot 4;none;0;0;0;SWORDSMAN_SCHOOL;none;render_type;All;0;mm;overworld;;
 0x000a;CLOCK_TOWN_WEST;Pot 5;MM Swordsman School Pot 5;none;0;0;0;SWORDSMAN_SCHOOL;none;render_type;All;0;mm;overworld;;
 POSTMAN_HEART_PIECE;CLOCK_TOWN_WEST;Game Prize;MM Post Office HP;none;0;0;0;POST_OFFICE;none;render_type;All;0;mm;overworld;;
+0x00002;CLOCK_TOWN_WEST;Bush 1;MM Trading Post Bush 1;none;0;0;0;TRADING_POST;none;render_type;All;0;mm;overworld;;
+0x00003;CLOCK_TOWN_WEST;Bush 2;MM Trading Post Bush 2;none;0;0;0;TRADING_POST;none;render_type;All;0;mm;overworld;;
+0x00004;CLOCK_TOWN_WEST;Bush 3;MM Trading Post Bush 3;none;0;0;0;TRADING_POST;none;render_type;All;0;mm;overworld;;
+0x00005;CLOCK_TOWN_WEST;Bush 4;MM Trading Post Bush 4;none;0;0;0;TRADING_POST;none;render_type;All;0;mm;overworld;;
 MASK_BUNNY;CUCCO_SHACK;Bunny Mask;MM Cucco Shack Bunny Mask;npc;407;318;0;CUCCO_SHACK;mask;bunny;All;0;mm;overworld;Bremen Mask, Soul of Grog;Make the chick become cuccos by wearing the <b>Bremen Mask</b>
 0x0000e;CUCCO_SHACK;Crate 1;MM Cucco Shack Crate 1;crate;871;317;0;CUCCO_SHACK;crate;render_type;All;0;mm;overworld;;
 0x0000f;CUCCO_SHACK;Crate 2;MM Cucco Shack Crate 2;crate;851;317;0;CUCCO_SHACK;crate;render_type;All;0;mm;overworld;;
@@ -222,6 +231,14 @@ MASK_BUNNY;CUCCO_SHACK;Bunny Mask;MM Cucco Shack Bunny Mask;npc;407;318;0;CUCCO_
 0x00012;CUCCO_SHACK;Wood Hole 4;MM Cucco Shack Wonder Item 4;wonder;284;357;2;CUCCO_SHACK;wonder;render_type;All;0;mm;overworld;Sword (MM) / Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Bow (MM) / Hookshot (MM) / Zora Mask (MM) / Deku Mask (MM) + Magic Upgrade (MM);Hit the left hole
 0x10012;CUCCO_SHACK;Wood Hole 5;MM Cucco Shack Wonder Item 5;wonder;279;347;1;CUCCO_SHACK;wonder;render_type;All;0;mm;overworld;Sword (MM) / Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Bow (MM) / Hookshot (MM) / Zora Mask (MM) / Deku Mask (MM) + Magic Upgrade (MM);Hit the left hole
 0x20012;CUCCO_SHACK;Wood Hole 6;MM Cucco Shack Wonder Item 6;wonder;284;335;0;CUCCO_SHACK;wonder;render_type;All;0;mm;overworld;Sword (MM) / Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Bow (MM) / Hookshot (MM) / Zora Mask (MM) / Deku Mask (MM) + Magic Upgrade (MM);Hit the left hole
+0x0000c;CUCCO_SHACK;Tree;MM Cucco Shack Tree;tree;389;317;0;CUCCO_SHACK;tree;render_type;All;0;mm;overworld;;
+0x0000b;CUCCO_SHACK;Bush 1;MM Cucco Shack Bush 1;bush;363;333;0;CUCCO_SHACK;bush;render_type;All;0;mm;overworld;;
+0x1000b;CUCCO_SHACK;Bush 2;MM Cucco Shack Bush 2;bush;643;473;0;CUCCO_SHACK;bush;render_type;All;0;mm;overworld;;
+0x2000b;CUCCO_SHACK;Bush 3;MM Cucco Shack Bush 3;bush;562;259;0;CUCCO_SHACK;bush;render_type;All;0;mm;overworld;;
+0x3000b;CUCCO_SHACK;Bush 4;MM Cucco Shack Bush 4;bush;390;181;0;CUCCO_SHACK;bush;render_type;All;0;mm;overworld;;
+0x4000b;CUCCO_SHACK;Bush 5;MM Cucco Shack Bush 5;bush;240;304;0;CUCCO_SHACK;bush;render_type;All;0;mm;overworld;;
+0x5000b;CUCCO_SHACK;Bush 6;MM Cucco Shack Bush 6;bush;265;488;0;CUCCO_SHACK;bush;render_type;All;0;mm;overworld;;
+0x00013;CUCCO_SHACK;Bush 7;MM Cucco Shack Bush 7;bush;643;188;0;CUCCO_SHACK;bush;render_type;All;0;mm;overworld;;
 0x04;CURIOSITY_SHOP;All-Night Mask;MM Curiosity Shop All-Night Mask;shop;307;397;0;CURIOSITY_SHOP;mask;night;All;0;mm;overworld;Clock (Night 3), Soul of Trading Post Owner;On night 3, buy the <b>All-Night Mask</b> from the <b>Trading Post Owner</b>
 MASK_KEATON;CURIOSITY_SHOP;Owner Reward 1;MM Kafei Hideout Owner Reward 1;npc;541;252;0;CURIOSITY_SHOP;mask;keaton;All;0;mm;overworld;Clock (Day 3), Soul of Trading Post Owner, Soul of Kafei;Speak to the <b>Trading Post Owner</b> on day 3 after you previously met <b>Kafei</b> on day 2
 LETTER_TO_MAMA;CURIOSITY_SHOP;Owner Reward 2;MM Kafei Hideout Owner Reward 2;npc;532;224;0;CURIOSITY_SHOP;npc;letter_mama;All;0;mm;overworld;Clock (Day 3), Soul of Trading Post Owner, Soul of Kafei;Speak to the <b>Trading Post Owner</b> on day 3 after you previously met <b>Kafei</b> on day 2
@@ -317,16 +334,15 @@ MASK_SCENTS;DEKU_PALACE;Mask of Scents;MM Deku Shrine Mask of Scents;none;0;0;0;
 0x90c03;DEKU_PALACE;Grass 10;MM Deku Palace Grotto Grass 10;none;0;0;0;MM_GROTTO_DEKU_PALACE_BEANS;none;render_type;All;0;mm;overworld;;
 0xa0c03;DEKU_PALACE;Grass 11;MM Deku Palace Grotto Grass 11;none;0;0;0;MM_GROTTO_DEKU_PALACE_BEANS;none;render_type;All;0;mm;overworld;;
 0xb0c03;DEKU_PALACE;Grass 12;MM Deku Palace Grotto Grass 12;none;0;0;0;MM_GROTTO_DEKU_PALACE_BEANS;none;render_type;All;0;mm;overworld;;
-0x00603;DEKU_PALACE;Butterfly 1;MM Deku Palace JP Line Grotto Butterfly 1;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;render_type;All;0;mm_jp;overworld;;
-0x10603;DEKU_PALACE;Butterfly 2;MM Deku Palace JP Line Grotto Butterfly 2;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;render_type;All;0;mm_jp;overworld;;
-0x20603;DEKU_PALACE;Butterfly 3;MM Deku Palace JP Line Grotto Butterfly 3;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;render_type;All;0;mm_jp;overworld;;
-0x30603;DEKU_PALACE;Butterfly 4;MM Deku Palace JP Line Grotto Butterfly 4;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;render_type;All;0;mm_jp;overworld;;
-0x40603;DEKU_PALACE;Butterfly 5;MM Deku Palace JP Line Grotto Butterfly 5;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;render_type;All;0;mm_jp;overworld;;
-0x00600;DEKU_PALACE;Grass 1;MM Deku Palace JP Line Grotto Grass 1;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;render_type;All;0;mm_jp;overworld;;
-0x00601;DEKU_PALACE;Grass 2;MM Deku Palace JP Line Grotto Grass 2;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;render_type;All;0;mm_jp;overworld;;
-0x00604;DEKU_PALACE;Grass 3;MM Deku Palace JP Line Grotto Grass 3;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;render_type;All;0;mm_jp;overworld;;
-0x00605;DEKU_PALACE;Grass 4;MM Deku Palace JP Line Grotto Grass 4;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;render_type;All;0;mm_jp;overworld;;
-0x00606;DEKU_PALACE;Grass 5;MM Deku Palace JP Line Grotto Grass 5;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;render_type;All;0;mm_jp;overworld;;
+0x0010c;DEKU_PALACE;Boulder 1;MM Deku Palace Red Boulder 1;redboulder;691;259;0;DEKU_PALACE;redboulder;render_type;All;0;mm;overworld;;
+0x0010d;DEKU_PALACE;Boulder 2;MM Deku Palace Red Boulder 2;redboulder;635;222;0;DEKU_PALACE;redboulder;render_type;All;0;mm;overworld;;
+0x0010e;DEKU_PALACE;Boulder 3;MM Deku Palace Red Boulder 3;redboulder;644;36;0;DEKU_PALACE;redboulder;render_type;All;0;mm;overworld;;
+0x00000;DEKU_PALACE;Item 1;MM Deku Palace Soil Item 1;soil;876;111;0;DEKU_PALACE;soil;render_type;All;0;mm;overworld;;
+0x10000;DEKU_PALACE;Item 2;MM Deku Palace Soil Item 2;soil;889;101;0;DEKU_PALACE;soil;render_type;All;0;mm;overworld;;
+0x20000;DEKU_PALACE;Item 3;MM Deku Palace Soil Item 3;soil;876;88;0;DEKU_PALACE;soil;render_type;All;0;mm;overworld;;
+0x00c09;DEKU_PALACE;Item 1;MM Beans Grotto Soil Item 1;none;0;0;0;MM_GROTTO_DEKU_PALACE_BEANS;none;render_type;All;0;mm;overworld;;
+0x10c09;DEKU_PALACE;Item 2;MM Beans Grotto Soil Item 2;none;0;0;0;MM_GROTTO_DEKU_PALACE_BEANS;none;render_type;All;0;mm;overworld;;
+0x20c09;DEKU_PALACE;Item 3;MM Beans Grotto Soil Item 3;none;0;0;0;MM_GROTTO_DEKU_PALACE_BEANS;none;render_type;All;0;mm;overworld;;
 DEKU_PLAYGROUND_2;DEKU_PLAYGROUND;Reward - All Days;MM Deku Playground Reward All Days;npc;399;341;0;DEKU_PLAYGROUND;heart_piece;render_type;All;0;mm;minigame;Clock (Day 1) / Clock (Night 1), Clock (Day 2) / Clock (Night 2), Clock (Day 3) / Clock (Night 3),  Soul of Playground Scrubs;Win the game on all days
 DEKU_PLAYGROUND_1;DEKU_PLAYGROUND;Reward - Any Day;MM Deku Playground Reward Any Day;npc;399;299;0;DEKU_PLAYGROUND;npc;render_type;All;0;mm;minigame;Soul of Playground Scrubs;Win the game on any day
 MASK_SCENTS;DEKU_SHRINE;Mask of Scents;MM Deku Shrine Mask of Scents;npc;166;206;0;DEKU_SHRINE;mask;scents;All;0;mm;overworld;Soul of Deku Princess, Soul of Deku Butler;Follow the <b>Deku Butler</b> to the end of the race
@@ -368,6 +384,7 @@ DOG_LADY_HEART_PIECE;DOG_RACETRACK;Game Prize;MM Doggy Racetrack HP;npc;650;377;
 0x000a;DOG_RACETRACK;Pot 2;MM Doggy Racetrack Pot 2;pot;295;294;0;DOG_RACETRACK;pot;render_type;All;0;mm;overworld;;
 0x000c;DOG_RACETRACK;Pot 3;MM Doggy Racetrack Pot 3;pot;281;307;0;DOG_RACETRACK;pot;render_type;All;0;mm;overworld;;
 0x000d;DOG_RACETRACK;Pot 4;MM Doggy Racetrack Pot 4;pot;265;319;0;DOG_RACETRACK;pot;render_type;All;0;mm;overworld;;
+0x00008;DOG_RACETRACK;Soil;MM Doggy Racetrack Soil;soil;384;391;0;DOG_RACETRACK;soil;render_type;All;0;mm;overworld;;
 0x0000;EXTRA;Pot Game 1;MM Zora Cape Pot Game 1;pot;559;168;0;ZORA_CAPE;pot;render_type;All;0;mm;overworld;Soul of Zoras (MM);
 0x0001;EXTRA;Pot Game 2;MM Zora Cape Pot Game 2;pot;547;175;0;ZORA_CAPE;pot;render_type;All;0;mm;overworld;Soul of Zoras (MM);
 0x0002;EXTRA;Pot Game 3;MM Zora Cape Pot Game 3;pot;569;177;0;ZORA_CAPE;pot;render_type;All;0;mm;overworld;Soul of Zoras (MM);
@@ -378,7 +395,6 @@ GREAT_FAIRY_TOWN_ALT;FAIRY_FOUNTAIN;Great Fairy - Mojo;MM Clock Town Great Fairy
 GREAT_FAIRY_OCEAN;FAIRY_FOUNTAIN;Double Defense;MM Great Bay Great Fairy;npc;490;188;0;MM_FAIRY_GREAT_BAY_COAST;npc;defense;All;0;mm;overworld;Stray Fairy (Great Bay);Bring all the <b>Stray Fairy (Great Bay)</b> back to the fountain
 GREAT_FAIRY_VALLEY;FAIRY_FOUNTAIN;Great Fairy's Sword;MM Ikana Great Fairy;npc;460;195;0;MM_FAIRY_IKANA;sword;fairy_sword;All;0;mm;overworld;Stray Fairy (Stone Tower);Bring all the <b>Stray Fairy (Stone Tower)</b> back to the fountain
 GREAT_FAIRY_MOUNTAIN;FAIRY_FOUNTAIN;Large Magic Upgrade;MM Snowhead Great Fairy;npc;478;173;0;MM_FAIRY_SNOWHEAD;npc;double_magic;All;0;mm;overworld;Stray Fairy (Snowhead);Bring all the <b>Stray Fairy (Snowhead)</b> back to the fountain
-OWL_SNOWHEAD;SNOWHEAD;Owl Statue;MM Snowhead Owl Statue;npc;186;509;1;SNOWHEAD;owl;render_type;All;0;mm;overworld;Sword (MM);Hit the statue with a sword
 GREAT_FAIRY_SWAMP;FAIRY_FOUNTAIN;Super Spin Attack;MM Woodfall Great Fairy;npc;478;159;0;MM_FAIRY_WOODFALL;npc;spin;All;0;mm;overworld;Stray Fairy (Woodfall);Bring all the <b>Stray Fairy (Woodfall)</b> back to the fountain
 GHOST_HUT_HEART_PIECE;GHOST_HUT;Game Prize;MM Ghost Hut HP;npc;473;179;0;GHOST_HUT;heart_piece;render_type;All;0;mm;overworld;Soul of Poe Hut Owner;Complete the challenge of the <b>Poe Hut Owner</b>
 0x00049;GORMAN_TRACK;Crate;MM Gorman Track Crate;crate;640;242;0;GORMAN_TRACK;crate;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
@@ -408,6 +424,31 @@ MASK_GARO;GORMAN_TRACK;Garo Mask;MM Gorman Track Garo Mask;npc;628;231;0;GORMAN_
 0xa0025;GORMAN_TRACK;Pack 2 - Grass 11;MM Gorman Track Grass Pack 2 Grass 11;grass;174;456;0;GORMAN_TRACK;grass;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
 0xb0025;GORMAN_TRACK;Pack 2 - Grass 12;MM Gorman Track Grass Pack 2 Grass 12;grass;157;453;0;GORMAN_TRACK;grass;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
 GORMAN_MILK;GORMAN_TRACK;Purchase - Milk;MM Gorman Track Milk Purchase;npc;663;235;0;GORMAN_TRACK;merchant;milk;All;0;mm;overworld;Soul of Gorman & Bros.;Buy milk from the <b>Gorman Bros.</b>
+0x0000b;GORMAN_TRACK;Tree 1;MM Gorman Track Tree 01;tree;108;102;1;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0000c;GORMAN_TRACK;Tree 2;MM Gorman Track Tree 02;tree;106;86;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0000d;GORMAN_TRACK;Tree 3;MM Gorman Track Tree 03;tree;135;89;1;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0000e;GORMAN_TRACK;Tree 4;MM Gorman Track Tree 04;tree;135;74;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0000f;GORMAN_TRACK;Tree 5;MM Gorman Track Tree 05;tree;162;87;2;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00010;GORMAN_TRACK;Tree 6;MM Gorman Track Tree 06;tree;213;74;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00011;GORMAN_TRACK;Tree 7;MM Gorman Track Tree 07;tree;164;75;1;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00012;GORMAN_TRACK;Tree 8;MM Gorman Track Tree 08;tree;165;63;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00013;GORMAN_TRACK;Tree 9;MM Gorman Track Tree 09;tree;181;78;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00014;GORMAN_TRACK;Tree 10;MM Gorman Track Tree 10;tree;195;63;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00015;GORMAN_TRACK;Tree 11;MM Gorman Track Tree 11;tree;225;57;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00016;GORMAN_TRACK;Tree 12;MM Gorman Track Tree 12;tree;245;66;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00017;GORMAN_TRACK;Tree 13;MM Gorman Track Tree 13;tree;828;548;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00018;GORMAN_TRACK;Tree 14;MM Gorman Track Tree 14;tree;732;560;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00019;GORMAN_TRACK;Tree 15;MM Gorman Track Tree 15;tree;663;542;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0001a;GORMAN_TRACK;Tree 16;MM Gorman Track Tree 16;tree;498;526;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0001b;GORMAN_TRACK;Tree 17;MM Gorman Track Tree 17;tree;364;520;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0001c;GORMAN_TRACK;Tree 18;MM Gorman Track Tree 18;tree;852;482;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0001d;GORMAN_TRACK;Tree 19;MM Gorman Track Tree 19;tree;697;589;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0001e;GORMAN_TRACK;Tree 20;MM Gorman Track Tree 20;tree;636;572;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0001f;GORMAN_TRACK;Tree 21;MM Gorman Track Tree 21;tree;576;520;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00020;GORMAN_TRACK;Tree 22;MM Gorman Track Tree 22;tree;510;548;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00021;GORMAN_TRACK;Tree 23;MM Gorman Track Tree 23;tree;398;494;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00022;GORMAN_TRACK;Tree 24;MM Gorman Track Tree 24;tree;386;554;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00023;GORMAN_TRACK;Tree 25;MM Gorman Track Tree 25;tree;303;488;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
 MASK_GORON;GORON_GRAVEYARD;Goron Mask;MM Goron Graveyard Mask;npc;474;289;0;GORON_GRAVEYARD;mask;goron;All;0;mm;overworld;Lens of Truth (MM), Magic Upgrade (MM), Song of Healing, C-Left + C-Right + C-Down buttons (MM), Fairy Ocarina (MM) / Ocarina of Time (MM);Use your <b>Lens of Truth</b> to speak to <b>Darmani</b> and play the <b>Song of Healing</b> to heal his wounds
 0x0002;GORON_RACETRACK;Pot 1;MM Goron Race Pot 01;pot;346;247;0;GORON_RACETRACK;pot;render_type;All;0;mm;overworld;Goron Mask (MM), Powder Keg / Soul of Biggoron (MM) + Bow (MM) + Fire Arrow (MM) + Magic Upgrade (MM) / Soul of Biggoron (MM) + Din's Fire (MM) + Magic Upgrade (MM);Break the rock that blocks the goron racetrack entrance
 0x0003;GORON_RACETRACK;Pot 2;MM Goron Race Pot 02;pot;284;276;0;GORON_RACETRACK;pot;render_type;All;0;mm;overworld;Goron Mask (MM), Powder Keg / Soul of Biggoron (MM) + Bow (MM) + Fire Arrow (MM) + Magic Upgrade (MM);Break the rock that blocks the goron racetrack entrance
@@ -440,6 +481,16 @@ MASK_GORON;GORON_GRAVEYARD;Goron Mask;MM Goron Graveyard Mask;npc;474;289;0;GORO
 0x001e;GORON_RACETRACK;Pot 29;MM Goron Race Pot 29;pot;681;230;0;GORON_RACETRACK;pot;render_type;All;0;mm;overworld;Goron Mask (MM), Powder Keg / Soul of Biggoron (MM) + Bow (MM) + Fire Arrow (MM) + Magic Upgrade (MM);Break the rock that blocks the goron racetrack entrance
 0x001f;GORON_RACETRACK;Pot 30;MM Goron Race Pot 30;pot;670;233;0;GORON_RACETRACK;pot;render_type;All;0;mm;overworld;Goron Mask (MM), Powder Keg / Soul of Biggoron (MM) + Bow (MM) + Fire Arrow (MM) + Magic Upgrade (MM);Break the rock that blocks the goron racetrack entrance
 GORON_RACE;GORON_RACETRACK;Reward;MM Goron Race Reward;npc;679;442;0;GORON_RACETRACK;npc;dust;All;0;mm;overworld;Goron Mask (MM), Powder Keg / Soul of Biggoron (MM) + Bow (MM) + Fire Arrow (MM) + Magic Upgrade (MM), Soul of Baby Goron;Break the rock that blocks the goron racetrack entrance and win the race
+0x0003b;GORON_RACETRACK;Tree 1;MM Goron Race Forked Tree 1;tree;134;338;0;GORON_RACETRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0003c;GORON_RACETRACK;Tree 2;MM Goron Race Forked Tree 2;tree;106;352;0;GORON_RACETRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0003d;GORON_RACETRACK;Tree 3;MM Goron Race Forked Tree 3;tree;169;321;0;GORON_RACETRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0003e;GORON_RACETRACK;Tree 4;MM Goron Race Forked Tree 4;tree;154;325;0;GORON_RACETRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x0003f;GORON_RACETRACK;Tree 5;MM Goron Race Forked Tree 5;tree;134;349;0;GORON_RACETRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00040;GORON_RACETRACK;Tree 6;MM Goron Race Forked Tree 6;tree;151;338;0;GORON_RACETRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00041;GORON_RACETRACK;Tree 7;MM Goron Race Forked Tree 7;tree;192;314;0;GORON_RACETRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00042;GORON_RACETRACK;Tree 8;MM Goron Race Forked Tree 8;tree;181;333;0;GORON_RACETRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00043;GORON_RACETRACK;Tree 9;MM Goron Race Forked Tree 9;tree;166;339;0;GORON_RACETRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
+0x00044;GORON_RACETRACK;Tree 10;MM Goron Race Forked Tree 10;tree;146;352;0;GORON_RACETRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
 0x10;GORON_SHOP;Item 1;MM Goron Shop Item 1;shop;302;191;0;GORON_SHOP;shop;render_type;All;0;mm;overworld;Goron Mask (MM) / Soul of Gorons (MM), Soul of the Goron Shopkeeper (MM);
 0x11;GORON_SHOP;Item 2;MM Goron Shop Item 2;shop;347;191;0;GORON_SHOP;shop;render_type;All;0;mm;overworld;Goron Mask (MM) / Soul of Gorons (MM), Soul of the Goron Shopkeeper (MM);
 0x12;GORON_SHOP;Item 3;MM Goron Shop Item 3;shop;392;191;0;GORON_SHOP;shop;render_type;All;0;mm;overworld;Goron Mask (MM) / Soul of Gorons (MM), Soul of the Goron Shopkeeper (MM);
@@ -455,6 +506,22 @@ GORON_BABY;GORON_SHRINE;Goron's Lulluby;MM Goron Baby;npc;855;284;0;GORON_SHRINE
 0x0106;GORON_SHRINE;Pot 9;MM Goron Shrine Pot 09;pot;795;333;0;GORON_SHRINE;pot;render_type;All;0;mm;overworld;Goron Mask (MM) / Soul of Gorons (MM;
 0x0107;GORON_SHRINE;Pot 10;MM Goron Shrine Pot 10;pot;811;333;0;GORON_SHRINE;pot;render_type;All;0;mm;overworld;Goron Mask (MM) / Soul of Gorons (MM;
 0x0108;GORON_SHRINE;Pot 11;MM Goron Shrine Pot 11;pot;826;333;0;GORON_SHRINE;pot;render_type;All;0;mm;overworld;Goron Mask (MM) / Soul of Gorons (MM;
+0x00002;GORON_SHRINE;Rock 1;MM Goron Shrine Rock 01;rock;405;229;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
+0x00003;GORON_SHRINE;Rock 2;MM Goron Shrine Rock 02;rock;430;409;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
+0x00004;GORON_SHRINE;Rock 3;MM Goron Shrine Rock 03;rock;412;399;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
+0x00005;GORON_SHRINE;Rock 4;MM Goron Shrine Rock 04;rock;430;390;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
+0x00006;GORON_SHRINE;Rock 5;MM Goron Shrine Rock 05;rock;236;156;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
+0x00007;GORON_SHRINE;Rock 6;MM Goron Shrine Rock 06;rock;150;275;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
+0x00008;GORON_SHRINE;Rock 7;MM Goron Shrine Rock 07;rock;143;365;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
+0x00009;GORON_SHRINE;Rock 8;MM Goron Shrine Rock 08;rock;149;390;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
+0x0000a;GORON_SHRINE;Rock 9;MM Goron Shrine Rock 09;rock;459;381;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
+0x0000b;GORON_SHRINE;Rock 10;MM Goron Shrine Rock 10;rock;465;365;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
+0x0000c;GORON_SHRINE;Rock 11;MM Goron Shrine Rock 11;rock;593;359;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
+0x0000d;GORON_SHRINE;Rock 12;MM Goron Shrine Rock 12;rock;518;399;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
+0x0000e;GORON_SHRINE;Rock 13;MM Goron Shrine Rock 13;rock;518;162;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
+0x0000f;GORON_SHRINE;Rock 14;MM Goron Shrine Rock 14;rock;486;187;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
+0x00010;GORON_SHRINE;Rock 15;MM Goron Shrine Rock 15;rock;555;187;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
+0x00011;GORON_SHRINE;Rock 16;MM Goron Shrine Rock 16;rock;561;359;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
 GORON_KEG;GORON_VILLAGE_WINTER;Powder Keg;MM Goron Powder Keg;npc;117;323;0;GORON_VILLAGE_WINTER;npc;powder;All;0;mm;overworld;Goron Mask (MM), Bow (MM) + Fire Arrow (MM) / Din's Fire (MM), Magic Upgrade (MM), Soul of Biggoron (MM);Break the rock at the entrance of the goron racetrack and speak to <b>Biggoron</b> to get your reward
 0x00032;GORON_VILLAGE_WINTER;Big Snowball 1;MM Goron Village Big Snowball 1;snowball;668;281;0;GORON_VILLAGE_WINTER;snowball;render_type;All;0;mm;overworld;Goron Mask (MM) / Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Megaton Hammer (MM);
 0x00033;GORON_VILLAGE_WINTER;Big Snowball 2;MM Goron Village Big Snowball 2;snowball;360;447;0;GORON_VILLAGE_WINTER;snowball;render_type;All;0;mm;overworld;Goron Mask (MM) / Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Megaton Hammer (MM);
@@ -523,6 +590,22 @@ GORON_BABY;GORON_VILLAGE_WINTER;Goron's Lulluby;MM Goron Baby;none;0;0;0;GORON_S
 0xb0502;GORON_VILLAGE_WINTER;Pack 2 - Grass 12;MM Lone Peak Shrine Grass Pack 2 Grass 12;none;0;0;0;LONE_PEAK;none;render_type;All;0;mm;overworld;;
 0x03;GORON_VILLAGE_WINTER;Invisible;MM Lone Peak Shrine Invisible Chest;none;0;0;0;LONE_PEAK;none;render_type;All;0;mm;overworld;;
 0x01;GORON_VILLAGE_WINTER;Lens of Truth;MM Lone Peak Shrine Lens Chest;none;0;0;0;LONE_PEAK;none;render_type;All;0;mm;overworld;;
+0x00002;GORON_VILLAGE_WINTER;Rock 1;MM Goron Shrine Rock 01;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
+0x00003;GORON_VILLAGE_WINTER;Rock 2;MM Goron Shrine Rock 02;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
+0x00004;GORON_VILLAGE_WINTER;Rock 3;MM Goron Shrine Rock 03;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
+0x00005;GORON_VILLAGE_WINTER;Rock 4;MM Goron Shrine Rock 04;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
+0x00006;GORON_VILLAGE_WINTER;Rock 5;MM Goron Shrine Rock 05;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
+0x00007;GORON_VILLAGE_WINTER;Rock 6;MM Goron Shrine Rock 06;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
+0x00008;GORON_VILLAGE_WINTER;Rock 7;MM Goron Shrine Rock 07;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
+0x00009;GORON_VILLAGE_WINTER;Rock 8;MM Goron Shrine Rock 08;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
+0x0000a;GORON_VILLAGE_WINTER;Rock 9;MM Goron Shrine Rock 09;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
+0x0000b;GORON_VILLAGE_WINTER;Rock 10;MM Goron Shrine Rock 10;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
+0x0000c;GORON_VILLAGE_WINTER;Rock 11;MM Goron Shrine Rock 11;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
+0x0000d;GORON_VILLAGE_WINTER;Rock 12;MM Goron Shrine Rock 12;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
+0x0000e;GORON_VILLAGE_WINTER;Rock 13;MM Goron Shrine Rock 13;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
+0x0000f;GORON_VILLAGE_WINTER;Rock 14;MM Goron Shrine Rock 14;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
+0x00010;GORON_VILLAGE_WINTER;Rock 15;MM Goron Shrine Rock 15;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
+0x00011;GORON_VILLAGE_WINTER;Rock 16;MM Goron Shrine Rock 16;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
 0x24085;GREAT_BAY_COAST;Cleared 1;MM Great Bay Coast Cleared Butterfly 1;butterfly;655;601;0;GREAT_BAY_COAST;butterfly;render_type;All;0;mm;overworld;Soul of Butterflies (MM), Deku Stick (MM), Soul of Gyorg;After defeating Gyorg, pull out a deku stick near the butterfly
 0x34085;GREAT_BAY_COAST;Cleared 2;MM Great Bay Coast Cleared Butterfly 2;butterfly;667;598;0;GREAT_BAY_COAST;butterfly;render_type;All;0;mm;overworld;Soul of Butterflies (MM), Deku Stick (MM), Soul of Gyorg;After defeating Gyorg, pull out a deku stick near the butterfly
 0x04085;GREAT_BAY_COAST;Common 1;MM Great Bay Coast Common Butterfly 1;butterfly;659;592;0;GREAT_BAY_COAST;butterfly;render_type;All;0;mm;overworld;Soul of Butterflies (MM), Deku Stick (MM);Pull out a deku stick near the butterfly
@@ -646,6 +729,49 @@ SONG_ZORA;GREAT_BAY_COAST;New Wave Bossa Nova;MM Laboratory Zora Song;none;0;0;0
 0xa0f09;GREAT_BAY_COAST;Grass 71;MM Great Bay Cow Grotto Grass 71;none;0;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;none;render_type;All;0;mm;overworld;;
 0xb0f09;GREAT_BAY_COAST;Grass 72;MM Great Bay Cow Grotto Grass 72;none;0;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;none;render_type;All;0;mm;overworld;;
 0x00f02;GREAT_BAY_COAST;Hive;MM Great Bay Cow Grotto Hive;none;0;0;0;MM_GROTTO_GREAT_BAY_COAST_COW;none;render_type;All;0;mm;overworld;;
+0x0000a;GREAT_BAY_COAST;Island;MM Great Bay Coast Palm Tree Island;tree;516;168;1;GREAT_BAY_COAST;tree;render_type;All;0;mm;overworld;;
+0x0000b;GREAT_BAY_COAST;Beach 1;MM Great Bay Coast Palm Tree Beach 1;tree;597;436;0;GREAT_BAY_COAST;tree;render_type;All;0;mm;overworld;;
+0x0000c;GREAT_BAY_COAST;Beach 2;MM Great Bay Coast Palm Tree Beach 2;tree;593;519;0;GREAT_BAY_COAST;tree;render_type;All;0;mm;overworld;;
+0x0000d;GREAT_BAY_COAST;Beach 3;MM Great Bay Coast Palm Tree Beach 3;tree;558;557;0;GREAT_BAY_COAST;tree;render_type;All;0;mm;overworld;;
+0x00045;GREAT_BAY_COAST;Cleared - Water 1;MM Great Bay Coast Rock Water Cleared 1;rock;367;555;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00042;GREAT_BAY_COAST;Cleared - Water 2;MM Great Bay Coast Rock Water Cleared 2;rock;424;601;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00043;GREAT_BAY_COAST;Water 1;MM Great Bay Coast Rock Water 01;rock;474;574;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00044;GREAT_BAY_COAST;Water 2;MM Great Bay Coast Rock Water 02;rock;461;543;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00046;GREAT_BAY_COAST;Water 3;MM Great Bay Coast Rock Water 03;rock;239;226;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00047;GREAT_BAY_COAST;Water 4;MM Great Bay Coast Rock Water 04;rock;283;226;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00048;GREAT_BAY_COAST;Water 5;MM Great Bay Coast Rock Water 05;rock;335;192;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00049;GREAT_BAY_COAST;Water 6;MM Great Bay Coast Rock Water 06;rock;347;329;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x0004a;GREAT_BAY_COAST;Water 7;MM Great Bay Coast Rock Water 07;rock;306;361;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x0004b;GREAT_BAY_COAST;Water 8;MM Great Bay Coast Rock Water 08;rock;389;422;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x0004c;GREAT_BAY_COAST;Water 9;MM Great Bay Coast Rock Water 09;rock;353;393;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x0004d;GREAT_BAY_COAST;Water 10;MM Great Bay Coast Rock Water 10;rock;227;293;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x0004e;GREAT_BAY_COAST;Water 11;MM Great Bay Coast Rock Water 11;rock;239;424;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x0004f;GREAT_BAY_COAST;Water 12;MM Great Bay Coast Rock Water 12;rock;371;220;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00050;GREAT_BAY_COAST;Water 13;MM Great Bay Coast Rock Water 13;rock;444;220;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00051;GREAT_BAY_COAST;Water 14;MM Great Bay Coast Rock Water 14;rock;486;220;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00052;GREAT_BAY_COAST;Water 15;MM Great Bay Coast Rock Water 15;rock;545;123;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00053;GREAT_BAY_COAST;Water 16;MM Great Bay Coast Rock Water 16;rock;592;180;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00054;GREAT_BAY_COAST;Water 17;MM Great Bay Coast Rock Water 17;rock;498;272;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00055;GREAT_BAY_COAST;Water 18;MM Great Bay Coast Rock Water 18;rock;545;308;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00056;GREAT_BAY_COAST;Water 19;MM Great Bay Coast Rock Water 19;rock;289;169;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00057;GREAT_BAY_COAST;Water 20;MM Great Bay Coast Rock Water 20;rock;383;96;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00058;GREAT_BAY_COAST;Water 21;MM Great Bay Coast Rock Water 21;rock;455;147;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00059;GREAT_BAY_COAST;Water 22;MM Great Bay Coast Rock Water 22;rock;371;511;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x0005a;GREAT_BAY_COAST;Water 23;MM Great Bay Coast Rock Water 23;rock;413;533;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x0005b;GREAT_BAY_COAST;Water 24;MM Great Bay Coast Rock Water 24;rock;365;589;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x0005c;GREAT_BAY_COAST;Water 25;MM Great Bay Coast Rock Water 25;rock;432;571;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x0005d;GREAT_BAY_COAST;Water 26;MM Great Bay Coast Rock Water 26;rock;455;595;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x0005e;GREAT_BAY_COAST;Water 27;MM Great Bay Coast Rock Water 27;rock;289;565;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00067;GREAT_BAY_COAST;Water 28;MM Great Bay Coast Rock Water 28;rock;462;317;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x0005f;GREAT_BAY_COAST;Sand 1;MM Great Bay Coast Rock Sand 1;rock;592;614;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00060;GREAT_BAY_COAST;Sand 2;MM Great Bay Coast Rock Sand 2;rock;647;436;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00061;GREAT_BAY_COAST;Sand 3;MM Great Bay Coast Rock Sand 3;rock;574;418;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00062;GREAT_BAY_COAST;Sand 4;MM Great Bay Coast Rock Sand 4;rock;609;589;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00063;GREAT_BAY_COAST;Sand 5;MM Great Bay Coast Rock Sand 5;rock;557;608;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00064;GREAT_BAY_COAST;Ledge 1;MM Great Bay Coast Rock Ledge 1;rock;691;220;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00065;GREAT_BAY_COAST;Ledge 2;MM Great Bay Coast Rock Ledge 2;rock;630;117;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00066;GREAT_BAY_COAST;Ledge 3;MM Great Bay Coast Rock Ledge 3;rock;666;302;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
+0x00000;GREAT_BAY_COAST;Soil;MM Great Bay Coast Soil;soil;696;129;0;GREAT_BAY_COAST;soil;render_type;All;0;mm;overworld;;
 0x00b00;GROTTOS;Grass 1;MM Bio Baba Grotto Grass 1;grass;685;369;0;MM_GROTTO_TERMINA_BIO_BABA;grass;render_type;All;0;mm;overworld;;
 0x00b03;GROTTOS;Grass 2;MM Bio Baba Grotto Grass 2;grass;799;365;0;MM_GROTTO_TERMINA_BIO_BABA;grass;render_type;All;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM);
 0x00200;GROTTOS;Grass 1;MM Canyon Gossip Grotto Grass 1;grass;829;547;0;MM_GROTTO_TERMINA_CANYON_GOSSIP;grass;render_type;All;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM);
@@ -670,16 +796,6 @@ SONG_ZORA;GREAT_BAY_COAST;New Wave Bossa Nova;MM Laboratory Zora Song;none;0;0;0
 0x90c03;GROTTOS;Grass 10;MM Deku Palace Grotto Grass 10;grass;196;522;0;MM_GROTTO_DEKU_PALACE_BEANS;grass;render_type;All;0;mm;overworld;;
 0xa0c03;GROTTOS;Grass 11;MM Deku Palace Grotto Grass 11;grass;199;508;0;MM_GROTTO_DEKU_PALACE_BEANS;grass;render_type;All;0;mm;overworld;;
 0xb0c03;GROTTOS;Grass 12;MM Deku Palace Grotto Grass 12;grass;207;496;0;MM_GROTTO_DEKU_PALACE_BEANS;grass;render_type;All;0;mm;overworld;;
-0x00603;GROTTOS;Butterfly 1;MM Deku Palace JP Line Grotto Butterfly 1;butterfly;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;butterfly;render_type;All;0;mm_jp;overworld;Deku Stick (MM), Soul of Butterflies (MM);Pull out a deku stick near the butterfly
-0x10603;GROTTOS;Butterfly 2;MM Deku Palace JP Line Grotto Butterfly 2;butterfly;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;butterfly;render_type;All;0;mm_jp;overworld;Deku Stick (MM), Soul of Butterflies (MM);Pull out a deku stick near the butterfly
-0x20603;GROTTOS;Butterfly 3;MM Deku Palace JP Line Grotto Butterfly 3;butterfly;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;butterfly;render_type;All;0;mm_jp;overworld;Deku Stick (MM), Soul of Butterflies (MM);Pull out a deku stick near the butterfly
-0x30603;GROTTOS;Butterfly 4;MM Deku Palace JP Line Grotto Butterfly 4;butterfly;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;butterfly;render_type;All;0;mm_jp;overworld;Deku Stick (MM), Soul of Butterflies (MM);Pull out a deku stick near the butterfly
-0x40603;GROTTOS;Butterfly 5;MM Deku Palace JP Line Grotto Butterfly 5;butterfly;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;butterfly;render_type;All;0;mm_jp;overworld;Deku Stick (MM), Soul of Butterflies (MM);Pull out a deku stick near the butterfly
-0x00600;GROTTOS;Grass 1;MM Deku Palace JP Line Grotto Grass 1;grass;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;grass;render_type;All;0;mm_jp;overworld;;
-0x00601;GROTTOS;Grass 2;MM Deku Palace JP Line Grotto Grass 2;grass;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;grass;render_type;All;0;mm_jp;overworld;;
-0x00604;GROTTOS;Grass 3;MM Deku Palace JP Line Grotto Grass 3;grass;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;grass;render_type;All;0;mm_jp;overworld;;
-0x00605;GROTTOS;Grass 4;MM Deku Palace JP Line Grotto Grass 4;grass;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;grass;render_type;All;0;mm_jp;overworld;;
-0x00606;GROTTOS;Grass 5;MM Deku Palace JP Line Grotto Grass 5;grass;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;grass;render_type;All;0;mm_jp;overworld;;
 0x17;GROTTOS;Chest;MM Great Bay Coast Fisherman Grotto;chest;231;410;0;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;chest;render_type;All;0;mm;overworld;;
 0x03700;GROTTOS;Grass 1;MM Great Bay Coast Fisherman Grotto Grass 01;grass;612;542;0;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;grass;render_type;All;0;mm;overworld;;
 0x03701;GROTTOS;Grass 2;MM Great Bay Coast Fisherman Grotto Grass 02;grass;371;494;0;MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;grass;render_type;All;0;mm;overworld;;
@@ -1086,6 +1202,10 @@ SCRUB_TELESCOPE;GROTTOS;Scrub;MM Termina Field Scrub;npc;239;428;0;MM_GROTTO_TER
 0x03511;GROTTOS;Grass 12;MM Zora Cape Grotto Grass 12;grass;382;418;0;MM_GROTTO_ZORA_CAPE_GENERIC;grass;render_type;All;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM);
 0x03512;GROTTOS;Grass 13;MM Zora Cape Grotto Grass 13;grass;583;448;0;MM_GROTTO_ZORA_CAPE_GENERIC;grass;render_type;All;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM);
 0x03513;GROTTOS;Grass 14;MM Zora Cape Grotto Grass 14;grass;418;418;0;MM_GROTTO_ZORA_CAPE_GENERIC;grass;render_type;All;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM);
+0x00b01;GROTTOS;Rock;MM Bio Baba Grotto Rock;rock;738;380;0;MM_GROTTO_TERMINA_BIO_BABA;rock;render_type;All;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM);
+0x00c09;GROTTOS;Item 1;MM Beans Grotto Soil Item 1;soil;303;524;0;MM_GROTTO_DEKU_PALACE_BEANS;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
+0x10c09;GROTTOS;Item 2;MM Beans Grotto Soil Item 2;soil;316;514;0;MM_GROTTO_DEKU_PALACE_BEANS;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
+0x20c09;GROTTOS;Item 3;MM Beans Grotto Soil Item 3;soil;303;501;0;MM_GROTTO_DEKU_PALACE_BEANS;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
 HONEY_DARLING_2;HONEY_DARLING;Reward - All Days;MM Honey & Darling Reward All Days;npc;471;310;0;HONEY_DARLING;heart_piece;render_type;All;0;mm;minigame;Win the game on all days;
 HONEY_DARLING_1;HONEY_DARLING;Reward - Any Day;MM Honey & Darling Reward Any Day;npc;471;273;0;HONEY_DARLING;npc;render_type;All;0;mm;minigame;Win the game on any day;
 0x0003b;IKANA_CANYON;Grass 1;MM Ikana Canyon Grass 1;grass;425;421;0;IKANA_CANYON;grass;render_type;All;0;mm;overworld;;
@@ -1194,6 +1314,19 @@ SONG_STORMS;IKANA_GRAVEYARD;Song of Storms;MM Beneath The Graveyard Song of Stor
 0x03811;IKANA_GRAVEYARD;Grass 12;MM Ikana Graveyard Grotto Grass 12;none;0;0;0;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;none;render_type;All;0;mm;overworld;;
 0x03812;IKANA_GRAVEYARD;Grass 13;MM Ikana Graveyard Grotto Grass 13;none;0;0;0;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;none;render_type;All;0;mm;overworld;;
 0x03813;IKANA_GRAVEYARD;Grass 14;MM Ikana Graveyard Grotto Grass 14;none;0;0;0;MM_GROTTO_IKANA_GRAVEYARD_GENERIC;none;render_type;All;0;mm;overworld;;
+0x00122;IKANA_GRAVEYARD;Wall 1;MM Ikana Graveyard Rock Wall 1;rock;707;200;2;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
+0x00123;IKANA_GRAVEYARD;Wall 2;MM Ikana Graveyard Rock Wall 2;rock;692;220;0;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
+0x00124;IKANA_GRAVEYARD;Wall 3;MM Ikana Graveyard Rock Wall 3;rock;718;213;1;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
+0x00125;IKANA_GRAVEYARD;Wall 4;MM Ikana Graveyard Rock Wall 4;rock;735;215;0;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
+0x00126;IKANA_GRAVEYARD;Wall 5;MM Ikana Graveyard Rock Wall 5;rock;695;208;0;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
+0x0012c;IKANA_GRAVEYARD;Circle Rock 1;MM Ikana Graveyard Rock Circle Rock 1;rock;484;276;0;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
+0x1012c;IKANA_GRAVEYARD;Circle Rock 2;MM Ikana Graveyard Rock Circle Rock 2;rock;491;289;0;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
+0x2012c;IKANA_GRAVEYARD;Circle Rock 3;MM Ikana Graveyard Rock Circle Rock 3;rock;507;292;0;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
+0x3012c;IKANA_GRAVEYARD;Circle Rock 4;MM Ikana Graveyard Rock Circle Rock 4;rock;521;283;0;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
+0x4012c;IKANA_GRAVEYARD;Circle Rock 5;MM Ikana Graveyard Rock Circle Rock 5;rock;522;269;0;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
+0x5012c;IKANA_GRAVEYARD;Circle Rock 6;MM Ikana Graveyard Rock Circle Rock 6;rock;515;256;0;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
+0x6012c;IKANA_GRAVEYARD;Circle Rock 7;MM Ikana Graveyard Rock Circle Rock 7;rock;499;254;0;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
+0x7012c;IKANA_GRAVEYARD;Circle Rock 8;MM Ikana Graveyard Rock Circle Rock 8;rock;486;261;0;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
 LAB_FISH_HEART_PIECE;LABORATORY;Fish;MM Laboratory Fish HP;npc;624;209;0;LABORATORY;heart_piece;render_type;All;0;mm;overworld;Fish (MM);Free a fish above the red fish aquarium
 SONG_ZORA;LABORATORY;New Wave Bossa Nova;MM Laboratory Zora Song;npc;226;454;0;LABORATORY;song;render_type;All;0;mm;overworld;Empty Bottle (MM), Zora Mask (MM), Fairy Ocarina (MM) / Ocarina of Time (MM), Soul of the Scientist (MM);Bring back all the <b>Zora's eggs</b> to the main aquarium and pull out your ocarina while in wearing the <b>Zora Mask</b>
 REMAINS_GOHT;LAIR_GOHT;Goht's Remains;MM Snowhead Temple Boss;npc;468;472;2;TEMPLE_SNOWHEAD;mask;goht;All;13;mm;dungeon;Bow (MM) + Fire Arrow (MM) / Din's Fire (MM), Magic Upgrade (MM), Boss Key (Snowhead) / Goht's Remains, Soul of Goht;Defeat <b>Goht</b>
@@ -1312,6 +1445,31 @@ MASK_GARO;MILK_ROAD;Garo Mask;MM Gorman Track Garo Mask;none;0;0;0;GORMAN_TRACK;
 0xa0025;MILK_ROAD;Pack 2 - Grass 11;MM Gorman Track Grass Pack 2 Grass 11;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
 0xb0025;MILK_ROAD;Pack 2 - Grass 12;MM Gorman Track Grass Pack 2 Grass 12;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
 GORMAN_MILK;MILK_ROAD;Purchase - Milk;MM Gorman Track Milk Purchase;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x0000b;MILK_ROAD;Tree 1;MM Gorman Track Tree 01;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x0000c;MILK_ROAD;Tree 2;MM Gorman Track Tree 02;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x0000d;MILK_ROAD;Tree 3;MM Gorman Track Tree 03;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x0000e;MILK_ROAD;Tree 4;MM Gorman Track Tree 04;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x0000f;MILK_ROAD;Tree 5;MM Gorman Track Tree 05;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x00010;MILK_ROAD;Tree 6;MM Gorman Track Tree 06;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x00011;MILK_ROAD;Tree 7;MM Gorman Track Tree 07;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x00012;MILK_ROAD;Tree 8;MM Gorman Track Tree 08;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x00013;MILK_ROAD;Tree 9;MM Gorman Track Tree 09;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x00014;MILK_ROAD;Tree 10;MM Gorman Track Tree 10;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x00015;MILK_ROAD;Tree 11;MM Gorman Track Tree 11;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x00016;MILK_ROAD;Tree 12;MM Gorman Track Tree 12;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x00017;MILK_ROAD;Tree 13;MM Gorman Track Tree 13;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x00018;MILK_ROAD;Tree 14;MM Gorman Track Tree 14;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x00019;MILK_ROAD;Tree 15;MM Gorman Track Tree 15;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x0001a;MILK_ROAD;Tree 16;MM Gorman Track Tree 16;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x0001b;MILK_ROAD;Tree 17;MM Gorman Track Tree 17;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x0001c;MILK_ROAD;Tree 18;MM Gorman Track Tree 18;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x0001d;MILK_ROAD;Tree 19;MM Gorman Track Tree 19;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x0001e;MILK_ROAD;Tree 20;MM Gorman Track Tree 20;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x0001f;MILK_ROAD;Tree 21;MM Gorman Track Tree 21;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x00020;MILK_ROAD;Tree 22;MM Gorman Track Tree 22;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x00021;MILK_ROAD;Tree 23;MM Gorman Track Tree 23;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x00022;MILK_ROAD;Tree 24;MM Gorman Track Tree 24;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
+0x00023;MILK_ROAD;Tree 25;MM Gorman Track Tree 25;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
 0x00005;MOON;Butterfly 1;MM Moon Butterfly 01;butterfly;486;291;0;MOON;butterfly;render_type;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Deku Stick (MM), Soul of Butterflies (MM);Pull out a deku stick near the butterfly
 0x00006;MOON;Butterfly 2;MM Moon Butterfly 02;butterfly;495;372;0;MOON;butterfly;render_type;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Deku Stick (MM), Soul of Butterflies (MM);Pull out a deku stick near the butterfly
 0x00007;MOON;Butterfly 3;MM Moon Butterfly 03;butterfly;398;324;0;MOON;butterfly;render_type;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Deku Stick (MM), Soul of Butterflies (MM);Pull out a deku stick near the butterfly
@@ -1357,6 +1515,10 @@ MASK_FIERCE_DEITY;MOON;Fierce Deity's Mask;MM Moon Fierce Deity Mask;npc;514;305
 0x0007;MOON;Pot 7;MM Moon Trial Link Pot 7;none;0;0;0;MOON_LINK;none;render_type;All;0;mm;dungeon;;
 0x0008;MOON;Pot 8;MM Moon Trial Link Pot 8;none;0;0;0;MOON_LINK;none;render_type;All;0;mm;dungeon;;
 0x01;MOON;Heart Piece;MM Moon Trial Zora HP;none;0;0;0;MOON_ZORA;none;render_type;All;0;mm;dungeon;;
+0x00000;MOON;Icicle 1;MM Moon Trial Goron Icicle 1;none;0;0;0;MOON_GORON;none;render_type;All;0;mm;dungeon;;
+0x00001;MOON;Icicle 2;MM Moon Trial Goron Icicle 2;none;0;0;0;MOON_GORON;none;render_type;All;0;mm;dungeon;;
+0x00002;MOON;Icicle 3;MM Moon Trial Goron Icicle 3;none;0;0;0;MOON_GORON;none;render_type;All;0;mm;dungeon;;
+0x00003;MOON;Icicle 4;MM Moon Trial Goron Icicle 4;none;0;0;0;MOON_GORON;none;render_type;All;0;mm;dungeon;;
 0x01;MOON_DEKU;Heart Piece;MM Moon Trial Deku HP;collectible;222;166;0;MOON_DEKU;heart_piece;render_type;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Deku Mask, Soul of Moon Children;Reach the platform using the deku flowers
 0x01;MOON_GORON;Heart Piece;MM Moon Trial Goron HP;collectible;217;433;0;MOON_GORON;heart_piece;render_type;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;Reach the platform using the <b>Goron Mask</b>
 0x0015;MOON_GORON;Pot 1;MM Moon Trial Goron Pot 01;pot;347;270;0;MOON_GORON;pot;render_type;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;
@@ -1374,6 +1536,10 @@ MASK_FIERCE_DEITY;MOON;Fierce Deity's Mask;MM Moon Fierce Deity Mask;npc;514;305
 0x001d;MOON_GORON;Early 2;MM Moon Trial Goron Pot Early 2;pot;917;361;0;MOON_GORON;pot;render_type;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;
 0x001e;MOON_GORON;Early 3;MM Moon Trial Goron Pot Early 3;pot;910;378;0;MOON_GORON;pot;render_type;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;
 0x001f;MOON_GORON;Early 4;MM Moon Trial Goron Pot Early 4;pot;918;378;0;MOON_GORON;pot;render_type;All;0;mm;dungeon;Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;
+0x00000;MOON_GORON;Icicle 1;MM Moon Trial Goron Icicle 1;icicle;413;51;0;MOON_GORON;icicle;render_type;All;0;mm;dungeon;;
+0x00001;MOON_GORON;Icicle 2;MM Moon Trial Goron Icicle 2;icicle;433;51;0;MOON_GORON;icicle;render_type;All;0;mm;dungeon;;
+0x00002;MOON_GORON;Icicle 3;MM Moon Trial Goron Icicle 3;icicle;413;69;0;MOON_GORON;icicle;render_type;All;0;mm;dungeon;;
+0x00003;MOON_GORON;Icicle 4;MM Moon Trial Goron Icicle 4;icicle;433;69;0;MOON_GORON;icicle;render_type;All;0;mm;dungeon;;
 0x01;MOON_LINK;Garo Master;MM Moon Trial Link Garo Master Chest;chest;471;301;0;MOON_LINK;chest;render_type;All;0;mm;dungeon;Song of Storms (MM) / Bombchu (MM) + Bow (MM) / Hookshot (MM), Soul of Lizalfos / Dinolfos (MM), Soul of Garo, Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;Defeat the <b>Garo Master</b> and reach the chest using either the <b>Hookshot</b>, bombchu on the ceilling and shooting at the eye switch or by playing the <b>Song of Storms</b> behind the previous <b>Gossip Stone</b>
 0x01;MOON_LINK;Heart Piece;MM Moon Trial Link HP;collectible;827;295;0;MOON_LINK;heart_piece;render_type;All;0;mm;dungeon;Song of Storms (MM) / Bombchu (MM) + Bow (MM), Soul of Lizalfos / Dinolfos (MM), Soul of Iron Knuckles (MM),  Soul of Garo, Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;After defeating all mini bosses reach the last room using either eye switch shooting of by playing <b>Song of Storms</b> behind the previous <b>Gossip Stone</b>
 0x02;MOON_LINK;Iron Knuckle;MM Moon Trial Link Iron Knuckle Chest;chest;672;300;0;MOON_LINK;chest;render_type;All;0;mm;dungeon;Song of Storms (MM) / Bombchu (MM) + Bow (MM), Soul of Lizalfos / Dinolfos (MM), Soul of Iron Knuckles (MM),  Soul of Garo, Odolwa's Remains, Goht's Remains, Gyorg's Remains, Twinmold's Remains, Oath To Order, Fairy Ocarina (MM) / Ocarina of Time (MM), A + C-Right + C-Down + C-Up buttons (MM), Goron Mask (MM), Soul of Moon Children;Defeat the <b>Iron Knuckle</b>
@@ -1533,6 +1699,16 @@ SWORD_RAZOR;MOUNTAIN_VILLAGE;Razor Blade;MM Blacksmith Razor Blade;none;0;0;0;BL
 0x7002c;MOUNTAIN_VILLAGE_SPRING;Keaton Grass 8;MM Mountain Village Keaton Grass Reward 8;grass;629;463;0;MOUNTAIN_VILLAGE;grass;render_type;Spring;0;mm;overworld;Spin Attack Upgrade (MM), Soul of Goht;After defeating Goht, cut the grass
 0x8002c;MOUNTAIN_VILLAGE_SPRING;Keaton Grass 9;MM Mountain Village Keaton Grass Reward 9;grass;641;466;0;MOUNTAIN_VILLAGE;grass;render_type;Spring;0;mm;overworld;Spin Attack Upgrade (MM), Soul of Goht;After defeating Goht, cut the grass
 0x00028;MOUNTAIN_VILLAGE_SPRING;Rupee;MM Mountain Village Rupee;rupee;474;439;0;MOUNTAIN_VILLAGE;rupee;render_type;Spring;0;mm;overworld;Goron Mask (MM) / Megaton Hammer (MM), Soul of Goht;After defeating Goht, break all the boulders that located under the Blacksmiths' stairs
+0x00000;MOUNTAIN_VILLAGE_SPRING;Boulder 1;MM Mountain Village Spring Red Boulder 1;redboulder;484;426;1;MOUNTAIN_VILLAGE;redboulder;render_type;Spring;0;mm;overworld;;
+0x00001;MOUNTAIN_VILLAGE_SPRING;Boulder 2;MM Mountain Village Spring Red Boulder 2;redboulder;478;411;0;MOUNTAIN_VILLAGE;redboulder;render_type;Spring;0;mm;overworld;;
+0x00002;MOUNTAIN_VILLAGE_SPRING;Boulder 3;MM Mountain Village Spring Red Boulder 3;redboulder;467;428;0;MOUNTAIN_VILLAGE;redboulder;render_type;Spring;0;mm;overworld;;
+0x0000e;MOUNTAIN_VILLAGE_SPRING;Cliff 1;MM Mountain Village Rock Cliff 1;rock;484;45;0;MOUNTAIN_VILLAGE;rock;render_type;Spring;0;mm;overworld;;
+0x0000f;MOUNTAIN_VILLAGE_SPRING;Cliff 2;MM Mountain Village Rock Cliff 2;rock;544;49;0;MOUNTAIN_VILLAGE;rock;render_type;Spring;0;mm;overworld;;
+0x00010;MOUNTAIN_VILLAGE_SPRING;Ground 1;MM Mountain Village Rock Ground 1;rock;618;435;0;MOUNTAIN_VILLAGE;rock;render_type;Spring;0;mm;overworld;;
+0x00011;MOUNTAIN_VILLAGE_SPRING;Ground 2;MM Mountain Village Rock Ground 2;rock;604;430;0;MOUNTAIN_VILLAGE;rock;render_type;Spring;0;mm;overworld;;
+0x00012;MOUNTAIN_VILLAGE_SPRING;Ground 3;MM Mountain Village Rock Ground 3;rock;591;423;0;MOUNTAIN_VILLAGE;rock;render_type;Spring;0;mm;overworld;;
+0x00013;MOUNTAIN_VILLAGE_SPRING;Ground 4;MM Mountain Village Rock Ground 4;rock;598;411;0;MOUNTAIN_VILLAGE;rock;render_type;Spring;0;mm;overworld;;
+0x00014;MOUNTAIN_VILLAGE_SPRING;Ground 5;MM Mountain Village Rock Ground 5;rock;609;399;0;MOUNTAIN_VILLAGE;rock;render_type;Spring;0;mm;overworld;;
 0x00011;MOUNTAIN_VILLAGE_WINTER;Big Snowball 1;MM Mountain Village Big Snowball 1;snowball;268;455;0;MOUNTAIN_VILLAGE;snowball;render_type;Winter;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM);
 0x0000e;MOUNTAIN_VILLAGE_WINTER;Big Snowball 2;MM Mountain Village Big Snowball 2;snowball;292;363;0;MOUNTAIN_VILLAGE;snowball;render_type;Winter;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM);
 0x0002e;MOUNTAIN_VILLAGE_WINTER;Big Snowball 3;MM Mountain Village Big Snowball 3;snowball;429;326;0;MOUNTAIN_VILLAGE;snowball;render_type;Winter;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM);
@@ -1590,6 +1766,10 @@ MOON_TEAR;OBSERVATORY;Moon Tear;MM Astral Observatory Moon Tear;npc;2199;1058;0;
 0x0400d;PATH_MOUNTAIN_VILLAGE;Spring - Upper 1;MM Path to Mountain Village Small Snowball Upper Spring 1;snowball;201;218;2;PATH_MOUNTAIN_VILLAGE; snowball;render_type;Spring;0;mm;overworld;Boss Key (Snowhead) / Goht's Remains, Soul Goht;After defeating <b>Goht</b> you will find the small snowball on the path
 0x0400b;PATH_MOUNTAIN_VILLAGE;Spring - Upper 2;MM Path to Mountain Village Small Snowball Upper Spring 2;snowball;184;214;1;PATH_MOUNTAIN_VILLAGE; snowball;render_type;Spring;0;mm;overworld;Boss Key (Snowhead) / Goht's Remains, Soul Goht;After defeating <b>Goht</b> you will find the small snowball on the path
 0x0400e;PATH_MOUNTAIN_VILLAGE;Spring - Upper 3;MM Path to Mountain Village Small Snowball Upper Spring 3;snowball;164;212;0;PATH_MOUNTAIN_VILLAGE; snowball;render_type;Spring;0;mm;overworld;Boss Key (Snowhead) / Goht's Remains, Soul Goht;After defeating <b>Goht</b> you will find the small snowball on the path
+0x0000e;PATH_MOUNTAIN_VILLAGE;Lower 1;MM Path to Mountain Village Snow Tree Lower 1;tree;604;186;0;PATH_MOUNTAIN_VILLAGE;tree;render_type;Winter;0;mm;overworld;;
+0x0000f;PATH_MOUNTAIN_VILLAGE;Lower 2;MM Path to Mountain Village Snow Tree Lower 2;tree;429;352;0;PATH_MOUNTAIN_VILLAGE;tree;render_type;Winter;0;mm;overworld;;
+0x00010;PATH_MOUNTAIN_VILLAGE;Upper 1;MM Path to Mountain Village Snow Tree Upper 1;tree;265;380;0;PATH_MOUNTAIN_VILLAGE;tree;render_type;Winter;0;mm;overworld;;
+0x00011;PATH_MOUNTAIN_VILLAGE;Upper 2;MM Path to Mountain Village Snow Tree Upper 2;tree;160;306;0;PATH_MOUNTAIN_VILLAGE;tree;render_type;Winter;0;mm;overworld;;
 0x08;PATH_SNOWHEAD;Pillar;MM Path to Snowhead HP;collectible;422;350;0;PATH_SNOWHEAD;heart_piece;render_type;All;0;mm;overworld;;Jump through all invisble platforms to reach the pillar.<br>The <b>Lens of Truth</b> is not mandatory but highly recommanded
 0x00009;PATH_SNOWHEAD;Back - Small Snowball 1;MM Path to Snowhead Small Snowball Back 1;snowball;708;202;1;PATH_SNOWHEAD;snowball;render_type;Winter;0;mm;overworld;;
 0x0000a;PATH_SNOWHEAD;Back - Small Snowball 2;MM Path to Snowhead Small Snowball Back 2;snowball;690;210;0;PATH_SNOWHEAD;snowball;render_type;Winter;0;mm;overworld;;
@@ -1617,6 +1797,10 @@ MOON_TEAR;OBSERVATORY;Moon Tear;MM Astral Observatory Moon Tear;npc;2199;1058;0;
 0x03311;PATH_SNOWHEAD;Grass 12;MM Path to Snowhead Grotto Grass 12;none;0;0;0;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;none;render_type;All;0;mm;overworld;;
 0x03312;PATH_SNOWHEAD;Grass 13;MM Path to Snowhead Grotto Grass 13;none;0;0;0;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;none;render_type;All;0;mm;overworld;;
 0x03313;PATH_SNOWHEAD;Grass 14;MM Path to Snowhead Grotto Grass 14;none;0;0;0;MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;none;render_type;All;0;mm;overworld;;
+0x00016;PATH_SNOWHEAD;End 1;MM Path to Snowhead Snow Tree End 1;tree;868;105;0;PATH_SNOWHEAD;tree;render_type;Winter;0;mm;overworld;;
+0x00017;PATH_SNOWHEAD;End 2;MM Path to Snowhead Snow Tree End 2;tree;795;139;0;PATH_SNOWHEAD;tree;render_type;Winter;0;mm;overworld;;
+0x00018;PATH_SNOWHEAD;End 3;MM Path to Snowhead Snow Tree End 3;tree;735;178;0;PATH_SNOWHEAD;tree;render_type;Winter;0;mm;overworld;;
+0x00019;PATH_SNOWHEAD;Entrance;MM Path to Snowhead Snow Tree Entrance;tree;97;246;0;PATH_SNOWHEAD;tree;render_type;Winter;0;mm;overworld;;
 0x01;PINNACLE_ROCK;Chest 1;MM Pinnacle Rock Chest 1;chest;258;585;0;PINNACLE_ROCK;chest;render_type;All;0;mm;overworld;Zora Mask (MM) / Iron Boots (MM);The chest can be found at the end of the <b>Python</b> hole.
 0x02;PINNACLE_ROCK;Chest 2;MM Pinnacle Rock Chest 2;chest;764;322;0;PINNACLE_ROCK;chest;render_type;All;0;mm;overworld;Zora Mask (MM) / Iron Boots (MM);The chest can be found at the end of the <b>Python</b> hole.
 SEAHORSE_HEART_PIECE;PINNACLE_ROCK;Seahorse;MM Pinnacle Rock HP;npc;311;235;0;PINNACLE_ROCK;heart_piece;render_type;All;0;mm;overworld;Pictobox, Empty Bottle, Zora Mask (MM), Magic Upgrade (MM), Soul of Deep Pythons, Soul of Patrolling Pirates and their Chief / Soul of the Fighting Pirates, Soul of Fisherman;You first need to take a picture of a <b>Pirate</b> and bring it to the <b>Fisherman</b>. Then, you need to kill all <b>Pythons</b> and reunite the seahorses
@@ -1631,6 +1815,8 @@ SEAHORSE_HEART_PIECE;PINNACLE_ROCK;Seahorse;MM Pinnacle Rock HP;npc;311;235;0;PI
 0x000b;PINNACLE_ROCK;Pot 9;MM Pinnacle Rock Pot 09;pot;466;437;0;PINNACLE_ROCK;pot;render_type;All;0;mm;overworld;Zora Mask (MM) / Iron Boots (MM) + Blast Mask (MM);
 0x000c;PINNACLE_ROCK;Pot 10;MM Pinnacle Rock Pot 10;pot;408;421;0;PINNACLE_ROCK;pot;render_type;All;0;mm;overworld;Zora Mask (MM) / Iron Boots (MM) + Blast Mask (MM);
 0x000d;PINNACLE_ROCK;Pot 11;MM Pinnacle Rock Pot 11;pot;467;405;0;PINNACLE_ROCK;pot;render_type;All;0;mm;overworld;Zora Mask (MM) / Iron Boots (MM) + Blast Mask (MM);
+0x0001c;PINNACLE_ROCK;Unreachable 1;MM Pinnacle Rock Rock Unreachable 1;none;0;0;0;PINNACLE_ROCK;none;render_type;All;0;mm;overworld;;
+0x0001d;PINNACLE_ROCK;Unreachable 2;MM Pinnacle Rock Rock Unreachable 2;none;0;0;0;PINNACLE_ROCK;none;render_type;All;0;mm;overworld;;
 0x00007;PIRATE_FORTRESS_ENTRANCE;Entrance;MM Pirate Fortress Entrance Barrel;barrel;472;222;0;PIRATE_FORTRESS_ENTRANCE;barrel;render_type;All;0;mm;dungeon;;
 0x00;PIRATE_FORTRESS_ENTRANCE;Entrance - Underwater 1;MM Pirate Fortress Entrance Chest 1;chest;514;463;0;PIRATE_FORTRESS_ENTRANCE;chest;render_type;All;0;mm;dungeon;Zora Mask (MM) / Iron Boots (MM);
 0x01;PIRATE_FORTRESS_ENTRANCE;Entrance - Underwater 2;MM Pirate Fortress Entrance Chest 2;chest;884;388;0;PIRATE_FORTRESS_ENTRANCE;chest;render_type;All;0;mm;dungeon;Zora Mask (MM) / Iron Boots (MM);
@@ -1749,6 +1935,15 @@ MASK_STONE;ROAD_IKANA;Stone Mask;MM Road to Ikana Stone Mask;npc;255;220;0;ROAD_
 0x03611;ROAD_IKANA;Grass 12;MM Road to Ikana Grotto Grass 12;none;0;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;none;render_type;All;0;mm;overworld;;
 0x03612;ROAD_IKANA;Grass 13;MM Road to Ikana Grotto Grass 13;none;0;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;none;render_type;All;0;mm;overworld;;
 0x03613;ROAD_IKANA;Grass 14;MM Road to Ikana Grotto Grass 14;none;0;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;none;render_type;All;0;mm;overworld;;
+0x00005;ROAD_IKANA;Boulder;MM Road to Ikana Red Boulder;redboulder;455;263;0;ROAD_IKANA;redboulder;render_type;All;0;mm;overworld;;
+0x00023;ROAD_IKANA;Circle Rock 1;MM Road to Ikana Rock Circle Rock 1;rock;270;207;0;ROAD_IKANA;rock;render_type;All;0;mm;overworld;;
+0x10023;ROAD_IKANA;Circle Rock 2;MM Road to Ikana Rock Circle Rock 2;rock;255;197;0;ROAD_IKANA;rock;render_type;All;0;mm;overworld;;
+0x20023;ROAD_IKANA;Circle Rock 3;MM Road to Ikana Rock Circle Rock 3;rock;240;206;0;ROAD_IKANA;rock;render_type;All;0;mm;overworld;;
+0x30023;ROAD_IKANA;Circle Rock 4;MM Road to Ikana Rock Circle Rock 4;rock;233;222;0;ROAD_IKANA;rock;render_type;All;0;mm;overworld;;
+0x40023;ROAD_IKANA;Circle Rock 5;MM Road to Ikana Rock Circle Rock 5;rock;240;237;0;ROAD_IKANA;rock;render_type;All;0;mm;overworld;;
+0x50023;ROAD_IKANA;Circle Rock 6;MM Road to Ikana Rock Circle Rock 6;rock;256;245;0;ROAD_IKANA;rock;render_type;All;0;mm;overworld;;
+0x60023;ROAD_IKANA;Circle Rock 7;MM Road to Ikana Rock Circle Rock 7;rock;271;237;0;ROAD_IKANA;rock;render_type;All;0;mm;overworld;;
+0x70023;ROAD_IKANA;Circle Rock 8;MM Road to Ikana Rock Circle Rock 8;rock;277;222;0;ROAD_IKANA;rock;render_type;All;0;mm;overworld;;
 0x0002f;ROAD_SOUTHERN_SWAMP;Grass 1;MM Road to Southern Swamp Grass 1;grass;108;303;0;ROAD_SOUTHERN_SWAMP;grass;render_type;All;0;mm;overworld;;
 0x00030;ROAD_SOUTHERN_SWAMP;Grass 2;MM Road to Southern Swamp Grass 2;grass;98;290;0;ROAD_SOUTHERN_SWAMP;grass;render_type;All;0;mm;overworld;;
 0x00023;ROAD_SOUTHERN_SWAMP;Pack 1 - Grass 1;MM Road to Southern Swamp Grass Pack 1 Grass 01;grass;661;312;0;ROAD_SOUTHERN_SWAMP;grass;render_type;All;0;mm;overworld;;
@@ -1791,6 +1986,12 @@ SHOOTING_GAME_SWAMP_2;ROAD_SOUTHERN_SWAMP;Reward 2;MM Swamp Archery Reward 2;non
 0x03e11;ROAD_SOUTHERN_SWAMP;Grass 12;MM Road to Southern Swamp Grotto Grass 12;none;0;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;none;render_type;All;0;mm;overworld;;
 0x03e12;ROAD_SOUTHERN_SWAMP;Grass 13;MM Road to Southern Swamp Grotto Grass 13;none;0;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;none;render_type;All;0;mm;overworld;;
 0x03e13;ROAD_SOUTHERN_SWAMP;Grass 14;MM Road to Southern Swamp Grotto Grass 14;none;0;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;none;render_type;All;0;mm;overworld;;
+0x0001a;ROAD_SOUTHERN_SWAMP;Tree 1;MM Road to Southern Swanp Forked Tree 1;tree;377;368;0;ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;mm;overworld;;
+0x0001b;ROAD_SOUTHERN_SWAMP;Tree 2;MM Road to Southern Swanp Forked Tree 2;tree;452;359;0;ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;mm;overworld;;
+0x0001c;ROAD_SOUTHERN_SWAMP;Tree 3;MM Road to Southern Swanp Forked Tree 3;tree;333;352;0;ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;mm;overworld;;
+0x0001d;ROAD_SOUTHERN_SWAMP;Tree 4;MM Road to Southern Swanp Forked Tree 4;tree;258;374;0;ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;mm;overworld;;
+0x0001e;ROAD_SOUTHERN_SWAMP;Tree 5;MM Road to Southern Swanp Forked Tree 5;tree;413;339;0;ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;mm;overworld;;
+0x0001f;ROAD_SOUTHERN_SWAMP;Tree 6;MM Road to Southern Swanp Forked Tree 6;tree;299;387;0;ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;mm;overworld;;
 ROMANI_BOTTLE;ROMANI_RANCH;Aliens;MM Romani Ranch Aliens;npc;350;162;0;ROMANI_RANCH;npc;bottle;All;0;mm;overworld;Powder Keg, Goron Mask (MM), Bow (MM), Clock (Night 1), Soul of Romani/Cremia;Protect the barn from the <b>Aliens</b>
 0x10;ROMANI_RANCH;Left;MM Romani Ranch Barn Cow Left;cow;383;393;0;RANCH_HOUSE_BARN;cow;render_type;All;0;mm;overworld;Powder Keg, Goron Mask (MM), Clock (Day 1), Fairy Ocarina / Ocarina of Time, Epona's Song (MM), C-Up + C-Left + C-Right buttons (MM), Soul of Cows (MM);Play <b>Epona's Song</b> next to the cow
 0x12;ROMANI_RANCH;Right Back;MM Romani Ranch Barn Cow Right Back;cow;360;199;0;RANCH_HOUSE_BARN;cow;render_type;All;0;mm;overworld;Powder Keg, Goron Mask (MM), Clock (Day 1), Fairy Ocarina / Ocarina of Time, Epona's Song (MM), C-Up + C-Left + C-Right buttons (MM), Soul of Cows (MM);Play <b>Epona's Song</b> next to the cow
@@ -1883,6 +2084,30 @@ MASK_BUNNY;ROMANI_RANCH;Bunny Mask;MM Cucco Shack Bunny Mask;none;0;0;0;CUCCO_SH
 0x20012;ROMANI_RANCH;Wood Hole 6;MM Cucco Shack Wonder Item 6;none;0;0;0;CUCCO_SHACK;none;render_type;All;0;mm;overworld;;
 0x00000;ROMANI_RANCH;Item 1;MM Romani Ranch Barn Wonder Item 1;none;0;0;0;RANCH_HOUSE_BARN;none;render_type;All;0;mm;overworld;;
 0x00001;ROMANI_RANCH;Item 2;MM Romani Ranch Barn Wonder Item 2;none;0;0;0;RANCH_HOUSE_BARN;none;render_type;All;0;mm;overworld;;
+0x00014;ROMANI_RANCH;Tree 1;MM Romani Ranch Tree 1;tree;458;359;0;ROMANI_RANCH;tree;render_type;All;0;mm;overworld;;
+0x00015;ROMANI_RANCH;Tree 2;MM Romani Ranch Tree 2;tree;446;274;0;ROMANI_RANCH;tree;render_type;All;0;mm;overworld;;
+0x00016;ROMANI_RANCH;Tree 3;MM Romani Ranch Tree 3;tree;647;280;0;ROMANI_RANCH;tree;render_type;All;0;mm;overworld;;
+0x00017;ROMANI_RANCH;Tree 4;MM Romani Ranch Tree 4;tree;635;365;0;ROMANI_RANCH;tree;render_type;All;0;mm;overworld;;
+0x00018;ROMANI_RANCH;Tree 5;MM Romani Ranch Tree 5;tree;327;412;0;ROMANI_RANCH;tree;render_type;All;0;mm;overworld;;
+0x00019;ROMANI_RANCH;Tree 6;MM Romani Ranch Tree 6;tree;184;444;0;ROMANI_RANCH;tree;render_type;All;0;mm;overworld;;
+0x0001a;ROMANI_RANCH;Tree 7;MM Romani Ranch Tree 7;tree;372;568;0;ROMANI_RANCH;tree;render_type;All;0;mm;overworld;;
+0x00010;ROMANI_RANCH;Bush 1;MM Romani Ranch Bush 1;bush;197;311;0;ROMANI_RANCH;bush;render_type;All;0;mm;overworld;;
+0x00011;ROMANI_RANCH;Bush 2;MM Romani Ranch Bush 2;bush;412;405;0;ROMANI_RANCH;bush;render_type;All;0;mm;overworld;;
+0x00012;ROMANI_RANCH;Bush 3;MM Romani Ranch Bush 3;bush;557;518;0;ROMANI_RANCH;bush;render_type;All;0;mm;overworld;;
+0x00013;ROMANI_RANCH;Bush 4;MM Romani Ranch Bush 4;bush;181;144;0;ROMANI_RANCH;bush;render_type;All;0;mm;overworld;;
+0x00030;ROMANI_RANCH;Days 2-3 Item 1;MM Romani Ranch Soil Days 2-3 Item 1;soil;234;89;0;ROMANI_RANCH;soil;render_type;All;0;mm;overworld;Bug (MM), Clock (Day 2) / Clock (Night 2) / Clock (Day 3) / Clock (Night 3);Free some bugs next to the soil on the second or third day
+0x10030;ROMANI_RANCH;Days 2-3 Item 2;MM Romani Ranch Soil Days 2-3 Item 2;soil;245;83;0;ROMANI_RANCH;soil;render_type;All;0;mm;overworld;Bug (MM), Clock (Day 2) / Clock (Night 2) / Clock (Day 3) / Clock (Night 3);Free some bugs next to the soil on the second or third day
+0x20030;ROMANI_RANCH;Days 2-3 Item 3;MM Romani Ranch Soil Days 2-3 Item 3;soil;256;78;0;ROMANI_RANCH;soil;render_type;All;0;mm;overworld;Bug (MM), Clock (Day 2) / Clock (Night 2) / Clock (Day 3) / Clock (Night 3);Free some bugs next to the soil on the second or third day
+0x00031;ROMANI_RANCH;Day 1;MM Romani Ranch Soil Day 1;soil;240;72;0;ROMANI_RANCH;soil;render_type;All;0;mm;overworld;Bug (MM), Clock (Day 1) / Clock (Night 1);Free some bugs next to the soil on the first day
+0x0000c;ROMANI_RANCH;Tree;MM Cucco Shack Tree;none;0;0;0;CUCCO_SHACK;none;render_type;All;0;mm;overworld;;
+0x0000b;ROMANI_RANCH;Bush 1;MM Cucco Shack Bush 1;none;0;0;0;CUCCO_SHACK;none;render_type;All;0;mm;overworld;;
+0x1000b;ROMANI_RANCH;Bush 2;MM Cucco Shack Bush 2;none;0;0;0;CUCCO_SHACK;none;render_type;All;0;mm;overworld;;
+0x2000b;ROMANI_RANCH;Bush 3;MM Cucco Shack Bush 3;none;0;0;0;CUCCO_SHACK;none;render_type;All;0;mm;overworld;;
+0x3000b;ROMANI_RANCH;Bush 4;MM Cucco Shack Bush 4;none;0;0;0;CUCCO_SHACK;none;render_type;All;0;mm;overworld;;
+0x4000b;ROMANI_RANCH;Bush 5;MM Cucco Shack Bush 5;none;0;0;0;CUCCO_SHACK;none;render_type;All;0;mm;overworld;;
+0x5000b;ROMANI_RANCH;Bush 6;MM Cucco Shack Bush 6;none;0;0;0;CUCCO_SHACK;none;render_type;All;0;mm;overworld;;
+0x00013;ROMANI_RANCH;Bush 7;MM Cucco Shack Bush 7;none;0;0;0;CUCCO_SHACK;none;render_type;All;0;mm;overworld;;
+0x00008;ROMANI_RANCH;Soil;MM Doggy Racetrack Soil;none;0;0;0;DOG_RACETRACK;none;render_type;All;0;mm;overworld;;
 0x0129;SAKON_HIDEOUT;First Room 1;MM Sakon Hideout Pot First Room 1;pot;529;257;0;SAKON_HIDEOUT;pot;render_type;All;0;mm;overworld;Letter To Kafei, Clock (Day 2), Clock (Night 3), Soul of Kafei, Soul of Citizens (MM);
 0x012a;SAKON_HIDEOUT;First Room 2;MM Sakon Hideout Pot First Room 2;pot;472;257;0;SAKON_HIDEOUT;pot;render_type;All;0;mm;overworld;Letter To Kafei, Clock (Day 2), Clock (Night 3), Soul of Kafei, Soul of Citizens (MM);
 0x0127;SAKON_HIDEOUT;Second Room 1;MM Sakon Hideout Pot Second Room 1;pot;627;257;0;SAKON_HIDEOUT;pot;render_type;All;0;mm;overworld;Letter To Kafei, Clock (Day 2), Clock (Night 3), Soul of Kafei, Soul of Deku Babas (MM), Soul of Citizens (MM);
@@ -1948,10 +2173,14 @@ MASK_BUNNY;ROMANI_RANCH;Bunny Mask;MM Cucco Shack Bunny Mask;none;0;0;0;CUCCO_SH
 0x00010;SECRET_SHRINE;Rupee 17;MM Secret Shrine Rupee 17;rupee;531;446;0;SECRET_SHRINE;rupee;render_type;All;0;mm;dungeon;Bean (MM), Spring Water;Plant the bean and use it
 0x02;SECRET_SHRINE;Wart;MM Secret Shrine Wart Chest;chest;791;172;0;SECRET_SHRINE;chest;render_type;All;0;mm;dungeon;Soul of Wart;Defeat <b>Wart</b>
 0x01;SECRET_SHRINE;Wizzrobe;MM Secret Shrine Wizzrobe Chest;chest;128;171;0;SECRET_SHRINE;chest;render_type;All;0;mm;dungeon;Soul of Wizzrobe;Defeat <b>Wizzrobe</b>
+0x00013;SECRET_SHRINE;Item 1;MM Secret Shrine Soil Item 1;soil;488;479;0;SECRET_SHRINE;soil;render_type;All;0;mm;dungeon;Bug (MM);Free some bugs next to the soil
+0x10013;SECRET_SHRINE;Item 2;MM Secret Shrine Soil Item 2;soil;471;479;0;SECRET_SHRINE;soil;render_type;All;0;mm;dungeon;Bug (MM);Free some bugs next to the soil
+0x20013;SECRET_SHRINE;Item 3;MM Secret Shrine Soil Item 3;soil;454;479;0;SECRET_SHRINE;soil;render_type;All;0;mm;dungeon;Bug (MM);Free some bugs next to the soil
 SHOOTING_GAME_TOWN_1;SHOOTING_GALLERY;Reward 1;MM Town Archery Reward 1;npc;620;364;0;SHOOTING_GALLERY;npc;big_quiver;All;0;mm;minigame;Bow (MM), Soul of Town Archery Owner;Win the game
 SHOOTING_GAME_TOWN_2;SHOOTING_GALLERY;Reward 2;MM Town Archery Reward 2;npc;728;297;0;SHOOTING_GALLERY;heart_piece;render_type;All;0;mm;minigame;Bow (MM), Soul of Town Archery Owner;Win the game with a perfect score of 50
 SHOOTING_GAME_SWAMP_1;SHOOTING_GALLERY_SWAMP;Reward 1;MM Swamp Archery Reward 1;npc;465;178;0;SHOOTING_GALLERY_SWAMP;npc;biggest_quiver;All;0;mm;minigame;Bow (MM), Soul of Swamp Archery Owner;Win the game
 SHOOTING_GAME_SWAMP_2;SHOOTING_GALLERY_SWAMP;Reward 2;MM Swamp Archery Reward 2;npc;516;178;0;SHOOTING_GALLERY_SWAMP;heart_piece;render_type;All;0;mm;minigame;Bow (MM), Soul of Swamp Archery Owner;Win the game with a score of 2180 points or more
+OWL_SNOWHEAD;SNOWHEAD;Owl Statue;MM Snowhead Owl Statue;npc;186;509;1;SNOWHEAD;owl;render_type;All;0;mm;overworld;Sword (MM);Hit the statue with a sword
 0x0002e;SNOWHEAD;Winter - Big Snowball 1;MM Snowhead Big Snowball 1;snowball;619;306;0;SNOWHEAD;snowball;render_type;Winter;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM);
 0x0002f;SNOWHEAD;Winter - Big Snowball 2;MM Snowhead Big Snowball 2;snowball;608;228;0;SNOWHEAD;snowball;render_type;Winter;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM);
 0x00030;SNOWHEAD;Winter - Big Snowball 3;MM Snowhead Big Snowball 3;snowball;700;363;0;SNOWHEAD;snowball;render_type;Winter;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM);
@@ -2221,6 +2450,13 @@ SPIDER_HOUSE_SWAMP;SPIDER_HOUSE_SWAMP;Mask of Truth;MM Swamp Spider House Mask o
 0x0041b;SPIDER_HOUSE_SWAMP;Pot Room - Walking on Jar 3;MM Swamp Spider House Wonder Item Pots 3;wonder;560;454;0;SPIDER_HOUSE_SWAMP;wonder;render_type;All;4;mm;dungeon;;
 0x0041c;SPIDER_HOUSE_SWAMP;Pot Room - Walking on Jar 4;MM Swamp Spider House Wonder Item Pots 4;wonder;629;453;0;SPIDER_HOUSE_SWAMP;wonder;render_type;All;4;mm;dungeon;;
 0x0041d;SPIDER_HOUSE_SWAMP;Pot Room - Walking on Jar 5;MM Swamp Spider House Wonder Item Pots 5;wonder;730;460;0;SPIDER_HOUSE_SWAMP;wonder;render_type;All;4;mm;dungeon;;
+0x00003;SPIDER_HOUSE_SWAMP;Entrance 1;MM Swamp Spider House Rock Entrance 1;rock;375;231;0;SPIDER_HOUSE_SWAMP;rock;render_type;All;0;mm;dungeon;;
+0x00004;SPIDER_HOUSE_SWAMP;Entrance 2;MM Swamp Spider House Rock Entrance 2;rock;566;266;0;SPIDER_HOUSE_SWAMP;rock;render_type;All;0;mm;dungeon;;
+0x00405;SPIDER_HOUSE_SWAMP;Pots Room;MM Swamp Spider House Rock Pots Room;rock;205;412;0;SPIDER_HOUSE_SWAMP;rock;render_type;All;4;mm;dungeon;;
+0x0020d;SPIDER_HOUSE_SWAMP;Gold Room;MM Swamp Spider House Soil Gold;soil;275;322;0;SPIDER_HOUSE_SWAMP;soil;render_type;All;2;mm;dungeon;Bug (MM);Free some bugs next to the soil
+0x0030e;SPIDER_HOUSE_SWAMP;Monument Item 1;MM Swamp Spider House Soil Monument Item 1;soil;757;480;0;SPIDER_HOUSE_SWAMP;soil;render_type;All;3;mm;dungeon;Bug (MM);Free some bugs next to the soil
+0x1030e;SPIDER_HOUSE_SWAMP;Monument Item 2;MM Swamp Spider House Soil Monument Item 2;soil;726;480;0;SPIDER_HOUSE_SWAMP;soil;render_type;All;3;mm;dungeon;Bug (MM);Free some bugs next to the soil
+0x2030e;SPIDER_HOUSE_SWAMP;Monument Item 3;MM Swamp Spider House Soil Monument Item 3;soil;741;471;0;SPIDER_HOUSE_SWAMP;soil;render_type;All;3;mm;dungeon;Bug (MM);Free some bugs next to the soil
 TOILET_HEART_PIECE;STOCK_POT_INN;Toilet Paper;MM Stock Pot Inn ??? HP;npc;162;288;0;STOCK_POT_INN;heart_piece;render_type;All;1;mm;overworld;Land Tittle Deed / Swamp Tittle Deed / Ocean Title Deed / Letter to Kafei / Letter to Mama, Clock (Night 1) / Clock (Night 2), Soul of Toilet Hand;Give one of your paper item to the <b>Toilet Hand</b> in the toilet room during a night after 12 AM
 MASK_COUPLE;STOCK_POT_INN;Couple's Mask;MM Stock Pot Inn Couple's Mask;npc;219;315;0;STOCK_POT_INN;mask;couple;All;2;mm;overworld;Pendant of Memories, Letter To Kafei, Clock (Day 1), Clock (Night 1), Clock (Day 2), Clock (Night 3), Soul of Kafei, Soul of Anju, Soul of Citizens (MM), Soul of Deku Babas (MM), Soul of Wolfos (MM);You first need to give the <b>Pendant of Memories</b> to <b>Anju</b> in order for her to be here on night 3. Then you need to help kafei to get the <b>Sun's Mask</b>. Once that is done, head back to the <b>Stock Pot Inn</b> and speak to <b>Anju & Kafei</b> in the staff room
 GRANDMA_HEART_PIECE_1;STOCK_POT_INN;Grandma - Short Story;MM Stock Pot Inn Grandma HP 1;npc;338;468;0;STOCK_POT_INN;heart_piece;render_type;All;2;mm;overworld;Clock (Day 1) / Clock (Night 1) / Clock (Day 2) / Clock (Night 2), All-Night Mask, Soul of Anju's Grandmother;Listen to the first <b>Anju's Grandmother</b> story and answer : On the eve of the carnival
@@ -2268,6 +2504,10 @@ OWL_STONE_TOWER;STONE_TOWER;Owl Statue;MM Stone Tower Owl Statue;npc;440;84;0;ST
 0x000a;STONE_TOWER;Pot 3;MM Stone Tower Inverted Pot 3;none;0;0;0;STONE_TOWER_INVERTED;none;render_type;All;0;mm;overworld;;
 0x000b;STONE_TOWER;Pot 4;MM Stone Tower Inverted Pot 4;none;0;0;0;STONE_TOWER_INVERTED;none;render_type;All;0;mm;overworld;;
 0x000c;STONE_TOWER;Pot 5;MM Stone Tower Inverted Pot 5;none;0;0;0;STONE_TOWER_INVERTED;none;render_type;All;0;mm;overworld;;
+0x00015;STONE_TOWER;Rock 1;MM Stone Tower Inverted Rock 1;none;0;0;0;STONE_TOWER_INVERTED;none;render_type;All;0;mm;overworld;;
+0x00016;STONE_TOWER;Rock 2;MM Stone Tower Inverted Rock 2;none;0;0;0;STONE_TOWER_INVERTED;none;render_type;All;0;mm;overworld;;
+0x00000;STONE_TOWER;Lower;MM Stone Tower Inverted Soil Lower;none;0;0;0;STONE_TOWER_INVERTED;none;render_type;All;0;mm;overworld;;
+0x00001;STONE_TOWER;Upper;MM Stone Tower Inverted Soil Upper;none;0;0;0;STONE_TOWER_INVERTED;none;render_type;All;0;mm;overworld;;
 0x1d;STONE_TOWER_INVERTED;Chest 1;MM Stone Tower Inverted Chest 1;chest;275;366;0;STONE_TOWER_INVERTED;chest;render_type;All;0;mm;overworld;;
 0x1e;STONE_TOWER_INVERTED;Chest 2;MM Stone Tower Inverted Chest 2;chest;294;394;0;STONE_TOWER_INVERTED;chest;render_type;All;0;mm;overworld;;
 0x1f;STONE_TOWER_INVERTED;Chest 3;MM Stone Tower Inverted Chest 3;chest;314;423;0;STONE_TOWER_INVERTED;chest;render_type;All;0;mm;overworld;;
@@ -2276,6 +2516,10 @@ OWL_STONE_TOWER;STONE_TOWER;Owl Statue;MM Stone Tower Owl Statue;npc;440;84;0;ST
 0x000a;STONE_TOWER_INVERTED;Pot 3;MM Stone Tower Inverted Pot 3;pot;335;368;0;STONE_TOWER_INVERTED;pot;render_type;All;0;mm;overworld;;
 0x000b;STONE_TOWER_INVERTED;Pot 4;MM Stone Tower Inverted Pot 4;pot;309;364;0;STONE_TOWER_INVERTED;pot;render_type;All;0;mm;overworld;;
 0x000c;STONE_TOWER_INVERTED;Pot 5;MM Stone Tower Inverted Pot 5;pot;329;392;0;STONE_TOWER_INVERTED;pot;render_type;All;0;mm;overworld;;
+0x00015;STONE_TOWER_INVERTED;Rock 1;MM Stone Tower Inverted Rock 1;rock;307;268;0;STONE_TOWER_INVERTED;rock;render_type;All;0;mm;overworld;;
+0x00016;STONE_TOWER_INVERTED;Rock 2;MM Stone Tower Inverted Rock 2;rock;255;589;0;STONE_TOWER_INVERTED;rock;render_type;All;0;mm;overworld;;
+0x00000;STONE_TOWER_INVERTED;Lower;MM Stone Tower Inverted Soil Lower;soil;205;288;0;STONE_TOWER_INVERTED;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
+0x00001;STONE_TOWER_INVERTED;Upper;MM Stone Tower Inverted Soil Upper;soil;272;282;0;STONE_TOWER_INVERTED;soil;render_type;All;0;mm;overworld;Bean (MM), Spring Water, Bug (MM);Plant the bean in the lower soil and free some bugs next to the upper soil
 SWORDSMAN_HEART_PIECE;SWORDSMAN_SCHOOL;Game Prize;MM Swordsman School HP;npc;496;359;0;SWORDSMAN_SCHOOL;heart_piece;render_type;All;0;mm;overworld;Soul of Swordsman;Win the game with a score of 30
 0x0006;SWORDSMAN_SCHOOL;Pot 1;MM Swordsman School Pot 1;pot;752;430;0;SWORDSMAN_SCHOOL;pot;render_type;All;0;mm;overworld;;If you have the <b>Soul of Swordsman</b> you will need to wait for night 3 in order to cut the rear wall. If not you can do it at any time
 0x0007;SWORDSMAN_SCHOOL;Pot 2;MM Swordsman School Pot 2;pot;749;383;0;SWORDSMAN_SCHOOL;pot;render_type;All;0;mm;overworld;;If you have the <b>Soul of Swordsman</b> you will need to wait for night 3 in order to cut the rear wall. If not you can do it at any time
@@ -2424,6 +2668,11 @@ SWORDSMAN_HEART_PIECE;SWORDSMAN_SCHOOL;Game Prize;MM Swordsman School HP;npc;496
 0x2f;TEMPLE_GREAT_BAY;Pre-Boss - Underwater;MM Great Bay Temple SF Pre-Boss Underwater;sf;181;546;0;TEMPLE_GREAT_BAY;sf;render_type;All;12;mm;dungeon;;
 0x30;TEMPLE_GREAT_BAY;Water Wheel - Platform;MM Great Bay Temple SF Water Wheel Platform;sf;479;567;0;TEMPLE_GREAT_BAY;sf;render_type;All;1;mm;dungeon;;
 0x32;TEMPLE_GREAT_BAY;Water Wheel - Skulltula;MM Great Bay Temple SF Water Wheel Skulltula;sf;142;264;0;TEMPLE_GREAT_BAY;sf;render_type;All;1;mm;dungeon;;
+0x00403;TEMPLE_GREAT_BAY;Compass Room 1;MM Great Bay Temple Icicle Compass Room 1;icicle;701;102;0;TEMPLE_GREAT_BAY;icicle;render_type;All;7;mm;dungeon;;
+0x00404;TEMPLE_GREAT_BAY;Compass Room 2;MM Great Bay Temple Icicle Compass Room 2;icicle;606;166;0;TEMPLE_GREAT_BAY;icicle;render_type;All;7;mm;dungeon;;
+0x00405;TEMPLE_GREAT_BAY;Compass Room 3;MM Great Bay Temple Icicle Compass Room 3;icicle;692;149;0;TEMPLE_GREAT_BAY;icicle;render_type;All;7;mm;dungeon;;
+0x00406;TEMPLE_GREAT_BAY;Compass Room 4;MM Great Bay Temple Icicle Compass Room 4;icicle;672;110;0;TEMPLE_GREAT_BAY;icicle;render_type;All;7;mm;dungeon;;
+0x00407;TEMPLE_GREAT_BAY;Compass Room 5;MM Great Bay Temple Icicle Compass Room 5;icicle;655;158;0;TEMPLE_GREAT_BAY;icicle;render_type;All;7;mm;dungeon;;
 0x0044b;TEMPLE_SNOWHEAD;Central Room - Big Snowball 1;MM Snowhead Temple Big Snowball Central Room 1;snowball;412;183;3;TEMPLE_SNOWHEAD;snowball;render_type;All;1;mm;dungeon;;
 0x0044c;TEMPLE_SNOWHEAD;Central Room - Big Snowball 2;MM Snowhead Temple Big Snowball Central Room 2;snowball;393;182;2;TEMPLE_SNOWHEAD;snowball;render_type;All;1;mm;dungeon;;
 0x0044d;TEMPLE_SNOWHEAD;Central Room - Big Snowball 3;MM Snowhead Temple Big Snowball Central Room 3;snowball;374;182;1;TEMPLE_SNOWHEAD;snowball;render_type;All;1;mm;dungeon;;
@@ -2539,6 +2788,22 @@ SWORDSMAN_HEART_PIECE;SWORDSMAN_SCHOOL;Game Prize;MM Swordsman School HP;npc;496
 0x00a0d;TEMPLE_SNOWHEAD;Snow Room 6;MM Snowhead Temple Small Snowball Snow Room 6;snowball;761;387;0;TEMPLE_SNOWHEAD;snowball;render_type;All;10;mm;dungeon;;
 0x00a0e;TEMPLE_SNOWHEAD;Snow Room 7;MM Snowhead Temple Small Snowball Snow Room 7;snowball;740;369;0;TEMPLE_SNOWHEAD;snowball;render_type;All;10;mm;dungeon;;
 0x00a0f;TEMPLE_SNOWHEAD;Snow Room 8;MM Snowhead Temple Small Snowball Snow Room 8;snowball;730;378;0;TEMPLE_SNOWHEAD;snowball;render_type;All;10;mm;dungeon;;
+0x00000;TEMPLE_SNOWHEAD;Entrance 1;MM Snowhead Temple Icicle Entrance 1;icicle;483;323;0;TEMPLE_SNOWHEAD;icicle;render_type;All;0;mm;dungeon;;
+0x00001;TEMPLE_SNOWHEAD;Entrance 2;MM Snowhead Temple Icicle Entrance 2;icicle;483;289;0;TEMPLE_SNOWHEAD;icicle;render_type;All;0;mm;dungeon;;
+0x00004;TEMPLE_SNOWHEAD;Entrance 3;MM Snowhead Temple Icicle Entrance 3;icicle;483;255;0;TEMPLE_SNOWHEAD;icicle;render_type;All;0;mm;dungeon;;
+0x00005;TEMPLE_SNOWHEAD;Entrance 4;MM Snowhead Temple Icicle Entrance 4;icicle;483;306;0;TEMPLE_SNOWHEAD;icicle;render_type;All;0;mm;dungeon;;
+0x00006;TEMPLE_SNOWHEAD;Entrance 5;MM Snowhead Temple Icicle Entrance 5;icicle;483;272;0;TEMPLE_SNOWHEAD;icicle;render_type;All;0;mm;dungeon;;
+0x00002;TEMPLE_SNOWHEAD;After Block 1;MM Snowhead Temple Icicle Entrance After Block 1;icicle;170;406;0;TEMPLE_SNOWHEAD;icicle;render_type;All;0;mm;dungeon;;
+0x00003;TEMPLE_SNOWHEAD;After Block 2;MM Snowhead Temple Icicle Entrance After Block 2;icicle;246;406;0;TEMPLE_SNOWHEAD;icicle;render_type;All;0;mm;dungeon;;
+0x00400;TEMPLE_SNOWHEAD;Near Boss Key 1;MM Snowhead Temple Icicle Central Room Near Boss Key 1;icicle;473;107;1;TEMPLE_SNOWHEAD;icicle;render_type;All;1;mm;dungeon;;
+0x00404;TEMPLE_SNOWHEAD;Near Boss Key 2;MM Snowhead Temple Icicle Central Room Near Boss Key 2;icicle;481;91;0;TEMPLE_SNOWHEAD;icicle;render_type;All;1;mm;dungeon;;
+0x00401;TEMPLE_SNOWHEAD;Near Boss 1;MM Snowhead Temple Icicle Central Room Near Boss 1;icicle;620;7;0;TEMPLE_SNOWHEAD;icicle;render_type;All;1;mm;dungeon;;
+0x00402;TEMPLE_SNOWHEAD;Near Boss 2;MM Snowhead Temple Icicle Central Room Near Boss 2;icicle;603;16;0;TEMPLE_SNOWHEAD;icicle;render_type;All;1;mm;dungeon;;
+0x00403;TEMPLE_SNOWHEAD;Near Boss 3;MM Snowhead Temple Icicle Central Room Near Boss 3;icicle;637;16;1;TEMPLE_SNOWHEAD;icicle;render_type;All;1;mm;dungeon;;
+0x00405;TEMPLE_SNOWHEAD;Near Boss 4;MM Snowhead Temple Icicle Central Room Near Boss 4;icicle;654;7;0;TEMPLE_SNOWHEAD;icicle;render_type;All;1;mm;dungeon;;
+0x00a00;TEMPLE_SNOWHEAD;Snow Room 1;MM Snowhead Temple Icicle Snow Room 1;icicle;312;351;0;TEMPLE_SNOWHEAD;icicle;render_type;All;10;mm;dungeon;;
+0x00a01;TEMPLE_SNOWHEAD;Snow Room 2;MM Snowhead Temple Icicle Snow Room 2;icicle;247;343;0;TEMPLE_SNOWHEAD;icicle;render_type;All;10;mm;dungeon;;
+0x00a02;TEMPLE_SNOWHEAD;Snow Room 3;MM Snowhead Temple Icicle Snow Room 3;icicle;286;310;0;TEMPLE_SNOWHEAD;icicle;render_type;All;10;mm;dungeon;;
 0x14;TEMPLE_STONE_TOWER;Hiploop Bridge;MM Stone Tower Temple Before Water Bridge Chest;chest;292;511;0;TEMPLE_STONE_TOWER;sf;render_type;All;6;mm;dungeon;;In the inverted version, hit the crystal to make the chest appear. Then open it in the normal version.
 0x01;TEMPLE_STONE_TOWER;Center - Across Water;MM Stone Tower Temple Center Across Water Chest;chest;202;300;0;TEMPLE_STONE_TOWER;small_key;render_type;All;1;mm;dungeon;;
 0x18;TEMPLE_STONE_TOWER;Center - Sun Block;MM Stone Tower Temple Center Sun Block Chest;chest;559;539;0;TEMPLE_STONE_TOWER;sf;render_type;All;1;mm;dungeon;;
@@ -3230,6 +3495,38 @@ SCRUB_TELESCOPE;TERMINA_FIELD;Scrub;MM Termina Field Scrub;none;0;0;0;MM_GROTTO_
 0x03f11;TERMINA_FIELD;Grass 12;MM Termina Field Tall Grass Grotto Grass 12;none;0;0;0;MM_GROTTO_TERMINA_TALL_GRASS;none;render_type;All;0;mm;overworld;;
 0x03f12;TERMINA_FIELD;Grass 13;MM Termina Field Tall Grass Grotto Grass 13;none;0;0;0;MM_GROTTO_TERMINA_TALL_GRASS;none;render_type;All;0;mm;overworld;;
 0x03f13;TERMINA_FIELD;Grass 14;MM Termina Field Tall Grass Grotto Grass 14;none;0;0;0;MM_GROTTO_TERMINA_TALL_GRASS;none;render_type;All;0;mm;overworld;;
+0x000a8;TERMINA_FIELD;Tree 1;MM Termina Field Tree 1;tree;2011;1100;0;TERMINA_FIELD;tree;render_type;All;0;mm;overworld;;
+0x000a9;TERMINA_FIELD;Tree 2;MM Termina Field Tree 2;tree;2128;1001;0;TERMINA_FIELD;tree;render_type;All;0;mm;overworld;;
+0x0007f;TERMINA_FIELD;Near Ocean;MM Termina Field Rock Near Ocean;rock;338;706;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
+0x00080;TERMINA_FIELD;Wall Mountain 1;MM Termina Field Rock Wall Mountain 1;rock;936;575;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
+0x00082;TERMINA_FIELD;Wall Mountain 2;MM Termina Field Rock Wall Mountain 2;rock;950;559;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
+0x00083;TERMINA_FIELD;Wall Mountain 3;MM Termina Field Rock Wall Mountain 3;rock;963;543;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
+0x00086;TERMINA_FIELD;Wall Mountain 4;MM Termina Field Rock Wall Mountain 4;rock;976;526;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
+0x00087;TERMINA_FIELD;Wall Mountain 5;MM Termina Field Rock Wall Mountain 5;rock;990;510;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
+0x00088;TERMINA_FIELD;Wall Mountain 6;MM Termina Field Rock Wall Mountain 6;rock;1004;494;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
+0x0008b;TERMINA_FIELD;Wall Mountain 7;MM Termina Field Rock Wall Mountain 7;rock;1017;478;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
+0x00081;TERMINA_FIELD;Wall Ocean 1;MM Termina Field Rock Wall Ocean 1;rock;990;1113;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
+0x00084;TERMINA_FIELD;Wall Ocean 2;MM Termina Field Rock Wall Ocean 2;rock;1003;1129;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
+0x00085;TERMINA_FIELD;Wall Ocean 3;MM Termina Field Rock Wall Ocean 3;rock;1017;1145;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
+0x00089;TERMINA_FIELD;Wall Ocean 4;MM Termina Field Rock Wall Ocean 4;rock;1030;1162;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
+0x0008a;TERMINA_FIELD;Wall Ocean 5;MM Termina Field Rock Wall Ocean 5;rock;1043;1178;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
+0x0008c;TERMINA_FIELD;Circle Rock 1;MM Termina Field Rock Circle Rock 1;rock;1084;358;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
+0x1008c;TERMINA_FIELD;Circle Rock 2;MM Termina Field Rock Circle Rock 2;rock;1110;349;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
+0x2008c;TERMINA_FIELD;Circle Rock 3;MM Termina Field Rock Circle Rock 3;rock;1117;322;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
+0x3008c;TERMINA_FIELD;Circle Rock 4;MM Termina Field Rock Circle Rock 4;rock;1108;296;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
+0x4008c;TERMINA_FIELD;Circle Rock 5;MM Termina Field Rock Circle Rock 5;rock;1083;285;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
+0x5008c;TERMINA_FIELD;Circle Rock 6;MM Termina Field Rock Circle Rock 6;rock;1057;295;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
+0x6008c;TERMINA_FIELD;Circle Rock 7;MM Termina Field Rock Circle Rock 7;rock;1048;322;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
+0x7008c;TERMINA_FIELD;Circle Rock 8;MM Termina Field Rock Circle Rock 8;rock;1057;349;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
+0x00005;TERMINA_FIELD;Tree Stump;MM Termina Field Soil Tree Stump;soil;1605;1504;0;TERMINA_FIELD;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
+0x00006;TERMINA_FIELD;Observatory Item 1;MM Termina Field Soil Observatory Item 1;soil;2241;1141;0;TERMINA_FIELD;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
+0x10006;TERMINA_FIELD;Observatory Item 2;MM Termina Field Soil Observatory Item 2;soil;2227;1141;0;TERMINA_FIELD;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
+0x20006;TERMINA_FIELD;Observatory Item 3;MM Termina Field Soil Observatory Item 3;soil;2234;1129;0;TERMINA_FIELD;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
+0x00007;TERMINA_FIELD;Wall Item 1;MM Termina Field Soil Wall Item 1;soil;1640;1077;0;TERMINA_FIELD;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
+0x10007;TERMINA_FIELD;Wall Item 2;MM Termina Field Soil Wall Item 2;soil;1628;1077;0;TERMINA_FIELD;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
+0x20007;TERMINA_FIELD;Wall Item 3;MM Termina Field Soil Wall Item 3;soil;1634;1065;0;TERMINA_FIELD;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
+0x00008;TERMINA_FIELD;Pillar;MM Termina Field Soil Pillar;soil;1953;670;0;TERMINA_FIELD;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
+0x00b01;TERMINA_FIELD;Rock;MM Bio Baba Grotto Rock;none;0;0;0;MM_GROTTO_TERMINA_BIO_BABA;none;render_type;All;0;mm;overworld;;
 KOUME_HEART_PIECE;TOURIST_INFORMATION;Archery;MM Tourist Information Boat Archery;npc;617;205;0;TOURIST_INFORMATION;heart_piece;render_type;All;0;mm;overworld;;
 KOUME_PICTOGRAPH_BOX;TOURIST_INFORMATION;Pictobox;MM Tourist Information Pictobox;npc;299;334;0;TOURIST_INFORMATION;npc;picto;All;0;mm;overworld;;
 TOUR_GUIDE_HEART_PIECE;TOURIST_INFORMATION;Deku's King or Tingle Picture;MM Tourist Information Tingle Picture;npc;376;335;0;TOURIST_INFORMATION;heart_piece;render_type;All;0;mm;overworld;Soul of Boat Cruise Man, Soul of Deku's King / Soul of Tingle, Pictobox;Take a picture of either the <b>Deku King</b> or <b>Tingle</b> and show it to the <b>Boat Cruise Owner</b>.
@@ -3242,6 +3539,10 @@ TOUR_GUIDE_HEART_PIECE;TOURIST_INFORMATION;Deku's King or Tingle Picture;MM Tour
 0x0b;TRADING_POST;Item 7;MM Trading Post Item 7;shop;542;294;0;TRADING_POST;shop;render_type;All;0;mm;overworld;;
 0x0c;TRADING_POST;Item 8;MM Trading Post Item 8;shop;580;294;0;TRADING_POST;shop;render_type;All;0;mm;overworld;;
 0x0008;TRADING_POST;Pot;MM Trading Post Pot;pot;756;427;0;TRADING_POST;pot;render_type;All;0;mm;overworld;;
+0x00002;TRADING_POST;Bush 1;MM Trading Post Bush 1;bush;151;430;0;TRADING_POST;bush;render_type;All;0;mm;overworld;;
+0x00003;TRADING_POST;Bush 2;MM Trading Post Bush 2;bush;218;403;0;TRADING_POST;bush;render_type;All;0;mm;overworld;;
+0x00004;TRADING_POST;Bush 3;MM Trading Post Bush 3;bush;879;474;0;TRADING_POST;bush;render_type;All;0;mm;overworld;;
+0x00005;TRADING_POST;Bush 4;MM Trading Post Bush 4;bush;929;598;0;TRADING_POST;bush;render_type;All;0;mm;overworld;;
 CHEST_GAME;TREASURE_SHOP;Game Prize;MM Chest Game HP;npc;259;447;0;TREASURE_SHOP;heart_piece;render_type;All;0;mm;minigame;;
 GORON_ELDER;TWIN_ISLANDS;Goron's Lulluby - Intro;MM Goron Elder;none;0;0;0;TWIN_ISLANDS_WINTER;none;render_type;Winter;0;mm;overworld;;
 0x0003b;TWIN_ISLANDS;Big Snowball 1;MM Twin Islands Big Snowball 01;none;0;0;0;TWIN_ISLANDS_WINTER;none;render_type;Winter;0;mm;overworld;;
@@ -3328,6 +3629,25 @@ GORON_RACE;TWIN_ISLANDS;Reward;MM Goron Race Reward;none;0;0;0;GORON_RACETRACK;n
 0x03912;TWIN_ISLANDS;Grass 13;MM Twin Islands Ramp Grotto Grass 13;none;0;0;0;MM_GROTTO_TWIN_ISLANDS_RAMP;none;render_type;All;0;mm;overworld;;
 0x03913;TWIN_ISLANDS;Grass 14;MM Twin Islands Ramp Grotto Grass 14;none;0;0;0;MM_GROTTO_TWIN_ISLANDS_RAMP;none;render_type;All;0;mm;overworld;;
 0x02;TWIN_ISLANDS;Chest;MM Twin Islands Frozen Grotto Chest;none;0;0;0;MM_GROTTO_TWIN_ISLANDS_FROZEN;none;render_type;All;0;mm;overworld;;
+0x0003b;TWIN_ISLANDS;Tree 1;MM Goron Race Forked Tree 1;none;0;0;0;GORON_RACETRACK;none;render_type;All;0;mm;overworld;;
+0x0003c;TWIN_ISLANDS;Tree 2;MM Goron Race Forked Tree 2;none;0;0;0;GORON_RACETRACK;none;render_type;All;0;mm;overworld;;
+0x0003d;TWIN_ISLANDS;Tree 3;MM Goron Race Forked Tree 3;none;0;0;0;GORON_RACETRACK;none;render_type;All;0;mm;overworld;;
+0x0003e;TWIN_ISLANDS;Tree 4;MM Goron Race Forked Tree 4;none;0;0;0;GORON_RACETRACK;none;render_type;All;0;mm;overworld;;
+0x0003f;TWIN_ISLANDS;Tree 5;MM Goron Race Forked Tree 5;none;0;0;0;GORON_RACETRACK;none;render_type;All;0;mm;overworld;;
+0x00040;TWIN_ISLANDS;Tree 6;MM Goron Race Forked Tree 6;none;0;0;0;GORON_RACETRACK;none;render_type;All;0;mm;overworld;;
+0x00041;TWIN_ISLANDS;Tree 7;MM Goron Race Forked Tree 7;none;0;0;0;GORON_RACETRACK;none;render_type;All;0;mm;overworld;;
+0x00042;TWIN_ISLANDS;Tree 8;MM Goron Race Forked Tree 8;none;0;0;0;GORON_RACETRACK;none;render_type;All;0;mm;overworld;;
+0x00043;TWIN_ISLANDS;Tree 9;MM Goron Race Forked Tree 9;none;0;0;0;GORON_RACETRACK;none;render_type;All;0;mm;overworld;;
+0x00044;TWIN_ISLANDS;Tree 10;MM Goron Race Forked Tree 10;none;0;0;0;GORON_RACETRACK;none;render_type;All;0;mm;overworld;;
+0x00007;TWIN_ISLANDS;Spring - Island 1;MM Twin Islands Tree Island 1;none;0;0;0;TWIN_ISLANDS_SPRING;none;render_type;Spring;0;mm;overworld;;
+0x00008;TWIN_ISLANDS;Spring - Island 2;MM Twin Islands Tree Island 2;none;0;0;0;TWIN_ISLANDS_SPRING;none;render_type;Spring;0;mm;overworld;;
+0x00009;TWIN_ISLANDS;Spring - Ramp;MM Twin Islands Tree Ramp;none;0;0;0;TWIN_ISLANDS_SPRING;none;render_type;Spring;0;mm;overworld;;
+0x00018;TWIN_ISLANDS;Rock 1;MM Twin Islands Rock 1;none;0;0;0;TWIN_ISLANDS_SPRING;none;render_type;Spring;0;mm;overworld;;
+0x00019;TWIN_ISLANDS;Rock 2;MM Twin Islands Rock 2;none;0;0;0;TWIN_ISLANDS_SPRING;none;render_type;Spring;0;mm;overworld;;
+0x0001a;TWIN_ISLANDS;Rock 3;MM Twin Islands Rock 3;none;0;0;0;TWIN_ISLANDS_SPRING;none;render_type;Spring;0;mm;overworld;;
+0x00007;TWIN_ISLANDS;Winter - Island 1;MM Twin Islands Snow Tree Island 1;none;0;0;0;TWIN_ISLANDS_WINTER;none;render_type;Winter;0;mm;overworld;;
+0x00008;TWIN_ISLANDS;Winter - Island 2;MM Twin Islands Snow Tree Island 2;none;0;0;0;TWIN_ISLANDS_WINTER;none;render_type;Winter;0;mm;overworld;;
+0x00009;TWIN_ISLANDS;Winter - Ramp;MM Twin Islands Snow Tree Ramp;none;0;0;0;TWIN_ISLANDS_WINTER;none;render_type;Winter;0;mm;overworld;;
 0x0000b;TWIN_ISLANDS_SPRING;Grass 1;MM Twin Islands Grass 01;grass;193;470;0;TWIN_ISLANDS;grass;render_type;Spring;0;mm;overworld;;
 0x1000b;TWIN_ISLANDS_SPRING;Grass 2;MM Twin Islands Grass 02;grass;173;497;0;TWIN_ISLANDS;grass;render_type;Spring;0;mm;overworld;;
 0x2000b;TWIN_ISLANDS_SPRING;Grass 3;MM Twin Islands Grass 03;grass;143;485;0;TWIN_ISLANDS;grass;render_type;Spring;0;mm;overworld;;
@@ -3344,6 +3664,12 @@ GORON_RACE;TWIN_ISLANDS;Reward;MM Goron Race Reward;none;0;0;0;GORON_RACETRACK;n
 0x0000f;TWIN_ISLANDS_SPRING;Rupee 2;MM Twin Islands Rupee 2;rupee;495;185;0;TWIN_ISLANDS;rupee;render_type;Spring;0;mm;overworld;;
 0x00010;TWIN_ISLANDS_SPRING;Rupee 3;MM Twin Islands Rupee 3;rupee;596;517;0;TWIN_ISLANDS;rupee;render_type;Spring;0;mm;overworld;;
 0x00012;TWIN_ISLANDS_SPRING;Rupee 4;MM Twin Islands Rupee 4;rupee;780;349;0;TWIN_ISLANDS;rupee;render_type;Spring;0;mm;overworld;;
+0x00007;TWIN_ISLANDS_SPRING;Spring - Island 1;MM Twin Islands Tree Island 1;tree;424;299;0;TWIN_ISLANDS;tree;render_type;Spring;0;mm;overworld;;
+0x00008;TWIN_ISLANDS_SPRING;Spring - Island 2;MM Twin Islands Tree Island 2;tree;672;317;0;TWIN_ISLANDS;tree;render_type;Spring;0;mm;overworld;;
+0x00009;TWIN_ISLANDS_SPRING;Spring - Ramp;MM Twin Islands Tree Ramp;tree;242;265;1;TWIN_ISLANDS;tree;render_type;Spring;0;mm;overworld;;
+0x00018;TWIN_ISLANDS_SPRING;Rock 1;MM Twin Islands Rock 1;rock;227;279;1;TWIN_ISLANDS;rock;render_type;Spring;0;mm;overworld;;
+0x00019;TWIN_ISLANDS_SPRING;Rock 2;MM Twin Islands Rock 2;rock;226;265;0;TWIN_ISLANDS;rock;render_type;Spring;0;mm;overworld;;
+0x0001a;TWIN_ISLANDS_SPRING;Rock 3;MM Twin Islands Rock 3;rock;242;280;2;TWIN_ISLANDS;rock;render_type;Spring;0;mm;overworld;;
 GORON_ELDER;TWIN_ISLANDS_WINTER;Goron's Lulluby - Intro;MM Goron Elder;npc;738;268;0;TWIN_ISLANDS;song;render_type;Winter;0;mm;overworld;;
 0x0003b;TWIN_ISLANDS_WINTER;Big Snowball 1;MM Twin Islands Big Snowball 01;snowball;412;438;0;TWIN_ISLANDS;snowball;render_type;Winter;0;mm;overworld;;
 0x0003a;TWIN_ISLANDS_WINTER;Big Snowball 2;MM Twin Islands Big Snowball 02;snowball;322;376;0;TWIN_ISLANDS;snowball;render_type;Winter;0;mm;overworld;;
@@ -3366,6 +3692,9 @@ GORON_ELDER;TWIN_ISLANDS_WINTER;Goron's Lulluby - Intro;MM Goron Elder;npc;738;2
 0x00043;TWIN_ISLANDS_WINTER;Ramp 3;MM Twin Islands Small Snowball Ramp 3;snowball;227;279;0;TWIN_ISLANDS;snowball;render_type;Winter;0;mm;overworld;;
 0x06;TWIN_ISLANDS_WINTER;Underwater 1;MM Twin Islands Underwater Chest 1;chest;450;479;0;TWIN_ISLANDS;heart_piece;render_type;Spring;0;mm;overworld;;
 0x00;TWIN_ISLANDS_WINTER;Underwater 2;MM Twin Islands Underwater Chest 2;chest;630;74;0;TWIN_ISLANDS;chest;render_type;Spring;0;mm;overworld;;
+0x00007;TWIN_ISLANDS_WINTER;Winter - Island 1;MM Twin Islands Snow Tree Island 1;tree;424;299;0;TWIN_ISLANDS;tree;render_type;Winter;0;mm;overworld;;
+0x00008;TWIN_ISLANDS_WINTER;Winter - Island 2;MM Twin Islands Snow Tree Island 2;tree;672;317;0;TWIN_ISLANDS;tree;render_type;Winter;0;mm;overworld;;
+0x00009;TWIN_ISLANDS_WINTER;Winter - Ramp;MM Twin Islands Snow Tree Ramp;tree;242;265;1;TWIN_ISLANDS;tree;render_type;Winter;0;mm;overworld;;
 BEAVER_1;WATERFALL_RAPIDS;Race 1;MM Waterfall Rapids Beaver Race 1;npc;650;340;0;WATERFALL_RAPIDS;npc;bottle;All;0;mm;minigame;;
 BEAVER_2;WATERFALL_RAPIDS;Race 2;MM Waterfall Rapids Beaver Race 2;npc;682;338;0;WATERFALL_RAPIDS;heart_piece;render_type;All;0;mm;minigame;;
 0x00;WOODFALL;Entrance;MM Woodfall Entrance Chest;chest;377;484;0;WOODFALL;chest;render_type;All;0;mm;overworld;;
@@ -3436,283 +3765,6 @@ OWL_ZORA_CAPE;ZORA_CAPE;Owl Statue;MM Zora Cape Owl Statue;npc;65;335;0;ZORA_CAP
 BEAVER_1;ZORA_CAPE;Race 1;MM Waterfall Rapids Beaver Race 1;none;0;0;0;WATERFALL_RAPIDS;none;render_type;All;0;mm;overworld;;
 BEAVER_2;ZORA_CAPE;Race 2;MM Waterfall Rapids Beaver Race 2;none;0;0;0;WATERFALL_RAPIDS;none;render_type;All;0;mm;overworld;;
 GREAT_FAIRY_OCEAN;ZORA_CAPE;Double Defense;MM Great Bay Great Fairy;none;0;0;0;MM_FAIRY_GREAT_BAY_COAST;none;render_type;All;0;mm;overworld;;
-ZORA_HALL_LIGHTS;ZORA_HALL;Scene Lights;MM Zora Hall Scene Lights;npc;510;234;0;ZORA_HALL;npc;render_type;All;0;mm;overworld;;
-ZORA_EVAN;ZORA_HALL_ROOMS;Evan;MM Zora Hall Evan HP;npc;385;421;0;ZORA_EVAN_ROOM;heart_piece;render_type;All;0;mm;overworld;;
-SCRUB_OCEAN;ZORA_HALL_ROOMS;Title Deed;MM Zora Hall Scrub Deed;npc;481;296;0;ZORA_HALL_ROOMS;scrub;ocean;All;0;mm;overworld;;
-0x1e;ZORA_HALL_ROOMS;Shell;MM Zora Hall Scrub HP;collectible;604;257;0;ZORA_HALL_ROOMS;heart_piece;render_type;All;0;mm;overworld;;
-SCRUB_SHOP_POTION_GREEN;ZORA_HALL_ROOMS;Scrub - Shop;MM Zora Hall Scrub Shop;npc;497;296;1;ZORA_HALL_ROOMS;shop;render_type;All;0;mm;overworld;;
-0x13;ZORA_HALL_ROOMS;Item 1;MM Zora Shop Item 1;shop;497;250;0;MM_ZORA_SHOP;shop;render_type;All;0;mm;overworld;;
-0x14;ZORA_HALL_ROOMS;Item 2;MM Zora Shop Item 2;shop;476;250;0;MM_ZORA_SHOP;shop;render_type;All;0;mm;overworld;;
-0x15;ZORA_HALL_ROOMS;Item 3;MM Zora Shop Item 3;shop;455;250;0;MM_ZORA_SHOP;shop;render_type;All;0;mm;overworld;;
-ZORA_HALL_LIGHTS;ZORA_HALL_ROOMS;Scene Lights;MM Zora Hall Scene Lights;none;0;0;0;ZORA_HALL;none;render_type;All;0;mm;overworld;;
-0x0010c;DEKU_PALACE;Boulder 1;MM Deku Palace Red Boulder 1;redboulder;691;259;0;DEKU_PALACE;redboulder;render_type;All;0;mm;overworld;;
-0x0010d;DEKU_PALACE;Boulder 2;MM Deku Palace Red Boulder 2;redboulder;635;222;0;DEKU_PALACE;redboulder;render_type;All;0;mm;overworld;;
-0x0010e;DEKU_PALACE;Boulder 3;MM Deku Palace Red Boulder 3;redboulder;644;36;0;DEKU_PALACE;redboulder;render_type;All;0;mm;overworld;;
-0x00000;MOUNTAIN_VILLAGE_SPRING;Boulder 1;MM Mountain Village Spring Red Boulder 1;redboulder;484;426;1;MOUNTAIN_VILLAGE;redboulder;render_type;Spring;0;mm;overworld;;
-0x00001;MOUNTAIN_VILLAGE_SPRING;Boulder 2;MM Mountain Village Spring Red Boulder 2;redboulder;478;411;0;MOUNTAIN_VILLAGE;redboulder;render_type;Spring;0;mm;overworld;;
-0x00002;MOUNTAIN_VILLAGE_SPRING;Boulder 3;MM Mountain Village Spring Red Boulder 3;redboulder;467;428;0;MOUNTAIN_VILLAGE;redboulder;render_type;Spring;0;mm;overworld;;
-0x00005;ROAD_IKANA;Boulder;MM Road to Ikana Red Boulder;redboulder;455;263;0;ROAD_IKANA;redboulder;render_type;All;0;mm;overworld;;
-0x00000;TEMPLE_SNOWHEAD;Entrance 1;MM Snowhead Temple Icicle Entrance 1;icicle;483;323;0;TEMPLE_SNOWHEAD;icicle;render_type;All;0;mm;dungeon;;
-0x00001;TEMPLE_SNOWHEAD;Entrance 2;MM Snowhead Temple Icicle Entrance 2;icicle;483;289;0;TEMPLE_SNOWHEAD;icicle;render_type;All;0;mm;dungeon;;
-0x00004;TEMPLE_SNOWHEAD;Entrance 3;MM Snowhead Temple Icicle Entrance 3;icicle;483;255;0;TEMPLE_SNOWHEAD;icicle;render_type;All;0;mm;dungeon;;
-0x00005;TEMPLE_SNOWHEAD;Entrance 4;MM Snowhead Temple Icicle Entrance 4;icicle;483;306;0;TEMPLE_SNOWHEAD;icicle;render_type;All;0;mm;dungeon;;
-0x00006;TEMPLE_SNOWHEAD;Entrance 5;MM Snowhead Temple Icicle Entrance 5;icicle;483;272;0;TEMPLE_SNOWHEAD;icicle;render_type;All;0;mm;dungeon;;
-0x00002;TEMPLE_SNOWHEAD;After Block 1;MM Snowhead Temple Icicle Entrance After Block 1;icicle;170;406;0;TEMPLE_SNOWHEAD;icicle;render_type;All;0;mm;dungeon;;
-0x00003;TEMPLE_SNOWHEAD;After Block 2;MM Snowhead Temple Icicle Entrance After Block 2;icicle;246;406;0;TEMPLE_SNOWHEAD;icicle;render_type;All;0;mm;dungeon;;
-0x00400;TEMPLE_SNOWHEAD;Near Boss Key 1;MM Snowhead Temple Icicle Central Room Near Boss Key 1;icicle;473;107;1;TEMPLE_SNOWHEAD;icicle;render_type;All;1;mm;dungeon;;
-0x00404;TEMPLE_SNOWHEAD;Near Boss Key 2;MM Snowhead Temple Icicle Central Room Near Boss Key 2;icicle;481;91;0;TEMPLE_SNOWHEAD;icicle;render_type;All;1;mm;dungeon;;
-0x00401;TEMPLE_SNOWHEAD;Near Boss 1;MM Snowhead Temple Icicle Central Room Near Boss 1;icicle;620;7;0;TEMPLE_SNOWHEAD;icicle;render_type;All;1;mm;dungeon;;
-0x00402;TEMPLE_SNOWHEAD;Near Boss 2;MM Snowhead Temple Icicle Central Room Near Boss 2;icicle;603;16;0;TEMPLE_SNOWHEAD;icicle;render_type;All;1;mm;dungeon;;
-0x00403;TEMPLE_SNOWHEAD;Near Boss 3;MM Snowhead Temple Icicle Central Room Near Boss 3;icicle;637;16;1;TEMPLE_SNOWHEAD;icicle;render_type;All;1;mm;dungeon;;
-0x00405;TEMPLE_SNOWHEAD;Near Boss 4;MM Snowhead Temple Icicle Central Room Near Boss 4;icicle;654;7;0;TEMPLE_SNOWHEAD;icicle;render_type;All;1;mm;dungeon;;
-0x00a00;TEMPLE_SNOWHEAD;Snow Room 1;MM Snowhead Temple Icicle Snow Room 1;icicle;312;351;0;TEMPLE_SNOWHEAD;icicle;render_type;All;10;mm;dungeon;;
-0x00a01;TEMPLE_SNOWHEAD;Snow Room 2;MM Snowhead Temple Icicle Snow Room 2;icicle;247;343;0;TEMPLE_SNOWHEAD;icicle;render_type;All;10;mm;dungeon;;
-0x00a02;TEMPLE_SNOWHEAD;Snow Room 3;MM Snowhead Temple Icicle Snow Room 3;icicle;286;310;0;TEMPLE_SNOWHEAD;icicle;render_type;All;10;mm;dungeon;;
-0x00403;TEMPLE_GREAT_BAY;Compass Room 1;MM Great Bay Temple Icicle Compass Room 1;icicle;701;102;0;TEMPLE_GREAT_BAY;icicle;render_type;All;7;mm;dungeon;;
-0x00404;TEMPLE_GREAT_BAY;Compass Room 2;MM Great Bay Temple Icicle Compass Room 2;icicle;606;166;0;TEMPLE_GREAT_BAY;icicle;render_type;All;7;mm;dungeon;;
-0x00405;TEMPLE_GREAT_BAY;Compass Room 3;MM Great Bay Temple Icicle Compass Room 3;icicle;692;149;0;TEMPLE_GREAT_BAY;icicle;render_type;All;7;mm;dungeon;;
-0x00406;TEMPLE_GREAT_BAY;Compass Room 4;MM Great Bay Temple Icicle Compass Room 4;icicle;672;110;0;TEMPLE_GREAT_BAY;icicle;render_type;All;7;mm;dungeon;;
-0x00407;TEMPLE_GREAT_BAY;Compass Room 5;MM Great Bay Temple Icicle Compass Room 5;icicle;655;158;0;TEMPLE_GREAT_BAY;icicle;render_type;All;7;mm;dungeon;;
-0x00000;MOON_GORON;Icicle 1;MM Moon Trial Goron Icicle 1;icicle;413;51;0;MOON_GORON;icicle;render_type;All;0;mm;dungeon;;
-0x00001;MOON_GORON;Icicle 2;MM Moon Trial Goron Icicle 2;icicle;433;51;0;MOON_GORON;icicle;render_type;All;0;mm;dungeon;;
-0x00002;MOON_GORON;Icicle 3;MM Moon Trial Goron Icicle 3;icicle;413;69;0;MOON_GORON;icicle;render_type;All;0;mm;dungeon;;
-0x00003;MOON_GORON;Icicle 4;MM Moon Trial Goron Icicle 4;icicle;433;69;0;MOON_GORON;icicle;render_type;All;0;mm;dungeon;;
-0x00000;MOON;Icicle 1;MM Moon Trial Goron Icicle 1;none;0;0;0;MOON_GORON;none;render_type;All;0;mm;dungeon;;
-0x00001;MOON;Icicle 2;MM Moon Trial Goron Icicle 2;none;0;0;0;MOON_GORON;none;render_type;All;0;mm;dungeon;;
-0x00002;MOON;Icicle 3;MM Moon Trial Goron Icicle 3;none;0;0;0;MOON_GORON;none;render_type;All;0;mm;dungeon;;
-0x00003;MOON;Icicle 4;MM Moon Trial Goron Icicle 4;none;0;0;0;MOON_GORON;none;render_type;All;0;mm;dungeon;;
-0x00903;BENEATH_THE_WELL;Tree;MM Beneath The Well Tree;tree;1322;949;0;BENEATH_THE_WELL;tree;render_type;All;0;mm;dungeon;Hot Spring Water, Soul of ReDeads / Gibdos (MM), Gibdo Mask;
-0x00901;BENEATH_THE_WELL;Bush 1;MM Beneath The Well Bush 1;bush;1303;951;0;BENEATH_THE_WELL;bush;render_type;All;0;mm;dungeon;Hot Spring Water, Soul of ReDeads / Gibdos (MM), Gibdo Mask;
-0x00902;BENEATH_THE_WELL;Bush 2;MM Beneath The Well Bush 2;bush;1303;900;0;BENEATH_THE_WELL;bush;render_type;All;0;mm;dungeon;Hot Spring Water, Soul of ReDeads / Gibdos (MM), Gibdo Mask;
-0x00007;CLOCK_TOWN_NORTH;Tree 1;MM Clock Town North Forked Tree 1;tree;615;353;0;CLOCK_TOWN_NORTH;tree;render_type;All;0;mm;overworld;;
-0x00015;CLOCK_TOWN_NORTH;Tree 2;MM Clock Town North Forked Tree 2;tree;382;161;1;CLOCK_TOWN_NORTH;tree;render_type;All;0;mm;overworld;;
-0x0000c;CUCCO_SHACK;Tree;MM Cucco Shack Tree;tree;389;317;0;CUCCO_SHACK;tree;render_type;All;0;mm;overworld;;
-0x0000b;CUCCO_SHACK;Bush 1;MM Cucco Shack Bush 1;bush;363;333;0;CUCCO_SHACK;bush;render_type;All;0;mm;overworld;;
-0x1000b;CUCCO_SHACK;Bush 2;MM Cucco Shack Bush 2;bush;643;473;0;CUCCO_SHACK;bush;render_type;All;0;mm;overworld;;
-0x2000b;CUCCO_SHACK;Bush 3;MM Cucco Shack Bush 3;bush;562;259;0;CUCCO_SHACK;bush;render_type;All;0;mm;overworld;;
-0x3000b;CUCCO_SHACK;Bush 4;MM Cucco Shack Bush 4;bush;390;181;0;CUCCO_SHACK;bush;render_type;All;0;mm;overworld;;
-0x4000b;CUCCO_SHACK;Bush 5;MM Cucco Shack Bush 5;bush;240;304;0;CUCCO_SHACK;bush;render_type;All;0;mm;overworld;;
-0x5000b;CUCCO_SHACK;Bush 6;MM Cucco Shack Bush 6;bush;265;488;0;CUCCO_SHACK;bush;render_type;All;0;mm;overworld;;
-0x00013;CUCCO_SHACK;Bush 7;MM Cucco Shack Bush 7;bush;643;188;0;CUCCO_SHACK;bush;render_type;All;0;mm;overworld;;
-0x00000;DEKU_PALACE;Item 1;MM Deku Palace Soil Item 1;soil;876;111;0;DEKU_PALACE;soil;render_type;All;0;mm;overworld;;
-0x10000;DEKU_PALACE;Item 2;MM Deku Palace Soil Item 2;soil;889;101;0;DEKU_PALACE;soil;render_type;All;0;mm;overworld;;
-0x20000;DEKU_PALACE;Item 3;MM Deku Palace Soil Item 3;soil;876;88;0;DEKU_PALACE;soil;render_type;All;0;mm;overworld;;
-0x00008;DOG_RACETRACK;Soil;MM Doggy Racetrack Soil;soil;384;391;0;DOG_RACETRACK;soil;render_type;All;0;mm;overworld;;
-0x0000b;GORMAN_TRACK;Tree 1;MM Gorman Track Tree 01;tree;108;102;1;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0000c;GORMAN_TRACK;Tree 2;MM Gorman Track Tree 02;tree;106;86;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0000d;GORMAN_TRACK;Tree 3;MM Gorman Track Tree 03;tree;135;89;1;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0000e;GORMAN_TRACK;Tree 4;MM Gorman Track Tree 04;tree;135;74;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0000f;GORMAN_TRACK;Tree 5;MM Gorman Track Tree 05;tree;162;87;2;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00010;GORMAN_TRACK;Tree 6;MM Gorman Track Tree 06;tree;213;74;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00011;GORMAN_TRACK;Tree 7;MM Gorman Track Tree 07;tree;164;75;1;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00012;GORMAN_TRACK;Tree 8;MM Gorman Track Tree 08;tree;165;63;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00013;GORMAN_TRACK;Tree 9;MM Gorman Track Tree 09;tree;181;78;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00014;GORMAN_TRACK;Tree 10;MM Gorman Track Tree 10;tree;195;63;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00015;GORMAN_TRACK;Tree 11;MM Gorman Track Tree 11;tree;225;57;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00016;GORMAN_TRACK;Tree 12;MM Gorman Track Tree 12;tree;245;66;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00017;GORMAN_TRACK;Tree 13;MM Gorman Track Tree 13;tree;828;548;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00018;GORMAN_TRACK;Tree 14;MM Gorman Track Tree 14;tree;732;560;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00019;GORMAN_TRACK;Tree 15;MM Gorman Track Tree 15;tree;663;542;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0001a;GORMAN_TRACK;Tree 16;MM Gorman Track Tree 16;tree;498;526;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0001b;GORMAN_TRACK;Tree 17;MM Gorman Track Tree 17;tree;364;520;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0001c;GORMAN_TRACK;Tree 18;MM Gorman Track Tree 18;tree;852;482;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0001d;GORMAN_TRACK;Tree 19;MM Gorman Track Tree 19;tree;697;589;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0001e;GORMAN_TRACK;Tree 20;MM Gorman Track Tree 20;tree;636;572;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0001f;GORMAN_TRACK;Tree 21;MM Gorman Track Tree 21;tree;576;520;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00020;GORMAN_TRACK;Tree 22;MM Gorman Track Tree 22;tree;510;548;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00021;GORMAN_TRACK;Tree 23;MM Gorman Track Tree 23;tree;398;494;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00022;GORMAN_TRACK;Tree 24;MM Gorman Track Tree 24;tree;386;554;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00023;GORMAN_TRACK;Tree 25;MM Gorman Track Tree 25;tree;303;488;0;GORMAN_TRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0003b;GORON_RACETRACK;Tree 1;MM Goron Race Forked Tree 1;tree;134;338;0;GORON_RACETRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0003c;GORON_RACETRACK;Tree 2;MM Goron Race Forked Tree 2;tree;106;352;0;GORON_RACETRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0003d;GORON_RACETRACK;Tree 3;MM Goron Race Forked Tree 3;tree;169;321;0;GORON_RACETRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0003e;GORON_RACETRACK;Tree 4;MM Goron Race Forked Tree 4;tree;154;325;0;GORON_RACETRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x0003f;GORON_RACETRACK;Tree 5;MM Goron Race Forked Tree 5;tree;134;349;0;GORON_RACETRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00040;GORON_RACETRACK;Tree 6;MM Goron Race Forked Tree 6;tree;151;338;0;GORON_RACETRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00041;GORON_RACETRACK;Tree 7;MM Goron Race Forked Tree 7;tree;192;314;0;GORON_RACETRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00042;GORON_RACETRACK;Tree 8;MM Goron Race Forked Tree 8;tree;181;333;0;GORON_RACETRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00043;GORON_RACETRACK;Tree 9;MM Goron Race Forked Tree 9;tree;166;339;0;GORON_RACETRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00044;GORON_RACETRACK;Tree 10;MM Goron Race Forked Tree 10;tree;146;352;0;GORON_RACETRACK;tree;render_type;All;0;mm;overworld;Goron Mask (MM);Perform a Goron Bomb Jump next to the right house to get on top of it. Then withdraw the mask and jump forward to get over the fence
-0x00002;GORON_SHRINE;Rock 1;MM Goron Shrine Rock 01;rock;405;229;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
-0x00003;GORON_SHRINE;Rock 2;MM Goron Shrine Rock 02;rock;430;409;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
-0x00004;GORON_SHRINE;Rock 3;MM Goron Shrine Rock 03;rock;412;399;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
-0x00005;GORON_SHRINE;Rock 4;MM Goron Shrine Rock 04;rock;430;390;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
-0x00006;GORON_SHRINE;Rock 5;MM Goron Shrine Rock 05;rock;236;156;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
-0x00007;GORON_SHRINE;Rock 6;MM Goron Shrine Rock 06;rock;150;275;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
-0x00008;GORON_SHRINE;Rock 7;MM Goron Shrine Rock 07;rock;143;365;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
-0x00009;GORON_SHRINE;Rock 8;MM Goron Shrine Rock 08;rock;149;390;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
-0x0000a;GORON_SHRINE;Rock 9;MM Goron Shrine Rock 09;rock;459;381;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
-0x0000b;GORON_SHRINE;Rock 10;MM Goron Shrine Rock 10;rock;465;365;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
-0x0000c;GORON_SHRINE;Rock 11;MM Goron Shrine Rock 11;rock;593;359;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
-0x0000d;GORON_SHRINE;Rock 12;MM Goron Shrine Rock 12;rock;518;399;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
-0x0000e;GORON_SHRINE;Rock 13;MM Goron Shrine Rock 13;rock;518;162;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
-0x0000f;GORON_SHRINE;Rock 14;MM Goron Shrine Rock 14;rock;486;187;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
-0x00010;GORON_SHRINE;Rock 15;MM Goron Shrine Rock 15;rock;555;187;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
-0x00011;GORON_SHRINE;Rock 16;MM Goron Shrine Rock 16;rock;561;359;0;GORON_SHRINE;rock;render_type;All;0;mm;overworld;;
-0x0000a;GREAT_BAY_COAST;Island;MM Great Bay Coast Palm Tree Island;tree;516;168;1;GREAT_BAY_COAST;tree;render_type;All;0;mm;overworld;;
-0x0000b;GREAT_BAY_COAST;Beach 1;MM Great Bay Coast Palm Tree Beach 1;tree;597;436;0;GREAT_BAY_COAST;tree;render_type;All;0;mm;overworld;;
-0x0000c;GREAT_BAY_COAST;Beach 2;MM Great Bay Coast Palm Tree Beach 2;tree;593;519;0;GREAT_BAY_COAST;tree;render_type;All;0;mm;overworld;;
-0x0000d;GREAT_BAY_COAST;Beach 3;MM Great Bay Coast Palm Tree Beach 3;tree;558;557;0;GREAT_BAY_COAST;tree;render_type;All;0;mm;overworld;;
-0x00045;GREAT_BAY_COAST;Cleared - Water 1;MM Great Bay Coast Rock Water Cleared 1;rock;367;555;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00042;GREAT_BAY_COAST;Cleared - Water 2;MM Great Bay Coast Rock Water Cleared 2;rock;424;601;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00043;GREAT_BAY_COAST;Water 1;MM Great Bay Coast Rock Water 01;rock;474;574;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00044;GREAT_BAY_COAST;Water 2;MM Great Bay Coast Rock Water 02;rock;461;543;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00046;GREAT_BAY_COAST;Water 3;MM Great Bay Coast Rock Water 03;rock;239;226;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00047;GREAT_BAY_COAST;Water 4;MM Great Bay Coast Rock Water 04;rock;283;226;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00048;GREAT_BAY_COAST;Water 5;MM Great Bay Coast Rock Water 05;rock;335;192;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00049;GREAT_BAY_COAST;Water 6;MM Great Bay Coast Rock Water 06;rock;347;329;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x0004a;GREAT_BAY_COAST;Water 7;MM Great Bay Coast Rock Water 07;rock;306;361;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x0004b;GREAT_BAY_COAST;Water 8;MM Great Bay Coast Rock Water 08;rock;389;422;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x0004c;GREAT_BAY_COAST;Water 9;MM Great Bay Coast Rock Water 09;rock;353;393;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x0004d;GREAT_BAY_COAST;Water 10;MM Great Bay Coast Rock Water 10;rock;227;293;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x0004e;GREAT_BAY_COAST;Water 11;MM Great Bay Coast Rock Water 11;rock;239;424;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x0004f;GREAT_BAY_COAST;Water 12;MM Great Bay Coast Rock Water 12;rock;371;220;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00050;GREAT_BAY_COAST;Water 13;MM Great Bay Coast Rock Water 13;rock;444;220;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00051;GREAT_BAY_COAST;Water 14;MM Great Bay Coast Rock Water 14;rock;486;220;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00052;GREAT_BAY_COAST;Water 15;MM Great Bay Coast Rock Water 15;rock;545;123;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00053;GREAT_BAY_COAST;Water 16;MM Great Bay Coast Rock Water 16;rock;592;180;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00054;GREAT_BAY_COAST;Water 17;MM Great Bay Coast Rock Water 17;rock;498;272;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00055;GREAT_BAY_COAST;Water 18;MM Great Bay Coast Rock Water 18;rock;545;308;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00056;GREAT_BAY_COAST;Water 19;MM Great Bay Coast Rock Water 19;rock;289;169;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00057;GREAT_BAY_COAST;Water 20;MM Great Bay Coast Rock Water 20;rock;383;96;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00058;GREAT_BAY_COAST;Water 21;MM Great Bay Coast Rock Water 21;rock;455;147;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00059;GREAT_BAY_COAST;Water 22;MM Great Bay Coast Rock Water 22;rock;371;511;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x0005a;GREAT_BAY_COAST;Water 23;MM Great Bay Coast Rock Water 23;rock;413;533;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x0005b;GREAT_BAY_COAST;Water 24;MM Great Bay Coast Rock Water 24;rock;365;589;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x0005c;GREAT_BAY_COAST;Water 25;MM Great Bay Coast Rock Water 25;rock;432;571;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x0005d;GREAT_BAY_COAST;Water 26;MM Great Bay Coast Rock Water 26;rock;455;595;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x0005e;GREAT_BAY_COAST;Water 27;MM Great Bay Coast Rock Water 27;rock;289;565;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00067;GREAT_BAY_COAST;Water 28;MM Great Bay Coast Rock Water 28;rock;462;317;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x0005f;GREAT_BAY_COAST;Sand 1;MM Great Bay Coast Rock Sand 1;rock;592;614;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00060;GREAT_BAY_COAST;Sand 2;MM Great Bay Coast Rock Sand 2;rock;647;436;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00061;GREAT_BAY_COAST;Sand 3;MM Great Bay Coast Rock Sand 3;rock;574;418;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00062;GREAT_BAY_COAST;Sand 4;MM Great Bay Coast Rock Sand 4;rock;609;589;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00063;GREAT_BAY_COAST;Sand 5;MM Great Bay Coast Rock Sand 5;rock;557;608;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00064;GREAT_BAY_COAST;Ledge 1;MM Great Bay Coast Rock Ledge 1;rock;691;220;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00065;GREAT_BAY_COAST;Ledge 2;MM Great Bay Coast Rock Ledge 2;rock;630;117;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00066;GREAT_BAY_COAST;Ledge 3;MM Great Bay Coast Rock Ledge 3;rock;666;302;0;GREAT_BAY_COAST;rock;render_type;All;0;mm;overworld;;
-0x00000;GREAT_BAY_COAST;Soil;MM Great Bay Coast Soil;soil;696;129;0;GREAT_BAY_COAST;soil;render_type;All;0;mm;overworld;;
-0x00b01;GROTTOS;Rock;MM Bio Baba Grotto Rock;rock;738;380;0;MM_GROTTO_TERMINA_BIO_BABA;rock;render_type;All;0;mm;overworld;Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM);
-0x00c09;GROTTOS;Item 1;MM Beans Grotto Soil Item 1;soil;303;524;0;MM_GROTTO_DEKU_PALACE_BEANS;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
-0x10c09;GROTTOS;Item 2;MM Beans Grotto Soil Item 2;soil;316;514;0;MM_GROTTO_DEKU_PALACE_BEANS;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
-0x20c09;GROTTOS;Item 3;MM Beans Grotto Soil Item 3;soil;303;501;0;MM_GROTTO_DEKU_PALACE_BEANS;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
-0x00122;IKANA_GRAVEYARD;Wall 1;MM Ikana Graveyard Rock Wall 1;rock;707;200;2;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
-0x00123;IKANA_GRAVEYARD;Wall 2;MM Ikana Graveyard Rock Wall 2;rock;692;220;0;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
-0x00124;IKANA_GRAVEYARD;Wall 3;MM Ikana Graveyard Rock Wall 3;rock;718;213;1;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
-0x00125;IKANA_GRAVEYARD;Wall 4;MM Ikana Graveyard Rock Wall 4;rock;735;215;0;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
-0x00126;IKANA_GRAVEYARD;Wall 5;MM Ikana Graveyard Rock Wall 5;rock;695;208;0;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
-0x0012c;IKANA_GRAVEYARD;Circle Rock 1;MM Ikana Graveyard Rock Circle Rock 1;rock;484;276;0;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
-0x1012c;IKANA_GRAVEYARD;Circle Rock 2;MM Ikana Graveyard Rock Circle Rock 2;rock;491;289;0;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
-0x2012c;IKANA_GRAVEYARD;Circle Rock 3;MM Ikana Graveyard Rock Circle Rock 3;rock;507;292;0;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
-0x3012c;IKANA_GRAVEYARD;Circle Rock 4;MM Ikana Graveyard Rock Circle Rock 4;rock;521;283;0;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
-0x4012c;IKANA_GRAVEYARD;Circle Rock 5;MM Ikana Graveyard Rock Circle Rock 5;rock;522;269;0;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
-0x5012c;IKANA_GRAVEYARD;Circle Rock 6;MM Ikana Graveyard Rock Circle Rock 6;rock;515;256;0;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
-0x6012c;IKANA_GRAVEYARD;Circle Rock 7;MM Ikana Graveyard Rock Circle Rock 7;rock;499;254;0;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
-0x7012c;IKANA_GRAVEYARD;Circle Rock 8;MM Ikana Graveyard Rock Circle Rock 8;rock;486;261;0;IKANA_GRAVEYARD;rock;render_type;All;0;mm;overworld;;
-0x0000e;MOUNTAIN_VILLAGE_SPRING;Cliff 1;MM Mountain Village Rock Cliff 1;rock;484;45;0;MOUNTAIN_VILLAGE;rock;render_type;Spring;0;mm;overworld;;
-0x0000f;MOUNTAIN_VILLAGE_SPRING;Cliff 2;MM Mountain Village Rock Cliff 2;rock;544;49;0;MOUNTAIN_VILLAGE;rock;render_type;Spring;0;mm;overworld;;
-0x00010;MOUNTAIN_VILLAGE_SPRING;Ground 1;MM Mountain Village Rock Ground 1;rock;618;435;0;MOUNTAIN_VILLAGE;rock;render_type;Spring;0;mm;overworld;;
-0x00011;MOUNTAIN_VILLAGE_SPRING;Ground 2;MM Mountain Village Rock Ground 2;rock;604;430;0;MOUNTAIN_VILLAGE;rock;render_type;Spring;0;mm;overworld;;
-0x00012;MOUNTAIN_VILLAGE_SPRING;Ground 3;MM Mountain Village Rock Ground 3;rock;591;423;0;MOUNTAIN_VILLAGE;rock;render_type;Spring;0;mm;overworld;;
-0x00013;MOUNTAIN_VILLAGE_SPRING;Ground 4;MM Mountain Village Rock Ground 4;rock;598;411;0;MOUNTAIN_VILLAGE;rock;render_type;Spring;0;mm;overworld;;
-0x00014;MOUNTAIN_VILLAGE_SPRING;Ground 5;MM Mountain Village Rock Ground 5;rock;609;399;0;MOUNTAIN_VILLAGE;rock;render_type;Spring;0;mm;overworld;;
-0x0000e;PATH_MOUNTAIN_VILLAGE;Lower 1;MM Path to Mountain Village Snow Tree Lower 1;tree;604;186;0;PATH_MOUNTAIN_VILLAGE;tree;render_type;Winter;0;mm;overworld;;
-0x0000f;PATH_MOUNTAIN_VILLAGE;Lower 2;MM Path to Mountain Village Snow Tree Lower 2;tree;429;352;0;PATH_MOUNTAIN_VILLAGE;tree;render_type;Winter;0;mm;overworld;;
-0x00010;PATH_MOUNTAIN_VILLAGE;Upper 1;MM Path to Mountain Village Snow Tree Upper 1;tree;265;380;0;PATH_MOUNTAIN_VILLAGE;tree;render_type;Winter;0;mm;overworld;;
-0x00011;PATH_MOUNTAIN_VILLAGE;Upper 2;MM Path to Mountain Village Snow Tree Upper 2;tree;160;306;0;PATH_MOUNTAIN_VILLAGE;tree;render_type;Winter;0;mm;overworld;;
-0x00016;PATH_SNOWHEAD;End 1;MM Path to Snowhead Snow Tree End 1;tree;868;105;0;PATH_SNOWHEAD;tree;render_type;Winter;0;mm;overworld;;
-0x00017;PATH_SNOWHEAD;End 2;MM Path to Snowhead Snow Tree End 2;tree;795;139;0;PATH_SNOWHEAD;tree;render_type;Winter;0;mm;overworld;;
-0x00018;PATH_SNOWHEAD;End 3;MM Path to Snowhead Snow Tree End 3;tree;735;178;0;PATH_SNOWHEAD;tree;render_type;Winter;0;mm;overworld;;
-0x00019;PATH_SNOWHEAD;Entrance;MM Path to Snowhead Snow Tree Entrance;tree;97;246;0;PATH_SNOWHEAD;tree;render_type;Winter;0;mm;overworld;;
-0x0001c;PINNACLE_ROCK;Unreachable 1;MM Pinnacle Rock Rock Unreachable 1;none;0;0;0;PINNACLE_ROCK;none;render_type;All;0;mm;overworld;;
-0x0001d;PINNACLE_ROCK;Unreachable 2;MM Pinnacle Rock Rock Unreachable 2;none;0;0;0;PINNACLE_ROCK;none;render_type;All;0;mm;overworld;;
-0x00023;ROAD_IKANA;Circle Rock 1;MM Road to Ikana Rock Circle Rock 1;rock;270;207;0;ROAD_IKANA;rock;render_type;All;0;mm;overworld;;
-0x10023;ROAD_IKANA;Circle Rock 2;MM Road to Ikana Rock Circle Rock 2;rock;255;197;0;ROAD_IKANA;rock;render_type;All;0;mm;overworld;;
-0x20023;ROAD_IKANA;Circle Rock 3;MM Road to Ikana Rock Circle Rock 3;rock;240;206;0;ROAD_IKANA;rock;render_type;All;0;mm;overworld;;
-0x30023;ROAD_IKANA;Circle Rock 4;MM Road to Ikana Rock Circle Rock 4;rock;233;222;0;ROAD_IKANA;rock;render_type;All;0;mm;overworld;;
-0x40023;ROAD_IKANA;Circle Rock 5;MM Road to Ikana Rock Circle Rock 5;rock;240;237;0;ROAD_IKANA;rock;render_type;All;0;mm;overworld;;
-0x50023;ROAD_IKANA;Circle Rock 6;MM Road to Ikana Rock Circle Rock 6;rock;256;245;0;ROAD_IKANA;rock;render_type;All;0;mm;overworld;;
-0x60023;ROAD_IKANA;Circle Rock 7;MM Road to Ikana Rock Circle Rock 7;rock;271;237;0;ROAD_IKANA;rock;render_type;All;0;mm;overworld;;
-0x70023;ROAD_IKANA;Circle Rock 8;MM Road to Ikana Rock Circle Rock 8;rock;277;222;0;ROAD_IKANA;rock;render_type;All;0;mm;overworld;;
-0x0001a;ROAD_SOUTHERN_SWAMP;Tree 1;MM Road to Southern Swanp Forked Tree 1;tree;377;368;0;ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;mm;overworld;;
-0x0001b;ROAD_SOUTHERN_SWAMP;Tree 2;MM Road to Southern Swanp Forked Tree 2;tree;452;359;0;ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;mm;overworld;;
-0x0001c;ROAD_SOUTHERN_SWAMP;Tree 3;MM Road to Southern Swanp Forked Tree 3;tree;333;352;0;ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;mm;overworld;;
-0x0001d;ROAD_SOUTHERN_SWAMP;Tree 4;MM Road to Southern Swanp Forked Tree 4;tree;258;374;0;ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;mm;overworld;;
-0x0001e;ROAD_SOUTHERN_SWAMP;Tree 5;MM Road to Southern Swanp Forked Tree 5;tree;413;339;0;ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;mm;overworld;;
-0x0001f;ROAD_SOUTHERN_SWAMP;Tree 6;MM Road to Southern Swanp Forked Tree 6;tree;299;387;0;ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;mm;overworld;;
-0x00014;ROMANI_RANCH;Tree 1;MM Romani Ranch Tree 1;tree;458;359;0;ROMANI_RANCH;tree;render_type;All;0;mm;overworld;;
-0x00015;ROMANI_RANCH;Tree 2;MM Romani Ranch Tree 2;tree;446;274;0;ROMANI_RANCH;tree;render_type;All;0;mm;overworld;;
-0x00016;ROMANI_RANCH;Tree 3;MM Romani Ranch Tree 3;tree;647;280;0;ROMANI_RANCH;tree;render_type;All;0;mm;overworld;;
-0x00017;ROMANI_RANCH;Tree 4;MM Romani Ranch Tree 4;tree;635;365;0;ROMANI_RANCH;tree;render_type;All;0;mm;overworld;;
-0x00018;ROMANI_RANCH;Tree 5;MM Romani Ranch Tree 5;tree;327;412;0;ROMANI_RANCH;tree;render_type;All;0;mm;overworld;;
-0x00019;ROMANI_RANCH;Tree 6;MM Romani Ranch Tree 6;tree;184;444;0;ROMANI_RANCH;tree;render_type;All;0;mm;overworld;;
-0x0001a;ROMANI_RANCH;Tree 7;MM Romani Ranch Tree 7;tree;372;568;0;ROMANI_RANCH;tree;render_type;All;0;mm;overworld;;
-0x00010;ROMANI_RANCH;Bush 1;MM Romani Ranch Bush 1;bush;197;311;0;ROMANI_RANCH;bush;render_type;All;0;mm;overworld;;
-0x00011;ROMANI_RANCH;Bush 2;MM Romani Ranch Bush 2;bush;412;405;0;ROMANI_RANCH;bush;render_type;All;0;mm;overworld;;
-0x00012;ROMANI_RANCH;Bush 3;MM Romani Ranch Bush 3;bush;557;518;0;ROMANI_RANCH;bush;render_type;All;0;mm;overworld;;
-0x00013;ROMANI_RANCH;Bush 4;MM Romani Ranch Bush 4;bush;181;144;0;ROMANI_RANCH;bush;render_type;All;0;mm;overworld;;
-0x00030;ROMANI_RANCH;Days 2-3 Item 1;MM Romani Ranch Soil Days 2-3 Item 1;soil;234;89;0;ROMANI_RANCH;soil;render_type;All;0;mm;overworld;Bug (MM), Clock (Day 2) / Clock (Night 2) / Clock (Day 3) / Clock (Night 3);Free some bugs next to the soil on the second or third day
-0x10030;ROMANI_RANCH;Days 2-3 Item 2;MM Romani Ranch Soil Days 2-3 Item 2;soil;245;83;0;ROMANI_RANCH;soil;render_type;All;0;mm;overworld;Bug (MM), Clock (Day 2) / Clock (Night 2) / Clock (Day 3) / Clock (Night 3);Free some bugs next to the soil on the second or third day
-0x20030;ROMANI_RANCH;Days 2-3 Item 3;MM Romani Ranch Soil Days 2-3 Item 3;soil;256;78;0;ROMANI_RANCH;soil;render_type;All;0;mm;overworld;Bug (MM), Clock (Day 2) / Clock (Night 2) / Clock (Day 3) / Clock (Night 3);Free some bugs next to the soil on the second or third day
-0x00031;ROMANI_RANCH;Day 1;MM Romani Ranch Soil Day 1;soil;240;72;0;ROMANI_RANCH;soil;render_type;All;0;mm;overworld;Bug (MM), Clock (Day 1) / Clock (Night 1);Free some bugs next to the soil on the first day
-0x00013;SECRET_SHRINE;Item 1;MM Secret Shrine Soil Item 1;soil;488;479;0;SECRET_SHRINE;soil;render_type;All;0;mm;dungeon;Bug (MM);Free some bugs next to the soil
-0x10013;SECRET_SHRINE;Item 2;MM Secret Shrine Soil Item 2;soil;471;479;0;SECRET_SHRINE;soil;render_type;All;0;mm;dungeon;Bug (MM);Free some bugs next to the soil
-0x20013;SECRET_SHRINE;Item 3;MM Secret Shrine Soil Item 3;soil;454;479;0;SECRET_SHRINE;soil;render_type;All;0;mm;dungeon;Bug (MM);Free some bugs next to the soil
-0x00003;SPIDER_HOUSE_SWAMP;Entrance 1;MM Swamp Spider House Rock Entrance 1;rock;375;231;0;SPIDER_HOUSE_SWAMP;rock;render_type;All;0;mm;dungeon;;
-0x00004;SPIDER_HOUSE_SWAMP;Entrance 2;MM Swamp Spider House Rock Entrance 2;rock;566;266;0;SPIDER_HOUSE_SWAMP;rock;render_type;All;0;mm;dungeon;;
-0x00405;SPIDER_HOUSE_SWAMP;Pots Room;MM Swamp Spider House Rock Pots Room;rock;205;412;0;SPIDER_HOUSE_SWAMP;rock;render_type;All;4;mm;dungeon;;
-0x0020d;SPIDER_HOUSE_SWAMP;Gold Room;MM Swamp Spider House Soil Gold;soil;275;322;0;SPIDER_HOUSE_SWAMP;soil;render_type;All;2;mm;dungeon;Bug (MM);Free some bugs next to the soil
-0x0030e;SPIDER_HOUSE_SWAMP;Monument Item 1;MM Swamp Spider House Soil Monument Item 1;soil;757;480;0;SPIDER_HOUSE_SWAMP;soil;render_type;All;3;mm;dungeon;Bug (MM);Free some bugs next to the soil
-0x1030e;SPIDER_HOUSE_SWAMP;Monument Item 2;MM Swamp Spider House Soil Monument Item 2;soil;726;480;0;SPIDER_HOUSE_SWAMP;soil;render_type;All;3;mm;dungeon;Bug (MM);Free some bugs next to the soil
-0x2030e;SPIDER_HOUSE_SWAMP;Monument Item 3;MM Swamp Spider House Soil Monument Item 3;soil;741;471;0;SPIDER_HOUSE_SWAMP;soil;render_type;All;3;mm;dungeon;Bug (MM);Free some bugs next to the soil
-0x00015;STONE_TOWER_INVERTED;Rock 1;MM Stone Tower Inverted Rock 1;rock;307;268;0;STONE_TOWER_INVERTED;rock;render_type;All;0;mm;overworld;;
-0x00016;STONE_TOWER_INVERTED;Rock 2;MM Stone Tower Inverted Rock 2;rock;255;589;0;STONE_TOWER_INVERTED;rock;render_type;All;0;mm;overworld;;
-0x00000;STONE_TOWER_INVERTED;Lower;MM Stone Tower Inverted Soil Lower;soil;205;288;0;STONE_TOWER_INVERTED;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
-0x00001;STONE_TOWER_INVERTED;Upper;MM Stone Tower Inverted Soil Upper;soil;272;282;0;STONE_TOWER_INVERTED;soil;render_type;All;0;mm;overworld;Bean (MM), Spring Water, Bug (MM);Plant the bean in the lower soil and free some bugs next to the upper soil
-0x000a8;TERMINA_FIELD;Tree 1;MM Termina Field Tree 1;tree;2011;1100;0;TERMINA_FIELD;tree;render_type;All;0;mm;overworld;;
-0x000a9;TERMINA_FIELD;Tree 2;MM Termina Field Tree 2;tree;2128;1001;0;TERMINA_FIELD;tree;render_type;All;0;mm;overworld;;
-0x0007f;TERMINA_FIELD;Near Ocean;MM Termina Field Rock Near Ocean;rock;338;706;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
-0x00080;TERMINA_FIELD;Wall Mountain 1;MM Termina Field Rock Wall Mountain 1;rock;936;575;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
-0x00082;TERMINA_FIELD;Wall Mountain 2;MM Termina Field Rock Wall Mountain 2;rock;950;559;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
-0x00083;TERMINA_FIELD;Wall Mountain 3;MM Termina Field Rock Wall Mountain 3;rock;963;543;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
-0x00086;TERMINA_FIELD;Wall Mountain 4;MM Termina Field Rock Wall Mountain 4;rock;976;526;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
-0x00087;TERMINA_FIELD;Wall Mountain 5;MM Termina Field Rock Wall Mountain 5;rock;990;510;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
-0x00088;TERMINA_FIELD;Wall Mountain 6;MM Termina Field Rock Wall Mountain 6;rock;1004;494;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
-0x0008b;TERMINA_FIELD;Wall Mountain 7;MM Termina Field Rock Wall Mountain 7;rock;1017;478;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
-0x00081;TERMINA_FIELD;Wall Ocean 1;MM Termina Field Rock Wall Ocean 1;rock;990;1113;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
-0x00084;TERMINA_FIELD;Wall Ocean 2;MM Termina Field Rock Wall Ocean 2;rock;1003;1129;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
-0x00085;TERMINA_FIELD;Wall Ocean 3;MM Termina Field Rock Wall Ocean 3;rock;1017;1145;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
-0x00089;TERMINA_FIELD;Wall Ocean 4;MM Termina Field Rock Wall Ocean 4;rock;1030;1162;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
-0x0008a;TERMINA_FIELD;Wall Ocean 5;MM Termina Field Rock Wall Ocean 5;rock;1043;1178;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
-0x0008c;TERMINA_FIELD;Circle Rock 1;MM Termina Field Rock Circle Rock 1;rock;1084;358;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
-0x1008c;TERMINA_FIELD;Circle Rock 2;MM Termina Field Rock Circle Rock 2;rock;1110;349;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
-0x2008c;TERMINA_FIELD;Circle Rock 3;MM Termina Field Rock Circle Rock 3;rock;1117;322;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
-0x3008c;TERMINA_FIELD;Circle Rock 4;MM Termina Field Rock Circle Rock 4;rock;1108;296;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
-0x4008c;TERMINA_FIELD;Circle Rock 5;MM Termina Field Rock Circle Rock 5;rock;1083;285;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
-0x5008c;TERMINA_FIELD;Circle Rock 6;MM Termina Field Rock Circle Rock 6;rock;1057;295;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
-0x6008c;TERMINA_FIELD;Circle Rock 7;MM Termina Field Rock Circle Rock 7;rock;1048;322;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
-0x7008c;TERMINA_FIELD;Circle Rock 8;MM Termina Field Rock Circle Rock 8;rock;1057;349;0;TERMINA_FIELD;rock;render_type;All;0;mm;overworld;;
-0x00005;TERMINA_FIELD;Tree Stump;MM Termina Field Soil Tree Stump;soil;1605;1504;0;TERMINA_FIELD;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
-0x00006;TERMINA_FIELD;Observatory Item 1;MM Termina Field Soil Observatory Item 1;soil;2241;1141;0;TERMINA_FIELD;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
-0x10006;TERMINA_FIELD;Observatory Item 2;MM Termina Field Soil Observatory Item 2;soil;2227;1141;0;TERMINA_FIELD;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
-0x20006;TERMINA_FIELD;Observatory Item 3;MM Termina Field Soil Observatory Item 3;soil;2234;1129;0;TERMINA_FIELD;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
-0x00007;TERMINA_FIELD;Wall Item 1;MM Termina Field Soil Wall Item 1;soil;1640;1077;0;TERMINA_FIELD;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
-0x10007;TERMINA_FIELD;Wall Item 2;MM Termina Field Soil Wall Item 2;soil;1628;1077;0;TERMINA_FIELD;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
-0x20007;TERMINA_FIELD;Wall Item 3;MM Termina Field Soil Wall Item 3;soil;1634;1065;0;TERMINA_FIELD;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
-0x00008;TERMINA_FIELD;Pillar;MM Termina Field Soil Pillar;soil;1953;670;0;TERMINA_FIELD;soil;render_type;All;0;mm;overworld;Bug (MM);Free some bugs next to the soil
-0x00002;TRADING_POST;Bush 1;MM Trading Post Bush 1;bush;151;430;0;TRADING_POST;bush;render_type;All;0;mm;overworld;;
-0x00003;TRADING_POST;Bush 2;MM Trading Post Bush 2;bush;218;403;0;TRADING_POST;bush;render_type;All;0;mm;overworld;;
-0x00004;TRADING_POST;Bush 3;MM Trading Post Bush 3;bush;879;474;0;TRADING_POST;bush;render_type;All;0;mm;overworld;;
-0x00005;TRADING_POST;Bush 4;MM Trading Post Bush 4;bush;929;598;0;TRADING_POST;bush;render_type;All;0;mm;overworld;;
-0x00007;TWIN_ISLANDS_SPRING;Spring - Island 1;MM Twin Islands Tree Island 1;tree;424;299;0;TWIN_ISLANDS;tree;render_type;Spring;0;mm;overworld;;
-0x00008;TWIN_ISLANDS_SPRING;Spring - Island 2;MM Twin Islands Tree Island 2;tree;672;317;0;TWIN_ISLANDS;tree;render_type;Spring;0;mm;overworld;;
-0x00009;TWIN_ISLANDS_SPRING;Spring - Ramp;MM Twin Islands Tree Ramp;tree;242;265;1;TWIN_ISLANDS;tree;render_type;Spring;0;mm;overworld;;
-0x00018;TWIN_ISLANDS_SPRING;Rock 1;MM Twin Islands Rock 1;rock;227;279;1;TWIN_ISLANDS;rock;render_type;Spring;0;mm;overworld;;
-0x00019;TWIN_ISLANDS_SPRING;Rock 2;MM Twin Islands Rock 2;rock;226;265;0;TWIN_ISLANDS;rock;render_type;Spring;0;mm;overworld;;
-0x0001a;TWIN_ISLANDS_SPRING;Rock 3;MM Twin Islands Rock 3;rock;242;280;2;TWIN_ISLANDS;rock;render_type;Spring;0;mm;overworld;;
-0x00007;TWIN_ISLANDS_WINTER;Winter - Island 1;MM Twin Islands Snow Tree Island 1;tree;424;299;0;TWIN_ISLANDS;tree;render_type;Winter;0;mm;overworld;;
-0x00008;TWIN_ISLANDS_WINTER;Winter - Island 2;MM Twin Islands Snow Tree Island 2;tree;672;317;0;TWIN_ISLANDS;tree;render_type;Winter;0;mm;overworld;;
-0x00009;TWIN_ISLANDS_WINTER;Winter - Ramp;MM Twin Islands Snow Tree Ramp;tree;242;265;1;TWIN_ISLANDS;tree;render_type;Winter;0;mm;overworld;;
 0x00020;ZORA_CAPE;Island 1;MM Zora Cape Rock Island 1;rock;345;432;0;ZORA_CAPE;rock;render_type;All;0;mm;overworld;;
 0x00021;ZORA_CAPE;Island 2;MM Zora Cape Rock Island 2;rock;344;444;0;ZORA_CAPE;rock;render_type;All;0;mm;overworld;;
 0x00022;ZORA_CAPE;Island 3;MM Zora Cape Rock Island 3;rock;332;431;0;ZORA_CAPE;rock;render_type;All;0;mm;overworld;;
@@ -3733,84 +3785,63 @@ ZORA_HALL_LIGHTS;ZORA_HALL_ROOMS;Scene Lights;MM Zora Hall Scene Lights;none;0;0
 0x0001a;ZORA_CAPE;Island Near Fountain;MM Zora Cape Palm Tree Island Near Fountain;tree;331;443;0;ZORA_CAPE;tree;render_type;All;0;mm;overworld;;
 0x0001b;ZORA_CAPE;Near Beach;MM Zora Cape Palm Tree Island Near Beach;tree;350;367;0;ZORA_CAPE;tree;render_type;All;0;mm;overworld;;
 0x0001c;ZORA_CAPE;Island Center;MM Zora Cape Palm Tree Island Center;tree;297;403;0;ZORA_CAPE;tree;render_type;All;0;mm;overworld;;
-0x0000c;ROMANI_RANCH;Tree;MM Cucco Shack Tree;none;0;0;0;CUCCO_SHACK;none;render_type;All;0;mm;overworld;;
-0x0000b;ROMANI_RANCH;Bush 1;MM Cucco Shack Bush 1;none;0;0;0;CUCCO_SHACK;none;render_type;All;0;mm;overworld;;
-0x1000b;ROMANI_RANCH;Bush 2;MM Cucco Shack Bush 2;none;0;0;0;CUCCO_SHACK;none;render_type;All;0;mm;overworld;;
-0x2000b;ROMANI_RANCH;Bush 3;MM Cucco Shack Bush 3;none;0;0;0;CUCCO_SHACK;none;render_type;All;0;mm;overworld;;
-0x3000b;ROMANI_RANCH;Bush 4;MM Cucco Shack Bush 4;none;0;0;0;CUCCO_SHACK;none;render_type;All;0;mm;overworld;;
-0x4000b;ROMANI_RANCH;Bush 5;MM Cucco Shack Bush 5;none;0;0;0;CUCCO_SHACK;none;render_type;All;0;mm;overworld;;
-0x5000b;ROMANI_RANCH;Bush 6;MM Cucco Shack Bush 6;none;0;0;0;CUCCO_SHACK;none;render_type;All;0;mm;overworld;;
-0x00013;ROMANI_RANCH;Bush 7;MM Cucco Shack Bush 7;none;0;0;0;CUCCO_SHACK;none;render_type;All;0;mm;overworld;;
-0x00008;ROMANI_RANCH;Soil;MM Doggy Racetrack Soil;none;0;0;0;DOG_RACETRACK;none;render_type;All;0;mm;overworld;;
-0x0000b;MILK_ROAD;Tree 1;MM Gorman Track Tree 01;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x0000c;MILK_ROAD;Tree 2;MM Gorman Track Tree 02;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x0000d;MILK_ROAD;Tree 3;MM Gorman Track Tree 03;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x0000e;MILK_ROAD;Tree 4;MM Gorman Track Tree 04;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x0000f;MILK_ROAD;Tree 5;MM Gorman Track Tree 05;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x00010;MILK_ROAD;Tree 6;MM Gorman Track Tree 06;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x00011;MILK_ROAD;Tree 7;MM Gorman Track Tree 07;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x00012;MILK_ROAD;Tree 8;MM Gorman Track Tree 08;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x00013;MILK_ROAD;Tree 9;MM Gorman Track Tree 09;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x00014;MILK_ROAD;Tree 10;MM Gorman Track Tree 10;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x00015;MILK_ROAD;Tree 11;MM Gorman Track Tree 11;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x00016;MILK_ROAD;Tree 12;MM Gorman Track Tree 12;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x00017;MILK_ROAD;Tree 13;MM Gorman Track Tree 13;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x00018;MILK_ROAD;Tree 14;MM Gorman Track Tree 14;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x00019;MILK_ROAD;Tree 15;MM Gorman Track Tree 15;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x0001a;MILK_ROAD;Tree 16;MM Gorman Track Tree 16;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x0001b;MILK_ROAD;Tree 17;MM Gorman Track Tree 17;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x0001c;MILK_ROAD;Tree 18;MM Gorman Track Tree 18;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x0001d;MILK_ROAD;Tree 19;MM Gorman Track Tree 19;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x0001e;MILK_ROAD;Tree 20;MM Gorman Track Tree 20;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x0001f;MILK_ROAD;Tree 21;MM Gorman Track Tree 21;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x00020;MILK_ROAD;Tree 22;MM Gorman Track Tree 22;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x00021;MILK_ROAD;Tree 23;MM Gorman Track Tree 23;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x00022;MILK_ROAD;Tree 24;MM Gorman Track Tree 24;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x00023;MILK_ROAD;Tree 25;MM Gorman Track Tree 25;none;0;0;0;GORMAN_TRACK;none;render_type;All;0;mm;overworld;;
-0x0003b;TWIN_ISLANDS;Tree 1;MM Goron Race Forked Tree 1;none;0;0;0;GORON_RACETRACK;none;render_type;All;0;mm;overworld;;
-0x0003c;TWIN_ISLANDS;Tree 2;MM Goron Race Forked Tree 2;none;0;0;0;GORON_RACETRACK;none;render_type;All;0;mm;overworld;;
-0x0003d;TWIN_ISLANDS;Tree 3;MM Goron Race Forked Tree 3;none;0;0;0;GORON_RACETRACK;none;render_type;All;0;mm;overworld;;
-0x0003e;TWIN_ISLANDS;Tree 4;MM Goron Race Forked Tree 4;none;0;0;0;GORON_RACETRACK;none;render_type;All;0;mm;overworld;;
-0x0003f;TWIN_ISLANDS;Tree 5;MM Goron Race Forked Tree 5;none;0;0;0;GORON_RACETRACK;none;render_type;All;0;mm;overworld;;
-0x00040;TWIN_ISLANDS;Tree 6;MM Goron Race Forked Tree 6;none;0;0;0;GORON_RACETRACK;none;render_type;All;0;mm;overworld;;
-0x00041;TWIN_ISLANDS;Tree 7;MM Goron Race Forked Tree 7;none;0;0;0;GORON_RACETRACK;none;render_type;All;0;mm;overworld;;
-0x00042;TWIN_ISLANDS;Tree 8;MM Goron Race Forked Tree 8;none;0;0;0;GORON_RACETRACK;none;render_type;All;0;mm;overworld;;
-0x00043;TWIN_ISLANDS;Tree 9;MM Goron Race Forked Tree 9;none;0;0;0;GORON_RACETRACK;none;render_type;All;0;mm;overworld;;
-0x00044;TWIN_ISLANDS;Tree 10;MM Goron Race Forked Tree 10;none;0;0;0;GORON_RACETRACK;none;render_type;All;0;mm;overworld;;
-0x00002;GORON_VILLAGE_WINTER;Rock 1;MM Goron Shrine Rock 01;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
-0x00003;GORON_VILLAGE_WINTER;Rock 2;MM Goron Shrine Rock 02;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
-0x00004;GORON_VILLAGE_WINTER;Rock 3;MM Goron Shrine Rock 03;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
-0x00005;GORON_VILLAGE_WINTER;Rock 4;MM Goron Shrine Rock 04;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
-0x00006;GORON_VILLAGE_WINTER;Rock 5;MM Goron Shrine Rock 05;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
-0x00007;GORON_VILLAGE_WINTER;Rock 6;MM Goron Shrine Rock 06;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
-0x00008;GORON_VILLAGE_WINTER;Rock 7;MM Goron Shrine Rock 07;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
-0x00009;GORON_VILLAGE_WINTER;Rock 8;MM Goron Shrine Rock 08;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
-0x0000a;GORON_VILLAGE_WINTER;Rock 9;MM Goron Shrine Rock 09;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
-0x0000b;GORON_VILLAGE_WINTER;Rock 10;MM Goron Shrine Rock 10;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
-0x0000c;GORON_VILLAGE_WINTER;Rock 11;MM Goron Shrine Rock 11;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
-0x0000d;GORON_VILLAGE_WINTER;Rock 12;MM Goron Shrine Rock 12;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
-0x0000e;GORON_VILLAGE_WINTER;Rock 13;MM Goron Shrine Rock 13;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
-0x0000f;GORON_VILLAGE_WINTER;Rock 14;MM Goron Shrine Rock 14;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
-0x00010;GORON_VILLAGE_WINTER;Rock 15;MM Goron Shrine Rock 15;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
-0x00011;GORON_VILLAGE_WINTER;Rock 16;MM Goron Shrine Rock 16;none;0;0;0;GORON_SHRINE;none;render_type;All;0;mm;overworld;;
-0x00002;CLOCK_TOWN_WEST;Bush 1;MM Trading Post Bush 1;none;0;0;0;TRADING_POST;none;render_type;All;0;mm;overworld;;
-0x00003;CLOCK_TOWN_WEST;Bush 2;MM Trading Post Bush 2;none;0;0;0;TRADING_POST;none;render_type;All;0;mm;overworld;;
-0x00004;CLOCK_TOWN_WEST;Bush 3;MM Trading Post Bush 3;none;0;0;0;TRADING_POST;none;render_type;All;0;mm;overworld;;
-0x00005;CLOCK_TOWN_WEST;Bush 4;MM Trading Post Bush 4;none;0;0;0;TRADING_POST;none;render_type;All;0;mm;overworld;;
-0x00015;STONE_TOWER;Rock 1;MM Stone Tower Inverted Rock 1;none;0;0;0;STONE_TOWER_INVERTED;none;render_type;All;0;mm;overworld;;
-0x00016;STONE_TOWER;Rock 2;MM Stone Tower Inverted Rock 2;none;0;0;0;STONE_TOWER_INVERTED;none;render_type;All;0;mm;overworld;;
-0x00000;STONE_TOWER;Lower;MM Stone Tower Inverted Soil Lower;none;0;0;0;STONE_TOWER_INVERTED;none;render_type;All;0;mm;overworld;;
-0x00001;STONE_TOWER;Upper;MM Stone Tower Inverted Soil Upper;none;0;0;0;STONE_TOWER_INVERTED;none;render_type;All;0;mm;overworld;;
-0x00007;TWIN_ISLANDS;Spring - Island 1;MM Twin Islands Tree Island 1;none;0;0;0;TWIN_ISLANDS_SPRING;none;render_type;Spring;0;mm;overworld;;
-0x00008;TWIN_ISLANDS;Spring - Island 2;MM Twin Islands Tree Island 2;none;0;0;0;TWIN_ISLANDS_SPRING;none;render_type;Spring;0;mm;overworld;;
-0x00009;TWIN_ISLANDS;Spring - Ramp;MM Twin Islands Tree Ramp;none;0;0;0;TWIN_ISLANDS_SPRING;none;render_type;Spring;0;mm;overworld;;
-0x00018;TWIN_ISLANDS;Rock 1;MM Twin Islands Rock 1;none;0;0;0;TWIN_ISLANDS_SPRING;none;render_type;Spring;0;mm;overworld;;
-0x00019;TWIN_ISLANDS;Rock 2;MM Twin Islands Rock 2;none;0;0;0;TWIN_ISLANDS_SPRING;none;render_type;Spring;0;mm;overworld;;
-0x0001a;TWIN_ISLANDS;Rock 3;MM Twin Islands Rock 3;none;0;0;0;TWIN_ISLANDS_SPRING;none;render_type;Spring;0;mm;overworld;;
-0x00007;TWIN_ISLANDS;Winter - Island 1;MM Twin Islands Snow Tree Island 1;none;0;0;0;TWIN_ISLANDS_WINTER;none;render_type;Winter;0;mm;overworld;;
-0x00008;TWIN_ISLANDS;Winter - Island 2;MM Twin Islands Snow Tree Island 2;none;0;0;0;TWIN_ISLANDS_WINTER;none;render_type;Winter;0;mm;overworld;;
-0x00009;TWIN_ISLANDS;Winter - Ramp;MM Twin Islands Snow Tree Ramp;none;0;0;0;TWIN_ISLANDS_WINTER;none;render_type;Winter;0;mm;overworld;;
-0x00b01;TERMINA_FIELD;Rock;MM Bio Baba Grotto Rock;none;0;0;0;MM_GROTTO_TERMINA_BIO_BABA;none;render_type;All;0;mm;overworld;;
-0x00c09;DEKU_PALACE;Item 1;MM Beans Grotto Soil Item 1;none;0;0;0;MM_GROTTO_DEKU_PALACE_BEANS;none;render_type;All;0;mm;overworld;;
-0x10c09;DEKU_PALACE;Item 2;MM Beans Grotto Soil Item 2;none;0;0;0;MM_GROTTO_DEKU_PALACE_BEANS;none;render_type;All;0;mm;overworld;;
-0x20c09;DEKU_PALACE;Item 3;MM Beans Grotto Soil Item 3;none;0;0;0;MM_GROTTO_DEKU_PALACE_BEANS;none;render_type;All;0;mm;overworld;;
+ZORA_HALL_LIGHTS;ZORA_HALL;Scene Lights;MM Zora Hall Scene Lights;npc;510;234;0;ZORA_HALL;npc;render_type;All;0;mm;overworld;;
+ZORA_EVAN;ZORA_HALL_ROOMS;Evan;MM Zora Hall Evan HP;npc;385;421;0;ZORA_EVAN_ROOM;heart_piece;render_type;All;0;mm;overworld;;
+SCRUB_OCEAN;ZORA_HALL_ROOMS;Title Deed;MM Zora Hall Scrub Deed;npc;481;296;0;ZORA_HALL_ROOMS;scrub;ocean;All;0;mm;overworld;;
+0x1e;ZORA_HALL_ROOMS;Shell;MM Zora Hall Scrub HP;collectible;604;257;0;ZORA_HALL_ROOMS;heart_piece;render_type;All;0;mm;overworld;;
+SCRUB_SHOP_POTION_GREEN;ZORA_HALL_ROOMS;Scrub - Shop;MM Zora Hall Scrub Shop;npc;497;296;1;ZORA_HALL_ROOMS;shop;render_type;All;0;mm;overworld;;
+0x13;ZORA_HALL_ROOMS;Item 1;MM Zora Shop Item 1;shop;497;250;0;MM_ZORA_SHOP;shop;render_type;All;0;mm;overworld;;
+0x14;ZORA_HALL_ROOMS;Item 2;MM Zora Shop Item 2;shop;476;250;0;MM_ZORA_SHOP;shop;render_type;All;0;mm;overworld;;
+0x15;ZORA_HALL_ROOMS;Item 3;MM Zora Shop Item 3;shop;455;250;0;MM_ZORA_SHOP;shop;render_type;All;0;mm;overworld;;
+ZORA_HALL_LIGHTS;ZORA_HALL_ROOMS;Scene Lights;MM Zora Hall Scene Lights;none;0;0;0;ZORA_HALL;none;render_type;All;0;mm;overworld;;
+0x1e;DEKU_PALACE;Garden;MM Deku Palace HP;collectible;210;133;0;DEKU_PALACE;heart_piece;render_type;All;0;mm_jp;overworld;;Avoid the deku guards to reach the heart piece
+0x010f;DEKU_PALACE;Upper 1;MM Deku Palace Pot 1;pot;571;327;1;DEKU_PALACE;pot;render_type;All;0;mm_jp;overworld;Deku Mask, Beans (MM), Spring Water;Plant a bean on the top right soil of the deku palace and use the deku flowers to reach the pots
+0x0110;DEKU_PALACE;Upper 2;MM Deku Palace Pot 2;pot;571;312;0;DEKU_PALACE;pot;render_type;All;0;mm_jp;overworld;Deku Mask, Beans (MM), Spring Water;Plant a bean on the top right soil of the deku palace and use the deku flowers to reach the pots
+0x00200;DEKU_PALACE;Left 1;MM Deku Palace Rupee Left 1;rupee;271;292;0;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x00201;DEKU_PALACE;Left 2;MM Deku Palace Rupee Left 2;rupee;285;292;0;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x00202;DEKU_PALACE;Left 3;MM Deku Palace Rupee Left 3;rupee;257;292;0;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x00203;DEKU_PALACE;Left 4 (Out Of Bounds);MM Deku Palace Rupee Left 4;none;0;0;0;DEKU_PALACE;none;render_type;All;0;mm_jp;overworld;;
+0x00204;DEKU_PALACE;Left 4;MM Deku Palace Rupee Left 5;rupee;396;213;0;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x00205;DEKU_PALACE;Left 5;MM Deku Palace Rupee Left 6;rupee;380;212;0;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x00206;DEKU_PALACE;Left 6;MM Deku Palace Rupee Left 7;rupee;364;213;0;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x00207;DEKU_PALACE;Left 7;MM Deku Palace Rupee Left Far 1;rupee;228;78;0;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x00208;DEKU_PALACE;Left 8;MM Deku Palace Rupee Left Far 2;rupee;212;79;0;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x00209;DEKU_PALACE;Left 9;MM Deku Palace Rupee Left Far 3;rupee;196;78;0;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x0020a;DEKU_PALACE;Left 10;MM Deku Palace Rupee Layout-Dependant 1;rupee;369;164;0;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x0020b;DEKU_PALACE;Left 11;MM Deku Palace Rupee Layout-Dependant 2;rupee;390;164;0;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x00100;DEKU_PALACE;Right 1;MM Deku Palace Rupee Right 01;rupee;704;114;0;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x00101;DEKU_PALACE;Right 2;MM Deku Palace Rupee Right 02;rupee;682;101;0;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x00102;DEKU_PALACE;Right 3;MM Deku Palace Rupee Right 03;rupee;776;116;0;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x00103;DEKU_PALACE;Right 4;MM Deku Palace Rupee Right 04;rupee;776;134;0;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x00104;DEKU_PALACE;Right 5;MM Deku Palace Rupee Right 05;rupee;751;133;0;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x00105;DEKU_PALACE;Right 6;MM Deku Palace Rupee Right 06;rupee;751;116;0;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x00111;DEKU_PALACE;Right 7;MM Deku Palace Rupee Right 07;rupee;585;229;1;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x10111;DEKU_PALACE;Right 8;MM Deku Palace Rupee Right 08;rupee;598;224;1;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x20111;DEKU_PALACE;Right 9;MM Deku Palace Rupee Right 09;rupee;598;213;0;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x30111;DEKU_PALACE;Right 10;MM Deku Palace Rupee Right 10;rupee;585;207;0;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x40111;DEKU_PALACE;Right 11;MM Deku Palace Rupee Right 11;rupee;572;213;0;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x50111;DEKU_PALACE;Right 12;MM Deku Palace Rupee Right 12;rupee;572;224;0;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x60111;DEKU_PALACE;Right 13;MM Deku Palace Rupee Right 13;rupee;585;218;0;DEKU_PALACE;rupee;render_type;All;0;mm_jp;overworld;;
+0x00603;DEKU_PALACE;Butterfly 1;MM Deku Palace JP Line Grotto Butterfly 1;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;render_type;All;0;mm_jp;overworld;;
+0x10603;DEKU_PALACE;Butterfly 2;MM Deku Palace JP Line Grotto Butterfly 2;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;render_type;All;0;mm_jp;overworld;;
+0x20603;DEKU_PALACE;Butterfly 3;MM Deku Palace JP Line Grotto Butterfly 3;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;render_type;All;0;mm_jp;overworld;;
+0x30603;DEKU_PALACE;Butterfly 4;MM Deku Palace JP Line Grotto Butterfly 4;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;render_type;All;0;mm_jp;overworld;;
+0x40603;DEKU_PALACE;Butterfly 5;MM Deku Palace JP Line Grotto Butterfly 5;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;render_type;All;0;mm_jp;overworld;;
+0x00600;DEKU_PALACE;Grass 1;MM Deku Palace JP Line Grotto Grass 1;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;render_type;All;0;mm_jp;overworld;;
+0x00601;DEKU_PALACE;Grass 2;MM Deku Palace JP Line Grotto Grass 2;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;render_type;All;0;mm_jp;overworld;;
+0x00604;DEKU_PALACE;Grass 3;MM Deku Palace JP Line Grotto Grass 3;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;render_type;All;0;mm_jp;overworld;;
+0x00605;DEKU_PALACE;Grass 4;MM Deku Palace JP Line Grotto Grass 4;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;render_type;All;0;mm_jp;overworld;;
+0x00606;DEKU_PALACE;Grass 5;MM Deku Palace JP Line Grotto Grass 5;none;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;none;render_type;All;0;mm_jp;overworld;;
+0x00603;GROTTOS;Butterfly 1;MM Deku Palace JP Line Grotto Butterfly 1;butterfly;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;butterfly;render_type;All;0;mm_jp;overworld;Deku Stick (MM), Soul of Butterflies (MM);Pull out a deku stick near the butterfly
+0x10603;GROTTOS;Butterfly 2;MM Deku Palace JP Line Grotto Butterfly 2;butterfly;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;butterfly;render_type;All;0;mm_jp;overworld;Deku Stick (MM), Soul of Butterflies (MM);Pull out a deku stick near the butterfly
+0x20603;GROTTOS;Butterfly 3;MM Deku Palace JP Line Grotto Butterfly 3;butterfly;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;butterfly;render_type;All;0;mm_jp;overworld;Deku Stick (MM), Soul of Butterflies (MM);Pull out a deku stick near the butterfly
+0x30603;GROTTOS;Butterfly 4;MM Deku Palace JP Line Grotto Butterfly 4;butterfly;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;butterfly;render_type;All;0;mm_jp;overworld;Deku Stick (MM), Soul of Butterflies (MM);Pull out a deku stick near the butterfly
+0x40603;GROTTOS;Butterfly 5;MM Deku Palace JP Line Grotto Butterfly 5;butterfly;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;butterfly;render_type;All;0;mm_jp;overworld;Deku Stick (MM), Soul of Butterflies (MM);Pull out a deku stick near the butterfly
+0x00600;GROTTOS;Grass 1;MM Deku Palace JP Line Grotto Grass 1;grass;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;grass;render_type;All;0;mm_jp;overworld;;
+0x00601;GROTTOS;Grass 2;MM Deku Palace JP Line Grotto Grass 2;grass;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;grass;render_type;All;0;mm_jp;overworld;;
+0x00604;GROTTOS;Grass 3;MM Deku Palace JP Line Grotto Grass 3;grass;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;grass;render_type;All;0;mm_jp;overworld;;
+0x00605;GROTTOS;Grass 4;MM Deku Palace JP Line Grotto Grass 4;grass;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;grass;render_type;All;0;mm_jp;overworld;;
+0x00606;GROTTOS;Grass 5;MM Deku Palace JP Line Grotto Grass 5;grass;0;0;0;MM_GROTTO_DEKU_PALACE_GENERIC;grass;render_type;All;0;mm_jp;overworld;;
+0x0010c;DEKU_PALACE;Boulder 1;MM Deku Palace Red Boulder 1;redboulder;691;259;0;DEKU_PALACE;redboulder;render_type;All;0;mm_jp;overworld;;
+0x0010d;DEKU_PALACE;Boulder 2;MM Deku Palace Red Boulder 2;redboulder;635;222;0;DEKU_PALACE;redboulder;render_type;All;0;mm_jp;overworld;;
+0x0010e;DEKU_PALACE;Boulder 3;MM Deku Palace Red Boulder 3;redboulder;644;36;0;DEKU_PALACE;redboulder;render_type;All;0;mm_jp;overworld;;

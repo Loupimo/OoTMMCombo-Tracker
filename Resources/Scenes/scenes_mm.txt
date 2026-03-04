@@ -139,6 +139,6 @@
 	{ "Open Grotto", "./Resources/MM/Grottos/Generic.png", (uint8_t) MMRegions::Southern_Swamp, false, GameLayout::mm},
 	{ "Open Grotto", "./Resources/MM/Grottos/Generic.png", (uint8_t) MMRegions::Woods_of_Mystery, false, GameLayout::mm},
 	{ "Beans Grotto", "./Resources/MM/Deku_Palace/Beans.png", (uint8_t) MMRegions::Deku_Palace, false, GameLayout::mm},
-	{ "Generic Grotto", "./Resources/MM/Deku_Palace/Generic.png", (uint8_t) MMRegions::Deku_Palace, false, GameLayout::mm},
+	{ "Generic Grotto", "./Resources/MM/Deku_Palace/JP_Grotto.jpg", (uint8_t) MMRegions::Deku_Palace, false, GameLayout::mm},
 	{ "Mountain Village", "./Resources/MM/Mountain_Village/Village.png", (uint8_t) MMRegions::Mountain_Village, true, GameLayout::mm},
 	{ "Twin Islands", "./Resources/MM/Twin_Islands/Twins.png", (uint8_t) MMRegions::Twin_Islands, true, GameLayout::mm}

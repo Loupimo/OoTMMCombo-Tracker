@@ -385,40 +385,47 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
             memcpy_s(tmpObjName, len, spoilObject[0].toStdString().c_str(), len);
             tmpObjName[len - 1] = '\0';
 
+            GameLayout sceneActiveLayout = GetSceneMetaInfo(sceneID, spoilerMap[mapName].second)->ActiveLayout;
+
             for (size_t j = 0; j < gameSceneObj[sceneID].NumOfObjs; j++)
             {   // Browse all scenes objects
+                
+                // Some layout have the same object name but different object position. We need to check if the active layout match the obejct one in order to fill the right one)
+                if (gameSceneObj[sceneID].Objects[j].Layout == sceneActiveLayout)
+                {   // The layout does match
 
-                if (strcmp(gameSceneObj[sceneID].Objects[j].Location, tmpObjName) == 0)
-                {   // We have found the object
+                    if (strcmp(gameSceneObj[sceneID].Objects[j].Location, tmpObjName) == 0)
+                    {   // We have found the object
 
-                    ObjectInfo* object = &gameSceneObj[sceneID].Objects[j];
+                        ObjectInfo* object = &gameSceneObj[sceneID].Objects[j];
 
-                    // Find and modify the object item
-                    const ItemInfo* item = FindItemByName(spoilObject[1]);
-                    object->Item = item;
+                        // Find and modify the object item
+                        const ItemInfo* item = FindItemByName(spoilObject[1]);
+                        object->Item = item;
 
-                    if (object->RenderScene != sceneID)
-                    {   // The current object will never be rendered, we need to update its counter part
+                        if (object->RenderScene != sceneID)
+                        {   // The current object will never be rendered, we need to update its counter part
 
-                        for (size_t k = 0; k < gameSceneObj[object->RenderScene].NumOfObjs; k++)
-                        {   // Find the object in the rendered scene
+                            for (size_t k = 0; k < gameSceneObj[object->RenderScene].NumOfObjs; k++)
+                            {   // Find the object in the rendered scene
 
-                            if (strcmp(gameSceneObj[object->RenderScene].Objects[k].Location, object->Location) == 0)
-                            {   // Object found
+                                if (strcmp(gameSceneObj[object->RenderScene].Objects[k].Location, object->Location) == 0)
+                                {   // Object found
 
-                                gameSceneObj[object->RenderScene].Objects[k].Item = item;
-                                break;
+                                    gameSceneObj[object->RenderScene].Objects[k].Item = item;
+                                    break;
+                                }
                             }
                         }
-                    }
-                    if (object->Type == ObjectType::none)
-                    {   // The object is in the good renderer however in some cases it might be not rendered (e.g. MM Mountain village Spring / Winter)
+                        if (object->Type == ObjectType::none)
+                        {   // The object is in the good renderer however in some cases it might be not rendered (e.g. MM Mountain village Spring / Winter)
 
-                        continue;   // We should do another loop and not break in order to find the real rendered item
-                    }
+                            continue;   // We should do another loop and not break in order to find the real rendered item
+                        }
 
-                    free(tmpObjName);
-                    break;
+                        free(tmpObjName);
+                        break;
+                    }
                 }
             }
         }

@@ -140,6 +140,6 @@ MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;Open Grotto;./Resources/MM/Grottos/Generic.pn
 MM_GROTTO_SOUTHERN_SWAMP_OPEN;Open Grotto;./Resources/MM/Grottos/Generic.png;Southern_Swamp;false;mm
 MM_GROTTO_WOODS_OF_MYSTERY_OPEN;Open Grotto;./Resources/MM/Grottos/Generic.png;Woods_of_Mystery;false;mm
 MM_GROTTO_DEKU_PALACE_BEANS;Beans Grotto;./Resources/MM/Deku_Palace/Beans.png;Deku_Palace;false;mm
-MM_GROTTO_DEKU_PALACE_GENERIC;Generic Grotto;./Resources/MM/Deku_Palace/Generic.png;Deku_Palace;false;mm
+MM_GROTTO_DEKU_PALACE_GENERIC;Generic Grotto;./Resources/MM/Deku_Palace/JP_Grotto.jpg;Deku_Palace;false;mm
 MOUNTAIN_VILLAGE;Mountain Village;./Resources/MM/Mountain_Village/Village.png;Mountain_Village;true;mm
 TWIN_ISLANDS;Twin Islands;./Resources/MM/Twin_Islands/Twins.png;Twin_Islands;true;mm
