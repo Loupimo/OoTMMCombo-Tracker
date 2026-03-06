@@ -127,6 +127,7 @@
     <ClCompile Include="Sources\UI\GameTab.cpp" />
     <ClCompile Include="Sources\UI\LogTab.cpp" />
     <ClCompile Include="Sources\UI\MapTab.cpp" />
+    <ClCompile Include="Sources\UI\MemoryReader.cpp" />
     <ClCompile Include="Sources\UI\ObjectRenderer.cpp" />
     <ClCompile Include="Sources\UI\OoTMMComboTracker.cpp" />
     <ClCompile Include="Sources\UI\RegionTab.cpp" />
@@ -137,6 +138,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Common.h" />
     <ClInclude Include="Headers\Combo\Items.h" />
     <ClInclude Include="Headers\Combo\MMObjectScene.h" />
     <ClInclude Include="Headers\Combo\NPC.h" />
@@ -152,6 +154,7 @@
     <ClInclude Include="Headers\UI\AppConfig.h" />
     <ClInclude Include="Headers\UI\AppStyle.h" />
     <QtMoc Include="Headers\UI\FilterManager.h" />
+    <ClInclude Include="Headers\UI\MemoryReader.h" />
     <ClInclude Include="Headers\UI\RegionTab.h" />
     <ClInclude Include="Headers\UI\RoomRenderer.h" />
     <ClInclude Include="Headers\UI\Settings.h" />

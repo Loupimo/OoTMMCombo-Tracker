@@ -573,12 +573,6 @@ void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
 					break;
 				}
 
-				case ObjectType::frog_npc:
-				{
-					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleFrogsRupeesOot"].Value, Filter);
-					break;
-				}
-
 				case ObjectType::icicle:
 				{
 					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleIciclesOot"].Value, Filter);
@@ -602,13 +596,6 @@ void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
 					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleMasterSword"].Value, Filter);
 					break;
 				}
-
-				case ObjectType::card_npc:
-				{
-					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleGerudoCard"].Value, Filter);
-					break;
-				}
-
 
 				case ObjectType::mask:
 				{

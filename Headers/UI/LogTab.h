@@ -11,6 +11,7 @@
 #include <QIntValidator>
 #include "ui_OoTMMComboTracker.h"
 #include "Multi/App.h"
+#include "UI/MemoryReader.h"
 #include <thread>
 
 class OoTMMComboTracker;
@@ -54,8 +55,10 @@ public:
     bool IsRunning;                         // Tells if the tracker is running
 
     App * Tracker;                          // A reference to the Nax's app side
+    MemoryReader * MemRead;                 // The memory reader used to directly track the rando progression.
     OoTMMComboTracker* WinOwner = nullptr;  // A reference to the owning window
     std::thread TrackerThread;              // A thread used to run the Nax's app
+    std::thread MemReaderThread;            // A thread used to run the memory reader
 
 #pragma endregion
 

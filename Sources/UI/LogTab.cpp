@@ -183,6 +183,7 @@ LogTab::LogTab(OoTMMComboTracker* Owner, QWidget* parent) : QWidget(parent)
 
     // Init other attribute
     this->Tracker = new App();
+    this->MemRead = new MemoryReader();
 
     // Used to catch messages that come from non GUI thread
     QObject::connect(MultiLogger::GetLogger(), &MultiLogger::LogMsgToView, this, &LogTab::LogMessage);
@@ -197,6 +198,12 @@ LogTab::~LogTab()
         this->TrackerThread.join();
     }
 
+    if (this->MemRead)
+    {
+        this->MemReaderThread.join();
+    }
+
+    delete this->MemRead;
     delete this->Tracker;
     delete this->LaunchButton;
     delete this->NetCheckBox;
@@ -245,6 +252,8 @@ void LogTab::PressLaunchButton()
             this->Tracker->IsRunning = false;
             this->TrackerThread.join();
             this->Tracker->appQuit();
+            this->MemReaderThread.join();
+            this->MemRead->ResetMemoryReader();
         }
         else
         {   // Start the auto-tracker
@@ -269,6 +278,7 @@ void LogTab::PressLaunchButton()
             this->Tracker->IsRunning = true;
 
             this->TrackerThread = std::thread(&App::appRun, this->Tracker, this->EnableMultiplayer, this->Host, this->Port->text().toUShort());
+            this->MemReaderThread = std::thread(&MemoryReader::StartMemoryReader, this->MemRead);
         }
 
         this->LaunchButton->setIcon(launchIcon);

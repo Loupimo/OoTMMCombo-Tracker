@@ -124,6 +124,9 @@
     <ClCompile Include="Sources\UI\Settings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\UI\MemoryReader.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Multi\API.h">
@@ -191,6 +194,12 @@
     </ClInclude>
     <ClInclude Include="Headers\UI\Settings.h">
       <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\UI\MemoryReader.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

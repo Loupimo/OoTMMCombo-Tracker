@@ -205,13 +205,11 @@ enum ObjectType
 	map = boss_key + 1,
 	compass = map + 1,
 	sword = compass + 1,
-	card_npc = sword + 1,
-	ocarina = card_npc + 1,
+	ocarina = sword + 1,
 	merchant = ocarina + 1,
 	mask = merchant + 1,
 	egg = mask + 1,
-	frog_npc = egg + 1,
-	owl = frog_npc + 1,
+	owl = egg + 1,
 
 	last = owl + 1
 };

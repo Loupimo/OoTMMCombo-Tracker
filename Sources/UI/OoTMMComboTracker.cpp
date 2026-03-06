@@ -1,3 +1,4 @@
+#include "Common.h"
 #include "Combo/Objects.h"
 #include "UI/AppConfig.h"
 #include "UI/OoTMMComboTracker.h"
@@ -224,7 +225,7 @@ void OoTMMComboTracker::UpdateRecentFiles()
         return;
     }
     
-    int numRecentFiles = min(this->RecentFiles.size(), this->MaxRecentFiles);
+    int numRecentFiles = std::min((byte)this->RecentFiles.size(), this->MaxRecentFiles);
 
     for (byte i = 0; i < this->MaxRecentFiles; ++i)
     {
