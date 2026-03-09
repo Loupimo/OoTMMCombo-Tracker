@@ -198,8 +198,9 @@ LogTab::~LogTab()
         this->TrackerThread.join();
     }
 
-    if (this->MemRead)
+    if (this->MemRead && this->MemRead->IsRunning)
     {
+        this->MemRead->IsRunning = false;
         this->MemReaderThread.join();
     }
 
@@ -252,6 +253,7 @@ void LogTab::PressLaunchButton()
             this->Tracker->IsRunning = false;
             this->TrackerThread.join();
             this->Tracker->appQuit();
+            this->MemRead->IsRunning = false;
             this->MemReaderThread.join();
             this->MemRead->ResetMemoryReader();
         }

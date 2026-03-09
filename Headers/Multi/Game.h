@@ -5,6 +5,7 @@
 
 #define OOT_GAME 0x00
 #define MM_GAME 0x01
+#define NO_GAME 0x02
 
 class App;
 
