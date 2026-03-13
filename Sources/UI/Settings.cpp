@@ -168,21 +168,21 @@ void Settings::ParseSettings(QString& SettingsSection)
 void Settings::ParseGamesLayouts(QString& LayoutSection)
 {
 	// Reset layouts
-	GetSceneMetaInfo(DEKU_TREE, OOT_GAME)->ActiveLayout = GameLayout::oot;
-	GetSceneMetaInfo(DODONGO_CAVERN, OOT_GAME)->ActiveLayout = GameLayout::oot;
-	GetSceneMetaInfo(INSIDE_JABU_JABU, OOT_GAME)->ActiveLayout = GameLayout::oot;
-	GetSceneMetaInfo(TEMPLE_FOREST, OOT_GAME)->ActiveLayout = GameLayout::oot;
-	GetSceneMetaInfo(TEMPLE_FIRE, OOT_GAME)->ActiveLayout = GameLayout::oot;
-	GetSceneMetaInfo(TEMPLE_WATER, OOT_GAME)->ActiveLayout = GameLayout::oot;
-	GetSceneMetaInfo(TEMPLE_SHADOW, OOT_GAME)->ActiveLayout = GameLayout::oot;
-	GetSceneMetaInfo(TEMPLE_SPIRIT, OOT_GAME)->ActiveLayout = GameLayout::oot;
-	GetSceneMetaInfo(BOTTOM_OF_THE_WELL, OOT_GAME)->ActiveLayout = GameLayout::oot;
-	GetSceneMetaInfo(GERUDO_TRAINING_GROUND, OOT_GAME)->ActiveLayout = GameLayout::oot;
-	GetSceneMetaInfo(ICE_CAVERN, OOT_GAME)->ActiveLayout = GameLayout::oot;
-	GetSceneMetaInfo(INSIDE_GANON_CASTLE, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(OOT_DEKU_TREE, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(OOT_DODONGO_CAVERN, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(OOT_INSIDE_JABU_JABU, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(OOT_TEMPLE_FOREST, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(OOT_TEMPLE_FIRE, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(OOT_TEMPLE_WATER, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(OOT_TEMPLE_SHADOW, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(OOT_TEMPLE_SPIRIT, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(OOT_BOTTOM_OF_THE_WELL, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(OOT_GERUDO_TRAINING_GROUND, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(OOT_ICE_CAVERN, OOT_GAME)->ActiveLayout = GameLayout::oot;
+	GetSceneMetaInfo(OOT_INSIDE_GANON_CASTLE, OOT_GAME)->ActiveLayout = GameLayout::oot;
 
 	GetSceneMetaInfo(MM_GROTTOS, MM_GAME)->ActiveLayout = GameLayout::mm;
-	GetSceneMetaInfo(DEKU_PALACE, MM_GAME)->ActiveLayout = GameLayout::mm;
+	GetSceneMetaInfo(MM_DEKU_PALACE, MM_GAME)->ActiveLayout = GameLayout::mm;
 	GetSceneMetaInfo(MM_GROTTO_DEKU_PALACE_GENERIC, MM_GAME)->ActiveLayout = GameLayout::mm;
 
 	QRegularExpression reg("^  ((?:Master Quest Dungeons|Majora's Mask JP Layouts):(?: \\w*|(?:\n    - .+)*))", QRegularExpression::MultilineOption);
@@ -203,18 +203,18 @@ void Settings::ParseGamesLayouts(QString& LayoutSection)
 				if (layoutParams.at(1) == "all")
 				{	// All MQ
 
-					GetSceneMetaInfo(DEKU_TREE, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
-					GetSceneMetaInfo(DODONGO_CAVERN, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
-					GetSceneMetaInfo(INSIDE_JABU_JABU, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
-					GetSceneMetaInfo(TEMPLE_FOREST, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
-					GetSceneMetaInfo(TEMPLE_FIRE, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
-					GetSceneMetaInfo(TEMPLE_WATER, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
-					GetSceneMetaInfo(TEMPLE_SHADOW, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
-					GetSceneMetaInfo(TEMPLE_SPIRIT, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
-					GetSceneMetaInfo(BOTTOM_OF_THE_WELL, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
-					GetSceneMetaInfo(ICE_CAVERN, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
-					GetSceneMetaInfo(GERUDO_TRAINING_GROUND, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
-					GetSceneMetaInfo(INSIDE_GANON_CASTLE, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(OOT_DEKU_TREE, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(OOT_DODONGO_CAVERN, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(OOT_INSIDE_JABU_JABU, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(OOT_TEMPLE_FOREST, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(OOT_TEMPLE_FIRE, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(OOT_TEMPLE_WATER, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(OOT_TEMPLE_SHADOW, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(OOT_TEMPLE_SPIRIT, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(OOT_BOTTOM_OF_THE_WELL, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(OOT_ICE_CAVERN, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(OOT_GERUDO_TRAINING_GROUND, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+					GetSceneMetaInfo(OOT_INSIDE_GANON_CASTLE, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
 				}
 			}
 			else
@@ -224,7 +224,7 @@ void Settings::ParseGamesLayouts(QString& LayoutSection)
 				{	// All JP
 
 					GetSceneMetaInfo(MM_GROTTOS, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
-					GetSceneMetaInfo(DEKU_PALACE, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
+					GetSceneMetaInfo(MM_DEKU_PALACE, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
 					GetSceneMetaInfo(MM_GROTTO_DEKU_PALACE_GENERIC, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
 				}
 			}
@@ -241,51 +241,51 @@ void Settings::ParseGamesLayouts(QString& LayoutSection)
 
 					if (currScene == "Deku Tree")
 					{
-						GetSceneMetaInfo(DEKU_TREE, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+						GetSceneMetaInfo(OOT_DEKU_TREE, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
 					}
 					else if (currScene == "Dodongo cavern")
 					{
-						GetSceneMetaInfo(DODONGO_CAVERN, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+						GetSceneMetaInfo(OOT_DODONGO_CAVERN, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
 					}
 					else if (currScene == "Jabu-Jabu")
 					{
-						GetSceneMetaInfo(INSIDE_JABU_JABU, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+						GetSceneMetaInfo(OOT_INSIDE_JABU_JABU, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
 					}
 					else if (currScene == "Forest Temple")
 					{
-						GetSceneMetaInfo(TEMPLE_FOREST, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+						GetSceneMetaInfo(OOT_TEMPLE_FOREST, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
 					}
 					else if (currScene == "Fire Temple")
 					{
-						GetSceneMetaInfo(TEMPLE_FIRE, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+						GetSceneMetaInfo(OOT_TEMPLE_FIRE, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
 					}
 					else if (currScene == "Water Temple")
 					{
-						GetSceneMetaInfo(TEMPLE_WATER, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+						GetSceneMetaInfo(OOT_TEMPLE_WATER, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
 					}
 					else if (currScene == "Shadow Temple")
 					{
-						GetSceneMetaInfo(TEMPLE_SHADOW, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+						GetSceneMetaInfo(OOT_TEMPLE_SHADOW, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
 					}
 					else if (currScene == "Spirit Temple")
 					{
-						GetSceneMetaInfo(TEMPLE_SPIRIT, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+						GetSceneMetaInfo(OOT_TEMPLE_SPIRIT, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
 					}
 					else if (currScene == "Bottom of the Well")
 					{
-						GetSceneMetaInfo(BOTTOM_OF_THE_WELL, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+						GetSceneMetaInfo(OOT_BOTTOM_OF_THE_WELL, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
 					}
 					else if (currScene == "Ice Cavern")
 					{
-						GetSceneMetaInfo(ICE_CAVERN, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+						GetSceneMetaInfo(OOT_ICE_CAVERN, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
 					}
 					else if (currScene == "Gerudo Training Grounds")
 					{
-						GetSceneMetaInfo(GERUDO_TRAINING_GROUND, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+						GetSceneMetaInfo(OOT_GERUDO_TRAINING_GROUND, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
 					}
 					else if (currScene == "Ganon's Castle")
 					{
-						GetSceneMetaInfo(INSIDE_GANON_CASTLE, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
+						GetSceneMetaInfo(OOT_INSIDE_GANON_CASTLE, OOT_GAME)->ActiveLayout = GameLayout::oot_mq;
 					}
 				}
 			}
@@ -301,7 +301,7 @@ void Settings::ParseGamesLayouts(QString& LayoutSection)
 					{	// Deku Palace layout
 
 						GetSceneMetaInfo(MM_GROTTOS, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
-						GetSceneMetaInfo(DEKU_PALACE, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
+						GetSceneMetaInfo(MM_DEKU_PALACE, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
 						GetSceneMetaInfo(MM_GROTTO_DEKU_PALACE_GENERIC, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
 					}
 				}
@@ -429,7 +429,7 @@ void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
 
 				case ObjectType::small_key:
 				{
-					if (currObj->Scene == THIEVES_HIDEOUT)
+					if (currObj->Scene == OOT_THIEVES_HIDEOUT)
 					{	// Hideout small key
 
 						this->CheckObjectExclusion(currObj, this->ROMSettings["smallKeyShuffleHideout"].Value, Filter);
@@ -449,7 +449,7 @@ void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
 
 				case ObjectType::boss_key:
 				{
-					if (currObj->Scene == GANON_TOWER)
+					if (currObj->Scene == OOT_GANON_TOWER)
 					{	// Ganon boss key
 
 						this->CheckObjectExclusion(currObj, this->ROMSettings["ganonBossKey"].Value, Filter);
@@ -671,7 +671,7 @@ void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
 	if (this->ROMSettings["restoreBrokenActors"].Value != ShuffleSetting::all)
 	{	// Restore broken actor is not active. Hide broken actors
 
-		uint32_t sceneToCheck[3] = { DODONGO_CAVERN, HYRULE_CASTLE, LAKE_HYLIA };
+		uint32_t sceneToCheck[3] = { OOT_DODONGO_CAVERN, OOT_HYRULE_CASTLE, OOT_LAKE_HYLIA };
 
 		for (uint32_t i = 0; i < 3; i++)
 		{	// Browse all scenes that contains broken actors

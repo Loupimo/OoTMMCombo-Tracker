@@ -165,6 +165,31 @@ def parse_scene(input_file, output_file, game):
             objectstr = objectstr + "\t{ \"" + scenestr + "\", \"" + image_path + "\", (uint8_t) " + parent_region + ", " + str(has_context).lower() + ", GameLayout::" + active_layout + "}"
             outfile.write(objectstr)
 
+
+def parse_entrance(input_file, output_file):
+    """Parse un fichier pour convertir les lignes en EntranceMetaInfo."""
+    with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
+        filereader = pd.read_csv(infile, delimiter=";", header=0, keep_default_na=False)
+        isFirst = True
+        for i, row in filereader.iterrows():
+            objectstr = ""
+            if isFirst == False :
+                objectstr = ",\n"
+            else:
+                isFirst = False
+
+            entrance_code = row["Code_Name"]
+            entridstr = row["ID"]
+            sceneidstr = row["Scene"]
+            entrancestr = row["Friendly_Name"]
+            image_path = row["Image_Path"]
+            active_layout = row["Active_Layout"]
+
+            objectstr = objectstr + "\t{ " + str(entrance_code) + ", { " + str(entrance_code) + ", " + str(sceneidstr) + ", \"" + entrancestr + "\", \"" + image_path + "\", GameLayout::" + active_layout + " } }"
+            outfile.write(objectstr)
+            print ("#define " + entrance_code + " " + entridstr)
+
+
 def parse_items(input_file, output_file, arrayname):
     """Parse un fichier pour convertir les lignes RGB en hexadécimal."""
     with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
@@ -265,6 +290,20 @@ print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_fil
 input_file = '..\\Scenes\\scenes_mm.csv'
 output_file = '..\\Scenes\\scenes_mm.txt'
 parse_scene(input_file, output_file, "MM")
+#
+print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
+
+
+input_file = '..\\Scenes\\entrances_mm.csv'
+output_file = '..\\Scenes\\entrance_mm.txt'
+parse_entrance(input_file, output_file)
+#
+print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
+#
+
+input_file = '..\\Scenes\\entrances_oot.csv'
+output_file = '..\\Scenes\\entrance_oot.txt'
+parse_entrance(input_file, output_file)
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
 #

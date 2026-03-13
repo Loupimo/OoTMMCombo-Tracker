@@ -27,7 +27,7 @@ void CorrectComboItem(ComboItem* Item)
 					Item->SceneID = GetSceneNPC(Item->ObjectID, OOT_GAME);
 					break;
 				case OV_FISH:
-					Item->SceneID = FISHING_POND;
+					Item->SceneID = OOT_FISHING_POND;
 					break;
 				case OV_SR:
 					Item->SceneID = GetSceneSR(Item->ObjectID);

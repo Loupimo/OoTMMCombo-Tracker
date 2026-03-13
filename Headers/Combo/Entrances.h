@@ -2,21 +2,17 @@
 
 #include "Combo/Scenes.h"
 #include "Multi/Game.h"
+#include <map>
 
-typedef struct Entrance
+
+typedef struct EntranceMetaInfo
 {
 	uint32_t EntranceID;
 	uint32_t SceneID;
 	const char* Name;
-} Entrance;
-
-const size_t OoTNumOfEntrances = 3;
-const Entrance OoTEntrances[OoTNumOfEntrances] =
-{
-	{ 0x5a0, OOT_GROTTO_KAKARIKO_REDEAD, "Kakariko - Redead Grotto"},
-	{ 0x1f9, LON_LON_RANCH, "Ranch Lon Lon - From Field"},
-
-};
+	const char* ImagePath;
+	GameLayout ActiveLayout;
+} EntranceMetaInfo;
 
 
 class EntranceHelper
@@ -72,6 +68,13 @@ public:
 	void ReadEntranceID(int Game, uint8_t* RAMData);
 
 	/*
+	*   Check if the current entrance ID is from a grotto.
+	*
+	*   @return <b>True</b> if the ID is associated to a grotto, <b>false</b> otherwise.
+	*/
+	bool IsGrottoEntrance();
+
+	/*
 	*   Check if the current last touched entrance ID is from a grotto.
 	*
 	*   @return <b>True</b> if the ID is associated to a grotto, <b>false</b> otherwise.
@@ -79,11 +82,18 @@ public:
 	bool IsGrottoExit();
 
 	/*
-	*   Get the scene grotto associated to the current last entrance ID.
+	*   Get the entrance grotto associated to the current last entrance ID.
 	*
 	*   @return The scene grotto associated to the touched exit.
 	*/
-	uint32_t GetSceneGrotto(int Game, uint8_t* RAMData);
+	uint32_t GetGrottoEntrance(int Game, uint8_t* RAMData);
+
+	/*
+	*   Get the exit grotto associated to the current last entrance ID.
+	*
+	*   @return The scene grotto associated to the touched exit.
+	*/
+	uint32_t GetGrottoExit(int Game, uint8_t* RAMData);
 
 #pragma endregion
 };

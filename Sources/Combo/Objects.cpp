@@ -11,132 +11,135 @@
 #pragma region OoT
 
 // Empty Scenes
-CreateEmptyScene(GANON_TOWER_COLLAPSING)
-CreateEmptyScene(INSIDE_GANON_CASTLE_COLLAPSING)
-CreateEmptyScene(LAIR_GANONDORF)
-CreateEmptyScene(TOWER_COLLAPSE_EXTERIOR)
-CreateEmptyScene(MARKET_ENTRANCE_CHILD_DAY)
-CreateEmptyScene(MARKET_ENTRANCE_CHILD_NIGHT)
-CreateEmptyScene(MARKET_ENTRANCE_ADULT)
-CreateEmptyScene(BACK_ALLEY_DAY)
-CreateEmptyScene(BACK_ALLEY_NIGHT)
-CreateEmptyScene(MARKET_ADULT)
-CreateEmptyScene(TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY)
-CreateEmptyScene(TEMPLE_OF_TIME_EXTERIOR_CHILD_NIGHT)
-CreateEmptyScene(TEMPLE_OF_TIME_EXTERIOR_ADULT)
-CreateEmptyScene(CARPENTER_BOSS_HOUSE)
-CreateEmptyScene(HAPPY_MASK_SHOP)
-CreateEmptyScene(CARPENTER_TENT)
-CreateEmptyScene(GRAVEKEEPER_HUT)
-CreateEmptyScene(CHAMBER_OF_THE_SAGES)
-CreateEmptyScene(CASTLE_MAZE_DAY)
-CreateEmptyScene(CASTLE_MAZE_NIGHT)
+CreateEmptyScene(OOT_GANON_TOWER_COLLAPSING)
+CreateEmptyScene(OOT_INSIDE_GANON_CASTLE_COLLAPSING)
+CreateEmptyScene(OOT_LAIR_GANONDORF)
+CreateEmptyScene(OOT_TOWER_COLLAPSE_EXTERIOR)
+CreateEmptyScene(OOT_MARKET_ENTRANCE_CHILD_DAY)
+CreateEmptyScene(OOT_MARKET_ENTRANCE_CHILD_NIGHT)
+CreateEmptyScene(OOT_MARKET_ENTRANCE_ADULT)
+CreateEmptyScene(OOT_BACK_ALLEY_DAY)
+CreateEmptyScene(OOT_BACK_ALLEY_NIGHT)
+CreateEmptyScene(OOT_MARKET_ADULT)
+CreateEmptyScene(OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY)
+CreateEmptyScene(OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_NIGHT)
+CreateEmptyScene(OOT_TEMPLE_OF_TIME_EXTERIOR_ADULT)
+CreateEmptyScene(OOT_CARPENTER_BOSS_HOUSE)
+CreateEmptyScene(OOT_HAPPY_MASK_SHOP)
+CreateEmptyScene(OOT_CARPENTER_TENT)
+CreateEmptyScene(OOT_GRAVEKEEPER_HUT)
+CreateEmptyScene(OOT_CHAMBER_OF_THE_SAGES)
+CreateEmptyScene(OOT_CASTLE_MAZE_DAY)
+CreateEmptyScene(OOT_CASTLE_MAZE_NIGHT)
 CreateEmptyScene(OOT_CUTSCENE_MAP)
-CreateEmptyScene(GANON_BATTLE_ARENA)
+CreateEmptyScene(OOT_GANON_BATTLE_ARENA)
+CreateEmptyScene(OOT_MARKET_ENTRANCE)
+CreateEmptyScene(OOT_TEMPLE_OF_TIME_ENTRYWAY)
+CreateEmptyScene(OOT_DAMPE_HOUSE)
 
 SceneObjects OoTSceneObjects[OOT_NUM_SCENES] =
 {
-	CreateSceneObjects(DEKU_TREE),
-	CreateSceneObjects(DODONGO_CAVERN),
-	CreateSceneObjects(INSIDE_JABU_JABU),
-	CreateSceneObjects(TEMPLE_FOREST),
-	CreateSceneObjects(TEMPLE_FIRE),
-	CreateSceneObjects(TEMPLE_WATER),
-	CreateSceneObjects(TEMPLE_SPIRIT),
-	CreateSceneObjects(TEMPLE_SHADOW),
-	CreateSceneObjects(BOTTOM_OF_THE_WELL),
-	CreateSceneObjects(ICE_CAVERN),
-	CreateSceneObjects(GANON_TOWER),
-	CreateSceneObjects(GERUDO_TRAINING_GROUND),
-	CreateSceneObjects(THIEVES_HIDEOUT),
-	CreateSceneObjects(INSIDE_GANON_CASTLE),
-	CreateSceneObjects(GANON_TOWER_COLLAPSING),
-	CreateSceneObjects(INSIDE_GANON_CASTLE_COLLAPSING),
+	CreateSceneObjects(OOT_DEKU_TREE),
+	CreateSceneObjects(OOT_DODONGO_CAVERN),
+	CreateSceneObjects(OOT_INSIDE_JABU_JABU),
+	CreateSceneObjects(OOT_TEMPLE_FOREST),
+	CreateSceneObjects(OOT_TEMPLE_FIRE),
+	CreateSceneObjects(OOT_TEMPLE_WATER),
+	CreateSceneObjects(OOT_TEMPLE_SPIRIT),
+	CreateSceneObjects(OOT_TEMPLE_SHADOW),
+	CreateSceneObjects(OOT_BOTTOM_OF_THE_WELL),
+	CreateSceneObjects(OOT_ICE_CAVERN),
+	CreateSceneObjects(OOT_GANON_TOWER),
+	CreateSceneObjects(OOT_GERUDO_TRAINING_GROUND),
+	CreateSceneObjects(OOT_THIEVES_HIDEOUT),
+	CreateSceneObjects(OOT_INSIDE_GANON_CASTLE),
+	CreateSceneObjects(OOT_GANON_TOWER_COLLAPSING),
+	CreateSceneObjects(OOT_INSIDE_GANON_CASTLE_COLLAPSING),
 	CreateSceneObjects(OOT_TREASURE_SHOP),
-	CreateSceneObjects(LAIR_GOHMA),
-	CreateSceneObjects(LAIR_KING_DODONGO),
-	CreateSceneObjects(LAIR_BARINADE),
-	CreateSceneObjects(LAIR_PHANTOM_GANON),
-	CreateSceneObjects(LAIR_VOLVAGIA),
-	CreateSceneObjects(LAIR_MORPHA),
-	CreateSceneObjects(LAIR_TWINROVA),
-	CreateSceneObjects(LAIR_BONGO_BONGO),
-	CreateSceneObjects(LAIR_GANONDORF),
-	CreateSceneObjects(TOWER_COLLAPSE_EXTERIOR),
-	CreateSceneObjects(MARKET_ENTRANCE_CHILD_DAY),
-	CreateSceneObjects(MARKET_ENTRANCE_CHILD_NIGHT),
-	CreateSceneObjects(MARKET_ENTRANCE_ADULT),
-	CreateSceneObjects(BACK_ALLEY_DAY),
-	CreateSceneObjects(BACK_ALLEY_NIGHT),
-	CreateSceneObjects(MARKET_CHILD_DAY),
-	CreateSceneObjects(MARKET_CHILD_NIGHT),
-	CreateSceneObjects(MARKET_ADULT),
-	CreateSceneObjects(TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY),
-	CreateSceneObjects(TEMPLE_OF_TIME_EXTERIOR_CHILD_NIGHT),
-	CreateSceneObjects(TEMPLE_OF_TIME_EXTERIOR_ADULT),
-	CreateSceneObjects(KOKIRI_KNOW_IT_ALL),
-	CreateSceneObjects(KOKIRI_TWINS),
-	CreateSceneObjects(KOKIRI_MIDO),
-	CreateSceneObjects(KOKIRI_SARIA),
-	CreateSceneObjects(CARPENTER_BOSS_HOUSE),
-	CreateSceneObjects(BACK_ALLEY_HOUSE),
-	CreateSceneObjects(BAZAAR),
-	CreateSceneObjects(KOKIRI_SHOP),
+	CreateSceneObjects(OOT_LAIR_GOHMA),
+	CreateSceneObjects(OOT_LAIR_KING_DODONGO),
+	CreateSceneObjects(OOT_LAIR_BARINADE),
+	CreateSceneObjects(OOT_LAIR_PHANTOM_GANON),
+	CreateSceneObjects(OOT_LAIR_VOLVAGIA),
+	CreateSceneObjects(OOT_LAIR_MORPHA),
+	CreateSceneObjects(OOT_LAIR_TWINROVA),
+	CreateSceneObjects(OOT_LAIR_BONGO_BONGO),
+	CreateSceneObjects(OOT_LAIR_GANONDORF),
+	CreateSceneObjects(OOT_TOWER_COLLAPSE_EXTERIOR),
+	CreateSceneObjects(OOT_MARKET_ENTRANCE_CHILD_DAY),
+	CreateSceneObjects(OOT_MARKET_ENTRANCE_CHILD_NIGHT),
+	CreateSceneObjects(OOT_MARKET_ENTRANCE_ADULT),
+	CreateSceneObjects(OOT_BACK_ALLEY_DAY),
+	CreateSceneObjects(OOT_BACK_ALLEY_NIGHT),
+	CreateSceneObjects(OOT_MARKET_CHILD_DAY),
+	CreateSceneObjects(OOT_MARKET_CHILD_NIGHT),
+	CreateSceneObjects(OOT_MARKET_ADULT),
+	CreateSceneObjects(OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY),
+	CreateSceneObjects(OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_NIGHT),
+	CreateSceneObjects(OOT_TEMPLE_OF_TIME_EXTERIOR_ADULT),
+	CreateSceneObjects(OOT_KOKIRI_KNOW_IT_ALL),
+	CreateSceneObjects(OOT_KOKIRI_TWINS),
+	CreateSceneObjects(OOT_KOKIRI_MIDO),
+	CreateSceneObjects(OOT_KOKIRI_SARIA),
+	CreateSceneObjects(OOT_CARPENTER_BOSS_HOUSE),
+	CreateSceneObjects(OOT_BACK_ALLEY_HOUSE),
+	CreateSceneObjects(OOT_BAZAAR),
+	CreateSceneObjects(OOT_KOKIRI_SHOP),
 	CreateSceneObjects(OOT_GORON_SHOP),
-	CreateSceneObjects(ZORA_SHOP),
-	CreateSceneObjects(KAKARIKO_POTION_SHOP),
-	CreateSceneObjects(MARKET_POTION_SHOP),
-	CreateSceneObjects(BOMBCHU_SHOP),
-	CreateSceneObjects(HAPPY_MASK_SHOP),
-	CreateSceneObjects(LINK_HOUSE),
-	CreateSceneObjects(BACK_ALLEY_HOUSE2),
-	CreateSceneObjects(STABLE),
-	CreateSceneObjects(IMPA_HOUSE),
+	CreateSceneObjects(OOT_ZORA_SHOP),
+	CreateSceneObjects(OOT_KAKARIKO_POTION_SHOP),
+	CreateSceneObjects(OOT_MARKET_POTION_SHOP),
+	CreateSceneObjects(OOT_BOMBCHU_SHOP),
+	CreateSceneObjects(OOT_HAPPY_MASK_SHOP),
+	CreateSceneObjects(OOT_LINK_HOUSE),
+	CreateSceneObjects(OOT_BACK_ALLEY_HOUSE2),
+	CreateSceneObjects(OOT_STABLE),
+	CreateSceneObjects(OOT_IMPA_HOUSE),
 	CreateSceneObjects(OOT_LABORATORY),
-	CreateSceneObjects(CARPENTER_TENT),
-	CreateSceneObjects(GRAVEKEEPER_HUT),
-	CreateSceneObjects(GREAT_FAIRY_FOUNTAIN_UPGRADES),
+	CreateSceneObjects(OOT_CARPENTER_TENT),
+	CreateSceneObjects(OOT_GRAVEKEEPER_HUT),
+	CreateSceneObjects(OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES),
 	CreateSceneObjects(OOT_FAIRY_FOUNTAIN),
-	CreateSceneObjects(GREAT_FAIRY_FOUNTAIN_SPELLS),
+	CreateSceneObjects(OOT_GREAT_FAIRY_FOUNTAIN_SPELLS),
 	CreateSceneObjects(OOT_GROTTOS),
-	CreateSceneObjects(TOMB_REDEAD),
-	CreateSceneObjects(TOMB_FAIRY),
-	CreateSceneObjects(TOMB_ROYAL),
+	CreateSceneObjects(OOT_TOMB_REDEAD),
+	CreateSceneObjects(OOT_TOMB_FAIRY),
+	CreateSceneObjects(OOT_TOMB_ROYAL),
 	CreateSceneObjects(OOT_SHOOTING_GALLERY),
-	CreateSceneObjects(TEMPLE_OF_TIME),
-	CreateSceneObjects(CHAMBER_OF_THE_SAGES),
-	CreateSceneObjects(CASTLE_MAZE_DAY),
-	CreateSceneObjects(CASTLE_MAZE_NIGHT),
+	CreateSceneObjects(OOT_TEMPLE_OF_TIME),
+	CreateSceneObjects(OOT_CHAMBER_OF_THE_SAGES),
+	CreateSceneObjects(OOT_CASTLE_MAZE_DAY),
+	CreateSceneObjects(OOT_CASTLE_MAZE_NIGHT),
 	CreateSceneObjects(OOT_CUTSCENE_MAP),
-	CreateSceneObjects(TOMB_DAMPE_WINDMILL),
-	CreateSceneObjects(FISHING_POND),
-	CreateSceneObjects(CASTLE_COURTYARD),
-	CreateSceneObjects(BOMBCHU_BOWLING_ALLEY),
-	CreateSceneObjects(RANCH_HOUSE_SILO),
-	CreateSceneObjects(GUARD_HOUSE),
-	CreateSceneObjects(GRANNY_POTION_SHOP),
-	CreateSceneObjects(GANON_BATTLE_ARENA),
-	CreateSceneObjects(HOUSE_OF_SKULLTULA),
-	CreateSceneObjects(HYRULE_FIELD),
-	CreateSceneObjects(KAKARIKO_VILLAGE),
-	CreateSceneObjects(GRAVEYARD),
-	CreateSceneObjects(ZORA_RIVER),
-	CreateSceneObjects(KOKIRI_FOREST),
-	CreateSceneObjects(SACRED_FOREST_MEADOW),
-	CreateSceneObjects(LAKE_HYLIA),
-	CreateSceneObjects(ZORA_DOMAIN),
-	CreateSceneObjects(ZORA_FOUNTAIN),
-	CreateSceneObjects(GERUDO_VALLEY),
+	CreateSceneObjects(OOT_TOMB_DAMPE_WINDMILL),
+	CreateSceneObjects(OOT_FISHING_POND),
+	CreateSceneObjects(OOT_CASTLE_COURTYARD),
+	CreateSceneObjects(OOT_BOMBCHU_BOWLING_ALLEY),
+	CreateSceneObjects(OOT_RANCH_HOUSE_SILO),
+	CreateSceneObjects(OOT_GUARD_HOUSE),
+	CreateSceneObjects(OOT_GRANNY_POTION_SHOP),
+	CreateSceneObjects(OOT_GANON_BATTLE_ARENA),
+	CreateSceneObjects(OOT_HOUSE_OF_SKULLTULA),
+	CreateSceneObjects(OOT_HYRULE_FIELD),
+	CreateSceneObjects(OOT_KAKARIKO_VILLAGE),
+	CreateSceneObjects(OOT_GRAVEYARD),
+	CreateSceneObjects(OOT_ZORA_RIVER),
+	CreateSceneObjects(OOT_KOKIRI_FOREST),
+	CreateSceneObjects(OOT_SACRED_FOREST_MEADOW),
+	CreateSceneObjects(OOT_LAKE_HYLIA),
+	CreateSceneObjects(OOT_ZORA_DOMAIN),
+	CreateSceneObjects(OOT_ZORA_FOUNTAIN),
+	CreateSceneObjects(OOT_GERUDO_VALLEY),
 	CreateSceneObjects(OOT_LOST_WOODS),
-	CreateSceneObjects(DESERT_COLOSSUS),
-	CreateSceneObjects(GERUDO_FORTRESS),
-	CreateSceneObjects(HAUNTED_WASTELAND),
-	CreateSceneObjects(HYRULE_CASTLE),
-	CreateSceneObjects(DEATH_MOUNTAIN_TRAIL),
-	CreateSceneObjects(DEATH_MOUNTAIN_CRATER),
-	CreateSceneObjects(GORON_CITY),
-	CreateSceneObjects(LON_LON_RANCH),
-	CreateSceneObjects(GANON_CASTLE_EXTERIOR),
+	CreateSceneObjects(OOT_DESERT_COLOSSUS),
+	CreateSceneObjects(OOT_GERUDO_FORTRESS),
+	CreateSceneObjects(OOT_HAUNTED_WASTELAND),
+	CreateSceneObjects(OOT_HYRULE_CASTLE),
+	CreateSceneObjects(OOT_DEATH_MOUNTAIN_TRAIL),
+	CreateSceneObjects(OOT_DEATH_MOUNTAIN_CRATER),
+	CreateSceneObjects(OOT_GORON_CITY),
+	CreateSceneObjects(OOT_LON_LON_RANCH),
+	CreateSceneObjects(OOT_GANON_CASTLE_EXTERIOR),
 
 	// OoT detailed grotto scene
 	CreateSceneObjects(OOT_GROTTO_KOKIRI_FOREST_STORMS),
@@ -183,16 +186,19 @@ SceneObjects OoTSceneObjects[OOT_NUM_SCENES] =
 	CreateSceneObjects(OOT_GREAT_FAIRY_MAGIC2),
 
 	// OoT detailed other scene
-	CreateSceneObjects(KAKARIKO_BAZAAR),
-	CreateSceneObjects(MARKET_BAZAAR),
-	CreateSceneObjects(KAKARIKO_SHOOTING),
-	CreateSceneObjects(MARKET_SHOOTING),
-	CreateSceneObjects(SILO),
-	CreateSceneObjects(WINDMILL),
+	CreateSceneObjects(OOT_KAKARIKO_BAZAAR),
+	CreateSceneObjects(OOT_MARKET_BAZAAR),
+	CreateSceneObjects(OOT_KAKARIKO_SHOOTING),
+	CreateSceneObjects(OOT_MARKET_SHOOTING),
+	CreateSceneObjects(OOT_SILO),
+	CreateSceneObjects(OOT_WINDMILL),
+	CreateSceneObjects(OOT_MARKET_ENTRANCE),
+	CreateSceneObjects(OOT_TEMPLE_OF_TIME_ENTRYWAY),
+	CreateSceneObjects(OOT_DAMPE_HOUSE),
 
 	// Spoiler Log
-	CreateSceneObjects(INSIDE_EGGS),
-	CreateSceneObjects(MARKET)
+	CreateSceneObjects(OOT_INSIDE_EGGS),
+	CreateSceneObjects(OOT_MARKET)
 };
 
 #pragma endregion
@@ -200,152 +206,163 @@ SceneObjects OoTSceneObjects[OOT_NUM_SCENES] =
 #pragma region MM
 
 // Empty scene objects
-CreateEmptyScene(FISHERMAN_HUT)
-CreateEmptyScene(BENEATH_THE_GRAVEYARD_NIGHT1)
-CreateEmptyScene(BENEATH_THE_GRAVEYARD_NIGHT2)
-CreateEmptyScene(INSIDE_CASTLE_IKANA)
-CreateEmptyScene(SOUTHERN_SWAMP_CLEAR)
+CreateEmptyScene(MM_FISHERMAN_HUT)
+CreateEmptyScene(MM_BENEATH_THE_GRAVEYARD_NIGHT1)
+CreateEmptyScene(MM_BENEATH_THE_GRAVEYARD_NIGHT2)
+CreateEmptyScene(MM_INSIDE_CASTLE_IKANA)
+CreateEmptyScene(MM_SOUTHERN_SWAMP_CLEAR)
 CreateEmptyScene(MM_CUTSCENE_MAP)
-CreateEmptyScene(OPENING)
-CreateEmptyScene(GORON_VILLAGE_SPRING)
-CreateEmptyScene(GREAT_BAY_CUTSCENE)
-CreateEmptyScene(CLOCK_TOWER_INTERIOR)
+CreateEmptyScene(MM_OPENING)
+CreateEmptyScene(MM_GORON_VILLAGE_SPRING)
+CreateEmptyScene(MM_GREAT_BAY_CUTSCENE)
+CreateEmptyScene(MM_CLOCK_TOWER_INTERIOR)
 CreateEmptyScene(MM_LOST_WOODS)
-CreateEmptyScene(GIANT_CHAMBER)
-CreateEmptyScene(PATH_SNOWHEAD_SPRING)
-CreateEmptyScene(PATH_MOUNTAIN_VILLAGE_SPRING)
-CreateEmptyScene(SNOWHEAD_SPRING)
-CreateEmptyScene(ROMANI_RANCH_BARN)
+CreateEmptyScene(MM_GIANT_CHAMBER)
+CreateEmptyScene(MM_PATH_SNOWHEAD_SPRING)
+CreateEmptyScene(MM_PATH_MOUNTAIN_VILLAGE_SPRING)
+CreateEmptyScene(MM_SNOWHEAD_SPRING)
+CreateEmptyScene(MM_ZORA_JAPAS_ROOM)
+CreateEmptyScene(MM_ZORA_TIJO_ROOM)
+CreateEmptyScene(MM_ZORA_LULU_ROOM)
+CreateEmptyScene(MM_ROMANI_RANCH_BARN)
+CreateEmptyScene(MM_PIRATE_SEWERS)
 CreateEmptyScene(MM_GROTTO_TERMINA_SWAMP_GOSSIP)
 CreateEmptyScene(MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP)
+CreateEmptyScene(MM_GROTTO_DEKU_PALACE_CLIMB)
 
 SceneObjects MMSceneObjects[MM_NUM_SCENES] =
 {
-	CreateSceneObjects(SOUTHERN_SWAMP_CLEAR),
+	CreateSceneObjects(MM_SOUTHERN_SWAMP_CLEAR),
 	CreateSceneObjects(MM_FAIRY_SNOWHEAD),
 	CreateSceneObjects(MM_FAIRY_GREAT_BAY_COAST),
 	CreateSceneObjects(MM_FAIRY_WOODFALL),
 	CreateSceneObjects(MM_FAIRY_CLOCK_TOWN),
 	CreateSceneObjects(MM_FAIRY_IKANA),
-	CreateSceneObjects(PATH_SNOWHEAD_SPRING),
+	CreateSceneObjects(MM_PATH_SNOWHEAD_SPRING),
 	CreateSceneObjects(MM_GROTTOS),
 	CreateSceneObjects(MM_CUTSCENE_MAP),
-	CreateSceneObjects(PATH_MOUNTAIN_VILLAGE_SPRING),
-	CreateSceneObjects(POTION_SHOP),
-	CreateSceneObjects(LAIR_MAJORA),
-	CreateSceneObjects(BENEATH_THE_GRAVEYARD),
-	CreateSceneObjects(CURIOSITY_SHOP),
-	CreateSceneObjects(BENEATH_THE_GRAVEYARD_NIGHT1),
-	CreateSceneObjects(BENEATH_THE_GRAVEYARD_NIGHT2),
-	CreateSceneObjects(RANCH_HOUSE_BARN),
-	CreateSceneObjects(HONEY_DARLING),
-	CreateSceneObjects(MAYOR_HOUSE),
-	CreateSceneObjects(IKANA_CANYON),
-	CreateSceneObjects(PIRATE_FORTRESS_EXTERIOR),
-	CreateSceneObjects(MILK_BAR),
-	CreateSceneObjects(TEMPLE_STONE_TOWER),
+	CreateSceneObjects(MM_PATH_MOUNTAIN_VILLAGE_SPRING),
+	CreateSceneObjects(MM_POTION_SHOP),
+	CreateSceneObjects(MM_LAIR_MAJORA),
+	CreateSceneObjects(MM_BENEATH_THE_GRAVEYARD),
+	CreateSceneObjects(MM_CURIOSITY_SHOP),
+	CreateSceneObjects(MM_BENEATH_THE_GRAVEYARD_NIGHT1),
+	CreateSceneObjects(MM_BENEATH_THE_GRAVEYARD_NIGHT2),
+	CreateSceneObjects(MM_RANCH_HOUSE_BARN),
+	CreateSceneObjects(MM_HONEY_DARLING),
+	CreateSceneObjects(MM_MAYOR_HOUSE),
+	CreateSceneObjects(MM_IKANA_CANYON),
+	CreateSceneObjects(MM_PIRATE_FORTRESS_EXTERIOR),
+	CreateSceneObjects(MM_MILK_BAR),
+	CreateSceneObjects(MM_TEMPLE_STONE_TOWER),
 	CreateSceneObjects(MM_TREASURE_SHOP),
-	CreateSceneObjects(TEMPLE_STONE_TOWER_INVERTED),
-	CreateSceneObjects(CLOCK_TOWER_ROOFTOP),
-	CreateSceneObjects(OPENING),
-	CreateSceneObjects(TEMPLE_WOODFALL),
-	CreateSceneObjects(PATH_MOUNTAIN_VILLAGE),
-	CreateSceneObjects(CASTLE_IKANA),
-	CreateSceneObjects(DEKU_PLAYGROUND),
-	CreateSceneObjects(LAIR_ODOLWA),
+	CreateSceneObjects(MM_TEMPLE_STONE_TOWER_INVERTED),
+	CreateSceneObjects(MM_CLOCK_TOWER_ROOFTOP),
+	CreateSceneObjects(MM_OPENING),
+	CreateSceneObjects(MM_TEMPLE_WOODFALL),
+	CreateSceneObjects(MM_PATH_MOUNTAIN_VILLAGE),
+	CreateSceneObjects(MM_CASTLE_IKANA),
+	CreateSceneObjects(MM_DEKU_PLAYGROUND),
+	CreateSceneObjects(MM_LAIR_ODOLWA),
 	CreateSceneObjects(MM_SHOOTING_GALLERY),
-	CreateSceneObjects(TEMPLE_SNOWHEAD),
-	CreateSceneObjects(MILK_ROAD),
-	CreateSceneObjects(PIRATE_FORTRESS_INTERIOR),
-	CreateSceneObjects(SHOOTING_GALLERY_SWAMP),
-	CreateSceneObjects(PINNACLE_ROCK),
+	CreateSceneObjects(MM_TEMPLE_SNOWHEAD),
+	CreateSceneObjects(MM_MILK_ROAD),
+	CreateSceneObjects(MM_PIRATE_FORTRESS_INTERIOR),
+	CreateSceneObjects(MM_SHOOTING_GALLERY_SWAMP),
+	CreateSceneObjects(MM_PINNACLE_ROCK),
 	CreateSceneObjects(MM_FAIRY_FOUNTAIN),
 	CreateSceneObjects(MM_SPIDER_HOUSE_SWAMP),
 	CreateSceneObjects(MM_SPIDER_HOUSE_OCEAN),
-	CreateSceneObjects(OBSERVATORY),
-	CreateSceneObjects(MOON_DEKU),
-	CreateSceneObjects(DEKU_PALACE),
-	CreateSceneObjects(BLACKSMITH),
-	CreateSceneObjects(TERMINA_FIELD),
-	CreateSceneObjects(POST_OFFICE),
+	CreateSceneObjects(MM_OBSERVATORY),
+	CreateSceneObjects(MM_MOON_DEKU),
+	CreateSceneObjects(MM_DEKU_PALACE),
+	CreateSceneObjects(MM_BLACKSMITH),
+	CreateSceneObjects(MM_TERMINA_FIELD),
+	CreateSceneObjects(MM_POST_OFFICE),
 	CreateSceneObjects(MM_LABORATORY),
-	CreateSceneObjects(DAMPE_HOUSE),
-	CreateSceneObjects(INSIDE_CASTLE_IKANA),
-	CreateSceneObjects(GORON_SHRINE),
-	CreateSceneObjects(ZORA_HALL),
-	CreateSceneObjects(TRADING_POST),
-	CreateSceneObjects(ROMANI_RANCH),
-	CreateSceneObjects(LAIR_TWINMOLD),
-	CreateSceneObjects(GREAT_BAY_COAST),
-	CreateSceneObjects(ZORA_CAPE),
-	CreateSceneObjects(LOTTERY),
-	CreateSceneObjects(SNOWHEAD_SPRING),
-	CreateSceneObjects(PIRATE_FORTRESS_ENTRANCE),
-	CreateSceneObjects(FISHERMAN_HUT),
+	CreateSceneObjects(MM_DAMPE_HOUSE),
+	CreateSceneObjects(MM_INSIDE_CASTLE_IKANA),
+	CreateSceneObjects(MM_GORON_SHRINE),
+	CreateSceneObjects(MM_ZORA_HALL),
+	CreateSceneObjects(MM_TRADING_POST),
+	CreateSceneObjects(MM_ROMANI_RANCH),
+	CreateSceneObjects(MM_LAIR_TWINMOLD),
+	CreateSceneObjects(MM_GREAT_BAY_COAST),
+	CreateSceneObjects(MM_ZORA_CAPE),
+	CreateSceneObjects(MM_LOTTERY),
+	CreateSceneObjects(MM_SNOWHEAD_SPRING),
+	CreateSceneObjects(MM_PIRATE_FORTRESS_ENTRANCE),
+	CreateSceneObjects(MM_FISHERMAN_HUT),
 	CreateSceneObjects(MM_GORON_SHOP),
-	CreateSceneObjects(DEKU_KING_CHAMBER),
-	CreateSceneObjects(MOON_GORON),
-	CreateSceneObjects(ROAD_SOUTHERN_SWAMP),
-	CreateSceneObjects(DOG_RACETRACK),
-	CreateSceneObjects(CUCCO_SHACK),
-	CreateSceneObjects(IKANA_GRAVEYARD),
-	CreateSceneObjects(LAIR_GOHT),
-	CreateSceneObjects(SOUTHERN_SWAMP),
-	CreateSceneObjects(WOODFALL),
-	CreateSceneObjects(MOON_ZORA),
-	CreateSceneObjects(GORON_VILLAGE_SPRING),
-	CreateSceneObjects(TEMPLE_GREAT_BAY),
-	CreateSceneObjects(WATERFALL_RAPIDS),
-	CreateSceneObjects(BENEATH_THE_WELL),
-	CreateSceneObjects(ZORA_HALL_ROOMS),
-	CreateSceneObjects(GORON_VILLAGE_WINTER),
-	CreateSceneObjects(GORON_GRAVEYARD),
-	CreateSceneObjects(SAKON_HIDEOUT),
-	CreateSceneObjects(MOUNTAIN_VILLAGE_WINTER),
-	CreateSceneObjects(GHOST_HUT),
-	CreateSceneObjects(DEKU_SHRINE),
-	CreateSceneObjects(ROAD_IKANA),
-	CreateSceneObjects(SWORDSMAN_SCHOOL),
-	CreateSceneObjects(MUSIC_BOX_HOUSE),
-	CreateSceneObjects(LAIR_IKANA),
-	CreateSceneObjects(TOURIST_INFORMATION),
-	CreateSceneObjects(STONE_TOWER),
-	CreateSceneObjects(STONE_TOWER_INVERTED),
-	CreateSceneObjects(MOUNTAIN_VILLAGE_SPRING),
-	CreateSceneObjects(PATH_SNOWHEAD),
-	CreateSceneObjects(SNOWHEAD),
-	CreateSceneObjects(TWIN_ISLANDS_WINTER),
-	CreateSceneObjects(TWIN_ISLANDS_SPRING),
-	CreateSceneObjects(LAIR_GYORG),
-	CreateSceneObjects(SECRET_SHRINE),
-	CreateSceneObjects(STOCK_POT_INN),
-	CreateSceneObjects(GREAT_BAY_CUTSCENE),
-	CreateSceneObjects(CLOCK_TOWER_INTERIOR),
-	CreateSceneObjects(WOODS_MYSTERY),
+	CreateSceneObjects(MM_DEKU_KING_CHAMBER),
+	CreateSceneObjects(MM_MOON_GORON),
+	CreateSceneObjects(MM_ROAD_SOUTHERN_SWAMP),
+	CreateSceneObjects(MM_DOG_RACETRACK),
+	CreateSceneObjects(MM_CUCCO_SHACK),
+	CreateSceneObjects(MM_IKANA_GRAVEYARD),
+	CreateSceneObjects(MM_LAIR_GOHT),
+	CreateSceneObjects(MM_SOUTHERN_SWAMP),
+	CreateSceneObjects(MM_WOODFALL),
+	CreateSceneObjects(MM_MOON_ZORA),
+	CreateSceneObjects(MM_GORON_VILLAGE_SPRING),
+	CreateSceneObjects(MM_TEMPLE_GREAT_BAY),
+	CreateSceneObjects(MM_WATERFALL_RAPIDS),
+	CreateSceneObjects(MM_BENEATH_THE_WELL),
+	CreateSceneObjects(MM_ZORA_HALL_ROOMS),
+	CreateSceneObjects(MM_GORON_VILLAGE_WINTER),
+	CreateSceneObjects(MM_GORON_GRAVEYARD),
+	CreateSceneObjects(MM_SAKON_HIDEOUT),
+	CreateSceneObjects(MM_MOUNTAIN_VILLAGE_WINTER),
+	CreateSceneObjects(MM_GHOST_HUT),
+	CreateSceneObjects(MM_DEKU_SHRINE),
+	CreateSceneObjects(MM_ROAD_IKANA),
+	CreateSceneObjects(MM_SWORDSMAN_SCHOOL),
+	CreateSceneObjects(MM_MUSIC_BOX_HOUSE),
+	CreateSceneObjects(MM_LAIR_IKANA),
+	CreateSceneObjects(MM_TOURIST_INFORMATION),
+	CreateSceneObjects(MM_STONE_TOWER),
+	CreateSceneObjects(MM_STONE_TOWER_INVERTED),
+	CreateSceneObjects(MM_MOUNTAIN_VILLAGE_SPRING),
+	CreateSceneObjects(MM_PATH_SNOWHEAD),
+	CreateSceneObjects(MM_SNOWHEAD),
+	CreateSceneObjects(MM_TWIN_ISLANDS_WINTER),
+	CreateSceneObjects(MM_TWIN_ISLANDS_SPRING),
+	CreateSceneObjects(MM_LAIR_GYORG),
+	CreateSceneObjects(MM_SECRET_SHRINE),
+	CreateSceneObjects(MM_STOCK_POT_INN),
+	CreateSceneObjects(MM_GREAT_BAY_CUTSCENE),
+	CreateSceneObjects(MM_CLOCK_TOWER_INTERIOR),
+	CreateSceneObjects(MM_WOODS_MYSTERY),
 	CreateSceneObjects(MM_LOST_WOODS),
-	CreateSceneObjects(MOON_LINK),
-	CreateSceneObjects(MOON),
-	CreateSceneObjects(BOMB_SHOP),
-	CreateSceneObjects(GIANT_CHAMBER),
-	CreateSceneObjects(GORMAN_TRACK),
-	CreateSceneObjects(GORON_RACETRACK),
-	CreateSceneObjects(CLOCK_TOWN_EAST),
-	CreateSceneObjects(CLOCK_TOWN_WEST),
-	CreateSceneObjects(CLOCK_TOWN_NORTH),
-	CreateSceneObjects(CLOCK_TOWN_SOUTH),
-	CreateSceneObjects(LAUNDRY_POOL),
-	CreateSceneObjects(EXTRA),
+	CreateSceneObjects(MM_MOON_LINK),
+	CreateSceneObjects(MM_MOON),
+	CreateSceneObjects(MM_BOMB_SHOP),
+	CreateSceneObjects(MM_GIANT_CHAMBER),
+	CreateSceneObjects(MM_GORMAN_TRACK),
+	CreateSceneObjects(MM_GORON_RACETRACK),
+	CreateSceneObjects(MM_CLOCK_TOWN_EAST),
+	CreateSceneObjects(MM_CLOCK_TOWN_WEST),
+	CreateSceneObjects(MM_CLOCK_TOWN_NORTH),
+	CreateSceneObjects(MM_CLOCK_TOWN_SOUTH),
+	CreateSceneObjects(MM_LAUNDRY_POOL),
+	CreateSceneObjects(MM_EXTRA),
 
-	CreateSceneObjects(LONE_PEAK),
+	// MM detailed other
+	CreateSceneObjects(MM_LONE_PEAK),
 	CreateSceneObjects(MM_ZORA_SHOP),
-	CreateSceneObjects(ZORA_EVAN_ROOM),
-	CreateSceneObjects(ROMANI_RANCH_BARN),
+	CreateSceneObjects(MM_ZORA_EVANS_ROOM),
+	CreateSceneObjects(MM_ZORA_JAPAS_ROOM),
+	CreateSceneObjects(MM_ZORA_TIJO_ROOM),
+	CreateSceneObjects(MM_ZORA_LULU_ROOM),
+	CreateSceneObjects(MM_ROMANI_RANCH_BARN),
+	CreateSceneObjects(MM_PIRATE_SEWERS),
 
+	// MM detailed grottos
 	CreateSceneObjects(MM_GROTTO_TERMINA_DODONGO),
 	CreateSceneObjects(MM_GROTTO_TERMINA_OCEAN_GOSSIP),
 	CreateSceneObjects(MM_GROTTO_TERMINA_CANYON_GOSSIP),
 	CreateSceneObjects(MM_GROTTO_TERMINA_BIO_BABA),
-	CreateSceneObjects(MM_GROTTO_TERMINA_PEEHAT),
+	CreateSceneObjects(MM_GROTTO_TERMINA_PEAHAT),
 	CreateSceneObjects(MM_GROTTO_TERMINA_SCRUB),
 	CreateSceneObjects(MM_GROTTO_TERMINA_TALL_GRASS),
 	CreateSceneObjects(MM_GROTTO_TERMINA_COW),
@@ -365,10 +382,12 @@ SceneObjects MMSceneObjects[MM_NUM_SCENES] =
 	CreateSceneObjects(MM_GROTTO_WOODS_OF_MYSTERY_OPEN),
 	CreateSceneObjects(MM_GROTTO_DEKU_PALACE_BEANS),
 	CreateSceneObjects(MM_GROTTO_DEKU_PALACE_GENERIC),
+	CreateSceneObjects(MM_GROTTO_DEKU_PALACE_CLIMB),
+	
 
 	// Spoiler Log
-	CreateSceneObjects(MOUNTAIN_VILLAGE),
-	CreateSceneObjects(TWIN_ISLANDS)
+	CreateSceneObjects(MM_MOUNTAIN_VILLAGE),
+	CreateSceneObjects(MM_TWIN_ISLANDS)
 };
 
 #pragma endregion
