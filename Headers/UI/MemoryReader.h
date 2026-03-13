@@ -1,6 +1,9 @@
 #pragma once
 
 #include "Multi/Multi.h"
+#include "Combo/Entrances.h"
+
+#define RAM_SIZE 0x800000
 
 class MemoryReader
 {
@@ -9,13 +12,13 @@ class MemoryReader
 
 public:
 
-	DWORD PJ64PID = 0;					// The Project64 process ID.
-	HANDLE PJ64Handle = 0;				// The handle used to read Project64 memory.
-	uintptr_t GameRamBaseAddress = 0;	// The base game RAM address (correspond to the 0x80000000 in PJ64 debugger).
-	uint32_t EntranceID = 0;			// The current entrance ID.
-	int LoadedGame = 2;					// The current loaded game in RAM (0 = OoT, 1 = MM, 2 = No game / incorrect game loaded)
-	bool IsRunning = false;				// Tells if the process memory should be read.
-	uint8_t RAMData[0x800000] = { 0 };
+	DWORD PJ64PID = 0;						// The Project64 process ID.
+	HANDLE PJ64Handle = 0;					// The handle used to read Project64 memory.
+	uintptr_t GameRamBaseAddress = 0;		// The base game RAM address (correspond to the 0x80000000 in PJ64 debugger).
+	int LoadedGame = 2;						// The current loaded game in RAM (0 = OoT, 1 = MM, 2 = No game / incorrect game loaded)
+	bool IsRunning = false;					// Tells if the process memory should be read.
+	uint8_t RAMData[RAM_SIZE] = { 0 };		// A current snapshot of the RAM.
+	EntranceHelper EntHelper;				// The module that will handle entrance tracking.
 
 #pragma endregion
 
@@ -62,6 +65,15 @@ public:
 	*   @return The handle to access the desired process ID, NULL if a problem occured.
 	*/
 	HANDLE OpenDesiredProcess(DWORD PID);
+
+	/*
+	*   Tells if the process associated to the given handle is alive.
+	*
+	*   @param Process       The process handle to check.
+	*
+	*   @return <b>True</b> if the process is alive, <b>false</b> otherwise.
+	*/
+	bool IsProcessAlive(HANDLE Process);
 
 	/*
 	*   Start to read the memory of the correct process.

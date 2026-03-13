@@ -94,6 +94,19 @@ HANDLE MemoryReader::OpenDesiredProcess(DWORD PID)
 }
 
 
+bool MemoryReader::IsProcessAlive(HANDLE Process)
+{
+    DWORD exitCode;
+
+    if (!GetExitCodeProcess(Process, &exitCode))
+    {
+        return false;
+    }
+
+    return exitCode == STILL_ACTIVE;
+}
+
+
 void MemoryReader::StartMemoryReader()
 {
     this->IsRunning = true;
@@ -128,7 +141,7 @@ void MemoryReader::StartMemoryReader()
                     Sleep(1000);
                 }
 
-            } while (this->GameRamBaseAddress == 0 && this->IsRunning);
+            } while (this->GameRamBaseAddress == 0 && this->IsRunning && this->IsProcessAlive(this->PJ64Handle));
 
             if (this->GameRamBaseAddress != 0)
             {   // We have the emulator game allocated RAM address
@@ -146,12 +159,13 @@ void MemoryReader::StartMemoryReader()
     }
 }
 
+
 void MemoryReader::RunMemoryReader()
 {
     MultiLogger::LogMessage("Reading game memory...");
     do
     {
-        ReadProcessMemory(this->PJ64Handle, (LPCVOID)(this->GameRamBaseAddress), this->RAMData, 0x800000, 0);
+        ReadProcessMemory(this->PJ64Handle, (LPCVOID)(this->GameRamBaseAddress), this->RAMData, RAM_SIZE, 0);
         this->CheckCurrentLoadedGame();
 
         if (this->LoadedGame == NO_GAME)
@@ -163,11 +177,12 @@ void MemoryReader::RunMemoryReader()
         else
         {
             this->ReadEntranceID(this->LoadedGame);
-            MultiLogger::LogMessage("Entrance ID : 0x%X", this->EntranceID);
             Sleep(100);
         }
 
-    } while (this->IsRunning);
+    } while (this->IsRunning && this->IsProcessAlive(this->PJ64Handle));
+
+    this->IsRunning = false;
 }
 
 
@@ -249,16 +264,5 @@ void MemoryReader::CheckCurrentLoadedGame()
 
 void MemoryReader::ReadEntranceID(int Game)
 {
-    if (Game == OOT_GAME)
-    {   // Read entrance ID for OoT
-
-        memcpy(&this->EntranceID, &this->RAMData[0x11A5D0], sizeof(uint32_t));
-        //ReadProcessMemory(this->PJ64Handle, (LPCVOID)(this->GameRamBaseAddress + 0x11A5D0), &this->EntranceID, sizeof(this->EntranceID), 0);
-    }
-    else
-    {   // Read entrance ID for MM
-
-        memcpy(&this->EntranceID, &this->RAMData[0x1EF670], sizeof(uint32_t));
-        //ReadProcessMemory(this->PJ64Handle, (LPCVOID)(this->GameRamBaseAddress + 0x1EF670), &this->EntranceID, sizeof(this->EntranceID), 0);
-    }
+    this->EntHelper.ReadEntranceID(Game, this->RAMData);
 }

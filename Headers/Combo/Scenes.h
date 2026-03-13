@@ -128,7 +128,7 @@ typedef struct SceneMetaInfo
 
 // OoT detailed grotto scene
 #define OOT_GROTTO_KOKIRI_FOREST_STORMS			0x65	// Kokiri forest song of storms grotto
-#define OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE		0x66	// Los woods nut upgrade grotto
+#define OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE		0x66	// Lost woods nut upgrade grotto
 #define OOT_GROTTO_LOST_WOODS_GENERIC			0x67	// Lost woods generic grotto
 #define OOT_GROTTO_LOST_WOODS_THEATER			0x68	// Lost woods theater grotto
 #define OOT_GROTTO_SACRED_MEADOW_WOLFOS			0x69	// Sacred Meadow wolfos grotto
@@ -340,27 +340,29 @@ enum OoT_Shops
 #define MM_GROTTO_TERMINA_DODONGO				0x76	// Termina field dodongo's grotto
 #define MM_GROTTO_TERMINA_OCEAN_GOSSIP			0x77	// Termina field ocean gossip's grotto
 #define MM_GROTTO_TERMINA_CANYON_GOSSIP			0x78	// Termina field canyon gossip's grotto
-#define MM_GROTTO_TERMINA_BIO_BABA				0x79	// Termina field bio baba's grotto
-#define MM_GROTTO_TERMINA_PEEHAT				0x7a	// Termina field peehat's grotto
-#define MM_GROTTO_TERMINA_SCRUB					0x7b	// Termina field scrub grotto
-#define MM_GROTTO_TERMINA_TALL_GRASS			0x7c	// Termina field tall grass grotto
-#define MM_GROTTO_TERMINA_COW					0x7d	// Termina field cow grotto
-#define MM_GROTTO_TERMINA_PILLAR				0x7e	// Termina field pillar grotto
-#define MM_GROTTO_GREAT_BAY_COAST_FISHERMAN		0x7f	// Great bay coast fisherman's grotto
-#define MM_GROTTO_GREAT_BAY_COAST_COW			0x80	// Great bay coast cow grotto
-#define MM_GROTTO_ZORA_CAPE_GENERIC				0x81	// Zora cape generic grotto
-#define MM_GROTTO_IKANA_GRAVEYARD_GENERIC		0x82	// Ikana graveyard generic grotto
-#define MM_GROTTO_IKANA_VALLEY_OPEN				0x83	// Ikana valley generic open
-#define MM_GROTTO_IKANA_ROAD_GENERIC			0x84	// Ikana road generic grotto
-#define MM_GROTTO_TWIN_ISLANDS_FROZEN			0x85	// Twin islands frozen grotto
-#define MM_GROTTO_TWIN_ISLANDS_RAMP				0x86	// Twin islands ramp grotto
-#define MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC		0x87	// Path to snowhead generic grotto
-#define MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC		0x88	// Mountain village generic grotto
-#define MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN		0x89	// Southern swamp road generic open
-#define MM_GROTTO_SOUTHERN_SWAMP_OPEN			0x8a	// Southern swamp generic open
-#define MM_GROTTO_WOODS_OF_MYSTERY_OPEN			0x8b	// Woods of mystery generic open
-#define MM_GROTTO_DEKU_PALACE_BEANS				0x8c	// Deku palace beans grotto
-#define MM_GROTTO_DEKU_PALACE_GENERIC			0x8d	// Deku palace JP Line generic grotto
+#define MM_GROTTO_TERMINA_SWAMP_GOSSIP			0x79	// Termina field swamp gossip's grotto
+#define MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP		0x7a	// Termina field mountain gossip's grotto
+#define MM_GROTTO_TERMINA_BIO_BABA				0x7b	// Termina field bio baba's grotto
+#define MM_GROTTO_TERMINA_PEEHAT				0x7c	// Termina field peehat's grotto
+#define MM_GROTTO_TERMINA_SCRUB					0x7d	// Termina field scrub grotto
+#define MM_GROTTO_TERMINA_TALL_GRASS			0x7e	// Termina field tall grass grotto
+#define MM_GROTTO_TERMINA_COW					0x7f	// Termina field cow grotto
+#define MM_GROTTO_TERMINA_PILLAR				0x80	// Termina field pillar grotto
+#define MM_GROTTO_GREAT_BAY_COAST_FISHERMAN		0x81	// Great bay coast fisherman's grotto
+#define MM_GROTTO_GREAT_BAY_COAST_COW			0x82	// Great bay coast cow grotto
+#define MM_GROTTO_ZORA_CAPE_GENERIC				0x83	// Zora cape generic grotto
+#define MM_GROTTO_IKANA_GRAVEYARD_GENERIC		0x84	// Ikana graveyard generic grotto
+#define MM_GROTTO_IKANA_VALLEY_OPEN				0x85	// Ikana valley generic open
+#define MM_GROTTO_IKANA_ROAD_GENERIC			0x86	// Ikana road generic grotto
+#define MM_GROTTO_TWIN_ISLANDS_FROZEN			0x87	// Twin islands frozen grotto
+#define MM_GROTTO_TWIN_ISLANDS_RAMP				0x88	// Twin islands ramp grotto
+#define MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC		0x89	// Path to snowhead generic grotto
+#define MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC		0x8a	// Mountain village generic grotto
+#define MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN		0x8b	// Southern swamp road generic open
+#define MM_GROTTO_SOUTHERN_SWAMP_OPEN			0x8c	// Southern swamp generic open
+#define MM_GROTTO_WOODS_OF_MYSTERY_OPEN			0x8d	// Woods of mystery generic open
+#define MM_GROTTO_DEKU_PALACE_BEANS				0x8e	// Deku palace beans grotto
+#define MM_GROTTO_DEKU_PALACE_GENERIC			0x8f	// Deku palace JP Line generic grotto
 
 // Spoiler Log only
 #define MOUNTAIN_VILLAGE						MM_GROTTO_DEKU_PALACE_GENERIC + 1
