@@ -180,9 +180,10 @@ typedef struct SceneMetaInfo
 #define OOT_MARKET_ENTRANCE							OOT_WINDMILL + 1						// Market entrance (all age / time)
 #define OOT_TEMPLE_OF_TIME_ENTRYWAY					OOT_MARKET_ENTRANCE + 1					// Temple of Time entryway
 #define OOT_DAMPE_HOUSE								OOT_TEMPLE_OF_TIME_ENTRYWAY + 1			// Dampe's house
+#define OOT_BACK_ALLEY								OOT_DAMPE_HOUSE + 1						// Back Market Alley
 
 // Spoiler Log only
-#define OOT_INSIDE_EGGS								OOT_DAMPE_HOUSE + 1
+#define OOT_INSIDE_EGGS								OOT_BACK_ALLEY + 1
 #define OOT_MARKET									OOT_INSIDE_EGGS + 1
 
 #define OOT_NUM_SCENES								OOT_MARKET + 1							// OOT and OOT MQ have the same number of scenes

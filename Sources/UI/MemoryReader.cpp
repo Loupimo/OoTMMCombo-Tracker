@@ -218,11 +218,17 @@ void MemoryReader::CheckCurrentLoadedGame()
     {
         memcpy(&u.Bytes[1], &this->RAMData[0x11A5EC], sizeof(uint32_t));
         memcpy(&u.Bytes[0], &this->RAMData[0x11A5EC + sizeof(uint32_t)], sizeof(uint32_t));
+
+        // Get rid of the death count
+        u.Bytes[0] &= 0xFFFF0000;
     }
     else
     {
         memcpy(&u.Bytes[0], &this->RAMData[0x11A5EC], sizeof(uint32_t));
         memcpy(&u.Bytes[1], &this->RAMData[0x11A5EC + sizeof(uint32_t)], sizeof(uint32_t));
+
+        // Get rid of the death count
+        u.Bytes[1] &= 0xFFFF0000;
     }
 
     //ReadProcessMemory(this->PJ64Handle, (LPCVOID)(this->GameRamBaseAddress + 0x11A5EC), gameName, sizeof(uint32_t) * 2, 0);
@@ -243,11 +249,17 @@ void MemoryReader::CheckCurrentLoadedGame()
     {
         memcpy(&u.Bytes[1], &this->RAMData[0x1EF694], sizeof(uint32_t));
         memcpy(&u.Bytes[0], &this->RAMData[0x1EF694 + sizeof(uint32_t)], sizeof(uint32_t));
+
+        // Get rid of the death count
+        u.Bytes[0] &= 0xFFFF0000;
     }
     else
     {
         memcpy(&u.Bytes[0], &this->RAMData[0x1EF694], sizeof(uint32_t));
         memcpy(&u.Bytes[1], &this->RAMData[0x1EF694 + sizeof(uint32_t)], sizeof(uint32_t));
+
+        // Get rid of the death count
+        u.Bytes[1] &= 0xFFFF0000;
     }
 
     if (u.Name == ToFound)

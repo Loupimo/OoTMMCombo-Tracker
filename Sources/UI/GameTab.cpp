@@ -162,8 +162,9 @@ CreateInfoScenes(OOT_NUM_SCENES, OoTOverworld,
     CreateOverworldScene(OOT_SILO, OOT_GAME),
     CreateOverworldScene(OOT_WINDMILL, OOT_GAME),
     CreateOverworldScene(OOT_MARKET_ENTRANCE, OOT_GAME),
-    CreateOverworldScene(OOT_INSIDE_EGGS, OOT_GAME),
+    CreateOverworldScene(OOT_DAMPE_HOUSE, OOT_GAME),
     CreateOverworldScene(OOT_TEMPLE_OF_TIME_ENTRYWAY, OOT_GAME),
+    CreateOverworldScene(OOT_BACK_ALLEY, OOT_GAME),
     CreateOverworldScene(OOT_INSIDE_EGGS, OOT_GAME),
     CreateOverworldScene(OOT_MARKET, OOT_GAME)
 )

@@ -36,6 +36,7 @@ CreateEmptyScene(OOT_GANON_BATTLE_ARENA)
 CreateEmptyScene(OOT_MARKET_ENTRANCE)
 CreateEmptyScene(OOT_TEMPLE_OF_TIME_ENTRYWAY)
 CreateEmptyScene(OOT_DAMPE_HOUSE)
+CreateEmptyScene(OOT_BACK_ALLEY)
 
 SceneObjects OoTSceneObjects[OOT_NUM_SCENES] =
 {
@@ -195,6 +196,7 @@ SceneObjects OoTSceneObjects[OOT_NUM_SCENES] =
 	CreateSceneObjects(OOT_MARKET_ENTRANCE),
 	CreateSceneObjects(OOT_TEMPLE_OF_TIME_ENTRYWAY),
 	CreateSceneObjects(OOT_DAMPE_HOUSE),
+	CreateSceneObjects(OOT_BACK_ALLEY),
 
 	// Spoiler Log
 	CreateSceneObjects(OOT_INSIDE_EGGS),
