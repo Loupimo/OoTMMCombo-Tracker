@@ -26,6 +26,7 @@ void EntranceHelper::ResetEntranceHelper()
 void EntranceHelper::ReadEntranceID(int Game, uint8_t * RAMData)
 {
     uint32_t tmpLast = 0;
+    uint32_t frameCount = 0;
     uint8_t transitionTrigger = 0;
     EntranceMetaInfo entranceMeta = {};
 
@@ -91,16 +92,18 @@ void EntranceHelper::ReadEntranceID(int Game, uint8_t * RAMData)
 
             default:
             {
-
                 if (this->LastGameTouchedEntrance != Game && this->IsEntranceTouched)
                 {   // We have switched game with the last touched entrance
 
-                    memcpy(&this->EntranceID, &RAMData[0x441A6C], sizeof(uint32_t));   // gLastEntrance = 0x80441A6C
-                    if (this->EntranceID == 0)
+                    memcpy(&frameCount, &RAMData[0x1C853C], sizeof(uint32_t));   // gPlay.state.frameCount = 0x801C853C
+
+                    if (frameCount <= 0)
                     {   // The RAM is not fully loaded. TODO Deku Tree ENTRANCE is equal to 0 need to take it into account
 
                         return;  // We return in order to get it on the next loop
                     }
+
+                    memcpy(&this->EntranceID, &RAMData[0x441A6C], sizeof(uint32_t));   // gLastEntrance = 0x80441A6C
                     this->LastGameTouchedEntrance = Game;
                     this->IsEntranceTouched = false;
                     if (this->IsGrottoEntrance(this->EntranceID))
@@ -120,8 +123,6 @@ void EntranceHelper::ReadEntranceID(int Game, uint8_t * RAMData)
 
                     memcpy(&this->EntranceID, &RAMData[0x11A5D0], sizeof(uint32_t));   // gSaveContext.entrance = 0x8011A5D0
                 }
-                //memcpy(&this->LastTouchedEntranceID, &this->RAMData[0x1DA2B8], sizeof(uint32_t));
-                //MultiLogger::LogMessage("Entrance ID : 0x%X, Last Entrance ID = 0x%X", this->EntranceID, this->LastTouchedEntranceID);
                 break;
             }
         }
@@ -191,12 +192,15 @@ void EntranceHelper::ReadEntranceID(int Game, uint8_t * RAMData)
                 if (this->LastGameTouchedEntrance != Game && this->IsEntranceTouched)
                 {   // We have switched game with the last touched entrance
 
-                    memcpy(&this->EntranceID, &RAMData[0x770EC4], sizeof(uint32_t));   // gLastEntrance = 0x80770EC4
-                    if (this->EntranceID == 0)
-                    {   // The RAM is not fully loaded
+                    memcpy(&frameCount, &RAMData[0x3E6BBC], sizeof(uint32_t));   // gPlay.state.frameCount = 0x803E6BBC
+
+                    if (frameCount <= 0)
+                    {   // The RAM is not fully loaded.
 
                         return;  // We return in order to get it on the next loop
                     }
+
+                    memcpy(&this->EntranceID, &RAMData[0x770EC4], sizeof(uint32_t));   // gLastEntrance = 0x80770EC4
                     this->LastGameTouchedEntrance = Game;
                     this->IsEntranceTouched = false;
                     if (this->IsGrottoEntrance(this->EntranceID))
@@ -215,11 +219,7 @@ void EntranceHelper::ReadEntranceID(int Game, uint8_t * RAMData)
                 {   // We are on the same game as the last touched entrance
                     
                     memcpy(&this->EntranceID, &RAMData[0x1EF670], sizeof(uint32_t));   // gSaveContext.entrance = 0x801EF670
-                    //this->EntranceStr = MMEntrances.at(this->EntranceID).Name;
                 }
-                //memcpy(&this->LastTouchedEntranceID, &this->RAMData[0x1DA2B8], sizeof(uint32_t));
-                //MultiLogger::LogMessage("Entrance ID : 0x%X, Last Entrance ID = 0x%X", this->EntranceID, this->LastTouchedEntranceID);
-                //MultiLogger::LogMessage("Entrance ID : 0x%X", RAMData[0x3FF394]);
                 break;
             }
         }

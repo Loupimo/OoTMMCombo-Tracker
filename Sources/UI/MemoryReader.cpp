@@ -49,6 +49,7 @@ void MemoryReader::ResetMemoryReader()
 
     this->PJ64PID = 0;
     this->GameRamBaseAddress = 0;
+    this->EntHelper.ResetEntranceHelper();
 }
 
 
@@ -231,17 +232,12 @@ void MemoryReader::CheckCurrentLoadedGame()
         u.Bytes[1] &= 0xFFFF0000;
     }
 
-    //ReadProcessMemory(this->PJ64Handle, (LPCVOID)(this->GameRamBaseAddress + 0x11A5EC), gameName, sizeof(uint32_t) * 2, 0);
-
     if (u.Name == ToFound)
     {   // The current loaded game is Ocarina of Time
 
         this->LoadedGame = OOT_GAME;
         return;
     }
-
-
-//    ReadProcessMemory(this->PJ64Handle, (LPCVOID)(this->GameRamBaseAddress + 0x1EF694), gameName, sizeof(uint32_t) * 2, 0);
 
     ToFound = 0x5A454c4441330000; // ZELDA3
 
