@@ -181,12 +181,12 @@ def parse_entrance(input_file, output_file):
             entrance_code = row["Code_Name"]
             entridstr = row["ID"]
             sceneidstr = row["Scene"]
-            entrancestr = row["Entrance_Name"]
-            from_to_str = row["From_To_Name"]
+            from_str = row["From_Name"]
+            to_str = row["To_Name"]
             image_path = row["Image_Path"]
             active_layout = row["Active_Layout"]
 
-            objectstr = objectstr + "\t{ " + str(entrance_code) + ", { " + str(entrance_code) + ", " + str(sceneidstr) + ", \"" + entrancestr + "\", \"" + from_to_str + "\", \"" + image_path + "\", GameLayout::" + active_layout + " } }"
+            objectstr = objectstr + "\t{ " + str(entrance_code) + ", { " + str(entrance_code) + ", " + str(sceneidstr) + ", \"" + from_str + "\", \"" + to_str + "\", \"" + image_path + "\", GameLayout::" + active_layout + " } }"
             outfile.write(objectstr)
             print ("#define " + entrance_code + " " + entridstr)
 

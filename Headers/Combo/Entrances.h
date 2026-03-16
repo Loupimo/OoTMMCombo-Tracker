@@ -11,12 +11,18 @@ typedef struct EntranceMetaInfo
 {
 	uint32_t EntranceID;
 	uint32_t SceneID;
-	const char* Name;
-	const char* FromToName;
+	const char* FromName;
+	const char* ToName;
 	const char* ImagePath;
 	GameLayout ActiveLayout;
 } EntranceMetaInfo;
 
+
+typedef struct GrottoEntrance
+{
+	uint32_t EntranceID;
+	float SpawnPos[3];
+} GrottoEntrance;
 
 class EntranceHelper
 {
@@ -27,10 +33,11 @@ public:
 
 	uint32_t EntranceID = 0;				// The current entrance ID.
 	uint32_t LastTouchedEntranceID = 0;		// The ID of the last entrance ID
+	uint32_t LastFrameCount = 0;			// The frame count value when a the last transition trigger occurred 
 	bool IsEntranceTouched = false;			// Tells if the ID we have is from the touched entrance (true) or the loaded one (false)
 	int LastGameTouchedEntrance = NO_GAME;	// Tells which game the last touched entrance came from
-	std::string LastTouchedStr;
-	std::string EntranceStr;
+	std::string LastTouchedStr;				// The string matching the direction of the last touched entrance
+	std::string EntranceStr;				// The string matching the direction of the current entrance
 
 #pragma endregion
 
@@ -61,34 +68,38 @@ public:
 public:
 
 	/*
-	*	Check the current loaded game and update the LoadedGame attribut.
-	*/
-	void CheckCurrentLoadedGame();
-
-	/*
 	*   Read the current entrance ID for the desired game and store the result in the EntranceID attribute.
 	*
-	*   @param Game       The game to read the entrance ID from.
+	*	@param Game		The game the RAM data come from.
+	*	@param RAMData	The RAM data containing the entrance data information.
 	*/
 	void ReadEntranceID(int Game, uint8_t* RAMData);
 
 	/*
-	*   Check if the current entrance ID is from a grotto.
+	*   Check if the given entrance ID is from a grotto entrance.
 	*
-	*   @return <b>True</b> if the ID is associated to a grotto, <b>false</b> otherwise.
+	*	@param ID		The entrance ID to test.
+	* 
+	*   @return <b>True</b> if the ID is associated to a grotto entrance, <b>false</b> otherwise.
 	*/
 	bool IsGrottoEntrance(uint32_t ID);
 
 	/*
-	*   Check if the current last touched entrance ID is from a grotto.
+	*   Check if the given entrance ID is from a grotto exit.
 	*
-	*   @return <b>True</b> if the ID is associated to a grotto, <b>false</b> otherwise.
+	*	@param ID		The entrance ID to test.
+	* 
+	*   @return <b>True</b> if the ID is associated to a grotto exit, <b>false</b> otherwise.
 	*/
 	bool IsGrottoExit(uint32_t ID);
 
 	/*
 	*   Get the entrance grotto associated to the current last entrance ID.
 	*
+	*	@param Game		The game the RAM data come from.
+	*	@param RAMData	The RAM data containing the grotto data information.
+	*	@param ID		The associated type of grotto entrance ID.
+	* 
 	*   @return The scene grotto associated to the touched exit.
 	*/
 	uint32_t GetGrottoEntrance(int Game, uint8_t* RAMData, uint32_t ID);
@@ -96,9 +107,32 @@ public:
 	/*
 	*   Get the exit grotto associated to the current last entrance ID.
 	*
+	*	@param Game		The game the RAM data come from.
+	*	@param RAMData	The RAM data containing the grotto data information.
+	* 
 	*   @return The scene grotto associated to the touched exit.
 	*/
 	uint32_t GetGrottoExit(int Game, uint8_t* RAMData);
+
+	/*
+	*   Get the cumulative distance between the current player position and the given grotto entrance.
+	*
+	*	@param Grotto	The grotto entrance to use.
+	*	@param RAMData	The RAM data containing the player position.
+	* 
+	*   @return The cumulative distance between the current player position and the given grotto entrance.
+	*/
+	float GetDistanceGrottoEntrance(GrottoEntrance Grotto, uint8_t* RAMData);
+
+	/*
+	*   Check if the given entrance may match a grotto entrance.
+	*
+	*	@param ID		The entrance ID that may match.
+	*	@param RAMData	The RAM data containing the respawn player position.
+	* 
+	*   @return The matching grotto entrance if the player is close enough, the given entrance otherwise.
+	*/
+	uint32_t CheckGrottoSpawn(uint32_t ID, uint8_t* RAMData);
 
 #pragma endregion
 };

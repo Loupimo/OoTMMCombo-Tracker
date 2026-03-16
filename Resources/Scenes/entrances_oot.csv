@@ -1,295 +1,295 @@
-Code_Name;Game;ID;Type;Scene;Entrance_Name;From_To_Name;Image_Path;Active_Layout
-OOT_SPAWN_CHILD;oot;0x0bb;spawn-child;OOT_LINK_HOUSE;Spawn Child;Spawn Child;;all
-OOT_SPAWN_ADULT;oot;0xf20;spawn-adult;OOT_TEMPLE_OF_TIME;Spawn Adult;Spawn Adult;;all
-OOT_BOSS_DEKU_TREE_ENTR;oot;0x40f;boss;OOT_DEKU_TREE;Gohma's Lair;Deku Tree;;all
-OOT_BOSS_DODONGO_CAVERN_ENTR;oot;0x40b;boss;OOT_DODONGO_CAVERN;King Dodongo's Lair;Dodongo Cavern;;all
-OOT_BOSS_JABU_JABU_ENTR;oot;0x301;boss;OOT_INSIDE_JABU_JABU;Barinade's Lair;Inside Jabu-Jabu;;all
-OOT_BOSS_TEMPLE_FOREST_ENTR;oot;0x00c;boss;OOT_TEMPLE_FOREST;Phantom Ganon's Lair;Forest Temple;;all
-OOT_BOSS_TEMPLE_FIRE_ENTR;oot;0x305;boss;OOT_TEMPLE_FIRE;Volvagia's Lair;Fire Temple;;all
-OOT_BOSS_TEMPLE_WATER_ENTR;oot;0x417;boss;OOT_TEMPLE_WATER;Morpha's Lair;Water Temple;;all
-OOT_BOSS_TEMPLE_SHADOW_ENTR;oot;0x413;boss;OOT_TEMPLE_SHADOW;Bongo-Bongo's Lair;Shadow Temple;;all
-OOT_BOSS_TEMPLE_SPIRIT_ENTR;oot;0x08d;boss;OOT_TEMPLE_SPIRIT;Twinrova's Lair;Spirit Temple;;all
-OOT_DEKU_TREE_ENTR;oot;0x000;dungeon;OOT_DEKU_TREE;Deku Tree;Kokiri Forest;;all
-OOT_DODONGO_CAVERN_ENTR;oot;0x004;dungeon;OOT_DODONGO_CAVERN;Dodongo Cavern;Death Mountain Trail;;all
-OOT_JABU_JABU_ENTR;oot;0x028;dungeon;OOT_INSIDE_JABU_JABU;Inside Jabu-Jabu;Zora Fountain;;all
-OOT_TEMPLE_FOREST_ENTR;oot;0x169;dungeon;OOT_TEMPLE_FOREST;Forest Temple;Sacred Forest Meadow;;all
-OOT_TEMPLE_FIRE_ENTR;oot;0x165;dungeon;OOT_TEMPLE_FIRE;Fire Temple;Death Mountain Crater;;all
-OOT_TEMPLE_WATER_ENTR;oot;0x010;dungeon;OOT_TEMPLE_WATER;Water Temple;Lake Hylia;;all
-OOT_TEMPLE_SHADOW_ENTR;oot;0x037;dungeon;OOT_TEMPLE_SHADOW;Shadow Temple;Graveyard;;all
-OOT_TEMPLE_SPIRIT_ENTR;oot;0x082;dungeon;OOT_TEMPLE_SPIRIT;Spirit Temple;Desert Colossus;;all
-OOT_BOTTOM_OF_THE_WELL_ENTR;oot;0x098;dungeon-minor;OOT_BOTTOM_OF_THE_WELL;Bottom of the Well;Kakariko;;all
-OOT_ICE_CAVERN_ENTR;oot;0x088;dungeon-minor;OOT_ICE_CAVERN;Ice Cavern;Zora Fountain;;all
-OOT_GERUDO_TRAINING_GROUNDS_ENTR;oot;0x008;dungeon-minor;OOT_GERUDO_TRAINING_GROUND;Gerudo Training Ground;Gerudo Fortress;;all
-OOT_GANON_CASTLE_ENTR;oot;0x467;dungeon-ganon;OOT_INSIDE_GANON_CASTLE;Inside Ganon Castle;Ganon Castle Exterior;;all
-OOT_GANON_TOWER_ENTR;oot;0x41b;dungeon-ganon-tower;OOT_GANON_TOWER;Ganon Tower;Inside Ganon Castle;;all
-OOT_KOKIRI_FOREST_FROM_DEKU_TREE_ENTR;oot;0x209;dungeon-exit;OOT_KOKIRI_FOREST;Kokiri Forest;Deku Tree;;all
-OOT_MOUNTAIN_TRAIL_FROM_DODONGO_CAVERN_ENTR;oot;0x242;dungeon-exit;OOT_DEATH_MOUNTAIN_TRAIL;Death Mountain Trail;Dodongo Cavern;;all
-OOT_ZORA_FOUNTAIN_FROM_JABU_JABU_ENTR;oot;0x221;dungeon-exit;OOT_ZORA_FOUNTAIN;Zora Fountain;Jabu-Jabu;;all
-OOT_SACRED_MEADOW_FROM_TEMPLE_FOREST_ENTR;oot;0x215;dungeon-exit;OOT_SACRED_FOREST_MEADOW;Sacred Forest Meadow;Forest Temple;;all
-OOT_DEATH_CRATER_FROM_TEMPLE_FIRE_ENTR;oot;0x24a;dungeon-exit;OOT_DEATH_MOUNTAIN_CRATER;Death Mountain Crater;Fire Temple;;all
-OOT_LAKE_HYLIA_FROM_TEMPLE_WATER_ENTR;oot;0x21d;dungeon-exit;OOT_LAKE_HYLIA;Lake Hylia;Water Temple;;all
-OOT_GRAVEYARD_FROM_TEMPLE_SHADOW_ENTR;oot;0x205;dungeon-exit;OOT_GRAVEYARD;Graveyard;Shadow Temple;;all
-OOT_DESERT_COLOSSUS_FROM_TEMPLE_SPIRIT_ENTR;oot;0x1e1;dungeon-exit;OOT_DESERT_COLOSSUS;Desert Colossus;Spirit Temple;;all
-OOT_KAKARIKO_FROM_BOTTOM_OF_THE_WELL_ENTR;oot;0x2a6;dungeon-exit;OOT_KAKARIKO_VILLAGE;Kakariko;Bottom of the Well;;all
-OOT_ZORA_FOUNTAIN_FROM_ICE_CAVERN_ENTR;oot;0x3d4;dungeon-exit;OOT_ZORA_FOUNTAIN;Zora Fountain;Ice Cavern;;all
-OOT_GERUDO_FORTRESS_FROM_GERUDO_TRAINING_ENTR;oot;0x3a8;dungeon-exit;OOT_GERUDO_FORTRESS;Gerudo Fortress;Gerudo Training Ground;;all
-OOT_GANON_CASTLE_EXTERIOR_FROM_CASTLE_ENTR;oot;0x23d;dungeon-exit;OOT_GANON_CASTLE_EXTERIOR;Ganon Castle Exterior;Ganon Castle;;all
-OOT_GANON_CASTLE_FROM_TOWER_ENTR;oot;0x534;dungeon-exit;OOT_INSIDE_GANON_CASTLE;Inside Ganon Castle;Ganon Tower;;all
-OOT_LOST_WOODS_BRIDGE_FROM_FIELD_ENTR;oot;0x4de;region;OOT_LOST_WOODS;Lost Woods Bridge;Hyrule Field;;all
-OOT_ZORA_RIVER_FROM_FIELD_ENTR;oot;0x0ea;region;OOT_ZORA_RIVER;Zora River;Hyrule Field;;all
-OOT_KAKARIKO_FROM_FIELD_ENTR;oot;0x0db;region;OOT_KAKARIKO_VILLAGE;Kakariko;Hyrule Field;;all
-OOT_LON_LON_RANCH_FROM_FIELD_ENTR;oot;0x157;region;OOT_LON_LON_RANCH;Lon Lon's Ranch;Hyrule Field;;all
-OOT_LAKE_HYLIA_FROM_FIELD_ENTR;oot;0x102;region;OOT_LAKE_HYLIA;Lake Hylia;Hyrule Field;;all
-OOT_GERUDO_FORTRESS_FROM_VALLEY_ENTR;oot;0x129;region;OOT_GERUDO_FORTRESS;Gerudo Fortress;Gerudo Valley;;all
-OOT_DEATH_MOUNTAIN_FROM_KAKARIKO_ENTR;oot;0x13d;region;OOT_DEATH_MOUNTAIN_TRAIL;Death Mountain Trail;Kakariko;;all
-OOT_GERUDO_VALLEY_FROM_FIELD_ENTR;oot;0x117;region;OOT_GERUDO_VALLEY;Gerudo Valley;Hyrule Field;;all
-OOT_MARKET_ENTRANCE_FROM_FIELD_ENTR;oot;0x276;region-extra;OOT_MARKET;Market Entrance;Hyrule Field;;all
-OOT_ZORA_RIVER_FROM_LOST_WOODS_ENTR;oot;0x1dd;region-shortcut;OOT_ZORA_RIVER;Zora River;Lost Woods;;all
-OOT_GORON_CITY_FROM_LOST_WOODS_ENTR;oot;0x4e2;region-shortcut;OOT_GORON_CITY;Goron City;Lost Woods;;all
-OOT_LAKE_HYLIA_FROM_ZORA_DOMAIN_ENTR;oot;0x560;region-shortcut;OOT_LAKE_HYLIA;Lake Hylia;Zora Domain's Shortcut;;all
-OOT_FIELD_FROM_LOST_WOODS_BRIDGE_ENTR;oot;0x185;region-exit;OOT_HYRULE_FIELD;Hyrule Field;Lost Woods Bridge;;all
-OOT_FIELD_FROM_ZORA_RIVER_ENTR;oot;0x181;region-exit;OOT_HYRULE_FIELD;Hyrule Field;Zora River;;all
-OOT_FIELD_FROM_KAKARIKO_ENTR;oot;0x17d;region-exit;OOT_HYRULE_FIELD;Hyrule Field;Kakariko;;all
-OOT_FIELD_FROM_LON_LON_RANCH_ENTR;oot;0x1f9;region-exit;OOT_HYRULE_FIELD;Hyrule Field;Lon Lon's Ranch;;all
-OOT_FIELD_FROM_LAKE_HYLIA_ENTR;oot;0x189;region-exit;OOT_HYRULE_FIELD;Hyrule Field;Lake Hylia;;all
-OOT_FIELD_FROM_GERUDO_VALLEY_ENTR;oot;0x18d;region-exit;OOT_HYRULE_FIELD;Hyrule Field;Gerudo Valley;;all
-OOT_VALLEY_FROM_GERUDO_FORTRESS_ENTR;oot;0x22d;region-exit;OOT_GERUDO_VALLEY;Gerudo Valley;Gerudo Fortress;;all
-OOT_KAKARIKO_FROM_DEATH_MOUNTAIN_ENTR;oot;0x191;region-exit;OOT_KAKARIKO_VILLAGE;Kakariko;Death Mountain Trail;;all
-OOT_FIELD_FROM_MARKET_ENTRANCE_ENTR;oot;0x1fd;region-exit;OOT_HYRULE_FIELD;Hyrule Field;Market Entrance;;all
-OOT_LOST_WOODS_FROM_ZORA_RIVER_ENTR;oot;0x4da;region-exit;OOT_LOST_WOODS;Lost Woods;Zora River;;all
-OOT_LOST_WOODS_FROM_GORON_CITY_ENTR;oot;0x4d6;region-exit;OOT_LOST_WOODS;Lost Woods;Goron City;;all
-OOT_ZORA_DOMAIN_FROM_LAKE_HYLIA_ENTR;oot;0x328;region-exit;OOT_ZORA_DOMAIN;Zora Domain;Lake Hylia's Shortcut;;all
-OOT_SACRED_FOREST_MEADOW_ENTR;oot;0x0fc;overworld;OOT_SACRED_FOREST_MEADOW;Sacred Meadow;Lost Woods;;all
-OOT_LOST_WOODS_FROM_MEADOW_ENTR;oot;0x1a9;overworld;OOT_LOST_WOODS;Lost Woods Woods;Sacred Forest Meadow;;all
-OOT_GORON_CITY_ENTR;oot;0x14d;overworld;OOT_GORON_CITY;Goron City;Death Mountain Trail;;all
-OOT_DEATH_MOUNTAIN_FROM_GORON_CITY_ENTR;oot;0x1b9;overworld;OOT_DEATH_MOUNTAIN_TRAIL;Death Mountain Trail;Goron City;;all
-OOT_ZORA_DOMAIN_ENTR;oot;0x108;overworld;OOT_ZORA_DOMAIN;Zora Domain;Zora River;;all
-OOT_RIVER_FROM_DOMAIN_ENTR;oot;0x19d;overworld;OOT_ZORA_RIVER;Zora River;Zora Domain;;all
-OOT_FOUNTAIN_ZORA_ENTR;oot;0x225;overworld;OOT_ZORA_FOUNTAIN;Zora Fountain;Zora Domain;;all
-OOT_DOMAIN_FROM_FOUNTAIN_ENTR;oot;0x1a1;overworld;OOT_ZORA_DOMAIN;Zora Domain;Zora Fountain;;all
-OOT_CRATER_FROM_GORON_CITY_ENTR;oot;0x246;overworld;OOT_DEATH_MOUNTAIN_CRATER;Death Mountain Crater;Goron City;;all
-OOT_GORON_CITY_FROM_CRATER_ENTR;oot;0x1c1;overworld;OOT_GORON_CITY;Goron City;Death Mountain Crater;;all
-OOT_DEATH_MOUNTAIN_CRATER_ENTR;oot;0x147;overworld;OOT_DEATH_MOUNTAIN_CRATER;Death Mountain Crater;Death Mountain Trail;;all
-OOT_TRAIL_SUMMIT_FROM_CRATER_ENTR;oot;0x1bd;overworld;OOT_DEATH_MOUNTAIN_TRAIL;Death Mountain Trail;Death Mountain Crater;;all
-OOT_LOST_WOODS_FROM_KOKIRI_FOREST_ENTR;oot;0x11e;overworld;OOT_LOST_WOODS;Lost Woods;Kokiri Forest;;all
-OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR;oot;0x286;overworld;OOT_KOKIRI_FOREST;Kokiri Forest;Lost Woods;;all
-OOT_FOREST_FROM_LOST_WOODS_BRIDGE_ENTR;oot;0x20d;overworld;OOT_LOST_WOODS;Kokiri Forest;Lost Woods Bridge;;all
-OOT_LOST_WOODS_BRIDGE_FROM_FOREST_ENTR;oot;0x5e0;overworld;OOT_LOST_WOODS;Lost Woods Bridge;Kokiri Forest;;all
-OOT_GRAVEYARD_ENTR;oot;0x0e4;overworld;OOT_GRAVEYARD;Graveyard;Kakariko;;all
-OOT_KAKARIKO_FROM_GRAVEYARD_ENTR;oot;0x195;overworld;OOT_KAKARIKO_VILLAGE;Kakariko;Graveyard;;all
-OOT_WASTELAND_ENTR;oot;0x130;overworld;OOT_HAUNTED_WASTELAND;Haunted Wasteland;Gerudo Fortress;;all
-OOT_FORTRESS_FROM_WASTELAND_ENTR;oot;0x3ac;overworld;OOT_GERUDO_FORTRESS;Gerudo Fortress;Haunted Wasteland;;all
-OOT_COLOSSUS_ENTR;oot;0x123;overworld;OOT_DESERT_COLOSSUS;Desert Colossus;Haunted Wasteland;;all
-OOT_WASTELAND_FROM_COLOSSUS_ENTR;oot;0x365;overworld;OOT_HAUNTED_WASTELAND;Haunted Wasteland;Desert Colossus;;all
-OOT_MARKET_FROM_MARKET_ENTRANCE_ENTR;oot;0x0b1;overworld;OOT_MARKET;Market;Market Entrance;;all
-OOT_MARKET_ENTRANCE_FROM_MARKET_ENTR;oot;0x033;overworld;OOT_MARKET_ENTRANCE;Market Entrance;Market;;all
-OOT_HYRULE_CASTLE_ENTR;oot;0x138;overworld;OOT_HYRULE_CASTLE;Hyrule Castle;Market Entrance;;all
-OOT_MARKET_FROM_CASTLE_ENTR;oot;0x25a;overworld;OOT_MARKET;Market;Hyrule Castle;;all
-OOT_MARKET_FROM_TEMPLE_OF_TIME_ENTRYWAY_ENTR;oot;0x25e;overworld;OOT_MARKET;Market;Temple of Time Entryway Entrance;;all
-OOT_TEMPLE_OF_TIME_ENTRYWAY_FROM_MARKET_ENTR;oot;0x171;overworld;OOT_TEMPLE_OF_TIME_ENTRYWAY;Temple of Time Entryway;Market;;all
-OOT_LAKE_HYLIA_FROM_VALLEY_ENTR;oot;0x219;one-way;OOT_LAKE_HYLIA;Lake Hylia;Gerudo Valley Waterfalls;;all
-OOT_LOST_WOODS_FROM_LOST_WOODS_NORTH_ENTR;oot;0xf01;one-way-woods;OOT_LOST_WOODS;Lost Woods;North Wrong Exit;;all
-OOT_LOST_WOODS_FROM_LOST_WOODS_EAST_ENTR;oot;0x1ad;one-way-woods;OOT_LOST_WOODS;Lost Woods;East Wrong Exit ;;all
-OOT_LOST_WOODS_FROM_LOST_WOODS_SOUTH_ENTR;oot;0x1b1;one-way-woods;OOT_LOST_WOODS;Lost Woods;South Wrong Exit;;all
-OOT_LOST_WOODS_FROM_LOST_WOODS_WEST_ENTR;oot;0x4c6;one-way-woods;OOT_LOST_WOODS;Lost Woods;West Wrong Exit;;all
-OOT_HOUSE_MIDO_ENTR;oot;0x433;indoors;OOT_KOKIRI_MIDO;Mido's House;Kokiri Forest;;all
-OOT_HOUSE_SARIA_ENTR;oot;0x437;indoors;OOT_KOKIRI_SARIA;Saria's House;Kokiri Forest;;all
-OOT_HOUSE_TWINS_ENTR;oot;0x09c;indoors;OOT_KOKIRI_TWINS;Twin's House;Kokiri Forest;;all
-OOT_HOUSE_KNOW_IT_ALL_ENTR;oot;0x0c9;indoors;OOT_KOKIRI_KNOW_IT_ALL;Know-It-All Brothers;Kokiri Forest;;all
-OOT_KOKIRI_SHOP_ENTR;oot;0x0c1;indoors;OOT_KOKIRI_SHOP;Kokiri Shop;Kokiri Forest;;all
-OOT_HOUSE_POTS_ENTR;oot;0x07e;indoors;OOT_GUARD_HOUSE;Pot House;Market Entrance;;all
-OOT_LABORATORY_ENTR;oot;0x043;indoors;OOT_LABORATORY;Laboratory (OoT);Lake Hylia;;all
-OOT_FISHING_POND_ENTR;oot;0x45f;indoors;OOT_FISHING_POND;Fishing Pond;Lake Hylia;;all
-OOT_VALLEY_TENT_ENTR;oot;0x3a0;indoors;OOT_CARPENTER_TENT;Carpenter's Tent;Gerudo Valley;;all
-OOT_HOUSE_CARPENTER_ENTR;oot;0x2fd;indoors;OOT_CARPENTER_BOSS_HOUSE;Carpenter's Boss House;Kakariko;;all
-OOT_HOUSE_SKULLTULA_ENTR;oot;0x550;indoors;OOT_HOUSE_OF_SKULLTULA;House of Skulltula;Kakariko;;all
-OOT_HOUSE_IMPA_ENTR;oot;0x39c;indoors;OOT_IMPA_HOUSE;Impa's House;Kakariko;;all
-OOT_HOUSE_IMPA_BACK_ENTR;oot;0x5c8;indoors;OOT_IMPA_HOUSE;Impa's House Back;Kakariko;;all
-OOT_SHOP_GRANNY_ENTR;oot;0x072;indoors;OOT_GRANNY_POTION_SHOP;Granny Potion Shop;Kakariko;;all
-OOT_HOUSE_DAMPE_ENTR;oot;0x30d;indoors;OOT_DAMPE_HOUSE;Dampe's House;Graveyard;;all
-OOT_SHOP_GORON_ENTR;oot;0x37c;indoors;OOT_GORON_SHOP;Goron Shop (OoT);Goron City;;all
-OOT_SHOP_ZORA_ENTR;oot;0x380;indoors;OOT_ZORA_SHOP;Zora Shop (OoT);Zora Domain;;all
-OOT_HOUSE_LON_LON_ENTR;oot;0x04f;indoors;OOT_RANCH_HOUSE_SILO;Lon Lon Ranch House;Lon Lon Ranch;;all
-OOT_SILO_ENTR;oot;0x5d0;indoors;OOT_SILO;Silo;Lon Lon Ranch;;all
-OOT_STABLES_ENTR;oot;0x2f9;indoors;OOT_STABLE;Stables (OoT);Lon Lon Ranch;;all
-OOT_FAIRY_MAGIC_ENTR;oot;0x315;indoors;OOT_GREAT_FAIRY_MAGIC;Magic Upgrade Fountain (OoT);Death Mountain Trail;;all
-OOT_FAIRY_MAGIC2_ENTR;oot;0x4be;indoors;OOT_GREAT_FAIRY_MAGIC2;Large Magic Upgrade Fountain (OoT);Death Mountain Crater;;all
-OOT_FAIRY_DIN_ENTR;oot;0x578;indoors;OOT_GREAT_FAIRY_CASTLE;Din's Fire Fountain;Hyrule Castle;;all
-OOT_FAIRY_FARORE_ENTR;oot;0x371;indoors;OOT_GREAT_FAIRY_FARORE;Farore's Wind Fountain;Zora Fountain;;all
-OOT_FAIRY_NAYRU_ENTR;oot;0x588;indoors;OOT_GREAT_FAIRY_NAYRU;Nayru's Love Fountain;Desert Colossus;;all
-OOT_FAIRY_DEFENSE_ENTR;oot;0x4c2;indoors;OOT_GREAT_FAIRY_CASTLE;Defense Upgrade Fountain (OoT);Ganon Castle Exterior;;all
-OOT_BOMBCHU_BOWLING_ENTR;oot;0x507;indoors;OOT_BOMBCHU_BOWLING_ALLEY;Bombchu Bowling;Market;;all
-OOT_TREASURE_GAME_ENTR;oot;0x063;indoors;OOT_TREASURE_SHOP;Treasure Game (OoT);Market;;all
-OOT_BOMBCHU_SHOP_ENTR;oot;0x528;indoors;OOT_BOMBCHU_SHOP;Bombchu Shop;Back Alley;;all
-OOT_ALLEY_HOUSE_ENTR;oot;0x43b;indoors;OOT_BACK_ALLEY_HOUSE2;Alley House;Back Alley;;all
-OOT_MARKET_BAZAAR_ENTR;oot;0x52c;indoors;OOT_MARKET_BAZAAR;Market Bazaar;Market;;all
-OOT_MARKET_POTION_ENTR;oot;0x388;indoors;OOT_MARKET_POTION_SHOP;Market Potion Shop;Market;;all
-OOT_CHILD_ARCHERY_ENTR;oot;0x16d;indoors;OOT_MARKET_SHOOTING;Market Shooting;Market;;all
-OOT_KAKARIKO_BAZAAR_ENTR;oot;0x0b7;indoors;OOT_KAKARIKO_BAZAAR;Kakariko Bazaar;Kakariko;;all
-OOT_ADULT_ARCHERY_ENTR;oot;0x03b;indoors;OOT_KAKARIKO_SHOOTING;Kakariko Shooting;Kakariko;;all
-OOT_HOUSE_LINK_ENTR;oot;0x272;indoors-extra;OOT_LINK_HOUSE;Link's House;Kokiri Forest;;all
-OOT_TEMPLE_OF_TIME_ENTR;oot;0x053;indoors-extra;OOT_TEMPLE_OF_TIME;Temple of Time;Temple of Time Entryway;;all
-OOT_WINDMILL_ENTR;oot;0x453;indoors-extra;OOT_KAKARIKO_VILLAGE;Windmill;Kakariko;;all
-OOT_SHOP_POTION_KAKARIKO_ENTR;oot;0x384;indoors-extra;OOT_KAKARIKO_VILLAGE;Kakariko Potion Shop;Kakariko;;all
-OOT_SHOP_POTION_KAKARIKO_BACK_ENTR;oot;0x3ec;indoors-extra;OOT_KAKARIKO_VILLAGE;Kakariko Potion Shop Back;Kakariko;;all
-OOT_KOKIRI_FOREST_FROM_MIDO_ENTR;oot;0x443;indoors-exit;OOT_KOKIRI_FOREST;Mido's House;Kokiri Forest;;all
-OOT_KOKIRI_FOREST_FROM_SARIA_ENTR;oot;0x447;indoors-exit;OOT_KOKIRI_FOREST;Saria's House;Kokiri Forest;;all
-OOT_KOKIRI_FOREST_FROM_TWINS_ENTR;oot;0x33c;indoors-exit;OOT_KOKIRI_FOREST;Twin's House;Kokiri Forest;;all
-OOT_KOKIRI_FOREST_FROM_KNOW_IT_ALL_ENTR;oot;0x26a;indoors-exit;OOT_KOKIRI_FOREST;Know-It-All Brothers;Kokiri Forest;;all
-OOT_KOKIRI_FOREST_FROM_SHOP_ENTR;oot;0x266;indoors-exit;OOT_KOKIRI_FOREST;Kokiri Shop;Kokiri Forest;;all
-OOT_MARKET_ENTRANCE_FROM_POTS_ENTR;oot;0x26e;indoors-exit;OOT_MARKET_ENTRANCE;Pot House;Market Entrance Entrance;;all
-OOT_LAKE_HYLIA_FROM_LABORATORY_ENTR;oot;0x3cc;indoors-exit;OOT_LAKE_HYLIA;Laboratory (OoT);Lake Hylia;;all
-OOT_LAKE_HYLIA_FROM_FISHING_POND_ENTR;oot;0x309;indoors-exit;OOT_LAKE_HYLIA;Fishing Pond;Lake Hylia;;all
-OOT_GERUDO_VALLEY_FROM_TENT_ENTR;oot;0x3d0;indoors-exit;OOT_GERUDO_VALLEY;Gerudo Valley;Carpenter's Tent;;all
-OOT_KAKARIKO_FROM_CARPENTER_ENTR;oot;0x349;indoors-exit;OOT_KAKARIKO_VILLAGE;Kakariko;Carpenter's Boss House;;all
-OOT_KAKARIKO_FROM_SKULLTULA_ENTR;oot;0x4ee;indoors-exit;OOT_KAKARIKO_VILLAGE;Kakariko;House of Skulltula;;all
-OOT_KAKARIKO_FROM_IMPA_ENTR;oot;0x345;indoors-exit;OOT_KAKARIKO_VILLAGE;Kakariko;Impa's House;;all
-OOT_KAKARIKO_FROM_IMPA_BACK_ENTR;oot;0x5dc;indoors-exit;OOT_KAKARIKO_VILLAGE;Kakariko;Impa's House Back;;all
-OOT_KAKARIKO_FROM_GRANNY_ENTR;oot;0x34d;indoors-exit;OOT_KAKARIKO_VILLAGE;Kakariko;Granny Potion Shop;;all
-OOT_GRAVEYARD_FROM_DAMPE_ENTR;oot;0x355;indoors-exit;OOT_GRAVEYARD;Graveyard;Dampe's House;;all
-OOT_GORON_CITY_FROM_SHOP_ENTR;oot;0x3fc;indoors-exit;OOT_GORON_CITY;Goron City City Goron Shop;Goron Shop (OoT);;all
-OOT_ZORA_DOMAIN_FROM_SHOP_ENTR;oot;0x3c4;indoors-exit;OOT_ZORA_DOMAIN;Zora Domain Domain Zora Shop;Zora Shop (OoT);;all
-OOT_LON_LON_RANCH_FROM_HOUSE_ENTR;oot;0x378;indoors-exit;OOT_LON_LON_RANCH;Lon Lon Ranch;Lon Lon Ranch House;;all
-OOT_LON_LON_RANCH_FROM_STABLES_ENTR;oot;0x42f;indoors-exit;OOT_LON_LON_RANCH;Lon Lon Ranch;Silo;;all
-OOT_LON_LON_RANCH_FROM_SILO_ENTR;oot;0x5d4;indoors-exit;OOT_LON_LON_RANCH;Lon Lon Ranch;Stables (OoT);;all
-OOT_KOKIRI_FOREST_FROM_LINK_ENTR;oot;0x211;indoors-exit;OOT_KOKIRI_FOREST;Kokiri Forest ;Link's House;;all
-OOT_TEMPLE_OF_TIME_ENTRYWAY_FROM_TEMPLE_ENTR;oot;0x472;indoors-exit;OOT_TEMPLE_OF_TIME_ENTRYWAY;Entryway Entryway of Time;Temple Of Time;;all
-OOT_KAKARIKO_FROM_WINDMILL_ENTR;oot;0x351;indoors-exit;OOT_WINDMILL;Kakariko;Windmill;;all
-OOT_KAKARIKO_FROM_SHOP_POTION_ENTR;oot;0x44b;indoors-exit;OOT_KAKARIKO_POTION_SHOP;Kakariko;Kakariko Potion Shop;;all
-OOT_KAKARIKO_FROM_SHOP_POTION_BACK_ENTR;oot;0x4ff;indoors-exit;OOT_KAKARIKO_POTION_SHOP;Kakariko;Kakariko Potion Shop Back;;all
-OOT_DEATH_MOUNTAIN_FROM_FAIRY_ENTR;oot;0x45b;indoors-exit;OOT_DEATH_MOUNTAIN_TRAIL;Death Mountain Trail;Magic Upgrade Fountain (OoT);;all
-OOT_DEATH_CRATER_FROM_FAIRY_ENTR;oot;0x482;indoors-exit;OOT_DEATH_MOUNTAIN_CRATER;Death Mountain Crater;Large Magic Upgrade Fountain (OoT);;all
-OOT_HYRULE_CASTLE_FROM_FAIRY_ENTR;oot;0x340;indoors-exit;OOT_HYRULE_CASTLE;Hyrule Castle;Din's Fire Fountain;;all
-OOT_ZORA_FOUNTAIN_FROM_FAIRY_ENTR;oot;0x394;indoors-exit;OOT_ZORA_FOUNTAIN;Zora Foutain;Farore's Wind Fountain;;all
-OOT_DESERT_COLOSSUS_FROM_FAIRY_ENTR;oot;0x57c;indoors-exit;OOT_DESERT_COLOSSUS;Desert Colossus;Nayru's Love Fountain;;all
-OOT_MARKET_FROM_BOWLING_ENTR;oot;0x3bc;indoors-exit;OOT_MARKET;Market;Bombchu Bowling;;all
-OOT_MARKET_FROM_TREASURE_GAME_ENTR;oot;0x1d5;indoors-exit;OOT_MARKET;Market;Treasure Game (OoT);;all
-OOT_MARKET_FROM_BOMBCHU_SHOP_ENTR;oot;0x3c0;indoors-exit;OOT_MARKET;Back Alley;Bombchu Shop;;all
-OOT_MARKET_FROM_ALLEY_HOUSE_ENTR;oot;0x067;indoors-exit;OOT_MARKET;Back Alley;Alley House;;all
-OOT_MARKET_FROM_BAZAAR_ENTR;oot;0x3b8;indoors-exit;OOT_MARKET;Marke;Market Bazaar;;all
-OOT_MARKET_FROM_POTION_ENTR;oot;0x2a2;indoors-exit;OOT_MARKET;Marke;Market Potion Shop;;all
-OOT_MARKET_FROM_ARCHERY_ENTR;oot;0x1cd;indoors-exit;OOT_MARKET;Marke;Market Shooting;;all
-OOT_KAKARIKO_FROM_BAZAAR_ENTR;oot;0x201;indoors-exit;OOT_KAKARIKO_VILLAGE;Kakariko;Kakariko Bazaar;;all
-OOT_KAKARIKO_FROM_ARCHERY_ENTR;oot;0x463;indoors-exit;OOT_KAKARIKO_VILLAGE;Kakariko;Kakariko Shooting;;all
-OOT_OUTSIDE_GANON_FROM_FAIRY_ENTR;oot;0xf00;indoors-exit;OOT_GANON_CASTLE_EXTERIOR;Ganon Castle Exterior;Defense Upgrade Fountain (OoT);;all
-OOT_WARP_SONG_MEADOW_ENTR;oot;0x600;one-way-song;OOT_SACRED_FOREST_MEADOW;Sacred Forest Meadow;Warp Song;;all
-OOT_WARP_SONG_CRATER_ENTR;oot;0x4f6;one-way-song;OOT_DEATH_MOUNTAIN_CRATER;Death Mountain Crater ;Warp Song;;all
-OOT_WARP_SONG_LAKE_ENTR;oot;0x604;one-way-song;OOT_LAKE_HYLIA;Lake Hylia;Warp Song;;all
-OOT_WARP_SONG_GRAVE_ENTR;oot;0x568;one-way-song;OOT_GRAVEYARD;Graveyard;Warp Song;;all
-OOT_WARP_SONG_DESERT_ENTR;oot;0x1f1;one-way-song;OOT_DESERT_COLOSSUS;Desert Colossus;Warp Song;;all
-OOT_WARP_SONG_TEMPLE_ENTR;oot;0x5f4;one-way-song;OOT_TEMPLE_OF_TIME;Temple of Time;Warp Song;;all
-OOT_VILLAGE_OWL_ENTR;oot;0x554;one-way-owl;OOT_DEATH_MOUNTAIN_TRAIL;Kakariko;Death Mountain Trail Owl;;all
-OOT_FIELD_OWL_ENTR;oot;0x27e;one-way-owl;OOT_LAKE_HYLIA;Hyrule Field;Lake Hylia Owl;;all
-OOT_WALLMASTER_FOREST_CORRIDOR_WEST_ENTR;oot;0xf10;wallmaster;OOT_TEMPLE_FOREST;Forest Temple;Wallmaster;;all
-OOT_WALLMASTER_FOREST_CORRIDOR_EAST_ENTR;oot;0xf11;wallmaster;OOT_TEMPLE_FOREST;Forest Temple;Wallmaster;;all
-OOT_WALLMASTER_SHADOW_ENTR;oot;0xf12;wallmaster;OOT_TEMPLE_SHADOW;Shadow Temple;Wallmaster;;all
-OOT_WALLMASTER_SPIRIT_CHILD_RUPEES_ENTR;oot;0xf13;wallmaster;OOT_TEMPLE_SPIRIT;Spirit Temple;Wallmaster;;all
-OOT_WALLMASTER_SPIRIT_ADULT_CLIMB_ENTR;oot;0xf14;wallmaster;OOT_TEMPLE_SPIRIT;Spirit Temple;Wallmaster;;all
-OOT_WALLMASTER_SPIRIT_CHILD_SUN_ENTR;oot;0xf15;wallmaster;OOT_TEMPLE_SPIRIT;Spirit Temple;Wallmaster;;all
-OOT_WALLMASTER_SPIRIT_STATUE_ENTR;oot;0xf16;wallmaster;OOT_TEMPLE_SPIRIT;Spirit Temple;Wallmaster;;all
-OOT_WALLMASTER_BOTW_MAIN_ENTR;oot;0xf17;wallmaster;OOT_BOTTOM_OF_THE_WELL;Bottom of the Well;Wallmaster;;all
-OOT_WALLMASTER_BOTW_BASEMENT_ENTR;oot;0xf18;wallmaster;OOT_BOTTOM_OF_THE_WELL;Bottom of the Well;Wallmaster;;all
-OOT_WALLMASTER_BOTW_PIT_ENTR;oot;0xf19;wallmaster;OOT_BOTTOM_OF_THE_WELL;Bottom of the Well;Wallmaster;;all
-OOT_WALLMASTER_GTG_ENTR;oot;0xf1a;wallmaster;OOT_GERUDO_TRAINING_GROUND;Gerudo Training Ground;Wallmaster;;all
-OOT_WALLMASTER_GANON_SPIRIT_ENTR;oot;0xf1b;wallmaster;OOT_INSIDE_GANON_CASTLE;Inside Ganon Castle;Wallmaster;;all
-OOT_WALLMASTER_GANON_LIGHT_ENTR;oot;0xf1c;wallmaster;OOT_INSIDE_GANON_CASTLE;Inside Ganon Castle;Wallmaster;;all
-OOT_GROTTO_GENERIC_KOKIRI_FOREST_ENTR;oot;0x1000;grotto;OOT_KOKIRI_FOREST;Kokiri Forest Storms Grotto;Kokiri Forest;;all
-OOT_GROTTO_GENERIC_LOST_WOODS_ENTR;oot;0x1001;grotto;OOT_LOST_WOODS;Lost Woods Boulder Grotto Near Goron City;Lost Woods;;all
-OOT_GROTTO_GENERIC_KAKARIKO_ENTR;oot;0x1002;grotto;OOT_KAKARIKO_VILLAGE;Kakariko Open Grotto;Kakariko;;all
-OOT_GROTTO_GENERIC_DMT_ENTR;oot;0x1003;grotto;OOT_DEATH_MOUNTAIN_TRAIL;Death Mountain Trail Storms Grotto;Death Mountain Trail;;all
-OOT_GROTTO_GENERIC_DMC_ENTR;oot;0x1004;grotto;OOT_DEATH_MOUNTAIN_CRATER;Death Mountain Crater Boulder Grotto;Death Mountain Crater;;all
-OOT_GROTTO_GENERIC_RIVER_ENTR;oot;0x1005;grotto;OOT_ZORA_RIVER;Zora River Generic Open Grotto;Zora River;;all
-OOT_GROTTO_GENERIC_HF_SOUTHEAST_ENTR;oot;0x1006;grotto;OOT_HYRULE_FIELD;Hyrule Field Southeast Grotto;Hyrule Field;;all
-OOT_GROTTO_GENERIC_HF_OPEN_ENTR;oot;0x1007;grotto;OOT_HYRULE_FIELD;Hyrule Field Open Grotto;Hyrule Field;;all
-OOT_GROTTO_GENERIC_HF_MARKET_ENTR;oot;0x1008;grotto;OOT_HYRULE_FIELD;Hyrule Field Near Market Grotto;Hyrule Field;;all
-OOT_GROTTO_FAIRY_SFM_ENTR;oot;0x1009;grotto;OOT_SACRED_FOREST_MEADOW;Sacred Forest Meadow Fairy Fountain Grotto;Sacred Forest Meadow;;all
-OOT_GROTTO_FAIRY_HF_ENTR;oot;0x100a;grotto;OOT_HYRULE_FIELD;Hyrule Field Fairy Fountain Grotto;Hyrule Field;;all
-OOT_GROTTO_FAIRY_RIVER_ENTR;oot;0x100b;grotto;OOT_ZORA_RIVER;Zora River Fairy Fountain Grotto;Zora River;;all
-OOT_GROTTO_FAIRY_DOMAIN_ENTR;oot;0x100c;grotto;OOT_ZORA_DOMAIN;Zora Domain Fairy Fountain Grotto;Zora Domain;;all
-OOT_GROTTO_FAIRY_FORTRESS_ENTR;oot;0x100d;grotto;OOT_GERUDO_FORTRESS;Gerudo Fortress Fairy Fountain Grotto;Gerudo Fortress;;all
-OOT_GROTTO_SCRUBS2_SFM_ENTR;oot;0x100e;grotto;OOT_SACRED_FOREST_MEADOW;Sacred Forest Meadow Storms Grotto;Sacred Forest Meadow;;all
-OOT_GROTTO_SCRUBS2_RIVER_ENTR;oot;0x100f;grotto;OOT_ZORA_RIVER;Zora River Storms Grotto;Zora River;;all
-OOT_GROTTO_SCRUBS2_VALLEY_ENTR;oot;0x1010;grotto;OOT_GERUDO_VALLEY;Gerudo Valley Storms Grotto;Gerudo Valley;;all
-OOT_GROTTO_SCRUBS2_COLOSSUS_ENTR;oot;0x1011;grotto;OOT_DESERT_COLOSSUS;Desert Colossus Silver Boulder Grotto;Desert Colossus;;all
-OOT_GROTTO_SCRUBS3_RANCH_ENTR;oot;0x1012;grotto;OOT_LON_LON_RANCH;Lon Lon Ranch Open Grotto;Lon Lon Ranch;;all
-OOT_GROTTO_SCRUBS3_GORON_CITY_ENTR;oot;0x1013;grotto;OOT_GORON_CITY;Goron City Open Grotto;Goron City;;all
-OOT_GROTTO_SCRUBS3_DMC_ENTR;oot;0x1014;grotto;OOT_DEATH_MOUNTAIN_CRATER;Death Mountain Crater Red Boulder Grotto;Death Mountain Crater;;all
-OOT_GROTTO_SCRUBS3_LAKE_ENTR;oot;0x1015;grotto;OOT_LAKE_HYLIA;Lake Hylia Under Tomb Grotto;Lake Hylia;;all
-OOT_GROTTO_SCRUB_UPGRADE_ENTR;oot;0x5b0;grotto;OOT_LOST_WOODS;Lost Woods Scrub Upgrade Grotto;Lost Woods;;all
-OOT_GROTTO_SCRUB_HEART_PIECE_ENTR;oot;0x59c;grotto;OOT_HYRULE_FIELD;Hyrule Field Scrub Grotto;Hyrule Field;;all
-OOT_GROTTO_DEKU_THEATER_ENTR;oot;0x5c4;grotto;OOT_LOST_WOODS;Lost Woods Deku Theater;Lost Woods;;all
-OOT_GROTTO_WOLFOS_ENTR;oot;0x5b4;grotto;OOT_SACRED_FOREST_MEADOW;Sacred Forest Meadow Wolfos Grotto;Sacred Forest Meadow;;all
-OOT_GROTTO_TEKTITE_ENTR;oot;0x5c0;grotto;OOT_HYRULE_FIELD;Hyrule Field Tektite Grotto;Hyrule Field;;all
-OOT_GROTTO_FIELD_COW_ENTR;oot;0x5a8;grotto;OOT_HYRULE_FIELD;Hyrule Field Grotto Near Gerudo Valley;Hyrule Field;;all
-OOT_GROTTO_FIELD_TREE_ENTR;oot;0x598;grotto;OOT_HYRULE_FIELD;Hyrule Field Tree Grotto Near Kakariko;Hyrule Field;;all
-OOT_GROTTO_TRAIL_COW_ENTR;oot;0x5fc;grotto;OOT_DEATH_MOUNTAIN_TRAIL;Death Mountain Trail Cow Grotto;Death Mountain Trail;;all
-OOT_GROTTO_CASTLE_ENTR;oot;0x5b8;grotto;OOT_HYRULE_CASTLE;Hyrule Castle Storms Grotto;Hyrule Castle;;all
-OOT_GROTTO_REDEAD_ENTR;oot;0x5a0;grotto;OOT_KAKARIKO_VILLAGE;Kakariko Redead Grotto;Kakariko;;all
-OOT_GROTTO_OCTOROK_ENTR;oot;0x5ac;grotto;OOT_GERUDO_VALLEY;Gerudo Valley Octorok Grotto;Gerudo Valley;;all
-OOT_GRAVE_SHIELD_ENTR;oot;0x04b;grave;OOT_GRAVEYARD;Graveyard Shield Tomb;Graveyard;;all
-OOT_GRAVE_REDEAD_ENTR;oot;0x31c;grave;OOT_GRAVEYARD;Graveyard Fairy Fountain Tomb;Graveyard;;all
-OOT_GRAVE_ROYAL_ENTR;oot;0x02d;grave;OOT_GRAVEYARD;Graveyard Royal Family Tomb;Graveyard;;all
-OOT_GRAVE_DAMPE_ENTR;oot;0x44f;grave;OOT_GRAVEYARD;Graveyard Dampe Tomb;Graveyard;;all
-OOT_GROTTO_EXIT_GENERIC_KOKIRI_FOREST;oot;0x1100;grotto-exit;OOT_GROTTO_KOKIRI_FOREST_STORMS;Kokiri Forest;Kokiri Forest Storms Grotto;;all
-OOT_GROTTO_EXIT_GENERIC_LOST_WOODS;oot;0x1101;grotto-exit;OOT_GROTTO_LOST_WOODS_GENERIC;Lost Woods;Lost Woods Boulder Grotto Near Goron City;;all
-OOT_GROTTO_EXIT_GENERIC_KAKARIKO;oot;0x1102;grotto-exit;OOT_GROTTO_KAKARIKO_OPEN;Kakariko;Kakariko Open Grotto;;all
-OOT_GROTTO_EXIT_GENERIC_DMT;oot;0x1103;grotto-exit;OOT_GROTTO_DEATH_TRIAL_STORMS;Death Mountain Trail;Death Mountain Trail Storms Grotto;;all
-OOT_GROTTO_EXIT_GENERIC_DMC;oot;0x1104;grotto-exit;OOT_GROTTO_DEATH_CRATER_GENERIC;Death Mountain Crater;Death Mountain Crater Boulder Grotto;;all
-OOT_GROTTO_EXIT_GENERIC_RIVER;oot;0x1105;grotto-exit;OOT_GROTTO_ZORA_RIVER_GENERIC;Zora River;Zora River Generic Open Grotto;;all
-OOT_GROTTO_EXIT_GENERIC_HF_SOUTHEAST;oot;0x1106;grotto-exit;OOT_GROTTO_HYRULE_SE;Hyrule Field;Hyrule Field Southeast Grotto;;all
-OOT_GROTTO_EXIT_GENERIC_HF_OPEN;oot;0x1107;grotto-exit;OOT_GROTTO_HYRULE_OPEN;Hyrule Field;Hyrule Field Open Grotto;;all
-OOT_GROTTO_EXIT_GENERIC_HF_MARKET;oot;0x1108;grotto-exit;OOT_GROTTO_HYRULE_MARKET;Hyrule Field;Hyrule Field Near Market Grotto;;all
-OOT_GROTTO_EXIT_FAIRY_SFM;oot;0x1109;grotto-exit;OOT_FAIRY_SACRED_MEADOW;Sacred Forest Meadow;Sacred Forest Meadow Fairy Fountain Grotto;;all
-OOT_GROTTO_EXIT_FAIRY_HF;oot;0x110a;grotto-exit;OOT_FAIRY_HYRULE;Hyrule Field;Hyrule Field Fairy Fountain Grotto;;all
-OOT_GROTTO_EXIT_FAIRY_RIVER;oot;0x110b;grotto-exit;OOT_FAIRY_ZORA_RIVER;Zora River;Zora River Fairy Fountain Grotto;;all
-OOT_GROTTO_EXIT_FAIRY_DOMAIN;oot;0x110c;grotto-exit;OOT_FAIRY_ZORA_DOMAIN;Zora Domain;Zora Domain Fairy Fountain Grotto;;all
-OOT_GROTTO_EXIT_FAIRY_FORTRESS;oot;0x110d;grotto-exit;OOT_FAIRY_GERUDO_FORTRESS;Gerudo Fortress;Gerudo Fortress Fairy Fountain Grotto;;all
-OOT_GROTTO_EXIT_SCRUBS2_SFM;oot;0x110e;grotto-exit;OOT_GROTTO_SACRED_MEADOW_STORMS;Sacred Forest Meadow;Sacred Forest Meadow Storms Grotto;;all
-OOT_GROTTO_EXIT_SCRUBS2_RIVER;oot;0x110f;grotto-exit;OOT_GROTTO_ZORA_RIVER_STORMS;Zora River;Zora River Storms Grotto;;all
-OOT_GROTTO_EXIT_SCRUBS2_VALLEY;oot;0x1110;grotto-exit;OOT_GROTTO_VALLEY_STORMS;Gerudo Valley;Gerudo Valley Storms Grotto;;all
-OOT_GROTTO_EXIT_SCRUBS2_COLOSSUS;oot;0x1111;grotto-exit;OOT_GROTTO_DESERT_SCRUBS;Desert Colossus;Desert Colossus Silver Boulder Grotto;;all
-OOT_GROTTO_EXIT_SCRUBS3_RANCH;oot;0x1112;grotto-exit;OOT_GROTTO_LON_LON_SCRUBS;Lon Lon Ranch;Lon Lon Ranch Open Grotto;;all
-OOT_GROTTO_EXIT_SCRUBS3_GORON_CITY;oot;0x1113;grotto-exit;OOT_GROTTO_GORON_CITY_SCRUBS;Goron City;Goron City Open Grotto;;all
-OOT_GROTTO_EXIT_SCRUBS3_DMC;oot;0x1114;grotto-exit;OOT_GROTTO_DEATH_CRATER_SCRUBS;Death Mountain Crater;Death Mountain Crater Red Boulder Grotto;;all
-OOT_GROTTO_EXIT_SCRUBS3_LAKE;oot;0x1115;grotto-exit;OOT_GROTTO_LAKE_HYLIA_SCRUBS;Lake Hylia;Lake Hylia Under Tomb Grotto;;all
-OOT_GROTTO_EXIT_SCRUB_UPGRADE;oot;0x1116;grotto-exit;OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;Lost Woods;Lost Woods Scrub Upgrade Grotto;;all
-OOT_GROTTO_EXIT_SCRUB_HEART_PIECE;oot;0x1117;grotto-exit;OOT_GROTTO_HYRULE_SCRUBS;Hyrule Field;Hyrule Field Scrub Grotto;;all
-OOT_GROTTO_EXIT_DEKU_THEATER;oot;0x1118;grotto-exit;OOT_GROTTO_LOST_WOODS_THEATER;Lost Woods;Lost Woods Deku Theater;;all
-OOT_GROTTO_EXIT_WOLFOS;oot;0x1119;grotto-exit;OOT_GROTTO_SACRED_MEADOW_WOLFOS;Sacred Forest Meadow;Sacred Forest Meadow Wolfos Grotto;;all
-OOT_GROTTO_EXIT_TEKTITE;oot;0x111a;grotto-exit;OOT_GROTTO_HYRULE_TEKTITE;Hyrule Field;Hyrule Field Tektite Grotto;;all
-OOT_GROTTO_EXIT_FIELD_COW;oot;0x111b;grotto-exit;OOT_GROTTO_HYRULE_GERUDO;Hyrule Field;Hyrule Field Grotto Near Gerudo Valley;;all
-OOT_GROTTO_EXIT_FIELD_TREE;oot;0x111c;grotto-exit;OOT_GROTTO_HYRULE_KAKARIKO;Hyrule Field;Hyrule Field Tree Grotto Near Kakariko;;all
-OOT_GROTTO_EXIT_TRAIL_COW;oot;0x111d;grotto-exit;OOT_GROTTO_DEATH_TRIAL_COW;Death Mountain Trail;Death Mountain Trail Cow Grotto;;all
-OOT_GROTTO_EXIT_CASTLE;oot;0x111e;grotto-exit;OOT_GROTTO_CASTLE_STORMS;Hyrule Castle;Hyrule Castle Storms Grotto;;all
-OOT_GROTTO_EXIT_REDEAD;oot;0x111f;grotto-exit;OOT_GROTTO_KAKARIKO_REDEAD;Kakariko;Kakariko Redead Grotto;;all
-OOT_GROTTO_EXIT_OCTOROK;oot;0x1120;grotto-exit;OOT_GROTTO_VALLEY_OCTOROK;Gerudo Valley;Gerudo Valley Octorok Grotto;;all
-OOT_GRAVE_EXIT_SHIELD;oot;0x35d;grave-exit;OOT_TOMB_REDEAD;Graveyard;Graveyard Shield Tomb;;all
-OOT_GRAVE_EXIT_REDEAD;oot;0x361;grave-exit;OOT_TOMB_FAIRY;Graveyard;Graveyard Fairy Fountain Tomb;;all
-OOT_GRAVE_EXIT_ROYAL;oot;0x50b;grave-exit;OOT_TOMB_ROYAL;Graveyard;Graveyard Royal Family Tomb;;all
-OOT_GRAVE_EXIT_DAMPE;oot;0x359;grave-exit;OOT_TOMB_DAMPE_WINDMILL;Graveyard;Graveyard Dampe Tomb;;all
-OOT_BOSS_GANON2_ENTR;oot;0x517;none;OOT_GANON_BATTLE_ARENA;;;;all
-OOT_GERUDO_FORTRESS_CAUGHT_NO_HOOK_ENTR;oot;0x1a5;none;OOT_GERUDO_FORTRESS;;;;all
-OOT_GERUDO_FORTRESS_CAUGHT_ENTR;oot;0x5f8;none;OOT_GERUDO_FORTRESS;;;;all
-OOT_CASTLE_STEALTH_ENTR;oot;0x07a;none;OOT_HYRULE_CASTLE;;;;all
-OOT_CASTLE_STEALTH_FROM_COURTYARD_ENTR;oot;0x296;none;OOT_CASTLE_COURTYARD;;;;all
-OOT_CASTLE_COURTYARD_ENTR;oot;0x400;none;OOT_CASTLE_COURTYARD;Castle Courtyard;Hyrule Castle;;all
-OOT_CASTLE_CAUGHT_ENTR;oot;0x47e;none;OOT_HYRULE_CASTLE;;;;all
-OOT_MARKET_FROM_MASK_SHOP_ENTR;oot;0x1d1;indoors-link;OOT_MARKET;Market;Mask Shop;;all
-OOT_SHOP_MASKS_ENTR;oot;0x530;none;OOT_MARKET;Mask Shop;Market;;all
-OOT_SAGES_CHAMBER_END_ENTR;oot;0x06b;none;OOT_CHAMBER_OF_THE_SAGES;Sages Chamber;Temple of Time;;all
-OOT_TEMPLE_OF_TIME_MASTER_SWORD_CS_ENTR;oot;0x2ca;none;OOT_TEMPLE_OF_TIME;Temple of Time;Master Sword;;all
-OOT_ZORA_RIVER_FROM_FIELD_WATER_ENTR;oot;0x1d9;none;OOT_ZORA_RIVER;Zora River Water;Hyrule Field Water;;all
-OOT_FIELD_FROM_ZORA_RIVER_WATER_ENTR;oot;0x311;none;OOT_HYRULE_FIELD;Hyrule Field Water;Zora River Water;;all
-OOT_GROTTO_TYPE_GENERIC_ENTR;oot;0x03f;none # Multiple uses;OOT_GROTTOS;;;;all
-OOT_GROTTO_TYPE_FAIRY_ENTR;oot;0x36d;none # Multiple uses;OOT_GROTTOS;;;;all
-OOT_GROTTO_TYPE_SCRUB2_ENTR;oot;0x5bc;none # Multiple uses;OOT_GROTTOS;;;;all
-OOT_GROTTO_TYPE_SCRUB3_ENTR;oot;0x5a4;none # Multiple uses;OOT_GROTTOS;;;;all
-OOT_SHADOW_TEMPLE_FROM_LAIR_ENTR;oot;0x2b2;none;OOT_TEMPLE_SHADOW;Shadow Temple;Bongo-Bongo's Lair;;all
-OOT_INTERNAL_EXIT_GROTTO_ENTR;oot;0x7fff;none;OOT_GROTTOS;;;;all
-OOT_MARKET_FROM_BACK_ALLEY_TREASURE_ENTR;oot;0x029e;none;OOT_BACK_ALLEY;Market Treasure Game Side;Back Alley Treasure Game Side;;all
-OOT_MARKET_FROM_BACK_ALLEY_SHOOTING_ENTR;oot;0x0262;none;OOT_BACK_ALLEY;Market Shooting Side;Back Alley Shooting Side;;all
-OOT_BACK_ALLEY_TREASURE_FROM_MARKET_ENTR;oot;0x029a;none;OOT_MARKET;Back Alley Treasure Game Side;Market Treasure Game Side;;all
-OOT_BACK_ALLEY_SHOOTING_FROM_MARKET_ENTR;oot;0x0ad;none;OOT_MARKET;Back Alley Shooting Side;Market Shooting Side;;all
-OOT_DOG_LADY_FROM_BACK_ALLEY_ENTR;oot;0x0398;none;OOT_BACK_ALLEY;Dog Lady's House;Back Alley;;all
-OOT_BACK_ALLEY_FROM_DOG_LADY_ENTR;oot;0x038c;none;OOT_BACK_ALLEY_HOUSE;Back Alley;Dog Lady's House;;all
-SPAWN_LOADING;oot;0xfffe;none;0;Spawn Loading;Wrap Song / Save Menu;;all
+Code_Name;Game;ID;Type;Scene;From_Name;To_Name;Image_Path;Active_Layout;From_Name
+OOT_SPAWN_CHILD;oot;0x0bb;spawn-child;OOT_LINK_HOUSE;Spawn Child;Spawn Child;;all;Spawn Child
+OOT_SPAWN_ADULT;oot;0xf20;spawn-adult;OOT_TEMPLE_OF_TIME;Spawn Adult;Spawn Adult;;all;Spawn Adult
+OOT_BOSS_DEKU_TREE_ENTR;oot;0x40f;boss;OOT_DEKU_TREE;Deku Tree;Gohma's Lair;;all;Gohma's Lair
+OOT_BOSS_DODONGO_CAVERN_ENTR;oot;0x40b;boss;OOT_DODONGO_CAVERN;Dodongo Cavern;King Dodongo's Lair;;all;King Dodongo's Lair
+OOT_BOSS_JABU_JABU_ENTR;oot;0x301;boss;OOT_INSIDE_JABU_JABU;Inside Jabu-Jabu;Barinade's Lair;;all;Barinade's Lair
+OOT_BOSS_TEMPLE_FOREST_ENTR;oot;0x00c;boss;OOT_TEMPLE_FOREST;Forest Temple;Phantom Ganon's Lair;;all;Phantom Ganon's Lair
+OOT_BOSS_TEMPLE_FIRE_ENTR;oot;0x305;boss;OOT_TEMPLE_FIRE;Fire Temple;Volvagia's Lair;;all;Volvagia's Lair
+OOT_BOSS_TEMPLE_WATER_ENTR;oot;0x417;boss;OOT_TEMPLE_WATER;Water Temple;Morpha's Lair;;all;Morpha's Lair
+OOT_BOSS_TEMPLE_SHADOW_ENTR;oot;0x413;boss;OOT_TEMPLE_SHADOW;Shadow Temple;Bongo-Bongo's Lair;;all;Bongo-Bongo's Lair
+OOT_BOSS_TEMPLE_SPIRIT_ENTR;oot;0x08d;boss;OOT_TEMPLE_SPIRIT;Spirit Temple;Twinrova's Lair;;all;Twinrova's Lair
+OOT_DEKU_TREE_ENTR;oot;0x000;dungeon;OOT_DEKU_TREE;Kokiri Forest;Deku Tree;;all;Deku Tree
+OOT_DODONGO_CAVERN_ENTR;oot;0x004;dungeon;OOT_DODONGO_CAVERN;Death Mountain Trail;Dodongo Cavern;;all;Dodongo Cavern
+OOT_JABU_JABU_ENTR;oot;0x028;dungeon;OOT_INSIDE_JABU_JABU;Zora Fountain;Inside Jabu-Jabu;;all;Inside Jabu-Jabu
+OOT_TEMPLE_FOREST_ENTR;oot;0x169;dungeon;OOT_TEMPLE_FOREST;Sacred Forest Meadow;Forest Temple;;all;Forest Temple
+OOT_TEMPLE_FIRE_ENTR;oot;0x165;dungeon;OOT_TEMPLE_FIRE;Death Mountain Crater;Fire Temple;;all;Fire Temple
+OOT_TEMPLE_WATER_ENTR;oot;0x010;dungeon;OOT_TEMPLE_WATER;Lake Hylia;Water Temple;;all;Water Temple
+OOT_TEMPLE_SHADOW_ENTR;oot;0x037;dungeon;OOT_TEMPLE_SHADOW;Graveyard;Shadow Temple;;all;Shadow Temple
+OOT_TEMPLE_SPIRIT_ENTR;oot;0x082;dungeon;OOT_TEMPLE_SPIRIT;Desert Colossus;Spirit Temple;;all;Spirit Temple
+OOT_BOTTOM_OF_THE_WELL_ENTR;oot;0x098;dungeon-minor;OOT_BOTTOM_OF_THE_WELL;Kakariko;Bottom of the Well;;all;Bottom of the Well
+OOT_ICE_CAVERN_ENTR;oot;0x088;dungeon-minor;OOT_ICE_CAVERN;Zora Fountain;Ice Cavern;;all;Ice Cavern
+OOT_GERUDO_TRAINING_GROUNDS_ENTR;oot;0x008;dungeon-minor;OOT_GERUDO_TRAINING_GROUND;Gerudo Fortress;Gerudo Training Ground;;all;Gerudo Training Ground
+OOT_GANON_CASTLE_ENTR;oot;0x467;dungeon-ganon;OOT_INSIDE_GANON_CASTLE;Ganon Castle Exterior;Inside Ganon Castle;;all;Inside Ganon Castle
+OOT_GANON_TOWER_ENTR;oot;0x41b;dungeon-ganon-tower;OOT_GANON_TOWER;Inside Ganon Castle;Ganon Tower;;all;Ganon Tower
+OOT_KOKIRI_FOREST_FROM_DEKU_TREE_ENTR;oot;0x209;dungeon-exit;OOT_KOKIRI_FOREST;Deku Tree;Kokiri Forest;;all;Kokiri Forest
+OOT_MOUNTAIN_TRAIL_FROM_DODONGO_CAVERN_ENTR;oot;0x242;dungeon-exit;OOT_DEATH_MOUNTAIN_TRAIL;Dodongo Cavern;Death Mountain Trail;;all;Death Mountain Trail
+OOT_ZORA_FOUNTAIN_FROM_JABU_JABU_ENTR;oot;0x221;dungeon-exit;OOT_ZORA_FOUNTAIN;Jabu-Jabu;Zora Fountain;;all;Zora Fountain
+OOT_SACRED_MEADOW_FROM_TEMPLE_FOREST_ENTR;oot;0x215;dungeon-exit;OOT_SACRED_FOREST_MEADOW;Forest Temple;Sacred Forest Meadow;;all;Sacred Forest Meadow
+OOT_DEATH_CRATER_FROM_TEMPLE_FIRE_ENTR;oot;0x24a;dungeon-exit;OOT_DEATH_MOUNTAIN_CRATER;Fire Temple;Death Mountain Crater;;all;Death Mountain Crater
+OOT_LAKE_HYLIA_FROM_TEMPLE_WATER_ENTR;oot;0x21d;dungeon-exit;OOT_LAKE_HYLIA;Water Temple;Lake Hylia;;all;Lake Hylia
+OOT_GRAVEYARD_FROM_TEMPLE_SHADOW_ENTR;oot;0x205;dungeon-exit;OOT_GRAVEYARD;Shadow Temple;Graveyard;;all;Graveyard
+OOT_DESERT_COLOSSUS_FROM_TEMPLE_SPIRIT_ENTR;oot;0x1e1;dungeon-exit;OOT_DESERT_COLOSSUS;Spirit Temple;Desert Colossus;;all;Desert Colossus
+OOT_KAKARIKO_FROM_BOTTOM_OF_THE_WELL_ENTR;oot;0x2a6;dungeon-exit;OOT_KAKARIKO_VILLAGE;Bottom of the Well;Kakariko;;all;Kakariko
+OOT_ZORA_FOUNTAIN_FROM_ICE_CAVERN_ENTR;oot;0x3d4;dungeon-exit;OOT_ZORA_FOUNTAIN;Ice Cavern;Zora Fountain;;all;Zora Fountain
+OOT_GERUDO_FORTRESS_FROM_GERUDO_TRAINING_ENTR;oot;0x3a8;dungeon-exit;OOT_GERUDO_FORTRESS;Gerudo Training Ground;Gerudo Fortress;;all;Gerudo Fortress
+OOT_GANON_CASTLE_EXTERIOR_FROM_CASTLE_ENTR;oot;0x23d;dungeon-exit;OOT_GANON_CASTLE_EXTERIOR;Ganon Castle;Ganon Castle Exterior;;all;Ganon Castle Exterior
+OOT_GANON_CASTLE_FROM_TOWER_ENTR;oot;0x534;dungeon-exit;OOT_INSIDE_GANON_CASTLE;Ganon Tower;Inside Ganon Castle;;all;Inside Ganon Castle
+OOT_LOST_WOODS_BRIDGE_FROM_FIELD_ENTR;oot;0x4de;region;OOT_LOST_WOODS;Hyrule Field;Lost Woods Bridge;;all;Lost Woods Bridge
+OOT_ZORA_RIVER_FROM_FIELD_ENTR;oot;0x0ea;region;OOT_ZORA_RIVER;Hyrule Field;Zora River;;all;Zora River
+OOT_KAKARIKO_FROM_FIELD_ENTR;oot;0x0db;region;OOT_KAKARIKO_VILLAGE;Hyrule Field;Kakariko;;all;Kakariko
+OOT_LON_LON_RANCH_FROM_FIELD_ENTR;oot;0x157;region;OOT_LON_LON_RANCH;Hyrule Field;Lon Lon's Ranch;;all;Lon Lon's Ranch
+OOT_LAKE_HYLIA_FROM_FIELD_ENTR;oot;0x102;region;OOT_LAKE_HYLIA;Hyrule Field;Lake Hylia;;all;Lake Hylia
+OOT_GERUDO_FORTRESS_FROM_VALLEY_ENTR;oot;0x129;region;OOT_GERUDO_FORTRESS;Gerudo Valley;Gerudo Fortress;;all;Gerudo Fortress
+OOT_DEATH_MOUNTAIN_FROM_KAKARIKO_ENTR;oot;0x13d;region;OOT_DEATH_MOUNTAIN_TRAIL;Kakariko;Death Mountain Trail;;all;Death Mountain Trail
+OOT_GERUDO_VALLEY_FROM_FIELD_ENTR;oot;0x117;region;OOT_GERUDO_VALLEY;Hyrule Field;Gerudo Valley;;all;Gerudo Valley
+OOT_MARKET_ENTRANCE_FROM_FIELD_ENTR;oot;0x276;region-extra;OOT_MARKET;Hyrule Field;Market Entrance;;all;Market Entrance
+OOT_ZORA_RIVER_FROM_LOST_WOODS_ENTR;oot;0x1dd;region-shortcut;OOT_ZORA_RIVER;Lost Woods;Zora River;;all;Zora River
+OOT_GORON_CITY_FROM_LOST_WOODS_ENTR;oot;0x4e2;region-shortcut;OOT_GORON_CITY;Lost Woods;Goron City;;all;Goron City
+OOT_LAKE_HYLIA_FROM_ZORA_DOMAIN_ENTR;oot;0x560;region-shortcut;OOT_LAKE_HYLIA;Zora Domain's Shortcut;Lake Hylia;;all;Lake Hylia
+OOT_FIELD_FROM_LOST_WOODS_BRIDGE_ENTR;oot;0x185;region-exit;OOT_HYRULE_FIELD;Lost Woods Bridge;Hyrule Field;;all;Hyrule Field
+OOT_FIELD_FROM_ZORA_RIVER_ENTR;oot;0x181;region-exit;OOT_HYRULE_FIELD;Zora River;Hyrule Field;;all;Hyrule Field
+OOT_FIELD_FROM_KAKARIKO_ENTR;oot;0x17d;region-exit;OOT_HYRULE_FIELD;Kakariko;Hyrule Field;;all;Hyrule Field
+OOT_FIELD_FROM_LON_LON_RANCH_ENTR;oot;0x1f9;region-exit;OOT_HYRULE_FIELD;Lon Lon's Ranch;Hyrule Field;;all;Hyrule Field
+OOT_FIELD_FROM_LAKE_HYLIA_ENTR;oot;0x189;region-exit;OOT_HYRULE_FIELD;Lake Hylia;Hyrule Field;;all;Hyrule Field
+OOT_FIELD_FROM_GERUDO_VALLEY_ENTR;oot;0x18d;region-exit;OOT_HYRULE_FIELD;Gerudo Valley;Hyrule Field;;all;Hyrule Field
+OOT_VALLEY_FROM_GERUDO_FORTRESS_ENTR;oot;0x22d;region-exit;OOT_GERUDO_VALLEY;Gerudo Fortress;Gerudo Valley;;all;Gerudo Valley
+OOT_KAKARIKO_FROM_DEATH_MOUNTAIN_ENTR;oot;0x191;region-exit;OOT_KAKARIKO_VILLAGE;Death Mountain Trail;Kakariko;;all;Kakariko
+OOT_FIELD_FROM_MARKET_ENTRANCE_ENTR;oot;0x1fd;region-exit;OOT_HYRULE_FIELD;Market Entrance;Hyrule Field;;all;Hyrule Field
+OOT_LOST_WOODS_FROM_ZORA_RIVER_ENTR;oot;0x4da;region-exit;OOT_LOST_WOODS;Zora River;Lost Woods;;all;Lost Woods
+OOT_LOST_WOODS_FROM_GORON_CITY_ENTR;oot;0x4d6;region-exit;OOT_LOST_WOODS;Goron City;Lost Woods;;all;Lost Woods
+OOT_ZORA_DOMAIN_FROM_LAKE_HYLIA_ENTR;oot;0x328;region-exit;OOT_ZORA_DOMAIN;Lake Hylia's Shortcut;Zora Domain;;all;Zora Domain
+OOT_SACRED_FOREST_MEADOW_ENTR;oot;0x0fc;overworld;OOT_SACRED_FOREST_MEADOW;Lost Woods;Sacred Meadow;;all;Sacred Meadow
+OOT_LOST_WOODS_FROM_MEADOW_ENTR;oot;0x1a9;overworld;OOT_LOST_WOODS;Sacred Forest Meadow;Lost Woods Woods;;all;Lost Woods Woods
+OOT_GORON_CITY_ENTR;oot;0x14d;overworld;OOT_GORON_CITY;Death Mountain Trail;Goron City;;all;Goron City
+OOT_DEATH_MOUNTAIN_FROM_GORON_CITY_ENTR;oot;0x1b9;overworld;OOT_DEATH_MOUNTAIN_TRAIL;Goron City;Death Mountain Trail;;all;Death Mountain Trail
+OOT_ZORA_DOMAIN_ENTR;oot;0x108;overworld;OOT_ZORA_DOMAIN;Zora River;Zora Domain;;all;Zora Domain
+OOT_RIVER_FROM_DOMAIN_ENTR;oot;0x19d;overworld;OOT_ZORA_RIVER;Zora Domain;Zora River;;all;Zora River
+OOT_FOUNTAIN_ZORA_ENTR;oot;0x225;overworld;OOT_ZORA_FOUNTAIN;Zora Domain;Zora Fountain;;all;Zora Fountain
+OOT_DOMAIN_FROM_FOUNTAIN_ENTR;oot;0x1a1;overworld;OOT_ZORA_DOMAIN;Zora Fountain;Zora Domain;;all;Zora Domain
+OOT_CRATER_FROM_GORON_CITY_ENTR;oot;0x246;overworld;OOT_DEATH_MOUNTAIN_CRATER;Goron City;Death Mountain Crater;;all;Death Mountain Crater
+OOT_GORON_CITY_FROM_CRATER_ENTR;oot;0x1c1;overworld;OOT_GORON_CITY;Death Mountain Crater;Goron City;;all;Goron City
+OOT_DEATH_MOUNTAIN_CRATER_ENTR;oot;0x147;overworld;OOT_DEATH_MOUNTAIN_CRATER;Death Mountain Trail;Death Mountain Crater;;all;Death Mountain Crater
+OOT_TRAIL_SUMMIT_FROM_CRATER_ENTR;oot;0x1bd;overworld;OOT_DEATH_MOUNTAIN_TRAIL;Death Mountain Crater;Death Mountain Trail;;all;Death Mountain Trail
+OOT_LOST_WOODS_FROM_KOKIRI_FOREST_ENTR;oot;0x11e;overworld;OOT_LOST_WOODS;Kokiri Forest;Lost Woods;;all;Lost Woods
+OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR;oot;0x286;overworld;OOT_KOKIRI_FOREST;Lost Woods;Kokiri Forest;;all;Kokiri Forest
+OOT_FOREST_FROM_LOST_WOODS_BRIDGE_ENTR;oot;0x20d;overworld;OOT_LOST_WOODS;Lost Woods Bridge;Kokiri Forest;;all;Kokiri Forest
+OOT_LOST_WOODS_BRIDGE_FROM_FOREST_ENTR;oot;0x5e0;overworld;OOT_LOST_WOODS;Kokiri Forest;Lost Woods Bridge;;all;Lost Woods Bridge
+OOT_GRAVEYARD_ENTR;oot;0x0e4;overworld;OOT_GRAVEYARD;Kakariko;Graveyard;;all;Graveyard
+OOT_KAKARIKO_FROM_GRAVEYARD_ENTR;oot;0x195;overworld;OOT_KAKARIKO_VILLAGE;Graveyard;Kakariko;;all;Kakariko
+OOT_WASTELAND_ENTR;oot;0x130;overworld;OOT_HAUNTED_WASTELAND;Gerudo Fortress;Haunted Wasteland;;all;Haunted Wasteland
+OOT_FORTRESS_FROM_WASTELAND_ENTR;oot;0x3ac;overworld;OOT_GERUDO_FORTRESS;Haunted Wasteland;Gerudo Fortress;;all;Gerudo Fortress
+OOT_COLOSSUS_ENTR;oot;0x123;overworld;OOT_DESERT_COLOSSUS;Haunted Wasteland;Desert Colossus;;all;Desert Colossus
+OOT_WASTELAND_FROM_COLOSSUS_ENTR;oot;0x365;overworld;OOT_HAUNTED_WASTELAND;Desert Colossus;Haunted Wasteland;;all;Haunted Wasteland
+OOT_MARKET_FROM_MARKET_ENTRANCE_ENTR;oot;0x0b1;overworld;OOT_MARKET;Market Entrance;Market;;all;Market
+OOT_MARKET_ENTRANCE_FROM_MARKET_ENTR;oot;0x033;overworld;OOT_MARKET_ENTRANCE;Market;Market Entrance;;all;Market Entrance
+OOT_HYRULE_CASTLE_ENTR;oot;0x138;overworld;OOT_HYRULE_CASTLE;Market Entrance;Hyrule Castle;;all;Hyrule Castle
+OOT_MARKET_FROM_CASTLE_ENTR;oot;0x25a;overworld;OOT_MARKET;Hyrule Castle;Market;;all;Market
+OOT_MARKET_FROM_TEMPLE_OF_TIME_ENTRYWAY_ENTR;oot;0x25e;overworld;OOT_MARKET;Temple of Time Entryway Entrance;Market;;all;Market
+OOT_TEMPLE_OF_TIME_ENTRYWAY_FROM_MARKET_ENTR;oot;0x171;overworld;OOT_TEMPLE_OF_TIME_ENTRYWAY;Market;Temple of Time Entryway;;all;Temple of Time Entryway
+OOT_LAKE_HYLIA_FROM_VALLEY_ENTR;oot;0x219;one-way;OOT_LAKE_HYLIA;Gerudo Valley Waterfalls;Lake Hylia;;all;Lake Hylia
+OOT_LOST_WOODS_FROM_LOST_WOODS_NORTH_ENTR;oot;0xf01;one-way-woods;OOT_LOST_WOODS;North Wrong Exit;Lost Woods;;all;Lost Woods
+OOT_LOST_WOODS_FROM_LOST_WOODS_EAST_ENTR;oot;0x1ad;one-way-woods;OOT_LOST_WOODS;East Wrong Exit ;Lost Woods;;all;Lost Woods
+OOT_LOST_WOODS_FROM_LOST_WOODS_SOUTH_ENTR;oot;0x1b1;one-way-woods;OOT_LOST_WOODS;South Wrong Exit;Lost Woods;;all;Lost Woods
+OOT_LOST_WOODS_FROM_LOST_WOODS_WEST_ENTR;oot;0x4c6;one-way-woods;OOT_LOST_WOODS;West Wrong Exit;Lost Woods;;all;Lost Woods
+OOT_HOUSE_MIDO_ENTR;oot;0x433;indoors;OOT_KOKIRI_MIDO;Kokiri Forest;Mido's House;;all;Mido's House
+OOT_HOUSE_SARIA_ENTR;oot;0x437;indoors;OOT_KOKIRI_SARIA;Kokiri Forest;Saria's House;;all;Saria's House
+OOT_HOUSE_TWINS_ENTR;oot;0x09c;indoors;OOT_KOKIRI_TWINS;Kokiri Forest;Twin's House;;all;Twin's House
+OOT_HOUSE_KNOW_IT_ALL_ENTR;oot;0x0c9;indoors;OOT_KOKIRI_KNOW_IT_ALL;Kokiri Forest;Know-It-All Brothers;;all;Know-It-All Brothers
+OOT_KOKIRI_SHOP_ENTR;oot;0x0c1;indoors;OOT_KOKIRI_SHOP;Kokiri Forest;Kokiri Shop;;all;Kokiri Shop
+OOT_HOUSE_POTS_ENTR;oot;0x07e;indoors;OOT_GUARD_HOUSE;Market Entrance;Pot House;;all;Pot House
+OOT_LABORATORY_ENTR;oot;0x043;indoors;OOT_LABORATORY;Lake Hylia;Laboratory (OoT);;all;Laboratory (OoT)
+OOT_FISHING_POND_ENTR;oot;0x45f;indoors;OOT_FISHING_POND;Lake Hylia;Fishing Pond;;all;Fishing Pond
+OOT_VALLEY_TENT_ENTR;oot;0x3a0;indoors;OOT_CARPENTER_TENT;Gerudo Valley;Carpenter's Tent;;all;Carpenter's Tent
+OOT_HOUSE_CARPENTER_ENTR;oot;0x2fd;indoors;OOT_CARPENTER_BOSS_HOUSE;Kakariko;Carpenter's Boss House;;all;Carpenter's Boss House
+OOT_HOUSE_SKULLTULA_ENTR;oot;0x550;indoors;OOT_HOUSE_OF_SKULLTULA;Kakariko;House of Skulltula;;all;House of Skulltula
+OOT_HOUSE_IMPA_ENTR;oot;0x39c;indoors;OOT_IMPA_HOUSE;Kakariko;Impa's House;;all;Impa's House
+OOT_HOUSE_IMPA_BACK_ENTR;oot;0x5c8;indoors;OOT_IMPA_HOUSE;Kakariko;Impa's House Back;;all;Impa's House Back
+OOT_SHOP_GRANNY_ENTR;oot;0x072;indoors;OOT_GRANNY_POTION_SHOP;Kakariko;Granny Potion Shop;;all;Granny Potion Shop
+OOT_HOUSE_DAMPE_ENTR;oot;0x30d;indoors;OOT_DAMPE_HOUSE;Graveyard;Dampe's House;;all;Dampe's House
+OOT_SHOP_GORON_ENTR;oot;0x37c;indoors;OOT_GORON_SHOP;Goron City;Goron Shop (OoT);;all;Goron Shop (OoT)
+OOT_SHOP_ZORA_ENTR;oot;0x380;indoors;OOT_ZORA_SHOP;Zora Domain;Zora Shop (OoT);;all;Zora Shop (OoT)
+OOT_HOUSE_LON_LON_ENTR;oot;0x04f;indoors;OOT_RANCH_HOUSE_SILO;Lon Lon Ranch;Lon Lon Ranch House;;all;Lon Lon Ranch House
+OOT_SILO_ENTR;oot;0x5d0;indoors;OOT_SILO;Lon Lon Ranch;Silo;;all;Silo
+OOT_STABLES_ENTR;oot;0x2f9;indoors;OOT_STABLE;Lon Lon Ranch;Stables (OoT);;all;Stables (OoT)
+OOT_FAIRY_MAGIC_ENTR;oot;0x315;indoors;OOT_GREAT_FAIRY_MAGIC;Death Mountain Trail;Magic Upgrade Fountain (OoT);;all;Magic Upgrade Fountain (OoT)
+OOT_FAIRY_MAGIC2_ENTR;oot;0x4be;indoors;OOT_GREAT_FAIRY_MAGIC2;Death Mountain Crater;Large Magic Upgrade Fountain (OoT);;all;Large Magic Upgrade Fountain (OoT)
+OOT_FAIRY_DIN_ENTR;oot;0x578;indoors;OOT_GREAT_FAIRY_CASTLE;Hyrule Castle;Din's Fire Fountain;;all;Din's Fire Fountain
+OOT_FAIRY_FARORE_ENTR;oot;0x371;indoors;OOT_GREAT_FAIRY_FARORE;Zora Fountain;Farore's Wind Fountain;;all;Farore's Wind Fountain
+OOT_FAIRY_NAYRU_ENTR;oot;0x588;indoors;OOT_GREAT_FAIRY_NAYRU;Desert Colossus;Nayru's Love Fountain;;all;Nayru's Love Fountain
+OOT_FAIRY_DEFENSE_ENTR;oot;0x4c2;indoors;OOT_GREAT_FAIRY_CASTLE;Ganon Castle Exterior;Defense Upgrade Fountain (OoT);;all;Defense Upgrade Fountain (OoT)
+OOT_BOMBCHU_BOWLING_ENTR;oot;0x507;indoors;OOT_BOMBCHU_BOWLING_ALLEY;Market;Bombchu Bowling;;all;Bombchu Bowling
+OOT_TREASURE_GAME_ENTR;oot;0x063;indoors;OOT_TREASURE_SHOP;Market;Treasure Game (OoT);;all;Treasure Game (OoT)
+OOT_BOMBCHU_SHOP_ENTR;oot;0x528;indoors;OOT_BOMBCHU_SHOP;Back Alley;Bombchu Shop;;all;Bombchu Shop
+OOT_ALLEY_HOUSE_ENTR;oot;0x43b;indoors;OOT_BACK_ALLEY_HOUSE2;Back Alley;Alley House;;all;Alley House
+OOT_MARKET_BAZAAR_ENTR;oot;0x52c;indoors;OOT_MARKET_BAZAAR;Market;Market Bazaar;;all;Market Bazaar
+OOT_MARKET_POTION_ENTR;oot;0x388;indoors;OOT_MARKET_POTION_SHOP;Market;Market Potion Shop;;all;Market Potion Shop
+OOT_CHILD_ARCHERY_ENTR;oot;0x16d;indoors;OOT_MARKET_SHOOTING;Market;Market Shooting;;all;Market Shooting
+OOT_KAKARIKO_BAZAAR_ENTR;oot;0x0b7;indoors;OOT_KAKARIKO_BAZAAR;Kakariko;Kakariko Bazaar;;all;Kakariko Bazaar
+OOT_ADULT_ARCHERY_ENTR;oot;0x03b;indoors;OOT_KAKARIKO_SHOOTING;Kakariko;Kakariko Shooting;;all;Kakariko Shooting
+OOT_HOUSE_LINK_ENTR;oot;0x272;indoors-extra;OOT_LINK_HOUSE;Kokiri Forest;Link's House;;all;Link's House
+OOT_TEMPLE_OF_TIME_ENTR;oot;0x053;indoors-extra;OOT_TEMPLE_OF_TIME;Temple of Time Entryway;Temple of Time;;all;Temple of Time
+OOT_WINDMILL_ENTR;oot;0x453;indoors-extra;OOT_KAKARIKO_VILLAGE;Kakariko;Windmill;;all;Windmill
+OOT_SHOP_POTION_KAKARIKO_ENTR;oot;0x384;indoors-extra;OOT_KAKARIKO_VILLAGE;Kakariko;Kakariko Potion Shop;;all;Kakariko Potion Shop
+OOT_SHOP_POTION_KAKARIKO_BACK_ENTR;oot;0x3ec;indoors-extra;OOT_KAKARIKO_VILLAGE;Kakariko;Kakariko Potion Shop Back;;all;Kakariko Potion Shop Back
+OOT_KOKIRI_FOREST_FROM_MIDO_ENTR;oot;0x443;indoors-exit;OOT_KOKIRI_FOREST;Mido's House;Kokiri Forest;;all;Kokiri Forest
+OOT_KOKIRI_FOREST_FROM_SARIA_ENTR;oot;0x447;indoors-exit;OOT_KOKIRI_FOREST;Saria's House;Kokiri Forest;;all;Kokiri Forest
+OOT_KOKIRI_FOREST_FROM_TWINS_ENTR;oot;0x33c;indoors-exit;OOT_KOKIRI_FOREST;Twin's House;Kokiri Forest;;all;Kokiri Forest
+OOT_KOKIRI_FOREST_FROM_KNOW_IT_ALL_ENTR;oot;0x26a;indoors-exit;OOT_KOKIRI_FOREST;Know-It-All Brothers;Kokiri Forest;;all;Kokiri Forest
+OOT_KOKIRI_FOREST_FROM_SHOP_ENTR;oot;0x266;indoors-exit;OOT_KOKIRI_FOREST;Kokiri Shop;Kokiri Forest;;all;Kokiri Forest
+OOT_MARKET_ENTRANCE_FROM_POTS_ENTR;oot;0x26e;indoors-exit;OOT_MARKET_ENTRANCE;Pot House;Market Entrance Entrance;;all;Market Entrance Entrance
+OOT_LAKE_HYLIA_FROM_LABORATORY_ENTR;oot;0x3cc;indoors-exit;OOT_LAKE_HYLIA;Laboratory (OoT);Lake Hylia;;all;Lake Hylia
+OOT_LAKE_HYLIA_FROM_FISHING_POND_ENTR;oot;0x309;indoors-exit;OOT_LAKE_HYLIA;Fishing Pond;Lake Hylia;;all;Lake Hylia
+OOT_GERUDO_VALLEY_FROM_TENT_ENTR;oot;0x3d0;indoors-exit;OOT_GERUDO_VALLEY;Gerudo Valley;Carpenter's Tent;;all;Carpenter's Tent
+OOT_KAKARIKO_FROM_CARPENTER_ENTR;oot;0x349;indoors-exit;OOT_KAKARIKO_VILLAGE;Carpenter's Boss House;Kakariko;;all;Kakariko
+OOT_KAKARIKO_FROM_SKULLTULA_ENTR;oot;0x4ee;indoors-exit;OOT_KAKARIKO_VILLAGE;House of Skulltula;Kakariko;;all;Kakariko
+OOT_KAKARIKO_FROM_IMPA_ENTR;oot;0x345;indoors-exit;OOT_KAKARIKO_VILLAGE;Impa's House;Kakariko;;all;Kakariko
+OOT_KAKARIKO_FROM_IMPA_BACK_ENTR;oot;0x5dc;indoors-exit;OOT_KAKARIKO_VILLAGE;Impa's House Back;Kakariko;;all;Kakariko
+OOT_KAKARIKO_FROM_GRANNY_ENTR;oot;0x34d;indoors-exit;OOT_KAKARIKO_VILLAGE;Granny Potion Shop;Kakariko;;all;Kakariko
+OOT_GRAVEYARD_FROM_DAMPE_ENTR;oot;0x355;indoors-exit;OOT_GRAVEYARD;Dampe's House;Graveyard;;all;Graveyard
+OOT_GORON_CITY_FROM_SHOP_ENTR;oot;0x3fc;indoors-exit;OOT_GORON_CITY;Goron Shop (OoT);Goron City;;all;Goron City
+OOT_ZORA_DOMAIN_FROM_SHOP_ENTR;oot;0x3c4;indoors-exit;OOT_ZORA_DOMAIN;Zora Shop (OoT);Zora Domain;;all;Zora Domain
+OOT_LON_LON_RANCH_FROM_HOUSE_ENTR;oot;0x378;indoors-exit;OOT_LON_LON_RANCH;Lon Lon Ranch House;Lon Lon Ranch;;all;Lon Lon Ranch
+OOT_LON_LON_RANCH_FROM_STABLES_ENTR;oot;0x42f;indoors-exit;OOT_LON_LON_RANCH;Silo;Lon Lon Ranch;;all;Lon Lon Ranch
+OOT_LON_LON_RANCH_FROM_SILO_ENTR;oot;0x5d4;indoors-exit;OOT_LON_LON_RANCH;Stables (OoT);Lon Lon Ranch;;all;Lon Lon Ranch
+OOT_KOKIRI_FOREST_FROM_LINK_ENTR;oot;0x211;indoors-exit;OOT_KOKIRI_FOREST;Link's House;Kokiri Forest ;;all;Kokiri Forest 
+OOT_TEMPLE_OF_TIME_ENTRYWAY_FROM_TEMPLE_ENTR;oot;0x472;indoors-exit;OOT_TEMPLE_OF_TIME_ENTRYWAY;Temple Of Time;Temple of Time Entryway;;all;Temple of Time Entryway
+OOT_KAKARIKO_FROM_WINDMILL_ENTR;oot;0x351;indoors-exit;OOT_WINDMILL;Windmill;Kakariko;;all;Kakariko
+OOT_KAKARIKO_FROM_SHOP_POTION_ENTR;oot;0x44b;indoors-exit;OOT_KAKARIKO_POTION_SHOP;Kakariko Potion Shop;Kakariko;;all;Kakariko
+OOT_KAKARIKO_FROM_SHOP_POTION_BACK_ENTR;oot;0x4ff;indoors-exit;OOT_KAKARIKO_POTION_SHOP;Kakariko Potion Shop Back;Kakariko;;all;Kakariko
+OOT_DEATH_MOUNTAIN_FROM_FAIRY_ENTR;oot;0x45b;indoors-exit;OOT_DEATH_MOUNTAIN_TRAIL;Magic Upgrade Fountain (OoT);Death Mountain Trail;;all;Death Mountain Trail
+OOT_DEATH_CRATER_FROM_FAIRY_ENTR;oot;0x482;indoors-exit;OOT_DEATH_MOUNTAIN_CRATER;Large Magic Upgrade Fountain (OoT);Death Mountain Crater;;all;Death Mountain Crater
+OOT_HYRULE_CASTLE_FROM_FAIRY_ENTR;oot;0x340;indoors-exit;OOT_HYRULE_CASTLE;Din's Fire Fountain;Hyrule Castle;;all;Hyrule Castle
+OOT_ZORA_FOUNTAIN_FROM_FAIRY_ENTR;oot;0x394;indoors-exit;OOT_ZORA_FOUNTAIN;Farore's Wind Fountain;Zora Foutain;;all;Zora Foutain
+OOT_DESERT_COLOSSUS_FROM_FAIRY_ENTR;oot;0x57c;indoors-exit;OOT_DESERT_COLOSSUS;Nayru's Love Fountain;Desert Colossus;;all;Desert Colossus
+OOT_MARKET_FROM_BOWLING_ENTR;oot;0x3bc;indoors-exit;OOT_MARKET;Bombchu Bowling;Market;;all;Market
+OOT_MARKET_FROM_TREASURE_GAME_ENTR;oot;0x1d5;indoors-exit;OOT_MARKET;Treasure Game (OoT);Market;;all;Market
+OOT_MARKET_FROM_BOMBCHU_SHOP_ENTR;oot;0x3c0;indoors-exit;OOT_MARKET;Bombchu Shop;Back Alley;;all;Back Alley
+OOT_MARKET_FROM_ALLEY_HOUSE_ENTR;oot;0x067;indoors-exit;OOT_MARKET;Alley House;Back Alley;;all;Back Alley
+OOT_MARKET_FROM_BAZAAR_ENTR;oot;0x3b8;indoors-exit;OOT_MARKET;Market Bazaar;Market;;all;Market
+OOT_MARKET_FROM_POTION_ENTR;oot;0x2a2;indoors-exit;OOT_MARKET;Market Potion Shop;Market;;all;Market
+OOT_MARKET_FROM_ARCHERY_ENTR;oot;0x1cd;indoors-exit;OOT_MARKET;Market Shooting;Market;;all;Market
+OOT_KAKARIKO_FROM_BAZAAR_ENTR;oot;0x201;indoors-exit;OOT_KAKARIKO_VILLAGE;Kakariko Bazaar;Kakariko;;all;Kakariko
+OOT_KAKARIKO_FROM_ARCHERY_ENTR;oot;0x463;indoors-exit;OOT_KAKARIKO_VILLAGE;Kakariko Shooting;Kakariko;;all;Kakariko
+OOT_OUTSIDE_GANON_FROM_FAIRY_ENTR;oot;0xf00;indoors-exit;OOT_GANON_CASTLE_EXTERIOR;Defense Upgrade Fountain (OoT);Ganon Castle Exterior;;all;Ganon Castle Exterior
+OOT_WARP_SONG_MEADOW_ENTR;oot;0x600;one-way-song;OOT_SACRED_FOREST_MEADOW;Warp Song;Sacred Forest Meadow;;all;Sacred Forest Meadow
+OOT_WARP_SONG_CRATER_ENTR;oot;0x4f6;one-way-song;OOT_DEATH_MOUNTAIN_CRATER;Warp Song;Death Mountain Crater ;;all;Death Mountain Crater 
+OOT_WARP_SONG_LAKE_ENTR;oot;0x604;one-way-song;OOT_LAKE_HYLIA;Warp Song;Lake Hylia;;all;Lake Hylia
+OOT_WARP_SONG_GRAVE_ENTR;oot;0x568;one-way-song;OOT_GRAVEYARD;Warp Song;Graveyard;;all;Graveyard
+OOT_WARP_SONG_DESERT_ENTR;oot;0x1f1;one-way-song;OOT_DESERT_COLOSSUS;Warp Song;Desert Colossus;;all;Desert Colossus
+OOT_WARP_SONG_TEMPLE_ENTR;oot;0x5f4;one-way-song;OOT_TEMPLE_OF_TIME;Warp Song;Temple of Time;;all;Temple of Time
+OOT_VILLAGE_OWL_ENTR;oot;0x554;one-way-owl;OOT_DEATH_MOUNTAIN_TRAIL;Death Mountain Trail Owl;Kakariko;;all;Kakariko
+OOT_FIELD_OWL_ENTR;oot;0x27e;one-way-owl;OOT_LAKE_HYLIA;Lake Hylia Owl;Hyrule Field;;all;Hyrule Field
+OOT_WALLMASTER_FOREST_CORRIDOR_WEST_ENTR;oot;0xf10;wallmaster;OOT_TEMPLE_FOREST;Wallmaster;Forest Temple;;all;Forest Temple
+OOT_WALLMASTER_FOREST_CORRIDOR_EAST_ENTR;oot;0xf11;wallmaster;OOT_TEMPLE_FOREST;Wallmaster;Forest Temple;;all;Forest Temple
+OOT_WALLMASTER_SHADOW_ENTR;oot;0xf12;wallmaster;OOT_TEMPLE_SHADOW;Wallmaster;Shadow Temple;;all;Shadow Temple
+OOT_WALLMASTER_SPIRIT_CHILD_RUPEES_ENTR;oot;0xf13;wallmaster;OOT_TEMPLE_SPIRIT;Wallmaster;Spirit Temple;;all;Spirit Temple
+OOT_WALLMASTER_SPIRIT_ADULT_CLIMB_ENTR;oot;0xf14;wallmaster;OOT_TEMPLE_SPIRIT;Wallmaster;Spirit Temple;;all;Spirit Temple
+OOT_WALLMASTER_SPIRIT_CHILD_SUN_ENTR;oot;0xf15;wallmaster;OOT_TEMPLE_SPIRIT;Wallmaster;Spirit Temple;;all;Spirit Temple
+OOT_WALLMASTER_SPIRIT_STATUE_ENTR;oot;0xf16;wallmaster;OOT_TEMPLE_SPIRIT;Wallmaster;Spirit Temple;;all;Spirit Temple
+OOT_WALLMASTER_BOTW_MAIN_ENTR;oot;0xf17;wallmaster;OOT_BOTTOM_OF_THE_WELL;Wallmaster;Bottom of the Well;;all;Bottom of the Well
+OOT_WALLMASTER_BOTW_BASEMENT_ENTR;oot;0xf18;wallmaster;OOT_BOTTOM_OF_THE_WELL;Wallmaster;Bottom of the Well;;all;Bottom of the Well
+OOT_WALLMASTER_BOTW_PIT_ENTR;oot;0xf19;wallmaster;OOT_BOTTOM_OF_THE_WELL;Wallmaster;Bottom of the Well;;all;Bottom of the Well
+OOT_WALLMASTER_GTG_ENTR;oot;0xf1a;wallmaster;OOT_GERUDO_TRAINING_GROUND;Wallmaster;Gerudo Training Ground;;all;Gerudo Training Ground
+OOT_WALLMASTER_GANON_SPIRIT_ENTR;oot;0xf1b;wallmaster;OOT_INSIDE_GANON_CASTLE;Wallmaster;Inside Ganon Castle;;all;Inside Ganon Castle
+OOT_WALLMASTER_GANON_LIGHT_ENTR;oot;0xf1c;wallmaster;OOT_INSIDE_GANON_CASTLE;Wallmaster;Inside Ganon Castle;;all;Inside Ganon Castle
+OOT_GROTTO_GENERIC_KOKIRI_FOREST_ENTR;oot;0x1000;grotto;OOT_KOKIRI_FOREST;Kokiri Forest;Kokiri Forest Storms Grotto;;all;Kokiri Forest Storms Grotto
+OOT_GROTTO_GENERIC_LOST_WOODS_ENTR;oot;0x1001;grotto;OOT_LOST_WOODS;Lost Woods;Lost Woods Boulder Grotto Near Goron City;;all;Lost Woods Boulder Grotto Near Goron City
+OOT_GROTTO_GENERIC_KAKARIKO_ENTR;oot;0x1002;grotto;OOT_KAKARIKO_VILLAGE;Kakariko;Kakariko Open Grotto;;all;Kakariko Open Grotto
+OOT_GROTTO_GENERIC_DMT_ENTR;oot;0x1003;grotto;OOT_DEATH_MOUNTAIN_TRAIL;Death Mountain Trail;Death Mountain Trail Storms Grotto;;all;Death Mountain Trail Storms Grotto
+OOT_GROTTO_GENERIC_DMC_ENTR;oot;0x1004;grotto;OOT_DEATH_MOUNTAIN_CRATER;Death Mountain Crater;Death Mountain Crater Boulder Grotto;;all;Death Mountain Crater Boulder Grotto
+OOT_GROTTO_GENERIC_RIVER_ENTR;oot;0x1005;grotto;OOT_ZORA_RIVER;Zora River;Zora River Generic Open Grotto;;all;Zora River Generic Open Grotto
+OOT_GROTTO_GENERIC_HF_SOUTHEAST_ENTR;oot;0x1006;grotto;OOT_HYRULE_FIELD;Hyrule Field;Hyrule Field Southeast Grotto;;all;Hyrule Field Southeast Grotto
+OOT_GROTTO_GENERIC_HF_OPEN_ENTR;oot;0x1007;grotto;OOT_HYRULE_FIELD;Hyrule Field;Hyrule Field Open Grotto;;all;Hyrule Field Open Grotto
+OOT_GROTTO_GENERIC_HF_MARKET_ENTR;oot;0x1008;grotto;OOT_HYRULE_FIELD;Hyrule Field;Hyrule Field Near Market Grotto;;all;Hyrule Field Near Market Grotto
+OOT_GROTTO_FAIRY_SFM_ENTR;oot;0x1009;grotto;OOT_SACRED_FOREST_MEADOW;Sacred Forest Meadow;Sacred Forest Meadow Fairy Fountain Grotto;;all;Sacred Forest Meadow Fairy Fountain Grotto
+OOT_GROTTO_FAIRY_HF_ENTR;oot;0x100a;grotto;OOT_HYRULE_FIELD;Hyrule Field;Hyrule Field Fairy Fountain Grotto;;all;Hyrule Field Fairy Fountain Grotto
+OOT_GROTTO_FAIRY_RIVER_ENTR;oot;0x100b;grotto;OOT_ZORA_RIVER;Zora River;Zora River Fairy Fountain Grotto;;all;Zora River Fairy Fountain Grotto
+OOT_GROTTO_FAIRY_DOMAIN_ENTR;oot;0x100c;grotto;OOT_ZORA_DOMAIN;Zora Domain;Zora Domain Fairy Fountain Grotto;;all;Zora Domain Fairy Fountain Grotto
+OOT_GROTTO_FAIRY_FORTRESS_ENTR;oot;0x100d;grotto;OOT_GERUDO_FORTRESS;Gerudo Fortress;Gerudo Fortress Fairy Fountain Grotto;;all;Gerudo Fortress Fairy Fountain Grotto
+OOT_GROTTO_SCRUBS2_SFM_ENTR;oot;0x100e;grotto;OOT_SACRED_FOREST_MEADOW;Sacred Forest Meadow;Sacred Forest Meadow Storms Grotto;;all;Sacred Forest Meadow Storms Grotto
+OOT_GROTTO_SCRUBS2_RIVER_ENTR;oot;0x100f;grotto;OOT_ZORA_RIVER;Zora River;Zora River Storms Grotto;;all;Zora River Storms Grotto
+OOT_GROTTO_SCRUBS2_VALLEY_ENTR;oot;0x1010;grotto;OOT_GERUDO_VALLEY;Gerudo Valley;Gerudo Valley Storms Grotto;;all;Gerudo Valley Storms Grotto
+OOT_GROTTO_SCRUBS2_COLOSSUS_ENTR;oot;0x1011;grotto;OOT_DESERT_COLOSSUS;Desert Colossus;Desert Colossus Silver Boulder Grotto;;all;Desert Colossus Silver Boulder Grotto
+OOT_GROTTO_SCRUBS3_RANCH_ENTR;oot;0x1012;grotto;OOT_LON_LON_RANCH;Lon Lon Ranch;Lon Lon Ranch Open Grotto;;all;Lon Lon Ranch Open Grotto
+OOT_GROTTO_SCRUBS3_GORON_CITY_ENTR;oot;0x1013;grotto;OOT_GORON_CITY;Goron City;Goron City Open Grotto;;all;Goron City Open Grotto
+OOT_GROTTO_SCRUBS3_DMC_ENTR;oot;0x1014;grotto;OOT_DEATH_MOUNTAIN_CRATER;Death Mountain Crater;Death Mountain Crater Red Boulder Grotto;;all;Death Mountain Crater Red Boulder Grotto
+OOT_GROTTO_SCRUBS3_LAKE_ENTR;oot;0x1015;grotto;OOT_LAKE_HYLIA;Lake Hylia;Lake Hylia Under Tomb Grotto;;all;Lake Hylia Under Tomb Grotto
+OOT_GROTTO_SCRUB_UPGRADE_ENTR;oot;0x5b0;grotto;OOT_LOST_WOODS;Lost Woods;Lost Woods Scrub Upgrade Grotto;;all;Lost Woods Scrub Upgrade Grotto
+OOT_GROTTO_SCRUB_HEART_PIECE_ENTR;oot;0x59c;grotto;OOT_HYRULE_FIELD;Hyrule Field;Hyrule Field Scrub Grotto;;all;Hyrule Field Scrub Grotto
+OOT_GROTTO_DEKU_THEATER_ENTR;oot;0x5c4;grotto;OOT_LOST_WOODS;Lost Woods;Lost Woods Deku Theater;;all;Lost Woods Deku Theater
+OOT_GROTTO_WOLFOS_ENTR;oot;0x5b4;grotto;OOT_SACRED_FOREST_MEADOW;Sacred Forest Meadow;Sacred Forest Meadow Wolfos Grotto;;all;Sacred Forest Meadow Wolfos Grotto
+OOT_GROTTO_TEKTITE_ENTR;oot;0x5c0;grotto;OOT_HYRULE_FIELD;Hyrule Field;Hyrule Field Tektite Grotto;;all;Hyrule Field Tektite Grotto
+OOT_GROTTO_FIELD_COW_ENTR;oot;0x5a8;grotto;OOT_HYRULE_FIELD;Hyrule Field;Hyrule Field Grotto Near Gerudo Valley;;all;Hyrule Field Grotto Near Gerudo Valley
+OOT_GROTTO_FIELD_TREE_ENTR;oot;0x598;grotto;OOT_HYRULE_FIELD;Hyrule Field;Hyrule Field Tree Grotto Near Kakariko;;all;Hyrule Field Tree Grotto Near Kakariko
+OOT_GROTTO_TRAIL_COW_ENTR;oot;0x5fc;grotto;OOT_DEATH_MOUNTAIN_TRAIL;Death Mountain Trail;Death Mountain Trail Cow Grotto;;all;Death Mountain Trail Cow Grotto
+OOT_GROTTO_CASTLE_ENTR;oot;0x5b8;grotto;OOT_HYRULE_CASTLE;Hyrule Castle;Hyrule Castle Storms Grotto;;all;Hyrule Castle Storms Grotto
+OOT_GROTTO_REDEAD_ENTR;oot;0x5a0;grotto;OOT_KAKARIKO_VILLAGE;Kakariko;Kakariko Redead Grotto;;all;Kakariko Redead Grotto
+OOT_GROTTO_OCTOROK_ENTR;oot;0x5ac;grotto;OOT_GERUDO_VALLEY;Gerudo Valley;Gerudo Valley Octorok Grotto;;all;Gerudo Valley Octorok Grotto
+OOT_GRAVE_SHIELD_ENTR;oot;0x04b;grave;OOT_GRAVEYARD;Graveyard;Graveyard Shield Tomb;;all;Graveyard Shield Tomb
+OOT_GRAVE_REDEAD_ENTR;oot;0x31c;grave;OOT_GRAVEYARD;Graveyard;Graveyard Fairy Fountain Tomb;;all;Graveyard Fairy Fountain Tomb
+OOT_GRAVE_ROYAL_ENTR;oot;0x02d;grave;OOT_GRAVEYARD;Graveyard;Graveyard Royal Family Tomb;;all;Graveyard Royal Family Tomb
+OOT_GRAVE_DAMPE_ENTR;oot;0x44f;grave;OOT_GRAVEYARD;Graveyard;Graveyard Dampe Tomb;;all;Graveyard Dampe Tomb
+OOT_GROTTO_EXIT_GENERIC_KOKIRI_FOREST;oot;0x1100;grotto-exit;OOT_GROTTO_KOKIRI_FOREST_STORMS;Kokiri Forest Storms Grotto;Kokiri Forest;;all;Kokiri Forest
+OOT_GROTTO_EXIT_GENERIC_LOST_WOODS;oot;0x1101;grotto-exit;OOT_GROTTO_LOST_WOODS_GENERIC;Lost Woods Boulder Grotto Near Goron City;Lost Woods;;all;Lost Woods
+OOT_GROTTO_EXIT_GENERIC_KAKARIKO;oot;0x1102;grotto-exit;OOT_GROTTO_KAKARIKO_OPEN;Kakariko Open Grotto;Kakariko;;all;Kakariko
+OOT_GROTTO_EXIT_GENERIC_DMT;oot;0x1103;grotto-exit;OOT_GROTTO_DEATH_TRIAL_STORMS;Death Mountain Trail Storms Grotto;Death Mountain Trail;;all;Death Mountain Trail
+OOT_GROTTO_EXIT_GENERIC_DMC;oot;0x1104;grotto-exit;OOT_GROTTO_DEATH_CRATER_GENERIC;Death Mountain Crater Boulder Grotto;Death Mountain Crater;;all;Death Mountain Crater
+OOT_GROTTO_EXIT_GENERIC_RIVER;oot;0x1105;grotto-exit;OOT_GROTTO_ZORA_RIVER_GENERIC;Zora River Generic Open Grotto;Zora River;;all;Zora River
+OOT_GROTTO_EXIT_GENERIC_HF_SOUTHEAST;oot;0x1106;grotto-exit;OOT_GROTTO_HYRULE_SE;Hyrule Field Southeast Grotto;Hyrule Field;;all;Hyrule Field
+OOT_GROTTO_EXIT_GENERIC_HF_OPEN;oot;0x1107;grotto-exit;OOT_GROTTO_HYRULE_OPEN;Hyrule Field Open Grotto;Hyrule Field;;all;Hyrule Field
+OOT_GROTTO_EXIT_GENERIC_HF_MARKET;oot;0x1108;grotto-exit;OOT_GROTTO_HYRULE_MARKET;Hyrule Field Near Market Grotto;Hyrule Field;;all;Hyrule Field
+OOT_GROTTO_EXIT_FAIRY_SFM;oot;0x1109;grotto-exit;OOT_FAIRY_SACRED_MEADOW;Sacred Forest Meadow Fairy Fountain Grotto;Sacred Forest Meadow;;all;Sacred Forest Meadow
+OOT_GROTTO_EXIT_FAIRY_HF;oot;0x110a;grotto-exit;OOT_FAIRY_HYRULE;Hyrule Field Fairy Fountain Grotto;Hyrule Field;;all;Hyrule Field
+OOT_GROTTO_EXIT_FAIRY_RIVER;oot;0x110b;grotto-exit;OOT_FAIRY_ZORA_RIVER;Zora River Fairy Fountain Grotto;Zora River;;all;Zora River
+OOT_GROTTO_EXIT_FAIRY_DOMAIN;oot;0x110c;grotto-exit;OOT_FAIRY_ZORA_DOMAIN;Zora Domain Fairy Fountain Grotto;Zora Domain;;all;Zora Domain
+OOT_GROTTO_EXIT_FAIRY_FORTRESS;oot;0x110d;grotto-exit;OOT_FAIRY_GERUDO_FORTRESS;Gerudo Fortress Fairy Fountain Grotto;Gerudo Fortress;;all;Gerudo Fortress
+OOT_GROTTO_EXIT_SCRUBS2_SFM;oot;0x110e;grotto-exit;OOT_GROTTO_SACRED_MEADOW_STORMS;Sacred Forest Meadow Storms Grotto;Sacred Forest Meadow;;all;Sacred Forest Meadow
+OOT_GROTTO_EXIT_SCRUBS2_RIVER;oot;0x110f;grotto-exit;OOT_GROTTO_ZORA_RIVER_STORMS;Zora River Storms Grotto;Zora River;;all;Zora River
+OOT_GROTTO_EXIT_SCRUBS2_VALLEY;oot;0x1110;grotto-exit;OOT_GROTTO_VALLEY_STORMS;Gerudo Valley Storms Grotto;Gerudo Valley;;all;Gerudo Valley
+OOT_GROTTO_EXIT_SCRUBS2_COLOSSUS;oot;0x1111;grotto-exit;OOT_GROTTO_DESERT_SCRUBS;Desert Colossus Silver Boulder Grotto;Desert Colossus;;all;Desert Colossus
+OOT_GROTTO_EXIT_SCRUBS3_RANCH;oot;0x1112;grotto-exit;OOT_GROTTO_LON_LON_SCRUBS;Lon Lon Ranch Open Grotto;Lon Lon Ranch;;all;Lon Lon Ranch
+OOT_GROTTO_EXIT_SCRUBS3_GORON_CITY;oot;0x1113;grotto-exit;OOT_GROTTO_GORON_CITY_SCRUBS;Goron City Open Grotto;Goron City;;all;Goron City
+OOT_GROTTO_EXIT_SCRUBS3_DMC;oot;0x1114;grotto-exit;OOT_GROTTO_DEATH_CRATER_SCRUBS;Death Mountain Crater Red Boulder Grotto;Death Mountain Crater;;all;Death Mountain Crater
+OOT_GROTTO_EXIT_SCRUBS3_LAKE;oot;0x1115;grotto-exit;OOT_GROTTO_LAKE_HYLIA_SCRUBS;Lake Hylia Under Tomb Grotto;Lake Hylia;;all;Lake Hylia
+OOT_GROTTO_EXIT_SCRUB_UPGRADE;oot;0x1116;grotto-exit;OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;Lost Woods Scrub Upgrade Grotto;Lost Woods;;all;Lost Woods
+OOT_GROTTO_EXIT_SCRUB_HEART_PIECE;oot;0x1117;grotto-exit;OOT_GROTTO_HYRULE_SCRUBS;Hyrule Field Scrub Grotto;Hyrule Field;;all;Hyrule Field
+OOT_GROTTO_EXIT_DEKU_THEATER;oot;0x1118;grotto-exit;OOT_GROTTO_LOST_WOODS_THEATER;Lost Woods Deku Theater;Lost Woods;;all;Lost Woods
+OOT_GROTTO_EXIT_WOLFOS;oot;0x1119;grotto-exit;OOT_GROTTO_SACRED_MEADOW_WOLFOS;Sacred Forest Meadow Wolfos Grotto;Sacred Forest Meadow;;all;Sacred Forest Meadow
+OOT_GROTTO_EXIT_TEKTITE;oot;0x111a;grotto-exit;OOT_GROTTO_HYRULE_TEKTITE;Hyrule Field Tektite Grotto;Hyrule Field;;all;Hyrule Field
+OOT_GROTTO_EXIT_FIELD_COW;oot;0x111b;grotto-exit;OOT_GROTTO_HYRULE_GERUDO;Hyrule Field Grotto Near Gerudo Valley;Hyrule Field;;all;Hyrule Field
+OOT_GROTTO_EXIT_FIELD_TREE;oot;0x111c;grotto-exit;OOT_GROTTO_HYRULE_KAKARIKO;Hyrule Field Tree Grotto Near Kakariko;Hyrule Field;;all;Hyrule Field
+OOT_GROTTO_EXIT_TRAIL_COW;oot;0x111d;grotto-exit;OOT_GROTTO_DEATH_TRIAL_COW;Death Mountain Trail Cow Grotto;Death Mountain Trail;;all;Death Mountain Trail
+OOT_GROTTO_EXIT_CASTLE;oot;0x111e;grotto-exit;OOT_GROTTO_CASTLE_STORMS;Hyrule Castle Storms Grotto;Hyrule Castle;;all;Hyrule Castle
+OOT_GROTTO_EXIT_REDEAD;oot;0x111f;grotto-exit;OOT_GROTTO_KAKARIKO_REDEAD;Kakariko Redead Grotto;Kakariko;;all;Kakariko
+OOT_GROTTO_EXIT_OCTOROK;oot;0x1120;grotto-exit;OOT_GROTTO_VALLEY_OCTOROK;Gerudo Valley Octorok Grotto;Gerudo Valley;;all;Gerudo Valley
+OOT_GRAVE_EXIT_SHIELD;oot;0x35d;grave-exit;OOT_TOMB_REDEAD;Graveyard Shield Tomb;Graveyard;;all;Graveyard
+OOT_GRAVE_EXIT_REDEAD;oot;0x361;grave-exit;OOT_TOMB_FAIRY;Graveyard Fairy Fountain Tomb;Graveyard;;all;Graveyard
+OOT_GRAVE_EXIT_ROYAL;oot;0x50b;grave-exit;OOT_TOMB_ROYAL;Graveyard Royal Family Tomb;Graveyard;;all;Graveyard
+OOT_GRAVE_EXIT_DAMPE;oot;0x359;grave-exit;OOT_TOMB_DAMPE_WINDMILL;Graveyard Dampe Tomb;Graveyard;;all;Graveyard
+OOT_BOSS_GANON2_ENTR;oot;0x517;none;OOT_GANON_BATTLE_ARENA;;;;all;
+OOT_GERUDO_FORTRESS_CAUGHT_NO_HOOK_ENTR;oot;0x1a5;none;OOT_GERUDO_FORTRESS;;;;all;
+OOT_GERUDO_FORTRESS_CAUGHT_ENTR;oot;0x5f8;none;OOT_GERUDO_FORTRESS;;;;all;
+OOT_CASTLE_STEALTH_ENTR;oot;0x07a;none;OOT_HYRULE_CASTLE;;;;all;
+OOT_CASTLE_STEALTH_FROM_COURTYARD_ENTR;oot;0x296;none;OOT_CASTLE_COURTYARD;;;;all;
+OOT_CASTLE_COURTYARD_ENTR;oot;0x400;none;OOT_CASTLE_COURTYARD;Hyrule Castle;Castle Courtyard;;all;Castle Courtyard
+OOT_CASTLE_CAUGHT_ENTR;oot;0x47e;none;OOT_HYRULE_CASTLE;;;;all;
+OOT_MARKET_FROM_MASK_SHOP_ENTR;oot;0x1d1;indoors-link;OOT_MARKET;Mask Shop;Market;;all;Market
+OOT_SHOP_MASKS_ENTR;oot;0x530;none;OOT_MARKET;Market;Mask Shop;;all;Mask Shop
+OOT_SAGES_CHAMBER_END_ENTR;oot;0x06b;none;OOT_CHAMBER_OF_THE_SAGES;Temple of Time;Sages Chamber;;all;Sages Chamber
+OOT_TEMPLE_OF_TIME_MASTER_SWORD_CS_ENTR;oot;0x2ca;none;OOT_TEMPLE_OF_TIME;Master Sword;Temple of Time;;all;Temple of Time
+OOT_ZORA_RIVER_FROM_FIELD_WATER_ENTR;oot;0x1d9;none;OOT_ZORA_RIVER;Hyrule Field Water;Zora River Water;;all;Zora River Water
+OOT_FIELD_FROM_ZORA_RIVER_WATER_ENTR;oot;0x311;none;OOT_HYRULE_FIELD;Zora River Water;Hyrule Field Water;;all;Hyrule Field Water
+OOT_GROTTO_TYPE_GENERIC_ENTR;oot;0x03f;none # Multiple uses;OOT_GROTTOS;;;;all;
+OOT_GROTTO_TYPE_FAIRY_ENTR;oot;0x36d;none # Multiple uses;OOT_GROTTOS;;;;all;
+OOT_GROTTO_TYPE_SCRUB2_ENTR;oot;0x5bc;none # Multiple uses;OOT_GROTTOS;;;;all;
+OOT_GROTTO_TYPE_SCRUB3_ENTR;oot;0x5a4;none # Multiple uses;OOT_GROTTOS;;;;all;
+OOT_SHADOW_TEMPLE_FROM_LAIR_ENTR;oot;0x2b2;none;OOT_TEMPLE_SHADOW;Bongo-Bongo's Lair;Shadow Temple;;all;Shadow Temple
+OOT_INTERNAL_EXIT_GROTTO_ENTR;oot;0x7fff;none;OOT_GROTTOS;;;;all;
+OOT_MARKET_FROM_BACK_ALLEY_TREASURE_ENTR;oot;0x029e;none;OOT_BACK_ALLEY;Back Alley Treasure Game Side;Market Treasure Game Side;;all;Market Treasure Game Side
+OOT_MARKET_FROM_BACK_ALLEY_SHOOTING_ENTR;oot;0x0262;none;OOT_BACK_ALLEY;Back Alley Shooting Side;Market Shooting Side;;all;Market Shooting Side
+OOT_BACK_ALLEY_TREASURE_FROM_MARKET_ENTR;oot;0x029a;none;OOT_MARKET;Market Treasure Game Side;Back Alley Treasure Game Side;;all;Back Alley Treasure Game Side
+OOT_BACK_ALLEY_SHOOTING_FROM_MARKET_ENTR;oot;0x0ad;none;OOT_MARKET;Market Shooting Side;Back Alley Shooting Side;;all;Back Alley Shooting Side
+OOT_DOG_LADY_FROM_BACK_ALLEY_ENTR;oot;0x0398;none;OOT_BACK_ALLEY;Back Alley;Dog Lady's House;;all;Dog Lady's House
+OOT_BACK_ALLEY_FROM_DOG_LADY_ENTR;oot;0x038c;none;OOT_BACK_ALLEY_HOUSE;Dog Lady's House;Back Alley;;all;Back Alley
+SPAWN_LOADING;oot;0xfffe;none;0;Wrap Song / Save Menu;Spawn Loading;;all;Spawn Loading
