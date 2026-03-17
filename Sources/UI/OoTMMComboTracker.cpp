@@ -4,6 +4,7 @@
 #include "UI/OoTMMComboTracker.h"
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QTextStream>
 
 OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     : QMainWindow(parent)
@@ -225,7 +226,7 @@ void OoTMMComboTracker::UpdateRecentFiles()
         return;
     }
     
-    int numRecentFiles = std::min((byte)this->RecentFiles.size(), this->MaxRecentFiles);
+    int numRecentFiles = min((byte)this->RecentFiles.size(), this->MaxRecentFiles);
 
     for (byte i = 0; i < this->MaxRecentFiles; ++i)
     {
@@ -322,7 +323,7 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        qWarning() << "Can't open file:" << file.errorString();
+        std::cout << "Can't open file:" << file.errorString().toStdString();
         return;
     }
 
@@ -336,7 +337,7 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
     // Check that we have the correct number of sections
     if (sections.size() < 3)
     {
-        qWarning() << "The file does not have the correct number of sections.";
+        std::cout << "The file does not have the correct number of sections.";
         return;
     }
 

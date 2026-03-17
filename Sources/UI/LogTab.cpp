@@ -107,38 +107,38 @@ LogTab::LogTab(OoTMMComboTracker* Owner, QWidget* parent) : QWidget(parent)
 
     // Save tracking
     this->SaveButton = new QPushButton("Save Tracking");
-    this->SaveButton->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::DocumentSave));
+    this->SaveButton->setIcon(QIcon::fromTheme(QString::fromUtf8("QIcon::ThemeIcon::DocumentSave")));
     QObject::connect(this->SaveButton, &QPushButton::pressed, this, &LogTab::SaveTracking);
     this->FileLayout->addWidget(this->SaveButton);
 
     // Load tracking
     this->LoadButton = new QPushButton("Load Tracking");
-    this->LoadButton->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::DocumentOpen));
+    this->LoadButton->setIcon(QIcon::fromTheme(QString::fromUtf8("QIcon::ThemeIcon::DocumentOpen")));
     QObject::connect(this->LoadButton, &QPushButton::pressed, this, &LogTab::LoadTracking);
     this->FileLayout->addWidget(this->LoadButton);
 
     // Load spoiler
     this->LoadSpoilerButton = new QPushButton("Load Spoiler Log");
-    this->LoadSpoilerButton->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::SystemLogOut));
+    this->LoadSpoilerButton->setIcon(QIcon::fromTheme(QString::fromUtf8("QIcon::ThemeIcon::SystemLogOut")));
     QObject::connect(this->LoadSpoilerButton, &QPushButton::pressed, this, &LogTab::LoadSpoiler);
     this->FileLayout->addWidget(this->LoadSpoilerButton);
 
     // Reset tracking
     this->ResetButton = new QPushButton("Reset Tracking");
-    this->ResetButton->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::SystemReboot));
+    this->ResetButton->setIcon(QIcon::fromTheme(QString::fromUtf8("QIcon::ThemeIcon::SystemReboot")));
     QObject::connect(this->ResetButton, &QPushButton::pressed, this, &LogTab::ResetTracking);
     this->FileLayout->addWidget(this->ResetButton);
 
     // Start tracking
     this->LaunchButton = new QPushButton("Start Tracking");
-    this->LaunchButton->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackStart));
+    this->LaunchButton->setIcon(QIcon::fromTheme(QString::fromUtf8("QIcon::ThemeIcon::MediaPlaybackStart")));
     QObject::connect(this->LaunchButton, &QPushButton::pressed, this, &LogTab::PressLaunchButton);
 
     // Multiplayer checkbox
     this->EnableMultiplayer = AppConfig::GetUseMultiplayer();
     this->NetCheckBox = new QCheckBox("Use Multiplayer");
     this->NetCheckBox->setChecked(this->EnableMultiplayer);
-    QObject::connect(this->NetCheckBox, &QCheckBox::checkStateChanged, this, &LogTab::ToggleNetOption);
+    QObject::connect(this->NetCheckBox, &QCheckBox::stateChanged, this, &LogTab::ToggleNetOption);
 
     // Host field
     this->Host = new QLineEdit;
@@ -245,7 +245,7 @@ void LogTab::PressLaunchButton()
 {
     if (this->Tracker)
     {
-        QIcon launchIcon(QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackStart));
+        QIcon launchIcon(QIcon::fromTheme(QString::fromUtf8("QIcon::ThemeIcon::MediaPlaybackStart")));
         QString trackText = "Start Tracking";
         if (this->Tracker->IsRunning)
         {   // Stop the auto-tracker
@@ -276,7 +276,7 @@ void LogTab::PressLaunchButton()
                 return;
             }
             trackText = "Stop Tracking";
-            launchIcon = QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackStop);
+            launchIcon = QIcon::fromTheme(QString::fromUtf8("QIcon::ThemeIcon::MediaPlaybackStop"));
             this->Tracker->IsRunning = true;
 
             this->TrackerThread = std::thread(&App::appRun, this->Tracker, this->EnableMultiplayer, this->Host, this->Port->text().toUShort());

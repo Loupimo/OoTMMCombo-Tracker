@@ -43,11 +43,16 @@ void MemoryReader::ResetMemoryReader()
 
     if (this->PJ64Handle != 0)
     {
+        this->DLLData->IsRunning = false;
+        WaitForSingleObject(this->DLLThread, INFINITE);
+        VirtualFreeEx(this->PJ64Handle, this->DLLAlloc, 0, MEM_RELEASE);
+        CloseHandle(this->DLLThread);
         CloseHandle(this->PJ64Handle);
         this->PJ64Handle = 0;
     }
 
     this->PJ64PID = 0;
+    this->ModuleBaseAddress = 0;
     this->GameRamBaseAddress = 0;
     this->EntHelper.ResetEntranceHelper();
 }
@@ -91,7 +96,8 @@ DWORD MemoryReader::GetProcessIdByName(const char* ProcessName)
 HANDLE MemoryReader::OpenDesiredProcess(DWORD PID)
 {   // Open the desired process with the right to access the process and reading its memory
 
-    return OpenProcess(PROCESS_VM_READ | PROCESS_QUERY_INFORMATION, false, PID);
+    return OpenProcess(PROCESS_ALL_ACCESS, TRUE, this->PJ64PID);
+    //return OpenProcess(PROCESS_VM_READ | PROCESS_QUERY_INFORMATION, false, PID);
 }
 
 
@@ -132,30 +138,52 @@ void MemoryReader::StartMemoryReader()
         if (this->PJ64Handle != 0)
         {   // We have permission to watch the process memory
 
-            do
+
+            if (this->InjectTrackerDLL())
             {
-                if (this->GameRamBaseAddress == 0)
-                {   // The game has not be launched yet
+                this->ModuleBaseAddress = this->GetModuleBase(this->PJ64PID, processName);
+                this->GameRamBaseAddress = this->FindN64RAM(this->PJ64Handle);
 
-                    this->GameRamBaseAddress = this->FindN64RAM(this->PJ64Handle);
-                    MultiLogger::LogMessage("Game RAM not found, please launch your game first. Retrying in 1 second...");
-                    Sleep(1000);
+                do
+                {
+                    if (this->ModuleBaseAddress == 0)
+                    {
+                        MultiLogger::LogMessage("Module base address not found. Retrying in 1 second...");
+                        Sleep(1000);
+                        this->ModuleBaseAddress = this->GetModuleBase(this->PJ64PID, processName);
+                    }
+                    if (this->GameRamBaseAddress == 0)
+                    {   // The game has not be launched yet
+
+                        MultiLogger::LogMessage("Game RAM not found, please launch your game first. Retrying in 1 second...");
+                        Sleep(1000);
+                        this->GameRamBaseAddress = this->FindN64RAM(this->PJ64Handle);
+                    }
+
+                } while (this->ModuleBaseAddress == 0 && this->GameRamBaseAddress == 0 && this->IsRunning && this->IsProcessAlive(this->PJ64Handle));
+
+                if (this->ModuleBaseAddress != 0)
+                {
+                    this->OpenSharedMemory();
+                    //this->PCAddress = this->FindPCAddress(this->PJ64Handle);
                 }
+                if (this->GameRamBaseAddress != 0)
+                {   // We have the emulator game allocated RAM address
 
-            } while (this->GameRamBaseAddress == 0 && this->IsRunning && this->IsProcessAlive(this->PJ64Handle));
-
-            if (this->GameRamBaseAddress != 0)
-            {   // We have the emulator game allocated RAM address
-
-                MultiLogger::LogMessage("Game RAM Found, start address : %x", this->GameRamBaseAddress);
-                this->RunMemoryReader();
+                    MultiLogger::LogMessage("Game RAM Found, start address : %x", this->GameRamBaseAddress);
+                    this->RunMemoryReader();
+                }
+            }
+            else
+            {
+                MultiLogger::LogMessage("Cannot inject tracker dll into %s.\nPlease check your process, ensure that % is in the same folder as the tracker and restart the tracker.", processName, this->PJTrackerDLL);
             }
         }
         else
         {   // An error occured while trying to get a valid handler to read the process memory
 
             DWORD errorMessageID = GetLastError();
-            MultiLogger::LogMessage("Cannot watch %s process. Error : %s (%d).\nPlease check your process and restart the tracker.", processName, GetErrorAsString(errorMessageID), errorMessageID);
+            MultiLogger::LogMessage("Cannot access %s process. Error : %s (%d).\nPlease check your process and restart the tracker.", processName, GetErrorAsString(errorMessageID), errorMessageID);
         }
     }
 }
@@ -164,9 +192,21 @@ void MemoryReader::StartMemoryReader()
 void MemoryReader::RunMemoryReader()
 {
     MultiLogger::LogMessage("Reading game memory...");
+    //uint32_t PC = 0;
     do
     {
-        ReadProcessMemory(this->PJ64Handle, (LPCVOID)(this->GameRamBaseAddress), this->RAMData, RAM_SIZE, 0);
+        //ReadProcessMemory(this->PJ64Handle, (LPCVOID)(this->PCAddress), &PC, sizeof(PC), 0);
+        if (this->DLLData->isValid)//pc == 0x80400BE4)
+        {//if (PC == 0x80400BE4)
+            MultiLogger::LogMessage("PC = 0x%X", this->DLLData->pc);
+            this->DLLData->isValid = 0;
+        }
+        //else
+        //if (PC == 0x80400BE4)
+        //    MultiLogger::LogMessage("PC = 0x%X", this->DLLData->pc);
+
+        //Sleep(10);
+        /*ReadProcessMemory(this->PJ64Handle, (LPCVOID)(this->GameRamBaseAddress), this->RAMData, RAM_SIZE, 0);
         this->CheckCurrentLoadedGame();
 
         if (this->LoadedGame == NO_GAME)
@@ -179,11 +219,41 @@ void MemoryReader::RunMemoryReader()
         {
             this->ReadEntranceID(this->LoadedGame);
             Sleep(100);
-        }
+        }*/
 
     } while (this->IsRunning && this->IsProcessAlive(this->PJ64Handle));
 
     this->IsRunning = false;
+}
+
+
+uintptr_t MemoryReader::GetModuleBase(DWORD PID, const char* ModuleName)
+{
+    MODULEENTRY32 mod;
+    mod.dwSize = sizeof(mod);
+    char* currProcess = (char*)malloc(sizeof(char) * 256);
+    size_t sz = 0;
+
+    HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, PID);
+
+    if (currProcess && Module32First(snapshot, &mod))
+    {
+        do
+        {
+            wcstombs_s(&sz, currProcess, 256, mod.szModule, 256);
+            QString lazyString(currProcess);
+            if (lazyString.startsWith(ModuleName) && lazyString.endsWith(".exe"))
+            //if (!_stricmp(mod.szModule, moduleName))
+            {
+                CloseHandle(snapshot);
+                return (uintptr_t)mod.modBaseAddr;
+            }
+
+        } while (Module32Next(snapshot, &mod));
+    }
+
+    CloseHandle(snapshot);
+    return 0;
 }
 
 
@@ -203,6 +273,81 @@ uintptr_t MemoryReader::FindN64RAM(HANDLE process)
     }
 
     return 0;
+}
+
+
+uintptr_t MemoryReader::FindPCAddress(HANDLE process)
+{
+    uint32_t addr = 0;
+
+    ReadProcessMemory(process, (LPCVOID)(this->ModuleBaseAddress + 0x1B00C4), &addr, sizeof(addr), 0);
+
+    return addr + 0x220;
+}
+
+
+bool MemoryReader::OpenSharedMemory()
+{
+    HANDLE hMap = OpenFileMappingA(FILE_MAP_ALL_ACCESS, FALSE, "PJ64_SHARED_MEM");
+
+    if (!hMap)
+    {
+        std::cout << "Shared memory not found\n";
+        return false;
+    }
+
+    this->DLLData = (SharedData*)MapViewOfFile(hMap, FILE_MAP_ALL_ACCESS, 0, 0, sizeof(SharedData));
+
+    if (this->DLLData != nullptr)
+    {
+        this->DLLData->Base = this->ModuleBaseAddress;
+        return true;
+    }
+
+    return false;
+}
+
+
+bool MemoryReader::InjectTrackerDLL()
+{
+    if (this->PJ64Handle == 0)
+    {
+        return false;
+    }
+
+    this->DLLAlloc = VirtualAllocEx(this->PJ64Handle, nullptr, strlen(this->PJTrackerDLL), MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+
+    if (!this->DLLAlloc)
+    {
+        return false;
+    }
+
+    bool ret = WriteProcessMemory(this->PJ64Handle, this->DLLAlloc, this->PJTrackerDLL, strlen(this->PJTrackerDLL), nullptr);
+
+    HMODULE lpStart = GetModuleHandle(L"kernel32.dll");
+    LPVOID st = GetProcAddress(lpStart, "LoadLibraryA");
+
+    this->DLLThread = CreateRemoteThread(this->PJ64Handle, nullptr, 0, (LPTHREAD_START_ROUTINE)st, this->DLLAlloc, 0, nullptr );
+
+    if (!this->DLLThread)
+        return false;
+
+/*    WaitForSingleObject(this->DLLThread, INFINITE);
+    DWORD exitCode = 0;
+    GetExitCodeThread(this->DLLThread, &exitCode);
+
+    MultiLogger::LogMessage("LoadLibrary result = 0x%X\n", exitCode);
+
+    if (GetFileAttributesA(this->PJTrackerDLL) == INVALID_FILE_ATTRIBUTES)
+    {
+        printf("DLL NOT FOUND\n");
+    }*/
+
+    //VirtualFreeEx(hProcess, alloc, 0, MEM_RELEASE);
+    //CloseHandle(hThread);
+    //CloseHandle(hProcess);
+
+    return true;
 }
 
 

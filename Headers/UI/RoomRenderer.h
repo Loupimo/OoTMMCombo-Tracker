@@ -17,9 +17,10 @@ typedef struct RoomInfo
 } RoomInfo;
 
 // An hash array that contains all OoT rooms for each scene that has more than one.
-const QHash<int, std::vector<RoomInfo>> OoTRooms(
+const QHash<int, std::vector<RoomInfo>> OoTRooms =
 {
-	QPair<int, std::vector<RoomInfo>>(OOT_DEKU_TREE,
+	{
+		OOT_DEKU_TREE,
 		std::vector<RoomInfo>(
 			{
 				{ 0, "1F", "./Resources/OoT/Dungeons/Deku_Tree/DEK_1F.jpg" },
@@ -29,9 +30,10 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 				{ 4, "B2", "./Resources/OoT/Dungeons/Deku_Tree/DEK_B2.jpg" }
 			}
 		)
-	),
+	},
 
-	QPair<int, std::vector<RoomInfo>>(OOT_DEATH_MOUNTAIN_TRAIL,
+	{
+		OOT_DEATH_MOUNTAIN_TRAIL,
 		std::vector<RoomInfo>(
 			{
 				{ 0, "Bottom", "./Resources/OoT/Death_Mountain_Trial/Bottom.png" },
@@ -39,45 +41,50 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 				{ 2, "Top", "./Resources/OoT/Death_Mountain_Trial/Top.png" }
 			}
 		)
-	),
+	},
 
-	QPair<int, std::vector<RoomInfo>>(OOT_GANON_TOWER,
+	{
+		OOT_GANON_TOWER,
 		std::vector<RoomInfo>(
 			{
 				{ 0, "Boss Key Room", "./Resources/OoT/Ganon/Boss_Key_Room.png" },
 				{ 1, "Pots Room", "./Resources/OoT/Ganon/Pots_Room.png" }
 			}
 		)
-	),
+	},
 
-	QPair<int, std::vector<RoomInfo>>(OOT_BOTTOM_OF_THE_WELL,
+	{
+		OOT_BOTTOM_OF_THE_WELL,
 		std::vector<RoomInfo>(
 			{
 				{ 0, "B1", "./Resources/OoT/Dungeons/Well/WEL_B1.jpg" },
 				{ 1, "B2", "./Resources/OoT/Dungeons/Well/WEL_B2.jpg" }
 			}
 		)
-	),
+	},
 
-	QPair<int, std::vector<RoomInfo>>(OOT_DODONGO_CAVERN,
+	{
+		OOT_DODONGO_CAVERN,
 		std::vector<RoomInfo>(
 			{
 				{ 0, "1F", "./Resources/OoT/Dungeons/Cavern/CAV_1F.jpg" },
 				{ 1, "2F", "./Resources/OoT/Dungeons/Cavern/CAV_2F.jpg" }
 			}
 		)
-	),
+	},
 	
-	QPair<int, std::vector<RoomInfo>>(OOT_INSIDE_JABU_JABU,
+	{
+		OOT_INSIDE_JABU_JABU,
 		std::vector<RoomInfo>(
 			{
 				{ 0, "1F", "./Resources/OoT/Dungeons/Jabu-Jabu/JAB_1F.jpg" },
 				{ 1, "B1", "./Resources/OoT/Dungeons/Jabu-Jabu/JAB_B1.jpg" }
 			}
 		)
-	),
+	},
 	
-	QPair<int, std::vector<RoomInfo>>(OOT_TEMPLE_FOREST,
+	{
+		OOT_TEMPLE_FOREST,
 		std::vector<RoomInfo>(
 			{
 				{ 0, "1F", "./Resources/OoT/Dungeons/Forest/FOT_1F.jpg" },
@@ -86,9 +93,10 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 				{ 3, "B2", "./Resources/OoT/Dungeons/Forest/FOT_B2.jpg" }
 			}
 		)
-	),
+	},
 
-	QPair<int, std::vector<RoomInfo>>(OOT_TEMPLE_FIRE,
+	{
+		OOT_TEMPLE_FIRE,
 		std::vector<RoomInfo>(
 			{
 				{ 0, "1F", "./Resources/OoT/Dungeons/Fire/FIT_1F.jpg" },
@@ -98,9 +106,10 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 				{ 4, "5F", "./Resources/OoT/Dungeons/Fire/FIT_5F.jpg" }
 			}
 		)
-	),
+	},
 
-	QPair<int, std::vector<RoomInfo>>(OOT_TEMPLE_WATER,
+	{
+		OOT_TEMPLE_WATER,
 		std::vector<RoomInfo>(
 			{
 				{ 0, "1F", "./Resources/OoT/Dungeons/Water/WT_1F.jpg" },
@@ -109,9 +118,10 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 				{ 3, "B1", "./Resources/OoT/Dungeons/Water/WT_B1.jpg" }
 			}
 		)
-	),
+	},
 
-	QPair<int, std::vector<RoomInfo>>(OOT_TEMPLE_SHADOW,
+	{
+		OOT_TEMPLE_SHADOW,
 		std::vector<RoomInfo>(
 			{
 				{ 0, "B1", "./Resources/OoT/Dungeons/Shadow/SHT_B1.jpg" },
@@ -121,9 +131,10 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 				{ 4, "B5", "./Resources/OoT/Dungeons/Shadow/SHT_B5.jpg" }
 			}
 		)
-	),
+	},
 
-	QPair<int, std::vector<RoomInfo>>(OOT_TEMPLE_SPIRIT,
+	{
+		OOT_TEMPLE_SPIRIT,
 		std::vector<RoomInfo>(
 			{
 				{ 0, "1F", "./Resources/OoT/Dungeons/Spirit/SPT_1F.jpg" },
@@ -132,22 +143,24 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms(
 				{ 3, "4F", "./Resources/OoT/Dungeons/Spirit/SPT_4F.jpg" }
 			}
 		)
-	)
-});
+	}
+};
 
 // An hash array that contains all MM rooms for each scene that has more than one.
-const QHash<int, std::vector<RoomInfo>> MMRooms(
+const QHash<int, std::vector<RoomInfo>> MMRooms = 
 {
-	QPair<int, std::vector<RoomInfo>>(MM_OBSERVATORY,
+	{
+		MM_OBSERVATORY,
 		std::vector<RoomInfo>(
 			{
 				{ 0, "Observatory", "./Resources/MM/Clock_Town/Observatory.png" },
 				{ 1, "Passage", "./Resources/MM/Clock_Town/Passage.png" }
 			}
 		)
-	),
+	},
 	
-	QPair<int, std::vector<RoomInfo>>(MM_STOCK_POT_INN,
+	{
+		MM_STOCK_POT_INN,
 		std::vector<RoomInfo>(
 			{
 				{ 0, "Lobby", "./Resources/MM/Clock_Town/SPI_Lobby.png" },
@@ -155,18 +168,20 @@ const QHash<int, std::vector<RoomInfo>> MMRooms(
 				{ 2, "Rooms", "./Resources/MM/Clock_Town/SPI_Rooms.png" }
 			}
 		)
-	),
+	},
 		
-	QPair<int, std::vector<RoomInfo>>(MM_CASTLE_IKANA,
+	{
+		MM_CASTLE_IKANA,
 		std::vector<RoomInfo>(
 			{
 				{ 0, "Outside", "./Resources/MM/Ikana_Canyon/Castle_Exterior.png" },
 				{ 1, "Inside", "./Resources/MM/Ikana_Canyon/Castle_Inside.png" }
 			}
 		)
-	),
+	},
 
-	QPair<int, std::vector<RoomInfo>>(MM_SPIDER_HOUSE_OCEAN,
+	{
+		MM_SPIDER_HOUSE_OCEAN,
 		std::vector<RoomInfo>(
 			{
 				{ 0, "Lobby", "./Resources/MM/Great_Bay_Coast/HS_Lobby.png" },
@@ -176,9 +191,10 @@ const QHash<int, std::vector<RoomInfo>> MMRooms(
 				{ 4, "Storage Room", "./Resources/MM/Great_Bay_Coast/HS_4.png" }
 			}
 		)
-	),
+	},
 
-	QPair<int, std::vector<RoomInfo>>(MM_SPIDER_HOUSE_SWAMP,
+	{
+		MM_SPIDER_HOUSE_SWAMP,
 		std::vector<RoomInfo>(
 			{
 				{ 0, "Lobby", "./Resources/MM/Southern_Swamp/HS_Lobby.png" },
@@ -189,9 +205,10 @@ const QHash<int, std::vector<RoomInfo>> MMRooms(
 				{ 5, "Tree Room", "./Resources/MM/Southern_Swamp/HS_5.png" }
 			}
 		)
-	),
+	},
 
-	QPair<int, std::vector<RoomInfo>>(MM_TEMPLE_WOODFALL,
+	{
+		MM_TEMPLE_WOODFALL,
 		std::vector<RoomInfo>(
 			{
 				{ 0, "Entrance", "./Resources/MM/Dungeons/Woodfall/Entrance.png" },
@@ -208,9 +225,10 @@ const QHash<int, std::vector<RoomInfo>> MMRooms(
 				{ 11, "Boss Room", "./Resources/MM/Dungeons/Woodfall/Boss.png" }
 			}
 		)
-	),
+	},
 
-	QPair<int, std::vector<RoomInfo>>(MM_TEMPLE_SNOWHEAD,
+	{
+		MM_TEMPLE_SNOWHEAD,
 		std::vector<RoomInfo>(
 			{
 				{ 0, "Entrance", "./Resources/MM/Dungeons/Snowhead/Entrance.png" },
@@ -229,9 +247,10 @@ const QHash<int, std::vector<RoomInfo>> MMRooms(
 				{ 13, "Boss Room", "./Resources/MM/Dungeons/Snowhead/Boss.png" }
 			}
 		)
-	),
+	},
 
-	QPair<int, std::vector<RoomInfo>>(MM_TEMPLE_GREAT_BAY,
+	{
+		MM_TEMPLE_GREAT_BAY,
 		std::vector<RoomInfo>(
 			{
 				{ 0, "Entrance", "./Resources/MM/Dungeons/Great_Bay/Entrance.png" },
@@ -252,9 +271,10 @@ const QHash<int, std::vector<RoomInfo>> MMRooms(
 				{ 15, "Boss Room", "./Resources/MM/Dungeons/Great_Bay/Boss.png" }
 			}
 		)
-	),
+	},
 
-	QPair<int, std::vector<RoomInfo>>(MM_TEMPLE_STONE_TOWER,
+	{
+		MM_TEMPLE_STONE_TOWER,
 		std::vector<RoomInfo>(
 			{
 				{ 0, "Entrance", "./Resources/MM/Dungeons/Stone_Tower/Entrance.png" },
@@ -268,9 +288,10 @@ const QHash<int, std::vector<RoomInfo>> MMRooms(
 				{ 8, "Garo Master Room", "./Resources/MM/Dungeons/Stone_Tower/Garo.png" }
 			}
 		)
-	),
+	},
 	
-	QPair<int, std::vector<RoomInfo>>(MM_TEMPLE_STONE_TOWER_INVERTED,
+	{
+		MM_TEMPLE_STONE_TOWER_INVERTED,
 		std::vector<RoomInfo>(
 			{
 				{ 0, "Entrance", "./Resources/MM/Dungeons/Stone_Tower_Inverted/Entrance.png" },
@@ -283,8 +304,8 @@ const QHash<int, std::vector<RoomInfo>> MMRooms(
 				{ 7, "Boss Room", "./Resources/MM/Dungeons/Stone_Tower_Inverted/Boss.png" }
 			}
 		)
-	)
-});
+	}
+};
 
 
 /*

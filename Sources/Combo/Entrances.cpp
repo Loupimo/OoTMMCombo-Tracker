@@ -288,8 +288,6 @@ void EntranceHelper::ReadEntranceID(int Game, uint8_t * RAMData)
                 break;
             }
         }
-        //memcpy(&this->EntranceID, &RAMData[0x1EF670], sizeof(uint32_t));            // gSaveContext start = 0x1EF670
-        //ReadProcessMemory(this->PJ64Handle, (LPCVOID)(this->GameRamBaseAddress + 0x1EF670), &this->EntranceID, sizeof(this->EntranceID), 0);
     }
 }
 
