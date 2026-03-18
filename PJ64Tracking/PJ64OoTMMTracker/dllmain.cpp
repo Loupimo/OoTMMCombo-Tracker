@@ -44,6 +44,7 @@ DWORD WINAPI MainThread(LPVOID)
             gData->Buffer[i].pc = 0;
             gData->Buffer[i].sp = 0;
         }
+        InitBitmask();
         InstallHook();
 
         LONG readIndex = 0;

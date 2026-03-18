@@ -35,10 +35,36 @@ constexpr int MAX_TARGETS = 128;
 
 uint32_t targetPCs[MAX_TARGETS] = {
     0x80400BE4,
-    0x80400BFF,
-    0x80412345
+    0x80400BE8,
+    0x80400BEC,
 };
-uint32_t gTargetCount = 3;
+constexpr size_t targetCount = sizeof(targetPCs) / sizeof(targetPCs[0]);
+
+// ==============================
+// BITMASK
+// ==============================
+
+// plage: 0x80000000 - 0x80FFFFFF
+constexpr uint32_t BITMASK_SIZE = 1 << 24; // 16M bits
+uint8_t bitmask[BITMASK_SIZE / 8];         // 2 MB
+
+// ==============================
+// INIT BITMASK
+// ==============================
+
+void InitBitmask()
+{
+    memset(bitmask, 0, sizeof(bitmask));
+
+    for (size_t i = 0; i < targetCount; i++)
+    {
+        uint32_t pc = targetPCs[i];
+
+        uint32_t index = pc & 0x00FFFFFF;
+
+        bitmask[index >> 3] |= (1 << (index & 7));
+    }
+}
 
 // ==============================
 // Hook
@@ -67,48 +93,55 @@ __declspec(naked) void Hook()
         // =========================
         mov ecx, [eax + PC_OFFSET]   // PC
         mov edx, [eax + SP_OFFSET]   // SP
+        mov edi, ecx                 // Save PC value in edi
+        mov ebp, edx                 // Save SP value in ebp
 
         // =========================
-        // Load the lookup table
+        // BITMASK CHECK
         // =========================
-        mov esi, offset targetPCs
-        mov ebx, gTargetCount
-        xor edi, edi
+        mov eax, edi
+        and eax, 0x00FFFFFF; index direct
 
-        LOOP_START :
-            // Check that we are in the lookup table range. If not -> EXIT
-            cmp edi, ebx
-            jge EXIT
+        mov esi, offset bitmask
 
-            // Compare the current PC value with the one we are at in the look up table. If same -> STORE
-            mov eax, [esi + edi * 4]
-            cmp ecx, eax
-            je STORE
+        mov edx, eax
+        shr edx, 3; byte index
 
-            // Increment current index -> LOOP_START
-            inc edi
-            jmp LOOP_START
+        mov bl, [esi + edx]
 
-        STORE :
-            // Get gData
-            mov eax, gData
+        and eax, 7; bit index
+        mov cl, al
+        shr bl, cl
+        and bl, 1
 
-            // Test if NULL
-            test eax, eax
-            jz EXIT
+        jz EXIT
 
-            // Get CurrIndex
-            mov ebx, [eax + 4]
+        // =========================
+        // STORE
+        // =========================
 
-            // Fill the buffer at the correct index with PC and SP values
-            lea edi, [eax + 12 + ebx * 8]
-            mov[edi], ecx
-            mov[edi + 4], edx
-            
-            // Increment CurrIndex
-            inc ebx
-            and ebx, BUFFER_SIZE - 1
-            mov[eax + 4], ebx
+        mov ecx, edi // Restore PC value
+        mov edx, ebp // Restore SP value
+
+        // Get gData
+        mov eax, gData
+        
+        // Test if NULL
+        test eax, eax
+        jz EXIT
+        
+        // Get CurrIndex
+        mov ebx, [eax + 4]
+        
+        // Fill the buffer at the correct index with PC and SP values
+        lea edi, [eax + 12 + ebx * 8]
+        mov[edi], ecx
+        mov[edi + 4], edx
+        
+        // Increment CurrIndex
+        inc ebx
+        and ebx, BUFFER_SIZE - 1
+        mov[eax + 4], ebx
 
         EXIT :
             // Restore saved context
