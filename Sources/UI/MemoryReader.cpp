@@ -43,7 +43,7 @@ void MemoryReader::ResetMemoryReader()
 
     if (this->PJ64Handle != 0)
     {
-        this->DLLData->IsRunning = false;
+        //this->DLLData->IsRunning = false;
         WaitForSingleObject(this->DLLThread, INFINITE);
         VirtualFreeEx(this->PJ64Handle, this->DLLAlloc, 0, MEM_RELEASE);
         CloseHandle(this->DLLThread);
@@ -164,7 +164,10 @@ void MemoryReader::StartMemoryReader()
 
                 if (this->ModuleBaseAddress != 0)
                 {
-                    this->OpenSharedMemory();
+                    while (this->OpenSharedMemory() == false && this->IsProcessAlive(this->PJ64Handle))
+                    {
+                        Sleep(10);
+                    }
                     //this->PCAddress = this->FindPCAddress(this->PJ64Handle);
                 }
                 if (this->GameRamBaseAddress != 0)
@@ -193,14 +196,30 @@ void MemoryReader::RunMemoryReader()
 {
     MultiLogger::LogMessage("Reading game memory...");
     //uint32_t PC = 0;
+    LONG i = 0;
     do
     {
+        while (i < this->DLLData->CurrIndex && i < this->DLLData->MaxSize)
+        {
+            MultiLogger::LogMessage("PC = 0x%X, SP = 0x%X", this->DLLData->Buffer[i].pc, this->DLLData->Buffer[i].sp);
+            i++;
+        }
+
+        if (i > this->DLLData->CurrIndex)
+        {
+            while (i < this->DLLData->MaxSize)
+            {
+                MultiLogger::LogMessage("PC = 0x%X, SP = 0x%X", this->DLLData->Buffer[i].pc, this->DLLData->Buffer[i].sp);
+                i++;
+            }
+            i = 0;
+        }
         //ReadProcessMemory(this->PJ64Handle, (LPCVOID)(this->PCAddress), &PC, sizeof(PC), 0);
-        if (this->DLLData->isValid)//pc == 0x80400BE4)
+        /*if (this->DLLData->isValid)//pc == 0x80400BE4)
         {//if (PC == 0x80400BE4)
             MultiLogger::LogMessage("PC = 0x%X", this->DLLData->pc);
             this->DLLData->isValid = 0;
-        }
+        }*/
         //else
         //if (PC == 0x80400BE4)
         //    MultiLogger::LogMessage("PC = 0x%X", this->DLLData->pc);
@@ -324,14 +343,15 @@ bool MemoryReader::InjectTrackerDLL()
 
     bool ret = WriteProcessMemory(this->PJ64Handle, this->DLLAlloc, this->PJTrackerDLL, strlen(this->PJTrackerDLL), nullptr);
 
-    HMODULE lpStart = GetModuleHandle(L"kernel32.dll");
-    LPVOID st = GetProcAddress(lpStart, "LoadLibraryA");
+    /*HMODULE lpStart = GetModuleHandle(L"kernel32.dll");
+    LPVOID st = GetProcAddress(lpStart, "LoadLibraryA");*/
 
-    this->DLLThread = CreateRemoteThread(this->PJ64Handle, nullptr, 0, (LPTHREAD_START_ROUTINE)st, this->DLLAlloc, 0, nullptr );
+    this->DLLThread = CreateRemoteThread(this->PJ64Handle, nullptr, 0, (LPTHREAD_START_ROUTINE)LoadLibraryA, this->DLLAlloc, 0, nullptr );
 
     if (!this->DLLThread)
         return false;
 
+    Sleep(10);  // Let the time for the DLL to be initialized
 /*    WaitForSingleObject(this->DLLThread, INFINITE);
     DWORD exitCode = 0;
     GetExitCodeThread(this->DLLThread, &exitCode);

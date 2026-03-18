@@ -4,13 +4,29 @@
 #include "Combo/Entrances.h"
 
 #define RAM_SIZE 0x800000
-
+/*
 typedef struct SharedData
 {
 	uint32_t pc;
 	uint32_t isValid;
 	uintptr_t Base;
 	bool IsRunning;
+} SharedData;*/
+
+#define BUFFER_SIZE 1024
+
+typedef struct Event
+{
+	uint32_t pc;
+	uint32_t sp;
+} Event;
+
+typedef struct SharedData
+{
+	LONG MaxSize;
+	volatile LONG CurrIndex;
+	uintptr_t Base;
+	Event Buffer[BUFFER_SIZE];
 } SharedData;
 
 class MemoryReader

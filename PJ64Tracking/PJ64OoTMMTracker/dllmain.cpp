@@ -1,7 +1,7 @@
 // dllmain.cpp : Définit le point d'entrée de l'application DLL.
 #include "pch.h"
+#include "Hooking.h"
 
-SharedData* gData = nullptr;
 
 DWORD WINAPI MainThread(LPVOID)
 {
@@ -25,17 +25,49 @@ DWORD WINAPI MainThread(LPVOID)
     }
 
     gData = (SharedData*)MapViewOfFile(hMap, FILE_MAP_ALL_ACCESS, 0, 0, sizeof(SharedData));
-
+    
     if (gData)
     {
-        gData->IsRunning = true;
-        gData->isValid = 0;
+        //gData->IsRunning = true;
+        //gData->isValid = 0;
 
         while (gData->Base == 0)
         {
             Sleep(1);
         }
 
+        moduleBase = gData->Base;
+        gData->MaxSize = BUFFER_SIZE;
+        gData->CurrIndex = 0;
+        for (size_t i = 0; i < BUFFER_SIZE; i++)
+        {
+            gData->Buffer[i].pc = 0;
+            gData->Buffer[i].sp = 0;
+        }
+        InstallHook();
+
+        LONG readIndex = 0;
+        while (true)
+        {
+            LONG currIndex = gData->CurrIndex;
+
+            while (readIndex != currIndex)
+            {
+                auto& evt = gData->Buffer[readIndex];
+                //printf("CurrID = %04d, PC = 0x%08X\r", currIndex, evt.pc);
+                if (IsTarget(evt.pc))  // on regarde dans la table de lookup
+                {
+                    printf("Hit ! PC = 0x%08X, SP = 0x%08X\n", evt.pc, evt.sp);
+                    //sendToTracker(evt.pc, evt.sp);
+                }
+
+                readIndex = (readIndex + 1) % BUFFER_SIZE; // wrap-around
+            }
+
+            Sleep(1); // ou Yield pour laisser CPU aux autres threads
+        }
+
+        /*
         uintptr_t cpuPtr = *(uintptr_t*)(gData->Base + 0x1B00C4);
         cpuPtr = (cpuPtr + 0x220);
 
@@ -53,7 +85,7 @@ DWORD WINAPI MainThread(LPVOID)
                 gData->isValid = 1;
             }
             Sleep(0);
-        }
+        }*/
     }
 }
 
