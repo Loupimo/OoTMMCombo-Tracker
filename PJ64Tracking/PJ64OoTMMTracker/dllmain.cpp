@@ -54,12 +54,8 @@ DWORD WINAPI MainThread(LPVOID)
             while (readIndex != currIndex)
             {
                 auto& evt = gData->Buffer[readIndex];
-                //printf("CurrID = %04d, PC = 0x%08X\r", currIndex, evt.pc);
-                if (IsTarget(evt.pc))  // on regarde dans la table de lookup
-                {
-                    printf("Hit ! PC = 0x%08X, SP = 0x%08X\n", evt.pc, evt.sp);
+                printf("Hit ! PC = 0x%08X, SP = 0x%08X\n", evt.pc, evt.sp);
                     //sendToTracker(evt.pc, evt.sp);
-                }
 
                 readIndex = (readIndex + 1) % BUFFER_SIZE; // wrap-around
             }

@@ -31,65 +31,90 @@ SharedData* gData = nullptr;
 // ==============================
 // Targets
 // ==============================
-std::unordered_set<uint32_t> targetPCSet{ 0x80400BE4 };
+constexpr int MAX_TARGETS = 128;
 
-bool IsTarget(uint32_t pc)
-{
-    return targetPCSet.count(pc) > 0;
-}
-
- void* gateway;
-
+uint32_t targetPCs[MAX_TARGETS] = {
+    0x80400BE4,
+    0x80400BFF,
+    0x80412345
+};
+uint32_t gTargetCount = 3;
 
 // ==============================
 // Hook
 // ==============================
+void* gateway;
 uintptr_t moduleBase = 0;
-BYTE originalBytes[HOOK_SIZE];
-uintptr_t returnAddress = 0;
 
 __declspec(naked) void Hook()
 {
     __asm
     {
+        // =========================
+        // Save context. ! Important: do not save flags with pushfd otherwise it will crash !
+        // =========================
         pushad
 
-        // 🔥 FIX ICI
-        mov eax, offset gData
+        // =========================
+        // Get CPU struct
+        // =========================
+        mov eax, moduleBase
+        add eax, CPU_PTR_OFFSET
         mov eax, [eax]
 
-        test eax, eax
-        jz skip
+        // =========================
+        // Get PC / SP
+        // =========================
+        mov ecx, [eax + PC_OFFSET]   // PC
+        mov edx, [eax + SP_OFFSET]   // SP
 
-        // CPU
-        mov ebx, moduleBase
-        add ebx, CPU_PTR_OFFSET
-        mov ebx, [ebx]
+        // =========================
+        // Load the lookup table
+        // =========================
+        mov esi, offset targetPCs
+        mov ebx, gTargetCount
+        xor edi, edi
 
-        test ebx, ebx
-        jz skip
+        LOOP_START :
+            // Check that we are in the lookup table range. If not -> EXIT
+            cmp edi, ebx
+            jge EXIT
 
-        mov ecx, [ebx + PC_OFFSET]
-        mov edx, [ebx + SP_OFFSET]
+            // Compare the current PC value with the one we are at in the look up table. If same -> STORE
+            mov eax, [esi + edi * 4]
+            cmp ecx, eax
+            je STORE
 
-        // CurrIndex
-        mov esi, eax; esi = gData *
-        add esi, 4; &CurrIndex
-        
-        mov ebx, [esi]; ebx = CurrIndex
-        inc ebx
-        and ebx, BUFFER_SIZE - 1
-        mov[esi], ebx; store back
+            // Increment current index -> LOOP_START
+            inc edi
+            jmp LOOP_START
 
-        mov edi, eax; edi = gData *
-        add edi, 12; &Buffer
-        lea edi, [edi + ebx * 8]; < --utiliser ebx, pas esi
+        STORE :
+            // Get gData
+            mov eax, gData
 
-        mov[edi], ecx
-        mov[edi + 4], edx
+            // Test if NULL
+            test eax, eax
+            jz EXIT
 
-        skip :
-        popad
+            // Get CurrIndex
+            mov ebx, [eax + 4]
+
+            // Fill the buffer at the correct index with PC and SP values
+            lea edi, [eax + 12 + ebx * 8]
+            mov[edi], ecx
+            mov[edi + 4], edx
+            
+            // Increment CurrIndex
+            inc ebx
+            and ebx, BUFFER_SIZE - 1
+            mov[eax + 4], ebx
+
+        EXIT :
+            // Restore saved context
+            popad
+
+            // Get back to the orignal PJ execution flow
             jmp gateway
     }
 }
@@ -97,6 +122,9 @@ __declspec(naked) void Hook()
 // ==============================
 // Installer le hook
 // ==============================
+BYTE originalBytes[HOOK_SIZE];
+uintptr_t returnAddress = 0;
+
 void InstallHook()
 {
     uintptr_t target = moduleBase + HOOK_OFFSET;
@@ -104,29 +132,26 @@ void InstallHook()
     DWORD oldProtect;
     VirtualProtect((LPVOID)target, HOOK_SIZE, PAGE_EXECUTE_READWRITE, &oldProtect);
 
-    // 1️⃣ sauvegarde
+    // sauvegarde instructions originales
     memcpy(originalBytes, (void*)target, HOOK_SIZE);
 
-    // 2️⃣ trampoline
-    gateway = VirtualAlloc(nullptr, 32, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+    // trampoline
+    gateway = VirtualAlloc(nullptr, 64, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
 
-    // copier instructions originales
     memcpy(gateway, originalBytes, HOOK_SIZE);
 
-    // jump retour
     uintptr_t gatewayEnd = (uintptr_t)gateway + HOOK_SIZE;
     uintptr_t returnAddr = target + HOOK_SIZE;
 
     *(BYTE*)(gatewayEnd) = 0xE9;
     *(uintptr_t*)(gatewayEnd + 1) = returnAddr - gatewayEnd - 5;
 
-    // 3️⃣ hook
+    // hook
     uintptr_t rel = (uintptr_t)&Hook - target - 5;
 
     *(BYTE*)target = 0xE9;
     *(uintptr_t*)(target + 1) = rel;
 
-    // NOP padding
     for (int i = 5; i < HOOK_SIZE; i++)
         *(BYTE*)(target + i) = 0x90;
 
