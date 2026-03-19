@@ -141,7 +141,7 @@ void MemoryReader::StartMemoryReader()
 
             if (this->InjectTrackerDLL())
             {
-                this->ModuleBaseAddress = this->GetModuleBase(this->PJ64PID, processName);
+                /*this->ModuleBaseAddress = this->GetModuleBase(this->PJ64PID, processName);
                 this->GameRamBaseAddress = this->FindN64RAM(this->PJ64Handle);
 
                 do
@@ -174,8 +174,14 @@ void MemoryReader::StartMemoryReader()
                 {   // We have the emulator game allocated RAM address
 
                     MultiLogger::LogMessage("Game RAM Found, start address : %x", this->GameRamBaseAddress);
+                    this->DLLData->GameRAMBase = this->GameRamBaseAddress;
                     this->RunMemoryReader();
+                }*/
+                while (this->OpenSharedMemory() == false && this->IsProcessAlive(this->PJ64Handle))
+                {
+                    Sleep(10);
                 }
+                this->RunMemoryReader();
             }
             else
             {
@@ -201,7 +207,7 @@ void MemoryReader::RunMemoryReader()
     {
         while (i < this->DLLData->CurrIndex && i < this->DLLData->MaxSize)
         {
-            MultiLogger::LogMessage("PC = 0x%X, SP = 0x%X", this->DLLData->Buffer[i].pc, this->DLLData->Buffer[i].sp);
+            MultiLogger::LogMessage("PC = 0x%08X, A1 = 0x%08X, GI = 0x%04X, GIRenew = 0x%04X, OVFlags = 0x%04X, OVType = 0x%02X, SceneID = 0x%02X, RoomID = 0x%02X, ID = 0x%02X, From = 0x%02X\n", this->DLLData->Buffer[i].PC, this->DLLData->Buffer[i].A1, this->DLLData->Buffer[i].Query.GI, this->DLLData->Buffer[i].Query.GIRenew, this->DLLData->Buffer[i].Query.OVFlags, this->DLLData->Buffer[i].Query.OVType, this->DLLData->Buffer[i].Query.SceneId, this->DLLData->Buffer[i].Query.RoomId, this->DLLData->Buffer[i].Query.ID, this->DLLData->Buffer[i].Query.From);
             i++;
         }
 
@@ -209,7 +215,7 @@ void MemoryReader::RunMemoryReader()
         {
             while (i < this->DLLData->MaxSize)
             {
-                MultiLogger::LogMessage("PC = 0x%X, SP = 0x%X", this->DLLData->Buffer[i].pc, this->DLLData->Buffer[i].sp);
+                MultiLogger::LogMessage("PC = 0x%08X, A1 = 0x%08X, GI = 0x%04X, GIRenew = 0x%04X, OVFlags = 0x%04X, OVType = 0x%02X, SceneID = 0x%02X, RoomID = 0x%02X, ID = 0x%02X, From = 0x%02X\n", this->DLLData->Buffer[i].PC, this->DLLData->Buffer[i].A1, this->DLLData->Buffer[i].Query.GI, this->DLLData->Buffer[i].Query.GIRenew, this->DLLData->Buffer[i].Query.OVFlags, this->DLLData->Buffer[i].Query.OVType, this->DLLData->Buffer[i].Query.SceneId, this->DLLData->Buffer[i].Query.RoomId, this->DLLData->Buffer[i].Query.ID, this->DLLData->Buffer[i].Query.From);
                 i++;
             }
             i = 0;
@@ -319,7 +325,7 @@ bool MemoryReader::OpenSharedMemory()
 
     if (this->DLLData != nullptr)
     {
-        this->DLLData->Base = this->ModuleBaseAddress;
+        //this->DLLData->Base = this->ModuleBaseAddress;
         return true;
     }
 

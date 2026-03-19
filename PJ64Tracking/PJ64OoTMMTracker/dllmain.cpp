@@ -25,28 +25,39 @@ DWORD WINAPI MainThread(LPVOID)
     }
 
     gData = (SharedData*)MapViewOfFile(hMap, FILE_MAP_ALL_ACCESS, 0, 0, sizeof(SharedData));
-    
+
     if (gData)
     {
-        //gData->IsRunning = true;
-        //gData->isValid = 0;
-
-        while (gData->Base == 0)
-        {
-            Sleep(1);
-        }
-
-        moduleBase = gData->Base;
+        //gData->Base = 0;
+        //gData->GameRAMBase = 0;
         gData->MaxSize = BUFFER_SIZE;
         gData->CurrIndex = 0;
         for (size_t i = 0; i < BUFFER_SIZE; i++)
         {
-            gData->Buffer[i].pc = 0;
-            gData->Buffer[i].sp = 0;
+            gData->Buffer[i].PC = 0;
+            gData->Buffer[i].A1 = 0;
+            gData->Buffer[i].Query[0] = 0;
+            gData->Buffer[i].Query[1] = 0;
+            gData->Buffer[i].Query[2] = 0;
         }
+
+        HMODULE hModule = GetModuleHandle(NULL);
+        moduleBase = (uintptr_t)hModule;
+        gameRAMBase = FindGameRAM();
+
+        /*while (gData->Base == 0 || gData->GameRAMBase == 0)
+        {
+            Sleep(1);
+        }*/
+
+        printf("Init Hook\n");
+
+        //moduleBase = gData->Base;
+        //gameRAMBase = gData->GameRAMBase;
         InitBitmask();
         InstallHook();
-
+        /*
+        printf("Sizeof Event = %zu\n", sizeof(Event));
         LONG readIndex = 0;
         while (true)
         {
@@ -54,36 +65,18 @@ DWORD WINAPI MainThread(LPVOID)
 
             while (readIndex != currIndex)
             {
-                auto& evt = gData->Buffer[readIndex];
-                printf("Hit ! PC = 0x%08X, SP = 0x%08X\n", evt.pc, evt.sp);
+                Event evt = gData->Buffer[readIndex];
+                printf("Hit ! PC = 0x%08X, A1 = 0x%08X, GI = 0x%04X, GIRenew = 0x%04X, OVFlags = 0x%04X, OVType = 0x%02X, SceneID = 0x%02X, RoomID = 0x%02X, ID = 0x%02X, From = 0x%02X\n", evt.PC, evt.A1, evt.Query.GI, evt.Query.GIRenew, evt.Query.OVFlags, evt.Query.OVType, evt.Query.SceneId, evt.Query.RoomId, evt.Query.ID, evt.Query.From);
                     //sendToTracker(evt.pc, evt.sp);
 
                 readIndex = (readIndex + 1) % BUFFER_SIZE; // wrap-around
             }
 
-            Sleep(1); // ou Yield pour laisser CPU aux autres threads
-        }
-
-        /*
-        uintptr_t cpuPtr = *(uintptr_t*)(gData->Base + 0x1B00C4);
-        cpuPtr = (cpuPtr + 0x220);
-
-        printf("cpuPtr = 0x%08X\n", cpuPtr); // \r = overwrite ligne
-
-
-        while (gData->IsRunning)
-        {
-            gData->pc = *(uint32_t*)cpuPtr;
-
-            printf("PC = 0x%08X\r", gData->pc); // \r = overwrite ligne
-            if (gData->pc == 0x80400BE4)
-            {
-                printf("Hit\n"); // \r = overwrite ligne
-                gData->isValid = 1;
-            }
-            Sleep(0);
+            Sleep(10); // ou Yield pour laisser CPU aux autres threads
         }*/
     }
+
+    return 0;
 }
 
 BOOL APIENTRY DllMain( HMODULE hModule,
@@ -102,7 +95,9 @@ BOOL APIENTRY DllMain( HMODULE hModule,
         case DLL_THREAD_ATTACH:
         case DLL_THREAD_DETACH:
         case DLL_PROCESS_DETACH:
+        default:
         break;
+
     }
     return TRUE;
 }

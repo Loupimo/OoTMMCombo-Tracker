@@ -4,28 +4,47 @@
 #include "Combo/Entrances.h"
 
 #define RAM_SIZE 0x800000
-/*
-typedef struct SharedData
-{
-	uint32_t pc;
-	uint32_t isValid;
-	uintptr_t Base;
-	bool IsRunning;
-} SharedData;*/
 
 #define BUFFER_SIZE 1024
-
+/*
+typedef struct ComboItemQuery
+{
+	int16_t  GI;        // 2 bytes
+	int16_t  GIRenew;   // 2 bytes
+	uint16_t OVFlags;   // 2 bytes
+	uint8_t  OVType;    // 1 byte
+	uint8_t  SceneId;   // 1 byte
+	uint8_t  RoomId;    // 1 byte
+	uint8_t  ID;        // 1 byte
+	uint8_t  From;      // 1 byte
+	uint8_t  Padding;   // 1 byte
+} ComboItemQuery;
+*/
+typedef struct ComboItemQuery
+{
+	uint8_t  SceneId;   // 1 byte
+	uint8_t  OVType;    // 1 byte
+	uint8_t  RoomId;    // 1 byte
+	uint8_t  Padding;   // 1 byte
+	uint16_t OVFlags;   // 2 bytes
+	uint8_t  ID;        // 1 byte
+	uint8_t  From;      // 1 byte
+	int16_t  GI;        // 2 bytes
+	int16_t  GIRenew;   // 2 bytes
+} ComboItemQuery;
 typedef struct Event
 {
-	uint32_t pc;
-	uint32_t sp;
+	uint32_t PC;
+	uint32_t A1;
+	ComboItemQuery Query;
 } Event;
 
 typedef struct SharedData
 {
 	LONG MaxSize;
 	volatile LONG CurrIndex;
-	uintptr_t Base;
+	//uintptr_t Base;
+	//uintptr_t GameRAMBase;
 	Event Buffer[BUFFER_SIZE];
 } SharedData;
 
