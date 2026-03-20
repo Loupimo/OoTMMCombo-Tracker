@@ -3,14 +3,22 @@
 
 // PC addresses to target
 constexpr int MAX_TARGETS = 128;
-constexpr uint32_t targetPCs[MAX_TARGETS] = {
-    0x8040C35C
+constexpr uint32_t targetsPC_A1[MAX_TARGETS] = {
+    0x8040C35C, // comboItemAddRawEx:   used to track all other objects for OoT
+    0x8073BC50  // comboItemAddRawEx:   used to track all other objects for MM
 };
-constexpr size_t targetCount = sizeof(targetPCs) / sizeof(targetPCs[0]);
+constexpr uint32_t targetsPC_A1Count = sizeof(targetsPC_A1) / sizeof(targetsPC_A1[0]);
 
-// Bitmask to discard non desired PC really fast. Possible range: 0x80000000 - 0x80FFFFFF
-constexpr uint32_t BITMASK_SIZE = 1 << 24; // 16M bits
-uint8_t bitmask[BITMASK_SIZE / 8];         // 2 MB
+constexpr uint32_t targetsPC_SP[MAX_TARGETS] = {
+    0x80400D60,  // EnItem00_DropCustom: if (o.gi == GI_NOTHING), used for tracking objects that drop a "Nothing" item for OoT. Here we capture a XFlag and used SP - 0x68
+    0x80730FE0   // EnItem00_DropCustom: if (o.gi == GI_NOTHING), used for tracking objects that drop a "Nothing" item for MM. Here we capture a XFlag and used SP - 0x68
+};
+constexpr uint32_t targetsPC_SPCount = sizeof(targetsPC_SP) / sizeof(targetsPC_SP[0]);
+
+#define PC_MASK_SIZE (1 << 24)           // 24-bit address space
+#define TYPEMASK_SIZE (PC_MASK_SIZE / 4) // 4 entries per byte
+
+uint8_t typemask[TYPEMASK_SIZE];
 
 // Hooking installation
 void* gateway = NULL;
@@ -20,20 +28,37 @@ uintptr_t returnAddress = 0;
 // Game data / shared memeory data
 SharedData* gData = nullptr;
 uintptr_t moduleBase = 0;
+uintptr_t regBase = 0;
 uintptr_t gameRAMBase = 0;
+uintptr_t gSP = 0;
 
 
-void InitBitmask()
+void SetPCType(uint32_t pc, uint8_t type)
 {
-    memset(bitmask, 0, sizeof(bitmask));
+    uint32_t index = pc & 0x00FFFFFF;
 
-    for (size_t i = 0; i < targetCount; i++)
+    uint32_t byteIndex = index >> 2;      // /4
+    uint32_t shift = (index & 3) * 2;     // *2 bits
+
+    typemask[byteIndex] &= ~(3 << shift); // clear
+    typemask[byteIndex] |= (type << shift);
+}
+
+
+void InitTypeMask()
+{
+    memset(typemask, 0, sizeof(typemask));
+
+    // A1 cases
+    for (size_t i = 0; i < targetsPC_A1Count; i++)
     {
-        uint32_t pc = targetPCs[i];
+        SetPCType(targetsPC_A1[i], TYPE_COMBO);
+    }
 
-        uint32_t index = pc & 0x00FFFFFF;
-
-        bitmask[index >> 3] |= (1 << (index & 7));
+    // Xflag cases
+    for (size_t i = 0; i < targetsPC_SPCount; i++)
+    {
+        SetPCType(targetsPC_SP[i], TYPE_XFLAG);
     }
 }
 
@@ -69,8 +94,7 @@ __declspec(naked) void Hook()
         // =========================
         // Get CPU struct
         // =========================
-        mov eax, moduleBase
-        add eax, REG_PTR_OFFSET
+        mov eax, regBase
         mov eax, [eax]
 
         // =========================
@@ -78,28 +102,48 @@ __declspec(naked) void Hook()
         // =========================
         mov ecx, [eax + PC_OFFSET]   // PC
         mov edx, [eax + A1_OFFSET]   // A1
+        mov esi, [eax + SP_OFFSET]   // SP
         mov edi, ecx                 // Save PC value in edi
         mov ebp, edx                 // Save A1 value in ebp
+        mov gSP, esi                 // Save SP
 
         // =========================
-        // Bitmask Check with targeted PC addresses
+        // Compute index
         // =========================
         mov eax, edi
-        and eax, 0x00FFFFFF         // Direct index
+        and eax, 0x00FFFFFF
 
-        mov esi, offset bitmask
-
+        // =========================
+        // Load typemask entry
+        // =========================
         mov edx, eax
-        shr edx, 3                  // Byte index
+        shr edx, 2                   // byte index
 
+        mov esi, offset typemask
         mov bl, [esi + edx]
 
-        and eax, 7;                 // Bit index
-        mov cl, al
-            shr bl, cl
-            and bl, 1
+        and eax, 3
+        shl eax, 1                   // *2 bits
 
-            jz EXIT
+        mov cl, al
+        shr bl, cl
+        and bl, 3                    // TYPE
+
+        cmp bl, 0                    // Not tracked
+        je EXIT
+
+        cmp bl, TYPE_COMBO           // Use A1 register
+        je USE_A1
+
+        cmp bl, TYPE_XFLAG           // Use SP register
+        je USE_SP
+
+        jmp EXIT
+
+        // =========================
+        // USE A1 (ComboItemQuery)
+        // =========================
+        USE_A1:
 
             // =========================
             // Check A1 Range : Between 0x80000000 - 0x80FFFFFF
@@ -110,9 +154,56 @@ __declspec(naked) void Hook()
             jne EXIT
 
             // =========================
-            // STORE
+            // Convert A1 to RAM offset
             // =========================
+            mov eax, ebp
+            and eax, 0x00FFFFFF
 
+            mov esi, gameRAMBase    // The real game RAM base address 
+            add esi, eax            // Add the offset to the game RAM base address
+
+            // Read ComboItemQuery (12 bytes)
+            mov eax, [esi + 4]   // q0
+            mov edx, [esi + 8]   // q1
+            mov ebx, [esi + 12]  // q2
+
+            jmp STORE
+            
+        // =========================
+        // USE SP (Xflag)
+        // =========================
+        USE_SP:
+
+            mov ebp, gSP
+            add ebp, DROP_CUSTOM
+
+            // =========================
+            // Check A1 Range : Between 0x80000000 - 0x80FFFFFF
+            // =========================
+            mov eax, ebp
+            and eax, 0xFF000000
+            cmp eax, 0x80000000
+            jne EXIT
+
+            // =========================
+            // Convert A1 to RAM offset
+            // =========================
+            mov eax, ebp
+            and eax, 0x00FFFFFF
+
+            mov esi, gameRAMBase    // The real game RAM base address 
+            add esi, eax            // Add the offset to the game RAM base address
+
+            mov eax, [esi]          // first 4 bytes
+            mov edx, [esi + 4]      // rest
+            or ebx, 0xFFFFFFFF      // padding
+
+            jmp STORE
+
+        // =========================
+        // STORE (COMMON)
+        // =========================
+        STORE:
             mov ecx, edi // Restore PC value
 
             // Get gData
@@ -121,6 +212,11 @@ __declspec(naked) void Hook()
             // Test if NULL
             test esi, esi
             jz EXIT
+
+            // Temp Save q values
+            push eax
+            push edx
+            push ebx
 
             // Get CurrIndex
             mov ebx, [esi + 4]
@@ -133,20 +229,10 @@ __declspec(naked) void Hook()
             add eax, edx                // eax = idx * 20
             lea edi, [esi + 8 + eax]
 
-            // =========================
-            // Convert A1 to RAM offset
-            // =========================
-
-            mov eax, ebp
-            and eax, 0x00FFFFFF
-
-            mov esi, gameRAMBase    // The real game RAM base address 
-            add esi, eax            // Add the offset to the game RAM base address
-
-            // Read ComboItemQuery (12 bytes)
-            mov eax, [esi + 4]   // q0
-            mov edx, [esi + 8]   // q1
-            mov ebx, [esi + 12]  // q2
+            // Restore q values
+            pop ebx
+            pop edx
+            pop eax
 
             // Fill the buffer at the correct index
             mov[edi], ecx       // Store PC
@@ -156,17 +242,16 @@ __declspec(naked) void Hook()
             mov[edi + 16], ebx  // q2
 
             // Increment CurrIndex
-            mov esi, gData
             mov ebx, [esi + 4]
             inc ebx
             and ebx, BUFFER_SIZE - 1
             mov[esi + 4], ebx
 
-            EXIT :
-                // Restore saved context
-        popad
+        EXIT :
+            // Restore saved context
+            popad
 
-        // Get back to the orignal PJ execution flow
+            // Get back to the orignal PJ execution flow
             jmp gateway
     }
 }

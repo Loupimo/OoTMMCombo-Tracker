@@ -43,6 +43,7 @@ DWORD WINAPI MainThread(LPVOID)
 
         HMODULE hModule = GetModuleHandle(NULL);
         moduleBase = (uintptr_t)hModule;
+        regBase = moduleBase + REG_PTR_OFFSET;
         gameRAMBase = FindGameRAM();
 
         /*while (gData->Base == 0 || gData->GameRAMBase == 0)
@@ -54,7 +55,7 @@ DWORD WINAPI MainThread(LPVOID)
 
         //moduleBase = gData->Base;
         //gameRAMBase = gData->GameRAMBase;
-        InitBitmask();
+        InitTypeMask();
         InstallHook();
         /*
         printf("Sizeof Event = %zu\n", sizeof(Event));
