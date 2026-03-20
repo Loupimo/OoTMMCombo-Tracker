@@ -1,6 +1,18 @@
 #include "UI/MemoryReader.h"
-#include "Multi/Game.h"
+#include "Combo/OvTypes.h"
+#include "Combo/Objects.h"
+#include "Combo/Items.h"
 #include <bit>
+
+uint32_t byteswap32(uint32_t x)
+{
+    uint32_t y = (x >> 24) & 0xff;
+    y |= ((x >> 16) & 0xff) << 8;
+    y |= ((x >> 8) & 0xff) << 16;
+    y |= (x & 0xff) << 24;
+
+    return y;
+}
 
 std::string GetErrorAsString(DWORD ErrorMessageID)
 {
@@ -114,6 +126,105 @@ bool MemoryReader::IsProcessAlive(HANDLE Process)
 }
 
 
+void MemoryReader::CheckEvent(Event * CollectedEvent)
+{
+    ComboItem finalItem = { 0 };
+    uint32_t collectedItem = 0;
+    bool isTreated = 0;
+
+    if (CollectedEvent)
+    {   // Check that the collected event is valid
+
+        if ((CollectedEvent->Query[2] & 0xFFFFFF00) == 0xFFFFFF00)
+        {   // The event comes from a drop nothing actor
+
+            if ((CollectedEvent->Query[2] & 0x000000FF) == false)
+            {   // We can treat the event
+                
+                CollectedEvent->Query[2] = 0xFFFFFFFF; // Update the treated flag in the shared memory
+
+                uint8_t keyArr[5];
+                uint32_t key = byteswap32(CollectedEvent->Query[0]);
+                keyArr[0] = OOT_GAME;
+                memcpy(keyArr + 1, &key, sizeof(uint32_t));
+
+                if (CollectedEvent->PC > 0x80700000)
+                {   // The event is from MM.
+
+                    keyArr[0] = MM_GAME;
+                }
+
+                ParseKey(keyArr, &finalItem);
+                CorrectComboItem(&finalItem);
+                collectedItem = CollectedEvent->Query[1] & 0x0000FFFF;
+            }
+            else
+            {   // The event is already treated
+
+                isTreated = true;
+            }
+        }
+        else
+        {   // The event come from a collected item
+
+            ComboItemQuery q;
+            memcpy(&q, CollectedEvent->Query, sizeof(q));
+
+            if (q.IsTreated == false)
+            {   // We can treat the event
+
+                q.IsTreated = true;
+                memcpy(CollectedEvent->Query, &q, sizeof(q)); // Update the treated flag in the shared memory
+
+                if (q.OVType == OV_NONE)
+                {   // We don't want treat an object that don't have an OV_Type (e.g: deku stick collect on a deku baba that will trigger the comboAddItemRawEx Function) 
+                    
+                    return;
+                }
+
+                finalItem.GameID = OOT_GAME;
+                finalItem.ObjectID = q.ID;
+                finalItem.OvType = q.OVType;
+                finalItem.SceneID = q.SceneId;
+                finalItem.RoomID = q.RoomId;
+
+                if (CollectedEvent->PC > 0x80700000)
+                {   // The event is from MM.
+
+                    finalItem.GameID = MM_GAME;
+                }
+
+                CorrectComboItem(&finalItem);
+                collectedItem = CollectedEvent->Query[2] & 0x0000FFFF;
+            }
+            else
+            {   // The event is already treated
+
+                isTreated = true;
+            }
+        }
+    }
+
+    if (isTreated == false)
+    {   // The event is valid
+
+        ObjectInfo* matchObject = FindObject(finalItem);
+        const ItemInfo* matchItem = FindItem(collectedItem);
+
+        if (finalItem.GameID == OOT_GAME)
+        {
+            MultiLogger::LogMessage("OoT World Object: %s - Item : %s\n", matchObject->Location, matchItem->ItemName);
+            emit MultiLogger::GetLogger()->NotifyObjectFound(OOT_GAME, matchObject, matchItem);
+        }
+        else
+        {
+            MultiLogger::LogMessage("MM World Object: %s - Item : %s\n", matchObject->Location, matchItem->ItemName);
+            emit MultiLogger::GetLogger()->NotifyObjectFound(MM_GAME, matchObject, matchItem);
+        }
+    }
+}
+
+
 void MemoryReader::StartMemoryReader()
 {
     this->IsRunning = true;
@@ -140,45 +251,11 @@ void MemoryReader::StartMemoryReader()
 
 
             if (this->InjectTrackerDLL())
-            {
-                /*this->ModuleBaseAddress = this->GetModuleBase(this->PJ64PID, processName);
-                this->GameRamBaseAddress = this->FindN64RAM(this->PJ64Handle);
+            {   // Injection successful
 
-                do
-                {
-                    if (this->ModuleBaseAddress == 0)
-                    {
-                        MultiLogger::LogMessage("Module base address not found. Retrying in 1 second...");
-                        Sleep(1000);
-                        this->ModuleBaseAddress = this->GetModuleBase(this->PJ64PID, processName);
-                    }
-                    if (this->GameRamBaseAddress == 0)
-                    {   // The game has not be launched yet
-
-                        MultiLogger::LogMessage("Game RAM not found, please launch your game first. Retrying in 1 second...");
-                        Sleep(1000);
-                        this->GameRamBaseAddress = this->FindN64RAM(this->PJ64Handle);
-                    }
-
-                } while (this->ModuleBaseAddress == 0 && this->GameRamBaseAddress == 0 && this->IsRunning && this->IsProcessAlive(this->PJ64Handle));
-
-                if (this->ModuleBaseAddress != 0)
-                {
-                    while (this->OpenSharedMemory() == false && this->IsProcessAlive(this->PJ64Handle))
-                    {
-                        Sleep(10);
-                    }
-                    //this->PCAddress = this->FindPCAddress(this->PJ64Handle);
-                }
-                if (this->GameRamBaseAddress != 0)
-                {   // We have the emulator game allocated RAM address
-
-                    MultiLogger::LogMessage("Game RAM Found, start address : %x", this->GameRamBaseAddress);
-                    this->DLLData->GameRAMBase = this->GameRamBaseAddress;
-                    this->RunMemoryReader();
-                }*/
                 while (this->OpenSharedMemory() == false && this->IsProcessAlive(this->PJ64Handle))
-                {
+                {   // The DLL is not active. The game is probably not launched yet
+
                     Sleep(10);
                 }
                 this->RunMemoryReader();
@@ -201,13 +278,13 @@ void MemoryReader::StartMemoryReader()
 void MemoryReader::RunMemoryReader()
 {
     MultiLogger::LogMessage("Reading game memory...");
-    //uint32_t PC = 0;
     LONG i = 0;
     do
     {
         while (i < this->DLLData->CurrIndex && i < this->DLLData->MaxSize)
         {
-            MultiLogger::LogMessage("PC = 0x%08X, A1 = 0x%08X, GI = 0x%04X, GIRenew = 0x%04X, OVFlags = 0x%04X, OVType = 0x%02X, SceneID = 0x%02X, RoomID = 0x%02X, ID = 0x%02X, From = 0x%02X\n", this->DLLData->Buffer[i].PC, this->DLLData->Buffer[i].A1, this->DLLData->Buffer[i].Query.GI, this->DLLData->Buffer[i].Query.GIRenew, this->DLLData->Buffer[i].Query.OVFlags, this->DLLData->Buffer[i].Query.OVType, this->DLLData->Buffer[i].Query.SceneId, this->DLLData->Buffer[i].Query.RoomId, this->DLLData->Buffer[i].Query.ID, this->DLLData->Buffer[i].Query.From);
+            MultiLogger::LogMessage("PC = 0x%08X, Mem = 0x%08X, Buffer[0] = 0x%08X, Buffer[1] = 0x%08X, Buffer[2] = 0x%08X\n", this->DLLData->Buffer[i].PC, this->DLLData->Buffer[i].Mem, this->DLLData->Buffer[i].Query[0], this->DLLData->Buffer[i].Query[1], this->DLLData->Buffer[i].Query[2]);
+            CheckEvent(&this->DLLData->Buffer[i]);
             i++;
         }
 
@@ -215,7 +292,9 @@ void MemoryReader::RunMemoryReader()
         {
             while (i < this->DLLData->MaxSize)
             {
-                MultiLogger::LogMessage("PC = 0x%08X, A1 = 0x%08X, GI = 0x%04X, GIRenew = 0x%04X, OVFlags = 0x%04X, OVType = 0x%02X, SceneID = 0x%02X, RoomID = 0x%02X, ID = 0x%02X, From = 0x%02X\n", this->DLLData->Buffer[i].PC, this->DLLData->Buffer[i].A1, this->DLLData->Buffer[i].Query.GI, this->DLLData->Buffer[i].Query.GIRenew, this->DLLData->Buffer[i].Query.OVFlags, this->DLLData->Buffer[i].Query.OVType, this->DLLData->Buffer[i].Query.SceneId, this->DLLData->Buffer[i].Query.RoomId, this->DLLData->Buffer[i].Query.ID, this->DLLData->Buffer[i].Query.From);
+                
+                MultiLogger::LogMessage("PC = 0x%08X, Mem = 0x%08X, Buffer[0] = 0x%08X, Buffer[1] = 0x%08X, Buffer[2] = 0x%08X\n", this->DLLData->Buffer[i].PC, this->DLLData->Buffer[i].Mem, this->DLLData->Buffer[i].Query[0], this->DLLData->Buffer[i].Query[1], this->DLLData->Buffer[i].Query[2]);
+                CheckEvent(&this->DLLData->Buffer[i]);
                 i++;
             }
             i = 0;

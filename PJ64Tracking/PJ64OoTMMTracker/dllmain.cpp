@@ -35,7 +35,7 @@ DWORD WINAPI MainThread(LPVOID)
         for (size_t i = 0; i < BUFFER_SIZE; i++)
         {
             gData->Buffer[i].PC = 0;
-            gData->Buffer[i].A1 = 0;
+            gData->Buffer[i].Mem = 0;
             gData->Buffer[i].Query[0] = 0;
             gData->Buffer[i].Query[1] = 0;
             gData->Buffer[i].Query[2] = 0;

@@ -42,7 +42,7 @@ enum
 typedef struct Event
 {
     uint32_t PC;
-    uint32_t A1;
+    uint32_t Mem;
     uint32_t Query[3];
 } Event;
 

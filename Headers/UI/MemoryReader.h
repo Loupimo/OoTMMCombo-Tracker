@@ -24,19 +24,21 @@ typedef struct ComboItemQuery
 {
 	uint8_t  SceneId;   // 1 byte
 	uint8_t  OVType;    // 1 byte
-	uint8_t  RoomId;    // 1 byte
-	uint8_t  Padding;   // 1 byte
+	uint8_t  From;      // 1 byte
+	uint8_t  IsTreated; // 1 byte. This one does not exist in the original structure, we just use it here as flag to check if we have already treated the event
 	uint16_t OVFlags;   // 2 bytes
 	uint8_t  ID;        // 1 byte
-	uint8_t  From;      // 1 byte
+	uint8_t  RoomId;    // 1 byte
 	int16_t  GI;        // 2 bytes
 	int16_t  GIRenew;   // 2 bytes
 } ComboItemQuery;
+
 typedef struct Event
 {
 	uint32_t PC;
-	uint32_t A1;
-	ComboItemQuery Query;
+	uint32_t Mem;
+	uint32_t Query[3];
+	//ComboItemQuery Query;
 } Event;
 
 typedef struct SharedData
@@ -162,6 +164,8 @@ public:
 	*/
 	uintptr_t FindPCAddress(HANDLE process);
 
+
+	void CheckEvent(Event* CollectedEvent);
 
 	bool InjectTrackerDLL();
 

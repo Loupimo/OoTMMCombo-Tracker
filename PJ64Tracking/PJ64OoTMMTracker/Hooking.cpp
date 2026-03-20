@@ -186,7 +186,7 @@ __declspec(naked) void Hook()
             jne EXIT
 
             // =========================
-            // Convert A1 to RAM offset
+            // Convert SP to RAM offset
             // =========================
             mov eax, ebp
             and eax, 0x00FFFFFF
@@ -194,9 +194,9 @@ __declspec(naked) void Hook()
             mov esi, gameRAMBase    // The real game RAM base address 
             add esi, eax            // Add the offset to the game RAM base address
 
-            mov eax, [esi]          // first 4 bytes
-            mov edx, [esi + 4]      // rest
-            or ebx, 0xFFFFFFFF      // padding
+            mov eax, [esi]          // Key
+            mov edx, [esi + 4]      // GI
+            mov ebx, 0xFFFFFF00     // IsConsumed.
 
             jmp STORE
 
