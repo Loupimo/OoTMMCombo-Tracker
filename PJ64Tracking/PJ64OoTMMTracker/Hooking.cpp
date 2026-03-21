@@ -15,6 +15,12 @@ constexpr uint32_t targetsPC_SP[MAX_TARGETS] = {
 };
 constexpr uint32_t targetsPC_SPCount = sizeof(targetsPC_SP) / sizeof(targetsPC_SP[0]);
 
+constexpr uint32_t targetsPC_Shop[MAX_TARGETS] = {
+    0x8040C168,  // comboItemPrecond: if (o.gi == GI_NOTHING), used for tracking buyable "Nothing" item for OoT. Here we capture a XFlag and used SP - 0x40
+    0x8073BA5C   // comboItemPrecond: if (o.gi == GI_NOTHING), used for tracking buyable "Nothing" item for MM. Here we capture a XFlag and used SP - 0x40
+};
+constexpr uint32_t targetsPC_ShopCount = sizeof(targetsPC_Shop) / sizeof(targetsPC_Shop[0]);
+
 #define PC_MASK_SIZE (1 << 24)           // 24-bit address space
 #define TYPEMASK_SIZE (PC_MASK_SIZE / 4) // 4 entries per byte
 
@@ -31,6 +37,8 @@ uintptr_t moduleBase = 0;
 uintptr_t regBase = 0;
 uintptr_t gameRAMBase = 0;
 uintptr_t gSP = 0;
+uintptr_t gV0 = 0;
+uintptr_t gV1 = 0;
 
 
 void SetPCType(uint32_t pc, uint8_t type)
@@ -59,6 +67,12 @@ void InitTypeMask()
     for (size_t i = 0; i < targetsPC_SPCount; i++)
     {
         SetPCType(targetsPC_SP[i], TYPE_XFLAG);
+    }
+
+    // Shop cases
+    for (size_t i = 0; i < targetsPC_ShopCount; i++)
+    {
+        SetPCType(targetsPC_Shop[i], TYPE_SHOP);
     }
 }
 
@@ -106,6 +120,10 @@ __declspec(naked) void Hook()
         mov edi, ecx                 // Save PC value in edi
         mov ebp, edx                 // Save A1 value in ebp
         mov gSP, esi                 // Save SP
+        mov esi, [eax + V0_OFFSET]   // V0
+        mov gV0, esi                 // Save V0
+        mov esi, [eax + V1_OFFSET]   // V1
+        mov gV1, esi                 // Save V1
 
         // =========================
         // Compute index
@@ -137,6 +155,9 @@ __declspec(naked) void Hook()
 
         cmp bl, TYPE_XFLAG           // Use SP register
         je USE_SP
+
+        cmp bl, TYPE_SHOP            // Use V0, V1 and SP register 
+        je USE_SHOP
 
         jmp EXIT
 
@@ -178,7 +199,7 @@ __declspec(naked) void Hook()
             add ebp, DROP_CUSTOM
 
             // =========================
-            // Check A1 Range : Between 0x80000000 - 0x80FFFFFF
+            // Check SP Range : Between 0x80000000 - 0x80FFFFFF
             // =========================
             mov eax, ebp
             and eax, 0xFF000000
@@ -199,6 +220,47 @@ __declspec(naked) void Hook()
             mov ebx, 0xFFFFFF00     // IsConsumed.
 
             jmp STORE
+
+            // =========================
+            // USE Shop (Xflag)
+            // =========================
+            USE_Shop:
+
+                // The item is buyable, therefore it is not a "Nothing item", we can exit
+                mov eax, gV0
+                cmp eax, 0x02
+                jne EXIT
+
+                // The item is not a nothing object, we can exit
+                mov eax, gV1
+                cmp eax, 0x033C
+                jne EXIT
+
+                mov ebp, gSP
+                add ebp, SHOP_CUSTOM
+
+                // =========================
+                // Check SP Range : Between 0x80000000 - 0x80FFFFFF
+                // =========================
+                mov eax, ebp
+                and eax, 0xFF000000
+                cmp eax, 0x80000000
+                jne EXIT
+
+                // =========================
+                // Convert SP to RAM offset
+                // =========================
+                mov eax, ebp
+                and eax, 0x00FFFFFF
+
+                mov esi, gameRAMBase    // The real game RAM base address 
+                add esi, eax            // Add the offset to the game RAM base address
+
+                mov eax, [esi]          // Key
+                mov edx, [esi + 4]      // GI
+                mov ebx, 0xFFFFFF00     // IsConsumed.
+
+                jmp STORE
 
         // =========================
         // STORE (COMMON)
@@ -236,7 +298,7 @@ __declspec(naked) void Hook()
 
             // Fill the buffer at the correct index
             mov[edi], ecx       // Store PC
-            mov[edi + 4], ebp   // Store A1
+            mov[edi + 4], ebp   // Store Mem
             mov[edi + 8], eax   // q0
             mov[edi + 12], edx  // q1
             mov[edi + 16], ebx  // q2
