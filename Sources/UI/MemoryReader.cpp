@@ -135,28 +135,22 @@ void MemoryReader::CheckEvent(Event * CollectedEvent)
     if (CollectedEvent)
     {   // Check that the collected event is valid
 
-        if ((CollectedEvent->Query[2] & 0xFFFFFF00) == 0xFFFFFF00)
+        if ((CollectedEvent->Query[2] & 0xFFFF0000) == 0xFFFF0000)
         {   // The event comes from a drop nothing actor
 
             if ((CollectedEvent->Query[2] & 0x000000FF) == false)
             {   // We can treat the event
                 
-                CollectedEvent->Query[2] = 0xFFFFFFFF; // Update the treated flag in the shared memory
 
                 uint8_t keyArr[5];
                 uint32_t key = byteswap32(CollectedEvent->Query[0]);
-                keyArr[0] = OOT_GAME;
+                keyArr[0] = (CollectedEvent->Query[2] & 0x0000FF00) == 0 ? OOT_GAME : MM_GAME;
                 memcpy(keyArr + 1, &key, sizeof(uint32_t));
-
-                if (CollectedEvent->PC > 0x80700000)
-                {   // The event is from MM.
-
-                    keyArr[0] = MM_GAME;
-                }
 
                 ParseKey(keyArr, &finalItem);
                 CorrectComboItem(&finalItem);
                 collectedItem = CollectedEvent->Query[1] & 0x0000FFFF;
+                CollectedEvent->Query[2] = 0xFFFFFFFF; // Update the treated flag in the shared memory
             }
             else
             {   // The event is already treated

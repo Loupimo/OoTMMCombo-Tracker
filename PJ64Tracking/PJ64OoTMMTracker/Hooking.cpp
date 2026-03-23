@@ -21,10 +21,16 @@ constexpr uint32_t targetsPC_Shop[MAX_TARGETS] = {
 };
 constexpr uint32_t targetsPC_ShopCount = sizeof(targetsPC_Shop) / sizeof(targetsPC_Shop[0]);
 
-#define PC_MASK_SIZE (1 << 24)           // 24-bit address space
-#define TYPEMASK_SIZE (PC_MASK_SIZE / 4) // 4 entries per byte
+constexpr uint32_t targetsPC_Butterfly[MAX_TARGETS] = {
+    0x8041A040,  // Actor_Run_Update: used for tracking butterfly "Nothing" item for OoT. Here we check if the actor is a butterfly (id: 0x1E) using S0, if yes we look at the actor function to get the EnButte_SpawnFairy address and then apply an offset to get the EnButte_ShouldSpawnFairy address and then to check if the GI is "GI_NOTHING".
+    0x8041E360  // Actor_Run_Update: used for tracking butterfly "Nothing" item for MM. Here we check if the actor is a butterfly (id: 0x15) using S0, if yes we look at the actor function to get the EnButte_SpawnFairy address and then apply an offset to get the EnButte_ShouldSpawnFairy address and then to check if the GI is "GI_NOTHING".
+};
+constexpr uint32_t targetsPC_ButterflyCount = sizeof(targetsPC_Butterfly) / sizeof(targetsPC_Butterfly[0]);
 
-uint8_t typemask[TYPEMASK_SIZE];
+#define PC_MASK_SIZE (1 << 24)           // 24-bit address space
+//#define TYPEMASK_SIZE (PC_MASK_SIZE / 4) // 4 entries per byte
+
+uint8_t typemask[PC_MASK_SIZE];
 
 // Hooking installation
 void* gateway = NULL;
@@ -33,23 +39,27 @@ uintptr_t returnAddress = 0;
 
 // Game data / shared memeory data
 SharedData* gData = nullptr;
+uint16_t gGame = OOT_GAME;
 uintptr_t moduleBase = 0;
 uintptr_t regBase = 0;
 uintptr_t gameRAMBase = 0;
+uintptr_t currButterflyPC = 0;
 uintptr_t gSP = 0;
 uintptr_t gV0 = 0;
 uintptr_t gV1 = 0;
+uintptr_t gS0 = 0;
 
 
 void SetPCType(uint32_t pc, uint8_t type)
 {
-    uint32_t index = pc & 0x00FFFFFF;
+    /*uint32_t index = pc & 0x00FFFFFF;
 
     uint32_t byteIndex = index >> 2;      // /4
     uint32_t shift = (index & 3) * 2;     // *2 bits
 
     typemask[byteIndex] &= ~(3 << shift); // clear
-    typemask[byteIndex] |= (type << shift);
+    typemask[byteIndex] |= (type << shift);*/
+    typemask[pc & 0x00FFFFFF] = type;
 }
 
 
@@ -73,6 +83,12 @@ void InitTypeMask()
     for (size_t i = 0; i < targetsPC_ShopCount; i++)
     {
         SetPCType(targetsPC_Shop[i], TYPE_SHOP);
+    }
+
+    // Butterfly cases
+    for (size_t i = 0; i < targetsPC_ButterflyCount; i++)
+    {
+        SetPCType(targetsPC_Butterfly[i], TYPE_BUTTERFLY);
     }
 }
 
@@ -124,6 +140,12 @@ __declspec(naked) void Hook()
         mov gV0, esi                 // Save V0
         mov esi, [eax + V1_OFFSET]   // V1
         mov gV1, esi                 // Save V1
+        mov esi, [eax + S0_OFFSET]   // S0
+        mov gS0, esi                 // Save S0
+
+        // We need to do this before the type mask as the butterfly PC mask will always be TYPE_NONE as the PC is gathered on the fly
+        cmp currButterflyPC, edi     // Use V0, V1 and SP register
+        je USE_BUTTERFLY
 
         // =========================
         // Compute index
@@ -134,20 +156,13 @@ __declspec(naked) void Hook()
         // =========================
         // Load typemask entry
         // =========================
-        mov edx, eax
-        shr edx, 2                   // byte index
+        mov eax, edi
+        and eax, 0x00FFFFFF
 
         mov esi, offset typemask
-        mov bl, [esi + edx]
+        mov bl, [esi + eax]
 
-        and eax, 3
-        shl eax, 1                   // *2 bits
-
-        mov cl, al
-        shr bl, cl
-        and bl, 3                    // TYPE
-
-        cmp bl, 0                    // Not tracked
+        cmp bl, TYPE_NONE            // Not tracked
         je EXIT
 
         cmp bl, TYPE_COMBO           // Use A1 register
@@ -158,6 +173,9 @@ __declspec(naked) void Hook()
 
         cmp bl, TYPE_SHOP            // Use V0, V1 and SP register 
         je USE_SHOP
+
+        cmp bl, TYPE_BUTTERFLY       // Use S0 register 
+        je CHECK_BUTTERFLY
 
         jmp EXIT
 
@@ -206,61 +224,155 @@ __declspec(naked) void Hook()
             cmp eax, 0x80000000
             jne EXIT
 
+            jmp CAPTURE_XFLAG
+
+        // =========================
+        // USE Shop (Xflag)
+        // =========================
+        USE_SHOP:
+
+            // The item is buyable, therefore it is not a "Nothing item", we can exit
+            mov eax, gV0
+            cmp eax, 0x02
+            jne EXIT
+
+            // The item is not a nothing object, we can exit
+            mov eax, gV1
+            cmp eax, 0x033C
+            jne EXIT
+
+            mov ebp, gSP
+            add ebp, SHOP_CUSTOM
+
+            // =========================
+            // Check SP Range : Between 0x80000000 - 0x80FFFFFF
+            // =========================
+            mov eax, ebp
+            and eax, 0xFF000000
+            cmp eax, 0x80000000
+            jne EXIT
+
+            jmp CAPTURE_XFLAG
+
+
+        // =========================
+        // Check Butterfly
+        // =========================
+        CHECK_BUTTERFLY:
+
+            // =========================
+            // Check S0 Range : Between 0x80000000 - 0x80FFFFFF
+            // =========================
+            mov ebp, gS0
+            and ebp, 0xFF000000
+            cmp ebp, 0x80000000
+            jne EXIT
+
+            // =========================
+            // Convert S0 to RAM offset
+            // =========================
+            mov ebp, gS0
+            and ebp, 0x00FFFFFF
+
+            mov esi, gameRAMBase    // The real game RAM base address 
+            add esi, ebp            // Add the offset to the game RAM base address
+
+            // Check if the actor is a butterfly
+            mov eax, [esi]
+            and eax, 0xFFFF0000
+            cmp eax, 0x001E0000     // OoT
+            je MATCH_BUTTERFLY
+
+            cmp eax, 0x00150000     // MM
+            je MATCH_BUTTERFLY_MM
+
+            jmp EXIT                // Not a butterfly
+
+        MATCH_BUTTERFLY_MM:
+            mov gGame, MM_GAME
+            add esi, 0x08           // The MM actor structure has 8 bytes more than the OoT one
+
+        MATCH_BUTTERFLY:
+
+            // Set the butterfly PC
+            mov eax, [esi + BUTTERFLY_FUNCTION]
+            add eax, BUTTERFLY_SPAWN_OFFSET
+            mov currButterflyPC, eax
+
+            jmp EXIT
+
+        // =========================
+        // USE Butterfly (Xflag)
+        // =========================
+        USE_BUTTERFLY:
+            // Reset the butterfly PC
+            mov currButterflyPC, 0
+
+            // The item is not a nothing object, we can exit
+            mov eax, gV1
+            cmp eax, 0x033C
+            jne EXIT
+
+            mov ebp, gSP
+            add ebp, BUTTERFLY_CUSTOM
+
+            // =========================
+            // Check SP Range : Between 0x80000000 - 0x80FFFFFF
+            // =========================
+            mov eax, ebp
+            and eax, 0xFF000000
+            cmp eax, 0x80000000
+            jne EXIT
+
+            jmp CAPTURE_XFLAG
+
+        // =========================
+        // CAPTURE XFLAG (COMMON)
+        // =========================
+        CAPTURE_XFLAG:
+            
+            mov gGame, OOT_GAME
+
+            // ========================
+            // Check Game Version
+            // ========================
+            mov eax, 0x801EF694     // MM gPlayerState
+            and eax, 0x00FFFFFF
+
+            mov esi, gameRAMBase
+            add esi, eax
+
+            // Check "DLEZ"
+            mov eax, [esi]
+            cmp eax, 0x5A454C44
+            jne CAPTURE
+
+            // Check "3A"
+            mov eax, [esi + 4]
+            and eax, 0xFFFF0000     // Get ride of the death count
+            cmp eax, 0x41330000
+            jne CAPTURE
+
+            mov gGame, MM_GAME
+
+        CAPTURE:
+
             // =========================
             // Convert SP to RAM offset
             // =========================
             mov eax, ebp
             and eax, 0x00FFFFFF
-
+            
             mov esi, gameRAMBase    // The real game RAM base address 
             add esi, eax            // Add the offset to the game RAM base address
-
+            
             mov eax, [esi]          // Key
             mov edx, [esi + 4]      // GI
-            mov ebx, 0xFFFFFF00     // IsConsumed.
-
+            mov ebx, 0xFFFF0000     // IsConsumed.
+            add bx, gGame          // The game the XFlag comes from 
+            
             jmp STORE
 
-            // =========================
-            // USE Shop (Xflag)
-            // =========================
-            USE_Shop:
-
-                // The item is buyable, therefore it is not a "Nothing item", we can exit
-                mov eax, gV0
-                cmp eax, 0x02
-                jne EXIT
-
-                // The item is not a nothing object, we can exit
-                mov eax, gV1
-                cmp eax, 0x033C
-                jne EXIT
-
-                mov ebp, gSP
-                add ebp, SHOP_CUSTOM
-
-                // =========================
-                // Check SP Range : Between 0x80000000 - 0x80FFFFFF
-                // =========================
-                mov eax, ebp
-                and eax, 0xFF000000
-                cmp eax, 0x80000000
-                jne EXIT
-
-                // =========================
-                // Convert SP to RAM offset
-                // =========================
-                mov eax, ebp
-                and eax, 0x00FFFFFF
-
-                mov esi, gameRAMBase    // The real game RAM base address 
-                add esi, eax            // Add the offset to the game RAM base address
-
-                mov eax, [esi]          // Key
-                mov edx, [esi + 4]      // GI
-                mov ebx, 0xFFFFFF00     // IsConsumed.
-
-                jmp STORE
 
         // =========================
         // STORE (COMMON)
@@ -310,6 +422,7 @@ __declspec(naked) void Hook()
             mov[esi + 4], ebx
 
         EXIT :
+
             // Restore saved context
             popad
 
