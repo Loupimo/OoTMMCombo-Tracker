@@ -690,8 +690,9 @@ void MapTab::ItemFound(ObjectInfo* Object, const ItemInfo* ItemFound)
 void MapTab::ObjectClicked(QTreeWidgetItem* Item, int Column)
 {
     // This function gets called only when an object is clicked on the list. We therefore need to update the scroll
-    QModelIndex index = this->ObjectList->indexAt(this->ObjectList->visualItemRect(Item).center());
-    this->ObjectList->scrollTo(index, QAbstractItemView::PositionAtCenter);
+    //QModelIndex index = this->ObjectList->indexAt(this->ObjectList->visualItemRect(Item).center());
+    //this->ObjectList->scrollTo(index, QAbstractItemView::PositionAtCenter);
+    this->ObjectList->scrollTo(this->ObjectList->indexFromItem(Item), QAbstractItemView::PositionAtCenter);
 
     if (!this->SelectionUpdated)
     {   // This means that the itemSelectionChanged event has not occured before and the object can be updated
@@ -773,9 +774,9 @@ void MapTab::UpdateObjectSelection()
             else
             {   // The selection event comes from a click on a graph item. We can scroll to the object in the list without fear of consuming the click event
 
-                QModelIndex index = this->ObjectList->indexAt(this->ObjectList->visualItemRect(selectedItem).center());
-                this->ObjectList->scrollTo(index, QAbstractItemView::PositionAtCenter);
-                //this->ObjectList->scrollTo(this->ObjectList->indexFromItem(selectedItem), QAbstractItemView::PositionAtCenter); // Note : scrollTo seems to consume the click event and prevent the click function from being called after the selection event.
+                //QModelIndex index = this->ObjectList->indexAt(this->ObjectList->visualItemRect(selectedItem).center());
+                //this->ObjectList->scrollTo(index, QAbstractItemView::PositionAtCenter);
+                this->ObjectList->scrollTo(this->ObjectList->indexFromItem(selectedItem), QAbstractItemView::PositionAtCenter); // Note : scrollTo seems to consume the click event and prevent the click function from being called after the selection event.
             }
 
             this->PrevSelected->SetCalledFromGraph(false);          // Reset the caller flag in order to proceed to rest of the object updating function

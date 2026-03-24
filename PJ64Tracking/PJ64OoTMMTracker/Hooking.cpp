@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "Hooking.h"
+#include "PatternScanner.h"
+#include "Cache.h"
 
 // PC addresses to target
 constexpr int MAX_TARGETS = 128;
@@ -30,18 +32,23 @@ constexpr uint32_t targetsPC_ButterflyCount = sizeof(targetsPC_Butterfly) / size
 #define PC_MASK_SIZE (1 << 24)           // 24-bit address space
 //#define TYPEMASK_SIZE (PC_MASK_SIZE / 4) // 4 entries per byte
 
-uint8_t typemask[PC_MASK_SIZE];
+uint16_t typemask[PC_MASK_SIZE];
 
 // Hooking installation
-void* gateway = NULL;
-BYTE originalBytes[HOOK_SIZE];
-uintptr_t returnAddress = 0;
+void* gatewayPC = NULL;
+void* gatewayROM = NULL;
+BYTE originalBytesPC[HOOK_PC_SIZE];
+BYTE originalBytesROM[HOOK_ROM_LOAD_SIZE];
+//uintptr_t returnAddress = 0;
 
 // Game data / shared memeory data
 SharedData* gData = nullptr;
-uint16_t gGame = OOT_GAME;
+GameID gGame = GAME_OOT;
+bool gIsRAMLoaded = false;
+uint64_t gGameVersion = 0;
 uintptr_t moduleBase = 0;
 uintptr_t regBase = 0;
+uintptr_t romBase = 0;
 uintptr_t gameRAMBase = 0;
 uintptr_t currButterflyPC = 0;
 uintptr_t gSP = 0;
@@ -50,16 +57,87 @@ uintptr_t gV1 = 0;
 uintptr_t gS0 = 0;
 
 
-void SetPCType(uint32_t pc, uint8_t type)
+bool IsPayloadPC(uint32_t PC)
 {
-    /*uint32_t index = pc & 0x00FFFFFF;
+    return PC >= PAYLOAD_START && PC < PAYLOAD_END;
+}
 
-    uint32_t byteIndex = index >> 2;      // /4
-    uint32_t shift = (index & 3) * 2;     // *2 bits
 
-    typemask[byteIndex] &= ~(3 << shift); // clear
-    typemask[byteIndex] |= (type << shift);*/
+void SetPCType(uint32_t pc, uint16_t type)
+{
     typemask[pc & 0x00FFFFFF] = type;
+}
+
+
+uint64_t GetGameVersion()
+{
+    //printf("Get Game Version\n");
+    if (!gData)
+    {
+        return 0;
+    }
+    
+    uint64_t version = ((uint64_t)gData->GameVersion[0] << 32) | gData->GameVersion[1];
+
+    if (version == 0)
+    {
+        version = *(uint64_t*)(romBase + 0x10);
+        gData->GameVersion[0] = (uint32_t)version;
+        gData->GameVersion[1] = version >> 32;
+        printf("Game Version = %llu\n", version);
+        gGameVersion = version;
+    }
+    
+    return version;
+}
+
+
+GameID DetectCurrentGame()
+{
+    // OoT
+    uintptr_t AddrCheck = gameRAMBase + (0x8011A5EC & 0x00FFFFFF);
+    uint64_t val = *(uint64_t*)AddrCheck;
+
+    if (val == 0x415A00005A454C44)
+    {
+        return GAME_OOT;
+    }
+
+    // MM
+    AddrCheck = gameRAMBase + (0x801EF694 & 0x00FFFFFF);
+    val = *(uint64_t*)AddrCheck;
+    
+    if (val == 0x413300015A454C44)
+    {
+        //printf("MM Game\n");
+        return GAME_MM;
+    }
+
+    return GAME_UNKNOWN;
+}
+
+
+void PeriodicGameCheck()
+{
+    static uint32_t counter;
+
+    counter++;
+
+    if ((counter & 0x1FFF) != 0)
+    {
+        return;
+    }
+
+    counter = 0;
+
+    GameID g = DetectCurrentGame();
+
+    if (g != gGame && g != GAME_UNKNOWN)
+    {
+        gGame = g;
+        gIsRAMLoaded = false;
+        //BuildTypeMaskFromPatterns();
+    }
 }
 
 
@@ -111,8 +189,137 @@ uintptr_t FindGameRAM()
     }
 }
 
+void HandlePCHook(uint32_t PC)
+{
+    if (gGame != GAME_UNKNOWN)
+    {
+        if (gIsRAMLoaded)
+        {   // The RAM is loaded
 
-__declspec(naked) void Hook()
+            PeriodicGameCheck();
+
+            PCType type = (PCType)typemask[PC & 0x00FFFFFF];
+            switch (type) {
+                case TYPE_COMBO:
+                    // read A1, SP, etc...
+                    break;
+                case TYPE_XFLAG:
+                    // read SP...
+                    break;
+                case TYPE_SHOP:
+                    // read V0, V1, SP...
+                    break;
+                case TYPE_BUTTERFLY:
+                    // read S0...
+                    break;
+                default: break;
+            }
+        }
+        else if ((gGame == GAME_OOT && PC == OOT_PLAY_MAIN) || (gGame == GAME_MM && PC == MM_PLAY_MAIN))
+        {   // The RAM is loaded. We can check for patterns
+
+            gIsRAMLoaded = true;
+
+            printf("RAM Loaded : 0x%08X\n", PC);
+
+            uint64_t version = GetGameVersion();
+
+            GamePatternState* state = &gPatternState[gGame];
+
+            if (!state->Resolved || state->Version != version)
+            {
+                BuildTypeMaskFromPatterns();
+            }
+        }
+    }
+    else
+    {
+        gGame = DetectCurrentGame();
+        if (gGame != GAME_UNKNOWN)
+        {   // The RAM is loaded so is the ROM
+
+            gIsRAMLoaded = false;
+            gGameVersion = GetGameVersion();
+            if (gPatternState[GAME_OOT].Version != gGameVersion)
+            {
+                gPatternState[GAME_OOT].Resolved = false;
+                gPatternState[GAME_MM].Resolved = false;
+            }
+            gPatternState[GAME_OOT].Version = gGameVersion;
+            gPatternState[GAME_MM].Version = gGameVersion;
+        }
+    }
+}
+
+
+
+
+__declspec(naked) void ROMHook()
+{
+    __asm
+    {
+        // -------------------------
+        // Save context (pushad, flags handled)
+        // -------------------------
+        pushad
+
+        // -------------------------
+        // ROM base / gData setup
+        // -------------------------
+        mov esi, ebx
+        mov romBase, esi
+        mov edi, gData
+        mov eax, [esi]
+        mov ecx, [esi + 4]
+        mov[edi], eax
+        mov[edi + 4], ecx
+
+        // -------------------------
+        // Call C++ initialization
+        // -------------------------
+        //call GetGameVersion
+        //nop
+
+        // -------------------------
+        // Initialize typemask (lazy, will resolve patterns)
+        // -------------------------
+        //call InitHooking
+        //nop
+
+        
+        popad
+        jmp gatewayROM // trampoline to original code
+    }
+}
+
+__declspec(naked) void PCHook()
+{
+    __asm
+    {
+        pushad
+
+        // -------------------------
+        // Read PC
+        // -------------------------
+        mov eax, regBase
+        mov eax, [eax]
+        mov ecx, [eax + PC_OFFSET]   // PC
+        mov edx, [eax + SP_OFFSET]   // SP
+        mov esi, ecx                 // save PC
+
+        // -------------------------
+        // Call C++ dispatcher
+        // -------------------------
+        push esi       // push PC
+        call HandlePCHook
+        add esp, 4     // cleanup
+
+        popad
+        jmp gatewayPC
+    }
+}
+/*
+__declspec(naked) void PCHook()
 {
     __asm
     {
@@ -289,7 +496,7 @@ __declspec(naked) void Hook()
             jmp EXIT                // Not a butterfly
 
         MATCH_BUTTERFLY_MM:
-            mov gGame, MM_GAME
+            mov gGame, GAME_MM
             add esi, 0x08           // The MM actor structure has 8 bytes more than the OoT one
 
         MATCH_BUTTERFLY:
@@ -331,7 +538,7 @@ __declspec(naked) void Hook()
         // =========================
         CAPTURE_XFLAG:
             
-            mov gGame, OOT_GAME
+            mov gGame, GAME_OOT
 
             // ========================
             // Check Game Version
@@ -353,7 +560,7 @@ __declspec(naked) void Hook()
             cmp eax, 0x41330000
             jne CAPTURE
 
-            mov gGame, MM_GAME
+            mov gGame, GAME_MM
 
         CAPTURE:
 
@@ -401,7 +608,7 @@ __declspec(naked) void Hook()
             mov edx, ebx
             shl edx, 2                  // 4
             add eax, edx                // eax = idx * 20
-            lea edi, [esi + 8 + eax]
+            lea edi, [esi + 16 + eax]
 
             // Restore q values
             pop ebx
@@ -430,37 +637,57 @@ __declspec(naked) void Hook()
             jmp gateway
     }
 }
+*/
 
-
-void InstallHook()
+void InstallPCHook()
 {
-    uintptr_t target = moduleBase + HOOK_OFFSET;
+    InstallHook(HOOK_PC_OFFSET, HOOK_PC_SIZE, (uintptr_t)&PCHook, &gatewayPC, originalBytesPC);
+}
+
+
+void InstallROMHook()
+{
+    InstallHook(HOOK_ROM_LOAD_OFFSET, HOOK_ROM_LOAD_SIZE, (uintptr_t)&ROMHook, &gatewayROM, originalBytesROM);
+}
+
+
+void InstallHook(size_t HookOffset, size_t HookSize, uintptr_t HookFunction, void ** gateway, BYTE originalBytes[])
+{
+    uintptr_t target = moduleBase + HookOffset;
 
     DWORD oldProtect;
-    VirtualProtect((LPVOID)target, HOOK_SIZE, PAGE_EXECUTE_READWRITE, &oldProtect);
+    VirtualProtect((LPVOID)target, HookSize, PAGE_EXECUTE_READWRITE, &oldProtect);
 
     // sauvegarde instructions originales
-    memcpy(originalBytes, (void*)target, HOOK_SIZE);
+    memcpy(originalBytes, (void*)target, HookSize);
 
     // trampoline
-    gateway = VirtualAlloc(nullptr, 64, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+    *gateway = VirtualAlloc(nullptr, 64, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+    /*for (size_t i = 0; i < HookSize; i++)
+    {
+        printf("%02X ", originalBytes[i]);
+    }*/
+    memcpy(*gateway, originalBytes, HookSize);
 
-    memcpy(gateway, originalBytes, HOOK_SIZE);
-
-    uintptr_t gatewayEnd = (uintptr_t)gateway + HOOK_SIZE;
-    uintptr_t returnAddr = target + HOOK_SIZE;
+    uintptr_t gatewayEnd = (uintptr_t)*gateway + HookSize;
+    uintptr_t returnAddr = target + HookSize;
 
     *(BYTE*)(gatewayEnd) = 0xE9;
     *(uintptr_t*)(gatewayEnd + 1) = returnAddr - gatewayEnd - 5;
 
     // hook
-    uintptr_t rel = (uintptr_t)&Hook - target - 5;
+    uintptr_t rel = (uintptr_t)HookFunction - target - 5;
 
     *(BYTE*)target = 0xE9;
     *(uintptr_t*)(target + 1) = rel;
 
-    for (int i = 5; i < HOOK_SIZE; i++)
+    for (size_t i = 5; i < HookSize; i++)
         *(BYTE*)(target + i) = 0x90;
 
-    VirtualProtect((LPVOID)target, HOOK_SIZE, oldProtect, &oldProtect);
+    VirtualProtect((LPVOID)target, HookSize, oldProtect, &oldProtect);
+}
+
+
+void InstallHooks()
+{
 }

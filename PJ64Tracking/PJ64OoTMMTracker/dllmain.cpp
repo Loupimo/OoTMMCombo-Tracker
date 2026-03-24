@@ -1,6 +1,7 @@
 // dllmain.cpp : Définit le point d'entrée de l'application DLL.
 #include "pch.h"
 #include "Hooking.h"
+#include "Cache.h"
 
 
 DWORD WINAPI MainThread(LPVOID)
@@ -44,8 +45,10 @@ DWORD WINAPI MainThread(LPVOID)
         HMODULE hModule = GetModuleHandle(NULL);
         moduleBase = (uintptr_t)hModule;
         regBase = moduleBase + REG_PTR_OFFSET;
-        gameRAMBase = FindGameRAM();
 
+        InstallROMHook();
+        gameRAMBase = FindGameRAM();
+        printf ("LoadCache %d\n", LoadCache("ootmm_pccache.bin"));
         /*while (gData->Base == 0 || gData->GameRAMBase == 0)
         {
             Sleep(1);
@@ -53,10 +56,11 @@ DWORD WINAPI MainThread(LPVOID)
 
         printf("Init Hook\n");
 
+        InstallPCHook();
         //moduleBase = gData->Base;
         //gameRAMBase = gData->GameRAMBase;
-        InitTypeMask();
-        InstallHook();
+        //InitTypeMask();
+        //InstallHooks();
         /*
         printf("Sizeof Event = %zu\n", sizeof(Event));
         LONG readIndex = 0;

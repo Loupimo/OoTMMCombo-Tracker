@@ -43,6 +43,7 @@ typedef struct Event
 
 typedef struct SharedData
 {
+	uint32_t GameVersion[2];
 	LONG MaxSize;
 	volatile LONG CurrIndex;
 	//uintptr_t Base;
@@ -66,7 +67,7 @@ public:
 	bool IsRunning = false;					// Tells if the process memory should be read.
 	uint8_t RAMData[RAM_SIZE] = { 0 };		// A current snapshot of the RAM.
 	EntranceHelper EntHelper;				// The module that will handle entrance tracking.
-	const char* PJTrackerDLL = "D:\\Emulation\\OoTMMCombo-Tracker\\Debug\\PJ64OoTMMTracker.dll";	// The dll to inject into the Project 64 process
+	std::string CurrDirectory;				// The current directory the tracker is located at.
 	void* DLLAlloc = nullptr;
 	SharedData * DLLData = nullptr; 
 	HANDLE DLLThread = 0;

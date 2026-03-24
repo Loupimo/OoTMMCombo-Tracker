@@ -226,7 +226,7 @@ void OoTMMComboTracker::UpdateRecentFiles()
         return;
     }
     
-    int numRecentFiles = min((byte)this->RecentFiles.size(), this->MaxRecentFiles);
+    int numRecentFiles = std::min((byte)this->RecentFiles.size(), this->MaxRecentFiles);
 
     for (byte i = 0; i < this->MaxRecentFiles; ++i)
     {

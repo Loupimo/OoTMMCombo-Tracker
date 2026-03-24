@@ -37,6 +37,30 @@ std::string GetErrorAsString(DWORD ErrorMessageID)
     return message;
 }
 
+std::string GetExecutableDirectory()
+{
+    char path[MAX_PATH];
+
+    GetModuleFileNameA(
+        NULL,
+        path,
+        MAX_PATH
+    );
+
+    std::string fullPath = path;
+
+    size_t pos = fullPath.find_last_of("\\/");
+
+    return fullPath.substr(0, pos);
+}
+
+std::string GetDLLPath()
+{
+    std::string dir = GetExecutableDirectory();
+
+    return dir + "\\PJ64OoTMMTracker.dll";
+}
+
 MemoryReader::MemoryReader()
 {
     this->ResetMemoryReader();
@@ -52,6 +76,7 @@ MemoryReader::~MemoryReader()
 void MemoryReader::ResetMemoryReader()
 {
     this->IsRunning = false;
+    this->CurrDirectory = GetExecutableDirectory();
 
     if (this->PJ64Handle != 0)
     {
@@ -256,7 +281,7 @@ void MemoryReader::StartMemoryReader()
             }
             else
             {
-                MultiLogger::LogMessage("Cannot inject tracker dll into %s.\nPlease check your process, ensure that % is in the same folder as the tracker and restart the tracker.", processName, this->PJTrackerDLL);
+                MultiLogger::LogMessage("Cannot inject tracker dll into %s.\nPlease check your process and ensure that %s and %s are in the same folder as the tracker.", processName, "PJ64Injector.exe", "PJ64OoTMMTracker.dll");
             }
         }
         else
@@ -408,6 +433,15 @@ bool MemoryReader::OpenSharedMemory()
 
 bool MemoryReader::InjectTrackerDLL()
 {
+    char cmd[512];
+
+    std::string injector = this->CurrDirectory + "\\PJ64Injector.exe";
+    std::string dll = this->CurrDirectory + "\\PJ64OoTMMTracker.dll";
+
+    snprintf(cmd, sizeof(cmd), "%s %d \"%s\"", injector.c_str(), this->PJ64PID, dll.c_str());
+    return !system(cmd);
+    
+    /*
     if (this->PJ64Handle == 0)
     {
         return false;
@@ -422,31 +456,14 @@ bool MemoryReader::InjectTrackerDLL()
 
     bool ret = WriteProcessMemory(this->PJ64Handle, this->DLLAlloc, this->PJTrackerDLL, strlen(this->PJTrackerDLL), nullptr);
 
-    /*HMODULE lpStart = GetModuleHandle(L"kernel32.dll");
-    LPVOID st = GetProcAddress(lpStart, "LoadLibraryA");*/
-
     this->DLLThread = CreateRemoteThread(this->PJ64Handle, nullptr, 0, (LPTHREAD_START_ROUTINE)LoadLibraryA, this->DLLAlloc, 0, nullptr );
 
     if (!this->DLLThread)
         return false;
 
     Sleep(10);  // Let the time for the DLL to be initialized
-/*    WaitForSingleObject(this->DLLThread, INFINITE);
-    DWORD exitCode = 0;
-    GetExitCodeThread(this->DLLThread, &exitCode);
 
-    MultiLogger::LogMessage("LoadLibrary result = 0x%X\n", exitCode);
-
-    if (GetFileAttributesA(this->PJTrackerDLL) == INVALID_FILE_ATTRIBUTES)
-    {
-        printf("DLL NOT FOUND\n");
-    }*/
-
-    //VirtualFreeEx(hProcess, alloc, 0, MEM_RELEASE);
-    //CloseHandle(hThread);
-    //CloseHandle(hProcess);
-
-    return true;
+    return true;*/
 }
 
 
