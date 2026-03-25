@@ -161,7 +161,7 @@ __forceinline void StoreResults(uint32_t PC, uint32_t Mem, uint32_t Buf1, uint32
     gData->Buffer[gData->CurrIndex].Query[1] = Buf2;
     gData->Buffer[gData->CurrIndex].Query[2] = Buf3;
 
-    gData->CurrIndex = (gData->CurrIndex + 1) % (BUFFER_SIZE - 1);
+    gData->CurrIndex = (gData->CurrIndex + 1) & (BUFFER_SIZE - 1);
 }
 
 
@@ -174,7 +174,7 @@ __forceinline void CaptureXFlag(uintptr_t PC, uintptr_t Mem)
     }
 }
 
-
+/*
 __forceinline void HandlePCHook(uint32_t PC)
 {
     if (gGame != GAME_UNKNOWN)
@@ -359,8 +359,280 @@ __declspec(naked) void PCHook()
 
         jmp gatewayPC
     }
+}*/
+
+__forceinline void HandlePCHookRare(uint32_t PC)
+{
+    if (gGame == GAME_UNKNOWN)
+    {
+        gGame = DetectCurrentGame();
+        if (gGame != GAME_UNKNOWN)
+        {
+            gIsRAMLoaded = false;
+            gGameVersion = GetGameVersion();
+            gPatternState[GAME_OOT].Resolved = false;
+            gPatternState[GAME_MM].Resolved = false;
+            gPatternState[GAME_OOT].Version = gGameVersion;
+            gPatternState[GAME_MM].Version = gGameVersion;
+        }
+        return;
+    }
+
+
+    PCType type = (PCType)typemask[gGame][PC - PC_RANGE_START];
+    if (type == TYPE_NONE)
+    {
+        PeriodicGameCheck();
+        return;
+    }
+
+    uintptr_t base = *(uint32_t*)regBase;
+    uintptr_t addr = gameRAMBase;
+
+    switch (type)
+    {
+        case TYPE_BUTTERFLY:
+        {
+            gS0 = *(uint32_t*)(base + S0_OFFSET);
+
+            if (IsValidAddr(gS0))
+            {
+                addr += gS0 & 0x00FFFFFF;
+                uint32_t tmp = *(uint32_t*)addr & 0xFFFF0000;
+
+                if (gGame == GAME_OOT && tmp == 0x001E0000)
+                {   // This is a butterfly
+
+                    LOG("Addr = 0x%08X, S0 = 0x%08X", base + S0_OFFSET, gS0);
+                    currButterflyPC = *(uint32_t*)(addr + BUTTERFLY_FUNCTION) + BUTTERFLY_SPAWN_OFFSET;
+                    LOG("Addr = 0x%08X, CurrButterFlyPC = 0x%08X", addr + BUTTERFLY_FUNCTION + BUTTERFLY_SPAWN_OFFSET, currButterflyPC);
+                }
+                else if (gGame == GAME_MM && tmp == 0x00150000)
+                {
+                    LOG("Addr = 0x%08X, S0 = 0x%08X", base + S0_OFFSET, gS0);
+                    currButterflyPC = *(uint32_t*)(addr + BUTTERFLY_FUNCTION + 0x08) + BUTTERFLY_SPAWN_OFFSET;
+                    LOG("Addr = 0x%08X, CurrButterFlyPC = 0x%08X", addr + BUTTERFLY_FUNCTION + BUTTERFLY_SPAWN_OFFSET + 0x08, currButterflyPC);
+                }
+
+            }
+
+            break;
+        }
+
+        case TYPE_COMBO:
+        {
+            gS0 = *(uint32_t*)(base + S0_OFFSET);
+            if (IsValidAddr(gS0))
+            {
+                gA1 = *(uint32_t*)(base + A1_OFFSET);
+                addr += gS0 & 0x00FFFFFF;
+                StoreResults(PC, gS0, *(uint32_t*)(addr + 4), *(uint32_t*)(addr + 8), gA1);
+            }
+            break;
+        }
+        case TYPE_XFLAG:
+        {
+            gSP = *(uint32_t*)(base + SP_OFFSET) + DROP_CUSTOM;
+            CaptureXFlag(PC, gSP);
+            break;
+        }
+        case TYPE_SHOP:
+        {
+            gV0 = *(uint32_t*)(base + V0_OFFSET);
+            gV1 = *(uint32_t*)(base + V1_OFFSET);
+            if (gV0 == 2 && gV1 == 0x033C)
+            {
+                gSP = *(uint32_t*)(base + SP_OFFSET) + SHOP_CUSTOM;
+                CaptureXFlag(PC, gSP);
+            }
+            break;
+        }
+        default:
+            break;
+    }
+    PeriodicGameCheck();
 }
 
+
+
+__declspec(naked) void CaptureXFlagASM()
+{
+    __asm
+    {
+        mov eax, ebx
+        and eax, 0xFF000000
+        cmp eax, 0x80000000
+        jne Done
+
+        push edi
+        push ecx; PC
+        push ebx; SP
+
+        mov eax, gData
+
+        // Get CurrIndex
+        mov edx, [eax + 12]
+
+        // Compute slot = idx * 20
+        mov ebx, edx
+        shl ebx, 4          // idx * 16
+        mov ecx, edx
+        shl ecx, 2          // idx * 4
+        add ebx, ecx        // idx * 20
+        lea edi, [eax + 16 + ebx]
+
+        pop ebx
+
+        mov eax, ebx
+        and eax, 0x00FFFFFF
+
+        //push esi
+
+        mov edx, gameRAMBase    // The real game RAM base address 
+        add edx, eax            // Add the offset to the game RAM base address
+
+        pop ecx
+
+        // Fill the buffer at the correct index
+        mov[edi], ecx             // Store PC
+        mov[edi + 4],  ebx        // Store Mem
+        mov eax, [edx]
+        mov[edi + 8],  eax     // Key
+        mov eax, [edx + 4]
+        mov[edi + 12], eax  // GI
+
+        movzx eax, byte ptr[gGame]        // The game the XFlag comes from 
+        add eax, 0xFFFF0000       // IsConsumed
+
+        mov[edi + 16], eax  // q2
+
+        // Increment CurrIndex
+        mov eax, gData
+        mov ecx, [eax + 12]
+        inc ecx
+        and ecx, BUFFER_SIZE - 1
+        mov[eax + 12], ecx
+
+        pop edi
+
+        Done:
+            ret
+    }
+}
+
+
+__declspec(naked) void PCHook()
+{
+    __asm
+    {
+        // == = Préparation == =
+        push eax
+        push ecx
+        push edx
+        push ebx
+
+        // --- Lire PC-- -
+        mov ecx, [esi] // ; ecx = PC
+
+        // --- Test hot path butterfly-- -
+        mov eax, [currButterflyPC]
+        test eax, eax
+        je CheckIsRAMLoaded // ; si currButterflyPC = 0, passe aux autres tests
+        cmp eax, ecx
+        jne CheckIsRAMLoaded
+
+        // --- Butterfly fast path-- -
+        //mov eax, [currButterflyPC]  // ; lire l'ancienne valeur (si besoin)
+        //xor eax, eax    //; mettre à 0
+        mov[currButterflyPC], 0   //; écrire 0
+        mov edx, regBase
+        mov edx, [edx]
+        mov eax, [edx + V1_OFFSET]
+        cmp eax, 0x033C
+        jne CheckIsRAMLoaded
+
+        mov ebx, [edx + SP_OFFSET]
+        add ebx, BUTTERFLY_CUSTOM
+        //push ecx; PC
+        //push ebx; SP
+        call CaptureXFlagASM
+        nop
+        //add esp, 8
+        jmp Done
+
+        CheckIsRAMLoaded :
+        // Vérifier si RAM est chargée
+            cmp gIsRAMLoaded, 0
+            jne CallRarePath
+
+            // Test si Play_Main(RAM loaded)
+            mov eax, ecx
+            cmp gGame, GAME_OOT
+            jne CheckMM
+            cmp eax, OOT_PLAY_MAIN
+            je LoadRAM
+            jmp CallRarePath
+
+        CheckMM :
+            cmp gGame, GAME_MM
+            jne CallRarePath
+            cmp eax, MM_PLAY_MAIN
+            je LoadRAM
+            jmp CallRarePath
+
+        LoadRAM :
+            mov gIsRAMLoaded, 1
+
+            // Forcer résolution des patterns si nécessaire
+            movzx edx, byte ptr[gGame]              //; gGame dans edx
+            imul edx, edx, 16 //; edx = gGame * taille structure
+            lea eax, [gPatternState]    //; base de gPatternState
+            add eax, edx                //; eax = &gPatternState[gGame]
+
+            cmp [eax + 8], 1  // gPatternState[gGame].resolved
+            jne ResetPatterns
+
+            // Test game version
+            push ecx
+            call GetGameVersion //; gGameVersion update
+            add esp, 4
+
+
+            // maintenant eax pointe sur GamePatternState[gGame]
+            mov edx, [eax] //; bas 32 bits
+            cmp edx, dword ptr[gGameVersion] //; compare bas 32 bits
+            jne ResetPatterns
+            mov edx, [eax + 4] // haut 32 bits
+            cmp edx, dword ptr[gGameVersion + 4] // compare haut 32 bits
+            jne ResetPatterns
+            jmp CallRarePath
+
+        ResetPatterns :
+            // gPatternState[GAME_OOT].Resolved = 0
+            mov byte ptr[gPatternState + 0x08], 0
+            // gPatternState[GAME_MM].Resolved = 0
+            mov byte ptr[gPatternState + 0x18], 0
+            push ecx
+            push gGame
+            call BuildTypeMaskFromPatterns
+            add esp, 4
+            pop ecx
+            //jmp CallRarePath //Call RarePath anyway
+
+        CallRarePath :
+        // --- Appel C++ pour TYPE_NONE et cases rares-- -
+            push ecx; push PC
+            call HandlePCHookRare
+            add esp, 4
+
+                Done:
+            pop ebx
+            pop edx
+            pop ecx
+            pop eax
+            jmp gatewayPC
+    }
+}
 
 __declspec(naked) void ROMHook()
 {

@@ -8,8 +8,8 @@
 
 typedef struct GamePatternState
 {
-    bool Resolved = false;
     uint64_t Version = 0;
+    bool Resolved = false;
 } GamePatternState;
 
 extern GamePatternState gPatternState[2];
