@@ -163,13 +163,13 @@ void MemoryReader::CheckEvent(Event * CollectedEvent)
         if ((CollectedEvent->Query[2] & 0xFFFF0000) == 0xFFFF0000)
         {   // The event comes from a drop nothing actor
 
-            if ((CollectedEvent->Query[2] & 0x000000FF) == false)
+            if ((CollectedEvent->Query[2] & 0x0000FF00) >> 2 == false)
             {   // We can treat the event
                 
 
                 uint8_t keyArr[5];
                 uint32_t key = byteswap32(CollectedEvent->Query[0]);
-                keyArr[0] = (CollectedEvent->Query[2] & 0x0000FF00) == 0 ? OOT_GAME : MM_GAME;
+                keyArr[0] = (CollectedEvent->Query[2] & 0x000000FF) == 0 ? OOT_GAME : MM_GAME;
                 memcpy(keyArr + 1, &key, sizeof(uint32_t));
 
                 ParseKey(keyArr, &finalItem);
@@ -281,7 +281,7 @@ void MemoryReader::StartMemoryReader()
             }
             else
             {
-                MultiLogger::LogMessage("Cannot inject tracker dll into %s.\nPlease check your process and ensure that %s and %s are in the same folder as the tracker.", processName, "PJ64Injector.exe", "PJ64OoTMMTracker.dll");
+                MultiLogger::LogMessage("Cannot inject tracker dll into %s.\nPlease check your process and ensure that %s and %s are in the same folder as the tracker.\nBe sure that your antivirus did not put it in quarantine.", processName, "PJ64Injector.exe", "PJ64OoTMMTracker.dll");
             }
         }
         else
@@ -302,7 +302,7 @@ void MemoryReader::RunMemoryReader()
     {
         while (i < this->DLLData->CurrIndex && i < this->DLLData->MaxSize)
         {
-            MultiLogger::LogMessage("PC = 0x%08X, Mem = 0x%08X, Buffer[0] = 0x%08X, Buffer[1] = 0x%08X, Buffer[2] = 0x%08X\n", this->DLLData->Buffer[i].PC, this->DLLData->Buffer[i].Mem, this->DLLData->Buffer[i].Query[0], this->DLLData->Buffer[i].Query[1], this->DLLData->Buffer[i].Query[2]);
+            MultiLogger::LogMessage("PC = 0x%08X, Mem = 0x%08X, Buffer[0] = 0x%08X, Buffer[1] = 0x%08X, Buffer[2] = 0x%08X", this->DLLData->Buffer[i].PC, this->DLLData->Buffer[i].Mem, this->DLLData->Buffer[i].Query[0], this->DLLData->Buffer[i].Query[1], this->DLLData->Buffer[i].Query[2]);
             CheckEvent(&this->DLLData->Buffer[i]);
             i++;
         }
@@ -312,7 +312,7 @@ void MemoryReader::RunMemoryReader()
             while (i < this->DLLData->MaxSize)
             {
                 
-                MultiLogger::LogMessage("PC = 0x%08X, Mem = 0x%08X, Buffer[0] = 0x%08X, Buffer[1] = 0x%08X, Buffer[2] = 0x%08X\n", this->DLLData->Buffer[i].PC, this->DLLData->Buffer[i].Mem, this->DLLData->Buffer[i].Query[0], this->DLLData->Buffer[i].Query[1], this->DLLData->Buffer[i].Query[2]);
+                MultiLogger::LogMessage("PC = 0x%08X, Mem = 0x%08X, Buffer[0] = 0x%08X, Buffer[1] = 0x%08X, Buffer[2] = 0x%08X", this->DLLData->Buffer[i].PC, this->DLLData->Buffer[i].Mem, this->DLLData->Buffer[i].Query[0], this->DLLData->Buffer[i].Query[1], this->DLLData->Buffer[i].Query[2]);
                 CheckEvent(&this->DLLData->Buffer[i]);
                 i++;
             }

@@ -51,32 +51,32 @@ uintptr_t regBase = 0;
 uintptr_t romBase = 0;
 uintptr_t gameRAMBase = 0;
 uintptr_t currButterflyPC = 0;
-uintptr_t gSP = 0;
-uintptr_t gV0 = 0;
-uintptr_t gV1 = 0;
-uintptr_t gS0 = 0;
+uint32_t gSP = 0;
+uint32_t gA1 = 0;
+uint32_t gV0 = 0;
+uint32_t gV1 = 0;
+uint32_t gS0 = 0;
 
 
-bool IsPayloadPC(uint32_t PC)
+__forceinline bool IsValidAddr(uint32_t Addr)
 {
-    return PC >= PAYLOAD_START && PC < PAYLOAD_END;
+    return (Addr & 0xFF000000) == 0x80000000;
 }
 
 
-void SetPCType(uint32_t pc, uint16_t type)
+__forceinline void SetPCType(uint32_t pc, uint16_t type)
 {
     typemask[pc & 0x00FFFFFF] = type;
 }
 
 
-uint64_t GetGameVersion()
+__forceinline uint64_t GetGameVersion()
 {
-    //printf("Get Game Version\n");
     if (!gData)
     {
         return 0;
     }
-    
+
     uint64_t version = ((uint64_t)gData->GameVersion[0] << 32) | gData->GameVersion[1];
 
     if (version == 0)
@@ -84,19 +84,20 @@ uint64_t GetGameVersion()
         version = *(uint64_t*)(romBase + 0x10);
         gData->GameVersion[0] = (uint32_t)version;
         gData->GameVersion[1] = version >> 32;
-        printf("Game Version = %llu\n", version);
         gGameVersion = version;
+
+        LOG("Game Version = %llu", version);
     }
     
     return version;
 }
 
 
-GameID DetectCurrentGame()
+__forceinline GameID DetectCurrentGame()
 {
     // OoT
     uintptr_t AddrCheck = gameRAMBase + (0x8011A5EC & 0x00FFFFFF);
-    uint64_t val = *(uint64_t*)AddrCheck;
+    uint64_t val = *(uint64_t*)AddrCheck & 0xFFFF0000FFFFFFFF;
 
     if (val == 0x415A00005A454C44)
     {
@@ -105,11 +106,10 @@ GameID DetectCurrentGame()
 
     // MM
     AddrCheck = gameRAMBase + (0x801EF694 & 0x00FFFFFF);
-    val = *(uint64_t*)AddrCheck;
+    val = *(uint64_t*)AddrCheck & 0xFFFF0000FFFFFFFF;
     
-    if (val == 0x413300015A454C44)
+    if (val == 0x413300005A454C44)
     {
-        //printf("MM Game\n");
         return GAME_MM;
     }
 
@@ -117,7 +117,7 @@ GameID DetectCurrentGame()
 }
 
 
-void PeriodicGameCheck()
+__forceinline void PeriodicGameCheck()
 {
     static uint32_t counter;
 
@@ -134,9 +134,10 @@ void PeriodicGameCheck()
 
     if (g != gGame && g != GAME_UNKNOWN)
     {
+        LOG("Game changed");
+
         gGame = g;
         gIsRAMLoaded = false;
-        //BuildTypeMaskFromPatterns();
     }
 }
 
@@ -171,6 +172,34 @@ void InitTypeMask()
 }
 
 
+void TryResolveROMBase()
+{
+    if (romBase)
+    {
+        return;
+    }
+
+    uintptr_t romPtrAddr = moduleBase + ROM_PTR_OFFSET;
+    uintptr_t romStruct = *(uintptr_t*)romPtrAddr;
+
+    if (!romStruct)
+    {
+        return;
+    }
+
+    uintptr_t rom = *(uintptr_t*)(romStruct + ROM_OFFSET);
+
+    if (!rom)
+    {
+        return;
+    }
+
+    romBase = rom;
+
+    LOG("ROM base resolved via pointer: 0x%08X", romBase);
+}
+
+
 uintptr_t FindGameRAM()
 {
     while (true)
@@ -189,30 +218,137 @@ uintptr_t FindGameRAM()
     }
 }
 
-void HandlePCHook(uint32_t PC)
+
+__forceinline void StoreResults(uint32_t PC, uint32_t Mem, uint32_t Buf1, uint32_t Buf2, uint32_t Buf3)
+{
+    gData->Buffer[gData->CurrIndex].PC = PC;
+    gData->Buffer[gData->CurrIndex].Mem = Mem;
+    gData->Buffer[gData->CurrIndex].Query[0] = Buf1;
+    gData->Buffer[gData->CurrIndex].Query[1] = Buf2;
+    gData->Buffer[gData->CurrIndex].Query[2] = Buf3;
+
+    gData->CurrIndex = (gData->CurrIndex + 1) % (BUFFER_SIZE - 1);
+}
+
+
+__forceinline void CaptureXFlag(uintptr_t PC, uintptr_t Mem)
+{
+    if (IsValidAddr(Mem))
+    {
+        uintptr_t addr = gameRAMBase + (Mem & 0x00FFFFFF);
+        StoreResults(PC, Mem, *(uint32_t*)(addr), *(uint32_t*)(addr + 4), 0xFFFF0000 + gGame);
+    }
+}
+
+
+__forceinline void HandlePCHook(uint32_t PC)
 {
     if (gGame != GAME_UNKNOWN)
     {
+        PeriodicGameCheck();
+
         if (gIsRAMLoaded)
         {   // The RAM is loaded
 
-            PeriodicGameCheck();
+            uint32_t base = *(uint32_t*)regBase;
 
-            PCType type = (PCType)typemask[PC & 0x00FFFFFF];
-            switch (type) {
-                case TYPE_COMBO:
-                    // read A1, SP, etc...
-                    break;
-                case TYPE_XFLAG:
-                    // read SP...
-                    break;
-                case TYPE_SHOP:
-                    // read V0, V1, SP...
-                    break;
-                case TYPE_BUTTERFLY:
-                    // read S0...
-                    break;
-                default: break;
+            if (currButterflyPC == PC)
+            {   // Use buttefly
+
+                currButterflyPC = 0;
+                gV1 = *(uint32_t*)(base + V1_OFFSET);
+
+                LOG("Addr = 0x%08X, V1 = 0x%08X", base + V1_OFFSET, gV1);
+
+                if (gV1 == 0x033C)
+                {
+                    gSP = *(uint32_t*)(base + SP_OFFSET) + BUTTERFLY_CUSTOM;
+                    LOG("Addr = 0x%08X, SP = 0x%08X", base + SP_OFFSET, gSP);
+                    CaptureXFlag(PC, gSP);
+                }
+            }
+            else
+            {
+                uintptr_t addr = gameRAMBase;
+                PCType type = (PCType)typemask[PC & 0x00FFFFFF];
+                switch (type)
+                {
+                    case TYPE_COMBO:
+                    {    // read A1, S0, etc...
+
+                        gS0 = *(uint32_t*)(base + S0_OFFSET);
+
+                        LOG("Addr = 0x%08X, S0 = 0x%08X", base + S0_OFFSET, gS0);
+
+                        if (IsValidAddr(gS0))
+                        {
+                            gA1 = *(uint32_t*)(base + A1_OFFSET);
+                            LOG("Addr = 0x%08X, A1 = 0x%08X", base + A1_OFFSET, gA1);
+                            addr += (gS0 & 0x00FFFFFF);
+                            StoreResults(PC, gS0, *(uint32_t*)(addr + 4), *(uint32_t*)(addr + 8), gA1);
+                        }
+
+                        return;
+                    }
+                    case TYPE_XFLAG:
+                    {    // read SP...
+                        
+                        gSP = *(uint32_t*)(base + SP_OFFSET) + DROP_CUSTOM;
+
+                        LOG("Addr = 0x%08X, SP = 0x%08X", base + SP_OFFSET, gSP);
+
+                        CaptureXFlag(PC, gSP);
+
+                        return;
+                    }
+                    case TYPE_SHOP:
+                    {    // read V0, V1, SP...
+                        gV0 = *(uint32_t*)(base + V0_OFFSET);
+                        gV1 = *(uint32_t*)(base + V1_OFFSET);
+
+                        LOG("Addr = 0x%08X, V0 = 0x%08X, Addr = 0x%08X, V1 = 0x%08X", base + V0_OFFSET, gV0, base + V1_OFFSET, gV1);
+
+                        if (gV0 == 2 && gV1 == 0x033C)
+                        {
+                            gSP = *(uint32_t*)(base + SP_OFFSET) + SHOP_CUSTOM;
+                            LOG("Addr = 0x%08X, SP = 0x%08X", base + SP_OFFSET, gSP);
+                            CaptureXFlag(PC, gSP);
+                        }
+
+                        return;
+                    }
+                    case TYPE_BUTTERFLY:
+                    {    // read S0...
+                        gS0 = *(uint32_t *)(base + S0_OFFSET);
+
+                        if (IsValidAddr(gS0))
+                        {
+                            addr += gS0 & 0x00FFFFFF;
+                            uint32_t tmp = *(uint32_t*)addr & 0xFFFF0000;
+
+                            if (gGame == GAME_OOT && tmp == 0x001E0000)
+                            {   // This is a butterfly
+
+                                LOG("Addr = 0x%08X, S0 = 0x%08X", base + S0_OFFSET, gS0);
+                                currButterflyPC = *(uint32_t*)(addr + BUTTERFLY_FUNCTION) + BUTTERFLY_SPAWN_OFFSET;
+                                LOG("Addr = 0x%08X, CurrButterFlyPC = 0x%08X", addr + BUTTERFLY_FUNCTION + BUTTERFLY_SPAWN_OFFSET, currButterflyPC);
+                            }
+                            else if (gGame == GAME_MM && tmp == 0x00150000)
+                            {
+                                LOG("Addr = 0x%08X, S0 = 0x%08X", base + S0_OFFSET, gS0);
+                                currButterflyPC = *(uint32_t*)(addr + BUTTERFLY_FUNCTION + 0x08) + BUTTERFLY_SPAWN_OFFSET;
+                                LOG("Addr = 0x%08X, CurrButterFlyPC = 0x%08X", addr + BUTTERFLY_FUNCTION + BUTTERFLY_SPAWN_OFFSET + 0x08, currButterflyPC);
+                            }
+
+                        }
+
+                        break;
+                    }
+                    default:
+                    {
+                        return;
+                    }
+                }
             }
         }
         else if ((gGame == GAME_OOT && PC == OOT_PLAY_MAIN) || (gGame == GAME_MM && PC == MM_PLAY_MAIN))
@@ -220,14 +356,25 @@ void HandlePCHook(uint32_t PC)
 
             gIsRAMLoaded = true;
 
-            printf("RAM Loaded : 0x%08X\n", PC);
+            LOG("Game = %d, RAM Loaded : 0x%08X", gGame, PC);
 
-            uint64_t version = GetGameVersion();
+            gGameVersion = GetGameVersion();
 
             GamePatternState* state = &gPatternState[gGame];
 
-            if (!state->Resolved || state->Version != version)
+            LOG("ICI");
+            if (gGameVersion != gPatternState[gGame].Version)
             {
+                gPatternState[GAME_OOT].Resolved = false;
+                gPatternState[GAME_MM].Resolved = false;
+            }
+
+            LOG("ICI");
+            if (!state->Resolved || state->Version != gGameVersion)
+            {
+                gPatternState[GAME_OOT].Version = gGameVersion;
+                gPatternState[GAME_MM].Version = gGameVersion;
+                LOG("ICI");
                 BuildTypeMaskFromPatterns();
             }
         }
@@ -252,14 +399,12 @@ void HandlePCHook(uint32_t PC)
 }
 
 
-
-
 __declspec(naked) void ROMHook()
 {
     __asm
     {
         // -------------------------
-        // Save context (pushad, flags handled)
+        // Save context
         // -------------------------
         pushad
 
@@ -273,19 +418,8 @@ __declspec(naked) void ROMHook()
         mov ecx, [esi + 4]
         mov[edi], eax
         mov[edi + 4], ecx
-
-        // -------------------------
-        // Call C++ initialization
-        // -------------------------
-        //call GetGameVersion
-        //nop
-
-        // -------------------------
-        // Initialize typemask (lazy, will resolve patterns)
-        // -------------------------
-        //call InitHooking
-        //nop
-
+        mov gGame, GAME_UNKNOWN
+        mov gIsRAMLoaded, 0
         
         popad
         jmp gatewayROM // trampoline to original code
@@ -304,7 +438,7 @@ __declspec(naked) void PCHook()
         mov eax, regBase
         mov eax, [eax]
         mov ecx, [eax + PC_OFFSET]   // PC
-        mov edx, [eax + SP_OFFSET]   // SP
+        //mov edx, [eax + SP_OFFSET]   // SP
         mov esi, ecx                 // save PC
 
         // -------------------------

@@ -25,6 +25,16 @@
 #define OOT_PLAY_MAIN 0x8009CAC8            // The OoT Play_Main function used to know if RAM is fully loaded.
 #define MM_PLAY_MAIN  0x80168F64            // The MM Play_Main function used to know if RAM is fully loaded.
 
+#ifdef _DEBUG
+
+#define LOG(fmt, ...) \
+    printf("[LOG] " fmt "\n", __VA_ARGS__)
+
+#else
+
+#define LOG(fmt, ...)
+
+#endif
 
 enum GameID : uint16_t
 {
@@ -72,9 +82,10 @@ extern GameID gGame;
 extern uint64_t gGameVersion;
 extern uint16_t typemask[PC_MASK_SIZE];
 
-bool IsPayloadPC(uint32_t PC);
+
 void SetPCType(uint32_t pc, uint16_t type);
 void InitTypeMask();
+void TryResolveROMBase();
 uintptr_t FindGameRAM();
 uint64_t GetGameVersion();
 GameID DetectCurrentGame();

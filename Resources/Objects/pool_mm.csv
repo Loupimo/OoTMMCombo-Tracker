@@ -1986,12 +1986,12 @@ SHOOTING_GAME_SWAMP_2;MM_ROAD_SOUTHERN_SWAMP;Reward 2;MM Swamp Archery Reward 2;
 0x03e11;MM_ROAD_SOUTHERN_SWAMP;Grass 12;MM Road to Southern Swamp Grotto Grass 12;none;0;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;none;render_type;All;0;all;overworld;;
 0x03e12;MM_ROAD_SOUTHERN_SWAMP;Grass 13;MM Road to Southern Swamp Grotto Grass 13;none;0;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;none;render_type;All;0;all;overworld;;
 0x03e13;MM_ROAD_SOUTHERN_SWAMP;Grass 14;MM Road to Southern Swamp Grotto Grass 14;none;0;0;0;MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;none;render_type;All;0;all;overworld;;
-0x0001a;MM_ROAD_SOUTHERN_SWAMP;Tree 1;MM Road to Southern Swanp Forked Tree 1;tree;377;368;0;MM_ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;all;overworld;;
-0x0001b;MM_ROAD_SOUTHERN_SWAMP;Tree 2;MM Road to Southern Swanp Forked Tree 2;tree;452;359;0;MM_ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;all;overworld;;
-0x0001c;MM_ROAD_SOUTHERN_SWAMP;Tree 3;MM Road to Southern Swanp Forked Tree 3;tree;333;352;0;MM_ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;all;overworld;;
-0x0001d;MM_ROAD_SOUTHERN_SWAMP;Tree 4;MM Road to Southern Swanp Forked Tree 4;tree;258;374;0;MM_ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;all;overworld;;
-0x0001e;MM_ROAD_SOUTHERN_SWAMP;Tree 5;MM Road to Southern Swanp Forked Tree 5;tree;413;339;0;MM_ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;all;overworld;;
-0x0001f;MM_ROAD_SOUTHERN_SWAMP;Tree 6;MM Road to Southern Swanp Forked Tree 6;tree;299;387;0;MM_ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;all;overworld;;
+0x0001a;MM_ROAD_SOUTHERN_SWAMP;Tree 1;MM Road to Southern Swamp Forked Tree 1;tree;377;368;0;MM_ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;all;overworld;;
+0x0001b;MM_ROAD_SOUTHERN_SWAMP;Tree 2;MM Road to Southern Swamp Forked Tree 2;tree;452;359;0;MM_ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;all;overworld;;
+0x0001c;MM_ROAD_SOUTHERN_SWAMP;Tree 3;MM Road to Southern Swamp Forked Tree 3;tree;333;352;0;MM_ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;all;overworld;;
+0x0001d;MM_ROAD_SOUTHERN_SWAMP;Tree 4;MM Road to Southern Swamp Forked Tree 4;tree;258;374;0;MM_ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;all;overworld;;
+0x0001e;MM_ROAD_SOUTHERN_SWAMP;Tree 5;MM Road to Southern Swamp Forked Tree 5;tree;413;339;0;MM_ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;all;overworld;;
+0x0001f;MM_ROAD_SOUTHERN_SWAMP;Tree 6;MM Road to Southern Swamp Forked Tree 6;tree;299;387;0;MM_ROAD_SOUTHERN_SWAMP;tree;render_type;All;0;all;overworld;;
 ROMANI_BOTTLE;MM_ROMANI_RANCH;Aliens;MM Romani Ranch Aliens;npc;350;162;0;MM_ROMANI_RANCH;npc;bottle;All;0;all;overworld;Powder Keg, Goron Mask (MM), Bow (MM), Clock (Night 1), Soul of Romani/Cremia;Protect the barn from the <b>Aliens</b>
 0x10;MM_ROMANI_RANCH;Left;MM Romani Ranch Barn Cow Left;cow;383;393;0;MM_RANCH_HOUSE_BARN;cow;render_type;All;0;all;overworld;Powder Keg, Goron Mask (MM), Clock (Day 1), Fairy Ocarina / Ocarina of Time, Epona's Song (MM), C-Up + C-Left + C-Right buttons (MM), Soul of Cows (MM);Play <b>Epona's Song</b> next to the cow
 0x12;MM_ROMANI_RANCH;Right Back;MM Romani Ranch Barn Cow Right Back;cow;360;199;0;MM_RANCH_HOUSE_BARN;cow;render_type;All;0;all;overworld;Powder Keg, Goron Mask (MM), Clock (Day 1), Fairy Ocarina / Ocarina of Time, Epona's Song (MM), C-Up + C-Left + C-Right buttons (MM), Soul of Cows (MM);Play <b>Epona's Song</b> next to the cow

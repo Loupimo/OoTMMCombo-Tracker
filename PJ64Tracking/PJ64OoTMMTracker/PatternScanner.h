@@ -9,10 +9,10 @@
 
 typedef struct PCSignature
 {
-    uint8_t Type;       // The friendly function name
-
+    uint8_t Type;           // The PC type associated to this pattern 
+    size_t PatternSize;     // The number of bytes in the pattern
     const uint8_t* Pattern; // The function pattern to find
-    const char* Mask;       // 
+    const uint32_t* Mask;   // The mask to apply to each pattern instruction 
 
     int PCOffset;           // Offset to target instruction
 } PCSignature;
@@ -25,8 +25,8 @@ typedef struct PCFastResolver
     PCSignature* Signature;           // The associated pattern to find
 } PCFastResolver;
 
-bool MatchPattern(uintptr_t addr, const uint8_t* pattern, const char* mask);
-uintptr_t FindPatternInPayload(const uint8_t* Pattern, const char* Mask);
+bool MatchPattern(uintptr_t addr, const PCSignature* Sig);
+uintptr_t FindPatternInPayload(const PCSignature* Sig);
 bool IsJAL(uint32_t InstrucVal);
 uintptr_t ResolveJAL(uint32_t InstrucVal, uint32_t JALAddr);
 uintptr_t FastPatternResolver(const PCFastResolver& Target);

@@ -6,6 +6,8 @@
 
 DWORD WINAPI MainThread(LPVOID)
 {
+#ifdef _DEBUG
+
     AllocConsole();
     
     FILE* fp = nullptr;
@@ -17,6 +19,8 @@ DWORD WINAPI MainThread(LPVOID)
     }
 
     printf("DLL injected!\n");
+
+#endif // _DEBUG
 
     HANDLE hMap = CreateFileMappingA(INVALID_HANDLE_VALUE, nullptr, PAGE_READWRITE, 0, sizeof(SharedData), "PJ64_SHARED_MEM");
 
@@ -47,38 +51,14 @@ DWORD WINAPI MainThread(LPVOID)
         regBase = moduleBase + REG_PTR_OFFSET;
 
         InstallROMHook();
+        TryResolveROMBase();
         gameRAMBase = FindGameRAM();
-        printf ("LoadCache %d\n", LoadCache("ootmm_pccache.bin"));
-        /*while (gData->Base == 0 || gData->GameRAMBase == 0)
-        {
-            Sleep(1);
-        }*/
 
-        printf("Init Hook\n");
+        LoadCache("ootmm_pccache.bin");
+
+        LOG("Init Hook");
 
         InstallPCHook();
-        //moduleBase = gData->Base;
-        //gameRAMBase = gData->GameRAMBase;
-        //InitTypeMask();
-        //InstallHooks();
-        /*
-        printf("Sizeof Event = %zu\n", sizeof(Event));
-        LONG readIndex = 0;
-        while (true)
-        {
-            LONG currIndex = gData->CurrIndex;
-
-            while (readIndex != currIndex)
-            {
-                Event evt = gData->Buffer[readIndex];
-                printf("Hit ! PC = 0x%08X, A1 = 0x%08X, GI = 0x%04X, GIRenew = 0x%04X, OVFlags = 0x%04X, OVType = 0x%02X, SceneID = 0x%02X, RoomID = 0x%02X, ID = 0x%02X, From = 0x%02X\n", evt.PC, evt.A1, evt.Query.GI, evt.Query.GIRenew, evt.Query.OVFlags, evt.Query.OVType, evt.Query.SceneId, evt.Query.RoomId, evt.Query.ID, evt.Query.From);
-                    //sendToTracker(evt.pc, evt.sp);
-
-                readIndex = (readIndex + 1) % BUFFER_SIZE; // wrap-around
-            }
-
-            Sleep(10); // ou Yield pour laisser CPU aux autres threads
-        }*/
     }
 
     return 0;
