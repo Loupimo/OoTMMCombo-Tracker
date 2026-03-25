@@ -1,29 +1,39 @@
 ﻿#pragma once
 
-#define ROM_PTR_OFFSET 0x1B00CC             // The offset to get the ROM pointer structure
-#define ROM_OFFSET 0x10                     // The offset to add to the ROM pointer structure to get the physical address of the loaded ROM.
-#define MMU_PTR_OFFSET 0x1B00BC             // The offset to get the MMU pointer structure
-#define MMU_OFFSET     0x1074               // The offset to apply to the MMU pointer structure to get the physical RAM address of the game
-#define REG_PTR_OFFSET 0x1B00C4             // The offset to get the register structure
-#define PC_OFFSET      0x220				// PC offset in the CPU structure
+// PJ64 Hooks
+#define HOOK_PC_OFFSET          0xE64C9		// Instruction offset to hook for the PC updating
+#define HOOK_PC_SIZE                  7     // Original instruction size of the hooked PC updating code
+#define HOOK_ROM_LOAD_OFFSET    0xD5A9B     // Instruction offset to hook ROM loading to physical RAM address
+#define HOOK_ROM_LOAD_SIZE           11     // Original instruction size of the hooked ROM loading code
+
+// Registers, Memory, ROM
+#define MMU_PTR_OFFSET         0x1B00BC     // The offset to get the MMU pointer structure
+#define REG_PTR_OFFSET         0x1B00C4     // The offset to get the register structure
+#define ROM_PTR_OFFSET         0x1B00CC     // The offset to get the ROM pointer structure
+
+// Registers offsets
+#define ROM_OFFSET                 0x10     // The offset to add to the ROM pointer structure to get the physical address of the loaded ROM.
+#define MMU_OFFSET               0x1074     // The offset to apply to the MMU pointer structure to get the physical RAM address of the game
+#define PC_OFFSET                 0x220		// PC offset in the CPU structure
 #define V0_OFFSET      PC_OFFSET + 0x18     // V0 offset in the CPU structure (relative to PC offset)
 #define V1_OFFSET      PC_OFFSET + 0x20     // V1 offset in the CPU structure (relative to PC offset)
 #define A1_OFFSET      PC_OFFSET + 0x30     // A1 offset in the CPU structure (relative to PC offset)
 #define S0_OFFSET      PC_OFFSET + 0x88     // S0 offset in the CPU structure (relative to PC offset)
 #define SP_OFFSET      PC_OFFSET + 0xF0     // SP offset in the CPU structure (relative to PC offset)
-#define DROP_CUSTOM    -0x68                // The offset to add to SP to gather "Nothing" item objects on drop custom function
-#define SHOP_CUSTOM    -0x40                // The offset to add to SP to gather "Nothing" item objects on shop function
-#define BUTTERFLY_CUSTOM    -0x40           // The offset to add to SP to gather "Nothing" item objects on butterfly function
-#define BUTTERFLY_FUNCTION   0x240          // The offset to add the S0 register to get the butterfly's action function PC value
-#define BUTTERFLY_SPAWN_OFFSET   0x130      // The offset to add to the butterfly's action function to reach the GI_NOTHING test
-#define HOOK_PC_OFFSET    0xE64C9		    // Instruction offset to hook for the PC updating
-#define HOOK_PC_SIZE 7                      // Original instruction size of the hooked PC updating code
-#define HOOK_ROM_LOAD_OFFSET 0xD5A9B        // Instruction offset to hook ROM loading to physical RAM address
-#define HOOK_ROM_LOAD_SIZE  11              // Original instruction size of the hooked ROM loading code 
-#define BUFFER_SIZE 1024
-#define PC_MASK_SIZE (1 << 24)              // 24-bit address space
-#define OOT_PLAY_MAIN 0x8009CAC8            // The OoT Play_Main function used to know if RAM is fully loaded.
-#define MM_PLAY_MAIN  0x80168F64            // The MM Play_Main function used to know if RAM is fully loaded.
+
+// Function specific offsets
+#define DROP_CUSTOM               -0x68     // The offset to add to SP to gather "Nothing" item objects on drop custom function
+#define SHOP_CUSTOM               -0x40     // The offset to add to SP to gather "Nothing" item objects on shop function
+#define BUTTERFLY_CUSTOM          -0x40     // The offset to add to SP to gather "Nothing" item objects on butterfly function
+#define BUTTERFLY_FUNCTION        0x240     // The offset to add the S0 register to get the butterfly's action function PC value
+#define BUTTERFLY_SPAWN_OFFSET    0x130     // The offset to add to the butterfly's action function to reach the GI_NOTHING test
+
+// Running stuff
+#define BUFFER_SIZE                1024     // The number of event that can be store at the same time
+#define PC_RANGE_START       0x80000000     // First possible PC to capture
+#define PC_RANGE_SIZE        0x00800000     // 8 MB
+#define OOT_PLAY_MAIN        0x8009CAC8     // The OoT Play_Main function used to know if RAM is fully loaded.
+#define MM_PLAY_MAIN         0x80168F64     // The MM Play_Main function used to know if RAM is fully loaded.
 
 #ifdef _DEBUG
 
@@ -36,11 +46,11 @@
 
 #endif
 
-enum GameID : uint16_t
+enum GameID : uint8_t
 {
-    GAME_OOT = 0x0000,
-    GAME_MM = 0x0001,
-    GAME_UNKNOWN = 0x0200
+    GAME_OOT = 0,
+    GAME_MM = 1,
+    GAME_UNKNOWN = 2
 };
 
 // ==============================
@@ -51,10 +61,10 @@ enum GameID : uint16_t
 enum PCType : uint8_t
 {
     TYPE_NONE = 0,
-    TYPE_COMBO = 1,
-    TYPE_XFLAG = 2,
-    TYPE_SHOP = 3,
-    TYPE_BUTTERFLY = 4
+    TYPE_BUTTERFLY = 1,
+    TYPE_COMBO = 2,
+    TYPE_XFLAG = 3,
+    TYPE_SHOP = 4,
 };
 
 
@@ -80,11 +90,9 @@ extern uintptr_t regBase;
 extern uintptr_t gameRAMBase;
 extern GameID gGame;
 extern uint64_t gGameVersion;
-extern uint16_t typemask[PC_MASK_SIZE];
+extern uint8_t typemask[2][PC_RANGE_SIZE];
 
 
-void SetPCType(uint32_t pc, uint16_t type);
-void InitTypeMask();
 void TryResolveROMBase();
 uintptr_t FindGameRAM();
 uint64_t GetGameVersion();

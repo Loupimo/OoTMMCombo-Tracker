@@ -6,6 +6,13 @@
 #define PAYLOAD_END   0x80800000
 #define MAX_JAL 10
 
+typedef struct GamePatternState
+{
+    bool Resolved = false;
+    uint64_t Version = 0;
+} GamePatternState;
+
+extern GamePatternState gPatternState[2];
 
 typedef struct PCSignature
 {
@@ -25,6 +32,8 @@ typedef struct PCFastResolver
     PCSignature* Signature;           // The associated pattern to find
 } PCFastResolver;
 
+
+void SetPCType(uint32_t pc, uint8_t type);
 bool MatchPattern(uintptr_t addr, const PCSignature* Sig);
 uintptr_t FindPatternInPayload(const PCSignature* Sig);
 bool IsJAL(uint32_t InstrucVal);

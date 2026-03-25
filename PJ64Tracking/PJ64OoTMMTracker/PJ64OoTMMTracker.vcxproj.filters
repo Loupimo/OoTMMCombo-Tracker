@@ -30,9 +30,6 @@
     <ClInclude Include="Patterns.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Cache.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -45,9 +42,6 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="PatternScanner.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Cache.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>

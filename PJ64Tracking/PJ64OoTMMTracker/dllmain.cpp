@@ -1,8 +1,6 @@
 // dllmain.cpp : Définit le point d'entrée de l'application DLL.
 #include "pch.h"
 #include "Hooking.h"
-#include "Cache.h"
-
 
 DWORD WINAPI MainThread(LPVOID)
 {
@@ -53,8 +51,6 @@ DWORD WINAPI MainThread(LPVOID)
         InstallROMHook();
         TryResolveROMBase();
         gameRAMBase = FindGameRAM();
-
-        LoadCache("ootmm_pccache.bin");
 
         LOG("Init Hook");
 

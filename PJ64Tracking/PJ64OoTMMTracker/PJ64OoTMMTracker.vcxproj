@@ -142,7 +142,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Cache.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Hooking.h" />
     <ClInclude Include="Patterns.h" />
@@ -150,7 +149,6 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Cache.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Hooking.cpp" />
     <ClCompile Include="PatternScanner.cpp" />

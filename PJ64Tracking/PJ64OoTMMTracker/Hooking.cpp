@@ -1,38 +1,9 @@
 #include "pch.h"
 #include "Hooking.h"
 #include "PatternScanner.h"
-#include "Cache.h"
 
-// PC addresses to target
-constexpr int MAX_TARGETS = 128;
-constexpr uint32_t targetsPC_A1[MAX_TARGETS] = {
-    0x8040C35C, // comboItemAddRawEx:   used to track all other objects for OoT
-    0x8073BC50  // comboItemAddRawEx:   used to track all other objects for MM
-};
-constexpr uint32_t targetsPC_A1Count = sizeof(targetsPC_A1) / sizeof(targetsPC_A1[0]);
-
-constexpr uint32_t targetsPC_SP[MAX_TARGETS] = {
-    0x80400D60,  // EnItem00_DropCustom: if (o.gi == GI_NOTHING), used for tracking objects that drop a "Nothing" item for OoT. Here we capture a XFlag and used SP - 0x68
-    0x80730FE0   // EnItem00_DropCustom: if (o.gi == GI_NOTHING), used for tracking objects that drop a "Nothing" item for MM. Here we capture a XFlag and used SP - 0x68
-};
-constexpr uint32_t targetsPC_SPCount = sizeof(targetsPC_SP) / sizeof(targetsPC_SP[0]);
-
-constexpr uint32_t targetsPC_Shop[MAX_TARGETS] = {
-    0x8040C168,  // comboItemPrecond: if (o.gi == GI_NOTHING), used for tracking buyable "Nothing" item for OoT. Here we capture a XFlag and used SP - 0x40
-    0x8073BA5C   // comboItemPrecond: if (o.gi == GI_NOTHING), used for tracking buyable "Nothing" item for MM. Here we capture a XFlag and used SP - 0x40
-};
-constexpr uint32_t targetsPC_ShopCount = sizeof(targetsPC_Shop) / sizeof(targetsPC_Shop[0]);
-
-constexpr uint32_t targetsPC_Butterfly[MAX_TARGETS] = {
-    0x8041A040,  // Actor_Run_Update: used for tracking butterfly "Nothing" item for OoT. Here we check if the actor is a butterfly (id: 0x1E) using S0, if yes we look at the actor function to get the EnButte_SpawnFairy address and then apply an offset to get the EnButte_ShouldSpawnFairy address and then to check if the GI is "GI_NOTHING".
-    0x8041E360  // Actor_Run_Update: used for tracking butterfly "Nothing" item for MM. Here we check if the actor is a butterfly (id: 0x15) using S0, if yes we look at the actor function to get the EnButte_SpawnFairy address and then apply an offset to get the EnButte_ShouldSpawnFairy address and then to check if the GI is "GI_NOTHING".
-};
-constexpr uint32_t targetsPC_ButterflyCount = sizeof(targetsPC_Butterfly) / sizeof(targetsPC_Butterfly[0]);
-
-#define PC_MASK_SIZE (1 << 24)           // 24-bit address space
-//#define TYPEMASK_SIZE (PC_MASK_SIZE / 4) // 4 entries per byte
-
-uint16_t typemask[PC_MASK_SIZE];
+alignas(64)
+uint8_t typemask[2][PC_RANGE_SIZE]; // One type mask per game
 
 // Hooking installation
 void* gatewayPC = NULL;
@@ -62,13 +33,6 @@ __forceinline bool IsValidAddr(uint32_t Addr)
 {
     return (Addr & 0xFF000000) == 0x80000000;
 }
-
-
-__forceinline void SetPCType(uint32_t pc, uint16_t type)
-{
-    typemask[pc & 0x00FFFFFF] = type;
-}
-
 
 __forceinline uint64_t GetGameVersion()
 {
@@ -138,36 +102,6 @@ __forceinline void PeriodicGameCheck()
 
         gGame = g;
         gIsRAMLoaded = false;
-    }
-}
-
-
-void InitTypeMask()
-{
-    memset(typemask, 0, sizeof(typemask));
-
-    // A1 cases
-    for (size_t i = 0; i < targetsPC_A1Count; i++)
-    {
-        SetPCType(targetsPC_A1[i], TYPE_COMBO);
-    }
-
-    // Xflag cases
-    for (size_t i = 0; i < targetsPC_SPCount; i++)
-    {
-        SetPCType(targetsPC_SP[i], TYPE_XFLAG);
-    }
-
-    // Shop cases
-    for (size_t i = 0; i < targetsPC_ShopCount; i++)
-    {
-        SetPCType(targetsPC_Shop[i], TYPE_SHOP);
-    }
-
-    // Butterfly cases
-    for (size_t i = 0; i < targetsPC_ButterflyCount; i++)
-    {
-        SetPCType(targetsPC_Butterfly[i], TYPE_BUTTERFLY);
     }
 }
 
@@ -250,12 +184,11 @@ __forceinline void HandlePCHook(uint32_t PC)
         if (gIsRAMLoaded)
         {   // The RAM is loaded
 
-            uint32_t base = *(uint32_t*)regBase;
-
-            if (currButterflyPC == PC)
+            if (currButterflyPC != 0 && currButterflyPC == PC)
             {   // Use buttefly
 
                 currButterflyPC = 0;
+                uint32_t base = *(uint32_t*)regBase;
                 gV1 = *(uint32_t*)(base + V1_OFFSET);
 
                 LOG("Addr = 0x%08X, V1 = 0x%08X", base + V1_OFFSET, gV1);
@@ -269,10 +202,47 @@ __forceinline void HandlePCHook(uint32_t PC)
             }
             else
             {
+                PCType type = (PCType)typemask[gGame][PC - PC_RANGE_START];
+
+                if (type == TYPE_NONE)
+                {   // Done outside the switch as it represent 99% of the PCs
+
+                    return;
+                }
+
                 uintptr_t addr = gameRAMBase;
-                PCType type = (PCType)typemask[PC & 0x00FFFFFF];
+                uint32_t base = *(uint32_t*)regBase;
                 switch (type)
                 {
+                    // Butterfly uses Actor_RunUpdate function which occurs a lot compare to the others, need to be put first to optimize
+                    case TYPE_BUTTERFLY:
+                    {    // read S0...
+                        gS0 = *(uint32_t*)(base + S0_OFFSET);
+
+                        if (IsValidAddr(gS0))
+                        {
+                            addr += gS0 & 0x00FFFFFF;
+                            uint32_t tmp = *(uint32_t*)addr & 0xFFFF0000;
+
+                            if (gGame == GAME_OOT && tmp == 0x001E0000)
+                            {   // This is a butterfly
+
+                                LOG("Addr = 0x%08X, S0 = 0x%08X", base + S0_OFFSET, gS0);
+                                currButterflyPC = *(uint32_t*)(addr + BUTTERFLY_FUNCTION) + BUTTERFLY_SPAWN_OFFSET;
+                                LOG("Addr = 0x%08X, CurrButterFlyPC = 0x%08X", addr + BUTTERFLY_FUNCTION + BUTTERFLY_SPAWN_OFFSET, currButterflyPC);
+                            }
+                            else if (gGame == GAME_MM && tmp == 0x00150000)
+                            {
+                                LOG("Addr = 0x%08X, S0 = 0x%08X", base + S0_OFFSET, gS0);
+                                currButterflyPC = *(uint32_t*)(addr + BUTTERFLY_FUNCTION + 0x08) + BUTTERFLY_SPAWN_OFFSET;
+                                LOG("Addr = 0x%08X, CurrButterFlyPC = 0x%08X", addr + BUTTERFLY_FUNCTION + BUTTERFLY_SPAWN_OFFSET + 0x08, currButterflyPC);
+                            }
+
+                        }
+
+                        break;
+                    }
+
                     case TYPE_COMBO:
                     {    // read A1, S0, etc...
 
@@ -317,33 +287,7 @@ __forceinline void HandlePCHook(uint32_t PC)
 
                         return;
                     }
-                    case TYPE_BUTTERFLY:
-                    {    // read S0...
-                        gS0 = *(uint32_t *)(base + S0_OFFSET);
-
-                        if (IsValidAddr(gS0))
-                        {
-                            addr += gS0 & 0x00FFFFFF;
-                            uint32_t tmp = *(uint32_t*)addr & 0xFFFF0000;
-
-                            if (gGame == GAME_OOT && tmp == 0x001E0000)
-                            {   // This is a butterfly
-
-                                LOG("Addr = 0x%08X, S0 = 0x%08X", base + S0_OFFSET, gS0);
-                                currButterflyPC = *(uint32_t*)(addr + BUTTERFLY_FUNCTION) + BUTTERFLY_SPAWN_OFFSET;
-                                LOG("Addr = 0x%08X, CurrButterFlyPC = 0x%08X", addr + BUTTERFLY_FUNCTION + BUTTERFLY_SPAWN_OFFSET, currButterflyPC);
-                            }
-                            else if (gGame == GAME_MM && tmp == 0x00150000)
-                            {
-                                LOG("Addr = 0x%08X, S0 = 0x%08X", base + S0_OFFSET, gS0);
-                                currButterflyPC = *(uint32_t*)(addr + BUTTERFLY_FUNCTION + 0x08) + BUTTERFLY_SPAWN_OFFSET;
-                                LOG("Addr = 0x%08X, CurrButterFlyPC = 0x%08X", addr + BUTTERFLY_FUNCTION + BUTTERFLY_SPAWN_OFFSET + 0x08, currButterflyPC);
-                            }
-
-                        }
-
-                        break;
-                    }
+                    
                     default:
                     {
                         return;
@@ -362,19 +306,16 @@ __forceinline void HandlePCHook(uint32_t PC)
 
             GamePatternState* state = &gPatternState[gGame];
 
-            LOG("ICI");
             if (gGameVersion != gPatternState[gGame].Version)
             {
                 gPatternState[GAME_OOT].Resolved = false;
                 gPatternState[GAME_MM].Resolved = false;
             }
 
-            LOG("ICI");
             if (!state->Resolved || state->Version != gGameVersion)
             {
                 gPatternState[GAME_OOT].Version = gGameVersion;
                 gPatternState[GAME_MM].Version = gGameVersion;
-                LOG("ICI");
                 BuildTypeMaskFromPatterns();
             }
         }
@@ -395,6 +336,28 @@ __forceinline void HandlePCHook(uint32_t PC)
             gPatternState[GAME_OOT].Version = gGameVersion;
             gPatternState[GAME_MM].Version = gGameVersion;
         }
+    }
+}
+
+__declspec(naked) void PCHook()
+{
+    __asm
+    {
+        push eax
+        push ecx
+
+        mov eax, regBase
+        mov eax, [eax]
+        mov ecx, [eax + PC_OFFSET]
+
+        push ecx
+        call HandlePCHook
+        add esp, 4
+
+        pop ecx
+        pop eax
+
+        jmp gatewayPC
     }
 }
 
@@ -423,33 +386,6 @@ __declspec(naked) void ROMHook()
         
         popad
         jmp gatewayROM // trampoline to original code
-    }
-}
-
-__declspec(naked) void PCHook()
-{
-    __asm
-    {
-        pushad
-
-        // -------------------------
-        // Read PC
-        // -------------------------
-        mov eax, regBase
-        mov eax, [eax]
-        mov ecx, [eax + PC_OFFSET]   // PC
-        //mov edx, [eax + SP_OFFSET]   // SP
-        mov esi, ecx                 // save PC
-
-        // -------------------------
-        // Call C++ dispatcher
-        // -------------------------
-        push esi       // push PC
-        call HandlePCHook
-        add esp, 4     // cleanup
-
-        popad
-        jmp gatewayPC
     }
 }
 /*

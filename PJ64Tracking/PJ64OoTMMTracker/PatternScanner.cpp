@@ -2,7 +2,8 @@
 #include "PatternScanner.h"
 #include "Hooking.h"
 #include "Patterns.h"
-#include "Cache.h"
+
+GamePatternState gPatternState[2]; // 0 = OoT, 1 = MM
 
 __forceinline uint32_t ByteSwap32(uint32_t x)
 {
@@ -15,6 +16,13 @@ __forceinline uint32_t ByteSwap32(uint32_t x)
 }
 
 
+__forceinline void SetPCType(uint32_t pc, uint8_t type)
+{
+    LOG("Setting PC : 0x%08X, Type = %d", pc, type);
+    typemask[gGame][pc - PC_RANGE_START] = type;
+}
+
+
 __forceinline bool MatchPattern(uintptr_t addr, const PCSignature * Sig)
 {
     for (size_t i = 0, j = 0; i < Sig->PatternSize; i += 4, j++)
@@ -23,7 +31,7 @@ __forceinline bool MatchPattern(uintptr_t addr, const PCSignature * Sig)
         uint32_t currWord = *(uint32_t*)(addr + i); 
         uint32_t targetWord = ByteSwap32(*(uint32_t*)(Sig->Pattern + i));   // We need to swap byte order as they are store in big endian order
 
-        LOG("Target = 0x%08X, Curr = 0x%08X", targetWord, currWord);
+        LOG("Target = 0x%08X, Curr = 0x%08X, i = %zu, j = %zu", targetWord, currWord, i, j);
 
         if ((currWord & Sig->Mask [j]) != (targetWord & Sig->Mask[j]))
         {
@@ -50,7 +58,6 @@ __forceinline uintptr_t FindPatternInPayload(const PCSignature* Sig)
         if (word != firstWord)
         {   // The first word does not match we can continue without having to overloop
 
-            //printf("first Word = 0x%08X, curr Word = 0x%08X\n", firstWord, word);
             continue;
         }
 
@@ -72,10 +79,8 @@ void BuildTypeMaskFromPatterns()
 
     if (gGame == GAME_OOT)
     {
-        LOG("ICI");
         sigs = OoTSignatures;
         count = OoTSignatureCount;
-        LOG("LA");
     }
     else if (gGame == GAME_MM)
     {
@@ -95,7 +100,7 @@ void BuildTypeMaskFromPatterns()
         return;
     }
 
-    memset(typemask, 0, sizeof(typemask));
+    memset(typemask[gGame], 0, PC_RANGE_SIZE);
 
     for (size_t i = 0; i < count; i++)
     {
@@ -137,9 +142,6 @@ void BuildTypeMaskFromPatterns()
         SetPCType(PC, sigs[i].Signature->Type);
 
         LOG("[OK] PC 0x%08X", PC);
-
-        gPatternState[gGame].PCs[i] = PC;
-        gPatternState[gGame].Types[i] = sigs[i].Signature->Type;
     }
 
     // Mark resolved
