@@ -1,10 +1,10 @@
 ﻿#pragma once
 
 // PJ64 Hooks
-#define HOOK_PC_OFFSET          0xE64C9		// Instruction offset to hook for the PC updating
-#define HOOK_PC_SIZE                  7     // Original instruction size of the hooked PC updating code
 #define HOOK_ROM_LOAD_OFFSET    0xD5A9B     // Instruction offset to hook ROM loading to physical RAM address
 #define HOOK_ROM_LOAD_SIZE           11     // Original instruction size of the hooked ROM loading code
+#define HOOK_PC_OFFSET          0xE64C9		// Instruction offset to hook for the PC updating
+#define HOOK_PC_SIZE                  7     // Original instruction size of the hooked PC updating code
 
 // Registers, Memory, ROM
 #define MMU_PTR_OFFSET         0x1B00BC     // The offset to get the MMU pointer structure

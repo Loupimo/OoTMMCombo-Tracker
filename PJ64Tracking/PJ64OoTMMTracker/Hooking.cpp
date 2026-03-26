@@ -453,65 +453,87 @@ __forceinline void HandlePCHookRare(uint32_t PC)
     PeriodicGameCheck();
 }
 
+/*
+*   Check if the given address is in range 0x80000000 and 0x80FFFFFF.
+*
+*   @param Addr     The address to test.
+*   @param Tmp      The temporary register to use.
+*   @param Jump     The label to jump to in case the address in not in the range.
+*/
+#define IS_ADDR_VALID(Addr, Tmp, Jump)  \
+__asm mov Tmp, Addr                     \
+__asm and Tmp, 0FF000000h               \
+__asm cmp Tmp, 080000000h               \
+__asm jne Jump
 
+
+/*
+*   Compute and store the address matching the desired index of a SharedData structure.
+*
+*   @param DataStart     The address to start at.
+*   @param CurrIndex     The index to reach.
+*   @param Dst           The register to store the address to.
+*/
+#define COMPUTE_INDEX(DataStart, CurrIndex, Dst)   \
+__asm lea Dst, [CurrIndex + CurrIndex * 4]         \
+__asm lea Dst, [DataStart + Dst * 4 + 16]
+
+
+/*
+*   Increment the index of a SharedData structure.
+*
+*   @param Target     The SharedData Structure to increment.
+*   @param Tmp        The temporary register to use.
+*/
+#define INC_INDEX(Target, Tmp)                   \
+__asm mov Tmp, [Target]                          \
+__asm inc dword ptr[Tmp + 12]                    \
+__asm and dword ptr[Tmp + 12], BUFFER_SIZE - 1
+
+
+/*
+*   Compute and store the real RAM address matching the given virtual game RAM address.
+*
+*   @param GameAddr     The virtual game RAM address (0x80000000 - 0x80FFFFFF).
+*   @param Dst          The register to store the real RAM address to.
+*/
+#define COMPUTE_RAM_ADDR(GameAddr, DstReg)  \
+__asm mov DstReg, GameAddr                  \
+__asm and DstReg, 00FFFFFFh                 \
+__asm add DstReg, [gameRAMBase]
 
 __declspec(naked) void CaptureXFlagASM()
 {
     __asm
     {
-        mov eax, ebx
-        and eax, 0xFF000000
-        cmp eax, 0x80000000
-        jne Done
+        IS_ADDR_VALID(ebx, eax, Done)
 
         push edi
-        push ecx; PC
-        push ebx; SP
 
-        mov eax, gData
+        mov eax, [gData]
 
         // Get CurrIndex
         mov edx, [eax + 12]
 
-        // Compute slot = idx * 20
-        mov ebx, edx
-        shl ebx, 4          // idx * 16
-        mov ecx, edx
-        shl ecx, 2          // idx * 4
-        add ebx, ecx        // idx * 20
-        lea edi, [eax + 16 + ebx]
-
-        pop ebx
-
-        mov eax, ebx
-        and eax, 0x00FFFFFF
-
-        //push esi
-
-        mov edx, gameRAMBase    // The real game RAM base address 
-        add edx, eax            // Add the offset to the game RAM base address
-
-        pop ecx
+        COMPUTE_INDEX(eax, edx, edi)
+        COMPUTE_RAM_ADDR(ebx, edx)
 
         // Fill the buffer at the correct index
-        mov[edi], ecx             // Store PC
-        mov[edi + 4],  ebx        // Store Mem
-        mov eax, [edx]
-        mov[edi + 8],  eax     // Key
-        mov eax, [edx + 4]
-        mov[edi + 12], eax  // GI
+        mov[edi], ecx       // Store PC
+        mov[edi + 4], ebx   // Store Mem
 
-        movzx eax, byte ptr[gGame]        // The game the XFlag comes from 
-        add eax, 0xFFFF0000       // IsConsumed
+        mov eax, [edx]      // Load Key
+        mov ecx, [edx + 4]  // Load GI
 
-        mov[edi + 16], eax  // q2
+        mov[edi + 8], eax   // Store Key
+        mov[edi + 12], ecx  // Store GI
 
-        // Increment CurrIndex
-        mov eax, gData
-        mov ecx, [eax + 12]
-        inc ecx
-        and ecx, BUFFER_SIZE - 1
-        mov[eax + 12], ecx
+        // Build flags
+        movzx eax, byte ptr[gGame] // The game the XFlag comes from 
+        or eax, 0FFFF0000h         // Set the IsConsume flag
+        mov[edi + 16], eax         // Store flags
+
+        INC_INDEX(gData, eax)
 
         pop edi
 
@@ -520,6 +542,63 @@ __declspec(naked) void CaptureXFlagASM()
     }
 }
 
+
+__declspec(naked) void DetectCurrentGameASM()
+{
+    __asm
+    {
+        mov esi, [gameRAMBase]
+
+        // ====================
+        // Check OoT
+        // ====================
+
+        mov edi, esi
+        add edi, (0x8011A5EC & 0x00FFFFFF)
+
+        mov eax, [edi]
+        mov edx, [edi + 4]
+
+        and edx, 0FFFF0000h
+
+        cmp eax, 0x5A454C44
+        jne CHECK_MM
+
+        cmp edx, 0x415A0000
+        jne CHECK_MM
+
+        mov eax, GAME_OOT
+        ret
+
+        // ====================
+        // Check MM
+        // ====================
+
+        CHECK_MM:
+
+            mov edi, esi
+            add edi, (0x801EF694 & 0x00FFFFFF)
+
+            mov eax, [edi]
+            mov edx, [edi + 4]
+
+            and edx, 0FFFF0000h
+
+            cmp eax, 0x5A454C44
+            jne DONE
+
+            cmp edx, 0x41330000
+            jne DONE
+
+            mov eax, GAME_MM
+            ret
+
+       DONE:
+
+            mov eax, GAME_UNKNOWN
+            ret
+    }
+}
 
 __declspec(naked) void PCHook()
 {
@@ -530,6 +609,18 @@ __declspec(naked) void PCHook()
         push ecx
         push edx
         push ebx
+
+        /*CHECK_GAME :
+
+            /* if (gGame == GAME_UNKNOWN) then check game 
+            mov al, [gGame]
+            cmp al, GAME_UNKNOWN
+            jne START_HOOK
+
+            call DetectCurrentGameASM
+
+        
+        START_HOOK:*/
 
         // --- Lire PC-- -
         mov ecx, [esi] // ; ecx = PC
@@ -542,10 +633,8 @@ __declspec(naked) void PCHook()
         jne CheckIsRAMLoaded
 
         // --- Butterfly fast path-- -
-        //mov eax, [currButterflyPC]  // ; lire l'ancienne valeur (si besoin)
-        //xor eax, eax    //; mettre à 0
         mov[currButterflyPC], 0   //; écrire 0
-        mov edx, regBase
+        mov edx, [regBase]
         mov edx, [edx]
         mov eax, [edx + V1_OFFSET]
         cmp eax, 0x033C
@@ -625,7 +714,7 @@ __declspec(naked) void PCHook()
             call HandlePCHookRare
             add esp, 4
 
-                Done:
+        Done:
             pop ebx
             pop edx
             pop ecx
