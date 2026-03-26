@@ -94,7 +94,7 @@ void BuildTypeMaskFromPatterns()
 
     LOG("Resolved = %d", gPatternState[gGame].Resolved);
 
-    if (gPatternState[gGame].Resolved || gGameVersion == 0)
+    if (gPatternState[gGame].Resolved)
     {   // The patterns are already resolved
 
         return;
@@ -140,14 +140,13 @@ void BuildTypeMaskFromPatterns()
         uintptr_t PC = base + sigs[i].Signature->PCOffset;
 
         SetPCType(PC, sigs[i].Signature->Type);
-
+        gPatternState[gGame].PCs[i] = PC;
+        gActivePCs[i] = PC;
         LOG("[OK] PC 0x%08X", PC);
     }
 
     // Mark resolved
     gPatternState[gGame].Resolved = fullResolved;
-    gPatternState[gGame].Version = gGameVersion;
-    //SaveCache("ootmm_pccache.bin");
 }
 
 

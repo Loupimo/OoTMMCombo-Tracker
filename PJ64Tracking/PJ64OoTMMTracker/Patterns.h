@@ -154,7 +154,7 @@ uint32_t Mask_Actor_RunUpdate_OoT[] =
 
 PCSignature Sig_Actor_RunUpdate_OoT = { TYPE_BUTTERFLY, 24, Pattern_Actor_RunUpdate_OoT, Mask_Actor_RunUpdate_OoT, 0x00 };
 
-#pragma endregion   // comboAddItemRawEx
+#pragma endregion   // Actor_RunUpdate
 
 PCFastResolver OoTSignatures[] =
 {
@@ -318,7 +318,7 @@ uint32_t Mask_Actor_RunUpdate_MM[] =
 
 PCSignature Sig_Actor_RunUpdate_MM = { TYPE_BUTTERFLY, 20, Pattern_Actor_RunUpdate_MM, Mask_Actor_RunUpdate_MM, 0x00 };
 
-#pragma endregion   // comboAddItemRawEx
+#pragma endregion   // Actor_RunUpdate
 
 PCFastResolver MMSignatures[] =
 {

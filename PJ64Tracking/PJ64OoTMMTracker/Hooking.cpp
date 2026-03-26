@@ -4,6 +4,7 @@
 
 alignas(64)
 uint8_t typemask[2][PC_RANGE_SIZE]; // One type mask per game
+uint32_t gActivePCs[4] = { 0 };
 
 // Hooking installation
 void* gatewayPC = NULL;
@@ -16,12 +17,12 @@ BYTE originalBytesROM[HOOK_ROM_LOAD_SIZE];
 SharedData* gData = nullptr;
 GameID gGame = GAME_OOT;
 bool gIsRAMLoaded = false;
-uint64_t gGameVersion = 0;
 uintptr_t moduleBase = 0;
 uintptr_t regBase = 0;
 uintptr_t romBase = 0;
 uintptr_t gameRAMBase = 0;
 uintptr_t currButterflyPC = 0;
+uint32_t gDetectCounter = 0;
 uint32_t gSP = 0;
 uint32_t gA1 = 0;
 uint32_t gV0 = 0;
@@ -34,11 +35,11 @@ __forceinline bool IsValidAddr(uint32_t Addr)
     return (Addr & 0xFF000000) == 0x80000000;
 }
 
-__forceinline uint64_t GetGameVersion()
+__forceinline void GetGameVersion()
 {
     if (!gData)
     {
-        return 0;
+        return;
     }
 
     uint64_t version = ((uint64_t)gData->GameVersion[0] << 32) | gData->GameVersion[1];
@@ -48,12 +49,9 @@ __forceinline uint64_t GetGameVersion()
         version = *(uint64_t*)(romBase + 0x10);
         gData->GameVersion[0] = (uint32_t)version;
         gData->GameVersion[1] = version >> 32;
-        gGameVersion = version;
 
         LOG("Game Version = %llu", version);
     }
-    
-    return version;
 }
 
 
@@ -369,11 +367,9 @@ __forceinline void HandlePCHookRare(uint32_t PC)
         if (gGame != GAME_UNKNOWN)
         {
             gIsRAMLoaded = false;
-            gGameVersion = GetGameVersion();
+            GetGameVersion();
             gPatternState[GAME_OOT].Resolved = false;
             gPatternState[GAME_MM].Resolved = false;
-            gPatternState[GAME_OOT].Version = gGameVersion;
-            gPatternState[GAME_MM].Version = gGameVersion;
         }
         return;
     }
@@ -547,27 +543,22 @@ __declspec(naked) void DetectCurrentGameASM()
 {
     __asm
     {
-        mov esi, [gameRAMBase]
+        mov eax, [gameRAMBase]
 
         // ====================
         // Check OoT
         // ====================
 
-        mov edi, esi
-        add edi, (0x8011A5EC & 0x00FFFFFF)
+        mov ecx, [eax + (0x8011A5F0 & 0x00FFFFFF)]
+        and ecx, 0FFFF0000h
 
-        mov eax, [edi]
-        mov edx, [edi + 4]
-
-        and edx, 0FFFF0000h
-
-        cmp eax, 0x5A454C44
+        cmp dword ptr [eax + (0x8011A5EC & 0x00FFFFFF)], 0x5A454C44
         jne CHECK_MM
 
-        cmp edx, 0x415A0000
+        cmp ecx, 0x415A0000
         jne CHECK_MM
 
-        mov eax, GAME_OOT
+        mov byte ptr [gGame], GAME_OOT
         ret
 
         // ====================
@@ -576,145 +567,211 @@ __declspec(naked) void DetectCurrentGameASM()
 
         CHECK_MM:
 
-            mov edi, esi
-            add edi, (0x801EF694 & 0x00FFFFFF)
+            mov ecx, [eax + (0x801EF698 & 0x00FFFFFF)]
+            and ecx, 0FFFF0000h
 
-            mov eax, [edi]
-            mov edx, [edi + 4]
-
-            and edx, 0FFFF0000h
-
-            cmp eax, 0x5A454C44
+            cmp dword ptr [eax + (0x801EF694 & 0x00FFFFFF)], 0x5A454C44
             jne DONE
 
-            cmp edx, 0x41330000
+            cmp ecx, 0x41330000
             jne DONE
 
-            mov eax, GAME_MM
+            mov byte ptr [gGame], GAME_MM
             ret
 
        DONE:
 
-            mov eax, GAME_UNKNOWN
+            mov byte ptr [gGame], GAME_UNKNOWN
             ret
     }
 }
+
+
+__declspec(naked) void CheckGameVersionASM()
+{
+    __asm
+    {
+        mov ecx, [gData]
+        mov edx, [romBase]
+        mov eax, [edx + 0x10]
+        mov ebx, [edx + 0x14]
+
+        // Compare game version
+        cmp[ecx], eax // low
+        jne STORE_VERSION
+
+        cmp[ecx + 4], ebx // high
+        jne STORE_VERSION
+
+        mov eax, 1
+        ret
+
+        STORE_VERSION :
+            mov [ecx], eax
+            mov [ecx + 4], ebx
+            mov ecx, [gPatternState]
+            mov [ecx], 0                  // Reset gPatternState[GAME_OOT].Resolved
+            mov [ecx + 20], 0             // Reset gPatternState[GAME_MM].Resolved
+    }
+}
+
+
+/*
+#define DETECT_CURRENT_GAME(Tmp, Jump)          \
+__asm mov esi, [gameRAMBase]                    \
+__asm mov edi, esi                              \
+__asm add edi, (0x8011A5EC & 0x00FFFFFF)        \
+__asm mov eax, [edi]                            \
+__asm mov edx, [edi + 4]                        \
+__asm and edx, 0FFFF0000h                       \
+__asm cmp eax, 0x5A454C44                       \
+__asm jne CHECK_MM                              \
+__asm cmp edx, 0x415A0000                       \
+__asm jne CHECK_MM                              \
+__asm mov eax, GAME_OOT                         \
+__asm jmp GAME_UNK                              \
+                                                \
+__asm CHECK_MM:                                 \
+    __asm mov edi, esi                          \
+    __asm add edi, (0x801EF694 & 0x00FFFFFF)    \
+    __asm mov eax, [edi]                        \
+    __asm mov edx, [edi + 4]                    \ 
+    __asm and edx, 0FFFF0000h                   \
+    __asm cmp eax, 0x5A454C44                   \
+    __asm jne GAME_UNK                          \
+    __asm cmp edx, 0x41330000                   \
+    __asm jne GAME_UNK                          \
+    __asm mov eax, GAME_MM                      \
+    __asm jmp Jump                              \
+                                                \
+__asm GAME_UNK:                                 \
+    __asm mov eax, GAME_UNKNOWN
+*/
 
 __declspec(naked) void PCHook()
 {
     __asm
     {
-        // == = Préparation == =
+        // Setup
         push eax
         push ecx
         push edx
         push ebx
 
-        /*CHECK_GAME :
 
-            /* if (gGame == GAME_UNKNOWN) then check game 
-            mov al, [gGame]
-            cmp al, GAME_UNKNOWN
-            jne START_HOOK
+        // ====================
+        // Check if game is known
+        // ====================
 
-            call DetectCurrentGameASM
+        // if (gGame == GAME_UNKNOWN) then check game
+        cmp byte ptr [gGame], GAME_UNKNOWN
+        jne PERIODIC_GAME_CHECK
 
+        // Throttle detection, otherwise the game will be stuck
+        /*inc dword ptr[gDetectCounter]
+        cmp dword ptr[gDetectCounter], DETECT_THROTTLE
+        jb START_HOOK
+
+        mov dword ptr[gDetectCounter], 0*/
+
+        // Detect which game is loaded and if valid, gather the version
+        call DetectCurrentGameASM
+        cmp byte ptr [gGame], GAME_UNKNOWN
+        je DONE
+
+        // The game has changed gIsRAMLoaded should be set to false
+        mov ecx, [esi]
+        mov byte ptr[gIsRAMLoaded], 0
+        jmp IS_RAM_LOADED
         
-        START_HOOK:*/
+        PERIODIC_GAME_CHECK:
+            
+            // Trigger a game check when condition are met
+            inc dword ptr[gDetectCounter]
+            cmp dword ptr[gDetectCounter], DETECT_THROTTLE
+            jb START_HOOK
 
-        // --- Lire PC-- -
-        mov ecx, [esi] // ; ecx = PC
+            // Reset the counter
+            mov dword ptr[gDetectCounter], 0
 
-        // --- Test hot path butterfly-- -
-        mov eax, [currButterflyPC]
-        test eax, eax
-        je CheckIsRAMLoaded // ; si currButterflyPC = 0, passe aux autres tests
-        cmp eax, ecx
-        jne CheckIsRAMLoaded
+            // ebx is not used by the detect game function
+            mov bl, byte ptr [gGame]            // Store the current game state
+            call DetectCurrentGameASM
+            cmp byte ptr[gGame], bl
+            jb START_HOOK               // Both game are equal, we can go to the hooking routine
 
-        // --- Butterfly fast path-- -
-        mov[currButterflyPC], 0   //; écrire 0
-        mov edx, [regBase]
-        mov edx, [edx]
-        mov eax, [edx + V1_OFFSET]
-        cmp eax, 0x033C
-        jne CheckIsRAMLoaded
+            // The game has changed, we need to check for RAM status and pattern first
+            mov byte ptr[gIsRAMLoaded], 0
+            mov ecx, [esi]                  // Don't forget to load the PC to ecx first
+            jmp IS_RAM_LOADED
 
-        mov ebx, [edx + SP_OFFSET]
-        add ebx, BUTTERFLY_CUSTOM
-        //push ecx; PC
-        //push ebx; SP
-        call CaptureXFlagASM
-        nop
-        //add esp, 8
-        jmp Done
+        START_HOOK :
 
-        CheckIsRAMLoaded :
-        // Vérifier si RAM est chargée
-            cmp gIsRAMLoaded, 0
+            // --- Lire PC-- -
+            mov ecx, [esi] // ; ecx = PC
+
+            // --- Test hot path butterfly-- -
+            mov eax, [currButterflyPC]
+            test eax, eax
+            je IS_RAM_LOADED // ; si currButterflyPC = 0, passe aux autres tests
+            cmp eax, ecx
+            jne IS_RAM_LOADED
+
+            // --- Butterfly fast path-- -
+            mov[currButterflyPC], 0   //; écrire 0
+            mov edx, [regBase]
+            mov edx, [edx]
+            mov eax, [edx + V1_OFFSET]
+            cmp eax, 0x033C
+            jne IS_RAM_LOADED
+
+            mov ebx, [edx + SP_OFFSET]
+            add ebx, BUTTERFLY_CUSTOM
+            call CaptureXFlagASM
+            jmp DONE
+
+        IS_RAM_LOADED :
+
+            // Check that RAM is loaded
+            cmp byte ptr [gIsRAMLoaded], 0
             jne CallRarePath
 
-            // Test si Play_Main(RAM loaded)
-            mov eax, ecx
-            cmp gGame, GAME_OOT
-            jne CheckMM
-            cmp eax, OOT_PLAY_MAIN
-            je LoadRAM
+            // Check if game is OoT and Play_Main active
+            cmp byte ptr [gGame], GAME_OOT
+            jne CHECK_MM
+            cmp ecx, OOT_PLAY_MAIN
+            je RAM_LOADED
             jmp CallRarePath
 
-        CheckMM :
-            cmp gGame, GAME_MM
+        CHECK_MM :
+            // Check if game is MM and Play_Main active
+            cmp byte ptr [gGame], GAME_MM
             jne CallRarePath
-            cmp eax, MM_PLAY_MAIN
-            je LoadRAM
+            cmp ecx, MM_PLAY_MAIN
+            je RAM_LOADED
             jmp CallRarePath
 
-        LoadRAM :
+        RAM_LOADED :
             mov gIsRAMLoaded, 1
 
-            // Forcer résolution des patterns si nécessaire
-            movzx edx, byte ptr[gGame]              //; gGame dans edx
-            imul edx, edx, 16 //; edx = gGame * taille structure
-            lea eax, [gPatternState]    //; base de gPatternState
-            add eax, edx                //; eax = &gPatternState[gGame]
+            lea eax, [gPatternState]
+            movzx edx, byte ptr[gGame]
+            imul edx, 20
+            cmp byte ptr[eax + edx], 0
+            jne CallRarePath
 
-            cmp [eax + 8], 1  // gPatternState[gGame].resolved
-            jne ResetPatterns
-
-            // Test game version
-            push ecx
-            call GetGameVersion //; gGameVersion update
-            add esp, 4
-
-
-            // maintenant eax pointe sur GamePatternState[gGame]
-            mov edx, [eax] //; bas 32 bits
-            cmp edx, dword ptr[gGameVersion] //; compare bas 32 bits
-            jne ResetPatterns
-            mov edx, [eax + 4] // haut 32 bits
-            cmp edx, dword ptr[gGameVersion + 4] // compare haut 32 bits
-            jne ResetPatterns
-            jmp CallRarePath
-
-        ResetPatterns :
-            // gPatternState[GAME_OOT].Resolved = 0
-            mov byte ptr[gPatternState + 0x08], 0
-            // gPatternState[GAME_MM].Resolved = 0
-            mov byte ptr[gPatternState + 0x18], 0
-            push ecx
-            push gGame
+            // The pattern is not built
             call BuildTypeMaskFromPatterns
-            add esp, 4
-            pop ecx
-            //jmp CallRarePath //Call RarePath anyway
 
         CallRarePath :
         // --- Appel C++ pour TYPE_NONE et cases rares-- -
-            push ecx; push PC
-            call HandlePCHookRare
-            add esp, 4
 
-        Done:
+            nop
+            //push ecx; push PC
+            //call HandlePCHookRare
+            //add esp, 4
+
+        DONE:
             pop ebx
             pop edx
             pop ecx
@@ -736,14 +793,10 @@ __declspec(naked) void ROMHook()
         // ROM base / gData setup
         // -------------------------
         mov esi, ebx
-        mov romBase, esi
-        mov edi, gData
-        mov eax, [esi]
-        mov ecx, [esi + 4]
-        mov[edi], eax
-        mov[edi + 4], ecx
-        mov gGame, GAME_UNKNOWN
-        mov gIsRAMLoaded, 0
+        mov [romBase], esi
+        call CheckGameVersionASM
+        mov byte ptr [gGame], GAME_UNKNOWN
+        mov byte ptr [gIsRAMLoaded], 0
         
         popad
         jmp gatewayROM // trampoline to original code

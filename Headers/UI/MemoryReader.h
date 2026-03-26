@@ -68,9 +68,7 @@ public:
 	uint8_t RAMData[RAM_SIZE] = { 0 };		// A current snapshot of the RAM.
 	EntranceHelper EntHelper;				// The module that will handle entrance tracking.
 	std::string CurrDirectory;				// The current directory the tracker is located at.
-	void* DLLAlloc = nullptr;
-	SharedData * DLLData = nullptr; 
-	HANDLE DLLThread = 0;
+	SharedData * DLLData = nullptr;
 
 #pragma endregion
 

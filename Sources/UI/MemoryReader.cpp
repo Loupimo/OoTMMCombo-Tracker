@@ -80,10 +80,6 @@ void MemoryReader::ResetMemoryReader()
 
     if (this->PJ64Handle != 0)
     {
-        //this->DLLData->IsRunning = false;
-        WaitForSingleObject(this->DLLThread, INFINITE);
-        VirtualFreeEx(this->PJ64Handle, this->DLLAlloc, 0, MEM_RELEASE);
-        CloseHandle(this->DLLThread);
         CloseHandle(this->PJ64Handle);
         this->PJ64Handle = 0;
     }
@@ -92,6 +88,7 @@ void MemoryReader::ResetMemoryReader()
     this->ModuleBaseAddress = 0;
     this->GameRamBaseAddress = 0;
     this->EntHelper.ResetEntranceHelper();
+    this->DLLData = nullptr;
 }
 
 
@@ -423,7 +420,6 @@ bool MemoryReader::OpenSharedMemory()
 
     if (this->DLLData != nullptr)
     {
-        //this->DLLData->Base = this->ModuleBaseAddress;
         return true;
     }
 
