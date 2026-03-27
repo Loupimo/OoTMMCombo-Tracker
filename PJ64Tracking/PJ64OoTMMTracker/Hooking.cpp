@@ -4,7 +4,7 @@
 
 alignas(64)
 uint8_t typemask[2][PC_RANGE_SIZE]; // One type mask per game
-uint32_t gActivePCs[4] = { 0 };
+uint32_t * gActivePCs = nullptr;
 
 // Hooking installation
 void* gatewayPC = NULL;
@@ -22,6 +22,7 @@ uintptr_t regBase = 0;
 uintptr_t romBase = 0;
 uintptr_t gameRAMBase = 0;
 uintptr_t currButterflyPC = 0;
+uint32_t gActiveButterflyID = OOT_BUTTERFLY_ID;
 uint32_t gDetectCounter = 0;
 uint32_t gSP = 0;
 uint32_t gA1 = 0;
@@ -488,10 +489,22 @@ __asm and dword ptr[Tmp + 12], BUFFER_SIZE - 1
 
 
 /*
+*   Read the value of the desired N64 register.
+*
+*   @param N64Register     The N64 register to read.
+*   @param DstReg          The register to store the read value.
+*/
+#define READ_N64_REG(N64Register, DstReg)  \
+__asm mov DstReg, [regBase]                \
+__asm mov DstReg, [DstReg]                 \
+__asm mov DstReg, [DstReg + N64Register]
+
+
+/*
 *   Compute and store the real RAM address matching the given virtual game RAM address.
 *
 *   @param GameAddr     The virtual game RAM address (0x80000000 - 0x80FFFFFF).
-*   @param Dst          The register to store the real RAM address to.
+*   @param DstReg       The register to store the real RAM address to.
 */
 #define COMPUTE_RAM_ADDR(GameAddr, DstReg)  \
 __asm mov DstReg, GameAddr                  \
@@ -616,38 +629,6 @@ __declspec(naked) void CheckGameVersionASM()
 }
 
 
-/*
-#define DETECT_CURRENT_GAME(Tmp, Jump)          \
-__asm mov esi, [gameRAMBase]                    \
-__asm mov edi, esi                              \
-__asm add edi, (0x8011A5EC & 0x00FFFFFF)        \
-__asm mov eax, [edi]                            \
-__asm mov edx, [edi + 4]                        \
-__asm and edx, 0FFFF0000h                       \
-__asm cmp eax, 0x5A454C44                       \
-__asm jne CHECK_MM                              \
-__asm cmp edx, 0x415A0000                       \
-__asm jne CHECK_MM                              \
-__asm mov eax, GAME_OOT                         \
-__asm jmp GAME_UNK                              \
-                                                \
-__asm CHECK_MM:                                 \
-    __asm mov edi, esi                          \
-    __asm add edi, (0x801EF694 & 0x00FFFFFF)    \
-    __asm mov eax, [edi]                        \
-    __asm mov edx, [edi + 4]                    \ 
-    __asm and edx, 0FFFF0000h                   \
-    __asm cmp eax, 0x5A454C44                   \
-    __asm jne GAME_UNK                          \
-    __asm cmp edx, 0x41330000                   \
-    __asm jne GAME_UNK                          \
-    __asm mov eax, GAME_MM                      \
-    __asm jmp Jump                              \
-                                                \
-__asm GAME_UNK:                                 \
-    __asm mov eax, GAME_UNKNOWN
-*/
-
 __declspec(naked) void PCHook()
 {
     __asm
@@ -658,21 +639,13 @@ __declspec(naked) void PCHook()
         push edx
         push ebx
 
-
         // ====================
         // Check if game is known
         // ====================
 
-        // if (gGame == GAME_UNKNOWN) then check game
+        // if gGame = GAME_UNKNOWN then check game
         cmp byte ptr [gGame], GAME_UNKNOWN
         jne PERIODIC_GAME_CHECK
-
-        // Throttle detection, otherwise the game will be stuck
-        /*inc dword ptr[gDetectCounter]
-        cmp dword ptr[gDetectCounter], DETECT_THROTTLE
-        jb START_HOOK
-
-        mov dword ptr[gDetectCounter], 0*/
 
         // Detect which game is loaded and if valid, gather the version
         call DetectCurrentGameASM
@@ -681,95 +654,165 @@ __declspec(naked) void PCHook()
 
         // The game has changed gIsRAMLoaded should be set to false
         mov ecx, [esi]
-        mov byte ptr[gIsRAMLoaded], 0
+        mov byte ptr [gIsRAMLoaded], 0
         jmp IS_RAM_LOADED
         
         PERIODIC_GAME_CHECK:
             
             // Trigger a game check when condition are met
-            inc dword ptr[gDetectCounter]
-            cmp dword ptr[gDetectCounter], DETECT_THROTTLE
-            jb START_HOOK
+            inc dword ptr [gDetectCounter]
+            cmp dword ptr [gDetectCounter], DETECT_THROTTLE
+            jb IS_RAM_LOADED
 
             // Reset the counter
-            mov dword ptr[gDetectCounter], 0
+            mov dword ptr [gDetectCounter], 0
 
             // ebx is not used by the detect game function
             mov bl, byte ptr [gGame]            // Store the current game state
-            call DetectCurrentGameASM
-            cmp byte ptr[gGame], bl
-            jb START_HOOK               // Both game are equal, we can go to the hooking routine
+            call DetectCurrentGameASM           // Get the current game and store it to gGame
+
+            // if curr game = prev game -> check that RAM is loaded
+            cmp byte ptr [gGame], bl
+            je IS_RAM_LOADED
 
             // The game has changed, we need to check for RAM status and pattern first
-            mov byte ptr[gIsRAMLoaded], 0
-            mov ecx, [esi]                  // Don't forget to load the PC to ecx first
+            mov currButterflyPC, 0
+            mov byte ptr [gIsRAMLoaded], 0
             jmp IS_RAM_LOADED
 
-        START_HOOK :
+        IS_RAM_LOADED :
 
-            // --- Lire PC-- -
-            mov ecx, [esi] // ; ecx = PC
+            // Read PC
+            mov ecx, [esi]
 
-            // --- Test hot path butterfly-- -
-            mov eax, [currButterflyPC]
-            test eax, eax
-            je IS_RAM_LOADED // ; si currButterflyPC = 0, passe aux autres tests
-            cmp eax, ecx
-            jne IS_RAM_LOADED
+            // if RAM loaded -> start test
+            cmp byte ptr [gIsRAMLoaded], 0
+            jne TEST_DISPATCHER
 
-            // --- Butterfly fast path-- -
-            mov[currButterflyPC], 0   //; écrire 0
+            // Check if game is OoT and Play_Main active
+            cmp byte ptr [gGame], GAME_OOT
+            jne CHECK_MM
+
+            // Set the active butterfly ID
+            mov [gActiveButterflyID], OOT_BUTTERFLY_ID
+            
+            // Check that the RAM is loaded
+            cmp ecx, OOT_PLAY_MAIN
+            je RAM_LOADED
+            jmp DONE
+
+        CHECK_MM :
+            
+            // Set the active butterfly ID
+            mov[gActiveButterflyID], MM_BUTTERFLY_ID
+
+            // Check that the RAM is loaded
+            cmp ecx, MM_PLAY_MAIN
+            je RAM_LOADED
+            jmp DONE
+
+        RAM_LOADED :
+            mov gIsRAMLoaded, 1
+
+            // Get the current game pattern state
+            lea eax, [gPatternState]
+            movzx edx, byte ptr [gGame]
+            imul edx, 20
+
+            // Apply the gPatternState[gGame].PCs array to the activePCs array in any cases
+            lea ebx, [eax + edx + 4]
+            mov [gActivePCs], ebx
+
+            // if patterns are resolved -> butterfly test
+            cmp byte ptr [eax + edx], 0
+            jne TEST_DISPATCHER
+
+            // The pattern is not built
+            call BuildTypeMaskFromPatterns
+
+        TEST_DISPATCHER :
+
+            // if PC = currButterflyPC -> butterfly test
+            cmp ecx, [currButterflyPC]
+            je BUTTERFLY_TEST
+
+            // Get the active PCs. If a crash occurs here it has a high probability that gActivePCs = nullptr. No check is done to not impact perf so be sure it points somewhere valid before calling the dispatcher
+            mov eax, [gActivePCs]
+
+            // if PC = Actor_RunUpdate -> check if it is a butterfly
+            cmp ecx, [eax]
+            je CHECK_BUTTERFLY
+
+            // if PC = comboItemAddRawEx -> add item test
+            cmp ecx, [eax + 4]
+            je ADD_ITEM_TEST
+
+            // if PC = En_Item00_DropCustom -> Drop custom test ("Nothing" items from boulders, trees, bushes, grass, rocks, pots, ...)
+            cmp ecx, [eax + 8]
+            je DROP_CUSTOM_TEST
+
+            // if PC = comboItemPrecond -> Shop test (Buying a "Nothing" item at the shop)
+            cmp ecx, [eax + 12]
+            je SHOP_TEST
+
+            // Not a tracked PC
+            jmp DONE
+
+        BUTTERFLY_TEST :
+
+            // Handle "Nothing" Butterflies
+            mov[currButterflyPC], 0     // reset the currButterflyPC
             mov edx, [regBase]
             mov edx, [edx]
-            mov eax, [edx + V1_OFFSET]
+            mov eax, [edx + V1_OFFSET]  // Get the buttlerfly object ID
+
+            // if butterfly item != Nothing -> done
             cmp eax, 0x033C
-            jne IS_RAM_LOADED
+            jne DONE                    
 
             mov ebx, [edx + SP_OFFSET]
             add ebx, BUTTERFLY_CUSTOM
             call CaptureXFlagASM
             jmp DONE
 
-        IS_RAM_LOADED :
+        CHECK_BUTTERFLY :
 
-            // Check that RAM is loaded
-            cmp byte ptr [gIsRAMLoaded], 0
-            jne CallRarePath
+            READ_N64_REG(S0_OFFSET, eax)
+            IS_ADDR_VALID(eax, ebx, DONE)
+            COMPUTE_RAM_ADDR(eax, ebx)
 
-            // Check if game is OoT and Play_Main active
-            cmp byte ptr [gGame], GAME_OOT
-            jne CHECK_MM
-            cmp ecx, OOT_PLAY_MAIN
-            je RAM_LOADED
-            jmp CallRarePath
+            // Check if the actor is a butterfly
+            mov edx, [gActiveButterflyID]
+            and edx, 0FFFF0000h
+            mov eax, [ebx]
+            and eax, 0FFFF0000h
+            cmp eax, edx
+            jne DONE
+            
+            // Set the RAM address and the offset to add
+            mov edx, [gActiveButterflyID]
+            and edx, 0Fh                // if OoT -> offset = 0, if MM offset = 8
 
-        CHECK_MM :
-            // Check if game is MM and Play_Main active
-            cmp byte ptr [gGame], GAME_MM
-            jne CallRarePath
-            cmp ecx, MM_PLAY_MAIN
-            je RAM_LOADED
-            jmp CallRarePath
+            // Set the butterfly PC
+            mov edx, [ebx + BUTTERFLY_FUNCTION + edx]
+            add edx, BUTTERFLY_SPAWN_OFFSET
+            mov currButterflyPC, edx
 
-        RAM_LOADED :
-            mov gIsRAMLoaded, 1
+            jmp DONE         
 
-            lea eax, [gPatternState]
-            movzx edx, byte ptr[gGame]
-            imul edx, 20
-            cmp byte ptr[eax + edx], 0
-            jne CallRarePath
-
-            // The pattern is not built
-            call BuildTypeMaskFromPatterns
-
-        CallRarePath :
-        // --- Appel C++ pour TYPE_NONE et cases rares-- -
+        ADD_ITEM_TEST:
 
             nop
-            //push ecx; push PC
-            //call HandlePCHookRare
-            //add esp, 4
+
+        DROP_CUSTOM_TEST:
+
+            nop
+
+        SHOP_TEST:
+
+            nop
+
+
 
         DONE:
             pop ebx

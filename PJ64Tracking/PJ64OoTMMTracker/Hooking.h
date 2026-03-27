@@ -35,6 +35,8 @@
 #define OOT_PLAY_MAIN        0x8009CAC8     // The OoT Play_Main function used to know if RAM is fully loaded.
 #define MM_PLAY_MAIN         0x80168F64     // The MM Play_Main function used to know if RAM is fully loaded.
 #define DETECT_THROTTLE            8192
+#define OOT_BUTTERFLY_ID     0x001E0000     // The OoT butterfly actor ID.
+#define MM_BUTTERFLY_ID      0x00150008     // The MM butterfly actor ID. The real ID is 0x00150000, but as we need to add an offset of + 0x8 to find the function address I added a 8 at the end
 
 #ifdef _DEBUG
 
@@ -91,14 +93,13 @@ extern uintptr_t regBase;
 extern uintptr_t gameRAMBase;
 extern GameID gGame;
 extern uint8_t typemask[2][PC_RANGE_SIZE];
-extern uint32_t gActivePCs[4];
+extern uint32_t * gActivePCs;
 
 void TryResolveROMBase();
 uintptr_t FindGameRAM();
 void GetGameVersion();
 GameID DetectCurrentGame();
 void PeriodicGameCheck();
-void HandlePCHook(uint32_t PC);
 void PCHook();
 void ROMHook();
 void InstallPCHook();

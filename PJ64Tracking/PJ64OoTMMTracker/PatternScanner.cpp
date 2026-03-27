@@ -141,12 +141,12 @@ void BuildTypeMaskFromPatterns()
 
         SetPCType(PC, sigs[i].Signature->Type);
         gPatternState[gGame].PCs[i] = PC;
-        gActivePCs[i] = PC;
         LOG("[OK] PC 0x%08X", PC);
     }
 
     // Mark resolved
     gPatternState[gGame].Resolved = fullResolved;
+    gActivePCs = gPatternState[gGame].PCs;
 }
 
 
