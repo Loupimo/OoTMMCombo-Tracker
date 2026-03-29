@@ -21,11 +21,10 @@ uintptr_t moduleBase = 0;
 uintptr_t regBase = 0;
 uintptr_t romBase = 0;
 uintptr_t gameRAMBase = 0;
-uintptr_t currButterflyPC = 0;
 uint32_t gActiveButterflyID = OOT_BUTTERFLY_ID;
 uint32_t gActiveFairyID = OOT_FAIRY_ID;
 uint32_t gActiveBigFairyID = OOT_BIG_FAIRY_ID;
-uint32_t gActiveFairyActorOff = ACTOR_ID_OOT;
+uint32_t gActiveActorOff = ACTOR_ID_OOT;
 uint32_t gActiveFairyActorCombo = FAIRY_COMBO_OFFSET_OOT;
 uint32_t gDetectCounter = 0;
 uint32_t gSP = 0;
@@ -363,7 +362,7 @@ __declspec(naked) void PCHook()
         jmp gatewayPC
     }
 }*/
-
+/*
 __forceinline void HandlePCHookRare(uint32_t PC)
 {
     if (gGame == GAME_UNKNOWN)
@@ -453,7 +452,7 @@ __forceinline void HandlePCHookRare(uint32_t PC)
     }
     PeriodicGameCheck();
 }
-
+*/
 /*
 *   Check if the given address is in range 0x80000000 and 0x80FFFFFF.
 *
@@ -680,8 +679,8 @@ __declspec(naked) void PCHook()
             je IS_RAM_LOADED
 
             // The game has changed, we need to check for RAM status and pattern first
-            mov currButterflyPC, 0
             mov byte ptr [gIsRAMLoaded], 0
+            call ResetButterflyTransform
             jmp IS_RAM_LOADED
 
         IS_RAM_LOADED :
@@ -701,7 +700,7 @@ __declspec(naked) void PCHook()
             mov [gActiveButterflyID], OOT_BUTTERFLY_ID
             mov [gActiveFairyID], OOT_FAIRY_ID
             mov [gActiveBigFairyID], OOT_BIG_FAIRY_ID
-            mov [gActiveFairyActorOff], ACTOR_ID_OOT;
+            mov [gActiveActorOff], ACTOR_ID_OOT;
             mov [gActiveFairyActorCombo], FAIRY_COMBO_OFFSET_OOT;
             
             // Check that the RAM is loaded
@@ -715,7 +714,7 @@ __declspec(naked) void PCHook()
             mov [gActiveButterflyID], MM_BUTTERFLY_ID
             mov [gActiveFairyID], MM_FAIRY_ID
             mov [gActiveBigFairyID], MM_BIG_FAIRY_ID
-            mov [gActiveFairyActorOff], ACTOR_ID_MM;
+            mov [gActiveActorOff], ACTOR_ID_MM;
             mov [gActiveFairyActorCombo], FAIRY_COMBO_OFFSET_MM;
 
             // Check that the RAM is loaded
@@ -744,56 +743,57 @@ __declspec(naked) void PCHook()
 
         TEST_DISPATCHER :
 
-            // if PC = currButterflyPC -> butterfly test
-            cmp ecx, [currButterflyPC]
-            je BUTTERFLY_TEST
-
             // Get the active PCs. If a crash occurs here it has a high probability that gActivePCs = nullptr. No check is done to not impact perf so be sure it points somewhere valid before calling the dispatcher
             mov eax, [gActivePCs]
 
-            // if PC = Actor_RunUpdate -> check if it is a butterfly
+            // if PC = Actor_Spawn -> check if it is a FAIRY, BIG_FAIRY or BUTTERFLY
             cmp ecx, [eax]
-            je CHECK_BUTTERFLY
-
-            // if PC = Actor_Spawn -> check if it is a FAIRY
-            cmp ecx, [eax + 4]
-            je CHECK_FAIRY
+            je CHECK_ACTOR
 
             // if PC = comboItemAddRawEx -> add item test
-            cmp ecx, [eax + 8]
+            cmp ecx, [eax + 4]
             je ADD_ITEM_TEST
 
             // if PC = En_Item00_DropCustom -> Drop custom test ("Nothing" items from boulders, trees, bushes, grass, rocks, pots, ...)
-            cmp ecx, [eax + 12]
+            cmp ecx, [eax + 8]
             je DROP_CUSTOM_TEST
 
             // if PC = comboItemPrecond -> Shop test (Buying a "Nothing" item at the shop)
-            cmp ecx, [eax + 16]
+            cmp ecx, [eax + 12]
             je SHOP_TEST
+
+            // if PC = EnButte_TransformIntoFairy -> Butterfly test
+            cmp ecx, [eax + 16]
+            je BUTTERFLY_TEST
 
             // Not a tracked PC
             jmp DONE
 
-        BUTTERFLY_TEST :
+        CHECK_ACTOR:
 
-            // Handle "Nothing" Butterflies
-            mov[currButterflyPC], 0     // reset the currButterflyPC
-            mov edx, [regBase]
-            mov edx, [edx]
-            mov eax, [edx + V1_OFFSET]  // Get the buttlerfly object ID
+            READ_N64_REG(SP_OFFSET, eax)
+            add eax, [gActiveActorOff]
+            IS_ADDR_VALID(eax, ebx, DONE)
+            COMPUTE_RAM_ADDR(eax, ebx)
 
-            // if butterfly item != Nothing -> done
-            cmp eax, 0x033C
-            jne DONE                    
+            mov edx, [ebx]
 
-            mov ebx, [edx + SP_OFFSET]
-            add ebx, BUTTERFLY_CUSTOM
-            call CaptureXFlagASM
-            jmp DONE
+            cmp dx, word ptr[gActiveButterflyID]
+            je CHECK_BUTTERFLY
+
+            // check if the actor is a fairy
+            cmp dx, word ptr [gActiveFairyID]
+            je FAIRY_TEST
+
+            // check if the actor is a big fairy
+            cmp dx, word ptr [gActiveBigFairyID]
+            jne DONE
 
         CHECK_BUTTERFLY :
 
-            READ_N64_REG(S0_OFFSET, eax)
+            call ResolveButterflyTransform
+
+            /*READ_N64_REG(S0_OFFSET, eax)
             IS_ADDR_VALID(eax, ebx, DONE)
             COMPUTE_RAM_ADDR(eax, ebx)
 
@@ -804,7 +804,7 @@ __declspec(naked) void PCHook()
             and eax, 0FFFF0000h
             cmp eax, edx
             jne DONE
-            
+
             // Set the RAM address and the offset to add
             mov edx, [gActiveButterflyID]
             and edx, 0Fh                // if OoT -> offset = 0, if MM offset = 8
@@ -812,31 +812,14 @@ __declspec(naked) void PCHook()
             // Set the butterfly PC
             mov edx, [ebx + BUTTERFLY_FUNCTION + edx]
             add edx, BUTTERFLY_SPAWN_OFFSET
-            mov currButterflyPC, edx
+            mov currButterflyPC, edx*/
 
-            jmp DONE         
-
-        CHECK_FAIRY:
-
-            READ_N64_REG(SP_OFFSET, eax)
-            add eax, [gActiveFairyActorOff]
-            IS_ADDR_VALID(eax, ebx, DONE)
-            COMPUTE_RAM_ADDR(eax, ebx)
-
-            mov edx, [ebx]
-
-            // check if the actor is a fairy
-            cmp dx, word ptr [gActiveFairyID]
-            je FAIRY_TEST
-
-            // check if the actor is a big fairy
-            cmp dx, word ptr [gActiveBigFairyID]
-            jne DONE
+            jmp DONE
 
         FAIRY_TEST:
 
             // check that the object is "Nothing"
-            sub eax, [gActiveFairyActorOff]
+            sub eax, [gActiveActorOff]
             add eax, [gActiveFairyActorCombo]
             COMPUTE_RAM_ADDR(eax, ebx)
             cmp word ptr [ebx + 8], 0x033C
@@ -855,7 +838,7 @@ __declspec(naked) void PCHook()
             mov[edi + 4], eax   // Store Mem
 
             // Read ComboItemQuery (12 bytes)
-            mov eax, [ebx]   // q0
+            mov eax, [ebx]      // q0
             mov edx, [ebx + 4]   // q1
             mov ecx, [ebx + 8]  // q1
 
@@ -927,6 +910,22 @@ __declspec(naked) void PCHook()
             READ_N64_REG(SP_OFFSET, ebx)
             add ebx, SHOP_CUSTOM
 
+            call CaptureXFlagASM
+            jmp DONE
+
+        BUTTERFLY_TEST:
+
+            // Handle "Nothing" Butterflies
+            mov edx, [regBase]
+            mov edx, [edx]
+            mov eax, [edx + V1_OFFSET]  // Get the buttlerfly object ID
+
+            // if butterfly item != Nothing -> done
+            cmp eax, 0x033C
+            jne DONE
+
+            mov ebx, [edx + SP_OFFSET]
+            add ebx, BUTTERFLY_CUSTOM
             call CaptureXFlagASM
             jmp DONE
 

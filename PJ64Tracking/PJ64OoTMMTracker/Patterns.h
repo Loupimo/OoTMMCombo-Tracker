@@ -3,38 +3,11 @@
 
 #pragma region OoT
 
-#pragma region Actor_RunUpdate
-
-uint8_t Pattern_Actor_RunUpdate_OoT[] =
-{
-    0x27,0xBD,0xFF,0xC0,            // ADDIU    SP, SP, -0x40           <-- Actor_RunUpdate_Start, Hook here
-    0xAF,0xB2,0x00,0x1C,            // SW       S2, 0x001C (SP)
-    0xAF,0xB1,0x00,0x18,            // SW       S1, 0x0018 (SP)
-    0xAF,0xB0,0x00,0x14,            // SW       S0, 0x0014 (SP)
-    0xAF,0xBF,0x00,0x24,            // SW       RA, 0x0024 (SP)
-    0xAF,0xB3,0x00,0x20             // SW       S3, 0x0020 (SP)
-};
-
-uint32_t Mask_Actor_RunUpdate_OoT[] =
-{
-    0xFFFFFFFF,                     // ADDIU    SP, SP, -0x40           <-- Actor_RunUpdate_Start, Hook here
-    0xFFFFFFFF,                     // SW       S2, 0x001C (SP)
-    0xFFFFFFFF,                     // SW       S1, 0x0018 (SP)
-    0xFFFFFFFF,                     // SW       S0, 0x0014 (SP)
-    0xFFFFFFFF,                     // SW       RA, 0x0024 (SP)
-    0xFFFFFFFF                      // SW       S3, 0x0020 (SP)
-};
-
-PCSignature Sig_Actor_RunUpdate_OoT = { TYPE_BUTTERFLY, 24, Pattern_Actor_RunUpdate_OoT, Mask_Actor_RunUpdate_OoT, 0x00 };
-
-#pragma endregion   // Actor_RunUpdate
-
 #pragma region Actor_Spawn
 
 uint8_t Pattern_Actor_Spawn_OoT[] =
 {
     0x8F,0xB0,0x00,0x20             // LW       S0, 0x0020 (SP)
-    //0x27,0xBD,0x00,0x58,            // ADDIU    SP, SP, 0x58          <-- Actor_Spawn_End, Hook here
 };
 
 uint32_t Mask_Actor_Spawn_OoT[] =
@@ -173,13 +146,51 @@ PCSignature Sig_comboItemPrecond_OoT = { TYPE_SHOP, 56, Pattern_comboItemPrecond
 
 #pragma endregion   // comboItemPrecond
 
+#pragma region EnButte_TransformIntoFairy
+
+uint8_t Pattern_EnButte_TransformIntoFairy_OoT[] =
+{
+    0x27,0xBD,0xFF,0xB0,             // ADD       SP, SP, -0x50         <-- EnButte_TransformIntoFairy_Start
+    0xAF,0xB0,0x00,0x40,             // SW        S0, 0x0040 (SP)
+    0x00,0x80,0x80,0x25,             // OR        S0, A0, R0
+    0x24,0x84,0x01,0x9C,             // ADDIU     A0, A0, 0x019C
+    0xAF,0xBF,0x00,0x4C,             // SW        RA, 0x004C (SP)
+    0xAF,0xB2,0x00,0x48,             // SW        S2, 0x0048 (SP)
+    0xAF,0xB1,0x00,0x44,             // SW        S1, 0x0044 (SP)
+    0x0C,0x02,0x32,0x70,             // JAL       SkelAnime_Update
+    0x00,0xA0,0x90,0x25,             // OR        S2, A1, R0
+    0x0C,0x07,0x84,0x45,             // JAL       EnButte_UpdateTransformationEffect
+    0x24,0x03,0x00,0x05,             // ADDIU     V1, R0, 0x0005
+    0x86,0x02,0x02,0x44              // LH        V0, 0x0244 (S0)       <-- Hook here
+};
+
+uint32_t Mask_EnButte_TransformIntoFairy_OoT[] =
+{
+    0xFFFFFFFF,                      // ADD       SP, SP, -0x50         <-- EnButte_TransformIntoFairy_Start
+    0xFFFFFFFF,                      // SW        S0, 0x0040 (SP)
+    0xFFFFFFFF,                      // OR        S0, A0, R0
+    0xFFFFFFFF,                      // ADDIU     A0, A0, 0x019C
+    0xFFFFFFFF,                      // SW        RA, 0x004C (SP)
+    0xFFFFFFFF,                      // SW        S2, 0x0048 (SP)
+    0xFFFFFFFF,                      // SW        S1, 0x0044 (SP)
+    0xFF000000,                      // JAL       SkelAnime_Update
+    0xFFFFFFFF,                      // OR        S2, A1, R0
+    0xFF000000,                      // JAL       EnButte_UpdateTransformationEffect
+    0xFFFFFFFF,                      // ADDIU     V1, R0, 0x0005
+    0xFFFFFFFF                       // LH        V0, 0x0244 (S0)       <-- Hook here
+};
+
+PCSignature Sig_EnButte_TransformIntoFairy_OoT = { TYPE_BUTTERFLY, 48, Pattern_EnButte_TransformIntoFairy_OoT, Mask_EnButte_TransformIntoFairy_OoT, 0x130 };
+
+#pragma endregion   // EnButte_TransformIntoFairy
+
 PCFastResolver OoTSignatures[] =
 {
-    { 0x80000000, 1, { 0 }, &Sig_Actor_RunUpdate_OoT },
     { 0x800253E0, 0, { 0 }, &Sig_Actor_Spawn_OoT },
     { 0x803A4AD0, 2, { 0, 0x84 }, &Sig_comboAddItemRawEx_OoT },
     { 0x80000000, 1, { 0 }, &Sig_EnItem00_DropCustom_OoT },
-    { 0x80000000, 1, { 0 }, &Sig_comboItemPrecond_OoT }
+    { 0x80000000, 1, { 0 }, &Sig_comboItemPrecond_OoT },
+    { 0x80000000, 1, { 0 }, &Sig_EnButte_TransformIntoFairy_OoT }
 };
 size_t OoTSignatureCount = sizeof(OoTSignatures) / sizeof(OoTSignatures[0]);
 
@@ -187,41 +198,16 @@ size_t OoTSignatureCount = sizeof(OoTSignatures) / sizeof(OoTSignatures[0]);
 
 #pragma region MM
 
-#pragma region Actor_RunUpdate
-
-uint8_t Pattern_Actor_RunUpdate_MM[] =
-{
-    0x27,0xBD,0xFF,0xE0,            // ADDIU    SP, SP, -0x20           <-- Actor_RunUpdate_Start, Hook here
-    0xAF,0xB1,0x00,0x18,            // SW       S1, 0x0018 (SP)
-    0xAF,0xB0,0x00,0x14,            // SW       S0, 0x0014 (SP)
-    0xAF,0xBF,0x00,0x1C,            // SW       RA, 0x001C (SP)
-    0x00,0x80,0x80,0x25             // OR       S0, A0, R0
-};
-
-uint32_t Mask_Actor_RunUpdate_MM[] =
-{
-    0xFFFFFFFF,                     // ADDIU    SP, SP, -0x20           <-- Actor_RunUpdate_Start, Hook here
-    0xFFFFFFFF,                     // SW       S1, 0x0018 (SP)
-    0xFFFFFFFF,                     // SW       S0, 0x0014 (SP)
-    0xFFFFFFFF,                     // SW       RA, 0x001C (SP)
-    0xFFFFFFFF                      // OR       S0, A0, R0
-};
-
-PCSignature Sig_Actor_RunUpdate_MM = { TYPE_BUTTERFLY, 20, Pattern_Actor_RunUpdate_MM, Mask_Actor_RunUpdate_MM, 0x00 };
-
-#pragma endregion   // Actor_RunUpdate
-
 #pragma region Actor_Spawn
 
 uint8_t Pattern_Actor_Spawn_MM[] =
 {
-    0x8F,0xBF,0x00,0x3C             // LW       RA, 0x003C (SP)
-    //0x27,0xBD,0x00,0x40,            // ADDIU    SP, SP, 0x40           <-- Actor_Spawn_End, Hook here
+    0x27,0xBD,0x00,0x38             // ADDIU    SP, SP, 0x38           <-- Actor_SpawnAsChildAndCutscene_End, Hook here
 };
 
 uint32_t Mask_Actor_Spawn_MM[] =
 {
-    0xFFFFFFFF,                     // LW       RA, 0x003C (SP)          <-- Actor_Spawn_End, Hook here
+    0xFFFFFFFF,                     // ADDIU    SP, SP, 0x38           <-- Actor_SpawnAsChildAndCutscene_End, Hook here
 };
 
 PCSignature Sig_Actor_Spawn_MM = { TYPE_FAIRY, 4, Pattern_Actor_Spawn_MM, Mask_Actor_Spawn_MM, 0x00 };
@@ -355,13 +341,51 @@ PCSignature Sig_comboItemPrecond_MM = { TYPE_SHOP, 56, Pattern_comboItemPrecond_
 
 #pragma endregion   // comboItemPrecond
 
+#pragma region EnButte_TransformIntoFairy
+
+uint8_t Pattern_EnButte_TransformIntoFairy_MM[] =
+{
+    0x27,0xBD,0xFF,0xB0,            // ADDIU      SP, SP, -0x50           <-- EnButte_TransformIntoFairy_Start
+    0xAF,0xB0,0x00,0x40,            // SW         S0, 0x0040 (SP)
+    0x00,0x80,0x80,0x25,            // OR         S0, A0, R0
+    0x24,0x84,0x01,0xA4,            // ADDIU      A0, A0, 0x01A4
+    0xAF,0xBF,0x00,0x4C,            // SW         RA, 0x004C (SP)
+    0xAF,0xB2,0x00,0x48,            // SW         S2, 0x0048 (SP)
+    0xAF,0xB1,0x00,0x44,            // SW         S1, 0x0044 (SP)
+    0x0C,0x04,0xDB,0x34,            // JAL        SkelAnime_Update
+    0x00,0xA0,0x90,0x25,            // OR         S2, A1, R0
+    0x0C,0x10,0x79,0x5E,            // JAL        EnButte_UpdateTransformationEffect
+    0x24,0x03,0x00,0x05,            // ADDIU      V1, R0, 0x0005
+    0x86,0x02,0x02,0x4C             // LH         V0, 0x024C (S0)
+};
+
+uint32_t Mask_EnButte_TransformIntoFairy_MM[] =
+{
+    0xFFFFFFFF,                      // ADD       SP, SP, -0x50
+    0xFFFFFFFF,                      // SW        S0, 0x0040 (SP)
+    0xFFFFFFFF,                      // OR        S0, A0, R0
+    0xFFFFFFFF,                      // ADDIU     A0, A0, 0x01A4
+    0xFFFFFFFF,                      // SW        RA, 0x004C (SP)
+    0xFFFFFFFF,                      // SW        S2, 0x0048 (SP)
+    0xFFFFFFFF,                      // SW        S1, 0x0044 (SP)
+    0xFF000000,                      // JAL       SkelAnime_Update
+    0xFFFFFFFF,                      // OR        S2, A1, R0
+    0xFF000000,                      // JAL       EnButte_UpdateTransformationEffect
+    0xFFFFFFFF,                      // ADDIU     V1, R0, 0x0005
+    0xFFFFFFFF                       // LH        V0, 0x024C (S0)
+};
+
+PCSignature Sig_EnButte_TransformIntoFairy_MM = { TYPE_BUTTERFLY, 48, Pattern_EnButte_TransformIntoFairy_MM, Mask_EnButte_TransformIntoFairy_MM, 0x130 };
+
+#pragma endregion   // EnButte_TransformIntoFairy
+
 PCFastResolver MMSignatures[] =
 {
-    { 0x800B9890, 2, { 0,  }, &Sig_Actor_RunUpdate_MM },
-    { 0x800BACC4, 0, { 0 }, &Sig_Actor_Spawn_MM },
+    { 0x800BB0B4, 0, { 0 }, &Sig_Actor_Spawn_MM },
     { 0x806D57E4, 2, { 0, 0x84 }, &Sig_comboAddItemRawEx_MM },
     { 0x80000000, 1, { 0 }, &Sig_EnItem00_DropCustom_MM },
-    { 0x80000000, 1, { 0 }, &Sig_comboItemPrecond_MM }
+    { 0x80000000, 1, { 0 }, &Sig_comboItemPrecond_MM },
+    { 0x80000000, 1, { 0 }, &Sig_EnButte_TransformIntoFairy_MM }
 };
 size_t MMSignatureCount = sizeof(MMSignatures) / sizeof(MMSignatures[0]);
 

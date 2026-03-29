@@ -35,8 +35,10 @@ typedef struct PCFastResolver
 
 void SetPCType(uint32_t pc, uint8_t type);
 bool MatchPattern(uintptr_t addr, const PCSignature* Sig);
-uintptr_t FindPatternInPayload(const PCSignature* Sig);
+uintptr_t FindPatternInPayload(const PCSignature* Sig, size_t PayloadStart, size_t PayloadEnd);
 bool IsJAL(uint32_t InstrucVal);
 uintptr_t ResolveJAL(uint32_t InstrucVal, uint32_t JALAddr);
 uintptr_t FastPatternResolver(const PCFastResolver& Target);
+void ResolveButterflyTransform();
+void ResetButterflyTransform();
 void BuildTypeMaskFromPatterns();
