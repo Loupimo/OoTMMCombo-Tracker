@@ -24,9 +24,13 @@
 // Function specific offsets
 #define DROP_CUSTOM               -0x68     // The offset to add to SP to gather "Nothing" item objects on drop custom function
 #define SHOP_CUSTOM               -0x40     // The offset to add to SP to gather "Nothing" item objects on shop function
+#define ACTOR_ID_OOT               0x20     // The offset to add to SP to reach the spawned actor ID for OoT
+#define ACTOR_ID_MM                0x08     // The offset to add to SP to reach the spawned actor ID for MM
 #define BUTTERFLY_CUSTOM          -0x40     // The offset to add to SP to gather "Nothing" item objects on butterfly function
 #define BUTTERFLY_FUNCTION        0x240     // The offset to add the S0 register to get the butterfly's action function PC value
 #define BUTTERFLY_SPAWN_OFFSET    0x130     // The offset to add to the butterfly's action function to reach the GI_NOTHING test
+#define FAIRY_COMBO_OFFSET_OOT    -0x4C     // The offset to add to SP to reach the beginning of the fairy combo item
+#define FAIRY_COMBO_OFFSET_MM     -0x84     // The offset to add to SP to reach the beginning of the fairy combo item
 
 // Running stuff
 #define BUFFER_SIZE                1024     // The number of event that can be store at the same time
@@ -37,6 +41,10 @@
 #define DETECT_THROTTLE            8192
 #define OOT_BUTTERFLY_ID     0x001E0000     // The OoT butterfly actor ID.
 #define MM_BUTTERFLY_ID      0x00150008     // The MM butterfly actor ID. The real ID is 0x00150000, but as we need to add an offset of + 0x8 to find the function address I added a 8 at the end
+#define OOT_FAIRY_ID         0x00000018     // The OoT fairy actor ID.
+#define MM_FAIRY_ID          0x00000010     // The MM fairy actor ID. The real ID is 0x00150000, but as we need to add an offset of + 0x8 to find the function address I added a 8 at the end
+#define OOT_BIG_FAIRY_ID     0x0000001A     // The OoT big fairy actor ID.
+#define MM_BIG_FAIRY_ID      0x0000FFFF     // There is no MM big fairy.
 
 #ifdef _DEBUG
 
@@ -65,9 +73,10 @@ enum PCType : uint8_t
 {
     TYPE_NONE = 0,
     TYPE_BUTTERFLY = 1,
-    TYPE_COMBO = 2,
-    TYPE_XFLAG = 3,
-    TYPE_SHOP = 4,
+    TYPE_FAIRY = 2,
+    TYPE_COMBO = 3,
+    TYPE_XFLAG = 4,
+    TYPE_SHOP = 5,
 };
 
 

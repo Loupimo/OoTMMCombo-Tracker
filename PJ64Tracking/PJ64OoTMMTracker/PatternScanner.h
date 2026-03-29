@@ -9,7 +9,7 @@
 typedef struct GamePatternState
 {
     bool Resolved = false;
-    uint32_t PCs[4] = { 0 };    // ID 0 = Actor_RunUpdate, ID 1 = comboAddItemRawEx, ID 2 = EnItem00_DropCustom, ID 3 = comboItemPrecond
+    uint32_t PCs[5] = { 0 };    // ID 0 = Actor_RunUpdate, ID 1 = comboAddItemRawEx, ID 2 = EnItem00_DropCustom, ID 3 = comboItemPrecond
 } GamePatternState;
 
 extern GamePatternState gPatternState[2];

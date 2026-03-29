@@ -23,6 +23,10 @@ uintptr_t romBase = 0;
 uintptr_t gameRAMBase = 0;
 uintptr_t currButterflyPC = 0;
 uint32_t gActiveButterflyID = OOT_BUTTERFLY_ID;
+uint32_t gActiveFairyID = OOT_FAIRY_ID;
+uint32_t gActiveBigFairyID = OOT_BIG_FAIRY_ID;
+uint32_t gActiveFairyActorOff = ACTOR_ID_OOT;
+uint32_t gActiveFairyActorCombo = FAIRY_COMBO_OFFSET_OOT;
 uint32_t gDetectCounter = 0;
 uint32_t gSP = 0;
 uint32_t gA1 = 0;
@@ -693,8 +697,12 @@ __declspec(naked) void PCHook()
             cmp byte ptr [gGame], GAME_OOT
             jne CHECK_MM
 
-            // Set the active butterfly ID
+            // Set the active butterfly and fairy IDs
             mov [gActiveButterflyID], OOT_BUTTERFLY_ID
+            mov [gActiveFairyID], OOT_FAIRY_ID
+            mov [gActiveBigFairyID], OOT_BIG_FAIRY_ID
+            mov [gActiveFairyActorOff], ACTOR_ID_OOT;
+            mov [gActiveFairyActorCombo], FAIRY_COMBO_OFFSET_OOT;
             
             // Check that the RAM is loaded
             cmp ecx, OOT_PLAY_MAIN
@@ -704,7 +712,11 @@ __declspec(naked) void PCHook()
         CHECK_MM :
             
             // Set the active butterfly ID
-            mov[gActiveButterflyID], MM_BUTTERFLY_ID
+            mov [gActiveButterflyID], MM_BUTTERFLY_ID
+            mov [gActiveFairyID], MM_FAIRY_ID
+            mov [gActiveBigFairyID], MM_BIG_FAIRY_ID
+            mov [gActiveFairyActorOff], ACTOR_ID_MM;
+            mov [gActiveFairyActorCombo], FAIRY_COMBO_OFFSET_MM;
 
             // Check that the RAM is loaded
             cmp ecx, MM_PLAY_MAIN
@@ -717,7 +729,7 @@ __declspec(naked) void PCHook()
             // Get the current game pattern state
             lea eax, [gPatternState]
             movzx edx, byte ptr [gGame]
-            imul edx, 20
+            imul edx, 24
 
             // Apply the gPatternState[gGame].PCs array to the activePCs array in any cases
             lea ebx, [eax + edx + 4]
@@ -743,16 +755,20 @@ __declspec(naked) void PCHook()
             cmp ecx, [eax]
             je CHECK_BUTTERFLY
 
-            // if PC = comboItemAddRawEx -> add item test
+            // if PC = Actor_Spawn -> check if it is a FAIRY
             cmp ecx, [eax + 4]
+            je CHECK_FAIRY
+
+            // if PC = comboItemAddRawEx -> add item test
+            cmp ecx, [eax + 8]
             je ADD_ITEM_TEST
 
             // if PC = En_Item00_DropCustom -> Drop custom test ("Nothing" items from boulders, trees, bushes, grass, rocks, pots, ...)
-            cmp ecx, [eax + 8]
+            cmp ecx, [eax + 12]
             je DROP_CUSTOM_TEST
 
             // if PC = comboItemPrecond -> Shop test (Buying a "Nothing" item at the shop)
-            cmp ecx, [eax + 12]
+            cmp ecx, [eax + 16]
             je SHOP_TEST
 
             // Not a tracked PC
@@ -800,19 +816,119 @@ __declspec(naked) void PCHook()
 
             jmp DONE         
 
+        CHECK_FAIRY:
+
+            READ_N64_REG(SP_OFFSET, eax)
+            add eax, [gActiveFairyActorOff]
+            IS_ADDR_VALID(eax, ebx, DONE)
+            COMPUTE_RAM_ADDR(eax, ebx)
+
+            mov edx, [ebx]
+
+            // check if the actor is a fairy
+            cmp dx, word ptr [gActiveFairyID]
+            je FAIRY_TEST
+
+            // check if the actor is a big fairy
+            cmp dx, word ptr [gActiveBigFairyID]
+            jne DONE
+
+        FAIRY_TEST:
+
+            // check that the object is "Nothing"
+            sub eax, [gActiveFairyActorOff]
+            add eax, [gActiveFairyActorCombo]
+            COMPUTE_RAM_ADDR(eax, ebx)
+            cmp word ptr [ebx + 8], 0x033C
+            jne DONE
+
+            push edi
+
+            mov edx, [gData]
+
+            // Get CurrIndex
+            mov edi, [edx + 12]
+
+            COMPUTE_INDEX(edx, edi, edi)
+
+            mov[edi], ecx       // Store PC
+            mov[edi + 4], eax   // Store Mem
+
+            // Read ComboItemQuery (12 bytes)
+            mov eax, [ebx]   // q0
+            mov edx, [ebx + 4]   // q1
+            mov ecx, [ebx + 8]  // q1
+
+            // Fill the buffer at the correct index
+            mov[edi + 8], eax   // q0
+            mov[edi + 12], edx  // q1
+            mov[edi + 16], ecx  // q2
+
+            INC_INDEX(gData, eax)
+            pop edi
+
+            jmp DONE
+
         ADD_ITEM_TEST:
 
-            nop
+            // Read the S0 register to retreive the ComboItemQuery address
+            READ_N64_REG(S0_OFFSET, eax)
+            IS_ADDR_VALID(eax, ebx, DONE)
+            COMPUTE_RAM_ADDR(eax, ebx)
+
+            push edi
+            
+            mov edx, [gData]
+
+            // Get CurrIndex
+            mov edi, [edx + 12]
+
+            COMPUTE_INDEX(edx, edi, edi)
+
+            mov[edi], ecx       // Store PC
+            mov[edi + 4], eax   // Store Mem
+
+            // Read ComboItemQuery (12 bytes)
+            mov eax, [ebx + 4]   // q0
+            mov edx, [ebx + 8]   // q1
+            
+            READ_N64_REG(A1_OFFSET, ecx)
+
+            // Fill the buffer at the correct index
+            mov[edi + 8], eax   // q0
+            mov[edi + 12], edx  // q1
+            mov[edi + 16], ecx  // q2
+
+            INC_INDEX(gData, eax)
+            pop edi
+
+            jmp DONE
 
         DROP_CUSTOM_TEST:
 
-            nop
+            READ_N64_REG(SP_OFFSET, ebx)
+            add ebx, DROP_CUSTOM
+
+            call CaptureXFlagASM
+            jmp DONE
 
         SHOP_TEST:
 
-            nop
+            // The item is buyable, therefore it is not a "Nothing item", we can exit
+            READ_N64_REG(V0_OFFSET, eax)
+            cmp eax, 0x02
+            jne DONE
 
+            // The item is not a nothing object, we can exit
+            READ_N64_REG(V1_OFFSET, eax)
+            cmp eax, 0x033C
+            jne DONE
 
+            READ_N64_REG(SP_OFFSET, ebx)
+            add ebx, SHOP_CUSTOM
+
+            call CaptureXFlagASM
+            jmp DONE
 
         DONE:
             pop ebx

@@ -29,6 +29,23 @@ PCSignature Sig_Actor_RunUpdate_OoT = { TYPE_BUTTERFLY, 24, Pattern_Actor_RunUpd
 
 #pragma endregion   // Actor_RunUpdate
 
+#pragma region Actor_Spawn
+
+uint8_t Pattern_Actor_Spawn_OoT[] =
+{
+    0x8F,0xB0,0x00,0x20             // LW       S0, 0x0020 (SP)
+    //0x27,0xBD,0x00,0x58,            // ADDIU    SP, SP, 0x58          <-- Actor_Spawn_End, Hook here
+};
+
+uint32_t Mask_Actor_Spawn_OoT[] =
+{
+    0xFFFFFFFF,                     // LW       S0, 0x0020 (SP)         <-- Actor_Spawn_End, Hook here
+};
+
+PCSignature Sig_Actor_Spawn_OoT = { TYPE_FAIRY, 4, Pattern_Actor_Spawn_OoT, Mask_Actor_Spawn_OoT, 0x00 };
+
+#pragma endregion   // Actor_Spawn
+
 #pragma region comboAddItemRawEx
 
 uint8_t Pattern_comboAddItemRawEx_OoT[] =
@@ -159,6 +176,7 @@ PCSignature Sig_comboItemPrecond_OoT = { TYPE_SHOP, 56, Pattern_comboItemPrecond
 PCFastResolver OoTSignatures[] =
 {
     { 0x80000000, 1, { 0 }, &Sig_Actor_RunUpdate_OoT },
+    { 0x800253E0, 0, { 0 }, &Sig_Actor_Spawn_OoT },
     { 0x803A4AD0, 2, { 0, 0x84 }, &Sig_comboAddItemRawEx_OoT },
     { 0x80000000, 1, { 0 }, &Sig_EnItem00_DropCustom_OoT },
     { 0x80000000, 1, { 0 }, &Sig_comboItemPrecond_OoT }
@@ -192,6 +210,23 @@ uint32_t Mask_Actor_RunUpdate_MM[] =
 PCSignature Sig_Actor_RunUpdate_MM = { TYPE_BUTTERFLY, 20, Pattern_Actor_RunUpdate_MM, Mask_Actor_RunUpdate_MM, 0x00 };
 
 #pragma endregion   // Actor_RunUpdate
+
+#pragma region Actor_Spawn
+
+uint8_t Pattern_Actor_Spawn_MM[] =
+{
+    0x8F,0xBF,0x00,0x3C             // LW       RA, 0x003C (SP)
+    //0x27,0xBD,0x00,0x40,            // ADDIU    SP, SP, 0x40           <-- Actor_Spawn_End, Hook here
+};
+
+uint32_t Mask_Actor_Spawn_MM[] =
+{
+    0xFFFFFFFF,                     // LW       RA, 0x003C (SP)          <-- Actor_Spawn_End, Hook here
+};
+
+PCSignature Sig_Actor_Spawn_MM = { TYPE_FAIRY, 4, Pattern_Actor_Spawn_MM, Mask_Actor_Spawn_MM, 0x00 };
+
+#pragma endregion   // Actor_Spawn
 
 #pragma region comboAddItemRawEx
 
@@ -322,7 +357,8 @@ PCSignature Sig_comboItemPrecond_MM = { TYPE_SHOP, 56, Pattern_comboItemPrecond_
 
 PCFastResolver MMSignatures[] =
 {
-    { 0x80000000, 1, { 0 }, &Sig_Actor_RunUpdate_MM },
+    { 0x800B9890, 2, { 0,  }, &Sig_Actor_RunUpdate_MM },
+    { 0x800BACC4, 0, { 0 }, &Sig_Actor_Spawn_MM },
     { 0x806D57E4, 2, { 0, 0x84 }, &Sig_comboAddItemRawEx_MM },
     { 0x80000000, 1, { 0 }, &Sig_EnItem00_DropCustom_MM },
     { 0x80000000, 1, { 0 }, &Sig_comboItemPrecond_MM }
