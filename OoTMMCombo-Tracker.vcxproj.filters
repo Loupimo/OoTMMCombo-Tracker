@@ -204,13 +204,13 @@
     <ClInclude Include="Common.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\UI\Entrances.h">
-      <Filter>Header Files\Combo</Filter>
-    </ClInclude>
     <ClInclude Include="Headers\Combo\OoTEntrances.h">
       <Filter>Header Files\Combo</Filter>
     </ClInclude>
     <ClInclude Include="Headers\Combo\MMEntrances.h">
+      <Filter>Header Files\Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Combo\Entrances.h">
       <Filter>Header Files\Combo</Filter>
     </ClInclude>
   </ItemGroup>

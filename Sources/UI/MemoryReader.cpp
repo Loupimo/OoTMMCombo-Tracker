@@ -157,7 +157,15 @@ void MemoryReader::CheckEvent(Event * CollectedEvent)
     if (CollectedEvent)
     {   // Check that the collected event is valid
 
-        if ((CollectedEvent->Query[2] & 0xFFFF0000) == 0xFFFF0000)
+        if (CollectedEvent->Mem == ENTRANCE_MAGIC)
+        {   // The message is an entrance message
+
+            this->EntHelper.ParseEntranceMessage(CollectedEvent->Query);
+            CollectedEvent->Query[0] = ENTRANCE_MAGIC;  // Mark the event as treated
+
+            return;
+        }
+        else if ((CollectedEvent->Query[2] & 0xFFFF0000) == 0xFFFF0000)
         {   // The event comes from a drop nothing actor
 
             if ((CollectedEvent->Query[2] & 0x0000FF00) >> 2 == false)

@@ -806,3 +806,351 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint8_t * RAMData)
 
     return ID;
 }
+
+
+uint32_t EntranceHelper::GetGrottoEntrance2(uint8_t Game, uint8_t GrottoData, uint32_t ID, uint32_t LastScene)
+{
+    if (Game == OOT_GAME)
+    {
+        switch (ID)
+        {
+            case OOT_GROTTO_TYPE_GENERIC_ENTR:
+            {
+                switch (GrottoData & 0x1f)
+                {
+                    case 0x0c: return OOT_GROTTO_GENERIC_KOKIRI_FOREST_ENTR;
+                    case 0x14: return OOT_GROTTO_GENERIC_LOST_WOODS_ENTR;
+                    case 0x08: return OOT_GROTTO_GENERIC_KAKARIKO_ENTR;
+                    case 0x17: return OOT_GROTTO_GENERIC_DMT_ENTR;
+                    case 0x1a: return OOT_GROTTO_GENERIC_DMC_ENTR;
+                    case 0x09: return OOT_GROTTO_GENERIC_RIVER_ENTR;
+                    case 0x02: return OOT_GROTTO_GENERIC_HF_SOUTHEAST_ENTR;
+                    case 0x03: return OOT_GROTTO_GENERIC_HF_OPEN_ENTR;
+                    case 0x00: return OOT_GROTTO_GENERIC_HF_MARKET_ENTR;
+                }
+                break;
+            }
+            case OOT_GROTTO_TYPE_FAIRY_ENTR:
+            {
+                switch (LastScene)
+                {
+                    case OOT_SACRED_FOREST_MEADOW: return OOT_GROTTO_FAIRY_SFM_ENTR;
+                    case OOT_HYRULE_FIELD: return OOT_GROTTO_FAIRY_HF_ENTR;
+                    case OOT_ZORA_RIVER: return OOT_GROTTO_FAIRY_RIVER_ENTR;
+                    case OOT_ZORA_DOMAIN: return OOT_GROTTO_FAIRY_DOMAIN_ENTR;
+                    case OOT_GERUDO_FORTRESS: return OOT_GROTTO_FAIRY_FORTRESS_ENTR;
+                }
+                break;
+            }
+            case OOT_GROTTO_TYPE_SCRUB2_ENTR:
+            case OOT_GROTTO_TYPE_SCRUB3_ENTR:
+            {
+                switch (LastScene)
+                {
+                    // Double Scrubs
+                    case OOT_SACRED_FOREST_MEADOW: return OOT_GROTTO_SCRUBS2_SFM_ENTR;
+                    case OOT_ZORA_RIVER: return OOT_GROTTO_SCRUBS2_RIVER_ENTR;
+                    case OOT_GERUDO_VALLEY: return OOT_GROTTO_SCRUBS2_VALLEY_ENTR;
+                    case OOT_DESERT_COLOSSUS: return OOT_GROTTO_SCRUBS2_COLOSSUS_ENTR;
+
+                    // Triple Scrubs
+                    case OOT_LON_LON_RANCH: return OOT_GROTTO_SCRUBS3_RANCH_ENTR;
+                    case OOT_GORON_CITY: return OOT_GROTTO_SCRUBS3_GORON_CITY_ENTR;
+                    case OOT_DEATH_MOUNTAIN_CRATER: return OOT_GROTTO_SCRUBS3_DMC_ENTR;
+                    case OOT_LAKE_HYLIA: return OOT_GROTTO_SCRUBS3_LAKE_ENTR;
+                }
+                break;
+            }
+            default:
+            {
+                break;
+            }
+        }
+    }
+    else
+    {   // MM
+
+        uint32_t entranceKey;
+
+        entranceKey = (ID >> 9);
+        switch (entranceKey)
+        {
+            case 0x06: entranceKey = 0x42; break;
+            case 0x57: entranceKey = 0x4d; break;
+            case 0x45: entranceKey = 0x4a; break;
+            case 0x5b: entranceKey = 0x5a; break;
+        }
+        ID = (entranceKey << 9) | (ID & 0x1ff);
+
+        switch (ID)
+        {
+            case MM_GROTTO_TYPE_GENERIC_ENTR:
+            {
+                switch (GrottoData & 0x1f)
+                {
+                    case 0x13: return MM_GROTTO_GENERIC_PATH_SNOWHEAD_ENTR;
+                    case 0x14: return MM_GROTTO_GENERIC_VALLEY_ENTR;
+                    case 0x15: return MM_GROTTO_GENERIC_ZORA_CAPE_ENTR;
+                    case 0x16: return MM_GROTTO_GENERIC_PATH_IKANA_ENTR;
+                    case 0x17: return MM_GROTTO_GENERIC_GREAT_BAY_COAST_ENTR;
+                    case 0x18: return MM_GROTTO_GENERIC_GRAVEYARD_ENTR;
+                    case 0x19: return MM_GROTTO_GENERIC_TWIN_ISLANDS_ENTR;
+                    case 0x1a: return MM_GROTTO_GENERIC_FIELD_PILLAR_ENTR;
+                    case 0x1b: return MM_GROTTO_GENERIC_MOUNTAIN_VILLAGE_ENTR;
+                    case 0x1c: return MM_GROTTO_GENERIC_WOODS_ENTR;
+                    case 0x1d: return MM_GROTTO_GENERIC_SWAMP_ENTR;
+                    case 0x1e: return MM_GROTTO_GENERIC_PATH_SWAMP_ENTR;
+                    case 0x1f: return MM_GROTTO_GENERIC_GRASS_ENTR;
+                }
+                break;
+            }
+            case MM_GROTTO_TYPE_COW_ENTR:
+            {
+                switch (LastScene)
+                {
+                    case MM_TERMINA_FIELD: return MM_GROTTO_COW_FIELD_ENTR;
+                    case MM_GREAT_BAY_COAST: return MM_GROTTO_COW_COAST_ENTR;
+                }
+                break;
+            }
+            default:
+            {
+                break;
+            }
+        }
+    }
+
+    MultiLogger::LogMessage("Unknown grotto scene !");
+    return 0;
+}
+
+
+
+uint32_t EntranceHelper::GetGrottoExit2(uint8_t Game, uint8_t CurrRoom, uint8_t GrottoData, uint32_t LastScene)
+{
+    uint8_t currRoomNum = 0;
+
+    if (Game == OOT_GAME)
+    {
+        switch (CurrRoom)
+        {
+            case 0x00:
+            {
+
+                switch (GrottoData & 0x1f)
+                {
+                    case 0x0c: return OOT_GROTTO_EXIT_GENERIC_KOKIRI_FOREST;
+                    case 0x14: return OOT_GROTTO_EXIT_GENERIC_LOST_WOODS;
+                    case 0x08: return OOT_GROTTO_EXIT_GENERIC_KAKARIKO;
+                    case 0x17: return OOT_GROTTO_EXIT_GENERIC_DMT;
+                    case 0x1a: return OOT_GROTTO_EXIT_GENERIC_DMC;
+                    case 0x09: return OOT_GROTTO_EXIT_GENERIC_RIVER;
+                    case 0x02: return OOT_GROTTO_EXIT_GENERIC_HF_SOUTHEAST;
+                    case 0x03: return OOT_GROTTO_EXIT_GENERIC_HF_OPEN;
+                    case 0x00: return OOT_GROTTO_EXIT_GENERIC_HF_MARKET;
+                }
+                break;
+            }
+            case 0x01: return OOT_GROTTO_EXIT_SCRUB_HEART_PIECE;
+            case 0x02: return OOT_GROTTO_EXIT_REDEAD;
+            case 0x03: return OOT_GROTTO_EXIT_TRAIL_COW;
+            case 0x04: return OOT_GROTTO_EXIT_FIELD_COW;
+            case 0x05: return OOT_GROTTO_EXIT_OCTOROK;
+            case 0x06: return OOT_GROTTO_EXIT_SCRUB_UPGRADE;
+            case 0x07: return OOT_GROTTO_EXIT_WOLFOS;
+            case 0x08: return OOT_GROTTO_EXIT_CASTLE;
+            case 0x09:  // Double scrubs
+            case 0x0c:  // Triple scrubs
+            {
+                
+                switch (LastScene)
+                {
+                    // Double scrubs
+                    case OOT_SACRED_FOREST_MEADOW: return OOT_GROTTO_EXIT_SCRUBS2_SFM;
+                    case OOT_ZORA_RIVER: return OOT_GROTTO_EXIT_SCRUBS2_RIVER;
+                    case OOT_GERUDO_VALLEY: return OOT_GROTTO_EXIT_SCRUBS2_VALLEY;
+                    case OOT_DESERT_COLOSSUS: return OOT_GROTTO_EXIT_SCRUBS2_COLOSSUS;
+
+                    // Triple scrubs
+                    case OOT_LON_LON_RANCH: return OOT_GROTTO_EXIT_SCRUBS3_RANCH;
+                    case OOT_GORON_CITY: return OOT_GROTTO_EXIT_SCRUBS3_GORON_CITY;
+                    case OOT_DEATH_MOUNTAIN_CRATER: return OOT_GROTTO_EXIT_SCRUBS3_DMC;
+                    case OOT_LAKE_HYLIA: return OOT_GROTTO_EXIT_SCRUBS3_LAKE;
+                }
+                break;
+            }
+            case 0x0a: return OOT_GROTTO_EXIT_TEKTITE;
+            case 0x0b: return OOT_GROTTO_EXIT_DEKU_THEATER;
+            case 0x0d: return OOT_GROTTO_EXIT_FIELD_TREE;
+
+            case OOT_FAIRY_FOUNTAIN:
+            {
+                switch (LastScene)
+                {
+                    case OOT_SACRED_FOREST_MEADOW: return OOT_GROTTO_EXIT_FAIRY_SFM;
+                    case OOT_HYRULE_FIELD: return OOT_GROTTO_EXIT_FAIRY_HF;
+                    case OOT_ZORA_RIVER: return OOT_GROTTO_EXIT_FAIRY_RIVER;
+                    case OOT_ZORA_DOMAIN: return OOT_GROTTO_EXIT_FAIRY_DOMAIN;
+                    case OOT_GERUDO_FORTRESS: return OOT_GROTTO_EXIT_FAIRY_FORTRESS;
+                }
+                break;
+            }
+
+            case OOT_TOMB_FAIRY: return OOT_GRAVE_EXIT_SHIELD;
+            case OOT_TOMB_REDEAD: return OOT_GRAVE_EXIT_REDEAD;
+            case OOT_TOMB_ROYAL: return OOT_GRAVE_EXIT_ROYAL;
+            case OOT_TOMB_DAMPE_WINDMILL: return OOT_GRAVE_EXIT_DAMPE;
+
+            default:
+            {
+                break;
+            }
+        }
+    }
+    else
+    {   // MM
+
+        switch (CurrRoom)
+        {
+            case 0x00: return MM_GROTTO_EXIT_GOSSIPS_OCEAN;
+            case 0x01: return MM_GROTTO_EXIT_GOSSIPS_SWAMP;
+            case 0x02: return MM_GROTTO_EXIT_GOSSIPS_CANYON;
+            case 0x03: return MM_GROTTO_EXIT_GOSSIPS_MOUNTAIN;
+            case 0x04:
+            {
+                switch (GrottoData & 0x1f)
+                {
+                    case 0x13: return MM_GROTTO_EXIT_GENERIC_PATH_SNOWHEAD;
+                    case 0x14: return MM_GROTTO_EXIT_GENERIC_VALLEY;
+                    case 0x15: return MM_GROTTO_EXIT_GENERIC_ZORA_CAPE;
+                    case 0x16: return MM_GROTTO_EXIT_GENERIC_PATH_IKANA;
+                    case 0x17: return MM_GROTTO_EXIT_GENERIC_GREAT_BAY_COAST;
+                    case 0x18: return MM_GROTTO_EXIT_GENERIC_GRAVEYARD;
+                    case 0x19: return MM_GROTTO_EXIT_GENERIC_TWIN_ISLANDS;
+                    case 0x1a: return MM_GROTTO_EXIT_GENERIC_FIELD_PILLAR;
+                    case 0x1b: return MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE;
+                    case 0x1c: return MM_GROTTO_EXIT_GENERIC_WOODS;
+                    case 0x1d: return MM_GROTTO_EXIT_GENERIC_SWAMP;
+                    case 0x1e: return MM_GROTTO_EXIT_GENERIC_PATH_SWAMP;
+                    case 0x1f: return MM_GROTTO_EXIT_GENERIC_GRASS;
+                }
+                break;
+            }
+            case 0x07: return MM_GROTTO_EXIT_DODONGO;
+            case 0x09: return MM_GROTTO_EXIT_SCRUB;
+            case 0x0a:
+            {
+                switch (LastScene)
+                {
+                    case MM_TERMINA_FIELD: return MM_GROTTO_EXIT_COW_FIELD;
+                    case MM_GREAT_BAY_COAST: return MM_GROTTO_EXIT_COW_COAST;
+                }
+                break;
+            }
+            case 0x0b: return MM_GROTTO_EXIT_BIO_BABA;
+            case 0x0d: return MM_GROTTO_EXIT_PEAHAT;
+            case 0x0e: return MM_GROTTO_EXIT_HOT_WATER;
+
+            default:
+            {
+                break;
+            }
+        }
+    }
+
+    MultiLogger::LogMessage("Unknown grotto scene !");
+    return 0;
+}
+
+
+
+void EntranceHelper::ParseEntranceMessage(uint32_t Buffer[3])
+{
+    if ((Buffer[0] & 0xFF000000) == IN_MAGIC)
+    {
+        this->ParseIncomingMessage(Buffer);
+    }
+    else if ((Buffer[0] & 0xFF000000) == OUT_MAGIC)
+    {
+        this->ParseOutgoingMessage(Buffer);
+    }
+}
+
+
+void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[3])
+{
+    if (this->IsEntranceTouched && Buffer[1] != NEW_CLOCK)
+    {
+        uint8_t game = Buffer[0] & 0xFF;
+        uint8_t currRoom = (Buffer[0] >> 16) & 0xFF;
+        uint8_t grottoData = (Buffer[0] >> 8) & 0xFF;
+        uint32_t inScene = Buffer[1];
+        uint32_t inEntrance = Buffer[2];
+        EntranceMetaInfo entranceMeta = {};
+
+        if (this->IsGrottoEntrance(inEntrance))
+        {
+            inEntrance = this->GetGrottoEntrance2(game, grottoData, inEntrance, inScene);
+        }
+        else if (this->IsGrottoExit(this->EntranceID))
+        {
+            inEntrance = this->GetGrottoExit2(game, currRoom, grottoData, inScene);
+        }
+        /*else //if (respawnFlag == 0x04)
+        {
+            inEntrance = this->CheckGrottoSpawn(this->EntranceID, RAMData);
+        }*/
+
+        if (game == OOT_GAME)
+        {
+            entranceMeta = OoTEntrances.at(inEntrance);
+        }
+        else
+        {
+            entranceMeta = MMEntrances.at(inEntrance);
+        }
+
+        this->EntranceStr = entranceMeta.FromName + std::string(" -> ") + entranceMeta.ToName;
+        MultiLogger::LogMessage("New scene Loaded ! From : %s (0x%X), To : %s (0x%X)", this->LastTouchedStr.c_str(), inEntrance, this->EntranceStr.c_str(), this->OutEntrance);
+    }
+
+    this->IsEntranceTouched = false;
+}
+
+
+void EntranceHelper::ParseOutgoingMessage(uint32_t Buffer[3])
+{
+    if (Buffer[1] == NEW_CLOCK)
+    {
+        this->IsEntranceTouched = false;
+        return;
+    }
+
+    this->IsEntranceTouched = true;
+    this->OutGame = Buffer[0] & 0xFF;
+    uint8_t currRoom = (Buffer[0] >> 16) & 0xFF;
+    uint8_t grottoData = (Buffer[0] >> 8) & 0xFF;
+    uint32_t outScene = Buffer[1];
+    this->OutEntrance = Buffer[2];
+    EntranceMetaInfo entranceMeta = {};
+
+    if (this->IsGrottoEntrance(this->OutEntrance))
+    {
+        this->OutEntrance = this->GetGrottoEntrance2(this->OutGame, grottoData, this->OutEntrance, outScene);
+    }
+    else if (this->IsGrottoExit(this->LastTouchedEntranceID))
+    {
+        this->OutEntrance = this->GetGrottoExit2(this->OutGame, currRoom, grottoData, outScene);
+    }
+
+    if (this->OutGame == OOT_GAME)
+    {
+        entranceMeta = OoTEntrances.at(this->OutEntrance);
+    }
+    else
+    {
+        entranceMeta = MMEntrances.at(this->OutEntrance);
+    }
+    this->LastTouchedStr = entranceMeta.FromName + std::string(" -> ") + entranceMeta.ToName;
+    //MultiLogger::LogMessage("Loading zone %s (0x%X) touched !", this->LastTouchedStr.c_str(), this->LastTouchedEntranceID);
+}

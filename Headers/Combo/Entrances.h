@@ -6,6 +6,9 @@
 #include <string>
 
 #define SPAWN_LOADING 0xfffe
+#define IN_MAGIC	0xAA000000		// Used to determine if the message is an incoming entrance
+#define OUT_MAGIC	0xBB000000		// Used to determine if the message is an outgoing entrance
+#define NEW_CLOCK	0xFF3FFF3F		// Used to know if the scene ID is from a new clock cycle
 
 typedef struct EntranceMetaInfo
 {
@@ -30,6 +33,10 @@ class EntranceHelper
 #pragma region Attributes
 
 public:
+
+	bool HasValidEntrance = false;
+	uint8_t OutGame = NO_GAME;
+	uint32_t OutEntrance = 0;
 
 	uint32_t EntranceID = 0;				// The current entrance ID.
 	uint32_t LastTouchedEntranceID = 0;		// The ID of the last entrance ID
@@ -103,6 +110,7 @@ public:
 	*   @return The scene grotto associated to the touched exit.
 	*/
 	uint32_t GetGrottoEntrance(int Game, uint8_t* RAMData, uint32_t ID);
+	uint32_t GetGrottoEntrance2(uint8_t Game, uint8_t GrottoData, uint32_t ID, uint32_t LastScene);
 
 	/*
 	*   Get the exit grotto associated to the current last entrance ID.
@@ -113,6 +121,7 @@ public:
 	*   @return The scene grotto associated to the touched exit.
 	*/
 	uint32_t GetGrottoExit(int Game, uint8_t* RAMData);
+	uint32_t GetGrottoExit2(uint8_t Game, uint8_t CurrRoom, uint8_t GrottoData, uint32_t LastScene);
 
 	/*
 	*   Get the cumulative distance between the current player position and the given grotto entrance.
@@ -133,6 +142,13 @@ public:
 	*   @return The matching grotto entrance if the player is close enough, the given entrance otherwise.
 	*/
 	uint32_t CheckGrottoSpawn(uint32_t ID, uint8_t* RAMData);
+
+
+
+	void ParseEntranceMessage(uint32_t Buffer[3]);
+	void ParseIncomingMessage(uint32_t Buffer[3]);
+	void ParseOutgoingMessage(uint32_t Buffer[3]);
+
 
 #pragma endregion
 };

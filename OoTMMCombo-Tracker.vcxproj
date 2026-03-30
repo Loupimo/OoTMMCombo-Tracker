@@ -232,6 +232,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h" />
+    <ClInclude Include="Headers\Combo\Entrances.h" />
     <ClInclude Include="Headers\Combo\Items.h" />
     <ClInclude Include="Headers\Combo\MMEntrances.h" />
     <ClInclude Include="Headers\Combo\MMObjectScene.h" />
@@ -249,7 +250,6 @@
     <ClInclude Include="Headers\UI\AppConfig.h" />
     <ClInclude Include="Headers\UI\AppStyle.h" />
     <QtMoc Include="Headers\UI\FilterManager.h" />
-    <ClInclude Include="Headers\UI\Entrances.h" />
     <ClInclude Include="Headers\UI\MemoryReader.h" />
     <ClInclude Include="Headers\UI\RegionTab.h" />
     <ClInclude Include="Headers\UI\RoomRenderer.h" />
