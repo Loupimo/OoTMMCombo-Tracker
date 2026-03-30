@@ -307,7 +307,7 @@ void MemoryReader::RunMemoryReader()
     {
         while (i < this->DLLData->CurrIndex && i < this->DLLData->MaxSize)
         {
-            MultiLogger::LogMessage("PC = 0x%08X, Mem = 0x%08X, Buffer[0] = 0x%08X, Buffer[1] = 0x%08X, Buffer[2] = 0x%08X", this->DLLData->Buffer[i].PC, this->DLLData->Buffer[i].Mem, this->DLLData->Buffer[i].Query[0], this->DLLData->Buffer[i].Query[1], this->DLLData->Buffer[i].Query[2]);
+            MultiLogger::LogMessage("PC = 0x%08X, Mem = 0x%08X, Buffer[0] = 0x%08X, Buffer[1] = 0x%08X, Buffer[2] = 0x%08X, Buffer[3] = 0x%08X, Buffer[4] = 0x%08X, Buffer[5] = 0x%08X", this->DLLData->Buffer[i].PC, this->DLLData->Buffer[i].Mem, this->DLLData->Buffer[i].Query[0], this->DLLData->Buffer[i].Query[1], this->DLLData->Buffer[i].Query[2], this->DLLData->Buffer[i].Query[3], this->DLLData->Buffer[i].Query[4], this->DLLData->Buffer[i].Query[5]);
             CheckEvent(&this->DLLData->Buffer[i]);
             i++;
         }
@@ -317,37 +317,12 @@ void MemoryReader::RunMemoryReader()
             while (i < this->DLLData->MaxSize)
             {
                 
-                MultiLogger::LogMessage("PC = 0x%08X, Mem = 0x%08X, Buffer[0] = 0x%08X, Buffer[1] = 0x%08X, Buffer[2] = 0x%08X", this->DLLData->Buffer[i].PC, this->DLLData->Buffer[i].Mem, this->DLLData->Buffer[i].Query[0], this->DLLData->Buffer[i].Query[1], this->DLLData->Buffer[i].Query[2]);
+                MultiLogger::LogMessage("PC = 0x%08X, Mem = 0x%08X, Buffer[0] = 0x%08X, Buffer[1] = 0x%08X, Buffer[2] = 0x%08X, Buffer[3] = 0x%08X, Buffer[4] = 0x%08X, Buffer[5] = 0x%08X", this->DLLData->Buffer[i].PC, this->DLLData->Buffer[i].Mem, this->DLLData->Buffer[i].Query[0], this->DLLData->Buffer[i].Query[1], this->DLLData->Buffer[i].Query[2], this->DLLData->Buffer[i].Query[3], this->DLLData->Buffer[i].Query[4], this->DLLData->Buffer[i].Query[5]);
                 CheckEvent(&this->DLLData->Buffer[i]);
                 i++;
             }
             i = 0;
         }
-        //ReadProcessMemory(this->PJ64Handle, (LPCVOID)(this->PCAddress), &PC, sizeof(PC), 0);
-        /*if (this->DLLData->isValid)//pc == 0x80400BE4)
-        {//if (PC == 0x80400BE4)
-            MultiLogger::LogMessage("PC = 0x%X", this->DLLData->pc);
-            this->DLLData->isValid = 0;
-        }*/
-        //else
-        //if (PC == 0x80400BE4)
-        //    MultiLogger::LogMessage("PC = 0x%X", this->DLLData->pc);
-
-        //Sleep(10);
-        /*ReadProcessMemory(this->PJ64Handle, (LPCVOID)(this->GameRamBaseAddress), this->RAMData, RAM_SIZE, 0);
-        this->CheckCurrentLoadedGame();
-
-        if (this->LoadedGame == NO_GAME)
-        {   // The game is not loaded, incorrect or changing between OoT and MM
-
-            MultiLogger::LogMessage("No game loaded. This can occurs for the following reasons:\n- No game is launched\n- Incorrect game is launched\n- The game is switching between OoT and MM game code.\nRetrying in 1 second...");
-            Sleep(1000);
-        }
-        else
-        {
-            this->ReadEntranceID(this->LoadedGame);
-            Sleep(100);
-        }*/
 
     } while (this->IsRunning && this->IsProcessAlive(this->PJ64Handle));
 

@@ -56,6 +56,8 @@
 #define MM_NEXT_ENTRANCE     0x003FF398     // The offset to add to the real game address to reach the playState.nextEntrance for MM
 #define OOT_CURR_ROOM        0x001DA15F     // The offset to add to the real game address to reach the current room index for OoT
 #define MM_CURR_ROOM         0x003FF203     // The offset to add to the real game address to reach the current room index for MM
+#define OOT_PLAYER_COORD     0x001C8714     // The offset to add to the real game address to reach the player coordinates for OoT
+#define MM_PLAYER_COORD      0x003E6DD4     // The offset to add to the real game address to reach the player coordinates for MM
 #define OOT_GROTTO_DATA      0x0011B964     // The offset to add to the real game address to reach the gGrottoData for OoT
 #define MM_GROTTO_DATA       0x001F3394     // The offset to add to the real game address to reach the gGrottoData for MM
 #define ENTRANCE_MAGIC       0xFFFFFFFF     // The magic flag that indicates the message is an entrance message
@@ -101,7 +103,7 @@ typedef struct Event
 {
     uint32_t PC;
     uint32_t Mem;
-    uint32_t Query[3];
+    uint32_t Query[6];
 } Event;
 
 

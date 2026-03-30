@@ -1063,8 +1063,90 @@ uint32_t EntranceHelper::GetGrottoExit2(uint8_t Game, uint8_t CurrRoom, uint8_t 
 }
 
 
+uint32_t EntranceHelper::CheckGrottoSpawn2(uint32_t ID, uint32_t Buffer[6])
+{
+    float x = 0.0f, y = 0.0f, z = 0.0f;
 
-void EntranceHelper::ParseEntranceMessage(uint32_t Buffer[3])
+    switch (ID)
+    {
+        case OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR:
+        case OOT_LOST_WOODS_FROM_KOKIRI_FOREST_ENTR:
+        case OOT_LOST_WOODS_FROM_MEADOW_ENTR:
+        case OOT_SACRED_FOREST_MEADOW_ENTR:
+        case OOT_WARP_SONG_MEADOW_ENTR:
+        case OOT_WARP_SONG_LAKE_ENTR:
+        case OOT_KAKARIKO_FROM_GRANNY_ENTR:
+        case OOT_KAKARIKO_FROM_FIELD_ENTR:
+        case OOT_DEATH_MOUNTAIN_FROM_KAKARIKO_ENTR:
+        case OOT_DEATH_MOUNTAIN_FROM_GORON_CITY_ENTR:
+        case OOT_DEATH_MOUNTAIN_CRATER_ENTR:
+        case OOT_CRATER_FROM_GORON_CITY_ENTR:
+        case OOT_GORON_CITY_ENTR:
+        case OOT_ZORA_RIVER_FROM_FIELD_ENTR:
+        case OOT_ZORA_DOMAIN_ENTR:
+        case OOT_LON_LON_RANCH_FROM_HOUSE_ENTR:
+        case OOT_HYRULE_CASTLE_ENTR:
+        case OOT_FIELD_FROM_LAKE_HYLIA_ENTR:
+        case OOT_FIELD_FROM_GERUDO_VALLEY_ENTR:
+        case OOT_FIELD_FROM_KAKARIKO_ENTR:
+        case OOT_FIELD_FROM_MARKET_ENTRANCE_ENTR:
+        case OOT_GERUDO_VALLEY_FROM_FIELD_ENTR:
+        case OOT_GERUDO_VALLEY_FROM_TENT_ENTR:
+        case OOT_GERUDO_FORTRESS_FROM_VALLEY_ENTR:
+        case OOT_DESERT_COLOSSUS_FROM_FAIRY_ENTR:
+        {
+            memcpy(&x, &Buffer[3], sizeof(float));
+            memcpy(&y, &Buffer[4], sizeof(float));
+            memcpy(&z, &Buffer[5], sizeof(float));
+            break;
+        }
+
+        case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_NORTH_ENTR:
+        case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_WEST_ENTR:
+        case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_EAST_ENTR:
+        case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_SOUTH_ENTR:
+        case MM_SWAMP_ROAD_FROM_FIELD_ENTR:
+        case MM_SWAMP_FROM_SPIDER_HOUSE_ENTR:
+        case MM_MYSTERY_WOODS_ENTR:
+        case MM_WARP_OWL_MOUNTAIN_VILLAGE_ENTR:
+        case MM_TWIN_ISLANDS_FROM_MOUNTAIN_VILLAGE_ENTR:
+        case MM_PATH_SNOWHEAD_FROM_SNOWHEAD_ENTR:
+        case MM_GREAT_BAY_COAST_FROM_FISHER_HUT_ENTR:
+        case MM_GREAT_BAY_COAST_FROM_LABORATORY_ENTR:
+        case MM_ZORA_CAPE_FROM_GREAT_BAY_COAST_ENTR:
+        case MM_IKANA_ROAD_FROM_FIELD_ENTR:
+        case MM_IKANA_GRAVEYARD_FROM_DAMPE_ENTR:
+        case MM_IKANA_VALLEY_FROM_ROAD_ENTR:
+        {
+            memcpy(&x, &Buffer[3], sizeof(float));
+            memcpy(&y, &Buffer[4], sizeof(float));
+            memcpy(&z, &Buffer[5], sizeof(float));
+            break;
+        }
+
+        default:
+        {
+            return ID;
+        }
+    }
+
+    const std::vector<GrottoEntrance> entrances = GrottoEntrances.at(ID);
+
+    for (size_t i = 0; i < entrances.size(); i++)
+    {
+        GrottoEntrance currEntrance = entrances[i];
+        if (x == currEntrance.SpawnPos[0] && y == currEntrance.SpawnPos[1] && z == currEntrance.SpawnPos[2])
+        {   // The respawn coordinates match the grotto entrance
+
+            return entrances[i].EntranceID;
+        }
+    }
+
+    return ID;
+}
+
+
+void EntranceHelper::ParseEntranceMessage(uint32_t Buffer[6])
 {
     if ((Buffer[0] & 0xFF000000) == IN_MAGIC)
     {
@@ -1077,7 +1159,7 @@ void EntranceHelper::ParseEntranceMessage(uint32_t Buffer[3])
 }
 
 
-void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[3])
+void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[6])
 {
     if (this->IsEntranceTouched && Buffer[1] != NEW_CLOCK)
     {
@@ -1092,14 +1174,14 @@ void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[3])
         {
             inEntrance = this->GetGrottoEntrance2(game, grottoData, inEntrance, inScene);
         }
-        else if (this->IsGrottoExit(this->EntranceID))
+        else if (this->IsGrottoExit(inEntrance))
         {
             inEntrance = this->GetGrottoExit2(game, currRoom, grottoData, inScene);
         }
-        /*else //if (respawnFlag == 0x04)
+        else
         {
-            inEntrance = this->CheckGrottoSpawn(this->EntranceID, RAMData);
-        }*/
+            inEntrance = this->CheckGrottoSpawn2(inEntrance, Buffer);
+        }
 
         if (game == OOT_GAME)
         {
@@ -1111,14 +1193,14 @@ void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[3])
         }
 
         this->EntranceStr = entranceMeta.FromName + std::string(" -> ") + entranceMeta.ToName;
-        MultiLogger::LogMessage("New scene Loaded ! From : %s (0x%X), To : %s (0x%X)", this->LastTouchedStr.c_str(), inEntrance, this->EntranceStr.c_str(), this->OutEntrance);
+        MultiLogger::LogMessage("New scene Loaded ! From : %s (0x%X), To : %s (0x%X)", this->LastTouchedStr.c_str(), this->OutEntrance, this->EntranceStr.c_str(), inEntrance);
     }
 
     this->IsEntranceTouched = false;
 }
 
 
-void EntranceHelper::ParseOutgoingMessage(uint32_t Buffer[3])
+void EntranceHelper::ParseOutgoingMessage(uint32_t Buffer[6])
 {
     if (Buffer[1] == NEW_CLOCK)
     {
@@ -1138,7 +1220,7 @@ void EntranceHelper::ParseOutgoingMessage(uint32_t Buffer[3])
     {
         this->OutEntrance = this->GetGrottoEntrance2(this->OutGame, grottoData, this->OutEntrance, outScene);
     }
-    else if (this->IsGrottoExit(this->LastTouchedEntranceID))
+    else if (this->IsGrottoExit(this->OutEntrance))
     {
         this->OutEntrance = this->GetGrottoExit2(this->OutGame, currRoom, grottoData, outScene);
     }

@@ -38,8 +38,7 @@ typedef struct Event
 {
 	uint32_t PC;
 	uint32_t Mem;
-	uint32_t Query[3];
-	//ComboItemQuery Query;
+	uint32_t Query[6];
 } Event;
 
 typedef struct SharedData
@@ -47,8 +46,6 @@ typedef struct SharedData
 	uint32_t GameVersion[2];
 	LONG MaxSize;
 	volatile LONG CurrIndex;
-	//uintptr_t Base;
-	//uintptr_t GameRAMBase;
 	Event Buffer[BUFFER_SIZE];
 } SharedData;
 

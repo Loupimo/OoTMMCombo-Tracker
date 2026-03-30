@@ -142,12 +142,13 @@ public:
 	*   @return The matching grotto entrance if the player is close enough, the given entrance otherwise.
 	*/
 	uint32_t CheckGrottoSpawn(uint32_t ID, uint8_t* RAMData);
+	uint32_t CheckGrottoSpawn2(uint32_t ID, uint32_t Buffer[6]);
 
 
 
-	void ParseEntranceMessage(uint32_t Buffer[3]);
-	void ParseIncomingMessage(uint32_t Buffer[3]);
-	void ParseOutgoingMessage(uint32_t Buffer[3]);
+	void ParseEntranceMessage(uint32_t Buffer[6]);
+	void ParseIncomingMessage(uint32_t Buffer[6]);
+	void ParseOutgoingMessage(uint32_t Buffer[6]);
 
 
 #pragma endregion

@@ -30,6 +30,7 @@ uint32_t gActiveFairyActorCombo = OOT_FAIRY_COMBO_OFFSET;
 uint32_t gActiveNextEntrance = OOT_NEXT_ENTRANCE;
 uint32_t gActiveRoomOffset = OOT_CURR_ROOM;
 uint32_t gActiveGrottoOffset = OOT_GROTTO_DATA;
+uint32_t gActiveCoordOffset = OOT_PLAYER_COORD;
 uint32_t gActiveSceneOffset = OOT_SCENE_OFFSET;
 uint32_t gActiveEntranceReg = S1_OFFSET;
 uint32_t gDetectCounter = 0;
@@ -480,8 +481,8 @@ __asm jne Jump
 *   @param CurrIndex     The index to reach.
 *   @param Dst           The register to store the address to.
 */
-#define COMPUTE_INDEX(DataStart, CurrIndex, Dst)   \
-__asm lea Dst, [CurrIndex + CurrIndex * 4]         \
+#define COMPUTE_INDEX(DataStart, CurrIndex, Dst) \
+__asm lea Dst, [CurrIndex * 8]                   \
 __asm lea Dst, [DataStart + Dst * 4 + 16]
 
 
@@ -529,6 +530,7 @@ __asm mov[gActiveFairyActorCombo], ##Game##_FAIRY_COMBO_OFFSET    \
 __asm mov[gActiveNextEntrance], ##Game##_NEXT_ENTRANCE            \
 __asm mov[gActiveRoomOffset], ##Game##_CURR_ROOM                  \
 __asm mov[gActiveGrottoOffset], ##Game##_GROTTO_DATA              \
+__asm mov[gActiveCoordOffset], ##Game##_PLAYER_COORD              \
 __asm mov[gActiveSceneOffset], ##Game##_SCENE_OFFSET              
 
 __declspec(naked) void CaptureXFlagASM()
@@ -561,6 +563,10 @@ __declspec(naked) void CaptureXFlagASM()
         movzx eax, byte ptr[gGame] // The game the XFlag comes from 
         or eax, 0FFFF0000h         // Set the IsConsume flag
         mov[edi + 16], eax         // Store flags
+
+        mov[edi + 20], 0  // q3
+        mov[edi + 24], 0  // q4
+        mov[edi + 28], 0  // q5
 
         INC_INDEX(gData, eax)
 
@@ -706,20 +712,6 @@ __declspec(naked) void PCHook()
             call ResetButterflyTransform
             jmp IS_RAM_LOADED
 
-        /*FORCE_GAME_CHECK_OOT :
-
-            call DetectCurrentGameASM           // Get the current game and store it to gGame
-            cmp [gGame], GAME_OOT
-            jne FORCE_GAME_CHECK_MM
-
-            cmp ecx, OOT_PLAY_INIT
-                jne DONE
-
-        FORCE_GAME_CHECK_MM:
-            // The game has changed, we need to check for RAM status and pattern first
-                mov byte ptr[gIsRAMLoaded], 0
-                call ResetButterflyTransform
-                jmp IS_RAM_LOADED*/
         IS_RAM_LOADED :
 
             // Read PC
@@ -842,28 +834,6 @@ __declspec(naked) void PCHook()
         CHECK_BUTTERFLY :
 
             call ResolveButterflyTransform
-
-            /*READ_N64_REG(S0_OFFSET, eax)
-            IS_ADDR_VALID(eax, ebx, DONE)
-            COMPUTE_RAM_ADDR(eax, ebx)
-
-            // Check if the actor is a butterfly
-            mov edx, [gActiveButterflyID]
-            and edx, 0FFFF0000h
-            mov eax, [ebx]
-            and eax, 0FFFF0000h
-            cmp eax, edx
-            jne DONE
-
-            // Set the RAM address and the offset to add
-            mov edx, [gActiveButterflyID]
-            and edx, 0Fh                // if OoT -> offset = 0, if MM offset = 8
-
-            // Set the butterfly PC
-            mov edx, [ebx + BUTTERFLY_FUNCTION + edx]
-            add edx, BUTTERFLY_SPAWN_OFFSET
-            mov currButterflyPC, edx*/
-
             jmp DONE
 
         FAIRY_TEST:
@@ -896,6 +866,9 @@ __declspec(naked) void PCHook()
             mov[edi + 8], eax   // q0
             mov[edi + 12], edx  // q1
             mov[edi + 16], ecx  // q2
+            mov[edi + 20], 0  // q3
+            mov[edi + 24], 0  // q4
+            mov[edi + 28], 0  // q5
 
             INC_INDEX(gData, eax)
             pop edi
@@ -931,6 +904,9 @@ __declspec(naked) void PCHook()
             mov[edi + 8], eax   // q0
             mov[edi + 12], edx  // q1
             mov[edi + 16], ecx  // q2
+            mov[edi + 20], 0  // q3
+            mov[edi + 24], 0  // q4
+            mov[edi + 28], 0  // q5
 
             INC_INDEX(gData, eax)
             pop edi
@@ -966,32 +942,6 @@ __declspec(naked) void PCHook()
         PLAY_INIT_TEST:
 
             mov [forceGameCheck], 0
-
-            /*push ecx
-                
-            // We need to test the game first
-            mov bl, byte ptr[gGame]            // Store the current game state
-            call DetectCurrentGameASM           // Get the current game and store it to gGame
-
-            // if curr game = prev game -> go to store
-            cmp byte ptr[gGame], bl
-            je STORE_INIT
-
-            // Reset the counter
-            mov dword ptr[gDetectCounter], 0
-
-            // if curr game = OoT -> set active settings OoT
-            cmp bl, GAME_OOT
-            jne INIT_MM
-            SET_ACTIVE_SETTINGS(OOT)
-            jmp STORE_INIT
-
-        INIT_MM:
-            SET_ACTIVE_SETTINGS(MM)
-
-        STORE_INIT:
-
-            pop ecx*/
 
             push edi
 
@@ -1032,6 +982,15 @@ __declspec(naked) void PCHook()
             mov[edi + 12], eax  // Scene ID
             mov[edi + 16], ebx  // Entrance ID
 
+            // Player coordinates data
+            COMPUTE_RAM_ADDR([gActiveCoordOffset], ebx)
+            mov eax, [ebx]      // X
+            mov ecx, [ebx + 4]  // Y
+            mov edx, [ebx + 8]  // Z
+            mov[edi + 20], eax  // X
+            mov[edi + 24], ecx  // Y
+            mov[edi + 28], edx  // Z
+
             INC_INDEX(gData, eax)
             pop edi
 
@@ -1041,31 +1000,6 @@ __declspec(naked) void PCHook()
 
             mov[forceGameCheck], 1
 
-            /*push ecx
-
-            // We need to test the game first
-            mov bl, byte ptr[gGame]            // Store the current game state
-            call DetectCurrentGameASM           // Get the current game and store it to gGame
-
-            // if curr game = prev game -> go to store
-            cmp byte ptr[gGame], bl
-            je STORE_TRANSITION
-
-            // Reset the counter
-            mov dword ptr[gDetectCounter], 0
-
-            // if curr game = OoT -> set active settings OoT
-            cmp bl, GAME_OOT
-            jne TRANSI_MM
-            SET_ACTIVE_SETTINGS(OOT)
-            jmp STORE_TRANSITION
-
-        TRANSI_MM :
-            SET_ACTIVE_SETTINGS(MM)
-
-        STORE_TRANSITION :
-
-            pop ecx*/
             push edi
 
             mov edx, [gData]
@@ -1109,6 +1043,15 @@ __declspec(naked) void PCHook()
             mov[edi + 8], ecx   // Message direction + curr room index + grotto data + Game
             mov[edi + 12], eax  // Scene ID
             mov[edi + 16], ebx  // Entrance ID
+
+            // Player coordinates data
+            COMPUTE_RAM_ADDR([gActiveCoordOffset], ebx)
+            mov eax, [ebx]      // X
+            mov ecx, [ebx + 4]  // Y
+            mov edx, [ebx + 8]  // Z
+            mov[edi + 20], eax  // X
+            mov[edi + 24], ecx  // Y
+            mov[edi + 28], edx  // Z
 
             INC_INDEX(gData, eax)
             pop edi
