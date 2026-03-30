@@ -17,6 +17,7 @@ BYTE originalBytesROM[HOOK_ROM_LOAD_SIZE];
 SharedData* gData = nullptr;
 GameID gGame = GAME_OOT;
 bool gIsRAMLoaded = false;
+bool forceGameCheck = false;
 uintptr_t moduleBase = 0;
 uintptr_t regBase = 0;
 uintptr_t romBase = 0;
@@ -24,8 +25,12 @@ uintptr_t gameRAMBase = 0;
 uint32_t gActiveButterflyID = OOT_BUTTERFLY_ID;
 uint32_t gActiveFairyID = OOT_FAIRY_ID;
 uint32_t gActiveBigFairyID = OOT_BIG_FAIRY_ID;
-uint32_t gActiveActorOff = ACTOR_ID_OOT;
-uint32_t gActiveFairyActorCombo = FAIRY_COMBO_OFFSET_OOT;
+uint32_t gActiveActorOff = OOT_ACTOR_ID;
+uint32_t gActiveFairyActorCombo = OOT_FAIRY_COMBO_OFFSET;
+uint32_t gActiveNextEntrance = OOT_NEXT_ENTRANCE;
+uint32_t gActiveGrottoOffset = OOT_GROTTO_DATA;
+uint32_t gActiveSceneOffset = OOT_SCENE_OFFSET;
+uint32_t gActiveEntranceReg = S1_OFFSET;
 uint32_t gDetectCounter = 0;
 uint32_t gSP = 0;
 uint32_t gA1 = 0;
@@ -514,6 +519,16 @@ __asm mov DstReg, GameAddr                  \
 __asm and DstReg, 00FFFFFFh                 \
 __asm add DstReg, [gameRAMBase]
 
+#define SET_ACTIVE_SETTINGS(Game)                                 \
+__asm mov[gActiveButterflyID], ##Game##_BUTTERFLY_ID              \
+__asm mov[gActiveFairyID], ##Game##_FAIRY_ID                      \
+__asm mov[gActiveBigFairyID], ##Game##_BIG_FAIRY_ID               \
+__asm mov[gActiveActorOff], ##Game##_ACTOR_ID                     \
+__asm mov[gActiveFairyActorCombo], ##Game##_FAIRY_COMBO_OFFSET    \
+__asm mov[gActiveNextEntrance], ##Game##_NEXT_ENTRANCE            \
+__asm mov[gActiveGrottoOffset], ##Game##_GROTTO_DATA              \
+__asm mov[gActiveSceneOffset], ##Game##_SCENE_OFFSET              
+
 __declspec(naked) void CaptureXFlagASM()
 {
     __asm
@@ -662,10 +677,16 @@ __declspec(naked) void PCHook()
         
         PERIODIC_GAME_CHECK:
             
+            // Check if we are forcing game detection
+            cmp [forceGameCheck], 1
+            je GAME_CHECK
+
             // Trigger a game check when condition are met
             inc dword ptr [gDetectCounter]
             cmp dword ptr [gDetectCounter], DETECT_THROTTLE
             jb IS_RAM_LOADED
+
+        GAME_CHECK:
 
             // Reset the counter
             mov dword ptr [gDetectCounter], 0
@@ -683,6 +704,20 @@ __declspec(naked) void PCHook()
             call ResetButterflyTransform
             jmp IS_RAM_LOADED
 
+        /*FORCE_GAME_CHECK_OOT :
+
+            call DetectCurrentGameASM           // Get the current game and store it to gGame
+            cmp [gGame], GAME_OOT
+            jne FORCE_GAME_CHECK_MM
+
+            cmp ecx, OOT_PLAY_INIT
+                jne DONE
+
+        FORCE_GAME_CHECK_MM:
+            // The game has changed, we need to check for RAM status and pattern first
+                mov byte ptr[gIsRAMLoaded], 0
+                call ResetButterflyTransform
+                jmp IS_RAM_LOADED*/
         IS_RAM_LOADED :
 
             // Read PC
@@ -696,45 +731,50 @@ __declspec(naked) void PCHook()
             cmp byte ptr [gGame], GAME_OOT
             jne CHECK_MM
 
-            // Set the active butterfly and fairy IDs
-            mov [gActiveButterflyID], OOT_BUTTERFLY_ID
-            mov [gActiveFairyID], OOT_FAIRY_ID
-            mov [gActiveBigFairyID], OOT_BIG_FAIRY_ID
-            mov [gActiveActorOff], ACTOR_ID_OOT;
-            mov [gActiveFairyActorCombo], FAIRY_COMBO_OFFSET_OOT;
+            // Set OoT active settings
+            SET_ACTIVE_SETTINGS(OOT)
+            mov [gActiveEntranceReg], S1_OFFSET
             
             // Check that the RAM is loaded
             cmp ecx, OOT_PLAY_MAIN
             je RAM_LOADED
+
+            // Check that the RAM is loaded via play init
+            cmp ecx, OOT_PLAY_INIT
+            je RAM_LOADED
+
             jmp DONE
 
         CHECK_MM :
             
-            // Set the active butterfly ID
-            mov [gActiveButterflyID], MM_BUTTERFLY_ID
-            mov [gActiveFairyID], MM_FAIRY_ID
-            mov [gActiveBigFairyID], MM_BIG_FAIRY_ID
-            mov [gActiveActorOff], ACTOR_ID_MM;
-            mov [gActiveFairyActorCombo], FAIRY_COMBO_OFFSET_MM;
+            // Set the MM active settings
+            SET_ACTIVE_SETTINGS(MM)
+            mov[gActiveEntranceReg], V1_OFFSET
 
             // Check that the RAM is loaded
             cmp ecx, MM_PLAY_MAIN
             je RAM_LOADED
+
+            // Check that the RAM is loaded via play init
+            cmp ecx, MM_PLAY_INIT
+            je RAM_LOADED
+
             jmp DONE
 
         RAM_LOADED :
-            mov gIsRAMLoaded, 1
+            mov [gIsRAMLoaded], 1
+            mov [forceGameCheck], 0
 
             // Get the current game pattern state
             lea eax, [gPatternState]
             movzx edx, byte ptr [gGame]
-            imul edx, 24
+            imul edx, PATTERN_STATE_SIZE
 
             // Apply the gPatternState[gGame].PCs array to the activePCs array in any cases
             lea ebx, [eax + edx + 4]
             mov [gActivePCs], ebx
 
-            // if patterns are resolved -> butterfly test
+            // if patterns are resolved -> Test Dispatcher
             cmp byte ptr [eax + edx], 0
             jne TEST_DISPATCHER
 
@@ -762,8 +802,16 @@ __declspec(naked) void PCHook()
             cmp ecx, [eax + 12]
             je SHOP_TEST
 
-            // if PC = EnButte_TransformIntoFairy -> Butterfly test
+            // if PC = hookPlay_Init -> Play init test
             cmp ecx, [eax + 16]
+            je PLAY_INIT_TEST
+
+            // if PC = Play_TransitionDone -> Transition test
+            cmp ecx, [eax + 20]
+            je TRANSITION_TEST
+
+            // if PC = EnButte_TransformIntoFairy -> Butterfly test
+            cmp ecx, [eax + 24]
             je BUTTERFLY_TEST
 
             // Not a tracked PC
@@ -839,7 +887,7 @@ __declspec(naked) void PCHook()
 
             // Read ComboItemQuery (12 bytes)
             mov eax, [ebx]      // q0
-            mov edx, [ebx + 4]   // q1
+            mov edx, [ebx + 4]  // q1
             mov ecx, [ebx + 8]  // q1
 
             // Fill the buffer at the correct index
@@ -912,6 +960,146 @@ __declspec(naked) void PCHook()
 
             call CaptureXFlagASM
             jmp DONE
+
+        PLAY_INIT_TEST:
+
+            mov [forceGameCheck], 0
+
+            /*push ecx
+                
+            // We need to test the game first
+            mov bl, byte ptr[gGame]            // Store the current game state
+            call DetectCurrentGameASM           // Get the current game and store it to gGame
+
+            // if curr game = prev game -> go to store
+            cmp byte ptr[gGame], bl
+            je STORE_INIT
+
+            // Reset the counter
+            mov dword ptr[gDetectCounter], 0
+
+            // if curr game = OoT -> set active settings OoT
+            cmp bl, GAME_OOT
+            jne INIT_MM
+            SET_ACTIVE_SETTINGS(OOT)
+            jmp STORE_INIT
+
+        INIT_MM:
+            SET_ACTIVE_SETTINGS(MM)
+
+        STORE_INIT:
+
+            pop ecx*/
+
+            push edi
+
+            mov edx, [gData]
+
+            // Get CurrIndex
+            mov edi, [edx + 12]
+
+            COMPUTE_INDEX(edx, edi, edi)
+
+            mov[edi], ecx       // Store PC
+            mov[edi + 4], eax   // Store Mem
+
+            // Spawned scene ID
+            READ_N64_REG(V0_OFFSET, eax)
+
+            // Entrance spawn ID
+            READ_N64_REG(V1_OFFSET, ebx)
+
+            // gGrottoData
+            COMPUTE_RAM_ADDR([gActiveGrottoOffset], edx)
+
+            // Build entrance message
+            mov ecx, IN_MAGIC
+            mov cl, byte ptr[gGame]
+            mov dl, byte ptr[edx]
+            and edx, 000000FFh
+            shl edx, 8
+            add ecx, edx
+
+            // Fill the buffer at the correct index
+            mov[edi + 8], ecx   // Message direction + Game + gGrottoData
+            mov[edi + 12], eax  // Scene ID
+            mov[edi + 16], ebx  // Entrance ID
+
+            INC_INDEX(gData, eax)
+            pop edi
+
+            jmp DONE
+
+        TRANSITION_TEST :
+
+            mov[forceGameCheck], 1
+
+            /*push ecx
+
+            // We need to test the game first
+            mov bl, byte ptr[gGame]            // Store the current game state
+            call DetectCurrentGameASM           // Get the current game and store it to gGame
+
+            // if curr game = prev game -> go to store
+            cmp byte ptr[gGame], bl
+            je STORE_TRANSITION
+
+            // Reset the counter
+            mov dword ptr[gDetectCounter], 0
+
+            // if curr game = OoT -> set active settings OoT
+            cmp bl, GAME_OOT
+            jne TRANSI_MM
+            SET_ACTIVE_SETTINGS(OOT)
+            jmp STORE_TRANSITION
+
+        TRANSI_MM :
+            SET_ACTIVE_SETTINGS(MM)
+
+        STORE_TRANSITION :
+
+            pop ecx*/
+            push edi
+
+            mov edx, [gData]
+
+            // Get CurrIndex
+            mov edi, [edx + 12]
+
+            COMPUTE_INDEX(edx, edi, edi)
+
+            mov[edi], ecx     // Store PC
+            mov[edi + 4], 0   // Store Mem
+
+            // gLastScene = Current scene ID
+            mov ebx, [gActiveEntranceReg]
+            READ_N64_REG(ebx, eax)
+            add eax, [gActiveSceneOffset]
+            COMPUTE_RAM_ADDR(eax, eax)
+            mov eax, [eax]
+
+            // gNextEntrance
+            COMPUTE_RAM_ADDR([gActiveNextEntrance], ebx)
+
+            // gGrottoData
+            COMPUTE_RAM_ADDR([gActiveGrottoOffset], edx)
+
+            // Build entrance message
+            mov ecx, OUT_MAGIC
+            mov cl, byte ptr[gGame]
+            mov dl, byte ptr[edx]
+            and edx, 000000FFh
+            shl edx, 8
+            add ecx, edx
+            mov ebx, [ebx]
+
+            // Fill the buffer at the correct index
+            mov[edi + 8], ecx   // Message direction + Game + gGrottoData
+            mov[edi + 12], eax  // Scene ID
+            mov[edi + 16], ebx  // Entrance ID
+
+            INC_INDEX(gData, eax)
+            pop edi
 
         BUTTERFLY_TEST:
 

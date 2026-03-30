@@ -223,7 +223,7 @@ void EntranceHelper::ReadEntranceID(int Game, uint8_t * RAMData)
             case 0x14:
             {   // Touched loading zone
 
-                memcpy(&tmpLast, &RAMData[0x3FF398], sizeof(uint32_t));      // playState.nextEntrance = 0x803FF39A8
+                memcpy(&tmpLast, &RAMData[0x3FF398], sizeof(uint32_t));      // playState.nextEntrance = 0x803FF398
                 memcpy(&frameCount, &RAMData[0x3E6BBC], sizeof(uint32_t));   // gPlay.state.frameCount = 0x803E6BBC
                 this->IsEntranceTouched = true;
                 this->LastGameTouchedEntrance = Game;

@@ -9,10 +9,12 @@
 typedef struct GamePatternState
 {
     bool Resolved = false;
-    uint32_t PCs[5] = { 0 };    // ID 0 = Actor_RunUpdate, ID 1 = comboAddItemRawEx, ID 2 = EnItem00_DropCustom, ID 3 = comboItemPrecond
+    uint32_t PCs[6] = { 0 };    // ID 0 = Actor_Spawn, ID 1 = comboAddItemRawEx, ID 2 = EnItem00_DropCustom, ID 3 = comboItemPrecond, ID 4 = hookPlay_Init, ID 5 = Play_TransitionDone, ID 6 = EnButte_TransformIntoFairy
 } GamePatternState;
 
 extern GamePatternState gPatternState[2];
+
+#define PATTERN_STATE_SIZE 28
 
 typedef struct PCSignature
 {

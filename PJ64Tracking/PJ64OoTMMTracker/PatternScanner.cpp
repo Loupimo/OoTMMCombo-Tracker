@@ -161,7 +161,7 @@ void BuildTypeMaskFromPatterns()
             if (!MatchPattern(gameRAMBase + (base & 0x00FFFFFF), sigs[i].Signature))
             {   // The found address was wrong
 
-                base = FindPatternInPayload(sigs[i].Signature, i == count - 1 ? PC_RANGE_START : PAYLOAD_START, PAYLOAD_END);
+                base = FindPatternInPayload(sigs[i].Signature, i >= count - 3 ? PC_RANGE_START : PAYLOAD_START, PAYLOAD_END);
 
                 if (!base)
                 {
