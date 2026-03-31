@@ -20,16 +20,14 @@ class EntranceTableWidget : public QWidget
 
 public:
 
-
+    int Game;
     const char* TabName;                // The tab name. Should correspond to the game it refers to.
 
 
-    explicit EntranceTableWidget(QWidget* parent = nullptr);
+    explicit EntranceTableWidget(int Game, const char * Name, QWidget* parent = nullptr);
 
     // Remplir le tableau
-    void setScenes(
-        const std::map<uint32_t, SceneEntranceMetaInf>& scenes
-    );
+    void setScenes(const std::map<uint32_t, SceneEntranceMetaInf>& scenes);
 
 signals:
 
@@ -64,4 +62,19 @@ private:
         int row,
         const EntranceLink& link
     );
+};
+
+
+class EntranceTab : public QTabWidget
+{
+    Q_OBJECT
+
+public:
+
+    EntranceTableWidget * OoTEntranceTab;
+    EntranceTableWidget * MMEntranceTab;
+    const char* TabName;                // The tab name. Should correspond to the game it refers to.
+
+
+    explicit EntranceTab(QTabWidget* parent = nullptr);
 };

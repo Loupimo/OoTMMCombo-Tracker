@@ -123,6 +123,8 @@
 	{ "Dodongo Grotto", "./Resources/MM/Termina/Dodongo.png", (uint8_t) MMRegions::Termina, false, GameLayout::mm},
 	{ "Gossip Stones Grotto, Ocean", "./Resources/MM/Termina/Ocean_Gossip.png", (uint8_t) MMRegions::Termina, false, GameLayout::mm},
 	{ "Gossip Stones Grotto, Canyon", "./Resources/MM/Termina/Canyon_Gossip.png", (uint8_t) MMRegions::Termina, false, GameLayout::mm},
+	{ "Gossip Stones Grotto, Swamp", "", (uint8_t) MMRegions::None, false, GameLayout::mm},
+	{ "Gossip Stones Grotto, Mountain", "", (uint8_t) MMRegions::None, false, GameLayout::mm},
 	{ "Bio Baba Grotto", "./Resources/MM/Termina/Bio_Baba.png", (uint8_t) MMRegions::Termina, false, GameLayout::mm},
 	{ "Peehat Grotto", "./Resources/MM/Termina/Peehat.png", (uint8_t) MMRegions::Termina, false, GameLayout::mm},
 	{ "Deku Scrub Grotto", "./Resources/MM/Termina/Scrub.png", (uint8_t) MMRegions::Termina, false, GameLayout::mm},

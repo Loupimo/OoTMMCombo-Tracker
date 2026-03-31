@@ -134,6 +134,7 @@ OOT_FAIRY_ZORA_DOMAIN;Fairy Fountain;./Resources/OoT/Fairy/Fountain.png;Zora_Dom
 OOT_FAIRY_HYRULE;Fairy Fountain;./Resources/OoT/Fairy/Fountain.png;Hyrule;false;oot
 OOT_FAIRY_GERUDO_FORTRESS;Fairy Fountain;./Resources/OoT/Fairy/Fountain.png;Gerudo_Fortress;false;oot
 OOT_GREAT_FAIRY_DIN;Great Fairy Fountain;./Resources/OoT/Fairy/Great_Fairy.png;Castle;true;oot
+OOT_GREAT_FAIRY_DEFENSE;Great Fairy Fountain;;None;false;oot
 OOT_GREAT_FAIRY_FARORE;Great Fairy Fountain;./Resources/OoT/Fairy/Great_Fairy.png;Zora_Fountain;false;oot
 OOT_GREAT_FAIRY_NAYRU;Great Fairy Fountain;./Resources/OoT/Fairy/Great_Fairy.png;Desert_Colossus;false;oot
 OOT_GREAT_FAIRY_MAGIC;Great Fairy Fountain;./Resources/OoT/Fairy/Great_Fairy.png;Death_Mountain_Trail;false;oot
@@ -147,5 +148,6 @@ OOT_WINDMILL;Windmill;./Resources/OoT/Kakariko/Windmill.png;Kakariko;true;oot
 OOT_MARKET_ENTRANCE;Market Entrance;;None;false;oot
 OOT_TEMPLE_OF_TIME_ENTRYWAY;Temple of Time Entryway;;None;false;oot
 OOT_DAMPE_HOUSE;Dampe's House;;None;false;oot
+OOT_BACK_ALLEY;Back Alley;;None;false;oot
 OOT_INSIDE_EGGS;Inside Eggs;;None;false;oot
 OOT_MARKET;Market;;None;false;oot

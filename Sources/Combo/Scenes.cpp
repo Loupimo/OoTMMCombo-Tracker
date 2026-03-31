@@ -142,6 +142,7 @@ SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 	{ "Fairy Fountain", "./Resources/OoT/Fairy/Fountain.png", (uint8_t)OoTRegions::Hyrule, false, GameLayout::oot},
 	{ "Fairy Fountain", "./Resources/OoT/Fairy/Fountain.png", (uint8_t)OoTRegions::Gerudo_Fortress, false, GameLayout::oot},
 	{ "Great Fairy Fountain", "./Resources/OoT/Fairy/Great_Fairy.png", (uint8_t)OoTRegions::Castle, true, GameLayout::oot},
+	{ "Great Fairy Fountain", "", (uint8_t)OoTRegions::None, false, GameLayout::oot},
 	{ "Great Fairy Fountain", "./Resources/OoT/Fairy/Great_Fairy.png", (uint8_t)OoTRegions::Zora_Fountain, false, GameLayout::oot},
 	{ "Great Fairy Fountain", "./Resources/OoT/Fairy/Great_Fairy.png", (uint8_t)OoTRegions::Desert_Colossus, false, GameLayout::oot},
 	{ "Great Fairy Fountain", "./Resources/OoT/Fairy/Great_Fairy.png", (uint8_t)OoTRegions::Death_Mountain_Trail, false, GameLayout::oot},
@@ -155,6 +156,7 @@ SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 	{ "Market Entrance", "", (uint8_t)OoTRegions::None, false, GameLayout::oot},
 	{ "Temple of Time Entryway", "", (uint8_t)OoTRegions::None, false, GameLayout::oot},
 	{ "Dampe's House", "", (uint8_t)OoTRegions::None, false, GameLayout::oot},
+	{ "Back Alley", "", (uint8_t)OoTRegions::None, false, GameLayout::oot},
 	{ "Inside Eggs", "", (uint8_t)OoTRegions::None, false, GameLayout::oot},
 	{ "Market", "", (uint8_t)OoTRegions::None, false, GameLayout::oot}
 };
@@ -287,6 +289,8 @@ SceneMetaInfo MMScenesMetaInfo[MM_NUM_SCENES] =
 	{ "Dodongo Grotto", "./Resources/MM/Termina/Dodongo.png", (uint8_t)MMRegions::Termina, false, GameLayout::mm},
 	{ "Gossip Stones Grotto, Ocean", "./Resources/MM/Termina/Ocean_Gossip.png", (uint8_t)MMRegions::Termina, false, GameLayout::mm},
 	{ "Gossip Stones Grotto, Canyon", "./Resources/MM/Termina/Canyon_Gossip.png", (uint8_t)MMRegions::Termina, false, GameLayout::mm},
+	{ "Gossip Stones Grotto, Swamp", "", (uint8_t)MMRegions::None, false, GameLayout::mm},
+	{ "Gossip Stones Grotto, Mountain", "", (uint8_t)MMRegions::None, false, GameLayout::mm},
 	{ "Bio Baba Grotto", "./Resources/MM/Termina/Bio_Baba.png", (uint8_t)MMRegions::Termina, false, GameLayout::mm},
 	{ "Peehat Grotto", "./Resources/MM/Termina/Peehat.png", (uint8_t)MMRegions::Termina, false, GameLayout::mm},
 	{ "Deku Scrub Grotto", "./Resources/MM/Termina/Scrub.png", (uint8_t)MMRegions::Termina, false, GameLayout::mm},

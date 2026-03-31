@@ -133,6 +133,7 @@
 	{ "Fairy Fountain", "./Resources/OoT/Fairy/Fountain.png", (uint8_t) OoTRegions::Hyrule, false, GameLayout::oot},
 	{ "Fairy Fountain", "./Resources/OoT/Fairy/Fountain.png", (uint8_t) OoTRegions::Gerudo_Fortress, false, GameLayout::oot},
 	{ "Great Fairy Fountain", "./Resources/OoT/Fairy/Great_Fairy.png", (uint8_t) OoTRegions::Castle, true, GameLayout::oot},
+	{ "Great Fairy Fountain", "", (uint8_t) OoTRegions::None, false, GameLayout::oot},
 	{ "Great Fairy Fountain", "./Resources/OoT/Fairy/Great_Fairy.png", (uint8_t) OoTRegions::Zora_Fountain, false, GameLayout::oot},
 	{ "Great Fairy Fountain", "./Resources/OoT/Fairy/Great_Fairy.png", (uint8_t) OoTRegions::Desert_Colossus, false, GameLayout::oot},
 	{ "Great Fairy Fountain", "./Resources/OoT/Fairy/Great_Fairy.png", (uint8_t) OoTRegions::Death_Mountain_Trail, false, GameLayout::oot},
@@ -146,5 +147,6 @@
 	{ "Market Entrance", "", (uint8_t) OoTRegions::None, false, GameLayout::oot},
 	{ "Temple of Time Entryway", "", (uint8_t) OoTRegions::None, false, GameLayout::oot},
 	{ "Dampe's House", "", (uint8_t) OoTRegions::None, false, GameLayout::oot},
+	{ "Back Alley", "", (uint8_t) OoTRegions::None, false, GameLayout::oot},
 	{ "Inside Eggs", "", (uint8_t) OoTRegions::None, false, GameLayout::oot},
 	{ "Market", "", (uint8_t) OoTRegions::None, false, GameLayout::oot}

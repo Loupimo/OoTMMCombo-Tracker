@@ -27,7 +27,7 @@ private:
     LogTab* Log;                     // Log / Launch tab.
     GameTab* OoTTab;                 // Ocarina of Time game tab.
     GameTab* MMTab;                  // Majora's Mask game tab.
-    EntranceTableWidget* EntranceTab;// Entrance tab.
+    EntranceTab* EntTab;             // Entrance tab.
     QStringList RecentFiles;         // The list of the last opened files.
     byte MaxRecentFiles = 5;         // The maximum number of recent files to show (auto save not counted).
     QList<QAction*> RecentActions;   // The actual recent files options.

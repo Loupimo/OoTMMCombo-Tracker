@@ -6,61 +6,40 @@
 #include <QHeaderView>
 
 
-EntranceTableWidget::EntranceTableWidget(QWidget* parent) : QWidget(parent)
+EntranceTableWidget::EntranceTableWidget(int Game, const char * Name, QWidget* parent) : QWidget(parent)
 {
-    tableView = new QTableView(this);
+    this->tableView = new QTableView(this);
 
-    model = new QStandardItemModel(this);
+    this->model = new QStandardItemModel(this);
 
-    proxyModel = new QSortFilterProxyModel(this);
-    proxyModel->setSourceModel(model);
+    this->proxyModel = new QSortFilterProxyModel(this);
+    this->proxyModel->setSourceModel(this->model);
 
-    tableView->setModel(proxyModel);
+    this->tableView->setModel(this->proxyModel);
 
-    tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
+    this->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
 
-    tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    this->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+    this->tableView->horizontalHeader()->setStretchLastSection(true);
+
+    tableView->setShowGrid(true);
 
     tableView->horizontalHeader()->setStretchLastSection(true);
 
-    tableView->setAlternatingRowColors(true);
-
-    tableView->setStyleSheet(R"(
-QTableView {
-    background-color: #232629;
-    alternate-background-color: #2b2b2b;
-    color: #DFE1E2;
-    gridline-color: #3A3F44;
-}
-
-QTableView::item {
-    background-color: #2b2b2b;
-    color: #DFE1E2;
-}
-
-QTableView::item:selected {
-    background-color: #346792;
-    color: white;
-}
-
-QHeaderView::section {
-    background-color: #31363B;
-    color: #DFE1E2;
-    padding: 4px;
-    border: 1px solid #3A3F44;
-}
-)");
-
-    setupModel();
+    tableView->verticalHeader()->setVisible(false);
+    tableView->setSortingEnabled(true);
+    tableView->sortByColumn(0, Qt::AscendingOrder);
+    this->setupModel();
 
     QVBoxLayout* layout = new QVBoxLayout(this);
 
     layout->addWidget(tableView);
 
-    connect(tableView, &QTableView::doubleClicked, this, &EntranceTableWidget::onRowDoubleClicked);
-
-    this->TabName = "Entrances";
-    this->setScenes(GetSceneEntranceMetaInfForGame(OOT_GAME));
+    connect(this->tableView, &QTableView::doubleClicked, this, &EntranceTableWidget::onRowDoubleClicked);
+    this->Game = Game;
+    this->TabName = Name;
+    this->setScenes(GetSceneEntranceMetaInfForGame(this->Game));
 }
 
 // ==============================
@@ -69,9 +48,9 @@ QHeaderView::section {
 
 void EntranceTableWidget::setupModel()
 {
-    model->setColumnCount(5);
+    this->model->setColumnCount(5);
 
-    model->setHorizontalHeaderLabels({"Scene", "Entrance", "Way In", "Way Out", "Cost" });
+    this->model->setHorizontalHeaderLabels({"Scene", "Entrance", "Way In", "Way Out", "Cost" });
 }
 
 // ==============================
@@ -80,8 +59,8 @@ void EntranceTableWidget::setupModel()
 
 void EntranceTableWidget::setScenes(const std::map<uint32_t, SceneEntranceMetaInf>& scenes)
 {
-    scenesData = scenes;
-    populateTable();
+    this->scenesData = scenes;
+    this->populateTable();
 }
 
 // ==============================
@@ -90,23 +69,23 @@ void EntranceTableWidget::setScenes(const std::map<uint32_t, SceneEntranceMetaIn
 
 void EntranceTableWidget::populateTable()
 {
-    model->removeRows(0, model->rowCount());
+    this->model->removeRows(0, this->model->rowCount());
 
     int row = 0;
 
-    for (auto& [sceneID, scene] : scenesData)
+    for (auto& [sceneID, scene] : this->scenesData)
     {
         for (auto& [entranceID, link] : scene.EntranceIDs)
         {
-            const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(OOT_GAME, entranceID);
+            const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->Game, entranceID);
 
             if (entrance->Type == EntranceType::None)
                 continue;
 
-            model->insertRow(row);
+            this->model->insertRow(row);
 
             // Scene
-            model->setItem(row, 0, new QStandardItem(formatScene(sceneID)));
+            this->model->setItem(row, 0, new QStandardItem(formatScene(sceneID)));
 
             // Entrance
             auto entranceItem = new QStandardItem(formatEntrance(entranceID));
@@ -114,18 +93,18 @@ void EntranceTableWidget::populateTable()
             // store ID internally
             entranceItem->setData(entranceID, Qt::UserRole);
 
-            model->setItem(row, 1, entranceItem);
+            this->model->setItem(row, 1, entranceItem);
 
             // Way In
-            model->setItem(row, 2, new QStandardItem(formatEntranceLink(entranceID, &link, true)));
+            this->model->setItem(row, 2, new QStandardItem(formatEntranceLink(entranceID, &link, true)));
 
             // Way Out
-            model->setItem(row, 3, new QStandardItem(formatEntranceLink(entranceID, &link, false)));
+            this->model->setItem(row, 3, new QStandardItem(formatEntranceLink(entranceID, &link, false)));
 
             // Cost placeholder
-            model->setItem(row, 4, new QStandardItem("1"));
+            this->model->setItem(row, 4, new QStandardItem("1"));
 
-            applyRowColor(row, link);
+            //this->applyRowColor(row, link);
 
             row++;
         }
@@ -144,13 +123,13 @@ QString EntranceTableWidget::formatEntrance(uint32_t entranceID)
         return "?";
 
     // TODO: remplacer par vrai nom
-    return EntranceHelper::GetEntranceFromName(OOT_GAME, entranceID);
+    return EntranceHelper::GetEntranceFromName(this->Game, entranceID);
 }
 
 
 QString EntranceTableWidget::formatEntranceLink(uint32_t EntranceID, EntranceLink * EntranceLink, bool IsWayIn)
 {
-    const EntranceMetaInfo * entrance = EntranceHelper::GetEntranceMetaInf(OOT_GAME, EntranceID);
+    const EntranceMetaInfo * entrance = EntranceHelper::GetEntranceMetaInf(this->Game, EntranceID);
 
     switch (entrance->Type)
     {
@@ -189,7 +168,7 @@ QString EntranceTableWidget::formatEntranceLink(uint32_t EntranceID, EntranceLin
         {
             return "?";
         }
-        return QString::fromStdString(EntranceHelper::GetEntranceFromToString(OOT_GAME, EntranceLink->InLink));
+        return QString::fromStdString(EntranceHelper::GetEntranceFromToString(this->Game, EntranceLink->InLink));
     }
     else
     {
@@ -197,7 +176,7 @@ QString EntranceTableWidget::formatEntranceLink(uint32_t EntranceID, EntranceLin
         {
             return "?";
         }
-        return QString::fromStdString(EntranceHelper::GetEntranceFromToString(OOT_GAME, EntranceLink->OutLink));
+        return QString::fromStdString(EntranceHelper::GetEntranceFromToString(this->Game, EntranceLink->OutLink));
     }
 }
 
@@ -205,42 +184,46 @@ QString EntranceTableWidget::formatEntranceLink(uint32_t EntranceID, EntranceLin
 QString EntranceTableWidget::formatScene(uint32_t sceneID)
 {
     // TODO: remplacer par vrai nom
-    return GetSceneName(OOT_GAME, sceneID);
+    return GetSceneName(this->Game, sceneID);
 }
 
 // ==============================
 // Row Coloring
 // ==============================
 
-void EntranceTableWidget::applyRowColor(int row, const EntranceLink& link)
+void EntranceTableWidget::applyRowColor(
+    int row,
+    const EntranceLink& link)
 {
-    QBrush brush;
+    QBrush background;
+    QBrush foreground(Qt::black);
 
     bool hasIn = link.InLink != UINT32_MAX;
-
     bool hasOut = link.OutLink != UINT32_MAX;
 
     if (!hasIn && !hasOut)
-        brush = QBrush(Qt::lightGray);
+        background = QBrush(Qt::lightGray);
 
     else if (hasIn && !hasOut)
-        brush = QBrush(Qt::yellow);
+        background = QBrush(Qt::yellow);
 
     else if (!hasIn && hasOut)
-        brush = QBrush(Qt::cyan);
+        background = QBrush(Qt::cyan);
 
     else
-        brush = QBrush(Qt::green);
+        background = QBrush(Qt::green);
 
     for (int col = 0; col < model->columnCount(); col++)
     {
         auto item = model->item(row, col);
 
         if (item)
-            item->setBackground(brush);
+        {
+            item->setBackground(background);
+            item->setForeground(foreground);
+        }
     }
 }
-
 // ==============================
 // Double Click Handling
 // ==============================
@@ -259,4 +242,18 @@ void EntranceTableWidget::onRowDoubleClicked(const QModelIndex& index)
     uint32_t entranceID = item->data(Qt::UserRole).toUInt();
 
     emit entranceActivated(entranceID);
+}
+
+
+
+
+
+EntranceTab::EntranceTab(QTabWidget* parent) : QTabWidget(parent)
+{
+    this->TabName = "Entrances";
+    this->OoTEntranceTab = new EntranceTableWidget(OOT_GAME, "OoT", this);
+    this->MMEntranceTab = new EntranceTableWidget(MM_GAME, "MM", this);
+
+    this->addTab(this->OoTEntranceTab, this->OoTEntranceTab->TabName);
+    this->addTab(this->MMEntranceTab, this->MMEntranceTab->TabName);
 }

@@ -643,5 +643,5 @@ const std::map<int, EntranceMetaInfo> MMEntrances =
 	{ MM_INTERNAL_EXIT_GROTTO_ENTR, { MM_INTERNAL_EXIT_GROTTO_ENTR, MM_GROTTOS, MM_GROTTOS, "", "", EntranceType::None, -1, -1, -1, -1, -1, -1, 0, GameLayout::all } },
 	{ MM_LOST_WOODS_ENTR, { MM_LOST_WOODS_ENTR, MM_SOUTHERN_SWAMP, MM_LOST_WOODS, "Southern Swamp", "Woods of Mystery", EntranceType::Normal, 0, 0, 0, 0, 0, 0, 0, GameLayout::all } },
 	{ SPAWN_LOADING, { SPAWN_LOADING, MM_EXTRA, MM_EXTRA, "Spawn Loading", "Wrap Song / Save Menu", EntranceType::None, -1, -1, -1, -1, -1, -1, 0, GameLayout::all } },
-	{ MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE_WINTER, { MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE_WINTER, MM_MOUNTAIN_VILLAGE, MM_MOUNTAIN_VILLAGE, "Mountain Village Open Grotto", "Moutain Village Winter", EntranceType::One_Way_In, 0, 0, 0, -1, -1, -1, 0, GameLayout::all } }
+	{ MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE_WINTER, { MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE_WINTER, MM_MOUNTAIN_VILLAGE, MM_MOUNTAIN_VILLAGE, "Mountain Village Open Grotto - Winter", "Moutain Village Winter", EntranceType::One_Way_In, 0, 0, 0, -1, -1, -1, 0, GameLayout::all } }
 };
