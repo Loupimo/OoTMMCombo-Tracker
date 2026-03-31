@@ -166,11 +166,14 @@ def parse_scene(input_file, output_file, game):
             outfile.write(objectstr)
 
 
-def parse_entrance(input_file, output_file):
+def parse_entrance(input_file, output_file, output_filemeta, prefix):
     """Parse un fichier pour convertir les lignes en EntranceMetaInfo."""
-    with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
+    with open(input_file, 'r') as infile, open(output_file, 'w') as outfile, open(output_filemeta, 'w') as outfilemeta:
         filereader = pd.read_csv(infile, delimiter=";", header=0, keep_default_na=False)
         isFirst = True
+        scene_entr_arr = {}
+        objectstrings = []
+        defines = ""
         for i, row in filereader.iterrows():
             objectstr = ""
             if isFirst == False :
@@ -180,15 +183,49 @@ def parse_entrance(input_file, output_file):
 
             entrance_code = row["Code_Name"]
             entridstr = row["ID"]
-            sceneidstr = row["Scene"]
+            fromsceneid = row["From_Scene"]
+            tosceneid = row["To_Scene"]
             from_str = row["From_Name"]
             to_str = row["To_Name"]
-            image_path = row["Image_Path"]
+            type = row["Type"]
+            in_X = row["In_X"]
+            in_Y = row["In_Y"]
+            in_Z = row["In_Z"]
+            out_X = row["Out_X"]
+            out_Y = row["Out_Y"]
+            out_Z = row["Out_Z"]
+            arrow_rot = row["Arrow_Rot"]
             active_layout = row["Active_Layout"]
 
-            objectstr = objectstr + "\t{ " + str(entrance_code) + ", { " + str(entrance_code) + ", " + str(sceneidstr) + ", \"" + from_str + "\", \"" + to_str + "\", \"" + image_path + "\", GameLayout::" + active_layout + " } }"
-            outfile.write(objectstr)
-            print ("#define " + entrance_code + " " + entridstr)
+            objectstr = objectstr + "\t{ " + str(entrance_code) + ", { " + str(entrance_code) + ", " + str(fromsceneid) + ", " + str(tosceneid) + ", \"" + from_str + "\", \"" + to_str + "\", EntranceType::" + type + ", " + str(in_X) + ", " + str(in_Y) + ", " + str(in_Z) + ", " + str(out_X) + ", " + str(out_Y) + ", " + str(out_Z) + ", " + str(arrow_rot) + ", GameLayout::" + active_layout + " } }"
+            objectstrings.append(objectstr)
+            #outfile.write(objectstr)
+            defines += "#define " + entrance_code + " " + entridstr + "\n"
+
+
+            if scene_entr_arr.__contains__(tosceneid) == False:
+                scene_entr_arr[tosceneid] = []
+            
+            scene_entr_arr[tosceneid].append(entrance_code)
+
+        outfile.write("#pragma once\n\n#include \"Entrances.h\"\n#include \"Scenes.h\"\n")
+        outfile.write("\n#pragma region Defines\n\n")
+        outfile.write(defines)
+        outfile.write("\n#pragma endregion\n\nconst std::map<int, EntranceMetaInfo> " + prefix + "Entrances = \n{\n")
+
+        for object in objectstrings:
+            outfile.write(object)
+
+        outfile.write("\n};\n")
+
+        scene_str = ""
+        for scene in scene_entr_arr:
+            scene_str = "{\n\t" + str(scene) + ",\n\t{\n\t\t" + str(scene) + ",\n\t\t{\n"
+            for entr in scene_entr_arr[scene]:
+                scene_str += "\t\t\t{ " + str (entr) + ", { UINT32_MAX, UINT32_MAX } },\n"
+            scene_str += "\t\t},\n\t\tNULL\n\t}\n},"
+            outfilemeta.write(scene_str)
+            #print (scene_str)
 
 
 def parse_items(input_file, output_file, arrayname):
@@ -296,15 +333,19 @@ print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_fil
 
 
 input_file = '..\\Scenes\\entrances_mm.csv'
-output_file = '..\\Scenes\\entrance_mm.txt'
-parse_entrance(input_file, output_file)
+#output_file = '..\\Scenes\\entrance_mm.txt'
+cpp_file = '..\\..\\Headers\\Combo\\MMEntrances.h'
+output_file_meta = '..\\Scenes\\entrances_mm_meta.txt'
+parse_entrance(input_file, cpp_file, output_file_meta, "MM")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
 #
 
 input_file = '..\\Scenes\\entrances_oot.csv'
 output_file = '..\\Scenes\\entrance_oot.txt'
-parse_entrance(input_file, output_file)
+cpp_file = '..\\..\\Headers\\Combo\\OoTEntrances.h'
+output_file_meta = '..\\Scenes\\entrances_oot_meta.txt'
+parse_entrance(input_file, cpp_file, output_file_meta, "OoT")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
 #

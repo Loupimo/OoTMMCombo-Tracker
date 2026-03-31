@@ -7,7 +7,7 @@
 
 SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 {
-		{ "Deku Tree", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
+	{ "Deku Tree", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
 	{ "Dodongo's Cavern", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
 	{ "Inside Jabu-Jabu", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
 	{ "Forest Temple", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
@@ -162,7 +162,7 @@ SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 
 SceneMetaInfo MMScenesMetaInfo[MM_NUM_SCENES] =
 {
-		{ "Southern Swamp - Clear", " ", (uint8_t)MMRegions::None, false, GameLayout::mm},
+	{ "Southern Swamp - Clear", " ", (uint8_t)MMRegions::None, false, GameLayout::mm},
 	{ "Fairy Fountain", "./Resources/MM/Snowhead/Fairy.png", (uint8_t)MMRegions::Snowhead, false, GameLayout::mm},
 	{ "Fairy Fountain", "./Resources/MM/Zora_Cape/Fairy.png", (uint8_t)MMRegions::Zora_Cape, false, GameLayout::mm},
 	{ "Fairy Fountain", "./Resources/MM/Woodfall/Fairy.png", (uint8_t)MMRegions::Woodfall, false, GameLayout::mm},
@@ -1246,5 +1246,17 @@ uint32_t GetSceneScrub(uint32_t Scrub)
 	{	// Inside Ganon Castle
 
 		return OOT_INSIDE_GANON_CASTLE;
+	}
+}
+
+const char* GetSceneName(int Game, uint32_t SceneID)
+{
+	if (Game == OOT_GAME)
+	{
+		return OoTScenesMetaInfo[SceneID].Name;
+	}
+	else
+	{
+		return MMScenesMetaInfo[SceneID].Name;
 	}
 }

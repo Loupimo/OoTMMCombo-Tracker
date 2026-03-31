@@ -173,12 +173,6 @@ public:
 	*/
 	void CheckCurrentLoadedGame();
 
-	/*
-	*   Read the current entrance ID for the desired game and store the result in the EntranceID attribute.
-	*
-	*   @param Game       The game to read the entrance ID from.
-	*/
-	void ReadEntranceID(int Game);
 
 #pragma endregion
 };

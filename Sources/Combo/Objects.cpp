@@ -37,6 +37,7 @@ CreateEmptyScene(OOT_MARKET_ENTRANCE)
 CreateEmptyScene(OOT_TEMPLE_OF_TIME_ENTRYWAY)
 CreateEmptyScene(OOT_DAMPE_HOUSE)
 CreateEmptyScene(OOT_BACK_ALLEY)
+CreateEmptyScene(OOT_GREAT_FAIRY_DEFENSE)
 
 SceneObjects OoTSceneObjects[OOT_NUM_SCENES] =
 {
@@ -181,6 +182,7 @@ SceneObjects OoTSceneObjects[OOT_NUM_SCENES] =
 
 	// OoT detailed great fairy scene
 	CreateSceneObjects(OOT_GREAT_FAIRY_CASTLE),
+	CreateSceneObjects(OOT_GREAT_FAIRY_DEFENSE),
 	CreateSceneObjects(OOT_GREAT_FAIRY_FARORE),
 	CreateSceneObjects(OOT_GREAT_FAIRY_NAYRU),
 	CreateSceneObjects(OOT_GREAT_FAIRY_MAGIC),

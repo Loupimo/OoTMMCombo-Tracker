@@ -216,6 +216,7 @@
     <ClCompile Include="Sources\Multi\Sendq.cpp" />
     <ClCompile Include="Sources\UI\AppConfig.cpp" />
     <ClCompile Include="Sources\UI\AppStyle.cpp" />
+    <ClCompile Include="Sources\UI\EntranceTable.cpp" />
     <ClCompile Include="Sources\UI\FilterManager.cpp" />
     <ClCompile Include="Sources\UI\GameTab.cpp" />
     <ClCompile Include="Sources\UI\LogTab.cpp" />
@@ -225,6 +226,7 @@
     <ClCompile Include="Sources\UI\OoTMMComboTracker.cpp" />
     <ClCompile Include="Sources\UI\RegionTab.cpp" />
     <ClCompile Include="Sources\UI\RoomRenderer.cpp" />
+    <ClCompile Include="Sources\UI\SceneEntrance.cpp" />
     <ClCompile Include="Sources\UI\SceneRenderer.cpp" />
     <ClCompile Include="Sources\UI\Settings.cpp" />
     <QtUic Include="OoTMMComboTracker.ui" />
@@ -250,9 +252,11 @@
     <ClInclude Include="Headers\UI\AppConfig.h" />
     <ClInclude Include="Headers\UI\AppStyle.h" />
     <QtMoc Include="Headers\UI\FilterManager.h" />
+    <QtMoc Include="Headers\UI\EntranceTable.h" />
     <ClInclude Include="Headers\UI\MemoryReader.h" />
     <ClInclude Include="Headers\UI\RegionTab.h" />
     <ClInclude Include="Headers\UI\RoomRenderer.h" />
+    <ClInclude Include="Headers\UI\SceneEntrance.h" />
     <ClInclude Include="Headers\UI\Settings.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="resource.h" />

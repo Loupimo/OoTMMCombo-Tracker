@@ -165,7 +165,8 @@ typedef struct SceneMetaInfo
 
 // OoT detailed great fairy scene
 #define OOT_GREAT_FAIRY_CASTLE						OOT_FAIRY_GERUDO_FORTRESS + 1			// Din's fire fairy fountain / Double defense upgrade fairy fountain
-#define OOT_GREAT_FAIRY_FARORE						OOT_GREAT_FAIRY_CASTLE + 1				// Farore's wind fairy fountain
+#define OOT_GREAT_FAIRY_DEFENSE						OOT_GREAT_FAIRY_CASTLE + 1				// Double defense upgrade fairy fountain. Used only by the entrance tracker
+#define OOT_GREAT_FAIRY_FARORE						OOT_GREAT_FAIRY_DEFENSE + 1				// Farore's wind fairy fountain
 #define OOT_GREAT_FAIRY_NAYRU						OOT_GREAT_FAIRY_FARORE + 1				// Nayru's love fairy fountain
 #define OOT_GREAT_FAIRY_MAGIC						OOT_GREAT_FAIRY_NAYRU + 1				// First magic upgrade fairy fountain
 #define OOT_GREAT_FAIRY_MAGIC2						OOT_GREAT_FAIRY_MAGIC + 1				// Second magic upgrade fairy fountain
@@ -440,3 +441,7 @@ uint32_t GetSceneGS(uint32_t GS);
 *	@return The matching scrub scene ID.
 */
 uint32_t GetSceneScrub(uint32_t Scrub);
+
+
+
+const char* GetSceneName(int Game, uint32_t SceneID);

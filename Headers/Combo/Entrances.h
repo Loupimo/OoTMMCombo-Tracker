@@ -10,13 +10,25 @@
 #define OUT_MAGIC	0xBB000000		// Used to determine if the message is an outgoing entrance
 #define NEW_CLOCK	0xFF3FFF3F		// Used to know if the scene ID is from a new clock cycle
 
+enum class EntranceType
+{
+	None,
+	Normal,
+	One_Way_In,
+	One_Way_Out
+};
+
 typedef struct EntranceMetaInfo
 {
 	uint32_t EntranceID;
-	uint32_t SceneID;
+	uint32_t FromSceneID;
+	uint32_t ToSceneID;
 	const char* FromName;
 	const char* ToName;
-	const char* ImagePath;
+	EntranceType Type;
+	int InPosition[3];				// Entrance incoming position on its corresponding scene image. ID 0 = X, ID 1 = Y, ID 2 = Z
+	int OutPosition[3];				// Entrance outgoing position on its corresponding scene image. ID 0 = X, ID 1 = Y, ID 2 = Z
+	float ArrowRot;
 	GameLayout ActiveLayout;
 } EntranceMetaInfo;
 
@@ -34,15 +46,9 @@ class EntranceHelper
 
 public:
 
-	bool HasValidEntrance = false;
-	uint8_t OutGame = NO_GAME;
-	uint32_t OutEntrance = 0;
-
-	uint32_t EntranceID = 0;				// The current entrance ID.
-	uint32_t LastTouchedEntranceID = 0;		// The ID of the last entrance ID
-	uint32_t LastFrameCount = 0;			// The frame count value when a the last transition trigger occurred 
+	uint8_t OutGame = NO_GAME;				// The game the last entrance ID comes from
+	uint32_t OutEntrance = 0;				// The last outgoing entrance ID
 	bool IsEntranceTouched = false;			// Tells if the ID we have is from the touched entrance (true) or the loaded one (false)
-	int LastGameTouchedEntrance = NO_GAME;	// Tells which game the last touched entrance came from
 	std::string LastTouchedStr;				// The string matching the direction of the last touched entrance
 	std::string EntranceStr;				// The string matching the direction of the current entrance
 
@@ -75,14 +81,6 @@ public:
 public:
 
 	/*
-	*   Read the current entrance ID for the desired game and store the result in the EntranceID attribute.
-	*
-	*	@param Game		The game the RAM data come from.
-	*	@param RAMData	The RAM data containing the entrance data information.
-	*/
-	void ReadEntranceID(int Game, uint8_t* RAMData);
-
-	/*
 	*   Check if the given entrance ID is from a grotto entrance.
 	*
 	*	@param ID		The entrance ID to test.
@@ -103,53 +101,64 @@ public:
 	/*
 	*   Get the entrance grotto associated to the current last entrance ID.
 	*
-	*	@param Game		The game the RAM data come from.
-	*	@param RAMData	The RAM data containing the grotto data information.
-	*	@param ID		The associated type of grotto entrance ID.
+	*	@param Game			The game the data come from.
+	*	@param GrottoData	The data related to the grotto entrance.
+	*	@param ID			The associated type of grotto entrance ID.
+	*	@param LastScene	The last scene ID before entering the grotto.
 	* 
 	*   @return The scene grotto associated to the touched exit.
 	*/
-	uint32_t GetGrottoEntrance(int Game, uint8_t* RAMData, uint32_t ID);
-	uint32_t GetGrottoEntrance2(uint8_t Game, uint8_t GrottoData, uint32_t ID, uint32_t LastScene);
+	uint32_t GetGrottoEntrance(uint8_t Game, uint8_t GrottoData, uint32_t ID, uint32_t LastScene);
 
 	/*
 	*   Get the exit grotto associated to the current last entrance ID.
 	*
-	*	@param Game		The game the RAM data come from.
-	*	@param RAMData	The RAM data containing the grotto data information.
+	*	@param Game			The game the data come from.
+	*	@param CurrRoom		The current room index.
+	*	@param GrottoData	The data related to the grotto entrance.
+	*	@param LastScene	The last scene ID before exiting the grotto.
 	* 
 	*   @return The scene grotto associated to the touched exit.
 	*/
-	uint32_t GetGrottoExit(int Game, uint8_t* RAMData);
-	uint32_t GetGrottoExit2(uint8_t Game, uint8_t CurrRoom, uint8_t GrottoData, uint32_t LastScene);
-
-	/*
-	*   Get the cumulative distance between the current player position and the given grotto entrance.
-	*
-	*	@param Grotto	The grotto entrance to use.
-	*	@param RAMData	The RAM data containing the player position.
-	* 
-	*   @return The cumulative distance between the current player position and the given grotto entrance.
-	*/
-	float GetDistanceGrottoEntrance(GrottoEntrance Grotto, uint8_t* RAMData);
+	uint32_t GetGrottoExit(uint8_t Game, uint8_t CurrRoom, uint8_t GrottoData, uint32_t LastScene);
 
 	/*
 	*   Check if the given entrance may match a grotto entrance.
 	*
 	*	@param ID		The entrance ID that may match.
-	*	@param RAMData	The RAM data containing the respawn player position.
+	*	@param Buffer	The entrance message data.
 	* 
 	*   @return The matching grotto entrance if the player is close enough, the given entrance otherwise.
 	*/
-	uint32_t CheckGrottoSpawn(uint32_t ID, uint8_t* RAMData);
-	uint32_t CheckGrottoSpawn2(uint32_t ID, uint32_t Buffer[6]);
+	uint32_t CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6]);
 
-
-
+	/*
+	*   Dispatch the given message to the correct parsing function.
+	*
+	*	@param Buffer		The entrance message to parse.
+	*/
 	void ParseEntranceMessage(uint32_t Buffer[6]);
+
+	/*
+	*   Parse the given message as an incoming entrance message.
+	*
+	*	@param Buffer		The entrance message to parse.
+	*/
 	void ParseIncomingMessage(uint32_t Buffer[6]);
+
+	/*
+	*   Parse the given message as an outgoing entrance message.
+	*
+	*	@param Buffer		The entrance message to parse.
+	*/
 	void ParseOutgoingMessage(uint32_t Buffer[6]);
 
 
+	static const char* GetEntranceFromName(int Game, uint32_t EntranceID);
+	static const char* GetEntranceToName(int Game, uint32_t EntranceID);
+	static std::string GetEntranceFromToString(int Game, uint32_t EntranceID);
+	static const EntranceMetaInfo* GetEntranceMetaInf(int Game, uint32_t EntranceID);
+
 #pragma endregion
+
 };

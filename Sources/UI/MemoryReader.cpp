@@ -508,9 +508,3 @@ void MemoryReader::CheckCurrentLoadedGame()
     // No / incorrect game loaded.
     this->LoadedGame = NO_GAME;
 }
-
-
-void MemoryReader::ReadEntranceID(int Game)
-{
-    this->EntHelper.ReadEntranceID(Game, this->RAMData);
-}

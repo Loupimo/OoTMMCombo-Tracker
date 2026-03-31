@@ -130,6 +130,12 @@
     <ClCompile Include="Sources\Combo\Entrances.cpp">
       <Filter>Source Files\Combo</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\UI\EntranceTable.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\SceneEntrance.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Multi\API.h">
@@ -213,6 +219,9 @@
     <ClInclude Include="Headers\Combo\Entrances.h">
       <Filter>Header Files\Combo</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\UI\SceneEntrance.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Headers\UI\MapTab.h">
@@ -234,6 +243,9 @@
       <Filter>Header Files\UI</Filter>
     </QtMoc>
     <QtMoc Include="Headers\UI\FilterManager.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="Headers\UI\EntranceTable.h">
       <Filter>Header Files\UI</Filter>
     </QtMoc>
   </ItemGroup>
