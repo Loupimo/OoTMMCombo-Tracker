@@ -10,6 +10,76 @@
 #include <cstdint>
 
 
+// ===== Ligne interne =====
+
+struct GlobalEntranceRow
+{
+    uint32_t SceneID;
+    uint32_t EntranceID;
+    uint32_t InLink;
+    uint32_t OutLink;
+
+
+    QString SceneName;
+    QString EntranceName;
+    QString InLinkName;
+    QString OutLinkName;
+};
+
+
+// ===== Model =====
+
+class GlobalEntranceTableModel : public QAbstractTableModel
+{
+    Q_OBJECT
+
+public:
+    int Game;
+    const char* TabName;                // The tab name. Should correspond to the game it refers to.
+
+    explicit GlobalEntranceTableModel(int Game, const char* Name, QObject* parent = nullptr);
+
+    // Chargement complet
+
+    void setScenes(const std::map<uint32_t, SceneEntranceMetaInf>& scenes);
+
+    // Mise à jour d'une entrée
+
+    void updateEntrance(uint32_t sceneID, uint32_t entranceID, const EntranceLink& link);
+
+    // Qt overrides
+
+    int rowCount(const QModelIndex& parent = QModelIndex()) const override;
+
+    int columnCount(const QModelIndex& parent = QModelIndex()) const override;
+
+    QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
+
+    QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
+
+
+    QString formatEntrance(uint32_t entranceID) const;
+    QString formatEntranceLink(uint32_t EntranceID, uint32_t EntranceLink, bool IsWayIn) const;
+    QString formatScene(uint32_t sceneID) const;
+    
+    void sort(int column, Qt::SortOrder order) override;
+
+private:
+
+    QString formatLink(uint32_t id) const;
+
+    QColor rowColor(int row) const;
+
+    void rebuildRowColors();
+    QColor computeBaseColor(bool toggle) const;
+private:
+
+    std::vector<GlobalEntranceRow> m_rows;
+    std::vector<QColor> m_rowColors;
+
+};
+
+
 // ==============================
 // Widget Class
 // ==============================
@@ -71,8 +141,12 @@ class EntranceTab : public QTabWidget
 
 public:
 
-    EntranceTableWidget * OoTEntranceTab;
-    EntranceTableWidget * MMEntranceTab;
+    //EntranceTableWidget * OoTEntranceTab;
+   // EntranceTableWidget * MMEntranceTab;
+    QTableView* OoTEntranceTab;
+    QTableView* MMEntranceTab;
+    GlobalEntranceTableModel* OoTEntranceModel;
+    GlobalEntranceTableModel* MMEntranceModel;
     const char* TabName;                // The tab name. Should correspond to the game it refers to.
 
 
