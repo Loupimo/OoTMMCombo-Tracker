@@ -44,11 +44,11 @@ OOT_KOKIRI_SARIA;Saria's House;./Resources/OoT/Kokiri_Forest/Saria_House.png;Kok
 OOT_CARPENTER_BOSS_HOUSE;Carpenters Boss's House;;None;false;oot
 OOT_BACK_ALLEY_HOUSE;Back Alley's House;./Resources/OoT/Market/Back_Alley_House.png;Market;false;oot
 OOT_BAZAAR;Bazaar;;None;false;oot
-OOT_KOKIRI_SHOP;Shop;./Resources/OoT/Kokiri_Forest/Shop.png;Kokiri_Forest;false;oot
-OOT_GORON_SHOP;Shop;./Resources/OoT/Goron_City/Shop.png;Goron_City;false;oot
-OOT_ZORA_SHOP;Shop;./Resources/OoT/Zora_Domain/Shop.png;Zora_Domain;false;oot
-OOT_KAKARIKO_POTION_SHOP;Potion Shop;./Resources/OoT/Kakariko/Potion_Shop.png;Kakariko;false;oot
-OOT_MARKET_POTION_SHOP;Potion Shop;./Resources/OoT/Market/Potion_Shop.png;Market;false;oot
+OOT_KOKIRI_SHOP;Kokiri Shop;./Resources/OoT/Kokiri_Forest/Shop.png;Kokiri_Forest;false;oot
+OOT_GORON_SHOP;Goron Shop;./Resources/OoT/Goron_City/Shop.png;Goron_City;false;oot
+OOT_ZORA_SHOP;Zora Shop;./Resources/OoT/Zora_Domain/Shop.png;Zora_Domain;false;oot
+OOT_KAKARIKO_POTION_SHOP;Kakariko Potion Shop;./Resources/OoT/Kakariko/Potion_Shop.png;Kakariko;false;oot
+OOT_MARKET_POTION_SHOP;Market Potion Shop;./Resources/OoT/Market/Potion_Shop.png;Market;false;oot
 OOT_BOMBCHU_SHOP;Bombchu Shop;./Resources/OoT/Market/Bombchu_Shop.png;Market;false;oot
 OOT_HAPPY_MASK_SHOP;Happy Mask Shop;;None;false;oot
 OOT_LINK_HOUSE;Link's House;./Resources/OoT/Kokiri_Forest/Link_House.png;Kokiri_Forest;true;oot

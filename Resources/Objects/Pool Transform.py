@@ -166,9 +166,9 @@ def parse_scene(input_file, output_file, game):
             outfile.write(objectstr)
 
 
-def parse_entrance(input_file, output_file, output_filemeta, prefix):
+def parse_entrance(input_file, output_file_h, output_file_cpp, output_filemeta, prefix):
     """Parse un fichier pour convertir les lignes en EntranceMetaInfo."""
-    with open(input_file, 'r') as infile, open(output_file, 'w') as outfile, open(output_filemeta, 'w') as outfilemeta:
+    with open(input_file, 'r') as infile, open(output_file_h, 'w') as outHfile, open(output_file_cpp, 'w') as outCPPfile, open(output_filemeta, 'w') as outfilemeta:
         filereader = pd.read_csv(infile, delimiter=";", header=0, keep_default_na=False)
         isFirst = True
         scene_entr_arr = {}
@@ -182,7 +182,8 @@ def parse_entrance(input_file, output_file, output_filemeta, prefix):
                 isFirst = False
 
             entrance_code = row["Code_Name"]
-            entridstr = row["ID"]
+            fromentridstr = row["From_ID"]
+            toentridstr = row["To_ID"]
             fromsceneid = row["From_Scene"]
             tosceneid = row["To_Scene"]
             from_str = row["From_Name"]
@@ -197,10 +198,10 @@ def parse_entrance(input_file, output_file, output_filemeta, prefix):
             arrow_rot = row["Arrow_Rot"]
             active_layout = row["Active_Layout"]
 
-            objectstr = objectstr + "\t{ " + str(entrance_code) + ", { " + str(entrance_code) + ", " + str(fromsceneid) + ", " + str(tosceneid) + ", \"" + from_str + "\", \"" + to_str + "\", EntranceType::" + type + ", " + str(in_X) + ", " + str(in_Y) + ", " + str(in_Z) + ", " + str(out_X) + ", " + str(out_Y) + ", " + str(out_Z) + ", " + str(arrow_rot) + ", GameLayout::" + active_layout + " } }"
+            objectstr = objectstr + "\t{ " + str(entrance_code) + ", { " + str(fromentridstr) + ", " + str(entrance_code) + ", " + str(fromsceneid) + ", " + str(tosceneid) + ", \"" + from_str + "\", \"" + to_str + "\", EntranceType::" + type + ", " + str(in_X) + ", " + str(in_Y) + ", " + str(in_Z) + ", " + str(out_X) + ", " + str(out_Y) + ", " + str(out_Z) + ", " + str(arrow_rot) + ", GameLayout::" + active_layout + " } }"
             objectstrings.append(objectstr)
             #outfile.write(objectstr)
-            defines += "#define " + entrance_code + " " + entridstr + "\n"
+            defines += "#define " + entrance_code + " " + toentridstr + "\n"
 
 
             if scene_entr_arr.__contains__(tosceneid) == False:
@@ -208,24 +209,38 @@ def parse_entrance(input_file, output_file, output_filemeta, prefix):
             
             scene_entr_arr[tosceneid].append(entrance_code)
 
-        outfile.write("#pragma once\n\n#include \"Entrances.h\"\n#include \"Scenes.h\"\n")
-        outfile.write("\n#pragma region Defines\n\n")
-        outfile.write(defines)
-        outfile.write("\n#pragma endregion\n\nconst std::map<int, EntranceMetaInfo> " + prefix + "Entrances = \n{\n")
+        # write to header file
+        outHfile.write("#pragma once\n\n#include \"Entrances.h\"\n")
+        outHfile.write("\n#pragma region Defines\n\n")
+        outHfile.write(defines)
+        outHfile.write("\n#pragma endregion\n\nextern std::map<int, EntranceMetaInfo> " + prefix + "Entrances;\n")
+
+        # write to cpp file
+        outCPPfile.write("#include \"Combo/" + prefix + "Entrances.h\"\n#include \"Combo/Scenes.h\"\n\nstd::map<int, EntranceMetaInfo> " + prefix + "Entrances =\n{\n")
 
         for object in objectstrings:
-            outfile.write(object)
+            outCPPfile.write(object)
 
-        outfile.write("\n};\n")
+        outCPPfile.write("\n};\n")
 
+        # write meta
+        outfilemeta.write("#include \"UI/SceneEntrance.h\"\n#include \"Combo/Scenes.h\"\n\nstd::map<uint32_t, SceneEntranceMetaInf>" + prefix + "SceneEntranceMeta =\n{\n")
         scene_str = ""
+        i = 0
+        num_of_scenes = len (scene_entr_arr)
         for scene in scene_entr_arr:
-            scene_str = "{\n\t" + str(scene) + ",\n\t{\n\t\t" + str(scene) + ",\n\t\t{\n"
+            scene_str = "\t{\n\t\t" + str(scene) + ",\n\t\t{\n\t\t\t" + str(scene) + ",\n\t\t\t{\n"
             for entr in scene_entr_arr[scene]:
-                scene_str += "\t\t\t{ " + str (entr) + ", { UINT32_MAX, UINT32_MAX } },\n"
-            scene_str += "\t\t},\n\t\tNULL\n\t}\n},"
+                scene_str += "\t\t\t\t{ " + str (entr) + ", { UINT32_MAX, UINT32_MAX } },\n"
+            scene_str += "\t\t\t},\n\t\t\tNULL\n\t\t}\n"
+            scene_str += "\t}"
+            if i < num_of_scenes:
+                scene_str += ",\n"
             outfilemeta.write(scene_str)
+            i += 1
             #print (scene_str)
+        outfilemeta.write("\n};\n")
+        
 
 
 def parse_items(input_file, output_file, arrayname):
@@ -334,20 +349,22 @@ print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_fil
 
 input_file = '..\\Scenes\\entrances_mm.csv'
 #output_file = '..\\Scenes\\entrance_mm.txt'
-cpp_file = '..\\..\\Headers\\Combo\\MMEntrances.h'
-output_file_meta = '..\\Scenes\\entrances_mm_meta.txt'
-parse_entrance(input_file, cpp_file, output_file_meta, "MM")
+h_file = '..\\..\\Headers\\Combo\\MMEntrances.h'
+cpp_file = '..\\..\\Sources\\Combo\\MMEntrances.cpp'
+output_file_meta = '..\\..\\Sources\\UI\\SceneMMEntrances.cpp'
+parse_entrance(input_file, h_file, cpp_file, output_file_meta, "MM")
 #
-print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
+print(f"Conversion terminée. Les résultats sont enregistrés dans '{h_file}', '{cpp_file}', '{output_file_meta}'.")
 #
 
 input_file = '..\\Scenes\\entrances_oot.csv'
 output_file = '..\\Scenes\\entrance_oot.txt'
-cpp_file = '..\\..\\Headers\\Combo\\OoTEntrances.h'
-output_file_meta = '..\\Scenes\\entrances_oot_meta.txt'
-parse_entrance(input_file, cpp_file, output_file_meta, "OoT")
+h_file = '..\\..\\Headers\\Combo\\OoTEntrances.h'
+cpp_file = '..\\..\\Sources\\Combo\\OoTEntrances.cpp'
+output_file_meta = '..\\..\\Sources\\UI\\SceneOoTEntrances.cpp'
+parse_entrance(input_file, h_file, cpp_file, output_file_meta, "OoT")
 #
-print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
+print(f"Conversion terminée. Les résultats sont enregistrés dans '{h_file}', '{cpp_file}', '{output_file_meta}'.")
 #
 #input_file = 'D:\Emulation\OoTMMCombo-Tracker\Items.csv'
 #output_file = 'D:\Emulation\OoTMMCombo-Tracker\Items.txt'

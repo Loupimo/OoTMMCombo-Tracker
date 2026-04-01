@@ -13,8 +13,10 @@ typedef struct EntranceCost
 
 typedef struct EntranceLink
 {
-	uint32_t InLink = UINT32_MAX;		// The entrance ID that leads to this scene from the current entrance 
+	uint32_t InLink = UINT32_MAX;		// The entrance ID that leads to this scene spawn
 	uint32_t OutLink = UINT32_MAX;		// The entrance ID where going when leaving from this entrance
+	uint8_t InLinkGame = NO_GAME;		// The game the out link comes from
+	uint8_t OutLinkGame = NO_GAME;		// The game the out link comes from
 } EntranceLink;
 
 
@@ -26,6 +28,17 @@ typedef struct SceneEntranceMetaInf
 
 } SceneEntranceMetaInf;
 
+typedef struct SceneEntranceUpdate
+{
+	uint8_t Game;
+	uint32_t SceneID;
+	uint32_t EntranceID;
+	EntranceLink* Link;
+}SceneEntranceUpdate;
 
-const SceneEntranceMetaInf* GetSceneEntranceMetaInf(int Game, uint32_t SceneID);
-const std::map<uint32_t, SceneEntranceMetaInf>& GetSceneEntranceMetaInfForGame(int Game);
+
+extern std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta;
+extern std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta;
+
+SceneEntranceMetaInf* GetSceneEntranceMetaInf(int Game, uint32_t SceneID);
+std::map<uint32_t, SceneEntranceMetaInf>* GetSceneEntranceMetaInfForGame(int Game);

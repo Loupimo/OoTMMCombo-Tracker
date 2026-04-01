@@ -20,7 +20,8 @@ enum class EntranceType
 
 typedef struct EntranceMetaInfo
 {
-	uint32_t EntranceID;
+	uint32_t FromEntranceID;
+	uint32_t ToEntranceID;
 	uint32_t FromSceneID;
 	uint32_t ToSceneID;
 	const char* FromName;
@@ -48,6 +49,7 @@ public:
 
 	uint8_t OutGame = NO_GAME;				// The game the last entrance ID comes from
 	uint32_t OutEntrance = 0;				// The last outgoing entrance ID
+	EntranceMetaInfo* OutMetaInf = NULL;	// The last outgoing entrance meta information
 	bool IsEntranceTouched = false;			// Tells if the ID we have is from the touched entrance (true) or the loaded one (false)
 	std::string LastTouchedStr;				// The string matching the direction of the last touched entrance
 	std::string EntranceStr;				// The string matching the direction of the current entrance
@@ -156,7 +158,8 @@ public:
 
 	static const char* GetEntranceFromName(int Game, uint32_t EntranceID);
 	static const char* GetEntranceToName(int Game, uint32_t EntranceID);
-	static std::string GetEntranceFromToString(int Game, uint32_t EntranceID);
+	static std::string GetEntranceSpawnsString(int Game, uint32_t EntranceID);
+	static std::string GetEntranceLeadsString(int Game, uint32_t EntranceID);
 	static const EntranceMetaInfo* GetEntranceMetaInf(int Game, uint32_t EntranceID);
 
 #pragma endregion

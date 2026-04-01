@@ -16,7 +16,7 @@ GlobalEntranceTableModel::GlobalEntranceTableModel(int Game, const char* Name, Q
 {
     this->Game = Game;
     this->TabName = Name;
-    this->setScenes(GetSceneEntranceMetaInfForGame(this->Game));
+    this->setScenes(*GetSceneEntranceMetaInfForGame(this->Game));
 }
 
 // ============================================
@@ -45,11 +45,13 @@ void GlobalEntranceTableModel::setScenes(const std::map<uint32_t, SceneEntranceM
                 row.EntranceID = entranceID;
                 row.InLink = link.InLink;
                 row.OutLink = link.OutLink;
+                row.InGame = link.InLinkGame;
+                row.OutGame = link.OutLinkGame;
 
                 row.SceneName = this->formatScene(sceneID);
                 row.EntranceName = this->formatEntrance(row.EntranceID);
-                row.InLinkName = this->formatEntranceLink(row.EntranceID, row.InLink, true);
-                row.OutLinkName = this->formatEntranceLink(row.EntranceID, row.OutLink, false);
+                row.InLinkName = this->formatEntranceLink(row.InGame, row.EntranceID, row.InLink, true);
+                row.OutLinkName = this->formatEntranceLink(row.OutGame, row.EntranceID, row.OutLink, false);
 
                 m_rows.push_back(row);
         }
@@ -80,7 +82,7 @@ void GlobalEntranceTableModel::setScenes(const std::map<uint32_t, SceneEntranceM
 // Update one entrance
 // ============================================
 
-void GlobalEntranceTableModel::updateEntrance(uint32_t sceneID, uint32_t entranceID, const EntranceLink& link)
+void GlobalEntranceTableModel::updateEntrance(uint32_t sceneID, uint32_t entranceID, const EntranceLink* link)
 {
     for (size_t i = 0; i < m_rows.size(); i++)
     {
@@ -88,8 +90,13 @@ void GlobalEntranceTableModel::updateEntrance(uint32_t sceneID, uint32_t entranc
 
         if (row.SceneID == sceneID && row.EntranceID == entranceID)
         {
-            row.InLink = link.InLink;
-            row.OutLink = link.OutLink;
+            row.InLink = link->InLink;
+            row.OutLink = link->OutLink;
+            row.InGame = link->InLinkGame;
+            row.OutGame = link->OutLinkGame;
+
+            row.InLinkName = this->formatEntranceLink(row.InGame, row.EntranceID, row.InLink, true);
+            row.OutLinkName = this->formatEntranceLink(row.OutGame, row.EntranceID, row.OutLink, false);
 
             QModelIndex top = index(i, 0);
 
@@ -166,16 +173,6 @@ QVariant GlobalEntranceTableModel::data(
             return m_rowColors[index.row()];
     }
 
-    // =========================
-    // COULEUR TEXTE
-    // (important pour lisibilité)
-    // =========================
-
-    if (role == Qt::ForegroundRole)
-    {
-        return QColor(Qt::black);
-    }
-
     return QVariant();
 }
 
@@ -194,8 +191,8 @@ QVariant GlobalEntranceTableModel::headerData(int section, Qt::Orientation orien
         {
             case 0: return "Scene";
             case 1: return "Entrance";
-            case 2: return "Way In";
-            case 3: return "Way Out";
+            case 2: return "How to spawn here ?";
+            case 3: return "Where does it lead ?";
         }
     }
 
@@ -227,7 +224,7 @@ QString GlobalEntranceTableModel::formatEntrance(uint32_t entranceID) const
 }
 
 
-QString GlobalEntranceTableModel::formatEntranceLink(uint32_t EntranceID, uint32_t EntranceLink, bool IsWayIn) const
+QString GlobalEntranceTableModel::formatEntranceLink(uint8_t GameLink, uint32_t EntranceID, uint32_t EntranceLink, bool IsWayIn) const
 {
     const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->Game, EntranceID);
 
@@ -267,7 +264,14 @@ QString GlobalEntranceTableModel::formatEntranceLink(uint32_t EntranceID, uint32
         return "?";
     }
 
-    return QString::fromStdString(EntranceHelper::GetEntranceFromToString(this->Game, EntranceLink));
+    if (IsWayIn)
+    {
+        return QString::fromStdString(EntranceHelper::GetEntranceSpawnsString(GameLink, EntranceLink));
+    }
+    else
+    {
+        return QString::fromStdString(EntranceHelper::GetEntranceLeadsString(GameLink, EntranceLink));
+    }
 }
 
 
@@ -458,8 +462,8 @@ QColor GlobalEntranceTableModel::
 computeBaseColor(bool toggle) const
 {
     return toggle
-        ? QColor(70, 70, 70)
-        : QColor(90, 90, 90);
+        ? QColor(36, 55, 72)
+        : QColor(67, 108, 137);
 }
 
 
@@ -507,7 +511,7 @@ EntranceTableWidget::EntranceTableWidget(int Game, const char * Name, QWidget* p
     connect(this->tableView, &QTableView::doubleClicked, this, &EntranceTableWidget::onRowDoubleClicked);
     this->Game = Game;
     this->TabName = Name;
-    this->setScenes(GetSceneEntranceMetaInfForGame(this->Game));
+    this->setScenes(*GetSceneEntranceMetaInfForGame(this->Game));
 }
 
 // ==============================
@@ -636,7 +640,7 @@ QString EntranceTableWidget::formatEntranceLink(uint32_t EntranceID, EntranceLin
         {
             return "?";
         }
-        return QString::fromStdString(EntranceHelper::GetEntranceFromToString(this->Game, EntranceLink->InLink));
+        return QString::fromStdString(EntranceHelper::GetEntranceSpawnsString(this->Game, EntranceLink->InLink));
     }
     else
     {
@@ -644,7 +648,7 @@ QString EntranceTableWidget::formatEntranceLink(uint32_t EntranceID, EntranceLin
         {
             return "?";
         }
-        return QString::fromStdString(EntranceHelper::GetEntranceFromToString(this->Game, EntranceLink->OutLink));
+        return QString::fromStdString(EntranceHelper::GetEntranceLeadsString(this->Game, EntranceLink->OutLink));
     }
 }
 
@@ -664,7 +668,6 @@ void EntranceTableWidget::applyRowColor(
     const EntranceLink& link)
 {
     QBrush background;
-    QBrush foreground(Qt::black);
 
     bool hasIn = link.InLink != UINT32_MAX;
     bool hasOut = link.OutLink != UINT32_MAX;
@@ -688,7 +691,6 @@ void EntranceTableWidget::applyRowColor(
         if (item)
         {
             item->setBackground(background);
-            item->setForeground(foreground);
         }
     }
 }
@@ -788,4 +790,17 @@ EntranceTab::EntranceTab(QTabWidget* parent) : QTabWidget(parent)
 
     this->addTab(this->OoTEntranceTab, this->OoTEntranceModel->TabName);
     this->addTab(this->MMEntranceTab, this->MMEntranceModel->TabName);
+}
+
+
+void EntranceTab::UpdateEntranceWay(int Game, uint32_t SceneID, uint32_t EntranceID, const EntranceLink* Link)
+{
+    if (Game == OOT_GAME)
+    {
+        this->OoTEntranceModel->updateEntrance(SceneID, EntranceID, Link);
+    }
+    else
+    {
+        this->MMEntranceModel->updateEntrance(SceneID, EntranceID, Link);
+    }
 }

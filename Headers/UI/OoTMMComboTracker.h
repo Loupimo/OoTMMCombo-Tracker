@@ -6,6 +6,7 @@
 #include "ui_OoTMMComboTracker.h"
 #include "UI/Settings.h"
 #include "UI/EntranceTable.h"
+#include "UI/SceneEntrance.h"
 #include "LogTab.h"
 #include "GameTab.h"
 
@@ -93,6 +94,21 @@ public slots:
     *   @param ItemFound      The item that has been found.
     */
     void UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, const ItemInfo* ItemFound);
+
+#pragma endregion
+
+#pragma region Entrance related
+
+
+public slots:
+
+    /*
+    *   Updates the given entrance status and dispatch it to the corresponding entrance scene view.
+    *
+    *   @param OutEntrance      The out entrance to update.
+    *   @param InEntrance       The in entrance to update.
+    */
+    void UpdateTrackedEntrance(SceneEntranceUpdate* OutEntrance, SceneEntranceUpdate* InEntrance);
 
 #pragma endregion
 

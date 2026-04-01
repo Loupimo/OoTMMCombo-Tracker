@@ -204,7 +204,9 @@
   <ItemGroup>
     <ClCompile Include="Sources\Combo\Entrances.cpp" />
     <ClCompile Include="Sources\Combo\Items.cpp" />
+    <ClCompile Include="Sources\Combo\MMEntrances.cpp" />
     <ClCompile Include="Sources\Combo\Objects.cpp" />
+    <ClCompile Include="Sources\Combo\OoTEntrances.cpp" />
     <ClCompile Include="Sources\Combo\OvTypes.cpp" />
     <ClCompile Include="Sources\Combo\Scenes.cpp" />
     <ClCompile Include="Sources\Multi\API.cpp" />
@@ -227,6 +229,8 @@
     <ClCompile Include="Sources\UI\RegionTab.cpp" />
     <ClCompile Include="Sources\UI\RoomRenderer.cpp" />
     <ClCompile Include="Sources\UI\SceneEntrance.cpp" />
+    <ClCompile Include="Sources\UI\SceneMMEntrances.cpp" />
+    <ClCompile Include="Sources\UI\SceneOoTEntrances.cpp" />
     <ClCompile Include="Sources\UI\SceneRenderer.cpp" />
     <ClCompile Include="Sources\UI\Settings.cpp" />
     <QtUic Include="OoTMMComboTracker.ui" />

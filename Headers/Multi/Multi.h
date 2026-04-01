@@ -134,6 +134,14 @@ signals:
     *   @param ItemFound      The item that has been found.
     */
     void NotifyObjectFound(int Game, struct ObjectInfo * ObjectFound, const struct ItemInfo* ItemFound);
+    
+    /*
+    *   Notifies that a new entrance link has been found.
+    *
+    *   @param OutEntrance      The out entrance to update.
+    *   @param InEntrance       The in entrance to update.
+    */
+    void NotifyEntranceFound(struct SceneEntranceUpdate * OutEntrance, struct SceneEntranceUpdate * InEntrance);
 
 public:
 

@@ -18,6 +18,8 @@ struct GlobalEntranceRow
     uint32_t EntranceID;
     uint32_t InLink;
     uint32_t OutLink;
+    uint8_t InGame;
+    uint8_t OutGame;
 
 
     QString SceneName;
@@ -45,7 +47,7 @@ public:
 
     // Mise à jour d'une entrée
 
-    void updateEntrance(uint32_t sceneID, uint32_t entranceID, const EntranceLink& link);
+    void updateEntrance(uint32_t sceneID, uint32_t entranceID, const EntranceLink* link);
 
     // Qt overrides
 
@@ -59,7 +61,7 @@ public:
 
 
     QString formatEntrance(uint32_t entranceID) const;
-    QString formatEntranceLink(uint32_t EntranceID, uint32_t EntranceLink, bool IsWayIn) const;
+    QString formatEntranceLink(uint8_t GameLink, uint32_t EntranceID, uint32_t EntranceLink, bool IsWayIn) const;
     QString formatScene(uint32_t sceneID) const;
     
     void sort(int column, Qt::SortOrder order) override;
@@ -151,4 +153,15 @@ public:
 
 
     explicit EntranceTab(QTabWidget* parent = nullptr);
+
+    /*
+    *   Update the entrance status with the given information.
+    *
+    *	@param OutGame		    The game the out entrance ID belongs to.
+    *	@param InGame		    The game the in entrance ID belongs to.
+    *	@param OutEntranceID	The entrance ID you come from.
+    *	@param InEntranceID		The entrance ID you arrived to.
+    *
+    */
+    void UpdateEntranceWay(int Game, uint32_t SceneID, uint32_t EntranceID, const EntranceLink* Link);
 };

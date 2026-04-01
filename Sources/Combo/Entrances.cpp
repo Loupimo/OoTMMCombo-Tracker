@@ -1,6 +1,7 @@
 #include "Combo/Entrances.h"
 #include "Combo/OoTEntrances.h"
 #include "Combo/MMEntrances.h"
+#include "UI/SceneEntrance.h"
 #include "Multi/Multi.h"
 #include <math.h>
 
@@ -532,6 +533,49 @@ void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[6])
 
         this->EntranceStr = entranceMeta.FromName + std::string(" -> ") + entranceMeta.ToName;
         MultiLogger::LogMessage("New scene Loaded ! From : %s (0x%X), To : %s (0x%X)", this->LastTouchedStr.c_str(), this->OutEntrance, this->EntranceStr.c_str(), inEntrance);
+        
+        if (this->OutMetaInf->Type == EntranceType::One_Way_In)
+        {
+            MultiLogger::LogMessage("Warning ! Entrance %s (0x%X) is one way in only !", this->LastTouchedStr.c_str(), this->OutEntrance);
+        }
+        if (entranceMeta.Type == EntranceType::One_Way_Out)
+        {
+            MultiLogger::LogMessage("Warning ! Entrance %s (0x%X) is one way out only !", this->EntranceStr.c_str(), inEntrance);
+        }
+
+        SceneEntranceMetaInf * tmp = GetSceneEntranceMetaInf(this->OutGame, this->OutMetaInf->FromSceneID);
+        /*if (tmp->EntranceIDs.contains(this->OutEntrance))
+        {
+            EntranceLink tmpOutLink = tmp->EntranceIDs.find(this->OutEntrance)->second;
+        }
+        else
+        {
+            MultiLogger::LogMessage("Asked Key = 0x%08X", this->OutEntrance);
+            auto it = tmp->EntranceIDs.begin();
+            while (it != tmp->EntranceIDs.end())
+            {
+                MultiLogger::LogMessage("Key = 0x%08X, Val = 0x%08X", it->first, &it->second);
+                it++;
+            }
+            MultiLogger::LogMessage("Nope !");
+            return;
+        }*/
+        EntranceLink * tmpOutLink = &tmp->EntranceIDs.find(this->OutMetaInf->FromEntranceID)->second;
+        tmpOutLink->OutLink = inEntrance;
+        tmpOutLink->OutLinkGame = game;
+
+        SceneEntranceUpdate tmpOut = { this->OutGame, this->OutMetaInf->FromSceneID, this->OutMetaInf->FromEntranceID, tmpOutLink };
+
+        tmp = GetSceneEntranceMetaInf(game, inScene);
+        EntranceLink * tmpInLink = &tmp->EntranceIDs.find(inEntrance)->second;
+        tmpInLink->InLink = this->OutEntrance;
+        tmpInLink->InLinkGame = this->OutGame;
+
+        SceneEntranceUpdate tmpIn = { game, inScene, inEntrance, tmpInLink };
+
+        emit MultiLogger::GetLogger()->NotifyEntranceFound(&tmpOut, &tmpIn);
+
+        this->OutMetaInf = NULL;
     }
 
     this->IsEntranceTouched = false;
@@ -552,7 +596,6 @@ void EntranceHelper::ParseOutgoingMessage(uint32_t Buffer[6])
     uint8_t grottoData = (Buffer[0] >> 8) & 0xFF;
     uint32_t outScene = Buffer[1];
     this->OutEntrance = Buffer[2];
-    EntranceMetaInfo entranceMeta = {};
 
     if (this->IsGrottoEntrance(this->OutEntrance))
     {
@@ -565,13 +608,13 @@ void EntranceHelper::ParseOutgoingMessage(uint32_t Buffer[6])
 
     if (this->OutGame == OOT_GAME)
     {
-        entranceMeta = OoTEntrances.at(this->OutEntrance);
+        this->OutMetaInf = &OoTEntrances.at(this->OutEntrance);
     }
     else
     {
-        entranceMeta = MMEntrances.at(this->OutEntrance);
+        this->OutMetaInf = &MMEntrances.at(this->OutEntrance);
     }
-    this->LastTouchedStr = entranceMeta.FromName + std::string(" -> ") + entranceMeta.ToName;
+    this->LastTouchedStr = OutMetaInf->FromName + std::string(" -> ") + OutMetaInf->ToName;
     //MultiLogger::LogMessage("Loading zone %s (0x%X) touched !", this->LastTouchedStr.c_str(), this->LastTouchedEntranceID);
 }
 
@@ -602,7 +645,7 @@ const char* EntranceHelper::GetEntranceToName(int Game, uint32_t EntranceID)
 }
 
 
-std::string EntranceHelper::GetEntranceFromToString(int Game, uint32_t EntranceID)
+std::string EntranceHelper::GetEntranceSpawnsString(int Game, uint32_t EntranceID)
 {
     const EntranceMetaInfo* entrance = nullptr;
     
@@ -618,6 +661,22 @@ std::string EntranceHelper::GetEntranceFromToString(int Game, uint32_t EntranceI
     return std::string(entrance->FromName + std::string(" -> ") + entrance->ToName);
 }
 
+
+std::string EntranceHelper::GetEntranceLeadsString(int Game, uint32_t EntranceID)
+{
+    const EntranceMetaInfo* entrance = nullptr;
+
+    if (Game == OOT_GAME)
+    {
+        entrance = &OoTEntrances.at(EntranceID);
+    }
+    else
+    {
+        entrance = &MMEntrances.at(EntranceID);
+    }
+
+    return std::string(entrance->ToName + std::string(" - ") + entrance->FromName);
+}
 
 const EntranceMetaInfo* EntranceHelper::GetEntranceMetaInf(int Game, uint32_t EntranceID)
 {
