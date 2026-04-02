@@ -228,6 +228,11 @@ QString GlobalEntranceTableModel::formatEntranceLink(uint8_t GameLink, uint32_t 
 {
     const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->Game, EntranceID);
 
+    if (EntranceLink == UINT32_MAX)
+    {
+        return "?";
+    }
+
     switch (entrance->Type)
     {
         case EntranceType::Normal:
@@ -241,7 +246,7 @@ QString GlobalEntranceTableModel::formatEntranceLink(uint8_t GameLink, uint32_t 
             {
                 return "N/A";
             }
-            break;
+            return EntranceHelper::GetEntranceFromName(GameLink, EntranceLink);
         }
 
         case EntranceType::One_Way_Out:
@@ -250,7 +255,7 @@ QString GlobalEntranceTableModel::formatEntranceLink(uint8_t GameLink, uint32_t 
             {
                 return "N/A";
             }
-            break;
+            return EntranceHelper::GetEntranceToName(GameLink, EntranceLink);
         }
 
         default:
@@ -434,11 +439,11 @@ void GlobalEntranceTableModel::rebuildRowColors()
 
         QColor finalColor;
 
-        if (!hasIn && !hasOut)
+        //if (!hasIn && !hasOut)
         {
             finalColor = base;
         }
-        else if (hasIn && !hasOut)
+       /* else if (hasIn && !hasOut)
         {
             finalColor =
                 QColor(240, 220, 80);   // jaune clair
@@ -452,7 +457,7 @@ void GlobalEntranceTableModel::rebuildRowColors()
         {
             finalColor =
                 QColor(80, 200, 120);   // vert
-        }
+        }*/
 
         m_rowColors.push_back(finalColor);
     }
@@ -462,8 +467,8 @@ QColor GlobalEntranceTableModel::
 computeBaseColor(bool toggle) const
 {
     return toggle
-        ? QColor(36, 55, 72)
-        : QColor(67, 108, 137);
+        ? QColor(30, 50, 70)
+        : QColor(50, 80, 100);
 }
 
 

@@ -135,6 +135,17 @@ public:
 	uint32_t CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6]);
 
 	/*
+	*   Check if the given entrance is a special case (like Hyrule Castle <-> Castle Courtyard).
+	*
+	*	@param Game		The game the data come from.
+	*	@param ID		The entrance ID that may match.
+	*	@param SceneID	The scene ID the entrance belongs to. Here it can be modified by the function if it is a special case (like Market Child Day / Night)
+	*
+	*   @return The corrected entrance if it is a special case, the given entrance otherwise.
+	*/
+	uint32_t CheckSpecialCase(uint8_t Game, uint32_t ID, uint32_t * SceneID);
+
+	/*
 	*   Dispatch the given message to the correct parsing function.
 	*
 	*	@param Buffer		The entrance message to parse.

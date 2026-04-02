@@ -485,6 +485,81 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
 }
 
 
+uint32_t EntranceHelper::CheckSpecialCase(uint8_t Game, uint32_t ID, uint32_t * SceneID)
+{
+    if (Game == OOT_GAME)
+    {
+        switch (*SceneID)
+        {
+            case OOT_CASTLE_COURTYARD:
+            {
+                switch (ID)
+                {
+                    case OOT_CASTLE_STEALTH_ENTR:
+                    {
+                        return OOT_CASTLE_STEALTH_FROM_COURTYARD_ENTR;
+                    }
+                    break;
+                }
+                break;
+            }
+
+            case OOT_HYRULE_CASTLE:
+            {
+                switch (ID)
+                {
+                    case 0x23d:
+                    {   // Castle Courtyard -> Hyrule Castle
+
+                        return OOT_CASTLE_STEALTH_FROM_COURTYARD_ENTR;
+                    }
+
+                    case OOT_CASTLE_STEALTH_ENTR:
+                    {   // Hyrule Castle -> Castle Courtyard
+
+                        return OOT_CASTLE_COURTYARD_ENTR;
+                    }
+                }
+                break;
+            }
+
+            case OOT_MARKET_CHILD_DAY:
+            case OOT_MARKET_CHILD_NIGHT:
+            case OOT_MARKET_ADULT:
+            {
+                *SceneID = OOT_MARKET;
+                break;
+            }
+
+            case OOT_BACK_ALLEY_DAY:
+            case OOT_BACK_ALLEY_NIGHT:
+            {
+                *SceneID = OOT_BACK_ALLEY;
+                break;
+            }
+
+            case OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY:
+            case OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_NIGHT:
+            case OOT_TEMPLE_OF_TIME_EXTERIOR_ADULT:
+            {
+                *SceneID = OOT_TEMPLE_OF_TIME_ENTRYWAY;
+                break;
+            }
+
+            case OOT_MARKET_ENTRANCE_CHILD_DAY:
+            case OOT_MARKET_ENTRANCE_CHILD_NIGHT:
+            case OOT_MARKET_ENTRANCE_ADULT:
+            {
+                *SceneID = OOT_MARKET_ENTRANCE;
+                break;
+            }
+        }
+    }
+
+    return ID;
+}
+
+
 void EntranceHelper::ParseEntranceMessage(uint32_t Buffer[6])
 {
     if ((Buffer[0] & 0xFF000000) == IN_MAGIC)
@@ -520,6 +595,7 @@ void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[6])
         else
         {
             inEntrance = this->CheckGrottoSpawn(inEntrance, Buffer);
+            inEntrance = this->CheckSpecialCase(game, inEntrance, &inScene);
         }
 
         if (game == OOT_GAME)
@@ -604,6 +680,10 @@ void EntranceHelper::ParseOutgoingMessage(uint32_t Buffer[6])
     else if (this->IsGrottoExit(this->OutEntrance))
     {
         this->OutEntrance = this->GetGrottoExit(this->OutGame, currRoom, grottoData, outScene);
+    }
+    else
+    {
+        this->OutEntrance = this->CheckSpecialCase(this->OutGame, this->OutEntrance, &outScene);
     }
 
     if (this->OutGame == OOT_GAME)
