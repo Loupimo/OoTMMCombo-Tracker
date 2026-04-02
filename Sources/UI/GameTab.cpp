@@ -166,6 +166,7 @@ CreateInfoScenes(OOT_NUM_SCENES, OoTOverworld,
     CreateOverworldScene(OOT_DAMPE_HOUSE, OOT_GAME),
     CreateOverworldScene(OOT_TEMPLE_OF_TIME_ENTRYWAY, OOT_GAME),
     CreateOverworldScene(OOT_BACK_ALLEY, OOT_GAME),
+    CreateOverworldScene(OOT_SONGS, OOT_GAME),
     CreateOverworldScene(OOT_INSIDE_EGGS, OOT_GAME),
     CreateOverworldScene(OOT_MARKET, OOT_GAME)
 )

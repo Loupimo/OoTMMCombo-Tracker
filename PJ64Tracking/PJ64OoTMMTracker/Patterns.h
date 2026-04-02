@@ -183,8 +183,8 @@ uint32_t Mask_hookPlay_Init_OoT[] =
     0xFFFFFFFF,                     // SW       S7, 0x004C (SP)
     0xFFFFFFFF,                     // SW       S5, 0x0044 (SP)
     0xFFFFFFFF,                     // SW       S4, 0x0040 (SP)
-    0xFFFFFFFF,                     // SW       A0, 0x8728 (SP)
-    0xFFFFFFFF,                     // ADDIU    S3, S6, 0x1C68
+    0xFFFFFF00,                     // SW       A0, 0x8728 (SP)
+    0xFFFFFF00,                     // ADDIU    S3, S6, 0x1C68
     0xFFFFFFFF                      // LUI      V0, 0x8044
 };
 

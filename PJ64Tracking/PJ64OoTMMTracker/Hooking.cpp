@@ -28,6 +28,7 @@ uint32_t gActiveBigFairyID = OOT_BIG_FAIRY_ID;
 uint32_t gActiveActorOff = OOT_ACTOR_ID;
 uint32_t gActiveFairyActorCombo = OOT_FAIRY_COMBO_OFFSET;
 uint32_t gActiveNextEntrance = OOT_NEXT_ENTRANCE;
+uint32_t gActiveSongOffset = OOT_LAST_SONG_ID;
 uint32_t gActiveRoomOffset = OOT_CURR_ROOM;
 uint32_t gActiveGrottoOffset = OOT_GROTTO_DATA;
 uint32_t gActiveCoordOffset = OOT_PLAYER_COORD;
@@ -528,6 +529,7 @@ __asm mov[gActiveBigFairyID], ##Game##_BIG_FAIRY_ID               \
 __asm mov[gActiveActorOff], ##Game##_ACTOR_ID                     \
 __asm mov[gActiveFairyActorCombo], ##Game##_FAIRY_COMBO_OFFSET    \
 __asm mov[gActiveNextEntrance], ##Game##_NEXT_ENTRANCE            \
+__asm mov[gActiveSongOffset], ##Game##_LAST_SONG_ID               \
 __asm mov[gActiveRoomOffset], ##Game##_CURR_ROOM                  \
 __asm mov[gActiveGrottoOffset], ##Game##_GROTTO_DATA              \
 __asm mov[gActiveCoordOffset], ##Game##_PLAYER_COORD              \
@@ -952,16 +954,21 @@ __declspec(naked) void PCHook()
 
             COMPUTE_INDEX(edx, edi, edi)
 
-            mov[edi], ecx                             // Store PC
-            mov dword ptr [edi + 4], ENTRANCE_MAGIC    // Store Mem = entrance flag
+            mov[edi], ecx                        // Store PC
+            mov dword ptr [edi + 4], IN_MAGIC    // Store Mem = entrance flag
 
             // Spawned scene ID
             READ_N64_REG(V0_OFFSET, eax)
 
-            // Build current room index
-            COMPUTE_RAM_ADDR([gActiveRoomOffset], edx)
+            // Build last played song
+            COMPUTE_RAM_ADDR([gActiveSongOffset], edx)
             mov dl, byte ptr[edx]
             and edx, 000000FFh
+            shl edx, 8
+
+            // Build current room index
+            COMPUTE_RAM_ADDR([gActiveRoomOffset], ebx)
+            mov dl, byte ptr[ebx]
             shl edx, 8
 
             // Build grotto data
@@ -969,16 +976,14 @@ __declspec(naked) void PCHook()
             mov dl, byte ptr[ebx]
             shl edx, 8
 
-            // Build final entrance message
-            mov ecx, IN_MAGIC
-            mov cl, byte ptr[gGame]
-            add ecx, edx
+            // Build game data
+            mov dl, byte ptr[gGame]
 
             // Entrance spawn ID
             READ_N64_REG(V1_OFFSET, ebx)
 
             // Fill the buffer at the correct index
-            mov[edi + 8], ecx   // Message direction + current room + grotto data + Game 
+            mov[edi + 8], edx   // Message direction + current room + grotto data + Game 
             mov[edi + 12], eax  // Scene ID
             mov[edi + 16], ebx  // Entrance ID
 
@@ -1009,8 +1014,8 @@ __declspec(naked) void PCHook()
 
             COMPUTE_INDEX(edx, edi, edi)
 
-            mov[edi], ecx                            // Store PC
-            mov dword ptr[edi + 4], ENTRANCE_MAGIC    // Store Mem = entrance flag
+            mov[edi], ecx                        // Store PC
+            mov dword ptr[edi + 4], OUT_MAGIC    // Store Mem = entrance flag
 
             // gLastScene = Current scene ID
             mov ebx, [gActiveEntranceReg]
@@ -1019,10 +1024,15 @@ __declspec(naked) void PCHook()
             COMPUTE_RAM_ADDR(eax, eax)
             mov eax, [eax]
 
-            // Build current room index
-            COMPUTE_RAM_ADDR([gActiveRoomOffset], edx)
+            // Build last played song
+            COMPUTE_RAM_ADDR([gActiveSongOffset], edx)
             mov dl, byte ptr[edx]
             and edx, 000000FFh
+            shl edx, 8
+
+            // Build current room index
+            COMPUTE_RAM_ADDR([gActiveRoomOffset], ebx)
+            mov dl, byte ptr[ebx]
             shl edx, 8
 
             // Build grotto data
@@ -1030,17 +1040,15 @@ __declspec(naked) void PCHook()
             mov dl, byte ptr[ebx]
             shl edx, 8
 
-            // Build final entrance message
-            mov ecx, OUT_MAGIC
-            mov cl, byte ptr[gGame]
-            add ecx, edx
+            // Build game data
+            mov dl, byte ptr[gGame]
 
             // gNextEntrance
             COMPUTE_RAM_ADDR([gActiveNextEntrance], ebx)
             mov ebx, [ebx]
 
             // Fill the buffer at the correct index
-            mov[edi + 8], ecx   // Message direction + curr room index + grotto data + Game
+            mov[edi + 8], edx   // Last song + curr room index + grotto data + Game
             mov[edi + 12], eax  // Scene ID
             mov[edi + 16], ebx  // Entrance ID
 

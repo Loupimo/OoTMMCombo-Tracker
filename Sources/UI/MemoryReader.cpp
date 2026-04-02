@@ -157,11 +157,11 @@ void MemoryReader::CheckEvent(Event * CollectedEvent)
     if (CollectedEvent)
     {   // Check that the collected event is valid
 
-        if (CollectedEvent->Mem == ENTRANCE_MAGIC)
+        if ((CollectedEvent->Mem & 0xFFFF0000) == ENTRANCE_MAGIC)
         {   // The message is an entrance message
 
-            this->EntHelper.ParseEntranceMessage(CollectedEvent->Query);
-            CollectedEvent->Query[0] = ENTRANCE_MAGIC;  // Mark the event as treated
+            this->EntHelper.ParseEntranceMessage(CollectedEvent->Mem, CollectedEvent->Query);
+            CollectedEvent->Mem = ENTRANCE_MAGIC;  // Mark the event as treated
 
             return;
         }

@@ -15,6 +15,7 @@ enum class ROMGame
 
 enum class GameMode
 {
+	solo,
 	coop,
 	multi
 };
@@ -66,7 +67,6 @@ public:
 public:
 
 	Settings();
-	~Settings();
 
 	void SaveFileSettings(QFile* SaveFile);
 	size_t LoadFileSettings(QByteArray* Data, size_t Offset);

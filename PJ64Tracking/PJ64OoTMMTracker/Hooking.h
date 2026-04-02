@@ -54,15 +54,16 @@
 #define MM_SCENE_OFFSET     -0x00000118     // The offset to add to the real game address to reach the gLastScene for MM
 #define OOT_NEXT_ENTRANCE    0x001DA2B8     // The offset to add to the real game address to reach the playState.nextEntrance for OoT
 #define MM_NEXT_ENTRANCE     0x003FF398     // The offset to add to the real game address to reach the playState.nextEntrance for MM
+#define OOT_LAST_SONG_ID     0x001D8966     // The offset to add to the real game address to reach the playState.msgCtx.lastPlayedSong for OoT
+#define MM_LAST_SONG_ID      0x003FD452     // The offset to add to the real game address to reach the playState.msgCtx.songPlayed for MM
 #define OOT_CURR_ROOM        0x001DA15F     // The offset to add to the real game address to reach the current room index for OoT
 #define MM_CURR_ROOM         0x003FF203     // The offset to add to the real game address to reach the current room index for MM
 #define OOT_PLAYER_COORD     0x001C8714     // The offset to add to the real game address to reach the player coordinates for OoT
 #define MM_PLAYER_COORD      0x003E6DD4     // The offset to add to the real game address to reach the player coordinates for MM
 #define OOT_GROTTO_DATA      0x0011B964     // The offset to add to the real game address to reach the gGrottoData for OoT
 #define MM_GROTTO_DATA       0x001F3394     // The offset to add to the real game address to reach the gGrottoData for MM
-#define ENTRANCE_MAGIC       0xFFFFFFFF     // The magic flag that indicates the message is an entrance message
-#define IN_MAGIC             0xAA000000     // The magic flag that indicates the message is an incoming entrance
-#define OUT_MAGIC            0xBB000000     // The magic flag that indicates the message is an outgoing entrance
+#define IN_MAGIC             0xFFFFAAAA     // The magic flag that indicates the message is an incoming entrance
+#define OUT_MAGIC            0xFFFFBBBB     // The magic flag that indicates the message is an outgoing entrance
 
 
 #ifdef _DEBUG

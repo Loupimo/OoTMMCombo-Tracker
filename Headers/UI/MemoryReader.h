@@ -4,7 +4,7 @@
 #include "Combo/Entrances.h"
 
 #define RAM_SIZE 0x800000
-#define ENTRANCE_MAGIC 0xFFFFFFFF	// A flag used to determine if the message is an entrance message or not
+#define ENTRANCE_MAGIC 0xFFFF0000	// A flag used to determine if the message is an entrance message or not
 
 #define BUFFER_SIZE 1024
 /*

@@ -8,6 +8,8 @@
 Settings::Settings()
 {
 	this->Game = ROMGame::ootmm;
+	this->Mode = GameMode::solo;
+	this->NumOfTeams = 1;
 	this->ROMSettings = QMap<QString, Parameter>({
 				{ "goldSkulltulaTokens", { "Gold Skulltula - OoT", ParamType::shuffle, ShuffleSetting::all } },
 				{ "housesSkulltulaTokens", { "Gold Skulltula - MM", ParamType::boolean, ShuffleSetting::all } },
@@ -79,12 +81,6 @@ Settings::Settings()
 				{ "restoreBrokenActors", { "Restore Broken Actors", ParamType::boolean, ShuffleSetting::all } },
 				{ "shuffleLotteryMm", { "Lottery Prizes", ParamType::boolean, ShuffleSetting::all } }
 	});
-}
-
-
-Settings::~Settings()
-{
-	this->ROMSettings.clear();
 }
 
 
@@ -337,6 +333,10 @@ void Settings::AddSetting(QString Name, QString Value)
 		else if (Value == "mm")
 		{
 			this->Mode = GameMode::multi;
+		}
+		else
+		{
+			this->Mode = GameMode::solo;
 		}
 	}
 	else if (Name == "teams")

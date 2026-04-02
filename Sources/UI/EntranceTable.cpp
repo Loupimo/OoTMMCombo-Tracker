@@ -228,10 +228,6 @@ QString GlobalEntranceTableModel::formatEntranceLink(uint8_t GameLink, uint32_t 
 {
     const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->Game, EntranceID);
 
-    if (EntranceLink == UINT32_MAX)
-    {
-        return "?";
-    }
 
     switch (entrance->Type)
     {
@@ -246,7 +242,13 @@ QString GlobalEntranceTableModel::formatEntranceLink(uint8_t GameLink, uint32_t 
             {
                 return "N/A";
             }
-            return EntranceHelper::GetEntranceFromName(GameLink, EntranceLink);
+            if (EntranceLink == UINT32_MAX)
+            {
+                return "?";
+            }
+            return QString::fromStdString(EntranceHelper::GetOneWayInName(GameLink, EntranceLink));
+            //return EntranceHelper::GetEntranceToName(GameLink, EntranceLink);
+            //return EntranceHelper::GetEntranceFromName(GameLink, EntranceLink);
         }
 
         case EntranceType::One_Way_Out:
@@ -255,7 +257,12 @@ QString GlobalEntranceTableModel::formatEntranceLink(uint8_t GameLink, uint32_t 
             {
                 return "N/A";
             }
-            return EntranceHelper::GetEntranceToName(GameLink, EntranceLink);
+            if (EntranceLink == UINT32_MAX)
+            {
+                return "?";
+            }
+            return QString::fromStdString(EntranceHelper::GetOneWayOutName(GameLink, EntranceLink));
+            //return EntranceHelper::GetEntranceToName(GameLink, EntranceLink);
         }
 
         default:

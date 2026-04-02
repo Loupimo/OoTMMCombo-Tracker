@@ -5,10 +5,11 @@
 #include <map>
 #include <string>
 
-#define SPAWN_LOADING 0xfffe
-#define IN_MAGIC	0xAA000000		// Used to determine if the message is an incoming entrance
-#define OUT_MAGIC	0xBB000000		// Used to determine if the message is an outgoing entrance
-#define NEW_CLOCK	0xFF3FFF3F		// Used to know if the scene ID is from a new clock cycle
+#define WARP_LOADING 0xfffe
+#define IN_MAGIC	0xFFFFAAAA		// Used to determine if the message is an incoming entrance
+#define OUT_MAGIC	0xFFFFBBBB		// Used to determine if the message is an outgoing entrance
+#define WARP_SCENE	0xFF3FFF3F		// Used to know if the scene ID is from a new clock cycle
+
 
 enum class EntranceType
 {
@@ -17,6 +18,19 @@ enum class EntranceType
 	One_Way_In,
 	One_Way_Out
 };
+
+
+enum WarpSong
+{
+	Minuet_of_Forest = 0,
+	Bolero_of_Fire = 1,
+	Serenade_of_Water = 2,
+	Requiem_of_Spirit = 3,
+	Nocturne_of_Shadow = 4,
+	Prelude_of_Light = 5,
+	Song_of_Soaring = 9
+};
+
 
 typedef struct EntranceMetaInfo
 {
@@ -49,6 +63,7 @@ public:
 
 	uint8_t OutGame = NO_GAME;				// The game the last entrance ID comes from
 	uint32_t OutEntrance = 0;				// The last outgoing entrance ID
+	uint32_t OutScene = 0;					// The last outgoing scene ID
 	EntranceMetaInfo* OutMetaInf = NULL;	// The last outgoing entrance meta information
 	bool IsEntranceTouched = false;			// Tells if the ID we have is from the touched entrance (true) or the loaded one (false)
 	std::string LastTouchedStr;				// The string matching the direction of the last touched entrance
@@ -101,6 +116,15 @@ public:
 	bool IsGrottoExit(uint32_t ID);
 
 	/*
+	*   Check if the given entrance ID is from a warp entrance.
+	*
+	*	@param ID		The entrance ID to test.
+	*
+	*   @return <b>True</b> if the ID is associated to a warp entrance, <b>false</b> otherwise.
+	*/
+	bool IsWarpEntrance(uint32_t ID);
+
+	/*
 	*   Get the entrance grotto associated to the current last entrance ID.
 	*
 	*	@param Game			The game the data come from.
@@ -125,6 +149,17 @@ public:
 	uint32_t GetGrottoExit(uint8_t Game, uint8_t CurrRoom, uint8_t GrottoData, uint32_t LastScene);
 
 	/*
+	*   Get the warp song matching the entrance ID.
+	*
+	*	@param Game			The game the data come from. The game can be modified if the warp song is called from MM and leads to OoT and vice versa.
+	*	@param ID			The entrance ID.
+	*	@param SongIndex	The song index of the last played song.
+	*
+	*   @return The warp song entrance ID.
+	*/
+	uint32_t GetWarpSong(uint8_t * Game, uint32_t ID, uint8_t SongIndex);
+
+	/*
 	*   Check if the given entrance may match a grotto entrance.
 	*
 	*	@param ID		The entrance ID that may match.
@@ -139,18 +174,33 @@ public:
 	*
 	*	@param Game		The game the data come from.
 	*	@param ID		The entrance ID that may match.
-	*	@param SceneID	The scene ID the entrance belongs to. Here it can be modified by the function if it is a special case (like Market Child Day / Night)
+	*	@param SceneID	The scene ID the entrance belongs to. Here it can be modified by the function if it is a special case (like Market Child Day / Night).
 	*
 	*   @return The corrected entrance if it is a special case, the given entrance otherwise.
 	*/
 	uint32_t CheckSpecialCase(uint8_t Game, uint32_t ID, uint32_t * SceneID);
 
 	/*
+	*   Check if the given entrance is a warp zone.
+	*
+	*	@param Game		The game the data come from.
+	*	@param ID		The entrance ID that may match.
+	*	@param SceneID	The scene ID the entrance belongs to. Here it can be modified by the function if it is a special case (like Market Child Day / Night).
+	*	@param X		The X respawn player position.
+	*	@param Y		The Y respawn player position.
+	*	@param Z		The Z respawn player position.
+	*
+	*   @return The corrected entrance if it is a special case, the given entrance otherwise.
+	*/
+	uint32_t CheckWrapScene(uint8_t Game, uint32_t ID, uint32_t* SceneID, uint32_t X, uint32_t Y, uint32_t Z);
+
+	/*
 	*   Dispatch the given message to the correct parsing function.
 	*
-	*	@param Buffer		The entrance message to parse.
+	*	@param EntranceFlag		The entrance flag used to know if it is a in or out message.
+	*	@param Buffer			The entrance message to parse.
 	*/
-	void ParseEntranceMessage(uint32_t Buffer[6]);
+	void ParseEntranceMessage(uint32_t EntranceFlag, uint32_t Buffer[6]);
 
 	/*
 	*   Parse the given message as an incoming entrance message.
@@ -169,6 +219,8 @@ public:
 
 	static const char* GetEntranceFromName(int Game, uint32_t EntranceID);
 	static const char* GetEntranceToName(int Game, uint32_t EntranceID);
+	static std::string GetOneWayInName(int Game, uint32_t EntranceID);
+	static std::string GetOneWayOutName(int Game, uint32_t EntranceID);
 	static std::string GetEntranceSpawnsString(int Game, uint32_t EntranceID);
 	static std::string GetEntranceLeadsString(int Game, uint32_t EntranceID);
 	static const EntranceMetaInfo* GetEntranceMetaInf(int Game, uint32_t EntranceID);

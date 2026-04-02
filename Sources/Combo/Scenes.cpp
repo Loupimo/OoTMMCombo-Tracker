@@ -157,6 +157,7 @@ SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 	{ "Temple of Time Entryway", "", (uint8_t)OoTRegions::None, false, GameLayout::oot},
 	{ "Dampe's House", "", (uint8_t)OoTRegions::None, false, GameLayout::oot},
 	{ "Back Alley", "", (uint8_t)OoTRegions::None, false, GameLayout::oot},
+	{ "Warp Songs", "", (uint8_t)OoTRegions::None, false, GameLayout::oot},
 	{ "Inside Eggs", "", (uint8_t)OoTRegions::None, false, GameLayout::oot},
 	{ "Market", "", (uint8_t)OoTRegions::None, false, GameLayout::oot}
 };

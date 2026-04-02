@@ -446,7 +446,6 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
     }
 
     // Loads Settings section
-    this->ROMSettings.~Settings();
     this->ROMSettings = Settings();
     this->ROMSettings.ParseSettings(sections[0]);
 

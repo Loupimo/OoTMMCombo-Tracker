@@ -5,6 +5,10 @@
 #include "Multi/Multi.h"
 #include <math.h>
 
+static const std::vector<GrottoEntrance> SpecialWarps = {
+    { MM_DEKU_KING_CAUGHT, -6, 0, -323 },
+    { MM_PIRATE_ENTRANCE_CAUGHT, -2808.5535, 14, 130.12534 }
+};
 
 static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances = {
    
@@ -133,9 +137,26 @@ bool EntranceHelper::IsGrottoExit(uint32_t ID)
 {
     switch (ID)
     {
-        case 0x7fff:    // Any grotto exit touched (OoT)
-        case 0xffff:    // Any grotto exit touched (MM)
+        case OOT_INTERNAL_EXIT_GROTTO_ENTR:    // Any grotto exit touched (OoT)
+        case MM_INTERNAL_EXIT_GROTTO_ENTR:     // Any grotto exit touched (MM)
         {   
+            return true;
+        }
+
+        default:
+        {
+            return false;
+        }
+    }
+}
+
+
+bool EntranceHelper::IsWarpEntrance(uint32_t ID)
+{
+    switch (ID)
+    {
+        case WARP_LOADING:    // Any warp song, save, zone (OoT / MM)
+        {
             return true;
         }
 
@@ -262,7 +283,6 @@ uint32_t EntranceHelper::GetGrottoEntrance(uint8_t Game, uint8_t GrottoData, uin
     MultiLogger::LogMessage("Unknown grotto scene !");
     return 0;
 }
-
 
 
 uint32_t EntranceHelper::GetGrottoExit(uint8_t Game, uint8_t CurrRoom, uint8_t GrottoData, uint32_t LastScene)
@@ -399,6 +419,89 @@ uint32_t EntranceHelper::GetGrottoExit(uint8_t Game, uint8_t CurrRoom, uint8_t G
 
     MultiLogger::LogMessage("Unknown grotto scene !");
     return 0;
+}
+
+
+uint32_t EntranceHelper::GetWarpSong(uint8_t * Game, uint32_t ID, uint8_t SongIndex)
+{
+    if (*Game == OOT_GAME)
+    {
+        switch ((WarpSong)SongIndex)
+        {
+            case WarpSong::Minuet_of_Forest:
+            {
+                return OOT_MINUET_OF_FOREST_SONG;
+            }
+
+            case WarpSong::Bolero_of_Fire:
+            {
+                return OOT_BOLERO_OF_FIRE_SONG;
+            }
+
+            case WarpSong::Serenade_of_Water:
+            {
+                return OOT_SERENADE_OF_WATER_SONG;
+            }
+
+            case WarpSong::Requiem_of_Spirit:
+            {
+                return OOT_REQUIEM_OF_SPIRIT_SONG;
+            }
+
+            case WarpSong::Nocturne_of_Shadow:
+            {
+                return OOT_NOCTURNE_OF_SHADOW_SONG;
+            }
+
+            case WarpSong::Prelude_of_Light:
+            {
+                return OOT_PRELUDE_OF_LIGHT_SONG;
+            }
+        }
+    }
+    else if (*Game == MM_GAME)
+    {
+        switch ((WarpSong)SongIndex)
+        {
+            case WarpSong::Minuet_of_Forest + 0x80:
+            {
+                *Game = OOT_GAME;
+                return OOT_MINUET_OF_FOREST_SONG;
+            }
+
+            case WarpSong::Bolero_of_Fire + 0x80:
+            {
+                *Game = OOT_GAME;
+                return OOT_BOLERO_OF_FIRE_SONG;
+            }
+
+            case WarpSong::Serenade_of_Water + 0x80:
+            {
+                *Game = OOT_GAME;
+                return OOT_SERENADE_OF_WATER_SONG;
+            }
+
+            case WarpSong::Requiem_of_Spirit + 0x80:
+            {
+                *Game = OOT_GAME;
+                return OOT_REQUIEM_OF_SPIRIT_SONG;
+            }
+
+            case WarpSong::Nocturne_of_Shadow + 0x80:
+            {
+                *Game = OOT_GAME;
+                return OOT_NOCTURNE_OF_SHADOW_SONG;
+            }
+
+            case WarpSong::Prelude_of_Light + 0x80:
+            {
+                *Game = OOT_GAME;
+                return OOT_PRELUDE_OF_LIGHT_SONG;
+            }
+        }
+    }
+
+    return ID;
 }
 
 
@@ -560,13 +663,55 @@ uint32_t EntranceHelper::CheckSpecialCase(uint8_t Game, uint32_t ID, uint32_t * 
 }
 
 
-void EntranceHelper::ParseEntranceMessage(uint32_t Buffer[6])
+uint32_t EntranceHelper::CheckWrapScene(uint8_t Game, uint32_t ID, uint32_t * SceneID, uint32_t X, uint32_t Y, uint32_t Z)
 {
-    if ((Buffer[0] & 0xFF000000) == IN_MAGIC)
+    float x, y, z;
+    memcpy(&x, &X, sizeof(float));
+    memcpy(&y, &Y, sizeof(float));
+    memcpy(&z, &Z, sizeof(float));
+
+    if (Game == OOT_GAME)
+    {
+
+    }
+    else if (Game == MM_GAME)
+    {
+        for (size_t i = 0; i < SpecialWarps.size(); i++)
+        {
+            GrottoEntrance currEntrance = SpecialWarps[i];
+            if (x == currEntrance.SpawnPos[0] && y == currEntrance.SpawnPos[1] && z == currEntrance.SpawnPos[2])
+            {   // The respawn coordinates match the grotto entrance
+
+                ID = SpecialWarps[i].EntranceID;
+                switch (ID)
+                {
+                    case MM_DEKU_KING_CAUGHT:
+                    {
+                        *SceneID = MM_DEKU_KING_CHAMBER;
+                        break;
+                    }
+
+                    case MM_PIRATE_ENTRANCE_CAUGHT:
+                    {
+                        *SceneID = MM_PIRATE_FORTRESS_ENTRANCE;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    return ID;
+}
+
+
+void EntranceHelper::ParseEntranceMessage(uint32_t EntranceFlag, uint32_t Buffer[6])
+{
+    if (EntranceFlag == IN_MAGIC)
     {
         this->ParseIncomingMessage(Buffer);
     }
-    else if ((Buffer[0] & 0xFF000000) == OUT_MAGIC)
+    else if (EntranceFlag == OUT_MAGIC)
     {
         this->ParseOutgoingMessage(Buffer);
     }
@@ -575,7 +720,7 @@ void EntranceHelper::ParseEntranceMessage(uint32_t Buffer[6])
 
 void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[6])
 {
-    if (this->IsEntranceTouched && Buffer[1] != NEW_CLOCK)
+    if (this->IsEntranceTouched && Buffer[1] != WARP_SCENE)
     {
         uint8_t game = Buffer[0] & 0xFF;
         uint8_t currRoom = (Buffer[0] >> 16) & 0xFF;
@@ -619,7 +764,29 @@ void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[6])
             MultiLogger::LogMessage("Warning ! Entrance %s (0x%X) is one way out only !", this->EntranceStr.c_str(), inEntrance);
         }
 
-        SceneEntranceMetaInf * tmp = GetSceneEntranceMetaInf(this->OutGame, this->OutMetaInf->FromSceneID);
+        if (this->OutMetaInf->Type == EntranceType::One_Way_Out)
+        {
+            this->OutScene = this->OutMetaInf->ToSceneID;
+            this->OutEntrance = this->OutMetaInf->ToEntranceID;
+        }
+        else
+        {
+           /* if (game == OOT_GAME)
+            {
+                EntranceMetaInfo entranceOutMeta = OoTEntrances.at(inEntrance);
+            }
+            else
+            {
+                EntranceMetaInfo entranceOutMeta = MMEntrances.at(inEntrance);
+            }
+
+            SceneEntranceMetaInf* tmp = GetSceneEntranceMetaInf(this->OutGame, this->OutMetaInf->ToSceneID);
+            */
+            this->OutScene = this->OutMetaInf->FromSceneID;
+            this->OutEntrance = this->OutMetaInf->FromEntranceID;
+        }
+
+        SceneEntranceMetaInf * tmp = GetSceneEntranceMetaInf(this->OutGame, this->OutScene);
         /*if (tmp->EntranceIDs.contains(this->OutEntrance))
         {
             EntranceLink tmpOutLink = tmp->EntranceIDs.find(this->OutEntrance)->second;
@@ -636,11 +803,11 @@ void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[6])
             MultiLogger::LogMessage("Nope !");
             return;
         }*/
-        EntranceLink * tmpOutLink = &tmp->EntranceIDs.find(this->OutMetaInf->FromEntranceID)->second;
+        EntranceLink * tmpOutLink = &tmp->EntranceIDs.find(this->OutEntrance)->second;
         tmpOutLink->OutLink = inEntrance;
         tmpOutLink->OutLinkGame = game;
 
-        SceneEntranceUpdate tmpOut = { this->OutGame, this->OutMetaInf->FromSceneID, this->OutMetaInf->FromEntranceID, tmpOutLink };
+        SceneEntranceUpdate tmpOut = { this->OutGame, this->OutScene, this->OutEntrance, tmpOutLink };
 
         tmp = GetSceneEntranceMetaInf(game, inScene);
         EntranceLink * tmpInLink = &tmp->EntranceIDs.find(inEntrance)->second;
@@ -660,30 +827,37 @@ void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[6])
 
 void EntranceHelper::ParseOutgoingMessage(uint32_t Buffer[6])
 {
-    if (Buffer[1] == NEW_CLOCK)
-    {
+    if (Buffer[1] == WARP_SCENE && Buffer[2] != WARP_LOADING)
+    {   // On MM when warping, the scene is always equal to WARP_SCENE so we still want to be able to catch the WARP_SONG events. However we want to get rid of new clock day
+
         this->IsEntranceTouched = false;
         return;
     }
 
     this->IsEntranceTouched = true;
     this->OutGame = Buffer[0] & 0xFF;
+    uint8_t songIndex = (Buffer[0] >> 24) & 0xFF;
     uint8_t currRoom = (Buffer[0] >> 16) & 0xFF;
     uint8_t grottoData = (Buffer[0] >> 8) & 0xFF;
-    uint32_t outScene = Buffer[1];
+    this->OutScene = Buffer[1];
     this->OutEntrance = Buffer[2];
 
     if (this->IsGrottoEntrance(this->OutEntrance))
     {
-        this->OutEntrance = this->GetGrottoEntrance(this->OutGame, grottoData, this->OutEntrance, outScene);
+        this->OutEntrance = this->GetGrottoEntrance(this->OutGame, grottoData, this->OutEntrance, this->OutScene);
     }
     else if (this->IsGrottoExit(this->OutEntrance))
     {
-        this->OutEntrance = this->GetGrottoExit(this->OutGame, currRoom, grottoData, outScene);
+        this->OutEntrance = this->GetGrottoExit(this->OutGame, currRoom, grottoData, this->OutScene);
+    }
+    else if (this->IsWarpEntrance(this->OutEntrance))
+    {
+        this->OutEntrance = this->GetWarpSong(&this->OutGame, this->OutEntrance, songIndex);
+        this->OutEntrance = this->CheckWrapScene(this->OutGame, this->OutEntrance, &this->OutScene, Buffer[3], Buffer[4], Buffer[5]);
     }
     else
     {
-        this->OutEntrance = this->CheckSpecialCase(this->OutGame, this->OutEntrance, &outScene);
+        this->OutEntrance = this->CheckSpecialCase(this->OutGame, this->OutEntrance, &this->OutScene);
     }
 
     if (this->OutGame == OOT_GAME)
@@ -725,6 +899,65 @@ const char* EntranceHelper::GetEntranceToName(int Game, uint32_t EntranceID)
 }
 
 
+std::string EntranceHelper::GetOneWayInName(int Game, uint32_t EntranceID)
+{
+    EntranceMetaInfo* entrance = nullptr;
+
+    if (Game == OOT_GAME)
+    {
+        entrance = &OoTEntrances.at(EntranceID);
+    }
+    else
+    {
+        entrance = &MMEntrances.at(EntranceID);
+    }
+
+    switch (entrance->Type)
+    {
+        case EntranceType::Normal:
+        {   // We need to build the string
+
+            return std::string(entrance->FromName + std::string(" -> ") + entrance->ToName);
+        }
+
+        default:
+        {
+            return std::string(entrance->ToName);
+        }
+    }
+}
+
+
+
+std::string EntranceHelper::GetOneWayOutName(int Game, uint32_t EntranceID)
+{
+    EntranceMetaInfo* entrance = nullptr;
+
+    if (Game == OOT_GAME)
+    {
+        entrance = &OoTEntrances.at(EntranceID);
+    }
+    else
+    {
+        entrance = &MMEntrances.at(EntranceID);
+    }
+
+    switch (entrance->Type)
+    {
+        case EntranceType::Normal:
+        {   // We need to build the string
+
+            return std::string(entrance->ToName + std::string(" - ") + entrance->FromName);
+        }
+
+        default:
+        {
+            return std::string(entrance->ToName);
+        }
+    }
+}
+
+
 std::string EntranceHelper::GetEntranceSpawnsString(int Game, uint32_t EntranceID)
 {
     const EntranceMetaInfo* entrance = nullptr;
@@ -738,7 +971,20 @@ std::string EntranceHelper::GetEntranceSpawnsString(int Game, uint32_t EntranceI
         entrance = &MMEntrances.at(EntranceID);
     }
 
-    return std::string(entrance->FromName + std::string(" -> ") + entrance->ToName);
+    switch (entrance->Type)
+    {
+        case EntranceType::One_Way_Out:
+        {   // We need to build the string
+
+            return std::string(entrance->FromName + std::string(" -> ") + entrance->ToName);
+        }
+
+        default:
+        {
+            return std::string(entrance->ToName + std::string(" -> ") + entrance->FromName);
+        }
+    }
+
 }
 
 

@@ -31,7 +31,7 @@ __forceinline bool MatchPattern(uintptr_t addr, const PCSignature * Sig)
         uint32_t currWord = *(uint32_t*)(addr + i); 
         uint32_t targetWord = ByteSwap32(*(uint32_t*)(Sig->Pattern + i));   // We need to swap byte order as they are store in big endian order
 
-        LOG("Target = 0x%08X, Curr = 0x%08X, i = %zu, j = %zu", targetWord, currWord, i, j);
+        LOG("Curr PC = 0x80%06X, Target = 0x%08X, Curr = 0x%08X, i = %zu, j = %zu", addr + i - gameRAMBase, targetWord, currWord, i, j);
 
         if ((currWord & Sig->Mask [j]) != (targetWord & Sig->Mask[j]))
         {
