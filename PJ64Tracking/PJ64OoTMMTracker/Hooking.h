@@ -86,21 +86,6 @@ enum GameID : uint8_t
     GAME_UNKNOWN = 2
 };
 
-// ==============================
-// Event buffer (lock-free)
-// ==============================
-
-
-enum PCType : uint8_t
-{
-    TYPE_NONE = 0,
-    TYPE_BUTTERFLY = 1,
-    TYPE_FAIRY = 2,
-    TYPE_COMBO = 3,
-    TYPE_XFLAG = 4,
-    TYPE_SHOP = 5,
-};
-
 
 typedef struct Event
 {
@@ -118,13 +103,12 @@ struct SharedData
     Event Buffer[BUFFER_SIZE];
 };
 
-extern SharedData* gData;
-extern uintptr_t moduleBase;
-extern uintptr_t regBase;
-extern uintptr_t gameRAMBase;
-extern GameID gGame;
-extern uint8_t typemask[2][PC_RANGE_SIZE];
-extern uint32_t * gActivePCs;
+extern SharedData* gData;                   // The shared data with the tracker
+extern uintptr_t moduleBase;                // The module base address of Project 64
+extern uintptr_t regBase;                   // The RAM address where the Project 64 registers are stored.
+extern uintptr_t gameRAMBase;               // The RAM address where the game data are stored.
+extern GameID gGame;                        // The current running game.
+extern uint32_t * gActivePCs;               // The current set of program counters that are tracked.
 
 void TryResolveROMBase();
 uintptr_t FindGameRAM();

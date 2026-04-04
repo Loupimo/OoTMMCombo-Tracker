@@ -2,45 +2,41 @@
 #include "Hooking.h"
 #include "PatternScanner.h"
 
-alignas(64)
-uint8_t typemask[2][PC_RANGE_SIZE]; // One type mask per game
-uint32_t * gActivePCs = nullptr;
-
 // Hooking installation
-void* gatewayPC = NULL;
-void* gatewayROM = NULL;
-BYTE originalBytesPC[HOOK_PC_SIZE];
-BYTE originalBytesROM[HOOK_ROM_LOAD_SIZE];
-//uintptr_t returnAddress = 0;
+void* gatewayPC = NULL;                                     // The gateway to the original hook PC code. Called when the PC hook is finished.
+void* gatewayROM = NULL;                                    // The gateway to the original hook ROM code. Called when the ROM hook is finished.
+BYTE originalBytesPC[HOOK_PC_SIZE];                         // The original bytes codes loacted at the PC hook.
+BYTE originalBytesROM[HOOK_ROM_LOAD_SIZE];                  // The original bytes codes located at the ROM hook.
 
 // Game data / shared memeory data
-SharedData* gData = nullptr;
-GameID gGame = GAME_OOT;
-bool gIsRAMLoaded = false;
-bool forceGameCheck = false;
-uintptr_t moduleBase = 0;
-uintptr_t regBase = 0;
-uintptr_t romBase = 0;
-uintptr_t gameRAMBase = 0;
-uint32_t gActiveButterflyID = OOT_BUTTERFLY_ID;
-uint32_t gActiveFairyID = OOT_FAIRY_ID;
-uint32_t gActiveBigFairyID = OOT_BIG_FAIRY_ID;
-uint32_t gActiveActorOff = OOT_ACTOR_ID;
-uint32_t gActiveFairyActorCombo = OOT_FAIRY_COMBO_OFFSET;
-uint32_t gActiveNextEntrance = OOT_NEXT_ENTRANCE;
-uint32_t gActiveSongOffset = OOT_LAST_SONG_ID;
-uint32_t gActiveOwlOffset = OOT_OWL_CHOICE_ID;
-uint32_t gActiveRoomOffset = OOT_CURR_ROOM;
-uint32_t gActiveGrottoOffset = OOT_GROTTO_DATA;
-uint32_t gActiveCoordOffset = OOT_PLAYER_COORD;
-uint32_t gActiveSceneOffset = OOT_SCENE_OFFSET;
-uint32_t gActiveEntranceReg = S1_OFFSET;
-uint32_t gDetectCounter = 0;
-uint32_t gSP = 0;
-uint32_t gA1 = 0;
-uint32_t gV0 = 0;
-uint32_t gV1 = 0;
-uint32_t gS0 = 0;
+SharedData* gData = nullptr;                                // The shared data with the tracker.
+GameID gGame = GAME_OOT;                                    // The current running game.
+bool gIsRAMLoaded = false;                                  // Tells if the current game RAM is ready.
+bool forceGameCheck = false;                                // Force a game check in order to be sure to track the correct PCs.
+uintptr_t moduleBase = 0;                                   // The module base address of Project 64.
+uintptr_t regBase = 0;                                      // The RAM address where the Project 64 registers are stored.
+uintptr_t romBase = 0;                                      // The RAM address where the Project 64 ROM section is stored.
+uintptr_t gameRAMBase = 0;                                  // The RAM address where the game data are stored.
+uint32_t* gActivePCs = nullptr;                             // The current set of program counters that are tracked.
+uint32_t gActiveButterflyID = OOT_BUTTERFLY_ID;             // The current butterfly actor ID to compare to.
+uint32_t gActiveFairyID = OOT_FAIRY_ID;                     // The current fairy actor ID to compare to.
+uint32_t gActiveBigFairyID = OOT_BIG_FAIRY_ID;              // The current big fairy actor ID to compare to.
+uint32_t gActiveActorOff = OOT_ACTOR_ID;                    // The current offset to apply to reach the actor ID value.
+uint32_t gActiveFairyActorCombo = OOT_FAIRY_COMBO_OFFSET;   // The current offset to add to reach the combo query item of fairy.
+uint32_t gActiveNextEntrance = OOT_NEXT_ENTRANCE;           // The current offset to add to reach the next entrance value.
+uint32_t gActiveSongOffset = OOT_LAST_SONG_ID;              // The current offset to add to reach the last played song ID.
+uint32_t gActiveOwlOffset = OOT_OWL_CHOICE_ID;              // The current offset to add to reach the selected owl ID.
+uint32_t gActiveRoomOffset = OOT_CURR_ROOM;                 // The current offset to add to reach the current room ID.
+uint32_t gActiveGrottoOffset = OOT_GROTTO_DATA;             // The current offset to add to reach the grotto data value.
+uint32_t gActiveCoordOffset = OOT_PLAYER_COORD;             // The current offset to add to reach the last respawned player corrdinates.
+uint32_t gActiveSceneOffset = OOT_SCENE_OFFSET;             // The current offset to add to reacth the last scene offset.
+uint32_t gActiveEntranceReg = S1_OFFSET;                    // The current register to use to get the next entrance value.
+uint32_t gDetectCounter = 0;                                // The counter used to trigger a game check.
+uint32_t gSP = 0;                                           // The last value of the stack pointer.
+uint32_t gA1 = 0;                                           // The last value of the A1 register.
+uint32_t gV0 = 0;                                           // The last value of the V0 register.
+uint32_t gV1 = 0;                                           // The last value of the V1 register.
+uint32_t gS0 = 0;                                           // the last value of the S0 register.
 
 
 __forceinline bool IsValidAddr(uint32_t Addr)
@@ -185,283 +181,6 @@ __forceinline void CaptureXFlag(uintptr_t PC, uintptr_t Mem)
     }
 }
 
-/*
-__forceinline void HandlePCHook(uint32_t PC)
-{
-    if (gGame != GAME_UNKNOWN)
-    {
-        PeriodicGameCheck();
-
-        if (gIsRAMLoaded)
-        {   // The RAM is loaded
-
-            if (currButterflyPC != 0 && currButterflyPC == PC)
-            {   // Use buttefly
-
-                currButterflyPC = 0;
-                uint32_t base = *(uint32_t*)regBase;
-                gV1 = *(uint32_t*)(base + V1_OFFSET);
-
-                LOG("Addr = 0x%08X, V1 = 0x%08X", base + V1_OFFSET, gV1);
-
-                if (gV1 == 0x033C)
-                {
-                    gSP = *(uint32_t*)(base + SP_OFFSET) + BUTTERFLY_CUSTOM;
-                    LOG("Addr = 0x%08X, SP = 0x%08X", base + SP_OFFSET, gSP);
-                    CaptureXFlag(PC, gSP);
-                }
-            }
-            else
-            {
-                PCType type = (PCType)typemask[gGame][PC - PC_RANGE_START];
-
-                if (type == TYPE_NONE)
-                {   // Done outside the switch as it represent 99% of the PCs
-
-                    return;
-                }
-
-                uintptr_t addr = gameRAMBase;
-                uint32_t base = *(uint32_t*)regBase;
-                switch (type)
-                {
-                    // Butterfly uses Actor_RunUpdate function which occurs a lot compare to the others, need to be put first to optimize
-                    case TYPE_BUTTERFLY:
-                    {    // read S0...
-                        gS0 = *(uint32_t*)(base + S0_OFFSET);
-
-                        if (IsValidAddr(gS0))
-                        {
-                            addr += gS0 & 0x00FFFFFF;
-                            uint32_t tmp = *(uint32_t*)addr & 0xFFFF0000;
-
-                            if (gGame == GAME_OOT && tmp == 0x001E0000)
-                            {   // This is a butterfly
-
-                                LOG("Addr = 0x%08X, S0 = 0x%08X", base + S0_OFFSET, gS0);
-                                currButterflyPC = *(uint32_t*)(addr + BUTTERFLY_FUNCTION) + BUTTERFLY_SPAWN_OFFSET;
-                                LOG("Addr = 0x%08X, CurrButterFlyPC = 0x%08X", addr + BUTTERFLY_FUNCTION + BUTTERFLY_SPAWN_OFFSET, currButterflyPC);
-                            }
-                            else if (gGame == GAME_MM && tmp == 0x00150000)
-                            {
-                                LOG("Addr = 0x%08X, S0 = 0x%08X", base + S0_OFFSET, gS0);
-                                currButterflyPC = *(uint32_t*)(addr + BUTTERFLY_FUNCTION + 0x08) + BUTTERFLY_SPAWN_OFFSET;
-                                LOG("Addr = 0x%08X, CurrButterFlyPC = 0x%08X", addr + BUTTERFLY_FUNCTION + BUTTERFLY_SPAWN_OFFSET + 0x08, currButterflyPC);
-                            }
-
-                        }
-
-                        break;
-                    }
-
-                    case TYPE_COMBO:
-                    {    // read A1, S0, etc...
-
-                        gS0 = *(uint32_t*)(base + S0_OFFSET);
-
-                        LOG("Addr = 0x%08X, S0 = 0x%08X", base + S0_OFFSET, gS0);
-
-                        if (IsValidAddr(gS0))
-                        {
-                            gA1 = *(uint32_t*)(base + A1_OFFSET);
-                            LOG("Addr = 0x%08X, A1 = 0x%08X", base + A1_OFFSET, gA1);
-                            addr += (gS0 & 0x00FFFFFF);
-                            StoreResults(PC, gS0, *(uint32_t*)(addr + 4), *(uint32_t*)(addr + 8), gA1);
-                        }
-
-                        return;
-                    }
-                    case TYPE_XFLAG:
-                    {    // read SP...
-                        
-                        gSP = *(uint32_t*)(base + SP_OFFSET) + DROP_CUSTOM;
-
-                        LOG("Addr = 0x%08X, SP = 0x%08X", base + SP_OFFSET, gSP);
-
-                        CaptureXFlag(PC, gSP);
-
-                        return;
-                    }
-                    case TYPE_SHOP:
-                    {    // read V0, V1, SP...
-                        gV0 = *(uint32_t*)(base + V0_OFFSET);
-                        gV1 = *(uint32_t*)(base + V1_OFFSET);
-
-                        LOG("Addr = 0x%08X, V0 = 0x%08X, Addr = 0x%08X, V1 = 0x%08X", base + V0_OFFSET, gV0, base + V1_OFFSET, gV1);
-
-                        if (gV0 == 2 && gV1 == 0x033C)
-                        {
-                            gSP = *(uint32_t*)(base + SP_OFFSET) + SHOP_CUSTOM;
-                            LOG("Addr = 0x%08X, SP = 0x%08X", base + SP_OFFSET, gSP);
-                            CaptureXFlag(PC, gSP);
-                        }
-
-                        return;
-                    }
-                    
-                    default:
-                    {
-                        return;
-                    }
-                }
-            }
-        }
-        else if ((gGame == GAME_OOT && PC == OOT_PLAY_MAIN) || (gGame == GAME_MM && PC == MM_PLAY_MAIN))
-        {   // The RAM is loaded. We can check for patterns
-
-            gIsRAMLoaded = true;
-
-            LOG("Game = %d, RAM Loaded : 0x%08X", gGame, PC);
-
-            gGameVersion = GetGameVersion();
-
-            GamePatternState* state = &gPatternState[gGame];
-
-            if (gGameVersion != gPatternState[gGame].Version)
-            {
-                gPatternState[GAME_OOT].Resolved = false;
-                gPatternState[GAME_MM].Resolved = false;
-            }
-
-            if (!state->Resolved || state->Version != gGameVersion)
-            {
-                gPatternState[GAME_OOT].Version = gGameVersion;
-                gPatternState[GAME_MM].Version = gGameVersion;
-                BuildTypeMaskFromPatterns();
-            }
-        }
-    }
-    else
-    {
-        gGame = DetectCurrentGame();
-        if (gGame != GAME_UNKNOWN)
-        {   // The RAM is loaded so is the ROM
-
-            gIsRAMLoaded = false;
-            gGameVersion = GetGameVersion();
-            if (gPatternState[GAME_OOT].Version != gGameVersion)
-            {
-                gPatternState[GAME_OOT].Resolved = false;
-                gPatternState[GAME_MM].Resolved = false;
-            }
-            gPatternState[GAME_OOT].Version = gGameVersion;
-            gPatternState[GAME_MM].Version = gGameVersion;
-        }
-    }
-}
-
-__declspec(naked) void PCHook()
-{
-    __asm
-    {
-        push eax
-        push ecx
-
-        mov eax, regBase
-        mov eax, [eax]
-        mov ecx, [eax + PC_OFFSET]
-
-        push ecx
-        call HandlePCHook
-        add esp, 4
-
-        pop ecx
-        pop eax
-
-        jmp gatewayPC
-    }
-}*/
-/*
-__forceinline void HandlePCHookRare(uint32_t PC)
-{
-    if (gGame == GAME_UNKNOWN)
-    {
-        gGame = DetectCurrentGame();
-        if (gGame != GAME_UNKNOWN)
-        {
-            gIsRAMLoaded = false;
-            GetGameVersion();
-            gPatternState[GAME_OOT].Resolved = false;
-            gPatternState[GAME_MM].Resolved = false;
-        }
-        return;
-    }
-
-
-    PCType type = (PCType)typemask[gGame][PC - PC_RANGE_START];
-    if (type == TYPE_NONE)
-    {
-        PeriodicGameCheck();
-        return;
-    }
-
-    uintptr_t base = *(uint32_t*)regBase;
-    uintptr_t addr = gameRAMBase;
-
-    switch (type)
-    {
-        case TYPE_BUTTERFLY:
-        {
-            gS0 = *(uint32_t*)(base + S0_OFFSET);
-
-            if (IsValidAddr(gS0))
-            {
-                addr += gS0 & 0x00FFFFFF;
-                uint32_t tmp = *(uint32_t*)addr & 0xFFFF0000;
-
-                if (gGame == GAME_OOT && tmp == 0x001E0000)
-                {   // This is a butterfly
-
-                    LOG("Addr = 0x%08X, S0 = 0x%08X", base + S0_OFFSET, gS0);
-                    currButterflyPC = *(uint32_t*)(addr + BUTTERFLY_FUNCTION) + BUTTERFLY_SPAWN_OFFSET;
-                    LOG("Addr = 0x%08X, CurrButterFlyPC = 0x%08X", addr + BUTTERFLY_FUNCTION + BUTTERFLY_SPAWN_OFFSET, currButterflyPC);
-                }
-                else if (gGame == GAME_MM && tmp == 0x00150000)
-                {
-                    LOG("Addr = 0x%08X, S0 = 0x%08X", base + S0_OFFSET, gS0);
-                    currButterflyPC = *(uint32_t*)(addr + BUTTERFLY_FUNCTION + 0x08) + BUTTERFLY_SPAWN_OFFSET;
-                    LOG("Addr = 0x%08X, CurrButterFlyPC = 0x%08X", addr + BUTTERFLY_FUNCTION + BUTTERFLY_SPAWN_OFFSET + 0x08, currButterflyPC);
-                }
-
-            }
-
-            break;
-        }
-
-        case TYPE_COMBO:
-        {
-            gS0 = *(uint32_t*)(base + S0_OFFSET);
-            if (IsValidAddr(gS0))
-            {
-                gA1 = *(uint32_t*)(base + A1_OFFSET);
-                addr += gS0 & 0x00FFFFFF;
-                StoreResults(PC, gS0, *(uint32_t*)(addr + 4), *(uint32_t*)(addr + 8), gA1);
-            }
-            break;
-        }
-        case TYPE_XFLAG:
-        {
-            gSP = *(uint32_t*)(base + SP_OFFSET) + DROP_CUSTOM;
-            CaptureXFlag(PC, gSP);
-            break;
-        }
-        case TYPE_SHOP:
-        {
-            gV0 = *(uint32_t*)(base + V0_OFFSET);
-            gV1 = *(uint32_t*)(base + V1_OFFSET);
-            if (gV0 == 2 && gV1 == 0x033C)
-            {
-                gSP = *(uint32_t*)(base + SP_OFFSET) + SHOP_CUSTOM;
-                CaptureXFlag(PC, gSP);
-            }
-            break;
-        }
-        default:
-            break;
-    }
-    PeriodicGameCheck();
-}
-*/
 /*
 *   Check if the given address is in range 0x80000000 and 0x80FFFFFF.
 *

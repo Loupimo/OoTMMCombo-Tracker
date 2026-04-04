@@ -15,7 +15,7 @@ uint32_t Mask_Actor_Spawn_OoT[] =
     0xFFFFFFFF,                     // LW       S0, 0x0020 (SP)         <-- Actor_Spawn_End, Hook here
 };
 
-PCSignature Sig_Actor_Spawn_OoT = { TYPE_FAIRY, 4, Pattern_Actor_Spawn_OoT, Mask_Actor_Spawn_OoT, 0x00 };
+PCSignature Sig_Actor_Spawn_OoT = { 4, Pattern_Actor_Spawn_OoT, Mask_Actor_Spawn_OoT, 0x00 };
 
 #pragma endregion   // Actor_Spawn
 
@@ -43,7 +43,7 @@ uint32_t Mask_comboAddItemRawEx_OoT[] =
     0xFFFFFFFF                      // SW       RA, 0x0034 (SP)
 };                             
 
-PCSignature Sig_comboAddItemRawEx_OoT = { TYPE_COMBO, 28, Pattern_comboAddItemRawEx_OoT, Mask_comboAddItemRawEx_OoT, 0x40 };
+PCSignature Sig_comboAddItemRawEx_OoT = { 28, Pattern_comboAddItemRawEx_OoT, Mask_comboAddItemRawEx_OoT, 0x40 };
 
 #pragma endregion   // comboAddItemRawEx
 
@@ -100,7 +100,7 @@ uint32_t Mask_EnItem00_DropCustom_OoT[] =
     0xFFFFFFFF,                     // OR       A1, S0, R0
     0xFF000000                      // JAL      comboXflagsSet          <-- Hook here
 };
-PCSignature Sig_EnItem00_DropCustom_OoT = { TYPE_XFLAG, 88, Pattern_EnItem00_DropCustom_OoT, Mask_EnItem00_DropCustom_OoT, 0x54 };
+PCSignature Sig_EnItem00_DropCustom_OoT = { 88, Pattern_EnItem00_DropCustom_OoT, Mask_EnItem00_DropCustom_OoT, 0x54 };
 
 #pragma endregion // EnItem00_DropCustom
 
@@ -142,7 +142,7 @@ uint32_t Mask_comboItemPrecond_OoT[] =
     0xFFFFFFFF                      // LW       S0, 0x0018 (SP)         <-- Hook here
 };
 
-PCSignature Sig_comboItemPrecond_OoT = { TYPE_SHOP, 56, Pattern_comboItemPrecond_OoT, Mask_comboItemPrecond_OoT, 0x34 };
+PCSignature Sig_comboItemPrecond_OoT = { 56, Pattern_comboItemPrecond_OoT, Mask_comboItemPrecond_OoT, 0x34 };
 
 #pragma endregion   // comboItemPrecond
 
@@ -188,7 +188,7 @@ uint32_t Mask_hookPlay_Init_OoT[] =
     0xFFFFFFFF                      // LUI      V0, 0x8044
 };
 
-PCSignature Sig_hookPlay_Init_OoT = { TYPE_SHOP, 64, Pattern_hookPlay_Init_OoT, Mask_hookPlay_Init_OoT, 0x4D0 };
+PCSignature Sig_hookPlay_Init_OoT = { 64, Pattern_hookPlay_Init_OoT, Mask_hookPlay_Init_OoT, 0x4D0 };
 
 #pragma endregion   // hookPlay_Init
 
@@ -224,7 +224,7 @@ uint32_t Mask_Play_TransitionDone_OoT[] =
     0xFFFFFFFF                      // BEQ      V0, V1, 0x8042BF88
 };
 
-PCSignature Sig_Play_TransitionDone_OoT = { TYPE_SHOP, 44, Pattern_Play_TransitionDone_OoT, Mask_Play_TransitionDone_OoT, 0x90 };
+PCSignature Sig_Play_TransitionDone_OoT = { 44, Pattern_Play_TransitionDone_OoT, Mask_Play_TransitionDone_OoT, 0x90 };
 
 #pragma endregion   // Play_TransitionDone
 
@@ -262,7 +262,7 @@ uint32_t Mask_EnButte_TransformIntoFairy_OoT[] =
     0xFFFFFFFF                       // LH        V0, 0x0244 (S0)       <-- Hook here
 };
 
-PCSignature Sig_EnButte_TransformIntoFairy_OoT = { TYPE_BUTTERFLY, 48, Pattern_EnButte_TransformIntoFairy_OoT, Mask_EnButte_TransformIntoFairy_OoT, 0x130 };
+PCSignature Sig_EnButte_TransformIntoFairy_OoT = { 48, Pattern_EnButte_TransformIntoFairy_OoT, Mask_EnButte_TransformIntoFairy_OoT, 0x130 };
 
 #pragma endregion   // EnButte_TransformIntoFairy
 
@@ -294,7 +294,7 @@ uint32_t Mask_Actor_Spawn_MM[] =
     0xFFFFFFFF,                     // ADDIU    SP, SP, 0x38           <-- Actor_SpawnAsChildAndCutscene_End, Hook here
 };
 
-PCSignature Sig_Actor_Spawn_MM = { TYPE_FAIRY, 4, Pattern_Actor_Spawn_MM, Mask_Actor_Spawn_MM, 0x00 };
+PCSignature Sig_Actor_Spawn_MM = { 4, Pattern_Actor_Spawn_MM, Mask_Actor_Spawn_MM, 0x00 };
 
 #pragma endregion   // Actor_Spawn
 
@@ -322,7 +322,7 @@ uint32_t Mask_comboAddItemRawEx_MM[] =
     0xFFFFFFFF                      // SW       RA, 0x0034 (SP)
 };
 
-PCSignature Sig_comboAddItemRawEx_MM = { TYPE_COMBO, 28, Pattern_comboAddItemRawEx_MM, Mask_comboAddItemRawEx_MM, 0x40 };
+PCSignature Sig_comboAddItemRawEx_MM = { 28, Pattern_comboAddItemRawEx_MM, Mask_comboAddItemRawEx_MM, 0x40 };
 
 #pragma endregion   // comboAddItemRawEx
 
@@ -379,7 +379,7 @@ uint32_t Mask_EnItem00_DropCustom_MM[] =
     0xFFFFFFFF,                     // OR       A1, S0, R0
     0xFF000000                      // JAL      comboXflagsSet          <-- Hook here
 };
-PCSignature Sig_EnItem00_DropCustom_MM = { TYPE_XFLAG, 88, Pattern_EnItem00_DropCustom_MM, Mask_EnItem00_DropCustom_MM, 0x54 };
+PCSignature Sig_EnItem00_DropCustom_MM = { 88, Pattern_EnItem00_DropCustom_MM, Mask_EnItem00_DropCustom_MM, 0x54 };
 
 #pragma endregion // EnItem00_DropCustom
 
@@ -421,7 +421,7 @@ uint32_t Mask_comboItemPrecond_MM[] =
     0xFFFFFFFF                      // LW       S0, 0x0018 (SP)         <-- Hook here
 };
 
-PCSignature Sig_comboItemPrecond_MM = { TYPE_SHOP, 56, Pattern_comboItemPrecond_MM, Mask_comboItemPrecond_MM, 0x34 };
+PCSignature Sig_comboItemPrecond_MM = { 56, Pattern_comboItemPrecond_MM, Mask_comboItemPrecond_MM, 0x34 };
 
 #pragma endregion   // comboItemPrecond
 
@@ -469,7 +469,7 @@ uint32_t Mask_hookPlay_Init_MM[] =
     0xFFFFFF00                      // SB       R0, 0x0EC8 (V0)
 };
 
-PCSignature Sig_hookPlay_Init_MM = { TYPE_SHOP, 68, Pattern_hookPlay_Init_MM, Mask_hookPlay_Init_MM, 0x58C };
+PCSignature Sig_hookPlay_Init_MM = { 68, Pattern_hookPlay_Init_MM, Mask_hookPlay_Init_MM, 0x58C };
 
 #pragma endregion   // hookPlay_Init
 
@@ -521,7 +521,7 @@ uint32_t Mask_Play_TransitionDone_MM[] =
     0xFFFFFFFF                      // BNEL     V0, V1, 0x80759E00
 };
 
-PCSignature Sig_Play_TransitionDone_MM = { TYPE_SHOP, 76, Pattern_Play_TransitionDone_MM, Mask_Play_TransitionDone_MM, 0x1D4 };
+PCSignature Sig_Play_TransitionDone_MM = { 76, Pattern_Play_TransitionDone_MM, Mask_Play_TransitionDone_MM, 0x1D4 };
 
 #pragma endregion   // Play_TransitionDone
 
@@ -559,7 +559,7 @@ uint32_t Mask_EnButte_TransformIntoFairy_MM[] =
     0xFFFFFFFF                       // LH        V0, 0x024C (S0)
 };
 
-PCSignature Sig_EnButte_TransformIntoFairy_MM = { TYPE_BUTTERFLY, 48, Pattern_EnButte_TransformIntoFairy_MM, Mask_EnButte_TransformIntoFairy_MM, 0x130 };
+PCSignature Sig_EnButte_TransformIntoFairy_MM = { 48, Pattern_EnButte_TransformIntoFairy_MM, Mask_EnButte_TransformIntoFairy_MM, 0x130 };
 
 #pragma endregion   // EnButte_TransformIntoFairy
 

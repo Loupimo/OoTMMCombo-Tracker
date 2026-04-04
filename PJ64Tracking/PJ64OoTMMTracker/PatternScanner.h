@@ -18,7 +18,6 @@ extern GamePatternState gPatternState[2];
 
 typedef struct PCSignature
 {
-    uint8_t Type;           // The PC type associated to this pattern 
     size_t PatternSize;     // The number of bytes in the pattern
     const uint8_t* Pattern; // The function pattern to find
     const uint32_t* Mask;   // The mask to apply to each pattern instruction 
@@ -35,7 +34,6 @@ typedef struct PCFastResolver
 } PCFastResolver;
 
 
-void SetPCType(uint32_t pc, uint8_t type);
 bool MatchPattern(uintptr_t addr, const PCSignature* Sig);
 uintptr_t FindPatternInPayload(const PCSignature* Sig, size_t PayloadStart, size_t PayloadEnd);
 bool IsJAL(uint32_t InstrucVal);

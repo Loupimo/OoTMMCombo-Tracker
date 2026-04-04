@@ -247,7 +247,7 @@ void LogTab::PressLaunchButton()
     {
         QIcon launchIcon(QIcon::fromTheme(QString::fromUtf8("QIcon::ThemeIcon::MediaPlaybackStart")));
         QString trackText = "Start Tracking";
-        if (this->Tracker->IsRunning)
+        if (this->Tracker->IsRunning || this->MemRead->IsRunning)
         {   // Stop the auto-tracker
 
             this->Tracker->IsRunning = false;
@@ -260,27 +260,33 @@ void LogTab::PressLaunchButton()
         else
         {   // Start the auto-tracker
 
-            // Default host / ports from Nax's multi client app
-            if (this->Tracker->appInit())
-            {
-                return;
+
+            if (this->EnableMultiplayer)
+            {   // Use multiplayer
+
+                // Default host / ports from Nax's multi client app
+                if (this->Tracker->appInit())
+                {
+                    return;
+                }
+                if (this->Tracker->appStartPj64("localhost", 13249))
+                {
+                    this->Tracker->appQuit();
+                    return;
+                }
+                if (this->Tracker->appStartAres("localhost", 9123))
+                {
+                    this->Tracker->appQuit();
+                    return;
+                }
+                this->Tracker->IsRunning = true;
+                this->TrackerThread = std::thread(&App::appRun, this->Tracker, this->EnableMultiplayer, this->Host, this->Port->text().toUShort());
             }
-            if (this->Tracker->appStartPj64("localhost", 13249))
-            {
-                this->Tracker->appQuit();
-                return;
-            }
-            if (this->Tracker->appStartAres("localhost", 9123))
-            {
-                this->Tracker->appQuit();
-                return;
-            }
+
+            this->MemReaderThread = std::thread(&MemoryReader::StartMemoryReader, this->MemRead);
+
             trackText = "Stop Tracking";
             launchIcon = QIcon::fromTheme(QString::fromUtf8("QIcon::ThemeIcon::MediaPlaybackStop"));
-            this->Tracker->IsRunning = true;
-
-            this->TrackerThread = std::thread(&App::appRun, this->Tracker, this->EnableMultiplayer, this->Host, this->Port->text().toUShort());
-            this->MemReaderThread = std::thread(&MemoryReader::StartMemoryReader, this->MemRead);
         }
 
         this->LaunchButton->setIcon(launchIcon);

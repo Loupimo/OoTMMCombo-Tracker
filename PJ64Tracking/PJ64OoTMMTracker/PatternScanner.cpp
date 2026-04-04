@@ -15,14 +15,6 @@ __forceinline uint32_t ByteSwap32(uint32_t x)
     return y;
 }
 
-
-__forceinline void SetPCType(uint32_t pc, uint8_t type)
-{
-    LOG("Setting PC : 0x%08X, Type = %d", pc, type);
-    typemask[gGame][pc - PC_RANGE_START] = type;
-}
-
-
 __forceinline bool MatchPattern(uintptr_t addr, const PCSignature * Sig)
 {
     for (size_t i = 0, j = 0; i < Sig->PatternSize; i += 4, j++)

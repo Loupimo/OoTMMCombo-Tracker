@@ -85,8 +85,6 @@ void MemoryReader::ResetMemoryReader()
     }
 
     this->PJ64PID = 0;
-    this->ModuleBaseAddress = 0;
-    this->GameRamBaseAddress = 0;
     this->EntHelper.ResetEntranceHelper();
     this->DLLData = nullptr;
 }
@@ -131,7 +129,6 @@ HANDLE MemoryReader::OpenDesiredProcess(DWORD PID)
 {   // Open the desired process with the right to access the process and reading its memory
 
     return OpenProcess(PROCESS_ALL_ACCESS, TRUE, this->PJ64PID);
-    //return OpenProcess(PROCESS_VM_READ | PROCESS_QUERY_INFORMATION, false, PID);
 }
 
 
@@ -273,7 +270,6 @@ void MemoryReader::StartMemoryReader()
         if (this->PJ64Handle != 0)
         {   // We have permission to watch the process memory
 
-
             if (this->InjectTrackerDLL())
             {   // Injection successful
 
@@ -330,65 +326,6 @@ void MemoryReader::RunMemoryReader()
 }
 
 
-uintptr_t MemoryReader::GetModuleBase(DWORD PID, const char* ModuleName)
-{
-    MODULEENTRY32 mod;
-    mod.dwSize = sizeof(mod);
-    char* currProcess = (char*)malloc(sizeof(char) * 256);
-    size_t sz = 0;
-
-    HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, PID);
-
-    if (currProcess && Module32First(snapshot, &mod))
-    {
-        do
-        {
-            wcstombs_s(&sz, currProcess, 256, mod.szModule, 256);
-            QString lazyString(currProcess);
-            if (lazyString.startsWith(ModuleName) && lazyString.endsWith(".exe"))
-            //if (!_stricmp(mod.szModule, moduleName))
-            {
-                CloseHandle(snapshot);
-                return (uintptr_t)mod.modBaseAddr;
-            }
-
-        } while (Module32Next(snapshot, &mod));
-    }
-
-    CloseHandle(snapshot);
-    return 0;
-}
-
-
-uintptr_t MemoryReader::FindN64RAM(HANDLE process)
-{
-    MEMORY_BASIC_INFORMATION mbi;
-    uintptr_t addr = 0;
-
-    while (VirtualQueryEx(process, (LPCVOID)addr, &mbi, sizeof(mbi)))
-    {
-        if (mbi.State == MEM_COMMIT && mbi.Type == MEM_PRIVATE && mbi.RegionSize == 0x800000 && (mbi.Protect & PAGE_READWRITE))
-        {
-            return (uintptr_t)mbi.BaseAddress;
-        }
-
-        addr += mbi.RegionSize;
-    }
-
-    return 0;
-}
-
-
-uintptr_t MemoryReader::FindPCAddress(HANDLE process)
-{
-    uint32_t addr = 0;
-
-    ReadProcessMemory(process, (LPCVOID)(this->ModuleBaseAddress + 0x1B00C4), &addr, sizeof(addr), 0);
-
-    return addr + 0x220;
-}
-
-
 bool MemoryReader::OpenSharedMemory()
 {
     HANDLE hMap = OpenFileMappingA(FILE_MAP_ALL_ACCESS, FALSE, "PJ64_SHARED_MEM");
@@ -419,92 +356,4 @@ bool MemoryReader::InjectTrackerDLL()
 
     snprintf(cmd, sizeof(cmd), "%s %d \"%s\"", injector.c_str(), this->PJ64PID, dll.c_str());
     return !system(cmd);
-    
-    /*
-    if (this->PJ64Handle == 0)
-    {
-        return false;
-    }
-
-    this->DLLAlloc = VirtualAllocEx(this->PJ64Handle, nullptr, strlen(this->PJTrackerDLL), MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
-
-    if (!this->DLLAlloc)
-    {
-        return false;
-    }
-
-    bool ret = WriteProcessMemory(this->PJ64Handle, this->DLLAlloc, this->PJTrackerDLL, strlen(this->PJTrackerDLL), nullptr);
-
-    this->DLLThread = CreateRemoteThread(this->PJ64Handle, nullptr, 0, (LPTHREAD_START_ROUTINE)LoadLibraryA, this->DLLAlloc, 0, nullptr );
-
-    if (!this->DLLThread)
-        return false;
-
-    Sleep(10);  // Let the time for the DLL to be initialized
-
-    return true;*/
-}
-
-
-void MemoryReader::CheckCurrentLoadedGame()
-{
-    union
-    {
-        uint32_t Bytes[2]; uint64_t Name;
-    } u;
-
-    uint64_t ToFound = 0x5A454C44415A0000; // ZELDAZ
-
-    if (std::endian::native == std::endian::little)
-    {
-        memcpy(&u.Bytes[1], &this->RAMData[0x11A5EC], sizeof(uint32_t));
-        memcpy(&u.Bytes[0], &this->RAMData[0x11A5EC + sizeof(uint32_t)], sizeof(uint32_t));
-
-        // Get rid of the death count
-        u.Bytes[0] &= 0xFFFF0000;
-    }
-    else
-    {
-        memcpy(&u.Bytes[0], &this->RAMData[0x11A5EC], sizeof(uint32_t));
-        memcpy(&u.Bytes[1], &this->RAMData[0x11A5EC + sizeof(uint32_t)], sizeof(uint32_t));
-
-        // Get rid of the death count
-        u.Bytes[1] &= 0xFFFF0000;
-    }
-
-    if (u.Name == ToFound)
-    {   // The current loaded game is Ocarina of Time
-
-        this->LoadedGame = OOT_GAME;
-        return;
-    }
-
-    ToFound = 0x5A454c4441330000; // ZELDA3
-
-    if (std::endian::native == std::endian::little)
-    {
-        memcpy(&u.Bytes[1], &this->RAMData[0x1EF694], sizeof(uint32_t));
-        memcpy(&u.Bytes[0], &this->RAMData[0x1EF694 + sizeof(uint32_t)], sizeof(uint32_t));
-
-        // Get rid of the death count
-        u.Bytes[0] &= 0xFFFF0000;
-    }
-    else
-    {
-        memcpy(&u.Bytes[0], &this->RAMData[0x1EF694], sizeof(uint32_t));
-        memcpy(&u.Bytes[1], &this->RAMData[0x1EF694 + sizeof(uint32_t)], sizeof(uint32_t));
-
-        // Get rid of the death count
-        u.Bytes[1] &= 0xFFFF0000;
-    }
-
-    if (u.Name == ToFound)
-    {   // The current loaded game is Majora's Mask
-
-        this->LoadedGame = MM_GAME;
-        return;
-    }
-
-    // No / incorrect game loaded.
-    this->LoadedGame = NO_GAME;
 }
