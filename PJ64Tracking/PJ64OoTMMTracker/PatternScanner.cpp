@@ -82,10 +82,10 @@ void ResolveButterflyTransform()
     uintptr_t base = FindPatternInPayload(sigs[4].Signature, PC_RANGE_START, PAYLOAD_END);
 
     if (base != 0)
-    {
-        uintptr_t PC = base + sigs[4].Signature->PCOffset;
+    {   // We have find the desired start address of the function
 
-        //SetPCType(PC, sigs[i].Signature->Type);
+        uintptr_t PC = base + sigs[4].Signature->PCOffset;  // The specific instruction to track
+
         gPatternState[gGame].PCs[4] = PC;
         LOG("[OK] PC 0x%08X", PC);
     }
@@ -94,12 +94,12 @@ void ResolveButterflyTransform()
 
 void ResetButterflyTransform()
 {
-    gPatternState[GAME_OOT].PCs[4] = 0;
-    gPatternState[GAME_MM].PCs[4] = 0;
+    gPatternState[GAME_OOT].PCs[5] = 0;
+    gPatternState[GAME_MM].PCs[5] = 0;
 }
 
 
-void BuildTypeMaskFromPatterns()
+void BuildPCsPatterns()
 {
     size_t count = 0;
     bool fullResolved = true;
@@ -128,19 +128,21 @@ void BuildTypeMaskFromPatterns()
         return;
     }
 
-    //memset(typemask[gGame], 0, PC_RANGE_SIZE);
 
     for (size_t i = 0; i < count; i++)
-    {
+    {   // Browse all pattern to resolve
+
         uintptr_t base = FastPatternResolver(sigs[i]);
         if (base == 0)
-        {
+        {   // The fast pattern failed to get the PC counter. Try the slow method
+
             LOG("[FAIL] Fast Pattern %zu\nTrying slow pattern.", i);
 
             base = FindPatternInPayload(sigs[i].Signature, i == count - 1 ? PC_RANGE_START : PAYLOAD_START, PAYLOAD_END);
 
             if (!base)
-            {
+            {   // The function cannot be found
+
                 LOG("[FAIL] Pattern %zu", i);
 
                 fullResolved = false;
@@ -151,12 +153,13 @@ void BuildTypeMaskFromPatterns()
         {   // The fast resolver found an address, we need to check that the function is correct
 
             if (!MatchPattern(gameRAMBase + (base & 0x00FFFFFF), sigs[i].Signature))
-            {   // The found address was wrong
+            {   // The found address was wrong. Try the slow method
 
                 base = FindPatternInPayload(sigs[i].Signature, i >= count - 3 ? PC_RANGE_START : PAYLOAD_START, PAYLOAD_END);
 
                 if (!base)
-                {
+                {   // The function cannot be found
+
                     LOG("[FAIL] Pattern %zu", i);
 
                     fullResolved = false;
@@ -165,9 +168,9 @@ void BuildTypeMaskFromPatterns()
             }
         }
 
-        uintptr_t PC = base + sigs[i].Signature->PCOffset;
+        // We have find the desired start address of the function
+        uintptr_t PC = base + sigs[i].Signature->PCOffset;  // The specific instruction to track
 
-        //SetPCType(PC, sigs[i].Signature->Type);
         gPatternState[gGame].PCs[i] = PC;
         LOG("[OK] PC 0x%08X", PC);
     }
@@ -178,27 +181,21 @@ void BuildTypeMaskFromPatterns()
 }
 
 
-
 __forceinline bool IsJAL(uint32_t InstrucVal)
 {
     return ((InstrucVal >> 26) == 0x03);
 }
 
+
 __forceinline uintptr_t ResolveJAL(uint32_t InstrucVal, uint32_t JALAddr)
 {
-    //--------------------------------
     // Extract 26-bit target
-    //--------------------------------
     uint32_t target = InstrucVal & 0x03FFFFFF;
 
-    //--------------------------------
     // Shift left (word aligned)
-    //--------------------------------
     target <<= 2;
 
-    //--------------------------------
     // Merge upper PC bits
-    //--------------------------------
     uintptr_t resolved = (JALAddr & 0xF0000000) | target;
 
     return resolved;

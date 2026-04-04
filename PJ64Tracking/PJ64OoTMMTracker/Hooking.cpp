@@ -39,80 +39,6 @@ uint32_t gV1 = 0;                                           // The last value of
 uint32_t gS0 = 0;                                           // the last value of the S0 register.
 
 
-__forceinline bool IsValidAddr(uint32_t Addr)
-{
-    return (Addr & 0xFF000000) == 0x80000000;
-}
-
-__forceinline void GetGameVersion()
-{
-    if (!gData)
-    {
-        return;
-    }
-
-    uint64_t version = ((uint64_t)gData->GameVersion[0] << 32) | gData->GameVersion[1];
-
-    if (version == 0)
-    {
-        version = *(uint64_t*)(romBase + 0x10);
-        gData->GameVersion[0] = (uint32_t)version;
-        gData->GameVersion[1] = version >> 32;
-
-        LOG("Game Version = %llu", version);
-    }
-}
-
-
-__forceinline GameID DetectCurrentGame()
-{
-    // OoT
-    uintptr_t AddrCheck = gameRAMBase + (0x8011A5EC & 0x00FFFFFF);
-    uint64_t val = *(uint64_t*)AddrCheck & 0xFFFF0000FFFFFFFF;
-
-    if (val == 0x415A00005A454C44)
-    {
-        return GAME_OOT;
-    }
-
-    // MM
-    AddrCheck = gameRAMBase + (0x801EF694 & 0x00FFFFFF);
-    val = *(uint64_t*)AddrCheck & 0xFFFF0000FFFFFFFF;
-    
-    if (val == 0x413300005A454C44)
-    {
-        return GAME_MM;
-    }
-
-    return GAME_UNKNOWN;
-}
-
-
-__forceinline void PeriodicGameCheck()
-{
-    static uint32_t counter;
-
-    counter++;
-
-    if ((counter & 0x1FFF) != 0)
-    {
-        return;
-    }
-
-    counter = 0;
-
-    GameID g = DetectCurrentGame();
-
-    if (g != gGame && g != GAME_UNKNOWN)
-    {
-        LOG("Game changed");
-
-        gGame = g;
-        gIsRAMLoaded = false;
-    }
-}
-
-
 void TryResolveROMBase()
 {
     if (romBase)
@@ -159,27 +85,6 @@ uintptr_t FindGameRAM()
     }
 }
 
-
-__forceinline void StoreResults(uint32_t PC, uint32_t Mem, uint32_t Buf1, uint32_t Buf2, uint32_t Buf3)
-{
-    gData->Buffer[gData->CurrIndex].PC = PC;
-    gData->Buffer[gData->CurrIndex].Mem = Mem;
-    gData->Buffer[gData->CurrIndex].Query[0] = Buf1;
-    gData->Buffer[gData->CurrIndex].Query[1] = Buf2;
-    gData->Buffer[gData->CurrIndex].Query[2] = Buf3;
-
-    gData->CurrIndex = (gData->CurrIndex + 1) & (BUFFER_SIZE - 1);
-}
-
-
-__forceinline void CaptureXFlag(uintptr_t PC, uintptr_t Mem)
-{
-    if (IsValidAddr(Mem))
-    {
-        uintptr_t addr = gameRAMBase + (Mem & 0x00FFFFFF);
-        StoreResults(PC, Mem, *(uint32_t*)(addr), *(uint32_t*)(addr + 4), 0xFFFF0000 + gGame);
-    }
-}
 
 /*
 *   Check if the given address is in range 0x80000000 and 0x80FFFFFF.
@@ -242,6 +147,12 @@ __asm mov DstReg, GameAddr                  \
 __asm and DstReg, 00FFFFFFh                 \
 __asm add DstReg, [gameRAMBase]
 
+
+/*
+*   Set all active settings based on the given game.
+*
+*   @param Game     The game to activate the settings on.
+*/
 #define SET_ACTIVE_SETTINGS(Game)                                 \
 __asm mov[gActiveButterflyID], ##Game##_BUTTERFLY_ID              \
 __asm mov[gActiveFairyID], ##Game##_FAIRY_ID                      \
@@ -255,6 +166,7 @@ __asm mov[gActiveRoomOffset], ##Game##_CURR_ROOM                  \
 __asm mov[gActiveGrottoOffset], ##Game##_GROTTO_DATA              \
 __asm mov[gActiveCoordOffset], ##Game##_PLAYER_COORD              \
 __asm mov[gActiveSceneOffset], ##Game##_SCENE_OFFSET              
+
 
 __declspec(naked) void CaptureXFlagASM()
 {
@@ -314,9 +226,11 @@ __declspec(naked) void DetectCurrentGameASM()
         mov ecx, [eax + (0x8011A5F0 & 0x00FFFFFF)]
         and ecx, 0FFFF0000h
 
+        // ZELD
         cmp dword ptr [eax + (0x8011A5EC & 0x00FFFFFF)], 0x5A454C44
         jne CHECK_MM
 
+        // AZ
         cmp ecx, 0x415A0000
         jne CHECK_MM
 
@@ -332,9 +246,11 @@ __declspec(naked) void DetectCurrentGameASM()
             mov ecx, [eax + (0x801EF698 & 0x00FFFFFF)]
             and ecx, 0FFFF0000h
 
+            // ZELD
             cmp dword ptr [eax + (0x801EF694 & 0x00FFFFFF)], 0x5A454C44
             jne DONE
 
+            // A3
             cmp ecx, 0x41330000
             jne DONE
 
@@ -496,7 +412,7 @@ __declspec(naked) void PCHook()
             jne TEST_DISPATCHER
 
             // The pattern is not built
-            call BuildTypeMaskFromPatterns
+            call BuildPCsPatterns
 
         TEST_DISPATCHER :
 
@@ -842,326 +758,7 @@ __declspec(naked) void ROMHook()
         jmp gatewayROM // trampoline to original code
     }
 }
-/*
-__declspec(naked) void PCHook()
-{
-    __asm
-    {
-        // =========================
-        // Save context. ! Important: do not save flags with pushfd otherwise it will crash !
-        // =========================
-        pushad
 
-        // =========================
-        // Get CPU struct
-        // =========================
-        mov eax, regBase
-        mov eax, [eax]
-
-        // =========================
-        // Get PC / SP
-        // =========================
-        mov ecx, [eax + PC_OFFSET]   // PC
-        mov edx, [eax + A1_OFFSET]   // A1
-        mov esi, [eax + SP_OFFSET]   // SP
-        mov edi, ecx                 // Save PC value in edi
-        mov ebp, edx                 // Save A1 value in ebp
-        mov gSP, esi                 // Save SP
-        mov esi, [eax + V0_OFFSET]   // V0
-        mov gV0, esi                 // Save V0
-        mov esi, [eax + V1_OFFSET]   // V1
-        mov gV1, esi                 // Save V1
-        mov esi, [eax + S0_OFFSET]   // S0
-        mov gS0, esi                 // Save S0
-
-        // We need to do this before the type mask as the butterfly PC mask will always be TYPE_NONE as the PC is gathered on the fly
-        cmp currButterflyPC, edi     // Use V0, V1 and SP register
-        je USE_BUTTERFLY
-
-        // =========================
-        // Compute index
-        // =========================
-        mov eax, edi
-        and eax, 0x00FFFFFF
-
-        // =========================
-        // Load typemask entry
-        // =========================
-        mov eax, edi
-        and eax, 0x00FFFFFF
-
-        mov esi, offset typemask
-        mov bl, [esi + eax]
-
-        cmp bl, TYPE_NONE            // Not tracked
-        je EXIT
-
-        cmp bl, TYPE_COMBO           // Use A1 register
-        je USE_A1
-
-        cmp bl, TYPE_XFLAG           // Use SP register
-        je USE_SP
-
-        cmp bl, TYPE_SHOP            // Use V0, V1 and SP register 
-        je USE_SHOP
-
-        cmp bl, TYPE_BUTTERFLY       // Use S0 register 
-        je CHECK_BUTTERFLY
-
-        jmp EXIT
-
-        // =========================
-        // USE A1 (ComboItemQuery)
-        // =========================
-        USE_A1:
-
-            // =========================
-            // Check A1 Range : Between 0x80000000 - 0x80FFFFFF
-            // =========================
-            mov eax, ebp
-            and eax, 0xFF000000
-            cmp eax, 0x80000000
-            jne EXIT
-
-            // =========================
-            // Convert A1 to RAM offset
-            // =========================
-            mov eax, ebp
-            and eax, 0x00FFFFFF
-
-            mov esi, gameRAMBase    // The real game RAM base address 
-            add esi, eax            // Add the offset to the game RAM base address
-
-            // Read ComboItemQuery (12 bytes)
-            mov eax, [esi + 4]   // q0
-            mov edx, [esi + 8]   // q1
-            mov ebx, [esi + 12]  // q2
-
-            jmp STORE
-            
-        // =========================
-        // USE SP (Xflag)
-        // =========================
-        USE_SP:
-
-            mov ebp, gSP
-            add ebp, DROP_CUSTOM
-
-            // =========================
-            // Check SP Range : Between 0x80000000 - 0x80FFFFFF
-            // =========================
-            mov eax, ebp
-            and eax, 0xFF000000
-            cmp eax, 0x80000000
-            jne EXIT
-
-            jmp CAPTURE_XFLAG
-
-        // =========================
-        // USE Shop (Xflag)
-        // =========================
-        USE_SHOP:
-
-            // The item is buyable, therefore it is not a "Nothing item", we can exit
-            mov eax, gV0
-            cmp eax, 0x02
-            jne EXIT
-
-            // The item is not a nothing object, we can exit
-            mov eax, gV1
-            cmp eax, 0x033C
-            jne EXIT
-
-            mov ebp, gSP
-            add ebp, SHOP_CUSTOM
-
-            // =========================
-            // Check SP Range : Between 0x80000000 - 0x80FFFFFF
-            // =========================
-            mov eax, ebp
-            and eax, 0xFF000000
-            cmp eax, 0x80000000
-            jne EXIT
-
-            jmp CAPTURE_XFLAG
-
-
-        // =========================
-        // Check Butterfly
-        // =========================
-        CHECK_BUTTERFLY:
-
-            // =========================
-            // Check S0 Range : Between 0x80000000 - 0x80FFFFFF
-            // =========================
-            mov ebp, gS0
-            and ebp, 0xFF000000
-            cmp ebp, 0x80000000
-            jne EXIT
-
-            // =========================
-            // Convert S0 to RAM offset
-            // =========================
-            mov ebp, gS0
-            and ebp, 0x00FFFFFF
-
-            mov esi, gameRAMBase    // The real game RAM base address 
-            add esi, ebp            // Add the offset to the game RAM base address
-
-            // Check if the actor is a butterfly
-            mov eax, [esi]
-            and eax, 0xFFFF0000
-            cmp eax, 0x001E0000     // OoT
-            je MATCH_BUTTERFLY
-
-            cmp eax, 0x00150000     // MM
-            je MATCH_BUTTERFLY_MM
-
-            jmp EXIT                // Not a butterfly
-
-        MATCH_BUTTERFLY_MM:
-            mov gGame, GAME_MM
-            add esi, 0x08           // The MM actor structure has 8 bytes more than the OoT one
-
-        MATCH_BUTTERFLY:
-
-            // Set the butterfly PC
-            mov eax, [esi + BUTTERFLY_FUNCTION]
-            add eax, BUTTERFLY_SPAWN_OFFSET
-            mov currButterflyPC, eax
-
-            jmp EXIT
-
-        // =========================
-        // USE Butterfly (Xflag)
-        // =========================
-        USE_BUTTERFLY:
-            // Reset the butterfly PC
-            mov currButterflyPC, 0
-
-            // The item is not a nothing object, we can exit
-            mov eax, gV1
-            cmp eax, 0x033C
-            jne EXIT
-
-            mov ebp, gSP
-            add ebp, BUTTERFLY_CUSTOM
-
-            // =========================
-            // Check SP Range : Between 0x80000000 - 0x80FFFFFF
-            // =========================
-            mov eax, ebp
-            and eax, 0xFF000000
-            cmp eax, 0x80000000
-            jne EXIT
-
-            jmp CAPTURE_XFLAG
-
-        // =========================
-        // CAPTURE XFLAG (COMMON)
-        // =========================
-        CAPTURE_XFLAG:
-            
-            mov gGame, GAME_OOT
-
-            // ========================
-            // Check Game Version
-            // ========================
-            mov eax, 0x801EF694     // MM gPlayerState
-            and eax, 0x00FFFFFF
-
-            mov esi, gameRAMBase
-            add esi, eax
-
-            // Check "DLEZ"
-            mov eax, [esi]
-            cmp eax, 0x5A454C44
-            jne CAPTURE
-
-            // Check "3A"
-            mov eax, [esi + 4]
-            and eax, 0xFFFF0000     // Get ride of the death count
-            cmp eax, 0x41330000
-            jne CAPTURE
-
-            mov gGame, GAME_MM
-
-        CAPTURE:
-
-            // =========================
-            // Convert SP to RAM offset
-            // =========================
-            mov eax, ebp
-            and eax, 0x00FFFFFF
-            
-            mov esi, gameRAMBase    // The real game RAM base address 
-            add esi, eax            // Add the offset to the game RAM base address
-            
-            mov eax, [esi]          // Key
-            mov edx, [esi + 4]      // GI
-            mov ebx, 0xFFFF0000     // IsConsumed.
-            add bx, gGame          // The game the XFlag comes from 
-            
-            jmp STORE
-
-
-        // =========================
-        // STORE (COMMON)
-        // =========================
-        STORE:
-            mov ecx, edi // Restore PC value
-
-            // Get gData
-            mov esi, gData
-
-            // Test if NULL
-            test esi, esi
-            jz EXIT
-
-            // Temp Save q values
-            push eax
-            push edx
-            push ebx
-
-            // Get CurrIndex
-            mov ebx, [esi + 4]
-
-            // Compute slot = idx * 20
-            mov eax, ebx
-            shl eax, 4                  // 16
-            mov edx, ebx
-            shl edx, 2                  // 4
-            add eax, edx                // eax = idx * 20
-            lea edi, [esi + 16 + eax]
-
-            // Restore q values
-            pop ebx
-            pop edx
-            pop eax
-
-            // Fill the buffer at the correct index
-            mov[edi], ecx       // Store PC
-            mov[edi + 4], ebp   // Store Mem
-            mov[edi + 8], eax   // q0
-            mov[edi + 12], edx  // q1
-            mov[edi + 16], ebx  // q2
-
-            // Increment CurrIndex
-            mov ebx, [esi + 4]
-            inc ebx
-            and ebx, BUFFER_SIZE - 1
-            mov[esi + 4], ebx
-
-        EXIT :
-
-            // Restore saved context
-            popad
-
-            // Get back to the orignal PJ execution flow
-            jmp gateway
-    }
-}
-*/
 
 void InstallPCHook()
 {
@@ -1175,43 +772,38 @@ void InstallROMHook()
 }
 
 
-void InstallHook(size_t HookOffset, size_t HookSize, uintptr_t HookFunction, void ** gateway, BYTE originalBytes[])
+void InstallHook(size_t HookOffset, size_t HookSize, uintptr_t HookFunction, void ** Gateway, BYTE OriginalBytes[])
 {
     uintptr_t target = moduleBase + HookOffset;
 
     DWORD oldProtect;
     VirtualProtect((LPVOID)target, HookSize, PAGE_EXECUTE_READWRITE, &oldProtect);
 
-    // sauvegarde instructions originales
-    memcpy(originalBytes, (void*)target, HookSize);
+    // Save original instructions
+    memcpy(OriginalBytes, (void*)target, HookSize);
 
     // trampoline
-    *gateway = VirtualAlloc(nullptr, 64, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+    *Gateway = VirtualAlloc(nullptr, 64, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
     /*for (size_t i = 0; i < HookSize; i++)
     {
-        printf("%02X ", originalBytes[i]);
+        printf("%02X ", OriginalBytes[i]);
     }*/
-    memcpy(*gateway, originalBytes, HookSize);
+    memcpy(*Gateway, OriginalBytes, HookSize);
 
-    uintptr_t gatewayEnd = (uintptr_t)*gateway + HookSize;
+    uintptr_t gatewayEnd = (uintptr_t)*Gateway + HookSize;
     uintptr_t returnAddr = target + HookSize;
 
     *(BYTE*)(gatewayEnd) = 0xE9;
     *(uintptr_t*)(gatewayEnd + 1) = returnAddr - gatewayEnd - 5;
 
-    // hook
+    // Hook instruction
     uintptr_t rel = (uintptr_t)HookFunction - target - 5;
 
-    *(BYTE*)target = 0xE9;
+    *(BYTE*)target = 0xE9;              // jmp
     *(uintptr_t*)(target + 1) = rel;
 
     for (size_t i = 5; i < HookSize; i++)
         *(BYTE*)(target + i) = 0x90;
 
     VirtualProtect((LPVOID)target, HookSize, oldProtect, &oldProtect);
-}
-
-
-void InstallHooks()
-{
 }

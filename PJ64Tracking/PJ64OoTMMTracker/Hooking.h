@@ -111,13 +111,40 @@ extern GameID gGame;                        // The current running game.
 extern uint32_t * gActivePCs;               // The current set of program counters that are tracked.
 
 void TryResolveROMBase();
+
+/*
+*   Find the real game RAM address.
+*
+*	@return The real RAM address corresponding to the game start RAM address.
+*/
 uintptr_t FindGameRAM();
-void GetGameVersion();
-GameID DetectCurrentGame();
-void PeriodicGameCheck();
+
+/*
+*   The program counter hook function used to track items and entrances.
+*/
 void PCHook();
+
+/*
+*   The ROM hook function used to catch game ROM changes.
+*/
 void ROMHook();
+
+/*
+*   Install the program counter hook.
+*/
 void InstallPCHook();
+
+/*
+*   Install the ROM hook.
+*/
 void InstallROMHook();
-void InstallHook(size_t HookOffset, size_t HookSize, uintptr_t HookFunction, void** gateway, BYTE originalBytes[]);
-void InstallHooks();
+
+/*
+*   Install the desired hook.
+*
+*   @param HookOffset		    The offset instruction to place the hook at.
+*   @param HookSize			    The size of the hooked instructions.
+*   @param Gateway			    The gateway used to execute the original hooked code.
+*   @param OriginalBytes		The original code to execute.
+*/
+void InstallHook(size_t HookOffset, size_t HookSize, uintptr_t HookFunction, void** Gateway, BYTE OriginalBytes[]);
