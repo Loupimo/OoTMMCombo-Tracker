@@ -121,6 +121,7 @@ MM_ZORA_TIJO_ROOM;Tijo's Room;;None;false;mm
 MM_ZORA_LULU_ROOM;Lulu's Room;;None;false;mm
 MM_ROMANI_RANCH_BARN;Stable;;None;false;mm
 MM_PIRATE_SEWERS;Sewers;;None;false;mm
+MM_PIRATE_SEWERS;Warp Owls;;None;false;mm
 MM_GROTTO_TERMINA_DODONGO;Dodongo Grotto;./Resources/MM/Termina/Dodongo.png;Termina;false;mm
 MM_GROTTO_TERMINA_OCEAN_GOSSIP;Gossip Stones Grotto, Ocean;./Resources/MM/Termina/Ocean_Gossip.png;Termina;false;mm
 MM_GROTTO_TERMINA_CANYON_GOSSIP;Gossip Stones Grotto, Canyon;./Resources/MM/Termina/Canyon_Gossip.png;Termina;false;mm

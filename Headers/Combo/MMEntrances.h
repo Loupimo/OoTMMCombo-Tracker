@@ -324,6 +324,16 @@
 #define MM_DEKU_KING_CAUGHT 0xfffff0
 #define MM_DEKU_PALACE_CAUGHT 0xfffff1
 #define MM_PIRATE_ENTRANCE_CAUGHT 0xfffff2
+#define MM_OWL_GREAT_BAY_CHOICE 0xfffff3
+#define MM_OWL_ZORA_CAPE_CHOICE 0xfffff4
+#define MM_OWL_SNOWHEAD_CHOICE 0xfffff5
+#define MM_OWL_MOUNTAIN_VILLAGE_CHOICE 0xfffff6
+#define MM_OWL_CLOCK_TOWN_CHOICE 0xfffff7
+#define MM_OWL_MILK_ROAD_CHOICE 0xfffff8
+#define MM_OWL_WOODFALL_CHOICE 0xfffff9
+#define MM_OWL_SOUTHERN_SWAMP_CHOICE 0xfffff10
+#define MM_OWL_IKANA_CANYON_CHOICE 0xfffff11
+#define MM_OWL_STONE_TOWER_CHOICE 0xfffff12
 
 #pragma endregion
 

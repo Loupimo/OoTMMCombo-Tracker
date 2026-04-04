@@ -422,7 +422,7 @@ uint32_t EntranceHelper::GetGrottoExit(uint8_t Game, uint8_t CurrRoom, uint8_t G
 }
 
 
-uint32_t EntranceHelper::GetWarpSong(uint8_t * Game, uint32_t ID, uint8_t SongIndex)
+uint32_t EntranceHelper::GetWarpSong(uint8_t * Game, uint32_t ID, uint8_t SongIndex, uint8_t OwlID)
 {
     if (*Game == OOT_GAME)
     {
@@ -456,6 +456,73 @@ uint32_t EntranceHelper::GetWarpSong(uint8_t * Game, uint32_t ID, uint8_t SongIn
             case WarpSong::Prelude_of_Light:
             {
                 return OOT_PRELUDE_OF_LIGHT_SONG;
+            }
+
+            case 0xFE:
+            {
+                switch (OwlID)
+                {
+                    case OwlScene::Great_Bay_Coast:
+                    {
+                        *Game = MM_GAME;
+                        return MM_WARP_OWL_GREAT_BAY_ENTR;
+                    }
+                    case OwlScene::Zora_Cape:
+                    {
+                        *Game = MM_GAME;
+                        return MM_WARP_OWL_ZORA_CAPE_ENTR;
+                    }
+                    case OwlScene::Snowhead:
+                    {
+                        *Game = MM_GAME;
+                        return MM_WARP_OWL_SNOWHEAD_ENTR;
+                    }
+                    case OwlScene::Mountain_Village:
+                    {
+                        *Game = MM_GAME;
+                        return MM_WARP_OWL_MOUNTAIN_VILLAGE_ENTR;
+                    }
+                    case OwlScene::Clock_Town:
+                    {
+                        *Game = MM_GAME;
+                        return MM_WARP_OWL_CLOCK_TOWN_ENTR;
+                    }
+                    case OwlScene::Milk_Road:
+                    {
+                        *Game = MM_GAME;
+                        return MM_WARP_OWL_MILK_ROAD_ENTR;
+                    }
+                    case OwlScene::Woodfall:
+                    {
+                        *Game = MM_GAME;
+                        return MM_WARP_OWL_WOODFALL_ENTR;
+                    }
+                    case OwlScene::Southern_Swamp:
+                    {
+                        *Game = MM_GAME;
+                        return MM_WARP_OWL_SOUTHERN_SWAMP_ENTR;
+                    }
+                    case OwlScene::Ikana_Canyon:
+                    {
+                        *Game = MM_GAME;
+                        return MM_WARP_OWL_IKANA_CANYON_ENTR;
+                    }
+                    case OwlScene::Stone_Tower:
+                    {
+                        *Game = MM_GAME;
+                        return MM_WARP_OWL_STONE_TOWER_ENTR;
+                    }
+
+                    default:
+                    {
+                        break;
+                    }
+                }
+            }
+
+            default:
+            {
+                break;
             }
         }
     }
@@ -497,6 +564,63 @@ uint32_t EntranceHelper::GetWarpSong(uint8_t * Game, uint32_t ID, uint8_t SongIn
             {
                 *Game = OOT_GAME;
                 return OOT_PRELUDE_OF_LIGHT_SONG;
+            }
+
+            case WarpSong::Song_of_Soaring:
+            {
+                switch (OwlID)
+                {
+                    case OwlScene::Great_Bay_Coast:
+                    {
+                        return MM_WARP_OWL_GREAT_BAY_ENTR;
+                    }
+                    case OwlScene::Zora_Cape:
+                    {
+                        return MM_WARP_OWL_ZORA_CAPE_ENTR;
+                    }
+                    case OwlScene::Snowhead:
+                    {
+                        return MM_WARP_OWL_SNOWHEAD_ENTR;
+                    }
+                    case OwlScene::Mountain_Village:
+                    {
+                        return MM_WARP_OWL_MOUNTAIN_VILLAGE_ENTR;
+                    }
+                    case OwlScene::Clock_Town:
+                    {
+                        return MM_WARP_OWL_CLOCK_TOWN_ENTR;
+                    }
+                    case OwlScene::Milk_Road:
+                    {
+                        return MM_WARP_OWL_MILK_ROAD_ENTR;
+                    }
+                    case OwlScene::Woodfall:
+                    {
+                        return MM_WARP_OWL_WOODFALL_ENTR;
+                    }
+                    case OwlScene::Southern_Swamp:
+                    {
+                        return MM_WARP_OWL_SOUTHERN_SWAMP_ENTR;
+                    }
+                    case OwlScene::Ikana_Canyon:
+                    {
+                        return MM_WARP_OWL_IKANA_CANYON_ENTR;
+                    }
+                    case OwlScene::Stone_Tower:
+                    {
+                        return MM_WARP_OWL_STONE_TOWER_ENTR;
+                    }
+
+                    default:
+                    {
+                        break;
+                    }
+                }
+            }
+
+            default:
+            {
+                break;
             }
         }
     }
@@ -707,13 +831,13 @@ uint32_t EntranceHelper::CheckWrapScene(uint8_t Game, uint32_t ID, uint32_t * Sc
 
 void EntranceHelper::ParseEntranceMessage(uint32_t EntranceFlag, uint32_t Buffer[6])
 {
-    if (EntranceFlag == IN_MAGIC)
+    if ((EntranceFlag & 0xFFFFFF00) == IN_MAGIC)
     {
         this->ParseIncomingMessage(Buffer);
     }
-    else if (EntranceFlag == OUT_MAGIC)
+    else if ((EntranceFlag & 0xFFFFFF00) == OUT_MAGIC)
     {
-        this->ParseOutgoingMessage(Buffer);
+        this->ParseOutgoingMessage((uint8_t)EntranceFlag, Buffer);
     }
 }
 
@@ -825,7 +949,7 @@ void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[6])
 }
 
 
-void EntranceHelper::ParseOutgoingMessage(uint32_t Buffer[6])
+void EntranceHelper::ParseOutgoingMessage(uint8_t OwlID, uint32_t Buffer[6])
 {
     if (Buffer[1] == WARP_SCENE && Buffer[2] != WARP_LOADING)
     {   // On MM when warping, the scene is always equal to WARP_SCENE so we still want to be able to catch the WARP_SONG events. However we want to get rid of new clock day
@@ -852,7 +976,7 @@ void EntranceHelper::ParseOutgoingMessage(uint32_t Buffer[6])
     }
     else if (this->IsWarpEntrance(this->OutEntrance))
     {
-        this->OutEntrance = this->GetWarpSong(&this->OutGame, this->OutEntrance, songIndex);
+        this->OutEntrance = this->GetWarpSong(&this->OutGame, this->OutEntrance, songIndex, OwlID);
         this->OutEntrance = this->CheckWrapScene(this->OutGame, this->OutEntrance, &this->OutScene, Buffer[3], Buffer[4], Buffer[5]);
     }
     else

@@ -8,7 +8,7 @@
 Settings::Settings()
 {
 	this->Game = ROMGame::ootmm;
-	this->Mode = GameMode::solo;
+	this->Mode = GameMode::single;
 	this->NumOfTeams = 1;
 	this->ROMSettings = QMap<QString, Parameter>({
 				{ "goldSkulltulaTokens", { "Gold Skulltula - OoT", ParamType::shuffle, ShuffleSetting::all } },
@@ -336,7 +336,7 @@ void Settings::AddSetting(QString Name, QString Value)
 		}
 		else
 		{
-			this->Mode = GameMode::solo;
+			this->Mode = GameMode::single;
 		}
 	}
 	else if (Name == "teams")

@@ -232,6 +232,7 @@ CreateEmptyScene(MM_ZORA_TIJO_ROOM)
 CreateEmptyScene(MM_ZORA_LULU_ROOM)
 CreateEmptyScene(MM_ROMANI_RANCH_BARN)
 CreateEmptyScene(MM_PIRATE_SEWERS)
+CreateEmptyScene(MM_OWLS)
 CreateEmptyScene(MM_GROTTO_TERMINA_SWAMP_GOSSIP)
 CreateEmptyScene(MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP)
 CreateEmptyScene(MM_GROTTO_DEKU_PALACE_CLIMB)
@@ -362,6 +363,7 @@ SceneObjects MMSceneObjects[MM_NUM_SCENES] =
 	CreateSceneObjects(MM_ZORA_LULU_ROOM),
 	CreateSceneObjects(MM_ROMANI_RANCH_BARN),
 	CreateSceneObjects(MM_PIRATE_SEWERS),
+	CreateSceneObjects(MM_OWLS),
 
 	// MM detailed grottos
 	CreateSceneObjects(MM_GROTTO_TERMINA_DODONGO),

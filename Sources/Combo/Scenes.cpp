@@ -287,6 +287,7 @@ SceneMetaInfo MMScenesMetaInfo[MM_NUM_SCENES] =
 	{ "Lulu's Room", "", (uint8_t)MMRegions::None, false, GameLayout::mm},
 	{ "Stable", "", (uint8_t)MMRegions::None, false, GameLayout::mm},
 	{ "Sewers", "", (uint8_t)MMRegions::None, false, GameLayout::mm},
+	{ "Warp Owls", "", (uint8_t)MMRegions::None, false, GameLayout::mm },
 	{ "Dodongo Grotto", "./Resources/MM/Termina/Dodongo.png", (uint8_t)MMRegions::Termina, false, GameLayout::mm},
 	{ "Gossip Stones Grotto, Ocean", "./Resources/MM/Termina/Ocean_Gossip.png", (uint8_t)MMRegions::Termina, false, GameLayout::mm},
 	{ "Gossip Stones Grotto, Canyon", "./Resources/MM/Termina/Canyon_Gossip.png", (uint8_t)MMRegions::Termina, false, GameLayout::mm},

@@ -29,6 +29,7 @@ uint32_t gActiveActorOff = OOT_ACTOR_ID;
 uint32_t gActiveFairyActorCombo = OOT_FAIRY_COMBO_OFFSET;
 uint32_t gActiveNextEntrance = OOT_NEXT_ENTRANCE;
 uint32_t gActiveSongOffset = OOT_LAST_SONG_ID;
+uint32_t gActiveOwlOffset = OOT_OWL_CHOICE_ID;
 uint32_t gActiveRoomOffset = OOT_CURR_ROOM;
 uint32_t gActiveGrottoOffset = OOT_GROTTO_DATA;
 uint32_t gActiveCoordOffset = OOT_PLAYER_COORD;
@@ -530,6 +531,7 @@ __asm mov[gActiveActorOff], ##Game##_ACTOR_ID                     \
 __asm mov[gActiveFairyActorCombo], ##Game##_FAIRY_COMBO_OFFSET    \
 __asm mov[gActiveNextEntrance], ##Game##_NEXT_ENTRANCE            \
 __asm mov[gActiveSongOffset], ##Game##_LAST_SONG_ID               \
+__asm mov[gActiveOwlOffset], ##Game##_OWL_CHOICE_ID               \
 __asm mov[gActiveRoomOffset], ##Game##_CURR_ROOM                  \
 __asm mov[gActiveGrottoOffset], ##Game##_GROTTO_DATA              \
 __asm mov[gActiveCoordOffset], ##Game##_PLAYER_COORD              \
@@ -955,7 +957,12 @@ __declspec(naked) void PCHook()
             COMPUTE_INDEX(edx, edi, edi)
 
             mov[edi], ecx                        // Store PC
-            mov dword ptr [edi + 4], IN_MAGIC    // Store Mem = entrance flag
+
+            // Build entrance flag + owl choice ID
+            mov ecx, IN_MAGIC
+            COMPUTE_RAM_ADDR([gActiveOwlOffset], edx)
+            mov cl, byte ptr[edx]
+            mov [edi + 4], ecx    // Store Mem = entrance flag + owl choice
 
             // Spawned scene ID
             READ_N64_REG(V0_OFFSET, eax)
@@ -1015,7 +1022,12 @@ __declspec(naked) void PCHook()
             COMPUTE_INDEX(edx, edi, edi)
 
             mov[edi], ecx                        // Store PC
-            mov dword ptr[edi + 4], OUT_MAGIC    // Store Mem = entrance flag
+
+            // Build entrance flag + owl choice ID
+            mov ecx, OUT_MAGIC
+            COMPUTE_RAM_ADDR([gActiveOwlOffset], edx)
+            mov cl, byte ptr[edx]
+            mov [edi + 4], ecx    // Store Mem = entrance flag + owl choice
 
             // gLastScene = Current scene ID
             mov ebx, [gActiveEntranceReg]

@@ -6,8 +6,8 @@
 #include <string>
 
 #define WARP_LOADING 0xfffe
-#define IN_MAGIC	0xFFFFAAAA		// Used to determine if the message is an incoming entrance
-#define OUT_MAGIC	0xFFFFBBBB		// Used to determine if the message is an outgoing entrance
+#define IN_MAGIC	0xFFFFAA00		// Used to determine if the message is an incoming entrance
+#define OUT_MAGIC	0xFFFFBB00		// Used to determine if the message is an outgoing entrance
 #define WARP_SCENE	0xFF3FFF3F		// Used to know if the scene ID is from a new clock cycle
 
 
@@ -29,6 +29,20 @@ enum WarpSong
 	Nocturne_of_Shadow = 4,
 	Prelude_of_Light = 5,
 	Song_of_Soaring = 9
+};
+
+enum OwlScene
+{
+	Great_Bay_Coast = 0x1F,
+	Zora_Cape = 0x20,
+	Snowhead = 0x21,
+	Mountain_Village = 0x22,
+	Clock_Town = 0x23,
+	Milk_Road = 0x24,
+	Woodfall = 0x25,
+	Southern_Swamp = 0x26,
+	Ikana_Canyon = 0x27,
+	Stone_Tower = 0x28
 };
 
 
@@ -154,10 +168,11 @@ public:
 	*	@param Game			The game the data come from. The game can be modified if the warp song is called from MM and leads to OoT and vice versa.
 	*	@param ID			The entrance ID.
 	*	@param SongIndex	The song index of the last played song.
+	*	@param OwlID		The Owl ID that has been selected by the player.
 	*
 	*   @return The warp song entrance ID.
 	*/
-	uint32_t GetWarpSong(uint8_t * Game, uint32_t ID, uint8_t SongIndex);
+	uint32_t GetWarpSong(uint8_t * Game, uint32_t ID, uint8_t SongIndex, uint8_t OwlID);
 
 	/*
 	*   Check if the given entrance may match a grotto entrance.
@@ -212,9 +227,10 @@ public:
 	/*
 	*   Parse the given message as an outgoing entrance message.
 	*
+	*	@param OwlID		The Owl ID that could be associated with the song ID.
 	*	@param Buffer		The entrance message to parse.
 	*/
-	void ParseOutgoingMessage(uint32_t Buffer[6]);
+	void ParseOutgoingMessage(uint8_t OwlID, uint32_t Buffer[6]);
 
 
 	static const char* GetEntranceFromName(int Game, uint32_t EntranceID);

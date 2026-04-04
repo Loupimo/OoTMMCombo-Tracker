@@ -15,7 +15,7 @@ enum class ROMGame
 
 enum class GameMode
 {
-	solo,
+	single,
 	coop,
 	multi
 };

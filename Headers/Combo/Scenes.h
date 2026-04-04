@@ -330,10 +330,11 @@ enum OoT_Shops
 #define MM_ZORA_TIJO_ROOM						MM_ZORA_JAPAS_ROOM + 1					// Tijo's room
 #define MM_ZORA_LULU_ROOM						MM_ZORA_TIJO_ROOM + 1					// Lulu's room
 #define MM_ROMANI_RANCH_BARN					MM_ZORA_LULU_ROOM + 1					// Ranch Barn
-#define MM_PIRATE_SEWERS						MM_ROMANI_RANCH_BARN +1					// Pirate sewers
+#define MM_PIRATE_SEWERS						MM_ROMANI_RANCH_BARN + 1				// Pirate sewers
+#define MM_OWLS									MM_PIRATE_SEWERS + 1					// Owls choices
 
 // MM detailed grottos
-#define MM_GROTTO_TERMINA_DODONGO				MM_PIRATE_SEWERS + 1					// Termina field dodongo's grotto
+#define MM_GROTTO_TERMINA_DODONGO				MM_OWLS + 1								// Termina field dodongo's grotto
 #define MM_GROTTO_TERMINA_OCEAN_GOSSIP			MM_GROTTO_TERMINA_DODONGO + 1			// Termina field ocean gossip's grotto
 #define MM_GROTTO_TERMINA_CANYON_GOSSIP			MM_GROTTO_TERMINA_OCEAN_GOSSIP + 1		// Termina field canyon gossip's grotto
 #define MM_GROTTO_TERMINA_SWAMP_GOSSIP			MM_GROTTO_TERMINA_CANYON_GOSSIP + 1		// Termina field swamp gossip's grotto
