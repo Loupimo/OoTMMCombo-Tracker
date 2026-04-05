@@ -5,7 +5,7 @@
 #include <map>
 #include <string>
 
-#define WARP_LOADING 0xfffe
+#define WARP_LOADING 0xfffe			// Used to determine if we are in a warping zone.
 #define IN_MAGIC	0xFFFFAA00		// Used to determine if the message is an incoming entrance
 #define OUT_MAGIC	0xFFFFBB00		// Used to determine if the message is an outgoing entrance
 #define WARP_SCENE	0xFF3FFF3F		// Used to know if the scene ID is from a new clock cycle
@@ -31,6 +31,7 @@ enum WarpSong
 	Song_of_Soaring = 9
 };
 
+
 enum OwlScene
 {
 	Great_Bay_Coast = 0x1F,
@@ -48,24 +49,24 @@ enum OwlScene
 
 typedef struct EntranceMetaInfo
 {
-	uint32_t FromEntranceID;
-	uint32_t ToEntranceID;
-	uint32_t FromSceneID;
-	uint32_t ToSceneID;
-	const char* FromName;
-	const char* ToName;
-	EntranceType Type;
+	uint32_t FromEntranceID;		// The entrance ID.
+	uint32_t ToEntranceID;			// The entrance ID this entrance leads to.
+	uint32_t FromSceneID;			// The scene ID of this entrance leads to.
+	uint32_t ToSceneID;				// The scene ID of the entrance this entrance leads to.
+	const char* FromName;			// The name of this entrance.
+	const char* ToName;				// The name of the entrance this entrance leads to.
+	EntranceType Type;				// The type entrance.
 	int InPosition[3];				// Entrance incoming position on its corresponding scene image. ID 0 = X, ID 1 = Y, ID 2 = Z
 	int OutPosition[3];				// Entrance outgoing position on its corresponding scene image. ID 0 = X, ID 1 = Y, ID 2 = Z
-	float ArrowRot;
-	GameLayout ActiveLayout;
+	float ArrowRot;					// The rotation to apply to the arrow image.
+	GameLayout ActiveLayout;		// The layout in which this entrance is active.
 } EntranceMetaInfo;
 
 
 typedef struct GrottoEntrance
 {
-	uint32_t EntranceID;
-	float SpawnPos[3];
+	uint32_t EntranceID;			// The entrance ID.
+	float SpawnPos[3];				// The spawn corrdinates of the entrance.
 } GrottoEntrance;
 
 class EntranceHelper
@@ -232,14 +233,77 @@ public:
 	*/
 	void ParseOutgoingMessage(uint8_t OwlID, uint32_t Buffer[6]);
 
-
+	/*
+	*   Get the From name of the desired entrance.
+	*
+	*	@param Game			The game the given entrance belongs to.
+	*	@param EntranceID	The entrance to get the name of.
+	*
+	*	@return The From name of the desired entrance.
+	*/
 	static const char* GetEntranceFromName(int Game, uint32_t EntranceID);
+
+	/*
+	*   Get the To name of the desired entrance.
+	*
+	*	@param Game			The game the given entrance belongs to.
+	*	@param EntranceID	The entrance to get the name of.
+	* 
+	*	@return The To name of the desired entrance.
+	*/
 	static const char* GetEntranceToName(int Game, uint32_t EntranceID);
+	
+	/*
+	*   Get the correct name for a one way in type entrance.
+	*
+	*	@param Game			The game the given entrance belongs to.
+	*	@param EntranceID	The entrance to get the name of.
+	*
+	*	@return The correct name for a one way in type entrance.
+	*/
 	static std::string GetOneWayInName(int Game, uint32_t EntranceID);
+
+	/*
+	*   Get the correct name for a one way out type entrance.
+	*
+	*	@param Game			The game the given entrance belongs to.
+	*	@param EntranceID	The entrance to get the name of.
+	*
+	*	@return The correct name for a one way out type entrance.
+	*/
 	static std::string GetOneWayOutName(int Game, uint32_t EntranceID);
+
+	/*
+	*   Get the spawns name to display for the desired entrance.
+	*
+	*	@param Game			The game the given entrance belongs to.
+	*	@param EntranceID	The entrance to get the name of.
+	*
+	*	@return The spawn name for the given entrance.
+	*/
 	static std::string GetEntranceSpawnsString(int Game, uint32_t EntranceID);
+
+	/*
+	*   Get the leads name to display for the desired entrance.
+	*
+	*	@param Game			The game the given entrance belongs to.
+	*	@param EntranceID	The entrance to get the name of.
+	*
+	*	@return The leads name for the given entrance.
+	*/
 	static std::string GetEntranceLeadsString(int Game, uint32_t EntranceID);
+
+	/*
+	*   Get the meta information macthing the desired entrance ID.
+	*
+	*	@param Game			The game the given entrance belongs to.
+	*	@param EntranceID	The entrance to get the meta info of.
+	*
+	*	@return The meta information of the given entrance.
+	*/
 	static const EntranceMetaInfo* GetEntranceMetaInf(int Game, uint32_t EntranceID);
+
+
 
 #pragma endregion
 

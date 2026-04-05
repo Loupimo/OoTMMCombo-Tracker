@@ -8,6 +8,8 @@
 
 #include <algorithm>
 
+#pragma region // GlobalEntranceTableModel
+
 // ============================================
 // Constructor
 // ============================================
@@ -131,15 +133,12 @@ int GlobalEntranceTableModel::columnCount(const QModelIndex&) const
 // Data
 // ============================================
 
-QVariant GlobalEntranceTableModel::data(
-    const QModelIndex& index,
-    int role) const
+QVariant GlobalEntranceTableModel::data(const QModelIndex& index, int role) const
 {
     if (!index.isValid())
         return QVariant();
 
-    const auto& row =
-        m_rows[index.row()];
+    const auto& row = m_rows[index.row()];
 
     // =========================
     // TEXTE
@@ -247,8 +246,6 @@ QString GlobalEntranceTableModel::formatEntranceLink(uint8_t GameLink, uint32_t 
                 return "?";
             }
             return QString::fromStdString(EntranceHelper::GetOneWayInName(GameLink, EntranceLink));
-            //return EntranceHelper::GetEntranceToName(GameLink, EntranceLink);
-            //return EntranceHelper::GetEntranceFromName(GameLink, EntranceLink);
         }
 
         case EntranceType::One_Way_Out:
@@ -262,7 +259,6 @@ QString GlobalEntranceTableModel::formatEntranceLink(uint8_t GameLink, uint32_t 
                 return "?";
             }
             return QString::fromStdString(EntranceHelper::GetOneWayOutName(GameLink, EntranceLink));
-            //return EntranceHelper::GetEntranceToName(GameLink, EntranceLink);
         }
 
         default:
@@ -289,7 +285,6 @@ QString GlobalEntranceTableModel::formatEntranceLink(uint8_t GameLink, uint32_t 
 
 QString GlobalEntranceTableModel::formatScene(uint32_t sceneID) const
 {
-    // TODO: remplacer par vrai nom
     return GetSceneName(this->Game, sceneID);
 }
 
@@ -298,8 +293,7 @@ QString GlobalEntranceTableModel::formatScene(uint32_t sceneID) const
 // Row color logic
 // ============================================
 
-QColor GlobalEntranceTableModel::
-rowColor(int rowIndex) const
+QColor GlobalEntranceTableModel::rowColor(int rowIndex) const
 {
     if (rowIndex < 0 ||
         rowIndex >= m_rows.size())
@@ -345,9 +339,7 @@ rowColor(int rowIndex) const
     return QColor(0, 180, 0);
 }
 
-void GlobalEntranceTableModel::sort(
-    int column,
-    Qt::SortOrder order)
+void GlobalEntranceTableModel::sort(int column, Qt::SortOrder order)
 {
     beginResetModel();
 
@@ -470,279 +462,58 @@ void GlobalEntranceTableModel::rebuildRowColors()
     }
 }
 
-QColor GlobalEntranceTableModel::
-computeBaseColor(bool toggle) const
+QColor GlobalEntranceTableModel::computeBaseColor(bool toggle) const
 {
-    return toggle
-        ? QColor(30, 50, 70)
-        : QColor(50, 80, 100);
+    return toggle ? QColor(30, 50, 70) : QColor(50, 80, 100);
 }
 
+#pragma endregion // GlobalEntranceTableModel
 
+#pragma region // EntranceTableView
 
-
-
-
-
-
-
-
-
-
-
-EntranceTableWidget::EntranceTableWidget(int Game, const char * Name, QWidget* parent) : QWidget(parent)
+EntranceTableView::EntranceTableView(int Game, const char * Name, QWidget* parent) : QTableView(parent)
 {
-    this->tableView = new QTableView(this);
-
-    this->model = new QStandardItemModel(this);
-
-    this->proxyModel = new QSortFilterProxyModel(this);
-    this->proxyModel->setSourceModel(this->model);
-
-    this->tableView->setModel(this->proxyModel);
-
-    this->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
-
-    this->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-
-    this->tableView->horizontalHeader()->setStretchLastSection(true);
-
-    tableView->setShowGrid(true);
-
-    tableView->horizontalHeader()->setStretchLastSection(true);
-
-    tableView->verticalHeader()->setVisible(false);
-    tableView->setSortingEnabled(true);
-    tableView->sortByColumn(0, Qt::AscendingOrder);
-    this->setupModel();
-
-    QVBoxLayout* layout = new QVBoxLayout(this);
-
-    layout->addWidget(tableView);
-
-    connect(this->tableView, &QTableView::doubleClicked, this, &EntranceTableWidget::onRowDoubleClicked);
     this->Game = Game;
     this->TabName = Name;
-    this->setScenes(*GetSceneEntranceMetaInfForGame(this->Game));
+    this->Model = new GlobalEntranceTableModel(Game, Name, this);
+    this->Model->sort(0, Qt::AscendingOrder);
+
+    this->setModel(this->Model);
+    this->setSortingEnabled(true);
+    this->setAlternatingRowColors(false);
+    this->horizontalHeader()->setStretchLastSection(true);
+    this->horizontalHeader()->setSortIndicatorShown(true);
+    this->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+    this->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+    this->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
+    this->horizontalHeader()->setSectionResizeMode(3, QHeaderView::Stretch);
+    this->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+    this->verticalHeader()->setDefaultSectionSize(20);
 }
 
-// ==============================
-// Model Setup
-// ==============================
 
-void EntranceTableWidget::setupModel()
+void EntranceTableView::RefreshContent()
 {
-    this->model->setColumnCount(5);
-
-    this->model->setHorizontalHeaderLabels({"Scene", "Entrance", "Way In", "Way Out", "Cost" });
+    this->Model->setScenes(*GetSceneEntranceMetaInfForGame(this->Game));
 }
 
-// ==============================
-// Public API
-// ==============================
+#pragma endregion // EntranceTableView
 
-void EntranceTableWidget::setScenes(const std::map<uint32_t, SceneEntranceMetaInf>& scenes)
-{
-    this->scenesData = scenes;
-    this->populateTable();
-}
-
-// ==============================
-// Populate Table
-// ==============================
-
-void EntranceTableWidget::populateTable()
-{
-    this->model->removeRows(0, this->model->rowCount());
-
-    int row = 0;
-
-    for (auto& [sceneID, scene] : this->scenesData)
-    {
-        for (auto& [entranceID, link] : scene.EntranceIDs)
-        {
-            const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->Game, entranceID);
-
-            if (entrance->Type == EntranceType::None)
-                continue;
-
-            this->model->insertRow(row);
-
-            // Scene
-            this->model->setItem(row, 0, new QStandardItem(formatScene(sceneID)));
-
-            // Entrance
-            auto entranceItem = new QStandardItem(formatEntrance(entranceID));
-
-            // store ID internally
-            entranceItem->setData(entranceID, Qt::UserRole);
-
-            this->model->setItem(row, 1, entranceItem);
-
-            // Way In
-            this->model->setItem(row, 2, new QStandardItem(formatEntranceLink(entranceID, &link, true)));
-
-            // Way Out
-            this->model->setItem(row, 3, new QStandardItem(formatEntranceLink(entranceID, &link, false)));
-
-            // Cost placeholder
-            this->model->setItem(row, 4, new QStandardItem("1"));
-
-            //this->applyRowColor(row, link);
-
-            row++;
-        }
-    }
-
-    tableView->resizeColumnsToContents();
-}
-
-// ==============================
-// Formatting Helpers
-// ==============================
-
-QString EntranceTableWidget::formatEntrance(uint32_t entranceID)
-{
-    if (entranceID == UINT32_MAX)
-        return "?";
-
-    // TODO: remplacer par vrai nom
-    return EntranceHelper::GetEntranceFromName(this->Game, entranceID);
-}
-
-
-QString EntranceTableWidget::formatEntranceLink(uint32_t EntranceID, EntranceLink * EntranceLink, bool IsWayIn)
-{
-    const EntranceMetaInfo * entrance = EntranceHelper::GetEntranceMetaInf(this->Game, EntranceID);
-
-    switch (entrance->Type)
-    {
-        case EntranceType::Normal:
-        {
-            break;
-        }
-
-        case EntranceType::One_Way_In:
-        {
-            if (!IsWayIn)
-            {
-                return "N/A";
-            }
-            break;
-        }
-
-        case EntranceType::One_Way_Out:
-        {
-            if (IsWayIn)
-            {
-                return "N/A";
-            }
-            break;
-        }
-
-        default:
-        {
-            return QString();
-        }
-    }
-
-    if (IsWayIn)
-    {
-        if (EntranceLink->InLink == UINT32_MAX)
-        {
-            return "?";
-        }
-        return QString::fromStdString(EntranceHelper::GetEntranceSpawnsString(this->Game, EntranceLink->InLink));
-    }
-    else
-    {
-        if (EntranceLink->OutLink == UINT32_MAX)
-        {
-            return "?";
-        }
-        return QString::fromStdString(EntranceHelper::GetEntranceLeadsString(this->Game, EntranceLink->OutLink));
-    }
-}
-
-
-QString EntranceTableWidget::formatScene(uint32_t sceneID)
-{
-    // TODO: remplacer par vrai nom
-    return GetSceneName(this->Game, sceneID);
-}
-
-// ==============================
-// Row Coloring
-// ==============================
-
-void EntranceTableWidget::applyRowColor(
-    int row,
-    const EntranceLink& link)
-{
-    QBrush background;
-
-    bool hasIn = link.InLink != UINT32_MAX;
-    bool hasOut = link.OutLink != UINT32_MAX;
-
-    if (!hasIn && !hasOut)
-        background = QBrush(Qt::lightGray);
-
-    else if (hasIn && !hasOut)
-        background = QBrush(Qt::yellow);
-
-    else if (!hasIn && hasOut)
-        background = QBrush(Qt::cyan);
-
-    else
-        background = QBrush(Qt::green);
-
-    for (int col = 0; col < model->columnCount(); col++)
-    {
-        auto item = model->item(row, col);
-
-        if (item)
-        {
-            item->setBackground(background);
-        }
-    }
-}
-// ==============================
-// Double Click Handling
-// ==============================
-
-void EntranceTableWidget::onRowDoubleClicked(const QModelIndex& index)
-{
-    QModelIndex sourceIndex = proxyModel->mapToSource(index);
-
-    int row = sourceIndex.row();
-
-    auto item = model->item(row, 1);
-
-    if (!item)
-        return;
-
-    uint32_t entranceID = item->data(Qt::UserRole).toUInt();
-
-    emit entranceActivated(entranceID);
-}
-
-
-
-
+#pragma region // EntranceTab
 
 EntranceTab::EntranceTab(QTabWidget* parent) : QTabWidget(parent)
 {
     this->TabName = "Entrances";
-    //this->OoTEntranceTab = new EntranceTableWidget(OOT_GAME, "OoT", this);
-    //this->MMEntranceTab = new EntranceTableWidget(MM_GAME, "MM", this);
-    this->OoTEntranceModel = new GlobalEntranceTableModel(OOT_GAME, "OoT", this);
-    this->MMEntranceModel = new GlobalEntranceTableModel(MM_GAME, "MM", this);
-    this->OoTEntranceTab = new QTableView(this);
-    this->MMEntranceTab = new QTableView(this);
+    this->OoTEntranceTab = new EntranceTableView(OOT_GAME, "OoT", this);
+    this->MMEntranceTab = new EntranceTableView(MM_GAME, "MM", this);
+    //this->OoTEntranceModel = new GlobalEntranceTableModel(OOT_GAME, "OoT", this);
+    //this->MMEntranceModel = new GlobalEntranceTableModel(MM_GAME, "MM", this);
+    //this->OoTEntranceTab = new QTableView(this);
+    //this->MMEntranceTab = new QTableView(this);
 
-    this->OoTEntranceTab->setModel(this->OoTEntranceModel);
-    this->MMEntranceTab->setModel(this->MMEntranceModel);
-    
+    //this->OoTEntranceTab->setModel(this->OoTEntranceModel);
+    //this->MMEntranceTab->setModel(this->MMEntranceModel);
+    /*
 
     this->OoTEntranceTab->setSortingEnabled(true);
     this->MMEntranceTab->setSortingEnabled(true);
@@ -750,8 +521,6 @@ EntranceTab::EntranceTab(QTabWidget* parent) : QTabWidget(parent)
     this->MMEntranceTab->setAlternatingRowColors(true);
     this->OoTEntranceTab->horizontalHeader()->setStretchLastSection(true);
     this->MMEntranceTab->horizontalHeader()->setStretchLastSection(true);
-    this->OoTEntranceTab->setSortingEnabled(true);
-    this->MMEntranceTab->setSortingEnabled(true);
     this->OoTEntranceModel->sort(0, Qt::AscendingOrder);
     this->MMEntranceModel->sort(0, Qt::AscendingOrder);
     this->OoTEntranceTab->horizontalHeader()->setSortIndicatorShown(true);
@@ -763,26 +532,15 @@ EntranceTab::EntranceTab(QTabWidget* parent) : QTabWidget(parent)
     this->OoTEntranceTab->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
     this->MMEntranceTab->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
     this->OoTEntranceTab->verticalHeader()->setDefaultSectionSize(20);
-    this->MMEntranceTab->verticalHeader()->setDefaultSectionSize(20);
+    this->MMEntranceTab->verticalHeader()->setDefaultSectionSize(20);*/
     /*this->OoTEntranceTab->sortByColumn(0, Qt::AscendingOrder);
-    this->MMEntranceTab->sortByColumn(0, Qt::AscendingOrder);*/
+    this->MMEntranceTab->sortByColumn(0, Qt::AscendingOrder);
 
 
-    this->OoTEntranceTab->horizontalHeader()->setSectionResizeMode(
-        0,
-        QHeaderView::ResizeToContents);
-
-    this->OoTEntranceTab->horizontalHeader()->setSectionResizeMode(
-        1,
-        QHeaderView::ResizeToContents);
-
-    this->OoTEntranceTab->horizontalHeader()->setSectionResizeMode(
-        2,
-        QHeaderView::Stretch);
-
-    this->OoTEntranceTab->horizontalHeader()->setSectionResizeMode(
-        3,
-        QHeaderView::Stretch);
+    this->OoTEntranceTab->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+    this->OoTEntranceTab->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+    this->OoTEntranceTab->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
+    this->OoTEntranceTab->horizontalHeader()->setSectionResizeMode(3, QHeaderView::Stretch);
 
     this->MMEntranceTab->horizontalHeader()->setSectionResizeMode(
         0,
@@ -798,10 +556,10 @@ EntranceTab::EntranceTab(QTabWidget* parent) : QTabWidget(parent)
 
     this->MMEntranceTab->horizontalHeader()->setSectionResizeMode(
         3,
-        QHeaderView::Stretch);
+        QHeaderView::Stretch);*/
 
-    this->addTab(this->OoTEntranceTab, this->OoTEntranceModel->TabName);
-    this->addTab(this->MMEntranceTab, this->MMEntranceModel->TabName);
+    this->addTab(this->OoTEntranceTab, this->OoTEntranceTab->TabName);
+    this->addTab(this->MMEntranceTab, this->MMEntranceTab->TabName);
 }
 
 
@@ -809,10 +567,19 @@ void EntranceTab::UpdateEntranceWay(int Game, uint32_t SceneID, uint32_t Entranc
 {
     if (Game == OOT_GAME)
     {
-        this->OoTEntranceModel->updateEntrance(SceneID, EntranceID, Link);
+        this->OoTEntranceTab->Model->updateEntrance(SceneID, EntranceID, Link);
     }
     else
     {
-        this->MMEntranceModel->updateEntrance(SceneID, EntranceID, Link);
+        this->MMEntranceTab->Model->updateEntrance(SceneID, EntranceID, Link);
     }
 }
+
+
+void EntranceTab::RefreshEntranceTab()
+{
+    this->OoTEntranceTab->RefreshContent();
+    this->MMEntranceTab->RefreshContent();
+}
+
+#pragma endregion // EntranceTab

@@ -2,6 +2,7 @@
 #include "UI/OoTMMComboTracker.h"
 #include "UI/SceneRenderer.h"
 #include "UI/AppConfig.h"
+#include "UI/SceneEntrance.h"
 #include "Multi/Game.h"
 #include "Combo/Regions.h"
 #include "Main.h"
@@ -419,6 +420,14 @@ void GameTab::SaveGameScenes(QString FilePath, Settings * FileSettings)
 
     switch (AppConfig::GetTrackerVersion())
     {
+        case TrackerVersion::V2_0:
+        {
+            FileSettings->SaveFileSettings(&saveFile);
+            SaveSceneObjects(&saveFile);
+            SaveEntrances(&saveFile);
+            break;
+        }
+
         case TrackerVersion::V1_1:
         {
             FileSettings->SaveFileSettings(&saveFile);

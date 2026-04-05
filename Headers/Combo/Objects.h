@@ -406,8 +406,10 @@ void SaveSceneObjectsFor(QFile* SaveFile, SceneObjects* Array, size_t NumOfScene
 *
 *   @param Data		The data that contains the scene objects to load.
 *   @param Offset	The starting offset.
+* 
+*	@return The end offset of the last loaded scene object.
 */
-void LoadSceneObjects(QByteArray* Data, size_t Offset);
+size_t LoadSceneObjects(QByteArray* Data, size_t Offset);
 
 /*
 *   Load all scene objects of a specific game to the given file.

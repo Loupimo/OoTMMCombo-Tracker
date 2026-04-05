@@ -589,10 +589,11 @@ void SaveSceneObjectsFor(QFile* SaveFile, SceneObjects* Array, size_t NumOfScene
 }
 
 
-void LoadSceneObjects(QByteArray * Data, size_t Offset)
+size_t LoadSceneObjects(QByteArray * Data, size_t Offset)
 {
 	Offset = LoadSceneObjectsFor(Data, Offset, OoTSceneObjects, OOT_NUM_SCENES);
 	Offset = LoadSceneObjectsFor(Data, Offset, MMSceneObjects, MM_NUM_SCENES);
+	return Offset;
 }
 
 

@@ -7,7 +7,8 @@
 enum class TrackerVersion
 {
     V1_0,		// Original release
-    V1_1		// Filtering, Settings, MQ / JP layouts support
+    V1_1,		// Filtering, Settings, MQ / JP layouts support
+    V2_0        // Entrance support + hooking
 };
 
 
@@ -15,7 +16,7 @@ class AppConfig
 {
 public:
 
-    TrackerVersion Version = TrackerVersion::V1_1;
+    TrackerVersion Version = TrackerVersion::V2_0;
     QSettings Settings = QSettings("Loupimo", "OoTMMComboTracker");                                                          // The application persistant settings
     QString CurrentAutoSaveFile = "AutoSave-" + QDateTime::currentDateTime().toString("dd_MM_yyyy_hh_mm_ss") + ".trck";      // The current auto save file
 

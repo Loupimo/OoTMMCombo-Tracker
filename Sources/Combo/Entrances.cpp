@@ -7,7 +7,7 @@
 
 static const std::vector<GrottoEntrance> SpecialWarps = {
     { MM_DEKU_KING_CAUGHT, -6, 0, -323 },
-    { MM_PIRATE_ENTRANCE_CAUGHT, -2808.5535, 14, 130.12534 }
+    { MM_PIRATE_ENTRANCE_CAUGHT, -2808.5535f, 14, 130.12534f}
 };
 
 static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances = {
@@ -895,17 +895,6 @@ void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[6])
         }
         else
         {
-           /* if (game == OOT_GAME)
-            {
-                EntranceMetaInfo entranceOutMeta = OoTEntrances.at(inEntrance);
-            }
-            else
-            {
-                EntranceMetaInfo entranceOutMeta = MMEntrances.at(inEntrance);
-            }
-
-            SceneEntranceMetaInf* tmp = GetSceneEntranceMetaInf(this->OutGame, this->OutMetaInf->ToSceneID);
-            */
             this->OutScene = this->OutMetaInf->FromSceneID;
             this->OutEntrance = this->OutMetaInf->FromEntranceID;
         }
@@ -967,23 +956,28 @@ void EntranceHelper::ParseOutgoingMessage(uint8_t OwlID, uint32_t Buffer[6])
     this->OutEntrance = Buffer[2];
 
     if (this->IsGrottoEntrance(this->OutEntrance))
-    {
+    {   // The current entrance is a grotto entrance
+
         this->OutEntrance = this->GetGrottoEntrance(this->OutGame, grottoData, this->OutEntrance, this->OutScene);
     }
     else if (this->IsGrottoExit(this->OutEntrance))
-    {
+    {   // The current entrance is a grotto exit
+
         this->OutEntrance = this->GetGrottoExit(this->OutGame, currRoom, grottoData, this->OutScene);
     }
     else if (this->IsWarpEntrance(this->OutEntrance))
-    {
+    {   // The current entrance is a warp zone
+
         this->OutEntrance = this->GetWarpSong(&this->OutGame, this->OutEntrance, songIndex, OwlID);
         this->OutEntrance = this->CheckWrapScene(this->OutGame, this->OutEntrance, &this->OutScene, Buffer[3], Buffer[4], Buffer[5]);
     }
     else
-    {
+    {   // Check that the entrance is not a special case
+
         this->OutEntrance = this->CheckSpecialCase(this->OutGame, this->OutEntrance, &this->OutScene);
     }
 
+    // Retreive the entrance meta information
     if (this->OutGame == OOT_GAME)
     {
         this->OutMetaInf = &OoTEntrances.at(this->OutEntrance);
@@ -993,7 +987,6 @@ void EntranceHelper::ParseOutgoingMessage(uint8_t OwlID, uint32_t Buffer[6])
         this->OutMetaInf = &MMEntrances.at(this->OutEntrance);
     }
     this->LastTouchedStr = OutMetaInf->FromName + std::string(" -> ") + OutMetaInf->ToName;
-    //MultiLogger::LogMessage("Loading zone %s (0x%X) touched !", this->LastTouchedStr.c_str(), this->LastTouchedEntranceID);
 }
 
 

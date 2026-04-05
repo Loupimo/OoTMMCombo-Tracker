@@ -2,6 +2,7 @@
 #include "Combo/Objects.h"
 #include "UI/AppConfig.h"
 #include "UI/OoTMMComboTracker.h"
+#include "UI/SceneEntrance.h"
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QTextStream>
@@ -223,6 +224,11 @@ void OoTMMComboTracker::UpdateTrackedEntrance(SceneEntranceUpdate* OutEntrance, 
 {
     this->EntTab->UpdateEntranceWay(OutEntrance->Game, OutEntrance->SceneID, OutEntrance->EntranceID, OutEntrance->Link);
     this->EntTab->UpdateEntranceWay(InEntrance->Game, InEntrance->SceneID, InEntrance->EntranceID, InEntrance->Link);
+    if (AppConfig::GetAutoSave())
+    {
+        this->CreatePath(AppConfig::GetAutoSavePath());
+        GameTab::SaveGameScenes(AppConfig::GetAutoSaveFullPath(), &this->ROMSettings);
+    }
     /*switch (Game)
     {
         case OOT_GAME:
@@ -374,6 +380,7 @@ void OoTMMComboTracker::RefreshTracker()
 {
     this->OoTTab->RefreshGameTab();
     this->MMTab->RefreshGameTab();
+    this->EntTab->RefreshEntranceTab();
 }
 
 
@@ -398,6 +405,14 @@ void OoTMMComboTracker::LoadGameScenes(QString FilePath)
 
     switch ((TrackerVersion)version)
     {
+        case TrackerVersion::V2_0:
+        {
+            offset = this->ROMSettings.LoadFileSettings(&data, offset);
+            offset = LoadSceneObjects(&data, offset);
+            offset = LoadEntrances(&data, offset);
+            break;
+        }
+
         case TrackerVersion::V1_1:
         {
             offset = this->ROMSettings.LoadFileSettings(&data, offset);

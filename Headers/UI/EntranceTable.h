@@ -12,21 +12,21 @@
 
 // ===== Ligne interne =====
 
-struct GlobalEntranceRow
+typedef struct GlobalEntranceRow
 {
-    uint32_t SceneID;
-    uint32_t EntranceID;
-    uint32_t InLink;
-    uint32_t OutLink;
-    uint8_t InGame;
-    uint8_t OutGame;
+    uint32_t SceneID = UINT32_MAX;
+    uint32_t EntranceID = UINT32_MAX;
+    uint32_t InLink = UINT32_MAX;
+    uint32_t OutLink = UINT32_MAX;
+    uint8_t InGame = NO_GAME;
+    uint8_t OutGame = NO_GAME;
 
 
     QString SceneName;
     QString EntranceName;
     QString InLinkName;
     QString OutLinkName;
-};
+} GlobalEntranceRow;
 
 
 // ===== Model =====
@@ -86,54 +86,20 @@ private:
 // Widget Class
 // ==============================
 
-class EntranceTableWidget : public QWidget
+class EntranceTableView : public QTableView
 {
     Q_OBJECT
 
 public:
 
     int Game;
+    GlobalEntranceTableModel * Model;
     const char* TabName;                // The tab name. Should correspond to the game it refers to.
 
 
-    explicit EntranceTableWidget(int Game, const char * Name, QWidget* parent = nullptr);
+    EntranceTableView(int Game, const char * Name, QWidget* parent = nullptr);
 
-    // Remplir le tableau
-    void setScenes(const std::map<uint32_t, SceneEntranceMetaInf>& scenes);
-
-signals:
-
-    // Double clic → navigation
-    void entranceActivated(uint32_t entranceID);
-
-private slots:
-
-    void onRowDoubleClicked(const QModelIndex& index);
-
-private:
-
-    // UI
-    QTableView* tableView;
-
-    // Models
-    QStandardItemModel* model;
-    QSortFilterProxyModel* proxyModel;
-
-    // Data
-    std::map<uint32_t, SceneEntranceMetaInf> scenesData;
-
-    // Helpers
-    void setupModel();
-    void populateTable();
-
-    QString formatEntrance(uint32_t entranceID);
-    QString formatEntranceLink(uint32_t EntranceID, EntranceLink* EntranceLink, bool IsWayIn);
-    QString formatScene(uint32_t sceneID);
-
-    void applyRowColor(
-        int row,
-        const EntranceLink& link
-    );
+    void RefreshContent();
 };
 
 
@@ -143,12 +109,12 @@ class EntranceTab : public QTabWidget
 
 public:
 
-    //EntranceTableWidget * OoTEntranceTab;
-   // EntranceTableWidget * MMEntranceTab;
-    QTableView* OoTEntranceTab;
-    QTableView* MMEntranceTab;
-    GlobalEntranceTableModel* OoTEntranceModel;
-    GlobalEntranceTableModel* MMEntranceModel;
+    EntranceTableView* OoTEntranceTab;
+    EntranceTableView* MMEntranceTab;
+    //QTableView* OoTEntranceTab;
+    //QTableView* MMEntranceTab;
+    //GlobalEntranceTableModel* OoTEntranceModel;
+    //GlobalEntranceTableModel* MMEntranceModel;
     const char* TabName;                // The tab name. Should correspond to the game it refers to.
 
 
@@ -164,4 +130,10 @@ public:
     *
     */
     void UpdateEntranceWay(int Game, uint32_t SceneID, uint32_t EntranceID, const EntranceLink* Link);
+
+
+    /*
+    *   Refresh all elements of this entrance tab.
+    */
+    void RefreshEntranceTab();
 };

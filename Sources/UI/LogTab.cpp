@@ -250,9 +250,12 @@ void LogTab::PressLaunchButton()
         if (this->Tracker->IsRunning || this->MemRead->IsRunning)
         {   // Stop the auto-tracker
 
-            this->Tracker->IsRunning = false;
-            this->TrackerThread.join();
-            this->Tracker->appQuit();
+            if (this->Tracker->IsRunning)
+            {
+                this->Tracker->IsRunning = false;
+                this->TrackerThread.join();
+                this->Tracker->appQuit();
+            }
             this->MemRead->IsRunning = false;
             this->MemReaderThread.join();
             this->MemRead->ResetMemoryReader();
