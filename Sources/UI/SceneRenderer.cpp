@@ -21,7 +21,7 @@ SceneInfo::SceneInfo(int PSceneID, int PGameID, SceneType PType)
 
 #pragma region SceneItemTree
 
-SceneItemTree::SceneItemTree(SceneInfo* SceneToRender, FilterManager * Filter, QTreeWidgetItem* Parent) : QTreeWidgetItem(Parent)
+SceneItemTree::SceneItemTree(SceneInfo* SceneToRender, FilterManager * Filter, QTreeWidgetItem* Parent) : CommonBaseItemTree(Parent)
 {
     this->Scene = SceneToRender;
     this->Filter = Filter;
@@ -157,6 +157,11 @@ int SceneItemTree::GetTotalObjects()
     return this->TotalObjects;
 }
 
+int SceneItemTree::GetTotalObjectAvailable()
+{
+    return this->TotalObjects;
+}
+
 
 void SceneItemTree::ItemFound(ObjectInfo* Object, const ItemInfo* Item)
 {
@@ -228,7 +233,7 @@ void SceneItemTree::CountSceneObjects()
     {   // Browse each scene objects
 
         ObjectInfo* currObject = &this->Scene->Objects->Objects[i];
-        if (currObject->RenderScene != this->Scene->SceneID || currObject->Type == ObjectType::none || !currObject->HasCorrectLayout(this->Scene->Info->ActiveLayout) || Filter->IsObjectExcluded(currObject))
+        if (currObject->RenderScene != this->Scene->SceneID || currObject->Type == ObjectType::none || !currObject->HasCorrectLayout(this->Scene->Info->ActiveLayout) || this->Filter->IsObjectExcluded(currObject))
         {   // Ignore the object if the render scene ID is different from this scene ID or if the current active layout does not match the object like OoT MQ or MM JP
 
             continue;

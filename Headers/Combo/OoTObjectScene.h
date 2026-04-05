@@ -3560,15 +3560,15 @@ ObjectInfo OOT_TEMPLE_SPIRITSceneObjects [OOT_TEMPLE_SPIRITNumOfObjs] =
 const size_t OOT_LAIR_VOLVAGIANumOfObjs = 2;
 ObjectInfo OOT_LAIR_VOLVAGIASceneObjects [OOT_LAIR_VOLVAGIANumOfObjs] =
 {
-	{ 0x1f, OOT_LAIR_VOLVAGIA, "Heart Container", "OOT Fire Temple Boss Container", ObjectType::collectible, {351, 1213, 0}, OOT_TEMPLE_FIRE, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL },
-	{ BLUE_WARP_VOLVAGIA, OOT_LAIR_VOLVAGIA, "Fire Medaillon", "OOT Fire Temple Boss", ObjectType::npc, {361, 1182, 0}, OOT_TEMPLE_FIRE, ObjectType::npc, ObjectIconMap::fire, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL }
+	{ 0x1f, OOT_LAIR_VOLVAGIA, "Heart Container", "OOT Fire Temple Boss Container", ObjectType::collectible, {354, 1213, 0}, OOT_TEMPLE_FIRE, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL },
+	{ BLUE_WARP_VOLVAGIA, OOT_LAIR_VOLVAGIA, "Fire Medaillon", "OOT Fire Temple Boss", ObjectType::npc, {358, 1182, 0}, OOT_TEMPLE_FIRE, ObjectType::npc, ObjectIconMap::fire, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL }
 };
 
 const size_t OOT_TEMPLE_FIRENumOfObjs = 141;
 ObjectInfo OOT_TEMPLE_FIRESceneObjects [OOT_TEMPLE_FIRENumOfObjs] =
 {
-	{ 0x1f, OOT_LAIR_VOLVAGIA, "Heart Container", "OOT Fire Temple Boss Container", ObjectType::collectible, {351, 1213, 0}, OOT_TEMPLE_FIRE, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL },
-	{ BLUE_WARP_VOLVAGIA, OOT_LAIR_VOLVAGIA, "Fire Medaillon", "OOT Fire Temple Boss", ObjectType::npc, {361, 1182, 0}, OOT_TEMPLE_FIRE, ObjectType::npc, ObjectIconMap::fire, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL },
+	{ 0x1f, OOT_LAIR_VOLVAGIA, "Heart Container", "OOT Fire Temple Boss Container", ObjectType::collectible, {354, 1213, 0}, OOT_TEMPLE_FIRE, ObjectType::heart_container, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL },
+	{ BLUE_WARP_VOLVAGIA, OOT_LAIR_VOLVAGIA, "Fire Medaillon", "OOT Fire Temple Boss", ObjectType::npc, {358, 1182, 0}, OOT_TEMPLE_FIRE, ObjectType::npc, ObjectIconMap::fire, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL },
 	{ 0x01, OOT_TEMPLE_FIRE, "Jail 1", "OOT Fire Temple Jail 1 Chest", ObjectType::chest, {787, 1516, 0}, OOT_TEMPLE_FIRE, ObjectType::small_key, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::dungeon, NULL },
 	{ 0x00, OOT_TEMPLE_FIRE, "Flare Dancer", "OOT Fire Temple Boss Key Side Chest", ObjectType::chest, {323, 661, 0}, OOT_TEMPLE_FIRE, ObjectType::chest, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::dungeon, NULL },
 	{ 0x0c, OOT_TEMPLE_FIRE, "Chest", "OOT Fire Temple Boss Key Chest", ObjectType::chest, {820, 608, 0}, OOT_TEMPLE_FIRE, ObjectType::boss_key, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::dungeon, NULL },

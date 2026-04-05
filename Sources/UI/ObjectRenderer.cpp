@@ -325,6 +325,12 @@ const char* ObjectItemTree::GetObjectToolTip()
 }
 
 
+int ObjectItemTree::GetTotalObjectAvailable()
+{
+    return 1;
+}
+
+
 ObjectPixmapItem::ObjectPixmapItem(const QPixmap& Pixmap, ObjectRenderer* Owner, ObjectItemTree* ItemOwner) : QGraphicsPixmapItem(Pixmap)
 {
     this->Owner = Owner;

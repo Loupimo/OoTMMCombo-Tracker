@@ -509,34 +509,49 @@ void MapTab::FilterTree(QTreeWidget* TreeWidget, const QString& SearchText)
     for (int i = 0; i < TreeWidget->topLevelItemCount(); ++i)
     {   // Browse all tree item from the top
 
-        QTreeWidgetItem* parentItem = TreeWidget->topLevelItem(i);
+        CommonBaseItemTree* parentItem = (CommonBaseItemTree *)TreeWidget->topLevelItem(i);
         bool parentVisible = false;
 
         for (int j = 0; j < parentItem->childCount(); ++j)
         {   // Browse all current item children
 
-            QTreeWidgetItem* childItem = parentItem->child(j);
+            CommonBaseItemTree* childItem = (CommonBaseItemTree*)parentItem->child(j);
 
             if (childItem->childCount() > 0)
             {   // The current child has also some child
 
-                QTreeWidgetItem* childItem2 = childItem->child(0);
+                CommonBaseItemTree* childItem2 = (CommonBaseItemTree*)childItem->child(0);
 
-                bool match = childItem2->text(0).contains(SearchText, Qt::CaseInsensitive);
+                if (childItem2->GetTotalObjectAvailable() > 0)
+                {   // The item is not excluded
 
-                // Hide or unhide this part of the tree
-                childItem->setHidden(!match);
-                childItem2->setHidden(!match);
-                parentVisible |= match;
+                    bool match = childItem2->text(0).contains(SearchText, Qt::CaseInsensitive);
+
+                    // Hide or unhide this part of the tree
+                    childItem->setHidden(!match);
+                    childItem2->setHidden(!match);
+                    parentVisible |= match;
+                }
+                else
+                {
+                    childItem2->setHidden(true);
+                }
             }
             else
             {   // The current child has no child
 
-                bool match = childItem->text(0).contains(SearchText, Qt::CaseInsensitive);
+                if (childItem->GetTotalObjectAvailable() > 0)
+                {
+                    bool match = childItem->text(0).contains(SearchText, Qt::CaseInsensitive);
 
-                // Hide or unhide this part of the tree
-                childItem->setHidden(!match);
-                parentVisible |= match;
+                    // Hide or unhide this part of the tree
+                    childItem->setHidden(!match);
+                    parentVisible |= match;
+                }
+                else
+                {
+                    childItem->setHidden(true);
+                }
             }
         }
 

@@ -287,6 +287,13 @@ public:
     *   Reset the graphical effect of the associated object.
     */
     virtual void ResetObjectEffect() {}
+
+    /*
+    *   Get the total number of visible objects in the item tree.
+    *
+    *   @return The total of visible objects in the item tree.
+    */
+    virtual int GetTotalObjectAvailable() { return 1; }
 };
 
 
@@ -364,7 +371,7 @@ public:
 
     ObjectRenderer* RendererOwner = nullptr;        // The object renderer that owns this item.
     ObjectInfo* Object;                             // The actual object information.
-    ObjectPixmapItem* GraphItem = nullptr;          // The graphical representaion of the object.
+    ObjectPixmapItem* GraphItem = nullptr;          // The graphical representation of the object.
     CommonBaseItemTree Item;                        // The item to display when the object is considered as collected.
     QColor DefaultTextColor;                        // The default text color to adapt the system color theme.
 
@@ -454,6 +461,13 @@ public:
     *   @return The tooltip associated to this object.
     */
     const char* GetObjectToolTip();
+
+    /*
+    *   Get the total number of visible objects in the item tree.
+    *
+    *   @return The total of visible objects in the item tree.
+    */
+    int GetTotalObjectAvailable() override;
 };
 
 

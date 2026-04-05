@@ -66,6 +66,7 @@ public:
 
     void ToggleActiveType(ObjectType Target);
     void ExcludeNewObject(ObjectInfo* ToExclude);
+    void ResetExcludedObject();
 
     bool IsObjectExcluded(ObjectInfo* Target);
 

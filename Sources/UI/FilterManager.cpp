@@ -118,6 +118,12 @@ void FilterManager::ExcludeNewObject(ObjectInfo* ToExclude)
 }
 
 
+void FilterManager::ResetExcludedObject()
+{
+    this->ExcludedObj = QMap<uint32_t, QSet<ObjectInfo*>>();
+}
+
+
 bool FilterManager::IsObjectExcluded(ObjectInfo* Target)
 {
     auto it = ExcludedObj.constFind(Target->Scene);

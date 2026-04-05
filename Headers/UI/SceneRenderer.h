@@ -71,7 +71,7 @@ public:
 /*
 *   As the scenes are not sorted in alphabetic order this class act as a wrapper between the clicked tree widget item and the actual scene it refers to.
 */
-class SceneItemTree : public QTreeWidgetItem
+class SceneItemTree : public CommonBaseItemTree
 {
 
 #pragma region Attributes
@@ -185,6 +185,13 @@ public:
     *   @return The total number of object that can be rendered by this scene.
     */
     int GetTotalObjects();
+
+    /*
+    *   Get the total number of visible objects in the item tree.
+    *
+    *   @return The total of visible objects in the item tree.
+    */
+    int GetTotalObjectAvailable() override;
 
     /*
     *   Update the scene with the given item and updated object.

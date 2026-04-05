@@ -401,6 +401,8 @@ void Settings::ApplySettings(FilterManager* FilterOoT, FilterManager* FilterMM)
 
 void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
 {
+	Filter->ResetExcludedObject();
+
 	SceneObjects* scenes = GetGameSceneObjects(OOT_GAME);
 
 	for (size_t i = 0; i < OOT_NUM_SCENES; i++)
@@ -663,8 +665,6 @@ void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
 					break;
 				}
 			}
-
-			
 		}
 	}
 
@@ -693,7 +693,236 @@ void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
 
 void Settings::ApplyMMSettingsToFilter(FilterManager* Filter)
 {
+	Filter->ResetExcludedObject();
 
+	SceneObjects* scenes = GetGameSceneObjects(MM_GAME);
+
+	for (size_t i = 0; i < MM_NUM_SCENES; i++)
+	{	// Browse all OoT scenes
+
+		SceneObjects* currScene = &scenes[i];
+
+		for (size_t j = 0; j < currScene->NumOfObjs; j++)
+		{
+			ObjectInfo* currObj = &currScene->Objects[j];
+
+			switch (currObj->RenderType)
+			{
+				case ObjectType::gs:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["housesSkulltulaTokens"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::map:
+				{
+					if (currObj->Type == ObjectType::map)
+					{	// Tingle maps
+
+						this->CheckObjectExclusion(currObj, this->ROMSettings["tingleShuffle"].Value, Filter);
+						break;
+					}
+				}
+				case ObjectType::compass:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["mapCompassShuffle"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::small_key:
+				{	// Dungeon small key
+
+					this->CheckObjectExclusion(currObj, this->ROMSettings["smallKeyShuffleMm"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::boss_key:
+				{	// Boss key
+
+					this->CheckObjectExclusion(currObj, this->ROMSettings["bossKeyShuffleMm"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::sf:
+				{
+					if (currObj->ObjectID == STRAY_FAIRY_TOWN)
+					{	// Stray fairy town
+
+						this->CheckObjectExclusion(currObj, this->ROMSettings["townFairyShuffle"].Value, Filter);
+					}
+					else if (currObj->Type == ObjectType::chest)
+					{	// Stray fairy in a chest
+
+						this->CheckObjectExclusion(currObj, this->ROMSettings["strayFairyChestShuffle"].Value, Filter);
+					}
+					else
+					{	// All other stray fairies
+
+						this->CheckObjectExclusion(currObj, this->ROMSettings["strayFairyOtherShuffle"].Value, Filter);
+					}
+					break;
+				}
+
+				case ObjectType::scrub:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["scrubShuffleMm"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::cow:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["cowShuffleMm"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::shop:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shopShuffleMm"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::owl:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["owlShuffle"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::pot:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shufflePotsMm"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::crate:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleCratesMm"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::barrel:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleBarrelsMm"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::hive:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleHivesMm"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::rock:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleRocksMm"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::grass:
+				{
+					if (currObj->Scene == MM_TERMINA_FIELD)
+					{	// Termina field grass
+
+						this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleTFGrassMm"].Value, Filter);
+					}
+					else
+					{	// All other grass
+
+						this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleGrassMm"].Value, Filter);
+					}
+					break;
+				}
+
+				case ObjectType::tree:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleTreesMm"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::bush:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleBushMm"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::soil:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleSoilMm"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::rupee:
+				{	// Normal freestanding rupee
+
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleFreeRupeesMm"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::heart:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleFreeHeartsMm"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::wonder:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleWonderItemsMm"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::snowball:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleSnowballsMm"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::butterfly:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleButterfliesMm"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::redboulder:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleRedBouldersMm"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::icicle:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleIciclesMm"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::merchant:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleMerchantsMm"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::fairy:
+				{
+					this->CheckObjectExclusion(currObj, this->ROMSettings["fairyFountainFairyShuffleMm"].Value, Filter);
+					break;
+				}
+
+				case ObjectType::npc:
+				{
+					if (currObj->Scene == MM_LOTTERY)
+					{	// Lottery
+
+						this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleLotteryMm"].Value, Filter);
+					}
+				}
+
+				case ObjectType::none:
+				default:
+				{	// We don't want to overload the filter with non rendered object anyway
+
+					break;
+				}
+			}
+		}
+	}
 }
 
 void Settings::CheckObjectExclusion(ObjectInfo* ToCheck, ShuffleSetting SettingValue, FilterManager* Filter)
