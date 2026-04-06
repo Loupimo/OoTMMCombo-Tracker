@@ -100,7 +100,7 @@ OoTMMComboTracker::~OoTMMComboTracker()
 
 void OoTMMComboTracker::ShowAboutDialog()
 {
-    QMessageBox::about(this, "About", "OoTMMCombo Auto Tracker\nVersion 2.0\n© 2025-2026 Loupimo");
+    QMessageBox::about(this, "About", "OoTMMCombo Auto Tracker\nVersion 2.0\n(c) 2025-2026 Loupimo");
 }
 
 void OoTMMComboTracker::CreatePath(QString PathToCreate)

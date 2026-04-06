@@ -15,41 +15,111 @@
 
 // Contains all grotto entrances positions used to determine the correct entrance when spawning in a zone that has at least one grotto
 static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
-{   
-    { OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR,   std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_GENERIC_KOKIRI_FOREST, -512,  380, -1224 } } },
-    { OOT_LOST_WOODS_FROM_KOKIRI_FOREST_ENTR,   std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_GENERIC_LOST_WOODS,     915,    0,  -925 }, 
-                                                                                  { OOT_GROTTO_EXIT_SCRUB_UPGRADE,          670,    0, -2520 } } },
-    { OOT_LOST_WOODS_FROM_MEADOW_ENTR,          std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_DEKU_THEATER,            80,  -20, -1600 } } },
-    { OOT_SACRED_FOREST_MEADOW_ENTR,            std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_FAIRY_SFM,               45,    0,   220 },
-                                                                                  { OOT_GROTTO_EXIT_WOLFOS,                -195,    0,  1900 } } },
-    { OOT_WARP_SONG_MEADOW_ENTR,                std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_SCRUBS2_SFM,            310,  480, -2300 } } },
-    { OOT_WARP_SONG_LAKE_ENTR,                  std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_SCRUBS3_LAKE,         -3040, -1033, 6075 } } },
-    { OOT_KAKARIKO_FROM_GRANNY_ENTR,            std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_GENERIC_KAKARIKO,       860,   80,  -260 } } },
-    { OOT_KAKARIKO_FROM_FIELD_ENTR,             std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_REDEAD,                -400,    0,   400 } } },
-    { OOT_DEATH_MOUNTAIN_FROM_KAKARIKO_ENTR,    std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_TRAIL_COW,             -688, 1946,  -285 } } },
-    { OOT_DEATH_MOUNTAIN_FROM_GORON_CITY_ENTR,  std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_GENERIC_DMT,           -383, 1386, -1206 } } },
-    { OOT_DEATH_MOUNTAIN_CRATER_ENTR,           std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_GENERIC_DMC,             40, 1233,  1770 } } },
-    { OOT_CRATER_FROM_GORON_CITY_ENTR,          std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_SCRUBS3_DMC,          -1699,  722,  -472 } } },
-    { OOT_GORON_CITY_ENTR,                      std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_SCRUBS3_GORON_CITY,    1100,  580, -1190 } } },
-    { OOT_ZORA_RIVER_FROM_FIELD_ENTR,           std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_GENERIC_RIVER,          360,  570,   130 },
-                                                                                  { OOT_GROTTO_EXIT_FAIRY_RIVER,            670,  570,  -365 },
-                                                                                  { OOT_GROTTO_EXIT_SCRUBS2_RIVER,        -1630,  100,  -130 } } },
-    { OOT_ZORA_DOMAIN_ENTR,                     std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_FAIRY_DOMAIN,          -860,   14,  -470 } } },
-    { OOT_LON_LON_RANCH_FROM_HOUSE_ENTR,        std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_SCRUBS3_RANCH,         1800,    0,  1500 } } },
-    { OOT_HYRULE_CASTLE_ENTR,                   std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_CASTLE,                 996, 1571,   844 } } },
-    { OOT_FIELD_FROM_LAKE_HYLIA_ENTR,           std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_GENERIC_HF_SOUTHEAST,  -270, -500, 12350 },
-                                                                                  { OOT_GROTTO_EXIT_GENERIC_HF_OPEN,      -4030, -700, 13860 },
-                                                                                  { OOT_GROTTO_EXIT_SCRUB_HEART_PIECE,    -4990, -700, 13820 } } },
-    { OOT_FIELD_FROM_GERUDO_VALLEY_ENTR,        std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_FIELD_COW,            -7870, -300,  6920 } } },
-    { OOT_FIELD_FROM_KAKARIKO_ENTR,             std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_FIELD_TREE,            2060,   20,  -170 } } },
-    { OOT_FIELD_FROM_MARKET_ENTRANCE_ENTR,      std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_GENERIC_HF_MARKET,    -1425,    0,   810 },
-                                                                                  { OOT_GROTTO_EXIT_FAIRY_HF,             -4450, -300,  -425 },
-                                                                                  { OOT_GROTTO_EXIT_TEKTITE,              -4945, -300,  2835 } } },
-    { OOT_GERUDO_VALLEY_FROM_FIELD_ENTR,        std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_OCTOROK,                280, -555,  1470 } } },
-    { OOT_GERUDO_VALLEY_FROM_TENT_ENTR,         std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_SCRUBS2_VALLEY,       -1323,   15,  -969 } } },
-    { OOT_GERUDO_FORTRESS_FROM_VALLEY_ENTR,     std::vector<GrottoEntrance>() = { { OOT_GERUDO_FORTRESS_FROM_VALLEY_ENTR,  -842,    3,   -84 },
-                                                                                  { OOT_GROTTO_EXIT_FAIRY_FORTRESS,         376,  333, -1564 }} },
-    { OOT_DESERT_COLOSSUS_FROM_FAIRY_ENTR,      std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_SCRUBS2_COLOSSUS,        60,  -32, -1300 } } },
+{ 
+    { OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR,   std::vector<GrottoEntrance>() = { { OOT_FOREST_FROM_LOST_WOODS_BRIDGE_ENTR,         -1413,   -74,  -283 },
+                                                                                  { OOT_KOKIRI_FOREST_FROM_DEKU_TREE_ENTR,           3844,  -161, -1080 },
+                                                                                  { OOT_KOKIRI_FOREST_FROM_MIDO_ENTR,                -445,     0,  -486 },
+                                                                                  { OOT_KOKIRI_FOREST_FROM_SARIA_ENTR,                516,     0,   629 },
+                                                                                  { OOT_KOKIRI_FOREST_FROM_TWINS_ENTR,               1036,     0,   524 },
+                                                                                  { OOT_KOKIRI_FOREST_FROM_KNOW_IT_ALL_ENTR,        -1034,   120,   394 },
+                                                                                  { OOT_KOKIRI_FOREST_FROM_SHOP_ENTR,                 854,     0,  -272 },
+                                                                                  { OOT_KOKIRI_FOREST_FROM_LINK_ENTR,                 -31,   100,  -114 },
+                                                                                  { OOT_GROTTO_EXIT_GENERIC_KOKIRI_FOREST,           -512,   380, -1224 } } },
+    { OOT_LOST_WOODS_FROM_KOKIRI_FOREST_ENTR,   std::vector<GrottoEntrance>() = { { OOT_LOST_WOODS_FROM_KOKIRI_FOREST_ENTR,            -1,     0,   305 },
+                                                                                  { OOT_LOST_WOODS_FROM_MEADOW_ENTR,                  802,     0, -2589 },
+                                                                                  { OOT_LOST_WOODS_BRIDGE_FROM_FOREST_ENTR,          -901,  -200,  1602 },
+                                                                                  { OOT_LOST_WOODS_BRIDGE_FROM_FIELD_ENTR,          -1502,  -200,  1600 },
+                                                                                  { OOT_LOST_WOODS_FROM_ZORA_RIVER_ENTR,             2134,  -196,  -851 },
+                                                                                  { OOT_LOST_WOODS_FROM_GORON_CITY_ENTR ,             797,   -15, -1091 },
+                                                                                  { OOT_GROTTO_EXIT_GENERIC_LOST_WOODS,               915,     0,  -925 },
+                                                                                  { OOT_GROTTO_EXIT_SCRUB_UPGRADE,                    670,     0, -2520 },
+                                                                                  { OOT_GROTTO_EXIT_DEKU_THEATER,                      80,   -20, -1600 } } },
+    { OOT_SACRED_FOREST_MEADOW_ENTR,            std::vector<GrottoEntrance>() = { { OOT_SACRED_FOREST_MEADOW_ENTR,                   -201,     0,  2183 },
+                                                                                  { OOT_WARP_SONG_MEADOW_ENTR,                         10,   500, -2610 },
+                                                                                  { OOT_SACRED_MEADOW_FROM_TEMPLE_FOREST_ENTR,         -2,   680, -3180 },
+                                                                                  { OOT_GROTTO_EXIT_FAIRY_SFM,                         45,     0,   220 },
+                                                                                  { OOT_GROTTO_EXIT_WOLFOS,                          -195,     0,  1900 },
+                                                                                  { OOT_GROTTO_EXIT_SCRUBS2_SFM,                      310,   480, -2300 } } },
+    { OOT_KAKARIKO_FROM_FIELD_ENTR,             std::vector<GrottoEntrance>() = { { OOT_KAKARIKO_FROM_FIELD_ENTR,                   -2638,   138,  1065 },
+                                                                                  { OOT_KAKARIKO_FROM_GRANNY_ENTR,                    780,   200,    24 },
+                                                                                  { OOT_KAKARIKO_FROM_BOTTOM_OF_THE_WELL_ENTR,        846,  -500,   520 },
+                                                                                  { OOT_KAKARIKO_FROM_DEATH_MOUNTAIN_ENTR,            -97,   511, -1787 },
+                                                                                  { OOT_KAKARIKO_FROM_GRAVEYARD_ENTR,                1901,   189,  1385 },
+                                                                                  { OOT_KAKARIKO_FROM_CARPENTER_ENTR,                 -51,     0,   224 },
+                                                                                  { OOT_KAKARIKO_FROM_SKULLTULA_ENTR,                -287,    80,  1017 },
+                                                                                  { OOT_KAKARIKO_FROM_IMPA_ENTR,                     -373,   240,  1702 },
+                                                                                  { OOT_KAKARIKO_FROM_IMPA_BACK_ENTR,                 260,   240,  1730 },
+                                                                                  { OOT_KAKARIKO_FROM_WINDMILL_ENTR,                 1183,   260,   523 },
+                                                                                  { OOT_KAKARIKO_FROM_SHOP_POTION_ENTR,               119,   320,  -567 },
+                                                                                  { OOT_KAKARIKO_FROM_SHOP_POTION_BACK_ENTR,          592,   320,  -586 },
+                                                                                  { OOT_KAKARIKO_FROM_BAZAAR_ENTR,                    -191,  320,  -650 },
+                                                                                  { OOT_KAKARIKO_FROM_ARCHERY_ENTR,                   323,   160,   784 },
+                                                                                  { OOT_VILLAGE_OWL_ENTR,                             -65,   620,  1520 },
+                                                                                  { OOT_GROTTO_EXIT_REDEAD,                          -400,     0,   400 },
+                                                                                  { OOT_GROTTO_EXIT_GENERIC_KAKARIKO,                 860,    80,  -260 } } },
+    { OOT_LAKE_HYLIA_FROM_FIELD_ENTR,           std::vector<GrottoEntrance>() = { { OOT_LAKE_HYLIA_FROM_FIELD_ENTR,                 -2093, -1037,   705 },
+                                                                                  { OOT_WARP_SONG_LAKE_ENTR,                        -1045, -1218,  3871 },
+                                                                                  { OOT_LAKE_HYLIA_FROM_LABORATORY_ENTR,            -2422, -1033,  3858 },
+                                                                                  { OOT_LAKE_HYLIA_FROM_VALLEY_ENTR,                -3918, -1142,  2533 },
+                                                                                  { OOT_LAKE_HYLIA_FROM_FISHING_POND_ENTR,           1322, -1218,  3871 },
+                                                                                  { OOT_LAKE_HYLIA_FROM_TEMPLE_WATER_ENTR,           -929, -1313,  6555 }, // Child
+                                                                                  { OOT_LAKE_HYLIA_FROM_TEMPLE_WATER_ENTR,           -917, -2201,  6359 }, // Adult
+                                                                                  { OOT_LAKE_HYLIA_FROM_ZORA_DOMAIN_ENTR,            -912, -1544,  -280 },
+                                                                                  { OOT_GROTTO_EXIT_SCRUBS3_LAKE,                   -3040, -1033,  6075 } } },
+    { OOT_DEATH_MOUNTAIN_FROM_KAKARIKO_ENTR,    std::vector<GrottoEntrance>() = { { OOT_DEATH_MOUNTAIN_FROM_KAKARIKO_ENTR,          -1344,   118,  2221 },
+                                                                                  { OOT_DEATH_MOUNTAIN_FROM_GORON_CITY_ENTR,         -407,  1191, -1860 },
+                                                                                  { OOT_MOUNTAIN_TRAIL_FROM_DODONGO_CAVERN_ENTR,    -1695,   683,  -535 },
+                                                                                  { OOT_TRAIL_SUMMIT_FROM_CRATER_ENTR,                230,  3263, -4670 },
+                                                                                  { OOT_DEATH_MOUNTAIN_FROM_FAIRY_ENTR,              -206,  3295, -4391 },
+                                                                                  { OOT_GROTTO_EXIT_TRAIL_COW,                       -688,  1946,  -285 },
+                                                                                  { OOT_GROTTO_EXIT_GENERIC_DMT,                     -383,  1386, -1206 } } },
+    { OOT_DEATH_MOUNTAIN_CRATER_ENTR,           std::vector<GrottoEntrance>() = { { OOT_DEATH_MOUNTAIN_CRATER_ENTR,                 -1121,  1360,  2076 },
+                                                                                  { OOT_CRATER_FROM_GORON_CITY_ENTR,                -1749,   722,    26 },
+                                                                                  { OOT_DEATH_CRATER_FROM_FAIRY_ENTR,               -1287,   829,   941 },
+                                                                                  { OOT_DEATH_CRATER_FROM_TEMPLE_FIRE_ENTR,            12,  -350, -1419 },
+                                                                                  { OOT_WARP_SONG_CRATER_ENTR,                          0,   441,     0 },
+                                                                                  { OOT_GROTTO_EXIT_GENERIC_DMC,                       40,  1233,  1770 },
+                                                                                  { OOT_GROTTO_EXIT_SCRUBS3_DMC,                    -1699,   722,  -472 } } },
+    { OOT_GORON_CITY_ENTR,                      std::vector<GrottoEntrance>() = { { OOT_GORON_CITY_ENTR,                               56,   600,  1104 },
+                                                                                  { OOT_GORON_CITY_FROM_LOST_WOODS_ENTR,              441,   196,  1153 },
+                                                                                  { OOT_GORON_CITY_FROM_CRATER_ENTR,                   47,    40, -1523 },
+                                                                                  { OOT_GORON_CITY_FROM_SHOP_ENTR,                   -134,    -3,   -42  },
+                                                                                  { OOT_GROTTO_EXIT_SCRUBS3_GORON_CITY,              1100,   580, -1190 } } },
+    { OOT_ZORA_RIVER_FROM_FIELD_ENTR,           std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_GENERIC_RIVER,                    360,   570,   130 },
+                                                                                  { OOT_GROTTO_EXIT_FAIRY_RIVER,                      670,   570,  -365 },
+                                                                                  { OOT_GROTTO_EXIT_SCRUBS2_RIVER,                  -1630,   100,  -130 } } },
+    { OOT_ZORA_DOMAIN_ENTR,                     std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_FAIRY_DOMAIN,                    -860,    14,  -470 } } },
+    { OOT_LON_LON_RANCH_FROM_HOUSE_ENTR,        std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_SCRUBS3_RANCH,                   1800,     0,  1500 } } },
+    { OOT_HYRULE_CASTLE_ENTR,                   std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_CASTLE,                           996,  1571,   844 } } },
+    { OOT_FIELD_FROM_MARKET_ENTRANCE_ENTR,      std::vector<GrottoEntrance>() = { { OOT_FIELD_FROM_MARKET_ENTRANCE_ENTR,                1,     0,   697 },      // Child
+                                                                                  { OOT_FIELD_FROM_MARKET_ENTRANCE_ENTR,               -6,     0,  1182 },      // Adult
+                                                                                  { OOT_FIELD_FROM_LAKE_HYLIA_ENTR,                 -5891,  -881, 15676 },
+                                                                                  { OOT_FIELD_FROM_GERUDO_VALLEY_ENTR,              -9645,  -155,  6850 },
+                                                                                  { OOT_FIELD_FROM_KAKARIKO_ENTR,                    3759,   252,   232 },
+                                                                                  { OOT_FIELD_FROM_ZORA_RIVER_WATER_ENTR,            5977,  -135,  3982 },
+                                                                                  { OOT_FIELD_FROM_ZORA_RIVER_ENTR,                  5984,   -20,  3773 },
+                                                                                  { OOT_FIELD_FROM_LOST_WOODS_BRIDGE_ENTR,           5137,  -160,  8467 },
+                                                                                  { OOT_FIELD_FROM_LON_LON_RANCH_ENTR,              -1850,   196,  5956 },
+                                                                                  { OOT_FIELD_FROM_LON_LON_EPONA_JUMP_LEFT,         -1391,   100,  6865 },
+                                                                                  { OOT_FIELD_FROM_LON_LON_EPONA_JUMP_MIDDLE,       -2953,   100,  8336 },
+                                                                                  { OOT_FIELD_FROM_LON_LON_EPONA_JUMP_RIGHT,        -4668,  -122,  6865 },
+                                                                                  { OOT_FIELD_OWL_ENTR,                                 0,    70,  1380 },
+                                                                                  { OOT_GROTTO_EXIT_GENERIC_HF_MARKET,              -1425,     0,   810 },
+                                                                                  { OOT_GROTTO_EXIT_FAIRY_HF,                       -4450,  -300,  -425 },
+                                                                                  { OOT_GROTTO_EXIT_TEKTITE,                        -4945,  -300,  2835 },
+                                                                                  { OOT_GROTTO_EXIT_GENERIC_HF_SOUTHEAST,            -270,  -500, 12350 },
+                                                                                  { OOT_GROTTO_EXIT_GENERIC_HF_OPEN,                -4030,  -700, 13860 },
+                                                                                  { OOT_GROTTO_EXIT_SCRUB_HEART_PIECE,              -4990,  -700, 13820 },
+                                                                                  { OOT_GROTTO_EXIT_FIELD_COW,                      -7870,  -300,  6920 },
+                                                                                  { OOT_GROTTO_EXIT_FIELD_TREE,                      2060,    20,  -170 } } },
+    { OOT_GERUDO_VALLEY_FROM_FIELD_ENTR,        std::vector<GrottoEntrance>() = { { OOT_GERUDO_VALLEY_FROM_FIELD_ENTR,               2664,  -269,   778 },
+                                                                                  { OOT_GERUDO_VALLEY_FROM_TENT_ENTR,                -973,    15,  -362 },
+                                                                                  { OOT_VALLEY_FROM_GERUDO_FORTRESS_ENTR,           -3264,   239,  -757 },
+                                                                                  { OOT_GROTTO_EXIT_OCTOROK,                          280,  -555,  1470 },
+                                                                                  { OOT_GROTTO_EXIT_SCRUBS2_VALLEY,                 -1323,    15,  -969 } } },
+    { OOT_GERUDO_FORTRESS_FROM_VALLEY_ENTR,     std::vector<GrottoEntrance>() = { { OOT_GERUDO_FORTRESS_FROM_VALLEY_ENTR,            -842,     3,   -84 },
+                                                                                  { OOT_GROTTO_EXIT_FAIRY_FORTRESS,                   376,   333, -1564 } } },
+    { OOT_DESERT_COLOSSUS_FROM_FAIRY_ENTR,      std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_SCRUBS2_COLOSSUS,                  60,   -32, -1300 } } },
 
 
 
@@ -176,6 +246,16 @@ bool EntranceHelper::IsMMExtra(uint32_t Buffer[6])
     return false;
 }
 
+bool EntranceHelper::IsSunSong(uint32_t Scene, uint32_t EntranceID)
+{
+    // WARNING ! Sun song OoT and Song of Soaring MM have the same ID, this could lead to owl warp missing.
+    return ((this->OutBuffer[0] & 0xFF000000) >> 16) == WarpSong::Sun_Song && Scene == this->OutBuffer[1] && EntranceID == this->OutBuffer[2];
+}
+
+bool EntranceHelper::IsSongOfTime(uint32_t Scene, uint32_t EntranceID)
+{
+    return ((this->OutBuffer[0] & 0xFF000000) >> 24) == WarpSong::Song_of_Time && Scene == this->OutBuffer[1] && EntranceID == this->OutBuffer[2];
+}
 
 bool EntranceHelper::IsSongOfDoubleTime(uint32_t Scene, uint32_t EntranceID)
 {
@@ -494,6 +574,221 @@ uint32_t EntranceHelper::GetGrottoExit(uint8_t Game, uint8_t CurrRoom, uint8_t G
 }
 
 
+uint32_t EntranceHelper::CorrectGrottoScene(uint8_t Game, uint32_t ID)
+{
+    if (Game == OOT_GAME)
+    {
+        switch (ID)
+        {
+            case OOT_GROTTO_EXIT_GENERIC_KOKIRI_FOREST:
+            case OOT_GROTTO_GENERIC_KOKIRI_FOREST_ENTR:
+            {
+                return OOT_GROTTO_KOKIRI_FOREST_STORMS;
+            }
+
+
+            case OOT_GROTTO_EXIT_GENERIC_LOST_WOODS:
+            case OOT_GROTTO_GENERIC_LOST_WOODS_ENTR:
+            {
+                return OOT_GROTTO_LOST_WOODS_GENERIC;
+            }
+
+            case OOT_GROTTO_EXIT_GENERIC_KAKARIKO:
+            case OOT_GROTTO_GENERIC_KAKARIKO_ENTR:
+            {
+                return OOT_GROTTO_KAKARIKO_OPEN;
+            }
+
+            case OOT_GROTTO_EXIT_GENERIC_DMT:
+            case OOT_GROTTO_GENERIC_DMT_ENTR:
+            {
+                return OOT_GROTTO_DEATH_TRIAL_STORMS;
+            }
+
+            case OOT_GROTTO_EXIT_GENERIC_DMC:
+            case OOT_GROTTO_GENERIC_DMC_ENTR:
+            {
+                return OOT_GROTTO_DEATH_CRATER_GENERIC;
+            }
+
+            case OOT_GROTTO_EXIT_GENERIC_RIVER:
+            case OOT_GROTTO_GENERIC_RIVER_ENTR:
+            {
+                return OOT_GROTTO_ZORA_RIVER_GENERIC;
+            }
+
+            case OOT_GROTTO_EXIT_GENERIC_HF_SOUTHEAST:
+            case OOT_GROTTO_GENERIC_HF_SOUTHEAST_ENTR:
+            {
+                return OOT_GROTTO_HYRULE_SE;
+            }
+
+            case OOT_GROTTO_EXIT_GENERIC_HF_OPEN:
+            case OOT_GROTTO_GENERIC_HF_OPEN_ENTR:
+            {
+                return OOT_GROTTO_HYRULE_OPEN;
+            }
+
+            case OOT_GROTTO_EXIT_GENERIC_HF_MARKET:
+            case OOT_GROTTO_GENERIC_HF_MARKET_ENTR:
+            {
+                return OOT_GROTTO_HYRULE_MARKET;
+            }
+
+            case OOT_GROTTO_EXIT_FAIRY_SFM:
+            case OOT_GROTTO_FAIRY_SFM_ENTR:
+            {
+                return OOT_FAIRY_SACRED_MEADOW;
+            }
+
+            case OOT_GROTTO_EXIT_FAIRY_HF:
+            case OOT_GROTTO_FAIRY_HF_ENTR:
+            {
+                return OOT_FAIRY_HYRULE;
+            }
+
+            case OOT_GROTTO_EXIT_FAIRY_RIVER:
+            case OOT_GROTTO_FAIRY_RIVER_ENTR:
+            {
+                return OOT_FAIRY_ZORA_RIVER;
+            }
+
+            case OOT_GROTTO_EXIT_FAIRY_DOMAIN:
+            case OOT_GROTTO_FAIRY_DOMAIN_ENTR:
+            {
+                return OOT_FAIRY_ZORA_DOMAIN;
+            }
+
+            case OOT_GROTTO_EXIT_FAIRY_FORTRESS:
+            case OOT_GROTTO_FAIRY_FORTRESS_ENTR:
+            {
+                return OOT_FAIRY_GERUDO_FORTRESS;
+            }
+
+            case OOT_GROTTO_EXIT_SCRUBS2_SFM:
+            case OOT_GROTTO_SCRUBS2_SFM_ENTR:
+            {
+                return OOT_GROTTO_SACRED_MEADOW_STORMS;
+            }
+
+            case OOT_GROTTO_EXIT_SCRUBS2_RIVER:
+            case OOT_GROTTO_SCRUBS2_RIVER_ENTR:
+            {
+                return OOT_GROTTO_ZORA_RIVER_STORMS;
+            }
+
+            case OOT_GROTTO_EXIT_SCRUBS2_VALLEY:
+            case OOT_GROTTO_SCRUBS2_VALLEY_ENTR:
+            {
+                return OOT_GROTTO_VALLEY_STORMS;
+            }
+
+            case OOT_GROTTO_EXIT_SCRUBS2_COLOSSUS:
+            case OOT_GROTTO_SCRUBS2_COLOSSUS_ENTR:
+            {
+                return OOT_GROTTO_DESERT_SCRUBS;
+            }
+
+            case OOT_GROTTO_EXIT_SCRUBS3_RANCH:
+            case OOT_GROTTO_SCRUBS3_RANCH_ENTR:
+            {
+                return OOT_GROTTO_LON_LON_SCRUBS;
+            }
+
+            case OOT_GROTTO_EXIT_SCRUBS3_GORON_CITY:
+            case OOT_GROTTO_SCRUBS3_GORON_CITY_ENTR:
+            {
+                return OOT_GROTTO_GORON_CITY_SCRUBS;
+            }
+
+            case OOT_GROTTO_EXIT_SCRUBS3_DMC:
+            case OOT_GROTTO_SCRUBS3_DMC_ENTR:
+            {
+                return OOT_GROTTO_DEATH_CRATER_SCRUBS;
+            }
+
+            case OOT_GROTTO_EXIT_SCRUBS3_LAKE:
+            case OOT_GROTTO_SCRUBS3_LAKE_ENTR:
+            {
+                return OOT_GROTTO_LAKE_HYLIA_SCRUBS;
+            }
+
+            case OOT_GROTTO_EXIT_SCRUB_UPGRADE:
+            case OOT_GROTTO_SCRUB_UPGRADE_ENTR:
+            {
+                return OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;
+            }
+
+            case OOT_GROTTO_EXIT_SCRUB_HEART_PIECE:
+            case OOT_GROTTO_SCRUB_HEART_PIECE_ENTR:
+            {
+                return OOT_GROTTO_HYRULE_SCRUBS;
+            }
+
+            case OOT_GROTTO_EXIT_DEKU_THEATER:
+            case OOT_GROTTO_DEKU_THEATER_ENTR:
+            {
+                return OOT_GROTTO_LOST_WOODS_THEATER;
+            }
+
+            case OOT_GROTTO_EXIT_WOLFOS:
+            case OOT_GROTTO_WOLFOS_ENTR:
+            {
+                return OOT_GROTTO_SACRED_MEADOW_WOLFOS;
+            }
+
+            case OOT_GROTTO_EXIT_TEKTITE:
+            case OOT_GROTTO_TEKTITE_ENTR:
+            {
+                return OOT_GROTTO_HYRULE_TEKTITE;
+            }
+
+            case OOT_GROTTO_EXIT_FIELD_COW:
+            case OOT_GROTTO_FIELD_COW_ENTR:
+            {
+                return OOT_GROTTO_HYRULE_GERUDO;
+            }
+
+            case OOT_GROTTO_EXIT_FIELD_TREE:
+            case OOT_GROTTO_FIELD_TREE_ENTR:
+            {
+                return OOT_GROTTO_HYRULE_KAKARIKO;
+            }
+
+            case OOT_GROTTO_EXIT_TRAIL_COW:
+            case OOT_GROTTO_TRAIL_COW_ENTR:
+            {
+                return OOT_GROTTO_DEATH_TRIAL_COW;
+            }
+
+            case OOT_GROTTO_EXIT_CASTLE:
+            case OOT_GROTTO_CASTLE_ENTR:
+            {
+                return OOT_GROTTO_CASTLE_STORMS;
+            }
+
+            case OOT_GROTTO_EXIT_REDEAD:
+            case OOT_GROTTO_REDEAD_ENTR:
+            {
+                return OOT_GROTTO_KAKARIKO_REDEAD;
+            }
+
+            case OOT_GROTTO_EXIT_OCTOROK:
+            case OOT_GROTTO_OCTOROK_ENTR:
+            {
+                return OOT_GROTTO_VALLEY_OCTOROK;
+            }
+        }
+    }
+    else if (Game == MM_GAME)
+    {
+
+    }
+
+    return ID;
+}
+
+
 uint32_t EntranceHelper::GetWarpSong(uint8_t * Game, uint32_t ID, uint8_t SongIndex, uint8_t OwlID, bool * IsWarpSong)
 {
     *IsWarpSong = true;
@@ -725,29 +1020,156 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
 
     switch (ID)
     {
-        case OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR:
-        case OOT_LOST_WOODS_FROM_KOKIRI_FOREST_ENTR:
-        case OOT_LOST_WOODS_FROM_MEADOW_ENTR:
-        case OOT_SACRED_FOREST_MEADOW_ENTR:
-        case OOT_WARP_SONG_MEADOW_ENTR:
-        case OOT_WARP_SONG_LAKE_ENTR:
-        case OOT_KAKARIKO_FROM_GRANNY_ENTR:
-        case OOT_KAKARIKO_FROM_FIELD_ENTR:
-        case OOT_DEATH_MOUNTAIN_FROM_KAKARIKO_ENTR:
-        case OOT_DEATH_MOUNTAIN_FROM_GORON_CITY_ENTR:
+        case OOT_GROTTO_EXIT_SCRUBS3_DMC:
+        case OOT_GROTTO_EXIT_GENERIC_DMC:
+        case OOT_WARP_SONG_CRATER_ENTR:
+        case OOT_DEATH_CRATER_FROM_TEMPLE_FIRE_ENTR:
+        case OOT_DEATH_CRATER_FROM_FAIRY_ENTR:
         case OOT_DEATH_MOUNTAIN_CRATER_ENTR:
         case OOT_CRATER_FROM_GORON_CITY_ENTR:
+        {
+            ID = OOT_DEATH_MOUNTAIN_CRATER_ENTR;
+            break;
+        }
+
+        case OOT_GROTTO_EXIT_GENERIC_DMT:
+        case OOT_GROTTO_EXIT_TRAIL_COW:
+        case OOT_DEATH_MOUNTAIN_FROM_FAIRY_ENTR:
+        case OOT_TRAIL_SUMMIT_FROM_CRATER_ENTR:
+        case OOT_MOUNTAIN_TRAIL_FROM_DODONGO_CAVERN_ENTR:
+        case OOT_DEATH_MOUNTAIN_FROM_KAKARIKO_ENTR:
+        case OOT_DEATH_MOUNTAIN_FROM_GORON_CITY_ENTR:
+        {
+            ID = OOT_DEATH_MOUNTAIN_FROM_KAKARIKO_ENTR;
+            break;
+        }
+
+        case OOT_GROTTO_EXIT_SCRUBS3_GORON_CITY:
+        case OOT_GORON_CITY_FROM_SHOP_ENTR:
+        case OOT_GORON_CITY_FROM_CRATER_ENTR:
+        case OOT_GORON_CITY_FROM_LOST_WOODS_ENTR:
         case OOT_GORON_CITY_ENTR:
+        {
+            ID = OOT_GORON_CITY_ENTR;
+            break;
+        }
+
+        case OOT_GROTTO_EXIT_FAIRY_SFM:
+        case OOT_GROTTO_EXIT_SCRUBS2_SFM:
+        case OOT_GROTTO_EXIT_WOLFOS:
+        case OOT_SACRED_MEADOW_FROM_TEMPLE_FOREST_ENTR:
+        case OOT_SACRED_FOREST_MEADOW_ENTR:
+        case OOT_WARP_SONG_MEADOW_ENTR:
+        {
+            ID = OOT_SACRED_FOREST_MEADOW_ENTR;
+            break;
+        }
+
+        case OOT_GROTTO_EXIT_DEKU_THEATER:
+        case OOT_GROTTO_EXIT_SCRUB_UPGRADE:
+        case OOT_GROTTO_EXIT_GENERIC_LOST_WOODS:
+        case OOT_LOST_WOODS_FROM_GORON_CITY_ENTR:
+        case OOT_LOST_WOODS_FROM_ZORA_RIVER_ENTR:
+        case OOT_LOST_WOODS_BRIDGE_FROM_FOREST_ENTR:
+        case OOT_LOST_WOODS_BRIDGE_FROM_FIELD_ENTR:
+        case OOT_LOST_WOODS_FROM_KOKIRI_FOREST_ENTR:
+        case OOT_LOST_WOODS_FROM_MEADOW_ENTR:
+        {
+            ID = OOT_LOST_WOODS_FROM_KOKIRI_FOREST_ENTR;
+            break;
+        }
+
+        case OOT_GROTTO_EXIT_GENERIC_KOKIRI_FOREST:
+        case OOT_KOKIRI_FOREST_FROM_DEKU_TREE_ENTR:
+        case OOT_FOREST_FROM_LOST_WOODS_BRIDGE_ENTR:
+        case OOT_KOKIRI_FOREST_FROM_MIDO_ENTR:
+        case OOT_KOKIRI_FOREST_FROM_SARIA_ENTR:
+        case OOT_KOKIRI_FOREST_FROM_TWINS_ENTR:
+        case OOT_KOKIRI_FOREST_FROM_KNOW_IT_ALL_ENTR:
+        case OOT_KOKIRI_FOREST_FROM_SHOP_ENTR:
+        case OOT_KOKIRI_FOREST_FROM_LINK_ENTR:
+        case OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR:
+        {
+            ID = OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR;
+            break;
+        }
+
+        case OOT_GROTTO_EXIT_GENERIC_KAKARIKO:
+        case OOT_GROTTO_EXIT_REDEAD:
+        case OOT_KAKARIKO_FROM_BOTTOM_OF_THE_WELL_ENTR:
+        case OOT_KAKARIKO_FROM_DEATH_MOUNTAIN_ENTR:
+        case OOT_KAKARIKO_FROM_GRAVEYARD_ENTR:
+        case OOT_KAKARIKO_FROM_CARPENTER_ENTR:
+        case OOT_KAKARIKO_FROM_SKULLTULA_ENTR:
+        case OOT_KAKARIKO_FROM_IMPA_ENTR:
+        case OOT_KAKARIKO_FROM_IMPA_BACK_ENTR:
+        case OOT_KAKARIKO_FROM_WINDMILL_ENTR:
+        case OOT_KAKARIKO_FROM_SHOP_POTION_ENTR:
+        case OOT_KAKARIKO_FROM_SHOP_POTION_BACK_ENTR:
+        case OOT_KAKARIKO_FROM_BAZAAR_ENTR:
+        case OOT_KAKARIKO_FROM_ARCHERY_ENTR:
+        case OOT_KAKARIKO_FROM_GRANNY_ENTR:
+        case OOT_KAKARIKO_FROM_FIELD_ENTR:
+        case OOT_VILLAGE_OWL_ENTR:
+        {
+            ID = OOT_KAKARIKO_FROM_FIELD_ENTR;
+            break;
+        }
+
+
+        case OOT_GROTTO_EXIT_GENERIC_HF_MARKET:
+        case OOT_GROTTO_EXIT_FAIRY_HF:
+        case OOT_GROTTO_EXIT_TEKTITE:
+        case OOT_GROTTO_EXIT_GENERIC_HF_SOUTHEAST:
+        case OOT_GROTTO_EXIT_GENERIC_HF_OPEN:
+        case OOT_GROTTO_EXIT_SCRUB_HEART_PIECE:
+        case OOT_GROTTO_EXIT_FIELD_COW:
+        case OOT_GROTTO_EXIT_FIELD_TREE:
+        case OOT_FIELD_OWL_ENTR:
+        case OOT_FIELD_FROM_ZORA_RIVER_WATER_ENTR:
+        case OOT_FIELD_FROM_ZORA_RIVER_ENTR:
+        case OOT_FIELD_FROM_LOST_WOODS_BRIDGE_ENTR:
+        case OOT_FIELD_FROM_KAKARIKO_ENTR:
+        case OOT_FIELD_FROM_LON_LON_RANCH_ENTR:
+        case OOT_FIELD_FROM_LON_LON_EPONA_JUMP_LEFT:
+        case OOT_FIELD_FROM_LON_LON_EPONA_JUMP_MIDDLE:
+        case OOT_FIELD_FROM_LON_LON_EPONA_JUMP_RIGHT:
+        case OOT_FIELD_FROM_LAKE_HYLIA_ENTR:
+        case OOT_FIELD_FROM_GERUDO_VALLEY_ENTR:
+        case OOT_FIELD_FROM_MARKET_ENTRANCE_ENTR:
+        {
+            ID = OOT_FIELD_FROM_MARKET_ENTRANCE_ENTR;
+            break;
+        }
+
+        case OOT_GROTTO_EXIT_OCTOROK:
+        case OOT_GROTTO_EXIT_SCRUBS2_VALLEY:
+        case OOT_VALLEY_FROM_GERUDO_FORTRESS_ENTR:
+        case OOT_GERUDO_VALLEY_FROM_FIELD_ENTR:
+        case OOT_GERUDO_VALLEY_FROM_TENT_ENTR:
+        {
+            ID = OOT_GERUDO_VALLEY_FROM_FIELD_ENTR;
+            break;
+        }
+        
+        case OOT_GROTTO_EXIT_SCRUBS3_LAKE:
+        case OOT_LAKE_HYLIA_FROM_TEMPLE_WATER_ENTR:
+        case OOT_LAKE_HYLIA_FROM_FIELD_ENTR:
+        case OOT_LAKE_HYLIA_FROM_ZORA_DOMAIN_ENTR:
+        case OOT_LAKE_HYLIA_FROM_VALLEY_ENTR:
+        case OOT_LAKE_HYLIA_FROM_LABORATORY_ENTR:
+        case OOT_LAKE_HYLIA_FROM_FISHING_POND_ENTR:
+        case OOT_WARP_SONG_LAKE_ENTR:
+        {
+            ID = OOT_LAKE_HYLIA_FROM_FIELD_ENTR;
+            break;
+        }
+
+
         case OOT_ZORA_RIVER_FROM_FIELD_ENTR:
         case OOT_ZORA_DOMAIN_ENTR:
         case OOT_LON_LON_RANCH_FROM_HOUSE_ENTR:
         case OOT_HYRULE_CASTLE_ENTR:
-        case OOT_FIELD_FROM_LAKE_HYLIA_ENTR:
-        case OOT_FIELD_FROM_GERUDO_VALLEY_ENTR:
-        case OOT_FIELD_FROM_KAKARIKO_ENTR:
-        case OOT_FIELD_FROM_MARKET_ENTRANCE_ENTR:
-        case OOT_GERUDO_VALLEY_FROM_FIELD_ENTR:
-        case OOT_GERUDO_VALLEY_FROM_TENT_ENTR:
         case OOT_GERUDO_FORTRESS_FROM_VALLEY_ENTR:
         case OOT_DESERT_COLOSSUS_FROM_FAIRY_ENTR:
         {
@@ -920,6 +1342,20 @@ uint32_t EntranceHelper::CheckSpecialCase(uint8_t Game, uint32_t ID, uint32_t * 
             case OOT_MARKET_ENTRANCE_ADULT:
             {
                 *SceneID = OOT_MARKET_ENTRANCE;
+                break;
+            }
+
+            case OOT_TOMB_DAMPE_WINDMILL:
+            {
+                switch (ID)
+                {
+                    case OOT_KAKARIKO_FROM_WINDMILL_ENTR:
+                    case OOT_WINDMILL_ENTR:
+                    {
+                        *SceneID = OOT_WINDMILL;
+                        break;
+                    }
+                }
                 break;
             }
         }
@@ -1106,7 +1542,7 @@ uint32_t EntranceHelper::CheckWrapScene(uint8_t Game, uint32_t ID, uint32_t * Sc
 
     if (Game == OOT_GAME)
     {
-
+        
     }
     else if (Game == MM_GAME)
     {
@@ -1233,7 +1669,7 @@ void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[6])
 {
     if (this->IsEntranceTouched)
     {
-        if (this->IsNewCycle(Buffer) || this->IsSongOfDoubleTime(Buffer[1], Buffer[2]))
+        if (this->IsNewCycle(Buffer) || this->IsSongOfDoubleTime(Buffer[1], Buffer[2]) || this->IsSongOfTime(Buffer[1], Buffer[2]) || this->IsSunSong(Buffer[1], Buffer[2]))
         {   
             this->IsEntranceTouched = false;
             return;
@@ -1251,6 +1687,7 @@ void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[6])
         if (this->IsGrottoEntrance(inEntrance))
         {
             inEntrance = this->GetGrottoEntrance(game, grottoData, inEntrance, this->OutScene);
+            inScene = this->CorrectGrottoScene(game, inEntrance);
         }
         else if (this->IsGrottoExit(inEntrance))
         {
@@ -1270,7 +1707,13 @@ void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[6])
             entranceMeta = MMEntrances.at(inEntrance);
         }
 
-        this->EntranceStr = entranceMeta.FromName + std::string(" - ") + entranceMeta.ToName;
+        this->EntranceStr = entranceMeta.ToName + std::string(" - ") + entranceMeta.FromName;
+        float x, y, z;
+        memcpy(&x, &Buffer[3], sizeof(float));
+        memcpy(&y, &Buffer[4], sizeof(float));
+        memcpy(&z, &Buffer[5], sizeof(float));
+        MultiLogger::LogMessage("X = %f, Y = %f, Z = %f", x, y, z);
+
         MultiLogger::LogMessage("New scene Loaded ! From : %s (0x%X), To : %s (0x%X)", this->LastTouchedStr.c_str(), this->OutEntrance, this->EntranceStr.c_str(), inEntrance);
         
         if (this->OutMetaInf->Type == EntranceType::One_Way_In)
@@ -1358,6 +1801,7 @@ void EntranceHelper::ParseOutgoingMessage(uint8_t OwlID, uint32_t Buffer[6])
     {   // The current entrance is a grotto entrance
 
         this->OutEntrance = this->GetGrottoEntrance(this->OutGame, grottoData, this->OutEntrance, this->OutScene);
+        //this->OutScene = this->CorrectGrottoScene(this->OutGame, this->OutEntrance);
     }
     else if (this->IsGrottoExit(this->OutEntrance))
     {   // The current entrance is a grotto exit

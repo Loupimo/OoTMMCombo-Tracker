@@ -28,6 +28,8 @@ enum WarpSong
 	Requiem_of_Spirit = 3,		// OoT Value
 	Nocturne_of_Shadow = 4,		// OoT Value
 	Prelude_of_Light = 5,		// OoT Value
+	Song_of_Time = 0x0A,		// OoT Value
+	Sun_Song = 0x0900,			// OoT value, real value is 9 but as it is also the value for MM soaring I prefere to set it to 0x0900
 	Song_of_Soaring = 9,		// MM value
 	Song_of_Double_Time = 0x0D	// MM value
 };
@@ -133,6 +135,26 @@ public:
 	bool IsMMExtra(uint32_t Buffer[6]);
 
 	/*
+	*   Check if the given data come from a sun's song.
+	*
+	*	@param Scene		The current scene ID.
+	*	@param EntranceID	The current entrance ID.
+	*
+	*   @return <b>True</b> if the data come from a sun's song, <b>false</b> otherwise.
+	*/
+	bool IsSunSong(uint32_t Scene, uint32_t EntranceID);
+
+	/*
+	*   Check if the given data come from a song of time.
+	*
+	*	@param Scene		The current scene ID.
+	*	@param EntranceID	The current entrance ID.
+	*
+	*   @return <b>True</b> if the data come from a song of time, <b>false</b> otherwise.
+	*/
+	bool IsSongOfTime(uint32_t Scene, uint32_t EntranceID);
+
+	/*
 	*   Check if the given data come from a song of double time.
 	*
 	*	@param Scene		The current scene ID.
@@ -192,6 +214,28 @@ public:
 	*   @return The scene grotto associated to the touched exit.
 	*/
 	uint32_t GetGrottoExit(uint8_t Game, uint8_t CurrRoom, uint8_t GrottoData, uint32_t LastScene);
+	
+	/*
+	*   Get the exit grotto associated to the current last entrance ID.
+	*
+	*	@param Game			The game the data come from.
+	*	@param ID			The grotto entrance ID to get the scene from.
+	*
+	*   @return The scene grotto associated to the given grotto ID.
+	*/
+	uint32_t CorrectGrottoScene(uint8_t Game, uint32_t ID);
+
+	/*
+	*   Get the cumulative distance between the current player position and the given grotto entrance.
+	*
+	*	@param Grotto	The grotto entrance to use.
+	*	@param X		The X player position.
+	*	@param Y		The Y player position.
+	*	@param Z		The Z player position.
+	*
+	*   @return The cumulative distance between the current player position and the given grotto entrance.
+	*/
+	float GetDistanceGrottoEntrance(GrottoEntrance Grotto, float X, float Y, float Z);
 
 	/*
 	*   Get the warp song matching the entrance ID.
@@ -207,7 +251,6 @@ public:
 	uint32_t GetWarpSong(uint8_t * Game, uint32_t ID, uint8_t SongIndex, uint8_t OwlID, bool * IsWarpSong);
 
 
-	float GetDistanceGrottoEntrance(GrottoEntrance Grotto, float X, float Y, float Z);
 
 	/*
 	*   Check if the given entrance may match a grotto entrance.
