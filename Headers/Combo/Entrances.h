@@ -22,13 +22,14 @@ enum class EntranceType
 
 enum WarpSong
 {
-	Minuet_of_Forest = 0,
-	Bolero_of_Fire = 1,
-	Serenade_of_Water = 2,
-	Requiem_of_Spirit = 3,
-	Nocturne_of_Shadow = 4,
-	Prelude_of_Light = 5,
-	Song_of_Soaring = 9
+	Minuet_of_Forest = 0,		// OoT Value
+	Bolero_of_Fire = 1,			// OoT Value
+	Serenade_of_Water = 2,		// OoT Value
+	Requiem_of_Spirit = 3,		// OoT Value
+	Nocturne_of_Shadow = 4,		// OoT Value
+	Prelude_of_Light = 5,		// OoT Value
+	Song_of_Soaring = 9,		// MM value
+	Song_of_Double_Time = 0x0D	// MM value
 };
 
 
@@ -79,6 +80,7 @@ public:
 	uint8_t OutGame = NO_GAME;				// The game the last entrance ID comes from
 	uint32_t OutEntrance = 0;				// The last outgoing entrance ID
 	uint32_t OutScene = 0;					// The last outgoing scene ID
+	uint32_t * OutBuffer;					// The last original outgoing message buffer
 	EntranceMetaInfo* OutMetaInf = NULL;	// The last outgoing entrance meta information
 	bool IsEntranceTouched = false;			// Tells if the ID we have is from the touched entrance (true) or the loaded one (false)
 	std::string LastTouchedStr;				// The string matching the direction of the last touched entrance
@@ -112,6 +114,33 @@ public:
 
 public:
 
+	/*
+	*   Check if the given data are from a new cycle.
+	*
+	*	@param Buffer		The entrance message to parse.
+	*
+	*   @return <b>True</b> if the are from a new cycle, <b>false</b> otherwise.
+	*/
+	bool IsNewCycle(uint32_t Buffer[6]);
+
+	/*
+	*   Check if the given data are from a moon crash or MM song of time.
+	*
+	*	@param Buffer		The entrance message to parse.
+	*
+	*   @return <b>True</b> if the are from an extra scene, <b>false</b> otherwise.
+	*/
+	bool IsMMExtra(uint32_t Buffer[6]);
+
+	/*
+	*   Check if the given data come from a song of double time.
+	*
+	*	@param Scene		The current scene ID.
+	*	@param EntranceID	The current entrance ID.
+	*
+	*   @return <b>True</b> if the data come from a song of double time, <b>false</b> otherwise.
+	*/
+	bool IsSongOfDoubleTime(uint32_t Scene, uint32_t EntranceID);
 
 	/*
 	*   Check if the given entrance ID is from a grotto entrance.
@@ -130,16 +159,6 @@ public:
 	*   @return <b>True</b> if the ID is associated to a grotto exit, <b>false</b> otherwise.
 	*/
 	bool IsGrottoExit(uint32_t ID);
-
-	/*
-	*   Check if the given data ID are from a new cycle.
-	*
-	*	@param SceneID		The scene ID to test. It will be modified to WARP_SCENE if it is a new cycle.
-	*	@param Buffer		The entrance message to parse.
-	*
-	*   @return <b>True</b> if the are from a new cycle, <b>false</b> otherwise.
-	*/
-	bool IsNewCycle(uint32_t* SceneID, uint32_t Buffer[6]);
 
 	/*
 	*   Check if the given entrance ID is from a warp entrance.

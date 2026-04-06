@@ -52,7 +52,7 @@
 // Entrance stuff
 //#define OOT_SCENE_OFFSET     0x00001A68     // The offset to add to the real game address to reach the gLastScene for OoT
 //#define MM_SCENE_OFFSET     -0x00000118     // The offset to add to the real game address to reach the gLastScene for MM
-#define OOT_SCENE_OFFSET     0x00441A68     // The offset to add to the real game address to reach the gLastScene for OoT
+#define OOT_SCENE_OFFSET     0x00441A58     // The offset to add to the real game address to reach the gLastScene for OoT
 #define MM_SCENE_OFFSET      0x00770EC0     // The offset to add to the real game address to reach the gLastScene for MM
 #define OOT_NEXT_ENTRANCE    0x001DA2B8     // The offset to add to the real game address to reach the playState.nextEntrance for OoT
 #define MM_NEXT_ENTRANCE     0x003FF398     // The offset to add to the real game address to reach the playState.nextEntrance for MM

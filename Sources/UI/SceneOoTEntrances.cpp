@@ -1278,9 +1278,9 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 		}
 	},
 	{
-		OOT_TOMB_REDEAD,
+		OOT_TOMB_FAIRY,
 		{
-			OOT_TOMB_REDEAD,
+			OOT_TOMB_FAIRY,
 			{
 				{ OOT_GRAVE_SHIELD_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -1288,9 +1288,9 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 		}
 	},
 	{
-		OOT_TOMB_FAIRY,
+		OOT_TOMB_REDEAD,
 		{
-			OOT_TOMB_FAIRY,
+			OOT_TOMB_REDEAD,
 			{
 				{ OOT_GRAVE_REDEAD_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},

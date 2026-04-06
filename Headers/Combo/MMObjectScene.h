@@ -5104,9 +5104,9 @@ const size_t MM_ZORA_HALL_ROOMSNumOfObjs = 8;
 ObjectInfo MM_ZORA_HALL_ROOMSSceneObjects [MM_ZORA_HALL_ROOMSNumOfObjs] =
 {
 	{ ZORA_EVAN, MM_ZORA_HALL_ROOMS, "Evan", "MM Zora Hall Evan HP", ObjectType::npc, {385, 421, 0}, MM_ZORA_EVANS_ROOM, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
-	{ SCRUB_OCEAN, MM_ZORA_HALL_ROOMS, "Title Deed", "MM Zora Hall Scrub Deed", ObjectType::npc, {481, 296, 0}, MM_ZORA_HALL_ROOMS, ObjectType::scrub, ObjectIconMap::ocean, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
-	{ 0x1e, MM_ZORA_HALL_ROOMS, "Shell", "MM Zora Hall Scrub HP", ObjectType::collectible, {604, 257, 0}, MM_ZORA_HALL_ROOMS, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
-	{ SCRUB_SHOP_POTION_GREEN, MM_ZORA_HALL_ROOMS, "Scrub - Shop", "MM Zora Hall Scrub Shop", ObjectType::npc, {497, 296, 1}, MM_ZORA_HALL_ROOMS, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ SCRUB_OCEAN, MM_ZORA_HALL_ROOMS, "Title Deed", "MM Zora Hall Scrub Deed", ObjectType::npc, {481, 296, 0}, MM_ZORA_LULU_ROOM, ObjectType::scrub, ObjectIconMap::ocean, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x1e, MM_ZORA_HALL_ROOMS, "Shell", "MM Zora Hall Scrub HP", ObjectType::collectible, {604, 257, 0}, MM_ZORA_LULU_ROOM, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ SCRUB_SHOP_POTION_GREEN, MM_ZORA_HALL_ROOMS, "Scrub - Shop", "MM Zora Hall Scrub Shop", ObjectType::npc, {497, 296, 1}, MM_ZORA_LULU_ROOM, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
 	{ 0x13, MM_ZORA_HALL_ROOMS, "Item 1", "MM Zora Shop Item 1", ObjectType::shop, {497, 250, 0}, MM_ZORA_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
 	{ 0x14, MM_ZORA_HALL_ROOMS, "Item 2", "MM Zora Shop Item 2", ObjectType::shop, {476, 250, 0}, MM_ZORA_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
 	{ 0x15, MM_ZORA_HALL_ROOMS, "Item 3", "MM Zora Shop Item 3", ObjectType::shop, {455, 250, 0}, MM_ZORA_SHOP, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
@@ -5117,6 +5117,14 @@ const size_t MM_ZORA_EVANS_ROOMNumOfObjs = 1;
 ObjectInfo MM_ZORA_EVANS_ROOMSceneObjects [MM_ZORA_EVANS_ROOMNumOfObjs] =
 {
 	{ ZORA_EVAN, MM_ZORA_HALL_ROOMS, "Evan", "MM Zora Hall Evan HP", ObjectType::npc, {385, 421, 0}, MM_ZORA_EVANS_ROOM, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL }
+};
+
+const size_t MM_ZORA_LULU_ROOMNumOfObjs = 3;
+ObjectInfo MM_ZORA_LULU_ROOMSceneObjects [MM_ZORA_LULU_ROOMNumOfObjs] =
+{
+	{ SCRUB_OCEAN, MM_ZORA_HALL_ROOMS, "Title Deed", "MM Zora Hall Scrub Deed", ObjectType::npc, {481, 296, 0}, MM_ZORA_LULU_ROOM, ObjectType::scrub, ObjectIconMap::ocean, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x1e, MM_ZORA_HALL_ROOMS, "Shell", "MM Zora Hall Scrub HP", ObjectType::collectible, {604, 257, 0}, MM_ZORA_LULU_ROOM, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ SCRUB_SHOP_POTION_GREEN, MM_ZORA_HALL_ROOMS, "Scrub - Shop", "MM Zora Hall Scrub Shop", ObjectType::npc, {497, 296, 1}, MM_ZORA_LULU_ROOM, ObjectType::shop, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL }
 };
 
 const size_t MM_ZORA_SHOPNumOfObjs = 3;

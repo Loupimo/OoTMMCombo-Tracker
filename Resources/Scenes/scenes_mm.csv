@@ -60,7 +60,7 @@ MM_LOTTERY;Lottery;./Resources/MM/Clock_Town/Lottery.jpg;Clock_Town;false;mm
 MM_SNOWHEAD_SPRING;Snowhead, Spring;;None;false;mm
 MM_PIRATE_FORTRESS_ENTRANCE;Pirate's Fortress, Entrance;./Resources/MM/Fortress/Entrance.png;Fortress;false;mm
 MM_FISHERMAN_HUT;Fisherman's Hut;;None;false;mm
-MM_GORON_SHOP;Shop;./Resources/MM/Goron_Village/Shop.png;Goron_Village;false;mm
+MM_GORON_SHOP;Goron Shop;./Resources/MM/Goron_Village/Shop.png;Goron_Village;false;mm
 MM_DEKU_KING_CHAMBER;Deku King's Chamber;./Resources/MM/Deku_Palace/King.png;Deku_Palace;false;mm
 MM_MOON_GORON;Goron's Trial;;Moon;false;mm
 MM_ROAD_SOUTHERN_SWAMP;Road to Southern Swamp;./Resources/MM/Road_to_Southern_Swamp/Road.png;Southern_Swamp_Road;false;mm
@@ -75,7 +75,7 @@ MM_GORON_VILLAGE_SPRING;Goron's Village, Spring;;None;false;mm
 MM_TEMPLE_GREAT_BAY;Great Bay Temple;;Dungeons;false;mm
 MM_WATERFALL_RAPIDS;Waterfall Rapids;./Resources/MM/Zora_Cape/Waterfall_Rapids.png;Zora_Cape;false;mm
 MM_BENEATH_THE_WELL;Beneath the Well;./Resources/MM/Ikana_Canyon/Beneath_Well.png;Ikana_Canyon;false;mm
-MM_ZORA_HALL_ROOMS;Lulu's Room;./Resources/MM/Zora_Hall/Lulu_Room.png;Zora_Hall;false;mm
+MM_ZORA_HALL_ROOMS;Zora's Hall Rooms;;None;false;mm
 MM_GORON_VILLAGE_WINTER;Goron's Village;./Resources/MM/Goron_Village/Village.png;Goron_Village;false;mm
 MM_GORON_GRAVEYARD;Goron's Graveyard;./Resources/MM/Mountain_Village/Graveyard.png;Mountain_Village;false;mm
 MM_SAKON_HIDEOUT;Sakon's Hideout;./Resources/MM/Ikana_Canyon/Sakon_Hideout.png;Ikana_Canyon;false;mm
@@ -114,11 +114,11 @@ MM_CLOCK_TOWN_SOUTH;Clock Town, South;./Resources/MM/Clock_Town/South.png;Clock_
 MM_LAUNDRY_POOL;Laundry Pool;./Resources/MM/Clock_Town/Pool.png;Clock_Town;false;mm
 MM_EXTRA;Extra;;None;false;mm
 MM_LONE_PEAK;Lone Peak Shrine;./Resources/MM/Goron_Village/Lone_Peak_Shrine.png;Goron_Village;false;mm
-MM_ZORA_SHOP;Shop;./Resources/MM/Zora_Hall/Zora_Shop.png;Zora_Hall;false;mm
+MM_ZORA_SHOP;Zora Shop;./Resources/MM/Zora_Hall/Zora_Shop.png;Zora_Hall;false;mm
 MM_ZORA_EVANS_ROOM;Evans' Room;./Resources/MM/Zora_Hall/Evan_Room.png;Zora_Hall;false;mm
 MM_ZORA_JAPAS_ROOM;Japas' Room;;None;false;mm
 MM_ZORA_TIJO_ROOM;Tijo's Room;;None;false;mm
-MM_ZORA_LULU_ROOM;Lulu's Room;;None;false;mm
+MM_ZORA_LULU_ROOM;Lulu's Room;./Resources/MM/Zora_Hall/Lulu_Room.png;Zora_Hall;false;mm
 MM_ROMANI_RANCH_BARN;Stable;;None;false;mm
 MM_PIRATE_SEWERS;Sewers;;None;false;mm
 MM_PIRATE_SEWERS;Warp Owls;;None;false;mm

@@ -47,7 +47,8 @@ static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
                                                                                   { OOT_GROTTO_EXIT_TEKTITE,              -4945, -300,  2835 } } },
     { OOT_GERUDO_VALLEY_FROM_FIELD_ENTR,        std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_OCTOROK,                280, -555,  1470 } } },
     { OOT_GERUDO_VALLEY_FROM_TENT_ENTR,         std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_SCRUBS2_VALLEY,       -1323,   15,  -969 } } },
-    { OOT_GERUDO_FORTRESS_FROM_VALLEY_ENTR,     std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_FAIRY_FORTRESS,         376,  333, -1564 } } },
+    { OOT_GERUDO_FORTRESS_FROM_VALLEY_ENTR,     std::vector<GrottoEntrance>() = { { OOT_GERUDO_FORTRESS_FROM_VALLEY_ENTR,  -842,    3,   -84 },
+                                                                                  { OOT_GROTTO_EXIT_FAIRY_FORTRESS,         376,  333, -1564 }} },
     { OOT_DESERT_COLOSSUS_FROM_FAIRY_ENTR,      std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_SCRUBS2_COLOSSUS,        60,  -32, -1300 } } },
 
 
@@ -116,14 +117,67 @@ void EntranceHelper::ResetEntranceHelper()
 }
 
 
-bool EntranceHelper::IsNewCycle(uint32_t * SceneID, uint32_t Buffer[6])
+bool EntranceHelper::IsNewCycle(uint32_t Buffer[6])
 {
-    if (*SceneID == 0 && Buffer[3] == 0 && Buffer[4] == 0 && Buffer[5] == 0)
+    if ((Buffer[0] & 0xFF) == MM_GAME && Buffer[1] == 0)
     {
-        *SceneID = WARP_SCENE;
         return true;
     }
     return false;
+}
+
+
+bool EntranceHelper::IsMMExtra(uint32_t Buffer[6])
+{
+    switch (Buffer[0] & 0xFF)
+    {
+        case MM_GAME:
+        {
+            switch (Buffer[1])
+            {   // Scene ID
+
+                case MM_EXTRA:
+                case MM_CUTSCENE_MAP:
+                {
+                    return true;
+                }
+
+                default:
+                {
+                    break;
+                }
+            }
+
+            switch (Buffer[2])
+            {   // Entrance ID
+
+                case MM_CLOCK_TOWER_MOON_CRASH_ENTR:
+                case MM_CLOCK_TOWN_FROM_SONG_OF_TIME_ENTR:
+                {
+                    return true;
+                }
+
+                default:
+                {
+                    break;
+                }
+            }
+
+            break;
+        }
+
+        default:
+        {
+            break;
+        }
+    }
+    return false;
+}
+
+
+bool EntranceHelper::IsSongOfDoubleTime(uint32_t Scene, uint32_t EntranceID)
+{
+    return ((this->OutBuffer[0] & 0xFF000000) >> 24) == WarpSong::Song_of_Double_Time && Scene == this->OutBuffer[1] && EntranceID == this->OutBuffer[2];
 }
 
 
@@ -965,6 +1019,48 @@ uint32_t EntranceHelper::CheckSpecialCase(uint8_t Game, uint32_t ID, uint32_t * 
                     }
                 }
             }
+
+            case MM_CUTSCENE_MAP:
+            {
+                *SceneID = MM_EXTRA;
+                break;
+            }
+
+            case MM_ZORA_HALL_ROOMS:
+            {
+                switch (ID)
+                {
+                    case MM_ROOM_EVANS_ENTR:
+                    {
+                        *SceneID = MM_ZORA_EVANS_ROOM;
+                        break;
+                    }
+
+                    case MM_ROOM_JAPAS_ENTR:
+                    {
+                        *SceneID = MM_ZORA_JAPAS_ROOM;
+                        break;
+                    }
+
+                    case MM_ROOM_TIJO_ENTR:
+                    {
+                        *SceneID = MM_ZORA_TIJO_ROOM;
+                        break;
+                    }
+
+                    case MM_ROOM_LULU_ENTR:
+                    {
+                        *SceneID = MM_ZORA_LULU_ROOM;
+                        break;
+                    }
+
+                    case MM_ZORA_SHOP_ENTR:
+                    {
+                        *SceneID = MM_ZORA_SHOP;
+                        break;
+                    }
+                }
+            }
         }
     }
 
@@ -985,7 +1081,31 @@ uint32_t EntranceHelper::CheckWrapScene(uint8_t Game, uint32_t ID, uint32_t * Sc
     }
     else if (Game == MM_GAME)
     {
-        float tmpDist = 0.0f, bestDist = this->GetDistanceGrottoEntrance(SpecialWarps[0], x, y, z);
+        switch (*SceneID)
+        {
+            case MM_DEKU_KING_CHAMBER:
+            {
+                return MM_DEKU_KING_CAUGHT;
+            }
+
+            case MM_PIRATE_FORTRESS_ENTRANCE:
+            {
+                return MM_PIRATE_ENTRANCE_CAUGHT;
+            }
+
+            case MM_LAIR_GOHT:
+            {
+                return MM_BOSS_TEMPLE_SNOWHEAD_WARP_OUT;
+            }
+
+            case MM_CLOCK_TOWN_SOUTH:
+            {
+                *SceneID = WARP_SCENE;
+                return ID;
+            }
+        }
+
+        /*float tmpDist = 0.0f, bestDist = this->GetDistanceGrottoEntrance(SpecialWarps[0], x, y, z);
         ID = SpecialWarps[0].EntranceID;
 
         for (size_t i = 1; i < SpecialWarps.size(); i++)
@@ -1023,7 +1143,7 @@ uint32_t EntranceHelper::CheckWrapScene(uint8_t Game, uint32_t ID, uint32_t * Sc
                 *SceneID = MM_LAIR_GOHT;
                 break;
             }
-        }
+        }*/
         /*
         for (size_t i = 0; i < SpecialWarps.size(); i++)
         {
@@ -1075,13 +1195,10 @@ void EntranceHelper::ParseEntranceMessage(uint32_t EntranceFlag, uint32_t Buffer
 
 void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[6])
 {
-
     if (this->IsEntranceTouched)
     {
-        if (this->IsNewCycle(&Buffer[1], Buffer))
-        //if (Buffer[1] == WARP_SCENE && Buffer[2] != WARP_LOADING)
-        {   // On MM when warping, the scene is always equal to WARP_SCENE so we still want to be able to catch the WARP_SONG events. However we want to get rid of new clock day
-
+        if (this->IsNewCycle(Buffer) || this->IsSongOfDoubleTime(Buffer[1], Buffer[2]))
+        {   
             this->IsEntranceTouched = false;
             return;
         }
@@ -1181,13 +1298,14 @@ void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[6])
 
 void EntranceHelper::ParseOutgoingMessage(uint8_t OwlID, uint32_t Buffer[6])
 {
-    /*if (this->IsNewCycle(&Buffer[1], Buffer))
+    this->OutBuffer = Buffer;
+    if (this->IsMMExtra(Buffer))
     //if (Buffer[1] == WARP_SCENE && Buffer[2] != WARP_LOADING)
     {   // On MM when warping, the scene is always equal to WARP_SCENE so we still want to be able to catch the WARP_SONG events. However we want to get rid of new clock day
 
         this->IsEntranceTouched = false;
         return;
-    }*/
+    }
 
     this->IsEntranceTouched = true;
     this->OutGame = Buffer[0] & 0xFF;
@@ -1219,6 +1337,13 @@ void EntranceHelper::ParseOutgoingMessage(uint8_t OwlID, uint32_t Buffer[6])
         if (!isWarpSong)
         {
             this->OutEntrance = this->CheckWrapScene(this->OutGame, this->OutEntrance, &this->OutScene, Buffer[3], Buffer[4], Buffer[5]);
+
+            if (this->OutScene == WARP_SCENE)
+            {   // We don't want to catch this
+
+                this->IsEntranceTouched = false;
+                return;
+            }
         }
     }
 
