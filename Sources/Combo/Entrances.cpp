@@ -6,12 +6,12 @@
 #include <math.h>
 
 // Contains all warp positions used to determine the correct entrance when spawning using a warp method (boss warp, songs, caught, ...)
-static const std::vector<GrottoEntrance> SpecialWarps =
+/*static const std::vector<GrottoEntrance> SpecialWarps =
 {
     { MM_DEKU_KING_CAUGHT, -6, 0, -323 },                   // Deku's King caught
     { MM_PIRATE_ENTRANCE_CAUGHT, -2808, 14, 130 },          // Pirate entrance caught
     { MM_BOSS_TEMPLE_SNOWHEAD_WARP_OUT, 1384, 0, -1396 }    // Goht's win warp crystal
-};
+};*/
 
 // Contains all grotto entrances positions used to determine the correct entrance when spawning in a zone that has at least one grotto
 static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
@@ -69,8 +69,10 @@ static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
                                                                                       { MM_GROTTO_EXIT_GOSSIPS_SWAMP,                     -1592, -222,  4622 },
                                                                                       { MM_GROTTO_EXIT_PEAHAT,                            -2317, -221,  3418 } } },
     { MM_SWAMP_ROAD_FROM_FIELD_ENTR,                std::vector<GrottoEntrance>() = { { MM_SWAMP_ROAD_FROM_FIELD_ENTR,                      331, -143,   245 },
+                                                                                      { MM_SWAMP_ROAD_FROM_SWAMP_ENTR,                      413, -236,  3853 },
                                                                                       { MM_GROTTO_EXIT_GENERIC_PATH_SWAMP,                  104, -182,  2202 }, } },
     { MM_SWAMP_FROM_SPIDER_HOUSE_ENTR,              std::vector<GrottoEntrance>() = { { MM_SWAMP_FROM_SPIDER_HOUSE_ENTR,                  -1049,   12,  2042 },
+                                                                                      { MM_SWAMP_FROM_ROAD_ENTR,                           -191,   61, -1410 },
                                                                                       { MM_GROTTO_EXIT_GENERIC_SWAMP,                     -1700,   38,  1800 }} },
     { MM_MYSTERY_WOODS_ENTR,                        std::vector<GrottoEntrance>() = { { MM_MYSTERY_WOODS_ENTR,                              274,    0,     0 },
                                                                                       { MM_GROTTO_EXIT_GENERIC_WOODS,                         2,    0,  -889 } } },
@@ -768,12 +770,6 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
             break;
         }
 
-        case MM_SWAMP_ROAD_FROM_FIELD_ENTR:
-        case MM_SWAMP_FROM_SPIDER_HOUSE_ENTR:
-        case MM_MYSTERY_WOODS_ENTR:
-        case MM_WARP_OWL_MOUNTAIN_VILLAGE_ENTR:
-        case MM_TWIN_ISLANDS_FROM_MOUNTAIN_VILLAGE_ENTR:
-
         case MM_GREAT_BAY_COAST_FROM_LABORATORY_ENTR:
         case MM_GREAT_BAY_COAST_FROM_FISHER_HUT_ENTR:
         case MM_GREAT_BAY_COAST_FROM_FIELD_ENTR:
@@ -782,6 +778,23 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
             break;
         }
 
+        case MM_SWAMP_FROM_ROAD_ENTR:
+        case MM_SWAMP_FROM_SPIDER_HOUSE_ENTR:
+        {
+            ID = MM_SWAMP_FROM_SPIDER_HOUSE_ENTR;
+            break;
+        }
+
+        case MM_SWAMP_ROAD_FROM_SWAMP_ENTR:
+        case MM_SWAMP_ROAD_FROM_FIELD_ENTR:
+        {
+            ID = MM_SWAMP_ROAD_FROM_FIELD_ENTR;
+            break;
+        }
+
+        case MM_MYSTERY_WOODS_ENTR:
+        case MM_WARP_OWL_MOUNTAIN_VILLAGE_ENTR:
+        case MM_TWIN_ISLANDS_FROM_MOUNTAIN_VILLAGE_ENTR:
         case MM_ZORA_CAPE_FROM_GREAT_BAY_COAST_ENTR:
         case MM_IKANA_ROAD_FROM_FIELD_ENTR:
         case MM_IKANA_GRAVEYARD_FROM_DAMPE_ENTR:
@@ -1017,7 +1030,23 @@ uint32_t EntranceHelper::CheckSpecialCase(uint8_t Game, uint32_t ID, uint32_t * 
                         *SceneID = MM_LONE_PEAK;
                         break;
                     }
+
+                    /*case MM_GROTTO_JP_CLIMB_RIGHT_ENTR:
+                    case MM_GROTTO_JP_CLIMB_LEFT_ENTR:
+                    {
+                        *SceneID = MM_GROTTO_DEKU_PALACE_CLIMB;
+                        break;
+                    }
+
+                    case MM_GROTTO_JP_LINE_START_ENTR:
+                    case MM_GROTTO_JP_LINE_END_ENTR:
+                    {
+                        *SceneID = MM_GROTTO_DEKU_PALACE_GENERIC;
+                        * break;
+                    }*/
                 }
+
+                break;
             }
 
             case MM_CUTSCENE_MAP:
@@ -1083,14 +1112,21 @@ uint32_t EntranceHelper::CheckWrapScene(uint8_t Game, uint32_t ID, uint32_t * Sc
     {
         switch (*SceneID)
         {
+            case MM_DEKU_PALACE:
             case MM_DEKU_KING_CHAMBER:
             {
-                return MM_DEKU_KING_CAUGHT;
+                return MM_DEKU_PALACE_CAUGHT;
             }
 
             case MM_PIRATE_FORTRESS_ENTRANCE:
             {
                 return MM_PIRATE_ENTRANCE_CAUGHT;
+            }
+
+            case MM_PIRATE_FORTRESS_INTERIOR:
+            case MM_PIRATE_FORTRESS_EXTERIOR:
+            {
+                return MM_PIRATE_ENTRANCE_FROM_EXTERIOR_CAUGHT;
             }
 
             case MM_LAIR_GOHT:
@@ -1234,7 +1270,7 @@ void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[6])
             entranceMeta = MMEntrances.at(inEntrance);
         }
 
-        this->EntranceStr = entranceMeta.FromName + std::string(" -> ") + entranceMeta.ToName;
+        this->EntranceStr = entranceMeta.FromName + std::string(" - ") + entranceMeta.ToName;
         MultiLogger::LogMessage("New scene Loaded ! From : %s (0x%X), To : %s (0x%X)", this->LastTouchedStr.c_str(), this->OutEntrance, this->EntranceStr.c_str(), inEntrance);
         
         if (this->OutMetaInf->Type == EntranceType::One_Way_In)

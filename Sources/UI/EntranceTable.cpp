@@ -60,7 +60,8 @@ void GlobalEntranceTableModel::setScenes(const std::map<uint32_t, SceneEntranceM
     }
 
     // Trier par SceneID puis EntranceID
-
+    this->sort(0, Qt::AscendingOrder);
+    /*
     // Trier
     std::sort(
         m_rows.begin(),
@@ -72,7 +73,7 @@ void GlobalEntranceTableModel::setScenes(const std::map<uint32_t, SceneEntranceM
                 return a.SceneID < b.SceneID;
 
             return a.EntranceID < b.EntranceID;
-        });
+        });*/
 
         // NOUVEAU
     rebuildRowColors();
@@ -506,57 +507,6 @@ EntranceTab::EntranceTab(QTabWidget* parent) : QTabWidget(parent)
     this->TabName = "Entrances";
     this->OoTEntranceTab = new EntranceTableView(OOT_GAME, "OoT", this);
     this->MMEntranceTab = new EntranceTableView(MM_GAME, "MM", this);
-    //this->OoTEntranceModel = new GlobalEntranceTableModel(OOT_GAME, "OoT", this);
-    //this->MMEntranceModel = new GlobalEntranceTableModel(MM_GAME, "MM", this);
-    //this->OoTEntranceTab = new QTableView(this);
-    //this->MMEntranceTab = new QTableView(this);
-
-    //this->OoTEntranceTab->setModel(this->OoTEntranceModel);
-    //this->MMEntranceTab->setModel(this->MMEntranceModel);
-    /*
-
-    this->OoTEntranceTab->setSortingEnabled(true);
-    this->MMEntranceTab->setSortingEnabled(true);
-    this->OoTEntranceTab->setAlternatingRowColors(true);
-    this->MMEntranceTab->setAlternatingRowColors(true);
-    this->OoTEntranceTab->horizontalHeader()->setStretchLastSection(true);
-    this->MMEntranceTab->horizontalHeader()->setStretchLastSection(true);
-    this->OoTEntranceModel->sort(0, Qt::AscendingOrder);
-    this->MMEntranceModel->sort(0, Qt::AscendingOrder);
-    this->OoTEntranceTab->horizontalHeader()->setSortIndicatorShown(true);
-    this->MMEntranceTab->horizontalHeader()->setSortIndicatorShown(true);
-    this->OoTEntranceTab->setAlternatingRowColors(false);
-    this->MMEntranceTab->setAlternatingRowColors(false);
-    this->OoTEntranceTab->horizontalHeader()->setStretchLastSection(true);
-    this->MMEntranceTab->horizontalHeader()->setStretchLastSection(true);
-    this->OoTEntranceTab->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
-    this->MMEntranceTab->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
-    this->OoTEntranceTab->verticalHeader()->setDefaultSectionSize(20);
-    this->MMEntranceTab->verticalHeader()->setDefaultSectionSize(20);*/
-    /*this->OoTEntranceTab->sortByColumn(0, Qt::AscendingOrder);
-    this->MMEntranceTab->sortByColumn(0, Qt::AscendingOrder);
-
-
-    this->OoTEntranceTab->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
-    this->OoTEntranceTab->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
-    this->OoTEntranceTab->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
-    this->OoTEntranceTab->horizontalHeader()->setSectionResizeMode(3, QHeaderView::Stretch);
-
-    this->MMEntranceTab->horizontalHeader()->setSectionResizeMode(
-        0,
-        QHeaderView::ResizeToContents);
-
-    this->MMEntranceTab->horizontalHeader()->setSectionResizeMode(
-        1,
-        QHeaderView::ResizeToContents);
-
-    this->MMEntranceTab->horizontalHeader()->setSectionResizeMode(
-        2,
-        QHeaderView::Stretch);
-
-    this->MMEntranceTab->horizontalHeader()->setSectionResizeMode(
-        3,
-        QHeaderView::Stretch);*/
 
     this->addTab(this->OoTEntranceTab, this->OoTEntranceTab->TabName);
     this->addTab(this->MMEntranceTab, this->MMEntranceTab->TabName);
