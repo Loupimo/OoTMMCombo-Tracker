@@ -50,8 +50,10 @@
 #define MM_BUTTERFLY_ID      0x00000015     // The MM butterfly actor ID.
 
 // Entrance stuff
-#define OOT_SCENE_OFFSET     0x00001A68     // The offset to add to the real game address to reach the gLastScene for OoT
-#define MM_SCENE_OFFSET     -0x00000118     // The offset to add to the real game address to reach the gLastScene for MM
+//#define OOT_SCENE_OFFSET     0x00001A68     // The offset to add to the real game address to reach the gLastScene for OoT
+//#define MM_SCENE_OFFSET     -0x00000118     // The offset to add to the real game address to reach the gLastScene for MM
+#define OOT_SCENE_OFFSET     0x00441A68     // The offset to add to the real game address to reach the gLastScene for OoT
+#define MM_SCENE_OFFSET      0x00770EC0     // The offset to add to the real game address to reach the gLastScene for MM
 #define OOT_NEXT_ENTRANCE    0x001DA2B8     // The offset to add to the real game address to reach the playState.nextEntrance for OoT
 #define MM_NEXT_ENTRANCE     0x003FF398     // The offset to add to the real game address to reach the playState.nextEntrance for MM
 #define OOT_OWL_CHOICE_ID    0x001D8E4A     // The offset to add to the real game address to reach the playState.pauseCtx.cursorSlot[1] for OoT

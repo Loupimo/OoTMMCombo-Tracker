@@ -19,7 +19,7 @@ SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 	{ "Ice Cavern", "./Resources/OoT/Dungeons/Ice/ICE.jpg", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
 	{ "Ganon Tower", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
 	{ "Gerudo Training Ground", "./Resources/OoT/Dungeons/GTG/GTG.jpg", (uint8_t)OoTRegions::Gerudo_Fortress, false, GameLayout::oot},
-	{ "Thieves Hideout", "./Resources/OoT/Gerudo_Fortress/Hideout.png", (uint8_t)OoTRegions::Gerudo_Fortress, false, GameLayout::oot},
+	{ "Thieves' Hideout", "./Resources/OoT/Gerudo_Fortress/Hideout.png", (uint8_t)OoTRegions::Gerudo_Fortress, false, GameLayout::oot},
 	{ "Inside Ganon Castle", "./Resources/OoT/Ganon/GT_1F.jpg", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
 	{ "Ganon Tower - Collapsing", "", (uint8_t)OoTRegions::None, false, GameLayout::oot},
 	{ "Inside Ganon Castle - Collapsing", "", (uint8_t)OoTRegions::None, false, GameLayout::oot},
@@ -52,11 +52,11 @@ SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 	{ "Carpenters Boss's House", "", (uint8_t)OoTRegions::None, false, GameLayout::oot},
 	{ "Back Alley's House", "./Resources/OoT/Market/Back_Alley_House.png", (uint8_t)OoTRegions::Market, false, GameLayout::oot},
 	{ "Bazaar", "", (uint8_t)OoTRegions::None, false, GameLayout::oot},
-	{ "Shop", "./Resources/OoT/Kokiri_Forest/Shop.png", (uint8_t)OoTRegions::Kokiri_Forest, false, GameLayout::oot},
-	{ "Shop", "./Resources/OoT/Goron_City/Shop.png", (uint8_t)OoTRegions::Goron_City, false, GameLayout::oot},
-	{ "Shop", "./Resources/OoT/Zora_Domain/Shop.png", (uint8_t)OoTRegions::Zora_Domain, false, GameLayout::oot},
-	{ "Potion Shop", "./Resources/OoT/Kakariko/Potion_Shop.png", (uint8_t)OoTRegions::Kakariko, false, GameLayout::oot},
-	{ "Potion Shop", "./Resources/OoT/Market/Potion_Shop.png", (uint8_t)OoTRegions::Market, false, GameLayout::oot},
+	{ "Kokiri Shop", "./Resources/OoT/Kokiri_Forest/Shop.png", (uint8_t)OoTRegions::Kokiri_Forest, false, GameLayout::oot},
+	{ "Goron Shop", "./Resources/OoT/Goron_City/Shop.png", (uint8_t)OoTRegions::Goron_City, false, GameLayout::oot},
+	{ "Zora Shop", "./Resources/OoT/Zora_Domain/Shop.png", (uint8_t)OoTRegions::Zora_Domain, false, GameLayout::oot},
+	{ "Kakariko Potion Shop", "./Resources/OoT/Kakariko/Potion_Shop.png", (uint8_t)OoTRegions::Kakariko, false, GameLayout::oot},
+	{ "Market Potion Shop", "./Resources/OoT/Market/Potion_Shop.png", (uint8_t)OoTRegions::Market, false, GameLayout::oot},
 	{ "Bombchu Shop", "./Resources/OoT/Market/Bombchu_Shop.png", (uint8_t)OoTRegions::Market, false, GameLayout::oot},
 	{ "Happy Mask Shop", "", (uint8_t)OoTRegions::None, false, GameLayout::oot},
 	{ "Link's House", "./Resources/OoT/Kokiri_Forest/Link_House.png", (uint8_t)OoTRegions::Kokiri_Forest, true, GameLayout::oot},
@@ -147,6 +147,7 @@ SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 	{ "Great Fairy Fountain", "./Resources/OoT/Fairy/Great_Fairy.png", (uint8_t)OoTRegions::Desert_Colossus, false, GameLayout::oot},
 	{ "Great Fairy Fountain", "./Resources/OoT/Fairy/Great_Fairy.png", (uint8_t)OoTRegions::Death_Mountain_Trail, false, GameLayout::oot},
 	{ "Great Fairy Fountain", "./Resources/OoT/Fairy/Great_Fairy.png", (uint8_t)OoTRegions::Death_Mountain_Crater, false, GameLayout::oot},
+	{ "Great Fairy Fountain", "", (uint8_t)OoTRegions::None, false, GameLayout::oot},
 	{ "Bazaar", "./Resources/OoT/Kakariko/Bazaar.png", (uint8_t)OoTRegions::Kakariko, false, GameLayout::oot},
 	{ "Bazaar", "./Resources/OoT/Market/Bazaar.png", (uint8_t)OoTRegions::Market, false, GameLayout::oot},
 	{ "Shooting Gallery", "./Resources/OoT/Kakariko/Shooting.png", (uint8_t)OoTRegions::Kakariko, false, GameLayout::oot},
@@ -316,7 +317,8 @@ SceneMetaInfo MMScenesMetaInfo[MM_NUM_SCENES] =
 	{ "Generic Grotto", "./Resources/MM/Deku_Palace/JP_Grotto_2.jpg", (uint8_t)MMRegions::Deku_Palace, false, GameLayout::mm},
 	{ "Climb Grotto", "", (uint8_t)MMRegions::None, false, GameLayout::mm},
 	{ "Mountain Village", "./Resources/MM/Mountain_Village/Village.png", (uint8_t)MMRegions::Mountain_Village, true, GameLayout::mm},
-	{ "Twin Islands", "./Resources/MM/Twin_Islands/Twins.png", (uint8_t)MMRegions::Twin_Islands, true, GameLayout::mm}
+	{ "Twin Islands", "./Resources/MM/Twin_Islands/Twins.png", (uint8_t)MMRegions::Twin_Islands, true, GameLayout::mm},
+	{ "Goron's Village", "", (uint8_t)MMRegions::None, false, GameLayout::mm }
 };
 
 #pragma endregion

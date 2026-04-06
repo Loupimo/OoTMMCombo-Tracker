@@ -5,13 +5,17 @@
 #include "Multi/Multi.h"
 #include <math.h>
 
-static const std::vector<GrottoEntrance> SpecialWarps = {
-    { MM_DEKU_KING_CAUGHT, -6, 0, -323 },
-    { MM_PIRATE_ENTRANCE_CAUGHT, -2808.5535f, 14, 130.12534f}
+// Contains all warp positions used to determine the correct entrance when spawning using a warp method (boss warp, songs, caught, ...)
+static const std::vector<GrottoEntrance> SpecialWarps =
+{
+    { MM_DEKU_KING_CAUGHT, -6, 0, -323 },                   // Deku's King caught
+    { MM_PIRATE_ENTRANCE_CAUGHT, -2808, 14, 130 },          // Pirate entrance caught
+    { MM_BOSS_TEMPLE_SNOWHEAD_WARP_OUT, 1384, 0, -1396 }    // Goht's win warp crystal
 };
 
-static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances = {
-   
+// Contains all grotto entrances positions used to determine the correct entrance when spawning in a zone that has at least one grotto
+static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
+{   
     { OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR,   std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_GENERIC_KOKIRI_FOREST, -512,  380, -1224 } } },
     { OOT_LOST_WOODS_FROM_KOKIRI_FOREST_ENTR,   std::vector<GrottoEntrance>() = { { OOT_GROTTO_EXIT_GENERIC_LOST_WOODS,     915,    0,  -925 }, 
                                                                                   { OOT_GROTTO_EXIT_SCRUB_UPGRADE,          670,    0, -2520 } } },
@@ -48,17 +52,17 @@ static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances = {
 
 
 
-    { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_NORTH_ENTR,  std::vector<GrottoEntrance>() = { { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_NORTH_ENTR,       -400,   48, -2520 },
+    { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_SOUTH_ENTR,  std::vector<GrottoEntrance>() = { { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_NORTH_ENTR,       -400,   48, -2520 },
                                                                                       { MM_GROTTO_EXIT_GOSSIPS_MOUNTAIN,                    192,   48, -3138 },
-                                                                                      { MM_GROTTO_EXIT_DODONGO,                           -2425, -281, -3291 } } },
-    { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_WEST_ENTR,   std::vector<GrottoEntrance>() = { { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_WEST_ENTR,       -2400,   68,  -400 },
+                                                                                      { MM_GROTTO_EXIT_DODONGO,                           -2425, -281, -3291 },
+                                                                                      { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_WEST_ENTR,       -2400,   68,  -400 },
                                                                                       { MM_GROTTO_EXIT_GOSSIPS_OCEAN,                     -2782,   48, -1654 },
-                                                                                      { MM_GROTTO_EXIT_BIO_BABA,                          -5159, -281,  -571 } } },
-    { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_EAST_ENTR,   std::vector<GrottoEntrance>() = { { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_EAST_ENTR,        1672,   68,  -394 },
+                                                                                      { MM_GROTTO_EXIT_BIO_BABA,                          -5159, -281,  -571 },
+                                                                                      { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_EAST_ENTR,        1672,   68,  -394 },
                                                                                       { MM_GROTTO_EXIT_GENERIC_FIELD_PILLAR,               2367,  315,  -192 },
                                                                                       { MM_GROTTO_EXIT_GOSSIPS_CANYON,                     4450,  254,   925 },
-                                                                                      { MM_GROTTO_EXIT_SCRUB,                              3223,  219,  1417 } } },
-    { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_SOUTH_ENTR,  std::vector<GrottoEntrance>() = { { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_SOUTH_ENTR,       -412,  -77,  1681 },
+                                                                                      { MM_GROTTO_EXIT_SCRUB,                              3223,  219,  1417 },
+                                                                                      { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_SOUTH_ENTR,       -412,  -77,  1681 },
                                                                                       { MM_GROTTO_EXIT_GENERIC_GRASS,                      1012, -221,  3642 },
                                                                                       { MM_GROTTO_EXIT_COW_FIELD,                          -375, -222,  3976 },
                                                                                       { MM_GROTTO_EXIT_GOSSIPS_SWAMP,                     -1592, -222,  4622 },
@@ -78,8 +82,9 @@ static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances = {
     { MM_PATH_SNOWHEAD_FROM_SNOWHEAD_ENTR,          std::vector<GrottoEntrance>() = { { MM_PATH_SNOWHEAD_FROM_SNOWHEAD_ENTR,              -2518,  550, -3441 },
                                                                                       { MM_GROTTO_EXIT_GENERIC_PATH_SNOWHEAD,              -987,  360, -2339 }, } },
     { MM_GREAT_BAY_COAST_FROM_FISHER_HUT_ENTR,      std::vector<GrottoEntrance>() = { { MM_GREAT_BAY_COAST_FROM_FISHER_HUT_ENTR,           1137,   92,  4635 },
-                                                                                      { MM_GROTTO_EXIT_GENERIC_GREAT_BAY_COAST,            1359,   80,  5018 } } },
-    { MM_GREAT_BAY_COAST_FROM_LABORATORY_ENTR,      std::vector<GrottoEntrance>() = { { MM_GREAT_BAY_COAST_FROM_LABORATORY_ENTR,          -3080,  240,  4080 },
+                                                                                      { MM_GREAT_BAY_COAST_FROM_FIELD_ENTR,                3585,   80,  4394 },
+                                                                                      { MM_GROTTO_EXIT_GENERIC_GREAT_BAY_COAST,            1359,   80,  5018 },
+                                                                                      { MM_GREAT_BAY_COAST_FROM_LABORATORY_ENTR,          -3080,  240,  4080 },
                                                                                       { MM_GROTTO_EXIT_COW_COAST,                          2077,  333,  -215 } } },
     { MM_ZORA_CAPE_FROM_GREAT_BAY_COAST_ENTR,       std::vector<GrottoEntrance>() = { { MM_ZORA_CAPE_FROM_GREAT_BAY_COAST_ENTR,              92,   12,   333 },
                                                                                       { MM_GROTTO_EXIT_GENERIC_ZORA_CAPE,                  -562,   80,  2707 } } },
@@ -108,6 +113,17 @@ void EntranceHelper::ResetEntranceHelper()
 {
     this->OutEntrance = 0;
     this->IsEntranceTouched = false;
+}
+
+
+bool EntranceHelper::IsNewCycle(uint32_t * SceneID, uint32_t Buffer[6])
+{
+    if (*SceneID == 0 && Buffer[3] == 0 && Buffer[4] == 0 && Buffer[5] == 0)
+    {
+        *SceneID = WARP_SCENE;
+        return true;
+    }
+    return false;
 }
 
 
@@ -422,14 +438,17 @@ uint32_t EntranceHelper::GetGrottoExit(uint8_t Game, uint8_t CurrRoom, uint8_t G
 }
 
 
-uint32_t EntranceHelper::GetWarpSong(uint8_t * Game, uint32_t ID, uint8_t SongIndex, uint8_t OwlID)
+uint32_t EntranceHelper::GetWarpSong(uint8_t * Game, uint32_t ID, uint8_t SongIndex, uint8_t OwlID, bool * IsWarpSong)
 {
+    *IsWarpSong = true;
+
     if (*Game == OOT_GAME)
     {
         switch ((WarpSong)SongIndex)
         {
             case WarpSong::Minuet_of_Forest:
             {
+
                 return OOT_MINUET_OF_FOREST_SONG;
             }
 
@@ -515,6 +534,7 @@ uint32_t EntranceHelper::GetWarpSong(uint8_t * Game, uint32_t ID, uint8_t SongIn
 
                     default:
                     {
+                        *IsWarpSong = false;
                         break;
                     }
                 }
@@ -522,6 +542,7 @@ uint32_t EntranceHelper::GetWarpSong(uint8_t * Game, uint32_t ID, uint8_t SongIn
 
             default:
             {
+                *IsWarpSong = false;
                 break;
             }
         }
@@ -613,6 +634,7 @@ uint32_t EntranceHelper::GetWarpSong(uint8_t * Game, uint32_t ID, uint8_t SongIn
 
                     default:
                     {
+                        *IsWarpSong = false;
                         break;
                     }
                 }
@@ -620,12 +642,24 @@ uint32_t EntranceHelper::GetWarpSong(uint8_t * Game, uint32_t ID, uint8_t SongIn
 
             default:
             {
+                *IsWarpSong = false;
                 break;
             }
         }
     }
 
     return ID;
+}
+
+
+float EntranceHelper::GetDistanceGrottoEntrance(GrottoEntrance Grotto, float X, float Y, float Z)
+{
+    float xDist = fabsf(X - Grotto.SpawnPos[0]);
+    float yDist = fabsf(Y - Grotto.SpawnPos[1]);
+    float zDist = fabsf(Z - Grotto.SpawnPos[2]);
+
+    MultiLogger::LogMessage("Entrance ID = 0x%08X, X dist = %f, Y dist = %f, Z dist = %f, Total = %f", Grotto.EntranceID, xDist, yDist, zDist, xDist + yDist + zDist);
+    return xDist + yDist + zDist;
 }
 
 
@@ -661,9 +695,13 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case OOT_GERUDO_FORTRESS_FROM_VALLEY_ENTR:
         case OOT_DESERT_COLOSSUS_FROM_FAIRY_ENTR:
         {
-            memcpy(&x, &Buffer[3], sizeof(float));
-            memcpy(&y, &Buffer[4], sizeof(float));
-            memcpy(&z, &Buffer[5], sizeof(float));
+            break;
+        }
+
+        case MM_PATH_SNOWHEAD_FROM_SNOWHEAD_ENTR:
+        case MM_SNOWHEAD_PATH_FROM_MOUNTAIN_VILLAGE_ENTR:
+        {
+            ID = MM_PATH_SNOWHEAD_FROM_SNOWHEAD_ENTR;
             break;
         }
 
@@ -671,22 +709,30 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_WEST_ENTR:
         case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_EAST_ENTR:
         case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_SOUTH_ENTR:
+        {
+            ID = MM_TERMINA_FIELD_FROM_CLOCK_TOWN_SOUTH_ENTR;
+            break;
+        }
+
         case MM_SWAMP_ROAD_FROM_FIELD_ENTR:
         case MM_SWAMP_FROM_SPIDER_HOUSE_ENTR:
         case MM_MYSTERY_WOODS_ENTR:
         case MM_WARP_OWL_MOUNTAIN_VILLAGE_ENTR:
         case MM_TWIN_ISLANDS_FROM_MOUNTAIN_VILLAGE_ENTR:
-        case MM_PATH_SNOWHEAD_FROM_SNOWHEAD_ENTR:
-        case MM_GREAT_BAY_COAST_FROM_FISHER_HUT_ENTR:
+
         case MM_GREAT_BAY_COAST_FROM_LABORATORY_ENTR:
+        case MM_GREAT_BAY_COAST_FROM_FISHER_HUT_ENTR:
+        case MM_GREAT_BAY_COAST_FROM_FIELD_ENTR:
+        {
+            ID = MM_GREAT_BAY_COAST_FROM_FISHER_HUT_ENTR;
+            break;
+        }
+
         case MM_ZORA_CAPE_FROM_GREAT_BAY_COAST_ENTR:
         case MM_IKANA_ROAD_FROM_FIELD_ENTR:
         case MM_IKANA_GRAVEYARD_FROM_DAMPE_ENTR:
         case MM_IKANA_VALLEY_FROM_ROAD_ENTR:
         {
-            memcpy(&x, &Buffer[3], sizeof(float));
-            memcpy(&y, &Buffer[4], sizeof(float));
-            memcpy(&z, &Buffer[5], sizeof(float));
             break;
         }
 
@@ -696,8 +742,30 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         }
     }
 
-    const std::vector<GrottoEntrance> entrances = GrottoEntrances.at(ID);
+    memcpy(&x, &Buffer[3], sizeof(float));
+    memcpy(&y, &Buffer[4], sizeof(float));
+    memcpy(&z, &Buffer[5], sizeof(float));
 
+    const std::vector<GrottoEntrance> entrances = GrottoEntrances.at(ID);
+    float tmpDist = 0.0f, bestDist = this->GetDistanceGrottoEntrance(entrances[0], x, y, z);
+    uint32_t bestEntID = entrances[0].EntranceID;
+
+    for (size_t i = 1; i < entrances.size(); i++)
+    {
+        tmpDist = this->GetDistanceGrottoEntrance(entrances[i], x, y, z);
+
+        if (tmpDist == 0.0)
+        {
+            return entrances[i].EntranceID;
+        }
+        else if (tmpDist < bestDist)
+        {
+            bestDist = tmpDist;
+            bestEntID = entrances[i].EntranceID;
+        }
+    }
+
+    /*
     for (size_t i = 0; i < entrances.size(); i++)
     {
         GrottoEntrance currEntrance = entrances[i];
@@ -706,9 +774,9 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
 
             return entrances[i].EntranceID;
         }
-    }
+    }*/
 
-    return ID;
+    return bestEntID;
 }
 
 
@@ -718,6 +786,13 @@ uint32_t EntranceHelper::CheckSpecialCase(uint8_t Game, uint32_t ID, uint32_t * 
     {
         switch (*SceneID)
         {
+            case OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES:
+            case OOT_GREAT_FAIRY_FOUNTAIN_SPELLS:
+            {
+                *SceneID = OOT_GREAT_FAIRY;
+                break;
+            }
+
             case OOT_CASTLE_COURTYARD:
             {
                 switch (ID)
@@ -782,6 +857,116 @@ uint32_t EntranceHelper::CheckSpecialCase(uint8_t Game, uint32_t ID, uint32_t * 
             }
         }
     }
+    else if (Game == MM_GAME)
+    {
+        switch (*SceneID)
+        {
+            case MM_MOUNTAIN_VILLAGE_SPRING:
+            {
+                *SceneID = MM_MOUNTAIN_VILLAGE;
+
+                switch (ID)
+                {
+                    case MM_MOUNTAIN_VILLAGE_SPRING_FROM_BLACKSMITH_ENTR:
+                    {
+                        return MM_MOUNTAIN_VILLAGE_FROM_BLACKSMITH_ENTR;
+                    }
+
+                    case MM_WARP_OWL_MOUNTAIN_VILLAGE_SPRING_ENTR:
+                    {
+                        return MM_WARP_OWL_MOUNTAIN_VILLAGE_ENTR;
+                    }
+
+                    case MM_MOUNTAIN_VILLAGE_SPRING_FROM_SNOWHEAD_PATH_ENTR:
+                    {
+                        return MM_MOUNTAIN_VILLAGE_FROM_SNOWHEAD_PATH_ENTR;
+                    }
+
+                    case MM_MOUNTAIN_VILLAGE_SPRING_FROM_GORON_GRAVEYARD_ENTR:
+                    {
+                        return MM_MOUNTAIN_VILLAGE_FROM_GORON_GRAVEYARD_ENTR;
+                    }
+
+                    case MM_MOUNTAIN_VILLAGE_SPRING_FROM_TWIN_ISLANDS_ENTR:
+                    {
+                        return MM_MOUNTAIN_VILLAGE_FROM_TWIN_ISLANDS_ENTR;
+                    }
+
+                    case MM_TWIN_ISLANDS_SPRING_FROM_MOUNTAIN_VILLAGE_ENTR:
+                    {
+                        return MM_TWIN_ISLANDS_FROM_MOUNTAIN_VILLAGE_ENTR;
+                    }
+
+                    break;
+                }
+
+                break;
+            }
+
+            case MM_TWIN_ISLANDS_SPRING:
+            {
+                *SceneID = MM_TWIN_ISLANDS;
+                
+                switch (ID)
+                {
+                    case MM_TWIN_ISLANDS_SPRING_FROM_MOUNTAIN_VILLAGE_ENTR:
+                    {
+                        return MM_TWIN_ISLANDS_FROM_MOUNTAIN_VILLAGE_ENTR;
+                    }
+
+                    case MM_TWIN_ISLANDS_SPRING_FROM_GORON_VILLAGE_ENTR:
+                    {
+                        return MM_TWIN_ISLANDS_FROM_GORON_VILLAGE_ENTR;
+                    }
+
+                    case MM_TWIN_ISLANDS_SPRING_FROM_GORON_RACETRACK_ENTR:
+                    {
+                        return MM_TWIN_ISLANDS_FROM_GORON_RACETRACK_ENTR;
+                    }
+
+                    break;
+                }
+            }
+
+            case MM_GORON_VILLAGE_SPRING:
+            case MM_GORON_VILLAGE_WINTER:
+            {
+                *SceneID = MM_GORON_VILLAGE;
+
+                switch (ID)
+                {
+                    case MM_GORON_VILLAGE_SPRING_FROM_TWIN_ISLANDS_ENTR:
+                    {
+                        return MM_GORON_VILLAGE_FROM_TWIN_ISLANDS_ENTR;
+                    }
+
+                    case MM_GORON_VILLAGE_SPRING_FROM_GORON_SHRINE_ENTR:
+                    {
+                        return MM_GORON_VILLAGE_FROM_GORON_SHRINE_ENTR;
+                    }
+
+                    case MM_GORON_VILLAGE_SPRING_FROM_LONE_PEAK_SHRINE_ENTR:
+                    {
+                        return MM_GORON_VILLAGE_FROM_LONE_PEAK_SHRINE_ENTR;
+                    }
+                }
+
+                break;
+            }
+
+            case MM_GROTTOS:
+            {
+                switch (ID)
+                {
+                    case MM_LONE_PEAK_SHRINE_ENTR:
+                    {
+                        *SceneID = MM_LONE_PEAK;
+                        break;
+                    }
+                }
+            }
+        }
+    }
 
     return ID;
 }
@@ -800,6 +985,46 @@ uint32_t EntranceHelper::CheckWrapScene(uint8_t Game, uint32_t ID, uint32_t * Sc
     }
     else if (Game == MM_GAME)
     {
+        float tmpDist = 0.0f, bestDist = this->GetDistanceGrottoEntrance(SpecialWarps[0], x, y, z);
+        ID = SpecialWarps[0].EntranceID;
+
+        for (size_t i = 1; i < SpecialWarps.size(); i++)
+        {
+            tmpDist = this->GetDistanceGrottoEntrance(SpecialWarps[i], x, y, z);
+
+            if (tmpDist == 0.0)
+            {
+                ID = SpecialWarps[i].EntranceID;
+                break;
+            }
+            else if (tmpDist < bestDist)
+            {
+                bestDist = tmpDist;
+                ID = SpecialWarps[i].EntranceID;
+            }
+        }
+
+        switch (ID)
+        {
+            case MM_DEKU_KING_CAUGHT:
+            {
+                *SceneID = MM_DEKU_KING_CHAMBER;
+                break;
+            }
+
+            case MM_PIRATE_ENTRANCE_CAUGHT:
+            {
+                *SceneID = MM_PIRATE_FORTRESS_ENTRANCE;
+                break;
+            }
+
+            case MM_BOSS_TEMPLE_SNOWHEAD_WARP_OUT:
+            {
+                *SceneID = MM_LAIR_GOHT;
+                break;
+            }
+        }
+        /*
         for (size_t i = 0; i < SpecialWarps.size(); i++)
         {
             GrottoEntrance currEntrance = SpecialWarps[i];
@@ -820,9 +1045,15 @@ uint32_t EntranceHelper::CheckWrapScene(uint8_t Game, uint32_t ID, uint32_t * Sc
                         *SceneID = MM_PIRATE_FORTRESS_ENTRANCE;
                         break;
                     }
+
+                    case MM_BOSS_TEMPLE_SNOWHEAD_WARP_OUT:
+                    {
+                        *SceneID = MM_LAIR_GOHT;
+                        break;
+                    }
                 }
             }
-        }
+        }*/
     }
 
     return ID;
@@ -844,8 +1075,17 @@ void EntranceHelper::ParseEntranceMessage(uint32_t EntranceFlag, uint32_t Buffer
 
 void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[6])
 {
-    if (this->IsEntranceTouched && Buffer[1] != WARP_SCENE)
+
+    if (this->IsEntranceTouched)
     {
+        if (this->IsNewCycle(&Buffer[1], Buffer))
+        //if (Buffer[1] == WARP_SCENE && Buffer[2] != WARP_LOADING)
+        {   // On MM when warping, the scene is always equal to WARP_SCENE so we still want to be able to catch the WARP_SONG events. However we want to get rid of new clock day
+
+            this->IsEntranceTouched = false;
+            return;
+        }
+
         uint8_t game = Buffer[0] & 0xFF;
         uint8_t currRoom = (Buffer[0] >> 16) & 0xFF;
         uint8_t grottoData = (Buffer[0] >> 8) & 0xFF;
@@ -853,9 +1093,11 @@ void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[6])
         uint32_t inEntrance = Buffer[2];
         EntranceMetaInfo entranceMeta = {};
 
+        inEntrance = this->CheckSpecialCase(game, inEntrance, &inScene);
+
         if (this->IsGrottoEntrance(inEntrance))
         {
-            inEntrance = this->GetGrottoEntrance(game, grottoData, inEntrance, inScene);
+            inEntrance = this->GetGrottoEntrance(game, grottoData, inEntrance, this->OutScene);
         }
         else if (this->IsGrottoExit(inEntrance))
         {
@@ -864,7 +1106,6 @@ void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[6])
         else
         {
             inEntrance = this->CheckGrottoSpawn(inEntrance, Buffer);
-            inEntrance = this->CheckSpecialCase(game, inEntrance, &inScene);
         }
 
         if (game == OOT_GAME)
@@ -940,12 +1181,13 @@ void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[6])
 
 void EntranceHelper::ParseOutgoingMessage(uint8_t OwlID, uint32_t Buffer[6])
 {
-    if (Buffer[1] == WARP_SCENE && Buffer[2] != WARP_LOADING)
+    /*if (this->IsNewCycle(&Buffer[1], Buffer))
+    //if (Buffer[1] == WARP_SCENE && Buffer[2] != WARP_LOADING)
     {   // On MM when warping, the scene is always equal to WARP_SCENE so we still want to be able to catch the WARP_SONG events. However we want to get rid of new clock day
 
         this->IsEntranceTouched = false;
         return;
-    }
+    }*/
 
     this->IsEntranceTouched = true;
     this->OutGame = Buffer[0] & 0xFF;
@@ -954,6 +1196,9 @@ void EntranceHelper::ParseOutgoingMessage(uint8_t OwlID, uint32_t Buffer[6])
     uint8_t grottoData = (Buffer[0] >> 8) & 0xFF;
     this->OutScene = Buffer[1];
     this->OutEntrance = Buffer[2];
+
+    // Check that the entrance is not a special case
+    this->OutEntrance = this->CheckSpecialCase(this->OutGame, this->OutEntrance, &this->OutScene);
 
     if (this->IsGrottoEntrance(this->OutEntrance))
     {   // The current entrance is a grotto entrance
@@ -968,13 +1213,13 @@ void EntranceHelper::ParseOutgoingMessage(uint8_t OwlID, uint32_t Buffer[6])
     else if (this->IsWarpEntrance(this->OutEntrance))
     {   // The current entrance is a warp zone
 
-        this->OutEntrance = this->GetWarpSong(&this->OutGame, this->OutEntrance, songIndex, OwlID);
-        this->OutEntrance = this->CheckWrapScene(this->OutGame, this->OutEntrance, &this->OutScene, Buffer[3], Buffer[4], Buffer[5]);
-    }
-    else
-    {   // Check that the entrance is not a special case
-
-        this->OutEntrance = this->CheckSpecialCase(this->OutGame, this->OutEntrance, &this->OutScene);
+        bool isWarpSong = false;
+        this->OutEntrance = this->GetWarpSong(&this->OutGame, this->OutEntrance, songIndex, OwlID, &isWarpSong);
+        
+        if (!isWarpSong)
+        {
+            this->OutEntrance = this->CheckWrapScene(this->OutGame, this->OutEntrance, &this->OutScene, Buffer[3], Buffer[4], Buffer[5]);
+        }
     }
 
     // Retreive the entrance meta information

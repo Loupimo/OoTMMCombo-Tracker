@@ -100,9 +100,9 @@ void GlobalEntranceTableModel::updateEntrance(uint32_t sceneID, uint32_t entranc
             row.InLinkName = this->formatEntranceLink(row.InGame, row.EntranceID, row.InLink, true);
             row.OutLinkName = this->formatEntranceLink(row.OutGame, row.EntranceID, row.OutLink, false);
 
-            QModelIndex top = index(i, 0);
+            QModelIndex top = index((int)i, 0);
 
-            QModelIndex bottom = index(i, columnCount() - 1);
+            QModelIndex bottom = index((int)i, columnCount() - 1);
 
             emit dataChanged(top, bottom);
 

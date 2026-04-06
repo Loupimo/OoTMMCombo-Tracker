@@ -11,7 +11,7 @@ OOT_BOTTOM_OF_THE_WELL;Bottom of the Well;;Dungeons;false;oot
 OOT_ICE_CAVERN;Ice Cavern;./Resources/OoT/Dungeons/Ice/ICE.jpg;Dungeons;false;oot
 OOT_GANON_TOWER;Ganon Tower;;Dungeons;false;oot
 OOT_GERUDO_TRAINING_GROUND;Gerudo Training Ground;./Resources/OoT/Dungeons/GTG/GTG.jpg;Gerudo_Fortress;false;oot
-OOT_THIEVES_HIDEOUT;Thieves Hideout;./Resources/OoT/Gerudo_Fortress/Hideout.png;Gerudo_Fortress;false;oot
+OOT_THIEVES_HIDEOUT;Thieves' Hideout;./Resources/OoT/Gerudo_Fortress/Hideout.png;Gerudo_Fortress;false;oot
 OOT_INSIDE_GANON_CASTLE;Inside Ganon Castle;./Resources/OoT/Ganon/GT_1F.jpg;Dungeons;false;oot
 OOT_GANON_TOWER_COLLAPSING;Ganon Tower - Collapsing;;None;false;oot
 OOT_INSIDE_GANON_CASTLE_COLLAPSING;Inside Ganon Castle - Collapsing;;None;false;oot
@@ -139,10 +139,11 @@ OOT_GREAT_FAIRY_FARORE;Great Fairy Fountain;./Resources/OoT/Fairy/Great_Fairy.pn
 OOT_GREAT_FAIRY_NAYRU;Great Fairy Fountain;./Resources/OoT/Fairy/Great_Fairy.png;Desert_Colossus;false;oot
 OOT_GREAT_FAIRY_MAGIC;Great Fairy Fountain;./Resources/OoT/Fairy/Great_Fairy.png;Death_Mountain_Trail;false;oot
 OOT_GREAT_FAIRY_MAGIC2;Great Fairy Fountain;./Resources/OoT/Fairy/Great_Fairy.png;Death_Mountain_Crater;false;oot
-OOT_GREAT_FAIRY_DEFENSE;Bazaar;./Resources/OoT/Kakariko/Bazaar.png;Kakariko;false;oot
-OOT_KAKARIKO_BAZAAR;Bazaar;./Resources/OoT/Market/Bazaar.png;Market;false;oot
-OOT_MARKET_BAZAAR;Shooting Gallery;./Resources/OoT/Kakariko/Shooting.png;Kakariko;false;oot
-OOT_KAKARIKO_SHOOTING;Shooting Gallery;./Resources/OoT/Market/Shooting.png;Market;false;oot
+OOT_GREAT_FAIRY;Great Fairy Fountain;;None;false;oot
+OOT_KAKARIKO_BAZAAR;Bazaar;./Resources/OoT/Kakariko/Bazaar.png;Kakariko;false;oot
+OOT_MARKET_BAZAAR;Bazaar;./Resources/OoT/Market/Bazaar.png;Market;false;oot
+OOT_KAKARIKO_SHOOTING;Shooting Gallery;./Resources/OoT/Kakariko/Shooting.png;Kakariko;false;oot
+OOT_MARKET_SHOOTING;Shooting Gallery;./Resources/OoT/Market/Shooting.png;Market;false;oot
 OOT_SILO;Silo;./Resources/OoT/Ranch/Silo.png;Lon_Lon_Ranch;false;oot
 OOT_WINDMILL;Windmill;./Resources/OoT/Kakariko/Windmill.png;Kakariko;true;oot
 OOT_MARKET_ENTRANCE;Market Entrance;;None;false;oot

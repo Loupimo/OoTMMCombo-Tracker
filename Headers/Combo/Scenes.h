@@ -170,9 +170,10 @@ typedef struct SceneMetaInfo
 #define OOT_GREAT_FAIRY_NAYRU						OOT_GREAT_FAIRY_FARORE + 1				// Nayru's love fairy fountain
 #define OOT_GREAT_FAIRY_MAGIC						OOT_GREAT_FAIRY_NAYRU + 1				// First magic upgrade fairy fountain
 #define OOT_GREAT_FAIRY_MAGIC2						OOT_GREAT_FAIRY_MAGIC + 1				// Second magic upgrade fairy fountain
+#define OOT_GREAT_FAIRY								OOT_GREAT_FAIRY_MAGIC2 + 1				// Generic great fairy area
 
 // OoT detailed other scene
-#define OOT_KAKARIKO_BAZAAR							OOT_GREAT_FAIRY_MAGIC2 + 1				// Kakariko's bazaar
+#define OOT_KAKARIKO_BAZAAR							OOT_GREAT_FAIRY + 1						// Kakariko's bazaar
 #define OOT_MARKET_BAZAAR							OOT_KAKARIKO_BAZAAR + 1					// Market bazaar
 #define OOT_KAKARIKO_SHOOTING						OOT_MARKET_BAZAAR + 1					// Kakariko's shooting gallery
 #define OOT_MARKET_SHOOTING							OOT_KAKARIKO_SHOOTING + 1				// Kakariko's shooting gallery
@@ -365,8 +366,9 @@ enum OoT_Shops
 // Spoiler Log only
 #define MM_MOUNTAIN_VILLAGE						MM_GROTTO_DEKU_PALACE_CLIMB + 1
 #define MM_TWIN_ISLANDS							MM_MOUNTAIN_VILLAGE + 1
+#define MM_GORON_VILLAGE						MM_TWIN_ISLANDS + 1
 
-#define MM_NUM_SCENES							MM_TWIN_ISLANDS + 1	// Here I'm ignoring the JP Line Generic grotto
+#define MM_NUM_SCENES							MM_GORON_VILLAGE + 1
 
 enum MM_Shops
 {

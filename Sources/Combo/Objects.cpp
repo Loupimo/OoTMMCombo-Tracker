@@ -39,6 +39,7 @@ CreateEmptyScene(OOT_DAMPE_HOUSE)
 CreateEmptyScene(OOT_BACK_ALLEY)
 CreateEmptyScene(OOT_SONGS)
 CreateEmptyScene(OOT_GREAT_FAIRY_DEFENSE)
+CreateEmptyScene(OOT_GREAT_FAIRY)
 
 SceneObjects OoTSceneObjects[OOT_NUM_SCENES] =
 {
@@ -188,6 +189,7 @@ SceneObjects OoTSceneObjects[OOT_NUM_SCENES] =
 	CreateSceneObjects(OOT_GREAT_FAIRY_NAYRU),
 	CreateSceneObjects(OOT_GREAT_FAIRY_MAGIC),
 	CreateSceneObjects(OOT_GREAT_FAIRY_MAGIC2),
+	CreateSceneObjects(OOT_GREAT_FAIRY),
 
 	// OoT detailed other scene
 	CreateSceneObjects(OOT_KAKARIKO_BAZAAR),
@@ -236,6 +238,7 @@ CreateEmptyScene(MM_OWLS)
 CreateEmptyScene(MM_GROTTO_TERMINA_SWAMP_GOSSIP)
 CreateEmptyScene(MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP)
 CreateEmptyScene(MM_GROTTO_DEKU_PALACE_CLIMB)
+CreateEmptyScene(MM_GORON_VILLAGE)
 
 SceneObjects MMSceneObjects[MM_NUM_SCENES] =
 {
@@ -393,11 +396,11 @@ SceneObjects MMSceneObjects[MM_NUM_SCENES] =
 	CreateSceneObjects(MM_GROTTO_DEKU_PALACE_BEANS),
 	CreateSceneObjects(MM_GROTTO_DEKU_PALACE_GENERIC),
 	CreateSceneObjects(MM_GROTTO_DEKU_PALACE_CLIMB),
-	
 
 	// Spoiler Log
 	CreateSceneObjects(MM_MOUNTAIN_VILLAGE),
-	CreateSceneObjects(MM_TWIN_ISLANDS)
+	CreateSceneObjects(MM_TWIN_ISLANDS),
+	CreateSceneObjects(MM_GORON_VILLAGE)
 };
 
 #pragma endregion

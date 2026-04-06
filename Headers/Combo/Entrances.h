@@ -112,6 +112,7 @@ public:
 
 public:
 
+
 	/*
 	*   Check if the given entrance ID is from a grotto entrance.
 	*
@@ -129,6 +130,16 @@ public:
 	*   @return <b>True</b> if the ID is associated to a grotto exit, <b>false</b> otherwise.
 	*/
 	bool IsGrottoExit(uint32_t ID);
+
+	/*
+	*   Check if the given data ID are from a new cycle.
+	*
+	*	@param SceneID		The scene ID to test. It will be modified to WARP_SCENE if it is a new cycle.
+	*	@param Buffer		The entrance message to parse.
+	*
+	*   @return <b>True</b> if the are from a new cycle, <b>false</b> otherwise.
+	*/
+	bool IsNewCycle(uint32_t* SceneID, uint32_t Buffer[6]);
 
 	/*
 	*   Check if the given entrance ID is from a warp entrance.
@@ -170,10 +181,14 @@ public:
 	*	@param ID			The entrance ID.
 	*	@param SongIndex	The song index of the last played song.
 	*	@param OwlID		The Owl ID that has been selected by the player.
+	*	@param IsWarpSong	A flag set to know if the returned ID is from a warp song or not.
 	*
 	*   @return The warp song entrance ID.
 	*/
-	uint32_t GetWarpSong(uint8_t * Game, uint32_t ID, uint8_t SongIndex, uint8_t OwlID);
+	uint32_t GetWarpSong(uint8_t * Game, uint32_t ID, uint8_t SongIndex, uint8_t OwlID, bool * IsWarpSong);
+
+
+	float GetDistanceGrottoEntrance(GrottoEntrance Grotto, float X, float Y, float Z);
 
 	/*
 	*   Check if the given entrance may match a grotto entrance.

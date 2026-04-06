@@ -30,7 +30,7 @@ uint32_t gActiveRoomOffset = OOT_CURR_ROOM;                 // The current offse
 uint32_t gActiveGrottoOffset = OOT_GROTTO_DATA;             // The current offset to add to reach the grotto data value.
 uint32_t gActiveCoordOffset = OOT_PLAYER_COORD;             // The current offset to add to reach the last respawned player corrdinates.
 uint32_t gActiveSceneOffset = OOT_SCENE_OFFSET;             // The current offset to add to reacth the last scene offset.
-uint32_t gActiveEntranceReg = S1_OFFSET;                    // The current register to use to get the next entrance value.
+//uint32_t gActiveEntranceReg = S1_OFFSET;                    // The current register to use to get the next entrance value.
 uint32_t gDetectCounter = 0;                                // The counter used to trigger a game check.
 uint32_t gSP = 0;                                           // The last value of the stack pointer.
 uint32_t gA1 = 0;                                           // The last value of the A1 register.
@@ -366,7 +366,7 @@ __declspec(naked) void PCHook()
 
             // Set OoT active settings
             SET_ACTIVE_SETTINGS(OOT)
-            mov [gActiveEntranceReg], S1_OFFSET
+            //mov [gActiveEntranceReg], S1_OFFSET
             
             // Check that the RAM is loaded
             cmp ecx, OOT_PLAY_MAIN
@@ -382,7 +382,7 @@ __declspec(naked) void PCHook()
             
             // Set the MM active settings
             SET_ACTIVE_SETTINGS(MM)
-            mov[gActiveEntranceReg], V1_OFFSET
+            //mov[gActiveEntranceReg], V1_OFFSET
 
             // Check that the RAM is loaded
             cmp ecx, MM_PLAY_MAIN
@@ -665,10 +665,10 @@ __declspec(naked) void PCHook()
             mov [edi + 4], ecx    // Store Mem = entrance flag + owl choice
 
             // gLastScene = Current scene ID
-            mov ebx, [gActiveEntranceReg]
-            READ_N64_REG(ebx, eax)
-            add eax, [gActiveSceneOffset]
-            COMPUTE_RAM_ADDR(eax, eax)
+            //mov ebx, [gActiveEntranceReg]
+            //READ_N64_REG(ebx, eax)
+            //add eax, [gActiveSceneOffset]
+            COMPUTE_RAM_ADDR([gActiveSceneOffset], eax)
             mov eax, [eax]
 
             // Build last played song

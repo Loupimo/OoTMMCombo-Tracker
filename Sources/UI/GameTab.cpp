@@ -157,6 +157,7 @@ CreateInfoScenes(OOT_NUM_SCENES, OoTOverworld,
     CreateOverworldScene(OOT_GREAT_FAIRY_NAYRU, OOT_GAME),
     CreateOverworldScene(OOT_GREAT_FAIRY_MAGIC, OOT_GAME),
     CreateOverworldScene(OOT_GREAT_FAIRY_MAGIC2, OOT_GAME),
+    CreateOverworldScene(OOT_GREAT_FAIRY, OOT_GAME),
     CreateOverworldScene(OOT_KAKARIKO_BAZAAR, OOT_GAME),
     CreateOverworldScene(OOT_MARKET_BAZAAR, OOT_GAME),
     CreateOverworldScene(OOT_KAKARIKO_SHOOTING, OOT_GAME),
@@ -326,7 +327,8 @@ CreateInfoScenes(MM_NUM_SCENES, MMOverworld,
     CreateOverworldScene(MM_GROTTO_DEKU_PALACE_GENERIC, MM_GAME),
     CreateOverworldScene(MM_GROTTO_DEKU_PALACE_CLIMB, MM_GAME),
     CreateOverworldScene(MM_MOUNTAIN_VILLAGE, MM_GAME),
-    CreateOverworldScene(MM_TWIN_ISLANDS, MM_GAME)
+    CreateOverworldScene(MM_TWIN_ISLANDS, MM_GAME),
+    CreateOverworldScene(MM_GORON_VILLAGE, MM_GAME)
 )
 
 
