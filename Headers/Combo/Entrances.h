@@ -152,7 +152,7 @@ public:
 	*
 	*   @return <b>True</b> if the data come from a song of time, <b>false</b> otherwise.
 	*/
-	bool IsSongOfTime(uint32_t Scene, uint32_t EntranceID);
+	bool IsSongOfTime(uint32_t Buffer[6]);
 
 	/*
 	*   Check if the given data come from a song of double time.
