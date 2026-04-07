@@ -138,7 +138,7 @@ void BuildPCsPatterns()
 
             LOG("[FAIL] Fast Pattern %zu\nTrying slow pattern.", i);
 
-            base = FindPatternInPayload(sigs[i].Signature, i == count - 1 ? PC_RANGE_START : PAYLOAD_START, PAYLOAD_END);
+            base = FindPatternInPayload(sigs[i].Signature, i == count - 3 ? PC_RANGE_START : PAYLOAD_START, PAYLOAD_END);
 
             if (!base)
             {   // The function cannot be found
@@ -173,6 +173,11 @@ void BuildPCsPatterns()
 
         gPatternState[gGame].PCs[i] = PC;
         LOG("[OK] PC 0x%08X", PC);
+        if (i == 5)
+        {   // We successfully found the PC for play transition done. We need to find the gLastScene offset
+
+            FindLastSceneAddress();
+        }
     }
 
     // Mark resolved
@@ -231,4 +236,22 @@ __forceinline uintptr_t FastPatternResolver(const PCFastResolver& Target)
     }
 
     return jalAddr;
+}
+
+__forceinline void FindLastSceneAddress()
+{
+    if (gGame == GAME_OOT)
+    {
+        gOOTActiveGlobalOffset = (uint16_t)*(uint32_t*)((gPatternState[gGame].PCs[5] & 0x00FFFFFF) + gameRAMBase + OOT_LAST_SCENE_OFFSET);
+        gActiveSceneOffset = OOT_SCENE_OFFSET + gOOTActiveGlobalOffset;
+    }
+    else if (gGame == GAME_MM)
+    {
+        gMMActiveGlobalOffset = (uint16_t)*(uint32_t*)((gPatternState[gGame].PCs[5] & 0x00FFFFFF) + gameRAMBase + MM_LAST_SCENE_OFFSET);
+        gActiveSceneOffset = MM_SCENE_OFFSET + gMMActiveGlobalOffset;
+    }
+    else
+    {
+        return;
+    }
 }

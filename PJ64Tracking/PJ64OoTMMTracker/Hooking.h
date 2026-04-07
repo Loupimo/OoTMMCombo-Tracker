@@ -52,8 +52,10 @@
 // Entrance stuff
 //#define OOT_SCENE_OFFSET     0x00001A68     // The offset to add to the real game address to reach the gLastScene for OoT
 //#define MM_SCENE_OFFSET     -0x00000118     // The offset to add to the real game address to reach the gLastScene for MM
-#define OOT_SCENE_OFFSET     0x00441A58     // The offset to add to the real game address to reach the gLastScene for OoT
-#define MM_SCENE_OFFSET      0x00770EC0     // The offset to add to the real game address to reach the gLastScene for MM
+//#define OOT_SCENE_OFFSET     0x00441A58     // The offset to add to the real game address to reach the gLastScene for OoT
+//#define MM_SCENE_OFFSET      0x00770EC0     // The offset to add to the real game address to reach the gLastScene for MM
+#define OOT_SCENE_OFFSET     0x00440000     // The offset to add to the real game address to reach the gLastScene for OoT. An offset is also added to reach the variable.
+#define MM_SCENE_OFFSET      0x00770000     // The offset to add to the real game address to reach the gLastScene for MM. An offset is also added to reach the variable.
 #define OOT_NEXT_ENTRANCE    0x001DA2B8     // The offset to add to the real game address to reach the playState.nextEntrance for OoT
 #define MM_NEXT_ENTRANCE     0x003FF398     // The offset to add to the real game address to reach the playState.nextEntrance for MM
 #define OOT_OWL_CHOICE_ID    0x001D8E4A     // The offset to add to the real game address to reach the playState.pauseCtx.cursorSlot[1] for OoT
@@ -111,6 +113,9 @@ extern uintptr_t regBase;                   // The RAM address where the Project
 extern uintptr_t gameRAMBase;               // The RAM address where the game data are stored.
 extern GameID gGame;                        // The current running game.
 extern uint32_t * gActivePCs;               // The current set of program counters that are tracked.
+extern uint32_t gActiveSceneOffset;         // The current offset to add to reach the last scene offset.
+extern uint32_t gOOTActiveGlobalOffset;     // An offset to add to the active scene offset to reach the gLastScene variable for OoT.
+extern uint32_t gMMActiveGlobalOffset;      // An offset to add to the active scene offset to reach the gLastScene variable for MM.
 
 void TryResolveROMBase();
 

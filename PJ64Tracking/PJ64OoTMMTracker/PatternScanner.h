@@ -2,15 +2,17 @@
 
 #include "pch.h"
 
-#define PAYLOAD_START 0x80400000    // The combo payload start RAM address.
-#define PAYLOAD_END   0x80800000    // The combo payload last RAM address.
-#define MAX_JAL 10                  // The maximum number of JAL instructions a fast pattern resolver can have.
-#define PATTERN_STATE_SIZE 28       // The size of the GamePatternState structure.
+#define PAYLOAD_START 0x80400000        // The combo payload start RAM address.
+#define PAYLOAD_END   0x80800000        // The combo payload last RAM address.
+#define MAX_JAL 10                      // The maximum number of JAL instructions a fast pattern resolver can have.
+#define PATTERN_STATE_SIZE 32           // The size of the GamePatternState structure.
+#define OOT_LAST_SCENE_OFFSET 0x01A0    // The offset to add to the Play_TransitionDone PC to find the offset to add to the base scene to get the gLastScene address for OoT
+#define MM_LAST_SCENE_OFFSET 0x002C     // The offset to add to the Play_TransitionDone PC to find the offset to add to the base scene to get the gLastScene address for MM
 
 typedef struct GamePatternState
 {
     bool Resolved = false;
-    uint32_t PCs[6] = { 0 };    // ID 0 = Actor_Spawn, ID 1 = comboAddItemRawEx, ID 2 = EnItem00_DropCustom, ID 3 = comboItemPrecond, ID 4 = hookPlay_Init, ID 5 = Play_TransitionDone, ID 6 = EnButte_TransformIntoFairy
+    uint32_t PCs[7] = { 0 };    // ID 0 = Actor_Spawn, ID 1 = comboAddItemRawEx, ID 2 = EnItem00_DropCustom, ID 3 = comboItemPrecond, ID 4 = hookPlay_Init, ID 5 = Play_TransitionDone, ID 6 = EnButte_TransformIntoFairy
 } GamePatternState;
 
 
@@ -98,3 +100,8 @@ void ResetButterflyTransform();
 *   Try to resolve all parttern for the current active game.
 */
 void BuildPCsPatterns();
+
+/*
+*   Try to resolve the last scene offset.
+*/
+void FindLastSceneAddress();

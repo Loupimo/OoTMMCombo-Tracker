@@ -16,6 +16,9 @@
 // Contains all grotto entrances positions used to determine the correct entrance when spawning in a zone that has at least one grotto
 static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
 { 
+
+#pragma region OoT Grottos
+
     { OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR,       std::vector<GrottoEntrance>() = { { OOT_FOREST_FROM_LOST_WOODS_BRIDGE_ENTR,          -1413,   -74,  -283 },
                                                                                       { OOT_KOKIRI_FOREST_FROM_DEKU_TREE_ENTR,            3844,  -161, -1080 },
                                                                                       { OOT_KOKIRI_FOREST_FROM_MIDO_ENTR,                 -445,     0,  -486 },
@@ -157,7 +160,9 @@ static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
                                                                                       { OOT_WARP_SONG_DESERT_ENTR,                        -850,    20,  1542 },
                                                                                       { OOT_GROTTO_EXIT_SCRUBS2_COLOSSUS,                   60,   -32, -1300 } } },
 
+#pragma endregion // OoT Grottos
 
+#pragma region MM Grottos
 
     { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_SOUTH_ENTR,  std::vector<GrottoEntrance>() = { { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_NORTH_ENTR,      -400,    48, -2520 },
                                                                                       { MM_GROTTO_EXIT_GOSSIPS_MOUNTAIN,                   192,    48, -3138 },
@@ -182,7 +187,12 @@ static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
                                                                                       { MM_GROTTO_EXIT_GENERIC_SWAMP,                    -1700,    38,  1800 }} },
     { MM_MYSTERY_WOODS_ENTR,                        std::vector<GrottoEntrance>() = { { MM_MYSTERY_WOODS_ENTR,                             274,     0,     0 },
                                                                                       { MM_GROTTO_EXIT_GENERIC_WOODS,                        2,     0,  -889 } } },
-    { MM_WARP_OWL_MOUNTAIN_VILLAGE_ENTR,            std::vector<GrottoEntrance>() = { { MM_WARP_OWL_MOUNTAIN_VILLAGE_ENTR,                -649,     8,  -196 },
+    { MM_MOUNTAIN_VILLAGE_FROM_PATH_ENTR,           std::vector<GrottoEntrance>() = { //{ MM_MOUNTAIN_VILLAGE_FROM_PATH_ENTR,                 ,      ,   },
+                                                                                      { MM_MOUNTAIN_VILLAGE_FROM_SNOWHEAD_PATH_ENTR,     -1237,   268, -1041 },
+                                                                                      //{ MM_MOUNTAIN_VILLAGE_FROM_TWIN_ISLANDS_ENTR,                 ,      ,   },
+                                                                                      { MM_MOUNTAIN_VILLAGE_FROM_GORON_GRAVEYARD_ENTR,     464,  1408, -1519 },
+                                                                                      { MM_MOUNTAIN_VILLAGE_FROM_BLACKSMITH_ENTR,           80,    71,   800 },
+                                                                                      { MM_WARP_OWL_MOUNTAIN_VILLAGE_ENTR,                -649,     8,  -196 },
                                                                                       { MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE,          2406,  1168, -1197 },
                                                                                       { MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE_WINTER,    345,     8,  -150 } } },
     { MM_TWIN_ISLANDS_FROM_MOUNTAIN_VILLAGE_ENTR,   std::vector<GrottoEntrance>() = { { MM_TWIN_ISLANDS_FROM_MOUNTAIN_VILLAGE_ENTR,      -2044,   200,  1288 },
@@ -190,10 +200,10 @@ static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
                                                                                       { MM_GROTTO_EXIT_HOT_WATER,                          589,   195,    53 } } },
     { MM_PATH_SNOWHEAD_FROM_SNOWHEAD_ENTR,          std::vector<GrottoEntrance>() = { { MM_PATH_SNOWHEAD_FROM_SNOWHEAD_ENTR,             -2518,   550, -3441 },
                                                                                       { MM_GROTTO_EXIT_GENERIC_PATH_SNOWHEAD,             -987,   360, -2339 }, } },
-    { MM_GREAT_BAY_COAST_FROM_FISHER_HUT_ENTR,      std::vector<GrottoEntrance>() = { { MM_GREAT_BAY_COAST_FROM_FISHER_HUT_ENTR,          1137,    92,  4635 },
-                                                                                      { MM_GREAT_BAY_COAST_FROM_FIELD_ENTR,               3585,    80,  4394 },
-                                                                                      { MM_GROTTO_EXIT_GENERIC_GREAT_BAY_COAST,           1359,    80,  5018 },
+    { MM_GREAT_BAY_COAST_FROM_FIELD_ENTR,           std::vector<GrottoEntrance>() = { { MM_GREAT_BAY_COAST_FROM_FIELD_ENTR,               3585,    80,  4394 },
+                                                                                      { MM_GREAT_BAY_COAST_FROM_FISHER_HUT_ENTR,          1137,    92,  4635 },
                                                                                       { MM_GREAT_BAY_COAST_FROM_LABORATORY_ENTR,         -3080,   240,  4080 },
+                                                                                      { MM_GROTTO_EXIT_GENERIC_GREAT_BAY_COAST,           1359,    80,  5018 },
                                                                                       { MM_GROTTO_EXIT_COW_COAST,                         2077,   333,  -215 } } },
     { MM_ZORA_CAPE_FROM_GREAT_BAY_COAST_ENTR,       std::vector<GrottoEntrance>() = { { MM_ZORA_CAPE_FROM_GREAT_BAY_COAST_ENTR,             92,    12,   333 },
                                                                                       { MM_GROTTO_EXIT_GENERIC_ZORA_CAPE,                 -562,    80,  2707 } } },
@@ -203,6 +213,9 @@ static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
                                                                                       { MM_GROTTO_EXIT_GENERIC_GRAVEYARD,                  106,   314, -1777 } } },
     { MM_IKANA_VALLEY_FROM_ROAD_ENTR,               std::vector<GrottoEntrance>() = { { MM_IKANA_VALLEY_FROM_ROAD_ENTR,                    -64,  -371,  4870 },
                                                                                       { MM_GROTTO_EXIT_GENERIC_VALLEY,                   -2475,  -505,  2475 } } }
+
+#pragma endregion // MM Grottos
+
 };
 
 
@@ -282,6 +295,12 @@ bool EntranceHelper::IsMMExtra(uint32_t Buffer[6])
     return false;
 }
 
+
+bool EntranceHelper::IsDeath(uint32_t Buffer[6])
+{
+    return Buffer[1] == this->OutBuffer[1] && Buffer[2] == this->OutBuffer[2];
+}
+
 bool EntranceHelper::IsSunSong(uint32_t Scene, uint32_t EntranceID)
 {
     // WARNING ! Sun song OoT and Song of Soaring MM have the same ID, this could lead to owl warp missing.
@@ -308,6 +327,13 @@ bool EntranceHelper::IsGrottoEntrance(uint32_t ID)
 {
     switch (ID)
     {
+        
+            
+            
+            
+            
+            
+
         case 0x03f:     // Generic grotto entry (OoT)
         case 0x36d:     // Fairy grotto entry (OoT)
         case 0x5bc:     // Double scrub grotto entry (OoT)
@@ -1061,6 +1087,9 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
 
     switch (ID)
     {
+
+#pragma region OoT Grottos
+
         // Death Mountain Crater
         case OOT_GROTTO_EXIT_SCRUBS3_DMC:
         case OOT_GROTTO_EXIT_GENERIC_DMC:
@@ -1296,6 +1325,11 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
             break;
         }
 
+#pragma endregion // OoT Grottos
+        
+#pragma region MM Grottos
+
+        // Path to Snowhead
         case MM_PATH_SNOWHEAD_FROM_SNOWHEAD_ENTR:
         case MM_SNOWHEAD_PATH_FROM_MOUNTAIN_VILLAGE_ENTR:
         {
@@ -1303,6 +1337,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
             break;
         }
 
+        // Termina Field
         case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_NORTH_ENTR:
         case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_WEST_ENTR:
         case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_EAST_ENTR:
@@ -1312,14 +1347,16 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
             break;
         }
 
+        // Great Bay Coast
         case MM_GREAT_BAY_COAST_FROM_LABORATORY_ENTR:
         case MM_GREAT_BAY_COAST_FROM_FISHER_HUT_ENTR:
         case MM_GREAT_BAY_COAST_FROM_FIELD_ENTR:
         {
-            ID = MM_GREAT_BAY_COAST_FROM_FISHER_HUT_ENTR;
+            ID = MM_GREAT_BAY_COAST_FROM_FIELD_ENTR;
             break;
         }
 
+        // Southtern Swamp
         case MM_SWAMP_FROM_ROAD_ENTR:
         case MM_SWAMP_FROM_SPIDER_HOUSE_ENTR:
         {
@@ -1327,6 +1364,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
             break;
         }
 
+        // Road to Southern Swamp
         case MM_SWAMP_ROAD_FROM_SWAMP_ENTR:
         case MM_SWAMP_ROAD_FROM_FIELD_ENTR:
         {
@@ -1334,8 +1372,22 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
             break;
         }
 
-        case MM_MYSTERY_WOODS_ENTR:
+        // Mountain Village
+        case MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE_WINTER:
+        case MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE:
         case MM_WARP_OWL_MOUNTAIN_VILLAGE_ENTR:
+        case MM_MOUNTAIN_VILLAGE_FROM_GORON_GRAVEYARD_ENTR:
+        case MM_MOUNTAIN_VILLAGE_FROM_BLACKSMITH_ENTR:
+        case MM_MOUNTAIN_VILLAGE_FROM_SNOWHEAD_PATH_ENTR:
+        case MM_MOUNTAIN_VILLAGE_FROM_TWIN_ISLANDS_ENTR:
+        case MM_MOUNTAIN_VILLAGE_FROM_PATH_ENTR:
+        {
+            ID = MM_MOUNTAIN_VILLAGE_FROM_PATH_ENTR;
+            break;
+        }
+
+
+        case MM_MYSTERY_WOODS_ENTR:
         case MM_TWIN_ISLANDS_FROM_MOUNTAIN_VILLAGE_ENTR:
         case MM_ZORA_CAPE_FROM_GREAT_BAY_COAST_ENTR:
         case MM_IKANA_ROAD_FROM_FIELD_ENTR:
@@ -1344,6 +1396,8 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         {
             break;
         }
+
+#pragma endregion MM Grottos
 
         default:
         {
@@ -1487,12 +1541,96 @@ uint32_t EntranceHelper::CheckSpecialCase(uint8_t Game, uint32_t ID, uint32_t * 
                 }
                 break;
             }
+
+            case OOT_GROTTOS:
+            {
+                switch (ID)
+                {
+                    case OOT_GROTTO_SCRUB_UPGRADE_ENTR:
+                    {   // Lost Woods scrub nuts upgrade grotto entry 
+
+                        *SceneID = OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;
+                        break;
+                    }
+
+                    case OOT_GROTTO_DEKU_THEATER_ENTR:  
+                    {   // Deku's Theater grotto entry
+
+                        *SceneID = OOT_GROTTO_LOST_WOODS_THEATER;
+                        break;
+                    }
+
+                    case OOT_GROTTO_WOLFOS_ENTR:        
+                    {   // Sacred Forest Meadow wolfos grotto entry
+
+                        *SceneID = OOT_GROTTO_SACRED_MEADOW_WOLFOS;
+                        break;
+                    }
+
+                    case OOT_GROTTO_SCRUB_HEART_PIECE_ENTR:
+                    {   // Hyrule Field scrub grotto entry
+
+                        *SceneID = OOT_GROTTO_HYRULE_SCRUBS;
+                        break;
+                    }
+
+                    case OOT_GROTTO_FIELD_COW_ENTR:
+                    {   // Hyrule Field cow grotto entry
+
+                        *SceneID = OOT_GROTTO_HYRULE_GERUDO;
+                        break;
+                    }
+
+                    case OOT_GROTTO_FIELD_TREE_ENTR:
+                    {   // Hyrule Field tree near kakariko grotto entry
+
+                        *SceneID = OOT_GROTTO_HYRULE_KAKARIKO;
+                        break;
+                    }
+
+                    case OOT_GROTTO_CASTLE_ENTR:
+                    {   // Hyrule Castle grotto entry
+
+                        *SceneID = OOT_GROTTO_CASTLE_STORMS;
+                        break;
+                    }
+
+                    case OOT_GROTTO_TEKTITE_ENTR:
+                    {   // Hyrule Field tektite grotto entry
+
+                        *SceneID = OOT_GROTTO_HYRULE_TEKTITE;
+                        break;
+                    }
+
+                    case OOT_GROTTO_TRAIL_COW_ENTR:
+                    {   // Death Mountain Trail cow grotto entry
+
+                        *SceneID = OOT_GROTTO_DEATH_TRIAL_COW;
+                        break;
+                    }
+
+                    case OOT_GROTTO_REDEAD_ENTR:
+                    {   // Kakariko redead grotto entry
+                        *SceneID = OOT_GROTTO_KAKARIKO_REDEAD;
+                        break;
+                    }
+
+                    case OOT_GROTTO_OCTOROK_ENTR:
+                    {   // Gerudo Valley octorok grotto entry
+
+                        *SceneID = OOT_GROTTO_VALLEY_OCTOROK;
+                        break;
+                    }
+                }
+                break;
+            }
         }
     }
     else if (Game == MM_GAME)
     {
         switch (*SceneID)
         {
+            case MM_MOUNTAIN_VILLAGE_WINTER:
             case MM_MOUNTAIN_VILLAGE_SPRING:
             {
                 *SceneID = MM_MOUNTAIN_VILLAGE;
@@ -1798,7 +1936,7 @@ void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[6])
 {
     if (this->IsEntranceTouched)
     {
-        if (this->IsNewCycle(Buffer) || this->IsSongOfDoubleTime(Buffer[1], Buffer[2]) || this->IsSongOfTime(Buffer) || this->IsSunSong(Buffer[1], Buffer[2]))
+        if (this->IsDeath(Buffer) || this->IsNewCycle(Buffer) || this->IsSongOfDoubleTime(Buffer[1], Buffer[2]) || this->IsSongOfTime(Buffer) || this->IsSunSong(Buffer[1], Buffer[2]))
         {   
             this->IsEntranceTouched = false;
             return;

@@ -29,7 +29,9 @@ uint32_t gActiveOwlOffset = OOT_OWL_CHOICE_ID;              // The current offse
 uint32_t gActiveRoomOffset = OOT_CURR_ROOM;                 // The current offset to add to reach the current room ID.
 uint32_t gActiveGrottoOffset = OOT_GROTTO_DATA;             // The current offset to add to reach the grotto data value.
 uint32_t gActiveCoordOffset = OOT_PLAYER_COORD;             // The current offset to add to reach the last respawned player corrdinates.
-uint32_t gActiveSceneOffset = OOT_SCENE_OFFSET;             // The current offset to add to reacth the last scene offset.
+uint32_t gActiveSceneOffset = OOT_SCENE_OFFSET;             // The current offset to add to reach the last scene offset.
+uint32_t gOOTActiveGlobalOffset = 0;                        // An offset to add to the active scene offset to reach the gLastScene variable for OoT.
+uint32_t gMMActiveGlobalOffset = 0;                         // An offset to add to the active scene offset to reach the gLastScene variable for MM.
 //uint32_t gActiveEntranceReg = S1_OFFSET;                    // The current register to use to get the next entrance value.
 uint32_t gDetectCounter = 0;                                // The counter used to trigger a game check.
 uint32_t gSP = 0;                                           // The last value of the stack pointer.
@@ -165,7 +167,9 @@ __asm mov[gActiveOwlOffset], ##Game##_OWL_CHOICE_ID               \
 __asm mov[gActiveRoomOffset], ##Game##_CURR_ROOM                  \
 __asm mov[gActiveGrottoOffset], ##Game##_GROTTO_DATA              \
 __asm mov[gActiveCoordOffset], ##Game##_PLAYER_COORD              \
-__asm mov[gActiveSceneOffset], ##Game##_SCENE_OFFSET              
+__asm mov[gActiveSceneOffset], ##Game##_SCENE_OFFSET              \
+__asm mov eax, g##Game##ActiveGlobalOffset                        \
+__asm add[gActiveSceneOffset], eax
 
 
 __declspec(naked) void CaptureXFlagASM()

@@ -121,7 +121,7 @@ public:
 	*
 	*	@param Buffer		The entrance message to parse.
 	*
-	*   @return <b>True</b> if the are from a new cycle, <b>false</b> otherwise.
+	*   @return <b>True</b> if the data are from a new cycle, <b>false</b> otherwise.
 	*/
 	bool IsNewCycle(uint32_t Buffer[6]);
 
@@ -130,9 +130,18 @@ public:
 	*
 	*	@param Buffer		The entrance message to parse.
 	*
-	*   @return <b>True</b> if the are from an extra scene, <b>false</b> otherwise.
+	*   @return <b>True</b> if the data are from an extra scene, <b>false</b> otherwise.
 	*/
 	bool IsMMExtra(uint32_t Buffer[6]);
+
+	/*
+	*   Check if the given data are from a death warp.
+	*
+	*	@param Buffer		The entrance message to parse.
+	*
+	*   @return <b>True</b> if the data are from a death warp, <b>false</b> otherwise.
+	*/
+	bool IsDeath(uint32_t Buffer[6]);
 
 	/*
 	*   Check if the given data come from a sun's song.
