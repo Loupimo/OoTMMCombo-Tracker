@@ -233,14 +233,15 @@ EntranceHelper::~EntranceHelper()
 
 void EntranceHelper::ResetEntranceHelper()
 {
-    this->OutEntrance = 0;
+    this->OutMessage.ResetMessage();
+    this->InMessage.ResetMessage();
     this->IsEntranceTouched = false;
 }
 
 
-bool EntranceHelper::IsNewCycle(uint32_t Buffer[6])
+bool EntranceHelper::IsNewCycle(EntranceMessage& Message)
 {
-    if ((Buffer[0] & 0xFF) == MM_GAME && Buffer[1] == 0)
+    if (Message.GameID == MM_GAME && Message.SceneID == 0)
     {
         return true;
     }
@@ -248,14 +249,14 @@ bool EntranceHelper::IsNewCycle(uint32_t Buffer[6])
 }
 
 
-bool EntranceHelper::IsMMExtra(uint32_t Buffer[6])
+bool EntranceHelper::IsMMExtra(EntranceMessage& Message)
 {
-    switch (Buffer[0] & 0xFF)
+    switch (Message.GameID)
     {
         case MM_GAME:
         {
-            switch (Buffer[1])
-            {   // Scene ID
+            switch (Message.SceneID)
+            {
 
                 case MM_EXTRA:
                 case MM_CUTSCENE_MAP:
@@ -269,7 +270,7 @@ bool EntranceHelper::IsMMExtra(uint32_t Buffer[6])
                 }
             }
 
-            switch (Buffer[2])
+            switch (Message.EntranceID)
             {   // Entrance ID
 
                 case MM_CLOCK_TOWER_MOON_CRASH_ENTR:
@@ -296,44 +297,80 @@ bool EntranceHelper::IsMMExtra(uint32_t Buffer[6])
 }
 
 
-bool EntranceHelper::IsDeath(uint32_t Buffer[6])
+bool EntranceHelper::IsDeath(EntranceMessage& PrevMessage, EntranceMessage& CurrMessage)
 {
-    return Buffer[1] == this->OutBuffer[1] && Buffer[2] == this->OutBuffer[2];
+    if (PrevMessage.SceneID == MM_INSIDE_CASTLE_IKANA || PrevMessage.SceneID == MM_LAIR_IKANA)
+    {   // Special case for dying inside castle of Ikana
+
+        return CurrMessage.EntranceID == MM_IKANA_CASTLE_EXTERIOR_FROM_WELL_ENTR;
+    }
+
+    return PrevMessage.MetaInf->Type == EntranceType::Normal && CurrMessage.SceneID == PrevMessage.SceneID && CurrMessage.EntranceID == PrevMessage.EntranceID;
 }
 
-bool EntranceHelper::IsSunSong(uint32_t Scene, uint32_t EntranceID)
+bool EntranceHelper::IsSunSong(EntranceMessage& PrevMessage, EntranceMessage& CurrMessage)
 {
-    // WARNING ! Sun song OoT and Song of Soaring MM have the same ID, this could lead to owl warp missing.
-    return ((this->OutBuffer[0] & 0xFF000000) >> 16) == WarpSong::Sun_Song && Scene == this->OutBuffer[1] && EntranceID == this->OutBuffer[2];
-}
-
-bool EntranceHelper::IsSongOfTime(uint32_t Buffer[6])
-{
-    return ((this->OutBuffer[0] & 0xFF000000) >> 24) == WarpSong::Song_of_Time
-            && Buffer[1] == this->OutBuffer[1]
-            && Buffer[2] == this->OutBuffer[2]
-            && Buffer[3] == this->OutBuffer[3]
-            && Buffer[4] == this->OutBuffer[4]
-            && Buffer[5] == this->OutBuffer[5];
-}
-
-bool EntranceHelper::IsSongOfDoubleTime(uint32_t Scene, uint32_t EntranceID)
-{
-    return ((this->OutBuffer[0] & 0xFF000000) >> 24) == WarpSong::Song_of_Double_Time && Scene == this->OutBuffer[1] && EntranceID == this->OutBuffer[2];
-}
-
-
-bool EntranceHelper::IsGrottoEntrance(uint32_t ID)
-{
-    switch (ID)
+    switch (CurrMessage.GameID)
     {
-        
-            
-            
-            
-            
-            
+        case OOT_GAME:
+        {
+            switch (CurrMessage.SceneID)
+            {   // Handle Special cases
 
+                case OOT_MARKET_ADULT:
+                case OOT_MARKET_CHILD_DAY:
+                case OOT_MARKET_CHILD_NIGHT:
+                {
+                    return PrevMessage.OoTSongID == OoTSongs::Sun_Song && OOT_MARKET == PrevMessage.SceneID && CurrMessage.EntranceID == PrevMessage.Buffer[2];
+                }
+
+                case OOT_BACK_ALLEY_DAY:
+                case OOT_BACK_ALLEY_NIGHT:
+                {
+                    return PrevMessage.OoTSongID == OoTSongs::Sun_Song && OOT_BACK_ALLEY == PrevMessage.SceneID && CurrMessage.EntranceID == PrevMessage.Buffer[2];
+                }
+
+                case OOT_MARKET_ENTRANCE_ADULT:
+                case OOT_MARKET_ENTRANCE_CHILD_DAY:
+                case OOT_MARKET_ENTRANCE_CHILD_NIGHT:
+                {
+                    return PrevMessage.OoTSongID == OoTSongs::Sun_Song && OOT_MARKET_ENTRANCE == PrevMessage.SceneID && CurrMessage.EntranceID == PrevMessage.Buffer[2];
+                }
+
+                case OOT_TEMPLE_OF_TIME_EXTERIOR_ADULT:
+                case OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY:
+                case OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_NIGHT:
+                {
+                    return PrevMessage.OoTSongID == OoTSongs::Sun_Song && OOT_TEMPLE_OF_TIME_ENTRYWAY == PrevMessage.SceneID && CurrMessage.EntranceID == PrevMessage.Buffer[2];
+                }
+            }
+            return PrevMessage.OoTSongID == OoTSongs::Sun_Song && CurrMessage.SceneID == PrevMessage.Buffer[1] && CurrMessage.EntranceID == PrevMessage.Buffer[2];
+        }
+    }
+
+    return false;
+}
+
+bool EntranceHelper::IsSongOfTime(EntranceMessage& PrevMessage, EntranceMessage& CurrMessage)
+{
+    return PrevMessage.OoTSongID == OoTSongs::Song_of_Time
+        && PrevMessage.Buffer[1] == CurrMessage.Buffer[1]
+        && PrevMessage.Buffer[2] == CurrMessage.Buffer[2]
+        && PrevMessage.Buffer[3] == CurrMessage.Buffer[3]
+        && PrevMessage.Buffer[4] == CurrMessage.Buffer[4]
+        && PrevMessage.Buffer[5] == CurrMessage.Buffer[5];
+}
+
+bool EntranceHelper::IsSongOfDoubleTime(EntranceMessage& PrevMessage, EntranceMessage& CurrMessage)
+{
+    return PrevMessage.MMSongID == MMSongs::Song_of_Double_Time && CurrMessage.SceneID == PrevMessage.Buffer[1] && CurrMessage.EntranceID == PrevMessage.Buffer[2];
+}
+
+
+bool EntranceHelper::IsGrottoEntrance(EntranceMessage& Message)
+{
+    switch (Message.EntranceID)
+    {
         case 0x03f:     // Generic grotto entry (OoT)
         case 0x36d:     // Fairy grotto entry (OoT)
         case 0x5bc:     // Double scrub grotto entry (OoT)
@@ -352,9 +389,9 @@ bool EntranceHelper::IsGrottoEntrance(uint32_t ID)
 }
 
 
-bool EntranceHelper::IsGrottoExit(uint32_t ID)
+bool EntranceHelper::IsGrottoExit(EntranceMessage& Message)
 {
-    switch (ID)
+    switch (Message.EntranceID)
     {
         case OOT_INTERNAL_EXIT_GROTTO_ENTR:    // Any grotto exit touched (OoT)
         case MM_INTERNAL_EXIT_GROTTO_ENTR:     // Any grotto exit touched (MM)
@@ -370,9 +407,9 @@ bool EntranceHelper::IsGrottoExit(uint32_t ID)
 }
 
 
-bool EntranceHelper::IsWarpEntrance(uint32_t ID)
+bool EntranceHelper::IsWarpEntrance(EntranceMessage& Message)
 {
-    switch (ID)
+    switch (Message.EntranceID)
     {
         case WARP_LOADING:    // Any warp song, save, zone (OoT / MM)
         {
@@ -387,15 +424,15 @@ bool EntranceHelper::IsWarpEntrance(uint32_t ID)
 }
 
 
-uint32_t EntranceHelper::GetGrottoEntrance(uint8_t Game, uint8_t GrottoData, uint32_t ID, uint32_t LastScene)
+uint32_t EntranceHelper::GetGrottoEntrance(EntranceMessage& Message, uint32_t LastScene)
 {
-    if (Game == OOT_GAME)
+    if (Message.GameID == OOT_GAME)
     {
-        switch (ID)
+        switch (Message.EntranceID)
         {
             case OOT_GROTTO_TYPE_GENERIC_ENTR:
             {
-                switch (GrottoData & 0x1f)
+                switch (Message.GrottoData & 0x1f)
                 {
                     case 0x0c: return OOT_GROTTO_GENERIC_KOKIRI_FOREST_ENTR;
                     case 0x14: return OOT_GROTTO_GENERIC_LOST_WOODS_ENTR;
@@ -451,7 +488,7 @@ uint32_t EntranceHelper::GetGrottoEntrance(uint8_t Game, uint8_t GrottoData, uin
 
         uint32_t entranceKey;
 
-        entranceKey = (ID >> 9);
+        entranceKey = (Message.EntranceID >> 9);
         switch (entranceKey)
         {
             case 0x06: entranceKey = 0x42; break;
@@ -459,13 +496,13 @@ uint32_t EntranceHelper::GetGrottoEntrance(uint8_t Game, uint8_t GrottoData, uin
             case 0x45: entranceKey = 0x4a; break;
             case 0x5b: entranceKey = 0x5a; break;
         }
-        ID = (entranceKey << 9) | (ID & 0x1ff);
+        Message.EntranceID = (entranceKey << 9) | (Message.EntranceID & 0x1ff);
 
-        switch (ID)
+        switch (Message.EntranceID)
         {
             case MM_GROTTO_TYPE_GENERIC_ENTR:
             {
-                switch (GrottoData & 0x1f)
+                switch (Message.GrottoData & 0x1f)
                 {
                     case 0x13: return MM_GROTTO_GENERIC_PATH_SNOWHEAD_ENTR;
                     case 0x14: return MM_GROTTO_GENERIC_VALLEY_ENTR;
@@ -504,18 +541,18 @@ uint32_t EntranceHelper::GetGrottoEntrance(uint8_t Game, uint8_t GrottoData, uin
 }
 
 
-uint32_t EntranceHelper::GetGrottoExit(uint8_t Game, uint8_t CurrRoom, uint8_t GrottoData, uint32_t LastScene)
+uint32_t EntranceHelper::GetGrottoExit(EntranceMessage& Message, uint32_t LastScene)
 {
     uint8_t currRoomNum = 0;
 
-    if (Game == OOT_GAME)
+    if (Message.GameID == OOT_GAME)
     {
-        switch (CurrRoom)
+        switch (Message.CurrRoom)
         {
             case 0x00:
             {
 
-                switch (GrottoData & 0x1f)
+                switch (Message.GrottoData & 0x1f)
                 {
                     case 0x0c: return OOT_GROTTO_EXIT_GENERIC_KOKIRI_FOREST;
                     case 0x14: return OOT_GROTTO_EXIT_GENERIC_LOST_WOODS;
@@ -588,7 +625,7 @@ uint32_t EntranceHelper::GetGrottoExit(uint8_t Game, uint8_t CurrRoom, uint8_t G
     else
     {   // MM
 
-        switch (CurrRoom)
+        switch (Message.CurrRoom)
         {
             case 0x00: return MM_GROTTO_EXIT_GOSSIPS_OCEAN;
             case 0x01: return MM_GROTTO_EXIT_GOSSIPS_SWAMP;
@@ -596,7 +633,7 @@ uint32_t EntranceHelper::GetGrottoExit(uint8_t Game, uint8_t CurrRoom, uint8_t G
             case 0x03: return MM_GROTTO_EXIT_GOSSIPS_MOUNTAIN;
             case 0x04:
             {
-                switch (GrottoData & 0x1f)
+                switch (Message.GrottoData & 0x1f)
                 {
                     case 0x13: return MM_GROTTO_EXIT_GENERIC_PATH_SNOWHEAD;
                     case 0x14: return MM_GROTTO_EXIT_GENERIC_VALLEY;
@@ -641,11 +678,11 @@ uint32_t EntranceHelper::GetGrottoExit(uint8_t Game, uint8_t CurrRoom, uint8_t G
 }
 
 
-uint32_t EntranceHelper::CorrectGrottoScene(uint8_t Game, uint32_t ID)
+uint32_t EntranceHelper::CorrectGrottoScene(EntranceMessage& Message)
 {
-    if (Game == OOT_GAME)
+    if (Message.GameID == OOT_GAME)
     {
-        switch (ID)
+        switch (Message.EntranceID)
         {
             case OOT_GROTTO_EXIT_GENERIC_KOKIRI_FOREST:
             case OOT_GROTTO_GENERIC_KOKIRI_FOREST_ENTR:
@@ -847,111 +884,102 @@ uint32_t EntranceHelper::CorrectGrottoScene(uint8_t Game, uint32_t ID)
             }
         }
     }
-    else if (Game == MM_GAME)
+    else if (Message.GameID == MM_GAME)
     {
-
+        return Message.SceneID;
     }
 
-    return ID;
+    return Message.EntranceID;
 }
 
 
-uint32_t EntranceHelper::GetWarpSong(uint8_t * Game, uint32_t ID, uint8_t SongIndex, uint8_t OwlID, bool * IsWarpSong)
+uint32_t EntranceHelper::GetWarpSong(EntranceMessage& Message, bool * IsWarpSong)
 {
     *IsWarpSong = true;
 
-    if (*Game == OOT_GAME)
+    if (Message.GameID == OOT_GAME)
     {
-        switch ((WarpSong)SongIndex)
+        switch (Message.OoTSongID)
         {
-            case WarpSong::Minuet_of_Forest:
+            case OoTSongs::Minuet_of_Forest:
             {
-
                 return OOT_MINUET_OF_FOREST_SONG;
             }
 
-            case WarpSong::Bolero_of_Fire:
+            case OoTSongs::Bolero_of_Fire:
             {
                 return OOT_BOLERO_OF_FIRE_SONG;
             }
 
-            case WarpSong::Serenade_of_Water:
+            case OoTSongs::Serenade_of_Water:
             {
                 return OOT_SERENADE_OF_WATER_SONG;
             }
 
-            case WarpSong::Requiem_of_Spirit:
+            case OoTSongs::Requiem_of_Spirit:
             {
                 return OOT_REQUIEM_OF_SPIRIT_SONG;
             }
 
-            case WarpSong::Nocturne_of_Shadow:
+            case OoTSongs::Nocturne_of_Shadow:
             {
                 return OOT_NOCTURNE_OF_SHADOW_SONG;
             }
 
-            case WarpSong::Prelude_of_Light:
+            case OoTSongs::Prelude_of_Light:
             {
                 return OOT_PRELUDE_OF_LIGHT_SONG;
             }
 
-            case 0xFE:
+            case OoTSongs::Song_of_Soaring:
             {
-                switch (OwlID)
+                Message.GameID = MM_GAME;
+                switch (Message.OwlID)
                 {
                     case OwlScene::Great_Bay_Coast:
                     {
-                        *Game = MM_GAME;
                         return MM_WARP_OWL_GREAT_BAY_ENTR;
                     }
                     case OwlScene::Zora_Cape:
                     {
-                        *Game = MM_GAME;
                         return MM_WARP_OWL_ZORA_CAPE_ENTR;
                     }
                     case OwlScene::Snowhead:
                     {
-                        *Game = MM_GAME;
                         return MM_WARP_OWL_SNOWHEAD_ENTR;
                     }
                     case OwlScene::Mountain_Village:
                     {
-                        *Game = MM_GAME;
                         return MM_WARP_OWL_MOUNTAIN_VILLAGE_ENTR;
                     }
                     case OwlScene::Clock_Town:
                     {
-                        *Game = MM_GAME;
                         return MM_WARP_OWL_CLOCK_TOWN_ENTR;
                     }
                     case OwlScene::Milk_Road:
                     {
-                        *Game = MM_GAME;
                         return MM_WARP_OWL_MILK_ROAD_ENTR;
                     }
                     case OwlScene::Woodfall:
                     {
-                        *Game = MM_GAME;
                         return MM_WARP_OWL_WOODFALL_ENTR;
                     }
                     case OwlScene::Southern_Swamp:
                     {
-                        *Game = MM_GAME;
                         return MM_WARP_OWL_SOUTHERN_SWAMP_ENTR;
                     }
                     case OwlScene::Ikana_Canyon:
                     {
-                        *Game = MM_GAME;
                         return MM_WARP_OWL_IKANA_CANYON_ENTR;
                     }
                     case OwlScene::Stone_Tower:
                     {
-                        *Game = MM_GAME;
                         return MM_WARP_OWL_STONE_TOWER_ENTR;
                     }
 
                     default:
                     {
+                        Message.GameID = OOT_GAME;
                         *IsWarpSong = false;
                         break;
                     }
@@ -965,49 +993,45 @@ uint32_t EntranceHelper::GetWarpSong(uint8_t * Game, uint32_t ID, uint8_t SongIn
             }
         }
     }
-    else if (*Game == MM_GAME)
+    else if (Message.GameID == MM_GAME)
     {
-        switch ((WarpSong)SongIndex)
+        Message.GameID = OOT_GAME;
+        switch (Message.MMSongID)
         {
-            case WarpSong::Minuet_of_Forest + 0x80:
+            case MMSongs::Minuet_of_Forest:
             {
-                *Game = OOT_GAME;
                 return OOT_MINUET_OF_FOREST_SONG;
             }
 
-            case WarpSong::Bolero_of_Fire + 0x80:
+            case MMSongs::Bolero_of_Fire:
             {
-                *Game = OOT_GAME;
                 return OOT_BOLERO_OF_FIRE_SONG;
             }
 
-            case WarpSong::Serenade_of_Water + 0x80:
+            case MMSongs::Serenade_of_Water:
             {
-                *Game = OOT_GAME;
                 return OOT_SERENADE_OF_WATER_SONG;
             }
 
-            case WarpSong::Requiem_of_Spirit + 0x80:
+            case MMSongs::Requiem_of_Spirit:
             {
-                *Game = OOT_GAME;
                 return OOT_REQUIEM_OF_SPIRIT_SONG;
             }
 
-            case WarpSong::Nocturne_of_Shadow + 0x80:
+            case MMSongs::Nocturne_of_Shadow:
             {
-                *Game = OOT_GAME;
                 return OOT_NOCTURNE_OF_SHADOW_SONG;
             }
 
-            case WarpSong::Prelude_of_Light + 0x80:
+            case MMSongs::Prelude_of_Light:
             {
-                *Game = OOT_GAME;
                 return OOT_PRELUDE_OF_LIGHT_SONG;
             }
 
-            case WarpSong::Song_of_Soaring:
+            case MMSongs::Song_of_Soaring:
             {
-                switch (OwlID)
+                Message.GameID = MM_GAME;
+                switch (Message.OwlID)
                 {
                     case OwlScene::Great_Bay_Coast:
                     {
@@ -1060,13 +1084,14 @@ uint32_t EntranceHelper::GetWarpSong(uint8_t * Game, uint32_t ID, uint8_t SongIn
 
             default:
             {
+                Message.GameID = MM_GAME;
                 *IsWarpSong = false;
                 break;
             }
         }
     }
 
-    return ID;
+    return Message.EntranceID;
 }
 
 
@@ -1081,11 +1106,9 @@ float EntranceHelper::GetDistanceGrottoEntrance(GrottoEntrance Grotto, float X, 
 }
 
 
-uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
+uint32_t EntranceHelper::CheckGrottoSpawn(EntranceMessage& Message)
 {
-    float x = 0.0f, y = 0.0f, z = 0.0f;
-
-    switch (ID)
+    switch (Message.EntranceID)
     {
 
 #pragma region OoT Grottos
@@ -1099,7 +1122,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case OOT_DEATH_MOUNTAIN_CRATER_ENTR:
         case OOT_CRATER_FROM_GORON_CITY_ENTR:
         {
-            ID = OOT_DEATH_MOUNTAIN_CRATER_ENTR;
+            Message.EntranceID = OOT_DEATH_MOUNTAIN_CRATER_ENTR;
             break;
         }
 
@@ -1112,7 +1135,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case OOT_DEATH_MOUNTAIN_FROM_KAKARIKO_ENTR:
         case OOT_DEATH_MOUNTAIN_FROM_GORON_CITY_ENTR:
         {
-            ID = OOT_DEATH_MOUNTAIN_FROM_KAKARIKO_ENTR;
+            Message.EntranceID = OOT_DEATH_MOUNTAIN_FROM_KAKARIKO_ENTR;
             break;
         }
 
@@ -1123,7 +1146,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case OOT_GORON_CITY_FROM_LOST_WOODS_ENTR:
         case OOT_GORON_CITY_ENTR:
         {
-            ID = OOT_GORON_CITY_ENTR;
+            Message.EntranceID = OOT_GORON_CITY_ENTR;
             break;
         }
 
@@ -1135,7 +1158,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case OOT_SACRED_FOREST_MEADOW_ENTR:
         case OOT_WARP_SONG_MEADOW_ENTR:
         {
-            ID = OOT_SACRED_FOREST_MEADOW_ENTR;
+            Message.EntranceID = OOT_SACRED_FOREST_MEADOW_ENTR;
             break;
         }
 
@@ -1150,7 +1173,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case OOT_LOST_WOODS_FROM_KOKIRI_FOREST_ENTR:
         case OOT_LOST_WOODS_FROM_MEADOW_ENTR:
         {
-            ID = OOT_LOST_WOODS_FROM_KOKIRI_FOREST_ENTR;
+            Message.EntranceID = OOT_LOST_WOODS_FROM_KOKIRI_FOREST_ENTR;
             break;
         }
 
@@ -1166,7 +1189,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case OOT_KOKIRI_FOREST_FROM_LINK_ENTR:
         case OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR:
         {
-            ID = OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR;
+            Message.EntranceID = OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR;
             break;
         }
 
@@ -1189,7 +1212,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case OOT_KAKARIKO_FROM_FIELD_ENTR:
         case OOT_VILLAGE_OWL_ENTR:
         {
-            ID = OOT_KAKARIKO_FROM_FIELD_ENTR;
+            Message.EntranceID = OOT_KAKARIKO_FROM_FIELD_ENTR;
             break;
         }
 
@@ -1215,7 +1238,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case OOT_FIELD_FROM_GERUDO_VALLEY_ENTR:
         case OOT_FIELD_FROM_MARKET_ENTRANCE_ENTR:
         {
-            ID = OOT_FIELD_FROM_MARKET_ENTRANCE_ENTR;
+            Message.EntranceID = OOT_FIELD_FROM_MARKET_ENTRANCE_ENTR;
             break;
         }
 
@@ -1226,7 +1249,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case OOT_GERUDO_VALLEY_FROM_FIELD_ENTR:
         case OOT_GERUDO_VALLEY_FROM_TENT_ENTR:
         {
-            ID = OOT_GERUDO_VALLEY_FROM_FIELD_ENTR;
+            Message.EntranceID = OOT_GERUDO_VALLEY_FROM_FIELD_ENTR;
             break;
         }
         
@@ -1240,7 +1263,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case OOT_LAKE_HYLIA_FROM_FISHING_POND_ENTR:
         case OOT_WARP_SONG_LAKE_ENTR:
         {
-            ID = OOT_LAKE_HYLIA_FROM_FIELD_ENTR;
+            Message.EntranceID = OOT_LAKE_HYLIA_FROM_FIELD_ENTR;
             break;
         }
 
@@ -1251,7 +1274,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case OOT_ZORA_DOMAIN_FROM_LAKE_HYLIA_ENTR:
         case OOT_ZORA_DOMAIN_ENTR:
         {
-            ID = OOT_ZORA_DOMAIN_ENTR;
+            Message.EntranceID = OOT_ZORA_DOMAIN_ENTR;
             break;
         }
 
@@ -1264,7 +1287,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case OOT_RIVER_FROM_DOMAIN_ENTR:
         case OOT_ZORA_RIVER_FROM_FIELD_ENTR:
         {
-            ID = OOT_ZORA_RIVER_FROM_FIELD_ENTR;
+            Message.EntranceID = OOT_ZORA_RIVER_FROM_FIELD_ENTR;
             break;
         }
 
@@ -1275,7 +1298,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case OOT_DESERT_COLOSSUS_FROM_FAIRY_ENTR:
         case OOT_COLOSSUS_ENTR:
         {
-            ID = OOT_COLOSSUS_ENTR;
+            Message.EntranceID = OOT_COLOSSUS_ENTR;
             break;
         }
 
@@ -1299,7 +1322,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case OOT_FORTRESS_FROM_HIDEOUT_JAIL_4:
         case OOT_GERUDO_FORTRESS_FROM_VALLEY_ENTR:
         {
-            ID = OOT_GERUDO_FORTRESS_FROM_VALLEY_ENTR;
+            Message.EntranceID = OOT_GERUDO_FORTRESS_FROM_VALLEY_ENTR;
             break;
         }
 
@@ -1310,7 +1333,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case OOT_LON_LON_RANCH_FROM_HOUSE_ENTR:
         case OOT_LON_LON_RANCH_FROM_FIELD_ENTR:
         {
-            ID = OOT_LON_LON_RANCH_FROM_FIELD_ENTR;
+            Message.EntranceID = OOT_LON_LON_RANCH_FROM_FIELD_ENTR;
             break;
         }
         
@@ -1321,7 +1344,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case OOT_HYRULE_CASTLE_FROM_FAIRY_ENTR:
         case OOT_HYRULE_CASTLE_ENTR:
         {
-            ID = OOT_HYRULE_CASTLE_ENTR;
+            Message.EntranceID = OOT_HYRULE_CASTLE_ENTR;
             break;
         }
 
@@ -1333,7 +1356,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case MM_PATH_SNOWHEAD_FROM_SNOWHEAD_ENTR:
         case MM_SNOWHEAD_PATH_FROM_MOUNTAIN_VILLAGE_ENTR:
         {
-            ID = MM_PATH_SNOWHEAD_FROM_SNOWHEAD_ENTR;
+            Message.EntranceID = MM_PATH_SNOWHEAD_FROM_SNOWHEAD_ENTR;
             break;
         }
 
@@ -1343,7 +1366,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_EAST_ENTR:
         case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_SOUTH_ENTR:
         {
-            ID = MM_TERMINA_FIELD_FROM_CLOCK_TOWN_SOUTH_ENTR;
+            Message.EntranceID = MM_TERMINA_FIELD_FROM_CLOCK_TOWN_SOUTH_ENTR;
             break;
         }
 
@@ -1352,7 +1375,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case MM_GREAT_BAY_COAST_FROM_FISHER_HUT_ENTR:
         case MM_GREAT_BAY_COAST_FROM_FIELD_ENTR:
         {
-            ID = MM_GREAT_BAY_COAST_FROM_FIELD_ENTR;
+            Message.EntranceID = MM_GREAT_BAY_COAST_FROM_FIELD_ENTR;
             break;
         }
 
@@ -1360,7 +1383,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case MM_SWAMP_FROM_ROAD_ENTR:
         case MM_SWAMP_FROM_SPIDER_HOUSE_ENTR:
         {
-            ID = MM_SWAMP_FROM_SPIDER_HOUSE_ENTR;
+            Message.EntranceID = MM_SWAMP_FROM_SPIDER_HOUSE_ENTR;
             break;
         }
 
@@ -1368,7 +1391,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case MM_SWAMP_ROAD_FROM_SWAMP_ENTR:
         case MM_SWAMP_ROAD_FROM_FIELD_ENTR:
         {
-            ID = MM_SWAMP_ROAD_FROM_FIELD_ENTR;
+            Message.EntranceID = MM_SWAMP_ROAD_FROM_FIELD_ENTR;
             break;
         }
 
@@ -1382,7 +1405,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         case MM_MOUNTAIN_VILLAGE_FROM_TWIN_ISLANDS_ENTR:
         case MM_MOUNTAIN_VILLAGE_FROM_PATH_ENTR:
         {
-            ID = MM_MOUNTAIN_VILLAGE_FROM_PATH_ENTR;
+            Message.EntranceID = MM_MOUNTAIN_VILLAGE_FROM_PATH_ENTR;
             break;
         }
 
@@ -1401,21 +1424,17 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
 
         default:
         {
-            return ID;
+            return Message.EntranceID;
         }
     }
 
-    memcpy(&x, &Buffer[3], sizeof(float));
-    memcpy(&y, &Buffer[4], sizeof(float));
-    memcpy(&z, &Buffer[5], sizeof(float));
-
-    const std::vector<GrottoEntrance> entrances = GrottoEntrances.at(ID);
-    float tmpDist = 0.0f, bestDist = this->GetDistanceGrottoEntrance(entrances[0], x, y, z);
+    const std::vector<GrottoEntrance> entrances = GrottoEntrances.at(Message.EntranceID);
+    float tmpDist = 0.0f, bestDist = this->GetDistanceGrottoEntrance(entrances[0], Message.X, Message.Y, Message.Z);
     uint32_t bestEntID = entrances[0].EntranceID;
 
     for (size_t i = 1; i < entrances.size(); i++)
     {
-        tmpDist = this->GetDistanceGrottoEntrance(entrances[i], x, y, z);
+        tmpDist = this->GetDistanceGrottoEntrance(entrances[i], Message.X, Message.Y, Message.Z);
 
         if (tmpDist == 0.0)
         {
@@ -1428,37 +1447,26 @@ uint32_t EntranceHelper::CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6])
         }
     }
 
-    /*
-    for (size_t i = 0; i < entrances.size(); i++)
-    {
-        GrottoEntrance currEntrance = entrances[i];
-        if (x == currEntrance.SpawnPos[0] && y == currEntrance.SpawnPos[1] && z == currEntrance.SpawnPos[2])
-        {   // The respawn coordinates match the grotto entrance
-
-            return entrances[i].EntranceID;
-        }
-    }*/
-
     return bestEntID;
 }
 
 
-uint32_t EntranceHelper::CheckSpecialCase(uint8_t Game, uint32_t ID, uint32_t * SceneID)
+uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
 {
-    if (Game == OOT_GAME)
+    if (Message.GameID == OOT_GAME)
     {
-        switch (*SceneID)
+        switch (Message.SceneID)
         {
             case OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES:
             case OOT_GREAT_FAIRY_FOUNTAIN_SPELLS:
             {
-                *SceneID = OOT_GREAT_FAIRY;
+                Message.SceneID = OOT_GREAT_FAIRY;
                 break;
             }
 
             case OOT_CASTLE_COURTYARD:
             {
-                switch (ID)
+                switch (Message.EntranceID)
                 {
                     case OOT_CASTLE_STEALTH_ENTR:
                     {
@@ -1471,7 +1479,7 @@ uint32_t EntranceHelper::CheckSpecialCase(uint8_t Game, uint32_t ID, uint32_t * 
 
             case OOT_HYRULE_CASTLE:
             {
-                switch (ID)
+                switch (Message.EntranceID)
                 {
                     case 0x23d:
                     {   // Castle Courtyard -> Hyrule Castle
@@ -1492,14 +1500,14 @@ uint32_t EntranceHelper::CheckSpecialCase(uint8_t Game, uint32_t ID, uint32_t * 
             case OOT_MARKET_CHILD_NIGHT:
             case OOT_MARKET_ADULT:
             {
-                *SceneID = OOT_MARKET;
+                Message.SceneID = OOT_MARKET;
                 break;
             }
 
             case OOT_BACK_ALLEY_DAY:
             case OOT_BACK_ALLEY_NIGHT:
             {
-                *SceneID = OOT_BACK_ALLEY;
+                Message.SceneID = OOT_BACK_ALLEY;
                 break;
             }
 
@@ -1507,7 +1515,7 @@ uint32_t EntranceHelper::CheckSpecialCase(uint8_t Game, uint32_t ID, uint32_t * 
             case OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_NIGHT:
             case OOT_TEMPLE_OF_TIME_EXTERIOR_ADULT:
             {
-                *SceneID = OOT_TEMPLE_OF_TIME_ENTRYWAY;
+                Message.SceneID = OOT_TEMPLE_OF_TIME_ENTRYWAY;
                 break;
             }
 
@@ -1515,18 +1523,18 @@ uint32_t EntranceHelper::CheckSpecialCase(uint8_t Game, uint32_t ID, uint32_t * 
             case OOT_MARKET_ENTRANCE_CHILD_NIGHT:
             case OOT_MARKET_ENTRANCE_ADULT:
             {
-                *SceneID = OOT_MARKET_ENTRANCE;
+                Message.SceneID = OOT_MARKET_ENTRANCE;
                 break;
             }
 
             case OOT_TOMB_DAMPE_WINDMILL:
             {
-                switch (ID)
+                switch (Message.EntranceID)
                 {
                     case OOT_KAKARIKO_FROM_WINDMILL_ENTR:
                     case OOT_WINDMILL_ENTR:
                     {
-                        *SceneID = OOT_WINDMILL;
+                        Message.SceneID = OOT_WINDMILL;
                         break;
                     }
                 }
@@ -1535,90 +1543,91 @@ uint32_t EntranceHelper::CheckSpecialCase(uint8_t Game, uint32_t ID, uint32_t * 
 
             case OOT_RANCH_HOUSE_SILO:
             {
-                if (ID == OOT_SILO_ENTR)
+                if (Message.EntranceID == OOT_SILO_ENTR)
                 {
-                    *SceneID = OOT_SILO;
+                    Message.SceneID = OOT_SILO;
                 }
                 break;
             }
 
             case OOT_GROTTOS:
             {
-                switch (ID)
+                switch (Message.EntranceID)
                 {
                     case OOT_GROTTO_SCRUB_UPGRADE_ENTR:
                     {   // Lost Woods scrub nuts upgrade grotto entry 
 
-                        *SceneID = OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;
+                        Message.SceneID = OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;
                         break;
                     }
 
                     case OOT_GROTTO_DEKU_THEATER_ENTR:  
                     {   // Deku's Theater grotto entry
 
-                        *SceneID = OOT_GROTTO_LOST_WOODS_THEATER;
+                        Message.SceneID = OOT_GROTTO_LOST_WOODS_THEATER;
                         break;
                     }
 
                     case OOT_GROTTO_WOLFOS_ENTR:        
                     {   // Sacred Forest Meadow wolfos grotto entry
 
-                        *SceneID = OOT_GROTTO_SACRED_MEADOW_WOLFOS;
+                        Message.SceneID = OOT_GROTTO_SACRED_MEADOW_WOLFOS;
                         break;
                     }
 
                     case OOT_GROTTO_SCRUB_HEART_PIECE_ENTR:
                     {   // Hyrule Field scrub grotto entry
 
-                        *SceneID = OOT_GROTTO_HYRULE_SCRUBS;
+                        Message.SceneID = OOT_GROTTO_HYRULE_SCRUBS;
                         break;
                     }
 
                     case OOT_GROTTO_FIELD_COW_ENTR:
                     {   // Hyrule Field cow grotto entry
 
-                        *SceneID = OOT_GROTTO_HYRULE_GERUDO;
+                        Message.SceneID = OOT_GROTTO_HYRULE_GERUDO;
                         break;
                     }
 
                     case OOT_GROTTO_FIELD_TREE_ENTR:
                     {   // Hyrule Field tree near kakariko grotto entry
 
-                        *SceneID = OOT_GROTTO_HYRULE_KAKARIKO;
+                        Message.SceneID = OOT_GROTTO_HYRULE_KAKARIKO;
                         break;
                     }
 
                     case OOT_GROTTO_CASTLE_ENTR:
                     {   // Hyrule Castle grotto entry
 
-                        *SceneID = OOT_GROTTO_CASTLE_STORMS;
+                        Message.SceneID = OOT_GROTTO_CASTLE_STORMS;
                         break;
                     }
 
                     case OOT_GROTTO_TEKTITE_ENTR:
                     {   // Hyrule Field tektite grotto entry
 
-                        *SceneID = OOT_GROTTO_HYRULE_TEKTITE;
+                        Message.SceneID = OOT_GROTTO_HYRULE_TEKTITE;
                         break;
                     }
 
                     case OOT_GROTTO_TRAIL_COW_ENTR:
                     {   // Death Mountain Trail cow grotto entry
 
-                        *SceneID = OOT_GROTTO_DEATH_TRIAL_COW;
+                        Message.SceneID = OOT_GROTTO_DEATH_TRIAL_COW;
                         break;
                     }
 
                     case OOT_GROTTO_REDEAD_ENTR:
                     {   // Kakariko redead grotto entry
-                        *SceneID = OOT_GROTTO_KAKARIKO_REDEAD;
+
+                        Message.SceneID = OOT_GROTTO_KAKARIKO_REDEAD;
                         break;
                     }
 
                     case OOT_GROTTO_OCTOROK_ENTR:
                     {   // Gerudo Valley octorok grotto entry
 
-                        *SceneID = OOT_GROTTO_VALLEY_OCTOROK;
+                        Message.SceneID = OOT_GROTTO_VALLEY_OCTOROK;
                         break;
                     }
                 }
@@ -1626,16 +1635,16 @@ uint32_t EntranceHelper::CheckSpecialCase(uint8_t Game, uint32_t ID, uint32_t * 
             }
         }
     }
-    else if (Game == MM_GAME)
+    else if (Message.GameID == MM_GAME)
     {
-        switch (*SceneID)
+        switch (Message.SceneID)
         {
             case MM_MOUNTAIN_VILLAGE_WINTER:
             case MM_MOUNTAIN_VILLAGE_SPRING:
             {
-                *SceneID = MM_MOUNTAIN_VILLAGE;
+                Message.SceneID = MM_MOUNTAIN_VILLAGE;
 
-                switch (ID)
+                switch (Message.EntranceID)
                 {
                     case MM_MOUNTAIN_VILLAGE_SPRING_FROM_BLACKSMITH_ENTR:
                     {
@@ -1675,9 +1684,9 @@ uint32_t EntranceHelper::CheckSpecialCase(uint8_t Game, uint32_t ID, uint32_t * 
 
             case MM_TWIN_ISLANDS_SPRING:
             {
-                *SceneID = MM_TWIN_ISLANDS;
+                Message.SceneID = MM_TWIN_ISLANDS;
                 
-                switch (ID)
+                switch (Message.EntranceID)
                 {
                     case MM_TWIN_ISLANDS_SPRING_FROM_MOUNTAIN_VILLAGE_ENTR:
                     {
@@ -1701,9 +1710,9 @@ uint32_t EntranceHelper::CheckSpecialCase(uint8_t Game, uint32_t ID, uint32_t * 
             case MM_GORON_VILLAGE_SPRING:
             case MM_GORON_VILLAGE_WINTER:
             {
-                *SceneID = MM_GORON_VILLAGE;
+                Message.SceneID = MM_GORON_VILLAGE;
 
-                switch (ID)
+                switch (Message.EntranceID)
                 {
                     case MM_GORON_VILLAGE_SPRING_FROM_TWIN_ISLANDS_ENTR:
                     {
@@ -1726,11 +1735,11 @@ uint32_t EntranceHelper::CheckSpecialCase(uint8_t Game, uint32_t ID, uint32_t * 
 
             case MM_GROTTOS:
             {
-                switch (ID)
+                switch (Message.EntranceID)
                 {
                     case MM_LONE_PEAK_SHRINE_ENTR:
                     {
-                        *SceneID = MM_LONE_PEAK;
+                        Message.SceneID = MM_LONE_PEAK;
                         break;
                     }
 
@@ -1754,66 +1763,80 @@ uint32_t EntranceHelper::CheckSpecialCase(uint8_t Game, uint32_t ID, uint32_t * 
 
             case MM_CUTSCENE_MAP:
             {
-                *SceneID = MM_EXTRA;
+                Message.SceneID = MM_EXTRA;
                 break;
             }
 
             case MM_ZORA_HALL_ROOMS:
             {
-                switch (ID)
+                switch (Message.EntranceID)
                 {
                     case MM_ROOM_EVANS_ENTR:
                     {
-                        *SceneID = MM_ZORA_EVANS_ROOM;
+                        Message.SceneID = MM_ZORA_EVANS_ROOM;
                         break;
                     }
 
                     case MM_ROOM_JAPAS_ENTR:
                     {
-                        *SceneID = MM_ZORA_JAPAS_ROOM;
+                        Message.SceneID = MM_ZORA_JAPAS_ROOM;
                         break;
                     }
 
                     case MM_ROOM_TIJO_ENTR:
                     {
-                        *SceneID = MM_ZORA_TIJO_ROOM;
+                        Message.SceneID = MM_ZORA_TIJO_ROOM;
                         break;
                     }
 
                     case MM_ROOM_LULU_ENTR:
                     {
-                        *SceneID = MM_ZORA_LULU_ROOM;
+                        Message.SceneID = MM_ZORA_LULU_ROOM;
                         break;
                     }
 
                     case MM_ZORA_SHOP_ENTR:
                     {
-                        *SceneID = MM_ZORA_SHOP;
+                        Message.SceneID = MM_ZORA_SHOP;
                         break;
                     }
                 }
             }
+
+            case MM_CASTLE_IKANA:
+            {
+                if (Message.CurrRoom != 0)
+                {
+                    Message.SceneID = MM_INSIDE_CASTLE_IKANA;
+                }
+                /*switch (Message.EntranceID)
+                {
+                    case MM_IKANA_CASTLE_ENTR:
+                    case MM_IKANA_CASTLE_INTERIOR_KEG_ENTR:
+                    case MM_IKANA_CASTLE_INTERIOR_BLOCK_ENTR:
+                    {
+                        Message.SceneID = MM_INSIDE_CASTLE_IKANA;
+                        break;
+                    }
+                }*/
+                break;
+            }
         }
     }
 
-    return ID;
+    return Message.EntranceID;
 }
 
 
-uint32_t EntranceHelper::CheckWrapScene(uint8_t Game, uint32_t ID, uint32_t * SceneID, uint32_t X, uint32_t Y, uint32_t Z)
+uint32_t EntranceHelper::CheckWrapScene(EntranceMessage& Message)
 {
-    float x, y, z;
-    memcpy(&x, &X, sizeof(float));
-    memcpy(&y, &Y, sizeof(float));
-    memcpy(&z, &Z, sizeof(float));
-
-    if (Game == OOT_GAME)
+    if (Message.GameID == OOT_GAME)
     {
         
     }
-    else if (Game == MM_GAME)
+    else if (Message.GameID == MM_GAME)
     {
-        switch (*SceneID)
+        switch (Message.SceneID)
         {
             case MM_DEKU_PALACE:
             case MM_DEKU_KING_CHAMBER:
@@ -1839,8 +1862,8 @@ uint32_t EntranceHelper::CheckWrapScene(uint8_t Game, uint32_t ID, uint32_t * Sc
 
             case MM_CLOCK_TOWN_SOUTH:
             {
-                *SceneID = WARP_SCENE;
-                return ID;
+                Message.SceneID = WARP_SCENE;
+                return Message.EntranceID;
             }
         }
 
@@ -1915,7 +1938,7 @@ uint32_t EntranceHelper::CheckWrapScene(uint8_t Game, uint32_t ID, uint32_t * Sc
         }*/
     }
 
-    return ID;
+    return Message.EntranceID;
 }
 
 
@@ -1923,87 +1946,77 @@ void EntranceHelper::ParseEntranceMessage(uint32_t EntranceFlag, uint32_t Buffer
 {
     if ((EntranceFlag & 0xFFFFFF00) == IN_MAGIC)
     {
-        this->ParseIncomingMessage(Buffer);
+        this->InMessage.SetMessage(IN_MAGIC, EntranceFlag, Buffer);
+        this->ParseIncomingMessage(this->InMessage);
     }
     else if ((EntranceFlag & 0xFFFFFF00) == OUT_MAGIC)
     {
-        this->ParseOutgoingMessage((uint8_t)EntranceFlag, Buffer);
+        this->OutMessage.SetMessage(OUT_MAGIC, EntranceFlag, Buffer);
+        this->ParseOutgoingMessage(this->OutMessage);
     }
 }
 
 
-void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[6])
+void EntranceHelper::ParseIncomingMessage(EntranceMessage& Message)
 {
     if (this->IsEntranceTouched)
     {
-        if (this->IsDeath(Buffer) || this->IsNewCycle(Buffer) || this->IsSongOfDoubleTime(Buffer[1], Buffer[2]) || this->IsSongOfTime(Buffer) || this->IsSunSong(Buffer[1], Buffer[2]))
+        Message.EntranceID = this->CheckSpecialCase(Message);
+
+        if (this->IsDeath(this->OutMessage, Message) || this->IsNewCycle(Message) || this->IsSongOfDoubleTime(this->OutMessage, Message) || this->IsSongOfTime(this->OutMessage, Message) || this->IsSunSong(this->OutMessage, Message))
         {   
             this->IsEntranceTouched = false;
             return;
         }
 
-        uint8_t game = Buffer[0] & 0xFF;
-        uint8_t currRoom = (Buffer[0] >> 16) & 0xFF;
-        uint8_t grottoData = (Buffer[0] >> 8) & 0xFF;
-        uint32_t inScene = Buffer[1];
-        uint32_t inEntrance = Buffer[2];
-        EntranceMetaInfo entranceMeta = {};
-
-        inEntrance = this->CheckSpecialCase(game, inEntrance, &inScene);
-
-        if (this->IsGrottoEntrance(inEntrance))
+        if (this->IsGrottoEntrance(Message))
         {
-            inEntrance = this->GetGrottoEntrance(game, grottoData, inEntrance, this->OutScene);
-            inScene = this->CorrectGrottoScene(game, inEntrance);
+            Message.EntranceID = this->GetGrottoEntrance(Message, this->OutMessage.SceneID);
+            Message.SceneID = this->CorrectGrottoScene(Message);
         }
-        else if (this->IsGrottoExit(inEntrance))
+        else if (this->IsGrottoExit(Message))
         {
-            inEntrance = this->GetGrottoExit(game, currRoom, grottoData, inScene);
+            Message.EntranceID = this->GetGrottoExit(Message, Message.SceneID);
         }
         else
         {
-            inEntrance = this->CheckGrottoSpawn(inEntrance, Buffer);
+            Message.EntranceID = this->CheckGrottoSpawn(Message);
         }
 
-        if (game == OOT_GAME)
+        if (Message.GameID == OOT_GAME)
         {
-            entranceMeta = OoTEntrances.at(inEntrance);
+            Message.MetaInf = &OoTEntrances.at(Message.EntranceID);
         }
         else
         {
-            entranceMeta = MMEntrances.at(inEntrance);
+            Message.MetaInf = &MMEntrances.at(Message.EntranceID);
         }
 
-        this->EntranceStr = entranceMeta.ToName + std::string(" - ") + entranceMeta.FromName;
-        float x, y, z;
-        memcpy(&x, &Buffer[3], sizeof(float));
-        memcpy(&y, &Buffer[4], sizeof(float));
-        memcpy(&z, &Buffer[5], sizeof(float));
-        MultiLogger::LogMessage("X = %f, Y = %f, Z = %f", x, y, z);
-
-        MultiLogger::LogMessage("New scene Loaded ! From : %s (0x%X), To : %s (0x%X)", this->LastTouchedStr.c_str(), this->OutEntrance, this->EntranceStr.c_str(), inEntrance);
+        Message.EntranceStr = Message.MetaInf->ToName + std::string(" - ") + Message.MetaInf->FromName;
+        MultiLogger::LogMessage("X = %f, Y = %f, Z = %f", Message.X, Message.Y, Message.Z);
+        MultiLogger::LogMessage("New scene Loaded ! From : %s (0x%X), To : %s (0x%X)", this->OutMessage.EntranceStr.c_str(), this->OutMessage.EntranceID, Message.EntranceStr.c_str(), Message.EntranceID);
         
-        if (this->OutMetaInf->Type == EntranceType::One_Way_In)
+        if (this->OutMessage.MetaInf->Type == EntranceType::One_Way_In)
         {
-            MultiLogger::LogMessage("Warning ! Entrance %s (0x%X) is one way in only !", this->LastTouchedStr.c_str(), this->OutEntrance);
+            MultiLogger::LogMessage("Warning ! Entrance %s (0x%X) is one way in only !", this->OutMessage.EntranceStr.c_str(), this->OutMessage.EntranceID);
         }
-        if (entranceMeta.Type == EntranceType::One_Way_Out)
+        if (Message.MetaInf->Type == EntranceType::One_Way_Out)
         {
-            MultiLogger::LogMessage("Warning ! Entrance %s (0x%X) is one way out only !", this->EntranceStr.c_str(), inEntrance);
+            MultiLogger::LogMessage("Warning ! Entrance %s (0x%X) is one way out only !", Message.EntranceStr.c_str(), Message.EntranceID);
         }
 
-        if (this->OutMetaInf->Type == EntranceType::One_Way_Out)
+        if (this->OutMessage.MetaInf->Type == EntranceType::One_Way_Out)
         {
-            this->OutScene = this->OutMetaInf->ToSceneID;
-            this->OutEntrance = this->OutMetaInf->ToEntranceID;
+            this->OutMessage.SceneID = this->OutMessage.MetaInf->ToSceneID;
+            this->OutMessage.EntranceID = this->OutMessage.MetaInf->ToEntranceID;
         }
         else
         {
-            this->OutScene = this->OutMetaInf->FromSceneID;
-            this->OutEntrance = this->OutMetaInf->FromEntranceID;
+            this->OutMessage.SceneID = this->OutMessage.MetaInf->FromSceneID;
+            this->OutMessage.EntranceID = this->OutMessage.MetaInf->FromEntranceID;
         }
 
-        SceneEntranceMetaInf * tmp = GetSceneEntranceMetaInf(this->OutGame, this->OutScene);
+        SceneEntranceMetaInf * tmp = GetSceneEntranceMetaInf(this->OutMessage.GameID, this->OutMessage.SceneID);
         /*if (tmp->EntranceIDs.contains(this->OutEntrance))
         {
             EntranceLink tmpOutLink = tmp->EntranceIDs.find(this->OutEntrance)->second;
@@ -2020,32 +2033,53 @@ void EntranceHelper::ParseIncomingMessage(uint32_t Buffer[6])
             MultiLogger::LogMessage("Nope !");
             return;
         }*/
-        EntranceLink * tmpOutLink = &tmp->EntranceIDs.find(this->OutEntrance)->second;
-        tmpOutLink->OutLink = inEntrance;
-        tmpOutLink->OutLinkGame = game;
+        EntranceLink * tmpOutLink = &tmp->EntranceIDs.find(this->OutMessage.EntranceID)->second;
+        tmpOutLink->OutLink = Message.EntranceID;
+        tmpOutLink->OutLinkGame = Message.GameID;
 
-        SceneEntranceUpdate tmpOut = { this->OutGame, this->OutScene, this->OutEntrance, tmpOutLink };
+        SceneEntranceUpdate tmpOut = { this->OutMessage.GameID, this->OutMessage.SceneID, this->OutMessage.EntranceID, tmpOutLink };
 
-        tmp = GetSceneEntranceMetaInf(game, inScene);
-        EntranceLink * tmpInLink = &tmp->EntranceIDs.find(inEntrance)->second;
-        tmpInLink->InLink = this->OutEntrance;
-        tmpInLink->InLinkGame = this->OutGame;
+        tmp = GetSceneEntranceMetaInf(Message.GameID, Message.SceneID);
+        EntranceLink * tmpInLink = &tmp->EntranceIDs.find(Message.EntranceID)->second;
+        tmpInLink->InLink = this->OutMessage.EntranceID;
+        tmpInLink->InLinkGame = this->OutMessage.GameID;
 
-        SceneEntranceUpdate tmpIn = { game, inScene, inEntrance, tmpInLink };
+        SceneEntranceUpdate tmpIn = { Message.GameID, Message.SceneID, Message.EntranceID, tmpInLink };
 
         emit MultiLogger::GetLogger()->NotifyEntranceFound(&tmpOut, &tmpIn);
 
-        this->OutMetaInf = NULL;
+        MultiLogger::LogMessage("            -----------------------------------");
+        MultiLogger::LogMessage("            |      FROM      |       TO       |");
+        MultiLogger::LogMessage("-----------------------------------------------");
+        MultiLogger::LogMessage("%-11s | %14.6f | %14.6f |", "X", this->OutMessage.X, Message.X);
+        MultiLogger::LogMessage("-----------------------------------------------");
+        MultiLogger::LogMessage("%-11s | %14.6f | %14.6f |", "Y", this->OutMessage.Y, Message.Y);
+        MultiLogger::LogMessage("-----------------------------------------------");
+        MultiLogger::LogMessage("%-11s | %14.6f | %14.6f |", "Z", this->OutMessage.Z, Message.Z);
+        MultiLogger::LogMessage("-----------------------------------------------");
+        MultiLogger::LogMessage("%-11s | %14s | %14s |", "Game", this->OutMessage.GameID == OOT_GAME ? "OoT" : "MM", Message.GameID == OOT_GAME ? "OoT" : "MM");
+        MultiLogger::LogMessage("-----------------------------------------------");
+        MultiLogger::LogMessage("%-11s |     0x%08X |     0x%08X |", "Scene", this->OutMessage.SceneID, Message.SceneID);
+        MultiLogger::LogMessage("-----------------------------------------------");
+        MultiLogger::LogMessage("%-11s |     0x%08X |     0x%08X |", "Entrance", this->OutMessage.EntranceID, Message.EntranceID);
+        MultiLogger::LogMessage("-----------------------------------------------");
+        MultiLogger::LogMessage("%-11s |           0x%02X |           0x%02X |", "Room ID", this->OutMessage.CurrRoom, Message.CurrRoom);
+        MultiLogger::LogMessage("-----------------------------------------------");
+        MultiLogger::LogMessage("%-11s |           0x%02X |           0x%02X |", "Grotto Data", this->OutMessage.GrottoData, Message.GrottoData);
+        MultiLogger::LogMessage("-----------------------------------------------");
+        MultiLogger::LogMessage("%-11s |           0x%02X |           0x%02X |", "Owl ID", this->OutMessage.OwlID, Message.OwlID);
+        MultiLogger::LogMessage("-----------------------------------------------");
+        MultiLogger::LogMessage("%-11s |           0x%02X |           0x%02X |", "Song ID", this->OutMessage.OoTSongID, Message.OoTSongID);
+        MultiLogger::LogMessage("-----------------------------------------------");
     }
 
     this->IsEntranceTouched = false;
 }
 
 
-void EntranceHelper::ParseOutgoingMessage(uint8_t OwlID, uint32_t Buffer[6])
+void EntranceHelper::ParseOutgoingMessage(EntranceMessage& Message)
 {
-    this->OutBuffer = Buffer;
-    if (this->IsMMExtra(Buffer))
+    if (this->IsMMExtra(Message))
     //if (Buffer[1] == WARP_SCENE && Buffer[2] != WARP_LOADING)
     {   // On MM when warping, the scene is always equal to WARP_SCENE so we still want to be able to catch the WARP_SONG events. However we want to get rid of new clock day
 
@@ -2054,38 +2088,32 @@ void EntranceHelper::ParseOutgoingMessage(uint8_t OwlID, uint32_t Buffer[6])
     }
 
     this->IsEntranceTouched = true;
-    this->OutGame = Buffer[0] & 0xFF;
-    uint8_t songIndex = (Buffer[0] >> 24) & 0xFF;
-    uint8_t currRoom = (Buffer[0] >> 16) & 0xFF;
-    uint8_t grottoData = (Buffer[0] >> 8) & 0xFF;
-    this->OutScene = Buffer[1];
-    this->OutEntrance = Buffer[2];
 
     // Check that the entrance is not a special case
-    this->OutEntrance = this->CheckSpecialCase(this->OutGame, this->OutEntrance, &this->OutScene);
+    Message.EntranceID = this->CheckSpecialCase(Message);
 
-    if (this->IsGrottoEntrance(this->OutEntrance))
+    if (this->IsGrottoEntrance(Message))
     {   // The current entrance is a grotto entrance
 
-        this->OutEntrance = this->GetGrottoEntrance(this->OutGame, grottoData, this->OutEntrance, this->OutScene);
+        Message.EntranceID = this->GetGrottoEntrance(Message, Message.SceneID);
         //this->OutScene = this->CorrectGrottoScene(this->OutGame, this->OutEntrance);
     }
-    else if (this->IsGrottoExit(this->OutEntrance))
+    else if (this->IsGrottoExit(Message))
     {   // The current entrance is a grotto exit
 
-        this->OutEntrance = this->GetGrottoExit(this->OutGame, currRoom, grottoData, this->OutScene);
+        Message.EntranceID = this->GetGrottoExit(Message, Message.SceneID);
     }
-    else if (this->IsWarpEntrance(this->OutEntrance))
+    else if (this->IsWarpEntrance(Message))
     {   // The current entrance is a warp zone
 
         bool isWarpSong = false;
-        this->OutEntrance = this->GetWarpSong(&this->OutGame, this->OutEntrance, songIndex, OwlID, &isWarpSong);
+        Message.EntranceID = this->GetWarpSong(Message, &isWarpSong);
         
         if (!isWarpSong)
         {
-            this->OutEntrance = this->CheckWrapScene(this->OutGame, this->OutEntrance, &this->OutScene, Buffer[3], Buffer[4], Buffer[5]);
+            Message.EntranceID = this->CheckWrapScene(Message);
 
-            if (this->OutScene == WARP_SCENE)
+            if (Message.SceneID == WARP_SCENE)
             {   // We don't want to catch this
 
                 this->IsEntranceTouched = false;
@@ -2095,15 +2123,15 @@ void EntranceHelper::ParseOutgoingMessage(uint8_t OwlID, uint32_t Buffer[6])
     }
 
     // Retreive the entrance meta information
-    if (this->OutGame == OOT_GAME)
+    if (Message.GameID == OOT_GAME)
     {
-        this->OutMetaInf = &OoTEntrances.at(this->OutEntrance);
+        Message.MetaInf = &OoTEntrances.at(Message.EntranceID);
     }
     else
     {
-        this->OutMetaInf = &MMEntrances.at(this->OutEntrance);
+        Message.MetaInf = &MMEntrances.at(Message.EntranceID);
     }
-    this->LastTouchedStr = OutMetaInf->FromName + std::string(" -> ") + OutMetaInf->ToName;
+    Message.EntranceStr = Message.MetaInf->FromName + std::string(" -> ") + Message.MetaInf->ToName;
 }
 
 

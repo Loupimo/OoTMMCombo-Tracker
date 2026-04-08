@@ -1,5 +1,6 @@
 #include <QFileDialog>
 #include <QRegularExpression>
+#include <QFontDatabase>
 #include "UI/LogTab.h"
 #include "UI/GameTab.h"
 #include "UI/AppConfig.h"
@@ -176,8 +177,12 @@ LogTab::LogTab(OoTMMComboTracker* Owner, QWidget* parent) : QWidget(parent)
     this->MainLayout = new QVBoxLayout;
     this->MainLayout->addWidget(this->LaunchGroup);
 
+    QFont font("Consolas");
+    font.setStyleHint(QFont::Monospace);
+    font.setFixedPitch(true);
 	this->LogViewer = new QPlainTextEdit;
     this->LogViewer->setReadOnly(true);
+    this->LogViewer->setFont(font);
     this->MainLayout->addWidget(this->LogViewer);
 	this->setLayout(this->MainLayout);
 

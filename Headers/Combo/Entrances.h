@@ -20,18 +20,31 @@ enum class EntranceType
 };
 
 
-enum WarpSong
+enum class OoTSongs
 {
-	Minuet_of_Forest = 0,		// OoT Value
-	Bolero_of_Fire = 1,			// OoT Value
-	Serenade_of_Water = 2,		// OoT Value
-	Requiem_of_Spirit = 3,		// OoT Value
-	Nocturne_of_Shadow = 4,		// OoT Value
-	Prelude_of_Light = 5,		// OoT Value
-	Song_of_Time = 0x0A,		// OoT Value
-	Sun_Song = 0x0900,			// OoT value, real value is 9 but as it is also the value for MM soaring I prefere to set it to 0x0900
-	Song_of_Soaring = 9,		// MM value
-	Song_of_Double_Time = 0x0D	// MM value
+	Minuet_of_Forest = 0x00,
+	Bolero_of_Fire = 0x01,
+	Serenade_of_Water = 0x02,
+	Requiem_of_Spirit = 0x03,
+	Nocturne_of_Shadow = 0x04,
+	Prelude_of_Light = 0x05,
+	Sun_Song = 0x09,
+	Song_of_Time = 0x0A,
+	Song_of_Soaring = 0xFE,
+};
+
+
+enum class MMSongs
+{
+	Song_of_Soaring = 0x09,
+	Song_of_Time = 0x0A,
+	Song_of_Double_Time = 0x0D,
+	Minuet_of_Forest = 0x80,
+	Bolero_of_Fire = 0x81,
+	Serenade_of_Water = 0x82,
+	Requiem_of_Spirit = 0x83,
+	Nocturne_of_Shadow = 0x84,
+	Prelude_of_Light = 0x85
 };
 
 
@@ -72,6 +85,66 @@ typedef struct GrottoEntrance
 	float SpawnPos[3];				// The spawn corrdinates of the entrance.
 } GrottoEntrance;
 
+
+typedef struct EntranceMessage
+{
+	const uint32_t* Buffer;			// The orignal message data.
+	uint32_t Direction;			// The message direction.
+	uint8_t GameID;				// The final message game ID. 
+	union
+	{
+		OoTSongs OoTSongID;		// The message OoT song ID.
+		MMSongs MMSongID;		// The message MM song ID.
+	};
+	uint8_t OwlID;				// The message owl ID.
+	uint8_t CurrRoom;			// The message current room.
+	uint8_t GrottoData;			// The message grotto data.
+	uint32_t EntranceID;		// The final message entrance ID
+	uint32_t SceneID;			// The final message scene ID.
+	float X;					// The X respawning player coordinate.
+	float Y;					// The Y respawning player coordinate.
+	float Z;					// The Z respawning player coordinate.
+	EntranceMetaInfo* MetaInf;	// The matching entrance meta information.
+	std::string EntranceStr;	// The string matching the direction of the current entrance.
+
+	void SetMessage(uint32_t MsgDirection, uint32_t OwlID, uint32_t Buffer[6])
+	{
+		this->ResetMessage();
+		this->Buffer = Buffer;
+		this->Direction = MsgDirection;
+		this->OwlID = (uint8_t)OwlID;
+		this->GameID = this->Buffer[0] & 0xFF;
+		this->OoTSongID = (OoTSongs)((Buffer[0] >> 24) & 0xFF);
+		this->CurrRoom = (this->Buffer[0] >> 16) & 0xFF;
+		this->GrottoData = (this->Buffer[0] >> 8) & 0xFF;
+		this->SceneID = this->Buffer[1];
+		this->EntranceID = this->Buffer[2];
+		memcpy(&this->X, &this->Buffer[3], sizeof(float));
+		memcpy(&this->Y, &this->Buffer[4], sizeof(float));
+		memcpy(&this->Z, &this->Buffer[5], sizeof(float));
+	}
+
+	void ResetMessage()
+	{
+		this->Buffer = nullptr;
+		this->Direction = 0;
+		this->GameID = NO_GAME;
+		this->OoTSongID = OoTSongs::Minuet_of_Forest;
+		this->OwlID = 0;
+		this->CurrRoom = 0;
+		this->GrottoData = 0;
+		this->EntranceID = UINT32_MAX;
+		this->SceneID = UINT32_MAX;
+		this->X = 0;
+		this->Y = 0;
+		this->Z = 0;
+		this->MetaInf = nullptr;
+		this->EntranceStr = "";
+	}
+
+} EntranceMessage;
+
+
 class EntranceHelper
 {
 
@@ -79,14 +152,10 @@ class EntranceHelper
 
 public:
 
-	uint8_t OutGame = NO_GAME;				// The game the last entrance ID comes from
-	uint32_t OutEntrance = 0;				// The last outgoing entrance ID
-	uint32_t OutScene = 0;					// The last outgoing scene ID
-	uint32_t * OutBuffer;					// The last original outgoing message buffer
-	EntranceMetaInfo* OutMetaInf = NULL;	// The last outgoing entrance meta information
+	EntranceMessage OutMessage;
+	EntranceMessage InMessage;
+
 	bool IsEntranceTouched = false;			// Tells if the ID we have is from the touched entrance (true) or the loaded one (false)
-	std::string LastTouchedStr;				// The string matching the direction of the last touched entrance
-	std::string EntranceStr;				// The string matching the direction of the current entrance
 
 #pragma endregion
 
@@ -119,39 +188,38 @@ public:
 	/*
 	*   Check if the given data are from a new cycle.
 	*
-	*	@param Buffer		The entrance message to parse.
+	*	@param Message		The entrance message to parse.
 	*
-	*   @return <b>True</b> if the data are from a new cycle, <b>false</b> otherwise.
+	*   @return <b>True</b> if the comes from from a new cycle, <b>false</b> otherwise.
 	*/
-	bool IsNewCycle(uint32_t Buffer[6]);
+	bool IsNewCycle(EntranceMessage& Message);
 
 	/*
 	*   Check if the given data are from a moon crash or MM song of time.
 	*
-	*	@param Buffer		The entrance message to parse.
+	*	@param Message		The entrance message to parse.
 	*
-	*   @return <b>True</b> if the data are from an extra scene, <b>false</b> otherwise.
+	*   @return <b>True</b> if the message comes from an extra scene, <b>false</b> otherwise.
 	*/
-	bool IsMMExtra(uint32_t Buffer[6]);
+	bool IsMMExtra(EntranceMessage& Message);
 
 	/*
 	*   Check if the given data are from a death warp.
 	*
-	*	@param Buffer		The entrance message to parse.
+	*	@param Message		The entrance message to parse.
 	*
-	*   @return <b>True</b> if the data are from a death warp, <b>false</b> otherwise.
+	*   @return <b>True</b> if the message comes from a death warp, <b>false</b> otherwise.
 	*/
-	bool IsDeath(uint32_t Buffer[6]);
+	bool IsDeath(EntranceMessage& PrevMessage, EntranceMessage& CurrMessage);
 
 	/*
 	*   Check if the given data come from a sun's song.
 	*
-	*	@param Scene		The current scene ID.
-	*	@param EntranceID	The current entrance ID.
+	*	@param Message		The entrance message to parse.
 	*
-	*   @return <b>True</b> if the data come from a sun's song, <b>false</b> otherwise.
+	*   @return <b>True</b> if the message comes from a sun's song, <b>false</b> otherwise.
 	*/
-	bool IsSunSong(uint32_t Scene, uint32_t EntranceID);
+	bool IsSunSong(EntranceMessage& PrevMessage, EntranceMessage& CurrMessage);
 
 	/*
 	*   Check if the given data come from a song of time.
@@ -161,7 +229,7 @@ public:
 	*
 	*   @return <b>True</b> if the data come from a song of time, <b>false</b> otherwise.
 	*/
-	bool IsSongOfTime(uint32_t Buffer[6]);
+	bool IsSongOfTime(EntranceMessage& PrevMessage, EntranceMessage& CurrMessage);
 
 	/*
 	*   Check if the given data come from a song of double time.
@@ -171,7 +239,7 @@ public:
 	*
 	*   @return <b>True</b> if the data come from a song of double time, <b>false</b> otherwise.
 	*/
-	bool IsSongOfDoubleTime(uint32_t Scene, uint32_t EntranceID);
+	bool IsSongOfDoubleTime(EntranceMessage& PrevMessage, EntranceMessage& CurrMessage);
 
 	/*
 	*   Check if the given entrance ID is from a grotto entrance.
@@ -180,7 +248,7 @@ public:
 	* 
 	*   @return <b>True</b> if the ID is associated to a grotto entrance, <b>false</b> otherwise.
 	*/
-	bool IsGrottoEntrance(uint32_t ID);
+	bool IsGrottoEntrance(EntranceMessage& Message);
 
 	/*
 	*   Check if the given entrance ID is from a grotto exit.
@@ -189,7 +257,7 @@ public:
 	* 
 	*   @return <b>True</b> if the ID is associated to a grotto exit, <b>false</b> otherwise.
 	*/
-	bool IsGrottoExit(uint32_t ID);
+	bool IsGrottoExit(EntranceMessage& Message);
 
 	/*
 	*   Check if the given entrance ID is from a warp entrance.
@@ -198,7 +266,7 @@ public:
 	*
 	*   @return <b>True</b> if the ID is associated to a warp entrance, <b>false</b> otherwise.
 	*/
-	bool IsWarpEntrance(uint32_t ID);
+	bool IsWarpEntrance(EntranceMessage& Message);
 
 	/*
 	*   Get the entrance grotto associated to the current last entrance ID.
@@ -210,7 +278,7 @@ public:
 	* 
 	*   @return The scene grotto associated to the touched exit.
 	*/
-	uint32_t GetGrottoEntrance(uint8_t Game, uint8_t GrottoData, uint32_t ID, uint32_t LastScene);
+	uint32_t GetGrottoEntrance(EntranceMessage& Message, uint32_t LastScene);
 
 	/*
 	*   Get the exit grotto associated to the current last entrance ID.
@@ -222,7 +290,7 @@ public:
 	* 
 	*   @return The scene grotto associated to the touched exit.
 	*/
-	uint32_t GetGrottoExit(uint8_t Game, uint8_t CurrRoom, uint8_t GrottoData, uint32_t LastScene);
+	uint32_t GetGrottoExit(EntranceMessage& Message, uint32_t LastScene);
 	
 	/*
 	*   Get the exit grotto associated to the current last entrance ID.
@@ -232,7 +300,7 @@ public:
 	*
 	*   @return The scene grotto associated to the given grotto ID.
 	*/
-	uint32_t CorrectGrottoScene(uint8_t Game, uint32_t ID);
+	uint32_t CorrectGrottoScene(EntranceMessage& Message);
 
 	/*
 	*   Get the cumulative distance between the current player position and the given grotto entrance.
@@ -257,7 +325,7 @@ public:
 	*
 	*   @return The warp song entrance ID.
 	*/
-	uint32_t GetWarpSong(uint8_t * Game, uint32_t ID, uint8_t SongIndex, uint8_t OwlID, bool * IsWarpSong);
+	uint32_t GetWarpSong(EntranceMessage& Message, bool * IsWarpSong);
 
 
 
@@ -269,7 +337,7 @@ public:
 	* 
 	*   @return The matching grotto entrance if the player is close enough, the given entrance otherwise.
 	*/
-	uint32_t CheckGrottoSpawn(uint32_t ID, uint32_t Buffer[6]);
+	uint32_t CheckGrottoSpawn(EntranceMessage& Message);
 
 	/*
 	*   Check if the given entrance is a special case (like Hyrule Castle <-> Castle Courtyard).
@@ -280,7 +348,7 @@ public:
 	*
 	*   @return The corrected entrance if it is a special case, the given entrance otherwise.
 	*/
-	uint32_t CheckSpecialCase(uint8_t Game, uint32_t ID, uint32_t * SceneID);
+	uint32_t CheckSpecialCase(EntranceMessage& Message);
 
 	/*
 	*   Check if the given entrance is a warp zone.
@@ -294,7 +362,7 @@ public:
 	*
 	*   @return The corrected entrance if it is a special case, the given entrance otherwise.
 	*/
-	uint32_t CheckWrapScene(uint8_t Game, uint32_t ID, uint32_t* SceneID, uint32_t X, uint32_t Y, uint32_t Z);
+	uint32_t CheckWrapScene(EntranceMessage& Message);
 
 	/*
 	*   Dispatch the given message to the correct parsing function.
@@ -309,7 +377,7 @@ public:
 	*
 	*	@param Buffer		The entrance message to parse.
 	*/
-	void ParseIncomingMessage(uint32_t Buffer[6]);
+	void ParseIncomingMessage(EntranceMessage& Message);
 
 	/*
 	*   Parse the given message as an outgoing entrance message.
@@ -317,7 +385,7 @@ public:
 	*	@param OwlID		The Owl ID that could be associated with the song ID.
 	*	@param Buffer		The entrance message to parse.
 	*/
-	void ParseOutgoingMessage(uint8_t OwlID, uint32_t Buffer[6]);
+	void ParseOutgoingMessage(EntranceMessage& Message);
 
 	/*
 	*   Get the From name of the desired entrance.
