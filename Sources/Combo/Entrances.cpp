@@ -162,28 +162,44 @@ static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
 
 #pragma endregion // OoT Grottos
 
-#pragma region MM Grottos
-
+#pragma region MM Grottos                                                                     
+                                                                                      
     { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_SOUTH_ENTR,  std::vector<GrottoEntrance>() = { { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_NORTH_ENTR,      -400,    48, -2520 },
+                                                                                      { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_WEST_ENTR,      -2400,    68,  -400 },
+                                                                                      { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_EAST_ENTR,       1672,    68,  -394 },
+                                                                                      { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_SOUTH_ENTR,      -412,   -77,  1681 },
+                                                                                      /*{MM_TERMINA_FIELD_FROM_GREAT_BAY_COAST_ENTR,      ,   ,},
+                                                                                      { MM_TERMINA_FIELD_FROM_ROAD_TO_IKANA_ENTR,      ,   ,  },
+                                                                                      { MM_TERMINA_FIELD_FROM_PATH_TO_MOUNTAIN_VILLAGE_ENTR,      , ,  },
+                                                                                      { MM_TERMINA_FIELD_FROM_ROAD_TO_SWAMP_ENTR,      ,   ,  },
+                                                                                      { MM_TERMINA_FIELD_FROM_MILK_ROAD_ENTR,      ,   ,  },
+                                                                                      { MM_FIELD_FROM_ASTRAL_OBSERVATORY_ENTR,      ,   ,   },*/
                                                                                       { MM_GROTTO_EXIT_GOSSIPS_MOUNTAIN,                   192,    48, -3138 },
                                                                                       { MM_GROTTO_EXIT_DODONGO,                          -2425,  -281, -3291 },
-                                                                                      { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_WEST_ENTR,      -2400,    68,  -400 },
                                                                                       { MM_GROTTO_EXIT_GOSSIPS_OCEAN,                    -2782,    48, -1654 },
                                                                                       { MM_GROTTO_EXIT_BIO_BABA,                         -5159,  -281,  -571 },
-                                                                                      { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_EAST_ENTR,       1672,    68,  -394 },
                                                                                       { MM_GROTTO_EXIT_GENERIC_FIELD_PILLAR,              2367,   315,  -192 },
                                                                                       { MM_GROTTO_EXIT_GOSSIPS_CANYON,                    4450,   254,   925 },
                                                                                       { MM_GROTTO_EXIT_SCRUB,                             3223,   219,  1417 },
-                                                                                      { MM_TERMINA_FIELD_FROM_CLOCK_TOWN_SOUTH_ENTR,      -412,   -77,  1681 },
                                                                                       { MM_GROTTO_EXIT_GENERIC_GRASS,                     1012,  -221,  3642 },
                                                                                       { MM_GROTTO_EXIT_COW_FIELD,                         -375,  -222,  3976 },
                                                                                       { MM_GROTTO_EXIT_GOSSIPS_SWAMP,                    -1592,  -222,  4622 },
                                                                                       { MM_GROTTO_EXIT_PEAHAT,                           -2317,  -221,  3418 } } },
     { MM_SWAMP_ROAD_FROM_FIELD_ENTR,                std::vector<GrottoEntrance>() = { { MM_SWAMP_ROAD_FROM_FIELD_ENTR,                     331,  -143,   245 },
+                                                                                      //{ MM_SWAMP_ROAD_FROM_ARCHERY_ENTR,                ,  ,   },
                                                                                       { MM_SWAMP_ROAD_FROM_SWAMP_ENTR,                     413,  -236,  3853 },
                                                                                       { MM_GROTTO_EXIT_GENERIC_PATH_SWAMP,                 104,  -182,  2202 }, } },
     { MM_SWAMP_FROM_SPIDER_HOUSE_ENTR,              std::vector<GrottoEntrance>() = { { MM_SWAMP_FROM_SPIDER_HOUSE_ENTR,                 -1049,    12,  2042 },
                                                                                       { MM_SWAMP_FROM_ROAD_ENTR,                          -191,    61, -1410 },
+                                                                                      { MM_KOUME_RIDE_FROM_TOURIST_ENTR,                   -42,    24,  -150 },
+                                                                                      /*{MM_SWAMP_FROM_PALACE_MAIN_ENTRANCE_ENTR,       ,    ,  },
+                                                                                      { MM_SWAMP_FROM_PALACE_LEDGE_ENTR,                ,    ,  },
+                                                                                      { MM_SWAMP_FROM_WOODFALL_ENTR,                    ,    ,  },
+                                                                                      { MM_SWAMP_FROM_MYSTERY_WOODS_ENTR,               ,    ,  },
+                                                                                      { MM_SWAMP_FROM_IKANA_CANYON_ENTR,                ,    ,  },
+                                                                                      { MM_SWAMP_FROM_POTION_SHOP_ENTR,                 ,    ,  },
+                                                                                      { MM_SWAMP_FROM_TOURIST_INFORMATION_ENTR,         ,    ,  },
+                                                                                      { MM_WARP_OWL_SOUTHERN_SWAMP_ENTR,                ,    ,  },*/
                                                                                       { MM_GROTTO_EXIT_GENERIC_SWAMP,                    -1700,    38,  1800 }} },
     { MM_MYSTERY_WOODS_ENTR,                        std::vector<GrottoEntrance>() = { { MM_MYSTERY_WOODS_ENTR,                             274,     0,     0 },
                                                                                       { MM_GROTTO_EXIT_GENERIC_WOODS,                        2,     0,  -889 } } },
@@ -196,22 +212,63 @@ static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
                                                                                       { MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE,          2406,  1168, -1197 },
                                                                                       { MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE_WINTER,    345,     8,  -150 } } },
     { MM_TWIN_ISLANDS_FROM_MOUNTAIN_VILLAGE_ENTR,   std::vector<GrottoEntrance>() = { { MM_TWIN_ISLANDS_FROM_MOUNTAIN_VILLAGE_ENTR,      -2044,   200,  1288 },
+                                                                                      //{ MM_TWIN_ISLANDS_FROM_GORON_VILLAGE_ENTR,       ,   ,   },
+                                                                                      //{ MM_TWIN_ISLANDS_FROM_GORON_RACETRACK_ENTR,     ,   ,   },
                                                                                       { MM_GROTTO_EXIT_GENERIC_TWIN_ISLANDS,             -1309,   320,   143 },
                                                                                       { MM_GROTTO_EXIT_HOT_WATER,                          589,   195,    53 } } },
     { MM_PATH_SNOWHEAD_FROM_SNOWHEAD_ENTR,          std::vector<GrottoEntrance>() = { { MM_PATH_SNOWHEAD_FROM_SNOWHEAD_ENTR,             -2518,   550, -3441 },
-                                                                                      { MM_GROTTO_EXIT_GENERIC_PATH_SNOWHEAD,             -987,   360, -2339 }, } },
+                                                                                      //{ MM_SNOWHEAD_PATH_FROM_MOUNTAIN_VILLAGE_ENTR,      ,  , },
+                                                                                      { MM_GROTTO_EXIT_GENERIC_PATH_SNOWHEAD,             -987,   360, -2339 } } },
     { MM_GREAT_BAY_COAST_FROM_FIELD_ENTR,           std::vector<GrottoEntrance>() = { { MM_GREAT_BAY_COAST_FROM_FIELD_ENTR,               3585,    80,  4394 },
                                                                                       { MM_GREAT_BAY_COAST_FROM_FISHER_HUT_ENTR,          1137,    92,  4635 },
                                                                                       { MM_GREAT_BAY_COAST_FROM_LABORATORY_ENTR,         -3080,   240,  4080 },
+                                                                                      /*{MM_GREAT_BAY_FROM_ENTRANCE_CAUGHT,         ,   ,  },
+                                                                                      { MM_COAST_FROM_MIKAU_TOMB_ENTR,         ,   ,   },
+                                                                                      { MM_COAST_FROM_MIKAU_CS_ENTR,         ,   ,  },
+                                                                                      { MM_VOID_GREAT_BAY_LEDGE_BY_PINNACLE_ROCK_ENTR,         ,   ,   },
+                                                                                      { MM_VOID_GREAT_BAY_BEACH_ENTR,         ,   ,  },
+                                                                                      { MM_VOID_GREAT_BAY_BY_PINNACLE_ROCK_ENTR,        ,   ,  },
+                                                                                      { MM_VOID_GREAT_BAY_ENTR,         ,   ,   },
+                                                                                      { MM_WARP_OWL_GREAT_BAY_ENTR,        ,   ,  },
+                                                                                      { MM_GREAT_BAY_FROM_PINNACLE_ROCK_ENTR,         ,  ,  },
+                                                                                      { MM_GREAT_BAY_COAST_FROM_ZORA_CAPE_ENTR,        ,  ,  },
+                                                                                      { MM_GREAT_BAY_FROM_PIRATE_FORTRESS_ENTR,         ,   ,  },
+                                                                                      { MM_GREAT_BAY_FROM_SPIDER_HOUSE_ENTR,         ,   ,  },
+                                                                                      { MM_GREAT_BAY_FROM_TEMPLE_ENTR,         ,   ,   },*/
                                                                                       { MM_GROTTO_EXIT_GENERIC_GREAT_BAY_COAST,           1359,    80,  5018 },
                                                                                       { MM_GROTTO_EXIT_COW_COAST,                         2077,   333,  -215 } } },
     { MM_ZORA_CAPE_FROM_GREAT_BAY_COAST_ENTR,       std::vector<GrottoEntrance>() = { { MM_ZORA_CAPE_FROM_GREAT_BAY_COAST_ENTR,             92,    12,   333 },
+                                                                                      /*{MM_ZORA_CAPE_FROM_HALL_WATER_ENTR,           ,    ,  },
+                                                                                      { MM_ZORA_CAPE_PENINSULA_ENTR,           ,    ,   },
+                                                                                      { MM_GREAT_BAY_FROM_FAIRY_FOUNTAIN_ENTR,           ,    ,   },
+                                                                                      { MM_ZORA_CAPE_FROM_BEAVERS_ENTR,           ,    ,   },
+                                                                                      { MM_WARP_OWL_ZORA_CAPE_ENTR,           ,    ,   },
+                                                                                      { MM_VOID_ZORA_CAPE_ENTR,           ,    ,   },
+                                                                                      { MM_VOID_ZORA_CAPE_BEACH_ENTR,           ,    ,   },*/
                                                                                       { MM_GROTTO_EXIT_GENERIC_ZORA_CAPE,                 -562,    80,  2707 } } },
     { MM_IKANA_ROAD_FROM_FIELD_ENTR,                std::vector<GrottoEntrance>() = { { MM_IKANA_ROAD_FROM_FIELD_ENTR,                   -3006,     0,  -305 },
+                                                                                      /*{MM_IKANA_ROAD_FROM_VALLEY_ENTR,           ,    ,},
+                                                                                      { MM_IKANA_ROAD_FROM_IKANA_GRAVEYARD_ENTR,           ,    ,   },*/
                                                                                       { MM_GROTTO_EXIT_GENERIC_PATH_IKANA,                -428,   200,  -335 } } },
     { MM_IKANA_GRAVEYARD_FROM_DAMPE_ENTR,           std::vector<GrottoEntrance>() = { { MM_IKANA_GRAVEYARD_FROM_DAMPE_ENTR,               -504,   314, -2159 },
+                                                                                      /*{MM_IKANA_GRAVEYARD_ENTR,           ,    ,  },
+                                                                                      { MM_GRAVE_EXIT_NIGHT1,           ,    ,   },
+                                                                                      { MM_GRAVE_EXIT_NIGHT2,           ,    ,   },*/
                                                                                       { MM_GROTTO_EXIT_GENERIC_GRAVEYARD,                  106,   314, -1777 } } },
     { MM_IKANA_VALLEY_FROM_ROAD_ENTR,               std::vector<GrottoEntrance>() = { { MM_IKANA_VALLEY_FROM_ROAD_ENTR,                    -64,  -371,  4870 },
+                                                                                      /*{MM_IKANA_CANYON_FROM_WELL_ENTR,           ,    ,  },
+                                                                                      { MM_IKANA_VALLEY_FROM_SHRINE_ENTR,           ,    ,   },
+                                                                                      { MM_IKANA_VALLEY_FROM_ROAD_ENTR,           ,    ,   },
+                                                                                      { MM_IKANA_CANYON_FROM_CASTLE_GARDENS_ENTR,           ,    ,   },
+                                                                                      { MM_IKANA_CANYON_FROM_STONE_TOWER_ENTR,           ,    ,   },
+                                                                                      { MM_IKANA_CANYON_WATERFALLS_ENTR,           ,    ,   },
+                                                                                      { MM_IKANA_CANYON_FROM_GHOST_HUT_ENTR,           ,    ,   },
+                                                                                      { MM_IKANA_CANYON_FROM_MUSIC_BOX_HOUSE_ENTR,           ,    ,   },
+                                                                                      { MM_IKANA_CANYON_FROM_FAIRY_FOUNTAIN_ENTR,           ,    ,   },
+                                                                                      { MM_IKANA_CANYON_FROM_CAVERN_ENTR,           ,    ,   },
+                                                                                      { MM_IKANA_CANYON_FROM_SAKON_HIDEOUT_ENTR,           ,    ,   },
+                                                                                      { MM_WARP_OWL_IKANA_CANYON_ENTR,           ,    ,   },
+                                                                                      { MM_IKANA_CANYON_FROM_FAIRY_FOUNTAIN_ENTR,           ,    ,   },*/
                                                                                       { MM_GROTTO_EXIT_GENERIC_VALLEY,                   -2475,  -505,  2475 } } }
 
 #pragma endregion // MM Grottos
@@ -1353,6 +1410,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(EntranceMessage& Message)
 #pragma region MM Grottos
 
         // Path to Snowhead
+        case MM_GROTTO_EXIT_GENERIC_PATH_SNOWHEAD:
         case MM_PATH_SNOWHEAD_FROM_SNOWHEAD_ENTR:
         case MM_SNOWHEAD_PATH_FROM_MOUNTAIN_VILLAGE_ENTR:
         {
@@ -1361,6 +1419,23 @@ uint32_t EntranceHelper::CheckGrottoSpawn(EntranceMessage& Message)
         }
 
         // Termina Field
+        case MM_GROTTO_EXIT_GENERIC_FIELD_PILLAR:
+        case MM_GROTTO_EXIT_GENERIC_GRASS:
+        case MM_GROTTO_EXIT_COW_FIELD:
+        case MM_GROTTO_EXIT_GOSSIPS_MOUNTAIN:
+        case MM_GROTTO_EXIT_GOSSIPS_CANYON:
+        case MM_GROTTO_EXIT_GOSSIPS_OCEAN:
+        case MM_GROTTO_EXIT_GOSSIPS_SWAMP:
+        case MM_GROTTO_EXIT_DODONGO:
+        case MM_GROTTO_EXIT_SCRUB:
+        case MM_GROTTO_EXIT_PEAHAT:
+        case MM_GROTTO_EXIT_BIO_BABA:
+        case MM_TERMINA_FIELD_FROM_GREAT_BAY_COAST_ENTR:
+        case MM_TERMINA_FIELD_FROM_ROAD_TO_IKANA_ENTR:
+        case MM_TERMINA_FIELD_FROM_PATH_TO_MOUNTAIN_VILLAGE_ENTR:
+        case MM_TERMINA_FIELD_FROM_ROAD_TO_SWAMP_ENTR:
+        case MM_TERMINA_FIELD_FROM_MILK_ROAD_ENTR:
+        case MM_FIELD_FROM_ASTRAL_OBSERVATORY_ENTR:
         case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_NORTH_ENTR:
         case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_WEST_ENTR:
         case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_EAST_ENTR:
@@ -1371,6 +1446,21 @@ uint32_t EntranceHelper::CheckGrottoSpawn(EntranceMessage& Message)
         }
 
         // Great Bay Coast
+        case MM_GROTTO_EXIT_GENERIC_GREAT_BAY_COAST:
+        case MM_GROTTO_EXIT_COW_COAST:
+        case MM_GREAT_BAY_FROM_TEMPLE_ENTR:
+        case MM_GREAT_BAY_FROM_SPIDER_HOUSE_ENTR:
+        case MM_GREAT_BAY_FROM_PIRATE_FORTRESS_ENTR:
+        case MM_GREAT_BAY_COAST_FROM_ZORA_CAPE_ENTR:
+        case MM_GREAT_BAY_FROM_PINNACLE_ROCK_ENTR:
+        case MM_WARP_OWL_GREAT_BAY_ENTR:
+        case MM_VOID_GREAT_BAY_ENTR:
+        case MM_VOID_GREAT_BAY_BY_PINNACLE_ROCK_ENTR:
+        case MM_VOID_GREAT_BAY_BEACH_ENTR:
+        case MM_VOID_GREAT_BAY_LEDGE_BY_PINNACLE_ROCK_ENTR:
+        case MM_COAST_FROM_MIKAU_CS_ENTR:
+        case MM_COAST_FROM_MIKAU_TOMB_ENTR:
+        case MM_GREAT_BAY_FROM_ENTRANCE_CAUGHT:
         case MM_GREAT_BAY_COAST_FROM_LABORATORY_ENTR:
         case MM_GREAT_BAY_COAST_FROM_FISHER_HUT_ENTR:
         case MM_GREAT_BAY_COAST_FROM_FIELD_ENTR:
@@ -1379,7 +1469,17 @@ uint32_t EntranceHelper::CheckGrottoSpawn(EntranceMessage& Message)
             break;
         }
 
-        // Southtern Swamp
+        // Southern Swamp
+        case MM_GROTTO_EXIT_GENERIC_SWAMP:
+        case MM_KOUME_RIDE_FROM_TOURIST_ENTR:
+        case MM_SWAMP_FROM_PALACE_MAIN_ENTRANCE_ENTR:
+        case MM_SWAMP_FROM_PALACE_LEDGE_ENTR:
+        case MM_SWAMP_FROM_WOODFALL_ENTR:
+        case MM_SWAMP_FROM_MYSTERY_WOODS_ENTR:
+        case MM_SWAMP_FROM_IKANA_CANYON_ENTR:
+        case MM_SWAMP_FROM_POTION_SHOP_ENTR:
+        case MM_SWAMP_FROM_TOURIST_INFORMATION_ENTR:
+        case MM_WARP_OWL_SOUTHERN_SWAMP_ENTR:
         case MM_SWAMP_FROM_ROAD_ENTR:
         case MM_SWAMP_FROM_SPIDER_HOUSE_ENTR:
         {
@@ -1388,6 +1488,8 @@ uint32_t EntranceHelper::CheckGrottoSpawn(EntranceMessage& Message)
         }
 
         // Road to Southern Swamp
+        case MM_GROTTO_EXIT_GENERIC_PATH_SWAMP:
+        case MM_SWAMP_ROAD_FROM_ARCHERY_ENTR:
         case MM_SWAMP_ROAD_FROM_SWAMP_ENTR:
         case MM_SWAMP_ROAD_FROM_FIELD_ENTR:
         {
@@ -1409,14 +1511,75 @@ uint32_t EntranceHelper::CheckGrottoSpawn(EntranceMessage& Message)
             break;
         }
 
-
-        case MM_MYSTERY_WOODS_ENTR:
+        // Twin Islands
         case MM_TWIN_ISLANDS_FROM_MOUNTAIN_VILLAGE_ENTR:
+        case MM_TWIN_ISLANDS_FROM_GORON_VILLAGE_ENTR:
+        case MM_TWIN_ISLANDS_FROM_GORON_RACETRACK_ENTR:
+        case MM_GROTTO_EXIT_GENERIC_TWIN_ISLANDS:
+        case MM_GROTTO_EXIT_HOT_WATER:
+        {
+            Message.EntranceID = MM_TWIN_ISLANDS_FROM_MOUNTAIN_VILLAGE_ENTR;
+            break;
+        }
+
+        // Woods of mystery
+        case MM_MYSTERY_WOODS_ENTR:
+        {
+            break;
+        }
+
+        // Zora Cape
+        case MM_GROTTO_EXIT_GENERIC_ZORA_CAPE:
+        case MM_ZORA_CAPE_FROM_HALL_WATER_ENTR:
+        case MM_ZORA_CAPE_PENINSULA_ENTR:
+        case MM_GREAT_BAY_FROM_FAIRY_FOUNTAIN_ENTR:
+        case MM_ZORA_CAPE_FROM_BEAVERS_ENTR:
+        case MM_WARP_OWL_ZORA_CAPE_ENTR:
+        case MM_VOID_ZORA_CAPE_ENTR:
         case MM_ZORA_CAPE_FROM_GREAT_BAY_COAST_ENTR:
+        {
+            Message.EntranceID = MM_ZORA_CAPE_FROM_GREAT_BAY_COAST_ENTR;
+            break;
+        }
+
+        // Road to Ikana
+        case MM_GROTTO_EXIT_GENERIC_PATH_IKANA:
+        case MM_IKANA_ROAD_FROM_VALLEY_ENTR:
+        case MM_IKANA_ROAD_FROM_IKANA_GRAVEYARD_ENTR:
         case MM_IKANA_ROAD_FROM_FIELD_ENTR:
+        {
+            Message.EntranceID = MM_IKANA_ROAD_FROM_FIELD_ENTR;
+            break;
+        }
+
+
+        // Ikana Graveyard
+        case MM_GROTTO_EXIT_GENERIC_GRAVEYARD:
+        case MM_IKANA_GRAVEYARD_ENTR:
+        case MM_GRAVE_EXIT_NIGHT1:
+        case MM_GRAVE_EXIT_NIGHT2:
         case MM_IKANA_GRAVEYARD_FROM_DAMPE_ENTR:
+        {
+            Message.EntranceID = MM_IKANA_GRAVEYARD_FROM_DAMPE_ENTR;
+            break;
+        }
+
+        // Ikana Canyon
+        case MM_GROTTO_EXIT_GENERIC_VALLEY:
+        case MM_IKANA_CANYON_FROM_WELL_ENTR:
+        case MM_IKANA_VALLEY_FROM_SHRINE_ENTR:
+        case MM_IKANA_CANYON_FROM_CASTLE_GARDENS_ENTR:
+        case MM_IKANA_CANYON_FROM_STONE_TOWER_ENTR:
+        case MM_IKANA_CANYON_WATERFALLS_ENTR:
+        case MM_IKANA_CANYON_FROM_GHOST_HUT_ENTR:
+        case MM_IKANA_CANYON_FROM_MUSIC_BOX_HOUSE_ENTR:
+        case MM_IKANA_CANYON_FROM_FAIRY_FOUNTAIN_ENTR:
+        case MM_IKANA_CANYON_FROM_CAVERN_ENTR:
+        case MM_IKANA_CANYON_FROM_SAKON_HIDEOUT_ENTR:
+        case MM_WARP_OWL_IKANA_CANYON_ENTR:
         case MM_IKANA_VALLEY_FROM_ROAD_ENTR:
         {
+                Message.EntranceID = MM_IKANA_VALLEY_FROM_ROAD_ENTR;
             break;
         }
 
@@ -1832,7 +1995,13 @@ uint32_t EntranceHelper::CheckWrapScene(EntranceMessage& Message)
 {
     if (Message.GameID == OOT_GAME)
     {
-        
+        switch (Message.SceneID)
+        {
+            case OOT_LAIR_GOHMA:
+            {
+                return MM_BOSS_DEKU_TREE_WARP_OUT;
+            }
+        }
     }
     else if (Message.GameID == MM_GAME)
     {
@@ -1938,7 +2107,7 @@ uint32_t EntranceHelper::CheckWrapScene(EntranceMessage& Message)
         }*/
     }
 
-    return Message.EntranceID;
+    return Message.SceneID;
 }
 
 

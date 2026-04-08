@@ -285,6 +285,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 				{ MM_SWAMP_FROM_TOURIST_INFORMATION_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_WARP_OWL_SOUTHERN_SWAMP_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_GROTTO_EXIT_GENERIC_SWAMP, { UINT32_MAX, UINT32_MAX } },
+				{ MM_KOUME_RIDE_FROM_TOURIST_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
 			NULL
 		}
@@ -1110,6 +1111,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 			MM_TOURIST_INFORMATION,
 			{
 				{ MM_TOURIST_INFORMATION_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ MM_KOUME_RIDE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
 			NULL
 		}

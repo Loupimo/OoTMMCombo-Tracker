@@ -33,6 +33,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 			OOT_LAIR_GOHMA,
 			{
 				{ OOT_BOSS_DEKU_TREE_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ MM_BOSS_DEKU_TREE_WARP_OUT, { UINT32_MAX, UINT32_MAX } },
 			},
 			NULL
 		}
@@ -112,6 +113,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 		{
 			OOT_DEKU_TREE,
 			{
+				{ OOT_DEKU_TREE_TO_BOSS_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_DEKU_TREE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
 			NULL
@@ -122,6 +124,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 		{
 			OOT_DODONGO_CAVERN,
 			{
+				{ OOT_DODONGO_CAVERN_TO_BOSS_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_DODONGO_CAVERN_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
 			NULL
@@ -132,6 +135,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 		{
 			OOT_INSIDE_JABU_JABU,
 			{
+				{ OOT_JABU_JABU_TO_BOSS_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_JABU_JABU_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
 			NULL
@@ -142,6 +146,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 		{
 			OOT_TEMPLE_FOREST,
 			{
+				{ OOT_TEMPLE_FOREST_TO_BOSS_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_TEMPLE_FOREST_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_WALLMASTER_FOREST_CORRIDOR_WEST_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_WALLMASTER_FOREST_CORRIDOR_EAST_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -154,6 +159,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 		{
 			OOT_TEMPLE_FIRE,
 			{
+				{ OOT_TEMPLE_FIRE_TO_BOSS_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_TEMPLE_FIRE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
 			NULL
@@ -164,6 +170,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 		{
 			OOT_TEMPLE_WATER,
 			{
+				{ OOT_TEMPLE_WATER_TO_BOSS_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_TEMPLE_WATER_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
 			NULL
@@ -174,6 +181,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 		{
 			OOT_TEMPLE_SHADOW,
 			{
+				{ OOT_TEMPLE_SHADOW_TO_BOSS_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_TEMPLE_SHADOW_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_WALLMASTER_SHADOW_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_SHADOW_TEMPLE_FROM_LAIR_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -186,6 +194,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 		{
 			OOT_TEMPLE_SPIRIT,
 			{
+				{ OOT_TEMPLE_SPIRIT_TO_BOSS_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_TEMPLE_SPIRIT_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_WALLMASTER_SPIRIT_CHILD_RUPEES_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_WALLMASTER_SPIRIT_ADULT_CLIMB_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -267,6 +276,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 				{ OOT_KOKIRI_FOREST_FROM_SHOP_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_KOKIRI_FOREST_FROM_LINK_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_GROTTO_EXIT_GENERIC_KOKIRI_FOREST, { UINT32_MAX, UINT32_MAX } },
+				{ MM_WARP_BOSS_DEKU_TREE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
 			NULL
 		}
