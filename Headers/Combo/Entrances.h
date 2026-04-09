@@ -28,17 +28,45 @@ enum class OoTSongs
 	Requiem_of_Spirit = 0x03,
 	Nocturne_of_Shadow = 0x04,
 	Prelude_of_Light = 0x05,
+	Saria_Song = 0x06,
+	Epona_Song = 0x07,
+	Zelda_Lullaby = 0x08,
 	Sun_Song = 0x09,
 	Song_of_Time = 0x0A,
+	Song_of_Storms = 0x0B,
+	Scarecrow_Spawn = 0x0C,
+	Memory_Game = 0x0D,
 	Song_of_Soaring = 0xFE,
 };
 
 
 enum class MMSongs
 {
+	Sonata_of_Awakening = 0x00,
+	Goron_Lullaby = 0x01,
+	New_Wave_Bossa_Nova = 0x02,
+	Elegy_of_Emptiness = 0x03,
+	Oath_to_Order = 0x04,
+	Saria_Song = 0x05,
+	Song_of_Time = 0x06,
+	Song_of_Healing = 0x07,
+	Epona_Song = 0x08,
 	Song_of_Soaring = 0x09,
-	Song_of_Time = 0x0A,
+	Song_of_Storms = 0x0A,
+	Sun_Song = 0x0B,
+	Inverted_Song_of_Time = 0x0C,
 	Song_of_Double_Time = 0x0D,
+	Goron_Lullaby_Intro = 0x0E,
+	Ballad_of_the_Wind_Fish_Human = 0x0F,
+	Ballad_of_the_Wind_Fish_Goron = 0x10,
+	Ballad_of_the_Wind_Fish_Zora = 0x11,
+	Ballad_of_the_Wind_Fish_Deku = 0x12,
+	Evan_Song_Part_1 = 0x13,
+	Evan_Song_Part_2 = 0x14,
+	Zelda_Lullaby = 0x15,
+	Scarecrow_Spawn = 0x16,
+	Termina_Wall = 0x17,
+	Scarecrow_Long = 0x018,
 	Minuet_of_Forest = 0x80,
 	Bolero_of_Fire = 0x81,
 	Serenade_of_Water = 0x82,
@@ -192,7 +220,7 @@ public:
 	*
 	*   @return <b>True</b> if the comes from from a new cycle, <b>false</b> otherwise.
 	*/
-	bool IsNewCycle(EntranceMessage& Message);
+	bool IsNewCycle(EntranceMessage& PrevMessage, EntranceMessage& CurrMessage);
 
 	/*
 	*   Check if the given data are from a moon crash or MM song of time.
@@ -211,6 +239,15 @@ public:
 	*   @return <b>True</b> if the message comes from a death warp, <b>false</b> otherwise.
 	*/
 	bool IsDeath(EntranceMessage& PrevMessage, EntranceMessage& CurrMessage);
+
+	/*
+	*   Check if the given data come from a sonata of awakening to open the woodfall temple.
+	*
+	*	@param Message		The entrance message to parse.
+	*
+	*   @return <b>True</b> if the message comes from a sonata of awakening to open the woodfall temple, <b>false</b> otherwise.
+	*/
+	bool IsSonataWoodfall(EntranceMessage& PrevMessage, EntranceMessage& CurrMessage);
 
 	/*
 	*   Check if the given data come from a sun's song.

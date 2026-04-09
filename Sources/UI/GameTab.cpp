@@ -328,7 +328,8 @@ CreateInfoScenes(MM_NUM_SCENES, MMOverworld,
     CreateOverworldScene(MM_GROTTO_DEKU_PALACE_CLIMB, MM_GAME),
     CreateOverworldScene(MM_MOUNTAIN_VILLAGE, MM_GAME),
     CreateOverworldScene(MM_TWIN_ISLANDS, MM_GAME),
-    CreateOverworldScene(MM_GORON_VILLAGE, MM_GAME)
+    CreateOverworldScene(MM_GORON_VILLAGE, MM_GAME),
+    CreateOverworldScene(MM_SPRING_WATER_CAVE, MM_GAME),
 )
 
 

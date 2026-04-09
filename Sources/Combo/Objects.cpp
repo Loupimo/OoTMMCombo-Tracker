@@ -238,6 +238,7 @@ CreateEmptyScene(MM_GROTTO_TERMINA_SWAMP_GOSSIP)
 CreateEmptyScene(MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP)
 CreateEmptyScene(MM_GROTTO_DEKU_PALACE_CLIMB)
 CreateEmptyScene(MM_GORON_VILLAGE)
+CreateEmptyScene(MM_SPRING_WATER_CAVE)
 
 SceneObjects MMSceneObjects[MM_NUM_SCENES] =
 {
@@ -399,7 +400,8 @@ SceneObjects MMSceneObjects[MM_NUM_SCENES] =
 	// Spoiler Log
 	CreateSceneObjects(MM_MOUNTAIN_VILLAGE),
 	CreateSceneObjects(MM_TWIN_ISLANDS),
-	CreateSceneObjects(MM_GORON_VILLAGE)
+	CreateSceneObjects(MM_GORON_VILLAGE),
+	CreateSceneObjects(MM_SPRING_WATER_CAVE)
 };
 
 #pragma endregion

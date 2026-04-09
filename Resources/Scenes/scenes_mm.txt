@@ -150,4 +150,5 @@
 	{ "Climb Grotto", "", (uint8_t) MMRegions::None, false, GameLayout::mm},
 	{ "Mountain Village", "./Resources/MM/Mountain_Village/Village.png", (uint8_t) MMRegions::Mountain_Village, true, GameLayout::mm},
 	{ "Twin Islands", "./Resources/MM/Twin_Islands/Twins.png", (uint8_t) MMRegions::Twin_Islands, true, GameLayout::mm},
-	{ "Goron Village", "", (uint8_t) MMRegions::None, false, GameLayout::mm}
+	{ "Goron Village", "", (uint8_t) MMRegions::None, false, GameLayout::mm},
+	{ "Spring Water Cave", "", (uint8_t) MMRegions::None, false, GameLayout::mm}
