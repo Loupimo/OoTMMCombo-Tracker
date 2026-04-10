@@ -241,6 +241,15 @@ public:
 	bool IsDeath(EntranceMessage& PrevMessage, EntranceMessage& CurrMessage);
 
 	/*
+	*   Check if the given data come from a farore's wind action.
+	*
+	*	@param Message		The entrance message to parse.
+	*
+	*   @return <b>True</b> if the message comes from a farore's wind action, <b>false</b> otherwise.
+	*/
+	bool IsFaroreWind(EntranceMessage& PrevMessage, EntranceMessage& CurrMessage);
+
+	/*
 	*   Check if the given data come from a sonata of awakening to open the woodfall temple.
 	*
 	*	@param Message		The entrance message to parse.

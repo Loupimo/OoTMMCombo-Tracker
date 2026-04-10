@@ -19,14 +19,15 @@ static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
 
 #pragma region OoT Grottos
 
-    { OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR,       std::vector<GrottoEntrance>() = { { OOT_FOREST_FROM_LOST_WOODS_BRIDGE_ENTR,               -1413,   -74,  -283 },
+    { OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR,       std::vector<GrottoEntrance>() = { { OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR,                -314,   380, -1362 },
+                                                                                      { OOT_FOREST_FROM_LOST_WOODS_BRIDGE_ENTR,               -1413,   -74,  -283 },
                                                                                       { OOT_KOKIRI_FOREST_FROM_DEKU_TREE_ENTR,                 3844,  -161, -1080 },
                                                                                       { OOT_KOKIRI_FOREST_FROM_MIDO_ENTR,                      -445,     0,  -486 },
                                                                                       { OOT_KOKIRI_FOREST_FROM_SARIA_ENTR,                      516,     0,   629 },
                                                                                       { OOT_KOKIRI_FOREST_FROM_TWINS_ENTR,                     1036,     0,   524 },
                                                                                       { OOT_KOKIRI_FOREST_FROM_KNOW_IT_ALL_ENTR,              -1034,   120,   394 },
                                                                                       { OOT_KOKIRI_FOREST_FROM_SHOP_ENTR,                       854,     0,  -272 },
-                                                                                      { OOT_KOKIRI_FOREST_FROM_LINK_ENTR,                       -31,   100,  -114 },
+                                                                                      { OOT_KOKIRI_FOREST_FROM_LINK_ENTR,                       -31,   100,  1073 },
                                                                                       { OOT_GROTTO_EXIT_GENERIC_KOKIRI_FOREST,                 -512,   380, -1224 } } },
     { OOT_LOST_WOODS_FROM_KOKIRI_FOREST_ENTR,       std::vector<GrottoEntrance>() = { { OOT_LOST_WOODS_FROM_KOKIRI_FOREST_ENTR,                  -1,     0,   305 },
                                                                                       { OOT_LOST_WOODS_FROM_MEADOW_ENTR,                        802,     0, -2589 },
@@ -61,7 +62,7 @@ static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
                                                                                       { OOT_GROTTO_EXIT_REDEAD,                                -400,     0,   400 },
                                                                                       { OOT_GROTTO_EXIT_GENERIC_KAKARIKO,                       860,    80,  -260 } } },
     { OOT_LAKE_HYLIA_FROM_FIELD_ENTR,               std::vector<GrottoEntrance>() = { { OOT_LAKE_HYLIA_FROM_FIELD_ENTR,                       -2093, -1037,   705 },
-                                                                                      { OOT_WARP_SONG_LAKE_ENTR,                              -1045, -1218,  3871 },
+                                                                                      { OOT_WARP_SONG_LAKE_ENTR,                              -1045, -1223,  7460 },
                                                                                       { OOT_LAKE_HYLIA_FROM_LABORATORY_ENTR,                  -2422, -1033,  3858 },
                                                                                       { OOT_LAKE_HYLIA_FROM_VALLEY_ENTR,                      -3918, -1142,  2533 },
                                                                                       { OOT_LAKE_HYLIA_FROM_FISHING_POND_ENTR,                 1322, -1218,  3871 },
@@ -155,6 +156,9 @@ static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
                                                                                       { OOT_FORTRESS_FROM_HIDEOUT_JAIL_4,                      1249,   653, -2061 },
                                                                                       { OOT_GROTTO_EXIT_FAIRY_FORTRESS,                         376,   333, -1564 } } },
     { OOT_COLOSSUS_ENTR,                            std::vector<GrottoEntrance>() = { { OOT_COLOSSUS_ENTR,                                     3789,   -38, -1101 },
+                                                                                      { OOT_DESERT_FROM_GAUNTLET_ENTR,                        -1664,   733,   593 },
+                                                                                      { OOT_DESERT_FROM_MIROR_ENTR,                           -1648,   738,  -516 },
+                                                                                      { OOT_DESERT_COLOSSUS_FROM_FAIRY_ENTR,                   2260,   105, -1425 },
                                                                                       { OOT_DESERT_COLOSSUS_FROM_FAIRY_ENTR,                   2260,   105, -1425 },
                                                                                       { OOT_DESERT_COLOSSUS_FROM_TEMPLE_SPIRIT_ENTR,          -1548,    48,     2 },
                                                                                       { OOT_WARP_SONG_DESERT_ENTR,                             -850,    20,  1542 },
@@ -262,6 +266,7 @@ static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
                                                                                       { MM_IKANA_CANYON_FROM_CAVERN_ENTR,                      -344,   562,  -711 },
                                                                                       { MM_IKANA_CANYON_FROM_SAKON_HIDEOUT_ENTR,               2260,  -160,  4726 },
                                                                                       { MM_WARP_OWL_IKANA_CANYON_ENTR,                         -852,   200,  2700 },
+                                                                                      { MM_WARP_BOSS_STONE_TOWER_INVERTED_ENTR,                 376,  1400,   136 },
                                                                                       { MM_GROTTO_EXIT_GENERIC_VALLEY,                        -2475,  -505,  2475 } } }
 
 #pragma endregion // MM Grottos
@@ -355,7 +360,38 @@ bool EntranceHelper::IsDeath(EntranceMessage& PrevMessage, EntranceMessage& Curr
         return CurrMessage.EntranceID == MM_IKANA_CASTLE_EXTERIOR_FROM_WELL_ENTR;
     }
 
-    return PrevMessage.MetaInf->Type == EntranceType::Normal && CurrMessage.SceneID == PrevMessage.SceneID && CurrMessage.EntranceID == PrevMessage.EntranceID;
+    return PrevMessage.CurrRoom == CurrMessage.CurrRoom && CurrMessage.SceneID == PrevMessage.SceneID && CurrMessage.EntranceID == PrevMessage.EntranceID;
+    //return PrevMessage.MetaInf->Type == EntranceType::Normal && CurrMessage.SceneID == PrevMessage.SceneID && CurrMessage.EntranceID == PrevMessage.EntranceID;
+}
+
+
+bool EntranceHelper::IsFaroreWind(EntranceMessage& PrevMessage, EntranceMessage& CurrMessage)
+{
+    /*if (PrevMessage.GameID == MM_GAME)
+    {   // We need to check if the scene ID has the requested entrance, if not then farore's wind has been casted.
+
+        return GetSceneEntranceMetaInf(MM_GAME, PrevMessage.SceneID)->EntranceIDs.contains(PrevMessage.EntranceID);
+    }
+    else*/
+    {   // OoT
+
+        switch (PrevMessage.SceneID)
+        {
+            case OOT_DEKU_TREE:
+            case OOT_DODONGO_CAVERN:
+            case OOT_INSIDE_JABU_JABU:
+            case OOT_TEMPLE_FOREST:
+            case OOT_TEMPLE_FIRE:
+            case OOT_TEMPLE_WATER:
+            case OOT_TEMPLE_SHADOW:
+            case OOT_TEMPLE_SPIRIT:
+            {
+                return CurrMessage.SceneID == PrevMessage.SceneID;
+            }
+        }
+    }
+
+    return false;
 }
 
 
@@ -1362,6 +1398,8 @@ uint32_t EntranceHelper::CheckGrottoSpawn(EntranceMessage& Message)
 
         // Desert Colossus
         case OOT_GROTTO_EXIT_SCRUBS2_COLOSSUS:
+        case OOT_DESERT_FROM_MIROR_ENTR:
+        case OOT_DESERT_FROM_GAUNTLET_ENTR:
         case OOT_DESERT_COLOSSUS_FROM_TEMPLE_SPIRIT_ENTR:
         case OOT_WARP_SONG_DESERT_ENTR:
         case OOT_DESERT_COLOSSUS_FROM_FAIRY_ENTR:
@@ -1575,6 +1613,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(EntranceMessage& Message)
 
         // Ikana Canyon
         case MM_GROTTO_EXIT_GENERIC_VALLEY:
+        case MM_WARP_BOSS_STONE_TOWER_INVERTED_ENTR:
         case MM_IKANA_CANYON_FROM_WELL_ENTR:
         case MM_IKANA_VALLEY_FROM_SHRINE_ENTR:
         case MM_IKANA_CANYON_FROM_CASTLE_GARDENS_ENTR:
@@ -1603,6 +1642,11 @@ uint32_t EntranceHelper::CheckGrottoSpawn(EntranceMessage& Message)
     const std::vector<GrottoEntrance> entrances = GrottoEntrances.at(Message.EntranceID);
     float tmpDist = 0.0f, bestDist = this->GetDistanceGrottoEntrance(entrances[0], Message.X, Message.Y, Message.Z);
     uint32_t bestEntID = entrances[0].EntranceID;
+
+    if (bestDist == 0)
+    {
+        return bestEntID;
+    }
 
     for (size_t i = 1; i < entrances.size(); i++)
     {
@@ -1668,9 +1712,42 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                 break;
             }
 
+            case OOT_GANON_CASTLE_EXTERIOR:
+            {
+                switch (Message.EntranceID)
+                {   // Ganon castle extrior shares the same entrance IDs as hyrule castle ones
+
+                    case OOT_MARKET_FROM_CASTLE_ENTR:
+                    {
+                        return OOT_MARKET_ADULT_FROM_GANON_CASTLE_EXTERIOR_ENTR;
+                    }
+                    case OOT_HYRULE_CASTLE_ENTR:
+                    {
+                        return OOT_GANON_CASTLE_EXTERIOR_ENTR;
+                    }
+                }
+                break;
+            }
+
+            case OOT_MARKET_ADULT:
+            {
+                Message.SceneID = OOT_MARKET;
+                switch (Message.EntranceID)
+                {
+                    case OOT_MARKET_FROM_CASTLE_ENTR:
+                    {
+                        return OOT_MARKET_ADULT_FROM_GANON_CASTLE_EXTERIOR_ENTR;
+                    }
+                    case OOT_HYRULE_CASTLE_ENTR:
+                    {
+                        return OOT_GANON_CASTLE_EXTERIOR_ENTR;
+                    }
+                }
+                break;
+            }
+
             case OOT_MARKET_CHILD_DAY:
             case OOT_MARKET_CHILD_NIGHT:
-            case OOT_MARKET_ADULT:
             {
                 Message.SceneID = OOT_MARKET;
                 break;
@@ -2053,18 +2130,50 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                 break;
             }
 
-            case MM_IKANA_CANYON:
+            case MM_MOON_DEKU:
             {
-                switch (Message.EntranceID)
+                if (Message.EntranceID == MM_MOON_ENTR)
                 {
-                    // Check spring water cave
-                    case MM_IKANA_CAVERN_ENTR:
-                    case MM_IKANA_CANYON_FROM_CAVERN_ENTR:
-                    {
-                        return MM_SPRING_CAVE_ENTR;
-                    }
+                    return MM_MOON_FROM_MOON_DEKU_ENTR;
                 }
+            }
 
+            case MM_MOON_GORON:
+            {
+                if (Message.EntranceID == MM_MOON_ENTR)
+                {
+                    return MM_MOON_FROM_MOON_GORON_ENTR;
+                }
+            }
+
+            case MM_MOON_ZORA:
+            {
+                if (Message.EntranceID == MM_MOON_ENTR)
+                {
+                    return MM_MOON_FROM_MOON_ZORA_ENTR;
+                }
+                else if (Message.EntranceID == MM_MOON_ZORA_FROM_WRONG_PIPE_ENTR && Message.Direction == OUT_MAGIC)
+                {
+                    return MM_MOON_ZORA_WRONG_PIPE_ENTR;
+                }
+            }
+
+            case MM_MOON_LINK:
+            {
+                if (Message.EntranceID == MM_MOON_ENTR)
+                {
+                    return MM_MOON_FROM_MOON_LINK_ENTR;
+                }
+            }
+
+            case MM_LAIR_MAJORA:
+            {
+                if (Message.Direction == OUT_MAGIC)
+                {   // Beating majora should not bring to a shuffuled entrance
+
+                    Message.SceneID = WARP_SCENE;
+                }
+              
                 break;
             }
         }
@@ -2093,6 +2202,31 @@ uint32_t EntranceHelper::CheckWrapScene(EntranceMessage& Message)
             case OOT_LAIR_BARINADE:
             {
                 return OOT_BOSS_JABU_JABU_WARP_OUT;
+            }
+
+            case OOT_LAIR_PHANTOM_GANON:
+            {
+                return OOT_BOSS_FOREST_TEMPLE_WARP_OUT;
+            }
+
+            case OOT_LAIR_VOLVAGIA:
+            {
+                return OOT_BOSS_FIRE_TEMPLE_WARP_OUT;
+            }
+
+            case OOT_LAIR_MORPHA:
+            {
+                return OOT_BOSS_WATER_TEMPLE_WARP_OUT;
+            }
+
+            case OOT_LAIR_BONGO_BONGO:
+            {
+                return OOT_BOSS_SHADOW_TEMPLE_WARP_OUT;
+            }
+
+            case OOT_LAIR_TWINROVA:
+            {
+                return OOT_BOSS_SPIRIT_TEMPLE_WARP_OUT;
             }
         }
     }
@@ -2134,7 +2268,7 @@ uint32_t EntranceHelper::CheckWrapScene(EntranceMessage& Message)
 
             case MM_LAIR_TWINMOLD:
             {
-                return MM_BOSS_TEMPLE_STONE_TOWER_WARP_OUT;
+                return MM_BOSS_TEMPLE_STONE_TOWER_INVERTED_WARP_OUT;
             }
 
             case MM_CLOCK_TOWN_SOUTH:
@@ -2143,79 +2277,12 @@ uint32_t EntranceHelper::CheckWrapScene(EntranceMessage& Message)
                 return Message.EntranceID;
             }
         }
-
-        /*float tmpDist = 0.0f, bestDist = this->GetDistanceGrottoEntrance(SpecialWarps[0], x, y, z);
-        ID = SpecialWarps[0].EntranceID;
-
-        for (size_t i = 1; i < SpecialWarps.size(); i++)
-        {
-            tmpDist = this->GetDistanceGrottoEntrance(SpecialWarps[i], x, y, z);
-
-            if (tmpDist == 0.0)
-            {
-                ID = SpecialWarps[i].EntranceID;
-                break;
-            }
-            else if (tmpDist < bestDist)
-            {
-                bestDist = tmpDist;
-                ID = SpecialWarps[i].EntranceID;
-            }
-        }
-
-        switch (ID)
-        {
-            case MM_DEKU_KING_CAUGHT:
-            {
-                *SceneID = MM_DEKU_KING_CHAMBER;
-                break;
-            }
-
-            case MM_PIRATE_ENTRANCE_CAUGHT:
-            {
-                *SceneID = MM_PIRATE_FORTRESS_ENTRANCE;
-                break;
-            }
-
-            case MM_BOSS_TEMPLE_SNOWHEAD_WARP_OUT:
-            {
-                *SceneID = MM_LAIR_GOHT;
-                break;
-            }
-        }*/
-        /*
-        for (size_t i = 0; i < SpecialWarps.size(); i++)
-        {
-            GrottoEntrance currEntrance = SpecialWarps[i];
-            if (x == currEntrance.SpawnPos[0] && y == currEntrance.SpawnPos[1] && z == currEntrance.SpawnPos[2])
-            {   // The respawn coordinates match the grotto entrance
-
-                ID = SpecialWarps[i].EntranceID;
-                switch (ID)
-                {
-                    case MM_DEKU_KING_CAUGHT:
-                    {
-                        *SceneID = MM_DEKU_KING_CHAMBER;
-                        break;
-                    }
-
-                    case MM_PIRATE_ENTRANCE_CAUGHT:
-                    {
-                        *SceneID = MM_PIRATE_FORTRESS_ENTRANCE;
-                        break;
-                    }
-
-                    case MM_BOSS_TEMPLE_SNOWHEAD_WARP_OUT:
-                    {
-                        *SceneID = MM_LAIR_GOHT;
-                        break;
-                    }
-                }
-            }
-        }*/
     }
 
-    return Message.SceneID;
+
+    // Fallback to spawn loading
+    Message.SceneID = WARP_SCENE;
+    return Message.EntranceID;
 }
 
 
@@ -2241,6 +2308,7 @@ void EntranceHelper::ParseIncomingMessage(EntranceMessage& Message)
         Message.EntranceID = this->CheckSpecialCase(Message);
 
         if (this->IsDeath(this->OutMessage, Message) ||
+            this->IsFaroreWind(this->OutMessage, Message) ||
             this->IsNewCycle(this->OutMessage, Message) ||
             this->IsSongOfDoubleTime(this->OutMessage, Message) ||
             this->IsSongOfTime(this->OutMessage, Message) ||
@@ -2299,22 +2367,6 @@ void EntranceHelper::ParseIncomingMessage(EntranceMessage& Message)
         }
 
         SceneEntranceMetaInf * tmp = GetSceneEntranceMetaInf(this->OutMessage.GameID, this->OutMessage.SceneID);
-        /*if (tmp->EntranceIDs.contains(this->OutEntrance))
-        {
-            EntranceLink tmpOutLink = tmp->EntranceIDs.find(this->OutEntrance)->second;
-        }
-        else
-        {
-            MultiLogger::LogMessage("Asked Key = 0x%08X", this->OutEntrance);
-            auto it = tmp->EntranceIDs.begin();
-            while (it != tmp->EntranceIDs.end())
-            {
-                MultiLogger::LogMessage("Key = 0x%08X, Val = 0x%08X", it->first, &it->second);
-                it++;
-            }
-            MultiLogger::LogMessage("Nope !");
-            return;
-        }*/
         EntranceLink * tmpOutLink = &tmp->EntranceIDs.find(this->OutMessage.EntranceID)->second;
         tmpOutLink->OutLink = Message.EntranceID;
         tmpOutLink->OutLinkGame = Message.GameID;
@@ -2362,9 +2414,7 @@ void EntranceHelper::ParseIncomingMessage(EntranceMessage& Message)
 void EntranceHelper::ParseOutgoingMessage(EntranceMessage& Message)
 {
     if (this->IsMMExtra(Message))
-    //if (Buffer[1] == WARP_SCENE && Buffer[2] != WARP_LOADING)
-    {   // On MM when warping, the scene is always equal to WARP_SCENE so we still want to be able to catch the WARP_SONG events. However we want to get rid of new clock day
-
+    {
         this->IsEntranceTouched = false;
         return;
     }
@@ -2373,6 +2423,13 @@ void EntranceHelper::ParseOutgoingMessage(EntranceMessage& Message)
 
     // Check that the entrance is not a special case
     Message.EntranceID = this->CheckSpecialCase(Message);
+    
+    if (Message.SceneID == WARP_SCENE)
+    {   // We don't want to catch this
+
+        this->IsEntranceTouched = false;
+        return;
+    }
 
     if (this->IsGrottoEntrance(Message))
     {   // The current entrance is a grotto entrance
