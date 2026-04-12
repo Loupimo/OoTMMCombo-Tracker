@@ -1,4 +1,5 @@
 #include "UI/MemoryReader.h"
+#include "UI/LogTab.h"
 #include "Combo/OvTypes.h"
 #include "Combo/Objects.h"
 #include "Combo/Items.h"
@@ -61,9 +62,10 @@ std::string GetDLLPath()
     return dir + "\\PJ64OoTMMTracker.dll";
 }
 
-MemoryReader::MemoryReader()
+MemoryReader::MemoryReader(LogTab* Owner)
 {
     this->ResetMemoryReader();
+    this->Owner = Owner;
 }
 
 
@@ -292,6 +294,13 @@ void MemoryReader::StartMemoryReader()
             MultiLogger::LogMessage("Cannot access %s process. Error : %s (%d).\nPlease check your process and restart the tracker.", processName, GetErrorAsString(errorMessageID), errorMessageID);
         }
     }
+
+    if (!this->IsProcessAlive(this->PJ64Handle))
+    {   // We need to refresh the log tab info
+
+        MultiLogger::LogMessage("Project 64 has been closed. Stop tracking...");
+        this->Owner->LaunchButton->pressed();
+    }
 }
 
 
@@ -322,7 +331,7 @@ void MemoryReader::RunMemoryReader()
 
     } while (this->IsRunning && this->IsProcessAlive(this->PJ64Handle));
 
-    this->IsRunning = false;
+    //this->IsRunning = false;
 }
 
 

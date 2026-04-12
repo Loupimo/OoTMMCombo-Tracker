@@ -6,6 +6,8 @@
 #define ENTRANCE_MAGIC 0xFF000000	// A flag used to determine if the message is an entrance message or not
 #define BUFFER_SIZE 1024			// The maximum number of events the buffer can holds at the same time
 
+class LogTab;
+
 typedef struct ComboItemQuery
 {
 	uint8_t  SceneId;   // 1 byte
@@ -48,6 +50,7 @@ public:
 	EntranceHelper EntHelper;				// The module that will handle entrance tracking.
 	std::string CurrDirectory;				// The current directory the tracker is located at.
 	SharedData * DLLData = nullptr;			// A pointer to the shared memory with the injected DLL.
+	LogTab* Owner = nullptr;				// The log tab that owns this memory reader.
 
 #pragma endregion
 
@@ -59,7 +62,7 @@ public:
 	/*
 	*   Default memory reader constructor.
 	*/
-	MemoryReader();
+	MemoryReader(LogTab * Owner = nullptr);
 
 	/*
 	*   Default memory reader destructor.

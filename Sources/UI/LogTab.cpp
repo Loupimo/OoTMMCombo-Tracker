@@ -188,7 +188,7 @@ LogTab::LogTab(OoTMMComboTracker* Owner, QWidget* parent) : QWidget(parent)
 
     // Init other attribute
     this->Tracker = new App();
-    this->MemRead = new MemoryReader();
+    this->MemRead = new MemoryReader(this);
 
     // Used to catch messages that come from non GUI thread
     QObject::connect(MultiLogger::GetLogger(), &MultiLogger::LogMsgToView, this, &LogTab::LogMessage);
