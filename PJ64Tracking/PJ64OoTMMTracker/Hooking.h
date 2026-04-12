@@ -70,8 +70,9 @@
 #define MM_GROTTO_DATA       0x001F3394     // The offset to add to the real game address to reach the gGrottoData for MM
 #define IN_MAGIC             0xFFAA0000     // The magic flag that indicates the message is an incoming entrance
 #define OUT_MAGIC            0xFFBB0000     // The magic flag that indicates the message is an outgoing entrance
+#define OOT_FARORE_STATE     0x001DB09C     // The offset to add to real game address to reach the state flag used to determined if farore's wind has been used for OoT
 #define MM_FARORE_STATE      0x0040081C     // The offset to add to real game address to reach the state flag used to determined if farore's wind has been used for MM
-#define MM_FARORE_USED       0x30000000     // The value of the state flag when the farore's wind is used in MM
+#define FARORE_USED          0x30000000     // The value of the state flag when the farore's wind is used
 
 #ifdef _DEBUG
 

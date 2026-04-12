@@ -30,6 +30,7 @@ uint32_t gActiveRoomOffset = OOT_CURR_ROOM;                 // The current offse
 uint32_t gActiveGrottoOffset = OOT_GROTTO_DATA;             // The current offset to add to reach the grotto data value.
 uint32_t gActiveCoordOffset = OOT_PLAYER_COORD;             // The current offset to add to reach the last respawned player corrdinates.
 uint32_t gActiveSceneOffset = OOT_SCENE_OFFSET;             // The current offset to add to reach the last scene offset.
+uint32_t gActiveFaroreOffset = OOT_FARORE_STATE;            // The current offset to add to reach the farore state offset.
 uint32_t gOOTActiveGlobalOffset = 0;                        // An offset to add to the active scene offset to reach the gLastScene variable for OoT.
 uint32_t gMMActiveGlobalOffset = 0;                         // An offset to add to the active scene offset to reach the gLastScene variable for MM.
 //uint32_t gActiveEntranceReg = S1_OFFSET;                    // The current register to use to get the next entrance value.
@@ -168,6 +169,7 @@ __asm mov[gActiveRoomOffset], ##Game##_CURR_ROOM                  \
 __asm mov[gActiveGrottoOffset], ##Game##_GROTTO_DATA              \
 __asm mov[gActiveCoordOffset], ##Game##_PLAYER_COORD              \
 __asm mov[gActiveSceneOffset], ##Game##_SCENE_OFFSET              \
+__asm mov[gActiveFaroreOffset], ##Game##_FARORE_STATE             \
 __asm mov eax, g##Game##ActiveGlobalOffset                        \
 __asm add[gActiveSceneOffset], eax
 
@@ -667,13 +669,10 @@ __declspec(naked) void PCHook()
             COMPUTE_RAM_ADDR([gActiveOwlOffset], edx)
             mov cl, byte ptr[edx]
 
-            cmp[gGame], GAME_MM
-            jne FARORE_END
-
             // Build farore wind state
-            COMPUTE_RAM_ADDR(MM_FARORE_STATE, edx)
+            COMPUTE_RAM_ADDR([gActiveFaroreOffset], edx)
             mov edx, [edx]
-            cmp edx, MM_FARORE_USED
+            cmp edx, FARORE_USED
             jne FARORE_END
             mov edx, 1
             shl edx, 8

@@ -249,7 +249,7 @@ public:
 	*
 	*   @return <b>True</b> if the message comes from a farore's wind action, <b>false</b> otherwise.
 	*/
-	bool IsFaroreWind(EntranceMessage& PrevMessage, EntranceMessage& CurrMessage);
+	bool IsFaroreWind(EntranceMessage& Message);
 
 	/*
 	*   Check if the given data come from a sonata of awakening to open the woodfall temple.

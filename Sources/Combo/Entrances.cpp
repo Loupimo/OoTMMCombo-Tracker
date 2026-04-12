@@ -365,9 +365,10 @@ bool EntranceHelper::IsDeath(EntranceMessage& PrevMessage, EntranceMessage& Curr
 }
 
 
-bool EntranceHelper::IsFaroreWind(EntranceMessage& PrevMessage, EntranceMessage& CurrMessage)
+bool EntranceHelper::IsFaroreWind(EntranceMessage& Message)
 {
-    if (PrevMessage.GameID == MM_GAME)
+    return Message.FaroreWind;
+    /*if (PrevMessage.GameID == MM_GAME)
     {   // MM
 
         return PrevMessage.FaroreWind;
@@ -391,7 +392,7 @@ bool EntranceHelper::IsFaroreWind(EntranceMessage& PrevMessage, EntranceMessage&
         }
     }
 
-    return false;
+    return false;*/
 }
 
 
@@ -2308,7 +2309,6 @@ void EntranceHelper::ParseIncomingMessage(EntranceMessage& Message)
         Message.EntranceID = this->CheckSpecialCase(Message);
 
         if (this->IsDeath(this->OutMessage, Message) ||
-            this->IsFaroreWind(this->OutMessage, Message) ||
             this->IsNewCycle(this->OutMessage, Message) ||
             this->IsSongOfDoubleTime(this->OutMessage, Message) ||
             this->IsSongOfTime(this->OutMessage, Message) ||
@@ -2460,6 +2460,15 @@ void EntranceHelper::ParseOutgoingMessage(EntranceMessage& Message)
                 this->IsEntranceTouched = false;
                 return;
             }
+        }
+    }
+    else
+    {
+        if (this->IsFaroreWind(Message))
+        {   // We don't want to catch this
+
+            this->IsEntranceTouched = false;
+            return;
         }
     }
 
