@@ -1730,6 +1730,11 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                 break;
             }
 
+            /*case OOT_GANON_TOWER:
+            {
+                if (Message.EntranceID)
+            }*/
+
             case OOT_MARKET_ADULT:
             {
                 Message.SceneID = OOT_MARKET;
@@ -2462,14 +2467,11 @@ void EntranceHelper::ParseOutgoingMessage(EntranceMessage& Message)
             }
         }
     }
-    else
-    {
-        if (this->IsFaroreWind(Message))
-        {   // We don't want to catch this
+    else if (this->IsFaroreWind(Message))
+    {   // We don't want to catch this
 
-            this->IsEntranceTouched = false;
-            return;
-        }
+        this->IsEntranceTouched = false;
+        return;
     }
 
     // Retreive the entrance meta information
