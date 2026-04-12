@@ -367,12 +367,12 @@ bool EntranceHelper::IsDeath(EntranceMessage& PrevMessage, EntranceMessage& Curr
 
 bool EntranceHelper::IsFaroreWind(EntranceMessage& PrevMessage, EntranceMessage& CurrMessage)
 {
-    /*if (PrevMessage.GameID == MM_GAME)
-    {   // We need to check if the scene ID has the requested entrance, if not then farore's wind has been casted.
+    if (PrevMessage.GameID == MM_GAME)
+    {   // MM
 
-        return GetSceneEntranceMetaInf(MM_GAME, PrevMessage.SceneID)->EntranceIDs.contains(PrevMessage.EntranceID);
+        return PrevMessage.FaroreWind;
     }
-    else*/
+    else
     {   // OoT
 
         switch (PrevMessage.SceneID)
@@ -2288,12 +2288,12 @@ uint32_t EntranceHelper::CheckWrapScene(EntranceMessage& Message)
 
 void EntranceHelper::ParseEntranceMessage(uint32_t EntranceFlag, uint32_t Buffer[6])
 {
-    if ((EntranceFlag & 0xFFFFFF00) == IN_MAGIC)
+    if ((EntranceFlag & 0xFFFF0000) == IN_MAGIC)
     {
         this->InMessage.SetMessage(IN_MAGIC, EntranceFlag, Buffer);
         this->ParseIncomingMessage(this->InMessage);
     }
-    else if ((EntranceFlag & 0xFFFFFF00) == OUT_MAGIC)
+    else if ((EntranceFlag & 0xFFFF0000) == OUT_MAGIC)
     {
         this->OutMessage.SetMessage(OUT_MAGIC, EntranceFlag, Buffer);
         this->ParseOutgoingMessage(this->OutMessage);
@@ -2382,29 +2382,31 @@ void EntranceHelper::ParseIncomingMessage(EntranceMessage& Message)
 
         emit MultiLogger::GetLogger()->NotifyEntranceFound(&tmpOut, &tmpIn);
 
-        MultiLogger::LogMessage("            -----------------------------------");
-        MultiLogger::LogMessage("            |      FROM      |       TO       |");
-        MultiLogger::LogMessage("-----------------------------------------------");
-        MultiLogger::LogMessage("%-11s | %14.6f | %14.6f |", "X", this->OutMessage.X, Message.X);
-        MultiLogger::LogMessage("-----------------------------------------------");
-        MultiLogger::LogMessage("%-11s | %14.6f | %14.6f |", "Y", this->OutMessage.Y, Message.Y);
-        MultiLogger::LogMessage("-----------------------------------------------");
-        MultiLogger::LogMessage("%-11s | %14.6f | %14.6f |", "Z", this->OutMessage.Z, Message.Z);
-        MultiLogger::LogMessage("-----------------------------------------------");
-        MultiLogger::LogMessage("%-11s | %14s | %14s |", "Game", this->OutMessage.GameID == OOT_GAME ? "OoT" : "MM", Message.GameID == OOT_GAME ? "OoT" : "MM");
-        MultiLogger::LogMessage("-----------------------------------------------");
-        MultiLogger::LogMessage("%-11s |     0x%08X |     0x%08X |", "Scene", this->OutMessage.SceneID, Message.SceneID);
-        MultiLogger::LogMessage("-----------------------------------------------");
-        MultiLogger::LogMessage("%-11s |     0x%08X |     0x%08X |", "Entrance", this->OutMessage.EntranceID, Message.EntranceID);
-        MultiLogger::LogMessage("-----------------------------------------------");
-        MultiLogger::LogMessage("%-11s |           0x%02X |           0x%02X |", "Room ID", this->OutMessage.CurrRoom, Message.CurrRoom);
-        MultiLogger::LogMessage("-----------------------------------------------");
-        MultiLogger::LogMessage("%-11s |           0x%02X |           0x%02X |", "Grotto Data", this->OutMessage.GrottoData, Message.GrottoData);
-        MultiLogger::LogMessage("-----------------------------------------------");
-        MultiLogger::LogMessage("%-11s |           0x%02X |           0x%02X |", "Owl ID", this->OutMessage.OwlID, Message.OwlID);
-        MultiLogger::LogMessage("-----------------------------------------------");
-        MultiLogger::LogMessage("%-11s |           0x%02X |           0x%02X |", "Song ID", this->OutMessage.OoTSongID, Message.OoTSongID);
-        MultiLogger::LogMessage("-----------------------------------------------");
+        MultiLogger::LogMessage("              -----------------------------------");
+        MultiLogger::LogMessage("              |      FROM      |       TO       |");
+        MultiLogger::LogMessage("-------------------------------------------------");
+        MultiLogger::LogMessage("%-13s | %14.6f | %14.6f |", "X", this->OutMessage.X, Message.X);
+        MultiLogger::LogMessage("-------------------------------------------------");
+        MultiLogger::LogMessage("%-13s | %14.6f | %14.6f |", "Y", this->OutMessage.Y, Message.Y);
+        MultiLogger::LogMessage("-------------------------------------------------");
+        MultiLogger::LogMessage("%-13s | %14.6f | %14.6f |", "Z", this->OutMessage.Z, Message.Z);
+        MultiLogger::LogMessage("-------------------------------------------------");
+        MultiLogger::LogMessage("%-13s | %14s | %14s |", "Game", this->OutMessage.GameID == OOT_GAME ? "OoT" : "MM", Message.GameID == OOT_GAME ? "OoT" : "MM");
+        MultiLogger::LogMessage("-------------------------------------------------");
+        MultiLogger::LogMessage("%-13s |     0x%08X |     0x%08X |", "Scene", this->OutMessage.SceneID, Message.SceneID);
+        MultiLogger::LogMessage("-------------------------------------------------");
+        MultiLogger::LogMessage("%-13s |     0x%08X |     0x%08X |", "Entrance", this->OutMessage.EntranceID, Message.EntranceID);
+        MultiLogger::LogMessage("-------------------------------------------------");
+        MultiLogger::LogMessage("%-13s |           0x%02X |           0x%02X |", "Room ID", this->OutMessage.CurrRoom, Message.CurrRoom);
+        MultiLogger::LogMessage("-------------------------------------------------");
+        MultiLogger::LogMessage("%-13s |           0x%02X |           0x%02X |", "Grotto Data", this->OutMessage.GrottoData, Message.GrottoData);
+        MultiLogger::LogMessage("-------------------------------------------------");
+        MultiLogger::LogMessage("%-13s |           0x%02X |           0x%02X |", "Farore's Wind", this->OutMessage.FaroreWind, Message.FaroreWind);
+        MultiLogger::LogMessage("-------------------------------------------------");
+        MultiLogger::LogMessage("%-13s |           0x%02X |           0x%02X |", "Owl ID", this->OutMessage.OwlID, Message.OwlID);
+        MultiLogger::LogMessage("-------------------------------------------------");
+        MultiLogger::LogMessage("%-13s |           0x%02X |           0x%02X |", "Song ID", this->OutMessage.OoTSongID, Message.OoTSongID);
+        MultiLogger::LogMessage("-------------------------------------------------");
     }
 
     this->IsEntranceTouched = false;

@@ -6,8 +6,8 @@
 #include <string>
 
 #define WARP_LOADING 0xfffe			// Used to determine if we are in a warping zone.
-#define IN_MAGIC	0xFFFFAA00		// Used to determine if the message is an incoming entrance
-#define OUT_MAGIC	0xFFFFBB00		// Used to determine if the message is an outgoing entrance
+#define IN_MAGIC	0xFFAA0000		// Used to determine if the message is an incoming entrance
+#define OUT_MAGIC	0xFFBB0000		// Used to determine if the message is an outgoing entrance
 #define WARP_SCENE	0xFF3FFF3F		// Used to know if the scene ID is from a new clock cycle
 
 
@@ -124,6 +124,7 @@ typedef struct EntranceMessage
 		OoTSongs OoTSongID;		// The message OoT song ID.
 		MMSongs MMSongID;		// The message MM song ID.
 	};
+	uint8_t FaroreWind;			// The state of the farore's wind.
 	uint8_t OwlID;				// The message owl ID.
 	uint8_t CurrRoom;			// The message current room.
 	uint8_t GrottoData;			// The message grotto data.
@@ -140,6 +141,7 @@ typedef struct EntranceMessage
 		this->ResetMessage();
 		this->Buffer = Buffer;
 		this->Direction = MsgDirection;
+		this->FaroreWind = (uint8_t)(OwlID >> 8);
 		this->OwlID = (uint8_t)OwlID;
 		this->GameID = this->Buffer[0] & 0xFF;
 		this->OoTSongID = (OoTSongs)((Buffer[0] >> 24) & 0xFF);
