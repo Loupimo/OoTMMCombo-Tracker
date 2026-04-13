@@ -76,7 +76,7 @@ private:
 
     void rebuildRowColors();
     QColor computeBaseColor(bool toggle) const;
-private:
+public:
 
     std::vector<GlobalEntranceRow> m_rows;
     std::vector<QColor> m_rowColors;

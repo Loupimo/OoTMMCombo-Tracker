@@ -478,10 +478,11 @@ EntranceTableView::EntranceTableView(int Game, const char * Name, QWidget* paren
     connect(searchBar, &QLineEdit::textChanged,
         this, [=](const QString& text)
         {
-            bool filtering = !text.isEmpty();
-
-            this->Table->viewport()->setAttribute(Qt::WA_OpaquePaintEvent, !filtering);
             this->Proxy->setFilterFixedString(text);
+
+            // Disable this setting in order to be able to get rid of artifacts in case the number of rows does not cover the entire window.
+            bool filtering = this->Proxy->rowCount() > 40;
+            this->Table->viewport()->setAttribute(Qt::WA_OpaquePaintEvent, filtering);
         });
 
     connect(this->Table->horizontalHeader(), &QHeaderView::sectionClicked,
