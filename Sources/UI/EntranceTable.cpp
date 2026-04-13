@@ -107,7 +107,7 @@ void GlobalEntranceTableModel::updateEntrance(uint32_t sceneID, uint32_t entranc
             QModelIndex bottom = index((int)i, columnCount() - 1);
 
             emit dataChanged(top, bottom);
-
+            emit headerDataChanged(Qt::Vertical, (int)i, (int)i);
             return;
         }
     }
@@ -183,17 +183,24 @@ QVariant GlobalEntranceTableModel::data(const QModelIndex& index, int role) cons
 
 QVariant GlobalEntranceTableModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
-    if (role != Qt::DisplayRole)
-        return QVariant();
-
     if (orientation == Qt::Horizontal)
     {
+        if (role != Qt::DisplayRole)
+            return QVariant();
+
         switch (section)
         {
             case 0: return "Scene";
             case 1: return "Entrance";
             case 2: return "How to spawn here ?";
             case 3: return "Where does it lead ?";
+        }
+    }
+    else if (orientation == Qt::Vertical)
+    {
+        if (role == Qt::BackgroundRole)
+        {
+            return rowStatusColor(section);
         }
     }
 
@@ -228,7 +235,6 @@ QString GlobalEntranceTableModel::formatEntrance(uint32_t entranceID) const
 QString GlobalEntranceTableModel::formatEntranceLink(uint8_t GameLink, uint32_t EntranceID, uint32_t EntranceLink, bool IsWayIn) const
 {
     const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->Game, EntranceID);
-
 
     switch (entrance->Type)
     {
@@ -295,10 +301,29 @@ QString GlobalEntranceTableModel::formatScene(uint32_t sceneID) const
 // Row color logic
 // ============================================
 
+
+QColor GlobalEntranceTableModel::rowStatusColor(int rowIndex) const
+{
+    if (rowIndex < 0 || rowIndex >= m_rows.size())
+        return QColor(45, 45, 45);
+
+    const auto& r = m_rows[rowIndex];
+
+    bool hasIn = r.InLink != UINT32_MAX || r.InLinkName == "N/A";
+    bool hasOut = r.OutLink != UINT32_MAX || r.OutLinkName == "N/A";
+
+    if (!hasIn && !hasOut)
+        return QColor(200, 60, 60);      // rouge
+
+    if (hasIn ^ hasOut)
+        return QColor(220, 180, 40);     // jaune
+
+    return QColor(60, 180, 80);          // vert
+}
+
 QColor GlobalEntranceTableModel::rowColor(int rowIndex) const
 {
-    if (rowIndex < 0 ||
-        rowIndex >= m_rows.size())
+    if (rowIndex < 0 || rowIndex >= m_rows.size())
         return QColor(45, 45, 45);
 
     uint32_t sceneID =
@@ -315,10 +340,7 @@ QColor GlobalEntranceTableModel::rowColor(int rowIndex) const
         }
     }
 
-    QColor baseColor =
-        toggle
-        ? QColor(45, 45, 45)
-        : QColor(60, 60, 60);
+    QColor baseColor = toggle ? QColor(45, 45, 45) : QColor(60, 60, 60);
 
     const auto& row =
         m_rows[rowIndex];
@@ -329,7 +351,9 @@ QColor GlobalEntranceTableModel::rowColor(int rowIndex) const
     bool hasOut =
         row.OutLink != UINT32_MAX;
 
-    if (!hasIn && !hasOut)
+    return baseColor;
+
+    /*if (!hasIn && !hasOut)
         return baseColor;
 
     if (hasIn && !hasOut)
@@ -338,7 +362,7 @@ QColor GlobalEntranceTableModel::rowColor(int rowIndex) const
     if (!hasIn && hasOut)
         return QColor(0, 180, 180);
 
-    return QColor(0, 180, 0);
+    return QColor(0, 180, 0);*/
 }
 
 void GlobalEntranceTableModel::sort(int column, Qt::SortOrder order)
@@ -352,12 +376,12 @@ void GlobalEntranceTableModel::sort(int column, Qt::SortOrder order)
             const GlobalEntranceRow& a,
             const GlobalEntranceRow& b)
         {
-            // 1️⃣ Toujours grouper par Region
+            // 1️ Toujours grouper par Region
 
             if (a.RegionID != b.RegionID)
                 return a.RegionID < b.RegionID;
 
-            // 2️⃣ Comparaison colonne
+            // 2️ Comparaison colonne
 
             auto compareColumn =
                 [&](const GlobalEntranceRow& x,
@@ -553,6 +577,9 @@ EntranceTableView::EntranceTableView(int Game, const char * Name, QWidget* paren
     this->horizontalHeader()->setSectionResizeMode(3, QHeaderView::Stretch);
     this->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
     this->verticalHeader()->setDefaultSectionSize(20);
+    this->viewport()->setAttribute(Qt::WA_OpaquePaintEvent, true);
+    this->viewport()->setAttribute(Qt::WA_NoSystemBackground, true);
+    this->viewport()->setAttribute(Qt::WA_StaticContents, true);
 }
 
 

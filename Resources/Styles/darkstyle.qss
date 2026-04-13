@@ -1962,9 +1962,9 @@ QHeaderView:disabled {
 }
 
 QHeaderView::section {
-  background-color: #455364;
+  /*background-color: #455364;
   color: #DFE1E2;
-  border-radius: 0;
+  border-radius: 0;*/
   text-align: left;
   font-size: 13px;
 }
@@ -1990,12 +1990,12 @@ QHeaderView::section::vertical {
   padding-bottom: 0;
   padding-left: 4px;
   padding-right: 4px;
-  border-top: 1px solid #19232D;
+  /*border-top: 1px solid #19232D;*/
 }
-
+/*
 QHeaderView::section::vertical::first, QHeaderView::section::vertical::only-one {
   border-top: 1px solid #455364;
-}
+}*/
 
 QHeaderView::section::vertical:disabled {
   color: #788D9C;

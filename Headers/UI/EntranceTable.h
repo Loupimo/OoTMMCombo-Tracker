@@ -1,6 +1,8 @@
 ﻿#pragma once
 
 #include <QWidget>
+#include <QPainter>
+#include <QHeaderView>
 #include <QTableView>
 #include <QStandardItemModel>
 #include <QSortFilterProxyModel>
@@ -21,7 +23,6 @@ typedef struct GlobalEntranceRow
     uint8_t InGame = NO_GAME;
     uint8_t OutGame = NO_GAME;
     uint8_t RegionID = UINT8_MAX;
-
 
     QString SceneName;
     QString EntranceName;
@@ -66,6 +67,7 @@ public:
     QString formatScene(uint32_t sceneID) const;
     
     void sort(int column, Qt::SortOrder order) override;
+    QColor rowStatusColor(int rowIndex) const;
 
 private:
 
