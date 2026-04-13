@@ -62,24 +62,10 @@ void GlobalEntranceTableModel::setScenes(const std::map<uint32_t, SceneEntranceM
 
     // Trier par SceneID puis EntranceID
     this->sort(0, Qt::AscendingOrder);
-    /*
-    // Trier
-    std::sort(
-        m_rows.begin(),
-        m_rows.end(),
-        [](const GlobalEntranceRow& a,
-            const GlobalEntranceRow& b)
-        {
-            if (a.SceneID != b.SceneID)
-                return a.SceneID < b.SceneID;
-
-            return a.EntranceID < b.EntranceID;
-        });*/
-
-        // NOUVEAU
     rebuildRowColors();
 
     endResetModel();
+
 }
 
 // ============================================
@@ -200,7 +186,7 @@ QVariant GlobalEntranceTableModel::headerData(int section, Qt::Orientation orien
     {
         if (role == Qt::BackgroundRole)
         {
-            return rowStatusColor(section);
+            return m_rowStatusColors[section];
         }
     }
 
@@ -302,18 +288,16 @@ QString GlobalEntranceTableModel::formatScene(uint32_t sceneID) const
 // ============================================
 
 
-QColor GlobalEntranceTableModel::rowStatusColor(int rowIndex) const
+QColor GlobalEntranceTableModel::rowStatusColor(GlobalEntranceRow row) const
 {
-    if (rowIndex < 0 || rowIndex >= m_rows.size())
-        return QColor(45, 45, 45);
-
-    const auto& r = m_rows[rowIndex];
-
-    bool hasIn = r.InLink != UINT32_MAX || r.InLinkName == "N/A";
-    bool hasOut = r.OutLink != UINT32_MAX || r.OutLinkName == "N/A";
+    bool hasIn = row.InLink != UINT32_MAX;
+    bool hasOut = row.OutLink != UINT32_MAX;
 
     if (!hasIn && !hasOut)
         return QColor(200, 60, 60);      // rouge
+
+    hasIn = hasIn || row.InLinkName == "N/A";
+    hasOut = hasOut || row.OutLinkName == "N/A";
 
     if (hasIn ^ hasOut)
         return QColor(220, 180, 40);     // jaune
@@ -345,24 +329,7 @@ QColor GlobalEntranceTableModel::rowColor(int rowIndex) const
     const auto& row =
         m_rows[rowIndex];
 
-    bool hasIn =
-        row.InLink != UINT32_MAX;
-
-    bool hasOut =
-        row.OutLink != UINT32_MAX;
-
     return baseColor;
-
-    /*if (!hasIn && !hasOut)
-        return baseColor;
-
-    if (hasIn && !hasOut)
-        return QColor(200, 200, 0);
-
-    if (!hasIn && hasOut)
-        return QColor(0, 180, 180);
-
-    return QColor(0, 180, 0);*/
 }
 
 void GlobalEntranceTableModel::sort(int column, Qt::SortOrder order)
@@ -426,74 +393,6 @@ void GlobalEntranceTableModel::sort(int column, Qt::SortOrder order)
     rebuildRowColors();
 
     emit layoutChanged();
-
-
-    /*
-    beginResetModel();
-
-    auto compAscending =
-        [this, column](
-            const GlobalEntranceRow& a,
-            const GlobalEntranceRow& b)
-        {
-            switch (column)
-            {
-                case 0: // Scene
-                {
-                    if (a.SceneID != b.SceneID)
-                        return QString::localeAwareCompare(a.SceneName, b.SceneName) < 0;
-
-                    return QString::localeAwareCompare(a.EntranceName, b.EntranceName) < 0;
-                }
-
-                case 1: // Entrance (alphabetic)
-                {
-                    return QString::localeAwareCompare(a.EntranceName, b.EntranceName) < 0;
-                }
-
-                case 2: // Way In
-                {
-                    if (a.InLink != b.InLink)
-                        return a.InLink < b.InLink;
-
-                    return a.EntranceID < b.EntranceID;
-                }
-
-                case 3: // Way Out
-                {
-                    if (a.OutLink != b.OutLink)
-                        return a.OutLink < b.OutLink;
-
-                    return a.EntranceID < b.EntranceID;
-                }
-            }
-
-            return false;
-        };
-
-    if (order == Qt::AscendingOrder)
-    {
-        std::sort(
-            m_rows.begin(),
-            m_rows.end(),
-            compAscending);
-    }
-    else
-    {
-        std::sort(
-            m_rows.begin(),
-            m_rows.end(),
-            [compAscending](
-                const GlobalEntranceRow& a,
-                const GlobalEntranceRow& b)
-            {
-                return compAscending(b, a);
-            });
-    }
-
-    rebuildRowColors();
-
-    endResetModel();*/
 }
 
 
@@ -501,6 +400,9 @@ void GlobalEntranceTableModel::rebuildRowColors()
 {
     m_rowColors.clear();
     m_rowColors.reserve(m_rows.size());
+
+    m_rowStatusColors.clear();
+    m_rowStatusColors.reserve(m_rows.size());
 
     uint32_t lastScene = UINT32_MAX;
     bool toggle = false;
@@ -515,38 +417,10 @@ void GlobalEntranceTableModel::rebuildRowColors()
             lastScene = row.SceneID;
         }
 
-        QColor base =
-            computeBaseColor(toggle);
+        QColor base = computeBaseColor(toggle);
 
-        bool hasIn =
-            row.InLink != UINT32_MAX;
-
-        bool hasOut =
-            row.OutLink != UINT32_MAX;
-
-        QColor finalColor;
-
-        //if (!hasIn && !hasOut)
-        {
-            finalColor = base;
-        }
-       /* else if (hasIn && !hasOut)
-        {
-            finalColor =
-                QColor(240, 220, 80);   // jaune clair
-        }
-        else if (!hasIn && hasOut)
-        {
-            finalColor =
-                QColor(80, 220, 220);   // cyan clair
-        }
-        else
-        {
-            finalColor =
-                QColor(80, 200, 120);   // vert
-        }*/
-
-        m_rowColors.push_back(finalColor);
+        m_rowColors.push_back(base);
+        m_rowStatusColors.push_back(this->rowStatusColor(row));
     }
 }
 
@@ -559,27 +433,66 @@ QColor GlobalEntranceTableModel::computeBaseColor(bool toggle) const
 
 #pragma region // EntranceTableView
 
-EntranceTableView::EntranceTableView(int Game, const char * Name, QWidget* parent) : QTableView(parent)
+EntranceTableView::EntranceTableView(int Game, const char * Name, QWidget* parent) : QWidget(parent)
 {
     this->Game = Game;
     this->TabName = Name;
     this->Model = new GlobalEntranceTableModel(Game, Name, this);
-    this->Model->sort(0, Qt::AscendingOrder);
+    this->Model->sort(0, Qt::AscendingOrder); 
 
-    this->setModel(this->Model);
-    this->setSortingEnabled(true);
-    this->setAlternatingRowColors(false);
-    this->horizontalHeader()->setStretchLastSection(true);
-    this->horizontalHeader()->setSortIndicatorShown(true);
-    this->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
-    this->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
-    this->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
-    this->horizontalHeader()->setSectionResizeMode(3, QHeaderView::Stretch);
-    this->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
-    this->verticalHeader()->setDefaultSectionSize(20);
-    this->viewport()->setAttribute(Qt::WA_OpaquePaintEvent, true);
-    this->viewport()->setAttribute(Qt::WA_NoSystemBackground, true);
-    this->viewport()->setAttribute(Qt::WA_StaticContents, true);
+    QVBoxLayout* layout = new QVBoxLayout(this);
+    this->Table = new QTableView(this);
+
+    QLineEdit* searchBar = new QLineEdit(this);
+    searchBar->setPlaceholderText("Search...");
+
+    this->Proxy = new QSortFilterProxyModel(this);
+    this->Proxy->setSourceModel(this->Model);
+    this->Proxy->setFilterCaseSensitivity(Qt::CaseInsensitive);
+    this->Proxy->setFilterKeyColumn(-1); 
+    this->Proxy->setSortRole(Qt::UserRole);
+    this->Proxy->setDynamicSortFilter(false);
+
+
+    this->Table->setModel(this->Proxy);
+    //this->Table->setModel(this->Model);
+    this->Table->setSortingEnabled(true);
+    this->Table->setAlternatingRowColors(false);
+    this->Table->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+    this->Table->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
+    this->Table->setShowGrid(false);
+    this->Table->horizontalHeader()->setStretchLastSection(true);
+    this->Table->horizontalHeader()->setSortIndicatorShown(true);
+    this->Table->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+    this->Table->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+    this->Table->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
+    this->Table->horizontalHeader()->setSectionResizeMode(3, QHeaderView::Stretch);
+    this->Table->horizontalHeader()->setSortIndicator(0, Qt::AscendingOrder);
+    this->Table->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+    this->Table->verticalHeader()->setDefaultSectionSize(20);
+    this->Table->verticalHeader()->setSectionsClickable(false);
+    this->Table->viewport()->setAttribute(Qt::WA_OpaquePaintEvent, true);
+    this->Table->viewport()->setAttribute(Qt::WA_NoSystemBackground, true);
+    this->Table->viewport()->setAttribute(Qt::WA_StaticContents, true);
+
+    connect(searchBar, &QLineEdit::textChanged,
+        this, [=](const QString& text)
+        {
+            bool filtering = !text.isEmpty();
+
+            this->Table->viewport()->setAttribute(Qt::WA_OpaquePaintEvent, !filtering);
+            this->Proxy->setFilterFixedString(text);
+        });
+
+    connect(this->Table->horizontalHeader(), &QHeaderView::sectionClicked,
+        this, [=](int column)
+        {
+            this->Model->sort(column, this->Table->horizontalHeader()->sortIndicatorOrder());
+        });
+
+    layout->addWidget(searchBar);
+    layout->addWidget(this->Table);
+    this->setLayout(layout);
 }
 
 

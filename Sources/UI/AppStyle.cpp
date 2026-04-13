@@ -16,7 +16,6 @@ void SetDarkPalette(QApplication& app)
     QPalette darkPalette;
     
     darkPalette.setColor(QPalette::WindowText, Qt::white);
-
     app.setPalette(darkPalette);
 }
 

@@ -1814,7 +1814,7 @@ QTreeView:branch:open:has-children:!has-siblings:hover, QTreeView:branch:open:ha
 
 QTreeView::indicator:checked,
 QListView::indicator:checked,
-QTableView::indicator:checked,
+/*QTableView::indicator:checked,*/
 QColumnView::indicator:checked {
   image: url(":/qss_icons/dark/rc/checkbox_checked.png");
 }
@@ -1823,9 +1823,9 @@ QTreeView::indicator:checked:hover, QTreeView::indicator:checked:focus, QTreeVie
 QListView::indicator:checked:hover,
 QListView::indicator:checked:focus,
 QListView::indicator:checked:pressed,
-QTableView::indicator:checked:hover,
+/*QTableView::indicator:checked:hover,
 QTableView::indicator:checked:focus,
-QTableView::indicator:checked:pressed,
+QTableView::indicator:checked:pressed,*/
 QColumnView::indicator:checked:hover,
 QColumnView::indicator:checked:focus,
 QColumnView::indicator:checked:pressed {
@@ -1834,7 +1834,7 @@ QColumnView::indicator:checked:pressed {
 
 QTreeView::indicator:unchecked,
 QListView::indicator:unchecked,
-QTableView::indicator:unchecked,
+/*QTableView::indicator:unchecked,*/
 QColumnView::indicator:unchecked {
   image: url(":/qss_icons/dark/rc/checkbox_unchecked.png");
 }
@@ -1843,9 +1843,9 @@ QTreeView::indicator:unchecked:hover, QTreeView::indicator:unchecked:focus, QTre
 QListView::indicator:unchecked:hover,
 QListView::indicator:unchecked:focus,
 QListView::indicator:unchecked:pressed,
-QTableView::indicator:unchecked:hover,
+/*QTableView::indicator:unchecked:hover,
 QTableView::indicator:unchecked:focus,
-QTableView::indicator:unchecked:pressed,
+QTableView::indicator:unchecked:pressed,*/
 QColumnView::indicator:unchecked:hover,
 QColumnView::indicator:unchecked:focus,
 QColumnView::indicator:unchecked:pressed {
@@ -1854,7 +1854,7 @@ QColumnView::indicator:unchecked:pressed {
 
 QTreeView::indicator:indeterminate,
 QListView::indicator:indeterminate,
-QTableView::indicator:indeterminate,
+/*QTableView::indicator:indeterminate,*/
 QColumnView::indicator:indeterminate {
   image: url(":/qss_icons/dark/rc/checkbox_indeterminate.png");
 }
@@ -1863,9 +1863,9 @@ QTreeView::indicator:indeterminate:hover, QTreeView::indicator:indeterminate:foc
 QListView::indicator:indeterminate:hover,
 QListView::indicator:indeterminate:focus,
 QListView::indicator:indeterminate:pressed,
-QTableView::indicator:indeterminate:hover,
+/*QTableView::indicator:indeterminate:hover,
 QTableView::indicator:indeterminate:focus,
-QTableView::indicator:indeterminate:pressed,
+QTableView::indicator:indeterminate:pressed,*/
 QColumnView::indicator:indeterminate:hover,
 QColumnView::indicator:indeterminate:focus,
 QColumnView::indicator:indeterminate:pressed {
@@ -1953,7 +1953,7 @@ QHeaderView {
   border: 0px transparent #455364;
   padding: 0;
   margin: 0;
-  border-radius: 0;
+  border-radius: 1px;
 }
 
 QHeaderView:disabled {

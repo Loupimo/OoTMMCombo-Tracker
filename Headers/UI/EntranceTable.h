@@ -1,10 +1,9 @@
 ﻿#pragma once
 
 #include <QWidget>
-#include <QPainter>
-#include <QHeaderView>
 #include <QTableView>
 #include <QStandardItemModel>
+#include <QLineEdit>
 #include <QSortFilterProxyModel>
 #include "UI/SceneEntrance.h"
 
@@ -67,7 +66,7 @@ public:
     QString formatScene(uint32_t sceneID) const;
     
     void sort(int column, Qt::SortOrder order) override;
-    QColor rowStatusColor(int rowIndex) const;
+    QColor rowStatusColor(GlobalEntranceRow row) const;
 
 private:
 
@@ -81,6 +80,7 @@ private:
 
     std::vector<GlobalEntranceRow> m_rows;
     std::vector<QColor> m_rowColors;
+    std::vector<QColor> m_rowStatusColors;
 
 };
 
@@ -89,14 +89,16 @@ private:
 // Widget Class
 // ==============================
 
-class EntranceTableView : public QTableView
+class EntranceTableView : public QWidget
 {
     Q_OBJECT
 
 public:
 
     int Game;
+    QTableView* Table;
     GlobalEntranceTableModel * Model;
+    QSortFilterProxyModel* Proxy;
     const char* TabName;                // The tab name. Should correspond to the game it refers to.
 
 
