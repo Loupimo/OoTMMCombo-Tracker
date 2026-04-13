@@ -4,6 +4,7 @@ commonScenes = ["FAIRY_FOUNTAIN", "GROTTOS", "GORON_SHOP", "LOST_WOODS", "SHOOTI
 commonID = ["SONG_STORMS"]
 excludeSpoiler = ["INSIDE_EGGS", "MARKET", "MOUNTAIN_VILLAGE", "TWIN_ISLANDS", "MOON", "GORON_SHRINE", "MILK_ROAD", "GORON_VILLAGE_WINTER", "ROMANI_RANCH"]
 
+
 def wrap_cpp_file(outfile, content, game):
     if (game == "OOT_"):
         pragmaGame = "OOT"
@@ -172,7 +173,12 @@ def parse_entrance(input_file, output_file_h, output_file_cpp, output_filemeta, 
         filereader = pd.read_csv(infile, delimiter=";", header=0, keep_default_na=False)
         isFirst = True
         scene_entr_arr = {}
+        scene_regions = {}
         objectstrings = []
+        if prefix == "OoT":
+            region_prefix = "OoTRegions::"
+        else:
+            region_prefix = "MMRegions::"
         defines = ""
         for i, row in filereader.iterrows():
             objectstr = ""
@@ -181,6 +187,7 @@ def parse_entrance(input_file, output_file_h, output_file_cpp, output_filemeta, 
             else:
                 isFirst = False
 
+            regionstr = row["Region_Name"]
             entrance_code = row["Code_Name"]
             fromentridstr = row["From_ID"]
             toentridstr = row["To_ID"]
@@ -206,6 +213,7 @@ def parse_entrance(input_file, output_file_h, output_file_cpp, output_filemeta, 
 
             if scene_entr_arr.__contains__(tosceneid) == False:
                 scene_entr_arr[tosceneid] = []
+                scene_regions[tosceneid] = region_prefix + regionstr
             
             scene_entr_arr[tosceneid].append(entrance_code)
 
@@ -229,7 +237,7 @@ def parse_entrance(input_file, output_file_h, output_file_cpp, output_filemeta, 
         i = 0
         num_of_scenes = len (scene_entr_arr)
         for scene in scene_entr_arr:
-            scene_str = "\t{\n\t\t" + str(scene) + ",\n\t\t{\n\t\t\t" + str(scene) + ",\n\t\t\t{\n"
+            scene_str = "\t{\n\t\t" + str(scene) + ",\n\t\t{\n\t\t\t" + str(scene) + ", (uint8_t)" + scene_regions[scene] + ",\n\t\t\t{\n"
             for entr in scene_entr_arr[scene]:
                 scene_str += "\t\t\t\t{ " + str (entr) + ", { UINT32_MAX, UINT32_MAX } },\n"
             scene_str += "\t\t\t},\n\t\t\tNULL\n\t\t}\n"

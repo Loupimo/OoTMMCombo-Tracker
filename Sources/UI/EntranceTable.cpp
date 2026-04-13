@@ -49,6 +49,7 @@ void GlobalEntranceTableModel::setScenes(const std::map<uint32_t, SceneEntranceM
                 row.OutLink = link.OutLink;
                 row.InGame = link.InLinkGame;
                 row.OutGame = link.OutLinkGame;
+                row.RegionID = scene.RegionID;
 
                 row.SceneName = this->formatScene(sceneID);
                 row.EntranceName = this->formatEntrance(row.EntranceID);
@@ -342,6 +343,68 @@ QColor GlobalEntranceTableModel::rowColor(int rowIndex) const
 
 void GlobalEntranceTableModel::sort(int column, Qt::SortOrder order)
 {
+    emit layoutAboutToBeChanged();
+
+    std::stable_sort(
+        m_rows.begin(),
+        m_rows.end(),
+        [column, order](
+            const GlobalEntranceRow& a,
+            const GlobalEntranceRow& b)
+        {
+            // 1️⃣ Toujours grouper par Region
+
+            if (a.RegionID != b.RegionID)
+                return a.RegionID < b.RegionID;
+
+            // 2️⃣ Comparaison colonne
+
+            auto compareColumn =
+                [&](const GlobalEntranceRow& x,
+                    const GlobalEntranceRow& y)
+                {
+                    switch (column)
+                    {
+                        case 0:
+                            if (x.SceneID != y.SceneID)
+                                return QString::localeAwareCompare(x.SceneName, y.SceneName) < 0;
+
+                            return QString::localeAwareCompare(x.EntranceName, y.EntranceName) < 0;
+
+                        case 1:
+                            return QString::localeAwareCompare(x.EntranceName, y.EntranceName) < 0;
+
+                        case 2:
+                            if (x.InLink != y.InLink)
+                                return x.InLink < y.InLink;
+
+                            return x.EntranceID < y.EntranceID;
+
+                        case 3:
+                            if (x.OutLink != y.OutLink)
+                                return x.OutLink < y.OutLink;
+
+                            return x.EntranceID < y.EntranceID;
+
+                        default:
+                            return x.EntranceID < y.EntranceID;
+                    }
+                };
+
+                // 3️⃣ Asc / Desc correct
+
+            if (order == Qt::AscendingOrder)
+                return compareColumn(a, b);
+            else
+                return compareColumn(b, a);
+        });
+
+    rebuildRowColors();
+
+    emit layoutChanged();
+
+
+    /*
     beginResetModel();
 
     auto compAscending =
@@ -406,7 +469,7 @@ void GlobalEntranceTableModel::sort(int column, Qt::SortOrder order)
 
     rebuildRowColors();
 
-    endResetModel();
+    endResetModel();*/
 }
 
 

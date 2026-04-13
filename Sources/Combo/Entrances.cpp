@@ -407,6 +407,21 @@ bool EntranceHelper::IsSonataWoodfall(EntranceMessage& PrevMessage, EntranceMess
 }
 
 
+bool EntranceHelper::IsSpawn(EntranceMessage& CurrMessage)
+{
+    switch (CurrMessage.EntranceID)
+    {
+        case OOT_SPAWN_CHILD:
+        case OOT_SPAWN_ADULT:
+        {
+            return true;
+        }
+
+    }
+    return false;
+}
+
+
 bool EntranceHelper::IsSunSong(EntranceMessage& PrevMessage, EntranceMessage& CurrMessage)
 {
     switch (CurrMessage.GameID)
@@ -2062,24 +2077,209 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                 switch (Message.EntranceID)
                 {
                     case MM_LONE_PEAK_SHRINE_ENTR:
-                    {
+                    {   // Lone peak. Don't know why this is considered as a grotto...
+
                         Message.SceneID = MM_LONE_PEAK;
                         break;
                     }
 
-                    /*case MM_GROTTO_JP_CLIMB_RIGHT_ENTR:
-                    case MM_GROTTO_JP_CLIMB_LEFT_ENTR:
-                    {
-                        *SceneID = MM_GROTTO_DEKU_PALACE_CLIMB;
+                    case MM_GROTTO_GENERIC_FIELD_PILLAR_ENTR:
+                    {   // Termina pillar grotto entry
+
+                        Message.SceneID = MM_GROTTO_TERMINA_PILLAR;
+                        break;
+                    }
+
+                    case MM_GROTTO_GENERIC_GRASS_ENTR:
+                    {   // Termina tall grass grotto entry
+
+                        Message.SceneID = MM_GROTTO_TERMINA_TALL_GRASS;
+                        break;
+                    }
+
+                    case MM_GROTTO_GENERIC_PATH_SWAMP_ENTR:
+                    {   // Road to southern swamp open grotto entry
+
+                        Message.SceneID = MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;
+                        break;
+                    }
+
+                    case MM_GROTTO_GENERIC_WOODS_ENTR:
+                    {   // Woods of mystery open grotto entry
+
+                        Message.SceneID = MM_GROTTO_WOODS_OF_MYSTERY_OPEN;
+                        break;
+                    }
+
+                    case MM_GROTTO_GENERIC_SWAMP_ENTR:
+                    {   // Southern swamp open grotto entry
+
+                        Message.SceneID = MM_GROTTO_SOUTHERN_SWAMP_OPEN;
+                        break;
+                    }
+
+                    case MM_GROTTO_GENERIC_MOUNTAIN_VILLAGE_ENTR:
+                    {   // Mountain village open grotto entry
+
+                        Message.SceneID = MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;
+                        break;
+                    }
+
+                    case MM_GROTTO_GENERIC_TWIN_ISLANDS_ENTR:
+                    {   // Twin islands ramp grotto entry
+
+                        Message.SceneID = MM_GROTTO_TWIN_ISLANDS_RAMP;
+                        break;
+                    }
+
+                    case MM_GROTTO_GENERIC_PATH_SNOWHEAD_ENTR:
+                    {   // Path to snowhead grotto entry
+
+                        Message.SceneID = MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;
+                        break;
+                    }
+
+                    case MM_GROTTO_GENERIC_GREAT_BAY_COAST_ENTR:
+                    {   // Great bay coast open grotto
+
+                        Message.SceneID = MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;
+                        break;
+                    }
+
+                    case MM_GROTTO_GENERIC_ZORA_CAPE_ENTR:
+                    {   // Zora cape grotto entry
+
+                        Message.SceneID = MM_GROTTO_ZORA_CAPE_GENERIC;
+                        break;
+                    }
+
+                    case MM_GROTTO_GENERIC_PATH_IKANA_ENTR:
+                    {   // Road to ikana grotto entry
+
+                        Message.SceneID = MM_GROTTO_IKANA_ROAD_GENERIC;
+                        break;
+                    }
+
+                    case MM_GROTTO_GENERIC_GRAVEYARD_ENTR:
+                    {   // Ikana graveyard grotto entry
+
+                        Message.SceneID = MM_GROTTO_IKANA_GRAVEYARD_GENERIC;
+                        break;
+                    }
+
+                    case MM_GROTTO_GENERIC_VALLEY_ENTR:
+                    {   // Ikana canyon open grotto entry
+
+                        Message.SceneID = MM_GROTTO_IKANA_VALLEY_OPEN;
+                        break;
+                    }
+
+                    case MM_GROTTO_COW_FIELD_ENTR:
+                    {   // Termina field cow grotto entry
+
+                        Message.SceneID = MM_GROTTO_TERMINA_COW;
+                        break;
+                    }
+
+                    case MM_GROTTO_COW_COAST_ENTR:
+                    {   // great bay coast cow grotto entry
+
+                        Message.SceneID = MM_GROTTO_GREAT_BAY_COAST_COW;
+                        break;
+                    }
+
+                    case MM_GROTTO_GOSSIPS_OCEAN_ENTR:
+                    {   // Termina ocean gossip grotto entry
+
+                        Message.SceneID = MM_GROTTO_TERMINA_OCEAN_GOSSIP;
+                        break;
+                    }
+
+                    case MM_GROTTO_GOSSIPS_SWAMP_ENTR:
+                    {   // Termina swamp gossip grotto entry
+
+                        Message.SceneID = MM_GROTTO_TERMINA_SWAMP_GOSSIP;
+                        break;
+                    }
+
+                    case MM_GROTTO_GOSSIPS_CANYON_ENTR:
+                    {   // Termina canyon gossip grotto entry
+
+                        Message.SceneID = MM_GROTTO_TERMINA_CANYON_GOSSIP;
+                        break;
+                    }
+
+                    case MM_GROTTO_GOSSIPS_MOUNTAIN_ENTR:
+                    {   // Termina mountain gossip grotto entry
+
+                        Message.SceneID = MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP;
+                        break;
+                    }
+
+                    case MM_GROTTO_HOT_WATER_ENTR:
+                    {   // Twin islands frozen grotto entry
+
+                        Message.SceneID = MM_GROTTO_TWIN_ISLANDS_FROZEN;
                         break;
                     }
 
                     case MM_GROTTO_JP_LINE_START_ENTR:
                     case MM_GROTTO_JP_LINE_END_ENTR:
-                    {
-                        *SceneID = MM_GROTTO_DEKU_PALACE_GENERIC;
-                        * break;
-                    }*/
+                    {   // MM JP layout deku palace line grotto entry
+
+                        Message.SceneID = MM_GROTTO_DEKU_PALACE_GENERIC;
+                        break;
+                    }
+
+                    case MM_GROTTO_DODONGO_ENTR:
+                    {   // Termina dodongo grotto entry
+
+                        Message.SceneID = MM_GROTTO_TERMINA_DODONGO;
+                        break;
+                    }
+
+                    case MM_GROTTO_JP_CLIMB_LEFT_ENTR:
+                    case MM_GROTTO_JP_CLIMB_RIGHT_ENTR:
+                    {   // MM JP layout deku palace climb grotto entry
+
+                        Message.SceneID = MM_GROTTO_DEKU_PALACE_CLIMB;
+                        break;
+                    }
+
+                    case MM_GROTTO_SCRUB_ENTR:
+                    {   // Termina field scrub grotto entry
+
+                        Message.SceneID = MM_GROTTO_TERMINA_SCRUB;
+                        break;
+                    }
+                    
+                    case MM_GROTTO_BIO_BABA_ENTR:
+                    {   // Termina bio baba grotto entry
+
+                        Message.SceneID = MM_GROTTO_TERMINA_BIO_BABA;
+                        break;
+                    }
+
+                    case MM_GROTTO_BEAN_ENTR:
+                    {   // Deku palace beans grotto entry
+
+                        Message.SceneID = MM_GROTTO_DEKU_PALACE_BEANS;
+                        break;
+                    }
+
+                    case MM_GROTTO_PEAHAT_ENTR:
+                    {   // Termina peahat grotto entry
+
+                        Message.SceneID = MM_GROTTO_TERMINA_PEAHAT;
+                        break;
+                    }
+
+                    case MM_GROTTO_DEKU_PLAYGROUND_ENTR:
+                    {   // Clock town deku playground grotto entry
+
+                        Message.SceneID = MM_DEKU_PLAYGROUND;
+                        break;
+                    }
                 }
 
                 break;
@@ -2318,7 +2518,8 @@ void EntranceHelper::ParseIncomingMessage(EntranceMessage& Message)
             this->IsSongOfDoubleTime(this->OutMessage, Message) ||
             this->IsSongOfTime(this->OutMessage, Message) ||
             this->IsSunSong(this->OutMessage, Message) ||
-            this->IsSonataWoodfall(this->OutMessage, Message))
+            this->IsSonataWoodfall(this->OutMessage, Message) ||
+            this->IsSpawn(Message))
         {   
             this->IsEntranceTouched = false;
             return;

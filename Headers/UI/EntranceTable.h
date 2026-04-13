@@ -20,6 +20,7 @@ typedef struct GlobalEntranceRow
     uint32_t OutLink = UINT32_MAX;
     uint8_t InGame = NO_GAME;
     uint8_t OutGame = NO_GAME;
+    uint8_t RegionID = UINT8_MAX;
 
 
     QString SceneName;

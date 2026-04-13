@@ -23,7 +23,8 @@ enum class OoTRegions
 	Gerudo_Valley,
 	Gerudo_Fortress,
 	Haunted_Wasteland,
-	Desert_Colossus
+	Desert_Colossus,
+	Songs
 };
 
 enum class MMRegions
@@ -53,7 +54,8 @@ enum class MMRegions
 	Graveyard,
 	Ikana_Canyon,
 	Stone_Tower,
-	Moon
+	Moon,
+	Songs
 };
 
 typedef struct RegionMetaInfo

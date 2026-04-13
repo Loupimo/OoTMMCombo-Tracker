@@ -6,7 +6,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_BENEATH_THE_GRAVEYARD,
 		{
-			MM_BENEATH_THE_GRAVEYARD,
+			MM_BENEATH_THE_GRAVEYARD, (uint8_t)MMRegions::Graveyard,
 			{
 				{ MM_GRAVE_NIGHT1_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_GRAVE_NIGHT2_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -17,7 +17,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_BENEATH_THE_WELL,
 		{
-			MM_BENEATH_THE_WELL,
+			MM_BENEATH_THE_WELL, (uint8_t)MMRegions::Ikana_Canyon,
 			{
 				{ MM_BENEATH_THE_WELL_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_BENEATH_THE_WELL_BACK_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -31,7 +31,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_BLACKSMITH,
 		{
-			MM_BLACKSMITH,
+			MM_BLACKSMITH, (uint8_t)MMRegions::Mountain_Village,
 			{
 				{ MM_BLACKSMITH_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -41,7 +41,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_BOMB_SHOP,
 		{
-			MM_BOMB_SHOP,
+			MM_BOMB_SHOP, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_BOMB_SHOP_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -51,7 +51,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_CASTLE_IKANA,
 		{
-			MM_CASTLE_IKANA,
+			MM_CASTLE_IKANA, (uint8_t)MMRegions::Ikana_Canyon,
 			{
 				{ MM_IKANA_CASTLE_EXTERIOR_FROM_WELL_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_IKANA_CASTLE_GARDENS_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -65,7 +65,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_CLOCK_TOWER_INTERIOR,
 		{
-			MM_CLOCK_TOWER_INTERIOR,
+			MM_CLOCK_TOWER_INTERIOR, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_CLOCK_TOWER_FROM_CLOCK_TOWN_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -75,7 +75,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_CLOCK_TOWER_ROOFTOP,
 		{
-			MM_CLOCK_TOWER_ROOFTOP,
+			MM_CLOCK_TOWER_ROOFTOP, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_CLOCK_TOWER_ROOF_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_ROOFTOP_TO_MOON_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -86,7 +86,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_CLOCK_TOWN_EAST,
 		{
-			MM_CLOCK_TOWN_EAST,
+			MM_CLOCK_TOWN_EAST, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_CLOCK_TOWN_EAST_FROM_FIELD_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_CLOCK_TOWN_EAST_FROM_SOUTH_BOTTOM_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -107,7 +107,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_CLOCK_TOWN_NORTH,
 		{
-			MM_CLOCK_TOWN_NORTH,
+			MM_CLOCK_TOWN_NORTH, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_CLOCK_TOWN_NORTH_FROM_FIELD_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_CLOCK_TOWN_NORTH_FROM_EAST_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -121,7 +121,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_CLOCK_TOWN_SOUTH,
 		{
-			MM_CLOCK_TOWN_SOUTH,
+			MM_CLOCK_TOWN_SOUTH, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_CLOCK_TOWN_FROM_CLOCK_TOWER_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_CLOCK_TOWN_SOUTH_FROM_FIELD_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -140,7 +140,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_CLOCK_TOWN_WEST,
 		{
-			MM_CLOCK_TOWN_WEST,
+			MM_CLOCK_TOWN_WEST, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_CLOCK_TOWN_WEST_FROM_FIELD_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_CLOCK_TOWN_WEST_FROM_SOUTH_BOTTOM_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -158,7 +158,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_CUCCO_SHACK,
 		{
-			MM_CUCCO_SHACK,
+			MM_CUCCO_SHACK, (uint8_t)MMRegions::Ranch,
 			{
 				{ MM_CUCCO_SHACK_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -168,7 +168,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_CURIOSITY_SHOP,
 		{
-			MM_CURIOSITY_SHOP,
+			MM_CURIOSITY_SHOP, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_CURIOSITY_SHOP_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_KAFEI_HIDEOUT_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -179,7 +179,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_DAMPE_HOUSE,
 		{
-			MM_DAMPE_HOUSE,
+			MM_DAMPE_HOUSE, (uint8_t)MMRegions::Graveyard,
 			{
 				{ MM_GRAVE_NIGHT3_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_WALLMASTER_DAMPE_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -190,7 +190,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_DEKU_KING_CHAMBER,
 		{
-			MM_DEKU_KING_CHAMBER,
+			MM_DEKU_KING_CHAMBER, (uint8_t)MMRegions::Deku_Palace,
 			{
 				{ MM_DEKU_PALACE_THRONE_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_DEKU_PALACE_THRONE_CAGE_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -201,7 +201,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_DEKU_PALACE,
 		{
-			MM_DEKU_PALACE,
+			MM_DEKU_PALACE, (uint8_t)MMRegions::Deku_Palace,
 			{
 				{ MM_DEKU_PALACE_MAIN_ENTRANCE_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_DEKU_PALACE_CAUGHT, { UINT32_MAX, UINT32_MAX } },
@@ -222,7 +222,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_DEKU_PLAYGROUND,
 		{
-			MM_DEKU_PLAYGROUND,
+			MM_DEKU_PLAYGROUND, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_GROTTO_DEKU_PLAYGROUND_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -232,7 +232,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_DEKU_SHRINE,
 		{
-			MM_DEKU_SHRINE,
+			MM_DEKU_SHRINE, (uint8_t)MMRegions::Deku_Palace,
 			{
 				{ MM_DEKU_SHRINE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -242,7 +242,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_DOG_RACETRACK,
 		{
-			MM_DOG_RACETRACK,
+			MM_DOG_RACETRACK, (uint8_t)MMRegions::Ranch,
 			{
 				{ MM_DOGGY_RACETRACK_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -252,7 +252,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_EXTRA,
 		{
-			MM_EXTRA,
+			MM_EXTRA, (uint8_t)MMRegions::None,
 			{
 				{ MM_CLOCK_TOWN_FROM_SONG_OF_TIME_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_CLOCK_TOWER_MOON_CRASH_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -264,7 +264,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_FAIRY_FOUNTAIN,
 		{
-			MM_FAIRY_FOUNTAIN,
+			MM_FAIRY_FOUNTAIN, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_FAIRY_FOUNTAIN_TOWN_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_FAIRY_FOUNTAIN_WOODFALL_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -278,7 +278,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_FISHERMAN_HUT,
 		{
-			MM_FISHERMAN_HUT,
+			MM_FISHERMAN_HUT, (uint8_t)MMRegions::Great_Bay_Coast,
 			{
 				{ MM_FISHER_HUT_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -288,7 +288,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_GHOST_HUT,
 		{
-			MM_GHOST_HUT,
+			MM_GHOST_HUT, (uint8_t)MMRegions::Ikana_Canyon,
 			{
 				{ MM_GHOST_HUT_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -298,7 +298,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_GORMAN_TRACK,
 		{
-			MM_GORMAN_TRACK,
+			MM_GORMAN_TRACK, (uint8_t)MMRegions::Milk_Road,
 			{
 				{ MM_GORMAN_TRACK_FROM_MILK_ROAD_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_GORMAN_TRACK_UNK2_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -313,7 +313,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_GORON_GRAVEYARD,
 		{
-			MM_GORON_GRAVEYARD,
+			MM_GORON_GRAVEYARD, (uint8_t)MMRegions::Twin_Islands,
 			{
 				{ MM_GORON_GRAVEYARD_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -323,7 +323,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_GORON_RACETRACK,
 		{
-			MM_GORON_RACETRACK,
+			MM_GORON_RACETRACK, (uint8_t)MMRegions::Twin_Islands,
 			{
 				{ MM_GORON_RACETRACK_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_GORON_RACETRACK_ALT_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -334,7 +334,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_GORON_SHOP,
 		{
-			MM_GORON_SHOP,
+			MM_GORON_SHOP, (uint8_t)MMRegions::Goron_Village,
 			{
 				{ MM_GORON_SHOP_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -344,7 +344,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_GORON_SHRINE,
 		{
-			MM_GORON_SHRINE,
+			MM_GORON_SHRINE, (uint8_t)MMRegions::Goron_Village,
 			{
 				{ MM_GORON_SHRINE_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_GORON_SHRINE_FROM_SHOP_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -355,7 +355,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_GORON_VILLAGE,
 		{
-			MM_GORON_VILLAGE,
+			MM_GORON_VILLAGE, (uint8_t)MMRegions::Goron_Village,
 			{
 				{ MM_GORON_VILLAGE_SPRING_FROM_TWIN_ISLANDS_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_GORON_VILLAGE_SPRING_FROM_GORON_SHRINE_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -370,7 +370,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_GREAT_BAY_COAST,
 		{
-			MM_GREAT_BAY_COAST,
+			MM_GREAT_BAY_COAST, (uint8_t)MMRegions::Great_Bay_Coast,
 			{
 				{ MM_GROTTO_EXIT_GENERIC_GREAT_BAY_COAST, { UINT32_MAX, UINT32_MAX } },
 				{ MM_GROTTO_EXIT_COW_COAST, { UINT32_MAX, UINT32_MAX } },
@@ -394,42 +394,285 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 		}
 	},
 	{
-		MM_GROTTOS,
+		MM_GROTTO_TERMINA_PILLAR,
 		{
-			MM_GROTTOS,
+			MM_GROTTO_TERMINA_PILLAR, (uint8_t)MMRegions::Termina,
 			{
 				{ MM_GROTTO_GENERIC_FIELD_PILLAR_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_TERMINA_TALL_GRASS,
+		{
+			MM_GROTTO_TERMINA_TALL_GRASS, (uint8_t)MMRegions::Termina,
+			{
 				{ MM_GROTTO_GENERIC_GRASS_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN,
+		{
+			MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN, (uint8_t)MMRegions::Southern_Swamp_Road,
+			{
 				{ MM_GROTTO_GENERIC_PATH_SWAMP_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_WOODS_OF_MYSTERY_OPEN,
+		{
+			MM_GROTTO_WOODS_OF_MYSTERY_OPEN, (uint8_t)MMRegions::Southern_Swamp,
+			{
 				{ MM_GROTTO_GENERIC_WOODS_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_SOUTHERN_SWAMP_OPEN,
+		{
+			MM_GROTTO_SOUTHERN_SWAMP_OPEN, (uint8_t)MMRegions::Southern_Swamp,
+			{
 				{ MM_GROTTO_GENERIC_SWAMP_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC,
+		{
+			MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC, (uint8_t)MMRegions::Mountain_Village,
+			{
 				{ MM_GROTTO_GENERIC_MOUNTAIN_VILLAGE_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_TWIN_ISLANDS_RAMP,
+		{
+			MM_GROTTO_TWIN_ISLANDS_RAMP, (uint8_t)MMRegions::Twin_Islands,
+			{
 				{ MM_GROTTO_GENERIC_TWIN_ISLANDS_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC,
+		{
+			MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC, (uint8_t)MMRegions::Snowhead,
+			{
 				{ MM_GROTTO_GENERIC_PATH_SNOWHEAD_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_GREAT_BAY_COAST_FISHERMAN,
+		{
+			MM_GROTTO_GREAT_BAY_COAST_FISHERMAN, (uint8_t)MMRegions::Great_Bay_Coast,
+			{
 				{ MM_GROTTO_GENERIC_GREAT_BAY_COAST_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_ZORA_CAPE_GENERIC,
+		{
+			MM_GROTTO_ZORA_CAPE_GENERIC, (uint8_t)MMRegions::Zora_Cape,
+			{
 				{ MM_GROTTO_GENERIC_ZORA_CAPE_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_IKANA_ROAD_GENERIC,
+		{
+			MM_GROTTO_IKANA_ROAD_GENERIC, (uint8_t)MMRegions::Ikana_Canyon,
+			{
 				{ MM_GROTTO_GENERIC_PATH_IKANA_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_IKANA_GRAVEYARD_GENERIC,
+		{
+			MM_GROTTO_IKANA_GRAVEYARD_GENERIC, (uint8_t)MMRegions::Graveyard,
+			{
 				{ MM_GROTTO_GENERIC_GRAVEYARD_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_IKANA_VALLEY_OPEN,
+		{
+			MM_GROTTO_IKANA_VALLEY_OPEN, (uint8_t)MMRegions::Ikana_Canyon,
+			{
 				{ MM_GROTTO_GENERIC_VALLEY_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_TERMINA_COW,
+		{
+			MM_GROTTO_TERMINA_COW, (uint8_t)MMRegions::Termina,
+			{
 				{ MM_GROTTO_COW_FIELD_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_GREAT_BAY_COAST_COW,
+		{
+			MM_GROTTO_GREAT_BAY_COAST_COW, (uint8_t)MMRegions::Great_Bay_Coast,
+			{
 				{ MM_GROTTO_COW_COAST_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_TERMINA_OCEAN_GOSSIP,
+		{
+			MM_GROTTO_TERMINA_OCEAN_GOSSIP, (uint8_t)MMRegions::Termina,
+			{
 				{ MM_GROTTO_GOSSIPS_OCEAN_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_TERMINA_SWAMP_GOSSIP,
+		{
+			MM_GROTTO_TERMINA_SWAMP_GOSSIP, (uint8_t)MMRegions::Termina,
+			{
 				{ MM_GROTTO_GOSSIPS_SWAMP_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_TERMINA_CANYON_GOSSIP,
+		{
+			MM_GROTTO_TERMINA_CANYON_GOSSIP, (uint8_t)MMRegions::Termina,
+			{
 				{ MM_GROTTO_GOSSIPS_CANYON_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP,
+		{
+			MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP, (uint8_t)MMRegions::Termina,
+			{
 				{ MM_GROTTO_GOSSIPS_MOUNTAIN_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTOS,
+		{
+			MM_GROTTOS, (uint8_t)MMRegions::None,
+			{
 				{ MM_GROTTO_TYPE_GENERIC_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ MM_GROTTO_HOT_WATER_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ MM_GROTTO_JP_LINE_END_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ MM_GROTTO_DODONGO_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ MM_GROTTO_JP_CLIMB_RIGHT_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ MM_GROTTO_SCRUB_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_GROTTO_TYPE_COW_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ MM_GROTTO_BIO_BABA_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ MM_GROTTO_BEAN_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ MM_GROTTO_PEAHAT_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ MM_GROTTO_JP_LINE_START_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ MM_GROTTO_JP_CLIMB_LEFT_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_INTERNAL_EXIT_GROTTO_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_TWIN_ISLANDS_FROZEN,
+		{
+			MM_GROTTO_TWIN_ISLANDS_FROZEN, (uint8_t)MMRegions::Twin_Islands,
+			{
+				{ MM_GROTTO_HOT_WATER_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_DEKU_PALACE_GENERIC,
+		{
+			MM_GROTTO_DEKU_PALACE_GENERIC, (uint8_t)MMRegions::Deku_Palace,
+			{
+				{ MM_GROTTO_JP_LINE_END_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ MM_GROTTO_JP_LINE_START_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_TERMINA_DODONGO,
+		{
+			MM_GROTTO_TERMINA_DODONGO, (uint8_t)MMRegions::Termina,
+			{
+				{ MM_GROTTO_DODONGO_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_DEKU_PALACE_CLIMB,
+		{
+			MM_GROTTO_DEKU_PALACE_CLIMB, (uint8_t)MMRegions::Deku_Palace,
+			{
+				{ MM_GROTTO_JP_CLIMB_RIGHT_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ MM_GROTTO_JP_CLIMB_LEFT_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_TERMINA_SCRUB,
+		{
+			MM_GROTTO_TERMINA_SCRUB, (uint8_t)MMRegions::Termina,
+			{
+				{ MM_GROTTO_SCRUB_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_TERMINA_BIO_BABA,
+		{
+			MM_GROTTO_TERMINA_BIO_BABA, (uint8_t)MMRegions::Termina,
+			{
+				{ MM_GROTTO_BIO_BABA_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_DEKU_PALACE_BEANS,
+		{
+			MM_GROTTO_DEKU_PALACE_BEANS, (uint8_t)MMRegions::Deku_Palace,
+			{
+				{ MM_GROTTO_BEAN_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_GROTTO_TERMINA_PEAHAT,
+		{
+			MM_GROTTO_TERMINA_PEAHAT, (uint8_t)MMRegions::Termina,
+			{
+				{ MM_GROTTO_PEAHAT_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
 			NULL
 		}
@@ -437,7 +680,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_HONEY_DARLING,
 		{
-			MM_HONEY_DARLING,
+			MM_HONEY_DARLING, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_HONEY_AND_DARLING_GAME_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -447,7 +690,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_IKANA_CANYON,
 		{
-			MM_IKANA_CANYON,
+			MM_IKANA_CANYON, (uint8_t)MMRegions::Ikana_Canyon,
 			{
 				{ MM_GROTTO_EXIT_GENERIC_VALLEY, { UINT32_MAX, UINT32_MAX } },
 				{ MM_IKANA_VALLEY_FROM_ROAD_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -470,7 +713,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_IKANA_GRAVEYARD,
 		{
-			MM_IKANA_GRAVEYARD,
+			MM_IKANA_GRAVEYARD, (uint8_t)MMRegions::Graveyard,
 			{
 				{ MM_GROTTO_EXIT_GENERIC_GRAVEYARD, { UINT32_MAX, UINT32_MAX } },
 				{ MM_IKANA_GRAVEYARD_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -485,7 +728,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_INSIDE_CASTLE_IKANA,
 		{
-			MM_INSIDE_CASTLE_IKANA,
+			MM_INSIDE_CASTLE_IKANA, (uint8_t)MMRegions::Ikana_Canyon,
 			{
 				{ MM_IKANA_CASTLE_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_IKANA_CASTLE_INTERIOR_KEG_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -498,7 +741,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_LABORATORY,
 		{
-			MM_LABORATORY,
+			MM_LABORATORY, (uint8_t)MMRegions::Great_Bay_Coast,
 			{
 				{ MM_LABORATORY_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -508,7 +751,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_LAIR_GOHT,
 		{
-			MM_LAIR_GOHT,
+			MM_LAIR_GOHT, (uint8_t)MMRegions::Woodfall,
 			{
 				{ MM_BOSS_TEMPLE_WOODFALL_WARP_OUT, { UINT32_MAX, UINT32_MAX } },
 				{ MM_BOSS_TEMPLE_SNOWHEAD_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -520,7 +763,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_LAIR_GYORG,
 		{
-			MM_LAIR_GYORG,
+			MM_LAIR_GYORG, (uint8_t)MMRegions::Great_Bay_Coast,
 			{
 				{ MM_BOSS_TEMPLE_GREAT_BAY_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_BOSS_TEMPLE_GREAT_BAY_WARP_OUT, { UINT32_MAX, UINT32_MAX } },
@@ -531,7 +774,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_LAIR_IKANA,
 		{
-			MM_LAIR_IKANA,
+			MM_LAIR_IKANA, (uint8_t)MMRegions::Ikana_Canyon,
 			{
 				{ MM_BOSS_IKANA_CASTLE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -539,9 +782,19 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 		}
 	},
 	{
+		MM_LAIR_MAJORA,
+		{
+			MM_LAIR_MAJORA, (uint8_t)MMRegions::Moon,
+			{
+				{ MM_MAJORA_LAIR_FROM_MOON_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
 		MM_LAIR_ODOLWA,
 		{
-			MM_LAIR_ODOLWA,
+			MM_LAIR_ODOLWA, (uint8_t)MMRegions::Woodfall,
 			{
 				{ MM_BOSS_TEMPLE_WOODFALL_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -551,7 +804,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_LAIR_TWINMOLD,
 		{
-			MM_LAIR_TWINMOLD,
+			MM_LAIR_TWINMOLD, (uint8_t)MMRegions::Stone_Tower,
 			{
 				{ MM_BOSS_TEMPLE_STONE_TOWER_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_BOSS_TEMPLE_STONE_TOWER_INVERTED_WARP_OUT, { UINT32_MAX, UINT32_MAX } },
@@ -562,7 +815,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_LAUNDRY_POOL,
 		{
-			MM_LAUNDRY_POOL,
+			MM_LAUNDRY_POOL, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_LAUNDRY_POOL_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_LAUNDRY_POOL_FROM_KAFEI_HIDEOUT_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -573,7 +826,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_LONE_PEAK,
 		{
-			MM_LONE_PEAK,
+			MM_LONE_PEAK, (uint8_t)MMRegions::Goron_Village,
 			{
 				{ MM_LONE_PEAK_SHRINE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -583,7 +836,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_LOST_WOODS,
 		{
-			MM_LOST_WOODS,
+			MM_LOST_WOODS, (uint8_t)MMRegions::Southern_Swamp,
 			{
 				{ MM_LOST_WOODS_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -593,7 +846,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_LOTTERY,
 		{
-			MM_LOTTERY,
+			MM_LOTTERY, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_LOTTERY_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -603,7 +856,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_MAYOR_HOUSE,
 		{
-			MM_MAYOR_HOUSE,
+			MM_MAYOR_HOUSE, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_MAYORS_OFFICE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -613,7 +866,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_MILK_BAR,
 		{
-			MM_MILK_BAR,
+			MM_MILK_BAR, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_MILK_BAR_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -623,7 +876,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_MILK_ROAD,
 		{
-			MM_MILK_ROAD,
+			MM_MILK_ROAD, (uint8_t)MMRegions::Milk_Road,
 			{
 				{ MM_MILK_ROAD_FROM_FIELD_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_MILK_ROAD_FROM_ROMANI_RANCH_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -639,7 +892,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_MOON,
 		{
-			MM_MOON,
+			MM_MOON, (uint8_t)MMRegions::Moon,
 			{
 				{ MM_MOON_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_MOON_TO_MOON_DEKU_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -652,9 +905,55 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 		}
 	},
 	{
+		MM_MOON_DEKU,
+		{
+			MM_MOON_DEKU, (uint8_t)MMRegions::Moon,
+			{
+				{ MM_MOON_DEKU_FROM_MOON_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ MM_MOON_FROM_MOON_DEKU_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_MOON_GORON,
+		{
+			MM_MOON_GORON, (uint8_t)MMRegions::Moon,
+			{
+				{ MM_MOON_GORON_FROM_MOON_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ MM_MOON_FROM_MOON_GORON_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_MOON_LINK,
+		{
+			MM_MOON_LINK, (uint8_t)MMRegions::Moon,
+			{
+				{ MM_MOON_LINK_FROM_MOON_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ MM_MOON_FROM_MOON_LINK_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_MOON_ZORA,
+		{
+			MM_MOON_ZORA, (uint8_t)MMRegions::Moon,
+			{
+				{ MM_MOON_ZORA_FROM_WRONG_PIPE_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ MM_MOON_ZORA_WRONG_PIPE_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ MM_MOON_ZORA_FROM_MOON_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ MM_MOON_FROM_MOON_ZORA_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
 		MM_MOUNTAIN_VILLAGE,
 		{
-			MM_MOUNTAIN_VILLAGE,
+			MM_MOUNTAIN_VILLAGE, (uint8_t)MMRegions::Mountain_Village,
 			{
 				{ MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE, { UINT32_MAX, UINT32_MAX } },
 				{ MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE_WINTER, { UINT32_MAX, UINT32_MAX } },
@@ -679,7 +978,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_MUSIC_BOX_HOUSE,
 		{
-			MM_MUSIC_BOX_HOUSE,
+			MM_MUSIC_BOX_HOUSE, (uint8_t)MMRegions::Ikana_Canyon,
 			{
 				{ MM_MUSIC_BOX_HOUSE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -689,7 +988,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_OBSERVATORY,
 		{
-			MM_OBSERVATORY,
+			MM_OBSERVATORY, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_ASTRAL_OBSERVATORY_FROM_CLOCK_TOWN_EAST_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_ASTRAL_OBSERVATORY_FROM_FIELD_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -700,7 +999,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_OWLS,
 		{
-			MM_OWLS,
+			MM_OWLS, (uint8_t)MMRegions::Songs,
 			{
 				{ MM_OWL_SOUTHERN_SWAMP_CHOICE, { UINT32_MAX, UINT32_MAX } },
 				{ MM_OWL_IKANA_CANYON_CHOICE, { UINT32_MAX, UINT32_MAX } },
@@ -719,7 +1018,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_PATH_MOUNTAIN_VILLAGE,
 		{
-			MM_PATH_MOUNTAIN_VILLAGE,
+			MM_PATH_MOUNTAIN_VILLAGE, (uint8_t)MMRegions::Mountain_Village,
 			{
 				{ MM_MOUNTAIN_VILLAGE_PATH_FROM_TERMINA_FIELD_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_PATH_FROM_MOUNTAIN_VILLAGE_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -730,7 +1029,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_PATH_SNOWHEAD,
 		{
-			MM_PATH_SNOWHEAD,
+			MM_PATH_SNOWHEAD, (uint8_t)MMRegions::Snowhead,
 			{
 				{ MM_GROTTO_EXIT_GENERIC_PATH_SNOWHEAD, { UINT32_MAX, UINT32_MAX } },
 				{ MM_SNOWHEAD_PATH_FROM_MOUNTAIN_VILLAGE_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -742,7 +1041,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_PINNACLE_ROCK,
 		{
-			MM_PINNACLE_ROCK,
+			MM_PINNACLE_ROCK, (uint8_t)MMRegions::Great_Bay_Coast,
 			{
 				{ MM_PINNACLE_ROCK_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_VOID_PINNACLE_ROCK_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -754,7 +1053,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_PIRATE_FORTRESS_ENTRANCE,
 		{
-			MM_PIRATE_FORTRESS_ENTRANCE,
+			MM_PIRATE_FORTRESS_ENTRANCE, (uint8_t)MMRegions::Great_Bay_Coast,
 			{
 				{ MM_PIRATE_ENTRANCE_CAUGHT, { UINT32_MAX, UINT32_MAX } },
 				{ MM_PIRATE_FORTRESS_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -771,7 +1070,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_PIRATE_FORTRESS_EXTERIOR,
 		{
-			MM_PIRATE_FORTRESS_EXTERIOR,
+			MM_PIRATE_FORTRESS_EXTERIOR, (uint8_t)MMRegions::Great_Bay_Coast,
 			{
 				{ MM_PIRATE_FORTRESS_INTERIOR_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_PIRATE_EXTERIOR_FROM_HOOKSHOT_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -791,7 +1090,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_PIRATE_FORTRESS_INTERIOR,
 		{
-			MM_PIRATE_FORTRESS_INTERIOR,
+			MM_PIRATE_FORTRESS_INTERIOR, (uint8_t)MMRegions::Great_Bay_Coast,
 			{
 				{ MM_PIRATE_INTERIOR_FROM_HOOKSHOT_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_PIRATE_INTERIOR_FROM_HOOKSHOT_LOOKOUT_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -811,7 +1110,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_POST_OFFICE,
 		{
-			MM_POST_OFFICE,
+			MM_POST_OFFICE, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_POST_OFFICE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -821,7 +1120,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_POTION_SHOP,
 		{
-			MM_POTION_SHOP,
+			MM_POTION_SHOP, (uint8_t)MMRegions::Southern_Swamp,
 			{
 				{ MM_POTION_SHOP_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -831,7 +1130,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_RANCH_HOUSE_BARN,
 		{
-			MM_RANCH_HOUSE_BARN,
+			MM_RANCH_HOUSE_BARN, (uint8_t)MMRegions::Ranch,
 			{
 				{ MM_STABLES_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -841,7 +1140,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_ROAD_IKANA,
 		{
-			MM_ROAD_IKANA,
+			MM_ROAD_IKANA, (uint8_t)MMRegions::Ikana_Canyon,
 			{
 				{ MM_GROTTO_EXIT_GENERIC_PATH_IKANA, { UINT32_MAX, UINT32_MAX } },
 				{ MM_IKANA_ROAD_FROM_FIELD_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -854,7 +1153,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_ROAD_SOUTHERN_SWAMP,
 		{
-			MM_ROAD_SOUTHERN_SWAMP,
+			MM_ROAD_SOUTHERN_SWAMP, (uint8_t)MMRegions::Southern_Swamp_Road,
 			{
 				{ MM_GROTTO_EXIT_GENERIC_PATH_SWAMP, { UINT32_MAX, UINT32_MAX } },
 				{ MM_SWAMP_ROAD_FROM_FIELD_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -867,7 +1166,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_ROMANI_RANCH,
 		{
-			MM_ROMANI_RANCH,
+			MM_ROMANI_RANCH, (uint8_t)MMRegions::Ranch,
 			{
 				{ MM_ROMANI_RANCH_FROM_MILK_ROAD_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_ROMANI_RANCH_FROM_STABLES_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -881,7 +1180,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_ROMANI_RANCH_BARN,
 		{
-			MM_ROMANI_RANCH_BARN,
+			MM_ROMANI_RANCH_BARN, (uint8_t)MMRegions::Ranch,
 			{
 				{ MM_RANCH_HOUSE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -891,7 +1190,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_SAKON_HIDEOUT,
 		{
-			MM_SAKON_HIDEOUT,
+			MM_SAKON_HIDEOUT, (uint8_t)MMRegions::Ikana_Canyon,
 			{
 				{ MM_SAKON_HIDEOUT_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -899,19 +1198,9 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 		}
 	},
 	{
-		MM_SPRING_WATER_CAVE,
-		{
-			MM_SPRING_WATER_CAVE,
-			{
-				{ MM_IKANA_CAVERN_ENTR, { UINT32_MAX, UINT32_MAX } },
-			},
-			NULL
-		}
-	},
-	{
 		MM_SECRET_SHRINE,
 		{
-			MM_SECRET_SHRINE,
+			MM_SECRET_SHRINE, (uint8_t)MMRegions::Ikana_Canyon,
 			{
 				{ MM_SECRET_SHRINE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -921,7 +1210,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_SHOOTING_GALLERY,
 		{
-			MM_SHOOTING_GALLERY,
+			MM_SHOOTING_GALLERY, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_TOWN_ARCHERY_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -931,7 +1220,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_SHOOTING_GALLERY_SWAMP,
 		{
-			MM_SHOOTING_GALLERY_SWAMP,
+			MM_SHOOTING_GALLERY_SWAMP, (uint8_t)MMRegions::Southern_Swamp_Road,
 			{
 				{ MM_SWAMP_ARCHERY_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -941,7 +1230,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_SNOWHEAD,
 		{
-			MM_SNOWHEAD,
+			MM_SNOWHEAD, (uint8_t)MMRegions::Snowhead,
 			{
 				{ MM_SNOWHEAD_FROM_SNOWHEAD_PATH_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_SNOWHEAD_FROM_TEMPLE_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -954,7 +1243,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_SOUTHERN_SWAMP,
 		{
-			MM_SOUTHERN_SWAMP,
+			MM_SOUTHERN_SWAMP, (uint8_t)MMRegions::Southern_Swamp_Road,
 			{
 				{ MM_GROTTO_EXIT_GENERIC_SWAMP, { UINT32_MAX, UINT32_MAX } },
 				{ MM_SWAMP_FROM_ROAD_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -986,7 +1275,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_SPIDER_HOUSE_OCEAN,
 		{
-			MM_SPIDER_HOUSE_OCEAN,
+			MM_SPIDER_HOUSE_OCEAN, (uint8_t)MMRegions::Great_Bay_Coast,
 			{
 				{ MM_SPIDER_HOUSE_OCEAN_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -996,7 +1285,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_SPIDER_HOUSE_SWAMP,
 		{
-			MM_SPIDER_HOUSE_SWAMP,
+			MM_SPIDER_HOUSE_SWAMP, (uint8_t)MMRegions::Southern_Swamp_Road,
 			{
 				{ MM_SPIDER_HOUSE_SWAMP_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -1004,9 +1293,19 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 		}
 	},
 	{
+		MM_SPRING_WATER_CAVE,
+		{
+			MM_SPRING_WATER_CAVE, (uint8_t)MMRegions::Ikana_Canyon,
+			{
+				{ MM_IKANA_CAVERN_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
 		MM_STOCK_POT_INN,
 		{
-			MM_STOCK_POT_INN,
+			MM_STOCK_POT_INN, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_STOCK_POT_INN_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_STOCK_POT_INN_ROOF_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1017,7 +1316,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_STONE_TOWER,
 		{
-			MM_STONE_TOWER,
+			MM_STONE_TOWER, (uint8_t)MMRegions::Stone_Tower,
 			{
 				{ MM_STONE_TOWER_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_STONE_TOWER_FROM_TEMPLE_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1030,7 +1329,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_STONE_TOWER_INVERTED,
 		{
-			MM_STONE_TOWER_INVERTED,
+			MM_STONE_TOWER_INVERTED, (uint8_t)MMRegions::Stone_Tower,
 			{
 				{ MM_STONE_TOWER_INVERTED_FROM_TEMPLE_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_STONE_TOWER_INVERTED_FROM_STONE_TOWER_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1041,7 +1340,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_SWORDSMAN_SCHOOL,
 		{
-			MM_SWORDSMAN_SCHOOL,
+			MM_SWORDSMAN_SCHOOL, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_SWORDSMAN_SCHOOL_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -1051,7 +1350,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_TEMPLE_GREAT_BAY,
 		{
-			MM_TEMPLE_GREAT_BAY,
+			MM_TEMPLE_GREAT_BAY, (uint8_t)MMRegions::Great_Bay_Coast,
 			{
 				{ MM_TEMPLE_GREAT_BAY_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_GREAT_BAY_TEMPLE_TO_BOSS_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1062,7 +1361,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_TEMPLE_SNOWHEAD,
 		{
-			MM_TEMPLE_SNOWHEAD,
+			MM_TEMPLE_SNOWHEAD, (uint8_t)MMRegions::Snowhead,
 			{
 				{ MM_TEMPLE_SNOWHEAD_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_SNOWHEAD_TEMPLE_TO_BOSS_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1073,7 +1372,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_TEMPLE_STONE_TOWER,
 		{
-			MM_TEMPLE_STONE_TOWER,
+			MM_TEMPLE_STONE_TOWER, (uint8_t)MMRegions::Stone_Tower,
 			{
 				{ MM_TEMPLE_STONE_TOWER_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -1083,7 +1382,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_TEMPLE_STONE_TOWER_INVERTED,
 		{
-			MM_TEMPLE_STONE_TOWER_INVERTED,
+			MM_TEMPLE_STONE_TOWER_INVERTED, (uint8_t)MMRegions::Stone_Tower,
 			{
 				{ MM_TEMPLE_STONE_TOWER_INVERTED_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_STONE_TOWER_TEMPLE_TO_BOSS_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1094,7 +1393,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_TEMPLE_WOODFALL,
 		{
-			MM_TEMPLE_WOODFALL,
+			MM_TEMPLE_WOODFALL, (uint8_t)MMRegions::Woodfall,
 			{
 				{ MM_TEMPLE_WOODFALL_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_WARP_BOSS_DEKU_PRINCESS_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1107,7 +1406,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_TERMINA_FIELD,
 		{
-			MM_TERMINA_FIELD,
+			MM_TERMINA_FIELD, (uint8_t)MMRegions::Termina,
 			{
 				{ MM_GROTTO_EXIT_GENERIC_FIELD_PILLAR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_GROTTO_EXIT_GENERIC_GRASS, { UINT32_MAX, UINT32_MAX } },
@@ -1137,7 +1436,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_TOURIST_INFORMATION,
 		{
-			MM_TOURIST_INFORMATION,
+			MM_TOURIST_INFORMATION, (uint8_t)MMRegions::Southern_Swamp,
 			{
 				{ MM_TOURIST_INFORMATION_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_KOUME_RIDE_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1149,7 +1448,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_TRADING_POST,
 		{
-			MM_TRADING_POST,
+			MM_TRADING_POST, (uint8_t)MMRegions::Southern_Swamp,
 			{
 				{ MM_TRADING_POST_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -1159,7 +1458,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_TREASURE_SHOP,
 		{
-			MM_TREASURE_SHOP,
+			MM_TREASURE_SHOP, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_CHEST_GAME_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -1169,7 +1468,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_TWIN_ISLANDS,
 		{
-			MM_TWIN_ISLANDS,
+			MM_TWIN_ISLANDS, (uint8_t)MMRegions::Twin_Islands,
 			{
 				{ MM_GROTTO_EXIT_GENERIC_TWIN_ISLANDS, { UINT32_MAX, UINT32_MAX } },
 				{ MM_GROTTO_EXIT_HOT_WATER, { UINT32_MAX, UINT32_MAX } },
@@ -1185,7 +1484,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_WATERFALL_RAPIDS,
 		{
-			MM_WATERFALL_RAPIDS,
+			MM_WATERFALL_RAPIDS, (uint8_t)MMRegions::Zora_Cape,
 			{
 				{ MM_BEAVERS_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_BEAVERS_RACE_FROM_START_RACE_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1199,7 +1498,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_WOODFALL,
 		{
-			MM_WOODFALL,
+			MM_WOODFALL, (uint8_t)MMRegions::Woodfall,
 			{
 				{ MM_WOODFALL_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_WOODFALL_FROM_TEMPLE_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1213,7 +1512,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_WOODS_MYSTERY,
 		{
-			MM_WOODS_MYSTERY,
+			MM_WOODS_MYSTERY, (uint8_t)MMRegions::Southern_Swamp,
 			{
 				{ MM_GROTTO_EXIT_GENERIC_WOODS, { UINT32_MAX, UINT32_MAX } },
 				{ MM_MYSTERY_WOODS_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1224,7 +1523,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_ZORA_CAPE,
 		{
-			MM_ZORA_CAPE,
+			MM_ZORA_CAPE, (uint8_t)MMRegions::Zora_Cape,
 			{
 				{ MM_GROTTO_EXIT_GENERIC_ZORA_CAPE, { UINT32_MAX, UINT32_MAX } },
 				{ MM_ZORA_CAPE_FROM_GREAT_BAY_COAST_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1243,7 +1542,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_ZORA_EVANS_ROOM,
 		{
-			MM_ZORA_EVANS_ROOM,
+			MM_ZORA_EVANS_ROOM, (uint8_t)MMRegions::Zora_Cape,
 			{
 				{ MM_ROOM_EVANS_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -1253,7 +1552,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_ZORA_HALL,
 		{
-			MM_ZORA_HALL,
+			MM_ZORA_HALL, (uint8_t)MMRegions::Zora_Cape,
 			{
 				{ MM_ZORA_HALL_UNDERWATER_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_ZORA_HALL_LEDGE_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1269,7 +1568,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_ZORA_JAPAS_ROOM,
 		{
-			MM_ZORA_JAPAS_ROOM,
+			MM_ZORA_JAPAS_ROOM, (uint8_t)MMRegions::Zora_Cape,
 			{
 				{ MM_ROOM_JAPAS_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -1279,7 +1578,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_ZORA_LULU_ROOM,
 		{
-			MM_ZORA_LULU_ROOM,
+			MM_ZORA_LULU_ROOM, (uint8_t)MMRegions::Zora_Cape,
 			{
 				{ MM_ROOM_LULU_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -1289,7 +1588,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_ZORA_SHOP,
 		{
-			MM_ZORA_SHOP,
+			MM_ZORA_SHOP, (uint8_t)MMRegions::Zora_Cape,
 			{
 				{ MM_ZORA_SHOP_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -1299,65 +1598,9 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_ZORA_TIJO_ROOM,
 		{
-			MM_ZORA_TIJO_ROOM,
+			MM_ZORA_TIJO_ROOM, (uint8_t)MMRegions::Zora_Cape,
 			{
 				{ MM_ROOM_TIJO_ENTR, { UINT32_MAX, UINT32_MAX } },
-			},
-			NULL
-		}
-	},
-	{
-		MM_MOON_DEKU,
-		{
-			MM_MOON_DEKU,
-			{
-				{ MM_MOON_DEKU_FROM_MOON_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ MM_MOON_FROM_MOON_DEKU_ENTR, { UINT32_MAX, UINT32_MAX } },
-			},
-			NULL
-		}
-	},
-	{
-		MM_MOON_GORON,
-		{
-			MM_MOON_GORON,
-			{
-				{ MM_MOON_GORON_FROM_MOON_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ MM_MOON_FROM_MOON_GORON_ENTR, { UINT32_MAX, UINT32_MAX } },
-			},
-			NULL
-		}
-	},
-	{
-		MM_MOON_ZORA,
-		{
-			MM_MOON_ZORA,
-			{
-				{ MM_MOON_ZORA_FROM_WRONG_PIPE_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ MM_MOON_ZORA_WRONG_PIPE_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ MM_MOON_ZORA_FROM_MOON_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ MM_MOON_FROM_MOON_ZORA_ENTR, { UINT32_MAX, UINT32_MAX } },
-			},
-			NULL
-		}
-	},
-	{
-		MM_MOON_LINK,
-		{
-			MM_MOON_LINK,
-			{
-				{ MM_MOON_LINK_FROM_MOON_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ MM_MOON_FROM_MOON_LINK_ENTR, { UINT32_MAX, UINT32_MAX } },
-			},
-			NULL
-		}
-	},
-	{
-		MM_LAIR_MAJORA,
-		{
-			MM_LAIR_MAJORA,
-			{
-				{ MM_MAJORA_LAIR_FROM_MOON_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
 			NULL
 		}

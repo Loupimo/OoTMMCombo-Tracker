@@ -327,6 +327,7 @@ void LogTab::ResetTracking()
     }
     LogTab::LogMessage("Resetting tracked items.");
     GameTab::ResetScenes();
+    ResetAllEntrances();
     this->WinOwner->RefreshTracker();
 }
 

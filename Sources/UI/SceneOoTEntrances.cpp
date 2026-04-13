@@ -6,7 +6,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_BACK_ALLEY,
 		{
-			OOT_BACK_ALLEY,
+			OOT_BACK_ALLEY, (uint8_t)OoTRegions::Market,
 			{
 				{ OOT_BACK_ALLEY_TREASURE_FROM_MARKET_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_BACK_ALLEY_FROM_HOUSE_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -20,7 +20,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_BACK_ALLEY_HOUSE,
 		{
-			OOT_BACK_ALLEY_HOUSE,
+			OOT_BACK_ALLEY_HOUSE, (uint8_t)OoTRegions::Market,
 			{
 				{ OOT_ALLEY_HOUSE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -30,7 +30,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_BACK_ALLEY_HOUSE2,
 		{
-			OOT_BACK_ALLEY_HOUSE2,
+			OOT_BACK_ALLEY_HOUSE2, (uint8_t)OoTRegions::Market,
 			{
 				{ OOT_DOG_LADY_FROM_BACK_ALLEY_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -40,7 +40,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_BAZAAR,
 		{
-			OOT_BAZAAR,
+			OOT_BAZAAR, (uint8_t)OoTRegions::Market,
 			{
 				{ OOT_KAKARIKO_BAZAAR_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_MARKET_BAZAAR_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -51,7 +51,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_BOMBCHU_BOWLING_ALLEY,
 		{
-			OOT_BOMBCHU_BOWLING_ALLEY,
+			OOT_BOMBCHU_BOWLING_ALLEY, (uint8_t)OoTRegions::Market,
 			{
 				{ OOT_BOMBCHU_BOWLING_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -61,7 +61,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_BOMBCHU_SHOP,
 		{
-			OOT_BOMBCHU_SHOP,
+			OOT_BOMBCHU_SHOP, (uint8_t)OoTRegions::Market,
 			{
 				{ OOT_BOMBCHU_SHOP_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -71,7 +71,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_BOTTOM_OF_THE_WELL,
 		{
-			OOT_BOTTOM_OF_THE_WELL,
+			OOT_BOTTOM_OF_THE_WELL, (uint8_t)OoTRegions::Kakariko,
 			{
 				{ OOT_BOTTOM_OF_THE_WELL_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_WALLMASTER_BOTW_MAIN_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -84,7 +84,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_CARPENTER_BOSS_HOUSE,
 		{
-			OOT_CARPENTER_BOSS_HOUSE,
+			OOT_CARPENTER_BOSS_HOUSE, (uint8_t)OoTRegions::Kakariko,
 			{
 				{ OOT_HOUSE_CARPENTER_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -94,7 +94,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_CARPENTER_TENT,
 		{
-			OOT_CARPENTER_TENT,
+			OOT_CARPENTER_TENT, (uint8_t)OoTRegions::Kakariko,
 			{
 				{ OOT_VALLEY_TENT_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -104,7 +104,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_CASTLE_COURTYARD,
 		{
-			OOT_CASTLE_COURTYARD,
+			OOT_CASTLE_COURTYARD, (uint8_t)OoTRegions::Castle,
 			{
 				{ OOT_CASTLE_STEALTH_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_CASTLE_COURTYARD_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -113,86 +113,9 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 		}
 	},
 	{
-		OOT_KOKIRI_FOREST,
-		{
-			OOT_KOKIRI_FOREST,
-			{
-				{ OOT_KOKIRI_END_FROM_ZORA_DOMAIN_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_GROTTO_EXIT_GENERIC_KOKIRI_FOREST, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_KOKIRI_FOREST_FROM_DEKU_TREE_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_FOREST_FROM_LOST_WOODS_BRIDGE_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_KOKIRI_FOREST_FROM_LINK_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_KOKIRI_FOREST_FROM_SHOP_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_KOKIRI_FOREST_FROM_KNOW_IT_ALL_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_KOKIRI_FOREST_FROM_TWINS_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_KOKIRI_FOREST_FROM_MIDO_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_KOKIRI_FOREST_FROM_SARIA_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_WARP_BOSS_DEKU_TREE_ENTR, { UINT32_MAX, UINT32_MAX } },
-			},
-			NULL
-		}
-	},
-	{
-		OOT_ZORA_DOMAIN,
-		{
-			OOT_ZORA_DOMAIN,
-			{
-				{ OOT_KOKIRI_END_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_ZORA_DOMAIN_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_GROTTO_EXIT_FAIRY_DOMAIN, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_DOMAIN_FROM_FOUNTAIN_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_ZORA_DOMAIN_FROM_LAKE_HYLIA_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_ZORA_DOMAIN_FROM_SHOP_ENTR, { UINT32_MAX, UINT32_MAX } },
-			},
-			NULL
-		}
-	},
-	{
-		OOT_HYRULE_FIELD,
-		{
-			OOT_HYRULE_FIELD,
-			{
-				{ OOT_HYRULE_END_FROM_END_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_GROTTO_EXIT_GENERIC_HF_SOUTHEAST, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_GROTTO_EXIT_GENERIC_HF_OPEN, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_GROTTO_EXIT_GENERIC_HF_MARKET, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_GROTTO_EXIT_FAIRY_HF, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_GROTTO_EXIT_SCRUB_HEART_PIECE, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_GROTTO_EXIT_TEKTITE, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_GROTTO_EXIT_FIELD_COW, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_GROTTO_EXIT_FIELD_TREE, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_FIELD_FROM_KAKARIKO_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_FIELD_FROM_ZORA_RIVER_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_FIELD_FROM_LOST_WOODS_BRIDGE_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_FIELD_FROM_LAKE_HYLIA_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_FIELD_FROM_GERUDO_VALLEY_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_FIELD_FROM_LON_LON_RANCH_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_FIELD_FROM_MARKET_ENTRANCE_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_FIELD_OWL_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_FIELD_FROM_LON_LON_EPONA_JUMP_MIDDLE, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_FIELD_FROM_LON_LON_EPONA_JUMP_RIGHT, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_FIELD_FROM_LON_LON_EPONA_JUMP_LEFT, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_FIELD_FROM_ZORA_RIVER_WATER_ENTR, { UINT32_MAX, UINT32_MAX } },
-			},
-			NULL
-		}
-	},
-	{
-		OOT_CUTSCENE_MAP,
-		{
-			OOT_CUTSCENE_MAP,
-			{
-				{ OOT_HYRULE_END_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_END_FROM_SAGES_CHANBER_ENTR, { UINT32_MAX, UINT32_MAX } },
-			},
-			NULL
-		}
-	},
-	{
 		OOT_CHAMBER_OF_THE_SAGES,
 		{
-			OOT_CHAMBER_OF_THE_SAGES,
+			OOT_CHAMBER_OF_THE_SAGES, (uint8_t)OoTRegions::Castle,
 			{
 				{ OOT_END_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_SAGES_CHANBER_END_FROM_GANON2_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -201,12 +124,12 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 		}
 	},
 	{
-		OOT_GANON_BATTLE_ARENA,
+		OOT_CUTSCENE_MAP,
 		{
-			OOT_GANON_BATTLE_ARENA,
+			OOT_CUTSCENE_MAP, (uint8_t)OoTRegions::Castle,
 			{
-				{ OOT_SAGES_CHAMBER_END_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_BOSS_GANON2_FROM_GANONDORF_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_HYRULE_END_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_END_FROM_SAGES_CHANBER_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
 			NULL
 		}
@@ -214,7 +137,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_DAMPE_HOUSE,
 		{
-			OOT_DAMPE_HOUSE,
+			OOT_DAMPE_HOUSE, (uint8_t)OoTRegions::Graveyard,
 			{
 				{ OOT_HOUSE_DAMPE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -224,7 +147,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_DEATH_MOUNTAIN_CRATER,
 		{
-			OOT_DEATH_MOUNTAIN_CRATER,
+			OOT_DEATH_MOUNTAIN_CRATER, (uint8_t)OoTRegions::Death_Mountain_Crater,
 			{
 				{ OOT_GROTTO_EXIT_GENERIC_DMC, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_GROTTO_EXIT_SCRUBS3_DMC, { UINT32_MAX, UINT32_MAX } },
@@ -240,7 +163,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_DEATH_MOUNTAIN_TRAIL,
 		{
-			OOT_DEATH_MOUNTAIN_TRAIL,
+			OOT_DEATH_MOUNTAIN_TRAIL, (uint8_t)OoTRegions::Death_Mountain_Trail,
 			{
 				{ OOT_GROTTO_EXIT_GENERIC_DMT, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_GROTTO_EXIT_TRAIL_COW, { UINT32_MAX, UINT32_MAX } },
@@ -257,7 +180,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_DEKU_TREE,
 		{
-			OOT_DEKU_TREE,
+			OOT_DEKU_TREE, (uint8_t)OoTRegions::Kokiri_Forest,
 			{
 				{ OOT_DEKU_TREE_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_DEKU_TREE_TO_BOSS_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -268,7 +191,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_DESERT_COLOSSUS,
 		{
-			OOT_DESERT_COLOSSUS,
+			OOT_DESERT_COLOSSUS, (uint8_t)OoTRegions::Desert_Colossus,
 			{
 				{ OOT_GROTTO_EXIT_SCRUBS2_COLOSSUS, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_COLOSSUS_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -284,7 +207,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_DODONGO_CAVERN,
 		{
-			OOT_DODONGO_CAVERN,
+			OOT_DODONGO_CAVERN, (uint8_t)OoTRegions::Death_Mountain_Trail,
 			{
 				{ OOT_DODONGO_CAVERN_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_DODONGO_CAVERN_TO_BOSS_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -295,7 +218,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_FAIRY_GERUDO_FORTRESS,
 		{
-			OOT_FAIRY_GERUDO_FORTRESS,
+			OOT_FAIRY_GERUDO_FORTRESS, (uint8_t)OoTRegions::Gerudo_Fortress,
 			{
 				{ OOT_GROTTO_FAIRY_FORTRESS_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -305,7 +228,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_FAIRY_HYRULE,
 		{
-			OOT_FAIRY_HYRULE,
+			OOT_FAIRY_HYRULE, (uint8_t)OoTRegions::Hyrule,
 			{
 				{ OOT_GROTTO_FAIRY_HF_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -315,7 +238,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_FAIRY_SACRED_MEADOW,
 		{
-			OOT_FAIRY_SACRED_MEADOW,
+			OOT_FAIRY_SACRED_MEADOW, (uint8_t)OoTRegions::Sacred_Forest_Meadow,
 			{
 				{ OOT_GROTTO_FAIRY_SFM_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -325,7 +248,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_FAIRY_ZORA_DOMAIN,
 		{
-			OOT_FAIRY_ZORA_DOMAIN,
+			OOT_FAIRY_ZORA_DOMAIN, (uint8_t)OoTRegions::Zora_Domain,
 			{
 				{ OOT_GROTTO_FAIRY_DOMAIN_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -335,7 +258,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_FAIRY_ZORA_RIVER,
 		{
-			OOT_FAIRY_ZORA_RIVER,
+			OOT_FAIRY_ZORA_RIVER, (uint8_t)OoTRegions::Zora_River,
 			{
 				{ OOT_GROTTO_FAIRY_RIVER_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -345,7 +268,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_FISHING_POND,
 		{
-			OOT_FISHING_POND,
+			OOT_FISHING_POND, (uint8_t)OoTRegions::Lake_Hylia,
 			{
 				{ OOT_FISHING_POND_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -353,12 +276,12 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 		}
 	},
 	{
-		OOT_LAIR_GANONDORF,
+		OOT_GANON_BATTLE_ARENA,
 		{
-			OOT_LAIR_GANONDORF,
+			OOT_GANON_BATTLE_ARENA, (uint8_t)OoTRegions::Castle,
 			{
-				{ OOT_BOSS_GANONDORF_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_GANONDORF_CUTSCENE_FROM_GANON_TOWER_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_SAGES_CHAMBER_END_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_BOSS_GANON2_FROM_GANONDORF_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
 			NULL
 		}
@@ -366,7 +289,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GANON_CASTLE_EXTERIOR,
 		{
-			OOT_GANON_CASTLE_EXTERIOR,
+			OOT_GANON_CASTLE_EXTERIOR, (uint8_t)OoTRegions::Castle,
 			{
 				{ OOT_GANON_CASTLE_EXTERIOR_FROM_CASTLE_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_OUTSIDE_GANON_FROM_FAIRY_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -378,7 +301,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GANON_TOWER,
 		{
-			OOT_GANON_TOWER,
+			OOT_GANON_TOWER, (uint8_t)OoTRegions::Castle,
 			{
 				{ OOT_GANON_TOWER_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_GANONDORF_CUTSCENE_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -389,7 +312,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GERUDO_FORTRESS,
 		{
-			OOT_GERUDO_FORTRESS,
+			OOT_GERUDO_FORTRESS, (uint8_t)OoTRegions::Gerudo_Fortress,
 			{
 				{ OOT_GROTTO_EXIT_FAIRY_FORTRESS, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_GERUDO_FORTRESS_FROM_VALLEY_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -417,7 +340,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GERUDO_TRAINING_GROUND,
 		{
-			OOT_GERUDO_TRAINING_GROUND,
+			OOT_GERUDO_TRAINING_GROUND, (uint8_t)OoTRegions::Gerudo_Fortress,
 			{
 				{ OOT_GERUDO_TRAINING_GROUNDS_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_WALLMASTER_GTG_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -428,7 +351,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GERUDO_VALLEY,
 		{
-			OOT_GERUDO_VALLEY,
+			OOT_GERUDO_VALLEY, (uint8_t)OoTRegions::Gerudo_Valley,
 			{
 				{ OOT_GROTTO_EXIT_SCRUBS2_VALLEY, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_GROTTO_EXIT_OCTOROK, { UINT32_MAX, UINT32_MAX } },
@@ -445,7 +368,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GORON_CITY,
 		{
-			OOT_GORON_CITY,
+			OOT_GORON_CITY, (uint8_t)OoTRegions::Goron_City,
 			{
 				{ OOT_GROTTO_EXIT_SCRUBS3_GORON_CITY, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_GORON_CITY_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -459,7 +382,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GORON_SHOP,
 		{
-			OOT_GORON_SHOP,
+			OOT_GORON_SHOP, (uint8_t)OoTRegions::Goron_City,
 			{
 				{ OOT_SHOP_GORON_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -469,7 +392,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GRANNY_POTION_SHOP,
 		{
-			OOT_GRANNY_POTION_SHOP,
+			OOT_GRANNY_POTION_SHOP, (uint8_t)OoTRegions::Kakariko,
 			{
 				{ OOT_SHOP_GRANNY_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -479,7 +402,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GRAVEYARD,
 		{
-			OOT_GRAVEYARD,
+			OOT_GRAVEYARD, (uint8_t)OoTRegions::Graveyard,
 			{
 				{ OOT_GRAVEYARD_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_GRAVEYARD_FROM_TEMPLE_SHADOW_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -496,7 +419,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GREAT_FAIRY,
 		{
-			OOT_GREAT_FAIRY,
+			OOT_GREAT_FAIRY, (uint8_t)OoTRegions::Death_Mountain_Trail,
 			{
 				{ OOT_FAIRY_MAGIC_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_FAIRY_FARORE_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -511,7 +434,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_CASTLE_STORMS,
 		{
-			OOT_GROTTO_CASTLE_STORMS,
+			OOT_GROTTO_CASTLE_STORMS, (uint8_t)OoTRegions::Castle,
 			{
 				{ OOT_GROTTO_CASTLE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -521,7 +444,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_DEATH_CRATER_GENERIC,
 		{
-			OOT_GROTTO_DEATH_CRATER_GENERIC,
+			OOT_GROTTO_DEATH_CRATER_GENERIC, (uint8_t)OoTRegions::Death_Mountain_Crater,
 			{
 				{ OOT_GROTTO_GENERIC_DMC_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -531,7 +454,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_DEATH_CRATER_SCRUBS,
 		{
-			OOT_GROTTO_DEATH_CRATER_SCRUBS,
+			OOT_GROTTO_DEATH_CRATER_SCRUBS, (uint8_t)OoTRegions::Death_Mountain_Crater,
 			{
 				{ OOT_GROTTO_SCRUBS3_DMC_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -541,7 +464,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_DEATH_TRIAL_COW,
 		{
-			OOT_GROTTO_DEATH_TRIAL_COW,
+			OOT_GROTTO_DEATH_TRIAL_COW, (uint8_t)OoTRegions::Death_Mountain_Trail,
 			{
 				{ OOT_GROTTO_TRAIL_COW_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -551,7 +474,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_DEATH_TRIAL_STORMS,
 		{
-			OOT_GROTTO_DEATH_TRIAL_STORMS,
+			OOT_GROTTO_DEATH_TRIAL_STORMS, (uint8_t)OoTRegions::Death_Mountain_Trail,
 			{
 				{ OOT_GROTTO_GENERIC_DMT_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -561,7 +484,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_DESERT_SCRUBS,
 		{
-			OOT_GROTTO_DESERT_SCRUBS,
+			OOT_GROTTO_DESERT_SCRUBS, (uint8_t)OoTRegions::Desert_Colossus,
 			{
 				{ OOT_GROTTO_SCRUBS2_COLOSSUS_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -571,7 +494,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_GORON_CITY_SCRUBS,
 		{
-			OOT_GROTTO_GORON_CITY_SCRUBS,
+			OOT_GROTTO_GORON_CITY_SCRUBS, (uint8_t)OoTRegions::Goron_City,
 			{
 				{ OOT_GROTTO_SCRUBS3_GORON_CITY_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -581,7 +504,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_HYRULE_GERUDO,
 		{
-			OOT_GROTTO_HYRULE_GERUDO,
+			OOT_GROTTO_HYRULE_GERUDO, (uint8_t)OoTRegions::Hyrule,
 			{
 				{ OOT_GROTTO_FIELD_COW_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -591,7 +514,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_HYRULE_KAKARIKO,
 		{
-			OOT_GROTTO_HYRULE_KAKARIKO,
+			OOT_GROTTO_HYRULE_KAKARIKO, (uint8_t)OoTRegions::Hyrule,
 			{
 				{ OOT_GROTTO_FIELD_TREE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -601,7 +524,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_HYRULE_MARKET,
 		{
-			OOT_GROTTO_HYRULE_MARKET,
+			OOT_GROTTO_HYRULE_MARKET, (uint8_t)OoTRegions::Hyrule,
 			{
 				{ OOT_GROTTO_GENERIC_HF_MARKET_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -611,7 +534,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_HYRULE_OPEN,
 		{
-			OOT_GROTTO_HYRULE_OPEN,
+			OOT_GROTTO_HYRULE_OPEN, (uint8_t)OoTRegions::Hyrule,
 			{
 				{ OOT_GROTTO_GENERIC_HF_OPEN_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -621,7 +544,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_HYRULE_SCRUBS,
 		{
-			OOT_GROTTO_HYRULE_SCRUBS,
+			OOT_GROTTO_HYRULE_SCRUBS, (uint8_t)OoTRegions::Hyrule,
 			{
 				{ OOT_GROTTO_SCRUB_HEART_PIECE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -631,7 +554,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_HYRULE_SE,
 		{
-			OOT_GROTTO_HYRULE_SE,
+			OOT_GROTTO_HYRULE_SE, (uint8_t)OoTRegions::Hyrule,
 			{
 				{ OOT_GROTTO_GENERIC_HF_SOUTHEAST_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -641,7 +564,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_HYRULE_TEKTITE,
 		{
-			OOT_GROTTO_HYRULE_TEKTITE,
+			OOT_GROTTO_HYRULE_TEKTITE, (uint8_t)OoTRegions::Hyrule,
 			{
 				{ OOT_GROTTO_TEKTITE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -651,7 +574,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_KAKARIKO_OPEN,
 		{
-			OOT_GROTTO_KAKARIKO_OPEN,
+			OOT_GROTTO_KAKARIKO_OPEN, (uint8_t)OoTRegions::Kakariko,
 			{
 				{ OOT_GROTTO_GENERIC_KAKARIKO_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -661,7 +584,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_KAKARIKO_REDEAD,
 		{
-			OOT_GROTTO_KAKARIKO_REDEAD,
+			OOT_GROTTO_KAKARIKO_REDEAD, (uint8_t)OoTRegions::Kakariko,
 			{
 				{ OOT_GROTTO_REDEAD_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -671,7 +594,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_KOKIRI_FOREST_STORMS,
 		{
-			OOT_GROTTO_KOKIRI_FOREST_STORMS,
+			OOT_GROTTO_KOKIRI_FOREST_STORMS, (uint8_t)OoTRegions::Kokiri_Forest,
 			{
 				{ OOT_GROTTO_GENERIC_KOKIRI_FOREST_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -681,7 +604,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_LAKE_HYLIA_SCRUBS,
 		{
-			OOT_GROTTO_LAKE_HYLIA_SCRUBS,
+			OOT_GROTTO_LAKE_HYLIA_SCRUBS, (uint8_t)OoTRegions::Lake_Hylia,
 			{
 				{ OOT_GROTTO_SCRUBS3_LAKE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -691,7 +614,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_LON_LON_SCRUBS,
 		{
-			OOT_GROTTO_LON_LON_SCRUBS,
+			OOT_GROTTO_LON_LON_SCRUBS, (uint8_t)OoTRegions::Lon_Lon_Ranch,
 			{
 				{ OOT_GROTTO_SCRUBS3_RANCH_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -701,7 +624,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_LOST_WOODS_GENERIC,
 		{
-			OOT_GROTTO_LOST_WOODS_GENERIC,
+			OOT_GROTTO_LOST_WOODS_GENERIC, (uint8_t)OoTRegions::Lost_Woods,
 			{
 				{ OOT_GROTTO_GENERIC_LOST_WOODS_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -711,7 +634,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE,
 		{
-			OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE,
+			OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE, (uint8_t)OoTRegions::Lost_Woods,
 			{
 				{ OOT_GROTTO_SCRUB_UPGRADE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -721,7 +644,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_LOST_WOODS_THEATER,
 		{
-			OOT_GROTTO_LOST_WOODS_THEATER,
+			OOT_GROTTO_LOST_WOODS_THEATER, (uint8_t)OoTRegions::Lost_Woods,
 			{
 				{ OOT_GROTTO_DEKU_THEATER_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -731,7 +654,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_SACRED_MEADOW_STORMS,
 		{
-			OOT_GROTTO_SACRED_MEADOW_STORMS,
+			OOT_GROTTO_SACRED_MEADOW_STORMS, (uint8_t)OoTRegions::Sacred_Forest_Meadow,
 			{
 				{ OOT_GROTTO_SCRUBS2_SFM_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -741,7 +664,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_SACRED_MEADOW_WOLFOS,
 		{
-			OOT_GROTTO_SACRED_MEADOW_WOLFOS,
+			OOT_GROTTO_SACRED_MEADOW_WOLFOS, (uint8_t)OoTRegions::Sacred_Forest_Meadow,
 			{
 				{ OOT_GROTTO_WOLFOS_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -751,7 +674,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_VALLEY_OCTOROK,
 		{
-			OOT_GROTTO_VALLEY_OCTOROK,
+			OOT_GROTTO_VALLEY_OCTOROK, (uint8_t)OoTRegions::Gerudo_Valley,
 			{
 				{ OOT_GROTTO_OCTOROK_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -761,7 +684,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_VALLEY_STORMS,
 		{
-			OOT_GROTTO_VALLEY_STORMS,
+			OOT_GROTTO_VALLEY_STORMS, (uint8_t)OoTRegions::Gerudo_Valley,
 			{
 				{ OOT_GROTTO_SCRUBS2_VALLEY_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -771,7 +694,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_ZORA_RIVER_GENERIC,
 		{
-			OOT_GROTTO_ZORA_RIVER_GENERIC,
+			OOT_GROTTO_ZORA_RIVER_GENERIC, (uint8_t)OoTRegions::Zora_River,
 			{
 				{ OOT_GROTTO_GENERIC_RIVER_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -781,7 +704,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTO_ZORA_RIVER_STORMS,
 		{
-			OOT_GROTTO_ZORA_RIVER_STORMS,
+			OOT_GROTTO_ZORA_RIVER_STORMS, (uint8_t)OoTRegions::Zora_River,
 			{
 				{ OOT_GROTTO_SCRUBS2_RIVER_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -791,7 +714,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GROTTOS,
 		{
-			OOT_GROTTOS,
+			OOT_GROTTOS, (uint8_t)OoTRegions::None,
 			{
 				{ OOT_GROTTO_TYPE_GENERIC_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_GROTTO_TYPE_FAIRY_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -805,7 +728,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_GUARD_HOUSE,
 		{
-			OOT_GUARD_HOUSE,
+			OOT_GUARD_HOUSE, (uint8_t)OoTRegions::Market,
 			{
 				{ OOT_HOUSE_POTS_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -815,7 +738,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_HAPPY_MASK_SHOP,
 		{
-			OOT_HAPPY_MASK_SHOP,
+			OOT_HAPPY_MASK_SHOP, (uint8_t)OoTRegions::Market,
 			{
 				{ OOT_SHOP_MASKS_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -825,7 +748,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_HAUNTED_WASTELAND,
 		{
-			OOT_HAUNTED_WASTELAND,
+			OOT_HAUNTED_WASTELAND, (uint8_t)OoTRegions::Desert_Colossus,
 			{
 				{ OOT_WASTELAND_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_WASTELAND_FROM_COLOSSUS_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -836,7 +759,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_HOUSE_OF_SKULLTULA,
 		{
-			OOT_HOUSE_OF_SKULLTULA,
+			OOT_HOUSE_OF_SKULLTULA, (uint8_t)OoTRegions::Kakariko,
 			{
 				{ OOT_HOUSE_SKULLTULA_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -846,7 +769,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_HYRULE_CASTLE,
 		{
-			OOT_HYRULE_CASTLE,
+			OOT_HYRULE_CASTLE, (uint8_t)OoTRegions::Castle,
 			{
 				{ OOT_GROTTO_EXIT_CASTLE, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_HYRULE_CASTLE_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -859,9 +782,39 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 		}
 	},
 	{
+		OOT_HYRULE_FIELD,
+		{
+			OOT_HYRULE_FIELD, (uint8_t)OoTRegions::Hyrule,
+			{
+				{ OOT_HYRULE_END_FROM_END_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_GROTTO_EXIT_GENERIC_HF_SOUTHEAST, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_GROTTO_EXIT_GENERIC_HF_OPEN, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_GROTTO_EXIT_GENERIC_HF_MARKET, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_GROTTO_EXIT_FAIRY_HF, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_GROTTO_EXIT_SCRUB_HEART_PIECE, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_GROTTO_EXIT_TEKTITE, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_GROTTO_EXIT_FIELD_COW, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_GROTTO_EXIT_FIELD_TREE, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_FIELD_FROM_KAKARIKO_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_FIELD_FROM_ZORA_RIVER_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_FIELD_FROM_LOST_WOODS_BRIDGE_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_FIELD_FROM_LAKE_HYLIA_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_FIELD_FROM_GERUDO_VALLEY_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_FIELD_FROM_LON_LON_RANCH_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_FIELD_FROM_MARKET_ENTRANCE_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_FIELD_OWL_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_FIELD_FROM_LON_LON_EPONA_JUMP_MIDDLE, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_FIELD_FROM_LON_LON_EPONA_JUMP_RIGHT, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_FIELD_FROM_LON_LON_EPONA_JUMP_LEFT, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_FIELD_FROM_ZORA_RIVER_WATER_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
 		OOT_ICE_CAVERN,
 		{
-			OOT_ICE_CAVERN,
+			OOT_ICE_CAVERN, (uint8_t)OoTRegions::Zora_Fountain,
 			{
 				{ OOT_ICE_CAVERN_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -871,7 +824,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_IMPA_HOUSE,
 		{
-			OOT_IMPA_HOUSE,
+			OOT_IMPA_HOUSE, (uint8_t)OoTRegions::Kakariko,
 			{
 				{ OOT_HOUSE_IMPA_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_HOUSE_IMPA_BACK_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -882,7 +835,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_INSIDE_GANON_CASTLE,
 		{
-			OOT_INSIDE_GANON_CASTLE,
+			OOT_INSIDE_GANON_CASTLE, (uint8_t)OoTRegions::Castle,
 			{
 				{ OOT_GANON_CASTLE_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_GANON_CASTLE_FROM_TOWER_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -895,7 +848,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_INSIDE_JABU_JABU,
 		{
-			OOT_INSIDE_JABU_JABU,
+			OOT_INSIDE_JABU_JABU, (uint8_t)OoTRegions::Zora_Fountain,
 			{
 				{ OOT_JABU_JABU_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_JABU_JABU_TO_BOSS_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -906,7 +859,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_KAKARIKO_POTION_SHOP,
 		{
-			OOT_KAKARIKO_POTION_SHOP,
+			OOT_KAKARIKO_POTION_SHOP, (uint8_t)OoTRegions::Kakariko,
 			{
 				{ OOT_SHOP_POTION_KAKARIKO_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_SHOP_POTION_KAKARIKO_BACK_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -917,7 +870,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_KAKARIKO_VILLAGE,
 		{
-			OOT_KAKARIKO_VILLAGE,
+			OOT_KAKARIKO_VILLAGE, (uint8_t)OoTRegions::Kakariko,
 			{
 				{ OOT_KAKARIKO_FROM_FIELD_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_GROTTO_EXIT_GENERIC_KAKARIKO, { UINT32_MAX, UINT32_MAX } },
@@ -941,9 +894,30 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 		}
 	},
 	{
+		OOT_KOKIRI_FOREST,
+		{
+			OOT_KOKIRI_FOREST, (uint8_t)OoTRegions::Kokiri_Forest,
+			{
+				{ OOT_KOKIRI_END_FROM_ZORA_DOMAIN_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_GROTTO_EXIT_GENERIC_KOKIRI_FOREST, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_KOKIRI_FOREST_FROM_DEKU_TREE_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_FOREST_FROM_LOST_WOODS_BRIDGE_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_KOKIRI_FOREST_FROM_LINK_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_KOKIRI_FOREST_FROM_SHOP_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_KOKIRI_FOREST_FROM_KNOW_IT_ALL_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_KOKIRI_FOREST_FROM_TWINS_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_KOKIRI_FOREST_FROM_MIDO_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_KOKIRI_FOREST_FROM_SARIA_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_WARP_BOSS_DEKU_TREE_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
 		OOT_KOKIRI_KNOW_IT_ALL,
 		{
-			OOT_KOKIRI_KNOW_IT_ALL,
+			OOT_KOKIRI_KNOW_IT_ALL, (uint8_t)OoTRegions::Kokiri_Forest,
 			{
 				{ OOT_HOUSE_KNOW_IT_ALL_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -953,7 +927,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_KOKIRI_MIDO,
 		{
-			OOT_KOKIRI_MIDO,
+			OOT_KOKIRI_MIDO, (uint8_t)OoTRegions::Kokiri_Forest,
 			{
 				{ OOT_HOUSE_MIDO_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -963,7 +937,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_KOKIRI_SARIA,
 		{
-			OOT_KOKIRI_SARIA,
+			OOT_KOKIRI_SARIA, (uint8_t)OoTRegions::Kokiri_Forest,
 			{
 				{ OOT_HOUSE_SARIA_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -973,7 +947,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_KOKIRI_SHOP,
 		{
-			OOT_KOKIRI_SHOP,
+			OOT_KOKIRI_SHOP, (uint8_t)OoTRegions::Kokiri_Forest,
 			{
 				{ OOT_KOKIRI_SHOP_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -983,7 +957,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_KOKIRI_TWINS,
 		{
-			OOT_KOKIRI_TWINS,
+			OOT_KOKIRI_TWINS, (uint8_t)OoTRegions::Kokiri_Forest,
 			{
 				{ OOT_HOUSE_TWINS_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -993,7 +967,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_LABORATORY,
 		{
-			OOT_LABORATORY,
+			OOT_LABORATORY, (uint8_t)OoTRegions::Lake_Hylia,
 			{
 				{ OOT_LABORATORY_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -1003,7 +977,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_LAIR_BARINADE,
 		{
-			OOT_LAIR_BARINADE,
+			OOT_LAIR_BARINADE, (uint8_t)OoTRegions::Zora_Fountain,
 			{
 				{ OOT_BOSS_JABU_JABU_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_BOSS_JABU_JABU_WARP_OUT, { UINT32_MAX, UINT32_MAX } },
@@ -1014,7 +988,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_LAIR_BONGO_BONGO,
 		{
-			OOT_LAIR_BONGO_BONGO,
+			OOT_LAIR_BONGO_BONGO, (uint8_t)OoTRegions::Graveyard,
 			{
 				{ OOT_BOSS_TEMPLE_SHADOW_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_BOSS_SHADOW_TEMPLE_WARP_OUT, { UINT32_MAX, UINT32_MAX } },
@@ -1023,9 +997,20 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 		}
 	},
 	{
+		OOT_LAIR_GANONDORF,
+		{
+			OOT_LAIR_GANONDORF, (uint8_t)OoTRegions::Castle,
+			{
+				{ OOT_BOSS_GANONDORF_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_GANONDORF_CUTSCENE_FROM_GANON_TOWER_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
 		OOT_LAIR_GOHMA,
 		{
-			OOT_LAIR_GOHMA,
+			OOT_LAIR_GOHMA, (uint8_t)OoTRegions::Kokiri_Forest,
 			{
 				{ OOT_BOSS_DEKU_TREE_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_BOSS_DEKU_TREE_WARP_OUT, { UINT32_MAX, UINT32_MAX } },
@@ -1036,7 +1021,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_LAIR_KING_DODONGO,
 		{
-			OOT_LAIR_KING_DODONGO,
+			OOT_LAIR_KING_DODONGO, (uint8_t)OoTRegions::Death_Mountain_Trail,
 			{
 				{ OOT_BOSS_DODONGO_CAVERN_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_BOSS_DODONGO_CAVERN_WARP_OUT, { UINT32_MAX, UINT32_MAX } },
@@ -1047,7 +1032,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_LAIR_MORPHA,
 		{
-			OOT_LAIR_MORPHA,
+			OOT_LAIR_MORPHA, (uint8_t)OoTRegions::Lake_Hylia,
 			{
 				{ OOT_BOSS_TEMPLE_WATER_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_BOSS_WATER_TEMPLE_WARP_OUT, { UINT32_MAX, UINT32_MAX } },
@@ -1058,7 +1043,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_LAIR_PHANTOM_GANON,
 		{
-			OOT_LAIR_PHANTOM_GANON,
+			OOT_LAIR_PHANTOM_GANON, (uint8_t)OoTRegions::Sacred_Forest_Meadow,
 			{
 				{ OOT_BOSS_TEMPLE_FOREST_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_BOSS_FOREST_TEMPLE_WARP_OUT, { UINT32_MAX, UINT32_MAX } },
@@ -1069,7 +1054,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_LAIR_TWINROVA,
 		{
-			OOT_LAIR_TWINROVA,
+			OOT_LAIR_TWINROVA, (uint8_t)OoTRegions::Desert_Colossus,
 			{
 				{ OOT_BOSS_TEMPLE_SPIRIT_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_BOSS_SPIRIT_TEMPLE_WARP_OUT, { UINT32_MAX, UINT32_MAX } },
@@ -1080,7 +1065,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_LAIR_VOLVAGIA,
 		{
-			OOT_LAIR_VOLVAGIA,
+			OOT_LAIR_VOLVAGIA, (uint8_t)OoTRegions::Death_Mountain_Crater,
 			{
 				{ OOT_BOSS_TEMPLE_FIRE_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_BOSS_FIRE_TEMPLE_WARP_OUT, { UINT32_MAX, UINT32_MAX } },
@@ -1091,7 +1076,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_LAKE_HYLIA,
 		{
-			OOT_LAKE_HYLIA,
+			OOT_LAKE_HYLIA, (uint8_t)OoTRegions::Lake_Hylia,
 			{
 				{ OOT_LAKE_HYLIA_FROM_FIELD_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_GROTTO_EXIT_SCRUBS3_LAKE, { UINT32_MAX, UINT32_MAX } },
@@ -1109,7 +1094,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_LINK_HOUSE,
 		{
-			OOT_LINK_HOUSE,
+			OOT_LINK_HOUSE, (uint8_t)OoTRegions::Kokiri_Forest,
 			{
 				{ OOT_SPAWN_CHILD, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_HOUSE_LINK_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1120,7 +1105,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_LON_LON_RANCH,
 		{
-			OOT_LON_LON_RANCH,
+			OOT_LON_LON_RANCH, (uint8_t)OoTRegions::Lon_Lon_Ranch,
 			{
 				{ OOT_GROTTO_EXIT_SCRUBS3_RANCH, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_LON_LON_RANCH_FROM_FIELD_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1137,7 +1122,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_LOST_WOODS,
 		{
-			OOT_LOST_WOODS,
+			OOT_LOST_WOODS, (uint8_t)OoTRegions::Lost_Woods,
 			{
 				{ OOT_GROTTO_EXIT_GENERIC_LOST_WOODS, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_GROTTO_EXIT_SCRUB_UPGRADE, { UINT32_MAX, UINT32_MAX } },
@@ -1159,7 +1144,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_MARKET,
 		{
-			OOT_MARKET,
+			OOT_MARKET, (uint8_t)OoTRegions::Market,
 			{
 				{ OOT_MARKET_FROM_BACK_ALLEY_SHOOTING_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_MARKET_FROM_BACK_ALLEY_TREASURE_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1180,7 +1165,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_MARKET_ENTRANCE,
 		{
-			OOT_MARKET_ENTRANCE,
+			OOT_MARKET_ENTRANCE, (uint8_t)OoTRegions::Market,
 			{
 				{ OOT_MARKET_ENTRANCE_FROM_MARKET_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_MARKET_ENTRANCE_FROM_POTS_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1192,7 +1177,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_MARKET_POTION_SHOP,
 		{
-			OOT_MARKET_POTION_SHOP,
+			OOT_MARKET_POTION_SHOP, (uint8_t)OoTRegions::Market,
 			{
 				{ OOT_MARKET_POTION_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -1202,7 +1187,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_RANCH_HOUSE_SILO,
 		{
-			OOT_RANCH_HOUSE_SILO,
+			OOT_RANCH_HOUSE_SILO, (uint8_t)OoTRegions::Lon_Lon_Ranch,
 			{
 				{ OOT_HOUSE_LON_LON_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -1212,7 +1197,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_SACRED_FOREST_MEADOW,
 		{
-			OOT_SACRED_FOREST_MEADOW,
+			OOT_SACRED_FOREST_MEADOW, (uint8_t)OoTRegions::Sacred_Forest_Meadow,
 			{
 				{ OOT_SACRED_FOREST_MEADOW_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_GROTTO_EXIT_FAIRY_SFM, { UINT32_MAX, UINT32_MAX } },
@@ -1227,7 +1212,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_SHOOTING_GALLERY,
 		{
-			OOT_SHOOTING_GALLERY,
+			OOT_SHOOTING_GALLERY, (uint8_t)OoTRegions::Kakariko,
 			{
 				{ OOT_ADULT_ARCHERY_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_CHILD_ARCHERY_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1238,7 +1223,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_SILO,
 		{
-			OOT_SILO,
+			OOT_SILO, (uint8_t)OoTRegions::Lon_Lon_Ranch,
 			{
 				{ OOT_SILO_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -1248,7 +1233,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_SONGS,
 		{
-			OOT_SONGS,
+			OOT_SONGS, (uint8_t)OoTRegions::Songs,
 			{
 				{ OOT_MINUET_OF_FOREST_SONG, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_BOLERO_OF_FIRE_SONG, { UINT32_MAX, UINT32_MAX } },
@@ -1264,7 +1249,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_STABLE,
 		{
-			OOT_STABLE,
+			OOT_STABLE, (uint8_t)OoTRegions::Lon_Lon_Ranch,
 			{
 				{ OOT_STABLES_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -1274,7 +1259,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_TEMPLE_FIRE,
 		{
-			OOT_TEMPLE_FIRE,
+			OOT_TEMPLE_FIRE, (uint8_t)OoTRegions::Death_Mountain_Crater,
 			{
 				{ OOT_TEMPLE_FIRE_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_TEMPLE_FIRE_TO_BOSS_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1285,7 +1270,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_TEMPLE_FOREST,
 		{
-			OOT_TEMPLE_FOREST,
+			OOT_TEMPLE_FOREST, (uint8_t)OoTRegions::Sacred_Forest_Meadow,
 			{
 				{ OOT_TEMPLE_FOREST_TO_BOSS_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_TEMPLE_FOREST_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1298,7 +1283,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_TEMPLE_OF_TIME,
 		{
-			OOT_TEMPLE_OF_TIME,
+			OOT_TEMPLE_OF_TIME, (uint8_t)OoTRegions::Market,
 			{
 				{ OOT_TEMPLE_OF_TIME_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_TEMPLE_OF_TIME_MASTER_SWORD_CS_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1311,7 +1296,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_TEMPLE_OF_TIME_ENTRYWAY,
 		{
-			OOT_TEMPLE_OF_TIME_ENTRYWAY,
+			OOT_TEMPLE_OF_TIME_ENTRYWAY, (uint8_t)OoTRegions::Market,
 			{
 				{ OOT_TEMPLE_OF_TIME_ENTRYWAY_FROM_MARKET_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_TEMPLE_OF_TIME_ENTRYWAY_FROM_TEMPLE_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1322,7 +1307,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_TEMPLE_SHADOW,
 		{
-			OOT_TEMPLE_SHADOW,
+			OOT_TEMPLE_SHADOW, (uint8_t)OoTRegions::Graveyard,
 			{
 				{ OOT_TEMPLE_SHADOW_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_SHADOW_TEMPLE_FROM_LAIR_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1335,7 +1320,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_TEMPLE_SPIRIT,
 		{
-			OOT_TEMPLE_SPIRIT,
+			OOT_TEMPLE_SPIRIT, (uint8_t)OoTRegions::Desert_Colossus,
 			{
 				{ OOT_TEMPLE_SPIRIT_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_TEMPLE_SPIRIT_TO_BOSS_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1352,7 +1337,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_TEMPLE_WATER,
 		{
-			OOT_TEMPLE_WATER,
+			OOT_TEMPLE_WATER, (uint8_t)OoTRegions::Lake_Hylia,
 			{
 				{ OOT_TEMPLE_WATER_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_TEMPLE_WATER_TO_BOSS_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1363,7 +1348,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_THIEVES_HIDEOUT,
 		{
-			OOT_THIEVES_HIDEOUT,
+			OOT_THIEVES_HIDEOUT, (uint8_t)OoTRegions::Gerudo_Fortress,
 			{
 				{ OOT_HIDEOUT_LEFT_JAIL_1_FROM_FORTRESS, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_HIDEOUT_RIGHT_JAIL_1_FROM_FORTRESS, { UINT32_MAX, UINT32_MAX } },
@@ -1385,7 +1370,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_TOMB_DAMPE_WINDMILL,
 		{
-			OOT_TOMB_DAMPE_WINDMILL,
+			OOT_TOMB_DAMPE_WINDMILL, (uint8_t)OoTRegions::Graveyard,
 			{
 				{ OOT_GRAVE_DAMPE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -1395,7 +1380,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_TOMB_FAIRY,
 		{
-			OOT_TOMB_FAIRY,
+			OOT_TOMB_FAIRY, (uint8_t)OoTRegions::Graveyard,
 			{
 				{ OOT_GRAVE_SHIELD_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -1405,7 +1390,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_TOMB_REDEAD,
 		{
-			OOT_TOMB_REDEAD,
+			OOT_TOMB_REDEAD, (uint8_t)OoTRegions::Graveyard,
 			{
 				{ OOT_GRAVE_REDEAD_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -1415,7 +1400,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_TOMB_ROYAL,
 		{
-			OOT_TOMB_ROYAL,
+			OOT_TOMB_ROYAL, (uint8_t)OoTRegions::Graveyard,
 			{
 				{ OOT_GRAVE_ROYAL_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -1425,7 +1410,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_TREASURE_SHOP,
 		{
-			OOT_TREASURE_SHOP,
+			OOT_TREASURE_SHOP, (uint8_t)OoTRegions::Market,
 			{
 				{ OOT_TREASURE_GAME_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -1435,7 +1420,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_WINDMILL,
 		{
-			OOT_WINDMILL,
+			OOT_WINDMILL, (uint8_t)OoTRegions::Kakariko,
 			{
 				{ OOT_WINDMILL_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -1443,9 +1428,24 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 		}
 	},
 	{
+		OOT_ZORA_DOMAIN,
+		{
+			OOT_ZORA_DOMAIN, (uint8_t)OoTRegions::Zora_Domain,
+			{
+				{ OOT_KOKIRI_END_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_ZORA_DOMAIN_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_GROTTO_EXIT_FAIRY_DOMAIN, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_DOMAIN_FROM_FOUNTAIN_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_ZORA_DOMAIN_FROM_LAKE_HYLIA_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_ZORA_DOMAIN_FROM_SHOP_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
 		OOT_ZORA_FOUNTAIN,
 		{
-			OOT_ZORA_FOUNTAIN,
+			OOT_ZORA_FOUNTAIN, (uint8_t)OoTRegions::Zora_Fountain,
 			{
 				{ OOT_ZORA_FOUNTAIN_FROM_JABU_JABU_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_FOUNTAIN_ZORA_ENTR, { UINT32_MAX, UINT32_MAX } },
@@ -1458,7 +1458,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_ZORA_RIVER,
 		{
-			OOT_ZORA_RIVER,
+			OOT_ZORA_RIVER, (uint8_t)OoTRegions::Zora_River,
 			{
 				{ OOT_ZORA_RIVER_FROM_FIELD_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ OOT_GROTTO_EXIT_GENERIC_RIVER, { UINT32_MAX, UINT32_MAX } },
@@ -1474,7 +1474,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 	{
 		OOT_ZORA_SHOP,
 		{
-			OOT_ZORA_SHOP,
+			OOT_ZORA_SHOP, (uint8_t)OoTRegions::Zora_Domain,
 			{
 				{ OOT_SHOP_ZORA_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},

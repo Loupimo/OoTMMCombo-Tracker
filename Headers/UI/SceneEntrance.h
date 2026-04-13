@@ -23,6 +23,7 @@ public:
 
 	void SaveLink(QFile* SaveFile);
 	size_t LoadLink(QByteArray* Data, size_t Offset);
+	void ResetLink();
 
 } EntranceLink;
 
@@ -30,6 +31,7 @@ public:
 typedef struct SceneEntranceMetaInf
 {
 	uint32_t SceneID;								// The scene ID to render
+	uint8_t RegionID;								// The region ID the scene belongs to
 	std::map<uint32_t, EntranceLink> EntranceIDs;	// The entrances to display on the scene with their in and out link
 	const char* MapPath;							// The mini map image path to load
 
@@ -37,6 +39,7 @@ public:
 
 	void SaveMetaInf(QFile* SaveFile);
 	size_t LoadMetaInf(QByteArray* Data, size_t Offset);
+	void ResetMetaInf();
 
 } SceneEntranceMetaInf;
 
@@ -75,3 +78,6 @@ void SaveEntrancesFor(QFile* SaveFile, std::map<uint32_t, SceneEntranceMetaInf>*
 size_t LoadEntrances(QByteArray* Data, size_t Offset);
 
 size_t LoadEntrancesFor(QByteArray* Data, size_t Offset, std::map<uint32_t, SceneEntranceMetaInf>* Array);
+
+void ResetEntrancesFor(std::map<uint32_t, SceneEntranceMetaInf>* Array);
+void ResetAllEntrances();

@@ -44,6 +44,16 @@ size_t EntranceLink::LoadLink(QByteArray* Data, size_t Offset)
     return Offset;
 }
 
+
+void EntranceLink::ResetLink()
+{
+    this->InLink = UINT32_MAX;
+    this->OutLink = UINT32_MAX;
+    this->InLinkGame = NO_GAME;
+    this->OutLinkGame = NO_GAME;
+}
+
+
 void SceneEntranceMetaInf::SaveMetaInf(QFile* SaveFile)
 {
     QByteArray tmp(sizeof(uint32_t), 0);
@@ -108,6 +118,15 @@ size_t SceneEntranceMetaInf::LoadMetaInf(QByteArray* Data, size_t Offset)
 }
 
 
+void SceneEntranceMetaInf::ResetMetaInf()
+{
+    for (auto& [currEntranceID, entrance] : this->EntranceIDs)
+    {	// Load all entrance links
+
+        entrance.ResetLink();
+    }
+}
+
 
 SceneEntranceMetaInf * GetSceneEntranceMetaInf(int Game, uint32_t SceneID)
 {
@@ -143,8 +162,6 @@ std::map<uint32_t, SceneEntranceMetaInf>* GetSceneEntranceMetaInfForGame(int Gam
 
 	return NULL;
 }
-
-
 
 
 void SaveEntrances(QFile* SaveFile)
@@ -204,4 +221,21 @@ size_t LoadEntrancesFor(QByteArray* Data, size_t Offset, std::map<uint32_t, Scen
     }
 
     return Offset;
+}
+
+
+void ResetEntrancesFor(std::map<uint32_t, SceneEntranceMetaInf>* Array)
+{
+    for (auto& [sceneID, scene] : *Array)
+    {	// Reset all scenes meta info
+
+        scene.ResetMetaInf();
+    }
+}
+
+
+void ResetAllEntrances()
+{
+    ResetEntrancesFor(GetSceneEntranceMetaInfForGame(OOT_GAME));
+    ResetEntrancesFor(GetSceneEntranceMetaInfForGame(MM_GAME));
 }

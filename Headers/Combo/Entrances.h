@@ -259,6 +259,15 @@ public:
 	*   @return <b>True</b> if the message comes from a sonata of awakening to open the woodfall temple, <b>false</b> otherwise.
 	*/
 	bool IsSonataWoodfall(EntranceMessage& PrevMessage, EntranceMessage& CurrMessage);
+	
+	/*
+	*   Check if the given data come from a spawn entrance.
+	*
+	*	@param Message		The entrance message to parse.
+	*
+	*   @return <b>True</b> if the message comes from a spawn entrance, <b>false</b> otherwise.
+	*/
+	bool IsSpawn(EntranceMessage& CurrMessage);
 
 	/*
 	*   Check if the given data come from a sun's song.
