@@ -30,6 +30,7 @@ uint32_t gActiveRoomOffset = OOT_CURR_ROOM;                 // The current offse
 uint32_t gActiveGrottoOffset = OOT_GROTTO_DATA;             // The current offset to add to reach the grotto data value.
 uint32_t gActiveCoordOffset = OOT_PLAYER_COORD;             // The current offset to add to reach the last respawned player corrdinates.
 uint32_t gActiveSceneOffset = OOT_SCENE_OFFSET;             // The current offset to add to reach the last scene offset.
+uint32_t gActiveCurrSceneOffset = OOT_CURR_SCENE_OFFSET;    // The current offset to add to reach the current scene ID offset.
 uint32_t gActiveFaroreOffset = OOT_FARORE_STATE;            // The current offset to add to reach the farore state offset.
 uint32_t gOOTActiveGlobalOffset = 0;                        // An offset to add to the active scene offset to reach the gLastScene variable for OoT.
 uint32_t gMMActiveGlobalOffset = 0;                         // An offset to add to the active scene offset to reach the gLastScene variable for MM.
@@ -168,6 +169,7 @@ __asm mov[gActiveOwlOffset], ##Game##_OWL_CHOICE_ID               \
 __asm mov[gActiveRoomOffset], ##Game##_CURR_ROOM                  \
 __asm mov[gActiveGrottoOffset], ##Game##_GROTTO_DATA              \
 __asm mov[gActiveCoordOffset], ##Game##_PLAYER_COORD              \
+__asm mov[gActiveCurrSceneOffset], ##Game##_CURR_SCENE_OFFSET     \
 __asm mov[gActiveSceneOffset], ##Game##_SCENE_OFFSET              \
 __asm mov[gActiveFaroreOffset], ##Game##_FARORE_STATE             \
 __asm mov eax, g##Game##ActiveGlobalOffset                        \
@@ -605,8 +607,16 @@ __declspec(naked) void PCHook()
             mov cl, byte ptr[edx]
             mov [edi + 4], ecx    // Store Mem = entrance flag + farore wind state + owl choice
 
+
             // Spawned scene ID
             READ_N64_REG(V0_OFFSET, eax)
+
+            // Current Scene
+            COMPUTE_RAM_ADDR([gActiveCurrSceneOffset], ebx)
+            mov ebx, [ebx]
+            and ebx, 0xFFFF0000
+            or eax, ebx
+
 
             // Build last played song
             COMPUTE_RAM_ADDR([gActiveSongOffset], edx)
@@ -681,12 +691,15 @@ __declspec(naked) void PCHook()
         FARORE_END :
             mov [edi + 4], ecx    // Store Mem = entrance flag + farore wind state + owl choice
 
-            // gLastScene = Current scene ID
-            //mov ebx, [gActiveEntranceReg]
-            //READ_N64_REG(ebx, eax)
-            //add eax, [gActiveSceneOffset]
+            // gLastScene
             COMPUTE_RAM_ADDR([gActiveSceneOffset], eax)
             mov eax, [eax]
+
+            // Current Scene
+            COMPUTE_RAM_ADDR([gActiveCurrSceneOffset], ebx)
+            mov ebx, [ebx]
+            and ebx, 0xFFFF0000
+            or eax, ebx
 
             // Build last played song
             COMPUTE_RAM_ADDR([gActiveSongOffset], edx)

@@ -359,6 +359,11 @@ bool EntranceHelper::IsDeath(EntranceMessage& PrevMessage, EntranceMessage& Curr
 
         return CurrMessage.EntranceID == MM_IKANA_CASTLE_EXTERIOR_FROM_WELL_ENTR;
     }
+    else if (CurrMessage.EntranceID == OOT_TEMPLE_OF_TIME_MASTER_SWORD_CS_ENTR)
+    {   // It is our only self loop allowed
+
+        return false;
+    }
 
     return PrevMessage.CurrRoom == CurrMessage.CurrRoom && CurrMessage.SceneID == PrevMessage.SceneID && CurrMessage.EntranceID == PrevMessage.EntranceID;
     //return PrevMessage.MetaInf->Type == EntranceType::Normal && CurrMessage.SceneID == PrevMessage.SceneID && CurrMessage.EntranceID == PrevMessage.EntranceID;
@@ -655,66 +660,73 @@ uint32_t EntranceHelper::GetGrottoEntrance(EntranceMessage& Message, uint32_t La
 }
 
 
-uint32_t EntranceHelper::GetGrottoExit(EntranceMessage& Message, uint32_t LastScene)
+uint32_t EntranceHelper::GetGrottoExit(EntranceMessage& Message)
 {
     uint8_t currRoomNum = 0;
 
     if (Message.GameID == OOT_GAME)
     {
-        switch (Message.CurrRoom)
+        switch (Message.CurrSceneID)
         {
-            case 0x00:
+            case OOT_GROTTOS:
             {
-
-                switch (Message.GrottoData & 0x1f)
+                switch (Message.CurrRoom)
                 {
-                    case 0x0c: return OOT_GROTTO_EXIT_GENERIC_KOKIRI_FOREST;
-                    case 0x14: return OOT_GROTTO_EXIT_GENERIC_LOST_WOODS;
-                    case 0x08: return OOT_GROTTO_EXIT_GENERIC_KAKARIKO;
-                    case 0x17: return OOT_GROTTO_EXIT_GENERIC_DMT;
-                    case 0x1a: return OOT_GROTTO_EXIT_GENERIC_DMC;
-                    case 0x09: return OOT_GROTTO_EXIT_GENERIC_RIVER;
-                    case 0x02: return OOT_GROTTO_EXIT_GENERIC_HF_SOUTHEAST;
-                    case 0x03: return OOT_GROTTO_EXIT_GENERIC_HF_OPEN;
-                    case 0x00: return OOT_GROTTO_EXIT_GENERIC_HF_MARKET;
+                    case 0x00:
+                    {
+
+                        switch (Message.GrottoData & 0x1f)
+                        {
+                            case 0x0c: return OOT_GROTTO_EXIT_GENERIC_KOKIRI_FOREST;
+                            case 0x14: return OOT_GROTTO_EXIT_GENERIC_LOST_WOODS;
+                            case 0x08: return OOT_GROTTO_EXIT_GENERIC_KAKARIKO;
+                            case 0x17: return OOT_GROTTO_EXIT_GENERIC_DMT;
+                            case 0x1a: return OOT_GROTTO_EXIT_GENERIC_DMC;
+                            case 0x09: return OOT_GROTTO_EXIT_GENERIC_RIVER;
+                            case 0x02: return OOT_GROTTO_EXIT_GENERIC_HF_SOUTHEAST;
+                            case 0x03: return OOT_GROTTO_EXIT_GENERIC_HF_OPEN;
+                            case 0x00: return OOT_GROTTO_EXIT_GENERIC_HF_MARKET;
+                        }
+                        break;
+                    }
+                    case 0x01: return OOT_GROTTO_EXIT_SCRUB_HEART_PIECE;
+                    case 0x02: return OOT_GROTTO_EXIT_REDEAD;
+                    case 0x03: return OOT_GROTTO_EXIT_TRAIL_COW;
+                    case 0x04: return OOT_GROTTO_EXIT_FIELD_COW;
+                    case 0x05: return OOT_GROTTO_EXIT_OCTOROK;
+                    case 0x06: return OOT_GROTTO_EXIT_SCRUB_UPGRADE;
+                    case 0x07: return OOT_GROTTO_EXIT_WOLFOS;
+                    case 0x08: return OOT_GROTTO_EXIT_CASTLE;
+                    case 0x09:  // Double scrubs
+                    case 0x0c:  // Triple scrubs
+                    {
+
+                        switch (Message.SceneID)
+                        {
+                            // Double scrubs
+                            case OOT_SACRED_FOREST_MEADOW: return OOT_GROTTO_EXIT_SCRUBS2_SFM;
+                            case OOT_ZORA_RIVER: return OOT_GROTTO_EXIT_SCRUBS2_RIVER;
+                            case OOT_GERUDO_VALLEY: return OOT_GROTTO_EXIT_SCRUBS2_VALLEY;
+                            case OOT_DESERT_COLOSSUS: return OOT_GROTTO_EXIT_SCRUBS2_COLOSSUS;
+
+                            // Triple scrubs
+                            case OOT_LON_LON_RANCH: return OOT_GROTTO_EXIT_SCRUBS3_RANCH;
+                            case OOT_GORON_CITY: return OOT_GROTTO_EXIT_SCRUBS3_GORON_CITY;
+                            case OOT_DEATH_MOUNTAIN_CRATER: return OOT_GROTTO_EXIT_SCRUBS3_DMC;
+                            case OOT_LAKE_HYLIA: return OOT_GROTTO_EXIT_SCRUBS3_LAKE;
+                        }
+                        break;
+                    }
+                    case 0x0a: return OOT_GROTTO_EXIT_TEKTITE;
+                    case 0x0b: return OOT_GROTTO_EXIT_DEKU_THEATER;
+                    case 0x0d: return OOT_GROTTO_EXIT_FIELD_TREE;
                 }
                 break;
             }
-            case 0x01: return OOT_GROTTO_EXIT_SCRUB_HEART_PIECE;
-            case 0x02: return OOT_GROTTO_EXIT_REDEAD;
-            case 0x03: return OOT_GROTTO_EXIT_TRAIL_COW;
-            case 0x04: return OOT_GROTTO_EXIT_FIELD_COW;
-            case 0x05: return OOT_GROTTO_EXIT_OCTOROK;
-            case 0x06: return OOT_GROTTO_EXIT_SCRUB_UPGRADE;
-            case 0x07: return OOT_GROTTO_EXIT_WOLFOS;
-            case 0x08: return OOT_GROTTO_EXIT_CASTLE;
-            case 0x09:  // Double scrubs
-            case 0x0c:  // Triple scrubs
-            {
-                
-                switch (LastScene)
-                {
-                    // Double scrubs
-                    case OOT_SACRED_FOREST_MEADOW: return OOT_GROTTO_EXIT_SCRUBS2_SFM;
-                    case OOT_ZORA_RIVER: return OOT_GROTTO_EXIT_SCRUBS2_RIVER;
-                    case OOT_GERUDO_VALLEY: return OOT_GROTTO_EXIT_SCRUBS2_VALLEY;
-                    case OOT_DESERT_COLOSSUS: return OOT_GROTTO_EXIT_SCRUBS2_COLOSSUS;
-
-                    // Triple scrubs
-                    case OOT_LON_LON_RANCH: return OOT_GROTTO_EXIT_SCRUBS3_RANCH;
-                    case OOT_GORON_CITY: return OOT_GROTTO_EXIT_SCRUBS3_GORON_CITY;
-                    case OOT_DEATH_MOUNTAIN_CRATER: return OOT_GROTTO_EXIT_SCRUBS3_DMC;
-                    case OOT_LAKE_HYLIA: return OOT_GROTTO_EXIT_SCRUBS3_LAKE;
-                }
-                break;
-            }
-            case 0x0a: return OOT_GROTTO_EXIT_TEKTITE;
-            case 0x0b: return OOT_GROTTO_EXIT_DEKU_THEATER;
-            case 0x0d: return OOT_GROTTO_EXIT_FIELD_TREE;
 
             case OOT_FAIRY_FOUNTAIN:
             {
-                switch (LastScene)
+                switch (Message.SceneID)
                 {
                     case OOT_SACRED_FOREST_MEADOW: return OOT_GROTTO_EXIT_FAIRY_SFM;
                     case OOT_HYRULE_FIELD: return OOT_GROTTO_EXIT_FAIRY_HF;
@@ -739,46 +751,58 @@ uint32_t EntranceHelper::GetGrottoExit(EntranceMessage& Message, uint32_t LastSc
     else
     {   // MM
 
-        switch (Message.CurrRoom)
+        switch (Message.CurrSceneID)
         {
-            case 0x00: return MM_GROTTO_EXIT_GOSSIPS_OCEAN;
-            case 0x01: return MM_GROTTO_EXIT_GOSSIPS_SWAMP;
-            case 0x02: return MM_GROTTO_EXIT_GOSSIPS_CANYON;
-            case 0x03: return MM_GROTTO_EXIT_GOSSIPS_MOUNTAIN;
-            case 0x04:
+            case MM_GROTTOS:
             {
-                switch (Message.GrottoData & 0x1f)
+                switch (Message.CurrRoom)
                 {
-                    case 0x13: return MM_GROTTO_EXIT_GENERIC_PATH_SNOWHEAD;
-                    case 0x14: return MM_GROTTO_EXIT_GENERIC_VALLEY;
-                    case 0x15: return MM_GROTTO_EXIT_GENERIC_ZORA_CAPE;
-                    case 0x16: return MM_GROTTO_EXIT_GENERIC_PATH_IKANA;
-                    case 0x17: return MM_GROTTO_EXIT_GENERIC_GREAT_BAY_COAST;
-                    case 0x18: return MM_GROTTO_EXIT_GENERIC_GRAVEYARD;
-                    case 0x19: return MM_GROTTO_EXIT_GENERIC_TWIN_ISLANDS;
-                    case 0x1a: return MM_GROTTO_EXIT_GENERIC_FIELD_PILLAR;
-                    case 0x1b: return MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE;
-                    case 0x1c: return MM_GROTTO_EXIT_GENERIC_WOODS;
-                    case 0x1d: return MM_GROTTO_EXIT_GENERIC_SWAMP;
-                    case 0x1e: return MM_GROTTO_EXIT_GENERIC_PATH_SWAMP;
-                    case 0x1f: return MM_GROTTO_EXIT_GENERIC_GRASS;
+                    case 0x00: return MM_GROTTO_EXIT_GOSSIPS_OCEAN;
+                    case 0x01: return MM_GROTTO_EXIT_GOSSIPS_SWAMP;
+                    case 0x02: return MM_GROTTO_EXIT_GOSSIPS_CANYON;
+                    case 0x03: return MM_GROTTO_EXIT_GOSSIPS_MOUNTAIN;
+                    case 0x04:
+                    {
+                        switch (Message.GrottoData & 0x1f)
+                        {
+                            case 0x13: return MM_GROTTO_EXIT_GENERIC_PATH_SNOWHEAD;
+                            case 0x14: return MM_GROTTO_EXIT_GENERIC_VALLEY;
+                            case 0x15: return MM_GROTTO_EXIT_GENERIC_ZORA_CAPE;
+                            case 0x16: return MM_GROTTO_EXIT_GENERIC_PATH_IKANA;
+                            case 0x17: return MM_GROTTO_EXIT_GENERIC_GREAT_BAY_COAST;
+                            case 0x18: return MM_GROTTO_EXIT_GENERIC_GRAVEYARD;
+                            case 0x19: return MM_GROTTO_EXIT_GENERIC_TWIN_ISLANDS;
+                            case 0x1a: return MM_GROTTO_EXIT_GENERIC_FIELD_PILLAR;
+                            case 0x1b: return MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE;
+                            case 0x1c: return MM_GROTTO_EXIT_GENERIC_WOODS;
+                            case 0x1d: return MM_GROTTO_EXIT_GENERIC_SWAMP;
+                            case 0x1e: return MM_GROTTO_EXIT_GENERIC_PATH_SWAMP;
+                            case 0x1f: return MM_GROTTO_EXIT_GENERIC_GRASS;
+                        }
+                        break;
+                    }
+                    case 0x07: return MM_GROTTO_EXIT_DODONGO;
+                    case 0x09: return MM_GROTTO_EXIT_SCRUB;
+                    case 0x0a:
+                    {
+                        switch (Message.SceneID)
+                        {
+                            case MM_TERMINA_FIELD: return MM_GROTTO_EXIT_COW_FIELD;
+                            case MM_GREAT_BAY_COAST: return MM_GROTTO_EXIT_COW_COAST;
+                        }
+                        break;
+                    }
+                    case 0x0b: return MM_GROTTO_EXIT_BIO_BABA;
+                    case 0x0d: return MM_GROTTO_EXIT_PEAHAT;
+                    case 0x0e: return MM_GROTTO_EXIT_HOT_WATER;
+
+                    default:
+                    {
+                        break;
+                    }
                 }
                 break;
             }
-            case 0x07: return MM_GROTTO_EXIT_DODONGO;
-            case 0x09: return MM_GROTTO_EXIT_SCRUB;
-            case 0x0a:
-            {
-                switch (LastScene)
-                {
-                    case MM_TERMINA_FIELD: return MM_GROTTO_EXIT_COW_FIELD;
-                    case MM_GREAT_BAY_COAST: return MM_GROTTO_EXIT_COW_COAST;
-                }
-                break;
-            }
-            case 0x0b: return MM_GROTTO_EXIT_BIO_BABA;
-            case 0x0d: return MM_GROTTO_EXIT_PEAHAT;
-            case 0x0e: return MM_GROTTO_EXIT_HOT_WATER;
 
             default:
             {
@@ -1689,10 +1713,92 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
     {
         switch (Message.SceneID)
         {
+            case OOT_BAZAAR:
+            {
+                switch (Message.EntranceID)
+                {
+                    case OOT_KAKARIKO_BAZAAR_ENTR:
+                    {
+                        Message.SceneID = OOT_KAKARIKO_BAZAAR;
+                        break;
+                    }
+
+                    case OOT_MARKET_BAZAAR_ENTR:
+                    {
+                        Message.SceneID = OOT_MARKET_BAZAAR;
+                        break;
+                    }
+                }
+                break;
+            }
+
+            case OOT_SHOOTING_GALLERY:
+            {
+                switch (Message.EntranceID)
+                {
+                    case OOT_ADULT_ARCHERY_ENTR:
+                    {
+                        Message.SceneID = OOT_KAKARIKO_SHOOTING;
+                        break;
+                    }
+
+                    case OOT_CHILD_ARCHERY_ENTR:
+                    {
+                        Message.SceneID = OOT_MARKET_SHOOTING;
+                        break;
+                    }
+                }
+
+                break;
+            }
+
             case OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES:
             case OOT_GREAT_FAIRY_FOUNTAIN_SPELLS:
             {
-                Message.SceneID = OOT_GREAT_FAIRY;
+                switch (Message.EntranceID)
+                {
+                    // First magic upgrade
+                    case OOT_FAIRY_MAGIC_ENTR:
+                    {
+                        Message.SceneID = OOT_GREAT_FAIRY_MAGIC;
+                        break;
+                    }
+
+                    // Second magic upgrade
+                    case OOT_FAIRY_MAGIC2_ENTR:
+                    {
+                        Message.SceneID = OOT_GREAT_FAIRY_MAGIC2;
+                        break;
+                    }
+
+                    // Double defense
+                    case OOT_FAIRY_DEFENSE_ENTR:
+                    {
+                        Message.SceneID = OOT_GREAT_FAIRY_DEFENSE;
+                        break;
+                    }
+
+                    // Din's fire
+                    case OOT_FAIRY_DIN_ENTR:
+                    {
+                        Message.SceneID = OOT_GREAT_FAIRY_CASTLE;
+                        break;
+                    }
+
+                    // Farore's wind
+                    case OOT_FAIRY_FARORE_ENTR:
+                    {
+                        Message.SceneID = OOT_GREAT_FAIRY_FARORE;
+                        break;
+                    }
+
+                    // Nayru's love
+                    case OOT_FAIRY_NAYRU_ENTR:
+                    {
+                        Message.SceneID = OOT_GREAT_FAIRY_NAYRU;
+                        break;
+                    }
+                }
                 break;
             }
 
@@ -1745,10 +1851,6 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                 break;
             }
 
-            /*case OOT_GANON_TOWER:
-            {
-                if (Message.EntranceID)
-            }*/
 
             case OOT_MARKET_ADULT:
             {
@@ -2532,7 +2634,7 @@ void EntranceHelper::ParseIncomingMessage(EntranceMessage& Message)
         }
         else if (this->IsGrottoExit(Message))
         {
-            Message.EntranceID = this->GetGrottoExit(Message, Message.SceneID);
+            Message.EntranceID = this->GetGrottoExit(Message);
         }
         else
         {
@@ -2648,7 +2750,7 @@ void EntranceHelper::ParseOutgoingMessage(EntranceMessage& Message)
     else if (this->IsGrottoExit(Message))
     {   // The current entrance is a grotto exit
 
-        Message.EntranceID = this->GetGrottoExit(Message, Message.SceneID);
+        Message.EntranceID = this->GetGrottoExit(Message);
     }
     else if (this->IsWarpEntrance(Message))
     {   // The current entrance is a warp zone

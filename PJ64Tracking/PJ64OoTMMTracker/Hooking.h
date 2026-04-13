@@ -54,25 +54,27 @@
 //#define MM_SCENE_OFFSET     -0x00000118     // The offset to add to the real game address to reach the gLastScene for MM
 //#define OOT_SCENE_OFFSET     0x00441A58     // The offset to add to the real game address to reach the gLastScene for OoT
 //#define MM_SCENE_OFFSET      0x00770EC0     // The offset to add to the real game address to reach the gLastScene for MM
-#define OOT_SCENE_OFFSET     0x00440000     // The offset to add to the real game address to reach the gLastScene for OoT. An offset is also added to reach the variable.
-#define MM_SCENE_OFFSET      0x00770000     // The offset to add to the real game address to reach the gLastScene for MM. An offset is also added to reach the variable.
-#define OOT_NEXT_ENTRANCE    0x001DA2B8     // The offset to add to the real game address to reach the playState.nextEntrance for OoT
-#define MM_NEXT_ENTRANCE     0x003FF398     // The offset to add to the real game address to reach the playState.nextEntrance for MM
-#define OOT_OWL_CHOICE_ID    0x001D8E4A     // The offset to add to the real game address to reach the playState.pauseCtx.cursorSlot[1] for OoT
-#define MM_OWL_CHOICE_ID     0x003FDAB8     // The offset to add to the real game address to reach the playState.pauseCtx.cursorSlot[1] for MM
-#define OOT_LAST_SONG_ID     0x001D8966     // The offset to add to the real game address to reach the playState.msgCtx.lastPlayedSong for OoT
-#define MM_LAST_SONG_ID      0x003FD452     // The offset to add to the real game address to reach the playState.msgCtx.songPlayed for 
-#define OOT_CURR_ROOM        0x001DA15F     // The offset to add to the real game address to reach the current room index for OoT
-#define MM_CURR_ROOM         0x003FF203     // The offset to add to the real game address to reach the current room index for MM
-#define OOT_PLAYER_COORD     0x001C8714     // The offset to add to the real game address to reach the player coordinates for OoT
-#define MM_PLAYER_COORD      0x003E6DD4     // The offset to add to the real game address to reach the player coordinates for MM
-#define OOT_GROTTO_DATA      0x0011B964     // The offset to add to the real game address to reach the gGrottoData for OoT
-#define MM_GROTTO_DATA       0x001F3394     // The offset to add to the real game address to reach the gGrottoData for MM
-#define IN_MAGIC             0xFFAA0000     // The magic flag that indicates the message is an incoming entrance
-#define OUT_MAGIC            0xFFBB0000     // The magic flag that indicates the message is an outgoing entrance
-#define OOT_FARORE_STATE     0x001DB09C     // The offset to add to real game address to reach the state flag used to determined if farore's wind has been used for OoT
-#define MM_FARORE_STATE      0x0040081C     // The offset to add to real game address to reach the state flag used to determined if farore's wind has been used for MM
-#define FARORE_USED          0x30000000     // The value of the state flag when the farore's wind is used
+#define OOT_CURR_SCENE_OFFSET 0x001C8544     // The offset to add to the real game address to reach the current scene ID for OoT.
+#define MM_CURR_SCENE_OFFSET  0x003E6BC4     // The offset to add to the real game address to reach the current scene ID for MM.
+#define OOT_SCENE_OFFSET      0x00440000     // The offset to add to the real game address to reach the gLastScene for OoT. An offset is also added to reach the variable.
+#define MM_SCENE_OFFSET       0x00770000     // The offset to add to the real game address to reach the gLastScene for MM. An offset is also added to reach the variable.
+#define OOT_NEXT_ENTRANCE     0x001DA2B8     // The offset to add to the real game address to reach the playState.nextEntrance for OoT
+#define MM_NEXT_ENTRANCE      0x003FF398     // The offset to add to the real game address to reach the playState.nextEntrance for MM
+#define OOT_OWL_CHOICE_ID     0x001D8E4A     // The offset to add to the real game address to reach the playState.pauseCtx.cursorSlot[1] for OoT
+#define MM_OWL_CHOICE_ID      0x003FDAB8     // The offset to add to the real game address to reach the playState.pauseCtx.cursorSlot[1] for MM
+#define OOT_LAST_SONG_ID      0x001D8966     // The offset to add to the real game address to reach the playState.msgCtx.lastPlayedSong for OoT
+#define MM_LAST_SONG_ID       0x003FD452     // The offset to add to the real game address to reach the playState.msgCtx.songPlayed for 
+#define OOT_CURR_ROOM         0x001DA15F     // The offset to add to the real game address to reach the current room index for OoT
+#define MM_CURR_ROOM          0x003FF203     // The offset to add to the real game address to reach the current room index for MM
+#define OOT_PLAYER_COORD      0x001C8714     // The offset to add to the real game address to reach the player coordinates for OoT
+#define MM_PLAYER_COORD       0x003E6DD4     // The offset to add to the real game address to reach the player coordinates for MM
+#define OOT_GROTTO_DATA       0x0011B964     // The offset to add to the real game address to reach the gGrottoData for OoT
+#define MM_GROTTO_DATA        0x001F3394     // The offset to add to the real game address to reach the gGrottoData for MM
+#define IN_MAGIC              0xFFAA0000     // The magic flag that indicates the message is an incoming entrance
+#define OUT_MAGIC             0xFFBB0000     // The magic flag that indicates the message is an outgoing entrance
+#define OOT_FARORE_STATE      0x001DB09C     // The offset to add to real game address to reach the state flag used to determined if farore's wind has been used for OoT
+#define MM_FARORE_STATE       0x0040081C     // The offset to add to real game address to reach the state flag used to determined if farore's wind has been used for MM
+#define FARORE_USED           0x30000000     // The value of the state flag when the farore's wind is used
 
 #ifdef _DEBUG
 

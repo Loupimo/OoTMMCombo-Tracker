@@ -128,8 +128,9 @@ typedef struct EntranceMessage
 	uint8_t OwlID;				// The message owl ID.
 	uint8_t CurrRoom;			// The message current room.
 	uint8_t GrottoData;			// The message grotto data.
-	uint32_t EntranceID;		// The final message entrance ID
+	uint16_t CurrSceneID;		// The current scene ID.
 	uint32_t SceneID;			// The final message scene ID.
+	uint32_t EntranceID;		// The final message entrance ID.
 	float X;					// The X respawning player coordinate.
 	float Y;					// The Y respawning player coordinate.
 	float Z;					// The Z respawning player coordinate.
@@ -147,7 +148,8 @@ typedef struct EntranceMessage
 		this->OoTSongID = (OoTSongs)((Buffer[0] >> 24) & 0xFF);
 		this->CurrRoom = (this->Buffer[0] >> 16) & 0xFF;
 		this->GrottoData = (this->Buffer[0] >> 8) & 0xFF;
-		this->SceneID = this->Buffer[1];
+		this->CurrSceneID = (uint16_t)(this->Buffer[1] >> 16);
+		this->SceneID = (uint16_t)this->Buffer[1];
 		this->EntranceID = this->Buffer[2];
 		memcpy(&this->X, &this->Buffer[3], sizeof(float));
 		memcpy(&this->Y, &this->Buffer[4], sizeof(float));
@@ -163,8 +165,9 @@ typedef struct EntranceMessage
 		this->OwlID = 0;
 		this->CurrRoom = 0;
 		this->GrottoData = 0;
-		this->EntranceID = UINT32_MAX;
+		this->CurrSceneID = UINT16_MAX;
 		this->SceneID = UINT32_MAX;
+		this->EntranceID = UINT32_MAX;
 		this->X = 0;
 		this->Y = 0;
 		this->Z = 0;
@@ -343,11 +346,10 @@ public:
 	*	@param Game			The game the data come from.
 	*	@param CurrRoom		The current room index.
 	*	@param GrottoData	The data related to the grotto entrance.
-	*	@param LastScene	The last scene ID before exiting the grotto.
 	* 
 	*   @return The scene grotto associated to the touched exit.
 	*/
-	uint32_t GetGrottoExit(EntranceMessage& Message, uint32_t LastScene);
+	uint32_t GetGrottoExit(EntranceMessage& Message);
 	
 	/*
 	*   Get the exit grotto associated to the current last entrance ID.

@@ -103,7 +103,7 @@ OOT_GANON_CASTLE_EXTERIOR;Ganon Castle Exterior;./Resources/OoT/Ganon/Exterior.j
 OOT_GROTTO_KOKIRI_FOREST_STORMS;Song of Storms Grotto;./Resources/OoT/Grottos/Open.png;Kokiri_Forest;false;oot
 OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;Deku Scrubs Grotto;./Resources/OoT/Grottos/Double_Scrubs.png;Lost_Woods;false;oot
 OOT_GROTTO_LOST_WOODS_GENERIC;Generic Grotto;./Resources/OoT/Grottos/Open.png;Lost_Woods;false;oot
-OOT_GROTTO_LOST_WOODS_THEATER;Deku's Theater Grotto;./Resources/OoT/Lost_Woods/Theater.png;Lost_Woods;false;oot
+OOT_GROTTO_LOST_WOODS_THEATER;Deku's Theater;./Resources/OoT/Lost_Woods/Theater.png;Lost_Woods;false;oot
 OOT_GROTTO_SACRED_MEADOW_WOLFOS;Wolfos Grotto;./Resources/OoT/Sacred_Forest_Meadow/Wolfos.png;Sacred_Forest_Meadow;false;oot
 OOT_GROTTO_SACRED_MEADOW_STORMS;Song of Storms Grotto;./Resources/OoT/Grottos/Double_Scrubs.png;Sacred_Forest_Meadow;false;oot
 OOT_GROTTO_KAKARIKO_REDEAD;Redead Grotto;./Resources/OoT/Kakariko/Redead.png;Kakariko;false;oot

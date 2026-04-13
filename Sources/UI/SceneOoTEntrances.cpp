@@ -38,11 +38,20 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 		}
 	},
 	{
-		OOT_BAZAAR,
+		OOT_KAKARIKO_BAZAAR,
 		{
-			OOT_BAZAAR, (uint8_t)OoTRegions::Market,
+			OOT_KAKARIKO_BAZAAR, (uint8_t)OoTRegions::Kakariko,
 			{
 				{ OOT_KAKARIKO_BAZAAR_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		OOT_MARKET_BAZAAR,
+		{
+			OOT_MARKET_BAZAAR, (uint8_t)OoTRegions::Market,
+			{
 				{ OOT_MARKET_BAZAAR_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
 			NULL
@@ -417,15 +426,60 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 		}
 	},
 	{
-		OOT_GREAT_FAIRY,
+		OOT_GREAT_FAIRY_MAGIC,
 		{
-			OOT_GREAT_FAIRY, (uint8_t)OoTRegions::Death_Mountain_Trail,
+			OOT_GREAT_FAIRY_MAGIC, (uint8_t)OoTRegions::Death_Mountain_Trail,
 			{
 				{ OOT_FAIRY_MAGIC_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		OOT_GREAT_FAIRY_FARORE,
+		{
+			OOT_GREAT_FAIRY_FARORE, (uint8_t)OoTRegions::Zora_Fountain,
+			{
 				{ OOT_FAIRY_FARORE_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		OOT_GREAT_FAIRY_MAGIC2,
+		{
+			OOT_GREAT_FAIRY_MAGIC2, (uint8_t)OoTRegions::Death_Mountain_Crater,
+			{
 				{ OOT_FAIRY_MAGIC2_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		OOT_GREAT_FAIRY_DEFENSE,
+		{
+			OOT_GREAT_FAIRY_DEFENSE, (uint8_t)OoTRegions::Castle,
+			{
 				{ OOT_FAIRY_DEFENSE_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		OOT_GREAT_FAIRY_CASTLE,
+		{
+			OOT_GREAT_FAIRY_CASTLE, (uint8_t)OoTRegions::Castle,
+			{
 				{ OOT_FAIRY_DIN_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		OOT_GREAT_FAIRY_NAYRU,
+		{
+			OOT_GREAT_FAIRY_NAYRU, (uint8_t)OoTRegions::Desert_Colossus,
+			{
 				{ OOT_FAIRY_NAYRU_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
 			NULL
@@ -1210,11 +1264,20 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 		}
 	},
 	{
-		OOT_SHOOTING_GALLERY,
+		OOT_KAKARIKO_SHOOTING,
 		{
-			OOT_SHOOTING_GALLERY, (uint8_t)OoTRegions::Kakariko,
+			OOT_KAKARIKO_SHOOTING, (uint8_t)OoTRegions::Kakariko,
 			{
 				{ OOT_ADULT_ARCHERY_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		OOT_MARKET_SHOOTING,
+		{
+			OOT_MARKET_SHOOTING, (uint8_t)OoTRegions::Market,
+			{
 				{ OOT_CHILD_ARCHERY_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
 			NULL

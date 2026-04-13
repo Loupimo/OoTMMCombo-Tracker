@@ -111,7 +111,7 @@ SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 	{ "Song of Storms Grotto", "./Resources/OoT/Grottos/Open.png", (uint8_t)OoTRegions::Kokiri_Forest, false, GameLayout::oot },
 	{ "Deku Scrubs Grotto", "./Resources/OoT/Grottos/Double_Scrubs.png", (uint8_t)OoTRegions::Lost_Woods, false, GameLayout::oot },
 	{ "Generic Grotto", "./Resources/OoT/Grottos/Open.png", (uint8_t)OoTRegions::Lost_Woods, false, GameLayout::oot },
-	{ "Deku's Theater Grotto", "./Resources/OoT/Lost_Woods/Theater.png", (uint8_t)OoTRegions::Lost_Woods, false, GameLayout::oot },
+	{ "Deku's Theater", "./Resources/OoT/Lost_Woods/Theater.png", (uint8_t)OoTRegions::Lost_Woods, false, GameLayout::oot },
 	{ "Wolfos Grotto", "./Resources/OoT/Sacred_Forest_Meadow/Wolfos.png", (uint8_t)OoTRegions::Sacred_Forest_Meadow, false, GameLayout::oot },
 	{ "Song of Storms Grotto", "./Resources/OoT/Grottos/Double_Scrubs.png", (uint8_t)OoTRegions::Sacred_Forest_Meadow, false, GameLayout::oot },
 	{ "Redead Grotto", "./Resources/OoT/Kakariko/Redead.png", (uint8_t)OoTRegions::Kakariko, false, GameLayout::oot },
