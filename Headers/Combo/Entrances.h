@@ -6,8 +6,8 @@
 #include <string>
 
 #define WARP_LOADING 0xfffe			// Used to determine if we are in a warping zone.
-#define IN_MAGIC	0xFFAA0000		// Used to determine if the message is an incoming entrance
-#define OUT_MAGIC	0xFFBB0000		// Used to determine if the message is an outgoing entrance
+#define IN_MAGIC	0xFA000000		// Used to determine if the message is an incoming entrance
+#define OUT_MAGIC	0xFB000000		// Used to determine if the message is an outgoing entrance
 #define WARP_SCENE	0xFF3FFF3F		// Used to know if the scene ID is from a new clock cycle
 
 
@@ -90,6 +90,12 @@ enum OwlScene
 	Stone_Tower = 0x28
 };
 
+enum class LinkAge : uint8_t
+{
+	Adult = 0,
+	Child = 1
+};
+
 
 typedef struct EntranceMetaInfo
 {
@@ -116,7 +122,7 @@ typedef struct GrottoEntrance
 
 typedef struct EntranceMessage
 {
-	const uint32_t* Buffer;			// The orignal message data.
+	const uint32_t* Buffer;		// The orignal message data.
 	uint32_t Direction;			// The message direction.
 	uint8_t GameID;				// The final message game ID. 
 	union
@@ -124,6 +130,7 @@ typedef struct EntranceMessage
 		OoTSongs OoTSongID;		// The message OoT song ID.
 		MMSongs MMSongID;		// The message MM song ID.
 	};
+	LinkAge Age;				// The message link's age. 
 	uint8_t FaroreWind;			// The state of the farore's wind.
 	uint8_t OwlID;				// The message owl ID.
 	uint8_t CurrRoom;			// The message current room.
@@ -137,43 +144,9 @@ typedef struct EntranceMessage
 	EntranceMetaInfo* MetaInf;	// The matching entrance meta information.
 	std::string EntranceStr;	// The string matching the direction of the current entrance.
 
-	void SetMessage(uint32_t MsgDirection, uint32_t OwlID, uint32_t Buffer[6])
-	{
-		this->ResetMessage();
-		this->Buffer = Buffer;
-		this->Direction = MsgDirection;
-		this->FaroreWind = (uint8_t)(OwlID >> 8);
-		this->OwlID = (uint8_t)OwlID;
-		this->GameID = this->Buffer[0] & 0xFF;
-		this->OoTSongID = (OoTSongs)((Buffer[0] >> 24) & 0xFF);
-		this->CurrRoom = (this->Buffer[0] >> 16) & 0xFF;
-		this->GrottoData = (this->Buffer[0] >> 8) & 0xFF;
-		this->CurrSceneID = (uint16_t)(this->Buffer[1] >> 16);
-		this->SceneID = (uint16_t)this->Buffer[1];
-		this->EntranceID = this->Buffer[2];
-		memcpy(&this->X, &this->Buffer[3], sizeof(float));
-		memcpy(&this->Y, &this->Buffer[4], sizeof(float));
-		memcpy(&this->Z, &this->Buffer[5], sizeof(float));
-	}
+	void SetMessage(uint32_t MsgDirection, uint32_t OwlID, uint32_t Buffer[6]);
 
-	void ResetMessage()
-	{
-		this->Buffer = nullptr;
-		this->Direction = 0;
-		this->GameID = NO_GAME;
-		this->OoTSongID = OoTSongs::Minuet_of_Forest;
-		this->OwlID = 0;
-		this->CurrRoom = 0;
-		this->GrottoData = 0;
-		this->CurrSceneID = UINT16_MAX;
-		this->SceneID = UINT32_MAX;
-		this->EntranceID = UINT32_MAX;
-		this->X = 0;
-		this->Y = 0;
-		this->Z = 0;
-		this->MetaInf = nullptr;
-		this->EntranceStr = "";
-	}
+	void ResetMessage();
 
 } EntranceMessage;
 

@@ -605,8 +605,19 @@ __declspec(naked) void PCHook()
             mov ecx, IN_MAGIC
             COMPUTE_RAM_ADDR([gActiveOwlOffset], edx)
             mov cl, byte ptr[edx]
-            mov [edi + 4], ecx    // Store Mem = entrance flag + farore wind state + owl choice
 
+            cmp [gGame], GAME_OOT
+            jne PLAY_INIT_STORE_MEM
+
+            COMPUTE_RAM_ADDR(OOT_LINK_AGE, edx)
+            mov edx, [edx]
+            shr edx, 8
+            and edx, 00FF0000h
+            or ecx, edx
+
+        PLAY_INIT_STORE_MEM:
+
+            mov[edi + 4], ecx    // Store Mem = entrance flag + link age + farore wind state + owl choice
 
             // Spawned scene ID
             READ_N64_REG(V0_OFFSET, eax)
@@ -689,6 +700,18 @@ __declspec(naked) void PCHook()
             add ecx, edx
 
         FARORE_END :
+
+            cmp[gGame], GAME_OOT
+            jne TRANSITION_STORE_MEM
+
+            COMPUTE_RAM_ADDR(OOT_LINK_AGE, edx)
+            mov edx, [edx]
+            shr edx, 8
+            and edx, 00FF0000h
+            or ecx, edx
+
+        TRANSITION_STORE_MEM :
+        
             mov [edi + 4], ecx    // Store Mem = entrance flag + farore wind state + owl choice
 
             // gLastScene

@@ -5,13 +5,51 @@
 #include "Multi/Multi.h"
 #include <math.h>
 
-// Contains all warp positions used to determine the correct entrance when spawning using a warp method (boss warp, songs, caught, ...)
-/*static const std::vector<GrottoEntrance> SpecialWarps =
+void EntranceMessage::SetMessage(uint32_t MsgDirection, uint32_t OwlID, uint32_t Buffer[6])
 {
-    { MM_DEKU_KING_CAUGHT, -6, 0, -323 },                   // Deku's King caught
-    { MM_PIRATE_ENTRANCE_CAUGHT, -2808, 14, 130 },          // Pirate entrance caught
-    { MM_BOSS_TEMPLE_SNOWHEAD_WARP_OUT, 1384, 0, -1396 }    // Goht's win warp crystal
-};*/
+    this->ResetMessage();
+    this->Buffer = Buffer;
+    this->Direction = MsgDirection;
+    this->Age = (LinkAge)(OwlID >> 16);
+    this->FaroreWind = (uint8_t)(OwlID >> 8);
+    this->OwlID = (uint8_t)OwlID;
+    this->GameID = this->Buffer[0] & 0xFF;
+    this->OoTSongID = (OoTSongs)((Buffer[0] >> 24) & 0xFF);
+    this->CurrRoom = (this->Buffer[0] >> 16) & 0xFF;
+    this->GrottoData = (this->Buffer[0] >> 8) & 0xFF;
+    this->CurrSceneID = (uint16_t)(this->Buffer[1] >> 16);
+    this->SceneID = (uint16_t)this->Buffer[1];
+    this->EntranceID = this->Buffer[2];
+    memcpy(&this->X, &this->Buffer[3], sizeof(float));
+    memcpy(&this->Y, &this->Buffer[4], sizeof(float));
+    memcpy(&this->Z, &this->Buffer[5], sizeof(float));
+
+    if (this->GameID == MM_GAME)
+    {
+        this->Age = LinkAge::Child;
+    }
+}
+
+void EntranceMessage::ResetMessage()
+{
+    this->Buffer = nullptr;
+    this->Direction = 0;
+    this->GameID = NO_GAME;
+    this->OoTSongID = OoTSongs::Minuet_of_Forest;
+    this->Age = LinkAge::Adult;
+    this->FaroreWind = 0;
+    this->OwlID = 0;
+    this->CurrRoom = 0;
+    this->GrottoData = 0;
+    this->CurrSceneID = UINT16_MAX;
+    this->SceneID = UINT32_MAX;
+    this->EntranceID = UINT32_MAX;
+    this->X = 0;
+    this->Y = 0;
+    this->Z = 0;
+    this->MetaInf = nullptr;
+    this->EntranceStr = "";
+}
 
 // Contains all grotto entrances positions used to determine the correct entrance when spawning in a zone that has at least one grotto
 static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
@@ -1781,6 +1819,13 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                     // Din's fire
                     case OOT_FAIRY_DIN_ENTR:
                     {
+                        if (Message.Age == LinkAge::Adult)
+                        {   // Very special case as castle and ganon exterior shares the same entrance IDs...
+
+                            Message.SceneID = OOT_GREAT_FAIRY_DEFENSE;
+                            return OOT_FAIRY_DEFENSE_ENTR;
+                        }
+
                         Message.SceneID = OOT_GREAT_FAIRY_CASTLE;
                         break;
                     }
@@ -1797,6 +1842,16 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                     {
                         Message.SceneID = OOT_GREAT_FAIRY_NAYRU;
                         break;
+                    }
+
+                    case OOT_HYRULE_CASTLE_FROM_FAIRY_ENTR:
+                    {
+                        if (Message.Age == LinkAge::Adult)
+                        {   // Very special case as castle and ganon exterior shares the same entrance IDs...
+
+                            Message.SceneID = OOT_GREAT_FAIRY_DEFENSE;
+                            return OOT_OUTSIDE_GANON_FROM_FAIRY_ENTR;
+                        }
                     }
                 }
                 break;
@@ -1830,6 +1885,15 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
 
                         return OOT_CASTLE_COURTYARD_ENTR;
                     }
+
+                    case OOT_CASTLE_CAUGHT_ENTR:
+                    {
+                        if (Message.Direction == OUT_MAGIC)
+                        {
+                            return OOT_CASTLE_GATE_ENTR;
+                        }
+                        break;
+                    }
                 }
                 break;
             }
@@ -1843,9 +1907,15 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                     {
                         return OOT_MARKET_ADULT_FROM_GANON_CASTLE_EXTERIOR_ENTR;
                     }
+
                     case OOT_HYRULE_CASTLE_ENTR:
                     {
                         return OOT_GANON_CASTLE_EXTERIOR_ENTR;
+                    }
+
+                    case OOT_HYRULE_CASTLE_FROM_FAIRY_ENTR:
+                    {
+                        return OOT_OUTSIDE_GANON_FROM_FAIRY_ENTR;
                     }
                 }
                 break;
@@ -2596,12 +2666,12 @@ uint32_t EntranceHelper::CheckWrapScene(EntranceMessage& Message)
 
 void EntranceHelper::ParseEntranceMessage(uint32_t EntranceFlag, uint32_t Buffer[6])
 {
-    if ((EntranceFlag & 0xFFFF0000) == IN_MAGIC)
+    if ((EntranceFlag & 0xFF000000) == IN_MAGIC)
     {
         this->InMessage.SetMessage(IN_MAGIC, EntranceFlag, Buffer);
         this->ParseIncomingMessage(this->InMessage);
     }
-    else if ((EntranceFlag & 0xFFFF0000) == OUT_MAGIC)
+    else if ((EntranceFlag & 0xFF000000) == OUT_MAGIC)
     {
         this->OutMessage.SetMessage(OUT_MAGIC, EntranceFlag, Buffer);
         this->ParseOutgoingMessage(this->OutMessage);
@@ -2708,6 +2778,8 @@ void EntranceHelper::ParseIncomingMessage(EntranceMessage& Message)
         MultiLogger::LogMessage("%-13s |           0x%02X |           0x%02X |", "Room ID", this->OutMessage.CurrRoom, Message.CurrRoom);
         MultiLogger::LogMessage("-------------------------------------------------");
         MultiLogger::LogMessage("%-13s |           0x%02X |           0x%02X |", "Grotto Data", this->OutMessage.GrottoData, Message.GrottoData);
+        MultiLogger::LogMessage("-------------------------------------------------");
+        MultiLogger::LogMessage("%-13s |           0x%02X |           0x%02X |", "Age", this->OutMessage.Age, Message.Age);
         MultiLogger::LogMessage("-------------------------------------------------");
         MultiLogger::LogMessage("%-13s |           0x%02X |           0x%02X |", "Farore's Wind", this->OutMessage.FaroreWind, Message.FaroreWind);
         MultiLogger::LogMessage("-------------------------------------------------");

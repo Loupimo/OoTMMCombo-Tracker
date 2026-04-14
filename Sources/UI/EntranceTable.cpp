@@ -92,6 +92,8 @@ void GlobalEntranceTableModel::updateEntrance(uint32_t sceneID, uint32_t entranc
 
             QModelIndex bottom = index((int)i, columnCount() - 1);
 
+            this->m_rowStatusColors[i] = this->rowStatusColor(row);
+
             emit dataChanged(top, bottom);
             emit headerDataChanged(Qt::Vertical, (int)i, (int)i);
             return;
