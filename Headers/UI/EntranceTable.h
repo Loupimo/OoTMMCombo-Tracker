@@ -8,6 +8,7 @@
 #include <QHBoxLayout>
 #include <QSplitter>
 #include "UI/SceneEntrance.h"
+#include "UI/RegionTab.h"
 #include "Common.h"
 
 #include <map>
@@ -120,7 +121,7 @@ class EntranceGameTabView : public QWidget, public ICommonFunc
 
 public:
 
-    int Game;
+    int GameID;
     QHBoxLayout* MainLayout;
     QSplitter* LayoutSplitter;
     CustomTreeWidget* MapList;
@@ -130,13 +131,16 @@ public:
     EntranceTab* Owner;
     const char* TabName;                // The tab name. Should correspond to the game it refers to.
     uint32_t FoundEntrances = 0;
-    uint32_t TotalEntrances = 0;
+    uint32_t TotalEntrances = 0; 
+    std::vector<RegionTree*> Regions;           // The list of all available regions
 
     EntranceGameTabView(int Game, const char * Name, EntranceTab* parent = nullptr);
 
     void RefreshContent();
 
     void RefreshName() override;
+
+    RegionTree* FindRegionTree(uint8_t Region);
 };
 
 

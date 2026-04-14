@@ -1,6 +1,7 @@
 ﻿#include "UI/EntranceTable.h"
 #include "Combo/Entrances.h"
 #include "Combo/Scenes.h"
+#include "UI/ObjectRenderer.h"
 
 #include <QVBoxLayout>
 #include <QHeaderView>
@@ -17,7 +18,7 @@
 GlobalEntranceTableModel::GlobalEntranceTableModel(EntranceGameTabView* parent) : QAbstractTableModel(parent)
 {
     this->Owner = parent;
-    this->setScenes(*GetSceneEntranceMetaInfForGame(this->Owner->Game));
+    this->setScenes(*GetSceneEntranceMetaInfForGame(this->Owner->GameID));
 }
 
 // ============================================
@@ -37,7 +38,7 @@ void GlobalEntranceTableModel::setScenes(const std::map<uint32_t, SceneEntranceM
     {
         for (auto& [entranceID, link] : scene.EntranceIDs)
         {
-            const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->Owner->Game, entranceID);
+            const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->Owner->GameID, entranceID);
 
             switch (entrance->Type)
             {
@@ -256,13 +257,13 @@ QString GlobalEntranceTableModel::formatEntrance(uint32_t entranceID) const
         return "?";
 
     // TODO: remplacer par vrai nom
-    return EntranceHelper::GetEntranceFromName(this->Owner->Game, entranceID);
+    return EntranceHelper::GetEntranceFromName(this->Owner->GameID, entranceID);
 }
 
 
 QString GlobalEntranceTableModel::formatEntranceLink(uint8_t GameLink, uint32_t EntranceID, uint32_t EntranceLink, bool IsWayIn) const
 {
-    const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->Owner->Game, EntranceID);
+    const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->Owner->GameID, EntranceID);
 
     switch (entrance->Type)
     {
@@ -321,7 +322,7 @@ QString GlobalEntranceTableModel::formatEntranceLink(uint8_t GameLink, uint32_t 
 
 QString GlobalEntranceTableModel::formatScene(uint32_t sceneID) const
 {
-    return GetSceneName(this->Owner->Game, sceneID);
+    return GetSceneName(this->Owner->GameID, sceneID);
 }
 
 
@@ -539,7 +540,7 @@ AllEntranceView::AllEntranceView(EntranceGameTabView* Parent) : QWidget(Parent)
 
 void AllEntranceView::RefreshContent()
 {
-    this->Model->setScenes(*GetSceneEntranceMetaInfForGame(this->Owner->Game));
+    this->Model->setScenes(*GetSceneEntranceMetaInfForGame(this->Owner->GameID));
 }
 
 #pragma endregion // AllEntranceView
@@ -549,7 +550,7 @@ void AllEntranceView::RefreshContent()
 EntranceGameTabView::EntranceGameTabView(int Game, const char * Name, EntranceTab* parent) : QWidget(parent)
 {
     this->Owner = parent;
-    this->Game = Game;
+    this->GameID = Game;
     this->TabName = Name;
     this->MainLayout = new QHBoxLayout();
     this->LayoutSplitter = new QSplitter(Qt::Horizontal);
@@ -562,6 +563,7 @@ EntranceGameTabView::EntranceGameTabView(int Game, const char * Name, EntranceTa
 
     // Entrance tree
     this->EntranceList = new CustomTreeWidget("Entrances", 300, this);
+    this->EntranceList->setVisible(false);
 
     // Layout
     this->LayoutSplitter->addWidget(this->MapList);
@@ -571,8 +573,39 @@ EntranceGameTabView::EntranceGameTabView(int Game, const char * Name, EntranceTa
     this->MainLayout->addWidget(this->LayoutSplitter);
 
     this->setLayout(this->MainLayout);
+
+    auto scenes = GetSceneEntranceMetaInfForGame(Game);
+
+    for (auto& [sceneID, MetaInf] : *scenes)
+    {
+        RegionTree* currRegion = this->FindRegionTree(MetaInf.RegionID);
+        if (currRegion == nullptr)
+        {   // Create a new region in the tree list
+
+            currRegion = new RegionTree((GameTab*)this, MetaInf.RegionID, this->MapList->List);
+            this->Regions.push_back(currRegion);
+        }
+
+        QTreeWidgetItem* comm = new QTreeWidgetItem(currRegion);
+        comm->setText(0, GetSceneName(this->GameID, sceneID));
+        //this->MapList->List->addChild(GetSceneName(this->Owner->Game, sceneID));
+    }
 }
 
+RegionTree* EntranceGameTabView::FindRegionTree(uint8_t Region)
+{
+    for (size_t i = 0; i < this->Regions.size(); i++)
+    {   // Browse through all the available regions
+
+        if (this->Regions[i]->MetaInfo->Region == Region)
+        {   // We have found the matching region
+
+            return this->Regions[i];
+        }
+    }
+
+    return nullptr;
+}
 
 void EntranceGameTabView::RefreshContent()
 {
@@ -583,7 +616,7 @@ void EntranceGameTabView::RefreshContent()
 
 void EntranceGameTabView::RefreshName()
 {
-    this->Owner->setTabText(this->Game, this->GetRefreshedName(this->TabName, FoundEntrances, TotalEntrances));
+    this->Owner->setTabText(this->GameID, this->GetRefreshedName(this->TabName, FoundEntrances, TotalEntrances));
     this->Owner->RefreshName();
 }
 
