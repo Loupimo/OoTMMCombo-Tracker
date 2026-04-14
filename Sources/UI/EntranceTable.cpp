@@ -14,11 +14,10 @@
 // Constructor
 // ============================================
 
-GlobalEntranceTableModel::GlobalEntranceTableModel(int Game, const char* Name, QObject* parent) : QAbstractTableModel(parent)
+GlobalEntranceTableModel::GlobalEntranceTableModel(EntranceGameTabView* parent) : QAbstractTableModel(parent)
 {
-    this->Game = Game;
-    this->TabName = Name;
-    this->setScenes(*GetSceneEntranceMetaInfForGame(this->Game));
+    this->Owner = parent;
+    this->setScenes(*GetSceneEntranceMetaInfForGame(this->Owner->Game));
 }
 
 // ============================================
@@ -27,6 +26,9 @@ GlobalEntranceTableModel::GlobalEntranceTableModel(int Game, const char* Name, Q
 
 void GlobalEntranceTableModel::setScenes(const std::map<uint32_t, SceneEntranceMetaInf>& scenes)
 {
+    this->Owner->FoundEntrances = 0;
+    this->Owner->TotalEntrances = 0;
+
     beginResetModel();
 
     m_rows.clear();
@@ -35,28 +37,54 @@ void GlobalEntranceTableModel::setScenes(const std::map<uint32_t, SceneEntranceM
     {
         for (auto& [entranceID, link] : scene.EntranceIDs)
         {
-            const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->Game, entranceID);
+            const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->Owner->Game, entranceID);
 
-            if (entrance->Type == EntranceType::None)
-                continue;
+            switch (entrance->Type)
+            {
+                case EntranceType::One_Way_In:
+                case EntranceType::One_Way_Out:
+                {
+                    this->Owner->TotalEntrances++;
+                    break;
+                }
 
+                case EntranceType::Normal:
+                {
+                    this->Owner->TotalEntrances += 2;
+                    break;
+                }
 
-                GlobalEntranceRow row;
+                default:
+                {
+                    continue;
+                }
+            }
 
-                row.SceneID = sceneID;
-                row.EntranceID = entranceID;
-                row.InLink = link.InLink;
-                row.OutLink = link.OutLink;
-                row.InGame = link.InLinkGame;
-                row.OutGame = link.OutLinkGame;
-                row.RegionID = scene.RegionID;
+            GlobalEntranceRow row;
 
-                row.SceneName = this->formatScene(sceneID);
-                row.EntranceName = this->formatEntrance(row.EntranceID);
-                row.InLinkName = this->formatEntranceLink(row.InGame, row.EntranceID, row.InLink, true);
-                row.OutLinkName = this->formatEntranceLink(row.OutGame, row.EntranceID, row.OutLink, false);
+            row.SceneID = sceneID;
+            row.EntranceID = entranceID;
+            row.InLink = link.InLink;
+            row.OutLink = link.OutLink;
+            row.InGame = link.InLinkGame;
+            row.OutGame = link.OutLinkGame;
+            row.RegionID = scene.RegionID;
 
-                m_rows.push_back(row);
+            row.SceneName = this->formatScene(sceneID);
+            row.EntranceName = this->formatEntrance(row.EntranceID);
+            row.InLinkName = this->formatEntranceLink(row.InGame, row.EntranceID, row.InLink, true);
+            row.OutLinkName = this->formatEntranceLink(row.OutGame, row.EntranceID, row.OutLink, false);
+
+            m_rows.push_back(row);
+
+            if (row.InLink != UINT32_MAX)
+            {
+                this->Owner->FoundEntrances++;
+            }
+            if (row.OutLink != UINT32_MAX)
+            {
+                this->Owner->FoundEntrances++;
+            }
         }
     }
 
@@ -66,6 +94,7 @@ void GlobalEntranceTableModel::setScenes(const std::map<uint32_t, SceneEntranceM
 
     endResetModel();
 
+    this->Owner->RefreshName();
 }
 
 // ============================================
@@ -93,6 +122,17 @@ void GlobalEntranceTableModel::updateEntrance(uint32_t sceneID, uint32_t entranc
             QModelIndex bottom = index((int)i, columnCount() - 1);
 
             this->m_rowStatusColors[i] = this->rowStatusColor(row);
+
+            if (row.InLink != UINT32_MAX)
+            {
+                this->Owner->FoundEntrances++;
+            }
+            if (row.OutLink != UINT32_MAX)
+            {
+                this->Owner->FoundEntrances++;
+            }
+
+            this->Owner->RefreshName();
 
             emit dataChanged(top, bottom);
             emit headerDataChanged(Qt::Vertical, (int)i, (int)i);
@@ -216,13 +256,13 @@ QString GlobalEntranceTableModel::formatEntrance(uint32_t entranceID) const
         return "?";
 
     // TODO: remplacer par vrai nom
-    return EntranceHelper::GetEntranceFromName(this->Game, entranceID);
+    return EntranceHelper::GetEntranceFromName(this->Owner->Game, entranceID);
 }
 
 
 QString GlobalEntranceTableModel::formatEntranceLink(uint8_t GameLink, uint32_t EntranceID, uint32_t EntranceLink, bool IsWayIn) const
 {
-    const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->Game, EntranceID);
+    const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->Owner->Game, EntranceID);
 
     switch (entrance->Type)
     {
@@ -281,7 +321,7 @@ QString GlobalEntranceTableModel::formatEntranceLink(uint8_t GameLink, uint32_t 
 
 QString GlobalEntranceTableModel::formatScene(uint32_t sceneID) const
 {
-    return GetSceneName(this->Game, sceneID);
+    return GetSceneName(this->Owner->Game, sceneID);
 }
 
 
@@ -433,16 +473,15 @@ QColor GlobalEntranceTableModel::computeBaseColor(bool toggle) const
 
 #pragma endregion // GlobalEntranceTableModel
 
-#pragma region // EntranceTableView
+#pragma region AllEntranceView
 
-EntranceTableView::EntranceTableView(int Game, const char * Name, QWidget* parent) : QWidget(parent)
+AllEntranceView::AllEntranceView(EntranceGameTabView* Parent) : QWidget(Parent)
 {
-    this->Game = Game;
-    this->TabName = Name;
-    this->Model = new GlobalEntranceTableModel(Game, Name, this);
-    this->Model->sort(0, Qt::AscendingOrder); 
+    this->Owner = Parent;
+    this->Model = new GlobalEntranceTableModel(this->Owner);
+    this->Model->sort(0, Qt::AscendingOrder);
 
-    QVBoxLayout* layout = new QVBoxLayout(this);
+    this->MainLayout = new QVBoxLayout(this);
     this->Table = new QTableView(this);
 
     QLineEdit* searchBar = new QLineEdit(this);
@@ -451,7 +490,7 @@ EntranceTableView::EntranceTableView(int Game, const char * Name, QWidget* paren
     this->Proxy = new QSortFilterProxyModel(this);
     this->Proxy->setSourceModel(this->Model);
     this->Proxy->setFilterCaseSensitivity(Qt::CaseInsensitive);
-    this->Proxy->setFilterKeyColumn(-1); 
+    this->Proxy->setFilterKeyColumn(-1);
     this->Proxy->setSortRole(Qt::UserRole);
     this->Proxy->setDynamicSortFilter(false);
 
@@ -493,29 +532,78 @@ EntranceTableView::EntranceTableView(int Game, const char * Name, QWidget* paren
             this->Model->sort(column, this->Table->horizontalHeader()->sortIndicatorOrder());
         });
 
-    layout->addWidget(searchBar);
-    layout->addWidget(this->Table);
-    this->setLayout(layout);
+    this->MainLayout->addWidget(searchBar);
+    this->MainLayout->addWidget(this->Table);
+    this->setLayout(this->MainLayout);
 }
 
-
-void EntranceTableView::RefreshContent()
+void AllEntranceView::RefreshContent()
 {
-    this->Model->setScenes(*GetSceneEntranceMetaInfForGame(this->Game));
+    this->Model->setScenes(*GetSceneEntranceMetaInfForGame(this->Owner->Game));
 }
 
-#pragma endregion // EntranceTableView
+#pragma endregion // AllEntranceView
+
+#pragma region // EntranceGameTabView
+
+EntranceGameTabView::EntranceGameTabView(int Game, const char * Name, EntranceTab* parent) : QWidget(parent)
+{
+    this->Owner = parent;
+    this->Game = Game;
+    this->TabName = Name;
+    this->MainLayout = new QHBoxLayout();
+    this->LayoutSplitter = new QSplitter(Qt::Horizontal);
+
+    // All View
+    this->AllView = new AllEntranceView(this);
+
+    // Map tree
+    this->MapList = new CustomTreeWidget("Maps", 300, this);
+
+    // Entrance tree
+    this->EntranceList = new CustomTreeWidget("Entrances", 300, this);
+
+    // Layout
+    this->LayoutSplitter->addWidget(this->MapList);
+    this->LayoutSplitter->addWidget(this->AllView);
+    this->LayoutSplitter->addWidget(this->EntranceList);
+
+    this->MainLayout->addWidget(this->LayoutSplitter);
+
+    this->setLayout(this->MainLayout);
+}
+
+
+void EntranceGameTabView::RefreshContent()
+{
+    this->AllView->RefreshContent();
+    //this->Model->setScenes(*GetSceneEntranceMetaInfForGame(this->Game));
+}
+
+
+void EntranceGameTabView::RefreshName()
+{
+    this->Owner->setTabText(this->Game, this->GetRefreshedName(this->TabName, FoundEntrances, TotalEntrances));
+    this->Owner->RefreshName();
+}
+
+#pragma endregion // EntranceGameTabView
 
 #pragma region // EntranceTab
 
-EntranceTab::EntranceTab(QTabWidget* parent) : QTabWidget(parent)
+EntranceTab::EntranceTab(int TabIndex, QTabWidget* parent) : QTabWidget(parent)
 {
+    this->TabIndex = TabIndex;
+    this->Owner = parent;
     this->TabName = "Entrances";
-    this->OoTEntranceTab = new EntranceTableView(OOT_GAME, "OoT", this);
-    this->MMEntranceTab = new EntranceTableView(MM_GAME, "MM", this);
+    this->OoTEntranceTab = new EntranceGameTabView(OOT_GAME, "OoT", this);
+    this->MMEntranceTab = new EntranceGameTabView(MM_GAME, "MM", this);
 
     this->addTab(this->OoTEntranceTab, this->OoTEntranceTab->TabName);
     this->addTab(this->MMEntranceTab, this->MMEntranceTab->TabName);
+
+    this->OoTEntranceTab->RefreshName();
+    this->MMEntranceTab->RefreshName();
 }
 
 
@@ -523,11 +611,11 @@ void EntranceTab::UpdateEntranceWay(int Game, uint32_t SceneID, uint32_t Entranc
 {
     if (Game == OOT_GAME)
     {
-        this->OoTEntranceTab->Model->updateEntrance(SceneID, EntranceID, Link);
+        this->OoTEntranceTab->AllView->Model->updateEntrance(SceneID, EntranceID, Link);
     }
     else
     {
-        this->MMEntranceTab->Model->updateEntrance(SceneID, EntranceID, Link);
+        this->MMEntranceTab->AllView->Model->updateEntrance(SceneID, EntranceID, Link);
     }
 }
 
@@ -536,6 +624,17 @@ void EntranceTab::RefreshEntranceTab()
 {
     this->OoTEntranceTab->RefreshContent();
     this->MMEntranceTab->RefreshContent();
+}
+
+
+void EntranceTab::RefreshName()
+{
+    if (this->OoTEntranceTab && this->MMEntranceTab)
+    {
+        this->FoundEntrances = this->OoTEntranceTab->FoundEntrances + this->MMEntranceTab->FoundEntrances;
+        this->TotalEntrances = this->OoTEntranceTab->TotalEntrances + this->MMEntranceTab->TotalEntrances;
+        this->Owner->setTabText(this->TabIndex, this->GetRefreshedName(this->TabName, this->FoundEntrances, this->TotalEntrances));
+    }
 }
 
 #pragma endregion // EntranceTab

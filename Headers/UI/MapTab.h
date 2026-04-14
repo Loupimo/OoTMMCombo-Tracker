@@ -228,7 +228,6 @@ public:
     */
     void FilterTree(QTreeWidget* TreeWidget, const QString& SearchText);
 
-
     void OnToggleExpandCollapse(QTreeWidget* TreeWidget, bool Expand);
 
 #pragma endregion

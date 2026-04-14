@@ -565,6 +565,7 @@ void MapTab::FilterTree(QTreeWidget* TreeWidget, const QString& SearchText)
     }
 }
 
+
 void MapTab::OnToggleExpandCollapse(QTreeWidget* TreeWidget, bool Expand)
 {
     if (!Expand)

@@ -23,7 +23,7 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     this->OoTTab->Owner = this;
     this->MMTab = new GameTab(MM_GAME, this);
     this->MMTab->Owner = this;
-    this->EntTab = new EntranceTab(nullptr);
+    this->EntTab = new EntranceTab(3, this->TabWidget);
     //this->EntranceTab->Owner = this;
     
     // Add the tabs to the widget : Log -> OoT -> MM
@@ -35,6 +35,7 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     // Update game tabs name
     this->UpdateTabNameText(0);
     this->UpdateTabNameText(1);
+    this->EntTab->RefreshName();
     this->setCentralWidget(this->TabWidget);
     this->setWindowTitle("OoTMMCombo Auto Tracker");
     this->setWindowIcon(QIcon("./Resources/Logo.ico"));

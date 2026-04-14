@@ -202,6 +202,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Common.cpp" />
     <ClCompile Include="Sources\Combo\Entrances.cpp" />
     <ClCompile Include="Sources\Combo\Items.cpp" />
     <ClCompile Include="Sources\Combo\MMEntrances.cpp" />

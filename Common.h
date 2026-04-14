@@ -52,3 +52,49 @@ typedef int SOCKET;
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
+#include <QWidget>
+#include <QString>
+
+class QLabel;
+class QLineEdit;
+class QPushButton;
+class QTreeWidget;
+class QVBoxLayout;
+
+class ICommonFunc
+{
+
+public:
+	virtual ~ICommonFunc() { }
+
+	virtual void RefreshName() = 0;
+	virtual QString GetRefreshedName(const char* BaseName, uint32_t FoundCount, uint32_t TotalCount);
+};
+
+
+class CustomTreeWidget : public QWidget
+{
+
+public:
+
+	QVBoxLayout* MainLayout;
+	QLabel* Label;
+	QLineEdit* SearchBar;
+	QPushButton* ToggleButton;
+	QTreeWidget* List;
+	bool IsExpanded = false;
+
+public:
+
+	CustomTreeWidget(QString TreeName, int MaxWidth, QWidget* Parent);
+
+
+	/*
+	*   Hide or unhide tree elements regarding the given string.
+	*
+	*   @param SearchText      The text to match.
+	*/
+	void FilterTree(const QString& SearchText);
+
+	void OnToggleExpandCollapse(QTreeWidget* TreeWidget, bool Expand);
+};

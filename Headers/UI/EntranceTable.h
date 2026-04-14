@@ -5,7 +5,10 @@
 #include <QStandardItemModel>
 #include <QLineEdit>
 #include <QSortFilterProxyModel>
+#include <QHBoxLayout>
+#include <QSplitter>
 #include "UI/SceneEntrance.h"
+#include "Common.h"
 
 #include <map>
 #include <cstdint>
@@ -30,17 +33,22 @@ typedef struct GlobalEntranceRow
 } GlobalEntranceRow;
 
 
+
+
+
 // ===== Model =====
+
+class EntranceGameTabView;
+class EntranceTab;
 
 class GlobalEntranceTableModel : public QAbstractTableModel
 {
     Q_OBJECT
 
 public:
-    int Game;
-    const char* TabName;                // The tab name. Should correspond to the game it refers to.
+    EntranceGameTabView* Owner = nullptr;
 
-    explicit GlobalEntranceTableModel(int Game, const char* Name, QObject* parent = nullptr);
+    explicit GlobalEntranceTableModel(EntranceGameTabView* parent = nullptr);
 
     // Chargement complet
 
@@ -89,41 +97,68 @@ public:
 // Widget Class
 // ==============================
 
-class EntranceTableView : public QWidget
+class AllEntranceView : public QWidget
+{
+
+public:
+
+    QVBoxLayout* MainLayout;
+    QTableView* Table;
+    GlobalEntranceTableModel* Model;
+    QSortFilterProxyModel* Proxy;
+    EntranceGameTabView* Owner;
+
+    AllEntranceView(EntranceGameTabView* Parent = nullptr);
+
+    void RefreshContent();
+};
+
+
+class EntranceGameTabView : public QWidget, public ICommonFunc
 {
     Q_OBJECT
 
 public:
 
     int Game;
-    QTableView* Table;
-    GlobalEntranceTableModel * Model;
-    QSortFilterProxyModel* Proxy;
+    QHBoxLayout* MainLayout;
+    QSplitter* LayoutSplitter;
+    CustomTreeWidget* MapList;
+    CustomTreeWidget* EntranceList;
+
+    AllEntranceView* AllView;
+    EntranceTab* Owner;
     const char* TabName;                // The tab name. Should correspond to the game it refers to.
+    uint32_t FoundEntrances = 0;
+    uint32_t TotalEntrances = 0;
 
-
-    EntranceTableView(int Game, const char * Name, QWidget* parent = nullptr);
+    EntranceGameTabView(int Game, const char * Name, EntranceTab* parent = nullptr);
 
     void RefreshContent();
+
+    void RefreshName() override;
 };
 
 
-class EntranceTab : public QTabWidget
+class EntranceTab : public QTabWidget, public ICommonFunc
 {
     Q_OBJECT
 
 public:
 
-    EntranceTableView* OoTEntranceTab;
-    EntranceTableView* MMEntranceTab;
+    EntranceGameTabView* OoTEntranceTab;
+    EntranceGameTabView* MMEntranceTab;
     //QTableView* OoTEntranceTab;
     //QTableView* MMEntranceTab;
     //GlobalEntranceTableModel* OoTEntranceModel;
     //GlobalEntranceTableModel* MMEntranceModel;
     const char* TabName;                // The tab name. Should correspond to the game it refers to.
+    QTabWidget* Owner;
+    int TabIndex;
+    uint32_t FoundEntrances = 0;
+    uint32_t TotalEntrances = 0;
 
-
-    explicit EntranceTab(QTabWidget* parent = nullptr);
+    explicit EntranceTab(int TabIndex, QTabWidget* parent = nullptr);
 
     /*
     *   Update the entrance status with the given information.
@@ -141,4 +176,7 @@ public:
     *   Refresh all elements of this entrance tab.
     */
     void RefreshEntranceTab();
+
+
+    void RefreshName() override;
 };
