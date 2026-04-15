@@ -1,0 +1,27 @@
+QList<QPair<int, int>> GrassPoints = {
+{602, 465},
+{642, 432},
+{317, 295},
+};
+QList<QPair<int, int>> ChestPoints = {
+{665, 466},
+{276, 232},
+};
+QList<QPair<int, int>> CowPoints = {
+{667, 171},
+{460, 138},
+};
+QList<QPair<int, int>> FlyPoints = {
+{512, 431},
+};
+QList<QPair<int, int>> WonderPoints = {
+{651, 172},
+{461, 149},
+};
+QList<QPair<int, int>> NPCsPoints = {
+{512, 431},
+};
+QList<QPair<int, int>> FoesPoints = {
+{609, 341},
+{537, 326},
+};

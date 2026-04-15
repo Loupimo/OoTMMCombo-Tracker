@@ -1,0 +1,9 @@
+QList<QPair<int, int>> FSPoints = {
+{900, 503},
+};
+QList<QPair<int, int>> CowPoints = {
+{981, 476},
+};
+QList<QPair<int, int>> WonderPoints = {
+{1010, 311},
+};

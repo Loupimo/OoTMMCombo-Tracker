@@ -1,0 +1,10 @@
+QList<QPair<int, int>> FSPoints = {
+{609, 192},
+};
+QList<QPair<int, int>> PotPoints = {
+{594, 173},
+{569, 172},
+};
+QList<QPair<int, int>> CratePoints = {
+{564, 213},
+};

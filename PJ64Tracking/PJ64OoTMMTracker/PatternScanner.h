@@ -1,0 +1,107 @@
+#pragma once
+
+#include "pch.h"
+
+#define PAYLOAD_START 0x80400000        // The combo payload start RAM address.
+#define PAYLOAD_END   0x80800000        // The combo payload last RAM address.
+#define MAX_JAL 10                      // The maximum number of JAL instructions a fast pattern resolver can have.
+#define PATTERN_STATE_SIZE 32           // The size of the GamePatternState structure.
+#define OOT_LAST_SCENE_OFFSET 0x01A0    // The offset to add to the Play_TransitionDone PC to find the offset to add to the base scene to get the gLastScene address for OoT
+#define MM_LAST_SCENE_OFFSET 0x002C     // The offset to add to the Play_TransitionDone PC to find the offset to add to the base scene to get the gLastScene address for MM
+
+typedef struct GamePatternState
+{
+    bool Resolved = false;
+    uint32_t PCs[7] = { 0 };    // ID 0 = Actor_Spawn, ID 1 = comboAddItemRawEx, ID 2 = EnItem00_DropCustom, ID 3 = comboItemPrecond, ID 4 = hookPlay_Init, ID 5 = Play_TransitionDone, ID 6 = EnButte_TransformIntoFairy
+} GamePatternState;
+
+
+extern GamePatternState gPatternState[2];   // Contains the pattern status and PCs of both game.
+
+
+typedef struct PCSignature
+{
+    size_t PatternSize;     // The number of bytes in the pattern
+    const uint8_t* Pattern; // The function pattern to find
+    const uint32_t* Mask;   // The mask to apply to each pattern instruction 
+
+    int PCOffset;           // Offset to target instruction
+} PCSignature;
+
+typedef struct PCFastResolver
+{
+    uintptr_t BaseAddr;             // The fixed base address
+    uint32_t NumOfJals;             // The number of JAL offsets in the array
+    uint32_t JALOffsets[MAX_JAL];   // The offset to add to find the next desired JAL instruction
+    PCSignature* Signature;         // The associated pattern to find
+} PCFastResolver;
+
+
+/*
+*   Check if the intructions starting at the given RAM address match the desired pattern.
+*
+*	@param Addr		The real RAM address to start looking at.
+*	@param Sig		The signature containing the pattern to find.
+*
+*   @return <b>True</b> if the all the instructions starting at the given address match the pattern, <b>false</b> otherwise.
+*/
+bool MatchPattern(uintptr_t Addr, const PCSignature* Sig);
+
+/*
+*   Try to find the desired pattern in the given RAM address range.
+*
+*	@param Sig		        The signature containing the pattern to find.
+*	@param PayloadStart		The game RAM address to start looking at.
+*	@param PayloadEnd		The game RAM address to stop looking for the pattern.
+*
+*   @return The program counter address (in game RAM format) if found, 0 otherwise.
+*/
+uintptr_t FindPatternInPayload(const PCSignature* Sig, size_t PayloadStart, size_t PayloadEnd);
+
+/*
+*   Tell if the given instruction is a JAL (MIPS) instruction.
+*
+*	@param InstrucVal		The instruction to check.
+*
+*   @return <b>True</b> if the given instruction is a JAL (MIPS) instruction, <b>false</b> otherwise.
+*/
+bool IsJAL(uint32_t InstrucVal);
+
+/*
+*   Resolve the address pointed by the given JAL (MIPS) instruction.
+*
+*	@param InstrucVal	The JAL instruction containing the address to resolve.
+*	@param JALAddr		The current address of the given JAL instruction.
+*
+*   @return The game RAM address pointed by the JAL instruction.
+*/
+uintptr_t ResolveJAL(uint32_t InstrucVal, uint32_t JALAddr);
+
+/*
+*   The to find the desired pattern using the fast method.
+*
+*	@param Target	The pattern to find.
+* 
+*   @return The program counter address if found, 0 otherwise.
+*/
+uintptr_t FastPatternResolver(const PCFastResolver& Target);
+
+/*
+*   Resolve the butterfly pattern.
+*/
+void ResolveButterflyTransform();
+
+/*
+*   Reset the program counter used to tracked the butterfly functions.
+*/
+void ResetButterflyTransform();
+
+/*
+*   Try to resolve all parttern for the current active game.
+*/
+void BuildPCsPatterns();
+
+/*
+*   Try to resolve the last scene offset.
+*/
+void FindLastSceneAddress();

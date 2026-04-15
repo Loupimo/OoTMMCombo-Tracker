@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OoTMMComboTrackerClass</class>
+ <widget class="QMainWindow" name="OoTMMComboTrackerClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>OoTMMComboTracker</string>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1280</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>Tracking</string>
+    </property>
+    <widget class="QMenu" name="menuRecents">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="title">
+      <string>Recents</string>
+     </property>
+     <property name="icon">
+      <iconset theme="QIcon::ThemeIcon::DocumentOpenRecent"/>
+     </property>
+     <property name="separatorsCollapsible">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QMenu" name="menuAutoLoadMostRecent">
+     <property name="title">
+      <string>Auto Load Most Recent</string>
+     </property>
+     <addaction name="actionAutoLoadTrackingFile"/>
+     <addaction name="actionAutoLoadSpoilerLog"/>
+    </widget>
+    <addaction name="actionSaveSession"/>
+    <addaction name="actionLoadSession"/>
+    <addaction name="actionLoadSpoilerLog"/>
+    <addaction name="menuRecents"/>
+    <addaction name="menuAutoLoadMostRecent"/>
+    <addaction name="separator"/>
+    <addaction name="actionResetTracking"/>
+    <addaction name="actionStartTracking"/>
+   </widget>
+   <widget class="QMenu" name="menuOptions">
+    <property name="title">
+     <string>Options</string>
+    </property>
+    <widget class="QMenu" name="menuHideCollectedObject">
+     <property name="title">
+      <string>Hide Collected Object</string>
+     </property>
+     <addaction name="actionHideCollectedFromMap"/>
+     <addaction name="actionHideCollectedFromObjectList"/>
+    </widget>
+    <addaction name="actionAutoSnapView"/>
+    <addaction name="actionAutoZoom"/>
+    <addaction name="menuHideCollectedObject"/>
+    <addaction name="separator"/>
+    <addaction name="actionAutoSaving"/>
+   </widget>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>?</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuOptions"/>
+   <addaction name="menu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionSaveSession">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::DocumentSave"/>
+   </property>
+   <property name="text">
+    <string>Save Tracking</string>
+   </property>
+   <property name="toolTip">
+    <string>Save the current tracking session</string>
+   </property>
+   <property name="shortcut">
+    <string>F8</string>
+   </property>
+  </action>
+  <action name="actionLoadSession">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::DocumentOpen"/>
+   </property>
+   <property name="text">
+    <string>Load Tracking</string>
+   </property>
+   <property name="toolTip">
+    <string>Load a tracking session</string>
+   </property>
+   <property name="shortcut">
+    <string>F10</string>
+   </property>
+  </action>
+  <action name="actionAutoSnapView">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Auto Snap View</string>
+   </property>
+   <property name="toolTip">
+    <string>Automatically snap the view to the last collected object</string>
+   </property>
+  </action>
+  <action name="actionAutoZoom">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Auto Zoom</string>
+   </property>
+   <property name="toolTip">
+    <string>Automatically zoom in to the last collected object</string>
+   </property>
+  </action>
+  <action name="actionCreateBackup">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Create Backup When Saving</string>
+   </property>
+   <property name="toolTip">
+    <string>Create a backup file when saving the current session if the file already exist</string>
+   </property>
+  </action>
+  <action name="actionAutoSaving">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Auto Saving</string>
+   </property>
+   <property name="toolTip">
+    <string>Automatically save the session when a new object is collected</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::HelpAbout"/>
+   </property>
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionfrf">
+   <property name="text">
+    <string>frf</string>
+   </property>
+  </action>
+  <action name="actionStartTracking">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::MediaPlaybackStart"/>
+   </property>
+   <property name="text">
+    <string>Start Tracking</string>
+   </property>
+   <property name="shortcut">
+    <string>F3</string>
+   </property>
+  </action>
+  <action name="actionLoadSpoilerLog">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::SystemLogOut"/>
+   </property>
+   <property name="text">
+    <string>Load Spoiler Log</string>
+   </property>
+   <property name="shortcut">
+    <string>F11</string>
+   </property>
+  </action>
+  <action name="actionAutoLoadTrackingFile">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Tracking File</string>
+   </property>
+  </action>
+  <action name="actionAutoLoadSpoilerLog">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Spoiler Log</string>
+   </property>
+  </action>
+  <action name="actionResetTracking">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::SystemReboot"/>
+   </property>
+   <property name="text">
+    <string>Reset Tracking</string>
+   </property>
+  </action>
+  <action name="actionHideCollectedFromMap">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>From Map</string>
+   </property>
+  </action>
+  <action name="actionHideCollectedFromObjectList">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>From Object List</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="OoTMMComboTracker.qrc"/>
+ </resources>
+ <connections/>
+</ui>

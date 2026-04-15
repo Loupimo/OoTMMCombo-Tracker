@@ -1,0 +1,4 @@
+QList<QPair<int, int>> NPCsPoints = {
+{816, 248},
+{743, 248},
+};

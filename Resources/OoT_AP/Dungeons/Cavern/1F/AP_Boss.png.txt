@@ -1,0 +1,4 @@
+QList<QPair<int, int>> ChestPoints = {
+{666, 384},
+{614, 384},
+};

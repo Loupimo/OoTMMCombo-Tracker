@@ -1,0 +1,73 @@
+log_name;friendly_name;type;value
+games;Games;game;ootmm
+mode;Mode;mode;coop
+teams;Number of teams;uint;1
+goldSkulltulaTokens;Gold Skulltula - OoT;shuffle;all
+housesSkulltulaTokens;Gold Skulltula - MM;boolean;all
+tingleShuffle;Tingle Maps;boolean;all
+mapCompassShuffle;Map / Compass;boolean;all
+smallKeyShuffleOot;Small Key - OoT;shuffle;all
+smallKeyShuffleMm;Small Key - MM;shuffle;all
+smallKeyShuffleHideout;Small Key - Hideout;boolean;all
+smallKeyShuffleChestGame;Small Key - Chest Game;boolean;all
+bossKeyShuffleOot;Boss Key - OoT;boolean;all
+bossKeyShuffleMm;Boss Key - MM;boolean;all
+silverRupeeShuffle;Silver Rupee;boolean;all
+townFairyShuffle;Town Fairy;boolean;all
+strayFairyChestShuffle;Stray Fairy - Chest;boolean;all
+strayFairyOtherShuffle;Stray Fairy - Other;boolean;all
+ganonBossKey;Boss Key - Ganon;boolean;all
+scrubShuffleOot;Scrub - OoT;boolean;all
+scrubShuffleMm;Scrub - MM;boolean;all
+cowShuffleOot;Cow - OoT;boolean;all
+cowShuffleMm;Cow - MM;boolean;all
+shopShuffleOot;Shop - OoT;boolean;all
+shopShuffleMm;Shop - MM;boolean;all
+owlShuffle;Owl;boolean;all
+shufflePotsOot;Pots - OoT;shuffle;all
+shufflePotsMm;Pots - MM;shuffle;all
+shuffleCratesOot;Crates - OoT;shuffle;all
+shuffleCratesMm;Crates - MM;shuffle;all
+shuffleBarrelsMm;Barrels - MM;shuffle;all
+shuffleHivesOot;Hives - OoT;boolean;all
+shuffleHivesMm;Hives - MM;boolean;all
+shuffleGrassOot;Grass - OoT;shuffle;all
+shuffleRocksOot;Rocks - OoT;boolean;all
+shuffleRocksMm;Rocks - MM;shuffle;all
+shuffleGrassMm;Grass - MM;shuffle;all
+shuffleTFGrassMm;Termina Field Grass;boolean;all
+shuffleTreesOot;Trees - OoT;boolean;all
+shuffleTreesMm;Trees - MM;shuffle;all
+shuffleBushOot;Bush - OoT;boolean;all
+shuffleBushMm;Bush - MM;shuffle;all
+shuffleSoilOot;Soil - OoT;boolean;all
+shuffleSoilMm;Soil - MM;shuffle;all
+shuffleFreeRupeesOot;Freestanding Rupees - OoT;shuffle;all
+shuffleFreeRupeesMm;Freestanding Rupees - MM;shuffle;all
+shuffleFreeHeartsOot;Freestanding Hearts - OoT;shuffle;all
+shuffleFreeHeartsMm;Freestanding Hearts - MM;boolean;all
+shuffleWonderItemsOot;Wonder Items - OoT;shuffle;all
+shuffleWonderItemsMm;Wonder Items - MM;boolean;all
+shuffleSnowballsMm;Snowballs - MM;shuffle;all
+shuffleButterfliesOot;Butterflies - OoT;boolean;all
+shuffleButterfliesMm;Butterflies - MM;boolean;all
+shuffleRedBouldersOot;Red Boulders - OoT;boolean;all
+shuffleRedBouldersMm;Red Boulders - MM;boolean;all
+shuffleFrogsRupeesOot;Frogs Rupees;boolean;all
+shuffleIciclesOot;Icicles - OoT;boolean;all
+shuffleIciclesMm;Icicles - MM;boolean;all
+shuffleRedIceOot;Red Ice;boolean;all
+shuffleOcarinasOot;Ocarinas;boolean;all
+shuffleMasterSword;Master Sword;boolean;all
+shuffleGerudoCard;Gerudo Card;boolean;all
+shuffleMaskTrades;Mask Trades;boolean;all
+shuffleMerchantsOot;Merchants - OoT;boolean;all
+shuffleMerchantsMm;Merchants - MM;boolean;all
+pondFishShuffle;Pond Fish;boolean;all
+divingGameRupeeShuffle;Diving Game Rupees;boolean;all
+fairyFountainFairyShuffleOot;Fairy Fountain - OoT;boolean;all
+fairyFountainFairyShuffleMm;Fairy Fountain - MM;boolean;all
+fairySpotShuffleOot;Fairy Spot;boolean;all
+eggShuffle;Egg Content;boolean;all
+restoreBrokenActors;Restore Broken Actors;boolean;all
+shuffleLotteryMm;Lottery Prizes;boolean;all

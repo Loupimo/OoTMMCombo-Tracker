@@ -1,0 +1,20 @@
+QList<QPair<int, int>> GrassPoints = {
+{638, 234},
+{610, 234},
+{619, 216},
+};
+QList<QPair<int, int>> ChestPoints = {
+{473, 401},
+{473, 371},
+};
+QList<QPair<int, int>> PotPoints = {
+{487, 286},
+{457, 286},
+};
+QList<QPair<int, int>> CratePoints = {
+{648, 220},
+{636, 220},
+};
+QList<QPair<int, int>> NPCsPoints = {
+{225, 400},
+};

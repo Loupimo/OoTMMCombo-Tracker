@@ -1,26 +1,32 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.16)
+project(OoTMMCombo-Tracker)
 
-set(VERSION_MAJOR 2)
-set(VERSION_MINOR 1)
-set(VERSION_PATCH 0)
-set(VERSION "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}")
+# Trouver Qt6 (assure-toi que Qt6 est installé)
+find_package(Qt6 REQUIRED COMPONENTS Widgets)
 
-project(MultiClient VERSION "${VERSION}")
+qt6_wrap_ui(UI_HEADERS "${CMAKE_SOURCE_DIR}/OoTMMComboTracker.ui")
 
-set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+#set(CMAKE_AUTOUIC ON)
 
-if (MSVC)
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W4")
-endif()
+# Définir les répertoires
+set(RootDir ${CMAKE_SOURCE_DIR})
+set(HeaderDir ${RootDir}/Headers)
+set(SourceDir ${RootDir}/Sources)
+set(ResFile "${RootDir}/OoTMMCombo-Tracker.rc")
+set(Main "${RootDir}/main.cpp")
 
-add_subdirectory(src)
 
-# Cpack
-set(CPACK_GENERATOR "ZIP")
-set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY OFF)
-set(CPACK_PACKAGE_VERSION_MAJOR ${VERSION_MAJOR})
-set(CPACK_PACKAGE_VERSION_MINOR ${VERSION_MINOR})
-set(CPACK_PACKAGE_VERSION_PATCH ${VERSION_PATCH})
-set(CPACK_PACKAGE_DIRECTORY "${CMAKE_BINARY_DIR}/pkg")
-include(CPack)
+# Ajouter tous les fichiers .cpp et .h
+file(GLOB_RECURSE HEADER_FILES ${HeaderDir}/*.h)
+file(GLOB_RECURSE SOURCE_FILES ${SourceDir}/*.cpp)
+
+# Créer l'exécutable avec tous les fichiers sources et headers
+add_executable(OoTMMCombo-Tracker WIN32 ${SOURCE_FILES} ${Main} ${HEADER_FILES} ${UI_HEADERS} ${ResFile})
+
+# Lier Qt6
+target_link_libraries(OoTMMCombo-Tracker PRIVATE Qt6::Widgets)
+
+# Ajouter les include directories
+target_include_directories(OoTMMCombo-Tracker PRIVATE Headers ${CMAKE_BINARY_DIR})

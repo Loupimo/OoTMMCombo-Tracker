@@ -1,0 +1,22 @@
+QList<QPair<int, int>> HivePoints = {
+{398, 131},
+{418, 126},
+{407, 106},
+{441, 99},
+{426, 88},
+{452, 83},
+};
+QList<QPair<int, int>> PotPoints = {
+{673, 418},
+{663, 418},
+{672, 365},
+{662, 365},
+};
+QList<QPair<int, int>> GSPoints = {
+{700, 159},
+{447, 119},
+};
+QList<QPair<int, int>> FlyPoints = {
+{641, 206},
+{649, 198},
+};

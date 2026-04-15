@@ -1,0 +1,162 @@
+﻿#pragma once
+
+// PJ64 Hooks
+#define HOOK_ROM_LOAD_OFFSET    0xD5A9B     // Instruction offset to hook ROM loading to physical RAM address
+#define HOOK_ROM_LOAD_SIZE           11     // Original instruction size of the hooked ROM loading code
+#define HOOK_PC_OFFSET          0xE64C9		// Instruction offset to hook for the PC updating
+#define HOOK_PC_SIZE                  7     // Original instruction size of the hooked PC updating code
+
+// Registers, Memory, ROM
+#define MMU_PTR_OFFSET         0x1B00BC     // The offset to get the MMU pointer structure
+#define REG_PTR_OFFSET         0x1B00C4     // The offset to get the register structure
+#define ROM_PTR_OFFSET         0x1B00CC     // The offset to get the ROM pointer structure
+
+// Registers offsets
+#define ROM_OFFSET                 0x10     // The offset to add to the ROM pointer structure to get the physical address of the loaded ROM.
+#define MMU_OFFSET               0x1074     // The offset to apply to the MMU pointer structure to get the physical RAM address of the game
+#define PC_OFFSET                 0x220		// PC offset in the CPU structure
+#define V0_OFFSET      PC_OFFSET + 0x18     // V0 offset in the CPU structure (relative to PC offset)
+#define V1_OFFSET      PC_OFFSET + 0x20     // V1 offset in the CPU structure (relative to PC offset)
+#define A1_OFFSET      PC_OFFSET + 0x30     // A1 offset in the CPU structure (relative to PC offset)
+#define S0_OFFSET      PC_OFFSET + 0x88     // S0 offset in the CPU structure (relative to PC offset)
+#define S1_OFFSET      PC_OFFSET + 0x90     // S1 offset in the CPU structure (relative to PC offset)
+#define SP_OFFSET      PC_OFFSET + 0xF0     // SP offset in the CPU structure (relative to PC offset)
+
+// Function specific offsets
+#define DROP_CUSTOM               -0x68     // The offset to add to SP to gather "Nothing" item objects on drop custom function
+#define SHOP_CUSTOM               -0x40     // The offset to add to SP to gather "Nothing" item objects on shop function
+#define OOT_ACTOR_ID               0x20     // The offset to add to SP to reach the spawned actor ID for OoT
+#define MM_ACTOR_ID                0x08     // The offset to add to SP to reach the spawned actor ID for MM
+#define BUTTERFLY_CUSTOM          -0x40     // The offset to add to SP to gather "Nothing" item objects on butterfly function
+#define OOT_FAIRY_COMBO_OFFSET    -0x4C     // The offset to add to SP to reach the beginning of the fairy combo item
+#define MM_FAIRY_COMBO_OFFSET     -0x84     // The offset to add to SP to reach the beginning of the fairy combo item
+
+// Running stuff
+#define BUFFER_SIZE                1024     // The number of event that can be store at the same time
+#define PC_RANGE_START       0x80000000     // First possible PC to capture
+#define PC_RANGE_SIZE        0x00800000     // 8 MB
+#define OOT_PLAY_MAIN        0x8009CAC8     // The OoT Play_Main function used to know if RAM is fully loaded.
+#define MM_PLAY_MAIN         0x80168f64     // The MM Play_Main function used to know if RAM is fully loaded.
+#define OOT_PLAY_INIT        0x8009A750     // The OoT Play_Init function used to trigger the force game detection in case of game switch.
+#define MM_PLAY_INIT         0x8016A2C8     // The MM Play_Init function used to trigger the force game detection in case of game switch.
+#define DETECT_THROTTLE            8192
+
+// Actor Stuff
+#define OOT_FAIRY_ID         0x00000018     // The OoT fairy actor ID.
+#define MM_FAIRY_ID          0x00000010     // The MM fairy actor ID. The real ID is 0x00150000, but as we need to add an offset of + 0x8 to find the function address I added a 8 at the end
+#define OOT_BIG_FAIRY_ID     0x0000001A     // The OoT big fairy actor ID.
+#define MM_BIG_FAIRY_ID      0x0000FFFF     // There is no MM big fairy.
+#define OOT_BUTTERFLY_ID     0x0000001E     // The OoT butterfly actor ID.
+#define MM_BUTTERFLY_ID      0x00000015     // The MM butterfly actor ID.
+
+// Entrance stuff
+//#define OOT_SCENE_OFFSET     0x00001A68     // The offset to add to the real game address to reach the gLastScene for OoT
+//#define MM_SCENE_OFFSET     -0x00000118     // The offset to add to the real game address to reach the gLastScene for MM
+//#define OOT_SCENE_OFFSET     0x00441A58     // The offset to add to the real game address to reach the gLastScene for OoT
+//#define MM_SCENE_OFFSET      0x00770EC0     // The offset to add to the real game address to reach the gLastScene for MM
+#define OOT_CURR_SCENE_OFFSET 0x001C8544     // The offset to add to the real game address to reach the current scene ID for OoT.
+#define MM_CURR_SCENE_OFFSET  0x003E6BC4     // The offset to add to the real game address to reach the current scene ID for MM.
+#define OOT_SCENE_OFFSET      0x00440000     // The offset to add to the real game address to reach the gLastScene for OoT. An offset is also added to reach the variable.
+#define MM_SCENE_OFFSET       0x00770000     // The offset to add to the real game address to reach the gLastScene for MM. An offset is also added to reach the variable.
+#define OOT_NEXT_ENTRANCE     0x001DA2B8     // The offset to add to the real game address to reach the playState.nextEntrance for OoT
+#define MM_NEXT_ENTRANCE      0x003FF398     // The offset to add to the real game address to reach the playState.nextEntrance for MM
+#define OOT_OWL_CHOICE_ID     0x001D8E4A     // The offset to add to the real game address to reach the playState.pauseCtx.cursorSlot[1] for OoT
+#define MM_OWL_CHOICE_ID      0x003FDAB8     // The offset to add to the real game address to reach the playState.pauseCtx.cursorSlot[1] for MM
+#define OOT_LAST_SONG_ID      0x001D8966     // The offset to add to the real game address to reach the playState.msgCtx.lastPlayedSong for OoT
+#define MM_LAST_SONG_ID       0x003FD452     // The offset to add to the real game address to reach the playState.msgCtx.songPlayed for 
+#define OOT_CURR_ROOM         0x001DA15F     // The offset to add to the real game address to reach the current room index for OoT
+#define MM_CURR_ROOM          0x003FF203     // The offset to add to the real game address to reach the current room index for MM
+#define OOT_PLAYER_COORD      0x001C8714     // The offset to add to the real game address to reach the player coordinates for OoT
+#define MM_PLAYER_COORD       0x003E6DD4     // The offset to add to the real game address to reach the player coordinates for MM
+#define OOT_GROTTO_DATA       0x0011B964     // The offset to add to the real game address to reach the gGrottoData for OoT
+#define MM_GROTTO_DATA        0x001F3394     // The offset to add to the real game address to reach the gGrottoData for MM
+#define IN_MAGIC              0xFA000000     // The magic flag that indicates the message is an incoming entrance
+#define OUT_MAGIC             0xFB000000     // The magic flag that indicates the message is an outgoing entrance
+#define OOT_FARORE_STATE      0x001DB09C     // The offset to add to real game address to reach the state flag used to determined if farore's wind has been used for OoT
+#define MM_FARORE_STATE       0x0040081C     // The offset to add to real game address to reach the state flag used to determined if farore's wind has been used for MM
+#define FARORE_USED           0x30000000     // The value of the state flag when the farore's wind is used
+#define OOT_LINK_AGE          0x001DA288     // The offset to add to real game address to reach link's age for OoT
+
+#ifdef _DEBUG
+
+#define LOG(fmt, ...) \
+    printf("[LOG] " fmt "\n", __VA_ARGS__)
+
+#else
+
+#define LOG(fmt, ...)
+
+#endif
+
+enum GameID : uint8_t
+{
+    GAME_OOT = 0,
+    GAME_MM = 1,
+    GAME_UNKNOWN = 2
+};
+
+
+typedef struct Event
+{
+    uint32_t PC;
+    uint32_t Mem;
+    uint32_t Query[6];
+} Event;
+
+
+struct SharedData
+{
+    uint32_t GameVersion[2];
+    LONG MaxSize;
+    volatile LONG CurrIndex;
+    Event Buffer[BUFFER_SIZE];
+};
+
+extern SharedData* gData;                   // The shared data with the tracker
+extern uintptr_t moduleBase;                // The module base address of Project 64
+extern uintptr_t regBase;                   // The RAM address where the Project 64 registers are stored.
+extern uintptr_t gameRAMBase;               // The RAM address where the game data are stored.
+extern GameID gGame;                        // The current running game.
+extern uint32_t * gActivePCs;               // The current set of program counters that are tracked.
+extern uint32_t gActiveSceneOffset;         // The current offset to add to reach the last scene offset.
+extern uint32_t gOOTActiveGlobalOffset;     // An offset to add to the active scene offset to reach the gLastScene variable for OoT.
+extern uint32_t gMMActiveGlobalOffset;      // An offset to add to the active scene offset to reach the gLastScene variable for MM.
+
+void TryResolveROMBase();
+
+/*
+*   Find the real game RAM address.
+*
+*	@return The real RAM address corresponding to the game start RAM address.
+*/
+uintptr_t FindGameRAM();
+
+/*
+*   The program counter hook function used to track items and entrances.
+*/
+void PCHook();
+
+/*
+*   The ROM hook function used to catch game ROM changes.
+*/
+void ROMHook();
+
+/*
+*   Install the program counter hook.
+*/
+void InstallPCHook();
+
+/*
+*   Install the ROM hook.
+*/
+void InstallROMHook();
+
+/*
+*   Install the desired hook.
+*
+*   @param HookOffset		    The offset instruction to place the hook at.
+*   @param HookSize			    The size of the hooked instructions.
+*   @param Gateway			    The gateway used to execute the original hooked code.
+*   @param OriginalBytes		The original code to execute.
+*/
+void InstallHook(size_t HookOffset, size_t HookSize, uintptr_t HookFunction, void** Gateway, BYTE OriginalBytes[]);

@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{0d676e77-6519-44f7-85d2-0c22cd7d3f11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Multi">
+      <UniqueIdentifier>{0fce90d2-1239-400e-8ff2-d3981ec555c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Combo">
+      <UniqueIdentifier>{99e8f5db-7777-4b86-af07-00989f13a4b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Multi">
+      <UniqueIdentifier>{32429e65-a9b1-4a64-badf-aa3f99e1e87f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{77b06b68-cbeb-4a90-a527-75ab505bf8fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Combo">
+      <UniqueIdentifier>{4bf04eab-463e-405c-b7cb-8f930158faad}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="OoTMMComboTracker.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <QtUic Include="OoTMMComboTracker.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtRcc Include="Resources\Styles\darkstyle.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Multi\API.cpp">
+      <Filter>Source Files\Multi</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Multi\App.cpp">
+      <Filter>Source Files\Multi</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Multi\Buffer.cpp">
+      <Filter>Source Files\Multi</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Multi\Game.cpp">
+      <Filter>Source Files\Multi</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\MapTab.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\ObjectRenderer.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\OoTMMComboTracker.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Combo\Objects.cpp">
+      <Filter>Source Files\Combo</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Combo\OvTypes.cpp">
+      <Filter>Source Files\Combo</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Combo\Items.cpp">
+      <Filter>Source Files\Combo</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Combo\Scenes.cpp">
+      <Filter>Source Files\Combo</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Multi\Sendq.cpp">
+      <Filter>Source Files\Multi</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Multi\Protocol.cpp">
+      <Filter>Source Files\Multi</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\LogTab.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Multi\Multi.cpp">
+      <Filter>Source Files\Multi</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\SceneRenderer.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\GameTab.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\RegionTab.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\RoomRenderer.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\AppStyle.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\AppConfig.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\FilterManager.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\Settings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\MemoryReader.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Combo\Entrances.cpp">
+      <Filter>Source Files\Combo</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\EntranceTable.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\SceneEntrance.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Combo\OoTEntrances.cpp">
+      <Filter>Source Files\Combo</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\SceneOoTEntrances.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\SceneMMEntrances.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Combo\MMEntrances.cpp">
+      <Filter>Source Files\Combo</Filter>
+    </ClCompile>
+    <ClCompile Include="Common.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Headers\Multi\API.h">
+      <Filter>Header Files\Multi</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Multi\App.h">
+      <Filter>Header Files\Multi</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Multi\Buffer.h">
+      <Filter>Header Files\Multi</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Multi\Sendq.h">
+      <Filter>Header Files\Multi</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Multi\Protocol.h">
+      <Filter>Header Files\Multi</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Combo\Items.h">
+      <Filter>Header Files\Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Combo\NPC.h">
+      <Filter>Header Files\Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Combo\OvTypes.h">
+      <Filter>Header Files\Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Combo\Scenes.h">
+      <Filter>Header Files\Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Multi\Game.h">
+      <Filter>Header Files\Multi</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Combo\Objects.h">
+      <Filter>Header Files\Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Combo\OoTObjectScene.h">
+      <Filter>Header Files\Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Combo\MMObjectScene.h">
+      <Filter>Header Files\Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Combo\Regions.h">
+      <Filter>Header Files\Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\UI\RegionTab.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\UI\RoomRenderer.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\UI\AppStyle.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\UI\AppConfig.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\UI\ObjectRenderer.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\UI\Settings.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\UI\MemoryReader.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Combo\OoTEntrances.h">
+      <Filter>Header Files\Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Combo\MMEntrances.h">
+      <Filter>Header Files\Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\Combo\Entrances.h">
+      <Filter>Header Files\Combo</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\UI\SceneEntrance.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Headers\UI\MapTab.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="Headers\UI\OoTMMComboTracker.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="Headers\UI\LogTab.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="Headers\Multi\Multi.h">
+      <Filter>Header Files\Multi</Filter>
+    </QtMoc>
+    <QtMoc Include="Headers\UI\SceneRenderer.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="Headers\UI\GameTab.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="Headers\UI\FilterManager.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="Headers\UI\EntranceTable.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="OoTMMCombo-Tracker.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Logo.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Logo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,12 @@
+QList<QPair<int, int>> GSPoints = {
+{115, 341},
+};
+QList<QPair<int, int>> GrottoPoints = {
+{465, 423},
+{33, 337},
+{465, 241},
+};
+QList<QPair<int, int>> NPCsPoints = {
+{472, 332},
+{723, 305},
+};

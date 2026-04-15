@@ -1,0 +1,21 @@
+QList<QPair<int, int>> HivePoints = {
+{388, 662},
+{645, 660},
+{387, 556},
+{644, 554},
+};
+QList<QPair<int, int>> PotPoints = {
+{388, 662},
+{645, 659},
+{387, 556},
+{644, 554},
+};
+QList<QPair<int, int>> WonderPoints = {
+{675, 616},
+};
+QList<QPair<int, int>> CratePoints = {
+{391, 812},
+{667, 811},
+{391, 780},
+{667, 778},
+};

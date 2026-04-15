@@ -1,0 +1,7 @@
+QList<QPair<int, int>> ChestPoints = {
+{651, 477},
+};
+QList<QPair<int, int>> PotPoints = {
+{491, 329},
+{805, 320},
+};
