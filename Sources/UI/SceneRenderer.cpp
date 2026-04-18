@@ -227,26 +227,7 @@ void SceneItemTree::ItemFound(ObjectInfo* Object, const ItemInfo* Item)
 
 void SceneItemTree::CountSceneObjects()
 {
-    this->FoundObjects = 0;
-    this->TotalObjects = 0;
-    for (size_t i = 0; i < this->Scene->Objects->NumOfObjs; i++)
-    {   // Browse each scene objects
-
-        ObjectInfo* currObject = &this->Scene->Objects->Objects[i];
-        if (currObject->RenderScene != this->Scene->SceneID || currObject->Type == ObjectType::none || !currObject->HasCorrectLayout(this->Scene->Info->ActiveLayout) || this->Filter->IsObjectExcluded(currObject))
-        {   // Ignore the object if the render scene ID is different from this scene ID or if the current active layout does not match the object like OoT MQ or MM JP
-
-            continue;
-        }
-
-        this->TotalObjects++;  // We only add the object that should be rendered
-
-        if (currObject->Status != ObjectState::Hidden)
-        {   // The object is considered as found
-
-            this->FoundObjects++;
-        }
-    }
+    CountObjectsMatching(this->Scene->Objects->Objects, this->Scene->Objects->NumOfObjs, this->Filter, this->Scene->Info->ActiveLayout, this->Scene->SceneID, -1, &this->FoundObjects, &this->TotalObjects);
 }
 
 
@@ -262,34 +243,7 @@ void SceneItemTree::UpdateObjectCounts(int Count)
 
 void SceneItemTree::RefreshItemName()
 {
-    const size_t max_size = 150;
-    char finalName[max_size] = { 0 };
-    char tmp[4] = { 0 };
-
-    // Initialize the string with : SceneName (
-    size_t offset = 0;
-    size_t typeLen = strlen(this->GetSceneName());
-    memcpy_s(finalName, max_size, this->GetSceneName(), typeLen);
-    offset += typeLen;
-    finalName[offset] = ' ';
-    finalName[offset + 1] = '(';
-    offset += 2;
-
-    // Add the number of found object : SceneName (foundObjs / 
-    _itoa_s((int)this->GetCollectedObjects(), tmp, 10);
-    memcpy_s(finalName + offset, max_size - offset, tmp, strlen(tmp));
-    offset += strlen(tmp);
-    finalName[offset] = ' ';
-    finalName[offset + 1] = '/';
-    finalName[offset + 2] = ' ';
-    offset += 3;
-
-    // Add the total number of object : SceneName (foundObjs / totObjs) 
-    _itoa_s((int)this->GetTotalObjects(), tmp, 10);
-    memcpy_s(finalName + offset, max_size - offset, tmp, strlen(tmp));
-    offset += strlen(tmp);
-    finalName[offset] = ')';
-    finalName[offset + 1] = '\0';
+    QString finalName = BuildCountLabel(this->GetSceneName(), this->GetCollectedObjects(), this->GetTotalObjects());
     this->setText(0, finalName);
 }
 

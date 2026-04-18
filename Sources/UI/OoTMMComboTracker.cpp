@@ -123,6 +123,46 @@ void OoTMMComboTracker::CreatePath(QString PathToCreate)
 
 #pragma region Object related
 
+void OoTMMComboTracker::UpdateTabNameText(int TabID)
+{
+    GameTab* activeTab = nullptr;
+
+    if (TabID == OOT_GAME)
+    {   // OoT
+
+        activeTab = this->OoTTab;
+    }
+    else
+    {   // MM
+
+        activeTab = this->MMTab;
+    }
+
+    QString finalName = BuildCountLabel(activeTab->TabName, activeTab->FoundObjects, activeTab->TotalObjects);
+    this->TabWidget->setTabText(TabID + 1, finalName);
+}
+
+
+void OoTMMComboTracker::UpdateObjectMapVisibility(bool NewValue)
+{
+    AppConfig::SetHideCollectedFromMap(NewValue);
+    this->UpdateObjectVisibilityForAllGames();
+}
+
+
+void OoTMMComboTracker::UpdateObjectListVisibility(bool NewValue)
+{
+    AppConfig::SetHideCollectedFromObjectList(NewValue);
+    this->UpdateObjectVisibilityForAllGames();
+}
+
+
+void OoTMMComboTracker::UpdateObjectVisibilityForAllGames()
+{
+    this->OoTTab->UpdateObjectVisibility();
+    this->MMTab->UpdateObjectVisibility();
+}
+
 void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, const ItemInfo* ItemFound)
 {
     switch (Game)
@@ -152,68 +192,6 @@ void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, c
             break;
         }
     }
-}
-
-void OoTMMComboTracker::UpdateTabNameText(int TabID)
-{
-    GameTab* activeTab = nullptr;
-
-    if (TabID == OOT_GAME)
-    {   // OoT
-
-        activeTab = this->OoTTab;
-    }
-    else
-    {   // MM
-
-        activeTab = this->MMTab;
-    }
-
-    const size_t max_size = 150;
-    char finalName[max_size] = { 0 };
-    char tmp[5] = { 0 };
-
-    // Initialize the string with : GameName (
-    size_t offset = 0;
-    size_t typeLen = strlen(activeTab->TabName);
-    memcpy_s(finalName, max_size, activeTab->TabName, typeLen);
-    offset += typeLen;
-    finalName[offset] = ' ';
-    finalName[offset + 1] = '(';
-    offset += 2;
-
-    // Add the number of found object : GameName (foundObjs / 
-    _itoa_s((int)activeTab->FoundObjects, tmp, 10);
-    memcpy_s(finalName + offset, max_size - offset, tmp, strlen(tmp));
-    offset += strlen(tmp);
-    finalName[offset] = ' ';
-    finalName[offset + 1] = '/';
-    finalName[offset + 2] = ' ';
-    offset += 3;
-
-    // Add the total number of object : GameName (foundObjs / totObjs)
-    _itoa_s(activeTab->TotalObjects, tmp, 10);
-    memcpy_s(finalName + offset, max_size - offset, tmp, strlen(tmp));
-    offset += strlen(tmp);
-    finalName[offset] = ')';
-    finalName[offset + 1] = '\0';
-    this->TabWidget->setTabText(TabID + 1, finalName);
-}
-
-
-void OoTMMComboTracker::UpdateObjectMapVisibility(bool NewValue)
-{
-    AppConfig::SetHideCollectedFromMap(NewValue);
-    this->OoTTab->UpdateObjectVisibility();
-    this->MMTab->UpdateObjectVisibility();
-}
-
-
-void OoTMMComboTracker::UpdateObjectListVisibility(bool NewValue)
-{
-    AppConfig::SetHideCollectedFromObjectList(NewValue);
-    this->OoTTab->UpdateObjectVisibility();
-    this->MMTab->UpdateObjectVisibility();
 }
 
 #pragma endregion
@@ -374,6 +352,38 @@ void OoTMMComboTracker::UpdateTrackingState(QString NewState, QIcon NewIcon)
 {
     this->ui.actionStartTracking->setText(NewState);
     this->ui.actionStartTracking->setIcon(NewIcon);
+}
+
+
+void OoTMMComboTracker::ApplySettings()
+{
+    switch (this->ROMSettings.Game)
+    {
+        case ROMGame::oot:
+        {
+            this->TabWidget->setTabVisible(this->TabWidget->indexOf(this->OoTTab), true);
+            this->TabWidget->setTabVisible(this->TabWidget->indexOf(this->MMTab), false);
+            this->ROMSettings.ApplyOoTSettingsToFilter(this->OoTTab->GameMaps->FilterButton);
+            break;
+        }
+
+        case ROMGame::mm:
+        {
+            this->TabWidget->setTabVisible(this->TabWidget->indexOf(this->OoTTab), false);
+            this->TabWidget->setTabVisible(this->TabWidget->indexOf(this->MMTab), true);
+            this->ROMSettings.ApplyMMSettingsToFilter(this->MMTab->GameMaps->FilterButton);
+            break;
+        }
+
+        case ROMGame::ootmm:
+        default:
+        {
+            this->TabWidget->setTabVisible(this->TabWidget->indexOf(this->OoTTab), true);
+            this->TabWidget->setTabVisible(this->TabWidget->indexOf(this->MMTab), true);
+            this->ROMSettings.ApplySettings(this->OoTTab->GameMaps->FilterButton, this->MMTab->GameMaps->FilterButton);
+            break;
+        }
+    }
 }
 
 
@@ -556,38 +566,6 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
     this->RefreshTracker();
 
     AppConfig::SetLastSpoilerLogPath(FilePath);
-}
-
-
-void OoTMMComboTracker::ApplySettings()
-{
-    switch (this->ROMSettings.Game)
-    {
-        case ROMGame::oot:
-        {
-            this->TabWidget->setTabVisible(this->TabWidget->indexOf(this->OoTTab), true);
-            this->TabWidget->setTabVisible(this->TabWidget->indexOf(this->MMTab), false);
-            this->ROMSettings.ApplyOoTSettingsToFilter(this->OoTTab->GameMaps->FilterButton);
-            break;
-        }
-        
-        case ROMGame::mm:
-        {
-            this->TabWidget->setTabVisible(this->TabWidget->indexOf(this->OoTTab), false);
-            this->TabWidget->setTabVisible(this->TabWidget->indexOf(this->MMTab), true);
-            this->ROMSettings.ApplyMMSettingsToFilter(this->MMTab->GameMaps->FilterButton);
-            break;
-        }
-
-        case ROMGame::ootmm:
-        default:
-        {
-            this->TabWidget->setTabVisible(this->TabWidget->indexOf(this->OoTTab), true);
-            this->TabWidget->setTabVisible(this->TabWidget->indexOf(this->MMTab), true);
-            this->ROMSettings.ApplySettings(this->OoTTab->GameMaps->FilterButton, this->MMTab->GameMaps->FilterButton);
-            break;
-        }
-    }
 }
 
 #pragma endregion

@@ -578,3 +578,17 @@ public:
     */
     void RemoveObjectFromList(QTreeWidget* Tree);
 };
+
+/*
+* Count matching objects in an array, filtering by scene, room, layout, and exclusion status.
+*
+* @param Objects       The objects array to count.
+* @param Count         The number of objects in the array.
+* @param Filter        The filter manager to check exclusions.
+* @param Layout        The active game layout.
+* @param SceneID       The scene ID to match.
+* @param RoomID        The room ID to match (-1 = all rooms, match all RoomIDs).
+* @param FoundOut      Output pointer for found count.
+* @param TotalOut      Output pointer for total count.
+*/
+void CountObjectsMatching(ObjectInfo* Objects, size_t Count, class FilterManager* Filter, GameLayout Layout, uint32_t SceneID, int RoomID, int* FoundOut, int* TotalOut);

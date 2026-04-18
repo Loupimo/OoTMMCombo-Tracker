@@ -1,10 +1,11 @@
-﻿#include "UI/ObjectRenderer.h"
+#include "UI/ObjectRenderer.h"
 #include "UI/SceneRenderer.h"
 #include <QGraphicsColorizeEffect>
 #include <QGraphicsSceneHoverEvent>
 #include <QToolTip>
 #include <QCursor>
 #include <UI/AppConfig.h>
+#include "UI/FilterManager.h"
 
 static ObjectIcons* IconsRef = nullptr;
 
@@ -611,34 +612,7 @@ size_t ObjectRenderer::GetTotalObject()
 
 void ObjectRenderer::UpdateText()
 {
-    const size_t max_size = 150;
-    char finalName[max_size] = { 0 };
-    char tmp[4] = { 0 };
-
-    // Initialize the string with : ObjectType (
-    size_t offset = 0;
-    size_t typeLen = strlen(ObjTypeName[this->Type]);
-    memcpy_s(finalName, max_size, ObjTypeName[this->Type], typeLen);
-    offset += typeLen;
-    finalName[offset] = ' ';
-    finalName[offset + 1] = '(';
-    offset += 2;
-
-    // Add the number of found object : ObjectType (foundObjs / 
-    _itoa_s((int) this->GetCollectedObject(), tmp, 10);
-    memcpy_s(finalName + offset, max_size - offset, tmp, strlen(tmp));
-    offset += strlen(tmp);
-    finalName[offset] = ' ';
-    finalName[offset + 1] = '/';
-    finalName[offset + 2] = ' ';
-    offset += 3;
-
-    // Add the total number of object : ObjectType (foundObjs / totObjs) 
-    _itoa_s((int) this->GetTotalObject(), tmp, 10);
-    memcpy_s(finalName + offset, max_size - offset, tmp, strlen(tmp));
-    offset += strlen(tmp);
-    finalName[offset] = ')';
-    finalName[offset + 1] = '\0';
+    QString finalName = BuildCountLabel(ObjTypeName[this->Type], this->GetCollectedObject(), this->GetTotalObject());
     this->ObjCat->setText(0, finalName);
 }
 
@@ -652,4 +626,37 @@ void ObjectRenderer::RefreshObjectCounts(ObjectItemTree * Caller, int Count)
 void ObjectRenderer::RemoveObjectFromList(QTreeWidget* Tree)
 {
     Tree->takeTopLevelItem(Tree->indexOfTopLevelItem(this->ObjCat));
+}
+
+
+void CountObjectsMatching(ObjectInfo* Objects, size_t Count, FilterManager* Filter, GameLayout Layout, uint32_t SceneID, int RoomID, int* FoundOut, int* TotalOut)
+{
+    *FoundOut = 0;
+    *TotalOut = 0;
+
+    for (size_t i = 0; i < Count; i++)
+    {   // Browse each object
+
+        ObjectInfo* currObj = &Objects[i];
+
+        if (currObj->Type == ObjectType::none || currObj->RenderScene != SceneID || !currObj->HasCorrectLayout(Layout) || Filter->IsObjectExcluded(currObj))
+        {   // Skip excluded or mismatched objects
+
+            continue;
+        }
+
+        if (RoomID != -1 && currObj->RoomID != RoomID)
+        {   // Skip if filtering by room and it doesn't match
+
+            continue;
+        }
+
+        (*TotalOut)++;
+
+        if (currObj->Status != ObjectState::Hidden)
+        {   // The object is considered as found
+
+            (*FoundOut)++;
+        }
+    }
 }

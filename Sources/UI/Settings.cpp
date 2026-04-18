@@ -1,6 +1,7 @@
 #include "UI/FilterManager.h"
 #include "UI/AppConfig.h"
 #include "UI/Settings.h"
+#include "Combo/Objects.h"
 #include "Combo/Scenes.h"
 
 
@@ -401,9 +402,7 @@ void Settings::ApplySettings(FilterManager* FilterOoT, FilterManager* FilterMM)
 
 void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
 {
-	Filter->ResetExcludedObject();
-
-	SceneObjects* scenes = GetGameSceneObjects(OOT_GAME);
+	SceneObjects* scenes = this->ApplySettingsToFilter(Filter, OOT_GAME);
 
 	for (size_t i = 0; i < OOT_NUM_SCENES; i++)
 	{	// Browse all OoT scenes
@@ -693,9 +692,7 @@ void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
 
 void Settings::ApplyMMSettingsToFilter(FilterManager* Filter)
 {
-	Filter->ResetExcludedObject();
-
-	SceneObjects* scenes = GetGameSceneObjects(MM_GAME);
+	SceneObjects* scenes = this->ApplySettingsToFilter(Filter, MM_GAME);
 
 	for (size_t i = 0; i < MM_NUM_SCENES; i++)
 	{	// Browse all OoT scenes
@@ -956,4 +953,11 @@ void Settings::CheckObjectExclusion(ObjectInfo* ToCheck, ShuffleSetting SettingV
 		default:
 			break;
 	}
+}
+
+
+SceneObjects* Settings::ApplySettingsToFilter(FilterManager* Filter, uint32_t Game)
+{
+	Filter->ResetExcludedObject();
+	return GetGameSceneObjects(Game);
 }

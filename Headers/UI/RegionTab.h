@@ -55,3 +55,12 @@ public:
 
 
 };
+
+/*
+* Free utility function to find a region tree by ID.
+*
+* @param Regions       The vector of region trees to search.
+* @param Region        The region ID to find.
+* @return              The matching RegionTree*, or nullptr if not found.
+*/
+RegionTree* FindRegionTreeIn(const std::vector<RegionTree*>& Regions, uint8_t Region);

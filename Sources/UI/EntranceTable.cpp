@@ -1,10 +1,12 @@
-﻿#include "UI/EntranceTable.h"
+#include "UI/EntranceTable.h"
+#include "UI/EntranceRenderer.h"
 #include "Combo/Entrances.h"
 #include "Combo/Scenes.h"
 #include "UI/ObjectRenderer.h"
 
 #include <QVBoxLayout>
 #include <QHeaderView>
+#include <QPainter>
 
 
 #include <algorithm>
@@ -27,9 +29,6 @@ GlobalEntranceTableModel::GlobalEntranceTableModel(EntranceGameTabView* parent) 
 
 void GlobalEntranceTableModel::setScenes(const std::map<uint32_t, SceneEntranceMetaInf>& scenes)
 {
-    this->Owner->FoundEntrances = 0;
-    this->Owner->TotalEntrances = 0;
-
     beginResetModel();
 
     m_rows.clear();
@@ -40,25 +39,9 @@ void GlobalEntranceTableModel::setScenes(const std::map<uint32_t, SceneEntranceM
         {
             const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->Owner->GameID, entranceID);
 
-            switch (entrance->Type)
+            if (entrance == nullptr || entrance->Type == EntranceType::None)
             {
-                case EntranceType::One_Way_In:
-                case EntranceType::One_Way_Out:
-                {
-                    this->Owner->TotalEntrances++;
-                    break;
-                }
-
-                case EntranceType::Normal:
-                {
-                    this->Owner->TotalEntrances += 2;
-                    break;
-                }
-
-                default:
-                {
-                    continue;
-                }
+                continue;
             }
 
             GlobalEntranceRow row;
@@ -77,15 +60,6 @@ void GlobalEntranceTableModel::setScenes(const std::map<uint32_t, SceneEntranceM
             row.OutLinkName = this->formatEntranceLink(row.OutGame, row.EntranceID, row.OutLink, false);
 
             m_rows.push_back(row);
-
-            if (row.InLink != UINT32_MAX)
-            {
-                this->Owner->FoundEntrances++;
-            }
-            if (row.OutLink != UINT32_MAX)
-            {
-                this->Owner->FoundEntrances++;
-            }
         }
     }
 
@@ -95,7 +69,7 @@ void GlobalEntranceTableModel::setScenes(const std::map<uint32_t, SceneEntranceM
 
     endResetModel();
 
-    this->Owner->RefreshName();
+    this->Owner->SyncCounters();
 }
 
 // ============================================
@@ -124,16 +98,7 @@ void GlobalEntranceTableModel::updateEntrance(uint32_t sceneID, uint32_t entranc
 
             this->m_rowStatusColors[i] = this->rowStatusColor(row);
 
-            if (row.InLink != UINT32_MAX)
-            {
-                this->Owner->FoundEntrances++;
-            }
-            if (row.OutLink != UINT32_MAX)
-            {
-                this->Owner->FoundEntrances++;
-            }
-
-            this->Owner->RefreshName();
+            this->Owner->OnEntranceUpdated(sceneID, entranceID);
 
             emit dataChanged(top, bottom);
             emit headerDataChanged(Qt::Vertical, (int)i, (int)i);
@@ -547,6 +512,82 @@ void AllEntranceView::RefreshContent()
 
 #pragma region // EntranceGameTabView
 
+SceneEntranceItemTree::SceneEntranceItemTree(SceneEntranceMetaInf* Inf, EntranceGameTabView* PaOwner, QTreeWidgetItem* Parent) : CommonBaseItemTree(Parent)
+{
+    this->Owner = PaOwner;
+    this->SceneInf = Inf;
+    this->CountValidEntrances();
+    this->RefreshItemName();
+}
+
+
+int SceneEntranceItemTree::GetTotalObjectAvailable()
+{
+    return this->TotalEntrances;
+}
+
+
+void SceneEntranceItemTree::CountValidEntrances()
+{
+    this->FoundEntrances = 0;
+    this->TotalEntrances = 0;
+
+    GlobalEntranceTableModel* model = (this->Owner != nullptr && this->Owner->AllView != nullptr) ? this->Owner->AllView->Model : nullptr;
+    if (model == nullptr)
+    {
+        return;
+    }
+
+    for (auto& row : model->m_rows)
+    {
+        if (row.SceneID != this->SceneInf->SceneID)
+        {
+            continue;
+        }
+
+        const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->Owner->GameID, row.EntranceID);
+        if (entrance == nullptr)
+        {
+            continue;
+        }
+
+        switch (entrance->Type)
+        {
+            case EntranceType::Normal:
+            {
+                this->TotalEntrances += 2;
+                if (row.InLink != UINT32_MAX) this->FoundEntrances++;
+                if (row.OutLink != UINT32_MAX) this->FoundEntrances++;
+                break;
+            }
+            case EntranceType::One_Way_In:
+            {
+                this->TotalEntrances++;
+                if (row.InLink != UINT32_MAX) this->FoundEntrances++;
+                break;
+            }
+            case EntranceType::One_Way_Out:
+            {
+                this->TotalEntrances++;
+                if (row.OutLink != UINT32_MAX) this->FoundEntrances++;
+                break;
+            }
+            default:
+            {
+                break;
+            }
+        }
+    }
+}
+
+
+void SceneEntranceItemTree::RefreshItemName()
+{
+    QString finalName = BuildCountLabel(GetSceneName(this->Owner->GameID, this->SceneInf->SceneID), this->FoundEntrances, this->TotalEntrances);
+    this->setText(0, finalName);
+}
+
+
 EntranceGameTabView::EntranceGameTabView(int Game, const char * Name, EntranceTab* parent) : QWidget(parent)
 {
     this->Owner = parent;
@@ -558,6 +599,20 @@ EntranceGameTabView::EntranceGameTabView(int Game, const char * Name, EntranceTa
     // All View
     this->AllView = new AllEntranceView(this);
 
+    // Scene Map view
+    this->SceneMapScene = new QGraphicsScene(this);
+    this->SceneMapView = new QGraphicsView(this->SceneMapScene);
+    this->SceneMapView->setRenderHint(QPainter::Antialiasing);
+    this->SceneMapView->setRenderHint(QPainter::SmoothPixmapTransform);
+    this->SceneMapView->setDragMode(QGraphicsView::ScrollHandDrag);
+    this->SceneMapView->setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
+
+    // Center stack: AllView when no scene is selected, SceneMapView otherwise
+    this->CenterStack = new QStackedWidget(this);
+    this->CenterStack->addWidget(this->AllView);
+    this->CenterStack->addWidget(this->SceneMapView);
+    this->CenterStack->setCurrentIndex(0);
+
     // Map tree
     this->MapList = new CustomTreeWidget("Maps", 300, this);
 
@@ -565,9 +620,13 @@ EntranceGameTabView::EntranceGameTabView(int Game, const char * Name, EntranceTa
     this->EntranceList = new CustomTreeWidget("Entrances", 300, this);
     this->EntranceList->setVisible(false);
 
+    // Entrance renderer: wraps the graphics scene/view and owns the per-scene entrance tree items.
+    this->Renderer = new EntranceRenderer(this);
+    this->Renderer->SetTarget(this->SceneMapScene, this->SceneMapView);
+
     // Layout
     this->LayoutSplitter->addWidget(this->MapList);
-    this->LayoutSplitter->addWidget(this->AllView);
+    this->LayoutSplitter->addWidget(this->CenterStack);
     this->LayoutSplitter->addWidget(this->EntranceList);
 
     this->MainLayout->addWidget(this->LayoutSplitter);
@@ -577,7 +636,23 @@ EntranceGameTabView::EntranceGameTabView(int Game, const char * Name, EntranceTa
     auto scenes = GetSceneEntranceMetaInfForGame(Game);
 
     for (auto& [sceneID, MetaInf] : *scenes)
-    {
+    {   // Only keep scenes that have at least one valid entrance
+
+        bool hasValid = false;
+        for (auto& [entranceID, link] : MetaInf.EntranceIDs)
+        {
+            const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(Game, entranceID);
+            if (entrance != nullptr && entrance->Type != EntranceType::None)
+            {
+                hasValid = true;
+                break;
+            }
+        }
+        if (!hasValid)
+        {
+            continue;
+        }
+
         RegionTree* currRegion = this->FindRegionTree(MetaInf.RegionID);
         if (currRegion == nullptr)
         {   // Create a new region in the tree list
@@ -586,25 +661,283 @@ EntranceGameTabView::EntranceGameTabView(int Game, const char * Name, EntranceTa
             this->Regions.push_back(currRegion);
         }
 
-        QTreeWidgetItem* comm = new QTreeWidgetItem(currRegion);
-        comm->setText(0, GetSceneName(this->GameID, sceneID));
-        //this->MapList->List->addChild(GetSceneName(this->Owner->Game, sceneID));
+        new SceneEntranceItemTree(&MetaInf, this, currRegion);
+    }
+
+    this->SyncCounters();
+    this->MapList->List->sortItems(0, Qt::AscendingOrder);
+
+    QObject::connect(this->MapList->List, &QTreeWidget::currentItemChanged, this,
+        [this](QTreeWidgetItem* current, QTreeWidgetItem* /*previous*/)
+        {
+            this->OnSceneSelected(current);
+        });
+
+    QObject::connect(this->EntranceList->List, &QTreeWidget::itemClicked, this,
+        [](QTreeWidgetItem* item, int /*column*/)
+        {
+            if (item == nullptr)
+            {
+                return;
+            }
+            CommonBaseItemTree* action = dynamic_cast<CommonBaseItemTree*>(item);
+            if (action != nullptr)
+            {
+                action->PerformAction();
+            }
+        });
+}
+
+
+void EntranceGameTabView::OnSceneSelected(QTreeWidgetItem* Current)
+{
+    SceneEntranceItemTree* sceneItem = dynamic_cast<SceneEntranceItemTree*>(Current);
+    if (sceneItem == nullptr)
+    {   // Region item or no selection: restore the all-entrance view
+
+        this->CenterStack->setCurrentIndex(0);
+        this->EntranceList->setVisible(false);
+        return;
+    }
+
+    // Render the scene map and the per-scene entrance list
+    this->RenderSceneMap(sceneItem->SceneInf);
+    this->PopulateEntranceList(sceneItem->SceneInf);
+    this->CenterStack->setCurrentIndex(1);
+    this->EntranceList->setVisible(true);
+}
+
+
+void EntranceGameTabView::RenderSceneMap(SceneEntranceMetaInf* Scene)
+{
+    if (this->SceneMapItem != nullptr)
+    {   // Remove and destroy the previously rendered image
+
+        this->SceneMapScene->removeItem(this->SceneMapItem);
+        delete this->SceneMapItem;
+        this->SceneMapItem = nullptr;
+    }
+    if (this->SceneMapImage != nullptr)
+    {
+        delete this->SceneMapImage;
+        this->SceneMapImage = nullptr;
+    }
+
+    if (Scene->MapPath != NULL)
+    {   // Load the new map image into the graphics scene
+
+        this->SceneMapImage = new QPixmap(Scene->MapPath);
+        this->SceneMapItem = this->SceneMapScene->addPixmap(*this->SceneMapImage);
+        this->SceneMapView->fitInView(this->SceneMapScene->sceneRect(), Qt::KeepAspectRatio);
     }
 }
 
-RegionTree* EntranceGameTabView::FindRegionTree(uint8_t Region)
+
+void EntranceGameTabView::PopulateEntranceList(SceneEntranceMetaInf* Scene)
 {
-    for (size_t i = 0; i < this->Regions.size(); i++)
-    {   // Browse through all the available regions
+    this->EntranceList->List->clear();
+    if (this->Renderer != nullptr)
+    {
+        this->Renderer->Clear();
+    }
 
-        if (this->Regions[i]->MetaInfo->Region == Region)
-        {   // We have found the matching region
+    CommonBaseItemTree* normalCat = new CommonBaseItemTree();
+    CommonBaseItemTree* oneWayInCat = new CommonBaseItemTree();
+    CommonBaseItemTree* oneWayOutCat = new CommonBaseItemTree();
 
-            return this->Regions[i];
+    GlobalEntranceTableModel* model = this->AllView != nullptr ? this->AllView->Model : nullptr;
+
+    for (auto& [entranceID, link] : Scene->EntranceIDs)
+    {
+        const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->GameID, entranceID);
+        if (entrance == nullptr || entrance->Type == EntranceType::None)
+        {
+            continue;
+        }
+
+        GlobalEntranceRow* row = nullptr;
+        if (model != nullptr)
+        {
+            for (auto& r : model->m_rows)
+            {
+                if (r.SceneID == Scene->SceneID && r.EntranceID == entranceID)
+                {
+                    row = &r;
+                    break;
+                }
+            }
+        }
+        if (row == nullptr)
+        {
+            continue;
+        }
+
+        CommonBaseItemTree* category = nullptr;
+        switch (entrance->Type)
+        {
+            case EntranceType::Normal:       category = normalCat; break;
+            case EntranceType::One_Way_In:   category = oneWayInCat; break;
+            case EntranceType::One_Way_Out:  category = oneWayOutCat; break;
+            default: break;
+        }
+
+        if (category != nullptr)
+        {
+            new EntranceItemTree(row, this->Renderer, category);
         }
     }
 
-    return nullptr;
+    auto addOrDelete = [this](CommonBaseItemTree* cat, const char* name)
+    {
+        if (cat->childCount() > 0)
+        {   // Store the base name in UserRole so RefreshCategoryCounters can rebuild the count label later.
+            cat->setData(0, Qt::UserRole, QString::fromUtf8(name));
+            this->EntranceList->List->addTopLevelItem(cat);
+            cat->setExpanded(true);
+        }
+        else
+        {
+            delete cat;
+        }
+    };
+
+    addOrDelete(normalCat, "Normal");
+    addOrDelete(oneWayInCat, "One Way In");
+    addOrDelete(oneWayOutCat, "One Way Out");
+
+    this->RefreshCategoryCounters();
+}
+
+
+void EntranceGameTabView::RefreshRegionCounters()
+{
+    for (RegionTree* region : this->Regions)
+    {
+        uint32_t found = 0;
+        uint32_t total = 0;
+        for (int i = 0; i < region->childCount(); i++)
+        {
+            SceneEntranceItemTree* scene = dynamic_cast<SceneEntranceItemTree*>(region->child(i));
+            if (scene != nullptr)
+            {
+                found += scene->FoundEntrances;
+                total += scene->TotalEntrances;
+            }
+        }
+        region->setText(0, BuildCountLabel(region->MetaInfo->RegionName, found, total));
+    }
+}
+
+
+void EntranceGameTabView::OnEntranceUpdated(uint32_t SceneID, uint32_t EntranceID)
+{
+    if (this->Renderer != nullptr)
+    {
+        EntranceItemTree* entrance = this->Renderer->FindEntrance(SceneID, EntranceID);
+        if (entrance != nullptr)
+        {
+            entrance->RefreshText();
+        }
+    }
+
+    this->SyncCounters();
+}
+
+
+void EntranceGameTabView::SyncCounters()
+{
+    this->FoundEntrances = 0;
+    this->TotalEntrances = 0;
+
+    for (RegionTree* region : this->Regions)
+    {
+        for (int i = 0; i < region->childCount(); i++)
+        {
+            SceneEntranceItemTree* scene = dynamic_cast<SceneEntranceItemTree*>(region->child(i));
+            if (scene == nullptr)
+            {
+                continue;
+            }
+            scene->CountValidEntrances();
+            scene->RefreshItemName();
+            this->FoundEntrances += scene->FoundEntrances;
+            this->TotalEntrances += scene->TotalEntrances;
+        }
+    }
+
+    this->RefreshRegionCounters();
+    this->RefreshCategoryCounters();
+    this->RefreshName();
+}
+
+
+void EntranceGameTabView::RefreshCategoryCounters()
+{
+    if (this->EntranceList == nullptr || this->EntranceList->List == nullptr)
+    {
+        return;
+    }
+
+    QTreeWidget* tree = this->EntranceList->List;
+    for (int i = 0; i < tree->topLevelItemCount(); i++)
+    {
+        QTreeWidgetItem* cat = tree->topLevelItem(i);
+        if (cat == nullptr)
+        {
+            continue;
+        }
+        QVariant baseName = cat->data(0, Qt::UserRole);
+        if (!baseName.isValid())
+        {
+            continue;
+        }
+
+        uint32_t found = 0;
+        uint32_t total = 0;
+        for (int j = 0; j < cat->childCount(); j++)
+        {
+            EntranceItemTree* entrance = dynamic_cast<EntranceItemTree*>(cat->child(j));
+            if (entrance == nullptr)
+            {
+                continue;
+            }
+            GlobalEntranceRow* row = entrance->GetRow();
+            const EntranceMetaInfo* meta = entrance->GetMetaInfo();
+            if (row == nullptr || meta == nullptr)
+            {
+                continue;
+            }
+            switch (meta->Type)
+            {
+                case EntranceType::Normal:
+                {
+                    total += 2;
+                    if (row->InLink != UINT32_MAX) found++;
+                    if (row->OutLink != UINT32_MAX) found++;
+                    break;
+                }
+                case EntranceType::One_Way_In:
+                {
+                    total++;
+                    if (row->InLink != UINT32_MAX) found++;
+                    break;
+                }
+                case EntranceType::One_Way_Out:
+                {
+                    total++;
+                    if (row->OutLink != UINT32_MAX) found++;
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+            }
+        }
+
+        QByteArray bytes = baseName.toString().toUtf8();
+        cat->setText(0, BuildCountLabel(bytes.constData(), found, total));
+    }
 }
 
 void EntranceGameTabView::RefreshContent()
@@ -618,6 +951,11 @@ void EntranceGameTabView::RefreshName()
 {
     this->Owner->setTabText(this->GameID, this->GetRefreshedName(this->TabName, FoundEntrances, TotalEntrances));
     this->Owner->RefreshName();
+}
+
+RegionTree* EntranceGameTabView::FindRegionTree(uint8_t Region)
+{
+    return FindRegionTreeIn(this->Regions, Region);
 }
 
 #pragma endregion // EntranceGameTabView

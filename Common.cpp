@@ -66,23 +66,24 @@ CustomTreeWidget::CustomTreeWidget(QString TreeName, int MaxWidth, QWidget* Pare
 
 void CustomTreeWidget::OnToggleExpandCollapse(QTreeWidget* TreeWidget, bool Expand)
 {
-    if (!Expand)
-    {
-        TreeWidget->collapseAll();
-    }
-    else
-    {
-        TreeWidget->expandAll();
-    }
+    OnToggleExpandCollapseQTreeWidget(TreeWidget, Expand);
 }
 
 
 void CustomTreeWidget::FilterTree(const QString& SearchText)
 {
-    for (int i = 0; i < this->List->topLevelItemCount(); ++i)
+    FilterQTreeWidget(this->List, SearchText);
+}
+
+#pragma endregion // CustomTreeWidget
+
+
+void FilterQTreeWidget(QTreeWidget* TreeWidget, const QString& SearchText)
+{
+    for (int i = 0; i < TreeWidget->topLevelItemCount(); ++i)
     {   // Browse all tree item from the top
 
-        CommonBaseItemTree* parentItem = (CommonBaseItemTree*)this->List->topLevelItem(i);
+        CommonBaseItemTree* parentItem = (CommonBaseItemTree*)TreeWidget->topLevelItem(i);
         bool parentVisible = false;
 
         for (int j = 0; j < parentItem->childCount(); ++j)
@@ -133,4 +134,15 @@ void CustomTreeWidget::FilterTree(const QString& SearchText)
     }
 }
 
-#pragma endregion // CustomTreeWidget
+
+void OnToggleExpandCollapseQTreeWidget(QTreeWidget* TreeWidget, bool Expand)
+{
+    if (!Expand)
+    {
+        TreeWidget->collapseAll();
+    }
+    else
+    {
+        TreeWidget->expandAll();
+    }
+}

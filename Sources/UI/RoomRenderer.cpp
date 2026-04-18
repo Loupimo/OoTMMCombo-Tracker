@@ -75,22 +75,7 @@ uint32_t RoomItemTree::RefreshRoomObjectsCount()
 
 void RoomItemTree::InitRoomCounters()
 {
-	this->FoundObjects = 0;
-	this->TotalObjects = 0;
-	for (size_t i = 0; i < this->SceneItem->Scene->Objects->NumOfObjs; i++)
-	{
-		ObjectInfo* currObj = &this->SceneItem->Scene->Objects->Objects[i];
-
-		if (currObj->Type != ObjectType::none && currObj->RenderScene == this->SceneItem->Scene->SceneID && currObj->RoomID == this->Info.RoomID && currObj->HasCorrectLayout(this->SceneItem->Scene->Info->ActiveLayout) && !this->Filter->IsObjectExcluded(currObj))
-		{
-			this->TotalObjects++;
-
-			if (currObj->Status != ObjectState::Hidden)
-			{
-				this->FoundObjects++;
-			}
-		}
-	}
+	CountObjectsMatching(this->SceneItem->Scene->Objects->Objects, this->SceneItem->Scene->Objects->NumOfObjs, this->Filter, this->SceneItem->Scene->Info->ActiveLayout, this->SceneItem->Scene->SceneID, this->Info.RoomID, &this->FoundObjects, &this->TotalObjects);
 }
 
 

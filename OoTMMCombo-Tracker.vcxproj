@@ -219,6 +219,7 @@
     <ClCompile Include="Sources\Multi\Sendq.cpp" />
     <ClCompile Include="Sources\UI\AppConfig.cpp" />
     <ClCompile Include="Sources\UI\AppStyle.cpp" />
+    <ClCompile Include="Sources\UI\EntranceRenderer.cpp" />
     <ClCompile Include="Sources\UI\EntranceTable.cpp" />
     <ClCompile Include="Sources\UI\FilterManager.cpp" />
     <ClCompile Include="Sources\UI\GameTab.cpp" />
@@ -258,6 +259,7 @@
     <ClInclude Include="Headers\UI\AppStyle.h" />
     <QtMoc Include="Headers\UI\FilterManager.h" />
     <QtMoc Include="Headers\UI\EntranceTable.h" />
+    <ClInclude Include="Headers\UI\EntranceRenderer.h" />
     <ClInclude Include="Headers\UI\MemoryReader.h" />
     <ClInclude Include="Headers\UI\RegionTab.h" />
     <ClInclude Include="Headers\UI\RoomRenderer.h" />

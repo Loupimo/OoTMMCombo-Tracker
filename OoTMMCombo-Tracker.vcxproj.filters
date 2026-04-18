@@ -151,6 +151,9 @@
     <ClCompile Include="Common.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\UI\EntranceRenderer.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Multi\API.h">
@@ -235,6 +238,9 @@
       <Filter>Header Files\Combo</Filter>
     </ClInclude>
     <ClInclude Include="Headers\UI\SceneEntrance.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\UI\EntranceRenderer.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>

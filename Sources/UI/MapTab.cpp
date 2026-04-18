@@ -375,17 +375,7 @@ MapTab::~MapTab()
 
 RegionTree* MapTab::FindRegionTree(uint8_t Region)
 {
-    for (size_t i = 0; i < this->Regions.size(); i++)
-    {   // Browse through all the available regions
-
-        if (this->Regions[i]->MetaInfo->Region == Region)
-        {   // We have found the matching region
-
-            return this->Regions[i];
-        }
-    }
-
-    return nullptr;
+    return FindRegionTreeIn(this->Regions, Region);
 }
 
 
@@ -506,58 +496,7 @@ void MapTab::ResetAllObjectCounts()
 
 void MapTab::FilterTree(QTreeWidget* TreeWidget, const QString& SearchText)
 {
-    for (int i = 0; i < TreeWidget->topLevelItemCount(); ++i)
-    {   // Browse all tree item from the top
-
-        CommonBaseItemTree* parentItem = (CommonBaseItemTree *)TreeWidget->topLevelItem(i);
-        bool parentVisible = false;
-
-        for (int j = 0; j < parentItem->childCount(); ++j)
-        {   // Browse all current item children
-
-            CommonBaseItemTree* childItem = (CommonBaseItemTree*)parentItem->child(j);
-
-            if (childItem->childCount() > 0)
-            {   // The current child has also some child
-
-                CommonBaseItemTree* childItem2 = (CommonBaseItemTree*)childItem->child(0);
-
-                if (childItem2->GetTotalObjectAvailable() > 0)
-                {   // The item is not excluded
-
-                    bool match = childItem2->text(0).contains(SearchText, Qt::CaseInsensitive);
-
-                    // Hide or unhide this part of the tree
-                    childItem->setHidden(!match);
-                    childItem2->setHidden(!match);
-                    parentVisible |= match;
-                }
-                else
-                {
-                    childItem2->setHidden(true);
-                }
-            }
-            else
-            {   // The current child has no child
-
-                if (childItem->GetTotalObjectAvailable() > 0)
-                {
-                    bool match = childItem->text(0).contains(SearchText, Qt::CaseInsensitive);
-
-                    // Hide or unhide this part of the tree
-                    childItem->setHidden(!match);
-                    parentVisible |= match;
-                }
-                else
-                {
-                    childItem->setHidden(true);
-                }
-            }
-        }
-
-        bool matchParent = parentItem->text(0).contains(SearchText, Qt::CaseInsensitive);
-        parentItem->setHidden(!parentVisible && !matchParent);
-    }
+    FilterQTreeWidget(TreeWidget, SearchText);
 
     if (TreeWidget == this->ObjectList && SearchText.isEmpty())
     {
@@ -568,14 +507,7 @@ void MapTab::FilterTree(QTreeWidget* TreeWidget, const QString& SearchText)
 
 void MapTab::OnToggleExpandCollapse(QTreeWidget* TreeWidget, bool Expand)
 {
-    if (!Expand)
-    {
-        TreeWidget->collapseAll();
-    }
-    else
-    {
-        TreeWidget->expandAll();
-    }
+    OnToggleExpandCollapseQTreeWidget(TreeWidget, Expand);
 }
 
 #pragma endregion

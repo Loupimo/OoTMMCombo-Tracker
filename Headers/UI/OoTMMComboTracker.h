@@ -84,6 +84,13 @@ public:
     */
     void UpdateObjectListVisibility(bool NewValue);
 
+private:
+
+    /*
+    *   Update object visibility on both game tabs.
+    */
+    void UpdateObjectVisibilityForAllGames();
+
 public slots:
 
     /*
@@ -116,9 +123,29 @@ public slots:
 
 public:
 
+    /*
+    *   Refresh the recent files entries shown in the main menu.
+    */
     void UpdateRecentFiles();
+
+    /*
+    *   Add the given file path at the top of the recent files list.
+    *
+    *   @param filePath    The file path to add as the most recent one.
+    */
     void AddRecentFile(const QString& filePath);
+
+    /*
+    *   Update the tracking menu action with the given label and icon.
+    *
+    *   @param NewState    The new label of the tracking action.
+    *   @param NewIcon     The new icon to display next to the action.
+    */
     void UpdateTrackingState(QString NewState, QIcon NewIcon);
+
+    /*
+    *   Apply the current ROM settings to the tab visibility and filter state.
+    */
     void ApplySettings();
 
     /*

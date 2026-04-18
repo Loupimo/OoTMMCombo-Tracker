@@ -71,6 +71,21 @@ public:
 	virtual QString GetRefreshedName(const char* BaseName, uint32_t FoundCount, uint32_t TotalCount);
 };
 
+/*
+* Build a count label string in the format "Label (found / total)".
+*
+* @param Label         The label text.
+* @param Found         The found count.
+* @param Total         The total count.
+* @return              The formatted label as QString.
+*/
+inline QString BuildCountLabel(const char* Label, uint32_t Found, uint32_t Total)
+{
+	QString res = Label;
+	res += " (" + QString::number(Found) + " / " + QString::number(Total) + ")";
+	return res;
+}
+
 
 class CustomTreeWidget : public QWidget
 {
@@ -98,3 +113,19 @@ public:
 
 	void OnToggleExpandCollapse(QTreeWidget* TreeWidget, bool Expand);
 };
+
+/*
+* Filter tree items by search text (case-insensitive match on visible items).
+*
+* @param TreeWidget      The tree widget to filter.
+* @param SearchText      The text to match (empty = show all).
+*/
+void FilterQTreeWidget(QTreeWidget* TreeWidget, const QString& SearchText);
+
+/*
+* Expand or collapse all items in a tree widget.
+*
+* @param TreeWidget      The tree widget to expand/collapse.
+* @param Expand          true = expand all, false = collapse all.
+*/
+void OnToggleExpandCollapseQTreeWidget(QTreeWidget* TreeWidget, bool Expand);
