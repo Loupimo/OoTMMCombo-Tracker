@@ -354,10 +354,10 @@ void GlobalEntranceTableModel::sort(int column, Qt::SortOrder order)
             const GlobalEntranceRow& a,
             const GlobalEntranceRow& b)
         {
-            // 1️ Toujours grouper par Region
+            /*// 1️ Toujours grouper par Region
 
             if (a.RegionID != b.RegionID)
-                return a.RegionID < b.RegionID;
+                return a.RegionID < b.RegionID;*/
 
             // 2️ Comparaison colonne
 
@@ -393,7 +393,7 @@ void GlobalEntranceTableModel::sort(int column, Qt::SortOrder order)
                     }
                 };
 
-                // 3️⃣ Asc / Desc correct
+                // 3️ Asc / Desc correct
 
             if (order == Qt::AscendingOrder)
                 return compareColumn(a, b);
@@ -774,7 +774,7 @@ EntranceGameTabView::EntranceGameTabView(int Game, const char * Name, EntranceTa
     this->MapList = new CustomTreeWidget("Maps", 300, this);
 
     // Entrance tree
-    this->EntranceList = new CustomTreeWidget("Entrances", 300, this);
+    this->EntranceList = new CustomTreeWidget("Entrances", 500, this);
     this->EntranceList->setVisible(false);
 
     // Entrance renderer: wraps the graphics scene/view and owns the per-scene entrance tree items.
@@ -785,6 +785,7 @@ EntranceGameTabView::EntranceGameTabView(int Game, const char * Name, EntranceTa
     this->LayoutSplitter->addWidget(this->MapList);
     this->LayoutSplitter->addWidget(this->CenterStack);
     this->LayoutSplitter->addWidget(this->EntranceList);
+    this->LayoutSplitter->setSizes({ 300, 1320, 300 });
 
     this->MainLayout->addWidget(this->LayoutSplitter);
 

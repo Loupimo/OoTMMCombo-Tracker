@@ -67,7 +67,7 @@ typedef struct RegionMetaInfo
 
 
 // OoT Region meta information
-const RegionMetaInfo OoTRegionsMetaInfo[(uint8_t) OoTRegions::Desert_Colossus + 1] =
+const RegionMetaInfo OoTRegionsMetaInfo[(uint8_t) OoTRegions::Songs + 1] =
 {
 	{ "None", "", (uint8_t)OoTRegions::None},
 	{ "Dungeons", "./Resources/Regions/Dungeon.png", (uint8_t)OoTRegions::Dungeons },
@@ -90,12 +90,13 @@ const RegionMetaInfo OoTRegionsMetaInfo[(uint8_t) OoTRegions::Desert_Colossus + 
 	{ "Gerudo Valley", "./Resources/Regions/Valley.png", (uint8_t)OoTRegions::Gerudo_Valley },
 	{ "Gerudo Fortress", "./Resources/Regions/Gerudo_Fortress.png", (uint8_t)OoTRegions::Gerudo_Fortress },
 	{ "Haunted Wasteland", "./Resources/Regions/Haunted.png", (uint8_t)OoTRegions::Haunted_Wasteland },
-	{ "Desert Colossus", "./Resources/Regions/Colossus.png", (uint8_t)OoTRegions::Desert_Colossus }
+	{ "Desert Colossus", "./Resources/Regions/Colossus.png", (uint8_t)OoTRegions::Desert_Colossus },
+    { "Songs", "./Resources/Common/Song.png", (uint8_t)OoTRegions::Songs }
 };
 
 
 // MM Region meta information
-const RegionMetaInfo MMRegionsMetaInfo[(uint8_t)MMRegions::Moon + 1] =
+const RegionMetaInfo MMRegionsMetaInfo[(uint8_t)MMRegions::Songs + 1] =
 {
 	{ "None", "", (uint8_t)MMRegions::None },
 	{ "Dungeons", "./Resources/Regions/Dungeon.png", (uint8_t)MMRegions::Dungeons },
@@ -122,5 +123,6 @@ const RegionMetaInfo MMRegionsMetaInfo[(uint8_t)MMRegions::Moon + 1] =
 	{ "Ikana Graveyard", "./Resources/Regions/Graveyard.png", (uint8_t)MMRegions::Graveyard },
 	{ "Ikana Canyon", "./Resources/Regions/Valley.png", (uint8_t)MMRegions::Ikana_Canyon },
 	{ "Stone Tower", "./Resources/Regions/Stone_Tower.png", (uint8_t)MMRegions::Stone_Tower },
-	{ "Moon", "./Resources/Regions/Moon.png", (uint8_t)MMRegions::Moon }
+	{ "Moon", "./Resources/Regions/Moon.png", (uint8_t)MMRegions::Moon },
+    { "Owls", "./Resources/Common/Owl.png", (uint8_t)MMRegions::Songs }
 };

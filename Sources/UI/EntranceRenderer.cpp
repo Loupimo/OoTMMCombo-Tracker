@@ -131,9 +131,9 @@ void EntranceLinkItemTree::RefreshText()
         return;
     }
 
-    QString prefix = this->IsInLink ? QStringLiteral("In: ") : QStringLiteral("Out: ");
+    //QString prefix = this->IsInLink ? QStringLiteral("In: ") : QStringLiteral("Out: ");
     QString name = this->IsInLink ? row->InLinkName : row->OutLinkName;
-    this->setText(0, prefix + name);
+    this->setText(0, /*prefix + */name);
     this->setIcon(0, this->IsInLink ? ObjectIcons::GetIconsRef()->EntranceIcons[1] : ObjectIcons::GetIconsRef()->EntranceIcons[2]);
 
     // Propagate the name change to the on-map label. Without this the overlay stays stuck on the
