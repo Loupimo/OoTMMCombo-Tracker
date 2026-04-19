@@ -193,7 +193,17 @@ void EntranceLinkItemTree::PerformAction()
     // both paths go through the same QTreeWidgetItem handler.
     if (this->IsCalledFromGraph())
     {
-        this->NavigateToTarget();
+        // Undiscovered link: navigation has no destination, so fall back to selecting the matching
+        // tree leaf instead of doing nothing. The user gets visible feedback that the click was
+        // registered and learns which tree row the on-map marker corresponds to.
+        if (this->IsTargetKnown())
+        {
+            this->NavigateToTarget();
+        }
+        else
+        {
+            this->SelectInTree();
+        }
     }
     else
     {
@@ -267,6 +277,52 @@ void EntranceLinkItemTree::NavigateToTarget()
             tab->FocusSceneInGame(destGame, destSceneID);
         }
     });
+}
+
+
+bool EntranceLinkItemTree::IsTargetKnown() const
+{
+    if (this->EntranceItem == nullptr || this->EntranceItem->RendererOwner == nullptr)
+    {
+        return false;
+    }
+    SceneEntranceMetaInf* sceneInf = GetSceneEntranceMetaInf(this->EntranceItem->RendererOwner->GetGameID(), this->EntranceItem->SceneID);
+    if (sceneInf == nullptr)
+    {
+        return false;
+    }
+    auto it = sceneInf->EntranceIDs.find(this->EntranceItem->EntranceID);
+    if (it == sceneInf->EntranceIDs.end())
+    {
+        return false;
+    }
+
+    const EntranceLink& link = it->second;
+    uint32_t targetEntranceID = this->IsInLink ? link.InLink : link.OutLink;
+    uint8_t targetGame = this->IsInLink ? link.InLinkGame : link.OutLinkGame;
+    return targetEntranceID != UINT32_MAX && targetGame != NO_GAME;
+}
+
+
+void EntranceLinkItemTree::SelectInTree()
+{
+    QTreeWidget* tree = this->treeWidget();
+    if (tree == nullptr)
+    {
+        return;
+    }
+
+    // Walk the parent chain to expand every collapsed ancestor: scrollToItem only scrolls items
+    // that are currently visible in the tree, so a collapsed parent would silently no-op.
+    QTreeWidgetItem* parent = this->parent();
+    while (parent != nullptr)
+    {
+        parent->setExpanded(true);
+        parent = parent->parent();
+    }
+
+    tree->setCurrentItem(this);
+    tree->scrollToItem(this);
 }
 
 
@@ -391,14 +447,30 @@ void EntranceItemTree::RefreshText()
 
 void EntranceItemTree::PerformAction()
 {
-    if (this->InItem != nullptr)
+    if (this->RendererOwner == nullptr)
     {
-        this->InItem->PerformAction();
+        return;
     }
-    else if (this->OutItem != nullptr)
+    const EntranceMetaInfo* meta = this->GetMetaInfo();
+    if (meta == nullptr)
     {
-        this->OutItem->PerformAction();
+        return;
     }
+
+    // Pick the position that visually represents the entrance pair as a whole: Normal entrances
+    // and OneWayIn entrances get their In side; OneWayOut entrances only have an Out side. This
+    // mirrors which leaf children were spawned in the constructor.
+    const int* pos = nullptr;
+    if (meta->Type == EntranceType::Normal || meta->Type == EntranceType::One_Way_In)
+    {
+        pos = meta->InPosition;
+    }
+    else if (meta->Type == EntranceType::One_Way_Out)
+    {
+        pos = meta->OutPosition;
+    }
+
+    this->RendererOwner->CenterAndZoomViewOn(pos);
 }
 
 
@@ -472,6 +544,23 @@ void EntranceRenderer::CenterViewOn(const int* Position)
     {
         return;
     }
+    this->View->centerOn(Position[0], Position[1]);
+}
+
+
+void EntranceRenderer::CenterAndZoomViewOn(const int* Position)
+{
+    if (Position == nullptr || this->View == nullptr)
+    {
+        return;
+    }
+
+    // Reset before scaling so successive calls do not stack zoom factors. The chosen factor (3x)
+    // is large enough to make the entrance pair clearly visible even on dense scenes, while still
+    // showing enough surrounding map for the user to keep their bearings.
+    constexpr qreal kFocusZoom = 3.0;
+    this->View->resetTransform();
+    this->View->scale(kFocusZoom, kFocusZoom);
     this->View->centerOn(Position[0], Position[1]);
 }
 

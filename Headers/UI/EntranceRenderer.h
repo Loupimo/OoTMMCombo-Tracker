@@ -195,6 +195,22 @@ public:
     void NavigateToTarget();
 
     /*
+    *   Tell whether this link side has been discovered yet. Reads the live scene meta info written
+    *   by EntranceHelper, so the answer always reflects the current save state.
+    *
+    *   @return True if the destination entrance ID and game are both set, false otherwise.
+    */
+    bool IsTargetKnown() const;
+
+    /*
+    *   Focus this leaf in the entrance tree widget: expand all ancestors, set it as the current
+    *   selection and scroll it into view. Used as the fallback action when the user clicks an
+    *   undiscovered marker on the map (selecting the leaf is more useful than silently doing
+    *   nothing because there is no destination scene to navigate to).
+    */
+    void SelectInTree();
+
+    /*
     *   Apply or remove the highlighted visual state on both the on-map arrow and the name label so
     *   hovering either one of the pair makes both stand out.
     *
@@ -248,7 +264,8 @@ public:
     void RefreshText();
 
     /*
-    *   Center the scene view on the first available link side when the user clicks on the entrance parent.
+    *   Center and zoom the scene view on the entrance position. The position is read from
+    *   InPosition for Normal / OneWayIn entrances, OutPosition for OneWayOut entrances.
     */
     void PerformAction() override;
 
@@ -320,6 +337,15 @@ public:
     *   @param Position    A 3-integer array with X, Y, Z coordinates (only X and Y are used for centering).
     */
     void CenterViewOn(const int* Position);
+
+    /*
+    *   Reset the view transform to a fixed zoom level and center the view on the given position.
+    *   Used when the user clicks on an entrance parent in the tree, to make the entrance pair
+    *   stand out without forcing the user to wheel-zoom afterwards.
+    *
+    *   @param Position    A 3-integer array with X, Y, Z coordinates (only X and Y are used).
+    */
+    void CenterAndZoomViewOn(const int* Position);
 
     /*
     *   Get the game ID of the owning game tab view.
