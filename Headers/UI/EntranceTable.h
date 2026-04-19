@@ -209,6 +209,53 @@ public:
 
 
 // ==============================
+// Filter proxy
+// ==============================
+
+/*
+*   Proxy on top of the global entrance table that combines the standard text-search filter with an
+*   optional region filter. Used by the left map tree so that selecting a region restricts the
+*   visible rows to that region while still letting the search bar narrow the results further.
+*/
+class EntranceFilterProxy : public QSortFilterProxyModel
+{
+    Q_OBJECT
+
+public:
+
+    /*
+    *   Construct the proxy with no active region filter.
+    *
+    *   @param Parent    The Qt parent.
+    */
+    explicit EntranceFilterProxy(QObject* Parent = nullptr);
+
+    /*
+    *   Restrict the visible rows to the given region ID. Pass UINT8_MAX to disable the filter.
+    *
+    *   @param Region    The region ID to filter by, or UINT8_MAX to show every row.
+    */
+    void SetRegionFilter(uint8_t Region);
+
+protected:
+
+    /*
+    *   Keep a row when both the inherited text search and the optional region filter accept it.
+    *
+    *   @param SourceRow       The row index in the source model.
+    *   @param SourceParent    The parent index in the source model.
+    *
+    *   @return True if the row should remain visible.
+    */
+    bool filterAcceptsRow(int SourceRow, const QModelIndex& SourceParent) const override;
+
+private:
+
+    uint8_t RegionFilter = UINT8_MAX;       // The region ID currently filtered, or UINT8_MAX when no region filter is active.
+};
+
+
+// ==============================
 // Widget Class
 // ==============================
 
@@ -220,7 +267,7 @@ public:
     QVBoxLayout* MainLayout;
     QTableView* Table;
     GlobalEntranceTableModel* Model;
-    QSortFilterProxyModel* Proxy;
+    EntranceFilterProxy* Proxy;
     EntranceGameTabView* Owner;
 
     /*
@@ -234,6 +281,21 @@ public:
     *   Rebuild the table content from the current scene entrance meta info of the owning game.
     */
     void RefreshContent();
+
+    /*
+    *   Restrict the visible rows to the given region ID. Pass UINT8_MAX to disable the region filter.
+    *
+    *   @param Region    The region ID to filter by, or UINT8_MAX to show every row.
+    */
+    void SetRegionFilter(uint8_t Region);
+
+    /*
+    *   Toggle the table viewport's WA_OpaquePaintEvent attribute based on the current visible row
+    *   count. The attribute is kept enabled for large row counts (>40) to keep scrolling smooth, and
+    *   disabled when few rows remain so Qt erases the background and we don't see stale rows from
+    *   the previous filter state. Must be called every time the filter (text or region) changes.
+    */
+    void RefreshViewportPaintMode();
 };
 
 
@@ -422,6 +484,16 @@ public:
     *   @param SceneID    The scene ID to focus in the left tree.
     */
     void FocusSceneInGame(uint32_t SceneID);
+
+    /*
+    *   Focus the given scene in the left map tree, then zoom the scene view on the given entrance.
+    *   The zoom is deferred to the next event-loop tick because RenderSceneMap fits the view via a
+    *   QTimer::singleShot(0); our zoom must run after that fit so it actually overrides the transform.
+    *
+    *   @param SceneID       The scene ID to focus in the left tree.
+    *   @param EntranceID    The entrance ID to zoom on, in the focused scene.
+    */
+    void FocusEntranceInGame(uint32_t SceneID, uint32_t EntranceID);
 };
 
 
@@ -483,4 +555,15 @@ public:
     *   @param SceneID    The scene ID to focus in that game's map tree.
     */
     void FocusSceneInGame(int Game, uint32_t SceneID);
+
+    /*
+    *   Switch the visible game sub-tab, focus the given scene and zoom on the given entrance. Used
+    *   by the AllEntranceView when the user clicks an Entrance / In Link / Out Link cell so the same
+    *   "navigate-and-zoom" flow available from the entrance tree is reachable from the global table.
+    *
+    *   @param Game          The destination game (OOT_GAME or MM_GAME).
+    *   @param SceneID       The scene ID to focus in that game's map tree.
+    *   @param EntranceID    The entrance ID to zoom on inside the focused scene.
+    */
+    void FocusEntranceInGame(int Game, uint32_t SceneID, uint32_t EntranceID);
 };

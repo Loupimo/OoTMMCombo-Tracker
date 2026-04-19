@@ -442,6 +442,43 @@ QColor GlobalEntranceTableModel::computeBaseColor(bool toggle) const
 
 #pragma endregion // GlobalEntranceTableModel
 
+#pragma region // EntranceFilterProxy
+
+EntranceFilterProxy::EntranceFilterProxy(QObject* Parent) : QSortFilterProxyModel(Parent)
+{
+}
+
+
+void EntranceFilterProxy::SetRegionFilter(uint8_t Region)
+{
+    if (this->RegionFilter == Region)
+    {
+        return;
+    }
+    this->RegionFilter = Region;
+    this->invalidateFilter();
+}
+
+
+bool EntranceFilterProxy::filterAcceptsRow(int SourceRow, const QModelIndex& SourceParent) const
+{
+    if (this->RegionFilter != UINT8_MAX)
+    {   // Reject rows that do not belong to the currently selected region.
+
+        const GlobalEntranceTableModel* model = dynamic_cast<const GlobalEntranceTableModel*>(this->sourceModel());
+        if (model != nullptr && SourceRow >= 0 && SourceRow < static_cast<int>(model->m_rows.size()))
+        {
+            if (model->m_rows[SourceRow].RegionID != this->RegionFilter)
+            {
+                return false;
+            }
+        }
+    }
+    return QSortFilterProxyModel::filterAcceptsRow(SourceRow, SourceParent);
+}
+
+#pragma endregion // EntranceFilterProxy
+
 #pragma region AllEntranceView
 
 AllEntranceView::AllEntranceView(EntranceGameTabView* Parent) : QWidget(Parent)
@@ -456,7 +493,7 @@ AllEntranceView::AllEntranceView(EntranceGameTabView* Parent) : QWidget(Parent)
     QLineEdit* searchBar = new QLineEdit(this);
     searchBar->setPlaceholderText("Search...");
 
-    this->Proxy = new QSortFilterProxyModel(this);
+    this->Proxy = new EntranceFilterProxy(this);
     this->Proxy->setSourceModel(this->Model);
     this->Proxy->setFilterCaseSensitivity(Qt::CaseInsensitive);
     this->Proxy->setFilterKeyColumn(-1);
@@ -489,16 +526,84 @@ AllEntranceView::AllEntranceView(EntranceGameTabView* Parent) : QWidget(Parent)
         this, [=](const QString& text)
         {
             this->Proxy->setFilterFixedString(text);
-
-            // Disable this setting in order to be able to get rid of artifacts in case the number of rows does not cover the entire window.
-            bool filtering = this->Proxy->rowCount() > 40;
-            this->Table->viewport()->setAttribute(Qt::WA_OpaquePaintEvent, filtering);
+            this->RefreshViewportPaintMode();
         });
 
     connect(this->Table->horizontalHeader(), &QHeaderView::sectionClicked,
         this, [=](int column)
         {
             this->Model->sort(column, this->Table->horizontalHeader()->sortIndicatorOrder());
+        });
+
+    // Cell click navigation: route the user to the matching scene / entrance in the same way the
+    // left map tree and the right entrance tree do, so the global table is a real shortcut and not
+    // just a read-only view. Column dispatch:
+    //   0 (Scene)   -> focus the scene
+    //   1 (Entr.)   -> focus the scene + zoom on the row's entrance
+    //   2 (InLink)  -> jump to the linked entrance's scene + zoom on it (skip if unknown)
+    //   3 (OutLink) -> same as column 2 for the OutLink side
+    connect(this->Table, &QTableView::clicked, this,
+        [this](const QModelIndex& ProxyIndex)
+        {
+            if (!ProxyIndex.isValid() || this->Owner == nullptr || this->Owner->Owner == nullptr)
+            {
+                return;
+            }
+            QModelIndex sourceIndex = this->Proxy->mapToSource(ProxyIndex);
+            int sourceRow = sourceIndex.row();
+            if (sourceRow < 0 || sourceRow >= static_cast<int>(this->Model->m_rows.size()))
+            {
+                return;
+            }
+            const GlobalEntranceRow& row = this->Model->m_rows[sourceRow];
+            EntranceTab* tab = this->Owner->Owner;
+            int currGame = this->Owner->GameID;
+
+            switch (ProxyIndex.column())
+            {
+                case 0:
+                {
+                    tab->FocusSceneInGame(currGame, row.SceneID);
+                    break;
+                }
+                case 1:
+                {
+                    tab->FocusEntranceInGame(currGame, row.SceneID, row.EntranceID);
+                    break;
+                }
+                case 2:
+                {
+                    if (row.InLink == UINT32_MAX || row.InGame == NO_GAME)
+                    {
+                        break;
+                    }
+                    const EntranceMetaInfo* linkMeta = EntranceHelper::GetEntranceMetaInf(row.InGame, row.InLink);
+                    if (linkMeta == nullptr)
+                    {
+                        break;
+                    }
+                    tab->FocusEntranceInGame(row.InGame, linkMeta->ToSceneID, row.InLink);
+                    break;
+                }
+                case 3:
+                {
+                    if (row.OutLink == UINT32_MAX || row.OutGame == NO_GAME)
+                    {
+                        break;
+                    }
+                    const EntranceMetaInfo* linkMeta = EntranceHelper::GetEntranceMetaInf(row.OutGame, row.OutLink);
+                    if (linkMeta == nullptr)
+                    {
+                        break;
+                    }
+                    tab->FocusEntranceInGame(row.OutGame, linkMeta->ToSceneID, row.OutLink);
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+            }
         });
 
     this->MainLayout->addWidget(searchBar);
@@ -509,6 +614,31 @@ AllEntranceView::AllEntranceView(EntranceGameTabView* Parent) : QWidget(Parent)
 void AllEntranceView::RefreshContent()
 {
     this->Model->setScenes(*GetSceneEntranceMetaInfForGame(this->Owner->GameID));
+}
+
+
+void AllEntranceView::SetRegionFilter(uint8_t Region)
+{
+    if (this->Proxy != nullptr)
+    {
+        this->Proxy->SetRegionFilter(Region);
+        this->RefreshViewportPaintMode();
+    }
+}
+
+
+void AllEntranceView::RefreshViewportPaintMode()
+{
+    if (this->Proxy == nullptr || this->Table == nullptr)
+    {
+        return;
+    }
+
+    // Disable WA_OpaquePaintEvent when the visible rows no longer cover the viewport so Qt clears
+    // the background; otherwise stale rows from the previous filter state remain painted underneath.
+    bool filtering = this->Proxy->rowCount() > 40;
+    this->Table->viewport()->setAttribute(Qt::WA_OpaquePaintEvent, filtering);
+    this->Table->viewport()->update();
 }
 
 #pragma endregion // AllEntranceView
@@ -695,6 +825,16 @@ EntranceGameTabView::EntranceGameTabView(int Game, const char * Name, EntranceTa
     this->SyncCounters();
     this->MapList->List->sortItems(0, Qt::AscendingOrder);
 
+    // "All" pseudo-region pinned at the top of the map tree: selecting it shows the global entrance
+    // view without any region filter. Inserted after sortItems so it stays at index 0 regardless of
+    // the alphabetical order of the real regions.
+    QTreeWidgetItem* allItem = new QTreeWidgetItem();
+    allItem->setText(0, "All");
+    QFont allFont = allItem->font(0);
+    allFont.setBold(true);
+    allItem->setFont(0, allFont);
+    this->MapList->List->insertTopLevelItem(0, allItem);
+
     QObject::connect(this->MapList->List, &QTreeWidget::currentItemChanged, this,
         [this](QTreeWidgetItem* current, QTreeWidgetItem* /*previous*/)
         {
@@ -736,20 +876,29 @@ EntranceGameTabView::EntranceGameTabView(int Game, const char * Name, EntranceTa
 void EntranceGameTabView::OnSceneSelected(QTreeWidgetItem* Current)
 {
     SceneEntranceItemTree* sceneItem = dynamic_cast<SceneEntranceItemTree*>(Current);
-    if (sceneItem == nullptr)
-    {   // Region item or no selection: restore the all-entrance view
+    if (sceneItem != nullptr)
+    {   // Scene selected: render its map and populate the right entrance tree.
 
-        this->CenterStack->setCurrentIndex(0);
-        this->EntranceList->setVisible(false);
+        // Populate the right tree first so the overlay renderer can look up the link tree items it needs
+        // to wire map-arrow clicks onto the same PerformAction pipeline as tree clicks.
+        this->PopulateEntranceList(sceneItem->SceneInf);
+        this->RenderSceneMap(sceneItem->SceneInf);
+        this->CenterStack->setCurrentIndex(1);
+        this->EntranceList->setVisible(true);
         return;
     }
 
-    // Populate the right tree first so the overlay renderer can look up the link tree items it needs
-    // to wire map-arrow clicks onto the same PerformAction pipeline as tree clicks.
-    this->PopulateEntranceList(sceneItem->SceneInf);
-    this->RenderSceneMap(sceneItem->SceneInf);
-    this->CenterStack->setCurrentIndex(1);
-    this->EntranceList->setVisible(true);
+    // Region or "All" pseudo-item: show the global entrance view, optionally restricted to one region.
+    RegionTree* regionItem = dynamic_cast<RegionTree*>(Current);
+    uint8_t regionFilter = (regionItem != nullptr && regionItem->MetaInfo != nullptr)
+                            ? regionItem->MetaInfo->Region
+                            : UINT8_MAX;
+    if (this->AllView != nullptr)
+    {
+        this->AllView->SetRegionFilter(regionFilter);
+    }
+    this->CenterStack->setCurrentIndex(0);
+    this->EntranceList->setVisible(false);
 }
 
 
@@ -1037,6 +1186,39 @@ RegionTree* EntranceGameTabView::FindRegionTree(uint8_t Region)
 }
 
 
+void EntranceGameTabView::FocusEntranceInGame(uint32_t SceneID, uint32_t EntranceID)
+{
+    this->FocusSceneInGame(SceneID);
+
+    // Defer the zoom to the next event-loop tick: RenderSceneMap fits the freshly loaded pixmap to
+    // the viewport via QTimer::singleShot(0). Both timers fire in scheduling order, so our zoom runs
+    // right after the fit and ends up as the final transform on the view.
+    QPointer<EntranceGameTabView> self = this;
+    QTimer::singleShot(0, [self, EntranceID]()
+    {
+        if (self.isNull() || self->Renderer == nullptr)
+        {
+            return;
+        }
+        const EntranceMetaInfo* meta = EntranceHelper::GetEntranceMetaInf(self->GameID, EntranceID);
+        if (meta == nullptr)
+        {
+            return;
+        }
+        const int* pos = nullptr;
+        if (meta->Type == EntranceType::Normal || meta->Type == EntranceType::One_Way_In)
+        {
+            pos = meta->InPosition;
+        }
+        else if (meta->Type == EntranceType::One_Way_Out)
+        {
+            pos = meta->OutPosition;
+        }
+        self->Renderer->CenterAndZoomViewOn(pos);
+    });
+}
+
+
 void EntranceGameTabView::FocusSceneInGame(uint32_t SceneID)
 {
     if (this->MapList == nullptr || this->MapList->List == nullptr)
@@ -1127,6 +1309,19 @@ void EntranceTab::FocusSceneInGame(int Game, uint32_t SceneID)
     // map. setCurrentWidget is a no-op when the target is already active.
     this->setCurrentWidget(target);
     target->FocusSceneInGame(SceneID);
+}
+
+
+void EntranceTab::FocusEntranceInGame(int Game, uint32_t SceneID, uint32_t EntranceID)
+{
+    EntranceGameTabView* target = (Game == OOT_GAME) ? this->OoTEntranceTab : this->MMEntranceTab;
+    if (target == nullptr)
+    {
+        return;
+    }
+
+    this->setCurrentWidget(target);
+    target->FocusEntranceInGame(SceneID, EntranceID);
 }
 
 #pragma endregion // EntranceTab
