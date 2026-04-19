@@ -7,6 +7,9 @@
 #include <QVBoxLayout>
 #include <QHeaderView>
 #include <QPainter>
+#include <QPointer>
+#include <QTimer>
+#include <QWheelEvent>
 
 
 #include <algorithm>
@@ -510,6 +513,34 @@ void AllEntranceView::RefreshContent()
 
 #pragma endregion // AllEntranceView
 
+#pragma region // EntranceSceneView
+
+EntranceSceneView::EntranceSceneView(QGraphicsScene* Scene, QWidget* Parent) : QGraphicsView(Scene, Parent)
+{
+    this->setRenderHint(QPainter::Antialiasing);
+    this->setRenderHint(QPainter::SmoothPixmapTransform);
+    this->setTransformationAnchor(QGraphicsView::AnchorUnderMouse);  // Zoom centered under the cursor
+    this->setDragMode(QGraphicsView::ScrollHandDrag);                // Pan by click-and-drag
+}
+
+
+void EntranceSceneView::wheelEvent(QWheelEvent* Event)
+{
+    // Mirror MapView's behavior so the entrance map feels identical to the item tracker map.
+    const double scaleFactor = 1.15;
+    if (Event->angleDelta().y() > 0)
+    {
+        this->scale(scaleFactor, scaleFactor);
+    }
+    else if (Event->angleDelta().y() < 0)
+    {
+        this->scale(1.0 / scaleFactor, 1.0 / scaleFactor);
+    }
+}
+
+#pragma endregion // EntranceSceneView
+
+
 #pragma region // EntranceGameTabView
 
 SceneEntranceItemTree::SceneEntranceItemTree(SceneEntranceMetaInf* Inf, EntranceGameTabView* PaOwner, QTreeWidgetItem* Parent) : CommonBaseItemTree(Parent)
@@ -599,13 +630,9 @@ EntranceGameTabView::EntranceGameTabView(int Game, const char * Name, EntranceTa
     // All View
     this->AllView = new AllEntranceView(this);
 
-    // Scene Map view
+    // Scene Map view: EntranceSceneView configures antialiasing, drag-pan and wheel zoom itself.
     this->SceneMapScene = new QGraphicsScene(this);
-    this->SceneMapView = new QGraphicsView(this->SceneMapScene);
-    this->SceneMapView->setRenderHint(QPainter::Antialiasing);
-    this->SceneMapView->setRenderHint(QPainter::SmoothPixmapTransform);
-    this->SceneMapView->setDragMode(QGraphicsView::ScrollHandDrag);
-    this->SceneMapView->setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
+    this->SceneMapView = new EntranceSceneView(this->SceneMapScene, this);
 
     // Center stack: AllView when no scene is selected, SceneMapView otherwise
     this->CenterStack = new QStackedWidget(this);
@@ -687,6 +714,22 @@ EntranceGameTabView::EntranceGameTabView(int Game, const char * Name, EntranceTa
                 action->PerformAction();
             }
         });
+
+    // A single click re-centers the map on the link, a double click reuses the same PerformAction
+    // path in "from-graph" mode so the user can navigate to the destination scene directly from the
+    // tree (same effect as clicking the arrow or the label on the map).
+    QObject::connect(this->EntranceList->List, &QTreeWidget::itemDoubleClicked, this,
+        [](QTreeWidgetItem* item, int /*column*/)
+        {
+            EntranceLinkItemTree* link = dynamic_cast<EntranceLinkItemTree*>(item);
+            if (link == nullptr)
+            {
+                return;
+            }
+            link->SetCalledFromGraph(true);
+            link->PerformAction();
+            link->SetCalledFromGraph(false);
+        });
 }
 
 
@@ -730,7 +773,21 @@ void EntranceGameTabView::RenderSceneMap(SceneEntranceMetaInf* Scene)
 
         this->SceneMapImage = new QPixmap(Scene->MapPath);
         this->SceneMapItem = this->SceneMapScene->addPixmap(*this->SceneMapImage);
-        this->SceneMapView->fitInView(this->SceneMapScene->sceneRect(), Qt::KeepAspectRatio);
+
+        // Defer the fit to the next event-loop tick: on the very first scene selection the
+        // SceneMapView is still hidden inside the QStackedWidget (index 0 shows the all-view), so
+        // its viewport size is the default one and fitInView would scale against stale geometry.
+        // By the time the timer fires, setCurrentIndex(1) has run and the view has been resized
+        // to its real on-screen size, so the map actually fits the visible area.
+        QPointer<QGraphicsView> view = this->SceneMapView;
+        QPointer<QGraphicsScene> scene = this->SceneMapScene;
+        QTimer::singleShot(0, [view, scene]()
+        {
+            if (!view.isNull() && !scene.isNull())
+            {
+                view->fitInView(scene->sceneRect(), Qt::KeepAspectRatio);
+            }
+        });
     }
 
     // Paint name labels + clickable arrows on top of the freshly loaded map. Done here (and not in
@@ -754,6 +811,12 @@ void EntranceGameTabView::PopulateEntranceList(SceneEntranceMetaInf* Scene)
     CommonBaseItemTree* normalCat = new CommonBaseItemTree();
     CommonBaseItemTree* oneWayInCat = new CommonBaseItemTree();
     CommonBaseItemTree* oneWayOutCat = new CommonBaseItemTree();
+
+    QFont font = normalCat->font(0);
+    font.setBold(true);
+    normalCat->setFont(0, font);
+    oneWayInCat->setFont(0, font);
+    oneWayOutCat->setFont(0, font);
 
     ObjectIcons * refIcons = ObjectIcons::GetIconsRef();
     normalCat->setIcon(0, refIcons->EntranceIcons[0]);

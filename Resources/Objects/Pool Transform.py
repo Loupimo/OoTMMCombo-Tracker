@@ -199,13 +199,38 @@ def parse_entrance(input_file, output_file_h, output_file_cpp, output_filemeta, 
             type = row["Type"]
             in_X = row["In_X"]
             in_Y = row["In_Y"]
-            in_Z = row["In_Z"]
+            in_Z = row["In_Text_Pos"]
             out_X = row["Out_X"]
             out_Y = row["Out_Y"]
-            out_Z = row["Out_Z"]
+            out_Z = row["Out_Text_Pos"]
             arrow_rot = row["Arrow_Rot"]
             active_layout = row["Active_Layout"]
 
+            if in_Z == "Default" or in_Z == "0":
+                in_Z = 0
+            elif in_Z == "Up":
+                in_Z = 1
+            elif in_Z == "Down":
+                in_Z = 2
+            elif in_Z == "Left":
+                in_Z = 3
+            elif in_Z == "Right":
+                in_Z = 4
+            else:
+                in_Z = 255
+
+            if out_Z == "Default" or out_Z == "0":
+                out_Z = 0
+            elif out_Z == "Up":
+                out_Z = 1
+            elif out_Z == "Down":
+                out_Z = 2
+            elif out_Z == "Left":
+                out_Z = 3
+            elif out_Z == "Right":
+                out_Z = 4
+            else:
+                out_Z = 255
             objectstr = objectstr + "\t{ " + str(entrance_code) + ", { " + str(fromentridstr) + ", " + str(entrance_code) + ", " + str(fromsceneid) + ", " + str(tosceneid) + ", \"" + from_str + "\", \"" + to_str + "\", EntranceType::" + type + ", " + str(in_X) + ", " + str(in_Y) + ", " + str(in_Z) + ", " + str(out_X) + ", " + str(out_Y) + ", " + str(out_Z) + ", " + str(arrow_rot) + ", GameLayout::" + active_layout + " } }"
             objectstrings.append(objectstr)
             #outfile.write(objectstr)

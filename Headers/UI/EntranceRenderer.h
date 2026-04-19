@@ -21,6 +21,20 @@ class GlobalEntranceTableModel;
 class EntranceRenderer;
 class EntranceItemTree;
 class EntranceLinkItemTree;
+class EntranceLabelItem;
+class QGraphicsSceneHoverEvent;
+
+
+enum TextPlacement
+{
+    Default = 0,
+    Up = 1,
+    Down = 2,
+    Left = 3,
+    Right = 4,
+    NoText = 255
+};
+
 
 /*
 *   The graphical pixmap item that represents one link side of an entrance on the scene map.
@@ -50,6 +64,67 @@ protected:
     *   @param event    The click event that triggered this function.
     */
     void mousePressEvent(QGraphicsSceneMouseEvent* event) override;
+
+    /*
+    *   Enter the highlighted state on the owning link so the paired label is highlighted too.
+    *
+    *   @param event    The hover event that triggered this function.
+    */
+    void hoverEnterEvent(QGraphicsSceneHoverEvent* event) override;
+
+    /*
+    *   Leave the highlighted state on the owning link so the paired label is restored too.
+    *
+    *   @param event    The hover event that triggered this function.
+    */
+    void hoverLeaveEvent(QGraphicsSceneHoverEvent* event) override;
+};
+
+
+/*
+*   The graphical text item that displays the link name on top of the scene map.
+*   Shares the same click / hover pipeline as EntrancePixmapItem so hovering or clicking either
+*   one of the pair produces the same visual + behavioral feedback.
+*/
+class EntranceLabelItem : public QGraphicsSimpleTextItem
+{
+public:
+
+    EntranceRenderer* Owner = nullptr;              // The renderer that owns this graphical item.
+    EntranceLinkItemTree* ItemOwner = nullptr;      // The link item tree that owns this graphical item.
+
+    /*
+    *   Construct the label item with the given text and accept hover / mouse events.
+    *
+    *   @param Text       The initial text to display.
+    *   @param PaOwner    The renderer that owns this item.
+    *   @param PaItem     The link item tree that owns this graphical item.
+    */
+    EntranceLabelItem(const QString& Text, EntranceRenderer* PaOwner, EntranceLinkItemTree* PaItem);
+
+protected:
+
+    /*
+    *   Forward the click to the owning link item tree as if the paired arrow had been clicked so
+    *   the user can navigate to the destination scene by clicking either the arrow or its label.
+    *
+    *   @param event    The click event that triggered this function.
+    */
+    void mousePressEvent(QGraphicsSceneMouseEvent* event) override;
+
+    /*
+    *   Enter the highlighted state on the owning link so the paired arrow is highlighted too.
+    *
+    *   @param event    The hover event that triggered this function.
+    */
+    void hoverEnterEvent(QGraphicsSceneHoverEvent* event) override;
+
+    /*
+    *   Leave the highlighted state on the owning link so the paired arrow is restored too.
+    *
+    *   @param event    The hover event that triggered this function.
+    */
+    void hoverLeaveEvent(QGraphicsSceneHoverEvent* event) override;
 };
 
 
@@ -64,7 +139,7 @@ public:
     EntranceItemTree* EntranceItem;                 // The owning entrance item tree.
     bool IsInLink;                                  // True for the "in" side, false for the "out" side.
     EntrancePixmapItem* GraphItem = nullptr;        // The optional graphical marker on the scene map.
-    QGraphicsSimpleTextItem* TextItem = nullptr;    // The optional name label painted next to the marker.
+    EntranceLabelItem* TextItem = nullptr;          // The optional name label painted next to the marker.
 
     /*
     *   Construct the link item tree for the given side and refresh its displayed text.
@@ -118,6 +193,14 @@ public:
     *   the target meta info / game tab cannot be resolved.
     */
     void NavigateToTarget();
+
+    /*
+    *   Apply or remove the highlighted visual state on both the on-map arrow and the name label so
+    *   hovering either one of the pair makes both stand out.
+    *
+    *   @param Highlighted    True to highlight the pair, false to restore the default appearance.
+    */
+    void SetHighlighted(bool Highlighted);
 };
 
 
@@ -277,19 +360,19 @@ private:
 public:
 
     /*
-    *   Place the given label next to an arrow marker so it does not overlap the arrow nor the
-    *   sibling side's label (for Normal entrances). The label is pushed outward from the sibling
-    *   side when one exists and is far enough; otherwise it is pushed opposite to the arrow tip.
-    *   Anchors the closest edge of the label to the offset point so the text extends away from
-    *   (CenterX, CenterY) along the chosen direction.
+    *   Place the given label around the arrow at (CenterX, CenterY). The Placement value selects
+    *   the strategy: Default follows the arrow tip direction (the In / Out arrow pixmaps point to
+    *   the right at rotation 0, so Normal entrances get their labels on opposite sides of the pair
+    *   because their rotations differ by 180 deg), Up / Down / Left / Right pin the label to a
+    *   fixed cardinal side regardless of the arrow rotation, and NoText hides the label entirely.
     *
     *   @param Label       The label item to position. No-op if null.
     *   @param CenterX     The X coordinate of the arrow center.
     *   @param CenterY     The Y coordinate of the arrow center.
-    *   @param RotDeg      The arrow rotation in degrees (0 = up).
-    *   @param OtherPos    The sibling-side position (X, Y, Z), or nullptr for One-Way entrances.
+    *   @param RotDeg      The arrow rotation in degrees (0 = pointing right).
+    *   @param Placement   The TextPlacement value controlling the anchoring strategy.
     */
-    static void PlaceLabelAroundArrow(QGraphicsSimpleTextItem* Label, qreal CenterX, qreal CenterY, qreal RotDeg, const int* OtherPos);
+    static void PlaceLabelAroundArrow(QGraphicsSimpleTextItem* Label, qreal CenterX, qreal CenterY, qreal RotDeg, int Placement);
 
 private:
 

@@ -173,6 +173,7 @@ static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
     { OOT_GERUDO_VALLEY_FROM_FIELD_ENTR,            std::vector<GrottoEntrance>() = { { OOT_GERUDO_VALLEY_FROM_FIELD_ENTR,                     2664,  -269,   778 },
                                                                                       { OOT_GERUDO_VALLEY_FROM_TENT_ENTR,                      -973,    15,  -362 },
                                                                                       { OOT_VALLEY_FROM_GERUDO_FORTRESS_ENTR,                 -3264,   239,  -757 },
+                                                                                      { OOT_GERUDO_FORTRESS_CAUGHT_NO_HOOK_ENTR,                187, -2828,  2447 },
                                                                                       { OOT_GROTTO_EXIT_OCTOROK,                                280,  -555,  1470 },
                                                                                       { OOT_GROTTO_EXIT_SCRUBS2_VALLEY,                       -1323,    15,  -969 } } },
     { OOT_GERUDO_FORTRESS_FROM_VALLEY_ENTR,         std::vector<GrottoEntrance>() = { { OOT_GERUDO_FORTRESS_FROM_VALLEY_ENTR,                  -842,     3,   -84 },
@@ -1069,6 +1070,17 @@ uint32_t EntranceHelper::CorrectGrottoScene(EntranceMessage& Message)
 }
 
 
+float EntranceHelper::GetDistanceGrottoEntrance(GrottoEntrance Grotto, float X, float Y, float Z)
+{
+    float xDist = fabsf(X - Grotto.SpawnPos[0]);
+    float yDist = fabsf(Y - Grotto.SpawnPos[1]);
+    float zDist = fabsf(Z - Grotto.SpawnPos[2]);
+
+    MultiLogger::LogMessage("Entrance ID = 0x%08X, X dist = %f, Y dist = %f, Z dist = %f, Total = %f", Grotto.EntranceID, xDist, yDist, zDist, xDist + yDist + zDist);
+    return xDist + yDist + zDist;
+}
+
+
 uint32_t EntranceHelper::GetWarpSong(EntranceMessage& Message, bool * IsWarpSong)
 {
     *IsWarpSong = true;
@@ -1278,17 +1290,6 @@ uint32_t EntranceHelper::GetWarpSong(EntranceMessage& Message, bool * IsWarpSong
 }
 
 
-float EntranceHelper::GetDistanceGrottoEntrance(GrottoEntrance Grotto, float X, float Y, float Z)
-{
-    float xDist = fabsf(X - Grotto.SpawnPos[0]);
-    float yDist = fabsf(Y - Grotto.SpawnPos[1]);
-    float zDist = fabsf(Z - Grotto.SpawnPos[2]);
-
-    MultiLogger::LogMessage("Entrance ID = 0x%08X, X dist = %f, Y dist = %f, Z dist = %f, Total = %f", Grotto.EntranceID, xDist, yDist, zDist, xDist + yDist + zDist);
-    return xDist + yDist + zDist;
-}
-
-
 uint32_t EntranceHelper::CheckGrottoSpawn(EntranceMessage& Message)
 {
     switch (Message.EntranceID)
@@ -1429,6 +1430,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(EntranceMessage& Message)
         case OOT_GROTTO_EXIT_OCTOROK:
         case OOT_GROTTO_EXIT_SCRUBS2_VALLEY:
         case OOT_VALLEY_FROM_GERUDO_FORTRESS_ENTR:
+        case OOT_GERUDO_FORTRESS_CAUGHT_NO_HOOK_ENTR:
         case OOT_GERUDO_VALLEY_FROM_FIELD_ENTR:
         case OOT_GERUDO_VALLEY_FROM_TENT_ENTR:
         {
@@ -1751,6 +1753,14 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
     {
         switch (Message.SceneID)
         {
+            case OOT_GERUDO_VALLEY:
+            {
+                if (Message.Direction == OUT_MAGIC && Message.EntranceID == OOT_GERUDO_FORTRESS_CAUGHT_NO_HOOK_ENTR)
+                {
+                    return OOT_GERUDO_VALLEY_CAUGHT_ENTR;
+                }
+            }
+
             case OOT_BAZAAR:
             {
                 switch (Message.EntranceID)

@@ -1,4 +1,4 @@
-Region_Name;Code_Name;From_ID;To_ID;From_Scene;To_Scene;From_Name;To_Name;Type;In_X;In_Y;In_Z;Out_X;Out_Y;Out_Z;Arrow_Rot;Active_Layout
+Region_Name;Code_Name;From_ID;To_ID;From_Scene;To_Scene;From_Name;To_Name;Type;In_X;In_Y;In_Text_Pos;Out_X;Out_Y;Out_Text_Pos;Arrow_Rot;Active_Layout
 Graveyard;MM_GRAVE_NIGHT1_ENTR;MM_GRAVE_EXIT_NIGHT1;0x0a10;MM_IKANA_GRAVEYARD;MM_BENEATH_THE_GRAVEYARD;Ikana Graveyard;Ikana Grave 1;Normal;0;0;0;0;0;0;0;all
 Graveyard;MM_GRAVE_NIGHT2_ENTR;MM_GRAVE_EXIT_NIGHT2;0x0a00;MM_IKANA_GRAVEYARD;MM_BENEATH_THE_GRAVEYARD;Ikana Graveyard;Ikana Grave 2;Normal;0;0;0;0;0;0;0;all
 Ikana_Canyon;MM_BENEATH_THE_WELL_ENTR;MM_IKANA_CANYON_FROM_WELL_ENTR;0x9000;MM_IKANA_CANYON;MM_BENEATH_THE_WELL;Ikana Canyon;Beneath the Well;Normal;0;0;0;0;0;0;0;all

@@ -239,6 +239,38 @@ public:
 
 class EntranceGameTabView;
 
+
+/*
+*   A QGraphicsView specialized for the entrance scene map. Adds mouse-wheel zoom on top of the
+*   pan-by-drag behavior already provided by ScrollHandDrag, mirroring the MapView used by the
+*   item tracker so both views feel identical to the user.
+*/
+class EntranceSceneView : public QGraphicsView
+{
+    Q_OBJECT
+
+public:
+
+    /*
+    *   Construct the view with the given scene.
+    *
+    *   @param Scene    The graphics scene this view renders.
+    *   @param Parent   The parent widget.
+    */
+    explicit EntranceSceneView(QGraphicsScene* Scene, QWidget* Parent = nullptr);
+
+protected:
+
+    /*
+    *   Scale the view in or out around the mouse cursor on each wheel tick. Vertical scroll only;
+    *   horizontal scroll is ignored so trackpad horizontal gestures do not surprise-zoom.
+    *
+    *   @param Event    The wheel event carrying the scroll delta.
+    */
+    void wheelEvent(QWheelEvent* Event) override;
+};
+
+
 /*
 *   The tree item that wraps a scene of the entrance tab.
 *   Holds counters of valid (non-None) entrances and refreshes its label as "Scene (found / total)".
@@ -294,7 +326,7 @@ public:
 
     AllEntranceView* AllView;
     QStackedWidget* CenterStack;                // Switches between AllView and the per-scene map view.
-    QGraphicsView* SceneMapView;                // The graphical view used to render the selected scene's mini-map.
+    EntranceSceneView* SceneMapView;            // The graphical view used to render the selected scene's mini-map.
     QGraphicsScene* SceneMapScene;              // The graphics scene that holds the mini-map.
     QPixmap* SceneMapImage = nullptr;           // The currently rendered mini-map image.
     QGraphicsPixmapItem* SceneMapItem = nullptr;// The graphical item attached to the scene.

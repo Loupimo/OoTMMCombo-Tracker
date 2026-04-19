@@ -7,7 +7,7 @@
 
 SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 {
-        { "Deku Tree", "", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
+    { "Deku Tree", "", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
     { "Dodongo's Cavern", "", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
     { "Inside Jabu-Jabu", "", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
     { "Forest Temple", "", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
@@ -97,7 +97,7 @@ SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
     { "Lake Hylia", "./Resources/OoT/Lake_Hylia/Lake_Hylia.png", "", (uint8_t)OoTRegions::Lake_Hylia, true, GameLayout::oot},
     { "Zora's Domain", "./Resources/OoT/Zora_Domain/Zora_Domain.png", "", (uint8_t)OoTRegions::Zora_Domain, true, GameLayout::oot},
     { "Zora's Fountain", "./Resources/OoT/Zora_Fountain/Zora_Fountain.png", "", (uint8_t)OoTRegions::Zora_Fountain, true, GameLayout::oot},
-    { "Gerudo Valley", "./Resources/OoT/Gerudo_Valley/Valley.png", "", (uint8_t)OoTRegions::Gerudo_Valley, true, GameLayout::oot},
+    { "Gerudo Valley", "./Resources/OoT/Gerudo_Valley/Valley.png", "./Resources/OoT/Gerudo_Valley/Valley_Map.png", (uint8_t)OoTRegions::Gerudo_Valley, true, GameLayout::oot},
     { "Lost Woods", "./Resources/OoT/Lost_Woods/Lost_Woods.png", "", (uint8_t)OoTRegions::Lost_Woods, true, GameLayout::oot},
     { "Desert Colossus", "./Resources/OoT/Desert_Colossus/Desert_Colossus.png", "", (uint8_t)OoTRegions::Desert_Colossus, true, GameLayout::oot},
     { "Gerudo's Fortress", "./Resources/OoT/Gerudo_Fortress/Fortress.png", "", (uint8_t)OoTRegions::Gerudo_Fortress, true, GameLayout::oot},

@@ -3,6 +3,7 @@
 #include "UI/EntranceTable.h"
 
 #include <QBrush>
+#include <QGraphicsSceneHoverEvent>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsSimpleTextItem>
 #include <QPainter>
@@ -43,7 +44,73 @@ void EntrancePixmapItem::mousePressEvent(QGraphicsSceneMouseEvent* event)
     QGraphicsPixmapItem::mousePressEvent(event);
 }
 
+
+void EntrancePixmapItem::hoverEnterEvent(QGraphicsSceneHoverEvent* event)
+{
+    if (this->ItemOwner != nullptr)
+    {
+        this->ItemOwner->SetHighlighted(true);
+    }
+    QGraphicsPixmapItem::hoverEnterEvent(event);
+}
+
+
+void EntrancePixmapItem::hoverLeaveEvent(QGraphicsSceneHoverEvent* event)
+{
+    if (this->ItemOwner != nullptr)
+    {
+        this->ItemOwner->SetHighlighted(false);
+    }
+    QGraphicsPixmapItem::hoverLeaveEvent(event);
+}
+
 #pragma endregion // EntrancePixmapItem
+
+
+#pragma region // EntranceLabelItem
+
+EntranceLabelItem::EntranceLabelItem(const QString& Text, EntranceRenderer* PaOwner, EntranceLinkItemTree* PaItem)
+    : QGraphicsSimpleTextItem(Text)
+{
+    this->Owner = PaOwner;
+    this->ItemOwner = PaItem;
+    this->setAcceptHoverEvents(true);
+    this->setFlag(QGraphicsItem::ItemIsSelectable, true);
+}
+
+
+void EntranceLabelItem::mousePressEvent(QGraphicsSceneMouseEvent* event)
+{
+    if (this->ItemOwner != nullptr)
+    {
+        this->ItemOwner->SetCalledFromGraph(true);
+        this->ItemOwner->PerformAction();
+        this->ItemOwner->SetCalledFromGraph(false);
+    }
+    QGraphicsSimpleTextItem::mousePressEvent(event);
+}
+
+
+void EntranceLabelItem::hoverEnterEvent(QGraphicsSceneHoverEvent* event)
+{
+    if (this->ItemOwner != nullptr)
+    {
+        this->ItemOwner->SetHighlighted(true);
+    }
+    QGraphicsSimpleTextItem::hoverEnterEvent(event);
+}
+
+
+void EntranceLabelItem::hoverLeaveEvent(QGraphicsSceneHoverEvent* event)
+{
+    if (this->ItemOwner != nullptr)
+    {
+        this->ItemOwner->SetHighlighted(false);
+    }
+    QGraphicsSimpleTextItem::hoverLeaveEvent(event);
+}
+
+#pragma endregion // EntranceLabelItem
 
 
 #pragma region // EntranceLinkItemTree
@@ -96,12 +163,9 @@ void EntranceLinkItemTree::UpdateOverlayLabel()
     this->TextItem->setText(name);
 
     const int* pos = this->IsInLink ? meta->InPosition : meta->OutPosition;
-    const int* otherPos = (meta->Type == EntranceType::Normal)
-        ? (this->IsInLink ? meta->OutPosition : meta->InPosition)
-        : nullptr;
     qreal rotDeg = this->IsInLink ? meta->ArrowRot : meta->ArrowRot + 180.0;
 
-    EntranceRenderer::PlaceLabelAroundArrow(this->TextItem, pos[0], pos[1], rotDeg, otherPos);
+    EntranceRenderer::PlaceLabelAroundArrow(this->TextItem, pos[0], pos[1], rotDeg, pos[2]);
 }
 
 
@@ -203,6 +267,28 @@ void EntranceLinkItemTree::NavigateToTarget()
             tab->FocusSceneInGame(destGame, destSceneID);
         }
     });
+}
+
+
+void EntranceLinkItemTree::SetHighlighted(bool Highlighted)
+{
+    // Highlight the pair visually: the arrow scales up and rises above other arrows; the label
+    // switches to yellow and also rises above everything so nearby labels never cover it. Both
+    // items pivot on their own origin so no extra re-centering is needed when scaling.
+    constexpr qreal kHighlightScale = 1.3;
+    constexpr qreal kHighlightZ = 10.0;
+
+    if (this->GraphItem != nullptr)
+    {
+        this->GraphItem->setScale(Highlighted ? kHighlightScale : 1.0);
+        this->GraphItem->setZValue(Highlighted ? kHighlightZ : 0.0);
+    }
+
+    if (this->TextItem != nullptr)
+    {
+        this->TextItem->setBrush(QBrush(Highlighted ? QColor(255, 230, 0) : QColor(255, 255, 255)));
+        this->TextItem->setZValue(Highlighted ? kHighlightZ : 0.0);
+    }
 }
 
 #pragma endregion // EntranceLinkItemTree
@@ -471,15 +557,25 @@ void EntranceRenderer::AddLinkMarker(EntranceLinkItemTree* Link, bool IsIn, cons
     if (row != nullptr)
     {
         QString name = IsIn ? row->InLinkName : row->OutLinkName;
-        QGraphicsSimpleTextItem* label = new QGraphicsSimpleTextItem(name);
+        EntranceLabelItem* label = new EntranceLabelItem(name, this, Link);
         label->setBrush(QBrush(QColor(255, 255, 255)));
+        label->setFont(QFont("Arial", 12, QFont::Weight::Bold));
 
-        // For Normal entrances, hand the sibling position to the placer so the two labels are
-        // pushed outward from each other. One-Way sides fall back to arrow-opposite placement.
-        const int* otherPos = (Meta->Type == EntranceType::Normal)
-            ? (IsIn ? Meta->OutPosition : Meta->InPosition)
-            : nullptr;
-        PlaceLabelAroundArrow(label, pos[0], pos[1], rotDeg, otherPos);
+        // Stroke the glyph outlines with black so the white fill stays readable on any map
+        // background. RoundJoin + RoundCap avoid spiky artefacts where the stroke would otherwise
+        // poke out of thin letter corners.
+        QPen outline(QColor(0, 0, 0));
+        outline.setWidth(0.1);
+        //outline.setJoinStyle(Qt::RoundJoin);
+        //outline.setCapStyle(Qt::RoundCap);
+        label->setPen(outline);
+
+        // In and Out rotations already differ by 180 deg, so anchoring at the arrow tip naturally
+        // puts a Normal entrance's two labels on opposite sides of the pair. The Z component of
+        // the position encodes an override TextPlacement value (Default / Up / Down / Left / Right
+        // / NoText) so each entrance can force its label to a specific side when the tip-based
+        // default collides with map geometry.
+        PlaceLabelAroundArrow(label, pos[0], pos[1], rotDeg, pos[2]);
 
         this->Scene->addItem(label);
         this->OverlayItems.push_back(label);
@@ -488,48 +584,64 @@ void EntranceRenderer::AddLinkMarker(EntranceLinkItemTree* Link, bool IsIn, cons
 }
 
 
-void EntranceRenderer::PlaceLabelAroundArrow(QGraphicsSimpleTextItem* Label, qreal CenterX, qreal CenterY, qreal RotDeg, const int* OtherPos)
+void EntranceRenderer::PlaceLabelAroundArrow(QGraphicsSimpleTextItem* Label, qreal CenterX, qreal CenterY, qreal RotDeg, int Placement)
 {
     if (Label == nullptr)
     {
         return;
     }
 
-    // Preferred placement direction: pointing away from the sibling side. This keeps both labels
-    // of a Normal entrance on opposite sides of the In / Out pair no matter the arrow rotation,
-    // which is the common case that produced overlapping labels before.
-    qreal dirX = 0.0;
-    qreal dirY = 0.0;
-    bool useArrowFallback = true;
-    if (OtherPos != nullptr)
+    // NoText hides the label entirely. We keep the QGraphicsSimpleTextItem alive so the tree /
+    // graph stay in sync and so later refreshes can toggle visibility back on if the Placement
+    // value ever changes.
+    if (Placement == TextPlacement::NoText)
     {
-        qreal dx = CenterX - static_cast<qreal>(OtherPos[0]);
-        qreal dy = CenterY - static_cast<qreal>(OtherPos[1]);
-        qreal len = std::hypot(dx, dy);
-        if (len > 4.0)
-        {
-            dirX = dx / len;
-            dirY = dy / len;
-            useArrowFallback = false;
-        }
+        Label->setVisible(false);
+        return;
     }
-    if (useArrowFallback)
-    {
-        // In / Out rotations already differ by 180 deg so using the arrow-opposite direction here
-        // still yields two opposite labels when the sibling position is missing or coincident.
-        qreal rad = qDegreesToRadians(RotDeg);
-        dirX = -std::sin(rad);
-        dirY = std::cos(rad);
-    }
+    Label->setVisible(true);
 
     // Offset distance: In / Out arrow icons are 30x21 px centered on their origin, so the worst
     // case rotated half-extent sits near 18 px. The margin keeps the text visually clear of the
     // arrow without drifting too far away.
-    constexpr qreal kOffset = 20.0;
+    constexpr qreal kOffset = 15.0;
 
     QRectF rect = Label->boundingRect();
     qreal w = rect.width();
     qreal h = rect.height();
+
+    // Forced cardinal placements ignore the arrow rotation and pin the label to one side of the
+    // arrow center. This is the escape hatch for entrances where the default tip-aligned placement
+    // collides with nearby pixmaps or map geometry.
+    if (Placement == TextPlacement::Up)
+    {
+        Label->setPos(CenterX - w / 2.0, CenterY - kOffset - h);
+        return;
+    }
+    if (Placement == TextPlacement::Down)
+    {
+        Label->setPos(CenterX - w / 2.0, CenterY + kOffset);
+        return;
+    }
+    if (Placement == TextPlacement::Left)
+    {
+        Label->setPos(CenterX - kOffset - w, CenterY - h / 2.0);
+        return;
+    }
+    if (Placement == TextPlacement::Right)
+    {
+        Label->setPos(CenterX + kOffset, CenterY - h / 2.0);
+        return;
+    }
+
+    // Default path: anchor the label at the arrow tip. The In / Out arrow pixmaps are 30x21 px and
+    // point to the right by default at rotation 0 — so the tip unit vector is (cos, sin) and NOT
+    // (sin, -cos) as it would be for an up-pointing arrow. For Normal entrances the In and Out
+    // rotations already differ by 180 deg, so the two labels end up on opposite sides of the pair
+    // without any extra sibling-aware logic.
+    qreal rad = qDegreesToRadians(RotDeg);
+    qreal dirX = std::cos(rad);
+    qreal dirY = std::sin(rad);
 
     qreal x = CenterX + dirX * kOffset;
     qreal y = CenterY + dirY * kOffset;

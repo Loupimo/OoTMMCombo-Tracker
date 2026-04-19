@@ -89,7 +89,7 @@ OOT_SACRED_FOREST_MEADOW;Sacred Forest Meadow;./Resources/OoT/Sacred_Forest_Mead
 OOT_LAKE_HYLIA;Lake Hylia;./Resources/OoT/Lake_Hylia/Lake_Hylia.png;;Lake_Hylia;true;oot
 OOT_ZORA_DOMAIN;Zora's Domain;./Resources/OoT/Zora_Domain/Zora_Domain.png;;Zora_Domain;true;oot
 OOT_ZORA_FOUNTAIN;Zora's Fountain;./Resources/OoT/Zora_Fountain/Zora_Fountain.png;;Zora_Fountain;true;oot
-OOT_GERUDO_VALLEY;Gerudo Valley;./Resources/OoT/Gerudo_Valley/Valley.png;;Gerudo_Valley;true;oot
+OOT_GERUDO_VALLEY;Gerudo Valley;./Resources/OoT/Gerudo_Valley/Valley.png;./Resources/OoT/Gerudo_Valley/Valley_Map.png;Gerudo_Valley;true;oot
 OOT_LOST_WOODS;Lost Woods;./Resources/OoT/Lost_Woods/Lost_Woods.png;;Lost_Woods;true;oot
 OOT_DESERT_COLOSSUS;Desert Colossus;./Resources/OoT/Desert_Colossus/Desert_Colossus.png;;Desert_Colossus;true;oot
 OOT_GERUDO_FORTRESS;Gerudo's Fortress;./Resources/OoT/Gerudo_Fortress/Fortress.png;;Gerudo_Fortress;true;oot
