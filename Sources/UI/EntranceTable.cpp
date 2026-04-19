@@ -661,6 +661,7 @@ EntranceGameTabView::EntranceGameTabView(int Game, const char * Name, EntranceTa
             this->Regions.push_back(currRegion);
         }
 
+        MetaInf.MapPath = GetSceneMiniMap(Game, MetaInf.SceneID);
         new SceneEntranceItemTree(&MetaInf, this, currRegion);
     }
 
@@ -700,9 +701,10 @@ void EntranceGameTabView::OnSceneSelected(QTreeWidgetItem* Current)
         return;
     }
 
-    // Render the scene map and the per-scene entrance list
-    this->RenderSceneMap(sceneItem->SceneInf);
+    // Populate the right tree first so the overlay renderer can look up the link tree items it needs
+    // to wire map-arrow clicks onto the same PerformAction pipeline as tree clicks.
     this->PopulateEntranceList(sceneItem->SceneInf);
+    this->RenderSceneMap(sceneItem->SceneInf);
     this->CenterStack->setCurrentIndex(1);
     this->EntranceList->setVisible(true);
 }
@@ -730,6 +732,14 @@ void EntranceGameTabView::RenderSceneMap(SceneEntranceMetaInf* Scene)
         this->SceneMapItem = this->SceneMapScene->addPixmap(*this->SceneMapImage);
         this->SceneMapView->fitInView(this->SceneMapScene->sceneRect(), Qt::KeepAspectRatio);
     }
+
+    // Paint name labels + clickable arrows on top of the freshly loaded map. Done here (and not in
+    // PopulateEntranceList) so the overlay cleanly attaches to the current scene's pixmap and so
+    // RenderSceneMap remains the single method that knows how the map is drawn.
+    if (this->Renderer != nullptr)
+    {
+        this->Renderer->RenderSceneOverlay(Scene);
+    }
 }
 
 
@@ -744,6 +754,11 @@ void EntranceGameTabView::PopulateEntranceList(SceneEntranceMetaInf* Scene)
     CommonBaseItemTree* normalCat = new CommonBaseItemTree();
     CommonBaseItemTree* oneWayInCat = new CommonBaseItemTree();
     CommonBaseItemTree* oneWayOutCat = new CommonBaseItemTree();
+
+    ObjectIcons * refIcons = ObjectIcons::GetIconsRef();
+    normalCat->setIcon(0, refIcons->EntranceIcons[0]);
+    oneWayInCat->setIcon(0, refIcons->EntranceIcons[1]);
+    oneWayOutCat->setIcon(0, refIcons->EntranceIcons[2]);
 
     GlobalEntranceTableModel* model = this->AllView != nullptr ? this->AllView->Model : nullptr;
 
@@ -958,6 +973,33 @@ RegionTree* EntranceGameTabView::FindRegionTree(uint8_t Region)
     return FindRegionTreeIn(this->Regions, Region);
 }
 
+
+void EntranceGameTabView::FocusSceneInGame(uint32_t SceneID)
+{
+    if (this->MapList == nullptr || this->MapList->List == nullptr)
+    {
+        return;
+    }
+
+    for (RegionTree* region : this->Regions)
+    {
+        for (int i = 0; i < region->childCount(); i++)
+        {
+            SceneEntranceItemTree* scene = dynamic_cast<SceneEntranceItemTree*>(region->child(i));
+            if (scene != nullptr && scene->SceneInf != nullptr && scene->SceneInf->SceneID == SceneID)
+            {
+                // Expand the containing region so the user actually sees the newly selected scene in
+                // the tree. setCurrentItem fires currentItemChanged, which re-enters OnSceneSelected
+                // and takes care of re-rendering the map + entrance list.
+                region->setExpanded(true);
+                this->MapList->List->setCurrentItem(scene);
+                this->MapList->List->scrollToItem(scene);
+                return;
+            }
+        }
+    }
+}
+
 #pragma endregion // EntranceGameTabView
 
 #pragma region // EntranceTab
@@ -1006,6 +1048,22 @@ void EntranceTab::RefreshName()
         this->TotalEntrances = this->OoTEntranceTab->TotalEntrances + this->MMEntranceTab->TotalEntrances;
         this->Owner->setTabText(this->TabIndex, this->GetRefreshedName(this->TabName, this->FoundEntrances, this->TotalEntrances));
     }
+}
+
+
+void EntranceTab::FocusSceneInGame(int Game, uint32_t SceneID)
+{
+    EntranceGameTabView* target = (Game == OOT_GAME) ? this->OoTEntranceTab : this->MMEntranceTab;
+    if (target == nullptr)
+    {
+        return;
+    }
+
+    // Ensure the destination game's sub-tab is visible before focusing the scene, otherwise a cross
+    // game arrow click would silently update the hidden tab and leave the user staring at the wrong
+    // map. setCurrentWidget is a no-op when the target is already active.
+    this->setCurrentWidget(target);
+    target->FocusSceneInGame(SceneID);
 }
 
 #pragma endregion // EntranceTab

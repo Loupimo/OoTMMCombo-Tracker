@@ -22,6 +22,28 @@ typedef struct ObjectIcon
     double Alpha = 1.0;             // The defaut alpha to applay to the image.
 } ObjectIcon;
 
+
+#pragma region Entrances
+
+
+enum EntranceIcons
+{
+    In_Out,		// In and Out Arrow
+    In_Only,    // In arrow / One way in
+    Out_Only    // Out arrow / One way out
+};
+
+const ObjectIcon EntranceIconsMetaInfo[EntranceIcons::Out_Only + 1] =
+{
+    {"./Resources/Common/In_Out_Arrow.png", {44, 32}},  // EntranceIcons::In_Out
+    {"./Resources/Common/In_Arrow.png", {30, 21}},      // EntranceIcons::In
+    {"./Resources/Common/Out_Arrow.png", {30, 21}}      // EntranceIcons::Out
+};
+
+
+#pragma endregion
+
+
 const ObjectIcon IconsMetaInfo[ObjectType::last] =
 {
     {"", {0, 0}},                                                       // ObjectType::none
@@ -213,7 +235,9 @@ public:
     QIcon Icons[ObjectType::last];            // The matching icon for common item and list category.
     QPixmap PixmapIcons[ObjectType::last];    // The matching pixmap for common item and list category.
 
-    QPixmap PixmapSpeIcons[ObjectIconMap::type];    // The matching pixmap for specific item.
+    QPixmap PixmapSpeIcons[ObjectIconMap::type];            // The matching pixmap for specific item.
+    QIcon EntranceIcons[EntranceIcons::Out_Only + 1];               // The matching icon for entrances icons.
+    QPixmap PixmapEntranceIcons[EntranceIcons::Out_Only + 1];    // The matching pixmap for entrances icons.
 
 public:
 
@@ -238,6 +262,13 @@ public:
     *   @return The object icons.
     */
     static QIcon* GetObjectIcons();
+
+    /*
+    *   Get the object icons.
+    *
+    *   @return The object icons.
+    */
+    static ObjectIcons* GetIconsRef();
 };
 
 

@@ -21,6 +21,12 @@ ObjectIcons::ObjectIcons()
     {
         this->PixmapSpeIcons[i] = QPixmap(SpecificIconsMetaInfo[i].IconPath);
     }
+
+    for (size_t i = 0; i <= EntranceIcons::Out_Only; i++)
+    {
+        this->EntranceIcons[i] = QIcon(EntranceIconsMetaInfo[i].IconPath);
+        this->PixmapEntranceIcons[i] = QPixmap(EntranceIconsMetaInfo[i].IconPath);
+    }
 }
 
 
@@ -58,6 +64,16 @@ QIcon* ObjectIcons::GetObjectIcons()
     return IconsRef->Icons;
 }
 
+
+ObjectIcons* ObjectIcons::GetIconsRef()
+{
+    if (IconsRef == nullptr)
+    {
+        IconsRef = new ObjectIcons();
+    }
+
+    return IconsRef;
+}
 
 ObjectItemTree::ObjectItemTree(ObjectInfo* Obj, QColor DefaultColor, ObjectRenderer* Owner, QTreeWidgetItem* Parent) : CommonBaseItemTree(Parent)
 {

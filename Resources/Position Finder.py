@@ -176,5 +176,5 @@ def perform_action(root_folder):
                     #f.write(coordstr + coordstr2)
                     f.write(coordstr)
 
-perform_action("D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\OoT_AP")
-perform_action("D:\\Emulation\\OoTMMCombo-Tracker\\Resources\\MM_AP")
+perform_action("D:\\Emulation\\OoTMMCombo-Tracker-Private\\Resources\\OoT_AP")
+perform_action("D:\\Emulation\\OoTMMCombo-Tracker-Private\\Resources\\MM_AP")

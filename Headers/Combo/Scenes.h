@@ -16,6 +16,7 @@ typedef struct SceneMetaInfo
 {
 	const char* Name;
 	const char* ImagePath;
+    const char* MiniMapPath;
 	uint8_t ParentRegion;
 	bool HasContext;
 	GameLayout ActiveLayout;	// The current active layout for this scene
@@ -455,3 +456,12 @@ uint32_t GetSceneScrub(uint32_t Scrub);
 *	@return The matching scene ID name.
 */
 const char* GetSceneName(int Game, uint32_t SceneID);
+
+/*
+*   Get the scene minimap path matching the desired scene ID.
+*
+*   @param SceneID		The scene ID to get the name of.
+*
+*	@return The matching scene minimap path.
+*/
+const char* GetSceneMiniMap(int Game, uint32_t SceneID);

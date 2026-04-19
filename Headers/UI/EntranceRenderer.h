@@ -1,7 +1,9 @@
 #pragma once
 
+#include <QGraphicsItem>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
+#include <QGraphicsSimpleTextItem>
 #include <QGraphicsView>
 #include <QPixmap>
 #include <QString>
@@ -14,11 +16,11 @@
 
 class EntranceGameTabView;
 struct GlobalEntranceRow;
+struct SceneEntranceMetaInf;
 class GlobalEntranceTableModel;
 class EntranceRenderer;
 class EntranceItemTree;
 class EntranceLinkItemTree;
-
 
 /*
 *   The graphical pixmap item that represents one link side of an entrance on the scene map.
@@ -62,6 +64,7 @@ public:
     EntranceItemTree* EntranceItem;                 // The owning entrance item tree.
     bool IsInLink;                                  // True for the "in" side, false for the "out" side.
     EntrancePixmapItem* GraphItem = nullptr;        // The optional graphical marker on the scene map.
+    QGraphicsSimpleTextItem* TextItem = nullptr;    // The optional name label painted next to the marker.
 
     /*
     *   Construct the link item tree for the given side and refresh its displayed text.
@@ -74,8 +77,17 @@ public:
 
     /*
     *   Refresh the displayed text from the InLinkName / OutLinkName of the backing model row.
+    *   Propagates the update to the on-map label (if any) so the map reflects newly discovered
+    *   names without waiting for the next scene re-render.
     */
     void RefreshText();
+
+    /*
+    *   Sync the optional overlay label (text + on-map position) with the current InLinkName /
+    *   OutLinkName of the backing row. No-op if no label is currently attached (e.g. the scene
+    *   is not the one being rendered).
+    */
+    void UpdateOverlayLabel();
 
     /*
     *   Return the scene-space position (X, Y, Z) of this link side from the entrance meta info.
@@ -85,7 +97,10 @@ public:
     const int* GetPosition() const;
 
     /*
-    *   Center the scene view on the position of this link side when the user clicks on it.
+    *   Dispatch the click depending on the entry point:
+    *       - tree click (CalledFromGraph == false): center the scene view on this link side,
+    *       - map arrow click (CalledFromGraph == true): navigate to the destination scene.
+    *   Both entry points share the same tree item so the name/state stays coherent with the model.
     */
     void PerformAction() override;
 
@@ -95,6 +110,14 @@ public:
     *   @return Always 1.
     */
     int GetTotalObjectAvailable() override;
+
+    /*
+    *   Resolve this link's target (destination entrance + game) via the scene meta info and ask the
+    *   owning EntranceTab to focus the matching scene. Reads InLink / InLinkGame for the "in" side,
+    *   OutLink / OutLinkGame for the "out" side. Silently returns if the link is undiscovered or if
+    *   the target meta info / game tab cannot be resolved.
+    */
+    void NavigateToTarget();
 };
 
 
@@ -167,6 +190,7 @@ public:
     QGraphicsScene* Scene = nullptr;                // The graphics scene used to render the map (and future pixmaps).
     QGraphicsView* View = nullptr;                  // The graphics view used to center on a position.
     std::vector<EntranceItemTree*> Entrances;       // The list of entrance items currently registered.
+    std::vector<QGraphicsItem*> OverlayItems;       // Every text label + arrow pixmap painted on top of the current scene map, owned by the renderer for cleanup.
 
     /*
     *   Construct the entrance renderer owned by the given game tab view.
@@ -184,8 +208,9 @@ public:
     void SetTarget(QGraphicsScene* PaScene, QGraphicsView* PaView);
 
     /*
-    *   Forget every currently registered entrance item.
-    *   Does not delete the items themselves (their parent tree widget is expected to own them).
+    *   Forget every registered entrance item and remove every overlay graphics item (name labels and
+    *   arrow pixmaps) from the scene. Tree items are not deleted: they are owned by the tree widget
+    *   and will be recreated on the next PopulateEntranceList call.
     */
     void Clear();
 
@@ -226,4 +251,54 @@ public:
     *   @return The global entrance table model, or nullptr if not available.
     */
     GlobalEntranceTableModel* GetModel() const;
+
+    /*
+    *   Paint every in / out marker (name label + clickable arrow pixmap) on top of the current scene
+    *   map for the given scene's entrances. Relies on the matching EntranceItemTree already being
+    *   registered via RegisterEntrance, so PopulateEntranceList must run before this.
+    *
+    *   @param Scene    The scene whose entrance markers should be painted.
+    */
+    void RenderSceneOverlay(SceneEntranceMetaInf* Scene);
+
+private:
+
+    /*
+    *   Create and register the label + arrow marker for one link side of an entrance on the map.
+    *   Rotates the arrow by ArrowRot for the in side and ArrowRot + 180 for the out side so a
+    *   normal entrance's two sides visually point in opposite directions.
+    *
+    *   @param Link    The link tree item that owns the marker (click target, name source).
+    *   @param IsIn    True for the "in" side, false for the "out" side.
+    *   @param Meta    The entrance meta info providing position + rotation.
+    */
+    void AddLinkMarker(EntranceLinkItemTree* Link, bool IsIn, const EntranceMetaInfo* Meta);
+
+public:
+
+    /*
+    *   Place the given label next to an arrow marker so it does not overlap the arrow nor the
+    *   sibling side's label (for Normal entrances). The label is pushed outward from the sibling
+    *   side when one exists and is far enough; otherwise it is pushed opposite to the arrow tip.
+    *   Anchors the closest edge of the label to the offset point so the text extends away from
+    *   (CenterX, CenterY) along the chosen direction.
+    *
+    *   @param Label       The label item to position. No-op if null.
+    *   @param CenterX     The X coordinate of the arrow center.
+    *   @param CenterY     The Y coordinate of the arrow center.
+    *   @param RotDeg      The arrow rotation in degrees (0 = up).
+    *   @param OtherPos    The sibling-side position (X, Y, Z), or nullptr for One-Way entrances.
+    */
+    static void PlaceLabelAroundArrow(QGraphicsSimpleTextItem* Label, qreal CenterX, qreal CenterY, qreal RotDeg, const int* OtherPos);
+
+private:
+
+    /*
+    *   Build and cache the placeholder arrow pixmap used until real resources land. The pixmap is
+    *   centered on its own origin so callers only need setPos(x, y) to place the arrow's center at
+    *   (x, y) before applying rotation.
+    *
+    *   @return A reference to the cached placeholder arrow pixmap.
+    */
+    static const QPixmap& PlaceholderArrowPixmap();
 };

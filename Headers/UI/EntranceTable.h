@@ -381,6 +381,15 @@ public:
     *   @param EntranceID    The entrance ID of the updated entrance.
     */
     void OnEntranceUpdated(uint32_t SceneID, uint32_t EntranceID);
+
+    /*
+    *   Programmatically select the scene matching the given ID in the left map tree so that the
+    *   currentItemChanged signal fires and OnSceneSelected re-renders the scene view and entrance
+    *   list. No-op if no matching scene tree item exists (e.g. scene has no valid entrance).
+    *
+    *   @param SceneID    The scene ID to focus in the left tree.
+    */
+    void FocusSceneInGame(uint32_t SceneID);
 };
 
 
@@ -432,4 +441,14 @@ public:
     *   Refresh the tab name to reflect the aggregated found / total entrance counters of both games.
     */
     void RefreshName() override;
+
+    /*
+    *   Switch the visible game sub-tab to the one matching the given game and focus the given scene
+    *   inside its map tree. Used by arrow-driven navigation on the map so an arrow click can lead to
+    *   the other game's scene when the discovered entrance crosses OoT <-> MM.
+    *
+    *   @param Game       The destination game (OOT_GAME or MM_GAME).
+    *   @param SceneID    The scene ID to focus in that game's map tree.
+    */
+    void FocusSceneInGame(int Game, uint32_t SceneID);
 };
