@@ -693,7 +693,7 @@ void EntranceRenderer::PlaceLabelAroundArrow(QGraphicsSimpleTextItem* Label, qre
     // Offset distance: In / Out arrow icons are 30x21 px centered on their origin, so the worst
     // case rotated half-extent sits near 18 px. The margin keeps the text visually clear of the
     // arrow without drifting too far away.
-    constexpr qreal kOffset = 15.0;
+    constexpr qreal kOffset = 20.0;
 
     QRectF rect = Label->boundingRect();
     qreal w = rect.width();

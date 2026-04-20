@@ -106,7 +106,7 @@ static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
                                                                                       { OOT_LAKE_HYLIA_FROM_FISHING_POND_ENTR,                 1322, -1218,  3871 },
                                                                                       { OOT_LAKE_HYLIA_FROM_TEMPLE_WATER_ENTR,                 -929, -1313,  6555 }, // Child
                                                                                       { OOT_LAKE_HYLIA_FROM_TEMPLE_WATER_ENTR,                 -917, -2201,  6359 }, // Adult
-                                                                                      { OOT_LAKE_HYLIA_FROM_ZORA_DOMAIN_ENTR,                  -912, -1544,  -280 },
+                                                                                      { OOT_LAKE_HYLIA_FROM_ZORA_DOMAIN_ENTR,                  -912, -1544,  3759 },
                                                                                       { OOT_GROTTO_EXIT_SCRUBS3_LAKE,                         -3040, -1033,  6075 } } },
     { OOT_DEATH_MOUNTAIN_FROM_KAKARIKO_ENTR,        std::vector<GrottoEntrance>() = { { OOT_DEATH_MOUNTAIN_FROM_KAKARIKO_ENTR,                -1344,   118,  2221 },
                                                                                       { OOT_DEATH_MOUNTAIN_FROM_GORON_CITY_ENTR,               -407,  1191, -1860 },

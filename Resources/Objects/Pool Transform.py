@@ -164,7 +164,7 @@ def parse_scene(input_file, output_file, game):
             else:
                 parent_region = "MMRegions::" + parent_region
 
-            objectstr = objectstr + "\t{ \"" + scenestr + "\", \"" + image_path + "\", \"" + minimap_path + "\", (uint8_t) " + parent_region + ", " + str(has_context).lower() + ", GameLayout::" + active_layout + "}"
+            objectstr = objectstr + "\t{ \"" + scenestr + "\", \"" + image_path + "\", \"" + minimap_path + "\", (uint8_t) " + parent_region + ", " + str(has_context).lower() + ", GameLayout::" + active_layout + " }"
             outfile.write(objectstr)
 
 

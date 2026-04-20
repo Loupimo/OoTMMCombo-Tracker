@@ -7,7 +7,7 @@
 
 SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 {
-    { "Deku Tree", "", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
+        { "Deku Tree", "", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
     { "Dodongo's Cavern", "", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
     { "Inside Jabu-Jabu", "", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
     { "Forest Temple", "", "", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot},
@@ -94,7 +94,7 @@ SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
     { "Zora's River", "./Resources/OoT/Zora_River/Zora_River.png", "", (uint8_t)OoTRegions::Zora_River, true, GameLayout::oot},
     { "Kokiri Forest", "./Resources/OoT/Kokiri_Forest/Kokiri_Forest.png", "", (uint8_t)OoTRegions::Kokiri_Forest, true, GameLayout::oot},
     { "Sacred Forest Meadow", "./Resources/OoT/Sacred_Forest_Meadow/Sacred_Forest_Meadow.png", "", (uint8_t)OoTRegions::Sacred_Forest_Meadow, true, GameLayout::oot},
-    { "Lake Hylia", "./Resources/OoT/Lake_Hylia/Lake_Hylia.png", "", (uint8_t)OoTRegions::Lake_Hylia, true, GameLayout::oot},
+    { "Lake Hylia", "./Resources/OoT/Lake_Hylia/Lake_Hylia.png", "./Resources/OoT/Lake_Hylia/Lake_Hylia_Map.png", (uint8_t)OoTRegions::Lake_Hylia, true, GameLayout::oot},
     { "Zora's Domain", "./Resources/OoT/Zora_Domain/Zora_Domain.png", "", (uint8_t)OoTRegions::Zora_Domain, true, GameLayout::oot},
     { "Zora's Fountain", "./Resources/OoT/Zora_Fountain/Zora_Fountain.png", "", (uint8_t)OoTRegions::Zora_Fountain, true, GameLayout::oot},
     { "Gerudo Valley", "./Resources/OoT/Gerudo_Valley/Valley.png", "./Resources/OoT/Gerudo_Valley/Valley_Map.png", (uint8_t)OoTRegions::Gerudo_Valley, true, GameLayout::oot},
@@ -102,8 +102,8 @@ SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
     { "Desert Colossus", "./Resources/OoT/Desert_Colossus/Desert_Colossus.png", "", (uint8_t)OoTRegions::Desert_Colossus, true, GameLayout::oot},
     { "Gerudo's Fortress", "./Resources/OoT/Gerudo_Fortress/Fortress.png", "", (uint8_t)OoTRegions::Gerudo_Fortress, true, GameLayout::oot},
     { "Haunted Wasteland", "./Resources/OoT/Haunted_Wasteland/Haunted_Wasteland.png", "", (uint8_t)OoTRegions::Haunted_Wasteland, false, GameLayout::oot},
-    { "Hyrule Castle", "./Resources/OoT/Hyrule/Hyrule_Castle.png", "", (uint8_t)OoTRegions::Castle, false, GameLayout::oot},
-    { "Death Mountain Trail", "", "", (uint8_t)OoTRegions::Death_Mountain_Trail, true, GameLayout::oot},
+    { "Hyrule Castle", "./Resources/OoT/Hyrule/Hyrule_Castle.png", "./Resources/OoT/Hyrule/Hyrule_Castle_Map.png", (uint8_t)OoTRegions::Castle, false, GameLayout::oot},
+    { "Death Mountain Trail", "", "./Resources/OoT/Death_Mountain_Trail/DMT_Map.png", (uint8_t)OoTRegions::Death_Mountain_Trail, true, GameLayout::oot},
     { "Death Mountain Crater", "./Resources/OoT/Death_Mountain_Crater/Crater.png", "./Resources/OoT/Death_Mountain_Crater/Crater_Map.png", (uint8_t)OoTRegions::Death_Mountain_Crater, true, GameLayout::oot},
     { "Goron City", "./Resources/OoT/Goron_City/Goron_City.png", "", (uint8_t)OoTRegions::Goron_City, true, GameLayout::oot},
     { "Lon Lon's Ranch", "./Resources/OoT/Ranch/Lon_Lon_Ranch.png", "", (uint8_t)OoTRegions::Lon_Lon_Ranch, true, GameLayout::oot},
