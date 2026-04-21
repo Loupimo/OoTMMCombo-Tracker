@@ -35,7 +35,6 @@ CreateEmptyScene(OOT_CUTSCENE_MAP)
 CreateEmptyScene(OOT_GANON_BATTLE_ARENA)
 CreateEmptyScene(OOT_MARKET_ENTRANCE)
 CreateEmptyScene(OOT_TEMPLE_OF_TIME_ENTRYWAY)
-CreateEmptyScene(OOT_DAMPE_HOUSE)
 CreateEmptyScene(OOT_BACK_ALLEY)
 CreateEmptyScene(OOT_SONGS)
 CreateEmptyScene(OOT_GREAT_FAIRY_DEFENSE)
@@ -200,7 +199,6 @@ SceneObjects OoTSceneObjects[OOT_NUM_SCENES] =
 	CreateSceneObjects(OOT_WINDMILL),
 	CreateSceneObjects(OOT_MARKET_ENTRANCE),
 	CreateSceneObjects(OOT_TEMPLE_OF_TIME_ENTRYWAY),
-	CreateSceneObjects(OOT_DAMPE_HOUSE),
 	CreateSceneObjects(OOT_BACK_ALLEY),
 	CreateSceneObjects(OOT_SONGS),
 
@@ -630,6 +628,10 @@ size_t LoadSceneObjectsFor(QByteArray* Data, size_t Offset, SceneObjects * Array
 					Offset = Array[i].Objects[j].LoadObject(Data, Offset);
 				}
 			}
+            else
+            {
+                qDebug() << sceneID;
+            }
 		}
 	}
 

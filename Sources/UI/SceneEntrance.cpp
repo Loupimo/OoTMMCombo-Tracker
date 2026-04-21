@@ -112,6 +112,10 @@ size_t SceneEntranceMetaInf::LoadMetaInf(QByteArray* Data, size_t Offset)
                 }
             }
         }
+        else
+        {
+            Offset += numObjs * (sizeof(uint32_t) * 3 + sizeof(bool) * 2);
+        }
     }
 
     return Offset;
@@ -205,7 +209,7 @@ size_t LoadEntrancesFor(QByteArray* Data, size_t Offset, std::map<uint32_t, Scen
     size_t numOfObjs = 0;
     memcpy_s(&numOfObjs, sizeof(numOfObjs),  Data->data() + Offset, sizeof(numOfObjs));
     Offset += sizeof(numOfObjs);
-    
+    int i = Array->size();
     if (numOfObjs != Array->size())
     {
         return -1;

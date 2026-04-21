@@ -144,9 +144,9 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 		}
 	},
 	{
-		OOT_DAMPE_HOUSE,
+		OOT_GRAVEKEEPER_HUT,
 		{
-			OOT_DAMPE_HOUSE, (uint8_t)OoTRegions::Graveyard,
+			OOT_GRAVEKEEPER_HUT, (uint8_t)OoTRegions::Graveyard,
 			{
 				{ OOT_HOUSE_DAMPE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},

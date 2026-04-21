@@ -182,8 +182,7 @@ typedef struct SceneMetaInfo
 #define OOT_WINDMILL								OOT_SILO + 1							// Kakariko's windmill
 #define OOT_MARKET_ENTRANCE							OOT_WINDMILL + 1						// Market entrance (all age / time)
 #define OOT_TEMPLE_OF_TIME_ENTRYWAY					OOT_MARKET_ENTRANCE + 1					// Temple of Time entryway
-#define OOT_DAMPE_HOUSE								OOT_TEMPLE_OF_TIME_ENTRYWAY + 1			// Dampe's house
-#define OOT_BACK_ALLEY								OOT_DAMPE_HOUSE + 1						// Back Market Alley
+#define OOT_BACK_ALLEY								OOT_TEMPLE_OF_TIME_ENTRYWAY + 1			// Back Market Alley
 #define OOT_SONGS									OOT_BACK_ALLEY + 1						// Warp Songs
 
 // Spoiler Log only
