@@ -673,6 +673,91 @@ void EntranceRenderer::AddLinkMarker(EntranceLinkItemTree* Link, bool IsIn, cons
 }
 
 
+void EntranceRenderer::ResolveOverlaps()
+{
+    // Collect every visible label together with its anchor (matching arrow center).
+    struct LabelEntry
+    {
+        QGraphicsSimpleTextItem* Label;
+        QPointF                  Anchor;  // arrow center in scene space
+        QRectF                   Rect;    // scene-space bounding rect (mutated each iter)
+    };
+
+    std::vector<LabelEntry> entries;
+
+    for (EntranceItemTree* tree : this->Entrances)
+    {
+        if (tree == nullptr) continue;
+
+        auto collect = [&](EntranceLinkItemTree* link)
+            {
+                if (!link || !link->TextItem || !link->TextItem->isVisible()) return;
+                if (!link->GraphItem) return;
+                entries.push_back({
+                    link->TextItem,
+                    link->GraphItem->scenePos(),
+                    link->TextItem->sceneBoundingRect()
+                    });
+            };
+
+        collect(tree->InItem);
+        collect(tree->OutItem);
+    }
+
+    if (entries.size() < 2) return;
+
+    constexpr qreal kMGap = 3.0;   // minimum gap enforced between two labels
+    constexpr qreal kPush = 50;   // pixels pushed apart per iteration
+    constexpr qreal kAttract = 0;  // attraction factor toward anchor (0 = none, 1 = snap)
+    constexpr int   kMaxIter = 120;
+
+    auto overlaps = [&](const QRectF& a, const QRectF& b) -> bool
+        {
+            return a.adjusted(-kMGap, -kMGap, kMGap, kMGap).intersects(b);
+        };
+
+    for (int iter = 0; iter < kMaxIter; ++iter)
+    {
+        bool anyOverlap = false;
+
+        for (size_t i = 0; i < entries.size(); ++i)
+        {
+            for (size_t j = i + 1; j < entries.size(); ++j)
+            {
+                LabelEntry& ei = entries[i];
+                LabelEntry& ej = entries[j];
+                if (!overlaps(ei.Rect, ej.Rect)) continue;
+                anyOverlap = true;
+
+                const QPointF ci = ei.Rect.center();
+                const QPointF cj = ej.Rect.center();
+                QPointF       diff = ci - cj;
+                const qreal   dist = std::hypot(diff.x(), diff.y());
+                if (dist < 0.01) diff = QPointF(1.0, 0.0);
+                else            diff /= dist;
+
+                const QPointF push = diff * kPush;
+                const QPointF attrI = (ei.Anchor - ci) * kAttract;
+                const QPointF attrJ = (ej.Anchor - cj) * kAttract;
+
+                ei.Rect.moveCenter(ci + push + attrI);
+                ej.Rect.moveCenter(cj - push + attrJ);
+            }
+        }
+
+        if (!anyOverlap) break;
+    }
+
+    // Commit resolved positions. Labels are direct scene children (no parent
+    // item transform), so scene pos == item local pos.
+    for (LabelEntry& e : entries)
+    {
+        const QPointF delta = e.Rect.topLeft() - e.Label->sceneBoundingRect().topLeft();
+        e.Label->setPos(e.Label->pos() + delta);
+    }
+}
+
+
 void EntranceRenderer::PlaceLabelAroundArrow(QGraphicsSimpleTextItem* Label, qreal CenterX, qreal CenterY, qreal RotDeg, int Placement)
 {
     if (Label == nullptr)

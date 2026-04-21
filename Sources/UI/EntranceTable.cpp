@@ -946,6 +946,7 @@ void EntranceGameTabView::RenderSceneMap(SceneEntranceMetaInf* Scene)
     if (this->Renderer != nullptr)
     {
         this->Renderer->RenderSceneOverlay(Scene);
+        //this->Renderer->ResolveOverlaps();
     }
 }
 

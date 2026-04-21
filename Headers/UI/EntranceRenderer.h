@@ -386,6 +386,16 @@ private:
 public:
 
     /*
+    *   Run a post-placement overlap-resolution pass on every visible name label
+    *   currently registered in the overlay. Iteratively pushes overlapping label
+    *   pairs apart while applying a weak attraction force toward each label's
+    *   owning arrow so labels stay readable near their entrance.
+    *
+    *   Call once, right after RenderSceneOverlay has finished adding all markers.
+    */
+    void ResolveOverlaps();
+
+    /*
     *   Place the given label around the arrow at (CenterX, CenterY). The Placement value selects
     *   the strategy: Default follows the arrow tip direction (the In / Out arrow pixmaps point to
     *   the right at rotation 0, so Normal entrances get their labels on opposite sides of the pair
