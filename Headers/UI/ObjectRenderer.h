@@ -28,16 +28,54 @@ typedef struct ObjectIcon
 
 enum EntranceIcons
 {
-    In_Out,		// In and Out Arrow
-    In_Only,    // In arrow / One way in
-    Out_Only    // Out arrow / One way out
+    No_Entry,
+    In_Out,		 // In and Out Arrow
+    In_Only,     // In arrow / One way in
+    Out_Only,    // Out arrow / One way out
+
+    Generic_Entry,
+    Open_Grotto,
+    Storms_Grotto,
+    Bomb_Grotto,
+    Boulder_Grotto,
+    Silver_Boudler_Grotto,
+    Red_Boulder_Grotto,
+    Door,
+    Tomb,
+    Owl_Pick,
+    Owl_Drop,
+    Warp_Song,
+    Wallmaster,
+    Gerudo_Catch,
+    Guard_Catch,
+    Trapdoor,
+
+    Entrance_Last
 };
 
-const ObjectIcon EntranceIconsMetaInfo[EntranceIcons::Out_Only + 1] =
+const ObjectIcon EntranceIconsMetaInfo[EntranceIcons::Entrance_Last] =
 {
-    {"./Resources/Common/In_Out_Arrow.png", {44, 32}},  // EntranceIcons::In_Out
-    {"./Resources/Common/In_Arrow.png", {30, 21}},      // EntranceIcons::In
-    {"./Resources/Common/Out_Arrow.png", {30, 21}}      // EntranceIcons::Out
+    {"", { 0, 0 }},                                              // EntranceIcons::No_Entry
+    {"./Resources/Common/In_Out_Arrow.png", {44, 32}},           // EntranceIcons::In_Out
+    {"./Resources/Common/In_Arrow.png", {30, 21}},               // EntranceIcons::In
+    {"./Resources/Common/Out_Arrow.png", {30, 21}},              // EntranceIcons::Out
+
+    {"./Resources/Common/Entrances/Generic.png", {30, 21}},      // EntranceIcons::Generic_Entry
+    {"./Resources/Common/Entrances/Open_Grotto.png", {30, 21}},      // EntranceIcons::Open_Grotto
+    {"./Resources/Common/Entrances/In_Arrow.png", {30, 21}},      // EntranceIcons::Storms_Grotto
+    {"./Resources/Common/Entrances/In_Arrow.png", {30, 21}},      // EntranceIcons::Bomb_Grotto
+    {"./Resources/Common/Entrances/Boulder_Grotto.png", {30, 21}},      // EntranceIcons::Boulder_Grotto
+    {"./Resources/Common/Entrances/Silver_Boulder_Grotto", {30, 21}},      // EntranceIcons::Silver_Boudler_Grotto
+    {"./Resources/Common/Entrances/Red_Boulder_Grotto.png", {30, 21}},      // EntranceIcons::Red_Boulder_Grotto
+    {"./Resources/Common/Entrances/In_Arrow.png", {30, 21}},      // EntranceIcons::Door
+    {"./Resources/Common/Entrances/In_Arrow.png", {30, 21}},      // EntranceIcons::Tomb
+    {"./Resources/Common/Entrances/In_Arrow.png", {30, 21}},      // EntranceIcons::Owl_Pick
+    {"./Resources/Common/Entrances/In_Arrow.png", {30, 21}},      // EntranceIcons::Owl_Drop
+    {"./Resources/Common/Entrances/In_Arrow.png", {30, 21}},      // EntranceIcons::Warp_Song
+    {"./Resources/Common/Entrances/In_Arrow.png", {30, 21}},      // EntranceIcons::Wallmaster
+    {"./Resources/Common/Entrances/In_Arrow.png", {30, 21}},      // EntranceIcons::Gerudo_Catch
+    {"./Resources/Common/Entrances/In_Arrow.png", {30, 21}},      // EntranceIcons::Guard_Catch
+    {"./Resources/Common/Entrances/In_Arrow.png", {30, 21}},      // EntranceIcons::Trapdoor
 };
 
 
@@ -234,10 +272,10 @@ public:
 
     QIcon Icons[ObjectType::last];            // The matching icon for common item and list category.
     QPixmap PixmapIcons[ObjectType::last];    // The matching pixmap for common item and list category.
+    QPixmap PixmapSpeIcons[ObjectIconMap::type];                  // The matching pixmap for specific item.
 
-    QPixmap PixmapSpeIcons[ObjectIconMap::type];            // The matching pixmap for specific item.
-    QIcon EntranceIcons[EntranceIcons::Out_Only + 1];               // The matching icon for entrances icons.
-    QPixmap PixmapEntranceIcons[EntranceIcons::Out_Only + 1];    // The matching pixmap for entrances icons.
+    QIcon EntranceIcons[EntranceIcons::Entrance_Last];            // The matching icon for entrances icons.
+    QPixmap PixmapEntranceIcons[EntranceIcons::Entrance_Last];    // The matching pixmap for entrances icons.
 
 public:
 

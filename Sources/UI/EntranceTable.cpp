@@ -936,6 +936,7 @@ void EntranceGameTabView::RenderSceneMap(SceneEntranceMetaInf* Scene)
             if (!view.isNull() && !scene.isNull())
             {
                 view->fitInView(scene->sceneRect(), Qt::KeepAspectRatio);
+                view->centerOn(scene->sceneRect().center());
             }
         });
     }
@@ -1207,7 +1208,8 @@ void EntranceGameTabView::FocusEntranceInGame(uint32_t SceneID, uint32_t Entranc
         {
             return;
         }
-        const int* pos = nullptr;
+        const int* pos = meta->AnchorPos;
+        /*const int* pos = nullptr;
         if (meta->Type == EntranceType::Normal || meta->Type == EntranceType::One_Way_In)
         {
             pos = meta->InPosition;
@@ -1215,7 +1217,7 @@ void EntranceGameTabView::FocusEntranceInGame(uint32_t SceneID, uint32_t Entranc
         else if (meta->Type == EntranceType::One_Way_Out)
         {
             pos = meta->OutPosition;
-        }
+        }*/
         self->Renderer->CenterAndZoomViewOn(pos);
     });
 }

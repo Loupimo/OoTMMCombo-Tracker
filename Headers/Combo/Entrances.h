@@ -2,6 +2,7 @@
 
 #include "Combo/Scenes.h"
 #include "Multi/Game.h"
+#include "UI/ObjectRenderer.h"
 #include <map>
 #include <string>
 
@@ -106,9 +107,9 @@ typedef struct EntranceMetaInfo
 	const char* FromName;			// The name of this entrance.
 	const char* ToName;				// The name of the entrance this entrance leads to.
 	EntranceType Type;				// The type entrance.
-	int InPosition[3];				// Entrance incoming position on its corresponding scene image. ID 0 = X, ID 1 = Y, ID 2 = Z
-	int OutPosition[3];				// Entrance outgoing position on its corresponding scene image. ID 0 = X, ID 1 = Y, ID 2 = Z
-	float ArrowRot;					// The rotation to apply to the arrow image.
+	int AnchorPos[3];				// Entrance anchor position on its corresponding scene image. ID 0 = X, ID 1 = Y, ID 2 = Z
+	int TextPos[3];				    // Entrance text box position on its corresponding scene image. ID 0 = X, ID 1 = Y, ID 2 = Z*$
+    EntranceIcons RenderIcon;       // The icon to rendrer for this entrance.
 	GameLayout ActiveLayout;		// The layout in which this entrance is active.
 } EntranceMetaInfo;
 
@@ -144,8 +145,18 @@ typedef struct EntranceMessage
 	EntranceMetaInfo* MetaInf;	// The matching entrance meta information.
 	std::string EntranceStr;	// The string matching the direction of the current entrance.
 
+	/*
+	*   Populate the message fields using the raw buffer data.
+	*
+	*   @param MsgDirection   The direction of the message (in or out).
+	*   @param OwlID          The combined owl / farore's wind / link age information.
+	*   @param Buffer         The raw 6-word message buffer.
+	*/
 	void SetMessage(uint32_t MsgDirection, uint32_t OwlID, uint32_t Buffer[6]);
 
+	/*
+	*   Reset all the fields of the message to their default state.
+	*/
 	void ResetMessage();
 
 } EntranceMessage;

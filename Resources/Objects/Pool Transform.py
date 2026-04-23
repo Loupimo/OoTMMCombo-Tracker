@@ -197,13 +197,13 @@ def parse_entrance(input_file, output_file_h, output_file_cpp, output_filemeta, 
             from_str = row["From_Name"]
             to_str = row["To_Name"]
             type = row["Type"]
-            in_X = row["In_X"]
-            in_Y = row["In_Y"]
-            in_Z = row["In_Text_Pos"]
-            out_X = row["Out_X"]
-            out_Y = row["Out_Y"]
-            out_Z = row["Out_Text_Pos"]
-            arrow_rot = row["Arrow_Rot"]
+            in_X = row["Anchor_X"]
+            in_Y = row["Anchor_Y"]
+            in_Z = row["Anchor_Z"]
+            out_X = row["Text_X"]
+            out_Y = row["Text_Y"]
+            out_Z = row["Text_Z"]
+            render_Icon = row["Entrance_Icon"]
             active_layout = row["Active_Layout"]
 
             if in_Z == "Default" or in_Z == "0":
@@ -231,7 +231,7 @@ def parse_entrance(input_file, output_file_h, output_file_cpp, output_filemeta, 
                 out_Z = 4
             else:
                 out_Z = 255
-            objectstr = objectstr + "\t{ " + str(entrance_code) + ", { " + str(fromentridstr) + ", " + str(entrance_code) + ", " + str(fromsceneid) + ", " + str(tosceneid) + ", \"" + from_str + "\", \"" + to_str + "\", EntranceType::" + type + ", " + str(in_X) + ", " + str(in_Y) + ", " + str(in_Z) + ", " + str(out_X) + ", " + str(out_Y) + ", " + str(out_Z) + ", " + str(arrow_rot) + ", GameLayout::" + active_layout + " } }"
+            objectstr = objectstr + "\t{ " + str(entrance_code) + ", { " + str(fromentridstr) + ", " + str(entrance_code) + ", " + str(fromsceneid) + ", " + str(tosceneid) + ", \"" + from_str + "\", \"" + to_str + "\", EntranceType::" + type + ", " + str(in_X) + ", " + str(in_Y) + ", " + str(in_Z) + ", " + str(out_X) + ", " + str(out_Y) + ", " + str(out_Z) + ", EntranceIcons::" + render_Icon + ", GameLayout::" + active_layout + " } }"
             objectstrings.append(objectstr)
             #outfile.write(objectstr)
             defines += "#define " + entrance_code + " " + toentridstr + "\n"

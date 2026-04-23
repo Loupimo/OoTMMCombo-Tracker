@@ -80,23 +80,23 @@ OOT_GUARD_HOUSE;Pot's House;./Resources/OoT/Market/Pot_House.png;./Resources/OoT
 OOT_GRANNY_POTION_SHOP;Granny Potion Shop;./Resources/OoT/Kakariko/Granny_Potion_Shop.png;./Resources/OoT/Kakariko/Granny_Potion_Shop_Map.png;Kakariko;false;oot
 OOT_GANON_BATTLE_ARENA;Ganon Battle Arena;;;None;false;oot
 OOT_HOUSE_OF_SKULLTULA;House of Skulltula;./Resources/OoT/Kakariko/House_Skulltula.png;./Resources/OoT/Kakariko/House_Skulltula_Map.png;Kakariko;false;oot
-OOT_HYRULE_FIELD;Hyrule Field;./Resources/OoT/Hyrule/Hyrule_Field.png;./Resources/OoT/Hyrule/Hyrule_Field_Map.png;Hyrule;true;oot
+OOT_HYRULE_FIELD;Hyrule Field;./Resources/OoT/Hyrule/Hyrule_Field.png;./Resources/OoT/Hyrule/Hyrule_Field_Map.jpg;Hyrule;true;oot
 OOT_KAKARIKO_VILLAGE;Kakariko's Village;./Resources/OoT/Kakariko/Kakariko.png;./Resources/OoT/Kakariko/Kakariko_Map.png;Kakariko;true;oot
-OOT_GRAVEYARD;Graveyard;./Resources/OoT/Graveyard/Graveyard.png;./Resources/OoT/Graveyard/Graveyard_Map.png;Graveyard;true;oot
+OOT_GRAVEYARD;Graveyard;./Resources/OoT/Graveyard/Graveyard.png;./Resources/OoT/Graveyard/Graveyard_Map.jpg;Graveyard;true;oot
 OOT_ZORA_RIVER;Zora's River;./Resources/OoT/Zora_River/Zora_River.png;./Resources/OoT/Zora_River/Zora_River_Map.png;Zora_River;true;oot
 OOT_KOKIRI_FOREST;Kokiri Forest;./Resources/OoT/Kokiri_Forest/Kokiri_Forest.png;./Resources/OoT/Kokiri_Forest/Kokiri_Forest_Map.png;Kokiri_Forest;true;oot
 OOT_SACRED_FOREST_MEADOW;Sacred Forest Meadow;./Resources/OoT/Sacred_Forest_Meadow/Sacred_Forest_Meadow.png;./Resources/OoT/Sacred_Forest_Meadow/Sacred_Forest_Meadow_Map.png;Sacred_Forest_Meadow;true;oot
-OOT_LAKE_HYLIA;Lake Hylia;./Resources/OoT/Lake_Hylia/Lake_Hylia.png;./Resources/OoT/Lake_Hylia/Lake_Hylia_Map.png;Lake_Hylia;true;oot
+OOT_LAKE_HYLIA;Lake Hylia;./Resources/OoT/Lake_Hylia/Lake_Hylia.png;./Resources/OoT/Lake_Hylia/Lake_Hylia_Map.jpg;Lake_Hylia;true;oot
 OOT_ZORA_DOMAIN;Zora's Domain;./Resources/OoT/Zora_Domain/Zora_Domain.png;./Resources/OoT/Zora_Domain/Zora_Domain_Map.png;Zora_Domain;true;oot
 OOT_ZORA_FOUNTAIN;Zora's Fountain;./Resources/OoT/Zora_Fountain/Zora_Fountain.png;./Resources/OoT/Zora_Fountain/Zora_Fountain_Map.png;Zora_Fountain;true;oot
-OOT_GERUDO_VALLEY;Gerudo Valley;./Resources/OoT/Gerudo_Valley/Valley.png;./Resources/OoT/Gerudo_Valley/Valley_Map.png;Gerudo_Valley;true;oot
+OOT_GERUDO_VALLEY;Gerudo Valley;./Resources/OoT/Gerudo_Valley/Valley.png;./Resources/OoT/Gerudo_Valley/Valley_Map.jpg;Gerudo_Valley;true;oot
 OOT_LOST_WOODS;Lost Woods;./Resources/OoT/Lost_Woods/Lost_Woods.png;./Resources/OoT/Lost_Woods/Lost_Woods_Map.png;Lost_Woods;true;oot
 OOT_DESERT_COLOSSUS;Desert Colossus;./Resources/OoT/Desert_Colossus/Desert_Colossus.png;./Resources/OoT/Desert_Colossus/Desert_Colossus_Map.png;Desert_Colossus;true;oot
 OOT_GERUDO_FORTRESS;Gerudo's Fortress;./Resources/OoT/Gerudo_Fortress/Fortress.png;./Resources/OoT/Gerudo_Fortress/Fortress_Map.png;Gerudo_Fortress;true;oot
 OOT_HAUNTED_WASTELAND;Haunted Wasteland;./Resources/OoT/Haunted_Wasteland/Haunted_Wasteland.png;./Resources/OoT/Haunted_Wasteland/Haunted_Wasteland_Map.png;Haunted_Wasteland;false;oot
-OOT_HYRULE_CASTLE;Hyrule Castle;./Resources/OoT/Hyrule/Hyrule_Castle.png;./Resources/OoT/Hyrule/Hyrule_Castle_Map.png;Castle;false;oot
-OOT_DEATH_MOUNTAIN_TRAIL;Death Mountain Trail;;./Resources/OoT/Death_Mountain_Trail/DMT_Map.png;Death_Mountain_Trail;true;oot
-OOT_DEATH_MOUNTAIN_CRATER;Death Mountain Crater;./Resources/OoT/Death_Mountain_Crater/Crater.png;./Resources/OoT/Death_Mountain_Crater/Crater_Map.png;Death_Mountain_Crater;true;oot
+OOT_HYRULE_CASTLE;Hyrule Castle;./Resources/OoT/Hyrule/Hyrule_Castle.png;./Resources/OoT/Hyrule/Hyrule_Castle_Map.jpg;Castle;false;oot
+OOT_DEATH_MOUNTAIN_TRAIL;Death Mountain Trail;;./Resources/OoT/Death_Mountain_Trail/DMT_Map.jpg;Death_Mountain_Trail;true;oot
+OOT_DEATH_MOUNTAIN_CRATER;Death Mountain Crater;./Resources/OoT/Death_Mountain_Crater/Crater.png;./Resources/OoT/Death_Mountain_Crater/Crater_Map.jpg;Death_Mountain_Crater;true;oot
 OOT_GORON_CITY;Goron City;./Resources/OoT/Goron_City/Goron_City.png;./Resources/OoT/Goron_City/Goron_City_Map.png;Goron_City;true;oot
 OOT_LON_LON_RANCH;Lon Lon's Ranch;./Resources/OoT/Ranch/Lon_Lon_Ranch.png;./Resources/OoT/Ranch/Lon_Lon_Ranch_Map.png;Lon_Lon_Ranch;true;oot
 OOT_GANON_CASTLE_EXTERIOR;Ganon Castle Exterior;./Resources/OoT/Ganon/Exterior.jpg;./Resources/OoT/Ganon/Exterior_Map.jpg;Castle;false;oot

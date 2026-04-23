@@ -22,7 +22,7 @@ ObjectIcons::ObjectIcons()
         this->PixmapSpeIcons[i] = QPixmap(SpecificIconsMetaInfo[i].IconPath);
     }
 
-    for (size_t i = 0; i <= EntranceIcons::Out_Only; i++)
+    for (size_t i = 0; i < EntranceIcons::Entrance_Last; i++)
     {
         this->EntranceIcons[i] = QIcon(EntranceIconsMetaInfo[i].IconPath);
         this->PixmapEntranceIcons[i] = QPixmap(EntranceIconsMetaInfo[i].IconPath);

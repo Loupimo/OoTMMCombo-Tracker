@@ -162,10 +162,12 @@ void EntranceLinkItemTree::UpdateOverlayLabel()
     QString name = this->IsInLink ? row->InLinkName : row->OutLinkName;
     this->TextItem->setText(name);
 
-    const int* pos = this->IsInLink ? meta->InPosition : meta->OutPosition;
-    qreal rotDeg = this->IsInLink ? meta->ArrowRot : meta->ArrowRot + 180.0;
+    const int* pos = meta->TextPos;
+    /*const int* pos = this->IsInLink ? meta->InPosition : meta->OutPosition;
+    qreal rotDeg = this->IsInLink ? meta->ArrowRot : meta->ArrowRot + 180.0;*/
 
-    EntranceRenderer::PlaceLabelAroundArrow(this->TextItem, pos[0], pos[1], rotDeg, pos[2]);
+    //EntranceRenderer::PlaceLabelAroundArrow(this->TextItem, pos[0], pos[1], rotDeg, pos[2]);
+    EntranceRenderer::PlaceLabelAroundArrow(this->TextItem, pos[0], pos[1], 0, pos[2]);
 }
 
 
@@ -176,7 +178,7 @@ const int* EntranceLinkItemTree::GetPosition() const
     {
         return nullptr;
     }
-    return this->IsInLink ? meta->InPosition : meta->OutPosition;
+    return meta->AnchorPos;//this->IsInLink ? meta->InPosition : meta->OutPosition;
 }
 
 
@@ -457,10 +459,12 @@ void EntranceItemTree::PerformAction()
         return;
     }
 
+    const int* pos = meta->AnchorPos;
+
     // Pick the position that visually represents the entrance pair as a whole: Normal entrances
     // and OneWayIn entrances get their In side; OneWayOut entrances only have an Out side. This
     // mirrors which leaf children were spawned in the constructor.
-    const int* pos = nullptr;
+    /*const int* pos = nullptr;
     if (meta->Type == EntranceType::Normal || meta->Type == EntranceType::One_Way_In)
     {
         pos = meta->InPosition;
@@ -468,7 +472,7 @@ void EntranceItemTree::PerformAction()
     else if (meta->Type == EntranceType::One_Way_Out)
     {
         pos = meta->OutPosition;
-    }
+    }*/
 
     this->RendererOwner->CenterAndZoomViewOn(pos);
 }
@@ -625,16 +629,18 @@ void EntranceRenderer::AddLinkMarker(EntranceLinkItemTree* Link, bool IsIn, cons
         return;
     }
 
-    const int* pos = IsIn ? Meta->InPosition : Meta->OutPosition;
-    qreal rotDeg = IsIn ? Meta->ArrowRot : Meta->ArrowRot + 180.0;
+    const int* pos = Meta->AnchorPos;
+    /*const int* pos = IsIn ? Meta->InPosition : Meta->OutPosition;
+    qreal rotDeg = IsIn ? Meta->ArrowRot : Meta->ArrowRot + 180.0;*/
 
     // Arrow marker: the shared placeholder pixmap is already centered on its own origin so setPos
     // pins the arrow's center to the entrance coordinates and setRotation pivots in place. The Out
     // side is rotated by an extra 180 degrees so a Normal entrance's In / Out pair always point in
     // visually opposite directions.
-    EntrancePixmapItem* arrow = new EntrancePixmapItem(IsIn ? ObjectIcons::GetIconsRef()->PixmapEntranceIcons[1] : ObjectIcons::GetIconsRef()->PixmapEntranceIcons[2], this, Link);
+    //EntrancePixmapItem* arrow = new EntrancePixmapItem(IsIn ? ObjectIcons::GetIconsRef()->PixmapEntranceIcons[1] : ObjectIcons::GetIconsRef()->PixmapEntranceIcons[2], this, Link);
+    EntrancePixmapItem* arrow = new EntrancePixmapItem(ObjectIcons::GetIconsRef()->PixmapEntranceIcons[Meta->RenderIcon], this, Link);
     arrow->setPos(pos[0], pos[1]);
-    arrow->setRotation(rotDeg);
+    //arrow->setRotation(rotDeg);
     this->Scene->addItem(arrow);
     this->OverlayItems.push_back(arrow);
     Link->GraphItem = arrow;
@@ -664,7 +670,9 @@ void EntranceRenderer::AddLinkMarker(EntranceLinkItemTree* Link, bool IsIn, cons
         // the position encodes an override TextPlacement value (Default / Up / Down / Left / Right
         // / NoText) so each entrance can force its label to a specific side when the tip-based
         // default collides with map geometry.
-        PlaceLabelAroundArrow(label, pos[0], pos[1], rotDeg, pos[2]);
+        //PlaceLabelAroundArrow(label, pos[0], pos[1], rotDeg, pos[2]);
+        pos = Meta->TextPos;
+        PlaceLabelAroundArrow(label, pos[0], pos[1], 0, pos[2]);
 
         this->Scene->addItem(label);
         this->OverlayItems.push_back(label);
