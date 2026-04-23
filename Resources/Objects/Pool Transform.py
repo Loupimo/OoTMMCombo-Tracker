@@ -206,7 +206,7 @@ def parse_entrance(input_file, output_file_h, output_file_cpp, output_filemeta, 
             render_Icon = row["Entrance_Icon"]
             active_layout = row["Active_Layout"]
 
-            if in_Z == "Default" or in_Z == "0":
+            if in_Z == "Default" or in_Z == 0:
                 in_Z = 0
             elif in_Z == "Up":
                 in_Z = 1
@@ -219,7 +219,7 @@ def parse_entrance(input_file, output_file_h, output_file_cpp, output_filemeta, 
             else:
                 in_Z = 255
 
-            if out_Z == "Default" or out_Z == "0":
+            if out_Z == "Default" or out_Z == 0:
                 out_Z = 0
             elif out_Z == "Up":
                 out_Z = 1

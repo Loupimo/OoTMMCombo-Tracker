@@ -60,22 +60,22 @@ const ObjectIcon EntranceIconsMetaInfo[EntranceIcons::Entrance_Last] =
     {"./Resources/Common/In_Arrow.png", {30, 21}},               // EntranceIcons::In
     {"./Resources/Common/Out_Arrow.png", {30, 21}},              // EntranceIcons::Out
 
-    {"./Resources/Common/Entrances/Generic.png", {30, 21}},      // EntranceIcons::Generic_Entry
-    {"./Resources/Common/Entrances/Open_Grotto.png", {30, 21}},      // EntranceIcons::Open_Grotto
-    {"./Resources/Common/Entrances/In_Arrow.png", {30, 21}},      // EntranceIcons::Storms_Grotto
-    {"./Resources/Common/Entrances/In_Arrow.png", {30, 21}},      // EntranceIcons::Bomb_Grotto
-    {"./Resources/Common/Entrances/Boulder_Grotto.png", {30, 21}},      // EntranceIcons::Boulder_Grotto
-    {"./Resources/Common/Entrances/Silver_Boulder_Grotto", {30, 21}},      // EntranceIcons::Silver_Boudler_Grotto
-    {"./Resources/Common/Entrances/Red_Boulder_Grotto.png", {30, 21}},      // EntranceIcons::Red_Boulder_Grotto
-    {"./Resources/Common/Entrances/In_Arrow.png", {30, 21}},      // EntranceIcons::Door
-    {"./Resources/Common/Entrances/In_Arrow.png", {30, 21}},      // EntranceIcons::Tomb
-    {"./Resources/Common/Entrances/In_Arrow.png", {30, 21}},      // EntranceIcons::Owl_Pick
-    {"./Resources/Common/Entrances/In_Arrow.png", {30, 21}},      // EntranceIcons::Owl_Drop
-    {"./Resources/Common/Entrances/In_Arrow.png", {30, 21}},      // EntranceIcons::Warp_Song
-    {"./Resources/Common/Entrances/In_Arrow.png", {30, 21}},      // EntranceIcons::Wallmaster
-    {"./Resources/Common/Entrances/In_Arrow.png", {30, 21}},      // EntranceIcons::Gerudo_Catch
-    {"./Resources/Common/Entrances/In_Arrow.png", {30, 21}},      // EntranceIcons::Guard_Catch
-    {"./Resources/Common/Entrances/In_Arrow.png", {30, 21}},      // EntranceIcons::Trapdoor
+    {"./Resources/Common/Entrances/Generic.png", {60, 60}, {120, 120}},      // EntranceIcons::Generic_Entry
+    {"./Resources/Common/Entrances/Open_Grotto.png", {60, 60}, {120, 120}},      // EntranceIcons::Open_Grotto
+    {"./Resources/Common/Entrances/Storms_Grotto.png", {60, 60}, {120, 120}},      // EntranceIcons::Storms_Grotto
+    {"./Resources/Common/Entrances/Bomb_Grotto.png", {60, 60}, {120, 120}},      // EntranceIcons::Bomb_Grotto
+    {"./Resources/Common/Entrances/Boulder_Grotto.png", {60, 60}, {120, 120}},      // EntranceIcons::Boulder_Grotto
+    {"./Resources/Common/Entrances/Silver_Boulder_Grotto", {60, 60}, {120, 120}},      // EntranceIcons::Silver_Boudler_Grotto
+    {"./Resources/Common/Entrances/Red_Boulder_Grotto.png", {60, 60}, {120, 120}},      // EntranceIcons::Red_Boulder_Grotto
+    {"./Resources/Common/Entrances/Door.png", {60, 60}, {120, 120}},      // EntranceIcons::Door
+    {"./Resources/Common/Entrances/Generic.png", {60, 60}, {120, 120}},      // EntranceIcons::Tomb
+    {"./Resources/Common/Entrances/Owl_Pick.png", {60, 60}, {120, 120}},      // EntranceIcons::Owl_Pick
+    {"./Resources/Common/Entrances/Generic.png", {60, 60}, {120, 120}},      // EntranceIcons::Owl_Drop
+    {"./Resources/Common/Entrances/Warp_Song.png", {60, 60}, {120, 120}},      // EntranceIcons::Warp_Song
+    {"./Resources/Common/Entrances/Wallmaster.png", {60, 60}, {120, 120}},      // EntranceIcons::Wallmaster
+    {"./Resources/Common/Entrances/Gerudo_Catch.png", {60, 60}, {120, 120}},      // EntranceIcons::Gerudo_Catch
+    {"./Resources/Common/Entrances/Guard_Catch.png", {60, 60}, {120, 120}},      // EntranceIcons::Guard_Catch
+    {"./Resources/Common/Entrances/Trapdoor.png", {60, 60}, {120, 120}},      // EntranceIcons::Trapdoor
 };
 
 

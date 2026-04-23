@@ -638,7 +638,17 @@ void EntranceRenderer::AddLinkMarker(EntranceLinkItemTree* Link, bool IsIn, cons
     // side is rotated by an extra 180 degrees so a Normal entrance's In / Out pair always point in
     // visually opposite directions.
     //EntrancePixmapItem* arrow = new EntrancePixmapItem(IsIn ? ObjectIcons::GetIconsRef()->PixmapEntranceIcons[1] : ObjectIcons::GetIconsRef()->PixmapEntranceIcons[2], this, Link);
-    EntrancePixmapItem* arrow = new EntrancePixmapItem(ObjectIcons::GetIconsRef()->PixmapEntranceIcons[Meta->RenderIcon], this, Link);
+   
+    double scaleFactor = 0.02;
+    int iconWidth = this->Scene->sceneRect().width() * scaleFactor;
+    int iconHeight = this->Scene->sceneRect().height() * scaleFactor;
+
+    iconWidth = iconWidth < EntranceIconsMetaInfo[Meta->RenderIcon].Scale[0] ? EntranceIconsMetaInfo[Meta->RenderIcon].Scale[0] : iconWidth > EntranceIconsMetaInfo[Meta->RenderIcon].MaxScale[0] ? EntranceIconsMetaInfo[Meta->RenderIcon].MaxScale[0] : iconWidth;
+    iconHeight = iconHeight < EntranceIconsMetaInfo[Meta->RenderIcon].Scale[1] ? EntranceIconsMetaInfo[Meta->RenderIcon].Scale[1] : iconHeight > EntranceIconsMetaInfo[Meta->RenderIcon].MaxScale[1] ? EntranceIconsMetaInfo[Meta->RenderIcon].MaxScale[1] : iconHeight;
+
+    
+    EntrancePixmapItem* arrow = new EntrancePixmapItem(ObjectIcons::GetIconsRef()->PixmapEntranceIcons[Meta->RenderIcon].scaled(iconWidth, iconHeight, Qt::KeepAspectRatio, Qt::SmoothTransformation), this, Link);
+
     arrow->setPos(pos[0], pos[1]);
     //arrow->setRotation(rotDeg);
     this->Scene->addItem(arrow);
