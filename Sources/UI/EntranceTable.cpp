@@ -946,7 +946,8 @@ void EntranceGameTabView::RenderSceneMap(SceneEntranceMetaInf* Scene)
     // RenderSceneMap remains the single method that knows how the map is drawn.
     if (this->Renderer != nullptr)
     {
-        this->Renderer->RenderSceneOverlay(Scene);
+        this->Renderer->RenderSceneOverlayGrouped(Scene);
+        //this->Renderer->RenderSceneOverlay(Scene);
         //this->Renderer->ResolveOverlaps();
     }
 }
@@ -971,9 +972,9 @@ void EntranceGameTabView::PopulateEntranceList(SceneEntranceMetaInf* Scene)
     oneWayOutCat->setFont(0, font);
 
     ObjectIcons * refIcons = ObjectIcons::GetIconsRef();
-    normalCat->setIcon(0, refIcons->EntranceIcons[0]);
-    oneWayInCat->setIcon(0, refIcons->EntranceIcons[1]);
-    oneWayOutCat->setIcon(0, refIcons->EntranceIcons[2]);
+    normalCat->setIcon(0, refIcons->EntranceIcons[EntranceIcons::In_Out]);
+    oneWayInCat->setIcon(0, refIcons->EntranceIcons[EntranceIcons::In_Only]);
+    oneWayOutCat->setIcon(0, refIcons->EntranceIcons[EntranceIcons::Out_Only]);
 
     GlobalEntranceTableModel* model = this->AllView != nullptr ? this->AllView->Model : nullptr;
 

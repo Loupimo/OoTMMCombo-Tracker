@@ -3,6 +3,7 @@
 #include "UI/EntranceTable.h"
 
 #include <QBrush>
+#include <QtMinMax>
 #include <QGraphicsSceneHoverEvent>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsSimpleTextItem>
@@ -444,6 +445,14 @@ void EntranceItemTree::RefreshText()
     {
         this->OutItem->RefreshText();
     }
+
+    // Propagate to the grouped overlay box when the current scene is rendered, so a newly
+    // discovered entrance name immediately resizes the box and the connecting curve instead of
+    // waiting for the next scene re-render.
+    if (this->GroupBox != nullptr)
+    {
+        this->GroupBox->RefreshText();
+    }
 }
 
 
@@ -485,6 +494,297 @@ int EntranceItemTree::GetTotalObjectAvailable()
 
 #pragma endregion // EntranceItemTree
 
+
+#pragma region // EntranceGroupBoxItem
+
+EntranceGroupBoxItem::EntranceGroupBoxItem(EntranceItemTree* PaTree, QGraphicsItem* Parent)
+    : QGraphicsItem(Parent), Tree(PaTree)
+{
+    setAcceptHoverEvents(true);
+    setFlag(QGraphicsItem::ItemIsSelectable);
+    setCursor(Qt::PointingHandCursor);
+    setZValue(10);
+    RefreshText();
+}
+
+
+void EntranceGroupBoxItem::RefreshText()
+{
+    if (!Tree) return;
+    const EntranceMetaInfo* meta = Tree->GetMetaInfo();
+    GlobalEntranceRow* row = Tree->GetRow();
+
+    // The box width depends on the text, so we must notify the scene graph before the bounding
+    // rect changes — otherwise Qt's scene index caches a stale rect and hover/click regions drift.
+    prepareGeometryChange();
+
+    HasIn = meta && meta->Type != EntranceType::One_Way_Out;
+    HasOut = meta && meta->Type != EntranceType::One_Way_In;
+    Title = row ? row->EntranceName : "";
+    InText = row ? row->InLinkName : "?";
+    OutText = row ? row->OutLinkName : "?";
+
+    // A freshly discovered name may grow the longest row, which changes the box perimeter; the
+    // curve endpoint (closest point on the perimeter) must be recomputed to follow the new edge.
+    RebuildCurve();
+    update();
+}
+
+
+qreal EntranceGroupBoxItem::BoxWidth() const
+{
+    // Measure the real on-screen width of each line with the same fonts used in paint(). The row
+    // prefix glyphs (triangles) are included because they participate in the rendered width. Use
+    // the same \u escapes as paint() so the measurement is independent of the source encoding.
+    static const QFont titleFont("Consolas", 8, QFont::Bold);
+    static const QFont rowFont("Consolas", 7);
+    const QFontMetricsF titleFM(titleFont);
+    const QFontMetricsF rowFM(rowFont);
+
+    qreal maxW = titleFM.horizontalAdvance(Title);
+    if (HasIn)  maxW = qMax(maxW, rowFM.horizontalAdvance(QString::fromUtf8("\xE2\x96\xB2 ") + InText));
+    if (HasOut) maxW = qMax(maxW, rowFM.horizontalAdvance(QString::fromUtf8("\xE2\x96\xBC ") + OutText));
+
+    return qBound(kMinBoxW, maxW + kPadX * 2.0, kMaxBoxW);
+}
+
+
+qreal EntranceGroupBoxItem::BoxHeight() const
+{
+    return kTitleH
+        + (HasIn ? kRowH : 0)
+        + (HasOut ? kRowH : 0)
+        + 4;
+}
+
+
+QRectF EntranceGroupBoxItem::boundingRect() const
+{
+    return QRectF(0, 0, BoxWidth(), BoxHeight());
+}
+
+
+void EntranceGroupBoxItem::paint(
+    QPainter* p, const QStyleOptionGraphicsItem*, QWidget*)
+{
+    p->setRenderHint(QPainter::Antialiasing, true);
+
+    const qreal w = BoxWidth(), h = BoxHeight();
+    const QRectF r(0, 0, w, h);
+
+    // ── Background ─────────────────────────────────────────────────────────
+    p->fillRect(r, Highlighted ? QColor(14, 14, 30, 250) : QColor(6, 6, 18, 230));
+
+    // ── Border ──────────────────────────────────────────────────────────────
+    p->setPen(QPen(Highlighted
+        ? QColor(255, 255, 255, 90)
+        : QColor(255, 255, 255, 25), Highlighted ? 1.4 : 1.0));
+    p->drawRect(r.adjusted(0.5, 0.5, -0.5, -0.5));
+
+    // ── Title row ───────────────────────────────────────────────────────────
+    p->setFont(QFont("Consolas", 8, QFont::Bold));
+    p->setPen(Highlighted ? Qt::white : QColor(255, 255, 255, 190));
+    p->drawText(
+        QRectF(kPadX, 0, w - kPadX * 2, kTitleH),
+        Qt::AlignVCenter,
+        p->fontMetrics().elidedText(Title, Qt::ElideRight, static_cast<int>(w - kPadX * 2)));
+
+    // ── Title separator ─────────────────────────────────────────────────────
+    p->setPen(QPen(QColor(255, 255, 255, 18), 1));
+    p->drawLine(QLineF(0, kTitleH, w, kTitleH));
+
+    p->setFont(QFont("Consolas", 7));
+    int y = kTitleH;
+
+    // ── In-link row (green) ─────────────────────────────────────────────────
+    if (HasIn)
+    {
+        p->fillRect(QRectF(0, y, kAccentW, kRowH), QColor(61, 220, 132));
+        p->setPen(QColor(101, 224, 154));
+        p->drawText(
+            QRectF(kPadX, y, w - kPadX * 2, kRowH), Qt::AlignVCenter,
+            "\u25b2 " + p->fontMetrics().elidedText(InText, Qt::ElideRight, static_cast<int>(w - kPadX * 2 - 14)));
+        y += kRowH;
+    }
+
+    // ── Out-link row (red) ──────────────────────────────────────────────────
+    if (HasOut)
+    {
+        p->fillRect(QRectF(0, y, kAccentW, kRowH), QColor(255, 82, 82));
+        p->setPen(QColor(255, 144, 144));
+        p->drawText(
+            QRectF(kPadX, y, w - kPadX * 2, kRowH), Qt::AlignVCenter,
+            "\u25bc " + p->fontMetrics().elidedText(OutText, Qt::ElideRight, static_cast<int>(w - kPadX * 2 - 14)));
+    }
+}
+
+
+void EntranceGroupBoxItem::SetHighlighted(bool H)
+{
+    Highlighted = H;
+    setZValue(H ? 20 : 10);
+    update();
+}
+
+
+void EntranceGroupBoxItem::hoverEnterEvent(QGraphicsSceneHoverEvent* e)
+{
+    SetHighlighted(true);
+    if (Anchor)    Anchor->SetHighlighted(true);
+    if (CurveLine) CurveLine->setZValue(11);
+    QGraphicsItem::hoverEnterEvent(e);
+}
+
+
+void EntranceGroupBoxItem::hoverLeaveEvent(QGraphicsSceneHoverEvent* e)
+{
+    SetHighlighted(false);
+    if (Anchor)    Anchor->SetHighlighted(false);
+    if (CurveLine) CurveLine->setZValue(9);
+    QGraphicsItem::hoverLeaveEvent(e);
+}
+
+
+void EntranceGroupBoxItem::mousePressEvent(QGraphicsSceneMouseEvent* e)
+{
+    // Dispatch the click based on which row was hit so the user can target either arm of the pair
+    // independently: title → focus this entrance on the current map, In/Out rows → same pipeline
+    // as clicking the equivalent marker used to (PerformAction in graph-mode navigates to the
+    // destination scene, or selects the tree leaf when the link is still undiscovered).
+    if (!Tree)
+    {
+        return;
+    }
+
+    const qreal y = e->pos().y();
+    if (y < kTitleH)
+    {
+        Tree->PerformAction();
+        return;
+    }
+
+    qreal rowTop = kTitleH;
+    if (HasIn)
+    {
+        if (y < rowTop + kRowH)
+        {
+            if (Tree->InItem)
+            {
+                Tree->InItem->SetCalledFromGraph(true);
+                Tree->InItem->PerformAction();
+                Tree->InItem->SetCalledFromGraph(false);
+            }
+            return;
+        }
+        rowTop += kRowH;
+    }
+    if (HasOut && y < rowTop + kRowH)
+    {
+        if (Tree->OutItem)
+        {
+            Tree->OutItem->SetCalledFromGraph(true);
+            Tree->OutItem->PerformAction();
+            Tree->OutItem->SetCalledFromGraph(false);
+        }
+        return;
+    }
+
+    // Click below the last row (padding) falls back to the entrance-level action.
+    Tree->PerformAction();
+}
+
+
+void EntranceGroupBoxItem::RebuildCurve()
+{
+    if (!CurveLine || !Anchor)
+    {
+        return;
+    }
+
+    const QRectF boxRect = sceneBoundingRect();
+    const QPointF anchorPt = Anchor->Center;
+
+    // Closest point on the axis-aligned rectangle to the anchor: clamping the anchor coordinates
+    // into the box range always lands on the perimeter (edge or corner) when the anchor is
+    // outside the box, which is the shortest path the user asked for.
+    const QPointF connPt(
+        qBound(boxRect.left(), anchorPt.x(), boxRect.right()),
+        qBound(boxRect.top(),  anchorPt.y(), boxRect.bottom())
+    );
+
+    QPainterPath path;
+    path.moveTo(anchorPt);
+    path.lineTo(connPt);
+    CurveLine->setPath(path);
+}
+
+#pragma endregion // EntranceGroupBoxItem
+
+#pragma region // EntranceAnchorItem
+
+EntranceAnchorItem::EntranceAnchorItem(QPointF Center, EntranceGroupBoxItem* PaBox)
+    : BoxItem(PaBox), Center(Center)
+{
+    constexpr qreal r = 5.0;
+    QPolygonF d;
+    d << QPointF(Center.x(), Center.y() - r)
+        << QPointF(Center.x() + r, Center.y())
+        << QPointF(Center.x(), Center.y() + r)
+        << QPointF(Center.x() - r, Center.y());
+    setPolygon(d);
+    setBrush(QBrush(QColor(255, 255, 255, 204)));
+    setPen(QPen(QColor(0, 0, 0, 140), 0.8));
+    setAcceptHoverEvents(true);
+    setZValue(12);
+}
+
+
+void EntranceAnchorItem::SetHighlighted(bool H)
+{
+    setBrush(QBrush(H ? Qt::white : QColor(255, 255, 255, 204)));
+    setZValue(H ? 22 : 12);
+    if (CurveLine)
+    {
+        QPen pen;
+        if (H)
+        {
+            pen = QPen(QColor(255, 255, 255, 220), 1.5);
+            pen.setStyle(Qt::SolidLine);
+        }
+        else
+        {
+            pen = QPen(QColor(255, 255, 255, 77), 0.8);
+            pen.setStyle(Qt::CustomDashLine);
+            pen.setDashPattern({ 4.0, 3.5 });
+        }
+        CurveLine->setPen(pen);
+        CurveLine->setZValue(H ? 11 : 9);
+    }
+}
+
+
+void EntranceAnchorItem::hoverEnterEvent(QGraphicsSceneHoverEvent* e)
+{
+    SetHighlighted(true);
+    if (BoxItem) BoxItem->SetHighlighted(true);
+    QGraphicsPolygonItem::hoverEnterEvent(e);
+}
+
+
+void EntranceAnchorItem::hoverLeaveEvent(QGraphicsSceneHoverEvent* e)
+{
+    SetHighlighted(false);
+    if (BoxItem) BoxItem->SetHighlighted(false);
+    QGraphicsPolygonItem::hoverLeaveEvent(e);
+}
+
+
+void EntranceAnchorItem::mousePressEvent(QGraphicsSceneMouseEvent*)
+{
+    if (BoxItem && BoxItem->Tree) BoxItem->Tree->PerformAction();
+}
+
+#pragma endregion
 
 #pragma region // EntranceRenderer
 
@@ -622,6 +922,66 @@ void EntranceRenderer::RenderSceneOverlay(SceneEntranceMetaInf* Scene)
 }
 
 
+void EntranceRenderer::RenderSceneOverlayGrouped(SceneEntranceMetaInf* SceneMeta)
+{
+    if (!SceneMeta || !this->Scene) return;
+
+    for (auto& [entranceID, link] : SceneMeta->EntranceIDs)
+    {
+        const EntranceMetaInfo* meta = EntranceHelper::GetEntranceMetaInf(
+            this->GetGameID(), entranceID);
+        if (!meta || meta->Type == EntranceType::None) continue;
+
+        EntranceItemTree* tree = this->FindEntrance(SceneMeta->SceneID, entranceID);
+        if (!tree) continue;
+
+        // ── Grouped box at TextPos ─────────────────────────────────────────────
+        EntranceGroupBoxItem* box = new EntranceGroupBoxItem(tree);
+        box->setPos(meta->TextPos[0], meta->TextPos[1]);
+        this->Scene->addItem(box);
+        this->OverlayItems.push_back(box);
+
+        // ── Diamond anchor at AnchorPos ────────────────────────────────────────
+        const QPointF anchorPt(meta->AnchorPos[0], meta->AnchorPos[1]);
+        EntranceAnchorItem* anchor = new EntranceAnchorItem(anchorPt, box);
+        this->Scene->addItem(anchor);
+        this->OverlayItems.push_back(anchor);
+
+        // ── Dashed line ────────────────────────────────────────────────────────
+        // The curve path itself is computed by EntranceGroupBoxItem::RebuildCurve so the exact
+        // same logic runs again when a discovered name grows the box. Create an empty path item
+        // first, wire up the back-pointers, then ask the box to populate the path.
+        QGraphicsPathItem* curve = new QGraphicsPathItem();
+        QPen pen(QColor(255, 255, 255, 77), 0.8);
+        pen.setStyle(Qt::CustomDashLine);
+        pen.setDashPattern({ 4.0, 3.5 });
+        curve->setPen(pen);
+        curve->setZValue(9);
+        this->Scene->addItem(curve);
+        this->OverlayItems.push_back(curve);
+
+        // ── Cross-wire highlight pointers ──────────────────────────────────────
+        box->Anchor = anchor;
+        box->CurveLine = curve;
+        anchor->CurveLine = curve;
+        tree->GroupBox = box;
+        box->RebuildCurve();
+
+        // ── Register InItem/OutItem so tree↔map interactions still work ────────
+        if (tree->InItem)
+        {
+            tree->InItem->GraphItem = anchor;   // reuse GraphItem as the clickable proxy
+            tree->InItem->TextItem = nullptr;  // no floating text label in this mode
+        }
+        if (tree->OutItem)
+        {
+            tree->OutItem->GraphItem = anchor;
+            tree->OutItem->TextItem = nullptr;
+        }
+    }
+}
+
+
 void EntranceRenderer::AddLinkMarker(EntranceLinkItemTree* Link, bool IsIn, const EntranceMetaInfo* Meta)
 {
     if (Link == nullptr || Meta == nullptr || this->Scene == nullptr)
@@ -653,7 +1013,7 @@ void EntranceRenderer::AddLinkMarker(EntranceLinkItemTree* Link, bool IsIn, cons
     //arrow->setRotation(rotDeg);
     this->Scene->addItem(arrow);
     this->OverlayItems.push_back(arrow);
-    Link->GraphItem = arrow;
+    //Link->GraphItem = arrow;
 
     // Name label: uses the same string displayed in the entrance tree so the two views stay in
     // sync automatically on every model update. Caching the pointer on Link lets RefreshText

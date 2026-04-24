@@ -5,6 +5,9 @@
 #include <QGraphicsScene>
 #include <QGraphicsSimpleTextItem>
 #include <QGraphicsView>
+#include <QGraphicsPolygonItem>
+#include <QGraphicsPathItem>
+#include <QPainterPath>
 #include <QPixmap>
 #include <QString>
 
@@ -23,7 +26,8 @@ class EntranceItemTree;
 class EntranceLinkItemTree;
 class EntranceLabelItem;
 class QGraphicsSceneHoverEvent;
-
+class EntranceAnchorItem;
+class EntranceGroupBoxItem;
 
 enum TextPlacement
 {
@@ -138,7 +142,8 @@ public:
 
     EntranceItemTree* EntranceItem;                 // The owning entrance item tree.
     bool IsInLink;                                  // True for the "in" side, false for the "out" side.
-    EntrancePixmapItem* GraphItem = nullptr;        // The optional graphical marker on the scene map.
+    EntranceAnchorItem* GraphItem = nullptr;
+    //EntrancePixmapItem* GraphItem = nullptr;        // The optional graphical marker on the scene map.
     EntranceLabelItem* TextItem = nullptr;          // The optional name label painted next to the marker.
 
     /*
@@ -234,6 +239,7 @@ public:
     uint32_t EntranceID;                            // The entrance ID this item represents.
     EntranceLinkItemTree* InItem = nullptr;         // The "in" side child item, if any.
     EntranceLinkItemTree* OutItem = nullptr;        // The "out" side child item, if any.
+    EntranceGroupBoxItem* GroupBox = nullptr;       // The grouped box drawn on the map, if the current scene is rendered.
 
     /*
     *   Construct the entrance item tree and create its link children based on the entrance type.
@@ -275,6 +281,74 @@ public:
     *   @return The number of link children (1 or 2).
     */
     int GetTotalObjectAvailable() override;
+};
+
+
+/*
+ *  Grouped box painted with QPainter: dark glass background, title row,
+ *  one coloured row per link side (green = in, red = out).
+ *  Placed at TextPos[0], TextPos[1] in scene space.
+ */
+class EntranceGroupBoxItem : public QGraphicsItem
+{
+public:
+    static constexpr int kTitleH = 22;   // px — title row height
+    static constexpr int kRowH = 18;   // px — in/out row height
+    static constexpr int kPadX = 9;    // px — horizontal text padding
+    static constexpr int kAccentW = 2;    // px — left colour accent strip
+    static constexpr qreal kMinBoxW = 80.0;    // px — lower bound for the computed width
+    static constexpr qreal kMaxBoxW = 400.0;   // px — upper bound (safety cap for degenerate strings)
+
+    EntranceItemTree* Tree = nullptr;
+    EntranceAnchorItem* Anchor = nullptr; // back-pointer for cross-highlight
+    QGraphicsPathItem* CurveLine = nullptr; // back-pointer for cross-highlight
+    bool              Highlighted = false;
+    bool              HasIn = true;
+    bool              HasOut = true;
+    QString           Title;
+    QString           InText;
+    QString           OutText;
+
+    EntranceGroupBoxItem(EntranceItemTree* PaTree, QGraphicsItem* Parent = nullptr);
+
+    qreal  BoxWidth()  const;
+    qreal  BoxHeight() const;
+    QRectF boundingRect() const override;
+    void   paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*) override;
+    void   SetHighlighted(bool H);
+    void   RefreshText();   // call when InLinkName/OutLinkName change in-game
+
+    /*
+    *   Recompute the connecting curve between the anchor and the nearest point on the box
+    *   perimeter and apply it to CurveLine. Called at creation and whenever the box is
+    *   resized (e.g. when a discovered entrance name makes the longest row grow).
+    */
+    void   RebuildCurve();
+
+protected:
+    void hoverEnterEvent(QGraphicsSceneHoverEvent*) override;
+    void hoverLeaveEvent(QGraphicsSceneHoverEvent*) override;
+    void mousePressEvent(QGraphicsSceneMouseEvent*) override;
+};
+
+/*
+ *  Diamond anchor placed at AnchorPos[0], AnchorPos[1] on the map.
+ *  Hover highlight is propagated to the paired box and curve.
+ */
+class EntranceAnchorItem : public QGraphicsPolygonItem
+{
+public:
+    EntranceGroupBoxItem* BoxItem = nullptr;
+    QGraphicsPathItem* CurveLine = nullptr;
+    QPointF            Center;          // scene-space center of the diamond, cached for curve rebuilds
+
+    EntranceAnchorItem(QPointF Center, EntranceGroupBoxItem* PaBox);
+    void SetHighlighted(bool H);
+
+protected:
+    void hoverEnterEvent(QGraphicsSceneHoverEvent*) override;
+    void hoverLeaveEvent(QGraphicsSceneHoverEvent*) override;
+    void mousePressEvent(QGraphicsSceneMouseEvent*) override;
 };
 
 
@@ -369,6 +443,13 @@ public:
     *   @param Scene    The scene whose entrance markers should be painted.
     */
     void RenderSceneOverlay(SceneEntranceMetaInf* Scene);
+
+    /*
+    *   Style-3 overlay: one diamond (AnchorPos) + one grouped box (TextPos)
+    *   per entrance, connected by a cubic-Bézier dashed line.
+    *   Call instead of RenderSceneOverlay() to use the grouped style.
+    */
+    void RenderSceneOverlayGrouped(SceneEntranceMetaInf* Scene);
 
 private:
 
