@@ -9,6 +9,7 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QSplitter>
+#include <QProgressBar>
 #include <QPropertyAnimation>
 #include "RegionTab.h"
 #include "ui_OoTMMComboTracker.h"
@@ -175,6 +176,12 @@ public:
     QPushButton* ObjectTreeToggleButton;
     bool IsObjectExpanded = true;
 
+    // Scene header (name + count + progress)
+    QWidget* SceneHeaderWidget = nullptr;
+    QLabel* SceneNameLabel = nullptr;
+    QLabel* SceneCountLabel = nullptr;
+    QProgressBar* SceneProgress = nullptr;
+
     // Scenes
     std::vector<RegionTree*> Regions;           // The list of all available regions
     SceneItemTree* RenderedScene = nullptr;     // The currently rendered scene
@@ -228,6 +235,12 @@ public:
     */
     void FilterTree(QTreeWidget* TreeWidget, const QString& SearchText);
 
+    /*
+    *   Expand or collapse all items of the given tree widget.
+    *
+    *   @param TreeWidget    The tree widget to expand or collapse.
+    *   @param Expand        True to expand all items, false to collapse all items.
+    */
     void OnToggleExpandCollapse(QTreeWidget* TreeWidget, bool Expand);
 
 #pragma endregion
@@ -310,6 +323,11 @@ public:
     *   Update the object visibility based on the map filter and object option.
     */
     void UpdateObjectVisibility();
+
+    /*
+    *   Refresh the scene header (name, counter and progress bar) above the object panel.
+    */
+    void RefreshSceneHeader();
 
 #pragma endregion
 

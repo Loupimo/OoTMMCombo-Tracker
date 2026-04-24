@@ -16,6 +16,8 @@ class GameTab : public QWidget
 {
     Q_OBJECT
 
+    Q_PROPERTY(QString AccentColor READ GetAccentColor NOTIFY AccentColorChanged)
+
 #pragma region Attributes
 
 public:
@@ -24,11 +26,40 @@ public:
     int GameID;                         // The game ID this tab refers to.
     const char* TabName;                // The tab name. Should correspond to the game it refers to.
     MapTab* GameMaps;                   // This tab widget will regroup all possible main regions and maps for a game.
-    
+
     OoTMMComboTracker* Owner = nullptr; // The main window that owns this game tab.
 
     int FoundObjects = 0;               // The number found objects in this game.
     int TotalObjects = 0;               // The total number of objects that can be found in this game.
+
+#pragma endregion
+
+#pragma region Accent color
+
+public:
+
+    /*
+    *   Get the accent hex color matching the given game ID.
+    *
+    *   @param GameID    The game ID to resolve the accent color for.
+    *
+    *   @return The accent color hex string (with leading '#').
+    */
+    static QString GetAccentColorFor(int GameID);
+
+    /*
+    *   Get the accent color associated to this game tab.
+    *
+    *   @return The accent color hex string (with leading '#').
+    */
+    QString GetAccentColor() const;
+
+signals:
+
+    /*
+    *   Signal emitted when the accent color changes.
+    */
+    void AccentColorChanged();
 
 #pragma endregion
 

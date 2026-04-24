@@ -250,60 +250,6 @@ void Game::gameApiItemOut()
     }
 }
 
-void Game::ParseLedgerFullEntry(char* LedgerData, bool IsGoingOut)
-{
-    uint8_t keyArr[5];
-    uint16_t gameItem = 0;
-
-    if (IsGoingOut)
-    {   // Outgoing item
-
-        keyArr[0] = (uint8_t)LedgerData[2];
-        keyArr[1] = (uint8_t)LedgerData[4];
-        keyArr[2] = (uint8_t)LedgerData[5];
-        keyArr[3] = (uint8_t)LedgerData[6];
-        keyArr[4] = (uint8_t)LedgerData[7];
-
-        gameItem = (uint8_t)LedgerData[8] << 8 | (uint8_t)LedgerData[9];
-    }
-    else
-    {   // Incoming item
-
-        keyArr[0] = (uint8_t)LedgerData[2];
-        keyArr[1] = (uint8_t)LedgerData[7];
-        keyArr[2] = (uint8_t)LedgerData[6];
-        keyArr[3] = (uint8_t)LedgerData[5];
-        keyArr[4] = (uint8_t)LedgerData[4];
-
-        gameItem = (uint8_t)LedgerData[9] << 8 | (uint8_t)LedgerData[8];
-    }
-
-    ComboItem recievedItem;
-    ParseKey(keyArr, &recievedItem);
-    CorrectComboItem(&recievedItem);
-
-    MultiLogger::LogMessage("OvType : %d, Scene ID: %d, Room ID: %d, Object ID: %d", recievedItem.OvType, recievedItem.SceneID, recievedItem.RoomID, recievedItem.ObjectID);
-
-    ObjectInfo * matchObject = FindObject(recievedItem);
-    const ItemInfo * matchItem = FindItem(gameItem);
-
-    if (recievedItem.GameID == OOT_GAME)
-    {
-        fprintf(game_file_log, "OoT %s;%02X;%02X;%02X;%04X;%s;%02X\n", matchObject->Location, recievedItem.OvType, recievedItem.SceneID, recievedItem.RoomID, recievedItem.ObjectID, matchItem->ItemName, gameItem);
-        MultiLogger::LogMessage("OoT World Object: %s - Item : %s\n", matchObject->Location, matchItem->ItemName);
-        emit MultiLogger::GetLogger()->NotifyObjectFound(OOT_GAME, matchObject, matchItem);
-    }
-    else
-    {   // Majora's Mask
-
-        fprintf(game_file_log, "MM %s;%02X;%02X;%02X;%04X;%s;%02X\n", matchObject->Location, recievedItem.OvType, recievedItem.SceneID, recievedItem.RoomID, recievedItem.ObjectID, matchItem->ItemName, gameItem);
-        MultiLogger::LogMessage("MM World Object: %s - Item : %s\n", matchObject->Location, matchItem->ItemName);
-        emit MultiLogger::GetLogger()->NotifyObjectFound(MM_GAME, matchObject, matchItem);
-    }
-
-    fflush(game_file_log);
-}
-
 void Game::gameApiApplyLedger()
 {
     uint32_t entryId;
@@ -761,4 +707,58 @@ void Game::gameTick(App* app)
         }
     }
     LOGF("Game tick end\n");
+}
+
+void Game::ParseLedgerFullEntry(char* LedgerData, bool IsGoingOut)
+{
+    uint8_t keyArr[5];
+    uint16_t gameItem = 0;
+
+    if (IsGoingOut)
+    {   // Outgoing item
+
+        keyArr[0] = (uint8_t)LedgerData[2];
+        keyArr[1] = (uint8_t)LedgerData[4];
+        keyArr[2] = (uint8_t)LedgerData[5];
+        keyArr[3] = (uint8_t)LedgerData[6];
+        keyArr[4] = (uint8_t)LedgerData[7];
+
+        gameItem = (uint8_t)LedgerData[8] << 8 | (uint8_t)LedgerData[9];
+    }
+    else
+    {   // Incoming item
+
+        keyArr[0] = (uint8_t)LedgerData[2];
+        keyArr[1] = (uint8_t)LedgerData[7];
+        keyArr[2] = (uint8_t)LedgerData[6];
+        keyArr[3] = (uint8_t)LedgerData[5];
+        keyArr[4] = (uint8_t)LedgerData[4];
+
+        gameItem = (uint8_t)LedgerData[9] << 8 | (uint8_t)LedgerData[8];
+    }
+
+    ComboItem recievedItem;
+    ParseKey(keyArr, &recievedItem);
+    CorrectComboItem(&recievedItem);
+
+    MultiLogger::LogMessage("OvType : %d, Scene ID: %d, Room ID: %d, Object ID: %d", recievedItem.OvType, recievedItem.SceneID, recievedItem.RoomID, recievedItem.ObjectID);
+
+    ObjectInfo * matchObject = FindObject(recievedItem);
+    const ItemInfo * matchItem = FindItem(gameItem);
+
+    if (recievedItem.GameID == OOT_GAME)
+    {
+        fprintf(game_file_log, "OoT %s;%02X;%02X;%02X;%04X;%s;%02X\n", matchObject->Location, recievedItem.OvType, recievedItem.SceneID, recievedItem.RoomID, recievedItem.ObjectID, matchItem->ItemName, gameItem);
+        MultiLogger::LogMessage("OoT World Object: %s - Item : %s\n", matchObject->Location, matchItem->ItemName);
+        emit MultiLogger::GetLogger()->NotifyObjectFound(OOT_GAME, matchObject, matchItem);
+    }
+    else
+    {   // Majora's Mask
+
+        fprintf(game_file_log, "MM %s;%02X;%02X;%02X;%04X;%s;%02X\n", matchObject->Location, recievedItem.OvType, recievedItem.SceneID, recievedItem.RoomID, recievedItem.ObjectID, matchItem->ItemName, gameItem);
+        MultiLogger::LogMessage("MM World Object: %s - Item : %s\n", matchObject->Location, matchItem->ItemName);
+        emit MultiLogger::GetLogger()->NotifyObjectFound(MM_GAME, matchObject, matchItem);
+    }
+
+    fflush(game_file_log);
 }

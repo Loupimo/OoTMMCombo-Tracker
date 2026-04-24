@@ -28,4 +28,9 @@
 #define OVF_RENEW             (1 << 2)
 #define OVF_PRECOND           (1 << 3)
 
+/*
+*   Fix up the scene ID of the given combo item based on its overlay type (shop, NPC, cow, etc.).
+*
+*   @param Item     The combo item to correct.
+*/
 void CorrectComboItem(struct ComboItem* Item);

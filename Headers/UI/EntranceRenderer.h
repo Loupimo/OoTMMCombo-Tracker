@@ -406,6 +406,7 @@ public:
     EntranceGroupBoxItem* BoxItem = nullptr;
     QGraphicsPathItem* CurveLine = nullptr;
     QPointF            Center;          // scene-space center of the diamond, cached for curve rebuilds
+    QColor             AnchorColor = QColor(239, 191, 4, 204);
 
     EntranceAnchorItem(QPointF Center, EntranceGroupBoxItem* PaBox);
     void SetHighlighted(bool H);

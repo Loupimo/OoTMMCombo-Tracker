@@ -1,4 +1,4 @@
-﻿#include "UI/ObjectRenderer.h"
+#include "UI/ObjectRenderer.h"
 #include "UI/AppStyle.h"
 
 bool IsDarkMode()
@@ -24,8 +24,8 @@ QString GetDarkStyle()
 {
 
     // Charger le fichier QSS
-    QFile file("./Resources/Styles/darkstyle.qss");
-
+    //QFile file("./Resources/Styles/darkstyle.qss");
+    QFile file("./Resources/Styles/DualRealm.qss"); 
     if (file.open(QFile::ReadOnly | QFile::Text)) {
         QTextStream stream(&file);
         return stream.readAll();

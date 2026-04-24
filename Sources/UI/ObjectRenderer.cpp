@@ -475,9 +475,17 @@ ObjectRenderer::ObjectRenderer(ObjectType Type, SceneRenderer* Owner, bool Shoul
     this->ObjCat = new CommonBaseItemTree();
     QFont font = this->ObjCat->font(0);
     font.setBold(true);
+    font.setCapitalization(QFont::AllUppercase);
     this->ObjCat->setFont(0, font);
     this->ObjCat->setText(0, ObjTypeName[this->Type]);
     this->ObjCat->setIcon(0, IconsRef->Icons[this->Type]);
+
+    // Section-header look (object categories / parents in the object tree)
+    int gameID = (Owner && Owner->CurrScene) ? Owner->CurrScene->GameID : OOT_GAME;
+    QColor accent(gameID == OOT_GAME ? "#4a9edb" : "#9b5de5");
+    QColor bg = accent; bg.setAlpha(24);
+    this->ObjCat->setBackground(0, QBrush(bg));
+    this->ObjCat->setForeground(0, QBrush(accent));
 }
 
 

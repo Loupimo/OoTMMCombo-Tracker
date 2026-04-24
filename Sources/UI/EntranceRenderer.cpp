@@ -569,8 +569,7 @@ QRectF EntranceGroupBoxItem::boundingRect() const
 }
 
 
-void EntranceGroupBoxItem::paint(
-    QPainter* p, const QStyleOptionGraphicsItem*, QWidget*)
+void EntranceGroupBoxItem::paint(QPainter* p, const QStyleOptionGraphicsItem*, QWidget*)
 {
     p->setRenderHint(QPainter::Antialiasing, true);
 
@@ -831,7 +830,7 @@ EntranceAnchorItem::EntranceAnchorItem(QPointF Center, EntranceGroupBoxItem* PaB
         << QPointF(Center.x(), Center.y() + r)
         << QPointF(Center.x() - r, Center.y());
     setPolygon(d);
-    setBrush(QBrush(QColor(255, 255, 255, 204)));
+    setBrush(QBrush(this->AnchorColor));
     setPen(QPen(QColor(0, 0, 0, 140), 0.8));
     setAcceptHoverEvents(true);
     setZValue(12);
@@ -840,22 +839,24 @@ EntranceAnchorItem::EntranceAnchorItem(QPointF Center, EntranceGroupBoxItem* PaB
 
 void EntranceAnchorItem::SetHighlighted(bool H)
 {
-    setBrush(QBrush(H ? Qt::white : QColor(255, 255, 255, 204)));
+    
+    setBrush(QBrush(H ? Qt::white : this->AnchorColor));
     setZValue(H ? 22 : 12);
     if (CurveLine)
     {
         QPen pen;
         if (H)
         {
-            pen = QPen(QColor(255, 255, 255, 220), 1.5);
+            pen = QPen(QColor(255, 255, 255, 220), 2.5);
             pen.setStyle(Qt::SolidLine);
         }
         else
         {
-            pen = QPen(QColor(255, 255, 255, 77), 0.8);
+            pen = QPen(QColor(255, 255, 255, 77), 1.8);
             pen.setStyle(Qt::CustomDashLine);
             pen.setDashPattern({ 4.0, 3.5 });
         }
+
         CurveLine->setPen(pen);
         CurveLine->setZValue(H ? 11 : 9);
     }
@@ -1096,7 +1097,7 @@ void EntranceRenderer::RenderSceneOverlayGrouped(SceneEntranceMetaInf* SceneMeta
         // same logic runs again when a discovered name grows the box. Create an empty path item
         // first, wire up the back-pointers, then ask the box to populate the path.
         QGraphicsPathItem* curve = new QGraphicsPathItem();
-        QPen pen(QColor(255, 255, 255, 77), 0.8);
+        QPen pen(QColor(255, 255, 255, 77), 1.8);
         pen.setStyle(Qt::CustomDashLine);
         pen.setDashPattern({ 4.0, 3.5 });
         curve->setPen(pen);

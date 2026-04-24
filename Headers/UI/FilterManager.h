@@ -27,6 +27,14 @@ public:
 #pragma endregion
 
 public:
+    /*
+    *   Constructs the filter item widget with the given appearance and associated object type.
+    *
+    *   @param Icon      The icon shown next to the filter label.
+    *   @param Text      The text label of the filter entry.
+    *   @param ObjType   The object type associated with this filter entry.
+    *   @param Parent    The potential parent to attach this class to.
+    */
     explicit FilterItemWidget(const QIcon& Icon, const QString& Text, ObjectType ObjType, QWidget* Parent = nullptr) : QCheckBox(Parent) {
 
        /* this->setStyleSheet(R"(
@@ -61,13 +69,44 @@ public:
 
 public:
 
+    /*
+    *   Constructs the filter manager for the given game tab.
+    *
+    *   @param TabRef    The owning game tab, used to pick the right filter type list (OoT or MM).
+    */
     FilterManager(GameTab * TabRef = nullptr);
+
+    /*
+    *   Default destructor. Clears active filters and excluded objects.
+    */
     ~FilterManager();
 
+    /*
+    *   Toggle the active state of the given object type in the filter.
+    *
+    *   @param Target    The object type to toggle (removed if active, added otherwise).
+    */
     void ToggleActiveType(ObjectType Target);
+
+    /*
+    *   Exclude the given object from the tracker view.
+    *
+    *   @param ToExclude    The object to exclude from the tracker view.
+    */
     void ExcludeNewObject(ObjectInfo* ToExclude);
+
+    /*
+    *   Clear the list of excluded objects for all scenes.
+    */
     void ResetExcludedObject();
 
+    /*
+    *   Check if the given object is currently excluded from the tracker view.
+    *
+    *   @param Target    The object to check.
+    *
+    *   @return True if the object is excluded, false otherwise.
+    */
     bool IsObjectExcluded(ObjectInfo* Target);
 
 signals:

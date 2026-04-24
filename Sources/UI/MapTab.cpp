@@ -3,6 +3,7 @@
 #include <QPlainTextEdit>
 #include <QLabel>
 #include <QPushButton>
+#include <QProgressBar>
 #include <QGraphicsProxyWidget>
 #include "UI/RoomRenderer.h"
 #include "UI/MapTab.h"
@@ -171,8 +172,15 @@ MapTab::MapTab(GameTab* Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes, 
 {
     // Containers
     this->MapContainer = new QWidget();
+    this->MapContainer->setObjectName("MapContainer");
     this->ObjectContainer = new QWidget();
+    this->ObjectContainer->setObjectName("ObjectContainer");
     this->SwitchContainer = new QWidget();
+
+    // Apply the game's accent color to the panel borders (OoT blue / MM violet)
+    QString accent = GameTab::GetAccentColorFor(Game);
+    this->MapContainer->setStyleSheet(QString("#MapContainer { border-left: 2px solid %1; }").arg(accent));
+    this->ObjectContainer->setStyleSheet(QString("#ObjectContainer { border-right: 2px solid %1; }").arg(accent));
 
     // Layouts
     this->LayoutSplitter = new QSplitter(Qt::Horizontal);
@@ -227,9 +235,33 @@ MapTab::MapTab(GameTab* Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes, 
     // Filter Button
     this->FilterButton = new FilterManager(Owner);
 
-    // Object Tree
-    QLabel* objectLabel = new QLabel("Objects");
-    this->ObjectTreeLayout->addWidget(objectLabel);
+    // Object Tree — scene header (name + counter + progress bar)
+    this->SceneHeaderWidget = new QWidget();
+    QVBoxLayout* sceneHeaderLayout = new QVBoxLayout(this->SceneHeaderWidget);
+    sceneHeaderLayout->setContentsMargins(2, 2, 2, 4);
+    sceneHeaderLayout->setSpacing(4);
+
+    QHBoxLayout* sceneHeaderRow = new QHBoxLayout();
+    sceneHeaderRow->setContentsMargins(0, 0, 0, 0);
+    sceneHeaderRow->setSpacing(6);
+    this->SceneNameLabel = new QLabel("Objects");
+    this->SceneNameLabel->setStyleSheet("font-weight: 600; font-size: 13px; color: palette(bright-text);");
+    this->SceneCountLabel = new QLabel("0/0");
+    this->SceneCountLabel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+    this->SceneCountLabel->setStyleSheet("font-size: 11px; color: #7a9abf;");
+    sceneHeaderRow->addWidget(this->SceneNameLabel, 1);
+    sceneHeaderRow->addWidget(this->SceneCountLabel);
+
+    this->SceneProgress = new QProgressBar();
+    this->SceneProgress->setRange(0, 100);
+    this->SceneProgress->setValue(0);
+    this->SceneProgress->setTextVisible(false);
+
+    sceneHeaderLayout->addLayout(sceneHeaderRow);
+    sceneHeaderLayout->addWidget(this->SceneProgress);
+
+    this->ObjectTreeLayout->addWidget(this->SceneHeaderWidget);
+
     this->ObjectSearchBar = new QLineEdit();
     this->ObjectSearchBar->setPlaceholderText("Find...");
     this->ObjectBarLayout->addWidget(this->ObjectSearchBar);
@@ -556,7 +588,35 @@ void MapTab::RenderMap()
 
         // Hide or unhide the context switch
         this->SwitchContainer->setVisible(this->RenderedScene->HasContext());
+
+        // Refresh the scene header
+        this->RefreshSceneHeader();
     }
+}
+
+
+void MapTab::RefreshSceneHeader()
+{
+    if (this->SceneNameLabel == nullptr)
+    {
+        return;
+    }
+
+    if (this->RenderedScene == nullptr)
+    {
+        this->SceneNameLabel->setText("Objects");
+        this->SceneCountLabel->setText("0/0");
+        this->SceneProgress->setValue(0);
+        return;
+    }
+
+    int found = this->RenderedScene->GetCollectedObjects();
+    int total = this->RenderedScene->GetTotalObjects();
+    int pct = total > 0 ? (100 * found) / total : 0;
+
+    this->SceneNameLabel->setText(this->RenderedScene->GetSceneName());
+    this->SceneCountLabel->setText(QString("%1/%2").arg(found).arg(total));
+    this->SceneProgress->setValue(pct);
 }
 
 
@@ -582,6 +642,9 @@ void MapTab::UnloadMap()
         this->SwitchContainer->setVisible(false);
         this->ObjectTreeToggleButton->setText("Collapse All");
         this->IsObjectExpanded = true;
+
+        // Reset the scene header
+        this->RefreshSceneHeader();
 
         // Don't forget to reconnect the signal
         QObject::connect(this->ObjectList, &QTreeWidget::itemSelectionChanged, this, &MapTab::UpdateObjectSelection);
@@ -632,6 +695,12 @@ void MapTab::ItemFound(ObjectInfo* Object, const ItemInfo* ItemFound)
         this->RenderMap();
     }
     this->Scenes[Object->RenderScene]->ItemFound(Object, ItemFound);
+
+    // Keep the scene header in sync with the active rendered scene
+    if (this->RenderedScene != nullptr && Object->RenderScene == this->RenderedScene->Scene->SceneID)
+    {
+        this->RefreshSceneHeader();
+    }
 }
 
 

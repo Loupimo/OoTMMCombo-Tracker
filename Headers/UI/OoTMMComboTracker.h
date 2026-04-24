@@ -2,6 +2,8 @@
 
 #include <QtWidgets/QMainWindow>
 #include <QTabWidget>
+#include <QProgressBar>
+#include <QLabel>
 #include <QStringList>
 #include "ui_OoTMMComboTracker.h"
 #include "UI/Settings.h"
@@ -33,6 +35,12 @@ private:
     byte MaxRecentFiles = 5;         // The maximum number of recent files to show (auto save not counted).
     QList<QAction*> RecentActions;   // The actual recent files options.
 
+    QLabel* OoTTabLabel = nullptr;            // Text label displayed inside the OoT tab (above its progress bar).
+    QLabel* MMTabLabel = nullptr;             // Text label displayed inside the MM tab (above its progress bar).
+    QProgressBar* OoTTabProgress = nullptr;   // Thin progress bar shown under the OoT tab title.
+    QProgressBar* MMTabProgress = nullptr;    // Thin progress bar shown under the MM tab title.
+    QLabel* GlobalCounter = nullptr;          // Aggregated "Total X/Y" indicator displayed in the tab bar corner.
+
 public:
 
     /*
@@ -46,6 +54,8 @@ public:
     *   Default destructor.
     */
     ~OoTMMComboTracker();
+
+    void ApplyGameTheme(int GameID);
 
     /*
     *   Shows the about dialog message.

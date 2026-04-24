@@ -1033,8 +1033,8 @@ void EntranceGameTabView::PopulateEntranceList(SceneEntranceMetaInf* Scene)
     };
 
     addOrDelete(normalCat, "Normal");
-    addOrDelete(oneWayInCat, "One Way In");
-    addOrDelete(oneWayOutCat, "One Way Out");
+    addOrDelete(oneWayInCat, "Spawn Only");
+    addOrDelete(oneWayOutCat, "Exit Only");
 
     this->RefreshCategoryCounters();
 }

@@ -16,9 +16,16 @@ RegionTree::RegionTree(GameTab* Owner, uint8_t Region, QTreeWidget * Parent) : Q
 
 	QFont font = this->font(0);
 	font.setBold(true);
+	font.setCapitalization(QFont::AllUppercase);
 	this->setFont(0, font);
 	this->setText(0, this->MetaInfo->RegionName);
 	this->setIcon(0, QIcon(this->MetaInfo->Path));
+
+	// Section-header look (regions / parents in the tree)
+	QColor accent(this->GameOwner->GameID == OOT_GAME ? "#4a9edb" : "#9b5de5");
+	QColor bg = accent; bg.setAlpha(24);
+	this->setBackground(0, QBrush(bg));
+	this->setForeground(0, QBrush(accent));
 }
 
 

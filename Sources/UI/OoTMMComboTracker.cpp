@@ -5,6 +5,7 @@
 #include "UI/SceneEntrance.h"
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QTabBar>
 #include <QTextStream>
 
 OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
@@ -31,6 +32,68 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     this->TabWidget->addTab(this->OoTTab, this->OoTTab->TabName);
     this->TabWidget->addTab(this->MMTab, this->MMTab->TabName);
     this->TabWidget->addTab(this->EntTab, this->EntTab->TabName);
+
+    // Custom tab content:
+    //   [Game name label] | [Counter label]
+    //                     | [Progress bar ]
+    auto makeTabWidget = [](const QString& gameName, const QString& accentColor,
+                            QLabel** counterOut, QProgressBar** progressOut) {
+        QWidget* w = new QWidget();
+        w->setAttribute(Qt::WA_TranslucentBackground);
+        w->setAttribute(Qt::WA_TransparentForMouseEvents);
+
+        QHBoxLayout* mainLayout = new QHBoxLayout(w);
+        mainLayout->setContentsMargins(4, 2, 4, 2);
+        mainLayout->setSpacing(8);
+
+        QLabel* gameLabel = new QLabel(gameName);
+        gameLabel->setAttribute(Qt::WA_TransparentForMouseEvents);
+        gameLabel->setStyleSheet(QString("background: transparent; color: %1; font-size: 13px; font-weight: 600;").arg(accentColor));
+        gameLabel->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
+
+        QVBoxLayout* rightLayout = new QVBoxLayout();
+        rightLayout->setContentsMargins(0, 0, 0, 0);
+        rightLayout->setSpacing(2);
+
+        QLabel* counter = new QLabel("0 / 0");
+        counter->setAttribute(Qt::WA_TransparentForMouseEvents);
+        counter->setStyleSheet("background: transparent; color: #7a9abf; font-size: 10px;");
+        counter->setAlignment(Qt::AlignRight | Qt::AlignBottom);
+
+        QProgressBar* pb = new QProgressBar();
+        pb->setRange(0, 100);
+        pb->setValue(0);
+        pb->setTextVisible(false);
+        pb->setFixedHeight(3);
+        pb->setMinimumWidth(70);
+        pb->setAttribute(Qt::WA_TransparentForMouseEvents);
+        pb->setStyleSheet(QString(
+            "QProgressBar { background: #060c16; border: none; border-radius: 1px; } "
+            "QProgressBar::chunk { background: %1; border-radius: 1px; }"
+        ).arg(accentColor));
+
+        rightLayout->addWidget(counter);
+        rightLayout->addWidget(pb);
+
+        mainLayout->addWidget(gameLabel);
+        mainLayout->addLayout(rightLayout);
+
+        *counterOut = counter;
+        *progressOut = pb;
+        return w;
+    };
+    QWidget* oottWidget = makeTabWidget("OoT", "#4a9edb", &this->OoTTabLabel, &this->OoTTabProgress);
+    QWidget* mmtWidget = makeTabWidget("MM",  "#9b5de5", &this->MMTabLabel,  &this->MMTabProgress);
+    this->TabWidget->tabBar()->setTabButton(this->TabWidget->indexOf(this->OoTTab), QTabBar::LeftSide, oottWidget);
+    this->TabWidget->tabBar()->setTabButton(this->TabWidget->indexOf(this->MMTab), QTabBar::LeftSide, mmtWidget);
+    // The custom widget carries everything, hide the native tab text to avoid duplication
+    this->TabWidget->setTabText(this->TabWidget->indexOf(this->OoTTab), "");
+    this->TabWidget->setTabText(this->TabWidget->indexOf(this->MMTab), "");
+
+    // Global "Total X/Y" indicator on the right side of the tab bar
+    this->GlobalCounter = new QLabel("Total 0/0");
+    this->GlobalCounter->setStyleSheet("padding: 0 12px; color: #4a9edb; font-weight: 600; font-size: 11px;");
+    this->TabWidget->setCornerWidget(this->GlobalCounter, Qt::TopRightCorner);
 
     // Update game tabs name
     this->UpdateTabNameText(0);
@@ -74,6 +137,11 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     }
 
     // Connections
+    connect(this->TabWidget, &QTabWidget::currentChanged, this, [this](int index)
+    {
+        /*if (index == 1) this->ApplyGameTheme(OOT_GAME);
+        if (index == 2) this->ApplyGameTheme(MM_GAME);*/
+    });
     connect(MultiLogger::GetLogger(), &MultiLogger::NotifyEntranceFound, this, &OoTMMComboTracker::UpdateTrackedEntrance);
     connect(MultiLogger::GetLogger(), &MultiLogger::NotifyObjectFound, this, &OoTMMComboTracker::UpdateTrackedObject);
     connect(this->ui.actionSaveSession, &QAction::triggered, this->Log, &LogTab::SaveTracking);
@@ -104,6 +172,25 @@ void OoTMMComboTracker::ShowAboutDialog()
     QMessageBox::about(this, "About", "OoTMMCombo Auto Tracker\nVersion 2.0\n(c) 2025-2026 Loupimo");
 }
 
+void OoTMMComboTracker::ApplyGameTheme(int GameID)
+{
+    QFile file("./Resources/Styles/DualRealm.qss");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) return;
+    QString qss = QTextStream(&file).readAll();
+    file.close();
+
+    if (GameID == MM_GAME) {
+        qss.replace("#4a9edb", "#9b5de5");
+        qss.replace("#1a4a7a", "#3a1560");
+        qss.replace("#0d2a4a", "#1e0a38");
+        qss.replace("#080f1a", "#0d0812");
+        qss.replace("#0d1827", "#130d1f");
+        qss.replace("#1a3050", "#2a1545");
+    }
+
+    qApp->setStyleSheet(qss);
+}
+
 void OoTMMComboTracker::CreatePath(QString PathToCreate)
 {
     QDir dir(PathToCreate);
@@ -126,20 +213,52 @@ void OoTMMComboTracker::CreatePath(QString PathToCreate)
 void OoTMMComboTracker::UpdateTabNameText(int TabID)
 {
     GameTab* activeTab = nullptr;
+    QProgressBar* activeProgress = nullptr;
+    QLabel* activeLabel = nullptr;
 
     if (TabID == OOT_GAME)
     {   // OoT
 
         activeTab = this->OoTTab;
+        activeProgress = this->OoTTabProgress;
+        activeLabel = this->OoTTabLabel;
     }
     else
     {   // MM
 
         activeTab = this->MMTab;
+        activeProgress = this->MMTabProgress;
+        activeLabel = this->MMTabLabel;
     }
 
-    QString finalName = BuildCountLabel(activeTab->TabName, activeTab->FoundObjects, activeTab->TotalObjects);
-    this->TabWidget->setTabText(TabID + 1, finalName);
+    if (activeLabel != nullptr)
+    {
+        activeLabel->setText(QString("%1 / %2").arg(activeTab->FoundObjects).arg(activeTab->TotalObjects));
+    }
+    else
+    {
+        QString finalName = BuildCountLabel(activeTab->TabName, activeTab->FoundObjects, activeTab->TotalObjects);
+        this->TabWidget->setTabText(TabID + 1, finalName);
+    }
+
+    if (activeProgress != nullptr)
+    {
+        int pct = activeTab->TotalObjects > 0 ? (100 * activeTab->FoundObjects) / activeTab->TotalObjects : 0;
+        activeProgress->setValue(pct);
+    }
+
+    if (this->GlobalCounter != nullptr)
+    {
+        int totalFound = this->OoTTab->FoundObjects + this->MMTab->FoundObjects;
+        int totalObjs = this->OoTTab->TotalObjects + this->MMTab->TotalObjects;
+        this->GlobalCounter->setText(QString("Total %1/%2").arg(totalFound).arg(totalObjs));
+    }
+
+    // Keep the per-scene header in sync with the counters
+    if (activeTab != nullptr && activeTab->GameMaps != nullptr)
+    {
+        activeTab->GameMaps->RefreshSceneHeader();
+    }
 }
 
 
