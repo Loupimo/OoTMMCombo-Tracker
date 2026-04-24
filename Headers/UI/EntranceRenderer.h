@@ -322,11 +322,43 @@ public:
     QString           InText;
     QString           OutText;
 
+    /*
+    *   Construct the group box for the given entrance item and enable hover and selection events.
+    *
+    *   @param PaTree    The entrance item tree this box belongs to.
+    *   @param Parent    Optional parent graphics item.
+    */
     EntranceGroupBoxItem(EntranceItemTree* PaTree, QGraphicsItem* Parent = nullptr);
 
+    /*
+    *   Compute the box width by measuring the longest rendered text row (title, in, out)
+    *   with the exact fonts used in paint(), clamped between kMinBoxW and kMaxBoxW.
+    *
+    *   @return The computed box width in scene pixels.
+    */
     qreal  BoxWidth()  const;
+
+    /*
+    *   Compute the box height from the fixed row heights (title always present, in/out rows
+    *   only when the corresponding link side exists) plus bottom padding.
+    *
+    *   @return The computed box height in scene pixels.
+    */
     qreal  BoxHeight() const;
+
+    /*
+    *   Return the bounding rectangle of the box item used by Qt for culling and hit testing.
+    *
+    *   @return A QRectF spanning (0, 0) to (BoxWidth(), BoxHeight()).
+    */
     QRectF boundingRect() const override;
+
+    /*
+    *   Paint the dark glass background, the title row (icon + entrance name) and one coloured row
+    *   per visible link side (green accent for in, red accent for out) using the current text values.
+    *
+    *   @param p    The painter to draw with.
+    */
     void   paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*) override;
     void   SetHighlighted(bool H);
 
