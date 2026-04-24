@@ -40,6 +40,15 @@ enum TextPlacement
 };
 
 
+// One logical group = box + anchor + dashed curve
+struct OverlayGroup
+{
+    EntranceGroupBoxItem* Box;
+    EntranceAnchorItem* Anchor;
+    QGraphicsPathItem* Curve;
+};
+
+
 /*
 *   The graphical pixmap item that represents one link side of an entrance on the scene map.
 *   Skeleton for future graphical integration: the final icon resources are not yet available.
@@ -302,6 +311,7 @@ public:
     static constexpr qreal kMaxBoxW = 400.0;   // px — upper bound (safety cap for degenerate strings)
 
     EntranceItemTree* Tree = nullptr;
+    EntranceRenderer* Renderer = nullptr;  // back-pointer for SetGroupFocus calls
     EntranceAnchorItem* Anchor = nullptr; // back-pointer for cross-highlight
     QGraphicsPathItem* CurveLine = nullptr; // back-pointer for cross-highlight
     bool              Highlighted = false;
@@ -319,6 +329,13 @@ public:
     QRectF boundingRect() const override;
     void   paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*) override;
     void   SetHighlighted(bool H);
+
+
+    /*
+    *   Highlight or restore the matching EntranceItemTree row (and its in/out children) in the entrance list widget.
+    */
+    void SetTreeHighlighted(bool H);
+
     void   RefreshText();   // call when InLinkName/OutLinkName change in-game
 
     /*
@@ -338,6 +355,7 @@ public:
     *   @return The matching row index (0/1/2) or -1 if no row is hit.
     */
     int    RowFromY(qreal Y) const;
+
 
 protected:
     void hoverEnterEvent(QGraphicsSceneHoverEvent*) override;
@@ -380,6 +398,7 @@ public:
     QGraphicsView* View = nullptr;                  // The graphics view used to center on a position.
     std::vector<EntranceItemTree*> Entrances;       // The list of entrance items currently registered.
     std::vector<QGraphicsItem*> OverlayItems;       // Every text label + arrow pixmap painted on top of the current scene map, owned by the renderer for cleanup.
+    std::vector<OverlayGroup> Groups;               // Parallel to OverlayItems, cleared by Clear()
 
     /*
     *   Construct the entrance renderer owned by the given game tab view.
@@ -395,6 +414,12 @@ public:
     *   @param PaView    The graphics view.
     */
     void SetTarget(QGraphicsScene* PaScene, QGraphicsView* PaView);
+
+    /*
+    *   Dim every group except PaFocused (opacity 0.12).
+    *   Pass nullptr to restore all groups to full opacity.
+    */
+    void SetGroupFocus(EntranceGroupBoxItem* PaFocused);
 
     /*
     *   Forget every registered entrance item and remove every overlay graphics item (name labels and

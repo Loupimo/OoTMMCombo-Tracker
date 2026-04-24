@@ -661,12 +661,54 @@ void EntranceGroupBoxItem::SetHighlighted(bool H)
 }
 
 
+void EntranceGroupBoxItem::SetTreeHighlighted(bool H)
+{
+    if (!Tree) return;
+
+    // Colours used when highlighted
+    const QColor kBgH(30, 40, 70, 220);  // dark blue tint
+    const QColor kFgH(255, 255, 255);         // white
+    const QColor kInFgH(101, 224, 154);         // green
+    const QColor kOutFgH(255, 144, 144);         // red
+
+    // Restored colours (transparent bg = theme default)
+    const QColor kBgNorm = Qt::transparent;
+    const QColor kFgNorm = QColor(255, 255, 255, 180);
+
+    // Parent row (entrance name)
+    Tree->setBackground(0, H ? kBgH : kBgNorm);
+    Tree->setForeground(0, H ? kFgH : kFgNorm);
+
+    // In child row
+    if (Tree->InItem)
+    {
+        Tree->InItem->setBackground(0, H ? kBgH : kBgNorm);
+        Tree->InItem->setForeground(0, H ? kInFgH : kFgNorm);
+    }
+
+    // Out child row
+    if (Tree->OutItem)
+    {
+        Tree->OutItem->setBackground(0, H ? kBgH : kBgNorm);
+        Tree->OutItem->setForeground(0, H ? kOutFgH : kFgNorm);
+    }
+
+    // Ensure the highlighted row is visible in the tree widget
+    if (H && Tree->treeWidget())
+    {
+        Tree->treeWidget()->scrollToItem(Tree, QAbstractItemView::EnsureVisible);
+    }
+}
+
+
 void EntranceGroupBoxItem::hoverEnterEvent(QGraphicsSceneHoverEvent* e)
 {
     SetHighlighted(true);
     if (Anchor)    Anchor->SetHighlighted(true);
     if (CurveLine) CurveLine->setZValue(11);
+    if (Renderer)  Renderer->SetGroupFocus(this);
     HoveredRow = RowFromY(e->pos().y());
+    SetTreeHighlighted(true);
     update();
     QGraphicsItem::hoverEnterEvent(e);
 }
@@ -677,7 +719,9 @@ void EntranceGroupBoxItem::hoverLeaveEvent(QGraphicsSceneHoverEvent* e)
     SetHighlighted(false);
     if (Anchor)    Anchor->SetHighlighted(false);
     if (CurveLine) CurveLine->setZValue(9);
+    if (Renderer)  Renderer->SetGroupFocus(nullptr);
     HoveredRow = -1;
+    SetTreeHighlighted(false);
     update();
     QGraphicsItem::hoverLeaveEvent(e);
 }
@@ -821,7 +865,16 @@ void EntranceAnchorItem::SetHighlighted(bool H)
 void EntranceAnchorItem::hoverEnterEvent(QGraphicsSceneHoverEvent* e)
 {
     SetHighlighted(true);
-    if (BoxItem) BoxItem->SetHighlighted(true);
+    if (BoxItem)
+    {
+        BoxItem->SetHighlighted(true);
+        BoxItem->SetTreeHighlighted(true);
+
+        if (BoxItem->Renderer)
+        {
+            BoxItem->Renderer->SetGroupFocus(BoxItem);
+        }
+    }
     QGraphicsPolygonItem::hoverEnterEvent(e);
 }
 
@@ -829,7 +882,16 @@ void EntranceAnchorItem::hoverEnterEvent(QGraphicsSceneHoverEvent* e)
 void EntranceAnchorItem::hoverLeaveEvent(QGraphicsSceneHoverEvent* e)
 {
     SetHighlighted(false);
-    if (BoxItem) BoxItem->SetHighlighted(false);
+    if (BoxItem)
+    {
+        BoxItem->SetHighlighted(false);
+        BoxItem->SetTreeHighlighted(false);
+
+        if (BoxItem->Renderer)
+        {
+            BoxItem->Renderer->SetGroupFocus(nullptr);
+        }
+    }
     QGraphicsPolygonItem::hoverLeaveEvent(e);
 }
 
@@ -856,6 +918,23 @@ void EntranceRenderer::SetTarget(QGraphicsScene* PaScene, QGraphicsView* PaView)
 }
 
 
+void EntranceRenderer::SetGroupFocus(EntranceGroupBoxItem* PaFocused)
+{
+    constexpr qreal kDimOpacity = 0.12;
+    constexpr qreal kFullOpacity = 1.00;
+
+    for (const OverlayGroup& g : this->Groups)
+    {
+        const bool isFocused = (PaFocused == nullptr || g.Box == PaFocused);
+        const qreal opacity = isFocused ? kFullOpacity : kDimOpacity;
+
+        if (g.Box)    g.Box->setOpacity(opacity);
+        if (g.Anchor) g.Anchor->setOpacity(opacity);
+        if (g.Curve)  g.Curve->setOpacity(opacity);
+    }
+}
+
+
 void EntranceRenderer::Clear()
 {
     this->Entrances.clear();
@@ -875,6 +954,7 @@ void EntranceRenderer::Clear()
         }
     }
     this->OverlayItems.clear();
+    this->Groups.clear();
 }
 
 
@@ -1033,6 +1113,9 @@ void EntranceRenderer::RenderSceneOverlayGrouped(SceneEntranceMetaInf* SceneMeta
             tree->OutItem->GraphItem = anchor;
             tree->OutItem->TextItem = nullptr;
         }
+
+        this->Groups.push_back({ box, anchor, curve });
+        box->Renderer = this;
     }
 }
 
