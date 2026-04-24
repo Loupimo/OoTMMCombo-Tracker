@@ -898,7 +898,16 @@ void EntranceAnchorItem::hoverLeaveEvent(QGraphicsSceneHoverEvent* e)
 
 void EntranceAnchorItem::mousePressEvent(QGraphicsSceneMouseEvent*)
 {
-    if (BoxItem && BoxItem->Tree) BoxItem->Tree->PerformAction();
+    // Clicking the anchor zooms on the paired group box instead of the entrance's AnchorPos so
+    // the user is taken to the readable info rather than the small diamond. All other interactions
+    // (title/In/Out row clicks) keep their previous behaviour because they go through Tree directly.
+    if (BoxItem == nullptr || BoxItem->Tree == nullptr || BoxItem->Tree->RendererOwner == nullptr)
+    {
+        return;
+    }
+    const QPointF center = BoxItem->sceneBoundingRect().center();
+    const int pos[3] = { static_cast<int>(center.x()), static_cast<int>(center.y()), 0 };
+    BoxItem->Tree->RendererOwner->CenterAndZoomViewOn(pos);
 }
 
 #pragma endregion
