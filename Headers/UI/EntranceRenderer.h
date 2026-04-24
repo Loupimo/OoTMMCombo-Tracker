@@ -296,6 +296,8 @@ public:
     static constexpr int kRowH = 18;   // px — in/out row height
     static constexpr int kPadX = 9;    // px — horizontal text padding
     static constexpr int kAccentW = 2;    // px — left colour accent strip
+    static constexpr int kTitleIcon = 16;  // px — square side of the title icon
+    static constexpr int kTitleIconGap = 6;   // px — gap between title icon and title text
     static constexpr qreal kMinBoxW = 80.0;    // px — lower bound for the computed width
     static constexpr qreal kMaxBoxW = 400.0;   // px — upper bound (safety cap for degenerate strings)
 
@@ -305,6 +307,7 @@ public:
     bool              Highlighted = false;
     bool              HasIn = true;
     bool              HasOut = true;
+    int               HoveredRow = -1;  // -1 none, 0 title, 1 in, 2 out — drives per-row bg tint
     QString           Title;
     QString           InText;
     QString           OutText;
@@ -325,9 +328,21 @@ public:
     */
     void   RebuildCurve();
 
+    /*
+    *   Return the row index matching the given item-local Y coordinate:
+    *   0 = title row, 1 = In row, 2 = Out row, -1 = outside any row (e.g. bottom padding).
+    *   Used by both hover and click dispatch so both paths share the exact same layout.
+    *
+    *   @param Y    The item-local Y coordinate to classify.
+    *
+    *   @return The matching row index (0/1/2) or -1 if no row is hit.
+    */
+    int    RowFromY(qreal Y) const;
+
 protected:
     void hoverEnterEvent(QGraphicsSceneHoverEvent*) override;
     void hoverLeaveEvent(QGraphicsSceneHoverEvent*) override;
+    void hoverMoveEvent(QGraphicsSceneHoverEvent*) override;
     void mousePressEvent(QGraphicsSceneMouseEvent*) override;
 };
 

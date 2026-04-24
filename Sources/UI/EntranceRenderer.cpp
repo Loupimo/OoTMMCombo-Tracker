@@ -265,19 +265,22 @@ void EntranceLinkItemTree::NavigateToTarget()
         return;
     }
 
-    // Defer the navigation to the next event-loop tick: FocusSceneInGame will rebuild the entrance
-    // tree and the overlay, which would otherwise delete the very EntrancePixmapItem whose click
-    // handler is still running on the call stack (use-after-free). Capturing by value isolates the
-    // lambda from the soon-to-be-destroyed tree item, and QPointer guards against the tab widget
-    // itself being torn down before the tick fires (e.g. user closing the application).
+    // Defer the navigation to the next event-loop tick: FocusEntranceInGame will rebuild the
+    // entrance tree and the overlay, which would otherwise delete the very graphics item whose
+    // click handler is still running on the call stack (use-after-free). Capturing by value
+    // isolates the lambda from the soon-to-be-destroyed tree item, and QPointer guards against
+    // the tab widget itself being torn down before the tick fires (e.g. user closing the app).
+    // We jump to the *target* entrance (not just the scene) so the view also zooms in on the
+    // corresponding marker instead of dropping the user at whatever the scene's default framing is.
     QPointer<EntranceTab> tab = gameView->Owner;
     uint32_t destSceneID = target->ToSceneID;
+    uint32_t destEntranceID = targetEntranceID;
     uint8_t destGame = targetGame;
-    QTimer::singleShot(0, [tab, destGame, destSceneID]()
+    QTimer::singleShot(0, [tab, destGame, destSceneID, destEntranceID]()
     {
         if (!tab.isNull())
         {
-            tab->FocusSceneInGame(destGame, destSceneID);
+            tab->FocusEntranceInGame(destGame, destSceneID, destEntranceID);
         }
     });
 }
@@ -541,7 +544,9 @@ qreal EntranceGroupBoxItem::BoxWidth() const
     const QFontMetricsF titleFM(titleFont);
     const QFontMetricsF rowFM(rowFont);
 
-    qreal maxW = titleFM.horizontalAdvance(Title);
+    // The title row starts with a RenderIcon pulled from EntranceMetaInfo, so the title line's
+    // effective width is icon + gap + text advance. Row lines have no icon, just the prefix glyph.
+    qreal maxW = kTitleIcon + kTitleIconGap + titleFM.horizontalAdvance(Title);
     if (HasIn)  maxW = qMax(maxW, rowFM.horizontalAdvance(QString::fromUtf8("\xE2\x96\xB2 ") + InText));
     if (HasOut) maxW = qMax(maxW, rowFM.horizontalAdvance(QString::fromUtf8("\xE2\x96\xBC ") + OutText));
 
@@ -582,12 +587,28 @@ void EntranceGroupBoxItem::paint(
     p->drawRect(r.adjusted(0.5, 0.5, -0.5, -0.5));
 
     // ── Title row ───────────────────────────────────────────────────────────
+    // Pull the matching RenderIcon from the entrance meta info and paint it at the left of the
+    // title row. Silently skipped if the pixmap is missing (null) so a stale index never crashes.
+    const EntranceMetaInfo* titleMeta = Tree ? Tree->GetMetaInfo() : nullptr;
+    qreal titleTextX = kPadX;
+    qreal titleTextW = w - kPadX * 2;
+    if (titleMeta != nullptr)
+    {
+        const QPixmap& iconPix = ObjectIcons::GetIconsRef()->PixmapEntranceIcons[titleMeta->RenderIcon];
+        if (!iconPix.isNull())
+        {
+            const QRectF iconRect(kPadX, (kTitleH - kTitleIcon) / 2.0, kTitleIcon, kTitleIcon);
+            p->drawPixmap(iconRect, iconPix, QRectF(iconPix.rect()));
+            titleTextX += kTitleIcon + kTitleIconGap;
+            titleTextW -= kTitleIcon + kTitleIconGap;
+        }
+    }
     p->setFont(QFont("Consolas", 8, QFont::Bold));
     p->setPen(Highlighted ? Qt::white : QColor(255, 255, 255, 190));
     p->drawText(
-        QRectF(kPadX, 0, w - kPadX * 2, kTitleH),
+        QRectF(titleTextX, 0, titleTextW, kTitleH),
         Qt::AlignVCenter,
-        p->fontMetrics().elidedText(Title, Qt::ElideRight, static_cast<int>(w - kPadX * 2)));
+        p->fontMetrics().elidedText(Title, Qt::ElideRight, static_cast<int>(titleTextW)));
 
     // ── Title separator ─────────────────────────────────────────────────────
     p->setPen(QPen(QColor(255, 255, 255, 18), 1));
@@ -595,26 +616,39 @@ void EntranceGroupBoxItem::paint(
 
     p->setFont(QFont("Consolas", 7));
     int y = kTitleH;
+    const qreal rowTextW = w - kPadX * 2;
 
     // ── In-link row (green) ─────────────────────────────────────────────────
     if (HasIn)
     {
+        if (HoveredRow == 1)
+        {
+            p->fillRect(QRectF(kAccentW, y, w - kAccentW, kRowH), QColor(255, 255, 255, 22));
+        }
         p->fillRect(QRectF(0, y, kAccentW, kRowH), QColor(61, 220, 132));
         p->setPen(QColor(101, 224, 154));
+        // Elide the full prefixed line against the full text area: BoxWidth already measured the
+        // prefix so the line fits when the box was not capped, and when it is capped the end of
+        // InText gets truncated cleanly. Eliding InText alone with a hardcoded prefix reserve was
+        // trimming one character off even when the box was wide enough.
         p->drawText(
-            QRectF(kPadX, y, w - kPadX * 2, kRowH), Qt::AlignVCenter,
-            "\u25b2 " + p->fontMetrics().elidedText(InText, Qt::ElideRight, static_cast<int>(w - kPadX * 2 - 14)));
+            QRectF(kPadX, y, rowTextW, kRowH), Qt::AlignVCenter,
+            p->fontMetrics().elidedText("\u25b2 " + InText, Qt::ElideRight, static_cast<int>(rowTextW)));
         y += kRowH;
     }
 
     // ── Out-link row (red) ──────────────────────────────────────────────────
     if (HasOut)
     {
+        if (HoveredRow == 2)
+        {
+            p->fillRect(QRectF(kAccentW, y, w - kAccentW, kRowH), QColor(255, 255, 255, 22));
+        }
         p->fillRect(QRectF(0, y, kAccentW, kRowH), QColor(255, 82, 82));
         p->setPen(QColor(255, 144, 144));
         p->drawText(
-            QRectF(kPadX, y, w - kPadX * 2, kRowH), Qt::AlignVCenter,
-            "\u25bc " + p->fontMetrics().elidedText(OutText, Qt::ElideRight, static_cast<int>(w - kPadX * 2 - 14)));
+            QRectF(kPadX, y, rowTextW, kRowH), Qt::AlignVCenter,
+            p->fontMetrics().elidedText("\u25bc " + OutText, Qt::ElideRight, static_cast<int>(rowTextW)));
     }
 }
 
@@ -632,6 +666,8 @@ void EntranceGroupBoxItem::hoverEnterEvent(QGraphicsSceneHoverEvent* e)
     SetHighlighted(true);
     if (Anchor)    Anchor->SetHighlighted(true);
     if (CurveLine) CurveLine->setZValue(11);
+    HoveredRow = RowFromY(e->pos().y());
+    update();
     QGraphicsItem::hoverEnterEvent(e);
 }
 
@@ -641,7 +677,44 @@ void EntranceGroupBoxItem::hoverLeaveEvent(QGraphicsSceneHoverEvent* e)
     SetHighlighted(false);
     if (Anchor)    Anchor->SetHighlighted(false);
     if (CurveLine) CurveLine->setZValue(9);
+    HoveredRow = -1;
+    update();
     QGraphicsItem::hoverLeaveEvent(e);
+}
+
+
+void EntranceGroupBoxItem::hoverMoveEvent(QGraphicsSceneHoverEvent* e)
+{
+    const int newRow = RowFromY(e->pos().y());
+    if (newRow != HoveredRow)
+    {
+        HoveredRow = newRow;
+        update();
+    }
+    QGraphicsItem::hoverMoveEvent(e);
+}
+
+
+int EntranceGroupBoxItem::RowFromY(qreal Y) const
+{
+    if (Y < kTitleH)
+    {
+        return 0;
+    }
+    qreal rowTop = kTitleH;
+    if (HasIn)
+    {
+        if (Y < rowTop + kRowH)
+        {
+            return 1;
+        }
+        rowTop += kRowH;
+    }
+    if (HasOut && Y < rowTop + kRowH)
+    {
+        return 2;
+    }
+    return -1;
 }
 
 
@@ -656,41 +729,23 @@ void EntranceGroupBoxItem::mousePressEvent(QGraphicsSceneMouseEvent* e)
         return;
     }
 
-    const qreal y = e->pos().y();
-    if (y < kTitleH)
+    auto clickLink = [](EntranceLinkItemTree* Link)
     {
-        Tree->PerformAction();
-        return;
-    }
-
-    qreal rowTop = kTitleH;
-    if (HasIn)
-    {
-        if (y < rowTop + kRowH)
+        if (Link == nullptr)
         {
-            if (Tree->InItem)
-            {
-                Tree->InItem->SetCalledFromGraph(true);
-                Tree->InItem->PerformAction();
-                Tree->InItem->SetCalledFromGraph(false);
-            }
             return;
         }
-        rowTop += kRowH;
-    }
-    if (HasOut && y < rowTop + kRowH)
-    {
-        if (Tree->OutItem)
-        {
-            Tree->OutItem->SetCalledFromGraph(true);
-            Tree->OutItem->PerformAction();
-            Tree->OutItem->SetCalledFromGraph(false);
-        }
-        return;
-    }
+        Link->SetCalledFromGraph(true);
+        Link->PerformAction();
+        Link->SetCalledFromGraph(false);
+    };
 
-    // Click below the last row (padding) falls back to the entrance-level action.
-    Tree->PerformAction();
+    switch (RowFromY(e->pos().y()))
+    {
+        case 1:  clickLink(Tree->InItem);  return;
+        case 2:  clickLink(Tree->OutItem); return;
+        default: Tree->PerformAction();    return;  // title or bottom padding
+    }
 }
 
 
