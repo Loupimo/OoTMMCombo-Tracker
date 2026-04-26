@@ -53,6 +53,7 @@ typedef int SOCKET;
 #include <string.h>
 #include <stdint.h>
 #include <QWidget>
+#include <QTreeWidgetItem>
 #include <QString>
 
 class QLabel;
@@ -84,6 +85,23 @@ inline QString BuildCountLabel(const char* Label, uint32_t Found, uint32_t Total
 	QString res = Label;
 	res += " (" + QString::number(Found) + " / " + QString::number(Total) + ")";
 	return res;
+}
+
+
+/*
+* Fill a 2-column tree item with the name on column 0 and a right-aligned
+* "found / total" counter on column 1.
+*
+* @param Item    The tree item to populate.
+* @param Label   The display name (column 0).
+* @param Found   The found count.
+* @param Total   The total count.
+*/
+inline void SetCountedTreeLabel(QTreeWidgetItem* Item, const char* Label, uint32_t Found, uint32_t Total)
+{
+	Item->setText(0, Label);
+	Item->setText(1, QString::number(Found) + " / " + QString::number(Total));
+	Item->setTextAlignment(1, Qt::AlignRight | Qt::AlignVCenter);
 }
 
 

@@ -295,8 +295,10 @@ void MemoryReader::StartMemoryReader()
         }
     }
 
-    if (!this->IsProcessAlive(this->PJ64Handle))
-    {   // We need to refresh the log tab info
+    if (this->IsRunning && this->PJ64Handle != 0 && !this->IsProcessAlive(this->PJ64Handle))
+    {   // PJ64 was alive and died unexpectedly: ask the GUI thread to stop tracking.
+        // Without the IsRunning check, a manual stop would also reach this branch
+        // and re-fire pressed(), causing the tracker to restart itself.
 
         MultiLogger::LogMessage("Project 64 has been closed. Stop tracking...");
         this->Owner->LaunchButton->pressed();

@@ -5,8 +5,126 @@
 #include "UI/SceneEntrance.h"
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QPainter>
+#include <QPainterPath>
 #include <QTabBar>
 #include <QTextStream>
+
+namespace {
+
+/*
+*   Lightweight custom-painted progress bar used inside the tab content.
+*   QProgressBar embedded via QTabBar::setTabButton can fall back to system colors
+*   on some Windows themes; this widget paints itself directly so the accent color
+*   is guaranteed regardless of stylesheet propagation.
+*/
+class TabProgressLine : public QWidget
+{
+public:
+    QColor TrackColor = QColor("#060c16");  // Background color of the unfilled track.
+    QColor ChunkColor;                      // Filled portion color (game accent).
+    int Value = 0;                          // Current value in [0, 100].
+
+    TabProgressLine(const QColor& Chunk, QWidget* Parent = nullptr) : QWidget(Parent), ChunkColor(Chunk)
+    {
+        this->setFixedHeight(3);
+        this->setMinimumWidth(70);
+    }
+
+    /* Set the progress value (0-100 percent) and trigger a repaint. */
+    void SetValue(int Pct)
+    {
+        Value = qBound(0, Pct, 100);
+        update();
+    }
+
+protected:
+    void paintEvent(QPaintEvent*) override
+    {
+        QPainter p(this);
+        p.setRenderHint(QPainter::Antialiasing, true);
+        p.setPen(Qt::NoPen);
+
+        QRectF bg(0, 0, width(), height());
+        p.setBrush(TrackColor);
+        p.drawRoundedRect(bg, 1, 1);
+
+        if (Value > 0)
+        {
+            QRectF chunk(0, 0, (qreal)width() * Value / 100.0, height());
+            p.setBrush(ChunkColor);
+            p.drawRoundedRect(chunk, 1, 1);
+        }
+    }
+};
+
+
+/*
+*   Two-segment progress line for the global counter: OoT progress in blue,
+*   MM progress in violet, sharing the same total. Segments are painted side
+*   by side and the rounded outline is achieved via a clipping path so the
+*   junction between the two colors stays sharp.
+*/
+class DualProgressLine : public QWidget
+{
+public:
+    QColor TrackColor = QColor("#060c16");
+    QColor OoTColor = QColor("#4a9edb");
+    QColor MMColor = QColor("#9b5de5");
+    int OoTFound = 0;
+    int MMFound = 0;
+    int Total = 0;
+
+    DualProgressLine(QWidget* Parent = nullptr) : QWidget(Parent)
+    {
+        this->setFixedHeight(4);
+        this->setMinimumWidth(140);
+    }
+
+    /* Update the per-game collected counts and overall total, then repaint. */
+    void SetValues(int OoTCollected, int MMCollected, int TotalObjects)
+    {
+        OoTFound = qMax(0, OoTCollected);
+        MMFound = qMax(0, MMCollected);
+        Total = qMax(0, TotalObjects);
+        update();
+    }
+
+protected:
+    void paintEvent(QPaintEvent*) override
+    {
+        QPainter p(this);
+        p.setRenderHint(QPainter::Antialiasing, true);
+        p.setPen(Qt::NoPen);
+
+        QRectF bg(0, 0, width(), height());
+
+        // Clip to a rounded rect so the two colored segments share a clean rounded outline.
+        QPainterPath clip;
+        clip.addRoundedRect(bg, 2, 2);
+        p.setClipPath(clip);
+
+        p.fillRect(bg, TrackColor);
+
+        if (Total > 0)
+        {
+            qreal totalW = (qreal)width();
+            qreal ootW = totalW * OoTFound / Total;
+            qreal mmW = totalW * MMFound / Total;
+
+            if (ootW > 0)
+            {
+                p.fillRect(QRectF(0, 0, ootW, height()), OoTColor);
+            }
+            if (mmW > 0)
+            {
+                p.fillRect(QRectF(ootW, 0, mmW, height()), MMColor);
+            }
+        }
+    }
+};
+
+} // namespace
 
 OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     : QMainWindow(parent)
@@ -37,7 +155,7 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     //   [Game name label] | [Counter label]
     //                     | [Progress bar ]
     auto makeTabWidget = [](const QString& gameName, const QString& accentColor,
-                            QLabel** counterOut, QProgressBar** progressOut) {
+                            QLabel** counterOut, QWidget** progressOut) {
         QWidget* w = new QWidget();
         w->setAttribute(Qt::WA_TranslucentBackground);
         w->setAttribute(Qt::WA_TransparentForMouseEvents);
@@ -60,17 +178,8 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
         counter->setStyleSheet("background: transparent; color: #7a9abf; font-size: 10px;");
         counter->setAlignment(Qt::AlignRight | Qt::AlignBottom);
 
-        QProgressBar* pb = new QProgressBar();
-        pb->setRange(0, 100);
-        pb->setValue(0);
-        pb->setTextVisible(false);
-        pb->setFixedHeight(3);
-        pb->setMinimumWidth(70);
+        TabProgressLine* pb = new TabProgressLine(QColor(accentColor));
         pb->setAttribute(Qt::WA_TransparentForMouseEvents);
-        pb->setStyleSheet(QString(
-            "QProgressBar { background: #060c16; border: none; border-radius: 1px; } "
-            "QProgressBar::chunk { background: %1; border-radius: 1px; }"
-        ).arg(accentColor));
 
         rightLayout->addWidget(counter);
         rightLayout->addWidget(pb);
@@ -90,10 +199,41 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     this->TabWidget->setTabText(this->TabWidget->indexOf(this->OoTTab), "");
     this->TabWidget->setTabText(this->TabWidget->indexOf(this->MMTab), "");
 
-    // Global "Total X/Y" indicator on the right side of the tab bar
-    this->GlobalCounter = new QLabel("Total 0/0");
-    this->GlobalCounter->setStyleSheet("padding: 0 12px; color: #4a9edb; font-weight: 600; font-size: 11px;");
-    this->TabWidget->setCornerWidget(this->GlobalCounter, Qt::TopRightCorner);
+    // Global "Total X/Y" indicator on the right side of the tab bar:
+    //   [Total]            ────────────────
+    //   [X / Y]            blue (OoT) | violet (MM)
+    {
+        QWidget* globalWidget = new QWidget();
+        globalWidget->setAttribute(Qt::WA_TranslucentBackground);
+
+        QHBoxLayout* globalLayout = new QHBoxLayout(globalWidget);
+        globalLayout->setContentsMargins(8, 2, 12, 2);
+        globalLayout->setSpacing(10);
+
+        QVBoxLayout* counterCol = new QVBoxLayout();
+        counterCol->setContentsMargins(0, 0, 0, 0);
+        counterCol->setSpacing(0);
+
+        QLabel* totalLabel = new QLabel("Total");
+        totalLabel->setStyleSheet("background: transparent; color: #7a9abf; font-size: 9px; font-weight: 600; letter-spacing: 0.08em;");
+        totalLabel->setAlignment(Qt::AlignRight | Qt::AlignBottom);
+
+        this->GlobalCounter = new QLabel("<span style='color:#ddeeff; font-size:14px; font-weight:700;'>0</span><span style='color:#7a9abf; font-size:11px;'>/0</span>");
+        this->GlobalCounter->setTextFormat(Qt::RichText);
+        this->GlobalCounter->setStyleSheet("background: transparent;");
+        this->GlobalCounter->setAlignment(Qt::AlignRight | Qt::AlignTop);
+
+        counterCol->addWidget(totalLabel);
+        counterCol->addWidget(this->GlobalCounter);
+
+        DualProgressLine* dualBar = new DualProgressLine();
+        this->GlobalProgress = dualBar;
+
+        globalLayout->addLayout(counterCol);
+        globalLayout->addWidget(dualBar, 0, Qt::AlignVCenter);
+
+        this->TabWidget->setCornerWidget(globalWidget, Qt::TopRightCorner);
+    }
 
     // Update game tabs name
     this->UpdateTabNameText(0);
@@ -181,6 +321,7 @@ void OoTMMComboTracker::ApplyGameTheme(int GameID)
 
     if (GameID == MM_GAME) {
         qss.replace("#4a9edb", "#9b5de5");
+        qss.replace("rgba(74, 158, 219", "rgba(155, 93, 229");
         qss.replace("#1a4a7a", "#3a1560");
         qss.replace("#0d2a4a", "#1e0a38");
         qss.replace("#080f1a", "#0d0812");
@@ -213,7 +354,7 @@ void OoTMMComboTracker::CreatePath(QString PathToCreate)
 void OoTMMComboTracker::UpdateTabNameText(int TabID)
 {
     GameTab* activeTab = nullptr;
-    QProgressBar* activeProgress = nullptr;
+    QWidget* activeProgress = nullptr;
     QLabel* activeLabel = nullptr;
 
     if (TabID == OOT_GAME)
@@ -244,14 +385,23 @@ void OoTMMComboTracker::UpdateTabNameText(int TabID)
     if (activeProgress != nullptr)
     {
         int pct = activeTab->TotalObjects > 0 ? (100 * activeTab->FoundObjects) / activeTab->TotalObjects : 0;
-        activeProgress->setValue(pct);
+        static_cast<TabProgressLine*>(activeProgress)->SetValue(pct);
     }
 
     if (this->GlobalCounter != nullptr)
     {
         int totalFound = this->OoTTab->FoundObjects + this->MMTab->FoundObjects;
         int totalObjs = this->OoTTab->TotalObjects + this->MMTab->TotalObjects;
-        this->GlobalCounter->setText(QString("Total %1/%2").arg(totalFound).arg(totalObjs));
+        this->GlobalCounter->setText(QString(
+            "<span style='color:#ddeeff; font-size:14px; font-weight:700;'>%1</span>"
+            "<span style='color:#7a9abf; font-size:11px;'>/%2</span>")
+            .arg(totalFound).arg(totalObjs));
+
+        if (this->GlobalProgress != nullptr)
+        {
+            static_cast<DualProgressLine*>(this->GlobalProgress)->SetValues(
+                this->OoTTab->FoundObjects, this->MMTab->FoundObjects, totalObjs);
+        }
     }
 
     // Keep the per-scene header in sync with the counters

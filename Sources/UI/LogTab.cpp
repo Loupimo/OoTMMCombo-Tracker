@@ -250,7 +250,7 @@ void LogTab::PressLaunchButton()
 {
     if (this->Tracker)
     {
-        QIcon launchIcon(QIcon::fromTheme(QString::fromUtf8("QIcon::ThemeIcon::MediaPlaybackStart")));
+        QIcon launchIcon(QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackStart));
         QString trackText = "Start Tracking";
         if (this->Tracker->IsRunning || this->MemRead->IsRunning)
         {   // Stop the auto-tracker
@@ -294,7 +294,7 @@ void LogTab::PressLaunchButton()
             this->MemReaderThread = std::thread(&MemoryReader::StartMemoryReader, this->MemRead);
 
             trackText = "Stop Tracking";
-            launchIcon = QIcon::fromTheme(QString::fromUtf8("QIcon::ThemeIcon::MediaPlaybackStop"));
+            launchIcon = QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackStop);
         }
 
         this->LaunchButton->setIcon(launchIcon);

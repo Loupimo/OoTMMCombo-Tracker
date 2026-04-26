@@ -18,14 +18,18 @@ RegionTree::RegionTree(GameTab* Owner, uint8_t Region, QTreeWidget * Parent) : Q
 	font.setBold(true);
 	font.setCapitalization(QFont::AllUppercase);
 	this->setFont(0, font);
+	this->setFont(1, font);
 	this->setText(0, this->MetaInfo->RegionName);
 	this->setIcon(0, QIcon(this->MetaInfo->Path));
+	this->setTextAlignment(1, Qt::AlignRight | Qt::AlignVCenter);
 
 	// Section-header look (regions / parents in the tree)
 	QColor accent(this->GameOwner->GameID == OOT_GAME ? "#4a9edb" : "#9b5de5");
-	QColor bg = accent; bg.setAlpha(24);
+	QColor bg = accent; bg.setAlpha(64);
 	this->setBackground(0, QBrush(bg));
+	this->setBackground(1, QBrush(bg));
 	this->setForeground(0, QBrush(accent));
+	this->setForeground(1, QBrush(accent));
 }
 
 
@@ -41,8 +45,7 @@ void RegionTree::AddObjectCounts(int FoundObjects, int TotalObjects)
 
 void RegionTree::RefreshObjsCountText()
 {
-    QString finalName = BuildCountLabel(this->MetaInfo->RegionName, this->FoundObjs, this->TotalObjs);
-    this->setText(0, finalName);
+    SetCountedTreeLabel(this, this->MetaInfo->RegionName, this->FoundObjs, this->TotalObjs);
 }
 
 

@@ -1,15 +1,90 @@
 #include <QApplication>
 #include <QGraphicsEllipseItem>
+#include <QPainter>
 #include <QPlainTextEdit>
 #include <QLabel>
 #include <QPushButton>
 #include <QProgressBar>
+#include <QHeaderView>
 #include <QGraphicsProxyWidget>
+#include <QStyledItemDelegate>
 #include "UI/RoomRenderer.h"
 #include "UI/MapTab.h"
 #include "UI/GameTab.h"
 #include "UI/FilterManager.h"
 #include "UI/AppConfig.h"
+
+namespace {
+
+/*
+*   QTreeWidget subclass that paints a depth-based tint across the entire row,
+*   covering the indent and branch (+/-) area as well as the columns. Subclassing
+*   the view (rather than using a delegate) is required because a QStyledItemDelegate
+*   only paints inside the item cell rect — it cannot reach the indent / branch area.
+*
+*   Depth 0 (regions / object categories): strong tint (alpha 64) + thin separator.
+*   Depth 1 (scenes inside a region):       light tint  (alpha 16).
+*   Deeper rows (rooms / object items):     no tint.
+*/
+class TintedTreeWidget : public QTreeWidget
+{
+public:
+    QColor Accent;
+    QColor SelectionBg;
+
+    TintedTreeWidget(const QColor& AccentColor, const QColor& SelectionBgColor, QWidget* Parent = nullptr)
+        : QTreeWidget(Parent), Accent(AccentColor), SelectionBg(SelectionBgColor)
+    {
+        // Sync QPalette::Highlight with the QSS selection color. Without this, the indent /
+        // branch area (which the default delegate paints via the palette rather than via QSS)
+        // falls back to the global highlight color (OoT blue) on the MM tab.
+        QPalette pal = this->palette();
+        pal.setColor(QPalette::Highlight, SelectionBgColor);
+        pal.setColor(QPalette::Inactive, QPalette::Highlight, SelectionBgColor);
+        this->setPalette(pal);
+    }
+
+protected:
+    void drawRow(QPainter* Painter, const QStyleOptionViewItem& Options, const QModelIndex& Index) const override
+    {
+        int depth = 0;
+        QModelIndex p = Index.parent();
+        while (p.isValid()) { depth++; p = p.parent(); }
+
+        // Depth 0 (regions / object categories): strong tint.
+        // Depth >= 1 (scenes, rooms, individual objects): light tint.
+        int alpha = (depth == 0) ? 64 : 16;
+        bool selected = (Options.state & QStyle::State_Selected) != 0;
+
+        QRect rowRect(0, Options.rect.top(), viewport()->width(), Options.rect.height());
+
+        if (selected)
+        {
+            // Paint the selection bg across the entire row (incl. the indent area),
+            // so the default delegate cannot leave a strip of palette-blue on the left.
+            Painter->fillRect(rowRect, SelectionBg);
+        }
+        else
+        {
+            QColor bg = Accent;
+            bg.setAlpha(alpha);
+            Painter->fillRect(rowRect, bg);
+        }
+
+        QTreeWidget::drawRow(Painter, Options, Index);
+
+        if (depth == 0)
+        {
+            Painter->save();
+            Painter->setPen(QPen(QColor(255, 255, 255, 32), 1));
+            int y = Options.rect.bottom();
+            Painter->drawLine(0, y, viewport()->width(), y);
+            Painter->restore();
+        }
+    }
+};
+
+} // namespace
 
 #pragma region ContextSwitchButton
 
@@ -177,10 +252,27 @@ MapTab::MapTab(GameTab* Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes, 
     this->ObjectContainer->setObjectName("ObjectContainer");
     this->SwitchContainer = new QWidget();
 
-    // Apply the game's accent color to the panel borders (OoT blue / MM violet)
+    // Game accent color used by the tinted tree rows below (OoT blue / MM violet).
     QString accent = GameTab::GetAccentColorFor(Game);
+
+    // Long accent stripe along the left edge of the map panel.
     this->MapContainer->setStyleSheet(QString("#MapContainer { border-left: 2px solid %1; }").arg(accent));
-    this->ObjectContainer->setStyleSheet(QString("#ObjectContainer { border-right: 2px solid %1; }").arg(accent));
+
+    // Game-specific hover / selected colors so the MM tab uses violet shades
+    // instead of the global OoT blues coming from the base stylesheet.
+    // Note: the MM shades are tuned so they read as violet on a dark theme
+    // (the previous #3a1560 / #1e0a38 had a dominant blue channel and felt blue-ish).
+    QString hoverBg    = (Game == OOT_GAME) ? "#0d2a4a" : "#2a1248";
+    QString selectedBg = (Game == OOT_GAME) ? "#1a4a7a" : "#5a2580";
+    // selection-background-color overrides the QPalette::Highlight inherited from the
+    // global stylesheet (which is OoT-blue). Without this, the indent / branch area
+    // — painted via the palette rather than via ::item rules — keeps the OoT-blue
+    // selection color in the MM tab.
+    QString treeHoverSelectQss = QString(
+        "QTreeWidget, QTreeView { selection-background-color: %2; selection-color: #ddeeff; } "
+        "QTreeWidget::item:hover:!selected, QTreeView::item:hover:!selected { background-color: %1; } "
+        "QTreeWidget::item:selected, QTreeView::item:selected { background-color: %2; color: #ddeeff; } "
+    ).arg(hoverBg, selectedBg);
 
     // Layouts
     this->LayoutSplitter = new QSplitter(Qt::Horizontal);
@@ -227,8 +319,13 @@ MapTab::MapTab(GameTab* Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes, 
     this->MapTreeLayout->addWidget(mapLabel);
     this->MapSearchBar = new QLineEdit();
     this->MapSearchBar->setPlaceholderText("Find...");
-    this->MapList = new QTreeWidget();
+    this->MapList = new TintedTreeWidget(QColor(accent), QColor(selectedBg));
     this->MapList->setHeaderHidden(true);
+    this->MapList->setColumnCount(2);
+    this->MapList->header()->setSectionResizeMode(0, QHeaderView::Stretch);
+    this->MapList->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+    this->MapList->header()->setStretchLastSection(false);
+    this->MapList->setStyleSheet(treeHoverSelectQss);
     this->MapTreeToggleButton = new QPushButton("Expand All", this);
     this->MapTreeToggleButton->setCheckable(true);
 
@@ -267,8 +364,13 @@ MapTab::MapTab(GameTab* Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes, 
     this->ObjectBarLayout->addWidget(this->ObjectSearchBar);
     this->ObjectBarLayout->addWidget(this->FilterButton);
 
-    this->ObjectList = new QTreeWidget();
+    this->ObjectList = new TintedTreeWidget(QColor(accent), QColor(selectedBg));
     this->ObjectList->setHeaderHidden(true);
+    this->ObjectList->setColumnCount(2);
+    this->ObjectList->header()->setSectionResizeMode(0, QHeaderView::Stretch);
+    this->ObjectList->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+    this->ObjectList->header()->setStretchLastSection(false);
+    this->ObjectList->setStyleSheet(treeHoverSelectQss);
     this->ObjectTreeToggleButton = new QPushButton("Collapse All", this);
     this->ObjectTreeLayout->addLayout(this->ObjectBarLayout);
     this->ObjectTreeLayout->addWidget(this->ObjectTreeToggleButton);
@@ -330,8 +432,8 @@ MapTab::MapTab(GameTab* Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes, 
     this->SwitchContainer->move(10, 10);
 
     // Set the maximum width for the lists
-    this->MapContainer->setMaximumWidth(300);
-    this->ObjectContainer->setMaximumWidth(300);
+    this->MapContainer->setMaximumWidth(320);
+    this->ObjectContainer->setMaximumWidth(320);
 
     // Add map -> view -> object to the splitter layout
     this->LayoutSplitter->addWidget(this->MapContainer);

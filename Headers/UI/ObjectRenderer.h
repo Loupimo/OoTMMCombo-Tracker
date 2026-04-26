@@ -68,9 +68,9 @@ const ObjectIcon EntranceIconsMetaInfo[EntranceIcons::Entrance_Last] =
     {"./Resources/Common/Entrances/Silver_Boulder_Grotto", {60, 60}, {120, 120}},      // EntranceIcons::Silver_Boudler_Grotto
     {"./Resources/Common/Entrances/Red_Boulder_Grotto.png", {60, 60}, {120, 120}},      // EntranceIcons::Red_Boulder_Grotto
     {"./Resources/Common/Entrances/Door.png", {60, 60}, {120, 120}},      // EntranceIcons::Door
-    {"./Resources/Common/Entrances/Generic.png", {60, 60}, {120, 120}},      // EntranceIcons::Tomb
+    {"./Resources/Common/Entrances/Tomb.png", {60, 60}, {120, 120}},      // EntranceIcons::Tomb
     {"./Resources/Common/Entrances/Owl_Pick.png", {60, 60}, {120, 120}},      // EntranceIcons::Owl_Pick
-    {"./Resources/Common/Entrances/Generic.png", {60, 60}, {120, 120}},      // EntranceIcons::Owl_Drop
+    {"./Resources/Common/Entrances/Owl_Drop.png", {60, 60}, {120, 120}},      // EntranceIcons::Owl_Drop
     {"./Resources/Common/Entrances/Warp_Song.png", {60, 60}, {120, 120}},      // EntranceIcons::Warp_Song
     {"./Resources/Common/Entrances/Wallmaster.png", {60, 60}, {120, 120}},      // EntranceIcons::Wallmaster
     {"./Resources/Common/Entrances/Gerudo_Catch.png", {60, 60}, {120, 120}},      // EntranceIcons::Gerudo_Catch

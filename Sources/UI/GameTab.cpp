@@ -342,10 +342,6 @@ GameTab::GameTab(int GameID, QWidget* parent) : QWidget(parent)
     this->LoadGameTab();
 
     this->setLayout(this->MainLayout);
-
-    // Tag each game tab with a left accent border matching its game color
-    QString accent = this->GetAccentColor();
-    this->setStyleSheet(QString("GameTab { border-left: 2px solid %1; }").arg(accent));
 }
 
 

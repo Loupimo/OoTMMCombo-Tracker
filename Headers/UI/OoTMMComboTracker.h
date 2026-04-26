@@ -2,7 +2,6 @@
 
 #include <QtWidgets/QMainWindow>
 #include <QTabWidget>
-#include <QProgressBar>
 #include <QLabel>
 #include <QStringList>
 #include "ui_OoTMMComboTracker.h"
@@ -35,11 +34,12 @@ private:
     byte MaxRecentFiles = 5;         // The maximum number of recent files to show (auto save not counted).
     QList<QAction*> RecentActions;   // The actual recent files options.
 
-    QLabel* OoTTabLabel = nullptr;            // Text label displayed inside the OoT tab (above its progress bar).
-    QLabel* MMTabLabel = nullptr;             // Text label displayed inside the MM tab (above its progress bar).
-    QProgressBar* OoTTabProgress = nullptr;   // Thin progress bar shown under the OoT tab title.
-    QProgressBar* MMTabProgress = nullptr;    // Thin progress bar shown under the MM tab title.
-    QLabel* GlobalCounter = nullptr;          // Aggregated "Total X/Y" indicator displayed in the tab bar corner.
+    QLabel* OoTTabLabel = nullptr;            // Counter label displayed inside the OoT tab (above its progress bar).
+    QLabel* MMTabLabel = nullptr;             // Counter label displayed inside the MM tab (above its progress bar).
+    QWidget* OoTTabProgress = nullptr;        // Custom-painted progress line under the OoT tab counter (TabProgressLine).
+    QWidget* MMTabProgress = nullptr;         // Custom-painted progress line under the MM tab counter (TabProgressLine).
+    QLabel* GlobalCounter = nullptr;          // Aggregated "X/Y" value label displayed in the tab bar corner.
+    QWidget* GlobalProgress = nullptr;        // Dual-segment (OoT blue + MM violet) progress bar next to the global counter.
 
 public:
 

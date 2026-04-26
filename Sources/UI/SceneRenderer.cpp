@@ -25,6 +25,17 @@ SceneItemTree::SceneItemTree(SceneInfo* SceneToRender, FilterManager * Filter, Q
 {
     this->Scene = SceneToRender;
     this->Filter = Filter;
+
+    // Subtle scene-row tint (lighter than the region/section header).
+    if (this->Scene)
+    {
+        QColor accent(this->Scene->GameID == OOT_GAME ? "#4a9edb" : "#9b5de5");
+        QColor bg = accent; bg.setAlpha(16);
+        this->setBackground(0, QBrush(bg));
+        this->setBackground(1, QBrush(bg));
+    }
+    this->setTextAlignment(1, Qt::AlignRight | Qt::AlignVCenter);
+
     this->CountSceneObjects();      // Count the scene objects
     this->UpdateObjectCounts(0);    // Used to refresh region counters and item name
 
@@ -243,8 +254,7 @@ void SceneItemTree::UpdateObjectCounts(int Count)
 
 void SceneItemTree::RefreshItemName()
 {
-    QString finalName = BuildCountLabel(this->GetSceneName(), this->GetCollectedObjects(), this->GetTotalObjects());
-    this->setText(0, finalName);
+    SetCountedTreeLabel(this, this->GetSceneName(), this->GetCollectedObjects(), this->GetTotalObjects());
 }
 
 #pragma endregion

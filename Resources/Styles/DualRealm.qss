@@ -257,7 +257,7 @@ QTabBar::tab {
 QTabBar::tab:selected {
     color: #4a9edb;
     border-bottom: 3px solid #4a9edb;
-    background-color: #4a9edb18;
+    background-color: rgba(74, 158, 219, 24);
 }
 
 QTabBar::tab:hover:!selected {
@@ -367,7 +367,6 @@ QTreeWidget::item,
 QTreeView::item {
     padding: 4px 4px;
     border: none;
-    border-left: 3px solid transparent;
     min-height: 22px;
 }
 
@@ -375,13 +374,11 @@ QTreeWidget::item:selected,
 QTreeView::item:selected {
     background-color: #1a4a7a;
     color: #ddeeff;
-    border-left: 3px solid #4a9edb;
 }
 
 QTreeWidget::item:hover:!selected,
 QTreeView::item:hover:!selected {
     background-color: #0d2a4a;
-    border-left: 3px solid #1a4a7a;
 }
 
 QTreeWidget::branch {
@@ -391,13 +388,13 @@ QTreeWidget::branch {
 QTreeWidget::branch:has-children:!has-siblings:closed,
 QTreeWidget::branch:closed:has-children:has-siblings {
     border-image: none;
-    image: none;
+    image: url(./Resources/Common/Plus.svg);
 }
 
 QTreeWidget::branch:open:has-children:!has-siblings,
 QTreeWidget::branch:open:has-children:has-siblings {
     border-image: none;
-    image: none;
+    image: url(./Resources/Common/Minus.svg);
 }
 
 /* Groupes / parents dans l'arbre : stylés en C++ via setBackground / setForeground
@@ -456,13 +453,13 @@ QPushButton:pressed {
 }
 
 QPushButton:checked {
-    background-color: #4a9edb18;
+    background-color: rgba(74, 158, 219, 24);
     border-color: #4a9edb;
     color: #4a9edb;
 }
 
 QPushButton:checked:hover {
-    background-color: #4a9edb30;
+    background-color: rgba(74, 158, 219, 48);
 }
 
 QPushButton:disabled {
@@ -915,7 +912,7 @@ FilterManager QPushButton:hover {
 
 QPushButton#FilterButton:checked,
 FilterManager QPushButton:checked {
-    background-color: #4a9edb18;
+    background-color: rgba(74, 158, 219, 24);
     border-color: #4a9edb;
     color: #4a9edb;
 }

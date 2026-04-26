@@ -477,15 +477,19 @@ ObjectRenderer::ObjectRenderer(ObjectType Type, SceneRenderer* Owner, bool Shoul
     font.setBold(true);
     font.setCapitalization(QFont::AllUppercase);
     this->ObjCat->setFont(0, font);
+    this->ObjCat->setFont(1, font);
     this->ObjCat->setText(0, ObjTypeName[this->Type]);
     this->ObjCat->setIcon(0, IconsRef->Icons[this->Type]);
+    this->ObjCat->setTextAlignment(1, Qt::AlignRight | Qt::AlignVCenter);
 
     // Section-header look (object categories / parents in the object tree)
     int gameID = (Owner && Owner->CurrScene) ? Owner->CurrScene->GameID : OOT_GAME;
     QColor accent(gameID == OOT_GAME ? "#4a9edb" : "#9b5de5");
-    QColor bg = accent; bg.setAlpha(24);
+    QColor bg = accent; bg.setAlpha(64);
     this->ObjCat->setBackground(0, QBrush(bg));
+    this->ObjCat->setBackground(1, QBrush(bg));
     this->ObjCat->setForeground(0, QBrush(accent));
+    this->ObjCat->setForeground(1, QBrush(accent));
 }
 
 
@@ -636,8 +640,7 @@ size_t ObjectRenderer::GetTotalObject()
 
 void ObjectRenderer::UpdateText()
 {
-    QString finalName = BuildCountLabel(ObjTypeName[this->Type], this->GetCollectedObject(), this->GetTotalObject());
-    this->ObjCat->setText(0, finalName);
+    SetCountedTreeLabel(this->ObjCat, ObjTypeName[this->Type], (uint32_t)this->GetCollectedObject(), (uint32_t)this->GetTotalObject());
 }
 
 void ObjectRenderer::RefreshObjectCounts(ObjectItemTree * Caller, int Count)
