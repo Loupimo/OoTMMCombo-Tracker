@@ -4,12 +4,52 @@
 #include <QTabWidget>
 #include <QLabel>
 #include <QStringList>
+#include <QWidget>
 #include "ui_OoTMMComboTracker.h"
 #include "UI/Settings.h"
 #include "UI/EntranceTable.h"
 #include "UI/SceneEntrance.h"
 #include "LogTab.h"
 #include "GameTab.h"
+
+
+/*
+*   Compact clickable status indicator (colored dot + label) used inside the
+*   bottom QStatusBar. Active state controls dot color (green / red) and label
+*   text. A click emits Clicked() — the owner decides how to react and may
+*   call SetActive() to update the visual.
+*/
+class StatusPill : public QWidget
+{
+    Q_OBJECT
+
+public:
+    StatusPill(const QString& ActiveText, const QString& InactiveText, QWidget* Parent = nullptr);
+
+    /* Set the active visual state. */
+    void SetActive(bool NewActive);
+
+    /* Tell whether the pill is currently displaying its active visual. */
+    bool IsActive() const { return this->Active; }
+
+    QSize sizeHint() const override;
+
+signals:
+    /* Emitted when the user clicks the pill. */
+    void Clicked();
+
+protected:
+    void paintEvent(QPaintEvent* Event) override;
+    void mousePressEvent(QMouseEvent* Event) override;
+    void enterEvent(QEnterEvent* Event) override;
+    void leaveEvent(QEvent* Event) override;
+
+private:
+    QString ActiveText;     // Label shown when Active == true.
+    QString InactiveText;   // Label shown when Active == false.
+    bool Active = false;    // Current state.
+    bool Hovered = false;   // Hover state, used for subtle highlight.
+};
 
 
 /*
@@ -40,6 +80,10 @@ private:
     QWidget* MMTabProgress = nullptr;         // Custom-painted progress line under the MM tab counter (TabProgressLine).
     QLabel* GlobalCounter = nullptr;          // Aggregated "X/Y" value label displayed in the tab bar corner.
     QWidget* GlobalProgress = nullptr;        // Dual-segment (OoT blue + MM violet) progress bar next to the global counter.
+    StatusPill* TrackingPill = nullptr;       // Bottom status pill: tracking on/off (clickable to start/stop).
+    StatusPill* AutoSavePill = nullptr;       // Bottom status pill: auto-save on/off (clickable to toggle).
+    StatusPill* RevealPill = nullptr;         // Bottom status pill: reveal uncollected items on/off (clickable to toggle).
+    QLabel* LastActivityLabel = nullptr;      // Bottom-right label: most recent collected item / parsed entrance.
 
 public:
 

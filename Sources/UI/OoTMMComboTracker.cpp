@@ -5,8 +5,11 @@
 #include "UI/SceneEntrance.h"
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QEnterEvent>
 #include <QPainter>
 #include <QPainterPath>
+#include <QMouseEvent>
+#include <QStatusBar>
 #include <QTabBar>
 #include <QTextStream>
 
@@ -126,6 +129,122 @@ protected:
 
 } // namespace
 
+
+#pragma region StatusPill
+
+StatusPill::StatusPill(const QString& ActiveText, const QString& InactiveText, QWidget* Parent)
+    : QWidget(Parent), ActiveText(ActiveText), InactiveText(InactiveText)
+{
+    this->setCursor(Qt::PointingHandCursor);
+    this->setAttribute(Qt::WA_Hover, true);
+    this->setMouseTracking(true);
+}
+
+
+void StatusPill::SetActive(bool NewActive)
+{
+    if (this->Active == NewActive) return;
+    this->Active = NewActive;
+    this->updateGeometry();
+    this->update();
+}
+
+
+QSize StatusPill::sizeHint() const
+{
+    // Match the font configured in paintEvent so the metrics actually account for
+    // the Medium weight (otherwise the regular-weight metrics under-estimate the
+    // width and the last glyph gets clipped).
+    QFont f = this->font();
+    f.setPointSizeF(f.pointSizeF() - 0.5);
+    f.setWeight(QFont::Medium);
+    QFontMetrics fm(f);
+
+    // Layout (mirrors paintEvent):
+    //   [2px adjust] [8px left pad] [8px dot] [6px gap] [text] [8px right pad] [2px adjust] + safety.
+    // Reserve room for the longer of the two label states so the box never has to
+    // shrink + clip when toggling between active/inactive.
+    const int textWidth = qMax(fm.horizontalAdvance(this->ActiveText),
+                               fm.horizontalAdvance(this->InactiveText));
+    const int w = 2 + 8 + 8 + 6 + textWidth + 8 + 2 + 4 /* safety */;
+    return QSize(w, 22);
+}
+
+
+void StatusPill::paintEvent(QPaintEvent* /*Event*/)
+{
+    QPainter p(this);
+    p.setRenderHint(QPainter::Antialiasing, true);
+    p.setPen(Qt::NoPen);
+
+    // Background pill: subtly shaded card so the indicator reads as a clickable
+    // chip without competing with the main UI.
+    QColor pillBg = this->Hovered ? QColor(255, 255, 255, 28) : QColor(255, 255, 255, 14);
+    QRectF pillRect = this->rect().adjusted(2, 2, -2, -2);
+    p.setBrush(pillBg);
+    p.drawRoundedRect(pillRect, 10, 10);
+
+    // Status dot.
+    const int dotSize = 8;
+    int dotX = static_cast<int>(pillRect.left()) + 8;
+    int dotY = static_cast<int>(pillRect.center().y()) - (dotSize / 2);
+    QColor dotColor = this->Active ? QColor(101, 224, 154) : QColor(255, 105, 105);
+    p.setBrush(dotColor);
+    p.drawEllipse(QRect(dotX, dotY, dotSize, dotSize));
+
+    // Soft glow around the dot when active.
+    if (this->Active)
+    {
+        QColor glow = dotColor; glow.setAlpha(70);
+        p.setBrush(glow);
+        p.drawEllipse(QRect(dotX - 2, dotY - 2, dotSize + 4, dotSize + 4));
+        p.setBrush(dotColor);
+        p.drawEllipse(QRect(dotX, dotY, dotSize, dotSize));
+    }
+
+    // Label.
+    QFont f = this->font();
+    f.setPointSizeF(f.pointSizeF() - 0.5);
+    f.setWeight(QFont::Medium);
+    p.setFont(f);
+
+    QColor textColor = this->Active ? QColor(221, 238, 255) : QColor(170, 190, 215);
+    p.setPen(textColor);
+
+    QRect textRect(dotX + dotSize + 6, this->rect().top(),
+                   this->rect().right() - (dotX + dotSize + 6) - 8, this->rect().height());
+    p.drawText(textRect, Qt::AlignLeft | Qt::AlignVCenter, this->Active ? this->ActiveText : this->InactiveText);
+}
+
+
+void StatusPill::mousePressEvent(QMouseEvent* Event)
+{
+    if (Event->button() == Qt::LeftButton)
+    {
+        emit this->Clicked();
+    }
+    QWidget::mousePressEvent(Event);
+}
+
+
+void StatusPill::enterEvent(QEnterEvent* Event)
+{
+    this->Hovered = true;
+    this->update();
+    QWidget::enterEvent(Event);
+}
+
+
+void StatusPill::leaveEvent(QEvent* Event)
+{
+    this->Hovered = false;
+    this->update();
+    QWidget::leaveEvent(Event);
+}
+
+#pragma endregion
+
+
 OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -235,6 +354,47 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
         this->TabWidget->setCornerWidget(globalWidget, Qt::TopRightCorner);
     }
 
+    // Bottom status bar: 3 clickable status pills (tracking / auto-save / reveal)
+    // on the left, last-activity label on the right.
+    {
+        QStatusBar* sb = this->statusBar();
+        sb->setSizeGripEnabled(false);
+
+        this->TrackingPill = new StatusPill("Tracking active", "Tracking inactive", sb);
+        this->AutoSavePill = new StatusPill("Auto-save on", "Auto-save off", sb);
+        this->RevealPill   = new StatusPill("Items revealed", "Items hidden", sb);
+
+        this->TrackingPill->SetActive(false); // updated via UpdateTrackingState when tracking starts/stops
+        this->AutoSavePill->SetActive(AppConfig::GetAutoSave());
+        this->RevealPill->SetActive(AppConfig::GetRevealUncollectedItems());
+
+        this->TrackingPill->setToolTip("Click to start or stop the auto-tracker");
+        this->AutoSavePill->setToolTip("Click to toggle automatic save on each update");
+        this->RevealPill->setToolTip("Click to show / hide item names for uncollected objects");
+
+        sb->addWidget(this->TrackingPill);
+        sb->addWidget(this->AutoSavePill);
+        sb->addWidget(this->RevealPill);
+
+        this->LastActivityLabel = new QLabel(sb);
+        this->LastActivityLabel->setStyleSheet("background: transparent; color: #7a9abf; font-size: 11px;");
+        this->LastActivityLabel->setText("");
+        sb->addPermanentWidget(this->LastActivityLabel, 1);
+
+        // Forward pill clicks to the existing handlers so menu actions and pills stay in sync.
+        // For toggle pills we just flip the menu action's checked state — the toggled signal
+        // on the action already wires AppConfig + pill->SetActive on its own.
+        connect(this->TrackingPill, &StatusPill::Clicked, this->Log, &LogTab::PressLaunchButton);
+        connect(this->AutoSavePill, &StatusPill::Clicked, this, [this]()
+        {
+            this->ui.actionAutoSaving->setChecked(!AppConfig::GetAutoSave());
+        });
+        connect(this->RevealPill, &StatusPill::Clicked, this, [this]()
+        {
+            this->ui.actionRevealUncollectedItems->setChecked(!AppConfig::GetRevealUncollectedItems());
+        });
+    }
+
     // Update game tabs name
     this->UpdateTabNameText(0);
     this->UpdateTabNameText(1);
@@ -295,7 +455,11 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     connect(this->ui.actionHideCollectedFromMap, &QAction::toggled, this, &OoTMMComboTracker::UpdateObjectMapVisibility);
     connect(this->ui.actionHideCollectedFromObjectList, &QAction::toggled, this, &OoTMMComboTracker::UpdateObjectListVisibility);
     connect(this->ui.actionRevealUncollectedItems, &QAction::toggled, this, &OoTMMComboTracker::UpdateRevealUncollectedItems);
-    connect(this->ui.actionAutoSaving, &QAction::toggled, this, &AppConfig::SetAutoSave);
+    connect(this->ui.actionAutoSaving, &QAction::toggled, this, [this](bool checked)
+    {
+        AppConfig::SetAutoSave(checked);
+        if (this->AutoSavePill) this->AutoSavePill->SetActive(checked);
+    });
     connect(this->ui.actionAbout, &QAction::triggered, this, &OoTMMComboTracker::ShowAboutDialog);
     connect(this->ui.actionAutoLoadTrackingFile, &QAction::triggered, this, &AppConfig::SetAutoLoadTrackingFile);
     connect(this->ui.actionAutoLoadSpoilerLog, &QAction::triggered, this, &AppConfig::SetAutoLoadSpoilerLog);
@@ -442,6 +606,8 @@ void OoTMMComboTracker::UpdateRevealUncollectedItems(bool NewValue)
     {
         this->MMTab->GameMaps->ObjectList->viewport()->update();
     }
+
+    if (this->RevealPill) this->RevealPill->SetActive(NewValue);
 }
 
 
@@ -480,6 +646,13 @@ void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, c
             break;
         }
     }
+
+    if (this->LastActivityLabel && ObjectFound)
+    {
+        const QString itemName = (ItemFound && ItemFound->ItemName) ? QString(ItemFound->ItemName) : QString("Item");
+        const QString locName = Game == OOT_GAME ? QString("OoT, ") : QString("MM, ") + GetSceneName(Game, ObjectFound->Scene) + QString(": ") + QString(ObjectFound->Name);
+        this->LastActivityLabel->setText(QString("Last item: %1 @ %2").arg(itemName, locName));
+    }
 }
 
 #pragma endregion
@@ -495,6 +668,17 @@ void OoTMMComboTracker::UpdateTrackedEntrance(SceneEntranceUpdate* OutEntrance, 
     {
         this->CreatePath(AppConfig::GetAutoSavePath());
         GameTab::SaveGameScenes(AppConfig::GetAutoSaveFullPath(), &this->ROMSettings);
+    }
+
+    if (this->LastActivityLabel && OutEntrance)
+    {
+        SceneMetaInfo* fromMeta = GetSceneMetaInfo(OutEntrance->SceneID, OutEntrance->Game);
+        SceneMetaInfo* toMeta   = (InEntrance != nullptr) ? GetSceneMetaInfo(InEntrance->SceneID, InEntrance->Game) : nullptr;
+
+        const QString fromName = (fromMeta && fromMeta->Name) ? QString(fromMeta->Name) : QString::number(OutEntrance->SceneID);
+        const QString toName   = (toMeta   && toMeta->Name)   ? QString(toMeta->Name)   : (InEntrance ? QString::number(InEntrance->SceneID) : QString("?"));
+
+        this->LastActivityLabel->setText(QString("Last entrance: %1 → %2").arg(fromName, toName));
     }
     /*switch (Game)
     {
@@ -640,6 +824,13 @@ void OoTMMComboTracker::UpdateTrackingState(QString NewState, QIcon NewIcon)
 {
     this->ui.actionStartTracking->setText(NewState);
     this->ui.actionStartTracking->setIcon(NewIcon);
+
+    if (this->TrackingPill)
+    {
+        // The action toggles between "Start Tracking" (=> currently inactive) and
+        // "Stop Tracking" (=> currently active).
+        this->TrackingPill->SetActive(NewState.compare("Stop Tracking", Qt::CaseInsensitive) == 0);
+    }
 }
 
 
