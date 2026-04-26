@@ -1761,6 +1761,14 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                 }
             }
 
+            case OOT_GERUDO_FORTRESS:
+            {
+                if (Message.Direction == OUT_MAGIC && Message.EntranceID == OOT_GERUDO_FORTRESS_CAUGHT_ENTR)
+                {
+                    return OOT_GERUDO_FORTRESS_JAIL_ENTR;
+                }
+            }
+
             case OOT_BAZAAR:
             {
                 switch (Message.EntranceID)
@@ -2868,7 +2876,7 @@ void EntranceHelper::ParseOutgoingMessage(EntranceMessage& Message)
     {
         Message.MetaInf = &MMEntrances.at(Message.EntranceID);
     }
-    Message.EntranceStr = Message.MetaInf->FromName + std::string(" -> ") + Message.MetaInf->ToName;
+    Message.EntranceStr = Message.MetaInf->FromName + std::string(" \xE2\x86\x92 ") + Message.MetaInf->ToName;
 }
 
 
@@ -2916,7 +2924,7 @@ std::string EntranceHelper::GetOneWayInName(int Game, uint32_t EntranceID)
         case EntranceType::Normal:
         {   // We need to build the string
 
-            return std::string(entrance->FromName + std::string(" -> ") + entrance->ToName);
+            return std::string(entrance->FromName + std::string(" \xE2\x86\x92 ") + entrance->ToName);
         }
 
         default:
@@ -2975,12 +2983,12 @@ std::string EntranceHelper::GetEntranceSpawnsString(int Game, uint32_t EntranceI
         case EntranceType::One_Way_Out:
         {   // We need to build the string
 
-            return std::string(entrance->FromName + std::string(" -> ") + entrance->ToName);
+            return std::string(entrance->FromName + std::string(" \xE2\x86\x92 ") + entrance->ToName);
         }
 
         default:
         {
-            return std::string(entrance->ToName + std::string(" -> ") + entrance->FromName);
+            return std::string(entrance->ToName + std::string(" \xE2\x86\x92 ") + entrance->FromName);
         }
     }
 
