@@ -5,6 +5,7 @@
 #include <QPixmap>
 #include <QPair>
 #include <QTreeWidget>
+#include <QStyledItemDelegate>
 #include <QCollator>
 #include <QTimer>
 #include <QString>
@@ -13,6 +14,27 @@
 class SceneRenderer;
 class ObjectRenderer;
 class ObjectItemTree;
+
+/* Custom data roles for ObjectItemTree rows. */
+enum {
+    ItemNameRole     = Qt::UserRole + 1,    // QString — the item label, "" when unknown.
+    ObjectStatusRole = Qt::UserRole + 2,    // int — ObjectState cast to int.
+};
+
+
+/*
+*   Two-line item delegate for the object list: icon on the left, object name
+*   on top, item name (or "???") underneath. Categories (top-level rows) keep
+*   the default rendering.
+*/
+class ObjectItemDelegate : public QStyledItemDelegate
+{
+public:
+    explicit ObjectItemDelegate(QObject* Parent = nullptr) : QStyledItemDelegate(Parent) {}
+
+    void paint(QPainter* Painter, const QStyleOptionViewItem& Option, const QModelIndex& Index) const override;
+    QSize sizeHint(const QStyleOptionViewItem& Option, const QModelIndex& Index) const override;
+};
 
 typedef struct ObjectIcon
 {

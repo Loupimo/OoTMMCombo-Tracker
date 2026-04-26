@@ -4,6 +4,10 @@
 #include <QGraphicsSceneHoverEvent>
 #include <QToolTip>
 #include <QCursor>
+#include <QApplication>
+#include <QFontMetrics>
+#include <QPainter>
+#include <QStyle>
 #include <UI/AppConfig.h>
 #include "UI/FilterManager.h"
 
@@ -83,12 +87,45 @@ ObjectItemTree::ObjectItemTree(ObjectInfo* Obj, QColor DefaultColor, ObjectRende
     if (Obj->Item)
     {
         this->Item.setText(0, Obj->Item->ItemName);
+        this->setData(0, ItemNameRole, QString(Obj->Item->ItemName));
     }
     else
     {
         this->Item.setText(0, "Unknown");
+        this->setData(0, ItemNameRole, QString());
     }
     this->setText(0, Object->Name);
+    this->setData(0, ObjectStatusRole, static_cast<int>(this->Object->Status));
+
+    // Per-row icon resolved from the object's MapIcon: specific icon when set,
+    // otherwise the RenderType / Type icon. The categories keep their own icon —
+    // only the leaves use RenderType so e.g. each mask shows its actual artwork
+    // instead of the generic "MASK" category icon.
+    ObjectIcons* iconsRef = ObjectIcons::GetIconsRef();
+    if (iconsRef)
+    {
+        if (Obj->MapIcon == ObjectIconMap::type)
+        {
+            this->setIcon(0, iconsRef->Icons[Obj->Type]);
+        }
+        else if (Obj->MapIcon == ObjectIconMap::render_type)
+        {
+            this->setIcon(0, iconsRef->Icons[Obj->RenderType]);
+        }
+        else
+        {
+            const QPixmap& spe = iconsRef->PixmapSpeIcons[Obj->MapIcon];
+            if (!spe.isNull())
+            {
+                this->setIcon(0, QIcon(spe));
+            }
+            else
+            {
+                this->setIcon(0, iconsRef->Icons[Obj->RenderType]);
+            }
+        }
+    }
+
     this->UpdateTextStyle();
 }
 
@@ -168,6 +205,11 @@ void ObjectItemTree::UpdateIcon(ObjectType Type)
         if (this->GraphItem->scene() == nullptr)
         {   // Only add the item if it is not already in the scene
 
+            if (this->Object->Type == ObjectType::grass)
+            {
+
+            }
+
             this->RendererOwner->SceneOwner->addItem(this->GraphItem);
         }
     }
@@ -201,39 +243,37 @@ void ObjectItemTree::SetListObjectVisibility(bool Visibility)
 void ObjectItemTree::UpdateTextStyle()
 {
     QFont font = this->font(0); // Get the actual font
-    //QColor currentColor = this->foreground(0).color();
 
+    // Object name is shown on the upper line and the item name on the lower line
+    // by ObjectItemDelegate. The state (Hidden / Forced / Collected) drives the
+    // strikethrough + color in the delegate; we just keep the data in sync here.
     if (this->GetStatus() != ObjectState::Hidden)
-    {   // Object is considered as collected
+    {   // Object is considered as collected (Forced or Collected)
 
-        font.setStrikeOut(true);    // Cross out the text
+        font.setStrikeOut(true);
         if (this->GetStatus() == ObjectState::Collected)
         {
-            this->setForeground(0, QColor(this->DefaultTextColor.red(), this->DefaultTextColor.green(), this->DefaultTextColor.blue(), 128)); // (R, G, B, Alpha)
+            this->setForeground(0, QColor(this->DefaultTextColor.red(), this->DefaultTextColor.green(), this->DefaultTextColor.blue(), 128));
         }
         else
         {
-            this->setForeground(0, QColor(147, 112, 249, 128)); // (R, G, B, Alpha)
+            this->setForeground(0, QColor(147, 112, 249, 128));
         }
         if (this->Object->Item)
-        {   // An item is associated to this object
-
+        {
             this->Item.setText(0, this->Object->Item->ItemName);
         }
-
-        this->removeChild(&this->Item);     // Remove just in case the item was already in the list
-        this->addChild(&this->Item);
     }
     else
     {   // Object is considered as hidden
 
         font.setStrikeOut(false);
-        this->setForeground(0, QColor(this->DefaultTextColor.red(), this->DefaultTextColor.green(), this->DefaultTextColor.blue(), 255)); // (R, G, B, Alpha)
-
-        this->removeChild(&this->Item);         // Remove just in case the item was already in the list
-        this->setText(0, this->Object->Name);
+        this->setForeground(0, QColor(this->DefaultTextColor.red(), this->DefaultTextColor.green(), this->DefaultTextColor.blue(), 255));
     }
 
+    this->setText(0, this->Object->Name);
+    this->setData(0, ItemNameRole, this->Object->Item ? QString(this->Object->Item->ItemName) : QString());
+    this->setData(0, ObjectStatusRole, static_cast<int>(this->Object->Status));
     this->setFont(0, font);
 }
 
@@ -258,7 +298,6 @@ void ObjectItemTree::PerformAction()
             return;
         }
         this->Object->Status = ObjectState::Forced;
-        this->setExpanded(true);
         this->RendererOwner->SceneOwner->UpdateRoom(this->Object->RoomID);  // We need to update the room ID in case the selected object is in another room than the active one
         this->RendererOwner->UpdateSceneContext(this->Object->Context);     // We need to update the context in case the selected object is in a different context than the active one
         this->RendererOwner->RefreshObjectCounts(this, 1);                  // Increase the number of discovered object by one
@@ -278,7 +317,6 @@ void ObjectItemTree::PerformAction()
             this->setSelected(false);
         }
         this->Object->Status = ObjectState::Hidden;
-        this->setExpanded(false);
         this->RendererOwner->RefreshObjectCounts(this, -1);                 // Decrease the number of discovered object by one
         
         if (this->GraphItem)
@@ -317,8 +355,9 @@ void ObjectItemTree::PerformAction()
 
         if (AppConfig::GetAutoSnapView())
         {
+            // Expand only the parent category so the row is visible — the row itself
+            // no longer has children, so expanding it would just toggle a chevron.
             this->parent()->setExpanded(true);
-            this->setExpanded(true);
             this->treeWidget()->scrollToItem(this, QAbstractItemView::PositionAtCenter);
             this->treeWidget()->setCurrentItem(this); // The PerformAction will be triggered
         }
@@ -687,3 +726,190 @@ void CountObjectsMatching(ObjectInfo* Objects, size_t Count, FilterManager* Filt
         }
     }
 }
+
+
+#pragma region ObjectItemDelegate
+
+namespace {
+    constexpr int kRowHeight       = 46;   // Total row height for object rows.
+    constexpr int kIconSize        = 32;   // Square icon dimension.
+    constexpr int kPadX            = 8;    // Horizontal padding inside the row.
+    constexpr int kIconTextSpacing = 10;   // Gap between the icon block and the text block.
+    constexpr int kLineSpacing     = 2;    // Vertical gap between the object name and the item name.
+}
+
+
+QSize ObjectItemDelegate::sizeHint(const QStyleOptionViewItem& Option, const QModelIndex& Index) const
+{
+    if (!Index.parent().isValid())
+    {   // Top-level (category) row: keep the default sizing.
+
+        return QStyledItemDelegate::sizeHint(Option, Index);
+    }
+
+    QSize def = QStyledItemDelegate::sizeHint(Option, Index);
+    return QSize(def.width(), kRowHeight);
+}
+
+
+void ObjectItemDelegate::paint(QPainter* Painter, const QStyleOptionViewItem& Option, const QModelIndex& Index) const
+{
+    if (!Index.parent().isValid())
+    {   // Top-level (category) row: keep the default rendering so the existing
+        // CHEST / GRASS / ... headers stay untouched.
+
+        QStyledItemDelegate::paint(Painter, Option, Index);
+        return;
+    }
+
+    if (Index.column() != 0)
+    {   // Object rows only carry data on column 0. The custom layout paints across
+        // the row from column 0; secondary columns just get the standard background
+        // so selection / hover highlights still cover them.
+
+        QStyledItemDelegate::paint(Painter, Option, Index);
+        return;
+    }
+
+    QStyleOptionViewItem opt = Option;
+    initStyleOption(&opt, Index);
+
+    // Paint the standard row chrome (selection / hover background) but suppress the
+    // default text + icon — we paint them ourselves below.
+    opt.text.clear();
+    opt.icon = QIcon();
+    opt.features &= ~QStyleOptionViewItem::HasDecoration;
+
+    QStyle* style = opt.widget ? opt.widget->style() : QApplication::style();
+    style->drawControl(QStyle::CE_ItemViewItem, &opt, Painter, opt.widget);
+
+    Painter->save();
+    Painter->setRenderHint(QPainter::Antialiasing, true);
+    Painter->setRenderHint(QPainter::SmoothPixmapTransform, true);
+
+    const QRect rowRect = Option.rect;
+    const ObjectState status = static_cast<ObjectState>(Index.data(ObjectStatusRole).toInt());
+    const bool collected = (status != ObjectState::Hidden);
+
+    // "Card" highlight for discovered objects: a slightly lighter rounded rect over
+    // the row to make collected entries stand out from the uncollected ones. Forced
+    // entries (manually marked by the user) get an amber tint so they read as
+    // "user-flagged" against both OoT blue and MM violet themes.
+    if (collected && !(Option.state & QStyle::State_Selected))
+    {
+        QRect cardRect = rowRect.adjusted(4, 3, -4, -3);
+        QPainterPath cardPath;
+        cardPath.addRoundedRect(cardRect, 6, 6);
+
+        QColor cardBg = (status == ObjectState::Forced)
+            ? QColor(255, 190, 90, 32)      // amber for user-forced entries
+            : QColor(255, 255, 255, 18);    // neutral white tint for auto-collected
+        Painter->fillPath(cardPath, cardBg);
+    }
+
+    // Resolve the icon: prefer the row's own DecorationRole, fall back to the parent
+    // category icon so all leaves share the chest / grass / scrub artwork without
+    // having to set it on every ObjectItemTree.
+    QIcon icon = qvariant_cast<QIcon>(Index.data(Qt::DecorationRole));
+    if (icon.isNull())
+    {
+        icon = qvariant_cast<QIcon>(Index.parent().data(Qt::DecorationRole));
+    }
+
+    QRect iconRect(rowRect.left() + kPadX, rowRect.top() + (rowRect.height() - kIconSize) / 2, kIconSize, kIconSize);
+
+    // Tinted square behind the icon.
+    QColor iconBg(255, 255, 255, 18);
+    QPainterPath iconBgPath;
+    iconBgPath.addRoundedRect(iconRect, 6, 6);
+    Painter->fillPath(iconBgPath, iconBg);
+
+    if (!icon.isNull())
+    {
+        QPixmap pix = icon.pixmap(QSize(kIconSize - 8, kIconSize - 8));
+        QRect target = pix.rect();
+        target.moveCenter(iconRect.center());
+        Painter->drawPixmap(target, pix);
+    }
+
+    // Text area to the right of the icon.
+    QRect textRect(iconRect.right() + kIconTextSpacing,
+                   rowRect.top(),
+                   rowRect.right() - (iconRect.right() + kIconTextSpacing) - kPadX,
+                   rowRect.height());
+
+    // Object name (top line).
+    QString objectName = Index.data(Qt::DisplayRole).toString();
+
+    QFont nameFont = Option.font;
+    nameFont.setBold(true);
+    nameFont.setPointSizeF(nameFont.pointSizeF() + 0.5);
+    nameFont.setStrikeOut(collected);
+
+    QFontMetrics nameMetrics(nameFont);
+
+    // Item name (bottom line). Empty / unknown is shown as "???".
+    // When the "Reveal Uncollected Items" option is off, uncollected objects also
+    // display "???" — even if their item is known from the spoiler log.
+    QString itemName = Index.data(ItemNameRole).toString();
+    const bool revealUncollected = AppConfig::GetRevealUncollectedItems();
+    if (!collected && !revealUncollected)
+    {
+        itemName = "???";
+    }
+    else if (itemName.isEmpty() || itemName.compare("Unknown", Qt::CaseInsensitive) == 0)
+    {
+        itemName = "???";
+    }
+
+    QFont itemFont = Option.font;
+    itemFont.setBold(false);
+    itemFont.setStrikeOut(collected);
+
+    QFontMetrics itemMetrics(itemFont);
+
+    const int totalTextHeight = nameMetrics.height() + kLineSpacing + itemMetrics.height();
+    int yTop = textRect.top() + (textRect.height() - totalTextHeight) / 2;
+
+    // Color the text based on selection / collection state.
+    QColor nameColor;
+    QColor itemColor;
+
+    if (status == ObjectState::Forced)
+    {   // User-forced entries: amber-tinted text echoing the card bg.
+        nameColor = QColor(248, 200, 120);
+        itemColor = QColor(208, 168, 110, 200);
+    }
+    else if (collected)
+    {   // Auto-collected: dimmer, neutral.
+        nameColor = QColor(204, 218, 240, 150);
+        itemColor = QColor(141, 162, 192, 140);
+    }
+    else
+    {   // Not yet discovered.
+        nameColor = QColor(221, 238, 255);
+        itemColor = QColor(122, 154, 191);
+    }
+
+    if (Option.state & QStyle::State_Selected)
+    {
+        nameColor = (status == ObjectState::Forced) ? QColor(255, 215, 140) : QColor(255, 255, 255);
+        itemColor = collected ? QColor(220, 220, 235, 220) : QColor(190, 200, 220);
+    }
+
+    Painter->setFont(nameFont);
+    Painter->setPen(nameColor);
+    Painter->drawText(QRect(textRect.left(), yTop, textRect.width(), nameMetrics.height()),
+                      Qt::AlignLeft | Qt::AlignVCenter,
+                      nameMetrics.elidedText(objectName, Qt::ElideRight, textRect.width()));
+
+    Painter->setFont(itemFont);
+    Painter->setPen(itemColor);
+    Painter->drawText(QRect(textRect.left(), yTop + nameMetrics.height() + kLineSpacing, textRect.width(), itemMetrics.height()),
+                      Qt::AlignLeft | Qt::AlignVCenter,
+                      itemMetrics.elidedText(itemName, Qt::ElideRight, textRect.width()));
+
+    Painter->restore();
+}
+
+#pragma endregion

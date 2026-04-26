@@ -14,6 +14,43 @@
 
 #include <algorithm>
 
+namespace {
+
+/*
+*   Vertical header that bypasses the global QSS — which sets a flat
+*   background-color on QHeaderView::section and would otherwise mask the
+*   per-row status color (red / yellow / green) provided by the model via
+*   Qt::BackgroundRole. Painting the section ourselves restores the slim
+*   colored stripe on the left edge of the global entrance table.
+*/
+class StatusHeaderView : public QHeaderView
+{
+public:
+    explicit StatusHeaderView(QWidget* Parent = nullptr) : QHeaderView(Qt::Vertical, Parent)
+    {
+        // Strip any inherited stylesheet so QSS rules from the app don't repaint
+        // the section background on top of our own paint.
+        this->setStyleSheet("QHeaderView, QHeaderView::section { background: transparent; border: none; padding: 0; margin: 0; }");
+    }
+
+protected:
+    void paintSection(QPainter* Painter, const QRect& Rect, int LogicalIndex) const override
+    {
+        if (!this->model())
+        {
+            Painter->fillRect(Rect, QColor(0, 0, 0, 0));
+            return;
+        }
+
+        const QVariant bg = this->model()->headerData(LogicalIndex, Qt::Vertical, Qt::BackgroundRole);
+        const QColor color = bg.isValid() ? bg.value<QColor>() : QColor(60, 60, 60);
+
+        Painter->fillRect(Rect, color);
+    }
+};
+
+} // namespace
+
 #pragma region // GlobalEntranceTableModel
 
 // ============================================
@@ -515,9 +552,16 @@ AllEntranceView::AllEntranceView(EntranceGameTabView* Parent) : QWidget(Parent)
     this->Table->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
     this->Table->horizontalHeader()->setSectionResizeMode(3, QHeaderView::Stretch);
     this->Table->horizontalHeader()->setSortIndicator(0, Qt::AscendingOrder);
-    this->Table->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
-    this->Table->verticalHeader()->setDefaultSectionSize(20);
-    this->Table->verticalHeader()->setSectionsClickable(false);
+    // Replace the default vertical header with one that actually paints the
+    // model's per-row status color (red / yellow / green) — the global QSS
+    // overrides the BackgroundRole on QHeaderView::section, so a custom
+    // paintSection is the only reliable way to get the stripe back.
+    StatusHeaderView* statusHeader = new StatusHeaderView(this->Table);
+    this->Table->setVerticalHeader(statusHeader);
+    statusHeader->setSectionResizeMode(QHeaderView::Fixed);
+    statusHeader->setDefaultSectionSize(20);
+    statusHeader->setSectionsClickable(false);
+    statusHeader->setFixedWidth(6);
     this->Table->viewport()->setAttribute(Qt::WA_OpaquePaintEvent, true);
     this->Table->viewport()->setAttribute(Qt::WA_NoSystemBackground, true);
     this->Table->viewport()->setAttribute(Qt::WA_StaticContents, true);

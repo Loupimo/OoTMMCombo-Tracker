@@ -13,6 +13,7 @@
 #include "UI/GameTab.h"
 #include "UI/FilterManager.h"
 #include "UI/AppConfig.h"
+#include "UI/ObjectRenderer.h"
 
 namespace {
 
@@ -371,6 +372,8 @@ MapTab::MapTab(GameTab* Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes, 
     this->ObjectList->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
     this->ObjectList->header()->setStretchLastSection(false);
     this->ObjectList->setStyleSheet(treeHoverSelectQss);
+    // Two-line rendering for object rows (icon + object name + item / "???").
+    this->ObjectList->setItemDelegate(new ObjectItemDelegate(this->ObjectList));
     this->ObjectTreeToggleButton = new QPushButton("Collapse All", this);
     this->ObjectTreeLayout->addLayout(this->ObjectBarLayout);
     this->ObjectTreeLayout->addWidget(this->ObjectTreeToggleButton);
@@ -433,7 +436,7 @@ MapTab::MapTab(GameTab* Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes, 
 
     // Set the maximum width for the lists
     this->MapContainer->setMaximumWidth(320);
-    this->ObjectContainer->setMaximumWidth(320);
+    this->ObjectContainer->setMaximumWidth(360);
 
     // Add map -> view -> object to the splitter layout
     this->LayoutSplitter->addWidget(this->MapContainer);

@@ -94,6 +94,13 @@ public:
     */
     void UpdateObjectListVisibility(bool NewValue);
 
+    /*
+    *   Toggle whether uncollected objects display their item label or "???".
+    *
+    *   @param NewValue       True to show the item label, false to display "???" instead.
+    */
+    void UpdateRevealUncollectedItems(bool NewValue);
+
 private:
 
     /*

@@ -104,6 +104,11 @@ bool AppConfig::GetHideCollectedFromObjectList()
     return Config.Settings.value("HideCollectedFromObjectList", false).toBool();
 }
 
+bool AppConfig::GetRevealUncollectedItems()
+{
+    return Config.Settings.value("RevealUncollectedItems", true).toBool();
+}
+
 void AppConfig::SetAutoSavePath(QString NewFilePath)
 {
     Config.CurrentAutoSaveFile = NewFilePath;
@@ -132,6 +137,11 @@ void AppConfig::SetHideCollectedFromMap(bool NewValue)
 void AppConfig::SetHideCollectedFromObjectList(bool NewValue)
 {
     Config.Settings.setValue("HideCollectedFromObjectList", NewValue);
+}
+
+void AppConfig::SetRevealUncollectedItems(bool NewValue)
+{
+    Config.Settings.setValue("RevealUncollectedItems", NewValue);
 }
 
 #pragma endregion

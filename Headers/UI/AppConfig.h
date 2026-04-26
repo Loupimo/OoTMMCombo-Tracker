@@ -163,6 +163,13 @@ public:
     static bool GetHideCollectedFromObjectList();
 
     /*
+    *   Tells if uncollected objects should reveal their item label.
+    *
+    *   @return <b>True</b> if the item label is shown for uncollected objects (default), <b>false</b> to display "???" instead.
+    */
+    static bool GetRevealUncollectedItems();
+
+    /*
     *   Sets the auto save file path.
     *
     *   @param NewValue The new auto snap view value.
@@ -203,6 +210,13 @@ public:
     *   @param NewValue The new hide collected object from object list value.
     */
     static void SetHideCollectedFromObjectList(bool NewValue);
+
+    /*
+    *   Sets whether uncollected objects reveal their item label.
+    *
+    *   @param NewValue True to show the item label, false to display "???" instead.
+    */
+    static void SetRevealUncollectedItems(bool NewValue);
 
 #pragma endregion
 

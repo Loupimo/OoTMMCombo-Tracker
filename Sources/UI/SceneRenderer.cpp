@@ -550,7 +550,9 @@ void SceneRenderer::RefreshSceneContext(bool Context)
             objRdr->UpdateText();
             objRdr->RenderObjectToScene(this->CurrContext);
             //this->ObjectsTree->addTopLevelItem(objRdr->ObjCat);
-            objRdr->ObjCat->setExpanded(true);
+            // Categories are expanded once at scene construction (SceneRenderer ctor);
+            // refreshing the context (room change, object click, ...) must preserve
+            // whatever expansion state the user currently has.
         }
     }
 }

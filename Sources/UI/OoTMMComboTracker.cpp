@@ -251,6 +251,7 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     this->ui.actionAutoLoadSpoilerLog->setChecked(AppConfig::GetAutoLoadSpoilerLog());
     this->ui.actionHideCollectedFromObjectList->setChecked(AppConfig::GetHideCollectedFromObjectList());
     this->ui.actionHideCollectedFromMap->setChecked(AppConfig::GetHideCollectedFromMap());
+    this->ui.actionRevealUncollectedItems->setChecked(AppConfig::GetRevealUncollectedItems());
 
     // Recent files sub menu
     for (int i = 0; i < MaxRecentFiles; ++i)
@@ -293,6 +294,7 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     connect(this->ui.actionAutoZoom, &QAction::toggled, this, &AppConfig::SetAutoZoom);
     connect(this->ui.actionHideCollectedFromMap, &QAction::toggled, this, &OoTMMComboTracker::UpdateObjectMapVisibility);
     connect(this->ui.actionHideCollectedFromObjectList, &QAction::toggled, this, &OoTMMComboTracker::UpdateObjectListVisibility);
+    connect(this->ui.actionRevealUncollectedItems, &QAction::toggled, this, &OoTMMComboTracker::UpdateRevealUncollectedItems);
     connect(this->ui.actionAutoSaving, &QAction::toggled, this, &AppConfig::SetAutoSave);
     connect(this->ui.actionAbout, &QAction::triggered, this, &OoTMMComboTracker::ShowAboutDialog);
     connect(this->ui.actionAutoLoadTrackingFile, &QAction::triggered, this, &AppConfig::SetAutoLoadTrackingFile);
@@ -423,6 +425,23 @@ void OoTMMComboTracker::UpdateObjectListVisibility(bool NewValue)
 {
     AppConfig::SetHideCollectedFromObjectList(NewValue);
     this->UpdateObjectVisibilityForAllGames();
+}
+
+
+void OoTMMComboTracker::UpdateRevealUncollectedItems(bool NewValue)
+{
+    AppConfig::SetRevealUncollectedItems(NewValue);
+
+    // Just trigger a repaint — the data on each ObjectItemTree is already up-to-date,
+    // it's only the delegate that branches on the option to display "???" or the item.
+    if (this->OoTTab && this->OoTTab->GameMaps && this->OoTTab->GameMaps->ObjectList)
+    {
+        this->OoTTab->GameMaps->ObjectList->viewport()->update();
+    }
+    if (this->MMTab && this->MMTab->GameMaps && this->MMTab->GameMaps->ObjectList)
+    {
+        this->MMTab->GameMaps->ObjectList->viewport()->update();
+    }
 }
 
 

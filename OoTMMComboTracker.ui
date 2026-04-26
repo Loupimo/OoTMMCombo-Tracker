@@ -70,6 +70,7 @@
     </widget>
     <addaction name="actionAutoSnapView"/>
     <addaction name="actionAutoZoom"/>
+    <addaction name="actionRevealUncollectedItems"/>
     <addaction name="menuHideCollectedObject"/>
     <addaction name="separator"/>
     <addaction name="actionAutoSaving"/>
@@ -248,6 +249,20 @@
    </property>
    <property name="text">
     <string>From Object List</string>
+   </property>
+  </action>
+  <action name="actionRevealUncollectedItems">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Reveal Uncollected Items</string>
+   </property>
+   <property name="toolTip">
+    <string>When off, uncollected objects display "???" even if their item is known from the spoiler log</string>
    </property>
   </action>
  </widget>

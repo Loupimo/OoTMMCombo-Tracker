@@ -81,7 +81,7 @@ OOT_GRANNY_POTION_SHOP;Granny Potion Shop;./Resources/OoT/Kakariko/Granny_Potion
 OOT_GANON_BATTLE_ARENA;Ganon Battle Arena;;;None;false;oot
 OOT_HOUSE_OF_SKULLTULA;House of Skulltula;./Resources/OoT/Kakariko/House_Skulltula.png;./Resources/OoT/Kakariko/House_Skulltula_Map.png;Kakariko;false;oot
 OOT_HYRULE_FIELD;Hyrule Field;./Resources/OoT/Hyrule/Hyrule_Field.png;./Resources/OoT/Hyrule/Hyrule_Field_Map.jpg;Hyrule;true;oot
-OOT_KAKARIKO_VILLAGE;Kakariko's Village;./Resources/OoT/Kakariko/Kakariko.png;./Resources/OoT/Kakariko/Kakariko_Map.png;Kakariko;true;oot
+OOT_KAKARIKO_VILLAGE;Kakariko's Village;./Resources/OoT/Kakariko/Kakariko.png;./Resources/OoT/Kakariko/Kakariko_Map.jpg;Kakariko;true;oot
 OOT_GRAVEYARD;Graveyard;./Resources/OoT/Graveyard/Graveyard.png;./Resources/OoT/Graveyard/Graveyard_Map.jpg;Graveyard;true;oot
 OOT_ZORA_RIVER;Zora's River;./Resources/OoT/Zora_River/Zora_River.png;./Resources/OoT/Zora_River/Zora_River_Map.png;Zora_River;true;oot
 OOT_KOKIRI_FOREST;Kokiri Forest;./Resources/OoT/Kokiri_Forest/Kokiri_Forest.png;./Resources/OoT/Kokiri_Forest/Kokiri_Forest_Map.png;Kokiri_Forest;true;oot

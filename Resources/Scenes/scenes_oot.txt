@@ -80,7 +80,7 @@
 	{ "Ganon Battle Arena", "", "", (uint8_t) OoTRegions::None, false, GameLayout::oot },
 	{ "House of Skulltula", "./Resources/OoT/Kakariko/House_Skulltula.png", "./Resources/OoT/Kakariko/House_Skulltula_Map.png", (uint8_t) OoTRegions::Kakariko, false, GameLayout::oot },
 	{ "Hyrule Field", "./Resources/OoT/Hyrule/Hyrule_Field.png", "./Resources/OoT/Hyrule/Hyrule_Field_Map.jpg", (uint8_t) OoTRegions::Hyrule, true, GameLayout::oot },
-	{ "Kakariko's Village", "./Resources/OoT/Kakariko/Kakariko.png", "./Resources/OoT/Kakariko/Kakariko_Map.png", (uint8_t) OoTRegions::Kakariko, true, GameLayout::oot },
+	{ "Kakariko's Village", "./Resources/OoT/Kakariko/Kakariko.png", "./Resources/OoT/Kakariko/Kakariko_Map.jpg", (uint8_t) OoTRegions::Kakariko, true, GameLayout::oot },
 	{ "Graveyard", "./Resources/OoT/Graveyard/Graveyard.png", "./Resources/OoT/Graveyard/Graveyard_Map.jpg", (uint8_t) OoTRegions::Graveyard, true, GameLayout::oot },
 	{ "Zora's River", "./Resources/OoT/Zora_River/Zora_River.png", "./Resources/OoT/Zora_River/Zora_River_Map.png", (uint8_t) OoTRegions::Zora_River, true, GameLayout::oot },
 	{ "Kokiri Forest", "./Resources/OoT/Kokiri_Forest/Kokiri_Forest.png", "./Resources/OoT/Kokiri_Forest/Kokiri_Forest_Map.png", (uint8_t) OoTRegions::Kokiri_Forest, true, GameLayout::oot },
