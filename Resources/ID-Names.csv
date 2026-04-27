@@ -67,7 +67,7 @@ MM_MASK_ALL_NIGHT;All-Night Mask;night
 MM_MASK_BLAST;Blast Mask (MM);blast
 MM_MASK_BREMEN;Bremen Mask;bremen
 MM_MASK_BUNNY;Bunny Hood (MM);bunny
-MM_MASK_CAPTAIN;Captain's Hat;capitain
+MM_MASK_CAPTAIN;Captain's Hat;captain
 MM_MASK_COUPLE;Couple's Mask;couple
 MM_MASK_DEKU;Deku Mask;deku
 MM_MASK_DON_GERO;Don Gero's Mask;gero
@@ -111,7 +111,7 @@ MM_POTION_RED;Red Potion (MM);red_potion
 MM_POWDER_KEG;Powder Keg;powder
 MM_RECOVERY_HEART;Recovery Heart (MM);heart
 MM_REMAINS_GOHT;Goht's Remains;goht
-MM_REMAINS_GYORG;Gyorg's Remains;hgyorg
+MM_REMAINS_GYORG;Gyorg's Remains;gyorg
 MM_REMAINS_ODOLWA;Odolwa's Remains;odolwa
 MM_REMAINS_TWINMOLD;Twinmold's Remains;twinmold
 MM_ROOM_KEY;Room Key;key

@@ -2149,7 +2149,7 @@ TRADE_EYE_DROPS;OOT_LABORATORY;Eye Drops;OOT Laboratory Eye Drops;npc;592;449;0;
 0x00002;OOT_LABORATORY;Rupee 2;OOT Laboratory Rupee 2;rupee;541;559;0;OOT_LABORATORY;rupee;render_type;All;0;oot;overworld;;
 0x00003;OOT_LABORATORY;Rupee 3;OOT Laboratory Rupee 3;rupee;636;634;0;OOT_LABORATORY;rupee;render_type;All;0;oot;overworld;;
 0x1f;OOT_LAIR_BARINADE;Heart Container;OOT Jabu-Jabu Boss Container;collectible;1247;255;0;OOT_INSIDE_JABU_JABU;heart_container;render_type;All;0;all;dungeon;;
-BLUE_WARP_BARINADE;OOT_LAIR_BARINADE;Zora's Sapphire;OOT Jabu-Jabu Boss;npc;1295;255;0;OOT_INSIDE_JABU_JABU;npc;saphir;All;0;all;dungeon;;
+BLUE_WARP_BARINADE;OOT_LAIR_BARINADE;Zora's Sapphire;OOT Jabu-Jabu Boss;npc;1295;255;0;OOT_INSIDE_JABU_JABU;npc;sapphire;All;0;all;dungeon;;
 0x0101;OOT_LAIR_BARINADE;Boss Pot 1;OOT Jabu-Jabu Boss Pot 1;pot;1160;193;0;OOT_INSIDE_JABU_JABU;pot;render_type;All;0;all;dungeon;;
 0x0102;OOT_LAIR_BARINADE;Boss Pot 2;OOT Jabu-Jabu Boss Pot 2;pot;1157;321;0;OOT_INSIDE_JABU_JABU;pot;render_type;All;0;all;dungeon;;
 0x0103;OOT_LAIR_BARINADE;Boss Pot 3;OOT Jabu-Jabu Boss Pot 3;pot;1223;387;0;OOT_INSIDE_JABU_JABU;pot;render_type;All;0;all;dungeon;;

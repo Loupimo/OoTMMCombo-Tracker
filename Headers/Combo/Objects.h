@@ -5,10 +5,11 @@
 #include "Multi/API.h"
 #include "Scenes.h"
 #include "NPC.h"
-#include "Items.h"
 #include "Multi/Game.h"
 
 class SceneInfo;
+struct ItemInfo;
+struct ComboItem;
 
 enum ObjectState
 {

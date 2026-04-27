@@ -14,11 +14,30 @@ typedef struct ComboItem
 } ComboItem;
 
 
+/*
+*   Render reference for an item icon. An item can either point to a specific
+*   icon (entry of SpecificIconsMetaInfo via ObjectIconMap) or to a common one
+*   (entry of IconsMetaInfo via ObjectType). Implicit constructors let item
+*   tables keep the natural { ..., ObjectIconMap::xxx } / { ..., ObjectType::xxx }
+*   initializer syntax without forcing callers to choose a tag manually.
+*/
+typedef struct ItemRenderIcon
+{
+    bool UseSpecific;               // True = use SpecificIcon (ObjectIconMap); false = use CommonIcon (ObjectType).
+    ObjectIconMap SpecificIcon;     // The specific icon to render, indexed in SpecificIconsMetaInfo.
+    ObjectType CommonIcon;          // The common icon to render, indexed in IconsMetaInfo.
+
+    constexpr ItemRenderIcon() : UseSpecific(false), SpecificIcon(ObjectIconMap::type), CommonIcon(ObjectType::none) {}
+    constexpr ItemRenderIcon(ObjectIconMap Icon) : UseSpecific(true), SpecificIcon(Icon), CommonIcon(ObjectType::none) {}
+    constexpr ItemRenderIcon(ObjectType Icon) : UseSpecific(false), SpecificIcon(ObjectIconMap::type), CommonIcon(Icon) {}
+} ItemRenderIcon;
+
+
 typedef struct ItemInfo
 {
 	uint32_t ItemID;
 	const char* ItemName;
-    ObjectIconMap RenderType;
+    ItemRenderIcon RenderType;
 } ItemInfo;
 
 
