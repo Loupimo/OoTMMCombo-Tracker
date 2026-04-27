@@ -8,10 +8,13 @@ excludeSpoiler = ["INSIDE_EGGS", "MARKET", "MOUNTAIN_VILLAGE", "TWIN_ISLANDS", "
 def wrap_cpp_file(outfile, content, game):
     if (game == "OOT_"):
         pragmaGame = "OOT"
+        includePrefix = "OoT"
     else:
         pragmaGame = "MM"
+        includePrefix = "MM"
 
-    header = "#pragma once\n\n/*\n*	IMPORTANT NOTE: This file should only be include one time as all of these object arrays are not constant / static and should exist only one time !\n*\t\t\t\t\tThey were part of Objects.cpp but were moved here for clarity and IDE lagging\n*\n*	Currently included by Objects.cpp\n*/\n\n#include \"Objects.h\"\n#include \"Scenes.h\"\n\n#pragma region " + pragmaGame
+    #header = "#pragma once\n\n/*\n*	IMPORTANT NOTE: This file should only be include one time as all of these object arrays are not constant / static and should exist only one time !\n*\t\t\t\t\tThey were part of Objects.cpp but were moved here for clarity and IDE lagging\n*\n*	Currently included by Objects.cpp\n*/\n\n#include \"Objects.h\"\n#include \"Scenes.h\"\n\n#pragma region " + pragmaGame
+    header = "#include \"Combo/" + includePrefix + "ObjectScene.h\"\n#include \"Combo/Objects.h\"\n#include \"Combo/Scenes.h\"\n\n#pragma region " + pragmaGame
     outfile.write(header + "\n" + content + "\n" + "#pragma endregion")
     
 
@@ -124,14 +127,14 @@ def parse_file2(input_file, output_file, prefix):
         for r in fin:
             le = len(fin[r])
             i = 0
-            strb = "\nconst size_t " + r + "NumOfObjs = " + str(le) + ";\nObjectInfo " + r + "SceneObjects [" + r + "NumOfObjs" + "] =\n{\n"
+            strb = "\nconst size_t " + r + "NumOfObjs = " + str(le) + ";\nstatic ObjectInfo " + r + "SceneObjects_Data [" + r + "NumOfObjs" + "] =\n{\n"
             #strb = "\nCreateObjectsForScene(" + r + ", " + str(le) + ",\n"
             for u in fin[r]:
                 i = i + 1
                 strb = strb + u 
                 if i < le:
                     strb = strb + ",\n"
-            strb = strb + "\n};\n"
+            strb = strb + "\n};\nObjectInfo * " + r + "SceneObjects = " + r + "SceneObjects_Data;\n"
             #strb = strb + ")\n"
             #print(strb)
             content += strb
@@ -355,14 +358,14 @@ def parse_settings(input_file, output_file):
 # Exemple d'utilisation
 input_file = '.\\pool_mm.csv'
 #output_file = '.\\pool_mm.txt'
-cpp_file = '..\\..\\Headers\\Combo\\MMObjectScene.h'
+cpp_file = '..\\..\\Sources\\Combo\\MMObjectScene.cpp'
 parse_file2(input_file, cpp_file, "MM_")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{cpp_file}'.")
 #
 input_file = '.\\pool_oot.csv'
 #output_file = '.\\pool_oot.txt'
-cpp_file = '..\\..\\Headers\\Combo\\OoTObjectScene.h'
+cpp_file = '..\\..\\Sources\\Combo\\OoTObjectScene.cpp'
 parse_file2(input_file, cpp_file, "OOT_")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{cpp_file}'.")

@@ -163,6 +163,12 @@
     <ClCompile Include="Sources\UI\Icons.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Combo\OoTObjectScene.cpp">
+      <Filter>Source Files\Combo</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Combo\MMObjectScene.cpp">
+      <Filter>Source Files\Combo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Multi\API.h">
