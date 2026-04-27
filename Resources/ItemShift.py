@@ -959,13 +959,16 @@ with open(input_file, "r", newline='', encoding='utf-8') as csvfile_in, \
     currnum = 1
     for currItem in itemOrder:
         currName = df[df['ID'] == currItem]
+        currRender = ""
         if len(currName['Name'].values) > 0:
+            tmpItem = currName
             currName = currName['Name'].values[0]
+            currRender = tmpItem['Render_Type'].values[0]
         else:
             currName = unkItems[currItem]
 
         new_hex = "{ " f"0x{currnum:X}"  # hex en majuscules
-        fin_row = new_hex + ', \"' + currName + "\" },\n"
+        fin_row = new_hex + ', \"' + currName + "\", ObjectIconMap::" + str(currRender) + " },\n"
         csvfile_out.write(fin_row)
         currnum = currnum + 1
 

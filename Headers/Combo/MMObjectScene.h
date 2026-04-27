@@ -1084,10 +1084,10 @@ const size_t MM_FAIRY_FOUNTAINNumOfObjs = 6;
 ObjectInfo MM_FAIRY_FOUNTAINSceneObjects [MM_FAIRY_FOUNTAINNumOfObjs] =
 {
 	{ GREAT_FAIRY_TOWN, MM_FAIRY_FOUNTAIN, "Great Fairy - Link", "MM Clock Town Great Fairy", ObjectType::npc, {471, 310, 0}, MM_FAIRY_CLOCK_TOWN, ObjectType::mask, ObjectIconMap::fairy_mask, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Bring the <b>Stray Fairy (Town)</b> back in human form<br><br><b>Requirements:</b><br>- Stray Fairy (Town)" },
-	{ GREAT_FAIRY_TOWN_ALT, MM_FAIRY_FOUNTAIN, "Great Fairy - Mojo", "MM Clock Town Great Fairy Alt", ObjectType::npc, {471, 266, 0}, MM_FAIRY_CLOCK_TOWN, ObjectType::npc, ObjectIconMap::magic, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Bring the <b>Stray Fairy (Town)</b> back in deku form<br><br><b>Requirements:</b><br>- Stray Fairy (Town)<br>- Deku Mask" },
+	{ GREAT_FAIRY_TOWN_ALT, MM_FAIRY_FOUNTAIN, "Great Fairy - Mojo", "MM Clock Town Great Fairy Alt", ObjectType::npc, {471, 266, 0}, MM_FAIRY_CLOCK_TOWN, ObjectType::npc, ObjectIconMap::magic_upgrade, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Bring the <b>Stray Fairy (Town)</b> back in deku form<br><br><b>Requirements:</b><br>- Stray Fairy (Town)<br>- Deku Mask" },
 	{ GREAT_FAIRY_OCEAN, MM_FAIRY_FOUNTAIN, "Double Defense", "MM Great Bay Great Fairy", ObjectType::npc, {490, 188, 0}, MM_FAIRY_GREAT_BAY_COAST, ObjectType::npc, ObjectIconMap::defense, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Bring all the <b>Stray Fairy (Great Bay)</b> back to the fountain<br><br><b>Requirements:</b><br>- Stray Fairy (Great Bay)" },
 	{ GREAT_FAIRY_VALLEY, MM_FAIRY_FOUNTAIN, "Great Fairy's Sword", "MM Ikana Great Fairy", ObjectType::npc, {460, 195, 0}, MM_FAIRY_IKANA, ObjectType::sword, ObjectIconMap::fairy_sword, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Bring all the <b>Stray Fairy (Stone Tower)</b> back to the fountain<br><br><b>Requirements:</b><br>- Stray Fairy (Stone Tower)" },
-	{ GREAT_FAIRY_MOUNTAIN, MM_FAIRY_FOUNTAIN, "Large Magic Upgrade", "MM Snowhead Great Fairy", ObjectType::npc, {478, 173, 0}, MM_FAIRY_SNOWHEAD, ObjectType::npc, ObjectIconMap::double_magic, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Bring all the <b>Stray Fairy (Snowhead)</b> back to the fountain<br><br><b>Requirements:</b><br>- Stray Fairy (Snowhead)" },
+	{ GREAT_FAIRY_MOUNTAIN, MM_FAIRY_FOUNTAIN, "Large Magic Upgrade", "MM Snowhead Great Fairy", ObjectType::npc, {478, 173, 0}, MM_FAIRY_SNOWHEAD, ObjectType::npc, ObjectIconMap::large_magic_upgrade, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Bring all the <b>Stray Fairy (Snowhead)</b> back to the fountain<br><br><b>Requirements:</b><br>- Stray Fairy (Snowhead)" },
 	{ GREAT_FAIRY_SWAMP, MM_FAIRY_FOUNTAIN, "Super Spin Attack", "MM Woodfall Great Fairy", ObjectType::npc, {478, 159, 0}, MM_FAIRY_WOODFALL, ObjectType::npc, ObjectIconMap::spin, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Bring all the <b>Stray Fairy (Woodfall)</b> back to the fountain<br><br><b>Requirements:</b><br>- Stray Fairy (Woodfall)" }
 };
 
@@ -1095,7 +1095,7 @@ const size_t MM_FAIRY_CLOCK_TOWNNumOfObjs = 2;
 ObjectInfo MM_FAIRY_CLOCK_TOWNSceneObjects [MM_FAIRY_CLOCK_TOWNNumOfObjs] =
 {
 	{ GREAT_FAIRY_TOWN, MM_FAIRY_FOUNTAIN, "Great Fairy - Link", "MM Clock Town Great Fairy", ObjectType::npc, {471, 310, 0}, MM_FAIRY_CLOCK_TOWN, ObjectType::mask, ObjectIconMap::fairy_mask, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Bring the <b>Stray Fairy (Town)</b> back in human form<br><br><b>Requirements:</b><br>- Stray Fairy (Town)" },
-	{ GREAT_FAIRY_TOWN_ALT, MM_FAIRY_FOUNTAIN, "Great Fairy - Mojo", "MM Clock Town Great Fairy Alt", ObjectType::npc, {471, 266, 0}, MM_FAIRY_CLOCK_TOWN, ObjectType::npc, ObjectIconMap::magic, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Bring the <b>Stray Fairy (Town)</b> back in deku form<br><br><b>Requirements:</b><br>- Stray Fairy (Town)<br>- Deku Mask" }
+	{ GREAT_FAIRY_TOWN_ALT, MM_FAIRY_FOUNTAIN, "Great Fairy - Mojo", "MM Clock Town Great Fairy Alt", ObjectType::npc, {471, 266, 0}, MM_FAIRY_CLOCK_TOWN, ObjectType::npc, ObjectIconMap::magic_upgrade, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Bring the <b>Stray Fairy (Town)</b> back in deku form<br><br><b>Requirements:</b><br>- Stray Fairy (Town)<br>- Deku Mask" }
 };
 
 const size_t MM_FAIRY_GREAT_BAY_COASTNumOfObjs = 1;
@@ -1113,7 +1113,7 @@ ObjectInfo MM_FAIRY_IKANASceneObjects [MM_FAIRY_IKANANumOfObjs] =
 const size_t MM_FAIRY_SNOWHEADNumOfObjs = 1;
 ObjectInfo MM_FAIRY_SNOWHEADSceneObjects [MM_FAIRY_SNOWHEADNumOfObjs] =
 {
-	{ GREAT_FAIRY_MOUNTAIN, MM_FAIRY_FOUNTAIN, "Large Magic Upgrade", "MM Snowhead Great Fairy", ObjectType::npc, {478, 173, 0}, MM_FAIRY_SNOWHEAD, ObjectType::npc, ObjectIconMap::double_magic, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Bring all the <b>Stray Fairy (Snowhead)</b> back to the fountain<br><br><b>Requirements:</b><br>- Stray Fairy (Snowhead)" }
+	{ GREAT_FAIRY_MOUNTAIN, MM_FAIRY_FOUNTAIN, "Large Magic Upgrade", "MM Snowhead Great Fairy", ObjectType::npc, {478, 173, 0}, MM_FAIRY_SNOWHEAD, ObjectType::npc, ObjectIconMap::large_magic_upgrade, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Bring all the <b>Stray Fairy (Snowhead)</b> back to the fountain<br><br><b>Requirements:</b><br>- Stray Fairy (Snowhead)" }
 };
 
 const size_t MM_FAIRY_WOODFALLNumOfObjs = 1;

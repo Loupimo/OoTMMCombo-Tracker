@@ -205,11 +205,6 @@ void ObjectItemTree::UpdateIcon(ObjectType Type)
         if (this->GraphItem->scene() == nullptr)
         {   // Only add the item if it is not already in the scene
 
-            if (this->Object->Type == ObjectType::grass)
-            {
-
-            }
-
             this->RendererOwner->SceneOwner->addItem(this->GraphItem);
         }
     }

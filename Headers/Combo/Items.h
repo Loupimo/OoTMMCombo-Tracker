@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Multi/API.h"
+#include "Combo/Objects.h"
 #include <QString>
 
 typedef struct ComboItem
@@ -17,6 +18,7 @@ typedef struct ItemInfo
 {
 	uint32_t ItemID;
 	const char* ItemName;
+    ObjectIconMap RenderType;
 } ItemInfo;
 
 

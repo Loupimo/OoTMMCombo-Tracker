@@ -1226,21 +1226,21 @@ ObjectInfo OOT_GREAT_FAIRY_NAYRUSceneObjects [OOT_GREAT_FAIRY_NAYRUNumOfObjs] =
 const size_t OOT_GREAT_FAIRY_FOUNTAIN_UPGRADESNumOfObjs = 3;
 ObjectInfo OOT_GREAT_FAIRY_FOUNTAIN_UPGRADESSceneObjects [OOT_GREAT_FAIRY_FOUNTAIN_UPGRADESNumOfObjs] =
 {
-	{ FAIRY_MAGIC_UPGRADE, OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES, "Magic Upgrade", "OOT Great Fairy Magic Upgrade", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC, ObjectType::npc, ObjectIconMap::magic, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
-	{ FAIRY_MAGIC_UPGRADE2, OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES, "Large Magic Upgrade", "OOT Great Fairy Magic Upgrade 2", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC2, ObjectType::npc, ObjectIconMap::double_magic, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ FAIRY_MAGIC_UPGRADE, OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES, "Magic Upgrade", "OOT Great Fairy Magic Upgrade", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC, ObjectType::npc, ObjectIconMap::magic_upgrade, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ FAIRY_MAGIC_UPGRADE2, OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES, "Large Magic Upgrade", "OOT Great Fairy Magic Upgrade 2", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC2, ObjectType::npc, ObjectIconMap::large_magic_upgrade, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ FAIRY_DEFENSE_UPGRADE, OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES, "Double Defense Upgrade", "OOT Great Fairy Defense Upgrade", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_CASTLE, ObjectType::npc, ObjectIconMap::defense, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 
 const size_t OOT_GREAT_FAIRY_MAGICNumOfObjs = 1;
 ObjectInfo OOT_GREAT_FAIRY_MAGICSceneObjects [OOT_GREAT_FAIRY_MAGICNumOfObjs] =
 {
-	{ FAIRY_MAGIC_UPGRADE, OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES, "Magic Upgrade", "OOT Great Fairy Magic Upgrade", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC, ObjectType::npc, ObjectIconMap::magic, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
+	{ FAIRY_MAGIC_UPGRADE, OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES, "Magic Upgrade", "OOT Great Fairy Magic Upgrade", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC, ObjectType::npc, ObjectIconMap::magic_upgrade, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 
 const size_t OOT_GREAT_FAIRY_MAGIC2NumOfObjs = 1;
 ObjectInfo OOT_GREAT_FAIRY_MAGIC2SceneObjects [OOT_GREAT_FAIRY_MAGIC2NumOfObjs] =
 {
-	{ FAIRY_MAGIC_UPGRADE2, OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES, "Large Magic Upgrade", "OOT Great Fairy Magic Upgrade 2", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC2, ObjectType::npc, ObjectIconMap::double_magic, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
+	{ FAIRY_MAGIC_UPGRADE2, OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES, "Large Magic Upgrade", "OOT Great Fairy Magic Upgrade 2", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC2, ObjectType::npc, ObjectIconMap::large_magic_upgrade, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 
 const size_t OOT_GROTTOSNumOfObjs = 174;
@@ -1256,7 +1256,7 @@ ObjectInfo OOT_GROTTOSSceneObjects [OOT_GROTTOSNumOfObjs] =
 	{ 0x02c06, OOT_GROTTOS, "Butterfly 1", "OOT Kokiri Forest Storms Grotto Butterfly 1", ObjectType::butterfly, {651, 645, 0}, OOT_GROTTO_KOKIRI_FOREST_STORMS, ObjectType::butterfly, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x12c06, OOT_GROTTOS, "Butterfly 2", "OOT Kokiri Forest Storms Grotto Butterfly 2", ObjectType::butterfly, {617, 632, 0}, OOT_GROTTO_KOKIRI_FOREST_STORMS, ObjectType::butterfly, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x22c06, OOT_GROTTOS, "Butterfly 3", "OOT Kokiri Forest Storms Grotto Butterfly 3", ObjectType::butterfly, {637, 631, 0}, OOT_GROTTO_KOKIRI_FOREST_STORMS, ObjectType::butterfly, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
-	{ 0x03, OOT_GROTTOS, "Deku Nuts Upgrade", "OOT Lost Woods Grotto Scrub Nuts Upgrade", ObjectType::scrub, {642, 328, 0}, OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x03, OOT_GROTTOS, "Deku Nuts Upgrade", "OOT Lost Woods Grotto Scrub Nuts Upgrade", ObjectType::scrub, {642, 328, 0}, OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE, ObjectType::scrub, ObjectIconMap::nut_upgrade_2, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x04, OOT_GROTTOS, "Back", "OOT Lost Woods Grotto Scrub Back", ObjectType::scrub, {718, 246, 0}, OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00600, OOT_GROTTOS, "Big Fairy", "OOT Lost Woods Grotto Scrub Big Fairy", ObjectType::fairy_spot, {673, 245, 0}, OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE, ObjectType::fairy_spot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00603, OOT_GROTTOS, "Hive", "OOT Lost Woods Grotto Scrub Hive", ObjectType::hive, {770, 410, 0}, OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE, ObjectType::hive, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1440,7 +1440,7 @@ ObjectInfo OOT_GROTTO_KOKIRI_FOREST_STORMSSceneObjects [OOT_GROTTO_KOKIRI_FOREST
 const size_t OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADENumOfObjs = 4;
 ObjectInfo OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADESceneObjects [OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADENumOfObjs] =
 {
-	{ 0x03, OOT_GROTTOS, "Deku Nuts Upgrade", "OOT Lost Woods Grotto Scrub Nuts Upgrade", ObjectType::scrub, {642, 328, 0}, OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x03, OOT_GROTTOS, "Deku Nuts Upgrade", "OOT Lost Woods Grotto Scrub Nuts Upgrade", ObjectType::scrub, {642, 328, 0}, OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE, ObjectType::scrub, ObjectIconMap::nut_upgrade_2, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x04, OOT_GROTTOS, "Back", "OOT Lost Woods Grotto Scrub Back", ObjectType::scrub, {718, 246, 0}, OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00600, OOT_GROTTOS, "Big Fairy", "OOT Lost Woods Grotto Scrub Big Fairy", ObjectType::fairy_spot, {673, 245, 0}, OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE, ObjectType::fairy_spot, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00603, OOT_GROTTOS, "Hive", "OOT Lost Woods Grotto Scrub Hive", ObjectType::hive, {770, 410, 0}, OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE, ObjectType::hive, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
@@ -3880,7 +3880,7 @@ ObjectInfo OOT_LOST_WOODSSceneObjects [OOT_LOST_WOODSNumOfObjs] =
 	{ LOST_WOODS_SKULL_KID, OOT_LOST_WOODS, "Skull Kid", "OOT Lost Woods Skull Kid", ObjectType::npc, {380, 2066, 0}, OOT_LOST_WOODS, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ MASK_SELL_SKULL, OOT_LOST_WOODS, "Skull Mask", "OOT Lost Woods Sell Skull Mask", ObjectType::npc, {262, 1954, 0}, OOT_LOST_WOODS, ObjectType::mask, ObjectIconMap::skull, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ LOST_WOODS_MEMORY, OOT_LOST_WOODS, "Memory Game", "OOT Lost Woods Memory Game", ObjectType::npc, {1896, 2195, 0}, OOT_LOST_WOODS, ObjectType::heart_piece, ObjectIconMap::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
-	{ 0x00, OOT_LOST_WOODS, "Deku Sticks Upgrade", "OOT Lost Woods Scrub Sticks Upgrade", ObjectType::scrub, {238, 3051, 0}, OOT_LOST_WOODS, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00, OOT_LOST_WOODS, "Deku Sticks Upgrade", "OOT Lost Woods Scrub Sticks Upgrade", ObjectType::scrub, {238, 3051, 0}, OOT_LOST_WOODS, ObjectType::scrub, ObjectIconMap::stick_upgrade_2, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x01, OOT_LOST_WOODS, "Near Theater - Left", "OOT Lost Woods Scrub Near Theater Left", ObjectType::scrub, {1264, 1102, 0}, OOT_LOST_WOODS, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x02, OOT_LOST_WOODS, "Near Theater - Right", "OOT Lost Woods Scrub Near Theater Right", ObjectType::scrub, {1423, 859, 1}, OOT_LOST_WOODS, ObjectType::scrub, ObjectIconMap::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ TRADE_ODD_MUSHROOM, OOT_LOST_WOODS, "Odd Mushroom", "OOT Lost Woods Odd Mushroom", ObjectType::npc, {289, 1981, 1}, OOT_LOST_WOODS, ObjectType::npc, ObjectIconMap::cojiro, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL },

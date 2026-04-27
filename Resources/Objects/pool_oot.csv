@@ -139,7 +139,7 @@ ZELDA_SONG;OOT_CASTLE_COURTYARD;Zelda's Song;OOT Zelda's Song;npc;174;470;0;OOT_
 0x00005;OOT_CASTLE_COURTYARD;Mario Painting;OOT Castle Courtyard Wonder Item;wonder;273;205;0;OOT_CASTLE_COURTYARD;wonder;render_type;All;0;oot;overworld;;
 0x02;OOT_DEATH_MOUNTAIN_CRATER;Alcove;OOT Death Mountain Crater Alcove HP;collectible;470;211;0;OOT_DEATH_MOUNTAIN_CRATER;heart_piece;render_type;All;0;oot;overworld;;
 0x08;OOT_DEATH_MOUNTAIN_CRATER;Volcano;OOT Death Mountain Crater Volcano HP;collectible;597;363;0;OOT_DEATH_MOUNTAIN_CRATER;heart_piece;render_type;All;0;oot;overworld;;
-SHEIK_FIRE;OOT_DEATH_MOUNTAIN_CRATER;Bolero of Fire;OOT Death Mountain Crater Sheik Song;npc;523;436;0;OOT_DEATH_MOUNTAIN_CRATER;song;render_type;Adult;0;oot;overworld;;
+SHEIK_FIRE;OOT_DEATH_MOUNTAIN_CRATER;Bolero of Fire;OOT Death Mountain Crater Sheik Song;npc;523;436;0;OOT_DEATH_MOUNTAIN_CRATER;song;song_red;Adult;0;oot;overworld;;
 0x0e;OOT_DEATH_MOUNTAIN_CRATER;Child - Ladder;OOT Death Mountain Crater Scrub Child;scrub;603;200;0;OOT_DEATH_MOUNTAIN_CRATER;scrub;render_type;Child;0;oot;overworld;;
 0x80;OOT_DEATH_MOUNTAIN_CRATER;Soil;OOT Death Mountain Crater GS Soil;gs;490;411;0;OOT_DEATH_MOUNTAIN_CRATER;gs;render_type;Child;0;oot;overworld;;
 0x87;OOT_DEATH_MOUNTAIN_CRATER;Crate;OOT Death Mountain Crater GS Crate;gs;636;57;0;OOT_DEATH_MOUNTAIN_CRATER;gs;render_type;Child;0;oot;overworld;;
@@ -385,7 +385,7 @@ FAIRY_MAGIC_UPGRADE;OOT_DEATH_MOUNTAIN_TRAIL;Magic Upgrade;OOT Great Fairy Magic
 0x00a10;OOT_DEKU_TREE;Slingshot Room Large Crate 1;OOT MQ Deku Tree Slingshot Room Large Crate 1;crate;1121;391;0;OOT_DEKU_TREE;crate;render_type;All;2;oot_mq;dungeon;;
 0x00a11;OOT_DEKU_TREE;Slingshot Room Large Crate 2;OOT MQ Deku Tree Slingshot Room Large Crate 2;crate;1112;411;0;OOT_DEKU_TREE;crate;render_type;All;2;oot_mq;dungeon;;
 0x0d;OOT_DESERT_COLOSSUS;Above Arch;OOT Desert Colossus HP;collectible;631;248;0;OOT_DESERT_COLOSSUS;heart_piece;render_type;All;0;oot;overworld;;
-SHEIK_SPIRIT;OOT_DESERT_COLOSSUS;Requiem of Spirit;OOT Desert Colossus Song Spirit;npc;687;223;0;OOT_DESERT_COLOSSUS;song;render_type;All;0;oot;overworld;;
+SHEIK_SPIRIT;OOT_DESERT_COLOSSUS;Requiem of Spirit;OOT Desert Colossus Song Spirit;npc;687;223;0;OOT_DESERT_COLOSSUS;song;song_orange;All;0;oot;overworld;;
 0xb0;OOT_DESERT_COLOSSUS;Soil;OOT Desert Colossus GS Soil;gs;683;184;0;OOT_DESERT_COLOSSUS;gs;render_type;Child;0;oot;overworld;;
 0xb3;OOT_DESERT_COLOSSUS;Tree;OOT Desert Colossus GS Tree;gs;371;49;0;OOT_DESERT_COLOSSUS;gs;render_type;Adult;0;oot;overworld;;
 0xb2;OOT_DESERT_COLOSSUS;Plateau;OOT Desert Colossus GS Plateau;gs;432;428;0;OOT_DESERT_COLOSSUS;gs;render_type;Adult;0;oot;overworld;;
@@ -951,8 +951,8 @@ ROYAL_TOMB_SONG;OOT_GRAVEYARD;Sun's Song;OOT Graveyard Royal Tomb Song;none;0;0;
 FAIRY_SPELL_FIRE;OOT_GREAT_FAIRY_FOUNTAIN_SPELLS;Din's Fire;OOT Great Fairy Din's Fire;npc;497;351;0;OOT_GREAT_FAIRY_CASTLE;npc;din;Child;0;oot;overworld;;
 FAIRY_SPELL_WIND;OOT_GREAT_FAIRY_FOUNTAIN_SPELLS;Farore's Wind;OOT Great Fairy Farore's Wind;npc;497;351;0;OOT_GREAT_FAIRY_FARORE;npc;farore;All;0;oot;overworld;;
 FAIRY_SPELL_LOVE;OOT_GREAT_FAIRY_FOUNTAIN_SPELLS;Nayru's Love;OOT Great Fairy Nayru's Love;npc;497;351;0;OOT_GREAT_FAIRY_NAYRU;npc;nayru;All;0;oot;overworld;;
-FAIRY_MAGIC_UPGRADE;OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES;Magic Upgrade;OOT Great Fairy Magic Upgrade;npc;497;351;0;OOT_GREAT_FAIRY_MAGIC;npc;magic;All;0;oot;overworld;;
-FAIRY_MAGIC_UPGRADE2;OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES;Large Magic Upgrade;OOT Great Fairy Magic Upgrade 2;npc;497;351;0;OOT_GREAT_FAIRY_MAGIC2;npc;double_magic;All;0;oot;overworld;;
+FAIRY_MAGIC_UPGRADE;OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES;Magic Upgrade;OOT Great Fairy Magic Upgrade;npc;497;351;0;OOT_GREAT_FAIRY_MAGIC;npc;magic_upgrade;All;0;oot;overworld;;
+FAIRY_MAGIC_UPGRADE2;OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES;Large Magic Upgrade;OOT Great Fairy Magic Upgrade 2;npc;497;351;0;OOT_GREAT_FAIRY_MAGIC2;npc;large_magic_upgrade;All;0;oot;overworld;;
 FAIRY_DEFENSE_UPGRADE;OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES;Double Defense Upgrade;OOT Great Fairy Defense Upgrade;npc;497;351;0;OOT_GREAT_FAIRY_CASTLE;npc;defense;Adult;0;oot;overworld;;
 0x0c;OOT_GROTTOS;Chest;OOT Kokiri Forest Storms Grotto;chest;684;177;0;OOT_GROTTO_KOKIRI_FOREST_STORMS;chest;render_type;All;0;oot;overworld;;
 0x02c02;OOT_GROTTOS;Grass 1;OOT Kokiri Forest Storms Grotto Grass 1;grass;669;158;0;OOT_GROTTO_KOKIRI_FOREST_STORMS;grass;render_type;All;0;oot;overworld;;
@@ -964,7 +964,7 @@ FAIRY_DEFENSE_UPGRADE;OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES;Double Defense Upgrade;O
 0x02c06;OOT_GROTTOS;Butterfly 1;OOT Kokiri Forest Storms Grotto Butterfly 1;butterfly;651;645;0;OOT_GROTTO_KOKIRI_FOREST_STORMS;butterfly;render_type;All;0;oot;overworld;;
 0x12c06;OOT_GROTTOS;Butterfly 2;OOT Kokiri Forest Storms Grotto Butterfly 2;butterfly;617;632;0;OOT_GROTTO_KOKIRI_FOREST_STORMS;butterfly;render_type;All;0;oot;overworld;;
 0x22c06;OOT_GROTTOS;Butterfly 3;OOT Kokiri Forest Storms Grotto Butterfly 3;butterfly;637;631;0;OOT_GROTTO_KOKIRI_FOREST_STORMS;butterfly;render_type;All;0;oot;overworld;;
-0x03;OOT_GROTTOS;Deku Nuts Upgrade;OOT Lost Woods Grotto Scrub Nuts Upgrade;scrub;642;328;0;OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;scrub;render_type;All;0;oot;overworld;;
+0x03;OOT_GROTTOS;Deku Nuts Upgrade;OOT Lost Woods Grotto Scrub Nuts Upgrade;scrub;642;328;0;OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;scrub;nut_upgrade_2;All;0;oot;overworld;;
 0x04;OOT_GROTTOS;Back;OOT Lost Woods Grotto Scrub Back;scrub;718;246;0;OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;scrub;render_type;All;0;oot;overworld;;
 0x00600;OOT_GROTTOS;Big Fairy;OOT Lost Woods Grotto Scrub Big Fairy;fairy_spot;673;245;0;OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;fairy_spot;render_type;All;0;oot;overworld;;
 0x00603;OOT_GROTTOS;Hive;OOT Lost Woods Grotto Scrub Hive;hive;770;410;0;OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;hive;render_type;All;0;oot;overworld;;
@@ -1556,7 +1556,7 @@ MASK_SELL_BUNNY;OOT_HYRULE_FIELD;Bunny Mask;OOT Hyrule Field Sell Bunny Mask;npc
 0x00500;OOT_ICE_CAVERN;Midair 1;OOT Ice Cavern Rupee Midair 1;rupee;145;730;0;OOT_ICE_CAVERN;rupee;render_type;All;0;oot;dungeon;;
 0x00501;OOT_ICE_CAVERN;Midair 2;OOT Ice Cavern Rupee Midair 2;rupee;163;722;0;OOT_ICE_CAVERN;rupee;render_type;All;0;oot;dungeon;;
 0x00502;OOT_ICE_CAVERN;Midair 3;OOT Ice Cavern Rupee Midair 3;rupee;163;739;0;OOT_ICE_CAVERN;rupee;render_type;All;0;oot;dungeon;;
-SHEIK_WATER;OOT_ICE_CAVERN;Serenade of Water;OOT Ice Cavern Sheik Song;npc;351;1140;0;OOT_ICE_CAVERN;song;render_type;All;0;oot;dungeon;;
+SHEIK_WATER;OOT_ICE_CAVERN;Serenade of Water;OOT Ice Cavern Sheik Song;npc;351;1140;0;OOT_ICE_CAVERN;song;song_blue;All;0;oot;dungeon;;
 0x3f;OOT_ICE_CAVERN;Blocks - Alcove;OOT Ice Cavern SR Blocks Alcove;sr;320;468;0;OOT_ICE_CAVERN;sr;render_type;All;0;oot;dungeon;;
 0x3c;OOT_ICE_CAVERN;Blocks - Back Left;OOT Ice Cavern SR Blocks Back Left;sr;163;778;0;OOT_ICE_CAVERN;sr;render_type;All;0;oot;dungeon;;
 0x3d;OOT_ICE_CAVERN;Blocks - Back Right;OOT Ice Cavern SR Blocks Back Right;sr;201;660;0;OOT_ICE_CAVERN;sr;render_type;All;0;oot;dungeon;;
@@ -2322,7 +2322,7 @@ LOST_WOODS_TARGET;OOT_LOST_WOODS;Slingshot Target;OOT Lost Woods Target;npc;2069
 LOST_WOODS_SKULL_KID;OOT_LOST_WOODS;Skull Kid;OOT Lost Woods Skull Kid;npc;380;2066;0;OOT_LOST_WOODS;heart_piece;render_type;Child;0;oot;overworld;;
 MASK_SELL_SKULL;OOT_LOST_WOODS;Skull Mask;OOT Lost Woods Sell Skull Mask;npc;262;1954;0;OOT_LOST_WOODS;mask;skull;Child;0;oot;overworld;;
 LOST_WOODS_MEMORY;OOT_LOST_WOODS;Memory Game;OOT Lost Woods Memory Game;npc;1896;2195;0;OOT_LOST_WOODS;heart_piece;render_type;Child;0;oot;overworld;;
-0x00;OOT_LOST_WOODS;Deku Sticks Upgrade;OOT Lost Woods Scrub Sticks Upgrade;scrub;238;3051;0;OOT_LOST_WOODS;scrub;render_type;All;0;oot;overworld;;
+0x00;OOT_LOST_WOODS;Deku Sticks Upgrade;OOT Lost Woods Scrub Sticks Upgrade;scrub;238;3051;0;OOT_LOST_WOODS;scrub;stick_upgrade_2;All;0;oot;overworld;;
 0x01;OOT_LOST_WOODS;Near Theater - Left;OOT Lost Woods Scrub Near Theater Left;scrub;1264;1102;0;OOT_LOST_WOODS;scrub;render_type;All;0;oot;overworld;;
 0x02;OOT_LOST_WOODS;Near Theater - Right;OOT Lost Woods Scrub Near Theater Right;scrub;1423;859;1;OOT_LOST_WOODS;scrub;render_type;All;0;oot;overworld;;
 TRADE_ODD_MUSHROOM;OOT_LOST_WOODS;Odd Mushroom;OOT Lost Woods Odd Mushroom;npc;289;1981;1;OOT_LOST_WOODS;npc;cojiro;Adult;0;oot;overworld;;
@@ -2539,7 +2539,7 @@ TALON_MILK;OOT_RANCH_HOUSE_SILO;Buy Milk;OOT Lon Lon Ranch Talon Buy Milk;npc;50
 0x0201;OOT_RANCH_HOUSE_SILO;Pot 2;OOT Lon Lon Ranch Talon House Pot 2;pot;359;421;0;OOT_RANCH_HOUSE_SILO;pot;render_type;All;0;oot;overworld;;
 0x0202;OOT_RANCH_HOUSE_SILO;Pot 3;OOT Lon Lon Ranch Talon House Pot 3;pot;358;355;0;OOT_RANCH_HOUSE_SILO;pot;render_type;All;0;oot;overworld;;
 SARIA_SONG;OOT_SACRED_FOREST_MEADOW;Saria's Song;OOT Saria's Song;npc;263;253;0;OOT_SACRED_FOREST_MEADOW;song;render_type;Child;0;oot;overworld;;
-SHEIK_FOREST;OOT_SACRED_FOREST_MEADOW;Minuet of Forest;OOT Sacred Meadow Sheik Song;npc;399;391;0;OOT_SACRED_FOREST_MEADOW;song;render_type;Adult;0;oot;overworld;;
+SHEIK_FOREST;OOT_SACRED_FOREST_MEADOW;Minuet of Forest;OOT Sacred Meadow Sheik Song;npc;399;391;0;OOT_SACRED_FOREST_MEADOW;song;song_green;Adult;0;oot;overworld;;
 0x73;OOT_SACRED_FOREST_MEADOW;Night Adult;OOT Sacred Meadow GS Night Adult;gs;1001;90;0;OOT_SACRED_FOREST_MEADOW;gs;render_type;Adult;0;oot;overworld;;
 0x0000f;OOT_SACRED_FOREST_MEADOW;Entrance;OOT Sacred Meadow Wonder Item Entrance;wonder;1688;437;0;OOT_SACRED_FOREST_MEADOW;wonder;render_type;All;0;oot;overworld;;
 0x0000c;OOT_SACRED_FOREST_MEADOW;Maze 1;OOT Sacred Meadow Wonder Item Maze 1;wonder;1388;384;0;OOT_SACRED_FOREST_MEADOW;wonder;render_type;All;0;oot;overworld;;
@@ -2790,7 +2790,7 @@ SHOOTING_GAME_ADULT;OOT_SHOOTING_GALLERY;Reward;OOT Shooting Gallery Adult;npc;6
 0x00e09;OOT_TEMPLE_FOREST;Red Pool Room - Small Crate 3;OOT MQ Forest Temple Spinning Red Pool Room Small Crate 3;crate;2383;1119;0;OOT_TEMPLE_FOREST;crate;render_type;All;1;oot_mq;dungeon;;
 MASTER_SWORD;OOT_TEMPLE_OF_TIME;Master Sword;OOT Temple of Time Master Sword;npc;587;327;0;OOT_TEMPLE_OF_TIME;sword;master;All;0;oot;overworld;;
 LIGHT_MEDALLION;OOT_TEMPLE_OF_TIME;Light Medallion;OOT Temple of Time Medallion;npc;561;328;0;OOT_TEMPLE_OF_TIME;npc;light;All;0;oot;overworld;;
-SHEIK_LIGHT;OOT_TEMPLE_OF_TIME;Prelude of Light;OOT Temple of Time Sheik Song;npc;574;297;0;OOT_TEMPLE_OF_TIME;song;render_type;All;0;oot;overworld;;
+SHEIK_LIGHT;OOT_TEMPLE_OF_TIME;Prelude of Light;OOT Temple of Time Sheik Song;npc;574;297;0;OOT_TEMPLE_OF_TIME;song;song_yellow;All;0;oot;overworld;;
 ZELDA_LIGHT_ARROW;OOT_TEMPLE_OF_TIME;Light Arrows;OOT Temple of Time Light Arrows;npc;149;329;0;OOT_TEMPLE_OF_TIME;npc;light_arrow;All;0;oot;overworld;;
 0x01;OOT_TEMPLE_SHADOW;Chest;OOT Shadow Temple Map;chest;624;84;0;OOT_TEMPLE_SHADOW;map;render_type;All;0;oot;dungeon;;
 0x07;OOT_TEMPLE_SHADOW;Hover Boots;OOT Shadow Temple Hover Boots;chest;72;284;0;OOT_TEMPLE_SHADOW;chest;hover;All;0;oot;dungeon;;

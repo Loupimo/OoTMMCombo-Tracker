@@ -30,8 +30,8 @@ Pocket Egg;egg
 Pocket Cucco;cucco
 Odd Mushroom;mushroom
 Odd Potion;potion
-Poacher's Saw;broken_big
-Broken Goron's Sword;
+Poacher's Saw;saw
+Broken Goron's Sword;broken_big
 Prescription;prescription
 Eyeball Frog;frog
 Eye Drops;eye_drops
@@ -116,57 +116,57 @@ Blue Rupee (OoT);blue_rupee
 Red Rupee (OoT);red_rupee
 Purple Rupee (OoT);purple_rupee
 Piece of Heart (OoT);heart_piece
-Deku Stick Upgrade (OoT);
-Second Deku Stick Upgrade (OoT);
-Deku Nut Upgrade (OoT);
-Second Deku Nut Upgrade (OoT);
+Deku Stick Upgrade (OoT);stick_upgrade_1
+Second Deku Stick Upgrade (OoT);stick_upgrade_2
+Deku Nut Upgrade (OoT);nut_upgrade_1
+Second Deku Nut Upgrade (OoT);nut_upgrade_2
 Largest Bullet Bag;biggest_seed
-IceTrap (OoT);
+IceTrap (OoT);ice_trap
 Unknown;none
 Unknown;none
 Unknown;none
 Rainbow Rupee;rainbow
-Minuet of Forest;
-Bolero of Fire;
-Serenade of Water;
-Requiem of Spirit;
-Nocturne of Shadow;
-Prelude of Light;
-Zelda's Lullaby;
-Epona's Song (OoT);
-Saria's Song;
-Sun's Song (OoT);
-Song of Time (OoT);
-Song of Storms (OoT);
-Elegy of Emptiness (OoT);
-Minuet of Forest Note;
-Bolero of Fire Note;
-Serenade of Water Note;
-Requiem of Spirit Note;
-Nocturne of Shadow Note;
-Prelude of Light Note;
-Zelda's Lullaby Note;
-Epona's Song Note (OoT);
-Saria's Song Note;
-Sun's Song Note (OoT);
-Song of Time Note (OoT);
-Song of Storms Note (OoT);
-Elegy of Emptiness Note (OoT);
-Master Sword;
-Kokiri's Emerald;
-Goron's Ruby;
-Zora's Sapphire;
-Forest Medallion;
-Fire Medallion;
-Water Medallion;
-Spirit Medallion;
-Shadow Medallion;
-Light Medallion;
-Magic Upgrade (OoT);
-Larger Magic Upgrade (OoT);
-Defense Upgrade (OoT);
-Progressive Deku Shield (OoT);
-Progressive Hylian Shield;
+Minuet of Forest;song_green
+Bolero of Fire;song_red
+Serenade of Water;song_blue
+Requiem of Spirit;song_orange
+Nocturne of Shadow;song_purple
+Prelude of Light;song_yellow
+Zelda's Lullaby;song
+Epona's Song (OoT);song
+Saria's Song;song
+Sun's Song (OoT);song
+Song of Time (OoT);song
+Song of Storms (OoT);song
+Elegy of Emptiness (OoT);song_orange
+Minuet of Forest Note;song_green
+Bolero of Fire Note;song_red
+Serenade of Water Note;song_blue
+Requiem of Spirit Note;song_orange
+Nocturne of Shadow Note;song_purple
+Prelude of Light Note;song_yellow
+Zelda's Lullaby Note;song
+Epona's Song Note (OoT);song
+Saria's Song Note;song
+Sun's Song Note (OoT);song
+Song of Time Note (OoT);song
+Song of Storms Note (OoT);song
+Elegy of Emptiness Note (OoT);song_orange
+Master Sword;master
+Kokiri's Emerald;emerald
+Goron's Ruby;ruby
+Zora's Sapphire;saphir
+Forest Medallion;forest
+Fire Medallion;fire
+Water Medallion;water
+Spirit Medallion;spirit
+Shadow Medallion;shadow
+Light Medallion;light
+Magic Upgrade (OoT);magic_upgrade
+Larger Magic Upgrade (OoT);large_magic_upgrade
+Defense Upgrade (OoT);defense
+Progressive Deku Shield (OoT);deku_shield
+Progressive Hylian Shield;hylian_shield
 Small Key (Forest);small_key
 Small Key (Fire);small_key
 Small Key (Water);small_key
@@ -202,10 +202,10 @@ Compass (Spirit);compass
 Compass (Shadow);compass
 Compass (Well);compass
 Compass (Ice);compass
-Child's Wallet (OoT);
-Colossal Wallet (OoT);
-Triforce Piece;
-Bottomless Wallet (OoT);
+Child's Wallet (OoT);child_wallet
+Colossal Wallet (OoT);colossal_wallet
+Triforce Piece;triforce_piece
+Bottomless Wallet (OoT);bottomless_wallet
 Silver Rupee (DC);sr
 Silver Rupee (Well);sr
 Silver Rupee (Spirit Child);sr
@@ -341,42 +341,42 @@ Key Ring (Ganon);
 Key Ring (Well);
 Key Ring (Hideout);
 Key Ring (GTG);
-Skeleton Key (OoT);
-Red Coin;
-Green Coin;
-Blue Coin;
-Yellow Coin;
-Triforce of Power;
-Triforce of Courage;
-Triforce of Wisdom;
-Silver Pouch (DC);
-Silver Pouch (Well);
-Silver Pouch (Spirit Child);
-Silver Pouch (Spirit Sun);
-Silver Pouch (Spirit Boulders);
-Silver Pouch (Spirit Lobby);
-Silver Pouch (Spirit Adult);
-Silver Pouch (Shadow Scythe);
-Silver Pouch (Shadow Pit);
-Silver Pouch (Shadow Spikes);
-Silver Pouch (Shadow Blades);
-Silver Pouch (Ice Scythe);
-Silver Pouch (Ice Block);
-Silver Pouch (GTG Slopes);
-Silver Pouch (GTG Lava);
-Silver Pouch (GTG Water);
-Silver Pouch (Ganon Spirit);
-Silver Pouch (Ganon Light);
-Silver Pouch (Ganon Fire);
-Silver Pouch (Ganon Forest);
-Silver Pouch (Ganon Shadow);
-Silver Pouch (Ganon Water);
+Skeleton Key (OoT);skeleton_key
+Red Coin;red_coin
+Green Coin;green_coin
+Blue Coin;blue_coin
+Yellow Coin;yellow_coin
+Triforce of Power;triforce_power
+Triforce of Courage;triforce_courage
+Triforce of Wisdom;triforce_wisdom
+Silver Pouch (DC);silver_pouch
+Silver Pouch (Well);silver_pouch
+Silver Pouch (Spirit Child);silver_pouch
+Silver Pouch (Spirit Sun);silver_pouch
+Silver Pouch (Spirit Boulders);silver_pouch
+Silver Pouch (Spirit Lobby);silver_pouch
+Silver Pouch (Spirit Adult);silver_pouch
+Silver Pouch (Shadow Scythe);silver_pouch
+Silver Pouch (Shadow Pit);silver_pouch
+Silver Pouch (Shadow Spikes);silver_pouch
+Silver Pouch (Shadow Blades);silver_pouch
+Silver Pouch (Ice Scythe);silver_pouch
+Silver Pouch (Ice Block);silver_pouch
+Silver Pouch (GTG Slopes);silver_pouch
+Silver Pouch (GTG Lava);silver_pouch
+Silver Pouch (GTG Water);silver_pouch
+Silver Pouch (Ganon Spirit);silver_pouch
+Silver Pouch (Ganon Light);silver_pouch
+Silver Pouch (Ganon Fire);silver_pouch
+Silver Pouch (Ganon Forest);silver_pouch
+Silver Pouch (Ganon Shadow);silver_pouch
+Silver Pouch (Ganon Water);silver_pouch
 Magical Rupee;magical
-A Button;
-C-Right Button;
-C-Left Button;
-C-Up Button;
-C-Down Button;
+A Button;a_button
+C-Right Button;c_right
+C-Left Button;c_left
+C-Up Button;c_up
+C-Down Button;c_down
 Small Key (Chest Game);small_key
 Key Ring (Chest Game);
 Bottle of Red Potion (OoT);red_potion
@@ -386,442 +386,443 @@ Bottled Fairy (OoT);bottled_fairy
 Bottled Poe (OoT);bottled_poe
 Bottled Big Poe (OoT);bottled_big_poe
 Bottle of Blue Fire;blue_fire
-Child Fish (2 pounds);
-Child Fish (3 pounds);
-Child Fish (4 pounds);
-Child Fish (5 pounds);
-Child Fish (6 pounds);
-Child Fish (7 pounds);
-Child Fish (8 pounds);
-Child Fish (9 pounds);
-Child Fish (10 pounds);
-Child Fish (11 pounds);
-Child Fish (12 pounds);
-Child Fish (13 pounds);
-Child Fish (14 pounds);
-Adult Fish (4 pounds);
-Adult Fish (5 pounds);
-Adult Fish (6 pounds);
-Adult Fish (7 pounds);
-Adult Fish (8 pounds);
-Adult Fish (9 pounds);
-Adult Fish (10 pounds);
-Adult Fish (11 pounds);
-Adult Fish (12 pounds);
-Adult Fish (13 pounds);
-Adult Fish (14 pounds);
-Adult Fish (15 pounds);
-Adult Fish (16 pounds);
-Adult Fish (17 pounds);
-Adult Fish (18 pounds);
-Adult Fish (19 pounds);
-Adult Fish (20 pounds);
-Adult Fish (21 pounds);
-Adult Fish (22 pounds);
-Adult Fish (23 pounds);
-Adult Fish (24 pounds);
-Adult Fish (25 pounds);
-Child Loach (14 pounds);
-Child Loach (15 pounds);
-Child Loach (16 pounds);
-Child Loach (17 pounds);
-Child Loach (18 pounds);
-Child Loach (19 pounds);
-Adult Loach (29 pounds);
-Adult Loach (30 pounds);
-Adult Loach (31 pounds);
-Adult Loach (32 pounds);
-Adult Loach (33 pounds);
-Adult Loach (34 pounds);
-Adult Loach (35 pounds);
-Adult Loach (36 pounds);
-Bombchu Bag (OoT);
-Big Bombchu Bag (OoT);
-Biggest Bombchu Bag (OoT);
-Bombchu Bag (OoT);
-Bombchu Bag (OoT);
-Bombchu Bag (OoT);
+Child Fish (2 pounds);carp_fish
+Child Fish (3 pounds);carp_fish
+Child Fish (4 pounds);carp_fish
+Child Fish (5 pounds);carp_fish
+Child Fish (6 pounds);carp_fish
+Child Fish (7 pounds);carp_fish
+Child Fish (8 pounds);carp_fish
+Child Fish (9 pounds);carp_fish
+Child Fish (10 pounds);carp_fish
+Child Fish (11 pounds);carp_fish
+Child Fish (12 pounds);carp_fish
+Child Fish (13 pounds);carp_fish
+Child Fish (14 pounds);carp_fish
+Adult Fish (4 pounds);carp_fish
+Adult Fish (5 pounds);carp_fish
+Adult Fish (6 pounds);carp_fish
+Adult Fish (7 pounds);carp_fish
+Adult Fish (8 pounds);carp_fish
+Adult Fish (9 pounds);carp_fish
+Adult Fish (10 pounds);carp_fish
+Adult Fish (11 pounds);carp_fish
+Adult Fish (12 pounds);carp_fish
+Adult Fish (13 pounds);carp_fish
+Adult Fish (14 pounds);carp_fish
+Adult Fish (15 pounds);carp_fish
+Adult Fish (16 pounds);carp_fish
+Adult Fish (17 pounds);carp_fish
+Adult Fish (18 pounds);carp_fish
+Adult Fish (19 pounds);carp_fish
+Adult Fish (20 pounds);carp_fish
+Adult Fish (21 pounds);carp_fish
+Adult Fish (22 pounds);carp_fish
+Adult Fish (23 pounds);carp_fish
+Adult Fish (24 pounds);carp_fish
+Adult Fish (25 pounds);carp_fish
+Child Loach (14 pounds);carp_fish
+Child Loach (15 pounds);carp_fish
+Child Loach (16 pounds);carp_fish
+Child Loach (17 pounds);carp_fish
+Child Loach (18 pounds);carp_fish
+Child Loach (19 pounds);carp_fish
+Adult Loach (29 pounds);carp_fish
+Adult Loach (30 pounds);carp_fish
+Adult Loach (31 pounds);carp_fish
+Adult Loach (32 pounds);carp_fish
+Adult Loach (33 pounds);carp_fish
+Adult Loach (34 pounds);carp_fish
+Adult Loach (35 pounds);carp_fish
+Adult Loach (36 pounds);carp_fish
+Bombchu Bag (OoT);bombchu_bag
+Big Bombchu Bag (OoT);bombchu_bag
+Biggest Bombchu Bag (OoT);bombchu_bag
+Bombchu Bag (OoT);bombchu_bag
+Bombchu Bag (OoT);bombchu_bag
+Bombchu Bag (OoT);bombchu_bag
 Razor Sword (OoT);razor
 Gilded Sword (OoT);gilded
-Spin Attack Upgrade (OoT);
-Triforce (OoT);
-Big Fairy (OoT);
-Blast Mask (OoT);
-Stone Mask (OoT);
-Bronze Scale (OoT);
-Magic Mushroom;
-Chateau Romani;
-Gold Dust;
-Seahorse;
-Bottle of Gold Dust;
-Bottle of Chateau Romani;
-Ice Trap;
-Fire Trap;
+Spin Attack Upgrade (OoT);spin
+Triforce (OoT);none
+Big Fairy (OoT);fairy
+Blast Mask (OoT);blast
+Stone Mask (OoT);stone
+Bronze Scale (OoT);bronze_scale
+Magic Mushroom;mushroom
+Chateau Romani;chateau
+Gold Dust;dust
+Seahorse;seahorse
+Bottle of Gold Dust;dust
+Bottle of Chateau Romani;chateau
+Ice Trap;ice_trap
+Fire Trap;fire_trap
 Shock Trap;
-Drain Trap;
-Anti-Magic Trap;
+Drain Trap;drain_train
+Anti-Magic Trap;magic_trap
 Knockback Trap;
-Rupoor (OoT);
-Green Rupee (MM);
-Blue Rupee (MM);
-Red Rupee (MM);
-Red Rupee (MM);
-Purple Rupee (MM);
-Silver Rupee (MM);
-Gold Rupee (MM);
-Adult Wallet (MM);
-Giant Wallet (MM);
-Recovery Heart (MM);
-Piece of Heart (MM);
-Heart Container (MM);
-Small Magic Jar (MM);
-Large Magic Jar (MM);
-Stray Fairy (MM);
-Stray Fairy (Woodfall);
-Stray Fairy (Snowhead);
-Stray Fairy (Great Bay);
-Stray Fairy (Stone Tower);
-Stray Fairy (Town);
-Transcendent Fairy;
-Bomb (MM);
-5 Bombs (MM);
-10 Bombs (MM);
-20 Bombs (MM);
-30 Bombs (MM);
-Deku Stick (MM);
-10 Bombchu (MM);
-Bomb Bag (MM);
-Big Bomb Bag (MM);
-Biggest Bomb Bag (MM);
-10 Arrows (MM);
-30 Arrows (MM);
-40 Arrows (MM);
-40 Arrows (MM);
-Hero's Bow (MM);
-Big Quiver (MM);
-Biggest Quiver (MM);
-Fire Arrow (MM);
-Ice Arrow (MM);
-Light Arrow (MM);
-Deku Nut (MM);
-5 Deku Nuts (MM);
-10 Deku Nuts (MM);
-30 Deku Nuts (MM);
-30 Deku Nuts (MM);
-40 Deku Nuts (MM);
-20 Bombchu;
-20 Deku Sticks (MM);
-20 Deku Sticks (MM);
-30 Deku Sticks (MM);
-Deku Shield (MM);
-Hero's Shield (MM);
-Mirror Shield (MM);
-Progressive Deku Shield (MM);
-Progressive Hero's Shield;
-Powder Keg;
-Magic Bean (MM);
-Bombchu (MM);
-Kokiri Sword (MM);
-Razor Sword (MM);
-Gilded Sword (MM);
-5 Bombchu (MM);
-Great Fairy's Sword (MM);
-Small Key (MM);
-Boss Key (MM);
-Dungeon Map (MM);
-Compass (MM);
-Hookshot (MM);
-Lens of Truth (MM);
-Pictograph Box;
-Ocarina of Time (MM);
-Bomber's Notebook;
-Bottle of Red Potion (MM);
-Empty Bottle (MM);
-Red Potion (MM);
-Green Potion (MM);
-Blue Potion (MM);
-Fairy (MM);
-Bottle of Milk (MM);
-Fish (MM);
-Bug (MM);
-Big Poe (MM);
-Bottle of Gold Dust;
-Magic Mushroom;
-Bottle of Chateau Romani;
-Deku Mask;
-Goron Mask (MM);
-Zora Mask (MM);
-Fierce Deity's Mask;
-Captain's Hat;
-Giant's Mask;
-All Night Mask;
-Bunny Hood (MM);
-Keaton Mask (MM);
-Garo's Mask;
-Romani's Mask;
-Circus Leader's Mask;
-Postman's Hat;
-Couple's Mask;
-Great Fairy Mask;
-Gibdo Mask;
-Don Gero's Mask;
-Kamaro's Mask;
-Mask of Truth (MM);
-Stone Mask (MM);
-Bremen Mask;
-Blast Mask (MM);
-Mask of Scents;
-Kafei's Mask;
-Chateau Romani;
-Milk (MM);
-Gold Dust;
-Seahorse;
-Moon's Tear;
-Land Title Deed;
-Swamp Title Deed;
-Mountain Title Deed;
-Ocean Title Deed;
-Room Key;
-Letter to Mama;
-Letter to Kafei;
-Pendant of Memories;
-World Map (Clock Town);
-World Map (Woodfall);
-World Map (Snowhead);
-World Map (Romani Ranch);
-World Map (Great Bay);
-World Map (Stone Tower);
-Magic Upgrade (MM);
-Larger Magic Upgrade (MM);
-Defense Upgrade (MM);
-Spin Attack Upgrade (MM);
-Sonata of Awakening;
-Goron Lullaby;
-New Wave Bossa Nova;
-Elegy of Emptiness (MM);
-Oath to Order;
-Song of Time (MM);
-Song of Healing;
-Epona's Song (MM);
-Song of Soaring;
-Song of Storms (MM);
-Sun's Song (MM);
-Lullaby Intro;
-Sonata of Awakening Note;
-Goron Lullaby Note;
-New Wave Bossa Nova Note;
-Elegy of Emptiness Note (MM);
-Oath to Order Note;
-Song of Time Note (MM);
-Song of Healing Note;
-Epona's Song Note (MM);
-Song of Soaring Note;
-Song of Storms Note (MM);
-Sun's Song Note (MM);
-Odolwa's Remains;
-Goht's Remains;
-Gyorg's Remains;
-Twinmold's Remains;
-Swamp Skulltula Token;
-Ocean Skulltula Token;
-Small Key (Woodfall);
-Small Key (Snowhead);
-Small Key (Great Bay);
-Small Key (Stone Tower);
-Boss Key (Woodfall);
-Boss Key (Snowhead);
-Boss Key (Great Bay);
-Boss Key (Stone Tower);
-Dungeon Map (Woodfall);
-Dungeon Map (Snowhead);
-Dungeon Map (Great Bay);
-Dungeon Map (Stone Tower);
-Compass (Woodfall);
-Compass (Snowhead);
-Compass (Great Bay);
-Compass (Stone Tower);
-Fairy Ocarina (MM);
-Short Hookshot (MM);
-Child Wallet (MM);
-Colossal Wallet (MM);
-Owl Statue (Great Bay);
-Owl Statue (Zora Cape);
-Owl Statue (Snowhead);
-Owl Statue (Mountain Village);
-Owl Statue (Clock Town);
-Owl Statue (Milk Road);
-Owl Statue (Woodfall);
-Owl Statue (Southern Swamp);
-Owl Statue (Ikana Canyon);
-Owl Statue (Stone Tower);
-Owl Statue (Hidden);
-Bottomless Wallet (MM);
-Soul of Octoroks (MM);
-Soul of Wallmasters (MM);
-Soul of Dodongos (MM);
-Soul of Keeses (MM);
-Soul of Tektites (MM);
-Soul of Peahats (MM);
-Soul of Lizalfos / Dinolfos (MM);
-Soul of Skulltulas (MM);
-Soul of Armos (MM);
-Soul of Deku Babas (MM);
-Soul of Deku Scrubs (MM);
-Soul of Bubbles (MM);
-Soul of Beamos (MM);
-Soul of ReDeads / Gibdos (MM);
-Soul of Skullwalltulas (MM);
-Soul of Shell Blades (MM);
-Soul of Like-Likes (MM);
-Soul of Iron Knuckles (MM);
-Soul of Freezards (MM);
-Soul of Wolfos (MM);
-Soul of Guays (MM);
-Soul of Flying Pots (MM);
-Soul of Floormasters (MM);
-Soul of Chuchus;
-Soul of Deep Pythons;
-Soul of Stalchildren (MM);
-Soul of Leevers (MM);
-Soul of Skullfish;
-Soul of Dexihands;
-Soul of Dragonflies;
-Soul of Eenos;
-Soul of Eyegores;
-Soul of Hiploops;
-Soul of Real Bombchu;
-Soul of Takkuri;
-Soul of Boes;
-Soul of Nejirons;
-Soul of Bio Babas;
-Soul of Garo;
-Soul of Wizzrobes;
-Soul of Gomess;
-Soul of Gekkos;
-Soul of Bad Bats;
-Soul of Snappers;
-Soul of Warts;
-Soul of Captain Keeta;
-Soul of the Fighting Pirates;
-Soul of Poes (MM);
-Soul of Odolwa;
-Soul of Goht;
-Soul of Gyorg;
-Soul of Twinmold;
-Soul of Igos;
-Soul of Madame Aroma;
-Soul of Town Archery Owner;
-Soul of Swamp Archery Owner;
-Soul of Gorons (MM);
-Soul of Baby Goron;
-Soul of Bombs Shopkeeper;
-Soul of Bombers' Kids;
-Soul of Deku Butler;
-Soul of Citizens (MM);
-Soul of Composer Bros (MM);
-Soul of Dampe (MM);
-Soul of Deku King;
-Soul of Deku Princess;
-Soul of Playground Scrubs;
-Soul of Goron Elder;
-Soul of Fisherman;
-Soul of Goron Shopkeeper (MM);
-Soul of Honey & Darling (MM);
-Soul of Toto;
-Soul of Lulu;
-Soul of Zora Musicians;
-Soul of Kafei;
-Soul of Keaton;
-Soul of Koume & Kotake;
-Soul of Mayor Dotour;
-Soul of Keg Trial Goron;
-Soul of Biggoron (MM);
-Soul of Mr. Barten;
-Soul of Astronomer (MM);
-Soul of Poe Hut Owner;
-Soul of Blacksmiths;
-Soul of Chest Game Lady;
-Soul of Tingle;
-Soul of Toilet Hand;
-Soul of Trading Post Owner;
-Soul of the Part-Timer;
-Soul of Zoras (MM);
-Soul of Zora Shopkeeper (MM);
-Soul of Romani/Cremia;
-Soul of the Bean Salesman;
-Soul of Carpenters (MM);
-Soul of Anju;
-Soul of Guru-Guru (MM);
-Soul of the Scientist (MM);
-Soul of Gorman & Bros.;
-Soul of Grog;
-Soul of the Dog Lady (MM);
-Soul of Swordsman;
-Soul of Anju's Grandmother;
-Soul of Boat Cruise Man;
-Soul of the Banker;
-Soul of Moon Children;
-Soul of Patrolling Pirates and their Chief;
-Soul of Cuccos (MM);
-Soul of Cows (MM);
-Soul of Dogs (MM);
-Soul of Butterflies (MM);
-Soul of Gold Skulltulas (MM);
-Soul of Business Scrubs (MM);
+Rupoor (OoT);rupoor
+Platinum Token (OoT);gs_token
+Green Rupee (MM);rupee
+Blue Rupee (MM);blue_rupee
+Red Rupee (MM);red_rupee
+Red Rupee (MM);red_rupee
+Purple Rupee (MM);purple_rupee
+Silver Rupee (MM);sr
+Gold Rupee (MM);gold_rupee
+Adult Wallet (MM);wallet
+Giant Wallet (MM);big_wallet
+Recovery Heart (MM);heart
+Piece of Heart (MM);heart_piece
+Heart Container (MM);heart_container
+Small Magic Jar (MM);magic
+Large Magic Jar (MM);double_magic
+Stray Fairy (MM);sf
+Stray Fairy (Woodfall);sf
+Stray Fairy (Snowhead);sf_green
+Stray Fairy (Great Bay);sf_blue
+Stray Fairy (Stone Tower);sf_yellow
+Stray Fairy (Town);sf_orange
+Transcendent Fairy;sf_transcendent
+Bomb (MM);bomb
+5 Bombs (MM);bomb
+10 Bombs (MM);bomb
+20 Bombs (MM);bomb
+30 Bombs (MM);bomb
+Deku Stick (MM);stick
+10 Bombchu (MM);bombchu
+Bomb Bag (MM);bomb_bag
+Big Bomb Bag (MM);big_bomb
+Biggest Bomb Bag (MM);biggest_bomb
+10 Arrows (MM);arrow
+30 Arrows (MM);arrow
+40 Arrows (MM);arrow
+40 Arrows (MM);arrow
+Hero's Bow (MM);bow_mm
+Big Quiver (MM);big_quiver
+Biggest Quiver (MM);biggest_quiver
+Fire Arrow (MM);fire_arrow
+Ice Arrow (MM);ice_arrow
+Light Arrow (MM);light_arrow
+Deku Nut (MM);nut
+5 Deku Nuts (MM);nut
+10 Deku Nuts (MM);nut
+30 Deku Nuts (MM);nut
+30 Deku Nuts (MM);nut
+40 Deku Nuts (MM);nut
+20 Bombchu;bombchu
+20 Deku Sticks (MM);stick
+20 Deku Sticks (MM);stick
+30 Deku Sticks (MM);stick
+Deku Shield (MM);deku_shield
+Hero's Shield (MM);hero_shield
+Mirror Shield (MM);mirror_mm
+Progressive Deku Shield (MM);deku_shield
+Progressive Hero's Shield;hero_shield
+Powder Keg;powder
+Magic Bean (MM);bean
+Bombchu (MM);bombchu
+Kokiri Sword (MM);kokiri_mm
+Razor Sword (MM);razor
+Gilded Sword (MM);gilded
+5 Bombchu (MM);bombchu
+Great Fairy's Sword (MM);fairy_sword
+Small Key (MM);small_key
+Boss Key (MM);boss_key
+Dungeon Map (MM);map
+Compass (MM);compass
+Hookshot (MM);hookshot_mm
+Lens of Truth (MM);lens
+Pictograph Box;picto
+Ocarina of Time (MM);ocarina
+Bomber's Notebook;bombers
+Bottle of Red Potion (MM);red_potion
+Empty Bottle (MM);bottle
+Red Potion (MM);red_potion
+Green Potion (MM);green_potion
+Blue Potion (MM);blue_potion
+Fairy (MM);bottled_fairy
+Bottle of Milk (MM);milk
+Fish (MM);bottled_fish
+Bug (MM);bottled_bugs
+Big Poe (MM);bottled_big_poe
+Bottle of Gold Dust;dust
+Magic Mushroom;mushroom
+Bottle of Chateau Romani;chateau
+Deku Mask;deku
+Goron Mask (MM);goron
+Zora Mask (MM);zora
+Fierce Deity's Mask;deity
+Captain's Hat;captain
+Giant's Mask;giant
+All Night Mask;night
+Bunny Hood (MM);bunny
+Keaton Mask (MM);keaton
+Garo's Mask;garo
+Romani's Mask;romani
+Circus Leader's Mask;troupe
+Postman's Hat;postman
+Couple's Mask;couple
+Great Fairy Mask;fairy_mask
+Gibdo Mask;gibdo
+Don Gero's Mask;gero
+Kamaro's Mask;kamaro
+Mask of Truth (MM);truth
+Stone Mask (MM);stone
+Bremen Mask;bremen
+Blast Mask (MM);blast
+Mask of Scents;scents
+Kafei's Mask;kafei
+Chateau Romani;château
+Milk (MM);milk
+Gold Dust;dust
+Seahorse;seahorse
+Moon's Tear;moon
+Land Title Deed;land
+Swamp Title Deed;swamp
+Mountain Title Deed;mountain
+Ocean Title Deed;ocean
+Room Key;key
+Letter to Mama;letter_mama
+Letter to Kafei;letter_kafei
+Pendant of Memories;pendant
+World Map (Clock Town);map
+World Map (Woodfall);map
+World Map (Snowhead);map
+World Map (Romani Ranch);map
+World Map (Great Bay);map
+World Map (Stone Tower);map
+Magic Upgrade (MM);magic_upgrade
+Larger Magic Upgrade (MM);large_margic_upgrade
+Defense Upgrade (MM);defense
+Spin Attack Upgrade (MM);spin
+Sonata of Awakening;song_green
+Goron Lullaby;song_red
+New Wave Bossa Nova;song_blue
+Elegy of Emptiness (MM);song_orange
+Oath to Order;song_purple
+Song of Time (MM);song
+Song of Healing;song
+Epona's Song (MM);song
+Song of Soaring;song
+Song of Storms (MM);song
+Sun's Song (MM);song
+Lullaby Intro;song_red
+Sonata of Awakening Note;song_green
+Goron Lullaby Note;song_red
+New Wave Bossa Nova Note;song_blue
+Elegy of Emptiness Note (MM);song_orange
+Oath to Order Note;song_purple
+Song of Time Note (MM);song
+Song of Healing Note;song
+Epona's Song Note (MM);song
+Song of Soaring Note;song
+Song of Storms Note (MM);song
+Sun's Song Note (MM);song
+Odolwa's Remains;odolwa
+Goht's Remains;goht
+Gyorg's Remains;gyorg
+Twinmold's Remains;twinmold
+Swamp Skulltula Token;swamp_token
+Ocean Skulltula Token;ocean_token
+Small Key (Woodfall);small_key
+Small Key (Snowhead);small_key
+Small Key (Great Bay);small_key
+Small Key (Stone Tower);small_key
+Boss Key (Woodfall);boss_key
+Boss Key (Snowhead);boss_key
+Boss Key (Great Bay);boss_key
+Boss Key (Stone Tower);boss_key
+Dungeon Map (Woodfall);map
+Dungeon Map (Snowhead);map
+Dungeon Map (Great Bay);map
+Dungeon Map (Stone Tower);map
+Compass (Woodfall);compass
+Compass (Snowhead);compass
+Compass (Great Bay);compass
+Compass (Stone Tower);compass
+Fairy Ocarina (MM);fairy_ocarina
+Short Hookshot (MM);hookshot_oot
+Child Wallet (MM);child_wallet
+Colossal Wallet (MM);colossal_wallet
+Owl Statue (Great Bay);owl
+Owl Statue (Zora Cape);owl
+Owl Statue (Snowhead);owl
+Owl Statue (Mountain Village);owl
+Owl Statue (Clock Town);owl
+Owl Statue (Milk Road);owl
+Owl Statue (Woodfall);owl
+Owl Statue (Southern Swamp);owl
+Owl Statue (Ikana Canyon);owl
+Owl Statue (Stone Tower);owl
+Owl Statue (Hidden);none
+Bottomless Wallet (MM);bottomless_wallet
+Soul of Octoroks (MM);soul_of_foe
+Soul of Wallmasters (MM);soul_of_foe
+Soul of Dodongos (MM);soul_of_foe
+Soul of Keeses (MM);soul_of_foe
+Soul of Tektites (MM);soul_of_foe
+Soul of Peahats (MM);soul_of_foe
+Soul of Lizalfos / Dinolfos (MM);soul_of_foe
+Soul of Skulltulas (MM);soul_of_foe
+Soul of Armos (MM);soul_of_foe
+Soul of Deku Babas (MM);soul_of_foe
+Soul of Deku Scrubs (MM);soul_of_foe
+Soul of Bubbles (MM);soul_of_foe
+Soul of Beamos (MM);soul_of_foe
+Soul of ReDeads / Gibdos (MM);soul_of_foe
+Soul of Skullwalltulas (MM);soul_of_foe
+Soul of Shell Blades (MM);soul_of_foe
+Soul of Like-Likes (MM);soul_of_foe
+Soul of Iron Knuckles (MM);soul_of_foe
+Soul of Freezards (MM);soul_of_foe
+Soul of Wolfos (MM);soul_of_foe
+Soul of Guays (MM);soul_of_foe
+Soul of Flying Pots (MM);soul_of_foe
+Soul of Floormasters (MM);soul_of_foe
+Soul of Chuchus;soul_of_foe
+Soul of Deep Pythons;soul_of_foe
+Soul of Stalchildren (MM);soul_of_foe
+Soul of Leevers (MM);soul_of_foe
+Soul of Skullfish;soul_of_foe
+Soul of Dexihands;soul_of_foe
+Soul of Dragonflies;soul_of_foe
+Soul of Eenos;soul_of_foe
+Soul of Eyegores;soul_of_foe
+Soul of Hiploops;soul_of_foe
+Soul of Real Bombchu;soul_of_foe
+Soul of Takkuri;soul_of_foe
+Soul of Boes;soul_of_foe
+Soul of Nejirons;soul_of_foe
+Soul of Bio Babas;soul_of_foe
+Soul of Garo;soul_of_foe
+Soul of Wizzrobes;soul_of_foe
+Soul of Gomess;soul_of_foe
+Soul of Gekkos;soul_of_foe
+Soul of Bad Bats;soul_of_foe
+Soul of Snappers;soul_of_foe
+Soul of Warts;soul_of_foe
+Soul of Captain Keeta;soul_of_foe
+Soul of the Fighting Pirates;soul_of_foe
+Soul of Poes (MM);soul_of_foe
+Soul of Odolwa;soul_of_boss
+Soul of Goht;soul_of_boss
+Soul of Gyorg;soul_of_boss
+Soul of Twinmold;soul_of_boss
+Soul of Igos;soul_of_boss
+Soul of Madame Aroma;soul_of_npc
+Soul of Town Archery Owner;soul_of_npc
+Soul of Swamp Archery Owner;soul_of_npc
+Soul of Gorons (MM);soul_of_npc
+Soul of Baby Goron;soul_of_npc
+Soul of Bombs Shopkeeper;soul_of_npc
+Soul of Bombers' Kids;soul_of_npc
+Soul of Deku Butler;soul_of_npc
+Soul of Citizens (MM);soul_of_npc
+Soul of Composer Bros (MM);soul_of_npc
+Soul of Dampe (MM);soul_of_npc
+Soul of Deku King;soul_of_npc
+Soul of Deku Princess;soul_of_npc
+Soul of Playground Scrubs;soul_of_npc
+Soul of Goron Elder;soul_of_npc
+Soul of Fisherman;soul_of_npc
+Soul of Goron Shopkeeper (MM);soul_of_npc
+Soul of Honey & Darling (MM);soul_of_npc
+Soul of Toto;soul_of_npc
+Soul of Lulu;soul_of_npc
+Soul of Zora Musicians;soul_of_npc
+Soul of Kafei;soul_of_npc
+Soul of Keaton;soul_of_npc
+Soul of Koume & Kotake;soul_of_npc
+Soul of Mayor Dotour;soul_of_npc
+Soul of Keg Trial Goron;soul_of_npc
+Soul of Biggoron (MM);soul_of_npc
+Soul of Mr. Barten;soul_of_npc
+Soul of Astronomer (MM);soul_of_npc
+Soul of Poe Hut Owner;soul_of_npc
+Soul of Blacksmiths;soul_of_npc
+Soul of Chest Game Lady;soul_of_npc
+Soul of Tingle;soul_of_npc
+Soul of Toilet Hand;soul_of_npc
+Soul of Trading Post Owner;soul_of_npc
+Soul of the Part-Timer;soul_of_npc
+Soul of Zoras (MM);soul_of_npc
+Soul of Zora Shopkeeper (MM);soul_of_npc
+Soul of Romani/Cremia;soul_of_npc
+Soul of the Bean Salesman;soul_of_npc
+Soul of Carpenters (MM);soul_of_npc
+Soul of Anju;soul_of_npc
+Soul of Guru-Guru (MM);soul_of_npc
+Soul of the Scientist (MM);soul_of_npc
+Soul of Gorman & Bros.;soul_of_npc
+Soul of Grog;soul_of_npc
+Soul of the Dog Lady (MM);soul_of_npc
+Soul of Swordsman;soul_of_npc
+Soul of Anju's Grandmother;soul_of_npc
+Soul of Boat Cruise Man;soul_of_npc
+Soul of the Banker;soul_of_npc
+Soul of Moon Children;soul_of_npc
+Soul of Patrolling Pirates and their Chief;soul_of_npc
+Soul of Cuccos (MM);soul_of_animal
+Soul of Cows (MM);soul_of_animal
+Soul of Dogs (MM);soul_of_animal
+Soul of Butterflies (MM);soul_of_animal
+Soul of Gold Skulltulas (MM);gs_token
+Soul of Business Scrubs (MM);soul_of_npc
 Key Ring (MM);
 Key Ring (Woodfall);
 Key Ring (Snowhead);
 Key Ring (Great Bay);
 Key Ring (Stone Tower);
-Skeleton Key (MM);
-A Button (MM);
-C-Right Button (MM);
-C-Left Button (MM);
-C-Up Button (MM);
-C-Down Button (MM);
-Bottle of Green Potion (MM);
-Bottle of Blue Potion (MM);
-Bottled Fairy (MM);
-Poe (MM);
-Bottled Poe (MM);
-Bottled Big Poe (MM);
-Bombchu Bag (MM);
-Big Bombchu Bag (MM);
-Biggest Bombchu Bag (MM);
-Bombchu Bag (MM);
-Bombchu Bag (MM);
-Bombchu Bag (MM);
-Bombchu Bag (MM);
-Big Fairy (MM);
-Din's Fire (MM);
-Farore's Wind (MM);
-Nayru's Love (MM);
-Iron Boots (MM);
-Hover Boots (MM);
-Goron Tunic (MM);
-Zora Tunic (MM);
-Bronze Scale (MM);
-Silver Scale (MM);
-Golden Scale (MM);
-Goron's Bracelet (MM);
-Silver Gauntlets (MM);
-Golden Gauntlets (MM);
-Clock (Day 1);
-Clock (Night 1);
-Clock (Day 2);
-Clock (Night 2);
-Clock (Day 3);
-Clock (Night 3);
-Megaton Hammer (MM);
-Deku Stick Upgrade (MM);
-Second Deku Stick Upgrade (MM);
-Deku Nut Upgrade (MM);
-Second Deku Nut Upgrade (MM);
-Stone of Agony (MM);
-Ruto's Letter;
-Bottle of Blue Fire (MM);
-Blue Fire (MM);
-Majora's Mask (MM);
-Sold Out;
-Nothing;
-MM Scoop;
+Skeleton Key (MM);skeleton_key
+A Button (MM);a_button
+C-Right Button (MM);c_right
+C-Left Button (MM);c_left
+C-Up Button (MM);c_up
+C-Down Button (MM);c_down
+Bottle of Green Potion (MM);green_potion
+Bottle of Blue Potion (MM);blue_potion
+Bottled Fairy (MM);bottled_fairy
+Poe (MM);bottled_poe
+Bottled Poe (MM);bottled_poe
+Bottled Big Poe (MM);bottled_big_poe
+Bombchu Bag (MM);bombchu_bag
+Big Bombchu Bag (MM);bombchu_bag
+Biggest Bombchu Bag (MM);bombchu_bag
+Bombchu Bag (MM);bombchu_bag
+Bombchu Bag (MM);bombchu_bag
+Bombchu Bag (MM);bombchu_bag
+Bombchu Bag (MM);bombchu_bag
+Big Fairy (MM);bombchu_bag
+Din's Fire (MM);din
+Farore's Wind (MM);farore
+Nayru's Love (MM);nayru
+Iron Boots (MM);iron
+Hover Boots (MM);hover
+Goron Tunic (MM);goron_tunic
+Zora Tunic (MM);zora_tunic
+Bronze Scale (MM);bronze_scale
+Silver Scale (MM);silver
+Golden Scale (MM);golden
+Goron's Bracelet (MM);bracelet
+Silver Gauntlets (MM);silver_gauntlet
+Golden Gauntlets (MM);golden_gauntlet
+Clock (Day 1);clock_d1
+Clock (Night 1);clock_n1
+Clock (Day 2);clock_d2
+Clock (Night 2);clock_n2
+Clock (Day 3);clock_d3
+Clock (Night 3);clock_n3
+Megaton Hammer (MM);hammer
+Deku Stick Upgrade (MM);stick_upgrade_1
+Second Deku Stick Upgrade (MM);stick_upgrade_2
+Deku Nut Upgrade (MM);nut_upgrade_1
+Second Deku Nut Upgrade (MM);nut_upgrade_2
+Stone of Agony (MM);agony
+Ruto's Letter;ruto
+Bottle of Blue Fire (MM);blue_fire
+Blue Fire (MM);blue_fire
+Majora's Mask (MM);mask
+Sold Out;none
+Nothing;none
+MM Scoop;none
