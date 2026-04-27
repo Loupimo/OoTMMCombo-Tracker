@@ -968,7 +968,7 @@ with open(input_file, "r", newline='', encoding='utf-8') as csvfile_in, \
             currName = unkItems[currItem]
 
         new_hex = "{ " f"0x{currnum:X}"  # hex en majuscules
-        fin_row = new_hex + ', \"' + currName + "\", ObjectIconMap::" + str(currRender) + " },\n"
+        fin_row = new_hex + ', \"' + currName + "\", EGameIcon::" + str(currRender) + " },\n"
         csvfile_out.write(fin_row)
         currnum = currnum + 1
 

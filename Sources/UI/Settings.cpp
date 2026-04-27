@@ -638,14 +638,14 @@ void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
 				{
 					switch (currObj->MapIcon)
 					{
-						case ObjectIconMap::card:
+						case EGameIcon::card:
 						{	// Check for gerudo card
 
 							this->CheckObjectExclusion(currObj, this->ROMSettings["shuffleGerudoCard"].Value, Filter);
 							break;
 						}
 
-						case ObjectIconMap::frog:
+						case EGameIcon::frog:
 						{	// Check for frog rupees rewards
 
 							if (currObj->LocationType == LocType::minigame)

@@ -328,7 +328,7 @@ OOT_RUPEE_GREEN;Green Rupee (OoT);rupee
 OOT_RUPEE_HUGE;Gold Rupee (OoT);gold_rupee
 OOT_RUPEE_PURPLE;Purple Rupee (OoT);purple_rupee
 OOT_RUPEE_RED;Red Rupee (OoT);red_rupee
-OOT_RUPEE_RAINBOW;Rainbow Rupee (OoT);rainbow
+OOT_RUPEE_RAINBOW;Rainbow Rupee (OoT);rainbow_rupee
 OOT_RUPEE_SILVER_BOTW;Silver Rupee (Bottom of the Well);sr
 OOT_RUPEE_SILVER_DC;Silver Rupee (Dodongo's Cavern);sr
 OOT_RUPEE_SILVER_GANON_FIRE;Silver Rupee (Ganon's Castle - Fire Trial);sr
@@ -1008,7 +1008,7 @@ MM_HOOKSHOT_SHORT;Short Hookshot (MM);hookshot_oot
 MM_WALLET;Child Wallet (MM);child_wallet
 MM_WALLET4;Colossal Wallet (MM);colossal_wallet
 MM_OWL_HIDDEN;Owl Statue (Hidden);none
-MM_WALLET5;Bottomless Wallet (MM);botomless_wallet
+MM_WALLET5;Bottomless Wallet (MM);bottomless_wallet
 MM_KEY_RING;Key Ring (MM);key_ring
 MM_BOMBCHU_BAG2;Big Bombchu Bag (MM);bombchu_bag
 MM_BOMBCHU_BAG3;Biggest Bombchu Bag (MM);bombchu_bag

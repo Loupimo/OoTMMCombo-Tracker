@@ -160,6 +160,9 @@
     <ClCompile Include="Sources\UI\Settings.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\UI\Icons.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Multi\API.h">
@@ -217,6 +220,9 @@
       <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="Headers\UI\AppConfig.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\UI\Icons.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="main.h">

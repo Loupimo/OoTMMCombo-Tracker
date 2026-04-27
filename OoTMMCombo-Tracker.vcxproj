@@ -223,6 +223,7 @@
     <ClCompile Include="Sources\UI\EntranceTable.cpp" />
     <ClCompile Include="Sources\UI\FilterManager.cpp" />
     <ClCompile Include="Sources\UI\GameTab.cpp" />
+    <ClCompile Include="Sources\UI\Icons.cpp" />
     <ClCompile Include="Sources\UI\LogTab.cpp" />
     <ClCompile Include="Sources\UI\MapTab.cpp" />
     <ClCompile Include="Sources\UI\MemoryReader.cpp" />
@@ -259,6 +260,7 @@
     <ClInclude Include="Headers\Multi\Game.h" />
     <ClInclude Include="Headers\UI\AppConfig.h" />
     <ClInclude Include="Headers\UI\AppStyle.h" />
+    <ClInclude Include="Headers\UI\Icons.h" />
     <QtMoc Include="Headers\UI\FilterManager.h" />
     <QtMoc Include="Headers\UI\EntranceTable.h" />
     <ClInclude Include="Headers\UI\EntranceRenderer.h" />

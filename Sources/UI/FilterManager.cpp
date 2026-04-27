@@ -4,6 +4,7 @@
 
 #include "UI/ObjectRenderer.h"
 #include "UI/FilterManager.h"
+#include "UI/Icons.h"
 
 
 /*void FilterItemWidget::paintEvent(QPaintEvent*)
@@ -61,12 +62,13 @@ FilterManager::FilterManager(GameTab* TabRef) : QToolButton(TabRef)
         }
     );
 
-    QIcon* icons = ObjectIcons::GetObjectIcons();
+    //QIcon* icons = ObjectIcons::GetObjectIcons();
 
     for (const auto& entry : entries)
     {
         QWidgetAction* action = new QWidgetAction(menu);
-        auto widget = new FilterItemWidget(icons[entry.type], entry.name, entry.type);
+        auto widget = new FilterItemWidget(*GameIcons::GetGameIcon((EGameIcon)entry.type), entry.name, entry.type);
+        //auto widget = new FilterItemWidget(icons[entry.type], entry.name, entry.type);
         action->setDefaultWidget(widget);
         menu->addAction(action);
 

@@ -1,6 +1,7 @@
 #include "UI/EntranceRenderer.h"
 #include "UI/ObjectRenderer.h"
 #include "UI/EntranceTable.h"
+#include "UI/Icons.h"
 
 #include <QBrush>
 #include <QtMinMax>
@@ -135,7 +136,7 @@ void EntranceLinkItemTree::RefreshText()
     //QString prefix = this->IsInLink ? QStringLiteral("In: ") : QStringLiteral("Out: ");
     QString name = this->IsInLink ? row->InLinkName : row->OutLinkName;
     this->setText(0, /*prefix + */name);
-    this->setIcon(0, this->IsInLink ? ObjectIcons::GetIconsRef()->EntranceIcons[1] : ObjectIcons::GetIconsRef()->EntranceIcons[2]);
+    this->setIcon(0, this->IsInLink ? *GameIcons::GetEntranceIcon(EntranceIcons::In_Only) : *GameIcons::GetEntranceIcon(EntranceIcons::Out_Only));
 
     // Propagate the name change to the on-map label. Without this the overlay stays stuck on the
     // previous text (usually "?") until the next scene re-render, even though the tree and the
@@ -593,7 +594,7 @@ void EntranceGroupBoxItem::paint(QPainter* p, const QStyleOptionGraphicsItem*, Q
     qreal titleTextW = w - kPadX * 2;
     if (titleMeta != nullptr)
     {
-        const QPixmap& iconPix = ObjectIcons::GetIconsRef()->PixmapEntranceIcons[titleMeta->RenderIcon];
+        const QPixmap& iconPix = *GameIcons::GetEntrancePixmap(titleMeta->RenderIcon);
         if (!iconPix.isNull())
         {
             const QRectF iconRect(kPadX, (kTitleH - kTitleIcon) / 2.0, kTitleIcon, kTitleIcon);
@@ -1154,8 +1155,7 @@ void EntranceRenderer::AddLinkMarker(EntranceLinkItemTree* Link, bool IsIn, cons
     iconWidth = iconWidth < EntranceIconsMetaInfo[Meta->RenderIcon].Scale[0] ? EntranceIconsMetaInfo[Meta->RenderIcon].Scale[0] : iconWidth > EntranceIconsMetaInfo[Meta->RenderIcon].MaxScale[0] ? EntranceIconsMetaInfo[Meta->RenderIcon].MaxScale[0] : iconWidth;
     iconHeight = iconHeight < EntranceIconsMetaInfo[Meta->RenderIcon].Scale[1] ? EntranceIconsMetaInfo[Meta->RenderIcon].Scale[1] : iconHeight > EntranceIconsMetaInfo[Meta->RenderIcon].MaxScale[1] ? EntranceIconsMetaInfo[Meta->RenderIcon].MaxScale[1] : iconHeight;
 
-    
-    EntrancePixmapItem* arrow = new EntrancePixmapItem(ObjectIcons::GetIconsRef()->PixmapEntranceIcons[Meta->RenderIcon].scaled(iconWidth, iconHeight, Qt::KeepAspectRatio, Qt::SmoothTransformation), this, Link);
+    EntrancePixmapItem* arrow = new EntrancePixmapItem(GameIcons::GetEntrancePixmap(Meta->RenderIcon)->scaled(iconWidth, iconHeight, Qt::KeepAspectRatio, Qt::SmoothTransformation), this, Link);
 
     arrow->setPos(pos[0], pos[1]);
     //arrow->setRotation(rotDeg);

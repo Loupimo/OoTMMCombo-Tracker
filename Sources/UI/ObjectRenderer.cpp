@@ -10,74 +10,7 @@
 #include <QStyle>
 #include <UI/AppConfig.h>
 #include "UI/FilterManager.h"
-
-static ObjectIcons* IconsRef = nullptr;
-
-ObjectIcons::ObjectIcons()
-{
-    for (size_t i = 0; i < ObjectType::last; i++)
-    {
-        this->PixmapIcons[i] = QPixmap(IconsMetaInfo[i].IconPath);
-        this->Icons[i] = QIcon(IconsMetaInfo[i].IconPath);
-    }
-
-    for (size_t i = 0; i < ObjectIconMap::type; i++)
-    {
-        this->PixmapSpeIcons[i] = QPixmap(SpecificIconsMetaInfo[i].IconPath);
-    }
-
-    for (size_t i = 0; i < EntranceIcons::Entrance_Last; i++)
-    {
-        this->EntranceIcons[i] = QIcon(EntranceIconsMetaInfo[i].IconPath);
-        this->PixmapEntranceIcons[i] = QPixmap(EntranceIconsMetaInfo[i].IconPath);
-    }
-}
-
-
-ObjectIcons::~ObjectIcons()
-{
-    for (size_t i = 0; i < ObjectType::last; i++)
-    {
-        this->Icons[i].~QIcon();
-        this->PixmapIcons[i].~QPixmap();
-    }
-
-    for (size_t i = 0; i < ObjectIconMap::type; i++)
-    {
-        this->PixmapSpeIcons[i].~QPixmap();
-    }
-}
-
-
-void ObjectIcons::CreateObjectIcons()
-{
-    if (IconsRef == nullptr)
-    {
-        IconsRef = new ObjectIcons();
-    }
-}
-
-
-QIcon* ObjectIcons::GetObjectIcons()
-{
-    if (IconsRef == nullptr)
-    {
-        IconsRef = new ObjectIcons();
-    }
-
-    return IconsRef->Icons;
-}
-
-
-ObjectIcons* ObjectIcons::GetIconsRef()
-{
-    if (IconsRef == nullptr)
-    {
-        IconsRef = new ObjectIcons();
-    }
-
-    return IconsRef;
-}
+#include "UI/Icons.h"
 
 ObjectItemTree::ObjectItemTree(ObjectInfo* Obj, QColor DefaultColor, ObjectRenderer* Owner, QTreeWidgetItem* Parent) : CommonBaseItemTree(Parent)
 {
@@ -101,9 +34,28 @@ ObjectItemTree::ObjectItemTree(ObjectInfo* Obj, QColor DefaultColor, ObjectRende
     // otherwise the RenderType / Type icon. The categories keep their own icon —
     // only the leaves use RenderType so e.g. each mask shows its actual artwork
     // instead of the generic "MASK" category icon.
-    ObjectIcons* iconsRef = ObjectIcons::GetIconsRef();
-    if (iconsRef)
+    //ObjectIcons* iconsRef = ObjectIcons::GetIconsRef();
+    //if (iconsRef)
     {
+        EGameIcon iconID = Obj->MapIcon;
+
+        switch (Obj->MapIcon)
+        {
+            case EGameIcon::type:
+            {
+                iconID = (EGameIcon)Obj->Type;
+                break;
+            }
+
+            case EGameIcon::render_type:
+            {
+                iconID = (EGameIcon)Obj->RenderType;
+                break;
+            }
+        }
+
+        this->setIcon(0, *GameIcons::GetGameIcon(iconID));
+        /*
         if (Obj->MapIcon == ObjectIconMap::type)
         {
             this->setIcon(0, iconsRef->Icons[Obj->Type]);
@@ -123,7 +75,7 @@ ObjectItemTree::ObjectItemTree(ObjectInfo* Obj, QColor DefaultColor, ObjectRende
             {
                 this->setIcon(0, iconsRef->Icons[Obj->RenderType]);
             }
-        }
+        }*/
     }
 
     this->UpdateTextStyle();
@@ -153,8 +105,8 @@ void ObjectItemTree::UpdateIcon(ObjectType Type)
 
         switch (this->Object->MapIcon)
         {
-            case ObjectIconMap::type:
-            case ObjectIconMap::render_type:
+            case EGameIcon::type:
+            case EGameIcon::render_type:
             {   // This is a common icon
 
                 iconWidth = this->RendererOwner->Icon.width();
@@ -168,10 +120,11 @@ void ObjectItemTree::UpdateIcon(ObjectType Type)
             default:
             {   // This is a specific icon
 
-                iconWidth = iconWidth < SpecificIconsMetaInfo[this->Object->MapIcon].Scale[0] ? SpecificIconsMetaInfo[this->Object->MapIcon].Scale[0] : iconWidth > SpecificIconsMetaInfo[this->Object->MapIcon].MaxScale[0] ? IconsMetaInfo[this->Type].MaxScale[0] : iconWidth;
-                iconHeight = iconHeight < SpecificIconsMetaInfo[this->Object->MapIcon].Scale[1] ? SpecificIconsMetaInfo[this->Object->MapIcon].Scale[1] : iconHeight > SpecificIconsMetaInfo[this->Object->MapIcon].MaxScale[1] ? SpecificIconsMetaInfo[this->Object->MapIcon].MaxScale[1] : iconHeight;
+                const IconMetaInf* iconMeta = GameIcons::GetIconMetaInf(this->Object->MapIcon);
+                iconWidth = iconWidth < iconMeta->Scale[0] ? iconMeta->Scale[0] : iconWidth > iconMeta->MaxScale[0] ? iconMeta->MaxScale[0] : iconWidth;
+                iconHeight = iconHeight < iconMeta->Scale[1] ? iconMeta->Scale[1] : iconHeight > iconMeta->MaxScale[1] ? iconMeta->MaxScale[1] : iconHeight;
 
-                this->GraphItem = new ObjectPixmapItem(IconsRef->PixmapSpeIcons[this->Object->MapIcon].scaled(iconWidth, iconHeight, Qt::KeepAspectRatio, Qt::SmoothTransformation), this->RendererOwner, this);
+                this->GraphItem = new ObjectPixmapItem(GameIcons::GetGamePixmap(this->Object->MapIcon)->scaled(iconWidth, iconHeight, Qt::KeepAspectRatio, Qt::SmoothTransformation), this->RendererOwner, this);
                 break;
             }
         }
@@ -501,7 +454,7 @@ void ObjectPixmapItem::hoverLeaveEvent(QGraphicsSceneHoverEvent* event)
 
 ObjectRenderer::ObjectRenderer(ObjectType Type, SceneRenderer* Owner, bool ShouldBeRendered)
 {
-    ObjectIcons::CreateObjectIcons();
+    //ObjectIcons::CreateObjectIcons();
 
     this->Type = Type;
     this->ShouldBeRendered = ShouldBeRendered;
@@ -513,7 +466,7 @@ ObjectRenderer::ObjectRenderer(ObjectType Type, SceneRenderer* Owner, bool Shoul
     this->ObjCat->setFont(0, font);
     this->ObjCat->setFont(1, font);
     this->ObjCat->setText(0, ObjTypeName[this->Type]);
-    this->ObjCat->setIcon(0, IconsRef->Icons[this->Type]);
+    this->ObjCat->setIcon(0, *GameIcons::GetGameIcon((EGameIcon)this->Type));
     this->ObjCat->setTextAlignment(1, Qt::AlignRight | Qt::AlignVCenter);
 
     // Section-header look (object categories / parents in the object tree)
@@ -560,10 +513,11 @@ void ObjectRenderer::RenderObjectToScene(ObjectContext ActiveContext)
         int iconWidth = this->SceneOwner->SceneImage->rect().width() * scaleFactor;
         int iconHeight = this->SceneOwner->SceneImage->rect().height() * scaleFactor;
 
-        iconWidth = iconWidth < IconsMetaInfo[this->Type].Scale[0] ? IconsMetaInfo[this->Type].Scale[0] : iconWidth > IconsMetaInfo[this->Type].MaxScale[0] ? IconsMetaInfo[this->Type].MaxScale[0] : iconWidth;
-        iconHeight = iconHeight < IconsMetaInfo[this->Type].Scale[1] ? IconsMetaInfo[this->Type].Scale[1] : iconHeight > IconsMetaInfo[this->Type].MaxScale[1] ? IconsMetaInfo[this->Type].MaxScale[1] : iconHeight;
+        const IconMetaInf* iconMeta = &IconsMetaInfo[this->Type];
+        iconWidth = iconWidth < iconMeta->Scale[0] ? iconMeta->Scale[0] : iconWidth > iconMeta->MaxScale[0] ? iconMeta->MaxScale[0] : iconWidth;
+        iconHeight = iconHeight < iconMeta->Scale[1] ? iconMeta->Scale[1] : iconHeight > iconMeta->MaxScale[1] ? iconMeta->MaxScale[1] : iconHeight;
 
-        this->Icon = IconsRef->PixmapIcons[this->Type].scaled(iconWidth, iconHeight, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+        this->Icon = GameIcons::GetGamePixmap((EGameIcon)this->Type)->scaled(iconWidth, iconHeight, Qt::KeepAspectRatio, Qt::SmoothTransformation);
 
         for (ObjectItemTree* currObj : this->Objects)
         {   // Browse all objects

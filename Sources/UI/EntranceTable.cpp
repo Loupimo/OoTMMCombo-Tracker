@@ -1015,10 +1015,9 @@ void EntranceGameTabView::PopulateEntranceList(SceneEntranceMetaInf* Scene)
     oneWayInCat->setFont(0, font);
     oneWayOutCat->setFont(0, font);
 
-    ObjectIcons * refIcons = ObjectIcons::GetIconsRef();
-    normalCat->setIcon(0, refIcons->EntranceIcons[EntranceIcons::In_Out]);
-    oneWayInCat->setIcon(0, refIcons->EntranceIcons[EntranceIcons::In_Only]);
-    oneWayOutCat->setIcon(0, refIcons->EntranceIcons[EntranceIcons::Out_Only]);
+    normalCat->setIcon(0, *GameIcons::GetEntranceIcon(EntranceIcons::In_Out));
+    oneWayInCat->setIcon(0, *GameIcons::GetEntranceIcon(EntranceIcons::In_Only));
+    oneWayOutCat->setIcon(0, *GameIcons::GetEntranceIcon(EntranceIcons::Out_Only));
 
     GlobalEntranceTableModel* model = this->AllView != nullptr ? this->AllView->Model : nullptr;
 
