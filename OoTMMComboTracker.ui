@@ -81,8 +81,14 @@
     </property>
     <addaction name="actionAbout"/>
    </widget>
+   <widget class="QMenu" name="menuROM_Settings">
+    <property name="title">
+     <string>ROM Settings ⚙</string>
+    </property>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuOptions"/>
+   <addaction name="menuROM_Settings"/>
    <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
@@ -262,7 +268,7 @@
     <string>Reveal Uncollected Items</string>
    </property>
    <property name="toolTip">
-    <string>When off, uncollected objects display "???" even if their item is known from the spoiler log</string>
+    <string>When off, uncollected objects display &quot;???&quot; even if their item is known from the spoiler log</string>
    </property>
   </action>
  </widget>

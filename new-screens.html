@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>OoTMMCombo — Settings & Progression</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<style>* { box-sizing: border-box; margin: 0; padding: 0; } body { background: #111; }</style>
+</head>
+<body>
+<script type="text/babel">
+
+// ─────────────────────────────────────────────────────
+// THEME
+// ─────────────────────────────────────────────────────
+const T = {
+  bg: "#080f1a", panel: "#0d1827", panel2: "#0a1320",
+  border: "#1a3050", accent: "#4a9edb", accentMM: "#9b5de5",
+  accentSoft: "#1a4a7a", text: "#ddeeff", textDim: "#4a6a9a",
+  gold: "#c8a042", green: "#4adb7a", red: "#db4a4a",
+  font: "'Inter', sans-serif", mono: "'JetBrains Mono', monospace",
+};
+
+// ─────────────────────────────────────────────────────
+// SVG ICON PRIMITIVES  (40×40 viewBox)
+// ─────────────────────────────────────────────────────
+const SVGIcons = {
+  sword: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <polygon points="20,3 22.5,27 20,32 17.5,27" fill={c}/>
+    <rect x="13" y="21" width="14" height="3" rx="1.5" fill={c}/>
+    <rect x="17.5" y="31" width="5" height="5" rx="1" fill={c} opacity="0.7"/>
+  </svg>),
+
+  biggsword: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <polygon points="20,2 23,26 20,32 17,26" fill={c}/>
+    <rect x="11" y="20" width="18" height="3.5" rx="1.5" fill={c}/>
+    <polygon points="17,30 23,30 21,37 19,37" fill={c} opacity="0.7"/>
+    <circle cx="20" cy="16" r="2" fill={c} opacity="0.5"/>
+  </svg>),
+
+  bow: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <path d="M12 5 Q7 20 12 35" fill="none" stroke={c} strokeWidth="3" strokeLinecap="round"/>
+    <line x1="12" y1="5" x2="12" y2="35" stroke={c} strokeWidth="1.5" strokeDasharray="2,2"/>
+    <line x1="12" y1="12" x2="30" y2="20" stroke={c} strokeWidth="1.5"/>
+    <line x1="12" y1="28" x2="30" y2="20" stroke={c} strokeWidth="1.5"/>
+    <polygon points="28,18 32,20 28,22" fill={c}/>
+  </svg>),
+
+  arrow: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <line x1="8" y1="20" x2="32" y2="20" stroke={c} strokeWidth="2"/>
+    <polygon points="28,15 36,20 28,25" fill={c}/>
+    <rect x="7" y="17" width="5" height="6" rx="1" fill={c} opacity="0.6"/>
+  </svg>),
+
+  hookshot: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <rect x="8" y="18" width="18" height="4" rx="2" fill={c}/>
+    <circle cx="12" cy="20" r="3" fill="none" stroke={c} strokeWidth="1.5"/>
+    <circle cx="18" cy="20" r="3" fill="none" stroke={c} strokeWidth="1.5"/>
+    <path d="M26 20 L34 14" stroke={c} strokeWidth="2" strokeLinecap="round"/>
+    <path d="M34 14 L36 17 L33 17" fill={c}/>
+  </svg>),
+
+  boomerang: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <path d="M8 30 Q8 6 28 8 Q18 18 12 34 Z" fill={c} opacity="0.9"/>
+    <path d="M10 28 Q10 8 26 10" fill="none" stroke={c} strokeWidth="1" opacity="0.5"/>
+  </svg>),
+
+  hammer: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <rect x="10" y="8" width="20" height="12" rx="2" fill={c}/>
+    <rect x="18" y="18" width="4" height="18" rx="2" fill={c} opacity="0.8"/>
+    <rect x="10" y="8" width="9" height="12" rx="2" fill={c} opacity="0.6"/>
+  </svg>),
+
+  bomb: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <circle cx="20" cy="24" r="12" fill={c}/>
+    <rect x="19" y="10" width="3" height="7" rx="1.5" fill={c} opacity="0.8"/>
+    <path d="M22 10 Q28 6 30 10" fill="none" stroke="#f0a030" strokeWidth="2" strokeLinecap="round"/>
+    <circle cx="15" cy="21" r="3" fill="white" opacity="0.15"/>
+  </svg>),
+
+  shield: (c, variant="hylian") => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <path d="M8 8 L32 8 L34 24 L20 37 L6 24 Z" fill={c} opacity="0.9"/>
+    {variant==="hylian" && <polygon points="20,13 22,18 27,18 23,21 25,26 20,23 15,26 17,21 13,18 18,18" fill={c} opacity="0.4"/>}
+    {variant==="mirror" && <circle cx="20" cy="20" r="7" fill="white" opacity="0.25"/>}
+    {variant==="deku" && <path d="M14 12 L26 12 L28 22 L20 30 L12 22 Z" fill={c} opacity="0.4"/>}
+  </svg>),
+
+  boot: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <path d="M14 8 L18 8 L18 24 L28 28 L28 34 L10 34 L10 28 L14 26 Z" fill={c} opacity="0.9"/>
+    <path d="M14 8 L14 26" stroke={c} strokeWidth="1" opacity="0.4"/>
+  </svg>),
+
+  tunic: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <path d="M8 14 L14 8 L20 11 L26 8 L32 14 L28 18 L28 34 L12 34 L12 18 Z" fill={c} opacity="0.9"/>
+    <path d="M14 8 L20 11 L26 8" fill="none" stroke={c} strokeWidth="1.5"/>
+    <circle cx="20" cy="20" r="2" fill={c} opacity="0.4"/>
+  </svg>),
+
+  gauntlet: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <rect x="12" y="18" width="16" height="16" rx="3" fill={c}/>
+    <rect x="11" y="14" width="5" height="6" rx="2" fill={c}/>
+    <rect x="17.5" y="13" width="5" height="6" rx="2" fill={c}/>
+    <rect x="24" y="14" width="5" height="6" rx="2" fill={c}/>
+    <rect x="10" y="22" width="4" height="8" rx="2" fill={c} opacity="0.7"/>
+  </svg>),
+
+  gem: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <polygon points="20,5 32,15 28,34 12,34 8,15" fill={c} opacity="0.9"/>
+    <polygon points="20,5 32,15 20,10 8,15" fill="white" opacity="0.2"/>
+    <polygon points="20,10 32,15 28,34 12,34 8,15" fill={c} opacity="0.3"/>
+  </svg>),
+
+  medallion: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <circle cx="20" cy="20" r="15" fill={c} opacity="0.2" stroke={c} strokeWidth="2"/>
+    <circle cx="20" cy="20" r="9" fill={c} opacity="0.5"/>
+    <circle cx="20" cy="20" r="4" fill={c}/>
+    <line x1="20" y1="5" x2="20" y2="10" stroke={c} strokeWidth="2"/>
+    <line x1="20" y1="30" x2="20" y2="35" stroke={c} strokeWidth="2"/>
+    <line x1="5" y1="20" x2="10" y2="20" stroke={c} strokeWidth="2"/>
+    <line x1="30" y1="20" x2="35" y2="20" stroke={c} strokeWidth="2"/>
+  </svg>),
+
+  ocarina: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <ellipse cx="20" cy="22" rx="14" ry="10" fill={c} opacity="0.9"/>
+    <ellipse cx="28" cy="18" rx="5" ry="4" fill={c}/>
+    <circle cx="15" cy="20" r="2" fill="black" opacity="0.3"/>
+    <circle cx="20" cy="18" r="2" fill="black" opacity="0.3"/>
+    <circle cx="23" cy="23" r="1.5" fill="black" opacity="0.3"/>
+    <circle cx="17" cy="25" r="1.5" fill="black" opacity="0.3"/>
+  </svg>),
+
+  bottle: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <rect x="17" y="5" width="6" height="5" rx="1" fill={c} opacity="0.7"/>
+    <path d="M14 10 Q10 14 10 28 L10 34 L30 34 L30 28 Q30 14 26 10 Z" fill={c} opacity="0.5"/>
+    <path d="M14 10 Q10 14 10 28 L10 34 L30 34 L30 28 Q30 14 26 10 Z" fill="none" stroke={c} strokeWidth="1.5"/>
+    <ellipse cx="20" cy="28" rx="7" ry="4" fill={c} opacity="0.3"/>
+  </svg>),
+
+  magic: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <polygon points="20,4 23,15 35,15 25,22 29,33 20,26 11,33 15,22 5,15 17,15" fill={c} opacity="0.9"/>
+    <polygon points="20,4 23,15 35,15 25,22 29,33 20,26 11,33 15,22 5,15 17,15" fill="white" opacity="0.15"/>
+  </svg>),
+
+  songNote: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <path d="M16 8 L16 28 Q16 34 10 34 Q6 34 6 30 Q6 26 10 26 Q13 26 14 28 L14 14 L30 10 L30 26 Q30 32 24 32 Q20 32 20 28 Q20 24 24 24 Q27 24 28 26 L28 12 Z" fill={c} opacity="0.9"/>
+  </svg>),
+
+  key: (c, boss=false) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    {boss ? (<>
+      <circle cx="14" cy="16" r="9" fill="none" stroke={c} strokeWidth="2.5"/>
+      <circle cx="14" cy="16" r="4" fill={c}/>
+      <rect x="21" y="14" width="15" height="4" rx="2" fill={c}/>
+      <rect x="29" y="18" width="4" height="5" rx="1" fill={c}/>
+      <rect x="33" y="18" width="4" height="4" rx="1" fill={c}/>
+      <polygon points="10,10 14,6 18,10" fill={c} opacity="0.5"/>
+    </>) : (<>
+      <circle cx="14" cy="16" r="8" fill="none" stroke={c} strokeWidth="2.5"/>
+      <circle cx="14" cy="16" r="3.5" fill={c}/>
+      <rect x="20" y="14" width="16" height="3.5" rx="1.5" fill={c}/>
+      <rect x="28" y="17.5" width="3.5" height="5" rx="1" fill={c}/>
+      <rect x="32.5" y="17.5" width="3.5" height="4" rx="1" fill={c}/>
+    </>)}
+  </svg>),
+
+  skull: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <path d="M10 24 Q8 12 20 8 Q32 12 30 24 L30 30 L10 30 Z" fill={c} opacity="0.9"/>
+    <circle cx="15" cy="20" r="4" fill="black" opacity="0.5"/>
+    <circle cx="25" cy="20" r="4" fill="black" opacity="0.5"/>
+    <rect x="13" y="30" width="5" height="6" rx="1" fill={c} opacity="0.7"/>
+    <rect x="20" y="30" width="5" height="6" rx="1" fill={c} opacity="0.7"/>
+    <path d="M10 30 L12 36 L16 36" stroke={c} strokeWidth="1" fill="none"/>
+    <path d="M30 30 L28 36 L24 36" stroke={c} strokeWidth="1" fill="none"/>
+  </svg>),
+
+  heart: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <path d="M20 34 Q6 24 6 14 Q6 6 14 6 Q18 6 20 10 Q22 6 26 6 Q34 6 34 14 Q34 24 20 34 Z" fill={c} opacity="0.9"/>
+    <path d="M20 34 Q6 24 6 14 Q6 6 14 6 Q18 6 20 10" fill="white" opacity="0.15"/>
+  </svg>),
+
+  rupee: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <polygon points="20,4 32,12 32,28 20,36 8,28 8,12" fill={c} opacity="0.9"/>
+    <polygon points="20,4 32,12 20,10 8,12" fill="white" opacity="0.2"/>
+    <polygon points="20,10 32,12 32,28 20,26" fill={c} opacity="0.3"/>
+  </svg>),
+
+  fairy: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <circle cx="20" cy="20" r="6" fill={c}/>
+    <ellipse cx="11" cy="17" rx="8" ry="5" fill={c} opacity="0.4" transform="rotate(-20 11 17)"/>
+    <ellipse cx="29" cy="17" rx="8" ry="5" fill={c} opacity="0.4" transform="rotate(20 29 17)"/>
+    <ellipse cx="11" cy="24" rx="7" ry="4" fill={c} opacity="0.25" transform="rotate(15 11 24)"/>
+    <ellipse cx="29" cy="24" rx="7" ry="4" fill={c} opacity="0.25" transform="rotate(-15 29 24)"/>
+    {[0,60,120,180,240,300].map(a => <circle key={a} cx={20+13*Math.cos(a*Math.PI/180)} cy={20+13*Math.sin(a*Math.PI/180)} r="1.5" fill={c} opacity="0.6"/>)}
+  </svg>),
+
+  mask: (c, variant="round") => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <ellipse cx="20" cy="20" rx="14" ry="16" fill={c} opacity="0.85"/>
+    <ellipse cx="15" cy="17" rx="4" ry="3" fill="black" opacity="0.35"/>
+    <ellipse cx="25" cy="17" rx="4" ry="3" fill="black" opacity="0.35"/>
+    {variant==="deku" && <><ellipse cx="20" cy="30" rx="3" ry="2" fill="black" opacity="0.3"/>
+      {[-3,0,3].map(x => <line key={x} x1={20+x} y1="10" x2={20+x} y2="4" stroke={c} strokeWidth="1.5" opacity="0.7"/>)}</>}
+    {variant==="goron" && <path d="M10 28 Q20 36 30 28" fill="none" stroke="black" opacity="0.3" strokeWidth="2"/>}
+    {variant==="zora" && <><path d="M8 14 L6 22 L10 18" fill={c} opacity="0.6"/><path d="M32 14 L34 22 L30 18" fill={c} opacity="0.6"/></>}
+    {variant==="fd" && <path d="M10 20 L30 20 M20 10 L20 30" stroke={c} strokeWidth="2" opacity="0.4"/>}
+  </svg>),
+
+  triforce: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <polygon points="20,5 30,22 10,22" fill={c}/>
+    <polygon points="10,22 20,38 0,38" fill={c} opacity="0.7"/>
+    <polygon points="30,22 40,38 20,38" fill={c} opacity="0.7"/>
+  </svg>),
+
+  remains: (c, n=0) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <circle cx="20" cy="20" r="14" fill={c} opacity="0.2" stroke={c} strokeWidth="1.5"/>
+    {n===0 && <path d="M20 8 Q28 12 28 20 Q28 30 20 32 Q12 30 12 20 Q12 12 20 8 Z" fill={c} opacity="0.7"/>}
+    {n===1 && <path d="M10 30 Q14 8 20 8 Q26 8 30 30 Q24 26 20 28 Q16 26 10 30 Z" fill={c} opacity="0.7"/>}
+    {n===2 && <circle cx="20" cy="20" r="8" fill={c} opacity="0.7"/>}
+    {n===3 && <path d="M12 12 L28 12 L28 28 L12 28 Z" fill={c} opacity="0.7"/>}
+  </svg>),
+
+  soulIcon: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <circle cx="20" cy="16" r="10" fill={c} opacity="0.7"/>
+    <path d="M12 24 Q10 34 16 36 Q20 38 20 36 Q20 38 24 36 Q30 34 28 24" fill={c} opacity="0.5"/>
+    <circle cx="16" cy="14" r="3" fill="black" opacity="0.35"/>
+    <circle cx="24" cy="14" r="3" fill="black" opacity="0.35"/>
+  </svg>),
+
+  scale: (c) => (<svg viewBox="0 0 40 40" width="100%" height="100%">
+    <rect x="19" y="6" width="2" height="28" fill={c}/>
+    <rect x="10" y="12" width="20" height="2" rx="1" fill={c}/>
+    <circle cx="12" cy="28" r="6" fill={c} opacity="0.7"/>
+    <circle cx="28" cy="24" r="6" fill={c} opacity="0.7"/>
+  </svg>),
+};
+
+// ─────────────────────────────────────────────────────
+// ITEM ICON CELL
+// ─────────────────────────────────────────────────────
+function ItemCell({ icon, color, label, found, count, onClick, selected }) {
+  const dim = !found;
+  return (
+    <div onClick={onClick} style={{
+      width: 70, display: "flex", flexDirection: "column", alignItems: "center", gap: 4,
+      cursor: "pointer", padding: "6px 4px", borderRadius: 8,
+      background: selected ? `${color}20` : "transparent",
+      border: `1px solid ${selected ? color : "transparent"}`,
+      transition: "all 0.15s",
+      position: "relative",
+    }}>
+      <div style={{
+        width: 44, height: 44,
+        filter: dim ? "grayscale(1)" : "none",
+        opacity: dim ? 0.25 : 1,
+        transition: "all 0.3s",
+        position: "relative",
+      }}>
+        {icon(found ? color : "#888")}
+        {found && <div style={{ position: "absolute", inset: 0, borderRadius: 8, boxShadow: `0 0 12px ${color}66`, pointerEvents: "none" }}/>}
+      </div>
+      {count !== undefined && found && (
+        <div style={{
+          position: "absolute", bottom: 22, right: 6,
+          background: color, color: "#080f1a",
+          fontSize: 9, fontWeight: 700, borderRadius: 8, padding: "1px 4px",
+          minWidth: 16, textAlign: "center", fontFamily: T.mono,
+          boxShadow: `0 0 4px ${color}88`,
+        }}>{count}</div>
+      )}
+      <span style={{
+        fontSize: 9, color: found ? T.text : T.textDim, textAlign: "center",
+        lineHeight: 1.2, width: "100%", fontFamily: T.font,
+        overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
+      }}>{label}</span>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────
+// SECTION HEADER
+// ─────────────────────────────────────────────────────
+function SectionHeader({ title, found, total, color }) {
+  return (
+    <div style={{
+      display: "flex", alignItems: "center", justifyContent: "space-between",
+      padding: "6px 12px", background: `${color}12`,
+      borderTop: `1px solid ${color}30`, borderBottom: `1px solid ${color}30`,
+      marginBottom: 2,
+    }}>
+      <span style={{ fontSize: 10, fontWeight: 600, color, letterSpacing: "0.08em", textTransform: "uppercase" }}>{title}</span>
+      <span style={{ fontSize: 10, fontFamily: T.mono, color: found === total ? color : T.textDim }}>
+        {found}<span style={{ color: T.textDim }}>/{total}</span>
+      </span>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────
+// OoT ITEMS DATA
+// ─────────────────────────────────────────────────────
+const OOT_WEAPONS = [
+  { id: "kokiri_sword", label: "Épée Kokiri", icon: (c) => SVGIcons.sword(c), color: "#a0cce8", found: true, foundAt: "Link's House", foundObj: "Coffre" },
+  { id: "master_sword", label: "Épée Sacrée", icon: (c) => SVGIcons.biggsword(c), color: "#6ab4f0", found: true, foundAt: "Temple of Time", foundObj: "NPC" },
+  { id: "biggoron", label: "Épée Biggoron", icon: (c) => SVGIcons.biggsword(c), color: "#d0d8e0", found: false },
+  { id: "fairy_bow", label: "Arc Fée", icon: (c) => SVGIcons.bow(c), color: "#c8a060", found: true, foundAt: "Forest Temple", foundObj: "Coffre (1F)" },
+  { id: "fire_arrows", label: "Flèches Feu", icon: (c) => SVGIcons.arrow(c), color: "#e87040", found: true, foundAt: "Lake Hylia", foundObj: "Coffre" },
+  { id: "ice_arrows", label: "Flèches Glace", icon: (c) => SVGIcons.arrow(c), color: "#60c8e8", found: false },
+  { id: "light_arrows", label: "Flèches Lumière", icon: (c) => SVGIcons.arrow(c), color: "#e8d060", found: false },
+  { id: "slingshot", label: "Lance-Pierre", icon: (c) => SVGIcons.bow(c), color: "#a06830", found: true, foundAt: "Deku Tree", foundObj: "Coffre" },
+  { id: "boomerang", label: "Boomerang", icon: (c) => SVGIcons.boomerang(c), color: "#60b878", found: false },
+  { id: "hookshot", label: "Grappin", icon: (c) => SVGIcons.hookshot(c), color: "#888888", found: true, foundAt: "Bottom of the Well", foundObj: "Coffre" },
+  { id: "longshot", label: "Super Grappin", icon: (c) => SVGIcons.hookshot(c), color: "#aaaaaa", found: false },
+  { id: "hammer", label: "Marteau", icon: (c) => SVGIcons.hammer(c), color: "#c86040", found: false },
+  { id: "bomb", label: "Bombe", icon: (c) => SVGIcons.bomb(c), color: "#606080", found: true, foundAt: "Kakariko", foundObj: "Coffre" },
+  { id: "bombchu", label: "Bombchu", icon: (c) => SVGIcons.bomb(c), color: "#8060a0", found: false },
+  { id: "lens", label: "Lentille de Vérité", icon: (c) => SVGIcons.magic(c), color: "#60c0e0", found: false },
+  { id: "dins_fire", label: "Feu de Din", icon: (c) => SVGIcons.magic(c), color: "#e84040", found: false },
+  { id: "farores", label: "Vent de Farore", icon: (c) => SVGIcons.magic(c), color: "#40c060", found: false },
+  { id: "nayrus", label: "Amour de Nayru", icon: (c) => SVGIcons.magic(c), color: "#4060e0", found: false },
+];
+
+const OOT_EQUIPMENT = [
+  { id: "deku_shield", label: "Bouclier Mojo", icon: (c) => SVGIcons.shield(c, "deku"), color: "#60a840", found: true, foundAt: "Kokiri Forest", foundObj: "Achat" },
+  { id: "hylian_shield", label: "Bouclier Hylien", icon: (c) => SVGIcons.shield(c, "hylian"), color: "#4878c0", found: true, foundAt: "Kakariko", foundObj: "Achat" },
+  { id: "mirror_shield", label: "Bouclier Miroir", icon: (c) => SVGIcons.shield(c, "mirror"), color: "#d0d8e8", found: false },
+  { id: "goron_tunic", label: "Tenue Goron", icon: (c) => SVGIcons.tunic(c), color: "#c84040", found: false },
+  { id: "zora_tunic", label: "Tenue Zora", icon: (c) => SVGIcons.tunic(c), color: "#4090c0", found: false },
+  { id: "iron_boots", label: "Bottes de Fer", icon: (c) => SVGIcons.boot(c), color: "#888888", found: false },
+  { id: "hover_boots", label: "Bottes Célestes", icon: (c) => SVGIcons.boot(c), color: "#a0c0e0", found: false },
+  { id: "silver_gaunt", label: "Gantelets Argent", icon: (c) => SVGIcons.gauntlet(c), color: "#c8d8e8", found: false },
+  { id: "golden_gaunt", label: "Gantelets Or", icon: (c) => SVGIcons.gauntlet(c), color: "#e8c840", found: false },
+  { id: "silver_scale", label: "Écaille Argent", icon: (c) => SVGIcons.scale(c), color: "#b0c8d8", found: false },
+  { id: "golden_scale", label: "Écaille Or", icon: (c) => SVGIcons.scale(c), color: "#e0b030", found: false },
+];
+
+const OOT_QUEST = [
+  { id: "emerald", label: "Émeraude Kokiri", icon: (c) => SVGIcons.gem(c), color: "#40c060", found: true, foundAt: "Deku Tree", foundObj: "Boss" },
+  { id: "ruby", label: "Rubis Goron", icon: (c) => SVGIcons.gem(c), color: "#e04040", found: true, foundAt: "Dodongo's Cavern", foundObj: "Boss" },
+  { id: "sapphire", label: "Saphir Zora", icon: (c) => SVGIcons.gem(c), color: "#4080e8", found: false },
+  { id: "med_forest", label: "Médaillon Forêt", icon: (c) => SVGIcons.medallion(c), color: "#40c060", found: false },
+  { id: "med_fire", label: "Médaillon Feu", icon: (c) => SVGIcons.medallion(c), color: "#e04040", found: false },
+  { id: "med_water", label: "Médaillon Eau", icon: (c) => SVGIcons.medallion(c), color: "#4080e8", found: false },
+  { id: "med_spirit", label: "Médaillon Esprit", icon: (c) => SVGIcons.medallion(c), color: "#e0a040", found: false },
+  { id: "med_shadow", label: "Médaillon Ombre", icon: (c) => SVGIcons.medallion(c), color: "#8040c0", found: false },
+  { id: "med_light", label: "Médaillon Lumière", icon: (c) => SVGIcons.medallion(c), color: "#e8d040", found: false },
+  { id: "triforce", label: "Fragment Triforce", icon: (c) => SVGIcons.triforce(c), color: "#e8c030", found: true, count: 3, foundAt: "Divers", foundObj: "—" },
+];
+
+const OOT_SONGS = [
+  { id: "lullaby", label: "Berceuse de Zelda", icon: (c) => SVGIcons.songNote(c), color: "#e070e0", found: true, foundAt: "Hyrule Castle", foundObj: "NPC" },
+  { id: "epona", label: "Chant d'Épona", icon: (c) => SVGIcons.songNote(c), color: "#60c060", found: false },
+  { id: "saria", label: "Chant de Saria", icon: (c) => SVGIcons.songNote(c), color: "#40c840", found: true, foundAt: "Lost Woods", foundObj: "NPC" },
+  { id: "suns", label: "Chant du Soleil", icon: (c) => SVGIcons.songNote(c), color: "#e8d040", found: false },
+  { id: "time", label: "Chant du Temps", icon: (c) => SVGIcons.songNote(c), color: "#4090e0", found: false },
+  { id: "storms", label: "Chant de la Tempête", icon: (c) => SVGIcons.songNote(c), color: "#8070d0", found: false },
+  { id: "minuet", label: "Menuet des Bois", icon: (c) => SVGIcons.songNote(c), color: "#40c060", found: false },
+  { id: "bolero", label: "Boléro du Feu", icon: (c) => SVGIcons.songNote(c), color: "#e04030", found: false },
+  { id: "serenade", label: "Sérénade de l'Eau", icon: (c) => SVGIcons.songNote(c), color: "#4080e0", found: false },
+  { id: "requiem", label: "Requiem des Esprits", icon: (c) => SVGIcons.songNote(c), color: "#e0a030", found: false },
+  { id: "nocturne", label: "Nocturne des Ombres", icon: (c) => SVGIcons.songNote(c), color: "#8040c0", found: false },
+  { id: "prelude", label: "Prélude de la Lumière", icon: (c) => SVGIcons.songNote(c), color: "#e8d040", found: false },
+];
+
+const OOT_COUNTERS = [
+  { id: "skulltula", label: "Gold Skulltula", icon: (c) => SVGIcons.skull(c), color: "#e8c840", found: true, count: 47 },
+  { id: "key_forest", label: "Clé Forêt", icon: (c) => SVGIcons.key(c, false), color: "#70c870", found: true, count: 3 },
+  { id: "key_fire", label: "Clé Feu", icon: (c) => SVGIcons.key(c, false), color: "#e87040", found: true, count: 1 },
+  { id: "key_water", label: "Clé Eau", icon: (c) => SVGIcons.key(c, false), color: "#4080e8", found: false, count: 0 },
+  { id: "key_spirit", label: "Clé Esprit", icon: (c) => SVGIcons.key(c, false), color: "#e0a040", found: false, count: 0 },
+  { id: "key_shadow", label: "Clé Ombre", icon: (c) => SVGIcons.key(c, false), color: "#8040c0", found: false, count: 0 },
+  { id: "boss_forest", label: "Clé Boss Forêt", icon: (c) => SVGIcons.key(c, true), color: "#70c870", found: true, count: 1 },
+  { id: "boss_fire", label: "Clé Boss Feu", icon: (c) => SVGIcons.key(c, true), color: "#e87040", found: false, count: 0 },
+  { id: "rupee_green", label: "Rubis Vert", icon: (c) => SVGIcons.rupee(c), color: "#40c060", found: true, count: 12 },
+  { id: "rupee_blue", label: "Rubis Bleu", icon: (c) => SVGIcons.rupee(c), color: "#4080e8", found: true, count: 8 },
+  { id: "rupee_red", label: "Rubis Rouge", icon: (c) => SVGIcons.rupee(c), color: "#e04040", found: true, count: 5 },
+  { id: "rupee_purple", label: "Rubis Violet", icon: (c) => SVGIcons.rupee(c), color: "#9040c0", found: false, count: 0 },
+];
+
+// ─────────────────────────────────────────────────────
+// MM ITEMS DATA
+// ─────────────────────────────────────────────────────
+const MM_MASKS_TRANSFORM = [
+  { id: "deku_mask", label: "Masque Mojo", icon: (c) => SVGIcons.mask(c, "deku"), color: "#60c040", found: true, foundAt: "South Clock Town", foundObj: "NPC" },
+  { id: "goron_mask", label: "Masque Goron", icon: (c) => SVGIcons.mask(c, "goron"), color: "#c86040", found: false },
+  { id: "zora_mask", label: "Masque Zora", icon: (c) => SVGIcons.mask(c, "zora"), color: "#40a0c8", found: false },
+  { id: "fd_mask", label: "Masque Dieu", icon: (c) => SVGIcons.mask(c, "fd"), color: "#e8e0d0", found: false },
+];
+
+const MM_MASKS_OTHER = [
+  { id: "blast", label: "Masque Explosion", icon: (c) => SVGIcons.mask(c), color: "#e0a040", found: true, foundAt: "Clock Town", foundObj: "NPC" },
+  { id: "stone", label: "Masque de Pierre", icon: (c) => SVGIcons.mask(c), color: "#a0a0a0", found: false },
+  { id: "greatfairy", label: "Masque G. Fée", icon: (c) => SVGIcons.mask(c), color: "#e060e0", found: false },
+  { id: "keaton", label: "Masque Renard", icon: (c) => SVGIcons.mask(c), color: "#e8c040", found: false },
+  { id: "bunny", label: "Masque Lapin", icon: (c) => SVGIcons.mask(c), color: "#e8d0b0", found: false },
+  { id: "captain", label: "Chapeau Capitaine", icon: (c) => SVGIcons.mask(c), color: "#8080a0", found: false },
+  { id: "giant", label: "Masque Géant", icon: (c) => SVGIcons.mask(c), color: "#b0c0d0", found: false },
+  { id: "garo", label: "Masque Garo", icon: (c) => SVGIcons.mask(c), color: "#6060a0", found: false },
+  { id: "romani", label: "Masque Romani", icon: (c) => SVGIcons.mask(c), color: "#e8b0d0", found: false },
+  { id: "kafei", label: "Masque de Kafei", icon: (c) => SVGIcons.mask(c), color: "#9090c0", found: false },
+  { id: "scents", label: "Masque des Arômes", icon: (c) => SVGIcons.mask(c), color: "#a0d080", found: false },
+  { id: "gibdo", label: "Masque Gibdo", icon: (c) => SVGIcons.mask(c), color: "#d0b890", found: false },
+  { id: "dongero", label: "Masque Don Gero", icon: (c) => SVGIcons.mask(c), color: "#40a040", found: false },
+  { id: "kamaro", label: "Masque Kamaro", icon: (c) => SVGIcons.mask(c), color: "#c06080", found: false },
+  { id: "truth_mm", label: "Masque Vérité", icon: (c) => SVGIcons.mask(c), color: "#c080e0", found: false },
+  { id: "allnight", label: "Masque Veilleur", icon: (c) => SVGIcons.mask(c), color: "#4060a0", found: false },
+];
+
+const MM_QUEST = [
+  { id: "odolwa", label: "Restes d'Odolwa", icon: (c) => SVGIcons.remains(c, 0), color: "#60c040", found: true, foundAt: "Woodfall Temple", foundObj: "Boss" },
+  { id: "goht", label: "Restes de Goht", icon: (c) => SVGIcons.remains(c, 1), color: "#c86040", found: false },
+  { id: "gyorg", label: "Restes de Gyorg", icon: (c) => SVGIcons.remains(c, 2), color: "#40a0c8", found: false },
+  { id: "twinmold", label: "Restes de Twinmold", icon: (c) => SVGIcons.remains(c, 3), color: "#a040c0", found: false },
+];
+
+const MM_COUNTERS = [
+  { id: "sf_woodfall", label: "Fées Woodfall", icon: (c) => SVGIcons.fairy(c), color: "#60c040", found: true, count: 15 },
+  { id: "sf_snowhead", label: "Fées Snowhead", icon: (c) => SVGIcons.fairy(c), color: "#40a0c8", found: false, count: 0 },
+  { id: "sf_greatbay", label: "Fées Great Bay", icon: (c) => SVGIcons.fairy(c), color: "#4080e0", found: false, count: 0 },
+  { id: "sf_stone", label: "Fées Stone Tower", icon: (c) => SVGIcons.fairy(c), color: "#9040c0", found: false, count: 0 },
+  { id: "sf_town", label: "Fée Clock Town", icon: (c) => SVGIcons.fairy(c), color: "#e8d040", found: true, count: 1 },
+  { id: "sk_swamp", label: "Skulltula Marais", icon: (c) => SVGIcons.skull(c), color: "#60c040", found: true, count: 12 },
+  { id: "sk_ocean", label: "Skulltula Océan", icon: (c) => SVGIcons.skull(c), color: "#4080e0", found: false, count: 0 },
+];
+
+const MM_SONGS = [
+  { id: "sonata", label: "Sonate de l'Éveil", icon: (c) => SVGIcons.songNote(c), color: "#60c040", found: true, foundAt: "Deku Palace", foundObj: "NPC" },
+  { id: "lullaby_mm", label: "Berceuse Goron", icon: (c) => SVGIcons.songNote(c), color: "#c86040", found: false },
+  { id: "bossa", label: "New Wave Bossa Nova", icon: (c) => SVGIcons.songNote(c), color: "#40a0c8", found: false },
+  { id: "elegy_mm", label: "Élégie du Vide", icon: (c) => SVGIcons.songNote(c), color: "#8040c0", found: false },
+  { id: "oath", label: "Serment de l'Ordre", icon: (c) => SVGIcons.songNote(c), color: "#e8d040", found: false },
+  { id: "healing", label: "Chant de Guérison", icon: (c) => SVGIcons.songNote(c), color: "#40c8a0", found: false },
+  { id: "soaring", label: "Chant de l'Essor", icon: (c) => SVGIcons.songNote(c), color: "#60a0e0", found: false },
+];
+
+// ─────────────────────────────────────────────────────
+// SOULS DATA (échantillon pour le design)
+// ─────────────────────────────────────────────────────
+const SOULS_GROUPS = [
+  { label: "Ennemis — OoT", color: "#4a9edb", items: [
+    { name: "Stalfos", found: true }, { name: "Octoroks (OoT)", found: false }, { name: "Wallmasters", found: true },
+    { name: "Dodongos (OoT)", found: false }, { name: "Keese (OoT)", found: true }, { name: "Tektites (OoT)", found: false },
+    { name: "Leevers (OoT)", found: false }, { name: "Peahats (OoT)", found: true }, { name: "Lizalfos/Dinolfos (OoT)", found: false },
+    { name: "Skulltulas (OoT)", found: true }, { name: "Armos (OoT)", found: false }, { name: "Deku Babas (OoT)", found: false },
+    { name: "Beamos (OoT)", found: true }, { name: "Iron Knuckles (OoT)", found: false }, { name: "ReDeads/Gibdos (OoT)", found: false },
+    { name: "Floormasters (OoT)", found: false }, { name: "Like Likes (OoT)", found: true }, { name: "Flare Dancers", found: false },
+  ]},
+  { label: "Boss — OoT", color: "#c8a042", items: [
+    { name: "Queen Gohma", found: true }, { name: "King Dodongo", found: true }, { name: "Barinade", found: false },
+    { name: "Phantom Ganon", found: false }, { name: "Volvagia", found: false }, { name: "Morpha", found: false },
+    { name: "Bongo Bongo", found: false }, { name: "Twinrova", found: false },
+  ]},
+  { label: "PNJ — OoT", color: "#4adb7a", items: [
+    { name: "Saria", found: false }, { name: "Darunia", found: true }, { name: "Ruto (OoT)", found: false },
+    { name: "King Zora", found: false }, { name: "Zelda", found: false }, { name: "Sheik", found: false },
+    { name: "Malon (OoT)", found: false }, { name: "Talon (OoT)", found: true }, { name: "Kokiri", found: false },
+  ]},
+  { label: "Ennemis — MM", color: "#9b5de5", items: [
+    { name: "Octoroks (MM)", found: false }, { name: "Wallmasters (MM)", found: false }, { name: "Dodongos (MM)", found: true },
+    { name: "Keese (MM)", found: false }, { name: "Skulltulas (MM)", found: true }, { name: "Lizalfos/Dinolfos (MM)", found: false },
+    { name: "Chuchus", found: false }, { name: "Wizzrobes", found: true }, { name: "Gekkos", found: false },
+    { name: "Takkuri", found: false }, { name: "Eyegores", found: false }, { name: "Iron Knuckles (MM)", found: false },
+  ]},
+  { label: "Boss — MM", color: "#e05de5", items: [
+    { name: "Odolwa", found: true }, { name: "Goht", found: false }, { name: "Gyorg", found: false },
+    { name: "Twinmold", found: false }, { name: "Igos du Ikana", found: false },
+  ]},
+  { label: "PNJ — MM", color: "#4adb7a", items: [
+    { name: "Gorons (MM)", found: false }, { name: "Deku Butler", found: true }, { name: "Deku King", found: false },
+    { name: "Anju (MM)", found: false }, { name: "Kafei", found: false }, { name: "Romani/Cremia", found: false },
+    { name: "Tingle", found: false }, { name: "Lulu (MM)", found: true }, { name: "Mayor Dotour", found: false },
+  ]},
+];
+
+// ─────────────────────────────────────────────────────
+// APP CHROME (shared tab bar + menu)
+// ─────────────────────────────────────────────────────
+function AppChrome({ activeTab, onTabChange, gameTab }) {
+  const tabAccent = (id) => id === "OoT" ? T.accent : id === "MM" ? T.accentMM : T.gold;
+  return (
+    <div style={{ flexShrink: 0 }}>
+      <div style={{ height: 26, background: T.panel, borderBottom: `1px solid ${T.border}`, display: "flex", alignItems: "center", padding: "0 12px", gap: 16 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+          <div style={{ width: 7, height: 7, borderRadius: "50%", background: gameTab === "OoT" ? T.accent : T.accentMM, boxShadow: `0 0 6px ${gameTab === "OoT" ? T.accent : T.accentMM}` }}/>
+          <span style={{ color: gameTab === "OoT" ? T.accent : T.accentMM, fontSize: 11, fontWeight: 600, letterSpacing: "0.05em" }}>OoTMM COMBO</span>
+        </div>
+        {["Tracking", "Options", "?"].map(m => <span key={m} style={{ color: T.textDim, fontSize: 11, cursor: "pointer" }}>{m}</span>)}
+        <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 6 }}>
+          <div style={{ width: 5, height: 5, borderRadius: "50%", background: "#4a8a4a" }}/>
+          <span style={{ color: T.textDim, fontSize: 10 }}>Tracking actif</span>
+        </div>
+      </div>
+      <div style={{ height: 44, background: T.panel, borderBottom: `1px solid ${T.border}`, display: "flex", alignItems: "stretch" }}>
+        {[
+          { id: "Launch", label: "Launch" },
+          { id: "OoT", label: "OoT", count: "47/183", pct: 26, color: T.accent },
+          { id: "MM", label: "MM", count: "32/156", pct: 21, color: T.accentMM },
+          { id: "Prog", label: "Progression", color: T.gold },
+          { id: "Entrances", label: "Entrances" },
+          { id: "Settings", label: "⚙ Settings" },
+        ].map(t => (
+          <div key={t.id} onClick={() => onTabChange && onTabChange(t.id)} style={{
+            padding: "0 18px", display: "flex", alignItems: "center", gap: 8, cursor: "pointer",
+            borderRight: `1px solid ${T.border}`,
+            borderBottom: activeTab === t.id ? `3px solid ${t.color || T.textDim}` : "3px solid transparent",
+            background: activeTab === t.id ? `${(t.color || T.textDim)}18` : "transparent",
+            color: activeTab === t.id ? (t.color || T.text) : T.textDim, fontSize: 12, fontWeight: activeTab === t.id ? 600 : 400,
+          }}>
+            {t.label}
+            {t.count && <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              <span style={{ fontSize: 9, color: activeTab === t.id ? t.color : "#333" }}>{t.count}</span>
+              <div style={{ width: 48, height: 3, background: "#1a1a2a", borderRadius: 2 }}>
+                <div style={{ width: `${t.pct}%`, height: "100%", background: t.color, borderRadius: 2 }}/>
+              </div>
+            </div>}
+          </div>
+        ))}
+        <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", padding: "0 18px", gap: 10 }}>
+          <div style={{ textAlign: "right" }}>
+            <div style={{ fontSize: 9, color: T.textDim }}>Total</div>
+            <div style={{ fontSize: 16, fontWeight: 700, color: T.text }}>79<span style={{ color: T.textDim, fontSize: 11, fontWeight: 400 }}>/339</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────
+// SETTINGS SCREEN
+// ─────────────────────────────────────────────────────
+const SETTINGS_NAV = [
+  { id: "general", label: "Général", desc: "Jeu, mode, équipes" },
+  { id: "keys", label: "Clés & Donjons", desc: "Petites/grosses clés, cartes, boussoles" },
+  { id: "npc", label: "PNJ & Boutiques", desc: "Scrubs, vaches, magasins, marchands" },
+  { id: "breakables", label: "Objets Brisables", desc: "Pots, caisses, herbes, rochers…" },
+  { id: "special", label: "Spécial", desc: "Skulltulas, fées, rubis, objets uniques" },
+];
+
+const SETTINGS_DATA = {
+  general: {
+    fields: [
+      { key: "game", label: "Jeu actif", type: "segmented", options: ["OoT", "MM", "OoT + MM"], value: 2 },
+      { key: "mode", label: "Mode de jeu", type: "segmented", options: ["Solo", "Coop", "Multi-monde"], value: 0 },
+      { key: "teams", label: "Nombre d'équipes", type: "number", value: 1 },
+    ]
+  },
+  keys: {
+    cols: true,
+    fields: [
+      { key: "smallKeyShuffleOot", label: "Petite Clé — OoT", game: "OoT", type: "shuffle", value: "all" },
+      { key: "smallKeyShuffleMm", label: "Petite Clé — MM", game: "MM", type: "shuffle", value: "dungeons" },
+      { key: "smallKeyShuffleHideout", label: "Petite Clé — Repaire", game: "OoT", type: "bool", value: true },
+      { key: "smallKeyShuffleChestGame", label: "Petite Clé — Mini-jeu", game: "OoT", type: "bool", value: false },
+      { key: "bossKeyShuffleOot", label: "Grosse Clé — OoT", game: "OoT", type: "bool", value: true },
+      { key: "bossKeyShuffleMm", label: "Grosse Clé — MM", game: "MM", type: "bool", value: false },
+      { key: "ganonBossKey", label: "Grosse Clé — Ganon", game: "OoT", type: "bool", value: false },
+      { key: "silverRupeeShuffle", label: "Rubis d'Argent", game: "OoT", type: "bool", value: false },
+      { key: "mapCompassShuffle", label: "Carte / Boussole", type: "bool", value: true },
+      { key: "tingleShuffle", label: "Cartes Tingle", game: "MM", type: "bool", value: false },
+    ]
+  },
+  npc: {
+    cols: true,
+    fields: [
+      { key: "scrubShuffleOot", label: "Scrubs — OoT", game: "OoT", type: "bool", value: false },
+      { key: "scrubShuffleMm", label: "Scrubs — MM", game: "MM", type: "bool", value: false },
+      { key: "cowShuffleOot", label: "Vaches — OoT", game: "OoT", type: "bool", value: false },
+      { key: "cowShuffleMm", label: "Vaches — MM", game: "MM", type: "bool", value: false },
+      { key: "shopShuffleOot", label: "Boutiques — OoT", game: "OoT", type: "bool", value: false },
+      { key: "shopShuffleMm", label: "Boutiques — MM", game: "MM", type: "bool", value: false },
+      { key: "owlShuffle", label: "Statues Hibou", game: "MM", type: "bool", value: false },
+      { key: "shuffleMerchantsOot", label: "Marchands — OoT", game: "OoT", type: "bool", value: false },
+      { key: "shuffleMerchantsMm", label: "Marchands — MM", game: "MM", type: "bool", value: false },
+      { key: "shuffleMaskTrades", label: "Troc de Masques", game: "OoT", type: "bool", value: false },
+      { key: "pondFishShuffle", label: "Poissons (Étang)", game: "OoT", type: "bool", value: false },
+      { key: "eggShuffle", label: "Contenu des Œufs", game: "OoT", type: "bool", value: true },
+      { key: "shuffleLotteryMm", label: "Loterie — MM", game: "MM", type: "bool", value: false },
+      { key: "divingGameRupeeShuffle", label: "Rubis Plongée", game: "OoT", type: "bool", value: false },
+      { key: "shuffleFrogsRupeesOot", label: "Rubis Grenouilles", game: "OoT", type: "bool", value: false },
+    ]
+  },
+  breakables: {
+    cols: true,
+    fields: [
+      { key: "shufflePotsOot", label: "Pots — OoT", game: "OoT", type: "shuffle", value: "vanilla" },
+      { key: "shufflePotsMm", label: "Pots — MM", game: "MM", type: "shuffle", value: "vanilla" },
+      { key: "shuffleCratesOot", label: "Caisses — OoT", game: "OoT", type: "shuffle", value: "vanilla" },
+      { key: "shuffleCratesMm", label: "Caisses — MM", game: "MM", type: "shuffle", value: "vanilla" },
+      { key: "shuffleBarrelsMm", label: "Barils — MM", game: "MM", type: "shuffle", value: "vanilla" },
+      { key: "shuffleGrassOot", label: "Herbes — OoT", game: "OoT", type: "shuffle", value: "vanilla" },
+      { key: "shuffleGrassMm", label: "Herbes — MM", game: "MM", type: "shuffle", value: "vanilla" },
+      { key: "shuffleTFGrassMm", label: "Herbes Termina Field", game: "MM", type: "bool", value: false },
+      { key: "shuffleRocksOot", label: "Rochers — OoT", game: "OoT", type: "bool", value: false },
+      { key: "shuffleRocksMm", label: "Rochers — MM", game: "MM", type: "shuffle", value: "vanilla" },
+      { key: "shuffleTreesOot", label: "Arbres — OoT", game: "OoT", type: "bool", value: false },
+      { key: "shuffleTreesMm", label: "Arbres — MM", game: "MM", type: "shuffle", value: "vanilla" },
+      { key: "shuffleBushOot", label: "Buissons — OoT", game: "OoT", type: "bool", value: false },
+      { key: "shuffleBushMm", label: "Buissons — MM", game: "MM", type: "shuffle", value: "vanilla" },
+      { key: "shuffleSoilOot", label: "Terre — OoT", game: "OoT", type: "bool", value: false },
+      { key: "shuffleSoilMm", label: "Terre — MM", game: "MM", type: "shuffle", value: "vanilla" },
+      { key: "shuffleSnowballsMm", label: "Boules de Neige — MM", game: "MM", type: "shuffle", value: "vanilla" },
+      { key: "shuffleHivesOot", label: "Ruches — OoT", game: "OoT", type: "bool", value: false },
+      { key: "shuffleHivesMm", label: "Ruches — MM", game: "MM", type: "bool", value: false },
+      { key: "shuffleRedBouldersOot", label: "Rochers Rouges — OoT", game: "OoT", type: "bool", value: false },
+      { key: "shuffleRedBouldersMm", label: "Rochers Rouges — MM", game: "MM", type: "bool", value: false },
+      { key: "shuffleIciclesOot", label: "Stalactites — OoT", game: "OoT", type: "bool", value: false },
+      { key: "shuffleIciclesMm", label: "Stalactites — MM", game: "MM", type: "bool", value: false },
+      { key: "shuffleRedIceOot", label: "Glace Rouge", game: "OoT", type: "bool", value: false },
+      { key: "shuffleWonderItemsOot", label: "Wonder Items — OoT", game: "OoT", type: "shuffle", value: "vanilla" },
+      { key: "shuffleWonderItemsMm", label: "Wonder Items — MM", game: "MM", type: "bool", value: false },
+    ]
+  },
+  special: {
+    cols: true,
+    fields: [
+      { key: "goldSkulltulaTokens", label: "Gold Skulltulas — OoT", game: "OoT", type: "shuffle", value: "all" },
+      { key: "housesSkulltulaTokens", label: "Skulltulas Maisons — MM", game: "MM", type: "bool", value: true },
+      { key: "townFairyShuffle", label: "Fée Clock Town", game: "MM", type: "bool", value: false },
+      { key: "strayFairyChestShuffle", label: "Fées Errantes (Coffres)", game: "MM", type: "bool", value: false },
+      { key: "strayFairyOtherShuffle", label: "Fées Errantes (Autres)", game: "MM", type: "bool", value: false },
+      { key: "shuffleFreeRupeesOot", label: "Rubis Libres — OoT", game: "OoT", type: "shuffle", value: "vanilla" },
+      { key: "shuffleFreeRupeesMm", label: "Rubis Libres — MM", game: "MM", type: "shuffle", value: "vanilla" },
+      { key: "shuffleFreeHeartsOot", label: "Cœurs Libres — OoT", game: "OoT", type: "shuffle", value: "vanilla" },
+      { key: "shuffleFreeHeartsMm", label: "Cœurs Libres — MM", game: "MM", type: "bool", value: false },
+      { key: "shuffleOcarinasOot", label: "Ocarinas", game: "OoT", type: "bool", value: false },
+      { key: "shuffleMasterSword", label: "Épée Sacrée", game: "OoT", type: "bool", value: true },
+      { key: "shuffleGerudoCard", label: "Carte Gerudo", game: "OoT", type: "bool", value: true },
+      { key: "fairyFountainFairyShuffleOot", label: "Fées Fontaine — OoT", game: "OoT", type: "bool", value: false },
+      { key: "fairyFountainFairyShuffleMm", label: "Fées Fontaine — MM", game: "MM", type: "bool", value: false },
+      { key: "fairySpotShuffleOot", label: "Spot Fée", game: "OoT", type: "bool", value: false },
+      { key: "shuffleButterfliesOot", label: "Papillons — OoT", game: "OoT", type: "bool", value: false },
+      { key: "shuffleButterfliesMm", label: "Papillons — MM", game: "MM", type: "bool", value: false },
+      { key: "restoreBrokenActors", label: "Restaurer Acteurs Cassés", type: "bool", value: false },
+    ]
+  },
+};
+
+function ToggleSwitch({ value, accent }) {
+  const c = accent || T.accent;
+  return (
+    <div style={{ width: 36, height: 20, background: value ? c : "#1a2535", borderRadius: 10, position: "relative", border: `1px solid ${value ? c : T.border}`, flexShrink: 0, cursor: "pointer", transition: "all 0.2s" }}>
+      <div style={{ position: "absolute", top: 2, left: value ? 17 : 2, width: 14, height: 14, borderRadius: 7, background: value ? "#fff" : "#4a6a9a", transition: "left 0.2s", boxShadow: value ? `0 0 4px ${c}88` : "none" }}/>
+    </div>
+  );
+}
+
+function ShuffleDropdown({ value, accent }) {
+  const c = accent || T.accent;
+  const labels = { vanilla: "Vanilla", dungeons: "Donjons", overworld: "Monde", all: "Partout" };
+  const colors = { vanilla: T.textDim, dungeons: "#e0a040", overworld: "#40c060", all: c };
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 4, background: T.bg, border: `1px solid ${value !== "vanilla" ? c + "66" : T.border}`, borderRadius: 6, padding: "3px 8px", minWidth: 86, cursor: "pointer" }}>
+      <div style={{ width: 6, height: 6, borderRadius: "50%", background: colors[value] || T.textDim, flexShrink: 0 }}/>
+      <span style={{ fontSize: 10, color: colors[value] || T.textDim, flex: 1 }}>{labels[value] || value}</span>
+      <span style={{ fontSize: 8, color: T.textDim }}>▼</span>
+    </div>
+  );
+}
+
+function GameBadge({ game }) {
+  if (!game) return null;
+  const c = game === "OoT" ? T.accent : T.accentMM;
+  return <span style={{ fontSize: 8, fontWeight: 700, color: c, background: `${c}20`, border: `1px solid ${c}44`, borderRadius: 3, padding: "1px 4px", flexShrink: 0 }}>{game}</span>;
+}
+
+function SettingsScreen() {
+  const [activeSection, setActiveSection] = React.useState("keys");
+  const [values, setValues] = React.useState({});
+  const section = SETTINGS_DATA[activeSection];
+
+  return (
+    <div style={{ width: 1280, height: 720, background: T.bg, display: "flex", flexDirection: "column", fontFamily: T.font, overflow: "hidden", border: `1px solid ${T.border}` }}>
+      <AppChrome activeTab="Settings" gameTab="OoT" />
+      <div style={{ flex: 1, display: "flex", overflow: "hidden" }}>
+
+        {/* Left nav */}
+        <div style={{ width: 220, background: T.panel, borderRight: `1px solid ${T.border}`, display: "flex", flexDirection: "column", flexShrink: 0 }}>
+          <div style={{ padding: "12px 14px 8px", borderBottom: `1px solid ${T.border}` }}>
+            <span style={{ fontSize: 11, fontWeight: 600, color: T.accent, letterSpacing: "0.08em", textTransform: "uppercase" }}>Paramètres</span>
+          </div>
+          <div style={{ flex: 1, overflowY: "auto" }}>
+            {SETTINGS_NAV.map(nav => (
+              <div key={nav.id} onClick={() => setActiveSection(nav.id)} style={{
+                padding: "10px 14px", cursor: "pointer",
+                background: activeSection === nav.id ? `${T.accent}18` : "transparent",
+                borderLeft: `3px solid ${activeSection === nav.id ? T.accent : "transparent"}`,
+                borderBottom: `1px solid ${T.border}22`,
+              }}>
+                <div style={{ fontSize: 12, color: activeSection === nav.id ? T.text : T.textDim, fontWeight: activeSection === nav.id ? 500 : 400 }}>{nav.label}</div>
+                <div style={{ fontSize: 10, color: T.textDim, marginTop: 2 }}>{nav.desc}</div>
+              </div>
+            ))}
+          </div>
+          <div style={{ padding: "12px", borderTop: `1px solid ${T.border}`, display: "flex", flexDirection: "column", gap: 6 }}>
+            <button style={{ padding: "8px", background: T.accentSoft, border: `1px solid ${T.accent}`, borderRadius: 6, color: T.accent, fontSize: 12, cursor: "pointer", fontWeight: 500 }}>
+              Appliquer
+            </button>
+            <button style={{ padding: "8px", background: "transparent", border: `1px solid ${T.border}`, borderRadius: 6, color: T.textDim, fontSize: 12, cursor: "pointer" }}>
+              Annuler
+            </button>
+          </div>
+        </div>
+
+        {/* Main content */}
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+
+          {/* Section header */}
+          <div style={{ padding: "16px 20px 12px", borderBottom: `1px solid ${T.border}`, background: T.panel, flexShrink: 0 }}>
+            <div style={{ fontSize: 16, fontWeight: 600, color: T.text }}>{SETTINGS_NAV.find(n => n.id === activeSection)?.label}</div>
+            <div style={{ fontSize: 11, color: T.textDim, marginTop: 2 }}>{SETTINGS_NAV.find(n => n.id === activeSection)?.desc}</div>
+          </div>
+
+          {/* Fields */}
+          <div style={{ flex: 1, overflowY: "auto", padding: "16px 20px" }}>
+            {activeSection === "general" && (
+              <div style={{ display: "flex", flexDirection: "column", gap: 20, maxWidth: 600 }}>
+                {/* Segmented: Game */}
+                <div>
+                  <div style={{ fontSize: 11, color: T.textDim, marginBottom: 8, fontWeight: 500 }}>Jeu actif</div>
+                  <div style={{ display: "flex", gap: 0, border: `1px solid ${T.border}`, borderRadius: 8, overflow: "hidden", width: "fit-content" }}>
+                    {["OoT", "MM", "OoT + MM"].map((o, i) => (
+                      <div key={o} style={{
+                        padding: "8px 20px", cursor: "pointer", fontSize: 12,
+                        background: i === 2 ? `${T.accent}22` : "transparent",
+                        color: i === 2 ? T.accent : T.textDim,
+                        borderRight: i < 2 ? `1px solid ${T.border}` : "none",
+                        fontWeight: i === 2 ? 600 : 400,
+                      }}>{o}</div>
+                    ))}
+                  </div>
+                </div>
+                {/* Segmented: Mode */}
+                <div>
+                  <div style={{ fontSize: 11, color: T.textDim, marginBottom: 8, fontWeight: 500 }}>Mode de jeu</div>
+                  <div style={{ display: "flex", gap: 0, border: `1px solid ${T.border}`, borderRadius: 8, overflow: "hidden", width: "fit-content" }}>
+                    {["Solo", "Coop", "Multi-monde"].map((o, i) => (
+                      <div key={o} style={{
+                        padding: "8px 20px", cursor: "pointer", fontSize: 12,
+                        background: i === 0 ? `${T.accent}22` : "transparent",
+                        color: i === 0 ? T.accent : T.textDim,
+                        borderRight: i < 2 ? `1px solid ${T.border}` : "none",
+                        fontWeight: i === 0 ? 600 : 400,
+                      }}>{o}</div>
+                    ))}
+                  </div>
+                  <div style={{ fontSize: 10, color: T.textDim, marginTop: 6 }}>Coop et Multi-monde nécessitent un serveur</div>
+                </div>
+                {/* Number: Teams */}
+                <div>
+                  <div style={{ fontSize: 11, color: T.textDim, marginBottom: 8, fontWeight: 500 }}>Nombre d'équipes</div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                    <div style={{ display: "flex", alignItems: "center", background: T.bg, border: `1px solid ${T.border}`, borderRadius: 6, overflow: "hidden", width: 100 }}>
+                      <div style={{ padding: "6px 10px", color: T.textDim, cursor: "pointer", fontSize: 14, borderRight: `1px solid ${T.border}` }}>−</div>
+                      <div style={{ flex: 1, textAlign: "center", fontSize: 14, color: T.text, fontFamily: T.mono }}>1</div>
+                      <div style={{ padding: "6px 10px", color: T.accent, cursor: "pointer", fontSize: 14, borderLeft: `1px solid ${T.border}` }}>+</div>
+                    </div>
+                    <span style={{ fontSize: 11, color: T.textDim }}>Uniquement en mode Multi-monde</span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeSection !== "general" && section?.fields && (
+              <div style={{ columns: section.cols ? 2 : 1, columnGap: 24, columnRuleColor: T.border }}>
+                {section.fields.map((field, i) => (
+                  <div key={field.key} style={{
+                    display: "flex", alignItems: "center", justifyContent: "space-between",
+                    padding: "9px 12px", marginBottom: 2,
+                    background: i % 2 === 0 ? `${T.panel}88` : "transparent",
+                    borderRadius: 6, gap: 10, breakInside: "avoid",
+                  }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
+                      <GameBadge game={field.game} />
+                      <span style={{ fontSize: 11, color: T.text, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{field.label}</span>
+                    </div>
+                    {field.type === "bool" && <ToggleSwitch value={field.value} accent={field.game === "MM" ? T.accentMM : T.accent} />}
+                    {field.type === "shuffle" && <ShuffleDropdown value={field.value} accent={field.game === "MM" ? T.accentMM : T.accent} />}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+      <div style={{ height: 22, background: T.panel, borderTop: `1px solid ${T.border}`, display: "flex", alignItems: "center", padding: "0 14px", gap: 16 }}>
+        <span style={{ color: T.textDim, fontSize: 10 }}>Les paramètres prennent effet au prochain chargement du Spoiler Log</span>
+        <span style={{ marginLeft: "auto", color: T.textDim, fontSize: 10, fontFamily: T.mono }}>v2.0.0</span>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────
+// PROGRESSION TAB
+// ─────────────────────────────────────────────────────
+function ProgressionTab({ defaultGame = "OoT" }) {
+  const [game, setGame] = React.useState(defaultGame);
+  const [selected, setSelected] = React.useState(null);
+  const [soulGroup, setSoulGroup] = React.useState(0);
+  const accent = game === "OoT" ? T.accent : game === "MM" ? T.accentMM : T.gold;
+
+  const detail = selected;
+
+  const renderItemGrid = (items, color) => (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
+      {items.map(item => (
+        <ItemCell key={item.id} icon={item.icon} color={item.color || color}
+          label={item.label} found={item.found} count={item.count}
+          selected={selected?.id === item.id}
+          onClick={() => setSelected(selected?.id === item.id ? null : item)} />
+      ))}
+    </div>
+  );
+
+  return (
+    <div style={{ width: 1280, height: 720, background: T.bg, display: "flex", flexDirection: "column", fontFamily: T.font, overflow: "hidden", border: `1px solid ${T.border}` }}>
+      <AppChrome activeTab="Prog" gameTab={game === "Souls" ? "OoT" : game} />
+      <div style={{ flex: 1, display: "flex", overflow: "hidden" }}>
+
+        {/* Main area */}
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+          {/* Sub-tabs: OoT / MM / Souls */}
+          <div style={{ height: 36, background: T.panel2, borderBottom: `1px solid ${T.border}`, display: "flex", alignItems: "stretch", flexShrink: 0 }}>
+            {["OoT", "MM", "Souls"].map(g => (
+              <div key={g} onClick={() => { setGame(g); setSelected(null); }} style={{
+                padding: "0 20px", display: "flex", alignItems: "center", cursor: "pointer",
+                borderRight: `1px solid ${T.border}`,
+                borderBottom: game === g ? `2px solid ${g === "OoT" ? T.accent : g === "MM" ? T.accentMM : T.gold}` : "2px solid transparent",
+                color: game === g ? (g === "OoT" ? T.accent : g === "MM" ? T.accentMM : T.gold) : T.textDim,
+                fontSize: 11, fontWeight: game === g ? 600 : 400,
+              }}>{g === "Souls" ? "👻 Souls" : g}</div>
+            ))}
+            <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", padding: "0 16px", gap: 6 }}>
+              <span style={{ fontSize: 10, color: T.textDim }}>Cliquer une icône pour voir où l'item a été trouvé</span>
+            </div>
+          </div>
+
+          <div style={{ flex: 1, overflowY: "auto", padding: "8px 4px" }}>
+            {game === "OoT" && (<>
+              <SectionHeader title="Armes & Outils" found={OOT_WEAPONS.filter(i=>i.found).length} total={OOT_WEAPONS.length} color={T.accent}/>
+              <div style={{ padding: "6px 8px" }}>{renderItemGrid(OOT_WEAPONS, T.accent)}</div>
+              <SectionHeader title="Équipement" found={OOT_EQUIPMENT.filter(i=>i.found).length} total={OOT_EQUIPMENT.length} color={T.accent}/>
+              <div style={{ padding: "6px 8px" }}>{renderItemGrid(OOT_EQUIPMENT, T.accent)}</div>
+              <SectionHeader title="Pierres Spirituelles & Médaillons" found={OOT_QUEST.filter(i=>i.found).length} total={OOT_QUEST.length} color={T.gold}/>
+              <div style={{ padding: "6px 8px" }}>{renderItemGrid(OOT_QUEST, T.gold)}</div>
+              <SectionHeader title="Chansons" found={OOT_SONGS.filter(i=>i.found).length} total={OOT_SONGS.length} color="#c060e0"/>
+              <div style={{ padding: "6px 8px" }}>{renderItemGrid(OOT_SONGS, "#c060e0")}</div>
+              <SectionHeader title="Clés, Rubis & Compteurs" found={OOT_COUNTERS.filter(i=>i.found).length} total={OOT_COUNTERS.length} color={T.accent}/>
+              <div style={{ padding: "6px 8px" }}>{renderItemGrid(OOT_COUNTERS, T.accent)}</div>
+            </>)}
+
+            {game === "MM" && (<>
+              <SectionHeader title="Masques de Transformation" found={MM_MASKS_TRANSFORM.filter(i=>i.found).length} total={4} color={T.accentMM}/>
+              <div style={{ padding: "6px 8px" }}>{renderItemGrid(MM_MASKS_TRANSFORM, T.accentMM)}</div>
+              <SectionHeader title="Masques" found={MM_MASKS_OTHER.filter(i=>i.found).length} total={MM_MASKS_OTHER.length} color={T.accentMM}/>
+              <div style={{ padding: "6px 8px" }}>{renderItemGrid(MM_MASKS_OTHER, T.accentMM)}</div>
+              <SectionHeader title="Restes des Boss" found={MM_QUEST.filter(i=>i.found).length} total={4} color={T.gold}/>
+              <div style={{ padding: "6px 8px" }}>{renderItemGrid(MM_QUEST, T.gold)}</div>
+              <SectionHeader title="Chansons" found={MM_SONGS.filter(i=>i.found).length} total={MM_SONGS.length} color="#c060e0"/>
+              <div style={{ padding: "6px 8px" }}>{renderItemGrid(MM_SONGS, "#c060e0")}</div>
+              <SectionHeader title="Fées Errantes & Skulltulas" found={MM_COUNTERS.filter(i=>i.found).length} total={MM_COUNTERS.length} color={T.accentMM}/>
+              <div style={{ padding: "6px 8px" }}>{renderItemGrid(MM_COUNTERS, T.accentMM)}</div>
+            </>)}
+
+            {game === "Souls" && (
+              <div style={{ padding: "4px 0" }}>
+                {/* Soul group tabs */}
+                <div style={{ display: "flex", gap: 6, padding: "6px 12px", flexWrap: "wrap", borderBottom: `1px solid ${T.border}` }}>
+                  {SOULS_GROUPS.map((g, i) => (
+                    <div key={i} onClick={() => setSoulGroup(i)} style={{
+                      padding: "4px 10px", borderRadius: 4, cursor: "pointer", fontSize: 10, fontWeight: 500,
+                      background: soulGroup === i ? `${g.color}22` : "transparent",
+                      border: `1px solid ${soulGroup === i ? g.color : T.border}`,
+                      color: soulGroup === i ? g.color : T.textDim,
+                    }}>{g.label}</div>
+                  ))}
+                </div>
+                <div style={{ padding: "8px 12px" }}>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 2 }}>
+                    {SOULS_GROUPS[soulGroup].items.map((soul, i) => (
+                      <div key={i} onClick={() => setSelected(selected?.name === soul.name ? null : { id: soul.name, label: soul.name, found: soul.found, foundAt: soul.found ? "Divers" : null })} style={{
+                        display: "flex", alignItems: "center", gap: 8, padding: "6px 10px", borderRadius: 4, cursor: "pointer",
+                        background: selected?.id === soul.name ? `${SOULS_GROUPS[soulGroup].color}18` : i % 2 === 0 ? T.panel2 : "transparent",
+                        border: `1px solid ${selected?.id === soul.name ? SOULS_GROUPS[soulGroup].color : "transparent"}`,
+                        opacity: soul.found ? 1 : 0.5,
+                      }}>
+                        <div style={{ width: 24, height: 24, flexShrink: 0, filter: soul.found ? "none" : "grayscale(1)" }}>
+                          {SVGIcons.soulIcon(soul.found ? SOULS_GROUPS[soulGroup].color : "#666")}
+                        </div>
+                        <div style={{ minWidth: 0 }}>
+                          <div style={{ fontSize: 10, color: soul.found ? T.text : T.textDim, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{soul.name}</div>
+                          {soul.found && <div style={{ fontSize: 9, color: SOULS_GROUPS[soulGroup].color }}>Trouvé</div>}
+                        </div>
+                        {soul.found && <div style={{ marginLeft: "auto", width: 6, height: 6, borderRadius: "50%", background: SOULS_GROUPS[soulGroup].color, flexShrink: 0, boxShadow: `0 0 4px ${SOULS_GROUPS[soulGroup].color}` }}/>}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                {/* Soul stats */}
+                <div style={{ margin: "8px 12px 0", padding: "8px 12px", background: T.panel, borderRadius: 6, border: `1px solid ${T.border}`, display: "flex", gap: 20 }}>
+                  {SOULS_GROUPS.map((g, i) => (
+                    <div key={i} style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: 9, color: T.textDim, marginBottom: 2 }}>{g.label.split("—")[0].trim()}</div>
+                      <div style={{ fontSize: 12, fontWeight: 600, color: g.color, fontFamily: T.mono }}>
+                        {g.items.filter(s=>s.found).length}<span style={{ color: T.textDim, fontWeight: 400 }}>/{g.items.length}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Right detail panel */}
+        <div style={{ width: 260, background: T.panel, borderLeft: `1px solid ${T.border}`, display: "flex", flexDirection: "column", flexShrink: 0 }}>
+          <div style={{ padding: "10px 14px", borderBottom: `1px solid ${T.border}`, flexShrink: 0 }}>
+            <span style={{ fontSize: 10, fontWeight: 600, color: accent, letterSpacing: "0.08em", textTransform: "uppercase" }}>Détail</span>
+          </div>
+          {detail ? (
+            <div style={{ flex: 1, padding: "16px 14px", display: "flex", flexDirection: "column", gap: 14 }}>
+              {/* Icon */}
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <div style={{ width: 80, height: 80, filter: detail.found ? "none" : "grayscale(1)", opacity: detail.found ? 1 : 0.3 }}>
+                  {detail.icon ? detail.icon(detail.found ? (detail.color || accent) : "#888") : SVGIcons.soulIcon(detail.found ? accent : "#888")}
+                </div>
+              </div>
+              {/* Name */}
+              <div style={{ textAlign: "center" }}>
+                <div style={{ fontSize: 14, fontWeight: 600, color: T.text, lineHeight: 1.3 }}>{detail.label || detail.name}</div>
+                <div style={{ fontSize: 10, color: detail.found ? "#4a8a4a" : T.textDim, marginTop: 4 }}>
+                  {detail.found ? "✓ Trouvé" : "✗ Non trouvé"}
+                </div>
+              </div>
+
+              {detail.found && <>
+                {/* Divider */}
+                <div style={{ height: 1, background: T.border }}/>
+                {/* Location */}
+                <div>
+                  <div style={{ fontSize: 9, color: T.textDim, marginBottom: 6, letterSpacing: "0.08em", textTransform: "uppercase" }}>Trouvé dans</div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 10px", background: T.bg, borderRadius: 6, border: `1px solid ${T.border}` }}>
+                    <div style={{ width: 6, height: 6, borderRadius: "50%", background: accent, flexShrink: 0 }}/>
+                    <div>
+                      <div style={{ fontSize: 12, color: T.text }}>{detail.foundAt || "—"}</div>
+                      <div style={{ fontSize: 10, color: T.textDim }}>{detail.foundObj || "—"}</div>
+                    </div>
+                  </div>
+                </div>
+                {/* Counter if any */}
+                {detail.count !== undefined && (
+                  <div>
+                    <div style={{ fontSize: 9, color: T.textDim, marginBottom: 6, letterSpacing: "0.08em", textTransform: "uppercase" }}>Quantité</div>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                      <div style={{ fontSize: 28, fontWeight: 700, color: detail.color || accent, fontFamily: T.mono }}>{detail.count}</div>
+                    </div>
+                  </div>
+                )}
+              </>}
+            </div>
+          ) : (
+            <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8, opacity: 0.3, padding: 20, textAlign: "center" }}>
+              <div style={{ width: 48, height: 48, opacity: 0.4 }}>
+                {SVGIcons.magic(T.textDim)}
+              </div>
+              <div style={{ fontSize: 11, color: T.textDim }}>Sélectionner un item pour voir ses détails</div>
+            </div>
+          )}
+
+          {/* Stats bottom */}
+          <div style={{ borderTop: `1px solid ${T.border}`, padding: "10px 14px", flexShrink: 0 }}>
+            <div style={{ fontSize: 9, color: T.textDim, marginBottom: 6, letterSpacing: "0.06em", textTransform: "uppercase" }}>
+              {game === "Souls" ? "Souls" : game}
+            </div>
+            {game === "OoT" && (
+              <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                {[
+                  { label: "Armes", found: OOT_WEAPONS.filter(i=>i.found).length, total: OOT_WEAPONS.length, color: T.accent },
+                  { label: "Équipement", found: OOT_EQUIPMENT.filter(i=>i.found).length, total: OOT_EQUIPMENT.length, color: T.accent },
+                  { label: "Quête", found: OOT_QUEST.filter(i=>i.found).length, total: OOT_QUEST.length, color: T.gold },
+                  { label: "Chansons", found: OOT_SONGS.filter(i=>i.found).length, total: OOT_SONGS.length, color: "#c060e0" },
+                ].map(s => (
+                  <div key={s.label} style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                    <span style={{ fontSize: 10, color: T.textDim, width: 70 }}>{s.label}</span>
+                    <div style={{ flex: 1, height: 3, background: "#111", borderRadius: 2 }}>
+                      <div style={{ width: `${(s.found/s.total)*100}%`, height: "100%", background: s.color, borderRadius: 2 }}/>
+                    </div>
+                    <span style={{ fontSize: 9, color: s.color, fontFamily: T.mono, width: 30, textAlign: "right" }}>{s.found}/{s.total}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+            {game === "MM" && (
+              <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                {[
+                  { label: "Transf.", found: MM_MASKS_TRANSFORM.filter(i=>i.found).length, total: 4, color: T.accentMM },
+                  { label: "Masques", found: MM_MASKS_OTHER.filter(i=>i.found).length, total: MM_MASKS_OTHER.length, color: T.accentMM },
+                  { label: "Boss", found: MM_QUEST.filter(i=>i.found).length, total: 4, color: T.gold },
+                  { label: "Chansons", found: MM_SONGS.filter(i=>i.found).length, total: MM_SONGS.length, color: "#c060e0" },
+                ].map(s => (
+                  <div key={s.label} style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                    <span style={{ fontSize: 10, color: T.textDim, width: 70 }}>{s.label}</span>
+                    <div style={{ flex: 1, height: 3, background: "#111", borderRadius: 2 }}>
+                      <div style={{ width: `${(s.found/s.total)*100}%`, height: "100%", background: s.color, borderRadius: 2 }}/>
+                    </div>
+                    <span style={{ fontSize: 9, color: s.color, fontFamily: T.mono, width: 30, textAlign: "right" }}>{s.found}/{s.total}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+            {game === "Souls" && (
+              <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                {SOULS_GROUPS.map(g => (
+                  <div key={g.label} style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                    <span style={{ fontSize: 9, color: T.textDim, width: 80, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{g.label.split("—")[0].trim()}</span>
+                    <div style={{ flex: 1, height: 3, background: "#111", borderRadius: 2 }}>
+                      <div style={{ width: `${(g.items.filter(s=>s.found).length/g.items.length)*100}%`, height: "100%", background: g.color, borderRadius: 2 }}/>
+                    </div>
+                    <span style={{ fontSize: 9, color: g.color, fontFamily: T.mono, width: 28, textAlign: "right" }}>{g.items.filter(s=>s.found).length}/{g.items.length}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────
+// APP
+// ─────────────────────────────────────────────────────
+function App() {
+  return (
+    <DesignCanvas title="OoTMMCombo — Settings & Progression">
+      <DCSection id="s1" title="⚙ Settings">
+        <DCArtboard id="a1" label="Settings — Section Clés & Donjons" width={1280} height={720}>
+          <SettingsScreen />
+        </DCArtboard>
+      </DCSection>
+      <DCSection id="s2" title="📊 Onglet Progression">
+        <DCArtboard id="a2" label="Progression — OoT (Armes, Équipement, Médaillons…)" width={1280} height={720}>
+          <ProgressionTab defaultGame="OoT" />
+        </DCArtboard>
+        <DCArtboard id="a3" label="Progression — MM (Masques, Restes, Fées…)" width={1280} height={720}>
+          <ProgressionTab defaultGame="MM" />
+        </DCArtboard>
+        <DCArtboard id="a4" label="Progression — Souls (liste compacte par groupe)" width={1280} height={720}>
+          <ProgressionTab defaultGame="Souls" />
+        </DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+<div id="root"></div>
+</body>
+</html>

@@ -55,12 +55,15 @@ private:
 /*
 *   This class represent the main tracker window and is handling the core program.
 */
+class ProgressionTab;
+
 class OoTMMComboTracker : public QMainWindow
 {
     Q_OBJECT
 
 public:
     Settings ROMSettings;            // The settings used when the ROM was built.
+    ProgressionTab* ProgTab = nullptr; // Items collection dashboard.
 
 private:
 

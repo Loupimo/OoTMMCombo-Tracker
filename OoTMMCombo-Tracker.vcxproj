@@ -235,6 +235,8 @@
     <ClCompile Include="Sources\UI\SceneOoTEntrances.cpp" />
     <ClCompile Include="Sources\UI\SceneRenderer.cpp" />
     <ClCompile Include="Sources\UI\Settings.cpp" />
+    <ClCompile Include="Sources\UI\SettingsTab.cpp" />
+    <ClCompile Include="Sources\UI\ProgressionTab.cpp" />
     <QtUic Include="OoTMMComboTracker.ui" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -276,6 +278,8 @@
     <ClInclude Include="Headers\UI\ObjectRenderer.h" />
     <QtMoc Include="Headers\UI\OoTMMComboTracker.h" />
     <QtMoc Include="Headers\UI\MapTab.h" />
+    <QtMoc Include="Headers\UI\SettingsTab.h" />
+    <QtMoc Include="Headers\UI\ProgressionTab.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="OoTMMCombo-Tracker.rc" />

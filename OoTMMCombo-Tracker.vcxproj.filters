@@ -121,9 +121,6 @@
     <ClCompile Include="Sources\UI\FilterManager.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\UI\Settings.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\UI\MemoryReader.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
@@ -152,6 +149,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Sources\UI\EntranceRenderer.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\SettingsTab.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\ProgressionTab.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\Settings.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
@@ -267,6 +273,12 @@
       <Filter>Header Files\UI</Filter>
     </QtMoc>
     <QtMoc Include="Headers\UI\EntranceTable.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="Headers\UI\SettingsTab.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="Headers\UI\ProgressionTab.h">
       <Filter>Header Files\UI</Filter>
     </QtMoc>
   </ItemGroup>

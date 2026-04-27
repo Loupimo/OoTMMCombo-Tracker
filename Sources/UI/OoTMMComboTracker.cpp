@@ -3,6 +3,8 @@
 #include "UI/AppConfig.h"
 #include "UI/OoTMMComboTracker.h"
 #include "UI/SceneEntrance.h"
+#include "UI/SettingsTab.h"
+#include "UI/ProgressionTab.h"
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QEnterEvent>
@@ -263,12 +265,16 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     this->MMTab->Owner = this;
     this->EntTab = new EntranceTab(3, this->TabWidget);
     //this->EntranceTab->Owner = this;
-    
-    // Add the tabs to the widget : Log -> OoT -> MM
+
+    // Items collection dashboard
+    this->ProgTab = new ProgressionTab(this, this);
+
+    // Add the tabs to the widget : Log -> OoT -> MM -> Progression -> Entrances
     this->TabWidget->addTab(this->Log, "Launch");
     this->TabWidget->addTab(this->OoTTab, this->OoTTab->TabName);
     this->TabWidget->addTab(this->MMTab, this->MMTab->TabName);
     this->TabWidget->addTab(this->EntTab, this->EntTab->TabName);
+    this->TabWidget->addTab(this->ProgTab, "Progression");
 
     // Custom tab content:
     //   [Game name label] | [Counter label]
@@ -463,6 +469,15 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
     connect(this->ui.actionAbout, &QAction::triggered, this, &OoTMMComboTracker::ShowAboutDialog);
     connect(this->ui.actionAutoLoadTrackingFile, &QAction::triggered, this, &AppConfig::SetAutoLoadTrackingFile);
     connect(this->ui.actionAutoLoadSpoilerLog, &QAction::triggered, this, &AppConfig::SetAutoLoadSpoilerLog);
+
+    // Add "Edit Settings..." entry to the ROM Settings menu so clicking the menu
+    // entry opens the modal SettingsTab editor.
+    QAction* editSettingsAction = this->ui.menuROM_Settings->addAction("Edit Settings...");
+    connect(editSettingsAction, &QAction::triggered, this, [this]()
+    {
+        SettingsTab dialog(this, this);
+        dialog.exec();
+    });
 }
 
 OoTMMComboTracker::~OoTMMComboTracker()
@@ -470,6 +485,7 @@ OoTMMComboTracker::~OoTMMComboTracker()
     delete this->Log;
     delete this->OoTTab;
     delete this->MMTab;
+    delete this->ProgTab;
     delete this->TabWidget;
 }
 
@@ -645,6 +661,11 @@ void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, c
         {
             break;
         }
+    }
+
+    if (this->ProgTab != nullptr)
+    {
+        this->ProgTab->OnItemFound(Game, ObjectFound, ItemFound);
     }
 
     if (this->LastActivityLabel && ObjectFound)
