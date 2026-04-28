@@ -167,128 +167,270 @@ void ItemIconWidget::RefreshVisual()
 #pragma endregion
 
 
-#pragma region ProgressionTab
+#pragma region Section data
 
 namespace {
 
-// Static lookup: known display name -> matching icon path under ./Resources/Common/.
-struct IconMapping
-{
-    const char* Keyword;
-    const char* Path;
+// Helper to compute the static count of an entries array at compile-time.
+#define MAKE_SECTION(Title, Arr) { Title, Arr, sizeof(Arr) / sizeof(Arr[0]) }
+
+
+//-------------------------- OoT page --------------------------//
+
+const ProgEntry OoTWeaponsTools[] = {
+    { EGameIcon::kokiri,        "Kokiri Sword",         "kokiri sword",     false },
+    { EGameIcon::master,        "Master Sword",         "master sword",     false },
+    { EGameIcon::biggoron,      "Biggoron's Sword",     "biggoron",         false },
+    { EGameIcon::bow_oot,       "Fairy Bow",            "fairy bow",        false },
+    { EGameIcon::fire_arrow,    "Fire Arrows",          "fire arrow",       false },
+    { EGameIcon::ice_arrow,     "Ice Arrows",           "ice arrow",        false },
+    { EGameIcon::light_arrow,   "Light Arrows",         "light arrow",      false },
+    { EGameIcon::slingshot,     "Fairy Slingshot",      "slingshot",        false },
+    { EGameIcon::boomrang,      "Boomerang",            "boomerang",        false },
+    { EGameIcon::hookshot_oot,  "Progressive Hookshot", "hookshot",         false },
+    { EGameIcon::hammer,        "Megaton Hammer",       "hammer",           false },
+    { EGameIcon::bombchu,       "Bombchu",              "bombchu",          true  },
+    { EGameIcon::lens,          "Lens of Truth",        "lens",             false },
+    { EGameIcon::bean,          "Magic Beans",          "magic bean",       false },
+    { EGameIcon::fairy_ocarina, "Fairy Ocarina",        "fairy ocarina",    false },
+    { EGameIcon::ocarina,       "Ocarina of Time",      "ocarina of time",  false },
+    { EGameIcon::bottle,        "Empty Bottle",         "empty bottle",     true  },
+    { EGameIcon::din,           "Din's Fire",           "din",              false },
+    { EGameIcon::farore,        "Farore's Wind",        "farore",           false },
+    { EGameIcon::nayru,         "Nayru's Love",         "nayru",            false },
 };
 
-const IconMapping ICON_MAPPINGS[] = {
-    { "kokiri sword",       "./Resources/Common/Sword.png" },
-    { "master sword",       "./Resources/Common/Sword.png" },
-    { "biggoron",           "./Resources/Common/Sword.png" },
-    { "fairy bow",          "./Resources/Common/Bow.png" },
-    { "fairy slingshot",    "./Resources/Common/Slingshot.png" },
-    { "slingshot",          "./Resources/Common/Slingshot.png" },
-    { "boomerang",          "./Resources/Common/Boomerang.png" },
-    { "hookshot",           "./Resources/Common/Hookshot.png" },
-    { "longshot",           "./Resources/Common/Hookshot.png" },
-    { "megaton hammer",     "./Resources/Common/Hammer.png" },
-    { "lens of truth",      "./Resources/Common/Items/Lens.png" },
-    { "magic beans",        "./Resources/Common/Items/Bean.png" },
-    { "fire arrow",         "./Resources/Common/Items/Fire.png" },
-    { "ice arrow",          "./Resources/Common/Items/Ice.png" },
-    { "light arrow",        "./Resources/Common/Items/Light.png" },
-    { "fairy ocarina",      "./Resources/Common/Ocarina.png" },
-    { "ocarina of time",    "./Resources/Common/Ocarina.png" },
-    { "ocarina",            "./Resources/Common/Ocarina.png" },
-    { "empty bottle",       "./Resources/Common/Items/Bottle.png" },
-    { "bottle",             "./Resources/Common/Items/Bottle.png" },
-    { "bombchu",            "./Resources/Common/Items/Bombchu.png" },
-    { "lon lon milk",       "./Resources/Common/Items/Milk.png" },
-    { "red potion",         "./Resources/Common/Items/Red_Potion.png" },
-    { "din's fire",         "./Resources/Common/Items/Fire.png" },
-    { "farore's wind",      "./Resources/Common/Items/Light.png" },
-    { "nayru's love",       "./Resources/Common/Items/Light.png" },
-    { "kokiri's emerald",   "./Resources/Common/Quest/Defense.png" },
-    { "goron's ruby",       "./Resources/Common/Quest/Defense.png" },
-    { "zora's sapphire",    "./Resources/Common/Quest/Defense.png" },
-    { "forest medallion",   "./Resources/Common/Quest/Defense.png" },
-    { "fire medallion",     "./Resources/Common/Quest/Defense.png" },
-    { "water medallion",    "./Resources/Common/Quest/Defense.png" },
-    { "spirit medallion",   "./Resources/Common/Quest/Defense.png" },
-    { "shadow medallion",   "./Resources/Common/Quest/Defense.png" },
-    { "light medallion",    "./Resources/Common/Quest/Defense.png" },
-    { "magic upgrade",      "./Resources/Common/Quest/Magic.png" },
-    { "double magic",       "./Resources/Common/Quest/Double_Magic.png" },
-    { "double defense",     "./Resources/Common/Quest/Defense.png" },
-    { "small key",          "./Resources/Common/Small_Key.png" },
-    { "boss key",           "./Resources/Common/Boss_Key.png" },
-    { "compass",            "./Resources/Common/Compass.png" },
-    { "map ",               "./Resources/Common/Map.png" },
-    { "gerudo's membership card", "./Resources/Common/NPC.png" },
-    { "gold skulltula",     "./Resources/Common/Gold_Skulltula.png" },
-    { "stray fairy",        "./Resources/Common/Stray_Fairy.png" },
-    { "fairy",              "./Resources/Common/Fairy.png" },
-    { "stone of agony",     "./Resources/Common/NPC.png" },
-    { "triforce",           "./Resources/Common/Quest/Defense.png" },
-    { "rupee",              "./Resources/Common/Rupee.png" },
-    { "deku shield",        "./Resources/Common/Equipment/Bomb_Bag.png" },
-    { "hylian shield",      "./Resources/Common/Equipment/Bomb_Bag.png" },
-    { "mirror shield",      "./Resources/Common/Equipment/Bomb_Bag.png" },
-    { "goron tunic",        "./Resources/Common/Equipment/Bomb_Bag.png" },
-    { "zora tunic",         "./Resources/Common/Equipment/Bomb_Bag.png" },
-    { "iron boots",         "./Resources/Common/Equipment/Bomb_Bag.png" },
-    { "hover boots",        "./Resources/Common/Equipment/Bomb_Bag.png" },
-    { "silver gauntlets",   "./Resources/Common/Equipment/Bomb_Bag.png" },
-    { "golden gauntlets",   "./Resources/Common/Equipment/Bomb_Bag.png" },
-    { "silver scale",       "./Resources/Common/Equipment/Bomb_Bag.png" },
-    { "golden scale",       "./Resources/Common/Equipment/Bomb_Bag.png" },
-    { "bomb bag",           "./Resources/Common/Equipment/Bomb_Bag.png" },
-    { "big bomb bag",       "./Resources/Common/Equipment/Big_Bomb_Bag.png" },
-    { "biggest bomb bag",   "./Resources/Common/Equipment/Biggest_Bomb_Bag.png" },
-    { "quiver",             "./Resources/Common/Equipment/Big_Quiver.png" },
-    { "wallet",             "./Resources/Common/Equipment/Wallet.png" },
-    { "lullaby",            "./Resources/Common/Song.png" },
-    { "epona",              "./Resources/Common/Song.png" },
-    { "saria",              "./Resources/Common/Song.png" },
-    { "sun's song",         "./Resources/Common/Song.png" },
-    { "song of time",       "./Resources/Common/Song.png" },
-    { "song of storms",     "./Resources/Common/Song.png" },
-    { "song of healing",    "./Resources/Common/Song.png" },
-    { "song of soaring",    "./Resources/Common/Song.png" },
-    { "elegy of emptiness", "./Resources/Common/Song.png" },
-    { "sonata of awakening","./Resources/Common/Song.png" },
-    { "goron lullaby",      "./Resources/Common/Song.png" },
-    { "oath to order",      "./Resources/Common/Song.png" },
-    { "deku mask",          "./Resources/Common/Mask.png" },
-    { "goron mask",         "./Resources/Common/Mask.png" },
-    { "zora mask",          "./Resources/Common/Mask.png" },
-    { "fierce deity",       "./Resources/Common/Mask.png" },
-    { "bunny hood",         "./Resources/Common/Masks/Bunny.png" },
-    { "keaton mask",        "./Resources/Common/Masks/Keaton.png" },
-    { "mask of truth",      "./Resources/Common/Masks/Truth.png" },
-    { "mask",               "./Resources/Common/Mask.png" },
-    { "remains",            "./Resources/Common/Boss_Key.png" },
-    { "owl statue",         "./Resources/Common/Owl.png" },
-    { "owl",                "./Resources/Common/Owl.png" },
-    { "soul",               "./Resources/Common/Stray_Fairy.png" },
-    { "heart container",    "./Resources/Common/HC.png" },
-    { "piece of heart",     "./Resources/Common/HP.png" },
-    { "recovery heart",     "./Resources/Common/Heart.png" },
+const ProgEntry OoTEquipment[] = {
+    { EGameIcon::deku_shield,        "Deku Shield",      "deku shield",      false },
+    { EGameIcon::hylian_shield,      "Hylian Shield",    "hylian shield",    false },
+    { EGameIcon::mirror_oot,         "Mirror Shield",    "mirror shield",    false },
+    { EGameIcon::goron_tunic,        "Goron Tunic",      "goron tunic",      false },
+    { EGameIcon::zora_tunic,         "Zora Tunic",       "zora tunic",       false },
+    { EGameIcon::iron,               "Iron Boots",       "iron boots",       false },
+    { EGameIcon::hover,              "Hover Boots",      "hover boots",      false },
+    { EGameIcon::silver_gauntlet,    "Silver Gauntlets", "silver gauntlet",  false },
+    { EGameIcon::golden_gauntlet,    "Golden Gauntlets", "golden gauntlet",  false },
+    { EGameIcon::silver,             "Silver Scale",     "silver scale",     false },
+    { EGameIcon::golden,             "Golden Scale",     "golden scale",     false },
+    { EGameIcon::bomb_bag,           "Bomb Bag",         "bomb bag",         false },
+    { EGameIcon::big_bomb,           "Big Bomb Bag",     "big bomb",         false },
+    { EGameIcon::biggest_bomb,       "Biggest Bomb Bag", "biggest bomb",     false },
+    { EGameIcon::big_quiver,         "Big Quiver",       "big quiver",       false },
+    { EGameIcon::biggest_quiver,     "Biggest Quiver",   "biggest quiver",   false },
+    { EGameIcon::magic_upgrade,      "Magic Upgrade",    "magic upgrade",    false },
+    { EGameIcon::large_magic_upgrade,"Double Magic",     "larger magic",     false },
+    { EGameIcon::defense,            "Double Defense",   "double defense",   false },
 };
 
-const size_t NUM_ICON_MAPPINGS = sizeof(ICON_MAPPINGS) / sizeof(ICON_MAPPINGS[0]);
+const ProgEntry OoTStonesMedallions[] = {
+    { EGameIcon::emerald,   "Kokiri's Emerald",  "emerald",          false },
+    { EGameIcon::ruby,      "Goron's Ruby",      "ruby",             false },
+    { EGameIcon::sapphire,  "Zora's Sapphire",   "sapphire",         false },
+    { EGameIcon::forest,    "Forest Medallion",  "forest medallion", false },
+    { EGameIcon::fire,      "Fire Medallion",    "fire medallion",   false },
+    { EGameIcon::water,     "Water Medallion",   "water medallion",  false },
+    { EGameIcon::spirit,    "Spirit Medallion",  "spirit medallion", false },
+    { EGameIcon::shadow,    "Shadow Medallion",  "shadow medallion", false },
+    { EGameIcon::light,     "Light Medallion",   "light medallion",  false },
+};
+
+const ProgEntry OoTSongs[] = {
+    // Ocarina songs share EGameIcon::song -> disambiguated by LookupKey.
+    { EGameIcon::song,        "Zelda's Lullaby",     "lullaby",         false },
+    { EGameIcon::song,        "Epona's Song",        "epona",           false },
+    { EGameIcon::song,        "Saria's Song",        "saria",           false },
+    { EGameIcon::song,        "Sun's Song",          "sun's song",      false },
+    { EGameIcon::song,        "Song of Time",        "song of time",    false },
+    { EGameIcon::song,        "Song of Storms",      "song of storms",  false },
+    // Warp songs each have a unique EGameIcon, but "Note from X" items share it.
+    { EGameIcon::song_green,  "Minuet of Forest",    "minuet",          false },
+    { EGameIcon::song_red,    "Bolero of Fire",      "bolero",          false },
+    { EGameIcon::song_blue,   "Serenade of Water",   "serenade",        false },
+    { EGameIcon::song_orange, "Requiem of Spirit",   "requiem",         false },
+    { EGameIcon::song_purple, "Nocturne of Shadow",  "nocturne",        false },
+    { EGameIcon::song_yellow, "Prelude of Light",    "prelude",         false },
+};
+
+const ProgEntry OoTCounters[] = {
+    { EGameIcon::gs_token,       "Gold Skulltula Token", "gold skulltula", true },
+    { EGameIcon::triforce_piece, "Triforce Piece",       "triforce piece", true },
+    { EGameIcon::small_key,      "Small Key",            "small key",      true },
+    { EGameIcon::boss_key,       "Boss Key",             "boss key",       true },
+    { EGameIcon::rupee,          "Green Rupee",          "green rupee",    true },
+    { EGameIcon::blue_rupee,     "Blue Rupee",           "blue rupee",     true },
+    { EGameIcon::red_rupee,      "Red Rupee",            "red rupee",      true },
+    { EGameIcon::purple_rupee,   "Purple Rupee",         "purple rupee",   true },
+    { EGameIcon::gold_rupee,     "Gold Rupee",           "gold rupee",     true },
+};
+
+const ProgSection OoTSections[] = {
+    MAKE_SECTION("Weapons & Tools",     OoTWeaponsTools),
+    MAKE_SECTION("Equipment",           OoTEquipment),
+    MAKE_SECTION("Stones & Medallions", OoTStonesMedallions),
+    MAKE_SECTION("Songs",               OoTSongs),
+    MAKE_SECTION("Counters",            OoTCounters),
+};
+
+
+//-------------------------- MM page --------------------------//
+
+const ProgEntry MMTransformationMasks[] = {
+    { EGameIcon::deku,   "Deku Mask",            "deku mask",          false },
+    { EGameIcon::goron,  "Goron Mask",           "goron mask",         false },
+    { EGameIcon::zora,   "Zora Mask",            "zora mask",          false },
+    { EGameIcon::deity,  "Fierce Deity's Mask",  "fierce deity",       false },
+};
+
+const ProgEntry MMMasks[] = {
+    { EGameIcon::bunny,      "Bunny Hood",            "bunny hood",          false },
+    { EGameIcon::keaton,     "Keaton Mask",           "keaton",              false },
+    { EGameIcon::truth,      "Mask of Truth",         "mask of truth",       false },
+    { EGameIcon::postman,    "Postman's Hat",         "postman",             false },
+    { EGameIcon::night,      "All-Night Mask",        "all-night",           false },
+    { EGameIcon::blast,      "Blast Mask",            "blast mask",          false },
+    { EGameIcon::stone,      "Stone Mask",            "stone mask",          false },
+    { EGameIcon::fairy_mask, "Great Fairy's Mask",    "great fairy's mask",  false },
+    { EGameIcon::bremen,     "Bremen Mask",           "bremen",              false },
+    { EGameIcon::gero,       "Don Gero's Mask",       "don gero",            false },
+    { EGameIcon::kamaro,     "Kamaro's Mask",         "kamaro",              false },
+    { EGameIcon::romani,     "Romani's Mask",         "romani's mask",       false },
+    { EGameIcon::troupe,     "Circus Leader's Mask",  "circus leader",       false },
+    { EGameIcon::kafei,      "Kafei's Mask",          "kafei",               false },
+    { EGameIcon::couple,     "Couple's Mask",         "couple",              false },
+    { EGameIcon::scents,     "Mask of Scents",        "mask of scents",      false },
+    { EGameIcon::garo,       "Garo's Mask",           "garo",                false },
+    { EGameIcon::captain,    "Captain's Hat",         "captain",             false },
+    { EGameIcon::gibdo,      "Gibdo Mask",            "gibdo",               false },
+    { EGameIcon::giant,      "Giant's Mask",          "giant's mask",        false },
+};
+
+const ProgEntry MMRemains[] = {
+    { EGameIcon::odolwa,    "Odolwa's Remains",   "odolwa",   false },
+    { EGameIcon::goht,      "Goht's Remains",     "goht",     false },
+    { EGameIcon::gyorg,     "Gyorg's Remains",    "gyorg",    false },
+    { EGameIcon::twinmold,  "Twinmold's Remains", "twinmold", false },
+};
+
+const ProgEntry MMWeaponsTools[] = {
+    { EGameIcon::bow_mm,            "Hero's Bow",          "hero's bow",         false },
+    { EGameIcon::hookshot_mm,       "Hookshot",            "hookshot",           false },
+    { EGameIcon::lens,              "Lens of Truth",       "lens",               false },
+    { EGameIcon::picto,             "Pictograph Box",      "pictograph",         false },
+    { EGameIcon::powder,            "Powder Keg",          "powder keg",         false },
+    { EGameIcon::fairy_sword,       "Great Fairy's Sword", "great fairy's sword",false },
+    { EGameIcon::bombchu,           "Bombchu",             "bombchu",            true  },
+    { EGameIcon::magic_upgrade,     "Magic Upgrade",       "magic upgrade",      false },
+    { EGameIcon::large_magic_upgrade,"Double Magic",       "larger magic",       false },
+};
+
+const ProgEntry MMSongs[] = {
+    // Ocarina songs share EGameIcon::song -> disambiguated by LookupKey.
+    { EGameIcon::song,        "Song of Time",        "song of time",    false },
+    { EGameIcon::song,        "Song of Healing",     "song of healing", false },
+    { EGameIcon::song,        "Epona's Song",        "epona",           false },
+    { EGameIcon::song,        "Song of Soaring",     "song of soaring", false },
+    { EGameIcon::song,        "Song of Storms",      "song of storms",  false },
+    { EGameIcon::song,        "Sun's Song",          "sun's song",      false },
+    // Warp / dungeon songs have unique EGameIcons but "Note from X" items share them.
+    { EGameIcon::song_green,  "Sonata of Awakening", "sonata",          false },
+    { EGameIcon::song_red,    "Goron Lullaby",       "goron lullaby",   false },
+    { EGameIcon::song_blue,   "New Wave Bossa Nova", "bossa nova",      false },
+    { EGameIcon::song_orange, "Elegy of Emptiness",  "elegy",           false },
+    { EGameIcon::song_purple, "Oath to Order",       "oath to order",   false },
+};
+
+const ProgEntry MMCounters[] = {
+    { EGameIcon::sf,              "Stray Fairy (Woodfall)",      "woodfall temple",     true },
+    { EGameIcon::sf_green,        "Stray Fairy (Snowhead)",      "snowhead temple",     true },
+    { EGameIcon::sf_blue,         "Stray Fairy (Great Bay)",     "great bay temple",    true },
+    { EGameIcon::sf_yellow,       "Stray Fairy (Stone Tower)",     "stone tower temple",  true },
+    { EGameIcon::sf_orange,       "Stray Fairy (Clock Town)",      "clock town",          true },
+    { EGameIcon::swamp_token,     "Swamp Skulltula Token", "swamp skulltula",     true },
+    { EGameIcon::ocean_token,     "Ocean Skulltula Token", "ocean skulltula",     true },
+};
+
+const ProgSection MMSections[] = {
+    MAKE_SECTION("Transformation Masks", MMTransformationMasks),
+    MAKE_SECTION("Masks",                MMMasks),
+    MAKE_SECTION("Boss Remains",         MMRemains),
+    MAKE_SECTION("Weapons & Tools",      MMWeaponsTools),
+    MAKE_SECTION("Songs",                MMSongs),
+    MAKE_SECTION("Counters",             MMCounters),
+};
+
+
+//-------------------------- Souls page --------------------------//
+
+const ProgEntry SoulsOoTBoss[] = {
+    { EGameIcon::soul_of_boss, "Soul of Gohma",         "queen gohma", false },
+    { EGameIcon::soul_of_boss, "Soul of King Dodongo",  "king dodongo",false },
+    { EGameIcon::soul_of_boss, "Soul of Barinade",      "barinade",    false },
+    { EGameIcon::soul_of_boss, "Soul of Phantom Ganon", "phantom",     false },
+    { EGameIcon::soul_of_boss, "Soul of Volvagia",      "volvagia",    false },
+    { EGameIcon::soul_of_boss, "Soul of Morpha",        "morpha",      false },
+    { EGameIcon::soul_of_boss, "Soul of Bongo Bongo",   "bongo",       false },
+    { EGameIcon::soul_of_boss, "Soul of Twinrova",      "twinrova",    false },
+    { EGameIcon::soul_of_boss, "Soul of Ganondorf",     "ganondorf",   false },
+};
+
+const ProgEntry SoulsMMBoss[] = {
+    { EGameIcon::soul_of_boss, "Soul of Odolwa",   "odolwa",   false },
+    { EGameIcon::soul_of_boss, "Soul of Goht",     "goht",     false },
+    { EGameIcon::soul_of_boss, "Soul of Gyorg",    "gyorg",    false },
+    { EGameIcon::soul_of_boss, "Soul of Twinmold", "twinmold", false },
+};
+
+const ProgEntry SoulsOoTEnemies[] = {
+    { EGameIcon::soul_of_foe, "Soul of Stalfos",         "stalfos",        false },
+    { EGameIcon::soul_of_foe, "Soul of Octoroks",        "octoroks",       false },
+    { EGameIcon::soul_of_foe, "Soul of Wallmasters",     "wallmasters",    false },
+    { EGameIcon::soul_of_foe, "Soul of Dodongos",        "dodongos",       false },
+    { EGameIcon::soul_of_foe, "Soul of Keese",           "keese",          false },
+    { EGameIcon::soul_of_foe, "Soul of Tektites",        "tektites",       false },
+    { EGameIcon::soul_of_foe, "Soul of Leevers",         "leevers",        false },
+    { EGameIcon::soul_of_foe, "Soul of Peahats",         "peahats",        false },
+    { EGameIcon::soul_of_foe, "Soul of Skulltulas",      "skulltulas",     false },
+    { EGameIcon::soul_of_foe, "Soul of Moblins",         "moblins",        false },
+    { EGameIcon::soul_of_foe, "Soul of Armos",           "armos",          false },
+    { EGameIcon::soul_of_foe, "Soul of Deku Babas",      "deku babas",     false },
+    { EGameIcon::soul_of_foe, "Soul of Deku Scrubs",     "deku scrubs",    false },
+    { EGameIcon::soul_of_foe, "Soul of Bubbles",         "bubbles",        false },
+    { EGameIcon::soul_of_foe, "Soul of Beamos",          "beamos",         false },
+    { EGameIcon::soul_of_foe, "Soul of Floormasters",    "floormasters",   false },
+    { EGameIcon::soul_of_foe, "Soul of ReDeads/Gibdos",  "redeads",        false },
+    { EGameIcon::soul_of_foe, "Soul of Skullwalltulas",  "skullwalltulas", false },
+    { EGameIcon::soul_of_foe, "Soul of Iron Knuckles",   "iron knuckles",  false },
+    { EGameIcon::soul_of_foe, "Soul of Skull Kids",      "skull kids",     false },
+    { EGameIcon::soul_of_foe, "Soul of Flying Pots",     "flying pots",    false },
+    { EGameIcon::soul_of_foe, "Soul of Freezards",       "freezards",      false },
+    { EGameIcon::soul_of_foe, "Soul of Wolfoses",        "wolfoses",       false },
+    { EGameIcon::soul_of_foe, "Soul of Stalchildren",    "stalchildren",   false },
+    { EGameIcon::soul_of_foe, "Soul of Like Likes",      "like likes",     false },
+    { EGameIcon::soul_of_foe, "Soul of Shell Blades",    "shell blades",   false },
+};
+
+const ProgSection SoulsSections[] = {
+    MAKE_SECTION("OoT Boss Souls",   SoulsOoTBoss),
+    MAKE_SECTION("MM Boss Souls",    SoulsMMBoss),
+    MAKE_SECTION("OoT Enemy Souls",  SoulsOoTEnemies),
+};
+
+#undef MAKE_SECTION
 
 } // namespace
 
+#pragma endregion
 
-QString ProgressionTab::ResolveIconPath(const QString& Name)
+
+#pragma region ProgressionTab
+
+
+ProgressionTab* ProgressionTab::sInstance = nullptr;
+
+
+ProgressionTab* ProgressionTab::GetInstance()
 {
-    QString lower = Name.toLower();
-    for (size_t i = 0; i < NUM_ICON_MAPPINGS; ++i)
-    {
-        if (lower.contains(QString::fromUtf8(ICON_MAPPINGS[i].Keyword)))
-        {
-            return QString::fromUtf8(ICON_MAPPINGS[i].Path);
-        }
-    }
-    return QString("./Resources/Common/Grass.png");
+    return sInstance;
 }
 
 
@@ -301,9 +443,43 @@ QString ProgressionTab::NormalizeItemName(const QString& Name)
 }
 
 
+ItemIconWidget* ProgressionTab::FindByIcon(const GameProgData& Data, EGameIcon Icon, const QString& Normalized)
+{
+    auto it = Data.ByIcon.constFind(Icon);
+    if (it == Data.ByIcon.constEnd()) return nullptr;
+
+    const QList<ItemIconWidget*>& candidates = it.value();
+    for (ItemIconWidget* w : candidates)
+    {   // Empty LookupKey means there is a single widget for this icon -> match unconditionally.
+
+        if (w->LookupKey.isEmpty() || Normalized.contains(w->LookupKey))
+        {
+            return w;
+        }
+    }
+    return nullptr;
+}
+
+
+ItemIconWidget* ProgressionTab::FindByLookupKey(const GameProgData& Data, const QString& Normalized)
+{
+    for (ItemIconWidget* w : Data.All)
+    {   // Only widgets with a non-empty LookupKey are eligible for the name fallback.
+
+        if (!w->LookupKey.isEmpty() && Normalized.contains(w->LookupKey))
+        {
+            return w;
+        }
+    }
+    return nullptr;
+}
+
+
 ProgressionTab::ProgressionTab(OoTMMComboTracker* Owner, QWidget* Parent)
     : QWidget(Parent), WinOwner(Owner)
 {
+    sInstance = this;
+
     QVBoxLayout* mainLayout = new QVBoxLayout(this);
     mainLayout->setContentsMargins(0, 0, 0, 0);
     mainLayout->setSpacing(0);
@@ -341,8 +517,13 @@ ProgressionTab::ProgressionTab(OoTMMComboTracker* Owner, QWidget* Parent)
 }
 
 
-QWidget* ProgressionTab::BuildPage(const QList<QPair<QString, QList<QPair<QString, QString>>>>& Sections,
-                                   QHash<QString, ItemIconWidget*>& TargetMap, int Game)
+ProgressionTab::~ProgressionTab()
+{
+    if (sInstance == this) sInstance = nullptr;
+}
+
+
+QWidget* ProgressionTab::BuildPage(const ProgSection* Sections, size_t SectionCount, GameProgData& Target, int Game)
 {
     QScrollArea* scroll = new QScrollArea(this);
     scroll->setWidgetResizable(true);
@@ -352,10 +533,12 @@ QWidget* ProgressionTab::BuildPage(const QList<QPair<QString, QList<QPair<QStrin
     contentLayout->setContentsMargins(12, 12, 12, 12);
     contentLayout->setSpacing(14);
 
-    for (const auto& sectionPair : Sections)
+    for (size_t s = 0; s < SectionCount; ++s)
     {
+        const ProgSection& section = Sections[s];
+
         // Section header.
-        QLabel* header = new QLabel(sectionPair.first, content);
+        QLabel* header = new QLabel(QString::fromUtf8(section.Title), content);
         header->setStyleSheet(
             "color: #4a9edb; "
             "font-size: 12px; "
@@ -375,22 +558,25 @@ QWidget* ProgressionTab::BuildPage(const QList<QPair<QString, QList<QPair<QStrin
         int row = 0;
         int col = 0;
 
-        for (const auto& itemPair : sectionPair.second)
+        for (size_t i = 0; i < section.Count; ++i)
         {
-            const QString& displayName = itemPair.first;
-            const QString& flagsOrIcon = itemPair.second; // "counter" => stackable, otherwise icon override or "".
+            const ProgEntry& entry = section.Entries[i];
 
-            bool isCounter = (flagsOrIcon == "counter");
-            QString iconPath = (flagsOrIcon.isEmpty() || isCounter) ? ProgressionTab::ResolveIconPath(displayName) : flagsOrIcon;
+            // Resolve the icon path from the central IconsMetaInfo table.
+            QString iconPath = QString::fromUtf8(IconsMetaInfo[(uint8_t)entry.Icon].IconPath);
+            QString displayName = QString::fromUtf8(entry.DisplayName);
 
-            ItemIconWidget* widget = new ItemIconWidget(iconPath, displayName, isCounter, gridHost);
+            ItemIconWidget* widget = new ItemIconWidget(iconPath, displayName, entry.IsCounter, gridHost);
             widget->Game = Game;
+            widget->Icon = entry.Icon;
+            widget->LookupKey = entry.LookupKey ? QString::fromUtf8(entry.LookupKey) : QString();
             grid->addWidget(widget, row, col);
 
             connect(widget, &ItemIconWidget::Selected, this, &ProgressionTab::ShowDetailFor);
 
-            // Register the lookup key (normalized base name) -> widget.
-            TargetMap.insert(ProgressionTab::NormalizeItemName(displayName), widget);
+            // Index by EGameIcon for fast lookup; multiple widgets may share the same icon.
+            Target.ByIcon[entry.Icon].append(widget);
+            Target.All.append(widget);
 
             col++;
             if (col >= columns)
@@ -418,132 +604,20 @@ QWidget* ProgressionTab::BuildPage(const QList<QPair<QString, QList<QPair<QStrin
 }
 
 
-QWidget* ProgressionTab::BuildSoulsPage()
-{
-    // The souls page reuses the same grid layout — the data comes from a flat list of soul names
-    // grouped by category. Souls map to OOT_GAME by convention here so the detail panel can resolve
-    // their scene name when needed.
-    QList<QPair<QString, QList<QPair<QString, QString>>>> sections;
-
-    sections.append({ "OoT Boss Souls", {
-        { "Soul of Gohma", "" }, { "Soul of King Dodongo", "" }, { "Soul of Barinade", "" },
-        { "Soul of Phantom Ganon", "" }, { "Soul of Volvagia", "" }, { "Soul of Morpha", "" },
-        { "Soul of Bongo Bongo", "" }, { "Soul of Twinrova", "" }, { "Soul of Ganondorf", "" }
-    }});
-
-    sections.append({ "MM Boss Souls", {
-        { "Soul of Odolwa", "" }, { "Soul of Goht", "" }, { "Soul of Gyorg", "" }, { "Soul of Twinmold", "" }
-    }});
-
-    sections.append({ "OoT Enemy Souls", {
-        { "Soul of Stalfos", "" }, { "Soul of Octoroks", "" }, { "Soul of Wallmasters", "" },
-        { "Soul of Dodongos", "" }, { "Soul of Keese", "" }, { "Soul of Tektites", "" },
-        { "Soul of Leevers", "" }, { "Soul of Peahats", "" }, { "Soul of Skulltulas", "" },
-        { "Soul of Moblins", "" }, { "Soul of Armos", "" }, { "Soul of Deku Babas", "" },
-        { "Soul of Deku Scrubs", "" }, { "Soul of Bubbles", "" }, { "Soul of Beamos", "" },
-        { "Soul of Floormasters", "" }, { "Soul of ReDeads/Gibdos", "" },
-        { "Soul of Skullwalltulas", "" }, { "Soul of Iron Knuckles", "" },
-        { "Soul of Skull Kids", "" }, { "Soul of Flying Pots", "" },
-        { "Soul of Freezards", "" }, { "Soul of Wolfoses", "" }, { "Soul of Stalchildren", "" },
-        { "Soul of Like Likes", "" }, { "Soul of Shell Blades", "" }
-    }});
-
-    return this->BuildPage(sections, this->SoulsItemMap, OOT_GAME);
-}
-
-
 void ProgressionTab::BuildPages()
 {
-    // ---- OoT page ----------------------------------------------------------
-    QList<QPair<QString, QList<QPair<QString, QString>>>> ootSections;
-
-    ootSections.append({ "Weapons & Tools", {
-        { "Kokiri Sword", "" }, { "Master Sword", "" }, { "Biggoron's Sword", "" },
-        { "Fairy Bow", "" }, { "Fire Arrows", "" }, { "Ice Arrows", "" }, { "Light Arrows", "" },
-        { "Fairy Slingshot", "" }, { "Boomerang", "" }, { "Progressive Hookshot", "" },
-        { "Megaton Hammer", "" }, { "Bombchu", "counter" }, { "Lens of Truth", "" }, { "Magic Beans", "" },
-        { "Fairy Ocarina", "" }, { "Ocarina of Time", "" }, { "Empty Bottle", "counter" },
-        { "Din's Fire", "" }, { "Farore's Wind", "" }, { "Nayru's Love", "" }
-    }});
-
-    ootSections.append({ "Equipment", {
-        { "Deku Shield", "" }, { "Hylian Shield", "" }, { "Mirror Shield", "" },
-        { "Goron Tunic", "" }, { "Zora Tunic", "" }, { "Iron Boots", "" }, { "Hover Boots", "" },
-        { "Silver Gauntlets", "" }, { "Golden Gauntlets", "" }, { "Silver Scale", "" }, { "Golden Scale", "" },
-        { "Bomb Bag", "" }, { "Big Bomb Bag", "" }, { "Biggest Bomb Bag", "" },
-        { "Big Quiver", "" }, { "Biggest Quiver", "" },
-        { "Magic Upgrade", "" }, { "Double Magic", "" }, { "Double Defense", "" }
-    }});
-
-    ootSections.append({ "Stones & Medallions", {
-        { "Kokiri's Emerald", "" }, { "Goron's Ruby", "" }, { "Zora's Sapphire", "" },
-        { "Forest Medallion", "" }, { "Fire Medallion", "" }, { "Water Medallion", "" },
-        { "Spirit Medallion", "" }, { "Shadow Medallion", "" }, { "Light Medallion", "" }
-    }});
-
-    ootSections.append({ "Songs", {
-        { "Zelda's Lullaby", "" }, { "Epona's Song", "" }, { "Saria's Song", "" }, { "Sun's Song", "" },
-        { "Song of Time", "" }, { "Song of Storms", "" },
-        { "Minuet of Forest", "" }, { "Bolero of Fire", "" }, { "Serenade of Water", "" },
-        { "Requiem of Spirit", "" }, { "Nocturne of Shadow", "" }, { "Prelude of Light", "" }
-    }});
-
-    ootSections.append({ "Counters", {
-        { "Gold Skulltula Token", "counter" }, { "Triforce Piece", "counter" },
-        { "Small Key", "counter" }, { "Boss Key", "counter" },
-        { "Green Rupee", "counter" }, { "Blue Rupee", "counter" }, { "Red Rupee", "counter" },
-        { "Purple Rupee", "counter" }, { "Gold Rupee", "counter" }
-    }});
-
-    QWidget* ootPage = this->BuildPage(ootSections, this->OoTItemMap, OOT_GAME);
+    QWidget* ootPage = this->BuildPage(OoTSections, sizeof(OoTSections) / sizeof(OoTSections[0]),
+                                       this->OoTData, OOT_GAME);
     this->PageStack->addWidget(ootPage);
 
-    // ---- MM page -----------------------------------------------------------
-    QList<QPair<QString, QList<QPair<QString, QString>>>> mmSections;
-
-    mmSections.append({ "Transformation Masks", {
-        { "Deku Mask", "" }, { "Goron Mask", "" }, { "Zora Mask", "" }, { "Fierce Deity's Mask", "" }
-    }});
-
-    mmSections.append({ "Masks", {
-        { "Bunny Hood", "" }, { "Keaton Mask", "" }, { "Mask of Truth", "" },
-        { "Postman's Hat", "" }, { "All-Night Mask", "" }, { "Blast Mask", "" },
-        { "Stone Mask", "" }, { "Great Fairy's Mask", "" }, { "Bremen Mask", "" },
-        { "Don Gero's Mask", "" }, { "Kamaro's Mask", "" }, { "Romani's Mask", "" },
-        { "Circus Leader's Mask", "" }, { "Kafei's Mask", "" }, { "Couple's Mask", "" },
-        { "Mask of Scents", "" }, { "Garo's Mask", "" }, { "Captain's Hat", "" },
-        { "Gibdo Mask", "" }, { "Giant's Mask", "" }
-    }});
-
-    mmSections.append({ "Boss Remains", {
-        { "Odolwa's Remains", "" }, { "Goht's Remains", "" }, { "Gyorg's Remains", "" }, { "Twinmold's Remains", "" }
-    }});
-
-    mmSections.append({ "Weapons & Tools", {
-        { "Hero's Bow", "" }, { "Hookshot", "" }, { "Lens of Truth", "" },
-        { "Pictograph Box", "" }, { "Powder Keg", "" }, { "Great Fairy's Sword", "" },
-        { "Bombchu", "counter" }, { "Magic Upgrade", "" }, { "Double Magic", "" }
-    }});
-
-    mmSections.append({ "Songs", {
-        { "Song of Time", "" }, { "Song of Healing", "" }, { "Epona's Song", "" }, { "Song of Soaring", "" },
-        { "Song of Storms", "" }, { "Sun's Song", "" }, { "Sonata of Awakening", "" },
-        { "Goron Lullaby", "" }, { "New Wave Bossa Nova", "" }, { "Elegy of Emptiness", "" },
-        { "Oath to Order", "" }
-    }});
-
-    mmSections.append({ "Counters", {
-        { "Stray Fairy (Woodfall Temple)", "counter" }, { "Stray Fairy (Snowhead Temple)", "counter" },
-        { "Stray Fairy (Great Bay Temple)", "counter" }, { "Stray Fairy (Stone Tower Temple)", "counter" },
-        { "Stray Fairy (Clock Town)", "counter" },
-        { "Swamp Skulltula Token", "counter" }, { "Ocean Skulltula Token", "counter" }
-    }});
-
-    QWidget* mmPage = this->BuildPage(mmSections, this->MMItemMap, MM_GAME);
+    QWidget* mmPage = this->BuildPage(MMSections, sizeof(MMSections) / sizeof(MMSections[0]),
+                                      this->MMData, MM_GAME);
     this->PageStack->addWidget(mmPage);
 
-    // ---- Souls page --------------------------------------------------------
-    this->PageStack->addWidget(this->BuildSoulsPage());
+    // Souls span both games; the detail panel uses OOT_GAME by convention to resolve scene names.
+    QWidget* soulsPage = this->BuildPage(SoulsSections, sizeof(SoulsSections) / sizeof(SoulsSections[0]),
+                                         this->SoulsData, OOT_GAME);
+    this->PageStack->addWidget(soulsPage);
 }
 
 
@@ -645,21 +719,29 @@ void ProgressionTab::OnItemFound(int Game, ObjectInfo* Object, const ItemInfo* I
 {
     if (Item == nullptr || Item->ItemName == nullptr) return;
 
-    QString key = ProgressionTab::NormalizeItemName(QString::fromUtf8(Item->ItemName));
+    QString normalized = NormalizeItemName(QString::fromUtf8(Item->ItemName));
+    GameProgData* primary = nullptr;
+    if (Game == OOT_GAME)      primary = &this->OoTData;
+    else if (Game == MM_GAME)  primary = &this->MMData;
 
-    // Try the per-game maps first, then the souls map (souls span both games).
+    // 1. Primary lookup: per-game icon hash, disambiguated by LookupKey when needed.
     ItemIconWidget* widget = nullptr;
-    if (Game == OOT_GAME)
+    if (primary != nullptr)
     {
-        widget = this->OoTItemMap.value(key, nullptr);
+        widget = FindByIcon(*primary, Item->RenderType, normalized);
     }
-    else if (Game == MM_GAME)
-    {
-        widget = this->MMItemMap.value(key, nullptr);
-    }
+
+    // 2. Souls span both games -> they live in their own registry.
     if (widget == nullptr)
     {
-        widget = this->SoulsItemMap.value(key, nullptr);
+        widget = FindByIcon(this->SoulsData, Item->RenderType, normalized);
+    }
+
+    // 3. Fallback: Item->RenderType cannot be matched (e.g. RenderType=none for progressive items).
+    //    Scan the per-game flat list and match by LookupKey only.
+    if (widget == nullptr && primary != nullptr)
+    {
+        widget = FindByLookupKey(*primary, normalized);
     }
 
     if (widget != nullptr)
@@ -669,11 +751,43 @@ void ProgressionTab::OnItemFound(int Game, ObjectInfo* Object, const ItemInfo* I
 }
 
 
+void ProgressionTab::RebuildFromSceneObjects()
+{
+    // Replay every collected/forced object from the central SceneObjects arrays.
+    // Counters are summed naturally because OnItemFound increments on each call.
+    this->ResetProgress();
+
+    static const struct { int Game; size_t Count; } Pages[] = {
+        { OOT_GAME, OOT_NUM_SCENES },
+        { MM_GAME,  MM_NUM_SCENES  },
+    };
+
+    for (const auto& page : Pages)
+    {
+        SceneObjects* scenes = GetGameSceneObjects(page.Game);
+        if (scenes == nullptr) continue;
+
+        for (size_t s = 0; s < page.Count; ++s)
+        {
+            SceneObjects& scene = scenes[s];
+            for (size_t o = 0; o < scene.NumOfObjs; ++o)
+            {
+                ObjectInfo& obj = scene.Objects[o];
+                if (obj.Status != ObjectState::Hidden && obj.Item != nullptr)
+                {
+                    this->OnItemFound(page.Game, &obj, obj.Item);
+                }
+            }
+        }
+    }
+}
+
+
 void ProgressionTab::ResetProgress()
 {
-    for (ItemIconWidget* w : this->OoTItemMap.values())  if (w) w->ResetFound();
-    for (ItemIconWidget* w : this->MMItemMap.values())   if (w) w->ResetFound();
-    for (ItemIconWidget* w : this->SoulsItemMap.values())if (w) w->ResetFound();
+    for (ItemIconWidget* w : this->OoTData.All)   if (w) w->ResetFound();
+    for (ItemIconWidget* w : this->MMData.All)    if (w) w->ResetFound();
+    for (ItemIconWidget* w : this->SoulsData.All) if (w) w->ResetFound();
 }
 
 #pragma endregion

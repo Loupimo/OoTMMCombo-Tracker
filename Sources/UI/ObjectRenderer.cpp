@@ -11,6 +11,7 @@
 #include <UI/AppConfig.h>
 #include "UI/FilterManager.h"
 #include "UI/Icons.h"
+#include "UI/ProgressionTab.h"
 
 ObjectItemTree::ObjectItemTree(ObjectInfo* Obj, QColor DefaultColor, ObjectRenderer* Owner, QTreeWidgetItem* Parent) : CommonBaseItemTree(Parent)
 {
@@ -228,6 +229,8 @@ void ObjectItemTree::UpdateTextStyle()
 
 void ObjectItemTree::PerformAction()
 {
+    bool stateToggled = false;
+
     if (this->Object->Status == ObjectState::Hidden)
     {   // The item was hidden and should now be shown
 
@@ -246,6 +249,7 @@ void ObjectItemTree::PerformAction()
             return;
         }
         this->Object->Status = ObjectState::Forced;
+        stateToggled = true;
         this->RendererOwner->SceneOwner->UpdateRoom(this->Object->RoomID);  // We need to update the room ID in case the selected object is in another room than the active one
         this->RendererOwner->UpdateSceneContext(this->Object->Context);     // We need to update the context in case the selected object is in a different context than the active one
         this->RendererOwner->RefreshObjectCounts(this, 1);                  // Increase the number of discovered object by one
@@ -265,6 +269,7 @@ void ObjectItemTree::PerformAction()
             this->setSelected(false);
         }
         this->Object->Status = ObjectState::Hidden;
+        stateToggled = true;
         this->RendererOwner->RefreshObjectCounts(this, -1);                 // Decrease the number of discovered object by one
         
         if (this->GraphItem)
@@ -312,6 +317,15 @@ void ObjectItemTree::PerformAction()
     }
 
     this->UpdateTextStyle();
+
+    if (stateToggled)
+    {   // Replay the dashboard from the central scene state so additions and removals stay in sync.
+
+        if (ProgressionTab* prog = ProgressionTab::GetInstance())
+        {
+            prog->RebuildFromSceneObjects();
+        }
+    }
 }
 
 void ObjectItemTree::ResetObjectEffect()

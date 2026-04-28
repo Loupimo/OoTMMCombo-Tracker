@@ -239,6 +239,7 @@ const IconMetaInf IconsMetaInfo[NumOfGameIcons] =
     {"./Resources/Common/Items/Fairy.png", { 30, 30 }},
     {"./Resources/Common/Items/Bugs.png", { 30, 30 }},
     {"./Resources/Common/Items/Fish.png", { 30, 30 }},
+    {"./Resources/Common/Items/Lens.png", { 30, 30 } },
     {"./Resources/Common/Items/Fire.png", { 30, 30 }},
     {"./Resources/Common/Items/Ice.png", { 30, 30 }},
     {"./Resources/Common/Items/Light.png", { 30, 30 }},

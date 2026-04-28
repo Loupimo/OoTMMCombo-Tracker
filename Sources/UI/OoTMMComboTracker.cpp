@@ -892,6 +892,13 @@ void OoTMMComboTracker::RefreshTracker()
     this->OoTTab->RefreshGameTab();
     this->MMTab->RefreshGameTab();
     this->EntTab->RefreshEntranceTab();
+
+    if (this->ProgTab != nullptr)
+    {   // Replay every non-hidden object so the dashboard reflects the current scene state
+        // (covers save load and full-reset paths in one place).
+
+        this->ProgTab->RebuildFromSceneObjects();
+    }
 }
 
 

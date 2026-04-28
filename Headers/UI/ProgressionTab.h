@@ -9,9 +9,39 @@
 #include <QScrollArea>
 #include "Combo/Items.h"
 #include "Combo/Objects.h"
+#include "UI/Icons.h"
 
 class OoTMMComboTracker;
 class ProgressionTab;
+
+
+/*
+*   Declarative description of a single progression entry.
+*   The Icon field both selects the displayed pixmap (via IconsMetaInfo) and
+*   serves as the primary lookup key when an item is collected (Item->RenderType).
+*   When several entries share the same Icon (e.g. ocarina songs), the LookupKey
+*   acts as a disambiguator: it is matched against the normalized item name.
+*   When an item's RenderType cannot be matched in the icon hash (typically
+*   RenderType=none), the LookupKey is also used as a fallback name search.
+*/
+typedef struct ProgEntry
+{
+    EGameIcon Icon;             // Display + primary lookup key.
+    const char* DisplayName;    // Label shown under the icon.
+    const char* LookupKey;      // Lowercase substring matched against the normalized item name.
+    bool IsCounter;             // Whether the widget shows a counter badge.
+} ProgEntry;
+
+
+/*
+*   Declarative description of a section (group of entries) inside a page.
+*/
+typedef struct ProgSection
+{
+    const char* Title;          // Section header text.
+    const ProgEntry* Entries;   // Pointer to the static entries array.
+    size_t Count;               // Number of entries in the array.
+} ProgSection;
 
 /*
 *   Custom widget that represents a single tracked item entry inside the progression dashboard.
@@ -26,6 +56,8 @@ public:
 
     QString DisplayName;                // Human-readable name shown under the icon.
     QString IconPath;                   // Resolved icon path (falls back to Grass.png when missing).
+    QString LookupKey;                  // Normalized substring used to disambiguate items sharing the same EGameIcon.
+    EGameIcon Icon = EGameIcon::none;   // The EGameIcon associated with this widget (display + primary lookup key).
     bool IsCounter = false;             // Whether the widget shows a counter badge.
     int Count = 0;                      // Current counter value when IsCounter is true.
     bool Found = false;                 // True once at least one matching item has been collected.
@@ -98,17 +130,31 @@ public:
 
     OoTMMComboTracker* WinOwner = nullptr;     // The owning main window.
 
+public:
+
+    /*
+    *   Per-game registry: maps an EGameIcon to every widget that displays it. Multiple widgets
+    *   may share the same icon (e.g. all 12 ocarina songs use EGameIcon::song); the matching
+    *   entry is then resolved against the item name using the widget's LookupKey. The flat
+    *   list is used as a fallback when Item->RenderType cannot be located in the hash (e.g.
+    *   items with RenderType=none).
+    */
+    typedef struct GameProgData
+    {
+        QHash<EGameIcon, QList<ItemIconWidget*>> ByIcon;   // EGameIcon -> widgets sharing it.
+        QList<ItemIconWidget*> All;                        // Flat list of every widget on the page.
+    } GameProgData;
+
 private:
 
     QTabBar* SubTabBar = nullptr;              // Top sub-tab selector (OoT / MM / Souls).
     QStackedWidget* PageStack = nullptr;       // Stack of per-game pages.
 
-    // Per-game item registry: maps the lowercased item base name (without the "(OoT)" / "(MM)" suffix)
-    // to its ItemIconWidget. Multiple Items.cpp entries can map to the same widget (e.g. progressive
-    // hookshot, multiple rupee tiers).
-    QHash<QString, ItemIconWidget*> OoTItemMap;
-    QHash<QString, ItemIconWidget*> MMItemMap;
-    QHash<QString, ItemIconWidget*> SoulsItemMap;
+    GameProgData OoTData;                      // Widgets registered on the OoT page.
+    GameProgData MMData;                       // Widgets registered on the MM page.
+    GameProgData SoulsData;                    // Widgets registered on the Souls page (spans both games).
+
+    static ProgressionTab* sInstance;          // Single living dashboard, used by callers that cannot reach the tracker.
 
     // Detail panel widgets.
     QLabel* DetailIcon = nullptr;
@@ -128,6 +174,20 @@ public:
     explicit ProgressionTab(OoTMMComboTracker* Owner, QWidget* Parent = nullptr);
 
     /*
+    *   Default destructor. Clears the static instance pointer if it points to this tab.
+    */
+    ~ProgressionTab();
+
+    /*
+    *   Access the active ProgressionTab from anywhere in the codebase. Returns nullptr
+    *   when the dashboard has not been instantiated yet (e.g. early startup) so callers
+    *   must check before dereferencing.
+    *
+    *   @return The single living ProgressionTab, or nullptr.
+    */
+    static ProgressionTab* GetInstance();
+
+    /*
     *   Notify the dashboard that an item has been collected. Looks up the matching ItemIconWidget
     *   and marks it as found (or increments its counter if it is a stackable item).
     *
@@ -136,6 +196,14 @@ public:
     *   @param Item      The item that was found.
     */
     void OnItemFound(int Game, ObjectInfo* Object, const ItemInfo* Item);
+
+    /*
+    *   Walk every scene of both games and replay OnItemFound for every Object whose
+    *   Status is not Hidden and whose Item is set. The dashboard is reset first so
+    *   removals (manual unforce, fresh save load) are reflected too. Used both after
+    *   loading a save file and after the user toggles an object's force state.
+    */
+    void RebuildFromSceneObjects();
 
     /*
     *   Reset the dashboard back to its empty state. Called when the tracker is reset.
@@ -150,23 +218,16 @@ private:
     void BuildPages();
 
     /*
-    *   Build a single page composed of multiple sections.
+    *   Build a single page from a static array of sections.
     *
-    *   @param Sections     Vector of (sectionTitle, items[]) pairs.
-    *   @param TargetMap    The hash map to populate with the created ItemIconWidgets.
+    *   @param Sections     Pointer to the sections array.
+    *   @param SectionCount Number of sections in the array.
+    *   @param Target       The progression registry to populate with the created widgets.
     *   @param Game         The game these items belong to (for the detail panel).
     *
     *   @return The built page widget.
     */
-    QWidget* BuildPage(const QList<QPair<QString, QList<QPair<QString, QString>>>>& Sections,
-                       QHash<QString, ItemIconWidget*>& TargetMap, int Game);
-
-    /*
-    *   Build the souls page using a flat list of soul item names mapped to their game.
-    *
-    *   @return The built souls page widget.
-    */
-    QWidget* BuildSoulsPage();
+    QWidget* BuildPage(const ProgSection* Sections, size_t SectionCount, GameProgData& Target, int Game);
 
     /*
     *   Build the right-side detail panel.
@@ -183,21 +244,35 @@ private:
     void ShowDetailFor(ItemIconWidget* Widget);
 
     /*
-    *   Resolve the icon path for the given item name. Falls back to Grass.png when no match exists.
-    *
-    *   @param Name    The item display name to resolve.
-    *
-    *   @return The resolved icon path.
-    */
-    static QString ResolveIconPath(const QString& Name);
-
-    /*
     *   Normalize the given item name by stripping the trailing "(OoT)" / "(MM)" suffix and
-    *   collapsing it to lowercase so lookups are tolerant to variations.
+    *   collapsing it to lowercase so LookupKey substring tests are tolerant to variations.
     *
     *   @param Name    The raw item name from Items.cpp.
     *
-    *   @return The normalized lookup key.
+    *   @return The normalized item name.
     */
     static QString NormalizeItemName(const QString& Name);
+
+    /*
+    *   Locate the widget that should be marked when an item is collected, by matching
+    *   Item->RenderType against the registry's icon hash and then disambiguating by LookupKey.
+    *
+    *   @param Data         The game registry to search in.
+    *   @param Icon         The EGameIcon coming from Item->RenderType.
+    *   @param Normalized   The normalized item name (used for LookupKey disambiguation).
+    *
+    *   @return The matching widget, or nullptr when no candidate matches.
+    */
+    static ItemIconWidget* FindByIcon(const GameProgData& Data, EGameIcon Icon, const QString& Normalized);
+
+    /*
+    *   Fallback lookup that scans every widget of a page and matches by LookupKey only.
+    *   Used when Item->RenderType does not yield a hash hit (e.g. RenderType=none).
+    *
+    *   @param Data         The game registry to search in.
+    *   @param Normalized   The normalized item name to test against each widget's LookupKey.
+    *
+    *   @return The matching widget, or nullptr when no candidate matches.
+    */
+    static ItemIconWidget* FindByLookupKey(const GameProgData& Data, const QString& Normalized);
 };
