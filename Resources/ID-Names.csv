@@ -1,98 +1,505 @@
 ID;Name;Render_Type
-MM_ARROW_FIRE;Fire Arrows (MM);fire_arrow
-MM_ARROW_ICE;Ice Arrows (MM);ice_arrow
-MM_ARROW_LIGHT;Light Arrows (MM);light_arrow
+OOT_BUTTON_A;A Button (OoT);a_button
+MM_BUTTON_A;A Button (MM);a_button
+SHARED_BUTTON_A;A Button;a_button
+OOT_STONE_OF_AGONY;Stone of Agony (OoT);agony
+MM_STONE_OF_AGONY;Stone of Agony (MM);agony
+SHARED_STONE_OF_AGONY;Stone of Agony;agony
 MM_ARROWS_10;10 Arrows (MM);arrow
 MM_ARROWS_30;30 Arrows (MM);arrow
 MM_ARROWS_40;40 Arrows (MM);arrow
-MM_BOMB_BAG;Bomb Bag (MM);bomb_bag
+OOT_ARROWS_10;10 Arrows (OoT);arrow
+OOT_ARROWS_30;30 Arrows (OoT);arrow
+OOT_ARROWS_5;5 Arrows (OoT);arrow
+SHARED_ARROWS_10;10 Arrows;arrow
+SHARED_ARROWS_30;30 Arrows;arrow
+SHARED_ARROWS_40;40 Arrows;arrow
+SHARED_ARROWS_5;5 Arrows;arrow
+MM_UNK_21;40 Arrows (MM);arrow
+MM_MAGIC_BEAN;Magic Bean (MM);bean
+OOT_MAGIC_BEAN;Magic Beans (OoT);bean
+OOT_BOMB_BAG2;Big Bomb Bag (OoT);big_bomb
+MM_BOMB_BAG2;Big Bomb Bag (MM);big_bomb
+OOT_QUIVER2;Big Quiver (OoT);big_quiver
+MM_QUIVER2;Big Quiver (MM);big_quiver
+OOT_BULLET_BAG;Bullet Bag;big_seed
+OOT_WALLET3;Giant's Wallet (OoT);big_wallet
+MM_WALLET3;Giant Wallet (MM);big_wallet
+OOT_BOMB_BAG3;Biggest Bomb Bag (OoT);biggest_bomb
+MM_BOMB_BAG3;Biggest Bomb Bag (MM);biggest_bomb
+OOT_QUIVER3;Biggest Quiver (OoT);biggest_quiver
+MM_QUIVER3;Biggest Quiver (MM);biggest_quiver
+OOT_BULLET_BAG2;Large Bullet Bag;biggest_seed
+OOT_BULLET_BAG3;Largest Bullet Bag;biggest_seed
+OOT_BROKEN_GORON_SWORD;Broken Goron's Sword;broken_big
+OOT_SWORD_BIGGORON;Biggoron's Sword;biggoron
+OOT_SWORD_KNIFE;Giant's Knife;biggoron
+MM_MASK_BLAST;Blast Mask (MM);blast
+OOT_MASK_BLAST;Blast Mask (OoT);blast
+SHARED_MASK_BLAST;Blast Mask;blast
+OOT_COIN_BLUE;Coin (Blue);blue_coin
+OOT_BLUE_FIRE;Blue Fire;blue_fire
+OOT_BOTTLE_BLUE_FIRE;Bottle of Blue Fire;blue_fire
+SHARED_BOTTLE_BLUE_FIRE;Bottle of Blue Fire;blue_fire
+SHARED_BLUE_FIRE;Blue Fire;blue_fire
+MM_BLUE_FIRE;Blue Fire;blue_fire
+MM_BOTTLE_BLUE_FIRE;Bottle of Blue Fire;blue_fire
+MM_BOTTLE_POTION_BLUE;Bottle of Blue Potion (MM);blue_potion
+OOT_BOTTLE_POTION_BLUE;Bottle of Blue Potion (OoT);blue_potion
+MM_POTION_BLUE;Blue Potion (MM);blue_potion
+OOT_POTION_BLUE;Blue Potion (OoT);blue_potion
+SHARED_BOTTLE_POTION_BLUE;Bottle of Blue Potion;blue_potion
+SHARED_POTION_BLUE;Blue Potion;blue_potion
+MM_RUPEE_BLUE;Blue Rupee (MM);blue_rupee
+OOT_RUPEE_BLUE;Blue Rupee (OoT);blue_rupee
+SHARED_RUPEE_BLUE;Blue Rupee;blue_rupee
+OOT_TC_RUPEE_BLUE;Blue Rupee (OoT);blue_rupee
 MM_BOMB;Bomb (MM);bomb
-MM_BOMBCHU_10;10 Bombchu (MM);bombchu
-MM_BOMBCHU_20;20 Bombchu (MM);bombchu
-MM_BOMBCHU_5;5 Bombchu (MM);bombchu
-MM_BOMBCHU;1 Bombchu (MM);bombchu
-MM_BOMBER_NOTEBOOK;Bombers' Notebook;bombers
 MM_BOMBS_10;10 Bombs (MM);bomb
 MM_BOMBS_20;20 Bombs (MM);bomb
 MM_BOMBS_30;30 Bombs (MM);bomb
 MM_BOMBS_5;5 Bombs (MM);bomb
+OOT_BOMB;Bomb (OoT);bomb
+OOT_BOMBS_10;10 Bombs (OoT);bomb
+OOT_BOMBS_20;20 Bombs (OoT);bomb
+OOT_BOMBS_30;30 Bombs (OoT);bomb
+OOT_BOMBS_5;5 Bombs (OoT);bomb
+SHARED_BOMB;1 Bomb;bomb
+SHARED_BOMBCHU_10;10 Bombchu;bomb
+SHARED_BOMBCHU_20;20 Bombchu;bomb
+SHARED_BOMBCHU_5;5 Bombchu;bomb
+SHARED_BOMBCHU;Bombchu;bomb
+SHARED_BOMBS_10;10 Bombs;bomb
+SHARED_BOMBS_20;20 Bombs;bomb
+SHARED_BOMBS_30;30 Bombs;bomb
+SHARED_BOMBS_5;5 Bombs;bomb
+MM_BOMB_BAG;Bomb Bag (MM);bomb_bag
+OOT_BOMB_BAG;Bomb Bag (OoT);bomb_bag
+SHARED_BOMB_BAG;Shared Bomb Bag;bomb_bag
+MM_BOMBCHU_10;10 Bombchu (MM);bombchu
+MM_BOMBCHU_20;20 Bombchu (MM);bombchu
+MM_BOMBCHU_5;5 Bombchu (MM);bombchu
+MM_BOMBCHU;1 Bombchu (MM);bombchu
+OOT_BOMBCHU_10;10 Bombchu (OoT);bombchu
+OOT_BOMBCHU_20;20 Bombchu (OoT);bombchu
+OOT_BOMBCHU_5;5 Bombchu (OoT);bombchu
+OOT_BOMBCHU_BAG;Bombchu Bag (OoT);bombchu_bag
+MM_BOMBCHU_BAG;Bombchu Bag (MM);bombchu_bag
+SHARED_BOMBCHU_BAG;Bombchu Bag;bombchu_bag
+OOT_BOMBCHU_BAG2;Big Bombchu Bag (OoT);bombchu_bag
+OOT_BOMBCHU_BAG3;Biggest Bombchu Bag (OoT);bombchu_bag
+OOT_BOMBCHU_BAG_FIRST_5;Bombchu Bag (OoT);bombchu_bag
+OOT_BOMBCHU_BAG_FIRST_10;Bombchu Bag (OoT);bombchu_bag
+OOT_BOMBCHU_BAG_FIRST_20;Bombchu Bag (OoT);bombchu_bag
+MM_BOMBCHU_BAG2;Big Bombchu Bag (MM);bombchu_bag
+MM_BOMBCHU_BAG3;Biggest Bombchu Bag (MM);bombchu_bag
+MM_BOMBCHU_BAG_FIRST_1;Bombchu Bag (MM);bombchu_bag
+MM_BOMBCHU_BAG_FIRST_5;Bombchu Bag (MM);bombchu_bag
+MM_BOMBCHU_BAG_FIRST_10;Bombchu Bag (MM);bombchu_bag
+MM_BOMBCHU_BAG_FIRST_20;Bombchu Bag (MM);bombchu_bag
+MM_BOMBER_NOTEBOOK;Bombers' Notebook;bombers
+OOT_BOOMERANG;Boomerang;boomrang
 MM_BOSS_KEY_GB;Boss Key (Great Bay Temple);boss_key
 MM_BOSS_KEY_SH;Boss Key (Snowhead Temple);boss_key
 MM_BOSS_KEY_ST;Boss Key (Stone Tower Temple);boss_key
 MM_BOSS_KEY_WF;Boss Key (Woodfall Temple);boss_key
-MM_BOTTLE_CHATEAU;Bottle of Chateau Romani;chateau
+OOT_BOSS_KEY_FIRE;Boss Key (Fire Temple);boss_key
+OOT_BOSS_KEY_FOREST;Boss Key (Forest Temple);boss_key
+OOT_BOSS_KEY_GANON;Boss Key (Ganon's Castle);boss_key
+OOT_BOSS_KEY_SHADOW;Boss Key (Shadow Temple);boss_key
+OOT_BOSS_KEY_SPIRIT;Boss Key (Spirit Temple);boss_key
+OOT_BOSS_KEY_WATER;Boss Key (Water Temple);boss_key
+OOT_BOSS_KEY;Boss Key (OoT);boss_key
+MM_BOSS_KEY;Boss Key (MM);boss_key
 MM_BOTTLE_EMPTY;Empty Bottle (MM);bottle
-MM_BOTTLE_MILK;Bottle of Milk (MM);milk
-MM_BOTTLE_POTION_RED;Bottle of Red Potion (MM);red_potion
-MM_BOTTLE_POTION_GREEN;Bottle of Green Potion (MM);green_potion
-MM_BOTTLE_POTION_BLUE;Bottle of Blue Potion (MM);blue_potion
-OOT_BOTTLE_POTION_RED;Bottle of Red Potion (OoT);red_potion
-OOT_BOTTLE_POTION_GREEN;Bottle of Green Potion (OoT);green_potion
-OOT_BOTTLE_POTION_BLUE;Bottle of Blue Potion (OoT);blue_potion
-MM_BOTTLED_GOLD_DUST;Bottle of Gold Dust;dust
-MM_BOW;Hero's Bow (MM);bow_mm
+OOT_BOTTLE_EMPTY;Empty Bottle (OoT);bottle
+SHARED_BOTTLE_EMPTY;Empty Bottle;bottle
+SHARED_BIG_POE;Big Poe;bottle_big_poe
+OOT_BOTTLE_BIG_POE;Bottled Big Poe (OoT);bottled_big_poe
+MM_BOTTLE_BIG_POE;Bottled Big Poe (MM);bottled_big_poe
+OOT_BIG_POE;Big Poe (OoT);bottled_big_poe
+MM_BIG_POE;Big Poe (MM);bottled_big_poe
+SHARED_BOTTLE_BIG_POE;Bottled Big Poe;bottled_big_poe
 MM_BUGS;Bugs (MM);bottled_bugs
+OOT_BUGS;Bugs (OoT);bottled_bugs
+SHARED_BUGS;Bugs;bottled_bugs
+OOT_BOTTLE_FAIRY;Bottled Fairy (OoT);bottled_fairy
+MM_BOTTLE_FAIRY;Bottled Fairy (MM);bottled_fairy
+MM_FISH;Fish (MM);bottled_fish
+OOT_FISH;Fish (OoT);bottled_fish
+SHARED_FISH;Fish;bottled_fish
+OOT_POE;Poe (OoT);bottled_poe
+OOT_BOTTLE_POE;Bottled Poe (OoT);bottled_poe
+MM_BOTTLE_POE;Bottled Poe (MM);bottled_poe
+MM_POE;Poe (MM);bottled_poe
+SHARED_BOTTLE_POE;Bottled Poe;bottled_poe
+SHARED_POE;Poe;bottled_poe
+OOT_WALLET5;Bottomless Wallet (OoT);bottomless_wallet
+MM_WALLET5;Bottomless Wallet (MM);bottomless_wallet
+MM_BOW;Hero's Bow (MM);bow_mm
+OOT_BOW;Fairy Bow (OoT);bow_oot
+SHARED_BOW;Shared Bow;bow_oot
+SHARED_STRENGTH;Progressive Strength;bracelet
+OOT_GORON_BRACELET;Goron's Bracelet (OoT);bracelet
+MM_GORON_BRACELET;Goron's Bracelet (MM);bracelet
+MM_MASK_BREMEN;Bremen Mask;bremen
+SHARED_SCALE;Progressive Scale;bronze_scale
+OOT_SCALE_BRONZE;Bronze Scale (OoT);bronze_scale
+MM_SCALE_BRONZE;Bronze Scale (MM);bronze_scale
+MM_MASK_BUNNY;Bunny Hood (MM);bunny
+OOT_MASK_BUNNY;Bunny Hood (OoT);bunny
+SHARED_MASK_BUNNY;Bunny Hood;bunny
+OOT_BUTTON_C_DOWN;C-Down Button (OoT);c_down
+MM_BUTTON_C_DOWN;C-Down Button (MM);c_down
+SHARED_BUTTON_C_DOWN;C-Down Button;c_down
+OOT_BUTTON_C_LEFT;C-Left Button (OoT);c_left
+MM_BUTTON_C_LEFT;C-Left Button (MM);c_left
+SHARED_BUTTON_C_LEFT;C-Left Button;c_left
+OOT_BUTTON_C_RIGHT;C-Right Button (OoT);c_right
+MM_BUTTON_C_RIGHT;C-Right Button (MM);c_right
+SHARED_BUTTON_C_RIGHT;C-Right Button;c_right
+OOT_BUTTON_C_UP;C-Up Button (OoT);c_up
+MM_BUTTON_C_UP;C-Up Button (MM);c_up
+SHARED_BUTTON_C_UP;C-Up Button;c_up
+MM_MASK_CAPTAIN;Captain's Hat;captain
+OOT_GERUDO_CARD;Gerudo's Membership Card;card
+OOT_FISHING_POND_CHILD_FISH;Child Fish (Placeholder);carp_fish
+OOT_FISHING_POND_ADULT_FISH;Adult Fish (Placeholder);carp_fish
+OOT_FISHING_POND_CHILD_LOACH;Child Loach (Placeholder);carp_fish
+OOT_FISHING_POND_ADULT_LOACH;Adult Loach (Placeholder);carp_fish
+OOT_FISHING_POND_CHILD_FISH_2LBS;Child Fish (2 pounds);carp_fish
+OOT_FISHING_POND_CHILD_FISH_3LBS;Child Fish (3 pounds);carp_fish
+OOT_FISHING_POND_CHILD_FISH_4LBS;Child Fish (4 pounds);carp_fish
+OOT_FISHING_POND_CHILD_FISH_5LBS;Child Fish (5 pounds);carp_fish
+OOT_FISHING_POND_CHILD_FISH_6LBS;Child Fish (6 pounds);carp_fish
+OOT_FISHING_POND_CHILD_FISH_7LBS;Child Fish (7 pounds);carp_fish
+OOT_FISHING_POND_CHILD_FISH_8LBS;Child Fish (8 pounds);carp_fish
+OOT_FISHING_POND_CHILD_FISH_9LBS;Child Fish (9 pounds);carp_fish
+OOT_FISHING_POND_CHILD_FISH_10LBS;Child Fish (10 pounds);carp_fish
+OOT_FISHING_POND_CHILD_FISH_11LBS;Child Fish (11 pounds);carp_fish
+OOT_FISHING_POND_CHILD_FISH_12LBS;Child Fish (12 pounds);carp_fish
+OOT_FISHING_POND_CHILD_FISH_13LBS;Child Fish (13 pounds);carp_fish
+OOT_FISHING_POND_CHILD_FISH_14LBS;Child Fish (14 pounds);carp_fish
+OOT_FISHING_POND_ADULT_FISH_4LBS;Adult Fish (4 pounds);carp_fish
+OOT_FISHING_POND_ADULT_FISH_5LBS;Adult Fish (5 pounds);carp_fish
+OOT_FISHING_POND_ADULT_FISH_6LBS;Adult Fish (6 pounds);carp_fish
+OOT_FISHING_POND_ADULT_FISH_7LBS;Adult Fish (7 pounds);carp_fish
+OOT_FISHING_POND_ADULT_FISH_8LBS;Adult Fish (8 pounds);carp_fish
+OOT_FISHING_POND_ADULT_FISH_9LBS;Adult Fish (9 pounds);carp_fish
+OOT_FISHING_POND_ADULT_FISH_10LBS;Adult Fish (10 pounds);carp_fish
+OOT_FISHING_POND_ADULT_FISH_11LBS;Adult Fish (11 pounds);carp_fish
+OOT_FISHING_POND_ADULT_FISH_12LBS;Adult Fish (12 pounds);carp_fish
+OOT_FISHING_POND_ADULT_FISH_13LBS;Adult Fish (13 pounds);carp_fish
+OOT_FISHING_POND_ADULT_FISH_14LBS;Adult Fish (14 pounds);carp_fish
+OOT_FISHING_POND_ADULT_FISH_15LBS;Adult Fish (15 pounds);carp_fish
+OOT_FISHING_POND_ADULT_FISH_16LBS;Adult Fish (16 pounds);carp_fish
+OOT_FISHING_POND_ADULT_FISH_17LBS;Adult Fish (17 pounds);carp_fish
+OOT_FISHING_POND_ADULT_FISH_18LBS;Adult Fish (18 pounds);carp_fish
+OOT_FISHING_POND_ADULT_FISH_19LBS;Adult Fish (19 pounds);carp_fish
+OOT_FISHING_POND_ADULT_FISH_20LBS;Adult Fish (20 pounds);carp_fish
+OOT_FISHING_POND_ADULT_FISH_21LBS;Adult Fish (21 pounds);carp_fish
+OOT_FISHING_POND_ADULT_FISH_22LBS;Adult Fish (22 pounds);carp_fish
+OOT_FISHING_POND_ADULT_FISH_23LBS;Adult Fish (23 pounds);carp_fish
+OOT_FISHING_POND_ADULT_FISH_24LBS;Adult Fish (24 pounds);carp_fish
+OOT_FISHING_POND_ADULT_FISH_25LBS;Adult Fish (25 pounds);carp_fish
+OOT_FISHING_POND_CHILD_LOACH_14LBS;Child Loach (14 pounds);carp_fish
+OOT_FISHING_POND_CHILD_LOACH_15LBS;Child Loach (15 pounds);carp_fish
+OOT_FISHING_POND_CHILD_LOACH_16LBS;Child Loach (16 pounds);carp_fish
+OOT_FISHING_POND_CHILD_LOACH_17LBS;Child Loach (17 pounds);carp_fish
+OOT_FISHING_POND_CHILD_LOACH_18LBS;Child Loach (18 pounds);carp_fish
+OOT_FISHING_POND_CHILD_LOACH_19LBS;Child Loach (19 pounds);carp_fish
+OOT_FISHING_POND_ADULT_LOACH_29LBS;Adult Loach (29 pounds);carp_fish
+OOT_FISHING_POND_ADULT_LOACH_30LBS;Adult Loach (30 pounds);carp_fish
+OOT_FISHING_POND_ADULT_LOACH_31LBS;Adult Loach (31 pounds);carp_fish
+OOT_FISHING_POND_ADULT_LOACH_32LBS;Adult Loach (32 pounds);carp_fish
+OOT_FISHING_POND_ADULT_LOACH_33LBS;Adult Loach (33 pounds);carp_fish
+OOT_FISHING_POND_ADULT_LOACH_34LBS;Adult Loach (34 pounds);carp_fish
+OOT_FISHING_POND_ADULT_LOACH_35LBS;Adult Loach (35 pounds);carp_fish
+OOT_FISHING_POND_ADULT_LOACH_36LBS;Adult Loach (36 pounds);carp_fish
+MM_BOTTLE_CHATEAU;Bottle of Chateau Romani;chateau
 MM_CHATEAU;Chateau Romani Refill (MM);chateau
+SHARED_BOTTLE_CHATEAU;Bottle of Chateau Romani;chateau
+SHARED_CHATEAU;Chateau Romani Refill;chateau
+OOT_BOTTLE_CHATEAU;Bottle of Chateau Romani;chateau
+OOT_CHATEAU;Chateau Romani Refill;chateau
+OOT_GOLD_DUST;Chateau Romani;chateau
+OOT_WALLET;Child's Wallet (OoT);child_wallet
+MM_WALLET;Child Wallet (MM);child_wallet
+OOT_CLAIM_CHECK;Claim Check;claim
+MM_CLOCK1;Clock (Day 1);clock_d1
+MM_CLOCK3;Clock (Day 2);clock_d2
+MM_CLOCK5;Clock (Day 3);clock_d3
+MM_CLOCK2;Clock (Night 1);clock_n1
+MM_CLOCK4;Clock (Night 2);clock_n2
+MM_CLOCK6;Clock (Night 3);clock_n3
+OOT_COJIRO;Cojiro;cojiro
+OOT_WALLET4;Colossal Wallet (OoT);colossal_wallet
+MM_WALLET4;Colossal Wallet (MM);colossal_wallet
 MM_COMPASS_GB;Compass (Great Bay Temple);compass
 MM_COMPASS_SH;Compass (Snowhead Temple);compass
 MM_COMPASS_ST;Compass (Stone Tower Temple);compass
 MM_COMPASS_WF;Compass (Woodfall Temple);compass
-MM_DEED_LAND;Land Title Deed;land
-MM_DEED_MOUNTAIN;Mountain Title Deed;mountain
-MM_DEED_OCEAN;Ocean Title Deed;ocean
-MM_DEED_SWAMP;Swamp Title Deed;swamp
+OOT_COMPASS_BOTW;Compass (Bottom of the Well);compass
+OOT_COMPASS_DC;Compass (Dodongo's Cavern);compass
+OOT_COMPASS_DT;Compass (Deku Tree);compass
+OOT_COMPASS_FIRE;Compass (Fire Temple);compass
+OOT_COMPASS_FOREST;Compass (Forest Temple);compass
+OOT_COMPASS_IC;Compass (Ice Cavern);compass
+OOT_COMPASS_JJ;Compass (Jabu-Jabu's Belly);compass
+OOT_COMPASS_SHADOW;Compass (Shadow Temple);compass
+OOT_COMPASS_SPIRIT;Compass (Spirit Temple);compass
+OOT_COMPASS_WATER;Compass (Water Temple);compass
+OOT_COMPASS;Compass (OoT);compass
+MM_COMPASS;Compass (MM);compass
+MM_MASK_COUPLE;Couple's Mask;couple
+OOT_CHICKEN;Chicken;cucco
+OOT_POCKET_CUCCO;Pocket Cucco;cucco
 MM_DEFENSE_UPGRADE;Double Defense (MM);defense
+OOT_DEFENSE_UPGRADE;Double Defense (OoT);defense
+SHARED_DEFENSE_UPGRADE;Double Defense;defense
+MM_MASK_FIERCE_DEITY;Fierce Deity's Mask;deity
+MM_MASK_DEKU;Deku Mask;deku
+MM_SHIELD_DEKU;Deku Shield (MM);deku_shield
+OOT_SHIELD_DEKU;Deku Shield (OoT);deku_shield
+SHARED_SHIELD_DEKU;Deku Shield;deku_shield
+OOT_PROGRESSIVE_SHIELD_DEKU;Progressive Deku Shield (OoT);deku_shield
+MM_PROGRESSIVE_SHIELD_DEKU;Progressive Deku Shield (MM);deku_shield
+OOT_SPELL_FIRE;Din's Fire (OoT);din
+SHARED_SPELL_FIRE;Din's Fire;din
+MM_SPELL_FIRE;Din's Fire (MM);din
+OOT_MAGIC_JAR_LARGE;Large Magic Jar (OoT);double_magic
+MM_MAGIC_JAR_LARGE;Large Magic Jar (MM);double_magic
+SHARED_MAGIC_JAR_LARGE;Large Magic Jar;double_magic
+OOT_TRAP_DRAIN;Drain Trap;drain_trap
+MM_BOTTLED_GOLD_DUST;Bottle of Gold Dust;dust
+SHARED_BOTTLED_GOLD_DUST;Bottle of Gold Dust;dust
+OOT_BOTTLED_GOLD_DUST;Bottle of Gold Dust;dust
+MM_GOLD_DUST;Gold Dust;dust
+OOT_POCKET_EGG;Pocket Egg;egg
+OOT_WEIRD_EGG;Weird Egg;egg
+OOT_STONE_EMERALD;Kokiri's Emerald;emerald
+OOT_EYE_DROPS;Eye Drops;eye_drops
 MM_FAIRY;Fairy (MM);fairy
-MM_FISH;Fish (MM);bottled_fish
+OOT_FAIRY;Fairy (OoT);fairy
+OOT_FAIRY_BIG;Big Fairy (OoT);fairy
+MM_FAIRY_BIG;Big Fairy (MM);fairy
+SHARED_FAIRY_BIG;Big Fairy;fairy
+SHARED_BOTTLE_FAIRY;Bottled Fairy;fairy
+SHARED_FAIRY;Fairy;fairy
+MM_MASK_GREAT_FAIRY;Great Fairy's Mask;fairy_mask
+OOT_OCARINA_FAIRY;Fairy Ocarina (OoT);fairy_ocarina
+MM_OCARINA_FAIRY;Fairy Ocarina (MM);fairy_ocarina
 MM_GREAT_FAIRY_SWORD;Great Fairy's Sword;fairy_sword
-MM_GS_TOKEN_OCEAN;Ocean Skulltula Token;ocean_token
-MM_GS_TOKEN_SWAMP;Swamp Skulltula Token;swamp_token
+OOT_SPELL_WIND;Farore's Wind (OoT);farore
+SHARED_SPELL_WIND;Farore's Wind;farore
+MM_SPELL_WIND;Farore's Wind (MM);farore
+OOT_MEDALLION_FIRE;Fire Medallion;fire
+MM_ARROW_FIRE;Fire Arrows (MM);fire_arrow
+OOT_ARROW_FIRE;Fire Arrows (OoT);fire_arrow
+SHARED_ARROW_FIRE;Shared Fire Arrows;fire_arrow
+OOT_TRAP_FIRE;Fire Trap;fire_trap
+OOT_MEDALLION_FOREST;Forest Medallion;forest
+OOT_EYEBALL_FROG;Eyeball Frog;frog
+MM_MASK_GARO;Garo's Mask;garo
+MM_MASK_DON_GERO;Don Gero's Mask;gero
+OOT_MASK_GERUDO;Gerudo Mask;gerudo
+MM_MASK_GIANT;Giant's Mask;giant
+MM_MASK_GIBDO;Gibdo Mask;gibdo
+OOT_SWORD_GILDED;Gilded Sword (OoT);gilded
+MM_SWORD_GILDED;Gilded Sword (MM);gilded
+MM_REMAINS_GOHT;Goht's Remains;goht
+MM_RUPEE_GOLD;Gold Rupee (MM);gold_rupee
+OOT_RUPEE_HUGE;Gold Rupee (OoT);gold_rupee
+SHARED_RUPEE_GOLD;Gold Rupee;gold_rupee
+OOT_SCALE_GOLDEN;Golden Scale (OoT);golden
+MM_SCALE_GOLDEN;Golden Scale (MM);golden
+OOT_GOLDEN_GAUNTLETS;Golden Gauntlets (OoT);golden_gauntlet
+MM_GOLDEN_GAUNTLETS;Golden Gauntlets (MM);golden_gauntlet
+MM_MASK_GORON;Goron Mask (MM);goron
+OOT_MASK_GORON;Goron Mask (OoT);goron
+SHARED_MASK_GORON;Goron Mask;goron
+OOT_TUNIC_GORON;Goron Tunic (OoT);goron_tunic
+SHARED_TUNIC_GORON;Goron Tunic;goron_tunic
+MM_TUNIC_GORON;Goron Tunic (MM);goron_tunic
+OOT_COIN_GREEN;Coin (Green);green_coin
+MM_BOTTLE_POTION_GREEN;Bottle of Green Potion (MM);green_potion
+OOT_BOTTLE_POTION_GREEN;Bottle of Green Potion (OoT);green_potion
+MM_POTION_GREEN;Green Potion (MM);green_potion
+OOT_POTION_GREEN;Green Potion (OoT);green_potion
+SHARED_BOTTLE_POTION_GREEN;Bottle of Green Potion;green_potion
+SHARED_POTION_GREEN;Green Potion;green_potion
+OOT_GS_TOKEN;Gold Skulltula Token;gs_token
+OOT_PLATINUM_TOKEN;Platinum Token (OoT);gs_token
+MM_PLATINUM_TOKEN;Platinum Token (MM);gs_token
+SHARED_PLATINUM_TOKEN;Platinum Token;gs_token
+MM_REMAINS_GYORG;Gyorg's Remains;gyorg
+OOT_HAMMER;Megaton Hammer (OoT);hammer
+MM_HAMMER;Megaton Hammer (MM);hammer
+SHARED_HAMMER;Megaton Hammer;hammer
+MM_RECOVERY_HEART;Recovery Heart (MM);heart
+OOT_RECOVERY_HEART;Recovery Heart (OoT);heart
+SHARED_RECOVERY_HEART;Recovery Heart;heart
 MM_HEART_CONTAINER;Heart Container (MM);heart_container
+OOT_HEART_CONTAINER;Heart Container (OoT);heart_container
+SHARED_HEART_CONTAINER;Heart Container;heart_container
+OOT_HEART_CONTAINER2;Heart Container (OoT);heart_container
 MM_HEART_PIECE;Piece of Heart (MM);heart_piece
+OOT_HEART_PIECE;Piece of Heart (OoT);heart_piece
+SHARED_HEART_PIECE;Piece of Heart;heart_piece
+OOT_TC_HEART_PIECE;Piece of Heart (OoT);heart_piece
+MM_SHIELD_HERO;Hero's Shield;hero_shield
+SHARED_SHIELD;Progressive Shield;hero_shield
+MM_PROGRESSIVE_SHIELD_HERO;Progressive Hero's Shield;hero_shield
 MM_HOOKSHOT;Hookshot (MM);hookshot_mm
+SHARED_HOOKSHOT;Progressive Hookshot;hookshot_oot
+MM_HOOKSHOT_SHORT;Short Hookshot (MM);hookshot_oot
+OOT_BOOTS_HOVER;Hover Boots (OoT);hover
+SHARED_BOOTS_HOVER;Hover Boots;hover
+MM_BOOTS_HOVER;Hover Boots (MM);hover
+OOT_SHIELD_HYLIAN;Hylian Shield;hylian_shield
+SHARED_SHIELD_HYLIAN;Hylian/Hero Shield;hylian_shield
+OOT_PROGRESSIVE_SHIELD_HYLIAN;Progressive Hylian Shield;hylian_shield
+MM_ARROW_ICE;Ice Arrows (MM);ice_arrow
+OOT_ARROW_ICE;Ice Arrows (OoT);ice_arrow
+SHARED_ARROW_ICE;Shared Ice Arrows;ice_arrow
+OOT_TRAP_ICE;Ice Trap;ice_trap
+OOT_UNUSED_ICE_TRAP;Ice Trap (OoT);ice_trap
+OOT_BOOTS_IRON;Iron Boots (OoT);iron
+SHARED_BOOTS_IRON;Iron Boots;iron
+MM_BOOTS_IRON;Iron Boots (MM);iron
+MM_MASK_KAFEI;Kafei's Mask;kafei
+MM_MASK_KAMARO;Kamaro's Mask;kamaro
+MM_MASK_KEATON;Keaton Mask;keaton
+OOT_MASK_KEATON;Keaton Mask (OoT);keaton
+SHARED_MASK_KEATON;Keaton Mask;keaton
+MM_ROOM_KEY;Room Key;key
 MM_KEY_RING_GB;Key Ring (Great Bay);key_ring
 MM_KEY_RING_SH;Key Ring (Snowhead);key_ring
 MM_KEY_RING_ST;Key Ring (Stone Tower);key_ring
 MM_KEY_RING_WF;Key Ring (Woodfall);key_ring
+OOT_KEY_RING_BOTW;Key Ring (Well);key_ring
+OOT_KEY_RING_FIRE;Key Ring (Fire);key_ring
+OOT_KEY_RING_FOREST;Key Ring (Forest);key_ring
+OOT_KEY_RING_GANON;Key Ring (Ganon);key_ring
+OOT_KEY_RING_GF;Key Ring (Hideout);key_ring
+OOT_KEY_RING_GTG;Key Ring (GTG);key_ring
+OOT_KEY_RING_TCG;Key Ring (Chest Game);key_ring
+OOT_KEY_RING_SHADOW;Key Ring (Shadow);key_ring
+OOT_KEY_RING_SPIRIT;Key Ring (Spirit);key_ring
+OOT_KEY_RING_WATER;Key Ring (Water);key_ring
+OOT_KEY_RING;Key Ring (OoT);key_ring
+MM_KEY_RING;Key Ring (MM);key_ring
+OOT_TRAP_KNOCKBACK;Knockback Trap;knockback_trap
+OOT_SWORD_KOKIRI;Kokiri Sword (OoT);kokiri
+MM_SWORD_KOKIRI;Kokiri Sword (MM);kokiri_mm
+MM_DEED_LAND;Land Title Deed;land
+OOT_MAGIC_UPGRADE2;Larger Magic Upgrade (OoT);large_magic_upgrade
+MM_MAGIC_UPGRADE2;Larger Magic Upgrade (MM);large_magic_upgrade
 MM_LENS;Lens of Truth (MM);lens
+OOT_LENS;Lens of Truth (OoT);lens
+SHARED_LENS;Lens of Truth;lens
+OOT_ZELDA_LETTER;Zelda's Letter;letter
 MM_LETTER_TO_KAFEI;Letter to Kafei;letter_kafei
 MM_LETTER_TO_MAMA;Letter to Mama;letter_mama
-MM_MAGIC_BEAN;Magic Bean (MM);bean
+OOT_MEDALLION_LIGHT;Light Medallion;light
+MM_ARROW_LIGHT;Light Arrows (MM);light_arrow
+OOT_ARROW_LIGHT;Light Arrows (OoT);light_arrow
+SHARED_ARROW_LIGHT;Shared Light Arrows;light_arrow
+OOT_LONGSHOT;Longshot (OoT);longshot
+OOT_MAGIC_JAR_SMALL;Small Magic Jar (OoT);magic
+MM_MAGIC_JAR_SMALL;Small Magic Jar (MM);magic
+SHARED_MAGIC_JAR_SMALL;Small Magic Jar;magic
+OOT_TRAP_ANTI_MAGIC;Anti-Magic Trap;magic_trap
 MM_MAGIC_UPGRADE;Magic Upgrade (MM);magic_upgrade
+OOT_MAGIC_UPGRADE;Magic Upgrade (OoT);magic_upgrade
+SHARED_MAGIC_UPGRADE;Shared Magic Upgrade;magic_upgrade
+OOT_RUPEE_MAGICAL;Magical Silver Rupee;magical_rupee
 MM_MAP_GB;Map (Great Bay Temple);map
 MM_MAP_SH;Map (Snowhead Temple);map
 MM_MAP_ST;Map (Stone Tower Temple);map
 MM_MAP_WF;Map (Woodfall Temple);map
-MM_MASK_ALL_NIGHT;All-Night Mask;night
-MM_MASK_BLAST;Blast Mask (MM);blast
-MM_MASK_BREMEN;Bremen Mask;bremen
-MM_MASK_BUNNY;Bunny Hood (MM);bunny
-MM_MASK_CAPTAIN;Captain's Hat;captain
-MM_MASK_COUPLE;Couple's Mask;couple
-MM_MASK_DEKU;Deku Mask;deku
-MM_MASK_DON_GERO;Don Gero's Mask;gero
-MM_MASK_FIERCE_DEITY;Fierce Deity's Mask;deity
-MM_MASK_GARO;Garo's Mask;garo
-MM_MASK_GIANT;Giant's Mask;giant
-MM_MASK_GIBDO;Gibdo Mask;gibdo
-MM_MASK_GORON;Goron Mask (MM);goron
-MM_MASK_GREAT_FAIRY;Great Fairy's Mask;fairy_mask
-MM_MASK_KAFEI;Kafei's Mask;kafei
-MM_MASK_KAMARO;Kamaro's Mask;kamaro
-MM_MASK_KEATON;Keaton Mask;keaton
-MM_MASK_POSTMAN;Postman's Hat;postman
-MM_MASK_ROMANI;Romani's Mask;romani
-MM_MASK_SCENTS;Mask of Scents;scents
-MM_MASK_STONE;Stone Mask (MM);stone
-MM_MASK_TROUPE_LEADER;Circus Leader's Mask;troupe
-MM_MASK_TRUTH;Mask of Truth (MM);truth
-MM_MASK_ZORA;Zora Mask (MM);zora
+MM_WORLD_MAP_CLOCK_TOWN;World Map of Clock Town;map
+MM_WORLD_MAP_GREAT_BAY;World Map of Great Bay;map
+MM_WORLD_MAP_ROMANI_RANCH;World Map of Ranch;map
+MM_WORLD_MAP_SNOWHEAD;World Map of Snowhead;map
+MM_WORLD_MAP_STONE_TOWER;World Map of Stone Tower;map
+MM_WORLD_MAP_WOODFALL;World Map of Woodfall;map
+OOT_MAP_BOTW;Map (Bottom of the Well);map
+OOT_MAP_DC;Map (Dodongo's Cavern);map
+OOT_MAP_DT;Map (Deku Tree);map
+OOT_MAP_FIRE;Map (Fire Temple);map
+OOT_MAP_FOREST;Map (Forest Temple);map
+OOT_MAP_IC;Map (Ice Cavern);map
+OOT_MAP_JJ;Map (Jabu-Jabu's Belly);map
+OOT_MAP_SHADOW;Map (Shadow Temple);map
+OOT_MAP_SPIRIT;Map (Spirit Temple);map
+OOT_MAP_WATER;Map (Water Temple);map
+OOT_MAP;Map (OoT);map
+MM_MAP;Map (MM);map
+MM_MASK_MAJORA;Majora's Mask;mask
+OOT_SWORD_MASTER;Master Sword;master
+MM_BOTTLE_MILK;Bottle of Milk (MM);milk
 MM_MILK;Romani Milk;milk
+OOT_BOTTLE_MILK;Bottle of Milk (OoT);milk
+OOT_MILK;Lon Lon Milk (OoT);milk
+SHARED_BOTTLE_MILK;Bottle of Milk;milk
+SHARED_MILK;Milk;milk
+MM_SHIELD_MIRROR;Mirror Shield (MM);mirror_mm
+OOT_SHIELD_MIRROR;Mirror Shield (OoT);mirror_oot
+SHARED_SHIELD_MIRROR;Mirror Shield;mirror_oot
 MM_MOON_TEAR;Moon's Tear;moon
+MM_DEED_MOUNTAIN;Mountain Title Deed;mountain
+OOT_ODD_MUSHROOM;Odd Mushroom;mushroom
+OOT_WEIRD_MUSHROOM;Magic Mushroom;mushroom
+MM_WEIRD_MUSHROOM;Magic Mushroom;mushroom
+OOT_SPELL_LOVE;Nayru's Love (OoT);nayru
+SHARED_SPELL_LOVE;Nayru's Love;nayru
+MM_SPELL_LOVE;Nayru's Love (MM);nayru
+MM_MASK_ALL_NIGHT;All-Night Mask;night
+MM_SHIELD;Progressive Shield (MM);none
+MM_SWORD;Progressive Sword (MM);none
+OOT_HOOKSHOT;Progressive Hookshot (OoT);none
+OOT_OCARINA;Progressive Ocarina (OoT);none
+OOT_SCALE;Progressive Scale (Oot);none
+OOT_SHIELD;Progressive Shield (OoT);none
+OOT_STRENGTH;Progressive Strength (OoT);none
+OOT_SWORD_GORON;Progressive Goron Sword;none
+SHARED_SWORD;Progressive Sword;none
+OOT_SWORD;Progressive Sword (OoT);none
+NOTHING;Nothing;none
+MM_SCALE;Progressive Scale (MM);none
+MM_STRENGTH;Progressive Strength (MM);none
+MM_CLOCK;Progressive Clock;none
+OOT_UNK_7D;Unknown;none
+OOT_UNK_7E;Unknown;none
+OOT_UNK_7F;Unknown;none
+MM_OWL_HIDDEN;Owl Statue (Hidden);none
+MM_SOLD_OUT;Sold Out;none
+MM_SCOOP;MM Scoop;none
 MM_NUT;Nut (MM);nut
 MM_NUTS_10;10 Deku Nuts (MM);nut
 MM_NUTS_5;5 Deku Nuts (MM);nut
+OOT_NUTS_10;10 Deku Nuts (OoT);nut
+OOT_NUTS_5_ALT;5 Deku Nuts (OoT);nut
+OOT_NUTS_5;5 Deku Nuts (OoT);nut
+SHARED_NUT;Deku Nut;nut
+SHARED_NUTS_10;10 Deku Nuts;nut
+SHARED_NUTS_5;5 Deku Nuts;nut
+MM_UNK_2B;30 Deku Nuts (MM);nut
+MM_UNK_2C;30 Deku Nuts (MM);nut
+MM_UNK_2D;40 Deku Nuts (MM);nut
+OOT_NUT_UPGRADE;Deku Nut Upgrade (OoT);nut_upgrade_1
+MM_NUT_UPGRADE;Deku Nut Upgrade (MM);nut_upgrade_1
+SHARED_NUT_UPGRADE;Deku Nut Upgrade;nut_upgrade_1
+OOT_NUT_UPGRADE2;Second Deku Nut Upgrade (OoT);nut_upgrade_2
+MM_NUT_UPGRADE2;Second Deku Nut Upgrade (MM);nut_upgrade_2
 MM_OCARINA;Ocarina (MM);ocarina
+SHARED_OCARINA;Progressive Ocarina;ocarina
+OOT_OCARINA_TIME;Ocarina of Time (OoT);ocarina
+MM_OCARINA_OF_TIME;Ocarina of Time (MM);ocarina
+MM_DEED_OCEAN;Ocean Title Deed;ocean
+MM_GS_TOKEN_OCEAN;Ocean Skulltula Token;ocean_token
+MM_REMAINS_ODOLWA;Odolwa's Remains;odolwa
 MM_OWL_CLOCK_TOWN;Owl Statue (Clock Town);owl
 MM_OWL_GREAT_BAY;Owl Statue (Great Bay);owl
 MM_OWL_IKANA_CANYON;Owl Statue (Ikana Canyon);owl
@@ -105,252 +512,60 @@ MM_OWL_WOODFALL;Owl Statue (Woodfall);owl
 MM_OWL_ZORA_CAPE;Owl Statue (Zora Cape);owl
 MM_PENDANT_OF_MEMORIES;Pendant of Memories;pendant
 MM_PICTOGRAPH_BOX;Pictograph Box;picto
-MM_POTION_BLUE;Blue Potion (MM);blue_potion
-MM_POTION_GREEN;Green Potion (MM);green_potion
-MM_POTION_RED;Red Potion (MM);red_potion
+MM_MASK_POSTMAN;Postman's Hat;postman
+OOT_ODD_POTION;Odd Potion;potion
 MM_POWDER_KEG;Powder Keg;powder
-MM_RECOVERY_HEART;Recovery Heart (MM);heart
-MM_REMAINS_GOHT;Goht's Remains;goht
-MM_REMAINS_GYORG;Gyorg's Remains;gyorg
-MM_REMAINS_ODOLWA;Odolwa's Remains;odolwa
-MM_REMAINS_TWINMOLD;Twinmold's Remains;twinmold
-MM_ROOM_KEY;Room Key;key
-MM_RUPEE_BLUE;Blue Rupee (MM);blue_rupee
-MM_RUPEE_GOLD;Gold Rupee (MM);gold_rupee
-MM_RUPEE_GREEN;Green Rupee (MM);rupee
+OOT_PRESCRIPTION;Prescription;prescription
 MM_RUPEE_PURPLE;Purple Rupee (MM);purple_rupee
-MM_RUPEE_RED;Red Rupee (MM);red_rupee
-MM_RUPEE_SILVER;Silver Rupee (MM);sr
-MM_SHIELD_DEKU;Deku Shield (MM);deku_shield
-MM_SHIELD_HERO;Hero's Shield;hero_shield
-MM_SHIELD_MIRROR;Mirror Shield (MM);mirror_mm
-MM_SHIELD;Progressive Shield (MM);none
-MM_SKELETON_KEY;Skeleton Key (MM);skeleton_key
-MM_SMALL_KEY_GB;Small Key (Great Bay Temple);small_key
-MM_SMALL_KEY_SH;Small Key (Snowhead Temple);small_key
-MM_SMALL_KEY_ST;Small Key (Stone Tower Temple);small_key
-MM_SMALL_KEY_WF;Small Key (Woodfall Temple);small_key
-MM_SONG_AWAKENING;Sonata of Awakening;song_green
-MM_SONG_EMPTINESS;Elegy of Emptiness (MM);song_orange
-MM_SONG_EPONA;Epona's Song (MM);song
-MM_SONG_GORON_HALF;Progressive Goron Lullaby;song_red
-MM_SONG_GORON;Goron Lullaby;song_red
-MM_SONG_HEALING;Song of Healing;song
-MM_SONG_ORDER;Oath to Order;song_purple
-MM_SONG_SOARING;Song of Soaring;song
-MM_SONG_STORMS;Song of Storms (MM);song
-MM_SONG_SUN;Sun's Song (MM);song
-MM_SONG_TIME;Song of Time (MM);song
-MM_SONG_ZORA;New Wave Bossa Nova;song_blue
-MM_SOUL_ENEMY_ARMOS;Soul of Armos (MM);soul_of_foe
-MM_SOUL_ENEMY_BAD_BAT;Soul of Bad Bats;soul_of_foe
-MM_SOUL_ENEMY_BEAMOS;Soul of Beamos (MM);soul_of_foe
-MM_SOUL_ENEMY_BIO_BABA;Soul of Bio Babas;soul_of_foe
-MM_SOUL_ENEMY_BOE;Soul of Boes;soul_of_foe
-MM_SOUL_ENEMY_BUBBLE;Soul of Bubbles (MM);soul_of_foe
-MM_SOUL_ENEMY_CAPTAIN_KEETA;Soul of Captain Keeta;soul_of_foe
-MM_SOUL_ENEMY_CHUCHU;Soul of Chuchus;soul_of_foe
-MM_SOUL_ENEMY_DEEP_PYTHON;Soul of Deep Pythons;soul_of_foe
-MM_SOUL_ENEMY_DEKU_BABA;Soul of Deku Babas (MM);soul_of_foe
-MM_SOUL_ENEMY_DEKU_SCRUB;Soul of Deku Scrubs (MM);soul_of_foe
-MM_SOUL_ENEMY_DEXIHAND;Soul of Dexihands;soul_of_foe
-MM_SOUL_ENEMY_DODONGO;Soul of Dodongos (MM);soul_of_foe
-MM_SOUL_ENEMY_DRAGONFLY;Soul of Dragonflies;soul_of_foe
-MM_SOUL_ENEMY_EENO;Soul of Eenoes;soul_of_foe
-MM_SOUL_ENEMY_EYEGORE;Soul of Eyegores;soul_of_foe
-MM_SOUL_ENEMY_FLOORMASTER;Soul of Floormasters (MM);soul_of_foe
-MM_SOUL_ENEMY_FLYING_POT;Soul of Flying Pots (MM);soul_of_foe
-MM_SOUL_ENEMY_FREEZARD;Soul of Freezards (MM);soul_of_foe
-MM_SOUL_ENEMY_GARO;Soul of Garo;soul_of_foe
-MM_SOUL_ENEMY_GEKKO;Soul of Gekkos;soul_of_foe
-MM_SOUL_BOSS_GOHT;Soul of Goht;soul_of_boss
-MM_SOUL_ENEMY_GOMESS;Soul of Gomess;soul_of_foe
-MM_SOUL_ENEMY_GUAY;Soul of Guays (MM);soul_of_foe
-MM_SOUL_BOSS_GYORG;Soul of Gyorg;soul_of_boss
-MM_SOUL_ENEMY_HIPLOOP;Soul of Hiploops;soul_of_foe
-MM_SOUL_BOSS_IGOS;Soul of Igos;soul_of_boss
-MM_SOUL_ENEMY_IRON_KNUCKLE;Soul of Iron Knuckles (MM);soul_of_foe
-MM_SOUL_ENEMY_KEESE;Soul of Keese (MM);soul_of_foe
-MM_SOUL_ENEMY_LEEVER;Soul of Leevers (MM);soul_of_foe
-MM_SOUL_ENEMY_LIKE_LIKE;Soul of Like Likes (MM);soul_of_foe
-MM_SOUL_ENEMY_LIZALFOS_DINOLFOS;Soul of Lizalfos/Dinolfos (MM);soul_of_foe
-MM_SOUL_ENEMY_NEJIRON;Soul of Nejirons;soul_of_foe
-MM_SOUL_ENEMY_OCTOROK;Soul of Octoroks (MM);soul_of_foe
-MM_SOUL_BOSS_ODOLWA;Soul of Odolwa;soul_of_boss
-MM_SOUL_ENEMY_PEAHAT;Soul of Peahats (MM);soul_of_foe
-MM_SOUL_ENEMY_REAL_BOMBCHU;Soul of Real Bombchu;soul_of_foe
-MM_SOUL_ENEMY_REDEAD_GIBDO;Soul of ReDeads/Gibdos (MM);soul_of_foe
-MM_SOUL_ENEMY_SHELL_BLADE;Soul of Shell Blades (MM);soul_of_foe
-MM_SOUL_ENEMY_SKULLFISH;Soul of Skullfish (MM);soul_of_foe
-MM_SOUL_ENEMY_SKULLTULA;Soul of Skulltulas (MM);soul_of_foe
-MM_SOUL_ENEMY_SKULLWALLTULA;Soul of Skullwalltulas (MM);soul_of_foe
-MM_SOUL_ENEMY_SNAPPER;Soul of Snappers;soul_of_foe
-MM_SOUL_ENEMY_STALCHILD;Soul of Stalchildren (MM);soul_of_foe
-MM_SOUL_ENEMY_TAKKURI;Soul of Takkuri;soul_of_foe
-MM_SOUL_ENEMY_TEKTITE;Soul of Tektites (MM);soul_of_foe
-MM_SOUL_BOSS_TWINMOLD;Soul of Twinmold;soul_of_boss
-MM_SOUL_ENEMY_WALLMASTER;Soul of Wallmasters (MM);soul_of_foe
-MM_SOUL_ENEMY_WART;Soul of Warts;soul_of_foe
-MM_SOUL_ENEMY_WIZZROBE;Soul of Wizzrobes;soul_of_foe
-MM_SOUL_ENEMY_WOLFOS;Soul of Wolfos (MM);soul_of_foe
-MM_SPIN_UPGRADE;Spin Attack Upgrade (MM);spin
-OOT_SPIN_UPGRADE;Spin Attack Upgrade (OoT);spin
-SHARED_SPIN_UPGRADE;Spin Attack Upgrade;spin
-MM_STICK;Deku Stick (MM);stick
-MM_STRAY_FAIRY_GB;Stray Fairy (Great Bay Temple);sf_blue
-MM_STRAY_FAIRY_SH;Stray Fairy (Snowhead Temple);sf_green
-MM_STRAY_FAIRY_ST;Stray Fairy (Stone Tower Temple);sf_yellow
-MM_STRAY_FAIRY_TOWN;Stray Fairy (Clock Town);sf_orange
-MM_STRAY_FAIRY_WF;Stray Fairy (Woodfall Temple);sf
-MM_SWORD;Progressive Sword (MM);none
-MM_WORLD_MAP_CLOCK_TOWN;World Map of Clock Town;map
-MM_WORLD_MAP_GREAT_BAY;World Map of Great Bay;map
-MM_WORLD_MAP_ROMANI_RANCH;World Map of Ranch;map
-MM_WORLD_MAP_SNOWHEAD;World Map of Snowhead;map
-MM_WORLD_MAP_STONE_TOWER;World Map of Stone Tower;map
-MM_WORLD_MAP_WOODFALL;World Map of Woodfall;map
-OOT_ARROW_FIRE;Fire Arrows (OoT);fire_arrow
-OOT_ARROW_ICE;Ice Arrows (OoT);ice_arrow
-OOT_ARROW_LIGHT;Light Arrows (OoT);light_arrow
-OOT_ARROWS_10;10 Arrows (OoT);arrow
-OOT_ARROWS_30;30 Arrows (OoT);arrow
-OOT_ARROWS_5;5 Arrows (OoT);arrow
-OOT_BLUE_FIRE;Blue Fire;blue_fire
-OOT_BOMB_BAG;Bomb Bag (OoT);bomb_bag
-OOT_BOMB;Bomb (OoT);bomb
-OOT_BOMBCHU_10;10 Bombchu (OoT);bombchu
-OOT_BOMBCHU_20;20 Bombchu (OoT);bombchu
-OOT_BOMBCHU_5;5 Bombchu (OoT);bombchu
-OOT_BOMBS_10;10 Bombs (OoT);bomb
-OOT_BOMBS_20;20 Bombs (OoT);bomb
-OOT_BOMBS_30;30 Bombs (OoT);bomb
-OOT_BOMBS_5;5 Bombs (OoT);bomb
-OOT_BOOMERANG;Boomerang;boomrang
-OOT_BOOTS_HOVER;Hover Boots (OoT);hover
-OOT_BOOTS_IRON;Iron Boots (OoT);iron
-OOT_BOSS_KEY_FIRE;Boss Key (Fire Temple);boss_key
-OOT_BOSS_KEY_FOREST;Boss Key (Forest Temple);boss_key
-OOT_BOSS_KEY_GANON;Boss Key (Ganon's Castle);boss_key
-OOT_BOSS_KEY_SHADOW;Boss Key (Shadow Temple);boss_key
-OOT_BOSS_KEY_SPIRIT;Boss Key (Spirit Temple);boss_key
-OOT_BOSS_KEY_WATER;Boss Key (Water Temple);boss_key
-OOT_BOTTLE_EMPTY;Empty Bottle (OoT);bottle
-OOT_BOTTLE_MILK;Bottle of Milk (OoT);milk
-OOT_BOW;Fairy Bow (OoT);bow_oot
-OOT_BROKEN_GORON_SWORD;Broken Goron's Sword;biggoron
-OOT_BUGS;Bugs (OoT);bottled_bugs
-OOT_CHICKEN;Chicken;cucco
-OOT_CLAIM_CHECK;Claim Check;claim
-OOT_COIN_BLUE;Coin (Blue);blue_coin
-OOT_COIN_GREEN;Coin (Green);green_coin
+OOT_RUPEE_PURPLE;Purple Rupee (OoT);purple_rupee
+SHARED_RUPEE_PURPLE;Purple Rupee;purple_rupee
+OOT_TC_RUPEE_PURPLE;Purple Rupee (OoT);purple_rupee
+OOT_RUPEE_RAINBOW;Rainbow Rupee (OoT);rainbow_rupee
+SHARED_RUPEE_RAINBOW;Rainbow Rupee;rainbow_rupee
+OOT_SWORD_RAZOR;Razor Sword (OoT);razor
+MM_SWORD_RAZOR;Razor Sword (MM);razor
 OOT_COIN_RED;Coin (Red);red_coin
-OOT_COIN_YELLOW;Coin (Yellow);yellow_coin
-OOT_COJIRO;Cojiro;cojiro
-OOT_COMPASS_BOTW;Compass (Bottom of the Well);compass
-OOT_COMPASS_DC;Compass (Dodongo's Cavern);compass
-OOT_COMPASS_DT;Compass (Deku Tree);compass
-OOT_COMPASS_FIRE;Compass (Fire Temple);compass
-OOT_COMPASS_FOREST;Compass (Forest Temple);compass
-OOT_COMPASS_IC;Compass (Ice Cavern);compass
-OOT_COMPASS_JJ;Compass (Jabu-Jabu's Belly);compass
-OOT_COMPASS_SHADOW;Compass (Shadow Temple);compass
-OOT_COMPASS_SPIRIT;Compass (Spirit Temple);compass
-OOT_COMPASS_WATER;Compass (Water Temple);compass
-OOT_DEFENSE_UPGRADE;Double Defense (OoT);defense
+MM_BOTTLE_POTION_RED;Bottle of Red Potion (MM);red_potion
+OOT_BOTTLE_POTION_RED;Bottle of Red Potion (OoT);red_potion
+MM_POTION_RED;Red Potion (MM);red_potion
+OOT_POTION_RED;Red Potion (OoT);red_potion
+SHARED_BOTTLE_POTION_RED;Bottle of Red Potion;red_potion
+SHARED_POTION_RED;Red Potion;red_potion
+MM_RUPEE_RED;Red Rupee (MM);red_rupee
+OOT_RUPEE_RED;Red Rupee (OoT);red_rupee
+SHARED_RUPEE_RED;Red Rupee;red_rupee
+OOT_TC_RUPEE_RED;Red Rupee (OoT);red_rupee
+MM_RUPEE_RED_10;Red Rupee (MM);red_rupee
+MM_MASK_ROMANI;Romani's Mask;romani
+OOT_STONE_RUBY;Goron's Ruby;ruby
+MM_RUPEE_GREEN;Green Rupee (MM);rupee
+OOT_RUPEE_GREEN;Green Rupee (OoT);rupee
+SHARED_RUPEE_GREEN;Green Rupee;rupee
+OOT_TC_RUPEE_GREEN;Green Rupee (OoT);rupee
+OOT_TRAP_RUPOOR;Rupoor;rupoor
+OOT_BOTTLE_RUTO_LETTER;Ruto's Letter;ruto
+SHARED_BOTTLE_RUTO_LETTER;Ruto's Letter;ruto
+MM_BOTTLE_RUTO_LETTER;Ruto's Letter;ruto
+OOT_STONE_SAPPHIRE;Zora's Sapphire;sapphire
+OOT_POACHER_SAW;Poacher's Saw;saw
+MM_MASK_SCENTS;Mask of Scents;scents
+OOT_SEAHORSE2;Seahorse;seahorse
+MM_SEAHORSE2;Seahorse;seahorse
 OOT_DEKU_SEEDS_30;30 Deku Seeds;seeds
 OOT_DEKU_SEEDS_5;5 Deku Seeds (OoT);seeds
-OOT_EYE_DROPS;Eye Drops;eye_drops
-OOT_EYEBALL_FROG;Eyeball Frog;frog
-OOT_FAIRY;Fairy (OoT);fairy
-OOT_FISH;Fish (OoT);bottled_fish
-OOT_GERUDO_CARD;Gerudo's Membership Card;card
-OOT_GS_TOKEN;Gold Skulltula Token;gs_token
-OOT_HAMMER;Megaton Hammer (OoT);hammer
-OOT_HEART_CONTAINER;Heart Container (OoT);heart_container
-OOT_HEART_PIECE;Piece of Heart (OoT);heart_piece
-OOT_HOOKSHOT;Progressive Hookshot (OoT);none
-OOT_KEY_RING_BOTW;Key Ring (Well);key_ring
-OOT_KEY_RING_FIRE;Key Ring (Fire);key_ring
-OOT_KEY_RING_FOREST;Key Ring (Forest);key_ring
-OOT_KEY_RING_GANON;Key Ring (Ganon);key_ring
-OOT_KEY_RING_GF;Key Ring (Hideout);key_ring
-OOT_KEY_RING_GTG;Key Ring (GTG);key_ring
-OOT_KEY_RING_TCG;Key Ring (Chest Game);key_ring
-OOT_KEY_RING_SHADOW;Key Ring (Shadow);key_ring
-OOT_KEY_RING_SPIRIT;Key Ring (Spirit);key_ring
-OOT_KEY_RING_WATER;Key Ring (Water);key_ring
-OOT_LENS;Lens of Truth (OoT);lens
-OOT_MAGIC_BEAN;Magic Beans (OoT);bean
-OOT_MAGIC_UPGRADE;Magic Upgrade (OoT);magic_upgrade
-OOT_MAP_BOTW;Map (Bottom of the Well);map
-OOT_MAP_DC;Map (Dodongo's Cavern);map
-OOT_MAP_DT;Map (Deku Tree);map
-OOT_MAP_FIRE;Map (Fire Temple);map
-OOT_MAP_FOREST;Map (Forest Temple);map
-OOT_MAP_IC;Map (Ice Cavern);map
-OOT_MAP_JJ;Map (Jabu-Jabu's Belly);map
-OOT_MAP_SHADOW;Map (Shadow Temple);map
-OOT_MAP_SPIRIT;Map (Spirit Temple);map
-OOT_MAP_WATER;Map (Water Temple);map
-OOT_MASK_BUNNY;Bunny Hood (OoT);bunny
-OOT_MASK_GERUDO;Gerudo Mask;gerudo
-OOT_MASK_GORON;Goron Mask (OoT);goron
-OOT_MASK_KEATON;Keaton Mask (OoT);keaton
-OOT_MASK_SKULL;Skull Mask;skull
-OOT_MASK_SPOOKY;Spooky Mask;spooky
-OOT_MASK_TRUTH;Mask of Truth (OoT);truth
-OOT_MASK_ZORA;Zora Mask (OoT);zora
-OOT_MEDALLION_FIRE;Fire Medallion;fire
-OOT_MEDALLION_FOREST;Forest Medallion;forest
-OOT_MEDALLION_LIGHT;Light Medallion;light
+MM_STRAY_FAIRY_WF;Stray Fairy (Woodfall Temple);sf
+MM_STRAY_FAIRY;Stray Fairy (MM);sf
+MM_STRAY_FAIRY_GB;Stray Fairy (Great Bay Temple);sf_blue
+MM_STRAY_FAIRY_SH;Stray Fairy (Snowhead Temple);sf_green
+MM_STRAY_FAIRY_TOWN;Stray Fairy (Clock Town);sf_orange
+MM_TRANSCENDENT_FAIRY;Transcendent Fairy;sf_transcendent
+MM_STRAY_FAIRY_ST;Stray Fairy (Stone Tower Temple);sf_yellow
 OOT_MEDALLION_SHADOW;Shadow Medallion;shadow
-OOT_MEDALLION_SPIRIT;Spirit Medallion;spirit
-OOT_MEDALLION_WATER;Water Medallion;water
-OOT_MILK;Lon Lon Milk (OoT);milk
-OOT_NUT_UPGRADE;Deku Nut Upgrade (OoT);nut_upgrade_1
-OOT_NUTS_10;10 Deku Nuts (OoT);nut
-OOT_NUTS_5_ALT;5 Deku Nuts (OoT);nut
-OOT_NUTS_5;5 Deku Nuts (OoT);nut
-OOT_OCARINA;Progressive Ocarina (OoT);none
-OOT_ODD_MUSHROOM;Odd Mushroom;mushroom
-OOT_ODD_POTION;Odd Potion;potion
-OOT_POACHER_SAW;Poacher's Saw;saw
-OOT_POCKET_CUCCO;Pocket Cucco;cucco
-OOT_POCKET_EGG;Pocket Egg;egg
-OOT_POE;Poe (OoT);bottled_poe
-OOT_POTION_BLUE;Blue Potion (OoT);blue_potion
-OOT_POTION_GREEN;Green Potion (OoT);green_potion
-OOT_POTION_RED;Red Potion (OoT);red_potion
-OOT_PRESCRIPTION;Prescription;prescription
-OOT_RECOVERY_HEART;Recovery Heart (OoT);heart
-OOT_RUPEE_BLUE;Blue Rupee (OoT);blue_rupee
-OOT_RUPEE_GREEN;Green Rupee (OoT);rupee
-OOT_RUPEE_HUGE;Gold Rupee (OoT);gold_rupee
-OOT_RUPEE_PURPLE;Purple Rupee (OoT);purple_rupee
-OOT_RUPEE_RED;Red Rupee (OoT);red_rupee
-OOT_RUPEE_RAINBOW;Rainbow Rupee (OoT);rainbow_rupee
-OOT_RUPEE_SILVER_BOTW;Silver Rupee (Bottom of the Well);sr
-OOT_RUPEE_SILVER_DC;Silver Rupee (Dodongo's Cavern);sr
-OOT_RUPEE_SILVER_GANON_FIRE;Silver Rupee (Ganon's Castle - Fire Trial);sr
-OOT_RUPEE_SILVER_GANON_FOREST;Silver Rupee (Ganon's Castle - Forest Trial);sr
-OOT_RUPEE_SILVER_GANON_LIGHT;Silver Rupee (Ganon's Castle - Light Trial);sr
-OOT_RUPEE_SILVER_GANON_SHADOW;Silver Rupee (Ganon's Castle - Shadow Trial);sr
-OOT_RUPEE_SILVER_GANON_SPIRIT;Silver Rupee (Ganon's Castle - Spirit Trial);sr
-OOT_RUPEE_SILVER_GANON_WATER;Silver Rupee (Ganon's Castle - Water Trial);sr
-OOT_RUPEE_SILVER_GTG_LAVA;Silver Rupee (Gerudo Training Ground - Lava);sr
-OOT_RUPEE_SILVER_GTG_SLOPES;Silver Rupee (Gerudo Training Ground - Slopes);sr
-OOT_RUPEE_SILVER_GTG_WATER;Silver Rupee (Gerudo Training Ground - Water);sr
-OOT_RUPEE_SILVER_IC_BLOCK;Silver Rupee (Ice Cavern - Block);sr
-OOT_RUPEE_SILVER_IC_SCYTHE;Silver Rupee (Ice Cavern - Scythe);sr
-OOT_RUPEE_SILVER_SHADOW_BLADES;Silver Rupee (Shadow Temple - Invisible Blades);sr
-OOT_RUPEE_SILVER_SHADOW_PIT;Silver Rupee (Shadow Temple - Large Pits);sr
-OOT_RUPEE_SILVER_SHADOW_SCYTHE;Silver Rupee (Shadow Temple - Scythe);sr
-OOT_RUPEE_SILVER_SHADOW_SPIKES;Silver Rupee (Shadow Temple - Spikes);sr
-OOT_RUPEE_SILVER_SPIRIT_ADULT;Silver Rupee (Spirit Temple - Adult);sr
-OOT_RUPEE_SILVER_SPIRIT_BOULDERS;Silver Rupee (Spirit Temple - Boulders);sr
-OOT_RUPEE_SILVER_SPIRIT_CHILD;Silver Rupee (Spirit Temple - Child);sr
-OOT_RUPEE_SILVER_SPIRIT_LOBBY;Silver Rupee (Spirit Temple - Lobby);sr
-OOT_RUPEE_SILVER_SPIRIT_SUN;Silver Rupee (Spirit Temple - Sun Block);sr
+OOT_TRAP_SHOCK;Shock Trap;shock_trap
+OOT_SCALE_SILVER;Silver Scale (OoT);silver
+MM_SCALE_SILVER;Silver Scale (MM);silver
+OOT_SILVER_GAUNTLETS;Silver Gauntlets (OoT);silver_gauntlet
+MM_SILVER_GAUNTLETS;Silver Gauntlets (MM);silver_gauntlet
 OOT_POUCH_SILVER_BOTW;Silver Rupee Pouch (Bottom of the Well);silver_pouch
 OOT_POUCH_SILVER_DC;Silver Rupee Pouch (Dodongo's Cavern);silver_pouch
 OOT_POUCH_SILVER_GANON_FIRE;Silver Rupee Pouch (Ganon's Castle - Fire Trial);silver_pouch
@@ -373,16 +588,16 @@ OOT_POUCH_SILVER_SPIRIT_BOULDERS;Silver Rupee Pouch (Spirit Temple - Boulders);s
 OOT_POUCH_SILVER_SPIRIT_CHILD;Silver Rupee Pouch (Spirit Temple - Child);silver_pouch
 OOT_POUCH_SILVER_SPIRIT_LOBBY;Silver Rupee Pouch (Spirit Temple - Lobby);silver_pouch
 OOT_POUCH_SILVER_SPIRIT_SUN;Silver Rupee Pouch (Spirit Temple - Sun Block);silver_pouch
-OOT_RUPEE_MAGICAL;Magical Silver Rupee;magical_rupee
-MM_TRANSCENDENT_FAIRY;Transcendent Fairy;sf_transcendent
-OOT_BOTTLE_RUTO_LETTER;Ruto's Letter;ruto
-OOT_SCALE;Progressive Scale (Oot);none
-OOT_SHIELD_DEKU;Deku Shield (OoT);deku_shield
-OOT_SHIELD_HYLIAN;Hylian Shield;hylian_shield
-OOT_SHIELD_MIRROR;Mirror Shield (OoT);mirror_oot
-OOT_SHIELD;Progressive Shield (OoT);none
+SHARED_RUPEE_SILVER;Silver Rupee;silver_rupee
+MM_SKELETON_KEY;Skeleton Key (MM);skeleton_key
 OOT_SKELETON_KEY;Skeleton Key (OoT);skeleton_key
+SHARED_SKELETON_KEY;Skeleton Key;skeleton_key
+OOT_MASK_SKULL;Skull Mask;skull
 OOT_SLINGSHOT;Fairy Slingshot;slingshot
+MM_SMALL_KEY_GB;Small Key (Great Bay Temple);small_key
+MM_SMALL_KEY_SH;Small Key (Snowhead Temple);small_key
+MM_SMALL_KEY_ST;Small Key (Stone Tower Temple);small_key
+MM_SMALL_KEY_WF;Small Key (Woodfall Temple);small_key
 OOT_SMALL_KEY_BOTW;Small Key (Bottom of the Well);small_key
 OOT_SMALL_KEY_FIRE;Small Key (Fire Temple);small_key
 OOT_SMALL_KEY_FOREST;Small Key (Forest Temple);small_key
@@ -393,25 +608,144 @@ OOT_SMALL_KEY_SHADOW;Small Key (Shadow Temple);small_key
 OOT_SMALL_KEY_SPIRIT;Small Key (Spirit Temple);small_key
 OOT_SMALL_KEY_WATER;Small Key (Water Temple);small_key
 OOT_SMALL_KEY_TCG;Small Key (Chest Game);small_key
+OOT_SMALL_KEY;Small Key (OoT);small_key
+OOT_TC_SMALL_KEY;Small Key (OoT);small_key
+MM_SMALL_KEY;Small Key (MM);small_key
+MM_SONG_EPONA;Epona's Song (MM);song
+MM_SONG_HEALING;Song of Healing;song
+MM_SONG_SOARING;Song of Soaring;song
+MM_SONG_STORMS;Song of Storms (MM);song
+MM_SONG_SUN;Sun's Song (MM);song
+MM_SONG_TIME;Song of Time (MM);song
 OOT_SONG_EPONA;Epona's Song (OoT);song
 OOT_SONG_SARIA;Saria's Song;song
 OOT_SONG_STORMS;Song of Storms (OoT);song
 OOT_SONG_SUN;Sun's Song (OoT);song
 OOT_SONG_TIME;Song of Time (OoT);song
-OOT_SONG_TP_FIRE;Bolero of Fire;song_red
-OOT_SONG_TP_FOREST;Minuet of Forest;song_green
-OOT_SONG_TP_LIGHT;Prelude of Light;song_yellow
-OOT_SONG_TP_SHADOW;Nocturne of Shadow;song_purple
-OOT_SONG_TP_SPIRIT;Requiem of Spirit;song_orange
-OOT_SONG_TP_WATER;Serenade of Water;song_blue
 OOT_SONG_ZELDA;Zelda's Lullaby;song
+SHARED_SONG_EPONA;Epona's Song;song
+SHARED_SONG_STORMS;Song of Storms;song
+SHARED_SONG_SUN;Sun's Song;song
+SHARED_SONG_TIME;Song of Time;song
+OOT_SONG_NOTE_EPONA;Note from Epona's Song (OoT);song
+OOT_SONG_NOTE_SARIA;Note from Saria's Song (OoT);song
+OOT_SONG_NOTE_STORMS;Note from Song of Storms (OoT);song
+OOT_SONG_NOTE_SUN;Note from Sun's Song (OoT);song
+OOT_SONG_NOTE_TIME;Note from Song of Time (OoT);song
+OOT_SONG_NOTE_ZELDA;Note from Zelda's Lullaby (OoT);song
+MM_SONG_NOTE_EPONA;Note from Epona's Song (MM);song
+MM_SONG_NOTE_HEALING;Note from Song of Healing (MM);song
+MM_SONG_NOTE_SOARING;Note from Song of Soaring (MM);song
+MM_SONG_NOTE_STORMS;Note from Song of Storms (MM);song
+MM_SONG_NOTE_SUN;Note from Sun's Song (MM);song
+MM_SONG_NOTE_TIME;Note from Song of Time (MM);song
+SHARED_SONG_NOTE_EPONA;Note from Epona's Song;song
+SHARED_SONG_NOTE_TIME;Note from Song of Time;song
+SHARED_SONG_NOTE_STORMS;Note from Song of Storms;song
+SHARED_SONG_NOTE_SUN;Note from Sun's Song;song
+MM_SONG_ZORA;New Wave Bossa Nova;song_blue
+OOT_SONG_TP_WATER;Serenade of Water;song_blue
+OOT_SONG_NOTE_TP_WATER;Note from Serenade of Water (OoT);song_blue
+MM_SONG_NOTE_ZORA;Note from New Wave Bossa Nova (MM);song_blue
+MM_SONG_AWAKENING;Sonata of Awakening;song_green
+OOT_SONG_TP_FOREST;Minuet of Forest;song_green
+OOT_SONG_NOTE_TP_FOREST;Note from Minuet of Forest (OoT);song_green
+MM_SONG_NOTE_AWAKENING;Note from Sonata of Awakening (MM);song_green
+MM_SONG_EMPTINESS;Elegy of Emptiness (MM);song_orange
+OOT_SONG_TP_SPIRIT;Requiem of Spirit;song_orange
+OOT_SONG_EMPTINESS;Elegy of Emptiness (OoT);song_orange
+SHARED_SONG_EMPTINESS;Elegy of Emptiness;song_orange
+OOT_SONG_NOTE_TP_SPIRIT;Note from Requiem of Spirit (OoT);song_orange
+OOT_SONG_NOTE_EMPTINESS;Note from Elegy of Emptiness (OoT);song_orange
+MM_SONG_NOTE_EMPTINESS;Note from Elegy of Emptiness (MM);song_orange
+SHARED_SONG_NOTE_EMPTINESS;Note from Elegy of Emptiness;song_orange
+MM_SONG_ORDER;Oath to Order;song_purple
+OOT_SONG_TP_SHADOW;Nocturne of Shadow;song_purple
+OOT_SONG_NOTE_TP_SHADOW;Note from Nocturne of Shadow (OoT);song_purple
+MM_SONG_NOTE_ORDER;Note from Oath to Order (MM);song_purple
+MM_SONG_GORON_HALF;Progressive Goron Lullaby;song_red
+MM_SONG_GORON;Goron Lullaby;song_red
+OOT_SONG_TP_FIRE;Bolero of Fire;song_red
+OOT_SONG_NOTE_TP_FIRE;Note from Bolero of Fire (OoT);song_red
+MM_SONG_NOTE_GORON;Note from Goron Lullaby (MM);song_red
+OOT_SONG_TP_LIGHT;Prelude of Light;song_yellow
+OOT_SONG_NOTE_TP_LIGHT;Note from Prelude of Light (OoT);song_yellow
+OOT_SOUL_ANIMAL_CUCCO;Soul of Cuccos (OoT);soul_of_animal
+OOT_SOUL_ANIMAL_COW;Soul of Cows (OoT);soul_of_animal
+OOT_SOUL_ANIMAL_DOG;Soul of Dogs (OoT);soul_of_animal
+OOT_SOUL_ANIMAL_BUTTERFLY;Soul of Butterflies (OoT);soul_of_animal
+MM_SOUL_ANIMAL_CUCCO;Soul of Cuccos (MM);soul_of_animal
+MM_SOUL_ANIMAL_COW;Soul of Cows (MM);soul_of_animal
+MM_SOUL_ANIMAL_DOG;Sould of Dogs (MM);soul_of_animal
+MM_SOUL_ANIMAL_BUTTERFLY;Soul of Butterflies (MM);soul_of_animal
+SHARED_SOUL_ANIMAL_CUCCO;Soul of Cuccos;soul_of_animal
+SHARED_SOUL_ANIMAL_COW;Soul of Cows;soul_of_animal
+SHARED_SOUL_ANIMAL_DOG;Soul of Dogs;soul_of_animal
+SHARED_SOUL_ANIMAL_BUTTERFLY;Soul of Butterflies;soul_of_animal
+MM_SOUL_BOSS_GOHT;Soul of Goht;soul_of_boss
+MM_SOUL_BOSS_GYORG;Soul of Gyorg;soul_of_boss
+MM_SOUL_BOSS_IGOS;Soul of Igos;soul_of_boss
+MM_SOUL_BOSS_ODOLWA;Soul of Odolwa;soul_of_boss
+MM_SOUL_BOSS_TWINMOLD;Soul of Twinmold;soul_of_boss
+OOT_SOUL_BOSS_BARINADE;Soul of Barinade;soul_of_boss
+OOT_SOUL_BOSS_BONGO_BONGO;Soul of Bongo Bongo;soul_of_boss
+OOT_SOUL_BOSS_KING_DODONGO;Soul of King Dodongo;soul_of_boss
+OOT_SOUL_BOSS_MORPHA;Soul of Morpha;soul_of_boss
+OOT_SOUL_BOSS_PHANTOM_GANON;Soul of Phantom Ganon;soul_of_boss
+OOT_SOUL_BOSS_QUEEN_GOHMA;Soul of Queen Gohma;soul_of_boss
+OOT_SOUL_BOSS_TWINROVA;Soul of Twinrova;soul_of_boss
+OOT_SOUL_BOSS_VOLVAGIA;Soul of Volvagia;soul_of_boss
+MM_SOUL_ENEMY_ARMOS;Soul of Armos (MM);soul_of_foe
+MM_SOUL_ENEMY_BAD_BAT;Soul of Bad Bats;soul_of_foe
+MM_SOUL_ENEMY_BEAMOS;Soul of Beamos (MM);soul_of_foe
+MM_SOUL_ENEMY_BIO_BABA;Soul of Bio Babas;soul_of_foe
+MM_SOUL_ENEMY_BOE;Soul of Boes;soul_of_foe
+MM_SOUL_ENEMY_BUBBLE;Soul of Bubbles (MM);soul_of_foe
+MM_SOUL_ENEMY_CAPTAIN_KEETA;Soul of Captain Keeta;soul_of_foe
+MM_SOUL_ENEMY_CHUCHU;Soul of Chuchus;soul_of_foe
+MM_SOUL_ENEMY_DEEP_PYTHON;Soul of Deep Pythons;soul_of_foe
+MM_SOUL_ENEMY_DEKU_BABA;Soul of Deku Babas (MM);soul_of_foe
+MM_SOUL_ENEMY_DEKU_SCRUB;Soul of Deku Scrubs (MM);soul_of_foe
+MM_SOUL_ENEMY_DEXIHAND;Soul of Dexihands;soul_of_foe
+MM_SOUL_ENEMY_DODONGO;Soul of Dodongos (MM);soul_of_foe
+MM_SOUL_ENEMY_DRAGONFLY;Soul of Dragonflies;soul_of_foe
+MM_SOUL_ENEMY_EENO;Soul of Eenoes;soul_of_foe
+MM_SOUL_ENEMY_EYEGORE;Soul of Eyegores;soul_of_foe
+MM_SOUL_ENEMY_FLOORMASTER;Soul of Floormasters (MM);soul_of_foe
+MM_SOUL_ENEMY_FLYING_POT;Soul of Flying Pots (MM);soul_of_foe
+MM_SOUL_ENEMY_FREEZARD;Soul of Freezards (MM);soul_of_foe
+MM_SOUL_ENEMY_GARO;Soul of Garo;soul_of_foe
+MM_SOUL_ENEMY_GEKKO;Soul of Gekkos;soul_of_foe
+MM_SOUL_ENEMY_GOMESS;Soul of Gomess;soul_of_foe
+MM_SOUL_ENEMY_GUAY;Soul of Guays (MM);soul_of_foe
+MM_SOUL_ENEMY_HIPLOOP;Soul of Hiploops;soul_of_foe
+MM_SOUL_ENEMY_IRON_KNUCKLE;Soul of Iron Knuckles (MM);soul_of_foe
+MM_SOUL_ENEMY_KEESE;Soul of Keese (MM);soul_of_foe
+MM_SOUL_ENEMY_LEEVER;Soul of Leevers (MM);soul_of_foe
+MM_SOUL_ENEMY_LIKE_LIKE;Soul of Like Likes (MM);soul_of_foe
+MM_SOUL_ENEMY_LIZALFOS_DINOLFOS;Soul of Lizalfos/Dinolfos (MM);soul_of_foe
+MM_SOUL_ENEMY_NEJIRON;Soul of Nejirons;soul_of_foe
+MM_SOUL_ENEMY_OCTOROK;Soul of Octoroks (MM);soul_of_foe
+MM_SOUL_ENEMY_PEAHAT;Soul of Peahats (MM);soul_of_foe
+MM_SOUL_ENEMY_REAL_BOMBCHU;Soul of Real Bombchu;soul_of_foe
+MM_SOUL_ENEMY_REDEAD_GIBDO;Soul of ReDeads/Gibdos (MM);soul_of_foe
+MM_SOUL_ENEMY_SHELL_BLADE;Soul of Shell Blades (MM);soul_of_foe
+MM_SOUL_ENEMY_SKULLFISH;Soul of Skullfish (MM);soul_of_foe
+MM_SOUL_ENEMY_SKULLTULA;Soul of Skulltulas (MM);soul_of_foe
+MM_SOUL_ENEMY_SKULLWALLTULA;Soul of Skullwalltulas (MM);soul_of_foe
+MM_SOUL_ENEMY_SNAPPER;Soul of Snappers;soul_of_foe
+MM_SOUL_ENEMY_STALCHILD;Soul of Stalchildren (MM);soul_of_foe
+MM_SOUL_ENEMY_TAKKURI;Soul of Takkuri;soul_of_foe
+MM_SOUL_ENEMY_TEKTITE;Soul of Tektites (MM);soul_of_foe
+MM_SOUL_ENEMY_WALLMASTER;Soul of Wallmasters (MM);soul_of_foe
+MM_SOUL_ENEMY_WART;Soul of Warts;soul_of_foe
+MM_SOUL_ENEMY_WIZZROBE;Soul of Wizzrobes;soul_of_foe
+MM_SOUL_ENEMY_WOLFOS;Soul of Wolfos (MM);soul_of_foe
 OOT_SOUL_ENEMY_ANUBIS;Soul of Anubis;soul_of_foe
 OOT_SOUL_ENEMY_ARMOS;Soul of Armos (OoT);soul_of_foe
 OOT_SOUL_ENEMY_BABY_DODONGO;Soul of Baby Dodongos;soul_of_foe
-OOT_SOUL_BOSS_BARINADE;Soul of Barinade;soul_of_boss
 OOT_SOUL_ENEMY_BEAMOS;Soul of Beamos (OoT);soul_of_foe
 OOT_SOUL_ENEMY_BIRI_BARI;Soul of Biris/Baris;soul_of_foe
-OOT_SOUL_BOSS_BONGO_BONGO;Soul of Bongo Bongo;soul_of_boss
 OOT_SOUL_ENEMY_BUBBLE;Soul of Bubbles (OoT);soul_of_foe
 OOT_SOUL_ENEMY_DARK_LINK;Soul of Dark Link;soul_of_foe
 OOT_SOUL_ENEMY_DEAD_HAND;Soul of Dead Hands;soul_of_foe
@@ -429,17 +763,13 @@ OOT_SOUL_ENEMY_GOHMA_LARVA;Soul of Gohma Larvaes;soul_of_foe
 OOT_SOUL_ENEMY_GUAY;Soul of Guays (OoT);soul_of_foe
 OOT_SOUL_ENEMY_IRON_KNUCKLE;Soul of Iron Knuckles (OoT);soul_of_foe
 OOT_SOUL_ENEMY_KEESE;Soul of Keese (OoT);soul_of_foe
-OOT_SOUL_BOSS_KING_DODONGO;Soul of King Dodongo;soul_of_boss
 OOT_SOUL_ENEMY_LEEVER;Soul of Leevers (OoT);soul_of_foe
 OOT_SOUL_ENEMY_LIKE_LIKE;Soul of Like Likes (OoT);soul_of_foe
 OOT_SOUL_ENEMY_LIZALFOS_DINOLFOS;Soul of Lizalfos/Dinolfos (OoT);soul_of_foe
 OOT_SOUL_ENEMY_MOBLIN;Soul of Moblins;soul_of_foe
-OOT_SOUL_BOSS_MORPHA;Soul of Morpha;soul_of_boss
 OOT_SOUL_ENEMY_OCTOROK;Soul of Octoroks (OoT);soul_of_foe
 OOT_SOUL_ENEMY_PARASITE;Soul of Jabu-Jabu's Parasites;soul_of_foe
 OOT_SOUL_ENEMY_PEAHAT;Soul of Peahats (OoT);soul_of_foe
-OOT_SOUL_BOSS_PHANTOM_GANON;Soul of Phantom Ganon;soul_of_boss
-OOT_SOUL_BOSS_QUEEN_GOHMA;Soul of Queen Gohma;soul_of_boss
 OOT_SOUL_ENEMY_REDEAD_GIBDO;Soul of ReDeads/Gibdos (OoT);soul_of_foe
 OOT_SOUL_ENEMY_SHABOM;Soul of Shaboms;soul_of_foe
 OOT_SOUL_ENEMY_SHELL_BLADE;Soul of Shell Blades (OoT);soul_of_foe
@@ -453,81 +783,8 @@ OOT_SOUL_ENEMY_STINGER;Soul of Stingers;soul_of_foe
 OOT_SOUL_ENEMY_TAILPASARN;Soul of Tailpasarans;soul_of_foe
 OOT_SOUL_ENEMY_TEKTITE;Soul of Tektites (OoT);soul_of_foe
 OOT_SOUL_ENEMY_TORCH_SLUG;Soul of Torch Slugs;soul_of_foe
-OOT_SOUL_BOSS_TWINROVA;Soul of Twinrova;soul_of_boss
-OOT_SOUL_BOSS_VOLVAGIA;Soul of Volvagia;soul_of_boss
 OOT_SOUL_ENEMY_WALLMASTER;Soul of Wallmasters (OoT);soul_of_foe
 OOT_SOUL_ENEMY_WOLFOS;Soul of Wolfoses (OoT);soul_of_foe
-OOT_SPELL_FIRE;Din's Fire (OoT);din
-OOT_SPELL_LOVE;Nayru's Love (OoT);nayru
-OOT_SPELL_WIND;Farore's Wind (OoT);farore
-OOT_STICK_UPGRADE;Deku Stick Upgrade (OoT);stick_upgrade_1
-OOT_STICK;Deku Stick (OoT);stick
-OOT_STICKS_10;10 Deku Sticks (OoT);stick
-OOT_STICKS_5;5 Deku Sticks (OoT);stick
-OOT_STONE_EMERALD;Kokiri's Emerald;emerald
-OOT_STONE_OF_AGONY;Stone of Agony (OoT);agony
-MM_STONE_OF_AGONY;Stone of Agony (MM);agony
-SHARED_STONE_OF_AGONY;Stone of Agony;agony
-OOT_STONE_RUBY;Goron's Ruby;ruby
-OOT_STONE_SAPPHIRE;Zora's Sapphire;sapphire
-OOT_STRENGTH;Progressive Strength (OoT);none
-OOT_SWORD_BIGGORON;Biggoron's Sword;biggoron
-OOT_SWORD_GORON;Progressive Goron Sword;none
-OOT_SWORD_KNIFE;Giant's Knife;biggoron
-OOT_SWORD_KOKIRI;Kokiri Sword (OoT);kokiri
-OOT_SWORD_MASTER;Master Sword;master
-SHARED_SWORD;Progressive Sword;none
-OOT_SWORD;Progressive Sword (OoT);none
-OOT_TUNIC_GORON;Goron Tunic (OoT);goron_tunic
-OOT_TUNIC_ZORA;Zora Tunic (OoT);zora_tunic
-OOT_WEIRD_EGG;Weird Egg;egg
-OOT_ZELDA_LETTER;Zelda's Letter;letter
-SHARED_ARROW_FIRE;Shared Fire Arrows;fire_arrow
-SHARED_ARROW_ICE;Shared Ice Arrows;ice_arrow
-SHARED_ARROW_LIGHT;Shared Light Arrows;light_arrow
-SHARED_ARROWS_10;10 Arrows;arrow
-SHARED_ARROWS_30;30 Arrows;arrow
-SHARED_ARROWS_40;40 Arrows;arrow
-SHARED_ARROWS_5;5 Arrows;arrow
-SHARED_BOMB_BAG;Shared Bomb Bag;bomb_bag
-SHARED_BOMB;1 Bomb;bomb
-SHARED_BOMBCHU_10;10 Bombchu;bomb
-SHARED_BOMBCHU_20;20 Bombchu;bomb
-SHARED_BOMBCHU_5;5 Bombchu;bomb
-SHARED_BOMBCHU;Bombchu;bomb
-SHARED_BOMBS_10;10 Bombs;bomb
-SHARED_BOMBS_20;20 Bombs;bomb
-SHARED_BOMBS_30;30 Bombs;bomb
-SHARED_BOMBS_5;5 Bombs;bomb
-SHARED_BOW;Shared Bow;bow_oot
-SHARED_DEFENSE_UPGRADE;Double Defense;defense
-SHARED_HEART_CONTAINER;Heart Container;heart_container
-SHARED_HEART_PIECE;Piece of Heart;heart_piece
-SHARED_HOOKSHOT;Progressive Hookshot;hookshot_oot
-SHARED_LENS;Lens of Truth;lens
-SHARED_MAGIC_UPGRADE;Shared Magic Upgrade;magic_upgrade
-SHARED_MASK_BUNNY;Bunny Hood;bunny
-SHARED_MASK_GORON;Goron Mask;goron
-SHARED_MASK_KEATON;Keaton Mask;keaton
-SHARED_MASK_TRUTH;Mask of Truth;truth
-SHARED_MASK_ZORA;Zora Mask;zora
-SHARED_NUT;Deku Nut;nut
-SHARED_NUTS_10;10 Deku Nuts;nut
-SHARED_NUTS_5;5 Deku Nuts;nut
-SHARED_OCARINA;Progressive Ocarina;ocarina
-SHARED_RECOVERY_HEART;Recovery Heart;heart
-SHARED_RUPEE_BLUE;Blue Rupee;blue_rupee
-SHARED_RUPEE_GOLD;Gold Rupee;gold_rupee
-SHARED_RUPEE_GREEN;Green Rupee;rupee
-SHARED_RUPEE_PURPLE;Purple Rupee;purple_rupee
-SHARED_RUPEE_RED;Red Rupee;red_rupee
-SHARED_RUPEE_SILVER;Silver Rupee;silver_rupee
-SHARED_RUPEE_RAINBOW;Rainbow Rupee;rainbow_rupee
-SHARED_SKELETON_KEY;Skeleton Key;skeleton_key
-SHARED_SONG_EPONA;Epona's Song;song
-SHARED_SONG_STORMS;Song of Storms;song
-SHARED_SONG_SUN;Sun's Song;song
-SHARED_SONG_TIME;Song of Time;song
 SHARED_SOUL_ENEMY_ARMOS;Soul of Armos;soul_of_foe
 SHARED_SOUL_ENEMY_BEAMOS;Soul of Beamos;soul_of_foe
 SHARED_SOUL_ENEMY_BUBBLE;Soul of Bubbles;soul_of_foe
@@ -553,38 +810,9 @@ SHARED_SOUL_ENEMY_STALCHILD;Soul of Stalchildren;soul_of_foe
 SHARED_SOUL_ENEMY_TEKTITE;Soul of Tektites;soul_of_foe
 SHARED_SOUL_ENEMY_WALLMASTER;Soul of Wallmasters;soul_of_foe
 SHARED_SOUL_ENEMY_WOLFOS;Soul of Wolfos;soul_of_foe
-SHARED_STICK;Deku Stick;stick
-SHARED_STICKS_10;10 Deku Sticks;stick
-SHARED_STICKS_5;5 Deku Sticks;stick
-SHARED_TRIFORCE_COURAGE;Triforce of Courage;triforce_courage
-SHARED_TRIFORCE_POWER;Triforce of Power;triforce_power
-SHARED_TRIFORCE_WISDOM;Triforce of Wisdom;triforce_wisdom
-SHARED_TRIFORCE;Triforce Piece;triforce_piece
-SHARED_WALLET;Progressive Wallet;wallet
-SHARED_SPELL_FIRE;Din's Fire;din
-SHARED_SPELL_LOVE;Nayru's Love;nayru
-SHARED_SPELL_WIND;Farore's Wind;farore
-SHARED_BOOTS_IRON;Iron Boots;iron
-SHARED_BOOTS_HOVER;Hover Boots;hover
-SHARED_TUNIC_GORON;Goron Tunic;goron_tunic
-SHARED_TUNIC_ZORA;Zora Tunic;zora_tunic
-SHARED_SCALE;Progressive Scale;bronze_scale
-SHARED_STRENGTH;Progressive Strength;bracelet
-OOT_BUTTON_A;A Button (OoT);a_button
-OOT_BUTTON_C_RIGHT;C-Right Button (OoT);c_right
-OOT_BUTTON_C_LEFT;C-Left Button (OoT);c_left
-OOT_BUTTON_C_UP;C-Up Button (OoT);c_up
-OOT_BUTTON_C_DOWN;C-Down Button (OoT);c_down
-MM_BUTTON_A;A Button (MM);a_button
-MM_BUTTON_C_RIGHT;C-Right Button (MM);c_right
-MM_BUTTON_C_LEFT;C-Left Button (MM);c_left
-MM_BUTTON_C_UP;C-Up Button (MM);c_up
-MM_BUTTON_C_DOWN;C-Down Button (MM);c_down
-SHARED_BUTTON_A;A Button;a_button
-SHARED_BUTTON_C_RIGHT;C-Right Button;c_right
-SHARED_BUTTON_C_LEFT;C-Left Button;c_left
-SHARED_BUTTON_C_UP;C-Up Button;c_up
-SHARED_BUTTON_C_DOWN;C-Down Button;c_down
+OOT_SOUL_ENEMY_THIEVES;Soul of the Fighting Gerudos;soul_of_foe
+MM_SOUL_ENEMY_THIEVES;Soul of the Fighting Pirates;soul_of_foe
+SHARED_SOUL_ENEMY_THIEVES;Soul of Fighting Thieves;soul_of_foe
 OOT_SOUL_NPC_SARIA;Soul of Saria;soul_of_npc
 OOT_SOUL_NPC_DARUNIA;Soul of Darunia;soul_of_npc
 OOT_SOUL_NPC_RUTO;Soul of Ruto (OoT);soul_of_npc
@@ -717,112 +945,6 @@ SHARED_SOUL_NPC_DOG_LADY;Soul of the Dog Lady;soul_of_npc
 SHARED_SOUL_NPC_CARPET_MAN;Soul of the Carpet Man/Swordsman;soul_of_npc
 SHARED_SOUL_NPC_OLD_HAG;Soul of the Old Hag/Anju's Grandmother;soul_of_npc
 SHARED_SOUL_NPC_BANKER;Soul of the Beggar/Banker;soul_of_npc
-OOT_FISHING_POND_CHILD_FISH;Child Fish (Placeholder);carp_fish
-OOT_FISHING_POND_ADULT_FISH;Adult Fish (Placeholder);carp_fish
-OOT_FISHING_POND_CHILD_LOACH;Child Loach (Placeholder);carp_fish
-OOT_FISHING_POND_ADULT_LOACH;Adult Loach (Placeholder);carp_fish
-OOT_FISHING_POND_CHILD_FISH_2LBS;Child Fish (2 pounds);carp_fish
-OOT_FISHING_POND_CHILD_FISH_3LBS;Child Fish (3 pounds);carp_fish
-OOT_FISHING_POND_CHILD_FISH_4LBS;Child Fish (4 pounds);carp_fish
-OOT_FISHING_POND_CHILD_FISH_5LBS;Child Fish (5 pounds);carp_fish
-OOT_FISHING_POND_CHILD_FISH_6LBS;Child Fish (6 pounds);carp_fish
-OOT_FISHING_POND_CHILD_FISH_7LBS;Child Fish (7 pounds);carp_fish
-OOT_FISHING_POND_CHILD_FISH_8LBS;Child Fish (8 pounds);carp_fish
-OOT_FISHING_POND_CHILD_FISH_9LBS;Child Fish (9 pounds);carp_fish
-OOT_FISHING_POND_CHILD_FISH_10LBS;Child Fish (10 pounds);carp_fish
-OOT_FISHING_POND_CHILD_FISH_11LBS;Child Fish (11 pounds);carp_fish
-OOT_FISHING_POND_CHILD_FISH_12LBS;Child Fish (12 pounds);carp_fish
-OOT_FISHING_POND_CHILD_FISH_13LBS;Child Fish (13 pounds);carp_fish
-OOT_FISHING_POND_CHILD_FISH_14LBS;Child Fish (14 pounds);carp_fish
-OOT_FISHING_POND_ADULT_FISH_4LBS;Adult Fish (4 pounds);carp_fish
-OOT_FISHING_POND_ADULT_FISH_5LBS;Adult Fish (5 pounds);carp_fish
-OOT_FISHING_POND_ADULT_FISH_6LBS;Adult Fish (6 pounds);carp_fish
-OOT_FISHING_POND_ADULT_FISH_7LBS;Adult Fish (7 pounds);carp_fish
-OOT_FISHING_POND_ADULT_FISH_8LBS;Adult Fish (8 pounds);carp_fish
-OOT_FISHING_POND_ADULT_FISH_9LBS;Adult Fish (9 pounds);carp_fish
-OOT_FISHING_POND_ADULT_FISH_10LBS;Adult Fish (10 pounds);carp_fish
-OOT_FISHING_POND_ADULT_FISH_11LBS;Adult Fish (11 pounds);carp_fish
-OOT_FISHING_POND_ADULT_FISH_12LBS;Adult Fish (12 pounds);carp_fish
-OOT_FISHING_POND_ADULT_FISH_13LBS;Adult Fish (13 pounds);carp_fish
-OOT_FISHING_POND_ADULT_FISH_14LBS;Adult Fish (14 pounds);carp_fish
-OOT_FISHING_POND_ADULT_FISH_15LBS;Adult Fish (15 pounds);carp_fish
-OOT_FISHING_POND_ADULT_FISH_16LBS;Adult Fish (16 pounds);carp_fish
-OOT_FISHING_POND_ADULT_FISH_17LBS;Adult Fish (17 pounds);carp_fish
-OOT_FISHING_POND_ADULT_FISH_18LBS;Adult Fish (18 pounds);carp_fish
-OOT_FISHING_POND_ADULT_FISH_19LBS;Adult Fish (19 pounds);carp_fish
-OOT_FISHING_POND_ADULT_FISH_20LBS;Adult Fish (20 pounds);carp_fish
-OOT_FISHING_POND_ADULT_FISH_21LBS;Adult Fish (21 pounds);carp_fish
-OOT_FISHING_POND_ADULT_FISH_22LBS;Adult Fish (22 pounds);carp_fish
-OOT_FISHING_POND_ADULT_FISH_23LBS;Adult Fish (23 pounds);carp_fish
-OOT_FISHING_POND_ADULT_FISH_24LBS;Adult Fish (24 pounds);carp_fish
-OOT_FISHING_POND_ADULT_FISH_25LBS;Adult Fish (25 pounds);carp_fish
-OOT_FISHING_POND_CHILD_LOACH_14LBS;Child Loach (14 pounds);carp_fish
-OOT_FISHING_POND_CHILD_LOACH_15LBS;Child Loach (15 pounds);carp_fish
-OOT_FISHING_POND_CHILD_LOACH_16LBS;Child Loach (16 pounds);carp_fish
-OOT_FISHING_POND_CHILD_LOACH_17LBS;Child Loach (17 pounds);carp_fish
-OOT_FISHING_POND_CHILD_LOACH_18LBS;Child Loach (18 pounds);carp_fish
-OOT_FISHING_POND_CHILD_LOACH_19LBS;Child Loach (19 pounds);carp_fish
-OOT_FISHING_POND_ADULT_LOACH_29LBS;Adult Loach (29 pounds);carp_fish
-OOT_FISHING_POND_ADULT_LOACH_30LBS;Adult Loach (30 pounds);carp_fish
-OOT_FISHING_POND_ADULT_LOACH_31LBS;Adult Loach (31 pounds);carp_fish
-OOT_FISHING_POND_ADULT_LOACH_32LBS;Adult Loach (32 pounds);carp_fish
-OOT_FISHING_POND_ADULT_LOACH_33LBS;Adult Loach (33 pounds);carp_fish
-OOT_FISHING_POND_ADULT_LOACH_34LBS;Adult Loach (34 pounds);carp_fish
-OOT_FISHING_POND_ADULT_LOACH_35LBS;Adult Loach (35 pounds);carp_fish
-OOT_FISHING_POND_ADULT_LOACH_36LBS;Adult Loach (36 pounds);carp_fish
-SHARED_SHIELD_DEKU;Deku Shield;deku_shield
-SHARED_SHIELD_HYLIAN;Hylian/Hero Shield;hylian_shield
-SHARED_SHIELD_MIRROR;Mirror Shield;mirror_oot
-SHARED_SHIELD;Progressive Shield;hero_shield
-OOT_BOTTLE_FAIRY;Bottled Fairy (OoT);bottled_fairy
-MM_BOTTLE_FAIRY;Bottled Fairy (MM);bottled_fairy
-OOT_BOTTLE_POE;Bottled Poe (OoT);bottled_poe
-MM_BOTTLE_POE;Bottled Poe (MM);bottled_poe
-OOT_BOTTLE_BIG_POE;Bottled Big Poe (OoT);bottled_big_poe
-MM_BOTTLE_BIG_POE;Bottled Big Poe (MM);bottled_big_poe
-MM_POE;Poe (MM);bottled_poe
-OOT_BIG_POE;Big Poe (OoT);bottled_big_poe
-MM_BIG_POE;Big Poe (MM);bottled_big_poe
-OOT_MAGIC_JAR_SMALL;Small Magic Jar (OoT);magic
-OOT_MAGIC_JAR_LARGE;Large Magic Jar (OoT);double_magic
-MM_MAGIC_JAR_SMALL;Small Magic Jar (MM);magic
-MM_MAGIC_JAR_LARGE;Large Magic Jar (MM);double_magic
-SHARED_MAGIC_JAR_SMALL;Small Magic Jar;magic
-SHARED_MAGIC_JAR_LARGE;Large Magic Jar;double_magic
-NOTHING;Nothing;none
-OOT_FAIRY_BIG;Big Fairy (OoT);fairy
-MM_FAIRY_BIG;Big Fairy (MM);fairy
-SHARED_FAIRY_BIG;Big Fairy;fairy
-OOT_BOTTLE_BLUE_FIRE;Bottle of Blue Fire;blue_fire
-MM_SPELL_FIRE;Din's Fire (MM);din
-MM_SPELL_LOVE;Nayru's Love (MM);nayru
-MM_SPELL_WIND;Farore's Wind (MM);farore
-MM_BOOTS_IRON;Iron Boots (MM);iron
-MM_BOOTS_HOVER;Hover Boots (MM);hover
-MM_TUNIC_GORON;Goron Tunic (MM);goron_tunic
-MM_TUNIC_ZORA;Zora Tunic (MM);zora_tunic
-MM_SCALE;Progressive Scale (MM);none
-MM_STRENGTH;Progressive Strength (MM);none
-OOT_MASK_BLAST;Blast Mask (OoT);blast
-SHARED_MASK_BLAST;Blast Mask;blast
-OOT_MASK_STONE;Stone Mask (OoT);stone
-SHARED_MASK_STONE;Stone Mask;stone
-OOT_SONG_EMPTINESS;Elegy of Emptiness (OoT);song_orange
-SHARED_SONG_EMPTINESS;Elegy of Emptiness;song_orange
-MM_CLOCK;Progressive Clock;none
-MM_CLOCK1;Clock (Day 1);clock_d1
-MM_CLOCK2;Clock (Night 1);clock_n1
-MM_CLOCK3;Clock (Day 2);clock_d2
-MM_CLOCK4;Clock (Night 2);clock_n2
-MM_CLOCK5;Clock (Day 3);clock_d3
-MM_CLOCK6;Clock (Night 3);clock_n3
-OOT_TRAP_ICE;Ice Trap;ice_trap
-OOT_TRAP_FIRE;Fire Trap;fire_trap
-OOT_TRAP_SHOCK;Shock Trap;shock_trap
-OOT_TRAP_DRAIN;Drain Trap;drain_trap
-OOT_TRAP_ANTI_MAGIC;Anti-Magic Trap;magic_trap
-OOT_TRAP_KNOCKBACK;Knockback Trap;knockback_trap
-OOT_TRAP_RUPOOR;Rupoor;rupoor
 OOT_SOUL_MISC_GS;Soul of Gold Skulltulas (OoT);soul_of_npc
 OOT_SOUL_MISC_BUSINESS_SCRUB;Soul of Business Scrubs (OoT);soul_of_npc
 MM_SOUL_MISC_GS;Soul of Gold Skulltulas (MM);soul_of_npc
@@ -831,199 +953,77 @@ SHARED_SOUL_MISC_GS;Soul of Gold Skulltulas;soul_of_npc
 SHARED_SOUL_MISC_BUSINESS_SCRUB;Soul of Business Scrubs;soul_of_npc
 OOT_SOUL_NPC_THIEVES;Soul of the Patrolling Gerudos;soul_of_npc
 MM_SOUL_NPC_THIEVES;Soul of the Patrolling Pirates and their Chief;soul_of_npc
-OOT_SOUL_ENEMY_THIEVES;Soul of the Fighting Gerudos;soul_of_foe
-MM_SOUL_ENEMY_THIEVES;Soul of the Fighting Pirates;soul_of_foe
 SHARED_SOUL_NPC_THIEVES;Soul of the Patrolling Thieves and their Chief;soul_of_npc
-SHARED_SOUL_ENEMY_THIEVES;Soul of Fighting Thieves;soul_of_foe
-MM_HAMMER;Megaton Hammer (MM);hammer
-SHARED_HAMMER;Megaton Hammer;hammer
-MM_STICK_UPGRADE;Deku Stick Upgrade (MM);stick_upgrade_1
-MM_NUT_UPGRADE;Deku Nut Upgrade (MM);nut_upgrade_1
-SHARED_STICK_UPGRADE;Deku Stick Upgrade;stick_upgrade_1
-SHARED_NUT_UPGRADE;Deku Nut Upgrade;nut_upgrade_1
-OOT_BOMBCHU_BAG;Bombchu Bag (OoT);bombchu_bag
-MM_BOMBCHU_BAG;Bombchu Bag (MM);bombchu_bag
-SHARED_BOMBCHU_BAG;Bombchu Bag;bombchu_bag
-OOT_SONG_NOTE_EPONA;Note from Epona's Song (OoT);song
-OOT_SONG_NOTE_SARIA;Note from Saria's Song (OoT);song
-OOT_SONG_NOTE_STORMS;Note from Song of Storms (OoT);song
-OOT_SONG_NOTE_SUN;Note from Sun's Song (OoT);song
-OOT_SONG_NOTE_TIME;Note from Song of Time (OoT);song
-OOT_SONG_NOTE_ZELDA;Note from Zelda's Lullaby (OoT);song
-OOT_SONG_NOTE_TP_FIRE;Note from Bolero of Fire (OoT);song_red
-OOT_SONG_NOTE_TP_FOREST;Note from Minuet of Forest (OoT);song_green
-OOT_SONG_NOTE_TP_LIGHT;Note from Prelude of Light (OoT);song_yellow
-OOT_SONG_NOTE_TP_SHADOW;Note from Nocturne of Shadow (OoT);song_purple
-OOT_SONG_NOTE_TP_SPIRIT;Note from Requiem of Spirit (OoT);song_orange
-OOT_SONG_NOTE_TP_WATER;Note from Serenade of Water (OoT);song_blue
-OOT_SONG_NOTE_EMPTINESS;Note from Elegy of Emptiness (OoT);song_orange
-MM_SONG_NOTE_AWAKENING;Note from Sonata of Awakening (MM);song_green
-MM_SONG_NOTE_EMPTINESS;Note from Elegy of Emptiness (MM);song_orange
-MM_SONG_NOTE_EPONA;Note from Epona's Song (MM);song
-MM_SONG_NOTE_GORON;Note from Goron Lullaby (MM);song_red
-MM_SONG_NOTE_HEALING;Note from Song of Healing (MM);song
-MM_SONG_NOTE_ORDER;Note from Oath to Order (MM);song_purple
-MM_SONG_NOTE_SOARING;Note from Song of Soaring (MM);song
-MM_SONG_NOTE_STORMS;Note from Song of Storms (MM);song
-MM_SONG_NOTE_SUN;Note from Sun's Song (MM);song
-MM_SONG_NOTE_TIME;Note from Song of Time (MM);song
-MM_SONG_NOTE_ZORA;Note from New Wave Bossa Nova (MM);song_blue
-SHARED_SONG_NOTE_EPONA;Note from Epona's Song;song
-SHARED_SONG_NOTE_TIME;Note from Song of Time;song
-SHARED_SONG_NOTE_STORMS;Note from Song of Storms;song
-SHARED_SONG_NOTE_SUN;Note from Sun's Song;song
-SHARED_SONG_NOTE_EMPTINESS;Note from Elegy of Emptiness;song_orange
-SHARED_BOTTLE_POTION_RED;Bottle of Red Potion;red_potion
-SHARED_BOTTLE_POTION_GREEN;Bottle of Green Potion;green_potion
-SHARED_BOTTLE_POTION_BLUE;Bottle of Blue Potion;blue_potion
-SHARED_BOTTLE_FAIRY;Bottled Fairy;fairy
-SHARED_BOTTLE_POE;Bottled Poe;bottled_poe
-SHARED_BOTTLE_BIG_POE;Bottled Big Poe;bottled_big_poe
-SHARED_BOTTLE_BLUE_FIRE;Bottle of Blue Fire;blue_fire
-SHARED_BOTTLE_MILK;Bottle of Milk;milk
-SHARED_BOTTLE_CHATEAU;Bottle of Chateau Romani;chateau
-SHARED_BOTTLE_EMPTY;Empty Bottle;bottle
-SHARED_BOTTLED_GOLD_DUST;Bottle of Gold Dust;dust
-SHARED_BOTTLE_RUTO_LETTER;Ruto's Letter;ruto
-SHARED_POTION_RED;Red Potion;red_potion
-SHARED_POTION_GREEN;Green Potion;green_potion
-SHARED_POTION_BLUE;Blue Potion;blue_potion
-SHARED_FAIRY;Fairy;fairy
-SHARED_POE;Poe;bottled_poe
-SHARED_BIG_POE;Big Poe;bottle_big_poe
-SHARED_BLUE_FIRE;Blue Fire;blue_fire
-SHARED_MILK;Milk;milk
-SHARED_CHATEAU;Chateau Romani Refill;chateau
-SHARED_BUGS;Bugs;bottled_bugs
-SHARED_FISH;Fish;bottled_fish
-MM_BLUE_FIRE;Blue Fire;blue_fire
-OOT_BOTTLE_CHATEAU;Bottle of Chateau Romani;chateau
-OOT_CHATEAU;Chateau Romani Refill;chateau
-MM_BOTTLE_RUTO_LETTER;Ruto's Letter;ruto
-OOT_BOTTLED_GOLD_DUST;Bottle of Gold Dust;dust
-MM_BOTTLE_BLUE_FIRE;Bottle of Blue Fire;blue_fire
-OOT_SOUL_ANIMAL_CUCCO;Soul of Cuccos (OoT);soul_of_animal
-OOT_SOUL_ANIMAL_COW;Soul of Cows (OoT);soul_of_animal
-OOT_SOUL_ANIMAL_DOG;Soul of Dogs (OoT);soul_of_animal
-OOT_SOUL_ANIMAL_BUTTERFLY;Soul of Butterflies (OoT);soul_of_animal
-MM_SOUL_ANIMAL_CUCCO;Soul of Cuccos (MM);soul_of_animal
-MM_SOUL_ANIMAL_COW;Soul of Cows (MM);soul_of_animal
-MM_SOUL_ANIMAL_DOG;Sould of Dogs (MM);soul_of_animal
-MM_SOUL_ANIMAL_BUTTERFLY;Soul of Butterflies (MM);soul_of_animal
-SHARED_SOUL_ANIMAL_CUCCO;Soul of Cuccos;soul_of_animal
-SHARED_SOUL_ANIMAL_COW;Soul of Cows;soul_of_animal
-SHARED_SOUL_ANIMAL_DOG;Soul of Dogs;soul_of_animal
-SHARED_SOUL_ANIMAL_BUTTERFLY;Soul of Butterflies;soul_of_animal
-OOT_PLATINUM_TOKEN;Platinum Token (OoT);gs_token
-MM_PLATINUM_TOKEN;Platinum Token (MM);gs_token
-SHARED_PLATINUM_TOKEN;Platinum Token;gs_token
-OOT_LONGSHOT;Longshot (OoT);longshot
-OOT_OCARINA_TIME;Ocarina of Time (OoT);ocarina
-OOT_QUIVER2;Big Quiver (OoT);big_quiver
-OOT_QUIVER3;Biggest Quiver (OoT);biggest_quiver
-OOT_BOMB_BAG2;Big Bomb Bag (OoT);big_bomb
-OOT_BOMB_BAG3;Biggest Bomb Bag (OoT);biggest_bomb
-OOT_SILVER_GAUNTLETS;Silver Gauntlets (OoT);silver_gauntlet
-OOT_GOLDEN_GAUNTLETS;Golden Gauntlets (OoT);golden_gauntlet
-OOT_SCALE_SILVER;Silver Scale (OoT);silver
-OOT_SCALE_GOLDEN;Golden Scale (OoT);golden
-OOT_OCARINA_FAIRY;Fairy Ocarina (OoT);fairy_ocarina
-OOT_BOSS_KEY;Boss Key (OoT);boss_key
-OOT_COMPASS;Compass (OoT);compass
-OOT_MAP;Map (OoT);map
-OOT_SMALL_KEY;Small Key (OoT);small_key
-OOT_WALLET2;Adult's Wallet (OoT);wallet
-OOT_WALLET3;Giant's Wallet (OoT);big_wallet
-OOT_HEART_CONTAINER2;Heart Container (OoT);heart_container
-OOT_GORON_BRACELET;Goron's Bracelet (OoT);bracelet
-OOT_BULLET_BAG;Bullet Bag;big_seed
-OOT_BULLET_BAG2;Large Bullet Bag;biggest_seed
-OOT_TC_SMALL_KEY;Small Key (OoT);small_key
-OOT_TC_RUPEE_GREEN;Green Rupee (OoT);rupee
-OOT_TC_RUPEE_BLUE;Blue Rupee (OoT);blue_rupee
-OOT_TC_RUPEE_RED;Red Rupee (OoT);red_rupee
-OOT_TC_RUPEE_PURPLE;Purple Rupee (OoT);purple_rupee
-OOT_TC_HEART_PIECE;Piece of Heart (OoT);heart_piece
-OOT_STICK_UPGRADE2;Second Deku Stick Upgrade (OoT);stick_upgrade_2
-OOT_NUT_UPGRADE2;Second Deku Nut Upgrade (OoT);nut_upgrade_2
-OOT_BULLET_BAG3;Largest Bullet Bag;biggest_seed
-OOT_UNUSED_ICE_TRAP;Ice Trap (OoT);ice_trap
-OOT_UNK_7D;Unknown;none
-OOT_UNK_7E;Unknown;none
-OOT_UNK_7F;Unknown;none
-OOT_MAGIC_UPGRADE2;Larger Magic Upgrade (OoT);large_magic_upgrade
-OOT_PROGRESSIVE_SHIELD_DEKU;Progressive Deku Shield (OoT);deku_shield
-OOT_PROGRESSIVE_SHIELD_HYLIAN;Progressive Hylian Shield;hylian_shield
-OOT_WALLET;Child's Wallet (OoT);child_wallet
-OOT_WALLET4;Colossal Wallet (OoT);colossal_wallet
-OOT_WALLET5;Bottomless Wallet (OoT);bottomless_wallet
-OOT_TRIFORCE;Triforce Piece;triforce_piece
-OOT_KEY_RING;Key Ring (OoT);key_ring
-OOT_TRIFORCE_POWER;Triforce of Power;triforce_power
-OOT_TRIFORCE_COURAGE;Triforce of Courage;triforce_courage
-OOT_TRIFORCE_WISDOM;Triforce of Wisdom;triforce_wisdom
-OOT_BOMBCHU_BAG2;Big Bombchu Bag (OoT);bombchu_bag
-OOT_BOMBCHU_BAG3;Biggest Bombchu Bag (OoT);bombchu_bag
-OOT_BOMBCHU_BAG_FIRST_5;Bombchu Bag (OoT);bombchu_bag
-OOT_BOMBCHU_BAG_FIRST_10;Bombchu Bag (OoT);bombchu_bag
-OOT_BOMBCHU_BAG_FIRST_20;Bombchu Bag (OoT);bombchu_bag
-OOT_SWORD_RAZOR;Razor Sword (OoT);razor
-OOT_SWORD_GILDED;Gilded Sword (OoT);gilded
-OOT_TRIFORCE_FULL;Triforce (OoT);triforce_piece
-OOT_SCALE_BRONZE;Bronze Scale (OoT);bronze_scale
-OOT_WEIRD_MUSHROOM;Magic Mushroom;mushroom
-OOT_GOLD_DUST;Chateau Romani;chateau
-OOT_SEAHORSE2;Seahorse;seahorse
-MM_RUPEE_RED_10;Red Rupee (MM);red_rupee
-MM_WALLET2;Adult Wallet (MM);wallet
-MM_WALLET3;Giant Wallet (MM);big_wallet
-MM_STRAY_FAIRY;Stray Fairy (MM);sf
-MM_BOMB_BAG2;Big Bomb Bag (MM);big_bomb
-MM_BOMB_BAG3;Biggest Bomb Bag (MM);biggest_bomb
-MM_UNK_21;40 Arrows (MM);arrow
-MM_QUIVER2;Big Quiver (MM);big_quiver
-MM_QUIVER3;Biggest Quiver (MM);biggest_quiver
-MM_UNK_2B;30 Deku Nuts (MM);nut
-MM_UNK_2C;30 Deku Nuts (MM);nut
-MM_UNK_2D;40 Deku Nuts (MM);nut
+MM_SPIN_UPGRADE;Spin Attack Upgrade (MM);spin
+OOT_SPIN_UPGRADE;Spin Attack Upgrade (OoT);spin
+SHARED_SPIN_UPGRADE;Spin Attack Upgrade;spin
+OOT_MEDALLION_SPIRIT;Spirit Medallion;spirit
+OOT_MASK_SPOOKY;Spooky Mask;spooky
+MM_RUPEE_SILVER;Silver Rupee (MM);sr
+OOT_RUPEE_SILVER_BOTW;Silver Rupee (Bottom of the Well);sr
+OOT_RUPEE_SILVER_DC;Silver Rupee (Dodongo's Cavern);sr
+OOT_RUPEE_SILVER_GANON_FIRE;Silver Rupee (Ganon's Castle - Fire Trial);sr
+OOT_RUPEE_SILVER_GANON_FOREST;Silver Rupee (Ganon's Castle - Forest Trial);sr
+OOT_RUPEE_SILVER_GANON_LIGHT;Silver Rupee (Ganon's Castle - Light Trial);sr
+OOT_RUPEE_SILVER_GANON_SHADOW;Silver Rupee (Ganon's Castle - Shadow Trial);sr
+OOT_RUPEE_SILVER_GANON_SPIRIT;Silver Rupee (Ganon's Castle - Spirit Trial);sr
+OOT_RUPEE_SILVER_GANON_WATER;Silver Rupee (Ganon's Castle - Water Trial);sr
+OOT_RUPEE_SILVER_GTG_LAVA;Silver Rupee (Gerudo Training Ground - Lava);sr
+OOT_RUPEE_SILVER_GTG_SLOPES;Silver Rupee (Gerudo Training Ground - Slopes);sr
+OOT_RUPEE_SILVER_GTG_WATER;Silver Rupee (Gerudo Training Ground - Water);sr
+OOT_RUPEE_SILVER_IC_BLOCK;Silver Rupee (Ice Cavern - Block);sr
+OOT_RUPEE_SILVER_IC_SCYTHE;Silver Rupee (Ice Cavern - Scythe);sr
+OOT_RUPEE_SILVER_SHADOW_BLADES;Silver Rupee (Shadow Temple - Invisible Blades);sr
+OOT_RUPEE_SILVER_SHADOW_PIT;Silver Rupee (Shadow Temple - Large Pits);sr
+OOT_RUPEE_SILVER_SHADOW_SCYTHE;Silver Rupee (Shadow Temple - Scythe);sr
+OOT_RUPEE_SILVER_SHADOW_SPIKES;Silver Rupee (Shadow Temple - Spikes);sr
+OOT_RUPEE_SILVER_SPIRIT_ADULT;Silver Rupee (Spirit Temple - Adult);sr
+OOT_RUPEE_SILVER_SPIRIT_BOULDERS;Silver Rupee (Spirit Temple - Boulders);sr
+OOT_RUPEE_SILVER_SPIRIT_CHILD;Silver Rupee (Spirit Temple - Child);sr
+OOT_RUPEE_SILVER_SPIRIT_LOBBY;Silver Rupee (Spirit Temple - Lobby);sr
+OOT_RUPEE_SILVER_SPIRIT_SUN;Silver Rupee (Spirit Temple - Sun Block);sr
+MM_STICK;Deku Stick (MM);stick
+OOT_STICK;Deku Stick (OoT);stick
+OOT_STICKS_10;10 Deku Sticks (OoT);stick
+OOT_STICKS_5;5 Deku Sticks (OoT);stick
+SHARED_STICK;Deku Stick;stick
+SHARED_STICKS_10;10 Deku Sticks;stick
+SHARED_STICKS_5;5 Deku Sticks;stick
 MM_UNK_2F;20 Deku Sticks (MM);stick
 MM_UNK_30;20 Deku Sticks (MM);stick
 MM_UNK_31;30 Deku Sticks (MM);stick
-MM_PROGRESSIVE_SHIELD_DEKU;Progressive Deku Shield (MM);deku_shield
-MM_PROGRESSIVE_SHIELD_HERO;Progressive Hero's Shield;hero_shield
-MM_SWORD_KOKIRI;Kokiri Sword (MM);kokiri_mm
-MM_SWORD_RAZOR;Razor Sword (MM);razor
-MM_SWORD_GILDED;Gilded Sword (MM);gilded
-MM_SMALL_KEY;Small Key (MM);small_key
-MM_BOSS_KEY;Boss Key (MM);boss_key
-MM_MAP;Map (MM);map
-MM_COMPASS;Compass (MM);compass
-MM_OCARINA_OF_TIME;Ocarina of Time (MM);ocarina
-MM_WEIRD_MUSHROOM;Magic Mushroom;mushroom
-MM_GOLD_DUST;Gold Dust;dust
-MM_SEAHORSE2;Seahorse;seahorse
-MM_MAGIC_UPGRADE2;Larger Magic Upgrade (MM);large_magic_upgrade
-MM_OCARINA_FAIRY;Fairy Ocarina (MM);fairy_ocarina
-MM_HOOKSHOT_SHORT;Short Hookshot (MM);hookshot_oot
-MM_WALLET;Child Wallet (MM);child_wallet
-MM_WALLET4;Colossal Wallet (MM);colossal_wallet
-MM_OWL_HIDDEN;Owl Statue (Hidden);none
-MM_WALLET5;Bottomless Wallet (MM);bottomless_wallet
-MM_KEY_RING;Key Ring (MM);key_ring
-MM_BOMBCHU_BAG2;Big Bombchu Bag (MM);bombchu_bag
-MM_BOMBCHU_BAG3;Biggest Bombchu Bag (MM);bombchu_bag
-MM_BOMBCHU_BAG_FIRST_1;Bombchu Bag (MM);bombchu_bag
-MM_BOMBCHU_BAG_FIRST_5;Bombchu Bag (MM);bombchu_bag
-MM_BOMBCHU_BAG_FIRST_10;Bombchu Bag (MM);bombchu_bag
-MM_BOMBCHU_BAG_FIRST_20;Bombchu Bag (MM);bombchu_bag
-MM_SCALE_BRONZE;Bronze Scale (MM);bronze_scale
-MM_SCALE_SILVER;Silver Scale (MM);silver
-MM_SCALE_GOLDEN;Golden Scale (MM);golden
-MM_GORON_BRACELET;Goron's Bracelet (MM);bracelet
-MM_SILVER_GAUNTLETS;Silver Gauntlets (MM);silver_gauntlet
-MM_GOLDEN_GAUNTLETS;Golden Gauntlets (MM);golden_gauntlet
+OOT_STICK_UPGRADE;Deku Stick Upgrade (OoT);stick_upgrade_1
+MM_STICK_UPGRADE;Deku Stick Upgrade (MM);stick_upgrade_1
+SHARED_STICK_UPGRADE;Deku Stick Upgrade;stick_upgrade_1
+OOT_STICK_UPGRADE2;Second Deku Stick Upgrade (OoT);stick_upgrade_2
 MM_STICK_UPGRADE2;Second Deku Stick Upgrade (MM);stick_upgrade_2
-MM_NUT_UPGRADE2;Second Deku Nut Upgrade (MM);nut_upgrade_2
-MM_MASK_MAJORA;Majora's Mask;mask
-MM_SOLD_OUT;Sold Out;none
-MM_SCOOP;MM Scoop;none
+MM_MASK_STONE;Stone Mask (MM);stone
+OOT_MASK_STONE;Stone Mask (OoT);stone
+SHARED_MASK_STONE;Stone Mask;stone
+MM_DEED_SWAMP;Swamp Title Deed;swamp
+MM_GS_TOKEN_SWAMP;Swamp Skulltula Token;swamp_token
+SHARED_TRIFORCE_COURAGE;Triforce of Courage;triforce_courage
+OOT_TRIFORCE_COURAGE;Triforce of Courage;triforce_courage
+SHARED_TRIFORCE;Triforce Piece;triforce_piece
+OOT_TRIFORCE;Triforce Piece;triforce_piece
+OOT_TRIFORCE_FULL;Triforce (OoT);triforce_piece
+SHARED_TRIFORCE_POWER;Triforce of Power;triforce_power
+OOT_TRIFORCE_POWER;Triforce of Power;triforce_power
+SHARED_TRIFORCE_WISDOM;Triforce of Wisdom;triforce_wisdom
+OOT_TRIFORCE_WISDOM;Triforce of Wisdom;triforce_wisdom
+MM_MASK_TROUPE_LEADER;Circus Leader's Mask;troupe
+MM_MASK_TRUTH;Mask of Truth (MM);truth
+OOT_MASK_TRUTH;Mask of Truth (OoT);truth
+SHARED_MASK_TRUTH;Mask of Truth;truth
+MM_REMAINS_TWINMOLD;Twinmold's Remains;twinmold
+SHARED_WALLET;Progressive Wallet;wallet
+OOT_WALLET2;Adult's Wallet (OoT);wallet
+MM_WALLET2;Adult Wallet (MM);wallet
+OOT_MEDALLION_WATER;Water Medallion;water
+OOT_COIN_YELLOW;Coin (Yellow);yellow_coin
+MM_MASK_ZORA;Zora Mask (MM);zora
+OOT_MASK_ZORA;Zora Mask (OoT);zora
+SHARED_MASK_ZORA;Zora Mask;zora
+OOT_TUNIC_ZORA;Zora Tunic (OoT);zora_tunic
+SHARED_TUNIC_ZORA;Zora Tunic;zora_tunic
+MM_TUNIC_ZORA;Zora Tunic (MM);zora_tunic

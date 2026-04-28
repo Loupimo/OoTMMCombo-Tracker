@@ -3,6 +3,7 @@
 #include <QWidget>
 #include <QLabel>
 #include <QHash>
+#include <QSet>
 #include <QList>
 #include <QPair>
 #include <QTabBar>
@@ -30,7 +31,8 @@ typedef struct ProgEntry
 {
     EGameIcon Icon;             // Display + primary lookup key.
     const char* DisplayName;    // Label shown under the icon.
-    const char* LookupKey;      // Lowercase substring matched against the normalized item name.
+    //const char* LookupKey;      // Lowercase substring matched against the normalized item name.
+    QSet<uint32_t> LookupKeys;  
     bool IsCounter;             // Whether the widget shows a counter badge.
 } ProgEntry;
 
@@ -58,7 +60,8 @@ public:
 
     QString DisplayName;                // Human-readable name shown under the icon.
     QString IconPath;                   // Resolved icon path (falls back to Grass.png when missing).
-    QString LookupKey;                  // Normalized substring used to disambiguate items sharing the same EGameIcon.
+    //QString LookupKey;                  // Normalized substring used to disambiguate items sharing the same EGameIcon.
+    QSet<uint32_t> LookupKeys;
     EGameIcon Icon = EGameIcon::none;   // The EGameIcon associated with this widget (display + primary lookup key).
     bool IsCounter = false;             // Whether the widget shows a counter badge.
     int Count = 0;                      // Current counter value when IsCounter is true.
@@ -306,7 +309,8 @@ private:
     *
     *   @return The matching widget, or nullptr when no candidate matches.
     */
-    static ItemIconWidget* FindByIcon(const GameProgData& Data, EGameIcon Icon, const QString& Normalized);
+    //static ItemIconWidget* FindByIcon(const GameProgData& Data, EGameIcon Icon, const QString& Normalized);
+    static ItemIconWidget* FindByIcon(const GameProgData& Data, const ItemInfo* Item);
 
     /*
     *   Fallback lookup that scans every widget of a page and matches by LookupKey only.
@@ -317,5 +321,6 @@ private:
     *
     *   @return The matching widget, or nullptr when no candidate matches.
     */
-    static ItemIconWidget* FindByLookupKey(const GameProgData& Data, const QString& Normalized);
+    //static ItemIconWidget* FindByLookupKey(const GameProgData& Data, const QString& Normalized);
+    static ItemIconWidget* FindByLookupKey(const GameProgData& Data, const ItemInfo* Item);
 };

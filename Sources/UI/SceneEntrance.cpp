@@ -209,7 +209,7 @@ size_t LoadEntrancesFor(QByteArray* Data, size_t Offset, std::map<uint32_t, Scen
     size_t numOfObjs = 0;
     memcpy_s(&numOfObjs, sizeof(numOfObjs),  Data->data() + Offset, sizeof(numOfObjs));
     Offset += sizeof(numOfObjs);
-    int i = Array->size();
+    //int i = Array->size();
     if (numOfObjs != Array->size())
     {
         return -1;
