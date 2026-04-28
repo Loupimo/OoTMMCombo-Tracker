@@ -169,6 +169,9 @@
     <ClCompile Include="Sources\Combo\MMObjectScene.cpp">
       <Filter>Source Files\Combo</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\UI\ProgressionEntry.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Multi\API.h">
@@ -259,6 +262,9 @@
       <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="Headers\UI\EntranceRenderer.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\UI\ProgressionEntry.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>

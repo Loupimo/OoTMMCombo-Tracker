@@ -231,6 +231,7 @@
     <ClCompile Include="Sources\UI\MemoryReader.cpp" />
     <ClCompile Include="Sources\UI\ObjectRenderer.cpp" />
     <ClCompile Include="Sources\UI\OoTMMComboTracker.cpp" />
+    <ClCompile Include="Sources\UI\ProgressionEntry.cpp" />
     <ClCompile Include="Sources\UI\RegionTab.cpp" />
     <ClCompile Include="Sources\UI\RoomRenderer.cpp" />
     <ClCompile Include="Sources\UI\SceneEntrance.cpp" />
@@ -267,6 +268,7 @@
     <QtMoc Include="Headers\UI\EntranceTable.h" />
     <ClInclude Include="Headers\UI\EntranceRenderer.h" />
     <ClInclude Include="Headers\UI\MemoryReader.h" />
+    <ClInclude Include="Headers\UI\ProgressionEntry.h" />
     <ClInclude Include="Headers\UI\RegionTab.h" />
     <ClInclude Include="Headers\UI\RoomRenderer.h" />
     <ClInclude Include="Headers\UI\SceneEntrance.h" />
