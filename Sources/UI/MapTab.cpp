@@ -14,6 +14,7 @@
 #include "UI/FilterManager.h"
 #include "UI/AppConfig.h"
 #include "UI/ObjectRenderer.h"
+#include "UI/SceneRenderer.h"
 
 namespace {
 
@@ -916,6 +917,89 @@ void MapTab::UpdateObjectVisibility()
     if (this->RenderedScene != nullptr)
     {
         this->RenderedScene->GetScene()->UpdateSceneObjectVisibility();
+    }
+}
+
+
+void MapTab::FocusObject(ObjectInfo* Object)
+{
+    if (Object == nullptr) return;
+
+    auto it = this->Scenes.find(Object->RenderScene);
+    if (it == this->Scenes.end()) return;
+
+    SceneItemTree* sceneItem = it.value();
+    if (sceneItem == nullptr) return;
+
+    // The map list is filtered by the layout / filter settings. The target scene
+    // (and its containing region) may currently be hidden — unhide them so the
+    // user can actually see the row that just got selected.
+    if (QTreeWidgetItem* region = sceneItem->parent())
+    {
+        region->setHidden(false);
+        region->setExpanded(true);
+    }
+    sceneItem->setHidden(false);
+
+    // For multi-room scenes, the renderer is keyed off the active room: pick
+    // the room that owns the object so RenderMap loads the right minimap.
+    QTreeWidgetItem* targetItem = sceneItem;
+    if (!sceneItem->Rooms.empty())
+    {
+        sceneItem->setExpanded(true);
+        for (RoomItemTree* room : sceneItem->Rooms)
+        {
+            if (room != nullptr && room->Info.RoomID == Object->RoomID)
+            {
+                targetItem = room;
+                break;
+            }
+        }
+    }
+
+    // setCurrentItem fires currentItemChanged which routes through ChangeActiveScene
+    // -> RenderMap. When the same item is already current, the signal does not fire,
+    // so we call ChangeActiveScene explicitly if no scene is rendered yet.
+    this->MapList->setCurrentItem(targetItem);
+    if (this->RenderedScene == nullptr)
+    {
+        this->ChangeActiveScene(targetItem, nullptr);
+    }
+    this->MapList->scrollToItem(targetItem);
+
+    if (this->RenderedScene == nullptr || this->RenderedScene->Renderer == nullptr) return;
+
+    // Locate the ObjectItemTree associated with the object in the freshly rendered scene.
+    ObjectItemTree* match = nullptr;
+    for (size_t i = 0; i < ObjectType::last - 1 && match == nullptr; ++i)
+    {
+        ObjectRenderer* rdr = this->RenderedScene->Renderer->ObjectsRen[i];
+        if (rdr == nullptr) continue;
+
+        for (ObjectItemTree* leaf : rdr->Objects)
+        {
+            if (leaf != nullptr && leaf->Object == Object)
+            {
+                match = leaf;
+                break;
+            }
+        }
+    }
+
+    if (match == nullptr) return;
+
+    // Reveal the row inside its category and scroll to it.
+    if (QTreeWidgetItem* cat = match->parent())
+    {
+        cat->setExpanded(true);
+    }
+    this->ObjectList->scrollToItem(match, QAbstractItemView::PositionAtCenter);
+
+    // Always center the viewport on the object — the user explicitly asked to be
+    // taken to it, so we ignore the AutoSnap setting that gates SceneRenderer::CenterViewOn.
+    if (match->GraphItem != nullptr && this->View != nullptr)
+    {
+        this->View->centerOn(match->GraphItem);
     }
 }
 

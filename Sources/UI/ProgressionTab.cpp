@@ -1,6 +1,8 @@
 #include "UI/ProgressionTab.h"
 #include "UI/OoTMMComboTracker.h"
+#include "UI/AppConfig.h"
 #include "Combo/Scenes.h"
+#include "Multi/Game.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGridLayout>
@@ -13,6 +15,13 @@
 #include <QScrollArea>
 #include <QStringList>
 #include <QRegularExpression>
+#include <QHeaderView>
+#include <QPainter>
+#include <QPainterPath>
+#include <QApplication>
+#include <QStyle>
+#include <QStyledItemDelegate>
+#include <QFontMetrics>
 
 
 #pragma region ItemIconWidget
@@ -54,7 +63,7 @@ ItemIconWidget::ItemIconWidget(const QString& IconPath, const QString& DisplayNa
 }
 
 
-void ItemIconWidget::MarkFound(const ObjectInfo* Object)
+void ItemIconWidget::MarkFound(int Game, const ObjectInfo* Object)
 {
     this->Found = true;
     if (this->IsCounter)
@@ -64,8 +73,7 @@ void ItemIconWidget::MarkFound(const ObjectInfo* Object)
 
     if (Object != nullptr)
     {
-        this->LastObject = Object;
-        const char* sceneName = GetSceneName(this->Game, Object->Scene);
+        const char* sceneName = GetSceneName(Game, Object->Scene);
         QString sceneStr = sceneName ? QString::fromUtf8(sceneName) : QString::number(Object->Scene);
         if (!this->LocationsFound.contains(sceneStr))
         {
@@ -82,7 +90,6 @@ void ItemIconWidget::ResetFound()
     this->Found = false;
     this->Count = 0;
     this->LocationsFound.clear();
-    this->LastObject = nullptr;
     this->RefreshVisual();
 }
 
@@ -624,7 +631,7 @@ void ProgressionTab::BuildPages()
 QWidget* ProgressionTab::BuildDetailPanel()
 {
     QWidget* panel = new QWidget(this);
-    panel->setFixedWidth(260);
+    panel->setFixedWidth(300);
 
     QVBoxLayout* layout = new QVBoxLayout(panel);
     layout->setContentsMargins(16, 16, 16, 16);
@@ -644,21 +651,36 @@ QWidget* ProgressionTab::BuildDetailPanel()
     this->DetailStatus->setAlignment(Qt::AlignCenter);
     this->DetailStatus->setStyleSheet("background: transparent; color: #7a9abf; font-size: 11px;");
 
-    this->DetailLocation = new QLabel(panel);
-    this->DetailLocation->setAlignment(Qt::AlignCenter);
-    this->DetailLocation->setWordWrap(true);
-    this->DetailLocation->setStyleSheet("background: transparent; color: #7a9abf; font-size: 11px;");
-
     this->DetailCount = new QLabel(panel);
     this->DetailCount->setAlignment(Qt::AlignCenter);
     this->DetailCount->setStyleSheet("background: transparent; color: #4a9edb; font-size: 22px; font-weight: 700;");
+
+    this->DetailLocationsHeader = new QLabel("Locations", panel);
+    this->DetailLocationsHeader->setStyleSheet(
+        "background: transparent; color: #4a9edb; font-size: 11px; font-weight: 700; "
+        "letter-spacing: 0.05em; border-bottom: 1px solid #1a3050; padding-bottom: 3px;");
+
+    this->DetailLocations = new QTreeWidget(panel);
+    this->DetailLocations->setHeaderHidden(true);
+    this->DetailLocations->setColumnCount(1);
+    this->DetailLocations->setRootIsDecorated(true);
+    this->DetailLocations->setIndentation(14);
+    this->DetailLocations->setUniformRowHeights(false);
+    this->DetailLocations->setSelectionMode(QAbstractItemView::SingleSelection);
+    this->DetailLocations->setStyleSheet(
+        "QTreeWidget { background: transparent; border: none; color: #ddeeff; } "
+        "QTreeWidget::item { padding: 2px 0px; } "
+        "QTreeWidget::item:hover { background-color: rgba(74, 158, 219, 30); } "
+        "QTreeWidget::item:selected { background-color: rgba(74, 158, 219, 80); color: #ddeeff; }");
+
+    QObject::connect(this->DetailLocations, &QTreeWidget::itemClicked, this, &ProgressionTab::OnLocationClicked);
 
     layout->addWidget(this->DetailIcon, 0, Qt::AlignHCenter);
     layout->addWidget(this->DetailName);
     layout->addWidget(this->DetailStatus);
     layout->addWidget(this->DetailCount);
-    layout->addWidget(this->DetailLocation);
-    layout->addStretch(1);
+    layout->addWidget(this->DetailLocationsHeader);
+    layout->addWidget(this->DetailLocations, 1);
 
     return panel;
 }
@@ -667,6 +689,8 @@ QWidget* ProgressionTab::BuildDetailPanel()
 void ProgressionTab::ShowDetailFor(ItemIconWidget* Widget)
 {
     if (Widget == nullptr) return;
+
+    this->CurrentDetailWidget = Widget;
 
     QPixmap pixmap(Widget->IconPath);
     if (pixmap.isNull())
@@ -699,18 +723,269 @@ void ProgressionTab::ShowDetailFor(ItemIconWidget* Widget)
         this->DetailCount->hide();
     }
 
-    if (!Widget->LocationsFound.isEmpty())
+    this->BuildLocationTree(Widget);
+}
+
+
+bool ProgressionTab::ItemMatchesWidget(const ItemIconWidget* Widget, int /*Game*/, const ItemInfo* Item)
+{
+    if (Widget == nullptr || Item == nullptr) return false;
+
+    // Item collection is tracked through OnItemFound which already routes each item to
+    // its proper per-game widget; here the test is only used to enumerate every known
+    // location of the item across both games, so the Game parameter is intentionally
+    // ignored — a "Lens of Truth" widget should list its OoT and MM locations alike.
+
+    QString normalized = NormalizeItemName(QString::fromUtf8(Item->ItemName ? Item->ItemName : ""));
+    QString lookup = Widget->LookupKey;
+
+    // Primary match: same icon as the widget. The LookupKey disambiguates widgets sharing
+    // an icon (e.g. each ocarina song uses EGameIcon::song).
+    if (Widget->Icon != EGameIcon::none && Item->RenderType == Widget->Icon)
     {
-        this->DetailLocation->setText("Found in: " + Widget->LocationsFound.join(", "));
+        if (lookup.isEmpty() || normalized.contains(lookup))
+        {
+            return true;
+        }
     }
-    else if (Widget->LastObject != nullptr)
+
+    // Fallback: name-only match for items whose RenderType cannot be located in the
+    // icon hash (typically progressive items reported with RenderType=none).
+    if (!lookup.isEmpty() && normalized.contains(lookup))
     {
-        const char* sceneName = GetSceneName(Widget->Game, Widget->LastObject->Scene);
-        this->DetailLocation->setText(QString("Last: %1").arg(sceneName ? sceneName : ""));
+        return true;
     }
-    else
+
+    return false;
+}
+
+
+namespace {
+
+/* Lightweight node carrying everything OnLocationClicked needs to navigate. */
+struct LocationLeafData
+{
+    int Game;
+    ObjectInfo* Object;
+};
+
+constexpr int kLocationGameRole       = Qt::UserRole + 100;
+constexpr int kLocationObjectRole     = Qt::UserRole + 101;
+constexpr int kLocationCollectedRole  = Qt::UserRole + 102;
+
+/* Compute the icon to display for an object leaf, mirroring ObjectItemTree's logic. */
+QIcon ResolveObjectIcon(const ObjectInfo* Obj)
+{
+    if (Obj == nullptr) return QIcon();
+
+    EGameIcon iconID = Obj->MapIcon;
+    switch (Obj->MapIcon)
     {
-        this->DetailLocation->setText("");
+        case EGameIcon::type:        iconID = (EGameIcon)Obj->Type;       break;
+        case EGameIcon::render_type: iconID = (EGameIcon)Obj->RenderType; break;
+        default: break;
+    }
+
+    QIcon* base = GameIcons::GetGameIcon(iconID);
+    return base ? *base : QIcon();
+}
+
+} // namespace
+
+
+void ProgressionTab::BuildLocationTree(ItemIconWidget* Widget)
+{
+    if (this->DetailLocations == nullptr) return;
+    this->DetailLocations->clear();
+
+    if (Widget == nullptr) return;
+
+    const bool revealUncollected = AppConfig::GetRevealUncollectedItems();
+
+    // Group entries by (Game, RenderScene). The render scene is what the navigation
+    // command uses to load the right minimap, so it is the natural grouping key.
+    struct SceneBucket
+    {
+        int Game;
+        uint32_t SceneID;
+        QString DisplayName;
+        QList<QPair<ObjectInfo*, bool /*collected*/>> Entries;
+    };
+    QHash<QString, SceneBucket> buckets;
+
+    auto bucketKey = [](int Game, uint32_t SceneID) {
+        return QString::number(Game) + ":" + QString::number(SceneID);
+    };
+
+    auto addEntry = [&](int Game, ObjectInfo* Object, bool Collected) {
+        if (Object == nullptr) return;
+
+        QString key = bucketKey(Game, Object->RenderScene);
+        if (!buckets.contains(key))
+        {
+            SceneBucket b;
+            b.Game = Game;
+            b.SceneID = Object->RenderScene;
+            const char* name = GetSceneName(Game, Object->RenderScene);
+            b.DisplayName = name ? QString::fromUtf8(name) : QString::number(Object->RenderScene);
+            buckets.insert(key, b);
+        }
+
+        SceneBucket& bucket = buckets[key];
+        for (const auto& existing : bucket.Entries)
+        {
+            if (existing.first == Object) return;
+        }
+        bucket.Entries.append(qMakePair(Object, Collected));
+    };
+
+    // Always scan both games regardless of which page hosts the widget. An OoT-page
+    // widget can legitimately list MM locations (e.g. shared items like Lens of Truth,
+    // Bombchu) and vice-versa — the user wants every known placement of the item.
+    static const struct { int Game; size_t Count; } Pages[] = {
+        { OOT_GAME, OOT_NUM_SCENES },
+        { MM_GAME,  MM_NUM_SCENES  },
+    };
+
+    for (const auto& page : Pages)
+    {
+        SceneObjects* scenes = GetGameSceneObjects(page.Game);
+        if (scenes == nullptr) continue;
+
+        for (size_t s = 0; s < page.Count; ++s)
+        {
+            SceneObjects& scene = scenes[s];
+            for (size_t o = 0; o < scene.NumOfObjs; ++o)
+            {
+                ObjectInfo& obj = scene.Objects[o];
+
+                // Skip "shadow" cross-scene entries: when an object lives in scene A but
+                // renders in scene B, A's array contains a Type=none placeholder paired
+                // with the canonical entry in B's array. We only want the canonical one
+                // — both share Name, so listing both produces the visible duplicate.
+                if (obj.Scene != obj.RenderScene) continue;
+                if (obj.Type == ObjectType::none) continue;
+                if (obj.Item == nullptr) continue;
+                if (!ItemMatchesWidget(Widget, page.Game, obj.Item)) continue;
+
+                bool collected = (obj.Status != ObjectState::Hidden);
+                if (!collected && !revealUncollected) continue;
+
+                addEntry(page.Game, &obj, collected);
+            }
+        }
+    }
+
+    // Alphabetic ordering of scenes; ties (same name across games) keep OoT before MM.
+    QList<QString> orderedKeys = buckets.keys();
+    std::sort(orderedKeys.begin(), orderedKeys.end(), [&](const QString& a, const QString& b) {
+        const SceneBucket& ba = buckets.value(a);
+        const SceneBucket& bb = buckets.value(b);
+        int cmp = ba.DisplayName.compare(bb.DisplayName, Qt::CaseInsensitive);
+        if (cmp != 0) return cmp < 0;
+        return ba.Game < bb.Game;
+    });
+
+    if (orderedKeys.isEmpty())
+    {
+        QTreeWidgetItem* placeholder = new QTreeWidgetItem(this->DetailLocations);
+        placeholder->setText(0, revealUncollected ? "No known location" : "Not found yet");
+        placeholder->setForeground(0, QBrush(QColor(122, 154, 191)));
+        placeholder->setFlags(placeholder->flags() & ~Qt::ItemIsSelectable);
+        return;
+    }
+
+    for (const QString& key : orderedKeys)
+    {
+        SceneBucket bucket = buckets.value(key);
+
+        // Sort object leaves alphabetically inside the scene. Collected entries keep
+        // priority over uncollected ones so the user sees what they have first.
+        std::sort(bucket.Entries.begin(), bucket.Entries.end(),
+            [](const QPair<ObjectInfo*, bool>& a, const QPair<ObjectInfo*, bool>& b) {
+                if (a.second != b.second) return a.second && !b.second;
+                QString an = a.first && a.first->Name ? QString::fromUtf8(a.first->Name) : QString();
+                QString bn = b.first && b.first->Name ? QString::fromUtf8(b.first->Name) : QString();
+                return an.compare(bn, Qt::CaseInsensitive) < 0;
+            });
+
+        QTreeWidgetItem* sceneNode = new QTreeWidgetItem(this->DetailLocations);
+        QString accentHex = (bucket.Game == OOT_GAME) ? "#4a9edb" : "#9b5de5";
+        QColor accent(accentHex);
+        QColor headerBg = accent; headerBg.setAlpha(64);
+
+        QString suffix = QString(" (%1)").arg(bucket.Entries.size());
+        sceneNode->setText(0, bucket.DisplayName + suffix);
+        sceneNode->setBackground(0, QBrush(headerBg));
+        sceneNode->setForeground(0, QBrush(accent));
+        QFont catFont = sceneNode->font(0);
+        catFont.setBold(true);
+        sceneNode->setFont(0, catFont);
+        sceneNode->setFlags(sceneNode->flags() & ~Qt::ItemIsSelectable);
+        sceneNode->setExpanded(true);
+
+        for (const auto& entry : bucket.Entries)
+        {
+            ObjectInfo* obj = entry.first;
+            const bool collected = entry.second;
+
+            QTreeWidgetItem* leaf = new QTreeWidgetItem(sceneNode);
+            QString objectName = obj->Name ? QString::fromUtf8(obj->Name) : QString("Object");
+            leaf->setText(0, objectName);
+            leaf->setIcon(0, ResolveObjectIcon(obj));
+            leaf->setData(0, kLocationGameRole, bucket.Game);
+            leaf->setData(0, kLocationObjectRole, QVariant::fromValue<void*>(obj));
+            leaf->setData(0, kLocationCollectedRole, collected);
+
+            if (collected)
+            {
+                if (obj->Status == ObjectState::Forced)
+                {   // User-forced entries echo MapTab's amber palette.
+                    leaf->setForeground(0, QBrush(QColor(248, 200, 120)));
+                }
+                else
+                {   // Auto-collected entries: dim, neutral.
+                    leaf->setForeground(0, QBrush(QColor(204, 218, 240, 200)));
+                }
+            }
+            else
+            {   // Uncollected (only shown when RevealUncollectedItems is on).
+                leaf->setForeground(0, QBrush(QColor(141, 162, 192, 200)));
+                QFont f = leaf->font(0);
+                f.setItalic(true);
+                leaf->setFont(0, f);
+            }
+
+            QString tooltip = collected ? QString("%1 — collected").arg(objectName)
+                                        : QString("%1 — not collected yet").arg(objectName);
+            leaf->setToolTip(0, tooltip);
+        }
+    }
+}
+
+
+void ProgressionTab::OnLocationClicked(QTreeWidgetItem* Item, int /*Column*/)
+{
+    if (Item == nullptr || Item->parent() == nullptr) return; // Top-level scene rows are not navigable.
+    if ((Item->flags() & Qt::ItemIsSelectable) == 0) return;
+
+    int game = Item->data(0, kLocationGameRole).toInt();
+    void* raw = Item->data(0, kLocationObjectRole).value<void*>();
+    ObjectInfo* obj = static_cast<ObjectInfo*>(raw);
+    if (obj == nullptr) return;
+
+    if (this->WinOwner != nullptr)
+    {
+        this->WinOwner->NavigateToObject(game, obj);
+    }
+}
+
+
+void ProgressionTab::RefreshCurrentDetail()
+{
+    if (this->CurrentDetailWidget != nullptr)
+    {
+        this->BuildLocationTree(this->CurrentDetailWidget);
     }
 }
 
@@ -746,7 +1021,7 @@ void ProgressionTab::OnItemFound(int Game, ObjectInfo* Object, const ItemInfo* I
 
     if (widget != nullptr)
     {
-        widget->MarkFound(Object);
+        widget->MarkFound(Game, Object);
     }
 }
 

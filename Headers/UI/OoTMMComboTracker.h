@@ -155,6 +155,18 @@ private:
     */
     void UpdateObjectVisibilityForAllGames();
 
+public:
+
+    /*
+    *   Switch to the matching game tab, open the scene that renders the object
+    *   and center the viewport on it. Used by the progression dashboard to jump
+    *   from an item entry to its in-game location.
+    *
+    *   @param Game     The game the object belongs to.
+    *   @param Object   The object to focus on.
+    */
+    void NavigateToObject(int Game, ObjectInfo* Object);
+
 public slots:
 
     /*

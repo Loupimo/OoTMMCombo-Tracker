@@ -1,829 +1,1660 @@
-{ 0x1, "5 Bombs (OoT)", EGameIcon::bomb },
-{ 0x2, "5 Deku Nuts (OoT)", EGameIcon::nut },
-{ 0x3, "10 Bombchu (OoT)", EGameIcon::bombchu },
-{ 0x4, "Fairy Bow (OoT)", EGameIcon::bow_oot },
-{ 0x5, "Fairy Slingshot", EGameIcon::slingshot },
-{ 0x6, "Boomerang", EGameIcon::boomrang },
-{ 0x7, "Deku Stick (OoT)", EGameIcon::stick },
-{ 0x8, "Progressive Hookshot (OoT)", EGameIcon::none },
-{ 0x9, "Longshot (OoT)", EGameIcon::longshot },
-{ 0xA, "Lens of Truth (OoT)", EGameIcon::lens },
-{ 0xB, "Zelda's Letter", EGameIcon::letter },
-{ 0xC, "Ocarina of Time (OoT)", EGameIcon::ocarina },
-{ 0xD, "Megaton Hammer (OoT)", EGameIcon::hammer },
-{ 0xE, "Cojiro", EGameIcon::cojiro },
-{ 0xF, "Empty Bottle (OoT)", EGameIcon::bottle },
-{ 0x10, "Red Potion (OoT)", EGameIcon::red_potion },
-{ 0x11, "Green Potion (OoT)", EGameIcon::green_potion },
-{ 0x12, "Blue Potion (OoT)", EGameIcon::blue_potion },
-{ 0x13, "Fairy (OoT)", EGameIcon::fairy },
-{ 0x14, "Bottle of Milk (OoT)", EGameIcon::milk },
-{ 0x15, "Ruto's Letter", EGameIcon::ruto },
-{ 0x16, "Magic Beans (OoT)", EGameIcon::bean },
-{ 0x17, "Skull Mask", EGameIcon::skull },
-{ 0x18, "Spooky Mask", EGameIcon::spooky },
-{ 0x19, "Chicken", EGameIcon::cucco },
-{ 0x1A, "Keaton Mask (OoT)", EGameIcon::keaton },
-{ 0x1B, "Bunny Hood (OoT)", EGameIcon::bunny },
-{ 0x1C, "Mask of Truth (OoT)", EGameIcon::truth },
-{ 0x1D, "Pocket Egg", EGameIcon::egg },
-{ 0x1E, "Pocket Cucco", EGameIcon::cucco },
-{ 0x1F, "Odd Mushroom", EGameIcon::mushroom },
-{ 0x20, "Odd Potion", EGameIcon::potion },
-{ 0x21, "Poacher's Saw", EGameIcon::saw },
-{ 0x22, "Broken Goron's Sword", EGameIcon::biggoron },
-{ 0x23, "Prescription", EGameIcon::prescription },
-{ 0x24, "Eyeball Frog", EGameIcon::frog },
-{ 0x25, "Eye Drops", EGameIcon::eye_drops },
-{ 0x26, "Claim Check", EGameIcon::claim },
-{ 0x27, "Kokiri Sword (OoT)", EGameIcon::kokiri },
-{ 0x28, "Giant's Knife", EGameIcon::biggoron },
-{ 0x29, "Deku Shield (OoT)", EGameIcon::deku_shield },
-{ 0x2A, "Hylian Shield", EGameIcon::hylian_shield },
-{ 0x2B, "Mirror Shield (OoT)", EGameIcon::mirror_oot },
-{ 0x2C, "Goron Tunic (OoT)", EGameIcon::goron_tunic },
-{ 0x2D, "Zora Tunic (OoT)", EGameIcon::zora_tunic },
-{ 0x2E, "Iron Boots (OoT)", EGameIcon::iron },
-{ 0x2F, "Hover Boots (OoT)", EGameIcon::hover },
-{ 0x30, "Big Quiver (OoT)", EGameIcon::big_quiver },
-{ 0x31, "Biggest Quiver (OoT)", EGameIcon::biggest_quiver },
-{ 0x32, "Bomb Bag (OoT)", EGameIcon::bomb_bag },
-{ 0x33, "Big Bomb Bag (OoT)", EGameIcon::big_bomb },
-{ 0x34, "Biggest Bomb Bag (OoT)", EGameIcon::biggest_bomb },
-{ 0x35, "Silver Gauntlets (OoT)", EGameIcon::silver_gauntlet },
-{ 0x36, "Golden Gauntlets (OoT)", EGameIcon::golden_gauntlet },
-{ 0x37, "Silver Scale (OoT)", EGameIcon::silver },
-{ 0x38, "Golden Scale (OoT)", EGameIcon::golden },
-{ 0x39, "Stone of Agony (OoT)", EGameIcon::agony },
-{ 0x3A, "Gerudo's Membership Card", EGameIcon::card },
-{ 0x3B, "Fairy Ocarina (OoT)", EGameIcon::fairy_ocarina },
-{ 0x3C, "5 Deku Seeds (OoT)", EGameIcon::seeds },
-{ 0x3D, "Heart Container (OoT)", EGameIcon::heart_container },
-{ 0x3E, "Piece of Heart (OoT)", EGameIcon::heart_piece },
-{ 0x3F, "Boss Key (OoT)", EGameIcon::boss_key },
-{ 0x40, "Compass (OoT)", EGameIcon::compass },
-{ 0x41, "Map (OoT)", EGameIcon::map },
-{ 0x42, "Small Key (OoT)", EGameIcon::small_key },
-{ 0x43, "Small Magic Jar (OoT)", EGameIcon::magic },
-{ 0x44, "Large Magic Jar (OoT)", EGameIcon::double_magic },
-{ 0x45, "Adult's Wallet (OoT)", EGameIcon::wallet },
-{ 0x46, "Giant's Wallet (OoT)", EGameIcon::big_wallet },
-{ 0x47, "Weird Egg", EGameIcon::egg },
-{ 0x48, "Recovery Heart (OoT)", EGameIcon::heart },
-{ 0x49, "5 Arrows (OoT)", EGameIcon::arrow },
-{ 0x4A, "10 Arrows (OoT)", EGameIcon::arrow },
-{ 0x4B, "30 Arrows (OoT)", EGameIcon::arrow },
-{ 0x4C, "Green Rupee (OoT)", EGameIcon::rupee },
-{ 0x4D, "Blue Rupee (OoT)", EGameIcon::blue_rupee },
-{ 0x4E, "Red Rupee (OoT)", EGameIcon::red_rupee },
-{ 0x4F, "Heart Container (OoT)", EGameIcon::heart_container },
-{ 0x50, "Lon Lon Milk (OoT)", EGameIcon::milk },
-{ 0x51, "Goron Mask (OoT)", EGameIcon::goron },
-{ 0x52, "Zora Mask (OoT)", EGameIcon::zora },
-{ 0x53, "Gerudo Mask", EGameIcon::gerudo },
-{ 0x54, "Goron's Bracelet (OoT)", EGameIcon::bracelet },
-{ 0x55, "Purple Rupee (OoT)", EGameIcon::purple_rupee },
-{ 0x56, "Gold Rupee (OoT)", EGameIcon::gold_rupee },
-{ 0x57, "Biggoron's Sword", EGameIcon::biggoron },
-{ 0x58, "Fire Arrows (OoT)", EGameIcon::fire_arrow },
-{ 0x59, "Ice Arrows (OoT)", EGameIcon::ice_arrow },
-{ 0x5A, "Light Arrows (OoT)", EGameIcon::light_arrow },
-{ 0x5B, "Gold Skulltula Token", EGameIcon::gs_token },
-{ 0x5C, "Din's Fire (OoT)", EGameIcon::din },
-{ 0x5D, "Farore's Wind (OoT)", EGameIcon::farore },
-{ 0x5E, "Nayru's Love (OoT)", EGameIcon::nayru },
-{ 0x5F, "Bullet Bag", EGameIcon::big_seed },
-{ 0x60, "Large Bullet Bag", EGameIcon::biggest_seed },
-{ 0x61, "5 Deku Sticks (OoT)", EGameIcon::stick },
-{ 0x62, "10 Deku Sticks (OoT)", EGameIcon::stick },
-{ 0x63, "5 Deku Nuts (OoT)", EGameIcon::nut },
-{ 0x64, "10 Deku Nuts (OoT)", EGameIcon::nut },
-{ 0x65, "Bomb (OoT)", EGameIcon::bomb },
-{ 0x66, "10 Bombs (OoT)", EGameIcon::bomb },
-{ 0x67, "20 Bombs (OoT)", EGameIcon::bomb },
-{ 0x68, "30 Bombs (OoT)", EGameIcon::bomb },
-{ 0x69, "30 Deku Seeds", EGameIcon::seeds },
-{ 0x6A, "5 Bombchu (OoT)", EGameIcon::bombchu },
-{ 0x6B, "20 Bombchu (OoT)", EGameIcon::bombchu },
-{ 0x6C, "Fish (OoT)", EGameIcon::bottled_fish },
-{ 0x6D, "Bugs (OoT)", EGameIcon::bottled_bugs },
-{ 0x6E, "Blue Fire", EGameIcon::blue_fire },
-{ 0x6F, "Poe (OoT)", EGameIcon::bottled_poe },
-{ 0x70, "Big Poe (OoT)", EGameIcon::bottled_big_poe },
-{ 0x71, "Small Key (OoT)", EGameIcon::small_key },
-{ 0x72, "Green Rupee (OoT)", EGameIcon::rupee },
-{ 0x73, "Blue Rupee (OoT)", EGameIcon::blue_rupee },
-{ 0x74, "Red Rupee (OoT)", EGameIcon::red_rupee },
-{ 0x75, "Purple Rupee (OoT)", EGameIcon::purple_rupee },
-{ 0x76, "Piece of Heart (OoT)", EGameIcon::heart_piece },
-{ 0x77, "Deku Stick Upgrade (OoT)", EGameIcon::stick_upgrade_1 },
-{ 0x78, "Second Deku Stick Upgrade (OoT)", EGameIcon::stick_upgrade_2 },
-{ 0x79, "Deku Nut Upgrade (OoT)", EGameIcon::nut_upgrade_1 },
-{ 0x7A, "Second Deku Nut Upgrade (OoT)", EGameIcon::nut_upgrade_2 },
-{ 0x7B, "Largest Bullet Bag", EGameIcon::biggest_seed },
-{ 0x7C, "Ice Trap (OoT)", EGameIcon::ice_trap },
-{ 0x7D, "Unknown", EGameIcon::none },
-{ 0x7E, "Unknown", EGameIcon::none },
-{ 0x7F, "Unknown", EGameIcon::none },
-{ 0x80, "Rainbow Rupee (OoT)", EGameIcon::rainbow },
-{ 0x81, "Minuet of Forest", EGameIcon::song_green },
-{ 0x82, "Bolero of Fire", EGameIcon::song_red },
-{ 0x83, "Serenade of Water", EGameIcon::song_blue },
-{ 0x84, "Requiem of Spirit", EGameIcon::song_orange },
-{ 0x85, "Nocturne of Shadow", EGameIcon::song_purple },
-{ 0x86, "Prelude of Light", EGameIcon::song_yellow },
-{ 0x87, "Zelda's Lullaby", EGameIcon::song },
-{ 0x88, "Epona's Song (OoT)", EGameIcon::song },
-{ 0x89, "Saria's Song", EGameIcon::song },
-{ 0x8A, "Sun's Song (OoT)", EGameIcon::song },
-{ 0x8B, "Song of Time (OoT)", EGameIcon::song },
-{ 0x8C, "Song of Storms (OoT)", EGameIcon::song },
-{ 0x8D, "Elegy of Emptiness (OoT)", EGameIcon::song_orange },
-{ 0x8E, "Note from Minuet of Forest (OoT)", EGameIcon::song_green },
-{ 0x8F, "Note from Bolero of Fire (OoT)", EGameIcon::song_red },
-{ 0x90, "Note from Serenade of Water (OoT)", EGameIcon::song_blue },
-{ 0x91, "Note from Requiem of Spirit (OoT)", EGameIcon::song_orange },
-{ 0x92, "Note from Nocturne of Shadow (OoT)", EGameIcon::song_purple },
-{ 0x93, "Note from Prelude of Light (OoT)", EGameIcon::song_yellow },
-{ 0x94, "Note from Zelda's Lullaby (OoT)", EGameIcon::song },
-{ 0x95, "Note from Epona's Song (OoT)", EGameIcon::song },
-{ 0x96, "Note from Saria's Song (OoT)", EGameIcon::song },
-{ 0x97, "Note from Sun's Song (OoT)", EGameIcon::song },
-{ 0x98, "Note from Song of Time (OoT)", EGameIcon::song },
-{ 0x99, "Note from Song of Storms (OoT)", EGameIcon::song },
-{ 0x9A, "Note from Elegy of Emptiness (OoT)", EGameIcon::song_orange },
-{ 0x9B, "Master Sword", EGameIcon::master },
-{ 0x9C, "Kokiri's Emerald", EGameIcon::emerald },
-{ 0x9D, "Goron's Ruby", EGameIcon::ruby },
-{ 0x9E, "Zora's Sapphire", EGameIcon::sapphire },
-{ 0x9F, "Forest Medallion", EGameIcon::forest },
-{ 0xA0, "Fire Medallion", EGameIcon::fire },
-{ 0xA1, "Water Medallion", EGameIcon::water },
-{ 0xA2, "Spirit Medallion", EGameIcon::spirit },
-{ 0xA3, "Shadow Medallion", EGameIcon::shadow },
-{ 0xA4, "Light Medallion", EGameIcon::light },
-{ 0xA5, "Magic Upgrade (OoT)", EGameIcon::magic_upgrade },
-{ 0xA6, "Larger Magic Upgrade (OoT)", EGameIcon::large_magic_upgrade },
-{ 0xA7, "Double Defense (OoT)", EGameIcon::defense },
-{ 0xA8, "Progressive Deku Shield (OoT)", EGameIcon::deku_shield },
-{ 0xA9, "Progressive Hylian Shield", EGameIcon::hylian_shield },
-{ 0xAA, "Small Key (Forest Temple)", EGameIcon::small_key },
-{ 0xAB, "Small Key (Fire Temple)", EGameIcon::small_key },
-{ 0xAC, "Small Key (Water Temple)", EGameIcon::small_key },
-{ 0xAD, "Small Key (Spirit Temple)", EGameIcon::small_key },
-{ 0xAE, "Small Key (Shadow Temple)", EGameIcon::small_key },
-{ 0xAF, "Small Key (Ganon's Castle)", EGameIcon::small_key },
-{ 0xB0, "Small Key (Bottom of the Well)", EGameIcon::small_key },
-{ 0xB1, "Small Key (Gerudo's Fortress)", EGameIcon::small_key },
-{ 0xB2, "Small Key (Gerudo's Training Ground)", EGameIcon::small_key },
-{ 0xB3, "Boss Key (Forest Temple)", EGameIcon::boss_key },
-{ 0xB4, "Boss Key (Fire Temple)", EGameIcon::boss_key },
-{ 0xB5, "Boss Key (Water Temple)", EGameIcon::boss_key },
-{ 0xB6, "Boss Key (Spirit Temple)", EGameIcon::boss_key },
-{ 0xB7, "Boss Key (Shadow Temple)", EGameIcon::boss_key },
-{ 0xB8, "Boss Key (Ganon's Castle)", EGameIcon::boss_key },
-{ 0xB9, "Map (Deku Tree)", EGameIcon::map },
-{ 0xBA, "Map (Dodongo's Cavern)", EGameIcon::map },
-{ 0xBB, "Map (Jabu-Jabu's Belly)", EGameIcon::map },
-{ 0xBC, "Map (Forest Temple)", EGameIcon::map },
-{ 0xBD, "Map (Fire Temple)", EGameIcon::map },
-{ 0xBE, "Map (Water Temple)", EGameIcon::map },
-{ 0xBF, "Map (Spirit Temple)", EGameIcon::map },
-{ 0xC0, "Map (Shadow Temple)", EGameIcon::map },
-{ 0xC1, "Map (Bottom of the Well)", EGameIcon::map },
-{ 0xC2, "Map (Ice Cavern)", EGameIcon::map },
-{ 0xC3, "Compass (Deku Tree)", EGameIcon::compass },
-{ 0xC4, "Compass (Dodongo's Cavern)", EGameIcon::compass },
-{ 0xC5, "Compass (Jabu-Jabu's Belly)", EGameIcon::compass },
-{ 0xC6, "Compass (Forest Temple)", EGameIcon::compass },
-{ 0xC7, "Compass (Fire Temple)", EGameIcon::compass },
-{ 0xC8, "Compass (Water Temple)", EGameIcon::compass },
-{ 0xC9, "Compass (Spirit Temple)", EGameIcon::compass },
-{ 0xCA, "Compass (Shadow Temple)", EGameIcon::compass },
-{ 0xCB, "Compass (Bottom of the Well)", EGameIcon::compass },
-{ 0xCC, "Compass (Ice Cavern)", EGameIcon::compass },
-{ 0xCD, "Child's Wallet (OoT)", EGameIcon::child_wallet },
-{ 0xCE, "Colossal Wallet (OoT)", EGameIcon::colossal_wallet },
-{ 0xCF, "Triforce Piece", EGameIcon::triforce_piece },
-{ 0xD0, "Bottomless Wallet (OoT)", EGameIcon::bottomless_wallet },
-{ 0xD1, "Silver Rupee (Dodongo's Cavern)", EGameIcon::sr },
-{ 0xD2, "Silver Rupee (Bottom of the Well)", EGameIcon::sr },
-{ 0xD3, "Silver Rupee (Spirit Temple - Child)", EGameIcon::sr },
-{ 0xD4, "Silver Rupee (Spirit Temple - Sun Block)", EGameIcon::sr },
-{ 0xD5, "Silver Rupee (Spirit Temple - Boulders)", EGameIcon::sr },
-{ 0xD6, "Silver Rupee (Spirit Temple - Lobby)", EGameIcon::sr },
-{ 0xD7, "Silver Rupee (Spirit Temple - Adult)", EGameIcon::sr },
-{ 0xD8, "Silver Rupee (Shadow Temple - Scythe)", EGameIcon::sr },
-{ 0xD9, "Silver Rupee (Shadow Temple - Large Pits)", EGameIcon::sr },
-{ 0xDA, "Silver Rupee (Shadow Temple - Spikes)", EGameIcon::sr },
-{ 0xDB, "Silver Rupee (Shadow Temple - Invisible Blades)", EGameIcon::sr },
-{ 0xDC, "Silver Rupee (Ice Cavern - Scythe)", EGameIcon::sr },
-{ 0xDD, "Silver Rupee (Ice Cavern - Block)", EGameIcon::sr },
-{ 0xDE, "Silver Rupee (Gerudo Training Ground - Slopes)", EGameIcon::sr },
-{ 0xDF, "Silver Rupee (Gerudo Training Ground - Lava)", EGameIcon::sr },
-{ 0xE0, "Silver Rupee (Gerudo Training Ground - Water)", EGameIcon::sr },
-{ 0xE1, "Silver Rupee (Ganon's Castle - Spirit Trial)", EGameIcon::sr },
-{ 0xE2, "Silver Rupee (Ganon's Castle - Light Trial)", EGameIcon::sr },
-{ 0xE3, "Silver Rupee (Ganon's Castle - Fire Trial)", EGameIcon::sr },
-{ 0xE4, "Silver Rupee (Ganon's Castle - Forest Trial)", EGameIcon::sr },
-{ 0xE5, "Silver Rupee (Ganon's Castle - Shadow Trial)", EGameIcon::sr },
-{ 0xE6, "Silver Rupee (Ganon's Castle - Water Trial)", EGameIcon::sr },
-{ 0xE7, "Soul of Stalfos (OoT)", EGameIcon::soul_of_foe },
-{ 0xE8, "Soul of Octoroks (OoT)", EGameIcon::soul_of_foe },
-{ 0xE9, "Soul of Wallmasters (OoT)", EGameIcon::soul_of_foe },
-{ 0xEA, "Soul of Dodongos (OoT)", EGameIcon::soul_of_foe },
-{ 0xEB, "Soul of Keese (OoT)", EGameIcon::soul_of_foe },
-{ 0xEC, "Soul of Tektites (OoT)", EGameIcon::soul_of_foe },
-{ 0xED, "Soul of Leevers (OoT)", EGameIcon::soul_of_foe },
-{ 0xEE, "Soul of Peahats (OoT)", EGameIcon::soul_of_foe },
-{ 0xEF, "Soul of Lizalfos/Dinolfos (OoT)", EGameIcon::soul_of_foe },
-{ 0xF0, "Soul of Gohma Larvaes", EGameIcon::soul_of_foe },
-{ 0xF1, "Soul of Shaboms", EGameIcon::soul_of_foe },
-{ 0xF2, "Soul of Baby Dodongos", EGameIcon::soul_of_foe },
-{ 0xF3, "Soul of Dark Link", EGameIcon::soul_of_foe },
-{ 0xF4, "Soul of Biris/Baris", EGameIcon::soul_of_foe },
-{ 0xF5, "Soul of Tailpasarans", EGameIcon::soul_of_foe },
-{ 0xF6, "Soul of Jabu-Jabu's Parasites", EGameIcon::soul_of_foe },
-{ 0xF7, "Soul of Skulltulas (OoT)", EGameIcon::soul_of_foe },
-{ 0xF8, "Soul of Torch Slugs", EGameIcon::soul_of_foe },
-{ 0xF9, "Soul of Moblins", EGameIcon::soul_of_foe },
-{ 0xFA, "Soul of Armos (OoT)", EGameIcon::soul_of_foe },
-{ 0xFB, "Soul of Deku Babas (OoT)", EGameIcon::soul_of_foe },
-{ 0xFC, "Soul of Deku Scrubs (OoT)", EGameIcon::soul_of_foe },
-{ 0xFD, "Soul of Bubbles (OoT)", EGameIcon::soul_of_foe },
-{ 0xFE, "Soul of Beamos (OoT)", EGameIcon::soul_of_foe },
-{ 0xFF, "Soul of Floormasters (OoT)", EGameIcon::soul_of_foe },
-{ 0x100, "Soul of ReDeads/Gibdos (OoT)", EGameIcon::soul_of_foe },
-{ 0x101, "Soul of Skullwalltulas (OoT)", EGameIcon::soul_of_foe },
-{ 0x102, "Soul of Flare Dancers", EGameIcon::soul_of_foe },
-{ 0x103, "Soul of Dead Hands", EGameIcon::soul_of_foe },
-{ 0x104, "Soul of Shell Blades (OoT)", EGameIcon::soul_of_foe },
-{ 0x105, "Soul of Like Likes (OoT)", EGameIcon::soul_of_foe },
-{ 0x106, "Soul of Spikes", EGameIcon::soul_of_foe },
-{ 0x107, "Soul of Anubis", EGameIcon::soul_of_foe },
-{ 0x108, "Soul of Iron Knuckles (OoT)", EGameIcon::soul_of_foe },
-{ 0x109, "Soul of Skull Kids (OoT)", EGameIcon::soul_of_foe },
-{ 0x10A, "Soul of Flying Pots (OoT)", EGameIcon::soul_of_foe },
-{ 0x10B, "Soul of Freezards (OoT)", EGameIcon::soul_of_foe },
-{ 0x10C, "Soul of Stingers", EGameIcon::soul_of_foe },
-{ 0x10D, "Soul of Wolfoses (OoT)", EGameIcon::soul_of_foe },
-{ 0x10E, "Soul of Stalchildren (OoT)", EGameIcon::soul_of_foe },
-{ 0x10F, "Soul of Guays (OoT)", EGameIcon::soul_of_foe },
-{ 0x110, "Soul of the Fighting Gerudos", EGameIcon::soul_of_foe },
-{ 0x111, "Soul of Poes (OoT)", EGameIcon::soul_of_foe },
-{ 0x112, "Soul of Queen Gohma", EGameIcon::soul_of_boss },
-{ 0x113, "Soul of King Dodongo", EGameIcon::soul_of_boss },
-{ 0x114, "Soul of Barinade", EGameIcon::soul_of_boss },
-{ 0x115, "Soul of Phantom Ganon", EGameIcon::soul_of_boss },
-{ 0x116, "Soul of Volvagia", EGameIcon::soul_of_boss },
-{ 0x117, "Soul of Morpha", EGameIcon::soul_of_boss },
-{ 0x118, "Soul of Bongo Bongo", EGameIcon::soul_of_boss },
-{ 0x119, "Soul of Twinrova", EGameIcon::soul_of_boss },
-{ 0x11A, "Soul of Saria", EGameIcon::soul_of_npc },
-{ 0x11B, "Soul of Darunia", EGameIcon::soul_of_npc },
-{ 0x11C, "Soul of Ruto (OoT)", EGameIcon::soul_of_npc },
-{ 0x11D, "Soul of King Zora", EGameIcon::soul_of_npc },
-{ 0x11E, "Soul of Zelda", EGameIcon::soul_of_npc },
-{ 0x11F, "Soul of Sheik", EGameIcon::soul_of_npc },
-{ 0x120, "Soul of Cucco Lady (OoT)", EGameIcon::soul_of_npc },
-{ 0x121, "Soul of Carpenters (OoT)", EGameIcon::soul_of_npc },
-{ 0x122, "Soul of Guru-Guru (OoT)", EGameIcon::soul_of_npc },
-{ 0x123, "Soul of Mido", EGameIcon::soul_of_npc },
-{ 0x124, "Soul of Kokiri", EGameIcon::soul_of_npc },
-{ 0x125, "Soul of Kokiri Shopkeeper", EGameIcon::soul_of_npc },
-{ 0x126, "Soul of Hylian Guard", EGameIcon::soul_of_npc },
-{ 0x127, "Soul of the Citizens (OoT)", EGameIcon::soul_of_npc },
-{ 0x128, "Soul of Malon (OoT)", EGameIcon::soul_of_npc },
-{ 0x129, "Soul of Talon (OoT)", EGameIcon::soul_of_npc },
-{ 0x12A, "Soul of Fishing Pond Owner (OoT)", EGameIcon::soul_of_npc },
-{ 0x12B, "Soul of Goron (OoT)", EGameIcon::soul_of_npc },
-{ 0x12C, "Soul of Medigoron (OoT)", EGameIcon::soul_of_npc },
-{ 0x12D, "Soul of Biggoron (OoT)", EGameIcon::soul_of_npc },
-{ 0x12E, "Soul of Goron Child (OoT)", EGameIcon::soul_of_npc },
-{ 0x12F, "Soul of Goron Shopkeeper (OoT)", EGameIcon::soul_of_npc },
-{ 0x130, "Soul of Zora (OoT)", EGameIcon::soul_of_npc },
-{ 0x131, "Soul of Zora Shopkeeper (OoT)", EGameIcon::soul_of_npc },
-{ 0x132, "Soul of Bazaar Shopkeeper (OoT)", EGameIcon::soul_of_npc },
-{ 0x133, "Soul of Bombchu Shopkeeper (OoT)", EGameIcon::soul_of_npc },
-{ 0x134, "Soul of Potion Shopkeeper", EGameIcon::soul_of_npc },
-{ 0x135, "Soul of Bombchu Bowling Lady (OoT)", EGameIcon::soul_of_npc },
-{ 0x136, "Soul of Chest Game Owner (OoT)", EGameIcon::soul_of_npc },
-{ 0x137, "Soul of Shooting Gallery Owner (OoT)", EGameIcon::soul_of_npc },
-{ 0x138, "Soul of Dampe (OoT)", EGameIcon::soul_of_npc },
-{ 0x139, "Soul of Graveyard Kid (OoT)", EGameIcon::soul_of_npc },
-{ 0x13A, "Soul of Poe Collector (OoT)", EGameIcon::soul_of_npc },
-{ 0x13B, "Soul of Composer Bros. (OoT)", EGameIcon::soul_of_npc },
-{ 0x13C, "Soul of Honey & Darling (OoT)", EGameIcon::soul_of_npc },
-{ 0x13D, "Soul of the Astronomer (OoT)", EGameIcon::soul_of_npc },
-{ 0x13E, "Soul of the Rooftop Man (OoT)", EGameIcon::soul_of_npc },
-{ 0x13F, "Soul of the Bean Salesman (OoT)", EGameIcon::soul_of_npc },
-{ 0x140, "Soul of the Scientist (OoT)", EGameIcon::soul_of_npc },
-{ 0x141, "Soul of Ingo (OoT)", EGameIcon::soul_of_npc },
-{ 0x142, "Soul of the Punk Kid (OoT)", EGameIcon::soul_of_npc },
-{ 0x143, "Soul of the Dog Lady (OoT)", EGameIcon::soul_of_npc },
-{ 0x144, "Soul of the Carpet Man (OoT)", EGameIcon::soul_of_npc },
-{ 0x145, "Soul of the Old Hag (OoT)", EGameIcon::soul_of_npc },
-{ 0x146, "Soul of the Beggar (OoT)", EGameIcon::soul_of_npc },
-{ 0x147, "Soul of the Patrolling Gerudos", EGameIcon::soul_of_npc },
-{ 0x148, "Soul of Cuccos (OoT)", EGameIcon::soul_of_animal },
-{ 0x149, "Soul of Cows (OoT)", EGameIcon::soul_of_animal },
-{ 0x14A, "Soul of Dogs (OoT)", EGameIcon::soul_of_animal },
-{ 0x14B, "Soul of Butterflies (OoT)", EGameIcon::soul_of_animal },
-{ 0x14C, "Soul of Gold Skulltulas (OoT)", EGameIcon::soul_of_npc },
-{ 0x14D, "Soul of Business Scrubs (OoT)", EGameIcon::soul_of_npc },
-{ 0x14E, "Key Ring (OoT)", EGameIcon::key_ring },
-{ 0x14F, "Key Ring (Forest)", EGameIcon::key_ring },
-{ 0x150, "Key Ring (Fire)", EGameIcon::key_ring },
-{ 0x151, "Key Ring (Water)", EGameIcon::key_ring },
-{ 0x152, "Key Ring (Spirit)", EGameIcon::key_ring },
-{ 0x153, "Key Ring (Shadow)", EGameIcon::key_ring },
-{ 0x154, "Key Ring (Ganon)", EGameIcon::key_ring },
-{ 0x155, "Key Ring (Well)", EGameIcon::key_ring },
-{ 0x156, "Key Ring (Hideout)", EGameIcon::key_ring },
-{ 0x157, "Key Ring (GTG)", EGameIcon::key_ring },
-{ 0x158, "Skeleton Key (OoT)", EGameIcon::skeleton_key },
-{ 0x159, "Coin (Red)", EGameIcon::red_coin },
-{ 0x15A, "Coin (Green)", EGameIcon::green_coin },
-{ 0x15B, "Coin (Blue)", EGameIcon::blue_coin },
-{ 0x15C, "Coin (Yellow)", EGameIcon::yellow_coin },
-{ 0x15D, "Triforce of Power", EGameIcon::triforce_power },
-{ 0x15E, "Triforce of Courage", EGameIcon::triforce_courage },
-{ 0x15F, "Triforce of Wisdom", EGameIcon::triforce_wisdom },
-{ 0x160, "Silver Rupee Pouch (Dodongo's Cavern)", EGameIcon::silver_pouch },
-{ 0x161, "Silver Rupee Pouch (Bottom of the Well)", EGameIcon::silver_pouch },
-{ 0x162, "Silver Rupee Pouch (Spirit Temple - Child)", EGameIcon::silver_pouch },
-{ 0x163, "Silver Rupee Pouch (Spirit Temple - Sun Block)", EGameIcon::silver_pouch },
-{ 0x164, "Silver Rupee Pouch (Spirit Temple - Boulders)", EGameIcon::silver_pouch },
-{ 0x165, "Silver Rupee Pouch (Spirit Temple - Lobby)", EGameIcon::silver_pouch },
-{ 0x166, "Silver Rupee Pouch (Spirit Temple - Adult)", EGameIcon::silver_pouch },
-{ 0x167, "Silver Rupee Pouch (Shadow Temple - Scythe)", EGameIcon::silver_pouch },
-{ 0x168, "Silver Rupee Pouch (Shadow Temple - Large Pits)", EGameIcon::silver_pouch },
-{ 0x169, "Silver Rupee Pouch (Shadow Temple - Spikes)", EGameIcon::silver_pouch },
-{ 0x16A, "Silver Rupee Pouch (Shadow Temple - Invisible Blades)", EGameIcon::silver_pouch },
-{ 0x16B, "Silver Rupee Pouch (Ice Cavern - Scythe)", EGameIcon::silver_pouch },
-{ 0x16C, "Silver Rupee Pouch (Ice Cavern - Block)", EGameIcon::silver_pouch },
-{ 0x16D, "Silver Rupee Pouch (Gerudo Training Ground - Slopes)", EGameIcon::silver_pouch },
-{ 0x16E, "Silver Rupee Pouch (Gerudo Training Ground - Lava)", EGameIcon::silver_pouch },
-{ 0x16F, "Silver Rupee Pouch (Gerudo Training Ground - Water)", EGameIcon::silver_pouch },
-{ 0x170, "Silver Rupee Pouch (Ganon's Castle - Spirit Trial)", EGameIcon::silver_pouch },
-{ 0x171, "Silver Rupee Pouch (Ganon's Castle - Light Trial)", EGameIcon::silver_pouch },
-{ 0x172, "Silver Rupee Pouch (Ganon's Castle - Fire Trial)", EGameIcon::silver_pouch },
-{ 0x173, "Silver Rupee Pouch (Ganon's Castle - Forest Trial)", EGameIcon::silver_pouch },
-{ 0x174, "Silver Rupee Pouch (Ganon's Castle - Shadow Trial)", EGameIcon::silver_pouch },
-{ 0x175, "Silver Rupee Pouch (Ganon's Castle - Water Trial)", EGameIcon::silver_pouch },
-{ 0x176, "Magical Silver Rupee", EGameIcon::magical_rupee },
-{ 0x177, "A Button (OoT)", EGameIcon::a_button },
-{ 0x178, "C-Right Button (OoT)", EGameIcon::c_right },
-{ 0x179, "C-Left Button (OoT)", EGameIcon::c_left },
-{ 0x17A, "C-Up Button (OoT)", EGameIcon::c_up },
-{ 0x17B, "C-Down Button (OoT)", EGameIcon::c_down },
-{ 0x17C, "Small Key (Chest Game)", EGameIcon::small_key },
-{ 0x17D, "Key Ring (Chest Game)", EGameIcon::key_ring },
-{ 0x17E, "Bottle of Red Potion (OoT)", EGameIcon::red_potion },
-{ 0x17F, "Bottle of Green Potion (OoT)", EGameIcon::green_potion },
-{ 0x180, "Bottle of Blue Potion (OoT)", EGameIcon::blue_potion },
-{ 0x181, "Bottled Fairy (OoT)", EGameIcon::bottled_fairy },
-{ 0x182, "Bottled Poe (OoT)", EGameIcon::bottled_poe },
-{ 0x183, "Bottled Big Poe (OoT)", EGameIcon::bottled_big_poe },
-{ 0x184, "Bottle of Blue Fire", EGameIcon::blue_fire },
-{ 0x185, "Child Fish (2 pounds)", EGameIcon::carp_fish },
-{ 0x186, "Child Fish (3 pounds)", EGameIcon::carp_fish },
-{ 0x187, "Child Fish (4 pounds)", EGameIcon::carp_fish },
-{ 0x188, "Child Fish (5 pounds)", EGameIcon::carp_fish },
-{ 0x189, "Child Fish (6 pounds)", EGameIcon::carp_fish },
-{ 0x18A, "Child Fish (7 pounds)", EGameIcon::carp_fish },
-{ 0x18B, "Child Fish (8 pounds)", EGameIcon::carp_fish },
-{ 0x18C, "Child Fish (9 pounds)", EGameIcon::carp_fish },
-{ 0x18D, "Child Fish (10 pounds)", EGameIcon::carp_fish },
-{ 0x18E, "Child Fish (11 pounds)", EGameIcon::carp_fish },
-{ 0x18F, "Child Fish (12 pounds)", EGameIcon::carp_fish },
-{ 0x190, "Child Fish (13 pounds)", EGameIcon::carp_fish },
-{ 0x191, "Child Fish (14 pounds)", EGameIcon::carp_fish },
-{ 0x192, "Adult Fish (4 pounds)", EGameIcon::carp_fish },
-{ 0x193, "Adult Fish (5 pounds)", EGameIcon::carp_fish },
-{ 0x194, "Adult Fish (6 pounds)", EGameIcon::carp_fish },
-{ 0x195, "Adult Fish (7 pounds)", EGameIcon::carp_fish },
-{ 0x196, "Adult Fish (8 pounds)", EGameIcon::carp_fish },
-{ 0x197, "Adult Fish (9 pounds)", EGameIcon::carp_fish },
-{ 0x198, "Adult Fish (10 pounds)", EGameIcon::carp_fish },
-{ 0x199, "Adult Fish (11 pounds)", EGameIcon::carp_fish },
-{ 0x19A, "Adult Fish (12 pounds)", EGameIcon::carp_fish },
-{ 0x19B, "Adult Fish (13 pounds)", EGameIcon::carp_fish },
-{ 0x19C, "Adult Fish (14 pounds)", EGameIcon::carp_fish },
-{ 0x19D, "Adult Fish (15 pounds)", EGameIcon::carp_fish },
-{ 0x19E, "Adult Fish (16 pounds)", EGameIcon::carp_fish },
-{ 0x19F, "Adult Fish (17 pounds)", EGameIcon::carp_fish },
-{ 0x1A0, "Adult Fish (18 pounds)", EGameIcon::carp_fish },
-{ 0x1A1, "Adult Fish (19 pounds)", EGameIcon::carp_fish },
-{ 0x1A2, "Adult Fish (20 pounds)", EGameIcon::carp_fish },
-{ 0x1A3, "Adult Fish (21 pounds)", EGameIcon::carp_fish },
-{ 0x1A4, "Adult Fish (22 pounds)", EGameIcon::carp_fish },
-{ 0x1A5, "Adult Fish (23 pounds)", EGameIcon::carp_fish },
-{ 0x1A6, "Adult Fish (24 pounds)", EGameIcon::carp_fish },
-{ 0x1A7, "Adult Fish (25 pounds)", EGameIcon::carp_fish },
-{ 0x1A8, "Child Loach (14 pounds)", EGameIcon::carp_fish },
-{ 0x1A9, "Child Loach (15 pounds)", EGameIcon::carp_fish },
-{ 0x1AA, "Child Loach (16 pounds)", EGameIcon::carp_fish },
-{ 0x1AB, "Child Loach (17 pounds)", EGameIcon::carp_fish },
-{ 0x1AC, "Child Loach (18 pounds)", EGameIcon::carp_fish },
-{ 0x1AD, "Child Loach (19 pounds)", EGameIcon::carp_fish },
-{ 0x1AE, "Adult Loach (29 pounds)", EGameIcon::carp_fish },
-{ 0x1AF, "Adult Loach (30 pounds)", EGameIcon::carp_fish },
-{ 0x1B0, "Adult Loach (31 pounds)", EGameIcon::carp_fish },
-{ 0x1B1, "Adult Loach (32 pounds)", EGameIcon::carp_fish },
-{ 0x1B2, "Adult Loach (33 pounds)", EGameIcon::carp_fish },
-{ 0x1B3, "Adult Loach (34 pounds)", EGameIcon::carp_fish },
-{ 0x1B4, "Adult Loach (35 pounds)", EGameIcon::carp_fish },
-{ 0x1B5, "Adult Loach (36 pounds)", EGameIcon::carp_fish },
-{ 0x1B6, "Bombchu Bag (OoT)", EGameIcon::bombchu_bag },
-{ 0x1B7, "Big Bombchu Bag (OoT)", EGameIcon::bombchu_bag },
-{ 0x1B8, "Biggest Bombchu Bag (OoT)", EGameIcon::bombchu_bag },
-{ 0x1B9, "Bombchu Bag (OoT)", EGameIcon::bombchu_bag },
-{ 0x1BA, "Bombchu Bag (OoT)", EGameIcon::bombchu_bag },
-{ 0x1BB, "Bombchu Bag (OoT)", EGameIcon::bombchu_bag },
-{ 0x1BC, "Razor Sword (OoT)", EGameIcon::razor },
-{ 0x1BD, "Gilded Sword (OoT)", EGameIcon::gilded },
-{ 0x1BE, "Spin Attack Upgrade (OoT)", EGameIcon::spin },
-{ 0x1BF, "Triforce (OoT)", EGameIcon::triforce_piece },
-{ 0x1C0, "Big Fairy (OoT)", EGameIcon::fairy },
-{ 0x1C1, "Blast Mask (OoT)", EGameIcon::blast },
-{ 0x1C2, "Stone Mask (OoT)", EGameIcon::stone },
-{ 0x1C3, "Bronze Scale (OoT)", EGameIcon::bronze_scale },
-{ 0x1C4, "Magic Mushroom", EGameIcon::mushroom },
-{ 0x1C5, "Chateau Romani Refill", EGameIcon::chateau },
-{ 0x1C6, "Chateau Romani", EGameIcon::chateau },
-{ 0x1C7, "Seahorse", EGameIcon::seahorse },
-{ 0x1C8, "Bottle of Gold Dust", EGameIcon::dust },
-{ 0x1C9, "Bottle of Chateau Romani", EGameIcon::chateau },
-{ 0x1CA, "Ice Trap", EGameIcon::ice_trap },
-{ 0x1CB, "Fire Trap", EGameIcon::fire_trap },
-{ 0x1CC, "Shock Trap", EGameIcon::shock_trap },
-{ 0x1CD, "Drain Trap", EGameIcon::drain_trap },
-{ 0x1CE, "Anti-Magic Trap", EGameIcon::magic_trap },
-{ 0x1CF, "Knockback Trap", EGameIcon::knockback_trap },
-{ 0x1D0, "Rupoor", EGameIcon::rupoor },
-{ 0x1D1, "Platinum Token (OoT)", EGameIcon::gs_token },
-{ 0x1D2, "Green Rupee (MM)", EGameIcon::rupee },
-{ 0x1D3, "Blue Rupee (MM)", EGameIcon::blue_rupee },
-{ 0x1D4, "Red Rupee (MM)", EGameIcon::red_rupee },
-{ 0x1D5, "Red Rupee (MM)", EGameIcon::red_rupee },
-{ 0x1D6, "Purple Rupee (MM)", EGameIcon::purple_rupee },
-{ 0x1D7, "Silver Rupee (MM)", EGameIcon::sr },
-{ 0x1D8, "Gold Rupee (MM)", EGameIcon::gold_rupee },
-{ 0x1D9, "Adult Wallet (MM)", EGameIcon::wallet },
-{ 0x1DA, "Giant Wallet (MM)", EGameIcon::big_wallet },
-{ 0x1DB, "Recovery Heart (MM)", EGameIcon::heart },
-{ 0x1DC, "Piece of Heart (MM)", EGameIcon::heart_piece },
-{ 0x1DD, "Heart Container (MM)", EGameIcon::heart_container },
-{ 0x1DE, "Small Magic Jar (MM)", EGameIcon::magic },
-{ 0x1DF, "Large Magic Jar (MM)", EGameIcon::double_magic },
-{ 0x1E0, "Stray Fairy (MM)", EGameIcon::sf },
-{ 0x1E1, "Stray Fairy (Woodfall Temple)", EGameIcon::sf },
-{ 0x1E2, "Stray Fairy (Snowhead Temple)", EGameIcon::sf_green },
-{ 0x1E3, "Stray Fairy (Great Bay Temple)", EGameIcon::sf_blue },
-{ 0x1E4, "Stray Fairy (Stone Tower Temple)", EGameIcon::sf_yellow },
-{ 0x1E5, "Stray Fairy (Clock Town)", EGameIcon::sf_orange },
-{ 0x1E6, "Transcendent Fairy", EGameIcon::sf_transcendent },
-{ 0x1E7, "Bomb (MM)", EGameIcon::bomb },
-{ 0x1E8, "5 Bombs (MM)", EGameIcon::bomb },
-{ 0x1E9, "10 Bombs (MM)", EGameIcon::bomb },
-{ 0x1EA, "20 Bombs (MM)", EGameIcon::bomb },
-{ 0x1EB, "30 Bombs (MM)", EGameIcon::bomb },
-{ 0x1EC, "Deku Stick (MM)", EGameIcon::stick },
-{ 0x1ED, "10 Bombchu (MM)", EGameIcon::bombchu },
-{ 0x1EE, "Bomb Bag (MM)", EGameIcon::bomb_bag },
-{ 0x1EF, "Big Bomb Bag (MM)", EGameIcon::big_bomb },
-{ 0x1F0, "Biggest Bomb Bag (MM)", EGameIcon::biggest_bomb },
-{ 0x1F1, "10 Arrows (MM)", EGameIcon::arrow },
-{ 0x1F2, "30 Arrows (MM)", EGameIcon::arrow },
-{ 0x1F3, "40 Arrows (MM)", EGameIcon::arrow },
-{ 0x1F4, "40 Arrows (MM)", EGameIcon::arrow },
-{ 0x1F5, "Hero's Bow (MM)", EGameIcon::bow_mm },
-{ 0x1F6, "Big Quiver (MM)", EGameIcon::big_quiver },
-{ 0x1F7, "Biggest Quiver (MM)", EGameIcon::biggest_quiver },
-{ 0x1F8, "Fire Arrows (MM)", EGameIcon::fire_arrow },
-{ 0x1F9, "Ice Arrows (MM)", EGameIcon::ice_arrow },
-{ 0x1FA, "Light Arrows (MM)", EGameIcon::light_arrow },
-{ 0x1FB, "Nut (MM)", EGameIcon::nut },
-{ 0x1FC, "5 Deku Nuts (MM)", EGameIcon::nut },
-{ 0x1FD, "10 Deku Nuts (MM)", EGameIcon::nut },
-{ 0x1FE, "30 Deku Nuts (MM)", EGameIcon::nut },
-{ 0x1FF, "30 Deku Nuts (MM)", EGameIcon::nut },
-{ 0x200, "40 Deku Nuts (MM)", EGameIcon::nut },
-{ 0x201, "20 Bombchu (MM)", EGameIcon::bombchu },
-{ 0x202, "20 Deku Sticks (MM)", EGameIcon::stick },
-{ 0x203, "20 Deku Sticks (MM)", EGameIcon::stick },
-{ 0x204, "30 Deku Sticks (MM)", EGameIcon::stick },
-{ 0x205, "Deku Shield (MM)", EGameIcon::deku_shield },
-{ 0x206, "Hero's Shield", EGameIcon::hero_shield },
-{ 0x207, "Mirror Shield (MM)", EGameIcon::mirror_mm },
-{ 0x208, "Progressive Deku Shield (MM)", EGameIcon::deku_shield },
-{ 0x209, "Progressive Hero's Shield", EGameIcon::hero_shield },
-{ 0x20A, "Powder Keg", EGameIcon::powder },
-{ 0x20B, "Magic Bean (MM)", EGameIcon::bean },
-{ 0x20C, "1 Bombchu (MM)", EGameIcon::bombchu },
-{ 0x20D, "Kokiri Sword (MM)", EGameIcon::kokiri_mm },
-{ 0x20E, "Razor Sword (MM)", EGameIcon::razor },
-{ 0x20F, "Gilded Sword (MM)", EGameIcon::gilded },
-{ 0x210, "5 Bombchu (MM)", EGameIcon::bombchu },
-{ 0x211, "Great Fairy's Sword", EGameIcon::fairy_sword },
-{ 0x212, "Small Key (MM)", EGameIcon::small_key },
-{ 0x213, "Boss Key (MM)", EGameIcon::boss_key },
-{ 0x214, "Map (MM)", EGameIcon::map },
-{ 0x215, "Compass (MM)", EGameIcon::compass },
-{ 0x216, "Hookshot (MM)", EGameIcon::hookshot_mm },
-{ 0x217, "Lens of Truth (MM)", EGameIcon::lens },
-{ 0x218, "Pictograph Box", EGameIcon::picto },
-{ 0x219, "Ocarina of Time (MM)", EGameIcon::ocarina },
-{ 0x21A, "Bombers' Notebook", EGameIcon::bombers },
-{ 0x21B, "Bottle of Red Potion (MM)", EGameIcon::red_potion },
-{ 0x21C, "Empty Bottle (MM)", EGameIcon::bottle },
-{ 0x21D, "Red Potion (MM)", EGameIcon::red_potion },
-{ 0x21E, "Green Potion (MM)", EGameIcon::green_potion },
-{ 0x21F, "Blue Potion (MM)", EGameIcon::blue_potion },
-{ 0x220, "Fairy (MM)", EGameIcon::fairy },
-{ 0x221, "Bottle of Milk (MM)", EGameIcon::milk },
-{ 0x222, "Fish (MM)", EGameIcon::bottled_fish },
-{ 0x223, "Bugs (MM)", EGameIcon::bottled_bugs },
-{ 0x224, "Big Poe (MM)", EGameIcon::bottled_big_poe },
-{ 0x225, "Bottle of Gold Dust", EGameIcon::dust },
-{ 0x226, "Magic Mushroom", EGameIcon::mushroom },
-{ 0x227, "Bottle of Chateau Romani", EGameIcon::chateau },
-{ 0x228, "Deku Mask", EGameIcon::deku },
-{ 0x229, "Goron Mask (MM)", EGameIcon::goron },
-{ 0x22A, "Zora Mask (MM)", EGameIcon::zora },
-{ 0x22B, "Fierce Deity's Mask", EGameIcon::deity },
-{ 0x22C, "Captain's Hat", EGameIcon::captain },
-{ 0x22D, "Giant's Mask", EGameIcon::giant },
-{ 0x22E, "All-Night Mask", EGameIcon::night },
-{ 0x22F, "Bunny Hood (MM)", EGameIcon::bunny },
-{ 0x230, "Keaton Mask", EGameIcon::keaton },
-{ 0x231, "Garo's Mask", EGameIcon::garo },
-{ 0x232, "Romani's Mask", EGameIcon::romani },
-{ 0x233, "Circus Leader's Mask", EGameIcon::troupe },
-{ 0x234, "Postman's Hat", EGameIcon::postman },
-{ 0x235, "Couple's Mask", EGameIcon::couple },
-{ 0x236, "Great Fairy's Mask", EGameIcon::fairy_mask },
-{ 0x237, "Gibdo Mask", EGameIcon::gibdo },
-{ 0x238, "Don Gero's Mask", EGameIcon::gero },
-{ 0x239, "Kamaro's Mask", EGameIcon::kamaro },
-{ 0x23A, "Mask of Truth (MM)", EGameIcon::truth },
-{ 0x23B, "Stone Mask (MM)", EGameIcon::stone },
-{ 0x23C, "Bremen Mask", EGameIcon::bremen },
-{ 0x23D, "Blast Mask (MM)", EGameIcon::blast },
-{ 0x23E, "Mask of Scents", EGameIcon::scents },
-{ 0x23F, "Kafei's Mask", EGameIcon::kafei },
-{ 0x240, "Chateau Romani Refill (MM)", EGameIcon::chateau },
-{ 0x241, "Romani Milk", EGameIcon::milk },
-{ 0x242, "Gold Dust", EGameIcon::dust },
-{ 0x243, "Seahorse", EGameIcon::seahorse },
-{ 0x244, "Moon's Tear", EGameIcon::moon },
-{ 0x245, "Land Title Deed", EGameIcon::land },
-{ 0x246, "Swamp Title Deed", EGameIcon::swamp },
-{ 0x247, "Mountain Title Deed", EGameIcon::mountain },
-{ 0x248, "Ocean Title Deed", EGameIcon::ocean },
-{ 0x249, "Room Key", EGameIcon::key },
-{ 0x24A, "Letter to Mama", EGameIcon::letter_mama },
-{ 0x24B, "Letter to Kafei", EGameIcon::letter_kafei },
-{ 0x24C, "Pendant of Memories", EGameIcon::pendant },
-{ 0x24D, "World Map of Clock Town", EGameIcon::map },
-{ 0x24E, "World Map of Woodfall", EGameIcon::map },
-{ 0x24F, "World Map of Snowhead", EGameIcon::map },
-{ 0x250, "World Map of Ranch", EGameIcon::map },
-{ 0x251, "World Map of Great Bay", EGameIcon::map },
-{ 0x252, "World Map of Stone Tower", EGameIcon::map },
-{ 0x253, "Magic Upgrade (MM)", EGameIcon::magic_upgrade },
-{ 0x254, "Larger Magic Upgrade (MM)", EGameIcon::large_magic_upgrade },
-{ 0x255, "Double Defense (MM)", EGameIcon::defense },
-{ 0x256, "Spin Attack Upgrade (MM)", EGameIcon::spin },
-{ 0x257, "Sonata of Awakening", EGameIcon::song_green },
-{ 0x258, "Goron Lullaby", EGameIcon::song_red },
-{ 0x259, "New Wave Bossa Nova", EGameIcon::song_blue },
-{ 0x25A, "Elegy of Emptiness (MM)", EGameIcon::song_orange },
-{ 0x25B, "Oath to Order", EGameIcon::song_purple },
-{ 0x25C, "Song of Time (MM)", EGameIcon::song },
-{ 0x25D, "Song of Healing", EGameIcon::song },
-{ 0x25E, "Epona's Song (MM)", EGameIcon::song },
-{ 0x25F, "Song of Soaring", EGameIcon::song },
-{ 0x260, "Song of Storms (MM)", EGameIcon::song },
-{ 0x261, "Sun's Song (MM)", EGameIcon::song },
-{ 0x262, "Progressive Goron Lullaby", EGameIcon::song_red },
-{ 0x263, "Note from Sonata of Awakening (MM)", EGameIcon::song_green },
-{ 0x264, "Note from Goron Lullaby (MM)", EGameIcon::song_red },
-{ 0x265, "Note from New Wave Bossa Nova (MM)", EGameIcon::song_blue },
-{ 0x266, "Note from Elegy of Emptiness (MM)", EGameIcon::song_orange },
-{ 0x267, "Note from Oath to Order (MM)", EGameIcon::song_purple },
-{ 0x268, "Note from Song of Time (MM)", EGameIcon::song },
-{ 0x269, "Note from Song of Healing (MM)", EGameIcon::song },
-{ 0x26A, "Note from Epona's Song (MM)", EGameIcon::song },
-{ 0x26B, "Note from Song of Soaring (MM)", EGameIcon::song },
-{ 0x26C, "Note from Song of Storms (MM)", EGameIcon::song },
-{ 0x26D, "Note from Sun's Song (MM)", EGameIcon::song },
-{ 0x26E, "Odolwa's Remains", EGameIcon::odolwa },
-{ 0x26F, "Goht's Remains", EGameIcon::goht },
-{ 0x270, "Gyorg's Remains", EGameIcon::gyorg },
-{ 0x271, "Twinmold's Remains", EGameIcon::twinmold },
-{ 0x272, "Swamp Skulltula Token", EGameIcon::swamp_token },
-{ 0x273, "Ocean Skulltula Token", EGameIcon::ocean_token },
-{ 0x274, "Platinum Token (MM)", EGameIcon::gs_token },
-{ 0x275, "Small Key (Woodfall Temple)", EGameIcon::small_key },
-{ 0x276, "Small Key (Snowhead Temple)", EGameIcon::small_key },
-{ 0x277, "Small Key (Great Bay Temple)", EGameIcon::small_key },
-{ 0x278, "Small Key (Stone Tower Temple)", EGameIcon::small_key },
-{ 0x279, "Boss Key (Woodfall Temple)", EGameIcon::boss_key },
-{ 0x27A, "Boss Key (Snowhead Temple)", EGameIcon::boss_key },
-{ 0x27B, "Boss Key (Great Bay Temple)", EGameIcon::boss_key },
-{ 0x27C, "Boss Key (Stone Tower Temple)", EGameIcon::boss_key },
-{ 0x27D, "Map (Woodfall Temple)", EGameIcon::map },
-{ 0x27E, "Map (Snowhead Temple)", EGameIcon::map },
-{ 0x27F, "Map (Great Bay Temple)", EGameIcon::map },
-{ 0x280, "Map (Stone Tower Temple)", EGameIcon::map },
-{ 0x281, "Compass (Woodfall Temple)", EGameIcon::compass },
-{ 0x282, "Compass (Snowhead Temple)", EGameIcon::compass },
-{ 0x283, "Compass (Great Bay Temple)", EGameIcon::compass },
-{ 0x284, "Compass (Stone Tower Temple)", EGameIcon::compass },
-{ 0x285, "Fairy Ocarina (MM)", EGameIcon::fairy_ocarina },
-{ 0x286, "Short Hookshot (MM)", EGameIcon::hookshot_oot },
-{ 0x287, "Child Wallet (MM)", EGameIcon::child_wallet },
-{ 0x288, "Colossal Wallet (MM)", EGameIcon::colossal_wallet },
-{ 0x289, "Owl Statue (Great Bay)", EGameIcon::owl },
-{ 0x28A, "Owl Statue (Zora Cape)", EGameIcon::owl },
-{ 0x28B, "Owl Statue (Snowhead)", EGameIcon::owl },
-{ 0x28C, "Owl Statue (Mountain Village)", EGameIcon::owl },
-{ 0x28D, "Owl Statue (Clock Town)", EGameIcon::owl },
-{ 0x28E, "Owl Statue (Milk Road)", EGameIcon::owl },
-{ 0x28F, "Owl Statue (Woodfall)", EGameIcon::owl },
-{ 0x290, "Owl Statue (Southern Swamp)", EGameIcon::owl },
-{ 0x291, "Owl Statue (Ikana Canyon)", EGameIcon::owl },
-{ 0x292, "Owl Statue (Stone Tower)", EGameIcon::owl },
-{ 0x293, "Owl Statue (Hidden)", EGameIcon::none },
-{ 0x294, "Bottomless Wallet (MM)", EGameIcon::botomless_wallet },
-{ 0x295, "Soul of Octoroks (MM)", EGameIcon::soul_of_foe },
-{ 0x296, "Soul of Wallmasters (MM)", EGameIcon::soul_of_foe },
-{ 0x297, "Soul of Dodongos (MM)", EGameIcon::soul_of_foe },
-{ 0x298, "Soul of Keese (MM)", EGameIcon::soul_of_foe },
-{ 0x299, "Soul of Tektites (MM)", EGameIcon::soul_of_foe },
-{ 0x29A, "Soul of Peahats (MM)", EGameIcon::soul_of_foe },
-{ 0x29B, "Soul of Lizalfos/Dinolfos (MM)", EGameIcon::soul_of_foe },
-{ 0x29C, "Soul of Skulltulas (MM)", EGameIcon::soul_of_foe },
-{ 0x29D, "Soul of Armos (MM)", EGameIcon::soul_of_foe },
-{ 0x29E, "Soul of Deku Babas (MM)", EGameIcon::soul_of_foe },
-{ 0x29F, "Soul of Deku Scrubs (MM)", EGameIcon::soul_of_foe },
-{ 0x2A0, "Soul of Bubbles (MM)", EGameIcon::soul_of_foe },
-{ 0x2A1, "Soul of Beamos (MM)", EGameIcon::soul_of_foe },
-{ 0x2A2, "Soul of ReDeads/Gibdos (MM)", EGameIcon::soul_of_foe },
-{ 0x2A3, "Soul of Skullwalltulas (MM)", EGameIcon::soul_of_foe },
-{ 0x2A4, "Soul of Shell Blades (MM)", EGameIcon::soul_of_foe },
-{ 0x2A5, "Soul of Like Likes (MM)", EGameIcon::soul_of_foe },
-{ 0x2A6, "Soul of Iron Knuckles (MM)", EGameIcon::soul_of_foe },
-{ 0x2A7, "Soul of Freezards (MM)", EGameIcon::soul_of_foe },
-{ 0x2A8, "Soul of Wolfos (MM)", EGameIcon::soul_of_foe },
-{ 0x2A9, "Soul of Guays (MM)", EGameIcon::soul_of_foe },
-{ 0x2AA, "Soul of Flying Pots (MM)", EGameIcon::soul_of_foe },
-{ 0x2AB, "Soul of Floormasters (MM)", EGameIcon::soul_of_foe },
-{ 0x2AC, "Soul of Chuchus", EGameIcon::soul_of_foe },
-{ 0x2AD, "Soul of Deep Pythons", EGameIcon::soul_of_foe },
-{ 0x2AE, "Soul of Stalchildren (MM)", EGameIcon::soul_of_foe },
-{ 0x2AF, "Soul of Leevers (MM)", EGameIcon::soul_of_foe },
-{ 0x2B0, "Soul of Skullfish (MM)", EGameIcon::soul_of_foe },
-{ 0x2B1, "Soul of Dexihands", EGameIcon::soul_of_foe },
-{ 0x2B2, "Soul of Dragonflies", EGameIcon::soul_of_foe },
-{ 0x2B3, "Soul of Eenoes", EGameIcon::soul_of_foe },
-{ 0x2B4, "Soul of Eyegores", EGameIcon::soul_of_foe },
-{ 0x2B5, "Soul of Hiploops", EGameIcon::soul_of_foe },
-{ 0x2B6, "Soul of Real Bombchu", EGameIcon::soul_of_foe },
-{ 0x2B7, "Soul of Takkuri", EGameIcon::soul_of_foe },
-{ 0x2B8, "Soul of Boes", EGameIcon::soul_of_foe },
-{ 0x2B9, "Soul of Nejirons", EGameIcon::soul_of_foe },
-{ 0x2BA, "Soul of Bio Babas", EGameIcon::soul_of_foe },
-{ 0x2BB, "Soul of Garo", EGameIcon::soul_of_foe },
-{ 0x2BC, "Soul of Wizzrobes", EGameIcon::soul_of_foe },
-{ 0x2BD, "Soul of Gomess", EGameIcon::soul_of_foe },
-{ 0x2BE, "Soul of Gekkos", EGameIcon::soul_of_foe },
-{ 0x2BF, "Soul of Bad Bats", EGameIcon::soul_of_foe },
-{ 0x2C0, "Soul of Snappers", EGameIcon::soul_of_foe },
-{ 0x2C1, "Soul of Warts", EGameIcon::soul_of_foe },
-{ 0x2C2, "Soul of Captain Keeta", EGameIcon::soul_of_foe },
-{ 0x2C3, "Soul of the Fighting Pirates", EGameIcon::soul_of_foe },
-{ 0x2C4, "Soul of Poes (MM)", EGameIcon::soul_of_foe },
-{ 0x2C5, "Soul of Odolwa", EGameIcon::soul_of_boss },
-{ 0x2C6, "Soul of Goht", EGameIcon::soul_of_boss },
-{ 0x2C7, "Soul of Gyorg", EGameIcon::soul_of_boss },
-{ 0x2C8, "Soul of Twinmold", EGameIcon::soul_of_boss },
-{ 0x2C9, "Soul of Igos", EGameIcon::soul_of_boss },
-{ 0x2CA, "Soul of Madame Aroma (MM)", EGameIcon::soul_of_npc },
-{ 0x2CB, "Soul of Town Archery Owner (MM)", EGameIcon::soul_of_npc },
-{ 0x2CC, "Soul of Swamp Archery Owner (MM)", EGameIcon::soul_of_npc },
-{ 0x2CD, "Soul of Gorons (MM)", EGameIcon::soul_of_npc },
-{ 0x2CE, "Soul of the Goron Baby (MM)", EGameIcon::soul_of_npc },
-{ 0x2CF, "Soul of the Bomb Shop Owner (MM)", EGameIcon::soul_of_npc },
-{ 0x2D0, "Soul of Bombers (MM)", EGameIcon::soul_of_npc },
-{ 0x2D1, "Soul of the Deku Butler", EGameIcon::soul_of_npc },
-{ 0x2D2, "Soul of Citizens (MM)", EGameIcon::soul_of_npc },
-{ 0x2D3, "Soul of Composer Bros. (MM)", EGameIcon::soul_of_npc },
-{ 0x2D4, "Soul of Dampe (MM)", EGameIcon::soul_of_npc },
-{ 0x2D5, "Soul of the Deku King", EGameIcon::soul_of_npc },
-{ 0x2D6, "Soul of the Deku Princess", EGameIcon::soul_of_npc },
-{ 0x2D7, "Soul of Playground Scrubs", EGameIcon::soul_of_npc },
-{ 0x2D8, "Soul of the Goron Elder", EGameIcon::soul_of_npc },
-{ 0x2D9, "Soul of the Fisherman (MM)", EGameIcon::soul_of_npc },
-{ 0x2DA, "Soul of the Goron Shopkeeper (MM)", EGameIcon::soul_of_npc },
-{ 0x2DB, "Soul of Honey & Darling (MM)", EGameIcon::soul_of_npc },
-{ 0x2DC, "Soul of Toto(MM)", EGameIcon::soul_of_npc },
-{ 0x2DD, "Soul of Lulu (MM)", EGameIcon::soul_of_npc },
-{ 0x2DE, "Soul of the Zora Musicians", EGameIcon::soul_of_npc },
-{ 0x2DF, "Soul of Kafei", EGameIcon::soul_of_npc },
-{ 0x2E0, "Soul of Keaton", EGameIcon::soul_of_npc },
-{ 0x2E1, "Soul of Koume and Kotake", EGameIcon::soul_of_npc },
-{ 0x2E2, "Soul of Mayor Dotour", EGameIcon::soul_of_npc },
-{ 0x2E3, "Soul of Keg Trial Goron (MM)", EGameIcon::soul_of_npc },
-{ 0x2E4, "Soul of Biggoron (MM)", EGameIcon::soul_of_npc },
-{ 0x2E5, "Soul of Mr. Barten (MM)", EGameIcon::soul_of_npc },
-{ 0x2E6, "Soul of Astronomer (MM)", EGameIcon::soul_of_npc },
-{ 0x2E7, "Soul of Ghost Hut Owner (MM)", EGameIcon::soul_of_npc },
-{ 0x2E8, "Soul of Blacksmiths", EGameIcon::soul_of_npc },
-{ 0x2E9, "Soul of Chest Game Lady (MM)", EGameIcon::soul_of_npc },
-{ 0x2EA, "Soul of Tingle", EGameIcon::soul_of_npc },
-{ 0x2EB, "Soul of Toilet Hand", EGameIcon::soul_of_npc },
-{ 0x2EC, "Soul of Trading Post Owner (MM)", EGameIcon::soul_of_npc },
-{ 0x2ED, "Soul of Part-Timer (MM)", EGameIcon::soul_of_npc },
-{ 0x2EE, "Soul of Zoras (MM)", EGameIcon::soul_of_npc },
-{ 0x2EF, "Soul of the Zora Shopkeeper (MM)", EGameIcon::soul_of_npc },
-{ 0x2F0, "Soul of Romani/Cremia (MM)", EGameIcon::soul_of_npc },
-{ 0x2F1, "Soul of the Beans Salesman (MM)", EGameIcon::soul_of_npc },
-{ 0x2F2, "Soul of Carpenters (MM)", EGameIcon::soul_of_npc },
-{ 0x2F3, "Soul of Anju (MM)", EGameIcon::soul_of_npc },
-{ 0x2F4, "Soul of Guru-Guru (MM)", EGameIcon::soul_of_npc },
-{ 0x2F5, "Soul of the Scientist (MM)", EGameIcon::soul_of_npc },
-{ 0x2F6, "Soul of Gorman & Bros. (MM)", EGameIcon::soul_of_npc },
-{ 0x2F7, "Soul of Grog (MM)", EGameIcon::soul_of_npc },
-{ 0x2F8, "Soul of Dog Lady (MM)", EGameIcon::soul_of_npc },
-{ 0x2F9, "Soul of Swordsman (MM)", EGameIcon::soul_of_npc },
-{ 0x2FA, "Soul of Anju's Grandmother (MM)", EGameIcon::soul_of_npc },
-{ 0x2FB, "Soul of Tourist Center Owner", EGameIcon::soul_of_npc },
-{ 0x2FC, "Soul of the Banker (MM)", EGameIcon::soul_of_npc },
-{ 0x2FD, "Soul of Moon Children", EGameIcon::soul_of_npc },
-{ 0x2FE, "Soul of the Patrolling Pirates and their Chief", EGameIcon::soul_of_npc },
-{ 0x2FF, "Soul of Cuccos (MM)", EGameIcon::soul_of_animal },
-{ 0x300, "Soul of Cows (MM)", EGameIcon::soul_of_animal },
-{ 0x301, "Sould of Dogs (MM)", EGameIcon::soul_of_animal },
-{ 0x302, "Soul of Butterflies (MM)", EGameIcon::soul_of_animal },
-{ 0x303, "Soul of Gold Skulltulas (MM)", EGameIcon::soul_of_npc },
-{ 0x304, "Soul of Business Scrubs (MM)", EGameIcon::soul_of_npc },
-{ 0x305, "Key Ring (MM)", EGameIcon::key_ring },
-{ 0x306, "Key Ring (Woodfall)", EGameIcon::key_ring },
-{ 0x307, "Key Ring (Snowhead)", EGameIcon::key_ring },
-{ 0x308, "Key Ring (Great Bay)", EGameIcon::key_ring },
-{ 0x309, "Key Ring (Stone Tower)", EGameIcon::key_ring },
-{ 0x30A, "Skeleton Key (MM)", EGameIcon::skeleton_key },
-{ 0x30B, "A Button (MM)", EGameIcon::a_button },
-{ 0x30C, "C-Right Button (MM)", EGameIcon::c_right },
-{ 0x30D, "C-Left Button (MM)", EGameIcon::c_left },
-{ 0x30E, "C-Up Button (MM)", EGameIcon::c_up },
-{ 0x30F, "C-Down Button (MM)", EGameIcon::c_down },
-{ 0x310, "Bottle of Green Potion (MM)", EGameIcon::green_potion },
-{ 0x311, "Bottle of Blue Potion (MM)", EGameIcon::blue_potion },
-{ 0x312, "Bottled Fairy (MM)", EGameIcon::bottled_fairy },
-{ 0x313, "Poe (MM)", EGameIcon::bottled_poe },
-{ 0x314, "Bottled Poe (MM)", EGameIcon::bottled_poe },
-{ 0x315, "Bottled Big Poe (MM)", EGameIcon::bottled_big_poe },
-{ 0x316, "Bombchu Bag (MM)", EGameIcon::bombchu_bag },
-{ 0x317, "Big Bombchu Bag (MM)", EGameIcon::bombchu_bag },
-{ 0x318, "Biggest Bombchu Bag (MM)", EGameIcon::bombchu_bag },
-{ 0x319, "Bombchu Bag (MM)", EGameIcon::bombchu_bag },
-{ 0x31A, "Bombchu Bag (MM)", EGameIcon::bombchu_bag },
-{ 0x31B, "Bombchu Bag (MM)", EGameIcon::bombchu_bag },
-{ 0x31C, "Bombchu Bag (MM)", EGameIcon::bombchu_bag },
-{ 0x31D, "Big Fairy (MM)", EGameIcon::fairy },
-{ 0x31E, "Din's Fire (MM)", EGameIcon::din },
-{ 0x31F, "Farore's Wind (MM)", EGameIcon::farore },
-{ 0x320, "Nayru's Love (MM)", EGameIcon::nayru },
-{ 0x321, "Iron Boots (MM)", EGameIcon::iron },
-{ 0x322, "Hover Boots (MM)", EGameIcon::hover },
-{ 0x323, "Goron Tunic (MM)", EGameIcon::goron_tunic },
-{ 0x324, "Zora Tunic (MM)", EGameIcon::zora_tunic },
-{ 0x325, "Bronze Scale (MM)", EGameIcon::bronze_scale },
-{ 0x326, "Silver Scale (MM)", EGameIcon::silver },
-{ 0x327, "Golden Scale (MM)", EGameIcon::golden },
-{ 0x328, "Goron's Bracelet (MM)", EGameIcon::bracelet },
-{ 0x329, "Silver Gauntlets (MM)", EGameIcon::silver_gauntlet },
-{ 0x32A, "Golden Gauntlets (MM)", EGameIcon::golden_gauntlet },
-{ 0x32B, "Clock (Day 1)", EGameIcon::clock_d1 },
-{ 0x32C, "Clock (Night 1)", EGameIcon::clock_n1 },
-{ 0x32D, "Clock (Day 2)", EGameIcon::clock_d2 },
-{ 0x32E, "Clock (Night 2)", EGameIcon::clock_n2 },
-{ 0x32F, "Clock (Day 3)", EGameIcon::clock_d3 },
-{ 0x330, "Clock (Night 3)", EGameIcon::clock_n3 },
-{ 0x331, "Megaton Hammer (MM)", EGameIcon::hammer },
-{ 0x332, "Deku Stick Upgrade (MM)", EGameIcon::stick_upgrade_1 },
-{ 0x333, "Second Deku Stick Upgrade (MM)", EGameIcon::stick_upgrade_2 },
-{ 0x334, "Deku Nut Upgrade (MM)", EGameIcon::nut_upgrade_1 },
-{ 0x335, "Second Deku Nut Upgrade (MM)", EGameIcon::nut_upgrade_2 },
-{ 0x336, "Stone of Agony (MM)", EGameIcon::agony },
-{ 0x337, "Ruto's Letter", EGameIcon::ruto },
-{ 0x338, "Bottle of Blue Fire", EGameIcon::blue_fire },
-{ 0x339, "Blue Fire", EGameIcon::blue_fire },
-{ 0x33A, "Majora's Mask", EGameIcon::mask },
-{ 0x33B, "Sold Out", EGameIcon::none },
-{ 0x33C, "Nothing", EGameIcon::none },
-{ 0x33D, "MM Scoop", EGameIcon::none },
+{ OOT_BOMBS_5, "5 Bombs (OoT)", EGameIcon::bomb },
+{ OOT_NUTS_5, "5 Deku Nuts (OoT)", EGameIcon::nut },
+{ OOT_BOMBCHU_10, "10 Bombchu (OoT)", EGameIcon::bombchu },
+{ OOT_BOW, "Fairy Bow (OoT)", EGameIcon::bow_oot },
+{ OOT_SLINGSHOT, "Fairy Slingshot", EGameIcon::slingshot },
+{ OOT_BOOMERANG, "Boomerang", EGameIcon::boomrang },
+{ OOT_STICK, "Deku Stick (OoT)", EGameIcon::stick },
+{ OOT_HOOKSHOT, "Progressive Hookshot (OoT)", EGameIcon::none },
+{ OOT_LONGSHOT, "Longshot (OoT)", EGameIcon::longshot },
+{ OOT_LENS, "Lens of Truth (OoT)", EGameIcon::lens },
+{ OOT_ZELDA_LETTER, "Zelda's Letter", EGameIcon::letter },
+{ OOT_OCARINA_TIME, "Ocarina of Time (OoT)", EGameIcon::ocarina },
+{ OOT_HAMMER, "Megaton Hammer (OoT)", EGameIcon::hammer },
+{ OOT_COJIRO, "Cojiro", EGameIcon::cojiro },
+{ OOT_BOTTLE_EMPTY, "Empty Bottle (OoT)", EGameIcon::bottle },
+{ OOT_POTION_RED, "Red Potion (OoT)", EGameIcon::red_potion },
+{ OOT_POTION_GREEN, "Green Potion (OoT)", EGameIcon::green_potion },
+{ OOT_POTION_BLUE, "Blue Potion (OoT)", EGameIcon::blue_potion },
+{ OOT_FAIRY, "Fairy (OoT)", EGameIcon::fairy },
+{ OOT_BOTTLE_MILK, "Bottle of Milk (OoT)", EGameIcon::milk },
+{ OOT_BOTTLE_RUTO_LETTER, "Ruto's Letter", EGameIcon::ruto },
+{ OOT_MAGIC_BEAN, "Magic Beans (OoT)", EGameIcon::bean },
+{ OOT_MASK_SKULL, "Skull Mask", EGameIcon::skull },
+{ OOT_MASK_SPOOKY, "Spooky Mask", EGameIcon::spooky },
+{ OOT_CHICKEN, "Chicken", EGameIcon::cucco },
+{ OOT_MASK_KEATON, "Keaton Mask (OoT)", EGameIcon::keaton },
+{ OOT_MASK_BUNNY, "Bunny Hood (OoT)", EGameIcon::bunny },
+{ OOT_MASK_TRUTH, "Mask of Truth (OoT)", EGameIcon::truth },
+{ OOT_POCKET_EGG, "Pocket Egg", EGameIcon::egg },
+{ OOT_POCKET_CUCCO, "Pocket Cucco", EGameIcon::cucco },
+{ OOT_ODD_MUSHROOM, "Odd Mushroom", EGameIcon::mushroom },
+{ OOT_ODD_POTION, "Odd Potion", EGameIcon::potion },
+{ OOT_POACHER_SAW, "Poacher's Saw", EGameIcon::saw },
+{ OOT_BROKEN_GORON_SWORD, "Broken Goron's Sword", EGameIcon::biggoron },
+{ OOT_PRESCRIPTION, "Prescription", EGameIcon::prescription },
+{ OOT_EYEBALL_FROG, "Eyeball Frog", EGameIcon::frog },
+{ OOT_EYE_DROPS, "Eye Drops", EGameIcon::eye_drops },
+{ OOT_CLAIM_CHECK, "Claim Check", EGameIcon::claim },
+{ OOT_SWORD_KOKIRI, "Kokiri Sword (OoT)", EGameIcon::kokiri },
+{ OOT_SWORD_KNIFE, "Giant's Knife", EGameIcon::biggoron },
+{ OOT_SHIELD_DEKU, "Deku Shield (OoT)", EGameIcon::deku_shield },
+{ OOT_SHIELD_HYLIAN, "Hylian Shield", EGameIcon::hylian_shield },
+{ OOT_SHIELD_MIRROR, "Mirror Shield (OoT)", EGameIcon::mirror_oot },
+{ OOT_TUNIC_GORON, "Goron Tunic (OoT)", EGameIcon::goron_tunic },
+{ OOT_TUNIC_ZORA, "Zora Tunic (OoT)", EGameIcon::zora_tunic },
+{ OOT_BOOTS_IRON, "Iron Boots (OoT)", EGameIcon::iron },
+{ OOT_BOOTS_HOVER, "Hover Boots (OoT)", EGameIcon::hover },
+{ OOT_QUIVER2, "Big Quiver (OoT)", EGameIcon::big_quiver },
+{ OOT_QUIVER3, "Biggest Quiver (OoT)", EGameIcon::biggest_quiver },
+{ OOT_BOMB_BAG, "Bomb Bag (OoT)", EGameIcon::bomb_bag },
+{ OOT_BOMB_BAG2, "Big Bomb Bag (OoT)", EGameIcon::big_bomb },
+{ OOT_BOMB_BAG3, "Biggest Bomb Bag (OoT)", EGameIcon::biggest_bomb },
+{ OOT_SILVER_GAUNTLETS, "Silver Gauntlets (OoT)", EGameIcon::silver_gauntlet },
+{ OOT_GOLDEN_GAUNTLETS, "Golden Gauntlets (OoT)", EGameIcon::golden_gauntlet },
+{ OOT_SCALE_SILVER, "Silver Scale (OoT)", EGameIcon::silver },
+{ OOT_SCALE_GOLDEN, "Golden Scale (OoT)", EGameIcon::golden },
+{ OOT_STONE_OF_AGONY, "Stone of Agony (OoT)", EGameIcon::agony },
+{ OOT_GERUDO_CARD, "Gerudo's Membership Card", EGameIcon::card },
+{ OOT_OCARINA_FAIRY, "Fairy Ocarina (OoT)", EGameIcon::fairy_ocarina },
+{ OOT_DEKU_SEEDS_5, "5 Deku Seeds (OoT)", EGameIcon::seeds },
+{ OOT_HEART_CONTAINER, "Heart Container (OoT)", EGameIcon::heart_container },
+{ OOT_HEART_PIECE, "Piece of Heart (OoT)", EGameIcon::heart_piece },
+{ OOT_BOSS_KEY, "Boss Key (OoT)", EGameIcon::boss_key },
+{ OOT_COMPASS, "Compass (OoT)", EGameIcon::compass },
+{ OOT_MAP, "Map (OoT)", EGameIcon::map },
+{ OOT_SMALL_KEY, "Small Key (OoT)", EGameIcon::small_key },
+{ OOT_MAGIC_JAR_SMALL, "Small Magic Jar (OoT)", EGameIcon::magic },
+{ OOT_MAGIC_JAR_LARGE, "Large Magic Jar (OoT)", EGameIcon::double_magic },
+{ OOT_WALLET2, "Adult's Wallet (OoT)", EGameIcon::wallet },
+{ OOT_WALLET3, "Giant's Wallet (OoT)", EGameIcon::big_wallet },
+{ OOT_WEIRD_EGG, "Weird Egg", EGameIcon::egg },
+{ OOT_RECOVERY_HEART, "Recovery Heart (OoT)", EGameIcon::heart },
+{ OOT_ARROWS_5, "5 Arrows (OoT)", EGameIcon::arrow },
+{ OOT_ARROWS_10, "10 Arrows (OoT)", EGameIcon::arrow },
+{ OOT_ARROWS_30, "30 Arrows (OoT)", EGameIcon::arrow },
+{ OOT_RUPEE_GREEN, "Green Rupee (OoT)", EGameIcon::rupee },
+{ OOT_RUPEE_BLUE, "Blue Rupee (OoT)", EGameIcon::blue_rupee },
+{ OOT_RUPEE_RED, "Red Rupee (OoT)", EGameIcon::red_rupee },
+{ OOT_HEART_CONTAINER2, "Heart Container (OoT)", EGameIcon::heart_container },
+{ OOT_MILK, "Lon Lon Milk (OoT)", EGameIcon::milk },
+{ OOT_MASK_GORON, "Goron Mask (OoT)", EGameIcon::goron },
+{ OOT_MASK_ZORA, "Zora Mask (OoT)", EGameIcon::zora },
+{ OOT_MASK_GERUDO, "Gerudo Mask", EGameIcon::gerudo },
+{ OOT_GORON_BRACELET, "Goron's Bracelet (OoT)", EGameIcon::bracelet },
+{ OOT_RUPEE_PURPLE, "Purple Rupee (OoT)", EGameIcon::purple_rupee },
+{ OOT_RUPEE_HUGE, "Gold Rupee (OoT)", EGameIcon::gold_rupee },
+{ OOT_SWORD_BIGGORON, "Biggoron's Sword", EGameIcon::biggoron },
+{ OOT_ARROW_FIRE, "Fire Arrows (OoT)", EGameIcon::fire_arrow },
+{ OOT_ARROW_ICE, "Ice Arrows (OoT)", EGameIcon::ice_arrow },
+{ OOT_ARROW_LIGHT, "Light Arrows (OoT)", EGameIcon::light_arrow },
+{ OOT_GS_TOKEN, "Gold Skulltula Token", EGameIcon::gs_token },
+{ OOT_SPELL_FIRE, "Din's Fire (OoT)", EGameIcon::din },
+{ OOT_SPELL_WIND, "Farore's Wind (OoT)", EGameIcon::farore },
+{ OOT_SPELL_LOVE, "Nayru's Love (OoT)", EGameIcon::nayru },
+{ OOT_BULLET_BAG, "Bullet Bag", EGameIcon::big_seed },
+{ OOT_BULLET_BAG2, "Large Bullet Bag", EGameIcon::biggest_seed },
+{ OOT_STICKS_5, "5 Deku Sticks (OoT)", EGameIcon::stick },
+{ OOT_STICKS_10, "10 Deku Sticks (OoT)", EGameIcon::stick },
+{ OOT_NUTS_5_ALT, "5 Deku Nuts (OoT)", EGameIcon::nut },
+{ OOT_NUTS_10, "10 Deku Nuts (OoT)", EGameIcon::nut },
+{ OOT_BOMB, "Bomb (OoT)", EGameIcon::bomb },
+{ OOT_BOMBS_10, "10 Bombs (OoT)", EGameIcon::bomb },
+{ OOT_BOMBS_20, "20 Bombs (OoT)", EGameIcon::bomb },
+{ OOT_BOMBS_30, "30 Bombs (OoT)", EGameIcon::bomb },
+{ OOT_DEKU_SEEDS_30, "30 Deku Seeds", EGameIcon::seeds },
+{ OOT_BOMBCHU_5, "5 Bombchu (OoT)", EGameIcon::bombchu },
+{ OOT_BOMBCHU_20, "20 Bombchu (OoT)", EGameIcon::bombchu },
+{ OOT_FISH, "Fish (OoT)", EGameIcon::bottled_fish },
+{ OOT_BUGS, "Bugs (OoT)", EGameIcon::bottled_bugs },
+{ OOT_BLUE_FIRE, "Blue Fire", EGameIcon::blue_fire },
+{ OOT_POE, "Poe (OoT)", EGameIcon::bottled_poe },
+{ OOT_BIG_POE, "Big Poe (OoT)", EGameIcon::bottled_big_poe },
+{ OOT_TC_SMALL_KEY, "Small Key (OoT)", EGameIcon::small_key },
+{ OOT_TC_RUPEE_GREEN, "Green Rupee (OoT)", EGameIcon::rupee },
+{ OOT_TC_RUPEE_BLUE, "Blue Rupee (OoT)", EGameIcon::blue_rupee },
+{ OOT_TC_RUPEE_RED, "Red Rupee (OoT)", EGameIcon::red_rupee },
+{ OOT_TC_RUPEE_PURPLE, "Purple Rupee (OoT)", EGameIcon::purple_rupee },
+{ OOT_TC_HEART_PIECE, "Piece of Heart (OoT)", EGameIcon::heart_piece },
+{ OOT_STICK_UPGRADE, "Deku Stick Upgrade (OoT)", EGameIcon::stick_upgrade_1 },
+{ OOT_STICK_UPGRADE2, "Second Deku Stick Upgrade (OoT)", EGameIcon::stick_upgrade_2 },
+{ OOT_NUT_UPGRADE, "Deku Nut Upgrade (OoT)", EGameIcon::nut_upgrade_1 },
+{ OOT_NUT_UPGRADE2, "Second Deku Nut Upgrade (OoT)", EGameIcon::nut_upgrade_2 },
+{ OOT_BULLET_BAG3, "Largest Bullet Bag", EGameIcon::biggest_seed },
+{ OOT_UNUSED_ICE_TRAP, "Ice Trap (OoT)", EGameIcon::ice_trap },
+{ OOT_UNK_7D, "Unknown", EGameIcon::none },
+{ OOT_UNK_7E, "Unknown", EGameIcon::none },
+{ OOT_UNK_7F, "Unknown", EGameIcon::none },
+{ OOT_RUPEE_RAINBOW, "Rainbow Rupee (OoT)", EGameIcon::rainbow_rupee },
+{ OOT_SONG_TP_FOREST, "Minuet of Forest", EGameIcon::song_green },
+{ OOT_SONG_TP_FIRE, "Bolero of Fire", EGameIcon::song_red },
+{ OOT_SONG_TP_WATER, "Serenade of Water", EGameIcon::song_blue },
+{ OOT_SONG_TP_SPIRIT, "Requiem of Spirit", EGameIcon::song_orange },
+{ OOT_SONG_TP_SHADOW, "Nocturne of Shadow", EGameIcon::song_purple },
+{ OOT_SONG_TP_LIGHT, "Prelude of Light", EGameIcon::song_yellow },
+{ OOT_SONG_ZELDA, "Zelda's Lullaby", EGameIcon::song },
+{ OOT_SONG_EPONA, "Epona's Song (OoT)", EGameIcon::song },
+{ OOT_SONG_SARIA, "Saria's Song", EGameIcon::song },
+{ OOT_SONG_SUN, "Sun's Song (OoT)", EGameIcon::song },
+{ OOT_SONG_TIME, "Song of Time (OoT)", EGameIcon::song },
+{ OOT_SONG_STORMS, "Song of Storms (OoT)", EGameIcon::song },
+{ OOT_SONG_EMPTINESS, "Elegy of Emptiness (OoT)", EGameIcon::song_orange },
+{ OOT_SONG_NOTE_TP_FOREST, "Note from Minuet of Forest (OoT)", EGameIcon::song_green },
+{ OOT_SONG_NOTE_TP_FIRE, "Note from Bolero of Fire (OoT)", EGameIcon::song_red },
+{ OOT_SONG_NOTE_TP_WATER, "Note from Serenade of Water (OoT)", EGameIcon::song_blue },
+{ OOT_SONG_NOTE_TP_SPIRIT, "Note from Requiem of Spirit (OoT)", EGameIcon::song_orange },
+{ OOT_SONG_NOTE_TP_SHADOW, "Note from Nocturne of Shadow (OoT)", EGameIcon::song_purple },
+{ OOT_SONG_NOTE_TP_LIGHT, "Note from Prelude of Light (OoT)", EGameIcon::song_yellow },
+{ OOT_SONG_NOTE_ZELDA, "Note from Zelda's Lullaby (OoT)", EGameIcon::song },
+{ OOT_SONG_NOTE_EPONA, "Note from Epona's Song (OoT)", EGameIcon::song },
+{ OOT_SONG_NOTE_SARIA, "Note from Saria's Song (OoT)", EGameIcon::song },
+{ OOT_SONG_NOTE_SUN, "Note from Sun's Song (OoT)", EGameIcon::song },
+{ OOT_SONG_NOTE_TIME, "Note from Song of Time (OoT)", EGameIcon::song },
+{ OOT_SONG_NOTE_STORMS, "Note from Song of Storms (OoT)", EGameIcon::song },
+{ OOT_SONG_NOTE_EMPTINESS, "Note from Elegy of Emptiness (OoT)", EGameIcon::song_orange },
+{ OOT_SWORD_MASTER, "Master Sword", EGameIcon::master },
+{ OOT_STONE_EMERALD, "Kokiri's Emerald", EGameIcon::emerald },
+{ OOT_STONE_RUBY, "Goron's Ruby", EGameIcon::ruby },
+{ OOT_STONE_SAPPHIRE, "Zora's Sapphire", EGameIcon::sapphire },
+{ OOT_MEDALLION_FOREST, "Forest Medallion", EGameIcon::forest },
+{ OOT_MEDALLION_FIRE, "Fire Medallion", EGameIcon::fire },
+{ OOT_MEDALLION_WATER, "Water Medallion", EGameIcon::water },
+{ OOT_MEDALLION_SPIRIT, "Spirit Medallion", EGameIcon::spirit },
+{ OOT_MEDALLION_SHADOW, "Shadow Medallion", EGameIcon::shadow },
+{ OOT_MEDALLION_LIGHT, "Light Medallion", EGameIcon::light },
+{ OOT_MAGIC_UPGRADE, "Magic Upgrade (OoT)", EGameIcon::magic_upgrade },
+{ OOT_MAGIC_UPGRADE2, "Larger Magic Upgrade (OoT)", EGameIcon::large_magic_upgrade },
+{ OOT_DEFENSE_UPGRADE, "Double Defense (OoT)", EGameIcon::defense },
+{ OOT_PROGRESSIVE_SHIELD_DEKU, "Progressive Deku Shield (OoT)", EGameIcon::deku_shield },
+{ OOT_PROGRESSIVE_SHIELD_HYLIAN, "Progressive Hylian Shield", EGameIcon::hylian_shield },
+{ OOT_SMALL_KEY_FOREST, "Small Key (Forest Temple)", EGameIcon::small_key },
+{ OOT_SMALL_KEY_FIRE, "Small Key (Fire Temple)", EGameIcon::small_key },
+{ OOT_SMALL_KEY_WATER, "Small Key (Water Temple)", EGameIcon::small_key },
+{ OOT_SMALL_KEY_SPIRIT, "Small Key (Spirit Temple)", EGameIcon::small_key },
+{ OOT_SMALL_KEY_SHADOW, "Small Key (Shadow Temple)", EGameIcon::small_key },
+{ OOT_SMALL_KEY_GANON, "Small Key (Ganon's Castle)", EGameIcon::small_key },
+{ OOT_SMALL_KEY_BOTW, "Small Key (Bottom of the Well)", EGameIcon::small_key },
+{ OOT_SMALL_KEY_GF, "Small Key (Gerudo's Fortress)", EGameIcon::small_key },
+{ OOT_SMALL_KEY_GTG, "Small Key (Gerudo's Training Ground)", EGameIcon::small_key },
+{ OOT_BOSS_KEY_FOREST, "Boss Key (Forest Temple)", EGameIcon::boss_key },
+{ OOT_BOSS_KEY_FIRE, "Boss Key (Fire Temple)", EGameIcon::boss_key },
+{ OOT_BOSS_KEY_WATER, "Boss Key (Water Temple)", EGameIcon::boss_key },
+{ OOT_BOSS_KEY_SPIRIT, "Boss Key (Spirit Temple)", EGameIcon::boss_key },
+{ OOT_BOSS_KEY_SHADOW, "Boss Key (Shadow Temple)", EGameIcon::boss_key },
+{ OOT_BOSS_KEY_GANON, "Boss Key (Ganon's Castle)", EGameIcon::boss_key },
+{ OOT_MAP_DT, "Map (Deku Tree)", EGameIcon::map },
+{ OOT_MAP_DC, "Map (Dodongo's Cavern)", EGameIcon::map },
+{ OOT_MAP_JJ, "Map (Jabu-Jabu's Belly)", EGameIcon::map },
+{ OOT_MAP_FOREST, "Map (Forest Temple)", EGameIcon::map },
+{ OOT_MAP_FIRE, "Map (Fire Temple)", EGameIcon::map },
+{ OOT_MAP_WATER, "Map (Water Temple)", EGameIcon::map },
+{ OOT_MAP_SPIRIT, "Map (Spirit Temple)", EGameIcon::map },
+{ OOT_MAP_SHADOW, "Map (Shadow Temple)", EGameIcon::map },
+{ OOT_MAP_BOTW, "Map (Bottom of the Well)", EGameIcon::map },
+{ OOT_MAP_IC, "Map (Ice Cavern)", EGameIcon::map },
+{ OOT_COMPASS_DT, "Compass (Deku Tree)", EGameIcon::compass },
+{ OOT_COMPASS_DC, "Compass (Dodongo's Cavern)", EGameIcon::compass },
+{ OOT_COMPASS_JJ, "Compass (Jabu-Jabu's Belly)", EGameIcon::compass },
+{ OOT_COMPASS_FOREST, "Compass (Forest Temple)", EGameIcon::compass },
+{ OOT_COMPASS_FIRE, "Compass (Fire Temple)", EGameIcon::compass },
+{ OOT_COMPASS_WATER, "Compass (Water Temple)", EGameIcon::compass },
+{ OOT_COMPASS_SPIRIT, "Compass (Spirit Temple)", EGameIcon::compass },
+{ OOT_COMPASS_SHADOW, "Compass (Shadow Temple)", EGameIcon::compass },
+{ OOT_COMPASS_BOTW, "Compass (Bottom of the Well)", EGameIcon::compass },
+{ OOT_COMPASS_IC, "Compass (Ice Cavern)", EGameIcon::compass },
+{ OOT_WALLET, "Child's Wallet (OoT)", EGameIcon::child_wallet },
+{ OOT_WALLET4, "Colossal Wallet (OoT)", EGameIcon::colossal_wallet },
+{ OOT_TRIFORCE, "Triforce Piece", EGameIcon::triforce_piece },
+{ OOT_WALLET5, "Bottomless Wallet (OoT)", EGameIcon::bottomless_wallet },
+{ OOT_RUPEE_SILVER_DC, "Silver Rupee (Dodongo's Cavern)", EGameIcon::sr },
+{ OOT_RUPEE_SILVER_BOTW, "Silver Rupee (Bottom of the Well)", EGameIcon::sr },
+{ OOT_RUPEE_SILVER_SPIRIT_CHILD, "Silver Rupee (Spirit Temple - Child)", EGameIcon::sr },
+{ OOT_RUPEE_SILVER_SPIRIT_SUN, "Silver Rupee (Spirit Temple - Sun Block)", EGameIcon::sr },
+{ OOT_RUPEE_SILVER_SPIRIT_BOULDERS, "Silver Rupee (Spirit Temple - Boulders)", EGameIcon::sr },
+{ OOT_RUPEE_SILVER_SPIRIT_LOBBY, "Silver Rupee (Spirit Temple - Lobby)", EGameIcon::sr },
+{ OOT_RUPEE_SILVER_SPIRIT_ADULT, "Silver Rupee (Spirit Temple - Adult)", EGameIcon::sr },
+{ OOT_RUPEE_SILVER_SHADOW_SCYTHE, "Silver Rupee (Shadow Temple - Scythe)", EGameIcon::sr },
+{ OOT_RUPEE_SILVER_SHADOW_PIT, "Silver Rupee (Shadow Temple - Large Pits)", EGameIcon::sr },
+{ OOT_RUPEE_SILVER_SHADOW_SPIKES, "Silver Rupee (Shadow Temple - Spikes)", EGameIcon::sr },
+{ OOT_RUPEE_SILVER_SHADOW_BLADES, "Silver Rupee (Shadow Temple - Invisible Blades)", EGameIcon::sr },
+{ OOT_RUPEE_SILVER_IC_SCYTHE, "Silver Rupee (Ice Cavern - Scythe)", EGameIcon::sr },
+{ OOT_RUPEE_SILVER_IC_BLOCK, "Silver Rupee (Ice Cavern - Block)", EGameIcon::sr },
+{ OOT_RUPEE_SILVER_GTG_SLOPES, "Silver Rupee (Gerudo Training Ground - Slopes)", EGameIcon::sr },
+{ OOT_RUPEE_SILVER_GTG_LAVA, "Silver Rupee (Gerudo Training Ground - Lava)", EGameIcon::sr },
+{ OOT_RUPEE_SILVER_GTG_WATER, "Silver Rupee (Gerudo Training Ground - Water)", EGameIcon::sr },
+{ OOT_RUPEE_SILVER_GANON_SPIRIT, "Silver Rupee (Ganon's Castle - Spirit Trial)", EGameIcon::sr },
+{ OOT_RUPEE_SILVER_GANON_LIGHT, "Silver Rupee (Ganon's Castle - Light Trial)", EGameIcon::sr },
+{ OOT_RUPEE_SILVER_GANON_FIRE, "Silver Rupee (Ganon's Castle - Fire Trial)", EGameIcon::sr },
+{ OOT_RUPEE_SILVER_GANON_FOREST, "Silver Rupee (Ganon's Castle - Forest Trial)", EGameIcon::sr },
+{ OOT_RUPEE_SILVER_GANON_SHADOW, "Silver Rupee (Ganon's Castle - Shadow Trial)", EGameIcon::sr },
+{ OOT_RUPEE_SILVER_GANON_WATER, "Silver Rupee (Ganon's Castle - Water Trial)", EGameIcon::sr },
+{ OOT_SOUL_ENEMY_STALFOS, "Soul of Stalfos (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_OCTOROK, "Soul of Octoroks (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_WALLMASTER, "Soul of Wallmasters (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_DODONGO, "Soul of Dodongos (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_KEESE, "Soul of Keese (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_TEKTITE, "Soul of Tektites (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_LEEVER, "Soul of Leevers (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_PEAHAT, "Soul of Peahats (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_LIZALFOS_DINOLFOS, "Soul of Lizalfos/Dinolfos (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_GOHMA_LARVA, "Soul of Gohma Larvaes", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_SHABOM, "Soul of Shaboms", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_BABY_DODONGO, "Soul of Baby Dodongos", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_DARK_LINK, "Soul of Dark Link", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_BIRI_BARI, "Soul of Biris/Baris", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_TAILPASARN, "Soul of Tailpasarans", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_PARASITE, "Soul of Jabu-Jabu's Parasites", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_SKULLTULA, "Soul of Skulltulas (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_TORCH_SLUG, "Soul of Torch Slugs", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_MOBLIN, "Soul of Moblins", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_ARMOS, "Soul of Armos (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_DEKU_BABA, "Soul of Deku Babas (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_DEKU_SCRUB, "Soul of Deku Scrubs (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_BUBBLE, "Soul of Bubbles (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_BEAMOS, "Soul of Beamos (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_FLOORMASTER, "Soul of Floormasters (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_REDEAD_GIBDO, "Soul of ReDeads/Gibdos (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_SKULLWALLTULA, "Soul of Skullwalltulas (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_FLARE_DANCER, "Soul of Flare Dancers", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_DEAD_HAND, "Soul of Dead Hands", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_SHELL_BLADE, "Soul of Shell Blades (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_LIKE_LIKE, "Soul of Like Likes (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_SPIKE, "Soul of Spikes", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_ANUBIS, "Soul of Anubis", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_IRON_KNUCKLE, "Soul of Iron Knuckles (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_SKULL_KID, "Soul of Skull Kids (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_FLYING_POT, "Soul of Flying Pots (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_FREEZARD, "Soul of Freezards (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_STINGER, "Soul of Stingers", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_WOLFOS, "Soul of Wolfoses (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_STALCHILD, "Soul of Stalchildren (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_GUAY, "Soul of Guays (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_THIEVES, "Soul of the Fighting Gerudos", EGameIcon::soul_of_foe },
+{ OOT_SOUL_ENEMY_POE, "Soul of Poes (OoT)", EGameIcon::soul_of_foe },
+{ OOT_SOUL_BOSS_QUEEN_GOHMA, "Soul of Queen Gohma", EGameIcon::soul_of_boss },
+{ OOT_SOUL_BOSS_KING_DODONGO, "Soul of King Dodongo", EGameIcon::soul_of_boss },
+{ OOT_SOUL_BOSS_BARINADE, "Soul of Barinade", EGameIcon::soul_of_boss },
+{ OOT_SOUL_BOSS_PHANTOM_GANON, "Soul of Phantom Ganon", EGameIcon::soul_of_boss },
+{ OOT_SOUL_BOSS_VOLVAGIA, "Soul of Volvagia", EGameIcon::soul_of_boss },
+{ OOT_SOUL_BOSS_MORPHA, "Soul of Morpha", EGameIcon::soul_of_boss },
+{ OOT_SOUL_BOSS_BONGO_BONGO, "Soul of Bongo Bongo", EGameIcon::soul_of_boss },
+{ OOT_SOUL_BOSS_TWINROVA, "Soul of Twinrova", EGameIcon::soul_of_boss },
+{ OOT_SOUL_NPC_SARIA, "Soul of Saria", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_DARUNIA, "Soul of Darunia", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_RUTO, "Soul of Ruto (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_KING_ZORA, "Soul of King Zora", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_ZELDA, "Soul of Zelda", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_SHEIK, "Soul of Sheik", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_ANJU, "Soul of Cucco Lady (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_CARPENTERS, "Soul of Carpenters (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_GURU_GURU, "Soul of Guru-Guru (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_MIDO, "Soul of Mido", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_KOKIRI, "Soul of Kokiri", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_KOKIRI_SHOPKEEPER, "Soul of Kokiri Shopkeeper", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_HYLIAN_GUARD, "Soul of Hylian Guard", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_CITIZEN, "Soul of the Citizens (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_MALON, "Soul of Malon (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_TALON, "Soul of Talon (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_FISHING_POND_OWNER, "Soul of Fishing Pond Owner (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_GORON, "Soul of Goron (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_MEDIGORON, "Soul of Medigoron (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_BIGGORON, "Soul of Biggoron (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_GORON_CHILD, "Soul of Goron Child (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_GORON_SHOPKEEPER, "Soul of Goron Shopkeeper (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_ZORA, "Soul of Zora (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_ZORA_SHOPKEEPER, "Soul of Zora Shopkeeper (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_BAZAAR_SHOPKEEPER, "Soul of Bazaar Shopkeeper (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_BOMBCHU_SHOPKEEPER, "Soul of Bombchu Shopkeeper (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_POTION_SHOPKEEPER, "Soul of Potion Shopkeeper", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_BOMBCHU_BOWLING_LADY, "Soul of Bombchu Bowling Lady (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_CHEST_GAME_OWNER, "Soul of Chest Game Owner (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_SHOOTING_GALLERY_OWNER, "Soul of Shooting Gallery Owner (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_DAMPE, "Soul of Dampe (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_BOMBERS, "Soul of Graveyard Kid (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_POE_COLLECTOR, "Soul of Poe Collector (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_COMPOSER_BROS, "Soul of Composer Bros. (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_HONEY_DARLING, "Soul of Honey & Darling (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_ASTRONOMER, "Soul of the Astronomer (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_ROOFTOP_MAN, "Soul of the Rooftop Man (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_BEAN_SALESMAN, "Soul of the Bean Salesman (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_SCIENTIST, "Soul of the Scientist (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_GORMAN, "Soul of Ingo (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_GROG, "Soul of the Punk Kid (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_DOG_LADY, "Soul of the Dog Lady (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_CARPET_MAN, "Soul of the Carpet Man (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_OLD_HAG, "Soul of the Old Hag (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_BANKER, "Soul of the Beggar (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_NPC_THIEVES, "Soul of the Patrolling Gerudos", EGameIcon::soul_of_npc },
+{ OOT_SOUL_ANIMAL_CUCCO, "Soul of Cuccos (OoT)", EGameIcon::soul_of_animal },
+{ OOT_SOUL_ANIMAL_COW, "Soul of Cows (OoT)", EGameIcon::soul_of_animal },
+{ OOT_SOUL_ANIMAL_DOG, "Soul of Dogs (OoT)", EGameIcon::soul_of_animal },
+{ OOT_SOUL_ANIMAL_BUTTERFLY, "Soul of Butterflies (OoT)", EGameIcon::soul_of_animal },
+{ OOT_SOUL_MISC_GS, "Soul of Gold Skulltulas (OoT)", EGameIcon::soul_of_npc },
+{ OOT_SOUL_MISC_BUSINESS_SCRUB, "Soul of Business Scrubs (OoT)", EGameIcon::soul_of_npc },
+{ OOT_KEY_RING, "Key Ring (OoT)", EGameIcon::key_ring },
+{ OOT_KEY_RING_FOREST, "Key Ring (Forest)", EGameIcon::key_ring },
+{ OOT_KEY_RING_FIRE, "Key Ring (Fire)", EGameIcon::key_ring },
+{ OOT_KEY_RING_WATER, "Key Ring (Water)", EGameIcon::key_ring },
+{ OOT_KEY_RING_SPIRIT, "Key Ring (Spirit)", EGameIcon::key_ring },
+{ OOT_KEY_RING_SHADOW, "Key Ring (Shadow)", EGameIcon::key_ring },
+{ OOT_KEY_RING_GANON, "Key Ring (Ganon)", EGameIcon::key_ring },
+{ OOT_KEY_RING_BOTW, "Key Ring (Well)", EGameIcon::key_ring },
+{ OOT_KEY_RING_GF, "Key Ring (Hideout)", EGameIcon::key_ring },
+{ OOT_KEY_RING_GTG, "Key Ring (GTG)", EGameIcon::key_ring },
+{ OOT_SKELETON_KEY, "Skeleton Key (OoT)", EGameIcon::skeleton_key },
+{ OOT_COIN_RED, "Coin (Red)", EGameIcon::red_coin },
+{ OOT_COIN_GREEN, "Coin (Green)", EGameIcon::green_coin },
+{ OOT_COIN_BLUE, "Coin (Blue)", EGameIcon::blue_coin },
+{ OOT_COIN_YELLOW, "Coin (Yellow)", EGameIcon::yellow_coin },
+{ OOT_TRIFORCE_POWER, "Triforce of Power", EGameIcon::triforce_power },
+{ OOT_TRIFORCE_COURAGE, "Triforce of Courage", EGameIcon::triforce_courage },
+{ OOT_TRIFORCE_WISDOM, "Triforce of Wisdom", EGameIcon::triforce_wisdom },
+{ OOT_POUCH_SILVER_DC, "Silver Rupee Pouch (Dodongo's Cavern)", EGameIcon::silver_pouch },
+{ OOT_POUCH_SILVER_BOTW, "Silver Rupee Pouch (Bottom of the Well)", EGameIcon::silver_pouch },
+{ OOT_POUCH_SILVER_SPIRIT_CHILD, "Silver Rupee Pouch (Spirit Temple - Child)", EGameIcon::silver_pouch },
+{ OOT_POUCH_SILVER_SPIRIT_SUN, "Silver Rupee Pouch (Spirit Temple - Sun Block)", EGameIcon::silver_pouch },
+{ OOT_POUCH_SILVER_SPIRIT_BOULDERS, "Silver Rupee Pouch (Spirit Temple - Boulders)", EGameIcon::silver_pouch },
+{ OOT_POUCH_SILVER_SPIRIT_LOBBY, "Silver Rupee Pouch (Spirit Temple - Lobby)", EGameIcon::silver_pouch },
+{ OOT_POUCH_SILVER_SPIRIT_ADULT, "Silver Rupee Pouch (Spirit Temple - Adult)", EGameIcon::silver_pouch },
+{ OOT_POUCH_SILVER_SHADOW_SCYTHE, "Silver Rupee Pouch (Shadow Temple - Scythe)", EGameIcon::silver_pouch },
+{ OOT_POUCH_SILVER_SHADOW_PIT, "Silver Rupee Pouch (Shadow Temple - Large Pits)", EGameIcon::silver_pouch },
+{ OOT_POUCH_SILVER_SHADOW_SPIKES, "Silver Rupee Pouch (Shadow Temple - Spikes)", EGameIcon::silver_pouch },
+{ OOT_POUCH_SILVER_SHADOW_BLADES, "Silver Rupee Pouch (Shadow Temple - Invisible Blades)", EGameIcon::silver_pouch },
+{ OOT_POUCH_SILVER_IC_SCYTHE, "Silver Rupee Pouch (Ice Cavern - Scythe)", EGameIcon::silver_pouch },
+{ OOT_POUCH_SILVER_IC_BLOCK, "Silver Rupee Pouch (Ice Cavern - Block)", EGameIcon::silver_pouch },
+{ OOT_POUCH_SILVER_GTG_SLOPES, "Silver Rupee Pouch (Gerudo Training Ground - Slopes)", EGameIcon::silver_pouch },
+{ OOT_POUCH_SILVER_GTG_LAVA, "Silver Rupee Pouch (Gerudo Training Ground - Lava)", EGameIcon::silver_pouch },
+{ OOT_POUCH_SILVER_GTG_WATER, "Silver Rupee Pouch (Gerudo Training Ground - Water)", EGameIcon::silver_pouch },
+{ OOT_POUCH_SILVER_GANON_SPIRIT, "Silver Rupee Pouch (Ganon's Castle - Spirit Trial)", EGameIcon::silver_pouch },
+{ OOT_POUCH_SILVER_GANON_LIGHT, "Silver Rupee Pouch (Ganon's Castle - Light Trial)", EGameIcon::silver_pouch },
+{ OOT_POUCH_SILVER_GANON_FIRE, "Silver Rupee Pouch (Ganon's Castle - Fire Trial)", EGameIcon::silver_pouch },
+{ OOT_POUCH_SILVER_GANON_FOREST, "Silver Rupee Pouch (Ganon's Castle - Forest Trial)", EGameIcon::silver_pouch },
+{ OOT_POUCH_SILVER_GANON_SHADOW, "Silver Rupee Pouch (Ganon's Castle - Shadow Trial)", EGameIcon::silver_pouch },
+{ OOT_POUCH_SILVER_GANON_WATER, "Silver Rupee Pouch (Ganon's Castle - Water Trial)", EGameIcon::silver_pouch },
+{ OOT_RUPEE_MAGICAL, "Magical Silver Rupee", EGameIcon::magical_rupee },
+{ OOT_BUTTON_A, "A Button (OoT)", EGameIcon::a_button },
+{ OOT_BUTTON_C_RIGHT, "C-Right Button (OoT)", EGameIcon::c_right },
+{ OOT_BUTTON_C_LEFT, "C-Left Button (OoT)", EGameIcon::c_left },
+{ OOT_BUTTON_C_UP, "C-Up Button (OoT)", EGameIcon::c_up },
+{ OOT_BUTTON_C_DOWN, "C-Down Button (OoT)", EGameIcon::c_down },
+{ OOT_SMALL_KEY_TCG, "Small Key (Chest Game)", EGameIcon::small_key },
+{ OOT_KEY_RING_TCG, "Key Ring (Chest Game)", EGameIcon::key_ring },
+{ OOT_BOTTLE_POTION_RED, "Bottle of Red Potion (OoT)", EGameIcon::red_potion },
+{ OOT_BOTTLE_POTION_GREEN, "Bottle of Green Potion (OoT)", EGameIcon::green_potion },
+{ OOT_BOTTLE_POTION_BLUE, "Bottle of Blue Potion (OoT)", EGameIcon::blue_potion },
+{ OOT_BOTTLE_FAIRY, "Bottled Fairy (OoT)", EGameIcon::bottled_fairy },
+{ OOT_BOTTLE_POE, "Bottled Poe (OoT)", EGameIcon::bottled_poe },
+{ OOT_BOTTLE_BIG_POE, "Bottled Big Poe (OoT)", EGameIcon::bottled_big_poe },
+{ OOT_BOTTLE_BLUE_FIRE, "Bottle of Blue Fire", EGameIcon::blue_fire },
+{ OOT_FISHING_POND_CHILD_FISH_2LBS, "Child Fish (2 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_CHILD_FISH_3LBS, "Child Fish (3 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_CHILD_FISH_4LBS, "Child Fish (4 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_CHILD_FISH_5LBS, "Child Fish (5 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_CHILD_FISH_6LBS, "Child Fish (6 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_CHILD_FISH_7LBS, "Child Fish (7 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_CHILD_FISH_8LBS, "Child Fish (8 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_CHILD_FISH_9LBS, "Child Fish (9 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_CHILD_FISH_10LBS, "Child Fish (10 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_CHILD_FISH_11LBS, "Child Fish (11 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_CHILD_FISH_12LBS, "Child Fish (12 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_CHILD_FISH_13LBS, "Child Fish (13 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_CHILD_FISH_14LBS, "Child Fish (14 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_FISH_4LBS, "Adult Fish (4 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_FISH_5LBS, "Adult Fish (5 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_FISH_6LBS, "Adult Fish (6 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_FISH_7LBS, "Adult Fish (7 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_FISH_8LBS, "Adult Fish (8 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_FISH_9LBS, "Adult Fish (9 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_FISH_10LBS, "Adult Fish (10 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_FISH_11LBS, "Adult Fish (11 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_FISH_12LBS, "Adult Fish (12 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_FISH_13LBS, "Adult Fish (13 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_FISH_14LBS, "Adult Fish (14 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_FISH_15LBS, "Adult Fish (15 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_FISH_16LBS, "Adult Fish (16 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_FISH_17LBS, "Adult Fish (17 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_FISH_18LBS, "Adult Fish (18 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_FISH_19LBS, "Adult Fish (19 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_FISH_20LBS, "Adult Fish (20 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_FISH_21LBS, "Adult Fish (21 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_FISH_22LBS, "Adult Fish (22 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_FISH_23LBS, "Adult Fish (23 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_FISH_24LBS, "Adult Fish (24 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_FISH_25LBS, "Adult Fish (25 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_CHILD_LOACH_14LBS, "Child Loach (14 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_CHILD_LOACH_15LBS, "Child Loach (15 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_CHILD_LOACH_16LBS, "Child Loach (16 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_CHILD_LOACH_17LBS, "Child Loach (17 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_CHILD_LOACH_18LBS, "Child Loach (18 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_CHILD_LOACH_19LBS, "Child Loach (19 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_LOACH_29LBS, "Adult Loach (29 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_LOACH_30LBS, "Adult Loach (30 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_LOACH_31LBS, "Adult Loach (31 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_LOACH_32LBS, "Adult Loach (32 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_LOACH_33LBS, "Adult Loach (33 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_LOACH_34LBS, "Adult Loach (34 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_LOACH_35LBS, "Adult Loach (35 pounds)", EGameIcon::carp_fish },
+{ OOT_FISHING_POND_ADULT_LOACH_36LBS, "Adult Loach (36 pounds)", EGameIcon::carp_fish },
+{ OOT_BOMBCHU_BAG, "Bombchu Bag (OoT)", EGameIcon::bombchu_bag },
+{ OOT_BOMBCHU_BAG2, "Big Bombchu Bag (OoT)", EGameIcon::bombchu_bag },
+{ OOT_BOMBCHU_BAG3, "Biggest Bombchu Bag (OoT)", EGameIcon::bombchu_bag },
+{ OOT_BOMBCHU_BAG_FIRST_5, "Bombchu Bag (OoT)", EGameIcon::bombchu_bag },
+{ OOT_BOMBCHU_BAG_FIRST_10, "Bombchu Bag (OoT)", EGameIcon::bombchu_bag },
+{ OOT_BOMBCHU_BAG_FIRST_20, "Bombchu Bag (OoT)", EGameIcon::bombchu_bag },
+{ OOT_SWORD_RAZOR, "Razor Sword (OoT)", EGameIcon::razor },
+{ OOT_SWORD_GILDED, "Gilded Sword (OoT)", EGameIcon::gilded },
+{ OOT_SPIN_UPGRADE, "Spin Attack Upgrade (OoT)", EGameIcon::spin },
+{ OOT_TRIFORCE_FULL, "Triforce (OoT)", EGameIcon::triforce_piece },
+{ OOT_FAIRY_BIG, "Big Fairy (OoT)", EGameIcon::fairy },
+{ OOT_MASK_BLAST, "Blast Mask (OoT)", EGameIcon::blast },
+{ OOT_MASK_STONE, "Stone Mask (OoT)", EGameIcon::stone },
+{ OOT_SCALE_BRONZE, "Bronze Scale (OoT)", EGameIcon::bronze_scale },
+{ OOT_WEIRD_MUSHROOM, "Magic Mushroom", EGameIcon::mushroom },
+{ OOT_CHATEAU, "Chateau Romani Refill", EGameIcon::chateau },
+{ OOT_GOLD_DUST, "Chateau Romani", EGameIcon::chateau },
+{ OOT_SEAHORSE2, "Seahorse", EGameIcon::seahorse },
+{ OOT_BOTTLED_GOLD_DUST, "Bottle of Gold Dust", EGameIcon::dust },
+{ OOT_BOTTLE_CHATEAU, "Bottle of Chateau Romani", EGameIcon::chateau },
+{ OOT_TRAP_ICE, "Ice Trap", EGameIcon::ice_trap },
+{ OOT_TRAP_FIRE, "Fire Trap", EGameIcon::fire_trap },
+{ OOT_TRAP_SHOCK, "Shock Trap", EGameIcon::shock_trap },
+{ OOT_TRAP_DRAIN, "Drain Trap", EGameIcon::drain_trap },
+{ OOT_TRAP_ANTI_MAGIC, "Anti-Magic Trap", EGameIcon::magic_trap },
+{ OOT_TRAP_KNOCKBACK, "Knockback Trap", EGameIcon::knockback_trap },
+{ OOT_TRAP_RUPOOR, "Rupoor", EGameIcon::rupoor },
+{ OOT_PLATINUM_TOKEN, "Platinum Token (OoT)", EGameIcon::gs_token },
+{ MM_RUPEE_GREEN, "Green Rupee (MM)", EGameIcon::rupee },
+{ MM_RUPEE_BLUE, "Blue Rupee (MM)", EGameIcon::blue_rupee },
+{ MM_RUPEE_RED_10, "Red Rupee (MM)", EGameIcon::red_rupee },
+{ MM_RUPEE_RED, "Red Rupee (MM)", EGameIcon::red_rupee },
+{ MM_RUPEE_PURPLE, "Purple Rupee (MM)", EGameIcon::purple_rupee },
+{ MM_RUPEE_SILVER, "Silver Rupee (MM)", EGameIcon::sr },
+{ MM_RUPEE_GOLD, "Gold Rupee (MM)", EGameIcon::gold_rupee },
+{ MM_WALLET2, "Adult Wallet (MM)", EGameIcon::wallet },
+{ MM_WALLET3, "Giant Wallet (MM)", EGameIcon::big_wallet },
+{ MM_RECOVERY_HEART, "Recovery Heart (MM)", EGameIcon::heart },
+{ MM_HEART_PIECE, "Piece of Heart (MM)", EGameIcon::heart_piece },
+{ MM_HEART_CONTAINER, "Heart Container (MM)", EGameIcon::heart_container },
+{ MM_MAGIC_JAR_SMALL, "Small Magic Jar (MM)", EGameIcon::magic },
+{ MM_MAGIC_JAR_LARGE, "Large Magic Jar (MM)", EGameIcon::double_magic },
+{ MM_STRAY_FAIRY, "Stray Fairy (MM)", EGameIcon::sf },
+{ MM_STRAY_FAIRY_WF, "Stray Fairy (Woodfall Temple)", EGameIcon::sf },
+{ MM_STRAY_FAIRY_SH, "Stray Fairy (Snowhead Temple)", EGameIcon::sf_green },
+{ MM_STRAY_FAIRY_GB, "Stray Fairy (Great Bay Temple)", EGameIcon::sf_blue },
+{ MM_STRAY_FAIRY_ST, "Stray Fairy (Stone Tower Temple)", EGameIcon::sf_yellow },
+{ MM_STRAY_FAIRY_TOWN, "Stray Fairy (Clock Town)", EGameIcon::sf_orange },
+{ MM_TRANSCENDENT_FAIRY, "Transcendent Fairy", EGameIcon::sf_transcendent },
+{ MM_BOMB, "Bomb (MM)", EGameIcon::bomb },
+{ MM_BOMBS_5, "5 Bombs (MM)", EGameIcon::bomb },
+{ MM_BOMBS_10, "10 Bombs (MM)", EGameIcon::bomb },
+{ MM_BOMBS_20, "20 Bombs (MM)", EGameIcon::bomb },
+{ MM_BOMBS_30, "30 Bombs (MM)", EGameIcon::bomb },
+{ MM_STICK, "Deku Stick (MM)", EGameIcon::stick },
+{ MM_BOMBCHU_10, "10 Bombchu (MM)", EGameIcon::bombchu },
+{ MM_BOMB_BAG, "Bomb Bag (MM)", EGameIcon::bomb_bag },
+{ MM_BOMB_BAG2, "Big Bomb Bag (MM)", EGameIcon::big_bomb },
+{ MM_BOMB_BAG3, "Biggest Bomb Bag (MM)", EGameIcon::biggest_bomb },
+{ MM_ARROWS_10, "10 Arrows (MM)", EGameIcon::arrow },
+{ MM_ARROWS_30, "30 Arrows (MM)", EGameIcon::arrow },
+{ MM_ARROWS_40, "40 Arrows (MM)", EGameIcon::arrow },
+{ MM_UNK_21, "40 Arrows (MM)", EGameIcon::arrow },
+{ MM_BOW, "Hero's Bow (MM)", EGameIcon::bow_mm },
+{ MM_QUIVER2, "Big Quiver (MM)", EGameIcon::big_quiver },
+{ MM_QUIVER3, "Biggest Quiver (MM)", EGameIcon::biggest_quiver },
+{ MM_ARROW_FIRE, "Fire Arrows (MM)", EGameIcon::fire_arrow },
+{ MM_ARROW_ICE, "Ice Arrows (MM)", EGameIcon::ice_arrow },
+{ MM_ARROW_LIGHT, "Light Arrows (MM)", EGameIcon::light_arrow },
+{ MM_NUT, "Nut (MM)", EGameIcon::nut },
+{ MM_NUTS_5, "5 Deku Nuts (MM)", EGameIcon::nut },
+{ MM_NUTS_10, "10 Deku Nuts (MM)", EGameIcon::nut },
+{ MM_UNK_2B, "30 Deku Nuts (MM)", EGameIcon::nut },
+{ MM_UNK_2C, "30 Deku Nuts (MM)", EGameIcon::nut },
+{ MM_UNK_2D, "40 Deku Nuts (MM)", EGameIcon::nut },
+{ MM_BOMBCHU_20, "20 Bombchu (MM)", EGameIcon::bombchu },
+{ MM_UNK_2F, "20 Deku Sticks (MM)", EGameIcon::stick },
+{ MM_UNK_30, "20 Deku Sticks (MM)", EGameIcon::stick },
+{ MM_UNK_31, "30 Deku Sticks (MM)", EGameIcon::stick },
+{ MM_SHIELD_DEKU, "Deku Shield (MM)", EGameIcon::deku_shield },
+{ MM_SHIELD_HERO, "Hero's Shield", EGameIcon::hero_shield },
+{ MM_SHIELD_MIRROR, "Mirror Shield (MM)", EGameIcon::mirror_mm },
+{ MM_PROGRESSIVE_SHIELD_DEKU, "Progressive Deku Shield (MM)", EGameIcon::deku_shield },
+{ MM_PROGRESSIVE_SHIELD_HERO, "Progressive Hero's Shield", EGameIcon::hero_shield },
+{ MM_POWDER_KEG, "Powder Keg", EGameIcon::powder },
+{ MM_MAGIC_BEAN, "Magic Bean (MM)", EGameIcon::bean },
+{ MM_BOMBCHU, "1 Bombchu (MM)", EGameIcon::bombchu },
+{ MM_SWORD_KOKIRI, "Kokiri Sword (MM)", EGameIcon::kokiri_mm },
+{ MM_SWORD_RAZOR, "Razor Sword (MM)", EGameIcon::razor },
+{ MM_SWORD_GILDED, "Gilded Sword (MM)", EGameIcon::gilded },
+{ MM_BOMBCHU_5, "5 Bombchu (MM)", EGameIcon::bombchu },
+{ MM_GREAT_FAIRY_SWORD, "Great Fairy's Sword", EGameIcon::fairy_sword },
+{ MM_SMALL_KEY, "Small Key (MM)", EGameIcon::small_key },
+{ MM_BOSS_KEY, "Boss Key (MM)", EGameIcon::boss_key },
+{ MM_MAP, "Map (MM)", EGameIcon::map },
+{ MM_COMPASS, "Compass (MM)", EGameIcon::compass },
+{ MM_HOOKSHOT, "Hookshot (MM)", EGameIcon::hookshot_mm },
+{ MM_LENS, "Lens of Truth (MM)", EGameIcon::lens },
+{ MM_PICTOGRAPH_BOX, "Pictograph Box", EGameIcon::picto },
+{ MM_OCARINA_OF_TIME, "Ocarina of Time (MM)", EGameIcon::ocarina },
+{ MM_BOMBER_NOTEBOOK, "Bombers' Notebook", EGameIcon::bombers },
+{ MM_BOTTLE_POTION_RED, "Bottle of Red Potion (MM)", EGameIcon::red_potion },
+{ MM_BOTTLE_EMPTY, "Empty Bottle (MM)", EGameIcon::bottle },
+{ MM_POTION_RED, "Red Potion (MM)", EGameIcon::red_potion },
+{ MM_POTION_GREEN, "Green Potion (MM)", EGameIcon::green_potion },
+{ MM_POTION_BLUE, "Blue Potion (MM)", EGameIcon::blue_potion },
+{ MM_FAIRY, "Fairy (MM)", EGameIcon::fairy },
+{ MM_BOTTLE_MILK, "Bottle of Milk (MM)", EGameIcon::milk },
+{ MM_FISH, "Fish (MM)", EGameIcon::bottled_fish },
+{ MM_BUGS, "Bugs (MM)", EGameIcon::bottled_bugs },
+{ MM_BIG_POE, "Big Poe (MM)", EGameIcon::bottled_big_poe },
+{ MM_BOTTLED_GOLD_DUST, "Bottle of Gold Dust", EGameIcon::dust },
+{ MM_WEIRD_MUSHROOM, "Magic Mushroom", EGameIcon::mushroom },
+{ MM_BOTTLE_CHATEAU, "Bottle of Chateau Romani", EGameIcon::chateau },
+{ MM_MASK_DEKU, "Deku Mask", EGameIcon::deku },
+{ MM_MASK_GORON, "Goron Mask (MM)", EGameIcon::goron },
+{ MM_MASK_ZORA, "Zora Mask (MM)", EGameIcon::zora },
+{ MM_MASK_FIERCE_DEITY, "Fierce Deity's Mask", EGameIcon::deity },
+{ MM_MASK_CAPTAIN, "Captain's Hat", EGameIcon::captain },
+{ MM_MASK_GIANT, "Giant's Mask", EGameIcon::giant },
+{ MM_MASK_ALL_NIGHT, "All-Night Mask", EGameIcon::night },
+{ MM_MASK_BUNNY, "Bunny Hood (MM)", EGameIcon::bunny },
+{ MM_MASK_KEATON, "Keaton Mask", EGameIcon::keaton },
+{ MM_MASK_GARO, "Garo's Mask", EGameIcon::garo },
+{ MM_MASK_ROMANI, "Romani's Mask", EGameIcon::romani },
+{ MM_MASK_TROUPE_LEADER, "Circus Leader's Mask", EGameIcon::troupe },
+{ MM_MASK_POSTMAN, "Postman's Hat", EGameIcon::postman },
+{ MM_MASK_COUPLE, "Couple's Mask", EGameIcon::couple },
+{ MM_MASK_GREAT_FAIRY, "Great Fairy's Mask", EGameIcon::fairy_mask },
+{ MM_MASK_GIBDO, "Gibdo Mask", EGameIcon::gibdo },
+{ MM_MASK_DON_GERO, "Don Gero's Mask", EGameIcon::gero },
+{ MM_MASK_KAMARO, "Kamaro's Mask", EGameIcon::kamaro },
+{ MM_MASK_TRUTH, "Mask of Truth (MM)", EGameIcon::truth },
+{ MM_MASK_STONE, "Stone Mask (MM)", EGameIcon::stone },
+{ MM_MASK_BREMEN, "Bremen Mask", EGameIcon::bremen },
+{ MM_MASK_BLAST, "Blast Mask (MM)", EGameIcon::blast },
+{ MM_MASK_SCENTS, "Mask of Scents", EGameIcon::scents },
+{ MM_MASK_KAFEI, "Kafei's Mask", EGameIcon::kafei },
+{ MM_CHATEAU, "Chateau Romani Refill (MM)", EGameIcon::chateau },
+{ MM_MILK, "Romani Milk", EGameIcon::milk },
+{ MM_GOLD_DUST, "Gold Dust", EGameIcon::dust },
+{ MM_SEAHORSE2, "Seahorse", EGameIcon::seahorse },
+{ MM_MOON_TEAR, "Moon's Tear", EGameIcon::moon },
+{ MM_DEED_LAND, "Land Title Deed", EGameIcon::land },
+{ MM_DEED_SWAMP, "Swamp Title Deed", EGameIcon::swamp },
+{ MM_DEED_MOUNTAIN, "Mountain Title Deed", EGameIcon::mountain },
+{ MM_DEED_OCEAN, "Ocean Title Deed", EGameIcon::ocean },
+{ MM_ROOM_KEY, "Room Key", EGameIcon::key },
+{ MM_LETTER_TO_MAMA, "Letter to Mama", EGameIcon::letter_mama },
+{ MM_LETTER_TO_KAFEI, "Letter to Kafei", EGameIcon::letter_kafei },
+{ MM_PENDANT_OF_MEMORIES, "Pendant of Memories", EGameIcon::pendant },
+{ MM_WORLD_MAP_CLOCK_TOWN, "World Map of Clock Town", EGameIcon::map },
+{ MM_WORLD_MAP_WOODFALL, "World Map of Woodfall", EGameIcon::map },
+{ MM_WORLD_MAP_SNOWHEAD, "World Map of Snowhead", EGameIcon::map },
+{ MM_WORLD_MAP_ROMANI_RANCH, "World Map of Ranch", EGameIcon::map },
+{ MM_WORLD_MAP_GREAT_BAY, "World Map of Great Bay", EGameIcon::map },
+{ MM_WORLD_MAP_STONE_TOWER, "World Map of Stone Tower", EGameIcon::map },
+{ MM_MAGIC_UPGRADE, "Magic Upgrade (MM)", EGameIcon::magic_upgrade },
+{ MM_MAGIC_UPGRADE2, "Larger Magic Upgrade (MM)", EGameIcon::large_magic_upgrade },
+{ MM_DEFENSE_UPGRADE, "Double Defense (MM)", EGameIcon::defense },
+{ MM_SPIN_UPGRADE, "Spin Attack Upgrade (MM)", EGameIcon::spin },
+{ MM_SONG_AWAKENING, "Sonata of Awakening", EGameIcon::song_green },
+{ MM_SONG_GORON, "Goron Lullaby", EGameIcon::song_red },
+{ MM_SONG_ZORA, "New Wave Bossa Nova", EGameIcon::song_blue },
+{ MM_SONG_EMPTINESS, "Elegy of Emptiness (MM)", EGameIcon::song_orange },
+{ MM_SONG_ORDER, "Oath to Order", EGameIcon::song_purple },
+{ MM_SONG_TIME, "Song of Time (MM)", EGameIcon::song },
+{ MM_SONG_HEALING, "Song of Healing", EGameIcon::song },
+{ MM_SONG_EPONA, "Epona's Song (MM)", EGameIcon::song },
+{ MM_SONG_SOARING, "Song of Soaring", EGameIcon::song },
+{ MM_SONG_STORMS, "Song of Storms (MM)", EGameIcon::song },
+{ MM_SONG_SUN, "Sun's Song (MM)", EGameIcon::song },
+{ MM_SONG_GORON_HALF, "Progressive Goron Lullaby", EGameIcon::song_red },
+{ MM_SONG_NOTE_AWAKENING, "Note from Sonata of Awakening (MM)", EGameIcon::song_green },
+{ MM_SONG_NOTE_GORON, "Note from Goron Lullaby (MM)", EGameIcon::song_red },
+{ MM_SONG_NOTE_ZORA, "Note from New Wave Bossa Nova (MM)", EGameIcon::song_blue },
+{ MM_SONG_NOTE_EMPTINESS, "Note from Elegy of Emptiness (MM)", EGameIcon::song_orange },
+{ MM_SONG_NOTE_ORDER, "Note from Oath to Order (MM)", EGameIcon::song_purple },
+{ MM_SONG_NOTE_TIME, "Note from Song of Time (MM)", EGameIcon::song },
+{ MM_SONG_NOTE_HEALING, "Note from Song of Healing (MM)", EGameIcon::song },
+{ MM_SONG_NOTE_EPONA, "Note from Epona's Song (MM)", EGameIcon::song },
+{ MM_SONG_NOTE_SOARING, "Note from Song of Soaring (MM)", EGameIcon::song },
+{ MM_SONG_NOTE_STORMS, "Note from Song of Storms (MM)", EGameIcon::song },
+{ MM_SONG_NOTE_SUN, "Note from Sun's Song (MM)", EGameIcon::song },
+{ MM_REMAINS_ODOLWA, "Odolwa's Remains", EGameIcon::odolwa },
+{ MM_REMAINS_GOHT, "Goht's Remains", EGameIcon::goht },
+{ MM_REMAINS_GYORG, "Gyorg's Remains", EGameIcon::gyorg },
+{ MM_REMAINS_TWINMOLD, "Twinmold's Remains", EGameIcon::twinmold },
+{ MM_GS_TOKEN_SWAMP, "Swamp Skulltula Token", EGameIcon::swamp_token },
+{ MM_GS_TOKEN_OCEAN, "Ocean Skulltula Token", EGameIcon::ocean_token },
+{ MM_PLATINUM_TOKEN, "Platinum Token (MM)", EGameIcon::gs_token },
+{ MM_SMALL_KEY_WF, "Small Key (Woodfall Temple)", EGameIcon::small_key },
+{ MM_SMALL_KEY_SH, "Small Key (Snowhead Temple)", EGameIcon::small_key },
+{ MM_SMALL_KEY_GB, "Small Key (Great Bay Temple)", EGameIcon::small_key },
+{ MM_SMALL_KEY_ST, "Small Key (Stone Tower Temple)", EGameIcon::small_key },
+{ MM_BOSS_KEY_WF, "Boss Key (Woodfall Temple)", EGameIcon::boss_key },
+{ MM_BOSS_KEY_SH, "Boss Key (Snowhead Temple)", EGameIcon::boss_key },
+{ MM_BOSS_KEY_GB, "Boss Key (Great Bay Temple)", EGameIcon::boss_key },
+{ MM_BOSS_KEY_ST, "Boss Key (Stone Tower Temple)", EGameIcon::boss_key },
+{ MM_MAP_WF, "Map (Woodfall Temple)", EGameIcon::map },
+{ MM_MAP_SH, "Map (Snowhead Temple)", EGameIcon::map },
+{ MM_MAP_GB, "Map (Great Bay Temple)", EGameIcon::map },
+{ MM_MAP_ST, "Map (Stone Tower Temple)", EGameIcon::map },
+{ MM_COMPASS_WF, "Compass (Woodfall Temple)", EGameIcon::compass },
+{ MM_COMPASS_SH, "Compass (Snowhead Temple)", EGameIcon::compass },
+{ MM_COMPASS_GB, "Compass (Great Bay Temple)", EGameIcon::compass },
+{ MM_COMPASS_ST, "Compass (Stone Tower Temple)", EGameIcon::compass },
+{ MM_OCARINA_FAIRY, "Fairy Ocarina (MM)", EGameIcon::fairy_ocarina },
+{ MM_HOOKSHOT_SHORT, "Short Hookshot (MM)", EGameIcon::hookshot_oot },
+{ MM_WALLET, "Child Wallet (MM)", EGameIcon::child_wallet },
+{ MM_WALLET4, "Colossal Wallet (MM)", EGameIcon::colossal_wallet },
+{ MM_OWL_GREAT_BAY, "Owl Statue (Great Bay)", EGameIcon::owl },
+{ MM_OWL_ZORA_CAPE, "Owl Statue (Zora Cape)", EGameIcon::owl },
+{ MM_OWL_SNOWHEAD, "Owl Statue (Snowhead)", EGameIcon::owl },
+{ MM_OWL_MOUNTAIN_VILLAGE, "Owl Statue (Mountain Village)", EGameIcon::owl },
+{ MM_OWL_CLOCK_TOWN, "Owl Statue (Clock Town)", EGameIcon::owl },
+{ MM_OWL_MILK_ROAD, "Owl Statue (Milk Road)", EGameIcon::owl },
+{ MM_OWL_WOODFALL, "Owl Statue (Woodfall)", EGameIcon::owl },
+{ MM_OWL_SOUTHERN_SWAMP, "Owl Statue (Southern Swamp)", EGameIcon::owl },
+{ MM_OWL_IKANA_CANYON, "Owl Statue (Ikana Canyon)", EGameIcon::owl },
+{ MM_OWL_STONE_TOWER, "Owl Statue (Stone Tower)", EGameIcon::owl },
+{ MM_OWL_HIDDEN, "Owl Statue (Hidden)", EGameIcon::none },
+{ MM_WALLET5, "Bottomless Wallet (MM)", EGameIcon::bottomless_wallet },
+{ MM_SOUL_ENEMY_OCTOROK, "Soul of Octoroks (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_WALLMASTER, "Soul of Wallmasters (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_DODONGO, "Soul of Dodongos (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_KEESE, "Soul of Keese (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_TEKTITE, "Soul of Tektites (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_PEAHAT, "Soul of Peahats (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_LIZALFOS_DINOLFOS, "Soul of Lizalfos/Dinolfos (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_SKULLTULA, "Soul of Skulltulas (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_ARMOS, "Soul of Armos (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_DEKU_BABA, "Soul of Deku Babas (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_DEKU_SCRUB, "Soul of Deku Scrubs (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_BUBBLE, "Soul of Bubbles (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_BEAMOS, "Soul of Beamos (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_REDEAD_GIBDO, "Soul of ReDeads/Gibdos (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_SKULLWALLTULA, "Soul of Skullwalltulas (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_SHELL_BLADE, "Soul of Shell Blades (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_LIKE_LIKE, "Soul of Like Likes (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_IRON_KNUCKLE, "Soul of Iron Knuckles (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_FREEZARD, "Soul of Freezards (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_WOLFOS, "Soul of Wolfos (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_GUAY, "Soul of Guays (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_FLYING_POT, "Soul of Flying Pots (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_FLOORMASTER, "Soul of Floormasters (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_CHUCHU, "Soul of Chuchus", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_DEEP_PYTHON, "Soul of Deep Pythons", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_STALCHILD, "Soul of Stalchildren (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_LEEVER, "Soul of Leevers (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_SKULLFISH, "Soul of Skullfish (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_DEXIHAND, "Soul of Dexihands", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_DRAGONFLY, "Soul of Dragonflies", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_EENO, "Soul of Eenoes", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_EYEGORE, "Soul of Eyegores", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_HIPLOOP, "Soul of Hiploops", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_REAL_BOMBCHU, "Soul of Real Bombchu", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_TAKKURI, "Soul of Takkuri", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_BOE, "Soul of Boes", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_NEJIRON, "Soul of Nejirons", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_BIO_BABA, "Soul of Bio Babas", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_GARO, "Soul of Garo", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_WIZZROBE, "Soul of Wizzrobes", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_GOMESS, "Soul of Gomess", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_GEKKO, "Soul of Gekkos", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_BAD_BAT, "Soul of Bad Bats", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_SNAPPER, "Soul of Snappers", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_WART, "Soul of Warts", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_CAPTAIN_KEETA, "Soul of Captain Keeta", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_THIEVES, "Soul of the Fighting Pirates", EGameIcon::soul_of_foe },
+{ MM_SOUL_ENEMY_POE, "Soul of Poes (MM)", EGameIcon::soul_of_foe },
+{ MM_SOUL_BOSS_ODOLWA, "Soul of Odolwa", EGameIcon::soul_of_boss },
+{ MM_SOUL_BOSS_GOHT, "Soul of Goht", EGameIcon::soul_of_boss },
+{ MM_SOUL_BOSS_GYORG, "Soul of Gyorg", EGameIcon::soul_of_boss },
+{ MM_SOUL_BOSS_TWINMOLD, "Soul of Twinmold", EGameIcon::soul_of_boss },
+{ MM_SOUL_BOSS_IGOS, "Soul of Igos", EGameIcon::soul_of_boss },
+{ MM_SOUL_NPC_AROMA, "Soul of Madame Aroma (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_SHOOTING_GALLERY_OWNER, "Soul of Town Archery Owner (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_BAZAAR_SHOPKEEPER, "Soul of Swamp Archery Owner (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_GORON, "Soul of Gorons (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_GORON_CHILD, "Soul of the Goron Baby (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_BOMBCHU_SHOPKEEPER, "Soul of the Bomb Shop Owner (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_BOMBERS, "Soul of Bombers (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_BUTLER_DEKU, "Soul of the Deku Butler", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_CITIZEN, "Soul of Citizens (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_COMPOSER_BROS, "Soul of Composer Bros. (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_DAMPE, "Soul of Dampe (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_DEKU_KING, "Soul of the Deku King", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_DEKU_PRINCESS, "Soul of the Deku Princess", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_PLAYGROUND_SCRUBS, "Soul of Playground Scrubs", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_GORON_ELDER, "Soul of the Goron Elder", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_CHEST_GAME_OWNER, "Soul of the Fisherman (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_GORON_SHOPKEEPER, "Soul of the Goron Shopkeeper (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_HONEY_DARLING, "Soul of Honey & Darling (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_TOTO, "Soul of Toto(MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_RUTO, "Soul of Lulu (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_ZORA_MUSICIANS, "Soul of the Zora Musicians", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_KAFEI, "Soul of Kafei", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_KEATON, "Soul of Keaton", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_KOUME_KOTAKE, "Soul of Koume and Kotake", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_MAYOR_DOTOUR, "Soul of Mayor Dotour", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_MEDIGORON, "Soul of Keg Trial Goron (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_BIGGORON, "Soul of Biggoron (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_TALON, "Soul of Mr. Barten (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_ASTRONOMER, "Soul of Astronomer (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_POE_COLLECTOR, "Soul of Ghost Hut Owner (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_BLACKSMITHS, "Soul of Blacksmiths", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_BOMBCHU_BOWLING_LADY, "Soul of Chest Game Lady (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_TINGLE, "Soul of Tingle", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_TOILET_HAND, "Soul of Toilet Hand", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_FISHING_POND_OWNER, "Soul of Trading Post Owner (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_ROOFTOP_MAN, "Soul of Part-Timer (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_ZORA, "Soul of Zoras (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_ZORA_SHOPKEEPER, "Soul of the Zora Shopkeeper (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_MALON, "Soul of Romani/Cremia (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_BEAN_SALESMAN, "Soul of the Beans Salesman (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_CARPENTERS, "Soul of Carpenters (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_ANJU, "Soul of Anju (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_GURU_GURU, "Soul of Guru-Guru (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_SCIENTIST, "Soul of the Scientist (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_GORMAN, "Soul of Gorman & Bros. (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_GROG, "Soul of Grog (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_DOG_LADY, "Soul of Dog Lady (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_CARPET_MAN, "Soul of Swordsman (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_OLD_HAG, "Soul of Anju's Grandmother (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_TOURIST_CENTER, "Soul of Tourist Center Owner", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_BANKER, "Soul of the Banker (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_MOON_CHILDREN, "Soul of Moon Children", EGameIcon::soul_of_npc },
+{ MM_SOUL_NPC_THIEVES, "Soul of the Patrolling Pirates and their Chief", EGameIcon::soul_of_npc },
+{ MM_SOUL_ANIMAL_CUCCO, "Soul of Cuccos (MM)", EGameIcon::soul_of_animal },
+{ MM_SOUL_ANIMAL_COW, "Soul of Cows (MM)", EGameIcon::soul_of_animal },
+{ MM_SOUL_ANIMAL_DOG, "Sould of Dogs (MM)", EGameIcon::soul_of_animal },
+{ MM_SOUL_ANIMAL_BUTTERFLY, "Soul of Butterflies (MM)", EGameIcon::soul_of_animal },
+{ MM_SOUL_MISC_GS, "Soul of Gold Skulltulas (MM)", EGameIcon::soul_of_npc },
+{ MM_SOUL_MISC_BUSINESS_SCRUB, "Soul of Business Scrubs (MM)", EGameIcon::soul_of_npc },
+{ MM_KEY_RING, "Key Ring (MM)", EGameIcon::key_ring },
+{ MM_KEY_RING_WF, "Key Ring (Woodfall)", EGameIcon::key_ring },
+{ MM_KEY_RING_SH, "Key Ring (Snowhead)", EGameIcon::key_ring },
+{ MM_KEY_RING_GB, "Key Ring (Great Bay)", EGameIcon::key_ring },
+{ MM_KEY_RING_ST, "Key Ring (Stone Tower)", EGameIcon::key_ring },
+{ MM_SKELETON_KEY, "Skeleton Key (MM)", EGameIcon::skeleton_key },
+{ MM_BUTTON_A, "A Button (MM)", EGameIcon::a_button },
+{ MM_BUTTON_C_RIGHT, "C-Right Button (MM)", EGameIcon::c_right },
+{ MM_BUTTON_C_LEFT, "C-Left Button (MM)", EGameIcon::c_left },
+{ MM_BUTTON_C_UP, "C-Up Button (MM)", EGameIcon::c_up },
+{ MM_BUTTON_C_DOWN, "C-Down Button (MM)", EGameIcon::c_down },
+{ MM_BOTTLE_POTION_GREEN, "Bottle of Green Potion (MM)", EGameIcon::green_potion },
+{ MM_BOTTLE_POTION_BLUE, "Bottle of Blue Potion (MM)", EGameIcon::blue_potion },
+{ MM_BOTTLE_FAIRY, "Bottled Fairy (MM)", EGameIcon::bottled_fairy },
+{ MM_POE, "Poe (MM)", EGameIcon::bottled_poe },
+{ MM_BOTTLE_POE, "Bottled Poe (MM)", EGameIcon::bottled_poe },
+{ MM_BOTTLE_BIG_POE, "Bottled Big Poe (MM)", EGameIcon::bottled_big_poe },
+{ MM_BOMBCHU_BAG, "Bombchu Bag (MM)", EGameIcon::bombchu_bag },
+{ MM_BOMBCHU_BAG2, "Big Bombchu Bag (MM)", EGameIcon::bombchu_bag },
+{ MM_BOMBCHU_BAG3, "Biggest Bombchu Bag (MM)", EGameIcon::bombchu_bag },
+{ MM_BOMBCHU_BAG_FIRST_1, "Bombchu Bag (MM)", EGameIcon::bombchu_bag },
+{ MM_BOMBCHU_BAG_FIRST_5, "Bombchu Bag (MM)", EGameIcon::bombchu_bag },
+{ MM_BOMBCHU_BAG_FIRST_10, "Bombchu Bag (MM)", EGameIcon::bombchu_bag },
+{ MM_BOMBCHU_BAG_FIRST_20, "Bombchu Bag (MM)", EGameIcon::bombchu_bag },
+{ MM_FAIRY_BIG, "Big Fairy (MM)", EGameIcon::fairy },
+{ MM_SPELL_FIRE, "Din's Fire (MM)", EGameIcon::din },
+{ MM_SPELL_WIND, "Farore's Wind (MM)", EGameIcon::farore },
+{ MM_SPELL_LOVE, "Nayru's Love (MM)", EGameIcon::nayru },
+{ MM_BOOTS_IRON, "Iron Boots (MM)", EGameIcon::iron },
+{ MM_BOOTS_HOVER, "Hover Boots (MM)", EGameIcon::hover },
+{ MM_TUNIC_GORON, "Goron Tunic (MM)", EGameIcon::goron_tunic },
+{ MM_TUNIC_ZORA, "Zora Tunic (MM)", EGameIcon::zora_tunic },
+{ MM_SCALE_BRONZE, "Bronze Scale (MM)", EGameIcon::bronze_scale },
+{ MM_SCALE_SILVER, "Silver Scale (MM)", EGameIcon::silver },
+{ MM_SCALE_GOLDEN, "Golden Scale (MM)", EGameIcon::golden },
+{ MM_GORON_BRACELET, "Goron's Bracelet (MM)", EGameIcon::bracelet },
+{ MM_SILVER_GAUNTLETS, "Silver Gauntlets (MM)", EGameIcon::silver_gauntlet },
+{ MM_GOLDEN_GAUNTLETS, "Golden Gauntlets (MM)", EGameIcon::golden_gauntlet },
+{ MM_CLOCK1, "Clock (Day 1)", EGameIcon::clock_d1 },
+{ MM_CLOCK2, "Clock (Night 1)", EGameIcon::clock_n1 },
+{ MM_CLOCK3, "Clock (Day 2)", EGameIcon::clock_d2 },
+{ MM_CLOCK4, "Clock (Night 2)", EGameIcon::clock_n2 },
+{ MM_CLOCK5, "Clock (Day 3)", EGameIcon::clock_d3 },
+{ MM_CLOCK6, "Clock (Night 3)", EGameIcon::clock_n3 },
+{ MM_HAMMER, "Megaton Hammer (MM)", EGameIcon::hammer },
+{ MM_STICK_UPGRADE, "Deku Stick Upgrade (MM)", EGameIcon::stick_upgrade_1 },
+{ MM_STICK_UPGRADE2, "Second Deku Stick Upgrade (MM)", EGameIcon::stick_upgrade_2 },
+{ MM_NUT_UPGRADE, "Deku Nut Upgrade (MM)", EGameIcon::nut_upgrade_1 },
+{ MM_NUT_UPGRADE2, "Second Deku Nut Upgrade (MM)", EGameIcon::nut_upgrade_2 },
+{ MM_STONE_OF_AGONY, "Stone of Agony (MM)", EGameIcon::agony },
+{ MM_BOTTLE_RUTO_LETTER, "Ruto's Letter", EGameIcon::ruto },
+{ MM_BOTTLE_BLUE_FIRE, "Bottle of Blue Fire", EGameIcon::blue_fire },
+{ MM_BLUE_FIRE, "Blue Fire", EGameIcon::blue_fire },
+{ MM_MASK_MAJORA, "Majora's Mask", EGameIcon::mask },
+{ MM_SOLD_OUT, "Sold Out", EGameIcon::none },
+{ NOTHING, "Nothing", EGameIcon::none },
+{ MM_SCOOP, "MM Scoop", EGameIcon::none },
+
+
+#define OOT_BOMBS_5 0x1
+#define OOT_NUTS_5 0x2
+#define OOT_BOMBCHU_10 0x3
+#define OOT_BOW 0x4
+#define OOT_SLINGSHOT 0x5
+#define OOT_BOOMERANG 0x6
+#define OOT_STICK 0x7
+#define OOT_HOOKSHOT 0x8
+#define OOT_LONGSHOT 0x9
+#define OOT_LENS 0xA
+#define OOT_ZELDA_LETTER 0xB
+#define OOT_OCARINA_TIME 0xC
+#define OOT_HAMMER 0xD
+#define OOT_COJIRO 0xE
+#define OOT_BOTTLE_EMPTY 0xF
+#define OOT_POTION_RED 0x10
+#define OOT_POTION_GREEN 0x11
+#define OOT_POTION_BLUE 0x12
+#define OOT_FAIRY 0x13
+#define OOT_BOTTLE_MILK 0x14
+#define OOT_BOTTLE_RUTO_LETTER 0x15
+#define OOT_MAGIC_BEAN 0x16
+#define OOT_MASK_SKULL 0x17
+#define OOT_MASK_SPOOKY 0x18
+#define OOT_CHICKEN 0x19
+#define OOT_MASK_KEATON 0x1A
+#define OOT_MASK_BUNNY 0x1B
+#define OOT_MASK_TRUTH 0x1C
+#define OOT_POCKET_EGG 0x1D
+#define OOT_POCKET_CUCCO 0x1E
+#define OOT_ODD_MUSHROOM 0x1F
+#define OOT_ODD_POTION 0x20
+#define OOT_POACHER_SAW 0x21
+#define OOT_BROKEN_GORON_SWORD 0x22
+#define OOT_PRESCRIPTION 0x23
+#define OOT_EYEBALL_FROG 0x24
+#define OOT_EYE_DROPS 0x25
+#define OOT_CLAIM_CHECK 0x26
+#define OOT_SWORD_KOKIRI 0x27
+#define OOT_SWORD_KNIFE 0x28
+#define OOT_SHIELD_DEKU 0x29
+#define OOT_SHIELD_HYLIAN 0x2A
+#define OOT_SHIELD_MIRROR 0x2B
+#define OOT_TUNIC_GORON 0x2C
+#define OOT_TUNIC_ZORA 0x2D
+#define OOT_BOOTS_IRON 0x2E
+#define OOT_BOOTS_HOVER 0x2F
+#define OOT_QUIVER2 0x30
+#define OOT_QUIVER3 0x31
+#define OOT_BOMB_BAG 0x32
+#define OOT_BOMB_BAG2 0x33
+#define OOT_BOMB_BAG3 0x34
+#define OOT_SILVER_GAUNTLETS 0x35
+#define OOT_GOLDEN_GAUNTLETS 0x36
+#define OOT_SCALE_SILVER 0x37
+#define OOT_SCALE_GOLDEN 0x38
+#define OOT_STONE_OF_AGONY 0x39
+#define OOT_GERUDO_CARD 0x3A
+#define OOT_OCARINA_FAIRY 0x3B
+#define OOT_DEKU_SEEDS_5 0x3C
+#define OOT_HEART_CONTAINER 0x3D
+#define OOT_HEART_PIECE 0x3E
+#define OOT_BOSS_KEY 0x3F
+#define OOT_COMPASS 0x40
+#define OOT_MAP 0x41
+#define OOT_SMALL_KEY 0x42
+#define OOT_MAGIC_JAR_SMALL 0x43
+#define OOT_MAGIC_JAR_LARGE 0x44
+#define OOT_WALLET2 0x45
+#define OOT_WALLET3 0x46
+#define OOT_WEIRD_EGG 0x47
+#define OOT_RECOVERY_HEART 0x48
+#define OOT_ARROWS_5 0x49
+#define OOT_ARROWS_10 0x4A
+#define OOT_ARROWS_30 0x4B
+#define OOT_RUPEE_GREEN 0x4C
+#define OOT_RUPEE_BLUE 0x4D
+#define OOT_RUPEE_RED 0x4E
+#define OOT_HEART_CONTAINER2 0x4F
+#define OOT_MILK 0x50
+#define OOT_MASK_GORON 0x51
+#define OOT_MASK_ZORA 0x52
+#define OOT_MASK_GERUDO 0x53
+#define OOT_GORON_BRACELET 0x54
+#define OOT_RUPEE_PURPLE 0x55
+#define OOT_RUPEE_HUGE 0x56
+#define OOT_SWORD_BIGGORON 0x57
+#define OOT_ARROW_FIRE 0x58
+#define OOT_ARROW_ICE 0x59
+#define OOT_ARROW_LIGHT 0x5A
+#define OOT_GS_TOKEN 0x5B
+#define OOT_SPELL_FIRE 0x5C
+#define OOT_SPELL_WIND 0x5D
+#define OOT_SPELL_LOVE 0x5E
+#define OOT_BULLET_BAG 0x5F
+#define OOT_BULLET_BAG2 0x60
+#define OOT_STICKS_5 0x61
+#define OOT_STICKS_10 0x62
+#define OOT_NUTS_5_ALT 0x63
+#define OOT_NUTS_10 0x64
+#define OOT_BOMB 0x65
+#define OOT_BOMBS_10 0x66
+#define OOT_BOMBS_20 0x67
+#define OOT_BOMBS_30 0x68
+#define OOT_DEKU_SEEDS_30 0x69
+#define OOT_BOMBCHU_5 0x6A
+#define OOT_BOMBCHU_20 0x6B
+#define OOT_FISH 0x6C
+#define OOT_BUGS 0x6D
+#define OOT_BLUE_FIRE 0x6E
+#define OOT_POE 0x6F
+#define OOT_BIG_POE 0x70
+#define OOT_TC_SMALL_KEY 0x71
+#define OOT_TC_RUPEE_GREEN 0x72
+#define OOT_TC_RUPEE_BLUE 0x73
+#define OOT_TC_RUPEE_RED 0x74
+#define OOT_TC_RUPEE_PURPLE 0x75
+#define OOT_TC_HEART_PIECE 0x76
+#define OOT_STICK_UPGRADE 0x77
+#define OOT_STICK_UPGRADE2 0x78
+#define OOT_NUT_UPGRADE 0x79
+#define OOT_NUT_UPGRADE2 0x7A
+#define OOT_BULLET_BAG3 0x7B
+#define OOT_UNUSED_ICE_TRAP 0x7C
+#define OOT_UNK_7D 0x7D
+#define OOT_UNK_7E 0x7E
+#define OOT_UNK_7F 0x7F
+#define OOT_RUPEE_RAINBOW 0x80
+#define OOT_SONG_TP_FOREST 0x81
+#define OOT_SONG_TP_FIRE 0x82
+#define OOT_SONG_TP_WATER 0x83
+#define OOT_SONG_TP_SPIRIT 0x84
+#define OOT_SONG_TP_SHADOW 0x85
+#define OOT_SONG_TP_LIGHT 0x86
+#define OOT_SONG_ZELDA 0x87
+#define OOT_SONG_EPONA 0x88
+#define OOT_SONG_SARIA 0x89
+#define OOT_SONG_SUN 0x8A
+#define OOT_SONG_TIME 0x8B
+#define OOT_SONG_STORMS 0x8C
+#define OOT_SONG_EMPTINESS 0x8D
+#define OOT_SONG_NOTE_TP_FOREST 0x8E
+#define OOT_SONG_NOTE_TP_FIRE 0x8F
+#define OOT_SONG_NOTE_TP_WATER 0x90
+#define OOT_SONG_NOTE_TP_SPIRIT 0x91
+#define OOT_SONG_NOTE_TP_SHADOW 0x92
+#define OOT_SONG_NOTE_TP_LIGHT 0x93
+#define OOT_SONG_NOTE_ZELDA 0x94
+#define OOT_SONG_NOTE_EPONA 0x95
+#define OOT_SONG_NOTE_SARIA 0x96
+#define OOT_SONG_NOTE_SUN 0x97
+#define OOT_SONG_NOTE_TIME 0x98
+#define OOT_SONG_NOTE_STORMS 0x99
+#define OOT_SONG_NOTE_EMPTINESS 0x9A
+#define OOT_SWORD_MASTER 0x9B
+#define OOT_STONE_EMERALD 0x9C
+#define OOT_STONE_RUBY 0x9D
+#define OOT_STONE_SAPPHIRE 0x9E
+#define OOT_MEDALLION_FOREST 0x9F
+#define OOT_MEDALLION_FIRE 0xA0
+#define OOT_MEDALLION_WATER 0xA1
+#define OOT_MEDALLION_SPIRIT 0xA2
+#define OOT_MEDALLION_SHADOW 0xA3
+#define OOT_MEDALLION_LIGHT 0xA4
+#define OOT_MAGIC_UPGRADE 0xA5
+#define OOT_MAGIC_UPGRADE2 0xA6
+#define OOT_DEFENSE_UPGRADE 0xA7
+#define OOT_PROGRESSIVE_SHIELD_DEKU 0xA8
+#define OOT_PROGRESSIVE_SHIELD_HYLIAN 0xA9
+#define OOT_SMALL_KEY_FOREST 0xAA
+#define OOT_SMALL_KEY_FIRE 0xAB
+#define OOT_SMALL_KEY_WATER 0xAC
+#define OOT_SMALL_KEY_SPIRIT 0xAD
+#define OOT_SMALL_KEY_SHADOW 0xAE
+#define OOT_SMALL_KEY_GANON 0xAF
+#define OOT_SMALL_KEY_BOTW 0xB0
+#define OOT_SMALL_KEY_GF 0xB1
+#define OOT_SMALL_KEY_GTG 0xB2
+#define OOT_BOSS_KEY_FOREST 0xB3
+#define OOT_BOSS_KEY_FIRE 0xB4
+#define OOT_BOSS_KEY_WATER 0xB5
+#define OOT_BOSS_KEY_SPIRIT 0xB6
+#define OOT_BOSS_KEY_SHADOW 0xB7
+#define OOT_BOSS_KEY_GANON 0xB8
+#define OOT_MAP_DT 0xB9
+#define OOT_MAP_DC 0xBA
+#define OOT_MAP_JJ 0xBB
+#define OOT_MAP_FOREST 0xBC
+#define OOT_MAP_FIRE 0xBD
+#define OOT_MAP_WATER 0xBE
+#define OOT_MAP_SPIRIT 0xBF
+#define OOT_MAP_SHADOW 0xC0
+#define OOT_MAP_BOTW 0xC1
+#define OOT_MAP_IC 0xC2
+#define OOT_COMPASS_DT 0xC3
+#define OOT_COMPASS_DC 0xC4
+#define OOT_COMPASS_JJ 0xC5
+#define OOT_COMPASS_FOREST 0xC6
+#define OOT_COMPASS_FIRE 0xC7
+#define OOT_COMPASS_WATER 0xC8
+#define OOT_COMPASS_SPIRIT 0xC9
+#define OOT_COMPASS_SHADOW 0xCA
+#define OOT_COMPASS_BOTW 0xCB
+#define OOT_COMPASS_IC 0xCC
+#define OOT_WALLET 0xCD
+#define OOT_WALLET4 0xCE
+#define OOT_TRIFORCE 0xCF
+#define OOT_WALLET5 0xD0
+#define OOT_RUPEE_SILVER_DC 0xD1
+#define OOT_RUPEE_SILVER_BOTW 0xD2
+#define OOT_RUPEE_SILVER_SPIRIT_CHILD 0xD3
+#define OOT_RUPEE_SILVER_SPIRIT_SUN 0xD4
+#define OOT_RUPEE_SILVER_SPIRIT_BOULDERS 0xD5
+#define OOT_RUPEE_SILVER_SPIRIT_LOBBY 0xD6
+#define OOT_RUPEE_SILVER_SPIRIT_ADULT 0xD7
+#define OOT_RUPEE_SILVER_SHADOW_SCYTHE 0xD8
+#define OOT_RUPEE_SILVER_SHADOW_PIT 0xD9
+#define OOT_RUPEE_SILVER_SHADOW_SPIKES 0xDA
+#define OOT_RUPEE_SILVER_SHADOW_BLADES 0xDB
+#define OOT_RUPEE_SILVER_IC_SCYTHE 0xDC
+#define OOT_RUPEE_SILVER_IC_BLOCK 0xDD
+#define OOT_RUPEE_SILVER_GTG_SLOPES 0xDE
+#define OOT_RUPEE_SILVER_GTG_LAVA 0xDF
+#define OOT_RUPEE_SILVER_GTG_WATER 0xE0
+#define OOT_RUPEE_SILVER_GANON_SPIRIT 0xE1
+#define OOT_RUPEE_SILVER_GANON_LIGHT 0xE2
+#define OOT_RUPEE_SILVER_GANON_FIRE 0xE3
+#define OOT_RUPEE_SILVER_GANON_FOREST 0xE4
+#define OOT_RUPEE_SILVER_GANON_SHADOW 0xE5
+#define OOT_RUPEE_SILVER_GANON_WATER 0xE6
+#define OOT_SOUL_ENEMY_STALFOS 0xE7
+#define OOT_SOUL_ENEMY_OCTOROK 0xE8
+#define OOT_SOUL_ENEMY_WALLMASTER 0xE9
+#define OOT_SOUL_ENEMY_DODONGO 0xEA
+#define OOT_SOUL_ENEMY_KEESE 0xEB
+#define OOT_SOUL_ENEMY_TEKTITE 0xEC
+#define OOT_SOUL_ENEMY_LEEVER 0xED
+#define OOT_SOUL_ENEMY_PEAHAT 0xEE
+#define OOT_SOUL_ENEMY_LIZALFOS_DINOLFOS 0xEF
+#define OOT_SOUL_ENEMY_GOHMA_LARVA 0xF0
+#define OOT_SOUL_ENEMY_SHABOM 0xF1
+#define OOT_SOUL_ENEMY_BABY_DODONGO 0xF2
+#define OOT_SOUL_ENEMY_DARK_LINK 0xF3
+#define OOT_SOUL_ENEMY_BIRI_BARI 0xF4
+#define OOT_SOUL_ENEMY_TAILPASARN 0xF5
+#define OOT_SOUL_ENEMY_PARASITE 0xF6
+#define OOT_SOUL_ENEMY_SKULLTULA 0xF7
+#define OOT_SOUL_ENEMY_TORCH_SLUG 0xF8
+#define OOT_SOUL_ENEMY_MOBLIN 0xF9
+#define OOT_SOUL_ENEMY_ARMOS 0xFA
+#define OOT_SOUL_ENEMY_DEKU_BABA 0xFB
+#define OOT_SOUL_ENEMY_DEKU_SCRUB 0xFC
+#define OOT_SOUL_ENEMY_BUBBLE 0xFD
+#define OOT_SOUL_ENEMY_BEAMOS 0xFE
+#define OOT_SOUL_ENEMY_FLOORMASTER 0xFF
+#define OOT_SOUL_ENEMY_REDEAD_GIBDO 0x100
+#define OOT_SOUL_ENEMY_SKULLWALLTULA 0x101
+#define OOT_SOUL_ENEMY_FLARE_DANCER 0x102
+#define OOT_SOUL_ENEMY_DEAD_HAND 0x103
+#define OOT_SOUL_ENEMY_SHELL_BLADE 0x104
+#define OOT_SOUL_ENEMY_LIKE_LIKE 0x105
+#define OOT_SOUL_ENEMY_SPIKE 0x106
+#define OOT_SOUL_ENEMY_ANUBIS 0x107
+#define OOT_SOUL_ENEMY_IRON_KNUCKLE 0x108
+#define OOT_SOUL_ENEMY_SKULL_KID 0x109
+#define OOT_SOUL_ENEMY_FLYING_POT 0x10A
+#define OOT_SOUL_ENEMY_FREEZARD 0x10B
+#define OOT_SOUL_ENEMY_STINGER 0x10C
+#define OOT_SOUL_ENEMY_WOLFOS 0x10D
+#define OOT_SOUL_ENEMY_STALCHILD 0x10E
+#define OOT_SOUL_ENEMY_GUAY 0x10F
+#define OOT_SOUL_ENEMY_THIEVES 0x110
+#define OOT_SOUL_ENEMY_POE 0x111
+#define OOT_SOUL_BOSS_QUEEN_GOHMA 0x112
+#define OOT_SOUL_BOSS_KING_DODONGO 0x113
+#define OOT_SOUL_BOSS_BARINADE 0x114
+#define OOT_SOUL_BOSS_PHANTOM_GANON 0x115
+#define OOT_SOUL_BOSS_VOLVAGIA 0x116
+#define OOT_SOUL_BOSS_MORPHA 0x117
+#define OOT_SOUL_BOSS_BONGO_BONGO 0x118
+#define OOT_SOUL_BOSS_TWINROVA 0x119
+#define OOT_SOUL_NPC_SARIA 0x11A
+#define OOT_SOUL_NPC_DARUNIA 0x11B
+#define OOT_SOUL_NPC_RUTO 0x11C
+#define OOT_SOUL_NPC_KING_ZORA 0x11D
+#define OOT_SOUL_NPC_ZELDA 0x11E
+#define OOT_SOUL_NPC_SHEIK 0x11F
+#define OOT_SOUL_NPC_ANJU 0x120
+#define OOT_SOUL_NPC_CARPENTERS 0x121
+#define OOT_SOUL_NPC_GURU_GURU 0x122
+#define OOT_SOUL_NPC_MIDO 0x123
+#define OOT_SOUL_NPC_KOKIRI 0x124
+#define OOT_SOUL_NPC_KOKIRI_SHOPKEEPER 0x125
+#define OOT_SOUL_NPC_HYLIAN_GUARD 0x126
+#define OOT_SOUL_NPC_CITIZEN 0x127
+#define OOT_SOUL_NPC_MALON 0x128
+#define OOT_SOUL_NPC_TALON 0x129
+#define OOT_SOUL_NPC_FISHING_POND_OWNER 0x12A
+#define OOT_SOUL_NPC_GORON 0x12B
+#define OOT_SOUL_NPC_MEDIGORON 0x12C
+#define OOT_SOUL_NPC_BIGGORON 0x12D
+#define OOT_SOUL_NPC_GORON_CHILD 0x12E
+#define OOT_SOUL_NPC_GORON_SHOPKEEPER 0x12F
+#define OOT_SOUL_NPC_ZORA 0x130
+#define OOT_SOUL_NPC_ZORA_SHOPKEEPER 0x131
+#define OOT_SOUL_NPC_BAZAAR_SHOPKEEPER 0x132
+#define OOT_SOUL_NPC_BOMBCHU_SHOPKEEPER 0x133
+#define OOT_SOUL_NPC_POTION_SHOPKEEPER 0x134
+#define OOT_SOUL_NPC_BOMBCHU_BOWLING_LADY 0x135
+#define OOT_SOUL_NPC_CHEST_GAME_OWNER 0x136
+#define OOT_SOUL_NPC_SHOOTING_GALLERY_OWNER 0x137
+#define OOT_SOUL_NPC_DAMPE 0x138
+#define OOT_SOUL_NPC_BOMBERS 0x139
+#define OOT_SOUL_NPC_POE_COLLECTOR 0x13A
+#define OOT_SOUL_NPC_COMPOSER_BROS 0x13B
+#define OOT_SOUL_NPC_HONEY_DARLING 0x13C
+#define OOT_SOUL_NPC_ASTRONOMER 0x13D
+#define OOT_SOUL_NPC_ROOFTOP_MAN 0x13E
+#define OOT_SOUL_NPC_BEAN_SALESMAN 0x13F
+#define OOT_SOUL_NPC_SCIENTIST 0x140
+#define OOT_SOUL_NPC_GORMAN 0x141
+#define OOT_SOUL_NPC_GROG 0x142
+#define OOT_SOUL_NPC_DOG_LADY 0x143
+#define OOT_SOUL_NPC_CARPET_MAN 0x144
+#define OOT_SOUL_NPC_OLD_HAG 0x145
+#define OOT_SOUL_NPC_BANKER 0x146
+#define OOT_SOUL_NPC_THIEVES 0x147
+#define OOT_SOUL_ANIMAL_CUCCO 0x148
+#define OOT_SOUL_ANIMAL_COW 0x149
+#define OOT_SOUL_ANIMAL_DOG 0x14A
+#define OOT_SOUL_ANIMAL_BUTTERFLY 0x14B
+#define OOT_SOUL_MISC_GS 0x14C
+#define OOT_SOUL_MISC_BUSINESS_SCRUB 0x14D
+#define OOT_KEY_RING 0x14E
+#define OOT_KEY_RING_FOREST 0x14F
+#define OOT_KEY_RING_FIRE 0x150
+#define OOT_KEY_RING_WATER 0x151
+#define OOT_KEY_RING_SPIRIT 0x152
+#define OOT_KEY_RING_SHADOW 0x153
+#define OOT_KEY_RING_GANON 0x154
+#define OOT_KEY_RING_BOTW 0x155
+#define OOT_KEY_RING_GF 0x156
+#define OOT_KEY_RING_GTG 0x157
+#define OOT_SKELETON_KEY 0x158
+#define OOT_COIN_RED 0x159
+#define OOT_COIN_GREEN 0x15A
+#define OOT_COIN_BLUE 0x15B
+#define OOT_COIN_YELLOW 0x15C
+#define OOT_TRIFORCE_POWER 0x15D
+#define OOT_TRIFORCE_COURAGE 0x15E
+#define OOT_TRIFORCE_WISDOM 0x15F
+#define OOT_POUCH_SILVER_DC 0x160
+#define OOT_POUCH_SILVER_BOTW 0x161
+#define OOT_POUCH_SILVER_SPIRIT_CHILD 0x162
+#define OOT_POUCH_SILVER_SPIRIT_SUN 0x163
+#define OOT_POUCH_SILVER_SPIRIT_BOULDERS 0x164
+#define OOT_POUCH_SILVER_SPIRIT_LOBBY 0x165
+#define OOT_POUCH_SILVER_SPIRIT_ADULT 0x166
+#define OOT_POUCH_SILVER_SHADOW_SCYTHE 0x167
+#define OOT_POUCH_SILVER_SHADOW_PIT 0x168
+#define OOT_POUCH_SILVER_SHADOW_SPIKES 0x169
+#define OOT_POUCH_SILVER_SHADOW_BLADES 0x16A
+#define OOT_POUCH_SILVER_IC_SCYTHE 0x16B
+#define OOT_POUCH_SILVER_IC_BLOCK 0x16C
+#define OOT_POUCH_SILVER_GTG_SLOPES 0x16D
+#define OOT_POUCH_SILVER_GTG_LAVA 0x16E
+#define OOT_POUCH_SILVER_GTG_WATER 0x16F
+#define OOT_POUCH_SILVER_GANON_SPIRIT 0x170
+#define OOT_POUCH_SILVER_GANON_LIGHT 0x171
+#define OOT_POUCH_SILVER_GANON_FIRE 0x172
+#define OOT_POUCH_SILVER_GANON_FOREST 0x173
+#define OOT_POUCH_SILVER_GANON_SHADOW 0x174
+#define OOT_POUCH_SILVER_GANON_WATER 0x175
+#define OOT_RUPEE_MAGICAL 0x176
+#define OOT_BUTTON_A 0x177
+#define OOT_BUTTON_C_RIGHT 0x178
+#define OOT_BUTTON_C_LEFT 0x179
+#define OOT_BUTTON_C_UP 0x17A
+#define OOT_BUTTON_C_DOWN 0x17B
+#define OOT_SMALL_KEY_TCG 0x17C
+#define OOT_KEY_RING_TCG 0x17D
+#define OOT_BOTTLE_POTION_RED 0x17E
+#define OOT_BOTTLE_POTION_GREEN 0x17F
+#define OOT_BOTTLE_POTION_BLUE 0x180
+#define OOT_BOTTLE_FAIRY 0x181
+#define OOT_BOTTLE_POE 0x182
+#define OOT_BOTTLE_BIG_POE 0x183
+#define OOT_BOTTLE_BLUE_FIRE 0x184
+#define OOT_FISHING_POND_CHILD_FISH_2LBS 0x185
+#define OOT_FISHING_POND_CHILD_FISH_3LBS 0x186
+#define OOT_FISHING_POND_CHILD_FISH_4LBS 0x187
+#define OOT_FISHING_POND_CHILD_FISH_5LBS 0x188
+#define OOT_FISHING_POND_CHILD_FISH_6LBS 0x189
+#define OOT_FISHING_POND_CHILD_FISH_7LBS 0x18A
+#define OOT_FISHING_POND_CHILD_FISH_8LBS 0x18B
+#define OOT_FISHING_POND_CHILD_FISH_9LBS 0x18C
+#define OOT_FISHING_POND_CHILD_FISH_10LBS 0x18D
+#define OOT_FISHING_POND_CHILD_FISH_11LBS 0x18E
+#define OOT_FISHING_POND_CHILD_FISH_12LBS 0x18F
+#define OOT_FISHING_POND_CHILD_FISH_13LBS 0x190
+#define OOT_FISHING_POND_CHILD_FISH_14LBS 0x191
+#define OOT_FISHING_POND_ADULT_FISH_4LBS 0x192
+#define OOT_FISHING_POND_ADULT_FISH_5LBS 0x193
+#define OOT_FISHING_POND_ADULT_FISH_6LBS 0x194
+#define OOT_FISHING_POND_ADULT_FISH_7LBS 0x195
+#define OOT_FISHING_POND_ADULT_FISH_8LBS 0x196
+#define OOT_FISHING_POND_ADULT_FISH_9LBS 0x197
+#define OOT_FISHING_POND_ADULT_FISH_10LBS 0x198
+#define OOT_FISHING_POND_ADULT_FISH_11LBS 0x199
+#define OOT_FISHING_POND_ADULT_FISH_12LBS 0x19A
+#define OOT_FISHING_POND_ADULT_FISH_13LBS 0x19B
+#define OOT_FISHING_POND_ADULT_FISH_14LBS 0x19C
+#define OOT_FISHING_POND_ADULT_FISH_15LBS 0x19D
+#define OOT_FISHING_POND_ADULT_FISH_16LBS 0x19E
+#define OOT_FISHING_POND_ADULT_FISH_17LBS 0x19F
+#define OOT_FISHING_POND_ADULT_FISH_18LBS 0x1A0
+#define OOT_FISHING_POND_ADULT_FISH_19LBS 0x1A1
+#define OOT_FISHING_POND_ADULT_FISH_20LBS 0x1A2
+#define OOT_FISHING_POND_ADULT_FISH_21LBS 0x1A3
+#define OOT_FISHING_POND_ADULT_FISH_22LBS 0x1A4
+#define OOT_FISHING_POND_ADULT_FISH_23LBS 0x1A5
+#define OOT_FISHING_POND_ADULT_FISH_24LBS 0x1A6
+#define OOT_FISHING_POND_ADULT_FISH_25LBS 0x1A7
+#define OOT_FISHING_POND_CHILD_LOACH_14LBS 0x1A8
+#define OOT_FISHING_POND_CHILD_LOACH_15LBS 0x1A9
+#define OOT_FISHING_POND_CHILD_LOACH_16LBS 0x1AA
+#define OOT_FISHING_POND_CHILD_LOACH_17LBS 0x1AB
+#define OOT_FISHING_POND_CHILD_LOACH_18LBS 0x1AC
+#define OOT_FISHING_POND_CHILD_LOACH_19LBS 0x1AD
+#define OOT_FISHING_POND_ADULT_LOACH_29LBS 0x1AE
+#define OOT_FISHING_POND_ADULT_LOACH_30LBS 0x1AF
+#define OOT_FISHING_POND_ADULT_LOACH_31LBS 0x1B0
+#define OOT_FISHING_POND_ADULT_LOACH_32LBS 0x1B1
+#define OOT_FISHING_POND_ADULT_LOACH_33LBS 0x1B2
+#define OOT_FISHING_POND_ADULT_LOACH_34LBS 0x1B3
+#define OOT_FISHING_POND_ADULT_LOACH_35LBS 0x1B4
+#define OOT_FISHING_POND_ADULT_LOACH_36LBS 0x1B5
+#define OOT_BOMBCHU_BAG 0x1B6
+#define OOT_BOMBCHU_BAG2 0x1B7
+#define OOT_BOMBCHU_BAG3 0x1B8
+#define OOT_BOMBCHU_BAG_FIRST_5 0x1B9
+#define OOT_BOMBCHU_BAG_FIRST_10 0x1BA
+#define OOT_BOMBCHU_BAG_FIRST_20 0x1BB
+#define OOT_SWORD_RAZOR 0x1BC
+#define OOT_SWORD_GILDED 0x1BD
+#define OOT_SPIN_UPGRADE 0x1BE
+#define OOT_TRIFORCE_FULL 0x1BF
+#define OOT_FAIRY_BIG 0x1C0
+#define OOT_MASK_BLAST 0x1C1
+#define OOT_MASK_STONE 0x1C2
+#define OOT_SCALE_BRONZE 0x1C3
+#define OOT_WEIRD_MUSHROOM 0x1C4
+#define OOT_CHATEAU 0x1C5
+#define OOT_GOLD_DUST 0x1C6
+#define OOT_SEAHORSE2 0x1C7
+#define OOT_BOTTLED_GOLD_DUST 0x1C8
+#define OOT_BOTTLE_CHATEAU 0x1C9
+#define OOT_TRAP_ICE 0x1CA
+#define OOT_TRAP_FIRE 0x1CB
+#define OOT_TRAP_SHOCK 0x1CC
+#define OOT_TRAP_DRAIN 0x1CD
+#define OOT_TRAP_ANTI_MAGIC 0x1CE
+#define OOT_TRAP_KNOCKBACK 0x1CF
+#define OOT_TRAP_RUPOOR 0x1D0
+#define OOT_PLATINUM_TOKEN 0x1D1
+#define MM_RUPEE_GREEN 0x1D2
+#define MM_RUPEE_BLUE 0x1D3
+#define MM_RUPEE_RED_10 0x1D4
+#define MM_RUPEE_RED 0x1D5
+#define MM_RUPEE_PURPLE 0x1D6
+#define MM_RUPEE_SILVER 0x1D7
+#define MM_RUPEE_GOLD 0x1D8
+#define MM_WALLET2 0x1D9
+#define MM_WALLET3 0x1DA
+#define MM_RECOVERY_HEART 0x1DB
+#define MM_HEART_PIECE 0x1DC
+#define MM_HEART_CONTAINER 0x1DD
+#define MM_MAGIC_JAR_SMALL 0x1DE
+#define MM_MAGIC_JAR_LARGE 0x1DF
+#define MM_STRAY_FAIRY 0x1E0
+#define MM_STRAY_FAIRY_WF 0x1E1
+#define MM_STRAY_FAIRY_SH 0x1E2
+#define MM_STRAY_FAIRY_GB 0x1E3
+#define MM_STRAY_FAIRY_ST 0x1E4
+#define MM_STRAY_FAIRY_TOWN 0x1E5
+#define MM_TRANSCENDENT_FAIRY 0x1E6
+#define MM_BOMB 0x1E7
+#define MM_BOMBS_5 0x1E8
+#define MM_BOMBS_10 0x1E9
+#define MM_BOMBS_20 0x1EA
+#define MM_BOMBS_30 0x1EB
+#define MM_STICK 0x1EC
+#define MM_BOMBCHU_10 0x1ED
+#define MM_BOMB_BAG 0x1EE
+#define MM_BOMB_BAG2 0x1EF
+#define MM_BOMB_BAG3 0x1F0
+#define MM_ARROWS_10 0x1F1
+#define MM_ARROWS_30 0x1F2
+#define MM_ARROWS_40 0x1F3
+#define MM_UNK_21 0x1F4
+#define MM_BOW 0x1F5
+#define MM_QUIVER2 0x1F6
+#define MM_QUIVER3 0x1F7
+#define MM_ARROW_FIRE 0x1F8
+#define MM_ARROW_ICE 0x1F9
+#define MM_ARROW_LIGHT 0x1FA
+#define MM_NUT 0x1FB
+#define MM_NUTS_5 0x1FC
+#define MM_NUTS_10 0x1FD
+#define MM_UNK_2B 0x1FE
+#define MM_UNK_2C 0x1FF
+#define MM_UNK_2D 0x200
+#define MM_BOMBCHU_20 0x201
+#define MM_UNK_2F 0x202
+#define MM_UNK_30 0x203
+#define MM_UNK_31 0x204
+#define MM_SHIELD_DEKU 0x205
+#define MM_SHIELD_HERO 0x206
+#define MM_SHIELD_MIRROR 0x207
+#define MM_PROGRESSIVE_SHIELD_DEKU 0x208
+#define MM_PROGRESSIVE_SHIELD_HERO 0x209
+#define MM_POWDER_KEG 0x20A
+#define MM_MAGIC_BEAN 0x20B
+#define MM_BOMBCHU 0x20C
+#define MM_SWORD_KOKIRI 0x20D
+#define MM_SWORD_RAZOR 0x20E
+#define MM_SWORD_GILDED 0x20F
+#define MM_BOMBCHU_5 0x210
+#define MM_GREAT_FAIRY_SWORD 0x211
+#define MM_SMALL_KEY 0x212
+#define MM_BOSS_KEY 0x213
+#define MM_MAP 0x214
+#define MM_COMPASS 0x215
+#define MM_HOOKSHOT 0x216
+#define MM_LENS 0x217
+#define MM_PICTOGRAPH_BOX 0x218
+#define MM_OCARINA_OF_TIME 0x219
+#define MM_BOMBER_NOTEBOOK 0x21A
+#define MM_BOTTLE_POTION_RED 0x21B
+#define MM_BOTTLE_EMPTY 0x21C
+#define MM_POTION_RED 0x21D
+#define MM_POTION_GREEN 0x21E
+#define MM_POTION_BLUE 0x21F
+#define MM_FAIRY 0x220
+#define MM_BOTTLE_MILK 0x221
+#define MM_FISH 0x222
+#define MM_BUGS 0x223
+#define MM_BIG_POE 0x224
+#define MM_BOTTLED_GOLD_DUST 0x225
+#define MM_WEIRD_MUSHROOM 0x226
+#define MM_BOTTLE_CHATEAU 0x227
+#define MM_MASK_DEKU 0x228
+#define MM_MASK_GORON 0x229
+#define MM_MASK_ZORA 0x22A
+#define MM_MASK_FIERCE_DEITY 0x22B
+#define MM_MASK_CAPTAIN 0x22C
+#define MM_MASK_GIANT 0x22D
+#define MM_MASK_ALL_NIGHT 0x22E
+#define MM_MASK_BUNNY 0x22F
+#define MM_MASK_KEATON 0x230
+#define MM_MASK_GARO 0x231
+#define MM_MASK_ROMANI 0x232
+#define MM_MASK_TROUPE_LEADER 0x233
+#define MM_MASK_POSTMAN 0x234
+#define MM_MASK_COUPLE 0x235
+#define MM_MASK_GREAT_FAIRY 0x236
+#define MM_MASK_GIBDO 0x237
+#define MM_MASK_DON_GERO 0x238
+#define MM_MASK_KAMARO 0x239
+#define MM_MASK_TRUTH 0x23A
+#define MM_MASK_STONE 0x23B
+#define MM_MASK_BREMEN 0x23C
+#define MM_MASK_BLAST 0x23D
+#define MM_MASK_SCENTS 0x23E
+#define MM_MASK_KAFEI 0x23F
+#define MM_CHATEAU 0x240
+#define MM_MILK 0x241
+#define MM_GOLD_DUST 0x242
+#define MM_SEAHORSE2 0x243
+#define MM_MOON_TEAR 0x244
+#define MM_DEED_LAND 0x245
+#define MM_DEED_SWAMP 0x246
+#define MM_DEED_MOUNTAIN 0x247
+#define MM_DEED_OCEAN 0x248
+#define MM_ROOM_KEY 0x249
+#define MM_LETTER_TO_MAMA 0x24A
+#define MM_LETTER_TO_KAFEI 0x24B
+#define MM_PENDANT_OF_MEMORIES 0x24C
+#define MM_WORLD_MAP_CLOCK_TOWN 0x24D
+#define MM_WORLD_MAP_WOODFALL 0x24E
+#define MM_WORLD_MAP_SNOWHEAD 0x24F
+#define MM_WORLD_MAP_ROMANI_RANCH 0x250
+#define MM_WORLD_MAP_GREAT_BAY 0x251
+#define MM_WORLD_MAP_STONE_TOWER 0x252
+#define MM_MAGIC_UPGRADE 0x253
+#define MM_MAGIC_UPGRADE2 0x254
+#define MM_DEFENSE_UPGRADE 0x255
+#define MM_SPIN_UPGRADE 0x256
+#define MM_SONG_AWAKENING 0x257
+#define MM_SONG_GORON 0x258
+#define MM_SONG_ZORA 0x259
+#define MM_SONG_EMPTINESS 0x25A
+#define MM_SONG_ORDER 0x25B
+#define MM_SONG_TIME 0x25C
+#define MM_SONG_HEALING 0x25D
+#define MM_SONG_EPONA 0x25E
+#define MM_SONG_SOARING 0x25F
+#define MM_SONG_STORMS 0x260
+#define MM_SONG_SUN 0x261
+#define MM_SONG_GORON_HALF 0x262
+#define MM_SONG_NOTE_AWAKENING 0x263
+#define MM_SONG_NOTE_GORON 0x264
+#define MM_SONG_NOTE_ZORA 0x265
+#define MM_SONG_NOTE_EMPTINESS 0x266
+#define MM_SONG_NOTE_ORDER 0x267
+#define MM_SONG_NOTE_TIME 0x268
+#define MM_SONG_NOTE_HEALING 0x269
+#define MM_SONG_NOTE_EPONA 0x26A
+#define MM_SONG_NOTE_SOARING 0x26B
+#define MM_SONG_NOTE_STORMS 0x26C
+#define MM_SONG_NOTE_SUN 0x26D
+#define MM_REMAINS_ODOLWA 0x26E
+#define MM_REMAINS_GOHT 0x26F
+#define MM_REMAINS_GYORG 0x270
+#define MM_REMAINS_TWINMOLD 0x271
+#define MM_GS_TOKEN_SWAMP 0x272
+#define MM_GS_TOKEN_OCEAN 0x273
+#define MM_PLATINUM_TOKEN 0x274
+#define MM_SMALL_KEY_WF 0x275
+#define MM_SMALL_KEY_SH 0x276
+#define MM_SMALL_KEY_GB 0x277
+#define MM_SMALL_KEY_ST 0x278
+#define MM_BOSS_KEY_WF 0x279
+#define MM_BOSS_KEY_SH 0x27A
+#define MM_BOSS_KEY_GB 0x27B
+#define MM_BOSS_KEY_ST 0x27C
+#define MM_MAP_WF 0x27D
+#define MM_MAP_SH 0x27E
+#define MM_MAP_GB 0x27F
+#define MM_MAP_ST 0x280
+#define MM_COMPASS_WF 0x281
+#define MM_COMPASS_SH 0x282
+#define MM_COMPASS_GB 0x283
+#define MM_COMPASS_ST 0x284
+#define MM_OCARINA_FAIRY 0x285
+#define MM_HOOKSHOT_SHORT 0x286
+#define MM_WALLET 0x287
+#define MM_WALLET4 0x288
+#define MM_OWL_GREAT_BAY 0x289
+#define MM_OWL_ZORA_CAPE 0x28A
+#define MM_OWL_SNOWHEAD 0x28B
+#define MM_OWL_MOUNTAIN_VILLAGE 0x28C
+#define MM_OWL_CLOCK_TOWN 0x28D
+#define MM_OWL_MILK_ROAD 0x28E
+#define MM_OWL_WOODFALL 0x28F
+#define MM_OWL_SOUTHERN_SWAMP 0x290
+#define MM_OWL_IKANA_CANYON 0x291
+#define MM_OWL_STONE_TOWER 0x292
+#define MM_OWL_HIDDEN 0x293
+#define MM_WALLET5 0x294
+#define MM_SOUL_ENEMY_OCTOROK 0x295
+#define MM_SOUL_ENEMY_WALLMASTER 0x296
+#define MM_SOUL_ENEMY_DODONGO 0x297
+#define MM_SOUL_ENEMY_KEESE 0x298
+#define MM_SOUL_ENEMY_TEKTITE 0x299
+#define MM_SOUL_ENEMY_PEAHAT 0x29A
+#define MM_SOUL_ENEMY_LIZALFOS_DINOLFOS 0x29B
+#define MM_SOUL_ENEMY_SKULLTULA 0x29C
+#define MM_SOUL_ENEMY_ARMOS 0x29D
+#define MM_SOUL_ENEMY_DEKU_BABA 0x29E
+#define MM_SOUL_ENEMY_DEKU_SCRUB 0x29F
+#define MM_SOUL_ENEMY_BUBBLE 0x2A0
+#define MM_SOUL_ENEMY_BEAMOS 0x2A1
+#define MM_SOUL_ENEMY_REDEAD_GIBDO 0x2A2
+#define MM_SOUL_ENEMY_SKULLWALLTULA 0x2A3
+#define MM_SOUL_ENEMY_SHELL_BLADE 0x2A4
+#define MM_SOUL_ENEMY_LIKE_LIKE 0x2A5
+#define MM_SOUL_ENEMY_IRON_KNUCKLE 0x2A6
+#define MM_SOUL_ENEMY_FREEZARD 0x2A7
+#define MM_SOUL_ENEMY_WOLFOS 0x2A8
+#define MM_SOUL_ENEMY_GUAY 0x2A9
+#define MM_SOUL_ENEMY_FLYING_POT 0x2AA
+#define MM_SOUL_ENEMY_FLOORMASTER 0x2AB
+#define MM_SOUL_ENEMY_CHUCHU 0x2AC
+#define MM_SOUL_ENEMY_DEEP_PYTHON 0x2AD
+#define MM_SOUL_ENEMY_STALCHILD 0x2AE
+#define MM_SOUL_ENEMY_LEEVER 0x2AF
+#define MM_SOUL_ENEMY_SKULLFISH 0x2B0
+#define MM_SOUL_ENEMY_DEXIHAND 0x2B1
+#define MM_SOUL_ENEMY_DRAGONFLY 0x2B2
+#define MM_SOUL_ENEMY_EENO 0x2B3
+#define MM_SOUL_ENEMY_EYEGORE 0x2B4
+#define MM_SOUL_ENEMY_HIPLOOP 0x2B5
+#define MM_SOUL_ENEMY_REAL_BOMBCHU 0x2B6
+#define MM_SOUL_ENEMY_TAKKURI 0x2B7
+#define MM_SOUL_ENEMY_BOE 0x2B8
+#define MM_SOUL_ENEMY_NEJIRON 0x2B9
+#define MM_SOUL_ENEMY_BIO_BABA 0x2BA
+#define MM_SOUL_ENEMY_GARO 0x2BB
+#define MM_SOUL_ENEMY_WIZZROBE 0x2BC
+#define MM_SOUL_ENEMY_GOMESS 0x2BD
+#define MM_SOUL_ENEMY_GEKKO 0x2BE
+#define MM_SOUL_ENEMY_BAD_BAT 0x2BF
+#define MM_SOUL_ENEMY_SNAPPER 0x2C0
+#define MM_SOUL_ENEMY_WART 0x2C1
+#define MM_SOUL_ENEMY_CAPTAIN_KEETA 0x2C2
+#define MM_SOUL_ENEMY_THIEVES 0x2C3
+#define MM_SOUL_ENEMY_POE 0x2C4
+#define MM_SOUL_BOSS_ODOLWA 0x2C5
+#define MM_SOUL_BOSS_GOHT 0x2C6
+#define MM_SOUL_BOSS_GYORG 0x2C7
+#define MM_SOUL_BOSS_TWINMOLD 0x2C8
+#define MM_SOUL_BOSS_IGOS 0x2C9
+#define MM_SOUL_NPC_AROMA 0x2CA
+#define MM_SOUL_NPC_SHOOTING_GALLERY_OWNER 0x2CB
+#define MM_SOUL_NPC_BAZAAR_SHOPKEEPER 0x2CC
+#define MM_SOUL_NPC_GORON 0x2CD
+#define MM_SOUL_NPC_GORON_CHILD 0x2CE
+#define MM_SOUL_NPC_BOMBCHU_SHOPKEEPER 0x2CF
+#define MM_SOUL_NPC_BOMBERS 0x2D0
+#define MM_SOUL_NPC_BUTLER_DEKU 0x2D1
+#define MM_SOUL_NPC_CITIZEN 0x2D2
+#define MM_SOUL_NPC_COMPOSER_BROS 0x2D3
+#define MM_SOUL_NPC_DAMPE 0x2D4
+#define MM_SOUL_NPC_DEKU_KING 0x2D5
+#define MM_SOUL_NPC_DEKU_PRINCESS 0x2D6
+#define MM_SOUL_NPC_PLAYGROUND_SCRUBS 0x2D7
+#define MM_SOUL_NPC_GORON_ELDER 0x2D8
+#define MM_SOUL_NPC_CHEST_GAME_OWNER 0x2D9
+#define MM_SOUL_NPC_GORON_SHOPKEEPER 0x2DA
+#define MM_SOUL_NPC_HONEY_DARLING 0x2DB
+#define MM_SOUL_NPC_TOTO 0x2DC
+#define MM_SOUL_NPC_RUTO 0x2DD
+#define MM_SOUL_NPC_ZORA_MUSICIANS 0x2DE
+#define MM_SOUL_NPC_KAFEI 0x2DF
+#define MM_SOUL_NPC_KEATON 0x2E0
+#define MM_SOUL_NPC_KOUME_KOTAKE 0x2E1
+#define MM_SOUL_NPC_MAYOR_DOTOUR 0x2E2
+#define MM_SOUL_NPC_MEDIGORON 0x2E3
+#define MM_SOUL_NPC_BIGGORON 0x2E4
+#define MM_SOUL_NPC_TALON 0x2E5
+#define MM_SOUL_NPC_ASTRONOMER 0x2E6
+#define MM_SOUL_NPC_POE_COLLECTOR 0x2E7
+#define MM_SOUL_NPC_BLACKSMITHS 0x2E8
+#define MM_SOUL_NPC_BOMBCHU_BOWLING_LADY 0x2E9
+#define MM_SOUL_NPC_TINGLE 0x2EA
+#define MM_SOUL_NPC_TOILET_HAND 0x2EB
+#define MM_SOUL_NPC_FISHING_POND_OWNER 0x2EC
+#define MM_SOUL_NPC_ROOFTOP_MAN 0x2ED
+#define MM_SOUL_NPC_ZORA 0x2EE
+#define MM_SOUL_NPC_ZORA_SHOPKEEPER 0x2EF
+#define MM_SOUL_NPC_MALON 0x2F0
+#define MM_SOUL_NPC_BEAN_SALESMAN 0x2F1
+#define MM_SOUL_NPC_CARPENTERS 0x2F2
+#define MM_SOUL_NPC_ANJU 0x2F3
+#define MM_SOUL_NPC_GURU_GURU 0x2F4
+#define MM_SOUL_NPC_SCIENTIST 0x2F5
+#define MM_SOUL_NPC_GORMAN 0x2F6
+#define MM_SOUL_NPC_GROG 0x2F7
+#define MM_SOUL_NPC_DOG_LADY 0x2F8
+#define MM_SOUL_NPC_CARPET_MAN 0x2F9
+#define MM_SOUL_NPC_OLD_HAG 0x2FA
+#define MM_SOUL_NPC_TOURIST_CENTER 0x2FB
+#define MM_SOUL_NPC_BANKER 0x2FC
+#define MM_SOUL_NPC_MOON_CHILDREN 0x2FD
+#define MM_SOUL_NPC_THIEVES 0x2FE
+#define MM_SOUL_ANIMAL_CUCCO 0x2FF
+#define MM_SOUL_ANIMAL_COW 0x300
+#define MM_SOUL_ANIMAL_DOG 0x301
+#define MM_SOUL_ANIMAL_BUTTERFLY 0x302
+#define MM_SOUL_MISC_GS 0x303
+#define MM_SOUL_MISC_BUSINESS_SCRUB 0x304
+#define MM_KEY_RING 0x305
+#define MM_KEY_RING_WF 0x306
+#define MM_KEY_RING_SH 0x307
+#define MM_KEY_RING_GB 0x308
+#define MM_KEY_RING_ST 0x309
+#define MM_SKELETON_KEY 0x30A
+#define MM_BUTTON_A 0x30B
+#define MM_BUTTON_C_RIGHT 0x30C
+#define MM_BUTTON_C_LEFT 0x30D
+#define MM_BUTTON_C_UP 0x30E
+#define MM_BUTTON_C_DOWN 0x30F
+#define MM_BOTTLE_POTION_GREEN 0x310
+#define MM_BOTTLE_POTION_BLUE 0x311
+#define MM_BOTTLE_FAIRY 0x312
+#define MM_POE 0x313
+#define MM_BOTTLE_POE 0x314
+#define MM_BOTTLE_BIG_POE 0x315
+#define MM_BOMBCHU_BAG 0x316
+#define MM_BOMBCHU_BAG2 0x317
+#define MM_BOMBCHU_BAG3 0x318
+#define MM_BOMBCHU_BAG_FIRST_1 0x319
+#define MM_BOMBCHU_BAG_FIRST_5 0x31A
+#define MM_BOMBCHU_BAG_FIRST_10 0x31B
+#define MM_BOMBCHU_BAG_FIRST_20 0x31C
+#define MM_FAIRY_BIG 0x31D
+#define MM_SPELL_FIRE 0x31E
+#define MM_SPELL_WIND 0x31F
+#define MM_SPELL_LOVE 0x320
+#define MM_BOOTS_IRON 0x321
+#define MM_BOOTS_HOVER 0x322
+#define MM_TUNIC_GORON 0x323
+#define MM_TUNIC_ZORA 0x324
+#define MM_SCALE_BRONZE 0x325
+#define MM_SCALE_SILVER 0x326
+#define MM_SCALE_GOLDEN 0x327
+#define MM_GORON_BRACELET 0x328
+#define MM_SILVER_GAUNTLETS 0x329
+#define MM_GOLDEN_GAUNTLETS 0x32A
+#define MM_CLOCK1 0x32B
+#define MM_CLOCK2 0x32C
+#define MM_CLOCK3 0x32D
+#define MM_CLOCK4 0x32E
+#define MM_CLOCK5 0x32F
+#define MM_CLOCK6 0x330
+#define MM_HAMMER 0x331
+#define MM_STICK_UPGRADE 0x332
+#define MM_STICK_UPGRADE2 0x333
+#define MM_NUT_UPGRADE 0x334
+#define MM_NUT_UPGRADE2 0x335
+#define MM_STONE_OF_AGONY 0x336
+#define MM_BOTTLE_RUTO_LETTER 0x337
+#define MM_BOTTLE_BLUE_FIRE 0x338
+#define MM_BLUE_FIRE 0x339
+#define MM_MASK_MAJORA 0x33A
+#define MM_SOLD_OUT 0x33B
+#define NOTHING 0x33C
+#define MM_SCOOP 0x33D

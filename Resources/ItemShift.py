@@ -957,6 +957,7 @@ with open(input_file, "r", newline='', encoding='utf-8') as csvfile_in, \
     df = pd.DataFrame(reader)
     writer = csv.writer(csvfile_out)
     currnum = 1
+    defines = "\n\n"
     for currItem in itemOrder:
         currName = df[df['ID'] == currItem]
         currRender = ""
@@ -967,9 +968,13 @@ with open(input_file, "r", newline='', encoding='utf-8') as csvfile_in, \
         else:
             currName = unkItems[currItem]
 
-        new_hex = "{ " f"0x{currnum:X}"  # hex en majuscules
-        fin_row = new_hex + ', \"' + currName + "\", EGameIcon::" + str(currRender) + " },\n"
+        new_hex = f"0x{currnum:X}"  # hex en majuscules
+        fin_row = "{ " + currItem + ', \"' + currName + "\", EGameIcon::" + str(currRender) + " },\n"
         csvfile_out.write(fin_row)
         currnum = currnum + 1
+        
+        defines += "#define " + currItem + " " + new_hex + "\n"
+    
+    csvfile_out.write (defines)
 
 print(f"Fichier écrit : {output_file}")

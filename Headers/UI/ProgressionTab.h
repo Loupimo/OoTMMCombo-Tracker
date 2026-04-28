@@ -4,9 +4,11 @@
 #include <QLabel>
 #include <QHash>
 #include <QList>
+#include <QPair>
 #include <QTabBar>
 #include <QStackedWidget>
 #include <QScrollArea>
+#include <QTreeWidget>
 #include "Combo/Items.h"
 #include "Combo/Objects.h"
 #include "UI/Icons.h"
@@ -63,8 +65,7 @@ public:
     bool Found = false;                 // True once at least one matching item has been collected.
 
     QStringList LocationsFound;         // Scenes where the item was tracked, used for the tooltip.
-    int Game = -1;                      // OOT_GAME / MM_GAME associated with this widget (for the detail panel).
-    const ObjectInfo* LastObject = nullptr; // Last reported object (if any) so the detail panel can show its location.
+    int Game = -1;                      // OOT_GAME / MM_GAME associated with the widget's page (used as a hint for the detail panel).
 
 private:
 
@@ -87,9 +88,10 @@ public:
     /*
     *   Mark the item as found, optionally update its counter and refresh the visual state.
     *
+    *   @param Game      The game the reported object belongs to (used to resolve the scene name).
     *   @param Object    The reported object (used to record the scene location). Can be nullptr.
     */
-    void MarkFound(const ObjectInfo* Object = nullptr);
+    void MarkFound(int Game, const ObjectInfo* Object = nullptr);
 
     /*
     *   Reset the widget back to its initial unfound state.
@@ -160,8 +162,10 @@ private:
     QLabel* DetailIcon = nullptr;
     QLabel* DetailName = nullptr;
     QLabel* DetailStatus = nullptr;
-    QLabel* DetailLocation = nullptr;
+    QLabel* DetailLocationsHeader = nullptr;
+    QTreeWidget* DetailLocations = nullptr;
     QLabel* DetailCount = nullptr;
+    ItemIconWidget* CurrentDetailWidget = nullptr; // Widget currently displayed by ShowDetailFor.
 
 public:
 
@@ -210,6 +214,13 @@ public:
     */
     void ResetProgress();
 
+    /*
+    *   Refresh the detail panel currently shown (if any). Called when the
+    *   "Reveal Uncollected Items" option is toggled so the location tree
+    *   reflects the new visibility.
+    */
+    void RefreshCurrentDetail();
+
 private:
 
     /*
@@ -242,6 +253,38 @@ private:
     *   @param Widget    The item widget that was selected.
     */
     void ShowDetailFor(ItemIconWidget* Widget);
+
+    /*
+    *   Build the location tree of the detail panel for the given widget. Top level
+    *   items are scenes and leaves are individual objects, mirroring the visual style
+    *   of MapTab's object list. When the "Reveal Uncollected Items" option is on,
+    *   uncollected matching objects are also listed (greyed out).
+    *
+    *   @param Widget    The widget the tree describes.
+    */
+    void BuildLocationTree(ItemIconWidget* Widget);
+
+    /*
+    *   Forward a click on a location leaf to the main window so it switches to the
+    *   matching game tab and centers the view on the underlying object.
+    *
+    *   @param Item      The clicked tree item.
+    *   @param Column    Unused; kept for the QTreeWidget::itemClicked signature.
+    */
+    void OnLocationClicked(QTreeWidgetItem* Item, int Column);
+
+    /*
+    *   Test whether the given item would be matched to the given widget by the
+    *   same logic OnItemFound uses (icon hash + LookupKey disambiguation, with a
+    *   name-only fallback). Souls widgets accept items from any game.
+    *
+    *   @param Widget    The widget to test against.
+    *   @param Game      The game the item was reported in.
+    *   @param Item      The item to test.
+    *
+    *   @return True if the item would be associated to the widget.
+    */
+    static bool ItemMatchesWidget(const ItemIconWidget* Widget, int Game, const ItemInfo* Item);
 
     /*
     *   Normalize the given item name by stripping the trailing "(OoT)" / "(MM)" suffix and

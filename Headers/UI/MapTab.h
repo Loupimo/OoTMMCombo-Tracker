@@ -329,6 +329,17 @@ public:
     */
     void RefreshSceneHeader();
 
+    /*
+    *   Switch the active scene to the one rendering the given object, scroll the
+    *   object list to the matching row and center the view on its scene graph item.
+    *   When the object cannot be located in any rendered category (e.g. it is
+    *   excluded by the active filter), the scene is still loaded so the user can
+    *   inspect the surrounding context.
+    *
+    *   @param Object   The object to focus on. Must belong to one of this tab's scenes.
+    */
+    void FocusObject(ObjectInfo* Object);
+
 #pragma endregion
 
 };

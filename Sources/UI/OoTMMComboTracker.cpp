@@ -491,7 +491,11 @@ OoTMMComboTracker::~OoTMMComboTracker()
 
 void OoTMMComboTracker::ShowAboutDialog()
 {
-    QMessageBox::about(this, "About", "OoTMMCombo Auto Tracker\nVersion 2.0\n(c) 2025-2026 Loupimo");
+    QMessageBox msgBox(this);
+    msgBox.setWindowTitle("About");
+    msgBox.setTextFormat(Qt::RichText);
+    msgBox.setText("OoTMMCombo Auto Tracker<br>Version 2.0<br>&copy; 2025-2026 Loupimo<br><br>git repository: <a href='https://github.com/Loupimo/OoTMMCombo-Tracker'>https://github.com/Loupimo/OoTMMCombo-Tracker</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+    msgBox.exec();
 }
 
 void OoTMMComboTracker::ApplyGameTheme(int GameID)
@@ -624,6 +628,11 @@ void OoTMMComboTracker::UpdateRevealUncollectedItems(bool NewValue)
     }
 
     if (this->RevealPill) this->RevealPill->SetActive(NewValue);
+
+    if (this->ProgTab != nullptr)
+    {   // Reveal toggle changes which uncollected locations are shown in the detail tree.
+        this->ProgTab->RefreshCurrentDetail();
+    }
 }
 
 
@@ -632,6 +641,28 @@ void OoTMMComboTracker::UpdateObjectVisibilityForAllGames()
     this->OoTTab->UpdateObjectVisibility();
     this->MMTab->UpdateObjectVisibility();
 }
+
+void OoTMMComboTracker::NavigateToObject(int Game, ObjectInfo* Object)
+{
+    if (Object == nullptr) return;
+
+    GameTab* target = nullptr;
+    if (Game == OOT_GAME)      target = this->OoTTab;
+    else if (Game == MM_GAME)  target = this->MMTab;
+
+    if (target == nullptr || target->GameMaps == nullptr) return;
+
+    // Bring the relevant game tab to the foreground so the user actually sees the
+    // map switch when the navigation is triggered from the Progression dashboard.
+    int idx = this->TabWidget->indexOf(target);
+    if (idx >= 0)
+    {
+        this->TabWidget->setCurrentIndex(idx);
+    }
+
+    target->GameMaps->FocusObject(Object);
+}
+
 
 void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, const ItemInfo* ItemFound)
 {
