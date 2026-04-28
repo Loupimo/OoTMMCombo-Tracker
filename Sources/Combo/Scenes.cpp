@@ -159,7 +159,7 @@ SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
     { "Back Alley", "", "./Resources/OoT/Market/Back_Alley_Map.jpg", (uint8_t)OoTRegions::None, false, GameLayout::oot },
     { "Warp Songs", "", "./Resources/OoT/Songs/Song_Map.jpg", (uint8_t)OoTRegions::None, false, GameLayout::oot },
     { "Inside Eggs", "", "", (uint8_t)OoTRegions::None, false, GameLayout::oot },
-    { "Market", "", "./Resources/OoT/Hyrule/Market_Map.jpg", (uint8_t)OoTRegions::None, false, GameLayout::oot }
+    { "Market", "", "./Resources/OoT/Market/Market_Map.jpg", (uint8_t)OoTRegions::None, false, GameLayout::oot }
 };
 
 

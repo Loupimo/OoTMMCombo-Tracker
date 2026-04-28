@@ -11,7 +11,7 @@ static ObjectInfo OOT_BACK_ALLEY_HOUSESceneObjects_Data [OOT_BACK_ALLEY_HOUSENum
 	{ 0x0003, OOT_BACK_ALLEY_HOUSE, "Pot 2", "OOT Market Back Alley East House Pot 2", ObjectType::pot, {442, 429, 0}, OOT_BACK_ALLEY_HOUSE, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0004, OOT_BACK_ALLEY_HOUSE, "Pot 3", "OOT Market Back Alley East House Pot 3", ObjectType::pot, {521, 429, 0}, OOT_BACK_ALLEY_HOUSE, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_BACK_ALLEY_HOUSESceneObjects = OOT_BACK_ALLEY_HOUSESceneObjects_Data;
+ObjectInfo * OOT_BACK_ALLEY_HOUSESceneObjects = OOT_BACK_ALLEY_HOUSESceneObjects_Data;
 
 const size_t OOT_BACK_ALLEY_HOUSE2NumOfObjs = 2;
 static ObjectInfo OOT_BACK_ALLEY_HOUSE2SceneObjects_Data [OOT_BACK_ALLEY_HOUSE2NumOfObjs] =
@@ -19,7 +19,7 @@ static ObjectInfo OOT_BACK_ALLEY_HOUSE2SceneObjects_Data [OOT_BACK_ALLEY_HOUSE2N
 	{ DOG_LADY, OOT_BACK_ALLEY_HOUSE2, "Dog Lady", "OOT Market Dog Lady HP", ObjectType::npc, {436, 214, 0}, OOT_BACK_ALLEY_HOUSE2, ObjectType::heart_piece, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00002, OOT_BACK_ALLEY_HOUSE2, "Crate", "OOT Market Dog Lady Crate", ObjectType::crate, {657, 105, 0}, OOT_BACK_ALLEY_HOUSE2, ObjectType::crate, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_BACK_ALLEY_HOUSE2SceneObjects = OOT_BACK_ALLEY_HOUSE2SceneObjects_Data;
+ObjectInfo * OOT_BACK_ALLEY_HOUSE2SceneObjects = OOT_BACK_ALLEY_HOUSE2SceneObjects_Data;
 
 const size_t OOT_BAZAARNumOfObjs = 16;
 static ObjectInfo OOT_BAZAARSceneObjects_Data [OOT_BAZAARNumOfObjs] =
@@ -41,7 +41,7 @@ static ObjectInfo OOT_BAZAARSceneObjects_Data [OOT_BAZAARNumOfObjs] =
 	{ 0x26, OOT_BAZAAR, "Item 7", "OOT Market Bazaar Item 7", ObjectType::shop, {664, 328, 0}, OOT_MARKET_BAZAAR, ObjectType::shop, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x27, OOT_BAZAAR, "Item 8", "OOT Market Bazaar Item 8", ObjectType::shop, {624, 328, 0}, OOT_MARKET_BAZAAR, ObjectType::shop, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_BAZAARSceneObjects = OOT_BAZAARSceneObjects_Data;
+ObjectInfo * OOT_BAZAARSceneObjects = OOT_BAZAARSceneObjects_Data;
 
 const size_t OOT_KAKARIKO_BAZAARNumOfObjs = 8;
 static ObjectInfo OOT_KAKARIKO_BAZAARSceneObjects_Data [OOT_KAKARIKO_BAZAARNumOfObjs] =
@@ -55,7 +55,7 @@ static ObjectInfo OOT_KAKARIKO_BAZAARSceneObjects_Data [OOT_KAKARIKO_BAZAARNumOf
 	{ 0x36, OOT_BAZAAR, "Item 7", "OOT Kakariko Bazaar Item 7", ObjectType::shop, {664, 328, 0}, OOT_KAKARIKO_BAZAAR, ObjectType::shop, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x37, OOT_BAZAAR, "Item 8", "OOT Kakariko Bazaar Item 8", ObjectType::shop, {624, 328, 0}, OOT_KAKARIKO_BAZAAR, ObjectType::shop, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_KAKARIKO_BAZAARSceneObjects = OOT_KAKARIKO_BAZAARSceneObjects_Data;
+ObjectInfo * OOT_KAKARIKO_BAZAARSceneObjects = OOT_KAKARIKO_BAZAARSceneObjects_Data;
 
 const size_t OOT_MARKET_BAZAARNumOfObjs = 8;
 static ObjectInfo OOT_MARKET_BAZAARSceneObjects_Data [OOT_MARKET_BAZAARNumOfObjs] =
@@ -69,7 +69,7 @@ static ObjectInfo OOT_MARKET_BAZAARSceneObjects_Data [OOT_MARKET_BAZAARNumOfObjs
 	{ 0x26, OOT_BAZAAR, "Item 7", "OOT Market Bazaar Item 7", ObjectType::shop, {664, 328, 0}, OOT_MARKET_BAZAAR, ObjectType::shop, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x27, OOT_BAZAAR, "Item 8", "OOT Market Bazaar Item 8", ObjectType::shop, {624, 328, 0}, OOT_MARKET_BAZAAR, ObjectType::shop, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_MARKET_BAZAARSceneObjects = OOT_MARKET_BAZAARSceneObjects_Data;
+ObjectInfo * OOT_MARKET_BAZAARSceneObjects = OOT_MARKET_BAZAARSceneObjects_Data;
 
 const size_t OOT_BOMBCHU_BOWLING_ALLEYNumOfObjs = 2;
 static ObjectInfo OOT_BOMBCHU_BOWLING_ALLEYSceneObjects_Data [OOT_BOMBCHU_BOWLING_ALLEYNumOfObjs] =
@@ -77,7 +77,7 @@ static ObjectInfo OOT_BOMBCHU_BOWLING_ALLEYSceneObjects_Data [OOT_BOMBCHU_BOWLIN
 	{ BOMBCHU_BOWLING_1, OOT_BOMBCHU_BOWLING_ALLEY, "Reward 1", "OOT Bombchu Bowling Reward 1", ObjectType::npc, {816, 248, 0}, OOT_BOMBCHU_BOWLING_ALLEY, ObjectType::heart_piece, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::minigame, NULL },
 	{ BOMBCHU_BOWLING_2, OOT_BOMBCHU_BOWLING_ALLEY, "Reward 2", "OOT Bombchu Bowling Reward 2", ObjectType::npc, {743, 248, 0}, OOT_BOMBCHU_BOWLING_ALLEY, ObjectType::npc, EGameIcon::biggest_bomb, ObjectContext::All, 0, GameLayout::oot, LocType::minigame, NULL }
 };
-ObjectInfo *OOT_BOMBCHU_BOWLING_ALLEYSceneObjects = OOT_BOMBCHU_BOWLING_ALLEYSceneObjects_Data;
+ObjectInfo * OOT_BOMBCHU_BOWLING_ALLEYSceneObjects = OOT_BOMBCHU_BOWLING_ALLEYSceneObjects_Data;
 
 const size_t OOT_BOMBCHU_SHOPNumOfObjs = 8;
 static ObjectInfo OOT_BOMBCHU_SHOPSceneObjects_Data [OOT_BOMBCHU_SHOPNumOfObjs] =
@@ -91,7 +91,7 @@ static ObjectInfo OOT_BOMBCHU_SHOPSceneObjects_Data [OOT_BOMBCHU_SHOPNumOfObjs] 
 	{ 0x0e, OOT_BOMBCHU_SHOP, "Item 7", "OOT Market Bombchu Shop Item 7", ObjectType::shop, {644, 276, 0}, OOT_BOMBCHU_SHOP, ObjectType::shop, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0f, OOT_BOMBCHU_SHOP, "Item 8", "OOT Market Bombchu Shop Item 8", ObjectType::shop, {574, 226, 0}, OOT_BOMBCHU_SHOP, ObjectType::shop, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_BOMBCHU_SHOPSceneObjects = OOT_BOMBCHU_SHOPSceneObjects_Data;
+ObjectInfo * OOT_BOMBCHU_SHOPSceneObjects = OOT_BOMBCHU_SHOPSceneObjects_Data;
 
 const size_t OOT_BOTTOM_OF_THE_WELLNumOfObjs = 104;
 static ObjectInfo OOT_BOTTOM_OF_THE_WELLSceneObjects_Data [OOT_BOTTOM_OF_THE_WELLNumOfObjs] =
@@ -201,7 +201,7 @@ static ObjectInfo OOT_BOTTOM_OF_THE_WELLSceneObjects_Data [OOT_BOTTOM_OF_THE_WEL
 	{ 0x00502, OOT_BOTTOM_OF_THE_WELL, "Side Room 3", "OOT MQ Bottom of the Well Wonder Item Side Room 3", ObjectType::wonder, {778, 124, 0}, OOT_BOTTOM_OF_THE_WELL, ObjectType::wonder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
 	{ 0x00503, OOT_BOTTOM_OF_THE_WELL, "Side Room 4", "OOT MQ Bottom of the Well Wonder Item Side Room 4", ObjectType::wonder, {795, 125, 0}, OOT_BOTTOM_OF_THE_WELL, ObjectType::wonder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL }
 };
-ObjectInfo *OOT_BOTTOM_OF_THE_WELLSceneObjects = OOT_BOTTOM_OF_THE_WELLSceneObjects_Data;
+ObjectInfo * OOT_BOTTOM_OF_THE_WELLSceneObjects = OOT_BOTTOM_OF_THE_WELLSceneObjects_Data;
 
 const size_t OOT_CASTLE_COURTYARDNumOfObjs = 3;
 static ObjectInfo OOT_CASTLE_COURTYARDSceneObjects_Data [OOT_CASTLE_COURTYARDNumOfObjs] =
@@ -210,7 +210,7 @@ static ObjectInfo OOT_CASTLE_COURTYARDSceneObjects_Data [OOT_CASTLE_COURTYARDNum
 	{ ZELDA_SONG, OOT_CASTLE_COURTYARD, "Zelda's Song", "OOT Zelda's Song", ObjectType::npc, {174, 470, 0}, OOT_CASTLE_COURTYARD, ObjectType::song, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00005, OOT_CASTLE_COURTYARD, "Mario Painting", "OOT Castle Courtyard Wonder Item", ObjectType::wonder, {273, 205, 0}, OOT_CASTLE_COURTYARD, ObjectType::wonder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_CASTLE_COURTYARDSceneObjects = OOT_CASTLE_COURTYARDSceneObjects_Data;
+ObjectInfo * OOT_CASTLE_COURTYARDSceneObjects = OOT_CASTLE_COURTYARDSceneObjects_Data;
 
 const size_t OOT_DEATH_MOUNTAIN_CRATERNumOfObjs = 62;
 static ObjectInfo OOT_DEATH_MOUNTAIN_CRATERSceneObjects_Data [OOT_DEATH_MOUNTAIN_CRATERNumOfObjs] =
@@ -278,7 +278,7 @@ static ObjectInfo OOT_DEATH_MOUNTAIN_CRATERSceneObjects_Data [OOT_DEATH_MOUNTAIN
 	{ 0x10121, OOT_DEATH_MOUNTAIN_CRATER, "Soil 2", "OOT Death Mountain Crater Soil 2", ObjectType::soil, {514, 412, 0}, OOT_DEATH_MOUNTAIN_CRATER, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x20121, OOT_DEATH_MOUNTAIN_CRATER, "Soil 3", "OOT Death Mountain Crater Soil 3", ObjectType::soil, {468, 412, 0}, OOT_DEATH_MOUNTAIN_CRATER, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_DEATH_MOUNTAIN_CRATERSceneObjects = OOT_DEATH_MOUNTAIN_CRATERSceneObjects_Data;
+ObjectInfo * OOT_DEATH_MOUNTAIN_CRATERSceneObjects = OOT_DEATH_MOUNTAIN_CRATERSceneObjects_Data;
 
 const size_t OOT_DEATH_MOUNTAIN_TRAILNumOfObjs = 67;
 static ObjectInfo OOT_DEATH_MOUNTAIN_TRAILSceneObjects_Data [OOT_DEATH_MOUNTAIN_TRAILNumOfObjs] =
@@ -351,7 +351,7 @@ static ObjectInfo OOT_DEATH_MOUNTAIN_TRAILSceneObjects_Data [OOT_DEATH_MOUNTAIN_
 	{ 0x1002b, OOT_DEATH_MOUNTAIN_TRAIL, "Soil 2", "OOT Death Mountain Trail Soil 2", ObjectType::soil, {145, 331, 0}, OOT_DEATH_MOUNTAIN_TRAIL, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x2002b, OOT_DEATH_MOUNTAIN_TRAIL, "Soil 3", "OOT Death Mountain Trail Soil 3", ObjectType::soil, {134, 331, 0}, OOT_DEATH_MOUNTAIN_TRAIL, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_DEATH_MOUNTAIN_TRAILSceneObjects = OOT_DEATH_MOUNTAIN_TRAILSceneObjects_Data;
+ObjectInfo * OOT_DEATH_MOUNTAIN_TRAILSceneObjects = OOT_DEATH_MOUNTAIN_TRAILSceneObjects_Data;
 
 const size_t OOT_GROTTO_DEATH_TRIAL_COWNumOfObjs = 16;
 static ObjectInfo OOT_GROTTO_DEATH_TRIAL_COWSceneObjects_Data [OOT_GROTTO_DEATH_TRIAL_COWNumOfObjs] =
@@ -373,7 +373,7 @@ static ObjectInfo OOT_GROTTO_DEATH_TRIAL_COWSceneObjects_Data [OOT_GROTTO_DEATH_
 	{ 0x00304, OOT_GROTTOS, "Big Fairy", "OOT Death Mountain Trail Cow Grotto Big Fairy", ObjectType::fairy_spot, {753, 308, 0}, OOT_GROTTO_DEATH_TRIAL_COW, ObjectType::fairy_spot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00303, OOT_GROTTOS, "Hive", "OOT Death Mountain Trail Cow Grotto Hive", ObjectType::hive, {829, 166, 0}, OOT_GROTTO_DEATH_TRIAL_COW, ObjectType::hive, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_DEATH_TRIAL_COWSceneObjects = OOT_GROTTO_DEATH_TRIAL_COWSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_DEATH_TRIAL_COWSceneObjects = OOT_GROTTO_DEATH_TRIAL_COWSceneObjects_Data;
 
 const size_t OOT_DEKU_TREENumOfObjs = 128;
 static ObjectInfo OOT_DEKU_TREESceneObjects_Data [OOT_DEKU_TREENumOfObjs] =
@@ -507,7 +507,7 @@ static ObjectInfo OOT_DEKU_TREESceneObjects_Data [OOT_DEKU_TREENumOfObjs] =
 	{ 0x00107, OOT_LAIR_GOHMA, "Boss 7", "OOT Deku Tree Boss Grass 7", ObjectType::grass, {721, 423, 0}, OOT_DEKU_TREE, ObjectType::grass, EGameIcon::render_type, ObjectContext::All, 4, GameLayout::all, LocType::dungeon, NULL },
 	{ 0x00108, OOT_LAIR_GOHMA, "Boss 8", "OOT Deku Tree Boss Grass 8", ObjectType::grass, {689, 513, 0}, OOT_DEKU_TREE, ObjectType::grass, EGameIcon::render_type, ObjectContext::All, 4, GameLayout::all, LocType::dungeon, NULL }
 };
-ObjectInfo *OOT_DEKU_TREESceneObjects = OOT_DEKU_TREESceneObjects_Data;
+ObjectInfo * OOT_DEKU_TREESceneObjects = OOT_DEKU_TREESceneObjects_Data;
 
 const size_t OOT_DESERT_COLOSSUSNumOfObjs = 44;
 static ObjectInfo OOT_DESERT_COLOSSUSSceneObjects_Data [OOT_DESERT_COLOSSUSNumOfObjs] =
@@ -557,7 +557,7 @@ static ObjectInfo OOT_DESERT_COLOSSUSSceneObjects_Data [OOT_DESERT_COLOSSUSNumOf
 	{ 0x1001d, OOT_DESERT_COLOSSUS, "Soil 2", "OOT Desert Colossus Soil 2", ObjectType::soil, {662, 194, 0}, OOT_DESERT_COLOSSUS, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x2001d, OOT_DESERT_COLOSSUS, "Soil 3", "OOT Desert Colossus Soil 3", ObjectType::soil, {668, 164, 0}, OOT_DESERT_COLOSSUS, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_DESERT_COLOSSUSSceneObjects = OOT_DESERT_COLOSSUSSceneObjects_Data;
+ObjectInfo * OOT_DESERT_COLOSSUSSceneObjects = OOT_DESERT_COLOSSUSSceneObjects_Data;
 
 const size_t OOT_DODONGO_CAVERNNumOfObjs = 138;
 static ObjectInfo OOT_DODONGO_CAVERNSceneObjects_Data [OOT_DODONGO_CAVERNNumOfObjs] =
@@ -701,7 +701,7 @@ static ObjectInfo OOT_DODONGO_CAVERNSceneObjects_Data [OOT_DODONGO_CAVERNNumOfOb
 	{ 0x1f, OOT_LAIR_KING_DODONGO, "Heart Container", "OOT Dodongo Cavern Boss Container", ObjectType::collectible, {614, 384, 0}, OOT_DODONGO_CAVERN, ObjectType::heart_container, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL },
 	{ BLUE_WARP_KING_DODONGO, OOT_LAIR_KING_DODONGO, "Goron's Ruby", "OOT Dodongo Cavern Boss", ObjectType::npc, {666, 384, 0}, OOT_DODONGO_CAVERN, ObjectType::npc, EGameIcon::ruby, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL }
 };
-ObjectInfo *OOT_DODONGO_CAVERNSceneObjects = OOT_DODONGO_CAVERNSceneObjects_Data;
+ObjectInfo * OOT_DODONGO_CAVERNSceneObjects = OOT_DODONGO_CAVERNSceneObjects_Data;
 
 const size_t OOT_FAIRY_FOUNTAINNumOfObjs = 40;
 static ObjectInfo OOT_FAIRY_FOUNTAINSceneObjects_Data [OOT_FAIRY_FOUNTAINNumOfObjs] =
@@ -747,7 +747,7 @@ static ObjectInfo OOT_FAIRY_FOUNTAINSceneObjects_Data [OOT_FAIRY_FOUNTAINNumOfOb
 	{ 0x62400, OOT_FAIRY_FOUNTAIN, "Fairy 7", "OOT Gerudo Fortress Fairy Fountain Fairy 7", ObjectType::fairy, {491, 176, 0}, OOT_FAIRY_GERUDO_FORTRESS, ObjectType::fairy, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x72400, OOT_FAIRY_FOUNTAIN, "Fairy 8", "OOT Gerudo Fortress Fairy Fountain Fairy 8", ObjectType::fairy, {474, 176, 0}, OOT_FAIRY_GERUDO_FORTRESS, ObjectType::fairy, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_FAIRY_FOUNTAINSceneObjects = OOT_FAIRY_FOUNTAINSceneObjects_Data;
+ObjectInfo * OOT_FAIRY_FOUNTAINSceneObjects = OOT_FAIRY_FOUNTAINSceneObjects_Data;
 
 const size_t OOT_FAIRY_SACRED_MEADOWNumOfObjs = 8;
 static ObjectInfo OOT_FAIRY_SACRED_MEADOWSceneObjects_Data [OOT_FAIRY_SACRED_MEADOWNumOfObjs] =
@@ -761,7 +761,7 @@ static ObjectInfo OOT_FAIRY_SACRED_MEADOWSceneObjects_Data [OOT_FAIRY_SACRED_MEA
 	{ 0x62200, OOT_FAIRY_FOUNTAIN, "Fairy 7", "OOT Sacred Meadow Fairy Fountain Fairy 7", ObjectType::fairy, {491, 176, 0}, OOT_FAIRY_SACRED_MEADOW, ObjectType::fairy, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x72200, OOT_FAIRY_FOUNTAIN, "Fairy 8", "OOT Sacred Meadow Fairy Fountain Fairy 8", ObjectType::fairy, {474, 176, 0}, OOT_FAIRY_SACRED_MEADOW, ObjectType::fairy, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_FAIRY_SACRED_MEADOWSceneObjects = OOT_FAIRY_SACRED_MEADOWSceneObjects_Data;
+ObjectInfo * OOT_FAIRY_SACRED_MEADOWSceneObjects = OOT_FAIRY_SACRED_MEADOWSceneObjects_Data;
 
 const size_t OOT_FAIRY_ZORA_RIVERNumOfObjs = 8;
 static ObjectInfo OOT_FAIRY_ZORA_RIVERSceneObjects_Data [OOT_FAIRY_ZORA_RIVERNumOfObjs] =
@@ -775,7 +775,7 @@ static ObjectInfo OOT_FAIRY_ZORA_RIVERSceneObjects_Data [OOT_FAIRY_ZORA_RIVERNum
 	{ 0x62100, OOT_FAIRY_FOUNTAIN, "Fairy 7", "OOT Zora River Fairy Fountain Fairy 7", ObjectType::fairy, {491, 176, 0}, OOT_FAIRY_ZORA_RIVER, ObjectType::fairy, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x72100, OOT_FAIRY_FOUNTAIN, "Fairy 8", "OOT Zora River Fairy Fountain Fairy 8", ObjectType::fairy, {474, 176, 0}, OOT_FAIRY_ZORA_RIVER, ObjectType::fairy, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_FAIRY_ZORA_RIVERSceneObjects = OOT_FAIRY_ZORA_RIVERSceneObjects_Data;
+ObjectInfo * OOT_FAIRY_ZORA_RIVERSceneObjects = OOT_FAIRY_ZORA_RIVERSceneObjects_Data;
 
 const size_t OOT_FAIRY_ZORA_DOMAINNumOfObjs = 8;
 static ObjectInfo OOT_FAIRY_ZORA_DOMAINSceneObjects_Data [OOT_FAIRY_ZORA_DOMAINNumOfObjs] =
@@ -789,7 +789,7 @@ static ObjectInfo OOT_FAIRY_ZORA_DOMAINSceneObjects_Data [OOT_FAIRY_ZORA_DOMAINN
 	{ 0x62300, OOT_FAIRY_FOUNTAIN, "Fairy 7", "OOT Zora Domain Fairy Fountain Fairy 7", ObjectType::fairy, {491, 176, 0}, OOT_FAIRY_ZORA_DOMAIN, ObjectType::fairy, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x72300, OOT_FAIRY_FOUNTAIN, "Fairy 8", "OOT Zora Domain Fairy Fountain Fairy 8", ObjectType::fairy, {474, 176, 0}, OOT_FAIRY_ZORA_DOMAIN, ObjectType::fairy, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_FAIRY_ZORA_DOMAINSceneObjects = OOT_FAIRY_ZORA_DOMAINSceneObjects_Data;
+ObjectInfo * OOT_FAIRY_ZORA_DOMAINSceneObjects = OOT_FAIRY_ZORA_DOMAINSceneObjects_Data;
 
 const size_t OOT_FAIRY_HYRULENumOfObjs = 8;
 static ObjectInfo OOT_FAIRY_HYRULESceneObjects_Data [OOT_FAIRY_HYRULENumOfObjs] =
@@ -803,7 +803,7 @@ static ObjectInfo OOT_FAIRY_HYRULESceneObjects_Data [OOT_FAIRY_HYRULENumOfObjs] 
 	{ 0x62000, OOT_FAIRY_FOUNTAIN, "Fairy 7", "OOT Hyrule Field Fairy Fountain Fairy 7", ObjectType::fairy, {491, 176, 0}, OOT_FAIRY_HYRULE, ObjectType::fairy, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x72000, OOT_FAIRY_FOUNTAIN, "Fairy 8", "OOT Hyrule Field Fairy Fountain Fairy 8", ObjectType::fairy, {474, 176, 0}, OOT_FAIRY_HYRULE, ObjectType::fairy, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_FAIRY_HYRULESceneObjects = OOT_FAIRY_HYRULESceneObjects_Data;
+ObjectInfo * OOT_FAIRY_HYRULESceneObjects = OOT_FAIRY_HYRULESceneObjects_Data;
 
 const size_t OOT_FAIRY_GERUDO_FORTRESSNumOfObjs = 8;
 static ObjectInfo OOT_FAIRY_GERUDO_FORTRESSSceneObjects_Data [OOT_FAIRY_GERUDO_FORTRESSNumOfObjs] =
@@ -817,7 +817,7 @@ static ObjectInfo OOT_FAIRY_GERUDO_FORTRESSSceneObjects_Data [OOT_FAIRY_GERUDO_F
 	{ 0x62400, OOT_FAIRY_FOUNTAIN, "Fairy 7", "OOT Gerudo Fortress Fairy Fountain Fairy 7", ObjectType::fairy, {491, 176, 0}, OOT_FAIRY_GERUDO_FORTRESS, ObjectType::fairy, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x72400, OOT_FAIRY_FOUNTAIN, "Fairy 8", "OOT Gerudo Fortress Fairy Fountain Fairy 8", ObjectType::fairy, {474, 176, 0}, OOT_FAIRY_GERUDO_FORTRESS, ObjectType::fairy, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_FAIRY_GERUDO_FORTRESSSceneObjects = OOT_FAIRY_GERUDO_FORTRESSSceneObjects_Data;
+ObjectInfo * OOT_FAIRY_GERUDO_FORTRESSSceneObjects = OOT_FAIRY_GERUDO_FORTRESSSceneObjects_Data;
 
 const size_t OOT_FISHING_PONDNumOfObjs = 35;
 static ObjectInfo OOT_FISHING_PONDSceneObjects_Data [OOT_FISHING_PONDNumOfObjs] =
@@ -858,7 +858,7 @@ static ObjectInfo OOT_FISHING_PONDSceneObjects_Data [OOT_FISHING_PONDNumOfObjs] 
 	{ 0x1f, OOT_FISHING_POND, "Adult - Fish 15", "OOT Fishing Pond Adult Fish 15", ObjectType::fish, {720, 501, 0}, OOT_FISHING_POND, ObjectType::fish, EGameIcon::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x20, OOT_FISHING_POND, "Adult - Loach", "OOT Fishing Pond Adult Loach", ObjectType::fish, {758, 596, 0}, OOT_FISHING_POND, ObjectType::fish, EGameIcon::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_FISHING_PONDSceneObjects = OOT_FISHING_PONDSceneObjects_Data;
+ObjectInfo * OOT_FISHING_PONDSceneObjects = OOT_FISHING_PONDSceneObjects_Data;
 
 const size_t OOT_GANON_CASTLE_EXTERIORNumOfObjs = 5;
 static ObjectInfo OOT_GANON_CASTLE_EXTERIORSceneObjects_Data [OOT_GANON_CASTLE_EXTERIORNumOfObjs] =
@@ -869,7 +869,7 @@ static ObjectInfo OOT_GANON_CASTLE_EXTERIORSceneObjects_Data [OOT_GANON_CASTLE_E
 	{ 0x00004, OOT_GANON_CASTLE_EXTERIOR, "Boulder 2", "OOT Ganon Castle Exterior Red Boulder 2", ObjectType::redboulder, {265, 373, 0}, OOT_GANON_CASTLE_EXTERIOR, ObjectType::redboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00005, OOT_GANON_CASTLE_EXTERIOR, "Boulder 3", "OOT Ganon Castle Exterior Red Boulder 3", ObjectType::redboulder, {240, 365, 0}, OOT_GANON_CASTLE_EXTERIOR, ObjectType::redboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GANON_CASTLE_EXTERIORSceneObjects = OOT_GANON_CASTLE_EXTERIORSceneObjects_Data;
+ObjectInfo * OOT_GANON_CASTLE_EXTERIORSceneObjects = OOT_GANON_CASTLE_EXTERIORSceneObjects_Data;
 
 const size_t OOT_GANON_TOWERNumOfObjs = 19;
 static ObjectInfo OOT_GANON_TOWERSceneObjects_Data [OOT_GANON_TOWERNumOfObjs] =
@@ -894,7 +894,7 @@ static ObjectInfo OOT_GANON_TOWERSceneObjects_Data [OOT_GANON_TOWERNumOfObjs] =
 	{ 0x0811, OOT_GANON_TOWER, "Tower 17", "OOT Ganon Tower Pot 17", ObjectType::pot, {623, 127, 0}, OOT_GANON_TOWER, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 1, GameLayout::oot, LocType::dungeon, NULL },
 	{ 0x0812, OOT_GANON_TOWER, "Tower 18", "OOT Ganon Tower Pot 18", ObjectType::pot, {602, 107, 0}, OOT_GANON_TOWER, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 1, GameLayout::oot, LocType::dungeon, NULL }
 };
-ObjectInfo *OOT_GANON_TOWERSceneObjects = OOT_GANON_TOWERSceneObjects_Data;
+ObjectInfo * OOT_GANON_TOWERSceneObjects = OOT_GANON_TOWERSceneObjects_Data;
 
 const size_t OOT_GERUDO_FORTRESSNumOfObjs = 37;
 static ObjectInfo OOT_GERUDO_FORTRESSSceneObjects_Data [OOT_GERUDO_FORTRESSNumOfObjs] =
@@ -937,7 +937,7 @@ static ObjectInfo OOT_GERUDO_FORTRESSSceneObjects_Data [OOT_GERUDO_FORTRESSNumOf
 	{ 0x62400, OOT_GERUDO_FORTRESS, "Fairy 7", "OOT Gerudo Fortress Fairy Fountain Fairy 7", ObjectType::none, {0, 0, 0}, OOT_FAIRY_GERUDO_FORTRESS, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x72400, OOT_GERUDO_FORTRESS, "Fairy 8", "OOT Gerudo Fortress Fairy Fountain Fairy 8", ObjectType::none, {0, 0, 0}, OOT_FAIRY_GERUDO_FORTRESS, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GERUDO_FORTRESSSceneObjects = OOT_GERUDO_FORTRESSSceneObjects_Data;
+ObjectInfo * OOT_GERUDO_FORTRESSSceneObjects = OOT_GERUDO_FORTRESSSceneObjects_Data;
 
 const size_t OOT_GERUDO_TRAINING_GROUNDNumOfObjs = 86;
 static ObjectInfo OOT_GERUDO_TRAINING_GROUNDSceneObjects_Data [OOT_GERUDO_TRAINING_GROUNDNumOfObjs] =
@@ -1029,7 +1029,7 @@ static ObjectInfo OOT_GERUDO_TRAINING_GROUNDSceneObjects_Data [OOT_GERUDO_TRAINI
 	{ 0x0020c, OOT_GERUDO_TRAINING_GROUND, "Slopes 4", "OOT MQ Gerudo Training Grounds Icicle Slopes 4", ObjectType::icicle, {212, 660, 0}, OOT_GERUDO_TRAINING_GROUND, ObjectType::icicle, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
 	{ 0x0020d, OOT_GERUDO_TRAINING_GROUND, "Slopes 5", "OOT MQ Gerudo Training Grounds Icicle Slopes 5", ObjectType::icicle, {225, 669, 0}, OOT_GERUDO_TRAINING_GROUND, ObjectType::icicle, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL }
 };
-ObjectInfo *OOT_GERUDO_TRAINING_GROUNDSceneObjects = OOT_GERUDO_TRAINING_GROUNDSceneObjects_Data;
+ObjectInfo * OOT_GERUDO_TRAINING_GROUNDSceneObjects = OOT_GERUDO_TRAINING_GROUNDSceneObjects_Data;
 
 const size_t OOT_GERUDO_VALLEYNumOfObjs = 49;
 static ObjectInfo OOT_GERUDO_VALLEYSceneObjects_Data [OOT_GERUDO_VALLEYNumOfObjs] =
@@ -1084,7 +1084,7 @@ static ObjectInfo OOT_GERUDO_VALLEYSceneObjects_Data [OOT_GERUDO_VALLEYNumOfObjs
 	{ 0x1001f, OOT_GERUDO_VALLEY, "Soil 2", "OOT Gerudo Valley Soil 2", ObjectType::soil, {404, 346, 0}, OOT_GERUDO_VALLEY, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x2001f, OOT_GERUDO_VALLEY, "Soil 3", "OOT Gerudo Valley Soil 3", ObjectType::soil, {409, 337, 0}, OOT_GERUDO_VALLEY, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GERUDO_VALLEYSceneObjects = OOT_GERUDO_VALLEYSceneObjects_Data;
+ObjectInfo * OOT_GERUDO_VALLEYSceneObjects = OOT_GERUDO_VALLEYSceneObjects_Data;
 
 const size_t OOT_GORON_CITYNumOfObjs = 37;
 static ObjectInfo OOT_GORON_CITYSceneObjects_Data [OOT_GORON_CITYNumOfObjs] =
@@ -1127,7 +1127,7 @@ static ObjectInfo OOT_GORON_CITYSceneObjects_Data [OOT_GORON_CITYNumOfObjs] =
 	{ 0x0002b, OOT_GORON_CITY, "Boulder 5", "OOT Goron City Red Boulder 5", ObjectType::redboulder, {697, 32, 0}, OOT_GORON_CITY, ObjectType::redboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0002f, OOT_GORON_CITY, "Rock", "OOT Goron City Rock", ObjectType::rock, {742, 91, 0}, OOT_GORON_CITY, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GORON_CITYSceneObjects = OOT_GORON_CITYSceneObjects_Data;
+ObjectInfo * OOT_GORON_CITYSceneObjects = OOT_GORON_CITYSceneObjects_Data;
 
 const size_t OOT_GORON_SHOPNumOfObjs = 8;
 static ObjectInfo OOT_GORON_SHOPSceneObjects_Data [OOT_GORON_SHOPNumOfObjs] =
@@ -1141,7 +1141,7 @@ static ObjectInfo OOT_GORON_SHOPSceneObjects_Data [OOT_GORON_SHOPNumOfObjs] =
 	{ 0x1e, OOT_GORON_SHOP, "Item 7", "OOT Goron Shop Item 7", ObjectType::shop, {669, 288, 0}, OOT_GORON_SHOP, ObjectType::shop, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x1f, OOT_GORON_SHOP, "Item 8", "OOT Goron Shop Item 8", ObjectType::shop, {669, 229, 0}, OOT_GORON_SHOP, ObjectType::shop, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GORON_SHOPSceneObjects = OOT_GORON_SHOPSceneObjects_Data;
+ObjectInfo * OOT_GORON_SHOPSceneObjects = OOT_GORON_SHOPSceneObjects_Data;
 
 const size_t OOT_GRAVEYARDNumOfObjs = 69;
 static ObjectInfo OOT_GRAVEYARDSceneObjects_Data [OOT_GRAVEYARDNumOfObjs] =
@@ -1216,7 +1216,7 @@ static ObjectInfo OOT_GRAVEYARDSceneObjects_Data [OOT_GRAVEYARDNumOfObjs] =
 	{ 0x10112, OOT_GRAVEYARD, "Soil 2", "OOT Graveyard Soil 2", ObjectType::soil, {641, 452, 0}, OOT_GRAVEYARD, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x20112, OOT_GRAVEYARD, "Soil 3", "OOT Graveyard Soil 3", ObjectType::soil, {630, 452, 0}, OOT_GRAVEYARD, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GRAVEYARDSceneObjects = OOT_GRAVEYARDSceneObjects_Data;
+ObjectInfo * OOT_GRAVEYARDSceneObjects = OOT_GRAVEYARDSceneObjects_Data;
 
 const size_t OOT_GREAT_FAIRY_FOUNTAIN_SPELLSNumOfObjs = 3;
 static ObjectInfo OOT_GREAT_FAIRY_FOUNTAIN_SPELLSSceneObjects_Data [OOT_GREAT_FAIRY_FOUNTAIN_SPELLSNumOfObjs] =
@@ -1225,7 +1225,7 @@ static ObjectInfo OOT_GREAT_FAIRY_FOUNTAIN_SPELLSSceneObjects_Data [OOT_GREAT_FA
 	{ FAIRY_SPELL_WIND, OOT_GREAT_FAIRY_FOUNTAIN_SPELLS, "Farore's Wind", "OOT Great Fairy Farore's Wind", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_FARORE, ObjectType::npc, EGameIcon::farore, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ FAIRY_SPELL_LOVE, OOT_GREAT_FAIRY_FOUNTAIN_SPELLS, "Nayru's Love", "OOT Great Fairy Nayru's Love", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_NAYRU, ObjectType::npc, EGameIcon::nayru, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GREAT_FAIRY_FOUNTAIN_SPELLSSceneObjects = OOT_GREAT_FAIRY_FOUNTAIN_SPELLSSceneObjects_Data;
+ObjectInfo * OOT_GREAT_FAIRY_FOUNTAIN_SPELLSSceneObjects = OOT_GREAT_FAIRY_FOUNTAIN_SPELLSSceneObjects_Data;
 
 const size_t OOT_GREAT_FAIRY_CASTLENumOfObjs = 2;
 static ObjectInfo OOT_GREAT_FAIRY_CASTLESceneObjects_Data [OOT_GREAT_FAIRY_CASTLENumOfObjs] =
@@ -1233,21 +1233,21 @@ static ObjectInfo OOT_GREAT_FAIRY_CASTLESceneObjects_Data [OOT_GREAT_FAIRY_CASTL
 	{ FAIRY_SPELL_FIRE, OOT_GREAT_FAIRY_FOUNTAIN_SPELLS, "Din's Fire", "OOT Great Fairy Din's Fire", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_CASTLE, ObjectType::npc, EGameIcon::din, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ FAIRY_DEFENSE_UPGRADE, OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES, "Double Defense Upgrade", "OOT Great Fairy Defense Upgrade", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_CASTLE, ObjectType::npc, EGameIcon::defense, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GREAT_FAIRY_CASTLESceneObjects = OOT_GREAT_FAIRY_CASTLESceneObjects_Data;
+ObjectInfo * OOT_GREAT_FAIRY_CASTLESceneObjects = OOT_GREAT_FAIRY_CASTLESceneObjects_Data;
 
 const size_t OOT_GREAT_FAIRY_FARORENumOfObjs = 1;
 static ObjectInfo OOT_GREAT_FAIRY_FARORESceneObjects_Data [OOT_GREAT_FAIRY_FARORENumOfObjs] =
 {
 	{ FAIRY_SPELL_WIND, OOT_GREAT_FAIRY_FOUNTAIN_SPELLS, "Farore's Wind", "OOT Great Fairy Farore's Wind", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_FARORE, ObjectType::npc, EGameIcon::farore, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GREAT_FAIRY_FARORESceneObjects = OOT_GREAT_FAIRY_FARORESceneObjects_Data;
+ObjectInfo * OOT_GREAT_FAIRY_FARORESceneObjects = OOT_GREAT_FAIRY_FARORESceneObjects_Data;
 
 const size_t OOT_GREAT_FAIRY_NAYRUNumOfObjs = 1;
 static ObjectInfo OOT_GREAT_FAIRY_NAYRUSceneObjects_Data [OOT_GREAT_FAIRY_NAYRUNumOfObjs] =
 {
 	{ FAIRY_SPELL_LOVE, OOT_GREAT_FAIRY_FOUNTAIN_SPELLS, "Nayru's Love", "OOT Great Fairy Nayru's Love", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_NAYRU, ObjectType::npc, EGameIcon::nayru, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GREAT_FAIRY_NAYRUSceneObjects = OOT_GREAT_FAIRY_NAYRUSceneObjects_Data;
+ObjectInfo * OOT_GREAT_FAIRY_NAYRUSceneObjects = OOT_GREAT_FAIRY_NAYRUSceneObjects_Data;
 
 const size_t OOT_GREAT_FAIRY_FOUNTAIN_UPGRADESNumOfObjs = 3;
 static ObjectInfo OOT_GREAT_FAIRY_FOUNTAIN_UPGRADESSceneObjects_Data [OOT_GREAT_FAIRY_FOUNTAIN_UPGRADESNumOfObjs] =
@@ -1256,21 +1256,21 @@ static ObjectInfo OOT_GREAT_FAIRY_FOUNTAIN_UPGRADESSceneObjects_Data [OOT_GREAT_
 	{ FAIRY_MAGIC_UPGRADE2, OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES, "Large Magic Upgrade", "OOT Great Fairy Magic Upgrade 2", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC2, ObjectType::npc, EGameIcon::large_magic_upgrade, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ FAIRY_DEFENSE_UPGRADE, OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES, "Double Defense Upgrade", "OOT Great Fairy Defense Upgrade", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_CASTLE, ObjectType::npc, EGameIcon::defense, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GREAT_FAIRY_FOUNTAIN_UPGRADESSceneObjects = OOT_GREAT_FAIRY_FOUNTAIN_UPGRADESSceneObjects_Data;
+ObjectInfo * OOT_GREAT_FAIRY_FOUNTAIN_UPGRADESSceneObjects = OOT_GREAT_FAIRY_FOUNTAIN_UPGRADESSceneObjects_Data;
 
 const size_t OOT_GREAT_FAIRY_MAGICNumOfObjs = 1;
 static ObjectInfo OOT_GREAT_FAIRY_MAGICSceneObjects_Data [OOT_GREAT_FAIRY_MAGICNumOfObjs] =
 {
 	{ FAIRY_MAGIC_UPGRADE, OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES, "Magic Upgrade", "OOT Great Fairy Magic Upgrade", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC, ObjectType::npc, EGameIcon::magic_upgrade, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GREAT_FAIRY_MAGICSceneObjects = OOT_GREAT_FAIRY_MAGICSceneObjects_Data;
+ObjectInfo * OOT_GREAT_FAIRY_MAGICSceneObjects = OOT_GREAT_FAIRY_MAGICSceneObjects_Data;
 
 const size_t OOT_GREAT_FAIRY_MAGIC2NumOfObjs = 1;
 static ObjectInfo OOT_GREAT_FAIRY_MAGIC2SceneObjects_Data [OOT_GREAT_FAIRY_MAGIC2NumOfObjs] =
 {
 	{ FAIRY_MAGIC_UPGRADE2, OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES, "Large Magic Upgrade", "OOT Great Fairy Magic Upgrade 2", ObjectType::npc, {497, 351, 0}, OOT_GREAT_FAIRY_MAGIC2, ObjectType::npc, EGameIcon::large_magic_upgrade, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GREAT_FAIRY_MAGIC2SceneObjects = OOT_GREAT_FAIRY_MAGIC2SceneObjects_Data;
+ObjectInfo * OOT_GREAT_FAIRY_MAGIC2SceneObjects = OOT_GREAT_FAIRY_MAGIC2SceneObjects_Data;
 
 const size_t OOT_GROTTOSNumOfObjs = 174;
 static ObjectInfo OOT_GROTTOSSceneObjects_Data [OOT_GROTTOSNumOfObjs] =
@@ -1450,7 +1450,7 @@ static ObjectInfo OOT_GROTTOSSceneObjects_Data [OOT_GROTTOSNumOfObjs] =
 	{ 0x60802, OOT_GROTTOS, "Circle Rock 7", "OOT Hyrule Castle Grotto Rock Circle Rock 7", ObjectType::rock, {668, 212, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x70802, OOT_GROTTOS, "Circle Rock 8", "OOT Hyrule Castle Grotto Rock Circle Rock 8", ObjectType::rock, {676, 233, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTOSSceneObjects = OOT_GROTTOSSceneObjects_Data;
+ObjectInfo * OOT_GROTTOSSceneObjects = OOT_GROTTOSSceneObjects_Data;
 
 const size_t OOT_GROTTO_KOKIRI_FOREST_STORMSNumOfObjs = 10;
 static ObjectInfo OOT_GROTTO_KOKIRI_FOREST_STORMSSceneObjects_Data [OOT_GROTTO_KOKIRI_FOREST_STORMSNumOfObjs] =
@@ -1466,7 +1466,7 @@ static ObjectInfo OOT_GROTTO_KOKIRI_FOREST_STORMSSceneObjects_Data [OOT_GROTTO_K
 	{ 0x12c06, OOT_GROTTOS, "Butterfly 2", "OOT Kokiri Forest Storms Grotto Butterfly 2", ObjectType::butterfly, {617, 632, 0}, OOT_GROTTO_KOKIRI_FOREST_STORMS, ObjectType::butterfly, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x22c06, OOT_GROTTOS, "Butterfly 3", "OOT Kokiri Forest Storms Grotto Butterfly 3", ObjectType::butterfly, {637, 631, 0}, OOT_GROTTO_KOKIRI_FOREST_STORMS, ObjectType::butterfly, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_KOKIRI_FOREST_STORMSSceneObjects = OOT_GROTTO_KOKIRI_FOREST_STORMSSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_KOKIRI_FOREST_STORMSSceneObjects = OOT_GROTTO_KOKIRI_FOREST_STORMSSceneObjects_Data;
 
 const size_t OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADENumOfObjs = 4;
 static ObjectInfo OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADESceneObjects_Data [OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADENumOfObjs] =
@@ -1476,7 +1476,7 @@ static ObjectInfo OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADESceneObjects_Data [OOT_GROT
 	{ 0x00600, OOT_GROTTOS, "Big Fairy", "OOT Lost Woods Grotto Scrub Big Fairy", ObjectType::fairy_spot, {673, 245, 0}, OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE, ObjectType::fairy_spot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00603, OOT_GROTTOS, "Hive", "OOT Lost Woods Grotto Scrub Hive", ObjectType::hive, {770, 410, 0}, OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE, ObjectType::hive, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADESceneObjects = OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADESceneObjects_Data;
+ObjectInfo * OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADESceneObjects = OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADESceneObjects_Data;
 
 const size_t OOT_GROTTO_LOST_WOODS_GENERICNumOfObjs = 10;
 static ObjectInfo OOT_GROTTO_LOST_WOODS_GENERICSceneObjects_Data [OOT_GROTTO_LOST_WOODS_GENERICNumOfObjs] =
@@ -1492,7 +1492,7 @@ static ObjectInfo OOT_GROTTO_LOST_WOODS_GENERICSceneObjects_Data [OOT_GROTTO_LOS
 	{ 0x13406, OOT_GROTTOS, "Butterfly 2", "OOT Lost Woods Grotto Generic Butterfly 2", ObjectType::butterfly, {617, 632, 0}, OOT_GROTTO_LOST_WOODS_GENERIC, ObjectType::butterfly, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x23406, OOT_GROTTOS, "Butterfly 3", "OOT Lost Woods Grotto Generic Butterfly 3", ObjectType::butterfly, {637, 631, 0}, OOT_GROTTO_LOST_WOODS_GENERIC, ObjectType::butterfly, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_LOST_WOODS_GENERICSceneObjects = OOT_GROTTO_LOST_WOODS_GENERICSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_LOST_WOODS_GENERICSceneObjects = OOT_GROTTO_LOST_WOODS_GENERICSceneObjects_Data;
 
 const size_t OOT_GROTTO_LOST_WOODS_THEATERNumOfObjs = 2;
 static ObjectInfo OOT_GROTTO_LOST_WOODS_THEATERSceneObjects_Data [OOT_GROTTO_LOST_WOODS_THEATERNumOfObjs] =
@@ -1500,14 +1500,14 @@ static ObjectInfo OOT_GROTTO_LOST_WOODS_THEATERSceneObjects_Data [OOT_GROTTO_LOS
 	{ THEATER_STICKS, OOT_GROTTOS, "Deku Sticks Upgrade", "OOT Deku Theater Sticks Upgrade", ObjectType::npc, {727, 561, 0}, OOT_GROTTO_LOST_WOODS_THEATER, ObjectType::mask, EGameIcon::skull, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, "Speak to the dekus while wearing the <b>Skull Mask</b>.<br><br><b>Requirements:</b><br>- Skull Mask" },
 	{ THEATER_NUTS, OOT_GROTTOS, "Deku Nuts Upgrade", "OOT Deku Theater Nuts Upgrade", ObjectType::npc, {691, 561, 0}, OOT_GROTTO_LOST_WOODS_THEATER, ObjectType::mask, EGameIcon::truth, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, "Speak to the dekus while wearing the <b>Mask of Truth</b>.<br><br><b>Requirements:</b><br>- Mask of Truth (OoT)" }
 };
-ObjectInfo *OOT_GROTTO_LOST_WOODS_THEATERSceneObjects = OOT_GROTTO_LOST_WOODS_THEATERSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_LOST_WOODS_THEATERSceneObjects = OOT_GROTTO_LOST_WOODS_THEATERSceneObjects_Data;
 
 const size_t OOT_GROTTO_SACRED_MEADOW_WOLFOSNumOfObjs = 1;
 static ObjectInfo OOT_GROTTO_SACRED_MEADOW_WOLFOSSceneObjects_Data [OOT_GROTTO_SACRED_MEADOW_WOLFOSNumOfObjs] =
 {
 	{ 0x11, OOT_GROTTOS, "Chest", "OOT Sacred Meadow Grotto", ObjectType::chest, {670, 308, 0}, OOT_GROTTO_SACRED_MEADOW_WOLFOS, ObjectType::chest, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_SACRED_MEADOW_WOLFOSSceneObjects = OOT_GROTTO_SACRED_MEADOW_WOLFOSSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_SACRED_MEADOW_WOLFOSSceneObjects = OOT_GROTTO_SACRED_MEADOW_WOLFOSSceneObjects_Data;
 
 const size_t OOT_GROTTO_SACRED_MEADOW_STORMSNumOfObjs = 3;
 static ObjectInfo OOT_GROTTO_SACRED_MEADOW_STORMSSceneObjects_Data [OOT_GROTTO_SACRED_MEADOW_STORMSNumOfObjs] =
@@ -1516,14 +1516,14 @@ static ObjectInfo OOT_GROTTO_SACRED_MEADOW_STORMSSceneObjects_Data [OOT_GROTTO_S
 	{ 0x06, OOT_GROTTOS, "Back", "OOT Sacred Meadow Storms Grotto Back Scrub", ObjectType::scrub, {649, 207, 0}, OOT_GROTTO_SACRED_MEADOW_STORMS, ObjectType::scrub, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x02102, OOT_GROTTOS, "Hive", "OOT Sacred Meadow Storms Grotto Hive", ObjectType::hive, {551, 157, 0}, OOT_GROTTO_SACRED_MEADOW_STORMS, ObjectType::hive, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_SACRED_MEADOW_STORMSSceneObjects = OOT_GROTTO_SACRED_MEADOW_STORMSSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_SACRED_MEADOW_STORMSSceneObjects = OOT_GROTTO_SACRED_MEADOW_STORMSSceneObjects_Data;
 
 const size_t OOT_GROTTO_KAKARIKO_REDEADNumOfObjs = 1;
 static ObjectInfo OOT_GROTTO_KAKARIKO_REDEADSceneObjects_Data [OOT_GROTTO_KAKARIKO_REDEADNumOfObjs] =
 {
 	{ 0x0a, OOT_GROTTOS, "Redead", "OOT Kakariko Grotto Front", ObjectType::chest, {691, 284, 0}, OOT_GROTTO_KAKARIKO_REDEAD, ObjectType::chest, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_KAKARIKO_REDEADSceneObjects = OOT_GROTTO_KAKARIKO_REDEADSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_KAKARIKO_REDEADSceneObjects = OOT_GROTTO_KAKARIKO_REDEADSceneObjects_Data;
 
 const size_t OOT_GROTTO_KAKARIKO_OPENNumOfObjs = 10;
 static ObjectInfo OOT_GROTTO_KAKARIKO_OPENSceneObjects_Data [OOT_GROTTO_KAKARIKO_OPENNumOfObjs] =
@@ -1539,7 +1539,7 @@ static ObjectInfo OOT_GROTTO_KAKARIKO_OPENSceneObjects_Data [OOT_GROTTO_KAKARIKO
 	{ 0x12806, OOT_GROTTOS, "Butterfly 2", "OOT Kakariko Grotto Butterfly 2", ObjectType::butterfly, {617, 632, 0}, OOT_GROTTO_KAKARIKO_OPEN, ObjectType::butterfly, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x22806, OOT_GROTTOS, "Butterfly 3", "OOT Kakariko Grotto Butterfly 3", ObjectType::butterfly, {637, 631, 0}, OOT_GROTTO_KAKARIKO_OPEN, ObjectType::butterfly, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_KAKARIKO_OPENSceneObjects = OOT_GROTTO_KAKARIKO_OPENSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_KAKARIKO_OPENSceneObjects = OOT_GROTTO_KAKARIKO_OPENSceneObjects_Data;
 
 const size_t OOT_GROTTO_DEATH_TRIAL_STORMSNumOfObjs = 10;
 static ObjectInfo OOT_GROTTO_DEATH_TRIAL_STORMSSceneObjects_Data [OOT_GROTTO_DEATH_TRIAL_STORMSNumOfObjs] =
@@ -1555,7 +1555,7 @@ static ObjectInfo OOT_GROTTO_DEATH_TRIAL_STORMSSceneObjects_Data [OOT_GROTTO_DEA
 	{ 0x13706, OOT_GROTTOS, "Butterfly 2", "OOT Death Mountain Trail Grotto Butterfly 2", ObjectType::butterfly, {617, 632, 0}, OOT_GROTTO_DEATH_TRIAL_STORMS, ObjectType::butterfly, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x23706, OOT_GROTTOS, "Butterfly 3", "OOT Death Mountain Trail Grotto Butterfly 3", ObjectType::butterfly, {637, 631, 0}, OOT_GROTTO_DEATH_TRIAL_STORMS, ObjectType::butterfly, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_DEATH_TRIAL_STORMSSceneObjects = OOT_GROTTO_DEATH_TRIAL_STORMSSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_DEATH_TRIAL_STORMSSceneObjects = OOT_GROTTO_DEATH_TRIAL_STORMSSceneObjects_Data;
 
 const size_t OOT_GROTTO_GORON_CITY_SCRUBSNumOfObjs = 4;
 static ObjectInfo OOT_GROTTO_GORON_CITY_SCRUBSSceneObjects_Data [OOT_GROTTO_GORON_CITY_SCRUBSNumOfObjs] =
@@ -1565,7 +1565,7 @@ static ObjectInfo OOT_GROTTO_GORON_CITY_SCRUBSSceneObjects_Data [OOT_GROTTO_GORO
 	{ 0x0d, OOT_GROTTOS, "Right", "OOT Goron City Grotto Right Scrub", ObjectType::scrub, {933, 344, 0}, OOT_GROTTO_GORON_CITY_SCRUBS, ObjectType::scrub, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x02a03, OOT_GROTTOS, "Hive", "OOT Goron City Grotto Hive", ObjectType::hive, {982, 210, 0}, OOT_GROTTO_GORON_CITY_SCRUBS, ObjectType::hive, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_GORON_CITY_SCRUBSSceneObjects = OOT_GROTTO_GORON_CITY_SCRUBSSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_GORON_CITY_SCRUBSSceneObjects = OOT_GROTTO_GORON_CITY_SCRUBSSceneObjects_Data;
 
 const size_t OOT_GROTTO_DEATH_CRATER_GENERICNumOfObjs = 10;
 static ObjectInfo OOT_GROTTO_DEATH_CRATER_GENERICSceneObjects_Data [OOT_GROTTO_DEATH_CRATER_GENERICNumOfObjs] =
@@ -1581,7 +1581,7 @@ static ObjectInfo OOT_GROTTO_DEATH_CRATER_GENERICSceneObjects_Data [OOT_GROTTO_D
 	{ 0x13a06, OOT_GROTTOS, "Butterfly 2", "OOT Death Mountain Crater Grotto Butterfly 2", ObjectType::butterfly, {617, 632, 0}, OOT_GROTTO_DEATH_CRATER_GENERIC, ObjectType::butterfly, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x23a06, OOT_GROTTOS, "Butterfly 3", "OOT Death Mountain Crater Grotto Butterfly 3", ObjectType::butterfly, {637, 631, 0}, OOT_GROTTO_DEATH_CRATER_GENERIC, ObjectType::butterfly, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_DEATH_CRATER_GENERICSceneObjects = OOT_GROTTO_DEATH_CRATER_GENERICSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_DEATH_CRATER_GENERICSceneObjects = OOT_GROTTO_DEATH_CRATER_GENERICSceneObjects_Data;
 
 const size_t OOT_GROTTO_DEATH_CRATER_SCRUBSNumOfObjs = 4;
 static ObjectInfo OOT_GROTTO_DEATH_CRATER_SCRUBSSceneObjects_Data [OOT_GROTTO_DEATH_CRATER_SCRUBSNumOfObjs] =
@@ -1591,7 +1591,7 @@ static ObjectInfo OOT_GROTTO_DEATH_CRATER_SCRUBSSceneObjects_Data [OOT_GROTTO_DE
 	{ 0x11, OOT_GROTTOS, "Right", "OOT Death Mountain Crater Grotto Right Scrub", ObjectType::scrub, {933, 344, 0}, OOT_GROTTO_DEATH_CRATER_SCRUBS, ObjectType::scrub, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x02b03, OOT_GROTTOS, "Hive", "OOT Death Mountain Crater Scrub Grotto Hive", ObjectType::hive, {982, 210, 0}, OOT_GROTTO_DEATH_CRATER_SCRUBS, ObjectType::hive, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_DEATH_CRATER_SCRUBSSceneObjects = OOT_GROTTO_DEATH_CRATER_SCRUBSSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_DEATH_CRATER_SCRUBSSceneObjects = OOT_GROTTO_DEATH_CRATER_SCRUBSSceneObjects_Data;
 
 const size_t OOT_GROTTO_ZORA_RIVER_GENERICNumOfObjs = 10;
 static ObjectInfo OOT_GROTTO_ZORA_RIVER_GENERICSceneObjects_Data [OOT_GROTTO_ZORA_RIVER_GENERICNumOfObjs] =
@@ -1607,7 +1607,7 @@ static ObjectInfo OOT_GROTTO_ZORA_RIVER_GENERICSceneObjects_Data [OOT_GROTTO_ZOR
 	{ 0x12906, OOT_GROTTOS, "Butterfly 2", "OOT Zora River Grotto Butterfly 2", ObjectType::butterfly, {617, 632, 0}, OOT_GROTTO_ZORA_RIVER_GENERIC, ObjectType::butterfly, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x22906, OOT_GROTTOS, "Butterfly 3", "OOT Zora River Grotto Butterfly 3", ObjectType::butterfly, {637, 631, 0}, OOT_GROTTO_ZORA_RIVER_GENERIC, ObjectType::butterfly, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_ZORA_RIVER_GENERICSceneObjects = OOT_GROTTO_ZORA_RIVER_GENERICSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_ZORA_RIVER_GENERICSceneObjects = OOT_GROTTO_ZORA_RIVER_GENERICSceneObjects_Data;
 
 const size_t OOT_GROTTO_ZORA_RIVER_STORMSNumOfObjs = 3;
 static ObjectInfo OOT_GROTTO_ZORA_RIVER_STORMSSceneObjects_Data [OOT_GROTTO_ZORA_RIVER_STORMSNumOfObjs] =
@@ -1616,7 +1616,7 @@ static ObjectInfo OOT_GROTTO_ZORA_RIVER_STORMSSceneObjects_Data [OOT_GROTTO_ZORA
 	{ 0x13, OOT_GROTTOS, "Scrub - Back", "OOT Zora River Storms Grotto Back Scrub", ObjectType::scrub, {649, 207, 0}, OOT_GROTTO_ZORA_RIVER_STORMS, ObjectType::scrub, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x02402, OOT_GROTTOS, "Hive", "OOT Zora River Storms Grotto Hive", ObjectType::hive, {551, 157, 0}, OOT_GROTTO_ZORA_RIVER_STORMS, ObjectType::hive, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_ZORA_RIVER_STORMSSceneObjects = OOT_GROTTO_ZORA_RIVER_STORMSSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_ZORA_RIVER_STORMSSceneObjects = OOT_GROTTO_ZORA_RIVER_STORMSSceneObjects_Data;
 
 const size_t OOT_GROTTO_LAKE_HYLIA_SCRUBSNumOfObjs = 4;
 static ObjectInfo OOT_GROTTO_LAKE_HYLIA_SCRUBSSceneObjects_Data [OOT_GROTTO_LAKE_HYLIA_SCRUBSNumOfObjs] =
@@ -1626,7 +1626,7 @@ static ObjectInfo OOT_GROTTO_LAKE_HYLIA_SCRUBSSceneObjects_Data [OOT_GROTTO_LAKE
 	{ 0x16, OOT_GROTTOS, "Right", "OOT Lake Hylia Grotto Right Scrub", ObjectType::scrub, {933, 344, 0}, OOT_GROTTO_LAKE_HYLIA_SCRUBS, ObjectType::scrub, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x02d03, OOT_GROTTOS, "Hive", "OOT Lake Hylia Grotto Hive", ObjectType::hive, {982, 210, 0}, OOT_GROTTO_LAKE_HYLIA_SCRUBS, ObjectType::hive, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_LAKE_HYLIA_SCRUBSSceneObjects = OOT_GROTTO_LAKE_HYLIA_SCRUBSSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_LAKE_HYLIA_SCRUBSSceneObjects = OOT_GROTTO_LAKE_HYLIA_SCRUBSSceneObjects_Data;
 
 const size_t OOT_GROTTO_LON_LON_SCRUBSNumOfObjs = 4;
 static ObjectInfo OOT_GROTTO_LON_LON_SCRUBSSceneObjects_Data [OOT_GROTTO_LON_LON_SCRUBSNumOfObjs] =
@@ -1636,7 +1636,7 @@ static ObjectInfo OOT_GROTTO_LON_LON_SCRUBSSceneObjects_Data [OOT_GROTTO_LON_LON
 	{ 0x0a, OOT_GROTTOS, "Right", "OOT Lon Lon Ranch Grotto Right Scrub", ObjectType::scrub, {933, 344, 0}, OOT_GROTTO_LON_LON_SCRUBS, ObjectType::scrub, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x02703, OOT_GROTTOS, "Hive", "OOT Lon Lon Ranch Grotto Hive", ObjectType::hive, {982, 210, 0}, OOT_GROTTO_LON_LON_SCRUBS, ObjectType::hive, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_LON_LON_SCRUBSSceneObjects = OOT_GROTTO_LON_LON_SCRUBSSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_LON_LON_SCRUBSSceneObjects = OOT_GROTTO_LON_LON_SCRUBSSceneObjects_Data;
 
 const size_t OOT_GROTTO_HYRULE_SCRUBSNumOfObjs = 3;
 static ObjectInfo OOT_GROTTO_HYRULE_SCRUBSSceneObjects_Data [OOT_GROTTO_HYRULE_SCRUBSNumOfObjs] =
@@ -1645,7 +1645,7 @@ static ObjectInfo OOT_GROTTO_HYRULE_SCRUBSSceneObjects_Data [OOT_GROTTO_HYRULE_S
 	{ 0x00102, OOT_GROTTOS, "Big Fairy", "OOT Hyrule Field Grotto Scrub Big Fairy", ObjectType::fairy_spot, {751, 310, 0}, OOT_GROTTO_HYRULE_SCRUBS, ObjectType::fairy_spot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00101, OOT_GROTTOS, "Hive", "OOT Hyrule Field Grotto Scrub Hive", ObjectType::hive, {840, 179, 0}, OOT_GROTTO_HYRULE_SCRUBS, ObjectType::hive, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_HYRULE_SCRUBSSceneObjects = OOT_GROTTO_HYRULE_SCRUBSSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_HYRULE_SCRUBSSceneObjects = OOT_GROTTO_HYRULE_SCRUBSSceneObjects_Data;
 
 const size_t OOT_GROTTO_HYRULE_SENumOfObjs = 10;
 static ObjectInfo OOT_GROTTO_HYRULE_SESceneObjects_Data [OOT_GROTTO_HYRULE_SENumOfObjs] =
@@ -1661,7 +1661,7 @@ static ObjectInfo OOT_GROTTO_HYRULE_SESceneObjects_Data [OOT_GROTTO_HYRULE_SENum
 	{ 0x12206, OOT_GROTTOS, "Butterfly 2", "OOT Hyrule Field Grotto Southeast Butterfly 2", ObjectType::butterfly, {617, 632, 0}, OOT_GROTTO_HYRULE_SE, ObjectType::butterfly, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x22206, OOT_GROTTOS, "Butterfly 3", "OOT Hyrule Field Grotto Southeast Butterfly 3", ObjectType::butterfly, {637, 631, 0}, OOT_GROTTO_HYRULE_SE, ObjectType::butterfly, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_HYRULE_SESceneObjects = OOT_GROTTO_HYRULE_SESceneObjects_Data;
+ObjectInfo * OOT_GROTTO_HYRULE_SESceneObjects = OOT_GROTTO_HYRULE_SESceneObjects_Data;
 
 const size_t OOT_GROTTO_HYRULE_OPENNumOfObjs = 10;
 static ObjectInfo OOT_GROTTO_HYRULE_OPENSceneObjects_Data [OOT_GROTTO_HYRULE_OPENNumOfObjs] =
@@ -1677,7 +1677,7 @@ static ObjectInfo OOT_GROTTO_HYRULE_OPENSceneObjects_Data [OOT_GROTTO_HYRULE_OPE
 	{ 0x12306, OOT_GROTTOS, "Butterfly 2", "OOT Hyrule Field Grotto Open Butterfly 2", ObjectType::butterfly, {617, 632, 0}, OOT_GROTTO_HYRULE_OPEN, ObjectType::butterfly, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x22306, OOT_GROTTOS, "Butterfly 3", "OOT Hyrule Field Grotto Open Butterfly 3", ObjectType::butterfly, {637, 631, 0}, OOT_GROTTO_HYRULE_OPEN, ObjectType::butterfly, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_HYRULE_OPENSceneObjects = OOT_GROTTO_HYRULE_OPENSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_HYRULE_OPENSceneObjects = OOT_GROTTO_HYRULE_OPENSceneObjects_Data;
 
 const size_t OOT_GROTTO_HYRULE_MARKETNumOfObjs = 10;
 static ObjectInfo OOT_GROTTO_HYRULE_MARKETSceneObjects_Data [OOT_GROTTO_HYRULE_MARKETNumOfObjs] =
@@ -1693,21 +1693,21 @@ static ObjectInfo OOT_GROTTO_HYRULE_MARKETSceneObjects_Data [OOT_GROTTO_HYRULE_M
 	{ 0x12006, OOT_GROTTOS, "Butterfly 2", "OOT Hyrule Field Grotto Market Butterfly 2", ObjectType::butterfly, {617, 632, 0}, OOT_GROTTO_HYRULE_MARKET, ObjectType::butterfly, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x22006, OOT_GROTTOS, "Butterfly 3", "OOT Hyrule Field Grotto Market Butterfly 3", ObjectType::butterfly, {637, 631, 0}, OOT_GROTTO_HYRULE_MARKET, ObjectType::butterfly, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_HYRULE_MARKETSceneObjects = OOT_GROTTO_HYRULE_MARKETSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_HYRULE_MARKETSceneObjects = OOT_GROTTO_HYRULE_MARKETSceneObjects_Data;
 
 const size_t OOT_GROTTO_HYRULE_TEKTITENumOfObjs = 1;
 static ObjectInfo OOT_GROTTO_HYRULE_TEKTITESceneObjects_Data [OOT_GROTTO_HYRULE_TEKTITENumOfObjs] =
 {
 	{ 0x01, OOT_GROTTOS, "Underwater", "OOT Hyrule Field Grotto Tektite HP", ObjectType::collectible, {723, 253, 0}, OOT_GROTTO_HYRULE_TEKTITE, ObjectType::heart_piece, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_HYRULE_TEKTITESceneObjects = OOT_GROTTO_HYRULE_TEKTITESceneObjects_Data;
+ObjectInfo * OOT_GROTTO_HYRULE_TEKTITESceneObjects = OOT_GROTTO_HYRULE_TEKTITESceneObjects_Data;
 
 const size_t OOT_GROTTO_HYRULE_KAKARIKONumOfObjs = 1;
 static ObjectInfo OOT_GROTTO_HYRULE_KAKARIKOSceneObjects_Data [OOT_GROTTO_HYRULE_KAKARIKONumOfObjs] =
 {
 	{ 0x59, OOT_GROTTOS, "Web", "OOT Hyrule Field Grotto Near Kakariko GS", ObjectType::gs, {802, 162, 0}, OOT_GROTTO_HYRULE_KAKARIKO, ObjectType::gs, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_HYRULE_KAKARIKOSceneObjects = OOT_GROTTO_HYRULE_KAKARIKOSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_HYRULE_KAKARIKOSceneObjects = OOT_GROTTO_HYRULE_KAKARIKOSceneObjects_Data;
 
 const size_t OOT_GROTTO_HYRULE_GERUDONumOfObjs = 6;
 static ObjectInfo OOT_GROTTO_HYRULE_GERUDOSceneObjects_Data [OOT_GROTTO_HYRULE_GERUDONumOfObjs] =
@@ -1719,7 +1719,7 @@ static ObjectInfo OOT_GROTTO_HYRULE_GERUDOSceneObjects_Data [OOT_GROTTO_HYRULE_G
 	{ 0x0407, OOT_GROTTOS, "Pot 2", "OOT Hyrule Field Cow Grotto Pot 2", ObjectType::pot, {476, 603, 0}, OOT_GROTTO_HYRULE_GERUDO, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x01, OOT_HYRULE_FIELD, "Cow", "OOT Hyrule Field Cow", ObjectType::cow, {414, 662, 0}, OOT_GROTTO_HYRULE_GERUDO, ObjectType::cow, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_HYRULE_GERUDOSceneObjects = OOT_GROTTO_HYRULE_GERUDOSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_HYRULE_GERUDOSceneObjects = OOT_GROTTO_HYRULE_GERUDOSceneObjects_Data;
 
 const size_t OOT_GROTTO_CASTLE_STORMSNumOfObjs = 13;
 static ObjectInfo OOT_GROTTO_CASTLE_STORMSSceneObjects_Data [OOT_GROTTO_CASTLE_STORMSNumOfObjs] =
@@ -1738,7 +1738,7 @@ static ObjectInfo OOT_GROTTO_CASTLE_STORMSSceneObjects_Data [OOT_GROTTO_CASTLE_S
 	{ 0x60802, OOT_GROTTOS, "Circle Rock 7", "OOT Hyrule Castle Grotto Rock Circle Rock 7", ObjectType::rock, {668, 212, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x70802, OOT_GROTTOS, "Circle Rock 8", "OOT Hyrule Castle Grotto Rock Circle Rock 8", ObjectType::rock, {676, 233, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_CASTLE_STORMSSceneObjects = OOT_GROTTO_CASTLE_STORMSSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_CASTLE_STORMSSceneObjects = OOT_GROTTO_CASTLE_STORMSSceneObjects_Data;
 
 const size_t OOT_GROTTO_VALLEY_STORMSNumOfObjs = 3;
 static ObjectInfo OOT_GROTTO_VALLEY_STORMSSceneObjects_Data [OOT_GROTTO_VALLEY_STORMSNumOfObjs] =
@@ -1747,7 +1747,7 @@ static ObjectInfo OOT_GROTTO_VALLEY_STORMSSceneObjects_Data [OOT_GROTTO_VALLEY_S
 	{ 0x18, OOT_GROTTOS, "Back", "OOT Gerudo Valley Grotto Back Scrub", ObjectType::scrub, {649, 207, 0}, OOT_GROTTO_VALLEY_STORMS, ObjectType::scrub, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x02502, OOT_GROTTOS, "Hive", "OOT Gerudo Valley Grotto Hive", ObjectType::hive, {551, 157, 0}, OOT_GROTTO_VALLEY_STORMS, ObjectType::hive, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_VALLEY_STORMSSceneObjects = OOT_GROTTO_VALLEY_STORMSSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_VALLEY_STORMSSceneObjects = OOT_GROTTO_VALLEY_STORMSSceneObjects_Data;
 
 const size_t OOT_GROTTO_VALLEY_OCTOROKNumOfObjs = 8;
 static ObjectInfo OOT_GROTTO_VALLEY_OCTOROKSceneObjects_Data [OOT_GROTTO_VALLEY_OCTOROKNumOfObjs] =
@@ -1761,7 +1761,7 @@ static ObjectInfo OOT_GROTTO_VALLEY_OCTOROKSceneObjects_Data [OOT_GROTTO_VALLEY_
 	{ 0x00507, OOT_GROTTOS, "Rupee 7", "OOT Gerudo Valley Octorok Grotto Rupee 7", ObjectType::rupee, {744, 246, 0}, OOT_GROTTO_VALLEY_OCTOROK, ObjectType::rupee, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00508, OOT_GROTTOS, "Rupee 8", "OOT Gerudo Valley Octorok Grotto Rupee 8", ObjectType::rupee, {687, 287, 0}, OOT_GROTTO_VALLEY_OCTOROK, ObjectType::rupee, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_VALLEY_OCTOROKSceneObjects = OOT_GROTTO_VALLEY_OCTOROKSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_VALLEY_OCTOROKSceneObjects = OOT_GROTTO_VALLEY_OCTOROKSceneObjects_Data;
 
 const size_t OOT_GROTTO_DESERT_SCRUBSNumOfObjs = 3;
 static ObjectInfo OOT_GROTTO_DESERT_SCRUBSSceneObjects_Data [OOT_GROTTO_DESERT_SCRUBSNumOfObjs] =
@@ -1770,7 +1770,7 @@ static ObjectInfo OOT_GROTTO_DESERT_SCRUBSSceneObjects_Data [OOT_GROTTO_DESERT_S
 	{ 0x1a, OOT_GROTTOS, "Back", "OOT Desert Colossus Grotto Back Scrub", ObjectType::scrub, {649, 207, 0}, OOT_GROTTO_DESERT_SCRUBS, ObjectType::scrub, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x02602, OOT_GROTTOS, "Hive", "OOT Desert Colossus Grotto Hive", ObjectType::hive, {551, 157, 0}, OOT_GROTTO_DESERT_SCRUBS, ObjectType::hive, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GROTTO_DESERT_SCRUBSSceneObjects = OOT_GROTTO_DESERT_SCRUBSSceneObjects_Data;
+ObjectInfo * OOT_GROTTO_DESERT_SCRUBSSceneObjects = OOT_GROTTO_DESERT_SCRUBSSceneObjects_Data;
 
 const size_t OOT_HYRULE_CASTLENumOfObjs = 52;
 static ObjectInfo OOT_HYRULE_CASTLESceneObjects_Data [OOT_HYRULE_CASTLENumOfObjs] =
@@ -1828,7 +1828,7 @@ static ObjectInfo OOT_HYRULE_CASTLESceneObjects_Data [OOT_HYRULE_CASTLENumOfObjs
 	{ 0x0002b, OOT_HYRULE_CASTLE, "Rock 2", "OOT Hyrule Castle Rock 2", ObjectType::rock, {207, 236, 0}, OOT_HYRULE_CASTLE, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0002c, OOT_HYRULE_CASTLE, "Rock 3", "OOT Hyrule Castle Rock 3", ObjectType::rock, {235, 226, 0}, OOT_HYRULE_CASTLE, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_HYRULE_CASTLESceneObjects = OOT_HYRULE_CASTLESceneObjects_Data;
+ObjectInfo * OOT_HYRULE_CASTLESceneObjects = OOT_HYRULE_CASTLESceneObjects_Data;
 
 const size_t OOT_KAKARIKO_VILLAGENumOfObjs = 95;
 static ObjectInfo OOT_KAKARIKO_VILLAGESceneObjects_Data [OOT_KAKARIKO_VILLAGENumOfObjs] =
@@ -1929,7 +1929,7 @@ static ObjectInfo OOT_KAKARIKO_VILLAGESceneObjects_Data [OOT_KAKARIKO_VILLAGENum
 	{ 0x00020, OOT_KAKARIKO_VILLAGE, "Gate", "OOT Kakariko Rock Near Gate", ObjectType::rock, {437, 560, 0}, OOT_KAKARIKO_VILLAGE, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00021, OOT_KAKARIKO_VILLAGE, "Spider House", "OOT Kakariko Rock Near Spider House", ObjectType::rock, {560, 158, 0}, OOT_KAKARIKO_VILLAGE, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_KAKARIKO_VILLAGESceneObjects = OOT_KAKARIKO_VILLAGESceneObjects_Data;
+ObjectInfo * OOT_KAKARIKO_VILLAGESceneObjects = OOT_KAKARIKO_VILLAGESceneObjects_Data;
 
 const size_t OOT_GUARD_HOUSENumOfObjs = 61;
 static ObjectInfo OOT_GUARD_HOUSESceneObjects_Data [OOT_GUARD_HOUSENumOfObjs] =
@@ -1996,7 +1996,7 @@ static ObjectInfo OOT_GUARD_HOUSESceneObjects_Data [OOT_GUARD_HOUSENumOfObjs] =
 	{ 0x00005, OOT_GUARD_HOUSE, "Crate 3", "OOT Market Pot House Crate 3", ObjectType::crate, {694, 582, 0}, OOT_GUARD_HOUSE, ObjectType::crate, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00006, OOT_GUARD_HOUSE, "Crate 4", "OOT Market Pot House Crate 4", ObjectType::crate, {171, 461, 0}, OOT_GUARD_HOUSE, ObjectType::crate, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GUARD_HOUSESceneObjects = OOT_GUARD_HOUSESceneObjects_Data;
+ObjectInfo * OOT_GUARD_HOUSESceneObjects = OOT_GUARD_HOUSESceneObjects_Data;
 
 const size_t OOT_HAUNTED_WASTELANDNumOfObjs = 12;
 static ObjectInfo OOT_HAUNTED_WASTELANDSceneObjects_Data [OOT_HAUNTED_WASTELANDNumOfObjs] =
@@ -2014,7 +2014,7 @@ static ObjectInfo OOT_HAUNTED_WASTELANDSceneObjects_Data [OOT_HAUNTED_WASTELANDN
 	{ 0x00121, OOT_HAUNTED_WASTELAND, "Poe Chase", "OOT Haunted Wasteland Crate Deep", ObjectType::crate, {159, 520, 0}, OOT_HAUNTED_WASTELAND, ObjectType::crate, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ CARPET_MERCHANT, OOT_HAUNTED_WASTELAND, "Carpet Merchant", "OOT Haunted Wasteland Carpet Merchant", ObjectType::npc, {800, 471, 0}, OOT_HAUNTED_WASTELAND, ObjectType::npc, EGameIcon::bombchu, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_HAUNTED_WASTELANDSceneObjects = OOT_HAUNTED_WASTELANDSceneObjects_Data;
+ObjectInfo * OOT_HAUNTED_WASTELANDSceneObjects = OOT_HAUNTED_WASTELANDSceneObjects_Data;
 
 const size_t OOT_HOUSE_OF_SKULLTULANumOfObjs = 5;
 static ObjectInfo OOT_HOUSE_OF_SKULLTULASceneObjects_Data [OOT_HOUSE_OF_SKULLTULANumOfObjs] =
@@ -2025,7 +2025,7 @@ static ObjectInfo OOT_HOUSE_OF_SKULLTULASceneObjects_Data [OOT_HOUSE_OF_SKULLTUL
 	{ GS_40, OOT_HOUSE_OF_SKULLTULA, "40 Tokens", "OOT Skulltula House 40 Tokens", ObjectType::npc, {290, 222, 0}, OOT_HOUSE_OF_SKULLTULA, ObjectType::npc, EGameIcon::bombchu, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ GS_50, OOT_HOUSE_OF_SKULLTULA, "50 Tokens", "OOT Skulltula House 50 Tokens", ObjectType::npc, {650, 219, 0}, OOT_HOUSE_OF_SKULLTULA, ObjectType::heart_piece, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_HOUSE_OF_SKULLTULASceneObjects = OOT_HOUSE_OF_SKULLTULASceneObjects_Data;
+ObjectInfo * OOT_HOUSE_OF_SKULLTULASceneObjects = OOT_HOUSE_OF_SKULLTULASceneObjects_Data;
 
 const size_t OOT_HYRULE_FIELDNumOfObjs = 222;
 static ObjectInfo OOT_HYRULE_FIELDSceneObjects_Data [OOT_HYRULE_FIELDNumOfObjs] =
@@ -2253,7 +2253,7 @@ static ObjectInfo OOT_HYRULE_FIELDSceneObjects_Data [OOT_HYRULE_FIELDNumOfObjs] 
 	{ 0x60037, OOT_HYRULE_FIELD, "Circle Rock 7", "OOT Hyrule Field Rock Circle Rock 7", ObjectType::rock, {301, 468, 0}, OOT_HYRULE_FIELD, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x70037, OOT_HYRULE_FIELD, "Circle Rock 8", "OOT Hyrule Field Rock Circle Rock 8", ObjectType::rock, {307, 481, 1}, OOT_HYRULE_FIELD, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_HYRULE_FIELDSceneObjects = OOT_HYRULE_FIELDSceneObjects_Data;
+ObjectInfo * OOT_HYRULE_FIELDSceneObjects = OOT_HYRULE_FIELDSceneObjects_Data;
 
 const size_t OOT_ICE_CAVERNNumOfObjs = 144;
 static ObjectInfo OOT_ICE_CAVERNSceneObjects_Data [OOT_ICE_CAVERNNumOfObjs] =
@@ -2403,7 +2403,7 @@ static ObjectInfo OOT_ICE_CAVERNSceneObjects_Data [OOT_ICE_CAVERNNumOfObjs] =
 	{ 0x00912, OOT_ICE_CAVERN, "Map Room", "OOT MQ Ice Cavern Red Ice Map Room", ObjectType::redice, {759, 310, 1}, OOT_ICE_CAVERN, ObjectType::redice, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
 	{ SHEIK_WATER, OOT_ICE_CAVERN, "Serenade of Water", "OOT MQ Ice Cavern Sheik Song", ObjectType::npc, {351, 1140, 0}, OOT_ICE_CAVERN, ObjectType::song, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL }
 };
-ObjectInfo *OOT_ICE_CAVERNSceneObjects = OOT_ICE_CAVERNSceneObjects_Data;
+ObjectInfo * OOT_ICE_CAVERNSceneObjects = OOT_ICE_CAVERNSceneObjects_Data;
 
 const size_t OOT_IMPA_HOUSENumOfObjs = 3;
 static ObjectInfo OOT_IMPA_HOUSESceneObjects_Data [OOT_IMPA_HOUSENumOfObjs] =
@@ -2412,7 +2412,7 @@ static ObjectInfo OOT_IMPA_HOUSESceneObjects_Data [OOT_IMPA_HOUSENumOfObjs] =
 	{ 0x00006, OOT_IMPA_HOUSE, "Above Jail", "OOT Kakariko Impa House Wonder Item", ObjectType::wonder, {1010, 311, 0}, OOT_IMPA_HOUSE, ObjectType::wonder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x06, OOT_KAKARIKO_VILLAGE, "Cow", "OOT Kakariko Cow", ObjectType::cow, {981, 476, 0}, OOT_IMPA_HOUSE, ObjectType::cow, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_IMPA_HOUSESceneObjects = OOT_IMPA_HOUSESceneObjects_Data;
+ObjectInfo * OOT_IMPA_HOUSESceneObjects = OOT_IMPA_HOUSESceneObjects_Data;
 
 const size_t OOT_INSIDE_EGGSNumOfObjs = 2;
 static ObjectInfo OOT_INSIDE_EGGSSceneObjects_Data [OOT_INSIDE_EGGSNumOfObjs] =
@@ -2420,7 +2420,7 @@ static ObjectInfo OOT_INSIDE_EGGSSceneObjects_Data [OOT_INSIDE_EGGSNumOfObjs] =
 	{ WEIRD_EGG, OOT_INSIDE_EGGS, "Hatch - Chicken", "OOT Hatch Chicken", ObjectType::none, {0, 0, 0}, OOT_HYRULE_CASTLE, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ POCKET_EGG, OOT_INSIDE_EGGS, "Hatch - Pocket Cucco", "OOT Hatch Pocket Cucco", ObjectType::none, {0, 0, 0}, OOT_KAKARIKO_VILLAGE, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_INSIDE_EGGSSceneObjects = OOT_INSIDE_EGGSSceneObjects_Data;
+ObjectInfo * OOT_INSIDE_EGGSSceneObjects = OOT_INSIDE_EGGSSceneObjects_Data;
 
 const size_t OOT_INSIDE_GANON_CASTLENumOfObjs = 180;
 static ObjectInfo OOT_INSIDE_GANON_CASTLESceneObjects_Data [OOT_INSIDE_GANON_CASTLENumOfObjs] =
@@ -2606,7 +2606,7 @@ static ObjectInfo OOT_INSIDE_GANON_CASTLESceneObjects_Data [OOT_INSIDE_GANON_CAS
 	{ 0x00310, OOT_INSIDE_GANON_CASTLE, "Silver Rupee Room 5", "OOT MQ Ganon Castle Red Ice Block Silver Rupee Room 5", ObjectType::redice, {1405, 2856, 0}, OOT_INSIDE_GANON_CASTLE, ObjectType::redice, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
 	{ 0x00311, OOT_INSIDE_GANON_CASTLE, "Silver Rupee Room 6", "OOT MQ Ganon Castle Red Ice Block Silver Rupee Room 6", ObjectType::redice, {1385, 2856, 0}, OOT_INSIDE_GANON_CASTLE, ObjectType::redice, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL }
 };
-ObjectInfo *OOT_INSIDE_GANON_CASTLESceneObjects = OOT_INSIDE_GANON_CASTLESceneObjects_Data;
+ObjectInfo * OOT_INSIDE_GANON_CASTLESceneObjects = OOT_INSIDE_GANON_CASTLESceneObjects_Data;
 
 const size_t OOT_INSIDE_JABU_JABUNumOfObjs = 100;
 static ObjectInfo OOT_INSIDE_JABU_JABUSceneObjects_Data [OOT_INSIDE_JABU_JABUNumOfObjs] =
@@ -2712,7 +2712,7 @@ static ObjectInfo OOT_INSIDE_JABU_JABUSceneObjects_Data [OOT_INSIDE_JABU_JABUNum
 	{ 0x0105, OOT_LAIR_BARINADE, "Boss Pot 5", "OOT Jabu-Jabu Boss Pot 5", ObjectType::pot, {1347, 123, 0}, OOT_INSIDE_JABU_JABU, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL },
 	{ 0x0106, OOT_LAIR_BARINADE, "Boss Pot 6", "OOT Jabu-Jabu Boss Pot 6", ObjectType::pot, {1349, 390, 0}, OOT_INSIDE_JABU_JABU, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL }
 };
-ObjectInfo *OOT_INSIDE_JABU_JABUSceneObjects = OOT_INSIDE_JABU_JABUSceneObjects_Data;
+ObjectInfo * OOT_INSIDE_JABU_JABUSceneObjects = OOT_INSIDE_JABU_JABUSceneObjects_Data;
 
 const size_t OOT_KAKARIKO_POTION_SHOPNumOfObjs = 9;
 static ObjectInfo OOT_KAKARIKO_POTION_SHOPSceneObjects_Data [OOT_KAKARIKO_POTION_SHOPNumOfObjs] =
@@ -2727,14 +2727,14 @@ static ObjectInfo OOT_KAKARIKO_POTION_SHOPSceneObjects_Data [OOT_KAKARIKO_POTION
 	{ 0x3e, OOT_KAKARIKO_POTION_SHOP, "Item 7", "OOT Kakariko Potion Shop Item 7", ObjectType::shop, {644, 318, 0}, OOT_KAKARIKO_POTION_SHOP, ObjectType::shop, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x3f, OOT_KAKARIKO_POTION_SHOP, "Item 8", "OOT Kakariko Potion Shop Item 8", ObjectType::shop, {689, 318, 0}, OOT_KAKARIKO_POTION_SHOP, ObjectType::shop, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_KAKARIKO_POTION_SHOPSceneObjects = OOT_KAKARIKO_POTION_SHOPSceneObjects_Data;
+ObjectInfo * OOT_KAKARIKO_POTION_SHOPSceneObjects = OOT_KAKARIKO_POTION_SHOPSceneObjects_Data;
 
 const size_t OOT_GRANNY_POTION_SHOPNumOfObjs = 1;
 static ObjectInfo OOT_GRANNY_POTION_SHOPSceneObjects_Data [OOT_GRANNY_POTION_SHOPNumOfObjs] =
 {
 	{ TRADE_ODD_POTION, OOT_KAKARIKO_POTION_SHOP, "Odd Potion", "OOT Kakariko Potion Shop Odd Potion", ObjectType::npc, {474, 520, 0}, OOT_GRANNY_POTION_SHOP, ObjectType::npc, EGameIcon::mushroom, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_GRANNY_POTION_SHOPSceneObjects = OOT_GRANNY_POTION_SHOPSceneObjects_Data;
+ObjectInfo * OOT_GRANNY_POTION_SHOPSceneObjects = OOT_GRANNY_POTION_SHOPSceneObjects_Data;
 
 const size_t OOT_KOKIRI_FORESTNumOfObjs = 119;
 static ObjectInfo OOT_KOKIRI_FORESTSceneObjects_Data [OOT_KOKIRI_FORESTNumOfObjs] =
@@ -2859,7 +2859,7 @@ static ObjectInfo OOT_KOKIRI_FORESTSceneObjects_Data [OOT_KOKIRI_FORESTNumOfObjs
 	{ 0x10049, OOT_KOKIRI_FOREST, "Soil 2", "OOT Kokiri Forest Soil 2", ObjectType::soil, {1064, 214, 0}, OOT_KOKIRI_FOREST, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x20049, OOT_KOKIRI_FOREST, "Soil 3", "OOT Kokiri Forest Soil 3", ObjectType::soil, {1047, 214, 0}, OOT_KOKIRI_FOREST, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_KOKIRI_FORESTSceneObjects = OOT_KOKIRI_FORESTSceneObjects_Data;
+ObjectInfo * OOT_KOKIRI_FORESTSceneObjects = OOT_KOKIRI_FORESTSceneObjects_Data;
 
 const size_t OOT_LINK_HOUSENumOfObjs = 2;
 static ObjectInfo OOT_LINK_HOUSESceneObjects_Data [OOT_LINK_HOUSENumOfObjs] =
@@ -2867,7 +2867,7 @@ static ObjectInfo OOT_LINK_HOUSESceneObjects_Data [OOT_LINK_HOUSENumOfObjs] =
 	{ 0x00, OOT_KOKIRI_FOREST, "Cow", "OOT Kokiri Forest Cow", ObjectType::cow, {910, 611, 0}, OOT_LINK_HOUSE, ObjectType::cow, EGameIcon::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0002, OOT_LINK_HOUSE, "Pot", "OOT Link's House Pot", ObjectType::pot, {997, 296, 0}, OOT_LINK_HOUSE, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_LINK_HOUSESceneObjects = OOT_LINK_HOUSESceneObjects_Data;
+ObjectInfo * OOT_LINK_HOUSESceneObjects = OOT_LINK_HOUSESceneObjects_Data;
 
 const size_t OOT_KOKIRI_KNOW_IT_ALLNumOfObjs = 2;
 static ObjectInfo OOT_KOKIRI_KNOW_IT_ALLSceneObjects_Data [OOT_KOKIRI_KNOW_IT_ALLNumOfObjs] =
@@ -2875,7 +2875,7 @@ static ObjectInfo OOT_KOKIRI_KNOW_IT_ALLSceneObjects_Data [OOT_KOKIRI_KNOW_IT_AL
 	{ 0x0006, OOT_KOKIRI_KNOW_IT_ALL, "Pot 1", "OOT Know It All House Pot 1", ObjectType::pot, {972, 505, 0}, OOT_KOKIRI_KNOW_IT_ALL, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0007, OOT_KOKIRI_KNOW_IT_ALL, "Pot 2", "OOT Know It All House Pot 2", ObjectType::pot, {840, 234, 0}, OOT_KOKIRI_KNOW_IT_ALL, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_KOKIRI_KNOW_IT_ALLSceneObjects = OOT_KOKIRI_KNOW_IT_ALLSceneObjects_Data;
+ObjectInfo * OOT_KOKIRI_KNOW_IT_ALLSceneObjects = OOT_KOKIRI_KNOW_IT_ALLSceneObjects_Data;
 
 const size_t OOT_KOKIRI_MIDONumOfObjs = 4;
 static ObjectInfo OOT_KOKIRI_MIDOSceneObjects_Data [OOT_KOKIRI_MIDONumOfObjs] =
@@ -2885,7 +2885,7 @@ static ObjectInfo OOT_KOKIRI_MIDOSceneObjects_Data [OOT_KOKIRI_MIDONumOfObjs] =
 	{ 0x02, OOT_KOKIRI_MIDO, "Bottom Left", "OOT Mido's House Bottom Left", ObjectType::chest, {808, 558, 0}, OOT_KOKIRI_MIDO, ObjectType::chest, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x03, OOT_KOKIRI_MIDO, "Bottom Right", "OOT Mido's House Bottom Right", ObjectType::chest, {807, 414, 0}, OOT_KOKIRI_MIDO, ObjectType::chest, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_KOKIRI_MIDOSceneObjects = OOT_KOKIRI_MIDOSceneObjects_Data;
+ObjectInfo * OOT_KOKIRI_MIDOSceneObjects = OOT_KOKIRI_MIDOSceneObjects_Data;
 
 const size_t OOT_KOKIRI_SARIANumOfObjs = 4;
 static ObjectInfo OOT_KOKIRI_SARIASceneObjects_Data [OOT_KOKIRI_SARIANumOfObjs] =
@@ -2895,7 +2895,7 @@ static ObjectInfo OOT_KOKIRI_SARIASceneObjects_Data [OOT_KOKIRI_SARIANumOfObjs] 
 	{ 0x00004, OOT_KOKIRI_SARIA, "Heart 3", "OOT Saria's House Heart 3", ObjectType::heart, {523, 255, 0}, OOT_KOKIRI_SARIA, ObjectType::heart, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00005, OOT_KOKIRI_SARIA, "Heart 4", "OOT Saria's House Heart 4", ObjectType::heart, {524, 376, 0}, OOT_KOKIRI_SARIA, ObjectType::heart, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_KOKIRI_SARIASceneObjects = OOT_KOKIRI_SARIASceneObjects_Data;
+ObjectInfo * OOT_KOKIRI_SARIASceneObjects = OOT_KOKIRI_SARIASceneObjects_Data;
 
 const size_t OOT_KOKIRI_SHOPNumOfObjs = 9;
 static ObjectInfo OOT_KOKIRI_SHOPSceneObjects_Data [OOT_KOKIRI_SHOPNumOfObjs] =
@@ -2910,7 +2910,7 @@ static ObjectInfo OOT_KOKIRI_SHOPSceneObjects_Data [OOT_KOKIRI_SHOPNumOfObjs] =
 	{ 0x07, OOT_KOKIRI_SHOP, "Item 8", "OOT Kokiri Shop Item 8", ObjectType::shop, {573, 386, 0}, OOT_KOKIRI_SHOP, ObjectType::shop, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00004, OOT_KOKIRI_SHOP, "Behind Shop", "OOT Kokiri Shop Wonder Item", ObjectType::wonder, {661, 456, 0}, OOT_KOKIRI_SHOP, ObjectType::wonder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_KOKIRI_SHOPSceneObjects = OOT_KOKIRI_SHOPSceneObjects_Data;
+ObjectInfo * OOT_KOKIRI_SHOPSceneObjects = OOT_KOKIRI_SHOPSceneObjects_Data;
 
 const size_t OOT_KOKIRI_TWINSNumOfObjs = 2;
 static ObjectInfo OOT_KOKIRI_TWINSSceneObjects_Data [OOT_KOKIRI_TWINSNumOfObjs] =
@@ -2918,7 +2918,7 @@ static ObjectInfo OOT_KOKIRI_TWINSSceneObjects_Data [OOT_KOKIRI_TWINSNumOfObjs] 
 	{ 0x0002, OOT_KOKIRI_TWINS, "Pot 1", "OOT Twins House Pot 1", ObjectType::pot, {663, 558, 0}, OOT_KOKIRI_TWINS, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0003, OOT_KOKIRI_TWINS, "Pot 2", "OOT Twins House Pot 2", ObjectType::pot, {660, 394, 0}, OOT_KOKIRI_TWINS, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_KOKIRI_TWINSSceneObjects = OOT_KOKIRI_TWINSSceneObjects_Data;
+ObjectInfo * OOT_KOKIRI_TWINSSceneObjects = OOT_KOKIRI_TWINSSceneObjects_Data;
 
 const size_t OOT_LABORATORYNumOfObjs = 6;
 static ObjectInfo OOT_LABORATORYSceneObjects_Data [OOT_LABORATORYNumOfObjs] =
@@ -2930,7 +2930,7 @@ static ObjectInfo OOT_LABORATORYSceneObjects_Data [OOT_LABORATORYNumOfObjs] =
 	{ 0x00002, OOT_LABORATORY, "Rupee 2", "OOT Laboratory Rupee 2", ObjectType::rupee, {541, 559, 0}, OOT_LABORATORY, ObjectType::rupee, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00003, OOT_LABORATORY, "Rupee 3", "OOT Laboratory Rupee 3", ObjectType::rupee, {636, 634, 0}, OOT_LABORATORY, ObjectType::rupee, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_LABORATORYSceneObjects = OOT_LABORATORYSceneObjects_Data;
+ObjectInfo * OOT_LABORATORYSceneObjects = OOT_LABORATORYSceneObjects_Data;
 
 const size_t OOT_LAIR_BARINADENumOfObjs = 8;
 static ObjectInfo OOT_LAIR_BARINADESceneObjects_Data [OOT_LAIR_BARINADENumOfObjs] =
@@ -2944,7 +2944,7 @@ static ObjectInfo OOT_LAIR_BARINADESceneObjects_Data [OOT_LAIR_BARINADENumOfObjs
 	{ 0x0105, OOT_LAIR_BARINADE, "Boss Pot 5", "OOT Jabu-Jabu Boss Pot 5", ObjectType::pot, {1347, 123, 0}, OOT_INSIDE_JABU_JABU, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL },
 	{ 0x0106, OOT_LAIR_BARINADE, "Boss Pot 6", "OOT Jabu-Jabu Boss Pot 6", ObjectType::pot, {1349, 390, 0}, OOT_INSIDE_JABU_JABU, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL }
 };
-ObjectInfo *OOT_LAIR_BARINADESceneObjects = OOT_LAIR_BARINADESceneObjects_Data;
+ObjectInfo * OOT_LAIR_BARINADESceneObjects = OOT_LAIR_BARINADESceneObjects_Data;
 
 const size_t OOT_LAIR_BONGO_BONGONumOfObjs = 2;
 static ObjectInfo OOT_LAIR_BONGO_BONGOSceneObjects_Data [OOT_LAIR_BONGO_BONGONumOfObjs] =
@@ -2952,7 +2952,7 @@ static ObjectInfo OOT_LAIR_BONGO_BONGOSceneObjects_Data [OOT_LAIR_BONGO_BONGONum
 	{ 0x1f, OOT_LAIR_BONGO_BONGO, "Heart Container", "OOT Shadow Temple Boss HC", ObjectType::collectible, {278, 190, 0}, OOT_TEMPLE_SHADOW, ObjectType::heart_container, EGameIcon::render_type, ObjectContext::All, 4, GameLayout::all, LocType::dungeon, NULL },
 	{ BLUE_WARP_BONGO_BONGO, OOT_LAIR_BONGO_BONGO, "Shadow Medaillon", "OOT Shadow Temple Boss", ObjectType::npc, {237, 190, 0}, OOT_TEMPLE_SHADOW, ObjectType::npc, EGameIcon::shadow, ObjectContext::All, 4, GameLayout::all, LocType::dungeon, NULL }
 };
-ObjectInfo *OOT_LAIR_BONGO_BONGOSceneObjects = OOT_LAIR_BONGO_BONGOSceneObjects_Data;
+ObjectInfo * OOT_LAIR_BONGO_BONGOSceneObjects = OOT_LAIR_BONGO_BONGOSceneObjects_Data;
 
 const size_t OOT_TEMPLE_SHADOWNumOfObjs = 167;
 static ObjectInfo OOT_TEMPLE_SHADOWSceneObjects_Data [OOT_TEMPLE_SHADOWNumOfObjs] =
@@ -3125,7 +3125,7 @@ static ObjectInfo OOT_TEMPLE_SHADOWSceneObjects_Data [OOT_TEMPLE_SHADOWNumOfObjs
 	{ 0x00213, OOT_TEMPLE_SHADOW, "Truth Spinner Room - Small Crate 3", "OOT MQ Shadow Temple Truth Spinner Room Small Crate 3", ObjectType::crate, {852, 365, 0}, OOT_TEMPLE_SHADOW, ObjectType::crate, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
 	{ 0x00214, OOT_TEMPLE_SHADOW, "Truth Spinner Room - Small Crate 4", "OOT MQ Shadow Temple Truth Spinner Room Small Crate 4", ObjectType::crate, {852, 399, 0}, OOT_TEMPLE_SHADOW, ObjectType::crate, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL }
 };
-ObjectInfo *OOT_TEMPLE_SHADOWSceneObjects = OOT_TEMPLE_SHADOWSceneObjects_Data;
+ObjectInfo * OOT_TEMPLE_SHADOWSceneObjects = OOT_TEMPLE_SHADOWSceneObjects_Data;
 
 const size_t OOT_LAIR_GOHMANumOfObjs = 10;
 static ObjectInfo OOT_LAIR_GOHMASceneObjects_Data [OOT_LAIR_GOHMANumOfObjs] =
@@ -3141,7 +3141,7 @@ static ObjectInfo OOT_LAIR_GOHMASceneObjects_Data [OOT_LAIR_GOHMANumOfObjs] =
 	{ 0x00107, OOT_LAIR_GOHMA, "Boss 7", "OOT Deku Tree Boss Grass 7", ObjectType::grass, {721, 423, 0}, OOT_DEKU_TREE, ObjectType::grass, EGameIcon::render_type, ObjectContext::All, 4, GameLayout::all, LocType::dungeon, NULL },
 	{ 0x00108, OOT_LAIR_GOHMA, "Boss 8", "OOT Deku Tree Boss Grass 8", ObjectType::grass, {689, 513, 0}, OOT_DEKU_TREE, ObjectType::grass, EGameIcon::render_type, ObjectContext::All, 4, GameLayout::all, LocType::dungeon, NULL }
 };
-ObjectInfo *OOT_LAIR_GOHMASceneObjects = OOT_LAIR_GOHMASceneObjects_Data;
+ObjectInfo * OOT_LAIR_GOHMASceneObjects = OOT_LAIR_GOHMASceneObjects_Data;
 
 const size_t OOT_LAIR_KING_DODONGONumOfObjs = 3;
 static ObjectInfo OOT_LAIR_KING_DODONGOSceneObjects_Data [OOT_LAIR_KING_DODONGONumOfObjs] =
@@ -3150,7 +3150,7 @@ static ObjectInfo OOT_LAIR_KING_DODONGOSceneObjects_Data [OOT_LAIR_KING_DODONGON
 	{ 0x1f, OOT_LAIR_KING_DODONGO, "Heart Container", "OOT Dodongo Cavern Boss Container", ObjectType::collectible, {614, 384, 0}, OOT_DODONGO_CAVERN, ObjectType::heart_container, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL },
 	{ BLUE_WARP_KING_DODONGO, OOT_LAIR_KING_DODONGO, "Goron's Ruby", "OOT Dodongo Cavern Boss", ObjectType::npc, {666, 384, 0}, OOT_DODONGO_CAVERN, ObjectType::npc, EGameIcon::ruby, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL }
 };
-ObjectInfo *OOT_LAIR_KING_DODONGOSceneObjects = OOT_LAIR_KING_DODONGOSceneObjects_Data;
+ObjectInfo * OOT_LAIR_KING_DODONGOSceneObjects = OOT_LAIR_KING_DODONGOSceneObjects_Data;
 
 const size_t OOT_LAIR_MORPHANumOfObjs = 2;
 static ObjectInfo OOT_LAIR_MORPHASceneObjects_Data [OOT_LAIR_MORPHANumOfObjs] =
@@ -3158,7 +3158,7 @@ static ObjectInfo OOT_LAIR_MORPHASceneObjects_Data [OOT_LAIR_MORPHANumOfObjs] =
 	{ 0x1f, OOT_LAIR_MORPHA, "Heart Container", "OOT Water Temple Boss HC", ObjectType::collectible, {1045, 286, 0}, OOT_TEMPLE_WATER, ObjectType::heart_container, EGameIcon::render_type, ObjectContext::All, 2, GameLayout::all, LocType::dungeon, NULL },
 	{ BLUE_WARP_MORPHA, OOT_LAIR_MORPHA, "Water Medaillon", "OOT Water Temple Boss", ObjectType::npc, {1129, 286, 0}, OOT_TEMPLE_WATER, ObjectType::npc, EGameIcon::water, ObjectContext::All, 2, GameLayout::all, LocType::dungeon, NULL }
 };
-ObjectInfo *OOT_LAIR_MORPHASceneObjects = OOT_LAIR_MORPHASceneObjects_Data;
+ObjectInfo * OOT_LAIR_MORPHASceneObjects = OOT_LAIR_MORPHASceneObjects_Data;
 
 const size_t OOT_TEMPLE_WATERNumOfObjs = 205;
 static ObjectInfo OOT_TEMPLE_WATERSceneObjects_Data [OOT_TEMPLE_WATERNumOfObjs] =
@@ -3369,7 +3369,7 @@ static ObjectInfo OOT_TEMPLE_WATERSceneObjects_Data [OOT_TEMPLE_WATERNumOfObjs] 
 	{ 0x0140c, OOT_TEMPLE_WATER, "Lizalfos Hallway 7", "OOT MQ Water Temple Lizalfos Hallway Large Crate 7", ObjectType::crate, {1229, 879, 0}, OOT_TEMPLE_WATER, ObjectType::crate, EGameIcon::render_type, ObjectContext::All, 1, GameLayout::oot_mq, LocType::dungeon, NULL },
 	{ 0x0140d, OOT_TEMPLE_WATER, "Lizalfos Hallway 8", "OOT MQ Water Temple Lizalfos Hallway Large Crate 8", ObjectType::crate, {1358, 795, 0}, OOT_TEMPLE_WATER, ObjectType::crate, EGameIcon::render_type, ObjectContext::All, 1, GameLayout::oot_mq, LocType::dungeon, NULL }
 };
-ObjectInfo *OOT_TEMPLE_WATERSceneObjects = OOT_TEMPLE_WATERSceneObjects_Data;
+ObjectInfo * OOT_TEMPLE_WATERSceneObjects = OOT_TEMPLE_WATERSceneObjects_Data;
 
 const size_t OOT_LAIR_PHANTOM_GANONNumOfObjs = 2;
 static ObjectInfo OOT_LAIR_PHANTOM_GANONSceneObjects_Data [OOT_LAIR_PHANTOM_GANONNumOfObjs] =
@@ -3377,7 +3377,7 @@ static ObjectInfo OOT_LAIR_PHANTOM_GANONSceneObjects_Data [OOT_LAIR_PHANTOM_GANO
 	{ 0x1f, OOT_LAIR_PHANTOM_GANON, "Heart Container", "OOT Forest Temple Boss Container", ObjectType::collectible, {363, 261, 0}, OOT_TEMPLE_FOREST, ObjectType::heart_container, EGameIcon::render_type, ObjectContext::All, 3, GameLayout::all, LocType::dungeon, NULL },
 	{ BLUE_WARP_PHANTOM_GANON, OOT_LAIR_PHANTOM_GANON, "Forest Medaillon", "OOT Forest Temple Boss", ObjectType::npc, {325, 262, 0}, OOT_TEMPLE_FOREST, ObjectType::npc, EGameIcon::forest, ObjectContext::All, 3, GameLayout::all, LocType::dungeon, NULL }
 };
-ObjectInfo *OOT_LAIR_PHANTOM_GANONSceneObjects = OOT_LAIR_PHANTOM_GANONSceneObjects_Data;
+ObjectInfo * OOT_LAIR_PHANTOM_GANONSceneObjects = OOT_LAIR_PHANTOM_GANONSceneObjects_Data;
 
 const size_t OOT_TEMPLE_FORESTNumOfObjs = 90;
 static ObjectInfo OOT_TEMPLE_FORESTSceneObjects_Data [OOT_TEMPLE_FORESTNumOfObjs] =
@@ -3473,7 +3473,7 @@ static ObjectInfo OOT_TEMPLE_FORESTSceneObjects_Data [OOT_TEMPLE_FORESTNumOfObjs
 	{ 0x00e08, OOT_TEMPLE_FOREST, "Red Pool Room - Small Crate 2", "OOT MQ Forest Temple Spinning Red Pool Room Small Crate 2", ObjectType::crate, {2730, 1316, 0}, OOT_TEMPLE_FOREST, ObjectType::crate, EGameIcon::render_type, ObjectContext::All, 1, GameLayout::oot_mq, LocType::dungeon, NULL },
 	{ 0x00e09, OOT_TEMPLE_FOREST, "Red Pool Room - Small Crate 3", "OOT MQ Forest Temple Spinning Red Pool Room Small Crate 3", ObjectType::crate, {2383, 1119, 0}, OOT_TEMPLE_FOREST, ObjectType::crate, EGameIcon::render_type, ObjectContext::All, 1, GameLayout::oot_mq, LocType::dungeon, NULL }
 };
-ObjectInfo *OOT_TEMPLE_FORESTSceneObjects = OOT_TEMPLE_FORESTSceneObjects_Data;
+ObjectInfo * OOT_TEMPLE_FORESTSceneObjects = OOT_TEMPLE_FORESTSceneObjects_Data;
 
 const size_t OOT_LAIR_TWINROVANumOfObjs = 2;
 static ObjectInfo OOT_LAIR_TWINROVASceneObjects_Data [OOT_LAIR_TWINROVANumOfObjs] =
@@ -3481,7 +3481,7 @@ static ObjectInfo OOT_LAIR_TWINROVASceneObjects_Data [OOT_LAIR_TWINROVANumOfObjs
 	{ 0x1f, OOT_LAIR_TWINROVA, "Heart Container", "OOT Spirit Temple Boss HC", ObjectType::collectible, {783, 233, 0}, OOT_TEMPLE_SPIRIT, ObjectType::heart_container, EGameIcon::render_type, ObjectContext::All, 1, GameLayout::all, LocType::dungeon, NULL },
 	{ BLUE_WARP_TWINROVA, OOT_LAIR_TWINROVA, "Spirit Medaillon", "OOT Spirit Temple Boss", ObjectType::npc, {889, 339, 0}, OOT_TEMPLE_SPIRIT, ObjectType::npc, EGameIcon::spirit, ObjectContext::All, 1, GameLayout::all, LocType::dungeon, NULL }
 };
-ObjectInfo *OOT_LAIR_TWINROVASceneObjects = OOT_LAIR_TWINROVASceneObjects_Data;
+ObjectInfo * OOT_LAIR_TWINROVASceneObjects = OOT_LAIR_TWINROVASceneObjects_Data;
 
 const size_t OOT_TEMPLE_SPIRITNumOfObjs = 157;
 static ObjectInfo OOT_TEMPLE_SPIRITSceneObjects_Data [OOT_TEMPLE_SPIRITNumOfObjs] =
@@ -3644,7 +3644,7 @@ static ObjectInfo OOT_TEMPLE_SPIRITSceneObjects_Data [OOT_TEMPLE_SPIRITNumOfObjs
 	{ 0x0b, OOT_TEMPLE_SPIRIT, "Silver Gauntlets", "OOT Spirit Temple Silver Gauntlets", ObjectType::none, {0, 0, 0}, OOT_DESERT_COLOSSUS, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x09, OOT_TEMPLE_SPIRIT, "Mirror Shield", "OOT Spirit Temple Mirror Shield", ObjectType::none, {0, 0, 0}, OOT_DESERT_COLOSSUS, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_TEMPLE_SPIRITSceneObjects = OOT_TEMPLE_SPIRITSceneObjects_Data;
+ObjectInfo * OOT_TEMPLE_SPIRITSceneObjects = OOT_TEMPLE_SPIRITSceneObjects_Data;
 
 const size_t OOT_LAIR_VOLVAGIANumOfObjs = 2;
 static ObjectInfo OOT_LAIR_VOLVAGIASceneObjects_Data [OOT_LAIR_VOLVAGIANumOfObjs] =
@@ -3652,7 +3652,7 @@ static ObjectInfo OOT_LAIR_VOLVAGIASceneObjects_Data [OOT_LAIR_VOLVAGIANumOfObjs
 	{ 0x1f, OOT_LAIR_VOLVAGIA, "Heart Container", "OOT Fire Temple Boss Container", ObjectType::collectible, {354, 1213, 0}, OOT_TEMPLE_FIRE, ObjectType::heart_container, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL },
 	{ BLUE_WARP_VOLVAGIA, OOT_LAIR_VOLVAGIA, "Fire Medaillon", "OOT Fire Temple Boss", ObjectType::npc, {358, 1182, 0}, OOT_TEMPLE_FIRE, ObjectType::npc, EGameIcon::fire, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL }
 };
-ObjectInfo *OOT_LAIR_VOLVAGIASceneObjects = OOT_LAIR_VOLVAGIASceneObjects_Data;
+ObjectInfo * OOT_LAIR_VOLVAGIASceneObjects = OOT_LAIR_VOLVAGIASceneObjects_Data;
 
 const size_t OOT_TEMPLE_FIRENumOfObjs = 141;
 static ObjectInfo OOT_TEMPLE_FIRESceneObjects_Data [OOT_TEMPLE_FIRENumOfObjs] =
@@ -3799,7 +3799,7 @@ static ObjectInfo OOT_TEMPLE_FIRESceneObjects_Data [OOT_TEMPLE_FIRENumOfObjs] =
 	{ 0x01010, OOT_TEMPLE_FIRE, "Lava Room - Lower Small Crate 2", "OOT MQ Fire Temple 3F Lava Room Lower Small Crate 2", ObjectType::crate, {1166, 2235, 0}, OOT_TEMPLE_FIRE, ObjectType::crate, EGameIcon::render_type, ObjectContext::All, 2, GameLayout::oot_mq, LocType::dungeon, NULL },
 	{ 0x01011, OOT_TEMPLE_FIRE, "Lava Room - High Ledge Small Crate", "OOT MQ Fire Temple 3F Lava Room High Ledge Small Crate", ObjectType::crate, {624, 1885, 0}, OOT_TEMPLE_FIRE, ObjectType::crate, EGameIcon::render_type, ObjectContext::All, 2, GameLayout::oot_mq, LocType::dungeon, NULL }
 };
-ObjectInfo *OOT_TEMPLE_FIRESceneObjects = OOT_TEMPLE_FIRESceneObjects_Data;
+ObjectInfo * OOT_TEMPLE_FIRESceneObjects = OOT_TEMPLE_FIRESceneObjects_Data;
 
 const size_t OOT_LAKE_HYLIANumOfObjs = 108;
 static ObjectInfo OOT_LAKE_HYLIASceneObjects_Data [OOT_LAKE_HYLIANumOfObjs] =
@@ -3913,7 +3913,7 @@ static ObjectInfo OOT_LAKE_HYLIASceneObjects_Data [OOT_LAKE_HYLIANumOfObjs] =
 	{ 0x10027, OOT_LAKE_HYLIA, "Soil 2", "OOT Lake Hylia Soil 2", ObjectType::soil, {867, 630, 0}, OOT_LAKE_HYLIA, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x20027, OOT_LAKE_HYLIA, "Soil 3", "OOT Lake Hylia Soil 3", ObjectType::soil, {856, 630, 0}, OOT_LAKE_HYLIA, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_LAKE_HYLIASceneObjects = OOT_LAKE_HYLIASceneObjects_Data;
+ObjectInfo * OOT_LAKE_HYLIASceneObjects = OOT_LAKE_HYLIASceneObjects_Data;
 
 const size_t OOT_LON_LON_RANCHNumOfObjs = 29;
 static ObjectInfo OOT_LON_LON_RANCHSceneObjects_Data [OOT_LON_LON_RANCHNumOfObjs] =
@@ -3948,7 +3948,7 @@ static ObjectInfo OOT_LON_LON_RANCHSceneObjects_Data [OOT_LON_LON_RANCHNumOfObjs
 	{ 0x0202, OOT_LON_LON_RANCH, "Pot 3", "OOT Lon Lon Ranch Talon House Pot 3", ObjectType::none, {0, 0, 0}, OOT_RANCH_HOUSE_SILO, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ TALON_MILK, OOT_LON_LON_RANCH, "Buy Milk", "OOT Lon Lon Ranch Talon Buy Milk", ObjectType::none, {0, 0, 0}, OOT_RANCH_HOUSE_SILO, ObjectType::none, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_LON_LON_RANCHSceneObjects = OOT_LON_LON_RANCHSceneObjects_Data;
+ObjectInfo * OOT_LON_LON_RANCHSceneObjects = OOT_LON_LON_RANCHSceneObjects_Data;
 
 const size_t OOT_STABLENumOfObjs = 2;
 static ObjectInfo OOT_STABLESceneObjects_Data [OOT_STABLENumOfObjs] =
@@ -3956,7 +3956,7 @@ static ObjectInfo OOT_STABLESceneObjects_Data [OOT_STABLENumOfObjs] =
 	{ 0x02, OOT_LON_LON_RANCH, "Left", "OOT Lon Lon Ranch Stables Cow Left", ObjectType::cow, {701, 531, 0}, OOT_STABLE, ObjectType::cow, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x03, OOT_LON_LON_RANCH, "Right", "OOT Lon Lon Ranch Stables Cow Right", ObjectType::cow, {604, 531, 0}, OOT_STABLE, ObjectType::cow, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_STABLESceneObjects = OOT_STABLESceneObjects_Data;
+ObjectInfo * OOT_STABLESceneObjects = OOT_STABLESceneObjects_Data;
 
 const size_t OOT_SILONumOfObjs = 3;
 static ObjectInfo OOT_SILOSceneObjects_Data [OOT_SILONumOfObjs] =
@@ -3965,7 +3965,7 @@ static ObjectInfo OOT_SILOSceneObjects_Data [OOT_SILONumOfObjs] =
 	{ 0x05, OOT_LON_LON_RANCH, "Back", "OOT Lon Lon Ranch Silo Cow Back", ObjectType::cow, {554, 384, 0}, OOT_SILO, ObjectType::cow, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x01, OOT_RANCH_HOUSE_SILO, "Straw", "OOT Lon Lon Ranch Silo HP", ObjectType::collectible, {751, 262, 0}, OOT_SILO, ObjectType::heart_piece, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_SILOSceneObjects = OOT_SILOSceneObjects_Data;
+ObjectInfo * OOT_SILOSceneObjects = OOT_SILOSceneObjects_Data;
 
 const size_t OOT_LOST_WOODSNumOfObjs = 62;
 static ObjectInfo OOT_LOST_WOODSSceneObjects_Data [OOT_LOST_WOODSNumOfObjs] =
@@ -4033,7 +4033,7 @@ static ObjectInfo OOT_LOST_WOODSSceneObjects_Data [OOT_LOST_WOODSNumOfObjs] =
 	{ 0x10605, OOT_LOST_WOODS, "Late - Soil 2", "OOT Lost Woods Soil Late 2", ObjectType::soil, {1403, 799, 0}, OOT_LOST_WOODS, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x20605, OOT_LOST_WOODS, "Late - Soil 3", "OOT Lost Woods Soil Late 3", ObjectType::soil, {1386, 799, 0}, OOT_LOST_WOODS, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_LOST_WOODSSceneObjects = OOT_LOST_WOODSSceneObjects_Data;
+ObjectInfo * OOT_LOST_WOODSSceneObjects = OOT_LOST_WOODSSceneObjects_Data;
 
 const size_t OOT_MARKETNumOfObjs = 125;
 static ObjectInfo OOT_MARKETSceneObjects_Data [OOT_MARKETNumOfObjs] =
@@ -4164,7 +4164,7 @@ static ObjectInfo OOT_MARKETSceneObjects_Data [OOT_MARKETNumOfObjs] =
 	{ SHOOTING_GAME_CHILD, OOT_MARKET, "Reward", "OOT Shooting Gallery Child", ObjectType::none, {0, 0, 0}, OOT_MARKET_SHOOTING, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::minigame, NULL },
 	{ 0x0000e, OOT_MARKET, "Tree", "OOT Market Tree", ObjectType::none, {0, 0, 0}, OOT_MARKET_CHILD_DAY, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_MARKETSceneObjects = OOT_MARKETSceneObjects_Data;
+ObjectInfo * OOT_MARKETSceneObjects = OOT_MARKETSceneObjects_Data;
 
 const size_t OOT_MARKET_CHILD_DAYNumOfObjs = 18;
 static ObjectInfo OOT_MARKET_CHILD_DAYSceneObjects_Data [OOT_MARKET_CHILD_DAYNumOfObjs] =
@@ -4188,7 +4188,7 @@ static ObjectInfo OOT_MARKET_CHILD_DAYSceneObjects_Data [OOT_MARKET_CHILD_DAYNum
 	{ 0x00013, OOT_MARKET_CHILD_DAY, "Day - Balcony 5", "OOT Market Wonder Item Day 5", ObjectType::wonder, {198, 363, 0}, OOT_MARKET_CHILD_DAY, ObjectType::wonder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0000e, OOT_MARKET_CHILD_DAY, "Tree", "OOT Market Tree", ObjectType::tree, {433, 427, 0}, OOT_MARKET_CHILD_DAY, ObjectType::tree, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_MARKET_CHILD_DAYSceneObjects = OOT_MARKET_CHILD_DAYSceneObjects_Data;
+ObjectInfo * OOT_MARKET_CHILD_DAYSceneObjects = OOT_MARKET_CHILD_DAYSceneObjects_Data;
 
 const size_t OOT_MARKET_CHILD_NIGHTNumOfObjs = 2;
 static ObjectInfo OOT_MARKET_CHILD_NIGHTSceneObjects_Data [OOT_MARKET_CHILD_NIGHTNumOfObjs] =
@@ -4196,7 +4196,7 @@ static ObjectInfo OOT_MARKET_CHILD_NIGHTSceneObjects_Data [OOT_MARKET_CHILD_NIGH
 	{ 0x00005, OOT_MARKET_CHILD_NIGHT, "Night - Balcony 1", "OOT Market Wonder Item Night 1", ObjectType::wonder, {200, 168, 0}, OOT_MARKET_CHILD_NIGHT, ObjectType::wonder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00006, OOT_MARKET_CHILD_NIGHT, "Night - Balcony 2", "OOT Market Wonder Item Night 2", ObjectType::wonder, {196, 314, 0}, OOT_MARKET_CHILD_NIGHT, ObjectType::wonder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_MARKET_CHILD_NIGHTSceneObjects = OOT_MARKET_CHILD_NIGHTSceneObjects_Data;
+ObjectInfo * OOT_MARKET_CHILD_NIGHTSceneObjects = OOT_MARKET_CHILD_NIGHTSceneObjects_Data;
 
 const size_t OOT_MARKET_POTION_SHOPNumOfObjs = 8;
 static ObjectInfo OOT_MARKET_POTION_SHOPSceneObjects_Data [OOT_MARKET_POTION_SHOPNumOfObjs] =
@@ -4210,7 +4210,7 @@ static ObjectInfo OOT_MARKET_POTION_SHOPSceneObjects_Data [OOT_MARKET_POTION_SHO
 	{ 0x2e, OOT_MARKET_POTION_SHOP, "Item 7", "OOT Market Potion Shop Item 7", ObjectType::shop, {500, 340, 0}, OOT_MARKET_POTION_SHOP, ObjectType::shop, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x2f, OOT_MARKET_POTION_SHOP, "Item 8", "OOT Market Potion Shop Item 8", ObjectType::shop, {556, 340, 0}, OOT_MARKET_POTION_SHOP, ObjectType::shop, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_MARKET_POTION_SHOPSceneObjects = OOT_MARKET_POTION_SHOPSceneObjects_Data;
+ObjectInfo * OOT_MARKET_POTION_SHOPSceneObjects = OOT_MARKET_POTION_SHOPSceneObjects_Data;
 
 const size_t OOT_RANCH_HOUSE_SILONumOfObjs = 6;
 static ObjectInfo OOT_RANCH_HOUSE_SILOSceneObjects_Data [OOT_RANCH_HOUSE_SILONumOfObjs] =
@@ -4222,7 +4222,7 @@ static ObjectInfo OOT_RANCH_HOUSE_SILOSceneObjects_Data [OOT_RANCH_HOUSE_SILONum
 	{ 0x0201, OOT_RANCH_HOUSE_SILO, "Pot 2", "OOT Lon Lon Ranch Talon House Pot 2", ObjectType::pot, {359, 421, 0}, OOT_RANCH_HOUSE_SILO, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0202, OOT_RANCH_HOUSE_SILO, "Pot 3", "OOT Lon Lon Ranch Talon House Pot 3", ObjectType::pot, {358, 355, 0}, OOT_RANCH_HOUSE_SILO, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_RANCH_HOUSE_SILOSceneObjects = OOT_RANCH_HOUSE_SILOSceneObjects_Data;
+ObjectInfo * OOT_RANCH_HOUSE_SILOSceneObjects = OOT_RANCH_HOUSE_SILOSceneObjects_Data;
 
 const size_t OOT_SACRED_FOREST_MEADOWNumOfObjs = 21;
 static ObjectInfo OOT_SACRED_FOREST_MEADOWSceneObjects_Data [OOT_SACRED_FOREST_MEADOWNumOfObjs] =
@@ -4249,7 +4249,7 @@ static ObjectInfo OOT_SACRED_FOREST_MEADOWSceneObjects_Data [OOT_SACRED_FOREST_M
 	{ 0x62200, OOT_SACRED_FOREST_MEADOW, "Fairy 7", "OOT Sacred Meadow Fairy Fountain Fairy 7", ObjectType::none, {0, 0, 0}, OOT_FAIRY_SACRED_MEADOW, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x72200, OOT_SACRED_FOREST_MEADOW, "Fairy 8", "OOT Sacred Meadow Fairy Fountain Fairy 8", ObjectType::none, {0, 0, 0}, OOT_FAIRY_SACRED_MEADOW, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_SACRED_FOREST_MEADOWSceneObjects = OOT_SACRED_FOREST_MEADOWSceneObjects_Data;
+ObjectInfo * OOT_SACRED_FOREST_MEADOWSceneObjects = OOT_SACRED_FOREST_MEADOWSceneObjects_Data;
 
 const size_t OOT_SHOOTING_GALLERYNumOfObjs = 2;
 static ObjectInfo OOT_SHOOTING_GALLERYSceneObjects_Data [OOT_SHOOTING_GALLERYNumOfObjs] =
@@ -4257,21 +4257,21 @@ static ObjectInfo OOT_SHOOTING_GALLERYSceneObjects_Data [OOT_SHOOTING_GALLERYNum
 	{ SHOOTING_GAME_CHILD, OOT_SHOOTING_GALLERY, "Reward", "OOT Shooting Gallery Child", ObjectType::npc, {616, 354, 0}, OOT_MARKET_SHOOTING, ObjectType::npc, EGameIcon::biggest_seed, ObjectContext::All, 0, GameLayout::oot, LocType::minigame, NULL },
 	{ SHOOTING_GAME_ADULT, OOT_SHOOTING_GALLERY, "Reward", "OOT Shooting Gallery Adult", ObjectType::npc, {616, 354, 0}, OOT_KAKARIKO_SHOOTING, ObjectType::npc, EGameIcon::big_quiver, ObjectContext::All, 0, GameLayout::oot, LocType::minigame, NULL }
 };
-ObjectInfo *OOT_SHOOTING_GALLERYSceneObjects = OOT_SHOOTING_GALLERYSceneObjects_Data;
+ObjectInfo * OOT_SHOOTING_GALLERYSceneObjects = OOT_SHOOTING_GALLERYSceneObjects_Data;
 
 const size_t OOT_MARKET_SHOOTINGNumOfObjs = 1;
 static ObjectInfo OOT_MARKET_SHOOTINGSceneObjects_Data [OOT_MARKET_SHOOTINGNumOfObjs] =
 {
 	{ SHOOTING_GAME_CHILD, OOT_SHOOTING_GALLERY, "Reward", "OOT Shooting Gallery Child", ObjectType::npc, {616, 354, 0}, OOT_MARKET_SHOOTING, ObjectType::npc, EGameIcon::biggest_seed, ObjectContext::All, 0, GameLayout::oot, LocType::minigame, NULL }
 };
-ObjectInfo *OOT_MARKET_SHOOTINGSceneObjects = OOT_MARKET_SHOOTINGSceneObjects_Data;
+ObjectInfo * OOT_MARKET_SHOOTINGSceneObjects = OOT_MARKET_SHOOTINGSceneObjects_Data;
 
 const size_t OOT_KAKARIKO_SHOOTINGNumOfObjs = 1;
 static ObjectInfo OOT_KAKARIKO_SHOOTINGSceneObjects_Data [OOT_KAKARIKO_SHOOTINGNumOfObjs] =
 {
 	{ SHOOTING_GAME_ADULT, OOT_SHOOTING_GALLERY, "Reward", "OOT Shooting Gallery Adult", ObjectType::npc, {616, 354, 0}, OOT_KAKARIKO_SHOOTING, ObjectType::npc, EGameIcon::big_quiver, ObjectContext::All, 0, GameLayout::oot, LocType::minigame, NULL }
 };
-ObjectInfo *OOT_KAKARIKO_SHOOTINGSceneObjects = OOT_KAKARIKO_SHOOTINGSceneObjects_Data;
+ObjectInfo * OOT_KAKARIKO_SHOOTINGSceneObjects = OOT_KAKARIKO_SHOOTINGSceneObjects_Data;
 
 const size_t OOT_TEMPLE_OF_TIMENumOfObjs = 4;
 static ObjectInfo OOT_TEMPLE_OF_TIMESceneObjects_Data [OOT_TEMPLE_OF_TIMENumOfObjs] =
@@ -4281,7 +4281,7 @@ static ObjectInfo OOT_TEMPLE_OF_TIMESceneObjects_Data [OOT_TEMPLE_OF_TIMENumOfOb
 	{ SHEIK_LIGHT, OOT_TEMPLE_OF_TIME, "Prelude of Light", "OOT Temple of Time Sheik Song", ObjectType::npc, {574, 297, 0}, OOT_TEMPLE_OF_TIME, ObjectType::song, EGameIcon::song_yellow, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ ZELDA_LIGHT_ARROW, OOT_TEMPLE_OF_TIME, "Light Arrows", "OOT Temple of Time Light Arrows", ObjectType::npc, {149, 329, 0}, OOT_TEMPLE_OF_TIME, ObjectType::npc, EGameIcon::light_arrow, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_TEMPLE_OF_TIMESceneObjects = OOT_TEMPLE_OF_TIMESceneObjects_Data;
+ObjectInfo * OOT_TEMPLE_OF_TIMESceneObjects = OOT_TEMPLE_OF_TIMESceneObjects_Data;
 
 const size_t OOT_THIEVES_HIDEOUTNumOfObjs = 47;
 static ObjectInfo OOT_THIEVES_HIDEOUTSceneObjects_Data [OOT_THIEVES_HIDEOUTNumOfObjs] =
@@ -4334,7 +4334,7 @@ static ObjectInfo OOT_THIEVES_HIDEOUTSceneObjects_Data [OOT_THIEVES_HIDEOUTNumOf
 	{ 0x00303, OOT_THIEVES_HIDEOUT, "Kitchen - Skull", "OOT Gerudo Fortress Wonder Item Kitchen Skull", ObjectType::wonder, {410, 163, 0}, OOT_THIEVES_HIDEOUT, ObjectType::wonder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00304, OOT_THIEVES_HIDEOUT, "Kitchen - Soup", "OOT Gerudo Fortress Wonder Item Kitchen Soup", ObjectType::wonder, {310, 161, 0}, OOT_THIEVES_HIDEOUT, ObjectType::wonder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_THIEVES_HIDEOUTSceneObjects = OOT_THIEVES_HIDEOUTSceneObjects_Data;
+ObjectInfo * OOT_THIEVES_HIDEOUTSceneObjects = OOT_THIEVES_HIDEOUTSceneObjects_Data;
 
 const size_t OOT_TOMB_DAMPE_WINDMILLNumOfObjs = 33;
 static ObjectInfo OOT_TOMB_DAMPE_WINDMILLSceneObjects_Data [OOT_TOMB_DAMPE_WINDMILLNumOfObjs] =
@@ -4373,7 +4373,7 @@ static ObjectInfo OOT_TOMB_DAMPE_WINDMILLSceneObjects_Data [OOT_TOMB_DAMPE_WINDM
 	{ 0x01, OOT_TOMB_DAMPE_WINDMILL, "Platform", "OOT Windmill HP", ObjectType::collectible, {718, 844, 0}, OOT_WINDMILL, ObjectType::heart_piece, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ OOT_SONG_STORMS, OOT_TOMB_DAMPE_WINDMILL, "Song of Storms", "OOT Windmill Song of Storms", ObjectType::npc, {720, 120, 0}, OOT_WINDMILL, ObjectType::song, EGameIcon::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_TOMB_DAMPE_WINDMILLSceneObjects = OOT_TOMB_DAMPE_WINDMILLSceneObjects_Data;
+ObjectInfo * OOT_TOMB_DAMPE_WINDMILLSceneObjects = OOT_TOMB_DAMPE_WINDMILLSceneObjects_Data;
 
 const size_t OOT_WINDMILLNumOfObjs = 2;
 static ObjectInfo OOT_WINDMILLSceneObjects_Data [OOT_WINDMILLNumOfObjs] =
@@ -4381,7 +4381,7 @@ static ObjectInfo OOT_WINDMILLSceneObjects_Data [OOT_WINDMILLNumOfObjs] =
 	{ 0x01, OOT_TOMB_DAMPE_WINDMILL, "Platform", "OOT Windmill HP", ObjectType::collectible, {718, 844, 0}, OOT_WINDMILL, ObjectType::heart_piece, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ OOT_SONG_STORMS, OOT_TOMB_DAMPE_WINDMILL, "Song of Storms", "OOT Windmill Song of Storms", ObjectType::npc, {720, 120, 0}, OOT_WINDMILL, ObjectType::song, EGameIcon::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_WINDMILLSceneObjects = OOT_WINDMILLSceneObjects_Data;
+ObjectInfo * OOT_WINDMILLSceneObjects = OOT_WINDMILLSceneObjects_Data;
 
 const size_t OOT_TOMB_FAIRYNumOfObjs = 9;
 static ObjectInfo OOT_TOMB_FAIRYSceneObjects_Data [OOT_TOMB_FAIRYNumOfObjs] =
@@ -4396,14 +4396,14 @@ static ObjectInfo OOT_TOMB_FAIRYSceneObjects_Data [OOT_TOMB_FAIRYNumOfObjs] =
 	{ 0x60005, OOT_TOMB_FAIRY, "Fairy 7", "OOT Graveyard Fairy Fountain Fairy 7", ObjectType::fairy, {303, 406, 0}, OOT_TOMB_FAIRY, ObjectType::fairy, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x70005, OOT_TOMB_FAIRY, "Fairy 8", "OOT Graveyard Fairy Fountain Fairy 8", ObjectType::fairy, {286, 406, 0}, OOT_TOMB_FAIRY, ObjectType::fairy, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_TOMB_FAIRYSceneObjects = OOT_TOMB_FAIRYSceneObjects_Data;
+ObjectInfo * OOT_TOMB_FAIRYSceneObjects = OOT_TOMB_FAIRYSceneObjects_Data;
 
 const size_t OOT_TOMB_REDEADNumOfObjs = 1;
 static ObjectInfo OOT_TOMB_REDEADSceneObjects_Data [OOT_TOMB_REDEADNumOfObjs] =
 {
 	{ 0x00, OOT_TOMB_REDEAD, "ReDead", "OOT Graveyard ReDead Tomb", ObjectType::chest, {470, 495, 0}, OOT_TOMB_REDEAD, ObjectType::heart_piece, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_TOMB_REDEADSceneObjects = OOT_TOMB_REDEADSceneObjects_Data;
+ObjectInfo * OOT_TOMB_REDEADSceneObjects = OOT_TOMB_REDEADSceneObjects_Data;
 
 const size_t OOT_TOMB_ROYALNumOfObjs = 3;
 static ObjectInfo OOT_TOMB_ROYALSceneObjects_Data [OOT_TOMB_ROYALNumOfObjs] =
@@ -4412,7 +4412,7 @@ static ObjectInfo OOT_TOMB_ROYALSceneObjects_Data [OOT_TOMB_ROYALNumOfObjs] =
 	{ 0x00, OOT_TOMB_ROYAL, "Torches", "OOT Graveyard Royal Tomb Chest", ObjectType::chest, {150, 522, 0}, OOT_TOMB_ROYAL, ObjectType::chest, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00008, OOT_TOMB_ROYAL, "Skull", "OOT Graveyard Royal Tomb Big Fairy", ObjectType::fairy_spot, {111, 506, 0}, OOT_TOMB_ROYAL, ObjectType::fairy_spot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_TOMB_ROYALSceneObjects = OOT_TOMB_ROYALSceneObjects_Data;
+ObjectInfo * OOT_TOMB_ROYALSceneObjects = OOT_TOMB_ROYALSceneObjects_Data;
 
 const size_t OOT_TREASURE_SHOPNumOfObjs = 12;
 static ObjectInfo OOT_TREASURE_SHOPSceneObjects_Data [OOT_TREASURE_SHOPNumOfObjs] =
@@ -4430,7 +4430,7 @@ static ObjectInfo OOT_TREASURE_SHOPSceneObjects_Data [OOT_TREASURE_SHOPNumOfObjs
 	{ 0x09, OOT_TREASURE_SHOP, "Room 5 - Right", "OOT Treasure Chest Game Room 5 Chest Right", ObjectType::chest, {233, 38, 0}, OOT_TREASURE_SHOP, ObjectType::chest, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::minigame, NULL },
 	{ 0x0a, OOT_TREASURE_SHOP, "Game Prize", "OOT Treasure Chest Game HP", ObjectType::chest, {86, 74, 0}, OOT_TREASURE_SHOP, ObjectType::heart_piece, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::minigame, NULL }
 };
-ObjectInfo *OOT_TREASURE_SHOPSceneObjects = OOT_TREASURE_SHOPSceneObjects_Data;
+ObjectInfo * OOT_TREASURE_SHOPSceneObjects = OOT_TREASURE_SHOPSceneObjects_Data;
 
 const size_t OOT_ZORA_DOMAINNumOfObjs = 41;
 static ObjectInfo OOT_ZORA_DOMAINSceneObjects_Data [OOT_ZORA_DOMAINNumOfObjs] =
@@ -4477,7 +4477,7 @@ static ObjectInfo OOT_ZORA_DOMAINSceneObjects_Data [OOT_ZORA_DOMAINNumOfObjs] =
 	{ 0x6010a, OOT_ZORA_DOMAIN, "Circle Rock 7", "OOT Zora Domain Rock Circle Rock 7", ObjectType::rock, {506, 330, 0}, OOT_ZORA_DOMAIN, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x7010a, OOT_ZORA_DOMAIN, "Circle Rock 8", "OOT Zora Domain Rock Circle Rock 8", ObjectType::rock, {509, 345, 0}, OOT_ZORA_DOMAIN, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_ZORA_DOMAINSceneObjects = OOT_ZORA_DOMAINSceneObjects_Data;
+ObjectInfo * OOT_ZORA_DOMAINSceneObjects = OOT_ZORA_DOMAINSceneObjects_Data;
 
 const size_t OOT_ZORA_FOUNTAINNumOfObjs = 47;
 static ObjectInfo OOT_ZORA_FOUNTAINSceneObjects_Data [OOT_ZORA_FOUNTAINNumOfObjs] =
@@ -4530,7 +4530,7 @@ static ObjectInfo OOT_ZORA_FOUNTAINSceneObjects_Data [OOT_ZORA_FOUNTAINNumOfObjs
 	{ 0x0000a, OOT_ZORA_FOUNTAIN, "Bush 5", "OOT Zora Fountain Bush 5", ObjectType::bush, {426, 88, 0}, OOT_ZORA_FOUNTAIN, ObjectType::bush, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0000b, OOT_ZORA_FOUNTAIN, "Bush 6", "OOT Zora Fountain Bush 6", ObjectType::bush, {452, 83, 0}, OOT_ZORA_FOUNTAIN, ObjectType::bush, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_ZORA_FOUNTAINSceneObjects = OOT_ZORA_FOUNTAINSceneObjects_Data;
+ObjectInfo * OOT_ZORA_FOUNTAINSceneObjects = OOT_ZORA_FOUNTAINSceneObjects_Data;
 
 const size_t OOT_ZORA_RIVERNumOfObjs = 112;
 static ObjectInfo OOT_ZORA_RIVERSceneObjects_Data [OOT_ZORA_RIVERNumOfObjs] =
@@ -4648,7 +4648,7 @@ static ObjectInfo OOT_ZORA_RIVERSceneObjects_Data [OOT_ZORA_RIVERNumOfObjs] =
 	{ 0x10038, OOT_ZORA_RIVER, "Soil 2", "OOT Zora River Soil 2", ObjectType::soil, {1131, 465, 0}, OOT_ZORA_RIVER, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x20038, OOT_ZORA_RIVER, "Soil 3", "OOT Zora River Soil 3", ObjectType::soil, {1144, 461, 0}, OOT_ZORA_RIVER, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_ZORA_RIVERSceneObjects = OOT_ZORA_RIVERSceneObjects_Data;
+ObjectInfo * OOT_ZORA_RIVERSceneObjects = OOT_ZORA_RIVERSceneObjects_Data;
 
 const size_t OOT_ZORA_SHOPNumOfObjs = 8;
 static ObjectInfo OOT_ZORA_SHOPSceneObjects_Data [OOT_ZORA_SHOPNumOfObjs] =
@@ -4662,6 +4662,6 @@ static ObjectInfo OOT_ZORA_SHOPSceneObjects_Data [OOT_ZORA_SHOPNumOfObjs] =
 	{ 0x16, OOT_ZORA_SHOP, "Item 7", "OOT Zora Shop Item 7", ObjectType::shop, {606, 350, 0}, OOT_ZORA_SHOP, ObjectType::shop, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x17, OOT_ZORA_SHOP, "Item 8", "OOT Zora Shop Item 8", ObjectType::shop, {677, 350, 0}, OOT_ZORA_SHOP, ObjectType::shop, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
-ObjectInfo *OOT_ZORA_SHOPSceneObjects = OOT_ZORA_SHOPSceneObjects_Data;
+ObjectInfo * OOT_ZORA_SHOPSceneObjects = OOT_ZORA_SHOPSceneObjects_Data;
 
 #pragma endregion
