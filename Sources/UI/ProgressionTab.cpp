@@ -478,35 +478,12 @@ bool ProgressionTab::ItemMatchesWidget(const ItemIconWidget* Widget, int /*Game*
 {
     if (Widget == nullptr || Item == nullptr) return false;
 
-    // Item collection is tracked through OnItemFound which already routes each item to
-    // its proper per-game widget; here the test is only used to enumerate every known
-    // location of the item across both games, so the Game parameter is intentionally
-    // ignored — a "Lens of Truth" widget should list its OoT and MM locations alike.
-
-    //QString normalized = NormalizeItemName(QString::fromUtf8(Item->ItemName ? Item->ItemName : ""));
-    //QString lookup = Widget->LookupKey;
-    //uint32_t lookup = Widget->LookupKey;
-
-    // Primary match: same icon as the widget. The LookupKey disambiguates widgets sharing
-    // an icon (e.g. each ocarina song uses EGameIcon::song).
-    if (Widget->Icon != EGameIcon::none && Item->RenderType == Widget->Icon)
-    {
-        //if (lookup.isEmpty() || normalized.contains(lookup))
-        if (Widget->LookupKeys.contains(Item->ItemID))
-        {
-            return true;
-        }
-    }
-
-    // Fallback: name-only match for items whose RenderType cannot be located in the
-    // icon hash (typically progressive items reported with RenderType=none).
-    //if (!lookup.isEmpty() && normalized.contains(lookup))
-    if (Widget->LookupKeys.contains(Item->ItemID))
-    {
-        return true;
-    }
-
-    return false;
+    // The widget enumerates every game item ID it stands for (ProgEntry::LookupKeys),
+    // so a single ItemID lookup is sufficient — no need to also test the icon. Items
+    // with the same icon but a different ItemID (e.g. two distinct rupee tiers) end
+    // up in their own widget. The Game parameter is intentionally ignored because
+    // the location tree must list the item's locations across both games.
+    return Widget->LookupKeys.contains(Item->ItemID);
 }
 
 
@@ -597,6 +574,21 @@ void ProgressionTab::BuildLocationTree(ItemIconWidget* Widget)
         { MM_GAME,  MM_NUM_SCENES  },
     };
 
+    // The same logical object may appear in two scene arrays:
+    //  - "shadow" entries (Type=none) sitting in the home scene next to a Type-bearing
+    //    canonical in the render scene (e.g. MM_POTION_SHOP "Item 2");
+    //  - paired entries with the same Type in both arrays (e.g. cross-scene NPCs);
+    //  - entries that exist only in the home scene with Type set and a different
+    //    RenderScene (e.g. OoT Bazaar shop items living in OOT_BAZAAR but rendering
+    //    in OOT_KAKARIKO_BAZAAR — there is no counterpart in the render scene).
+    // We iterate every entry, drop the Type=none shadows, then dedup by
+    // (Game, ObjectID, RenderScene) so paired entries collapse to a single leaf
+    // while standalone cross-scene entries are still picked up.
+    QSet<QString> seen;
+    auto dedupKey = [](int Game, const ObjectInfo* o) {
+        return QString::number(Game) + ":" + QString::number(o->ObjectID) + ":" + QString::number(o->RenderScene) + ":" + QString::number((int)o->Type);
+    };
+
     for (const auto& page : Pages)
     {
         SceneObjects* scenes = GetGameSceneObjects(page.Game);
@@ -609,17 +601,16 @@ void ProgressionTab::BuildLocationTree(ItemIconWidget* Widget)
             {
                 ObjectInfo& obj = scene.Objects[o];
 
-                // Skip "shadow" cross-scene entries: when an object lives in scene A but
-                // renders in scene B, A's array contains a Type=none placeholder paired
-                // with the canonical entry in B's array. We only want the canonical one
-                // — both share Name, so listing both produces the visible duplicate.
-                if (obj.Scene != obj.RenderScene) continue;
-                if (obj.Type == ObjectType::none) continue;
+                if (obj.Type == ObjectType::none) continue;     // skip shadow placeholders
                 if (obj.Item == nullptr) continue;
                 if (!ItemMatchesWidget(Widget, page.Game, obj.Item)) continue;
 
                 bool collected = (obj.Status != ObjectState::Hidden);
                 if (!collected && !revealUncollected) continue;
+
+                QString key = dedupKey(page.Game, &obj);
+                if (seen.contains(key)) continue;
+                seen.insert(key);
 
                 addEntry(page.Game, &obj, collected);
             }
@@ -790,6 +781,14 @@ void ProgressionTab::RebuildFromSceneObjects()
         { MM_GAME,  MM_NUM_SCENES  },
     };
 
+    // A single logical object can appear in both its home scene's array and the
+    // render scene's array (cross-scene NPCs, paired shop slots, ...). Without
+    // deduping, OnItemFound would be called twice for the same pickup and the
+    // counter widget (e.g. Gold Skulltula Tokens) would over-report. Use the
+    // same dedup key as BuildLocationTree so the count and the location tree
+    // stay perfectly in sync.
+    QSet<QString> seen;
+
     for (const auto& page : Pages)
     {
         SceneObjects* scenes = GetGameSceneObjects(page.Game);
@@ -801,10 +800,18 @@ void ProgressionTab::RebuildFromSceneObjects()
             for (size_t o = 0; o < scene.NumOfObjs; ++o)
             {
                 ObjectInfo& obj = scene.Objects[o];
-                if (obj.Status != ObjectState::Hidden && obj.Item != nullptr)
-                {
-                    this->OnItemFound(page.Game, &obj, obj.Item);
-                }
+                if (obj.Status == ObjectState::Hidden) continue;
+                if (obj.Item == nullptr) continue;
+                if (obj.Type == ObjectType::none) continue;     // shadow placeholder
+
+                QString key = QString::number(page.Game) + ":" +
+                              QString::number(obj.ObjectID) + ":" +
+                              QString::number(obj.RenderScene) + ":" +
+                              QString::number((int)obj.Type);
+                if (seen.contains(key)) continue;
+                seen.insert(key);
+
+                this->OnItemFound(page.Game, &obj, obj.Item);
             }
         }
     }
