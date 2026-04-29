@@ -1032,7 +1032,17 @@
 #define SHARED_TUNIC_ZORA					        0x3F3
 #define SHARED_WALLET					            0x3F4
 #define OOT_SWORD                                   0x3F5
-#define MM_SWORD                                    0x3F6
+#define OOT_OCARINA                                 0x3F6
+#define OOT_SCALE                                   0x3F7
+#define OOT_SHIELD                                  0x3F8
+#define OOT_STRENGTH                                0x3F9
+#define OOT_SWORD_GORON                             0x3FA
+#define MM_SWORD                                    0x3FB
+#define MM_CLOCK                                    0x3FC
+#define MM_OCARINA                                  0x3FD
+#define MM_SCALE                                    0x3FE
+#define MM_SHIELD                                   0x3FF
+#define MM_STRENGTH                                 0x400
 
 #pragma endregion Shared
 

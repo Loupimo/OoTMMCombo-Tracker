@@ -130,6 +130,7 @@ enum class EGameIcon : uint8_t
     sf_transcendent,
     swamp_token,
     ocean_token,
+    platinum_token,
     defense,
     magic_upgrade,
     large_magic_upgrade,
@@ -225,6 +226,7 @@ enum class EGameIcon : uint8_t
     bow_mm,
     chateau,
     dust,
+    bottled_mushroom,
     seahorse,
     hookshot_mm,
     moon,
@@ -272,6 +274,7 @@ enum class EGameIcon : uint8_t
     magic_trap,
     shock_trap,
     knockback_trap,
+    nothing,
 
 
     // Special : must be at the end

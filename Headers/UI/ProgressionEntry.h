@@ -33,23 +33,29 @@ typedef struct ProgSection
 
 #pragma region OoT Page
 
-const size_t NumOoTSections = 5;
+const size_t NumOoTSections = 4;
 extern const ProgSection OoTSections[NumOoTSections];
 
 #pragma endregion OoT Page
 
 #pragma region MM Page
 
-const size_t NumMMSections = 6;
+const size_t NumMMSections = 5;
 extern const ProgSection MMSections[NumMMSections];
 
 #pragma endregion MM Page
 
 #pragma region Souls
 
-const size_t NumSoulsSections = 6;
+const size_t NumSoulsSections = 8;
 extern const ProgSection SoulsSections[NumSoulsSections];
 
 #pragma endregion Souls
 
-#undef MAKE_SECTION
+#pragma region Collectibles
+
+const size_t NumCollectiblesSections = 5;
+extern const ProgSection CollectiblesSections[NumCollectiblesSections];
+
+#pragma endregion Collectibles
+

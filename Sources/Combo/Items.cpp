@@ -2,7 +2,7 @@
 
 #pragma region Items
 
-#define NUM_ITEM MM_SWORD
+#define NUM_ITEM MM_STRENGTH
 
 const ItemInfo ItemList[NUM_ITEM] =
 {
@@ -24,7 +24,7 @@ const ItemInfo ItemList[NUM_ITEM] =
     { OOT_POTION_RED, "Red Potion (OoT)", EGameIcon::red_potion },
     { OOT_POTION_GREEN, "Green Potion (OoT)", EGameIcon::green_potion },
     { OOT_POTION_BLUE, "Blue Potion (OoT)", EGameIcon::blue_potion },
-    { OOT_FAIRY, "Fairy (OoT)", EGameIcon::fairy },
+    { OOT_FAIRY, "Fairy (OoT)", EGameIcon::bottled_fairy },
     { OOT_BOTTLE_MILK, "Bottle of Milk (OoT)", EGameIcon::milk },
     { OOT_BOTTLE_RUTO_LETTER, "Ruto's Letter", EGameIcon::ruto },
     { OOT_MAGIC_BEAN, "Magic Beans (OoT)", EGameIcon::bean },
@@ -457,9 +457,9 @@ const ItemInfo ItemList[NUM_ITEM] =
     { OOT_MASK_BLAST, "Blast Mask (OoT)", EGameIcon::blast },
     { OOT_MASK_STONE, "Stone Mask (OoT)", EGameIcon::stone },
     { OOT_SCALE_BRONZE, "Bronze Scale (OoT)", EGameIcon::bronze_scale },
-    { OOT_WEIRD_MUSHROOM, "Magic Mushroom", EGameIcon::mushroom },
+    { OOT_WEIRD_MUSHROOM, "Magic Mushroom", EGameIcon::bottled_mushroom },
     { OOT_CHATEAU, "Chateau Romani Refill", EGameIcon::chateau },
-    { OOT_GOLD_DUST, "Chateau Romani", EGameIcon::chateau },
+    { OOT_GOLD_DUST, "Gold Dust", EGameIcon::dust },
     { OOT_SEAHORSE2, "Seahorse", EGameIcon::seahorse },
     { OOT_BOTTLED_GOLD_DUST, "Bottle of Gold Dust", EGameIcon::dust },
     { OOT_BOTTLE_CHATEAU, "Bottle of Chateau Romani", EGameIcon::chateau },
@@ -470,7 +470,7 @@ const ItemInfo ItemList[NUM_ITEM] =
     { OOT_TRAP_ANTI_MAGIC, "Anti-Magic Trap", EGameIcon::magic_trap },
     { OOT_TRAP_KNOCKBACK, "Knockback Trap", EGameIcon::knockback_trap },
     { OOT_TRAP_RUPOOR, "Rupoor", EGameIcon::rupoor },
-    { OOT_PLATINUM_TOKEN, "Platinum Token (OoT)", EGameIcon::gs_token },
+    { OOT_PLATINUM_TOKEN, "Platinum Token (OoT)", EGameIcon::platinum_token },
     { MM_RUPEE_GREEN, "Green Rupee (MM)", EGameIcon::rupee },
     { MM_RUPEE_BLUE, "Blue Rupee (MM)", EGameIcon::blue_rupee },
     { MM_RUPEE_RED_10, "Red Rupee (MM)", EGameIcon::red_rupee },
@@ -549,7 +549,7 @@ const ItemInfo ItemList[NUM_ITEM] =
     { MM_POTION_RED, "Red Potion (MM)", EGameIcon::red_potion },
     { MM_POTION_GREEN, "Green Potion (MM)", EGameIcon::green_potion },
     { MM_POTION_BLUE, "Blue Potion (MM)", EGameIcon::blue_potion },
-    { MM_FAIRY, "Fairy (MM)", EGameIcon::fairy },
+    { MM_FAIRY, "Fairy (MM)", EGameIcon::bottled_fairy },
     { MM_BOTTLE_MILK, "Bottle of Milk (MM)", EGameIcon::milk },
     { MM_FISH, "Fish (MM)", EGameIcon::bottled_fish },
     { MM_BUGS, "Bugs (MM)", EGameIcon::bottled_bugs },
@@ -633,7 +633,7 @@ const ItemInfo ItemList[NUM_ITEM] =
     { MM_REMAINS_TWINMOLD, "Twinmold's Remains", EGameIcon::twinmold },
     { MM_GS_TOKEN_SWAMP, "Swamp Skulltula Token", EGameIcon::swamp_token },
     { MM_GS_TOKEN_OCEAN, "Ocean Skulltula Token", EGameIcon::ocean_token },
-    { MM_PLATINUM_TOKEN, "Platinum Token (MM)", EGameIcon::gs_token },
+    { MM_PLATINUM_TOKEN, "Platinum Token (MM)", EGameIcon::platinum_token },
     { MM_SMALL_KEY_WF, "Small Key (Woodfall Temple)", EGameIcon::small_key },
     { MM_SMALL_KEY_SH, "Small Key (Snowhead Temple)", EGameIcon::small_key },
     { MM_SMALL_KEY_GB, "Small Key (Great Bay Temple)", EGameIcon::small_key },
@@ -833,7 +833,7 @@ const ItemInfo ItemList[NUM_ITEM] =
     { MM_BLUE_FIRE, "Blue Fire", EGameIcon::blue_fire },
     { MM_MASK_MAJORA, "Majora's Mask", EGameIcon::mask },
     { MM_SOLD_OUT, "Sold Out", EGameIcon::none },
-    { NOTHING, "Nothing", EGameIcon::none },
+    { NOTHING, "Nothing", EGameIcon::nothing },
     { MM_SCOOP, "MM Scoop", EGameIcon::none },
     { SHARED_ARROW_FIRE, "Shared Fire Arrows", EGameIcon::fire_arrow },
     { SHARED_ARROW_ICE, "Shared Ice Arrows", EGameIcon::ice_arrow },
@@ -878,7 +878,7 @@ const ItemInfo ItemList[NUM_ITEM] =
     { SHARED_BUTTON_C_UP, "C-Up Button", EGameIcon::c_up },
     { SHARED_CHATEAU, "Chateau Romani Refill", EGameIcon::chateau },
     { SHARED_DEFENSE_UPGRADE, "Double Defense", EGameIcon::defense },
-    { SHARED_FAIRY, "Fairy", EGameIcon::fairy },
+    { SHARED_FAIRY, "Fairy", EGameIcon::bottled_fairy },
     { SHARED_FAIRY_BIG, "Big Fairy", EGameIcon::fairy },
     { SHARED_FISH, "Fish", EGameIcon::bottled_fish },
     { SHARED_HAMMER, "Megaton Hammer", EGameIcon::hammer },
@@ -902,7 +902,7 @@ const ItemInfo ItemList[NUM_ITEM] =
     { SHARED_NUTS_10, "10 Deku Nuts", EGameIcon::nut },
     { SHARED_NUTS_5, "5 Deku Nuts", EGameIcon::nut },
     { SHARED_OCARINA, "Progressive Ocarina", EGameIcon::ocarina },
-    { SHARED_PLATINUM_TOKEN, "Platinum Token", EGameIcon::gs_token },
+    { SHARED_PLATINUM_TOKEN, "Platinum Token", EGameIcon::platinum_token },
     { SHARED_POE, "Poe", EGameIcon::bottled_poe },
     { SHARED_POTION_BLUE, "Blue Potion", EGameIcon::blue_potion },
     { SHARED_POTION_GREEN, "Green Potion", EGameIcon::green_potion },
@@ -1019,7 +1019,18 @@ const ItemInfo ItemList[NUM_ITEM] =
     { SHARED_TUNIC_ZORA, "Zora Tunic", EGameIcon::zora_tunic },
     { SHARED_WALLET, "Progressive Wallet", EGameIcon::wallet },
     { OOT_SWORD, "Progressive Sword (OoT)", EGameIcon::kokiri },
+    { OOT_OCARINA, "Progressive Ocarina (OoT)", EGameIcon::ocarina },
+    { OOT_SCALE, "Progressive Scale (Oot)", EGameIcon::bronze_scale },
+    { OOT_SHIELD, "Progressive Shield (OoT)", EGameIcon::deku_shield },
+    { OOT_STRENGTH, "Progressive Strength (OoT)", EGameIcon::bracelet },
+    { OOT_SWORD_GORON, "Progressive Goron Sword", EGameIcon::biggoron },
     { MM_SWORD, "Progressive Sword (MM)", EGameIcon::kokiri_mm },
+    { MM_CLOCK, "Progressive Clock", EGameIcon::clock_d1 },
+    { MM_OCARINA, "Progressive Ocarina (MM)", EGameIcon::ocarina },
+    { MM_SCALE, "Progressive Scale (MM)", EGameIcon::bronze_scale },
+    { MM_SHIELD, "Progressive Shield (MM)", EGameIcon::hero_shield },
+    { MM_STRENGTH, "Progressive Strength (MM)", EGameIcon::bracelet },
+
 };
 
 #pragma endregion 

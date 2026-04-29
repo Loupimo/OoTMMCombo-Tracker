@@ -129,6 +129,7 @@ private:
     GameProgData OoTData;                      // Widgets registered on the OoT page.
     GameProgData MMData;                       // Widgets registered on the MM page.
     GameProgData SoulsData;                    // Widgets registered on the Souls page (spans both games).
+    GameProgData CollectiblesData;             // Widgets registered on the Collectibles page (spans both games).
 
     static ProgressionTab* sInstance;          // Single living dashboard, used by callers that cannot reach the tracker.
 

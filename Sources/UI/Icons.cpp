@@ -128,6 +128,7 @@ const IconMetaInf IconsMetaInfo[NumOfGameIcons] =
     {"./Resources/MM/Icons/Quest/Stray_Fairy_Transcendent.png", { 30, 30 }},
     {"./Resources/MM/Icons/Quest/Swamp_Token.png", { 30, 30 }},
     {"./Resources/MM/Icons/Quest/Ocean_Token.png", { 30, 30 }},
+    {"./Resources/Common/Quest/Platinum_Token.png", { 30, 30 } },
     {"./Resources/Common/Quest/Defense.png", { 30, 30 }},
     {"./Resources/Common/Quest/Magic_Upgrade.png", { 30, 30 }},
     {"./Resources/Common/Quest/Large_Magic_Upgrade.png", { 30, 30 }},
@@ -223,6 +224,7 @@ const IconMetaInf IconsMetaInfo[NumOfGameIcons] =
     {"./Resources/MM/Icons/Items/Bow.png", { 30, 30 }},
     {"./Resources/MM/Icons/Items/Chateau.png", { 30, 30 }},
     {"./Resources/MM/Icons/Items/Dust.png", { 30, 30 }},
+    {"./Resources/MM/Icons/Items/Mushroom.png", { 30, 30 } },
     {"./Resources/MM/Icons/Items/Seahorse.png", { 30, 30 } },
     {"./Resources/MM/Icons/Items/Hookshot.png", { 30, 30 }},
     {"./Resources/MM/Icons/Items/Moon.png", { 30, 30 }},
@@ -270,6 +272,7 @@ const IconMetaInf IconsMetaInfo[NumOfGameIcons] =
     {"./Resources/Common/Items/Magic_Trap.png", { 30, 30 } },
     {"./Resources/Common/Items/Shock_Trap.png", { 30, 30 } },
     {"./Resources/Common/Items/Knockback_Trap.png", { 30, 30 } },
+    {"./Resources/Common/Items/Nothing.png", { 30, 30 } },
 };
 
 #pragma endregion Game Icons

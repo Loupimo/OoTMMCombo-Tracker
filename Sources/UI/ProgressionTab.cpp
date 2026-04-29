@@ -245,6 +245,7 @@ ProgressionTab::ProgressionTab(OoTMMComboTracker* Owner, QWidget* Parent)
     this->SubTabBar->addTab("Ocarina of Time");
     this->SubTabBar->addTab("Majora's Mask");
     this->SubTabBar->addTab("Souls");
+    this->SubTabBar->addTab("Collectibles");
     this->SubTabBar->setExpanding(false);
 
     // Body: stacked pages on the left, fixed detail panel on the right.
@@ -372,6 +373,9 @@ void ProgressionTab::BuildPages()
     // Souls span both games; the detail panel uses OOT_GAME by convention to resolve scene names.
     QWidget* soulsPage = this->BuildPage(SoulsSections, NumSoulsSections, this->SoulsData, OOT_GAME);
     this->PageStack->addWidget(soulsPage);
+
+    QWidget* collectiblesPage = this->BuildPage(CollectiblesSections, NumCollectiblesSections, this->CollectiblesData, OOT_GAME);
+    this->PageStack->addWidget(collectiblesPage);
 }
 
 
@@ -823,6 +827,7 @@ void ProgressionTab::ResetProgress()
     for (ItemIconWidget* w : this->OoTData.All)   if (w) w->ResetFound();
     for (ItemIconWidget* w : this->MMData.All)    if (w) w->ResetFound();
     for (ItemIconWidget* w : this->SoulsData.All) if (w) w->ResetFound();
+    for (ItemIconWidget* w : this->CollectiblesData.All) if (w) w->ResetFound();
 }
 
 #pragma endregion

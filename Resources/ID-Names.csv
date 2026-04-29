@@ -71,7 +71,7 @@ MM_DEED_MOUNTAIN;Mountain Title Deed;mountain
 MM_DEED_OCEAN;Ocean Title Deed;ocean
 MM_DEED_SWAMP;Swamp Title Deed;swamp
 MM_DEFENSE_UPGRADE;Double Defense (MM);defense
-MM_FAIRY;Fairy (MM);fairy
+MM_FAIRY;Fairy (MM);bottled_fairy
 MM_FAIRY_BIG;Big Fairy (MM);fairy
 MM_FISH;Fish (MM);bottled_fish
 MM_GOLD_DUST;Gold Dust;dust
@@ -135,7 +135,7 @@ MM_NUT_UPGRADE;Deku Nut Upgrade (MM);nut_upgrade_1
 MM_NUT_UPGRADE2;Second Deku Nut Upgrade (MM);nut_upgrade_2
 MM_NUTS_10;10 Deku Nuts (MM);nut
 MM_NUTS_5;5 Deku Nuts (MM);nut
-MM_OCARINA;Ocarina (MM);ocarina
+MM_OCARINA;Progressive Ocarina (MM);ocarina
 MM_OCARINA_FAIRY;Fairy Ocarina (MM);fairy_ocarina
 MM_OCARINA_OF_TIME;Ocarina of Time (MM);ocarina
 MM_OWL_CLOCK_TOWN;Owl Statue (Clock Town);owl
@@ -151,7 +151,7 @@ MM_OWL_WOODFALL;Owl Statue (Woodfall);owl
 MM_OWL_ZORA_CAPE;Owl Statue (Zora Cape);owl
 MM_PENDANT_OF_MEMORIES;Pendant of Memories;pendant
 MM_PICTOGRAPH_BOX;Pictograph Box;picto
-MM_PLATINUM_TOKEN;Platinum Token (MM);gs_token
+MM_PLATINUM_TOKEN;Platinum Token (MM);platinum_token
 MM_POE;Poe (MM);bottled_poe
 MM_POTION_BLUE;Blue Potion (MM);blue_potion
 MM_POTION_GREEN;Green Potion (MM);green_potion
@@ -361,14 +361,14 @@ MM_WALLET2;Adult Wallet (MM);wallet
 MM_WALLET3;Giant Wallet (MM);big_wallet
 MM_WALLET4;Colossal Wallet (MM);colossal_wallet
 MM_WALLET5;Bottomless Wallet (MM);bottomless_wallet
-MM_WEIRD_MUSHROOM;Magic Mushroom;mushroom
+MM_WEIRD_MUSHROOM;Magic Mushroom;bottled_mushroom
 MM_WORLD_MAP_CLOCK_TOWN;World Map of Clock Town;map
 MM_WORLD_MAP_GREAT_BAY;World Map of Great Bay;map
 MM_WORLD_MAP_ROMANI_RANCH;World Map of Ranch;map
 MM_WORLD_MAP_SNOWHEAD;World Map of Snowhead;map
 MM_WORLD_MAP_STONE_TOWER;World Map of Stone Tower;map
 MM_WORLD_MAP_WOODFALL;World Map of Woodfall;map
-NOTHING;Nothing;none
+NOTHING;Nothing;nothing
 OOT_ARROW_FIRE;Fire Arrows (OoT);fire_arrow
 OOT_ARROW_ICE;Ice Arrows (OoT);ice_arrow
 OOT_ARROW_LIGHT;Light Arrows (OoT);light_arrow
@@ -451,7 +451,7 @@ OOT_DEKU_SEEDS_30;30 Deku Seeds;seeds
 OOT_DEKU_SEEDS_5;5 Deku Seeds (OoT);seeds
 OOT_EYE_DROPS;Eye Drops;eye_drops
 OOT_EYEBALL_FROG;Eyeball Frog;frog
-OOT_FAIRY;Fairy (OoT);fairy
+OOT_FAIRY;Fairy (OoT);bottled_fairy
 OOT_FAIRY_BIG;Big Fairy (OoT);fairy
 OOT_FISH;Fish (OoT);bottled_fish
 OOT_FISHING_POND_ADULT_FISH;Adult Fish (Placeholder);carp_fish
@@ -508,7 +508,7 @@ OOT_FISHING_POND_CHILD_LOACH_17LBS;Child Loach (17 pounds);carp_fish
 OOT_FISHING_POND_CHILD_LOACH_18LBS;Child Loach (18 pounds);carp_fish
 OOT_FISHING_POND_CHILD_LOACH_19LBS;Child Loach (19 pounds);carp_fish
 OOT_GERUDO_CARD;Gerudo's Membership Card;card
-OOT_GOLD_DUST;Chateau Romani;chateau
+OOT_GOLD_DUST;Gold Dust;dust
 OOT_GOLDEN_GAUNTLETS;Golden Gauntlets (OoT);golden_gauntlet
 OOT_GORON_BRACELET;Goron's Bracelet (OoT);bracelet
 OOT_GS_TOKEN;Gold Skulltula Token;gs_token
@@ -573,7 +573,7 @@ OOT_OCARINA_FAIRY;Fairy Ocarina (OoT);fairy_ocarina
 OOT_OCARINA_TIME;Ocarina of Time (OoT);ocarina
 OOT_ODD_MUSHROOM;Odd Mushroom;mushroom
 OOT_ODD_POTION;Odd Potion;potion
-OOT_PLATINUM_TOKEN;Platinum Token (OoT);gs_token
+OOT_PLATINUM_TOKEN;Platinum Token (OoT);platinum_token
 OOT_POACHER_SAW;Poacher's Saw;saw
 OOT_POCKET_CUCCO;Pocket Cucco;cucco
 OOT_POCKET_EGG;Pocket Egg;egg
@@ -887,7 +887,7 @@ SHARED_BUTTON_C_RIGHT;C-Right Button;c_right
 SHARED_BUTTON_C_UP;C-Up Button;c_up
 SHARED_CHATEAU;Chateau Romani Refill;chateau
 SHARED_DEFENSE_UPGRADE;Double Defense;defense
-SHARED_FAIRY;Fairy;fairy
+SHARED_FAIRY;Fairy;bottled_fairy
 SHARED_FAIRY_BIG;Big Fairy;fairy
 SHARED_FISH;Fish;bottled_fish
 SHARED_HAMMER;Megaton Hammer;hammer
@@ -911,7 +911,7 @@ SHARED_NUT_UPGRADE;Deku Nut Upgrade;nut_upgrade_1
 SHARED_NUTS_10;10 Deku Nuts;nut
 SHARED_NUTS_5;5 Deku Nuts;nut
 SHARED_OCARINA;Progressive Ocarina;ocarina
-SHARED_PLATINUM_TOKEN;Platinum Token;gs_token
+SHARED_PLATINUM_TOKEN;Platinum Token;platinum_token
 SHARED_POE;Poe;bottled_poe
 SHARED_POTION_BLUE;Blue Potion;blue_potion
 SHARED_POTION_GREEN;Green Potion;green_potion
