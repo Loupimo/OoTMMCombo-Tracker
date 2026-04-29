@@ -323,7 +323,8 @@ void ObjectItemTree::PerformAction()
 
         if (ProgressionTab* prog = ProgressionTab::GetInstance())
         {
-            prog->RebuildFromSceneObjects();
+            prog->OnObjectForceStateChanged(this->RendererOwner->SceneOwner->CurrScene->GameID, this->Object);
+            //prog->RebuildFromSceneObjects();
         }
     }
 }

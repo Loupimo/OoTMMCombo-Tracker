@@ -1063,6 +1063,7 @@ typedef struct ItemInfo
 	uint32_t ItemID;
 	const char* ItemName;
     EGameIcon RenderType;
+    bool CanBeShared;
 } ItemInfo;
 
 

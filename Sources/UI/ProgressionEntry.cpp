@@ -20,7 +20,7 @@ const ProgEntry OoTQuestStatus[] =
     { EGameIcon::light,     "Light Medallion",   { OOT_MEDALLION_LIGHT },  false },
 
     // Heart / Magic
-    { EGameIcon::heart_container, "Heart Container", { OOT_HEART_CONTAINER, OOT_HEART_CONTAINER2, SHARED_HEART_CONTAINER }, false },
+    { EGameIcon::heart_container, "Heart Container", { OOT_HEART_CONTAINER, OOT_HEART_CONTAINER2, SHARED_HEART_CONTAINER }, true },
     { EGameIcon::heart_piece, "Piece of Heart", { OOT_HEART_PIECE, OOT_TC_HEART_PIECE, SHARED_HEART_PIECE }, true },
     { EGameIcon::defense,            "Double Defense",   { OOT_DEFENSE_UPGRADE, SHARED_DEFENSE_UPGRADE },   false },
     { EGameIcon::magic_upgrade,      "Magic Upgrade",    { OOT_MAGIC_UPGRADE, SHARED_MAGIC_UPGRADE },    false },
@@ -290,6 +290,12 @@ const ProgSection OoTSections[NumOoTSections] =
 
 const ProgEntry MMQuestStatus[] =
 {
+    // Remains
+    { EGameIcon::odolwa,    "Odolwa's Remains",   { MM_REMAINS_ODOLWA },   false },
+    { EGameIcon::goht,      "Goht's Remains",     { MM_REMAINS_GOHT },     false },
+    { EGameIcon::gyorg,     "Gyorg's Remains",    { MM_REMAINS_GYORG },    false },
+    { EGameIcon::twinmold,  "Twinmold's Remains", { MM_REMAINS_TWINMOLD }, false },
+
     // Maps
     { EGameIcon::map, "World Map of Clock Town", { MM_WORLD_MAP_CLOCK_TOWN }, false },
     { EGameIcon::map, "World Map of Great Bay", { MM_WORLD_MAP_GREAT_BAY }, false },
@@ -297,6 +303,13 @@ const ProgEntry MMQuestStatus[] =
     { EGameIcon::map, "World Map of Snowhead", { MM_WORLD_MAP_SNOWHEAD }, false },
     { EGameIcon::map, "World Map of Stone Tower", { MM_WORLD_MAP_STONE_TOWER }, false },
     { EGameIcon::map, "World Map of Woodfall", { MM_WORLD_MAP_WOODFALL }, false },
+
+    // Hearts / Magic
+    { EGameIcon::heart_piece, "Piece of Heart", { MM_HEART_PIECE, SHARED_HEART_PIECE }, true },
+    { EGameIcon::heart_container, "Heart Container", { MM_HEART_CONTAINER, SHARED_HEART_CONTAINER }, true },
+    { EGameIcon::defense, "Double Defense", { MM_DEFENSE_UPGRADE, SHARED_DEFENSE_UPGRADE }, false },
+    { EGameIcon::magic_upgrade,       "Magic Upgrade",       { MM_MAGIC_UPGRADE, SHARED_MAGIC_UPGRADE },      false },
+    { EGameIcon::large_magic_upgrade, "Large Magic Upgrade Magic",        { MM_MAGIC_UPGRADE2, SHARED_MAGIC_UPGRADE },       false },
 
     // Buttons
     { EGameIcon::a_button, "A Button", { MM_BUTTON_A, SHARED_BUTTON_A }, false },
@@ -317,13 +330,6 @@ const ProgEntry MMQuestStatus[] =
     { EGameIcon::song_blue,   "New Wave Bossa Nova", { MM_SONG_ZORA, MM_SONG_NOTE_ZORA },      true },
     { EGameIcon::song_orange, "Elegy of Emptiness",  { MM_SONG_EMPTINESS, MM_SONG_NOTE_EMPTINESS, SHARED_SONG_EMPTINESS, SHARED_SONG_NOTE_EMPTINESS },           true },
     { EGameIcon::song_purple, "Oath to Order",       { MM_SONG_ORDER, MM_SONG_NOTE_ORDER },   true },
-
-    // Hearts / Magic
-    { EGameIcon::heart_piece, "Piece of Heart", { MM_HEART_PIECE, SHARED_HEART_PIECE }, false },
-    { EGameIcon::heart_container, "Heart Container", { MM_HEART_CONTAINER, SHARED_HEART_CONTAINER }, false },
-    { EGameIcon::defense, "Double Defense", { MM_DEFENSE_UPGRADE, SHARED_DEFENSE_UPGRADE }, false },
-    { EGameIcon::magic_upgrade,       "Magic Upgrade",       { MM_MAGIC_UPGRADE, SHARED_MAGIC_UPGRADE },      false },
-    { EGameIcon::large_magic_upgrade, "Large Magic Upgrade Magic",        { MM_MAGIC_UPGRADE2, SHARED_MAGIC_UPGRADE },       false },
 
     // Owls
     { EGameIcon::owl, "Owl Statue (Clock Town)", { MM_OWL_CLOCK_TOWN }, false },
@@ -348,12 +354,6 @@ const ProgEntry MMQuestStatus[] =
 
 const ProgEntry MMDungeonsItems[] =
 {
-    // Remains
-    { EGameIcon::odolwa,    "Odolwa's Remains",   { MM_REMAINS_ODOLWA },   false },
-    { EGameIcon::goht,      "Goht's Remains",     { MM_REMAINS_GOHT },     false },
-    { EGameIcon::gyorg,     "Gyorg's Remains",    { MM_REMAINS_GYORG },    false },
-    { EGameIcon::twinmold,  "Twinmold's Remains", { MM_REMAINS_TWINMOLD }, false },
-
     // Maps
     { EGameIcon::map, "Map (Woodfall Temple)", { MM_MAP_WF, MM_MAP }, false },
     { EGameIcon::map, "Map (Snowhead Temple)", { MM_MAP_SH, MM_MAP }, false },
@@ -388,8 +388,8 @@ const ProgEntry MMDungeonsItems[] =
     { EGameIcon::sf_green,        "Stray Fairy (Snowhead)",      { MM_STRAY_FAIRY_SH, MM_STRAY_FAIRY },     true },
     { EGameIcon::sf_blue,         "Stray Fairy (Great Bay)",     { MM_STRAY_FAIRY_GB, MM_STRAY_FAIRY },    true },
     { EGameIcon::sf_yellow,       "Stray Fairy (Stone Tower)",   { MM_STRAY_FAIRY_ST, MM_STRAY_FAIRY },  true },
-    { EGameIcon::sf_orange,       "Stray Fairy (Clock Town)",    { MM_STRAY_FAIRY_TOWN, MM_STRAY_FAIRY },          true },
-    { EGameIcon::sf_transcendent, "Transcendent Fairy",          { MM_TRANSCENDENT_FAIRY },          true },
+    { EGameIcon::sf_orange,       "Stray Fairy (Clock Town)",    { MM_STRAY_FAIRY_TOWN, MM_STRAY_FAIRY },          false },
+    { EGameIcon::sf_transcendent, "Transcendent Fairy",          { MM_TRANSCENDENT_FAIRY },          false },
 
     // Skulltulas
     { EGameIcon::swamp_token,     "Swamp Skulltula Token",       { MM_GS_TOKEN_SWAMP },     true },
@@ -499,6 +499,7 @@ const ProgEntry MMMajorItems[] =
     { EGameIcon::light_arrow,         "Light Arrows", { MM_ARROW_LIGHT, SHARED_ARROW_LIGHT }, false },
     { EGameIcon::fairy_sword, "Great Fairy's Sword", { MM_GREAT_FAIRY_SWORD }, false },
     { EGameIcon::lens, "Lens of Truth", { MM_LENS, SHARED_LENS }, false },
+    { EGameIcon::bean, "Magic Beans", { MM_MAGIC_BEAN }, false },
     { EGameIcon::picto,               "Pictograph Box",      { MM_PICTOGRAPH_BOX },         false },
     { EGameIcon::powder, "Powder Keg", { MM_POWDER_KEG }, false },
     { EGameIcon::bottle, "Empty Bottle", { MM_BOTTLE_EMPTY, OOT_BOTTLED_GOLD_DUST, MM_BOTTLED_GOLD_DUST, MM_BOTTLE_CHATEAU, MM_BOTTLE_FAIRY, MM_BOTTLE_MILK, MM_BOTTLE_POE, MM_BOTTLE_BIG_POE, MM_BOTTLE_POTION_BLUE, MM_BOTTLE_POTION_GREEN, MM_BOTTLE_POTION_RED, MM_WEIRD_MUSHROOM, MM_SEAHORSE2, OOT_SEAHORSE2, OOT_WEIRD_MUSHROOM, SHARED_BOTTLE_EMPTY, SHARED_BOTTLE_RUTO_LETTER, SHARED_BOTTLED_GOLD_DUST, SHARED_BOTTLE_POTION_RED, SHARED_BOTTLE_POTION_GREEN, SHARED_BOTTLE_POTION_BLUE, SHARED_BOTTLE_FAIRY, SHARED_BOTTLE_BLUE_FIRE, SHARED_BOTTLE_MILK, SHARED_BOTTLE_CHATEAU, SHARED_BOTTLE_POE, SHARED_BOTTLE_BIG_POE }, true },
@@ -791,7 +792,6 @@ const ProgEntry OoTItmes[] =
     { EGameIcon::bombchu,       "Bombchus",              { OOT_BOMBCHU_5, OOT_BOMBCHU_10, OOT_BOMBCHU_20, SHARED_BOMBCHU, SHARED_BOMBCHU_5, SHARED_BOMBCHU_10, SHARED_BOMBCHU_20 },          true  },
     { EGameIcon::seeds, "Deku Seeds", { OOT_DEKU_SEEDS_5, OOT_DEKU_SEEDS_30 }, true },
     { EGameIcon::arrow, "Arrows", { OOT_ARROWS_5, OOT_ARROWS_10, OOT_ARROWS_30, SHARED_ARROWS_5, SHARED_ARROWS_10, SHARED_ARROWS_30, SHARED_ARROWS_40 }, true },
-    { EGameIcon::bean, "Magic Beans", { OOT_MAGIC_BEAN }, true },
     { EGameIcon::heart, "Recovery Heart", { OOT_RECOVERY_HEART, SHARED_RECOVERY_HEART }, true },
     { EGameIcon::magic, "Small Magic Jar", { OOT_MAGIC_JAR_SMALL, SHARED_MAGIC_JAR_SMALL }, true },
     { EGameIcon::double_magic, "Large Magic Jar", { OOT_MAGIC_JAR_LARGE, SHARED_MAGIC_JAR_LARGE }, true },
@@ -809,7 +809,6 @@ const ProgEntry MMItems[] =
     { EGameIcon::bomb, "Bombs", { MM_BOMB, MM_BOMBS_5, MM_BOMBS_10, MM_BOMBS_20, MM_BOMBS_30, SHARED_BOMB, SHARED_BOMBS_5, SHARED_BOMBS_10, SHARED_BOMBS_20, SHARED_BOMBS_30 }, true },
     { EGameIcon::bombchu, "Bombchus", { MM_BOMBCHU, MM_BOMBCHU_5, MM_BOMBCHU_10, MM_BOMBCHU_20, SHARED_BOMBCHU, SHARED_BOMBCHU_5, SHARED_BOMBCHU_10, SHARED_BOMBCHU_20 },            true  },
     { EGameIcon::arrow,   "Arrows", { MM_ARROWS_10, MM_ARROWS_30, MM_ARROWS_40, MM_UNK_21, SHARED_ARROWS_5, SHARED_ARROWS_10, SHARED_ARROWS_30, SHARED_ARROWS_40 }, true },
-    { EGameIcon::bean, "Magic Beans", { MM_MAGIC_BEAN }, true },
     { EGameIcon::heart, "Recovery Heart", { MM_RECOVERY_HEART, SHARED_RECOVERY_HEART }, true },
     { EGameIcon::magic, "Small Magic Jar", { MM_MAGIC_JAR_SMALL, SHARED_MAGIC_JAR_SMALL }, true },
     { EGameIcon::double_magic, "Large Magic Jar", { MM_MAGIC_JAR_LARGE, SHARED_MAGIC_JAR_LARGE }, true },
@@ -834,9 +833,9 @@ const ProgEntry Bottles[] =
 
 const ProgEntry Rupees[] =
 {
-    { EGameIcon::blue_coin, "Coin (Blue)", { OOT_COIN_BLUE }, false },
     { EGameIcon::green_coin, "Coin (Green)", { OOT_COIN_GREEN }, false },
     { EGameIcon::red_coin, "Coin (Red)", { OOT_COIN_RED }, false },
+    { EGameIcon::blue_coin, "Coin (Blue)", { OOT_COIN_BLUE }, false },
     { EGameIcon::yellow_coin, "Coin (Yellow)", { OOT_COIN_YELLOW }, false },
     { EGameIcon::rupee,          "Green Rupee",          { OOT_RUPEE_GREEN, MM_RUPEE_GREEN, SHARED_RUPEE_GREEN },    true },
     { EGameIcon::blue_rupee,     "Blue Rupee",           { OOT_RUPEE_BLUE, OOT_TC_RUPEE_BLUE, MM_RUPEE_BLUE, SHARED_RUPEE_BLUE },     true },
@@ -849,13 +848,13 @@ const ProgEntry Rupees[] =
 
 const ProgEntry Traps[] =
 {
-    { EGameIcon::magic_trap, "Anti-Magic Trap", { OOT_TRAP_ANTI_MAGIC }, true },
-    { EGameIcon::drain_trap, "Drain Trap", { OOT_TRAP_DRAIN }, true },
     { EGameIcon::fire_trap, "Fire Trap", { OOT_TRAP_FIRE }, true },
     { EGameIcon::ice_trap, "Ice Trap", { OOT_TRAP_ICE, OOT_UNUSED_ICE_TRAP }, true },
-    { EGameIcon::knockback_trap, "Knockback Trap", { OOT_TRAP_KNOCKBACK }, true },
-    { EGameIcon::rupoor, "Rupoor", { OOT_TRAP_RUPOOR }, true },
     { EGameIcon::shock_trap, "Shock Trap", { OOT_TRAP_SHOCK }, true },
+    { EGameIcon::knockback_trap, "Knockback Trap", { OOT_TRAP_KNOCKBACK }, true },
+    { EGameIcon::magic_trap, "Anti-Magic Trap", { OOT_TRAP_ANTI_MAGIC }, true },
+    { EGameIcon::drain_trap, "Drain Trap", { OOT_TRAP_DRAIN }, true },
+    { EGameIcon::rupoor, "Rupoor", { OOT_TRAP_RUPOOR }, true },
     { EGameIcon::nothing, "Nothing", { NOTHING }, true },
 };
 

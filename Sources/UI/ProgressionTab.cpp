@@ -86,6 +86,30 @@ void ItemIconWidget::MarkFound(int Game, const ObjectInfo* Object)
 }
 
 
+void ItemIconWidget::MarkNotFound(int Game, const ObjectInfo* Object)
+{
+    if (this->IsCounter)
+    {
+        this->Count -= 1;
+
+        if (this->Count == 0) this->Found = false;
+    }
+    else
+    {
+        this->Found = false;
+    }
+
+    if (Object != nullptr)
+    {
+        const char* sceneName = GetSceneName(Game, Object->Scene);
+        QString sceneStr = sceneName ? QString::fromUtf8(sceneName) : QString::number(Object->Scene);
+        this->LocationsFound.removeOne(sceneStr);
+    }
+
+    this->RefreshVisual();
+}
+
+
 void ItemIconWidget::ResetFound()
 {
     this->Found = false;
@@ -730,47 +754,77 @@ void ProgressionTab::RefreshCurrentDetail()
 {
     if (this->CurrentDetailWidget != nullptr)
     {
-        this->BuildLocationTree(this->CurrentDetailWidget);
+        this->ShowDetailFor(this->CurrentDetailWidget);
+        //this->BuildLocationTree(this->CurrentDetailWidget);
     }
 }
 
 
-void ProgressionTab::OnItemFound(int Game, ObjectInfo* Object, const ItemInfo* Item)
+void ProgressionTab::OnItemFound(int Game, ObjectInfo* Object, const ItemInfo* Item, bool IsAddOp)
 {
     if (Item == nullptr || Item->ItemName == nullptr) return;
 
     //QString normalized = NormalizeItemName(QString::fromUtf8(Item->ItemName));
-    GameProgData* primary = nullptr;
-    if (Game == OOT_GAME)      primary = &this->OoTData;
-    else if (Game == MM_GAME)  primary = &this->MMData;
 
-    // 1. Primary lookup: per-game icon hash, disambiguated by LookupKey when needed.
+    // 1. OoTData: icon hash, disambiguated by LookupKey when needed.
     ItemIconWidget* widget = nullptr;
-    if (primary != nullptr)
-    {
-        //widget = FindByIcon(*primary, Item->RenderType, normalized);
-        widget = FindByIcon(*primary, Item);
-    }
+    widget = FindByIcon(this->OoTData, Item);
 
-    // 2. Souls span both games -> they live in their own registry.
     if (widget == nullptr)
-    {
-        //widget = FindByIcon(this->SoulsData, Item->RenderType, normalized);
-        widget = FindByIcon(this->SoulsData, Item);
+    {   // 2. MMData: icon hash, disambiguated by LookupKey when needed.
+
+        widget = FindByIcon(this->MMData, Item);
+
+        // 3. Souls span both games -> they live in their own registry.
+        if (widget == nullptr)
+        {
+            //widget = FindByIcon(this->SoulsData, Item->RenderType, normalized);
+            widget = FindByIcon(this->SoulsData, Item);
+
+            // 4. Collectibles span both games -> they live in their own registry.
+            if (widget == nullptr)
+            {
+                //widget = FindByIcon(this->SoulsData, Item->RenderType, normalized);
+                widget = FindByIcon(this->CollectiblesData, Item);
+            }
+        }
     }
 
-    // 3. Fallback: Item->RenderType cannot be matched (e.g. RenderType=none for progressive items).
-    //    Scan the per-game flat list and match by LookupKey only.
-    if (widget == nullptr && primary != nullptr)
-    {
-        //widget = FindByLookupKey(*primary, normalized);
-        widget = FindByLookupKey(*primary, Item);
-    }
-
+    
     if (widget != nullptr)
     {
-        widget->MarkFound(Game, Object);
+        if (IsAddOp) widget->MarkFound(Game, Object);
+        else widget->MarkNotFound(Game, Object);
     }
+}
+
+
+void ProgressionTab::OnObjectForceStateChanged(int Game, ObjectInfo* Object)
+{
+    switch (Object->Status)
+    {
+        case ObjectState::Forced:
+        {   // Add the object to the progression
+
+            this->OnItemFound(Game, Object, Object->Item, true);
+            break;
+        }
+
+        case ObjectState::Hidden:
+        {   // Remove the object from the progression
+
+            this->OnItemFound(Game, Object, Object->Item, false);
+            break;
+        }
+
+        default:
+        {   // If the state is collected it should be passed through this function
+
+            return;
+        }
+    }
+
+    this->RefreshCurrentDetail();
 }
 
 
@@ -815,7 +869,7 @@ void ProgressionTab::RebuildFromSceneObjects()
                 if (seen.contains(key)) continue;
                 seen.insert(key);
 
-                this->OnItemFound(page.Game, &obj, obj.Item);
+                this->OnItemFound(page.Game, &obj, obj.Item, true);
             }
         }
     }

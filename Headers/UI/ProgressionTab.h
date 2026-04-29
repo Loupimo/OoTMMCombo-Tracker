@@ -68,9 +68,22 @@ public:
     void MarkFound(int Game, const ObjectInfo* Object = nullptr);
 
     /*
+    *   Decrements the counter, mark the item as not found if count reaches 0 and refresh the visual state.
+    *
+    *   @param Game      The game the reported object belongs to (used to resolve the scene name).
+    *   @param Object    The reported object (used to record the scene location). Can be nullptr.
+    */
+    void MarkNotFound(int Game, const ObjectInfo* Object = nullptr);
+
+    /*
     *   Reset the widget back to its initial unfound state.
     */
     void ResetFound();
+
+    /*
+    *   Refresh the icon visuals (greyscale / color, glow effect, count badge text and tooltip).
+    */
+    void RefreshVisual();
 
 signals:
 
@@ -84,12 +97,6 @@ protected:
     void mousePressEvent(QMouseEvent* Event) override;
     void resizeEvent(QResizeEvent* Event) override;
 
-private:
-
-    /*
-    *   Refresh the icon visuals (greyscale / color, glow effect, count badge text and tooltip).
-    */
-    void RefreshVisual();
 };
 
 
@@ -168,13 +175,16 @@ public:
 
     /*
     *   Notify the dashboard that an item has been collected. Looks up the matching ItemIconWidget
-    *   and marks it as found (or increments its counter if it is a stackable item).
+    *   and marks / unmark it as found (or increments / decrements its counter if it is a stackable item).
     *
-    *   @param Game      The game the object belongs to (OOT_GAME or MM_GAME).
-    *   @param Object    The object in which the item was found.
-    *   @param Item      The item that was found.
+    *   @param Game         The game the object belongs to (OOT_GAME or MM_GAME).
+    *   @param Object       The object in which the item was found.
+    *   @param Item         The item that was found.
+    *   @param IsAddOp      The marking operation to execute.
     */
-    void OnItemFound(int Game, ObjectInfo* Object, const ItemInfo* Item);
+    void OnItemFound(int Game, ObjectInfo* Object, const ItemInfo* Item, bool IsAddOp);
+
+    void OnObjectForceStateChanged(int Game, ObjectInfo* Object);
 
     /*
     *   Walk every scene of both games and replay OnItemFound for every Object whose

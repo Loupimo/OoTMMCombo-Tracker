@@ -696,7 +696,8 @@ void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, c
 
     if (this->ProgTab != nullptr)
     {
-        this->ProgTab->OnItemFound(Game, ObjectFound, ItemFound);
+        this->ProgTab->OnItemFound(Game, ObjectFound, ItemFound, true);
+        this->ProgTab->RefreshCurrentDetail();
     }
 
     if (this->LastActivityLabel && ObjectFound)

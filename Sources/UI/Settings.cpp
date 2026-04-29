@@ -418,10 +418,20 @@ void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
 				case ObjectType::gs:
 				{
 					this->CheckObjectExclusion(currObj, this->ROMSettings["goldSkulltulaTokens"].Value, Filter);
+                    if (this->ROMSettings["goldSkulltulaTokens"].Value == ShuffleSetting::vanilla)
+                    {   // Set the object item to gs token
+
+                        currObj->Item = FindItem(OOT_GS_TOKEN);
+                    }
 					break;
 				}
 
 				case ObjectType::map:
+                {
+                    this->CheckObjectExclusion(currObj, this->ROMSettings["mapCompassShuffle"].Value, Filter);
+                    break;
+                }
+
 				case ObjectType::compass:
 				{
 					this->CheckObjectExclusion(currObj, this->ROMSettings["mapCompassShuffle"].Value, Filter);
