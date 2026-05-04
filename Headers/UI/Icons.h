@@ -357,6 +357,13 @@ public:
     ~GameIcons();
 
 
+    /*
+    *   Get the meta information of the given icon.
+    *
+    *   @param Icon    The icon to retrieve meta information for.
+    *
+    *   @return The icon meta information, or nullptr if the icon is out of range.
+    */
     static const IconMetaInf* GetIconMetaInf(EGameIcon Icon);
 
     /*

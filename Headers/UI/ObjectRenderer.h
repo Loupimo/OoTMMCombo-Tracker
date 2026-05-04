@@ -32,7 +32,24 @@ class ObjectItemDelegate : public QStyledItemDelegate
 public:
     explicit ObjectItemDelegate(QObject* Parent = nullptr) : QStyledItemDelegate(Parent) {}
 
+    /*
+    *   Paint the two-line row: icon on the left, object name on top, item name (or "???") underneath.
+    *   Category rows fall back to the default QStyledItemDelegate rendering.
+    *
+    *   @param Painter    The painter to draw with.
+    *   @param Option     The style options for the item, including the rect and state.
+    *   @param Index      The model index identifying the row to paint.
+    */
     void paint(QPainter* Painter, const QStyleOptionViewItem& Option, const QModelIndex& Index) const override;
+
+    /*
+    *   Return the preferred size for a two-line row, or the default size for category rows.
+    *
+    *   @param Option    The style options for the item.
+    *   @param Index     The model index identifying the row.
+    *
+    *   @return The recommended size for the row.
+    */
     QSize sizeHint(const QStyleOptionViewItem& Option, const QModelIndex& Index) const override;
 };
 

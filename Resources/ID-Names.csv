@@ -119,7 +119,7 @@ MM_MASK_GORON;Goron Mask (MM);goron;true
 MM_MASK_GREAT_FAIRY;Great Fairy's Mask;fairy_mask;false
 MM_MASK_KAFEI;Kafei's Mask;kafei;false
 MM_MASK_KAMARO;Kamaro's Mask;kamaro;false
-MM_MASK_KEATON;Keaton Mask;keaton;true
+MM_MASK_KEATON;Keaton Mask (MM);keaton;true
 MM_MASK_MAJORA;Majora's Mask;mask;false
 MM_MASK_POSTMAN;Postman's Hat;postman;false
 MM_MASK_ROMANI;Romani's Mask;romani;false
@@ -275,7 +275,7 @@ MM_SOUL_ENEMY_WOLFOS;Soul of Wolfos (MM);soul_of_foe;true
 MM_SOUL_MISC_BUSINESS_SCRUB;Soul of Business Scrubs (MM);soul_of_npc;true
 MM_SOUL_MISC_GS;Soul of Gold Skulltulas (MM);soul_of_npc;true
 MM_SOUL_NPC_ANJU;Soul of Anju (MM);soul_of_npc;true
-MM_SOUL_NPC_AROMA;Soul of Madame Aroma;soul_of_npc;false
+MM_SOUL_NPC_AROMA;Soul of Madame Aroma (MM);soul_of_npc;false
 MM_SOUL_NPC_ASTRONOMER;Soul of Astronomer (MM);soul_of_npc;true
 MM_SOUL_NPC_BANKER;Soul of the Banker;soul_of_npc;true
 MM_SOUL_NPC_BAZAAR_SHOPKEEPER;Soul of Swamp Archery Owner;soul_of_npc;true
@@ -322,7 +322,7 @@ MM_SOUL_NPC_TALON;Soul of Mr. Barten (MM);soul_of_npc;true
 MM_SOUL_NPC_THIEVES;Soul of the Patrolling Pirates and their Chief;soul_of_npc;true
 MM_SOUL_NPC_TINGLE;Soul of Tingle;soul_of_npc;false
 MM_SOUL_NPC_TOILET_HAND;Soul of Toilet Hand;soul_of_npc;false
-MM_SOUL_NPC_TOTO;Soul of Toto;soul_of_npc;false
+MM_SOUL_NPC_TOTO;Soul of Toto(MM);soul_of_npc;false
 MM_SOUL_NPC_TOURIST_CENTER;Soul of Tourist Center Owner;soul_of_npc;false
 MM_SOUL_NPC_ZORA;Soul of Zoras (MM);soul_of_npc;true
 MM_SOUL_NPC_ZORA_MUSICIANS;Soul of the Zora Musicians;soul_of_npc;false

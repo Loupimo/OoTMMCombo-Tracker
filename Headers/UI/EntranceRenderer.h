@@ -360,15 +360,26 @@ public:
     *   @param p    The painter to draw with.
     */
     void   paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*) override;
-    void   SetHighlighted(bool H);
 
+    /*
+    *   Apply or remove the highlighted visual state on the box background and the connecting curve.
+    *
+    *   @param H    True to highlight, false to restore the default appearance.
+    */
+    void   SetHighlighted(bool H);
 
     /*
     *   Highlight or restore the matching EntranceItemTree row (and its in/out children) in the entrance list widget.
+    *
+    *   @param H    True to highlight, false to restore the default appearance.
     */
     void SetTreeHighlighted(bool H);
 
-    void   RefreshText();   // call when InLinkName/OutLinkName change in-game
+    /*
+    *   Refresh the title and link row texts from the backing EntranceItemTree.
+    *   Call when InLinkName / OutLinkName change in-game.
+    */
+    void   RefreshText();
 
     /*
     *   Recompute the connecting curve between the anchor and the nearest point on the box
@@ -390,9 +401,33 @@ public:
 
 
 protected:
+
+    /*
+    *   Enter the highlighted state and trigger a redraw.
+    *
+    *   @param Event    The hover enter event.
+    */
     void hoverEnterEvent(QGraphicsSceneHoverEvent*) override;
+
+    /*
+    *   Leave the highlighted state and trigger a redraw.
+    *
+    *   @param Event    The hover leave event.
+    */
     void hoverLeaveEvent(QGraphicsSceneHoverEvent*) override;
+
+    /*
+    *   Update the hovered row under the cursor and trigger a per-row background tint redraw.
+    *
+    *   @param Event    The hover move event carrying the current cursor position.
+    */
     void hoverMoveEvent(QGraphicsSceneHoverEvent*) override;
+
+    /*
+    *   Dispatch the click to the matching link side (in or out row) or to the entrance parent.
+    *
+    *   @param Event    The mouse press event.
+    */
     void mousePressEvent(QGraphicsSceneMouseEvent*) override;
 };
 
@@ -408,12 +443,42 @@ public:
     QPointF            Center;          // scene-space center of the diamond, cached for curve rebuilds
     QColor             AnchorColor = QColor(239, 191, 4, 204);
 
+    /*
+    *   Construct the diamond anchor at the given center position and link it to the paired group box.
+    *
+    *   @param Center    The scene-space center point of the diamond.
+    *   @param PaBox     The group box this anchor is connected to.
+    */
     EntranceAnchorItem(QPointF Center, EntranceGroupBoxItem* PaBox);
+
+    /*
+    *   Apply or remove the highlighted visual state on the anchor diamond.
+    *
+    *   @param H    True to highlight, false to restore the default color.
+    */
     void SetHighlighted(bool H);
 
 protected:
+
+    /*
+    *   Propagate the highlight to the paired box and curve.
+    *
+    *   @param Event    The hover enter event.
+    */
     void hoverEnterEvent(QGraphicsSceneHoverEvent*) override;
+
+    /*
+    *   Remove the highlight from the paired box and curve.
+    *
+    *   @param Event    The hover leave event.
+    */
     void hoverLeaveEvent(QGraphicsSceneHoverEvent*) override;
+
+    /*
+    *   Forward the click to the paired box as if the box itself had been clicked.
+    *
+    *   @param Event    The mouse press event.
+    */
     void mousePressEvent(QGraphicsSceneMouseEvent*) override;
 };
 

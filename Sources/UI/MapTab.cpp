@@ -969,7 +969,12 @@ void MapTab::FocusObject(ObjectInfo* Object)
 
     if (this->RenderedScene == nullptr || this->RenderedScene->Renderer == nullptr) return;
 
-    // Locate the ObjectItemTree associated with the object in the freshly rendered scene.
+    // Locate the ObjectItemTree associated with the object. Direct pointer
+    // identity is the cheapest hit, but cross-scene navigation (Progression
+    // dashboard, paired entries living in both the home and the render
+    // scene's static arrays) can hand us an ObjectInfo* that the renderer
+    // never instantiated a leaf for — fall back to logical identity in that
+    // case so the right leaf is still picked.
     ObjectItemTree* match = nullptr;
     for (size_t i = 0; i < ObjectType::last - 1 && match == nullptr; ++i)
     {
@@ -978,7 +983,11 @@ void MapTab::FocusObject(ObjectInfo* Object)
 
         for (ObjectItemTree* leaf : rdr->Objects)
         {
-            if (leaf != nullptr && leaf->Object == Object)
+            if (leaf == nullptr || leaf->Object == nullptr) continue;
+            if (leaf->Object == Object
+                || (leaf->Object->ObjectID    == Object->ObjectID
+                 && leaf->Object->Type        == Object->Type
+                 && leaf->Object->RenderScene == Object->RenderScene))
             {
                 match = leaf;
                 break;
@@ -988,18 +997,37 @@ void MapTab::FocusObject(ObjectInfo* Object)
 
     if (match == nullptr) return;
 
-    // Reveal the row inside its category and scroll to it.
+    // Reveal the row inside its category, select it (so MapTab's existing
+    // selection-driven highlighting kicks in) and scroll it into view.
     if (QTreeWidgetItem* cat = match->parent())
     {
         cat->setExpanded(true);
     }
+    this->ObjectList->setCurrentItem(match);
+    match->setSelected(true);
     this->ObjectList->scrollToItem(match, QAbstractItemView::PositionAtCenter);
 
-    // Always center the viewport on the object — the user explicitly asked to be
-    // taken to it, so we ignore the AutoSnap setting that gates SceneRenderer::CenterViewOn.
+    // Zoom the viewport closer than the default fit-in-view so the target
+    // actually pops out of the surrounding map. The user explicitly asked
+    // to be taken to it, so we ignore the AutoSnap setting that gates
+    // SceneRenderer::CenterViewOn.
     if (match->GraphItem != nullptr && this->View != nullptr)
     {
-        this->View->centerOn(match->GraphItem);
+        QRectF iconRect = match->GraphItem->mapToScene(match->GraphItem->boundingRect()).boundingRect();
+        const qreal pad = qMax(iconRect.width(), iconRect.height()) * 6.0;
+        QRectF target = iconRect.adjusted(-pad, -pad, pad, pad);
+
+        QRectF sceneBounds = this->View->scene() != nullptr
+            ? this->View->scene()->sceneRect()
+            : target;
+        if (!sceneBounds.isNull())
+        {   // Clamp the target rect inside the scene so fitInView keeps the
+            // zoom centered on the object even when it sits near a map edge.
+            target = target.intersected(sceneBounds);
+            if (target.isEmpty()) target = iconRect;
+        }
+
+        this->View->fitInView(target, Qt::KeepAspectRatio);
     }
 }
 

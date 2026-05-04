@@ -69,5 +69,110 @@ fairyFountainFairyShuffleOot;Fairy Fountain - OoT;boolean;all
 fairyFountainFairyShuffleMm;Fairy Fountain - MM;boolean;all
 fairySpotShuffleOot;Fairy Spot;boolean;all
 eggShuffle;Egg Content;boolean;all
+skipZelda;Skip Zelda;boolean;vanilla
 restoreBrokenActors;Restore Broken Actors;boolean;all
 shuffleLotteryMm;Lottery Prizes;boolean;all
+progressiveShieldsOot;Progressive Shields - OoT;boolean;vanilla
+progressiveSwordsOot;Progressive Swords - OoT;boolean;vanilla
+progressiveShieldsMm;Progressive Shields - Mm;boolean;vanilla
+progressiveGFS;Progressive Great Fairy Sword;boolean;vanilla
+progressiveClocks;Progressive Clock;boolean;all
+sticksNutsUpgradesMm;Deku Sticks / Nuts Upgrades - MM;boolean;all
+sunSongMm;Sun's Song - MM;boolean;all
+fairyOcarinaMm;Fairy Ocarina - MM;boolean;all
+shortHookshotMm;Short Hookshot - MM;boolean;all
+bronzeScale;Bonze Scale;boolean;all
+childWallets;Child Wallet;boolean;all
+colossalWallets;Colossal Wallet;boolean;all
+bottomlessWallets;Bottomless Wallet;boolean;all
+skeletonKeyOot;Skeleton Key - OoT;boolean;all
+skeletonKeyMm;Skeleton Key - MM;boolean;all
+magicalRupee;Magical Rupee;boolean;all
+transcendentFairy;Transcendent Fairy;boolean;all
+platinumTokenOot;Platinum Token - OoT;boolean;all
+platinumTokenMm;Platinum Token - MM;boolean;all
+spellFireMm;Din's Fire - MM;boolean;all
+spellWindMm;Farore's Wind - MM;boolean;all
+spellLoveMm;Nayru's Love - MM;boolean;all
+bootsIronMm;Iron Boots - MM;boolean;all
+bootsHoverMm;Hover Boots - MM;boolean;all
+tunicGoronMm;Goron Tunic - MM;boolean;all
+tunicZoraMm;Zora Tunic - MM;boolean;all
+scalesMm;Scales - MM;boolean;all
+strengthMm;Strength - MM;boolean;all
+hammerMm;Megaton Hammer - MM;boolean;all
+spinUpgradeOot;Spin Attack Upgrade - OoT;boolean;all
+dekuShieldMm;Deku Shield - MM;boolean;all
+blastMaskOot;Blast Mask - OoT;boolean;all
+stoneMaskOot;Stone Mask - OoT;boolean;all
+elegyOot;Elegy of Emptiness - OoT;boolean;all
+ocarinaButtonsShuffleOot;Ocarina Buttons Shuffle - OoT;boolean;all
+ocarinaButtonsShuffleMm;Ocarina Buttons Shuffle - MM;boolean;all
+soulsEnemyOot;Enemy Souls - OoT;boolean;all
+soulsEnemyMm;Enemy Souls - MM;boolean;all
+soulsBossOot;Boss Souls - OoT;boolean;all
+soulsBossMm;Boss Souls - MM;boolean;all
+soulsNpcOot;NPC Souls - OoT;boolean;all
+soulsNpcMm;NPC Souls - MM;boolean;all
+soulsAnimalOot;Animal Souls - OoT;boolean;all
+soulsAnimalMm;Animal Souls - MM;boolean;all
+soulsMiscOot;Misc Souls - OoT;boolean;all
+soulsMiscMm;Misc Souls - MM;boolean;all
+clocks;Clocks Shuffle;boolean;all
+coins;Coins;boolean;all
+coinsRed;Red Coins;uint;1
+coinsGreen;Green Coins;uint;1
+coinsBlue;Blue Coins;uint;1
+coinsYellow;Yellow Coins;uint;1
+trapIce;Ice Trap;boolean;all
+trapFire;Fire Trap;boolean;all
+trapShock;Shock Trap;boolean;all
+trapDrain;Drain Trap;boolean;all
+trapAntiMagic;Magic Trap;boolean;all
+trapKnockback;Knockback Trap;boolean;all
+trapRupoor;Rupoor;boolean;all
+sharedStoneAgony;Shared Stone of Agony;boolean;vanilla
+sharedSpinUpgrade;Shared Spin of Upgrade;boolean;vanilla
+sharedNutsSticks;Shared Nuts / Sticks;boolean;vanilla
+sharedBows;Shared Bows;boolean;vanilla
+sharedBombBags;Shared Bomb Bags;boolean;vanilla
+sharedMagic;Shared Magic;boolean;vanilla
+sharedMagicArrowFire;Shared Fire Arrow;boolean;vanilla
+sharedMagicArrowIce;Shared Ice Arrow;boolean;vanilla
+sharedMagicArrowLight;Shared Light Arrow;boolean;vanilla
+sharedSongEpona;Shared Epona's Song;boolean;vanilla
+sharedSongStorms;Shared Song of Storms;boolean;vanilla
+sharedSongTime;Shared Song of Time;boolean;vanilla
+sharedSongSun;Shared Sun's Sung;boolean;vanilla
+sharedHookshot;Shared Hookshot;boolean;vanilla
+sharedLens;Shared Lens of Truth;boolean;vanilla
+sharedOcarina;Shared Ocarina;boolean;vanilla
+sharedMaskGoron;Shared Goron Mask;boolean;vanilla
+sharedMaskZora;Shared Zora Mask;boolean;vanilla
+sharedMaskBunny;Shared Bunny Mask;boolean;vanilla
+sharedMaskKeaton;Shared Keaton Mask;boolean;vanilla
+sharedMaskTruth;Shared Truth Mask;boolean;vanilla
+sharedMaskBlast;Shared Blast Mask;boolean;vanilla
+sharedMaskStone;Shared Stone Mask;boolean;vanilla
+sharedSongElegy;Shared Elegy of Emptiness;boolean;vanilla
+sharedWallets;Shared Wallets;boolean;vanilla
+sharedHealth;Shared Health;boolean;vanilla
+sharedShields;Shared Shields;boolean;vanilla
+sharedSoulsEnemy;Shared Souls of Enemy;boolean;vanilla
+sharedSoulsNpc;Shared Souls of NPC;boolean;vanilla
+sharedSoulsAnimal;Shared Souls of Animal;boolean;vanilla
+sharedSoulsMisc;Shared Misc Souls;boolean;vanilla
+sharedOcarinaButtons;Shared Ocarina Buttons;boolean;vanilla
+sharedSkeletonKey;Shared Skeleton Key;boolean;vanilla
+sharedPlatinumToken;Shared Platinum Token;boolean;vanilla
+sharedSpellFire;Shared Din's Fire;boolean;vanilla
+sharedSpellWind;Shared Farore's Wind;boolean;vanilla
+sharedSpellLove;Shared Nayru's Love;boolean;vanilla
+sharedBootsIron;Shared Iron Boots;boolean;vanilla
+sharedBootsHover;Shared Hover Boots;boolean;vanilla
+sharedTunicGoron;Shared Goron Tunic;boolean;vanilla
+sharedTunicZora;Shared Zora Tunic;boolean;vanilla
+sharedScales;Shared Scales;boolean;vanilla
+sharedStrength;Shared Strength;boolean;vanilla
+sharedHammer;Shared Megaton Hammer;boolean;vanilla
+sharedBottles;Shared Bottles;boolean;vanilla

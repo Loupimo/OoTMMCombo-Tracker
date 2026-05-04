@@ -916,6 +916,15 @@ void OoTMMComboTracker::ApplySettings()
             break;
         }
     }
+
+    // Propagate visibility / share / starting-item toggles to the progression
+    // dashboard. The actual starting-item pre-marking happens later inside
+    // RebuildFromSceneObjects (called via RefreshTracker) so it survives the
+    // reset-and-replay cycle.
+    if (this->ProgTab != nullptr)
+    {
+        this->ProgTab->ApplySettings(&this->ROMSettings);
+    }
 }
 
 

@@ -833,10 +833,10 @@ const ProgEntry Bottles[] =
 
 const ProgEntry Rupees[] =
 {
-    { EGameIcon::green_coin, "Coin (Green)", { OOT_COIN_GREEN }, false },
-    { EGameIcon::red_coin, "Coin (Red)", { OOT_COIN_RED }, false },
-    { EGameIcon::blue_coin, "Coin (Blue)", { OOT_COIN_BLUE }, false },
-    { EGameIcon::yellow_coin, "Coin (Yellow)", { OOT_COIN_YELLOW }, false },
+    { EGameIcon::green_coin, "Coin (Green)", { OOT_COIN_GREEN }, true },
+    { EGameIcon::red_coin, "Coin (Red)", { OOT_COIN_RED }, true },
+    { EGameIcon::blue_coin, "Coin (Blue)", { OOT_COIN_BLUE }, true },
+    { EGameIcon::yellow_coin, "Coin (Yellow)", { OOT_COIN_YELLOW }, true },
     { EGameIcon::rupee,          "Green Rupee",          { OOT_RUPEE_GREEN, MM_RUPEE_GREEN, SHARED_RUPEE_GREEN },    true },
     { EGameIcon::blue_rupee,     "Blue Rupee",           { OOT_RUPEE_BLUE, OOT_TC_RUPEE_BLUE, MM_RUPEE_BLUE, SHARED_RUPEE_BLUE },     true },
     { EGameIcon::red_rupee,      "Red Rupee",            { OOT_RUPEE_RED, OOT_TC_RUPEE_RED, MM_RUPEE_RED, MM_RUPEE_RED_10, SHARED_RUPEE_RED },      true },

@@ -2,6 +2,7 @@
 #include "UI/OoTMMComboTracker.h"
 #include "UI/AppConfig.h"
 #include "UI/ProgressionEntry.h"
+#include "UI/Settings.h"
 #include "Combo/Scenes.h"
 #include "Multi/Game.h"
 #include <QVBoxLayout>
@@ -23,12 +24,13 @@
 #include <QStyle>
 #include <QStyledItemDelegate>
 #include <QFontMetrics>
+#include <QPushButton>
 
 
 #pragma region ItemIconWidget
 
-ItemIconWidget::ItemIconWidget(const QString& IconPath, const QString& DisplayName, bool IsCounter, QWidget* Parent)
-    : QWidget(Parent), DisplayName(DisplayName), IconPath(IconPath), IsCounter(IsCounter)
+ItemIconWidget::ItemIconWidget(EGameIcon IconValue, const QString& DisplayName, bool IsCounter, QWidget* Parent)
+    : QWidget(Parent), DisplayName(DisplayName), Icon(IconValue), IsCounter(IsCounter)
 {
     this->setCursor(Qt::PointingHandCursor);
     this->setFixedSize(72, 92);
@@ -60,7 +62,9 @@ ItemIconWidget::ItemIconWidget(const QString& IconPath, const QString& DisplayNa
     this->CountBadge->setAttribute(Qt::WA_TransparentForMouseEvents);
     this->CountBadge->hide();
 
-    this->RefreshVisual();
+    // The pixmap and visual styling are set up by RefreshVisual the first time
+    // showEvent fires. Loading every page's icons here would pay the disk cost
+    // for the four pages up-front, even though only one is visible at a time.
 }
 
 
@@ -135,10 +139,37 @@ void ItemIconWidget::resizeEvent(QResizeEvent* Event)
 }
 
 
+void ItemIconWidget::showEvent(QShowEvent* Event)
+{
+    QWidget::showEvent(Event);
+
+    // First time the widget is mapped to the screen: pull the pixmap and
+    // render the proper visual. State updates that happened earlier (for
+    // example replayed collected items during spoiler-log loading) called
+    // RefreshVisual but were short-circuited by the VisualLoaded gate, so
+    // running it now is enough to catch up with the latest Found/Count.
+    if (!this->VisualLoaded)
+    {
+        this->VisualLoaded = true;
+        this->RefreshVisual();
+    }
+}
+
+
 void ItemIconWidget::RefreshVisual()
 {
-    QString resolvedPath = QFile::exists(this->IconPath) ? this->IconPath : QString("./Resources/Common/Grass.png");
-    QPixmap pixmap(resolvedPath);
+    // Lazy: defer all paint work until the widget is first mapped. MarkFound
+    // / MarkNotFound calls that arrive while the page is still hidden land
+    // here too — they update the data fields and bail; showEvent will pick
+    // up the latest state when the user navigates to the page.
+    if (!this->VisualLoaded) return;
+
+    // Pull the cached pixmap from the GameIcons singleton (loaded once per
+    // EGameIcon, then handed out via Qt's implicit COW so every consumer
+    // shares the same backing buffer).
+    QPixmap pixmap;
+    QPixmap* sharedPx = GameIcons::GetGamePixmap(this->Icon);
+    if (sharedPx != nullptr) pixmap = *sharedPx;
     if (pixmap.isNull())
     {
         pixmap = QPixmap("./Resources/Common/Grass.png");
@@ -335,7 +366,24 @@ QWidget* ProgressionTab::BuildPage(const ProgSection* Sections, size_t SectionCo
         grid->setHorizontalSpacing(8);
         grid->setVerticalSpacing(8);
 
+        GridSection sectionLayout;
+        sectionLayout.Grid = grid;
+
         const int columns = 16;
+
+        // Reserve all 16 columns up-front with both a minimum width matching the
+        // ItemIconWidget fixed width and a uniform stretch. The minimum width
+        // forces every column to actually allocate space (setColumnStretch alone
+        // is not enough — Qt may still collapse trailing columns that hold no
+        // widget); the stretch ensures the residual space is divided evenly so
+        // icons line up identically whether the section is a single partial row
+        // or several rows with a partial last one.
+        for (int c = 0; c < columns; ++c)
+        {
+            grid->setColumnMinimumWidth(c, 72);
+            grid->setColumnStretch(c, 1);
+        }
+
         int row = 0;
         int col = 0;
 
@@ -344,12 +392,10 @@ QWidget* ProgressionTab::BuildPage(const ProgSection* Sections, size_t SectionCo
             const ProgEntry& entry = section.Entries[i];
 
             // Resolve the icon path from the central IconsMetaInfo table.
-            QString iconPath = QString::fromUtf8(IconsMetaInfo[(uint8_t)entry.Icon].IconPath);
             QString displayName = QString::fromUtf8(entry.DisplayName);
 
-            ItemIconWidget* widget = new ItemIconWidget(iconPath, displayName, entry.IsCounter, gridHost);
+            ItemIconWidget* widget = new ItemIconWidget(entry.Icon, displayName, entry.IsCounter, gridHost);
             widget->Game = Game;
-            widget->Icon = entry.Icon;
             //widget->LookupKey = entry.LookupKey ? QString::fromUtf8(entry.LookupKey) : QString();
             widget->LookupKeys = widget->LookupKeys.unite(entry.LookupKeys);
             grid->addWidget(widget, row, col);
@@ -359,6 +405,7 @@ QWidget* ProgressionTab::BuildPage(const ProgSection* Sections, size_t SectionCo
             // Index by EGameIcon for fast lookup; multiple widgets may share the same icon.
             Target.ByIcon[entry.Icon].append(widget);
             Target.All.append(widget);
+            sectionLayout.Widgets.append(widget);
 
             col++;
             if (col >= columns)
@@ -368,16 +415,8 @@ QWidget* ProgressionTab::BuildPage(const ProgSection* Sections, size_t SectionCo
             }
         }
 
-        if (col > 0)
-        {   // Pad the unfinished row so widgets keep a consistent left alignment.
-
-            for (int c = col; c < columns; ++c)
-            {
-                grid->setColumnStretch(c, 1);
-            }
-        }
-
         contentLayout->addWidget(gridHost);
+        this->Sections.append(sectionLayout);
     }
 
     contentLayout->addStretch(1);
@@ -433,7 +472,26 @@ QWidget* ProgressionTab::BuildDetailPanel()
     this->DetailLocationsHeader = new QLabel("Locations", panel);
     this->DetailLocationsHeader->setStyleSheet(
         "background: transparent; color: #4a9edb; font-size: 11px; font-weight: 700; "
-        "letter-spacing: 0.05em; border-bottom: 1px solid #1a3050; padding-bottom: 3px;");
+        "letter-spacing: 0.05em; padding-bottom: 3px;");
+
+    this->DetailExpandToggle = new QPushButton("Collapse All", panel);
+    this->DetailExpandToggle->setCursor(Qt::PointingHandCursor);
+    this->DetailExpandToggle->setStyleSheet(
+        "QPushButton { background: transparent; color: #4a9edb; border: 1px solid #1a3050; "
+        "border-radius: 4px; padding: 2px 8px; font-size: 10px; font-weight: 600; }"
+        "QPushButton:hover { background-color: rgba(74, 158, 219, 30); border-color: #4a9edb; }"
+        "QPushButton:pressed { background-color: rgba(74, 158, 219, 60); }");
+    this->DetailExpandToggle->hide();
+    QObject::connect(this->DetailExpandToggle, &QPushButton::clicked,
+                     this, &ProgressionTab::OnToggleLocationsExpansion);
+
+    QWidget* locationsHeaderRow = new QWidget(panel);
+    QHBoxLayout* locationsHeaderLayout = new QHBoxLayout(locationsHeaderRow);
+    locationsHeaderLayout->setContentsMargins(0, 0, 0, 0);
+    locationsHeaderLayout->setSpacing(8);
+    locationsHeaderLayout->addWidget(this->DetailLocationsHeader, 1, Qt::AlignBottom);
+    locationsHeaderLayout->addWidget(this->DetailExpandToggle, 0, Qt::AlignBottom);
+    locationsHeaderRow->setStyleSheet("background: transparent; border-bottom: 1px solid #1a3050;");
 
     this->DetailLocations = new QTreeWidget(panel);
     this->DetailLocations->setHeaderHidden(true);
@@ -454,10 +512,29 @@ QWidget* ProgressionTab::BuildDetailPanel()
     layout->addWidget(this->DetailName);
     layout->addWidget(this->DetailStatus);
     layout->addWidget(this->DetailCount);
-    layout->addWidget(this->DetailLocationsHeader);
+    layout->addWidget(locationsHeaderRow);
     layout->addWidget(this->DetailLocations, 1);
 
     return panel;
+}
+
+
+void ProgressionTab::OnToggleLocationsExpansion()
+{
+    if (this->DetailLocations == nullptr || this->DetailExpandToggle == nullptr) return;
+
+    this->DetailLocationsExpanded = !this->DetailLocationsExpanded;
+
+    if (this->DetailLocationsExpanded)
+    {
+        this->DetailLocations->expandAll();
+        this->DetailExpandToggle->setText("Collapse All");
+    }
+    else
+    {
+        this->DetailLocations->collapseAll();
+        this->DetailExpandToggle->setText("Expand All");
+    }
 }
 
 
@@ -467,7 +544,9 @@ void ProgressionTab::ShowDetailFor(ItemIconWidget* Widget)
 
     this->CurrentDetailWidget = Widget;
 
-    QPixmap pixmap(Widget->IconPath);
+    QPixmap pixmap;
+    QPixmap* sharedPx = GameIcons::GetGamePixmap(Widget->Icon);
+    if (sharedPx != nullptr) pixmap = *sharedPx;
     if (pixmap.isNull())
     {
         pixmap = QPixmap("./Resources/Common/Grass.png");
@@ -543,6 +622,29 @@ QIcon ResolveObjectIcon(const ObjectInfo* Obj)
 
     QIcon* base = GameIcons::GetGameIcon(iconID);
     return base ? *base : QIcon();
+}
+
+/* Build a desaturated, low-opacity version of an object icon to mark uncollected
+   leaves at a glance — italics alone do not stand out enough against the colored
+   icons of collected entries. */
+QIcon MakeFadedIcon(const QIcon& Source)
+{
+    const QSize size(20, 20);
+    QPixmap pixmap = Source.pixmap(size);
+    if (pixmap.isNull()) return Source;
+
+    QImage img = pixmap.toImage().convertToFormat(QImage::Format_ARGB32);
+    for (int y = 0; y < img.height(); ++y)
+    {
+        QRgb* line = reinterpret_cast<QRgb*>(img.scanLine(y));
+        for (int x = 0; x < img.width(); ++x)
+        {
+            QColor c = QColor::fromRgba(line[x]);
+            int gray = qGray(c.rgb());
+            line[x] = qRgba(gray, gray, gray, c.alpha() / 3);
+        }
+    }
+    return QIcon(QPixmap::fromImage(img));
 }
 
 } // namespace
@@ -645,97 +747,170 @@ void ProgressionTab::BuildLocationTree(ItemIconWidget* Widget)
         }
     }
 
-    // Alphabetic ordering of scenes; ties (same name across games) keep OoT before MM.
-    QList<QString> orderedKeys = buckets.keys();
-    std::sort(orderedKeys.begin(), orderedKeys.end(), [&](const QString& a, const QString& b) {
-        const SceneBucket& ba = buckets.value(a);
-        const SceneBucket& bb = buckets.value(b);
-        int cmp = ba.DisplayName.compare(bb.DisplayName, Qt::CaseInsensitive);
-        if (cmp != 0) return cmp < 0;
-        return ba.Game < bb.Game;
-    });
-
-    if (orderedKeys.isEmpty())
+    // "Starting Item" badge is the first row when the player begins the run
+    // owning this item. It is purely informative — non-clickable, no scene to
+    // navigate to — so it sits above any actual world location.
+    if (Widget->IsStartingItem)
     {
-        QTreeWidgetItem* placeholder = new QTreeWidgetItem(this->DetailLocations);
-        placeholder->setText(0, revealUncollected ? "No known location" : "Not found yet");
-        placeholder->setForeground(0, QBrush(QColor(122, 154, 191)));
-        placeholder->setFlags(placeholder->flags() & ~Qt::ItemIsSelectable);
+        QTreeWidgetItem* startingNode = new QTreeWidgetItem(this->DetailLocations);
+        startingNode->setText(0, "Starting Item");
+        startingNode->setForeground(0, QBrush(QColor(248, 200, 120)));
+        QColor startingBg(248, 200, 120);
+        startingBg.setAlpha(48);
+        startingNode->setBackground(0, QBrush(startingBg));
+        QFont sf = startingNode->font(0);
+        sf.setBold(true);
+        sf.setItalic(true);
+        startingNode->setFont(0, sf);
+        startingNode->setFlags(startingNode->flags() & ~Qt::ItemIsSelectable);
+    }
+
+    if (buckets.isEmpty())
+    {
+        if (!Widget->IsStartingItem)
+        {   // Without any starting-item row either, fall back to the empty-state placeholder.
+            QTreeWidgetItem* placeholder = new QTreeWidgetItem(this->DetailLocations);
+            placeholder->setText(0, revealUncollected ? "No known location" : "Not found yet");
+            placeholder->setForeground(0, QBrush(QColor(122, 154, 191)));
+            placeholder->setFlags(placeholder->flags() & ~Qt::ItemIsSelectable);
+            if (this->DetailExpandToggle != nullptr) this->DetailExpandToggle->hide();
+            return;
+        }
+
+        // We added a starting-item row but have no further locations: hide the
+        // expand/collapse toggle since there is nothing to expand or collapse.
+        if (this->DetailExpandToggle != nullptr) this->DetailExpandToggle->hide();
         return;
     }
 
-    for (const QString& key : orderedKeys)
+    // Top-level grouping by game (OoT first, MM second), each game holds its
+    // alphabetically-sorted scene buckets. The previous flat layout mixed both
+    // games together which made it hard to scan when an item exists in both.
+    static const struct { int Game; const char* Title; const char* AccentHex; } GameSections[] = {
+        { OOT_GAME, "Ocarina of Time", "#4a9edb" },
+        { MM_GAME,  "Majora's Mask",   "#9b5de5" },
+    };
+
+    for (const auto& gs : GameSections)
     {
-        SceneBucket bucket = buckets.value(key);
-
-        // Sort object leaves alphabetically inside the scene. Collected entries keep
-        // priority over uncollected ones so the user sees what they have first.
-        std::sort(bucket.Entries.begin(), bucket.Entries.end(),
-            [](const QPair<ObjectInfo*, bool>& a, const QPair<ObjectInfo*, bool>& b) {
-                if (a.second != b.second) return a.second && !b.second;
-                QString an = a.first && a.first->Name ? QString::fromUtf8(a.first->Name) : QString();
-                QString bn = b.first && b.first->Name ? QString::fromUtf8(b.first->Name) : QString();
-                return an.compare(bn, Qt::CaseInsensitive) < 0;
-            });
-
-        QTreeWidgetItem* sceneNode = new QTreeWidgetItem(this->DetailLocations);
-        QString accentHex = (bucket.Game == OOT_GAME) ? "#4a9edb" : "#9b5de5";
-        QColor accent(accentHex);
-        QColor headerBg = accent; headerBg.setAlpha(64);
-
-        QString suffix = QString(" (%1)").arg(bucket.Entries.size());
-        sceneNode->setText(0, bucket.DisplayName + suffix);
-        sceneNode->setBackground(0, QBrush(headerBg));
-        sceneNode->setForeground(0, QBrush(accent));
-        QFont catFont = sceneNode->font(0);
-        catFont.setBold(true);
-        sceneNode->setFont(0, catFont);
-        sceneNode->setFlags(sceneNode->flags() & ~Qt::ItemIsSelectable);
-        sceneNode->setExpanded(true);
-
-        for (const auto& entry : bucket.Entries)
+        QList<QString> gameKeys;
+        for (auto it = buckets.constBegin(); it != buckets.constEnd(); ++it)
         {
-            ObjectInfo* obj = entry.first;
-            const bool collected = entry.second;
+            if (it.value().Game == gs.Game) gameKeys.append(it.key());
+        }
+        if (gameKeys.isEmpty()) continue;
 
-            QTreeWidgetItem* leaf = new QTreeWidgetItem(sceneNode);
-            QString objectName = obj->Name ? QString::fromUtf8(obj->Name) : QString("Object");
-            leaf->setText(0, objectName);
-            leaf->setIcon(0, ResolveObjectIcon(obj));
-            leaf->setData(0, kLocationGameRole, bucket.Game);
-            leaf->setData(0, kLocationObjectRole, QVariant::fromValue<void*>(obj));
-            leaf->setData(0, kLocationCollectedRole, collected);
+        std::sort(gameKeys.begin(), gameKeys.end(), [&](const QString& a, const QString& b) {
+            return buckets.value(a).DisplayName.compare(buckets.value(b).DisplayName, Qt::CaseInsensitive) < 0;
+        });
 
-            if (collected)
+        // Game header row — bigger, bolder, fully tinted background to clearly
+        // separate the two games.
+        QTreeWidgetItem* gameNode = new QTreeWidgetItem(this->DetailLocations);
+        QColor gameAccent(gs.AccentHex);
+        QColor gameBg = gameAccent; gameBg.setAlpha(120);
+        gameNode->setText(0, QString::fromUtf8(gs.Title));
+        gameNode->setBackground(0, QBrush(gameBg));
+        gameNode->setForeground(0, QBrush(QColor("#ffffff")));
+        QFont gameFont = gameNode->font(0);
+        gameFont.setBold(true);
+        gameFont.setPointSize(gameFont.pointSize() + 1);
+        gameNode->setFont(0, gameFont);
+        gameNode->setFlags(gameNode->flags() & ~Qt::ItemIsSelectable);
+        gameNode->setExpanded(true);
+
+        for (const QString& key : gameKeys)
+        {
+            SceneBucket bucket = buckets.value(key);
+
+            // Sort object leaves alphabetically inside the scene. Uncollected entries
+            // (the bright "to-find" rows) come before collected ones so the actionable
+            // list is at the top and crossed-off entries trail behind.
+            std::sort(bucket.Entries.begin(), bucket.Entries.end(),
+                [](const QPair<ObjectInfo*, bool>& a, const QPair<ObjectInfo*, bool>& b) {
+                    if (a.second != b.second) return !a.second && b.second;
+                    QString an = a.first && a.first->Name ? QString::fromUtf8(a.first->Name) : QString();
+                    QString bn = b.first && b.first->Name ? QString::fromUtf8(b.first->Name) : QString();
+                    return an.compare(bn, Qt::CaseInsensitive) < 0;
+                });
+
+            QTreeWidgetItem* sceneNode = new QTreeWidgetItem(gameNode);
+            QColor accent(gs.AccentHex);
+            QColor headerBg = accent; headerBg.setAlpha(48);
+
+            QString suffix = QString(" (%1)").arg(bucket.Entries.size());
+            sceneNode->setText(0, bucket.DisplayName + suffix);
+            sceneNode->setBackground(0, QBrush(headerBg));
+            sceneNode->setForeground(0, QBrush(accent));
+            QFont catFont = sceneNode->font(0);
+            catFont.setBold(true);
+            sceneNode->setFont(0, catFont);
+            sceneNode->setFlags(sceneNode->flags() & ~Qt::ItemIsSelectable);
+            sceneNode->setExpanded(true);
+
+            for (const auto& entry : bucket.Entries)
             {
-                if (obj->Status == ObjectState::Forced)
-                {   // User-forced entries echo MapTab's amber palette.
-                    leaf->setForeground(0, QBrush(QColor(248, 200, 120)));
+                ObjectInfo* obj = entry.first;
+                const bool collected = entry.second;
+
+                QTreeWidgetItem* leaf = new QTreeWidgetItem(sceneNode);
+                QString objectName = obj->Name ? QString::fromUtf8(obj->Name) : QString("Object");
+                leaf->setData(0, kLocationGameRole, bucket.Game);
+                leaf->setData(0, kLocationObjectRole, QVariant::fromValue<void*>(obj));
+                leaf->setData(0, kLocationCollectedRole, collected);
+
+                leaf->setText(0, objectName);
+
+                if (collected)
+                {   // Already-found entries read like crossed-off TODOs: italic,
+                    // strike-through, faded icon. The color still encodes whether
+                    // the entry was auto-collected or user-forced (amber).
+                    leaf->setIcon(0, MakeFadedIcon(ResolveObjectIcon(obj)));
+
+                    QFont f = leaf->font(0);
+                    f.setItalic(true);
+                    f.setStrikeOut(true);
+
+                    if (obj->Status == ObjectState::Forced)
+                    {
+                        leaf->setForeground(0, QBrush(QColor(248, 200, 120, 170)));
+                    }
+                    else
+                    {
+                        leaf->setForeground(0, QBrush(QColor(180, 200, 225, 150)));
+                    }
+
+                    leaf->setFont(0, f);
                 }
                 else
-                {   // Auto-collected entries: dim, neutral.
-                    leaf->setForeground(0, QBrush(QColor(204, 218, 240, 200)));
+                {   // Outstanding entries are the "to-find" list — keep them
+                    // bright, fully opaque and unmodified so they grab attention.
+                    leaf->setIcon(0, ResolveObjectIcon(obj));
+                    leaf->setForeground(0, QBrush(QColor(230, 240, 255)));
                 }
-            }
-            else
-            {   // Uncollected (only shown when RevealUncollectedItems is on).
-                leaf->setForeground(0, QBrush(QColor(141, 162, 192, 200)));
-                QFont f = leaf->font(0);
-                f.setItalic(true);
-                leaf->setFont(0, f);
-            }
 
-            QString tooltip = collected ? QString("%1 — collected").arg(objectName)
-                                        : QString("%1 — not collected yet").arg(objectName);
-            leaf->setToolTip(0, tooltip);
+                QString tooltip = collected ? QString("%1 — collected").arg(objectName)
+                                            : QString("%1 — not collected yet").arg(objectName);
+                leaf->setToolTip(0, tooltip);
+            }
         }
+    }
+
+    // Reveal the toggle now that the tree has content; reset state to expanded.
+    if (this->DetailExpandToggle != nullptr)
+    {
+        this->DetailExpandToggle->show();
+        this->DetailExpandToggle->setText("Collapse All");
+        this->DetailLocationsExpanded = true;
     }
 }
 
 
 void ProgressionTab::OnLocationClicked(QTreeWidgetItem* Item, int /*Column*/)
 {
-    if (Item == nullptr || Item->parent() == nullptr) return; // Top-level scene rows are not navigable.
+    if (Item == nullptr) return;
+    // Game and scene rows are never selectable, so the selectable flag alone
+    // is enough to filter the click down to actual object leaves.
     if ((Item->flags() & Qt::ItemIsSelectable) == 0) return;
 
     int game = Item->data(0, kLocationGameRole).toInt();
@@ -760,41 +935,93 @@ void ProgressionTab::RefreshCurrentDetail()
 }
 
 
-void ProgressionTab::OnItemFound(int Game, ObjectInfo* Object, const ItemInfo* Item, bool IsAddOp)
+QList<ItemIconWidget*> ProgressionTab::FindAllMatchingWidgets(const ItemInfo* Item) const
 {
-    if (Item == nullptr || Item->ItemName == nullptr) return;
+    QList<ItemIconWidget*> matches;
+    if (Item == nullptr) return matches;
 
-    //QString normalized = NormalizeItemName(QString::fromUtf8(Item->ItemName));
+    const GameProgData* registries[] = {
+        &this->OoTData, &this->MMData, &this->SoulsData, &this->CollectiblesData
+    };
 
-    // 1. OoTData: icon hash, disambiguated by LookupKey when needed.
-    ItemIconWidget* widget = nullptr;
-    widget = FindByIcon(this->OoTData, Item);
-
-    if (widget == nullptr)
-    {   // 2. MMData: icon hash, disambiguated by LookupKey when needed.
-
-        widget = FindByIcon(this->MMData, Item);
-
-        // 3. Souls span both games -> they live in their own registry.
-        if (widget == nullptr)
+    for (const GameProgData* reg : registries)
+    {   // The flat `All` list mirrors BuildPage's iteration of the static
+        // ProgSection arrays, which is the declaration order. Progressive
+        // items rely on that order to walk through their stages.
+        for (ItemIconWidget* w : reg->All)
         {
-            //widget = FindByIcon(this->SoulsData, Item->RenderType, normalized);
-            widget = FindByIcon(this->SoulsData, Item);
-
-            // 4. Collectibles span both games -> they live in their own registry.
-            if (widget == nullptr)
+            if (w == nullptr) continue;
+            if (w->LookupKeys.contains(Item->ItemID))
             {
-                //widget = FindByIcon(this->SoulsData, Item->RenderType, normalized);
-                widget = FindByIcon(this->CollectiblesData, Item);
+                matches.append(w);
             }
         }
     }
 
-    
-    if (widget != nullptr)
+    return matches;
+}
+
+
+void ProgressionTab::OnItemFound(int Game, ObjectInfo* Object, const ItemInfo* Item, bool IsAddOp)
+{
+    if (Item == nullptr || Item->ItemName == nullptr) return;
+
+    QList<ItemIconWidget*> matches = this->FindAllMatchingWidgets(Item);
+    if (matches.isEmpty()) return;
+
+    // Shared items propagate the update to every widget that lists them — both
+    // the OoT and the MM mirror, plus any shared-only widget. The ItemInfo
+    // gates eligibility (CanBeShared) and the active settings turn the share
+    // on at runtime.
+    const bool shared = Item->CanBeShared
+        && this->RomSettings != nullptr
+        && this->RomSettings->SharedItemIDs.contains(Item->ItemID);
+
+    if (shared)
     {
-        if (IsAddOp) widget->MarkFound(Game, Object);
-        else widget->MarkNotFound(Game, Object);
+        for (ItemIconWidget* w : matches)
+        {
+            if (IsAddOp) w->MarkFound(Game, Object);
+            else         w->MarkNotFound(Game, Object);
+        }
+        return;
+    }
+
+    if (matches.size() == 1)
+    {   // Unique items and single-widget counters: mark the only candidate
+        // unconditionally so counter increments keep accumulating past the
+        // first hit.
+        if (IsAddOp) matches[0]->MarkFound(Game, Object);
+        else         matches[0]->MarkNotFound(Game, Object);
+        return;
+    }
+
+    // Several widgets share this ItemID — it is a progressive item (e.g. the
+    // sword stages all listing OOT_PROGRESSIVE_SWORD). Walk the list in
+    // declaration order: an Add advances to the next not-yet-found stage,
+    // a Remove rewinds to the most recently found one.
+    if (IsAddOp)
+    {
+        for (ItemIconWidget* w : matches)
+        {
+            if (!w->Found)
+            {
+                w->MarkFound(Game, Object);
+                return;
+            }
+        }
+    }
+    else
+    {
+        for (auto it = matches.rbegin(); it != matches.rend(); ++it)
+        {
+            ItemIconWidget* w = *it;
+            if (w->Found)
+            {
+                w->MarkNotFound(Game, Object);
+                return;
+            }
+        }
     }
 }
 
@@ -828,11 +1055,125 @@ void ProgressionTab::OnObjectForceStateChanged(int Game, ObjectInfo* Object)
 }
 
 
+void ProgressionTab::ApplySettings(const Settings* NewRomSettings)
+{
+    this->RomSettings = NewRomSettings;
+
+    GameProgData* registries[] = {
+        &this->OoTData, &this->MMData, &this->SoulsData, &this->CollectiblesData
+    };
+
+    for (GameProgData* reg : registries)
+    {
+        for (ItemIconWidget* w : reg->All)
+        {
+            if (w == nullptr) continue;
+
+            // Re-show by default so a settings change that re-enables a
+            // category brings its widgets back into the layout.
+            w->setVisible(true);
+
+            if (this->RomSettings == nullptr) continue;
+
+            for (uint32_t id : w->LookupKeys)
+            {
+                if (this->RomSettings->DisabledItemIDs.contains(id))
+                {
+                    w->setVisible(false);
+                    break;
+                }
+            }
+        }
+    }
+
+    // Reflow each section's grid so disabled widgets do not leave a gap. A
+    // simple setVisible(false) keeps the cell reserved (the column has a
+    // min-width matching the icon size); detaching from the layout and
+    // re-adding only the still-visible widgets gives a tight pack.
+    this->RepackVisibleWidgets();
+}
+
+
+void ProgressionTab::RepackVisibleWidgets()
+{
+    const int columns = 16;
+
+    for (GridSection& section : this->Sections)
+    {
+        if (section.Grid == nullptr) continue;
+
+        // Detach every widget from the grid first; addWidget below will
+        // re-anchor only those that should still be displayed. removeWidget
+        // does not touch the parent pointer, so the widget keeps living
+        // under gridHost — Qt will paint it again as soon as it is back in
+        // the layout.
+        for (ItemIconWidget* w : section.Widgets)
+        {
+            if (w == nullptr) continue;
+            section.Grid->removeWidget(w);
+        }
+
+        int row = 0;
+        int col = 0;
+        for (ItemIconWidget* w : section.Widgets)
+        {
+            if (w == nullptr) continue;
+
+            // isHidden() reports the explicit setVisible(false) state set by
+            // ApplySettings (it is independent of the parent QStackedWidget's
+            // current page, so widgets on a non-active page are still
+            // considered "to be packed" here — only DisabledItemIDs hides
+            // them at this layer).
+            if (w->isHidden()) continue;
+
+            section.Grid->addWidget(w, row, col);
+
+            ++col;
+            if (col >= columns)
+            {
+                col = 0;
+                ++row;
+            }
+        }
+    }
+}
+
+
 void ProgressionTab::RebuildFromSceneObjects()
 {
     // Replay every collected/forced object from the central SceneObjects arrays.
     // Counters are summed naturally because OnItemFound increments on each call.
     this->ResetProgress();
+
+    // Starting items are applied first so the world replay below can detect
+    // them as already-found and progressive items advance to the right stage.
+    if (this->RomSettings != nullptr && !this->RomSettings->StartingItemIDs.isEmpty())
+    {
+        GameProgData* registries[] = {
+            &this->OoTData, &this->MMData, &this->SoulsData, &this->CollectiblesData
+        };
+
+        for (GameProgData* reg : registries)
+        {
+            for (ItemIconWidget* w : reg->All)
+            {
+                if (w == nullptr) continue;
+                for (uint32_t id : w->LookupKeys)
+                {
+                    if (this->RomSettings->StartingItemIDs.contains(id))
+                    {
+                        w->IsStartingItem = true;
+                        for (uint32_t i = 0; i < this->RomSettings->StartingItemIDs.value(id); i++)
+                        {   // Mark the item found as many time necessary
+
+                            w->MarkFound(0, nullptr);
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+    }
 
     static const struct { int Game; size_t Count; } Pages[] = {
         { OOT_GAME, OOT_NUM_SCENES },
@@ -878,10 +1219,19 @@ void ProgressionTab::RebuildFromSceneObjects()
 
 void ProgressionTab::ResetProgress()
 {
-    for (ItemIconWidget* w : this->OoTData.All)   if (w) w->ResetFound();
-    for (ItemIconWidget* w : this->MMData.All)    if (w) w->ResetFound();
-    for (ItemIconWidget* w : this->SoulsData.All) if (w) w->ResetFound();
-    for (ItemIconWidget* w : this->CollectiblesData.All) if (w) w->ResetFound();
+    GameProgData* registries[] = {
+        &this->OoTData, &this->MMData, &this->SoulsData, &this->CollectiblesData
+    };
+
+    for (GameProgData* reg : registries)
+    {
+        for (ItemIconWidget* w : reg->All)
+        {
+            if (w == nullptr) continue;
+            w->IsStartingItem = false;
+            w->ResetFound();
+        }
+    }
 }
 
 #pragma endregion

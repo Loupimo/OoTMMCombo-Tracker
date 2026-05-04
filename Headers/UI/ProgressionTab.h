@@ -10,12 +10,15 @@
 #include <QStackedWidget>
 #include <QScrollArea>
 #include <QTreeWidget>
+#include <QPushButton>
 #include "Combo/Items.h"
 #include "Combo/Objects.h"
 #include "UI/Icons.h"
 
 class OoTMMComboTracker;
 class ProgressionTab;
+class Settings;
+class QGridLayout;
 struct ProgSection;
 
 /*
@@ -30,8 +33,6 @@ class ItemIconWidget : public QWidget
 public:
 
     QString DisplayName;                // Human-readable name shown under the icon.
-    QString IconPath;                   // Resolved icon path (falls back to Grass.png when missing).
-    //QString LookupKey;                  // Normalized substring used to disambiguate items sharing the same EGameIcon.
     QSet<uint32_t> LookupKeys;
     EGameIcon Icon = EGameIcon::none;   // The EGameIcon associated with this widget (display + primary lookup key).
     bool IsCounter = false;             // Whether the widget shows a counter badge.
@@ -40,24 +41,29 @@ public:
 
     QStringList LocationsFound;         // Scenes where the item was tracked, used for the tooltip.
     int Game = -1;                      // OOT_GAME / MM_GAME associated with the widget's page (used as a hint for the detail panel).
+    bool IsStartingItem = false;        // Set by ProgressionTab::ApplySettings when the player starts the run with this item.
 
 private:
 
     QLabel* IconLabel = nullptr;        // QLabel that hosts the QPixmap.
     QLabel* NameLabel = nullptr;        // Label showing DisplayName.
     QLabel* CountBadge = nullptr;       // Overlay label used for the counter badge.
+    bool VisualLoaded = false;          // Lazy-loading guard: gates RefreshVisual until the widget is first shown.
 
 public:
 
     /*
-    *   Constructs the icon widget with the given icon path and display name.
+    *   Constructs the icon widget for the given EGameIcon. The pixmap is NOT
+    *   loaded here — RefreshVisual defers its work until showEvent fires the
+    *   first time the widget is actually mapped to the screen, so widgets on
+    *   non-active pages do not pay the disk-load cost at startup.
     *
-    *   @param IconPath        The path to the icon image (relative to the working directory).
+    *   @param IconValue       The EGameIcon used to fetch the pixmap from the GameIcons singleton.
     *   @param DisplayName     The human-readable item name shown under the icon.
     *   @param IsCounter       Whether to show a counter badge for stackable items.
     *   @param Parent          The Qt parent.
     */
-    ItemIconWidget(const QString& IconPath, const QString& DisplayName, bool IsCounter = false, QWidget* Parent = nullptr);
+    ItemIconWidget(EGameIcon IconValue, const QString& DisplayName, bool IsCounter = false, QWidget* Parent = nullptr);
 
     /*
     *   Mark the item as found, optionally update its counter and refresh the visual state.
@@ -94,8 +100,31 @@ signals:
 
 protected:
 
+    /*
+    *   Qt override. Emits the Selected signal so the detail panel can update
+    *   when the user left-clicks the icon, then forwards the event to the base class.
+    *
+    *   @param Event    The Qt mouse event.
+    */
     void mousePressEvent(QMouseEvent* Event) override;
+
+    /*
+    *   Qt override. Forwards the resize event to the base class so the icon and
+    *   labels stay laid out correctly when the widget is resized.
+    *
+    *   @param Event    The Qt resize event.
+    */
     void resizeEvent(QResizeEvent* Event) override;
+
+    /*
+    *   Qt override. Lazy-loads the icon pixmap the first time the widget is
+    *   actually mapped to the screen, so widgets on inactive pages do not pay
+    *   the disk-load cost at startup. Subsequent state updates (Found / Count)
+    *   that ran while VisualLoaded was false are caught up by RefreshVisual.
+    *
+    *   @param Event    The Qt show event.
+    */
+    void showEvent(QShowEvent* Event) override;
 
 };
 
@@ -128,6 +157,17 @@ public:
         QList<ItemIconWidget*> All;                        // Flat list of every widget on the page.
     } GameProgData;
 
+    /*
+    *   Per-section layout bookkeeping used to repack the grid after a settings
+    *   change disables widgets. The widgets are stored in declaration order so
+    *   the repack can place visible ones sequentially without leaving holes.
+    */
+    typedef struct GridSection
+    {
+        QGridLayout* Grid;
+        QList<ItemIconWidget*> Widgets;
+    } GridSection;
+
 private:
 
     QTabBar* SubTabBar = nullptr;              // Top sub-tab selector (OoT / MM / Souls).
@@ -137,17 +177,22 @@ private:
     GameProgData MMData;                       // Widgets registered on the MM page.
     GameProgData SoulsData;                    // Widgets registered on the Souls page (spans both games).
     GameProgData CollectiblesData;             // Widgets registered on the Collectibles page (spans both games).
+    QList<GridSection> Sections;               // Per-section grid bookkeeping (repacking after settings).
 
     static ProgressionTab* sInstance;          // Single living dashboard, used by callers that cannot reach the tracker.
+
+    const Settings* RomSettings = nullptr;     // Borrowed pointer to the active spoiler-derived settings; drives shared / disabled / starting-item handling.
 
     // Detail panel widgets.
     QLabel* DetailIcon = nullptr;
     QLabel* DetailName = nullptr;
     QLabel* DetailStatus = nullptr;
     QLabel* DetailLocationsHeader = nullptr;
+    QPushButton* DetailExpandToggle = nullptr;     // Expand-all / Collapse-all switch above the location tree.
     QTreeWidget* DetailLocations = nullptr;
     QLabel* DetailCount = nullptr;
     ItemIconWidget* CurrentDetailWidget = nullptr; // Widget currently displayed by ShowDetailFor.
+    bool DetailLocationsExpanded = true;           // Tracks the current state of the expand/collapse toggle.
 
 public:
 
@@ -184,6 +229,15 @@ public:
     */
     void OnItemFound(int Game, ObjectInfo* Object, const ItemInfo* Item, bool IsAddOp);
 
+    /*
+    *   Notify the dashboard that the user manually toggled the force state of an object.
+    *   Forwards to OnItemFound as an add or remove depending on the new ObjectState
+    *   (Forced -> add, Hidden -> remove, Collected -> ignored), then refreshes the
+    *   currently shown detail panel so the location tree reflects the change.
+    *
+    *   @param Game      The game the object belongs to (OOT_GAME or MM_GAME).
+    *   @param Object    The object whose force state changed.
+    */
     void OnObjectForceStateChanged(int Game, ObjectInfo* Object);
 
     /*
@@ -205,6 +259,16 @@ public:
     *   reflects the new visibility.
     */
     void RefreshCurrentDetail();
+
+    /*
+    *   Sync the dashboard with the spoiler-derived settings: hide widgets whose
+    *   LookupKeys land in DisabledItemIDs and store the reference for later
+    *   shared / starting-item logic. Starting-item pre-marking is performed by
+    *   RebuildFromSceneObjects so it survives the reset-and-replay cycle.
+    *
+    *   @param NewRomSettings   Borrowed pointer to the active settings (must outlive the call).
+    */
+    void ApplySettings(const Settings* NewRomSettings);
 
 private:
 
@@ -259,6 +323,19 @@ private:
     void OnLocationClicked(QTreeWidgetItem* Item, int Column);
 
     /*
+    *   Toggle the location tree between fully expanded and fully collapsed and
+    *   update the toggle button label accordingly.
+    */
+    void OnToggleLocationsExpansion();
+
+    /*
+    *   Detach every widget from its section's grid layout and re-add only the
+    *   non-explicitly-hidden ones, packing them sequentially. Called by
+    *   ApplySettings so disabled items do not leave a gap in the grid.
+    */
+    void RepackVisibleWidgets();
+
+    /*
     *   Test whether the given item would be matched to the given widget by the
     *   same logic OnItemFound uses (icon hash + LookupKey disambiguation, with a
     *   name-only fallback). Souls widgets accept items from any game.
@@ -305,4 +382,17 @@ private:
     */
     //static ItemIconWidget* FindByLookupKey(const GameProgData& Data, const QString& Normalized);
     static ItemIconWidget* FindByLookupKey(const GameProgData& Data, const ItemInfo* Item);
+
+    /*
+    *   Collect every ItemIconWidget across the four registries whose LookupKeys
+    *   contain Item->ItemID. The order mirrors BuildPage's iteration of the
+    *   static ProgSection arrays, which is the declaration order — required by
+    *   the progressive-item logic (sword stages, shield stages, ...) to advance
+    *   to the next stage when an earlier one is already found.
+    *
+    *   @param Item     The item to look up.
+    *
+    *   @return Every matching widget in declaration order. Empty when none.
+    */
+    QList<ItemIconWidget*> FindAllMatchingWidgets(const ItemInfo* Item) const;
 };

@@ -24,6 +24,14 @@ class StatusPill : public QWidget
     Q_OBJECT
 
 public:
+
+    /*
+    *   Construct the status pill with the given active and inactive display texts.
+    *
+    *   @param ActiveText      The label shown when the pill is in the active state.
+    *   @param InactiveText    The label shown when the pill is in the inactive state.
+    *   @param Parent          The optional parent widget.
+    */
     StatusPill(const QString& ActiveText, const QString& InactiveText, QWidget* Parent = nullptr);
 
     /* Set the active visual state. */
@@ -32,6 +40,11 @@ public:
     /* Tell whether the pill is currently displaying its active visual. */
     bool IsActive() const { return this->Active; }
 
+    /*
+    *   Return the preferred size for this pill widget.
+    *
+    *   @return The recommended size.
+    */
     QSize sizeHint() const override;
 
 signals:
@@ -39,9 +52,33 @@ signals:
     void Clicked();
 
 protected:
+
+    /*
+    *   Paint the colored dot and the matching text label.
+    *
+    *   @param Event    The paint event triggering the redraw.
+    */
     void paintEvent(QPaintEvent* Event) override;
+
+    /*
+    *   Emit the Clicked() signal when the user presses the pill.
+    *
+    *   @param Event    The mouse press event.
+    */
     void mousePressEvent(QMouseEvent* Event) override;
+
+    /*
+    *   Set the hover state to true and trigger a repaint.
+    *
+    *   @param Event    The enter event.
+    */
     void enterEvent(QEnterEvent* Event) override;
+
+    /*
+    *   Clear the hover state and trigger a repaint.
+    *
+    *   @param Event    The leave event.
+    */
     void leaveEvent(QEvent* Event) override;
 
 private:
@@ -102,6 +139,11 @@ public:
     */
     ~OoTMMComboTracker();
 
+    /*
+    *   Apply the accent color theme of the given game to the main window.
+    *
+    *   @param GameID    The game whose accent color should be applied.
+    */
     void ApplyGameTheme(int GameID);
 
     /*

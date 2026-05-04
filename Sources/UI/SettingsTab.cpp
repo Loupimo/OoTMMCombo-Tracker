@@ -120,7 +120,7 @@ void SettingsTab::AddParamRow(QGridLayout* Layout, const QString& Key, const QSt
 {
     if (this->WinOwner == nullptr) return;
 
-    auto& romSettings = this->WinOwner->ROMSettings.ROMSettings;
+    auto& romSettings = this->WinOwner->ROMSettings.FilterSettings;
     if (!romSettings.contains(Key)) return;
 
     const Parameter& param = romSettings[Key];
@@ -422,8 +422,8 @@ void SettingsTab::LoadFromSettings()
 
     for (auto it = this->ParamWidgets.cbegin(); it != this->ParamWidgets.cend(); ++it)
     {
-        if (!s.ROMSettings.contains(it.key())) continue;
-        const Parameter& p = s.ROMSettings[it.key()];
+        if (!s.FilterSettings.contains(it.key())) continue;
+        const Parameter& p = s.FilterSettings[it.key()];
 
         if (auto* check = qobject_cast<QCheckBox*>(it.value()))
         {
@@ -443,6 +443,9 @@ void SettingsTab::OnApply()
     if (this->WinOwner == nullptr) return;
 
     Settings& s = this->WinOwner->ROMSettings;
+    s.DisabledItemIDs.clear();
+    s.SharedItemIDs.clear();
+    s.StartingItemIDs.clear();
 
     if (this->GameGroup != nullptr && this->GameGroup->checkedId() >= 0)
     {
@@ -459,8 +462,8 @@ void SettingsTab::OnApply()
 
     for (auto it = this->ParamWidgets.cbegin(); it != this->ParamWidgets.cend(); ++it)
     {
-        if (!s.ROMSettings.contains(it.key())) continue;
-        Parameter& p = s.ROMSettings[it.key()];
+        if (!s.FilterSettings.contains(it.key())) continue;
+        Parameter& p = s.FilterSettings[it.key()];
 
         if (auto* check = qobject_cast<QCheckBox*>(it.value()))
         {

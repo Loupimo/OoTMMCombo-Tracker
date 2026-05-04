@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QMap>
+#include <QSet>
 #include <QFile>
 
 class FilterManager;
@@ -21,6 +22,13 @@ enum class GameMode
 	multi
 };
 
+enum class GoalMode
+{
+    boss,       // Ganon, Majora, Both
+    triforce3,  // Triforce hunt
+    triforce    // Triforce Pieces
+};
+
 enum class ParamType
 {
 	game,
@@ -33,6 +41,8 @@ enum class ParamType
 enum class ShuffleSetting
 {
 	vanilla,	// Objects for this parameter are vanilla (not shuffled)
+    removed,    // Objects for this parameter are removed from the game (not shuffled / not in progression tab)
+    starting,   // Objects for this parameter are given as starting item (still shuffled)
 	all,		// All objects of this parameter are shuffled
 	dungeons,	// Only dungeons objects of this parameter are shuffled
 	overworld,	// Only overworld objects of this parameter are shuffled
@@ -58,8 +68,24 @@ public:
 
 	ROMGame Game;
 	GameMode Mode;
+    GoalMode Goal;
 	size_t NumOfTeams;
-	QMap<QString, Parameter> ROMSettings;
+	QMap<QString, Parameter> FilterSettings;
+    QMap<QString, Parameter> ItemSettings;
+
+    // ProgressionTab-facing toggles. Populated by the spoiler-log / settings
+    // parser; consumed by ProgressionTab::ApplySettings.
+    //   * SharedItemIDs   - item IDs whose updates must propagate to every
+    //                       widget that lists them (only honored when the
+    //                       matching ItemInfo::CanBeShared is true).
+    //   * DisabledItemIDs - item IDs whose widgets must be hidden in the
+    //                       progression dashboard (e.g. enemy-soul shuffle off).
+    //   * StartingItemIDs - item IDs the player starts the run with; their
+    //                       widgets are pre-marked as found and the detail
+    //                       panel shows a non-clickable "Starting Item" entry.
+    QSet<uint32_t> SharedItemIDs;
+    QSet<uint32_t> DisabledItemIDs;
+    QMap<uint32_t, uint32_t> StartingItemIDs;
 
 #pragma endregion
 
@@ -95,6 +121,41 @@ public:
 	*   @param SettingsSection    The text section containing the settings and world layouts.
 	*/
 	void ParseSettings(QString& SettingsSection);
+
+    /*
+    *   Parse all starting items sub-sections from the spoiler log.
+    *
+    *   @param LayoutSection    The text section containing the starting items.
+    */
+    void ParseStartingItems(QString& LayoutSection);
+
+	/*
+	*   Parse all world-flag sub-sections (key rings, silver pouches, game layouts) from the spoiler log.
+	*
+	*   @param LayoutSection    The text section containing the world flags.
+	*/
+    void ParseWorldFlags(QString& LayoutSection);
+
+	/*
+	*   Parse the small key ring layout for both games and update the disabled item IDs accordingly.
+	*
+	*   @param LayoutSection    The text section containing the small key ring layout.
+	*/
+    void ParseKeyRings(QString& LayoutSection);
+
+	/*
+	*   Parse the silver rupee pouches layout and update the disabled item IDs accordingly.
+	*
+	*   @param LayoutSection    The text section containing the silver rupee pouches layout.
+	*/
+    void ParseSilverPouches(QString& LayoutSection);
+
+    /*
+    *   Parse the pre-activated owl layout and update the starting item IDs accordingly.
+    *
+    *   @param LayoutSection    The text section containing the pre-activated owl layout.
+    */
+    void ParsePreActivatedOwl(QString& LayoutSection);
 
 	/*
 	*   Parse the game layout section and apply the Master Quest / JP layout to the matching scenes.
@@ -133,6 +194,12 @@ public:
 	*/
 	void ApplyMMSettingsToFilter(FilterManager* Filter);
 
+
+	/*
+	*   Apply the parsed item-related ROM settings to the disabled item IDs set used by the progression tab.
+	*/
+    void ApplyItemSettings();
+
 	/*
 	*   Exclude the given object from the filter based on the shuffle setting and its location type.
 	*
@@ -141,6 +208,17 @@ public:
 	*   @param Filter          The filter manager to update with the exclusion.
 	*/
 	void CheckObjectExclusion(ObjectInfo* ToCheck, ShuffleSetting SettingValue, FilterManager* Filter);
+
+
+	/*
+	*   Check if the given item is enabled based on the shuffle setting and disable it if vanilla.
+	*
+	*   @param SettingValue    The shuffle setting used to decide if the item is enabled.
+	*   @param ItemID          The ID of the item to check.
+	*
+	*   @return True if the item is enabled, false otherwise.
+	*/
+    bool CheckItemEnabled(ShuffleSetting SettingValue, uint32_t ItemID);
 
 private:
 

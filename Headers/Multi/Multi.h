@@ -9,6 +9,13 @@
 #include <QScrollBar>
 
 
+/*
+*   Format a Win32 error code into a human-readable string using FormatMessageA.
+*
+*   @param Err    The Win32 error code to format.
+*
+*   @return A pointer to a static buffer holding the formatted error message.
+*/
 static inline char* GetErrorMsg(int err)
 {
     static char buf[256];
@@ -16,12 +23,26 @@ static inline char* GetErrorMsg(int err)
     return buf;
 }
 
+/*
+*   Set a Windows socket to blocking or non-blocking mode using ioctlsocket.
+*
+*   @param Sock      The socket to configure.
+*   @param Enable    Non-zero to enable non-blocking mode, zero to disable it.
+*
+*   @return 0 on success, SOCKET_ERROR on failure.
+*/
 static inline int sockasync(SOCKET sock, int enable)
 {
     u_long mode = enable ? 1 : 0;
     return ioctlsocket(sock, FIONBIO, &mode);
 }
 
+/*
+*   Emit a timestamped formatted log message to stdout when LOG_DEBUG is enabled; a no-op otherwise.
+*
+*   @param Fmt    The printf-style format string.
+*   @param ...    The optional arguments that match the format string.
+*/
 static inline void LOGF(const char* fmt, ...)
 {
     (void)fmt;
@@ -41,6 +62,14 @@ static inline void LOGF(const char* fmt, ...)
 # else
 
 
+/*
+*   Set a POSIX socket to blocking or non-blocking mode using fcntl.
+*
+*   @param Sock      The socket to configure.
+*   @param Enable    Non-zero to enable non-blocking mode, zero to disable it.
+*
+*   @return 0 on success, -1 on failure.
+*/
 static inline int sockasync(SOCKET sock, int enable)
 {
     int mode = fcntl(sock, F_GETFL, 0);
@@ -53,6 +82,12 @@ static inline int sockasync(SOCKET sock, int enable)
     return fcntl(sock, F_SETFL, mode);
 }
 
+/*
+*   Emit a timestamped formatted log message to stdout when LOG_DEBUG is enabled; a no-op otherwise.
+*
+*   @param Fmt    The printf-style format string.
+*   @param ...    The optional arguments that match the format string.
+*/
 static inline void LOGF(const char* fmt, ...)
 {
 #if LOG_DEBUG
@@ -123,7 +158,11 @@ class MultiLogger : public QObject
     Q_OBJECT
 
 signals:
-    /* This function emits a signal to the main thread that a message has arrived. */
+    /*
+    *   Emits a signal to the main thread that a log message has arrived and should be displayed.
+    *
+    *   @param Message    The text to append to the log view.
+    */
     void LogMsgToView(const QString& message);
 
     /*
@@ -145,7 +184,13 @@ signals:
 
 public:
 
-    /* We need this has the Qt connect function cannot take static function as parameter. Also, we don't want to create a new logging object for each class. */
+    /*
+    *   Return the singleton MultiLogger instance used for Qt signal connections.
+    *   A static function cannot be passed to Qt's connect mechanism, so this wrapper
+    *   provides a stable instance pointer without creating a new object per caller.
+    *
+    *   @return A pointer to the shared MultiLogger singleton.
+    */
     static MultiLogger* GetLogger();
 
     /*
