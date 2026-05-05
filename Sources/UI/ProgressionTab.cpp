@@ -25,6 +25,7 @@
 #include <QStyledItemDelegate>
 #include <QFontMetrics>
 #include <QPushButton>
+#include <QVector>
 
 
 #pragma region ItemIconWidget
@@ -33,7 +34,7 @@ ItemIconWidget::ItemIconWidget(EGameIcon IconValue, const QString& DisplayName, 
     : QWidget(Parent), DisplayName(DisplayName), Icon(IconValue), IsCounter(IsCounter)
 {
     this->setCursor(Qt::PointingHandCursor);
-    this->setFixedSize(72, 92);
+    this->setFixedSize(72, 108);
     this->setAttribute(Qt::WA_StyledBackground, true);
     this->setStyleSheet("background: transparent;");
 
@@ -42,8 +43,10 @@ ItemIconWidget::ItemIconWidget(EGameIcon IconValue, const QString& DisplayName, 
     this->IconLabel->setAlignment(Qt::AlignCenter);
     this->IconLabel->setAttribute(Qt::WA_TransparentForMouseEvents);
 
+    // Allow up to 3 wrapped lines so long entries like "Compass (Snowhead Temple)"
+    // are fully visible instead of being clipped by a too-short label.
     this->NameLabel = new QLabel(DisplayName, this);
-    this->NameLabel->setGeometry(0, 64, 72, 28);
+    this->NameLabel->setGeometry(0, 64, 72, 44);
     this->NameLabel->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
     this->NameLabel->setWordWrap(true);
     this->NameLabel->setStyleSheet("background: transparent; color: #7a9abf; font-size: 9px;");
@@ -335,7 +338,7 @@ ProgressionTab::~ProgressionTab()
 }
 
 
-QWidget* ProgressionTab::BuildPage(const ProgSection* Sections, size_t SectionCount, GameProgData& Target, int Game)
+QWidget* ProgressionTab::BuildPage(const ProgSection* Sections, size_t SectionCount, GameProgData& Target, int Game, int PageIndex)
 {
     QScrollArea* scroll = new QScrollArea(this);
     scroll->setWidgetResizable(true);
@@ -368,6 +371,9 @@ QWidget* ProgressionTab::BuildPage(const ProgSection* Sections, size_t SectionCo
 
         GridSection sectionLayout;
         sectionLayout.Grid = grid;
+        sectionLayout.Header = header;
+        sectionLayout.GridHost = gridHost;
+        sectionLayout.PageIndex = PageIndex;
 
         const int columns = 16;
 
@@ -427,17 +433,17 @@ QWidget* ProgressionTab::BuildPage(const ProgSection* Sections, size_t SectionCo
 
 void ProgressionTab::BuildPages()
 {
-    QWidget* ootPage = this->BuildPage(OoTSections, NumOoTSections, this->OoTData, OOT_GAME);
+    QWidget* ootPage = this->BuildPage(OoTSections, NumOoTSections, this->OoTData, OOT_GAME, 0);
     this->PageStack->addWidget(ootPage);
 
-    QWidget* mmPage = this->BuildPage(MMSections, NumMMSections, this->MMData, MM_GAME);
+    QWidget* mmPage = this->BuildPage(MMSections, NumMMSections, this->MMData, MM_GAME, 1);
     this->PageStack->addWidget(mmPage);
 
     // Souls span both games; the detail panel uses OOT_GAME by convention to resolve scene names.
-    QWidget* soulsPage = this->BuildPage(SoulsSections, NumSoulsSections, this->SoulsData, OOT_GAME);
+    QWidget* soulsPage = this->BuildPage(SoulsSections, NumSoulsSections, this->SoulsData, OOT_GAME, 2);
     this->PageStack->addWidget(soulsPage);
 
-    QWidget* collectiblesPage = this->BuildPage(CollectiblesSections, NumCollectiblesSections, this->CollectiblesData, OOT_GAME);
+    QWidget* collectiblesPage = this->BuildPage(CollectiblesSections, NumCollectiblesSections, this->CollectiblesData, OOT_GAME, 3);
     this->PageStack->addWidget(collectiblesPage);
 }
 
@@ -977,8 +983,63 @@ void ProgressionTab::OnItemFound(int Game, ObjectInfo* Object, const ItemInfo* I
         && this->RomSettings != nullptr
         && this->RomSettings->SharedItemIDs.contains(Item->ItemID);
 
-    if (shared)
+    // Progressive items (sword / shield / clock stages, ...) are explicitly
+    // listed by the spoiler-derived settings. When the flag is on, walk the
+    // matching widgets in declaration order to advance / rewind one stage at a
+    // time. Otherwise the item behaves like a normal collectible regardless of
+    // how many widgets reference it.
+    const bool progressive = this->RomSettings != nullptr
+        && this->RomSettings->ProgressiveItemIDs.contains(Item->ItemID);
+
+    // Advance to the next not-yet-found stage on Add, rewind to the most
+    // recently found one on Remove. Operates on whatever subset of matches the
+    // caller passes in — used both on the flat list (progressive-only) and on
+    // each per-page subset (shared progressive items, e.g. shields).
+    auto walkStages = [&](const QList<ItemIconWidget*>& Stages)
     {
+        if (IsAddOp)
+        {
+            for (ItemIconWidget* w : Stages)
+            {
+                if (!w->Found) { w->MarkFound(Game, Object); return; }
+            }
+        }
+        else
+        {
+            for (auto it = Stages.rbegin(); it != Stages.rend(); ++it)
+            {
+                if ((*it)->Found) { (*it)->MarkNotFound(Game, Object); return; }
+            }
+        }
+    };
+
+    if (shared && progressive)
+    {   // Shared progressive items (e.g. shields) live on both the OoT and the
+        // MM page — advancing the first not-yet-found stage on the flat list
+        // would only progress one side. Walk each registry independently so
+        // every mirror moves to the right stage in lockstep.
+        const GameProgData* registries[] = {
+            &this->OoTData, &this->MMData, &this->SoulsData, &this->CollectiblesData
+        };
+        for (const GameProgData* reg : registries)
+        {
+            QList<ItemIconWidget*> regMatches;
+            for (ItemIconWidget* w : reg->All)
+            {
+                if (w != nullptr && w->LookupKeys.contains(Item->ItemID))
+                {
+                    regMatches.append(w);
+                }
+            }
+            if (!regMatches.isEmpty()) walkStages(regMatches);
+        }
+        return;
+    }
+
+    if (shared || !progressive)
+    {   // Either propagate to every mirror (shared) or update every match the
+        // same way (non-progressive items only ever expect one widget per game,
+        // and counter widgets keep accumulating on every hit).
         for (ItemIconWidget* w : matches)
         {
             if (IsAddOp) w->MarkFound(Game, Object);
@@ -987,42 +1048,9 @@ void ProgressionTab::OnItemFound(int Game, ObjectInfo* Object, const ItemInfo* I
         return;
     }
 
-    if (matches.size() == 1)
-    {   // Unique items and single-widget counters: mark the only candidate
-        // unconditionally so counter increments keep accumulating past the
-        // first hit.
-        if (IsAddOp) matches[0]->MarkFound(Game, Object);
-        else         matches[0]->MarkNotFound(Game, Object);
-        return;
-    }
-
-    // Several widgets share this ItemID — it is a progressive item (e.g. the
-    // sword stages all listing OOT_PROGRESSIVE_SWORD). Walk the list in
-    // declaration order: an Add advances to the next not-yet-found stage,
-    // a Remove rewinds to the most recently found one.
-    if (IsAddOp)
-    {
-        for (ItemIconWidget* w : matches)
-        {
-            if (!w->Found)
-            {
-                w->MarkFound(Game, Object);
-                return;
-            }
-        }
-    }
-    else
-    {
-        for (auto it = matches.rbegin(); it != matches.rend(); ++it)
-        {
-            ItemIconWidget* w = *it;
-            if (w->Found)
-            {
-                w->MarkNotFound(Game, Object);
-                return;
-            }
-        }
-    }
+    // Progressive only: every match lives on the same page so the flat walk is
+    // enough to advance / rewind the correct stage.
+    walkStages(matches);
 }
 
 
@@ -1091,6 +1119,11 @@ void ProgressionTab::ApplySettings(const Settings* NewRomSettings)
     // min-width matching the icon size); detaching from the layout and
     // re-adding only the still-visible widgets gives a tight pack.
     this->RepackVisibleWidgets();
+
+    // Hide whole sections that lost every widget and whole pages whose
+    // sections all collapsed, so the dashboard never shows an empty header
+    // or a blank tab.
+    this->UpdateSectionAndTabVisibility();
 }
 
 
@@ -1135,6 +1168,65 @@ void ProgressionTab::RepackVisibleWidgets()
                 ++row;
             }
         }
+    }
+}
+
+
+void ProgressionTab::UpdateSectionAndTabVisibility()
+{
+    if (this->SubTabBar == nullptr || this->PageStack == nullptr) return;
+
+    const int pageCount = this->PageStack->count();
+
+    // Step 1: per-section header/grid host visibility + accumulate per-page
+    // "has any visible section" flags in a fixed-size array indexed by the
+    // page index stored on each GridSection.
+    QVector<bool> pageHasContent(pageCount, false);
+
+    for (const GridSection& section : this->Sections)
+    {
+        if (section.Header == nullptr || section.GridHost == nullptr) continue;
+
+        bool hasVisible = false;
+        for (ItemIconWidget* w : section.Widgets)
+        {
+            if (w != nullptr && !w->isHidden())
+            {
+                hasVisible = true;
+                break;
+            }
+        }
+
+        section.Header->setVisible(hasVisible);
+        section.GridHost->setVisible(hasVisible);
+
+        if (hasVisible
+            && section.PageIndex >= 0
+            && section.PageIndex < pageCount)
+        {
+            pageHasContent[section.PageIndex] = true;
+        }
+    }
+
+    // Step 2: hide tabs whose page has no remaining content. If the active
+    // tab is the one being hidden, fall back to the first still-visible tab
+    // so the user never lands on a blank page.
+    const int currentIdx = this->SubTabBar->currentIndex();
+    int firstVisible = -1;
+
+    for (int i = 0; i < this->SubTabBar->count(); ++i)
+    {
+        const bool visible = (i < pageCount) ? pageHasContent[i] : true;
+        this->SubTabBar->setTabVisible(i, visible);
+        if (visible && firstVisible < 0) firstVisible = i;
+    }
+
+    if (currentIdx >= 0
+        && currentIdx < pageCount
+        && !pageHasContent[currentIdx]
+        && firstVisible >= 0)
+    {
+        this->SubTabBar->setCurrentIndex(firstVisible);
     }
 }
 

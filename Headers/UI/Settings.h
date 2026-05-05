@@ -85,6 +85,7 @@ public:
     //                       panel shows a non-clickable "Starting Item" entry.
     QSet<uint32_t> SharedItemIDs;
     QSet<uint32_t> DisabledItemIDs;
+    QSet<uint32_t> ProgressiveItemIDs;
     QMap<uint32_t, uint32_t> StartingItemIDs;
 
 #pragma endregion

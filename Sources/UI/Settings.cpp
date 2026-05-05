@@ -1600,23 +1600,41 @@ void Settings::ApplyItemSettings()
         // Is progressive
         if (it.key().compare("progressiveShieldsOot") == 0)
         {
-
+            this->ProgressiveItemIDs.insert(OOT_PROGRESSIVE_SHIELD_DEKU);
+            this->ProgressiveItemIDs.insert(OOT_PROGRESSIVE_SHIELD_HYLIAN);
         }
         else if (it.key().compare("progressiveSwordsOot") == 0)
         {
-
+            this->ProgressiveItemIDs.insert(OOT_SWORD_KOKIRI);
+            this->ProgressiveItemIDs.insert(OOT_SWORD_MASTER);
+            this->ProgressiveItemIDs.insert(OOT_SWORD_KNIFE);
+            this->ProgressiveItemIDs.insert(OOT_SWORD_GORON);
+            this->ProgressiveItemIDs.insert(OOT_SWORD_BIGGORON);
+            this->ProgressiveItemIDs.insert(OOT_SWORD_RAZOR);
+            this->ProgressiveItemIDs.insert(OOT_SWORD_GILDED);
+            this->ProgressiveItemIDs.insert(OOT_SWORD);
         }
         else if (it.key().compare("progressiveShieldsMm") == 0)
         {
-
+            this->ProgressiveItemIDs.insert(MM_PROGRESSIVE_SHIELD_DEKU);
+            this->ProgressiveItemIDs.insert(MM_PROGRESSIVE_SHIELD_HERO);
         }
         else if (it.key().compare("progressiveGFS") == 0)
         {
-
+            this->ProgressiveItemIDs.insert(MM_SWORD_KOKIRI);
+            this->ProgressiveItemIDs.insert(MM_SWORD_RAZOR);
+            this->ProgressiveItemIDs.insert(MM_SWORD_GILDED);
+            this->ProgressiveItemIDs.insert(MM_GREAT_FAIRY_SWORD);
         }
         else if (it.key().compare("progressiveClocks") == 0)
         {
-
+            this->ProgressiveItemIDs.insert(MM_CLOCK);
+            this->ProgressiveItemIDs.insert(MM_CLOCK1);
+            this->ProgressiveItemIDs.insert(MM_CLOCK2);
+            this->ProgressiveItemIDs.insert(MM_CLOCK3);
+            this->ProgressiveItemIDs.insert(MM_CLOCK4);
+            this->ProgressiveItemIDs.insert(MM_CLOCK5);
+            this->ProgressiveItemIDs.insert(MM_CLOCK6);
         }
         // Disable Items
         else if (it.key().compare("sticksNutsUpgradesMm") == 0)

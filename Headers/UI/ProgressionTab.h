@@ -161,11 +161,18 @@ public:
     *   Per-section layout bookkeeping used to repack the grid after a settings
     *   change disables widgets. The widgets are stored in declaration order so
     *   the repack can place visible ones sequentially without leaving holes.
+    *   Header and GridHost are tracked so the whole section can be hidden when
+    *   every one of its widgets is disabled. PageIndex maps the section back
+    *   to its hosting QStackedWidget page so the parent tab can also be hidden
+    *   when all of its sections are empty.
     */
     typedef struct GridSection
     {
         QGridLayout* Grid;
         QList<ItemIconWidget*> Widgets;
+        QLabel* Header;
+        QWidget* GridHost;
+        int PageIndex;
     } GridSection;
 
 private:
@@ -284,10 +291,12 @@ private:
     *   @param SectionCount Number of sections in the array.
     *   @param Target       The progression registry to populate with the created widgets.
     *   @param Game         The game these items belong to (for the detail panel).
+    *   @param PageIndex    Index of the page in the QStackedWidget / QTabBar. Stored
+    *                       on every GridSection so empty pages can hide their tab.
     *
     *   @return The built page widget.
     */
-    QWidget* BuildPage(const ProgSection* Sections, size_t SectionCount, GameProgData& Target, int Game);
+    QWidget* BuildPage(const ProgSection* Sections, size_t SectionCount, GameProgData& Target, int Game, int PageIndex);
 
     /*
     *   Build the right-side detail panel.
@@ -334,6 +343,14 @@ private:
     *   ApplySettings so disabled items do not leave a gap in the grid.
     */
     void RepackVisibleWidgets();
+
+    /*
+    *   Hide the section header + grid host of every section that has no visible
+    *   widget left, and hide the SubTabBar tab of every page whose sections are
+    *   all empty. If the active tab is hidden, the selection is moved to the
+    *   first still-visible tab so the dashboard never shows a blank page.
+    */
+    void UpdateSectionAndTabVisibility();
 
     /*
     *   Test whether the given item would be matched to the given widget by the

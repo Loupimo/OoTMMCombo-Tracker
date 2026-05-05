@@ -68,6 +68,7 @@
 	{ "fairyFountainFairyShuffleMm", { "Fairy Fountain - MM", ParamType::boolean, ShuffleSetting::all } },
 	{ "fairySpotShuffleOot", { "Fairy Spot", ParamType::boolean, ShuffleSetting::all } },
 	{ "eggShuffle", { "Egg Content", ParamType::boolean, ShuffleSetting::all } },
+	{ "skipZelda", { "Skip Zelda", ParamType::boolean, ShuffleSetting::vanilla } },
 	{ "restoreBrokenActors", { "Restore Broken Actors", ParamType::boolean, ShuffleSetting::all } },
 	{ "shuffleLotteryMm", { "Lottery Prizes", ParamType::boolean, ShuffleSetting::all } },
 	{ "progressiveShieldsOot", { "Progressive Shields - OoT", ParamType::boolean, ShuffleSetting::vanilla } },

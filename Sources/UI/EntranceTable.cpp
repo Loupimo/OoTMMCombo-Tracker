@@ -805,7 +805,11 @@ EntranceGameTabView::EntranceGameTabView(int Game, const char * Name, EntranceTa
     this->AllView = new AllEntranceView(this);
 
     // Scene Map view: EntranceSceneView configures antialiasing, drag-pan and wheel zoom itself.
+    // Solid black backdrop so the rendered map image — which uses either a
+    // transparent or already-black background — blends seamlessly with the
+    // surrounding empty area of the QGraphicsView.
     this->SceneMapScene = new QGraphicsScene(this);
+    this->SceneMapScene->setBackgroundBrush(QBrush(Qt::black));
     this->SceneMapView = new EntranceSceneView(this->SceneMapScene, this);
 
     // Center stack: AllView when no scene is selected, SceneMapView otherwise

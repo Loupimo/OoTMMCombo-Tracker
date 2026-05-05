@@ -1,9 +1,6 @@
 QList<QPair<int, int>> GrassPoints = {
-{58, 183},
+{353, 520},
 };
 QList<QPair<int, int>> ChestPoints = {
-{58, 207},
-};
-QList<QPair<int, int>> CowPoints = {
-{199, 199},
+{353, 707},
 };

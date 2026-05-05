@@ -271,6 +271,11 @@ SceneRenderer::SceneRenderer(SceneInfo* SceneToRender, QTreeWidget* ObjectsTreeW
     this->ItemOwner = Owner;
     this->Filter = Filter;
 
+    // Solid black backdrop so the rendered map image — which uses either a
+    // transparent or already-black background — blends seamlessly with the
+    // surrounding empty area of the QGraphicsView.
+    this->setBackgroundBrush(QBrush(Qt::black));
+
     for (size_t i = 0; i < ObjectType::last - 1; i++)
     {   // Creates all objects renderer
 

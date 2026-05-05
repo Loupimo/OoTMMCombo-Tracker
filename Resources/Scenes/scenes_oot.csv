@@ -10,7 +10,7 @@ OOT_TEMPLE_SHADOW;Shadow Temple;;./Resources/OoT/Dungeons/Shadow/Shadow_Map.jpg;
 OOT_BOTTOM_OF_THE_WELL;Bottom of the Well;;./Resources/OoT/Dungeons/Well/Well_Map.jpg;Dungeons;false;oot
 OOT_ICE_CAVERN;Ice Cavern;./Resources/OoT/Dungeons/Ice/Ice.jpg;./Resources/OoT/Dungeons/Ice/Ice_Map.jpg;Dungeons;false;oot
 OOT_GANON_TOWER;Ganon Tower;;./Resources/OoT/Ganon/GT_Map.jpg;Dungeons;false;oot
-OOT_GERUDO_TRAINING_GROUND;Gerudo Training Ground;./Resources/OoT/Dungeons/GTG/GTG.jpg;./Resources/OoT/Dungeons/GTG/GTG.jpg;Gerudo_Fortress;false;oot
+OOT_GERUDO_TRAINING_GROUND;Gerudo Training Ground;./Resources/OoT/Dungeons/GTG/GTG.jpg;./Resources/OoT/Dungeons/GTG/GTG_Map.jpg;Gerudo_Fortress;false;oot
 OOT_THIEVES_HIDEOUT;Thieves' Hideout;./Resources/OoT/Gerudo_Fortress/Hideout.png;./Resources/OoT/Gerudo_Fortress/Hideout_Map.jpg;Gerudo_Fortress;false;oot
 OOT_INSIDE_GANON_CASTLE;Inside Ganon Castle;./Resources/OoT/Ganon/GT_1F.jpg;./Resources/OoT/Ganon/GT_1F_Map.jpg;Dungeons;false;oot
 OOT_GANON_TOWER_COLLAPSING;Ganon Tower - Collapsing;;;None;false;oot
@@ -117,7 +117,7 @@ OOT_GROTTO_ZORA_RIVER_STORMS;Song of Storms Grotto;./Resources/OoT/Grottos/Doubl
 OOT_GROTTO_ZORA_RIVER_GENERIC;Generic Grotto;./Resources/OoT/Grottos/Open.png;./Resources/OoT/Grottos/Open_Map.jpg;Zora_River;false;oot
 OOT_GROTTO_LAKE_HYLIA_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Grottos/Triple_Scrubs.png;./Resources/OoT/Grottos/Triple_Scrubs_Map.jpg;Lake_Hylia;false;oot
 OOT_GROTTO_LON_LON_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Grottos/Triple_Scrubs.png;./Resources/OoT/Grottos/Triple_Scrubs_Map.jpg;Lon_Lon_Ranch;false;oot
-OOT_GROTTO_HYRULE_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Grottos/Cow.png;./Resources/OoT/Grottos/Cow_Map.jpg;Hyrule;false;oot
+OOT_GROTTO_HYRULE_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Grottos/Cow.png;./Resources/OoT/Grottos/Field_Scrub_Map.jpg;Hyrule;false;oot
 OOT_GROTTO_HYRULE_SE;Southeast Grotto;./Resources/OoT/Grottos/Open.png;./Resources/OoT/Grottos/Open_Map.jpg;Hyrule;false;oot
 OOT_GROTTO_HYRULE_OPEN;Open Grotto;./Resources/OoT/Grottos/Open.png;./Resources/OoT/Grottos/Open_Map.jpg;Hyrule;false;oot
 OOT_GROTTO_HYRULE_MARKET;Market Side Grotto;./Resources/OoT/Grottos/Open.png;./Resources/OoT/Grottos/Open_Map.jpg;Hyrule;false;oot
@@ -142,7 +142,7 @@ OOT_GREAT_FAIRY_MAGIC2;Crater Great Fairy Fountain;./Resources/OoT/Fairy/Great_F
 OOT_GREAT_FAIRY;Great Fairy Fountain;;;None;false;oot
 OOT_KAKARIKO_BAZAAR;Kakariko Bazaar;./Resources/OoT/Kakariko/Bazaar.png;./Resources/OoT/Market/Bazaar_Map.jpg;Kakariko;false;oot
 OOT_MARKET_BAZAAR;Market Bazaar;./Resources/OoT/Market/Bazaar.png;./Resources/OoT/Market/Bazaar_Map.jpg;Market;false;oot
-OOT_KAKARIKO_SHOOTING;Kakariko Shooting Gallery;./Resources/OoT/Kakariko/Shooting.png;./Resources/OoT/Kakariko/Shooting_Map.jpg;Kakariko;false;oot
+OOT_KAKARIKO_SHOOTING;Kakariko Shooting Gallery;./Resources/OoT/Kakariko/Shooting.png;./Resources/OoT/Market/Shooting_Map.jpg;Kakariko;false;oot
 OOT_MARKET_SHOOTING;Market Shooting Gallery;./Resources/OoT/Market/Shooting.png;./Resources/OoT/Market/Shooting_Map.jpg;Market;false;oot
 OOT_SILO;Silo;./Resources/OoT/Ranch/Silo.png;./Resources/OoT/Ranch/Silo_Map.jpg;Lon_Lon_Ranch;false;oot
 OOT_WINDMILL;Windmill;./Resources/OoT/Kakariko/Windmill.png;./Resources/OoT/Kakariko/Windmill_Map.jpg;Kakariko;true;oot
