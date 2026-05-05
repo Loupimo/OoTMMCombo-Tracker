@@ -1,13 +1,13 @@
 scene_id;scene_name;image_path;minimap_path;parent_region;has_context;active_layout
-OOT_DEKU_TREE;Deku Tree;;./Resources/OoT/Dungeons/Deku_Tree/Deku_Tree_Map.jpg;Dungeons;false;oot
-OOT_DODONGO_CAVERN;Dodongo's Cavern;;./Resources/OoT/Dungeons/Cavern/Cavern_Map.jpg;Dungeons;false;oot
-OOT_INSIDE_JABU_JABU;Inside Jabu-Jabu;;./Resources/OoT/Dungeons/Jabu-Jabu/Jabu-Jabu_Map.jpg;Dungeons;false;oot
-OOT_TEMPLE_FOREST;Forest Temple;;./Resources/OoT/Dungeons/Forest/Forest_Map.jpg;Dungeons;false;oot
-OOT_TEMPLE_FIRE;Fire Temple;;./Resources/OoT/Dungeons/Fire/Fire_Map.jpg;Dungeons;false;oot
-OOT_TEMPLE_WATER;Water Temple;;./Resources/OoT/Dungeons/Water/Water_Map.jpg;Dungeons;false;oot
-OOT_TEMPLE_SPIRIT;Spirit Temple;;./Resources/OoT/Dungeons/Spirit/Spirit_Map.jpg;Dungeons;false;oot
-OOT_TEMPLE_SHADOW;Shadow Temple;;./Resources/OoT/Dungeons/Shadow/Shadow_Map.jpg;Dungeons;false;oot
-OOT_BOTTOM_OF_THE_WELL;Bottom of the Well;;./Resources/OoT/Dungeons/Well/Well_Map.jpg;Dungeons;false;oot
+OOT_DEKU_TREE;Deku Tree;;./Resources/OoT/Dungeons/Deku_Tree/DEK_Map.jpg;Dungeons;false;oot
+OOT_DODONGO_CAVERN;Dodongo's Cavern;;./Resources/OoT/Dungeons/Cavern/CAV_Map.jpg;Dungeons;false;oot
+OOT_INSIDE_JABU_JABU;Inside Jabu-Jabu;;./Resources/OoT/Dungeons/Jabu-Jabu/JAB_Map.jpg;Dungeons;false;oot
+OOT_TEMPLE_FOREST;Forest Temple;;./Resources/OoT/Dungeons/Forest/FOT_Map.jpg;Dungeons;false;oot
+OOT_TEMPLE_FIRE;Fire Temple;;./Resources/OoT/Dungeons/Fire/FIT_Map.jpg;Dungeons;false;oot
+OOT_TEMPLE_WATER;Water Temple;;./Resources/OoT/Dungeons/Water/WT_Map.jpg;Dungeons;false;oot
+OOT_TEMPLE_SPIRIT;Spirit Temple;;./Resources/OoT/Dungeons/Spirit/SPT_Map.jpg;Dungeons;false;oot
+OOT_TEMPLE_SHADOW;Shadow Temple;;./Resources/OoT/Dungeons/Shadow/SHT_Map.jpg;Dungeons;false;oot
+OOT_BOTTOM_OF_THE_WELL;Bottom of the Well;;./Resources/OoT/Dungeons/Well/WEL_Map.jpg;Dungeons;false;oot
 OOT_ICE_CAVERN;Ice Cavern;./Resources/OoT/Dungeons/Ice/Ice.jpg;./Resources/OoT/Dungeons/Ice/Ice_Map.jpg;Dungeons;false;oot
 OOT_GANON_TOWER;Ganon Tower;;./Resources/OoT/Ganon/GT_Map.jpg;Dungeons;false;oot
 OOT_GERUDO_TRAINING_GROUND;Gerudo Training Ground;./Resources/OoT/Dungeons/GTG/GTG.jpg;./Resources/OoT/Dungeons/GTG/GTG_Map.jpg;Gerudo_Fortress;false;oot
@@ -46,7 +46,7 @@ OOT_BACK_ALLEY_HOUSE;Back Alley's House;./Resources/OoT/Market/Back_Alley_House.
 OOT_BAZAAR;Bazaar;;;None;false;oot
 OOT_KOKIRI_SHOP;Kokiri Shop;./Resources/OoT/Kokiri_Forest/Shop.png;./Resources/OoT/Kokiri_Forest/Shop_Map.jpg;Kokiri_Forest;false;oot
 OOT_GORON_SHOP;Goron Shop;./Resources/OoT/Goron_City/Shop.png;./Resources/OoT/Goron_City/Shop_Map.jpg;Goron_City;false;oot
-OOT_ZORA_SHOP;Zora Shop;./Resources/OoT/Zora_Domain/Shop.png;./Resources/OoT/Zora_Domain/Shop_Map.jpg;Zora_Domain;false;oot
+OOT_ZORA_SHOP;Zora Shop;./Resources/OoT/Zora_Domain/Shop.png;./Resources/OoT/Goron_City/Shop_Map.jpg;Zora_Domain;false;oot
 OOT_KAKARIKO_POTION_SHOP;Kakariko Potion Shop;./Resources/OoT/Kakariko/Potion_Shop.png;./Resources/OoT/Kakariko/Potion_Shop_Map.jpg;Kakariko;false;oot
 OOT_MARKET_POTION_SHOP;Market Potion Shop;./Resources/OoT/Market/Potion_Shop.png;./Resources/OoT/Market/Potion_Shop_Map.jpg;Market;false;oot
 OOT_BOMBCHU_SHOP;Bombchu Shop;./Resources/OoT/Market/Bombchu_Shop.png;./Resources/OoT/Market/Bombchu_Shop_Map.jpg;Market;false;oot
@@ -151,4 +151,4 @@ OOT_TEMPLE_OF_TIME_ENTRYWAY;Temple of Time Entryway;;./Resources/OoT/Market/Temp
 OOT_BACK_ALLEY;Back Alley;;./Resources/OoT/Market/Back_Alley_Map.jpg;None;false;oot
 OOT_SONGS;Warp Songs;;./Resources/OoT/Songs/Song_Map.jpg;None;false;oot
 OOT_INSIDE_EGGS;Inside Eggs;;;None;false;oot
-OOT_MARKET;Market;;./Resources/OoT/Hyrule/Market_Map.jpg;None;false;oot
+OOT_MARKET;Market;;./Resources/OoT/Market/Market_Map.jpg;None;false;oot
