@@ -53,19 +53,11 @@ protected:
 
 #pragma region // GlobalEntranceTableModel
 
-// ============================================
-// Constructor
-// ============================================
-
 GlobalEntranceTableModel::GlobalEntranceTableModel(EntranceGameTabView* parent) : QAbstractTableModel(parent)
 {
     this->Owner = parent;
     this->setScenes(*GetSceneEntranceMetaInfForGame(this->Owner->GameID));
 }
-
-// ============================================
-// Load scenes
-// ============================================
 
 void GlobalEntranceTableModel::setScenes(const std::map<uint32_t, SceneEntranceMetaInf>& scenes)
 {
@@ -122,10 +114,6 @@ void GlobalEntranceTableModel::setScenes(const std::map<uint32_t, SceneEntranceM
     this->Owner->SyncCounters();
 }
 
-// ============================================
-// Update one entrance
-// ============================================
-
 void GlobalEntranceTableModel::updateEntrance(uint32_t sceneID, uint32_t entranceID, const EntranceLink* link)
 {
     for (size_t i = 0; i < m_rows.size(); i++)
@@ -157,27 +145,15 @@ void GlobalEntranceTableModel::updateEntrance(uint32_t sceneID, uint32_t entranc
     }
 }
 
-// ============================================
-// Row count
-// ============================================
-
 int GlobalEntranceTableModel::rowCount(const QModelIndex&) const
 {
     return static_cast<int>(m_rows.size());
 }
 
-// ============================================
-// Column count
-// ============================================
-
 int GlobalEntranceTableModel::columnCount(const QModelIndex&) const
 {
     return 4;
 }
-
-// ============================================
-// Data
-// ============================================
 
 QVariant GlobalEntranceTableModel::data(const QModelIndex& index, int role) const
 {
@@ -185,10 +161,6 @@ QVariant GlobalEntranceTableModel::data(const QModelIndex& index, int role) cons
         return QVariant();
 
     const auto& row = m_rows[index.row()];
-
-    // =========================
-    // TEXTE
-    // =========================
 
     if (role == Qt::DisplayRole)
     {
@@ -208,10 +180,6 @@ QVariant GlobalEntranceTableModel::data(const QModelIndex& index, int role) cons
         }
     }
 
-    // =========================
-    // COULEUR DE FOND
-    // =========================
-
     if (role == Qt::BackgroundRole)
     {
         if (index.row() < m_rowColors.size())
@@ -220,10 +188,6 @@ QVariant GlobalEntranceTableModel::data(const QModelIndex& index, int role) cons
 
     return QVariant();
 }
-
-// ============================================
-// Headers
-// ============================================
 
 QVariant GlobalEntranceTableModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
@@ -251,10 +215,6 @@ QVariant GlobalEntranceTableModel::headerData(int section, Qt::Orientation orien
     return QVariant();
 }
 
-// ============================================
-// Format Link
-// ============================================
-
 QString GlobalEntranceTableModel::formatLink(uint32_t id) const
 {
     if (id == UINT32_MAX)
@@ -265,13 +225,11 @@ QString GlobalEntranceTableModel::formatLink(uint32_t id) const
         .toUpper();
 }
 
-
 QString GlobalEntranceTableModel::formatEntrance(uint32_t entranceID) const
 {
     if (entranceID == UINT32_MAX)
         return "?";
 
-    // TODO: remplacer par vrai nom
     return EntranceHelper::GetEntranceFromName(this->Owner->GameID, entranceID);
 }
 
@@ -339,11 +297,6 @@ QString GlobalEntranceTableModel::formatScene(uint32_t sceneID) const
 {
     return GetSceneName(this->Owner->GameID, sceneID);
 }
-
-
-// ============================================
-// Row color logic
-// ============================================
 
 
 QColor GlobalEntranceTableModel::rowStatusColor(GlobalEntranceRow row) const
@@ -1246,7 +1199,21 @@ void EntranceGameTabView::RefreshCategoryCounters()
 void EntranceGameTabView::RefreshContent()
 {
     this->AllView->RefreshContent();
-    //this->Model->setScenes(*GetSceneEntranceMetaInfForGame(this->Game));
+
+    // Re-render the currently displayed scene so the on-map overlay (anchor / box / curve) picks up
+    // any layout change applied via Settings without the user having to re-select the scene by hand.
+    // We also rebuild the right entrance tree because its content depends on the active layout.
+    if (this->CenterStack != nullptr && this->CenterStack->currentIndex() == 1
+        && this->MapList != nullptr && this->MapList->List != nullptr)
+    {
+        QTreeWidgetItem* current = this->MapList->List->currentItem();
+        SceneEntranceItemTree* sceneItem = dynamic_cast<SceneEntranceItemTree*>(current);
+        if (sceneItem != nullptr && sceneItem->SceneInf != nullptr)
+        {
+            this->PopulateEntranceList(sceneItem->SceneInf);
+            this->RenderSceneMap(sceneItem->SceneInf);
+        }
+    }
 }
 
 

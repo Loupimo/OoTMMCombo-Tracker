@@ -261,7 +261,7 @@ def parse_entrance(input_file, output_file_h, output_file_cpp, output_filemeta, 
         outCPPfile.write("\n};\n")
 
         # write meta
-        outfilemeta.write("#include \"UI/SceneEntrance.h\"\n#include \"Combo/Scenes.h\"\n\nstd::multimap<uint32_t, SceneEntranceMetaInf>" + prefix + "SceneEntranceMeta =\n{\n")
+        outfilemeta.write("#include \"UI/SceneEntrance.h\"\n#include \"Combo/Scenes.h\"\n\nstd::map<uint32_t, SceneEntranceMetaInf>" + prefix + "SceneEntranceMeta =\n{\n")
         scene_str = ""
         i = 0
         num_of_scenes = len (scene_entr_arr)

@@ -182,6 +182,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 			MM_DAMPE_HOUSE, (uint8_t)MMRegions::Graveyard,
 			{
 				{ MM_GRAVE_NIGHT3_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ MM_DAMPE_TO_GRAVEYARD_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_WALLMASTER_DAMPE_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
 			NULL

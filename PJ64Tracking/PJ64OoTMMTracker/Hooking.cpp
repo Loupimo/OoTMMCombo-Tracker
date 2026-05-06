@@ -32,6 +32,7 @@ uint32_t gActiveCoordOffset = OOT_PLAYER_COORD;             // The current offse
 uint32_t gActiveSceneOffset = OOT_SCENE_OFFSET;             // The current offset to add to reach the last scene offset.
 uint32_t gActiveCurrSceneOffset = OOT_CURR_SCENE_OFFSET;    // The current offset to add to reach the current scene ID offset.
 uint32_t gActiveFaroreOffset = OOT_FARORE_STATE;            // The current offset to add to reach the farore state offset.
+uint32_t gActiveDeathOffset = OOT_DEATH_STATE;            // The current offset to add to reach the death state offset.
 uint32_t gOOTActiveGlobalOffset = 0;                        // An offset to add to the active scene offset to reach the gLastScene variable for OoT.
 uint32_t gMMActiveGlobalOffset = 0;                         // An offset to add to the active scene offset to reach the gLastScene variable for MM.
 //uint32_t gActiveEntranceReg = S1_OFFSET;                    // The current register to use to get the next entrance value.
@@ -172,6 +173,7 @@ __asm mov[gActiveCoordOffset], ##Game##_PLAYER_COORD              \
 __asm mov[gActiveCurrSceneOffset], ##Game##_CURR_SCENE_OFFSET     \
 __asm mov[gActiveSceneOffset], ##Game##_SCENE_OFFSET              \
 __asm mov[gActiveFaroreOffset], ##Game##_FARORE_STATE             \
+__asm mov[gActiveDeathOffset], ##Game##_DEATH_STATE               \
 __asm mov eax, g##Game##ActiveGlobalOffset                        \
 __asm add[gActiveSceneOffset], eax
 
@@ -609,6 +611,7 @@ __declspec(naked) void PCHook()
             cmp [gGame], GAME_OOT
             jne PLAY_INIT_STORE_MEM
 
+            // Build Link age
             COMPUTE_RAM_ADDR(OOT_LINK_AGE, edx)
             mov edx, [edx]
             shr edx, 8
@@ -704,6 +707,7 @@ __declspec(naked) void PCHook()
             cmp[gGame], GAME_OOT
             jne TRANSITION_STORE_MEM
 
+            // Build Link age
             COMPUTE_RAM_ADDR(OOT_LINK_AGE, edx)
             mov edx, [edx]
             shr edx, 8
@@ -711,8 +715,14 @@ __declspec(naked) void PCHook()
             or ecx, edx
 
         TRANSITION_STORE_MEM :
-        
-            mov [edi + 4], ecx    // Store Mem = entrance flag + farore wind state + owl choice
+
+            // Build Death flag: add the death flag to link age => if age > 1 = death occured
+            COMPUTE_RAM_ADDR([gActiveDeathOffset], edx)
+            mov edx, [edx]
+            and edx, 00FF0000h
+            add ecx, edx
+
+            mov [edi + 4], ecx    // Store Mem = entrance flag + link age + farore wind state + owl choice
 
             // gLastScene
             COMPUTE_RAM_ADDR([gActiveSceneOffset], eax)

@@ -83,7 +83,7 @@ void EntranceMessage::SetMessage(uint32_t MsgDirection, uint32_t OwlID, uint32_t
 
     if (this->GameID == MM_GAME)
     {
-        this->Age = LinkAge::Child;
+        this->Age = (LinkAge)((uint8_t)this->Age + (uint8_t)LinkAge::Child);
     }
 }
 
@@ -450,7 +450,8 @@ bool EntranceHelper::IsMMExtra(EntranceMessage& Message)
 
 bool EntranceHelper::IsDeath(EntranceMessage& PrevMessage, EntranceMessage& CurrMessage)
 {
-    if (PrevMessage.SceneID == MM_INSIDE_CASTLE_IKANA || PrevMessage.SceneID == MM_LAIR_IKANA)
+    return (uint8_t)PrevMessage.Age > 1;
+    /*if (PrevMessage.SceneID == MM_INSIDE_CASTLE_IKANA || PrevMessage.SceneID == MM_LAIR_IKANA)
     {   // Special case for dying inside castle of Ikana
 
         return CurrMessage.EntranceID == MM_IKANA_CASTLE_EXTERIOR_FROM_WELL_ENTR;
@@ -461,7 +462,7 @@ bool EntranceHelper::IsDeath(EntranceMessage& PrevMessage, EntranceMessage& Curr
         return false;
     }
 
-    return PrevMessage.CurrRoom == CurrMessage.CurrRoom && CurrMessage.SceneID == PrevMessage.SceneID && CurrMessage.EntranceID == PrevMessage.EntranceID;
+    return PrevMessage.CurrRoom == CurrMessage.CurrRoom && CurrMessage.SceneID == PrevMessage.SceneID && CurrMessage.EntranceID == PrevMessage.EntranceID;*/
     //return PrevMessage.MetaInf->Type == EntranceType::Normal && CurrMessage.SceneID == PrevMessage.SceneID && CurrMessage.EntranceID == PrevMessage.EntranceID;
 }
 
@@ -2627,6 +2628,24 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                     Message.SceneID = WARP_SCENE;
                 }
               
+                break;
+            }
+
+            case MM_DAMPE_HOUSE:
+            {
+                if (Message.EntranceID == MM_IKANA_GRAVEYARD_FROM_DAMPE_ENTR)
+                {
+                    return MM_DAMPE_TO_GRAVEYARD_ENTR;
+                }
+                break;
+            }
+
+            case MM_IKANA_GRAVEYARD:
+            {
+                if (Message.EntranceID == MM_GRAVE_NIGHT3_ENTR)
+                {
+                    return MM_GRAVE_EXIT_NIGHT3;
+                }
                 break;
             }
         }
