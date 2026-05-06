@@ -13,6 +13,8 @@
 #include <QGroupBox>
 #include <QScrollArea>
 #include <QFrame>
+#include <QFileDialog>
+#include <QIcon>
 
 
 namespace
@@ -168,8 +170,11 @@ SettingsTab::SettingsTab(OoTMMComboTracker* Owner, QWidget* Parent)
     this->NavList->setCurrentRow(0);
     navLayout->addWidget(this->NavList, 1);
 
+    this->LoadSpoilerButton = new QPushButton("Load Spoiler Log", navColumn);
+    this->LoadSpoilerButton->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::SystemLogOut));
     this->ApplyButton = new QPushButton("Apply", navColumn);
     this->CancelButton = new QPushButton("Cancel", navColumn);
+    navLayout->addWidget(this->LoadSpoilerButton);
     navLayout->addWidget(this->ApplyButton);
     navLayout->addWidget(this->CancelButton);
 
@@ -202,6 +207,7 @@ SettingsTab::SettingsTab(OoTMMComboTracker* Owner, QWidget* Parent)
         this->accept();
     });
     connect(this->CancelButton, &QPushButton::clicked, this, &QDialog::reject);
+    connect(this->LoadSpoilerButton, &QPushButton::clicked, this, &SettingsTab::OnLoadSpoiler);
 
     // Initial values populated from the owner ROMSettings.
     this->LoadFromSettings();
@@ -1013,6 +1019,21 @@ void SettingsTab::ApplyLayoutSelections()
         if (SceneMetaInfo* info = GetSceneMetaInfo(MM_DEKU_PALACE, MM_GAME))               info->ActiveLayout = target;
         if (SceneMetaInfo* info = GetSceneMetaInfo(MM_GROTTO_DEKU_PALACE_GENERIC, MM_GAME)) info->ActiveLayout = target;
     }
+}
+
+
+void SettingsTab::OnLoadSpoiler()
+{
+    if (this->WinOwner == nullptr) return;
+
+    QString filePath = QFileDialog::getOpenFileName(this, "Choose a spoiler log", "", "Text Files (*.txt)");
+    if (filePath.isEmpty()) return;
+
+    this->WinOwner->LoadGameSpoiler(filePath);
+
+    // The spoiler parser overwrites every entry in ROMSettings, so we have to repopulate
+    // the editor widgets to mirror the new state.
+    this->LoadFromSettings();
 }
 
 #pragma endregion

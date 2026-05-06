@@ -49,6 +49,7 @@ private:
     QHash<uint32_t, QCheckBox*> MQLayoutChecks;     // Scene id -> Master Quest layout toggle (Layouts page).
     QCheckBox* JPLayoutDekuPalace = nullptr;        // Single Majora's Mask JP Deku Palace layout toggle (Layouts page).
 
+    QPushButton* LoadSpoilerButton = nullptr;       // Spoiler log loader at the bottom of the navigation column.
     QPushButton* ApplyButton = nullptr;             // Apply button at the bottom of the navigation column.
     QPushButton* CancelButton = nullptr;            // Cancel button at the bottom of the navigation column.
 
@@ -191,6 +192,12 @@ private:
     *   Apply the MQ / JP layout selections to the matching scenes ActiveLayout.
     */
     void ApplyLayoutSelections();
+
+    /*
+    *   Open a file dialog and forward the chosen spoiler log to OoTMMComboTracker::LoadGameSpoiler,
+    *   then reload the dialog widgets to reflect the freshly parsed ROMSettings.
+    */
+    void OnLoadSpoiler();
 
 #pragma endregion
 
