@@ -575,9 +575,19 @@ void OoTMMComboTracker::UpdateTabNameText(int TabID)
     }
 
     if (this->GlobalCounter != nullptr)
-    {
-        int totalFound = this->OoTTab->FoundObjects + this->MMTab->FoundObjects;
-        int totalObjs = this->OoTTab->TotalObjects + this->MMTab->TotalObjects;
+    {   // Skip the inactive game when the user picked an OoT-only or MM-only ROM,
+        // otherwise the leftover counters from the other tab leak into the Total.
+
+        bool includeOoT = this->ROMSettings.Game != ROMGame::mm;
+        bool includeMM = this->ROMSettings.Game != ROMGame::oot;
+
+        int ootFound = includeOoT ? this->OoTTab->FoundObjects : 0;
+        int mmFound = includeMM ? this->MMTab->FoundObjects : 0;
+        int ootTotal = includeOoT ? this->OoTTab->TotalObjects : 0;
+        int mmTotal = includeMM ? this->MMTab->TotalObjects : 0;
+
+        int totalFound = ootFound + mmFound;
+        int totalObjs = ootTotal + mmTotal;
         this->GlobalCounter->setText(QString(
             "<span style='color:#ddeeff; font-size:14px; font-weight:700;'>%1</span>"
             "<span style='color:#7a9abf; font-size:11px;'>/%2</span>")
@@ -586,7 +596,7 @@ void OoTMMComboTracker::UpdateTabNameText(int TabID)
         if (this->GlobalProgress != nullptr)
         {
             static_cast<DualProgressLine*>(this->GlobalProgress)->SetValues(
-                this->OoTTab->FoundObjects, this->MMTab->FoundObjects, totalObjs);
+                ootFound, mmFound, totalObjs);
         }
     }
 

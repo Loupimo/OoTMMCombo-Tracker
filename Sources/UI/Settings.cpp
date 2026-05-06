@@ -747,7 +747,7 @@ void Settings::ParseGamesLayouts(QString& LayoutSection)
 
 						GetSceneMetaInfo(MM_GROTTOS, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
 						GetSceneMetaInfo(MM_DEKU_PALACE, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
-						GetSceneMetaInfo(MM_GROTTO_DEKU_PALACE_GENERIC, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
+                        GetSceneMetaInfo(MM_GROTTO_DEKU_PALACE_GENERIC, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
 					}
 				}
 			}
@@ -1157,22 +1157,24 @@ void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
 							break;
 						}
 
-                        case EGameIcon::song:
-                        {   // Only filter when zelda's lullaby
-
-                            if (currObj->RenderScene != OOT_CASTLE_COURTYARD)
-                            {   // No filter on this type of song
-
-                                break;
-                            }
-                        }
                         case EGameIcon::letter:
                         {
-                            this->CheckObjectExclusion(currObj, this->FilterSettings["skipZelda"].Value, Filter);
+
+                            this->CheckObjectExclusion(currObj, this->FilterSettings["skipZelda"].Value == ShuffleSetting::vanilla ? ShuffleSetting::all : ShuffleSetting::vanilla, Filter);
                             break;
                         }
 					}
 				}
+
+                case ObjectType::song:
+                {
+                    if (currObj->RenderScene == OOT_CASTLE_COURTYARD)
+                    {   // Only filter zelda's song object
+
+                        this->CheckObjectExclusion(currObj, this->FilterSettings["skipZelda"].Value == ShuffleSetting::vanilla ? ShuffleSetting::all : ShuffleSetting::vanilla, Filter);
+                    }
+                    break;
+                }
 
 				case ObjectType::none:
 				default:
@@ -2455,6 +2457,7 @@ void Settings::CheckObjectExclusion(ObjectInfo* ToCheck, ShuffleSetting SettingV
 {
 	switch (SettingValue)
 	{
+        case ShuffleSetting::removed:
 		case ShuffleSetting::vanilla:
 		{
 			Filter->ExcludeNewObject(ToCheck);

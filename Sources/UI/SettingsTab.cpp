@@ -1,5 +1,8 @@
 #include "UI/SettingsTab.h"
 #include "UI/OoTMMComboTracker.h"
+#include "Combo/Items.h"
+#include "Combo/Scenes.h"
+#include "Multi/Game.h"
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QGridLayout>
@@ -10,6 +13,125 @@
 #include <QGroupBox>
 #include <QScrollArea>
 #include <QFrame>
+
+
+namespace
+{
+    /*
+    *   Per-dungeon Ocarina of Time small key / key ring item id pairs, mirroring the
+    *   "Small Key Ring (OoT)" parser table in Settings::ParseKeyRings.
+    */
+    struct DungeonItemPair
+    {
+        const char* Label;
+        uint32_t SmallId;
+        uint32_t RingId;
+    };
+
+    static const DungeonItemPair OoTKeyRings[] =
+    {
+        { "Forest Temple",            OOT_SMALL_KEY_FOREST, OOT_KEY_RING_FOREST },
+        { "Fire Temple",              OOT_SMALL_KEY_FIRE,   OOT_KEY_RING_FIRE   },
+        { "Water Temple",             OOT_SMALL_KEY_WATER,  OOT_KEY_RING_WATER  },
+        { "Shadow Temple",            OOT_SMALL_KEY_SHADOW, OOT_KEY_RING_SHADOW },
+        { "Spirit Temple",            OOT_SMALL_KEY_SPIRIT, OOT_KEY_RING_SPIRIT },
+        { "Bottom of the Well",       OOT_SMALL_KEY_BOTW,   OOT_KEY_RING_BOTW   },
+        { "Gerudo Training Grounds",  OOT_SMALL_KEY_GTG,    OOT_KEY_RING_GTG    },
+        { "Ganon's Castle",           OOT_SMALL_KEY_GANON,  OOT_KEY_RING_GANON  },
+        { "Hideout",                  OOT_SMALL_KEY_GF,     OOT_KEY_RING_GF     },
+        { "Chest Game",               OOT_SMALL_KEY_TCG,    OOT_KEY_RING_TCG    }
+    };
+
+    /*
+    *   Per-dungeon Majora's Mask small key / key ring item id pairs, mirroring the
+    *   "Small Key Ring (MM)" parser table in Settings::ParseKeyRings.
+    */
+    static const DungeonItemPair MMKeyRings[] =
+    {
+        { "Woodfall Temple",     MM_SMALL_KEY_WF, MM_KEY_RING_WF },
+        { "Snowhead Temple",     MM_SMALL_KEY_SH, MM_KEY_RING_SH },
+        { "Great Bay Temple",    MM_SMALL_KEY_GB, MM_KEY_RING_GB },
+        { "Stone Tower Temple",  MM_SMALL_KEY_ST, MM_KEY_RING_ST }
+    };
+
+    /*
+    *   Per-area Ocarina of Time silver rupee / silver pouch item id pairs, mirroring the
+    *   "Silver Rupee Pouches" parser table in Settings::ParseSilverPouches.
+    */
+    static const DungeonItemPair OoTSilverPouches[] =
+    {
+        { "Dodongo's Cavern",          OOT_RUPEE_SILVER_DC,              OOT_POUCH_SILVER_DC              },
+        { "Bottom of the Well",        OOT_RUPEE_SILVER_BOTW,            OOT_POUCH_SILVER_BOTW            },
+        { "Spirit Temple (Child)",     OOT_RUPEE_SILVER_SPIRIT_CHILD,    OOT_POUCH_SILVER_SPIRIT_CHILD    },
+        { "Spirit Temple (Sun)",       OOT_RUPEE_SILVER_SPIRIT_SUN,      OOT_POUCH_SILVER_SPIRIT_SUN      },
+        { "Spirit Temple (Boulders)",  OOT_RUPEE_SILVER_SPIRIT_BOULDERS, OOT_POUCH_SILVER_SPIRIT_BOULDERS },
+        { "Spirit Temple (Lobby)",     OOT_RUPEE_SILVER_SPIRIT_LOBBY,    OOT_POUCH_SILVER_SPIRIT_LOBBY    },
+        { "Spirit Temple (Adult)",     OOT_RUPEE_SILVER_SPIRIT_ADULT,    OOT_POUCH_SILVER_SPIRIT_ADULT    },
+        { "Shadow Temple (Scythe)",    OOT_RUPEE_SILVER_SHADOW_SCYTHE,   OOT_POUCH_SILVER_SHADOW_SCYTHE   },
+        { "Shadow Temple (Pit)",       OOT_RUPEE_SILVER_SHADOW_PIT,      OOT_POUCH_SILVER_SHADOW_PIT      },
+        { "Shadow Temple (Spikes)",    OOT_RUPEE_SILVER_SHADOW_SPIKES,   OOT_POUCH_SILVER_SHADOW_SPIKES   },
+        { "Shadow Temple (Blades)",    OOT_RUPEE_SILVER_SHADOW_BLADES,   OOT_POUCH_SILVER_SHADOW_BLADES   },
+        { "Ice Cavern (Scythe)",       OOT_RUPEE_SILVER_IC_SCYTHE,       OOT_POUCH_SILVER_IC_SCYTHE       },
+        { "Ice Cavern (Block)",        OOT_RUPEE_SILVER_IC_BLOCK,        OOT_POUCH_SILVER_IC_BLOCK        },
+        { "GTG (Slopes)",              OOT_RUPEE_SILVER_GTG_SLOPES,      OOT_POUCH_SILVER_GTG_SLOPES      },
+        { "GTG (Lava)",                OOT_RUPEE_SILVER_GTG_LAVA,        OOT_POUCH_SILVER_GTG_LAVA        },
+        { "GTG (Water)",               OOT_RUPEE_SILVER_GTG_WATER,       OOT_POUCH_SILVER_GTG_WATER       },
+        { "Ganon's Castle (Light)",    OOT_RUPEE_SILVER_GANON_LIGHT,     OOT_POUCH_SILVER_GANON_LIGHT     },
+        { "Ganon's Castle (Forest)",   OOT_RUPEE_SILVER_GANON_FOREST,    OOT_POUCH_SILVER_GANON_FOREST    },
+        { "Ganon's Castle (Fire)",     OOT_RUPEE_SILVER_GANON_FIRE,      OOT_POUCH_SILVER_GANON_FIRE      },
+        { "Ganon's Castle (Water)",    OOT_RUPEE_SILVER_GANON_WATER,     OOT_POUCH_SILVER_GANON_WATER     },
+        { "Ganon's Castle (Shadow)",   OOT_RUPEE_SILVER_GANON_SHADOW,    OOT_POUCH_SILVER_GANON_SHADOW    },
+        { "Ganon's Castle (Spirit)",   OOT_RUPEE_SILVER_GANON_SPIRIT,    OOT_POUCH_SILVER_GANON_SPIRIT    }
+    };
+
+    struct OwlChoice
+    {
+        const char* Label;
+        uint32_t ItemId;
+    };
+
+    /*
+    *   Pre-activated owl statues, mirroring the table in Settings::ParsePreActivatedOwl.
+    */
+    static const OwlChoice MMOwlStatues[] =
+    {
+        { "Clock Town",        MM_OWL_CLOCK_TOWN       },
+        { "Milk Road",         MM_OWL_MILK_ROAD        },
+        { "Southern Swamp",    MM_OWL_SOUTHERN_SWAMP   },
+        { "Woodfall",          MM_OWL_WOODFALL         },
+        { "Mountain Village",  MM_OWL_MOUNTAIN_VILLAGE },
+        { "Snowhead",          MM_OWL_SNOWHEAD         },
+        { "Great Bay Coast",   MM_OWL_GREAT_BAY        },
+        { "Zora Cape",         MM_OWL_ZORA_CAPE        },
+        { "Ikana Canyon",      MM_OWL_IKANA_CANYON     },
+        { "Stone Tower",       MM_OWL_STONE_TOWER      }
+    };
+
+    struct MQScene
+    {
+        const char* Label;
+        uint32_t SceneId;
+    };
+
+    /*
+    *   Scenes that own a Master Quest layout, mirroring the cases in Settings::ParseGamesLayouts.
+    */
+    static const MQScene OoTMQScenes[] =
+    {
+        { "Deku Tree",               OOT_DEKU_TREE              },
+        { "Dodongo's Cavern",        OOT_DODONGO_CAVERN         },
+        { "Jabu-Jabu",               OOT_INSIDE_JABU_JABU       },
+        { "Forest Temple",           OOT_TEMPLE_FOREST          },
+        { "Fire Temple",             OOT_TEMPLE_FIRE            },
+        { "Water Temple",            OOT_TEMPLE_WATER           },
+        { "Shadow Temple",           OOT_TEMPLE_SHADOW          },
+        { "Spirit Temple",           OOT_TEMPLE_SPIRIT          },
+        { "Bottom of the Well",      OOT_BOTTOM_OF_THE_WELL     },
+        { "Ice Cavern",              OOT_ICE_CAVERN             },
+        { "Gerudo Training Grounds", OOT_GERUDO_TRAINING_GROUND },
+        { "Ganon's Castle",          OOT_INSIDE_GANON_CASTLE    }
+    };
+}
 
 
 #pragma region Class creation
@@ -39,6 +161,10 @@ SettingsTab::SettingsTab(OoTMMComboTracker* Owner, QWidget* Parent)
     this->NavList->addItem("NPC & Shops");
     this->NavList->addItem("Breakables");
     this->NavList->addItem("Special");
+    this->NavList->addItem("Progressive Items");
+    this->NavList->addItem("Shared Items");
+    this->NavList->addItem("World Items");
+    this->NavList->addItem("MQ / JP Layouts");
     this->NavList->setCurrentRow(0);
     navLayout->addWidget(this->NavList, 1);
 
@@ -54,6 +180,10 @@ SettingsTab::SettingsTab(OoTMMComboTracker* Owner, QWidget* Parent)
     this->Pages->addWidget(this->BuildNpcPage());
     this->Pages->addWidget(this->BuildBreakablePage());
     this->Pages->addWidget(this->BuildSpecialPage());
+    this->Pages->addWidget(this->BuildProgressiveItemsPage());
+    this->Pages->addWidget(this->BuildSharedItemsPage());
+    this->Pages->addWidget(this->BuildWorldItemsPage());
+    this->Pages->addWidget(this->BuildLayoutsPage());
 
     // Vertical separator between the nav and the stack so the nav reads as a side panel.
     QFrame* sep = new QFrame(this);
@@ -116,14 +246,27 @@ QLabel* SettingsTab::MakeGameBadge(const QString& GameLabel)
 }
 
 
+Parameter* SettingsTab::FindParameter(const QString& Key)
+{
+    if (this->WinOwner == nullptr) return nullptr;
+
+    auto& filterSettings = this->WinOwner->ROMSettings.FilterSettings;
+    auto fIt = filterSettings.find(Key);
+    if (fIt != filterSettings.end()) return &fIt.value();
+
+    auto& itemSettings = this->WinOwner->ROMSettings.ItemSettings;
+    auto iIt = itemSettings.find(Key);
+    if (iIt != itemSettings.end()) return &iIt.value();
+
+    return nullptr;
+}
+
+
 void SettingsTab::AddParamRow(QGridLayout* Layout, const QString& Key, const QString& GameLabel)
 {
-    if (this->WinOwner == nullptr) return;
+    Parameter* param = this->FindParameter(Key);
+    if (param == nullptr) return;
 
-    auto& romSettings = this->WinOwner->ROMSettings.FilterSettings;
-    if (!romSettings.contains(Key)) return;
-
-    const Parameter& param = romSettings[Key];
     int row = Layout->rowCount();
 
     // Game badge (column 0).
@@ -134,22 +277,14 @@ void SettingsTab::AddParamRow(QGridLayout* Layout, const QString& Key, const QSt
     }
 
     // Setting display name (column 1).
-    QLabel* nameLabel = new QLabel(param.Name);
+    QLabel* nameLabel = new QLabel(param->Name);
     nameLabel->setStyleSheet("color: #ddeeff;");
     Layout->addWidget(nameLabel, row, 1);
 
     // Editor widget (column 2).
     QWidget* editor = nullptr;
-    switch (param.Type)
+    switch (param->Type)
     {
-        case ParamType::boolean:
-        {
-            QCheckBox* check = new QCheckBox();
-            check->setChecked(param.Value == ShuffleSetting::all);
-            editor = check;
-            break;
-        }
-
         case ParamType::shuffle:
         {
             QComboBox* combo = new QComboBox();
@@ -157,9 +292,18 @@ void SettingsTab::AddParamRow(QGridLayout* Layout, const QString& Key, const QSt
             combo->addItem("Dungeons", static_cast<int>(ShuffleSetting::dungeons));
             combo->addItem("Overworld", static_cast<int>(ShuffleSetting::overworld));
             combo->addItem("Anywhere", static_cast<int>(ShuffleSetting::all));
-            int idx = combo->findData(static_cast<int>(param.Value));
+            int idx = combo->findData(static_cast<int>(param->Value));
             if (idx >= 0) combo->setCurrentIndex(idx);
             editor = combo;
+            break;
+        }
+
+        case ParamType::boolean:
+        case ParamType::uint:
+        {
+            QCheckBox* check = new QCheckBox();
+            check->setChecked(param->Value == ShuffleSetting::all);
+            editor = check;
             break;
         }
 
@@ -233,6 +377,15 @@ QWidget* SettingsTab::BuildGeneralPage()
     teamsLayout->addWidget(this->TeamsSpin);
     teamsLayout->addStretch(1);
     vbox->addWidget(teamsBox);
+
+    // Misc group (single shared toggles like skipZelda) ------------------
+    QGroupBox* miscBox = new QGroupBox("Misc", page);
+    QGridLayout* miscGrid = new QGridLayout(miscBox);
+    miscGrid->setColumnStretch(1, 1);
+    miscGrid->setHorizontalSpacing(10);
+    miscGrid->setVerticalSpacing(6);
+    this->AddParamRow(miscGrid, "skipZelda", "OoT");
+    vbox->addWidget(miscBox);
 
     vbox->addStretch(1);
     return page;
@@ -395,6 +548,234 @@ QWidget* SettingsTab::BuildSpecialPage()
     return page;
 }
 
+
+QWidget* SettingsTab::BuildProgressiveItemsPage()
+{
+    QWidget* page = new QWidget(this);
+    QVBoxLayout* vbox = new QVBoxLayout(page);
+    vbox->setContentsMargins(16, 16, 16, 16);
+
+    QScrollArea* scroll = new QScrollArea(page);
+    scroll->setWidgetResizable(true);
+    QWidget* content = new QWidget();
+    QGridLayout* grid = new QGridLayout(content);
+    grid->setColumnStretch(1, 1);
+    grid->setHorizontalSpacing(10);
+    grid->setVerticalSpacing(6);
+
+    if (this->WinOwner != nullptr)
+    {
+        // Iterate ItemSettings in declaration order so the rows mirror Settings.cpp.
+        for (auto it = this->WinOwner->ROMSettings.ItemSettings.cbegin();
+             it != this->WinOwner->ROMSettings.ItemSettings.cend(); ++it)
+        {
+            const QString& key = it.key();
+            if (key.startsWith("shared")) continue;
+
+            QString badge;
+            if (key.endsWith("Oot")) badge = "OoT";
+            else if (key.endsWith("Mm")) badge = "MM";
+            this->AddParamRow(grid, key, badge);
+        }
+    }
+
+    grid->setRowStretch(grid->rowCount(), 1);
+    scroll->setWidget(content);
+    vbox->addWidget(scroll);
+    return page;
+}
+
+
+QWidget* SettingsTab::BuildSharedItemsPage()
+{
+    QWidget* page = new QWidget(this);
+    QVBoxLayout* vbox = new QVBoxLayout(page);
+    vbox->setContentsMargins(16, 16, 16, 16);
+
+    QScrollArea* scroll = new QScrollArea(page);
+    scroll->setWidgetResizable(true);
+    QWidget* content = new QWidget();
+    QGridLayout* grid = new QGridLayout(content);
+    grid->setColumnStretch(1, 1);
+    grid->setHorizontalSpacing(10);
+    grid->setVerticalSpacing(6);
+
+    if (this->WinOwner != nullptr)
+    {
+        for (auto it = this->WinOwner->ROMSettings.ItemSettings.cbegin();
+             it != this->WinOwner->ROMSettings.ItemSettings.cend(); ++it)
+        {
+            const QString& key = it.key();
+            if (!key.startsWith("shared")) continue;
+
+            // Shared toggles cross both games so leave the badge empty.
+            this->AddParamRow(grid, key, "");
+        }
+    }
+
+    grid->setRowStretch(grid->rowCount(), 1);
+    scroll->setWidget(content);
+    vbox->addWidget(scroll);
+    return page;
+}
+
+
+QWidget* SettingsTab::BuildWorldItemsPage()
+{
+    QWidget* page = new QWidget(this);
+    QVBoxLayout* vbox = new QVBoxLayout(page);
+    vbox->setContentsMargins(16, 16, 16, 16);
+    vbox->setSpacing(14);
+
+    QScrollArea* scroll = new QScrollArea(page);
+    scroll->setWidgetResizable(true);
+    QWidget* content = new QWidget();
+    QVBoxLayout* contentLayout = new QVBoxLayout(content);
+    contentLayout->setSpacing(14);
+
+    // Key Rings group ----------------------------------------------------
+    QGroupBox* ringBox = new QGroupBox("Small Key Rings", content);
+    QGridLayout* ringGrid = new QGridLayout(ringBox);
+    ringGrid->setColumnStretch(1, 1);
+    ringGrid->setColumnStretch(3, 1);
+    ringGrid->setHorizontalSpacing(10);
+    ringGrid->setVerticalSpacing(6);
+
+    int ringRow = 0;
+    for (const DungeonItemPair& pair : OoTKeyRings)
+    {
+        QLabel* badge = this->MakeGameBadge("OoT");
+        QLabel* nameLabel = new QLabel(pair.Label);
+        nameLabel->setStyleSheet("color: #ddeeff;");
+        QCheckBox* check = new QCheckBox();
+        ringGrid->addWidget(badge, ringRow, 0, Qt::AlignVCenter | Qt::AlignLeft);
+        ringGrid->addWidget(nameLabel, ringRow, 1);
+        ringGrid->addWidget(check, ringRow, 2);
+        this->KeyRingChecksOoT.insert(QString::fromUtf8(pair.Label), check);
+        ringRow++;
+    }
+    for (const DungeonItemPair& pair : MMKeyRings)
+    {
+        QLabel* badge = this->MakeGameBadge("MM");
+        QLabel* nameLabel = new QLabel(pair.Label);
+        nameLabel->setStyleSheet("color: #ddeeff;");
+        QCheckBox* check = new QCheckBox();
+        ringGrid->addWidget(badge, ringRow, 0, Qt::AlignVCenter | Qt::AlignLeft);
+        ringGrid->addWidget(nameLabel, ringRow, 1);
+        ringGrid->addWidget(check, ringRow, 2);
+        this->KeyRingChecksMM.insert(QString::fromUtf8(pair.Label), check);
+        ringRow++;
+    }
+    contentLayout->addWidget(ringBox);
+
+    // Silver Pouches group ----------------------------------------------
+    QGroupBox* pouchBox = new QGroupBox("Silver Rupee Pouches", content);
+    QGridLayout* pouchGrid = new QGridLayout(pouchBox);
+    pouchGrid->setColumnStretch(1, 1);
+    pouchGrid->setHorizontalSpacing(10);
+    pouchGrid->setVerticalSpacing(6);
+
+    int pouchRow = 0;
+    for (const DungeonItemPair& pair : OoTSilverPouches)
+    {
+        QLabel* badge = this->MakeGameBadge("OoT");
+        QLabel* nameLabel = new QLabel(pair.Label);
+        nameLabel->setStyleSheet("color: #ddeeff;");
+        QCheckBox* check = new QCheckBox();
+        pouchGrid->addWidget(badge, pouchRow, 0, Qt::AlignVCenter | Qt::AlignLeft);
+        pouchGrid->addWidget(nameLabel, pouchRow, 1);
+        pouchGrid->addWidget(check, pouchRow, 2);
+        this->SilverPouchChecks.insert(QString::fromUtf8(pair.Label), check);
+        pouchRow++;
+    }
+    contentLayout->addWidget(pouchBox);
+
+    // Owl Statues group --------------------------------------------------
+    QGroupBox* owlBox = new QGroupBox("Pre-Activated Owl Statues", content);
+    QGridLayout* owlGrid = new QGridLayout(owlBox);
+    owlGrid->setColumnStretch(1, 1);
+    owlGrid->setHorizontalSpacing(10);
+    owlGrid->setVerticalSpacing(6);
+
+    int owlRow = 0;
+    for (const OwlChoice& owl : MMOwlStatues)
+    {
+        QLabel* badge = this->MakeGameBadge("MM");
+        QLabel* nameLabel = new QLabel(owl.Label);
+        nameLabel->setStyleSheet("color: #ddeeff;");
+        QCheckBox* check = new QCheckBox();
+        owlGrid->addWidget(badge, owlRow, 0, Qt::AlignVCenter | Qt::AlignLeft);
+        owlGrid->addWidget(nameLabel, owlRow, 1);
+        owlGrid->addWidget(check, owlRow, 2);
+        this->OwlStatueChecks.insert(QString::fromUtf8(owl.Label), check);
+        owlRow++;
+    }
+    contentLayout->addWidget(owlBox);
+
+    contentLayout->addStretch(1);
+    scroll->setWidget(content);
+    vbox->addWidget(scroll);
+    return page;
+}
+
+
+QWidget* SettingsTab::BuildLayoutsPage()
+{
+    QWidget* page = new QWidget(this);
+    QVBoxLayout* vbox = new QVBoxLayout(page);
+    vbox->setContentsMargins(16, 16, 16, 16);
+    vbox->setSpacing(14);
+
+    QScrollArea* scroll = new QScrollArea(page);
+    scroll->setWidgetResizable(true);
+    QWidget* content = new QWidget();
+    QVBoxLayout* contentLayout = new QVBoxLayout(content);
+    contentLayout->setSpacing(14);
+
+    // Master Quest group -------------------------------------------------
+    QGroupBox* mqBox = new QGroupBox("Master Quest Dungeons", content);
+    QGridLayout* mqGrid = new QGridLayout(mqBox);
+    mqGrid->setColumnStretch(1, 1);
+    mqGrid->setHorizontalSpacing(10);
+    mqGrid->setVerticalSpacing(6);
+
+    int mqRow = 0;
+    for (const MQScene& scene : OoTMQScenes)
+    {
+        QLabel* badge = this->MakeGameBadge("OoT");
+        QLabel* nameLabel = new QLabel(scene.Label);
+        nameLabel->setStyleSheet("color: #ddeeff;");
+        QCheckBox* check = new QCheckBox();
+        mqGrid->addWidget(badge, mqRow, 0, Qt::AlignVCenter | Qt::AlignLeft);
+        mqGrid->addWidget(nameLabel, mqRow, 1);
+        mqGrid->addWidget(check, mqRow, 2);
+        this->MQLayoutChecks.insert(scene.SceneId, check);
+        mqRow++;
+    }
+    contentLayout->addWidget(mqBox);
+
+    // Majora's Mask JP group --------------------------------------------
+    QGroupBox* jpBox = new QGroupBox("Majora's Mask JP Layouts", content);
+    QGridLayout* jpGrid = new QGridLayout(jpBox);
+    jpGrid->setColumnStretch(1, 1);
+    jpGrid->setHorizontalSpacing(10);
+    jpGrid->setVerticalSpacing(6);
+
+    QLabel* jpBadge = this->MakeGameBadge("MM");
+    QLabel* jpName = new QLabel("Deku Palace");
+    jpName->setStyleSheet("color: #ddeeff;");
+    this->JPLayoutDekuPalace = new QCheckBox();
+    jpGrid->addWidget(jpBadge, 0, 0, Qt::AlignVCenter | Qt::AlignLeft);
+    jpGrid->addWidget(jpName, 0, 1);
+    jpGrid->addWidget(this->JPLayoutDekuPalace, 0, 2);
+    contentLayout->addWidget(jpBox);
+
+    contentLayout->addStretch(1);
+    scroll->setWidget(content);
+    vbox->addWidget(scroll);
+    return page;
+}
+
 #pragma endregion
 
 #pragma region Apply / Cancel
@@ -422,18 +803,70 @@ void SettingsTab::LoadFromSettings()
 
     for (auto it = this->ParamWidgets.cbegin(); it != this->ParamWidgets.cend(); ++it)
     {
-        if (!s.FilterSettings.contains(it.key())) continue;
-        const Parameter& p = s.FilterSettings[it.key()];
+        Parameter* p = this->FindParameter(it.key());
+        if (p == nullptr) continue;
 
         if (auto* check = qobject_cast<QCheckBox*>(it.value()))
         {
-            check->setChecked(p.Value == ShuffleSetting::all);
+            check->setChecked(p->Value == ShuffleSetting::all);
         }
         else if (auto* combo = qobject_cast<QComboBox*>(it.value()))
         {
-            int idx = combo->findData(static_cast<int>(p.Value));
+            int idx = combo->findData(static_cast<int>(p->Value));
             if (idx >= 0) combo->setCurrentIndex(idx);
         }
+    }
+
+    // Key rings: a ring is "enabled" when its item id is NOT in DisabledItemIDs.
+    for (const DungeonItemPair& pair : OoTKeyRings)
+    {
+        auto it = this->KeyRingChecksOoT.find(QString::fromUtf8(pair.Label));
+        if (it != this->KeyRingChecksOoT.end())
+        {
+            it.value()->setChecked(!s.DisabledItemIDs.contains(pair.RingId));
+        }
+    }
+    for (const DungeonItemPair& pair : MMKeyRings)
+    {
+        auto it = this->KeyRingChecksMM.find(QString::fromUtf8(pair.Label));
+        if (it != this->KeyRingChecksMM.end())
+        {
+            it.value()->setChecked(!s.DisabledItemIDs.contains(pair.RingId));
+        }
+    }
+    for (const DungeonItemPair& pair : OoTSilverPouches)
+    {
+        auto it = this->SilverPouchChecks.find(QString::fromUtf8(pair.Label));
+        if (it != this->SilverPouchChecks.end())
+        {
+            it.value()->setChecked(!s.DisabledItemIDs.contains(pair.RingId));
+        }
+    }
+    for (const OwlChoice& owl : MMOwlStatues)
+    {
+        auto it = this->OwlStatueChecks.find(QString::fromUtf8(owl.Label));
+        if (it != this->OwlStatueChecks.end())
+        {
+            it.value()->setChecked(s.StartingItemIDs.contains(owl.ItemId));
+        }
+    }
+
+    // Layouts: scene's ActiveLayout reflects the spoiler-driven choice.
+    for (const MQScene& scene : OoTMQScenes)
+    {
+        auto it = this->MQLayoutChecks.find(scene.SceneId);
+        if (it == this->MQLayoutChecks.end()) continue;
+
+        SceneMetaInfo* info = GetSceneMetaInfo(scene.SceneId, OOT_GAME);
+        if (info != nullptr)
+        {
+            it.value()->setChecked(info->ActiveLayout == GameLayout::oot_mq);
+        }
+    }
+    if (this->JPLayoutDekuPalace != nullptr)
+    {
+        SceneMetaInfo* info = GetSceneMetaInfo(MM_DEKU_PALACE, MM_GAME);
+        this->JPLayoutDekuPalace->setChecked(info != nullptr && info->ActiveLayout == GameLayout::mm_jp);
     }
 }
 
@@ -462,21 +895,124 @@ void SettingsTab::OnApply()
 
     for (auto it = this->ParamWidgets.cbegin(); it != this->ParamWidgets.cend(); ++it)
     {
-        if (!s.FilterSettings.contains(it.key())) continue;
-        Parameter& p = s.FilterSettings[it.key()];
+        Parameter* p = this->FindParameter(it.key());
+        if (p == nullptr) continue;
 
         if (auto* check = qobject_cast<QCheckBox*>(it.value()))
         {
-            p.Value = check->isChecked() ? ShuffleSetting::all : ShuffleSetting::vanilla;
+            p->Value = check->isChecked() ? ShuffleSetting::all : ShuffleSetting::vanilla;
         }
         else if (auto* combo = qobject_cast<QComboBox*>(it.value()))
         {
-            p.Value = static_cast<ShuffleSetting>(combo->currentData().toInt());
+            p->Value = static_cast<ShuffleSetting>(combo->currentData().toInt());
         }
     }
 
+    this->ApplyLayoutSelections();
     this->WinOwner->ApplySettings();
+    this->ApplyWorldItemSelections();
     this->WinOwner->RefreshTracker();
+}
+
+
+void SettingsTab::ApplyWorldItemSelections()
+{
+    if (this->WinOwner == nullptr) return;
+
+    Settings& s = this->WinOwner->ROMSettings;
+
+    // Key rings: checked => the small key id is disabled and the ring id is enabled.
+    for (const DungeonItemPair& pair : OoTKeyRings)
+    {
+        auto it = this->KeyRingChecksOoT.find(QString::fromUtf8(pair.Label));
+        if (it == this->KeyRingChecksOoT.end()) continue;
+
+        if (it.value()->isChecked())
+        {
+            s.DisabledItemIDs.insert(pair.SmallId);
+            s.DisabledItemIDs.remove(pair.RingId);
+        }
+        else
+        {
+            s.DisabledItemIDs.remove(pair.SmallId);
+            s.DisabledItemIDs.insert(pair.RingId);
+        }
+    }
+    for (const DungeonItemPair& pair : MMKeyRings)
+    {
+        auto it = this->KeyRingChecksMM.find(QString::fromUtf8(pair.Label));
+        if (it == this->KeyRingChecksMM.end()) continue;
+
+        if (it.value()->isChecked())
+        {
+            s.DisabledItemIDs.insert(pair.SmallId);
+            s.DisabledItemIDs.remove(pair.RingId);
+        }
+        else
+        {
+            s.DisabledItemIDs.remove(pair.SmallId);
+            s.DisabledItemIDs.insert(pair.RingId);
+        }
+    }
+
+    // Silver pouches: checked => silver rupee id is disabled and pouch id is enabled.
+    for (const DungeonItemPair& pair : OoTSilverPouches)
+    {
+        auto it = this->SilverPouchChecks.find(QString::fromUtf8(pair.Label));
+        if (it == this->SilverPouchChecks.end()) continue;
+
+        if (it.value()->isChecked())
+        {
+            s.DisabledItemIDs.insert(pair.SmallId);
+            s.DisabledItemIDs.remove(pair.RingId);
+        }
+        else
+        {
+            s.DisabledItemIDs.remove(pair.SmallId);
+            s.DisabledItemIDs.insert(pair.RingId);
+        }
+    }
+
+    // Owl statues: checked => the owl id is in StartingItemIDs with count 1.
+    for (const OwlChoice& owl : MMOwlStatues)
+    {
+        auto it = this->OwlStatueChecks.find(QString::fromUtf8(owl.Label));
+        if (it == this->OwlStatueChecks.end()) continue;
+
+        if (it.value()->isChecked())
+        {
+            s.StartingItemIDs.insert(owl.ItemId, 1);
+        }
+        else
+        {
+            s.StartingItemIDs.remove(owl.ItemId);
+        }
+    }
+}
+
+
+void SettingsTab::ApplyLayoutSelections()
+{
+    // Master Quest: scene per scene.
+    for (const MQScene& scene : OoTMQScenes)
+    {
+        auto it = this->MQLayoutChecks.find(scene.SceneId);
+        if (it == this->MQLayoutChecks.end()) continue;
+
+        SceneMetaInfo* info = GetSceneMetaInfo(scene.SceneId, OOT_GAME);
+        if (info == nullptr) continue;
+
+        info->ActiveLayout = it.value()->isChecked() ? GameLayout::oot_mq : GameLayout::oot;
+    }
+
+    // Majora's Mask JP: a single Deku Palace toggle covers three scenes.
+    if (this->JPLayoutDekuPalace != nullptr)
+    {
+        GameLayout target = this->JPLayoutDekuPalace->isChecked() ? GameLayout::mm_jp : GameLayout::mm;
+        if (SceneMetaInfo* info = GetSceneMetaInfo(MM_GROTTOS, MM_GAME))                   info->ActiveLayout = target;
+        if (SceneMetaInfo* info = GetSceneMetaInfo(MM_DEKU_PALACE, MM_GAME))               info->ActiveLayout = target;
+        if (SceneMetaInfo* info = GetSceneMetaInfo(MM_GROTTO_DEKU_PALACE_GENERIC, MM_GAME)) info->ActiveLayout = target;
+    }
 }
 
 #pragma endregion

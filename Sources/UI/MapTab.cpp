@@ -100,13 +100,14 @@ ContextSwitchButton::ContextSwitchButton(MapTab* Owner, QWidget* parent) : QWidg
 
     // Background creation
     this->Background = new QFrame(this);
-    this->Background->setStyleSheet("background-color: #ccc; border-radius: 15px;");
+    this->Background->setFrameShape(QFrame::NoFrame);
+    this->Background->setStyleSheet("background-color: #ccc; border: none; border-radius: 15px;");
     this->Background->setGeometry(0, 0, width, height);
 
     // Moving circle creation
     this->Circle = new QLabel(this);
     this->Circle->setFixedSize(26, 26);
-    this->Circle->setStyleSheet("background-color: white; border-radius: 13px;");
+    this->Circle->setStyleSheet("background-color: white; border: none; border-radius: 13px;");
     this->Circle->move(2, 2);
 
     // Moving animation
@@ -122,7 +123,9 @@ ContextSwitchButton::ContextSwitchButton(MapTab* Owner, QWidget* parent) : QWidg
     // Invisible button used to detects click events
     this->Button = new QPushButton(this);
     this->Button->setCheckable(true);
-    this->Button->setStyleSheet("background: transparent;");
+    this->Button->setFlat(true);
+    this->Button->setFocusPolicy(Qt::NoFocus);
+    this->Button->setStyleSheet("QPushButton { background: transparent; border: none; outline: none; } QPushButton:focus { border: none; outline: none; }");
     this->Button->setGeometry(0, 0, width, height);
 
     // Connect the button to the animation
@@ -196,7 +199,7 @@ void ContextSwitchButton::AnimateSwitch(bool Checked)
 
 void ContextSwitchButton::SetBackgroundColor(QColor Color)
 {
-    this->Background->setStyleSheet(QString("background-color: %1; border-radius: 15px;").arg(Color.name()));
+    this->Background->setStyleSheet(QString("background-color: %1; border: none; border-radius: 15px;").arg(Color.name()));
 }
 
 
@@ -601,12 +604,17 @@ void MapTab::ResetAllObjectCounts()
                 }
             }
 
+            // Resolve the active scene root: when a room is currently rendered, its
+            // SceneItem is the parent scene we have to compare against currScene.
+            RoomItemTree* renderedRoom = dynamic_cast<RoomItemTree*>(this->RenderedScene);
+            SceneItemTree* renderedRoot = renderedRoom != nullptr ? renderedRoom->SceneItem : this->RenderedScene;
+
             if (currScene->GetTotalObjects() == 0)
             {   // Scene has no item to show. Hide it
 
                 currRegion->child(currRegion->indexOfChild(currScene))->setHidden(true);
 
-                if (currScene == this->RenderedScene)
+                if (currScene == renderedRoot)
                 {   // Update the object list and the renderer
 
                     this->UnloadMap();
@@ -619,11 +627,20 @@ void MapTab::ResetAllObjectCounts()
                 currRegion->AddObjectCounts(currScene->GetCollectedObjects(), currScene->GetTotalObjects());
                 currRegion->RefreshObjsCountText();
 
-                if (currScene == this->RenderedScene)
-                {   // Update the object list and the renderer
+                if (currScene == renderedRoot)
+                {   // Update the object list and the renderer. When a room was active,
+                    // keep the user on the same room — unless it just got emptied, in
+                    // which case fall back to the parent scene view.
 
                     this->UnloadMap();
-                    this->RenderedScene = currScene;
+                    if (renderedRoom != nullptr && renderedRoom->GetTotalObjects() > 0)
+                    {
+                        this->RenderedScene = renderedRoom;
+                    }
+                    else
+                    {
+                        this->RenderedScene = currScene;
+                    }
                     this->RenderMap();
                 }
             }

@@ -6,6 +6,7 @@
 #include <QPushButton>
 #include <QSpinBox>
 #include <QButtonGroup>
+#include <QCheckBox>
 #include <QHash>
 #include <QVector>
 #include <QString>
@@ -18,7 +19,8 @@ class OoTMMComboTracker;
 /*
 *   Modal window exposing the ROM build parameters defined in Settings::ROMSettings.
 *   Provides a vertical navigation list on the left and one editor page per parameter
-*   group on the right (General, Keys, NPC, Breakable, Special).
+*   group on the right (General, Keys, NPC, Breakable, Special, Progressive Items,
+*   Shared Items, World Items, MQ / JP Layouts).
 */
 class SettingsTab : public QDialog
 {
@@ -37,7 +39,15 @@ private:
     QButtonGroup* ModeGroup = nullptr;              // Single / Coop / Multi selector for the General page.
     QSpinBox* TeamsSpin = nullptr;                  // Number of multiplayer teams selector.
 
-    QHash<QString, QWidget*> ParamWidgets;          // Map from setting key to the editor widget bound to it.
+    QHash<QString, QWidget*> ParamWidgets;          // Map from setting key (FilterSettings or ItemSettings) to the editor widget bound to it.
+
+    QHash<QString, QCheckBox*> KeyRingChecksOoT;    // Per-dungeon Ocarina of Time small key ring toggles (World Items page).
+    QHash<QString, QCheckBox*> KeyRingChecksMM;     // Per-dungeon Majora's Mask small key ring toggles (World Items page).
+    QHash<QString, QCheckBox*> SilverPouchChecks;   // Per-area Ocarina of Time silver rupee pouch toggles (World Items page).
+    QHash<QString, QCheckBox*> OwlStatueChecks;     // Per-location Majora's Mask pre-activated owl statue toggles (World Items page).
+
+    QHash<uint32_t, QCheckBox*> MQLayoutChecks;     // Scene id -> Master Quest layout toggle (Layouts page).
+    QCheckBox* JPLayoutDekuPalace = nullptr;        // Single Majora's Mask JP Deku Palace layout toggle (Layouts page).
 
     QPushButton* ApplyButton = nullptr;             // Apply button at the bottom of the navigation column.
     QPushButton* CancelButton = nullptr;            // Cancel button at the bottom of the navigation column.
@@ -63,7 +73,7 @@ public:
 private:
 
     /*
-    *   Build the General page (game / mode / teams selectors).
+    *   Build the General page (game / mode / teams selectors and Skip Zelda toggle).
     *
     *   @return The built General page widget.
     */
@@ -98,11 +108,40 @@ private:
     QWidget* BuildSpecialPage();
 
     /*
+    *   Build the Progressive Items page (non-shared entries from ItemSettings).
+    *
+    *   @return The built Progressive Items page widget.
+    */
+    QWidget* BuildProgressiveItemsPage();
+
+    /*
+    *   Build the Shared Items page (every entry from ItemSettings whose key starts with "shared").
+    *
+    *   @return The built Shared Items page widget.
+    */
+    QWidget* BuildSharedItemsPage();
+
+    /*
+    *   Build the World Items page (Key Rings, Silver Pouches and Pre-Activated Owl Statues).
+    *
+    *   @return The built World Items page widget.
+    */
+    QWidget* BuildWorldItemsPage();
+
+    /*
+    *   Build the MQ / JP Layouts page (per scene Master Quest toggles + JP Deku Palace toggle).
+    *
+    *   @return The built Layouts page widget.
+    */
+    QWidget* BuildLayoutsPage();
+
+    /*
     *   Build a parameter row composed of a game badge, a label and the matching editor widget,
-    *   then add it to the given grid layout at the next available row.
+    *   then add it to the given grid layout at the next available row. The setting is searched
+    *   in both Settings::FilterSettings and Settings::ItemSettings.
     *
     *   @param Layout      The grid layout to append the row to.
-    *   @param Key         The setting key in ROMSettings (used to lookup type / value).
+    *   @param Key         The setting key (used to lookup type / value).
     *   @param GameLabel   The badge text ("OoT", "MM" or empty for shared parameters).
     */
     void AddParamRow(class QGridLayout* Layout, const QString& Key, const QString& GameLabel);
@@ -115,6 +154,15 @@ private:
     *   @return The built badge label, or nullptr if GameLabel is empty.
     */
     QLabel* MakeGameBadge(const QString& GameLabel);
+
+    /*
+    *   Locate a parameter by key in either FilterSettings or ItemSettings.
+    *
+    *   @param Key    The setting key to lookup.
+    *
+    *   @return Pointer to the matching Parameter, or nullptr if no entry exists.
+    */
+    Parameter* FindParameter(const QString& Key);
 
 #pragma endregion
 
@@ -132,6 +180,17 @@ private:
     *   the matching OoTMMComboTracker::ApplySettings() refresh.
     */
     void OnApply();
+
+    /*
+    *   Apply the World Items page selections (Key Rings, Silver Pouches, Owl Statues)
+    *   on top of the disabled / starting item id sets after the regular settings pass.
+    */
+    void ApplyWorldItemSelections();
+
+    /*
+    *   Apply the MQ / JP layout selections to the matching scenes ActiveLayout.
+    */
+    void ApplyLayoutSelections();
 
 #pragma endregion
 
