@@ -5,6 +5,63 @@
 #include "Multi/Multi.h"
 #include <math.h>
 
+
+/*
+*   Pick the EntranceMetaInfo variant matching the given layout in the given multimap. When several
+*   variants share the same ID, prefer the one whose ActiveLayout equals the given layout, then the
+*   <b>GameLayout::all</b> variant, then the first stored variant as a last resort. Returns nullptr
+*   when the ID does not exist.
+*/
+static const EntranceMetaInfo* PickEntranceVariant(const std::multimap<int, EntranceMetaInfo>& Entrances, uint32_t EntranceID, GameLayout ActiveLayout)
+{
+    auto range = Entrances.equal_range(static_cast<int>(EntranceID));
+    if (range.first == range.second)
+    {
+        return nullptr;
+    }
+
+    const EntranceMetaInfo* allVariant = nullptr;
+    const EntranceMetaInfo* firstVariant = &range.first->second;
+
+    for (auto it = range.first; it != range.second; ++it)
+    {
+        if (it->second.ActiveLayout == ActiveLayout)
+        {   // Exact match wins immediately
+            return &it->second;
+        }
+        if (allVariant == nullptr && it->second.ActiveLayout == GameLayout::all)
+        {
+            allVariant = &it->second;
+        }
+    }
+
+    return allVariant != nullptr ? allVariant : firstVariant;
+}
+
+
+/*
+*   Game-aware wrapper around PickEntranceVariant that picks the correct multimap based on the game.
+*/
+static const EntranceMetaInfo* LookupEntrance(int Game, uint32_t EntranceID, GameLayout ActiveLayout)
+{
+    if (Game == OOT_GAME)
+    {
+        return PickEntranceVariant(OoTEntrances, EntranceID, ActiveLayout);
+    }
+    return PickEntranceVariant(MMEntrances, EntranceID, ActiveLayout);
+}
+
+
+/*
+*   Layout-agnostic helper that returns the variant tagged GameLayout::all when present and falls
+*   back to the first stored variant otherwise. Used by every code path that does not know which
+*   layout the entrance belongs to.
+*/
+static const EntranceMetaInfo* LookupEntranceDefault(int Game, uint32_t EntranceID)
+{
+    return LookupEntrance(Game, EntranceID, GameLayout::all);
+}
+
 void EntranceMessage::SetMessage(uint32_t MsgDirection, uint32_t OwlID, uint32_t Buffer[6])
 {
     this->ResetMessage();
@@ -2729,14 +2786,11 @@ void EntranceHelper::ParseIncomingMessage(EntranceMessage& Message)
             Message.EntranceID = this->CheckGrottoSpawn(Message);
         }
 
-        if (Message.GameID == OOT_GAME)
-        {
-            Message.MetaInf = &OoTEntrances.at(Message.EntranceID);
-        }
-        else
-        {
-            Message.MetaInf = &MMEntrances.at(Message.EntranceID);
-        }
+        // The scene layout is known here, so prefer the matching variant when several entrances
+        // share the same ID across layouts (e.g. mm vs mm_jp Bean Grotto in MM_DEKU_PALACE).
+        SceneMetaInfo* sceneMeta = GetSceneMetaInfo(Message.SceneID, Message.GameID);
+        GameLayout activeLayout = sceneMeta != nullptr ? sceneMeta->ActiveLayout : GameLayout::all;
+        Message.MetaInf = const_cast<EntranceMetaInfo*>(LookupEntrance(Message.GameID, Message.EntranceID, activeLayout));
 
         Message.EntranceStr = Message.MetaInf->ToName + std::string(" - ") + Message.MetaInf->FromName;
         MultiLogger::LogMessage("X = %f, Y = %f, Z = %f", Message.X, Message.Y, Message.Z);
@@ -2867,57 +2921,32 @@ void EntranceHelper::ParseOutgoingMessage(EntranceMessage& Message)
         return;
     }
 
-    // Retreive the entrance meta information
-    if (Message.GameID == OOT_GAME)
-    {
-        Message.MetaInf = &OoTEntrances.at(Message.EntranceID);
-    }
-    else
-    {
-        Message.MetaInf = &MMEntrances.at(Message.EntranceID);
-    }
+    // Retreive the entrance meta information. The scene layout is known here, so prefer the matching
+    // variant when several entrances share the same ID across layouts (e.g. mm vs mm_jp).
+    SceneMetaInfo* outSceneMeta = GetSceneMetaInfo(Message.SceneID, Message.GameID);
+    GameLayout outActiveLayout = outSceneMeta != nullptr ? outSceneMeta->ActiveLayout : GameLayout::all;
+    Message.MetaInf = const_cast<EntranceMetaInfo*>(LookupEntrance(Message.GameID, Message.EntranceID, outActiveLayout));
     Message.EntranceStr = Message.MetaInf->FromName + std::string(" \xE2\x86\x92 ") + Message.MetaInf->ToName;
 }
 
 
 const char* EntranceHelper::GetEntranceFromName(int Game, uint32_t EntranceID)
 {
-    if (Game == OOT_GAME)
-    {
-        return OoTEntrances.at(EntranceID).FromName;
-    }
-    else
-    {
-        return MMEntrances.at(EntranceID).FromName;
-    }
+    const EntranceMetaInfo* entrance = LookupEntranceDefault(Game, EntranceID);
+    return entrance != nullptr ? entrance->FromName : nullptr;
 }
 
 
 const char* EntranceHelper::GetEntranceToName(int Game, uint32_t EntranceID)
 {
-    if (Game == OOT_GAME)
-    {
-        return OoTEntrances.at(EntranceID).ToName;
-    }
-    else
-    {
-        return MMEntrances.at(EntranceID).ToName;
-    }
+    const EntranceMetaInfo* entrance = LookupEntranceDefault(Game, EntranceID);
+    return entrance != nullptr ? entrance->ToName : nullptr;
 }
 
 
 std::string EntranceHelper::GetOneWayInName(int Game, uint32_t EntranceID)
 {
-    EntranceMetaInfo* entrance = nullptr;
-
-    if (Game == OOT_GAME)
-    {
-        entrance = &OoTEntrances.at(EntranceID);
-    }
-    else
-    {
-        entrance = &MMEntrances.at(EntranceID);
-    }
+    const EntranceMetaInfo* entrance = LookupEntranceDefault(Game, EntranceID);
 
     switch (entrance->Type)
     {
@@ -2938,16 +2967,7 @@ std::string EntranceHelper::GetOneWayInName(int Game, uint32_t EntranceID)
 
 std::string EntranceHelper::GetOneWayOutName(int Game, uint32_t EntranceID)
 {
-    EntranceMetaInfo* entrance = nullptr;
-
-    if (Game == OOT_GAME)
-    {
-        entrance = &OoTEntrances.at(EntranceID);
-    }
-    else
-    {
-        entrance = &MMEntrances.at(EntranceID);
-    }
+    const EntranceMetaInfo* entrance = LookupEntranceDefault(Game, EntranceID);
 
     switch (entrance->Type)
     {
@@ -2967,16 +2987,7 @@ std::string EntranceHelper::GetOneWayOutName(int Game, uint32_t EntranceID)
 
 std::string EntranceHelper::GetEntranceSpawnsString(int Game, uint32_t EntranceID)
 {
-    const EntranceMetaInfo* entrance = nullptr;
-    
-    if (Game == OOT_GAME)
-    {
-        entrance = &OoTEntrances.at(EntranceID);
-    }
-    else
-    {
-        entrance = &MMEntrances.at(EntranceID);
-    }
+    const EntranceMetaInfo* entrance = LookupEntranceDefault(Game, EntranceID);
 
     switch (entrance->Type)
     {
@@ -2997,28 +3008,24 @@ std::string EntranceHelper::GetEntranceSpawnsString(int Game, uint32_t EntranceI
 
 std::string EntranceHelper::GetEntranceLeadsString(int Game, uint32_t EntranceID)
 {
-    const EntranceMetaInfo* entrance = nullptr;
-
-    if (Game == OOT_GAME)
-    {
-        entrance = &OoTEntrances.at(EntranceID);
-    }
-    else
-    {
-        entrance = &MMEntrances.at(EntranceID);
-    }
+    const EntranceMetaInfo* entrance = LookupEntranceDefault(Game, EntranceID);
 
     return std::string(entrance->ToName + std::string(" - ") + entrance->FromName);
 }
 
 const EntranceMetaInfo* EntranceHelper::GetEntranceMetaInf(int Game, uint32_t EntranceID)
 {
-    if (Game == OOT_GAME)
-    {
-        return &OoTEntrances.at(EntranceID);
-    }
-    else
-    {
-        return &MMEntrances.at(EntranceID);
-    }
+    return LookupEntranceDefault(Game, EntranceID);
+}
+
+
+const EntranceMetaInfo* EntranceHelper::GetEntranceMetaInf(int Game, uint32_t EntranceID, GameLayout ActiveLayout)
+{
+    return LookupEntrance(Game, EntranceID, ActiveLayout);
+}
+
+
+bool EntranceMetaInfo::HasCorrectLayout(GameLayout Layout) const
+{
+    return this->ActiveLayout == GameLayout::all || this->ActiveLayout == Layout;
 }

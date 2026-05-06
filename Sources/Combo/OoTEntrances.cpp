@@ -1,7 +1,7 @@
 #include "Combo/OoTEntrances.h"
 #include "Combo/Scenes.h"
 
-std::map<int, EntranceMetaInfo> OoTEntrances =
+std::multimap<int, EntranceMetaInfo> OoTEntrances =
 {
 	{ OOT_BACK_ALLEY_TREASURE_FROM_MARKET_ENTR, { OOT_MARKET_FROM_BACK_ALLEY_TREASURE_ENTR, OOT_BACK_ALLEY_TREASURE_FROM_MARKET_ENTR, OOT_MARKET, OOT_BACK_ALLEY, "Market Treasure Game Side", "Back Alley Treasure Game Side", EntranceType::Normal, 664, 671, 0, 700, 671, 0, EntranceIcons::Generic_Entry, GameLayout::all } },
 	{ OOT_BACK_ALLEY_FROM_HOUSE_ENTR, { OOT_DOG_LADY_FROM_BACK_ALLEY_ENTR, OOT_BACK_ALLEY_FROM_HOUSE_ENTR, OOT_BACK_ALLEY_HOUSE2, OOT_BACK_ALLEY, "Dog Lady's House", "Back Alley", EntranceType::Normal, 535, 701, 0, 535, 789, 0, EntranceIcons::Door, GameLayout::all } },

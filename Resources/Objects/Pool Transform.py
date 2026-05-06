@@ -250,10 +250,10 @@ def parse_entrance(input_file, output_file_h, output_file_cpp, output_filemeta, 
         outHfile.write("#pragma once\n\n#include \"Entrances.h\"\n")
         outHfile.write("\n#pragma region Defines\n\n")
         outHfile.write(defines)
-        outHfile.write("\n#pragma endregion\n\nextern std::map<int, EntranceMetaInfo> " + prefix + "Entrances;\n")
+        outHfile.write("\n#pragma endregion\n\nextern std::multimap<int, EntranceMetaInfo> " + prefix + "Entrances;\n")
 
         # write to cpp file
-        outCPPfile.write("#include \"Combo/" + prefix + "Entrances.h\"\n#include \"Combo/Scenes.h\"\n\nstd::map<int, EntranceMetaInfo> " + prefix + "Entrances =\n{\n")
+        outCPPfile.write("#include \"Combo/" + prefix + "Entrances.h\"\n#include \"Combo/Scenes.h\"\n\nstd::multimap<int, EntranceMetaInfo> " + prefix + "Entrances =\n{\n")
 
         for object in objectstrings:
             outCPPfile.write(object)
@@ -261,7 +261,7 @@ def parse_entrance(input_file, output_file_h, output_file_cpp, output_filemeta, 
         outCPPfile.write("\n};\n")
 
         # write meta
-        outfilemeta.write("#include \"UI/SceneEntrance.h\"\n#include \"Combo/Scenes.h\"\n\nstd::map<uint32_t, SceneEntranceMetaInf>" + prefix + "SceneEntranceMeta =\n{\n")
+        outfilemeta.write("#include \"UI/SceneEntrance.h\"\n#include \"Combo/Scenes.h\"\n\nstd::multimap<uint32_t, SceneEntranceMetaInf>" + prefix + "SceneEntranceMeta =\n{\n")
         scene_str = ""
         i = 0
         num_of_scenes = len (scene_entr_arr)

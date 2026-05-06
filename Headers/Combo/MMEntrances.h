@@ -75,6 +75,7 @@
 #define MM_GROTTO_EXIT_JP_LINE_START 0x5070
 #define MM_GROTTO_EXIT_JP_LINE_END 0x5080
 #define MM_GROTTO_EXIT_BEAN 0x5090
+#define MM_GROTTO_EXIT_BEAN 0x5090
 #define MM_GROTTO_EXIT_JP_CLIMB_RIGHT 0x50a0
 #define MM_GROTTO_DEKU_PLAYGROUND_ENTR 0x3600
 #define MM_DEKU_SHRINE_ENTR 0x9e00
@@ -430,4 +431,4 @@
 
 #pragma endregion
 
-extern std::map<int, EntranceMetaInfo> MMEntrances;
+extern std::multimap<int, EntranceMetaInfo> MMEntrances;

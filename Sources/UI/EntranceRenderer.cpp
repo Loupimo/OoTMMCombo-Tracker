@@ -2,6 +2,7 @@
 #include "UI/ObjectRenderer.h"
 #include "UI/EntranceTable.h"
 #include "UI/Icons.h"
+#include "Combo/Scenes.h"
 
 #include <QBrush>
 #include <QtMinMax>
@@ -430,7 +431,13 @@ const EntranceMetaInfo* EntranceItemTree::GetMetaInfo() const
     {
         return nullptr;
     }
-    return EntranceHelper::GetEntranceMetaInf(this->RendererOwner->GetGameID(), this->EntranceID);
+    int gameID = this->RendererOwner->GetGameID();
+
+    // Pass the owning scene's active layout so the overlay (anchor / text / icon) reads the correct
+    // variant when several entrances share the same ID across layouts (e.g. mm vs mm_jp).
+    SceneMetaInfo* sceneMeta = GetSceneMetaInfo(this->SceneID, gameID);
+    GameLayout activeLayout = sceneMeta != nullptr ? sceneMeta->ActiveLayout : GameLayout::all;
+    return EntranceHelper::GetEntranceMetaInf(gameID, this->EntranceID, activeLayout);
 }
 
 
@@ -1038,11 +1045,19 @@ void EntranceRenderer::RenderSceneOverlay(SceneEntranceMetaInf* Scene)
         return;
     }
 
+    SceneMetaInfo* sceneMeta = GetSceneMetaInfo(Scene->SceneID, this->GetGameID());
+    GameLayout activeLayout = sceneMeta != nullptr ? sceneMeta->ActiveLayout : GameLayout::all;
+
     for (auto& [entranceID, link] : Scene->EntranceIDs)
     {
-        const EntranceMetaInfo* meta = EntranceHelper::GetEntranceMetaInf(this->GetGameID(), entranceID);
+        const EntranceMetaInfo* meta = EntranceHelper::GetEntranceMetaInf(this->GetGameID(), entranceID, activeLayout);
         if (meta == nullptr || meta->Type == EntranceType::None)
         {
+            continue;
+        }
+
+        if (!meta->HasCorrectLayout(activeLayout))
+        {   // Skip entrances that don't belong to the currently active layout (e.g. MQ vs vanilla)
             continue;
         }
 
@@ -1072,11 +1087,19 @@ void EntranceRenderer::RenderSceneOverlayGrouped(SceneEntranceMetaInf* SceneMeta
 {
     if (!SceneMeta || !this->Scene) return;
 
+    SceneMetaInfo* sceneInfo = GetSceneMetaInfo(SceneMeta->SceneID, this->GetGameID());
+    GameLayout activeLayout = sceneInfo != nullptr ? sceneInfo->ActiveLayout : GameLayout::all;
+
     for (auto& [entranceID, link] : SceneMeta->EntranceIDs)
     {
         const EntranceMetaInfo* meta = EntranceHelper::GetEntranceMetaInf(
-            this->GetGameID(), entranceID);
+            this->GetGameID(), entranceID, activeLayout);
         if (!meta || meta->Type == EntranceType::None) continue;
+
+        if (!meta->HasCorrectLayout(activeLayout))
+        {   // Skip entrances that don't belong to the currently active layout (e.g. MQ vs vanilla)
+            continue;
+        }
 
         EntranceItemTree* tree = this->FindEntrance(SceneMeta->SceneID, entranceID);
         if (!tree) continue;

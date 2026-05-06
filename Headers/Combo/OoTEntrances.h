@@ -378,4 +378,4 @@
 
 #pragma endregion
 
-extern std::map<int, EntranceMetaInfo> OoTEntrances;
+extern std::multimap<int, EntranceMetaInfo> OoTEntrances;

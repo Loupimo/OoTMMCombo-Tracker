@@ -75,12 +75,22 @@ void GlobalEntranceTableModel::setScenes(const std::map<uint32_t, SceneEntranceM
 
     for (auto& [sceneID, scene] : scenes)
     {
+        SceneMetaInfo* sceneMeta = GetSceneMetaInfo(sceneID, this->Owner->GameID);
+        GameLayout activeLayout = sceneMeta != nullptr ? sceneMeta->ActiveLayout : GameLayout::all;
+
         for (auto& [entranceID, link] : scene.EntranceIDs)
         {
-            const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->Owner->GameID, entranceID);
+            // Pass the scene's active layout so we resolve the correct variant when several entrances
+            // share the same ID across layouts (e.g. mm vs mm_jp Bean Grotto in MM_DEKU_PALACE).
+            const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->Owner->GameID, entranceID, activeLayout);
 
             if (entrance == nullptr || entrance->Type == EntranceType::None)
             {
+                continue;
+            }
+
+            if (!entrance->HasCorrectLayout(activeLayout))
+            {   // Skip entrances that don't belong to the currently active layout (e.g. MQ vs vanilla)
                 continue;
             }
 
@@ -844,15 +854,23 @@ EntranceGameTabView::EntranceGameTabView(int Game, const char * Name, EntranceTa
     for (auto& [sceneID, MetaInf] : *scenes)
     {   // Only keep scenes that have at least one valid entrance
 
+        SceneMetaInfo* sceneMeta = GetSceneMetaInfo(sceneID, Game);
+        GameLayout activeLayout = sceneMeta != nullptr ? sceneMeta->ActiveLayout : GameLayout::all;
+
         bool hasValid = false;
         for (auto& [entranceID, link] : MetaInf.EntranceIDs)
         {
-            const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(Game, entranceID);
-            if (entrance != nullptr && entrance->Type != EntranceType::None)
+            const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(Game, entranceID, activeLayout);
+            if (entrance == nullptr || entrance->Type == EntranceType::None)
             {
-                hasValid = true;
-                break;
+                continue;
             }
+            if (!entrance->HasCorrectLayout(activeLayout))
+            {   // Skip entrances that don't belong to the currently active layout (e.g. MQ vs vanilla)
+                continue;
+            }
+            hasValid = true;
+            break;
         }
         if (!hasValid)
         {
@@ -1024,12 +1042,19 @@ void EntranceGameTabView::PopulateEntranceList(SceneEntranceMetaInf* Scene)
     oneWayOutCat->setIcon(0, *GameIcons::GetEntranceIcon(EntranceIcons::Out_Only));
 
     GlobalEntranceTableModel* model = this->AllView != nullptr ? this->AllView->Model : nullptr;
+    SceneMetaInfo* sceneMeta = GetSceneMetaInfo(Scene->SceneID, this->GameID);
+    GameLayout activeLayout = sceneMeta != nullptr ? sceneMeta->ActiveLayout : GameLayout::all;
 
     for (auto& [entranceID, link] : Scene->EntranceIDs)
     {
-        const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->GameID, entranceID);
+        const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->GameID, entranceID, activeLayout);
         if (entrance == nullptr || entrance->Type == EntranceType::None)
         {
+            continue;
+        }
+
+        if (!entrance->HasCorrectLayout(activeLayout))
+        {   // Skip entrances that don't belong to the currently active layout (e.g. MQ vs vanilla)
             continue;
         }
 
@@ -1245,13 +1270,17 @@ void EntranceGameTabView::FocusEntranceInGame(uint32_t SceneID, uint32_t Entranc
     // the viewport via QTimer::singleShot(0). Both timers fire in scheduling order, so our zoom runs
     // right after the fit and ends up as the final transform on the view.
     QPointer<EntranceGameTabView> self = this;
-    QTimer::singleShot(0, [self, EntranceID]()
+    QTimer::singleShot(0, [self, SceneID, EntranceID]()
     {
         if (self.isNull() || self->Renderer == nullptr)
         {
             return;
         }
-        const EntranceMetaInfo* meta = EntranceHelper::GetEntranceMetaInf(self->GameID, EntranceID);
+        // Resolve the entrance against the focused scene's active layout so AnchorPos picks the
+        // correct variant when several entrances share the same ID across layouts (e.g. mm vs mm_jp).
+        SceneMetaInfo* sceneMeta = GetSceneMetaInfo(SceneID, self->GameID);
+        GameLayout activeLayout = sceneMeta != nullptr ? sceneMeta->ActiveLayout : GameLayout::all;
+        const EntranceMetaInfo* meta = EntranceHelper::GetEntranceMetaInf(self->GameID, EntranceID, activeLayout);
         if (meta == nullptr)
         {
             return;

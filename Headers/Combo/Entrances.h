@@ -111,6 +111,15 @@ typedef struct EntranceMetaInfo
 	int TextPos[3];				    // Entrance text box position on its corresponding scene image. ID 0 = X, ID 1 = Y, ID 2 = Z*$
     EntranceIcons RenderIcon;       // The icon to rendrer for this entrance.
 	GameLayout ActiveLayout;		// The layout in which this entrance is active.
+
+	/*
+	*   Tells if the entrance layout does match the active one.
+	*
+	*   @param Layout		The active layout
+	*
+	*	@return <b>True</b> if the entrance layout matches the active layout, <b>false</b> otherwise.
+	*/
+	bool HasCorrectLayout(GameLayout Layout) const;
 } EntranceMetaInfo;
 
 
@@ -491,7 +500,9 @@ public:
 	static std::string GetEntranceLeadsString(int Game, uint32_t EntranceID);
 
 	/*
-	*   Get the meta information macthing the desired entrance ID.
+	*   Get the meta information macthing the desired entrance ID. When several variants share the
+	*   same ID (e.g. one per layout), the variant with <b>GameLayout::all</b> is preferred and the
+	*   first stored variant is returned otherwise.
 	*
 	*	@param Game			The game the given entrance belongs to.
 	*	@param EntranceID	The entrance to get the meta info of.
@@ -500,6 +511,19 @@ public:
 	*/
 	static const EntranceMetaInfo* GetEntranceMetaInf(int Game, uint32_t EntranceID);
 
+	/*
+	*   Get the meta information matching the desired entrance ID for the given active layout. When
+	*   several variants share the same ID, the variant whose <b>ActiveLayout</b> matches the given
+	*   one is returned first; otherwise the layout-agnostic <b>all</b> variant is used as a fallback,
+	*   and finally the first stored variant if neither is found.
+	*
+	*	@param Game				The game the given entrance belongs to.
+	*	@param EntranceID		The entrance to get the meta info of.
+	*	@param ActiveLayout		The current active layout (typically the one of the owning scene).
+	*
+	*	@return The meta information of the given entrance for the given layout.
+	*/
+	static const EntranceMetaInfo* GetEntranceMetaInf(int Game, uint32_t EntranceID, GameLayout ActiveLayout);
 
 
 #pragma endregion
