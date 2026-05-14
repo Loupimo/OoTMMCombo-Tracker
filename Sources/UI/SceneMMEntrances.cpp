@@ -751,11 +751,21 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 		}
 	},
 	{
-		MM_LAIR_GOHT,
+		MM_LAIR_ODOLWA,
 		{
-			MM_LAIR_GOHT, (uint8_t)MMRegions::Woodfall,
+			MM_LAIR_ODOLWA, (uint8_t)MMRegions::Woodfall,
 			{
 				{ MM_BOSS_TEMPLE_WOODFALL_WARP_OUT, { UINT32_MAX, UINT32_MAX } },
+				{ MM_BOSS_TEMPLE_WOODFALL_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_LAIR_GOHT,
+		{
+			MM_LAIR_GOHT, (uint8_t)MMRegions::Snowhead,
+			{
 				{ MM_BOSS_TEMPLE_SNOWHEAD_ENTR, { UINT32_MAX, UINT32_MAX } },
 				{ MM_BOSS_TEMPLE_SNOWHEAD_WARP_OUT, { UINT32_MAX, UINT32_MAX } },
 			},
@@ -789,16 +799,6 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 			MM_LAIR_MAJORA, (uint8_t)MMRegions::Moon,
 			{
 				{ MM_MAJORA_LAIR_FROM_MOON_ENTR, { UINT32_MAX, UINT32_MAX } },
-			},
-			NULL
-		}
-	},
-	{
-		MM_LAIR_ODOLWA,
-		{
-			MM_LAIR_ODOLWA, (uint8_t)MMRegions::Woodfall,
-			{
-				{ MM_BOSS_TEMPLE_WOODFALL_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
 			NULL
 		}

@@ -312,6 +312,7 @@ enum EntranceIcons
     Boulder_Grotto,
     Silver_Boudler_Grotto,
     Red_Boulder_Grotto,
+    Frozen_Grotto,
     Door,
     Tomb,
     Owl_Pick,

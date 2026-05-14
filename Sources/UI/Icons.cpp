@@ -293,6 +293,7 @@ const IconMetaInf EntranceIconsMetaInfo[EntranceIcons::Entrance_Last] =
     {"./Resources/Common/Entrances/Boulder_Grotto.png", {60, 60}, {120, 120}},      // EntranceIcons::Boulder_Grotto
     {"./Resources/Common/Entrances/Silver_Boulder_Grotto", {60, 60}, {120, 120}},      // EntranceIcons::Silver_Boudler_Grotto
     {"./Resources/Common/Entrances/Red_Boulder_Grotto.png", {60, 60}, {120, 120}},      // EntranceIcons::Red_Boulder_Grotto
+    {"./Resources/Common/Entrances/Frozen_Grotto.png", {60, 60}, {120, 120}},      // EntranceIcons::Frozen_Grotto
     {"./Resources/Common/Entrances/Door.png", {60, 60}, {120, 120}},      // EntranceIcons::Door
     {"./Resources/Common/Entrances/Tomb.png", {60, 60}, {120, 120}},      // EntranceIcons::Tomb
     {"./Resources/Common/Entrances/Owl_Pick.png", {60, 60}, {120, 120}},      // EntranceIcons::Owl_Pick

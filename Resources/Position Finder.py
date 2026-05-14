@@ -169,6 +169,7 @@ def perform_action(root_folder):
                 data.append(os.path.join(root,f))
     for file in data:
         if os.path.isfile(file + ".txt") == False:
+            print (file + ".txt added")
             with open(file + ".txt", 'w') as f:
                 for colorstr in colors.keys():
                     coord, coordstr = find_points2(file, colorstr)
