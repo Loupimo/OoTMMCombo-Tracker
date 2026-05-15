@@ -1048,11 +1048,19 @@
 
 #pragma endregion Defines
 
+/*
+*   Identifies a single trackable location in the combo randomizer, combining
+*   game, overlay type, scene, room, and object into one key.
+*/
 typedef struct ComboItem
 {
+	/* The game this item belongs to (0 = OoT, 1 = MM). */
 	uint8_t GameID;
+	/* The overlay type that classifies the container (chest, NPC, collectible, etc.). */
 	uint8_t OvType;
+	/* The scene ID in which this item is located. */
 	uint32_t SceneID;
+	/* The room index within the scene in which this item is located. */
 	uint32_t RoomID;
 	uint32_t ObjectID;
 } ComboItem;

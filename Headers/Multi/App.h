@@ -13,10 +13,15 @@ class App
 #pragma region Attributes
 
 public:
+    /* Hostname or IP address of the remote multiplayer server. */
     const char* serverHost;
+    /* Port number of the remote multiplayer server. */
     uint16_t    serverPort;
+    /* Listening socket that accepts incoming Project64 connections. */
     SOCKET      socketPj64;
+    /* Socket used for the outgoing connection to the Ares emulator. */
     SOCKET      socketAres;
+    /* Array of active game slots, one per connected emulator instance. */
     Game        games[MAX_GAMES];
 
     bool IsRunning;

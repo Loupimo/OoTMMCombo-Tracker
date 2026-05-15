@@ -28,11 +28,13 @@ class LogTab : public QWidget
 public:
 
     // Layouts
+    /* Main vertical layout that contains all sub-layouts and groups in the tab. */
     QVBoxLayout* MainLayout;
     QVBoxLayout* NetLayout;
     QHBoxLayout* MultiLayout;
     QHBoxLayout* FileLayout;
     QGridLayout* TrackLayout;
+    /* Group box wrapping the tracker launch controls. */
     QGroupBox* LaunchGroup;
     
     // Launch button
@@ -46,15 +48,18 @@ public:
 
     // Network options
     QCheckBox* NetCheckBox;
+    /* Text area that displays tracker log messages at runtime. */
     QPlainTextEdit* LogViewer;
     QLineEdit* Host;
     QLineEdit* Port;
     QValidator* PortValidator;
 
+    /* Tells if multiplayer networking is enabled. */
     bool EnableMultiplayer;                 // Tells if multiplay is enabled or not
     bool IsRunning;                         // Tells if the tracker is running
 
     App * Tracker;                          // A reference to the Nax's app side
+    /* The memory reader that polls shared DLL memory to track rando progression. */
     MemoryReader * MemRead;                 // The memory reader used to directly track the rando progression.
     OoTMMComboTracker* WinOwner = nullptr;  // A reference to the owning window
     std::thread TrackerThread;              // A thread used to run the Nax's app

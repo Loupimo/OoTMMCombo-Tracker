@@ -12,11 +12,20 @@ enum LocType
 	broken
 };
 
+/*
+*   Holds display and layout metadata for a single scene, used by SceneRenderer
+*   to load the correct map image, assign the scene to a region, and gate
+*   visibility based on the active game layout.
+*/
 typedef struct SceneMetaInfo
 {
+	/* The human-readable name of the scene shown in the UI. */
 	const char* Name;
+	/* Relative path to the full-size scene map image resource. */
 	const char* ImagePath;
+	/* Relative path to the minimap image resource for this scene. */
     const char* MiniMapPath;
+	/* The region ID this scene belongs to (cast from OoTRegions or MMRegions). */
 	uint8_t ParentRegion;
 	bool HasContext;
 	GameLayout ActiveLayout;	// The current active layout for this scene

@@ -118,6 +118,9 @@ static inline void LOGF(const char* fmt, ...)
 #define OP_TRANSFER     0x01
 #define OP_MSG          0x02
 
+/*
+*   A short chat or status message broadcast between clients over the multiplayer connection.
+*/
 typedef struct
 {
     uint8_t     size;
@@ -126,6 +129,9 @@ typedef struct
 }
 NetMsg;
 
+/*
+*   A complete ledger entry representing a single tracked item or entrance event, keyed for deduplication.
+*/
 typedef struct
 {
     uint64_t key;
@@ -134,6 +140,9 @@ typedef struct
 }
 LedgerFullEntry;
 
+/*
+*   A send queue slot pairing a ledger entry with its remaining retransmission deadline in milliseconds.
+*/
 typedef struct
 {
     LedgerFullEntry    entry;
@@ -141,8 +150,12 @@ typedef struct
 }
 SendQueueEntry;
 
+/*
+*   A persistent, disk-backed queue of outgoing ledger entries that have not yet been acknowledged by the server.
+*/
 typedef struct
 {
+    /* Handle to the on-disk backing file used to persist unacknowledged entries across sessions. */
     FILE*               file;
     uint32_t            size;
     uint32_t            capacity;

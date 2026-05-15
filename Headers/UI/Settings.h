@@ -49,12 +49,18 @@ enum class ShuffleSetting
 };
 
 
+/*
+*   Represents a single ROM build parameter parsed from the spoiler log, pairing its name with its type and shuffle setting.
+*/
 typedef struct Parameter
 {
 public:
 
+	/* The key name of the parameter as it appears in the spoiler log. */
 	QString Name;
+	/* The value type of this parameter (game, mode, boolean, shuffle, etc.). */
 	ParamType Type;
+	/* The shuffle setting assigned to this parameter, controlling which objects are active or excluded. */
 	ShuffleSetting Value;
 } Parameter;
 
@@ -66,6 +72,7 @@ class Settings
 
 public:
 
+	/* The ROM game combination (OoT only, MM only, or OoTMM combo) parsed from the spoiler log. */
 	ROMGame Game;
 	GameMode Mode;
     GoalMode Goal;

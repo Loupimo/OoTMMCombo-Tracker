@@ -20,11 +20,28 @@ All notable changes to this project are documented in this file.
 - Entrance save/load, region IDs on entrances, color status, manual override of text position on the map
 - Support for Nothing shop items, butterflies (with `EnButte_TransformIntoFairy` hook), fairies, and big fairies
 - Link age tracked through the hook
+- Progression tab listing every item, with forced item discovery wired to save loading
+- Detail panel under the progression tab showing the locations where each item can be found
+- Shared-item dispatch across the progression tab using a per-item `CanBeShared` flag
+- Parsing of starting items from the ROM settings, with non-shuffled items hidden in the progression tab
+- Setting to reveal uncollected item locations when a spoiler log is loaded (drives both the per-object UI and the progression detail panel)
+- Per-object UI in the scene tree displaying the object's own icon and the items it contains
+- Progress bar on the global object counter and an interactive status line
+- All OoT overworld scene maps, plus a fallback minimap file covering scenes that don't have a dedicated map
+- MM scene minimaps (path-only outlines for scenes still missing a full map)
+- Hover highlighting of group boxes, scene anchors and matching rows in the entrance tree
+- Clicking a scene anchor now focuses the associated entrance group text box
 
 ### Changed
 - Network tracking automatically disabled when multiplayer is unchecked
 - Console font switched to Consolas for readability
 - C++ source files reorganized so function order matches their headers, and code clean-up passes across hook, injector, and entrance modules
+- Active layout (MQ / MM JP) now also filters the entrance set
+- Entrance graphical style rewritten with refreshed icons and hovered-background tinting
+- More reliable death detection
+- Progression lookup keyed by item ID instead of regex-matched names
+- `ObjectScene` split into one `.cpp` per scene and progression data extracted into its own file
+- New `GameIcons` class centralises pixmap creation for lower memory use and faster startup
 
 ### Removed
 - Unused image assets
@@ -46,3 +63,9 @@ All notable changes to this project are documented in this file.
 - Multi-client buffer overflow and miscellaneous Linux/Mac build warnings
 - Renewable item handling (multi)
 - DMT scene typo and various other text typos
+- Lake Hylia entrance handling
+- Cross-references between objects and items
+- Restored entrance table indicators
+- Spoiler log now correctly reloads every item
+- Missing entries in the ROM settings options
+- Several UI color bugs and visual glitches around the search bar and Hyrule Field anchors
