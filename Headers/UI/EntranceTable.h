@@ -16,6 +16,7 @@
 #include "UI/RegionTab.h"
 #include "UI/ObjectRenderer.h"
 #include "UI/EntranceRenderer.h"
+#include "UI/GPSRouteWidget.h"
 #include "Common.h"
 
 #include <map>
@@ -505,6 +506,7 @@ public:
 
     EntranceGameTabView* OoTEntranceTab;
     EntranceGameTabView* MMEntranceTab;
+    GPSRouteWidget* GPSTab;
     //QTableView* OoTEntranceTab;
     //QTableView* MMEntranceTab;
     //GlobalEntranceTableModel* OoTEntranceModel;

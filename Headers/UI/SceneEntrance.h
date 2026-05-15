@@ -5,12 +5,6 @@
 #include <map>
 #include <QFile>
 
-typedef struct EntranceCost
-{
-	uint32_t EntranceID;				// The current entrance
-	std::map<uint32_t, uint32_t> Costs;	// Key = accessible entrance, Value = cost to reach the entrance from current entrance
-} EntranceCost;
-
 
 typedef struct EntranceLink
 {

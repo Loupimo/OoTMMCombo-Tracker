@@ -163,6 +163,18 @@
     <ClCompile Include="Sources\UI\Icons.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\UI\GPSRouteModel.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\GPSRouteCard.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\GPSRouteWidget.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\GPSPathfinder.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
     <ClCompile Include="Sources\Combo\OoTObjectScene.cpp">
       <Filter>Source Files\Combo</Filter>
     </ClCompile>
@@ -293,6 +305,18 @@
     <QtMoc Include="Headers\UI\EntranceTable.h">
       <Filter>Header Files\UI</Filter>
     </QtMoc>
+    <QtMoc Include="Headers\UI\GPSRouteCard.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="Headers\UI\GPSRouteWidget.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <ClInclude Include="Headers\UI\GPSRouteModel.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers\UI\GPSPathfinder.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
     <QtMoc Include="Headers\UI\SettingsTab.h">
       <Filter>Header Files\UI</Filter>
     </QtMoc>

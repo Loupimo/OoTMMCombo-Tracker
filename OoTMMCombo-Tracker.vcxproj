@@ -225,6 +225,10 @@
     <ClCompile Include="Sources\UI\EntranceTable.cpp" />
     <ClCompile Include="Sources\UI\FilterManager.cpp" />
     <ClCompile Include="Sources\UI\GameTab.cpp" />
+    <ClCompile Include="Sources\UI\GPSPathfinder.cpp" />
+    <ClCompile Include="Sources\UI\GPSRouteCard.cpp" />
+    <ClCompile Include="Sources\UI\GPSRouteModel.cpp" />
+    <ClCompile Include="Sources\UI\GPSRouteWidget.cpp" />
     <ClCompile Include="Sources\UI\Icons.cpp" />
     <ClCompile Include="Sources\UI\LogTab.cpp" />
     <ClCompile Include="Sources\UI\MapTab.cpp" />
@@ -266,6 +270,10 @@
     <ClInclude Include="Headers\UI\Icons.h" />
     <QtMoc Include="Headers\UI\FilterManager.h" />
     <QtMoc Include="Headers\UI\EntranceTable.h" />
+    <QtMoc Include="Headers\UI\GPSRouteCard.h" />
+    <QtMoc Include="Headers\UI\GPSRouteWidget.h" />
+    <ClInclude Include="Headers\UI\GPSRouteModel.h" />
+    <ClInclude Include="Headers\UI\GPSPathfinder.h" />
     <ClInclude Include="Headers\UI\EntranceRenderer.h" />
     <ClInclude Include="Headers\UI\MemoryReader.h" />
     <ClInclude Include="Headers\UI\ProgressionEntry.h" />

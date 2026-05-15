@@ -378,11 +378,6 @@ public:
 	void InitRoomCounters();
 
 	/*
-	*   Refresh the room text name.
-	*/
-	void RefreshObjsCountText();
-
-	/*
 	*   Gets the scene renderer.
 	*
 	*   @return The scene renderer.

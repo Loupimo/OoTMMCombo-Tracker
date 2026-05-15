@@ -107,6 +107,18 @@ public:
     *   @return The total of visible objects in the item tree.
     */
     virtual int GetTotalObjectAvailable() { return 1; }
+
+protected:
+
+    /*
+    *   Refresh this item's display label with a "Name (Found/Total)" formatting.
+    *   Centralises the SetCountedTreeLabel call shared by every counted tree item subclass.
+    *
+    *   @param Label   Display name shown in column 0.
+    *   @param Found   Number of items found.
+    *   @param Total   Total number of items.
+    */
+    void RefreshCountLabel(const char* Label, uint32_t Found, uint32_t Total);
 };
 
 
@@ -275,12 +287,6 @@ public:
     */
     const char* GetObjectToolTip();
 
-    /*
-    *   Get the total number of visible objects in the item tree.
-    *
-    *   @return The total of visible objects in the item tree.
-    */
-    int GetTotalObjectAvailable() override;
 };
 
 

@@ -217,12 +217,6 @@ void EntranceLinkItemTree::PerformAction()
 }
 
 
-int EntranceLinkItemTree::GetTotalObjectAvailable()
-{
-    return 1;
-}
-
-
 void EntranceLinkItemTree::NavigateToTarget()
 {
     if (this->EntranceItem == nullptr || this->EntranceItem->RendererOwner == nullptr)

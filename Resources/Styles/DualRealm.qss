@@ -916,3 +916,126 @@ FilterManager QPushButton:checked {
     border-color: #4a9edb;
     color: #4a9edb;
 }
+
+/* --------------------------------------------------------------------------
+   GPS Route Widget (sous-onglet "GPS" de l'EntranceTab)
+   - Couleurs de route (#3ddc84 / #e8a82d / #ff5252) posees en C++ pour rester
+     stables en mode MM. Seules les couleurs accent OoT (#4a9edb) sont swappees.
+   - Pas de gradient en QSS : la ligne verticale est peinte par paintEvent().
+   - border-radius <= 4px sur l'ensemble des widgets ci-dessous.
+   -------------------------------------------------------------------------- */
+QWidget#GPSRouteWidget {
+    background-color: #080f1a;
+}
+
+QLabel#GpsTag {
+    color: #4a9edb;
+    font-size: 9pt;
+    font-weight: 600;
+    padding-right: 4px;
+}
+
+QLabel#GpsArrow {
+    color: #4a6a9a;
+    font-size: 12pt;
+    padding: 0 4px;
+}
+
+QLabel#GpsSummary {
+    color: #4a6a9a;
+    font-size: 9pt;
+}
+
+QLabel#GpsPlaceholder {
+    color: #4a6a9a;
+    font-size: 11pt;
+    padding: 40px 0;
+}
+
+QPushButton#GpsSwapButton {
+    background-color: #0d1827;
+    border: 1px solid #1a3050;
+    border-radius: 3px;
+    color: #4a9edb;
+    padding: 4px 10px;
+    font-size: 9pt;
+}
+
+QPushButton#GpsSwapButton:hover {
+    border-color: #4a9edb;
+    background-color: #0d2a4a;
+}
+
+QComboBox#GpsFromCombo,
+QComboBox#GpsToCombo {
+    background-color: #0d1827;
+    border: 1px solid #1a3050;
+    border-radius: 3px;
+    color: #ffffff;
+    padding: 4px 8px;
+    font-size: 10pt;
+}
+
+QComboBox#GpsFromCombo:hover,
+QComboBox#GpsToCombo:hover {
+    border-color: #4a9edb;
+}
+
+QFrame#GPSRouteCard {
+    background-color: #0d1827;
+    border: 1px solid #1a3050;
+    border-radius: 4px;
+}
+
+QFrame#GPSRouteCard[best="true"] {
+    border: 1px solid #4a9edb;
+}
+
+QLabel#RouteRank {
+    font-size: 9pt;
+    font-weight: 600;
+}
+
+QLabel#RouteBestPill {
+    font-size: 8pt;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 3px;
+}
+
+QLabel#RouteTime {
+    color: #ffffff;
+    font-size: 22pt;
+    font-weight: 700;
+}
+
+QLabel#RouteLabel {
+    color: #4a6a9a;
+    font-size: 10pt;
+}
+
+QLabel#RouteNotes {
+    color: #4a6a9a;
+    font-size: 9pt;
+}
+
+QLabel#RouteCount {
+    font-size: 16pt;
+    font-weight: 700;
+}
+
+QLabel#RouteSmallCaption {
+    color: #4a6a9a;
+    font-size: 8pt;
+}
+
+QLabel#StationName {
+    color: #ffffff;
+    font-size: 11pt;
+    font-weight: 600;
+}
+
+QLabel#StationVia {
+    color: #4a6a9a;
+    font-size: 9pt;
+}

@@ -98,6 +98,19 @@ enum class LinkAge : uint8_t
 };
 
 
+/*
+*   Per-entrance travel-cost table used by the GPS pathfinder. Costs[E] gives
+*   the cost (travel time) to reach entrance E from EntranceID inside the same
+*   scene. A cost of UINT32_MAX is treated as "unreachable" (placeholder for the
+*   future -1 marker once real travel times are filled in).
+*/
+typedef struct EntranceCost
+{
+	uint32_t EntranceID;				// The current entrance (matches the owning EntranceMetaInfo.FromEntranceID).
+	std::map<uint32_t, uint32_t> Costs;	// Key = reachable entrance in the same scene, Value = cost to reach it.
+} EntranceCost;
+
+
 typedef struct EntranceMetaInfo
 {
 	uint32_t FromEntranceID;		// The entrance ID.
@@ -111,6 +124,7 @@ typedef struct EntranceMetaInfo
 	int TextPos[3];				    // Entrance text box position on its corresponding scene image. ID 0 = X, ID 1 = Y, ID 2 = Z*$
     EntranceIcons RenderIcon;       // The icon to rendrer for this entrance.
 	GameLayout ActiveLayout;		// The layout in which this entrance is active.
+	EntranceCost Cost;				// Intra-scene travel costs from FromEntranceID. Populated by InitializeEntranceCosts().
 
 	/*
 	*   Tells if the entrance layout does match the active one.
@@ -121,6 +135,16 @@ typedef struct EntranceMetaInfo
 	*/
 	bool HasCorrectLayout(GameLayout Layout) const;
 } EntranceMetaInfo;
+
+
+/*
+*   Populate the EntranceCost field of every entry in OoTEntrances and MMEntrances
+*   with default intra-scene travel costs. For now, every entrance in a scene is
+*   considered reachable from every other entrance in the same scene at cost 1.
+*   Once real travel times are measured this will be replaced by the actual values
+*   and unreachable entrances will be marked with UINT32_MAX (the "-1" placeholder).
+*/
+void InitializeEntranceCosts();
 
 
 typedef struct GrottoEntrance

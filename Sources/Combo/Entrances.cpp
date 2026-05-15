@@ -4,6 +4,45 @@
 #include "UI/SceneEntrance.h"
 #include "Multi/Multi.h"
 #include <math.h>
+#include <set>
+
+
+void InitializeEntranceCosts()
+{
+    auto FillForGame = [](std::multimap<int, EntranceMetaInfo>& Map)
+    {
+        // 1) Collect the set of entrance IDs that physically live in each scene.
+        //    Each entry of the multimap describes a transition From -> To, where
+        //    FromEntranceID lives in FromSceneID and ToEntranceID lives in ToSceneID.
+        std::map<uint32_t, std::set<uint32_t>> EntrancesInScene;
+        for (auto& Pair : Map)
+        {
+            const EntranceMetaInfo& V = Pair.second;
+            EntrancesInScene[V.FromSceneID].insert(V.FromEntranceID);
+            EntrancesInScene[V.ToSceneID].insert(V.ToEntranceID);
+        }
+
+        // 2) For each entry, populate its Cost table with every other entrance
+        //    in the same scene. Default cost is 1 for now; real travel times will
+        //    replace this later, with UINT32_MAX meaning "unreachable".
+        for (auto& Pair : Map)
+        {
+            EntranceMetaInfo& V = Pair.second;
+            V.Cost.EntranceID = V.FromEntranceID;
+            V.Cost.Costs.clear();
+            auto It = EntrancesInScene.find(V.FromSceneID);
+            if (It == EntrancesInScene.end()) continue;
+            for (uint32_t Other : It->second)
+            {
+                if (Other == V.FromEntranceID) continue;
+                V.Cost.Costs[Other] = 1;
+            }
+        }
+    };
+
+    FillForGame(OoTEntrances);
+    FillForGame(MMEntrances);
+}
 
 
 /*

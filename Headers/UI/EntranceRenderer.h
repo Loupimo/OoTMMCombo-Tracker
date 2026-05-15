@@ -194,13 +194,6 @@ public:
     void PerformAction() override;
 
     /*
-    *   Always return 1 so the tree filter never hides this leaf as "no objects available".
-    *
-    *   @return Always 1.
-    */
-    int GetTotalObjectAvailable() override;
-
-    /*
     *   Resolve this link's target (destination entrance + game) via the scene meta info and ask the
     *   owning EntranceTab to focus the matching scene. Reads InLink / InLinkGame for the "in" side,
     *   OutLink / OutLinkGame for the "out" side. Silently returns if the link is undiscovered or if

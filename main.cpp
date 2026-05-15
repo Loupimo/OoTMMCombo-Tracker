@@ -1,6 +1,7 @@
 #include <QtWidgets/QApplication>
 #include "UI/AppStyle.h"
 #include "UI/ObjectRenderer.h"
+#include "Combo/Entrances.h"
 #include "main.h"
 
 OoTMMComboTracker* MainWindow = nullptr;
@@ -27,6 +28,10 @@ int main(int argc, char *argv[])
    /* if (IsDarkMode())
         SetDarkPalette(a);*/
     a.setStyleSheet(GetDarkStyle());
+
+    // Populate the default intra-scene travel costs on every OoT / MM entrance
+    // entry so the GPS pathfinder can rely on EntranceMetaInfo::Cost from now on.
+    InitializeEntranceCosts();
 
     // Create the main window
     MainWindow = new OoTMMComboTracker();

@@ -254,7 +254,7 @@ void SceneItemTree::UpdateObjectCounts(int Count)
 
 void SceneItemTree::RefreshItemName()
 {
-    SetCountedTreeLabel(this, this->GetSceneName(), this->GetCollectedObjects(), this->GetTotalObjects());
+    RefreshCountLabel(this->GetSceneName(), (uint32_t)this->GetCollectedObjects(), (uint32_t)this->GetTotalObjects());
 }
 
 #pragma endregion

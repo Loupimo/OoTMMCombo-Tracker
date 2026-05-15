@@ -97,7 +97,7 @@ public:
     * 
     *   @param Parent              The parent tree item to attach this item to.
     */
-    SceneItemTree(QTreeWidgetItem* Parent = nullptr) {}
+    SceneItemTree(QTreeWidgetItem* Parent = nullptr) : CommonBaseItemTree(Parent) {}
 
     /*
     *   Construct the associated scene and tree item and it to the given parent.
