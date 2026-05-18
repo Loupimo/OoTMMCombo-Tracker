@@ -416,6 +416,15 @@ public:
     void RefreshContent();
 
     /*
+    *   Rebuild the left map tree from scratch based on each scene's current ActiveLayout. Necessary
+    *   because some scenes only have entrances valid under specific layouts (e.g. the JP grottos in
+    *   MM_DEKU_PALACE under GameLayout::mm_jp); without this rebuild they stay invisible after the
+    *   layout is switched via Settings::ApplySettings. Preserves the current scene selection when the
+    *   scene still has at least one valid entrance under the new layout.
+    */
+    void RebuildSceneTree();
+
+    /*
     *   Refresh the tab name to reflect the current found / total entrance counters.
     */
     void RefreshName() override;

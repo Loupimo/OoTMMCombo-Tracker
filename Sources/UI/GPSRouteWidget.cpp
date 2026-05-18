@@ -39,20 +39,20 @@ namespace
 
         if (IsBest)
         {
-            R.Label  = "rapide";
-            R.Notes  = QString("%1 transitions \xC2\xB7 trajet direct").arg(qMax(0, int(Path.Steps.size()) - 1));
+            R.Label  = "Fastest";
+            R.Notes  = QString("%1 transitions \xC2\xB7 direct route").arg(qMax(0, int(Path.Steps.size()) - 1));
             R.Accent = QColor("#3ddc84");
         }
         else if (Index == 1)
         {
-            R.Label  = QString::fromUtf8("\xC3\xA9quilibr\xC3\xA9""e");      // "équilibrée"
+            R.Label  = QString::fromUtf8("Balanced");
             R.Notes  = QString("%1 transitions \xC2\xB7 alternative").arg(qMax(0, int(Path.Steps.size()) - 1));
             R.Accent = QColor("#e8a82d");
         }
         else
         {
-            R.Label  = QString::fromUtf8("d\xC3\xA9tour");                   // "détour"
-            R.Notes  = QString("%1 transitions \xC2\xB7 panoramique").arg(qMax(0, int(Path.Steps.size()) - 1));
+            R.Label  = QString::fromUtf8("Detour");
+            R.Notes  = QString("%1 transitions \xC2\xB7 panoramic").arg(qMax(0, int(Path.Steps.size()) - 1));
             R.Accent = QColor("#ff5252");
         }
 
@@ -117,14 +117,14 @@ void GPSRouteWidget::SetRoutes(const QVector<Route>& Routes)
 
     if (this->Summary != nullptr)
     {
-        this->Summary->setText(QString("%1 routes trouvées").arg(Routes.size()));
+        this->Summary->setText(QString("%1 routes found").arg(Routes.size()));
     }
 }
 
 
 void GPSRouteWidget::SetEmpty()
 {
-    this->SetMessage(QString::fromUtf8("Aucun chemin trouv\xC3\xA9"));
+    this->SetMessage(QString::fromUtf8("No route found"));
 }
 
 
@@ -203,7 +203,7 @@ void GPSRouteWidget::BuildCardsHost()
     this->CardsRow->setContentsMargins(0, 0, 0, 0);
     this->CardsRow->setSpacing(10);
 
-    this->Placeholder = new QLabel("Aucun chemin trouvé", this->CardsHost);
+    this->Placeholder = new QLabel("No route found", this->CardsHost);
     this->Placeholder->setObjectName("GpsPlaceholder");
     this->Placeholder->setAlignment(Qt::AlignCenter);
     this->Placeholder->setVisible(false);

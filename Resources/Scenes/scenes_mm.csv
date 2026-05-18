@@ -28,7 +28,7 @@ MM_CLOCK_TOWER_ROOFTOP;Clock Tower Rooftop;./Resources/MM/Clock_Town/Tower_Rooft
 MM_OPENING;Opening;;;None;false;mm
 MM_TEMPLE_WOODFALL;Woodfall Temple;;./Resources/MM/Dungeons/Woodfall/WFT_Map.jpg;Dungeons;false;mm
 MM_PATH_MOUNTAIN_VILLAGE;Path to Mountain Village;./Resources/MM/Path_to_Mountain_Village/Path.png;./Resources/MM/Path_to_Mountain_Village/Path_Map.jpg;Path_to_Mountain_Village;true;mm
-MM_CASTLE_IKANA;Ancient Ikana Castle;;./Resources/MM/Ikana_Canyon/Castle/Exterior_Map.jpg;Dungeons;false;mm
+MM_CASTLE_IKANA;Ancient Ikana Castle;;./Resources/MM/Ikana_Canyon/Exterior_Map.jpg;Dungeons;false;mm
 MM_DEKU_PLAYGROUND;Deku's Playground;./Resources/MM/Clock_Town/Deku_Playground.png;./Resources/MM/Clock_Town/Deku_Playground_Map.jpg;Clock_Town;false;mm
 MM_LAIR_ODOLWA;Odolwa's Lair;;./Resources/MM/Dungeons/Woodfall/Odolwa_Map.jpg;None;false;mm
 MM_SHOOTING_GALLERY;Shooting Gallery;./Resources/MM/Clock_Town/Shooting.png;./Resources/MM/Clock_Town/Shooting_Map.jpg;Clock_Town;false;mm
@@ -48,7 +48,7 @@ MM_TERMINA_FIELD;Termina Field;./Resources/MM/Termina/Field.png;./Resources/MM/T
 MM_POST_OFFICE;Post Office;./Resources/MM/Clock_Town/Post_Office.png;./Resources/MM/Clock_Town/Post_Office_Map.jpg;Clock_Town;false;mm
 MM_LABORATORY;Laboratory;./Resources/MM/Great_Bay_Coast/Laboratory.png;./Resources/MM/Great_Bay_Coast/Laboratory_Map.jpg;Great_Bay_Coast;false;mm
 MM_DAMPE_HOUSE;Dampe's House;./Resources/MM/Graveyard/Dampe.png;./Resources/MM/Graveyard/Dampe_Map.jpg;Graveyard;false;mm
-MM_INSIDE_CASTLE_IKANA;Inside Ancient Ikana Castle;;./Resources/MM/Ikana_Canyon/Castle/Interior_Map.jpg;None;false;mm
+MM_INSIDE_CASTLE_IKANA;Inside Ancient Ikana Castle;;./Resources/MM/Ikana_Canyon/Interior_Map.jpg;None;false;mm
 MM_GORON_SHRINE;Goron's Shrine;./Resources/MM/Goron_Village/City.png;./Resources/MM/Goron_Village/City_Map.jpg;Goron_Village;false;mm
 MM_ZORA_HALL;Zora's Theater;./Resources/MM/Zora_Hall/Zora_Hall.png;./Resources/MM/Zora_Hall/Zora_Hall_Map.jpg;Zora_Hall;false;mm
 MM_TRADING_POST;Trading Post;./Resources/MM/Clock_Town/Trading_Post.png;./Resources/MM/Clock_Town/Trading_Post_Map.jpg;Clock_Town;false;mm
@@ -60,8 +60,8 @@ MM_LOTTERY;Lottery;./Resources/MM/Clock_Town/Lottery.jpg;./Resources/MM/Clock_To
 MM_SNOWHEAD_SPRING;Snowhead, Spring;;;None;false;mm
 MM_PIRATE_FORTRESS_ENTRANCE;Pirate's Fortress, Entrance;./Resources/MM/Fortress/Entrance.png;./Resources/MM/Fortress/Entrance_Map.jpg;Fortress;false;mm
 MM_FISHERMAN_HUT;Fisherman's Hut;;./Resources/MM/Great_Bay_Coast/Fisherman_Hut_Map.jpg;None;false;mm
-MM_GORON_SHOP;Goron Shop;./Resources/MM/Goron_Village/Shop.png;./Resources/MM/Goron_Village/Shop_Map.png;Goron_Village;false;mm
-MM_DEKU_KING_CHAMBER;Deku King's Chamber;./Resources/MM/Deku_Palace/King.png;./Resources/MM/Deku_Palace/King_Map.png;Deku_Palace;false;mm
+MM_GORON_SHOP;Goron Shop;./Resources/MM/Goron_Village/Shop.png;./Resources/MM/Goron_Village/Shop_Map.jpg;Goron_Village;false;mm
+MM_DEKU_KING_CHAMBER;Deku King's Chamber;./Resources/MM/Deku_Palace/King.png;./Resources/MM/Deku_Palace/King_Map.jpg;Deku_Palace;false;mm
 MM_MOON_GORON;Goron's Trial;./Resources/MM/Moon/Goron.png;./Resources/MM/Moon/Goron_Map.jpg;Moon;false;mm
 MM_ROAD_SOUTHERN_SWAMP;Road to Southern Swamp;./Resources/MM/Road_to_Southern_Swamp/Road.png;./Resources/MM/Road_to_Southern_Swamp/Road_Map.jpg;Southern_Swamp_Road;false;mm
 MM_DOG_RACETRACK;Dog's Racetrack;./Resources/MM/Ranch/Dog_Race.png;./Resources/MM/Ranch/Dog_Race_Map.jpg;Ranch;false;mm
@@ -72,7 +72,7 @@ MM_SOUTHERN_SWAMP;Southern Swamp;./Resources/MM/Southern_Swamp/Swamp.png;./Resou
 MM_WOODFALL;Woodfall;./Resources/MM/Woodfall/Woodfall.png;./Resources/MM/Woodfall/Woodfall_Map.jpg;Woodfall;false;mm
 MM_MOON_ZORA;Zora's Trial;./Resources/MM/Moon/Zora.png;./Resources/MM/Moon/Zora_Map.jpg;Moon;false;mm
 MM_GORON_VILLAGE_SPRING;Goron's Village, Spring;;;None;false;mm
-MM_TEMPLE_GREAT_BAY;Great Bay Temple;;./Resources/MM/Dungeons/Greate_Bay/GBT_Map.jpg;Dungeons;false;mm
+MM_TEMPLE_GREAT_BAY;Great Bay Temple;;./Resources/MM/Dungeons/Great_Bay/GBT_Map.jpg;Dungeons;false;mm
 MM_WATERFALL_RAPIDS;Waterfall Rapids;./Resources/MM/Zora_Cape/Waterfall_Rapids.png;./Resources/MM/Zora_Cape/Waterfall_Rapids_Map.jpg;Zora_Cape;false;mm
 MM_BENEATH_THE_WELL;Beneath the Well;./Resources/MM/Ikana_Canyon/Beneath_Well.png;./Resources/MM/Ikana_Canyon/Beneath_Well_Map.jpg;Ikana_Canyon;false;mm
 MM_ZORA_HALL_ROOMS;Zora's Hall Rooms;;;None;false;mm
@@ -85,7 +85,7 @@ MM_DEKU_SHRINE;Deku's Shrine;./Resources/MM/Deku_Palace/Shrine.png;./Resources/M
 MM_ROAD_IKANA;Road to Ikana;./Resources/MM/Road_to_Ikana/Road.png;./Resources/MM/Road_to_Ikana/Road_Map.jpg;Road_to_Ikana;false;mm
 MM_SWORDSMAN_SCHOOL;Swordsman's School;./Resources/MM/Clock_Town/Swordsman_School.png;./Resources/MM/Clock_Town/Swordsman_School_Map.jpg;Clock_Town;false;mm
 MM_MUSIC_BOX_HOUSE;Music Box House;./Resources/MM/Ikana_Canyon/Music_Box_House.png;./Resources/MM/Ikana_Canyon/Music_Box_House_Map.jpg;Ikana_Canyon;false;mm
-MM_LAIR_IKANA;Ikana's Lair;;./Resources/MM/Ikana_Canyon/Castle/Igos_Map.jpg;None;false;mm
+MM_LAIR_IKANA;Ikana's Lair;;./Resources/MM/Ikana_Canyon/Igos_Map.jpg;None;false;mm
 MM_TOURIST_INFORMATION;Tourist Information;./Resources/MM/Southern_Swamp/Tourist_Information.png;./Resources/MM/Southern_Swamp/Tourist_Information_Map.jpg;Southern_Swamp;false;mm
 MM_STONE_TOWER;Stone Tower;./Resources/MM/Stone_Tower/Tower.png;./Resources/MM/Stone_Tower/Tower_Map.jpg;Stone_Tower;false;mm
 MM_STONE_TOWER_INVERTED;Stone Tower, Inverted;./Resources/MM/Stone_Tower/Tower_Inverted.png;./Resources/MM/Stone_Tower/Tower_Inverted_Map.jpg;Stone_Tower;false;mm
@@ -94,7 +94,7 @@ MM_PATH_SNOWHEAD;Path to Snowhead;./Resources/MM/Path_to_Snowhead/Path.png;./Res
 MM_SNOWHEAD;Snowhead;./Resources/MM/Snowhead/Snowhead.png;./Resources/MM/Snowhead/Snowhead_Map.jpg;Snowhead;true;mm
 MM_TWIN_ISLANDS_WINTER;Twin Islands, Winter;;;None;true;mm
 MM_TWIN_ISLANDS_SPRING;Twin Islands, Spring;;;None;true;mm
-MM_LAIR_GYORG;Gyorg's Lair;;./Resources/MM/Dungeons/Greate_Bay/Gyorg_Map.jpg;None;false;mm
+MM_LAIR_GYORG;Gyorg's Lair;;./Resources/MM/Dungeons/Great_Bay/Gyorg_Map.jpg;None;false;mm
 MM_SECRET_SHRINE;Secret's Shrine;./Resources/MM/Ikana_Canyon/Shrine.png;./Resources/MM/Ikana_Canyon/Shrine_Map.jpg;Ikana_Canyon;false;mm
 MM_STOCK_POT_INN;Stock Pot Inn;./Resources/MM/Clock_Town/Stock_Pot_Inn.png;./Resources/MM/Clock_Town/Stock_Pot_Inn_Map.jpg;Clock_Town;false;mm
 MM_GREAT_BAY_CUTSCENE;Great Bay Cutscene;;;None;false;mm
@@ -121,14 +121,14 @@ MM_ZORA_TIJO_ROOM;Tijo's Room;;./Resources/MM/Zora_Hall/Tijo_Room_Map.jpg;None;f
 MM_ZORA_LULU_ROOM;Lulu's Room;./Resources/MM/Zora_Hall/Lulu_Room.png;./Resources/MM/Zora_Hall/Lulu_Room_Map.jpg;Zora_Hall;false;mm
 MM_ROMANI_RANCH_BARN;Stable;;./Resources/MM/Ranch/Stable_Map.jpg;None;false;mm
 MM_PIRATE_SEWERS;Sewers;;;None;false;mm
-MM_PIRATE_SEWERS;Warp Owls;;;None;false;mm
+MM_OWLS;Warp Owls;;./Resources/MM/Songs/Owls_Map.jpg;None;false;mm
 MM_GROTTO_TERMINA_DODONGO;Dodongo Grotto;./Resources/MM/Termina/Dodongo.png;./Resources/MM/Termina/Dodongo_Map.jpg;Termina;false;mm
-MM_GROTTO_TERMINA_OCEAN_GOSSIP;Gossip Stones Grotto, Ocean;./Resources/MM/Termina/Ocean_Gossip.png;./Resources/MM/Termina/Ocean_Gossip_Map.jpg;Termina;false;mm
-MM_GROTTO_TERMINA_CANYON_GOSSIP;Gossip Stones Grotto, Canyon;./Resources/MM/Termina/Canyon_Gossip.png;./Resources/MM/Termina/Canyon_Gossip_Map.jpg;Termina;false;mm
-MM_GROTTO_TERMINA_SWAMP_GOSSIP;Gossip Stones Grotto, Swamp;;./Resources/MM/Termina/Swamp_Gossip_Map.jpg;None;false;mm
-MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP;Gossip Stones Grotto, Mountain;;./Resources/MM/Termina/Mountain_Gossip_Map.jpg;None;false;mm
+MM_GROTTO_TERMINA_OCEAN_GOSSIP;Gossip Stones Grotto, Ocean;./Resources/MM/Termina/Ocean_Gossip.png;./Resources/MM/Termina/Gossip_Map.jpg;Termina;false;mm
+MM_GROTTO_TERMINA_CANYON_GOSSIP;Gossip Stones Grotto, Canyon;./Resources/MM/Termina/Canyon_Gossip.png;./Resources/MM/Termina/Gossip_Map.jpg;Termina;false;mm
+MM_GROTTO_TERMINA_SWAMP_GOSSIP;Gossip Stones Grotto, Swamp;;./Resources/MM/Termina/Gossip_Map.jpg;None;false;mm
+MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP;Gossip Stones Grotto, Mountain;;./Resources/MM/Termina/Gossip_Map.jpg;None;false;mm
 MM_GROTTO_TERMINA_BIO_BABA;Bio Baba Grotto;./Resources/MM/Termina/Bio_Baba.png;./Resources/MM/Termina/Bio_Baba_Map.jpg;Termina;false;mm
-MM_GROTTO_TERMINA_PEAHAT;Peehat Grotto;./Resources/MM/Termina/Peahat.png;./Resources/MM/Termina/Peahat.jpg;Termina;false;mm
+MM_GROTTO_TERMINA_PEAHAT;Peehat Grotto;./Resources/MM/Termina/Peahat.png;./Resources/MM/Termina/Peahat_Map.jpg;Termina;false;mm
 MM_GROTTO_TERMINA_SCRUB;Deku Scrub Grotto;./Resources/MM/Termina/Scrub.png;./Resources/MM/Termina/Scrub_Map.jpg;Termina;false;mm
 MM_GROTTO_TERMINA_TALL_GRASS;Tall Grass Grotto;./Resources/MM/Grottos/Generic.png;./Resources/MM/Grottos/Generic_Map.jpg;Termina;false;mm
 MM_GROTTO_TERMINA_COW;Cow Grotto;./Resources/MM/Grottos/Cow.png;./Resources/MM/Grottos/Cow_Map.jpg;Termina;false;mm

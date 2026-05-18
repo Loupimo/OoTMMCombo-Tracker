@@ -802,58 +802,8 @@ EntranceGameTabView::EntranceGameTabView(int Game, const char * Name, EntranceTa
 
     this->setLayout(this->MainLayout);
 
-    auto scenes = GetSceneEntranceMetaInfForGame(Game);
-
-    for (auto& [sceneID, MetaInf] : *scenes)
-    {   // Only keep scenes that have at least one valid entrance
-
-        SceneMetaInfo* sceneMeta = GetSceneMetaInfo(sceneID, Game);
-        GameLayout activeLayout = sceneMeta != nullptr ? sceneMeta->ActiveLayout : GameLayout::all;
-
-        bool hasValid = false;
-        for (auto& [entranceID, link] : MetaInf.EntranceIDs)
-        {
-            const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(Game, entranceID, activeLayout);
-            if (entrance == nullptr || entrance->Type == EntranceType::None)
-            {
-                continue;
-            }
-            if (!entrance->HasCorrectLayout(activeLayout))
-            {   // Skip entrances that don't belong to the currently active layout (e.g. MQ vs vanilla)
-                continue;
-            }
-            hasValid = true;
-            break;
-        }
-        if (!hasValid)
-        {
-            continue;
-        }
-
-        RegionTree* currRegion = this->FindRegionTree(MetaInf.RegionID);
-        if (currRegion == nullptr)
-        {   // Create a new region in the tree list
-
-            currRegion = new RegionTree((GameTab*)this, MetaInf.RegionID, this->MapList->List);
-            this->Regions.push_back(currRegion);
-        }
-
-        MetaInf.MapPath = GetSceneMiniMap(Game, MetaInf.SceneID);
-        new SceneEntranceItemTree(&MetaInf, this, currRegion);
-    }
-
+    this->RebuildSceneTree();
     this->SyncCounters();
-    this->MapList->List->sortItems(0, Qt::AscendingOrder);
-
-    // "All" pseudo-region pinned at the top of the map tree: selecting it shows the global entrance
-    // view without any region filter. Inserted after sortItems so it stays at index 0 regardless of
-    // the alphabetical order of the real regions.
-    QTreeWidgetItem* allItem = new QTreeWidgetItem();
-    allItem->setText(0, "All");
-    QFont allFont = allItem->font(0);
-    allFont.setBold(true);
-    allItem->setFont(0, allFont);
-    this->MapList->List->insertTopLevelItem(0, allItem);
 
     QObject::connect(this->MapList->List, &QTreeWidget::currentItemChanged, this,
         [this](QTreeWidgetItem* current, QTreeWidgetItem* /*previous*/)
@@ -943,21 +893,14 @@ void EntranceGameTabView::RenderSceneMap(SceneEntranceMetaInf* Scene)
         this->SceneMapImage = new QPixmap(Scene->MapPath);
         this->SceneMapItem = this->SceneMapScene->addPixmap(*this->SceneMapImage);
 
-        // Defer the fit to the next event-loop tick: on the very first scene selection the
-        // SceneMapView is still hidden inside the QStackedWidget (index 0 shows the all-view), so
-        // its viewport size is the default one and fitInView would scale against stale geometry.
-        // By the time the timer fires, setCurrentIndex(1) has run and the view has been resized
-        // to its real on-screen size, so the map actually fits the visible area.
-        QPointer<QGraphicsView> view = this->SceneMapView;
-        QPointer<QGraphicsScene> scene = this->SceneMapScene;
-        QTimer::singleShot(0, [view, scene]()
-        {
-            if (!view.isNull() && !scene.isNull())
-            {
-                view->fitInView(scene->sceneRect(), Qt::KeepAspectRatio);
-                view->centerOn(scene->sceneRect().center());
-            }
-        });
+        // Pin sceneRect to the new pixmap's exact bounds as a baseline. QGraphicsScene's implicit
+        // sceneRect grows but never shrinks (Qt doc), so switching from a 1728x1020 map back to a
+        // 1000x1000 one would otherwise leave the rect at 1728x1020 and render the smaller map
+        // anchored to the upper-left of a stale area. The icon scaling in EntranceRenderer reads
+        // sceneRect during overlay creation, so this baseline must be set BEFORE rendering overlays
+        // (the deferred timer below re-expands the rect once the overlay items have been laid out).
+        QRectF mapRect(0, 0, this->SceneMapImage->width(), this->SceneMapImage->height());
+        this->SceneMapScene->setSceneRect(mapRect);
     }
 
     // Paint name labels + clickable arrows on top of the freshly loaded map. Done here (and not in
@@ -968,6 +911,35 @@ void EntranceGameTabView::RenderSceneMap(SceneEntranceMetaInf* Scene)
         this->Renderer->RenderSceneOverlayGrouped(Scene);
         //this->Renderer->RenderSceneOverlay(Scene);
         //this->Renderer->ResolveOverlaps();
+    }
+
+    if (Scene->MapPath != NULL)
+    {
+        // Expand sceneRect to the union of the pixmap and every overlay item, with a small margin
+        // so labels rendered just outside the image bounds (e.g. "Start Race", "Zora Cape") stay
+        // fully visible after fitInView. itemsBoundingRect() recomputes from current items so it
+        // shrinks back when we switch to a smaller map.
+        QRectF mapRect(0, 0, this->SceneMapImage->width(), this->SceneMapImage->height());
+        QRectF fitRect = this->SceneMapScene->itemsBoundingRect().united(mapRect);
+        constexpr qreal kFitMargin = 16.0;
+        fitRect.adjust(-kFitMargin, -kFitMargin, kFitMargin, kFitMargin);
+        this->SceneMapScene->setSceneRect(fitRect);
+
+        // Defer the fit to the next event-loop tick: on the very first scene selection the
+        // SceneMapView is still hidden inside the QStackedWidget (index 0 shows the all-view), so
+        // its viewport size is the default one and fitInView would scale against stale geometry.
+        // By the time the timer fires, setCurrentIndex(1) has run and the view has been resized
+        // to its real on-screen size, so the map actually fits the visible area.
+        QPointer<QGraphicsView> view = this->SceneMapView;
+        QPointer<QGraphicsScene> scene = this->SceneMapScene;
+        QTimer::singleShot(0, [view, scene, fitRect]()
+        {
+            if (!view.isNull() && !scene.isNull())
+            {
+                view->fitInView(fitRect, Qt::KeepAspectRatio);
+                view->centerOn(fitRect.center());
+            }
+        });
     }
 }
 
@@ -1198,6 +1170,11 @@ void EntranceGameTabView::RefreshCategoryCounters()
 
 void EntranceGameTabView::RefreshContent()
 {
+    // Rebuild the left scene tree first: scenes whose only valid entrances belong to the newly
+    // activated layout (e.g. MM_GROTTO_DEKU_PALACE_CLIMB under GameLayout::mm_jp) are otherwise
+    // missing because the tree was last built when their ActiveLayout was still the default.
+    this->RebuildSceneTree();
+
     this->AllView->RefreshContent();
 
     // Re-render the currently displayed scene so the on-map overlay (anchor / box / curve) picks up
@@ -1212,6 +1189,106 @@ void EntranceGameTabView::RefreshContent()
         {
             this->PopulateEntranceList(sceneItem->SceneInf);
             this->RenderSceneMap(sceneItem->SceneInf);
+        }
+    }
+}
+
+
+void EntranceGameTabView::RebuildSceneTree()
+{
+    if (this->MapList == nullptr || this->MapList->List == nullptr)
+    {
+        return;
+    }
+
+    // Capture the current selection so we can restore it after the rebuild. We only track scene
+    // items: the "All" pseudo-region is recreated unconditionally below, and region nodes have no
+    // stable identity worth keeping across a rebuild.
+    uint32_t selectedSceneID = UINT32_MAX;
+    SceneEntranceItemTree* currentScene = dynamic_cast<SceneEntranceItemTree*>(this->MapList->List->currentItem());
+    if (currentScene != nullptr && currentScene->SceneInf != nullptr)
+    {
+        selectedSceneID = currentScene->SceneInf->SceneID;
+    }
+
+    // Block signals during clear+rebuild so currentItemChanged doesn't fire OnSceneSelected with
+    // dangling items. We restore the selection ourselves at the end, still under the blocker, so
+    // RefreshContent (when it calls us) can drive the actual re-render afterwards without redundant
+    // intermediate renders.
+    QSignalBlocker blocker(this->MapList->List);
+
+    // QTreeWidget owns its items: clear() deletes both the region nodes and their scene children.
+    this->MapList->List->clear();
+    this->Regions.clear();
+
+    auto scenes = GetSceneEntranceMetaInfForGame(this->GameID);
+
+    for (auto& [sceneID, MetaInf] : *scenes)
+    {   // Only keep scenes that have at least one valid entrance under the current ActiveLayout.
+
+        SceneMetaInfo* sceneMeta = GetSceneMetaInfo(sceneID, this->GameID);
+        GameLayout activeLayout = sceneMeta != nullptr ? sceneMeta->ActiveLayout : GameLayout::all;
+
+        bool hasValid = false;
+        for (auto& [entranceID, link] : MetaInf.EntranceIDs)
+        {
+            const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->GameID, entranceID, activeLayout);
+            if (entrance == nullptr || entrance->Type == EntranceType::None)
+            {
+                continue;
+            }
+            if (!entrance->HasCorrectLayout(activeLayout))
+            {   // Skip entrances that don't belong to the currently active layout (e.g. MQ vs vanilla)
+                continue;
+            }
+            hasValid = true;
+            break;
+        }
+        if (!hasValid)
+        {
+            continue;
+        }
+
+        RegionTree* currRegion = this->FindRegionTree(MetaInf.RegionID);
+        if (currRegion == nullptr)
+        {   // Create a new region in the tree list
+
+            currRegion = new RegionTree((GameTab*)this, MetaInf.RegionID, this->MapList->List);
+            this->Regions.push_back(currRegion);
+        }
+
+        MetaInf.MapPath = GetSceneMiniMap(this->GameID, MetaInf.SceneID);
+        new SceneEntranceItemTree(&MetaInf, this, currRegion);
+    }
+
+    this->MapList->List->sortItems(0, Qt::AscendingOrder);
+
+    // "All" pseudo-region pinned at the top of the map tree: selecting it shows the global entrance
+    // view without any region filter. Inserted after sortItems so it stays at index 0 regardless of
+    // the alphabetical order of the real regions.
+    QTreeWidgetItem* allItem = new QTreeWidgetItem();
+    allItem->setText(0, "All");
+    QFont allFont = allItem->font(0);
+    allFont.setBold(true);
+    allItem->setFont(0, allFont);
+    this->MapList->List->insertTopLevelItem(0, allItem);
+
+    // Restore the previous scene selection if the scene still exists under the new layout. Done
+    // while signals are blocked so the caller drives any subsequent re-render explicitly.
+    if (selectedSceneID != UINT32_MAX)
+    {
+        for (RegionTree* region : this->Regions)
+        {
+            for (int i = 0; i < region->childCount(); i++)
+            {
+                SceneEntranceItemTree* scene = dynamic_cast<SceneEntranceItemTree*>(region->child(i));
+                if (scene != nullptr && scene->SceneInf != nullptr && scene->SceneInf->SceneID == selectedSceneID)
+                {
+                    region->setExpanded(true);
+                    this->MapList->List->setCurrentItem(scene);
+                    return;
+                }
+            }
         }
     }
 }

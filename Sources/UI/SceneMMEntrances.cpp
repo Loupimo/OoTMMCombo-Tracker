@@ -264,14 +264,50 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 		}
 	},
 	{
-		MM_FAIRY_FOUNTAIN,
+		MM_FAIRY_CLOCK_TOWN,
 		{
-			MM_FAIRY_FOUNTAIN, (uint8_t)MMRegions::Clock_Town,
+			MM_FAIRY_CLOCK_TOWN, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_FAIRY_FOUNTAIN_TOWN_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_FAIRY_WOODFALL,
+		{
+			MM_FAIRY_WOODFALL, (uint8_t)MMRegions::Woodfall,
+			{
 				{ MM_FAIRY_FOUNTAIN_WOODFALL_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_FAIRY_SNOWHEAD,
+		{
+			MM_FAIRY_SNOWHEAD, (uint8_t)MMRegions::Snowhead,
+			{
 				{ MM_FAIRY_FOUNTAIN_SNOWHEAD_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_FAIRY_GREAT_BAY_COAST,
+		{
+			MM_FAIRY_GREAT_BAY_COAST, (uint8_t)MMRegions::Zora_Cape,
+			{
 				{ MM_FAIRY_FOUNTAIN_GREAT_BAY_ENTR, { UINT32_MAX, UINT32_MAX } },
+			},
+			NULL
+		}
+	},
+	{
+		MM_FAIRY_IKANA,
+		{
+			MM_FAIRY_IKANA, (uint8_t)MMRegions::Ikana_Canyon,
+			{
 				{ MM_FAIRY_FOUNTAIN_IKANA_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
 			NULL
@@ -1450,7 +1486,7 @@ std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta =
 	{
 		MM_TRADING_POST,
 		{
-			MM_TRADING_POST, (uint8_t)MMRegions::Southern_Swamp,
+			MM_TRADING_POST, (uint8_t)MMRegions::Clock_Town,
 			{
 				{ MM_TRADING_POST_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},

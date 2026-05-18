@@ -1,0 +1,6 @@
+QList<QPair<int, int>> GrassPoints = {
+{497, 569},
+};
+QList<QPair<int, int>> ChestPoints = {
+{497, 694},
+};

@@ -2687,6 +2687,45 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                 }
                 break;
             }
+
+            case MM_FAIRY_FOUNTAIN:
+            {
+                switch (Message.EntranceID)
+                {
+                    case MM_FAIRY_FOUNTAIN_TOWN_ENTR:
+                    {
+                        return MM_FAIRY_CLOCK_TOWN;
+                    }
+
+                    case MM_FAIRY_FOUNTAIN_WOODFALL_ENTR:
+                    {
+                        return MM_FAIRY_WOODFALL;
+                    }
+
+                    case MM_FAIRY_FOUNTAIN_SNOWHEAD_ENTR:
+                    {
+                        return MM_FAIRY_SNOWHEAD;
+                    }
+
+                    case MM_FAIRY_FOUNTAIN_GREAT_BAY_ENTR:
+                    {
+                        return MM_FAIRY_GREAT_BAY_COAST;
+                    }
+
+                    case MM_FAIRY_FOUNTAIN_IKANA_ENTR:
+                    {
+                        return MM_FAIRY_IKANA;
+                    }
+                }
+            }
+
+            case MM_RANCH_HOUSE_BARN:
+            {
+                if (Message.EntranceID == MM_RANCH_HOUSE_ENTR)
+                {
+                    return MM_ROMANI_RANCH_BARN;
+                }
+            }
         }
     }
 

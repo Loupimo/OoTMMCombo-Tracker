@@ -629,6 +629,7 @@ void Settings::ParseGamesLayouts(QString& LayoutSection)
 	GetSceneMetaInfo(MM_GROTTOS, MM_GAME)->ActiveLayout = GameLayout::mm;
 	GetSceneMetaInfo(MM_DEKU_PALACE, MM_GAME)->ActiveLayout = GameLayout::mm;
 	GetSceneMetaInfo(MM_GROTTO_DEKU_PALACE_GENERIC, MM_GAME)->ActiveLayout = GameLayout::mm;
+    GetSceneMetaInfo(MM_GROTTO_DEKU_PALACE_CLIMB, MM_GAME)->ActiveLayout = GameLayout::mm;
 
 	QRegularExpression reg("^  ((?:Master Quest Dungeons|Majora's Mask JP Layouts):(?: \\w*|(?:\n    - .+)*))", QRegularExpression::MultilineOption);
 	QRegularExpressionMatchIterator it = reg.globalMatch(LayoutSection);
@@ -671,6 +672,7 @@ void Settings::ParseGamesLayouts(QString& LayoutSection)
 					GetSceneMetaInfo(MM_GROTTOS, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
 					GetSceneMetaInfo(MM_DEKU_PALACE, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
 					GetSceneMetaInfo(MM_GROTTO_DEKU_PALACE_GENERIC, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
+                    GetSceneMetaInfo(MM_GROTTO_DEKU_PALACE_CLIMB, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
 				}
 			}
 		}
@@ -748,6 +750,7 @@ void Settings::ParseGamesLayouts(QString& LayoutSection)
 						GetSceneMetaInfo(MM_GROTTOS, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
 						GetSceneMetaInfo(MM_DEKU_PALACE, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
                         GetSceneMetaInfo(MM_GROTTO_DEKU_PALACE_GENERIC, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
+                        GetSceneMetaInfo(MM_GROTTO_DEKU_PALACE_CLIMB, MM_GAME)->ActiveLayout = GameLayout::mm_jp;
 					}
 				}
 			}

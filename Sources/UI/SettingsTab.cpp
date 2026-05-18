@@ -1018,6 +1018,7 @@ void SettingsTab::ApplyLayoutSelections()
         if (SceneMetaInfo* info = GetSceneMetaInfo(MM_GROTTOS, MM_GAME))                   info->ActiveLayout = target;
         if (SceneMetaInfo* info = GetSceneMetaInfo(MM_DEKU_PALACE, MM_GAME))               info->ActiveLayout = target;
         if (SceneMetaInfo* info = GetSceneMetaInfo(MM_GROTTO_DEKU_PALACE_GENERIC, MM_GAME)) info->ActiveLayout = target;
+        if (SceneMetaInfo* info = GetSceneMetaInfo(MM_GROTTO_DEKU_PALACE_CLIMB, MM_GAME)) info->ActiveLayout = target;
     }
 }
 
