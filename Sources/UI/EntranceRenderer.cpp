@@ -181,7 +181,13 @@ const int* EntranceLinkItemTree::GetPosition() const
     {
         return nullptr;
     }
-    return meta->AnchorPos;//this->IsInLink ? meta->InPosition : meta->OutPosition;
+
+    // Route through GetEntranceAnchorPos so layout-specific anchor overrides (currently only
+    // Bean Grotto in Deku Palace, mm vs mm_jp) are honoured by the centerOn callers.
+    int gameID = this->EntranceItem->RendererOwner != nullptr ? this->EntranceItem->RendererOwner->GetGameID() : -1;
+    SceneMetaInfo* sceneMeta = GetSceneMetaInfo(this->EntranceItem->SceneID, gameID);
+    GameLayout layout = sceneMeta != nullptr ? sceneMeta->ActiveLayout : GameLayout::all;
+    return GetEntranceAnchorPos(*meta, gameID, this->EntranceItem->SceneID, layout);
 }
 
 
@@ -425,13 +431,7 @@ const EntranceMetaInfo* EntranceItemTree::GetMetaInfo() const
     {
         return nullptr;
     }
-    int gameID = this->RendererOwner->GetGameID();
-
-    // Pass the owning scene's active layout so the overlay (anchor / text / icon) reads the correct
-    // variant when several entrances share the same ID across layouts (e.g. mm vs mm_jp).
-    SceneMetaInfo* sceneMeta = GetSceneMetaInfo(this->SceneID, gameID);
-    GameLayout activeLayout = sceneMeta != nullptr ? sceneMeta->ActiveLayout : GameLayout::all;
-    return EntranceHelper::GetEntranceMetaInf(gameID, this->EntranceID, activeLayout);
+    return EntranceHelper::GetEntranceMetaInf(this->RendererOwner->GetGameID(), this->EntranceID);
 }
 
 
@@ -473,7 +473,10 @@ void EntranceItemTree::PerformAction()
         return;
     }
 
-    const int* pos = meta->AnchorPos;
+    int gameID = this->RendererOwner->GetGameID();
+    SceneMetaInfo* sceneMeta = GetSceneMetaInfo(this->SceneID, gameID);
+    GameLayout layout = sceneMeta != nullptr ? sceneMeta->ActiveLayout : GameLayout::all;
+    const int* pos = GetEntranceAnchorPos(*meta, gameID, this->SceneID, layout);
 
     // Pick the position that visually represents the entrance pair as a whole: Normal entrances
     // and OneWayIn entrances get their In side; OneWayOut entrances only have an Out side. This
@@ -1044,7 +1047,7 @@ void EntranceRenderer::RenderSceneOverlay(SceneEntranceMetaInf* Scene)
 
     for (auto& [entranceID, link] : Scene->EntranceIDs)
     {
-        const EntranceMetaInfo* meta = EntranceHelper::GetEntranceMetaInf(this->GetGameID(), entranceID, activeLayout);
+        const EntranceMetaInfo* meta = EntranceHelper::GetEntranceMetaInf(this->GetGameID(), entranceID);
         if (meta == nullptr || meta->Type == EntranceType::None)
         {
             continue;
@@ -1086,8 +1089,7 @@ void EntranceRenderer::RenderSceneOverlayGrouped(SceneEntranceMetaInf* SceneMeta
 
     for (auto& [entranceID, link] : SceneMeta->EntranceIDs)
     {
-        const EntranceMetaInfo* meta = EntranceHelper::GetEntranceMetaInf(
-            this->GetGameID(), entranceID, activeLayout);
+        const EntranceMetaInfo* meta = EntranceHelper::GetEntranceMetaInf(this->GetGameID(), entranceID);
         if (!meta || meta->Type == EntranceType::None) continue;
 
         if (!meta->HasCorrectLayout(activeLayout))
@@ -1105,7 +1107,8 @@ void EntranceRenderer::RenderSceneOverlayGrouped(SceneEntranceMetaInf* SceneMeta
         this->OverlayItems.push_back(box);
 
         // ── Diamond anchor at AnchorPos ────────────────────────────────────────
-        const QPointF anchorPt(meta->AnchorPos[0], meta->AnchorPos[1]);
+        const int* anchorXY = GetEntranceAnchorPos(*meta, this->GetGameID(), SceneMeta->SceneID, activeLayout);
+        const QPointF anchorPt(anchorXY[0], anchorXY[1]);
         EntranceAnchorItem* anchor = new EntranceAnchorItem(anchorPt, box);
         this->Scene->addItem(anchor);
         this->OverlayItems.push_back(anchor);
@@ -1155,7 +1158,13 @@ void EntranceRenderer::AddLinkMarker(EntranceLinkItemTree* Link, bool IsIn, cons
         return;
     }
 
-    const int* pos = Meta->AnchorPos;
+    // Pull the anchor through GetEntranceAnchorPos so layout-specific overrides apply (currently
+    // only Bean Grotto in Deku Palace, mm vs mm_jp).
+    uint32_t sceneID = Link->EntranceItem != nullptr ? Link->EntranceItem->SceneID : 0;
+    int gameID = this->GetGameID();
+    SceneMetaInfo* sceneMeta = GetSceneMetaInfo(sceneID, gameID);
+    GameLayout layout = sceneMeta != nullptr ? sceneMeta->ActiveLayout : GameLayout::all;
+    const int* pos = GetEntranceAnchorPos(*Meta, gameID, sceneID, layout);
     /*const int* pos = IsIn ? Meta->InPosition : Meta->OutPosition;
     qreal rotDeg = IsIn ? Meta->ArrowRot : Meta->ArrowRot + 180.0;*/
 

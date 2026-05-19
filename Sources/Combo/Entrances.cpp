@@ -6,14 +6,18 @@
 #include <math.h>
 #include <set>
 
+// Alternative on-image anchor for MM_GROTTO_EXIT_BEAN in MM_DEKU_PALACE when the active layout
+// is mm_jp. The single entry kept in MMEntrances uses the mm coordinates; GetEntranceAnchorPos
+// substitutes these when rendering on the JP layout image.
+const int MM_BEAN_GROTTO_JP_ANCHOR[3] = { 544, 379, 0 };
 
 void InitializeEntranceCosts()
 {
-    auto FillForGame = [](std::multimap<int, EntranceMetaInfo>& Map)
+    auto FillForGame = [](std::map<int, EntranceMetaInfo>& Map)
     {
         // 1) Collect the set of entrance IDs that physically live in each scene.
-        //    Each entry of the multimap describes a transition From -> To, where
-        //    FromEntranceID lives in FromSceneID and ToEntranceID lives in ToSceneID.
+        //    Each entry describes a transition From -> To, where FromEntranceID
+        //    lives in FromSceneID and ToEntranceID lives in ToSceneID.
         std::map<uint32_t, std::set<uint32_t>> EntrancesInScene;
         for (auto& Pair : Map)
         {
@@ -46,59 +50,15 @@ void InitializeEntranceCosts()
 
 
 /*
-*   Pick the EntranceMetaInfo variant matching the given layout in the given multimap. When several
-*   variants share the same ID, prefer the one whose ActiveLayout equals the given layout, then the
-*   <b>GameLayout::all</b> variant, then the first stored variant as a last resort. Returns nullptr
-*   when the ID does not exist.
+*   Look up the EntranceMetaInfo associated with an entrance ID in the per-game map. Entrance IDs
+*   are unique within a single game (OoT and MM are independent namespaces), so a plain map find()
+*   is enough. Returns nullptr when the ID does not exist.
 */
-static const EntranceMetaInfo* PickEntranceVariant(const std::multimap<int, EntranceMetaInfo>& Entrances, uint32_t EntranceID, GameLayout ActiveLayout)
+static const EntranceMetaInfo* LookupEntrance(int Game, uint32_t EntranceID)
 {
-    auto range = Entrances.equal_range(static_cast<int>(EntranceID));
-    if (range.first == range.second)
-    {
-        return nullptr;
-    }
-
-    const EntranceMetaInfo* allVariant = nullptr;
-    const EntranceMetaInfo* firstVariant = &range.first->second;
-
-    for (auto it = range.first; it != range.second; ++it)
-    {
-        if (it->second.ActiveLayout == ActiveLayout)
-        {   // Exact match wins immediately
-            return &it->second;
-        }
-        if (allVariant == nullptr && it->second.ActiveLayout == GameLayout::all)
-        {
-            allVariant = &it->second;
-        }
-    }
-
-    return allVariant != nullptr ? allVariant : firstVariant;
-}
-
-
-/*
-*   Game-aware wrapper around PickEntranceVariant that picks the correct multimap based on the game.
-*/
-static const EntranceMetaInfo* LookupEntrance(int Game, uint32_t EntranceID, GameLayout ActiveLayout)
-{
-    if (Game == OOT_GAME)
-    {
-        return PickEntranceVariant(OoTEntrances, EntranceID, ActiveLayout);
-    }
-    return PickEntranceVariant(MMEntrances, EntranceID, ActiveLayout);
-}
-
-
-/*
-*   Layout-agnostic helper that returns the variant tagged GameLayout::all when present and falls
-*   back to the first stored variant otherwise. Used by every code path that does not know which
-*   layout the entrance belongs to.
-*/
-static const EntranceMetaInfo* LookupEntranceDefault(int Game, uint32_t EntranceID)
-{
-    return LookupEntrance(Game, EntranceID, GameLayout::all);
+    const std::map<int, EntranceMetaInfo>& Entrances = (Game == OOT_GAME) ? OoTEntrances : MMEntrances;
+    auto It = Entrances.find(static_cast<int>(EntranceID));
+    return It != Entrances.end() ? &It->second : nullptr;
 }
 
 void EntranceMessage::SetMessage(uint32_t MsgDirection, uint32_t OwlID, uint32_t Buffer[6])
@@ -1160,7 +1120,182 @@ uint32_t EntranceHelper::CorrectGrottoScene(EntranceMessage& Message)
     }
     else if (Message.GameID == MM_GAME)
     {
-        return Message.SceneID;
+        switch (Message.EntranceID)
+        {
+            case MM_GROTTO_GENERIC_FIELD_PILLAR_ENTR:
+            case MM_GROTTO_EXIT_GENERIC_FIELD_PILLAR:
+            {
+                return MM_GROTTO_TERMINA_PILLAR;
+            }
+
+            case MM_GROTTO_GENERIC_GRASS_ENTR:
+            case MM_GROTTO_EXIT_GENERIC_GRASS:
+            {
+                return MM_GROTTO_TERMINA_TALL_GRASS;
+            }
+
+            case MM_GROTTO_GENERIC_PATH_SWAMP_ENTR:
+            case MM_GROTTO_EXIT_GENERIC_PATH_SWAMP:
+            {
+                return MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN;
+            }
+
+            case MM_GROTTO_GENERIC_WOODS_ENTR:
+            case MM_GROTTO_EXIT_GENERIC_WOODS:
+            {
+                return MM_GROTTO_WOODS_OF_MYSTERY_OPEN;
+            }
+
+            case MM_GROTTO_GENERIC_SWAMP_ENTR:
+            case MM_GROTTO_EXIT_GENERIC_SWAMP:
+            {
+                return MM_GROTTO_SOUTHERN_SWAMP_OPEN;
+            }
+
+            case MM_GROTTO_GENERIC_MOUNTAIN_VILLAGE_ENTR:
+            case MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE:
+            {
+                return MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC;
+            }
+
+            case MM_GROTTO_GENERIC_TWIN_ISLANDS_ENTR:
+            case MM_GROTTO_EXIT_GENERIC_TWIN_ISLANDS:
+            {
+                return MM_GROTTO_TWIN_ISLANDS_RAMP;
+            }
+
+            case MM_GROTTO_GENERIC_PATH_SNOWHEAD_ENTR:
+            case MM_GROTTO_EXIT_GENERIC_PATH_SNOWHEAD:
+            {
+                return MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC;
+            }
+
+            case MM_GROTTO_GENERIC_GREAT_BAY_COAST_ENTR:
+            case MM_GROTTO_EXIT_GENERIC_GREAT_BAY_COAST:
+            {
+                return MM_GROTTO_GREAT_BAY_COAST_FISHERMAN;
+            }
+
+            case MM_GROTTO_GENERIC_ZORA_CAPE_ENTR:
+            case MM_GROTTO_EXIT_GENERIC_ZORA_CAPE:
+            {
+                return MM_GROTTO_ZORA_CAPE_GENERIC;
+            }
+
+            case MM_GROTTO_GENERIC_PATH_IKANA_ENTR:
+            case MM_GROTTO_EXIT_GENERIC_PATH_IKANA:
+            {
+                return MM_GROTTO_IKANA_ROAD_GENERIC;
+            }
+
+            case MM_GROTTO_GENERIC_GRAVEYARD_ENTR:
+            case MM_GROTTO_EXIT_GENERIC_GRAVEYARD:
+            {
+                return MM_GROTTO_IKANA_GRAVEYARD_GENERIC;
+            }
+
+            case MM_GROTTO_GENERIC_VALLEY_ENTR:
+            case MM_GROTTO_EXIT_GENERIC_VALLEY:
+            {
+                return MM_GROTTO_IKANA_VALLEY_OPEN;
+            }
+
+            case MM_GROTTO_COW_FIELD_ENTR:
+            case MM_GROTTO_EXIT_COW_FIELD:
+            {
+                return MM_GROTTO_TERMINA_COW;
+            }
+
+            case MM_GROTTO_COW_COAST_ENTR:
+            case MM_GROTTO_EXIT_COW_COAST:
+            {
+                return MM_GROTTO_GREAT_BAY_COAST_COW;
+            }
+
+            case MM_GROTTO_GOSSIPS_OCEAN_ENTR:
+            case MM_GROTTO_EXIT_GOSSIPS_OCEAN:
+            {
+                return MM_GROTTO_TERMINA_OCEAN_GOSSIP;
+            }
+
+            case MM_GROTTO_GOSSIPS_SWAMP_ENTR:
+            case MM_GROTTO_EXIT_GOSSIPS_SWAMP:
+            {
+                return MM_GROTTO_TERMINA_SWAMP_GOSSIP;
+            }
+
+            case MM_GROTTO_GOSSIPS_CANYON_ENTR:
+            case MM_GROTTO_EXIT_GOSSIPS_CANYON:
+            {
+                return MM_GROTTO_TERMINA_CANYON_GOSSIP;
+            }
+
+            case MM_GROTTO_GOSSIPS_MOUNTAIN_ENTR:
+            case MM_GROTTO_EXIT_GOSSIPS_MOUNTAIN:
+            {
+                return MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP;
+            }
+
+            case MM_GROTTO_HOT_WATER_ENTR:
+            case MM_GROTTO_EXIT_HOT_WATER:
+            {
+                return MM_GROTTO_TWIN_ISLANDS_FROZEN;
+            }
+
+            case MM_GROTTO_JP_LINE_END_ENTR:
+            case MM_GROTTO_EXIT_JP_LINE_END:
+            {
+                return MM_GROTTO_DEKU_PALACE_GENERIC;
+            }
+
+            case MM_GROTTO_DODONGO_ENTR:
+            case MM_GROTTO_EXIT_DODONGO:
+            {
+                return MM_GROTTO_TERMINA_DODONGO;
+            }
+
+            case MM_GROTTO_JP_CLIMB_RIGHT_ENTR:
+            case MM_GROTTO_EXIT_JP_CLIMB_RIGHT:
+            {
+                return MM_GROTTO_DEKU_PALACE_CLIMB;
+            }
+
+            case MM_GROTTO_SCRUB_ENTR:
+            case MM_GROTTO_EXIT_SCRUB:
+            {
+                return MM_GROTTO_TERMINA_SCRUB;
+            }
+
+            case MM_GROTTO_BIO_BABA_ENTR:
+            case MM_GROTTO_EXIT_BIO_BABA:
+            {
+                return MM_GROTTO_TERMINA_BIO_BABA;
+            }
+
+            case MM_GROTTO_BEAN_ENTR:
+            case MM_GROTTO_EXIT_BEAN:
+            {
+                return MM_GROTTO_DEKU_PALACE_BEANS;
+            }
+
+            case MM_GROTTO_PEAHAT_ENTR:
+            case MM_GROTTO_EXIT_PEAHAT:
+            {
+                return MM_GROTTO_TERMINA_PEAHAT;
+            }
+
+            case MM_GROTTO_JP_LINE_START_ENTR:
+            case MM_GROTTO_EXIT_JP_LINE_START:
+            {
+                return MM_GROTTO_DEKU_PALACE_GENERIC;
+            }
+
+            case MM_GROTTO_JP_CLIMB_LEFT_ENTR:
+            case MM_GROTTO_EXIT_JP_CLIMB_LEFT:
+            {
+                return MM_GROTTO_DEKU_PALACE_CLIMB;
+            }
+        }
     }
 
     return Message.EntranceID;
@@ -2883,11 +3018,7 @@ void EntranceHelper::ParseIncomingMessage(EntranceMessage& Message)
             Message.EntranceID = this->CheckGrottoSpawn(Message);
         }
 
-        // The scene layout is known here, so prefer the matching variant when several entrances
-        // share the same ID across layouts (e.g. mm vs mm_jp Bean Grotto in MM_DEKU_PALACE).
-        SceneMetaInfo* sceneMeta = GetSceneMetaInfo(Message.SceneID, Message.GameID);
-        GameLayout activeLayout = sceneMeta != nullptr ? sceneMeta->ActiveLayout : GameLayout::all;
-        Message.MetaInf = const_cast<EntranceMetaInfo*>(LookupEntrance(Message.GameID, Message.EntranceID, activeLayout));
+        Message.MetaInf = const_cast<EntranceMetaInfo*>(LookupEntrance(Message.GameID, Message.EntranceID));
 
         Message.EntranceStr = Message.MetaInf->ToName + std::string(" - ") + Message.MetaInf->FromName;
         MultiLogger::LogMessage("X = %f, Y = %f, Z = %f", Message.X, Message.Y, Message.Z);
@@ -2992,6 +3123,7 @@ void EntranceHelper::ParseOutgoingMessage(EntranceMessage& Message)
     {   // The current entrance is a grotto exit
 
         Message.EntranceID = this->GetGrottoExit(Message);
+        Message.SceneID = this->CorrectGrottoScene(Message);
     }
     else if (this->IsWarpEntrance(Message))
     {   // The current entrance is a warp zone
@@ -3018,32 +3150,36 @@ void EntranceHelper::ParseOutgoingMessage(EntranceMessage& Message)
         return;
     }
 
-    // Retreive the entrance meta information. The scene layout is known here, so prefer the matching
-    // variant when several entrances share the same ID across layouts (e.g. mm vs mm_jp).
-    SceneMetaInfo* outSceneMeta = GetSceneMetaInfo(Message.SceneID, Message.GameID);
-    GameLayout outActiveLayout = outSceneMeta != nullptr ? outSceneMeta->ActiveLayout : GameLayout::all;
-    Message.MetaInf = const_cast<EntranceMetaInfo*>(LookupEntrance(Message.GameID, Message.EntranceID, outActiveLayout));
+    // Retreive the entrance meta information. Entrance IDs are unique per game so a single lookup
+    // is enough; no layout disambiguation needed.
+    Message.MetaInf = const_cast<EntranceMetaInfo*>(LookupEntrance(Message.GameID, Message.EntranceID));
     Message.EntranceStr = Message.MetaInf->FromName + std::string(" \xE2\x86\x92 ") + Message.MetaInf->ToName;
+
+    if (Message.MetaInf->FromSceneID != Message.SceneID)
+    {   // Spawning location or other inconsistency
+
+        this->IsEntranceTouched = false;
+    }
 }
 
 
 const char* EntranceHelper::GetEntranceFromName(int Game, uint32_t EntranceID)
 {
-    const EntranceMetaInfo* entrance = LookupEntranceDefault(Game, EntranceID);
+    const EntranceMetaInfo* entrance = LookupEntrance(Game, EntranceID);
     return entrance != nullptr ? entrance->FromName : nullptr;
 }
 
 
 const char* EntranceHelper::GetEntranceToName(int Game, uint32_t EntranceID)
 {
-    const EntranceMetaInfo* entrance = LookupEntranceDefault(Game, EntranceID);
+    const EntranceMetaInfo* entrance = LookupEntrance(Game, EntranceID);
     return entrance != nullptr ? entrance->ToName : nullptr;
 }
 
 
 std::string EntranceHelper::GetOneWayInName(int Game, uint32_t EntranceID)
 {
-    const EntranceMetaInfo* entrance = LookupEntranceDefault(Game, EntranceID);
+    const EntranceMetaInfo* entrance = LookupEntrance(Game, EntranceID);
 
     switch (entrance->Type)
     {
@@ -3064,7 +3200,7 @@ std::string EntranceHelper::GetOneWayInName(int Game, uint32_t EntranceID)
 
 std::string EntranceHelper::GetOneWayOutName(int Game, uint32_t EntranceID)
 {
-    const EntranceMetaInfo* entrance = LookupEntranceDefault(Game, EntranceID);
+    const EntranceMetaInfo* entrance = LookupEntrance(Game, EntranceID);
 
     switch (entrance->Type)
     {
@@ -3084,7 +3220,7 @@ std::string EntranceHelper::GetOneWayOutName(int Game, uint32_t EntranceID)
 
 std::string EntranceHelper::GetEntranceSpawnsString(int Game, uint32_t EntranceID)
 {
-    const EntranceMetaInfo* entrance = LookupEntranceDefault(Game, EntranceID);
+    const EntranceMetaInfo* entrance = LookupEntrance(Game, EntranceID);
 
     switch (entrance->Type)
     {
@@ -3105,24 +3241,32 @@ std::string EntranceHelper::GetEntranceSpawnsString(int Game, uint32_t EntranceI
 
 std::string EntranceHelper::GetEntranceLeadsString(int Game, uint32_t EntranceID)
 {
-    const EntranceMetaInfo* entrance = LookupEntranceDefault(Game, EntranceID);
+    const EntranceMetaInfo* entrance = LookupEntrance(Game, EntranceID);
 
     return std::string(entrance->ToName + std::string(" - ") + entrance->FromName);
 }
 
 const EntranceMetaInfo* EntranceHelper::GetEntranceMetaInf(int Game, uint32_t EntranceID)
 {
-    return LookupEntranceDefault(Game, EntranceID);
-}
-
-
-const EntranceMetaInfo* EntranceHelper::GetEntranceMetaInf(int Game, uint32_t EntranceID, GameLayout ActiveLayout)
-{
-    return LookupEntrance(Game, EntranceID, ActiveLayout);
+    return LookupEntrance(Game, EntranceID);
 }
 
 
 bool EntranceMetaInfo::HasCorrectLayout(GameLayout Layout) const
 {
     return this->ActiveLayout == GameLayout::all || this->ActiveLayout == Layout;
+}
+
+
+const int* GetEntranceAnchorPos(const EntranceMetaInfo& Meta, int Game, uint32_t SceneID, GameLayout Layout)
+{
+    // Bean Grotto in Deku Palace is the only entrance whose on-image anchor differs between MM
+    // layouts. Keeping the override here (instead of in EntranceMetaInfo) avoids polluting every
+    // entry with an unused "alt" field. If a second such case ever appears, replace the if with a
+    // small lookup table keyed on (Game, SceneID, EntranceID, Layout).
+    if (Game == MM_GAME && Meta.ToEntranceID == MM_GROTTO_EXIT_BEAN && SceneID == MM_DEKU_PALACE && Layout == GameLayout::mm_jp)
+    {
+        return MM_BEAN_GROTTO_JP_ANCHOR;
+    }
+    return Meta.AnchorPos;
 }

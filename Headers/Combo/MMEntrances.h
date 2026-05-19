@@ -432,4 +432,4 @@
 
 #pragma endregion
 
-extern std::multimap<int, EntranceMetaInfo> MMEntrances;
+extern std::map<int, EntranceMetaInfo> MMEntrances;

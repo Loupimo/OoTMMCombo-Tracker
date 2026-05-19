@@ -11,6 +11,13 @@
 #define OUT_MAGIC	0xFB000000		// Used to determine if the message is an outgoing entrance
 #define WARP_SCENE	0xFF3FFF3F		// Used to know if the scene ID is from a new clock cycle
 
+/*
+*   Layout-specific anchor override for the only entrance whose on-image position differs
+*   between MM layouts (Bean Grotto exit in Deku Palace, mm vs mm_jp). Kept as a stand-alone
+*   constant rather than polluting EntranceMetaInfo with an "alt" field, since this is the
+*   sole case in the entire entrance table. Consumed by GetEntranceAnchorPos in Entrances.cpp.
+*/
+extern const int MM_BEAN_GROTTO_JP_ANCHOR[3];
 
 enum class EntranceType
 {
@@ -524,32 +531,33 @@ public:
 	static std::string GetEntranceLeadsString(int Game, uint32_t EntranceID);
 
 	/*
-	*   Get the meta information macthing the desired entrance ID. When several variants share the
-	*   same ID (e.g. one per layout), the variant with <b>GameLayout::all</b> is preferred and the
-	*   first stored variant is returned otherwise.
+	*   Get the meta information matching the desired entrance ID. Entrance IDs are unique within
+	*   their game (OoT and MM are independent namespaces), so a single lookup suffices.
 	*
 	*	@param Game			The game the given entrance belongs to.
 	*	@param EntranceID	The entrance to get the meta info of.
 	*
-	*	@return The meta information of the given entrance.
+	*	@return The meta information of the given entrance, or <b>nullptr</b> if not found.
 	*/
 	static const EntranceMetaInfo* GetEntranceMetaInf(int Game, uint32_t EntranceID);
-
-	/*
-	*   Get the meta information matching the desired entrance ID for the given active layout. When
-	*   several variants share the same ID, the variant whose <b>ActiveLayout</b> matches the given
-	*   one is returned first; otherwise the layout-agnostic <b>all</b> variant is used as a fallback,
-	*   and finally the first stored variant if neither is found.
-	*
-	*	@param Game				The game the given entrance belongs to.
-	*	@param EntranceID		The entrance to get the meta info of.
-	*	@param ActiveLayout		The current active layout (typically the one of the owning scene).
-	*
-	*	@return The meta information of the given entrance for the given layout.
-	*/
-	static const EntranceMetaInfo* GetEntranceMetaInf(int Game, uint32_t EntranceID, GameLayout ActiveLayout);
 
 
 #pragma endregion
 
 };
+
+
+/*
+*   Return the on-image anchor coordinates for the given entrance under the given active layout.
+*   Normally this just returns <b>Meta.AnchorPos</b>; the function exists to handle the rare cases
+*   where the same entrance is rendered at a different position depending on the active layout
+*   (currently only Bean Grotto in Deku Palace, mm vs mm_jp).
+*
+*   @param Meta			The entrance meta information.
+*   @param Game			The game the entrance belongs to.
+*   @param SceneID		The scene the entrance is being rendered in.
+*   @param Layout		The active layout of the scene.
+*
+*   @return Pointer to a 3-int anchor (X, Y, Z). Never null when <b>Meta.AnchorPos</b> is valid.
+*/
+const int* GetEntranceAnchorPos(const EntranceMetaInfo& Meta, int Game, uint32_t SceneID, GameLayout Layout);

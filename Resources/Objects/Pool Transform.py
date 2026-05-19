@@ -235,7 +235,7 @@ def parse_entrance(input_file, output_file_h, output_file_cpp, output_filemeta, 
             else:
                 out_Z = 255
             objectstr = objectstr + "\t{ " + str(entrance_code) + ", { " + str(fromentridstr) + ", " + str(entrance_code) + ", " + str(fromsceneid) + ", " + str(tosceneid) + ", \"" + from_str + "\", \"" + to_str + "\", EntranceType::" + type + ", " + str(in_X) + ", " + str(in_Y) + ", " + str(in_Z) + ", " + str(out_X) + ", " + str(out_Y) + ", " + str(out_Z) + ", EntranceIcons::" + render_Icon + ", GameLayout::" + active_layout + " } }"
-            objectstrings.append(objectstr)
+
             #outfile.write(objectstr)
             defines += "#define " + entrance_code + " " + toentridstr + "\n"
 
@@ -244,16 +244,20 @@ def parse_entrance(input_file, output_file_h, output_file_cpp, output_filemeta, 
                 scene_entr_arr[tosceneid] = []
                 scene_regions[tosceneid] = region_prefix + regionstr
             
-            scene_entr_arr[tosceneid].append(entrance_code)
+            if scene_entr_arr[tosceneid].__contains__(entrance_code) == True:
+                print ("Duplicate entrance : " + str(entrance_code) + ", Achor Pos = " + str(in_X) + ", " + str(in_Y) + ", " + str(in_Z) )
+            else:
+                scene_entr_arr[tosceneid].append(entrance_code)
+                objectstrings.append(objectstr)
 
         # write to header file
         outHfile.write("#pragma once\n\n#include \"Entrances.h\"\n")
         outHfile.write("\n#pragma region Defines\n\n")
         outHfile.write(defines)
-        outHfile.write("\n#pragma endregion\n\nextern std::multimap<int, EntranceMetaInfo> " + prefix + "Entrances;\n")
+        outHfile.write("\n#pragma endregion\n\nextern std::map<int, EntranceMetaInfo> " + prefix + "Entrances;\n")
 
         # write to cpp file
-        outCPPfile.write("#include \"Combo/" + prefix + "Entrances.h\"\n#include \"Combo/Scenes.h\"\n\nstd::multimap<int, EntranceMetaInfo> " + prefix + "Entrances =\n{\n")
+        outCPPfile.write("#include \"Combo/" + prefix + "Entrances.h\"\n#include \"Combo/Scenes.h\"\n\nstd::map<int, EntranceMetaInfo> " + prefix + "Entrances =\n{\n")
 
         for object in objectstrings:
             outCPPfile.write(object)

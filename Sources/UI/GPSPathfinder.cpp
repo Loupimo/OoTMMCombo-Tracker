@@ -42,16 +42,16 @@ namespace
 
 
     /*
-    *   Build a directed graph for the given game from the entrance multimap. Every
-    *   entry (FromEntr -> ToEntr) becomes a portal edge of cost 0 (using the portal
-    *   itself is instantaneous), and every entrance gets intra-scene edges to all
-    *   other entrances of its scene taken from EntranceMetaInfo::Cost (default 1).
+    *   Build a directed graph for the given game from the entrance map. Every entry
+    *   (FromEntr -> ToEntr) becomes a portal edge of cost 0 (using the portal itself
+    *   is instantaneous), and every entrance gets intra-scene edges to all other
+    *   entrances of its scene taken from EntranceMetaInfo::Cost (default 1).
     */
     Graph BuildGraph(int Game)
     {
         Graph G;
 
-        std::multimap<int, EntranceMetaInfo>* Map = nullptr;
+        std::map<int, EntranceMetaInfo>* Map = nullptr;
         if      (Game == OOT_GAME) Map = &OoTEntrances;
         else if (Game == MM_GAME)  Map = &MMEntrances;
         if (Map == nullptr) return G;
@@ -70,11 +70,9 @@ namespace
         }
 
         // Second pass: add intra-scene walk edges using EntranceMetaInfo::Cost.
-        // Note: each entry's Cost table describes walks from V.FromEntranceID
-        // inside V.FromSceneID. Duplicate entries (same FromEntranceID across
-        // multiple layout variants) will redundantly add the same edges, which
-        // is harmless for Dijkstra (we keep the cheapest one at relax time).
-        std::set<std::pair<uint32_t, uint32_t>> AddedWalks;
+        // Each entry's Cost table describes walks from V.FromEntranceID inside
+        // V.FromSceneID. Entrance IDs are unique per game so the same edge cannot
+        // be added twice — no de-duplication needed.
         for (auto& Pair : *Map)
         {
             const EntranceMetaInfo& V = Pair.second;
@@ -82,8 +80,6 @@ namespace
             for (const auto& KV : V.Cost.Costs)
             {
                 if (KV.second == UnreachableCost) continue;
-                const auto Key = std::make_pair(V.FromEntranceID, KV.first);
-                if (!AddedWalks.insert(Key).second) continue;
                 G.Adj[V.FromEntranceID].push_back({ KV.first, KV.second, false });
             }
         }
@@ -370,7 +366,7 @@ GPSPathfindResult FindGPSRoutes(int FromGame, uint32_t FromScene,
 
     // Pre-check 1 - Cannot leave Start Area: no entrance of the start scene
     // leads to a different scene.
-    std::multimap<int, EntranceMetaInfo>* Map = nullptr;
+    std::map<int, EntranceMetaInfo>* Map = nullptr;
     if      (FromGame == OOT_GAME) Map = &OoTEntrances;
     else if (FromGame == MM_GAME)  Map = &MMEntrances;
     if (Map == nullptr) { Out.Status = GPS_NoPath; return Out; }

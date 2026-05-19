@@ -1,7 +1,7 @@
 #include "Combo/MMEntrances.h"
 #include "Combo/Scenes.h"
 
-std::multimap<int, EntranceMetaInfo> MMEntrances =
+std::map<int, EntranceMetaInfo> MMEntrances =
 {
 	{ MM_GRAVE_NIGHT1_ENTR, { MM_GRAVE_EXIT_NIGHT1, MM_GRAVE_NIGHT1_ENTR, MM_IKANA_GRAVEYARD, MM_BENEATH_THE_GRAVEYARD, "Ikana Graveyard", "Ikana Grave 1", EntranceType::Normal, 399, 607, 0, 399, 705, 0, EntranceIcons::Generic_Entry, GameLayout::all } },
 	{ MM_GRAVE_NIGHT2_ENTR, { MM_GRAVE_EXIT_NIGHT2, MM_GRAVE_NIGHT2_ENTR, MM_IKANA_GRAVEYARD, MM_BENEATH_THE_GRAVEYARD, "Ikana Graveyard", "Ikana Grave 2", EntranceType::Normal, 417, 536, 0, 417, 225, 0, EntranceIcons::Generic_Entry, GameLayout::all } },
@@ -74,8 +74,7 @@ std::multimap<int, EntranceMetaInfo> MMEntrances =
 	{ MM_GROTTO_EXIT_JP_CLIMB_LEFT, { MM_GROTTO_JP_CLIMB_LEFT_ENTR, MM_GROTTO_EXIT_JP_CLIMB_LEFT, MM_GROTTO_DEKU_PALACE_CLIMB, MM_DEKU_PALACE, "JP Left Climb Grotto", "Deku Palace", EntranceType::Normal, 398, 367, 0, 398, 29, 0, EntranceIcons::Open_Grotto, GameLayout::mm_jp } },
 	{ MM_GROTTO_EXIT_JP_LINE_START, { MM_GROTTO_JP_LINE_START_ENTR, MM_GROTTO_EXIT_JP_LINE_START, MM_GROTTO_DEKU_PALACE_GENERIC, MM_DEKU_PALACE, "JP Start Line Grotto", "Deku Palace", EntranceType::Normal, 552, 436, 0, 744, 454, 0, EntranceIcons::Open_Grotto, GameLayout::mm_jp } },
 	{ MM_GROTTO_EXIT_JP_LINE_END, { MM_GROTTO_JP_LINE_END_ENTR, MM_GROTTO_EXIT_JP_LINE_END, MM_GROTTO_DEKU_PALACE_GENERIC, MM_DEKU_PALACE, "JP End Line Grotto", "Deku Palace", EntranceType::Normal, 448, 431, 0, 21, 481, 0, EntranceIcons::Open_Grotto, GameLayout::mm_jp } },
-	{ MM_GROTTO_EXIT_BEAN, { MM_GROTTO_BEAN_ENTR, MM_GROTTO_EXIT_BEAN, MM_GROTTO_DEKU_PALACE_BEANS, MM_DEKU_PALACE, "Bean Grotto", "Deku Palace", EntranceType::Normal, 544, 379, 0, 744, 358, 0, EntranceIcons::Open_Grotto, GameLayout::mm_jp } },
-	{ MM_GROTTO_EXIT_BEAN, { MM_GROTTO_BEAN_ENTR, MM_GROTTO_EXIT_BEAN, MM_GROTTO_DEKU_PALACE_BEANS, MM_DEKU_PALACE, "Bean Grotto", "Deku Palace", EntranceType::Normal, 638, 409, 0, 744, 358, 0, EntranceIcons::Open_Grotto, GameLayout::mm } },
+	{ MM_GROTTO_EXIT_BEAN, { MM_GROTTO_BEAN_ENTR, MM_GROTTO_EXIT_BEAN, MM_GROTTO_DEKU_PALACE_BEANS, MM_DEKU_PALACE, "Bean Grotto", "Deku Palace", EntranceType::Normal, 638, 409, 0, 744, 358, 0, EntranceIcons::Open_Grotto, GameLayout::all } },
 	{ MM_GROTTO_EXIT_JP_CLIMB_RIGHT, { MM_GROTTO_JP_CLIMB_RIGHT_ENTR, MM_GROTTO_EXIT_JP_CLIMB_RIGHT, MM_GROTTO_DEKU_PALACE_CLIMB, MM_DEKU_PALACE, "JP Right Climb Grotto", "Deku Palace", EntranceType::Normal, 538, 358, 0, 538, 276, 0, EntranceIcons::Open_Grotto, GameLayout::mm_jp } },
 	{ MM_GROTTO_DEKU_PLAYGROUND_ENTR, { MM_GROTTO_EXIT_DEKU_PLAYGROUND, MM_GROTTO_DEKU_PLAYGROUND_ENTR, MM_CLOCK_TOWN_NORTH, MM_DEKU_PLAYGROUND, "North Clock Town", "Deku Playground Grotto", EntranceType::Normal, 662, 499, 0, 742, 500, 0, EntranceIcons::Open_Grotto, GameLayout::all } },
 	{ MM_DEKU_SHRINE_ENTR, { MM_DEKU_PALACE_EXTERIOR_FROM_SHRINE_ENTR, MM_DEKU_SHRINE_ENTR, MM_DEKU_PALACE, MM_DEKU_SHRINE, "Deku Palace", "Deku Shrine", EntranceType::Normal, 530, 638, 0, 530, 684, 0, EntranceIcons::Generic_Entry, GameLayout::all } },

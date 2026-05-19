@@ -72,9 +72,7 @@ void GlobalEntranceTableModel::setScenes(const std::map<uint32_t, SceneEntranceM
 
         for (auto& [entranceID, link] : scene.EntranceIDs)
         {
-            // Pass the scene's active layout so we resolve the correct variant when several entrances
-            // share the same ID across layouts (e.g. mm vs mm_jp Bean Grotto in MM_DEKU_PALACE).
-            const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->Owner->GameID, entranceID, activeLayout);
+            const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->Owner->GameID, entranceID);
 
             if (entrance == nullptr || entrance->Type == EntranceType::None)
             {
@@ -972,7 +970,7 @@ void EntranceGameTabView::PopulateEntranceList(SceneEntranceMetaInf* Scene)
 
     for (auto& [entranceID, link] : Scene->EntranceIDs)
     {
-        const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->GameID, entranceID, activeLayout);
+        const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->GameID, entranceID);
         if (entrance == nullptr || entrance->Type == EntranceType::None)
         {
             continue;
@@ -1232,7 +1230,7 @@ void EntranceGameTabView::RebuildSceneTree()
         bool hasValid = false;
         for (auto& [entranceID, link] : MetaInf.EntranceIDs)
         {
-            const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->GameID, entranceID, activeLayout);
+            const EntranceMetaInfo* entrance = EntranceHelper::GetEntranceMetaInf(this->GameID, entranceID);
             if (entrance == nullptr || entrance->Type == EntranceType::None)
             {
                 continue;
@@ -1320,16 +1318,17 @@ void EntranceGameTabView::FocusEntranceInGame(uint32_t SceneID, uint32_t Entranc
         {
             return;
         }
-        // Resolve the entrance against the focused scene's active layout so AnchorPos picks the
-        // correct variant when several entrances share the same ID across layouts (e.g. mm vs mm_jp).
-        SceneMetaInfo* sceneMeta = GetSceneMetaInfo(SceneID, self->GameID);
-        GameLayout activeLayout = sceneMeta != nullptr ? sceneMeta->ActiveLayout : GameLayout::all;
-        const EntranceMetaInfo* meta = EntranceHelper::GetEntranceMetaInf(self->GameID, EntranceID, activeLayout);
+        const EntranceMetaInfo* meta = EntranceHelper::GetEntranceMetaInf(self->GameID, EntranceID);
         if (meta == nullptr)
         {
             return;
         }
-        const int* pos = meta->AnchorPos;
+
+        // Route AnchorPos through GetEntranceAnchorPos so layout-specific overrides apply
+        // (currently only Bean Grotto in Deku Palace, mm vs mm_jp).
+        SceneMetaInfo* sceneMeta = GetSceneMetaInfo(SceneID, self->GameID);
+        GameLayout activeLayout = sceneMeta != nullptr ? sceneMeta->ActiveLayout : GameLayout::all;
+        const int* pos = GetEntranceAnchorPos(*meta, self->GameID, SceneID, activeLayout);
         /*const int* pos = nullptr;
         if (meta->Type == EntranceType::Normal || meta->Type == EntranceType::One_Way_In)
         {
