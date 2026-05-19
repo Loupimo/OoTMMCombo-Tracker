@@ -13,6 +13,7 @@ Settings::Settings()
     this->Goal = GoalMode::boss;
 	this->NumOfTeams = 1;
     this->FilterSettings = QMap<QString, Parameter>({
+        { "songs", { "Song Notes", ParamType::boolean, ShuffleSetting::vanilla } },
         { "goldSkulltulaTokens", { "Gold Skulltula - OoT", ParamType::shuffle, ShuffleSetting::all } },
         { "housesSkulltulaTokens", { "Gold Skulltula - MM", ParamType::boolean, ShuffleSetting::all } },
         { "tingleShuffle", { "Tingle Maps", ParamType::boolean, ShuffleSetting::all } },
@@ -442,6 +443,10 @@ void Settings::ParseKeyRings(QString& LayoutSection)
             }
         }
     }
+
+    // Note: the 'removed' / 'vanilla' override for the OoT/MM/ChestGame small keys + key rings is
+    // applied by ApplyItemSettings (called later from Settings::ApplySettings), so it survives the
+    // SettingsTab Apply path too — ParseKeyRings only runs on spoiler load.
 }
 
 
@@ -810,7 +815,22 @@ void Settings::AddSetting(QString Name, QString Value)
 	{
 		this->NumOfTeams = (size_t)atoi(Value.toStdString().c_str());
 	}
-	else if (this->FilterSettings.contains(Name))
+    else if (Name == "songs")
+    {
+        ShuffleSetting setting;
+
+        if (Value == "notes")
+        {
+            setting = ShuffleSetting::all;
+        }
+        else
+        {
+            setting = ShuffleSetting::vanilla;
+        }
+
+        this->FilterSettings[Name].Value = setting;
+    }
+    else if (this->FilterSettings.contains(Name))
 	{
 		ShuffleSetting setting;
 
@@ -1592,6 +1612,39 @@ void Settings::ApplyItemSettings()
             this->DisabledItemIDs.insert(i);
         }
     }
+
+    // Small keys + key rings: 'removed' means the rolled seed contains neither the small key nor
+    // its ring (Chest Game and Hideout follow their own boolean below). Mirrors the bossKey /
+    // mapCompass blocks above so the spoiler-load and SettingsTab paths share one source of truth.
+    if (this->FilterSettings["smallKeyShuffleOot"].Value == ShuffleSetting::removed)
+    {
+        for (uint32_t i = OOT_SMALL_KEY_FOREST; i <= OOT_SMALL_KEY_GTG; i++)
+        {
+            this->DisabledItemIDs.insert(i);
+        }
+        for (uint32_t i = OOT_KEY_RING_FOREST; i <= OOT_KEY_RING_GTG; i++)
+        {
+            this->DisabledItemIDs.insert(i);
+        }
+    }
+
+    if (this->FilterSettings["smallKeyShuffleMm"].Value == ShuffleSetting::removed)
+    {
+        for (uint32_t i = MM_SMALL_KEY_WF; i <= MM_SMALL_KEY_ST; i++)
+        {
+            this->DisabledItemIDs.insert(i);
+        }
+        for (uint32_t i = MM_KEY_RING_WF; i <= MM_KEY_RING_ST; i++)
+        {
+            this->DisabledItemIDs.insert(i);
+        }
+    }
+
+    // Note: Chest Game is intentionally NOT force-hidden here even when smallKeyShuffleChestGame
+    // is vanilla. The "Small Key Ring (OoT)" parser (or the user's per-dungeon checkbox via the
+    // World Items page) already decides whether OOT_KEY_RING_TCG / OOT_SMALL_KEY_TCG are tracked;
+    // overriding it here was destroying the user's explicit choice when the ring is enabled but
+    // the boolean is off.
 
     if (this->FilterSettings["skipZelda"].Value == ShuffleSetting::all)
     {

@@ -2,6 +2,7 @@ log_name;friendly_name;type;value
 games;Games;game;ootmm
 mode;Mode;mode;coop
 teams;Number of teams;uint;1
+songs;Song Notes;boolean;vanilla
 goldSkulltulaTokens;Gold Skulltula - OoT;shuffle;all
 housesSkulltulaTokens;Gold Skulltula - MM;boolean;all
 tingleShuffle;Tingle Maps;boolean;all

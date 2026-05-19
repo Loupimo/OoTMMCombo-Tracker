@@ -293,8 +293,14 @@ void SettingsTab::AddParamRow(QGridLayout* Layout, const QString& Key, const QSt
     {
         case ParamType::shuffle:
         {
+            // Every value of the ShuffleSetting enum must be reachable from the combo, otherwise
+            // findData() returns -1 when re-opening the dialog after a spoiler-driven 'removed' or
+            // 'starting' was set, the combo silently falls back to index 0 (Vanilla), and Apply
+            // then clobbers the original value with Vanilla.
             QComboBox* combo = new QComboBox();
             combo->addItem("Vanilla", static_cast<int>(ShuffleSetting::vanilla));
+            combo->addItem("Removed", static_cast<int>(ShuffleSetting::removed));
+            combo->addItem("Starting", static_cast<int>(ShuffleSetting::starting));
             combo->addItem("Dungeons", static_cast<int>(ShuffleSetting::dungeons));
             combo->addItem("Overworld", static_cast<int>(ShuffleSetting::overworld));
             combo->addItem("Anywhere", static_cast<int>(ShuffleSetting::all));
@@ -384,17 +390,27 @@ QWidget* SettingsTab::BuildGeneralPage()
     teamsLayout->addStretch(1);
     vbox->addWidget(teamsBox);
 
-    // Misc group (single shared toggles like skipZelda) ------------------
-    QGroupBox* miscBox = new QGroupBox("Misc", page);
-    QGridLayout* miscGrid = new QGridLayout(miscBox);
-    miscGrid->setColumnStretch(1, 1);
-    miscGrid->setHorizontalSpacing(10);
-    miscGrid->setVerticalSpacing(6);
-    this->AddParamRow(miscGrid, "skipZelda", "OoT");
-    vbox->addWidget(miscBox);
-
     vbox->addStretch(1);
     return page;
+}
+
+
+QGroupBox* SettingsTab::MakeParamGroup(QWidget* Parent, const QString& Title, std::initializer_list<QPair<QString, QString>> Params)
+{
+    // Common factory for "bubble" param groups: a titled group box hosting a 3-column grid
+    // (badge | label | editor). Kept central so every page shares the same paddings, spacings
+    // and column stretch — without this each page slowly drifts.
+    QGroupBox* box = new QGroupBox(Title, Parent);
+    QGridLayout* grid = new QGridLayout(box);
+    grid->setColumnStretch(1, 1);
+    grid->setHorizontalSpacing(10);
+    grid->setVerticalSpacing(6);
+
+    for (const QPair<QString, QString>& entry : Params)
+    {
+        this->AddParamRow(grid, entry.first, entry.second);
+    }
+    return box;
 }
 
 
@@ -403,27 +419,32 @@ QWidget* SettingsTab::BuildKeysPage()
     QWidget* page = new QWidget(this);
     QVBoxLayout* vbox = new QVBoxLayout(page);
     vbox->setContentsMargins(16, 16, 16, 16);
+    vbox->setSpacing(14);
 
     QScrollArea* scroll = new QScrollArea(page);
     scroll->setWidgetResizable(true);
     QWidget* content = new QWidget();
-    QGridLayout* grid = new QGridLayout(content);
-    grid->setColumnStretch(1, 1);
-    grid->setHorizontalSpacing(10);
-    grid->setVerticalSpacing(6);
+    QVBoxLayout* contentLayout = new QVBoxLayout(content);
+    contentLayout->setSpacing(14);
 
-    this->AddParamRow(grid, "smallKeyShuffleOot", "OoT");
-    this->AddParamRow(grid, "smallKeyShuffleMm", "MM");
-    this->AddParamRow(grid, "smallKeyShuffleHideout", "OoT");
-    this->AddParamRow(grid, "smallKeyShuffleChestGame", "OoT");
-    this->AddParamRow(grid, "bossKeyShuffleOot", "OoT");
-    this->AddParamRow(grid, "bossKeyShuffleMm", "MM");
-    this->AddParamRow(grid, "ganonBossKey", "OoT");
-    this->AddParamRow(grid, "silverRupeeShuffle", "OoT");
-    this->AddParamRow(grid, "mapCompassShuffle", "");
-    this->AddParamRow(grid, "tingleShuffle", "MM");
+    contentLayout->addWidget(this->MakeParamGroup(content, "Small Keys", {
+        { "smallKeyShuffleOot",       "OoT" },
+        { "smallKeyShuffleMm",        "MM"  },
+        { "smallKeyShuffleHideout",   "OoT" },
+        { "smallKeyShuffleChestGame", "OoT" },
+    }));
+    contentLayout->addWidget(this->MakeParamGroup(content, "Boss Keys", {
+        { "bossKeyShuffleOot", "OoT" },
+        { "bossKeyShuffleMm",  "MM"  },
+        { "ganonBossKey",      "OoT" },
+    }));
+    contentLayout->addWidget(this->MakeParamGroup(content, "Dungeon Aids", {
+        { "silverRupeeShuffle", "OoT" },
+        { "mapCompassShuffle",  ""    },
+        { "tingleShuffle",      "MM"  },
+    }));
 
-    grid->setRowStretch(grid->rowCount(), 1);
+    contentLayout->addStretch(1);
     scroll->setWidget(content);
     vbox->addWidget(scroll);
     return page;
@@ -435,32 +456,37 @@ QWidget* SettingsTab::BuildNpcPage()
     QWidget* page = new QWidget(this);
     QVBoxLayout* vbox = new QVBoxLayout(page);
     vbox->setContentsMargins(16, 16, 16, 16);
+    vbox->setSpacing(14);
 
     QScrollArea* scroll = new QScrollArea(page);
     scroll->setWidgetResizable(true);
     QWidget* content = new QWidget();
-    QGridLayout* grid = new QGridLayout(content);
-    grid->setColumnStretch(1, 1);
-    grid->setHorizontalSpacing(10);
-    grid->setVerticalSpacing(6);
+    QVBoxLayout* contentLayout = new QVBoxLayout(content);
+    contentLayout->setSpacing(14);
 
-    this->AddParamRow(grid, "scrubShuffleOot", "OoT");
-    this->AddParamRow(grid, "scrubShuffleMm", "MM");
-    this->AddParamRow(grid, "cowShuffleOot", "OoT");
-    this->AddParamRow(grid, "cowShuffleMm", "MM");
-    this->AddParamRow(grid, "shopShuffleOot", "OoT");
-    this->AddParamRow(grid, "shopShuffleMm", "MM");
-    this->AddParamRow(grid, "owlShuffle", "MM");
-    this->AddParamRow(grid, "shuffleMerchantsOot", "OoT");
-    this->AddParamRow(grid, "shuffleMerchantsMm", "MM");
-    this->AddParamRow(grid, "shuffleMaskTrades", "");
-    this->AddParamRow(grid, "pondFishShuffle", "OoT");
-    this->AddParamRow(grid, "eggShuffle", "");
-    this->AddParamRow(grid, "shuffleLotteryMm", "MM");
-    this->AddParamRow(grid, "shuffleFrogsRupeesOot", "OoT");
-    this->AddParamRow(grid, "divingGameRupeeShuffle", "OoT");
+    contentLayout->addWidget(this->MakeParamGroup(content, "Scrubs & Cows", {
+        { "scrubShuffleOot", "OoT" },
+        { "scrubShuffleMm",  "MM"  },
+        { "cowShuffleOot",   "OoT" },
+        { "cowShuffleMm",    "MM"  },
+    }));
+    contentLayout->addWidget(this->MakeParamGroup(content, "Shops & Trading", {
+        { "shopShuffleOot",       "OoT" },
+        { "shopShuffleMm",        "MM"  },
+        { "shuffleMerchantsOot",  "OoT" },
+        { "shuffleMerchantsMm",   "MM"  },
+        { "shuffleMaskTrades",    ""    },
+    }));
+    contentLayout->addWidget(this->MakeParamGroup(content, "Mini-games & Rewards", {
+        { "owlShuffle",             "MM"  },
+        { "pondFishShuffle",        "OoT" },
+        { "eggShuffle",             ""    },
+        { "shuffleLotteryMm",       "MM"  },
+        { "shuffleFrogsRupeesOot",  "OoT" },
+        { "divingGameRupeeShuffle", "OoT" },
+    }));
 
-    grid->setRowStretch(grid->rowCount(), 1);
+    contentLayout->addStretch(1);
     scroll->setWidget(content);
     vbox->addWidget(scroll);
     return page;
@@ -472,45 +498,52 @@ QWidget* SettingsTab::BuildBreakablePage()
     QWidget* page = new QWidget(this);
     QVBoxLayout* vbox = new QVBoxLayout(page);
     vbox->setContentsMargins(16, 16, 16, 16);
+    vbox->setSpacing(14);
 
     QScrollArea* scroll = new QScrollArea(page);
     scroll->setWidgetResizable(true);
     QWidget* content = new QWidget();
-    QGridLayout* grid = new QGridLayout(content);
-    grid->setColumnStretch(1, 1);
-    grid->setHorizontalSpacing(10);
-    grid->setVerticalSpacing(6);
+    QVBoxLayout* contentLayout = new QVBoxLayout(content);
+    contentLayout->setSpacing(14);
 
-    this->AddParamRow(grid, "shufflePotsOot", "OoT");
-    this->AddParamRow(grid, "shufflePotsMm", "MM");
-    this->AddParamRow(grid, "shuffleCratesOot", "OoT");
-    this->AddParamRow(grid, "shuffleCratesMm", "MM");
-    this->AddParamRow(grid, "shuffleBarrelsMm", "MM");
-    this->AddParamRow(grid, "shuffleGrassOot", "OoT");
-    this->AddParamRow(grid, "shuffleGrassMm", "MM");
-    this->AddParamRow(grid, "shuffleTFGrassMm", "MM");
-    this->AddParamRow(grid, "shuffleRocksOot", "OoT");
-    this->AddParamRow(grid, "shuffleRocksMm", "MM");
-    this->AddParamRow(grid, "shuffleTreesOot", "OoT");
-    this->AddParamRow(grid, "shuffleTreesMm", "MM");
-    this->AddParamRow(grid, "shuffleBushOot", "OoT");
-    this->AddParamRow(grid, "shuffleBushMm", "MM");
-    this->AddParamRow(grid, "shuffleSoilOot", "OoT");
-    this->AddParamRow(grid, "shuffleSoilMm", "MM");
-    this->AddParamRow(grid, "shuffleSnowballsMm", "MM");
-    this->AddParamRow(grid, "shuffleHivesOot", "OoT");
-    this->AddParamRow(grid, "shuffleHivesMm", "MM");
-    this->AddParamRow(grid, "shuffleRedBouldersOot", "OoT");
-    this->AddParamRow(grid, "shuffleRedBouldersMm", "MM");
-    this->AddParamRow(grid, "shuffleIciclesOot", "OoT");
-    this->AddParamRow(grid, "shuffleIciclesMm", "MM");
-    this->AddParamRow(grid, "shuffleRedIceOot", "OoT");
-    this->AddParamRow(grid, "shuffleWonderItemsOot", "OoT");
-    this->AddParamRow(grid, "shuffleWonderItemsMm", "MM");
-    this->AddParamRow(grid, "shuffleButterfliesOot", "OoT");
-    this->AddParamRow(grid, "shuffleButterfliesMm", "MM");
+    contentLayout->addWidget(this->MakeParamGroup(content, "Containers", {
+        { "shufflePotsOot",   "OoT" },
+        { "shufflePotsMm",    "MM"  },
+        { "shuffleCratesOot", "OoT" },
+        { "shuffleCratesMm",  "MM"  },
+        { "shuffleBarrelsMm", "MM"  },
+    }));
+    contentLayout->addWidget(this->MakeParamGroup(content, "Vegetation", {
+        { "shuffleGrassOot",   "OoT" },
+        { "shuffleGrassMm",    "MM"  },
+        { "shuffleTFGrassMm",  "MM"  },
+        { "shuffleTreesOot",   "OoT" },
+        { "shuffleTreesMm",    "MM"  },
+        { "shuffleBushOot",    "OoT" },
+        { "shuffleBushMm",     "MM"  },
+        { "shuffleSoilOot",    "OoT" },
+        { "shuffleSoilMm",     "MM"  },
+        { "shuffleHivesOot",   "OoT" },
+        { "shuffleHivesMm",    "MM"  },
+    }));
+    contentLayout->addWidget(this->MakeParamGroup(content, "Rocks & Ice", {
+        { "shuffleRocksOot",        "OoT" },
+        { "shuffleRocksMm",         "MM"  },
+        { "shuffleRedBouldersOot",  "OoT" },
+        { "shuffleRedBouldersMm",   "MM"  },
+        { "shuffleIciclesOot",      "OoT" },
+        { "shuffleIciclesMm",       "MM"  },
+        { "shuffleRedIceOot",       "OoT" },
+        { "shuffleSnowballsMm",     "MM"  },
+    }));
+    contentLayout->addWidget(this->MakeParamGroup(content, "Misc", {
+        { "shuffleWonderItemsOot",  "OoT" },
+        { "shuffleWonderItemsMm",   "MM"  },
+        { "shuffleButterfliesOot",  "OoT" },
+        { "shuffleButterfliesMm",   "MM"  },
+    }));
 
-    grid->setRowStretch(grid->rowCount(), 1);
+    contentLayout->addStretch(1);
     scroll->setWidget(content);
     vbox->addWidget(scroll);
     return page;
@@ -522,33 +555,44 @@ QWidget* SettingsTab::BuildSpecialPage()
     QWidget* page = new QWidget(this);
     QVBoxLayout* vbox = new QVBoxLayout(page);
     vbox->setContentsMargins(16, 16, 16, 16);
+    vbox->setSpacing(14);
 
     QScrollArea* scroll = new QScrollArea(page);
     scroll->setWidgetResizable(true);
     QWidget* content = new QWidget();
-    QGridLayout* grid = new QGridLayout(content);
-    grid->setColumnStretch(1, 1);
-    grid->setHorizontalSpacing(10);
-    grid->setVerticalSpacing(6);
+    QVBoxLayout* contentLayout = new QVBoxLayout(content);
+    contentLayout->setSpacing(14);
 
-    this->AddParamRow(grid, "goldSkulltulaTokens", "OoT");
-    this->AddParamRow(grid, "housesSkulltulaTokens", "MM");
-    this->AddParamRow(grid, "fairyFountainFairyShuffleOot", "OoT");
-    this->AddParamRow(grid, "fairyFountainFairyShuffleMm", "MM");
-    this->AddParamRow(grid, "fairySpotShuffleOot", "OoT");
-    this->AddParamRow(grid, "townFairyShuffle", "MM");
-    this->AddParamRow(grid, "strayFairyChestShuffle", "MM");
-    this->AddParamRow(grid, "strayFairyOtherShuffle", "MM");
-    this->AddParamRow(grid, "shuffleFreeRupeesOot", "OoT");
-    this->AddParamRow(grid, "shuffleFreeRupeesMm", "MM");
-    this->AddParamRow(grid, "shuffleFreeHeartsOot", "OoT");
-    this->AddParamRow(grid, "shuffleFreeHeartsMm", "MM");
-    this->AddParamRow(grid, "shuffleOcarinasOot", "OoT");
-    this->AddParamRow(grid, "shuffleMasterSword", "OoT");
-    this->AddParamRow(grid, "shuffleGerudoCard", "OoT");
-    this->AddParamRow(grid, "restoreBrokenActors", "");
+    contentLayout->addWidget(this->MakeParamGroup(content, "Tokens & Souls", {
+        { "goldSkulltulaTokens",   "OoT" },
+        { "housesSkulltulaTokens", "MM"  },
+    }));
+    contentLayout->addWidget(this->MakeParamGroup(content, "Fairies", {
+        { "fairyFountainFairyShuffleOot", "OoT" },
+        { "fairyFountainFairyShuffleMm",  "MM"  },
+        { "fairySpotShuffleOot",          "OoT" },
+        { "townFairyShuffle",             "MM"  },
+        { "strayFairyChestShuffle",       "MM"  },
+        { "strayFairyOtherShuffle",       "MM"  },
+    }));
+    contentLayout->addWidget(this->MakeParamGroup(content, "Freestanding", {
+        { "shuffleFreeRupeesOot", "OoT" },
+        { "shuffleFreeRupeesMm",  "MM"  },
+        { "shuffleFreeHeartsOot", "OoT" },
+        { "shuffleFreeHeartsMm",  "MM"  },
+    }));
+    contentLayout->addWidget(this->MakeParamGroup(content, "Unique Items", {
+        { "songs",                ""    },
+        { "shuffleOcarinasOot",   "OoT" },
+        { "shuffleMasterSword",   "OoT" },
+        { "shuffleGerudoCard",    "OoT" },
+    }));
+    contentLayout->addWidget(this->MakeParamGroup(content, "Misc", {
+        { "skipZelda",          "OoT" },
+        { "restoreBrokenActors", ""   },
+    }));
 
-    grid->setRowStretch(grid->rowCount(), 1);
+    contentLayout->addStretch(1);
     scroll->setWidget(content);
     vbox->addWidget(scroll);
     return page;
@@ -560,11 +604,16 @@ QWidget* SettingsTab::BuildProgressiveItemsPage()
     QWidget* page = new QWidget(this);
     QVBoxLayout* vbox = new QVBoxLayout(page);
     vbox->setContentsMargins(16, 16, 16, 16);
+    vbox->setSpacing(14);
 
     QScrollArea* scroll = new QScrollArea(page);
     scroll->setWidgetResizable(true);
     QWidget* content = new QWidget();
-    QGridLayout* grid = new QGridLayout(content);
+    QVBoxLayout* contentLayout = new QVBoxLayout(content);
+    contentLayout->setSpacing(14);
+
+    QGroupBox* box = new QGroupBox("Progressive Items", content);
+    QGridLayout* grid = new QGridLayout(box);
     grid->setColumnStretch(1, 1);
     grid->setHorizontalSpacing(10);
     grid->setVerticalSpacing(6);
@@ -585,7 +634,8 @@ QWidget* SettingsTab::BuildProgressiveItemsPage()
         }
     }
 
-    grid->setRowStretch(grid->rowCount(), 1);
+    contentLayout->addWidget(box);
+    contentLayout->addStretch(1);
     scroll->setWidget(content);
     vbox->addWidget(scroll);
     return page;
@@ -597,11 +647,16 @@ QWidget* SettingsTab::BuildSharedItemsPage()
     QWidget* page = new QWidget(this);
     QVBoxLayout* vbox = new QVBoxLayout(page);
     vbox->setContentsMargins(16, 16, 16, 16);
+    vbox->setSpacing(14);
 
     QScrollArea* scroll = new QScrollArea(page);
     scroll->setWidgetResizable(true);
     QWidget* content = new QWidget();
-    QGridLayout* grid = new QGridLayout(content);
+    QVBoxLayout* contentLayout = new QVBoxLayout(content);
+    contentLayout->setSpacing(14);
+
+    QGroupBox* box = new QGroupBox("Shared Items", content);
+    QGridLayout* grid = new QGridLayout(box);
     grid->setColumnStretch(1, 1);
     grid->setHorizontalSpacing(10);
     grid->setVerticalSpacing(6);
@@ -619,7 +674,8 @@ QWidget* SettingsTab::BuildSharedItemsPage()
         }
     }
 
-    grid->setRowStretch(grid->rowCount(), 1);
+    contentLayout->addWidget(box);
+    contentLayout->addStretch(1);
     scroll->setWidget(content);
     vbox->addWidget(scroll);
     return page;
@@ -882,9 +938,14 @@ void SettingsTab::OnApply()
     if (this->WinOwner == nullptr) return;
 
     Settings& s = this->WinOwner->ROMSettings;
+    // Clear only the sets that are fully rebuilt from the UI / ApplyItemSettings. StartingItemIDs
+    // is populated by the spoiler's "Starting Items" section and only the owl-statue subset is
+    // editable from this dialog, so clearing the whole set here would silently drop every other
+    // starting item the player rolled with (Light Arrow, Hookshot, ...). The owl statue loop in
+    // ApplyWorldItemSelections inserts/removes its own ids individually, which is enough to keep
+    // them in sync with the checkboxes without touching the rest.
     s.DisabledItemIDs.clear();
     s.SharedItemIDs.clear();
-    s.StartingItemIDs.clear();
 
     if (this->GameGroup != nullptr && this->GameGroup->checkedId() >= 0)
     {
@@ -914,9 +975,13 @@ void SettingsTab::OnApply()
         }
     }
 
+    // Order matters: ApplyWorldItemSelections is what actually populates DisabledItemIDs from
+    // the per-dungeon checkboxes (key rings / silver pouches / owls). If we propagated to the
+    // tracker first, ProgressionTab::ApplySettings would read an empty DisabledItemIDs and leave
+    // every widget visible regardless of the user's selection.
     this->ApplyLayoutSelections();
-    this->WinOwner->ApplySettings();
     this->ApplyWorldItemSelections();
+    this->WinOwner->ApplySettings();
     this->WinOwner->RefreshTracker();
 }
 
@@ -994,6 +1059,10 @@ void SettingsTab::ApplyWorldItemSelections()
             s.StartingItemIDs.remove(owl.ItemId);
         }
     }
+
+    // Note: the 'removed' / 'vanilla' override for small keys + key rings is applied by
+    // Settings::ApplyItemSettings (next call from OnApply), so it runs uniformly across both
+    // the spoiler-load and the SettingsTab-Apply paths.
 }
 
 

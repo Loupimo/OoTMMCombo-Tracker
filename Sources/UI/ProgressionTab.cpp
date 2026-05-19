@@ -1091,6 +1091,30 @@ void ProgressionTab::ApplySettings(const Settings* NewRomSettings)
         &this->OoTData, &this->MMData, &this->SoulsData, &this->CollectiblesData
     };
 
+    // When the 'songs' setting is 'all' (song notes shuffled individually), each song widget
+    // accumulates a counter — one tick per note picked up. Any other value means the song is
+    // delivered in one shot, so the counter badge would be meaningless and is hidden.
+    bool songsAsCounter = false;
+    if (this->RomSettings != nullptr)
+    {
+        auto songsIt = this->RomSettings->FilterSettings.find("songs");
+        if (songsIt != this->RomSettings->FilterSettings.end())
+        {
+            songsAsCounter = songsIt.value().Value == ShuffleSetting::all;
+        }
+    }
+
+    auto isSongIcon = [](EGameIcon Icon) -> bool
+    {
+        return Icon == EGameIcon::song
+            || Icon == EGameIcon::song_green
+            || Icon == EGameIcon::song_red
+            || Icon == EGameIcon::song_blue
+            || Icon == EGameIcon::song_purple
+            || Icon == EGameIcon::song_orange
+            || Icon == EGameIcon::song_yellow;
+    };
+
     for (GameProgData* reg : registries)
     {
         for (ItemIconWidget* w : reg->All)
@@ -1100,6 +1124,13 @@ void ProgressionTab::ApplySettings(const Settings* NewRomSettings)
             // Re-show by default so a settings change that re-enables a
             // category brings its widgets back into the layout.
             w->setVisible(true);
+
+            // Refresh IsCounter from the active 'songs' setting before checking visibility:
+            // settings can flip between runs without rebuilding the page.
+            if (isSongIcon(w->Icon))
+            {
+                w->IsCounter = songsAsCounter;
+            }
 
             if (this->RomSettings == nullptr) continue;
 

@@ -2005,12 +2005,14 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
             {
                 switch (Message.EntranceID)
                 {
+                    case OOT_KAKARIKO_FROM_BAZAAR_ENTR:
                     case OOT_KAKARIKO_BAZAAR_ENTR:
                     {
                         Message.SceneID = OOT_KAKARIKO_BAZAAR;
                         break;
                     }
 
+                    case OOT_MARKET_FROM_BAZAAR_ENTR:
                     case OOT_MARKET_BAZAAR_ENTR:
                     {
                         Message.SceneID = OOT_MARKET_BAZAAR;
@@ -2024,12 +2026,14 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
             {
                 switch (Message.EntranceID)
                 {
+                    case OOT_KAKARIKO_FROM_ARCHERY_ENTR:
                     case OOT_ADULT_ARCHERY_ENTR:
                     {
                         Message.SceneID = OOT_KAKARIKO_SHOOTING;
                         break;
                     }
 
+                    case OOT_MARKET_FROM_ARCHERY_ENTR:
                     case OOT_CHILD_ARCHERY_ENTR:
                     {
                         Message.SceneID = OOT_MARKET_SHOOTING;

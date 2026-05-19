@@ -10,7 +10,10 @@
 #include <QHash>
 #include <QVector>
 #include <QString>
+#include <QPair>
+#include <QGroupBox>
 #include <QGridLayout>
+#include <initializer_list>
 #include "UI/Settings.h"
 #include "UI/OoTMMComboTracker.h"
 
@@ -146,6 +149,19 @@ private:
     *   @param GameLabel   The badge text ("OoT", "MM" or empty for shared parameters).
     */
     void AddParamRow(class QGridLayout* Layout, const QString& Key, const QString& GameLabel);
+
+    /*
+    *   Build a titled "bubble" group box containing a 3-column grid (badge | label | editor)
+    *   populated with the given list of (settingKey, gameLabel) pairs. Centralises the page
+    *   layout so every category box has matching paddings, spacings and column stretches.
+    *
+    *   @param Parent   The widget parent for memory ownership.
+    *   @param Title    The group box title.
+    *   @param Params   Ordered list of (settingKey, gameLabel) pairs to render as rows.
+    *
+    *   @return The built QGroupBox, ready to be added to a parent layout.
+    */
+    QGroupBox* MakeParamGroup(QWidget* Parent, const QString& Title, std::initializer_list<QPair<QString, QString>> Params);
 
     /*
     *   Build the colored badge label for the given game tag.
