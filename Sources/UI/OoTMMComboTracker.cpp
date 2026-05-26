@@ -723,7 +723,7 @@ void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, c
 
 #pragma region Entrance related
 
-void OoTMMComboTracker::UpdateTrackedEntrance(SceneEntranceUpdate* OutEntrance, SceneEntranceUpdate* InEntrance)
+void OoTMMComboTracker::UpdateTrackedEntrance(SceneEntranceUpdate * OutEntrance, SceneEntranceUpdate * InEntrance)
 {
     this->EntTab->UpdateEntranceWay(OutEntrance->Game, OutEntrance->SceneID, OutEntrance->EntranceID, OutEntrance->Link);
     this->EntTab->UpdateEntranceWay(InEntrance->Game, InEntrance->SceneID, InEntrance->EntranceID, InEntrance->Link);
@@ -733,107 +733,18 @@ void OoTMMComboTracker::UpdateTrackedEntrance(SceneEntranceUpdate* OutEntrance, 
         GameTab::SaveGameScenes(AppConfig::GetAutoSaveFullPath(), &this->ROMSettings);
     }
 
-    if (this->LastActivityLabel && OutEntrance)
+    if (this->LastActivityLabel)
     {
         SceneMetaInfo* fromMeta = GetSceneMetaInfo(OutEntrance->SceneID, OutEntrance->Game);
-        SceneMetaInfo* toMeta   = (InEntrance != nullptr) ? GetSceneMetaInfo(InEntrance->SceneID, InEntrance->Game) : nullptr;
+        SceneMetaInfo* toMeta   = GetSceneMetaInfo(InEntrance->SceneID, InEntrance->Game);
 
         const QString fromName = (fromMeta && fromMeta->Name) ? QString(fromMeta->Name) : QString::number(OutEntrance->SceneID);
-        const QString toName   = (toMeta   && toMeta->Name)   ? QString(toMeta->Name)   : (InEntrance ? QString::number(InEntrance->SceneID) : QString("?"));
+        const QString toName   = (toMeta   && toMeta->Name)   ? QString(toMeta->Name)   : QString::number(InEntrance->SceneID);
 
         this->LastActivityLabel->setText(QString("Last entrance: %1 → %2").arg(fromName, toName));
     }
-    /*switch (Game)
-    {
-        case OOT_GAME:
-        {
-            this->OoTTab->ItemFound(ObjectFound, ItemFound);
-            if (AppConfig::GetAutoSave())
-            {
-                this->CreatePath(AppConfig::GetAutoSavePath());
-                GameTab::SaveGameScenes(AppConfig::GetAutoSaveFullPath(), &this->ROMSettings);
-            }
-            break;
-        }
-        case MM_GAME:
-        {
-            this->MMTab->ItemFound(ObjectFound, ItemFound);
-            if (AppConfig::GetAutoSave())
-            {
-                this->CreatePath(AppConfig::GetAutoSavePath());
-                GameTab::SaveGameScenes(AppConfig::GetAutoSaveFullPath(), &this->ROMSettings);
-            }
-            break;
-        }
-        default:
-        {
-            break;
-        }
-    }*/
-}
-/*
-void OoTMMComboTracker::UpdateTabNameText(int TabID)
-{
-    GameTab* activeTab = nullptr;
-
-    if (TabID == OOT_GAME)
-    {   // OoT
-
-        activeTab = this->OoTTab;
-    }
-    else
-    {   // MM
-
-        activeTab = this->MMTab;
-    }
-
-    const size_t max_size = 150;
-    char finalName[max_size] = { 0 };
-    char tmp[5] = { 0 };
-
-    // Initialize the string with : GameName (
-    size_t offset = 0;
-    size_t typeLen = strlen(activeTab->TabName);
-    memcpy_s(finalName, max_size, activeTab->TabName, typeLen);
-    offset += typeLen;
-    finalName[offset] = ' ';
-    finalName[offset + 1] = '(';
-    offset += 2;
-
-    // Add the number of found object : GameName (foundObjs / 
-    _itoa_s((int)activeTab->FoundObjects, tmp, 10);
-    memcpy_s(finalName + offset, max_size - offset, tmp, strlen(tmp));
-    offset += strlen(tmp);
-    finalName[offset] = ' ';
-    finalName[offset + 1] = '/';
-    finalName[offset + 2] = ' ';
-    offset += 3;
-
-    // Add the total number of object : GameName (foundObjs / totObjs)
-    _itoa_s(activeTab->TotalObjects, tmp, 10);
-    memcpy_s(finalName + offset, max_size - offset, tmp, strlen(tmp));
-    offset += strlen(tmp);
-    finalName[offset] = ')';
-    finalName[offset + 1] = '\0';
-    this->TabWidget->setTabText(TabID + 1, finalName);
 }
 
-
-void OoTMMComboTracker::UpdateObjectMapVisibility(bool NewValue)
-{
-    AppConfig::SetHideCollectedFromMap(NewValue);
-    this->OoTTab->UpdateObjectVisibility();
-    this->MMTab->UpdateObjectVisibility();
-}
-
-
-void OoTMMComboTracker::UpdateObjectListVisibility(bool NewValue)
-{
-    AppConfig::SetHideCollectedFromObjectList(NewValue);
-    this->OoTTab->UpdateObjectVisibility();
-    this->MMTab->UpdateObjectVisibility();
-}
-*/
 #pragma endregion
 
 #pragma region Saving / Loading / Menu

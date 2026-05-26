@@ -1,6 +1,7 @@
 	{ "games", { "Games", ParamType::game, ootmm } },
 	{ "mode", { "Mode", ParamType::mode, coop } },
 	{ "teams", { "Number of teams", ParamType::uint, 1 } },
+	{ "songs", { "Song Notes", ParamType::boolean, ShuffleSetting::vanilla } },
 	{ "goldSkulltulaTokens", { "Gold Skulltula - OoT", ParamType::shuffle, ShuffleSetting::all } },
 	{ "housesSkulltulaTokens", { "Gold Skulltula - MM", ParamType::boolean, ShuffleSetting::all } },
 	{ "tingleShuffle", { "Tingle Maps", ParamType::boolean, ShuffleSetting::all } },

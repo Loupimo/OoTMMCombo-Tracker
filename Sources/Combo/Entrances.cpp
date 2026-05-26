@@ -2864,6 +2864,37 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                 {
                     return MM_ROMANI_RANCH_BARN;
                 }
+                break;
+            }
+
+            case MM_DEKU_PALACE:
+            {
+                if (Message.Direction == OUT_MAGIC)
+                {
+                    switch (Message.EntranceID)
+                    {
+                        case MM_GROTTO_EXIT_JP_CLIMB_LEFT:
+                        case MM_GROTTO_EXIT_JP_CLIMB_RIGHT:
+                        {
+                            Message.SceneID = MM_GROTTO_DEKU_PALACE_CLIMB;
+                            break;
+                        }
+
+                        case MM_GROTTO_EXIT_JP_LINE_START:
+                        case MM_GROTTO_EXIT_JP_LINE_END:
+                        {
+                            Message.SceneID = MM_GROTTO_DEKU_PALACE_GENERIC;
+                            break;
+                        }
+
+                        case MM_GROTTO_EXIT_BEAN:
+                        {
+                            Message.SceneID = MM_GROTTO_DEKU_PALACE_BEANS;
+                            break;
+                        }
+                    }
+                }
+                break;
             }
         }
     }
@@ -3159,10 +3190,21 @@ void EntranceHelper::ParseOutgoingMessage(EntranceMessage& Message)
     Message.MetaInf = const_cast<EntranceMetaInfo*>(LookupEntrance(Message.GameID, Message.EntranceID));
     Message.EntranceStr = Message.MetaInf->FromName + std::string(" \xE2\x86\x92 ") + Message.MetaInf->ToName;
 
-    if (Message.MetaInf->FromSceneID != Message.SceneID)
-    {   // Spawning location or other inconsistency
+    if (Message.MetaInf->Type == EntranceType::One_Way_Out)
+    {
+        if (Message.MetaInf->ToSceneID != Message.SceneID)
+        {   // Spawning location or other inconsistency
 
-        this->IsEntranceTouched = false;
+            this->IsEntranceTouched = false;
+        }
+    }
+    else
+    {
+        if (Message.MetaInf->FromSceneID != Message.SceneID)
+        {   // Spawning location or other inconsistency
+
+            this->IsEntranceTouched = false;
+        }
     }
 }
 

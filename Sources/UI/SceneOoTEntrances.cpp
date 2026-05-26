@@ -127,7 +127,7 @@ std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta =
 			OOT_CHAMBER_OF_THE_SAGES, (uint8_t)OoTRegions::Castle,
 			{
 				{ OOT_END_ENTR, { UINT32_MAX, UINT32_MAX } },
-				{ OOT_SAGES_CHANBER_END_FROM_GANON2_ENTR, { UINT32_MAX, UINT32_MAX } },
+				{ OOT_SAGES_CHAMBER_END_FROM_GANON2_ENTR, { UINT32_MAX, UINT32_MAX } },
 			},
 			NULL
 		}
