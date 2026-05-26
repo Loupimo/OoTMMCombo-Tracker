@@ -5,6 +5,7 @@
 #include <QStandardItemModel>
 #include <QLineEdit>
 #include <QSortFilterProxyModel>
+#include <QStyledItemDelegate>
 #include <QHBoxLayout>
 #include <QSplitter>
 #include <QStackedWidget>
@@ -258,6 +259,101 @@ private:
 
 
 // ==============================
+// Multi-source InLink delegate
+// ==============================
+
+/*
+*   Custom item delegate for the "How to spawn here?" column (column 2 of the entrance table).
+*   When an entrance has several inbound sources (warp song zones, boss-room returns, etc.) the
+*   delegate paints one stacked sub-row per source inside the same cell — visually a single cell
+*   with multiple lines, but each line responds independently to the user's clicks and routes the
+*   navigation to the matching source via EntranceTab::FocusEntranceInGame.
+*/
+class EntranceInLinkDelegate : public QStyledItemDelegate
+{
+    Q_OBJECT
+
+public:
+
+    /*
+    *   Construct the delegate bound to its owning game tab view, which provides the access path
+    *   to the model, the proxy and the EntranceTab used to route the per-source navigation.
+    *
+    *   @param Owner     The owning entrance game tab view.
+    *   @param Parent    Optional Qt parent.
+    */
+    explicit EntranceInLinkDelegate(EntranceGameTabView* Owner, QObject* Parent = nullptr);
+
+    /*
+    *   Paint one sub-row per known inbound source. Falls back to the default delegate rendering
+    *   when the row has zero or one source (preserves the legacy single-line look).
+    *
+    *   @param Painter    The painter to draw with.
+    *   @param Option     The Qt style option carrying the cell rect and palette.
+    *   @param Index      The proxy index of the cell being painted.
+    */
+    void paint(QPainter* Painter, const QStyleOptionViewItem& Option, const QModelIndex& Index) const override;
+
+    /*
+    *   Return a size hint that grows with the source count so every sub-row gets a full line of
+    *   vertical space.
+    *
+    *   @param Option    The Qt style option carrying the cell rect.
+    *   @param Index     The proxy index of the cell being measured.
+    *
+    *   @return The recommended size for the cell.
+    */
+    QSize sizeHint(const QStyleOptionViewItem& Option, const QModelIndex& Index) const override;
+
+    /*
+    *   Intercept mouse press events on the cell to figure out which sub-row was clicked and
+    *   navigate to the matching source. Returns true when the click was handled so the default
+    *   selection logic does not duplicate the action.
+    *
+    *   @param Event     The event being delivered to the cell.
+    *   @param Model     The model the cell belongs to.
+    *   @param Option    The Qt style option carrying the cell rect.
+    *   @param Index     The proxy index of the cell receiving the event.
+    *
+    *   @return True if the event was consumed by the delegate, false otherwise.
+    */
+    bool editorEvent(QEvent* Event, QAbstractItemModel* Model, const QStyleOptionViewItem& Option, const QModelIndex& Index) override;
+
+    /*
+    *   Filter mouse-move / leave events on the table viewport so we can keep track of the exact
+    *   sub-row currently under the cursor inside a multi-source InLink cell. Updates the
+    *   per-sub-row hover state used by paint() and triggers a viewport repaint when it changes.
+    *
+    *   @param Watched    The object being filtered (expected to be the table viewport).
+    *   @param Event      The event delivered to the watched object.
+    *
+    *   @return False — we always let the event continue to the original handler.
+    */
+    bool eventFilter(QObject* Watched, QEvent* Event) override;
+
+private:
+
+    /*
+    *   Resolve the GlobalEntranceRow backing the given proxy index. Returns nullptr if the index
+    *   is invalid or the source row is out of bounds.
+    *
+    *   @param ProxyIndex    The proxy index of the cell being inspected.
+    *
+    *   @return The matching row pointer, or nullptr if not found.
+    */
+    const struct GlobalEntranceRow* ResolveRow(const QModelIndex& ProxyIndex) const;
+
+    EntranceGameTabView* OwnerView = nullptr;
+
+    // Per-sub-row hover state. QPersistentModelIndex keeps the cell reference valid across
+    // sort / filter passes so the hover does not point at a stale row after the proxy reshuffles.
+    // HoveredSubRow == -1 means "no multi-source sub-row is currently under the cursor".
+    mutable QPersistentModelIndex HoveredCell;
+    mutable int HoveredSubRow = -1;
+};
+
+
+// ==============================
 // Widget Class
 // ==============================
 
@@ -298,6 +394,14 @@ public:
     *   the previous filter state. Must be called every time the filter (text or region) changes.
     */
     void RefreshViewportPaintMode();
+
+    /*
+    *   Re-apply per-row heights for every visible row so multi-source entries are tall enough to
+    *   show all their sub-lines. Heights are positional in Qt (indexed by view row, not source
+    *   row) so this must run after any mutation that reshuffles the proxy: initial build, sort,
+    *   filter changes, and live entrance updates.
+    */
+    void RefreshRowHeights();
 };
 
 

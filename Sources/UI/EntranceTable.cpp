@@ -10,6 +10,10 @@
 #include <QPointer>
 #include <QTimer>
 #include <QWheelEvent>
+#include <QApplication>
+#include <QStyle>
+#include <QMouseEvent>
+#include <QHoverEvent>
 
 
 #include <algorithm>
@@ -493,6 +497,319 @@ bool EntranceFilterProxy::filterAcceptsRow(int SourceRow, const QModelIndex& Sou
 
 #pragma endregion // EntranceFilterProxy
 
+#pragma region EntranceInLinkDelegate
+
+EntranceInLinkDelegate::EntranceInLinkDelegate(EntranceGameTabView* Owner, QObject* Parent)
+    : QStyledItemDelegate(Parent), OwnerView(Owner)
+{
+    // Install ourselves on the table viewport so we receive MouseMove / Leave events: Qt does
+    // not forward those to QStyledItemDelegate::editorEvent (which only fires on press, release,
+    // double-click and key events), but a viewport event filter is enough to track the cursor
+    // position with sub-cell precision.
+    if (QTableView* table = qobject_cast<QTableView*>(Parent))
+    {
+        if (QWidget* viewport = table->viewport())
+        {
+            viewport->installEventFilter(this);
+        }
+    }
+}
+
+
+bool EntranceInLinkDelegate::eventFilter(QObject* Watched, QEvent* Event)
+{
+    if (this->OwnerView == nullptr || this->OwnerView->AllView == nullptr || this->OwnerView->AllView->Table == nullptr)
+    {
+        return QStyledItemDelegate::eventFilter(Watched, Event);
+    }
+
+    QTableView* table = this->OwnerView->AllView->Table;
+    if (Watched != table->viewport())
+    {
+        return QStyledItemDelegate::eventFilter(Watched, Event);
+    }
+
+    auto clearHover = [this, table]()
+    {
+        if (this->HoveredCell.isValid() || this->HoveredSubRow != -1)
+        {
+            this->HoveredCell = QPersistentModelIndex();
+            this->HoveredSubRow = -1;
+            table->viewport()->update();
+        }
+    };
+
+    if (Event->type() == QEvent::MouseMove || Event->type() == QEvent::HoverMove)
+    {
+        // Qt6 deprecated QMouseEvent::pos() / QHoverEvent::pos() in favour of position(), which
+        // returns a QPointF — toPoint() rounds it back to integer pixel coordinates suitable for
+        // QTableView::indexAt / visualRect.
+        QPoint pos;
+        if (Event->type() == QEvent::MouseMove)
+        {
+            pos = static_cast<QMouseEvent*>(Event)->position().toPoint();
+        }
+        else
+        {
+            pos = static_cast<QHoverEvent*>(Event)->position().toPoint();
+        }
+
+        QModelIndex idx = table->indexAt(pos);
+        if (!idx.isValid() || idx.column() != 2)
+        {
+            clearHover();
+            return QStyledItemDelegate::eventFilter(Watched, Event);
+        }
+
+        const GlobalEntranceRow* row = this->ResolveRow(idx);
+        if (row == nullptr || row->InLinkNames.size() <= 1)
+        {
+            // Single-source cells use the cell-level State_MouseOver path already; no per-sub-row
+            // tracking needed.
+            clearHover();
+            return QStyledItemDelegate::eventFilter(Watched, Event);
+        }
+
+        // Compute which slice the cursor sits in. Same arithmetic as the click handler in
+        // editorEvent so hover feedback and click target always agree.
+        const QRect cell = table->visualRect(idx);
+        const int n = row->InLinkNames.size();
+        int sub = cell.height() > 0 ? (int)(((qreal)(pos.y() - cell.top()) * (qreal)n) / (qreal)cell.height()) : 0;
+        if (sub < 0) sub = 0;
+        if (sub >= n) sub = n - 1;
+
+        if (this->HoveredCell != idx || this->HoveredSubRow != sub)
+        {
+            this->HoveredCell = idx;
+            this->HoveredSubRow = sub;
+            table->viewport()->update();
+        }
+        return QStyledItemDelegate::eventFilter(Watched, Event);
+    }
+
+    if (Event->type() == QEvent::Leave || Event->type() == QEvent::HoverLeave)
+    {
+        clearHover();
+    }
+
+    return QStyledItemDelegate::eventFilter(Watched, Event);
+}
+
+
+const GlobalEntranceRow* EntranceInLinkDelegate::ResolveRow(const QModelIndex& ProxyIndex) const
+{
+    if (!ProxyIndex.isValid() || this->OwnerView == nullptr || this->OwnerView->AllView == nullptr)
+    {
+        return nullptr;
+    }
+
+    // The view is fed through a QSortFilterProxyModel; map back to the source so the row index
+    // matches m_rows. Iterating m_rows directly avoids a custom Qt::UserRole and keeps the
+    // delegate decoupled from the model's display strings.
+    AllEntranceView* allView = this->OwnerView->AllView;
+    if (allView->Proxy == nullptr || allView->Model == nullptr)
+    {
+        return nullptr;
+    }
+    QModelIndex sourceIndex = allView->Proxy->mapToSource(ProxyIndex);
+    const int sourceRow = sourceIndex.row();
+    if (sourceRow < 0 || sourceRow >= (int)allView->Model->m_rows.size())
+    {
+        return nullptr;
+    }
+    return &allView->Model->m_rows[sourceRow];
+}
+
+
+void EntranceInLinkDelegate::paint(QPainter* Painter, const QStyleOptionViewItem& Option, const QModelIndex& Index) const
+{
+    const GlobalEntranceRow* row = this->ResolveRow(Index);
+    const bool isMultiSource = (Index.column() == 2 && row != nullptr && row->InLinkNames.size() > 1);
+
+    // A cell is "clickable" only when its click would actually navigate somewhere. Scene and
+    // entrance cells always navigate; the link columns only do so when their target is known.
+    // We hover-highlight clickable cells only so the colour change is a reliable signal that
+    // "clicking here does something".
+    bool clickable = false;
+    if (row != nullptr)
+    {
+        switch (Index.column())
+        {
+            case 0: clickable = true; break;
+            case 1: clickable = true; break;
+            case 2: clickable = !row->InLinkNames.isEmpty(); break;
+            case 3: clickable = (row->OutLink != UINT32_MAX && row->OutGame != NO_GAME); break;
+            default: break;
+        }
+    }
+    const bool hovered = (Option.state & QStyle::State_MouseOver) != 0;
+    const bool useHover = hovered && clickable;
+    // Soft gold accent — clearly distinct from the default near-white text while staying
+    // readable on the table's dark background.
+    const QColor hoverColor(255, 215, 90);
+
+    if (!isMultiSource)
+    {
+        // Default delegate covers single-source InLink cells and every cell of the other columns.
+        // We just need the row separator painted on top, so let QStyledItemDelegate handle the
+        // background tint, text and selection highlight first. Substituting the palette text
+        // colour is the least invasive way to recolour the cell's text without re-implementing
+        // the entire default rendering path (which handles selection, alternate rows, icons…).
+        QStyleOptionViewItem opt = Option;
+        this->initStyleOption(&opt, Index);
+        if (useHover)
+        {
+            opt.palette.setColor(QPalette::Text, hoverColor);
+            opt.palette.setColor(QPalette::HighlightedText, hoverColor);
+        }
+        if (const QWidget* widget = opt.widget)
+        {
+            widget->style()->drawControl(QStyle::CE_ItemViewItem, &opt, Painter, widget);
+        }
+        else
+        {
+            QApplication::style()->drawControl(QStyle::CE_ItemViewItem, &opt, Painter, nullptr);
+        }
+    }
+    else
+    {
+        // Background + selection highlight: drawControl handles the row tinting (alternate
+        // colors, selection, hover) so we keep the same visual context as every other cell of
+        // the table.
+        QStyleOptionViewItem opt = Option;
+        this->initStyleOption(&opt, Index);
+        opt.text.clear();
+        if (const QWidget* widget = opt.widget)
+        {
+            widget->style()->drawControl(QStyle::CE_ItemViewItem, &opt, Painter, widget);
+        }
+        else
+        {
+            QApplication::style()->drawControl(QStyle::CE_ItemViewItem, &opt, Painter, nullptr);
+        }
+
+        // Sub-row layout: split the cell vertically into N equal slices and paint each source on
+        // its own line. We keep a small horizontal padding identical to the default delegate so
+        // the text is not flush against the cell edge.
+        const QRect cell = Option.rect;
+        const int n = row->InLinkNames.size();
+        const qreal rowH = (qreal)cell.height() / (qreal)n;
+        const int padX = 4;
+
+        Painter->save();
+        Painter->setFont(Option.font);
+
+        // Per-sub-row hover: recolour only the sub-line that sits under the cursor — that is the
+        // exact source the click would navigate to, so the visual cue must point at it and not
+        // at the whole cell. HoveredCell / HoveredSubRow are kept in sync by eventFilter().
+        const bool cellHasSubHover = (this->HoveredCell.isValid() && this->HoveredCell == Index);
+        const QColor defaultColor = Option.palette.color(QPalette::Text);
+
+        const QFontMetrics fm(Option.font);
+        for (int i = 0; i < n; i++)
+        {
+            const QRectF lineRect(cell.left() + padX,
+                                  cell.top() + i * rowH,
+                                  cell.width() - padX * 2,
+                                  rowH);
+            const QString elided = fm.elidedText(row->InLinkNames[i], Qt::ElideRight, (int)lineRect.width());
+            const bool subHovered = cellHasSubHover && (i == this->HoveredSubRow);
+            Painter->setPen(subHovered ? hoverColor : defaultColor);
+            Painter->drawText(lineRect, Qt::AlignVCenter | Qt::AlignLeft, elided);
+        }
+        Painter->restore();
+    }
+
+    // Thin horizontal separator at the bottom of every cell. Drawing it ourselves (instead of via
+    // a stylesheet on QTableView::item) keeps the cell geometry unchanged — a `border-bottom` in
+    // QSS visibly shifts the cell padding and broke the layout for tall multi-source rows.
+    Painter->save();
+    Painter->setPen(QPen(QColor(255, 255, 255, 30), 1));
+    Painter->drawLine(Option.rect.bottomLeft(), Option.rect.bottomRight());
+    Painter->restore();
+}
+
+
+QSize EntranceInLinkDelegate::sizeHint(const QStyleOptionViewItem& Option, const QModelIndex& Index) const
+{
+    // Row heights are managed explicitly via AllEntranceView::RefreshRowHeights(): we ran into
+    // viewport repaint glitches (stale text from neighbouring rows) when relying on Qt's
+    // ResizeToContents to react to this sizeHint. Returning the default keeps the vertical
+    // header in deterministic Fixed mode and avoids the cascading invalidations.
+    return QStyledItemDelegate::sizeHint(Option, Index);
+}
+
+
+bool EntranceInLinkDelegate::editorEvent(QEvent* Event, QAbstractItemModel* Model, const QStyleOptionViewItem& Option, const QModelIndex& Index)
+{
+    // We only hijack mouse releases inside the InLink column (column 2). For every other column
+    // the delegate must defer to the default behavior so the table-level QTableView::clicked
+    // handler can still route scene / entrance / out-link clicks.
+    if (Event == nullptr || Event->type() != QEvent::MouseButtonRelease || Index.column() != 2)
+    {
+        return QStyledItemDelegate::editorEvent(Event, Model, Option, Index);
+    }
+
+    const GlobalEntranceRow* row = this->ResolveRow(Index);
+    // Only intercept when there are several sources: the existing QTableView::clicked handler
+    // already routes single-source rows correctly and we want to keep that path for empty cells
+    // (no source) too, where there is nothing to navigate to.
+    if (row == nullptr || row->InLinkNames.size() <= 1 || this->OwnerView == nullptr || this->OwnerView->Owner == nullptr)
+    {
+        return QStyledItemDelegate::editorEvent(Event, Model, Option, Index);
+    }
+
+    QMouseEvent* me = static_cast<QMouseEvent*>(Event);
+    if (me->button() != Qt::LeftButton)
+    {
+        return QStyledItemDelegate::editorEvent(Event, Model, Option, Index);
+    }
+
+    // Resolve the live link from the meta info so we have the per-source (EntranceID, Game) pairs.
+    // Falling back to the cached row->InLink would lose the per-source mapping when the row has
+    // more than one inbound entry.
+    SceneEntranceMetaInf* sceneInf = GetSceneEntranceMetaInf(this->OwnerView->GameID, row->SceneID);
+    if (sceneInf == nullptr)
+    {
+        return QStyledItemDelegate::editorEvent(Event, Model, Option, Index);
+    }
+    auto it = sceneInf->EntranceIDs.find(row->EntranceID);
+    if (it == sceneInf->EntranceIDs.end() || it->second.InLinks.empty())
+    {
+        return QStyledItemDelegate::editorEvent(Event, Model, Option, Index);
+    }
+
+    const std::vector<EntranceSource>& sources = it->second.InLinks;
+    const int n = (int)sources.size();
+
+    // Compute which sub-row was clicked from the local Y coordinate. With n == 1 the calculation
+    // still works (only index 0 is reachable) so we keep the same code path for both the
+    // single-source and multi-source case.
+    const QRect cell = Option.rect;
+    // Qt6: prefer position().toPoint() over pos() to avoid the deprecation warning treated as
+    // an error (C4996) on MSVC.
+    const int clickY = me->position().toPoint().y() - cell.top();
+    int srcIndex = (int)(((qreal)clickY * (qreal)n) / (qreal)cell.height());
+    if (srcIndex < 0) srcIndex = 0;
+    if (srcIndex >= n) srcIndex = n - 1;
+
+    const EntranceSource& src = sources[srcIndex];
+    if (src.EntranceID == UINT32_MAX || src.Game == NO_GAME)
+    {
+        return true;
+    }
+    const EntranceMetaInfo* linkMeta = EntranceHelper::GetEntranceMetaInf(src.Game, src.EntranceID);
+    if (linkMeta == nullptr)
+    {
+        return true;
+    }
+
+    this->OwnerView->Owner->FocusEntranceInGame(src.Game, linkMeta->ToSceneID, src.EntranceID);
+    return true;
+}
+
+#pragma endregion // EntranceInLinkDelegate
+
 #pragma region AllEntranceView
 
 AllEntranceView::AllEntranceView(EntranceGameTabView* Parent) : QWidget(Parent)
@@ -522,6 +839,12 @@ AllEntranceView::AllEntranceView(EntranceGameTabView* Parent) : QWidget(Parent)
     this->Table->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
     this->Table->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
     this->Table->setShowGrid(false);
+    // Mouse tracking is required for Qt to keep the per-cell State_MouseOver flag in sync as the
+    // pointer moves across the viewport. Without it the delegate would only see "hover" when the
+    // user actually clicks, breaking the visual feedback we want for clickable cells.
+    this->Table->setMouseTracking(true);
+    this->Table->viewport()->setMouseTracking(true);
+    this->Table->viewport()->setAttribute(Qt::WA_Hover, true);
     this->Table->horizontalHeader()->setStretchLastSection(true);
     this->Table->horizontalHeader()->setSortIndicatorShown(true);
     this->Table->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
@@ -535,26 +858,49 @@ AllEntranceView::AllEntranceView(EntranceGameTabView* Parent) : QWidget(Parent)
     // paintSection is the only reliable way to get the stripe back.
     StatusHeaderView* statusHeader = new StatusHeaderView(this->Table);
     this->Table->setVerticalHeader(statusHeader);
+    // Keep the deterministic Fixed sizing from before multi-source. Multi-source rows are
+    // resized explicitly via setRowHeight() in RefreshRowHeights() — relying on Qt's
+    // ResizeToContents broke the viewport repaint optimizations and left stale pixels behind.
     statusHeader->setSectionResizeMode(QHeaderView::Fixed);
     statusHeader->setDefaultSectionSize(20);
     statusHeader->setSectionsClickable(false);
     statusHeader->setFixedWidth(6);
+
+    // Single delegate covering every column: column 2 gets the multi-source stacked layout
+    // and per-source click routing; columns 0/1/3 fall back to the default rendering. The
+    // delegate also paints a thin horizontal separator at the bottom of each cell so rows stay
+    // visually distinct without re-enabling the full grid (which would also draw vertical lines).
+    this->Table->setItemDelegate(new EntranceInLinkDelegate(this->Owner, this->Table));
     this->Table->viewport()->setAttribute(Qt::WA_OpaquePaintEvent, true);
     this->Table->viewport()->setAttribute(Qt::WA_NoSystemBackground, true);
-    this->Table->viewport()->setAttribute(Qt::WA_StaticContents, true);
+    // WA_StaticContents previously made variable-height rows leave stale text behind when the
+    // proxy resorted: Qt assumed nothing inside the viewport changed and skipped the repaint.
+    // Multi-source rows are explicitly sized via RefreshRowHeights so this optimisation no
+    // longer applies safely.
 
     connect(searchBar, &QLineEdit::textChanged,
         this, [=](const QString& text)
         {
             this->Proxy->setFilterFixedString(text);
             this->RefreshViewportPaintMode();
+            // After a filter change the proxy mapping shifts, so the row-positional heights must
+            // be re-applied or multi-source rows will appear under the wrong indices.
+            this->RefreshRowHeights();
         });
 
     connect(this->Table->horizontalHeader(), &QHeaderView::sectionClicked,
         this, [=](int column)
         {
             this->Model->sort(column, this->Table->horizontalHeader()->sortIndicatorOrder());
+            this->RefreshRowHeights();
         });
+
+    // The proxy emits layoutChanged for sort/filter passes and modelReset for full rebuilds.
+    // We re-run RefreshRowHeights from both so any code path that mutates row order keeps the
+    // multi-source rows correctly sized without having to remember to call us manually.
+    connect(this->Proxy, &QAbstractItemModel::layoutChanged, this, [this]() { this->RefreshRowHeights(); });
+    connect(this->Proxy, &QAbstractItemModel::modelReset, this, [this]() { this->RefreshRowHeights(); });
+    connect(this->Model, &QAbstractItemModel::dataChanged, this, [this](const QModelIndex&, const QModelIndex&) { this->RefreshRowHeights(); });
 
     // Cell click navigation: route the user to the matching scene / entrance in the same way the
     // left map tree and the right entrance tree do, so the global table is a real shortcut and not
@@ -594,6 +940,12 @@ AllEntranceView::AllEntranceView(EntranceGameTabView* Parent) : QWidget(Parent)
                 }
                 case 2:
                 {
+                    // Multi-source rows are routed per sub-row by EntranceInLinkDelegate so the
+                    // cell-level handler must not fire on top of the delegate's navigation.
+                    if (row.InLinkNames.size() > 1)
+                    {
+                        break;
+                    }
                     if (row.InLink == UINT32_MAX || row.InGame == NO_GAME)
                     {
                         break;
@@ -660,6 +1012,35 @@ void AllEntranceView::RefreshViewportPaintMode()
     bool filtering = this->Proxy->rowCount() > 40;
     this->Table->viewport()->setAttribute(Qt::WA_OpaquePaintEvent, filtering);
     this->Table->viewport()->update();
+}
+
+
+void AllEntranceView::RefreshRowHeights()
+{
+    if (this->Proxy == nullptr || this->Model == nullptr || this->Table == nullptr)
+    {
+        return;
+    }
+
+    // Base unit = the vertical header's default section size (typically 20 px). Each known
+    // inbound source claims one base unit, so a row with 3 sources is exactly 3x as tall as a
+    // single-line row — the multi-source delegate then paints one stacked sub-line per slice.
+    const int baseH = this->Table->verticalHeader()->defaultSectionSize();
+    const int viewRows = this->Proxy->rowCount();
+    for (int viewRow = 0; viewRow < viewRows; viewRow++)
+    {
+        QModelIndex proxyIndex = this->Proxy->index(viewRow, 0);
+        QModelIndex sourceIndex = this->Proxy->mapToSource(proxyIndex);
+        const int srcRow = sourceIndex.row();
+        if (srcRow < 0 || srcRow >= (int)this->Model->m_rows.size())
+        {
+            this->Table->setRowHeight(viewRow, baseH);
+            continue;
+        }
+        const int sources = (int)this->Model->m_rows[srcRow].InLinkNames.size();
+        const int rowH = sources > 1 ? sources * baseH : baseH;
+        this->Table->setRowHeight(viewRow, rowH);
+    }
 }
 
 #pragma endregion // AllEntranceView
@@ -733,19 +1114,26 @@ void SceneEntranceItemTree::CountValidEntrances()
             continue;
         }
 
+        // Multi-source semantics: every inbound source is a separate entrance discovery, so the
+        // in-side contribution scales with the number of known sources. Total is max(1, N) so an
+        // undiscovered in-side still counts for 1 (you have at least one path left to find), and
+        // total grows by exactly +1 each time a new source is recorded — matching the +1 that
+        // also lands in FoundEntrances at the same time.
+        const int inFound = (int)row.InLinkNames.size();
+        const int inTotal = inFound > 0 ? inFound : 1;
         switch (entrance->Type)
         {
             case EntranceType::Normal:
             {
-                this->TotalEntrances += 2;
-                if (row.InLink != UINT32_MAX) this->FoundEntrances++;
+                this->TotalEntrances += inTotal + 1;
+                this->FoundEntrances += inFound;
                 if (row.OutLink != UINT32_MAX) this->FoundEntrances++;
                 break;
             }
             case EntranceType::One_Way_In:
             {
-                this->TotalEntrances++;
-                if (row.InLink != UINT32_MAX) this->FoundEntrances++;
+                this->TotalEntrances += inTotal;
+                this->FoundEntrances += inFound;
                 break;
             }
             case EntranceType::One_Way_Out:
@@ -1149,19 +1537,23 @@ void EntranceGameTabView::RefreshCategoryCounters()
             {
                 continue;
             }
+            // Same multi-source accounting as CountValidEntrances: each known source counts as a
+            // separate "in" entrance, with at least one slot reserved for an undiscovered side.
+            const int inFound = (int)row->InLinkNames.size();
+            const int inTotal = inFound > 0 ? inFound : 1;
             switch (meta->Type)
             {
                 case EntranceType::Normal:
                 {
-                    total += 2;
-                    if (row->InLink != UINT32_MAX) found++;
+                    total += inTotal + 1;
+                    found += inFound;
                     if (row->OutLink != UINT32_MAX) found++;
                     break;
                 }
                 case EntranceType::One_Way_In:
                 {
-                    total++;
-                    if (row->InLink != UINT32_MAX) found++;
+                    total += inTotal;
+                    found += inFound;
                     break;
                 }
                 case EntranceType::One_Way_Out:

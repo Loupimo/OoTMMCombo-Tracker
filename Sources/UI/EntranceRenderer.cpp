@@ -134,9 +134,28 @@ void EntranceLinkItemTree::RefreshText()
         return;
     }
 
-    //QString prefix = this->IsInLink ? QStringLiteral("In: ") : QStringLiteral("Out: ");
-    QString name = this->IsInLink ? row->InLinkName : row->OutLinkName;
-    this->setText(0, /*prefix + */name);
+    // On the in side, per-source tree rows pick their name from row->InLinkNames[InLinkIndex] so
+    // each row in the tree mirrors exactly one inbound source. When InLinkIndex is -1 (legacy
+    // single-row mode or fallback before sources are discovered) we keep the latest name, which is
+    // what row->InLinkName already holds.
+    QString name;
+    if (this->IsInLink)
+    {
+        if (this->InLinkIndex >= 0 && this->InLinkIndex < row->InLinkNames.size())
+        {
+            name = row->InLinkNames[this->InLinkIndex];
+        }
+        else
+        {
+            name = row->InLinkName;
+        }
+    }
+    else
+    {
+        name = row->OutLinkName;
+    }
+
+    this->setText(0, name);
     this->setIcon(0, this->IsInLink ? *GameIcons::GetEntranceIcon(EntranceIcons::In_Only) : *GameIcons::GetEntranceIcon(EntranceIcons::Out_Only));
 
     // Propagate the name change to the on-map label. Without this the overlay stays stuck on the
@@ -418,17 +437,60 @@ EntranceItemTree::EntranceItemTree(GlobalEntranceRow* Row, EntranceRenderer* PaO
     const EntranceMetaInfo* entrance = this->GetMetaInfo();
     if (entrance != nullptr)
     {
+        // Build one in-row per inbound source already known. Each row carries its own InLinkIndex
+        // so RefreshText picks the matching name from InLinkNames and PerformAction routes the
+        // navigation to that specific source. When no source has been discovered yet, we still
+        // create a single placeholder row (InLinkIndex == -1) so the in side is visible in the
+        // tree with a "?" name, matching the legacy UX.
+        auto buildInRows = [this, Row]()
+        {
+            int sourceCount = 0;
+            if (this->RendererOwner != nullptr)
+            {
+                SceneEntranceMetaInf* sceneInf = GetSceneEntranceMetaInf(this->RendererOwner->GetGameID(), this->SceneID);
+                if (sceneInf != nullptr)
+                {
+                    auto it = sceneInf->EntranceIDs.find(this->EntranceID);
+                    if (it != sceneInf->EntranceIDs.end())
+                    {
+                        sourceCount = (int)it->second.InLinks.size();
+                    }
+                }
+            }
+
+            if (sourceCount == 0)
+            {
+                EntranceLinkItemTree* placeholder = new EntranceLinkItemTree(this, true, this);
+                placeholder->InLinkIndex = -1;
+                this->InItems.push_back(placeholder);
+                this->InItem = placeholder;
+            }
+            else
+            {
+                for (int i = 0; i < sourceCount; i++)
+                {
+                    EntranceLinkItemTree* child = new EntranceLinkItemTree(this, true, this);
+                    child->InLinkIndex = i;
+                    child->RefreshText();
+                    this->InItems.push_back(child);
+                }
+                // Keep InItem pointing at the latest discovered source so legacy paths (e.g.
+                // SetTreeHighlighted) still highlight a single representative row.
+                this->InItem = this->InItems.back();
+            }
+        };
+
         switch (entrance->Type)
         {
             case EntranceType::Normal:
             {
-                this->InItem = new EntranceLinkItemTree(this, true, this);
+                buildInRows();
                 this->OutItem = new EntranceLinkItemTree(this, false, this);
                 break;
             }
             case EntranceType::One_Way_In:
             {
-                this->InItem = new EntranceLinkItemTree(this, true, this);
+                buildInRows();
                 break;
             }
             case EntranceType::One_Way_Out:
@@ -490,9 +552,54 @@ void EntranceItemTree::RefreshText()
     {
         this->setText(0, row->EntranceName);
     }
-    if (this->InItem != nullptr)
+
+    // Sync the in-side tree children with the live InLinks count. When the EntranceHelper records
+    // a new inbound source mid-game, OnEntranceUpdated reaches this method and we add one
+    // EntranceLinkItemTree child per missing source so the tree mirrors what the box now shows.
+    // We only ever append: shrinking would risk dangling indices in the box's HoveredRow and the
+    // current model never removes a discovered source. The placeholder row (InLinkIndex == -1)
+    // created when no source was known is promoted to InLinkIndex == 0 as soon as the first
+    // source appears so its name picks up the freshly populated row->InLinkNames[0].
+    if (!this->InItems.empty() && this->RendererOwner != nullptr)
     {
-        this->InItem->RefreshText();
+        SceneEntranceMetaInf* sceneInf = GetSceneEntranceMetaInf(this->RendererOwner->GetGameID(), this->SceneID);
+        if (sceneInf != nullptr)
+        {
+            auto it = sceneInf->EntranceIDs.find(this->EntranceID);
+            if (it != sceneInf->EntranceIDs.end())
+            {
+                const int liveCount = (int)it->second.InLinks.size();
+
+                // Placeholder → real index promotion (single -1 entry, sources just appeared).
+                if (liveCount > 0 && this->InItems.size() == 1 && this->InItems[0]->InLinkIndex == -1)
+                {
+                    this->InItems[0]->InLinkIndex = 0;
+                }
+
+                // Append any missing per-source rows.
+                while ((int)this->InItems.size() < liveCount)
+                {
+                    EntranceLinkItemTree* child = new EntranceLinkItemTree(this, true, this);
+                    child->InLinkIndex = (int)this->InItems.size();
+                    this->InItems.push_back(child);
+                }
+
+                // Keep InItem aligned with the latest source.
+                if (!this->InItems.empty())
+                {
+                    this->InItem = this->InItems.back();
+                }
+            }
+        }
+    }
+
+    // Refresh every in-row so each picks up the matching name from row->InLinkNames.
+    for (EntranceLinkItemTree* inItem : this->InItems)
+    {
+        if (inItem != nullptr)
+        {
+            inItem->RefreshText();
+        }
     }
     if (this->OutItem != nullptr)
     {
