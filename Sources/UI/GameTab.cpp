@@ -434,6 +434,7 @@ void GameTab::SaveGameScenes(QString FilePath, Settings * FileSettings)
 
     switch (AppConfig::GetTrackerVersion())
     {
+        case TrackerVersion::V2_1:
         case TrackerVersion::V2_0:
         {
             FileSettings->SaveFileSettings(&saveFile);

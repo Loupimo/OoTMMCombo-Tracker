@@ -29,15 +29,16 @@ typedef struct GlobalEntranceRow
 {
     uint32_t SceneID = UINT32_MAX;
     uint32_t EntranceID = UINT32_MAX;
-    uint32_t InLink = UINT32_MAX;
+    uint32_t InLink = UINT32_MAX;       // Latest known inbound source entrance ID (UINT32_MAX if none).
     uint32_t OutLink = UINT32_MAX;
-    uint8_t InGame = NO_GAME;
+    uint8_t InGame = NO_GAME;            // Game of the latest known inbound source.
     uint8_t OutGame = NO_GAME;
     uint8_t RegionID = UINT8_MAX;
 
     QString SceneName;
     QString EntranceName;
-    QString InLinkName;
+    QString InLinkName;                  // Formatted name of the latest inbound source (table column display).
+    QStringList InLinkNames;             // Formatted names of every known inbound source, in discovery order.
     QString OutLinkName;
 } GlobalEntranceRow;
 

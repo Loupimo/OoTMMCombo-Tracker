@@ -1,45 +1,89 @@
 #include "UI/SceneEntrance.h"
+#include "UI/AppConfig.h"
 
 
 void EntranceLink::SaveLink(QFile* SaveFile)
 {
-    QByteArray tmp(sizeof(uint32_t), 0);
-    QByteArray tmpGame(sizeof(uint8_t), 0);
-
-    // Save In link ID
-    memcpy_s(tmp.data(), 4, &this->InLink, sizeof(this->InLink));
-    SaveFile->write(tmp);
+    QByteArray tmpU32(sizeof(uint32_t), 0);
+    QByteArray tmpU8(sizeof(uint8_t), 0);
 
     // Save Out link ID
-    memcpy_s(tmp.data(), 4, &this->OutLink, sizeof(this->OutLink));
-    SaveFile->write(tmp);
-
-    // Save In link Game
-    memcpy_s(tmpGame.data(), 1, &this->InLinkGame, sizeof(this->InLinkGame));
-    SaveFile->write(tmpGame);
+    memcpy_s(tmpU32.data(), sizeof(uint32_t), &this->OutLink, sizeof(this->OutLink));
+    SaveFile->write(tmpU32);
 
     // Save Out link Game
-    memcpy_s(tmpGame.data(), 1, &this->OutLinkGame, sizeof(this->OutLinkGame));
-    SaveFile->write(tmpGame);
+    memcpy_s(tmpU8.data(), sizeof(uint8_t), &this->OutLinkGame, sizeof(this->OutLinkGame));
+    SaveFile->write(tmpU8);
+
+    // Save the number of inbound sources, then each (EntranceID, Game) pair
+    uint32_t numInLinks = (uint32_t)this->InLinks.size();
+    memcpy_s(tmpU32.data(), sizeof(uint32_t), &numInLinks, sizeof(numInLinks));
+    SaveFile->write(tmpU32);
+
+    for (const EntranceSource& src : this->InLinks)
+    {
+        memcpy_s(tmpU32.data(), sizeof(uint32_t), &src.EntranceID, sizeof(src.EntranceID));
+        SaveFile->write(tmpU32);
+
+        memcpy_s(tmpU8.data(), sizeof(uint8_t), &src.Game, sizeof(src.Game));
+        SaveFile->write(tmpU8);
+    }
 }
 
-size_t EntranceLink::LoadLink(QByteArray* Data, size_t Offset)
+size_t EntranceLink::LoadLink(QByteArray* Data, size_t Offset, TrackerVersion Version)
 {
-    // Load In link ID
-    memcpy_s(&this->InLink, sizeof(this->InLink), Data->data() + Offset, sizeof(this->InLink));
-    Offset += sizeof(this->InLink);
+    this->InLinks.clear();
 
-    // Load Out link ID
+    if (Version == TrackerVersion::V2_0)
+    {
+        // Legacy 10-byte layout: InLink (u32), OutLink (u32), InLinkGame (u8), OutLinkGame (u8).
+        // A single-source InLink is promoted to a one-entry list; an undiscovered InLink
+        // (UINT32_MAX) yields an empty list, matching the new model's "no source" semantics.
+        uint32_t legacyInLink = UINT32_MAX;
+        memcpy_s(&legacyInLink, sizeof(legacyInLink), Data->data() + Offset, sizeof(legacyInLink));
+        Offset += sizeof(legacyInLink);
+
+        memcpy_s(&this->OutLink, sizeof(this->OutLink), Data->data() + Offset, sizeof(this->OutLink));
+        Offset += sizeof(this->OutLink);
+
+        uint8_t legacyInLinkGame = NO_GAME;
+        memcpy_s(&legacyInLinkGame, sizeof(legacyInLinkGame), Data->data() + Offset, sizeof(legacyInLinkGame));
+        Offset += sizeof(legacyInLinkGame);
+
+        memcpy_s(&this->OutLinkGame, sizeof(this->OutLinkGame), Data->data() + Offset, sizeof(this->OutLinkGame));
+        Offset += sizeof(this->OutLinkGame);
+
+        if (legacyInLink != UINT32_MAX && legacyInLinkGame != NO_GAME)
+        {
+            this->InLinks.push_back({ legacyInLink, legacyInLinkGame });
+        }
+
+        return Offset;
+    }
+
+    // V2_1 layout: OutLink (u32), OutLinkGame (u8), count (u32), then count * (EntranceID u32, Game u8).
     memcpy_s(&this->OutLink, sizeof(this->OutLink), Data->data() + Offset, sizeof(this->OutLink));
     Offset += sizeof(this->OutLink);
 
-    // Load In link Game
-    memcpy_s(&this->InLinkGame, sizeof(this->InLinkGame), Data->data() + Offset, sizeof(this->InLinkGame));
-    Offset += sizeof(this->InLinkGame);
-
-    // Load Out link Game
     memcpy_s(&this->OutLinkGame, sizeof(this->OutLinkGame), Data->data() + Offset, sizeof(this->OutLinkGame));
     Offset += sizeof(this->OutLinkGame);
+
+    uint32_t numInLinks = 0;
+    memcpy_s(&numInLinks, sizeof(numInLinks), Data->data() + Offset, sizeof(numInLinks));
+    Offset += sizeof(numInLinks);
+
+    this->InLinks.reserve(numInLinks);
+    for (uint32_t i = 0; i < numInLinks; i++)
+    {
+        EntranceSource src;
+        memcpy_s(&src.EntranceID, sizeof(src.EntranceID), Data->data() + Offset, sizeof(src.EntranceID));
+        Offset += sizeof(src.EntranceID);
+
+        memcpy_s(&src.Game, sizeof(src.Game), Data->data() + Offset, sizeof(src.Game));
+        Offset += sizeof(src.Game);
+
+        this->InLinks.push_back(src);
+    }
 
     return Offset;
 }
@@ -47,10 +91,23 @@ size_t EntranceLink::LoadLink(QByteArray* Data, size_t Offset)
 
 void EntranceLink::ResetLink()
 {
-    this->InLink = UINT32_MAX;
+    this->InLinks.clear();
     this->OutLink = UINT32_MAX;
-    this->InLinkGame = NO_GAME;
     this->OutLinkGame = NO_GAME;
+}
+
+
+void EntranceLink::AddInLink(uint32_t EntranceID, uint8_t Game)
+{
+    // Dedup: traversing the same path twice should not duplicate the source.
+    for (const EntranceSource& src : this->InLinks)
+    {
+        if (src.EntranceID == EntranceID && src.Game == Game)
+        {
+            return;
+        }
+    }
+    this->InLinks.push_back({ EntranceID, Game });
 }
 
 
@@ -80,7 +137,7 @@ void SceneEntranceMetaInf::SaveMetaInf(QFile* SaveFile)
     }
 }
 
-size_t SceneEntranceMetaInf::LoadMetaInf(QByteArray* Data, size_t Offset)
+size_t SceneEntranceMetaInf::LoadMetaInf(QByteArray* Data, size_t Offset, TrackerVersion Version)
 {
     // Load scene ID
     uint32_t sceneID = 0;
@@ -108,7 +165,7 @@ size_t SceneEntranceMetaInf::LoadMetaInf(QByteArray* Data, size_t Offset)
 
                 if (entranceID == currEntranceID)
                 {
-                    Offset = entrance.LoadLink(Data, Offset);
+                    Offset = entrance.LoadLink(Data, Offset, Version);
                 }
             }
         }
@@ -192,16 +249,16 @@ void SaveEntrancesFor(QFile* SaveFile, std::map<uint32_t, SceneEntranceMetaInf>*
 }
 
 
-size_t LoadEntrances(QByteArray* Data, size_t Offset)
+size_t LoadEntrances(QByteArray* Data, size_t Offset, TrackerVersion Version)
 {
-    Offset = LoadEntrancesFor(Data, Offset, GetSceneEntranceMetaInfForGame(OOT_GAME));
-    Offset = LoadEntrancesFor(Data, Offset, GetSceneEntranceMetaInfForGame(MM_GAME));
+    Offset = LoadEntrancesFor(Data, Offset, GetSceneEntranceMetaInfForGame(OOT_GAME), Version);
+    Offset = LoadEntrancesFor(Data, Offset, GetSceneEntranceMetaInfForGame(MM_GAME), Version);
 
     return Offset;
 }
 
 
-size_t LoadEntrancesFor(QByteArray* Data, size_t Offset, std::map<uint32_t, SceneEntranceMetaInf>* Array)
+size_t LoadEntrancesFor(QByteArray* Data, size_t Offset, std::map<uint32_t, SceneEntranceMetaInf>* Array, TrackerVersion Version)
 {
     QByteArray numObj(sizeof(size_t), 0);
 
@@ -220,7 +277,7 @@ size_t LoadEntrancesFor(QByteArray* Data, size_t Offset, std::map<uint32_t, Scen
 
         if (sceneID == scene.SceneID)
         {
-            Offset = scene.LoadMetaInf(Data, Offset);
+            Offset = scene.LoadMetaInf(Data, Offset, Version);
         }
     }
 

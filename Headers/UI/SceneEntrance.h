@@ -4,15 +4,33 @@
 #include "Combo/MMEntrances.h"
 #include "UI/SceneEntranceUpdate.h"
 #include <map>
+#include <vector>
 #include <QFile>
+
+
+// Forward declared so the load chain can take a version parameter without
+// pulling AppConfig.h into every translation unit that includes us.
+enum class TrackerVersion;
+
+
+/*
+*   A single inbound source (entrance + game) that leads to a given destination
+*   entrance. Several of these can target the same destination (e.g. a warp
+*   song zone is reachable from both the song and the matching boss room exit),
+*   which is why EntranceLink stores a list of them rather than a single value.
+*/
+typedef struct EntranceSource
+{
+	uint32_t EntranceID = UINT32_MAX;	// The source entrance ID that leads to the owning entrance
+	uint8_t Game = NO_GAME;				// The game the source entrance belongs to
+} EntranceSource;
 
 
 typedef struct EntranceLink
 {
-	uint32_t InLink = UINT32_MAX;		// The entrance ID that leads to this scene spawn
-	uint32_t OutLink = UINT32_MAX;		// The entrance ID where going when leaving from this entrance
-	uint8_t InLinkGame = NO_GAME;		// The game the out link comes from
-	uint8_t OutLinkGame = NO_GAME;		// The game the out link comes from
+	std::vector<EntranceSource> InLinks;	// All distinct source entrances known to lead to this entrance
+	uint32_t OutLink = UINT32_MAX;			// The entrance ID where going when leaving from this entrance
+	uint8_t OutLinkGame = NO_GAME;			// The game the out link comes from
 
 public:
 
@@ -26,17 +44,51 @@ public:
 	/*
 	*   Deserialize the in / out entrance IDs and their games from the given byte buffer.
 	*
-	*   @param Data      The byte buffer containing the save data.
-	*   @param Offset    The current offset in the buffer.
+	*   @param Data       The byte buffer containing the save data.
+	*   @param Offset     The current offset in the buffer.
+	*   @param Version    The tracker version of the buffer; controls the on-disk layout.
 	*
 	*   @return The new offset after reading the link data.
 	*/
-	size_t LoadLink(QByteArray* Data, size_t Offset);
+	size_t LoadLink(QByteArray* Data, size_t Offset, TrackerVersion Version);
 
 	/*
 	*   Reset the link to its default (unbound) state.
 	*/
 	void ResetLink();
+
+	/*
+	*   Tell whether at least one inbound source is known for this entrance.
+	*
+	*   @return <b>True</b> if the InLinks list has at least one entry, <b>false</b> otherwise.
+	*/
+	bool HasInLink() const { return !this->InLinks.empty(); }
+
+	/*
+	*   Return the most recently discovered inbound source entrance ID, or
+	*   UINT32_MAX if no source has been observed yet.
+	*
+	*   @return The latest inbound source entrance ID.
+	*/
+	uint32_t GetLatestInLinkID() const { return this->InLinks.empty() ? UINT32_MAX : this->InLinks.back().EntranceID; }
+
+	/*
+	*   Return the game of the most recently discovered inbound source, or
+	*   NO_GAME if no source has been observed yet.
+	*
+	*   @return The latest inbound source game.
+	*/
+	uint8_t GetLatestInLinkGame() const { return this->InLinks.empty() ? NO_GAME : this->InLinks.back().Game; }
+
+	/*
+	*   Record a new inbound source for this entrance. No-op if the exact
+	*   (EntranceID, Game) pair is already present in the list, so traversing
+	*   the same path twice never duplicates an entry.
+	*
+	*   @param EntranceID    The source entrance ID that leads to this entrance.
+	*   @param Game          The game the source entrance belongs to.
+	*/
+	void AddInLink(uint32_t EntranceID, uint8_t Game);
 
 } EntranceLink;
 
@@ -60,12 +112,13 @@ public:
 	/*
 	*   Deserialize the scene meta information and all its entrance links from the given byte buffer.
 	*
-	*   @param Data      The byte buffer containing the save data.
-	*   @param Offset    The current offset in the buffer.
+	*   @param Data       The byte buffer containing the save data.
+	*   @param Offset     The current offset in the buffer.
+	*   @param Version    The tracker version of the buffer; controls the on-disk layout.
 	*
 	*   @return The new offset after reading the meta information.
 	*/
-	size_t LoadMetaInf(QByteArray* Data, size_t Offset);
+	size_t LoadMetaInf(QByteArray* Data, size_t Offset, TrackerVersion Version);
 
 	/*
 	*   Reset all entrance links of this scene to their default state.
@@ -114,23 +167,25 @@ void SaveEntrancesFor(QFile* SaveFile, std::map<uint32_t, SceneEntranceMetaInf>*
 /*
 *   Load all entrances status from the given file starting at the given offset.
 *
-*   @param Data		The data that contains the entrances to load.
-*   @param Offset	The starting offset.
+*   @param Data       The data that contains the entrances to load.
+*   @param Offset     The starting offset.
+*   @param Version    The tracker version of the buffer; controls the on-disk layout.
 *
 *	@return The end offset of the last loaded entrance.
 */
-size_t LoadEntrances(QByteArray* Data, size_t Offset);
+size_t LoadEntrances(QByteArray* Data, size_t Offset, TrackerVersion Version);
 
 /*
 *   Deserialize the scene entrance meta info of the given array from the byte buffer.
 *
-*   @param Data      The byte buffer containing the save data.
-*   @param Offset    The current offset in the buffer.
-*   @param Array     The scene entrance meta info map to populate.
+*   @param Data       The byte buffer containing the save data.
+*   @param Offset     The current offset in the buffer.
+*   @param Array      The scene entrance meta info map to populate.
+*   @param Version    The tracker version of the buffer; controls the on-disk layout.
 *
 *   @return The new offset after reading the entrance data, or -1 if the stored count mismatches.
 */
-size_t LoadEntrancesFor(QByteArray* Data, size_t Offset, std::map<uint32_t, SceneEntranceMetaInf>* Array);
+size_t LoadEntrancesFor(QByteArray* Data, size_t Offset, std::map<uint32_t, SceneEntranceMetaInf>* Array, TrackerVersion Version);
 
 /*
 *   Reset all entrance links of every scene in the given array to their default state.

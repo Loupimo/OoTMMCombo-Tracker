@@ -885,11 +885,19 @@ void OoTMMComboTracker::LoadGameScenes(QString FilePath)
 
     switch ((TrackerVersion)version)
     {
+        case TrackerVersion::V2_1:
+        {
+            offset = this->ROMSettings.LoadFileSettings(&data, offset);
+            offset = LoadSceneObjects(&data, offset);
+            offset = LoadEntrances(&data, offset, TrackerVersion::V2_1);
+            break;
+        }
+
         case TrackerVersion::V2_0:
         {
             offset = this->ROMSettings.LoadFileSettings(&data, offset);
             offset = LoadSceneObjects(&data, offset);
-            offset = LoadEntrances(&data, offset);
+            offset = LoadEntrances(&data, offset, TrackerVersion::V2_0);
             break;
         }
 

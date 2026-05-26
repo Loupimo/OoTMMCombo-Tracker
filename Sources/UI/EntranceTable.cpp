@@ -88,9 +88,9 @@ void GlobalEntranceTableModel::setScenes(const std::map<uint32_t, SceneEntranceM
 
             row.SceneID = sceneID;
             row.EntranceID = entranceID;
-            row.InLink = link.InLink;
+            row.InLink = link.GetLatestInLinkID();
             row.OutLink = link.OutLink;
-            row.InGame = link.InLinkGame;
+            row.InGame = link.GetLatestInLinkGame();
             row.OutGame = link.OutLinkGame;
             row.RegionID = scene.RegionID;
 
@@ -98,6 +98,15 @@ void GlobalEntranceTableModel::setScenes(const std::map<uint32_t, SceneEntranceM
             row.EntranceName = this->formatEntrance(row.EntranceID);
             row.InLinkName = this->formatEntranceLink(row.InGame, row.EntranceID, row.InLink, true);
             row.OutLinkName = this->formatEntranceLink(row.OutGame, row.EntranceID, row.OutLink, false);
+
+            // Format every known inbound source for the multi-line box / overlay renderers. The
+            // single InLinkName above mirrors the latest entry so the table column keeps its
+            // single-string semantics.
+            row.InLinkNames.clear();
+            for (const EntranceSource& src : link.InLinks)
+            {
+                row.InLinkNames.append(this->formatEntranceLink(src.Game, row.EntranceID, src.EntranceID, true));
+            }
 
             m_rows.push_back(row);
         }
@@ -120,13 +129,20 @@ void GlobalEntranceTableModel::updateEntrance(uint32_t sceneID, uint32_t entranc
 
         if (row.SceneID == sceneID && row.EntranceID == entranceID)
         {
-            row.InLink = link->InLink;
+            row.InLink = link->GetLatestInLinkID();
             row.OutLink = link->OutLink;
-            row.InGame = link->InLinkGame;
+            row.InGame = link->GetLatestInLinkGame();
             row.OutGame = link->OutLinkGame;
 
             row.InLinkName = this->formatEntranceLink(row.InGame, row.EntranceID, row.InLink, true);
             row.OutLinkName = this->formatEntranceLink(row.OutGame, row.EntranceID, row.OutLink, false);
+
+            // Refresh the per-source list used by the box and the overlay label.
+            row.InLinkNames.clear();
+            for (const EntranceSource& src : link->InLinks)
+            {
+                row.InLinkNames.append(this->formatEntranceLink(src.Game, row.EntranceID, src.EntranceID, true));
+            }
 
             QModelIndex top = index((int)i, 0);
 

@@ -151,6 +151,9 @@ public:
 
     EntranceItemTree* EntranceItem;                 // The owning entrance item tree.
     bool IsInLink;                                  // True for the "in" side, false for the "out" side.
+    // For multi-source in items: index into EntranceLink::InLinks identifying which source this
+    // tree row represents. -1 means "use the latest source" (single-source fallback / out side).
+    int InLinkIndex = -1;
     EntranceAnchorItem* GraphItem = nullptr;
     //EntrancePixmapItem* GraphItem = nullptr;        // The optional graphical marker on the scene map.
     EntranceLabelItem* TextItem = nullptr;          // The optional name label painted next to the marker.
@@ -239,7 +242,8 @@ public:
     EntranceRenderer* RendererOwner;                // The renderer that owns this item.
     uint32_t SceneID;                               // The scene ID this entrance belongs to.
     uint32_t EntranceID;                            // The entrance ID this item represents.
-    EntranceLinkItemTree* InItem = nullptr;         // The "in" side child item, if any.
+    EntranceLinkItemTree* InItem = nullptr;         // The "in" side child item for the latest source (legacy single-source pointer, still used for tree highlight).
+    std::vector<EntranceLinkItemTree*> InItems;     // One "in" child item per known inbound source. Empty until the per-source tree is built.
     EntranceLinkItemTree* OutItem = nullptr;        // The "out" side child item, if any.
     EntranceGroupBoxItem* GroupBox = nullptr;       // The grouped box drawn on the map, if the current scene is rendered.
 
@@ -310,9 +314,11 @@ public:
     bool              Highlighted = false;
     bool              HasIn = true;
     bool              HasOut = true;
-    int               HoveredRow = -1;  // -1 none, 0 title, 1 in, 2 out — drives per-row bg tint
+    // -1 = no row hovered, 0 = title, 1..InTexts.size() = one of the in rows
+    // (one row per inbound source), InTexts.size()+1 = the single out row.
+    int               HoveredRow = -1;
     QString           Title;
-    QString           InText;
+    QStringList       InTexts;            // One entry per inbound source ("? " when none known).
     QString           OutText;
 
     /*

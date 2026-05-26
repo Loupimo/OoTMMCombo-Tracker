@@ -3088,8 +3088,7 @@ void EntranceHelper::ParseIncomingMessage(EntranceMessage& Message)
 
         tmp = GetSceneEntranceMetaInf(Message.GameID, Message.SceneID);
         EntranceLink * tmpInLink = &tmp->EntranceIDs.find(Message.EntranceID)->second;
-        tmpInLink->InLink = this->OutMessage.EntranceID;
-        tmpInLink->InLinkGame = this->OutMessage.GameID;
+        tmpInLink->AddInLink(this->OutMessage.EntranceID, this->OutMessage.GameID);
 
         SceneEntranceUpdate tmpIn = { Message.GameID, Message.SceneID, Message.EntranceID, tmpInLink };
 
@@ -3137,6 +3136,7 @@ void EntranceHelper::ParseOutgoingMessage(EntranceMessage& Message)
     }
 
     this->IsEntranceTouched = true;
+    bool isWarpSong = false;
 
     // Check that the entrance is not a special case
     Message.EntranceID = this->CheckSpecialCase(Message);
@@ -3163,7 +3163,6 @@ void EntranceHelper::ParseOutgoingMessage(EntranceMessage& Message)
     else if (this->IsWarpEntrance(Message))
     {   // The current entrance is a warp zone
 
-        bool isWarpSong = false;
         Message.EntranceID = this->GetWarpSong(Message, &isWarpSong);
         
         if (!isWarpSong)
@@ -3190,20 +3189,23 @@ void EntranceHelper::ParseOutgoingMessage(EntranceMessage& Message)
     Message.MetaInf = const_cast<EntranceMetaInfo*>(LookupEntrance(Message.GameID, Message.EntranceID));
     Message.EntranceStr = Message.MetaInf->FromName + std::string(" \xE2\x86\x92 ") + Message.MetaInf->ToName;
 
-    if (Message.MetaInf->Type == EntranceType::One_Way_Out)
+    if (!isWarpSong)
     {
-        if (Message.MetaInf->ToSceneID != Message.SceneID)
-        {   // Spawning location or other inconsistency
+        if (Message.MetaInf->Type == EntranceType::One_Way_Out)
+        {
+            if (Message.MetaInf->ToSceneID != Message.SceneID)
+            {   // Spawning location or other inconsistency
 
-            this->IsEntranceTouched = false;
+                this->IsEntranceTouched = false;
+            }
         }
-    }
-    else
-    {
-        if (Message.MetaInf->FromSceneID != Message.SceneID)
-        {   // Spawning location or other inconsistency
+        else
+        {
+            if (Message.MetaInf->FromSceneID != Message.SceneID)
+            {   // Spawning location or other inconsistency
 
-            this->IsEntranceTouched = false;
+                this->IsEntranceTouched = false;
+            }
         }
     }
 }

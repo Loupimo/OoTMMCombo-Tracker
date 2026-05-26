@@ -162,7 +162,17 @@ void EntranceLinkItemTree::UpdateOverlayLabel()
 
     // Re-apply the text first: the width drives the anchoring in PlaceLabelAroundArrow so the
     // reposition must happen against the updated bounding rect (e.g. "?" -> "Bolero of Fire").
-    QString name = this->IsInLink ? row->InLinkName : row->OutLinkName;
+    // On the in side we join every known inbound source with a newline so the on-map label
+    // shows the same multi-row list as the painted box. The out side stays a single line.
+    QString name;
+    if (this->IsInLink)
+    {
+        name = row->InLinkNames.isEmpty() ? row->InLinkName : row->InLinkNames.join("\n");
+    }
+    else
+    {
+        name = row->OutLinkName;
+    }
     this->TextItem->setText(name);
 
     const int* pos = meta->TextPos;
@@ -251,8 +261,28 @@ void EntranceLinkItemTree::NavigateToTarget()
     }
 
     const EntranceLink& link = it->second;
-    uint32_t targetEntranceID = this->IsInLink ? link.InLink : link.OutLink;
-    uint8_t targetGame = this->IsInLink ? link.InLinkGame : link.OutLinkGame;
+    uint32_t targetEntranceID;
+    uint8_t targetGame;
+    if (this->IsInLink)
+    {
+        // Honor the per-source index when set so clicking the second in row of a multi-source
+        // entrance navigates to *that* source (not just the most recently discovered one).
+        if (this->InLinkIndex >= 0 && this->InLinkIndex < (int)link.InLinks.size())
+        {
+            targetEntranceID = link.InLinks[this->InLinkIndex].EntranceID;
+            targetGame = link.InLinks[this->InLinkIndex].Game;
+        }
+        else
+        {
+            targetEntranceID = link.GetLatestInLinkID();
+            targetGame = link.GetLatestInLinkGame();
+        }
+    }
+    else
+    {
+        targetEntranceID = link.OutLink;
+        targetGame = link.OutLinkGame;
+    }
 
     // Undiscovered side: the user clicked an arrow for a traversal that has not happened yet.
     // GetEntranceMetaInf would dereference an out-of-range ID so we must bail out before calling it.
@@ -306,8 +336,26 @@ bool EntranceLinkItemTree::IsTargetKnown() const
     }
 
     const EntranceLink& link = it->second;
-    uint32_t targetEntranceID = this->IsInLink ? link.InLink : link.OutLink;
-    uint8_t targetGame = this->IsInLink ? link.InLinkGame : link.OutLinkGame;
+    uint32_t targetEntranceID;
+    uint8_t targetGame;
+    if (this->IsInLink)
+    {
+        if (this->InLinkIndex >= 0 && this->InLinkIndex < (int)link.InLinks.size())
+        {
+            targetEntranceID = link.InLinks[this->InLinkIndex].EntranceID;
+            targetGame = link.InLinks[this->InLinkIndex].Game;
+        }
+        else
+        {
+            targetEntranceID = link.GetLatestInLinkID();
+            targetGame = link.GetLatestInLinkGame();
+        }
+    }
+    else
+    {
+        targetEntranceID = link.OutLink;
+        targetGame = link.OutLinkGame;
+    }
     return targetEntranceID != UINT32_MAX && targetGame != NO_GAME;
 }
 
@@ -529,7 +577,19 @@ void EntranceGroupBoxItem::RefreshText()
     HasIn = meta && meta->Type != EntranceType::One_Way_Out;
     HasOut = meta && meta->Type != EntranceType::One_Way_In;
     Title = row ? row->EntranceName : "";
-    InText = row ? row->InLinkName : "?";
+
+    // Mirror the per-source list when known. When still undiscovered, fall back to a single "?"
+    // row so the box keeps showing a visible in arm (same UX as the legacy single-string code).
+    InTexts.clear();
+    if (row && !row->InLinkNames.isEmpty())
+    {
+        InTexts = row->InLinkNames;
+    }
+    else if (HasIn)
+    {
+        InTexts.append("?");
+    }
+
     OutText = row ? row->OutLinkName : "?";
 
     // A freshly discovered name may grow the longest row, which changes the box perimeter; the
@@ -552,7 +612,15 @@ qreal EntranceGroupBoxItem::BoxWidth() const
     // The title row starts with a RenderIcon pulled from EntranceMetaInfo, so the title line's
     // effective width is icon + gap + text advance. Row lines have no icon, just the prefix glyph.
     qreal maxW = kTitleIcon + kTitleIconGap + titleFM.horizontalAdvance(Title);
-    if (HasIn)  maxW = qMax(maxW, rowFM.horizontalAdvance(QString::fromUtf8("\xE2\x96\xB2 ") + InText));
+    if (HasIn)
+    {
+        // One row per inbound source; each gets its own width measurement so the box can
+        // accommodate the widest source label, not just the latest.
+        for (const QString& inText : InTexts)
+        {
+            maxW = qMax(maxW, rowFM.horizontalAdvance(QString::fromUtf8("\xE2\x96\xB2 ") + inText));
+        }
+    }
     if (HasOut) maxW = qMax(maxW, rowFM.horizontalAdvance(QString::fromUtf8("\xE2\x96\xBC ") + OutText));
 
     return qBound(kMinBoxW, maxW + kPadX * 2.0, kMaxBoxW);
@@ -561,8 +629,11 @@ qreal EntranceGroupBoxItem::BoxWidth() const
 
 qreal EntranceGroupBoxItem::BoxHeight() const
 {
+    // One in row per inbound source. When no source is known and the entrance has an in side,
+    // InTexts already holds a single "?" placeholder, so the row count is still correct.
+    const int inRowCount = HasIn ? InTexts.size() : 0;
     return kTitleH
-        + (HasIn ? kRowH : 0)
+        + inRowCount * kRowH
         + (HasOut ? kRowH : 0)
         + 4;
 }
@@ -623,28 +694,36 @@ void EntranceGroupBoxItem::paint(QPainter* p, const QStyleOptionGraphicsItem*, Q
     const qreal rowTextW = w - kPadX * 2;
 
     // ── In-link row (green) ─────────────────────────────────────────────────
+    // One row per known inbound source. HoveredRow indices are 1-based so the
+    // first in row matches HoveredRow == 1, the second == 2, and so on.
     if (HasIn)
     {
-        if (HoveredRow == 1)
+        for (int i = 0; i < InTexts.size(); i++)
         {
-            p->fillRect(QRectF(kAccentW, y, w - kAccentW, kRowH), QColor(255, 255, 255, 22));
+            const int rowIndex = 1 + i;
+            if (HoveredRow == rowIndex)
+            {
+                p->fillRect(QRectF(kAccentW, y, w - kAccentW, kRowH), QColor(255, 255, 255, 22));
+            }
+            p->fillRect(QRectF(0, y, kAccentW, kRowH), QColor(61, 220, 132));
+            p->setPen(QColor(101, 224, 154));
+            // Elide the full prefixed line against the full text area: BoxWidth already measured the
+            // prefix so the line fits when the box was not capped, and when it is capped the end of
+            // the source name gets truncated cleanly.
+            p->drawText(
+                QRectF(kPadX, y, rowTextW, kRowH), Qt::AlignVCenter,
+                p->fontMetrics().elidedText("\u25b2 " + InTexts[i], Qt::ElideRight, static_cast<int>(rowTextW)));
+            y += kRowH;
         }
-        p->fillRect(QRectF(0, y, kAccentW, kRowH), QColor(61, 220, 132));
-        p->setPen(QColor(101, 224, 154));
-        // Elide the full prefixed line against the full text area: BoxWidth already measured the
-        // prefix so the line fits when the box was not capped, and when it is capped the end of
-        // InText gets truncated cleanly. Eliding InText alone with a hardcoded prefix reserve was
-        // trimming one character off even when the box was wide enough.
-        p->drawText(
-            QRectF(kPadX, y, rowTextW, kRowH), Qt::AlignVCenter,
-            p->fontMetrics().elidedText("\u25b2 " + InText, Qt::ElideRight, static_cast<int>(rowTextW)));
-        y += kRowH;
     }
 
     // ── Out-link row (red) ──────────────────────────────────────────────────
     if (HasOut)
     {
-        if (HoveredRow == 2)
+        // The out row sits just below the variable number of in rows; its index in the hover
+        // numbering is therefore the size of InTexts + 1 (the +1 accounts for the title row at 0).
+        const int outRowIndex = 1 + (HasIn ? InTexts.size() : 0);
+        if (HoveredRow == outRowIndex)
         {
             p->fillRect(QRectF(kAccentW, y, w - kAccentW, kRowH), QColor(255, 255, 255, 22));
         }
@@ -745,6 +824,11 @@ void EntranceGroupBoxItem::hoverMoveEvent(QGraphicsSceneHoverEvent* e)
 
 int EntranceGroupBoxItem::RowFromY(qreal Y) const
 {
+    // Row numbering layout (matches paint()):
+    //   0                    = title row
+    //   1..InTexts.size()    = the in rows, one per inbound source
+    //   InTexts.size() + 1   = the single out row
+    //   -1                   = pointer is in the trailing padding
     if (Y < kTitleH)
     {
         return 0;
@@ -752,15 +836,18 @@ int EntranceGroupBoxItem::RowFromY(qreal Y) const
     qreal rowTop = kTitleH;
     if (HasIn)
     {
-        if (Y < rowTop + kRowH)
+        for (int i = 0; i < InTexts.size(); i++)
         {
-            return 1;
+            if (Y < rowTop + kRowH)
+            {
+                return 1 + i;
+            }
+            rowTop += kRowH;
         }
-        rowTop += kRowH;
     }
     if (HasOut && Y < rowTop + kRowH)
     {
-        return 2;
+        return 1 + (HasIn ? InTexts.size() : 0);
     }
     return -1;
 }
@@ -788,12 +875,49 @@ void EntranceGroupBoxItem::mousePressEvent(QGraphicsSceneMouseEvent* e)
         Link->SetCalledFromGraph(false);
     };
 
-    switch (RowFromY(e->pos().y()))
+    const int row = RowFromY(e->pos().y());
+    const int inCount = HasIn ? InTexts.size() : 0;
+
+    // Title or trailing padding → focus the entrance itself (legacy behavior).
+    if (row <= 0)
     {
-        case 1:  clickLink(Tree->InItem);  return;
-        case 2:  clickLink(Tree->OutItem); return;
-        default: Tree->PerformAction();    return;  // title or bottom padding
+        Tree->PerformAction();
+        return;
     }
+
+    // Out row sits at index inCount + 1.
+    if (HasOut && row == inCount + 1)
+    {
+        clickLink(Tree->OutItem);
+        return;
+    }
+
+    // Any 1..inCount row is an in source. Two paths:
+    //   - If a dedicated per-source tree row exists in Tree->InItems, click it directly so its
+    //     InLinkIndex (set at construction) drives the navigation.
+    //   - Otherwise fall back to the legacy single Tree->InItem and temporarily inject the source
+    //     index so NavigateToTarget jumps to the right source instead of the latest one. The
+    //     index is restored immediately to keep tree-panel clicks (which navigate to "latest")
+    //     unaffected.
+    if (HasIn && row >= 1 && row <= inCount)
+    {
+        const int srcIndex = row - 1;
+        if (srcIndex < (int)Tree->InItems.size() && Tree->InItems[srcIndex] != nullptr)
+        {
+            clickLink(Tree->InItems[srcIndex]);
+        }
+        else if (Tree->InItem != nullptr)
+        {
+            const int savedIndex = Tree->InItem->InLinkIndex;
+            Tree->InItem->InLinkIndex = srcIndex;
+            clickLink(Tree->InItem);
+            Tree->InItem->InLinkIndex = savedIndex;
+        }
+        return;
+    }
+
+    // Unknown row index — fall back to focusing the entrance.
+    Tree->PerformAction();
 }
 
 

@@ -272,7 +272,7 @@ def parse_entrance(input_file, output_file_h, output_file_cpp, output_filemeta, 
         for scene in scene_entr_arr:
             scene_str = "\t{\n\t\t" + str(scene) + ",\n\t\t{\n\t\t\t" + str(scene) + ", (uint8_t)" + scene_regions[scene] + ",\n\t\t\t{\n"
             for entr in scene_entr_arr[scene]:
-                scene_str += "\t\t\t\t{ " + str (entr) + ", { UINT32_MAX, UINT32_MAX } },\n"
+                scene_str += "\t\t\t\t{ " + str (entr) + ", { { { UINT32_MAX, NO_GAME } }, UINT32_MAX } },\n"
             scene_str += "\t\t\t},\n\t\t\tNULL\n\t\t}\n"
             scene_str += "\t}"
             if i < num_of_scenes:
