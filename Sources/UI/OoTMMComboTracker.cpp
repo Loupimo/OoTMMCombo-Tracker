@@ -723,10 +723,10 @@ void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, c
 
 #pragma region Entrance related
 
-void OoTMMComboTracker::UpdateTrackedEntrance(SceneEntranceUpdate * OutEntrance, SceneEntranceUpdate * InEntrance)
+void OoTMMComboTracker::UpdateTrackedEntrance(SceneEntranceUpdate OutEntrance, SceneEntranceUpdate InEntrance)
 {
-    this->EntTab->UpdateEntranceWay(OutEntrance->Game, OutEntrance->SceneID, OutEntrance->EntranceID, OutEntrance->Link);
-    this->EntTab->UpdateEntranceWay(InEntrance->Game, InEntrance->SceneID, InEntrance->EntranceID, InEntrance->Link);
+    this->EntTab->UpdateEntranceWay(OutEntrance.Game, OutEntrance.SceneID, OutEntrance.EntranceID, OutEntrance.Link);
+    this->EntTab->UpdateEntranceWay(InEntrance.Game, InEntrance.SceneID, InEntrance.EntranceID, InEntrance.Link);
     if (AppConfig::GetAutoSave())
     {
         this->CreatePath(AppConfig::GetAutoSavePath());
@@ -735,11 +735,11 @@ void OoTMMComboTracker::UpdateTrackedEntrance(SceneEntranceUpdate * OutEntrance,
 
     if (this->LastActivityLabel)
     {
-        SceneMetaInfo* fromMeta = GetSceneMetaInfo(OutEntrance->SceneID, OutEntrance->Game);
-        SceneMetaInfo* toMeta   = GetSceneMetaInfo(InEntrance->SceneID, InEntrance->Game);
+        SceneMetaInfo* fromMeta = GetSceneMetaInfo(OutEntrance.SceneID, OutEntrance.Game);
+        SceneMetaInfo* toMeta   = GetSceneMetaInfo(InEntrance.SceneID, InEntrance.Game);
 
-        const QString fromName = (fromMeta && fromMeta->Name) ? QString(fromMeta->Name) : QString::number(OutEntrance->SceneID);
-        const QString toName   = (toMeta   && toMeta->Name)   ? QString(toMeta->Name)   : QString::number(InEntrance->SceneID);
+        const QString fromName = (fromMeta && fromMeta->Name) ? QString(fromMeta->Name) : QString::number(OutEntrance.SceneID);
+        const QString toName   = (toMeta   && toMeta->Name)   ? QString(toMeta->Name)   : QString::number(InEntrance.SceneID);
 
         this->LastActivityLabel->setText(QString("Last entrance: %1 → %2").arg(fromName, toName));
     }

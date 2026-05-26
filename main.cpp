@@ -1,6 +1,7 @@
 #include <QtWidgets/QApplication>
 #include "UI/AppStyle.h"
 #include "UI/ObjectRenderer.h"
+#include "UI/SceneEntranceUpdate.h"
 #include "Combo/Entrances.h"
 #include "main.h"
 
@@ -15,6 +16,12 @@ int main(int argc, char *argv[])
 {
     // Create the application
     QApplication a(argc, argv);
+
+    // Register SceneEntranceUpdate so Qt's queued connections can copy it
+    // across threads (the EntranceHelper emits from the MemoryReader thread
+    // to slots living in the main thread). Without this, queued delivery
+    // would fail at runtime with "Cannot queue arguments of type ...".
+    qRegisterMetaType<SceneEntranceUpdate>("SceneEntranceUpdate");
 
     // Force the Fusion style so the QSS is fully honored on every platform.
     // Without this, Windows 11's native theme bleeds through some controls

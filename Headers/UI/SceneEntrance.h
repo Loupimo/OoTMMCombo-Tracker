@@ -2,6 +2,7 @@
 
 #include "Combo/OoTEntrances.h"
 #include "Combo/MMEntrances.h"
+#include "UI/SceneEntranceUpdate.h"
 #include <map>
 #include <QFile>
 
@@ -72,15 +73,6 @@ public:
 	void ResetMetaInf();
 
 } SceneEntranceMetaInf;
-
-typedef struct SceneEntranceUpdate
-{
-	uint8_t Game;
-	uint32_t SceneID;
-	uint32_t EntranceID;
-	EntranceLink* Link;
-} SceneEntranceUpdate;
-
 
 extern std::map<uint32_t, SceneEntranceMetaInf>OoTSceneEntranceMeta;
 extern std::map<uint32_t, SceneEntranceMetaInf>MMSceneEntranceMeta;

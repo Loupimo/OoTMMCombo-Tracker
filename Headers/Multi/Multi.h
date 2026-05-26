@@ -3,6 +3,7 @@
 #define LOG_DEBUG    0
 
 #include "Common.h"
+#include "UI/SceneEntranceUpdate.h"
 
 #ifdef _WIN32
 #include <QPlainTextEdit>
@@ -193,7 +194,7 @@ signals:
     *   @param OutEntrance      The out entrance to update.
     *   @param InEntrance       The in entrance to update.
     */
-    void NotifyEntranceFound(struct SceneEntranceUpdate * OutEntrance, struct SceneEntranceUpdate * InEntrance);
+    void NotifyEntranceFound(SceneEntranceUpdate OutEntrance, SceneEntranceUpdate InEntrance);
 
 public:
 

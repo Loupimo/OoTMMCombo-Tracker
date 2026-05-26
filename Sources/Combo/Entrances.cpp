@@ -3093,7 +3093,7 @@ void EntranceHelper::ParseIncomingMessage(EntranceMessage& Message)
 
         SceneEntranceUpdate tmpIn = { Message.GameID, Message.SceneID, Message.EntranceID, tmpInLink };
 
-        emit MultiLogger::GetLogger()->NotifyEntranceFound(&tmpOut, &tmpIn);
+        emit MultiLogger::GetLogger()->NotifyEntranceFound(tmpOut, tmpIn);
 
         MultiLogger::LogMessage("              -----------------------------------");
         MultiLogger::LogMessage("              |      FROM      |       TO       |");

@@ -233,7 +233,7 @@ public slots:
     *   @param OutEntrance      The out entrance to update.
     *   @param InEntrance       The in entrance to update.
     */
-    void UpdateTrackedEntrance(struct SceneEntranceUpdate * OutEntrance, struct SceneEntranceUpdate * InEntrance);
+    void UpdateTrackedEntrance(SceneEntranceUpdate OutEntrance, SceneEntranceUpdate InEntrance);
 
 #pragma endregion
 
