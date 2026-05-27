@@ -188,12 +188,12 @@ static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
                                                                                       { OOT_ZORA_RIVER_FROM_LOST_WOODS_ENTR,                   4084,   620,  -932 },
                                                                                       { OOT_RIVER_FROM_DOMAIN_ENTR,                            4413,   920, -1403 },
                                                                                       { OOT_GROTTO_EXIT_GENERIC_RIVER,                          360,   570,   130 },
-                                                                                      { OOT_GROTTO_EXIT_SCRUBS2_RIVER,                        -1630,   100,  -130 },
+                                                                                      { OOT_GROTTO_EXIT_FAIRY_RIVER,                          666,   570,  -364 },
                                                                                       { OOT_GROTTO_EXIT_SCRUBS2_RIVER,                        -1630,   100,  -130 } } },
     { OOT_ZORA_DOMAIN_ENTR,                         std::vector<GrottoEntrance>() = { { OOT_ZORA_DOMAIN_ENTR,                                 -1112,   210,  -160 },
                                                                                       { OOT_ZORA_DOMAIN_FROM_LAKE_HYLIA_ENTR,                  -208,  -210,  -280 },
-                                                                                      { OOT_DOMAIN_FROM_FOUNTAIN_ENTR,                          524,    52,   254 },
-                                                                                      { OOT_ZORA_DOMAIN_FROM_SHOP_ENTR,                         540,   996, -2503 },
+                                                                                      { OOT_ZORA_DOMAIN_FROM_SHOP_ENTR,                         524,    52,   254 },
+                                                                                      { OOT_DOMAIN_FROM_FOUNTAIN_ENTR,                          540,   996, -2503 },
                                                                                       { OOT_GROTTO_EXIT_FAIRY_DOMAIN,                          -860,    14,  -470 } } },
     { OOT_LON_LON_RANCH_FROM_FIELD_ENTR,            std::vector<GrottoEntrance>() = { { OOT_LON_LON_RANCH_FROM_FIELD_ENTR,                     1107,     0, -3740 },
                                                                                       { OOT_LON_LON_RANCH_FROM_HOUSE_ENTR,                      988,     1, -3097 },
@@ -256,7 +256,7 @@ static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
                                                                                       { OOT_DESERT_COLOSSUS_FROM_FAIRY_ENTR,                   2260,   105, -1425 },
                                                                                       { OOT_DESERT_COLOSSUS_FROM_FAIRY_ENTR,                   2260,   105, -1425 },
                                                                                       { OOT_DESERT_COLOSSUS_FROM_TEMPLE_SPIRIT_ENTR,          -1548,    48,     2 },
-                                                                                      { OOT_WARP_SONG_DESERT_ENTR,                             -850,    20,  1542 },
+                                                                                      { OOT_WARP_SONG_DESERT_ENTR,                             -850,    20, -2070 },
                                                                                       { OOT_GROTTO_EXIT_SCRUBS2_COLOSSUS,                        60,   -32, -1300 } } },
 
 #pragma endregion // OoT Grottos
@@ -2050,6 +2050,7 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                 switch (Message.EntranceID)
                 {
                     // First magic upgrade
+                    case OOT_DEATH_MOUNTAIN_FROM_FAIRY_ENTR:
                     case OOT_FAIRY_MAGIC_ENTR:
                     {
                         Message.SceneID = OOT_GREAT_FAIRY_MAGIC;
@@ -2057,6 +2058,7 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                     }
 
                     // Second magic upgrade
+                    case OOT_DEATH_CRATER_FROM_FAIRY_ENTR:
                     case OOT_FAIRY_MAGIC2_ENTR:
                     {
                         Message.SceneID = OOT_GREAT_FAIRY_MAGIC2;
@@ -2085,6 +2087,7 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                     }
 
                     // Farore's wind
+                    case OOT_ZORA_FOUNTAIN_FROM_FAIRY_ENTR:
                     case OOT_FAIRY_FARORE_ENTR:
                     {
                         Message.SceneID = OOT_GREAT_FAIRY_FARORE;
@@ -2092,6 +2095,7 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                     }
 
                     // Nayru's love
+                    case OOT_DESERT_COLOSSUS_FROM_FAIRY_ENTR:
                     case OOT_FAIRY_NAYRU_ENTR:
                     {
                         Message.SceneID = OOT_GREAT_FAIRY_NAYRU;
@@ -2106,6 +2110,10 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                             Message.SceneID = OOT_GREAT_FAIRY_DEFENSE;
                             return OOT_OUTSIDE_GANON_FROM_FAIRY_ENTR;
                         }
+
+                        // Din's Fire to Castle
+                        Message.SceneID = OOT_GREAT_FAIRY_CASTLE;
+                        break;
                     }
                 }
                 break;
@@ -2239,9 +2247,14 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
 
             case OOT_RANCH_HOUSE_SILO:
             {
-                if (Message.EntranceID == OOT_SILO_ENTR)
+                switch (Message.EntranceID)
                 {
-                    Message.SceneID = OOT_SILO;
+                    case OOT_LON_LON_RANCH_FROM_SILO_ENTR:
+                    case OOT_SILO_ENTR:
+                    {
+                        Message.SceneID = OOT_SILO;
+                        break;
+                    }
                 }
                 break;
             }
