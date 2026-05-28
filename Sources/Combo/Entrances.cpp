@@ -6,10 +6,188 @@
 #include <math.h>
 #include <set>
 
+#ifdef TIMER_COST
+#include <chrono>
+#include <fstream>
+#include <mutex>
+
+// ============================================================================
+// Per-transition intra-scene travel-time logger used to build the GPS cost CSV.
+// Enabled by defining TIMER_COST at compile time.
+//
+// Semantics: the timer measures intra-scene travel time. It STARTS on a valid
+// IN message (player arrived in a scene through an entrance), and STOPS on the
+// next valid OUT message (player leaves the same scene through another
+// entrance). The elapsed time is the walking time between the two entrances
+// inside that scene. If the OUT scene/game does not match the IN scene/game
+// (warp song, death warp, save-load, ...) the measurement is discarded.
+//
+// Separator is ';' to play nice with French-locale Excel.
+// ============================================================================
+namespace
+{
+    const char* const ENTRANCE_COST_CSV_PATH = ".\\entrance_costs.csv";
+    const char ENTRANCE_COST_CSV_SEP = ';';
+
+    bool g_EntranceTimerRunning = false;
+    uint8_t g_EntranceTimerGame = 0;
+    uint32_t g_EntranceTimerScene = 0;
+    uint32_t g_EntranceTimerFromEntrance = 0;
+    std::chrono::steady_clock::time_point g_EntranceTimerStart;
+    std::mutex g_EntranceCsvMutex;
+
+    // Replace the UTF-8 arrow (\xE2\x86\x92) by "->" so the CSV stays ASCII-friendly.
+    std::string EntranceCsvEscape(std::string Str)
+    {
+        const std::string Needle = "\xE2\x86\x92";
+        const std::string Repl = "->";
+        size_t Pos = 0;
+        while ((Pos = Str.find(Needle, Pos)) != std::string::npos)
+        {
+            Str.replace(Pos, Needle.size(), Repl);
+            Pos += Repl.size();
+        }
+        return Str;
+    }
+
+    void EntranceCsvWriteHeaderOnce()
+    {
+        static bool s_Checked = false;
+        if (s_Checked) return;
+        s_Checked = true;
+
+        std::ifstream Test(ENTRANCE_COST_CSV_PATH, std::ios::ate | std::ios::binary);
+        bool NeedsHeader = !Test.is_open() || Test.tellg() <= 0;
+        Test.close();
+        if (NeedsHeader)
+        {
+            std::ofstream Out(ENTRANCE_COST_CSV_PATH, std::ios::app);
+            if (Out.is_open())
+            {
+                const char S = ENTRANCE_COST_CSV_SEP;
+                Out << "Game" << S << "SceneID" << S
+                    << "FromEntranceID" << S << "From" << S
+                    << "ToEntranceID" << S << "To" << S
+                    << "ElapsedSec\n";
+            }
+        }
+    }
+
+    // Called on a validated IN (arrival in a scene through an entrance) - starts measuring
+    // intra-scene travel time.
+    void EntranceTimerStart(uint8_t Game, uint32_t SceneID, uint32_t EntranceID)
+    {
+        auto Now = std::chrono::steady_clock::now();
+        if (g_EntranceTimerRunning)
+        {
+            double PrevElapsed = std::chrono::duration<double>(Now - g_EntranceTimerStart).count();
+            MultiLogger::LogMessage("[TIMER] RESTART! Previous timer was running for %.3f sec (prev: game=%d scene=0x%X entrance=0x%X) - replacing with (game=%d scene=0x%X entrance=0x%X)",
+                PrevElapsed,
+                (int)g_EntranceTimerGame, g_EntranceTimerScene, g_EntranceTimerFromEntrance,
+                (int)Game, SceneID, EntranceID);
+        }
+        else
+        {
+            MultiLogger::LogMessage("[TIMER] Start: game=%d scene=0x%X entrance=0x%X", (int)Game, SceneID, EntranceID);
+        }
+        g_EntranceTimerGame = Game;
+        g_EntranceTimerScene = SceneID;
+        g_EntranceTimerFromEntrance = EntranceID;
+        g_EntranceTimerStart = Now;
+        g_EntranceTimerRunning = true;
+    }
+
+    // Called on a validated OUT (exit from a scene through an entrance) - stops the timer and
+    // writes a CSV row when the OUT happened in the same game/scene as the IN that started it.
+    void EntranceTimerStopAndLog(uint8_t Game, uint32_t SceneID, uint32_t EntranceID)
+    {
+        if (!g_EntranceTimerRunning)
+        {
+            MultiLogger::LogMessage("[TIMER] Stop called but timer was not running (outgoing: game=%d scene=0x%X entrance=0x%X)",
+                (int)Game, SceneID, EntranceID);
+            return;
+        }
+        auto Now = std::chrono::steady_clock::now();
+        double ElapsedSec = std::chrono::duration<double>(Now - g_EntranceTimerStart).count();
+        auto ElapsedMs = std::chrono::duration_cast<std::chrono::milliseconds>(Now - g_EntranceTimerStart).count();
+        g_EntranceTimerRunning = false;
+
+        // Sanity: the OUT must be in the same game/scene as the IN that started the timer.
+        // If not, the player was teleported (warp song, death warp, save-load, ...) - discard.
+        if (Game != g_EntranceTimerGame || SceneID != g_EntranceTimerScene)
+        {
+            MultiLogger::LogMessage("[TIMER] DISCARD scene-mismatch: start (game=%d scene=0x%X entrance=0x%X) stop (game=%d scene=0x%X entrance=0x%X) elapsed=%.3f sec",
+                (int)g_EntranceTimerGame, g_EntranceTimerScene, g_EntranceTimerFromEntrance,
+                (int)Game, SceneID, EntranceID, ElapsedSec);
+            return;
+        }
+        // Same entrance in and out = no useful measurement (e.g. bounced back instantly).
+        if (EntranceID == g_EntranceTimerFromEntrance)
+        {
+            MultiLogger::LogMessage("[TIMER] DISCARD same-entrance: 0x%X in scene 0x%X elapsed=%.3f sec",
+                EntranceID, SceneID, ElapsedSec);
+            return;
+        }
+
+        MultiLogger::LogMessage("[TIMER] Stop: scene=0x%X from=0x%X to=0x%X | elapsed = %.3f sec (%lld ms)",
+            SceneID, g_EntranceTimerFromEntrance, EntranceID,
+            ElapsedSec, (long long)ElapsedMs);
+
+        // From = arrival entrance (we are HERE) -> Leads form: "Scene - OtherSide" (dash, no arrow).
+        std::string From = EntranceCsvEscape(EntranceHelper::GetEntranceLeadsString(Game, g_EntranceTimerFromEntrance));
+        // To = exit entrance (going there). Build "FromName -> ToName" manually because
+        // GetEntranceSpawnsString returns "ToName -> FromName" for Normal entrances (inverse of
+        // what we want). Same direction convention as Message.EntranceStr in ParseOutgoingMessage.
+        const char* ExitFromName = EntranceHelper::GetEntranceFromName(Game, EntranceID);
+        const char* ExitToName = EntranceHelper::GetEntranceToName(Game, EntranceID);
+        std::string To;
+        if (ExitFromName && ExitToName)
+        {
+            To = std::string(ExitFromName) + " -> " + ExitToName;
+        }
+
+        {
+            std::lock_guard<std::mutex> Lock(g_EntranceCsvMutex);
+            EntranceCsvWriteHeaderOnce();
+            std::ofstream Out(ENTRANCE_COST_CSV_PATH, std::ios::app);
+            if (Out.is_open())
+            {
+                const char S = ENTRANCE_COST_CSV_SEP;
+                Out << (int)Game << S
+                    << "0x" << std::hex << SceneID << std::dec << S
+                    << "0x" << std::hex << g_EntranceTimerFromEntrance << std::dec << S
+                    << From << S
+                    << "0x" << std::hex << EntranceID << std::dec << S
+                    << To << S
+                    << ElapsedSec << "\n";
+            }
+        }
+
+        // Live notification so the Cost tab UI can refresh in real time without re-reading the
+        // CSV. Emitted regardless of whether the CSV write succeeded - the in-memory model can
+        // still surface the measurement even if the file is locked or read-only.
+        emit MultiLogger::GetLogger()->NotifyEntranceCostMeasured(
+            (int)Game, SceneID, g_EntranceTimerFromEntrance, EntranceID, ElapsedSec);
+    }
+}
+#endif // TIMER_COST
+
 // Alternative on-image anchor for MM_GROTTO_EXIT_BEAN in MM_DEKU_PALACE when the active layout
 // is mm_jp. The single entry kept in MMEntrances uses the mm coordinates; GetEntranceAnchorPos
 // substitutes these when rendering on the JP layout image.
 const int MM_BEAN_GROTTO_JP_ANCHOR[3] = { 544, 379, 0 };
+
+// Sentinel cost (in seconds) assigned to intra-scene walks that have no measurement yet. Picked
+// high enough that any chain of two unmeasured walks is always more expensive than the longest
+// realistic measured single walk (~60s). Without this sentinel, Dijkstra trivially builds
+// "phantom" 2-hop paths at the default cost of 1 that beat the real measured direct walks.
+static constexpr uint32_t DEFAULT_UNMEASURED_WALK_COST = 999u;
+
+// Fixed cost (in seconds) assigned to playing a warp song / picking an owl statue: enough to
+// model ocarina-out + song input + accept + transition. Applied to every walk leading INTO a
+// One_Way_Out entry whose ToSceneID is the warp/song fictional scene (OOT_SONGS / MM_OWLS), so
+// the player can "use the song" from any entrance in the current scene at this constant cost.
+static constexpr uint32_t WARP_SONG_USE_COST = 10u;
 
 void InitializeEntranceCosts()
 {
@@ -27,8 +205,10 @@ void InitializeEntranceCosts()
         }
 
         // 2) For each entry, populate its Cost table with every other entrance
-        //    in the same scene. Default cost is 1 for now; real travel times will
-        //    replace this later, with UINT32_MAX meaning "unreachable".
+        //    in the same scene. Default cost is DEFAULT_UNMEASURED_WALK_COST (a high sentinel)
+        //    so Dijkstra strongly prefers measured edges and only falls back to defaults when
+        //    no real measurement exists. UINT32_MAX means "unreachable" and is filtered out by
+        //    the graph builder entirely.
         for (auto& Pair : Map)
         {
             EntranceMetaInfo& V = Pair.second;
@@ -39,13 +219,51 @@ void InitializeEntranceCosts()
             for (uint32_t Other : It->second)
             {
                 if (Other == V.FromEntranceID) continue;
-                V.Cost.Costs[Other] = 1;
+                V.Cost.Costs[Other] = DEFAULT_UNMEASURED_WALK_COST;
+            }
+        }
+    };
+
+    auto ApplyWarpSongCostsForGame = [](std::map<int, EntranceMetaInfo>& Map, uint32_t SongOrOwlScene)
+    {
+        // Warp songs and owl statues are modelled as One_Way_Out entries whose ToSceneID is
+        // the fictional song / owl scene. The player can play the song from anywhere in the
+        // current scene, so the walk cost from any entrance to the song trigger is a fixed
+        // WARP_SONG_USE_COST (ocarina out + input + accept + transition). Override defaults
+        // and any leftover measurement here so the GPS never sees inflated values for those
+        // particular trigger edges.
+        for (const auto& Pair : Map)
+        {
+            const EntranceMetaInfo& V = Pair.second;
+            if (V.Type != EntranceType::One_Way_Out) continue;
+            if (V.ToSceneID != SongOrOwlScene) continue;
+            const uint32_t TriggerNode = V.FromEntranceID;          // The physical entrance node where the song is played.
+            const uint32_t TriggerScene = V.FromSceneID;
+            for (auto& OtherPair : Map)
+            {
+                EntranceMetaInfo& W = OtherPair.second;
+                if (W.FromSceneID != TriggerScene) continue;
+                if (W.FromEntranceID == TriggerNode) continue;      // Self-loop has no meaning here.
+                W.Cost.Costs[TriggerNode] = WARP_SONG_USE_COST;
             }
         }
     };
 
     FillForGame(OoTEntrances);
     FillForGame(MMEntrances);
+
+    // Override the per-edge default cost with the real measured travel times shipped in
+    // OoT/MMEntranceCosts.cpp (generated by Pool Transform.py from entrance_costs.csv). Edges
+    // without a measurement keep DEFAULT_UNMEASURED_WALK_COST so the GPS pathfinder still has
+    // a connected graph everywhere but never picks them over a measured route.
+    InitializeOoTMeasuredCosts(OoTEntrances);
+    InitializeMMMeasuredCosts(MMEntrances);
+
+    // Finally, override the walking cost into every warp song / owl statue trigger so it
+    // reflects the ocarina-out + song time rather than a physical distance. Applied after
+    // the measured overrides so it always wins on those specific edges.
+    ApplyWarpSongCostsForGame(OoTEntrances, OOT_SONGS);
+    ApplyWarpSongCostsForGame(MMEntrances, MM_OWLS);
 }
 
 
@@ -308,10 +526,10 @@ static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
                                                                                       { MM_MOUNTAIN_VILLAGE_FROM_GORON_GRAVEYARD_ENTR,          464,  1408, -1519 },
                                                                                       { MM_MOUNTAIN_VILLAGE_FROM_BLACKSMITH_ENTR,                80,    71,   800 },
                                                                                       { MM_WARP_OWL_MOUNTAIN_VILLAGE_ENTR,                     -649,     8,  -196 },
-                                                                                      { MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE,               2406,  1168, -1197 },
+                                                                                      { MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE,               2406,  1168, -1187 },
                                                                                       { MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE_WINTER,         345,     8,  -150 } } },
     { MM_TWIN_ISLANDS_FROM_MOUNTAIN_VILLAGE_ENTR,   std::vector<GrottoEntrance>() = { { MM_TWIN_ISLANDS_FROM_MOUNTAIN_VILLAGE_ENTR,           -2044,   200,  1288 },
-                                                                                      { MM_TWIN_ISLANDS_FROM_GORON_VILLAGE_ENTR,               3574,   148,   316 },
+                                                                                      { MM_TWIN_ISLANDS_FROM_GORON_VILLAGE_ENTR,               1530,   348,   316 },
                                                                                       { MM_TWIN_ISLANDS_FROM_GORON_RACETRACK_ENTR,             -731,   560,  -845 },
                                                                                       { MM_GROTTO_EXIT_GENERIC_TWIN_ISLANDS,                  -1309,   320,   143 },
                                                                                       { MM_GROTTO_EXIT_HOT_WATER,                               589,   195,    53 } } },
@@ -352,7 +570,7 @@ static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
                                                                                       { MM_GROTTO_EXIT_GENERIC_GRAVEYARD,                       106,   314, -1777 } } },
     { MM_IKANA_VALLEY_FROM_ROAD_ENTR,               std::vector<GrottoEntrance>() = { { MM_IKANA_VALLEY_FROM_ROAD_ENTR,                         -64,  -371,  4870 },
                                                                                       { MM_IKANA_CANYON_FROM_WELL_ENTR,                       -1563,   128,  1548 },
-                                                                                      { MM_IKANA_VALLEY_FROM_SHRINE_ENTR,                      3060,  -505,  2690 },
+                                                                                      { MM_IKANA_VALLEY_FROM_SHRINE_ENTR,                     -3068,  -505,  2690 },
                                                                                       { MM_IKANA_CANYON_FROM_CASTLE_GARDENS_ENTR,               705,   201,  1681 },
                                                                                       { MM_IKANA_CANYON_FROM_STONE_TOWER_ENTR,                 1360,   823,  -220 },
                                                                                       { MM_IKANA_CANYON_FROM_GHOST_HUT_ENTR,                  -1028,   639,    93 },
@@ -386,6 +604,10 @@ void EntranceHelper::ResetEntranceHelper()
     this->OutMessage.ResetMessage();
     this->InMessage.ResetMessage();
     this->IsEntranceTouched = false;
+#ifdef TIMER_COST
+    // Drop any in-flight travel-time measurement on helper reset.
+    g_EntranceTimerRunning = false;
+#endif
 }
 
 
@@ -1856,6 +2078,7 @@ uint32_t EntranceHelper::CheckGrottoSpawn(EntranceMessage& Message)
         }
 
         // Mountain Village
+        case MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE_SPRING:
         case MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE_WINTER:
         case MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE:
         case MM_WARP_OWL_MOUNTAIN_VILLAGE_ENTR:
@@ -2502,8 +2725,13 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                         return MM_GORON_VILLAGE_FROM_GORON_SHRINE_ENTR;
                     }
 
+                    case MM_GORON_VILLAGE_FROM_LONE_PEAK_SHRINE_ENTR:
                     case MM_GORON_VILLAGE_SPRING_FROM_LONE_PEAK_SHRINE_ENTR:
                     {
+                        if (Message.Direction == OUT_MAGIC)
+                        {
+                            Message.SceneID = MM_LONE_PEAK;
+                        }
                         return MM_GORON_VILLAGE_FROM_LONE_PEAK_SHRINE_ENTR;
                     }
                 }
@@ -2844,38 +3072,50 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
             {
                 switch (Message.EntranceID)
                 {
+                    case MM_CLOCK_TOWN_NORTH_FROM_FAIRY_FOUNTAIN_ENTR:
                     case MM_FAIRY_FOUNTAIN_TOWN_ENTR:
                     {
-                        return MM_FAIRY_CLOCK_TOWN;
+                        Message.SceneID = MM_FAIRY_CLOCK_TOWN;
+                        break;
                     }
 
+                    case MM_WOODFALL_FROM_FAIRY_FOUNTAIN_ENTR:
                     case MM_FAIRY_FOUNTAIN_WOODFALL_ENTR:
                     {
-                        return MM_FAIRY_WOODFALL;
+                        Message.SceneID = MM_FAIRY_WOODFALL;
+                        break;
                     }
 
+                    case MM_SNOWHEAD_FROM_FAIRY_FOUNTAIN_ENTR:
                     case MM_FAIRY_FOUNTAIN_SNOWHEAD_ENTR:
                     {
-                        return MM_FAIRY_SNOWHEAD;
+                        Message.SceneID = MM_FAIRY_SNOWHEAD;
+                        break;
                     }
 
+                    case MM_GREAT_BAY_FROM_FAIRY_FOUNTAIN_ENTR:
                     case MM_FAIRY_FOUNTAIN_GREAT_BAY_ENTR:
                     {
-                        return MM_FAIRY_GREAT_BAY_COAST;
+                        Message.SceneID = MM_FAIRY_GREAT_BAY_COAST;
+                        break;
                     }
 
+                    case MM_IKANA_CANYON_FROM_FAIRY_FOUNTAIN_ENTR:
                     case MM_FAIRY_FOUNTAIN_IKANA_ENTR:
                     {
-                        return MM_FAIRY_IKANA;
+                        Message.SceneID = MM_FAIRY_IKANA;
+                        break;
                     }
                 }
+                break;
             }
 
             case MM_RANCH_HOUSE_BARN:
             {
                 if (Message.EntranceID == MM_RANCH_HOUSE_ENTR)
                 {
-                    return MM_ROMANI_RANCH_BARN;
+                    Message.SceneID = MM_ROMANI_RANCH_BARN;
+                    break;
                 }
                 break;
             }
@@ -3134,6 +3374,12 @@ void EntranceHelper::ParseIncomingMessage(EntranceMessage& Message)
         MultiLogger::LogMessage("-------------------------------------------------");
         MultiLogger::LogMessage("%-13s |           0x%02X |           0x%02X |", "Song ID", this->OutMessage.OoTSongID, Message.OoTSongID);
         MultiLogger::LogMessage("-------------------------------------------------");
+
+#ifdef TIMER_COST
+        // (Re)start the intra-scene travel-time timer: we just arrived in this scene through
+        // this entrance. The timer will be stopped on the next validated OUT in the same scene.
+        EntranceTimerStart(Message.GameID, Message.SceneID, Message.EntranceID);
+#endif
     }
 
     this->IsEntranceTouched = false;
@@ -3221,6 +3467,15 @@ void EntranceHelper::ParseOutgoingMessage(EntranceMessage& Message)
             }
         }
     }
+
+#ifdef TIMER_COST
+    // Stop the intra-scene travel-time timer: we're leaving the current scene through this
+    // entrance. Logs a CSV row if the OUT happened in the same scene as the previous IN.
+    if (this->IsEntranceTouched)
+    {
+        EntranceTimerStopAndLog(Message.GameID, Message.SceneID, Message.EntranceID);
+    }
+#endif
 }
 
 

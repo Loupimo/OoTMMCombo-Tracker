@@ -1789,10 +1789,12 @@ EntranceTab::EntranceTab(int TabIndex, QTabWidget* parent) : QTabWidget(parent)
     this->OoTEntranceTab = new EntranceGameTabView(OOT_GAME, "OoT", this);
     this->MMEntranceTab = new EntranceGameTabView(MM_GAME, "MM", this);
     this->GPSTab = new GPSRouteWidget(this);
+    this->CostTab = new EntranceCostTab(this);
 
     this->addTab(this->OoTEntranceTab, this->OoTEntranceTab->TabName);
     this->addTab(this->MMEntranceTab, this->MMEntranceTab->TabName);
     this->addTab(this->GPSTab, "GPS");
+    this->addTab(this->CostTab, "Costs");
 
     this->OoTEntranceTab->RefreshName();
     this->MMEntranceTab->RefreshName();

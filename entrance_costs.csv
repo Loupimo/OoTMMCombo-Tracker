@@ -1,0 +1,224 @@
+Game;SceneID;FromEntranceID;From;ToEntranceID;To;ElapsedSec
+0;0x34;0x272;Link's House - Kokiri Forest;0x211;Link's House -> Kokiri Forest ;1.9676
+0;0x55;0x211;Kokiri Forest  - Link's House;0x437;Kokiri Forest -> Saria's House;11.4633
+0;0x55;0x211;Kokiri Forest  - Link's House;0x0;Kokiri Forest -> Deku Tree;40.2498
+0;0x55;0x211;Kokiri Forest  - Link's House;0x272;Kokiri Forest -> Link's House;2.05898
+0;0x55;0x211;Kokiri Forest  - Link's House;0x433;Kokiri Forest -> Mido's House;14.527
+0;0x55;0x211;Kokiri Forest  - Link's House;0xc1;Kokiri Forest -> Kokiri Shop;17.5114
+0;0x55;0x211;Kokiri Forest  - Link's House;0xc9;Kokiri Forest -> Know-It-All Brothers;17.4922
+0;0x55;0x211;Kokiri Forest  - Link's House;0x5e0;Kokiri Forest Bridge -> Lost Woods;19.063
+0;0x55;0x211;Kokiri Forest  - Link's House;0x11e;Kokiri Forest -> Lost Woods;32.2732
+0;0x55;0x211;Kokiri Forest  - Link's House;0x1000;Kokiri Forest -> Storms Grotto;43.101
+0;0x65;0x1000;Storms Grotto - Kokiri Forest;0x1100;Storms Grotto -> Kokiri Forest;3.94316
+0;0x55;0x1100;Kokiri Forest - Storms Grotto;0x11e;Kokiri Forest -> Lost Woods;4.97385
+0;0x55;0x1100;Kokiri Forest - Storms Grotto;0x433;Kokiri Forest -> Mido's House;10.0917
+0;0x55;0x1100;Kokiri Forest - Storms Grotto;0xc9;Kokiri Forest -> Know-It-All Brothers;15.2726
+0;0x55;0x1100;Kokiri Forest - Storms Grotto;0xc1;Kokiri Forest -> Kokiri Shop;15.4376
+0;0x55;0x1100;Kokiri Forest - Storms Grotto;0x272;Kokiri Forest -> Link's House;25.2556
+0;0x55;0x1100;Kokiri Forest - Storms Grotto;0x437;Kokiri Forest -> Saria's House;20.1723
+0;0x55;0x1100;Kokiri Forest - Storms Grotto;0x0;Kokiri Forest -> Deku Tree;38.5764
+0;0x55;0x1100;Kokiri Forest - Storms Grotto;0x5e0;Kokiri Forest Bridge -> Lost Woods;13.2566
+0;0x55;0x1100;Kokiri Forest - Storms Grotto;0x9c;Kokiri Forest -> Twin's House;21.1919
+0;0x27;0x9c;Twin's House - Kokiri Forest;0x33c;Twin's House -> Kokiri Forest;3.72426
+0;0x55;0x33c;Kokiri Forest - Twin's House;0x0;Kokiri Forest -> Deku Tree;29.6192
+0;0x55;0x33c;Kokiri Forest - Twin's House;0xc1;Kokiri Forest -> Kokiri Shop;7.73089
+0;0x55;0x33c;Kokiri Forest - Twin's House;0x437;Kokiri Forest -> Saria's House;7.58674
+0;0x55;0x33c;Kokiri Forest - Twin's House;0x272;Kokiri Forest -> Link's House;14.8065
+0;0x55;0x33c;Kokiri Forest - Twin's House;0x433;Kokiri Forest -> Mido's House;12.7651
+0;0x55;0x33c;Kokiri Forest - Twin's House;0xc9;Kokiri Forest -> Know-It-All Brothers;17.2801
+0;0x55;0x33c;Kokiri Forest - Twin's House;0x5e0;Kokiri Forest Bridge -> Lost Woods;20.3599
+0;0x55;0x33c;Kokiri Forest - Twin's House;0x1000;Kokiri Forest -> Storms Grotto;41.4406
+0;0x55;0x33c;Kokiri Forest - Twin's House;0x11e;Kokiri Forest -> Lost Woods;30.3068
+0;0x5b;0x11e;Lost Woods - Kokiri Forest;0x286;Lost Woods -> Kokiri Forest;7.74363
+0;0x55;0x286;Kokiri Forest - Lost Woods;0x0;Kokiri Forest -> Deku Tree;38.1305
+0;0x55;0x286;Kokiri Forest - Lost Woods;0x9c;Kokiri Forest -> Twin's House;18.2378
+0;0x55;0x286;Kokiri Forest - Lost Woods;0xc1;Kokiri Forest -> Kokiri Shop;12.0215
+0;0x55;0x286;Kokiri Forest - Lost Woods;0x437;Kokiri Forest -> Saria's House;15.7886
+0;0x55;0x286;Kokiri Forest - Lost Woods;0x272;Kokiri Forest -> Link's House;21.8646
+0;0x55;0x286;Kokiri Forest - Lost Woods;0x433;Kokiri Forest -> Mido's House;9.60523
+0;0x55;0x286;Kokiri Forest - Lost Woods;0xc9;Kokiri Forest -> Know-It-All Brothers;15.5148
+0;0x55;0x286;Kokiri Forest - Lost Woods;0x5e0;Kokiri Forest Bridge -> Lost Woods;12.5
+0;0x55;0x286;Kokiri Forest - Lost Woods;0x1000;Kokiri Forest -> Storms Grotto;13.3405
+0;0x55;0x443;Kokiri Forest - Mido's House;0xc9;Kokiri Forest -> Know-It-All Brothers;9.90474
+0;0x26;0xc9;Know-It-All Brothers - Kokiri Forest;0x26a;Know-It-All Brothers -> Kokiri Forest;11.7797
+0;0x28;0x433;Mido's House - Kokiri Forest;0x443;Mido's House -> Kokiri Forest;5.72031
+0;0x55;0x443;Kokiri Forest - Mido's House;0x5e0;Kokiri Forest Bridge -> Lost Woods;25.3727
+1;0x6d;0xd420;West Clock Town - South West Clock Town Top;0xd830;West Clock Town Top -> South Clock Town;9.65619
+1;0x6f;0xd830;South Clock Town - West Clock Town Top;0xd620;South Clock Town -> North Clock Town;6.03389
+1;0x6e;0xd620;North Clock Town - South Clock Town;0xd840;North Clock Town -> South Clock Town;4.69289
+1;0x6f;0xd840;South Clock Town - North Clock Town;0xd230;South East Clock Town Top -> East Clock Town;7.11166
+1;0x6c;0xd230;East Clock Town - South East Clock Town Top;0xd820;East Clock Town Top -> South East Clock Town;4.09269
+1;0x6f;0xd820;South East Clock Town - East Clock Town Top;0xd410;South West Clock Town Bottom -> West Clock Town;10.0455
+1;0x6d;0xd410;West Clock Town - South West Clock Town Bottom;0xd850;West Clock Town Bottom -> South West Clock Town;4.29842
+1;0x6f;0xd850;South West Clock Town - West Clock Town Bottom;0xda00;South Clock Town -> Laundry Pool;5.91983
+1;0x70;0xda00;Laundry Pool - South Clock Town;0xd860;Laundry Pool -> South Clock Town;3.70504
+1;0x6f;0xd860;South Clock Town - Laundry Pool;0x5460;South Clock Town -> Termina Field;6.78238
+1;0x2d;0x5460;Termina Field - South Clock Town;0xd810;Termina Field -> South Clock Town;4.61279
+1;0x6f;0xd810;South Clock Town - Termina Field;0xd210;South East Clock Town Bottom -> East Clock Town;10.9225
+1;0x6c;0xd210;East Clock Town - South East Clock Town Bottom;0xd870;East Clock Town Bottom -> South East Clock Town;3.96317
+1;0x6f;0xd870;South East Clock Town - East Clock Town Bottom;0xd210;South East Clock Town Bottom -> East Clock Town;3.67912
+1;0x6c;0xd210;East Clock Town - South East Clock Town Bottom;0x3a00;East Clock Town -> Town Archery;4.53218
+1;0x20;0x3a00;Town Archery - East Clock Town;0xd280;Town Archery -> East Clock Town;3.6745
+1;0x6c;0xd280;East Clock Town - Town Archery;0x800;East Clock Town -> Honey and Darling;5.68005
+1;0x11;0x800;Honey and Darling - East Clock Town;0xd260;Honey and Darling -> East Clock Town;3.49314
+1;0x6c;0xd260;East Clock Town - Honey and Darling;0x2800;East Clock Town -> Treasure Chest Game;6.56675
+1;0x17;0x2800;Treasure Chest Game - East Clock Town;0xd240;Treasure Chest Game -> East Clock Town;3.8756
+1;0x6c;0xd240;East Clock Town - Treasure Chest Game;0xbc10;East Clock Town -> Stock Pot Inn Roof;11.837
+1;0x61;0xbc10;Stock Pot Inn Roof - East Clock Town;0xd2a0;Stock Pot Inn Roof -> East Clock Town;4.12943
+1;0x6c;0xd2a0;East Clock Town - Stock Pot Inn Roof;0x4c00;East Clock Town -> Astral Observatory;26.6606
+1;0x29;0x4c00;Astral Observatory - East Clock Town;0xd220;Astral Observatory -> East Clock Town;2.90539
+1;0x6c;0xd220;East Clock Town - Astral Observatory;0x5470;East Clock Town -> Termina Field;16.188
+1;0x2d;0x5470;Termina Field - East Clock Town;0xd200;Termina Field -> East Clock Town;4.5523
+1;0x6c;0xd200;East Clock Town - Termina Field;0xbc00;East Clock Town -> Stock Pot Inn;5.76888
+1;0x61;0xbc00;Stock Pot Inn - East Clock Town;0xd290;Stock Pot Inn -> East Clock Town;5.06157
+1;0x6c;0xd290;East Clock Town - Stock Pot Inn;0x0;East Clock Town -> Mayor's Office;18.8822
+1;0x12;0x0;Mayor's Office - East Clock Town;0xd270;Mayor's Office -> East Clock Town;4.8704
+1;0x6c;0xd270;East Clock Town - Mayor's Office;0xd610;East Clock Town -> North Clock Town;4.80275
+1;0x6e;0xd610;North Clock Town - East Clock Town;0xd250;North Clock Town -> East Clock Town;3.50687
+1;0x6c;0xd250;East Clock Town - North Clock Town;0xd610;East Clock Town -> North Clock Town;5.10914
+1;0x6e;0xd610;North Clock Town - East Clock Town;0x5480;North Clock Town -> Termina Field;7.64521
+1;0x2d;0x5480;Termina Field - North Clock Town;0xd600;Termina Field -> North Clock Town;4.77074
+1;0x6e;0xd600;North Clock Town - Termina Field;0x3600;North Clock Town -> Deku Playground Grotto;8.16423
+1;0x1e;0x3600;Deku Playground Grotto - North Clock Town;0xd640;Deku Playground Grotto -> North Clock Town;3.35359
+1;0x6e;0xd640;North Clock Town - Deku Playground Grotto;0x4600;North Clock Town -> Town Fairy Fountain;4.73129
+1;0x4;0x4600;Town Fairy Fountain - North Clock Town;0xd630;Clock Town Fairy Fountain -> North Clock Town;3.05958
+1;0x6e;0xd630;North Clock Town - Clock Town Fairy Fountain;0xd840;North Clock Town -> South Clock Town;16.9362
+1;0x6f;0xd840;South Clock Town - North Clock Town;0xd420;South West Clock Town Top -> West Clock Town;8.80695
+1;0x6d;0xd420;West Clock Town - South West Clock Town Top;0x5600;West Clock Town -> Post Office;18.9763
+1;0x2e;0x5600;Post Office - West Clock Town;0xd470;Post Office -> West Clock Town;4.24351
+1;0x6d;0xd470;West Clock Town - Post Office;0xa200;West Clock Town -> Swordsman School;4.31991
+1;0x54;0xa200;Swordsman School - West Clock Town;0xd430;Swordsman School -> West Clock Town;6.18145
+1;0x6d;0xd430;West Clock Town - Swordsman School;0xca00;West Clock Town -> Bomb Shop;6.55155
+1;0x68;0xca00;Bomb Shop - West Clock Town;0xd460;Bomb Shop -> West Clock Town;5.20752
+1;0x6d;0xd460;West Clock Town - Bomb Shop;0x6200;West Clock Town -> Trading Post;4.92576
+1;0x34;0x6200;Trading Post - West Clock Town;0xd450;Trading Post -> West Clock Town;4.57232
+1;0x6d;0xd450;West Clock Town - Trading Post;0xe00;West Clock Town -> Curiosity Shop;9.28955
+1;0xd;0xe00;Curiosity Shop - West Clock Town;0xd440;Curiosity Shop -> West Clock Town;10.3346
+1;0x6d;0xd440;West Clock Town - Curiosity Shop;0x6c00;West Clock Town -> Lottery;9.89714
+1;0x39;0x6c00;Lottery - West Clock Town;0xd480;Lottery -> West Clock Town;3.03047
+1;0x6d;0xd480;West Clock Town - Lottery;0x5400;West Clock Town -> Termina Field;5.55589
+1;0x2d;0x5400;Termina Field - West Clock Town;0xd400;Termina Field -> West Clock Town;4.40537
+1;0x6d;0xd400;West Clock Town - Termina Field;0x5400;West Clock Town -> Termina Field;4.13229
+1;0x2d;0x5400;Termina Field - West Clock Town;0x14b0;Termina Field -> Bio Baba Grotto;19.1121
+1;0x80;0x14b0;Bio Baba Grotto - Termina Field;0x10116;Bio Baba Grotto -> Termina Field;4.03254
+1;0x2d;0x10116;Termina Field - Bio Baba Grotto;0x6800;Termina Field -> Great Bay Coast;14.3794
+1;0x37;0x6800;Great Bay Coast - Termina Field;0x5420;Great Bay Coast -> Termina Field;6.8378
+1;0x2d;0x5420;Termina Field - Great Bay Coast;0x14d0;Termina Field -> Peahat Grotto;45.8296
+1;0x81;0x14d0;Peahat Grotto - Termina Field;0x10115;Peahat Grotto -> Termina Field;2.70568
+1;0x2d;0x10115;Termina Field - Peahat Grotto;0x1410;Termina Field -> Swamp Gossip Grotto;15.3752
+1;0x7e;0x1410;Swamp Gossip Grotto - Termina Field;0x10112;Swamp Gossip Grotto -> Termina Field;2.74877
+1;0x2d;0x10112;Termina Field - Swamp Gossip Grotto;0x1000d;Termina Field -> Cow Grotto;25.3721
+1;0x84;0x1000d;Cow Grotto - Termina Field;0x1010d;Cow Grotto -> Termina Field;3.29897
+1;0x2d;0x1010d;Termina Field - Cow Grotto;0x7a00;Termina Field -> Road to Southern Swamp;20.288
+1;0x40;0x7a00;Road to Southern Swamp - Termina Field;0x5410;Road to Southern Swamp -> Termina Field;4.57278
+1;0x2d;0x5410;Termina Field - Road to Southern Swamp;0x10001;Termina Field -> Tall Grass Grotto;17.898
+1;0x83;0x10001;Tall Grass Grotto - Termina Field;0x10101;Tall Grass Grotto -> Termina Field;5.1223
+1;0x2d;0x10101;Termina Field - Tall Grass Grotto;0x1490;Termina Field -> Scrub Grotto;30.3797
+1;0x82;0x1490;Scrub Grotto - Termina Field;0x10114;Scrub Grotto -> Termina Field;2.68754
+1;0x2d;0x10114;Termina Field - Scrub Grotto;0x4c10;Termina Field -> Astral Observatory;13.502
+1;0x29;0x4c10;Astral Observatory - Termina Field;0x5490;Astral Observatory -> Termina Field;3.7417
+1;0x2d;0x5490;Termina Field - Astral Observatory;0x1420;Termina Field -> Canyon Gossip Grotto;19.9698
+1;0x7d;0x1420;Canyon Gossip Grotto - Termina Field;0x10110;Canyon Gossip Grotto -> Termina Field;3.74579
+1;0x2d;0x10110;Termina Field - Canyon Gossip Grotto;0xa000;Terminal Field -> Road to Ikana;14.5994
+1;0x53;0xa000;Road to Ikana - Terminal Field;0x1000a;Road to Ikana -> Red Boulder Grotto;22.3504
+1;0x8b;0x1000a;Red Boulder Grotto - Road to Ikana;0x1010a;Red Boulder Grotto -> Road to Ikana;2.64767
+1;0x53;0x1010a;Road to Ikana - Red Boulder Grotto;0x8000;Road to Ikana -> Ikana Graveyard;51.2497
+1;0x43;0x8000;Ikana Graveyard - Road to Ikana;0xa10;Ikana Graveyard -> Ikana Grave 1;35.4418
+1;0xc;0xa10;Ikana Grave 1 - Ikana Graveyard;0x8030;Ikana Grave 1 -> Ikana Graveyard;7.4399
+1;0x43;0x8030;Ikana Graveyard - Ikana Grave 1;0x1000b;Ikana Graveyard -> Bomb Grotto;24.7683
+1;0x89;0x1000b;Bomb Grotto - Ikana Graveyard;0x1010b;Bomb Grotto -> Ikana Graveyard;3.39231
+1;0x43;0x1010b;Ikana Graveyard - Bomb Grotto;0xa020;Ikana Graveyard -> Road to Ikana;21.4806
+1;0x53;0xa020;Road to Ikana - Ikana Graveyard;0x5440;Road to Ikana -> Termina Field;39.061
+1;0x2d;0x5440;Termina Field - Road to Ikana;0x10000;Termina Field -> Pillar Grotto;24.035
+1;0x85;0x10000;Pillar Grotto - Termina Field;0x10100;Pillar Grotto -> Termina Field;24.058
+1;0x2d;0x10100;Termina Field - Pillar Grotto;0x1430;Termina Field -> Mountain Gossip Grotto;29.9651
+1;0x7f;0x1430;Mountain Gossip Grotto - Termina Field;0x1010f;Mountain Gossip Grotto -> Termina Field;2.65304
+1;0x2d;0x1010f;Termina Field - Mountain Gossip Grotto;0x1470;Termina Field -> Dodongo Grotto;20.6858
+1;0x7b;0x1470;Dodongo Grotto - Termina Field;0x10113;Dodongo Grotto -> Termina Field;4.39817
+1;0x2d;0x10113;Termina Field - Dodongo Grotto;0x1400;Termina Field -> Ocean Gossip Grotto;23.7991
+1;0x7c;0x1400;Ocean Gossip Grotto - Termina Field;0x10111;Ocean Gossip Grotto -> Termina Field;10.9517
+1;0x2d;0x10111;Termina Field - Ocean Gossip Grotto;0x3200;Termina Field -> Path to Mountain Village;41.5396
+1;0x1c;0x3200;Path to Mountain Village - Termina Field;0x5430;Path to Mountain Village -> Termina Field;4.90249
+1;0x2d;0x5430;Termina Field - Path to Mountain Village;0x3200;Termina Field -> Path to Mountain Village;4.98286
+1;0x1c;0x3200;Path to Mountain Village - Termina Field;0x9a60;Path to Mountain Village -> Mountain Village;38.8545
+1;0x96;0x9a60;Mountain Village - Path to Mountain Village;0x3210;Mountain Village -> Path to Mountain Village;4.99859
+1;0x1c;0x3210;Path to Mountain Village - Mountain Village;0x9a60;Path to Mountain Village -> Mountain Village;3.88626
+1;0x96;0x9a60;Mountain Village - Path to Mountain Village;0x5200;Mountain Village -> Blacksmith;11.103
+1;0x2c;0x5200;Blacksmith - Mountain Village;0x9a10;Blacksmith -> Mountain Village;3.94789
+1;0x96;0x9a10;Mountain Village - Blacksmith;0xb000;Mountain Village -> Path to Snowhead;18.1488
+1;0x5b;0xb000;Path to Snowhead - Mountain Village;0x9a40;Path to Snowhead -> Mountain Village;4.12247
+1;0x96;0x9a40;Mountain Village - Path to Snowhead;0x9600;Mountain Village -> Goron Graveyard;54.897
+1;0x4e;0x9600;Goron Graveyard - Mountain Village;0x9a30;Goron Graveyard -> Mountain Village;25.6505
+1;0x96;0x9a30;Mountain Village - Goron Graveyard;0x9a00;Open Grotto -> Mountain Village Winter;4.98e-05
+1;0x4e;0x9600;Goron Graveyard - Mountain Village;0x9a30;Goron Graveyard -> Mountain Village;9.8469
+1;0x96;0x9a30;Mountain Village - Goron Graveyard;0x9600;Mountain Village -> Goron Graveyard;36.9069
+1;0x4e;0x9600;Goron Graveyard - Mountain Village;0x9a30;Goron Graveyard -> Mountain Village;7.31046
+1;0x96;0x9a30;Mountain Village - Goron Graveyard;0xb400;Mountain Village -> Twin Islands;32.8139
+1;0x97;0xb400;Twin Islands - Mountain Village;0x9a20;Twin Islands -> Mountain Village;6.05596
+1;0x96;0x9a20;Mountain Village - Twin Islands;0xb400;Mountain Village -> Twin Islands;9.45973
+1;0x97;0xb400;Twin Islands - Mountain Village;0x10006;Twin Islands -> Ramp Grotto;17.816
+1;0x8d;0x10006;Ramp Grotto - Twin Islands;0x10106;Ramp Grotto -> Twin Islands;2.59431
+1;0x97;0x10106;Twin Islands - Ramp Grotto;0xd000;Twin Islands -> Goron Racetrack;43.3661
+1;0x6b;0xd000;Goron Racetrack - Twin Islands;0xb420;Goron Racetrack -> Twin Islands;4.51912
+1;0x97;0xb420;Twin Islands - Goron Racetrack;0x1450;Twin Islands -> Hot Water Grotto;25.0076
+1;0x8c;0x1450;Hot Water Grotto - Twin Islands;0x10117;Hot Water Grotto -> Twin Islands;3.06065
+1;0x97;0x10117;Twin Islands - Hot Water Grotto;0x9400;Twin Islands -> Goron Village;11.6622
+1;0x98;0x9400;Goron Village - Twin Islands;0xb410;Goron Village -> Twin Islands;5.10421
+1;0x98;0x9400;Goron Village - Twin Islands;0xb410;Goron Village -> Twin Islands;4.62392
+1;0x97;0xb410;Twin Islands - Goron Village;0x9400;Twin Islands -> Goron Village;8.28468
+1;0x98;0x9400;Goron Village - Twin Islands;0x5e00;Goron City -> Goron Shrine;23.2476
+1;0x32;0x5e00;Goron Shrine - Goron City;0x9420;Goron Shrine -> Goron City;5.99417
+1;0x98;0x9420;Goron City - Goron Shrine;0x5e00;Goron City -> Goron Shrine;9.45879
+1;0x32;0x5e00;Goron Shrine - Goron City;0x7400;Goron Shrine -> Goron Shop;11.7643
+1;0x3d;0x7400;Goron Shop - Goron Shrine;0x5e10;Goron Shop -> Goron Shrine;3.69308
+1;0x32;0x5e10;Goron Shrine - Goron Shop;0x9420;Goron Shrine -> Goron City;23.0289
+1;0x98;0x9420;Goron City - Goron Shrine;0x1500;Goron City -> Lone Peak Shrine;45.8292
+1;0x72;0x1500;Lone Peak Shrine - Goron City;0x9430;Lone Peak Shrine -> Goron City;250.089
+1;0x72;0x1500;Lone Peak Shrine - Goron City;0x9430;Lone Peak Shrine -> Goron City;17.5475
+1;0x98;0x9430;Goron City - Lone Peak Shrine;0x1500;Goron City -> Lone Peak Shrine;45.8344
+1;0x96;0x9a80;Mountain Village - Owl Statue - Warp Owl;0xb000;Mountain Village -> Path to Snowhead;16.0086
+1;0x5b;0xb000;Path to Snowhead - Mountain Village;0x10007;Path To Snowhead -> Tree Grotto;57.772
+1;0x8e;0x10007;Tree Grotto - Path To Snowhead;0x10107;Tree Grotto -> Path To Snowhead;3.30448
+1;0x5b;0x10107;Path To Snowhead - Tree Grotto;0xb200;Path to Snowhead -> Snowhead;16.4742
+1;0x5c;0xb200;Snowhead - Path to Snowhead;0xb010;Snowhead -> Path to Snowhead;3.58486
+1;0x5b;0xb010;Path to Snowhead - Snowhead;0xb200;Path to Snowhead -> Snowhead;4.23154
+1;0x5c;0xb200;Snowhead - Path to Snowhead;0x3c00;Snowhead -> Snowhead Temple;96.0735
+1;0x21;0x3c00;Snowhead Temple - Snowhead;0x8200;Snowhead Temple -> Goht's Lair - Snowhead Temple;4.85387
+1;0x5c;0xb230;Snowhead - Owl Statue - Warp Owl;0x3c00;Snowhead -> Snowhead Temple;37.2556
+1;0x21;0x3c00;Snowhead Temple - Snowhead;0x8200;Snowhead Temple -> Goht's Lair - Snowhead Temple;46.502
+1;0x5c;0xb210;Snowhead - Snowhead Temple;0x4620;Snowhead -> Snowhead Fairy Fountain;12.4882
+1;0x1;0x4620;Snowhead Fairy Fountain - Snowhead;0xb220;Snowhead Fairy Fountain -> Snowhead;3.77234
+1;0x96;0xae70;Mountain Village - Warp Goht - Warp Goht;0x5200;Mountain Village -> Blacksmith;13.7201
+1;0x2c;0x5200;Blacksmith - Mountain Village;0x9a10;Blacksmith -> Mountain Village;3.48401
+1;0x96;0x9a10;Mountain Village - Blacksmith;0xb400;Mountain Village -> Twin Islands;13.142
+1;0x97;0xb400;Twin Islands - Mountain Village;0x8a00;Twin Islands -> Goron Village;25.2172
+1;0x98;0x9400;Goron Village - Twin Islands;0x1500;Goron City -> Lone Peak Shrine;26.1705
+1;0x72;0x1500;Lone Peak Shrine - Goron City;0x9430;Lone Peak Shrine -> Goron City;3.67855
+1;0x8f;0x10005;Tunnel Open Grotto - Moutain Village Spring;0x10105;Tunnel Open Grotto -> Moutain Village Spring;2.82038
+1;0x96;0xae00;Mountain Village - Open Grotto;0x10005;Moutain Village Spring -> Tunnel Open Grotto;217.332
+1;0x8f;0x10005;Tunnel Open Grotto - Moutain Village Spring;0x10105;Tunnel Open Grotto -> Moutain Village Spring;172.054
+1;0x96;0xae00;Mountain Village - Open Grotto;0x10005;Moutain Village Spring -> Tunnel Open Grotto;3.72e-05
+1;0x8f;0x10005;Tunnel Open Grotto - Moutain Village Spring;0x10105;Tunnel Open Grotto -> Moutain Village Spring;3.66628
+1;0x8f;0x10005;Tunnel Open Grotto - Moutain Village Spring;0x10105;Tunnel Open Grotto -> Moutain Village Spring;7.2237
+1;0x96;0x10105;Moutain Village Spring - Tunnel Open Grotto;0x2040;Warp Owl -> Ikana Canyon - Owl Statue;66.3129
+1;0x13;0x2040;Ikana Canyon - Owl Statue - Warp Owl;0xa010;Ikana Canyon -> Road to Ikana;21.7796
+1;0x53;0xa010;Road to Ikana - Ikana Canyon;0x8000;Road to Ikana -> Ikana Graveyard;27.62
+1;0x43;0x8000;Ikana Graveyard - Road to Ikana;0xa00;Ikana Graveyard -> Ikana Grave 2;40.652
+1;0xc;0xa00;Ikana Grave 2 - Ikana Graveyard;0x8020;Ikana Grave 2 -> Ikana Graveyard;3.01635
+1;0x43;0x8020;Ikana Graveyard - Ikana Grave 2;0xa020;Ikana Graveyard -> Road to Ikana;183.921
+1;0x53;0xa020;Road to Ikana - Ikana Graveyard;0x2000;Road to Ikana -> Ikana Canyon;33.3137
+1;0x13;0x2000;Ikana Canyon - Road to Ikana;0x1000c;Ikana Canyon -> Open Grotto;45.5911
+1;0x8a;0x1000c;Open Grotto - Ikana Canyon;0x1010c;Open Grotto -> Ikana Canyon;2.85551
+1;0x13;0x1010c;Ikana Canyon - Open Grotto;0xba00;Ikana Canyon -> Shrine;8.7799
+1;0x60;0xba00;Shrine - Ikana Canyon;0x20c0;Secret Shrine -> Ikana Canyon;4.3956
+1;0x1d;0x3410;Ikana Castle Exterior - Ikana Canyon;0x2080;Ikana Castle Exterior -> Ikana Canyon;4.22e-05
+1;0x13;0x2080;Ikana Canyon - Ikana Castle Exterior;0x3410;Ikana Canyon -> Ikana Castle Exterior;9.4719
+1;0x1d;0x3410;Ikana Castle Exterior - Ikana Canyon;0x2080;Ikana Castle Exterior -> Ikana Canyon;3.1406
+1;0x13;0x2080;Ikana Canyon - Ikana Castle Exterior;0x9c00;Ikana Canyon -> Ghost Hut;42.2001
+1;0x51;0x9c00;Ghost Hut - Ikana Canyon;0x2010;Ghost Hut -> Ikana Canyon;3.96111
+1;0x13;0x2010;Ikana Canyon - Ghost Hut;0x9000;Ikana Canyon -> Beneath the Well;21.422
+1;0x4b;0x9000;Beneath the Well - Ikana Canyon;0x2050;Beneath the Well -> Ikana Canyon;4.29706
+1;0x96;0x9a80;Mountain Village - Owl Statue - Warp Owl;0xb000;Mountain Village -> Path to Snowhead;20.8905
+1;0x5b;0xb000;Path to Snowhead - Mountain Village;0xae40;Path to Snowhead -> Mountain Village;2.43559
+1;0x96;0x9a80;Mountain Village - Owl Statue - Warp Owl;0x5200;Mountain Village -> Blacksmith;7.55526
+1;0x2c;0x5200;Blacksmith - Mountain Village;0x9a10;Blacksmith -> Mountain Village;2.3872

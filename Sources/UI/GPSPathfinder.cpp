@@ -303,6 +303,23 @@ namespace
         GPSPath Out;
         uint32_t LastScene = UINT32_MAX;
         uint32_t HopCost   = 0;
+        uint32_t PrevNode  = UINT32_MAX;        // Tracks the last real entrance node visited; becomes the exit when the scene changes.
+
+        // Given an entrance node located in CurrentScene, returns the display name of the
+        // OTHER scene linked by this entrance - i.e. the destination the door leads to.
+        // The naming convention in the entrance data is asymmetric (the same physical door
+        // may carry FromName/ToName flipped between its two paired entries) so we pick the
+        // side opposite to CurrentScene.
+        auto ExitDestinationName = [&](uint32_t EntranceID, uint32_t CurrentScene) -> QString
+        {
+            const EntranceMetaInfo* M = EntranceHelper::GetEntranceMetaInf(Game, EntranceID);
+            if (M == nullptr) return QString();
+            const char* Name = nullptr;
+            if      (M->FromSceneID == CurrentScene) Name = M->ToName;
+            else if (M->ToSceneID   == CurrentScene) Name = M->FromName;
+            else                                     Name = M->ToName;
+            return Name != nullptr ? QString::fromUtf8(Name) : QString();
+        };
 
         for (uint32_t Node : Raw)
         {
@@ -317,7 +334,10 @@ namespace
                 {
                     // Close the previous step with the accumulated portal-hop cost.
                     Out.Steps.last().Cost = HopCost;
-                    Out.Steps.last().ViaText = "Walk";
+                    // Label the leg with the name of the exit the player has to take (= the
+                    // entrance node we visited last while still inside the previous scene).
+                    const QString ExitName = ExitDestinationName(PrevNode, LastScene);
+                    Out.Steps.last().ViaText = ExitName.isEmpty() ? QStringLiteral("Walk") : ExitName;
                     Out.TotalCost += HopCost;
                 }
                 GPSPathStep Step;
@@ -331,9 +351,24 @@ namespace
             }
             else
             {
-                // Same scene as previous node: don't create a new station, but the
-                // walk cost between the two entrances still counts toward this hop.
+                // Same scene as previous node: don't create a new station, but the walk
+                // cost from PrevNode to Node belongs to this hop. Look the edge up in the
+                // adjacency list (only walking edges count - portals carry the inter-scene
+                // hop already and are flushed on the next scene change above).
+                const auto AdjIt = G.Adj.find(PrevNode);
+                if (AdjIt != G.Adj.end())
+                {
+                    for (const Edge& E : AdjIt->second)
+                    {
+                        if (E.To == Node && !E.IsPortal)
+                        {
+                            HopCost += E.Cost;
+                            break;
+                        }
+                    }
+                }
             }
+            PrevNode = Node;
         }
 
         // Final step closes silently (no via, no cost).

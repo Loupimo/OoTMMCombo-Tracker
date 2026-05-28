@@ -196,6 +196,20 @@ signals:
     */
     void NotifyEntranceFound(SceneEntranceUpdate OutEntrance, SceneEntranceUpdate InEntrance);
 
+    /*
+    *   Notifies that a new intra-scene travel-time measurement has been recorded by the
+    *   TIMER_COST writer. Lets the cost tab refresh the matching row without re-parsing the
+    *   CSV. Only ever emitted when the tracker is built with TIMER_COST defined; on builds
+    *   without it the signal exists but never fires.
+    *
+    *   @param Game             OOT_GAME or MM_GAME.
+    *   @param SceneID          The scene the trip took place in.
+    *   @param FromEntranceID   The arrival entrance (where the player came from).
+    *   @param ToEntranceID     The exit entrance (where the player went).
+    *   @param ElapsedSec       The measured travel time in seconds.
+    */
+    void NotifyEntranceCostMeasured(int Game, uint32_t SceneID, uint32_t FromEntranceID, uint32_t ToEntranceID, double ElapsedSec);
+
 public:
 
     /*

@@ -130,6 +130,9 @@
     <ClCompile Include="Sources\UI\EntranceTable.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\UI\EntranceCostTab.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
     <ClCompile Include="Sources\UI\SceneEntrance.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
@@ -143,6 +146,12 @@
       <Filter>Source Files\UI</Filter>
     </ClCompile>
     <ClCompile Include="Sources\Combo\MMEntrances.cpp">
+      <Filter>Source Files\Combo</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Combo\OoTEntranceCosts.cpp">
+      <Filter>Source Files\Combo</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Combo\MMEntranceCosts.cpp">
       <Filter>Source Files\Combo</Filter>
     </ClCompile>
     <ClCompile Include="Common.cpp">
@@ -303,6 +312,9 @@
       <Filter>Header Files\UI</Filter>
     </QtMoc>
     <QtMoc Include="Headers\UI\EntranceTable.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="Headers\UI\EntranceCostTab.h">
       <Filter>Header Files\UI</Filter>
     </QtMoc>
     <QtMoc Include="Headers\UI\GPSRouteCard.h">

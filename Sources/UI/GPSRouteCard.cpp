@@ -74,7 +74,7 @@ void GPSRouteCard::BuildHeader(QVBoxLayout* ParentLayout)
     HeaderRow->setContentsMargins(0, 0, 0, 0);
     HeaderRow->setSpacing(8);
 
-    // Left column: rank (+ optional MEILLEURE pill), time + label, notes.
+    // Left column: rank (+ optional FASTEST pill), time + label, notes.
     QVBoxLayout* Left = new QVBoxLayout();
     Left->setContentsMargins(0, 0, 0, 0);
     Left->setSpacing(4);
@@ -90,7 +90,7 @@ void GPSRouteCard::BuildHeader(QVBoxLayout* ParentLayout)
 
     if (this->Best)
     {
-        QLabel* Pill = new QLabel(QString::fromUtf8("\xE2\x98\x85 MEILLEURE"), this);
+        QLabel* Pill = new QLabel(QString::fromUtf8("\xE2\x98\x85 FASTEST"), this);
         Pill->setObjectName("RouteBestPill");
         Pill->setStyleSheet(QString(
             "color: %1; border: 1px solid %1; padding: 1px 6px; border-radius: 3px;")
@@ -175,9 +175,15 @@ void GPSRouteCard::BuildDiagram(QVBoxLayout* ParentLayout)
             QLabel* Via = new QLabel(this->Diagram);
             Via->setObjectName("StationVia");
             const QString GlyphText = QString(ViaGlyph(Step.Via));
+            // Prefer the route's custom exit-door label (set by GPSPathfinder via ViaText) over
+            // the generic ViaLabel("Walk"/"Owl"/...) so the player sees exactly which entrance
+            // to take instead of a generic transit kind.
+            const QString ViaText = Step.ViaCustom.isEmpty()
+                ? QString::fromUtf8(ViaLabel(Step.Via))
+                : Step.ViaCustom;
             Via->setText(QString("%1  via %2  ·  ~%3s")
                 .arg(GlyphText)
-                .arg(ViaLabel(Step.Via))
+                .arg(ViaText)
                 .arg(Step.DurationSec));
             Row->addWidget(Via);
         }

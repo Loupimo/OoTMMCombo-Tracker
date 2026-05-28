@@ -36,6 +36,7 @@ typedef struct RouteStep
     QString         StationName;
     TransitionVia   Via = Via_Walk;
     int             DurationSec = 0;
+    QString         ViaCustom;          // When non-empty, overrides ViaLabel(Via) in the card UI - used to show the name of the exit door to take.
 } RouteStep;
 
 

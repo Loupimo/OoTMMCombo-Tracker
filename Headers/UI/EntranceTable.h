@@ -18,6 +18,7 @@
 #include "UI/ObjectRenderer.h"
 #include "UI/EntranceRenderer.h"
 #include "UI/GPSRouteWidget.h"
+#include "UI/EntranceCostTab.h"
 #include "Common.h"
 
 #include <map>
@@ -621,6 +622,7 @@ public:
     EntranceGameTabView* OoTEntranceTab;
     EntranceGameTabView* MMEntranceTab;
     GPSRouteWidget* GPSTab;
+    EntranceCostTab* CostTab;
     //QTableView* OoTEntranceTab;
     //QTableView* MMEntranceTab;
     //GlobalEntranceTableModel* OoTEntranceModel;

@@ -1,5 +1,7 @@
 #pragma once
 
+#define TIMER_COST 1
+
 #ifdef _WIN32
 #define _WIN32_LEAN_AND_MEAN 1
 #define _CRT_SECURE_NO_WARNINGS 1

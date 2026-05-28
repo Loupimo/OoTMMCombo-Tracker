@@ -1,11 +1,20 @@
 #include "UI/GPSRouteWidget.h"
 #include "UI/GPSRouteCard.h"
 #include "UI/GPSPathfinder.h"
+#include "Combo/Entrances.h"
+#include "Combo/OoTEntrances.h"
+#include "Combo/MMEntrances.h"
 #include "Combo/Scenes.h"
 #include "Multi/Game.h"
 
 #include <QSignalBlocker>
 #include <QVariant>
+#include <QSet>
+#include <QStringList>
+
+#include <algorithm>
+#include <set>
+#include <vector>
 
 
 namespace
@@ -14,13 +23,13 @@ namespace
     constexpr int       SceneRoleID    = Qt::UserRole + 2;
 
     /*
-    *   Format a raw cost (sum of per-edge units) as a M:SS string. Each cost unit
-    *   is treated as 30 seconds of travel for now; this will be revisited once
-    *   real per-entrance travel times are wired in.
+    *   Format a raw cost (already expressed in seconds since the per-edge values come from
+    *   the real measurements in OoT/MMEntranceCosts.cpp) as a M:SS string. No * 30 multiplier
+    *   anymore: a cost of 20 is 20 seconds, not 20 cost-units of 30s each.
     */
     QString FormatCost(uint32_t Cost)
     {
-        const uint32_t Seconds = Cost * 30u;
+        const uint32_t Seconds = Cost;
         const uint32_t M = Seconds / 60u;
         const uint32_t S = Seconds % 60u;
         return QString("%1:%2").arg(M).arg(S, 2, 10, QChar('0'));
@@ -62,7 +71,11 @@ namespace
             RouteStep Step;
             Step.StationName = S.SceneName;
             Step.Via = Via_Walk;
-            Step.DurationSec = int(S.Cost) * 30;
+            Step.DurationSec = int(S.Cost);
+            // Show the actual exit door name in the "via" caption instead of the generic
+            // "Walk" label. ToScenePath populates ViaText with the destination scene of the
+            // exit entrance (e.g. "Saria's House" when leaving Kokiri Forest through that door).
+            Step.ViaCustom = S.ViaText;
             R.Steps.append(Step);
         }
 
@@ -221,29 +234,75 @@ void GPSRouteWidget::PopulateSceneCombos()
     this->FromCombo->clear();
     this->ToCombo->clear();
 
-    auto AddScenesForGame = [&](uint32_t Game, uint32_t Count, const char* Tag)
+    // Local entry describing one scene candidate: kept in a vector so we can sort the whole
+    // list before pushing into the combo (Qt combo sorting doesn't honor a custom multi-key
+    // ordering out of the box).
+    struct SceneEntry
     {
-        for (uint32_t i = 0; i < Count; ++i)
+        int     Game;           // OOT_GAME (= 0) sorts before MM_GAME (= 1) by integer order.
+        uint32_t Id;
+        QString  Display;       // The combo label, e.g. "[OoT] Kokiri Forest".
+        QString  Name;          // Plain scene name used as the sort key (no tag prefix).
+    };
+
+    auto CollectScenesForGame = [](int Game, const char* Tag, std::vector<SceneEntry>& Out)
+    {
+        // Build the set of scenes that actually participate in the entrance network, i.e. that
+        // have at least one entrance with FromSceneID == S or ToSceneID == S in the game's
+        // entrance map. This matches what AllEntranceView shows: only scenes the player can
+        // ever leave or arrive in. Scenes that exist only as data placeholders (cutscene maps,
+        // unused IDs) are filtered out so they don't pollute the dropdown.
+        const std::map<int, EntranceMetaInfo>& Map = (Game == OOT_GAME) ? OoTEntrances : MMEntrances;
+
+        std::set<uint32_t> Valid;
+        for (const auto& Pair : Map)
         {
-            SceneMetaInfo* Meta = GetSceneMetaInfo(i, Game);
+            const EntranceMetaInfo& V = Pair.second;
+            if (V.Type == EntranceType::None) continue;
+            Valid.insert(V.FromSceneID);
+            Valid.insert(V.ToSceneID);
+        }
+
+        for (uint32_t SceneID : Valid)
+        {
+            SceneMetaInfo* Meta = GetSceneMetaInfo(SceneID, (uint32_t)Game);
             if (Meta == nullptr) continue;
             if (Meta->Name == nullptr || Meta->Name[0] == '\0') continue;
 
-            const QString Display = QString("[%1] %2").arg(Tag).arg(Meta->Name);
-            const int Idx = this->FromCombo->count();
-            this->FromCombo->addItem(Display);
-            this->FromCombo->setItemData(Idx, (int)Game, SceneRoleGame);
-            this->FromCombo->setItemData(Idx, (uint)i,   SceneRoleID);
-            this->ToCombo->addItem(Display);
-            this->ToCombo->setItemData(Idx, (int)Game, SceneRoleGame);
-            this->ToCombo->setItemData(Idx, (uint)i,   SceneRoleID);
+            SceneEntry E;
+            E.Game = Game;
+            E.Id = SceneID;
+            E.Name = QString::fromUtf8(Meta->Name);
+            E.Display = QString("[%1] %2").arg(Tag, E.Name);
+            Out.push_back(std::move(E));
         }
     };
 
-    AddScenesForGame(OOT_GAME, OOT_NUM_SCENES, "OoT");
-    AddScenesForGame(MM_GAME,  MM_NUM_SCENES,  "MM");
+    std::vector<SceneEntry> Entries;
+    CollectScenesForGame(OOT_GAME, "OoT", Entries);
+    CollectScenesForGame(MM_GAME,  "MM",  Entries);
 
-    // Default to two different scenes if possible so the initial demo isn't empty.
+    // Sort: OoT first (Game == 0), then MM (Game == 1), then alphabetically by scene name
+    // within each game (locale-aware so accents and diacritics sort sensibly).
+    std::sort(Entries.begin(), Entries.end(),
+        [](const SceneEntry& A, const SceneEntry& B)
+        {
+            if (A.Game != B.Game) return A.Game < B.Game;
+            return QString::localeAwareCompare(A.Name, B.Name) < 0;
+        });
+
+    for (const SceneEntry& E : Entries)
+    {
+        const int Idx = this->FromCombo->count();
+        this->FromCombo->addItem(E.Display);
+        this->FromCombo->setItemData(Idx, E.Game,           SceneRoleGame);
+        this->FromCombo->setItemData(Idx, (uint)E.Id,       SceneRoleID);
+        this->ToCombo->addItem(E.Display);
+        this->ToCombo->setItemData(Idx, E.Game,             SceneRoleGame);
+        this->ToCombo->setItemData(Idx, (uint)E.Id,         SceneRoleID);
+    }
+
+    // Default to two different scenes if possible so the initial render isn't empty.
     if (this->FromCombo->count() > 0) this->FromCombo->setCurrentIndex(0);
     if (this->ToCombo->count() > 1)   this->ToCombo->setCurrentIndex(1);
 }
@@ -303,11 +362,39 @@ void GPSRouteWidget::OnSelectionChanged()
             break;
     }
 
-    QVector<Route> Display;
-    Display.reserve(Result.Routes.size());
-    for (int i = 0; i < Result.Routes.size(); ++i)
+    // Deduplicate routes by their scene-sequence signature: Yen's algorithm can return paths
+    // that look identical to the user (same scenes visited in the same order) when alternative
+    // intermediate entrances produce the same scene trip. Showing 3 visually identical cards is
+    // useless - we want at most 3 *distinct* trips, fewer when not enough alternatives exist.
+    QVector<int> UniqueIndices;
+    QSet<QString> Seen;
+    for (int idx = 0; idx < Result.Routes.size(); ++idx)
     {
-        Display.append(ToDisplayRoute(Result.Routes[i], i, i == 0));
+        const GPSPath& P = Result.Routes[idx];
+        QStringList SceneIds;
+        SceneIds.reserve(P.Steps.size());
+        for (const GPSPathStep& S : P.Steps)
+        {
+            SceneIds.append(QString::number(S.SceneID));
+        }
+        const QString Signature = SceneIds.join('>');
+        if (Seen.contains(Signature)) continue;
+        Seen.insert(Signature);
+        UniqueIndices.append(idx);
+        if (UniqueIndices.size() >= 3) break;
+    }
+
+    if (UniqueIndices.isEmpty())
+    {   // Pathfinder said OK but every returned path was empty (shouldn't happen) - treat as none.
+        this->SetEmpty();
+        return;
+    }
+
+    QVector<Route> Display;
+    Display.reserve(UniqueIndices.size());
+    for (int i = 0; i < UniqueIndices.size(); ++i)
+    {
+        Display.append(ToDisplayRoute(Result.Routes[UniqueIndices[i]], i, i == 0));
     }
     this->SetRoutes(Display);
 }

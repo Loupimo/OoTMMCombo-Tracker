@@ -1,6 +1,8 @@
 #include "UI/SceneEntrance.h"
 #include "UI/AppConfig.h"
 
+#include <algorithm>
+
 
 void EntranceLink::SaveLink(QFile* SaveFile)
 {
@@ -107,6 +109,14 @@ void EntranceLink::AddInLink(uint32_t EntranceID, uint8_t Game)
             return;
         }
     }
+    // The static data in SceneOoT/MMEntrances.cpp seeds every entry with a single
+    // { UINT32_MAX, NO_GAME } placeholder so the table shows "?" while nothing is known.
+    // Once we are about to record a real source, drop that placeholder; otherwise the UI
+    // would forever display "?" stacked on top of the freshly discovered source.
+    this->InLinks.erase(
+        std::remove_if(this->InLinks.begin(), this->InLinks.end(),
+            [](const EntranceSource& s) { return s.EntranceID == UINT32_MAX || s.Game == NO_GAME; }),
+        this->InLinks.end());
     this->InLinks.push_back({ EntranceID, Game });
 }
 

@@ -217,10 +217,13 @@
     <ClCompile Include="Sources\Multi\Buffer.cpp" />
     <ClCompile Include="Sources\Multi\Game.cpp" />
     <ClCompile Include="Sources\Multi\Multi.cpp" />
+    <ClCompile Include="Sources\Combo\OoTEntranceCosts.cpp" />
+    <ClCompile Include="Sources\Combo\MMEntranceCosts.cpp" />
     <ClCompile Include="Sources\Multi\Protocol.cpp" />
     <ClCompile Include="Sources\Multi\Sendq.cpp" />
     <ClCompile Include="Sources\UI\AppConfig.cpp" />
     <ClCompile Include="Sources\UI\AppStyle.cpp" />
+    <ClCompile Include="Sources\UI\EntranceCostTab.cpp" />
     <ClCompile Include="Sources\UI\EntranceRenderer.cpp" />
     <ClCompile Include="Sources\UI\EntranceTable.cpp" />
     <ClCompile Include="Sources\UI\FilterManager.cpp" />
@@ -269,6 +272,7 @@
     <ClInclude Include="Headers\UI\AppStyle.h" />
     <ClInclude Include="Headers\UI\Icons.h" />
     <QtMoc Include="Headers\UI\FilterManager.h" />
+    <QtMoc Include="Headers\UI\EntranceCostTab.h" />
     <QtMoc Include="Headers\UI\EntranceTable.h" />
     <QtMoc Include="Headers\UI\GPSRouteCard.h" />
     <QtMoc Include="Headers\UI\GPSRouteWidget.h" />

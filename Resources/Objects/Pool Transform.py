@@ -336,6 +336,100 @@ def match_items(spoiler_log, input_file, output_file):
             outfile.write(objectstr)
             outfile.flush()
 
+def parse_entrance_costs(input_file, oot_output_file, mm_output_file):
+    """Parse entrance_costs.csv and generate the per-game EntranceCostMeasurement arrays.
+
+    The CSV is produced live by the TIMER_COST writer in Entrances.cpp; every row is a
+    single intra-scene travel measurement (player arrived in Scene through 'FromEntranceID',
+    walked to the exit that emits 'ToEntranceID', logged 'ElapsedSec' seconds). When the
+    same (Game, Scene, From, To) key appears multiple times we keep the FASTEST run, same
+    rule as EntranceCostModel::LoadCsv on the UI side.
+
+    The output cpp files (one per game) contain a static EntranceCostMeasurement array and
+    an InitializeXxxMeasuredCosts function. They are wired into InitializeEntranceCosts so
+    the measured times override the default cost of 1 once they are loaded.
+    """
+    with open(input_file, 'r', encoding='utf-8') as infile:
+        df = pd.read_csv(infile, delimiter=";", header=0, keep_default_na=False)
+
+    # Normalise the columns we need into ints / floats. The CSV stores entrance / scene IDs
+    # as 0x-prefixed hex strings, and elapsed times as plain floats.
+    def parse_uint(s):
+        s = str(s).strip()
+        if s.lower().startswith("0x"):
+            return int(s, 16)
+        return int(s)
+
+    measurements_by_game = {0: {}, 1: {}}        # game -> {(scene, from, to): cost_sec}
+    for _, row in df.iterrows():
+        try:
+            game = int(str(row["Game"]).strip())
+            scene = parse_uint(row["SceneID"])
+            from_id = parse_uint(row["FromEntranceID"])
+            to_id = parse_uint(row["ToEntranceID"])
+            elapsed = float(str(row["ElapsedSec"]).strip())
+        except (ValueError, KeyError):
+            continue
+        if elapsed < 0:
+            continue
+        if game not in measurements_by_game:
+            continue
+        # Round to the nearest second, clamp to 1 so 0-cost edges don't break Dijkstra.
+        cost = max(1, int(round(elapsed)))
+        key = (scene, from_id, to_id)
+        existing = measurements_by_game[game].get(key)
+        if existing is None or cost < existing:
+            measurements_by_game[game][key] = cost
+
+    GAME_NAMES = {0: "OoT", 1: "MM"}
+    OUTPUTS = {0: oot_output_file, 1: mm_output_file}
+
+    for game, out_path in OUTPUTS.items():
+        prefix = GAME_NAMES[game]
+        rows = sorted(measurements_by_game[game].items(), key=lambda kv: kv[0])
+
+        with open(out_path, 'w', encoding='utf-8') as outfile:
+            outfile.write('#include "Combo/Entrances.h"\n')
+            outfile.write('#include "Combo/' + prefix + 'Entrances.h"\n\n')
+            outfile.write('/*\n')
+            outfile.write('*   Measured intra-scene travel times for ' + prefix + ', imported from entrance_costs.csv\n')
+            outfile.write('*   by Pool Transform.py (parse_entrance_costs). Edit the CSV and re-run the\n')
+            outfile.write('*   script - do not hand-edit this file.\n')
+            outfile.write('*/\n')
+            outfile.write('static const EntranceCostMeasurement ' + prefix + 'MeasuredCosts[] =\n{\n')
+            if not rows:
+                outfile.write('    // No ' + prefix + ' measurements yet - run Pool Transform.py to regenerate.\n')
+            else:
+                for (scene, from_id, to_id), cost in rows:
+                    outfile.write('    {{ 0x{scene:03x}, 0x{from_id:03x}, 0x{to_id:04x}, {cost:4d} }},\n'.format(
+                        scene=scene, from_id=from_id, to_id=to_id, cost=cost))
+            outfile.write('};\n\n\n')
+            outfile.write('void Initialize' + prefix + 'MeasuredCosts(std::map<int, EntranceMetaInfo>& Map)\n')
+            outfile.write('{\n')
+            outfile.write('    for (const EntranceCostMeasurement& M : ' + prefix + 'MeasuredCosts)\n')
+            outfile.write('    {\n')
+            outfile.write('        // Resolve the OUT key into the actual physical walk target: the OUT entry\'s\n')
+            outfile.write('        // FromEntranceID is the spawn point in M.Scene that triggers the portal. Without\n')
+            outfile.write('        // this translation, M.To might point at the destination scene\'s spawn instead, and\n')
+            outfile.write('        // the cost would never reach the right intra-scene walking edge.\n')
+            outfile.write('        auto ToIt = Map.find((int)M.To);\n')
+            outfile.write('        if (ToIt == Map.end()) continue;\n')
+            outfile.write('        const uint32_t WalkTarget = ToIt->second.FromEntranceID;\n\n')
+            outfile.write('        // The Cost table for "walks starting at M.From in M.Scene" lives on the entrance\n')
+            outfile.write('        // whose FromEntranceID == M.From AND FromSceneID == M.Scene. Within a single game\n')
+            outfile.write('        // and scene the pair is unique, so one match is enough.\n')
+            outfile.write('        for (auto& Pair : Map)\n')
+            outfile.write('        {\n')
+            outfile.write('            EntranceMetaInfo& V = Pair.second;\n')
+            outfile.write('            if (V.FromEntranceID != M.From) continue;\n')
+            outfile.write('            if (V.FromSceneID != M.Scene) continue;\n')
+            outfile.write('            V.Cost.Costs[WalkTarget] = M.CostSeconds;\n')
+            outfile.write('            break;\n')
+            outfile.write('        }\n')
+            outfile.write('    }\n')
+            outfile.write('}\n')
+
+
 def parse_settings(input_file, output_file):
     """Parse un fichier pour convertir les lignes RGB en hexadécimal."""
     with open(input_file, 'r') as infile, open(output_file, 'w') as outfile:
@@ -429,3 +523,11 @@ output_file = '..\\Scenes\\settings.txt'
 parse_settings(input_file, output_file)
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
+
+
+input_file = '..\\..\\entrance_costs.csv'
+oot_cpp_file = '..\\..\\Sources\\Combo\\OoTEntranceCosts.cpp'
+mm_cpp_file  = '..\\..\\Sources\\Combo\\MMEntranceCosts.cpp'
+parse_entrance_costs(input_file, oot_cpp_file, mm_cpp_file)
+#
+print(f"Conversion terminée. Les résultats sont enregistrés dans '{oot_cpp_file}', '{mm_cpp_file}'.")
