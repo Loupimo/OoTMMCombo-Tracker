@@ -213,12 +213,17 @@ public slots:
 
     /*
     *   Updates the given object status and dispatch it to the corresponding scene view.
+    *   The map / progression update is gated by the game mode and the event source
+    *   (see the routing table in the implementation).
     *
     *   @param Game           The game the object belong to.
     *   @param ObjectFound    The object in which the item has been found.
     *   @param ItemFound      The item that has been found.
+    *   @param Source         The collection path that produced the event (hook / network).
+    *   @param FromWorld      The world that collected the item, or -1 when unknown.
+    *   @param ToWorld        The world the item is destined to, or -1 when unknown.
     */
-    void UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, const ItemInfo* ItemFound);
+    void UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, const ItemInfo* ItemFound, ItemSource Source, int FromWorld, int ToWorld);
 
 #pragma endregion
 

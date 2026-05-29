@@ -12,6 +12,7 @@ Settings::Settings()
 	this->Mode = GameMode::single;
     this->Goal = GoalMode::boss;
 	this->NumOfTeams = 1;
+	this->LocalWorld = 0;
     this->FilterSettings = QMap<QString, Parameter>({
         { "songs", { "Song Notes", ParamType::boolean, ShuffleSetting::vanilla } },
         { "goldSkulltulaTokens", { "Gold Skulltula - OoT", ParamType::shuffle, ShuffleSetting::all } },
@@ -787,7 +788,7 @@ void Settings::AddSetting(QString Name, QString Value)
 		{
 			this->Mode = GameMode::coop;
 		}
-		else if (Value == "mm")
+		else if (Value == "multi")
 		{
 			this->Mode = GameMode::multi;
 		}
@@ -796,7 +797,7 @@ void Settings::AddSetting(QString Name, QString Value)
 			this->Mode = GameMode::single;
 		}
 	}
-    else if (Name == "mode")
+    else if (Name == "goal")
     {
         if (Value == "triforce3")
         {

@@ -234,7 +234,7 @@ void Game::gameApiItemOut()
 
     MultiLogger::LogMessage("ITEM OUT - FROM: %d, TO: %d, GAME: %d, KEY: %04X, GI: %04X, FLAGS: %04X", playerFrom, playerTo, gameId, key, gi, flags);
 
-    ParseLedgerFullEntry((char*)buffer, true);
+    ParseLedgerFullEntry((char*)buffer, true, playerFrom, playerTo);
     if (this->IsNetEnabled)
     {
         /* Write and flag as sent */
@@ -298,7 +298,7 @@ void Game::gameApiApplyLedger()
 
     MultiLogger::LogMessage("ITEM IN - FROM: %d, TO: %d, GAME: %d, KEY: %04X, GI: %04X, FLAGS: %04X", playerFrom, playerTo, gameId, key, gi, flags);
 
-    ParseLedgerFullEntry(fe->data, false);
+    ParseLedgerFullEntry(fe->data, false, playerFrom, playerTo);
 }
 
 int Game::insertMessage(NetMsg* msg)
@@ -709,10 +709,14 @@ void Game::gameTick(App* app)
     LOGF("Game tick end\n");
 }
 
-void Game::ParseLedgerFullEntry(char* LedgerData, bool IsGoingOut)
+void Game::ParseLedgerFullEntry(char* LedgerData, bool IsGoingOut, uint8_t playerFrom, uint8_t playerTo)
 {
     uint8_t keyArr[5];
     uint16_t gameItem = 0;
+
+    // NetOut = a check the local player collected on their own map (FromWorld is the local world).
+    // NetIn  = a ledger entry being granted to a world (FromWorld / ToWorld are both known).
+    ItemSource source = IsGoingOut ? ItemSource::NetOut : ItemSource::NetIn;
 
     if (IsGoingOut)
     {   // Outgoing item
@@ -749,15 +753,15 @@ void Game::ParseLedgerFullEntry(char* LedgerData, bool IsGoingOut)
     if (recievedItem.GameID == OOT_GAME)
     {
         fprintf(game_file_log, "OoT %s;%02X;%02X;%02X;%04X;%s;%02X\n", matchObject->Location, recievedItem.OvType, recievedItem.SceneID, recievedItem.RoomID, recievedItem.ObjectID, matchItem->ItemName, gameItem);
-        MultiLogger::LogMessage("OoT World Object: %s - Item : %s\n", matchObject->Location, matchItem->ItemName);
-        emit MultiLogger::GetLogger()->NotifyObjectFound(OOT_GAME, matchObject, matchItem);
+        MultiLogger::LogMessage("OoT World Object: %s - Item : %s (from world %d to world %d)\n", matchObject->Location, matchItem->ItemName, playerFrom, playerTo);
+        emit MultiLogger::GetLogger()->NotifyObjectFound(OOT_GAME, matchObject, matchItem, source, (int)playerFrom, (int)playerTo);
     }
     else
     {   // Majora's Mask
 
         fprintf(game_file_log, "MM %s;%02X;%02X;%02X;%04X;%s;%02X\n", matchObject->Location, recievedItem.OvType, recievedItem.SceneID, recievedItem.RoomID, recievedItem.ObjectID, matchItem->ItemName, gameItem);
-        MultiLogger::LogMessage("MM World Object: %s - Item : %s\n", matchObject->Location, matchItem->ItemName);
-        emit MultiLogger::GetLogger()->NotifyObjectFound(MM_GAME, matchObject, matchItem);
+        MultiLogger::LogMessage("MM World Object: %s - Item : %s (from world %d to world %d)\n", matchObject->Location, matchItem->ItemName, playerFrom, playerTo);
+        emit MultiLogger::GetLogger()->NotifyObjectFound(MM_GAME, matchObject, matchItem, source, (int)playerFrom, (int)playerTo);
     }
 
     fflush(game_file_log);

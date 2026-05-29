@@ -1,5 +1,6 @@
 #include "UI/SettingsTab.h"
 #include "UI/OoTMMComboTracker.h"
+#include "UI/AppConfig.h"
 #include "Combo/Items.h"
 #include "Combo/Scenes.h"
 #include "Multi/Game.h"
@@ -384,11 +385,25 @@ QWidget* SettingsTab::BuildGeneralPage()
     QHBoxLayout* teamsLayout = new QHBoxLayout(teamsBox);
     QLabel* teamsLabel = new QLabel("Number of teams", teamsBox);
     this->TeamsSpin = new QSpinBox(teamsBox);
-    this->TeamsSpin->setRange(1, 16);
+    this->TeamsSpin->setRange(1, 64);
     teamsLayout->addWidget(teamsLabel);
     teamsLayout->addWidget(this->TeamsSpin);
     teamsLayout->addStretch(1);
     vbox->addWidget(teamsBox);
+
+    // Local world / player -----------------------------------------------
+    // Identifies which world / team is the local player. Used in coop / multiworld
+    // to decide whether a collected item belongs to the local map / progression.
+    // Displayed 1-based ("Player 1" == world 0) to match the spoiler log.
+    QGroupBox* localBox = new QGroupBox("Local player", page);
+    QHBoxLayout* localLayout = new QHBoxLayout(localBox);
+    QLabel* localLabel = new QLabel("My world / player", localBox);
+    this->LocalWorldSpin = new QSpinBox(localBox);
+    this->LocalWorldSpin->setRange(1, 64);
+    localLayout->addWidget(localLabel);
+    localLayout->addWidget(this->LocalWorldSpin);
+    localLayout->addStretch(1);
+    vbox->addWidget(localBox);
 
     vbox->addStretch(1);
     return page;
@@ -862,6 +877,11 @@ void SettingsTab::LoadFromSettings()
     {
         this->TeamsSpin->setValue(static_cast<int>(s.NumOfTeams));
     }
+    if (this->LocalWorldSpin != nullptr)
+    {
+        // Stored 0-based, displayed 1-based.
+        this->LocalWorldSpin->setValue(static_cast<int>(s.LocalWorld) + 1);
+    }
 
     for (auto it = this->ParamWidgets.cbegin(); it != this->ParamWidgets.cend(); ++it)
     {
@@ -958,6 +978,12 @@ void SettingsTab::OnApply()
     if (this->TeamsSpin != nullptr)
     {
         s.NumOfTeams = static_cast<size_t>(this->TeamsSpin->value());
+    }
+    if (this->LocalWorldSpin != nullptr)
+    {
+        // Stored 0-based, displayed 1-based.
+        s.LocalWorld = static_cast<size_t>(this->LocalWorldSpin->value() - 1);
+        AppConfig::SetLocalWorld(static_cast<int>(s.LocalWorld));
     }
 
     for (auto it = this->ParamWidgets.cbegin(); it != this->ParamWidgets.cend(); ++it)

@@ -245,7 +245,10 @@ public:
     *   Parse a raw ledger entry, resolve the matching object and item, log it and notify the tracker.
     *
     *   @param LedgerData    The raw ledger entry data.
-    *   @param IsGoingOut    True for an outgoing item, false for an incoming item.
+    *   @param IsGoingOut    True for an outgoing item (local check, ItemSource::NetOut),
+    *                        false for an incoming item (ledger apply, ItemSource::NetIn).
+    *   @param PlayerFrom    The world that collected the item.
+    *   @param PlayerTo      The world the item is destined to.
     */
-    void ParseLedgerFullEntry(char* LedgerData, bool IsGoingOut);
+    void ParseLedgerFullEntry(char* LedgerData, bool IsGoingOut, uint8_t playerFrom, uint8_t playerTo);
 };

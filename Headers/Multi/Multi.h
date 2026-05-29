@@ -165,6 +165,22 @@ typedef struct
 SendQueue;
 
 /*
+*   Identifies which collection path produced an item-found notification. The
+*   tracker uses it, together with the game mode, to decide whether the event
+*   updates the map, the progression, or both (see OoTMMComboTracker::UpdateTrackedObject).
+*
+*   In coop / multiworld the network ledger is authoritative for real items while
+*   the in-game hook only owns "nothing" drops (which never travel over the wire).
+*/
+enum class ItemSource
+{
+    HookNothing,    // Local "nothing" drop captured by the DLL hook. No player info.
+    HookItem,       // Local real item captured by the DLL hook. Authoritative only in single mode.
+    NetOut,         // Local check sent over the network (gameApiItemOut). FromWorld is the local world.
+    NetIn           // Ledger entry applied to a game (gameApiApplyLedger). FromWorld/ToWorld are known.
+};
+
+/*
 *   This class handles the communication with the main window UI.
 */
 class MultiLogger : public QObject
@@ -185,8 +201,11 @@ signals:
     *   @param Game           The game the object belong to.
     *   @param ObjectFound    The object in which the item has been found.
     *   @param ItemFound      The item that has been found.
+    *   @param Source         The collection path that produced the event (hook / network).
+    *   @param FromWorld      The world that collected the item, or -1 when unknown.
+    *   @param ToWorld        The world the item is destined to, or -1 when unknown.
     */
-    void NotifyObjectFound(int Game, struct ObjectInfo * ObjectFound, const struct ItemInfo* ItemFound);
+    void NotifyObjectFound(int Game, struct ObjectInfo * ObjectFound, const struct ItemInfo* ItemFound, ItemSource Source, int FromWorld, int ToWorld);
     
     /*
     *   Notifies that a new entrance link has been found.

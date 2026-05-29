@@ -252,6 +252,10 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
 {
     this->ui.setupUi(this);
 
+    // The local world / team is a per-user choice that is not part of the spoiler log,
+    // so it is persisted in the app config and seeded here (and on every spoiler load).
+    this->ROMSettings.LocalWorld = AppConfig::GetLocalWorld();
+
     // The main tab widget
     this->TabWidget = new QTabWidget;
 
@@ -674,40 +678,90 @@ void OoTMMComboTracker::NavigateToObject(int Game, ObjectInfo* Object)
 }
 
 
-void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, const ItemInfo* ItemFound)
+void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, const ItemInfo* ItemFound, ItemSource Source, int FromWorld, int ToWorld)
 {
-    switch (Game)
+    // Decide, from the game mode and the event source, whether this event updates the
+    // local map, the local progression, or both. Design (team == world id, teammates
+    // share a world id, the local world is set in the Settings tab):
+    //
+    //   single : the hook is the only source                 -> map + progress
+    //   coop   : hook nothing                                -> map
+    //            hook item                                   -> ignored (network authoritative)
+    //            itemOut (local check on the shared map)     -> map
+    //            applyLedger collected by my team (from==me) -> map + progress
+    //   multi  : hook nothing                                -> map
+    //            hook item                                   -> ignored (network authoritative)
+    //            itemOut (collected on my map, for anyone)   -> map
+    //            applyLedger delivered to me (to==me)        -> progress
+    //
+    // The progression has a single source per mode (hook in single, applyLedger in
+    // coop/multi) so counter widgets never double-count; the map is idempotent so a
+    // redundant mark is harmless.
+    const int me = static_cast<int>(this->ROMSettings.LocalWorld);
+    bool updateMap = false;
+    bool updateProgress = false;
+
+    switch (this->ROMSettings.Mode)
     {
-        case OOT_GAME:
+        case GameMode::single:
         {
-            this->OoTTab->ItemFound(ObjectFound, ItemFound);
-            if (AppConfig::GetAutoSave())
+            updateMap = true;
+            updateProgress = true;
+            break;
+        }
+        case GameMode::coop:
+        {
+            switch (Source)
             {
-                this->CreatePath(AppConfig::GetAutoSavePath());
-                GameTab::SaveGameScenes(AppConfig::GetAutoSaveFullPath(), &this->ROMSettings);
+                case ItemSource::HookNothing: updateMap = true; break;
+                case ItemSource::HookItem:    break;            // network authoritative
+                case ItemSource::NetOut:      updateMap = true; break;
+                case ItemSource::NetIn:
+                    if (FromWorld == me) { updateMap = true; updateProgress = true; }
+                    break;
             }
             break;
         }
-        case MM_GAME:
+        case GameMode::multi:
         {
-            this->MMTab->ItemFound(ObjectFound, ItemFound);
-            if (AppConfig::GetAutoSave())
+            switch (Source)
             {
-                this->CreatePath(AppConfig::GetAutoSavePath());
-                GameTab::SaveGameScenes(AppConfig::GetAutoSaveFullPath(), &this->ROMSettings);
+                case ItemSource::HookNothing: updateMap = true; break;
+                case ItemSource::HookItem:    break;            // network authoritative
+                case ItemSource::NetOut:      updateMap = true; break;
+                case ItemSource::NetIn:
+                    if (ToWorld == me) { updateProgress = true; }
+                    break;
             }
-            break;
-        }
-        default:
-        {
             break;
         }
     }
 
-    if (this->ProgTab != nullptr)
+    if (!updateMap && !updateProgress)
+    {
+        return;
+    }
+
+    if (updateMap)
+    {
+        switch (Game)
+        {
+            case OOT_GAME: this->OoTTab->ItemFound(ObjectFound, ItemFound); break;
+            case MM_GAME:  this->MMTab->ItemFound(ObjectFound, ItemFound); break;
+            default: break;
+        }
+    }
+
+    if (updateProgress && this->ProgTab != nullptr)
     {
         this->ProgTab->OnItemFound(Game, ObjectFound, ItemFound, true);
         this->ProgTab->RefreshCurrentDetail();
+    }
+
+    if (AppConfig::GetAutoSave())
+    {
+        this->CreatePath(AppConfig::GetAutoSavePath());
+        GameTab::SaveGameScenes(AppConfig::GetAutoSaveFullPath(), &this->ROMSettings);
     }
 
     if (this->LastActivityLabel && ObjectFound)
@@ -951,10 +1005,46 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
     // Loads Settings section
     this->ROMSettings = Settings();
     this->ROMSettings.ParseSettings(sections[0]);
+    // The local world / team is a per-user choice absent from the spoiler; seed it from
+    // the persisted app config so the multiworld parsing below picks the right world.
+    this->ROMSettings.LocalWorld = AppConfig::GetLocalWorld();
+
+    // Multiworld spoilers add a per-world level: each world is a "  World N (hash)" header
+    // and its locations are indented one extra level. Detect it, keep only the local
+    // world's block and dedent it by two spaces so it matches the single-world layout the
+    // rest of this method already understands. The per-item "Player N " prefix is stripped
+    // later, in the object loop.
+    QString locationSection = sections[2];
+    bool isMultiworld = QRegularExpression("^  World \\d", QRegularExpression::MultilineOption)
+                            .match(locationSection).hasMatch();
+    if (isMultiworld)
+    {
+        const QString wanted = QString("  World %1").arg((int)this->ROMSettings.LocalWorld + 1); // spoiler is 1-based
+        QRegularExpression worldHeader("^  World \\d", QRegularExpression::MultilineOption);
+
+        QStringList block;
+        bool inBlock = false;
+        for (const QString& line : locationSection.split('\n'))
+        {
+            if (worldHeader.match(line).hasMatch())
+            {   // A world header: enter the block only for the exact local world number
+                // (so "World 1" does not also match "World 12").
+
+                inBlock = line.startsWith(wanted)
+                       && (line.size() == wanted.size() || !line.at(wanted.size()).isDigit());
+                continue;   // The header line itself is not a location
+            }
+            if (inBlock)
+            {
+                block.append(line.startsWith("  ") ? line.mid(2) : line);
+            }
+        }
+        locationSection = block.join('\n');
+    }
 
     // Regex to split strings by location
     QRegularExpression reg("^\\s{2}(.+:(?:\n\\s{4}.*)+)\n*", QRegularExpression::MultilineOption);
-    QRegularExpressionMatchIterator it = reg.globalMatch(sections[2]);
+    QRegularExpressionMatchIterator it = reg.globalMatch(locationSection);
 
     QStringList maps;
     while (it.hasNext())
@@ -987,6 +1077,13 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
 
             QStringList spoilObject = objects[i].split(": ");                           // Left part is object name, right is the item it contains
             spoilObject[0] = spoilObject[0].replace("\n", "");                          // Sometimes the object has a line break, just get rid of it
+
+            if (isMultiworld && spoilObject.size() > 1)
+            {   // Multiworld items carry the destination player ("Player 2 Compass (Water Temple)").
+                // Strip the prefix so the name matches the item table.
+
+                spoilObject[1].remove(QRegularExpression("^Player \\d+ "));
+            }
 
             size_t len = spoilObject[0].length() + 1;                                   // We need to add 1 for the null terminator
             char* tmpObjName = (char*)malloc(sizeof(char) * len);

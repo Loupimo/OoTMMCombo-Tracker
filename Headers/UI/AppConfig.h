@@ -76,6 +76,13 @@ public:
     static bool GetUseMultiplayer();
 
     /*
+    *   Gets the local player's world / team index (0-based) used to route items in coop / multiworld.
+    *
+    *   @return The 0-based local world index (defaults to 0).
+    */
+    static int GetLocalWorld();
+
+    /*
     *   Sets the list of the last opened files.
     *
     *   @param NewValue The new list of the last opened files.
@@ -109,6 +116,13 @@ public:
     *   @param NewValue The new use multiplayer state.
     */
     static void SetUseMultiplayer(bool NewValue);
+
+    /*
+    *   Sets the local player's world / team index (0-based) used to route items in coop / multiworld.
+    *
+    *   @param NewValue The new 0-based local world index.
+    */
+    static void SetLocalWorld(int NewValue);
 
 #pragma endregion
 

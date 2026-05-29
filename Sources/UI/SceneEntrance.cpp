@@ -158,7 +158,7 @@ size_t SceneEntranceMetaInf::LoadMetaInf(QByteArray* Data, size_t Offset, Tracke
     {	// The scene is correct
 
         // Load number of objects
-        size_t numObjs = 0;
+        size_t numObjs = 0, dgb = this->EntranceIDs.size();
         memcpy_s(&numObjs, sizeof(numObjs), Data->data() + Offset, sizeof(numObjs));
         Offset += sizeof(numObjs);
 

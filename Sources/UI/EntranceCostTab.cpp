@@ -19,6 +19,8 @@
 #include <QDir>
 #include <QHBoxLayout>
 
+#include <limits>
+
 #include <algorithm>
 #include <map>
 #include <set>
@@ -252,7 +254,8 @@ void EntranceCostModel::BuildRowsForGame(int Game)
                 Row.SceneID = SceneID;
                 Row.FromEntranceID = From;
                 Row.ToEntranceID = To;
-                Row.ElapsedSec = -1.0;
+                Row.BestSec = -1.0;
+                Row.LastSec = -1.0;
                 Row.GameName = GameName;
                 Row.SceneName = SceneName;
                 Row.FromName = FromName;
@@ -298,18 +301,19 @@ namespace
 
 void EntranceCostModel::LoadCsv(const QString& Path)
 {
-    // Reset every measured time. LoadCsv is re-callable (file-system watcher triggers it on
-    // every CSV append), so without this reset a row whose time was removed from the CSV by
-    // hand would stay green forever.
+    // Reset every measured time. LoadCsv is re-callable (live signal can complement it), so
+    // without this reset a row whose time was removed from the CSV by hand would stay green
+    // forever.
     for (EntranceCostRow& Row : this->Rows)
     {
-        Row.ElapsedSec = -1.0;
+        Row.BestSec = -1.0;
+        Row.LastSec = -1.0;
     }
 
     QFile File(Path);
     QFileInfo Info(Path);
     if (!File.open(QIODevice::ReadOnly | QIODevice::Text))
-    {   // CSV not present yet - leave every ElapsedSec at -1.
+    {   // CSV not present yet - leave every BestSec / LastSec at -1.
         MultiLogger::LogMessage("[CostTab] CSV not found at \"%s\" (resolved: \"%s\") - leaving every row empty.",
             Path.toUtf8().constData(),
             Info.absoluteFilePath().toUtf8().constData());
@@ -326,9 +330,15 @@ void EntranceCostModel::LoadCsv(const QString& Path)
 
     // Build a fast lookup of every CSV row keyed by (Game, Scene, From, To). When the same key
     // appears in several rows (the writer always appends, so duplicates are expected after a few
-    // measurement runs), keep the FASTEST time - the user's intent is to surface the best run for
-    // each entrance pair rather than the latest or the average.
-    std::map<std::tuple<uint8_t, uint32_t, uint32_t, uint32_t>, double> Times;
+    // measurement runs), keep BOTH the fastest time (= best, lights up the green status stripe
+    // and feeds the GPS pathfinder) AND the most recent time (= last, shown next to the best to
+    // give a sense of "what's my current pace vs my record").
+    struct CsvAggregate
+    {
+        double Best = -1.0;
+        double Last = -1.0;
+    };
+    std::map<std::tuple<uint8_t, uint32_t, uint32_t, uint32_t>, CsvAggregate> Times;
 
     int LineNo = 0;
     int Parsed = 0;
@@ -370,11 +380,11 @@ void EntranceCostModel::LoadCsv(const QString& Path)
         if (!Ok || Elapsed < 0.0) { ++Skipped; continue; }
 
         ++Parsed;
-        const auto Key = std::make_tuple(Game, SceneID, From, To);
-        auto It = Times.find(Key);
-        if (It == Times.end() || Elapsed < It->second)
+        CsvAggregate& Agg = Times[std::make_tuple(Game, SceneID, From, To)];
+        Agg.Last = Elapsed;     // CSV rows are read in append order so the final write wins.
+        if (Agg.Best < 0.0 || Elapsed < Agg.Best)
         {
-            Times[Key] = Elapsed;
+            Agg.Best = Elapsed;
         }
     }
 
@@ -384,7 +394,8 @@ void EntranceCostModel::LoadCsv(const QString& Path)
         auto It = Times.find(std::make_tuple(Row.Game, Row.SceneID, Row.FromEntranceID, Row.ToEntranceID));
         if (It != Times.end())
         {
-            Row.ElapsedSec = It->second;
+            Row.BestSec = It->second.Best;
+            Row.LastSec = It->second.Last;
             ++Matched;
         }
     }
@@ -412,7 +423,7 @@ int EntranceCostModel::rowCount(const QModelIndex&) const
 
 int EntranceCostModel::columnCount(const QModelIndex&) const
 {
-    return 5;       // Game, Scene, From, To, Elapsed
+    return 6;       // Game, Scene, From, To, Best, Last
 }
 
 
@@ -425,6 +436,11 @@ QVariant EntranceCostModel::data(const QModelIndex& Index, int Role) const
 
     const EntranceCostRow& Row = this->Rows[Index.row()];
 
+    auto FormatSeconds = [](double Sec) -> QString
+    {
+        return (Sec < 0.0) ? QString() : QString::number(Sec, 'f', 2);
+    };
+
     if (Role == Qt::DisplayRole)
     {
         switch (Index.column())
@@ -433,13 +449,15 @@ QVariant EntranceCostModel::data(const QModelIndex& Index, int Role) const
             case 1: return Row.SceneName;
             case 2: return Row.FromName;
             case 3: return Row.ToName;
-            case 4: return (Row.ElapsedSec < 0.0) ? QString() : QString::number(Row.ElapsedSec, 'f', 2);
+            case 4: return FormatSeconds(Row.BestSec);
+            case 5: return FormatSeconds(Row.LastSec);
             default: return QVariant();
         }
     }
     else if (Role == Qt::TextAlignmentRole)
     {
-        if (Index.column() == 4)
+        // Right-align the numeric columns so digits line up cleanly across rows.
+        if (Index.column() == 4 || Index.column() == 5)
         {
             return (int)(Qt::AlignRight | Qt::AlignVCenter);
         }
@@ -466,7 +484,8 @@ QVariant EntranceCostModel::headerData(int Section, Qt::Orientation Orientation,
             case 1: return "Scene";
             case 2: return "From";
             case 3: return "To";
-            case 4: return "Elapsed (sec)";
+            case 4: return "Best (sec)";
+            case 5: return "Last (sec)";
         }
     }
     else if (Orientation == Qt::Vertical && Role == Qt::BackgroundRole)
@@ -507,13 +526,13 @@ void EntranceCostModel::RebuildRowStatusColors()
     this->RowStatusColors.reserve(this->Rows.size());
     for (const EntranceCostRow& Row : this->Rows)
     {
-        if (Row.ElapsedSec < 0.0)
+        if (Row.BestSec < 0.0)
         {
             this->RowStatusColors.push_back(QColor(200, 60, 60));       // red - missing measurement
         }
         else
         {
-            this->RowStatusColors.push_back(QColor(60, 180, 80));       // green - known measurement
+            this->RowStatusColors.push_back(QColor(60, 180, 80));       // green - at least one measurement
         }
     }
 }
@@ -533,20 +552,25 @@ void EntranceCostModel::OnEntranceCostMeasured(int Game, uint32_t SceneID, uint3
         if (Row.FromEntranceID != FromEntranceID) continue;
         if (Row.ToEntranceID != ToEntranceID) continue;
 
-        // Same "keep fastest" rule as the CSV loader.
-        if (Row.ElapsedSec >= 0.0 && Row.ElapsedSec <= ElapsedSec)
+        // LastSec always tracks the most recent measurement, BestSec only updates when the
+        // new time beats the previous record (or there was no record yet).
+        Row.LastSec = ElapsedSec;
+        const bool BestUpdated = (Row.BestSec < 0.0 || ElapsedSec < Row.BestSec);
+        if (BestUpdated)
         {
-            return;
-        }
-        Row.ElapsedSec = ElapsedSec;
-        if (i < this->RowStatusColors.size())
-        {
-            this->RowStatusColors[i] = QColor(60, 180, 80);     // green - measurement just landed
+            Row.BestSec = ElapsedSec;
+            if (i < this->RowStatusColors.size())
+            {
+                this->RowStatusColors[i] = QColor(60, 180, 80);     // green - first measurement or new record
+            }
         }
         const QModelIndex Top = this->index((int)i, 0);
         const QModelIndex Bottom = this->index((int)i, this->columnCount() - 1);
         emit dataChanged(Top, Bottom);
-        emit headerDataChanged(Qt::Vertical, (int)i, (int)i);
+        if (BestUpdated)
+        {
+            emit headerDataChanged(Qt::Vertical, (int)i, (int)i);
+        }
         return;
     }
 }
@@ -569,6 +593,37 @@ void EntranceCostFilterProxy::SetHideKnown(bool Hide)
 }
 
 
+bool EntranceCostFilterProxy::lessThan(const QModelIndex& Left, const QModelIndex& Right) const
+{
+    const int Col = Left.column();
+    // Only the numeric Best / Last columns need custom ordering; everything else (Game / Scene /
+    // From / To) sorts correctly via the default QString comparison on DisplayRole.
+    if (Col != 4 && Col != 5)
+    {
+        return QSortFilterProxyModel::lessThan(Left, Right);
+    }
+    const EntranceCostModel* Src = qobject_cast<const EntranceCostModel*>(this->sourceModel());
+    if (Src == nullptr) return QSortFilterProxyModel::lessThan(Left, Right);
+
+    const int L = Left.row();
+    const int R = Right.row();
+    if (L < 0 || R < 0 || L >= (int)Src->Rows.size() || R >= (int)Src->Rows.size())
+    {
+        return QSortFilterProxyModel::lessThan(Left, Right);
+    }
+
+    // Substitute -1 (unknown) with +infinity so the unmeasured rows always sort below every
+    // measured one when ascending, and above them when descending - keeps them grouped at one
+    // end of the table whichever direction the user clicked.
+    auto Sortable = [Col](const EntranceCostRow& Row)
+    {
+        const double V = (Col == 4) ? Row.BestSec : Row.LastSec;
+        return (V < 0.0) ? std::numeric_limits<double>::infinity() : V;
+    };
+    return Sortable(Src->Rows[L]) < Sortable(Src->Rows[R]);
+}
+
+
 bool EntranceCostFilterProxy::filterAcceptsRow(int SourceRow, const QModelIndex& SourceParent) const
 {
     // Defer to the inherited text-search filter first - keeps the user's typed query working.
@@ -580,13 +635,13 @@ bool EntranceCostFilterProxy::filterAcceptsRow(int SourceRow, const QModelIndex&
     {
         return true;
     }
-    // Hide rows that already have a measured time (ElapsedSec >= 0).
+    // Hide rows that already have at least one measurement (BestSec >= 0).
     const EntranceCostModel* Src = qobject_cast<const EntranceCostModel*>(this->sourceModel());
     if (Src == nullptr || SourceRow < 0 || SourceRow >= (int)Src->Rows.size())
     {
         return true;
     }
-    return Src->Rows[SourceRow].ElapsedSec < 0.0;
+    return Src->Rows[SourceRow].BestSec < 0.0;
 }
 
 #pragma endregion // EntranceCostFilterProxy
@@ -682,6 +737,7 @@ EntranceCostTab::EntranceCostTab(EntranceTab* Parent) : QWidget(Parent)
     this->Table->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
     this->Table->horizontalHeader()->setSectionResizeMode(3, QHeaderView::Stretch);
     this->Table->horizontalHeader()->setSectionResizeMode(4, QHeaderView::ResizeToContents);
+    this->Table->horizontalHeader()->setSectionResizeMode(5, QHeaderView::ResizeToContents);
 
     connect(this->SearchBar, &QLineEdit::textChanged, this->Proxy, &QSortFilterProxyModel::setFilterFixedString);
     connect(this->HideMeasuredButton, &QPushButton::toggled, this->Proxy, &EntranceCostFilterProxy::SetHideKnown);

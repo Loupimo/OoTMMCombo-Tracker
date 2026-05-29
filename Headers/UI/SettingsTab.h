@@ -41,6 +41,7 @@ private:
     QButtonGroup* GameGroup = nullptr;              // OoT / MM / OoTMM selector for the General page.
     QButtonGroup* ModeGroup = nullptr;              // Single / Coop / Multi selector for the General page.
     QSpinBox* TeamsSpin = nullptr;                  // Number of multiplayer teams selector.
+    QSpinBox* LocalWorldSpin = nullptr;            // Local player's world / team selector (1-based in the UI).
 
     QHash<QString, QWidget*> ParamWidgets;          // Map from setting key (FilterSettings or ItemSettings) to the editor widget bound to it.
 

@@ -27,7 +27,8 @@ typedef struct EntranceCostRow
     uint32_t SceneID = 0;                   // The scene the From and To entrances physically live in.
     uint32_t FromEntranceID = 0;            // The arrival entrance.
     uint32_t ToEntranceID = 0;              // The exit entrance.
-    double ElapsedSec = -1.0;               // Travel time in seconds, or < 0 when unknown.
+    double BestSec = -1.0;                  // Fastest measured time so far in seconds, or < 0 when unknown.
+    double LastSec = -1.0;                  // Most recent measured time in seconds, or < 0 when unknown.
 
     QString GameName;                       // Pre-formatted "OoT" or "MM".
     QString SceneName;                      // Pre-formatted scene name.
@@ -76,6 +77,19 @@ protected:
     *   @return True when the row should remain visible.
     */
     bool filterAcceptsRow(int SourceRow, const QModelIndex& SourceParent) const override;
+
+    /*
+    *   Sort the numeric Best / Last columns by their underlying double value rather than the
+    *   alphabetical order of their formatted DisplayRole strings. Unmeasured rows (value < 0)
+    *   are pushed to the end (ascending) / start (descending) so they don't interleave with
+    *   measured times. Other columns fall back to the default lexicographic comparison.
+    *
+    *   @param Left     The left-hand operand of the comparison.
+    *   @param Right    The right-hand operand of the comparison.
+    *
+    *   @return True when Left should sort before Right.
+    */
+    bool lessThan(const QModelIndex& Left, const QModelIndex& Right) const override;
 
 private:
 

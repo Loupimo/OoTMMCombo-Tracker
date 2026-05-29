@@ -152,6 +152,10 @@ void MemoryReader::CheckEvent(Event * CollectedEvent)
     ComboItem finalItem = { 0 };
     uint32_t collectedItem = 0;
     bool isTreated = 0;
+    // The hook owns "nothing" drops (which never travel over the network); real items
+    // captured by the hook are only authoritative in single mode. The tracker uses the
+    // source to route the event (see OoTMMComboTracker::UpdateTrackedObject).
+    ItemSource source = ItemSource::HookItem;
 
     if (CollectedEvent)
     {   // Check that the collected event is valid
@@ -167,9 +171,11 @@ void MemoryReader::CheckEvent(Event * CollectedEvent)
         else if ((CollectedEvent->Query[2] & 0xFFFF0000) == 0xFFFF0000)
         {   // The event comes from a drop nothing actor
 
+            source = ItemSource::HookNothing;
+
             if ((CollectedEvent->Query[2] & 0x0000FF00) >> 2 == false)
             {   // We can treat the event
-                
+
 
                 uint8_t keyArr[5];
                 uint32_t key = byteswap32(CollectedEvent->Query[0]);
@@ -234,15 +240,17 @@ void MemoryReader::CheckEvent(Event * CollectedEvent)
         ObjectInfo* matchObject = FindObject(finalItem);
         const ItemInfo* matchItem = FindItem(collectedItem);
 
+        // The hook only observes the local game, so the collecting / receiving world is
+        // unknown here (-1). The tracker resolves the routing from the source and mode.
         if (finalItem.GameID == OOT_GAME)
         {
             MultiLogger::LogMessage("OoT World Object: %s - Item : %s\n", matchObject->Location, matchItem->ItemName);
-            emit MultiLogger::GetLogger()->NotifyObjectFound(OOT_GAME, matchObject, matchItem);
+            emit MultiLogger::GetLogger()->NotifyObjectFound(OOT_GAME, matchObject, matchItem, source, -1, -1);
         }
         else
         {
             MultiLogger::LogMessage("MM World Object: %s - Item : %s\n", matchObject->Location, matchItem->ItemName);
-            emit MultiLogger::GetLogger()->NotifyObjectFound(MM_GAME, matchObject, matchItem);
+            emit MultiLogger::GetLogger()->NotifyObjectFound(MM_GAME, matchObject, matchItem, source, -1, -1);
         }
     }
 }

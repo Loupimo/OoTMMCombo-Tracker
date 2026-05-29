@@ -40,6 +40,11 @@ bool AppConfig::GetUseMultiplayer()
     return Config.Settings.value("UseMultiplay", false).toBool();
 }
 
+int AppConfig::GetLocalWorld()
+{
+    return Config.Settings.value("LocalWorld", 0).toInt();
+}
+
 void AppConfig::SetRecentFiles(QStringList NewValue)
 {
     Config.Settings.setValue("RecentFiles", NewValue);
@@ -63,6 +68,11 @@ void AppConfig::SetLastSpoilerLogPath(QString NewValue)
 void AppConfig::SetUseMultiplayer(bool NewValue)
 {
     Config.Settings.setValue("UseMultiplay", NewValue);
+}
+
+void AppConfig::SetLocalWorld(int NewValue)
+{
+    Config.Settings.setValue("LocalWorld", NewValue);
 }
 
 #pragma endregion

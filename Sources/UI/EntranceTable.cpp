@@ -1184,7 +1184,7 @@ EntranceGameTabView::EntranceGameTabView(int Game, const char * Name, EntranceTa
     this->CenterStack->setCurrentIndex(0);
 
     // Map tree
-    this->MapList = new CustomTreeWidget("Maps", 300, this);
+    this->MapList = new CustomTreeWidget("Maps", 310, this);
 
     // Entrance tree
     this->EntranceList = new CustomTreeWidget("Entrances", 500, this);

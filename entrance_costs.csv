@@ -222,3 +222,232 @@ Game;SceneID;FromEntranceID;From;ToEntranceID;To;ElapsedSec
 1;0x5b;0xb000;Path to Snowhead - Mountain Village;0xae40;Path to Snowhead -> Mountain Village;2.43559
 1;0x96;0x9a80;Mountain Village - Owl Statue - Warp Owl;0x5200;Mountain Village -> Blacksmith;7.55526
 1;0x2c;0x5200;Blacksmith - Mountain Village;0x9a10;Blacksmith -> Mountain Village;2.3872
+1;0x96;0x10105;Moutain Village Spring - Tunnel Open Grotto;0xd890;Warp Owl -> South Clock Town - Owl Statue;26.4783
+1;0x6f;0xd890;South Clock Town - Owl Statue - Warp Owl;0xd230;South East Clock Town Top -> East Clock Town;13.7499
+1;0x6c;0xd230;East Clock Town - South East Clock Town Top;0x2400;East Clock Town -> Milk Bar;18.4941
+1;0x15;0x2400;Milk Bar - East Clock Town;0xd2b0;Milk Bar -> East Clock Town;4.60913
+1;0x6c;0xd2b0;East Clock Town - Milk Bar;0x3e40;Warp Owl -> Milk Road - Owl Statue;38.8616
+1;0x22;0x3e40;Milk Road - Owl Statue - Warp Owl;0xce00;Milk Road -> Gorman Track;5.04321
+1;0x6a;0xce00;Gorman Track - Milk Road;0x3e30;Gorman Track -> Milk Road;6.05125
+1;0x22;0x3e30;Milk Road - Gorman Track;0xce30;Milk Road -> Gorman Track Back;8.33331
+1;0x6a;0xce30;Gorman Track Back - Milk Road;0x3e20;Gorman Track -> Milk Road Back;3.83429
+1;0x22;0x3e20;Milk Road Back - Gorman Track;0x6400;Milk Road -> Romani's Ranch;137.196
+1;0x35;0x6400;Romani's Ranch - Milk Road;0x3e10;Romani's Ranch -> Milk Road;4.54248
+1;0x22;0x3e10;Milk Road - Romani's Ranch;0x6400;Milk Road -> Romani's Ranch;4.01233
+1;0x35;0x6400;Romani's Ranch - Milk Road;0x600;Romani's Ranch -> Stables;20.9076
+1;0x10;0x600;Stables - Romani's Ranch;0x6420;Stables -> Romani's Ranch;29.1868
+1;0x35;0x6420;Romani's Ranch - Stables;0x610;Romani's Ranch -> Ranch House;51.5282
+1;0x78;0x610;Ranch House - Romani's Ranch;0x6430;Ranch House -> Romani's Ranch;103.895
+1;0x35;0x6430;Romani's Ranch - Ranch House;0x7e00;Romani's Ranch -> Cucco Shack;24.682
+1;0x42;0x7e00;Cucco Shack - Romani's Ranch;0x6440;Cucco Shack -> Romani's Ranch;3.07868
+1;0x35;0x6440;Romani's Ranch - Cucco Shack;0x7c00;Romani's Ranch -> Doggy Racetrack;10.0204
+1;0x41;0x7c00;Doggy Racetrack - Romani's Ranch;0x6450;Doggy Racetrack -> Romani's Ranch;3.80358
+1;0x35;0x6450;Romani's Ranch - Doggy Racetrack;0x2040;Warp Owl -> Ikana Canyon - Owl Statue;17.1684
+1;0x13;0x2040;Ikana Canyon - Owl Statue - Warp Owl;0x20e0;Ikana Canyon -> Spring Water Cave;27.4812
+1;0x13;0x20d0;Ikana Canyon - Spring Water Cave;0x20e0;Ikana Canyon -> Spring Water Cave;50.1295
+1;0x99;0x20e0;Spring Water Cave - Ikana Canyon;0x20d0;Spring Water Cave -> Ikana Canyon;26.1298
+1;0x13;0x20d0;Ikana Canyon - Spring Water Cave;0x4640;Ikana Canyon -> Ikana Fairy Fountain;55.1695
+1;0x5;0x4640;Ikana Fairy Fountain - Ikana Canyon;0x20b0;Ikana Fairy Fountain -> Ikana Canyon;3.28031
+1;0x13;0x20b0;Ikana Canyon - Ikana Fairy Fountain;0xa400;Ikana Canyon -> Music Box House;145.086
+1;0x55;0xa400;Music Box House - Ikana Canyon;0x2020;Music Box House -> Ikana Canyon;5.85892
+1;0x13;0x2020;Ikana Canyon - Music Box House;0xba00;Ikana Canyon -> Shrine;35.07
+1;0x60;0xba00;Shrine - Ikana Canyon;0x20c0;Secret Shrine -> Ikana Canyon;5.07496
+1;0x13;0x20c0;Ikana Canyon - Secret Shrine;0x4640;Ikana Canyon -> Ikana Fairy Fountain;106.117
+1;0x5;0x4640;Ikana Fairy Fountain - Ikana Canyon;0x20b0;Ikana Fairy Fountain -> Ikana Canyon;3.9362
+0;0x56;0x600;Sacred Forest Meadow - Warp Song - Minuet of Forest;0x1a9;Sacred Forest Meadow -> Lost Woods;37.21
+0;0x5b;0x1a9;Lost Woods - Sacred Forest Meadow;0x1dd;Lost Woods -> Zora River;22.2908
+1;0x13;0x2040;Ikana Canyon - Owl Statue - Warp Owl;0x3410;Ikana Canyon -> Ikana Castle Exterior;15.9005
+1;0x1d;0x3410;Ikana Castle Exterior - Ikana Canyon;0x3430;Ikana Castle Exterior -> Inside Ikana Castle;10.5072
+1;0x31;0x3430;Inside Ikana Castle - Ikana Castle Exterior;0x3420;Inside Ikana Castle -> Ikana Castle Exterior;16.1203
+1;0x1d;0x3420;Ikana Castle Exterior - Inside Ikana Castle;0x3440;Powder Keg -> Inside Ikana Castle - Powder Keg;38.3516
+1;0x31;0x3440;Inside Ikana Castle - Powder Keg - Powder Keg;0xa600;Inside Ikana Castle -> Igos' Lair;38.1911
+1;0x56;0xa600;Igos' Lair - Inside Ikana Castle;0x3460;Igos' Lair -> Inside Ikana Castle;3.64296
+1;0x31;0x3460;Inside Ikana Castle - Igos' Lair;0x3420;Inside Ikana Castle -> Ikana Castle Exterior;26.8272
+1;0x1d;0x3420;Ikana Castle Exterior - Inside Ikana Castle;0x3450;Block -> Inside Ikana Castle - Block;30.8576
+1;0x31;0x3450;Inside Ikana Castle - Block - Block;0x3420;Inside Ikana Castle -> Ikana Castle Exterior;13.5592
+1;0x1d;0x3420;Ikana Castle Exterior - Inside Ikana Castle;0x9010;Ikana Castle Exterior -> Beneath the Well Back;19.8505
+1;0x4b;0x9010;Beneath the Well Back - Ikana Castle Exterior;0x3400;Beneath the Well Back -> Ikana Castle Exterior;4.2309
+1;0x1d;0x3400;Ikana Castle Exterior - Beneath the Well Back;0xaa30;Warp Owl -> Stone Tower - Owl Statue;22.8481
+1;0x58;0xaa30;Stone Tower - Owl Statue - Warp Owl;0x2600;Stone Tower -> Stone Tower Temple;24.0403
+1;0x16;0x2600;Stone Tower Temple - Stone Tower;0xaa20;Stone Tower Temple -> Stone Tower;7.35558
+1;0x58;0xaa20;Stone Tower - Stone Tower Temple;0xac00;Stone Tower -> Stone Tower Inverted;47.8741
+1;0x59;0xac00;Stone Tower Inverted - Stone Tower;0xaa10;Stone Tower Inverted -> Stone Tower;14.5137
+1;0x18;0x2a00;Stone Tower Temple Inverted - Stone Tower Inverted;0xac10;Stone Tower Temple Inverted -> Stone Tower Inverted;4.72205
+1;0x59;0xac10;Stone Tower Inverted - Stone Tower Temple Inverted;0x2a00;Stone Tower Inverted -> Stone Tower Temple Inverted;2.84565
+1;0x36;0x2a10;Twinmold's Lair - Stone Tower Temple Inverted - Stone Tower Temple Inverted;0x66000;Boss Arena -> Twinmold's Lair -> Boss Arena;4.79594
+1;0x36;0x6600;Boss Arena - Twinmold's Lair - Twinmold's Lair;0x20700;Warp Boss -> Twinmold's Lair -> Warp Boss;367.08
+1;0x13;0x2070;Ikana Canyon - Warp Twinmold - Warp Twinmold;0xaa00;Ikana Canyon -> Stone Tower;102.76
+1;0x58;0xaa00;Stone Tower - Ikana Canyon;0xac00;Stone Tower -> Stone Tower Inverted;7.58404
+1;0x59;0xac00;Stone Tower Inverted - Stone Tower;0xaa10;Stone Tower Inverted -> Stone Tower;38.114
+1;0x58;0xaa10;Stone Tower - Stone Tower Inverted;0x2030;Stone Tower -> Ikana Canyon;12.551
+1;0x13;0x2030;Ikana Canyon - Stone Tower;0x9800;Ikana Canyon -> Sakon Hideout;61.0604
+1;0x4f;0x9800;Sakon Hideout - Ikana Canyon;0x2060;Sakon Hideout -> Ikana Canyon;3.99054
+1;0x13;0x2060;Ikana Canyon - Sakon Hideout;0x8490;Waterfalls -> Southern Swamp - Waterfalls;6.88592
+1;0x45;0x8490;Southern Swamp - Waterfalls - Waterfalls;0xc200;Southern Swamp -> Woods of Mystery;16.0694
+1;0x64;0xc200;Woods of Mystery - Southern Swamp;0x8470;Mystery Woods -> Southern Swamp;3.21247
+1;0x45;0x8470;Southern Swamp - Mystery Woods;0x2040;Warp Owl -> Ikana Canyon - Owl Statue;16.5859
+1;0x13;0x2040;Ikana Canyon - Owl Statue - Warp Owl;0xa010;Ikana Canyon -> Road to Ikana;17.6335
+1;0x53;0xa010;Road to Ikana - Ikana Canyon;0x8000;Road to Ikana -> Ikana Graveyard;37.5113
+1;0x43;0x8000;Ikana Graveyard - Road to Ikana;0x8010;Ikana Grave 3 -> Ikana Graveyard -> Ikana Grave 3;37.6389
+1;0x30;0x5a00;Dampe's House - Ikana Grave 3 - Ikana Grave 3;0x80400;Ikana Graveyard -> Dampe's House -> Ikana Graveyard;35.1939
+1;0x43;0x8040;Ikana Graveyard - Dampe's House - Dampe's House;0xa020;Ikana Graveyard -> Road to Ikana;57.374
+1;0x53;0xa020;Road to Ikana - Ikana Graveyard;0x3e40;Warp Owl -> Milk Road - Owl Statue;25.0515
+1;0x22;0x3e40;Milk Road - Owl Statue - Warp Owl;0x5450;Milk Road -> Termina Field;12.6518
+1;0x2d;0x5450;Termina Field - Milk Road;0x3e00;Termina Field -> Milk Road;8.73326
+1;0x22;0x3e00;Milk Road - Termina Field;0x5450;Milk Road -> Termina Field;3.98836
+1;0x2d;0x5450;Termina Field - Milk Road;0x7a00;Termina Field -> Road to Southern Swamp;36.1471
+1;0x40;0x7a00;Road to Southern Swamp - Termina Field;0x10002;Road to Southern Swamp -> Open Grotto;20.347
+1;0x90;0x10002;Open Grotto - Road to Southern Swamp;0x10102;Open Grotto -> Road to Southern Swamp;3.94237
+1;0x40;0x10102;Road to Southern Swamp - Open Grotto;0x4200;Road to Southern Swamp -> Swamp Archery;26.7438
+1;0x24;0x4200;Swamp Archery - Road to Southern Swamp;0x7a20;Swamp Archery -> Road to Southern Swamp;4.012
+1;0x40;0x7a20;Road to Southern Swamp - Swamp Archery;0x8400;Road to Southern Swamp -> Southern Swamp;28.4139
+1;0x45;0x8400;Southern Swamp - Road to Southern Swamp;0x7a10;Southern Swamp -> Road to Southern Swamp;7.20591
+1;0x40;0x7a10;Road to Southern Swamp - Southern Swamp;0x8400;Road to Southern Swamp -> Southern Swamp;3.84381
+1;0x45;0x8400;Southern Swamp - Road to Southern Swamp;0xa800;Southern Swamp -> Tourist Information;14.3498
+1;0x57;0xa800;Tourist Information - Southern Swamp;0x8410;Tourist Information -> Southern Swamp;3.25385
+1;0x45;0x8410;Southern Swamp - Tourist Information;0x400;Southern Swamp -> Potion Shop;38.9933
+1;0xa;0x400;Potion Shop - Southern Swamp;0x8450;Potion Shop -> Southern Swamp;3.26582
+1;0x45;0x8450;Southern Swamp - Potion Shop;0x5000;Southern Swamp -> Deku Palace;118.61
+1;0x2b;0x5000;Deku Palace - Southern Swamp;0x8430;Deku Palace -> Southern Swamp;4.13447
+1;0x45;0x8430;Southern Swamp - Deku Palace;0x5000;Southern Swamp -> Deku Palace;4.44315
+1;0x2b;0x5000;Deku Palace - Southern Swamp;0x7600;Deku Palace -> Deku King's Chamber;16.2766
+1;0x3e;0x7600;Deku King's Chamber - Deku Palace;0x5020;Deku King's Chamber -> Deku Palace;5.43309
+1;0x2b;0x5020;Deku Palace - Deku King's Chamber;0x7600;Deku Palace -> Deku King's Chamber;4.5875
+1;0x2b;0x5010;Deku Palace -> Caught - Caught;0x7600;Deku Palace -> Deku King's Chamber;120.839
+1;0x2b;0x50100;Deku Palace - Bridge - Bridge;0x5010;Caught -> Deku Palace -> Caught;34.4788
+1;0x2b;0x50100;Deku Palace - Bridge - Bridge;0x7610;Deku Palace - Jail -> Monkey Jail;30.8761
+1;0x3e;0x7610;Monkey Jail - Deku Palace - Jail;0x5030;Monkey Jail -> Deku Palace;2.8754
+1;0x2b;0x5030;Deku Palace - Monkey Jail;0x1480;Deku Palace - Right Climb -> JP Right Climb Grotto;18.1826
+1;0x95;0x1480;JP Right Climb Grotto - Deku Palace - Right Climb;0x50a0;JP Right Climb Grotto -> Deku Palace;3.4582
+1;0x2b;0x50a0;Deku Palace - JP Right Climb Grotto;0x9e00;Deku Palace -> Deku Shrine;57.143
+1;0x52;0x9e00;Deku Shrine - Deku Palace;0x5040;Deku Shrine -> Deku Palace;5.91609
+1;0x2b;0x5040;Deku Palace - Deku Shrine;0x8440;Ledge -> Southern Swamp;25.5484
+1;0x45;0x8440;Southern Swamp - Ledge;0x5050;Ledge -> Deku Palace;4.38631
+1;0x2b;0x5050;Deku Palace - Ledge;0x8440;Ledge -> Southern Swamp;2.80115
+1;0x45;0x8440;Southern Swamp - Ledge;0x10004;Southern Swamp -> Open Grotto;10.5703
+1;0x91;0x10004;Open Grotto - Southern Swamp;0x10104;Open Grotto -> Southern Swamp;3.26741
+1;0x45;0x10104;Southern Swamp - Open Grotto;0x4800;Southern Swamp -> Swamp Spider House;19.5921
+1;0x27;0x4800;Swamp Spider House - Southern Swamp;0x8480;Swamp Spider House -> Southern Swamp;3.9996
+1;0x45;0x8480;Southern Swamp - Swamp Spider House;0x8600;Southern Swamp -> Woodfall;17.4125
+1;0x46;0x8600;Woodfall - Southern Swamp;0x8420;Woodfall -> Southern Swamp;3.26834
+1;0x45;0x8420;Southern Swamp - Woodfall;0x8600;Southern Swamp -> Woodfall;1178.09
+1;0x46;0x8600;Woodfall - Southern Swamp;0x4610;Woodfall -> Woodfall Fairy Fountain;50.9741
+1;0x3;0x4610;Woodfall Fairy Fountain - Woodfall;0x8620;Woodfall Fairy Fountain -> Woodfall;4.04643
+0;0x53;0x568;Graveyard - Warp Song - Nocturne of Shadow;0x195;Graveyard -> Kakariko;182.486
+1;0x45;0x84a0;Southern Swamp - Owl Statue - Warp Owl;0xc200;Southern Swamp -> Woods of Mystery;45.284
+1;0x64;0xc200;Woods of Mystery - Southern Swamp;0x8470;Mystery Woods -> Southern Swamp;85.7875
+1;0x45;0x8470;Southern Swamp - Mystery Woods;0xa800;Southern Swamp -> Tourist Information;51.3096
+1;0x57;0xa800;Tourist Information - Southern Swamp;0x8460;Koume's Ride -> Southern Swamp;13.7646
+0;0x53;0x568;Graveyard - Warp Song - Nocturne of Shadow;0x195;Graveyard -> Kakariko;35.459
+1;0x45;0x84a0;Southern Swamp - Owl Statue - Warp Owl;0xc200;Southern Swamp -> Woods of Mystery;49.5679
+1;0x64;0xc200;Woods of Mystery - Southern Swamp;0x8470;Mystery Woods -> Southern Swamp;71.718
+1;0x45;0x8470;Southern Swamp - Mystery Woods;0x84a0;Warp Owl -> Southern Swamp - Owl Statue;21.275
+1;0x45;0x84a0;Southern Swamp - Owl Statue - Warp Owl;0xa800;Southern Swamp -> Tourist Information;15.0136
+1;0x57;0xa800;Tourist Information - Southern Swamp;0x8460;Koume's Ride -> Southern Swamp;12.6024
+1;0x45;0x8460;Southern Swamp - Koume's Ride;0xa810;Koume's Ride -> Tourist Information;64.6218
+1;0x57;0xa810;Tourist Information - Koume's Ride;0x8640;Warp Owl -> Woodfall - Owl Statue;28.4591
+1;0x46;0x8640;Woodfall - Owl Statue - Warp Owl;0x3000;Woodfall -> Woodfall Temple;55.722
+1;0x1b;0x3000;Woodfall Temple - Woodfall;0x8610;Woodfall Temple -> Woodfall;4.7882
+1;0x46;0x8610;Woodfall - Woodfall Temple;0x3000;Woodfall -> Woodfall Temple;3.53933
+1;0x1b;0x3000;Woodfall Temple - Woodfall;0x3800;Woodfall Temple -> Oldolwa's Lair - Woodfall Temple;75.9053
+1;0x1f;0x3800;Oldolwa's Lair - Woodfall Temple - Woodfall Temple;0x30100;Warp Boss -> Odolwa's Lair -> Warp Boss;111.313
+1;0x1b;0x3010;Woodfall Temple - Warp Odolwa - Warp Odolwa;0x8630;Deku Princess -> Woodfall;21.1994
+1;0x46;0x8630;Woodfall - Deku Princess;0x3020;Deku Princess -> Woodfall;2.95857
+1;0x1b;0x3020;Woodfall - Deku Princess;0x8630;Deku Princess -> Woodfall;4.29723
+1;0x46;0x8630;Woodfall - Deku Princess;0x84a0;Warp Owl -> Southern Swamp - Owl Statue;15.056
+1;0x92;0x10003;Open Grotto - Woods of Mystery;0x10103;Open Grotto -> Woods of Mystery;3.81335
+1;0x64;0x10103;Woods of Mystery - Open Grotto;0x8470;Mystery Woods -> Southern Swamp;47.4113
+1;0x93;0x14c0;Bean Grotto - Deku Palace;0x5090;Bean Grotto -> Deku Palace;3.6053
+1;0x2b;0x5090;Deku Palace - Bean Grotto;0x1460;Deku Palace - End Line -> JP End Line Grotto;6.10301
+1;0x94;0x1460;JP End Line Grotto - Deku Palace - End Line;0x5080;JP End Line Grotto -> Deku Palace;6.73422
+1;0x2b;0x5080;Deku Palace - JP End Line Grotto;0x1460;Deku Palace - End Line -> JP End Line Grotto;4.10553
+1;0x94;0x1460;JP End Line Grotto - Deku Palace - End Line;0x5070;JP Start Line Grotto -> Deku Palace;8.6659
+1;0x2b;0x5070;Deku Palace - JP Start Line Grotto;0x14e0;Deku Palace - Start Line -> JP Start Line Grotto;4.32477
+1;0x94;0x14e0;JP Start Line Grotto - Deku Palace - Start Line;0x5070;JP Start Line Grotto -> Deku Palace;3.52316
+1;0x2b;0x5070;Deku Palace - JP Start Line Grotto;0x14f0;Deku Palace - Left Climb -> JP Left Climb Grotto;10.9641
+1;0x95;0x14f0;JP Left Climb Grotto - Deku Palace - Left Climb;0x5060;JP Left Climb Grotto -> Deku Palace;3.93846
+1;0x2b;0x5060;Deku Palace - JP Left Climb Grotto;0xd890;Warp Owl -> South Clock Town - Owl Statue;34.7031
+1;0x6f;0xd890;South Clock Town - Owl Statue - Warp Owl;0xda00;South Clock Town -> Laundry Pool;27.334
+1;0x70;0xda00;Laundry Pool - South Clock Town;0xe10;Laundry Pool -> Kafei Hideout;18.3547
+1;0xd;0xe10;Kafei Hideout - Laundry Pool;0xda10;Kafei Hideout -> Laundry Pool;5.92816
+1;0x70;0xda10;Laundry Pool - Kafei Hideout;0x68b0;Warp Owl -> Great Bay Coast - Owl Statue;38.9521
+1;0x37;0x68b0;Great Bay Coast - Owl Statue - Warp Owl;0x5800;Great Bay Coast -> Laboratory;16.7293
+1;0x2f;0x5800;Laboratory - Great Bay Coast;0x6870;Laboratory -> Great Bay Coast;3.68133
+1;0x37;0x6870;Great Bay Coast - Laboratory;0x6820;Beach -> Great Bay Coast - Beach;10.5393
+1;0x37;0x6820;Great Bay Coast - Beach - Beach;0x4a00;Great Bay Coast -> Ocean Spider House;37.8636
+1;0x28;0x4a00;Ocean Spider House - Great Bay Coast;0x6880;Ocean Spider House -> Great Bay Coast;3.76159
+1;0x37;0x6880;Great Bay Coast - Ocean Spider House;0x7200;Great Bay Coast -> Fisher Hut;5.92737
+1;0x3c;0x7200;Fisher Hut - Great Bay Coast;0x6840;Fisherman Hut -> Great Bay Coast;5.2655
+1;0x37;0x6840;Great Bay Coast - Fisherman Hut;0x10008;Great Bay Coast -> Open Grotto;9.94548
+1;0x86;0x10008;Open Grotto - Great Bay Coast;0x10108;Open Grotto -> Great Bay Coast;3.11438
+1;0x37;0x10108;Great Bay Coast - Open Grotto;0x6a00;Great Bay Coast -> Zora Cape;28.1327
+1;0x38;0x6a00;Zora Cape - Great Bay Coast;0x6810;Zora Cape -> Great Bay Coast;5.92062
+1;0x37;0x6810;Great Bay Coast - Zora Cape;0x4400;Great Bay Coast -> Pinnacle Rock;35.1532
+1;0x25;0x4400;Pinnacle Rock - Great Bay Coast;0x4410;Void Entrance -> Pinnacle Rock - Void Entrance;10.0461
+1;0x25;0x4410;Pinnacle Rock - Void Entrance - Void Entrance;0x6830;Pinnacle Rock -> Great Bay Coast;5.09471
+1;0x37;0x6830;Great Bay Coast - Pinnacle Rock;0x6860;Ledge -> Great Bay Coast - Ledge;7.09852
+1;0x37;0x6860;Great Bay Coast - Ledge - Ledge;0x1000e;Great Bay Coast -> Cow Grotto;12.7986
+1;0x87;0x1000e;Cow Grotto - Great Bay Coast;0x1010e;Cow Grotto -> Great Bay Coast;6.72798
+1;0x37;0x1010e;Great Bay Coast - Cow Grotto;0x7000;Great Bay Coast -> Pirate Fortress Entrance;46.6546
+1;0x3b;0x7000;Pirate Fortress Entrance - Great Bay Coast;0x6850;Pirate Fortress Entrance -> Great Bay Coast;5.95858
+1;0x37;0x6850;Great Bay Coast - Pirate Fortress Entrance;0x7000;Great Bay Coast -> Pirate Fortress Entrance;3.71218
+1;0x3b;0x7000;Pirate Fortress Entrance - Great Bay Coast;0x68c0;Trapdoor -> Great Bay Coast - Trapdoor;13.2374
+1;0x23;0x4090;Pirate Fortress Interior - Sewers' Gate;0x7020;Sewers' Gate -> Pirate Fortress Entrance;3.19351
+1;0x3b;0x7020;Pirate Fortress Entrance - Sewers' Gate;0x4090;Sewers' Gate -> Pirate Fortress Interior;3.58463
+1;0x23;0x4090;Pirate Fortress Interior - Sewers' Gate;0x7030;Sewers' Vent -> Pirate Fortress Entrance - Sewers' Vent;50.6845
+1;0x3b;0x7060;Pirate Fortress Entrance - Sewers' Door;0x40a0;Sewers' Door -> Pirate Fortress Interior;3.28628
+1;0x23;0x40a0;Pirate Fortress Interior - Sewers' Door;0x7060;Sewers' Door -> Pirate Fortress Entrance;4.09696
+1;0x3b;0x7060;Pirate Fortress Entrance - Sewers' Door;0x22c0;Lookout -> Pirate Fortress Exterior;38.7583
+1;0x14;0x22c0;Pirate Fortress Exterior - Lookout;0x7050;Lookout -> Pirate Fortress Entrance;4.21394
+1;0x3b;0x7050;Pirate Fortress Entrance - Lookout;0x22c0;Lookout -> Pirate Fortress Exterior;3.37915
+1;0x14;0x22c0;Pirate Fortress Exterior - Lookout;0x4040;Canon -> Pirate Fortress Interior;17.5951
+1;0x14;0x2250;Pirate Fortress Exterior - Barrel;0x4050;Barrel Egg Side -> Pirate Fortress Interior;23.5442
+1;0x23;0x4050;Pirate Fortress Interior - Barrel Egg Side;0x2260;Barrel Egg Side -> Pirate Fortress Exterior;3.51204
+1;0x14;0x2260;Pirate Fortress Exterior - Barrel Egg Side;0x4010;Hookshot Lookout -> Pirate Fortress Interior;26.756
+1;0x23;0x4010;Pirate Fortress Interior - Hookshot Lookout;0x2220;Hookshot Lookout -> Pirate Fortress Exterior;21.2893
+1;0x14;0x2220;Pirate Fortress Exterior - Hookshot Lookout;0x4000;Hookshot -> Pirate Fortress Interior;8.02633
+1;0x23;0x4000;Pirate Fortress Interior - Hookshot;0x2210;Hookshot -> Pirate Fortress Exterior;3.06281
+1;0x14;0x2210;Pirate Fortress Exterior - Hookshot;0x4030;Treasure Egg Side -> Pirate Fortress Interior;12.7999
+1;0x23;0x4030;Pirate Fortress Interior - Treasure Egg Side;0x2240;Treasure Egg Side -> Pirate Fortress Exterior;5.13565
+1;0x14;0x2240;Pirate Fortress Exterior - Treasure Egg Side;0x4020;Treasure -> Pirate Fortress Interior;58.1233
+1;0x23;0x4020;Pirate Fortress Interior - Treasure;0x2230;Treasure -> Pirate Fortress Exterior;2.92655
+1;0x14;0x2230;Pirate Fortress Exterior - Treasure;0x4060;Canon -> Pirate Fortress Interior;16.1024
+1;0x23;0x4060;Pirate Fortress Interior - Canon;0x2270;Canon -> Pirate Fortress Exterior;7.32986
+1;0x23;0x4070;Pirate Fortress Interior - Barrel Egg Side;0x2280;Barrel Egg Side -> Pirate Fortress Exterior;3.40448
+1;0x14;0x2280;Pirate Fortress Exterior - Barrel Egg Side;0x7040;Trapdoor -> Pirate Fortress Entrance - Trapdoor;77.7904
+1;0x3b;0x7040;Pirate Fortress Entrance - Trapdoor - Trapdoor;0x2200;Entrance -> Pirate Fortress Exterior;23.1713
+1;0x14;0x2200;Pirate Fortress Exterior - Entrance;0x7010;Exterior -> Pirate Fortress Entrance;3.56074
+1;0x3b;0x7010;Pirate Fortress Entrance - Exterior;0x68c0;Trapdoor -> Great Bay Coast - Trapdoor;23.1988
+1;0x37;0x68c0;Great Bay Coast - Trapdoor - Trapdoor;0x6a60;Warp Owl -> Zora Cape - Owl Statue;33.2377
+1;0x38;0x6a60;Zora Cape - Owl Statue - Warp Owl;0x6010;Zora Cape Peninsula -> Zora's Theater Back;9.40936
+1;0x33;0x6010;Zora's Theater Back - Zora Cape Peninsula;0x6a20;Zora's Theater Back -> Zora Cape Peninsula;4.375
+1;0x38;0x6a20;Zora Cape Peninsula - Zora's Theater Back;0x8c00;Zora Cape -> Great Bay Temple;52.6035
+1;0x49;0x8c00;Great Bay Temple - Zora Cape;0x6a70;Great Bay Temple -> Zora Cape;14.0401
+1;0x38;0x6a70;Zora Cape - Great Bay Temple;0x8c00;Zora Cape -> Great Bay Temple;9.74347
+1;0x49;0x8c00;Great Bay Temple - Zora Cape;0xb800;Great Bay Temple -> Gyorg's Lair - Great Bay Temple;452.905
+1;0x5f;0xb800;Gyorg's Lair - Great Bay Temple - Great Bay Temple;0xb9000;Warp Boss -> Gyorg's Lair -> Warp Boss;216.823
+1;0x38;0x6a70;Zora Cape - Great Bay Temple;0x6a30;Beach -> Zora Cape - Beach;12.064
+1;0x38;0x6a30;Zora Cape - Beach - Beach;0x10009;Zora Cape -> Boulder Grotto;22.3241
+1;0x88;0x10009;Boulder Grotto - Zora Cape;0x10109;Boulder Grotto -> Zora Cape;2.6078
+1;0x38;0x10109;Zora Cape - Boulder Grotto;0x4630;Zora Cape -> Ocean Fairy Fountain;17.4644
+1;0x2;0x4630;Ocean Fairy Fountain - Zora Cape;0x6a50;Ocean Fairy Fountain -> Zora Cape;3.17888
+1;0x38;0x6a50;Zora Cape - Ocean Fairy Fountain;0x6000;Zora Cape Front -> Zora's Theater Front;24.4073
+1;0x33;0x6000;Zora's Theater Front - Zora Cape Front;0x6a10;Zora's Theater Front -> Zora Cape Front;10.9389
+1;0x38;0x6a10;Zora Cape Front - Zora's Theater Front;0x6000;Zora Cape Front -> Zora's Theater Front;5.60761
+1;0x33;0x6000;Zora's Theater Front - Zora Cape Front;0x9250;Zora Hall -> Zora Shop;128.658
+1;0x73;0x9250;Zora Shop - Zora Hall;0x6020;Zora Shop -> Zora Hall;119.695
+1;0x33;0x6020;Zora Hall - Zora Shop;0x9200;Zora Hall -> Tijo's Room;17.6614
+1;0x76;0x9200;Tijo's Room - Zora Hall;0x6060;Tijo's Room -> Zora Hall;3.18016
+1;0x33;0x6060;Zora Hall - Tijo's Room;0x9210;Zora Hall -> Japas' Room;5.56814
+1;0x75;0x9210;Japas' Room - Zora Hall;0x6050;Japas' Room -> Zora Hall;2.97083
+1;0x33;0x6050;Zora Hall - Japas' Room;0x9230;Zora Hall -> Evans' Room;10.5498
+1;0x74;0x9230;Evans' Room - Zora Hall;0x6040;Evans' Room -> Zora Hall;2.95744
+1;0x33;0x6040;Zora Hall - Evans' Room;0x9220;Zora Hall -> Lulu's Room;5.41754
+1;0x77;0x9220;Lulu's Room - Zora Hall;0x6030;Lulu's Room -> Zora Hall;5.85691
+1;0x33;0x6030;Zora Hall - Lulu's Room;0x6a10;Zora's Theater Front -> Zora Cape Front;27.4901
+1;0x38;0x6a10;Zora Cape Front - Zora's Theater Front;0x8e00;Zora Cape -> Waterfall Rapids;63.9418
+1;0x4a;0x8e00;Waterfall Rapids - Zora Cape;0x6a40;Waterfall Rapids -> Zora Cape;5.69461
+1;0x38;0x6a40;Zora Cape - Waterfall Rapids;0x8e00;Zora Cape -> Waterfall Rapids;6.0575
+1;0x4a;0x8e00;Waterfall Rapids - Zora Cape;0x8e10;Race Begin -> Waterfall Rapids - Race Begin;49.3355
+1;0x4a;0x8e10;Waterfall Rapids - Race Begin - Race Begin;0x8e20;Race End -> Waterfall Rapids - Race End;98.72
+1;0x4a;0x8e20;Waterfall Rapids - Race End - Race End;0x6a40;Waterfall Rapids -> Zora Cape;17.2314

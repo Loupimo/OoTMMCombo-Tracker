@@ -508,7 +508,7 @@ static const std::map<int, std::vector<GrottoEntrance>> GrottoEntrances =
                                                                                       { MM_GROTTO_EXIT_GENERIC_PATH_SWAMP,                      104,  -182,  2202 } } },
     { MM_SWAMP_FROM_SPIDER_HOUSE_ENTR,              std::vector<GrottoEntrance>() = { { MM_SWAMP_FROM_SPIDER_HOUSE_ENTR,                      -1049,    12,  2042 },
                                                                                       { MM_SWAMP_FROM_ROAD_ENTR,                               -191,    61, -1410 },
-                                                                                      { MM_KOUME_RIDE_FROM_TOURIST_ENTR,                        -42,    24,  -150 },
+                                                                                      { MM_KOUME_RIDE_FROM_TOURIST_ENTR,                        -42,    24,   150 },
                                                                                       { MM_SWAMP_FROM_PALACE_MAIN_ENTRANCE_ENTR,               -825,    49,  4044 },
                                                                                       { MM_SWAMP_FROM_PALACE_LEDGE_ENTR,                      -1647,   255,  1346 },
                                                                                       { MM_SWAMP_FROM_WOODFALL_ENTR,                            240,   393,  3201 },
@@ -1746,434 +1746,446 @@ uint32_t EntranceHelper::GetWarpSong(EntranceMessage& Message, bool * IsWarpSong
 
 uint32_t EntranceHelper::CheckGrottoSpawn(EntranceMessage& Message)
 {
-    switch (Message.EntranceID)
+    if (Message.GameID == OOT_GAME)
     {
+        switch (Message.EntranceID)
+        {
 
 #pragma region OoT Grottos
 
         // Death Mountain Crater
-        case OOT_GROTTO_EXIT_SCRUBS3_DMC:
-        case OOT_GROTTO_EXIT_GENERIC_DMC:
-        case OOT_WARP_SONG_CRATER_ENTR:
-        case OOT_DEATH_CRATER_FROM_TEMPLE_FIRE_ENTR:
-        case OOT_DEATH_CRATER_FROM_FAIRY_ENTR:
-        case OOT_DEATH_MOUNTAIN_CRATER_ENTR:
-        case OOT_CRATER_FROM_GORON_CITY_ENTR:
-        {
-            Message.EntranceID = OOT_DEATH_MOUNTAIN_CRATER_ENTR;
-            break;
-        }
+            case OOT_GROTTO_EXIT_SCRUBS3_DMC:
+            case OOT_GROTTO_EXIT_GENERIC_DMC:
+            case OOT_WARP_SONG_CRATER_ENTR:
+            case OOT_DEATH_CRATER_FROM_TEMPLE_FIRE_ENTR:
+            case OOT_DEATH_CRATER_FROM_FAIRY_ENTR:
+            case OOT_DEATH_MOUNTAIN_CRATER_ENTR:
+            case OOT_CRATER_FROM_GORON_CITY_ENTR:
+            {
+                Message.EntranceID = OOT_DEATH_MOUNTAIN_CRATER_ENTR;
+                break;
+            }
 
-        // Death Mount Trail
-        case OOT_GROTTO_EXIT_GENERIC_DMT:
-        case OOT_GROTTO_EXIT_TRAIL_COW:
-        case OOT_DEATH_MOUNTAIN_FROM_FAIRY_ENTR:
-        case OOT_TRAIL_SUMMIT_FROM_CRATER_ENTR:
-        case OOT_MOUNTAIN_TRAIL_FROM_DODONGO_CAVERN_ENTR:
-        case OOT_DEATH_MOUNTAIN_FROM_KAKARIKO_ENTR:
-        case OOT_DEATH_MOUNTAIN_FROM_GORON_CITY_ENTR:
-        {
-            Message.EntranceID = OOT_DEATH_MOUNTAIN_FROM_KAKARIKO_ENTR;
-            break;
-        }
+            // Death Mount Trail
+            case OOT_GROTTO_EXIT_GENERIC_DMT:
+            case OOT_GROTTO_EXIT_TRAIL_COW:
+            case OOT_DEATH_MOUNTAIN_FROM_FAIRY_ENTR:
+            case OOT_TRAIL_SUMMIT_FROM_CRATER_ENTR:
+            case OOT_MOUNTAIN_TRAIL_FROM_DODONGO_CAVERN_ENTR:
+            case OOT_DEATH_MOUNTAIN_FROM_KAKARIKO_ENTR:
+            case OOT_DEATH_MOUNTAIN_FROM_GORON_CITY_ENTR:
+            {
+                Message.EntranceID = OOT_DEATH_MOUNTAIN_FROM_KAKARIKO_ENTR;
+                break;
+            }
 
-        // Goron City
-        case OOT_GROTTO_EXIT_SCRUBS3_GORON_CITY:
-        case OOT_GORON_CITY_FROM_SHOP_ENTR:
-        case OOT_GORON_CITY_FROM_CRATER_ENTR:
-        case OOT_GORON_CITY_FROM_LOST_WOODS_ENTR:
-        case OOT_GORON_CITY_ENTR:
-        {
-            Message.EntranceID = OOT_GORON_CITY_ENTR;
-            break;
-        }
+            // Goron City
+            case OOT_GROTTO_EXIT_SCRUBS3_GORON_CITY:
+            case OOT_GORON_CITY_FROM_SHOP_ENTR:
+            case OOT_GORON_CITY_FROM_CRATER_ENTR:
+            case OOT_GORON_CITY_FROM_LOST_WOODS_ENTR:
+            case OOT_GORON_CITY_ENTR:
+            {
+                Message.EntranceID = OOT_GORON_CITY_ENTR;
+                break;
+            }
 
-        // Sacred Forest Meadow
-        case OOT_GROTTO_EXIT_FAIRY_SFM:
-        case OOT_GROTTO_EXIT_SCRUBS2_SFM:
-        case OOT_GROTTO_EXIT_WOLFOS:
-        case OOT_SACRED_MEADOW_FROM_TEMPLE_FOREST_ENTR:
-        case OOT_SACRED_FOREST_MEADOW_ENTR:
-        case OOT_WARP_SONG_MEADOW_ENTR:
-        {
-            Message.EntranceID = OOT_SACRED_FOREST_MEADOW_ENTR;
-            break;
-        }
+            // Sacred Forest Meadow
+            case OOT_GROTTO_EXIT_FAIRY_SFM:
+            case OOT_GROTTO_EXIT_SCRUBS2_SFM:
+            case OOT_GROTTO_EXIT_WOLFOS:
+            case OOT_SACRED_MEADOW_FROM_TEMPLE_FOREST_ENTR:
+            case OOT_SACRED_FOREST_MEADOW_ENTR:
+            case OOT_WARP_SONG_MEADOW_ENTR:
+            {
+                Message.EntranceID = OOT_SACRED_FOREST_MEADOW_ENTR;
+                break;
+            }
 
-        // Lost Woods
-        case OOT_GROTTO_EXIT_DEKU_THEATER:
-        case OOT_GROTTO_EXIT_SCRUB_UPGRADE:
-        case OOT_GROTTO_EXIT_GENERIC_LOST_WOODS:
-        case OOT_LOST_WOODS_FROM_GORON_CITY_ENTR:
-        case OOT_LOST_WOODS_FROM_ZORA_RIVER_ENTR:
-        case OOT_LOST_WOODS_BRIDGE_FROM_FOREST_ENTR:
-        case OOT_LOST_WOODS_BRIDGE_FROM_FIELD_ENTR:
-        case OOT_LOST_WOODS_FROM_KOKIRI_FOREST_ENTR:
-        case OOT_LOST_WOODS_FROM_MEADOW_ENTR:
-        {
-            Message.EntranceID = OOT_LOST_WOODS_FROM_KOKIRI_FOREST_ENTR;
-            break;
-        }
+            // Lost Woods
+            case OOT_GROTTO_EXIT_DEKU_THEATER:
+            case OOT_GROTTO_EXIT_SCRUB_UPGRADE:
+            case OOT_GROTTO_EXIT_GENERIC_LOST_WOODS:
+            case OOT_LOST_WOODS_FROM_GORON_CITY_ENTR:
+            case OOT_LOST_WOODS_FROM_ZORA_RIVER_ENTR:
+            case OOT_LOST_WOODS_BRIDGE_FROM_FOREST_ENTR:
+            case OOT_LOST_WOODS_BRIDGE_FROM_FIELD_ENTR:
+            case OOT_LOST_WOODS_FROM_KOKIRI_FOREST_ENTR:
+            case OOT_LOST_WOODS_FROM_MEADOW_ENTR:
+            {
+                Message.EntranceID = OOT_LOST_WOODS_FROM_KOKIRI_FOREST_ENTR;
+                break;
+            }
 
-        // Kokiri Forest
-        case OOT_GROTTO_EXIT_GENERIC_KOKIRI_FOREST:
-        case OOT_KOKIRI_FOREST_FROM_DEKU_TREE_ENTR:
-        case OOT_FOREST_FROM_LOST_WOODS_BRIDGE_ENTR:
-        case OOT_KOKIRI_FOREST_FROM_MIDO_ENTR:
-        case OOT_KOKIRI_FOREST_FROM_SARIA_ENTR:
-        case OOT_KOKIRI_FOREST_FROM_TWINS_ENTR:
-        case OOT_KOKIRI_FOREST_FROM_KNOW_IT_ALL_ENTR:
-        case OOT_KOKIRI_FOREST_FROM_SHOP_ENTR:
-        case OOT_KOKIRI_FOREST_FROM_LINK_ENTR:
-        case OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR:
-        {
-            Message.EntranceID = OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR;
-            break;
-        }
+            // Kokiri Forest
+            case OOT_GROTTO_EXIT_GENERIC_KOKIRI_FOREST:
+            case OOT_KOKIRI_FOREST_FROM_DEKU_TREE_ENTR:
+            case OOT_FOREST_FROM_LOST_WOODS_BRIDGE_ENTR:
+            case OOT_KOKIRI_FOREST_FROM_MIDO_ENTR:
+            case OOT_KOKIRI_FOREST_FROM_SARIA_ENTR:
+            case OOT_KOKIRI_FOREST_FROM_TWINS_ENTR:
+            case OOT_KOKIRI_FOREST_FROM_KNOW_IT_ALL_ENTR:
+            case OOT_KOKIRI_FOREST_FROM_SHOP_ENTR:
+            case OOT_KOKIRI_FOREST_FROM_LINK_ENTR:
+            case OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR:
+            {
+                Message.EntranceID = OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR;
+                break;
+            }
 
-        // Kakariko
-        case OOT_GROTTO_EXIT_GENERIC_KAKARIKO:
-        case OOT_GROTTO_EXIT_REDEAD:
-        case OOT_KAKARIKO_FROM_BOTTOM_OF_THE_WELL_ENTR:
-        case OOT_KAKARIKO_FROM_DEATH_MOUNTAIN_ENTR:
-        case OOT_KAKARIKO_FROM_GRAVEYARD_ENTR:
-        case OOT_KAKARIKO_FROM_CARPENTER_ENTR:
-        case OOT_KAKARIKO_FROM_SKULLTULA_ENTR:
-        case OOT_KAKARIKO_FROM_IMPA_ENTR:
-        case OOT_KAKARIKO_FROM_IMPA_BACK_ENTR:
-        case OOT_KAKARIKO_FROM_WINDMILL_ENTR:
-        case OOT_KAKARIKO_FROM_SHOP_POTION_ENTR:
-        case OOT_KAKARIKO_FROM_SHOP_POTION_BACK_ENTR:
-        case OOT_KAKARIKO_FROM_BAZAAR_ENTR:
-        case OOT_KAKARIKO_FROM_ARCHERY_ENTR:
-        case OOT_KAKARIKO_FROM_GRANNY_ENTR:
-        case OOT_KAKARIKO_FROM_FIELD_ENTR:
-        case OOT_VILLAGE_OWL_ENTR:
-        {
-            Message.EntranceID = OOT_KAKARIKO_FROM_FIELD_ENTR;
-            break;
-        }
+            // Kakariko
+            case OOT_GROTTO_EXIT_GENERIC_KAKARIKO:
+            case OOT_GROTTO_EXIT_REDEAD:
+            case OOT_KAKARIKO_FROM_BOTTOM_OF_THE_WELL_ENTR:
+            case OOT_KAKARIKO_FROM_DEATH_MOUNTAIN_ENTR:
+            case OOT_KAKARIKO_FROM_GRAVEYARD_ENTR:
+            case OOT_KAKARIKO_FROM_CARPENTER_ENTR:
+            case OOT_KAKARIKO_FROM_SKULLTULA_ENTR:
+            case OOT_KAKARIKO_FROM_IMPA_ENTR:
+            case OOT_KAKARIKO_FROM_IMPA_BACK_ENTR:
+            case OOT_KAKARIKO_FROM_WINDMILL_ENTR:
+            case OOT_KAKARIKO_FROM_SHOP_POTION_ENTR:
+            case OOT_KAKARIKO_FROM_SHOP_POTION_BACK_ENTR:
+            case OOT_KAKARIKO_FROM_BAZAAR_ENTR:
+            case OOT_KAKARIKO_FROM_ARCHERY_ENTR:
+            case OOT_KAKARIKO_FROM_GRANNY_ENTR:
+            case OOT_KAKARIKO_FROM_FIELD_ENTR:
+            case OOT_VILLAGE_OWL_ENTR:
+            {
+                Message.EntranceID = OOT_KAKARIKO_FROM_FIELD_ENTR;
+                break;
+            }
 
-        // Hyrule Field
-        case OOT_GROTTO_EXIT_GENERIC_HF_MARKET:
-        case OOT_GROTTO_EXIT_FAIRY_HF:
-        case OOT_GROTTO_EXIT_TEKTITE:
-        case OOT_GROTTO_EXIT_GENERIC_HF_SOUTHEAST:
-        case OOT_GROTTO_EXIT_GENERIC_HF_OPEN:
-        case OOT_GROTTO_EXIT_SCRUB_HEART_PIECE:
-        case OOT_GROTTO_EXIT_FIELD_COW:
-        case OOT_GROTTO_EXIT_FIELD_TREE:
-        case OOT_FIELD_OWL_ENTR:
-        case OOT_FIELD_FROM_ZORA_RIVER_WATER_ENTR:
-        case OOT_FIELD_FROM_ZORA_RIVER_ENTR:
-        case OOT_FIELD_FROM_LOST_WOODS_BRIDGE_ENTR:
-        case OOT_FIELD_FROM_KAKARIKO_ENTR:
-        case OOT_FIELD_FROM_LON_LON_RANCH_ENTR:
-        case OOT_FIELD_FROM_LON_LON_EPONA_JUMP_LEFT:
-        case OOT_FIELD_FROM_LON_LON_EPONA_JUMP_MIDDLE:
-        case OOT_FIELD_FROM_LON_LON_EPONA_JUMP_RIGHT:
-        case OOT_FIELD_FROM_LAKE_HYLIA_ENTR:
-        case OOT_FIELD_FROM_GERUDO_VALLEY_ENTR:
-        case OOT_FIELD_FROM_MARKET_ENTRANCE_ENTR:
-        {
-            Message.EntranceID = OOT_FIELD_FROM_MARKET_ENTRANCE_ENTR;
-            break;
-        }
+            // Hyrule Field
+            case OOT_GROTTO_EXIT_GENERIC_HF_MARKET:
+            case OOT_GROTTO_EXIT_FAIRY_HF:
+            case OOT_GROTTO_EXIT_TEKTITE:
+            case OOT_GROTTO_EXIT_GENERIC_HF_SOUTHEAST:
+            case OOT_GROTTO_EXIT_GENERIC_HF_OPEN:
+            case OOT_GROTTO_EXIT_SCRUB_HEART_PIECE:
+            case OOT_GROTTO_EXIT_FIELD_COW:
+            case OOT_GROTTO_EXIT_FIELD_TREE:
+            case OOT_FIELD_OWL_ENTR:
+            case OOT_FIELD_FROM_ZORA_RIVER_WATER_ENTR:
+            case OOT_FIELD_FROM_ZORA_RIVER_ENTR:
+            case OOT_FIELD_FROM_LOST_WOODS_BRIDGE_ENTR:
+            case OOT_FIELD_FROM_KAKARIKO_ENTR:
+            case OOT_FIELD_FROM_LON_LON_RANCH_ENTR:
+            case OOT_FIELD_FROM_LON_LON_EPONA_JUMP_LEFT:
+            case OOT_FIELD_FROM_LON_LON_EPONA_JUMP_MIDDLE:
+            case OOT_FIELD_FROM_LON_LON_EPONA_JUMP_RIGHT:
+            case OOT_FIELD_FROM_LAKE_HYLIA_ENTR:
+            case OOT_FIELD_FROM_GERUDO_VALLEY_ENTR:
+            case OOT_FIELD_FROM_MARKET_ENTRANCE_ENTR:
+            {
+                Message.EntranceID = OOT_FIELD_FROM_MARKET_ENTRANCE_ENTR;
+                break;
+            }
 
-        // Gerudo Valley
-        case OOT_GROTTO_EXIT_OCTOROK:
-        case OOT_GROTTO_EXIT_SCRUBS2_VALLEY:
-        case OOT_VALLEY_FROM_GERUDO_FORTRESS_ENTR:
-        case OOT_GERUDO_FORTRESS_CAUGHT_NO_HOOK_ENTR:
-        case OOT_GERUDO_VALLEY_FROM_FIELD_ENTR:
-        case OOT_GERUDO_VALLEY_FROM_TENT_ENTR:
-        {
-            Message.EntranceID = OOT_GERUDO_VALLEY_FROM_FIELD_ENTR;
-            break;
-        }
-        
-        // Lake Hylia
-        case OOT_GROTTO_EXIT_SCRUBS3_LAKE:
-        case OOT_LAKE_HYLIA_FROM_TEMPLE_WATER_ENTR:
-        case OOT_LAKE_HYLIA_FROM_FIELD_ENTR:
-        case OOT_LAKE_HYLIA_FROM_ZORA_DOMAIN_ENTR:
-        case OOT_LAKE_HYLIA_FROM_VALLEY_ENTR:
-        case OOT_LAKE_HYLIA_FROM_LABORATORY_ENTR:
-        case OOT_LAKE_HYLIA_FROM_FISHING_POND_ENTR:
-        case OOT_WARP_SONG_LAKE_ENTR:
-        {
-            Message.EntranceID = OOT_LAKE_HYLIA_FROM_FIELD_ENTR;
-            break;
-        }
+            // Gerudo Valley
+            case OOT_GROTTO_EXIT_OCTOROK:
+            case OOT_GROTTO_EXIT_SCRUBS2_VALLEY:
+            case OOT_VALLEY_FROM_GERUDO_FORTRESS_ENTR:
+            case OOT_GERUDO_FORTRESS_CAUGHT_NO_HOOK_ENTR:
+            case OOT_GERUDO_VALLEY_FROM_FIELD_ENTR:
+            case OOT_GERUDO_VALLEY_FROM_TENT_ENTR:
+            {
+                Message.EntranceID = OOT_GERUDO_VALLEY_FROM_FIELD_ENTR;
+                break;
+            }
 
-        // Zora Domain
-        case OOT_GROTTO_EXIT_FAIRY_DOMAIN:
-        case OOT_ZORA_DOMAIN_FROM_SHOP_ENTR:
-        case OOT_DOMAIN_FROM_FOUNTAIN_ENTR:
-        case OOT_ZORA_DOMAIN_FROM_LAKE_HYLIA_ENTR:
-        case OOT_ZORA_DOMAIN_ENTR:
-        {
-            Message.EntranceID = OOT_ZORA_DOMAIN_ENTR;
-            break;
-        }
+            // Lake Hylia
+            case OOT_GROTTO_EXIT_SCRUBS3_LAKE:
+            case OOT_LAKE_HYLIA_FROM_TEMPLE_WATER_ENTR:
+            case OOT_LAKE_HYLIA_FROM_FIELD_ENTR:
+            case OOT_LAKE_HYLIA_FROM_ZORA_DOMAIN_ENTR:
+            case OOT_LAKE_HYLIA_FROM_VALLEY_ENTR:
+            case OOT_LAKE_HYLIA_FROM_LABORATORY_ENTR:
+            case OOT_LAKE_HYLIA_FROM_FISHING_POND_ENTR:
+            case OOT_WARP_SONG_LAKE_ENTR:
+            {
+                Message.EntranceID = OOT_LAKE_HYLIA_FROM_FIELD_ENTR;
+                break;
+            }
 
-        // Zora River
-        case OOT_GROTTO_EXIT_SCRUBS2_RIVER:
-        case OOT_GROTTO_EXIT_FAIRY_RIVER:
-        case OOT_GROTTO_EXIT_GENERIC_RIVER:
-        case OOT_ZORA_RIVER_FROM_FIELD_WATER_ENTR:
-        case OOT_ZORA_RIVER_FROM_LOST_WOODS_ENTR:
-        case OOT_RIVER_FROM_DOMAIN_ENTR:
-        case OOT_ZORA_RIVER_FROM_FIELD_ENTR:
-        {
-            Message.EntranceID = OOT_ZORA_RIVER_FROM_FIELD_ENTR;
-            break;
-        }
+            // Zora Domain
+            case OOT_GROTTO_EXIT_FAIRY_DOMAIN:
+            case OOT_ZORA_DOMAIN_FROM_SHOP_ENTR:
+            case OOT_DOMAIN_FROM_FOUNTAIN_ENTR:
+            case OOT_ZORA_DOMAIN_FROM_LAKE_HYLIA_ENTR:
+            case OOT_ZORA_DOMAIN_ENTR:
+            {
+                Message.EntranceID = OOT_ZORA_DOMAIN_ENTR;
+                break;
+            }
 
-        // Desert Colossus
-        case OOT_GROTTO_EXIT_SCRUBS2_COLOSSUS:
-        case OOT_DESERT_FROM_MIROR_ENTR:
-        case OOT_DESERT_FROM_GAUNTLET_ENTR:
-        case OOT_DESERT_COLOSSUS_FROM_TEMPLE_SPIRIT_ENTR:
-        case OOT_WARP_SONG_DESERT_ENTR:
-        case OOT_DESERT_COLOSSUS_FROM_FAIRY_ENTR:
-        case OOT_COLOSSUS_ENTR:
-        {
-            Message.EntranceID = OOT_COLOSSUS_ENTR;
-            break;
-        }
+            // Zora River
+            case OOT_GROTTO_EXIT_SCRUBS2_RIVER:
+            case OOT_GROTTO_EXIT_FAIRY_RIVER:
+            case OOT_GROTTO_EXIT_GENERIC_RIVER:
+            case OOT_ZORA_RIVER_FROM_FIELD_WATER_ENTR:
+            case OOT_ZORA_RIVER_FROM_LOST_WOODS_ENTR:
+            case OOT_RIVER_FROM_DOMAIN_ENTR:
+            case OOT_ZORA_RIVER_FROM_FIELD_ENTR:
+            {
+                Message.EntranceID = OOT_ZORA_RIVER_FROM_FIELD_ENTR;
+                break;
+            }
 
-        // Gerudo Fortress
-        case OOT_GROTTO_EXIT_FAIRY_FORTRESS:
-        case OOT_GERUDO_FORTRESS_FROM_GERUDO_TRAINING_ENTR:
-        case OOT_FORTRESS_FROM_WASTELAND_ENTR:
-        case OOT_GERUDO_FORTRESS_CAUGHT_ENTR:
-        case OOT_FORTRESS_FROM_HIDEOUT_BREAKOUT:
-        case OOT_FORTRESS_FROM_HIDEOUT_BREAKOUT_JAIL:
-        case OOT_FORTRESS_FROM_HIDEOUT_LEFT_JAIL_1:
-        case OOT_FORTRESS_FROM_HIDEOUT_RIGHT_JAIL_1:
-        case OOT_FORTRESS_FROM_HIDEOUT_KITCHEN_BOTTOM:
-        case OOT_FORTRESS_FROM_HIDEOUT_KITCHEN_BOTTOM_TO_TOP:
-        case OOT_FORTRESS_FROM_HIDEOUT_KITCHEN_TOP_RIGHT:
-        case OOT_FORTRESS_FROM_HIDEOUT_KITCHEN_TOP_LEFT:
-        case OOT_FORTRESS_FROM_HIDEOUT_JAIL_2_TOP:
-        case OOT_FORTRESS_FROM_HIDEOUT_JAIL_2_BOTTOM:
-        case OOT_FORTRESS_FROM_HIDEOUT_JAIL_3_TOP:
-        case OOT_FORTRESS_FROM_HIDEOUT_JAIL_3_BOTTOM:
-        case OOT_FORTRESS_FROM_HIDEOUT_JAIL_4:
-        case OOT_GERUDO_FORTRESS_FROM_VALLEY_ENTR:
-        {
-            Message.EntranceID = OOT_GERUDO_FORTRESS_FROM_VALLEY_ENTR;
-            break;
-        }
+            // Desert Colossus
+            case OOT_GROTTO_EXIT_SCRUBS2_COLOSSUS:
+            case OOT_DESERT_FROM_MIROR_ENTR:
+            case OOT_DESERT_FROM_GAUNTLET_ENTR:
+            case OOT_DESERT_COLOSSUS_FROM_TEMPLE_SPIRIT_ENTR:
+            case OOT_WARP_SONG_DESERT_ENTR:
+            case OOT_DESERT_COLOSSUS_FROM_FAIRY_ENTR:
+            case OOT_COLOSSUS_ENTR:
+            {
+                Message.EntranceID = OOT_COLOSSUS_ENTR;
+                break;
+            }
 
-        // Lon Lon's Ranch
-        case OOT_GROTTO_EXIT_SCRUBS3_RANCH:
-        case OOT_LON_LON_RANCH_FROM_STABLES_ENTR:
-        case OOT_LON_LON_RANCH_FROM_SILO_ENTR:
-        case OOT_LON_LON_RANCH_FROM_HOUSE_ENTR:
-        case OOT_LON_LON_RANCH_FROM_FIELD_ENTR:
-        {
-            Message.EntranceID = OOT_LON_LON_RANCH_FROM_FIELD_ENTR;
-            break;
-        }
-        
-        // Hyrule Castle
-        case OOT_GROTTO_EXIT_CASTLE:
-        case OOT_CASTLE_CAUGHT_ENTR:
-        case OOT_CASTLE_STEALTH_FROM_COURTYARD_ENTR:
-        case OOT_HYRULE_CASTLE_FROM_FAIRY_ENTR:
-        case OOT_HYRULE_CASTLE_ENTR:
-        {
-            Message.EntranceID = OOT_HYRULE_CASTLE_ENTR;
-            break;
-        }
+            // Gerudo Fortress
+            case OOT_GROTTO_EXIT_FAIRY_FORTRESS:
+            case OOT_GERUDO_FORTRESS_FROM_GERUDO_TRAINING_ENTR:
+            case OOT_FORTRESS_FROM_WASTELAND_ENTR:
+            case OOT_GERUDO_FORTRESS_CAUGHT_ENTR:
+            case OOT_FORTRESS_FROM_HIDEOUT_BREAKOUT:
+            case OOT_FORTRESS_FROM_HIDEOUT_BREAKOUT_JAIL:
+            case OOT_FORTRESS_FROM_HIDEOUT_LEFT_JAIL_1:
+            case OOT_FORTRESS_FROM_HIDEOUT_RIGHT_JAIL_1:
+            case OOT_FORTRESS_FROM_HIDEOUT_KITCHEN_BOTTOM:
+            case OOT_FORTRESS_FROM_HIDEOUT_KITCHEN_BOTTOM_TO_TOP:
+            case OOT_FORTRESS_FROM_HIDEOUT_KITCHEN_TOP_RIGHT:
+            case OOT_FORTRESS_FROM_HIDEOUT_KITCHEN_TOP_LEFT:
+            case OOT_FORTRESS_FROM_HIDEOUT_JAIL_2_TOP:
+            case OOT_FORTRESS_FROM_HIDEOUT_JAIL_2_BOTTOM:
+            case OOT_FORTRESS_FROM_HIDEOUT_JAIL_3_TOP:
+            case OOT_FORTRESS_FROM_HIDEOUT_JAIL_3_BOTTOM:
+            case OOT_FORTRESS_FROM_HIDEOUT_JAIL_4:
+            case OOT_GERUDO_FORTRESS_FROM_VALLEY_ENTR:
+            {
+                Message.EntranceID = OOT_GERUDO_FORTRESS_FROM_VALLEY_ENTR;
+                break;
+            }
+
+            // Lon Lon's Ranch
+            case OOT_GROTTO_EXIT_SCRUBS3_RANCH:
+            case OOT_LON_LON_RANCH_FROM_STABLES_ENTR:
+            case OOT_LON_LON_RANCH_FROM_SILO_ENTR:
+            case OOT_LON_LON_RANCH_FROM_HOUSE_ENTR:
+            case OOT_LON_LON_RANCH_FROM_FIELD_ENTR:
+            {
+                Message.EntranceID = OOT_LON_LON_RANCH_FROM_FIELD_ENTR;
+                break;
+            }
+
+            // Hyrule Castle
+            case OOT_GROTTO_EXIT_CASTLE:
+            case OOT_CASTLE_CAUGHT_ENTR:
+            case OOT_CASTLE_STEALTH_FROM_COURTYARD_ENTR:
+            case OOT_HYRULE_CASTLE_FROM_FAIRY_ENTR:
+            case OOT_HYRULE_CASTLE_ENTR:
+            {
+                Message.EntranceID = OOT_HYRULE_CASTLE_ENTR;
+                break;
+            }
+
+            default:
+            {
+                return Message.EntranceID;
+            }
 
 #pragma endregion // OoT Grottos
-        
+
 #pragma region MM Grottos
-
-        // Path to Snowhead
-        case MM_GROTTO_EXIT_GENERIC_PATH_SNOWHEAD:
-        case MM_PATH_SNOWHEAD_FROM_SNOWHEAD_ENTR:
-        case MM_SNOWHEAD_PATH_FROM_MOUNTAIN_VILLAGE_ENTR:
-        {
-            Message.EntranceID = MM_PATH_SNOWHEAD_FROM_SNOWHEAD_ENTR;
-            break;
         }
-
-        // Termina Field
-        case MM_GROTTO_EXIT_GENERIC_FIELD_PILLAR:
-        case MM_GROTTO_EXIT_GENERIC_GRASS:
-        case MM_GROTTO_EXIT_COW_FIELD:
-        case MM_GROTTO_EXIT_GOSSIPS_MOUNTAIN:
-        case MM_GROTTO_EXIT_GOSSIPS_CANYON:
-        case MM_GROTTO_EXIT_GOSSIPS_OCEAN:
-        case MM_GROTTO_EXIT_GOSSIPS_SWAMP:
-        case MM_GROTTO_EXIT_DODONGO:
-        case MM_GROTTO_EXIT_SCRUB:
-        case MM_GROTTO_EXIT_PEAHAT:
-        case MM_GROTTO_EXIT_BIO_BABA:
-        case MM_TERMINA_FIELD_FROM_GREAT_BAY_COAST_ENTR:
-        case MM_TERMINA_FIELD_FROM_ROAD_TO_IKANA_ENTR:
-        case MM_TERMINA_FIELD_FROM_PATH_TO_MOUNTAIN_VILLAGE_ENTR:
-        case MM_TERMINA_FIELD_FROM_ROAD_TO_SWAMP_ENTR:
-        case MM_TERMINA_FIELD_FROM_MILK_ROAD_ENTR:
-        case MM_FIELD_FROM_ASTRAL_OBSERVATORY_ENTR:
-        case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_NORTH_ENTR:
-        case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_WEST_ENTR:
-        case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_EAST_ENTR:
-        case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_SOUTH_ENTR:
+    }
+    else
+    {
+        switch (Message.EntranceID)
         {
-            Message.EntranceID = MM_TERMINA_FIELD_FROM_CLOCK_TOWN_SOUTH_ENTR;
-            break;
-        }
+            // Path to Snowhead
+            case MM_GROTTO_EXIT_GENERIC_PATH_SNOWHEAD:
+            case MM_PATH_SNOWHEAD_FROM_SNOWHEAD_ENTR:
+            case MM_SNOWHEAD_PATH_FROM_MOUNTAIN_VILLAGE_ENTR:
+            {
+                Message.EntranceID = MM_PATH_SNOWHEAD_FROM_SNOWHEAD_ENTR;
+                break;
+            }
 
-        // Great Bay Coast
-        case MM_GROTTO_EXIT_GENERIC_GREAT_BAY_COAST:
-        case MM_GROTTO_EXIT_COW_COAST:
-        case MM_GREAT_BAY_FROM_SPIDER_HOUSE_ENTR:
-        case MM_GREAT_BAY_FROM_PIRATE_FORTRESS_ENTR:
-        case MM_GREAT_BAY_COAST_FROM_ZORA_CAPE_ENTR:
-        case MM_GREAT_BAY_FROM_PINNACLE_ROCK_ENTR:
-        case MM_WARP_OWL_GREAT_BAY_ENTR:
-        case MM_VOID_GREAT_BAY_ENTR:
-        case MM_VOID_GREAT_BAY_BY_PINNACLE_ROCK_ENTR:
-        case MM_COAST_FROM_MIKAU_CS_ENTR:
-        case MM_GREAT_BAY_FROM_ENTRANCE_CAUGHT:
-        case MM_GREAT_BAY_COAST_FROM_LABORATORY_ENTR:
-        case MM_GREAT_BAY_COAST_FROM_FISHER_HUT_ENTR:
-        case MM_GREAT_BAY_COAST_FROM_FIELD_ENTR:
-        {
-            Message.EntranceID = MM_GREAT_BAY_COAST_FROM_FIELD_ENTR;
-            break;
-        }
+            // Termina Field
+            case MM_GROTTO_EXIT_GENERIC_FIELD_PILLAR:
+            case MM_GROTTO_EXIT_GENERIC_GRASS:
+            case MM_GROTTO_EXIT_COW_FIELD:
+            case MM_GROTTO_EXIT_GOSSIPS_MOUNTAIN:
+            case MM_GROTTO_EXIT_GOSSIPS_CANYON:
+            case MM_GROTTO_EXIT_GOSSIPS_OCEAN:
+            case MM_GROTTO_EXIT_GOSSIPS_SWAMP:
+            case MM_GROTTO_EXIT_DODONGO:
+            case MM_GROTTO_EXIT_SCRUB:
+            case MM_GROTTO_EXIT_PEAHAT:
+            case MM_GROTTO_EXIT_BIO_BABA:
+            case MM_TERMINA_FIELD_FROM_GREAT_BAY_COAST_ENTR:
+            case MM_TERMINA_FIELD_FROM_ROAD_TO_IKANA_ENTR:
+            case MM_TERMINA_FIELD_FROM_PATH_TO_MOUNTAIN_VILLAGE_ENTR:
+            case MM_TERMINA_FIELD_FROM_ROAD_TO_SWAMP_ENTR:
+            case MM_TERMINA_FIELD_FROM_MILK_ROAD_ENTR:
+            case MM_FIELD_FROM_ASTRAL_OBSERVATORY_ENTR:
+            case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_NORTH_ENTR:
+            case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_WEST_ENTR:
+            case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_EAST_ENTR:
+            case MM_TERMINA_FIELD_FROM_CLOCK_TOWN_SOUTH_ENTR:
+            {
+                Message.EntranceID = MM_TERMINA_FIELD_FROM_CLOCK_TOWN_SOUTH_ENTR;
+                break;
+            }
 
-        // Southern Swamp
-        case MM_GROTTO_EXIT_GENERIC_SWAMP:
-        case MM_KOUME_RIDE_FROM_TOURIST_ENTR:
-        case MM_SWAMP_FROM_PALACE_MAIN_ENTRANCE_ENTR:
-        case MM_SWAMP_FROM_PALACE_LEDGE_ENTR:
-        case MM_SWAMP_FROM_WOODFALL_ENTR:
-        case MM_SWAMP_FROM_MYSTERY_WOODS_ENTR:
-        case MM_SWAMP_FROM_IKANA_CANYON_ENTR:
-        case MM_SWAMP_FROM_POTION_SHOP_ENTR:
-        case MM_SWAMP_FROM_TOURIST_INFORMATION_ENTR:
-        case MM_WARP_OWL_SOUTHERN_SWAMP_ENTR:
-        case MM_SWAMP_FROM_ROAD_ENTR:
-        case MM_SWAMP_FROM_SPIDER_HOUSE_ENTR:
-        {
-            Message.EntranceID = MM_SWAMP_FROM_SPIDER_HOUSE_ENTR;
-            break;
-        }
+            // Great Bay Coast
+            case MM_GROTTO_EXIT_GENERIC_GREAT_BAY_COAST:
+            case MM_GROTTO_EXIT_COW_COAST:
+            case MM_GREAT_BAY_FROM_SPIDER_HOUSE_ENTR:
+            case MM_GREAT_BAY_FROM_PIRATE_FORTRESS_ENTR:
+            case MM_GREAT_BAY_COAST_FROM_ZORA_CAPE_ENTR:
+            case MM_GREAT_BAY_FROM_PINNACLE_ROCK_ENTR:
+            case MM_WARP_OWL_GREAT_BAY_ENTR:
+            case MM_VOID_GREAT_BAY_ENTR:
+            case MM_VOID_GREAT_BAY_BY_PINNACLE_ROCK_ENTR:
+            case MM_COAST_FROM_MIKAU_CS_ENTR:
+            case MM_GREAT_BAY_FROM_ENTRANCE_CAUGHT:
+            case MM_GREAT_BAY_COAST_FROM_LABORATORY_ENTR:
+            case MM_GREAT_BAY_COAST_FROM_FISHER_HUT_ENTR:
+            case MM_GREAT_BAY_COAST_FROM_FIELD_ENTR:
+            {
+                Message.EntranceID = MM_GREAT_BAY_COAST_FROM_FIELD_ENTR;
+                break;
+            }
 
-        // Road to Southern Swamp
-        case MM_GROTTO_EXIT_GENERIC_PATH_SWAMP:
-        case MM_SWAMP_ROAD_FROM_ARCHERY_ENTR:
-        case MM_SWAMP_ROAD_FROM_SWAMP_ENTR:
-        case MM_SWAMP_ROAD_FROM_FIELD_ENTR:
-        {
-            Message.EntranceID = MM_SWAMP_ROAD_FROM_FIELD_ENTR;
-            break;
-        }
+            // Southern Swamp
+            case MM_GROTTO_EXIT_GENERIC_SWAMP:
+            case MM_KOUME_RIDE_FROM_TOURIST_ENTR:
+            case MM_SWAMP_FROM_PALACE_MAIN_ENTRANCE_ENTR:
+            case MM_SWAMP_FROM_PALACE_LEDGE_ENTR:
+            case MM_SWAMP_FROM_WOODFALL_ENTR:
+            case MM_SWAMP_FROM_MYSTERY_WOODS_ENTR:
+            case MM_SWAMP_FROM_IKANA_CANYON_ENTR:
+            case MM_SWAMP_FROM_POTION_SHOP_ENTR:
+            case MM_SWAMP_FROM_TOURIST_INFORMATION_ENTR:
+            case MM_WARP_OWL_SOUTHERN_SWAMP_ENTR:
+            case MM_SWAMP_FROM_ROAD_ENTR:
+            case MM_SWAMP_FROM_SPIDER_HOUSE_ENTR:
+            {
+                Message.EntranceID = MM_SWAMP_FROM_SPIDER_HOUSE_ENTR;
+                break;
+            }
 
-        // Mountain Village
-        case MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE_SPRING:
-        case MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE_WINTER:
-        case MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE:
-        case MM_WARP_OWL_MOUNTAIN_VILLAGE_ENTR:
-        case MM_MOUNTAIN_VILLAGE_FROM_GORON_GRAVEYARD_ENTR:
-        case MM_MOUNTAIN_VILLAGE_FROM_BLACKSMITH_ENTR:
-        case MM_MOUNTAIN_VILLAGE_FROM_SNOWHEAD_PATH_ENTR:
-        case MM_MOUNTAIN_VILLAGE_FROM_TWIN_ISLANDS_ENTR:
-        case MM_MOUNTAIN_VILLAGE_FROM_PATH_ENTR:
-        {
-            Message.EntranceID = MM_MOUNTAIN_VILLAGE_FROM_PATH_ENTR;
-            break;
-        }
+            // Road to Southern Swamp
+            case MM_GROTTO_EXIT_GENERIC_PATH_SWAMP:
+            case MM_SWAMP_ROAD_FROM_ARCHERY_ENTR:
+            case MM_SWAMP_ROAD_FROM_SWAMP_ENTR:
+            case MM_SWAMP_ROAD_FROM_FIELD_ENTR:
+            {
+                Message.EntranceID = MM_SWAMP_ROAD_FROM_FIELD_ENTR;
+                break;
+            }
 
-        // Twin Islands
-        case MM_TWIN_ISLANDS_FROM_MOUNTAIN_VILLAGE_ENTR:
-        case MM_TWIN_ISLANDS_FROM_GORON_VILLAGE_ENTR:
-        case MM_TWIN_ISLANDS_FROM_GORON_RACETRACK_ENTR:
-        case MM_GROTTO_EXIT_GENERIC_TWIN_ISLANDS:
-        case MM_GROTTO_EXIT_HOT_WATER:
-        {
-            Message.EntranceID = MM_TWIN_ISLANDS_FROM_MOUNTAIN_VILLAGE_ENTR;
-            break;
-        }
+            // Mountain Village
+            case MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE_SPRING:
+            case MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE_WINTER:
+            case MM_GROTTO_EXIT_GENERIC_MOUNTAIN_VILLAGE:
+            case MM_WARP_OWL_MOUNTAIN_VILLAGE_ENTR:
+            case MM_MOUNTAIN_VILLAGE_FROM_GORON_GRAVEYARD_ENTR:
+            case MM_MOUNTAIN_VILLAGE_FROM_BLACKSMITH_ENTR:
+            case MM_MOUNTAIN_VILLAGE_FROM_SNOWHEAD_PATH_ENTR:
+            case MM_MOUNTAIN_VILLAGE_FROM_TWIN_ISLANDS_ENTR:
+            case MM_MOUNTAIN_VILLAGE_FROM_PATH_ENTR:
+            {
+                Message.EntranceID = MM_MOUNTAIN_VILLAGE_FROM_PATH_ENTR;
+                break;
+            }
 
-        // Woods of mystery
-        case MM_MYSTERY_WOODS_ENTR:
-        {
-            break;
-        }
+            // Twin Islands
+            case MM_TWIN_ISLANDS_FROM_MOUNTAIN_VILLAGE_ENTR:
+            case MM_TWIN_ISLANDS_FROM_GORON_VILLAGE_ENTR:
+            case MM_TWIN_ISLANDS_FROM_GORON_RACETRACK_ENTR:
+            case MM_GROTTO_EXIT_GENERIC_TWIN_ISLANDS:
+            case MM_GROTTO_EXIT_HOT_WATER:
+            {
+                Message.EntranceID = MM_TWIN_ISLANDS_FROM_MOUNTAIN_VILLAGE_ENTR;
+                break;
+            }
 
-        // Zora Cape
-        case MM_GROTTO_EXIT_GENERIC_ZORA_CAPE:
-        case MM_ZORA_CAPE_FROM_HALL_WATER_ENTR:
-        case MM_ZORA_CAPE_PENINSULA_ENTR:
-        case MM_GREAT_BAY_FROM_FAIRY_FOUNTAIN_ENTR:
-        case MM_ZORA_CAPE_FROM_BEAVERS_ENTR:
-        case MM_WARP_OWL_ZORA_CAPE_ENTR:
-        case MM_VOID_ZORA_CAPE_ENTR:
-        case MM_GREAT_BAY_FROM_TEMPLE_ENTR:
-        case MM_ZORA_CAPE_FROM_GREAT_BAY_COAST_ENTR:
-        {
-            Message.EntranceID = MM_ZORA_CAPE_FROM_GREAT_BAY_COAST_ENTR;
-            break;
-        }
+            // Woods of mystery
+            case MM_MYSTERY_WOODS_ENTR:
+            {
+                break;
+            }
 
-        // Road to Ikana
-        case MM_GROTTO_EXIT_GENERIC_PATH_IKANA:
-        case MM_IKANA_ROAD_FROM_VALLEY_ENTR:
-        case MM_IKANA_ROAD_FROM_IKANA_GRAVEYARD_ENTR:
-        case MM_IKANA_ROAD_FROM_FIELD_ENTR:
-        {
-            Message.EntranceID = MM_IKANA_ROAD_FROM_FIELD_ENTR;
-            break;
-        }
+            // Zora Cape
+            case MM_GROTTO_EXIT_GENERIC_ZORA_CAPE:
+            case MM_ZORA_CAPE_FROM_HALL_WATER_ENTR:
+            case MM_ZORA_CAPE_PENINSULA_ENTR:
+            case MM_GREAT_BAY_FROM_FAIRY_FOUNTAIN_ENTR:
+            case MM_ZORA_CAPE_FROM_BEAVERS_ENTR:
+            case MM_WARP_OWL_ZORA_CAPE_ENTR:
+            case MM_VOID_ZORA_CAPE_ENTR:
+            case MM_GREAT_BAY_FROM_TEMPLE_ENTR:
+            case MM_ZORA_CAPE_FROM_GREAT_BAY_COAST_ENTR:
+            {
+                Message.EntranceID = MM_ZORA_CAPE_FROM_GREAT_BAY_COAST_ENTR;
+                break;
+            }
+
+            // Road to Ikana
+            case MM_GROTTO_EXIT_GENERIC_PATH_IKANA:
+            case MM_IKANA_ROAD_FROM_VALLEY_ENTR:
+            case MM_IKANA_ROAD_FROM_IKANA_GRAVEYARD_ENTR:
+            case MM_IKANA_ROAD_FROM_FIELD_ENTR:
+            {
+                Message.EntranceID = MM_IKANA_ROAD_FROM_FIELD_ENTR;
+                break;
+            }
 
 
-        // Ikana Graveyard
-        case MM_GROTTO_EXIT_GENERIC_GRAVEYARD:
-        case MM_IKANA_GRAVEYARD_ENTR:
-        case MM_GRAVE_EXIT_NIGHT1:
-        case MM_GRAVE_EXIT_NIGHT2:
-        case MM_IKANA_GRAVEYARD_FROM_DAMPE_ENTR:
-        {
-            Message.EntranceID = MM_IKANA_GRAVEYARD_FROM_DAMPE_ENTR;
-            break;
-        }
+            // Ikana Graveyard
+            case MM_GROTTO_EXIT_GENERIC_GRAVEYARD:
+            case MM_IKANA_GRAVEYARD_ENTR:
+            case MM_GRAVE_EXIT_NIGHT1:
+            case MM_GRAVE_EXIT_NIGHT2:
+            case MM_IKANA_GRAVEYARD_FROM_DAMPE_ENTR:
+            {
+                Message.EntranceID = MM_IKANA_GRAVEYARD_FROM_DAMPE_ENTR;
+                break;
+            }
 
-        // Ikana Canyon
-        case MM_GROTTO_EXIT_GENERIC_VALLEY:
-        case MM_WARP_BOSS_STONE_TOWER_INVERTED_ENTR:
-        case MM_IKANA_CANYON_FROM_WELL_ENTR:
-        case MM_IKANA_VALLEY_FROM_SHRINE_ENTR:
-        case MM_IKANA_CANYON_FROM_CASTLE_GARDENS_ENTR:
-        case MM_IKANA_CANYON_FROM_STONE_TOWER_ENTR:
-        case MM_IKANA_CANYON_WATERFALLS_ENTR:
-        case MM_IKANA_CANYON_FROM_GHOST_HUT_ENTR:
-        case MM_IKANA_CANYON_FROM_MUSIC_BOX_HOUSE_ENTR:
-        case MM_IKANA_CANYON_FROM_FAIRY_FOUNTAIN_ENTR:
-        case MM_IKANA_CANYON_FROM_CAVERN_ENTR:
-        case MM_IKANA_CANYON_FROM_SAKON_HIDEOUT_ENTR:
-        case MM_WARP_OWL_IKANA_CANYON_ENTR:
-        case MM_IKANA_VALLEY_FROM_ROAD_ENTR:
-        {
+            // Ikana Canyon
+            case MM_GROTTO_EXIT_GENERIC_VALLEY:
+            case MM_WARP_BOSS_STONE_TOWER_INVERTED_ENTR:
+            case MM_IKANA_CANYON_FROM_WELL_ENTR:
+            case MM_IKANA_VALLEY_FROM_SHRINE_ENTR:
+            case MM_IKANA_CANYON_FROM_CASTLE_GARDENS_ENTR:
+            case MM_IKANA_CANYON_FROM_STONE_TOWER_ENTR:
+            case MM_IKANA_CANYON_WATERFALLS_ENTR:
+            case MM_IKANA_CANYON_FROM_GHOST_HUT_ENTR:
+            case MM_IKANA_CANYON_FROM_MUSIC_BOX_HOUSE_ENTR:
+            case MM_IKANA_CANYON_FROM_FAIRY_FOUNTAIN_ENTR:
+            case MM_IKANA_CANYON_FROM_CAVERN_ENTR:
+            case MM_IKANA_CANYON_FROM_SAKON_HIDEOUT_ENTR:
+            case MM_WARP_OWL_IKANA_CANYON_ENTR:
+            case MM_IKANA_VALLEY_FROM_ROAD_ENTR:
+            {
                 Message.EntranceID = MM_IKANA_VALLEY_FROM_ROAD_ENTR;
-            break;
-        }
+                break;
+            }
 
 #pragma endregion MM Grottos
 
-        default:
-        {
-            return Message.EntranceID;
+            default:
+            {
+                return Message.EntranceID;
+            }
         }
     }
-
     const std::vector<GrottoEntrance> entrances = GrottoEntrances.at(Message.EntranceID);
     float tmpDist = 0.0f, bestDist = this->GetDistanceGrottoEntrance(entrances[0], Message.X, Message.Y, Message.Z);
     uint32_t bestEntID = entrances[0].EntranceID;
@@ -2968,10 +2980,28 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                         break;
                     }
 
+                    case MM_ZORA_HALL_FROM_EVANS_ENTR:
+                    {
+                        if (Message.Direction == OUT_MAGIC)
+                        {
+                            Message.SceneID = MM_ZORA_EVANS_ROOM;
+                            break;
+                        }
+                    }
+
                     case MM_ROOM_JAPAS_ENTR:
                     {
                         Message.SceneID = MM_ZORA_JAPAS_ROOM;
                         break;
+                    }
+
+                    case MM_ZORA_HALL_FROM_JAPAS_ENTR:
+                    {
+                        if (Message.Direction == OUT_MAGIC)
+                        {
+                            Message.SceneID = MM_ZORA_JAPAS_ROOM;
+                            break;
+                        }
                     }
 
                     case MM_ROOM_TIJO_ENTR:
@@ -2980,10 +3010,28 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                         break;
                     }
 
+                    case MM_ZORA_HALL_FROM_TIJO_ENTR:
+                    {
+                        if (Message.Direction == OUT_MAGIC)
+                        {
+                            Message.SceneID = MM_ZORA_TIJO_ROOM;
+                            break;
+                        }
+                    }
+
                     case MM_ROOM_LULU_ENTR:
                     {
                         Message.SceneID = MM_ZORA_LULU_ROOM;
                         break;
+                    }
+
+                    case MM_ZORA_HALL_FROM_LULU_ENTR:
+                    {
+                        if (Message.Direction == OUT_MAGIC)
+                        {
+                            Message.SceneID = MM_ZORA_LULU_ROOM;
+                            break;
+                        }
                     }
 
                     case MM_ZORA_SHOP_ENTR:
@@ -2991,7 +3039,17 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                         Message.SceneID = MM_ZORA_SHOP;
                         break;
                     }
+
+                    case MM_ZORA_HALL_FROM_SHOP_ENTR:
+                    {
+                        if (Message.Direction == OUT_MAGIC)
+                        {
+                            Message.SceneID = MM_ZORA_SHOP;
+                            break;
+                        }
+                    }
                 }
+                break;
             }
 
             case MM_CASTLE_IKANA:
@@ -3059,6 +3117,31 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                 break;
             }
 
+            case MM_IKANA_CANYON:
+            {
+                switch (Message.EntranceID)
+                {
+                    case MM_IKANA_CAVERN_ENTR:
+                    {
+                        if (Message.Direction == IN_MAGIC)
+                        {
+                            Message.SceneID = MM_SPRING_WATER_CAVE;
+                        }
+                        break;
+                    }
+
+                    case MM_IKANA_CANYON_FROM_CAVERN_ENTR:
+                    {
+                        if (Message.Direction == OUT_MAGIC)
+                        {
+                            Message.SceneID = MM_SPRING_WATER_CAVE;
+                        }
+                        break;
+                    }
+                }
+                break;
+            }
+
             case MM_IKANA_GRAVEYARD:
             {
                 if (Message.EntranceID == MM_GRAVE_NIGHT3_ENTR)
@@ -3112,10 +3195,23 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
 
             case MM_RANCH_HOUSE_BARN:
             {
-                if (Message.EntranceID == MM_RANCH_HOUSE_ENTR)
+                switch (Message.EntranceID)
                 {
-                    Message.SceneID = MM_ROMANI_RANCH_BARN;
-                    break;
+                    case MM_ROMANI_RANCH_FROM_RANCH_HOUSE_ENTR:
+                    case MM_RANCH_HOUSE_ENTR:
+                    {
+                        Message.SceneID = MM_ROMANI_RANCH_BARN;
+                        break;
+                    }
+                }
+                break;
+            }
+
+            case MM_DEKU_KING_CHAMBER:
+            {
+                if (Message.EntranceID == MM_DEKU_PALACE_CAUGHT)
+                {
+                    Message.SceneID = MM_DEKU_PALACE;
                 }
                 break;
             }
@@ -3146,6 +3242,43 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                             break;
                         }
                     }
+                }
+                else
+                {   // Message IN
+
+                    if (Message.EntranceID == MM_DEKU_PALACE_CAUGHT)
+                    {
+                        return MM_DEKU_PALACE_BRIDGE;
+                    }
+                }
+                break;
+            }
+
+            case MM_TEMPLE_STONE_TOWER_INVERTED:
+            {
+                switch (Message.EntranceID)
+                {
+                    case MM_BOSS_TEMPLE_STONE_TOWER_ENTR:
+                    {
+                        if (Message.Direction == OUT_MAGIC)
+                        {
+                            return MM_STONE_TOWER_TEMPLE_TO_BOSS_ENTR;
+                        }
+
+                        Message.SceneID = MM_LAIR_TWINMOLD;
+                        break;
+                    }
+
+                    case MM_BOSS_ARENA_TWINMOLD_ENTR:
+                    {
+                        Message.SceneID = MM_LAIR_TWINMOLD;
+                        if (Message.Direction == OUT_MAGIC)
+                        {
+                            return MM_BOSS_TEMPLE_STONE_TOWER_INVERTED_TO_BOSS_ARENA;
+                        }
+                        break;
+                    }
+
                 }
                 break;
             }
