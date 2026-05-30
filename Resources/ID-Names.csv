@@ -118,7 +118,7 @@ MM_MASK_GIBDO;Gibdo Mask;gibdo;false
 MM_MASK_GORON;Goron Mask (MM);goron;true
 MM_MASK_GREAT_FAIRY;Great Fairy's Mask;fairy_mask;false
 MM_MASK_KAFEI;Kafei's Mask;kafei;false
-MM_MASK_KAMARO;Kamaro's Mask;kamaro;false
+MM_MASK_KAMARO;Kamaro's Mask (MM);kamaro;true
 MM_MASK_KEATON;Keaton Mask (MM);keaton;true
 MM_MASK_MAJORA;Majora's Mask;mask;false
 MM_MASK_POSTMAN;Postman's Hat;postman;false
@@ -192,29 +192,29 @@ MM_SMALL_KEY_SH;Small Key (Snowhead Temple);small_key;false
 MM_SMALL_KEY_ST;Small Key (Stone Tower Temple);small_key;false
 MM_SMALL_KEY_WF;Small Key (Woodfall Temple);small_key;false
 MM_SOLD_OUT;Sold Out;none;false
-MM_SONG_AWAKENING;Sonata of Awakening;song_green;false
+MM_SONG_AWAKENING;Sonata of Awakening (MM);song_green;true
 MM_SONG_EMPTINESS;Elegy of Emptiness (MM);song_orange;true
 MM_SONG_EPONA;Epona's Song (MM);song;true
-MM_SONG_GORON;Goron Lullaby;song_red;false
-MM_SONG_GORON_HALF;Progressive Goron Lullaby;song_red;false
-MM_SONG_HEALING;Song of Healing;song;false
-MM_SONG_NOTE_AWAKENING;Note from Sonata of Awakening (MM);song_green;false
+MM_SONG_GORON;Goron Lullaby (MM);song_red;true
+MM_SONG_GORON_HALF;Progressive Goron Lullaby (MM);song_red;true
+MM_SONG_HEALING;Song of Healing (MM);song;true
+MM_SONG_NOTE_AWAKENING;Note from Sonata of Awakening (MM);song_green;true
 MM_SONG_NOTE_EMPTINESS;Note from Elegy of Emptiness (MM);song_orange;true
 MM_SONG_NOTE_EPONA;Note from Epona's Song (MM);song;true
-MM_SONG_NOTE_GORON;Note from Goron Lullaby (MM);song_red;false
-MM_SONG_NOTE_HEALING;Note from Song of Healing (MM);song;false
-MM_SONG_NOTE_ORDER;Note from Oath to Order (MM);song_purple;false
-MM_SONG_NOTE_SOARING;Note from Song of Soaring (MM);song;false
+MM_SONG_NOTE_GORON;Note from Goron Lullaby (MM);song_red;true
+MM_SONG_NOTE_HEALING;Note from Song of Healing (MM);song;true
+MM_SONG_NOTE_ORDER;Note from Oath to Order (MM);song_purple;true
+MM_SONG_NOTE_SOARING;Note from Song of Soaring (MM);song;true
 MM_SONG_NOTE_STORMS;Note from Song of Storms (MM);song;true
 MM_SONG_NOTE_SUN;Note from Sun's Song (MM);song;true
 MM_SONG_NOTE_TIME;Note from Song of Time (MM);song;true
-MM_SONG_NOTE_ZORA;Note from New Wave Bossa Nova (MM);song_blue;false
-MM_SONG_ORDER;Oath to Order;song_purple;false
-MM_SONG_SOARING;Song of Soaring;song;false
+MM_SONG_NOTE_ZORA;Note from New Wave Bossa Nova (MM);song_blue;true
+MM_SONG_ORDER;Oath to Order (MM);song_purple;true
+MM_SONG_SOARING;Song of Soaring (MM);song;true
 MM_SONG_STORMS;Song of Storms (MM);song;true
 MM_SONG_SUN;Sun's Song (MM);song;true
 MM_SONG_TIME;Song of Time (MM);song;true
-MM_SONG_ZORA;New Wave Bossa Nova;song_blue;false
+MM_SONG_ZORA;New Wave Bossa Nova (MM);song_blue;true
 MM_SOUL_ANIMAL_BUTTERFLY;Soul of Butterflies (MM);soul_of_animal;true
 MM_SOUL_ANIMAL_COW;Soul of Cows (MM);soul_of_animal;true
 MM_SOUL_ANIMAL_CUCCO;Soul of Cuccos (MM);soul_of_animal;true
@@ -394,7 +394,7 @@ OOT_BOMBS_10;10 Bombs (OoT);bomb;true
 OOT_BOMBS_20;20 Bombs (OoT);bomb;true
 OOT_BOMBS_30;30 Bombs (OoT);bomb;true
 OOT_BOMBS_5;5 Bombs (OoT);bomb;true
-OOT_BOOMERANG;Boomerang;boomrang;false
+OOT_BOOMERANG;Boomerang (OoT);boomerang;true
 OOT_BOOTS_HOVER;Hover Boots (OoT);hover;true
 OOT_BOOTS_IRON;Iron Boots (OoT);iron;true
 OOT_BOSS_KEY;Boss Key (OoT);boss_key;false
@@ -665,28 +665,28 @@ OOT_SONG_EMPTINESS;Elegy of Emptiness (OoT);song_orange;true
 OOT_SONG_EPONA;Epona's Song (OoT);song;true
 OOT_SONG_NOTE_EMPTINESS;Note from Elegy of Emptiness (OoT);song_orange;true
 OOT_SONG_NOTE_EPONA;Note from Epona's Song (OoT);song;true
-OOT_SONG_NOTE_SARIA;Note from Saria's Song (OoT);song;false
+OOT_SONG_NOTE_SARIA;Note from Saria's Song (OoT);song;true
 OOT_SONG_NOTE_STORMS;Note from Song of Storms (OoT);song;true
 OOT_SONG_NOTE_SUN;Note from Sun's Song (OoT);song;true
 OOT_SONG_NOTE_TIME;Note from Song of Time (OoT);song;true
-OOT_SONG_NOTE_TP_FIRE;Note from Bolero of Fire (OoT);song_red;false
-OOT_SONG_NOTE_TP_FOREST;Note from Minuet of Forest (OoT);song_green;false
-OOT_SONG_NOTE_TP_LIGHT;Note from Prelude of Light (OoT);song_yellow;false
-OOT_SONG_NOTE_TP_SHADOW;Note from Nocturne of Shadow (OoT);song_purple;false
-OOT_SONG_NOTE_TP_SPIRIT;Note from Requiem of Spirit (OoT);song_orange;false
-OOT_SONG_NOTE_TP_WATER;Note from Serenade of Water (OoT);song_blue;false
-OOT_SONG_NOTE_ZELDA;Note from Zelda's Lullaby (OoT);song;false
-OOT_SONG_SARIA;Saria's Song;song;false
+OOT_SONG_NOTE_TP_FIRE;Note from Bolero of Fire (OoT);song_red;true
+OOT_SONG_NOTE_TP_FOREST;Note from Minuet of Forest (OoT);song_green;true
+OOT_SONG_NOTE_TP_LIGHT;Note from Prelude of Light (OoT);song_yellow;true
+OOT_SONG_NOTE_TP_SHADOW;Note from Nocturne of Shadow (OoT);song_purple;true
+OOT_SONG_NOTE_TP_SPIRIT;Note from Requiem of Spirit (OoT);song_orange;true
+OOT_SONG_NOTE_TP_WATER;Note from Serenade of Water (OoT);song_blue;true
+OOT_SONG_NOTE_ZELDA;Note from Zelda's Lullaby (OoT);song;true
+OOT_SONG_SARIA;Saria's Song;song;true
 OOT_SONG_STORMS;Song of Storms (OoT);song;true
 OOT_SONG_SUN;Sun's Song (OoT);song;true
 OOT_SONG_TIME;Song of Time (OoT);song;true
-OOT_SONG_TP_FIRE;Bolero of Fire;song_red;false
-OOT_SONG_TP_FOREST;Minuet of Forest;song_green;false
-OOT_SONG_TP_LIGHT;Prelude of Light;song_yellow;false
-OOT_SONG_TP_SHADOW;Nocturne of Shadow;song_purple;false
-OOT_SONG_TP_SPIRIT;Requiem of Spirit;song_orange;false
-OOT_SONG_TP_WATER;Serenade of Water;song_blue;false
-OOT_SONG_ZELDA;Zelda's Lullaby;song;false
+OOT_SONG_TP_FIRE;Bolero of Fire;song_red;true
+OOT_SONG_TP_FOREST;Minuet of Forest;song_green;true
+OOT_SONG_TP_LIGHT;Prelude of Light;song_yellow;true
+OOT_SONG_TP_SHADOW;Nocturne of Shadow;song_purple;true
+OOT_SONG_TP_SPIRIT;Requiem of Spirit;song_orange;true
+OOT_SONG_TP_WATER;Serenade of Water;song_blue;true
+OOT_SONG_ZELDA;Zelda's Lullaby;song;true
 OOT_SOUL_ANIMAL_BUTTERFLY;Soul of Butterflies (OoT);soul_of_animal;true
 OOT_SOUL_ANIMAL_COW;Soul of Cows (OoT);soul_of_animal;true
 OOT_SOUL_ANIMAL_CUCCO;Soul of Cuccos (OoT);soul_of_animal;true
@@ -1027,3 +1027,65 @@ SHARED_TRIFORCE_WISDOM;Triforce of Wisdom;triforce_wisdom;false
 SHARED_TUNIC_GORON;Goron Tunic;goron_tunic;false
 SHARED_TUNIC_ZORA;Zora Tunic;zora_tunic;false
 SHARED_WALLET;Progressive Wallet;wallet;false
+OOT_SONG_HEALING;Song of Healing (OoT);song;true
+OOT_SONG_SOARING;Song of Soaring (OoT);song;true
+OOT_SONG_AWAKENING;Sonata of Awakening (OoT);song_green;true
+OOT_SONG_GORON;Goron Lullaby (OoT);song_red;true
+OOT_SONG_GORON_HALF;Goron Lullaby Intro (OoT);song_red;true
+OOT_SONG_ZORA;New Wave Bossa Nova (OoT);song_blue;true
+OOT_SONG_ORDER;Oath to Order (OoT);song_purple;true
+OOT_SONG_NOTE_HEALING;Note from Song of Healing (OoT);song;true
+OOT_SONG_NOTE_SOARING;Note from Song of Soaring (OoT);song;true
+OOT_SONG_NOTE_AWAKENING;Note from Sonata of Awakening (OoT);song_green;true
+OOT_SONG_NOTE_GORON;Note from Goron Lullaby (OoT);song_red;true
+OOT_SONG_NOTE_ZORA;Note from New Wave Bossa Nova (OoT);song_blue;true
+OOT_SONG_NOTE_ORDER;Note from Oath to Order (OoT);song_purple;true
+SHARED_SONG_NOTE_HEALING;Note from Song of Healing;song;false
+SHARED_SONG_NOTE_SOARING;Note from Song of Soaring;song;false
+SHARED_SONG_NOTE_AWAKENING;Note from Sonata of Awakening;song_green;false
+SHARED_SONG_NOTE_GORON;Note from Goron Lullaby;song_red;false
+SHARED_SONG_NOTE_ZORA;Note from New Wave Bossa Nova;song_blue;false
+SHARED_SONG_NOTE_ORDER;Note from Oath to Order;song_purple;false
+SHARED_SONG_HEALING;Song of Healing;song;false
+SHARED_SONG_SOARING;Song of Soaring;song;false
+SHARED_SONG_AWAKENING;Sonata of Awakening;song_green;false
+SHARED_SONG_GORON;Goron Lullaby;song_red;false
+SHARED_SONG_GORON_HALF;Goron Lullaby Intro;song_red;false
+SHARED_SONG_ZORA;New Wave Bossa Nova;song_blue;false
+SHARED_SONG_ORDER;Oath to Order;song_purple;false
+OOT_MASK_KAMARO;Kamaro's Mask (OoT);kamaro;true
+SHARED_MASK_KAMARO;Shared Kamaro's Mask;kamaro;false
+MM_BOOMERANG;Boomerang (MM);boomerang;true
+SHARED_BOOMERANG;Shared Boomerang;boomerang;false
+MM_SONG_NOTE_SARIA;Note from Saria's Song (MM);song;true
+MM_SONG_NOTE_TP_FIRE;Note from Bolero of Fire (MM);song_red;true
+MM_SONG_NOTE_TP_FOREST;Note from Minuet of Forest (MM);song_green;true
+MM_SONG_NOTE_TP_LIGHT;Note from Prelude of Light (MM);song_yellow;true
+MM_SONG_NOTE_TP_SHADOW;Note from Nocturne of Shadow (MM);song_purple;true
+MM_SONG_NOTE_TP_SPIRIT;Note from Requiem of Spirit (MM);song_orange;true
+MM_SONG_NOTE_TP_WATER;Note from Serenade of Water (MM);song_blue;true
+MM_SONG_NOTE_ZELDA;Note from Zelda's Lullaby (MM);song;true
+MM_SONG_SARIA;Saria's Song (MM);song;true
+MM_SONG_TP_FIRE;Bolero of Fire (MM);song_red;true
+MM_SONG_TP_FOREST;Minuet of Forest (MM);song_green;true
+MM_SONG_TP_LIGHT;Prelude of Light (MM);song_yellow;true
+MM_SONG_TP_SHADOW;Nocturne of Shadow (MM);song_purple;true
+MM_SONG_TP_SPIRIT;Requiem of Spirit (MM);song_orange;true
+MM_SONG_TP_WATER;Serenade of Water (MM);song_blue;true
+MM_SONG_ZELDA;Zelda's Lullaby (MM);song;true
+SHARED_SONG_NOTE_SARIA;Note from Saria's Song (MM);song;false
+SHARED_SONG_NOTE_TP_FIRE;Note from Bolero of Fire (MM);song_red;false
+SHARED_SONG_NOTE_TP_FOREST;Note from Minuet of Forest (MM);song_green;false
+SHARED_SONG_NOTE_TP_LIGHT;Note from Prelude of Light (MM);song_yellow;false
+SHARED_SONG_NOTE_TP_SHADOW;Note from Nocturne of Shadow (MM);song_purple;false
+SHARED_SONG_NOTE_TP_SPIRIT;Note from Requiem of Spirit (MM);song_orange;false
+SHARED_SONG_NOTE_TP_WATER;Note from Serenade of Water (MM);song_blue;false
+SHARED_SONG_NOTE_ZELDA;Note from Zelda's Lullaby (MM);song;false
+SHARED_SONG_SARIA;Saria's Song (MM);song;false
+SHARED_SONG_TP_FIRE;Bolero of Fire (MM);song_red;false
+SHARED_SONG_TP_FOREST;Minuet of Forest (MM);song_green;false
+SHARED_SONG_TP_LIGHT;Prelude of Light (MM);song_yellow;false
+SHARED_SONG_TP_SHADOW;Nocturne of Shadow (MM);song_purple;false
+SHARED_SONG_TP_SPIRIT;Requiem of Spirit (MM);song_orange;false
+SHARED_SONG_TP_WATER;Serenade of Water (MM);song_blue;false
+SHARED_SONG_ZELDA;Zelda's Lullaby (MM);song;false

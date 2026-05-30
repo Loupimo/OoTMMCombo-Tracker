@@ -212,7 +212,7 @@ enum class EGameIcon : uint8_t
     // Items
     seeds,
     fairy_ocarina,
-    boomrang,
+    boomerang,
     slingshot,
     bow_oot,
     din,

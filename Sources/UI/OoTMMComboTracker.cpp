@@ -1014,6 +1014,20 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
     // Loads Settings section
     this->ROMSettings = Settings();
     this->ROMSettings.ParseSettings(sections[0]);
+    QRegularExpression reg("^Version: (.+)");
+    QRegularExpressionMatchIterator it = reg.globalMatch(content);
+    QRegularExpressionMatch match = it.next();
+    QString version = match.captured(1);
+
+    if (version.startsWith("dev"))
+    {
+        this->ROMSettings.Version = ROMVersion::dev;
+    }
+    else
+    {
+        this->ROMSettings.Version = ROMVersion::stable;
+    }
+
     // The local world / team is a per-user choice absent from the spoiler; seed it from
     // the persisted app config so the multiworld parsing below picks the right world.
     this->ROMSettings.LocalWorld = AppConfig::GetLocalWorld();

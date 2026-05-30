@@ -179,3 +179,36 @@ sharedHammer;Shared Megaton Hammer;boolean;vanilla
 sharedBottles;Shared Bottles;boolean;vanilla
 crossWarpOot;Cross-Games OoT Warp Song;boolean;vanilla
 crossWarpMm;Cross-Games MM Song of Soaring;boolean;vanilla
+songSoaringOot;Song of Soaring - OoT;boolean;vanilla
+songHealingOot;Song of Healing - OoT;boolean;vanilla
+songAwakeningOot;Song of Awakening - OoT;boolean;vanilla
+songGoronOot;Song of Goron - OoT;boolean;vanilla
+songZoraOot;Song of Zora - OoT;boolean;vanilla
+songOrderOot;Song of Order - OoT;boolean;vanilla
+songSunMm;Sun's Song - MM;boolean;vanilla
+songZeldaLullabyMm;Zelda's Lullaby - MM;boolean;vanilla
+songSariasMm;Saria's Song - MM;boolean;vanilla
+songMinuetMm;Minuet of Forest - MM;boolean;vanilla
+songBoleroMm;Bolero of Fire - MM;boolean;vanilla
+songSerenadeMm;Serenade of Water - MM;boolean;vanilla
+songRequiemMm;Requiem of Spirit - MM;boolean;vanilla
+songNocturneMm;Nocturne of Shadow - MM;boolean;vanilla
+songPreludeMm;Prelude of Light - MM;boolean;vanilla
+kamaroMaskOot;Kamaro Mask (OoT);boolean;vanilla
+boomerangMm;Boomerang (MM);boolean;vanilla
+sharedMaskKamaro;Shared Kamaro Mask;boolean;vanilla
+sharedBoomrang;Shared Boomerang;boolean;vanilla
+sharedSongHealing;Shared Song of Healing;boolean;vanilla
+sharedSongSoaring;Shared Song of Soaring;boolean;vanilla
+sharedSongAwakening;Shared Sonata of Awakening;boolean;vanilla
+sharedSongGoron;Shared Goron Lullaby;boolean;vanilla
+sharedSongZora;Shared New Wave Bossa Nova;boolean;vanilla
+sharedSongOrder;Shared Oath to Order;boolean;vanilla
+sharedSongZeldaLullaby;Shared Zelda's Lullaby;boolean;vanilla
+sharedSongSarias;Shared Saria's Song;boolean;vanilla
+sharedSongMinuet;Shared Minuet of Forest;boolean;vanilla
+sharedSongBolero;Shared Bolero of Fire;boolean;vanilla
+sharedSongSerenade;Shared Serenade of Water;boolean;vanilla
+sharedSongRequiem;Shared Requiem of Spirit;boolean;vanilla
+sharedSongNocturne;Shared Nocturne of Shadow;boolean;vanilla
+sharedSongPrelude;Shared Prelude of Light;boolean;vanilla

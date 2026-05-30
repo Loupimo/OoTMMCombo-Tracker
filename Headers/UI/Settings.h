@@ -8,6 +8,12 @@ class FilterManager;
 struct ObjectInfo;
 struct SceneObjects;
 
+enum class ROMVersion
+{
+    stable,
+    dev
+};
+
 enum class ROMGame
 {
 	oot,
@@ -73,6 +79,7 @@ class Settings
 public:
 
 	/* The ROM game combination (OoT only, MM only, or OoTMM combo) parsed from the spoiler log. */
+    ROMVersion Version;
 	ROMGame Game;
 	GameMode Mode;
     GoalMode Goal;

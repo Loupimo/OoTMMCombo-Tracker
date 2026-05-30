@@ -4,10 +4,9 @@
 #include "Combo/Objects.h"
 #include "Combo/Scenes.h"
 
-
-
 Settings::Settings()
 {
+    this->Version = ROMVersion::stable;
 	this->Game = ROMGame::ootmm;
 	this->Mode = GameMode::single;
     this->Goal = GoalMode::boss;
@@ -117,10 +116,12 @@ Settings::Settings()
         { "scalesMm", { "Scales - MM", ParamType::boolean, ShuffleSetting::all } },
         { "strengthMm", { "Strength - MM", ParamType::boolean, ShuffleSetting::all } },
         { "hammerMm", { "Megaton Hammer - MM", ParamType::boolean, ShuffleSetting::all } },
+        { "boomerangMm", { "Boomerang (MM)", ParamType::boolean, ShuffleSetting::vanilla } },
         { "spinUpgradeOot", { "Spin Attack Upgrade - OoT", ParamType::boolean, ShuffleSetting::all } },
         { "dekuShieldMm", { "Deku Shield - MM", ParamType::boolean, ShuffleSetting::all } },
         { "blastMaskOot", { "Blast Mask - OoT", ParamType::boolean, ShuffleSetting::all } },
         { "stoneMaskOot", { "Stone Mask - OoT", ParamType::boolean, ShuffleSetting::all } },
+        { "kamaroMaskOot", { "Kamaro Mask (OoT)", ParamType::boolean, ShuffleSetting::vanilla } },
         { "elegyOot", { "Elegy of Emptiness - OoT", ParamType::boolean, ShuffleSetting::all } },
         { "ocarinaButtonsShuffleOot", { "Ocarina Buttons Shuffle - OoT", ParamType::boolean, ShuffleSetting::all } },
         { "ocarinaButtonsShuffleMm", { "Ocarina Buttons Shuffle - MM", ParamType::boolean, ShuffleSetting::all } },
@@ -193,7 +194,38 @@ Settings::Settings()
         { "sharedHammer", { "Shared Megaton Hammer", ParamType::boolean, ShuffleSetting::vanilla } },
         { "sharedBottles", { "Shared Bottles", ParamType::boolean, ShuffleSetting::vanilla } },
         { "crossWarpOot", { "Cross-Games OoT Warp Song", ParamType::boolean, ShuffleSetting::all } },
-        { "crossWarpMm", { "Cross-Games MM Song of Soaring", ParamType::boolean, ShuffleSetting::all } }
+        { "crossWarpMm", { "Cross-Games MM Song of Soaring", ParamType::boolean, ShuffleSetting::all } },
+        { "songSoaringOot", { "Song of Soaring - OoT", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "songHealingOot", { "Song of Healing - OoT", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "songAwakeningOot", { "Song of Awakening - OoT", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "songGoronOot", { "Song of Goron - OoT", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "songZoraOot", { "Song of Zora - OoT", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "songOrderOot", { "Song of Order - OoT", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "songSunMm", { "Sun's Song - MM", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "songZeldaLullabyMm", { "Zelda's Lullaby - MM", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "songSariasMm", { "Saria's Song - MM", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "songMinuetMm", { "Minuet of Forest - MM", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "songBoleroMm", { "Bolero of Fire - MM", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "songSerenadeMm", { "Serenade of Water - MM", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "songRequiemMm", { "Requiem of Spirit - MM", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "songNocturneMm", { "Nocturne of Shadow - MM", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "songPreludeMm", { "Prelude of Light - MM", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "sharedMaskKamaro", { "Shared Kamaro Mask", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "sharedBoomrang", { "Shared Boomerang", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "sharedSongHealing", { "Shared Song of Healing", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "sharedSongSoaring", { "Shared Song of Soaring", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "sharedSongAwakening", { "Shared Sonata of Awakening", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "sharedSongGoron", { "Shared Goron Lullaby", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "sharedSongZora", { "Shared New Wave Bossa Nova", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "sharedSongOrder", { "Shared Oath to Order", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "sharedSongZeldaLullaby", { "Shared Zelda's Lullaby", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "sharedSongSarias", { "Shared Saria's Song", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "sharedSongMinuet", { "Shared Minuet of Forest", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "sharedSongBolero", { "Shared Bolero of Fire", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "sharedSongSerenade", { "Shared Serenade of Water", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "sharedSongRequiem", { "Shared Requiem of Spirit", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "sharedSongNocturne", { "Shared Nocturne of Shadow", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "sharedSongPrelude", { "Shared Prelude of Light", ParamType::boolean, ShuffleSetting::vanilla } }
 	});
 }
 
@@ -2508,6 +2540,230 @@ void Settings::ApplyItemSettings()
             this->SharedItemIDs.insert(MM_BOTTLED_GOLD_DUST);
             this->SharedItemIDs.insert(MM_WEIRD_MUSHROOM);
             this->SharedItemIDs.insert(MM_SEAHORSE2);
+        }
+        else if (it.key().compare("songSoaringOot") == 0)
+        {
+            if (!this->CheckItemEnabled(it->Value, OOT_SONG_SOARING))
+            {
+                this->DisabledItemIDs.insert(OOT_SONG_NOTE_SOARING);
+            }
+        }
+        else if (it.key().compare("songHealingOot") == 0)
+        {
+            if (!this->CheckItemEnabled(it->Value, OOT_SONG_HEALING))
+            {
+                this->DisabledItemIDs.insert(OOT_SONG_NOTE_HEALING);
+            }
+        }
+        else if (it.key().compare("songAwakeningOot") == 0)
+        {
+            if (!this->CheckItemEnabled(it->Value, OOT_SONG_AWAKENING))
+            {
+                this->DisabledItemIDs.insert(OOT_SONG_NOTE_AWAKENING);
+            }
+        }
+        else if (it.key().compare("songGoronOot") == 0)
+        {
+            if (!this->CheckItemEnabled(it->Value, OOT_SONG_GORON))
+            {
+                this->DisabledItemIDs.insert(OOT_SONG_GORON_HALF);
+                this->DisabledItemIDs.insert(OOT_SONG_NOTE_GORON);
+            }
+        }
+        else if (it.key().compare("songZoraOot") == 0)
+        {
+            if (!this->CheckItemEnabled(it->Value, OOT_SONG_ZORA))
+            {
+                this->DisabledItemIDs.insert(OOT_SONG_NOTE_ZORA);
+            }
+        }
+        else if (it.key().compare("songOrderOot") == 0)
+        {
+            if (!this->CheckItemEnabled(it->Value, OOT_SONG_ORDER))
+            {
+                this->DisabledItemIDs.insert(OOT_SONG_NOTE_ORDER);
+            }
+        }
+        else if (it.key().compare("songSunMm") == 0)
+        {
+            if (!this->CheckItemEnabled(it->Value, MM_SONG_SUN))
+            {
+                this->DisabledItemIDs.insert(MM_SONG_NOTE_SUN);
+            }
+        }
+        else if (it.key().compare("songZeldaLullabyMm") == 0)
+        {
+            if (!this->CheckItemEnabled(it->Value, MM_SONG_ZELDA))
+            {
+                this->DisabledItemIDs.insert(MM_SONG_NOTE_ZELDA);
+            }
+        }
+        else if (it.key().compare("songSariasMm") == 0)
+        {
+            if (!this->CheckItemEnabled(it->Value, MM_SONG_SARIA))
+            {
+                this->DisabledItemIDs.insert(MM_SONG_NOTE_SARIA);
+            }
+        }
+        else if (it.key().compare("songMinuetMm") == 0)
+        {
+            if (!this->CheckItemEnabled(it->Value, MM_SONG_TP_FOREST))
+            {
+                this->DisabledItemIDs.insert(MM_SONG_NOTE_TP_FOREST);
+            }
+        }
+        else if (it.key().compare("songBoleroMm") == 0)
+        {
+            if (!this->CheckItemEnabled(it->Value, MM_SONG_TP_FIRE))
+            {
+                this->DisabledItemIDs.insert(MM_SONG_NOTE_TP_FIRE);
+            }
+        }
+        else if (it.key().compare("songSerenadeMm") == 0)
+        {
+            if (!this->CheckItemEnabled(it->Value, MM_SONG_TP_WATER))
+            {
+                this->DisabledItemIDs.insert(MM_SONG_NOTE_TP_WATER);
+            }
+        }
+        else if (it.key().compare("songRequiemMm") == 0)
+        {
+            if (!this->CheckItemEnabled(it->Value, MM_SONG_TP_SPIRIT))
+            {
+                this->DisabledItemIDs.insert(MM_SONG_NOTE_TP_SPIRIT);
+            }
+        }
+        else if (it.key().compare("songNocturneMm") == 0)
+        {
+            if (!this->CheckItemEnabled(it->Value, MM_SONG_TP_SHADOW))
+            {
+                this->DisabledItemIDs.insert(MM_SONG_NOTE_TP_SHADOW);
+            }
+        }
+        else if (it.key().compare("songPreludeMm") == 0)
+        {
+            if (!this->CheckItemEnabled(it->Value, MM_SONG_TP_LIGHT))
+            {
+                this->DisabledItemIDs.insert(MM_SONG_NOTE_TP_LIGHT);
+            }
+        }
+        else if (it.key().compare("kamaroMaskOot") == 0)
+        {;
+            this->CheckItemEnabled(it->Value, OOT_MASK_KAMARO);
+        }
+        else if (it.key().compare("boomerangMm") == 0)
+        {
+            this->CheckItemEnabled(it->Value, MM_BOOMERANG);
+        }
+        else if (it.key().compare("sharedMaskKamaro") == 0)
+        {
+            this->SharedItemIDs.insert(OOT_MASK_KAMARO);
+            this->SharedItemIDs.insert(MM_MASK_KAMARO);
+        }
+        else if (it.key().compare("sharedBoomrang") == 0)
+        {
+            this->SharedItemIDs.insert(OOT_BOOMERANG);
+            this->SharedItemIDs.insert(MM_BOOMERANG);
+        }
+        else if (it.key().compare("sharedSongHealing") == 0)
+        {
+            this->SharedItemIDs.insert(OOT_SONG_HEALING);
+            this->SharedItemIDs.insert(OOT_SONG_NOTE_HEALING);
+            this->SharedItemIDs.insert(MM_SONG_HEALING);
+            this->SharedItemIDs.insert(MM_SONG_NOTE_HEALING);
+        }
+        else if (it.key().compare("sharedSongSoaring") == 0)
+        {
+            this->SharedItemIDs.insert(OOT_SONG_SOARING);
+            this->SharedItemIDs.insert(OOT_SONG_NOTE_SOARING);
+            this->SharedItemIDs.insert(MM_SONG_SOARING);
+            this->SharedItemIDs.insert(MM_SONG_NOTE_SOARING);
+        }
+        else if (it.key().compare("sharedSongAwakening") == 0)
+        {
+            this->SharedItemIDs.insert(OOT_SONG_AWAKENING);
+            this->SharedItemIDs.insert(OOT_SONG_NOTE_AWAKENING);
+            this->SharedItemIDs.insert(MM_SONG_AWAKENING);
+            this->SharedItemIDs.insert(MM_SONG_NOTE_AWAKENING);
+        }
+        else if (it.key().compare("sharedSongGoron") == 0)
+        {
+            this->SharedItemIDs.insert(OOT_SONG_GORON);
+            this->SharedItemIDs.insert(OOT_SONG_GORON_HALF);
+            this->SharedItemIDs.insert(OOT_SONG_NOTE_GORON);
+            this->SharedItemIDs.insert(MM_SONG_GORON);
+            this->SharedItemIDs.insert(MM_SONG_GORON_HALF);
+            this->SharedItemIDs.insert(MM_SONG_NOTE_GORON);
+        }
+        else if (it.key().compare("sharedSongZora") == 0)
+        {
+            this->SharedItemIDs.insert(OOT_SONG_ZORA);
+            this->SharedItemIDs.insert(OOT_SONG_NOTE_ZORA);
+            this->SharedItemIDs.insert(MM_SONG_ZORA);
+            this->SharedItemIDs.insert(MM_SONG_NOTE_ZORA);
+        }
+        else if (it.key().compare("sharedSongOrder") == 0)
+        {
+            this->SharedItemIDs.insert(OOT_SONG_ORDER);
+            this->SharedItemIDs.insert(OOT_SONG_NOTE_ORDER);
+            this->SharedItemIDs.insert(MM_SONG_ORDER);
+            this->SharedItemIDs.insert(MM_SONG_NOTE_ORDER);
+        }
+        else if (it.key().compare("sharedSongZeldaLullaby") == 0)
+        {
+            this->SharedItemIDs.insert(OOT_SONG_ZELDA);
+            this->SharedItemIDs.insert(OOT_SONG_NOTE_ZELDA);
+            this->SharedItemIDs.insert(MM_SONG_ZELDA);
+            this->SharedItemIDs.insert(MM_SONG_NOTE_ZELDA);
+        }
+        else if (it.key().compare("sharedSongSarias") == 0)
+        {
+            this->SharedItemIDs.insert(OOT_SONG_SARIA);
+            this->SharedItemIDs.insert(OOT_SONG_NOTE_SARIA);
+            this->SharedItemIDs.insert(MM_SONG_SARIA);
+            this->SharedItemIDs.insert(MM_SONG_NOTE_SARIA);
+        }
+        else if (it.key().compare("sharedSongMinuet") == 0)
+        {
+            this->SharedItemIDs.insert(OOT_SONG_TP_FOREST);
+            this->SharedItemIDs.insert(OOT_SONG_NOTE_TP_FOREST);
+            this->SharedItemIDs.insert(MM_SONG_TP_FOREST);
+            this->SharedItemIDs.insert(MM_SONG_NOTE_TP_FOREST);
+        }
+        else if (it.key().compare("sharedSongBolero") == 0)
+        {
+            this->SharedItemIDs.insert(OOT_SONG_TP_FIRE);
+            this->SharedItemIDs.insert(OOT_SONG_NOTE_TP_FIRE);
+            this->SharedItemIDs.insert(MM_SONG_TP_FIRE);
+            this->SharedItemIDs.insert(MM_SONG_NOTE_TP_FIRE);
+        }
+        else if (it.key().compare("sharedSongSerenade") == 0)
+        {
+            this->SharedItemIDs.insert(OOT_SONG_TP_WATER);
+            this->SharedItemIDs.insert(OOT_SONG_NOTE_TP_WATER);
+            this->SharedItemIDs.insert(MM_SONG_TP_WATER);
+            this->SharedItemIDs.insert(MM_SONG_NOTE_TP_WATER);
+        }
+        else if (it.key().compare("sharedSongRequiem") == 0)
+        {
+            this->SharedItemIDs.insert(OOT_SONG_TP_SPIRIT);
+            this->SharedItemIDs.insert(OOT_SONG_NOTE_TP_SPIRIT);
+            this->SharedItemIDs.insert(MM_SONG_TP_SPIRIT);
+            this->SharedItemIDs.insert(MM_SONG_NOTE_TP_SPIRIT);
+        }
+        else if (it.key().compare("sharedSongNocturne") == 0)
+        {
+            this->SharedItemIDs.insert(OOT_SONG_TP_SHADOW);
+            this->SharedItemIDs.insert(OOT_SONG_NOTE_TP_SHADOW);
+            this->SharedItemIDs.insert(MM_SONG_TP_SHADOW);
+            this->SharedItemIDs.insert(MM_SONG_NOTE_TP_SHADOW);
+        }
+        else if (it.key().compare("sharedSongPrelude") == 0)
+        {
+            this->SharedItemIDs.insert(OOT_SONG_TP_LIGHT);
+            this->SharedItemIDs.insert(OOT_SONG_NOTE_TP_LIGHT);
+            this->SharedItemIDs.insert(MM_SONG_TP_LIGHT);
+            this->SharedItemIDs.insert(MM_SONG_NOTE_TP_LIGHT);
         }
     }
 }
