@@ -670,15 +670,17 @@ EntranceCostTab::EntranceCostTab(EntranceTab* Parent) : QWidget(Parent)
         "<p><b>Huge thanks to everyone who contributes!</b></p>"
         "<p>To be as accurate as possible, please try to follow these rules:</p>"
         "<ol>"
-        "<li>Be as vanilla as possible. If a specific trick or setting is needed, please document it.</li>"
+        "<li>Be as vanilla as possible. If a specific trick or setting is needed, please document it directly in the file.</li>"
         "<li>No cheats (e.g. <i>L to Levitate</i>).</li>"
         "<li>No emulator speedup.</li>"
-        "<li>No entrance randomizer.</li>"
-        "<li>No Bunny Hood.</li>"
-        "<li>No Goron mask.</li>"
-        "<li>No Epona travel (unless specifically required for that route).</li>"
-        "<li>Don't waste your time with Wallmasters - since they are not randomized, the timer will not stop.</li>"
-        "</ol>");
+        "<li>Avoid using Bunny Hood.</li>"
+        "<li>No Goron mask (unless required).</li>"
+        "<li>No Epona travel (unless required).</li>"
+        "<li>If you did not turn on Wallmaster randomization don't waste your time with them - the timer will not stop.</li>"
+        "</ol>"
+        "<p>Tips: you can make a savestate before exiting a scene. Thus, once you have done a route that specific spawn you can reload just before spawning and then try another route for that spawn.</p>"
+        "<p>This is pretty useful for entrances that requires you to do a long road before spawning by them again.</p>"
+        "<p>Example: Let's say you want to try all the ways in Ikana Canyon starting from Sakon Hideout, first make a save state inside sakon hideout, then go to Ikana Canyon and do the route you want, then reload your save and go to Ikana Canyon and do another road. Repeat the process until your are done.");
     this->RulesLabel->setTextFormat(Qt::RichText);
     this->RulesLabel->setWordWrap(true);
     this->RulesLabel->setOpenExternalLinks(true);

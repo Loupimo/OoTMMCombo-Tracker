@@ -175,4 +175,6 @@
 	{ "sharedScales", { "Shared Scales", ParamType::boolean, ShuffleSetting::vanilla } },
 	{ "sharedStrength", { "Shared Strength", ParamType::boolean, ShuffleSetting::vanilla } },
 	{ "sharedHammer", { "Shared Megaton Hammer", ParamType::boolean, ShuffleSetting::vanilla } },
-	{ "sharedBottles", { "Shared Bottles", ParamType::boolean, ShuffleSetting::vanilla } }
+	{ "sharedBottles", { "Shared Bottles", ParamType::boolean, ShuffleSetting::vanilla } },
+	{ "crossWarpOot", { "Cross-Games OoT Warp Song", ParamType::boolean, ShuffleSetting::vanilla } },
+	{ "crossWarpMm", { "Cross-Games MM Song of Soaring", ParamType::boolean, ShuffleSetting::vanilla } }

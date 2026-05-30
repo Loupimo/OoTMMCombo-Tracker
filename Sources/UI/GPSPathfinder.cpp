@@ -1,4 +1,5 @@
 #include "UI/GPSPathfinder.h"
+#include "UI/SceneEntrance.h"
 #include "Combo/Entrances.h"
 #include "Combo/OoTEntrances.h"
 #include "Combo/MMEntrances.h"
@@ -22,8 +23,35 @@
 namespace
 {
     constexpr uint32_t  UnreachableCost = std::numeric_limits<uint32_t>::max();
-    constexpr uint32_t  VirtSource = 0xFFFFFFFEu;
-    constexpr uint32_t  VirtSink   = 0xFFFFFFFFu;
+    constexpr uint32_t  VirtSource      = 0xFFFFFFFEu;
+    constexpr uint32_t  VirtSink        = 0xFFFFFFFFu;
+
+    // Cross-game node encoding. OoT and MM use overlapping entrance ID ranges (OoT ~12 bits,
+    // MM up to ~17 bits, both well below 0x80000000) so we use bit 31 of the graph's node ID
+    // to flag MM. Together with the OoT/MM scene maps that are also game-keyed, this lets a
+    // single unified Graph cover both games without ID collisions.
+    constexpr uint32_t  MM_NODE_FLAG    = 0x80000000u;
+
+    // Walk cost (seconds) used for cross-game warp access edges added directly in BuildGraph
+    // (the intra-game walks for warp songs / owls live in V.Cost.Costs through Entrances.cpp
+    // and use the same constant declared there).
+    constexpr uint32_t  CROSS_GAME_WARP_COST = 10u;
+
+    inline uint32_t EncodeNode(uint8_t Game, uint32_t EntranceID)
+    {
+        return (Game == MM_GAME) ? (EntranceID | MM_NODE_FLAG) : EntranceID;
+    }
+
+    inline uint8_t NodeGame(uint32_t Node)
+    {
+        return (Node & MM_NODE_FLAG) ? (uint8_t)MM_GAME : (uint8_t)OOT_GAME;
+    }
+
+    inline uint32_t NodeID(uint32_t Node)
+    {
+        return Node & ~MM_NODE_FLAG;
+    }
+
 
     struct Edge
     {
@@ -34,81 +62,161 @@ namespace
 
     struct Graph
     {
-        // Out-edges per entrance node.
+        // Out-edges per encoded entrance node.
         std::unordered_map<uint32_t, std::vector<Edge>> Adj;
-        // Reverse lookup: which physical scene each entrance lives in.
+        // Reverse lookup: which physical scene each entrance lives in. The owning game is
+        // derived from the encoded node via NodeGame() so we don't need a separate map.
         std::unordered_map<uint32_t, uint32_t>          EntranceScene;
     };
 
 
     /*
-    *   Build a directed graph for the given game from the entrance map. Every entry
-    *   (FromEntr -> ToEntr) becomes a portal edge of cost 0 (using the portal itself
-    *   is instantaneous), and every entrance gets intra-scene edges to all other
-    *   entrances of its scene taken from EntranceMetaInfo::Cost (default 1).
+    *   Build a unified directed graph spanning BOTH OoT and MM. The GPS is meant for users who
+    *   randomized their seed, so the "natural" portal layout in OoTEntrances / MMEntrances is
+    *   NEVER trusted as the source of portals. Instead:
+    *
+    *     - The static map is used only to (a) register every entrance with its physical scene
+    *       (entrances live where the data says they live - that's not randomized) and (b)
+    *       provide intra-scene walking cost data (V.Cost.Costs, also a physical attribute).
+    *     - Portal edges (entrance A leads to entrance B) come EXCLUSIVELY from the discovered
+    *       SceneEntranceMetaInf.OutLink data. This includes intra-game randomized portals AND
+    *       cross-game portals. The user has to actually traverse a portal in their game once
+    *       for the GPS to know about it; an empty save will yield very few portals.
+    *     - Cross-game warp access (synthetic walks from any entrance to the other game's
+    *       warp-song / owl choices) is added on top, gated by the always-on parameters.
     */
-    Graph BuildGraph(int Game)
+    Graph BuildGraph()
     {
         Graph G;
 
-        std::map<int, EntranceMetaInfo>* Map = nullptr;
-        if      (Game == OOT_GAME) Map = &OoTEntrances;
-        else if (Game == MM_GAME)  Map = &MMEntrances;
-        if (Map == nullptr) return G;
-
-        // First pass: register every entrance with its physical scene and add the
-        // portal edge. Skip None-typed entrances (placeholders / cutscene-only).
-        for (auto& Pair : *Map)
+        auto AddForGame = [&G](uint8_t Game, std::map<int, EntranceMetaInfo>& Map)
         {
-            const EntranceMetaInfo& V = Pair.second;
-            if (V.Type == EntranceType::None) continue;
-
-            G.EntranceScene[V.FromEntranceID] = V.FromSceneID;
-            G.EntranceScene[V.ToEntranceID]   = V.ToSceneID;
-
-            G.Adj[V.FromEntranceID].push_back({ V.ToEntranceID, 0u, true });
-        }
-
-        // Second pass: add intra-scene walk edges using EntranceMetaInfo::Cost.
-        // Each entry's Cost table describes walks from V.FromEntranceID inside
-        // V.FromSceneID. Entrance IDs are unique per game so the same edge cannot
-        // be added twice — no de-duplication needed.
-        for (auto& Pair : *Map)
-        {
-            const EntranceMetaInfo& V = Pair.second;
-            if (V.Type == EntranceType::None) continue;
-            for (const auto& KV : V.Cost.Costs)
+            // First pass: registration only. Each entrance gets its physical scene recorded so
+            // ToScenePath can later resolve scene names from the right game.
+            for (auto& Pair : Map)
             {
-                if (KV.second == UnreachableCost) continue;
-                G.Adj[V.FromEntranceID].push_back({ KV.first, KV.second, false });
+                const EntranceMetaInfo& V = Pair.second;
+                if (V.Type == EntranceType::None) continue;
+
+                const uint32_t FromN = EncodeNode(Game, V.FromEntranceID);
+                const uint32_t ToN   = EncodeNode(Game, V.ToEntranceID);
+                G.EntranceScene[FromN] = V.FromSceneID;
+                G.EntranceScene[ToN]   = V.ToSceneID;
+                // Static portal edge intentionally NOT added - portals are loaded from
+                // discovered SceneEntranceMetaInf below so randomized seeds route correctly.
             }
-        }
+
+            // Walks based on physical layout - the in-scene distance between two entrances
+            // doesn't change with randomization, so these stay sourced from the static map.
+            for (auto& Pair : Map)
+            {
+                const EntranceMetaInfo& V = Pair.second;
+                if (V.Type == EntranceType::None) continue;
+                const uint32_t FromN = EncodeNode(Game, V.FromEntranceID);
+                for (const auto& KV : V.Cost.Costs)
+                {
+                    if (KV.second == UnreachableCost) continue;
+                    G.Adj[FromN].push_back({ EncodeNode(Game, KV.first), KV.second, false });
+                }
+            }
+        };
+
+        AddForGame(OOT_GAME, OoTEntrances);
+        AddForGame(MM_GAME,  MMEntrances);
+
+        // Sole source of portal edges: discovered OutLinks for every entrance. Covers intra
+        // and cross-game equally, and correctly reflects whatever randomization the seed has.
+        // Entrances the player hasn't traversed yet contribute no portal - they're effectively
+        // dead-ends in the GPS until the player learns where they lead.
+        auto AddDiscoveredPortals = [&G](uint8_t Game, const std::map<uint32_t, SceneEntranceMetaInf>& Scenes)
+        {
+            for (const auto& ScenePair : Scenes)
+            {
+                const SceneEntranceMetaInf& Scene = ScenePair.second;
+                for (const auto& EntrancePair : Scene.EntranceIDs)
+                {
+                    const uint32_t EID = EntrancePair.first;
+                    const EntranceLink& Link = EntrancePair.second;
+                    if (Link.OutLink == UINT32_MAX) continue;
+                    if (Link.OutLinkGame == NO_GAME) continue;
+                    const uint32_t From = EncodeNode(Game, EID);
+                    const uint32_t To   = EncodeNode(Link.OutLinkGame, Link.OutLink);
+                    G.Adj[From].push_back({ To, 0u, true });
+                }
+            }
+        };
+        AddDiscoveredPortals(OOT_GAME, OoTSceneEntranceMeta);
+        AddDiscoveredPortals(MM_GAME,  MMSceneEntranceMeta);
+
+        // Cross-game warp access: while the OoT / MM warp song / owl parameters are ON, the
+        // player can play the OTHER game's warp from any entrance of their current game. We
+        // model this by adding walk edges from every OoT entrance to every MM_OWL_X_CHOICE
+        // (and vice versa) at CROSS_GAME_WARP_COST. The existing intra-MM_OWLS / OOT_SONGS
+        // menu walks (set in InitializeEntranceCosts) handle the destination picking.
+        auto CollectChoices = [](const std::map<int, EntranceMetaInfo>& Map, uint32_t WarpScene, uint8_t WarpGame, std::vector<uint32_t>& Out)
+        {
+            for (const auto& Pair : Map)
+            {
+                const EntranceMetaInfo& V = Pair.second;
+                if (V.Type != EntranceType::One_Way_Out) continue;
+                if (V.ToSceneID != WarpScene) continue;
+                Out.push_back(EncodeNode(WarpGame, (uint32_t)Pair.first));
+            }
+        };
+        std::vector<uint32_t> OoTSongChoices;
+        std::vector<uint32_t> MMOwlChoices;
+        CollectChoices(OoTEntrances, OOT_SONGS, OOT_GAME, OoTSongChoices);
+        CollectChoices(MMEntrances,  MM_OWLS,   MM_GAME,  MMOwlChoices);
+
+        auto AddCrossWarpWalks = [&G](uint8_t SourceGame, const std::map<int, EntranceMetaInfo>& SourceMap, uint32_t SkipScene,
+                                      const std::vector<uint32_t>& Choices)
+        {
+            for (const auto& Pair : SourceMap)
+            {
+                const EntranceMetaInfo& V = Pair.second;
+                if (V.Type == EntranceType::None) continue;
+                if (V.FromSceneID == SkipScene) continue;            // skip entries inside the own warp scene
+                const uint32_t From = EncodeNode(SourceGame, V.FromEntranceID);
+                for (uint32_t Choice : Choices)
+                {
+                    G.Adj[From].push_back({ Choice, CROSS_GAME_WARP_COST, false });
+                }
+            }
+        };
+        // OoT entrances can play MM warp owls -> reach MM_OWLS choices.
+        AddCrossWarpWalks(OOT_GAME, OoTEntrances, OOT_SONGS, MMOwlChoices);
+        // MM entrances can play OoT warp songs -> reach OOT_SONGS choices.
+        AddCrossWarpWalks(MM_GAME,  MMEntrances,  MM_OWLS,   OoTSongChoices);
 
         return G;
     }
 
 
     /*
-    *   Attach virtual source and sink nodes to the graph: VirtSource has a 0-cost
-    *   edge to every entrance of the start scene, and every entrance of the end
-    *   scene has a 0-cost edge to VirtSink. Returns true if both virtual nodes got
-    *   at least one connection (otherwise no path can exist).
+    *   Attach virtual source and sink nodes to the graph: VirtSource has a 0-cost edge to
+    *   every entrance of the start (Game, Scene), and every entrance of the end (Game, Scene)
+    *   has a 0-cost edge to VirtSink. Returns true if both virtual nodes got at least one
+    *   connection (otherwise no path can exist).
     */
-    bool AttachVirtualEndpoints(Graph& G, uint32_t StartScene, uint32_t EndScene)
+    bool AttachVirtualEndpoints(Graph& G, uint8_t StartGame, uint32_t StartScene, uint8_t EndGame, uint32_t EndScene)
     {
         bool HasStart = false;
         bool HasEnd   = false;
 
         for (const auto& Pair : G.EntranceScene)
         {
-            if (Pair.second == StartScene)
+            const uint32_t Node  = Pair.first;
+            const uint32_t Scene = Pair.second;
+            const uint8_t  Game  = NodeGame(Node);
+
+            if (Game == StartGame && Scene == StartScene)
             {
-                G.Adj[VirtSource].push_back({ Pair.first, 0u, false });
+                G.Adj[VirtSource].push_back({ Node, 0u, false });
                 HasStart = true;
             }
-            if (Pair.second == EndScene)
+            if (Game == EndGame && Scene == EndScene)
             {
-                G.Adj[Pair.first].push_back({ VirtSink, 0u, false });
+                G.Adj[Node].push_back({ VirtSink, 0u, false });
                 HasEnd = true;
             }
         }
@@ -294,25 +402,27 @@ namespace
 
 
     /*
-    *   Convert a raw node sequence (entrance IDs, possibly bracketed by VirtSource
-    *   and VirtSink) into a GPSPath of scene stations, collapsing consecutive nodes
-    *   that live in the same scene into a single station.
+    *   Convert a raw node sequence (encoded entrance IDs, possibly bracketed by VirtSource and
+    *   VirtSink) into a GPSPath of scene stations, collapsing consecutive nodes that live in
+    *   the same (Game, Scene) into a single station. The Game is derived from each node via
+    *   NodeGame(), so the path can freely cross between OoT and MM.
     */
-    GPSPath ToScenePath(const Graph& G, const std::vector<uint32_t>& Raw, int Game)
+    GPSPath ToScenePath(const Graph& G, const std::vector<uint32_t>& Raw)
     {
         GPSPath Out;
         uint32_t LastScene = UINT32_MAX;
+        uint8_t  LastGame  = NO_GAME;           // Sentinel so the first node always triggers a scene change.
         uint32_t HopCost   = 0;
-        uint32_t PrevNode  = UINT32_MAX;        // Tracks the last real entrance node visited; becomes the exit when the scene changes.
+        uint32_t PrevNode  = UINT32_MAX;
 
-        // Given an entrance node located in CurrentScene, returns the display name of the
-        // OTHER scene linked by this entrance - i.e. the destination the door leads to.
-        // The naming convention in the entrance data is asymmetric (the same physical door
-        // may carry FromName/ToName flipped between its two paired entries) so we pick the
-        // side opposite to CurrentScene.
-        auto ExitDestinationName = [&](uint32_t EntranceID, uint32_t CurrentScene) -> QString
+        // Returns the OTHER scene's display name for the given entrance node relative to
+        // CurrentScene. The naming convention is asymmetric so we pick the side opposite to
+        // CurrentScene. Game is derived from the node so this works for both OoT and MM.
+        auto ExitDestinationName = [](uint32_t Node, uint32_t CurrentScene) -> QString
         {
-            const EntranceMetaInfo* M = EntranceHelper::GetEntranceMetaInf(Game, EntranceID);
+            const uint8_t G = NodeGame(Node);
+            const uint32_t ID = NodeID(Node);
+            const EntranceMetaInfo* M = EntranceHelper::GetEntranceMetaInf(G, ID);
             if (M == nullptr) return QString();
             const char* Name = nullptr;
             if      (M->FromSceneID == CurrentScene) Name = M->ToName;
@@ -321,40 +431,80 @@ namespace
             return Name != nullptr ? QString::fromUtf8(Name) : QString();
         };
 
+        auto IsWarpScene = [](uint32_t Scene, uint8_t Game)
+        {
+            return (Game == OOT_GAME && Scene == OOT_SONGS) ||
+                   (Game == MM_GAME  && Scene == MM_OWLS);
+        };
+
         for (uint32_t Node : Raw)
         {
             if (Node == VirtSource || Node == VirtSink) continue;
             const auto It = G.EntranceScene.find(Node);
             if (It == G.EntranceScene.end()) continue;
             const uint32_t Scene = It->second;
+            const uint8_t  Game  = NodeGame(Node);
 
-            if (Scene != LastScene)
+            // Scene change when either the scene or the game flips - a cross-game portal step
+            // produces both, so the test triggers correctly on both flavors of transition.
+            if (Scene != LastScene || Game != LastGame)
             {
                 if (!Out.Steps.empty())
                 {
-                    // Close the previous step with the accumulated portal-hop cost.
+                    // Cross-scene WALK edges (non-portal, non-zero cost) carry the song-playing
+                    // time and belong to the leaving scene's hop. Portals (cost 0) need no
+                    // accumulation.
+                    const auto AdjIt = G.Adj.find(PrevNode);
+                    if (AdjIt != G.Adj.end())
+                    {
+                        for (const Edge& E : AdjIt->second)
+                        {
+                            if (E.To == Node && !E.IsPortal)
+                            {
+                                HopCost += E.Cost;
+                                break;
+                            }
+                        }
+                    }
+
                     Out.Steps.last().Cost = HopCost;
-                    // Label the leg with the name of the exit the player has to take (= the
-                    // entrance node we visited last while still inside the previous scene).
-                    const QString ExitName = ExitDestinationName(PrevNode, LastScene);
+                    QString ExitName;
+                    const bool LeavingWarp = IsWarpScene(LastScene, LastGame);
+                    const bool EnteringWarp = IsWarpScene(Scene, Game);
+                    if (LeavingWarp)
+                    {
+                        const EntranceMetaInfo* PrevMeta = EntranceHelper::GetEntranceMetaInf(NodeGame(PrevNode), NodeID(PrevNode));
+                        if (PrevMeta != nullptr && PrevMeta->FromName != nullptr)
+                        {
+                            ExitName = QString::fromUtf8(PrevMeta->FromName);
+                        }
+                    }
+                    else if (EnteringWarp)
+                    {
+                        ExitName = (Game == OOT_GAME) ? QStringLiteral("Warp Song") : QStringLiteral("Warp Owl");
+                    }
+                    else
+                    {
+                        ExitName = ExitDestinationName(PrevNode, LastScene);
+                    }
                     Out.Steps.last().ViaText = ExitName.isEmpty() ? QStringLiteral("Walk") : ExitName;
                     Out.TotalCost += HopCost;
                 }
                 GPSPathStep Step;
                 Step.SceneID = Scene;
+                Step.Game    = Game;
                 SceneMetaInfo* Meta = GetSceneMetaInfo(Scene, (uint32_t)Game);
                 Step.SceneName = (Meta && Meta->Name) ? QString::fromUtf8(Meta->Name)
                                                        : QString("Scene %1").arg(Scene);
                 Out.Steps.append(Step);
                 LastScene = Scene;
-                HopCost = 0;
+                LastGame  = Game;
+                HopCost   = 0;
             }
             else
             {
-                // Same scene as previous node: don't create a new station, but the walk
-                // cost from PrevNode to Node belongs to this hop. Look the edge up in the
-                // adjacency list (only walking edges count - portals carry the inter-scene
-                // hop already and are flushed on the next scene change above).
+                // Same scene as previous node: don't create a new station, but the walk cost
+                // from PrevNode to Node belongs to this hop. Only non-portal edges count.
                 const auto AdjIt = G.Adj.find(PrevNode);
                 if (AdjIt != G.Adj.end())
                 {
@@ -393,51 +543,64 @@ GPSPathfindResult FindGPSRoutes(int FromGame, uint32_t FromScene,
         return Out;
     }
 
-    if (FromGame != ToGame)
+    // Cross-game IS supported now: the unified graph spans both OoT and MM, and the user's
+    // discovered cross-game portals (stored in SceneEntranceMetaInf) plus the always-on warp
+    // song / owl cross-game access make any OoT <-> MM trip routable.
+
+    auto SceneMetaForGame = [](int Game) -> std::map<uint32_t, SceneEntranceMetaInf>*
     {
-        Out.Status = GPS_CrossGameUnsupported;
-        return Out;
-    }
+        if (Game == OOT_GAME) return &OoTSceneEntranceMeta;
+        if (Game == MM_GAME)  return &MMSceneEntranceMeta;
+        return nullptr;
+    };
+    std::map<uint32_t, SceneEntranceMetaInf>* StartMeta = SceneMetaForGame(FromGame);
+    std::map<uint32_t, SceneEntranceMetaInf>* EndMeta   = SceneMetaForGame(ToGame);
+    if (StartMeta == nullptr || EndMeta == nullptr) { Out.Status = GPS_NoPath; return Out; }
 
-    // Pre-check 1 - Cannot leave Start Area: no entrance of the start scene
-    // leads to a different scene.
-    std::map<int, EntranceMetaInfo>* Map = nullptr;
-    if      (FromGame == OOT_GAME) Map = &OoTEntrances;
-    else if (FromGame == MM_GAME)  Map = &MMEntrances;
-    if (Map == nullptr) { Out.Status = GPS_NoPath; return Out; }
-
+    // Pre-check 1 - Cannot leave Start Area: no entrance in the start scene has a discovered
+    // OutLink. We use discovered data (not the static map) because the GPS is meant for
+    // randomized seeds: static FromSceneID/ToSceneID can be misleading if the player has
+    // discovered different portals than the vanilla layout.
     bool CanLeave = false;
-    for (const auto& Pair : *Map)
     {
-        const EntranceMetaInfo& V = Pair.second;
-        if (V.Type == EntranceType::None) continue;
-        if (V.FromSceneID == FromScene && V.ToSceneID != FromScene)
+        auto It = StartMeta->find(FromScene);
+        if (It != StartMeta->end())
         {
-            CanLeave = true;
-            break;
+            for (const auto& EP : It->second.EntranceIDs)
+            {
+                if (EP.second.OutLink != UINT32_MAX)
+                {
+                    CanLeave = true;
+                    break;
+                }
+            }
         }
     }
     if (!CanLeave) { Out.Status = GPS_CannotLeaveStart; return Out; }
 
-    // Pre-check 2 - Destination Unreachable: no entrance anywhere leads into the
-    // destination scene.
+    // Pre-check 2 - Destination Unreachable: no entrance in the destination scene has any
+    // discovered InLink (no one has ever arrived there). Discovered data again, same reasoning.
     bool ReachableDest = false;
-    for (const auto& Pair : *Map)
     {
-        const EntranceMetaInfo& V = Pair.second;
-        if (V.Type == EntranceType::None) continue;
-        if (V.ToSceneID == ToScene && V.FromSceneID != ToScene)
+        auto It = EndMeta->find(ToScene);
+        if (It != EndMeta->end())
         {
-            ReachableDest = true;
-            break;
+            for (const auto& EP : It->second.EntranceIDs)
+            {
+                if (!EP.second.InLinks.empty())
+                {
+                    ReachableDest = true;
+                    break;
+                }
+            }
         }
     }
     if (!ReachableDest) { Out.Status = GPS_DestinationUnreachable; return Out; }
 
-    // Build the graph and attach virtual endpoints so Dijkstra can multi-source /
-    // multi-sink over the entrances of the start / end scenes.
-    Graph G = BuildGraph(FromGame);
-    if (!AttachVirtualEndpoints(G, FromScene, ToScene))
+    // Build the unified graph (OoT + MM + cross-game portals + cross-game warp access) and
+    // attach virtual endpoints over the (Game, Scene) of start and end.
+    Graph G = BuildGraph();
+    if (!AttachVirtualEndpoints(G, (uint8_t)FromGame, FromScene, (uint8_t)ToGame, ToScene))
     {
         Out.Status = GPS_NoPath;
         return Out;
@@ -446,14 +609,47 @@ GPSPathfindResult FindGPSRoutes(int FromGame, uint32_t FromScene,
     auto Raw = YenKShortestPaths(G, VirtSource, VirtSink, MaxRoutes);
     if (Raw.empty()) { Out.Status = GPS_NoPath; return Out; }
 
+    // Walking-only fallback: ensure the result set contains at least one path that doesn't
+    // go through a warp song / owl, even if Yen's would naturally prefer warp variants. We
+    // forbid every node living in BOTH OOT_SONGS and MM_OWLS (encoded with the right game)
+    // so the fallback works for cross-game routes too.
+    {
+        std::unordered_set<uint32_t> WarpNodes;
+        for (const auto& Pair : G.EntranceScene)
+        {
+            const uint32_t Node  = Pair.first;
+            const uint32_t Scene = Pair.second;
+            const uint8_t  Game  = NodeGame(Node);
+            if ((Game == OOT_GAME && Scene == OOT_SONGS) ||
+                (Game == MM_GAME  && Scene == MM_OWLS))
+            {
+                WarpNodes.insert(Node);
+            }
+        }
+        if (!WarpNodes.empty())
+        {
+            DijkstraResult NonWarp = RunDijkstra(G, VirtSource, VirtSink, {}, WarpNodes);
+            if (NonWarp.Found && !NonWarp.Path.empty())
+            {
+                Raw.push_back(NonWarp.Path);
+            }
+        }
+    }
+
     for (const auto& R : Raw)
     {
-        GPSPath P = ToScenePath(G, R, FromGame);
+        GPSPath P = ToScenePath(G, R);
         if (P.Steps.size() < 2) continue;
         Out.Routes.append(P);
     }
 
     if (Out.Routes.isEmpty()) { Out.Status = GPS_NoPath; return Out; }
+
+    // Re-sort by accumulated TotalCost: the non-warp fallback appended above breaks Yen's
+    // ascending order, and ToScenePath's hop accounting may shift a path's effective cost
+    // away from what Yen's PathCost saw. Stable sort keeps Yen's tie-breaking order otherwise.
+    std::stable_sort(Out.Routes.begin(), Out.Routes.end(),
+        [](const GPSPath& A, const GPSPath& B) { return A.TotalCost < B.TotalCost; });
 
     Out.Status = GPS_Ok;
     return Out;

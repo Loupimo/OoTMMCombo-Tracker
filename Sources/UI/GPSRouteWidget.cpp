@@ -334,7 +334,11 @@ void GPSRouteWidget::OnSelectionChanged()
     const int       ToGame    = this->ToCombo->currentData(SceneRoleGame).toInt();
     const uint32_t  ToScene   = this->ToCombo->currentData(SceneRoleID).toUInt();
 
-    const GPSPathfindResult Result = FindGPSRoutes(FromGame, FromScene, ToGame, ToScene, 3);
+    // K = 5 gives Yen's algorithm enough breathing room to surface meaningful alternatives
+    // (different routes through warps, walking-only fallback, etc.) before our dedup pass trims
+    // them down to 1-3 unique cards. K=3 was too tight: when all of Yen's first three paths
+    // were minor variants of the same warp-based route they collapsed to a single card.
+    const GPSPathfindResult Result = FindGPSRoutes(FromGame, FromScene, ToGame, ToScene, 5);
 
     switch (Result.Status)
     {
@@ -362,25 +366,45 @@ void GPSRouteWidget::OnSelectionChanged()
             break;
     }
 
-    // Deduplicate routes by their scene-sequence signature: Yen's algorithm can return paths
-    // that look identical to the user (same scenes visited in the same order) when alternative
-    // intermediate entrances produce the same scene trip. Showing 3 visually identical cards is
-    // useless - we want at most 3 *distinct* trips, fewer when not enough alternatives exist.
+    // Deduplicate routes by:
+    //   1) Scene-sequence signature: Yen's algorithm can return paths that look identical to
+    //      the user (same scenes visited in the same order) when alternative intermediate
+    //      entrances produce the same scene trip. Showing 3 visually identical cards is useless.
+    //   2) Warp usage: once one route has used a warp song / owl (= passes through MM_OWLS or
+    //      OOT_SONGS), subsequent routes that ALSO use a warp are filtered out. The point of
+    //      alternative routes is to offer the player a fallback when the warp doesn't fit -
+    //      stacking near-identical warp routes that differ only by which choice was picked is
+    //      noise.
     QVector<int> UniqueIndices;
     QSet<QString> Seen;
+    bool WarpRouteShown = false;
     for (int idx = 0; idx < Result.Routes.size(); ++idx)
     {
         const GPSPath& P = Result.Routes[idx];
+
+        bool UsesWarp = false;
         QStringList SceneIds;
         SceneIds.reserve(P.Steps.size());
         for (const GPSPathStep& S : P.Steps)
         {
-            SceneIds.append(QString::number(S.SceneID));
+            // Signature includes Game so that OoT and MM scenes with colliding numeric IDs
+            // (rare but possible in the spoiler-log sentinel range) don't get falsely merged.
+            SceneIds.append(QStringLiteral("%1:%2").arg(S.Game).arg(S.SceneID));
+            if ((S.Game == OOT_GAME && S.SceneID == OOT_SONGS) ||
+                (S.Game == MM_GAME  && S.SceneID == MM_OWLS))
+            {
+                UsesWarp = true;
+            }
         }
+
+        if (UsesWarp && WarpRouteShown) continue;
+
         const QString Signature = SceneIds.join('>');
         if (Seen.contains(Signature)) continue;
         Seen.insert(Signature);
+
         UniqueIndices.append(idx);
+        if (UsesWarp) WarpRouteShown = true;
         if (UniqueIndices.size() >= 3) break;
     }
 

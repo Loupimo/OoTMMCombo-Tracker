@@ -177,3 +177,5 @@ sharedScales;Shared Scales;boolean;vanilla
 sharedStrength;Shared Strength;boolean;vanilla
 sharedHammer;Shared Megaton Hammer;boolean;vanilla
 sharedBottles;Shared Bottles;boolean;vanilla
+crossWarpOot;Cross-Games OoT Warp Song;boolean;vanilla
+crossWarpMm;Cross-Games MM Song of Soaring;boolean;vanilla

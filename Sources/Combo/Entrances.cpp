@@ -189,6 +189,12 @@ static constexpr uint32_t DEFAULT_UNMEASURED_WALK_COST = 999u;
 // the player can "use the song" from any entrance in the current scene at this constant cost.
 static constexpr uint32_t WARP_SONG_USE_COST = 10u;
 
+// Cost (in seconds) assigned to the destination-picking step inside the fictional warp song /
+// owl scene. Once the song is playing, navigating between the different OWL_X_CHOICE nodes is
+// just a menu selection - far cheaper than a physical walk, so the GPS doesn't artificially
+// inflate cross-scene warp routes with the unmeasured default.
+static constexpr uint32_t WARP_SONG_MENU_COST = 1u;
+
 void InitializeEntranceCosts()
 {
     auto FillForGame = [](std::map<int, EntranceMetaInfo>& Map)
@@ -226,25 +232,36 @@ void InitializeEntranceCosts()
 
     auto ApplyWarpSongCostsForGame = [](std::map<int, EntranceMetaInfo>& Map, uint32_t SongOrOwlScene)
     {
-        // Warp songs and owl statues are modelled as One_Way_Out entries whose ToSceneID is
-        // the fictional song / owl scene. The player can play the song from anywhere in the
-        // current scene, so the walk cost from any entrance to the song trigger is a fixed
-        // WARP_SONG_USE_COST (ocarina out + input + accept + transition). Override defaults
-        // and any leftover measurement here so the GPS never sees inflated values for those
-        // particular trigger edges.
+        // Warp songs / owl statues are played from the ocarina menu - the player does NOT need
+        // to walk to a physical statue. We model this by adding cross-scene "walk" edges from
+        // every entrance in every scene to every OWL_X_CHOICE / SONG_X_CHOICE node (those are
+        // the One_Way_Out entries that live in the fictional MM_OWLS / OOT_SONGS scene). The
+        // cost is WARP_SONG_USE_COST (ocarina out + song input + accept), then the menu
+        // selection (SetWarpSongMenuCosts, 1s) handles picking the actual destination, and the
+        // existing portal edge from the chosen OWL_X_CHOICE to MM_WARP_OWL_X_ENTR completes the
+        // warp. Routing through MM_OWLS rather than going direct makes "Warp Owls" appear as a
+        // visible intermediate step in the GPS path, which is the UX the user wants.
+        std::vector<uint32_t> OwlChoices;       // Every OWL_X_CHOICE / SONG_X_CHOICE in this game.
         for (const auto& Pair : Map)
         {
             const EntranceMetaInfo& V = Pair.second;
             if (V.Type != EntranceType::One_Way_Out) continue;
             if (V.ToSceneID != SongOrOwlScene) continue;
-            const uint32_t TriggerNode = V.FromEntranceID;          // The physical entrance node where the song is played.
-            const uint32_t TriggerScene = V.FromSceneID;
-            for (auto& OtherPair : Map)
+            OwlChoices.push_back((uint32_t)Pair.first);             // Key == ToEntranceID == choice node in MM_OWLS.
+        }
+        if (OwlChoices.empty()) return;
+
+        for (auto& Pair : Map)
+        {
+            EntranceMetaInfo& V = Pair.second;
+            // Skip entries that live inside the fictional warp scene itself: walks there are
+            // handled by SetWarpSongMenuCosts below and chaining warp-from-warp loops would
+            // produce weird routes.
+            if (V.FromSceneID == SongOrOwlScene) continue;
+            for (uint32_t Choice : OwlChoices)
             {
-                EntranceMetaInfo& W = OtherPair.second;
-                if (W.FromSceneID != TriggerScene) continue;
-                if (W.FromEntranceID == TriggerNode) continue;      // Self-loop has no meaning here.
-                W.Cost.Costs[TriggerNode] = WARP_SONG_USE_COST;
+                if (Choice == V.FromEntranceID) continue;           // Self-loop has no meaning.
+                V.Cost.Costs[Choice] = WARP_SONG_USE_COST;
             }
         }
     };
@@ -264,6 +281,25 @@ void InitializeEntranceCosts()
     // the measured overrides so it always wins on those specific edges.
     ApplyWarpSongCostsForGame(OoTEntrances, OOT_SONGS);
     ApplyWarpSongCostsForGame(MMEntrances, MM_OWLS);
+
+    // Override the intra-MM_OWLS / intra-OOT_SONGS walking costs: every "OWL_X_CHOICE" node
+    // lives in that fictional scene and the walk between two of them models picking the
+    // destination in the song menu - not a real walk, so the default DEFAULT_UNMEASURED_WALK_COST
+    // (999s) would dominate any warp-song-based route and make Dijkstra avoid them entirely.
+    auto SetWarpSongMenuCosts = [](std::map<int, EntranceMetaInfo>& Map, uint32_t MenuScene)
+    {
+        for (auto& Pair : Map)
+        {
+            EntranceMetaInfo& V = Pair.second;
+            if (V.FromSceneID != MenuScene) continue;
+            for (auto& KV : V.Cost.Costs)
+            {
+                KV.second = WARP_SONG_MENU_COST;
+            }
+        }
+    };
+    SetWarpSongMenuCosts(OoTEntrances, OOT_SONGS);
+    SetWarpSongMenuCosts(MMEntrances, MM_OWLS);
 }
 
 
@@ -3441,6 +3477,12 @@ void EntranceHelper::ParseIncomingMessage(EntranceMessage& Message)
 
         Message.MetaInf = const_cast<EntranceMetaInfo*>(LookupEntrance(Message.GameID, Message.EntranceID));
 
+        if (Message.MetaInf == nullptr)
+        {
+            this->IsEntranceTouched = false;
+            return;
+        }
+
         Message.EntranceStr = Message.MetaInf->ToName + std::string(" - ") + Message.MetaInf->FromName;
         MultiLogger::LogMessage("X = %f, Y = %f, Z = %f", Message.X, Message.Y, Message.Z);
         MultiLogger::LogMessage("New scene Loaded ! From : %s (0x%X), To : %s (0x%X)", this->OutMessage.EntranceStr.c_str(), this->OutMessage.EntranceID, Message.EntranceStr.c_str(), Message.EntranceID);
@@ -3466,6 +3508,14 @@ void EntranceHelper::ParseIncomingMessage(EntranceMessage& Message)
         }
 
         SceneEntranceMetaInf * tmp = GetSceneEntranceMetaInf(this->OutMessage.GameID, this->OutMessage.SceneID);
+
+        if (tmp == nullptr)
+        {
+            MultiLogger::LogMessage("Error could not find out entrance meta inf for Game = %d, Scene = 0x%X, Entrance = 0x%X !", this->OutMessage.GameID, this->OutMessage.SceneID, this->OutMessage.EntranceID);
+            this->IsEntranceTouched = false;
+            return;
+        }
+
         EntranceLink * tmpOutLink = &tmp->EntranceIDs.find(this->OutMessage.EntranceID)->second;
         tmpOutLink->OutLink = Message.EntranceID;
         tmpOutLink->OutLinkGame = Message.GameID;
@@ -3473,6 +3523,14 @@ void EntranceHelper::ParseIncomingMessage(EntranceMessage& Message)
         SceneEntranceUpdate tmpOut = { this->OutMessage.GameID, this->OutMessage.SceneID, this->OutMessage.EntranceID, tmpOutLink };
 
         tmp = GetSceneEntranceMetaInf(Message.GameID, Message.SceneID);
+
+        if (tmp == nullptr)
+        {
+            MultiLogger::LogMessage("Error could not find in entrance meta inf for Game = %d, Scene = 0x%X, Entrance = 0x%X !", Message.GameID, Message.SceneID, Message.EntranceID);
+            this->IsEntranceTouched = false;
+            return;
+        }
+
         EntranceLink * tmpInLink = &tmp->EntranceIDs.find(Message.EntranceID)->second;
         tmpInLink->AddInLink(this->OutMessage.EntranceID, this->OutMessage.GameID);
 

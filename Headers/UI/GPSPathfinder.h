@@ -32,6 +32,7 @@ enum GPSPathfindStatus
 typedef struct GPSPathStep
 {
     uint32_t    SceneID = 0;
+    uint8_t     Game = 0;           // The game this scene belongs to (OOT_GAME or MM_GAME). Needed to disambiguate cross-game routes where OoT and MM scene IDs can numerically collide.
     QString     SceneName;
     QString     ViaText;            // Short label for the transition leaving this scene (e.g. "Walk").
     uint32_t    Cost = 0;           // Cost of this hop (intra + portal). 0 on the last step.

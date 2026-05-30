@@ -191,7 +191,9 @@ Settings::Settings()
         { "sharedScales", { "Shared Scales", ParamType::boolean, ShuffleSetting::vanilla } },
         { "sharedStrength", { "Shared Strength", ParamType::boolean, ShuffleSetting::vanilla } },
         { "sharedHammer", { "Shared Megaton Hammer", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedBottles", { "Shared Bottles", ParamType::boolean, ShuffleSetting::vanilla } }
+        { "sharedBottles", { "Shared Bottles", ParamType::boolean, ShuffleSetting::vanilla } },
+        { "crossWarpOot", { "Cross-Games OoT Warp Song", ParamType::boolean, ShuffleSetting::all } },
+        { "crossWarpMm", { "Cross-Games MM Song of Soaring", ParamType::boolean, ShuffleSetting::all } }
 	});
 }
 
@@ -835,7 +837,7 @@ void Settings::AddSetting(QString Name, QString Value)
 	{
 		ShuffleSetting setting;
 
-		if (Value == "all" || Value == "true" || Value == "full" || Value == "anywhere" || Value == "ganon" || Value == "cross" || Value.toInt() > 0)
+		if (Value == "all" || Value == "true" || Value == "full" || Value == "anywhere" || Value == "ganon" || Value == "child" || Value == "cross" || Value.toInt() > 0)
 		{
 			setting = ShuffleSetting::all;
 		}
