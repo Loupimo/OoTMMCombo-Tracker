@@ -83,9 +83,14 @@ namespace
     *       cross-game portals. The user has to actually traverse a portal in their game once
     *       for the GPS to know about it; an empty save will yield very few portals.
     *     - Cross-game warp access (synthetic walks from any entrance to the other game's
-    *       warp-song / owl choices) is added on top, gated by the always-on parameters.
+    *       warp-song / owl choices) is added on top, gated by the ROM parameters
+    *       crossWarpOot (OoT player can play MM Song of Soaring) and crossWarpMm
+    *       (MM player can play OoT warp songs).
+    *
+    *   @param CrossWarpOot    When true, OoT entrances get synthetic walks to MM owl choices.
+    *   @param CrossWarpMm     When true, MM entrances get synthetic walks to OoT warp song choices.
     */
-    Graph BuildGraph()
+    Graph BuildGraph(bool CrossWarpOot, bool CrossWarpMm)
     {
         Graph G;
 
@@ -183,10 +188,18 @@ namespace
                 }
             }
         };
-        // OoT entrances can play MM warp owls -> reach MM_OWLS choices.
-        AddCrossWarpWalks(OOT_GAME, OoTEntrances, OOT_SONGS, MMOwlChoices);
-        // MM entrances can play OoT warp songs -> reach OOT_SONGS choices.
-        AddCrossWarpWalks(MM_GAME,  MMEntrances,  MM_OWLS,   OoTSongChoices);
+        // OoT entrances can play MM warp owls -> reach MM_OWLS choices. Gated by the
+        // crossWarpOot ROM parameter ("Cross-Games OoT Warp Song" in the settings UI).
+        if (CrossWarpOot)
+        {
+            AddCrossWarpWalks(OOT_GAME, OoTEntrances, OOT_SONGS, MMOwlChoices);
+        }
+        // MM entrances can play OoT warp songs -> reach OOT_SONGS choices. Gated by the
+        // crossWarpMm ROM parameter ("Cross-Games MM Song of Soaring" in the settings UI).
+        if (CrossWarpMm)
+        {
+            AddCrossWarpWalks(MM_GAME,  MMEntrances,  MM_OWLS,   OoTSongChoices);
+        }
 
         return G;
     }
@@ -533,7 +546,8 @@ namespace
 
 GPSPathfindResult FindGPSRoutes(int FromGame, uint32_t FromScene,
                                 int ToGame,   uint32_t ToScene,
-                                int MaxRoutes)
+                                int MaxRoutes,
+                                bool CrossWarpOot, bool CrossWarpMm)
 {
     GPSPathfindResult Out;
 
@@ -599,7 +613,7 @@ GPSPathfindResult FindGPSRoutes(int FromGame, uint32_t FromScene,
 
     // Build the unified graph (OoT + MM + cross-game portals + cross-game warp access) and
     // attach virtual endpoints over the (Game, Scene) of start and end.
-    Graph G = BuildGraph();
+    Graph G = BuildGraph(CrossWarpOot, CrossWarpMm);
     if (!AttachVirtualEndpoints(G, (uint8_t)FromGame, FromScene, (uint8_t)ToGame, ToScene))
     {
         Out.Status = GPS_NoPath;

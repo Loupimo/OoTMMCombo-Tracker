@@ -246,6 +246,18 @@ void LogTab::ToggleNetOption(int state)
 }
 
 
+void LogTab::SetMultiplayerEnabled(bool Enabled)
+{
+    // Setting the checkbox state fires checkStateChanged -> ToggleNetOption, which keeps
+    // the enabled flag, the host / port fields and the persisted config in sync. If the
+    // box is already in the requested state no signal fires, which is fine: nothing to do.
+    if (this->NetCheckBox != nullptr)
+    {
+        this->NetCheckBox->setChecked(Enabled);
+    }
+}
+
+
 void LogTab::PressLaunchButton()
 {
     if (this->Tracker)

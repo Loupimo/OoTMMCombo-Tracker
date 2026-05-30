@@ -12,7 +12,7 @@ Settings::Settings()
 	this->Mode = GameMode::single;
     this->Goal = GoalMode::boss;
 	this->NumOfTeams = 1;
-	this->LocalWorld = 0;
+	this->LocalWorld = 1;
     this->FilterSettings = QMap<QString, Parameter>({
         { "songs", { "Song Notes", ParamType::boolean, ShuffleSetting::vanilla } },
         { "goldSkulltulaTokens", { "Gold Skulltula - OoT", ParamType::shuffle, ShuffleSetting::all } },

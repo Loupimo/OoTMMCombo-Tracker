@@ -606,6 +606,14 @@ QWidget* SettingsTab::BuildSpecialPage()
         { "skipZelda",          "OoT" },
         { "restoreBrokenActors", ""   },
     }));
+    // Cross-game warp toggles: control whether the GPS pathfinder considers that the
+    // OoT player owns the MM Song of Soaring (crossWarpOot) and / or that the MM player
+    // owns the OoT warp songs (crossWarpMm). Both are read in GPSRouteWidget when a
+    // route is recomputed.
+    contentLayout->addWidget(this->MakeParamGroup(content, "Cross-Games Warps", {
+        { "crossWarpOot", "OoT" },
+        { "crossWarpMm", "MM"  },
+    }));
 
     contentLayout->addStretch(1);
     scroll->setWidget(content);
@@ -879,8 +887,8 @@ void SettingsTab::LoadFromSettings()
     }
     if (this->LocalWorldSpin != nullptr)
     {
-        // Stored 0-based, displayed 1-based.
-        this->LocalWorldSpin->setValue(static_cast<int>(s.LocalWorld) + 1);
+        // 1-based everywhere (UI, spoiler, network ledger).
+        this->LocalWorldSpin->setValue(static_cast<int>(s.LocalWorld));
     }
 
     for (auto it = this->ParamWidgets.cbegin(); it != this->ParamWidgets.cend(); ++it)
@@ -981,8 +989,8 @@ void SettingsTab::OnApply()
     }
     if (this->LocalWorldSpin != nullptr)
     {
-        // Stored 0-based, displayed 1-based.
-        s.LocalWorld = static_cast<size_t>(this->LocalWorldSpin->value() - 1);
+        // 1-based everywhere (UI, spoiler, network ledger).
+        s.LocalWorld = static_cast<size_t>(this->LocalWorldSpin->value());
         AppConfig::SetLocalWorld(static_cast<int>(s.LocalWorld));
     }
 

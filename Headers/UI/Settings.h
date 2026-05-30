@@ -77,8 +77,9 @@ public:
 	GameMode Mode;
     GoalMode Goal;
 	size_t NumOfTeams;
-	/* The local player's world / team index (0-based) used to route items in coop / multiworld.
-	   Displayed 1-based in the UI ("Player 1" == world 0). In single mode it is ignored. */
+	/* The local player's world / team id (1-based) used to route items in coop / multiworld.
+	   Matches the spoiler ("World 1") and the network ledger (playerFrom / playerTo). In
+	   single mode it is ignored. */
 	size_t LocalWorld;
 	QMap<QString, Parameter> FilterSettings;
     QMap<QString, Parameter> ItemSettings;

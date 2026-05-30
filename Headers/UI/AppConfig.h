@@ -76,9 +76,9 @@ public:
     static bool GetUseMultiplayer();
 
     /*
-    *   Gets the local player's world / team index (0-based) used to route items in coop / multiworld.
+    *   Gets the local player's world / team id (1-based) used to route items in coop / multiworld.
     *
-    *   @return The 0-based local world index (defaults to 0).
+    *   @return The 1-based local world id (defaults to 1).
     */
     static int GetLocalWorld();
 
@@ -118,9 +118,9 @@ public:
     static void SetUseMultiplayer(bool NewValue);
 
     /*
-    *   Sets the local player's world / team index (0-based) used to route items in coop / multiworld.
+    *   Sets the local player's world / team id (1-based) used to route items in coop / multiworld.
     *
-    *   @param NewValue The new 0-based local world index.
+    *   @param NewValue The new 1-based local world id.
     */
     static void SetLocalWorld(int NewValue);
 

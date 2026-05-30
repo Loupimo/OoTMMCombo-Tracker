@@ -692,6 +692,8 @@ void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, c
     //   multi  : hook nothing                                -> map
     //            hook item                                   -> ignored (network authoritative)
     //            itemOut (collected on my map, for anyone)   -> map
+    //            applyLedger collected in my world (from==me)-> map  (keeps teammates who
+    //                                                                 share my world id in sync)
     //            applyLedger delivered to me (to==me)        -> progress
     //
     // The progression has a single source per mode (hook in single, applyLedger in
@@ -730,12 +732,19 @@ void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, c
                 case ItemSource::HookItem:    break;            // network authoritative
                 case ItemSource::NetOut:      updateMap = true; break;
                 case ItemSource::NetIn:
-                    if (ToWorld == me) { updateProgress = true; }
+                    // Collected in my world -> mark the map (teammates share my world id).
+                    if (FromWorld == me) { updateMap = true; }
+                    // Delivered to me -> credit my progression.
+                    if (ToWorld == me)   { updateProgress = true; }
                     break;
             }
             break;
         }
     }
+
+    // Routing diagnostic: makes coop / multiworld behaviour easy to follow in the log.
+    MultiLogger::LogMessage("Route: mode=%d source=%d from=%d to=%d me=%d -> map=%d progress=%d",
+        (int)this->ROMSettings.Mode, (int)Source, FromWorld, ToWorld, me, (int)updateMap, (int)updateProgress);
 
     if (!updateMap && !updateProgress)
     {
@@ -1009,6 +1018,13 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
     // the persisted app config so the multiworld parsing below picks the right world.
     this->ROMSettings.LocalWorld = AppConfig::GetLocalWorld();
 
+    // Auto-enable multiplayer for coop / multiworld seeds, disable it for single seeds.
+    // The host / port fields and the persisted config follow the checkbox automatically.
+    if (this->Log != nullptr)
+    {
+        this->Log->SetMultiplayerEnabled(this->ROMSettings.Mode != GameMode::single);
+    }
+
     // Multiworld spoilers add a per-world level: each world is a "  World N (hash)" header
     // and its locations are indented one extra level. Detect it, keep only the local
     // world's block and dedent it by two spaces so it matches the single-world layout the
@@ -1019,7 +1035,7 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
                             .match(locationSection).hasMatch();
     if (isMultiworld)
     {
-        const QString wanted = QString("  World %1").arg((int)this->ROMSettings.LocalWorld + 1); // spoiler is 1-based
+        const QString wanted = QString("  World %1").arg((int)this->ROMSettings.LocalWorld); // LocalWorld is already 1-based
         QRegularExpression worldHeader("^  World \\d", QRegularExpression::MultilineOption);
 
         QStringList block;

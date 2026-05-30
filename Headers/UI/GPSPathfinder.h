@@ -71,11 +71,17 @@ typedef struct GPSPathfindResult
 *   required by the spec (cannot leave start area, destination unreachable), then
 *   returns up to MaxRoutes shortest paths via Yen's K-shortest paths algorithm.
 *
-*   @param FromGame     The starting scene's game (OOT_GAME or MM_GAME).
-*   @param FromScene    The starting scene ID.
-*   @param ToGame       The destination scene's game (OOT_GAME or MM_GAME).
-*   @param ToScene      The destination scene ID.
-*   @param MaxRoutes    The maximum number of distinct shortest paths to return (typically 3).
+*   @param FromGame      The starting scene's game (OOT_GAME or MM_GAME).
+*   @param FromScene     The starting scene ID.
+*   @param ToGame        The destination scene's game (OOT_GAME or MM_GAME).
+*   @param ToScene       The destination scene ID.
+*   @param MaxRoutes     The maximum number of distinct shortest paths to return (typically 3).
+*   @param CrossWarpOot  Mirrors the "Cross-Games OoT Warp Song" ROM parameter:
+*                        when true, the OoT player is assumed to own the MM Song of
+*                        Soaring (i.e. owl warps are reachable from OoT scenes).
+*   @param CrossWarpMm   Mirrors the "Cross-Games MM Song of Soaring" ROM parameter:
+*                        when true, the MM player is assumed to own the OoT warp songs
+*                        (i.e. OoT warp destinations are reachable from MM scenes).
 *
 *   @return A GPSPathfindResult whose Status describes the outcome and whose Routes
 *           holds the computed paths sorted from cheapest to most expensive (empty
@@ -83,6 +89,7 @@ typedef struct GPSPathfindResult
 */
 GPSPathfindResult FindGPSRoutes(int FromGame, uint32_t FromScene,
                                 int ToGame,   uint32_t ToScene,
-                                int MaxRoutes = 3);
+                                int MaxRoutes = 3,
+                                bool CrossWarpOot = true, bool CrossWarpMm = true);
 
 #pragma endregion

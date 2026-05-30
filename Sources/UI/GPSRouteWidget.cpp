@@ -1,6 +1,8 @@
 #include "UI/GPSRouteWidget.h"
 #include "UI/GPSRouteCard.h"
 #include "UI/GPSPathfinder.h"
+#include "UI/OoTMMComboTracker.h"
+#include "UI/Settings.h"
 #include "Combo/Entrances.h"
 #include "Combo/OoTEntrances.h"
 #include "Combo/MMEntrances.h"
@@ -334,11 +336,27 @@ void GPSRouteWidget::OnSelectionChanged()
     const int       ToGame    = this->ToCombo->currentData(SceneRoleGame).toInt();
     const uint32_t  ToScene   = this->ToCombo->currentData(SceneRoleID).toUInt();
 
+    // The two cross-game warp ROM parameters live in the main window's ROMSettings. We
+    // walk up the parent chain to find the OoTMMComboTracker instance and read them as
+    // ShuffleSetting::all == enabled. If the lookup fails (test harness, orphan widget)
+    // we fall back to "enabled" so the GPS keeps the most permissive behavior.
+    bool CrossWarpOot = true;
+    bool CrossWarpMm  = true;
+    if (auto* Main = qobject_cast<OoTMMComboTracker*>(this->window()))
+    {
+        auto& Filters = Main->ROMSettings.FilterSettings;
+        auto OotIt = Filters.find(QStringLiteral("crossWarpOot"));
+        auto MmIt  = Filters.find(QStringLiteral("crossWarpMm"));
+        if (OotIt != Filters.end()) CrossWarpOot = (OotIt.value().Value == ShuffleSetting::all);
+        if (MmIt  != Filters.end()) CrossWarpMm  = (MmIt.value().Value  == ShuffleSetting::all);
+    }
+
     // K = 5 gives Yen's algorithm enough breathing room to surface meaningful alternatives
     // (different routes through warps, walking-only fallback, etc.) before our dedup pass trims
     // them down to 1-3 unique cards. K=3 was too tight: when all of Yen's first three paths
     // were minor variants of the same warp-based route they collapsed to a single card.
-    const GPSPathfindResult Result = FindGPSRoutes(FromGame, FromScene, ToGame, ToScene, 5);
+    const GPSPathfindResult Result = FindGPSRoutes(FromGame, FromScene, ToGame, ToScene, 5,
+                                                   CrossWarpOot, CrossWarpMm);
 
     switch (Result.Status)
     {

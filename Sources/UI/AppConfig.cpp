@@ -42,7 +42,7 @@ bool AppConfig::GetUseMultiplayer()
 
 int AppConfig::GetLocalWorld()
 {
-    return Config.Settings.value("LocalWorld", 0).toInt();
+    return Config.Settings.value("LocalWorld", 1).toInt();
 }
 
 void AppConfig::SetRecentFiles(QStringList NewValue)

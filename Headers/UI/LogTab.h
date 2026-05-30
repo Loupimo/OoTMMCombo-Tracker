@@ -97,6 +97,16 @@ public:
     void ToggleNetOption(int State);
 
     /*
+    *   Set the "Use Multiplayer" checkbox state. Checking / unchecking the box propagates
+    *   through ToggleNetOption, so the enabled flag, the host / port fields and the persisted
+    *   config all stay in sync. Used to auto-enable multiplayer when a coop / multiworld
+    *   spoiler is loaded and disable it for a single-world spoiler.
+    *
+    *   @param Enabled    True to enable multiplayer, false to disable it.
+    */
+    void SetMultiplayerEnabled(bool Enabled);
+
+    /*
     *   Start / stop the tracker.
     */
     void PressLaunchButton();
