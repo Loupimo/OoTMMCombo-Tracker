@@ -1912,7 +1912,7 @@ static ObjectInfo OOT_KAKARIKO_VILLAGESceneObjects_Data [OOT_KAKARIKO_VILLAGENum
 	{ 0x06, OOT_KAKARIKO_VILLAGE, "Cow", "OOT Kakariko Cow", ObjectType::none, {0, 0, 0}, OOT_IMPA_HOUSE, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ SHOOTING_GAME_ADULT, OOT_KAKARIKO_VILLAGE, "Reward", "OOT Shooting Gallery Adult", ObjectType::none, {0, 0, 0}, OOT_KAKARIKO_SHOOTING, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::minigame, NULL },
 	{ 0x01, OOT_KAKARIKO_VILLAGE, "Platform", "OOT Windmill HP", ObjectType::none, {0, 0, 0}, OOT_WINDMILL, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
-	{ OOT_SONG_STORMS, OOT_KAKARIKO_VILLAGE, "Song of Storms", "OOT Windmill Song of Storms", ObjectType::none, {0, 0, 0}, OOT_WINDMILL, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ OOT_SONG_OF_STORMS, OOT_KAKARIKO_VILLAGE, "Song of Storms", "OOT Windmill Song of Storms", ObjectType::none, {0, 0, 0}, OOT_WINDMILL, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x30, OOT_KAKARIKO_VILLAGE, "Item 1", "OOT Kakariko Bazaar Item 1", ObjectType::none, {0, 0, 0}, OOT_KAKARIKO_BAZAAR, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x31, OOT_KAKARIKO_VILLAGE, "Item 2", "OOT Kakariko Bazaar Item 2", ObjectType::none, {0, 0, 0}, OOT_KAKARIKO_BAZAAR, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x32, OOT_KAKARIKO_VILLAGE, "Item 3", "OOT Kakariko Bazaar Item 3", ObjectType::none, {0, 0, 0}, OOT_KAKARIKO_BAZAAR, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -4371,7 +4371,7 @@ static ObjectInfo OOT_TOMB_DAMPE_WINDMILLSceneObjects_Data [OOT_TOMB_DAMPE_WINDM
 	{ 0x0030b, OOT_TOMB_DAMPE_WINDMILL, "Invisible Item 14", "OOT Graveyard Dampe Tomb Wonder Item 14", ObjectType::wonder, {663, 680, 0}, OOT_TOMB_DAMPE_WINDMILL, ObjectType::wonder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0030c, OOT_TOMB_DAMPE_WINDMILL, "Invisible Item 15", "OOT Graveyard Dampe Tomb Wonder Item 15", ObjectType::wonder, {583, 380, 0}, OOT_TOMB_DAMPE_WINDMILL, ObjectType::wonder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x01, OOT_TOMB_DAMPE_WINDMILL, "Platform", "OOT Windmill HP", ObjectType::collectible, {718, 844, 0}, OOT_WINDMILL, ObjectType::heart_piece, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
-	{ OOT_SONG_STORMS, OOT_TOMB_DAMPE_WINDMILL, "Song of Storms", "OOT Windmill Song of Storms", ObjectType::npc, {720, 120, 0}, OOT_WINDMILL, ObjectType::song, EGameIcon::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL }
+	{ OOT_SONG_OF_STORMS, OOT_TOMB_DAMPE_WINDMILL, "Song of Storms", "OOT Windmill Song of Storms", ObjectType::npc, {720, 120, 0}, OOT_WINDMILL, ObjectType::song, EGameIcon::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 ObjectInfo * OOT_TOMB_DAMPE_WINDMILLSceneObjects = OOT_TOMB_DAMPE_WINDMILLSceneObjects_Data;
 
@@ -4379,7 +4379,7 @@ const size_t OOT_WINDMILLNumOfObjs = 2;
 static ObjectInfo OOT_WINDMILLSceneObjects_Data [OOT_WINDMILLNumOfObjs] =
 {
 	{ 0x01, OOT_TOMB_DAMPE_WINDMILL, "Platform", "OOT Windmill HP", ObjectType::collectible, {718, 844, 0}, OOT_WINDMILL, ObjectType::heart_piece, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
-	{ OOT_SONG_STORMS, OOT_TOMB_DAMPE_WINDMILL, "Song of Storms", "OOT Windmill Song of Storms", ObjectType::npc, {720, 120, 0}, OOT_WINDMILL, ObjectType::song, EGameIcon::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL }
+	{ OOT_SONG_OF_STORMS, OOT_TOMB_DAMPE_WINDMILL, "Song of Storms", "OOT Windmill Song of Storms", ObjectType::npc, {720, 120, 0}, OOT_WINDMILL, ObjectType::song, EGameIcon::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 ObjectInfo * OOT_WINDMILLSceneObjects = OOT_WINDMILLSceneObjects_Data;
 

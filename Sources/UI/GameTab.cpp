@@ -434,19 +434,12 @@ void GameTab::SaveGameScenes(QString FilePath, Settings * FileSettings)
 
     switch (AppConfig::GetTrackerVersion())
     {
-        case TrackerVersion::V2_1:
         case TrackerVersion::V2_0:
-        {
-            FileSettings->SaveFileSettings(&saveFile);
-            SaveSceneObjects(&saveFile);
-            SaveEntrances(&saveFile);
-            break;
-        }
+        {   // Current format: per-world scene objects (+ TargetWorld) and multi-source entrances.
 
-        case TrackerVersion::V1_1:
-        {
             FileSettings->SaveFileSettings(&saveFile);
-            SaveSceneObjects(&saveFile);
+            SaveAllWorlds(&saveFile);
+            SaveEntrances(&saveFile);
             break;
         }
 

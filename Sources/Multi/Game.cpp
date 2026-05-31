@@ -448,7 +448,18 @@ int Game::gameProcessRxLedgerEntry()
     fe.size = extraSize;
     memcpy(fe.data, this->rxBuffer + 10, extraSize);
 
-    MultiLogger::LogMessage("LEDGER ENTRY: %d bytes\n", extraSize);
+    // Diagnostic: log the from / to of every ledger entry the server sends us, before any
+    // filtering. Lets us confirm whether the server broadcasts all worlds' transfers (which
+    // would let us reconstruct other worlds' maps) or only the ones that concern us.
+    if (extraSize >= 2)
+    {
+        MultiLogger::LogMessage("LEDGER ENTRY: %d bytes - from world %d to world %d\n",
+            extraSize, (uint8_t)fe.data[0], (uint8_t)fe.data[1]);
+    }
+    else
+    {
+        MultiLogger::LogMessage("LEDGER ENTRY: %d bytes\n", extraSize);
+    }
     this->rxBufferSize = 0;
 
     /* Save the ledger entry */

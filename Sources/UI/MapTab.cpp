@@ -561,6 +561,17 @@ void MapTab::RefreshScenesObjectCounts()
 
 void MapTab::ResetAllObjectCounts()
 {
+    // Multiworld: re-point every scene at the active world before recounting, so switching
+    // the world selector rebuilds the maps / object lists against that world's placements
+    // and collection state. In single-world this is a no-op (always world 0).
+    for (SceneItemTree* currScene : this->Scenes.values())
+    {
+        if (currScene != nullptr && currScene->Scene != nullptr)
+        {
+            currScene->Scene->RebindObjects();
+        }
+    }
+
     // Reset game tab counters
     this->FilterButton->TabOwner->FoundObjects = 0;
     this->FilterButton->TabOwner->TotalObjects = 0;

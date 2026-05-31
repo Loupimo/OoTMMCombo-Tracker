@@ -4,7 +4,7 @@
 #define ZORA_DIVING_GAME           0x03
 #define GORON_LINK_TUNIC           0x04
 #define ZORA_KING_TUNIC            0x05
-#define OOT_SONG_STORMS            0x06
+#define OOT_SONG_OF_STORMS         0x06
 #define GERUDO_CARD                0x07
 #define LOST_WOODS_TARGET          0x08
 #define BOMBCHU_BOWLING_1          0x09
@@ -109,7 +109,7 @@
 #define SONG_ZORA                 0x0a
 #define MASK_STONE                0x0b
 #define MASK_GARO                 0x0c
-#define MM_SONG_STORMS            0x0d
+#define MM_SONG_OF_STORMS         0x0d
 #define MASK_GIBDO                0x0e
 #define MASK_SCENTS               0x0f
 #define SONG_EMPTINESS            0x10

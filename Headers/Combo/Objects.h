@@ -119,25 +119,32 @@ typedef struct ObjectInfo
 	const ItemInfo* Item;							// The item contained in the object
 	ObjectState Status = ObjectState::Hidden;		// The status object
 	bool PosSet = false;							// Tells if the position has already been set.
+	uint8_t TargetWorld = 1;						// Multiworld: the world this placement's item is destined to (1-based). Always 1 in single / coop.
 
 public:
 
 	/*
 	*   Save the object in the given save file.
 	*
-	*   @param SaveFile  The file where to save the object to.
+	*   @param SaveFile           The file where to save the object to.
+	*   @param IncludeTargetWorld When true, also writes the multiworld destination world
+	*                             (TargetWorld) after the item id. Must match the value used
+	*                             when loading.
 	*/
-	void SaveObject(QFile* SaveFile);
+	void SaveObject(QFile* SaveFile, bool IncludeTargetWorld = false);
 
 	/*
 	*   Load the object from the given data.
 	*
-	*   @param Data		The data array that contains the object to load.
-	*   @param Offset	The offset at which the object start.
-	* 
+	*   @param Data               The data array that contains the object to load.
+	*   @param Offset             The offset at which the object start.
+	*   @param IncludeTargetWorld When true, also reads the multiworld destination world
+	*                             (TargetWorld) after the item id. Must match the value used
+	*                             when saving.
+	*
 	*	@return The end offset of the object.
 	*/
-	size_t LoadObject(QByteArray* Data, size_t Offset);
+	size_t LoadObject(QByteArray* Data, size_t Offset, bool IncludeTargetWorld = false);
 
 	/*
 	*   Reset the object.
@@ -227,16 +234,69 @@ const char* const ObjTypeName[ObjectType::last] =
 	"Owl"
 };
 
+/*
+*   Multiworld: a full set of both games' scene-object arrays for a single world.
+*   World 0 (the local / world 1) aliases the static template arrays, so single-world
+*   behaviour is unchanged. Worlds 1..N-1 are deep copies whose Item / Status /
+*   TargetWorld are filled by the spoiler parser and the live network ledger.
+*/
+typedef struct WorldObjects
+{
+	SceneObjects* OoT;		// OOT_NUM_SCENES scenes for this world.
+	SceneObjects* MM;		// MM_NUM_SCENES scenes for this world.
+	bool Owned;				// True when the arrays were heap-allocated and must be freed (clones).
+} WorldObjects;
+
 #pragma region Object getters
 
 /*
-*   Get all scene objects of the desired game.
+*   Get all scene objects of the desired game for the currently active world.
+*   The active world is controlled by SetActiveWorld; with a single world it always
+*   returns the static template arrays, so existing call sites are unaffected.
 *
 *   @param GameID	The game ID to get the scene objects from.
 *
-*	@return All scene objects of the desired game.
+*	@return All scene objects of the desired game for the active world.
 */
 SceneObjects* GetGameSceneObjects(uint32_t GameID);
+
+/*
+*   Get the scene objects of a specific world and game, regardless of the active world.
+*   Used by the spoiler parser and the per-world network routing.
+*
+*   @param WorldIndex	The 0-based world index (clamped to an existing world).
+*   @param GameID		The game ID to get the scene objects from.
+*
+*	@return The requested world's scene objects for the desired game.
+*/
+SceneObjects* GetWorldSceneObjects(size_t WorldIndex, uint32_t GameID);
+
+/*
+*   Allocate the requested number of worlds as deep copies of the static template arrays
+*   (world 0 aliases the templates, worlds 1..N-1 are clones) and reset the active world
+*   to 0. Calling it again frees any previously allocated clones first. Passing 1 (or 0)
+*   leaves only the template-backed world 0.
+*
+*   @param NumWorlds	The number of worlds to allocate (at least 1).
+*/
+void InitWorlds(size_t NumWorlds);
+
+/*
+*   @return The number of worlds currently allocated (at least 1).
+*/
+size_t GetNumWorlds();
+
+/*
+*   Select which world GetGameSceneObjects(...) returns.
+*
+*   @param WorldIndex	The 0-based world index (clamped to an existing world).
+*/
+void SetActiveWorld(size_t WorldIndex);
+
+/*
+*   @return The 0-based index of the currently active world.
+*/
+size_t GetActiveWorld();
 
 /*
 *   Find the object info matching the given combo item.
@@ -246,6 +306,19 @@ SceneObjects* GetGameSceneObjects(uint32_t GameID);
 *	@return The object info matching the given combo item.
 */
 ObjectInfo* FindObject(ComboItem Item);
+
+/*
+*   Multiworld: given an object resolved against world 0 (the static templates, as returned
+*   by FindObject), return the equivalent object in another world. Worlds are byte-for-byte
+*   clones of the templates, so the equivalent lives at the same index in the same scene.
+*
+*   @param WorldIndex	The 0-based destination world index (clamped to an existing world).
+*   @param GameID		The game the object belongs to.
+*   @param Reference	The reference object (must point inside the world-0 scene arrays).
+*
+*	@return The equivalent object in the requested world, or the reference itself on failure.
+*/
+ObjectInfo* FindObjectInWorld(size_t WorldIndex, int GameID, ObjectInfo* Reference);
 
 #pragma endregion
 
@@ -288,6 +361,26 @@ size_t LoadSceneObjects(QByteArray* Data, size_t Offset);
 *	@return The end offset of the last loaded scene object.
 */
 size_t LoadSceneObjectsFor(QByteArray* Data, size_t Offset, SceneObjects* Array, size_t NumOfScenes);
+
+/*
+*   Multiworld: save every allocated world's scene objects (both games), including each
+*   placement's destination world (TargetWorld). The stream starts with the world count so
+*   the loader can re-allocate the right number of worlds. Used by the V2_0 save format.
+*
+*   @param SaveFile		The save file to write the worlds to.
+*/
+void SaveAllWorlds(QFile* SaveFile);
+
+/*
+*   Multiworld: load every world's scene objects previously written by SaveAllWorlds.
+*   Reads the world count first, re-allocates the worlds (InitWorlds) then fills each one.
+*
+*   @param Data		The data that contains the worlds to load.
+*   @param Offset	The starting offset.
+*
+*	@return The end offset after the last loaded world.
+*/
+size_t LoadAllWorlds(QByteArray* Data, size_t Offset);
 
 /*
 *   Reset all scene objects of both game.

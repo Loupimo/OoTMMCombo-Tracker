@@ -62,6 +62,13 @@ public:
     SceneInfo(int PSceneID, int PGameID, SceneType PType = SceneType::None);
 
     /*
+    *   Re-point this scene's Objects pointer at the currently active world. The SceneInfo is
+    *   built once at startup (world 0); when the multiworld selector switches worlds this must
+    *   be called so the map / object list reflect the chosen world's placements and statuses.
+    */
+    void RebindObjects();
+
+    /*
     *   Default destructor.
     */
     ~SceneInfo() {}

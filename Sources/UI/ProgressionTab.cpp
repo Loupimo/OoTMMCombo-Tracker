@@ -665,10 +665,17 @@ void ProgressionTab::BuildLocationTree(ItemIconWidget* Widget)
 
     const bool revealUncollected = AppConfig::GetRevealUncollectedItems();
 
-    // Group entries by (Game, RenderScene). The render scene is what the navigation
-    // command uses to load the right minimap, so it is the natural grouping key.
+    // Multiworld (option b): show placements DESTINED to the active world, wherever they are
+    // physically placed. We therefore scan every world, filter by TargetWorld == active world
+    // and, when the placement lives in another world, prefix the scene name with "World N".
+    const uint8_t activeWorld = (uint8_t)(GetActiveWorld() + 1);
+    const size_t numWorlds = GetNumWorlds();
+
+    // Group entries by (PlacementWorld, Game, RenderScene). The render scene is what the
+    // navigation command uses to load the right minimap, so it is the natural grouping key.
     struct SceneBucket
     {
+        size_t PlacementWorld;
         int Game;
         uint32_t SceneID;
         QString DisplayName;
@@ -676,21 +683,27 @@ void ProgressionTab::BuildLocationTree(ItemIconWidget* Widget)
     };
     QHash<QString, SceneBucket> buckets;
 
-    auto bucketKey = [](int Game, uint32_t SceneID) {
-        return QString::number(Game) + ":" + QString::number(SceneID);
+    auto bucketKey = [](size_t World, int Game, uint32_t SceneID) {
+        return QString::number(World) + ":" + QString::number(Game) + ":" + QString::number(SceneID);
     };
 
-    auto addEntry = [&](int Game, ObjectInfo* Object, bool Collected) {
+    auto addEntry = [&](size_t World, int Game, ObjectInfo* Object, bool Collected) {
         if (Object == nullptr) return;
 
-        QString key = bucketKey(Game, Object->RenderScene);
+        QString key = bucketKey(World, Game, Object->RenderScene);
         if (!buckets.contains(key))
         {
             SceneBucket b;
+            b.PlacementWorld = World;
             b.Game = Game;
             b.SceneID = Object->RenderScene;
             const char* name = GetSceneName(Game, Object->RenderScene);
-            b.DisplayName = name ? QString::fromUtf8(name) : QString::number(Object->RenderScene);
+            QString sceneName = name ? QString::fromUtf8(name) : QString::number(Object->RenderScene);
+            // Only tag the placement world when it differs from the world we are viewing,
+            // so single-world / same-world placements read exactly as before.
+            b.DisplayName = (numWorlds > 1 && (World + 1) != activeWorld)
+                ? QString("World %1 — %2").arg(World + 1).arg(sceneName)
+                : sceneName;
             buckets.insert(key, b);
         }
 
@@ -718,37 +731,41 @@ void ProgressionTab::BuildLocationTree(ItemIconWidget* Widget)
     //    RenderScene (e.g. OoT Bazaar shop items living in OOT_BAZAAR but rendering
     //    in OOT_KAKARIKO_BAZAAR — there is no counterpart in the render scene).
     // We iterate every entry, drop the Type=none shadows, then dedup by
-    // (Game, ObjectID, RenderScene) so paired entries collapse to a single leaf
+    // (World, Game, ObjectID, RenderScene) so paired entries collapse to a single leaf
     // while standalone cross-scene entries are still picked up.
     QSet<QString> seen;
-    auto dedupKey = [](int Game, const ObjectInfo* o) {
-        return QString::number(Game) + ":" + QString::number(o->ObjectID) + ":" + QString::number(o->RenderScene) + ":" + QString::number((int)o->Type);
+    auto dedupKey = [](size_t World, int Game, const ObjectInfo* o) {
+        return QString::number(World) + ":" + QString::number(Game) + ":" + QString::number(o->ObjectID) + ":" + QString::number(o->RenderScene) + ":" + QString::number((int)o->Type);
     };
 
-    for (const auto& page : Pages)
+    for (size_t world = 0; world < numWorlds; ++world)
     {
-        SceneObjects* scenes = GetGameSceneObjects(page.Game);
-        if (scenes == nullptr) continue;
-
-        for (size_t s = 0; s < page.Count; ++s)
+        for (const auto& page : Pages)
         {
-            SceneObjects& scene = scenes[s];
-            for (size_t o = 0; o < scene.NumOfObjs; ++o)
+            SceneObjects* scenes = GetWorldSceneObjects(world, page.Game);
+            if (scenes == nullptr) continue;
+
+            for (size_t s = 0; s < page.Count; ++s)
             {
-                ObjectInfo& obj = scene.Objects[o];
+                SceneObjects& scene = scenes[s];
+                for (size_t o = 0; o < scene.NumOfObjs; ++o)
+                {
+                    ObjectInfo& obj = scene.Objects[o];
 
-                if (obj.Type == ObjectType::none) continue;     // skip shadow placeholders
-                if (obj.Item == nullptr) continue;
-                if (!ItemMatchesWidget(Widget, page.Game, obj.Item)) continue;
+                    if (obj.TargetWorld != activeWorld) continue;   // not destined to the active world
+                    if (obj.Type == ObjectType::none) continue;     // skip shadow placeholders
+                    if (obj.Item == nullptr) continue;
+                    if (!ItemMatchesWidget(Widget, page.Game, obj.Item)) continue;
 
-                bool collected = (obj.Status != ObjectState::Hidden);
-                if (!collected && !revealUncollected) continue;
+                    bool collected = (obj.Status != ObjectState::Hidden);
+                    if (!collected && !revealUncollected) continue;
 
-                QString key = dedupKey(page.Game, &obj);
-                if (seen.contains(key)) continue;
-                seen.insert(key);
+                    QString key = dedupKey(world, page.Game, &obj);
+                    if (seen.contains(key)) continue;
+                    seen.insert(key);
 
-                addEntry(page.Game, &obj, collected);
+                    addEntry(world, page.Game, &obj, collected);
+                }
             }
         }
     }
@@ -1303,37 +1320,50 @@ void ProgressionTab::RebuildFromSceneObjects()
         { MM_GAME,  MM_NUM_SCENES  },
     };
 
+    // Multiworld (option b): the active world's progression is every placement DESTINED to
+    // that world, wherever it is physically placed. So we scan all worlds and keep only the
+    // placements whose TargetWorld matches the active world (1-based). In single / coop there
+    // is one world and every TargetWorld defaults to 1, so this matches everything as before.
+    const uint8_t activeWorld = (uint8_t)(GetActiveWorld() + 1);
+    const size_t numWorlds = GetNumWorlds();
+
     // A single logical object can appear in both its home scene's array and the
     // render scene's array (cross-scene NPCs, paired shop slots, ...). Without
     // deduping, OnItemFound would be called twice for the same pickup and the
-    // counter widget (e.g. Gold Skulltula Tokens) would over-report. Use the
-    // same dedup key as BuildLocationTree so the count and the location tree
-    // stay perfectly in sync.
+    // counter widget (e.g. Gold Skulltula Tokens) would over-report. The world is part
+    // of the key because the same scene/objectID coordinate exists in every world clone
+    // as a genuinely distinct placement. Same key as BuildLocationTree so the count and
+    // the location tree stay perfectly in sync.
     QSet<QString> seen;
 
-    for (const auto& page : Pages)
+    for (size_t world = 0; world < numWorlds; ++world)
     {
-        SceneObjects* scenes = GetGameSceneObjects(page.Game);
-        if (scenes == nullptr) continue;
-
-        for (size_t s = 0; s < page.Count; ++s)
+        for (const auto& page : Pages)
         {
-            SceneObjects& scene = scenes[s];
-            for (size_t o = 0; o < scene.NumOfObjs; ++o)
+            SceneObjects* scenes = GetWorldSceneObjects(world, page.Game);
+            if (scenes == nullptr) continue;
+
+            for (size_t s = 0; s < page.Count; ++s)
             {
-                ObjectInfo& obj = scene.Objects[o];
-                if (obj.Status == ObjectState::Hidden) continue;
-                if (obj.Item == nullptr) continue;
-                if (obj.Type == ObjectType::none) continue;     // shadow placeholder
+                SceneObjects& scene = scenes[s];
+                for (size_t o = 0; o < scene.NumOfObjs; ++o)
+                {
+                    ObjectInfo& obj = scene.Objects[o];
+                    if (obj.TargetWorld != activeWorld) continue;   // not destined to the active world
+                    if (obj.Status == ObjectState::Hidden) continue;
+                    if (obj.Item == nullptr) continue;
+                    if (obj.Type == ObjectType::none) continue;     // shadow placeholder
 
-                QString key = QString::number(page.Game) + ":" +
-                              QString::number(obj.ObjectID) + ":" +
-                              QString::number(obj.RenderScene) + ":" +
-                              QString::number((int)obj.Type);
-                if (seen.contains(key)) continue;
-                seen.insert(key);
+                    QString key = QString::number(world) + ":" +
+                                  QString::number(page.Game) + ":" +
+                                  QString::number(obj.ObjectID) + ":" +
+                                  QString::number(obj.RenderScene) + ":" +
+                                  QString::number((int)obj.Type);
+                    if (seen.contains(key)) continue;
+                    seen.insert(key);
 
-                this->OnItemFound(page.Game, &obj, obj.Item, true);
+                    this->OnItemFound(page.Game, &obj, obj.Item, true);
+                }
             }
         }
     }

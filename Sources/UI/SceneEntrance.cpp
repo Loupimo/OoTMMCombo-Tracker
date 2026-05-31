@@ -36,7 +36,7 @@ size_t EntranceLink::LoadLink(QByteArray* Data, size_t Offset, TrackerVersion Ve
 {
     this->InLinks.clear();
 
-    if (Version == TrackerVersion::V2_0)
+    if (Version == TrackerVersion::V1_0)
     {
         // Legacy 10-byte layout: InLink (u32), OutLink (u32), InLinkGame (u8), OutLinkGame (u8).
         // A single-source InLink is promoted to a one-entry list; an undiscovered InLink
@@ -63,7 +63,7 @@ size_t EntranceLink::LoadLink(QByteArray* Data, size_t Offset, TrackerVersion Ve
         return Offset;
     }
 
-    // V2_1 layout: OutLink (u32), OutLinkGame (u8), count (u32), then count * (EntranceID u32, Game u8).
+    // V2_0 layout: OutLink (u32), OutLinkGame (u8), count (u32), then count * (EntranceID u32, Game u8).
     memcpy_s(&this->OutLink, sizeof(this->OutLink), Data->data() + Offset, sizeof(this->OutLink));
     Offset += sizeof(this->OutLink);
 

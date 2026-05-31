@@ -5,6 +5,7 @@
 #include <QLabel>
 #include <QStringList>
 #include <QWidget>
+#include <QComboBox>
 #include "ui_OoTMMComboTracker.h"
 #include "UI/Settings.h"
 #include "UI/EntranceTable.h"
@@ -120,6 +121,7 @@ private:
     QWidget* MMTabProgress = nullptr;         // Custom-painted progress line under the MM tab counter (TabProgressLine).
     QLabel* GlobalCounter = nullptr;          // Aggregated "X/Y" value label displayed in the tab bar corner.
     QWidget* GlobalProgress = nullptr;        // Dual-segment (OoT blue + MM violet) progress bar next to the global counter.
+    QComboBox* WorldSelector = nullptr;       // Multiworld world selector in the tab bar corner (hidden when single-world).
     StatusPill* TrackingPill = nullptr;       // Bottom status pill: tracking on/off (clickable to start/stop).
     StatusPill* AutoSavePill = nullptr;       // Bottom status pill: auto-save on/off (clickable to toggle).
     StatusPill* RevealPill = nullptr;         // Bottom status pill: reveal uncollected items on/off (clickable to toggle).
@@ -225,6 +227,14 @@ public slots:
     */
     void UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, const ItemInfo* ItemFound, ItemSource Source, int FromWorld, int ToWorld);
 
+    /*
+    *   Switch the active world and refresh every view (maps, entrances, progression).
+    *   Connected to the multiworld world selector.
+    *
+    *   @param Index    The 0-based world index selected in the combo box.
+    */
+    void OnWorldSelected(int Index);
+
 #pragma endregion
 
 #pragma region Entrance related
@@ -277,6 +287,12 @@ public:
     void RefreshTracker();
 
     /*
+    *   Rebuild / show / hide the multiworld world selector based on the current world count.
+    *   Hidden when there is a single world; populated with "World N" entries otherwise.
+    */
+    void RefreshWorldSelector();
+
+    /*
     *   Loads the game scenes using the giving tracking session.
     * 
     *   @param FilePath       The file path to the tracking session to load.
@@ -285,10 +301,24 @@ public:
 
     /*
     *   Loads the game spoiler log.
-    * 
+    *
     *   @param FilePath       The file path to the spoiler log to load.
     */
     void LoadGameSpoiler(QString FilePath);
+
+    /*
+    *   Parse a single world's location block and fill that world's scene objects.
+    *   The block must already be dedented to the single-world layout (two leading
+    *   spaces per location). In multiworld each item carries a "Player N " prefix
+    *   identifying its destination world; it is stripped for the item lookup and
+    *   stored in ObjectInfo::TargetWorld.
+    *
+    *   @param LocationBlock    The dedented location text for this world.
+    *   @param WorldIndex       The 0-based world index whose arrays must be filled.
+    *   @param IsMultiworld     True when the spoiler is a multiworld seed (enables the
+    *                           "Player N " prefix parsing).
+    */
+    void ParseWorldLocations(const QString& LocationBlock, size_t WorldIndex, bool IsMultiworld);
 
 #pragma endregion
 

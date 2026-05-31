@@ -13,219 +13,219 @@ Settings::Settings()
 	this->NumOfTeams = 1;
 	this->LocalWorld = 1;
     this->FilterSettings = QMap<QString, Parameter>({
-        { "songs", { "Song Notes", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "goldSkulltulaTokens", { "Gold Skulltula - OoT", ParamType::shuffle, ShuffleSetting::all } },
-        { "housesSkulltulaTokens", { "Gold Skulltula - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "tingleShuffle", { "Tingle Maps", ParamType::boolean, ShuffleSetting::all } },
-        { "mapCompassShuffle", { "Map / Compass", ParamType::boolean, ShuffleSetting::all } },
-        { "smallKeyShuffleOot", { "Small Key - OoT", ParamType::shuffle, ShuffleSetting::all } },
-        { "smallKeyShuffleMm", { "Small Key - MM", ParamType::shuffle, ShuffleSetting::all } },
-        { "smallKeyShuffleHideout", { "Small Key - Hideout", ParamType::boolean, ShuffleSetting::all } },
-        { "smallKeyShuffleChestGame", { "Small Key - Chest Game", ParamType::boolean, ShuffleSetting::all } },
-        { "bossKeyShuffleOot", { "Boss Key - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "bossKeyShuffleMm", { "Boss Key - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "silverRupeeShuffle", { "Silver Rupee", ParamType::boolean, ShuffleSetting::all } },
-        { "townFairyShuffle", { "Town Fairy", ParamType::boolean, ShuffleSetting::all } },
-        { "strayFairyChestShuffle", { "Stray Fairy - Chest", ParamType::boolean, ShuffleSetting::all } },
-        { "strayFairyOtherShuffle", { "Stray Fairy - Other", ParamType::boolean, ShuffleSetting::all } },
-        { "ganonBossKey", { "Boss Key - Ganon", ParamType::boolean, ShuffleSetting::all } },
-        { "scrubShuffleOot", { "Scrub - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "scrubShuffleMm", { "Scrub - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "cowShuffleOot", { "Cow - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "cowShuffleMm", { "Cow - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "shopShuffleOot", { "Shop - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "shopShuffleMm", { "Shop - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "owlShuffle", { "Owl", ParamType::boolean, ShuffleSetting::all } },
-        { "shufflePotsOot", { "Pots - OoT", ParamType::shuffle, ShuffleSetting::all } },
-        { "shufflePotsMm", { "Pots - MM", ParamType::shuffle, ShuffleSetting::all } },
-        { "shuffleCratesOot", { "Crates - OoT", ParamType::shuffle, ShuffleSetting::all } },
-        { "shuffleCratesMm", { "Crates - MM", ParamType::shuffle, ShuffleSetting::all } },
-        { "shuffleBarrelsMm", { "Barrels - MM", ParamType::shuffle, ShuffleSetting::all } },
-        { "shuffleHivesOot", { "Hives - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleHivesMm", { "Hives - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleGrassOot", { "Grass - OoT", ParamType::shuffle, ShuffleSetting::all } },
-        { "shuffleRocksOot", { "Rocks - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleRocksMm", { "Rocks - MM", ParamType::shuffle, ShuffleSetting::all } },
-        { "shuffleGrassMm", { "Grass - MM", ParamType::shuffle, ShuffleSetting::all } },
-        { "shuffleTFGrassMm", { "Termina Field Grass", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleTreesOot", { "Trees - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleTreesMm", { "Trees - MM", ParamType::shuffle, ShuffleSetting::all } },
-        { "shuffleBushOot", { "Bush - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleBushMm", { "Bush - MM", ParamType::shuffle, ShuffleSetting::all } },
-        { "shuffleSoilOot", { "Soil - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleSoilMm", { "Soil - MM", ParamType::shuffle, ShuffleSetting::all } },
-        { "shuffleFreeRupeesOot", { "Freestanding Rupees - OoT", ParamType::shuffle, ShuffleSetting::all } },
-        { "shuffleFreeRupeesMm", { "Freestanding Rupees - MM", ParamType::shuffle, ShuffleSetting::all } },
-        { "shuffleFreeHeartsOot", { "Freestanding Hearts - OoT", ParamType::shuffle, ShuffleSetting::all } },
-        { "shuffleFreeHeartsMm", { "Freestanding Hearts - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleWonderItemsOot", { "Wonder Items - OoT", ParamType::shuffle, ShuffleSetting::all } },
-        { "shuffleWonderItemsMm", { "Wonder Items - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleSnowballsMm", { "Snowballs - MM", ParamType::shuffle, ShuffleSetting::all } },
-        { "shuffleButterfliesOot", { "Butterflies - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleButterfliesMm", { "Butterflies - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleRedBouldersOot", { "Red Boulders - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleRedBouldersMm", { "Red Boulders - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleFrogsRupeesOot", { "Frogs Rupees", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleIciclesOot", { "Icicles - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleIciclesMm", { "Icicles - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleRedIceOot", { "Red Ice", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleOcarinasOot", { "Ocarinas", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleMasterSword", { "Master Sword", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleGerudoCard", { "Gerudo Card", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleMaskTrades", { "Mask Trades", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleMerchantsOot", { "Merchants - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleMerchantsMm", { "Merchants - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "pondFishShuffle", { "Pond Fish", ParamType::boolean, ShuffleSetting::all } },
-        { "divingGameRupeeShuffle", { "Diving Game Rupees", ParamType::boolean, ShuffleSetting::all } },
-        { "fairyFountainFairyShuffleOot", { "Fairy Fountain - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "fairyFountainFairyShuffleMm", { "Fairy Fountain - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "fairySpotShuffleOot", { "Fairy Spot", ParamType::boolean, ShuffleSetting::all } },
-        { "eggShuffle", { "Egg Content", ParamType::boolean, ShuffleSetting::all } },
-        { "skipZelda", { "Skip Zelda", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "restoreBrokenActors", { "Restore Broken Actors", ParamType::boolean, ShuffleSetting::all } },
-        { "shuffleLotteryMm", { "Lottery Prizes", ParamType::boolean, ShuffleSetting::all } },
+	{ "songs", { "Song Notes", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, {  } } },
+	{ "goldSkulltulaTokens", { "Gold Skulltula - OoT", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "housesSkulltulaTokens", { "Gold Skulltula - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "tingleShuffle", { "Tingle Maps", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "mapCompassShuffle", { "Map / Compass", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "smallKeyShuffleOot", { "Small Key - OoT", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "smallKeyShuffleMm", { "Small Key - MM", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "smallKeyShuffleHideout", { "Small Key - Hideout", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "smallKeyShuffleChestGame", { "Small Key - Chest Game", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "bossKeyShuffleOot", { "Boss Key - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "bossKeyShuffleMm", { "Boss Key - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "silverRupeeShuffle", { "Silver Rupee", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "townFairyShuffle", { "Town Fairy", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "strayFairyChestShuffle", { "Stray Fairy - Chest", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "strayFairyOtherShuffle", { "Stray Fairy - Other", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "ganonBossKey", { "Boss Key - Ganon", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "scrubShuffleOot", { "Scrub - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "scrubShuffleMm", { "Scrub - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "cowShuffleOot", { "Cow - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "cowShuffleMm", { "Cow - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shopShuffleOot", { "Shop - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shopShuffleMm", { "Shop - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "owlShuffle", { "Owl", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shufflePotsOot", { "Pots - OoT", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shufflePotsMm", { "Pots - MM", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleCratesOot", { "Crates - OoT", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleCratesMm", { "Crates - MM", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleBarrelsMm", { "Barrels - MM", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleHivesOot", { "Hives - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleHivesMm", { "Hives - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleGrassOot", { "Grass - OoT", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleRocksOot", { "Rocks - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleRocksMm", { "Rocks - MM", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleGrassMm", { "Grass - MM", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleTFGrassMm", { "Termina Field Grass", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleTreesOot", { "Trees - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleTreesMm", { "Trees - MM", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleBushOot", { "Bush - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleBushMm", { "Bush - MM", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleSoilOot", { "Soil - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleSoilMm", { "Soil - MM", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleFreeRupeesOot", { "Freestanding Rupees - OoT", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleFreeRupeesMm", { "Freestanding Rupees - MM", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleFreeHeartsOot", { "Freestanding Hearts - OoT", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleFreeHeartsMm", { "Freestanding Hearts - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleWonderItemsOot", { "Wonder Items - OoT", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleWonderItemsMm", { "Wonder Items - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleSnowballsMm", { "Snowballs - MM", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleButterfliesOot", { "Butterflies - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleButterfliesMm", { "Butterflies - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleRedBouldersOot", { "Red Boulders - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleRedBouldersMm", { "Red Boulders - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleFrogsRupeesOot", { "Frogs Rupees", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleIciclesOot", { "Icicles - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleIciclesMm", { "Icicles - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleRedIceOot", { "Red Ice", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleOcarinasOot", { "Ocarinas", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleMasterSword", { "Master Sword", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleGerudoCard", { "Gerudo Card", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleMaskTrades", { "Mask Trades", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleMerchantsOot", { "Merchants - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleMerchantsMm", { "Merchants - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "pondFishShuffle", { "Pond Fish", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "divingGameRupeeShuffle", { "Diving Game Rupees", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "fairyFountainFairyShuffleOot", { "Fairy Fountain - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "fairyFountainFairyShuffleMm", { "Fairy Fountain - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "fairySpotShuffleOot", { "Fairy Spot", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "eggShuffle", { "Egg Content", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "skipZelda", { "Skip Zelda", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, {  } } },
+	{ "restoreBrokenActors", { "Restore Broken Actors", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleLotteryMm", { "Lottery Prizes", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+    { "crossWarpOot", { "Cross-Games OoT Warp Song", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, {  } } },
+    { "crossWarpMm", { "Cross-Games MM Song of Soaring", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, {  } } },
     });
 
     this->ItemSettings = QMap<QString, Parameter>({
-        { "progressiveShieldsOot", { "Progressive Shields - OoT", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "progressiveSwordsOot", { "Progressive Swords - OoT", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "progressiveShieldsMm", { "Progressive Shields - Mm", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "progressiveGFS", { "Progressive Great Fairy Sword", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "progressiveClocks", { "Progressive Clock", ParamType::boolean, ShuffleSetting::all } },
-        { "sticksNutsUpgradesMm", { "Deku Sticks / Nuts Upgrades - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "sunSongMm", { "Sun's Song - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "fairyOcarinaMm", { "Fairy Ocarina - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "shortHookshotMm", { "Short Hookshot - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "bronzeScale", { "Bonze Scale", ParamType::boolean, ShuffleSetting::all } },
-        { "childWallets", { "Child Wallet", ParamType::boolean, ShuffleSetting::all } },
-        { "colossalWallets", { "Colossal Wallet", ParamType::boolean, ShuffleSetting::all } },
-        { "bottomlessWallets", { "Bottomless Wallet", ParamType::boolean, ShuffleSetting::all } },
-        { "skeletonKeyOot", { "Skeleton Key - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "skeletonKeyMm", { "Skeleton Key - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "magicalRupee", { "Magical Rupee", ParamType::boolean, ShuffleSetting::all } },
-        { "transcendentFairy", { "Transcendent Fairy", ParamType::boolean, ShuffleSetting::all } },
-        { "platinumTokenOot", { "Platinum Token - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "platinumTokenMm", { "Platinum Token - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "spellFireMm", { "Din's Fire - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "spellWindMm", { "Farore's Wind - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "spellLoveMm", { "Nayru's Love - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "bootsIronMm", { "Iron Boots - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "bootsHoverMm", { "Hover Boots - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "tunicGoronMm", { "Goron Tunic - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "tunicZoraMm", { "Zora Tunic - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "scalesMm", { "Scales - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "strengthMm", { "Strength - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "hammerMm", { "Megaton Hammer - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "boomerangMm", { "Boomerang (MM)", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "spinUpgradeOot", { "Spin Attack Upgrade - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "dekuShieldMm", { "Deku Shield - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "blastMaskOot", { "Blast Mask - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "stoneMaskOot", { "Stone Mask - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "kamaroMaskOot", { "Kamaro Mask (OoT)", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "elegyOot", { "Elegy of Emptiness - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "ocarinaButtonsShuffleOot", { "Ocarina Buttons Shuffle - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "ocarinaButtonsShuffleMm", { "Ocarina Buttons Shuffle - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "soulsEnemyOot", { "Enemy Souls - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "soulsEnemyMm", { "Enemy Souls - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "soulsBossOot", { "Boss Souls - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "soulsBossMm", { "Boss Souls - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "soulsNpcOot", { "NPC Souls - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "soulsNpcMm", { "NPC Souls - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "soulsAnimalOot", { "Animal Souls - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "soulsAnimalMm", { "Animal Souls - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "soulsMiscOot", { "Misc Souls - OoT", ParamType::boolean, ShuffleSetting::all } },
-        { "soulsMiscMm", { "Misc Souls - MM", ParamType::boolean, ShuffleSetting::all } },
-        { "clocks", { "Clocks Shuffle", ParamType::boolean, ShuffleSetting::all } },
-        { "coins", { "Coins", ParamType::boolean, ShuffleSetting::all } },
-        { "coinsRed", { "Red Coins", ParamType::uint, ShuffleSetting::all } },
-        { "coinsGreen", { "Green Coins", ParamType::uint, ShuffleSetting::all } },
-        { "coinsBlue", { "Blue Coins", ParamType::uint, ShuffleSetting::all } },
-        { "coinsYellow", { "Yellow Coins", ParamType::uint, ShuffleSetting::all } },
-        { "trapIce", { "Ice Trap", ParamType::boolean, ShuffleSetting::all } },
-        { "trapFire", { "Fire Trap", ParamType::boolean, ShuffleSetting::all } },
-        { "trapShock", { "Shock Trap", ParamType::boolean, ShuffleSetting::all } },
-        { "trapDrain", { "Drain Trap", ParamType::boolean, ShuffleSetting::all } },
-        { "trapAntiMagic", { "Magic Trap", ParamType::boolean, ShuffleSetting::all } },
-        { "trapKnockback", { "Knockback Trap", ParamType::boolean, ShuffleSetting::all } },
-        { "trapRupoor", { "Rupoor", ParamType::boolean, ShuffleSetting::all } },
-        { "sharedStoneAgony", { "Shared Stone of Agony", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSpinUpgrade", { "Shared Spin of Upgrade", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedNutsSticks", { "Shared Nuts / Sticks", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedBows", { "Shared Bows", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedBombBags", { "Shared Bomb Bags", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedMagic", { "Shared Magic", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedMagicArrowFire", { "Shared Fire Arrow", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedMagicArrowIce", { "Shared Ice Arrow", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedMagicArrowLight", { "Shared Light Arrow", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSongEpona", { "Shared Epona's Song", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSongStorms", { "Shared Song of Storms", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSongTime", { "Shared Song of Time", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSongSun", { "Shared Sun's Sung", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedHookshot", { "Shared Hookshot", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedLens", { "Shared Lens of Truth", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedOcarina", { "Shared Ocarina", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedMaskGoron", { "Shared Goron Mask", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedMaskZora", { "Shared Zora Mask", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedMaskBunny", { "Shared Bunny Mask", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedMaskKeaton", { "Shared Keaton Mask", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedMaskTruth", { "Shared Truth Mask", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedMaskBlast", { "Shared Blast Mask", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedMaskStone", { "Shared Stone Mask", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSongElegy", { "Shared Elegy of Emptiness", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedWallets", { "Shared Wallets", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedHealth", { "Shared Health", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedShields", { "Shared Shields", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSoulsEnemy", { "Shared Souls of Enemy", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSoulsNpc", { "Shared Souls of NPC", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSoulsAnimal", { "Shared Souls of Animal", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSoulsMisc", { "Shared Misc Souls", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedOcarinaButtons", { "Shared Ocarina Buttons", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSkeletonKey", { "Shared Skeleton Key", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedPlatinumToken", { "Shared Platinum Token", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSpellFire", { "Shared Din's Fire", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSpellWind", { "Shared Farore's Wind", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSpellLove", { "Shared Nayru's Love", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedBootsIron", { "Shared Iron Boots", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedBootsHover", { "Shared Hover Boots", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedTunicGoron", { "Shared Goron Tunic", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedTunicZora", { "Shared Zora Tunic", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedScales", { "Shared Scales", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedStrength", { "Shared Strength", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedHammer", { "Shared Megaton Hammer", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedBottles", { "Shared Bottles", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "crossWarpOot", { "Cross-Games OoT Warp Song", ParamType::boolean, ShuffleSetting::all } },
-        { "crossWarpMm", { "Cross-Games MM Song of Soaring", ParamType::boolean, ShuffleSetting::all } },
-        { "songSoaringOot", { "Song of Soaring - OoT", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "songHealingOot", { "Song of Healing - OoT", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "songAwakeningOot", { "Song of Awakening - OoT", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "songGoronOot", { "Song of Goron - OoT", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "songZoraOot", { "Song of Zora - OoT", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "songOrderOot", { "Song of Order - OoT", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "songSunMm", { "Sun's Song - MM", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "songZeldaLullabyMm", { "Zelda's Lullaby - MM", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "songSariasMm", { "Saria's Song - MM", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "songMinuetMm", { "Minuet of Forest - MM", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "songBoleroMm", { "Bolero of Fire - MM", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "songSerenadeMm", { "Serenade of Water - MM", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "songRequiemMm", { "Requiem of Spirit - MM", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "songNocturneMm", { "Nocturne of Shadow - MM", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "songPreludeMm", { "Prelude of Light - MM", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedMaskKamaro", { "Shared Kamaro Mask", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedBoomrang", { "Shared Boomerang", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSongHealing", { "Shared Song of Healing", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSongSoaring", { "Shared Song of Soaring", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSongAwakening", { "Shared Sonata of Awakening", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSongGoron", { "Shared Goron Lullaby", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSongZora", { "Shared New Wave Bossa Nova", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSongOrder", { "Shared Oath to Order", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSongZeldaLullaby", { "Shared Zelda's Lullaby", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSongSarias", { "Shared Saria's Song", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSongMinuet", { "Shared Minuet of Forest", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSongBolero", { "Shared Bolero of Fire", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSongSerenade", { "Shared Serenade of Water", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSongRequiem", { "Shared Requiem of Spirit", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSongNocturne", { "Shared Nocturne of Shadow", ParamType::boolean, ShuffleSetting::vanilla } },
-        { "sharedSongPrelude", { "Shared Prelude of Light", ParamType::boolean, ShuffleSetting::vanilla } }
+    { "progressiveShieldsOot", { "Progressive Shields - OoT", ParamType::boolean, ParamCategory::progressive, ShuffleSetting::vanilla, { OOT_PROGRESSIVE_SHIELD_DEKU, OOT_PROGRESSIVE_SHIELD_HYLIAN } } },
+    { "progressiveSwordsOot", { "Progressive Swords - OoT", ParamType::boolean, ParamCategory::progressive, ShuffleSetting::vanilla, { OOT_SWORD_KOKIRI, OOT_SWORD_MASTER, OOT_SWORD_KNIFE, OOT_SWORD_GORON, OOT_SWORD_BIGGORON, OOT_SWORD_RAZOR, OOT_SWORD_GILDED, OOT_SWORD } } },
+    { "progressiveShieldsMm", { "Progressive Shields - Mm", ParamType::boolean, ParamCategory::progressive, ShuffleSetting::vanilla, { MM_PROGRESSIVE_SHIELD_DEKU, MM_PROGRESSIVE_SHIELD_HERO } } },
+    { "progressiveGFS", { "Progressive Great Fairy Sword", ParamType::boolean, ParamCategory::progressive, ShuffleSetting::vanilla, { MM_SWORD_KOKIRI, MM_SWORD_RAZOR, MM_SWORD_GILDED, MM_GREAT_FAIRY_SWORD } } },
+    { "progressiveClocks", { "Progressive Clock", ParamType::boolean, ParamCategory::progressive, ShuffleSetting::all, { MM_CLOCK, MM_CLOCK1, MM_CLOCK2, MM_CLOCK3, MM_CLOCK4, MM_CLOCK5, MM_CLOCK6 } } },
+    { "sticksNutsUpgradesMm", { "Deku Sticks / Nuts Upgrades - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_NUT_UPGRADE, MM_NUT_UPGRADE2, MM_STICK_UPGRADE, MM_STICK_UPGRADE2 } } },
+    { "sunSongMm", { "Sun's Song - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_SONG_SUN } } },
+    { "fairyOcarinaMm", { "Fairy Ocarina - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_OCARINA_FAIRY } } },
+    { "shortHookshotMm", { "Short Hookshot - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_HOOKSHOT_SHORT } } },
+    { "bronzeScale", { "Bonze Scale", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { OOT_SCALE_BRONZE, MM_SCALE_BRONZE } } },
+    { "childWallets", { "Child Wallet", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { OOT_WALLET, MM_WALLET } } },
+    { "colossalWallets", { "Colossal Wallet", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { OOT_WALLET4, MM_WALLET4 } } },
+    { "bottomlessWallets", { "Bottomless Wallet", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { OOT_WALLET5, MM_WALLET5 } } },
+    { "skeletonKeyOot", { "Skeleton Key - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { OOT_SKELETON_KEY } } },
+    { "skeletonKeyMm", { "Skeleton Key - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_SKELETON_KEY } } },
+    { "magicalRupee", { "Magical Rupee", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { OOT_RUPEE_MAGICAL } } },
+    { "transcendentFairy", { "Transcendent Fairy", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_TRANSCENDENT_FAIRY } } },
+    { "platinumTokenOot", { "Platinum Token - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { OOT_PLATINUM_TOKEN } } },
+    { "platinumTokenMm", { "Platinum Token - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_PLATINUM_TOKEN } } },
+    { "spellFireMm", { "Din's Fire - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_SPELL_FIRE } } },
+    { "spellWindMm", { "Farore's Wind - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_SPELL_WIND } } },
+    { "spellLoveMm", { "Nayru's Love - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_SPELL_LOVE } } },
+    { "bootsIronMm", { "Iron Boots - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_BOOTS_IRON } } },
+    { "bootsHoverMm", { "Hover Boots - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_BOOTS_HOVER } } },
+    { "tunicGoronMm", { "Goron Tunic - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_TUNIC_GORON } } },
+    { "tunicZoraMm", { "Zora Tunic - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_TUNIC_ZORA } } },
+    { "scalesMm", { "Scales - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_SCALE_SILVER, MM_SCALE_GOLDEN } } },
+    { "strengthMm", { "Strength - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_GORON_BRACELET, MM_SILVER_GAUNTLETS, MM_GOLDEN_GAUNTLETS } } },
+    { "hammerMm", { "Megaton Hammer - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_HAMMER } } },
+    { "spinUpgradeOot", { "Spin Attack Upgrade - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { OOT_SPIN_UPGRADE } } },
+    { "dekuShieldMm", { "Deku Shield - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_SHIELD_DEKU } } },
+    { "blastMaskOot", { "Blast Mask - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { OOT_MASK_BLAST } } },
+    { "stoneMaskOot", { "Stone Mask - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { OOT_MASK_STONE } } },
+    { "elegyOot", { "Elegy of Emptiness - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { OOT_SONG_EMPTINESS, OOT_SONG_NOTE_EMPTINESS } } },
+    { "ocarinaButtonsShuffleOot", { "Ocarina Buttons Shuffle - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { OOT_BUTTON_A, OOT_BUTTON_C_DOWN, OOT_BUTTON_C_LEFT, OOT_BUTTON_C_RIGHT, OOT_BUTTON_C_UP } } },
+    { "ocarinaButtonsShuffleMm", { "Ocarina Buttons Shuffle - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_BUTTON_A, MM_BUTTON_C_DOWN, MM_BUTTON_C_LEFT, MM_BUTTON_C_RIGHT, MM_BUTTON_C_UP } } },
+    { "soulsEnemyOot", { "Enemy Souls - OoT", ParamType::boolean, ParamCategory::souls, ShuffleSetting::all, { OOT_SOUL_ENEMY_STALFOS, OOT_SOUL_ENEMY_POE } } },
+    { "soulsEnemyMm", { "Enemy Souls - MM", ParamType::boolean, ParamCategory::souls, ShuffleSetting::all, { MM_SOUL_ENEMY_OCTOROK, MM_SOUL_ENEMY_POE } } },
+    { "soulsBossOot", { "Boss Souls - OoT", ParamType::boolean, ParamCategory::souls, ShuffleSetting::all, { OOT_SOUL_BOSS_QUEEN_GOHMA, OOT_SOUL_BOSS_TWINROVA } } },
+    { "soulsBossMm", { "Boss Souls - MM", ParamType::boolean, ParamCategory::souls, ShuffleSetting::all, { MM_SOUL_BOSS_ODOLWA, MM_SOUL_BOSS_IGOS } } },
+    { "soulsNpcOot", { "NPC Souls - OoT", ParamType::boolean, ParamCategory::souls, ShuffleSetting::all, { OOT_SOUL_NPC_SARIA, OOT_SOUL_NPC_THIEVES } } },
+    { "soulsNpcMm", { "NPC Souls - MM", ParamType::boolean, ParamCategory::souls, ShuffleSetting::all, { MM_SOUL_NPC_AROMA, MM_SOUL_NPC_THIEVES } } },
+    { "soulsAnimalOot", { "Animal Souls - OoT", ParamType::boolean, ParamCategory::souls, ShuffleSetting::all, { OOT_SOUL_ANIMAL_CUCCO, OOT_SOUL_ANIMAL_BUTTERFLY } } },
+    { "soulsAnimalMm", { "Animal Souls - MM", ParamType::boolean, ParamCategory::souls, ShuffleSetting::all, { MM_SOUL_ANIMAL_CUCCO, MM_SOUL_ANIMAL_BUTTERFLY } } },
+    { "soulsMiscOot", { "Misc Souls - OoT", ParamType::boolean, ParamCategory::souls, ShuffleSetting::all, { OOT_SOUL_MISC_GS, OOT_SOUL_MISC_BUSINESS_SCRUB } } },
+    { "soulsMiscMm", { "Misc Souls - MM", ParamType::boolean, ParamCategory::souls, ShuffleSetting::all, { MM_SOUL_MISC_GS, MM_SOUL_MISC_BUSINESS_SCRUB } } },
+    { "clocks", { "Clocks Shuffle", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_CLOCK1, MM_CLOCK2, MM_CLOCK3, MM_CLOCK4, MM_CLOCK5, MM_CLOCK6 } } },
+    { "coins", { "Coins", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { OOT_COIN_RED, OOT_COIN_GREEN, OOT_COIN_BLUE, OOT_COIN_YELLOW } } },
+    { "coinsRed", { "Red Coins", ParamType::uint, ParamCategory::standard, ShuffleSetting::all, { OOT_COIN_RED } } },
+    { "coinsGreen", { "Green Coins", ParamType::uint, ParamCategory::standard, ShuffleSetting::all, { OOT_COIN_GREEN } } },
+    { "coinsBlue", { "Blue Coins", ParamType::uint, ParamCategory::standard, ShuffleSetting::all, { OOT_COIN_BLUE } } },
+    { "coinsYellow", { "Yellow Coins", ParamType::uint, ParamCategory::standard, ShuffleSetting::all, { OOT_COIN_YELLOW } } },
+    { "trapIce", { "Ice Trap", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { OOT_TRAP_ICE } } },
+    { "trapFire", { "Fire Trap", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { OOT_TRAP_FIRE } } },
+    { "trapShock", { "Shock Trap", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { OOT_TRAP_SHOCK } } },
+    { "trapDrain", { "Drain Trap", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { OOT_TRAP_DRAIN } } },
+    { "trapAntiMagic", { "Magic Trap", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { OOT_TRAP_ANTI_MAGIC } } },
+    { "trapKnockback", { "Knockback Trap", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { OOT_TRAP_KNOCKBACK } } },
+    { "trapRupoor", { "Rupoor", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { OOT_TRAP_RUPOOR } } },
+    { "sharedStoneAgony", { "Shared Stone of Agony", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_STONE_OF_AGONY, MM_STONE_OF_AGONY } } },
+    { "sharedSpinUpgrade", { "Shared Spin of Upgrade", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SPIN_UPGRADE, MM_SPIN_UPGRADE } } },
+    { "sharedNutsSticks", { "Shared Nuts / Sticks", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_STICK, OOT_STICKS_5, OOT_STICKS_10, OOT_NUTS_5, OOT_NUTS_5_ALT, OOT_NUTS_10, OOT_STICK_UPGRADE, OOT_STICK_UPGRADE2, OOT_NUT_UPGRADE, OOT_NUT_UPGRADE2, MM_STICK, MM_UNK_2F, MM_UNK_30, MM_UNK_31, MM_NUT, MM_NUTS_5, MM_NUTS_10, MM_UNK_2B, MM_UNK_2C, MM_UNK_2D, OOT_STICK_UPGRADE, OOT_STICK_UPGRADE2, OOT_NUT_UPGRADE, OOT_NUT_UPGRADE2 } } },
+    { "sharedBows", { "Shared Bows", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_BOW, OOT_ARROWS_5, OOT_ARROWS_10, OOT_ARROWS_30, OOT_QUIVER2, OOT_QUIVER3, MM_BOW, MM_ARROWS_10, MM_ARROWS_30, MM_ARROWS_40, MM_UNK_21, MM_QUIVER2, MM_QUIVER3 } } },
+    { "sharedBombBags", { "Shared Bomb Bags", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_BOMBCHU_BAG, OOT_BOMBCHU_BAG2, OOT_BOMBCHU_BAG3, OOT_BOMB_BAG, OOT_BOMB_BAG2, OOT_BOMB_BAG3, OOT_BOMB, OOT_BOMBS_5, OOT_BOMBS_10, OOT_BOMBS_20, OOT_BOMBS_30, OOT_BOMBCHU_5, OOT_BOMBCHU_10, OOT_BOMBCHU_20, MM_BOMBCHU_BAG, MM_BOMBCHU_BAG2, MM_BOMBCHU_BAG3, MM_BOMB_BAG, MM_BOMB_BAG2, MM_BOMB_BAG3, MM_BOMB, MM_BOMBS_5, MM_BOMBS_10, MM_BOMBS_20, MM_BOMBS_30, MM_BOMBCHU, MM_BOMBCHU_5, MM_BOMBCHU_10, MM_BOMBCHU_20 } } },
+    { "sharedMagic", { "Shared Magic", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_MAGIC_UPGRADE, OOT_MAGIC_UPGRADE2, OOT_MAGIC_JAR_SMALL, OOT_MAGIC_JAR_LARGE, MM_MAGIC_UPGRADE, MM_MAGIC_UPGRADE2, MM_MAGIC_JAR_SMALL, MM_MAGIC_JAR_LARGE } } },
+    { "sharedMagicArrowFire", { "Shared Fire Arrow", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_ARROW_FIRE, MM_ARROW_FIRE } } },
+    { "sharedMagicArrowIce", { "Shared Ice Arrow", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_ARROW_ICE, MM_ARROW_ICE } } },
+    { "sharedMagicArrowLight", { "Shared Light Arrow", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_ARROW_LIGHT, MM_ARROW_LIGHT } } },
+    { "sharedSongEpona", { "Shared Epona's Song", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SONG_EPONA, OOT_SONG_NOTE_EPONA, MM_SONG_EPONA, MM_SONG_NOTE_EPONA } } },
+    { "sharedSongStorms", { "Shared Song of Storms", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SONG_STORMS, OOT_SONG_NOTE_STORMS, MM_SONG_STORMS, MM_SONG_NOTE_STORMS } } },
+    { "sharedSongTime", { "Shared Song of Time", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SONG_TIME, OOT_SONG_NOTE_TIME, MM_SONG_TIME, MM_SONG_NOTE_TIME } } },
+    { "sharedSongSun", { "Shared Sun's Sung", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SONG_SUN, OOT_SONG_NOTE_SUN, MM_SONG_SUN, MM_SONG_NOTE_SUN } } },
+    { "sharedHookshot", { "Shared Hookshot", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_HOOKSHOT, OOT_LONGSHOT, MM_HOOKSHOT, MM_HOOKSHOT_SHORT } } },
+    { "sharedLens", { "Shared Lens of Truth", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_LENS, MM_LENS } } },
+    { "sharedOcarina", { "Shared Ocarina", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_OCARINA_FAIRY, OOT_OCARINA_TIME, MM_OCARINA_FAIRY, MM_OCARINA_OF_TIME } } },
+    { "sharedMaskGoron", { "Shared Goron Mask", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_MASK_GORON, MM_MASK_GORON } } },
+    { "sharedMaskZora", { "Shared Zora Mask", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_MASK_ZORA, MM_MASK_ZORA } } },
+    { "sharedMaskBunny", { "Shared Bunny Mask", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_MASK_BUNNY, MM_MASK_BUNNY } } },
+    { "sharedMaskKeaton", { "Shared Keaton Mask", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_MASK_KEATON, MM_MASK_KEATON } } },
+    { "sharedMaskTruth", { "Shared Truth Mask", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_MASK_TRUTH, MM_MASK_TRUTH } } },
+    { "sharedMaskBlast", { "Shared Blast Mask", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_MASK_BLAST, MM_MASK_BLAST } } },
+    { "sharedMaskStone", { "Shared Stone Mask", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_MASK_STONE, MM_MASK_STONE } } },
+    { "sharedSongElegy", { "Shared Elegy of Emptiness", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SONG_EMPTINESS, OOT_SONG_NOTE_EMPTINESS, MM_SONG_EMPTINESS, MM_SONG_NOTE_EMPTINESS } } },
+    { "sharedWallets", { "Shared Wallets", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_WALLET, OOT_WALLET2, OOT_WALLET3, OOT_WALLET4, OOT_WALLET5, MM_WALLET, MM_WALLET2, MM_WALLET3, MM_WALLET4, MM_WALLET5 } } },
+    { "sharedHealth", { "Shared Health", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_RECOVERY_HEART, OOT_TC_HEART_PIECE, OOT_HEART_PIECE, OOT_HEART_CONTAINER, OOT_DEFENSE_UPGRADE, MM_RECOVERY_HEART, MM_HEART_PIECE, MM_HEART_CONTAINER, MM_DEFENSE_UPGRADE } } },
+    { "sharedShields", { "Shared Shields", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SHIELD_DEKU, OOT_SHIELD_HYLIAN, OOT_SHIELD_MIRROR, MM_SHIELD_DEKU, MM_SHIELD_HERO, MM_SHIELD_MIRROR } } },
+    { "sharedSoulsEnemy", { "Shared Souls of Enemy", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SOUL_ENEMY_ARMOS, OOT_SOUL_ENEMY_BUBBLE, OOT_SOUL_ENEMY_BEAMOS, OOT_SOUL_ENEMY_DEKU_BABA, OOT_SOUL_ENEMY_DEKU_SCRUB, OOT_SOUL_ENEMY_DODONGO, OOT_SOUL_ENEMY_FLOORMASTER, OOT_SOUL_ENEMY_FLYING_POT, OOT_SOUL_ENEMY_FREEZARD, OOT_SOUL_ENEMY_GUAY, OOT_SOUL_ENEMY_IRON_KNUCKLE, OOT_SOUL_ENEMY_KEESE, OOT_SOUL_ENEMY_LEEVER, OOT_SOUL_ENEMY_LIKE_LIKE, OOT_SOUL_ENEMY_LIZALFOS_DINOLFOS, OOT_SOUL_ENEMY_OCTOROK, OOT_SOUL_ENEMY_PEAHAT, OOT_SOUL_ENEMY_POE, OOT_SOUL_ENEMY_REDEAD_GIBDO, OOT_SOUL_ENEMY_SHELL_BLADE, OOT_SOUL_ENEMY_SKULLTULA, OOT_SOUL_ENEMY_SKULLWALLTULA, OOT_SOUL_ENEMY_STALCHILD, OOT_SOUL_ENEMY_TEKTITE, OOT_SOUL_ENEMY_THIEVES, OOT_SOUL_ENEMY_WALLMASTER, OOT_SOUL_ENEMY_WOLFOS, MM_SOUL_ENEMY_ARMOS, MM_SOUL_ENEMY_BUBBLE, MM_SOUL_ENEMY_BEAMOS, MM_SOUL_ENEMY_DEKU_BABA, MM_SOUL_ENEMY_DEKU_SCRUB, MM_SOUL_ENEMY_DODONGO, MM_SOUL_ENEMY_FLOORMASTER, MM_SOUL_ENEMY_FLYING_POT, MM_SOUL_ENEMY_FREEZARD, MM_SOUL_ENEMY_GUAY, MM_SOUL_ENEMY_IRON_KNUCKLE, MM_SOUL_ENEMY_KEESE, MM_SOUL_ENEMY_LEEVER, MM_SOUL_ENEMY_LIKE_LIKE, MM_SOUL_ENEMY_LIZALFOS_DINOLFOS, MM_SOUL_ENEMY_OCTOROK, MM_SOUL_ENEMY_PEAHAT, MM_SOUL_ENEMY_POE, MM_SOUL_ENEMY_REDEAD_GIBDO, MM_SOUL_ENEMY_SHELL_BLADE, MM_SOUL_ENEMY_SKULLTULA, MM_SOUL_ENEMY_SKULLWALLTULA, MM_SOUL_ENEMY_STALCHILD, MM_SOUL_ENEMY_TEKTITE, MM_SOUL_ENEMY_THIEVES, MM_SOUL_ENEMY_WALLMASTER, MM_SOUL_ENEMY_WOLFOS } } },
+    { "sharedSoulsNpc", { "Shared Souls of NPC", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SOUL_NPC_ANJU, OOT_SOUL_NPC_ASTRONOMER, OOT_SOUL_NPC_BANKER, OOT_SOUL_NPC_BAZAAR_SHOPKEEPER, OOT_SOUL_NPC_BEAN_SALESMAN, OOT_SOUL_NPC_BIGGORON, OOT_SOUL_NPC_BOMBCHU_BOWLING_LADY, OOT_SOUL_NPC_BOMBCHU_SHOPKEEPER, OOT_SOUL_NPC_BOMBERS, OOT_SOUL_NPC_CARPENTERS, OOT_SOUL_NPC_CARPET_MAN, OOT_SOUL_NPC_CHEST_GAME_OWNER, OOT_SOUL_NPC_CITIZEN, OOT_SOUL_NPC_COMPOSER_BROS, OOT_SOUL_NPC_DAMPE, OOT_SOUL_NPC_DOG_LADY, OOT_SOUL_NPC_FISHING_POND_OWNER, OOT_SOUL_NPC_GORMAN, OOT_SOUL_NPC_GORON, OOT_SOUL_NPC_GORON_CHILD, OOT_SOUL_NPC_GORON_SHOPKEEPER, OOT_SOUL_NPC_GROG, OOT_SOUL_NPC_GURU_GURU, OOT_SOUL_NPC_HONEY_DARLING, OOT_SOUL_NPC_MALON, OOT_SOUL_NPC_MEDIGORON, OOT_SOUL_NPC_OLD_HAG, OOT_SOUL_NPC_POE_COLLECTOR, OOT_SOUL_NPC_ROOFTOP_MAN, OOT_SOUL_NPC_RUTO, OOT_SOUL_NPC_SCIENTIST, OOT_SOUL_NPC_SHOOTING_GALLERY_OWNER, OOT_SOUL_NPC_TALON, OOT_SOUL_NPC_THIEVES, OOT_SOUL_NPC_ZORA, OOT_SOUL_NPC_ZORA_SHOPKEEPER, MM_SOUL_NPC_ANJU, MM_SOUL_NPC_ASTRONOMER, MM_SOUL_NPC_BANKER, MM_SOUL_NPC_BAZAAR_SHOPKEEPER, MM_SOUL_NPC_BEAN_SALESMAN, MM_SOUL_NPC_BIGGORON, MM_SOUL_NPC_BOMBCHU_BOWLING_LADY, MM_SOUL_NPC_BOMBCHU_SHOPKEEPER, MM_SOUL_NPC_BOMBERS, MM_SOUL_NPC_CARPENTERS, MM_SOUL_NPC_CARPET_MAN, MM_SOUL_NPC_CHEST_GAME_OWNER, MM_SOUL_NPC_CITIZEN, MM_SOUL_NPC_COMPOSER_BROS, MM_SOUL_NPC_DAMPE, MM_SOUL_NPC_DOG_LADY, MM_SOUL_NPC_FISHING_POND_OWNER, MM_SOUL_NPC_GORMAN, MM_SOUL_NPC_GORON, MM_SOUL_NPC_GORON_CHILD, MM_SOUL_NPC_GORON_SHOPKEEPER, MM_SOUL_NPC_GROG, MM_SOUL_NPC_GURU_GURU, MM_SOUL_NPC_HONEY_DARLING, MM_SOUL_NPC_MALON, MM_SOUL_NPC_MEDIGORON, MM_SOUL_NPC_OLD_HAG, MM_SOUL_NPC_POE_COLLECTOR, MM_SOUL_NPC_ROOFTOP_MAN, MM_SOUL_NPC_RUTO, MM_SOUL_NPC_SCIENTIST, MM_SOUL_NPC_SHOOTING_GALLERY_OWNER, MM_SOUL_NPC_TALON, MM_SOUL_NPC_THIEVES, MM_SOUL_NPC_ZORA, MM_SOUL_NPC_ZORA_SHOPKEEPER } } },
+    { "sharedSoulsAnimal", { "Shared Souls of Animal", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SOUL_ANIMAL_CUCCO, OOT_SOUL_ANIMAL_COW, OOT_SOUL_ANIMAL_DOG, OOT_SOUL_ANIMAL_BUTTERFLY, MM_SOUL_ANIMAL_CUCCO, MM_SOUL_ANIMAL_COW, MM_SOUL_ANIMAL_DOG, MM_SOUL_ANIMAL_BUTTERFLY } } },
+    { "sharedSoulsMisc", { "Shared Misc Souls", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SOUL_MISC_GS, OOT_SOUL_MISC_BUSINESS_SCRUB, MM_SOUL_MISC_GS, MM_SOUL_MISC_BUSINESS_SCRUB } } },
+    { "sharedOcarinaButtons", { "Shared Ocarina Buttons", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_BUTTON_A, OOT_BUTTON_C_LEFT, OOT_BUTTON_C_RIGHT, OOT_BUTTON_C_UP, OOT_BUTTON_C_DOWN, MM_BUTTON_A, MM_BUTTON_C_LEFT, MM_BUTTON_C_RIGHT, MM_BUTTON_C_UP, MM_BUTTON_C_DOWN } } },
+    { "sharedSkeletonKey", { "Shared Skeleton Key", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SKELETON_KEY, MM_SKELETON_KEY } } },
+    { "sharedPlatinumToken", { "Shared Platinum Token", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_PLATINUM_TOKEN, MM_PLATINUM_TOKEN } } },
+    { "sharedSpellFire", { "Shared Din's Fire", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SPELL_FIRE, MM_SPELL_FIRE } } },
+    { "sharedSpellWind", { "Shared Farore's Wind", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SPELL_WIND, MM_SPELL_WIND } } },
+    { "sharedSpellLove", { "Shared Nayru's Love", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SPELL_LOVE, MM_SPELL_LOVE } } },
+    { "sharedBootsIron", { "Shared Iron Boots", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_BOOTS_IRON, MM_BOOTS_IRON } } },
+    { "sharedBootsHover", { "Shared Hover Boots", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_BOOTS_HOVER, MM_BOOTS_HOVER } } },
+    { "sharedTunicGoron", { "Shared Goron Tunic", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_TUNIC_GORON, MM_TUNIC_GORON } } },
+    { "sharedTunicZora", { "Shared Zora Tunic", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_TUNIC_ZORA, MM_TUNIC_ZORA } } },
+    { "sharedScales", { "Shared Scales", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SCALE_BRONZE, OOT_SCALE_SILVER, OOT_SCALE_GOLDEN, MM_SCALE_BRONZE, MM_SCALE_SILVER, MM_SCALE_GOLDEN } } },
+    { "sharedStrength", { "Shared Strength", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_GORON_BRACELET, OOT_SILVER_GAUNTLETS, OOT_GOLDEN_GAUNTLETS, MM_GORON_BRACELET, MM_SILVER_GAUNTLETS, MM_GOLDEN_GAUNTLETS } } },
+    { "sharedHammer", { "Shared Megaton Hammer", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_HAMMER, MM_HAMMER } } },
+    { "sharedBottles", { "Shared Bottles", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_BOTTLE_RUTO_LETTER, OOT_BOTTLE_BIG_POE, OOT_BOTTLE_BLUE_FIRE, OOT_BOTTLE_CHATEAU, OOT_BOTTLE_EMPTY, OOT_BOTTLE_FAIRY, OOT_BOTTLE_MILK, OOT_BOTTLE_POE, OOT_BOTTLE_POTION_BLUE, OOT_BOTTLE_POTION_GREEN, OOT_BOTTLE_POTION_RED, OOT_BOTTLED_GOLD_DUST, OOT_WEIRD_MUSHROOM, OOT_SEAHORSE2, MM_BOTTLE_RUTO_LETTER, MM_BOTTLE_BIG_POE, MM_BOTTLE_BLUE_FIRE, MM_BOTTLE_CHATEAU, MM_BOTTLE_EMPTY, MM_BOTTLE_FAIRY, MM_BOTTLE_MILK, MM_BOTTLE_POE, MM_BOTTLE_POTION_BLUE, MM_BOTTLE_POTION_GREEN, MM_BOTTLE_POTION_RED, MM_BOTTLED_GOLD_DUST, MM_WEIRD_MUSHROOM, MM_SEAHORSE2 } } },
+    { "songSoaringOot", { "Song of Soaring - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_SOARING, OOT_SONG_NOTE_SOARING } } },
+    { "songHealingOot", { "Song of Healing - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_HEALING, OOT_SONG_NOTE_HEALING } } },
+    { "songAwakeningOot", { "Song of Awakening - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_AWAKENING, OOT_SONG_NOTE_AWAKENING } } },
+    { "songGoronOot", { "Song of Goron - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_GORON, OOT_SONG_GORON_HALF, OOT_SONG_NOTE_GORON } } },
+    { "songZoraOot", { "Song of Zora - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_ZORA, OOT_SONG_NOTE_ZORA } } },
+    { "songOrderOot", { "Song of Order - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_ORDER, OOT_SONG_NOTE_ORDER } } },
+    { "songSunMm", { "Sun's Song - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { MM_SONG_SUN, MM_SONG_NOTE_SUN } } },
+    { "songZeldaLullabyMm", { "Zelda's Lullaby - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { MM_SONG_ZELDA, MM_SONG_NOTE_ZELDA } } },
+    { "songSariasMm", { "Saria's Song - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { MM_SONG_SARIA, MM_SONG_NOTE_SARIA } } },
+    { "songMinuetMm", { "Minuet of Forest - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { MM_SONG_TP_FOREST, MM_SONG_NOTE_TP_FOREST } } },
+    { "songBoleroMm", { "Bolero of Fire - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { MM_SONG_TP_FIRE, MM_SONG_NOTE_TP_FIRE } } },
+    { "songSerenadeMm", { "Serenade of Water - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { MM_SONG_TP_WATER, MM_SONG_NOTE_TP_WATER } } },
+    { "songRequiemMm", { "Requiem of Spirit - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { MM_SONG_TP_SPIRIT, MM_SONG_NOTE_TP_SPIRIT } } },
+    { "songNocturneMm", { "Nocturne of Shadow - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { MM_SONG_TP_SHADOW, MM_SONG_NOTE_TP_SHADOW } } },
+    { "songPreludeMm", { "Prelude of Light - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { MM_SONG_TP_LIGHT, MM_SONG_NOTE_TP_LIGHT } } },
+    { "kamaroMaskOot", { "Kamaro Mask (OoT)", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_MASK_KAMARO } } },
+    { "boomerangMm", { "Boomerang (MM)", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { MM_BOOMERANG } } },
+    { "sharedMaskKamaro", { "Shared Kamaro Mask", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_MASK_KAMARO, MM_MASK_KAMARO } } },
+    { "sharedBoomrang", { "Shared Boomerang", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_BOOMERANG, MM_BOOMERANG } } },
+    { "sharedSongHealing", { "Shared Song of Healing", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_HEALING, OOT_SONG_NOTE_HEALING, MM_SONG_HEALING, MM_SONG_NOTE_HEALING } } },
+    { "sharedSongSoaring", { "Shared Song of Soaring", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_SOARING, OOT_SONG_NOTE_SOARING, MM_SONG_SOARING, MM_SONG_NOTE_SOARING } } },
+    { "sharedSongAwakening", { "Shared Sonata of Awakening", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_AWAKENING, OOT_SONG_NOTE_AWAKENING, MM_SONG_AWAKENING, MM_SONG_NOTE_AWAKENING } } },
+    { "sharedSongGoron", { "Shared Goron Lullaby", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_GORON, OOT_SONG_GORON_HALF, OOT_SONG_NOTE_GORON, MM_SONG_GORON, MM_SONG_GORON_HALF, MM_SONG_NOTE_GORON } } },
+    { "sharedSongZora", { "Shared New Wave Bossa Nova", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_ZORA, OOT_SONG_NOTE_ZORA, MM_SONG_ZORA, MM_SONG_NOTE_ZORA } } },
+    { "sharedSongOrder", { "Shared Oath to Order", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_ORDER, OOT_SONG_NOTE_ORDER, MM_SONG_ORDER, MM_SONG_NOTE_ORDER } } },
+    { "sharedSongZeldaLullaby", { "Shared Zelda's Lullaby", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_ZELDA, OOT_SONG_NOTE_ZELDA, MM_SONG_ZELDA, MM_SONG_NOTE_ZELDA } } },
+    { "sharedSongSarias", { "Shared Saria's Song", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_SARIA, OOT_SONG_NOTE_SARIA, MM_SONG_SARIA, MM_SONG_NOTE_SARIA } } },
+    { "sharedSongMinuet", { "Shared Minuet of Forest", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_TP_FOREST, OOT_SONG_NOTE_TP_FOREST, MM_SONG_TP_FOREST, MM_SONG_NOTE_TP_FOREST } } },
+    { "sharedSongBolero", { "Shared Bolero of Fire", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_TP_FIRE, OOT_SONG_NOTE_TP_FIRE, MM_SONG_TP_FIRE, MM_SONG_NOTE_TP_FIRE } } },
+    { "sharedSongSerenade", { "Shared Serenade of Water", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_TP_WATER, OOT_SONG_NOTE_TP_WATER, MM_SONG_TP_WATER, MM_SONG_NOTE_TP_WATER } } },
+    { "sharedSongRequiem", { "Shared Requiem of Spirit", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_TP_SPIRIT, OOT_SONG_NOTE_TP_SPIRIT, MM_SONG_TP_SPIRIT, MM_SONG_NOTE_TP_SPIRIT } } },
+    { "sharedSongNocturne", { "Shared Nocturne of Shadow", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_TP_SHADOW, OOT_SONG_NOTE_TP_SHADOW, MM_SONG_TP_SHADOW, MM_SONG_NOTE_TP_SHADOW } } },
+    { "sharedSongPrelude", { "Shared Prelude of Light", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_TP_LIGHT, OOT_SONG_NOTE_TP_LIGHT, MM_SONG_TP_LIGHT, MM_SONG_NOTE_TP_LIGHT } } }
 	});
 }
 
@@ -1690,1080 +1690,49 @@ void Settings::ApplyItemSettings()
 
     for (auto it = this->ItemSettings.cbegin(); it != this->ItemSettings.cend(); ++it)
     {
-        // Is progressive
-        if (it.key().compare("progressiveShieldsOot") == 0)
+        switch (it->Cat)
         {
-            this->ProgressiveItemIDs.insert(OOT_PROGRESSIVE_SHIELD_DEKU);
-            this->ProgressiveItemIDs.insert(OOT_PROGRESSIVE_SHIELD_HYLIAN);
-        }
-        else if (it.key().compare("progressiveSwordsOot") == 0)
-        {
-            this->ProgressiveItemIDs.insert(OOT_SWORD_KOKIRI);
-            this->ProgressiveItemIDs.insert(OOT_SWORD_MASTER);
-            this->ProgressiveItemIDs.insert(OOT_SWORD_KNIFE);
-            this->ProgressiveItemIDs.insert(OOT_SWORD_GORON);
-            this->ProgressiveItemIDs.insert(OOT_SWORD_BIGGORON);
-            this->ProgressiveItemIDs.insert(OOT_SWORD_RAZOR);
-            this->ProgressiveItemIDs.insert(OOT_SWORD_GILDED);
-            this->ProgressiveItemIDs.insert(OOT_SWORD);
-        }
-        else if (it.key().compare("progressiveShieldsMm") == 0)
-        {
-            this->ProgressiveItemIDs.insert(MM_PROGRESSIVE_SHIELD_DEKU);
-            this->ProgressiveItemIDs.insert(MM_PROGRESSIVE_SHIELD_HERO);
-        }
-        else if (it.key().compare("progressiveGFS") == 0)
-        {
-            this->ProgressiveItemIDs.insert(MM_SWORD_KOKIRI);
-            this->ProgressiveItemIDs.insert(MM_SWORD_RAZOR);
-            this->ProgressiveItemIDs.insert(MM_SWORD_GILDED);
-            this->ProgressiveItemIDs.insert(MM_GREAT_FAIRY_SWORD);
-        }
-        else if (it.key().compare("progressiveClocks") == 0)
-        {
-            this->ProgressiveItemIDs.insert(MM_CLOCK);
-            this->ProgressiveItemIDs.insert(MM_CLOCK1);
-            this->ProgressiveItemIDs.insert(MM_CLOCK2);
-            this->ProgressiveItemIDs.insert(MM_CLOCK3);
-            this->ProgressiveItemIDs.insert(MM_CLOCK4);
-            this->ProgressiveItemIDs.insert(MM_CLOCK5);
-            this->ProgressiveItemIDs.insert(MM_CLOCK6);
-        }
-        // Disable Items
-        else if (it.key().compare("sticksNutsUpgradesMm") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, MM_NUT_UPGRADE))
+            case ParamCategory::standard:
             {
-                this->DisabledItemIDs.insert(MM_NUT_UPGRADE2);
-                this->DisabledItemIDs.insert(MM_STICK_UPGRADE);
-                this->DisabledItemIDs.insert(MM_STICK_UPGRADE2);
-            }
-        }
-        else if (it.key().compare("sunSongMm") == 0)
-        {
-            this->CheckItemEnabled(it->Value, MM_SONG_SUN);
-        }
-        else if (it.key().compare("fairyOcarinaMm") == 0)
-        {
-            this->CheckItemEnabled(it->Value, MM_OCARINA_FAIRY);
-        }
-        else if (it.key().compare("shortHookshotMm") == 0)
-        {
-            this->CheckItemEnabled(it->Value, MM_HOOKSHOT_SHORT);
-        }
-        else if (it.key().compare("bronzeScale") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, OOT_SCALE_BRONZE))
-            {
-                this->DisabledItemIDs.insert(MM_SCALE_BRONZE);
-            }
-        }
-        else if (it.key().compare("childWallets") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, OOT_WALLET))
-            {
-                this->DisabledItemIDs.insert(MM_WALLET);
-            }
-        }
-        else if (it.key().compare("colossalWallets") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, OOT_WALLET4))
-            {
-                this->DisabledItemIDs.insert(MM_WALLET4);
-            }
-        }
-        else if (it.key().compare("bottomlessWallets") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, OOT_WALLET5))
-            {
-                this->DisabledItemIDs.insert(MM_WALLET5);
-            }
-        }
-        else if (it.key().compare("skeletonKeyOot") == 0)
-        {
-            this->CheckItemEnabled(it->Value, OOT_SKELETON_KEY);
-        }
-        else if (it.key().compare("skeletonKeyMm") == 0)
-        {
-            this->CheckItemEnabled(it->Value, MM_SKELETON_KEY);
-        }
-        else if (it.key().compare("magicalRupee") == 0)
-        {
-            this->CheckItemEnabled(it->Value, OOT_RUPEE_MAGICAL);
-        }
-        else if (it.key().compare("transcendentFairy") == 0)
-        {
-            this->CheckItemEnabled(it->Value, MM_TRANSCENDENT_FAIRY);
-        }
-        else if (it.key().compare("platinumTokenOot") == 0)
-        {
-            this->CheckItemEnabled(it->Value, OOT_PLATINUM_TOKEN);
-        }
-        else if (it.key().compare("platinumTokenMm") == 0)
-        {
-            this->CheckItemEnabled(it->Value, MM_PLATINUM_TOKEN);
-        }
-        else if (it.key().compare("spellFireMm") == 0)
-        {
-            this->CheckItemEnabled(it->Value, MM_SPELL_FIRE);
-        }
-        else if (it.key().compare("spellWindMm") == 0)
-        {
-            this->CheckItemEnabled(it->Value, MM_SPELL_WIND);
-        }
-        else if (it.key().compare("spellLoveMm") == 0)
-        {
-            this->CheckItemEnabled(it->Value, MM_SPELL_LOVE);
-        }
-        else if (it.key().compare("bootsIronMm") == 0)
-        {
-            this->CheckItemEnabled(it->Value, MM_BOOTS_IRON);
-        }
-        else if (it.key().compare("bootsHoverMm") == 0)
-        {
-            this->CheckItemEnabled(it->Value, MM_BOOTS_HOVER);
-        }
-        else if (it.key().compare("tunicGoronMm") == 0)
-        {
-            this->CheckItemEnabled(it->Value, MM_TUNIC_GORON);
-        }
-        else if (it.key().compare("tunicZoraMm") == 0)
-        {
-            this->CheckItemEnabled(it->Value, MM_TUNIC_ZORA);
-        }
-        else if (it.key().compare("scalesMm") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, MM_SCALE_SILVER))
-            {
-                this->DisabledItemIDs.insert(MM_SCALE_GOLDEN);
-            }
-        }
-        else if (it.key().compare("strengthMm") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, MM_GORON_BRACELET))
-            {
-                this->DisabledItemIDs.insert(MM_SILVER_GAUNTLETS);
-                this->DisabledItemIDs.insert(MM_GOLDEN_GAUNTLETS);
-            }
-        }
-        else if (it.key().compare("hammerMm") == 0)
-        {
-            this->CheckItemEnabled(it->Value, MM_HAMMER);
-        }
-        else if (it.key().compare("spinUpgradeOot") == 0)
-        {
-            this->CheckItemEnabled(it->Value, OOT_SPIN_UPGRADE);
-        }
-        else if (it.key().compare("dekuShieldMm") == 0)
-        {
-            this->CheckItemEnabled(it->Value, MM_SHIELD_DEKU);
-        }
-        else if (it.key().compare(QString("blastMaskOot")) == 0)
-        {
-            this->CheckItemEnabled(it->Value, OOT_MASK_BLAST);
-        }
-        else if (it.key().compare("stoneMaskOot") == 0)
-        {
-            this->CheckItemEnabled(it->Value, OOT_MASK_STONE);
-        }
-        else if (it.key().compare("elegyOot") == 0)
-        {
-            this->CheckItemEnabled(it->Value, OOT_SONG_EMPTINESS);
-        }
-        else if (it.key().compare("ocarinaButtonsShuffleOot") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, OOT_BUTTON_A))
-            {
-                this->DisabledItemIDs.insert(OOT_BUTTON_C_DOWN);
-                this->DisabledItemIDs.insert(OOT_BUTTON_C_LEFT);
-                this->DisabledItemIDs.insert(OOT_BUTTON_C_RIGHT);
-                this->DisabledItemIDs.insert(OOT_BUTTON_C_UP);
-            }
-        }
-        else if (it.key().compare("ocarinaButtonsShuffleMm") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, MM_BUTTON_A))
-            {
-                this->DisabledItemIDs.insert(MM_BUTTON_C_DOWN);
-                this->DisabledItemIDs.insert(MM_BUTTON_C_LEFT);
-                this->DisabledItemIDs.insert(MM_BUTTON_C_RIGHT);
-                this->DisabledItemIDs.insert(MM_BUTTON_C_UP);
-            }
-        }
-        else if (it.key().compare("soulsEnemyOot") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, OOT_SOUL_ENEMY_STALFOS))
-            {
-                for (uint32_t i = OOT_SOUL_ENEMY_OCTOROK; i <= OOT_SOUL_ENEMY_POE; i++)
+                if (it->AffectedVal.size() > 0 && !this->CheckItemEnabled(it->Value, it->AffectedVal.at(0)))
                 {
-                    this->DisabledItemIDs.insert(i);
+                    for (uint32_t i = 1; i < it->AffectedVal.size(); i++)
+                    {
+                        this->DisabledItemIDs.insert(it->AffectedVal.at(i));
+                    }
                 }
+                break;
             }
-        }
-        else if (it.key().compare("soulsEnemyMm") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, MM_SOUL_ENEMY_OCTOROK))
+
+            case ParamCategory::progressive:
             {
-                for (uint32_t i = MM_SOUL_ENEMY_WALLMASTER; i <= MM_SOUL_ENEMY_POE; i++)
+                for (uint32_t i = 0; i < it->AffectedVal.size(); i++)
                 {
-                    this->DisabledItemIDs.insert(i);
+                    this->ProgressiveItemIDs.insert(it->AffectedVal.at(i));
                 }
+                break;
             }
-        }
-        else if (it.key().compare("soulsBossOot") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, OOT_SOUL_BOSS_QUEEN_GOHMA))
+
+            case ParamCategory::souls:
             {
-                for (uint32_t i = OOT_SOUL_BOSS_KING_DODONGO; i <= OOT_SOUL_BOSS_TWINROVA; i++)
+                if (it->AffectedVal.size() == 2)
                 {
-                    this->DisabledItemIDs.insert(i);
+                    for (uint32_t i = it->AffectedVal.at(0); i <= it->AffectedVal.at(1); i++)
+                    {
+                        this->ProgressiveItemIDs.insert(i);
+                    }
                 }
+                break;
             }
-        }
-        else if (it.key().compare("soulsBossMm") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, MM_SOUL_BOSS_ODOLWA))
+
+            case ParamCategory::shared:
             {
-                for (uint32_t i = MM_SOUL_BOSS_GOHT; i <= MM_SOUL_BOSS_IGOS; i++)
+                for (uint32_t i = 0; i < it->AffectedVal.size(); i++)
                 {
-                    this->DisabledItemIDs.insert(i);
+                    this->SharedItemIDs.insert(it->AffectedVal.at(i));
                 }
+                break;
             }
-        }
-        else if (it.key().compare("soulsNpcOot") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, OOT_SOUL_NPC_SARIA))
-            {
-                for (uint32_t i = OOT_SOUL_NPC_DARUNIA; i <= OOT_SOUL_NPC_THIEVES; i++)
-                {
-                    this->DisabledItemIDs.insert(i);
-                }
-            }
-        }
-        else if (it.key().compare("soulsNpcMm") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, MM_SOUL_NPC_AROMA))
-            {
-                for (uint32_t i = MM_SOUL_NPC_SHOOTING_GALLERY_OWNER; i <= MM_SOUL_NPC_THIEVES; i++)
-                {
-                    this->DisabledItemIDs.insert(i);
-                }
-            }
-        }
-        else if (it.key().compare("soulsAnimalOot") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, OOT_SOUL_ANIMAL_CUCCO))
-            {
-                for (uint32_t i = OOT_SOUL_ANIMAL_COW; i <= OOT_SOUL_ANIMAL_BUTTERFLY; i++)
-                {
-                    this->DisabledItemIDs.insert(i);
-                }
-            }
-        }
-        else if (it.key().compare("soulsAnimalMm") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, MM_SOUL_ANIMAL_CUCCO))
-            {
-                for (uint32_t i = MM_SOUL_ANIMAL_COW; i <= MM_SOUL_ANIMAL_BUTTERFLY; i++)
-                {
-                    this->DisabledItemIDs.insert(i);
-                }
-            }
-        }
-        else if (it.key().compare("soulsMiscOot") == 0)
-        {
-            this->CheckItemEnabled(it->Value, OOT_SOUL_MISC_GS);
-            this->CheckItemEnabled(it->Value, OOT_SOUL_MISC_BUSINESS_SCRUB);
-        }
-        else if (it.key().compare("soulsMiscMm") == 0)
-        {
-            this->CheckItemEnabled(it->Value, MM_SOUL_MISC_GS);
-            this->CheckItemEnabled(it->Value, MM_SOUL_MISC_BUSINESS_SCRUB);
-        }
-        else if (it.key().compare("clocks") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, MM_CLOCK1))
-            {
-                this->DisabledItemIDs.insert(MM_CLOCK2);
-                this->DisabledItemIDs.insert(MM_CLOCK3);
-                this->DisabledItemIDs.insert(MM_CLOCK4);
-                this->DisabledItemIDs.insert(MM_CLOCK5);
-                this->DisabledItemIDs.insert(MM_CLOCK6);
-            }
-        }
-        else if (it.key().compare("coins") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, OOT_COIN_RED))
-            {
-                this->DisabledItemIDs.insert(OOT_COIN_GREEN);
-                this->DisabledItemIDs.insert(OOT_COIN_BLUE);
-                this->DisabledItemIDs.insert(OOT_COIN_YELLOW);
-            }
-        }
-        else if (it.key().compare("coinsRed") == 0)
-        {
-            this->CheckItemEnabled(it->Value, OOT_COIN_RED);
-        }
-        else if (it.key().compare("coinsGreen") == 0)
-        {
-            this->CheckItemEnabled(it->Value, OOT_COIN_GREEN);
-        }
-        else if (it.key().compare("coinsBlue") == 0)
-        {
-            this->CheckItemEnabled(it->Value, OOT_COIN_BLUE);
-        }
-        else if (it.key().compare("coinsYellow") == 0)
-        {
-            this->CheckItemEnabled(it->Value, OOT_COIN_YELLOW);
-        }
-        else if (it.key().compare("trapIce") == 0)
-        {
-            this->CheckItemEnabled(it->Value, OOT_TRAP_ICE);
-        }
-        else if (it.key().compare("trapFire") == 0)
-        {
-            this->CheckItemEnabled(it->Value, OOT_TRAP_FIRE);
-        }
-        else if (it.key().compare("trapShock") == 0)
-        {
-            this->CheckItemEnabled(it->Value, OOT_TRAP_SHOCK);
-        }
-        else if (it.key().compare("trapDrain") == 0)
-        {
-            this->CheckItemEnabled(it->Value, OOT_TRAP_DRAIN);
-        }
-        else if (it.key().compare("trapAntiMagic") == 0)
-        {
-            this->CheckItemEnabled(it->Value, OOT_TRAP_ANTI_MAGIC);
-        }
-        else if (it.key().compare("trapKnockback") == 0)
-        {
-            this->CheckItemEnabled(it->Value, OOT_TRAP_KNOCKBACK);
-        }
-        else if (it.key().compare("trapRupoor") == 0)
-        {
-            this->CheckItemEnabled(it->Value, OOT_TRAP_RUPOOR);
-        }
-        // Shared Settings
-        else if (it.key().compare("sharedStoneAgony") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_STONE_OF_AGONY);
-            this->SharedItemIDs.insert(MM_STONE_OF_AGONY);
-        }
-        else if (it.key().compare("sharedSpinUpgrade") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SPIN_UPGRADE);
-            this->SharedItemIDs.insert(MM_SPIN_UPGRADE);
-        }
-        else if (it.key().compare("sharedNutsSticks") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_STICK);
-            this->SharedItemIDs.insert(OOT_STICKS_5);
-            this->SharedItemIDs.insert(OOT_STICKS_10);
-            this->SharedItemIDs.insert(OOT_NUTS_5);
-            this->SharedItemIDs.insert(OOT_NUTS_5_ALT);
-            this->SharedItemIDs.insert(OOT_NUTS_10);
-            this->SharedItemIDs.insert(OOT_STICK_UPGRADE);
-            this->SharedItemIDs.insert(OOT_STICK_UPGRADE2);
-            this->SharedItemIDs.insert(OOT_NUT_UPGRADE);
-            this->SharedItemIDs.insert(OOT_NUT_UPGRADE2);
-            this->SharedItemIDs.insert(MM_STICK);
-            this->SharedItemIDs.insert(MM_UNK_2F);
-            this->SharedItemIDs.insert(MM_UNK_30);
-            this->SharedItemIDs.insert(MM_UNK_31);
-            this->SharedItemIDs.insert(MM_NUT);
-            this->SharedItemIDs.insert(MM_NUTS_5);
-            this->SharedItemIDs.insert(MM_NUTS_10);
-            this->SharedItemIDs.insert(MM_UNK_2B);
-            this->SharedItemIDs.insert(MM_UNK_2C);
-            this->SharedItemIDs.insert(MM_UNK_2D);
-            this->SharedItemIDs.insert(OOT_STICK_UPGRADE);
-            this->SharedItemIDs.insert(OOT_STICK_UPGRADE2);
-            this->SharedItemIDs.insert(OOT_NUT_UPGRADE);
-            this->SharedItemIDs.insert(OOT_NUT_UPGRADE2);
-        }
-        else if (it.key().compare("sharedBows") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_BOW);
-            this->SharedItemIDs.insert(OOT_ARROWS_5);
-            this->SharedItemIDs.insert(OOT_ARROWS_10);
-            this->SharedItemIDs.insert(OOT_ARROWS_30);
-            this->SharedItemIDs.insert(OOT_QUIVER2);
-            this->SharedItemIDs.insert(OOT_QUIVER3);
-            this->SharedItemIDs.insert(MM_BOW);
-            this->SharedItemIDs.insert(MM_ARROWS_10);
-            this->SharedItemIDs.insert(MM_ARROWS_30);
-            this->SharedItemIDs.insert(MM_ARROWS_40);
-            this->SharedItemIDs.insert(MM_UNK_21);
-            this->SharedItemIDs.insert(MM_QUIVER2);
-            this->SharedItemIDs.insert(MM_QUIVER3);
-        }
-        else if (it.key().compare("sharedBombBags") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_BOMBCHU_BAG);
-            this->SharedItemIDs.insert(OOT_BOMBCHU_BAG2);
-            this->SharedItemIDs.insert(OOT_BOMBCHU_BAG3);
-            this->SharedItemIDs.insert(OOT_BOMB_BAG);
-            this->SharedItemIDs.insert(OOT_BOMB_BAG2);
-            this->SharedItemIDs.insert(OOT_BOMB_BAG3);
-            this->SharedItemIDs.insert(OOT_BOMB);
-            this->SharedItemIDs.insert(OOT_BOMBS_5);
-            this->SharedItemIDs.insert(OOT_BOMBS_10);
-            this->SharedItemIDs.insert(OOT_BOMBS_20);
-            this->SharedItemIDs.insert(OOT_BOMBS_30);
-            this->SharedItemIDs.insert(OOT_BOMBCHU_5);
-            this->SharedItemIDs.insert(OOT_BOMBCHU_10);
-            this->SharedItemIDs.insert(OOT_BOMBCHU_20);
-            this->SharedItemIDs.insert(MM_BOMBCHU_BAG);
-            this->SharedItemIDs.insert(MM_BOMBCHU_BAG2);
-            this->SharedItemIDs.insert(MM_BOMBCHU_BAG3);
-            this->SharedItemIDs.insert(MM_BOMB_BAG);
-            this->SharedItemIDs.insert(MM_BOMB_BAG2);
-            this->SharedItemIDs.insert(MM_BOMB_BAG3);
-            this->SharedItemIDs.insert(MM_BOMB);
-            this->SharedItemIDs.insert(MM_BOMBS_5);
-            this->SharedItemIDs.insert(MM_BOMBS_10);
-            this->SharedItemIDs.insert(MM_BOMBS_20);
-            this->SharedItemIDs.insert(MM_BOMBS_30);
-            this->SharedItemIDs.insert(MM_BOMBCHU);
-            this->SharedItemIDs.insert(MM_BOMBCHU_5);
-            this->SharedItemIDs.insert(MM_BOMBCHU_10);
-            this->SharedItemIDs.insert(MM_BOMBCHU_20);
-        }
-        else if (it.key().compare("sharedMagic") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_MAGIC_UPGRADE);
-            this->SharedItemIDs.insert(OOT_MAGIC_UPGRADE2);
-            this->SharedItemIDs.insert(OOT_MAGIC_JAR_SMALL);
-            this->SharedItemIDs.insert(OOT_MAGIC_JAR_LARGE);
-            this->SharedItemIDs.insert(MM_MAGIC_UPGRADE);
-            this->SharedItemIDs.insert(MM_MAGIC_UPGRADE2);
-            this->SharedItemIDs.insert(MM_MAGIC_JAR_SMALL);
-            this->SharedItemIDs.insert(MM_MAGIC_JAR_LARGE);
-        }
-        else if (it.key().compare("sharedMagicArrowFire") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_ARROW_FIRE);
-            this->SharedItemIDs.insert(MM_ARROW_FIRE);
-        }
-        else if (it.key().compare("sharedMagicArrowIce") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_ARROW_ICE);
-            this->SharedItemIDs.insert(MM_ARROW_ICE);
-        }
-        else if (it.key().compare("sharedMagicArrowLight") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_ARROW_LIGHT);
-            this->SharedItemIDs.insert(MM_ARROW_LIGHT);
-        }
-        else if (it.key().compare("sharedSongEpona") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SONG_EPONA);
-            this->SharedItemIDs.insert(OOT_SONG_NOTE_EPONA);
-            this->SharedItemIDs.insert(MM_SONG_EPONA);
-            this->SharedItemIDs.insert(MM_SONG_NOTE_EPONA);
-        }
-        else if (it.key().compare("sharedSongStorms") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SONG_STORMS);
-            this->SharedItemIDs.insert(OOT_SONG_NOTE_STORMS);
-            this->SharedItemIDs.insert(MM_SONG_STORMS);
-            this->SharedItemIDs.insert(MM_SONG_NOTE_STORMS);
-        }
-        else if (it.key().compare("sharedSongTime") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SONG_TIME);
-            this->SharedItemIDs.insert(OOT_SONG_NOTE_TIME);
-            this->SharedItemIDs.insert(MM_SONG_TIME);
-            this->SharedItemIDs.insert(MM_SONG_NOTE_TIME);
-        }
-        else if (it.key().compare("sharedSongSun") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SONG_SUN);
-            this->SharedItemIDs.insert(OOT_SONG_NOTE_SUN);
-            this->SharedItemIDs.insert(MM_SONG_SUN);
-            this->SharedItemIDs.insert(MM_SONG_NOTE_SUN);
-        }
-        else if (it.key().compare("sharedHookshot") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_HOOKSHOT);
-            this->SharedItemIDs.insert(OOT_LONGSHOT);
-            this->SharedItemIDs.insert(MM_HOOKSHOT);
-            this->SharedItemIDs.insert(MM_HOOKSHOT_SHORT);
-        }
-        else if (it.key().compare("sharedLens") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_LENS);
-            this->SharedItemIDs.insert(MM_LENS);
-        }
-        else if (it.key().compare("sharedOcarina") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_OCARINA_FAIRY);
-            this->SharedItemIDs.insert(OOT_OCARINA_TIME);
-            this->SharedItemIDs.insert(MM_OCARINA_FAIRY);
-            this->SharedItemIDs.insert(MM_OCARINA_OF_TIME);
-        }
-        else if (it.key().compare("sharedMaskGoron") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_MASK_GORON);
-            this->SharedItemIDs.insert(MM_MASK_GORON);
-        }
-        else if (it.key().compare("sharedMaskZora") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_MASK_ZORA);
-            this->SharedItemIDs.insert(MM_MASK_ZORA);
-        }
-        else if (it.key().compare("sharedMaskBunny") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_MASK_BUNNY);
-            this->SharedItemIDs.insert(MM_MASK_BUNNY);
-        }
-        else if (it.key().compare("sharedMaskKeaton") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_MASK_KEATON);
-            this->SharedItemIDs.insert(MM_MASK_KEATON);
-        }
-        else if (it.key().compare("sharedMaskTruth") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_MASK_TRUTH);
-            this->SharedItemIDs.insert(MM_MASK_TRUTH);
-        }
-        else if (it.key().compare("sharedMaskBlast") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_MASK_BLAST);
-            this->SharedItemIDs.insert(MM_MASK_BLAST);
-        }
-        else if (it.key().compare("sharedMaskStone") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_MASK_STONE);
-            this->SharedItemIDs.insert(MM_MASK_STONE);
-        }
-        else if (it.key().compare("sharedSongElegy") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SONG_EMPTINESS);
-            this->SharedItemIDs.insert(OOT_SONG_NOTE_EMPTINESS);
-            this->SharedItemIDs.insert(MM_SONG_EMPTINESS);
-            this->SharedItemIDs.insert(MM_SONG_NOTE_EMPTINESS);
-        }
-        else if (it.key().compare("sharedWallets") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_WALLET);
-            this->SharedItemIDs.insert(OOT_WALLET2);
-            this->SharedItemIDs.insert(OOT_WALLET3);
-            this->SharedItemIDs.insert(OOT_WALLET4);
-            this->SharedItemIDs.insert(OOT_WALLET5);
-            this->SharedItemIDs.insert(MM_WALLET);
-            this->SharedItemIDs.insert(MM_WALLET2);
-            this->SharedItemIDs.insert(MM_WALLET3);
-            this->SharedItemIDs.insert(MM_WALLET4);
-            this->SharedItemIDs.insert(MM_WALLET5);
-        }
-        else if (it.key().compare("sharedHealth") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_RECOVERY_HEART);
-            this->SharedItemIDs.insert(OOT_TC_HEART_PIECE);
-            this->SharedItemIDs.insert(OOT_HEART_PIECE);
-            this->SharedItemIDs.insert(OOT_HEART_CONTAINER);
-            this->SharedItemIDs.insert(OOT_DEFENSE_UPGRADE);
-            this->SharedItemIDs.insert(MM_RECOVERY_HEART);
-            this->SharedItemIDs.insert(MM_HEART_PIECE);
-            this->SharedItemIDs.insert(MM_HEART_CONTAINER);
-            this->SharedItemIDs.insert(MM_DEFENSE_UPGRADE);
-        }
-        else if (it.key().compare("sharedShields") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SHIELD_DEKU);
-            this->SharedItemIDs.insert(OOT_SHIELD_HYLIAN);
-            this->SharedItemIDs.insert(OOT_SHIELD_MIRROR);
-            this->SharedItemIDs.insert(MM_SHIELD_DEKU);
-            this->SharedItemIDs.insert(MM_SHIELD_HERO);
-            this->SharedItemIDs.insert(MM_SHIELD_MIRROR);
-        }
-        else if (it.key().compare("sharedSoulsEnemy") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_ARMOS);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_BUBBLE);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_BEAMOS);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_DEKU_BABA);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_DEKU_SCRUB);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_DODONGO);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_FLOORMASTER);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_FLYING_POT);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_FREEZARD);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_GUAY);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_IRON_KNUCKLE);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_KEESE);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_LEEVER);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_LIKE_LIKE);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_LIZALFOS_DINOLFOS);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_OCTOROK);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_PEAHAT);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_POE);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_REDEAD_GIBDO);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_SHELL_BLADE);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_SKULLTULA);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_SKULLWALLTULA);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_STALCHILD);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_TEKTITE);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_THIEVES);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_WALLMASTER);
-            this->SharedItemIDs.insert(OOT_SOUL_ENEMY_WOLFOS);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_ARMOS);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_BUBBLE);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_BEAMOS);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_DEKU_BABA);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_DEKU_SCRUB);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_DODONGO);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_FLOORMASTER);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_FLYING_POT);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_FREEZARD);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_GUAY);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_IRON_KNUCKLE);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_KEESE);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_LEEVER);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_LIKE_LIKE);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_LIZALFOS_DINOLFOS);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_OCTOROK);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_PEAHAT);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_POE);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_REDEAD_GIBDO);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_SHELL_BLADE);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_SKULLTULA);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_SKULLWALLTULA);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_STALCHILD);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_TEKTITE);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_THIEVES);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_WALLMASTER);
-            this->SharedItemIDs.insert(MM_SOUL_ENEMY_WOLFOS);
-        }
-        else if (it.key().compare("sharedSoulsNpc") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_ANJU);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_ASTRONOMER);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_BANKER);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_BAZAAR_SHOPKEEPER);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_BEAN_SALESMAN);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_BIGGORON);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_BOMBCHU_BOWLING_LADY);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_BOMBCHU_SHOPKEEPER);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_BOMBERS);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_CARPENTERS);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_CARPET_MAN);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_CHEST_GAME_OWNER);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_CITIZEN);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_COMPOSER_BROS);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_DAMPE);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_DOG_LADY);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_FISHING_POND_OWNER);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_GORMAN);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_GORON);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_GORON_CHILD);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_GORON_SHOPKEEPER);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_GROG);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_GURU_GURU);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_HONEY_DARLING);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_MALON);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_MEDIGORON);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_OLD_HAG);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_POE_COLLECTOR);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_ROOFTOP_MAN);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_RUTO);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_SCIENTIST);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_SHOOTING_GALLERY_OWNER);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_TALON);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_THIEVES);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_ZORA);
-            this->SharedItemIDs.insert(OOT_SOUL_NPC_ZORA_SHOPKEEPER);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_ANJU);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_ASTRONOMER);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_BANKER);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_BAZAAR_SHOPKEEPER);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_BEAN_SALESMAN);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_BIGGORON);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_BOMBCHU_BOWLING_LADY);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_BOMBCHU_SHOPKEEPER);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_BOMBERS);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_CARPENTERS);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_CARPET_MAN);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_CHEST_GAME_OWNER);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_CITIZEN);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_COMPOSER_BROS);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_DAMPE);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_DOG_LADY);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_FISHING_POND_OWNER);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_GORMAN);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_GORON);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_GORON_CHILD);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_GORON_SHOPKEEPER);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_GROG);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_GURU_GURU);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_HONEY_DARLING);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_MALON);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_MEDIGORON);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_OLD_HAG);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_POE_COLLECTOR);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_ROOFTOP_MAN);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_RUTO);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_SCIENTIST);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_SHOOTING_GALLERY_OWNER);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_TALON);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_THIEVES);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_ZORA);
-            this->SharedItemIDs.insert(MM_SOUL_NPC_ZORA_SHOPKEEPER);
-        }
-        else if (it.key().compare("sharedSoulsAnimal") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SOUL_ANIMAL_CUCCO);
-            this->SharedItemIDs.insert(OOT_SOUL_ANIMAL_COW);
-            this->SharedItemIDs.insert(OOT_SOUL_ANIMAL_DOG);
-            this->SharedItemIDs.insert(OOT_SOUL_ANIMAL_BUTTERFLY);
-            this->SharedItemIDs.insert(MM_SOUL_ANIMAL_CUCCO);
-            this->SharedItemIDs.insert(MM_SOUL_ANIMAL_COW);
-            this->SharedItemIDs.insert(MM_SOUL_ANIMAL_DOG);
-            this->SharedItemIDs.insert(MM_SOUL_ANIMAL_BUTTERFLY);
-        }
-        else if (it.key().compare("sharedSoulsMisc") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SOUL_MISC_GS);
-            this->SharedItemIDs.insert(OOT_SOUL_MISC_BUSINESS_SCRUB);
-            this->SharedItemIDs.insert(MM_SOUL_MISC_GS);
-            this->SharedItemIDs.insert(MM_SOUL_MISC_BUSINESS_SCRUB);
-        }
-        else if (it.key().compare("sharedOcarinaButtons") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_BUTTON_A);
-            this->SharedItemIDs.insert(OOT_BUTTON_C_LEFT);
-            this->SharedItemIDs.insert(OOT_BUTTON_C_RIGHT);
-            this->SharedItemIDs.insert(OOT_BUTTON_C_UP);
-            this->SharedItemIDs.insert(OOT_BUTTON_C_DOWN);
-            this->SharedItemIDs.insert(MM_BUTTON_A);
-            this->SharedItemIDs.insert(MM_BUTTON_C_LEFT);
-            this->SharedItemIDs.insert(MM_BUTTON_C_RIGHT);
-            this->SharedItemIDs.insert(MM_BUTTON_C_UP);
-            this->SharedItemIDs.insert(MM_BUTTON_C_DOWN);
-        }
-        else if (it.key().compare("sharedSkeletonKey") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SKELETON_KEY);
-            this->SharedItemIDs.insert(MM_SKELETON_KEY);
-        }
-        else if (it.key().compare("sharedPlatinumToken") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_PLATINUM_TOKEN);
-            this->SharedItemIDs.insert(MM_PLATINUM_TOKEN);
-        }
-        else if (it.key().compare("sharedSpellFire") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SPELL_FIRE);
-            this->SharedItemIDs.insert(MM_SPELL_FIRE);
-        }
-        else if (it.key().compare("sharedSpellWind") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SPELL_WIND);
-            this->SharedItemIDs.insert(MM_SPELL_WIND);
-        }
-        else if (it.key().compare("sharedSpellLove") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SPELL_LOVE);
-            this->SharedItemIDs.insert(MM_SPELL_LOVE);
-        }
-        else if (it.key().compare("sharedBootsIron") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_BOOTS_IRON);
-            this->SharedItemIDs.insert(MM_BOOTS_IRON);
-        }
-        else if (it.key().compare("sharedBootsHover") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_BOOTS_HOVER);
-            this->SharedItemIDs.insert(MM_BOOTS_HOVER);
-        }
-        else if (it.key().compare("sharedTunicGoron") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_TUNIC_GORON);
-            this->SharedItemIDs.insert(MM_TUNIC_GORON);
-        }
-        else if (it.key().compare("sharedTunicZora") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_TUNIC_ZORA);
-            this->SharedItemIDs.insert(MM_TUNIC_ZORA);
-        }
-        else if (it.key().compare("sharedScales") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SCALE_BRONZE);
-            this->SharedItemIDs.insert(OOT_SCALE_SILVER);
-            this->SharedItemIDs.insert(OOT_SCALE_GOLDEN);
-            this->SharedItemIDs.insert(MM_SCALE_BRONZE);
-            this->SharedItemIDs.insert(MM_SCALE_SILVER);
-            this->SharedItemIDs.insert(MM_SCALE_GOLDEN);
-        }
-        else if (it.key().compare("sharedStrength") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_GORON_BRACELET);
-            this->SharedItemIDs.insert(OOT_SILVER_GAUNTLETS);
-            this->SharedItemIDs.insert(OOT_GOLDEN_GAUNTLETS);
-            this->SharedItemIDs.insert(MM_GORON_BRACELET);
-            this->SharedItemIDs.insert(MM_SILVER_GAUNTLETS);
-            this->SharedItemIDs.insert(MM_GOLDEN_GAUNTLETS);
-        }
-        else if (it.key().compare("sharedHammer") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_HAMMER);
-            this->SharedItemIDs.insert(MM_HAMMER);
-        }
-        else if (it.key().compare("sharedBottles") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_BOTTLE_RUTO_LETTER);
-            this->SharedItemIDs.insert(OOT_BOTTLE_BIG_POE);
-            this->SharedItemIDs.insert(OOT_BOTTLE_BLUE_FIRE);
-            this->SharedItemIDs.insert(OOT_BOTTLE_CHATEAU);
-            this->SharedItemIDs.insert(OOT_BOTTLE_EMPTY);
-            this->SharedItemIDs.insert(OOT_BOTTLE_FAIRY);
-            this->SharedItemIDs.insert(OOT_BOTTLE_MILK);
-            this->SharedItemIDs.insert(OOT_BOTTLE_POE);
-            this->SharedItemIDs.insert(OOT_BOTTLE_POTION_BLUE);
-            this->SharedItemIDs.insert(OOT_BOTTLE_POTION_GREEN);
-            this->SharedItemIDs.insert(OOT_BOTTLE_POTION_RED);
-            this->SharedItemIDs.insert(OOT_BOTTLED_GOLD_DUST);
-            this->SharedItemIDs.insert(OOT_WEIRD_MUSHROOM);
-            this->SharedItemIDs.insert(OOT_SEAHORSE2);
-            this->SharedItemIDs.insert(MM_BOTTLE_RUTO_LETTER);
-            this->SharedItemIDs.insert(MM_BOTTLE_BIG_POE);
-            this->SharedItemIDs.insert(MM_BOTTLE_BLUE_FIRE);
-            this->SharedItemIDs.insert(MM_BOTTLE_CHATEAU);
-            this->SharedItemIDs.insert(MM_BOTTLE_EMPTY);
-            this->SharedItemIDs.insert(MM_BOTTLE_FAIRY);
-            this->SharedItemIDs.insert(MM_BOTTLE_MILK);
-            this->SharedItemIDs.insert(MM_BOTTLE_POE);
-            this->SharedItemIDs.insert(MM_BOTTLE_POTION_BLUE);
-            this->SharedItemIDs.insert(MM_BOTTLE_POTION_GREEN);
-            this->SharedItemIDs.insert(MM_BOTTLE_POTION_RED);
-            this->SharedItemIDs.insert(MM_BOTTLED_GOLD_DUST);
-            this->SharedItemIDs.insert(MM_WEIRD_MUSHROOM);
-            this->SharedItemIDs.insert(MM_SEAHORSE2);
-        }
-        else if (it.key().compare("songSoaringOot") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, OOT_SONG_SOARING))
-            {
-                this->DisabledItemIDs.insert(OOT_SONG_NOTE_SOARING);
-            }
-        }
-        else if (it.key().compare("songHealingOot") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, OOT_SONG_HEALING))
-            {
-                this->DisabledItemIDs.insert(OOT_SONG_NOTE_HEALING);
-            }
-        }
-        else if (it.key().compare("songAwakeningOot") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, OOT_SONG_AWAKENING))
-            {
-                this->DisabledItemIDs.insert(OOT_SONG_NOTE_AWAKENING);
-            }
-        }
-        else if (it.key().compare("songGoronOot") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, OOT_SONG_GORON))
-            {
-                this->DisabledItemIDs.insert(OOT_SONG_GORON_HALF);
-                this->DisabledItemIDs.insert(OOT_SONG_NOTE_GORON);
-            }
-        }
-        else if (it.key().compare("songZoraOot") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, OOT_SONG_ZORA))
-            {
-                this->DisabledItemIDs.insert(OOT_SONG_NOTE_ZORA);
-            }
-        }
-        else if (it.key().compare("songOrderOot") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, OOT_SONG_ORDER))
-            {
-                this->DisabledItemIDs.insert(OOT_SONG_NOTE_ORDER);
-            }
-        }
-        else if (it.key().compare("songSunMm") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, MM_SONG_SUN))
-            {
-                this->DisabledItemIDs.insert(MM_SONG_NOTE_SUN);
-            }
-        }
-        else if (it.key().compare("songZeldaLullabyMm") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, MM_SONG_ZELDA))
-            {
-                this->DisabledItemIDs.insert(MM_SONG_NOTE_ZELDA);
-            }
-        }
-        else if (it.key().compare("songSariasMm") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, MM_SONG_SARIA))
-            {
-                this->DisabledItemIDs.insert(MM_SONG_NOTE_SARIA);
-            }
-        }
-        else if (it.key().compare("songMinuetMm") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, MM_SONG_TP_FOREST))
-            {
-                this->DisabledItemIDs.insert(MM_SONG_NOTE_TP_FOREST);
-            }
-        }
-        else if (it.key().compare("songBoleroMm") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, MM_SONG_TP_FIRE))
-            {
-                this->DisabledItemIDs.insert(MM_SONG_NOTE_TP_FIRE);
-            }
-        }
-        else if (it.key().compare("songSerenadeMm") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, MM_SONG_TP_WATER))
-            {
-                this->DisabledItemIDs.insert(MM_SONG_NOTE_TP_WATER);
-            }
-        }
-        else if (it.key().compare("songRequiemMm") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, MM_SONG_TP_SPIRIT))
-            {
-                this->DisabledItemIDs.insert(MM_SONG_NOTE_TP_SPIRIT);
-            }
-        }
-        else if (it.key().compare("songNocturneMm") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, MM_SONG_TP_SHADOW))
-            {
-                this->DisabledItemIDs.insert(MM_SONG_NOTE_TP_SHADOW);
-            }
-        }
-        else if (it.key().compare("songPreludeMm") == 0)
-        {
-            if (!this->CheckItemEnabled(it->Value, MM_SONG_TP_LIGHT))
-            {
-                this->DisabledItemIDs.insert(MM_SONG_NOTE_TP_LIGHT);
-            }
-        }
-        else if (it.key().compare("kamaroMaskOot") == 0)
-        {;
-            this->CheckItemEnabled(it->Value, OOT_MASK_KAMARO);
-        }
-        else if (it.key().compare("boomerangMm") == 0)
-        {
-            this->CheckItemEnabled(it->Value, MM_BOOMERANG);
-        }
-        else if (it.key().compare("sharedMaskKamaro") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_MASK_KAMARO);
-            this->SharedItemIDs.insert(MM_MASK_KAMARO);
-        }
-        else if (it.key().compare("sharedBoomrang") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_BOOMERANG);
-            this->SharedItemIDs.insert(MM_BOOMERANG);
-        }
-        else if (it.key().compare("sharedSongHealing") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SONG_HEALING);
-            this->SharedItemIDs.insert(OOT_SONG_NOTE_HEALING);
-            this->SharedItemIDs.insert(MM_SONG_HEALING);
-            this->SharedItemIDs.insert(MM_SONG_NOTE_HEALING);
-        }
-        else if (it.key().compare("sharedSongSoaring") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SONG_SOARING);
-            this->SharedItemIDs.insert(OOT_SONG_NOTE_SOARING);
-            this->SharedItemIDs.insert(MM_SONG_SOARING);
-            this->SharedItemIDs.insert(MM_SONG_NOTE_SOARING);
-        }
-        else if (it.key().compare("sharedSongAwakening") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SONG_AWAKENING);
-            this->SharedItemIDs.insert(OOT_SONG_NOTE_AWAKENING);
-            this->SharedItemIDs.insert(MM_SONG_AWAKENING);
-            this->SharedItemIDs.insert(MM_SONG_NOTE_AWAKENING);
-        }
-        else if (it.key().compare("sharedSongGoron") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SONG_GORON);
-            this->SharedItemIDs.insert(OOT_SONG_GORON_HALF);
-            this->SharedItemIDs.insert(OOT_SONG_NOTE_GORON);
-            this->SharedItemIDs.insert(MM_SONG_GORON);
-            this->SharedItemIDs.insert(MM_SONG_GORON_HALF);
-            this->SharedItemIDs.insert(MM_SONG_NOTE_GORON);
-        }
-        else if (it.key().compare("sharedSongZora") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SONG_ZORA);
-            this->SharedItemIDs.insert(OOT_SONG_NOTE_ZORA);
-            this->SharedItemIDs.insert(MM_SONG_ZORA);
-            this->SharedItemIDs.insert(MM_SONG_NOTE_ZORA);
-        }
-        else if (it.key().compare("sharedSongOrder") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SONG_ORDER);
-            this->SharedItemIDs.insert(OOT_SONG_NOTE_ORDER);
-            this->SharedItemIDs.insert(MM_SONG_ORDER);
-            this->SharedItemIDs.insert(MM_SONG_NOTE_ORDER);
-        }
-        else if (it.key().compare("sharedSongZeldaLullaby") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SONG_ZELDA);
-            this->SharedItemIDs.insert(OOT_SONG_NOTE_ZELDA);
-            this->SharedItemIDs.insert(MM_SONG_ZELDA);
-            this->SharedItemIDs.insert(MM_SONG_NOTE_ZELDA);
-        }
-        else if (it.key().compare("sharedSongSarias") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SONG_SARIA);
-            this->SharedItemIDs.insert(OOT_SONG_NOTE_SARIA);
-            this->SharedItemIDs.insert(MM_SONG_SARIA);
-            this->SharedItemIDs.insert(MM_SONG_NOTE_SARIA);
-        }
-        else if (it.key().compare("sharedSongMinuet") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SONG_TP_FOREST);
-            this->SharedItemIDs.insert(OOT_SONG_NOTE_TP_FOREST);
-            this->SharedItemIDs.insert(MM_SONG_TP_FOREST);
-            this->SharedItemIDs.insert(MM_SONG_NOTE_TP_FOREST);
-        }
-        else if (it.key().compare("sharedSongBolero") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SONG_TP_FIRE);
-            this->SharedItemIDs.insert(OOT_SONG_NOTE_TP_FIRE);
-            this->SharedItemIDs.insert(MM_SONG_TP_FIRE);
-            this->SharedItemIDs.insert(MM_SONG_NOTE_TP_FIRE);
-        }
-        else if (it.key().compare("sharedSongSerenade") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SONG_TP_WATER);
-            this->SharedItemIDs.insert(OOT_SONG_NOTE_TP_WATER);
-            this->SharedItemIDs.insert(MM_SONG_TP_WATER);
-            this->SharedItemIDs.insert(MM_SONG_NOTE_TP_WATER);
-        }
-        else if (it.key().compare("sharedSongRequiem") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SONG_TP_SPIRIT);
-            this->SharedItemIDs.insert(OOT_SONG_NOTE_TP_SPIRIT);
-            this->SharedItemIDs.insert(MM_SONG_TP_SPIRIT);
-            this->SharedItemIDs.insert(MM_SONG_NOTE_TP_SPIRIT);
-        }
-        else if (it.key().compare("sharedSongNocturne") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SONG_TP_SHADOW);
-            this->SharedItemIDs.insert(OOT_SONG_NOTE_TP_SHADOW);
-            this->SharedItemIDs.insert(MM_SONG_TP_SHADOW);
-            this->SharedItemIDs.insert(MM_SONG_NOTE_TP_SHADOW);
-        }
-        else if (it.key().compare("sharedSongPrelude") == 0)
-        {
-            this->SharedItemIDs.insert(OOT_SONG_TP_LIGHT);
-            this->SharedItemIDs.insert(OOT_SONG_NOTE_TP_LIGHT);
-            this->SharedItemIDs.insert(MM_SONG_TP_LIGHT);
-            this->SharedItemIDs.insert(MM_SONG_NOTE_TP_LIGHT);
         }
     }
 }

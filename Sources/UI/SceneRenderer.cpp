@@ -17,6 +17,11 @@ SceneInfo::SceneInfo(int PSceneID, int PGameID, SceneType PType)
     this->Objects = &GetGameSceneObjects(PGameID)[this->SceneID];
 }
 
+void SceneInfo::RebindObjects()
+{
+    this->Objects = &GetGameSceneObjects(this->GameID)[this->SceneID];
+}
+
 #pragma endregion
 
 #pragma region SceneItemTree

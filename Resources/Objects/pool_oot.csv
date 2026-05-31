@@ -1986,7 +1986,7 @@ TRADE_ODD_POTION;OOT_KAKARIKO_VILLAGE;Odd Potion;OOT Kakariko Potion Shop Odd Po
 0x06;OOT_KAKARIKO_VILLAGE;Cow;OOT Kakariko Cow;none;0;0;0;OOT_IMPA_HOUSE;none;render_type;All;0;oot;overworld;;
 SHOOTING_GAME_ADULT;OOT_KAKARIKO_VILLAGE;Reward;OOT Shooting Gallery Adult;none;0;0;0;OOT_KAKARIKO_SHOOTING;none;render_type;All;0;oot;minigame;;
 0x01;OOT_KAKARIKO_VILLAGE;Platform;OOT Windmill HP;none;0;0;0;OOT_WINDMILL;none;render_type;All;0;oot;overworld;;
-SONG_STORMS;OOT_KAKARIKO_VILLAGE;Song of Storms;OOT Windmill Song of Storms;none;0;0;0;OOT_WINDMILL;none;render_type;All;0;oot;overworld;;
+SONG_OF_STORMS;OOT_KAKARIKO_VILLAGE;Song of Storms;OOT Windmill Song of Storms;none;0;0;0;OOT_WINDMILL;none;render_type;All;0;oot;overworld;;
 0x30;OOT_KAKARIKO_VILLAGE;Item 1;OOT Kakariko Bazaar Item 1;none;0;0;0;OOT_KAKARIKO_BAZAAR;none;render_type;All;0;oot;overworld;;
 0x31;OOT_KAKARIKO_VILLAGE;Item 2;OOT Kakariko Bazaar Item 2;none;0;0;0;OOT_KAKARIKO_BAZAAR;none;render_type;All;0;oot;overworld;;
 0x32;OOT_KAKARIKO_VILLAGE;Item 3;OOT Kakariko Bazaar Item 3;none;0;0;0;OOT_KAKARIKO_BAZAAR;none;render_type;All;0;oot;overworld;;
@@ -3394,7 +3394,7 @@ GERUDO_CARD;OOT_THIEVES_HIDEOUT;Gerudo Member Card;OOT Gerudo Member Card;npc;31
 0x0030b;OOT_TOMB_DAMPE_WINDMILL;Invisible Item 14;OOT Graveyard Dampe Tomb Wonder Item 14;wonder;663;680;0;OOT_TOMB_DAMPE_WINDMILL;wonder;render_type;All;0;oot;overworld;;
 0x0030c;OOT_TOMB_DAMPE_WINDMILL;Invisible Item 15;OOT Graveyard Dampe Tomb Wonder Item 15;wonder;583;380;0;OOT_TOMB_DAMPE_WINDMILL;wonder;render_type;All;0;oot;overworld;;
 0x01;OOT_TOMB_DAMPE_WINDMILL;Platform;OOT Windmill HP;collectible;718;844;0;OOT_WINDMILL;heart_piece;render_type;All;0;oot;overworld;;
-SONG_STORMS;OOT_TOMB_DAMPE_WINDMILL;Song of Storms;OOT Windmill Song of Storms;npc;720;120;0;OOT_WINDMILL;song;render_type;Adult;0;oot;overworld;;
+SONG_OF_STORMS;OOT_TOMB_DAMPE_WINDMILL;Song of Storms;OOT Windmill Song of Storms;npc;720;120;0;OOT_WINDMILL;song;render_type;Adult;0;oot;overworld;;
 0x00;OOT_TOMB_FAIRY;Chest;OOT Graveyard Fairy Tomb;chest;650;240;0;OOT_TOMB_FAIRY;chest;render_type;All;0;oot;overworld;;
 0x00005;OOT_TOMB_FAIRY;Fairy 1;OOT Graveyard Fairy Fountain Fairy 1;fairy;296;439;0;OOT_TOMB_FAIRY;fairy;render_type;All;0;oot;overworld;;
 0x10005;OOT_TOMB_FAIRY;Fairy 2;OOT Graveyard Fairy Fountain Fairy 2;fairy;311;434;0;OOT_TOMB_FAIRY;fairy;render_type;All;0;oot;overworld;;

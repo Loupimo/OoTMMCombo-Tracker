@@ -4,6 +4,9 @@
 #include "Combo/OoTObjectScene.h"
 #include "Combo/MMObjectScene.h"
 #include "Multi/Game.h"
+#include <vector>
+#include <cstring>
+#include <cstdlib>
 
 
 #pragma region SceneObjects
@@ -408,7 +411,7 @@ SceneObjects MMSceneObjects[MM_NUM_SCENES] =
 
 #pragma region ObjectInfo
 
-void ObjectInfo::SaveObject(QFile* SaveFile)
+void ObjectInfo::SaveObject(QFile* SaveFile, bool IncludeTargetWorld)
 {
 	QByteArray tmp(sizeof(uint32_t), 0);
 
@@ -429,10 +432,18 @@ void ObjectInfo::SaveObject(QFile* SaveFile)
 
 	memcpy_s(tmp.data(), 4, &itemID, sizeof(itemID));
 	SaveFile->write(tmp);
+
+	if (IncludeTargetWorld)
+	{	// Multiworld (V2_0): persist the destination world as a 32-bit value for alignment.
+
+		uint32_t targetWorld = this->TargetWorld;
+		memcpy_s(tmp.data(), 4, &targetWorld, sizeof(targetWorld));
+		SaveFile->write(tmp);
+	}
 }
 
 
-size_t ObjectInfo::LoadObject(QByteArray* Data, size_t Offset)
+size_t ObjectInfo::LoadObject(QByteArray* Data, size_t Offset, bool IncludeTargetWorld)
 {
 	// Load ID
 	uint32_t objID = 0;
@@ -457,6 +468,15 @@ size_t ObjectInfo::LoadObject(QByteArray* Data, size_t Offset)
 		{	// There is an item to load
 
 			this->Item = FindItem(itemID);
+		}
+
+		if (IncludeTargetWorld)
+		{	// Multiworld (V2_0): read the destination world written by SaveObject.
+
+			uint32_t targetWorld = 1;
+			memcpy_s(&targetWorld, sizeof(targetWorld), Data->data() + Offset, sizeof(targetWorld));
+			Offset += sizeof(targetWorld);
+			this->TargetWorld = (uint8_t)targetWorld;
 		}
 	}
 
@@ -545,17 +565,164 @@ ObjectInfo* FindObject(ComboItem Item)
 }
 
 
+#pragma region Multiworld storage
+
+// World 0 always aliases the static template arrays (OoTSceneObjects / MMSceneObjects), so
+// when there is a single world nothing is copied and behaviour is identical to before.
+// Additional worlds are deep copies whose per-placement Item / Status / TargetWorld differ.
+static std::vector<WorldObjects> gWorlds;
+static size_t gActiveWorld = 0;
+
+/*
+*   Deep-copy a template scene-object array into freshly allocated storage. SceneObjects has a
+*   const NumOfObjs member, so we copy the raw bytes (the structs are trivially copyable) and
+*   give each scene its own ObjectInfo buffer.
+*/
+static SceneObjects* CloneSceneArray(const SceneObjects* Template, size_t NumOfScenes)
+{
+	SceneObjects* clone = (SceneObjects*)malloc(sizeof(SceneObjects) * NumOfScenes);
+	memcpy((void*)clone, (const void*)Template, sizeof(SceneObjects) * NumOfScenes);
+
+	for (size_t i = 0; i < NumOfScenes; i++)
+	{
+		size_t count = Template[i].NumOfObjs;
+		if (count == 0 || Template[i].Objects == nullptr)
+		{
+			// Keep the empty-scene sentinel (NumOfObjs == 0, Objects may be nullptr).
+			continue;
+		}
+
+		ObjectInfo* objs = (ObjectInfo*)malloc(sizeof(ObjectInfo) * count);
+		memcpy((void*)objs, (const void*)Template[i].Objects, sizeof(ObjectInfo) * count);
+		clone[i].Objects = objs;
+	}
+
+	return clone;
+}
+
+/*
+*   Free a cloned scene-object array previously produced by CloneSceneArray.
+*/
+static void FreeSceneArray(SceneObjects* Array, size_t NumOfScenes)
+{
+	if (Array == nullptr) return;
+	for (size_t i = 0; i < NumOfScenes; i++)
+	{
+		if (Array[i].NumOfObjs != 0 && Array[i].Objects != nullptr)
+		{
+			free(Array[i].Objects);
+		}
+	}
+	free(Array);
+}
+
+void InitWorlds(size_t NumWorlds)
+{
+	if (NumWorlds < 1) NumWorlds = 1;
+
+	// Release any previously allocated clones (world 0 is never owned: it aliases the templates).
+	for (WorldObjects& w : gWorlds)
+	{
+		if (w.Owned)
+		{
+			FreeSceneArray(w.OoT, OOT_NUM_SCENES);
+			FreeSceneArray(w.MM, MM_NUM_SCENES);
+		}
+	}
+	gWorlds.clear();
+
+	// World 0 aliases the static template arrays.
+	WorldObjects world0;
+	world0.OoT = OoTSceneObjects;
+	world0.MM = MMSceneObjects;
+	world0.Owned = false;
+	gWorlds.push_back(world0);
+
+	// Worlds 1..N-1 are deep copies of the templates.
+	for (size_t i = 1; i < NumWorlds; i++)
+	{
+		WorldObjects w;
+		w.OoT = CloneSceneArray(OoTSceneObjects, OOT_NUM_SCENES);
+		w.MM = CloneSceneArray(MMSceneObjects, MM_NUM_SCENES);
+		w.Owned = true;
+		gWorlds.push_back(w);
+	}
+
+	gActiveWorld = 0;
+}
+
+size_t GetNumWorlds()
+{
+	return gWorlds.empty() ? 1 : gWorlds.size();
+}
+
+void SetActiveWorld(size_t WorldIndex)
+{
+	if (!gWorlds.empty() && WorldIndex >= gWorlds.size())
+	{
+		WorldIndex = gWorlds.size() - 1;
+	}
+	gActiveWorld = WorldIndex;
+}
+
+size_t GetActiveWorld()
+{
+	return gActiveWorld;
+}
+
+SceneObjects* GetWorldSceneObjects(size_t WorldIndex, uint32_t GameID)
+{
+	if (gWorlds.empty())
+	{
+		// Worlds not initialised yet: fall back to the static templates.
+		return (GameID == OOT_GAME) ? OoTSceneObjects : MMSceneObjects;
+	}
+
+	if (WorldIndex >= gWorlds.size())
+	{
+		WorldIndex = gWorlds.size() - 1;
+	}
+
+	const WorldObjects& w = gWorlds[WorldIndex];
+	return (GameID == OOT_GAME) ? w.OoT : w.MM;
+}
+
 SceneObjects* GetGameSceneObjects(uint32_t GameID)
 {
-	if (GameID == OOT_GAME)
-	{
-		return OoTSceneObjects;
-	}
-	else
-	{
-		return MMSceneObjects;
-	}
+	return GetWorldSceneObjects(gActiveWorld, GameID);
 }
+
+ObjectInfo* FindObjectInWorld(size_t WorldIndex, int GameID, ObjectInfo* Reference)
+{
+	if (Reference == nullptr) return Reference;
+
+	// World 0 aliases the templates, so the reference is already correct for it.
+	if (gWorlds.empty() || WorldIndex == 0) return Reference;
+	if (WorldIndex >= gWorlds.size()) return Reference;
+
+	// The reference lives at &templates[scene].Objects[i]; find scene + i, then index the
+	// same slot in the destination world (clones keep the exact same layout / count).
+	SceneObjects* templates = (GameID == OOT_GAME) ? OoTSceneObjects : MMSceneObjects;
+	size_t numScenes = (GameID == OOT_GAME) ? OOT_NUM_SCENES : MM_NUM_SCENES;
+	SceneObjects* worldArr = GetWorldSceneObjects(WorldIndex, GameID);
+
+	for (size_t s = 0; s < numScenes; s++)
+	{
+		ObjectInfo* base = templates[s].Objects;
+		size_t count = templates[s].NumOfObjs;
+		if (base == nullptr || count == 0) continue;
+
+		if (Reference >= base && Reference < base + count)
+		{
+			size_t idx = (size_t)(Reference - base);
+			return &worldArr[s].Objects[idx];
+		}
+	}
+
+	return Reference;   // Not found in the templates: leave it untouched.
+}
+
+#pragma endregion
 
 #pragma endregion
 
@@ -650,7 +817,7 @@ void ResetSceneObjectsFor(SceneObjects* Array, size_t NumOfScenes)
 {
 	for (size_t i = 0; i < NumOfScenes; i++)
 	{	// Browse all scenes
-		
+
 		for (size_t j = 0; j < Array[i].NumOfObjs; j++)
 		{	// Reset all objects
 
@@ -658,5 +825,96 @@ void ResetSceneObjectsFor(SceneObjects* Array, size_t NumOfScenes)
 		}
 	}
 }
+
+#pragma region Multiworld save / load
+
+/*
+*   Like SaveSceneObjectsFor but also persists each placement's TargetWorld (V2_0 layout).
+*/
+static void SaveWorldSceneArray(QFile* SaveFile, SceneObjects* Array, size_t NumOfScenes)
+{
+	QByteArray ID(sizeof(uint32_t), 0);
+	QByteArray numObj(sizeof(size_t), 0);
+
+	for (size_t i = 0; i < NumOfScenes; i++)
+	{
+		memcpy_s(ID.data(), sizeof(Array[i].SceneID), &Array[i].SceneID, sizeof(Array[i].SceneID));
+		SaveFile->write(ID);
+
+		memcpy_s(numObj.data(), sizeof(Array[i].NumOfObjs), &Array[i].NumOfObjs, sizeof(Array[i].NumOfObjs));
+		SaveFile->write(numObj);
+
+		for (size_t j = 0; j < Array[i].NumOfObjs; j++)
+		{
+			Array[i].Objects[j].SaveObject(SaveFile, /*IncludeTargetWorld*/ true);
+		}
+	}
+}
+
+/*
+*   Like LoadSceneObjectsFor but also reads each placement's TargetWorld (V2_0 layout).
+*/
+static size_t LoadWorldSceneArray(QByteArray* Data, size_t Offset, SceneObjects* Array, size_t NumOfScenes)
+{
+	for (size_t i = 0; i < NumOfScenes; i++)
+	{
+		uint32_t sceneID = 0;
+		memcpy_s(&sceneID, sizeof(sceneID), Data->data() + Offset, sizeof(sceneID));
+		Offset += sizeof(sceneID);
+
+		if (Array[i].SceneID == sceneID)
+		{
+			size_t numObjs = 0;
+			memcpy_s(&numObjs, sizeof(numObjs), Data->data() + Offset, sizeof(numObjs));
+			Offset += sizeof(numObjs);
+
+			if (numObjs == Array[i].NumOfObjs)
+			{
+				for (size_t j = 0; j < Array[i].NumOfObjs; j++)
+				{
+					Offset = Array[i].Objects[j].LoadObject(Data, Offset, /*IncludeTargetWorld*/ true);
+				}
+			}
+		}
+	}
+
+	return Offset;
+}
+
+void SaveAllWorlds(QFile* SaveFile)
+{
+	// Header: number of worlds (32-bit).
+	uint32_t numWorlds = (uint32_t)GetNumWorlds();
+	QByteArray countBuf(sizeof(uint32_t), 0);
+	memcpy_s(countBuf.data(), sizeof(uint32_t), &numWorlds, sizeof(numWorlds));
+	SaveFile->write(countBuf);
+
+	for (uint32_t w = 0; w < numWorlds; w++)
+	{
+		SaveWorldSceneArray(SaveFile, GetWorldSceneObjects(w, OOT_GAME), OOT_NUM_SCENES);
+		SaveWorldSceneArray(SaveFile, GetWorldSceneObjects(w, MM_GAME), MM_NUM_SCENES);
+	}
+}
+
+size_t LoadAllWorlds(QByteArray* Data, size_t Offset)
+{
+	// Header: number of worlds, then re-allocate them as clones of the templates.
+	uint32_t numWorlds = 1;
+	memcpy_s(&numWorlds, sizeof(numWorlds), Data->data() + Offset, sizeof(numWorlds));
+	Offset += sizeof(numWorlds);
+	if (numWorlds < 1) numWorlds = 1;
+
+	InitWorlds((size_t)numWorlds);
+
+	for (uint32_t w = 0; w < numWorlds; w++)
+	{
+		Offset = LoadWorldSceneArray(Data, Offset, GetWorldSceneObjects(w, OOT_GAME), OOT_NUM_SCENES);
+		Offset = LoadWorldSceneArray(Data, Offset, GetWorldSceneObjects(w, MM_GAME), MM_NUM_SCENES);
+	}
+
+	return Offset;
+}
+
+#pragma endregion
 
 #pragma endregion

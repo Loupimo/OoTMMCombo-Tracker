@@ -41,7 +41,6 @@ private:
     QButtonGroup* GameGroup = nullptr;              // OoT / MM / OoTMM selector for the General page.
     QButtonGroup* ModeGroup = nullptr;              // Single / Coop / Multi selector for the General page.
     QSpinBox* TeamsSpin = nullptr;                  // Number of multiplayer teams selector.
-    QSpinBox* LocalWorldSpin = nullptr;            // Local player's world / team selector (1-based in the UI).
 
     QHash<QString, QWidget*> ParamWidgets;          // Map from setting key (FilterSettings or ItemSettings) to the editor widget bound to it.
 
@@ -125,6 +124,13 @@ private:
     *   @return The built Shared Items page widget.
     */
     QWidget* BuildSharedItemsPage();
+
+    /*
+    *   Build the Songs page (every song-related entry from ItemSettings, individual and shared).
+    *
+    *   @return The built Songs page widget.
+    */
+    QWidget* BuildSongsPage();
 
     /*
     *   Build the World Items page (Key Rings, Silver Pouches and Pre-Activated Owl Statues).

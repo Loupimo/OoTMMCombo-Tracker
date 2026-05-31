@@ -1,7 +1,7 @@
 import pandas as pd 
 
 commonScenes = ["FAIRY_FOUNTAIN", "GROTTOS", "GORON_SHOP", "LOST_WOODS", "SHOOTING_GALLERY", "CUTSCENE_MAP", "TREASURE_SHOP", "LABORATORY", "SPIDER_HOUSE_SWAMP", "SPIDER_HOUSE_OCEAN"]
-commonID = ["SONG_STORMS"]
+commonID = ["SONG_STORMS", "SONG_OF_STORMS"]
 excludeSpoiler = ["INSIDE_EGGS", "MARKET", "MOUNTAIN_VILLAGE", "TWIN_ISLANDS", "MOON", "GORON_SHRINE", "MILK_ROAD", "GORON_VILLAGE_WINTER", "ROMANI_RANCH"]
 
 
@@ -446,11 +446,16 @@ def parse_settings(input_file, output_file):
             friendly_name = row["friendly_name"]
             type = row["type"]
             value = row["value"]
+            cat = row["category"]
+            aff_val = str(row["affected"])
 
             if type == "boolean" or type == "shuffle":
                 value = "ShuffleSetting::" + value
 
-            objectstr = objectstr + "\t{ \"" + log_name + "\", { \"" + friendly_name + "\", ParamType::" + type + ", " + str(value) + " } }"
+            if aff_val == "nan":
+                aff_val = ""
+
+            objectstr = objectstr + "\t{ \"" + log_name + "\", { \"" + friendly_name + "\", ParamType::" + type + ", ParamCategory::" + cat + ", " + str(value) + ", { " + aff_val + " } } }"
             outfile.write(objectstr)
 
 # Exemple d'utilisation

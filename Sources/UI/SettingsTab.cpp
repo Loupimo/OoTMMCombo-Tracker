@@ -2,6 +2,7 @@
 #include "UI/OoTMMComboTracker.h"
 #include "UI/AppConfig.h"
 #include "Combo/Items.h"
+#include "Combo/Objects.h"
 #include "Combo/Scenes.h"
 #include "Multi/Game.h"
 #include <QHBoxLayout>
@@ -166,6 +167,7 @@ SettingsTab::SettingsTab(OoTMMComboTracker* Owner, QWidget* Parent)
     this->NavList->addItem("Special");
     this->NavList->addItem("Progressive Items");
     this->NavList->addItem("Shared Items");
+    this->NavList->addItem("Songs");
     this->NavList->addItem("World Items");
     this->NavList->addItem("MQ / JP Layouts");
     this->NavList->setCurrentRow(0);
@@ -188,6 +190,7 @@ SettingsTab::SettingsTab(OoTMMComboTracker* Owner, QWidget* Parent)
     this->Pages->addWidget(this->BuildSpecialPage());
     this->Pages->addWidget(this->BuildProgressiveItemsPage());
     this->Pages->addWidget(this->BuildSharedItemsPage());
+    this->Pages->addWidget(this->BuildSongsPage());
     this->Pages->addWidget(this->BuildWorldItemsPage());
     this->Pages->addWidget(this->BuildLayoutsPage());
 
@@ -392,18 +395,9 @@ QWidget* SettingsTab::BuildGeneralPage()
     vbox->addWidget(teamsBox);
 
     // Local world / player -----------------------------------------------
-    // Identifies which world / team is the local player. Used in coop / multiworld
-    // to decide whether a collected item belongs to the local map / progression.
-    // Displayed 1-based ("Player 1" == world 0) to match the spoiler log.
-    QGroupBox* localBox = new QGroupBox("Local player", page);
-    QHBoxLayout* localLayout = new QHBoxLayout(localBox);
-    QLabel* localLabel = new QLabel("My world / player", localBox);
-    this->LocalWorldSpin = new QSpinBox(localBox);
-    this->LocalWorldSpin->setRange(1, 64);
-    localLayout->addWidget(localLabel);
-    localLayout->addWidget(this->LocalWorldSpin);
-    localLayout->addStretch(1);
-    vbox->addWidget(localBox);
+    // Note: there is no "my world" selector. With every world tracked, the local world is
+    // auto-detected from the network stream (the from/to ids the game provides), so items are
+    // routed to the right world's map / progression without any manual setup.
 
     vbox->addStretch(1);
     return page;
@@ -649,6 +643,8 @@ QWidget* SettingsTab::BuildProgressiveItemsPage()
         {
             const QString& key = it.key();
             if (key.startsWith("shared")) continue;
+            if (key.startsWith("song")) continue;                 // Songs live in their own page.
+            if (key == "kamaroMaskOot" || key == "boomerangMm") continue;   // -> World Items page.
 
             QString badge;
             if (key.endsWith("Oot")) badge = "OoT";
@@ -691,6 +687,7 @@ QWidget* SettingsTab::BuildSharedItemsPage()
         {
             const QString& key = it.key();
             if (!key.startsWith("shared")) continue;
+            if (key.startsWith("sharedSong")) continue;   // Shared songs live in the Songs page.
 
             // Shared toggles cross both games so leave the badge empty.
             this->AddParamRow(grid, key, "");
@@ -698,6 +695,65 @@ QWidget* SettingsTab::BuildSharedItemsPage()
     }
 
     contentLayout->addWidget(box);
+    contentLayout->addStretch(1);
+    scroll->setWidget(content);
+    vbox->addWidget(scroll);
+    return page;
+}
+
+
+QWidget* SettingsTab::BuildSongsPage()
+{
+    QWidget* page = new QWidget(this);
+    QVBoxLayout* vbox = new QVBoxLayout(page);
+    vbox->setContentsMargins(16, 16, 16, 16);
+    vbox->setSpacing(14);
+
+    QScrollArea* scroll = new QScrollArea(page);
+    scroll->setWidgetResizable(true);
+    QWidget* content = new QWidget();
+    QVBoxLayout* contentLayout = new QVBoxLayout(content);
+    contentLayout->setSpacing(14);
+
+    // Individual songs (per game) and shared songs live on the same page, split into two groups
+    // so the cross-game "Shared ..." toggles are visually separated from the per-game ones.
+    QGroupBox* indivBox = new QGroupBox("Songs", content);
+    QGridLayout* indivGrid = new QGridLayout(indivBox);
+    indivGrid->setColumnStretch(1, 1);
+    indivGrid->setHorizontalSpacing(10);
+    indivGrid->setVerticalSpacing(6);
+
+    QGroupBox* sharedBox = new QGroupBox("Shared Songs", content);
+    QGridLayout* sharedGrid = new QGridLayout(sharedBox);
+    sharedGrid->setColumnStretch(1, 1);
+    sharedGrid->setHorizontalSpacing(10);
+    sharedGrid->setVerticalSpacing(6);
+
+    if (this->WinOwner != nullptr)
+    {
+        for (auto it = this->WinOwner->ROMSettings.ItemSettings.cbegin();
+             it != this->WinOwner->ROMSettings.ItemSettings.cend(); ++it)
+        {
+            const QString& key = it.key();
+
+            if (key.startsWith("sharedSong"))
+            {   // Shared songs cross both games, no badge.
+
+                this->AddParamRow(sharedGrid, key, "");
+            }
+            else if (key.startsWith("song"))
+            {   // Per-game songs: badge from the key suffix.
+
+                QString badge;
+                if (key.endsWith("Oot")) badge = "OoT";
+                else if (key.endsWith("Mm")) badge = "MM";
+                this->AddParamRow(indivGrid, key, badge);
+            }
+        }
+    }
+
+    contentLayout->addWidget(indivBox);
+    contentLayout->addWidget(sharedBox);
     contentLayout->addStretch(1);
     scroll->setWidget(content);
     vbox->addWidget(scroll);
@@ -717,6 +773,12 @@ QWidget* SettingsTab::BuildWorldItemsPage()
     QWidget* content = new QWidget();
     QVBoxLayout* contentLayout = new QVBoxLayout(content);
     contentLayout->setSpacing(14);
+
+    // Per-world unique items ---------------------------------------------
+    contentLayout->addWidget(this->MakeParamGroup(content, "Unique World Items", {
+        { "kamaroMaskOot", "OoT" },
+        { "boomerangMm",   "MM"  },
+    }));
 
     // Key Rings group ----------------------------------------------------
     QGroupBox* ringBox = new QGroupBox("Small Key Rings", content);
@@ -885,11 +947,6 @@ void SettingsTab::LoadFromSettings()
     {
         this->TeamsSpin->setValue(static_cast<int>(s.NumOfTeams));
     }
-    if (this->LocalWorldSpin != nullptr)
-    {
-        // 1-based everywhere (UI, spoiler, network ledger).
-        this->LocalWorldSpin->setValue(static_cast<int>(s.LocalWorld));
-    }
 
     for (auto it = this->ParamWidgets.cbegin(); it != this->ParamWidgets.cend(); ++it)
     {
@@ -987,11 +1044,16 @@ void SettingsTab::OnApply()
     {
         s.NumOfTeams = static_cast<size_t>(this->TeamsSpin->value());
     }
-    if (this->LocalWorldSpin != nullptr)
+
+    // Allocate worlds from Mode / NumOfTeams so the world selector appears even without a
+    // spoiler (e.g. switching single -> multi with teams > 1 to test). Multiworld uses one
+    // world per team; single / coop collapse to a single world. We only re-init when the count
+    // actually changes, otherwise a freshly parsed multiworld spoiler would be wiped on Apply.
+    size_t desiredWorlds = (s.Mode == GameMode::multi) ? (s.NumOfTeams > 0 ? s.NumOfTeams : 1) : 1;
+    if (desiredWorlds != GetNumWorlds())
     {
-        // 1-based everywhere (UI, spoiler, network ledger).
-        s.LocalWorld = static_cast<size_t>(this->LocalWorldSpin->value());
-        AppConfig::SetLocalWorld(static_cast<int>(s.LocalWorld));
+        InitWorlds(desiredWorlds);
+        SetActiveWorld(0);
     }
 
     for (auto it = this->ParamWidgets.cbegin(); it != this->ParamWidgets.cend(); ++it)

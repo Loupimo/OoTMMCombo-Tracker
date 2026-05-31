@@ -44,6 +44,14 @@ enum class ParamType
 	shuffle,
 };
 
+enum class ParamCategory
+{
+    standard,
+    souls,
+    progressive,
+    shared
+};
+
 enum class ShuffleSetting
 {
 	vanilla,	// Objects for this parameter are vanilla (not shuffled)
@@ -66,8 +74,12 @@ public:
 	QString Name;
 	/* The value type of this parameter (game, mode, boolean, shuffle, etc.). */
 	ParamType Type;
+    /* The parameter category use to apply the setting on the correct array using the correct function. */
+    ParamCategory Cat;
 	/* The shuffle setting assigned to this parameter, controlling which objects are active or excluded. */
 	ShuffleSetting Value;
+    /* The values affected by this parameter. */
+    std::vector<uint32_t> AffectedVal;
 } Parameter;
 
 
