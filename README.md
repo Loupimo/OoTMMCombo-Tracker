@@ -1,32 +1,68 @@
 # OoTMMCombo-Tracker
 
-An auto-tracker for the [OoTMM combo](https://ootmm.com/) randomizer. It is a fork of the [multi-client](https://github.com/OoTMM/multi-client) written by Nax and therefore needs his [Project64](https://github.com/OoTMM/Project64-EM/releases/tag/v1.0.3) version with lua script support to work.
-This app automatically tracks which object has been collected and update it with the item it contains (just as you would do using the spoiler log but in a more efficient, graphical and user-friendly manner)
+An auto-tracker for the [OoTMM combo](https://ootmm.com/) randomizer.\
+It automatically detects which location you collect and displays the item it contained on interactive scene maps — just like filling in the spoiler log yourself, but live, graphical and effortless.
+
+In **singleplayer**, tracking now works entirely through **hooking**: the tracker injects itself into a custom Project64 build and intercepts game events in real time (no lua adapter script needed anymore).\
+In **multiplayer**, it is a fork of the [multi-client](https://github.com/OoTMM/multi-client) written by Nax and talks to a remote server, exactly as before.
+
+# Requirements
+
+- **[Project64-EM 1.0.3-PJ-3.0.1](https://github.com/OoTMM/Project64-EM/releases)** — this specific build is required (it is the only one the hook supports).
+- `PJ64Injector.exe` and `PJ64OoTMMTracker.dll` must be in the **same folder** as the tracker (the tracker injects them automatically when you start tracking).
+- **OoTMM build**: the tracker targets the latest **dev** build (currently `dev-a98fbc8`). It also supports the **stable release 30.1**, and should keep working with newer dev builds.
+
+# Features
+
+- Real-time item tracking for both **Ocarina of Time** and **Majora's Mask** on interactive scene maps
+- Full **entrance randomizer** tracking — entrances, grottos, warp songs, spawns, deaths — with entrance maps, region/entrance trees and a GPS view
+- A **progression tab** listing every item and the locations where each one can be found
+- **Spoiler-log support**: reveal uncollected item locations and pre-mark starting items
+- **Master Quest** and **Majora's Mask JP** layouts are supported
+- **Coop, multiplayer and multiworld** are supported (per-world scene maps + a world selector)
+- ROM build parameters are parsed automatically from the spoiler log to enable/disable the right locations
+- Auto-save: progress is saved every time an item is collected (manual save is also available)
 
 # How to use
 
-First you need to be sure that your ROM has been created using the coop or multi world parameter.
-
 ## Playing in singleplayer
 
-1. In the "Launch" tab click the "Start Tracking" button.
-2. Then open your project64 with lua script, launch your game and start the adapter script.
-3. Now you can create a new save and start playing.
+1. Launch **Project64-EM (1.0.3-PJ-3.0.1)** and start your OoTMM ROM.
+2. In the tracker's **"Launch"** tab, click **"Start Tracking"** — the tracker injects its hook into Project64.
+3. Create a new save and start playing. Collected items appear on the maps automatically.
 
-There is an auto-saving feature that is enabled by default. When an item is collected the progress will be saved.\
+There is an auto-saving feature, enabled by default. When an item is collected the progress is saved.\
 You can also save your progress manually.
 
 ## Playing in multiplayer
 
-In the "Launch" tab just check the "Use multiplayer" box and enter the server address and port you want to use.\
-If you don't have your own server just leave the default one.\
-Then follow the "Playing in singleplayer" section.
+Your ROM must have been created with the **coop** or **multiworld** parameter.
+
+In the **"Launch"** tab, check the **"Use multiplayer"** box and enter the server address and port you want to use.\
+If you don't have your own server, just leave the default one.\
+Then follow the **"Playing in singleplayer"** steps above.
+
+## Loading a spoiler log (strongly recommended)
+
+Importing the seed's spoiler log is **strongly recommended**. It is the most reliable way to detect the ROM build (stable vs dev), and it is the **only** way the tracker learns the world layouts — Master Quest and Majora's Mask JP — which the hook cannot detect on its own.
+
+It also lets the tracker show the expected item on each location, reveal uncollected item locations, and account for starting items.
 
 ## Side notes
 
-The program is not reading game memory. Therefore, it can't retreive items that have been collected without using the tracker.\
-Master Quest is currently not supported (same for MM JP layouts).\
-Playing in multi world is not recommended as there is no distinction of which world the collected item is coming from.
+- Tracking is **live**: items collected while the tracker is not running (or before injection) are not detected.
+- Master Quest and Majora's Mask JP layouts are supported, but the hook **cannot** detect them — they are read from the spoiler log, so import it to get the correct layouts (see the spoiler-log section above).
+- Multiworld is fully supported — use the world selector to browse any world's map and progression.
+
+# For the dev
+
+The solution is built with **Visual Studio (MSVC)** — no CMake, no Makefile — and contains three projects that build independently:
+
+- **Main tracker app** (root `.vcxproj`) — the Qt GUI application
+- **PJ64Injector** (`PJ64Injector/`) — CLI tool that injects the tracking DLL into Project64
+- **PJ64OoTMMTracker** (`PJ64Tracking/PJ64OoTMMTracker/`) — the Windows DLL that hooks Project64 internals
+
+Building requires **[Qt 6.9.1](https://www.qt.io/download)** installed and linked (the Qt libraries are dynamically linked).
 
 # 📜 Licenses used in this project
 

@@ -2,7 +2,7 @@
 
 All notable changes to this project are documented in this file.
 
-## [2.0.0] - 2026-04-20
+## [2.0.0] - 2026-06-02
 
 ### Added
 - DLL-based memory hooking system injected into Project64 to track items, entrances, and game state in real time. This means that solo game can also be tracked !
@@ -31,6 +31,11 @@ All notable changes to this project are documented in this file.
 - MM scene minimaps (path-only outlines for scenes still missing a full map)
 - Hover highlighting of group boxes, scene anchors and matching rows in the entrance tree
 - Clicking a scene anchor now focuses the associated entrance group text box
+- Multiworld support: per-world scene objects and a world selector to browse each world's map and progression
+- Stable and dev ROM build support: raw in-game item IDs are translated to the tracker's internal numbering so both builds track items correctly
+- Dev-build items and the latest dev ROM settings options
+- Coop propagation of "nothing" item drops over the network so the whole team's shared map stays in sync
+- In-game run timer tracking
 
 ### Changed
 - Network tracking automatically disabled when multiplayer is unchecked
@@ -39,6 +44,7 @@ All notable changes to this project are documented in this file.
 - Active layout (MQ / MM JP) now also filters the entrance set
 - Entrance graphical style rewritten with refreshed icons and hovered-background tinting
 - More reliable death detection
+- Memory hooking updated to follow the latest dev OoTMM build
 - Progression lookup keyed by item ID instead of regex-matched names
 - `ObjectScene` split into one `.cpp` per scene and progression data extracted into its own file
 - New `GameIcons` class centralises pixmap creation for lower memory use and faster startup
@@ -69,3 +75,4 @@ All notable changes to this project are documented in this file.
 - Spoiler log now correctly reloads every item
 - Missing entries in the ROM settings options
 - Several UI color bugs and visual glitches around the search bar and Hyrule Field anchors
+- Multiworld / coop tracking bug
