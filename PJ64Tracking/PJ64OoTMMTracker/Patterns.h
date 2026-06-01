@@ -95,7 +95,7 @@ uint32_t Mask_EnItem00_DropCustom_OoT[] =
     0xFF000000,                     // JAL      comboItemOverride
     0xFFFFFFFF,                     // ADDIU    A0, SP, 0x0010
     0xFFFFFFFF,                     // LH       V1, 0x0014 (SP)
-    0xFFFFFFFF,                     // ADDIU    V0, R0, 0x033C
+    0xFFFF0000,                     // ADDIU    V0, R0, 0x033C
     0xFFFFFFFF,                     // BNE      V1, V0, 0x80400DB4
     0xFFFFFFFF,                     // OR       A1, S0, R0
     0xFF000000                      // JAL      comboXflagsSet          <-- Hook here
@@ -136,7 +136,7 @@ uint32_t Mask_comboItemPrecond_OoT[] =
     0xFF000000,                     // JAL      comboItemOverride
     0xFFFFFFFF,                     // ADDIU    A0, SP, 0x0010
     0xFFFFFFFF,                     // LH       V1, 0x0014 (SP)
-    0xFFFFFFFF,                     // ADDIU    V0, R0, 0x0002
+    0xFFFF0000,                     // ADDIU    V0, R0, 0x0002
     0xFFFFFFFF,                     // BNE      V1, V0, 0x8040C178
     0xFFFFFFFF,                     // ADDIU    V0, R0, 0x0002
     0xFFFFFFFF                      // LW       S0, 0x0018 (SP)         <-- Hook here
@@ -183,8 +183,8 @@ uint32_t Mask_hookPlay_Init_OoT[] =
     0xFFFFFFFF,                     // SW       S7, 0x004C (SP)
     0xFFFFFFFF,                     // SW       S5, 0x0044 (SP)
     0xFFFFFFFF,                     // SW       S4, 0x0040 (SP)
-    0xFFFFFF00,                     // SW       A0, 0x8728 (SP)
-    0xFFFFFF00,                     // ADDIU    S3, S6, 0x1C68
+    0xFFFF0000,                     // SW       A0, 0x8728 (SP)
+    0xFFFF0000,                     // ADDIU    S3, S6, 0x1C68
     0xFFFFFFFF                      // LUI      V0, 0x8044
 };
 
@@ -374,7 +374,7 @@ uint32_t Mask_EnItem00_DropCustom_MM[] =
     0xFF000000,                     // JAL      comboItemOverride
     0xFFFFFFFF,                     // ADDIU    A0, SP, 0x0010
     0xFFFFFFFF,                     // LH       V1, 0x0014 (SP)
-    0xFFFFFFFF,                     // ADDIU    V0, R0, 0x033C
+    0xFFFF0000,                     // ADDIU    V0, R0, 0x033C
     0xFFFFFFFF,                     // BNE      V1, V0, 0x80400DB4
     0xFFFFFFFF,                     // OR       A1, S0, R0
     0xFF000000                      // JAL      comboXflagsSet          <-- Hook here
@@ -415,7 +415,7 @@ uint32_t Mask_comboItemPrecond_MM[] =
     0xFF000000,                     // JAL      comboItemOverride
     0xFFFFFFFF,                     // ADDIU    A0, SP, 0x0010
     0xFFFFFFFF,                     // LH       V1, 0x0014 (SP)
-    0xFFFFFFFF,                     // ADDIU    V0, R0, 0x0002
+    0xFFFF0000,                     // ADDIU    V0, R0, 0x0002
     0xFFFFFFFF,                     // BNE      V1, V0, 0x8040C178
     0xFFFFFFFF,                     // ADDIU    V0, R0, 0x0002
     0xFFFFFFFF                      // LW       S0, 0x0018 (SP)         <-- Hook here
@@ -451,12 +451,12 @@ uint8_t Pattern_hookPlay_Init_MM[] =
 uint32_t Mask_hookPlay_Init_MM[] =
 {
     0xFFFFFFFF,                     // ADDIU    SP, SP, -0x50           <-- hookPlay_Init_Start
-    0xFFFFFFFF,                     // LUI      V0, 0x8077
+    0xFFFFFF00,                     // LUI      V0, 0x8077
     0xFFFFFFFF,                     // SW       S4, 0x0040 (SP)
     0xFFFFFFFF,                     // LUI      S4, 0x8077
     0xFFFFFFFF,                     // SW       S3, 0x003C (SP)
-    0xFFFFFF00,                     // SW       A0, 0x4248 (V0)
-    0xFFFFFF00,                     // ADDIU    S3, S4, 0x0FD8
+    0xFFFF0000,                     // SW       A0, 0x4248 (V0)
+    0xFFFF0000,                     // ADDIU    S3, S4, 0x0FD8
     0xFFFFFFFF,                     // ADDIU    V0, R0, 0xFFFF
     0xFFFFFFFF,                     // SW       RA, 0x004C (SP)
     0xFFFFFFFF,                     // SW       S5, 0x0044 (SP)
@@ -466,7 +466,7 @@ uint32_t Mask_hookPlay_Init_MM[] =
     0xFFFFFFFF,                     // SW       S2, 0x0038 (SP)
     0xFFFFFFFF,                     // SB       V0, 0x003C (S3)
     0xFFFFFFFF,                     // LUI      V0, 0x8077
-    0xFFFFFF00                      // SB       R0, 0x0EC8 (V0)
+    0xFFFF0000                      // SB       R0, 0x0EC8 (V0)
 };
 
 PCSignature Sig_hookPlay_Init_MM = { 68, Pattern_hookPlay_Init_MM, Mask_hookPlay_Init_MM, 0x58C };

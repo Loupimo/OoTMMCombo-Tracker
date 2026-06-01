@@ -326,6 +326,12 @@ int App::appRun(bool NetState, QLineEdit * host, uint16_t port)
     return 0;
 }
 
+void App::QueueTrackerNothing(const TrackerNothing& Nothing)
+{
+    std::lock_guard<std::mutex> lock(this->NothingMutex);
+    this->PendingNothings.push_back(Nothing);
+}
+
 int App::appQuit()
 {
     /* Close the socket */

@@ -313,26 +313,83 @@ void Settings::ParseSettings(QString& SettingsSection)
 
 void Settings::ParseStartingItems(QString& LayoutSection)
 {
-    QRegularExpression reg("^  (.+: .+\n)", QRegularExpression::MultilineOption);
-    QRegularExpressionMatchIterator it = reg.globalMatch(LayoutSection);
+    // Multiworld spoilers split this section per player:
+    //     Starting Items
+    //       Player 1
+    //         Bombers' Notebook: 1
+    //         ...
+    //       Player 2
+    //         ...
+    // Single / coop keep the flat layout (items directly at two-space indent). We detect the
+    // multiworld form by the presence of a "  Player N" header, route each item to its world,
+    // and also keep the combined StartingItemIDs (used by the single-world code paths and as a
+    // fallback when no world is active).
+    bool isMultiworld = QRegularExpression("^  Player \\d", QRegularExpression::MultilineOption)
+                            .match(LayoutSection).hasMatch();
 
-    while (it.hasNext())
+    // Helper: add (itemName, count) to the combined map and, when given, to a per-world map.
+    auto addItem = [this](const QString& Name, int Count, QMap<uint32_t, uint32_t>* WorldMap)
     {
-        QRegularExpressionMatch match = it.next();
-        QStringList layoutParams = match.captured(1).split(": ");
+        const ItemInfo* info = FindItemByName(Name);
+        if (info == nullptr) return;   // Unknown item name: skip rather than crash.
+        uint32_t itemID = info->ItemID;
 
+        // Combined map (kept for single-world consumers / fallback).
+        if (this->StartingItemIDs.contains(itemID)) this->StartingItemIDs.find(itemID).value() += Count;
+        else                                        this->StartingItemIDs.insert(itemID, Count);
+
+        if (WorldMap != nullptr)
+        {
+            if (WorldMap->contains(itemID)) WorldMap->find(itemID).value() += Count;
+            else                            WorldMap->insert(itemID, Count);
+        }
+    };
+
+    if (!isMultiworld)
+    {   // Flat layout: items at a two-space indent.
+
+        QRegularExpression reg("^  (.+: .+)\n", QRegularExpression::MultilineOption);
+        QRegularExpressionMatchIterator it = reg.globalMatch(LayoutSection);
+        while (it.hasNext())
+        {
+            QStringList layoutParams = it.next().captured(1).split(": ");
+            if (layoutParams.size() == 2)
+            {
+                addItem(layoutParams.at(0), layoutParams.at(1).toInt(), nullptr);
+            }
+        }
+        return;
+    }
+
+    // Multiworld: walk line by line, tracking the current "Player N" block. Items are indented
+    // one extra level (four spaces). Store each into the matching world's map (0-based).
+    QRegularExpression playerHeader("^  Player (\\d+)", QRegularExpression::MultilineOption);
+    QRegularExpression itemLine("^    (.+: .+)$", QRegularExpression::MultilineOption);
+
+    int currentWorld = -1;   // 1-based world from the header
+    for (const QString& line : LayoutSection.split('\n'))
+    {
+        QRegularExpressionMatch hm = playerHeader.match(line);
+        if (hm.hasMatch())
+        {
+            currentWorld = hm.captured(1).toInt();
+            if (currentWorld > 0 && (size_t)currentWorld > this->StartingItemIDsByWorld.size())
+            {
+                this->StartingItemIDsByWorld.resize((size_t)currentWorld);
+            }
+            continue;
+        }
+
+        if (currentWorld <= 0) continue;
+
+        QRegularExpressionMatch im = itemLine.match(line);
+        if (!im.hasMatch()) continue;
+
+        QStringList layoutParams = im.captured(1).split(": ");
         if (layoutParams.size() == 2)
         {
-            uint32_t itemID = FindItemByName(layoutParams.at(0))->ItemID;
-
-            if (this->StartingItemIDs.contains(itemID))
-            {
-                this->StartingItemIDs.find(itemID).value() += layoutParams.at(1).toInt();
-            }
-            else
-            {
-                this->StartingItemIDs.insert(itemID, layoutParams.at(1).toInt());
-            }
+            addItem(layoutParams.at(0), layoutParams.at(1).toInt(),
+                    &this->StartingItemIDsByWorld[(size_t)(currentWorld - 1)]);
         }
     }
 }

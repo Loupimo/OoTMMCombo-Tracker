@@ -13,6 +13,7 @@ SharedData* gData = nullptr;                                // The shared data w
 GameID gGame = GAME_OOT;                                    // The current running game.
 bool gIsRAMLoaded = false;                                  // Tells if the current game RAM is ready.
 bool forceGameCheck = false;                                // Force a game check in order to be sure to track the correct PCs.
+bool isStable = true;                                       // Tells if the game version uses the last stable release.
 uintptr_t moduleBase = 0;                                   // The module base address of Project 64.
 uintptr_t regBase = 0;                                      // The RAM address where the Project 64 registers are stored.
 uintptr_t romBase = 0;                                      // The RAM address where the Project 64 ROM section is stored.
@@ -32,10 +33,11 @@ uint32_t gActiveCoordOffset = OOT_PLAYER_COORD;             // The current offse
 uint32_t gActiveSceneOffset = OOT_SCENE_OFFSET;             // The current offset to add to reach the last scene offset.
 uint32_t gActiveCurrSceneOffset = OOT_CURR_SCENE_OFFSET;    // The current offset to add to reach the current scene ID offset.
 uint32_t gActiveFaroreOffset = OOT_FARORE_STATE;            // The current offset to add to reach the farore state offset.
-uint32_t gActiveDeathOffset = OOT_DEATH_STATE;            // The current offset to add to reach the death state offset.
+uint32_t gActiveDeathOffset = OOT_DEATH_STATE;              // The current offset to add to reach the death state offset.
+uint32_t gNothingID = STABLE_NOTHING;                       // The current Nothing ID based on the game version.
 uint32_t gOOTActiveGlobalOffset = 0;                        // An offset to add to the active scene offset to reach the gLastScene variable for OoT.
 uint32_t gMMActiveGlobalOffset = 0;                         // An offset to add to the active scene offset to reach the gLastScene variable for MM.
-//uint32_t gActiveEntranceReg = S1_OFFSET;                    // The current register to use to get the next entrance value.
+//uint32_t gActiveEntranceReg = S1_OFFSET;                  // The current register to use to get the next entrance value.
 uint32_t gDetectCounter = 0;                                // The counter used to trigger a game check.
 uint32_t gSP = 0;                                           // The last value of the stack pointer.
 uint32_t gA1 = 0;                                           // The last value of the A1 register.
@@ -297,9 +299,25 @@ __declspec(naked) void CheckGameVersionASM()
         STORE_VERSION :
             mov [ecx], eax
             mov [ecx + 4], ebx
-            mov ecx, [gPatternState]
-            mov [ecx], 0                  // Reset gPatternState[GAME_OOT].Resolved
-            mov [ecx + 20], 0             // Reset gPatternState[GAME_MM].Resolved
+            mov byte ptr[gPatternState], 0      // Reset gPatternState[GAME_OOT].Resolved
+            mov byte ptr[gPatternState + 32], 0 // Reset gPatternState[GAME_MM].Resolved
+
+        STABLE_VERSION :
+            // Check if version is stable release
+            cmp eax, 0x69F7A146
+            jne DEV_VERSION
+
+            cmp ebx, 0x224AFE45
+            jne DEV_VERSION
+
+            mov [gNothingID], STABLE_NOTHING
+            mov [isStable], 1
+            ret
+
+        DEV_VERSION :
+            mov [gNothingID], DEV_NOTHING
+            mov [isStable], 0
+            ret
     }
 }
 
@@ -344,6 +362,9 @@ __declspec(naked) void PCHook()
             jb IS_RAM_LOADED
 
         GAME_CHECK:
+
+            // Check the game version
+            call CheckGameVersionASM
 
             // Reset the counter
             mov dword ptr [gDetectCounter], 0
@@ -491,7 +512,8 @@ __declspec(naked) void PCHook()
             sub eax, [gActiveActorOff]
             add eax, [gActiveFairyActorCombo]
             COMPUTE_RAM_ADDR(eax, ebx)
-            cmp word ptr [ebx + 8], 0x033C
+            mov edx, [gNothingID]
+            cmp word ptr [ebx + 8], dx
             jne DONE
 
             push edi
@@ -579,7 +601,7 @@ __declspec(naked) void PCHook()
 
             // The item is not a nothing object, we can exit
             READ_N64_REG(V1_OFFSET, eax)
-            cmp eax, 0x033C
+            cmp eax, [gNothingID]
             jne DONE
 
             READ_N64_REG(SP_OFFSET, ebx)
@@ -782,7 +804,7 @@ __declspec(naked) void PCHook()
             mov eax, [edx + V1_OFFSET]  // Get the buttlerfly object ID
 
             // if butterfly item != Nothing -> done
-            cmp eax, 0x033C
+            cmp eax, [gNothingID]
             jne DONE
 
             mov ebx, [edx + SP_OFFSET]

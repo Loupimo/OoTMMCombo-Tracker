@@ -6,6 +6,8 @@
 #include "Multi.h"
 #include "Game.h"
 #include <QLineEdit>
+#include <vector>
+#include <mutex>
 
 class App
 {
@@ -26,6 +28,11 @@ public:
 
     bool IsRunning;
     bool IsNetEnabled;
+
+    /* Coop "nothing" drops captured by the hook, waiting to be pushed to the ledger by the
+       network thread. Guarded by NothingMutex because the hook and network run on two threads. */
+    std::vector<TrackerNothing> PendingNothings;
+    std::mutex                  NothingMutex;
 
 #pragma endregion
 
@@ -109,6 +116,14 @@ public:
     *   @return 0 on completion.
     */
     int appQuit();
+
+    /*
+    *   Queue a "nothing" drop (captured by the DLL hook on the MemoryReader thread) so the
+    *   network thread can push it to the ledger and broadcast it to the coop team. Thread-safe.
+    *
+    *   @param Nothing    The nothing drop to enqueue (key / game / item id).
+    */
+    void QueueTrackerNothing(const TrackerNothing& Nothing);
 
 };
 

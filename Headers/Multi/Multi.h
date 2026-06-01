@@ -131,6 +131,21 @@ typedef struct
 NetMsg;
 
 /*
+*   A "nothing" drop captured by the DLL hook that must be pushed to the network ledger so the
+*   rest of the coop team sees it. The hook (MemoryReader thread) only knows the check key, the
+*   game and the item id; the sender / receiver world ids are filled in by the Game module from
+*   the last observed ITEM OUT (the local player). Crosses from the hook thread to the network
+*   thread through App's thread-safe queue.
+*/
+typedef struct
+{
+    uint8_t  gameId;    // OOT_GAME / MM_GAME
+    uint32_t key;       // OoTMM check key (already byte-swapped, ready for the ledger)
+    uint16_t gi;        // The granted item id
+}
+TrackerNothing;
+
+/*
 *   A complete ledger entry representing a single tracked item or entrance event, keyed for deduplication.
 */
 typedef struct

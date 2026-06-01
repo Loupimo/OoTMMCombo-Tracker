@@ -79,14 +79,14 @@ void ResolveButterflyTransform()
         return;
     }
 
-    uintptr_t base = FindPatternInPayload(sigs[4].Signature, PC_RANGE_START, PAYLOAD_END);
+    uintptr_t base = FindPatternInPayload(sigs[6].Signature, PC_RANGE_START, PAYLOAD_END);
 
     if (base != 0)
     {   // We have find the desired start address of the function
 
-        uintptr_t PC = base + sigs[4].Signature->PCOffset;  // The specific instruction to track
+        uintptr_t PC = base + sigs[6].Signature->PCOffset;  // The specific instruction to track
 
-        gPatternState[gGame].PCs[4] = PC;
+        gPatternState[gGame].PCs[6] = PC;
         LOG("[OK] PC 0x%08X", PC);
     }
 }
@@ -94,8 +94,8 @@ void ResolveButterflyTransform()
 
 void ResetButterflyTransform()
 {
-    gPatternState[GAME_OOT].PCs[5] = 0;
-    gPatternState[GAME_MM].PCs[5] = 0;
+    gPatternState[GAME_OOT].PCs[6] = 0;
+    gPatternState[GAME_MM].PCs[6] = 0;
 }
 
 
@@ -114,6 +114,14 @@ void BuildPCsPatterns()
     {
         sigs = MMSignatures;
         count = MMSignatureCount;
+        if (!isStable)
+        {
+            sigs[4].Signature->PCOffset = MM_HOOK_INIT_DEV_PCOFF;
+        }
+        else
+        {
+            sigs[4].Signature->PCOffset = MM_HOOK_INIT_STABLE_PCOFF;
+        }
     }
     else
     {

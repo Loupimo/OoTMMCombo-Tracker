@@ -54,6 +54,12 @@ public:
     NetMsg      msg[128];
 
     bool IsNetEnabled;
+
+    /* Last from / to world ids observed on a local ITEM OUT. In coop the local player is always
+       the sender, so these are reused to attribute hook-captured "nothing" drops that carry no
+       player info of their own. Defaults to 0 (unknown) until the first item is collected. */
+    uint8_t LocalPlayerFrom;
+    uint8_t LocalPlayerTo;
 #pragma endregion
 
 public:
@@ -240,6 +246,15 @@ public:
     *   @param App    The owning multiplayer app.
     */
     void gameTick(App* app);
+
+    /*
+    *   Drain the app's pending "nothing" drops (captured by the hook) and push each one to the
+    *   ledger so the coop team receives it. Runs on the network thread; uses the last observed
+    *   local ITEM OUT from / to world ids. No-op outside coop or when no local player is known yet.
+    *
+    *   @param App    The owning multiplayer app holding the pending-nothing queue.
+    */
+    void gameFlushTrackerNothings(App* app);
 
     /*
     *   Parse a raw ledger entry, resolve the matching object and item, log it and notify the tracker.

@@ -1287,7 +1287,23 @@ void ProgressionTab::RebuildFromSceneObjects()
 
     // Starting items are applied first so the world replay below can detect
     // them as already-found and progressive items advance to the right stage.
-    if (this->RomSettings != nullptr && !this->RomSettings->StartingItemIDs.isEmpty())
+    // In multiworld each world has its own starting set (StartingItemIDsByWorld), so use the
+    // active world's map; otherwise fall back to the combined StartingItemIDs (single / coop).
+    const QMap<uint32_t, uint32_t>* startingItems = nullptr;
+    if (this->RomSettings != nullptr)
+    {
+        const size_t activeIdx = GetActiveWorld();
+        if (activeIdx < this->RomSettings->StartingItemIDsByWorld.size())
+        {
+            startingItems = &this->RomSettings->StartingItemIDsByWorld[activeIdx];
+        }
+        else
+        {
+            startingItems = &this->RomSettings->StartingItemIDs;
+        }
+    }
+
+    if (startingItems != nullptr && !startingItems->isEmpty())
     {
         GameProgData* registries[] = {
             &this->OoTData, &this->MMData, &this->SoulsData, &this->CollectiblesData
@@ -1300,10 +1316,10 @@ void ProgressionTab::RebuildFromSceneObjects()
                 if (w == nullptr) continue;
                 for (uint32_t id : w->LookupKeys)
                 {
-                    if (this->RomSettings->StartingItemIDs.contains(id))
+                    if (startingItems->contains(id))
                     {
                         w->IsStartingItem = true;
-                        for (uint32_t i = 0; i < this->RomSettings->StartingItemIDs.value(id); i++)
+                        for (uint32_t i = 0; i < startingItems->value(id); i++)
                         {   // Mark the item found as many time necessary
 
                             w->MarkFound(0, nullptr);
@@ -1367,6 +1383,11 @@ void ProgressionTab::RebuildFromSceneObjects()
             }
         }
     }
+
+    // Keep the open detail panel in sync after a full replay (e.g. switching worlds): the
+    // ItemIconWidgets survive the rebuild, only their counts / locations changed, so re-show
+    // the current selection instead of waiting for the user to click another item.
+    this->RefreshCurrentDetail();
 }
 
 

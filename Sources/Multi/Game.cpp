@@ -10,7 +10,7 @@
 #include "UI/SceneRenderer.h"
 #include <direct.h>
 
-FILE * game_file_log = nullptr;
+//FILE * game_file_log = nullptr;
 
 Game::Game()
 {
@@ -61,12 +61,12 @@ void Game::gameClose()
     free(this->rxBuffer);
     free(this->entries);
     sendqClose(&this->sendq);
-    if (game_file_log != nullptr)
+    /*if (game_file_log != nullptr)
     {
         fflush(game_file_log);
         fclose(game_file_log);
     }
-    game_file_log = nullptr;
+    game_file_log = nullptr;*/
 }
 
 void Game::gameServerReconnect()
@@ -103,18 +103,21 @@ void Game::gameInit(SOCKET sock, int apiProtocol)
 
     memset(&this->msg, 0, sizeof(this->msg));
 
+    this->LocalPlayerFrom = 0;
+    this->LocalPlayerTo = 0;
+
     /* Log */
     printf("Game created\n");
 
-    if (game_file_log == nullptr)
+    /*if (game_file_log == nullptr)
     {
         _mkdir("./Logs");
 
-        /* Ensure the file exists */
+        // Ensure the file exists
         fopen_s(&game_file_log, "./Logs/Game_Log.csv", "a+");
         fprintf(game_file_log, "Object;OvType;SceneID;RoomID;ObjectID;Item;ItemID\n");
         fflush(game_file_log);
-    }
+    }*/
 
 }
 
@@ -233,6 +236,11 @@ void Game::gameApiItemOut()
         return;
 
     MultiLogger::LogMessage("ITEM OUT - FROM: %d, TO: %d, GAME: %d, KEY: %04X, GI: %04X, FLAGS: %04X", playerFrom, playerTo, gameId, key, gi, flags);
+
+    // Remember the local sender / receiver so hook-captured "nothing" drops (which carry no
+    // player info) can be attributed to the same worlds when pushed to the ledger.
+    this->LocalPlayerFrom = playerFrom;
+    this->LocalPlayerTo = playerTo;
 
     ParseLedgerFullEntry((char*)buffer, true, playerFrom, playerTo);
     if (this->IsNetEnabled)
@@ -696,6 +704,32 @@ void Game::gameServerTick(App* app)
     }
 }
 
+void Game::gameFlushTrackerNothings(App* app)
+{
+    // Only push to the ledger once we are connected and have seen at least one local ITEM OUT
+    // (so the sender / receiver world ids are known). The hook only enqueues in coop, so the
+    // queue is empty in single / multi and this is a no-op there.
+    if (!this->IsNetEnabled || this->state != STATE_READY)
+        return;
+
+    std::vector<TrackerNothing> pending;
+    {
+        std::lock_guard<std::mutex> lock(app->NothingMutex);
+        if (app->PendingNothings.empty())
+            return;
+        pending.swap(app->PendingNothings);
+    }
+
+    for (const TrackerNothing& n : pending)
+    {
+        // Reuse the last observed local sender / receiver. flags = 0: a nothing is never a
+        // counter item, so the ledger key uses the no-counter sentinel and dedups naturally.
+        this->writeItemLedger(this->LocalPlayerFrom, this->LocalPlayerTo, n.gameId, n.key, n.gi, 0);
+        MultiLogger::LogMessage("NOTHING OUT - FROM: %d, TO: %d, GAME: %d, KEY: %04X, GI: %04X",
+            this->LocalPlayerFrom, this->LocalPlayerTo, n.gameId, n.key, n.gi);
+    }
+}
+
 void Game::gameTick(App* app)
 {
     this->IsNetEnabled = app->IsNetEnabled;
@@ -710,6 +744,7 @@ void Game::gameTick(App* app)
     if (this->IsNetEnabled)
     {   // Net Enabled
 
+        this->gameFlushTrackerNothings(app);
         this->gameServerTick(app);
         if (this->apiError)
         {
@@ -763,17 +798,17 @@ void Game::ParseLedgerFullEntry(char* LedgerData, bool IsGoingOut, uint8_t playe
 
     if (recievedItem.GameID == OOT_GAME)
     {
-        fprintf(game_file_log, "OoT %s;%02X;%02X;%02X;%04X;%s;%02X\n", matchObject->Location, recievedItem.OvType, recievedItem.SceneID, recievedItem.RoomID, recievedItem.ObjectID, matchItem->ItemName, gameItem);
+        //fprintf(game_file_log, "OoT %s;%02X;%02X;%02X;%04X;%s;%02X\n", matchObject->Location, recievedItem.OvType, recievedItem.SceneID, recievedItem.RoomID, recievedItem.ObjectID, matchItem->ItemName, gameItem);
         MultiLogger::LogMessage("OoT World Object: %s - Item : %s (from world %d to world %d)\n", matchObject->Location, matchItem->ItemName, playerFrom, playerTo);
         emit MultiLogger::GetLogger()->NotifyObjectFound(OOT_GAME, matchObject, matchItem, source, (int)playerFrom, (int)playerTo);
     }
     else
     {   // Majora's Mask
 
-        fprintf(game_file_log, "MM %s;%02X;%02X;%02X;%04X;%s;%02X\n", matchObject->Location, recievedItem.OvType, recievedItem.SceneID, recievedItem.RoomID, recievedItem.ObjectID, matchItem->ItemName, gameItem);
+        //fprintf(game_file_log, "MM %s;%02X;%02X;%02X;%04X;%s;%02X\n", matchObject->Location, recievedItem.OvType, recievedItem.SceneID, recievedItem.RoomID, recievedItem.ObjectID, matchItem->ItemName, gameItem);
         MultiLogger::LogMessage("MM World Object: %s - Item : %s (from world %d to world %d)\n", matchObject->Location, matchItem->ItemName, playerFrom, playerTo);
         emit MultiLogger::GetLogger()->NotifyObjectFound(MM_GAME, matchObject, matchItem, source, (int)playerFrom, (int)playerTo);
     }
 
-    fflush(game_file_log);
+    //fflush(game_file_log);
 }

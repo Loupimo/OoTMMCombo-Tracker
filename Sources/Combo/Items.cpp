@@ -2166,30 +2166,30 @@ const ItemInfo* FindItemByName(QString Name)
 
         Name.truncate(Name.indexOf("(") - 1);   // -1 because we want to get rid of the previous space
     }
+
+    // Match case-insensitively: some spoiler logs use inconsistent casing for the game suffix
+    // (e.g. "Boomerang (OOT)" instead of "Boomerang (OoT)"), which a case-sensitive compare
+    // would miss and leave untracked.
+    for (size_t i = 0; i < NUM_ITEM; i++)
+    {
+        if (Name.compare(QString::fromUtf8(ItemList[i].ItemName), Qt::CaseInsensitive) == 0)
+        {
+            return &ItemList[i];
+        }
+    }
+
+    // No item found: return a throwaway "Unknown" entry carrying the original name.
     size_t len = Name.length() + 1;
     char* tmpObjName = (char*)malloc(sizeof(char) * len);
-    if (tmpObjName)
+    if (tmpObjName == nullptr)
     {
-        memcpy_s(tmpObjName, len, Name.toStdString().c_str(), len);
-        tmpObjName[len - 1] = '\0';
-
-        for (size_t i = 0; i < NUM_ITEM; i++)
-        {
-            if (strcmp(tmpObjName, ItemList[i].ItemName) == 0)
-            {
-                free(tmpObjName);
-                return &ItemList[i];
-            }
-        }
-
-        // No item found
-
-        ItemInfo* item = new ItemInfo();
-        item->ItemID = -1;
-        item->ItemName = tmpObjName;
-
-        return item;
-
+        return nullptr;
     }
-    return nullptr;
+    memcpy_s(tmpObjName, len, Name.toStdString().c_str(), len);
+    tmpObjName[len - 1] = '\0';
+
+    ItemInfo* item = new ItemInfo();
+    item->ItemID = -1;
+    item->ItemName = tmpObjName;
+    return item;
 }

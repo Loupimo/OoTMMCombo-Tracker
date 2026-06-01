@@ -48,6 +48,8 @@
 #define MM_BIG_FAIRY_ID      0x0000FFFF     // There is no MM big fairy.
 #define OOT_BUTTERFLY_ID     0x0000001E     // The OoT butterfly actor ID.
 #define MM_BUTTERFLY_ID      0x00000015     // The MM butterfly actor ID.
+#define STABLE_NOTHING       0x0000033C     // The Nothing item ID for stable release (30.1).
+#define DEV_NOTHING          0x0000035B     // The Nothing item ID for dev release.
 
 // Entrance stuff
 //#define OOT_SCENE_OFFSET     0x00001A68     // The offset to add to the real game address to reach the gLastScene for OoT
@@ -123,6 +125,7 @@ extern uint32_t * gActivePCs;               // The current set of program counte
 extern uint32_t gActiveSceneOffset;         // The current offset to add to reach the last scene offset.
 extern uint32_t gOOTActiveGlobalOffset;     // An offset to add to the active scene offset to reach the gLastScene variable for OoT.
 extern uint32_t gMMActiveGlobalOffset;      // An offset to add to the active scene offset to reach the gLastScene variable for MM.
+extern bool isStable;                       // Tell if the current game is stable release (true) or dev (false).
 
 void TryResolveROMBase();
 

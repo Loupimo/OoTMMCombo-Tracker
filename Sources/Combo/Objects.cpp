@@ -898,13 +898,21 @@ void SaveAllWorlds(QFile* SaveFile)
 
 size_t LoadAllWorlds(QByteArray* Data, size_t Offset)
 {
-	// Header: number of worlds, then re-allocate them as clones of the templates.
+	// Header: number of worlds.
 	uint32_t numWorlds = 1;
 	memcpy_s(&numWorlds, sizeof(numWorlds), Data->data() + Offset, sizeof(numWorlds));
 	Offset += sizeof(numWorlds);
 	if (numWorlds < 1) numWorlds = 1;
 
-	InitWorlds((size_t)numWorlds);
+	// Only (re)allocate the worlds when the current layout does not already match. A spoiler is
+	// normally loaded first and has already set up the right number of worlds with their item
+	// placements; re-cloning here would wipe those placements (LoadObject merges the collection
+	// state on top, it does not re-supply every item). We only InitWorlds when loading a save
+	// without a matching spoiler, so the arrays at least exist.
+	if (GetNumWorlds() != (size_t)numWorlds)
+	{
+		InitWorlds((size_t)numWorlds);
+	}
 
 	for (uint32_t w = 0; w < numWorlds; w++)
 	{

@@ -3,6 +3,7 @@
 #include <QMap>
 #include <QSet>
 #include <QFile>
+#include <vector>
 
 class FilterManager;
 struct ObjectInfo;
@@ -117,6 +118,11 @@ public:
     QSet<uint32_t> DisabledItemIDs;
     QSet<uint32_t> ProgressiveItemIDs;
     QMap<uint32_t, uint32_t> StartingItemIDs;
+
+    // Multiworld: starting items differ per world. In a multiworld spoiler the "Starting Items"
+    // section is split into "Player N" sub-blocks; each world's items are stored here, indexed
+    // 0-based (world 1 -> index 0). Empty in single / coop, where StartingItemIDs alone is used.
+    std::vector<QMap<uint32_t, uint32_t>> StartingItemIDsByWorld;
 
 #pragma endregion
 

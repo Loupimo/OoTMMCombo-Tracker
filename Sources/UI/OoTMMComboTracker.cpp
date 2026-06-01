@@ -442,14 +442,19 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
 
     this->RecentFiles = AppConfig::GetRecentFiles();
     this->UpdateRecentFiles();
-    if (AppConfig::GetAutoLoadTrackingFile() && this->RecentFiles.size())
-    {
-        this->LoadGameScenes(this->RecentFiles.front());
-    }
 
+    // Order matters: the spoiler must be loaded FIRST (it resets the scene objects and rebuilds
+    // the per-world placements), then the tracking save is applied ON TOP to restore the actual
+    // collected state. Doing it the other way round would let LoadGameSpoiler's ResetSceneObjects
+    // wipe everything the save just restored.
     if (AppConfig::GetAutoLoadSpoilerLog())
     {
         this->LoadGameSpoiler(AppConfig::GetLastSpoilerLogPath());
+    }
+
+    if (AppConfig::GetAutoLoadTrackingFile() && this->RecentFiles.size())
+    {
+        this->LoadGameScenes(this->RecentFiles.front());
     }
 
     // Connections
@@ -697,6 +702,12 @@ void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, c
     //   NetOut      : a check the local player collected for someone   -> map of "from"
     //   NetIn       : a ledger entry applied (from -> to)              -> map of "from", progress of "to"
     //
+    // Coop is special: the whole team shares one inventory, so a local collection (NetOut) AND a
+    // teammate's collection echoed back (NetIn) both have to update the map AND the progression.
+    // Because OoTMM fires both ITEM OUT and ITEM IN for an already-discovered shared check, the
+    // progression is credited only on the first Hidden -> Collected transition (idempotency guard
+    // below) so a shared check is counted exactly once.
+    //
     // The placement physically lives in the "from" world and carries TargetWorld == "to". The
     // destination world's progression is rebuilt from placements with TargetWorld == that world
     // and Status != Hidden, so marking the "from" placement collected feeds both the map of
@@ -736,6 +747,12 @@ void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, c
 
         case ItemSource::NetOut:
             updateMap = true; mapWorld = (FromWorld > 0 ? FromWorld : localWorld);
+            // Coop shares one inventory across the team, so a locally collected check must also
+            // credit the progression (the idempotency guard prevents double counting with NetIn).
+            if (this->ROMSettings.Mode == GameMode::coop)
+            {
+                updateProgress = true; progressWorld = (FromWorld > 0 ? FromWorld : localWorld);
+            }
             break;
 
         case ItemSource::NetIn:
@@ -752,18 +769,21 @@ void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, c
         return;
     }
 
-    // Resolve the placement inside the "from" world (where it physically lives) and mark it
-    // collected. This is what both the map of "from" and the progression of "to" read from.
+    // Resolve the placement inside the "from" world (where it physically lives).
     const size_t mapIdx = mapWorld > 0 ? (size_t)(mapWorld - 1) : 0;
     ObjectInfo* worldObj = FindObjectInWorld(mapIdx, Game, ObjectFound);
-    if (worldObj != nullptr)
-    {
-        worldObj->Status = ObjectState::Collected;
-    }
 
-    // Repaint the visible map tabs only when the placement world is the one on screen.
+    // Idempotency guard: a shared coop check is reported by both ITEM OUT and ITEM IN, and the
+    // same placement can be re-applied. Credit the progression only on the first transition out
+    // of Hidden so it is counted exactly once.
+    const bool wasHidden = (worldObj == nullptr) || (worldObj->Status == ObjectState::Hidden);
+
     if (updateMap && mapIdx == GetActiveWorld())
     {
+        // The placement world is on screen: let ItemFound perform the Hidden -> Collected
+        // transition AND refresh the live counters (scene / region / global), exactly like
+        // before. Pre-marking the status here would make ItemFound skip the count (it only
+        // counts objects still flagged Hidden).
         switch (Game)
         {
             case OOT_GAME: this->OoTTab->ItemFound(worldObj, ItemFound); break;
@@ -771,11 +791,19 @@ void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, c
             default: break;
         }
     }
+    else if (worldObj != nullptr)
+    {
+        // The placement lives in a world that is not displayed (or this is a progress-only
+        // event): just record the collected state so the map / dashboard pick it up when that
+        // world is selected and rebuilt from the scene arrays.
+        worldObj->Status = ObjectState::Collected;
+    }
 
-    // Live progression increment only when the item is destined to the world on screen; other
-    // worlds are re-derived from Status on the next world switch (RebuildFromSceneObjects).
+    // Live progression increment only when the item is destined to the world on screen AND this
+    // is the first time the placement is collected (prevents the coop ITEM OUT + ITEM IN double
+    // count). Other worlds are re-derived from Status on the next world switch.
     const size_t progressIdx = progressWorld > 0 ? (size_t)(progressWorld - 1) : 0;
-    if (updateProgress && this->ProgTab != nullptr && progressIdx == GetActiveWorld())
+    if (updateProgress && wasHidden && this->ProgTab != nullptr && progressIdx == GetActiveWorld())
     {
         this->ProgTab->OnItemFound(Game, ObjectFound, ItemFound, true);
         this->ProgTab->RefreshCurrentDetail();

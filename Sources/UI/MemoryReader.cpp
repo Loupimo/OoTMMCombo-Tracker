@@ -1,5 +1,6 @@
 #include "UI/MemoryReader.h"
 #include "UI/LogTab.h"
+#include "UI/OoTMMComboTracker.h"
 #include "Combo/OvTypes.h"
 #include "Combo/Objects.h"
 #include "Combo/Items.h"
@@ -186,6 +187,26 @@ void MemoryReader::CheckEvent(Event * CollectedEvent)
                 CorrectComboItem(&finalItem);
                 collectedItem = CollectedEvent->Query[1] & 0x0000FFFF;
                 CollectedEvent->Query[2] = 0xFFFFFFFF; // Update the treated flag in the shared memory
+
+                // Coop: "nothing" drops are never sent over the wire by OoTMM, so push them to the
+                // ledger ourselves (via the network thread) to keep the whole team's shared map in
+                // sync. The Game module fills in the from / to worlds and broadcasts + dedups it.
+                if (this->Owner != nullptr
+                    && this->Owner->EnableMultiplayer
+                    && this->Owner->Tracker != nullptr
+                    && this->Owner->WinOwner != nullptr
+                    && this->Owner->WinOwner->ROMSettings.Mode == GameMode::coop)
+                {
+                    TrackerNothing nothing;
+                    nothing.gameId = keyArr[0];
+                    // The ledger round-trip assembles the key from k's big-endian bytes (writeItemLedger
+                    // stores k little-endian, ParseLedgerFullEntry reads it back reversed). The raw
+                    // Query[0] is already in that big-endian order, so send it as-is. Sending the local
+                    // byteswap32(Query[0]) would double-reverse and resolve to the wrong object.
+                    nothing.key = CollectedEvent->Query[0];
+                    nothing.gi = (uint16_t)collectedItem;
+                    this->Owner->Tracker->QueueTrackerNothing(nothing);
+                }
             }
             else
             {   // The event is already treated
