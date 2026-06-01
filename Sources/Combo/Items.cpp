@@ -1,4 +1,5 @@
 #include "Combo/Items.h"
+#include "UI/Settings.h"   // ROMVersion (full definition) for the item-ID translation helpers
 
 #pragma region Items
 
@@ -2192,4 +2193,45 @@ const ItemInfo* FindItemByName(QString Name)
     item->ItemID = -1;
     item->ItemName = tmpObjName;
     return item;
+}
+
+// Active ROM build, read by ResolveRawItemID to translate stable-build item IDs into the
+// tracker's internal (dev) numbering. Set from the spoiler "Version:" line and from the
+// DLL-reported game version (see MemoryReader). Defaults to dev (identity / no shift) so dev
+// builds - which already match the internal numbering - track correctly before detection runs.
+static ROMVersion ActiveROMVersion = ROMVersion::dev;
+
+void SetActiveROMVersion(ROMVersion Version)
+{
+    ActiveROMVersion = Version;
+}
+
+ROMVersion GetActiveROMVersion()
+{
+    return ActiveROMVersion;
+}
+
+uint32_t ResolveRawItemID(uint32_t RawItemID)
+{
+    if (ActiveROMVersion != ROMVersion::stable)
+    {   // Dev builds already use the tracker's internal numbering: nothing to translate.
+
+        return RawItemID;
+    }
+
+    // Stable build: the dev build inserted new items at each boundary below, so a stable ID at or
+    // past a boundary is reported lower than its dev counterpart by the cumulative count of items
+    // inserted up to that point. Add that cumulative shift to recover the tracker's #define value.
+    // Tested high -> low so the first matching boundary applies the full cumulative shift.
+    if (RawItemID >= 926) return RawItemID + 62;    // SHARED souls onward     (+29, total +62)
+    if (RawItemID >= 888) return RawItemID + 33;    // SHARED mask block onward (+1,  total +33)
+    if (RawItemID >= 877) return RawItemID + 32;    // SHARED heart container   (+1,  total +32)
+    if (RawItemID >= 818) return RawItemID + 31;    // MM stick upgrade onward  (+1,  total +31)
+    if (RawItemID >= 622) return RawItemID + 30;    // MM remains onward        (+8,  total +30)
+    if (RawItemID >= 610) return RawItemID + 22;    // MM song notes onward     (+8,  total +22)
+    if (RawItemID >= 451) return RawItemID + 14;    // OoT bronze scale onward  (+1,  total +14)
+    if (RawItemID >= 155) return RawItemID + 13;    // OoT master sword onward  (+6,  total +13)
+    if (RawItemID >= 142) return RawItemID + 7;     // OoT song notes onward    (+7,  total +7)
+
+    return RawItemID;                               // IDs 0-141 are identical in both builds.
 }

@@ -1,5 +1,6 @@
 #include "Common.h"
 #include "Combo/Objects.h"
+#include "Combo/Items.h"
 #include "UI/AppConfig.h"
 #include "UI/OoTMMComboTracker.h"
 #include "UI/SceneEntrance.h"
@@ -1116,19 +1117,24 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
     // Loads Settings section
     this->ROMSettings = Settings();
     this->ROMSettings.ParseSettings(sections[0]);
-    /*QRegularExpression reg("^Version: (.+)");
-    QRegularExpressionMatchIterator it = reg.globalMatch(content);
-    QRegularExpressionMatch match = it.next();
-    QString version = match.captured(1);
 
-    if (version.startsWith("dev"))
+    // Detect the ROM build from the spoiler's "Version:" line. This is the most reliable source
+    // (the alternative is the DLL-reported game version, see MemoryReader). The build decides
+    // whether raw in-game item IDs need translating to the tracker's internal numbering: dev
+    // builds match it as-is, stable builds report lower IDs that ResolveRawItemID shifts up.
     {
-        this->ROMSettings.Version = ROMVersion::dev;
+        QRegularExpression versionReg("^Version: (.+)", QRegularExpression::MultilineOption);
+        QRegularExpressionMatchIterator versionIt = versionReg.globalMatch(content);
+        if (versionIt.hasNext())
+        {
+            QString version = versionIt.next().captured(1).trimmed();
+            this->ROMSettings.Version = version.startsWith("dev") ? ROMVersion::dev : ROMVersion::stable;
+        }
     }
-    else
-    {
-        this->ROMSettings.Version = ROMVersion::stable;
-    }*/
+
+    // Publish it to the global the item-ID translation reads (works across the UI and the
+    // multiplayer threads without threading the version through every call site).
+    SetActiveROMVersion(this->ROMSettings.Version);
 
     // The local world is auto-detected later from the network stream (see UpdateTrackedObject);
     // it defaults to world 1 until the first network event arrives.

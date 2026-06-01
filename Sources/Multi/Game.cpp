@@ -794,7 +794,9 @@ void Game::ParseLedgerFullEntry(char* LedgerData, bool IsGoingOut, uint8_t playe
     MultiLogger::LogMessage("OvType : %d, Scene ID: %d, Room ID: %d, Object ID: %d", recievedItem.OvType, recievedItem.SceneID, recievedItem.RoomID, recievedItem.ObjectID);
 
     ObjectInfo * matchObject = FindObject(recievedItem);
-    const ItemInfo * matchItem = FindItem(gameItem);
+    // On a stable ROM the ledger carries the lower stable item IDs; translate them into the
+    // tracker's internal (dev) numbering so the lookup matches the shared #define table.
+    const ItemInfo * matchItem = FindItem(ResolveRawItemID(gameItem));
 
     if (recievedItem.GameID == OOT_GAME)
     {

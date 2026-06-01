@@ -6,6 +6,11 @@
 #include "Combo/Items.h"
 #include <bit>
 
+// SharedData::GameVersion words written by a stable OoTMM build. Any other value is a dev build.
+// Used to translate stable-build item IDs into the tracker's internal numbering (ResolveRawItemID).
+#define STABLE_GAME_VERSION_0 0x69F7A146
+#define STABLE_GAME_VERSION_1 0x224AFE45
+
 uint32_t byteswap32(uint32_t x)
 {
     uint32_t y = (x >> 24) & 0xff;
@@ -259,7 +264,10 @@ void MemoryReader::CheckEvent(Event * CollectedEvent)
     {   // The event is valid
 
         ObjectInfo* matchObject = FindObject(finalItem);
-        const ItemInfo* matchItem = FindItem(collectedItem);
+        // On a stable ROM the game reports the lower stable item IDs; translate them into the
+        // tracker's internal (dev) numbering so the lookup matches. nothing.gi above keeps the
+        // raw native ID on purpose (it is replayed to the game / network unchanged).
+        const ItemInfo* matchItem = FindItem(ResolveRawItemID(collectedItem));
 
         // The hook only observes the local game, so the collecting / receiving world is
         // unknown here (-1). The tracker resolves the routing from the source and mode.
@@ -339,8 +347,21 @@ void MemoryReader::RunMemoryReader()
 {
     MultiLogger::LogMessage("Reading game memory...");
     LONG i = 0;
+    bool versionDetected = false;
     do
     {
+        if (!versionDetected && this->DLLData->GameVersion[0] != 0)
+        {   // The ROM is loaded (GameVersion is populated): derive the build from the DLL-reported
+            // game version so stable-build item IDs get translated (see ResolveRawItemID). A spoiler
+            // log, if loaded, overrides this with its (more reliable) "Version:" line.
+
+            SetActiveROMVersion(
+                (this->DLLData->GameVersion[0] == STABLE_GAME_VERSION_0 &&
+                 this->DLLData->GameVersion[1] == STABLE_GAME_VERSION_1)
+                    ? ROMVersion::stable : ROMVersion::dev);
+            versionDetected = true;
+        }
+
         while (i < this->DLLData->CurrIndex && i < this->DLLData->MaxSize)
         {
             MultiLogger::LogMessage("PC = 0x%08X, Mem = 0x%08X, Buffer[0] = 0x%08X, Buffer[1] = 0x%08X, Buffer[2] = 0x%08X, Buffer[3] = 0x%08X, Buffer[4] = 0x%08X, Buffer[5] = 0x%08X", this->DLLData->Buffer[i].PC, this->DLLData->Buffer[i].Mem, this->DLLData->Buffer[i].Query[0], this->DLLData->Buffer[i].Query[1], this->DLLData->Buffer[i].Query[2], this->DLLData->Buffer[i].Query[3], this->DLLData->Buffer[i].Query[4], this->DLLData->Buffer[i].Query[5]);

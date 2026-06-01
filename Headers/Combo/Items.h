@@ -5,6 +5,10 @@
 #include "UI/Icons.h"
 #include <QString>
 
+// Defined in UI/Settings.h. Forward-declared here so the item-ID translation helpers below can
+// take / return it without pulling the (heavy) Settings header into this widely-included file.
+enum class ROMVersion;
+
 #pragma region Defines
 
 #pragma region OoT
@@ -1164,3 +1168,32 @@ const ItemInfo * FindItem(uint32_t gi);
 *   @return The item information matching the given name, or a null pointer if none matched.
 */
 const ItemInfo* FindItemByName(QString Name);
+
+/*
+*   Set the active OoTMM ROM build. Item IDs reported by a stable build are translated by
+*   ResolveRawItemID so they line up with the tracker's internal (dev) numbering.
+*
+*   @param Version    The detected ROM build (stable or dev).
+*/
+void SetActiveROMVersion(ROMVersion Version);
+
+/*
+*   Get the active OoTMM ROM build last set with SetActiveROMVersion (defaults to dev).
+*
+*   @return The active ROM build.
+*/
+ROMVersion GetActiveROMVersion();
+
+/*
+*   Translate a raw in-game item ID into the tracker's internal (dev-build) item ID space.
+*
+*   The dev OoTMM build inserts new items at several points, pushing every later ID upward. The
+*   tracker's #define / ItemList table follows the dev numbering, so a stable build reports lower
+*   IDs that must be shifted up to match. Dev builds already use the tracker numbering and are
+*   returned unchanged. The active build is taken from the last SetActiveROMVersion call.
+*
+*   @param RawItemID    The raw item ID reported by the game.
+*
+*   @return The item ID expressed in the tracker's internal (dev) numbering.
+*/
+uint32_t ResolveRawItemID(uint32_t RawItemID);

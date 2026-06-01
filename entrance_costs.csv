@@ -74,3 +74,15 @@ Game;SceneID;FromEntranceID;From;ToEntranceID;To;ElapsedSec
 0;0x51;0x1fd;Hyrule Field - Market Entrance;0xdb;Hyrule Field -> Kakariko;30.5385
 0;0x52;0xdb;Kakariko - Hyrule Field;0x3b;Kakariko -> Shooting;103.265
 0;0x8f;0x3b;Shooting - Kakariko;0x463;Shooting -> Kakariko;3.14689
+1;0x22;0x3e30;Milk Road - Gorman Track;0xce00;Milk Road -> Gorman Track;29.3426
+1;0x6a;0xce00;Gorman Track - Milk Road;0xb230;Warp Owl -> Snowhead - Owl Statue;39.5214
+1;0x5c;0xb230;Snowhead - Owl Statue - Warp Owl;0xb010;Snowhead -> Path to Snowhead;74.4927
+1;0x5b;0xb010;Path to Snowhead - Snowhead;0x10007;Path To Snowhead -> Tree Grotto;48.5316
+1;0x8e;0x10007;Tree Grotto - Path To Snowhead;0x10107;Tree Grotto -> Path To Snowhead;66.279
+1;0x5b;0x10107;Path To Snowhead - Tree Grotto;0x9a40;Path to Snowhead -> Mountain Village;35.2146
+1;0x96;0x9a40;Mountain Village - Path to Snowhead;0x5200;Mountain Village -> Blacksmith;35.2553
+1;0x2c;0x5200;Blacksmith - Mountain Village;0x9a10;Blacksmith -> Mountain Village;12.8204
+1;0x96;0x9a10;Mountain Village - Blacksmith;0x3210;Mountain Village -> Path to Mountain Village;8.3796
+1;0x1c;0x3210;Path to Mountain Village - Mountain Village;0x5430;Path to Mountain Village -> Termina Field;69.8854
+1;0x2d;0x5430;Termina Field - Path to Mountain Village;0x14d0;Termina Field -> Peahat Grotto;212.112
+1;0x81;0x14d0;Peahat Grotto - Termina Field;0x10115;Peahat Grotto -> Termina Field;3.6469
