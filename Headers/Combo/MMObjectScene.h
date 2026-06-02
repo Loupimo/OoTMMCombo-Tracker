@@ -391,4 +391,7 @@ extern ObjectInfo* MM_GROTTO_DEKU_PALACE_GENERICSceneObjects;
 extern const size_t MM_LOTTERYNumOfObjs;
 extern ObjectInfo* MM_LOTTERYSceneObjects;
 
+extern const size_t MM_OWLSNumOfObjs;
+extern ObjectInfo* MM_OWLSSceneObjects;
+
 #pragma endregion

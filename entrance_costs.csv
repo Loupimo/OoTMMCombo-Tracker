@@ -1,88 +1,17 @@
 Game;SceneID;FromEntranceID;From;ToEntranceID;To;ElapsedSec
-0;0x94;0x472;Temple of Time Entryway - Temple of Time;0x25e;Temple of Time Entryway Entrance -> Market;6.3812
-0;0x98;0x25e;Market - Temple of Time Entryway Entrance;0x33;Market -> Market Entrance;5.77526
-0;0x93;0x33;Market Entrance - Market;0x1fd;Market Entrance -> Hyrule Field;2.82262
-0;0x51;0x1fd;Hyrule Field - Market Entrance;0x5c0;Hyrule Field -> Tektite Grotto;27.7585
-0;0x7a;0x5c0;Tektite Grotto - Hyrule Field;0x111a;Tektite Grotto -> Hyrule Field;2.47722
-0;0x51;0x111a;Hyrule Field - Tektite Grotto;0x1008;Hyrule Field -> Near Market Grotto;21.339
-0;0x79;0x1008;Near Market Grotto - Hyrule Field;0x1108;Near Market Grotto -> Hyrule Field;36.2946
-0;0x51;0x1108;Hyrule Field - Near Market Grotto;0x1008;Hyrule Field -> Near Market Grotto;2.28004
-0;0x79;0x1008;Near Market Grotto - Hyrule Field;0x1108;Near Market Grotto -> Hyrule Field;810.367
-0;0x51;0x1108;Hyrule Field - Near Market Grotto;0x117;Hyrule Field -> Gerudo Valley;74.4305
-0;0x5a;0x117;Gerudo Valley - Hyrule Field;0x5ac;Gerudo Valley -> Octorok Grotto;59.8097
-0;0x7f;0x5ac;Octorok Grotto - Gerudo Valley;0x1120;Octorok Grotto -> Gerudo Valley;32.4416
-0;0x94;0x472;Temple of Time Entryway - Temple of Time;0x25e;Temple of Time Entryway Entrance -> Market;5.80925
-0;0x98;0x25e;Market - Temple of Time Entryway Entrance;0x33;Market -> Market Entrance;6.27062
-0;0x93;0x33;Market Entrance - Market;0x1fd;Market Entrance -> Hyrule Field;3.12394
-0;0x51;0x1fd;Hyrule Field - Market Entrance;0x1008;Hyrule Field -> Near Market Grotto;12.1192
-0;0x79;0x1008;Near Market Grotto - Hyrule Field;0x1108;Near Market Grotto -> Hyrule Field;397.591
-0;0x51;0x1108;Hyrule Field - Near Market Grotto;0x1008;Hyrule Field -> Near Market Grotto;5.3025
-0;0x79;0x1008;Near Market Grotto - Hyrule Field;0x1108;Near Market Grotto -> Hyrule Field;111.614
-0;0x51;0x1108;Hyrule Field - Near Market Grotto;0x1008;Hyrule Field -> Near Market Grotto;3.83185
-0;0x79;0x1008;Near Market Grotto - Hyrule Field;0x1108;Near Market Grotto -> Hyrule Field;15.8874
-0;0x51;0x1108;Hyrule Field - Near Market Grotto;0x1008;Hyrule Field -> Near Market Grotto;3.8107
-0;0x79;0x1008;Near Market Grotto - Hyrule Field;0x1108;Near Market Grotto -> Hyrule Field;164.5
-0;0x51;0x1108;Hyrule Field - Near Market Grotto;0x1008;Hyrule Field -> Near Market Grotto;3.2302
-0;0x79;0x1008;Near Market Grotto - Hyrule Field;0x1108;Near Market Grotto -> Hyrule Field;39.4314
-0;0x51;0x1108;Hyrule Field - Near Market Grotto;0x1008;Hyrule Field -> Near Market Grotto;3.21514
-0;0x51;0x1108;Hyrule Field - Near Market Grotto;0x1008;Hyrule Field -> Near Market Grotto;3.08426
-0;0x79;0x1008;Near Market Grotto - Hyrule Field;0x1108;Near Market Grotto -> Hyrule Field;759.866
-0;0x51;0x1108;Hyrule Field - Near Market Grotto;0xdb;Hyrule Field -> Kakariko;23.9793
-0;0x52;0xdb;Kakariko - Hyrule Field;0x13d;Kakariko -> Death Mountain Trail;17.4522
-0;0x60;0x13d;Death Mountain Trail - Kakariko;0x5fc;Death Mountain Trail -> Cow Grotto;23.5158
-0;0x6e;0x5fc;Cow Grotto - Death Mountain Trail;0x111d;Cow Grotto -> Death Mountain Trail;43.1738
-0;0x61;0x147;Death Mountain Crater - Death Mountain Trail;0x1004;Death Mountain Crater -> Boulder Grotto;9.63427
-0;0x70;0x1004;Boulder Grotto - Death Mountain Crater;0x1104;Boulder Grotto -> Death Mountain Crater;40.6935
-0;0x61;0x1104;Death Mountain Crater - Boulder Grotto;0x1c1;Death Mountain Crater -> Goron City;85.3165
-0;0x94;0x472;Temple of Time Entryway - Temple of Time;0x25e;Temple of Time Entryway Entrance -> Market;6.50681
-0;0x98;0x25e;Market - Temple of Time Entryway Entrance;0x33;Market -> Market Entrance;6.96072
-0;0x93;0x33;Market Entrance - Market;0x1fd;Market Entrance -> Hyrule Field;2.64358
-0;0x51;0x1fd;Hyrule Field - Market Entrance;0xdb;Hyrule Field -> Kakariko;41.0223
-0;0x52;0xdb;Kakariko - Hyrule Field;0x13d;Kakariko -> Death Mountain Trail;16.0182
-0;0x60;0x13d;Death Mountain Trail - Kakariko;0x147;Death Mountain Trail -> Death Mountain Crater;45.2954
-0;0x61;0x147;Death Mountain Crater - Death Mountain Trail;0x165;Death Mountain Crater -> Fire Temple;20.1916
-0;0x43;0x2ca;Temple of Time - Master Sword;0x472;Temple of Time -> Temple of Time Entryway;13.0752
-0;0x94;0x472;Temple of Time Entryway - Temple of Time;0x25e;Temple of Time Entryway Entrance -> Market;5.94331
-0;0x98;0x25e;Market - Temple of Time Entryway Entrance;0x530;Market -> Mask Shop;7.64223
-1;0x86;0x10008;Open Grotto - Great Bay Coast;0x10108;Open Grotto -> Great Bay Coast;3.61926
-1;0x2d;0x5420;Termina Field - Great Bay Coast;0xd400;Termina Field -> West Clock Town;20.7872
-1;0x6d;0xd400;West Clock Town - Termina Field;0xca00;West Clock Town -> Bomb Shop;6.65659
-1;0x68;0xca00;Bomb Shop - West Clock Town;0xd460;Bomb Shop -> West Clock Town;21.9397
-1;0x6d;0xd460;West Clock Town - Bomb Shop;0xd830;West Clock Town Top -> South Clock Town;82.442
-1;0x6f;0xd830;South Clock Town - West Clock Town Top;0xc010;South Clock Town -> Clock Tower;5.81489
-0;0x98;0x1d1;Market - Mask Shop;0x138;Market -> Hyrule Castle;9.13709
-0;0x5f;0x138;Hyrule Castle - Market;0x25a;Hyrule Castle -> Market;61.5586
-0;0x98;0x25a;Market - Hyrule Castle;0x63;Market -> Treasure Game;7.28461
-0;0x10;0x63;Treasure Game - Market;0x1d5;Treasure Game -> Market;9.32221
-0;0x98;0x1d5;Market - Treasure Game;0x63;Market -> Treasure Game;130.973
-0;0x10;0x63;Treasure Game - Market;0x1d5;Treasure Game -> Market;132.775
-0;0x55;0x211;Kokiri Forest  - Link's House;0x11e;Kokiri Forest -> Lost Woods;23.2624
-0;0x5b;0x11e;Lost Woods - Kokiri Forest;0x1dd;Lost Woods -> Zora River;18.2003
-0;0x54;0x1dd;Zora River - Lost Woods;0xfff00;Minuet of Forest -> Minuet of Forest;3.3847
-0;0x54;0x1dd;Zora River - Lost Woods;0xfff00;Minuet of Forest -> Minuet of Forest;2.25634
-0;0x54;0x1dd;Zora River - Lost Woods;0xfff00;Minuet of Forest -> Minuet of Forest;9.27601
-0;0x54;0x19d;Zora River - Zora Domain;0x100b;Zora River -> Fairy Fountain Grotto;37.8676
-0;0x82;0x100b;Fairy Fountain Grotto - Zora River;0x110b;Fairy Fountain Grotto -> Zora River;20.114
-0;0x94;0x472;Temple of Time Entryway - Temple of Time;0x25e;Temple of Time Entryway Entrance -> Market;52.014
-0;0x98;0x25e;Market - Temple of Time Entryway Entrance;0x33;Market -> Market Entrance;5.83706
-0;0x93;0x33;Market Entrance - Market;0x7e;Market Entrance -> Pot House;3.07068
-0;0x94;0x472;Temple of Time Entryway - Temple of Time;0x25e;Temple of Time Entryway Entrance -> Market;12.4103
-0;0x98;0x25e;Market - Temple of Time Entryway Entrance;0x33;Market -> Market Entrance;16.8575
-0;0x93;0x33;Market Entrance - Market;0x7e;Market Entrance -> Pot House;4.62498
-0;0x4d;0x7e;Pot House - Market Entrance;0x26e;Pot House -> Market Entrance;237.838
-0;0x93;0x26e;Market Entrance - Pot House;0x1fd;Market Entrance -> Hyrule Field;4.91884
-0;0x51;0x1fd;Hyrule Field - Market Entrance;0xdb;Hyrule Field -> Kakariko;30.5385
-0;0x52;0xdb;Kakariko - Hyrule Field;0x3b;Kakariko -> Shooting;103.265
-0;0x8f;0x3b;Shooting - Kakariko;0x463;Shooting -> Kakariko;3.14689
-1;0x22;0x3e30;Milk Road - Gorman Track;0xce00;Milk Road -> Gorman Track;29.3426
-1;0x6a;0xce00;Gorman Track - Milk Road;0xb230;Warp Owl -> Snowhead - Owl Statue;39.5214
-1;0x5c;0xb230;Snowhead - Owl Statue - Warp Owl;0xb010;Snowhead -> Path to Snowhead;74.4927
-1;0x5b;0xb010;Path to Snowhead - Snowhead;0x10007;Path To Snowhead -> Tree Grotto;48.5316
-1;0x8e;0x10007;Tree Grotto - Path To Snowhead;0x10107;Tree Grotto -> Path To Snowhead;66.279
-1;0x5b;0x10107;Path To Snowhead - Tree Grotto;0x9a40;Path to Snowhead -> Mountain Village;35.2146
-1;0x96;0x9a40;Mountain Village - Path to Snowhead;0x5200;Mountain Village -> Blacksmith;35.2553
-1;0x2c;0x5200;Blacksmith - Mountain Village;0x9a10;Blacksmith -> Mountain Village;12.8204
-1;0x96;0x9a10;Mountain Village - Blacksmith;0x3210;Mountain Village -> Path to Mountain Village;8.3796
-1;0x1c;0x3210;Path to Mountain Village - Mountain Village;0x5430;Path to Mountain Village -> Termina Field;69.8854
-1;0x2d;0x5430;Termina Field - Path to Mountain Village;0x14d0;Termina Field -> Peahat Grotto;212.112
-1;0x81;0x14d0;Peahat Grotto - Termina Field;0x10115;Peahat Grotto -> Termina Field;3.6469
+0;0x43;0x2ca;Temple of Time - Master Sword;0x472;Temple of Time -> Temple of Time Entryway;17.8675
+0;0x94;0x472;Temple of Time Entryway - Temple of Time;0x25e;Temple of Time Entryway Entrance -> Market;7.43544
+0;0x98;0x25e;Market - Temple of Time Entryway Entrance;0x33;Market -> Market Entrance;31.0826
+0;0x93;0x33;Market Entrance - Market;0x1fd;Market Entrance -> Hyrule Field;10.0834
+0;0x51;0x1fd;Hyrule Field - Market Entrance;0xdb;Hyrule Field -> Kakariko;14.5456
+0;0x52;0xdb;Kakariko - Hyrule Field;0x17d;Kakariko -> Hyrule Field;14.3705
+0;0x51;0x17d;Hyrule Field - Kakariko;0xea;Hyrule Field -> Zora River;18.2865
+0;0x54;0xea;Zora River - Hyrule Field;0x100b;Zora River -> Fairy Fountain Grotto;116.09
+0;0x82;0x100b;Fairy Fountain Grotto - Zora River;0x110b;Fairy Fountain Grotto -> Zora River;20.5748
+0;0x54;0x110b;Zora River - Fairy Fountain Grotto;0x108;Zora River -> Zora Domain;35.9686
+0;0x58;0x108;Zora Domain - Zora River;0x225;Zora Domain -> Zora Fountain;14.3683
+0;0x59;0x225;Zora Fountain - Zora Domain;0x28;Zora Fountain -> Inside Jabu-Jabu;11.0203
+0;0x2;0x28;Inside Jabu-Jabu - Zora Fountain;0x221;Jabu-Jabu -> Zora Fountain;122.352
+0;0x59;0x221;Zora Fountain - Jabu-Jabu;0xfff00;Minuet of Forest -> Minuet of Forest;180.268
+0;0x55;0x211;Kokiri Forest  - Link's House;0x0;Kokiri Forest -> Deku Tree;22.2649
+0;0x0;0x0;Deku Tree - Kokiri Forest;0xfff00;Minuet of Forest -> Minuet of Forest;24.149

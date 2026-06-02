@@ -492,6 +492,7 @@ QWidget* SettingsTab::BuildNpcPage()
         { "eggShuffle",             ""    },
         { "shuffleLotteryMm",       "MM"  },
         { "shuffleFrogsRupeesOot",  "OoT" },
+        { "shuffleSkulltulaFinalReward", "OoT" },
         { "divingGameRupeeShuffle", "OoT" },
     }));
 
@@ -777,6 +778,7 @@ QWidget* SettingsTab::BuildWorldItemsPage()
     // Per-world unique items ---------------------------------------------
     contentLayout->addWidget(this->MakeParamGroup(content, "Unique World Items", {
         { "kamaroMaskOot", "OoT" },
+        { "powderKegOot", "OoT" },
         { "boomerangMm",   "MM"  },
     }));
 

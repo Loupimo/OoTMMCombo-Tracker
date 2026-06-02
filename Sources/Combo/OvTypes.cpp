@@ -24,6 +24,9 @@ void CorrectComboItem(ComboItem* Item)
 					Item->SceneID = GetSceneShop(Item->ObjectID, OOT_GAME);
 					break;
 				case OV_NPC:
+					// On a stable ROM the GS reward NPCs are reported one ID higher; translate to
+					// the tracker's internal numbering so both the scene lookup and FindObject match.
+					Item->ObjectID = ResolveRawOoTNpcID(Item->ObjectID);
 					Item->SceneID = GetSceneNPC(Item->ObjectID, OOT_GAME);
 					break;
 				case OV_FISH:

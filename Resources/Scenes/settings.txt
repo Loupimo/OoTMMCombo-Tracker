@@ -24,6 +24,7 @@
 	{ "shopShuffleOot", { "Shop - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
 	{ "shopShuffleMm", { "Shop - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
 	{ "owlShuffle", { "Owl", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+	{ "shuffleSkulltulaFinalReward", { "100 Gold Skulltula Reward", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, {  } } },
 	{ "shufflePotsOot", { "Pots - OoT", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
 	{ "shufflePotsMm", { "Pots - MM", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
 	{ "shuffleCratesOot", { "Crates - OoT", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
@@ -77,7 +78,7 @@
 	{ "progressiveShieldsOot", { "Progressive Shields - OoT", ParamType::boolean, ParamCategory::progressive, ShuffleSetting::vanilla, { OOT_PROGRESSIVE_SHIELD_DEKU, OOT_PROGRESSIVE_SHIELD_HYLIAN } } },
 	{ "progressiveSwordsOot", { "Progressive Swords - OoT", ParamType::boolean, ParamCategory::progressive, ShuffleSetting::vanilla, { OOT_SWORD_KOKIRI, OOT_SWORD_MASTER, OOT_SWORD_KNIFE, OOT_SWORD_GORON, OOT_SWORD_BIGGORON, OOT_SWORD_RAZOR, OOT_SWORD_GILDED, OOT_SWORD } } },
 	{ "progressiveShieldsMm", { "Progressive Shields - Mm", ParamType::boolean, ParamCategory::progressive, ShuffleSetting::vanilla, { MM_PROGRESSIVE_SHIELD_DEKU, MM_PROGRESSIVE_SHIELD_HERO } } },
-	{ "progressiveGFS", { "Progressive Great Fairy Sword", ParamType::boolean, ParamCategory::progressive, ShuffleSetting::vanilla, { MM_SWORD_KOKIRI, MM_SWORD_RAZOR, MM_SWORD_GILDED, MM_GREAT_FAIRY_SWORD } } },
+	{ "progressiveGFS", { "Progressive Great Fairy Sword", ParamType::boolean, ParamCategory::progressive, ShuffleSetting::vanilla, { MM_SWORD_KOKIRI, MM_SWORD_RAZOR, MM_SWORD_GILDED, MM_GREAT_FAIRY_SWORD, MM_SWORD } } },
 	{ "progressiveClocks", { "Progressive Clock", ParamType::boolean, ParamCategory::progressive, ShuffleSetting::all, { MM_CLOCK, MM_CLOCK1, MM_CLOCK2, MM_CLOCK3, MM_CLOCK4, MM_CLOCK5, MM_CLOCK6 } } },
 	{ "sticksNutsUpgradesMm", { "Deku Sticks / Nuts Upgrades - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_NUT_UPGRADE, MM_NUT_UPGRADE2, MM_STICK_UPGRADE, MM_STICK_UPGRADE2 } } },
 	{ "sunSongMm", { "Sun's Song - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_SONG_SUN } } },
@@ -210,4 +211,6 @@
 	{ "sharedSongSerenade", { "Shared Serenade of Water", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_TP_WATER, OOT_SONG_NOTE_TP_WATER, MM_SONG_TP_WATER, MM_SONG_NOTE_TP_WATER } } },
 	{ "sharedSongRequiem", { "Shared Requiem of Spirit", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_TP_SPIRIT, OOT_SONG_NOTE_TP_SPIRIT, MM_SONG_TP_SPIRIT, MM_SONG_NOTE_TP_SPIRIT } } },
 	{ "sharedSongNocturne", { "Shared Nocturne of Shadow", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_TP_SHADOW, OOT_SONG_NOTE_TP_SHADOW, MM_SONG_TP_SHADOW, MM_SONG_NOTE_TP_SHADOW } } },
-	{ "sharedSongPrelude", { "Shared Prelude of Light", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_TP_LIGHT, OOT_SONG_NOTE_TP_LIGHT, MM_SONG_TP_LIGHT, MM_SONG_NOTE_TP_LIGHT } } }
+	{ "sharedSongPrelude", { "Shared Prelude of Light", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_TP_LIGHT, OOT_SONG_NOTE_TP_LIGHT, MM_SONG_TP_LIGHT, MM_SONG_NOTE_TP_LIGHT } } },
+	{ "powderKegOot", { "Powder Keg (OoT)", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_POWDER_KEG } } },
+	{ "sharedPowderKeg", { "Shared Powder Keg", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_POWDER_KEG, MM_POWDER_KEG } } }

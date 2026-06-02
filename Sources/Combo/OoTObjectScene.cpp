@@ -2016,14 +2016,15 @@ static ObjectInfo OOT_HAUNTED_WASTELANDSceneObjects_Data [OOT_HAUNTED_WASTELANDN
 };
 ObjectInfo * OOT_HAUNTED_WASTELANDSceneObjects = OOT_HAUNTED_WASTELANDSceneObjects_Data;
 
-const size_t OOT_HOUSE_OF_SKULLTULANumOfObjs = 5;
+const size_t OOT_HOUSE_OF_SKULLTULANumOfObjs = 6;
 static ObjectInfo OOT_HOUSE_OF_SKULLTULASceneObjects_Data [OOT_HOUSE_OF_SKULLTULANumOfObjs] =
 {
 	{ GS_10, OOT_HOUSE_OF_SKULLTULA, "10 Tokens", "OOT Skulltula House 10 Tokens", ObjectType::npc, {657, 431, 0}, OOT_HOUSE_OF_SKULLTULA, ObjectType::npc, EGameIcon::wallet, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ GS_20, OOT_HOUSE_OF_SKULLTULA, "20 Tokens", "OOT Skulltula House 20 Tokens", ObjectType::npc, {287, 434, 0}, OOT_HOUSE_OF_SKULLTULA, ObjectType::npc, EGameIcon::agony, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ GS_30, OOT_HOUSE_OF_SKULLTULA, "30 Tokens", "OOT Skulltula House 30 Tokens", ObjectType::npc, {469, 126, 0}, OOT_HOUSE_OF_SKULLTULA, ObjectType::npc, EGameIcon::big_wallet, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ GS_40, OOT_HOUSE_OF_SKULLTULA, "40 Tokens", "OOT Skulltula House 40 Tokens", ObjectType::npc, {290, 222, 0}, OOT_HOUSE_OF_SKULLTULA, ObjectType::npc, EGameIcon::bombchu, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
-	{ GS_50, OOT_HOUSE_OF_SKULLTULA, "50 Tokens", "OOT Skulltula House 50 Tokens", ObjectType::npc, {650, 219, 0}, OOT_HOUSE_OF_SKULLTULA, ObjectType::heart_piece, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
+	{ GS_50, OOT_HOUSE_OF_SKULLTULA, "50 Tokens", "OOT Skulltula House 50 Tokens", ObjectType::npc, {650, 219, 0}, OOT_HOUSE_OF_SKULLTULA, ObjectType::heart_piece, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ GS_100, OOT_HOUSE_OF_SKULLTULA, "100 Tokens", "OOT Skulltula House 100 Tokens", ObjectType::npc, {472, 311, 0}, OOT_HOUSE_OF_SKULLTULA, ObjectType::npc, EGameIcon::gold_rupee, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 ObjectInfo * OOT_HOUSE_OF_SKULLTULASceneObjects = OOT_HOUSE_OF_SKULLTULASceneObjects_Data;
 

@@ -90,7 +90,8 @@ const QHash<QString, QPair<uint32_t, uint32_t>> SpoilerMap =
     { "Swamp Spider House", { MM_SPIDER_HOUSE_SWAMP, MM_GAME } },
     { "Ocean Spider House", { MM_SPIDER_HOUSE_OCEAN, MM_GAME } },
     { "Clock Tower Roof", { MM_CLOCK_TOWER_ROOFTOP, MM_GAME } },
-    { "The Moon", { MM_MOON, MM_GAME } }
+    { "The Moon", { MM_MOON, MM_GAME } },
+    { "POCKET", { MM_OWLS, MM_GAME } }
 };
 
 

@@ -5279,4 +5279,20 @@ static ObjectInfo MM_LOTTERYSceneObjects_Data [MM_LOTTERYNumOfObjs] =
 };
 ObjectInfo * MM_LOTTERYSceneObjects = MM_LOTTERYSceneObjects_Data;
 
+const size_t MM_OWLSNumOfObjs = 10;
+static ObjectInfo MM_OWLSSceneObjects_Data [MM_OWLSNumOfObjs] =
+{
+	{ OWL_STONE_TOWER, MM_OWLS, "Owl Statue", "MM Stone Tower Owl Statue", ObjectType::none, {0, 0, 0}, MM_STONE_TOWER, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Hit the statue with a sword<br><br><b>Requirements:</b><br>- Sword (MM)" },
+	{ OWL_SOUTHERN_SWAMP, MM_OWLS, "Owl Statue", "MM Southern Swamp Owl Statue", ObjectType::none, {0, 0, 0}, MM_SOUTHERN_SWAMP, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Hit the statue with a sword<br><br><b>Requirements:</b><br>- Sword (MM)" },
+	{ OWL_CLOCK_TOWN, MM_OWLS, "Owl Statue", "MM Clock Town Owl Statue", ObjectType::none, {0, 0, 0}, MM_CLOCK_TOWN_SOUTH, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Hit the statue with a sword<br><br><b>Requirements:</b><br>- Sword (MM)" },
+	{ OWL_GREAT_BAY, MM_OWLS, "Owl Statue", "MM Great Bay Coast Owl Statue", ObjectType::none, {0, 0, 0}, MM_GREAT_BAY_COAST, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Hit the statue with a sword<br><br><b>Requirements:</b><br>- Sword (MM)" },
+	{ OWL_IKANA_CANYON, MM_OWLS, "Owl Statue", "MM Ikana Canyon Owl Statue", ObjectType::none, {0, 0, 0}, MM_IKANA_CANYON, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Hit the statue with a sword<br><br><b>Requirements:</b><br>- Sword (MM)" },
+	{ OWL_MILK_ROAD, MM_OWLS, "Owl Statue", "MM Milk Road Owl Statue", ObjectType::none, {0, 0, 0}, MM_MILK_ROAD, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Hit the statue with a sword<br><br><b>Requirements:</b><br>- Sword (MM)" },
+	{ OWL_MOUNTAIN_VILLAGE, MM_OWLS, "Owl Statue", "MM Mountain Village Owl Statue", ObjectType::none, {0, 0, 0}, MM_MOUNTAIN_VILLAGE, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Hit the statue with a sword<br><br><b>Requirements:</b><br>- Sword (MM)" },
+	{ OWL_SNOWHEAD, MM_OWLS, "Owl Statue", "MM Snowhead Owl Statue", ObjectType::none, {0, 0, 0}, MM_SNOWHEAD, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Hit the statue with a sword<br><br><b>Requirements:</b><br>- Sword (MM)" },
+	{ OWL_WOODFALL, MM_OWLS, "Owl Statue", "MM Woodfall Owl Statue", ObjectType::none, {0, 0, 0}, MM_WOODFALL, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Hit the statue with a sword<br><br><b>Requirements:</b><br>- Sword (MM)" },
+	{ OWL_ZORA_CAPE, MM_OWLS, "Owl Statue", "MM Zora Cape Owl Statue", ObjectType::none, {0, 0, 0}, MM_ZORA_CAPE, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Hit the statue with a sword<br><br><b>Requirements:</b><br>- Sword (MM)" }
+};
+ObjectInfo * MM_OWLSSceneObjects = MM_OWLSSceneObjects_Data;
+
 #pragma endregion

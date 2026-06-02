@@ -3829,3 +3829,13 @@ LOTTERY_NIGHT_3;MM_LOTTERY;Prize Night 3;MM Lottery Prize Night 3;npc;231;222;0;
 LOTTERY_NIGHT_1;MM_CLOCK_TOWN_WEST;Prize Night 1;MM Lottery Prize Night 1;none;0;0;0;MM_LOTTERY;none;render_type;All;0;all;overworld;;
 LOTTERY_NIGHT_2;MM_CLOCK_TOWN_WEST;Prize Night 2;MM Lottery Prize Night 2;none;0;0;0;MM_LOTTERY;none;render_type;All;0;all;overworld;;
 LOTTERY_NIGHT_3;MM_CLOCK_TOWN_WEST;Prize Night 3;MM Lottery Prize Night 3;none;0;0;0;MM_LOTTERY;none;render_type;All;0;all;overworld;;
+OWL_STONE_TOWER;MM_OWLS;Owl Statue;MM Stone Tower Owl Statue;none;0;0;0;MM_STONE_TOWER;none;render_type;All;0;all;overworld;Sword (MM);Hit the statue with a sword
+OWL_SOUTHERN_SWAMP;MM_OWLS;Owl Statue;MM Southern Swamp Owl Statue;none;0;0;0;MM_SOUTHERN_SWAMP;none;render_type;All;0;all;overworld;Sword (MM);Hit the statue with a sword
+OWL_CLOCK_TOWN;MM_OWLS;Owl Statue;MM Clock Town Owl Statue;none;0;0;0;MM_CLOCK_TOWN_SOUTH;none;render_type;All;0;all;overworld;Sword (MM);Hit the statue with a sword
+OWL_GREAT_BAY;MM_OWLS;Owl Statue;MM Great Bay Coast Owl Statue;none;0;0;0;MM_GREAT_BAY_COAST;none;render_type;All;0;all;overworld;Sword (MM);Hit the statue with a sword
+OWL_IKANA_CANYON;MM_OWLS;Owl Statue;MM Ikana Canyon Owl Statue;none;0;0;0;MM_IKANA_CANYON;none;render_type;All;0;all;overworld;Sword (MM);Hit the statue with a sword
+OWL_MILK_ROAD;MM_OWLS;Owl Statue;MM Milk Road Owl Statue;none;0;0;0;MM_MILK_ROAD;none;render_type;All;0;all;overworld;Sword (MM);Hit the statue with a sword
+OWL_MOUNTAIN_VILLAGE;MM_OWLS;Owl Statue;MM Mountain Village Owl Statue;none;0;0;0;MM_MOUNTAIN_VILLAGE;none;render_type;All;0;all;overworld;Sword (MM);Hit the statue with a sword
+OWL_SNOWHEAD;MM_OWLS;Owl Statue;MM Snowhead Owl Statue;none;0;0;0;MM_SNOWHEAD;none;render_type;All;0;all;overworld;Sword (MM);Hit the statue with a sword
+OWL_WOODFALL;MM_OWLS;Owl Statue;MM Woodfall Owl Statue;none;0;0;0;MM_WOODFALL;none;render_type;All;0;all;overworld;Sword (MM);Hit the statue with a sword
+OWL_ZORA_CAPE;MM_OWLS;Owl Statue;MM Zora Cape Owl Statue;none;0;0;0;MM_ZORA_CAPE;none;render_type;All;0;all;overworld;Sword (MM);Hit the statue with a sword

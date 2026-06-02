@@ -36,6 +36,7 @@ Settings::Settings()
 	{ "shopShuffleOot", { "Shop - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
 	{ "shopShuffleMm", { "Shop - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
 	{ "owlShuffle", { "Owl", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+    { "shuffleSkulltulaFinalReward", { "100 Gold Skulltula Reward", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, {  } } },
 	{ "shufflePotsOot", { "Pots - OoT", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
 	{ "shufflePotsMm", { "Pots - MM", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
 	{ "shuffleCratesOot", { "Crates - OoT", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
@@ -92,7 +93,7 @@ Settings::Settings()
     { "progressiveShieldsOot", { "Progressive Shields - OoT", ParamType::boolean, ParamCategory::progressive, ShuffleSetting::vanilla, { OOT_PROGRESSIVE_SHIELD_DEKU, OOT_PROGRESSIVE_SHIELD_HYLIAN } } },
     { "progressiveSwordsOot", { "Progressive Swords - OoT", ParamType::boolean, ParamCategory::progressive, ShuffleSetting::vanilla, { OOT_SWORD_KOKIRI, OOT_SWORD_MASTER, OOT_SWORD_KNIFE, OOT_SWORD_GORON, OOT_SWORD_BIGGORON, OOT_SWORD_RAZOR, OOT_SWORD_GILDED, OOT_SWORD } } },
     { "progressiveShieldsMm", { "Progressive Shields - Mm", ParamType::boolean, ParamCategory::progressive, ShuffleSetting::vanilla, { MM_PROGRESSIVE_SHIELD_DEKU, MM_PROGRESSIVE_SHIELD_HERO } } },
-    { "progressiveGFS", { "Progressive Great Fairy Sword", ParamType::boolean, ParamCategory::progressive, ShuffleSetting::vanilla, { MM_SWORD_KOKIRI, MM_SWORD_RAZOR, MM_SWORD_GILDED, MM_GREAT_FAIRY_SWORD } } },
+    { "progressiveGFS", { "Progressive Great Fairy Sword", ParamType::boolean, ParamCategory::progressive, ShuffleSetting::vanilla, { MM_SWORD_KOKIRI, MM_SWORD_RAZOR, MM_SWORD_GILDED, MM_GREAT_FAIRY_SWORD, MM_SWORD } } },
     { "progressiveClocks", { "Progressive Clock", ParamType::boolean, ParamCategory::progressive, ShuffleSetting::all, { MM_CLOCK, MM_CLOCK1, MM_CLOCK2, MM_CLOCK3, MM_CLOCK4, MM_CLOCK5, MM_CLOCK6 } } },
     { "sticksNutsUpgradesMm", { "Deku Sticks / Nuts Upgrades - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_NUT_UPGRADE, MM_NUT_UPGRADE2, MM_STICK_UPGRADE, MM_STICK_UPGRADE2 } } },
     { "sunSongMm", { "Sun's Song - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_SONG_SUN } } },
@@ -212,20 +213,22 @@ Settings::Settings()
     { "boomerangMm", { "Boomerang (MM)", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { MM_BOOMERANG } } },
     { "sharedMaskKamaro", { "Shared Kamaro Mask", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_MASK_KAMARO, MM_MASK_KAMARO } } },
     { "sharedBoomrang", { "Shared Boomerang", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_BOOMERANG, MM_BOOMERANG } } },
-    { "sharedSongHealing", { "Shared Song of Healing", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_HEALING, OOT_SONG_NOTE_HEALING, MM_SONG_HEALING, MM_SONG_NOTE_HEALING } } },
-    { "sharedSongSoaring", { "Shared Song of Soaring", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_SOARING, OOT_SONG_NOTE_SOARING, MM_SONG_SOARING, MM_SONG_NOTE_SOARING } } },
-    { "sharedSongAwakening", { "Shared Sonata of Awakening", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_AWAKENING, OOT_SONG_NOTE_AWAKENING, MM_SONG_AWAKENING, MM_SONG_NOTE_AWAKENING } } },
-    { "sharedSongGoron", { "Shared Goron Lullaby", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_GORON, OOT_SONG_GORON_HALF, OOT_SONG_NOTE_GORON, MM_SONG_GORON, MM_SONG_GORON_HALF, MM_SONG_NOTE_GORON } } },
-    { "sharedSongZora", { "Shared New Wave Bossa Nova", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_ZORA, OOT_SONG_NOTE_ZORA, MM_SONG_ZORA, MM_SONG_NOTE_ZORA } } },
-    { "sharedSongOrder", { "Shared Oath to Order", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_ORDER, OOT_SONG_NOTE_ORDER, MM_SONG_ORDER, MM_SONG_NOTE_ORDER } } },
-    { "sharedSongZeldaLullaby", { "Shared Zelda's Lullaby", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_ZELDA, OOT_SONG_NOTE_ZELDA, MM_SONG_ZELDA, MM_SONG_NOTE_ZELDA } } },
-    { "sharedSongSarias", { "Shared Saria's Song", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_SARIA, OOT_SONG_NOTE_SARIA, MM_SONG_SARIA, MM_SONG_NOTE_SARIA } } },
-    { "sharedSongMinuet", { "Shared Minuet of Forest", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_TP_FOREST, OOT_SONG_NOTE_TP_FOREST, MM_SONG_TP_FOREST, MM_SONG_NOTE_TP_FOREST } } },
-    { "sharedSongBolero", { "Shared Bolero of Fire", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_TP_FIRE, OOT_SONG_NOTE_TP_FIRE, MM_SONG_TP_FIRE, MM_SONG_NOTE_TP_FIRE } } },
-    { "sharedSongSerenade", { "Shared Serenade of Water", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_TP_WATER, OOT_SONG_NOTE_TP_WATER, MM_SONG_TP_WATER, MM_SONG_NOTE_TP_WATER } } },
-    { "sharedSongRequiem", { "Shared Requiem of Spirit", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_TP_SPIRIT, OOT_SONG_NOTE_TP_SPIRIT, MM_SONG_TP_SPIRIT, MM_SONG_NOTE_TP_SPIRIT } } },
-    { "sharedSongNocturne", { "Shared Nocturne of Shadow", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_TP_SHADOW, OOT_SONG_NOTE_TP_SHADOW, MM_SONG_TP_SHADOW, MM_SONG_NOTE_TP_SHADOW } } },
-    { "sharedSongPrelude", { "Shared Prelude of Light", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SONG_TP_LIGHT, OOT_SONG_NOTE_TP_LIGHT, MM_SONG_TP_LIGHT, MM_SONG_NOTE_TP_LIGHT } } }
+    { "sharedSongHealing", { "Shared Song of Healing", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SONG_HEALING, OOT_SONG_NOTE_HEALING, MM_SONG_HEALING, MM_SONG_NOTE_HEALING } } },
+    { "sharedSongSoaring", { "Shared Song of Soaring", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SONG_SOARING, OOT_SONG_NOTE_SOARING, MM_SONG_SOARING, MM_SONG_NOTE_SOARING } } },
+    { "sharedSongAwakening", { "Shared Sonata of Awakening", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SONG_AWAKENING, OOT_SONG_NOTE_AWAKENING, MM_SONG_AWAKENING, MM_SONG_NOTE_AWAKENING } } },
+    { "sharedSongGoron", { "Shared Goron Lullaby", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SONG_GORON, OOT_SONG_GORON_HALF, OOT_SONG_NOTE_GORON, MM_SONG_GORON, MM_SONG_GORON_HALF, MM_SONG_NOTE_GORON } } },
+    { "sharedSongZora", { "Shared New Wave Bossa Nova", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SONG_ZORA, OOT_SONG_NOTE_ZORA, MM_SONG_ZORA, MM_SONG_NOTE_ZORA } } },
+    { "sharedSongOrder", { "Shared Oath to Order", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SONG_ORDER, OOT_SONG_NOTE_ORDER, MM_SONG_ORDER, MM_SONG_NOTE_ORDER } } },
+    { "sharedSongZeldaLullaby", { "Shared Zelda's Lullaby", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SONG_ZELDA, OOT_SONG_NOTE_ZELDA, MM_SONG_ZELDA, MM_SONG_NOTE_ZELDA } } },
+    { "sharedSongSarias", { "Shared Saria's Song", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SONG_SARIA, OOT_SONG_NOTE_SARIA, MM_SONG_SARIA, MM_SONG_NOTE_SARIA } } },
+    { "sharedSongMinuet", { "Shared Minuet of Forest", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SONG_TP_FOREST, OOT_SONG_NOTE_TP_FOREST, MM_SONG_TP_FOREST, MM_SONG_NOTE_TP_FOREST } } },
+    { "sharedSongBolero", { "Shared Bolero of Fire", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SONG_TP_FIRE, OOT_SONG_NOTE_TP_FIRE, MM_SONG_TP_FIRE, MM_SONG_NOTE_TP_FIRE } } },
+    { "sharedSongSerenade", { "Shared Serenade of Water", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SONG_TP_WATER, OOT_SONG_NOTE_TP_WATER, MM_SONG_TP_WATER, MM_SONG_NOTE_TP_WATER } } },
+    { "sharedSongRequiem", { "Shared Requiem of Spirit", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SONG_TP_SPIRIT, OOT_SONG_NOTE_TP_SPIRIT, MM_SONG_TP_SPIRIT, MM_SONG_NOTE_TP_SPIRIT } } },
+    { "sharedSongNocturne", { "Shared Nocturne of Shadow", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SONG_TP_SHADOW, OOT_SONG_NOTE_TP_SHADOW, MM_SONG_TP_SHADOW, MM_SONG_NOTE_TP_SHADOW } } },
+    { "sharedSongPrelude", { "Shared Prelude of Light", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SONG_TP_LIGHT, OOT_SONG_NOTE_TP_LIGHT, MM_SONG_TP_LIGHT, MM_SONG_NOTE_TP_LIGHT } } },
+    { "powderKegOot", { "Powder Keg (OoT)", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_POWDER_KEG } } },
+    { "sharedPowderKeg", { "Shared Powder Keg", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_POWDER_KEG, MM_POWDER_KEG } } }
 	});
 }
 
@@ -1278,6 +1281,13 @@ void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
                             this->CheckObjectExclusion(currObj, this->FilterSettings["skipZelda"].Value == ShuffleSetting::vanilla ? ShuffleSetting::all : ShuffleSetting::vanilla, Filter);
                             break;
                         }
+
+                        case EGameIcon::gold_rupee:
+                        {   // 100 GS reward
+                            
+                            this->CheckObjectExclusion(currObj, this->FilterSettings["shuffleSkulltulaFinalReward"].Value, Filter);
+                            break;
+                        }
 					}
 				}
 
@@ -1772,11 +1782,11 @@ void Settings::ApplyItemSettings()
 
             case ParamCategory::souls:
             {
-                if (it->AffectedVal.size() == 2)
+                if (it->AffectedVal.size() == 2 && !this->CheckItemEnabled(it->Value, it->AffectedVal.at(0)))
                 {
-                    for (uint32_t i = it->AffectedVal.at(0); i <= it->AffectedVal.at(1); i++)
+                    for (uint32_t i = it->AffectedVal.at(0) + 1; i <= it->AffectedVal.at(1); i++)
                     {
-                        this->ProgressiveItemIDs.insert(i);
+                        this->DisabledItemIDs.insert(i);
                     }
                 }
                 break;

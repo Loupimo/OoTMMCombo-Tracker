@@ -25,6 +25,7 @@ cowShuffleMm;Cow - MM;boolean;all;standard;
 shopShuffleOot;Shop - OoT;boolean;all;standard;
 shopShuffleMm;Shop - MM;boolean;all;standard;
 owlShuffle;Owl;boolean;all;standard;
+shuffleSkulltulaFinalReward;100 Gold Skulltula Reward;boolean;vanilla;standard;
 shufflePotsOot;Pots - OoT;shuffle;all;standard;
 shufflePotsMm;Pots - MM;shuffle;all;standard;
 shuffleCratesOot;Crates - OoT;shuffle;all;standard;
@@ -78,7 +79,7 @@ crossWarpMm;Cross-Games MM Song of Soaring;boolean;vanilla;standard;
 progressiveShieldsOot;Progressive Shields - OoT;boolean;vanilla;progressive;OOT_PROGRESSIVE_SHIELD_DEKU, OOT_PROGRESSIVE_SHIELD_HYLIAN
 progressiveSwordsOot;Progressive Swords - OoT;boolean;vanilla;progressive;OOT_SWORD_KOKIRI, OOT_SWORD_MASTER, OOT_SWORD_KNIFE, OOT_SWORD_GORON, OOT_SWORD_BIGGORON, OOT_SWORD_RAZOR, OOT_SWORD_GILDED, OOT_SWORD
 progressiveShieldsMm;Progressive Shields - Mm;boolean;vanilla;progressive;MM_PROGRESSIVE_SHIELD_DEKU, MM_PROGRESSIVE_SHIELD_HERO
-progressiveGFS;Progressive Great Fairy Sword;boolean;vanilla;progressive;MM_SWORD_KOKIRI, MM_SWORD_RAZOR, MM_SWORD_GILDED, MM_GREAT_FAIRY_SWORD
+progressiveGFS;Progressive Great Fairy Sword;boolean;vanilla;progressive;MM_SWORD_KOKIRI, MM_SWORD_RAZOR, MM_SWORD_GILDED, MM_GREAT_FAIRY_SWORD, MM_SWORD
 progressiveClocks;Progressive Clock;boolean;all;progressive;MM_CLOCK, MM_CLOCK1, MM_CLOCK2, MM_CLOCK3, MM_CLOCK4, MM_CLOCK5, MM_CLOCK6
 sticksNutsUpgradesMm;Deku Sticks / Nuts Upgrades - MM;boolean;all;standard;MM_NUT_UPGRADE, MM_NUT_UPGRADE2, MM_STICK_UPGRADE, MM_STICK_UPGRADE2
 sunSongMm;Sun's Song - MM;boolean;all;standard;MM_SONG_SUN
@@ -196,19 +197,21 @@ songNocturneMm;Nocturne of Shadow - MM;boolean;vanilla;standard;MM_SONG_TP_SHADO
 songPreludeMm;Prelude of Light - MM;boolean;vanilla;standard;MM_SONG_TP_LIGHT, MM_SONG_NOTE_TP_LIGHT
 kamaroMaskOot;Kamaro Mask (OoT);boolean;vanilla;standard;OOT_MASK_KAMARO
 boomerangMm;Boomerang (MM);boolean;vanilla;standard;MM_BOOMERANG
-sharedMaskKamaro;Shared Kamaro Mask;boolean;vanilla;standard;OOT_MASK_KAMARO, MM_MASK_KAMARO
-sharedBoomrang;Shared Boomerang;boolean;vanilla;standard;OOT_BOOMERANG, MM_BOOMERANG
-sharedSongHealing;Shared Song of Healing;boolean;vanilla;standard;OOT_SONG_HEALING, OOT_SONG_NOTE_HEALING, MM_SONG_HEALING, MM_SONG_NOTE_HEALING
-sharedSongSoaring;Shared Song of Soaring;boolean;vanilla;standard;OOT_SONG_SOARING, OOT_SONG_NOTE_SOARING, MM_SONG_SOARING, MM_SONG_NOTE_SOARING
-sharedSongAwakening;Shared Sonata of Awakening;boolean;vanilla;standard;OOT_SONG_AWAKENING, OOT_SONG_NOTE_AWAKENING, MM_SONG_AWAKENING, MM_SONG_NOTE_AWAKENING
-sharedSongGoron;Shared Goron Lullaby;boolean;vanilla;standard;OOT_SONG_GORON, OOT_SONG_GORON_HALF, OOT_SONG_NOTE_GORON, MM_SONG_GORON, MM_SONG_GORON_HALF, MM_SONG_NOTE_GORON
-sharedSongZora;Shared New Wave Bossa Nova;boolean;vanilla;standard;OOT_SONG_ZORA, OOT_SONG_NOTE_ZORA, MM_SONG_ZORA, MM_SONG_NOTE_ZORA
-sharedSongOrder;Shared Oath to Order;boolean;vanilla;standard;OOT_SONG_ORDER, OOT_SONG_NOTE_ORDER, MM_SONG_ORDER, MM_SONG_NOTE_ORDER
-sharedSongZeldaLullaby;Shared Zelda's Lullaby;boolean;vanilla;standard;OOT_SONG_ZELDA, OOT_SONG_NOTE_ZELDA, MM_SONG_ZELDA, MM_SONG_NOTE_ZELDA
-sharedSongSarias;Shared Saria's Song;boolean;vanilla;standard;OOT_SONG_SARIA, OOT_SONG_NOTE_SARIA, MM_SONG_SARIA, MM_SONG_NOTE_SARIA
-sharedSongMinuet;Shared Minuet of Forest;boolean;vanilla;standard;OOT_SONG_TP_FOREST, OOT_SONG_NOTE_TP_FOREST, MM_SONG_TP_FOREST, MM_SONG_NOTE_TP_FOREST
-sharedSongBolero;Shared Bolero of Fire;boolean;vanilla;standard;OOT_SONG_TP_FIRE, OOT_SONG_NOTE_TP_FIRE, MM_SONG_TP_FIRE, MM_SONG_NOTE_TP_FIRE
-sharedSongSerenade;Shared Serenade of Water;boolean;vanilla;standard;OOT_SONG_TP_WATER, OOT_SONG_NOTE_TP_WATER, MM_SONG_TP_WATER, MM_SONG_NOTE_TP_WATER
-sharedSongRequiem;Shared Requiem of Spirit;boolean;vanilla;standard;OOT_SONG_TP_SPIRIT, OOT_SONG_NOTE_TP_SPIRIT, MM_SONG_TP_SPIRIT, MM_SONG_NOTE_TP_SPIRIT
-sharedSongNocturne;Shared Nocturne of Shadow;boolean;vanilla;standard;OOT_SONG_TP_SHADOW, OOT_SONG_NOTE_TP_SHADOW, MM_SONG_TP_SHADOW, MM_SONG_NOTE_TP_SHADOW
-sharedSongPrelude;Shared Prelude of Light;boolean;vanilla;standard;OOT_SONG_TP_LIGHT, OOT_SONG_NOTE_TP_LIGHT, MM_SONG_TP_LIGHT, MM_SONG_NOTE_TP_LIGHT
+sharedMaskKamaro;Shared Kamaro Mask;boolean;vanilla;shared;OOT_MASK_KAMARO, MM_MASK_KAMARO
+sharedBoomrang;Shared Boomerang;boolean;vanilla;shared;OOT_BOOMERANG, MM_BOOMERANG
+sharedSongHealing;Shared Song of Healing;boolean;vanilla;shared;OOT_SONG_HEALING, OOT_SONG_NOTE_HEALING, MM_SONG_HEALING, MM_SONG_NOTE_HEALING
+sharedSongSoaring;Shared Song of Soaring;boolean;vanilla;shared;OOT_SONG_SOARING, OOT_SONG_NOTE_SOARING, MM_SONG_SOARING, MM_SONG_NOTE_SOARING
+sharedSongAwakening;Shared Sonata of Awakening;boolean;vanilla;shared;OOT_SONG_AWAKENING, OOT_SONG_NOTE_AWAKENING, MM_SONG_AWAKENING, MM_SONG_NOTE_AWAKENING
+sharedSongGoron;Shared Goron Lullaby;boolean;vanilla;shared;OOT_SONG_GORON, OOT_SONG_GORON_HALF, OOT_SONG_NOTE_GORON, MM_SONG_GORON, MM_SONG_GORON_HALF, MM_SONG_NOTE_GORON
+sharedSongZora;Shared New Wave Bossa Nova;boolean;vanilla;shared;OOT_SONG_ZORA, OOT_SONG_NOTE_ZORA, MM_SONG_ZORA, MM_SONG_NOTE_ZORA
+sharedSongOrder;Shared Oath to Order;boolean;vanilla;shared;OOT_SONG_ORDER, OOT_SONG_NOTE_ORDER, MM_SONG_ORDER, MM_SONG_NOTE_ORDER
+sharedSongZeldaLullaby;Shared Zelda's Lullaby;boolean;vanilla;shared;OOT_SONG_ZELDA, OOT_SONG_NOTE_ZELDA, MM_SONG_ZELDA, MM_SONG_NOTE_ZELDA
+sharedSongSarias;Shared Saria's Song;boolean;vanilla;shared;OOT_SONG_SARIA, OOT_SONG_NOTE_SARIA, MM_SONG_SARIA, MM_SONG_NOTE_SARIA
+sharedSongMinuet;Shared Minuet of Forest;boolean;vanilla;shared;OOT_SONG_TP_FOREST, OOT_SONG_NOTE_TP_FOREST, MM_SONG_TP_FOREST, MM_SONG_NOTE_TP_FOREST
+sharedSongBolero;Shared Bolero of Fire;boolean;vanilla;shared;OOT_SONG_TP_FIRE, OOT_SONG_NOTE_TP_FIRE, MM_SONG_TP_FIRE, MM_SONG_NOTE_TP_FIRE
+sharedSongSerenade;Shared Serenade of Water;boolean;vanilla;shared;OOT_SONG_TP_WATER, OOT_SONG_NOTE_TP_WATER, MM_SONG_TP_WATER, MM_SONG_NOTE_TP_WATER
+sharedSongRequiem;Shared Requiem of Spirit;boolean;vanilla;shared;OOT_SONG_TP_SPIRIT, OOT_SONG_NOTE_TP_SPIRIT, MM_SONG_TP_SPIRIT, MM_SONG_NOTE_TP_SPIRIT
+sharedSongNocturne;Shared Nocturne of Shadow;boolean;vanilla;shared;OOT_SONG_TP_SHADOW, OOT_SONG_NOTE_TP_SHADOW, MM_SONG_TP_SHADOW, MM_SONG_NOTE_TP_SHADOW
+sharedSongPrelude;Shared Prelude of Light;boolean;vanilla;shared;OOT_SONG_TP_LIGHT, OOT_SONG_NOTE_TP_LIGHT, MM_SONG_TP_LIGHT, MM_SONG_NOTE_TP_LIGHT
+powderKegOot;Powder Keg (OoT);boolean;vanilla;standard;OOT_POWDER_KEG
+sharedPowderKeg;Shared Powder Keg;boolean;vanilla;shared;OOT_POWDER_KEG, MM_POWDER_KEG

@@ -1206,6 +1206,7 @@ GS_20;OOT_HOUSE_OF_SKULLTULA;20 Tokens;OOT Skulltula House 20 Tokens;npc;287;434
 GS_30;OOT_HOUSE_OF_SKULLTULA;30 Tokens;OOT Skulltula House 30 Tokens;npc;469;126;0;OOT_HOUSE_OF_SKULLTULA;npc;big_wallet;All;0;oot;overworld;;
 GS_40;OOT_HOUSE_OF_SKULLTULA;40 Tokens;OOT Skulltula House 40 Tokens;npc;290;222;0;OOT_HOUSE_OF_SKULLTULA;npc;bombchu;All;0;oot;overworld;;
 GS_50;OOT_HOUSE_OF_SKULLTULA;50 Tokens;OOT Skulltula House 50 Tokens;npc;650;219;0;OOT_HOUSE_OF_SKULLTULA;heart_piece;render_type;All;0;oot;overworld;;
+GS_100;OOT_HOUSE_OF_SKULLTULA;100 Tokens;OOT Skulltula House 100 Tokens;npc;472;311;0;OOT_HOUSE_OF_SKULLTULA;npc;gold_rupee;All;0;oot;overworld;;
 MALON_EGG;OOT_HYRULE_CASTLE;Malon Egg;OOT Malon Egg;npc;131;243;0;OOT_HYRULE_CASTLE;npc;render_type;All;0;oot;overworld;;
 0x7a;OOT_HYRULE_CASTLE;Tree;OOT Hyrule Castle GS Tree;gs;218;223;0;OOT_HYRULE_CASTLE;gs;render_type;All;0;oot;overworld;;
 0x0008;OOT_HYRULE_CASTLE;Pot 1;OOT Hyrule Castle Pot 1;pot;173;435;1;OOT_HYRULE_CASTLE;pot;render_type;All;0;oot;broken;;

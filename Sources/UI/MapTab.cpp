@@ -831,7 +831,7 @@ void MapTab::ItemFound(ObjectInfo* Object, const ItemInfo* ItemFound)
     this->Scenes[Object->RenderScene]->ItemFound(Object, ItemFound);
 
     // Keep the scene header in sync with the active rendered scene
-    if (this->RenderedScene != nullptr && Object->RenderScene == this->RenderedScene->Scene->SceneID)
+    if (this->RenderedScene != nullptr && this->RenderedScene->Scene != nullptr && Object->RenderScene == this->RenderedScene->Scene->SceneID)
     {
         this->RefreshSceneHeader();
     }

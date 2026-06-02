@@ -639,6 +639,7 @@ uint32_t GetSceneNPC(uint32_t NPC, uint32_t Game)
 			case GS_30:
 			case GS_40:
 			case GS_50:
+            case GS_100:
 				return OOT_HOUSE_OF_SKULLTULA;
 
 			// Great Fairy Upgrades
