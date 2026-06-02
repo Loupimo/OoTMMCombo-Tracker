@@ -1,11 +1,17 @@
 #pragma array_limit 1000000
 
-struct entranceLink
+struct inEntranceLink
 {
     u32 inLink;
-    u32 outLink;
     u8 inLinkGame;
+};
+
+struct entranceLink
+{
+    u32 outLink;
     u8 outLinkGame;
+    u32 numOfInLinks;
+    inEntranceLink inLinks[numOfInLinks];
 };
 
 struct entranceMap
