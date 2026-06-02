@@ -1091,3 +1091,5 @@ SHARED_SONG_TP_WATER;Serenade of Water;song_blue;false
 SHARED_SONG_ZELDA;Zelda's Lullaby;song;false
 SHARED_POWDER_KEG;Powder Keg;powder;false
 OOT_POWDER_KEG;Powder Keg (OoT);powder;true
+OOT_GREAT_FAIRY_SWORD;Great Fairy's Sword (OoT);fairy_sword;true
+SHARED_GREAT_FAIRY_SWORD;Great Fairy's Sword;fairy_sword;false

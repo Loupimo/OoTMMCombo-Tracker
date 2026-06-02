@@ -228,7 +228,9 @@ Settings::Settings()
     { "sharedSongNocturne", { "Shared Nocturne of Shadow", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SONG_TP_SHADOW, OOT_SONG_NOTE_TP_SHADOW, MM_SONG_TP_SHADOW, MM_SONG_NOTE_TP_SHADOW } } },
     { "sharedSongPrelude", { "Shared Prelude of Light", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SONG_TP_LIGHT, OOT_SONG_NOTE_TP_LIGHT, MM_SONG_TP_LIGHT, MM_SONG_NOTE_TP_LIGHT } } },
     { "powderKegOot", { "Powder Keg (OoT)", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_POWDER_KEG } } },
-    { "sharedPowderKeg", { "Shared Powder Keg", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_POWDER_KEG, MM_POWDER_KEG } } }
+    { "sharedPowderKeg", { "Shared Powder Keg", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_POWDER_KEG, MM_POWDER_KEG } } },
+    { "gfsOot", { "Great Fairy's Sword - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_GREAT_FAIRY_SWORD } } },
+    { "sharedGFS", { "Shared Great Fairy's Sword", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_GREAT_FAIRY_SWORD, MM_GREAT_FAIRY_SWORD } } }
 	});
 }
 

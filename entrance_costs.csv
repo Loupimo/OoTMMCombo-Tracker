@@ -1,17 +1,61 @@
 Game;SceneID;FromEntranceID;From;ToEntranceID;To;ElapsedSec
-0;0x43;0x2ca;Temple of Time - Master Sword;0x472;Temple of Time -> Temple of Time Entryway;17.8675
-0;0x94;0x472;Temple of Time Entryway - Temple of Time;0x25e;Temple of Time Entryway Entrance -> Market;7.43544
-0;0x98;0x25e;Market - Temple of Time Entryway Entrance;0x33;Market -> Market Entrance;31.0826
-0;0x93;0x33;Market Entrance - Market;0x1fd;Market Entrance -> Hyrule Field;10.0834
-0;0x51;0x1fd;Hyrule Field - Market Entrance;0xdb;Hyrule Field -> Kakariko;14.5456
-0;0x52;0xdb;Kakariko - Hyrule Field;0x17d;Kakariko -> Hyrule Field;14.3705
-0;0x51;0x17d;Hyrule Field - Kakariko;0xea;Hyrule Field -> Zora River;18.2865
-0;0x54;0xea;Zora River - Hyrule Field;0x100b;Zora River -> Fairy Fountain Grotto;116.09
-0;0x82;0x100b;Fairy Fountain Grotto - Zora River;0x110b;Fairy Fountain Grotto -> Zora River;20.5748
-0;0x54;0x110b;Zora River - Fairy Fountain Grotto;0x108;Zora River -> Zora Domain;35.9686
-0;0x58;0x108;Zora Domain - Zora River;0x225;Zora Domain -> Zora Fountain;14.3683
-0;0x59;0x225;Zora Fountain - Zora Domain;0x28;Zora Fountain -> Inside Jabu-Jabu;11.0203
-0;0x2;0x28;Inside Jabu-Jabu - Zora Fountain;0x221;Jabu-Jabu -> Zora Fountain;122.352
-0;0x59;0x221;Zora Fountain - Jabu-Jabu;0xfff00;Minuet of Forest -> Minuet of Forest;180.268
-0;0x55;0x211;Kokiri Forest  - Link's House;0x0;Kokiri Forest -> Deku Tree;22.2649
-0;0x0;0x0;Deku Tree - Kokiri Forest;0xfff00;Minuet of Forest -> Minuet of Forest;24.149
+0;0x5b;0x5e0;Lost Woods Bridge - Kokiri Forest;0x185;Lost Woods Bridge -> Hyrule Field;0.0001156
+0;0x51;0x185;Hyrule Field - Lost Woods Bridge;0x117;Hyrule Field -> Gerudo Valley;53.9907
+0;0x5a;0x117;Gerudo Valley - Hyrule Field;0xfff05;Prelude of Light -> Prelude of Light;78.3675
+0;0x43;0x5f4;Temple of Time - Warp Song - Prelude of Light;0x2ca;Master Sword -> Temple of Time;12.3703
+0;0x43;0x2ca;Temple of Time - Master Sword;0xfff02;Serenade of Water -> Serenade of Water;16.9089
+0;0x57;0x604;Lake Hylia - Warp Song - Serenade of Water;0x189;Lake Hylia -> Hyrule Field;63.7901
+0;0x51;0x189;Hyrule Field - Lake Hylia;0x117;Hyrule Field -> Gerudo Valley;36.3059
+0;0x5a;0x117;Gerudo Valley - Hyrule Field;0xfff04;Nocturne of Shadow -> Nocturne of Shadow;37.4679
+0;0x53;0x568;Graveyard - Warp Song - Nocturne of Shadow;0x44f;Graveyard -> Dampe's Tomb;18.2931
+0;0x48;0x44f;Dampe's Tomb - Graveyard;0x359;Dampe's Tomb -> Graveyard;54.7102
+0;0x98;0x25a;Market - Hyrule Castle;0xad;Market Shooting Side -> Back Alley Shooting Side;6.4015
+0;0x95;0xad;Back Alley Shooting Side - Market Shooting Side;0x262;Back Alley Shooting Side -> Market Shooting Side;7.1512
+0;0x98;0x262;Market Shooting Side - Back Alley Shooting Side;0x138;Market -> Hyrule Castle;5.33787
+0;0x5f;0x138;Hyrule Castle - Market;0xfff05;Prelude of Light -> Prelude of Light;66.7803
+0;0x5f;0x111e;Hyrule Castle - Storms Grotto;0x25a;Hyrule Castle -> Market;25.7235
+0;0x98;0x25a;Market - Hyrule Castle;0xad;Market Shooting Side -> Back Alley Shooting Side;3.57196
+0;0x95;0xad;Back Alley Shooting Side - Market Shooting Side;0x43b;Back Alley -> Alley House;3.51932
+0;0x2b;0x43b;Alley House - Back Alley;0x67;Alley House -> Back Alley;7.94104
+0;0x95;0x67;Back Alley - Alley House;0x262;Back Alley Shooting Side -> Market Shooting Side;3.54785
+0;0x98;0x262;Market Shooting Side - Back Alley Shooting Side;0x33;Market -> Market Entrance;6.08108
+0;0x93;0x33;Market Entrance - Market;0xb1;Market Entrance -> Market;3.56631
+0;0x98;0xb1;Market - Market Entrance;0x138;Market -> Hyrule Castle;8.08503
+0;0x5f;0x138;Hyrule Castle - Market;0x25a;Hyrule Castle -> Market;16.022
+0;0x98;0x25a;Market - Hyrule Castle;0x138;Market -> Hyrule Castle;2.61884
+0;0x5f;0x138;Hyrule Castle - Market;0x25a;Hyrule Castle -> Market;2.75025
+0;0x98;0x25a;Market - Hyrule Castle;0x33;Market -> Market Entrance;10.1674
+0;0x93;0x33;Market Entrance - Market;0x1fd;Market Entrance -> Hyrule Field;3.99263
+0;0x51;0x1fd;Hyrule Field - Market Entrance;0xdb;Hyrule Field -> Kakariko;149.54
+0;0x52;0xdb;Kakariko - Hyrule Field;0x384;Kakariko -> Potion Shop;12.8014
+0;0x30;0x384;Potion Shop - Kakariko;0x44b;Potion Shop -> Kakariko Shop Back;4.00632
+0;0x52;0x44b;Kakariko Shop Back - Potion Shop;0x13d;Kakariko -> Death Mountain Trail;9.09625
+0;0x60;0x13d;Death Mountain Trail - Kakariko;0xfff05;Prelude of Light -> Prelude of Light;20.6516
+0;0x43;0x5f4;Temple of Time - Warp Song - Prelude of Light;0x472;Temple of Time -> Temple of Time Entryway;2.3835
+0;0x94;0x472;Temple of Time Entryway - Temple of Time;0x25e;Temple of Time Entryway Entrance -> Market;4.39262
+0;0x98;0x25e;Market - Temple of Time Entryway Entrance;0x388;Market -> Potion Shop;4.94183
+0;0x31;0x388;Potion Shop - Market;0x2a2;Potion Shop -> Market;9.61631
+0;0x98;0x2a2;Market - Potion Shop;0x171;Market -> Temple of Time Entryway;3.39168
+0;0x94;0x171;Temple of Time Entryway - Market;0x53;Temple of Time Entryway -> Temple of Time;5.13004
+0;0x43;0x53;Temple of Time - Temple of Time Entryway;0x2ca;Master Sword -> Temple of Time;6.23377
+0;0x43;0x2ca;Temple of Time - Master Sword;0xfff01;Bolero of Fire -> Bolero of Fire;14.1605
+0;0x61;0x4f6;Death Mountain Crater - Warp Song - Bolero of Fire;0x1c1;Death Mountain Crater -> Goron City;11.6808
+0;0x62;0x1c1;Goron City - Death Mountain Crater;0x1b9;Goron City -> Death Mountain Trail;10.8373
+0;0x60;0x1b9;Death Mountain Trail - Goron City;0xfff05;Prelude of Light -> Prelude of Light;94.0546
+0;0x43;0x5f4;Temple of Time - Warp Song - Prelude of Light;0x472;Temple of Time -> Temple of Time Entryway;3.71288
+0;0x94;0x472;Temple of Time Entryway - Temple of Time;0x25e;Temple of Time Entryway Entrance -> Market;4.57248
+0;0x98;0x25e;Market - Temple of Time Entryway Entrance;0x1381;Market -> Ganon Castle Exterior;4.0365
+0;0x64;0x1381;Ganon Castle Exterior - Market;0x467;Ganon Castle Exterior -> Inside Ganon Castle;11.2691
+0;0xd;0x467;Inside Ganon Castle - Ganon Castle Exterior;0xfff05;Prelude of Light -> Prelude of Light;129.047
+0;0x43;0x5f4;Temple of Time - Warp Song - Prelude of Light;0x2ca;Master Sword -> Temple of Time;6.41694
+0;0x43;0x2ca;Temple of Time - Master Sword;0x472;Temple of Time -> Temple of Time Entryway;6.83482
+0;0x94;0x472;Temple of Time Entryway - Temple of Time;0x25e;Temple of Time Entryway Entrance -> Market;6.66496
+0;0x98;0x25e;Market - Temple of Time Entryway Entrance;0x530;Market -> Mask Shop;2.69949
+1;0x6f;0xd800;South Clock Town - Clock Tower;0x5460;South Clock Town -> Termina Field;47.1528
+1;0x2d;0x5460;Termina Field - South Clock Town;0xd810;Termina Field -> South Clock Town;5.41975
+1;0x6f;0xd810;South Clock Town - Termina Field;0x5460;South Clock Town -> Termina Field;3.52367
+1;0x6e;0xd600;North Clock Town - Termina Field;0x5480;North Clock Town -> Termina Field;21.4772
+1;0x4b;0x9000;Beneath the Well - Ikana Canyon;0xff02;Wallmaster - Fairy Fountain -> Beneath the Well;22.7011
+1;0x7c;0x1400;Ocean Gossip Grotto - Termina Field;0x10111;Ocean Gossip Grotto -> Termina Field;41.724
+1;0x6c;0xd200;East Clock Town - Termina Field;0x5470;East Clock Town -> Termina Field;6.40177
+1;0x6e;0xd640;North Clock Town - Deku Playground Grotto;0x3600;North Clock Town -> Deku Playground Grotto;6.39937

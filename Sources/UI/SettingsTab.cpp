@@ -779,6 +779,7 @@ QWidget* SettingsTab::BuildWorldItemsPage()
     contentLayout->addWidget(this->MakeParamGroup(content, "Unique World Items", {
         { "kamaroMaskOot", "OoT" },
         { "powderKegOot", "OoT" },
+        { "gfsOot", "OoT" },
         { "boomerangMm",   "MM"  },
     }));
 

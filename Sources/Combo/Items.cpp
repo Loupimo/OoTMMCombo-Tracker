@@ -1,11 +1,11 @@
 #include "Combo/Items.h"
 #include "UI/Settings.h"   // ROMVersion (full definition) for the item-ID translation helpers
 
-#pragma region Items
+#pragma region Itemsfix
 
-#define NUM_ITEM SHARED_POWDER_KEG
+#define NUM_ITEM SHARED_GREAT_FAIRY_SWORD
 
-const ItemInfo ItemList[SHARED_POWDER_KEG] =
+const ItemInfo ItemList[NUM_ITEM] =
 {
     { OOT_BOMBS_5, "5 Bombs (OoT)", EGameIcon::bomb, true },
     { OOT_NUTS_5, "5 Deku Nuts (OoT)", EGameIcon::nut, true },
@@ -472,6 +472,7 @@ const ItemInfo ItemList[SHARED_POWDER_KEG] =
     { OOT_MASK_STONE, "Stone Mask (OoT)", EGameIcon::stone, true },
     { OOT_MASK_KAMARO, "Kamaro's Mask (OoT)", EGameIcon::kamaro, true },
     { OOT_SCALE_BRONZE, "Bronze Scale (OoT)", EGameIcon::bronze_scale, true },
+    { OOT_GREAT_FAIRY_SWORD, "Great Fairy's Sword (OoT)", EGameIcon::fairy_sword, true },
     { OOT_WEIRD_MUSHROOM, "Magic Mushroom", EGameIcon::mushroom, true },
     { OOT_CHATEAU, "Chateau Romani Refill", EGameIcon::chateau, true },
     { OOT_GOLD_DUST, "Gold Dust", EGameIcon::dust, true },
@@ -1095,6 +1096,7 @@ const ItemInfo ItemList[SHARED_POWDER_KEG] =
     { MM_SHIELD, "Progressive Shield (MM)", EGameIcon::hero_shield, true },
     { MM_STRENGTH, "Progressive Strength (MM)", EGameIcon::bracelet, true },
     { SHARED_POWDER_KEG, "Powder Keg", EGameIcon::powder, false },
+    { SHARED_GREAT_FAIRY_SWORD, "Great Fairy's Sword", EGameIcon::fairy_sword, false }
 };
 
 #pragma endregion 
@@ -1196,16 +1198,17 @@ uint32_t ResolveRawItemID(uint32_t RawItemID)
     // past a boundary is reported lower than its dev counterpart by the cumulative count of items
     // inserted up to that point. Add that cumulative shift to recover the tracker's #define value.
     // Tested high -> low so the first matching boundary applies the full cumulative shift.
-    if (RawItemID >= 926) return RawItemID + 63;    // SHARED souls onward     (+29, total +63)
-    if (RawItemID >= 888) return RawItemID + 34;    // SHARED mask block onward (+1,  total +34)
-    if (RawItemID >= 877) return RawItemID + 33;    // SHARED heart container   (+1,  total +33)
-    if (RawItemID >= 818) return RawItemID + 32;    // MM stick upgrade onward  (+1,  total +32)
-    if (RawItemID >= 622) return RawItemID + 31;    // MM remains onward        (+8,  total +31)
-    if (RawItemID >= 610) return RawItemID + 23;    // MM song notes onward     (+8,  total +23)
-    if (RawItemID >= 458) return RawItemID + 15;    // OoT powder key onward    (+1,  total +15)
-    if (RawItemID >= 451) return RawItemID + 14;    // OoT bronze scale onward  (+1,  total +14)
-    if (RawItemID >= 155) return RawItemID + 13;    // OoT master sword onward  (+6,  total +13)
-    if (RawItemID >= 142) return RawItemID + 7;     // OoT song notes onward    (+7,  total +7)
+    if (RawItemID >= 926) return RawItemID + 64;    // SHARED souls onward       (+29, total +64)
+    if (RawItemID >= 888) return RawItemID + 35;    // SHARED mask block onward  (+1,  total +35)
+    if (RawItemID >= 877) return RawItemID + 34;    // SHARED heart container    (+1,  total +34)
+    if (RawItemID >= 818) return RawItemID + 33;    // MM stick upgrade onward   (+1,  total +33)
+    if (RawItemID >= 622) return RawItemID + 32;    // MM remains onward         (+8,  total +32)
+    if (RawItemID >= 610) return RawItemID + 24;    // MM song notes onward      (+8,  total +24)
+    if (RawItemID >= 458) return RawItemID + 16;    // OoT powder key onward     (+1,  total +16)
+    if (RawItemID >= 452) return RawItemID + 15;    // OoT weird mushroom onward (+1,  total +15)
+    if (RawItemID >= 451) return RawItemID + 14;    // OoT bronze scale onward   (+1,  total +14)
+    if (RawItemID >= 155) return RawItemID + 13;    // OoT master sword onward   (+6,  total +13)
+    if (RawItemID >= 142) return RawItemID + 7;     // OoT song notes onward     (+7,  total +7)
 
     return RawItemID;                               // IDs 0-141 are identical in both builds.
 }

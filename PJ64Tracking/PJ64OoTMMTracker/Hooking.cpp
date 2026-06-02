@@ -302,17 +302,16 @@ __declspec(naked) void CheckGameVersionASM()
             mov byte ptr[gPatternState], 0      // Reset gPatternState[GAME_OOT].Resolved
             mov byte ptr[gPatternState + 32], 0 // Reset gPatternState[GAME_MM].Resolved
 
-        STABLE_VERSION :
-            // Check if version is stable release
-            cmp eax, 0x69F7A146
-            jne DEV_VERSION
+        // Check if version is stable release
+        cmp eax, 0x69F7A146
+        jne DEV_VERSION
 
-            cmp ebx, 0x224AFE45
-            jne DEV_VERSION
+        cmp ebx, 0x224AFE45
+        jne DEV_VERSION
 
-            mov [gNothingID], STABLE_NOTHING
-            mov [isStable], 1
-            ret
+        mov [gNothingID], STABLE_NOTHING
+        mov [isStable], 1
+        ret
 
         DEV_VERSION :
             mov [gNothingID], DEV_NOTHING

@@ -215,3 +215,7 @@ sharedSongNocturne;Shared Nocturne of Shadow;boolean;vanilla;shared;OOT_SONG_TP_
 sharedSongPrelude;Shared Prelude of Light;boolean;vanilla;shared;OOT_SONG_TP_LIGHT, OOT_SONG_NOTE_TP_LIGHT, MM_SONG_TP_LIGHT, MM_SONG_NOTE_TP_LIGHT
 powderKegOot;Powder Keg (OoT);boolean;vanilla;standard;OOT_POWDER_KEG
 sharedPowderKeg;Shared Powder Keg;boolean;vanilla;shared;OOT_POWDER_KEG, MM_POWDER_KEG
+powderKegOot;Powder Keg - OoT;boolean;vanilla;standard;OOT_POWDER_KEG
+sharedPowderKeg;Shared Powder Keg;boolean;vanilla;shared;OOT_POWDER_KEG, MM_POWDER_KEG
+gfsOot;Great Fairy's Sword - OoT;boolean;vanilla;standard;OOT_GREAT_FAIRY_SWORD
+sharedGFS;Shared Great Fairy's Sword;boolean;vanilla;shared;OOT_GREAT_FAIRY_SWORD, MM_GREAT_FAIRY_SWORD

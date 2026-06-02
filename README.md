@@ -10,7 +10,7 @@ In **multiplayer**, it is a fork of the [multi-client](https://github.com/OoTMM/
 
 - **[Project64-EM 1.0.3-PJ-3.0.1](https://github.com/OoTMM/Project64-EM/releases)** — this specific build is required (it is the only one the hook supports).
 - `PJ64Injector.exe` and `PJ64OoTMMTracker.dll` must be in the **same folder** as the tracker (the tracker injects them automatically when you start tracking).
-- **OoTMM build**: the tracker targets the latest **dev** build (currently `dev-a98fbc8`). It also supports the **stable release 30.1**, and should keep working with newer dev builds.
+- **OoTMM build**: the tracker targets the latest **dev** build (currently `dev-98a1ac3`). It also supports the **stable release 30.1**, and should keep working with newer dev builds.
 
 # Features
 

@@ -1,4 +1,6 @@
 #include <QApplication>
+#include <QTimer>
+#include <QPointer>
 #include <QGraphicsEllipseItem>
 #include <QPainter>
 #include <QPlainTextEdit>
@@ -995,7 +997,15 @@ void MapTab::FocusObject(ObjectInfo* Object)
     }
     this->MapList->scrollToItem(targetItem);
 
-    if (this->RenderedScene == nullptr || this->RenderedScene->Renderer == nullptr) return;
+    if (this->RenderedScene == nullptr) return;
+
+    // Resolve the active renderer through GetScene() rather than reading ->Renderer directly:
+    // multi-room scenes delegate rendering to the parent SceneItemTree (RoomItemTree::RenderScene
+    // forwards to its SceneItem), so a selected room's own ->Renderer is always null while the real
+    // renderer lives on its parent. RoomItemTree::GetScene() forwards to that parent, so this works
+    // for both plain scenes and rooms. Reading ->Renderer off a room was aborting the whole
+    // navigation here (no zoom, no object-tree selection) for every multi-room scene.
+    SceneRenderer* renderer = this->RenderedScene->GetScene();
 
     // Locate the ObjectItemTree associated with the object. Direct pointer
     // identity is the cheapest hit, but cross-scene navigation (Progression
@@ -1004,9 +1014,9 @@ void MapTab::FocusObject(ObjectInfo* Object)
     // never instantiated a leaf for — fall back to logical identity in that
     // case so the right leaf is still picked.
     ObjectItemTree* match = nullptr;
-    for (size_t i = 0; i < ObjectType::last - 1 && match == nullptr; ++i)
+    for (size_t i = 0; renderer != nullptr && i < ObjectType::last - 1 && match == nullptr; ++i)
     {
-        ObjectRenderer* rdr = this->RenderedScene->Renderer->ObjectsRen[i];
+        ObjectRenderer* rdr = renderer->ObjectsRen[i];
         if (rdr == nullptr) continue;
 
         for (ObjectItemTree* leaf : rdr->Objects)
@@ -1023,40 +1033,79 @@ void MapTab::FocusObject(ObjectInfo* Object)
         }
     }
 
-    if (match == nullptr) return;
-
-    // Reveal the row inside its category, select it (so MapTab's existing
-    // selection-driven highlighting kicks in) and scroll it into view.
-    if (QTreeWidgetItem* cat = match->parent())
+    // When the object has a rendered leaf, reveal its row inside the category, select it (so
+    // MapTab's selection-driven highlighting kicks in) and scroll it into view. A missing leaf is
+    // no longer fatal: we still zoom the map below using the object's static coordinates.
+    if (match != nullptr)
     {
-        cat->setExpanded(true);
-    }
-    this->ObjectList->setCurrentItem(match);
-    match->setSelected(true);
-    this->ObjectList->scrollToItem(match, QAbstractItemView::PositionAtCenter);
-
-    // Zoom the viewport closer than the default fit-in-view so the target
-    // actually pops out of the surrounding map. The user explicitly asked
-    // to be taken to it, so we ignore the AutoSnap setting that gates
-    // SceneRenderer::CenterViewOn.
-    if (match->GraphItem != nullptr && this->View != nullptr)
-    {
-        QRectF iconRect = match->GraphItem->mapToScene(match->GraphItem->boundingRect()).boundingRect();
-        const qreal pad = qMax(iconRect.width(), iconRect.height()) * 6.0;
-        QRectF target = iconRect.adjusted(-pad, -pad, pad, pad);
-
-        QRectF sceneBounds = this->View->scene() != nullptr
-            ? this->View->scene()->sceneRect()
-            : target;
-        if (!sceneBounds.isNull())
-        {   // Clamp the target rect inside the scene so fitInView keeps the
-            // zoom centered on the object even when it sits near a map edge.
-            target = target.intersected(sceneBounds);
-            if (target.isEmpty()) target = iconRect;
+        if (QTreeWidgetItem* cat = match->parent())
+        {
+            cat->setExpanded(true);
         }
-
-        this->View->fitInView(target, Qt::KeepAspectRatio);
+        this->ObjectList->setCurrentItem(match);
+        match->setSelected(true);
+        this->ObjectList->scrollToItem(match, QAbstractItemView::PositionAtCenter);
     }
+
+    if (this->View == nullptr) return;
+
+    // Zoom the viewport closer than the default fit-in-view so the target actually pops out of the
+    // surrounding map. The user explicitly asked to be taken to it, so we ignore the AutoSnap
+    // setting that gates SceneRenderer::CenterViewOn.
+    //
+    // Prefer the rendered leaf's graphics item for a pixel-accurate frame; otherwise fall back to
+    // the object's static map coordinates (ObjectInfo::Position, the same values the renderer feeds
+    // to setPos). The fallback keeps navigation zooming even when the object has no rendered leaf in
+    // the scene — filtered out of the map, a cross-scene placement, or a per-world clone the
+    // renderer never instantiated — which is the case that previously made this function bail out
+    // without zooming or centering anything.
+    QRectF anchorRect;
+    if (match != nullptr && match->GraphItem != nullptr)
+    {
+        anchorRect = match->GraphItem->mapToScene(match->GraphItem->boundingRect()).boundingRect();
+    }
+    else if (Object->Position[0] != 0 || Object->Position[1] != 0)
+    {   // No leaf to frame: build a small rect around the object's stored scene position.
+        const qreal half = 16.0;
+        anchorRect = QRectF(Object->Position[0] - half, Object->Position[1] - half, half * 2.0, half * 2.0);
+    }
+    else
+    {   // The object carries no map position: leave the scene at its default fit rather than
+        // zooming onto an arbitrary corner.
+        return;
+    }
+
+    const qreal pad = qMax(anchorRect.width(), anchorRect.height()) * 6.0;
+    QRectF target = anchorRect.adjusted(-pad, -pad, pad, pad);
+
+    QRectF sceneBounds = this->View->scene() != nullptr
+        ? this->View->scene()->sceneRect()
+        : target;
+    if (!sceneBounds.isNull())
+    {   // Clamp the target rect inside the scene so fitInView keeps the zoom centered on the
+        // object even when it sits near a map edge.
+        target = target.intersected(sceneBounds);
+        if (target.isEmpty()) target = anchorRect;
+    }
+
+    this->View->fitInView(target, Qt::KeepAspectRatio);
+
+    // If the scene was rendered as part of this navigation, the game tab only just became visible
+    // and the view's viewport has not been laid out yet, so the fitInView above is computed against
+    // a stale viewport size and lands slightly off-center. Re-apply it once the pending show /
+    // resize events have been processed so the very first focus frames the object correctly. When
+    // the map was already loaded this simply re-fits to the same rect (no visible change).
+    QPointer<QGraphicsView> view = this->View;
+    QPointer<QGraphicsScene> expectedScene = this->View->scene();
+    QTimer::singleShot(0, this, [view, expectedScene, target]()
+    {
+        // Skip if the user navigated again in the meantime (the view now shows another scene):
+        // re-fitting an old target onto a new scene would misframe it.
+        if (view != nullptr && expectedScene != nullptr && view->scene() == expectedScene)
+        {
+            view->fitInView(target, Qt::KeepAspectRatio);
+        }
+    });
 }
 
 #pragma endregion
