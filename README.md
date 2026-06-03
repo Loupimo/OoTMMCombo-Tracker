@@ -54,6 +54,18 @@ It also lets the tracker show the expected item on each location, reveal uncolle
 - Master Quest and Majora's Mask JP layouts are supported, but the hook **cannot** detect them — they are read from the spoiler log, so import it to get the correct layouts (see the spoiler-log section above).
 - Multiworld is fully supported — use the world selector to browse any world's map and progression.
 
+## Troubleshooting
+
+Your antivirus may consider the PJInjector.exe as virus. This is mainly due to the fact that this program will inject code into Project64 memory using method that are commonly used by hackers to add malicious code inside program. While I can assure you that I'm not going to infect your computer you can still check the source code or even put the program on VirusTotal (15/71 will detect it as malicious), I'm working on it to make it more acceptable.
+However if you are confident enough you can an exception to your antivirus program (do not disable it entirely !). Here are the steps under Windows 11 using Window defender:
+Click on the Start button.
+Click on Settings.
+Click on Update & Security.
+Click on Windows Security.
+Click on Virus & threat protection.
+Click on Manage settings underneath Virus & threat protection settings.
+Go to the bottom and click on Add or Remove exclusions and select your OoTMMAutoTracker path folder
+
 # For the dev
 
 The solution is built with **Visual Studio (MSVC)** — no CMake, no Makefile — and contains three projects that build independently:
