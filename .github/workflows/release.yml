@@ -1,0 +1,99 @@
+name: Build & sign release
+
+# Builds the three binaries (main tracker + injector + DLL) and submits them to
+# SignPath for Authenticode signing. Runs on version tags, or manually.
+#
+# NOTE: this workflow is meant to run in the PUBLIC release repository. SignPath
+#       Foundation (free OSS signing) requires the source to be public and built
+#       by a public CI. The private dev repo only needs to keep this file in sync.
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-and-sign:
+    runs-on: windows-2022
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Qt 6.9.1 (MSVC 2022 64-bit)
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: '6.9.1'
+          host: windows
+          target: desktop
+          arch: win64_msvc2022_64
+          cache: true
+          # Core / Gui / Widgets / Svg / SvgWidgets ship with the base desktop kit.
+          # If the link step ever complains about SvgWidgets, uncomment:
+          # modules: qtsvg
+
+      - name: Set up MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Build (main app x64 + injector & DLL Win32)
+        shell: pwsh
+        run: |
+          # The solution config "Release|x64" builds the main app as x64 and the
+          # injector + tracker DLL as Win32 (per the .sln platform mapping), so a
+          # single invocation produces all three binaries.
+          #
+          # QtInstall is passed as a *path*: qt_private.props uses it directly when it
+          # exists (Exists('$(QtInstall)') -> QtInstallDir), so no Qt VS Tools registry
+          # entry is needed on the runner. QtMsBuild points at the copy committed in the repo.
+          msbuild OoTMMCombo-Tracker.sln `
+            /p:Configuration=Release `
+            /p:Platform=x64 `
+            /p:QtMsBuild="$env:GITHUB_WORKSPACE\QtMsBuild" `
+            /p:QtInstall="$env:QT_ROOT_DIR" `
+            /m /verbosity:minimal
+
+      - name: Stage release files
+        shell: pwsh
+        run: |
+          $out   = "x64\Release"
+          $stage = "stage"
+          New-Item -ItemType Directory -Force -Path $stage | Out-Null
+
+          # The three PE files we ship (these are what SignPath will sign).
+          Copy-Item "$out\OoTMMCombo-Tracker.exe" $stage
+          Copy-Item "$out\PJ64Injector.exe"        $stage
+          Copy-Item "$out\PJ64OoTMMTracker.dll"    $stage
+
+          # Bundle the Qt runtime (DLLs + plugins) next to the main exe.
+          & "$env:QT_ROOT_DIR\bin\windeployqt.exe" `
+            --release --no-translations --no-compiler-runtime `
+            "$stage\OoTMMCombo-Tracker.exe"
+
+          # NOTE: UI assets are embedded via the .qrc resources, so nothing else to copy.
+          #       If the app ever loads files from disk, add those folders to $stage here.
+
+      - name: Upload unsigned artifact
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: OoTMMCombo-Tracker-unsigned
+          path: stage
+
+      - name: Submit signing request to SignPath
+        uses: signpath/github-action-submit-signing-request@v1
+        with:
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+          project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
+          signing-policy-slug: release-signing
+          artifact-configuration-slug: ${{ vars.SIGNPATH_ARTIFACT_CONFIG_SLUG }}
+          github-artifact-id: ${{ steps.upload.outputs.artifact-id }}
+          wait-for-completion: true
+          output-artifact-directory: signed
+
+      - name: Upload signed artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: OoTMMCombo-Tracker-signed
+          path: signed
