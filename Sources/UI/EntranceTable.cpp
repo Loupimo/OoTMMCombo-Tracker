@@ -53,6 +53,22 @@ protected:
     }
 };
 
+/*
+*   Tell whether an inbound source is a real, discovered entrance rather than the
+*   { UINT32_MAX, NO_GAME } placeholder the static entrance tables seed every entry
+*   with (so the table / overlay can render "?" before anything is known). Counting
+*   the placeholder as found is what made the global entrance counter start at the
+*   full entrance count instead of 0 before any tracking happened.
+*
+*   @param Source    The inbound source to test.
+*
+*   @return <b>True</b> if the source points at a real entrance, <b>false</b> for the placeholder.
+*/
+bool IsRealInLink(const EntranceSource& Source)
+{
+    return Source.EntranceID != UINT32_MAX && Source.Game != NO_GAME;
+}
+
 } // namespace
 
 #pragma region // GlobalEntranceTableModel
@@ -107,9 +123,11 @@ void GlobalEntranceTableModel::setScenes(const std::map<uint32_t, SceneEntranceM
             // single InLinkName above mirrors the latest entry so the table column keeps its
             // single-string semantics.
             row.InLinkNames.clear();
+            row.FoundInLinks = 0;
             for (const EntranceSource& src : link.InLinks)
             {
                 row.InLinkNames.append(this->formatEntranceLink(src.Game, row.EntranceID, src.EntranceID, true));
+                if (IsRealInLink(src)) row.FoundInLinks++;
             }
 
             m_rows.push_back(row);
@@ -143,9 +161,11 @@ void GlobalEntranceTableModel::updateEntrance(uint32_t sceneID, uint32_t entranc
 
             // Refresh the per-source list used by the box and the overlay label.
             row.InLinkNames.clear();
+            row.FoundInLinks = 0;
             for (const EntranceSource& src : link->InLinks)
             {
                 row.InLinkNames.append(this->formatEntranceLink(src.Game, row.EntranceID, src.EntranceID, true));
+                if (IsRealInLink(src)) row.FoundInLinks++;
             }
 
             QModelIndex top = index((int)i, 0);
@@ -1118,8 +1138,9 @@ void SceneEntranceItemTree::CountValidEntrances()
         // in-side contribution scales with the number of known sources. Total is max(1, N) so an
         // undiscovered in-side still counts for 1 (you have at least one path left to find), and
         // total grows by exactly +1 each time a new source is recorded — matching the +1 that
-        // also lands in FoundEntrances at the same time.
-        const int inFound = (int)row.InLinkNames.size();
+        // also lands in FoundEntrances at the same time. FoundInLinks counts real sources only:
+        // the seeded "?" placeholder must not register as a found entrance.
+        const int inFound = row.FoundInLinks;
         const int inTotal = inFound > 0 ? inFound : 1;
         switch (entrance->Type)
         {
@@ -1539,7 +1560,8 @@ void EntranceGameTabView::RefreshCategoryCounters()
             }
             // Same multi-source accounting as CountValidEntrances: each known source counts as a
             // separate "in" entrance, with at least one slot reserved for an undiscovered side.
-            const int inFound = (int)row->InLinkNames.size();
+            // FoundInLinks excludes the seeded "?" placeholder so undiscovered rows count 0 found.
+            const int inFound = row->FoundInLinks;
             const int inTotal = inFound > 0 ? inFound : 1;
             switch (meta->Type)
             {

@@ -41,6 +41,9 @@ typedef struct GlobalEntranceRow
     QString EntranceName;
     QString InLinkName;                  // Formatted name of the latest inbound source (table column display).
     QStringList InLinkNames;             // Formatted names of every known inbound source, in discovery order.
+                                         // Always holds at least the "?" placeholder so the renderers can
+                                         // show the undiscovered state; do NOT use its size as a found count.
+    int FoundInLinks = 0;                // Number of real (non-placeholder) inbound sources discovered so far.
     QString OutLinkName;
 } GlobalEntranceRow;
 
