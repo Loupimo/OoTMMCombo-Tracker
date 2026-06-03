@@ -2,6 +2,12 @@
 #include <tlhelp32.h>
 #include <iostream>
 
+bool FileExists(const char* filename)
+{
+    DWORD attrib = GetFileAttributesA(filename);
+    return (attrib != INVALID_FILE_ATTRIBUTES && !(attrib & FILE_ATTRIBUTE_DIRECTORY));
+}
+
 /*
 *   Inject the desired DLL into the given process.
 * 
@@ -10,6 +16,13 @@
 */
 bool Inject(DWORD PID, const char* DLLPath)
 {
+    if (!FileExists(DLLPath))
+    {   // The dll does not exist
+
+        std::cout << "The dll cannot be found : " << DLLPath << std::endl;
+        return false;
+    }
+
     // Open the desired process with the required rights
     HANDLE hProc = OpenProcess(PROCESS_ALL_ACCESS, TRUE, PID);
     
@@ -79,6 +92,7 @@ int main(int argc, char** argv)
     {   // Failed to inject or DLL to the process
 
         std::cout << "Injection failed\n";
+        return 1;
     }
     return 0;
 }

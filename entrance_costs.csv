@@ -59,3 +59,4 @@ Game;SceneID;FromEntranceID;From;ToEntranceID;To;ElapsedSec
 1;0x7c;0x1400;Ocean Gossip Grotto - Termina Field;0x10111;Ocean Gossip Grotto -> Termina Field;41.724
 1;0x6c;0xd200;East Clock Town - Termina Field;0x5470;East Clock Town -> Termina Field;6.40177
 1;0x6e;0xd640;North Clock Town - Deku Playground Grotto;0x3600;North Clock Town -> Deku Playground Grotto;6.39937
+0;0x62;0x1c1;Goron City - Death Mountain Crater;0x246;Goron City -> Death Mountain Crater;19.6023

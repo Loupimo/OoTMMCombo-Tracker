@@ -173,7 +173,7 @@ uint32_t Mask_hookPlay_Init_OoT[] =
     0xFFFFFFFF,                     // ADDIU    SP, SP, -0x58           <-- hookPlay_Init_Start
     0xFFFFFFFF,                     // LUI      V0, 0x8045
     0xFFFFFFFF,                     // SW       S6, 0x0048 (SP)
-    0xFFFFFFFF,                     // LUI      S6, 0x8044
+    0xFFFFFF00,                     // LUI      S6, 0x8044
     0xFFFFFFFF,                     // SW       RA, 0x0054 (SP)
     0xFFFFFFFF,                     // SW       S3, 0x003C (SP)
     0xFFFFFFFF,                     // SW       S2, 0x0038 (SP)
@@ -185,7 +185,7 @@ uint32_t Mask_hookPlay_Init_OoT[] =
     0xFFFFFFFF,                     // SW       S4, 0x0040 (SP)
     0xFFFF0000,                     // SW       A0, 0x8728 (SP)
     0xFFFF0000,                     // ADDIU    S3, S6, 0x1C68
-    0xFFFFFFFF                      // LUI      V0, 0x8044
+    0xFFFFFF00                      // LUI      V0, 0x8044
 };
 
 PCSignature Sig_hookPlay_Init_OoT = { 64, Pattern_hookPlay_Init_OoT, Mask_hookPlay_Init_OoT, 0x4D0 };

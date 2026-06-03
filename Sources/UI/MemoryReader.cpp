@@ -309,8 +309,13 @@ void MemoryReader::StartMemoryReader()
         if (this->PJ64Handle != 0)
         {   // We have permission to watch the process memory
 
+            MultiLogger::LogMessage("Trying to inject the dll.");
+
             if (this->InjectTrackerDLL())
             {   // Injection successful
+
+                MultiLogger::LogMessage("DLL injected into Project64.");
+                MultiLogger::LogMessage("Trying to open the shared memory.");
 
                 while (this->OpenSharedMemory() == false && this->IsProcessAlive(this->PJ64Handle))
                 {   // The DLL is not active. The game is probably not launched yet
@@ -393,6 +398,8 @@ bool MemoryReader::OpenSharedMemory()
 
     if (!hMap)
     {
+        //MultiLogger::LogMessage("Shared memory not found.");
+
         std::cout << "Shared memory not found\n";
         return false;
     }
@@ -401,6 +408,7 @@ bool MemoryReader::OpenSharedMemory()
 
     if (this->DLLData != nullptr)
     {
+        MultiLogger::LogMessage("Shared memory found !");
         return true;
     }
 
@@ -410,11 +418,45 @@ bool MemoryReader::OpenSharedMemory()
 
 bool MemoryReader::InjectTrackerDLL()
 {
-    char cmd[512];
-
     std::string injector = this->CurrDirectory + "\\PJ64Injector.exe";
     std::string dll = this->CurrDirectory + "\\PJ64OoTMMTracker.dll";
 
-    snprintf(cmd, sizeof(cmd), "%s %d \"%s\"", injector.c_str(), this->PJ64PID, dll.c_str());
-    return !system(cmd);
+    // CreateProcess does not go through cmd.exe, so the path can contain spaces
+    // without any shell escaping. lpCommandLine must be a writable buffer ;
+    // argv[0] is the program name by convention, then the PID and the DLL path.
+    char cmdLine[1024];
+    snprintf(cmdLine, sizeof(cmdLine), "\"%s\" %lu \"%s\"", injector.c_str(), this->PJ64PID, dll.c_str());
+
+    MultiLogger::LogMessage("Executing: %s", cmdLine);
+
+    STARTUPINFOA si = { sizeof(si) };
+    PROCESS_INFORMATION pi = { 0 };
+
+    BOOL ok = CreateProcessA(
+        injector.c_str(),               // lpApplicationName : exact path, no parsing
+        cmdLine,                        // lpCommandLine : writable buffer
+        nullptr, nullptr, FALSE,
+        CREATE_NO_WINDOW,               // no flashing console window
+        nullptr,
+        this->CurrDirectory.c_str(),    // working directory
+        &si, &pi);
+
+    if (!ok)
+    {   // Failed to launch the injector process
+
+        MultiLogger::LogMessage("CreateProcess failed: %lu", GetLastError());
+        return false;
+    }
+
+    // Wait for the injector to complete and retrieve its real exit code
+    WaitForSingleObject(pi.hProcess, INFINITE);
+
+    DWORD exitCode = 1;
+    GetExitCodeProcess(pi.hProcess, &exitCode);
+
+    CloseHandle(pi.hThread);
+    CloseHandle(pi.hProcess);
+
+    MultiLogger::LogMessage("Injector exit code: %lu", exitCode);
+    return exitCode == 0;
 }
