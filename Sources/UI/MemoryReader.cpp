@@ -297,7 +297,7 @@ void MemoryReader::StartMemoryReader()
         if (this->PJ64PID == 0)
         {   // PJ64-EM not found. Wait 1 second before retrying
 
-            MultiLogger::LogMessage("No %s process found. Retrying in 1 second...\n", processName);
+            MultiLogger::LogMessage("No %s-EM 1.0.3-PJ-3.0.1 process found. Retrying in 1 second...\n", processName);
             Sleep(1000);
         }
 
@@ -327,6 +327,25 @@ void MemoryReader::StartMemoryReader()
             else
             {
                 MultiLogger::LogMessage("Cannot inject tracker dll into %s.\nPlease check your process and ensure that %s and %s are in the same folder as the tracker.\nBe sure that your antivirus did not put it in quarantine.", processName, "PJ64Injector.exe", "PJ64OoTMMTracker.dll");
+                MultiLogger::LogMessage("If so, you can add an exception to your antivirus program(do not disable it entirely !). Here are the steps under Windows 11 using Window defender :");
+                MultiLogger::LogMessage("- Click on the Start button.");
+                MultiLogger::LogMessage("- Click on Settings.");
+                MultiLogger::LogMessage("- Click on Update & Security.");
+                MultiLogger::LogMessage("- Click on Windows Security.");
+                MultiLogger::LogMessage("- Click on Virus & threat protection.");
+                MultiLogger::LogMessage("- Click on Manage settings underneath Virus & threat protection settings.");
+                MultiLogger::LogMessage("- Go to the bottom and click on Add or Remove exclusions and select your OoTMMAutoTracker path folder.");
+                MultiLogger::LogMessage("\nIf you are unable to unzip the PJ64Injector.exe try the following:");
+                MultiLogger::LogMessage("- Click on the Start button.");
+                MultiLogger::LogMessage("- Click on Settings.");
+                MultiLogger::LogMessage("- Click on Update & Security.");
+                MultiLogger::LogMessage("- Click on Windows Security.");
+                MultiLogger::LogMessage("- Click on Virus & threat protection.");
+                MultiLogger::LogMessage("- Then you should see protection history or something like that.");
+                MultiLogger::LogMessage("- Then you will see the list of recently action the antivirus has taken.");
+                MultiLogger::LogMessage("- Look for the one matching the tracker path.");
+                MultiLogger::LogMessage("- If this is a quarentine threat you should have an action button on the bottom right.");
+                MultiLogger::LogMessage("- If so click restore.");
             }
         }
         else

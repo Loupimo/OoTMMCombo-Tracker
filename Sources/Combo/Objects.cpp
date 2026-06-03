@@ -478,9 +478,11 @@ size_t ObjectInfo::LoadObject(QByteArray* Data, size_t Offset, bool IncludeTarge
 			Offset += sizeof(targetWorld);
 			this->TargetWorld = (uint8_t)targetWorld;
 		}
+
+        return Offset;
 	}
 
-	return Offset;
+	return Offset + sizeof(uint32_t) * 3;
 }
 
 void ObjectInfo::ResetObject()
@@ -858,6 +860,10 @@ static size_t LoadWorldSceneArray(QByteArray* Data, size_t Offset, SceneObjects*
 {
 	for (size_t i = 0; i < NumOfScenes; i++)
 	{
+        if (Data->size() < Offset)
+        {
+            return Data->size();
+        }
 		uint32_t sceneID = 0;
 		memcpy_s(&sceneID, sizeof(sceneID), Data->data() + Offset, sizeof(sceneID));
 		Offset += sizeof(sceneID);
@@ -868,13 +874,22 @@ static size_t LoadWorldSceneArray(QByteArray* Data, size_t Offset, SceneObjects*
 			memcpy_s(&numObjs, sizeof(numObjs), Data->data() + Offset, sizeof(numObjs));
 			Offset += sizeof(numObjs);
 
-			if (numObjs == Array[i].NumOfObjs)
+            if (numObjs <= Array[i].NumOfObjs)
 			{
-				for (size_t j = 0; j < Array[i].NumOfObjs; j++)
+				for (size_t j = 0; j < numObjs; j++)
 				{
-					Offset = Array[i].Objects[j].LoadObject(Data, Offset, /*IncludeTargetWorld*/ true);
+					Offset = Array[i].Objects[j].LoadObject(Data, Offset, true);
 				}
 			}
+            else
+            {
+                for (size_t j = 0; j < Array[i].NumOfObjs; j++)
+                {
+                    Offset = Array[i].Objects[j].LoadObject(Data, Offset, true);
+                }
+
+                Offset += (numObjs - Array[i].NumOfObjs) * (sizeof(uint32_t) * 4);
+            }
 		}
 	}
 

@@ -139,7 +139,7 @@ SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
     { "Fairy Fountain, Meadow", "./Resources/OoT/Fairy/Fountain.png", "./Resources/OoT/Fairy/Fountain_Map.jpg", (uint8_t)OoTRegions::Sacred_Forest_Meadow, false, GameLayout::oot },
     { "Fairy Fountain, River", "./Resources/OoT/Fairy/Fountain.png", "./Resources/OoT/Fairy/Fountain_Map.jpg", (uint8_t)OoTRegions::Zora_River, false, GameLayout::oot },
     { "Fairy Fountain, Domain", "./Resources/OoT/Fairy/Fountain.png", "./Resources/OoT/Fairy/Fountain_Map.jpg", (uint8_t)OoTRegions::Zora_Domain, false, GameLayout::oot },
-    { "Fairy Fountain, Field", ". / Resources / OoT / Fairy / Fountain.png", ". / Resources / OoT / Fairy / Fountain_Map.jpg", (uint8_t)OoTRegions::Hyrule, false, GameLayout::oot },
+    { "Fairy Fountain, Field", "./Resources/OoT/Fairy/Fountain.png", "./Resources/OoT/Fairy/Fountain_Map.jpg", (uint8_t)OoTRegions::Hyrule, false, GameLayout::oot },
     { "Fairy Fountain, Fortress", "./Resources/OoT/Fairy/Fountain.png", "./Resources/OoT/Fairy/Fountain_Map.jpg", (uint8_t)OoTRegions::Gerudo_Fortress, false, GameLayout::oot },
     { "Great Fairy Fountain, Castle", "./Resources/OoT/Fairy/Great_Fairy.png", "./Resources/OoT/Fairy/Great_Fairy_Map.jpg", (uint8_t)OoTRegions::Castle, true, GameLayout::oot },
     { "Great Fairy Fountain, Ganon", "", "./Resources/OoT/Fairy/Great_Fairy_Map.jpg", (uint8_t)OoTRegions::None, false, GameLayout::oot },
@@ -290,7 +290,7 @@ SceneMetaInfo MMScenesMetaInfo[MM_NUM_SCENES] =
     { "Warp Owls", "", "./Resources/MM/Songs/Owls_Map.jpg", (uint8_t)MMRegions::None, false, GameLayout::mm },
     { "Dodongo Grotto", "./Resources/MM/Termina/Dodongo.png", "./Resources/MM/Termina/Dodongo_Map.jpg", (uint8_t)MMRegions::Termina, false, GameLayout::mm },
     { "Gossip Stones Grotto, Ocean", "./Resources/MM/Termina/Ocean_Gossip.png", "./Resources/MM/Termina/Gossip_Map.jpg", (uint8_t)MMRegions::Termina, false, GameLayout::mm },
-    { "Gossip Stones Grotto, Canyon", "./Resources/MM/Termina/Gossip_Map.png", "./Resources/MM/Termina/Gossip_Map.jpg", (uint8_t)MMRegions::Termina, false, GameLayout::mm },
+    { "Gossip Stones Grotto, Canyon", "./Resources/MM/Termina/Canyon_Gossip.png", "./Resources/MM/Termina/Gossip_Map.jpg", (uint8_t)MMRegions::Termina, false, GameLayout::mm },
     { "Gossip Stones Grotto, Swamp", "", "./Resources/MM/Termina/Gossip_Map.jpg", (uint8_t)MMRegions::None, false, GameLayout::mm },
     { "Gossip Stones Grotto, Mountain", "", "./Resources/MM/Termina/Gossip_Map.jpg", (uint8_t)MMRegions::None, false, GameLayout::mm },
     { "Bio Baba Grotto", "./Resources/MM/Termina/Bio_Baba.png", "./Resources/MM/Termina/Bio_Baba_Map.jpg", (uint8_t)MMRegions::Termina, false, GameLayout::mm },
@@ -509,6 +509,7 @@ uint32_t GetSceneNPC(uint32_t NPC, uint32_t Game)
 
 			// Kakariko Potion Shop
 			case TRADE_ODD_POTION:
+            case WITCH_BLUE_POTION:
 				return OOT_KAKARIKO_POTION_SHOP;
 
 			// Graveyard

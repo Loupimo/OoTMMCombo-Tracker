@@ -911,7 +911,7 @@ static ObjectInfo OOT_GERUDO_FORTRESSSceneObjects_Data [OOT_GERUDO_FORTRESSNumOf
 	{ 0x08010, OOT_GERUDO_FORTRESS, "Main 5", "OOT Gerudo Fortress Crate Main 5", ObjectType::crate, {530, 486, 0}, OOT_GERUDO_FORTRESS, ObjectType::crate, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x08011, OOT_GERUDO_FORTRESS, "Main 6", "OOT Gerudo Fortress Crate Main 6", ObjectType::crate, {538, 486, 0}, OOT_GERUDO_FORTRESS, ObjectType::crate, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x08012, OOT_GERUDO_FORTRESS, "Jail - Top", "OOT Gerudo Fortress Crate Jail Top", ObjectType::crate, {390, 524, 0}, OOT_GERUDO_FORTRESS, ObjectType::crate, EGameIcon::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL },
-	{ 0x01, OOT_GERUDO_FORTRESS, "Jail - Top", "OOT Gerudo Fortress Crate Jail Top", ObjectType::collectible, {390, 524, 0}, OOT_GERUDO_FORTRESS, ObjectType::heart_piece, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x01, OOT_GERUDO_FORTRESS, "Jail - Top", "OOT Gerudo Fortress Crate Jail Top Child", ObjectType::collectible, {390, 524, 0}, OOT_GERUDO_FORTRESS, ObjectType::heart_piece, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00103, OOT_GERUDO_FORTRESS, "Archery - Child", "OOT Gerudo Fortress Crate Archery Child", ObjectType::none, {195, 158, 0}, OOT_GERUDO_FORTRESS, ObjectType::none, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00100, OOT_GERUDO_FORTRESS, "Archery 1", "OOT Gerudo Fortress Crate Archery 01", ObjectType::crate, {180, 178, 1}, OOT_GERUDO_FORTRESS, ObjectType::crate, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00101, OOT_GERUDO_FORTRESS, "Archery 2", "OOT Gerudo Fortress Crate Archery 02", ObjectType::crate, {752, 180, 1}, OOT_GERUDO_FORTRESS, ObjectType::crate, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1772,7 +1772,7 @@ static ObjectInfo OOT_GROTTO_DESERT_SCRUBSSceneObjects_Data [OOT_GROTTO_DESERT_S
 };
 ObjectInfo * OOT_GROTTO_DESERT_SCRUBSSceneObjects = OOT_GROTTO_DESERT_SCRUBSSceneObjects_Data;
 
-const size_t OOT_HYRULE_CASTLENumOfObjs = 52;
+const size_t OOT_HYRULE_CASTLENumOfObjs = 60;
 static ObjectInfo OOT_HYRULE_CASTLESceneObjects_Data [OOT_HYRULE_CASTLENumOfObjs] =
 {
 	{ WEIRD_EGG, OOT_GROTTOS, "Hatch - Chicken", "OOT Hatch Chicken", ObjectType::npc, {138, 210, 0}, OOT_HYRULE_CASTLE, ObjectType::egg, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1811,6 +1811,14 @@ static ObjectInfo OOT_HYRULE_CASTLESceneObjects_Data [OOT_HYRULE_CASTLENumOfObjs
 	{ 0x0807, OOT_HYRULE_CASTLE, "Pot 2", "OOT Hyrule Castle Grotto Pot 2", ObjectType::none, {0, 0, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0809, OOT_HYRULE_CASTLE, "Pot 3", "OOT Hyrule Castle Grotto Pot 3", ObjectType::none, {0, 0, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x080b, OOT_HYRULE_CASTLE, "Pot 4", "OOT Hyrule Castle Grotto Pot 4", ObjectType::none, {0, 0, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00802, OOT_HYRULE_CASTLE, "Circle Rock 1", "OOT Hyrule Castle Grotto Rock Circle Rock 1", ObjectType::none, {0, 0, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x10802, OOT_HYRULE_CASTLE, "Circle Rock 2", "OOT Hyrule Castle Grotto Rock Circle Rock 2", ObjectType::none, {0, 0, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x20802, OOT_HYRULE_CASTLE, "Circle Rock 3", "OOT Hyrule Castle Grotto Rock Circle Rock 3", ObjectType::none, {0, 0, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x30802, OOT_HYRULE_CASTLE, "Circle Rock 4", "OOT Hyrule Castle Grotto Rock Circle Rock 4", ObjectType::none, {0, 0, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x40802, OOT_HYRULE_CASTLE, "Circle Rock 5", "OOT Hyrule Castle Grotto Rock Circle Rock 5", ObjectType::none, {0, 0, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x50802, OOT_HYRULE_CASTLE, "Circle Rock 6", "OOT Hyrule Castle Grotto Rock Circle Rock 6", ObjectType::none, {0, 0, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x60802, OOT_HYRULE_CASTLE, "Circle Rock 7", "OOT Hyrule Castle Grotto Rock Circle Rock 7", ObjectType::none, {0, 0, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x70802, OOT_HYRULE_CASTLE, "Circle Rock 8", "OOT Hyrule Castle Grotto Rock Circle Rock 8", ObjectType::none, {0, 0, 0}, OOT_GROTTO_CASTLE_STORMS, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ FAIRY_SPELL_FIRE, OOT_HYRULE_CASTLE, "Din's Fire", "OOT Great Fairy Din's Fire", ObjectType::none, {0, 0, 0}, OOT_GREAT_FAIRY_CASTLE, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ ZELDA_LETTER, OOT_HYRULE_CASTLE, "Zelda's Letter", "OOT Zelda's Letter", ObjectType::none, {0, 0, 0}, OOT_CASTLE_COURTYARD, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ ZELDA_SONG, OOT_HYRULE_CASTLE, "Zelda's Song", "OOT Zelda's Song", ObjectType::none, {0, 0, 0}, OOT_CASTLE_COURTYARD, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1830,7 +1838,7 @@ static ObjectInfo OOT_HYRULE_CASTLESceneObjects_Data [OOT_HYRULE_CASTLENumOfObjs
 };
 ObjectInfo * OOT_HYRULE_CASTLESceneObjects = OOT_HYRULE_CASTLESceneObjects_Data;
 
-const size_t OOT_KAKARIKO_VILLAGENumOfObjs = 95;
+const size_t OOT_KAKARIKO_VILLAGENumOfObjs = 96;
 static ObjectInfo OOT_KAKARIKO_VILLAGESceneObjects_Data [OOT_KAKARIKO_VILLAGENumOfObjs] =
 {
 	{ POCKET_EGG, OOT_GROTTOS, "Hatch - Pocket Cucco", "OOT Hatch Pocket Cucco", ObjectType::npc, {396, 132, 0}, OOT_KAKARIKO_VILLAGE, ObjectType::egg, EGameIcon::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1899,6 +1907,7 @@ static ObjectInfo OOT_KAKARIKO_VILLAGESceneObjects_Data [OOT_KAKARIKO_VILLAGENum
 	{ 0x12806, OOT_KAKARIKO_VILLAGE, "Butterfly 2", "OOT Kakariko Grotto Butterfly 2", ObjectType::none, {0, 0, 0}, OOT_GROTTO_KAKARIKO_OPEN, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x22806, OOT_KAKARIKO_VILLAGE, "Butterfly 3", "OOT Kakariko Grotto Butterfly 3", ObjectType::none, {0, 0, 0}, OOT_GROTTO_KAKARIKO_OPEN, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ TRADE_ODD_POTION, OOT_KAKARIKO_VILLAGE, "Odd Potion", "OOT Kakariko Potion Shop Odd Potion", ObjectType::none, {0, 0, 0}, OOT_GRANNY_POTION_SHOP, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ WITCH_BLUE_POTION, OOT_KAKARIKO_VILLAGE, "Buy Blue Potion", "OOT Kakariko Potion Shop Buy Blue Potion", ObjectType::none, {0, 0, 0}, OOT_GRANNY_POTION_SHOP, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x38, OOT_KAKARIKO_VILLAGE, "Item 1", "OOT Kakariko Potion Shop Item 1", ObjectType::none, {0, 0, 0}, OOT_KAKARIKO_POTION_SHOP, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x39, OOT_KAKARIKO_VILLAGE, "Item 2", "OOT Kakariko Potion Shop Item 2", ObjectType::none, {0, 0, 0}, OOT_KAKARIKO_POTION_SHOP, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x3a, OOT_KAKARIKO_VILLAGE, "Item 3", "OOT Kakariko Potion Shop Item 3", ObjectType::none, {0, 0, 0}, OOT_KAKARIKO_POTION_SHOP, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -2715,10 +2724,11 @@ static ObjectInfo OOT_INSIDE_JABU_JABUSceneObjects_Data [OOT_INSIDE_JABU_JABUNum
 };
 ObjectInfo * OOT_INSIDE_JABU_JABUSceneObjects = OOT_INSIDE_JABU_JABUSceneObjects_Data;
 
-const size_t OOT_KAKARIKO_POTION_SHOPNumOfObjs = 9;
+const size_t OOT_KAKARIKO_POTION_SHOPNumOfObjs = 10;
 static ObjectInfo OOT_KAKARIKO_POTION_SHOPSceneObjects_Data [OOT_KAKARIKO_POTION_SHOPNumOfObjs] =
 {
 	{ TRADE_ODD_POTION, OOT_KAKARIKO_POTION_SHOP, "Odd Potion", "OOT Kakariko Potion Shop Odd Potion", ObjectType::npc, {474, 520, 0}, OOT_GRANNY_POTION_SHOP, ObjectType::npc, EGameIcon::mushroom, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ WITCH_BLUE_POTION, OOT_KAKARIKO_POTION_SHOP, "Buy Blue Potion", "OOT Kakariko Potion Shop Buy Blue Potion", ObjectType::npc, {474, 416, 0}, OOT_GRANNY_POTION_SHOP, ObjectType::npc, EGameIcon::blue_potion, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x38, OOT_KAKARIKO_POTION_SHOP, "Item 1", "OOT Kakariko Potion Shop Item 1", ObjectType::shop, {465, 277, 0}, OOT_KAKARIKO_POTION_SHOP, ObjectType::shop, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x39, OOT_KAKARIKO_POTION_SHOP, "Item 2", "OOT Kakariko Potion Shop Item 2", ObjectType::shop, {510, 277, 0}, OOT_KAKARIKO_POTION_SHOP, ObjectType::shop, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x3a, OOT_KAKARIKO_POTION_SHOP, "Item 3", "OOT Kakariko Potion Shop Item 3", ObjectType::shop, {465, 318, 0}, OOT_KAKARIKO_POTION_SHOP, ObjectType::shop, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -2730,10 +2740,11 @@ static ObjectInfo OOT_KAKARIKO_POTION_SHOPSceneObjects_Data [OOT_KAKARIKO_POTION
 };
 ObjectInfo * OOT_KAKARIKO_POTION_SHOPSceneObjects = OOT_KAKARIKO_POTION_SHOPSceneObjects_Data;
 
-const size_t OOT_GRANNY_POTION_SHOPNumOfObjs = 1;
+const size_t OOT_GRANNY_POTION_SHOPNumOfObjs = 2;
 static ObjectInfo OOT_GRANNY_POTION_SHOPSceneObjects_Data [OOT_GRANNY_POTION_SHOPNumOfObjs] =
 {
-	{ TRADE_ODD_POTION, OOT_KAKARIKO_POTION_SHOP, "Odd Potion", "OOT Kakariko Potion Shop Odd Potion", ObjectType::npc, {474, 520, 0}, OOT_GRANNY_POTION_SHOP, ObjectType::npc, EGameIcon::mushroom, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
+	{ TRADE_ODD_POTION, OOT_KAKARIKO_POTION_SHOP, "Odd Potion", "OOT Kakariko Potion Shop Odd Potion", ObjectType::npc, {474, 520, 0}, OOT_GRANNY_POTION_SHOP, ObjectType::npc, EGameIcon::mushroom, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ WITCH_BLUE_POTION, OOT_KAKARIKO_POTION_SHOP, "Buy Blue Potion", "OOT Kakariko Potion Shop Buy Blue Potion", ObjectType::npc, {474, 416, 0}, OOT_GRANNY_POTION_SHOP, ObjectType::npc, EGameIcon::blue_potion, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 ObjectInfo * OOT_GRANNY_POTION_SHOPSceneObjects = OOT_GRANNY_POTION_SHOPSceneObjects_Data;
 

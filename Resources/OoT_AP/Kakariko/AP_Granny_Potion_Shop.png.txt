@@ -1,6 +1,8 @@
-QList<QPair<int, int>> GrottoPoints = {
-{472, 604},
+QList<QPair<int, int>> FlyPoints = {
+{474, 520},
+{476, 416},
 };
 QList<QPair<int, int>> NPCsPoints = {
-{474, 520},
+{475, 520},
+{475, 416},
 };

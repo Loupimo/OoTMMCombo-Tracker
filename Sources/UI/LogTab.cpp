@@ -48,7 +48,7 @@ const QHash<QString, QPair<uint32_t, uint32_t>> SpoilerMap =
     { "Thieves' Hideout", { OOT_THIEVES_HIDEOUT, OOT_GAME } },
     { "Gerudo's Training Ground", { OOT_GERUDO_TRAINING_GROUND, OOT_GAME } },
     { "Ganon's Castle", { OOT_INSIDE_GANON_CASTLE, OOT_GAME } },
-    { "Tingle", { MM_CLOCK_TOWN_NORTH, MM_GAME } },
+    { "Tingle", { MM_CLOCK_TOWN_SOUTH, MM_GAME } },
     { "South Clock Town", { MM_CLOCK_TOWN_SOUTH, MM_GAME } },
     { "Milk Road", { MM_MILK_ROAD, MM_GAME } },
     { "Southern Swamp", { MM_SOUTHERN_SWAMP, MM_GAME } },
