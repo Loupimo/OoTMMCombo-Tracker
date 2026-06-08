@@ -1175,10 +1175,26 @@ const ItemInfo* FindItemByName(QString Name)
 // DLL-reported game version (see MemoryReader). Defaults to dev (identity / no shift) so dev
 // builds - which already match the internal numbering - track correctly before detection runs.
 static ROMVersion ActiveROMVersion = ROMVersion::dev;
+static bool ActiveROMVersionFromSpoiler = false;    // true une fois qu'un spoiler "Version:" l'a fixee (fait foi).
 
-void SetActiveROMVersion(ROMVersion Version)
+void SetActiveROMVersion(ROMVersion Version, bool FromSpoiler)
 {
+    if (ActiveROMVersionFromSpoiler && !FromSpoiler)
+    {   // Le spoiler fait foi : on ignore les mises a jour deduites du CRC (voir MemoryReader).
+
+        return;
+    }
+
     ActiveROMVersion = Version;
+    if (FromSpoiler)
+    {
+        ActiveROMVersionFromSpoiler = true;
+    }
+}
+
+bool IsActiveROMVersionFromSpoiler()
+{
+    return ActiveROMVersionFromSpoiler;
 }
 
 ROMVersion GetActiveROMVersion()

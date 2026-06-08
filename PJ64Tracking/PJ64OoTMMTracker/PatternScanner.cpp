@@ -99,6 +99,20 @@ void ResetButterflyTransform()
 }
 
 
+uintptr_t FindSubPattern(uintptr_t base, const PCSignature* sig, uint32_t limit)
+{
+    for (uint32_t off = 0; off <= limit; off += 4)
+    {
+        if (MatchPattern(gameRAMBase + ((base + off) & 0x00FFFFFF), sig))
+        {
+            return base + off;
+        }
+    }
+
+    return 0;
+}
+
+
 void BuildPCsPatterns()
 {
     size_t count = 0;
@@ -114,14 +128,6 @@ void BuildPCsPatterns()
     {
         sigs = MMSignatures;
         count = MMSignatureCount;
-        if (!isStable)
-        {
-            sigs[4].Signature->PCOffset = MM_HOOK_INIT_DEV_PCOFF;
-        }
-        else
-        {
-            sigs[4].Signature->PCOffset = MM_HOOK_INIT_STABLE_PCOFF;
-        }
     }
     else
     {
@@ -137,8 +143,8 @@ void BuildPCsPatterns()
     }
 
 
-    for (size_t i = 0; i < count; i++)
-    {   // Browse all pattern to resolve
+    for (size_t i = 0; i < count - 1; i++)
+    {   // Browse all static payload patterns (le butterfly i==count-1 est resolu a la demande par ResolveButterflyTransform)
 
         uintptr_t base = FastPatternResolver(sigs[i]);
         if (base == 0)
@@ -177,6 +183,31 @@ void BuildPCsPatterns()
         }
 
         // We have find the desired start address of the function
+
+        if (gGame == GAME_MM && i == 4)
+        {   // Resout dynamiquement le site du hook (independant du build : stable, dev, futurs)
+
+            uintptr_t site = FindSubPattern(base, &Sig_hookInit_Site_MM, 0x800);
+            if (site)
+            {
+                uint32_t off = (uint32_t)(site - base);
+                sigs[i].Signature->PCOffset = off;
+
+                // Le variant decoule de l'emplacement du hook -> selectionne le bon "Nothing" ID,
+                // sauf si le tracker a fourni la version via le spoiler (elle fait foi, cf ApplyHostVersion).
+                if (!gData || gData->HostROMVersion == HOST_VER_UNKNOWN)
+                {
+                    isStable = (off == MM_HOOK_INIT_STABLE_PCOFF);
+                    gNothingID = isStable ? STABLE_NOTHING : DEV_NOTHING;
+                }
+            }
+            else
+            {   // Repli : ancien comportement base sur le CRC (isStable deja positionne par CheckGameVersionASM)
+
+                sigs[i].Signature->PCOffset = isStable ? MM_HOOK_INIT_STABLE_PCOFF : MM_HOOK_INIT_DEV_PCOFF;
+            }
+        }
+
         uintptr_t PC = base + sigs[i].Signature->PCOffset;  // The specific instruction to track
 
         gPatternState[gGame].PCs[i] = PC;

@@ -471,6 +471,27 @@ uint32_t Mask_hookPlay_Init_MM[] =
 
 PCSignature Sig_hookPlay_Init_MM = { 68, Pattern_hookPlay_Init_MM, Mask_hookPlay_Init_MM, 0x58C };
 
+/* Ancre du site de hook MM (identique stable/dev). L'adresse de match EST le PC a hooker. */
+uint8_t Pattern_hookInit_Site_MM[] =
+{
+    0x96,0x22,0x00,0xA4,            // LHU      V0, 0x00A4 (S1)   <-- HOOK
+    0x38,0x43,0x00,0x07,            // XORI     V1, V0, 0x0007
+    0x2C,0x63,0x00,0x01,            // SLTIU    V1, V1, 0x0001
+    0xA2,0x63,0x00,0x08,            // SB       V1, 0x0008 (S3)
+    0x24,0x03,0x00,0x07             // ADDIU    V1, R0, 0x0007
+};
+
+uint32_t Mask_hookInit_Site_MM[] =
+{
+    0xFFFFFFFF,                     // LHU      V0, 0x00A4 (S1)
+    0xFFFFFFFF,                     // XORI     V1, V0, 0x0007
+    0xFFFFFFFF,                     // SLTIU    V1, V1, 0x0001
+    0xFFFFFFFF,                     // SB       V1, 0x0008 (S3)
+    0xFFFFFFFF                      // ADDIU    V1, R0, 0x0007
+};
+
+PCSignature Sig_hookInit_Site_MM = { 20, Pattern_hookInit_Site_MM, Mask_hookInit_Site_MM, 0 };
+
 #pragma endregion   // hookPlay_Init
 
 #pragma region Play_TransitionDone

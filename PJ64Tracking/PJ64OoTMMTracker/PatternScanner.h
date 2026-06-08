@@ -61,6 +61,17 @@ bool MatchPattern(uintptr_t Addr, const PCSignature* Sig);
 uintptr_t FindPatternInPayload(const PCSignature* Sig, size_t PayloadStart, size_t PayloadEnd);
 
 /*
+*   Cherche un sous-pattern dans [base, base + limit] (pas de 4 octets), a partir d'une base deja resolue.
+*
+*	@param base		La base (adresse virtuelle) a partir de laquelle scanner.
+*	@param sig		La signature du sous-pattern a trouver.
+*	@param limit	La distance maximale (en octets) a parcourir depuis base.
+*
+*   @return Le PC (adresse virtuelle) du match, 0 si introuvable.
+*/
+uintptr_t FindSubPattern(uintptr_t base, const PCSignature* sig, uint32_t limit);
+
+/*
 *   Tell if the given instruction is a JAL (MIPS) instruction.
 *
 *	@param InstrucVal		The instruction to check.

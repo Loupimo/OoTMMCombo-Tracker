@@ -3379,6 +3379,7 @@ uint32_t EntranceHelper::CheckWrapScene(EntranceMessage& Message)
             case MM_DEKU_PALACE:
             case MM_DEKU_KING_CHAMBER:
             {
+                Message.SceneID = MM_DEKU_PALACE;
                 return MM_DEKU_PALACE_CAUGHT;
             }
 
@@ -3637,6 +3638,13 @@ void EntranceHelper::ParseOutgoingMessage(EntranceMessage& Message)
     // Retreive the entrance meta information. Entrance IDs are unique per game so a single lookup
     // is enough; no layout disambiguation needed.
     Message.MetaInf = const_cast<EntranceMetaInfo*>(LookupEntrance(Message.GameID, Message.EntranceID));
+    if (Message.MetaInf == nullptr)
+    {
+        MultiLogger::LogMessage("Uknown Entrance : Game ID = 0x%08X, Scene ID = 0x%08X, Entrance ID = 0x%08X", Message.GameID, Message.SceneID, Message.EntranceID);
+        this->IsEntranceTouched = false;
+        return;
+    }
+
     Message.EntranceStr = Message.MetaInf->FromName + std::string(" \xE2\x86\x92 ") + Message.MetaInf->ToName;
 
     if (!isWarpSong)

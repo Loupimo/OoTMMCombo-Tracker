@@ -321,6 +321,29 @@ __declspec(naked) void CheckGameVersionASM()
 }
 
 
+void ApplyHostVersion()
+{   // Si le tracker a charge un spoiler, il fait foi (plus fiable que CRC/offset).
+
+    if (!gData)
+    {
+        return;
+    }
+
+    int32_t v = gData->HostROMVersion;
+    if (v == HOST_VER_STABLE)
+    {
+        isStable = true;
+        gNothingID = STABLE_NOTHING;
+    }
+    else if (v == HOST_VER_DEV)
+    {
+        isStable = false;
+        gNothingID = DEV_NOTHING;
+    }
+    // HOST_VER_UNKNOWN : on garde la detection CRC/offset.
+}
+
+
 __declspec(naked) void PCHook()
 {
     __asm
@@ -364,6 +387,9 @@ __declspec(naked) void PCHook()
 
             // Check the game version
             call CheckGameVersionASM
+
+            // Le spoiler charge par le tracker (s'il y en a un) fait foi pour le "Nothing" ID
+            call ApplyHostVersion
 
             // Reset the counter
             mov dword ptr [gDetectCounter], 0

@@ -1178,7 +1178,7 @@ const ItemInfo* FindItemByName(QString Name);
 *
 *   @param Version    The detected ROM build (stable or dev).
 */
-void SetActiveROMVersion(ROMVersion Version);
+void SetActiveROMVersion(ROMVersion Version, bool FromSpoiler = false);
 
 /*
 *   Get the active OoTMM ROM build last set with SetActiveROMVersion (defaults to dev).
@@ -1186,6 +1186,14 @@ void SetActiveROMVersion(ROMVersion Version);
 *   @return The active ROM build.
 */
 ROMVersion GetActiveROMVersion();
+
+/*
+*   Tell whether the active ROM build was set from a spoiler "Version:" line (authoritative) rather
+*   than inferred from the DLL-reported game version.
+*
+*   @return true if a spoiler set the version, false otherwise.
+*/
+bool IsActiveROMVersionFromSpoiler();
 
 /*
 *   Translate a raw in-game item ID into the tracker's internal (dev-build) item ID space.

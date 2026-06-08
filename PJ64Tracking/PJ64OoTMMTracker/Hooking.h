@@ -108,12 +108,18 @@ typedef struct Event
 } Event;
 
 
+/* Tracker -> DLL : version deduite du spoiler ("Version:"). Override le CRC/offset si != UNKNOWN. */
+#define HOST_VER_UNKNOWN 0
+#define HOST_VER_DEV     1
+#define HOST_VER_STABLE  2
+
 struct SharedData
 {
     uint32_t GameVersion[2];
     LONG MaxSize;
     volatile LONG CurrIndex;
     Event Buffer[BUFFER_SIZE];
+    volatile int32_t HostROMVersion;    // Tracker -> DLL : voir HOST_VER_* (0 = inconnu / pas de spoiler)
 };
 
 extern SharedData* gData;                   // The shared data with the tracker
@@ -126,8 +132,15 @@ extern uint32_t gActiveSceneOffset;         // The current offset to add to reac
 extern uint32_t gOOTActiveGlobalOffset;     // An offset to add to the active scene offset to reach the gLastScene variable for OoT.
 extern uint32_t gMMActiveGlobalOffset;      // An offset to add to the active scene offset to reach the gLastScene variable for MM.
 extern bool isStable;                       // Tell if the current game is stable release (true) or dev (false).
+extern uint32_t gNothingID;                 // The current "Nothing" combo item ID (depends on stable/dev).
 
 void TryResolveROMBase();
+
+/*
+*   Applique la version fournie par le tracker (SharedData::HostROMVersion, issue du spoiler).
+*   Si elle est connue, elle fait foi sur la detection CRC/offset pour le choix du "Nothing" ID.
+*/
+void ApplyHostVersion();
 
 /*
 *   Find the real game RAM address.

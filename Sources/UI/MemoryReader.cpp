@@ -386,6 +386,14 @@ void MemoryReader::RunMemoryReader()
             versionDetected = true;
         }
 
+        // Si un spoiler a fixe la version (source la plus fiable), la pousser au DLL pour qu'il
+        // choisisse le bon "Nothing" ID meme en session OoT-only (ou le hook MM ne tranche pas).
+        if (IsActiveROMVersionFromSpoiler())
+        {
+            this->DLLData->HostROMVersion =
+                (GetActiveROMVersion() == ROMVersion::stable) ? HOST_VER_STABLE : HOST_VER_DEV;
+        }
+
         while (i < this->DLLData->CurrIndex && i < this->DLLData->MaxSize)
         {
             MultiLogger::LogMessage("PC = 0x%08X, Mem = 0x%08X, Buffer[0] = 0x%08X, Buffer[1] = 0x%08X, Buffer[2] = 0x%08X, Buffer[3] = 0x%08X, Buffer[4] = 0x%08X, Buffer[5] = 0x%08X", this->DLLData->Buffer[i].PC, this->DLLData->Buffer[i].Mem, this->DLLData->Buffer[i].Query[0], this->DLLData->Buffer[i].Query[1], this->DLLData->Buffer[i].Query[2], this->DLLData->Buffer[i].Query[3], this->DLLData->Buffer[i].Query[4], this->DLLData->Buffer[i].Query[5]);

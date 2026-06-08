@@ -819,7 +819,7 @@ void OoTMMComboTracker::UpdateTrackedObject(int Game, ObjectInfo* ObjectFound, c
     if (this->LastActivityLabel && ObjectFound)
     {
         const QString itemName = (ItemFound && ItemFound->ItemName) ? QString(ItemFound->ItemName) : QString("Item");
-        const QString locName = Game == OOT_GAME ? QString("OoT, ") : QString("MM, ") + GetSceneName(Game, ObjectFound->Scene) + QString(": ") + QString(ObjectFound->Name);
+        const QString locName = (Game == OOT_GAME ? QString("OoT, ") : QString("MM, ")) + GetSceneName(Game, ObjectFound->Scene) + QString(": ") + QString(ObjectFound->Name);
         this->LastActivityLabel->setText(QString("Last item: %1 @ %2").arg(itemName, locName));
     }
 }
@@ -1134,7 +1134,7 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
 
     // Publish it to the global the item-ID translation reads (works across the UI and the
     // multiplayer threads without threading the version through every call site).
-    SetActiveROMVersion(this->ROMSettings.Version);
+    SetActiveROMVersion(this->ROMSettings.Version, true);
 
     // The local world is auto-detected later from the network stream (see UpdateTrackedObject);
     // it defaults to world 1 until the first network event arrives.

@@ -28,12 +28,18 @@ typedef struct Event
 	uint32_t Query[6];	// The gathered data. The first 3 are combo key, gi, scene, entrance and the last 3 are always the last respawn player coordinates.
 } Event;
 
+// Tracker -> DLL : version deduite du spoiler ("Version:"). Doit rester en phase avec Hooking.h (DLL).
+#define HOST_VER_UNKNOWN 0
+#define HOST_VER_DEV     1
+#define HOST_VER_STABLE  2
+
 typedef struct SharedData
 {
 	uint32_t GameVersion[2];	// The game version of the currently tracked game.
 	LONG MaxSize;				// The maximum number elements the buffer can holds at the same time.
 	volatile LONG CurrIndex;	// The index at which the next tracked element should be added.
 	Event Buffer[BUFFER_SIZE];	// The buffer containing all tracked events.
+	volatile int32_t HostROMVersion;	// Tracker -> DLL : voir HOST_VER_* (0 = inconnu / pas de spoiler).
 } SharedData;
 
 class MemoryReader
