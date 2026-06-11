@@ -213,7 +213,8 @@ typedef struct EntranceMessage
 	uint8_t OwlID;				// The message owl ID.
 	uint8_t CurrRoom;			// The message current room.
 	uint8_t GrottoData;			// The message grotto data.
-	uint16_t CurrSceneID;		// The current scene ID.
+    uint8_t LastSceneID;		// The last scene ID. (gLastScene value)
+	uint8_t CurrSceneID;		// The current scene ID.
 	uint32_t SceneID;			// The final message scene ID.
 	uint32_t EntranceID;		// The final message entrance ID.
 	float X;					// The X respawning player coordinate.

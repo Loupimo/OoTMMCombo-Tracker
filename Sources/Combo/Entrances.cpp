@@ -327,7 +327,8 @@ void EntranceMessage::SetMessage(uint32_t MsgDirection, uint32_t OwlID, uint32_t
     this->OoTSongID = (OoTSongs)((Buffer[0] >> 24) & 0xFF);
     this->CurrRoom = (this->Buffer[0] >> 16) & 0xFF;
     this->GrottoData = (this->Buffer[0] >> 8) & 0xFF;
-    this->CurrSceneID = (uint16_t)(this->Buffer[1] >> 16);
+    this->LastSceneID = (uint8_t)(this->Buffer[1] >> 24);
+    this->CurrSceneID = (uint8_t)(this->Buffer[1] >> 16);
     this->SceneID = (uint16_t)this->Buffer[1];
     this->EntranceID = this->Buffer[2];
     memcpy(&this->X, &this->Buffer[3], sizeof(float));
@@ -351,7 +352,8 @@ void EntranceMessage::ResetMessage()
     this->OwlID = 0;
     this->CurrRoom = 0;
     this->GrottoData = 0;
-    this->CurrSceneID = UINT16_MAX;
+    this->LastSceneID = UINT8_MAX;
+    this->CurrSceneID = UINT8_MAX;
     this->SceneID = UINT32_MAX;
     this->EntranceID = UINT32_MAX;
     this->X = 0;
@@ -1009,8 +1011,8 @@ uint32_t EntranceHelper::GetGrottoEntrance(EntranceMessage& Message, uint32_t La
         }
     }
 
-    MultiLogger::LogMessage("Unknown grotto scene !");
-    return 0;
+    //MultiLogger::LogMessage("Unknown grotto scene !");
+    return Message.EntranceID;
 }
 
 
@@ -3464,7 +3466,7 @@ void EntranceHelper::ParseIncomingMessage(EntranceMessage& Message)
 
         if (this->IsGrottoEntrance(Message))
         {
-            Message.EntranceID = this->GetGrottoEntrance(Message, this->OutMessage.SceneID);
+            Message.EntranceID = this->GetGrottoEntrance(Message, Message.LastSceneID/*this->OutMessage.SceneID*/);
             Message.SceneID = this->CorrectGrottoScene(Message);
         }
         else if (this->IsGrottoExit(Message))
@@ -3599,17 +3601,17 @@ void EntranceHelper::ParseOutgoingMessage(EntranceMessage& Message)
         return;
     }
 
-    if (this->IsGrottoEntrance(Message))
-    {   // The current entrance is a grotto entrance
-
-        Message.EntranceID = this->GetGrottoEntrance(Message, Message.SceneID);
-        //this->OutScene = this->CorrectGrottoScene(this->OutGame, this->OutEntrance);
-    }
-    else if (this->IsGrottoExit(Message))
+    if (this->IsGrottoExit(Message))
     {   // The current entrance is a grotto exit
 
         Message.EntranceID = this->GetGrottoExit(Message);
         Message.SceneID = this->CorrectGrottoScene(Message);
+    }
+    else if (this->IsGrottoEntrance(Message))
+    {   // The current entrance is a grotto entrance
+
+        Message.EntranceID = this->GetGrottoEntrance(Message, Message.SceneID);
+        //this->OutScene = this->CorrectGrottoScene(this->OutGame, this->OutEntrance);
     }
     else if (this->IsWarpEntrance(Message))
     {   // The current entrance is a warp zone

@@ -672,6 +672,12 @@ __declspec(naked) void PCHook()
             // Spawned scene ID
             READ_N64_REG(V0_OFFSET, eax)
 
+            // gLastScene
+            COMPUTE_RAM_ADDR([gActiveSceneOffset], ecx)
+            mov ecx, [ecx]
+            shl ecx, 24
+            or eax, ecx
+
             // Current Scene
             COMPUTE_RAM_ADDR([gActiveCurrSceneOffset], ebx)
             mov ebx, [ebx]
