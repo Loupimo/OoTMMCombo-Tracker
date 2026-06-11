@@ -372,6 +372,16 @@ public:
 	*/
 	bool IsGrottoEntrance(EntranceMessage& Message);
 
+
+    /*
+    *   Check if the given entrance ID is from a grotto entrance. This version is looking for actual entrance grotto ID not generic ones
+    *
+    *	@param ID		The entrance ID to test.
+    *
+    *   @return <b>True</b> if the ID is associated to a grotto entrance, <b>false</b> otherwise.
+    */
+    bool IsGrottoEntranceOutMessage(EntranceMessage& Message);
+
 	/*
 	*   Check if the given entrance ID is from a grotto exit.
 	*

@@ -1,0 +1,30 @@
+Game;SceneID;FromEntranceID;From;ToEntranceID;To;ElapsedSec
+0;0x83;0x100c;Fairy Fountain Grotto - Zora Domain;0x110c;Fairy Fountain Grotto -> Zora Domain;8.01504
+0;0x63;0x5d4;Lon Lon's Ranch - Silo;0x5d0;Lon Lon's Ranch -> Silo;9.65383
+0;0x39;0x3a0;Carpenter's Tent - Gerudo Valley;0x3d0;Carpenter's Tent -> Gerudo Valley;4.23033
+0;0x60;0x242;Death Mountain Trail - Dodongo Cavern;0x5fc;Death Mountain Trail -> Cow Grotto;25.3723
+0;0x51;0x18d;Hyrule Field - Gerudo Valley;0x5a8;Hyrule Field -> Grotto Near Gerudo Valley;25.4706
+0;0x51;0x1fd;Hyrule Field - Market Entrance;0x276;Hyrule Field -> Market Entrance;6.15665
+0;0x60;0x1b9;Death Mountain Trail - Goron City;0x14d;Death Mountain Trail -> Goron City;8.67246
+0;0x55;0x33c;Kokiri Forest - Twin's House;0x9c;Kokiri Forest -> Twin's House;10.4444
+1;0x57;0xa800;Tourist Information - Southern Swamp;0x8410;Tourist Information -> Southern Swamp;1.87565
+0;0x51;0x1106;Hyrule Field - Southeast Grotto;0x1006;Hyrule Field -> Southeast Grotto;10.5717
+1;0x2d;0x5430;Termina Field - Path to Mountain Village;0x3200;Termina Field -> Path to Mountain Village;6.07765
+1;0x37;0x6840;Great Bay Coast - Fisherman Hut;0x7200;Great Bay Coast -> Fisher Hut;3.48598
+0;0x5d;0x3ac;Gerudo's Fortress - Haunted Wasteland;0x130;Gerudo's Fortress -> Haunted Wasteland;4.21525
+1;0x45;0x8440;Southern Swamp - Ledge;0x5050;Ledge -> Deku Palace;4.10306
+0;0x58;0x1a1;Zora Domain - Zora Fountain;0x225;Zora Domain -> Zora Fountain;9.57583
+1;0x2b;0x5090;Deku Palace - Bean Grotto;0x14c0;Deku Palace -> Bean Grotto;5.60841
+0;0x6b;0x5a0;Redead Grotto - Kakariko;0x111f;Redead Grotto -> Kakariko;6.84761
+0;0x56;0x215;Sacred Forest Meadow - Forest Temple;0x169;Sacred Forest Meadow -> Forest Temple;2.41043
+1;0x74;0x9230;Evans' Room - Zora Hall;0x6040;Evans' Room -> Zora Hall;1.77847
+0;0x60;0x1b9;Death Mountain Trail - Goron City;0x14d;Death Mountain Trail -> Goron City;34.5527
+0;0x55;0x33c;Kokiri Forest - Twin's House;0x5e0;Kokiri Forest -> Lost Woods Bridge;12.7965
+1;0x38;0x6a20;Zora Cape Peninsula - Zora's Theater Back;0x6010;Zora Cape Peninsula -> Zora's Theater Back;2.75911
+0;0x85;0x100d;Fairy Fountain Grotto - Gerudo's Fortress;0x110d;Fairy Fountain Grotto -> Gerudo's Fortress;2.79615
+0;0x80;0x1011;Silver Boulder Grotto - Desert Colossus;0x1111;Silver Boulder Grotto -> Desert Colossus;13.3022
+0;0x55;0x1100;Kokiri Forest - Storms Grotto;0x5e0;Kokiri Forest -> Lost Woods Bridge;13.4058
+1;0x38;0x6a20;Zora Cape Peninsula - Zora's Theater Back;0x6010;Zora Cape Peninsula -> Zora's Theater Back;6.04525
+0;0x85;0x100d;Fairy Fountain Grotto - Gerudo's Fortress;0x110d;Fairy Fountain Grotto -> Gerudo's Fortress;3.38072
+0;0x52;0x44b;Kakariko Shop Back - Potion Shop;0x1002;Kakariko -> Open Grotto;7.60354
+1;0x61;0xbc00;Stock Pot Inn - East Clock Town;0xd290;Stock Pot Inn -> East Clock Town;5.5071

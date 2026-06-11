@@ -864,6 +864,49 @@ bool EntranceHelper::IsGrottoEntrance(EntranceMessage& Message)
 }
 
 
+bool EntranceHelper::IsGrottoEntranceOutMessage(EntranceMessage& Message)
+{
+    if (Message.GameID == OOT_GAME)
+    {
+        switch (Message.EntranceID)
+        {
+            case OOT_GROTTO_CASTLE_ENTR:
+            case OOT_GROTTO_GENERIC_DMC_ENTR:
+            case OOT_GROTTO_SCRUBS3_DMC_ENTR:
+            case OOT_GROTTO_TRAIL_COW_ENTR:
+            case OOT_GROTTO_GENERIC_DMT_ENTR:
+            case OOT_GROTTO_SCRUBS2_COLOSSUS_ENTR:
+            case OOT_GROTTO_SCRUBS3_GORON_CITY_ENTR:
+            case OOT_GROTTO_FIELD_COW_ENTR:
+            case OOT_GROTTO_FIELD_TREE_ENTR:
+            case OOT_GROTTO_GENERIC_HF_MARKET_ENTR:
+            case OOT_GROTTO_GENERIC_HF_OPEN_ENTR:
+            case OOT_GROTTO_SCRUB_HEART_PIECE_ENTR:
+            case OOT_GROTTO_GENERIC_HF_SOUTHEAST_ENTR:
+            case OOT_GROTTO_TEKTITE_ENTR:
+            case OOT_GROTTO_GENERIC_KAKARIKO_ENTR:
+            case OOT_GROTTO_REDEAD_ENTR:
+            case OOT_GROTTO_GENERIC_KOKIRI_FOREST_ENTR:
+            case OOT_GROTTO_SCRUBS3_LAKE_ENTR:
+            case OOT_GROTTO_SCRUBS3_RANCH_ENTR:
+            case OOT_GROTTO_GENERIC_LOST_WOODS_ENTR:
+            case OOT_GROTTO_SCRUB_UPGRADE_ENTR:
+            case OOT_GROTTO_DEKU_THEATER_ENTR:
+            case OOT_GROTTO_SCRUBS2_SFM_ENTR:
+            case OOT_GROTTO_WOLFOS_ENTR:
+            case OOT_GROTTO_OCTOROK_ENTR:
+            case OOT_GROTTO_SCRUBS2_VALLEY_ENTR:
+            case OOT_GROTTO_GENERIC_RIVER_ENTR:
+            case OOT_GROTTO_SCRUBS2_RIVER_ENTR:
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+
 bool EntranceHelper::IsGrottoExit(EntranceMessage& Message)
 {
     switch (Message.EntranceID)
@@ -3610,8 +3653,13 @@ void EntranceHelper::ParseOutgoingMessage(EntranceMessage& Message)
     else if (this->IsGrottoEntrance(Message))
     {   // The current entrance is a grotto entrance
 
-        Message.EntranceID = this->GetGrottoEntrance(Message, Message.SceneID);
+        Message.EntranceID = this->GetGrottoEntrance(Message, Message.CurrSceneID);
+        Message.SceneID = Message.CurrSceneID;
         //this->OutScene = this->CorrectGrottoScene(this->OutGame, this->OutEntrance);
+    }
+    else if (this->IsGrottoEntranceOutMessage(Message))
+    {
+        Message.SceneID = Message.CurrSceneID;
     }
     else if (this->IsWarpEntrance(Message))
     {   // The current entrance is a warp zone

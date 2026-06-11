@@ -509,7 +509,7 @@ void OoTMMComboTracker::ShowAboutDialog()
     QMessageBox msgBox(this);
     msgBox.setWindowTitle("About");
     msgBox.setTextFormat(Qt::RichText);
-    msgBox.setText("OoTMMCombo Auto Tracker<br>Version 2.0.4<br>&copy; 2025-2026 Loupimo<br><br>git repository: <a href='https://github.com/Loupimo/OoTMMCombo-Tracker'>https://github.com/Loupimo/OoTMMCombo-Tracker</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>Thanks for testing to :<br><br>- Wild<br><br>-DataSkywalker");
+    msgBox.setText("OoTMMCombo Auto Tracker<br>Version 2.0.5<br>&copy; 2025-2026 Loupimo<br><br>git repository: <a href='https://github.com/Loupimo/OoTMMCombo-Tracker'>https://github.com/Loupimo/OoTMMCombo-Tracker</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>Thanks for testing to :<br><br>- Wild<br><br>-DataSkywalker");
     msgBox.exec();
 }
 
