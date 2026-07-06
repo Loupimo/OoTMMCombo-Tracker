@@ -15,6 +15,7 @@
 #include <QStatusBar>
 #include <QTabBar>
 #include <QTextStream>
+#include <QDebug>
 
 namespace {
 
@@ -1242,7 +1243,7 @@ void OoTMMComboTracker::ParseWorldLocations(const QString& LocationBlock, size_t
         QString mapName = it.next().captured(1);
 
         uint32_t sceneID = spoilerMap[mapName].first;                                   // Get the scene ID that match the spoiler log location
-        SceneObjects* gameSceneObj = GetWorldSceneObjects(WorldIndex, spoilerMap[mapName].second);   // Get the correct world / game objects
+        uint32_t sceneGame = spoilerMap[mapName].second;                                // Get the game the header scene belongs to
 
         for (qsizetype i = 1; i < objects.size(); i++)
         {   // Browse all the spoiler scene objects
@@ -1263,58 +1264,106 @@ void OoTMMComboTracker::ParseWorldLocations(const QString& LocationBlock, size_t
                 }
             }
 
-            size_t len = spoilObject[0].length() + 1;                                   // We need to add 1 for the null terminator
-            char* tmpObjName = (char*)malloc(sizeof(char) * len);
-            memcpy_s(tmpObjName, len, spoilObject[0].toStdString().c_str(), len);
-            tmpObjName[len - 1] = '\0';
+            if (spoilObject.size() < 2)
+            {   // Malformed line without an item to assign, skip it
 
-            GameLayout sceneActiveLayout = GetSceneMetaInfo(sceneID, spoilerMap[mapName].second)->ActiveLayout;
+                continue;
+            }
 
-            for (size_t j = 0; j < gameSceneObj[sceneID].NumOfObjs; j++)
-            {   // Browse all scenes objects
+            QByteArray objNameBytes = spoilObject[0].toUtf8();                          // Keep the buffer alive while it is used as a C string below
+            const char* objName = objNameBytes.constData();
+            const ItemInfo* item = FindItemByName(spoilObject[1]);
 
-                // Some layout have the same object name but different object position. We need to check if the active layout match the obejct one in order to fill the right one)
-                if (gameSceneObj[sceneID].Objects[j].Layout == GameLayout::all || gameSceneObj[sceneID].Objects[j].Layout == sceneActiveLayout)
-                {   // The layout does match
+            // Fast path: the object lives in the scene named by its header (always true without entrance shuffle).
+            if (this->AssignSpoilerObjectInScene(WorldIndex, sceneGame, sceneID, objName, item, targetWorld))
+            {
+                continue;
+            }
 
-                    if (strcmp(gameSceneObj[sceneID].Objects[j].Location, tmpObjName) == 0)
-                    {   // We have found the object
+            // Fallback: entrance shuffle can list a location under a different scene header than the one
+            // it natively belongs to (moved grottos, relocated boss lairs, ...). The Location string is
+            // globally unique and carries its game prefix, so scan every scene of that game to find it.
+            uint32_t objGame = spoilObject[0].startsWith("MM ") ? MM_GAME : OOT_GAME;
+            if (!this->AssignSpoilerObjectAnyScene(WorldIndex, objGame, objName, item, targetWorld))
+            {   // Still unresolved even after the cross-scene scan (previously this failed silently)
 
-                        ObjectInfo* object = &gameSceneObj[sceneID].Objects[j];
-
-                        // Find and modify the object item
-                        const ItemInfo* item = FindItemByName(spoilObject[1]);
-                        object->Item = item;
-                        object->TargetWorld = targetWorld;
-
-                        if (object->RenderScene != sceneID)
-                        {   // The current object will never be rendered, we need to update its counter part
-
-                            for (size_t k = 0; k < gameSceneObj[object->RenderScene].NumOfObjs; k++)
-                            {   // Find the object in the rendered scene
-
-                                if (strcmp(gameSceneObj[object->RenderScene].Objects[k].Location, object->Location) == 0)
-                                {   // Object found
-
-                                    gameSceneObj[object->RenderScene].Objects[k].Item = item;
-                                    gameSceneObj[object->RenderScene].Objects[k].TargetWorld = targetWorld;
-                                    break;
-                                }
-                            }
-                        }
-                        if (object->Type == ObjectType::none)
-                        {   // The object is in the good renderer however in some cases it might be not rendered (e.g. MM Mountain village Spring / Winter)
-
-                            continue;   // We should do another loop and not break in order to find the real rendered item
-                        }
-
-                        free(tmpObjName);
-                        break;
-                    }
-                }
+                qWarning() << "[Spoiler] Unresolved location under" << mapName << ":" << spoilObject[0];
             }
         }
     }
+}
+
+bool OoTMMComboTracker::AssignSpoilerObjectInScene(size_t WorldIndex, uint32_t Game, uint32_t SceneID, const char* ObjName, const ItemInfo* Item, uint8_t TargetWorld)
+{
+    SceneObjects* gameSceneObj = GetWorldSceneObjects(WorldIndex, Game);
+    GameLayout sceneActiveLayout = GetSceneMetaInfo(SceneID, Game)->ActiveLayout;
+    bool found = false;
+
+    for (size_t j = 0; j < gameSceneObj[SceneID].NumOfObjs; j++)
+    {   // Browse all scenes objects
+
+        ObjectInfo* object = &gameSceneObj[SceneID].Objects[j];
+
+        // Some layout have the same object name but different object position. We need to check if the active layout match the object one in order to fill the right one.
+        if (object->Layout != GameLayout::all && object->Layout != sceneActiveLayout)
+        {   // The layout does not match, skip this object
+
+            continue;
+        }
+
+        if (strcmp(object->Location, ObjName) != 0)
+        {   // Not the object we are looking for
+
+            continue;
+        }
+
+        // We have found the object, modify its item
+        object->Item = Item;
+        object->TargetWorld = TargetWorld;
+        found = true;
+
+        if (object->RenderScene != SceneID)
+        {   // The current object will never be rendered, we need to update its counter part
+
+            for (size_t k = 0; k < gameSceneObj[object->RenderScene].NumOfObjs; k++)
+            {   // Find the object in the rendered scene
+
+                if (strcmp(gameSceneObj[object->RenderScene].Objects[k].Location, object->Location) == 0)
+                {   // Object found
+
+                    gameSceneObj[object->RenderScene].Objects[k].Item = Item;
+                    gameSceneObj[object->RenderScene].Objects[k].TargetWorld = TargetWorld;
+                    break;
+                }
+            }
+        }
+
+        if (object->Type == ObjectType::none)
+        {   // The object is in the good renderer however in some cases it might be not rendered (e.g. MM Mountain village Spring / Winter)
+
+            continue;   // We should do another loop and not break in order to find the real rendered item
+        }
+
+        break;
+    }
+
+    return found;
+}
+
+bool OoTMMComboTracker::AssignSpoilerObjectAnyScene(size_t WorldIndex, uint32_t Game, const char* ObjName, const ItemInfo* Item, uint8_t TargetWorld)
+{
+    size_t numScenes = (Game == MM_GAME) ? MM_NUM_SCENES : OOT_NUM_SCENES;
+
+    for (size_t scene = 0; scene < numScenes; scene++)
+    {   // Browse every scene of the game until we find the object's real home
+
+        if (this->AssignSpoilerObjectInScene(WorldIndex, Game, (uint32_t)scene, ObjName, Item, TargetWorld))
+        {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 #pragma endregion

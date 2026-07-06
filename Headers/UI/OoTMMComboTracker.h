@@ -320,6 +320,39 @@ public:
     */
     void ParseWorldLocations(const QString& LocationBlock, size_t WorldIndex, bool IsMultiworld);
 
+    /*
+    *   Assign the given item to the object whose Location matches ObjName inside a single scene.
+    *   Mirrors the item into the object's RenderScene counterpart when it differs, and keeps
+    *   scanning the scene after a placeholder (ObjectType::none) match so the real rendered
+    *   object is filled too.
+    *
+    *   @param WorldIndex       The 0-based world index whose arrays must be filled.
+    *   @param Game             The game the scene belongs to (OOT_GAME / MM_GAME).
+    *   @param SceneID          The scene to search the object in.
+    *   @param ObjName          The full spoiler location string of the object (globally unique).
+    *   @param Item             The item to assign to the object.
+    *   @param TargetWorld      The multiworld destination world (1-based).
+    *
+    *   @return <b>True</b> if at least one matching object was found and assigned, <b>false</b> otherwise.
+    */
+    bool AssignSpoilerObjectInScene(size_t WorldIndex, uint32_t Game, uint32_t SceneID, const char* ObjName, const ItemInfo* Item, uint8_t TargetWorld);
+
+    /*
+    *   Cross-scene fallback for entrance shuffle: scan every scene of the given game for an object
+    *   whose Location matches ObjName. Needed when a randomized entrance lists a location under a
+    *   different scene header than the one it natively belongs to (moved grottos, relocated boss
+    *   lairs, ...). The Location string is globally unique so the first match is the real home.
+    *
+    *   @param WorldIndex       The 0-based world index whose arrays must be filled.
+    *   @param Game             The game to scan (OOT_GAME / MM_GAME).
+    *   @param ObjName          The full spoiler location string of the object (globally unique).
+    *   @param Item             The item to assign to the object.
+    *   @param TargetWorld      The multiworld destination world (1-based).
+    *
+    *   @return <b>True</b> if the object was found in some scene and assigned, <b>false</b> otherwise.
+    */
+    bool AssignSpoilerObjectAnyScene(size_t WorldIndex, uint32_t Game, const char* ObjName, const ItemInfo* Item, uint8_t TargetWorld);
+
 #pragma endregion
 
 };
