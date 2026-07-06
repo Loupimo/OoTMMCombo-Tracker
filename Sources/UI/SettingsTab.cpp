@@ -452,6 +452,10 @@ QWidget* SettingsTab::BuildKeysPage()
         { "mapCompassShuffle",  ""    },
         { "tingleShuffle",      "MM"  },
     }));
+    contentLayout->addWidget(this->MakeParamGroup(content, "Rusty Keys", {
+        { "rustyKeysOot", "OoT" },
+        { "rustyKeysMm",  "MM"  },
+    }));
 
     contentLayout->addStretch(1);
     scroll->setWidget(content);
@@ -646,6 +650,10 @@ QWidget* SettingsTab::BuildProgressiveItemsPage()
             if (key.startsWith("shared")) continue;
             if (key.startsWith("song")) continue;                 // Songs live in their own page.
             if (key == "kamaroMaskOot" || key == "boomerangMm") continue;   // -> World Items page.
+            if (key == "powderKegOot" || key == "gfsOot") continue;         // -> World Items page.
+            if (key == "slingshotMm" || key == "gerudoMaskMm"
+                || key == "skullMaskMm" || key == "spookyMaskMm") continue;  // -> World Items page.
+            if (key == "rustyKeysOot" || key == "rustyKeysMm") continue;     // -> Keys & Dungeons page.
 
             QString badge;
             if (key.endsWith("Oot")) badge = "OoT";
@@ -781,6 +789,14 @@ QWidget* SettingsTab::BuildWorldItemsPage()
         { "powderKegOot", "OoT" },
         { "gfsOot", "OoT" },
         { "boomerangMm",   "MM"  },
+        { "slingshotMm",   "MM"  },
+    }));
+
+    // Masks --------------------------------------------------------------
+    contentLayout->addWidget(this->MakeParamGroup(content, "Masks", {
+        { "gerudoMaskMm", "MM" },
+        { "skullMaskMm",  "MM" },
+        { "spookyMaskMm", "MM" },
     }));
 
     // Key Rings group ----------------------------------------------------

@@ -11,7 +11,7 @@ const ItemInfo ItemList[NUM_ITEM] =
     { OOT_NUTS_5, "5 Deku Nuts (OoT)", EGameIcon::nut, true },
     { OOT_BOMBCHU_10, "10 Bombchu (OoT)", EGameIcon::bombchu, true },
     { OOT_BOW, "Fairy Bow (OoT)", EGameIcon::bow_oot, true },
-    { OOT_SLINGSHOT, "Fairy Slingshot", EGameIcon::slingshot, false },
+    { OOT_SLINGSHOT, "Fairy Slingshot (OoT)", EGameIcon::slingshot, true },
     { OOT_BOOMERANG, "Boomerang (OoT)", EGameIcon::boomerang, true },
     { OOT_STICK, "Deku Stick (OoT)", EGameIcon::stick, true },
     { OOT_HOOKSHOT, "Progressive Hookshot (OoT)", EGameIcon::hookshot_oot, true },
@@ -29,8 +29,8 @@ const ItemInfo ItemList[NUM_ITEM] =
     { OOT_BOTTLE_MILK, "Bottle of Milk (OoT)", EGameIcon::milk, true },
     { OOT_BOTTLE_RUTO_LETTER, "Ruto's Letter", EGameIcon::ruto, true },
     { OOT_MAGIC_BEAN, "Magic Beans (OoT)", EGameIcon::bean, false },
-    { OOT_MASK_SKULL, "Skull Mask", EGameIcon::skull, false },
-    { OOT_MASK_SPOOKY, "Spooky Mask", EGameIcon::spooky, false },
+    { OOT_MASK_SKULL, "Skull Mask (OoT)", EGameIcon::skull, true },
+    { OOT_MASK_SPOOKY, "Spooky Mask (OoT)", EGameIcon::spooky, true },
     { OOT_CHICKEN, "Chicken", EGameIcon::cucco, false },
     { OOT_MASK_KEATON, "Keaton Mask (OoT)", EGameIcon::keaton, true },
     { OOT_MASK_BUNNY, "Bunny Hood (OoT)", EGameIcon::bunny, true },
@@ -66,7 +66,7 @@ const ItemInfo ItemList[NUM_ITEM] =
     { OOT_STONE_OF_AGONY, "Stone of Agony (OoT)", EGameIcon::agony, true },
     { OOT_GERUDO_CARD, "Gerudo's Membership Card", EGameIcon::card, false },
     { OOT_OCARINA_FAIRY, "Fairy Ocarina (OoT)", EGameIcon::fairy_ocarina, true },
-    { OOT_DEKU_SEEDS_5, "5 Deku Seeds (OoT)", EGameIcon::seeds, false },
+    { OOT_DEKU_SEEDS_5, "5 Deku Seeds (OoT)", EGameIcon::seeds, true },
     { OOT_HEART_CONTAINER, "Heart Container (OoT)", EGameIcon::heart_container, true },
     { OOT_HEART_PIECE, "Piece of Heart (OoT)", EGameIcon::heart_piece, true },
     { OOT_BOSS_KEY, "Boss Key (OoT)", EGameIcon::boss_key, false },
@@ -89,7 +89,7 @@ const ItemInfo ItemList[NUM_ITEM] =
     { OOT_MILK, "Lon Lon Milk (OoT)", EGameIcon::milk, true },
     { OOT_MASK_GORON, "Goron Mask (OoT)", EGameIcon::goron, true },
     { OOT_MASK_ZORA, "Zora Mask (OoT)", EGameIcon::zora, true },
-    { OOT_MASK_GERUDO, "Gerudo Mask", EGameIcon::gerudo, false },
+    { OOT_MASK_GERUDO, "Gerudo Mask (OoT)", EGameIcon::gerudo, true },
     { OOT_GORON_BRACELET, "Goron's Bracelet (OoT)", EGameIcon::bracelet, true },
     { OOT_RUPEE_PURPLE, "Purple Rupee (OoT)", EGameIcon::purple_rupee, true },
     { OOT_RUPEE_HUGE, "Gold Rupee (OoT)", EGameIcon::gold_rupee, true },
@@ -102,7 +102,7 @@ const ItemInfo ItemList[NUM_ITEM] =
     { OOT_SPELL_WIND, "Farore's Wind (OoT)", EGameIcon::farore, true },
     { OOT_SPELL_LOVE, "Nayru's Love (OoT)", EGameIcon::nayru, true },
     { OOT_BULLET_BAG, "Bullet Bag", EGameIcon::big_seed, false },
-    { OOT_BULLET_BAG2, "Large Bullet Bag", EGameIcon::biggest_seed, false },
+    { OOT_BULLET_BAG2, "Large Bullet Bag (OoT)", EGameIcon::biggest_seed, false },
     { OOT_STICKS_5, "5 Deku Sticks (OoT)", EGameIcon::stick, true },
     { OOT_STICKS_10, "10 Deku Sticks (OoT)", EGameIcon::stick, true },
     { OOT_NUTS_5_ALT, "5 Deku Nuts (OoT)", EGameIcon::nut, true },
@@ -111,7 +111,7 @@ const ItemInfo ItemList[NUM_ITEM] =
     { OOT_BOMBS_10, "10 Bombs (OoT)", EGameIcon::bomb, true },
     { OOT_BOMBS_20, "20 Bombs (OoT)", EGameIcon::bomb, true },
     { OOT_BOMBS_30, "30 Bombs (OoT)", EGameIcon::bomb, true },
-    { OOT_DEKU_SEEDS_30, "30 Deku Seeds", EGameIcon::seeds, false },
+    { OOT_DEKU_SEEDS_30, "30 Deku Seeds (OoT)", EGameIcon::seeds, true },
     { OOT_BOMBCHU_5, "5 Bombchu (OoT)", EGameIcon::bombchu, true },
     { OOT_BOMBCHU_20, "20 Bombchu (OoT)", EGameIcon::bombchu, true },
     { OOT_FISH, "Fish (OoT)", EGameIcon::bottled_fish, true },
@@ -129,7 +129,7 @@ const ItemInfo ItemList[NUM_ITEM] =
     { OOT_STICK_UPGRADE2, "Second Deku Stick Upgrade (OoT)", EGameIcon::stick_upgrade_2, true },
     { OOT_NUT_UPGRADE, "Deku Nut Upgrade (OoT)", EGameIcon::nut_upgrade_1, true },
     { OOT_NUT_UPGRADE2, "Second Deku Nut Upgrade (OoT)", EGameIcon::nut_upgrade_2, true },
-    { OOT_BULLET_BAG3, "Largest Bullet Bag", EGameIcon::biggest_seed, false },
+    { OOT_BULLET_BAG3, "Largest Bullet Bag (OoT)", EGameIcon::biggest_seed, false },
     { OOT_UNUSED_ICE_TRAP, "Ice Trap (OoT)", EGameIcon::ice_trap, false },
     { OOT_UNK_7D, "Unknown", EGameIcon::none, false },
     { OOT_UNK_7E, "Unknown", EGameIcon::none, false },
@@ -488,6 +488,33 @@ const ItemInfo ItemList[NUM_ITEM] =
     { OOT_TRAP_KNOCKBACK, "Knockback Trap", EGameIcon::knockback_trap, false },
     { OOT_TRAP_RUPOOR, "Rupoor", EGameIcon::rupoor, false },
     { OOT_PLATINUM_TOKEN, "Platinum Token (OoT)", EGameIcon::platinum_token, true },
+    { OOT_RUSTY_KEY_TREASURE_CHEST_GAME, "Rusty Key (Treasure Chest Game)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_GUARD_HOUSE, "Rusty Key (Guard House)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_HYRULE_CASTLE, "Rusty Key (Hyrule Castle)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_DOG_LADY_HOUSE, "Rusty Key (Dog Lady House)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_BACK_ALLEY_HOUSE, "Rusty Key (Back Alley House)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_BOMBCHU_SHOP, "Rusty Key (Bombchu Shop)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_MASK_SHOP, "Rusty Key (Mask Shop)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_CHILD_BAZAAR, "Rusty Key (Child Bazaar)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_CHILD_POTION_SHOP, "Rusty Key (Child Potion Shop)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_CHILD_SHOOTING_GALLERY, "Rusty Key (Child Shooting Gallery)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_BOMBCHU_BOWLING, "Rusty Key (Bombchu Bowling)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_LABORATORY, "Rusty Key (Laboratory)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_FISHING_POND, "Rusty Key (Fishing Pond)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_SILO, "Rusty Key (Silo)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_RANCH_STABLE, "Rusty Key (Ranch Stable)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_RANCH_HOUSE, "Rusty Key (Ranch House)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_RANCH_HOUSE_ROOM, "Rusty Key (Malon's Room)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_GRAVEYARD, "Rusty Key (Kakariko Graveyard Hut)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_WINDMILL, "Rusty Key (Windmill)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_IMPA_HOUSE, "Rusty Key (Impa's House)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_CARPENTER_HOUSE, "Rusty Key (Carpenter House)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_GRANNY_POTION_SHOP, "Rusty Key (Granny Potion Shop)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_ADULT_SHOOTING_GALLERY, "Rusty Key (Adult Shooting Gallery)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_SKULLTULA_HOUSE, "Rusty Key (Skulltula House)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_ADULT_BAZAAR, "Rusty Key (Adult Bazaar)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_ADULT_POTION_SHOP, "Rusty Key (Adult Potion Shop)", EGameIcon::rusty_key, false },
+    { OOT_RUSTY_KEY_ADULT_POTION_SHOP_BACK, "Rusty Key (Adult Potion Shop Back)", EGameIcon::rusty_key, false },
     { MM_RUPEE_GREEN, "Green Rupee (MM)", EGameIcon::rupee, true },
     { MM_RUPEE_BLUE, "Blue Rupee (MM)", EGameIcon::blue_rupee, true },
     { MM_RUPEE_RED_10, "Red Rupee (MM)", EGameIcon::red_rupee, true },
@@ -598,6 +625,9 @@ const ItemInfo ItemList[NUM_ITEM] =
     { MM_MASK_BLAST, "Blast Mask (MM)", EGameIcon::blast, true },
     { MM_MASK_SCENTS, "Mask of Scents", EGameIcon::scents, false },
     { MM_MASK_KAFEI, "Kafei's Mask", EGameIcon::kafei, false },
+    { MM_MASK_GERUDO, "Gerudo Mask (MM)", EGameIcon::gerudo, true },
+    { MM_MASK_SKULL, "Skull Mask (MM)", EGameIcon::skull, true },
+    { MM_MASK_SPOOKY, "Spooky Mask (MM)", EGameIcon::spooky, true },
     { MM_CHATEAU, "Chateau Romani Refill (MM)", EGameIcon::chateau, true },
     { MM_MILK, "Romani Milk", EGameIcon::milk, true },
     { MM_GOLD_DUST, "Gold Dust", EGameIcon::dust, true },
@@ -699,6 +729,11 @@ const ItemInfo ItemList[NUM_ITEM] =
     { MM_OWL_STONE_TOWER, "Owl Statue (Stone Tower)", EGameIcon::owl, false },
     { MM_OWL_HIDDEN, "Owl Statue (Hidden)", EGameIcon::owl, false },
     { MM_WALLET5, "Bottomless Wallet (MM)", EGameIcon::bottomless_wallet, true },
+    { MM_SLINGSHOT, "Fairy Slingshot (MM)", EGameIcon::slingshot, true },
+    { MM_DEKU_SEEDS_5, "5 Deku Seeds (MM)", EGameIcon::seeds, true },
+    { MM_DEKU_SEEDS_30, "30 Deku Seeds (MM)", EGameIcon::seeds, true },
+    { MM_BULLET_BAG2, "Large Bullet Bag (MM)", EGameIcon::biggest_seed, true },
+    { MM_BULLET_BAG3, "Largest Bullet Bag (MM)", EGameIcon::biggest_seed, true },
     { MM_SOUL_ENEMY_OCTOROK, "Soul of Octoroks (MM)", EGameIcon::soul_of_foe, true },
     { MM_SOUL_ENEMY_WALLMASTER, "Soul of Wallmasters (MM)", EGameIcon::soul_of_foe, true },
     { MM_SOUL_ENEMY_DODONGO, "Soul of Dodongos (MM)", EGameIcon::soul_of_foe, true },
@@ -865,6 +900,45 @@ const ItemInfo ItemList[NUM_ITEM] =
     { MM_BOTTLE_RUTO_LETTER, "Ruto's Letter", EGameIcon::ruto, true },
     { MM_BOTTLE_BLUE_FIRE, "Bottle of Blue Fire", EGameIcon::blue_fire, true },
     { MM_BLUE_FIRE, "Blue Fire", EGameIcon::blue_fire, true },
+    { MM_RUSTY_KEY_TOURIST_INFORMATION, "Rusty Key (Tourist Information)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_POTION_SHOP, "Rusty Key (Potion Shop)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_POST_OFFICE, "Rusty Key (Post Office)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_SWORDSMAN_SCHOOL, "Rusty Key (Swordsman School)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_LOTTERY, "Rusty Key (Lottery)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_BOMB_SHOP, "Rusty Key (Bomb Shop)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_TRADING_POST, "Rusty Key (Trading Post)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_CURIOSITY_SHOP, "Rusty Key (Curiosity Shop)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_KAFEI_HIDEOUT, "Rusty Key (Kafei's Hideout)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_TOWN_ARCHERY, "Rusty Key (Town Archery)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_SWAMP_ARCHERY, "Rusty Key (Swamp Archery)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_OBSERVATORY, "Rusty Key (Observatory)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_BLACKSMITH, "Rusty Key (Blacksmith)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_MUSIC_HOUSE, "Rusty Key (Music House)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_LABORATORY, "Rusty Key (Oceanic Laboratory)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_BENEATH_GRAVEYARD, "Rusty Key (Beneath the Graveyard)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_DAMPE_HOUSE, "Rusty Key (Dampe's House)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_MAYOR_RESIDENCE, "Rusty Key (Mayor's Residence)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_MAYOR_RESIDENCE_OFFICE, "Rusty Key (Mayor's Residence Office)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_MAYOR_RESIDENCE_SALON, "Rusty Key (Mayor's Residence Salon)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_MAYOR_RESIDENCE_KAFEI, "Rusty Key (Kafei's Room)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_TREASURE_CHEST_GAME, "Rusty Key (Treasure Game)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_HONEY_DARLING, "Rusty Key (Honey & Darling)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_MILK_BAR, "Rusty Key (Milk Bar)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_DOG_RACETRACK, "Rusty Key (Doggy Racetrack)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_CUCCO_SHACK, "Rusty Key (Cucco Shack)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_RANCH_HOUSE, "Rusty Key (Romani Ranch House)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_RANCH_BARN, "Rusty Key (Romani Ranch Barn)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_RANCH_HOUSE_ROOM, "Rusty Key (Romani's Room)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_ZORA_SHOP, "Rusty Key (Zora Shop)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_ZORA_JAPAS_ROOM, "Rusty Key (Japas' Room)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_ZORA_TIJO_ROOM, "Rusty Key (Tijo's Room)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_ZORA_LULU_ROOM, "Rusty Key (Lulu's Room)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_ZORA_EVAN_ROOM, "Rusty Key (Evan's Room)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_STOCK_POT_INN, "Rusty Key (Stock Pot Inn)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_STOCK_POT_INN_ROOF, "Rusty Key (Stock Pot Inn Roof)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_GRANDMA_ROOM, "Rusty Key (Grandma's Room)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_STOCK_POT_INN_STAFF_ROOM, "Rusty Key (Stock Pot Inn Staff Room)", EGameIcon::rusty_key, false },
+    { MM_RUSTY_KEY_STOCK_POT_INN_DORMITORY, "Rusty Key (Stock Pot Inn Dormitory)", EGameIcon::rusty_key, false },
     { MM_MASK_MAJORA, "Majora's Mask", EGameIcon::mask, false },
     { MM_SOLD_OUT, "Sold Out", EGameIcon::none, false },
     { NOTHING, "Nothing", EGameIcon::nothing, false },
@@ -1095,8 +1169,19 @@ const ItemInfo ItemList[NUM_ITEM] =
     { MM_SCALE, "Progressive Scale (MM)", EGameIcon::bronze_scale, true },
     { MM_SHIELD, "Progressive Shield (MM)", EGameIcon::hero_shield, true },
     { MM_STRENGTH, "Progressive Strength (MM)", EGameIcon::bracelet, true },
+    { SHARED_SLINGSHOT, "Fairy Slingshot", EGameIcon::slingshot, false },
+    { SHARED_DEKU_SEEDS_5, "5 Deku Seeds", EGameIcon::seeds, false },
+    { SHARED_DEKU_SEEDS_30, "30 Deku Seeds", EGameIcon::seeds, false },
+    { SHARED_BULLET_BAG2, "Large Bullet Bag", EGameIcon::biggest_seed, false },
+    { SHARED_BULLET_BAG3, "Largest Bullet Bag", EGameIcon::biggest_seed, false },
+    { SHARED_QUIVER2, "Big Quiver", EGameIcon::big_quiver, false },
+    { SHARED_QUIVER3, "Biggest Quiver", EGameIcon::biggest_quiver, false },
+    { SHARED_MASK_GERUDO, "Gerudo Mask", EGameIcon::gerudo, false },
+    { SHARED_MASK_SKULL, "Skull Mask", EGameIcon::skull, false },
+    { SHARED_MASK_SPOOKY, "Spooky Mask", EGameIcon::spooky, false },
     { SHARED_POWDER_KEG, "Powder Keg", EGameIcon::powder, false },
-    { SHARED_GREAT_FAIRY_SWORD, "Great Fairy's Sword", EGameIcon::fairy_sword, false }
+    { SHARED_GREAT_FAIRY_SWORD, "Great Fairy's Sword", EGameIcon::fairy_sword, false },
+
 };
 
 #pragma endregion 
@@ -1132,6 +1217,61 @@ const ItemInfo * FindItem(uint32_t gi)
     }
 
     return currItem;
+}
+
+// Progressive capacity families whose members all share the base item's spoiler name, ordered
+// [base, first upgrade, second upgrade]: the base (bow / slingshot, which comes with its first
+// quiver / bullet bag) then its successive capacity upgrades. Per-game and shared variants are
+// distinct families so an OoT bow never matches an MM quiver, and a shared placement matches the
+// shared upgrades.
+static const uint32_t ProgressiveFamilies[][3] =
+{
+    { OOT_BOW,          OOT_QUIVER2,        OOT_QUIVER3        },
+    { MM_BOW,           MM_QUIVER2,         MM_QUIVER3         },
+    { SHARED_BOW,       SHARED_QUIVER2,     SHARED_QUIVER3     },
+    { OOT_SLINGSHOT,    OOT_BULLET_BAG2,    OOT_BULLET_BAG3    },
+    { MM_SLINGSHOT,     MM_BULLET_BAG2,     MM_BULLET_BAG3     },
+    { SHARED_SLINGSHOT, SHARED_BULLET_BAG2, SHARED_BULLET_BAG3 },
+};
+
+bool ItemsShareProgressiveFamily(uint32_t ItemA, uint32_t ItemB)
+{
+    for (const uint32_t* family : ProgressiveFamilies)
+    {
+        bool hasA = false;
+        bool hasB = false;
+        for (int i = 0; i < 3; i++)
+        {
+            if (family[i] == ItemA) hasA = true;
+            if (family[i] == ItemB) hasB = true;
+        }
+
+        if (hasA && hasB)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool GetProgressiveUpgradeRequirement(uint32_t ItemID, uint32_t& OutBaseID, uint32_t& OutRequiredCount)
+{
+    for (const uint32_t* family : ProgressiveFamilies)
+    {
+        for (int pos = 1; pos < 3; pos++)
+        {   // Only the upgrade tiers (index 0 is the base, not an upgrade)
+
+            if (family[pos] == ItemID)
+            {
+                OutBaseID = family[0];
+                OutRequiredCount = (uint32_t)(pos + 1);   // first upgrade needs 2 bases, second needs 3
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
 
 const ItemInfo* FindItemByName(QString Name)

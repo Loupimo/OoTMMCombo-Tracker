@@ -263,6 +263,7 @@ enum class EGameIcon : uint8_t
     double_magic,
     skeleton_key,
     key_ring,
+    rusty_key,
     red_coin,
     green_coin,
     blue_coin,

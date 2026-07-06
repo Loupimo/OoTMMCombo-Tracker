@@ -596,7 +596,18 @@ bool ProgressionTab::ItemMatchesWidget(const ItemIconWidget* Widget, int /*Game*
     // with the same icon but a different ItemID (e.g. two distinct rupee tiers) end
     // up in their own widget. The Game parameter is intentionally ignored because
     // the location tree must list the item's locations across both games.
-    return Widget->LookupKeys.contains(Item->ItemID);
+    if (Widget->LookupKeys.contains(Item->ItemID)) return true;
+
+    // Progressive capacity upgrades (Bow / Big / Biggest Quiver, Fairy Slingshot / Large / Largest
+    // Bullet Bag) all carry the base item's name in the spoiler, so a placement resolves to the base
+    // item and is a candidate for the base AND every upgrade. List it under each family member's widget
+    // (the live game still routes the exact ID it sends to the right tier, so counting is unaffected).
+    for (uint32_t key : Widget->LookupKeys)
+    {
+        if (ItemsShareProgressiveFamily((uint32_t)Item->ItemID, key)) return true;
+    }
+
+    return false;
 }
 
 
@@ -1324,6 +1335,20 @@ void ProgressionTab::RebuildFromSceneObjects()
 
                             w->MarkFound(0, nullptr);
                         }
+                        break;
+                    }
+
+                    // Progressive capacity upgrade: the starting-items section only lists the base
+                    // (bow / slingshot) with a count, so the quiver / bullet bag widgets never match
+                    // directly. A base count >= 2 grants the first upgrade, >= 3 the second: flag the
+                    // matching upgrade widget as a starting item too.
+                    uint32_t baseID = 0;
+                    uint32_t requiredCount = 0;
+                    if (GetProgressiveUpgradeRequirement(id, baseID, requiredCount)
+                        && startingItems->value(baseID, 0) >= requiredCount)
+                    {
+                        w->IsStartingItem = true;
+                        w->MarkFound(0, nullptr);
                         break;
                     }
                 }

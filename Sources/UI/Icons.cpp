@@ -261,6 +261,7 @@ const IconMetaInf IconsMetaInfo[NumOfGameIcons] =
     {"./Resources/Common/Items/Double_Magic.png", { 30, 30 } },
     {"./Resources/Common/Items/Skeleton_Key.png", { 30, 30 } },
     {"./Resources/Common/Items/Key_Ring.png", { 30, 30 } },
+    {"./Resources/Common/Items/Rusty_Key.png", { 30, 30 } },
     {"./Resources/Common/Items/Red_Coin.png", { 30, 30 } },
     {"./Resources/Common/Items/Green_Coin.png", { 30, 30 } },
     {"./Resources/Common/Items/Blue_Coin.png", { 30, 30 } },
