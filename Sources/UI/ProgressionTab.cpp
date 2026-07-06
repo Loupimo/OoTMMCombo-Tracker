@@ -34,26 +34,26 @@ ItemIconWidget::ItemIconWidget(EGameIcon IconValue, const QString& DisplayName, 
     : QWidget(Parent), DisplayName(DisplayName), Icon(IconValue), IsCounter(IsCounter)
 {
     this->setCursor(Qt::PointingHandCursor);
-    this->setFixedSize(72, 108);
+    this->setFixedSize(82, 124);
     this->setAttribute(Qt::WA_StyledBackground, true);
     this->setStyleSheet("background: transparent;");
 
     this->IconLabel = new QLabel(this);
-    this->IconLabel->setGeometry(4, 0, 64, 64);
+    this->IconLabel->setGeometry(9, 0, 64, 64);
     this->IconLabel->setAlignment(Qt::AlignCenter);
     this->IconLabel->setAttribute(Qt::WA_TransparentForMouseEvents);
 
-    // Allow up to 3 wrapped lines so long entries like "Compass (Snowhead Temple)"
-    // are fully visible instead of being clipped by a too-short label.
+    // Slightly wider + taller cell with a roomier name area so long entries like
+    // "Silver Rupee (Shadow Temple - Invisible Blades)" wrap fully instead of being clipped.
     this->NameLabel = new QLabel(DisplayName, this);
-    this->NameLabel->setGeometry(0, 64, 72, 44);
+    this->NameLabel->setGeometry(0, 64, 82, 58);
     this->NameLabel->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
     this->NameLabel->setWordWrap(true);
     this->NameLabel->setStyleSheet("background: transparent; color: #7a9abf; font-size: 9px;");
     this->NameLabel->setAttribute(Qt::WA_TransparentForMouseEvents);
 
     this->CountBadge = new QLabel(this);
-    this->CountBadge->setGeometry(44, 44, 24, 18);
+    this->CountBadge->setGeometry(49, 44, 24, 18);
     this->CountBadge->setAlignment(Qt::AlignCenter);
     this->CountBadge->setStyleSheet(
         "background-color: #4a9edb;"
@@ -386,7 +386,7 @@ QWidget* ProgressionTab::BuildPage(const ProgSection* Sections, size_t SectionCo
         // or several rows with a partial last one.
         for (int c = 0; c < columns; ++c)
         {
-            grid->setColumnMinimumWidth(c, 72);
+            grid->setColumnMinimumWidth(c, 82);
             grid->setColumnStretch(c, 1);
         }
 
