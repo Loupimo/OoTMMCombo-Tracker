@@ -217,6 +217,9 @@ void GPSRouteWidget::BuildCardsHost()
     this->CardsRow = new QHBoxLayout(this->CardsHost);
     this->CardsRow->setContentsMargins(0, 0, 0, 0);
     this->CardsRow->setSpacing(10);
+    // Anchor the cards to the top so a card that grew tall (long route) gets clipped by the
+    // scroll viewport on the bottom edge instead of stretching the row vertically.
+    this->CardsRow->setAlignment(Qt::AlignTop);
 
     this->Placeholder = new QLabel("No route found", this->CardsHost);
     this->Placeholder->setObjectName("GpsPlaceholder");
@@ -224,7 +227,23 @@ void GPSRouteWidget::BuildCardsHost()
     this->Placeholder->setVisible(false);
     this->CardsRow->addWidget(this->Placeholder, 1);
 
-    this->MainLayout->addWidget(this->CardsHost, 1);
+    // Wrap the cards host in a scroll viewport so that:
+    //   - vertical: a long route (many directions) scrolls inside the GPS tab instead of
+    //     pushing the main window taller.
+    //   - horizontal: when many wide cards stack side by side they scroll instead of
+    //     forcing the window wider.
+    // The viewport is transparent so the tab background still shines through; the host
+    // widget keeps its own object name so the existing QSS rules remain in effect.
+    this->CardsScroll = new QScrollArea(this);
+    this->CardsScroll->setObjectName("GpsCardsScroll");
+    this->CardsScroll->setWidget(this->CardsHost);
+    this->CardsScroll->setWidgetResizable(true);
+    this->CardsScroll->setFrameShape(QFrame::NoFrame);
+    this->CardsScroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    this->CardsScroll->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    this->CardsScroll->setStyleSheet("QScrollArea, QScrollArea > QWidget > QWidget { background: transparent; }");
+
+    this->MainLayout->addWidget(this->CardsScroll, 1);
 }
 
 

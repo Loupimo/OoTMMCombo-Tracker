@@ -6,8 +6,8 @@
 #define PAYLOAD_END   0x80800000        // The combo payload last RAM address.
 #define MAX_JAL 10                      // The maximum number of JAL instructions a fast pattern resolver can have.
 #define PATTERN_STATE_SIZE 32           // The size of the GamePatternState structure.
-#define OOT_LAST_SCENE_OFFSET 0x01A0    // The offset to add to the Play_TransitionDone PC to find the offset to add to the base scene to get the gLastScene address for OoT
-#define MM_LAST_SCENE_OFFSET 0x002C     // The offset to add to the Play_TransitionDone PC to find the offset to add to the base scene to get the gLastScene address for MM
+#define OOT_LAST_SCENE_OFFSET 0x0230    // The offset to add to the Play_TransitionDone PC to find the offset to add to the base scene to get the gLastScene address for OoT
+#define MM_LAST_SCENE_OFFSET 0x0200     // The offset to add to the Play_TransitionDone PC to find the offset to add to the base scene to get the gLastScene address for MM
 #define MM_HOOK_INIT_STABLE_PCOFF 0x58C // The offset to add to the hookInit_Play MM function to place the hook for stable release.
 #define MM_HOOK_INIT_DEV_PCOFF 0x5C0    // The offset to add to the hookInit_Play MM function to place the hook for dev release.
 

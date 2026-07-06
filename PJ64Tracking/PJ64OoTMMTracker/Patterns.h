@@ -224,7 +224,8 @@ uint32_t Mask_Play_TransitionDone_OoT[] =
     0xFFFFFFFF                      // BEQ      V0, V1, 0x8042BF88
 };
 
-PCSignature Sig_Play_TransitionDone_OoT = { 44, Pattern_Play_TransitionDone_OoT, Mask_Play_TransitionDone_OoT, 0x90 };
+//PCSignature Sig_Play_TransitionDone_OoT = { 44, Pattern_Play_TransitionDone_OoT, Mask_Play_TransitionDone_OoT, 0x90 };
+PCSignature Sig_Play_TransitionDone_OoT = { 44, Pattern_Play_TransitionDone_OoT, Mask_Play_TransitionDone_OoT, 0x00 };
 
 #pragma endregion   // Play_TransitionDone
 
@@ -542,7 +543,8 @@ uint32_t Mask_Play_TransitionDone_MM[] =
     0xFFFFFFFF                      // BNEL     V0, V1, 0x80759E00
 };
 
-PCSignature Sig_Play_TransitionDone_MM = { 76, Pattern_Play_TransitionDone_MM, Mask_Play_TransitionDone_MM, 0x1D4 };
+//PCSignature Sig_Play_TransitionDone_MM = { 76, Pattern_Play_TransitionDone_MM, Mask_Play_TransitionDone_MM, 0x1D4 };
+PCSignature Sig_Play_TransitionDone_MM = { 76, Pattern_Play_TransitionDone_MM, Mask_Play_TransitionDone_MM, 0x00 };
 
 #pragma endregion   // Play_TransitionDone
 

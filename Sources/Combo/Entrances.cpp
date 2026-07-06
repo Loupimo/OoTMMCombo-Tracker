@@ -2307,6 +2307,7 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                 {
                     return OOT_GERUDO_VALLEY_CAUGHT_ENTR;
                 }
+                break;
             }
 
             case OOT_GERUDO_FORTRESS:
@@ -2315,6 +2316,7 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                 {
                     return OOT_GERUDO_FORTRESS_JAIL_ENTR;
                 }
+                break;
             }
 
             case OOT_BAZAAR:
@@ -3066,8 +3068,8 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                         if (Message.Direction == OUT_MAGIC)
                         {
                             Message.SceneID = MM_ZORA_EVANS_ROOM;
-                            break;
                         }
+                        break;
                     }
 
                     case MM_ROOM_JAPAS_ENTR:
@@ -3081,8 +3083,8 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                         if (Message.Direction == OUT_MAGIC)
                         {
                             Message.SceneID = MM_ZORA_JAPAS_ROOM;
-                            break;
                         }
+                        break;
                     }
 
                     case MM_ROOM_TIJO_ENTR:
@@ -3096,8 +3098,8 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                         if (Message.Direction == OUT_MAGIC)
                         {
                             Message.SceneID = MM_ZORA_TIJO_ROOM;
-                            break;
                         }
+                        break;
                     }
 
                     case MM_ROOM_LULU_ENTR:
@@ -3111,8 +3113,8 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                         if (Message.Direction == OUT_MAGIC)
                         {
                             Message.SceneID = MM_ZORA_LULU_ROOM;
-                            break;
                         }
+                        break;
                     }
 
                     case MM_ZORA_SHOP_ENTR:
@@ -3126,8 +3128,8 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                         if (Message.Direction == OUT_MAGIC)
                         {
                             Message.SceneID = MM_ZORA_SHOP;
-                            break;
                         }
+                        break;
                     }
                 }
                 break;
@@ -3148,6 +3150,7 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                 {
                     return MM_MOON_FROM_MOON_DEKU_ENTR;
                 }
+                break;
             }
 
             case MM_MOON_GORON:
@@ -3156,6 +3159,7 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                 {
                     return MM_MOON_FROM_MOON_GORON_ENTR;
                 }
+                break;
             }
 
             case MM_MOON_ZORA:
@@ -3168,6 +3172,7 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                 {
                     return MM_MOON_ZORA_WRONG_PIPE_ENTR;
                 }
+                break;
             }
 
             case MM_MOON_LINK:
@@ -3176,6 +3181,7 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                 {
                     return MM_MOON_FROM_MOON_LINK_ENTR;
                 }
+                break;
             }
 
             case MM_LAIR_MAJORA:

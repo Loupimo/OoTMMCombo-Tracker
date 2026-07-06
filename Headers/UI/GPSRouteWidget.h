@@ -6,6 +6,7 @@
 #include <QLabel>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QScrollArea>
 #include <QVector>
 #include "UI/GPSRouteModel.h"
 
@@ -33,6 +34,7 @@ public:
     QHBoxLayout*            TopBar = nullptr;
     QHBoxLayout*            CardsRow = nullptr;
     QWidget*                CardsHost = nullptr;        // Container of the route cards. Layout is CardsRow.
+    QScrollArea*            CardsScroll = nullptr;      // Scroll viewport wrapping CardsHost so long routes don't grow the window.
 
     QLabel*                 Tag = nullptr;
     QComboBox*              FromCombo = nullptr;

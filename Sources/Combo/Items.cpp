@@ -1091,7 +1091,7 @@ const ItemInfo ItemList[NUM_ITEM] =
     { OOT_SWORD_GORON, "Progressive Goron Sword", EGameIcon::biggoron, true },
     { MM_SWORD, "Progressive Sword (MM)", EGameIcon::kokiri_mm, true },
     { MM_CLOCK, "Progressive Clock", EGameIcon::clock_d1, false },
-    { MM_OCARINA, "Progressive Ocarina (MM)", EGameIcon::ocarina, true },
+    { MM_OCARINA, "Ocarina (MM)", EGameIcon::ocarina, true },
     { MM_SCALE, "Progressive Scale (MM)", EGameIcon::bronze_scale, true },
     { MM_SHIELD, "Progressive Shield (MM)", EGameIcon::hero_shield, true },
     { MM_STRENGTH, "Progressive Strength (MM)", EGameIcon::bracelet, true },
