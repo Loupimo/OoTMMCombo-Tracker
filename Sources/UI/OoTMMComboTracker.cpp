@@ -1130,7 +1130,16 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
         {
             QString version = versionIt.next().captured(1).trimmed();
             this->ROMSettings.Version = version.startsWith("dev") ? ROMVersion::dev : ROMVersion::stable;
+
+            if (this->ROMSettings.Version == ROMVersion::stable)
+            {
+                if (version == "v31.1")
+                {
+                    this->ROMSettings.Version = ROMVersion::stable_31_1;
+                }
+            }
         }
+
     }
 
     // Publish it to the global the item-ID translation reads (works across the UI and the
