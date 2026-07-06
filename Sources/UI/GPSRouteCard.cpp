@@ -165,15 +165,23 @@ void GPSRouteCard::BuildDiagram(QVBoxLayout* ParentLayout)
         Row->setContentsMargins(0, 0, 0, 0);
         Row->setSpacing(2);
 
+        // Top line: the scene name and, unless it's the destination, the exit door to take,
+        // both on the same line (arrow glyph + entrance name, no "via" prefix).
+        QHBoxLayout* TopLine = new QHBoxLayout();
+        TopLine->setContentsMargins(0, 0, 0, 0);
+        TopLine->setSpacing(8);
+
         QLabel* Name = new QLabel(Step.StationName, this->Diagram);
         Name->setObjectName("StationName");
-        Row->addWidget(Name);
+        TopLine->addWidget(Name);
         this->StationLabels.append(Name);
 
         if (!IsLast)
         {
             QLabel* Via = new QLabel(this->Diagram);
-            Via->setObjectName("StationVia");
+            // Same style as the scene name (StationName): white, bold, so the exit door reads as
+            // part of the station line rather than a muted caption.
+            Via->setObjectName("StationName");
             const QString GlyphText = QString(ViaGlyph(Step.Via));
             // Prefer the route's custom exit-door label (set by GPSPathfinder via ViaText) over
             // the generic ViaLabel("Walk"/"Owl"/...) so the player sees exactly which entrance
@@ -181,11 +189,18 @@ void GPSRouteCard::BuildDiagram(QVBoxLayout* ParentLayout)
             const QString ViaText = Step.ViaCustom.isEmpty()
                 ? QString::fromUtf8(ViaLabel(Step.Via))
                 : Step.ViaCustom;
-            Via->setText(QString("%1  via %2  ·  ~%3s")
-                .arg(GlyphText)
-                .arg(ViaText)
-                .arg(Step.DurationSec));
-            Row->addWidget(Via);
+            Via->setText(QString("%1 %2").arg(GlyphText).arg(ViaText));
+            TopLine->addWidget(Via, 0, Qt::AlignBottom);
+        }
+        TopLine->addStretch(1);
+        Row->addLayout(TopLine);
+
+        if (!IsLast)
+        {
+            // Estimated transition time kept on its own line, just below the exit door.
+            QLabel* Time = new QLabel(QString("~%1s").arg(Step.DurationSec), this->Diagram);
+            Time->setObjectName("StationTime");
+            Row->addWidget(Time);
         }
 
         DLayout->addLayout(Row);

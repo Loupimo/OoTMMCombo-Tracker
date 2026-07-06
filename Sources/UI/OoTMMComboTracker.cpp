@@ -1157,6 +1157,41 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
     bool isMultiworld = QRegularExpression("^  World \\d", QRegularExpression::MultilineOption)
                             .match(locationSection).hasMatch();
 
+    // Visit every (world, object) pair of the current world set. GetNumWorlds() / GetWorldSceneObjects()
+    // are read live, so the same helper walks the OLD worlds before the reset and the NEW ones after it.
+    auto ForEachWorldObject = [](auto&& Fn)
+    {
+        const uint32_t games[2] = { OOT_GAME, MM_GAME };
+        for (size_t w = 0; w < GetNumWorlds(); w++)
+        {
+            for (uint32_t game : games)
+            {
+                SceneObjects* sceneObjs = GetWorldSceneObjects(w, game);
+                size_t numScenes = (game == MM_GAME) ? MM_NUM_SCENES : OOT_NUM_SCENES;
+                for (size_t s = 0; s < numScenes; s++)
+                {
+                    for (size_t o = 0; o < sceneObjs[s].NumOfObjs; o++)
+                    {
+                        Fn(w, &sceneObjs[s].Objects[o]);
+                    }
+                }
+            }
+        }
+    };
+
+    // Preserve the collected / manually-forced status of every location across the reload so a spoiler
+    // load never wipes progress the player already made (critical with auto-save on: a reset would be
+    // persisted on the next collected item). Keyed per world by the object's globally-unique Location.
+    QList<QHash<QString, ObjectState>> preservedStatus;
+    preservedStatus.resize((int)GetNumWorlds());
+    ForEachWorldObject([&preservedStatus](size_t World, ObjectInfo* Object)
+    {
+        if (Object->Status != ObjectState::Hidden && Object->Location != nullptr)
+        {
+            preservedStatus[(int)World].insert(QString::fromUtf8(Object->Location), Object->Status);
+        }
+    });
+
     // Start from a clean slate: clear any item / status left in the template arrays by a
     // previous session, since InitWorlds clones the templates into every world.
     ResetSceneObjects();
@@ -1205,6 +1240,22 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
         // Show the first world by default; the user switches worlds with the selector.
         SetActiveWorld(0);
     }
+
+    // Re-apply the preserved statuses onto the freshly parsed placements. Worlds that no longer exist
+    // (fewer worlds in the new seed) are simply skipped; locations absent from the snapshot stay Hidden.
+    ForEachWorldObject([&preservedStatus](size_t World, ObjectInfo* Object)
+    {
+        if ((int)World >= preservedStatus.size() || Object->Location == nullptr)
+        {
+            return;
+        }
+
+        auto it = preservedStatus[(int)World].constFind(QString::fromUtf8(Object->Location));
+        if (it != preservedStatus[(int)World].constEnd())
+        {
+            Object->Status = it.value();
+        }
+    });
 
     this->ApplySettings();
     this->RefreshTracker();

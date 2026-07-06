@@ -117,6 +117,17 @@ private:
 
 
     /*
+    *   Turn a scene combo into a searchable field: make it editable (search only, no insert)
+    *   and attach a case-insensitive "contains" completer so the user can type part of a scene
+    *   name to filter the long list instead of scrolling through it. The typed text is snapped
+    *   back to the current selection when it does not match any scene.
+    *
+    *   @param Combo    The combo to make searchable.
+    */
+    void MakeComboSearchable(QComboBox* Combo);
+
+
+    /*
     *   Remove every card currently attached to the cards row and delete them.
     */
     void ClearCards();

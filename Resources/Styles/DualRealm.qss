@@ -981,6 +981,16 @@ QComboBox#GpsToCombo:hover {
     border-color: #4a9edb;
 }
 
+/* Editable (searchable) combos: keep the inner search field on the same dark theme. */
+QComboBox#GpsFromCombo QLineEdit,
+QComboBox#GpsToCombo QLineEdit {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: #ffffff;
+    selection-background-color: #1a4a7a;
+}
+
 QFrame#GPSRouteCard {
     background-color: #0d1827;
     border: 1px solid #1a3050;
@@ -1038,4 +1048,9 @@ QLabel#StationName {
 QLabel#StationVia {
     color: #4a6a9a;
     font-size: 9pt;
+}
+
+QLabel#StationTime {
+    color: #3a5578;
+    font-size: 8pt;
 }

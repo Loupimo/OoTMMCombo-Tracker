@@ -13,6 +13,8 @@
 #include <QVariant>
 #include <QSet>
 #include <QStringList>
+#include <QCompleter>
+#include <QLineEdit>
 
 #include <algorithm>
 #include <set>
@@ -175,6 +177,7 @@ void GPSRouteWidget::BuildTopBar()
     this->FromCombo = new QComboBox(this);
     this->FromCombo->setObjectName("GpsFromCombo");
     this->FromCombo->setSizeAdjustPolicy(QComboBox::AdjustToContents);
+    this->MakeComboSearchable(this->FromCombo);
     this->TopBar->addWidget(this->FromCombo);
 
     this->ArrowLabel = new QLabel(QString(QChar(0x2192)), this);
@@ -184,9 +187,10 @@ void GPSRouteWidget::BuildTopBar()
     this->ToCombo = new QComboBox(this);
     this->ToCombo->setObjectName("GpsToCombo");
     this->ToCombo->setSizeAdjustPolicy(QComboBox::AdjustToContents);
+    this->MakeComboSearchable(this->ToCombo);
     this->TopBar->addWidget(this->ToCombo);
 
-    this->SwapButton = new QPushButton(QString(QChar(0x21C5)) + " Inverser", this);
+    this->SwapButton = new QPushButton(QString(QChar(0x21C5)) + " Invert", this);
     this->SwapButton->setObjectName("GpsSwapButton");
     this->SwapButton->setCursor(Qt::PointingHandCursor);
     this->TopBar->addWidget(this->SwapButton);
@@ -326,6 +330,40 @@ void GPSRouteWidget::PopulateSceneCombos()
     // Default to two different scenes if possible so the initial render isn't empty.
     if (this->FromCombo->count() > 0) this->FromCombo->setCurrentIndex(0);
     if (this->ToCombo->count() > 1)   this->ToCombo->setCurrentIndex(1);
+}
+
+
+void GPSRouteWidget::MakeComboSearchable(QComboBox* Combo)
+{
+    if (Combo == nullptr) return;
+
+    Combo->setEditable(true);
+    Combo->setInsertPolicy(QComboBox::NoInsert);            // The edit field is a search box: it never adds new scenes.
+    Combo->lineEdit()->setPlaceholderText("Find Scene...");
+
+    QCompleter* Completer = Combo->completer();
+    if (Completer != nullptr)
+    {
+        Completer->setCompletionMode(QCompleter::PopupCompletion);
+        Completer->setFilterMode(Qt::MatchContains);        // Match anywhere in the scene name, not only its prefix.
+        Completer->setCaseSensitivity(Qt::CaseInsensitive);
+    }
+
+    // If the field is left holding text that matches no scene (typed then clicked away), snap it back
+    // to the current selection so the combo never displays a non-existent scene. A full valid name that
+    // resolves to another item selects it (and re-triggers the route computation via currentIndexChanged).
+    connect(Combo->lineEdit(), &QLineEdit::editingFinished, this, [Combo]()
+    {
+        const int Match = Combo->findText(Combo->lineEdit()->text(), Qt::MatchFixedString);
+        if (Match >= 0)
+        {
+            Combo->setCurrentIndex(Match);
+        }
+        else
+        {
+            Combo->lineEdit()->setText(Combo->itemText(Combo->currentIndex()));
+        }
+    });
 }
 
 
