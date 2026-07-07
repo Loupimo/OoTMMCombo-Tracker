@@ -304,6 +304,7 @@ const IconMetaInf EntranceIconsMetaInfo[EntranceIcons::Entrance_Last] =
     {"./Resources/Common/Entrances/Gerudo_Catch.png", {60, 60}, {120, 120}},      // EntranceIcons::Gerudo_Catch
     {"./Resources/Common/Entrances/Guard_Catch.png", {60, 60}, {120, 120}},      // EntranceIcons::Guard_Catch
     {"./Resources/Common/Entrances/Trapdoor.png", {60, 60}, {120, 120}},      // EntranceIcons::Trapdoor
+    {"./Resources/Common/Entrances/Telescope.png", {60, 60}, {120, 120}},      // EntranceIcons::Telescope
 };
 
 #pragma endregion Entrances

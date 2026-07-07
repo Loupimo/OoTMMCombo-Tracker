@@ -377,6 +377,9 @@ MapTab::MapTab(GameTab* Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes, 
     this->ObjectList->header()->setSectionResizeMode(0, QHeaderView::Stretch);
     this->ObjectList->header()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
     this->ObjectList->header()->setStretchLastSection(false);
+    // No own max width: the tree fills its container (ObjectContainer), whose maximum width below
+    // is the single knob controlling how wide the object list can get. Capping the tree here too
+    // would silently override any wider container width and clip long object / item names.
     this->ObjectList->setStyleSheet(treeHoverSelectQss);
     // Two-line rendering for object rows (icon + object name + item / "???").
     this->ObjectList->setItemDelegate(new ObjectItemDelegate(this->ObjectList));
@@ -442,7 +445,7 @@ MapTab::MapTab(GameTab* Owner, int Game, SceneInfo* Scenes, size_t NumOfScenes, 
 
     // Set the maximum width for the lists
     this->MapContainer->setMaximumWidth(320);
-    this->ObjectContainer->setMaximumWidth(360);
+    this->ObjectContainer->setMaximumWidth(480);
 
     // Add map -> view -> object to the splitter layout
     this->LayoutSplitter->addWidget(this->MapContainer);

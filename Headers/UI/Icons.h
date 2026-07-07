@@ -323,6 +323,7 @@ enum EntranceIcons
     Gerudo_Catch,
     Guard_Catch,
     Trapdoor,
+    Telescope,
 
     Entrance_Last
 };

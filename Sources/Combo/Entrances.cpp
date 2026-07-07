@@ -1,4 +1,6 @@
 #include "Combo/Entrances.h"
+#include "Combo/Items.h"
+#include "UI/Settings.h"
 #include "Combo/OoTEntrances.h"
 #include "Combo/MMEntrances.h"
 #include "UI/SceneEntrance.h"
@@ -338,6 +340,19 @@ void EntranceMessage::SetMessage(uint32_t MsgDirection, uint32_t OwlID, uint32_t
     if (this->GameID == MM_GAME)
     {
         this->Age = (LinkAge)((uint8_t)this->Age + (uint8_t)LinkAge::Child);
+
+
+        switch (GetActiveROMVersion())
+        {
+            case ROMVersion::stable_31_1:
+            {
+                if (this->SceneID == 0)
+                {
+                    this->SceneID = this->CurrSceneID;  // I don't know why but the gLastScene doesn't not seem to work
+                }
+                break;
+            }
+        }
     }
 }
 
@@ -1661,6 +1676,7 @@ uint32_t EntranceHelper::GetWarpSong(EntranceMessage& Message, bool * IsWarpSong
                 return OOT_PRELUDE_OF_LIGHT_SONG;
             }
 
+            case OoTSongs::Song_of_Soaring_30_1:
             case OoTSongs::Song_of_Soaring:
             {
                 Message.GameID = MM_GAME;
@@ -1728,31 +1744,37 @@ uint32_t EntranceHelper::GetWarpSong(EntranceMessage& Message, bool * IsWarpSong
         Message.GameID = OOT_GAME;
         switch (Message.MMSongID)
         {
+            case MMSongs::Minuet_of_Forest_30_1:
             case MMSongs::Minuet_of_Forest:
             {
                 return OOT_MINUET_OF_FOREST_SONG;
             }
 
+            case MMSongs::Bolero_of_Fire_30_1:
             case MMSongs::Bolero_of_Fire:
             {
                 return OOT_BOLERO_OF_FIRE_SONG;
             }
 
+            case MMSongs::Serenade_of_Water_30_1:
             case MMSongs::Serenade_of_Water:
             {
                 return OOT_SERENADE_OF_WATER_SONG;
             }
 
+            case MMSongs::Requiem_of_Spirit_30_1:
             case MMSongs::Requiem_of_Spirit:
             {
                 return OOT_REQUIEM_OF_SPIRIT_SONG;
             }
 
+            case MMSongs::Nocturne_of_Shadow_30_1:
             case MMSongs::Nocturne_of_Shadow:
             {
                 return OOT_NOCTURNE_OF_SHADOW_SONG;
             }
 
+            case MMSongs::Prelude_of_Light_30_1:
             case MMSongs::Prelude_of_Light:
             {
                 return OOT_PRELUDE_OF_LIGHT_SONG;

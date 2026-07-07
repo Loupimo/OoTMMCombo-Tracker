@@ -162,8 +162,8 @@ size_t SceneEntranceMetaInf::LoadMetaInf(QByteArray* Data, size_t Offset, Tracke
         memcpy_s(&numObjs, sizeof(numObjs), Data->data() + Offset, sizeof(numObjs));
         Offset += sizeof(numObjs);
 
-        if (numObjs == this->EntranceIDs.size())
-        {	// It has the same number of objects
+        //if (numObjs == this->EntranceIDs.size())
+        //{	// It has the same number of objects
 
             for (auto& [currEntranceID, entrance] : this->EntranceIDs)
             {	// Load all entrance links
@@ -177,12 +177,22 @@ size_t SceneEntranceMetaInf::LoadMetaInf(QByteArray* Data, size_t Offset, Tracke
                 {
                     Offset = entrance.LoadLink(Data, Offset, Version);
                 }
+                else
+                {
+                    Offset += sizeof(uint32_t) * 3 + sizeof(bool) * 2;
+                }
             }
-        }
-        else
+
+            if (numObjs > this->EntranceIDs.size())
+            {
+                Offset += (numObjs - this->EntranceIDs.size()) * (sizeof(uint32_t) * 3 + sizeof(bool) * 2);
+            }
+        //}
+        /*else
         {
+
             Offset += numObjs * (sizeof(uint32_t) * 3 + sizeof(bool) * 2);
-        }
+        }*/
     }
 
     return Offset;
@@ -283,7 +293,7 @@ size_t LoadEntrancesFor(QByteArray* Data, size_t Offset, std::map<uint32_t, Scen
     }
 
     for (auto& [sceneID, scene] : *Array)
-    {	// Save all scenes meta info
+    {	// Load all scenes meta info
 
         if (sceneID == scene.SceneID)
         {

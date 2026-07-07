@@ -44,7 +44,18 @@ enum class OoTSongs
 	Song_of_Storms = 0x0B,
 	Scarecrow_Spawn = 0x0C,
 	Memory_Game = 0x0D,
-	Song_of_Soaring = 0xFE,
+	Custom_Song_Start = 0x15,
+    Song_of_Soaring = 0x16,   // Stable 31.1
+    Song_Custom_Time = 0x17,
+    Elegy_of_Emptiness = 0x18,
+    Song_of_Double_Time = 0x19,
+    Song_of_Healing = 0x1A,
+    Sonata_of_Awakening = 0x1B,
+    Goron_Lullaby_Intro = 0x1C,
+    Goron_Lullaby = 0x1D,
+    New_Wave_Bossa_Nova = 0x1E,
+    Oath_to_Order = 0x1F,
+    Song_of_Soaring_30_1 = 0xFE, // Stable 30.1
 };
 
 
@@ -75,12 +86,22 @@ enum class MMSongs
 	Scarecrow_Spawn = 0x16,
 	Termina_Wall = 0x17,
 	Scarecrow_Long = 0x018,
-	Minuet_of_Forest = 0x80,
-	Bolero_of_Fire = 0x81,
-	Serenade_of_Water = 0x82,
-	Requiem_of_Spirit = 0x83,
-	Nocturne_of_Shadow = 0x84,
-	Prelude_of_Light = 0x85
+
+    // Stable 31.1
+    Minuet_of_Forest = 0x20,
+    Bolero_of_Fire = 0x21,
+    Serenade_of_Water = 0x22,
+    Requiem_of_Spirit = 0x23,
+    Nocturne_of_Shadow = 0x24,
+    Prelude_of_Light = 0x25,
+
+    // Stable 30.1
+    Minuet_of_Forest_30_1 = 0x80,
+    Bolero_of_Fire_30_1 = 0x81,
+    Serenade_of_Water_30_1 = 0x82,
+    Requiem_of_Spirit_30_1 = 0x83,
+    Nocturne_of_Shadow_30_1 = 0x84,
+    Prelude_of_Light_30_1 = 0x85
 };
 
 
