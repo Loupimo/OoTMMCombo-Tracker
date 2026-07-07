@@ -64,6 +64,8 @@ Settings::Settings()
 	{ "shuffleSnowballsMm", { "Snowballs - MM", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
 	{ "shuffleButterfliesOot", { "Butterflies - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
 	{ "shuffleButterfliesMm", { "Butterflies - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+    { "shuffleBouldersOot", { "Boulders - OoT", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::vanilla, {  } } },
+    { "shuffleSilverBouldersOot", { "Silver Boulders - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, {  } } },
 	{ "shuffleRedBouldersOot", { "Red Boulders - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
 	{ "shuffleRedBouldersMm", { "Red Boulders - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
 	{ "shuffleFrogsRupeesOot", { "Frogs Rupees", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
@@ -83,6 +85,7 @@ Settings::Settings()
 	{ "fairySpotShuffleOot", { "Fairy Spot", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
 	{ "eggShuffle", { "Egg Content", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
 	{ "skipZelda", { "Skip Zelda", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, {  } } },
+    { "agelessStrength", { "Use Silver / Golden Gauntlets as Child", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, {  } } },
 	{ "restoreBrokenActors", { "Restore Broken Actors", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
 	{ "shuffleLotteryMm", { "Lottery Prizes", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
     { "crossWarpOot", { "Cross-Games OoT Warp Song", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, {  } } },
@@ -1199,6 +1202,26 @@ void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
 					this->CheckObjectExclusion(currObj, this->FilterSettings["shuffleButterfliesOot"].Value, Filter);
 					break;
 				}
+
+                case ObjectType::boulder:
+                {
+                    this->CheckObjectExclusion(currObj, this->FilterSettings["shuffleBouldersOot"].Value, Filter);
+                    break;
+                }
+
+                case ObjectType::silverboulder:
+                {
+                    if (currObj->Scene == OOT_DEATH_MOUNTAIN_CRATER && this->FilterSettings["agelessStrength"].Value != ShuffleSetting::all)
+                    {   // Special case for death mountain crater silver boulder that only appear when child. Silver / Golden Gauntlets required
+
+                        this->CheckObjectExclusion(currObj, ShuffleSetting::vanilla, Filter);
+                    }
+                    else
+                    {
+                        this->CheckObjectExclusion(currObj, this->FilterSettings["shuffleSilverBouldersOot"].Value, Filter);
+                    }
+                    break;
+                }
 
 				case ObjectType::redboulder:
 				{

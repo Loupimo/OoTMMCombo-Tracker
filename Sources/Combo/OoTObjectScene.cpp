@@ -93,7 +93,7 @@ static ObjectInfo OOT_BOMBCHU_SHOPSceneObjects_Data [OOT_BOMBCHU_SHOPNumOfObjs] 
 };
 ObjectInfo * OOT_BOMBCHU_SHOPSceneObjects = OOT_BOMBCHU_SHOPSceneObjects_Data;
 
-const size_t OOT_BOTTOM_OF_THE_WELLNumOfObjs = 104;
+const size_t OOT_BOTTOM_OF_THE_WELLNumOfObjs = 113;
 static ObjectInfo OOT_BOTTOM_OF_THE_WELLSceneObjects_Data [OOT_BOTTOM_OF_THE_WELLNumOfObjs] =
 {
 	{ 0x01, OOT_BOTTOM_OF_THE_WELL, "Chest", "OOT Bottom of the Well Compass", ObjectType::chest, {664, 349, 0}, OOT_BOTTOM_OF_THE_WELL, ObjectType::compass, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::dungeon, NULL },
@@ -199,7 +199,16 @@ static ObjectInfo OOT_BOTTOM_OF_THE_WELLSceneObjects_Data [OOT_BOTTOM_OF_THE_WEL
 	{ 0x00500, OOT_BOTTOM_OF_THE_WELL, "Side Room 1", "OOT MQ Bottom of the Well Wonder Item Side Room 1", ObjectType::wonder, {795, 109, 0}, OOT_BOTTOM_OF_THE_WELL, ObjectType::wonder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
 	{ 0x00501, OOT_BOTTOM_OF_THE_WELL, "Side Room 2", "OOT MQ Bottom of the Well Wonder Item Side Room 2", ObjectType::wonder, {812, 124, 0}, OOT_BOTTOM_OF_THE_WELL, ObjectType::wonder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
 	{ 0x00502, OOT_BOTTOM_OF_THE_WELL, "Side Room 3", "OOT MQ Bottom of the Well Wonder Item Side Room 3", ObjectType::wonder, {778, 124, 0}, OOT_BOTTOM_OF_THE_WELL, ObjectType::wonder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
-	{ 0x00503, OOT_BOTTOM_OF_THE_WELL, "Side Room 4", "OOT MQ Bottom of the Well Wonder Item Side Room 4", ObjectType::wonder, {795, 125, 0}, OOT_BOTTOM_OF_THE_WELL, ObjectType::wonder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL }
+	{ 0x00503, OOT_BOTTOM_OF_THE_WELL, "Side Room 4", "OOT MQ Bottom of the Well Wonder Item Side Room 4", ObjectType::wonder, {795, 125, 0}, OOT_BOTTOM_OF_THE_WELL, ObjectType::wonder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00124, OOT_BOTTOM_OF_THE_WELL, "Far 1", "Bottom of the Well Boulder Far 1", ObjectType::boulder, {0, 0, 0}, OOT_BOTTOM_OF_THE_WELL, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::dungeon, NULL },
+	{ 0x00125, OOT_BOTTOM_OF_THE_WELL, "Far 2", "Bottom of the Well Boulder Far 2", ObjectType::boulder, {0, 0, 0}, OOT_BOTTOM_OF_THE_WELL, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::dungeon, NULL },
+	{ 0x00122, OOT_BOTTOM_OF_THE_WELL, "Middle 1", "Bottom of the Well Boulder Middle 1", ObjectType::boulder, {0, 0, 0}, OOT_BOTTOM_OF_THE_WELL, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::dungeon, NULL },
+	{ 0x00123, OOT_BOTTOM_OF_THE_WELL, "Middle 2", "Bottom of the Well Boulder Middle 2", ObjectType::boulder, {0, 0, 0}, OOT_BOTTOM_OF_THE_WELL, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::dungeon, NULL },
+	{ 0x00013, OOT_BOTTOM_OF_THE_WELL, "Alcove 1", "MQ Bottom of the Well Boulder Alcove 1", ObjectType::boulder, {0, 0, 0}, OOT_BOTTOM_OF_THE_WELL, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00014, OOT_BOTTOM_OF_THE_WELL, "Alcove 2", "MQ Bottom of the Well Boulder Alcove 2", ObjectType::boulder, {0, 0, 0}, OOT_BOTTOM_OF_THE_WELL, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00120, OOT_BOTTOM_OF_THE_WELL, "Near Chest 1", "Bottom of the Well Boulder Near Chest 1", ObjectType::boulder, {0, 0, 0}, OOT_BOTTOM_OF_THE_WELL, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::dungeon, NULL },
+	{ 0x00121, OOT_BOTTOM_OF_THE_WELL, "Near Chest 2", "Bottom of the Well Boulder Near Chest 2", ObjectType::boulder, {0, 0, 0}, OOT_BOTTOM_OF_THE_WELL, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::dungeon, NULL },
+	{ 0x0001a, OOT_BOTTOM_OF_THE_WELL, "Alcove Solo", "MQ Bottom of the Well Boulder Alcove Solo", ObjectType::boulder, {0, 0, 0}, OOT_BOTTOM_OF_THE_WELL, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL }
 };
 ObjectInfo * OOT_BOTTOM_OF_THE_WELLSceneObjects = OOT_BOTTOM_OF_THE_WELLSceneObjects_Data;
 
@@ -212,7 +221,7 @@ static ObjectInfo OOT_CASTLE_COURTYARDSceneObjects_Data [OOT_CASTLE_COURTYARDNum
 };
 ObjectInfo * OOT_CASTLE_COURTYARDSceneObjects = OOT_CASTLE_COURTYARDSceneObjects_Data;
 
-const size_t OOT_DEATH_MOUNTAIN_CRATERNumOfObjs = 62;
+const size_t OOT_DEATH_MOUNTAIN_CRATERNumOfObjs = 68;
 static ObjectInfo OOT_DEATH_MOUNTAIN_CRATERSceneObjects_Data [OOT_DEATH_MOUNTAIN_CRATERNumOfObjs] =
 {
 	{ 0x02, OOT_DEATH_MOUNTAIN_CRATER, "Alcove", "OOT Death Mountain Crater Alcove HP", ObjectType::collectible, {470, 211, 0}, OOT_DEATH_MOUNTAIN_CRATER, ObjectType::heart_piece, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -276,11 +285,17 @@ static ObjectInfo OOT_DEATH_MOUNTAIN_CRATERSceneObjects_Data [OOT_DEATH_MOUNTAIN
 	{ 0x70120, OOT_DEATH_MOUNTAIN_CRATER, "Circle Rock 8", "OOT Death Mountain Crater Rock Circle Rock 8", ObjectType::rock, {451, 91, 1}, OOT_DEATH_MOUNTAIN_CRATER, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00121, OOT_DEATH_MOUNTAIN_CRATER, "Soil 1", "OOT Death Mountain Crater Soil 1", ObjectType::soil, {491, 430, 0}, OOT_DEATH_MOUNTAIN_CRATER, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x10121, OOT_DEATH_MOUNTAIN_CRATER, "Soil 2", "OOT Death Mountain Crater Soil 2", ObjectType::soil, {514, 412, 0}, OOT_DEATH_MOUNTAIN_CRATER, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
-	{ 0x20121, OOT_DEATH_MOUNTAIN_CRATER, "Soil 3", "OOT Death Mountain Crater Soil 3", ObjectType::soil, {468, 412, 0}, OOT_DEATH_MOUNTAIN_CRATER, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL }
+	{ 0x20121, OOT_DEATH_MOUNTAIN_CRATER, "Soil 3", "OOT Death Mountain Crater Soil 3", ObjectType::soil, {468, 412, 0}, OOT_DEATH_MOUNTAIN_CRATER, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00123, OOT_DEATH_MOUNTAIN_CRATER, "Boulder 1", "Death Mountain Crater Boulder 1", ObjectType::boulder, {0, 0, 0}, OOT_DEATH_MOUNTAIN_CRATER, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00124, OOT_DEATH_MOUNTAIN_CRATER, "Boulder 2", "Death Mountain Crater Boulder 2", ObjectType::boulder, {0, 0, 0}, OOT_DEATH_MOUNTAIN_CRATER, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00125, OOT_DEATH_MOUNTAIN_CRATER, "Boulder 3", "Death Mountain Crater Boulder 3", ObjectType::boulder, {0, 0, 0}, OOT_DEATH_MOUNTAIN_CRATER, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0011b, OOT_DEATH_MOUNTAIN_CRATER, "Silver Boulder 1", "Death Mountain Crater Silver Boulder 1", ObjectType::silverboulder, {0, 0, 0}, OOT_DEATH_MOUNTAIN_CRATER, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0011c, OOT_DEATH_MOUNTAIN_CRATER, "Silver Boulder 2", "Death Mountain Crater Silver Boulder 2", ObjectType::silverboulder, {0, 0, 0}, OOT_DEATH_MOUNTAIN_CRATER, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0011d, OOT_DEATH_MOUNTAIN_CRATER, "Silver Boulder 3", "Death Mountain Crater Silver Boulder 3", ObjectType::silverboulder, {0, 0, 0}, OOT_DEATH_MOUNTAIN_CRATER, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 ObjectInfo * OOT_DEATH_MOUNTAIN_CRATERSceneObjects = OOT_DEATH_MOUNTAIN_CRATERSceneObjects_Data;
 
-const size_t OOT_DEATH_MOUNTAIN_TRAILNumOfObjs = 67;
+const size_t OOT_DEATH_MOUNTAIN_TRAILNumOfObjs = 71;
 static ObjectInfo OOT_DEATH_MOUNTAIN_TRAILSceneObjects_Data [OOT_DEATH_MOUNTAIN_TRAILNumOfObjs] =
 {
 	{ 0x01, OOT_DEATH_MOUNTAIN_TRAIL, "Bombable Wall - Goron City", "OOT Death Mountain Trail Chest", ObjectType::chest, {481, 377, 0}, OOT_DEATH_MOUNTAIN_TRAIL, ObjectType::chest, EGameIcon::render_type, ObjectContext::All, 1, GameLayout::oot, LocType::overworld, NULL },
@@ -349,7 +364,11 @@ static ObjectInfo OOT_DEATH_MOUNTAIN_TRAILSceneObjects_Data [OOT_DEATH_MOUNTAIN_
 	{ 0x70021, OOT_DEATH_MOUNTAIN_TRAIL, "Circle Rock 8", "OOT Death Mountain Trail Rock Circle Rock 8", ObjectType::rock, {722, 285, 0}, OOT_DEATH_MOUNTAIN_TRAIL, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 1, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0002b, OOT_DEATH_MOUNTAIN_TRAIL, "Soil 1", "OOT Death Mountain Trail Soil 1", ObjectType::soil, {140, 342, 0}, OOT_DEATH_MOUNTAIN_TRAIL, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x1002b, OOT_DEATH_MOUNTAIN_TRAIL, "Soil 2", "OOT Death Mountain Trail Soil 2", ObjectType::soil, {145, 331, 0}, OOT_DEATH_MOUNTAIN_TRAIL, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
-	{ 0x2002b, OOT_DEATH_MOUNTAIN_TRAIL, "Soil 3", "OOT Death Mountain Trail Soil 3", ObjectType::soil, {134, 331, 0}, OOT_DEATH_MOUNTAIN_TRAIL, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL }
+	{ 0x2002b, OOT_DEATH_MOUNTAIN_TRAIL, "Soil 3", "OOT Death Mountain Trail Soil 3", ObjectType::soil, {134, 331, 0}, OOT_DEATH_MOUNTAIN_TRAIL, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0002f, OOT_DEATH_MOUNTAIN_TRAIL, "Child", "Death Mountain Trail Boulder Child", ObjectType::boulder, {0, 0, 0}, OOT_DEATH_MOUNTAIN_TRAIL, ObjectType::boulder, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00030, OOT_DEATH_MOUNTAIN_TRAIL, "Lower", "Death Mountain Trail Boulder Lower", ObjectType::boulder, {0, 0, 0}, OOT_DEATH_MOUNTAIN_TRAIL, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00032, OOT_DEATH_MOUNTAIN_TRAIL, "Upper", "Death Mountain Trail Boulder Upper", ObjectType::boulder, {0, 0, 0}, OOT_DEATH_MOUNTAIN_TRAIL, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00031, OOT_DEATH_MOUNTAIN_TRAIL, "Middle", "Death Mountain Trail Boulder Middle", ObjectType::boulder, {0, 0, 0}, OOT_DEATH_MOUNTAIN_TRAIL, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 ObjectInfo * OOT_DEATH_MOUNTAIN_TRAILSceneObjects = OOT_DEATH_MOUNTAIN_TRAILSceneObjects_Data;
 
@@ -375,7 +394,7 @@ static ObjectInfo OOT_GROTTO_DEATH_TRIAL_COWSceneObjects_Data [OOT_GROTTO_DEATH_
 };
 ObjectInfo * OOT_GROTTO_DEATH_TRIAL_COWSceneObjects = OOT_GROTTO_DEATH_TRIAL_COWSceneObjects_Data;
 
-const size_t OOT_DEKU_TREENumOfObjs = 128;
+const size_t OOT_DEKU_TREENumOfObjs = 131;
 static ObjectInfo OOT_DEKU_TREESceneObjects_Data [OOT_DEKU_TREENumOfObjs] =
 {
 	{ 0x03, OOT_DEKU_TREE, "Chest", "OOT Deku Tree Map Chest", ObjectType::chest, {386, 291, 0}, OOT_DEKU_TREE, ObjectType::map, EGameIcon::render_type, ObjectContext::All, 1, GameLayout::oot, LocType::dungeon, NULL },
@@ -505,11 +524,14 @@ static ObjectInfo OOT_DEKU_TREESceneObjects_Data [OOT_DEKU_TREENumOfObjs] =
 	{ 0x00105, OOT_LAIR_GOHMA, "Boss 5", "OOT Deku Tree Boss Grass 5", ObjectType::grass, {358, 498, 0}, OOT_DEKU_TREE, ObjectType::grass, EGameIcon::render_type, ObjectContext::All, 4, GameLayout::all, LocType::dungeon, NULL },
 	{ 0x00106, OOT_LAIR_GOHMA, "Boss 6", "OOT Deku Tree Boss Grass 6", ObjectType::grass, {327, 413, 0}, OOT_DEKU_TREE, ObjectType::grass, EGameIcon::render_type, ObjectContext::All, 4, GameLayout::all, LocType::dungeon, NULL },
 	{ 0x00107, OOT_LAIR_GOHMA, "Boss 7", "OOT Deku Tree Boss Grass 7", ObjectType::grass, {721, 423, 0}, OOT_DEKU_TREE, ObjectType::grass, EGameIcon::render_type, ObjectContext::All, 4, GameLayout::all, LocType::dungeon, NULL },
-	{ 0x00108, OOT_LAIR_GOHMA, "Boss 8", "OOT Deku Tree Boss Grass 8", ObjectType::grass, {689, 513, 0}, OOT_DEKU_TREE, ObjectType::grass, EGameIcon::render_type, ObjectContext::All, 4, GameLayout::all, LocType::dungeon, NULL }
+	{ 0x00108, OOT_LAIR_GOHMA, "Boss 8", "OOT Deku Tree Boss Grass 8", ObjectType::grass, {689, 513, 0}, OOT_DEKU_TREE, ObjectType::grass, EGameIcon::render_type, ObjectContext::All, 4, GameLayout::all, LocType::dungeon, NULL },
+	{ 0x00214, OOT_DEKU_TREE, "Boulder 1", "MQ Deku Tree Boulder 1", ObjectType::boulder, {0, 0, 0}, OOT_DEKU_TREE, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00215, OOT_DEKU_TREE, "Boulder 2", "MQ Deku Tree Boulder 2", ObjectType::boulder, {0, 0, 0}, OOT_DEKU_TREE, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00216, OOT_DEKU_TREE, "Boulder 3", "MQ Deku Tree Boulder 3", ObjectType::boulder, {0, 0, 0}, OOT_DEKU_TREE, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL }
 };
 ObjectInfo * OOT_DEKU_TREESceneObjects = OOT_DEKU_TREESceneObjects_Data;
 
-const size_t OOT_DESERT_COLOSSUSNumOfObjs = 44;
+const size_t OOT_DESERT_COLOSSUSNumOfObjs = 45;
 static ObjectInfo OOT_DESERT_COLOSSUSSceneObjects_Data [OOT_DESERT_COLOSSUSNumOfObjs] =
 {
 	{ 0x0d, OOT_DESERT_COLOSSUS, "Above Arch", "OOT Desert Colossus HP", ObjectType::collectible, {631, 248, 0}, OOT_DESERT_COLOSSUS, ObjectType::heart_piece, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -555,11 +577,12 @@ static ObjectInfo OOT_DESERT_COLOSSUSSceneObjects_Data [OOT_DESERT_COLOSSUSNumOf
 	{ 0x7001b, OOT_DESERT_COLOSSUS, "Circle 2 - Rock 8", "OOT Desert Colossus Rock Circle 2 Rock 8", ObjectType::rock, {655, 403, 0}, OOT_DESERT_COLOSSUS, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0001d, OOT_DESERT_COLOSSUS, "Soil 1", "OOT Desert Colossus Soil 1", ObjectType::soil, {689, 204, 0}, OOT_DESERT_COLOSSUS, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x1001d, OOT_DESERT_COLOSSUS, "Soil 2", "OOT Desert Colossus Soil 2", ObjectType::soil, {662, 194, 0}, OOT_DESERT_COLOSSUS, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
-	{ 0x2001d, OOT_DESERT_COLOSSUS, "Soil 3", "OOT Desert Colossus Soil 3", ObjectType::soil, {668, 164, 0}, OOT_DESERT_COLOSSUS, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL }
+	{ 0x2001d, OOT_DESERT_COLOSSUS, "Soil 3", "OOT Desert Colossus Soil 3", ObjectType::soil, {668, 164, 0}, OOT_DESERT_COLOSSUS, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00012, OOT_DESERT_COLOSSUS, "Silver Boulder", "Desert Colossus Silver Boulder", ObjectType::silverboulder, {0, 0, 0}, OOT_DESERT_COLOSSUS, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 ObjectInfo * OOT_DESERT_COLOSSUSSceneObjects = OOT_DESERT_COLOSSUSSceneObjects_Data;
 
-const size_t OOT_DODONGO_CAVERNNumOfObjs = 138;
+const size_t OOT_DODONGO_CAVERNNumOfObjs = 158;
 static ObjectInfo OOT_DODONGO_CAVERNSceneObjects_Data [OOT_DODONGO_CAVERNNumOfObjs] =
 {
 	{ 0x08, OOT_DODONGO_CAVERN, "Chest", "OOT Dodongo Cavern Map Chest", ObjectType::chest, {701, 1522, 0}, OOT_DODONGO_CAVERN, ObjectType::map, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::dungeon, NULL },
@@ -699,7 +722,27 @@ static ObjectInfo OOT_DODONGO_CAVERNSceneObjects_Data [OOT_DODONGO_CAVERNNumOfOb
 	{ 0x00c0b, OOT_DODONGO_CAVERN, "After Upper Lizalfos 2", "OOT MQ Dodongo Cavern Room After Upper Lizalfos Large Crate 2", ObjectType::crate, {2262, 485, 0}, OOT_DODONGO_CAVERN, ObjectType::crate, EGameIcon::render_type, ObjectContext::All, 1, GameLayout::oot_mq, LocType::dungeon, NULL },
 	{ 0x00, OOT_LAIR_KING_DODONGO, "Small Chest", "OOT Dodongo Cavern Boss Chest", ObjectType::chest, {570, 796, 0}, OOT_DODONGO_CAVERN, ObjectType::chest, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL },
 	{ 0x1f, OOT_LAIR_KING_DODONGO, "Heart Container", "OOT Dodongo Cavern Boss Container", ObjectType::collectible, {614, 384, 0}, OOT_DODONGO_CAVERN, ObjectType::heart_container, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL },
-	{ BLUE_WARP_KING_DODONGO, OOT_LAIR_KING_DODONGO, "Goron's Ruby", "OOT Dodongo Cavern Boss", ObjectType::npc, {666, 384, 0}, OOT_DODONGO_CAVERN, ObjectType::npc, EGameIcon::ruby, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL }
+	{ BLUE_WARP_KING_DODONGO, OOT_LAIR_KING_DODONGO, "Goron's Ruby", "OOT Dodongo Cavern Boss", ObjectType::npc, {666, 384, 0}, OOT_DODONGO_CAVERN, ObjectType::npc, EGameIcon::ruby, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL },
+	{ 0x00c09, OOT_DODONGO_CAVERN, "Deep", "MQ Dodongo Cavern Boulder Deep", ObjectType::boulder, {0, 0, 0}, OOT_DODONGO_CAVERN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x0030b, OOT_DODONGO_CAVERN, "Lizalfos 1", "MQ Dodongo Cavern Boulder Lizalfos 01", ObjectType::boulder, {0, 0, 0}, OOT_DODONGO_CAVERN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x0030c, OOT_DODONGO_CAVERN, "Lizalfos 2", "MQ Dodongo Cavern Boulder Lizalfos 02", ObjectType::boulder, {0, 0, 0}, OOT_DODONGO_CAVERN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x0030d, OOT_DODONGO_CAVERN, "Lizalfos 3", "MQ Dodongo Cavern Boulder Lizalfos 03", ObjectType::boulder, {0, 0, 0}, OOT_DODONGO_CAVERN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x0030e, OOT_DODONGO_CAVERN, "Lizalfos 4", "MQ Dodongo Cavern Boulder Lizalfos 04", ObjectType::boulder, {0, 0, 0}, OOT_DODONGO_CAVERN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x0030f, OOT_DODONGO_CAVERN, "Lizalfos 5", "MQ Dodongo Cavern Boulder Lizalfos 05", ObjectType::boulder, {0, 0, 0}, OOT_DODONGO_CAVERN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00310, OOT_DODONGO_CAVERN, "Lizalfos 6", "MQ Dodongo Cavern Boulder Lizalfos 06", ObjectType::boulder, {0, 0, 0}, OOT_DODONGO_CAVERN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00311, OOT_DODONGO_CAVERN, "Lizalfos 7", "MQ Dodongo Cavern Boulder Lizalfos 07", ObjectType::boulder, {0, 0, 0}, OOT_DODONGO_CAVERN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00312, OOT_DODONGO_CAVERN, "Lizalfos 8", "MQ Dodongo Cavern Boulder Lizalfos 08", ObjectType::boulder, {0, 0, 0}, OOT_DODONGO_CAVERN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00313, OOT_DODONGO_CAVERN, "Lizalfos 9", "MQ Dodongo Cavern Boulder Lizalfos 09", ObjectType::boulder, {0, 0, 0}, OOT_DODONGO_CAVERN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00314, OOT_DODONGO_CAVERN, "Lizalfos 10", "MQ Dodongo Cavern Boulder Lizalfos 10", ObjectType::boulder, {0, 0, 0}, OOT_DODONGO_CAVERN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00315, OOT_DODONGO_CAVERN, "Lizalfos 11", "MQ Dodongo Cavern Boulder Lizalfos 11", ObjectType::boulder, {0, 0, 0}, OOT_DODONGO_CAVERN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00316, OOT_DODONGO_CAVERN, "Lizalfos 12", "MQ Dodongo Cavern Boulder Lizalfos 12", ObjectType::boulder, {0, 0, 0}, OOT_DODONGO_CAVERN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00016, OOT_DODONGO_CAVERN, "Entrance Back 1", "MQ Dodongo Cavern Boulder Entrance Back 1", ObjectType::boulder, {0, 0, 0}, OOT_DODONGO_CAVERN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00017, OOT_DODONGO_CAVERN, "Entrance Back 2", "MQ Dodongo Cavern Boulder Entrance Back 2", ObjectType::boulder, {0, 0, 0}, OOT_DODONGO_CAVERN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00018, OOT_DODONGO_CAVERN, "Entrance Upper 1", "MQ Dodongo Cavern Boulder Entrance Upper 1", ObjectType::boulder, {0, 0, 0}, OOT_DODONGO_CAVERN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00019, OOT_DODONGO_CAVERN, "Entrance Upper 2", "MQ Dodongo Cavern Boulder Entrance Upper 2", ObjectType::boulder, {0, 0, 0}, OOT_DODONGO_CAVERN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x0001a, OOT_DODONGO_CAVERN, "Entrance Upper 3", "MQ Dodongo Cavern Boulder Entrance Upper 3", ObjectType::boulder, {0, 0, 0}, OOT_DODONGO_CAVERN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00119, OOT_DODONGO_CAVERN, "Right Corridor Wall", "MQ Dodongo Cavern Boulder Right Corridor Wall", ObjectType::boulder, {0, 0, 0}, OOT_DODONGO_CAVERN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00118, OOT_DODONGO_CAVERN, "Right Corridor Ground", "MQ Dodongo Cavern Boulder Right Corridor Ground", ObjectType::boulder, {0, 0, 0}, OOT_DODONGO_CAVERN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL }
 };
 ObjectInfo * OOT_DODONGO_CAVERNSceneObjects = OOT_DODONGO_CAVERNSceneObjects_Data;
 
@@ -860,14 +903,18 @@ static ObjectInfo OOT_FISHING_PONDSceneObjects_Data [OOT_FISHING_PONDNumOfObjs] 
 };
 ObjectInfo * OOT_FISHING_PONDSceneObjects = OOT_FISHING_PONDSceneObjects_Data;
 
-const size_t OOT_GANON_CASTLE_EXTERIORNumOfObjs = 5;
+const size_t OOT_GANON_CASTLE_EXTERIORNumOfObjs = 9;
 static ObjectInfo OOT_GANON_CASTLE_EXTERIORSceneObjects_Data [OOT_GANON_CASTLE_EXTERIORNumOfObjs] =
 {
 	{ 0x78, OOT_GANON_CASTLE_EXTERIOR, "Side Arch", "OOT Ganon Castle Exterior GS", ObjectType::gs, {373, 413, 0}, OOT_GANON_CASTLE_EXTERIOR, ObjectType::gs, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ FAIRY_DEFENSE_UPGRADE, OOT_GANON_CASTLE_EXTERIOR, "Double Defense Upgrade", "OOT Great Fairy Defense Upgrade", ObjectType::none, {0, 0, 0}, OOT_GREAT_FAIRY_CASTLE, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00003, OOT_GANON_CASTLE_EXTERIOR, "Boulder 1", "OOT Ganon Castle Exterior Red Boulder 1", ObjectType::redboulder, {130, 319, 0}, OOT_GANON_CASTLE_EXTERIOR, ObjectType::redboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00004, OOT_GANON_CASTLE_EXTERIOR, "Boulder 2", "OOT Ganon Castle Exterior Red Boulder 2", ObjectType::redboulder, {265, 373, 0}, OOT_GANON_CASTLE_EXTERIOR, ObjectType::redboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
-	{ 0x00005, OOT_GANON_CASTLE_EXTERIOR, "Boulder 3", "OOT Ganon Castle Exterior Red Boulder 3", ObjectType::redboulder, {240, 365, 0}, OOT_GANON_CASTLE_EXTERIOR, ObjectType::redboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
+	{ 0x00005, OOT_GANON_CASTLE_EXTERIOR, "Boulder 3", "OOT Ganon Castle Exterior Red Boulder 3", ObjectType::redboulder, {240, 365, 0}, OOT_GANON_CASTLE_EXTERIOR, ObjectType::redboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00006, OOT_GANON_CASTLE_EXTERIOR, "Silver Boulder 1", "Ganon Castle Exterior Silver Boulder 1", ObjectType::silverboulder, {0, 0, 0}, OOT_GANON_CASTLE_EXTERIOR, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00007, OOT_GANON_CASTLE_EXTERIOR, "Silver Boulder 2", "Ganon Castle Exterior Silver Boulder 2", ObjectType::silverboulder, {0, 0, 0}, OOT_GANON_CASTLE_EXTERIOR, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00008, OOT_GANON_CASTLE_EXTERIOR, "Silver Boulder 3", "Ganon Castle Exterior Silver Boulder 3", ObjectType::silverboulder, {0, 0, 0}, OOT_GANON_CASTLE_EXTERIOR, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00009, OOT_GANON_CASTLE_EXTERIOR, "Silver Boulder 4", "Ganon Castle Exterior Silver Boulder 4", ObjectType::silverboulder, {0, 0, 0}, OOT_GANON_CASTLE_EXTERIOR, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 ObjectInfo * OOT_GANON_CASTLE_EXTERIORSceneObjects = OOT_GANON_CASTLE_EXTERIORSceneObjects_Data;
 
@@ -1031,7 +1078,7 @@ static ObjectInfo OOT_GERUDO_TRAINING_GROUNDSceneObjects_Data [OOT_GERUDO_TRAINI
 };
 ObjectInfo * OOT_GERUDO_TRAINING_GROUNDSceneObjects = OOT_GERUDO_TRAINING_GROUNDSceneObjects_Data;
 
-const size_t OOT_GERUDO_VALLEYNumOfObjs = 49;
+const size_t OOT_GERUDO_VALLEYNumOfObjs = 53;
 static ObjectInfo OOT_GERUDO_VALLEYSceneObjects_Data [OOT_GERUDO_VALLEYNumOfObjs] =
 {
 	{ 0x00, OOT_GERUDO_VALLEY, "Red Rock Chest", "OOT Gerudo Valley Chest", ObjectType::chest, {252, 484, 0}, OOT_GERUDO_VALLEY, ObjectType::chest, EGameIcon::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1082,11 +1129,15 @@ static ObjectInfo OOT_GERUDO_VALLEYSceneObjects_Data [OOT_GERUDO_VALLEYNumOfObjs
 	{ 0x08027, OOT_GERUDO_VALLEY, "Adult 4", "OOT Gerudo Valley Rock Adult 4", ObjectType::rock, {393, 215, 0}, OOT_GERUDO_VALLEY, ObjectType::rock, EGameIcon::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0001f, OOT_GERUDO_VALLEY, "Soil 1", "OOT Gerudo Valley Soil 1", ObjectType::soil, {414, 346, 0}, OOT_GERUDO_VALLEY, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x1001f, OOT_GERUDO_VALLEY, "Soil 2", "OOT Gerudo Valley Soil 2", ObjectType::soil, {404, 346, 0}, OOT_GERUDO_VALLEY, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
-	{ 0x2001f, OOT_GERUDO_VALLEY, "Soil 3", "OOT Gerudo Valley Soil 3", ObjectType::soil, {409, 337, 0}, OOT_GERUDO_VALLEY, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL }
+	{ 0x2001f, OOT_GERUDO_VALLEY, "Soil 3", "OOT Gerudo Valley Soil 3", ObjectType::soil, {409, 337, 0}, OOT_GERUDO_VALLEY, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00012, OOT_GERUDO_VALLEY, "Silver Boulder", "Gerudo Valley Silver Boulder", ObjectType::silverboulder, {0, 0, 0}, OOT_GERUDO_VALLEY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0801c, OOT_GERUDO_VALLEY, "After Bridge", "Gerudo Valley Boulder After Bridge", ObjectType::boulder, {0, 0, 0}, OOT_GERUDO_VALLEY, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0801b, OOT_GERUDO_VALLEY, "Before Bridge 1", "Gerudo Valley Boulder Before Bridge 1", ObjectType::boulder, {0, 0, 0}, OOT_GERUDO_VALLEY, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0801d, OOT_GERUDO_VALLEY, "Before Bridge 2", "Gerudo Valley Boulder Before Bridge 2", ObjectType::boulder, {0, 0, 0}, OOT_GERUDO_VALLEY, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 ObjectInfo * OOT_GERUDO_VALLEYSceneObjects = OOT_GERUDO_VALLEYSceneObjects_Data;
 
-const size_t OOT_GORON_CITYNumOfObjs = 37;
+const size_t OOT_GORON_CITYNumOfObjs = 82;
 static ObjectInfo OOT_GORON_CITYSceneObjects_Data [OOT_GORON_CITYNumOfObjs] =
 {
 	{ DARUNIA_BRACELET, OOT_GORON_CITY, "Darunia's Dance", "OOT Darunia", ObjectType::npc, {709, 360, 0}, OOT_GORON_CITY, ObjectType::npc, EGameIcon::bracelet, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1125,7 +1176,52 @@ static ObjectInfo OOT_GORON_CITYSceneObjects_Data [OOT_GORON_CITYNumOfObjs] =
 	{ 0x0002a, OOT_GORON_CITY, "Boulder 3", "OOT Goron City Red Boulder 3", ObjectType::redboulder, {641, 30, 0}, OOT_GORON_CITY, ObjectType::redboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0002e, OOT_GORON_CITY, "Boulder 4", "OOT Goron City Red Boulder 4", ObjectType::redboulder, {669, 31, 0}, OOT_GORON_CITY, ObjectType::redboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0002b, OOT_GORON_CITY, "Boulder 5", "OOT Goron City Red Boulder 5", ObjectType::redboulder, {697, 32, 0}, OOT_GORON_CITY, ObjectType::redboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
-	{ 0x0002f, OOT_GORON_CITY, "Rock", "OOT Goron City Rock", ObjectType::rock, {742, 91, 0}, OOT_GORON_CITY, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
+	{ 0x0002f, OOT_GORON_CITY, "Rock", "OOT Goron City Rock", ObjectType::rock, {742, 91, 0}, OOT_GORON_CITY, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0001f, OOT_GORON_CITY, "Maze 1", "Goron City Maze Boulder 01", ObjectType::boulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00020, OOT_GORON_CITY, "Maze 2", "Goron City Maze Boulder 02", ObjectType::boulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00021, OOT_GORON_CITY, "Maze 3", "Goron City Maze Boulder 03", ObjectType::boulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00022, OOT_GORON_CITY, "Maze 4", "Goron City Maze Boulder 04", ObjectType::boulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00023, OOT_GORON_CITY, "Maze 5", "Goron City Maze Boulder 05", ObjectType::boulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00024, OOT_GORON_CITY, "Maze 6", "Goron City Maze Boulder 06", ObjectType::boulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00025, OOT_GORON_CITY, "Maze 7", "Goron City Maze Boulder 07", ObjectType::boulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00026, OOT_GORON_CITY, "Maze 8", "Goron City Maze Boulder 08", ObjectType::boulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00027, OOT_GORON_CITY, "Maze 9", "Goron City Maze Boulder 09", ObjectType::boulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00028, OOT_GORON_CITY, "Maze 10", "Goron City Maze Boulder 10", ObjectType::boulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00316, OOT_GORON_CITY, "Upper 1", "Goron City Boulder Upper 1", ObjectType::boulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00319, OOT_GORON_CITY, "Upper 2", "Goron City Boulder Upper 2", ObjectType::boulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0031a, OOT_GORON_CITY, "Upper 3", "Goron City Boulder Upper 3", ObjectType::boulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00000, OOT_GORON_CITY, "Silver Boulder 1", "Goron City Silver Boulder 01", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00001, OOT_GORON_CITY, "Silver Boulder 2", "Goron City Silver Boulder 02", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00002, OOT_GORON_CITY, "Silver Boulder 3", "Goron City Silver Boulder 03", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00003, OOT_GORON_CITY, "Silver Boulder 4", "Goron City Silver Boulder 04", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00004, OOT_GORON_CITY, "Silver Boulder 5", "Goron City Silver Boulder 05", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00005, OOT_GORON_CITY, "Silver Boulder 6", "Goron City Silver Boulder 06", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00006, OOT_GORON_CITY, "Silver Boulder 7", "Goron City Silver Boulder 07", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00007, OOT_GORON_CITY, "Silver Boulder 8", "Goron City Silver Boulder 08", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00008, OOT_GORON_CITY, "Silver Boulder 9", "Goron City Silver Boulder 09", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00009, OOT_GORON_CITY, "Silver Boulder 10", "Goron City Silver Boulder 10", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0000a, OOT_GORON_CITY, "Silver Boulder 11", "Goron City Silver Boulder 11", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0000b, OOT_GORON_CITY, "Silver Boulder 12", "Goron City Silver Boulder 12", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0000c, OOT_GORON_CITY, "Silver Boulder 13", "Goron City Silver Boulder 13", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0000d, OOT_GORON_CITY, "Silver Boulder 14", "Goron City Silver Boulder 14", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0000e, OOT_GORON_CITY, "Silver Boulder 15", "Goron City Silver Boulder 15", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0000f, OOT_GORON_CITY, "Silver Boulder 16", "Goron City Silver Boulder 16", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00010, OOT_GORON_CITY, "Silver Boulder 17", "Goron City Silver Boulder 17", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00011, OOT_GORON_CITY, "Silver Boulder 18", "Goron City Silver Boulder 18", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00012, OOT_GORON_CITY, "Silver Boulder 19", "Goron City Silver Boulder 19", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00013, OOT_GORON_CITY, "Silver Boulder 20", "Goron City Silver Boulder 20", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00014, OOT_GORON_CITY, "Silver Boulder 21", "Goron City Silver Boulder 21", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00015, OOT_GORON_CITY, "Silver Boulder 22", "Goron City Silver Boulder 22", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00016, OOT_GORON_CITY, "Silver Boulder 23", "Goron City Silver Boulder 23", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00017, OOT_GORON_CITY, "Silver Boulder 24", "Goron City Silver Boulder 24", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00018, OOT_GORON_CITY, "Silver Boulder 25", "Goron City Silver Boulder 25", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00019, OOT_GORON_CITY, "Silver Boulder 26", "Goron City Silver Boulder 26", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0001a, OOT_GORON_CITY, "Silver Boulder 27", "Goron City Silver Boulder 27", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0001b, OOT_GORON_CITY, "Silver Boulder 28", "Goron City Silver Boulder 28", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0002c, OOT_GORON_CITY, "Silver Boulder 29", "Goron City Silver Boulder 29", ObjectType::silverboulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00318, OOT_GORON_CITY, "Shortcut 1", "Goron City Boulder Shortcut 1", ObjectType::boulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0031b, OOT_GORON_CITY, "Shortcut 2", "Goron City Boulder Shortcut 2", ObjectType::boulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0031c, OOT_GORON_CITY, "Shortcut 3", "Goron City Boulder Shortcut 3", ObjectType::boulder, {0, 0, 0}, OOT_GORON_CITY, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 ObjectInfo * OOT_GORON_CITYSceneObjects = OOT_GORON_CITYSceneObjects_Data;
 
@@ -1772,7 +1868,7 @@ static ObjectInfo OOT_GROTTO_DESERT_SCRUBSSceneObjects_Data [OOT_GROTTO_DESERT_S
 };
 ObjectInfo * OOT_GROTTO_DESERT_SCRUBSSceneObjects = OOT_GROTTO_DESERT_SCRUBSSceneObjects_Data;
 
-const size_t OOT_HYRULE_CASTLENumOfObjs = 60;
+const size_t OOT_HYRULE_CASTLENumOfObjs = 61;
 static ObjectInfo OOT_HYRULE_CASTLESceneObjects_Data [OOT_HYRULE_CASTLENumOfObjs] =
 {
 	{ WEIRD_EGG, OOT_GROTTOS, "Hatch - Chicken", "OOT Hatch Chicken", ObjectType::npc, {138, 210, 0}, OOT_HYRULE_CASTLE, ObjectType::egg, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1834,11 +1930,12 @@ static ObjectInfo OOT_HYRULE_CASTLESceneObjects_Data [OOT_HYRULE_CASTLENumOfObjs
 	{ 0x00014, OOT_HYRULE_CASTLE, "Guarded", "OOT Hyrule Castle Tree Guarded", ObjectType::tree, {495, 363, 0}, OOT_HYRULE_CASTLE, ObjectType::tree, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0002a, OOT_HYRULE_CASTLE, "Rock 1", "OOT Hyrule Castle Rock 1", ObjectType::rock, {211, 209, 0}, OOT_HYRULE_CASTLE, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0002b, OOT_HYRULE_CASTLE, "Rock 2", "OOT Hyrule Castle Rock 2", ObjectType::rock, {207, 236, 0}, OOT_HYRULE_CASTLE, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
-	{ 0x0002c, OOT_HYRULE_CASTLE, "Rock 3", "OOT Hyrule Castle Rock 3", ObjectType::rock, {235, 226, 0}, OOT_HYRULE_CASTLE, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
+	{ 0x0002c, OOT_HYRULE_CASTLE, "Rock 3", "OOT Hyrule Castle Rock 3", ObjectType::rock, {235, 226, 0}, OOT_HYRULE_CASTLE, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0003a, OOT_HYRULE_CASTLE, "Boulder", "Hyrule Castle Boulder", ObjectType::boulder, {0, 0, 0}, OOT_HYRULE_CASTLE, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 ObjectInfo * OOT_HYRULE_CASTLESceneObjects = OOT_HYRULE_CASTLESceneObjects_Data;
 
-const size_t OOT_KAKARIKO_VILLAGENumOfObjs = 96;
+const size_t OOT_KAKARIKO_VILLAGENumOfObjs = 97;
 static ObjectInfo OOT_KAKARIKO_VILLAGESceneObjects_Data [OOT_KAKARIKO_VILLAGENumOfObjs] =
 {
 	{ POCKET_EGG, OOT_GROTTOS, "Hatch - Pocket Cucco", "OOT Hatch Pocket Cucco", ObjectType::npc, {396, 132, 0}, OOT_KAKARIKO_VILLAGE, ObjectType::egg, EGameIcon::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -1936,7 +2033,8 @@ static ObjectInfo OOT_KAKARIKO_VILLAGESceneObjects_Data [OOT_KAKARIKO_VILLAGENum
 	{ GS_40, OOT_KAKARIKO_VILLAGE, "40 Tokens", "OOT Skulltula House 40 Tokens", ObjectType::none, {0, 0, 0}, OOT_HOUSE_OF_SKULLTULA, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ GS_50, OOT_KAKARIKO_VILLAGE, "50 Tokens", "OOT Skulltula House 50 Tokens", ObjectType::none, {0, 0, 0}, OOT_HOUSE_OF_SKULLTULA, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00020, OOT_KAKARIKO_VILLAGE, "Gate", "OOT Kakariko Rock Near Gate", ObjectType::rock, {437, 560, 0}, OOT_KAKARIKO_VILLAGE, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
-	{ 0x00021, OOT_KAKARIKO_VILLAGE, "Spider House", "OOT Kakariko Rock Near Spider House", ObjectType::rock, {560, 158, 0}, OOT_KAKARIKO_VILLAGE, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
+	{ 0x00021, OOT_KAKARIKO_VILLAGE, "Spider House", "OOT Kakariko Rock Near Spider House", ObjectType::rock, {560, 158, 0}, OOT_KAKARIKO_VILLAGE, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x08030, OOT_KAKARIKO_VILLAGE, "Silver Boulder", "Kakariko Silver Boulder", ObjectType::silverboulder, {0, 0, 0}, OOT_KAKARIKO_VILLAGE, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 ObjectInfo * OOT_KAKARIKO_VILLAGESceneObjects = OOT_KAKARIKO_VILLAGESceneObjects_Data;
 
@@ -2037,7 +2135,7 @@ static ObjectInfo OOT_HOUSE_OF_SKULLTULASceneObjects_Data [OOT_HOUSE_OF_SKULLTUL
 };
 ObjectInfo * OOT_HOUSE_OF_SKULLTULASceneObjects = OOT_HOUSE_OF_SKULLTULASceneObjects_Data;
 
-const size_t OOT_HYRULE_FIELDNumOfObjs = 222;
+const size_t OOT_HYRULE_FIELDNumOfObjs = 226;
 static ObjectInfo OOT_HYRULE_FIELDSceneObjects_Data [OOT_HYRULE_FIELDNumOfObjs] =
 {
 	{ OCARINA_TIME_ITEM, OOT_HYRULE_FIELD, "Ocarina of Time", "OOT Hyrule Field Ocarina of Time", ObjectType::npc, {793, 155, 0}, OOT_HYRULE_FIELD, ObjectType::ocarina, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -2261,7 +2359,11 @@ static ObjectInfo OOT_HYRULE_FIELDSceneObjects_Data [OOT_HYRULE_FIELDNumOfObjs] 
 	{ 0x40037, OOT_HYRULE_FIELD, "Circle Rock 5", "OOT Hyrule Field Rock Circle Rock 5", ObjectType::rock, {319, 450, 0}, OOT_HYRULE_FIELD, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x50037, OOT_HYRULE_FIELD, "Circle Rock 6", "OOT Hyrule Field Rock Circle Rock 6", ObjectType::rock, {307, 456, 0}, OOT_HYRULE_FIELD, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x60037, OOT_HYRULE_FIELD, "Circle Rock 7", "OOT Hyrule Field Rock Circle Rock 7", ObjectType::rock, {301, 468, 0}, OOT_HYRULE_FIELD, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
-	{ 0x70037, OOT_HYRULE_FIELD, "Circle Rock 8", "OOT Hyrule Field Rock Circle Rock 8", ObjectType::rock, {307, 481, 1}, OOT_HYRULE_FIELD, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
+	{ 0x70037, OOT_HYRULE_FIELD, "Circle Rock 8", "OOT Hyrule Field Rock Circle Rock 8", ObjectType::rock, {307, 481, 1}, OOT_HYRULE_FIELD, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00046, OOT_HYRULE_FIELD, "Island", "Hyrule Field Boulder Island", ObjectType::boulder, {0, 0, 0}, OOT_HYRULE_FIELD, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0001e, OOT_HYRULE_FIELD, "Silver Boulder", "Hyrule Field Silver Boulder", ObjectType::silverboulder, {0, 0, 0}, OOT_HYRULE_FIELD, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00044, OOT_HYRULE_FIELD, "Near Lake", "Hyrule Field Boulder Near Lake", ObjectType::boulder, {0, 0, 0}, OOT_HYRULE_FIELD, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00045, OOT_HYRULE_FIELD, "Near Market", "Hyrule Field Boulder Near Market", ObjectType::boulder, {0, 0, 0}, OOT_HYRULE_FIELD, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 ObjectInfo * OOT_HYRULE_FIELDSceneObjects = OOT_HYRULE_FIELDSceneObjects_Data;
 
@@ -2618,7 +2720,7 @@ static ObjectInfo OOT_INSIDE_GANON_CASTLESceneObjects_Data [OOT_INSIDE_GANON_CAS
 };
 ObjectInfo * OOT_INSIDE_GANON_CASTLESceneObjects = OOT_INSIDE_GANON_CASTLESceneObjects_Data;
 
-const size_t OOT_INSIDE_JABU_JABUNumOfObjs = 100;
+const size_t OOT_INSIDE_JABU_JABUNumOfObjs = 110;
 static ObjectInfo OOT_INSIDE_JABU_JABUSceneObjects_Data [OOT_INSIDE_JABU_JABUNumOfObjs] =
 {
 	{ 0x02, OOT_INSIDE_JABU_JABU, "Chest", "OOT Jabu-Jabu Map Chest", ObjectType::chest, {497, 1220, 0}, OOT_INSIDE_JABU_JABU, ObjectType::map, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::dungeon, NULL },
@@ -2720,7 +2822,17 @@ static ObjectInfo OOT_INSIDE_JABU_JABUSceneObjects_Data [OOT_INSIDE_JABU_JABUNum
 	{ 0x0103, OOT_LAIR_BARINADE, "Boss Pot 3", "OOT Jabu-Jabu Boss Pot 3", ObjectType::pot, {1223, 387, 0}, OOT_INSIDE_JABU_JABU, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL },
 	{ 0x0104, OOT_LAIR_BARINADE, "Boss Pot 4", "OOT Jabu-Jabu Boss Pot 4", ObjectType::pot, {1221, 126, 0}, OOT_INSIDE_JABU_JABU, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL },
 	{ 0x0105, OOT_LAIR_BARINADE, "Boss Pot 5", "OOT Jabu-Jabu Boss Pot 5", ObjectType::pot, {1347, 123, 0}, OOT_INSIDE_JABU_JABU, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL },
-	{ 0x0106, OOT_LAIR_BARINADE, "Boss Pot 6", "OOT Jabu-Jabu Boss Pot 6", ObjectType::pot, {1349, 390, 0}, OOT_INSIDE_JABU_JABU, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL }
+	{ 0x0106, OOT_LAIR_BARINADE, "Boss Pot 6", "OOT Jabu-Jabu Boss Pot 6", ObjectType::pot, {1349, 390, 0}, OOT_INSIDE_JABU_JABU, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL },
+	{ 0x00006, OOT_INSIDE_JABU_JABU, "Entrance", "MQ Jabu-Jabu Room Boulder Entrance", ObjectType::boulder, {0, 0, 0}, OOT_INSIDE_JABU_JABU, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00703, OOT_INSIDE_JABU_JABU, "Fork Room 1", "MQ Jabu-Jabu Room Boulder Fork Room 1", ObjectType::boulder, {0, 0, 0}, OOT_INSIDE_JABU_JABU, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00704, OOT_INSIDE_JABU_JABU, "Fork Room 2", "MQ Jabu-Jabu Room Boulder Fork Room 2", ObjectType::boulder, {0, 0, 0}, OOT_INSIDE_JABU_JABU, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00c07, OOT_INSIDE_JABU_JABU, "Side Room Wall", "MQ Jabu-Jabu Room Boulder Side Room Wall", ObjectType::boulder, {0, 0, 0}, OOT_INSIDE_JABU_JABU, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00c08, OOT_INSIDE_JABU_JABU, "Side Room Ground", "MQ Jabu-Jabu Room Boulder Side Room Ground", ObjectType::boulder, {0, 0, 0}, OOT_INSIDE_JABU_JABU, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00207, OOT_INSIDE_JABU_JABU, "Holes Room Wall 1", "MQ Jabu-Jabu Room Boulder Holes Room Wall 1", ObjectType::boulder, {0, 0, 0}, OOT_INSIDE_JABU_JABU, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x0020a, OOT_INSIDE_JABU_JABU, "Holes Room Wall 2", "MQ Jabu-Jabu Room Boulder Holes Room Wall 2", ObjectType::boulder, {0, 0, 0}, OOT_INSIDE_JABU_JABU, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x0020b, OOT_INSIDE_JABU_JABU, "Holes Room Wall 3", "MQ Jabu-Jabu Room Boulder Holes Room Wall 3", ObjectType::boulder, {0, 0, 0}, OOT_INSIDE_JABU_JABU, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00208, OOT_INSIDE_JABU_JABU, "Holes Room Ground 1", "MQ Jabu-Jabu Room Boulder Holes Room Ground 1", ObjectType::boulder, {0, 0, 0}, OOT_INSIDE_JABU_JABU, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00209, OOT_INSIDE_JABU_JABU, "Holes Room Ground 2", "MQ Jabu-Jabu Room Boulder Holes Room Ground 2", ObjectType::boulder, {0, 0, 0}, OOT_INSIDE_JABU_JABU, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL }
 };
 ObjectInfo * OOT_INSIDE_JABU_JABUSceneObjects = OOT_INSIDE_JABU_JABUSceneObjects_Data;
 
@@ -3495,7 +3607,7 @@ static ObjectInfo OOT_LAIR_TWINROVASceneObjects_Data [OOT_LAIR_TWINROVANumOfObjs
 };
 ObjectInfo * OOT_LAIR_TWINROVASceneObjects = OOT_LAIR_TWINROVASceneObjects_Data;
 
-const size_t OOT_TEMPLE_SPIRITNumOfObjs = 157;
+const size_t OOT_TEMPLE_SPIRITNumOfObjs = 166;
 static ObjectInfo OOT_TEMPLE_SPIRITSceneObjects_Data [OOT_TEMPLE_SPIRITNumOfObjs] =
 {
 	{ 0x1f, OOT_LAIR_TWINROVA, "Heart Container", "OOT Spirit Temple Boss HC", ObjectType::collectible, {783, 233, 0}, OOT_TEMPLE_SPIRIT, ObjectType::heart_container, EGameIcon::render_type, ObjectContext::All, 1, GameLayout::all, LocType::dungeon, NULL },
@@ -3654,7 +3766,16 @@ static ObjectInfo OOT_TEMPLE_SPIRITSceneObjects_Data [OOT_TEMPLE_SPIRITNumOfObjs
 	{ 0x01903, OOT_TEMPLE_SPIRIT, "Top - Near Lowering Platform 3", "OOT MQ Spirit Temple Top Near Lowering Platform Large Crate 3", ObjectType::crate, {650, 440, 0}, OOT_TEMPLE_SPIRIT, ObjectType::crate, EGameIcon::render_type, ObjectContext::All, 3, GameLayout::oot_mq, LocType::dungeon, NULL },
 	{ 0x01904, OOT_TEMPLE_SPIRIT, "Top - Near Lowering Platform 4", "OOT MQ Spirit Temple Top Near Lowering Platform Large Crate 4", ObjectType::crate, {444, 440, 0}, OOT_TEMPLE_SPIRIT, ObjectType::crate, EGameIcon::render_type, ObjectContext::All, 3, GameLayout::oot_mq, LocType::dungeon, NULL },
 	{ 0x0b, OOT_TEMPLE_SPIRIT, "Silver Gauntlets", "OOT Spirit Temple Silver Gauntlets", ObjectType::none, {0, 0, 0}, OOT_DESERT_COLOSSUS, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
-	{ 0x09, OOT_TEMPLE_SPIRIT, "Mirror Shield", "OOT Spirit Temple Mirror Shield", ObjectType::none, {0, 0, 0}, OOT_DESERT_COLOSSUS, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
+	{ 0x09, OOT_TEMPLE_SPIRIT, "Mirror Shield", "OOT Spirit Temple Mirror Shield", ObjectType::none, {0, 0, 0}, OOT_DESERT_COLOSSUS, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00104, OOT_TEMPLE_SPIRIT, "Child Crawl", "MQ Spirit Temple Boulder Child Crawl", ObjectType::boulder, {0, 0, 0}, OOT_TEMPLE_SPIRIT, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00001, OOT_TEMPLE_SPIRIT, "Entrance Left", "MQ Spirit Temple Boulder Entrance Left", ObjectType::boulder, {0, 0, 0}, OOT_TEMPLE_SPIRIT, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00005, OOT_TEMPLE_SPIRIT, "Entrance Side", "MQ Spirit Temple Boulder Entrance Side", ObjectType::boulder, {0, 0, 0}, OOT_TEMPLE_SPIRIT, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00002, OOT_TEMPLE_SPIRIT, "Entrance Upper", "MQ Spirit Temple Boulder Entrance Upper", ObjectType::boulder, {0, 0, 0}, OOT_TEMPLE_SPIRIT, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00003, OOT_TEMPLE_SPIRIT, "Entrance Cobra", "MQ Spirit Temple Boulder Entrance Cobra", ObjectType::boulder, {0, 0, 0}, OOT_TEMPLE_SPIRIT, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00004, OOT_TEMPLE_SPIRIT, "Entrance Right", "MQ Spirit Temple Boulder Entrance Right", ObjectType::boulder, {0, 0, 0}, OOT_TEMPLE_SPIRIT, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x00207, OOT_TEMPLE_SPIRIT, "Child Bridge Ground", "MQ Spirit Temple Boulder Child Bridge Ground", ObjectType::boulder, {0, 0, 0}, OOT_TEMPLE_SPIRIT, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x0020a, OOT_TEMPLE_SPIRIT, "Child Bridge Wall Left", "MQ Spirit Temple Boulder Child Bridge Wall Left", ObjectType::boulder, {0, 0, 0}, OOT_TEMPLE_SPIRIT, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL },
+	{ 0x0020b, OOT_TEMPLE_SPIRIT, "Child Bridge Wall Front", "MQ Spirit Temple Boulder Child Bridge Wall Front", ObjectType::boulder, {0, 0, 0}, OOT_TEMPLE_SPIRIT, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot_mq, LocType::dungeon, NULL }
 };
 ObjectInfo * OOT_TEMPLE_SPIRITSceneObjects = OOT_TEMPLE_SPIRITSceneObjects_Data;
 
@@ -3979,7 +4100,7 @@ static ObjectInfo OOT_SILOSceneObjects_Data [OOT_SILONumOfObjs] =
 };
 ObjectInfo * OOT_SILOSceneObjects = OOT_SILOSceneObjects_Data;
 
-const size_t OOT_LOST_WOODSNumOfObjs = 62;
+const size_t OOT_LOST_WOODSNumOfObjs = 65;
 static ObjectInfo OOT_LOST_WOODSSceneObjects_Data [OOT_LOST_WOODSNumOfObjs] =
 {
 	{ SARIA_OCARINA, OOT_LOST_WOODS, "Fairy Ocarina", "OOT Lost Woods Gift from Saria", ObjectType::npc, {211, 2800, 0}, OOT_LOST_WOODS, ObjectType::ocarina, EGameIcon::fairy_ocarina, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -4043,7 +4164,10 @@ static ObjectInfo OOT_LOST_WOODSSceneObjects_Data [OOT_LOST_WOODSNumOfObjs] =
 	{ 0x20503, OOT_LOST_WOODS, "Early - Soil 3", "OOT Lost Woods Soil Early 3", ObjectType::soil, {194, 2457, 0}, OOT_LOST_WOODS, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00605, OOT_LOST_WOODS, "Late - Soil 1", "OOT Lost Woods Soil Late 1", ObjectType::soil, {1395, 811, 0}, OOT_LOST_WOODS, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x10605, OOT_LOST_WOODS, "Late - Soil 2", "OOT Lost Woods Soil Late 2", ObjectType::soil, {1403, 799, 0}, OOT_LOST_WOODS, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
-	{ 0x20605, OOT_LOST_WOODS, "Late - Soil 3", "OOT Lost Woods Soil Late 3", ObjectType::soil, {1386, 799, 0}, OOT_LOST_WOODS, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL }
+	{ 0x20605, OOT_LOST_WOODS, "Late - Soil 3", "OOT Lost Woods Soil Late 3", ObjectType::soil, {1386, 799, 0}, OOT_LOST_WOODS, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00206, OOT_LOST_WOODS, "Early", "Lost Woods Boulder Early", ObjectType::boulder, {0, 0, 0}, OOT_LOST_WOODS, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00705, OOT_LOST_WOODS, "Deep 1", "Lost Woods Boulder Deep 1", ObjectType::boulder, {0, 0, 0}, OOT_LOST_WOODS, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00808, OOT_LOST_WOODS, "Deep 2", "Lost Woods Boulder Deep 2", ObjectType::boulder, {0, 0, 0}, OOT_LOST_WOODS, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 ObjectInfo * OOT_LOST_WOODSSceneObjects = OOT_LOST_WOODSSceneObjects_Data;
 
@@ -4491,7 +4615,7 @@ static ObjectInfo OOT_ZORA_DOMAINSceneObjects_Data [OOT_ZORA_DOMAINNumOfObjs] =
 };
 ObjectInfo * OOT_ZORA_DOMAINSceneObjects = OOT_ZORA_DOMAINSceneObjects_Data;
 
-const size_t OOT_ZORA_FOUNTAINNumOfObjs = 47;
+const size_t OOT_ZORA_FOUNTAINNumOfObjs = 50;
 static ObjectInfo OOT_ZORA_FOUNTAINSceneObjects_Data [OOT_ZORA_FOUNTAINNumOfObjs] =
 {
 	{ 0x01, OOT_ZORA_FOUNTAIN, "Iceberg", "OOT Zora Fountain Iceberg HP", ObjectType::collectible, {352, 375, 0}, OOT_ZORA_FOUNTAIN, ObjectType::heart_piece, EGameIcon::render_type, ObjectContext::Adult, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -4540,11 +4664,14 @@ static ObjectInfo OOT_ZORA_FOUNTAINSceneObjects_Data [OOT_ZORA_FOUNTAINNumOfObjs
 	{ 0x00008, OOT_ZORA_FOUNTAIN, "Bush 3", "OOT Zora Fountain Bush 3", ObjectType::bush, {407, 106, 0}, OOT_ZORA_FOUNTAIN, ObjectType::bush, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00009, OOT_ZORA_FOUNTAIN, "Bush 4", "OOT Zora Fountain Bush 4", ObjectType::bush, {441, 99, 0}, OOT_ZORA_FOUNTAIN, ObjectType::bush, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x0000a, OOT_ZORA_FOUNTAIN, "Bush 5", "OOT Zora Fountain Bush 5", ObjectType::bush, {426, 88, 0}, OOT_ZORA_FOUNTAIN, ObjectType::bush, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
-	{ 0x0000b, OOT_ZORA_FOUNTAIN, "Bush 6", "OOT Zora Fountain Bush 6", ObjectType::bush, {452, 83, 0}, OOT_ZORA_FOUNTAIN, ObjectType::bush, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL }
+	{ 0x0000b, OOT_ZORA_FOUNTAIN, "Bush 6", "OOT Zora Fountain Bush 6", ObjectType::bush, {452, 83, 0}, OOT_ZORA_FOUNTAIN, ObjectType::bush, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00005, OOT_ZORA_FOUNTAIN, "Silver Boulder", "Zora Fountain Silver Boulder", ObjectType::silverboulder, {0, 0, 0}, OOT_ZORA_FOUNTAIN, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00010, OOT_ZORA_FOUNTAIN, "Exposed", "Zora Fountain Boulder Exposed", ObjectType::boulder, {0, 0, 0}, OOT_ZORA_FOUNTAIN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00011, OOT_ZORA_FOUNTAIN, "Underground", "Zora Fountain Boulder Underground", ObjectType::boulder, {0, 0, 0}, OOT_ZORA_FOUNTAIN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 ObjectInfo * OOT_ZORA_FOUNTAINSceneObjects = OOT_ZORA_FOUNTAINSceneObjects_Data;
 
-const size_t OOT_ZORA_RIVERNumOfObjs = 112;
+const size_t OOT_ZORA_RIVERNumOfObjs = 117;
 static ObjectInfo OOT_ZORA_RIVERSceneObjects_Data [OOT_ZORA_RIVERNumOfObjs] =
 {
 	{ 0x04, OOT_ZORA_RIVER, "Pillar", "OOT Zora River HP Pillar", ObjectType::collectible, {940, 653, 0}, OOT_ZORA_RIVER, ObjectType::heart_piece, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
@@ -4658,7 +4785,12 @@ static ObjectInfo OOT_ZORA_RIVERSceneObjects_Data [OOT_ZORA_RIVERNumOfObjs] =
 	{ 0x70032, OOT_ZORA_RIVER, "Lower - Circle Rock 8", "OOT Zora River Rock Circle Lower Rock 8", ObjectType::rock, {1314, 427, 0}, OOT_ZORA_RIVER, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x00038, OOT_ZORA_RIVER, "Soil 1", "OOT Zora River Soil 1", ObjectType::soil, {1141, 474, 0}, OOT_ZORA_RIVER, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
 	{ 0x10038, OOT_ZORA_RIVER, "Soil 2", "OOT Zora River Soil 2", ObjectType::soil, {1131, 465, 0}, OOT_ZORA_RIVER, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
-	{ 0x20038, OOT_ZORA_RIVER, "Soil 3", "OOT Zora River Soil 3", ObjectType::soil, {1144, 461, 0}, OOT_ZORA_RIVER, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL }
+	{ 0x20038, OOT_ZORA_RIVER, "Soil 3", "OOT Zora River Soil 3", ObjectType::soil, {1144, 461, 0}, OOT_ZORA_RIVER, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0003d, OOT_ZORA_RIVER, "Upper", "Zora River Boulder Upper", ObjectType::boulder, {0, 0, 0}, OOT_ZORA_RIVER, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0003c, OOT_ZORA_RIVER, "Lower 1", "Zora River Boulder Lower 1", ObjectType::boulder, {0, 0, 0}, OOT_ZORA_RIVER, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0003e, OOT_ZORA_RIVER, "Lower 2", "Zora River Boulder Lower 2", ObjectType::boulder, {0, 0, 0}, OOT_ZORA_RIVER, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x0003f, OOT_ZORA_RIVER, "Lower 3", "Zora River Boulder Lower 3", ObjectType::boulder, {0, 0, 0}, OOT_ZORA_RIVER, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL },
+	{ 0x00040, OOT_ZORA_RIVER, "Lower 4", "Zora River Boulder Lower 4", ObjectType::boulder, {0, 0, 0}, OOT_ZORA_RIVER, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL }
 };
 ObjectInfo * OOT_ZORA_RIVERSceneObjects = OOT_ZORA_RIVERSceneObjects_Data;
 

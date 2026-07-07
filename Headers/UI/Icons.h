@@ -41,9 +41,11 @@ enum class EGameIcon : uint8_t
     soil = 27,
     tree = 28,
     bush = 29,
+    silverboulder = 30,
+    boulder = 31,
 
     // Extra type used for rendering
-    song = bush + 1,
+    song = boulder + 1,
     heart_piece = song + 1,
     heart_container = heart_piece + 1,
     small_key = heart_container + 1,

@@ -541,14 +541,16 @@ QWidget* SettingsTab::BuildBreakablePage()
         { "shuffleHivesMm",    "MM"  },
     }));
     contentLayout->addWidget(this->MakeParamGroup(content, "Rocks & Ice", {
-        { "shuffleRocksOot",        "OoT" },
-        { "shuffleRocksMm",         "MM"  },
-        { "shuffleRedBouldersOot",  "OoT" },
-        { "shuffleRedBouldersMm",   "MM"  },
-        { "shuffleIciclesOot",      "OoT" },
-        { "shuffleIciclesMm",       "MM"  },
-        { "shuffleRedIceOot",       "OoT" },
-        { "shuffleSnowballsMm",     "MM"  },
+        { "shuffleRocksOot",            "OoT" },
+        { "shuffleRocksMm",             "MM"  },
+        { "shuffleBouldersOot",         "OoT" },
+        { "shuffleSilverBouldersOot",   "OoT" },
+        { "shuffleRedBouldersOot",      "OoT" },
+        { "shuffleRedBouldersMm",       "MM"  },
+        { "shuffleIciclesOot",          "OoT" },
+        { "shuffleIciclesMm",           "MM"  },
+        { "shuffleRedIceOot",           "OoT" },
+        { "shuffleSnowballsMm",         "MM"  },
     }));
     contentLayout->addWidget(this->MakeParamGroup(content, "Misc", {
         { "shuffleWonderItemsOot",  "OoT" },
@@ -603,6 +605,7 @@ QWidget* SettingsTab::BuildSpecialPage()
     }));
     contentLayout->addWidget(this->MakeParamGroup(content, "Misc", {
         { "skipZelda",          "OoT" },
+        { "agelessStrength",    "OoT" },
         { "restoreBrokenActors", ""   },
     }));
     // Cross-game warp toggles: control whether the GPS pathfinder considers that the

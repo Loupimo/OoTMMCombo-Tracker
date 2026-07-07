@@ -61,9 +61,11 @@ enum ObjectType
 	soil = 27,
 	tree = 28,
 	bush = 29,
+    silverboulder = 30,
+    boulder = 31,
 
 	// Extra type used for rendering
-	song = bush + 1,
+	song = boulder + 1,
 	heart_piece = song + 1,
 	heart_container = heart_piece + 1,
 	small_key = heart_container + 1,
@@ -84,7 +86,8 @@ const QSet<ObjectType> OoTTypes =
 {
 	ObjectType::chest, ObjectType::collectible, ObjectType::npc, ObjectType::gs, ObjectType::cow, ObjectType::shop, ObjectType::scrub,
 	ObjectType::sr, ObjectType::fish, ObjectType::wonder, ObjectType::grass, ObjectType::crate, ObjectType::pot, ObjectType::hive,
-	ObjectType::butterfly, ObjectType::rupee, ObjectType::heart, ObjectType::fairy, ObjectType::fairy_spot, ObjectType::icicle, ObjectType::redboulder, ObjectType::redice,
+	ObjectType::butterfly, ObjectType::rupee, ObjectType::heart, ObjectType::fairy, ObjectType::fairy_spot, ObjectType::icicle, ObjectType::redice,
+    ObjectType::redboulder, ObjectType::boulder, ObjectType::silverboulder,
 	ObjectType::rock, ObjectType::soil, ObjectType::tree, ObjectType::bush,
 	ObjectType::song, ObjectType::heart_piece, ObjectType::heart_container, ObjectType::small_key, ObjectType::boss_key,
 	ObjectType::map, ObjectType::compass, ObjectType::sword, ObjectType::ocarina,
@@ -217,6 +220,8 @@ const char* const ObjTypeName[ObjectType::last] =
 	"Soil",
 	"Tree",
 	"Bush",
+    "Silver Boulder",
+    "Boulder",
 
 	// Extra types
 	"Song",

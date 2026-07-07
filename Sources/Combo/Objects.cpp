@@ -445,14 +445,14 @@ void ObjectInfo::SaveObject(QFile* SaveFile, bool IncludeTargetWorld)
 
 size_t ObjectInfo::LoadObject(QByteArray* Data, size_t Offset, bool IncludeTargetWorld)
 {
-	// Load ID
+/*	// Load ID
 	uint32_t objID = 0;
 	memcpy_s(&objID, sizeof(objID), Data->data() + Offset, sizeof(objID));
 	Offset += sizeof(objID);
 
 	if (objID == this->ObjectID)
 	{	// It is the correct object
-
+*/
 		// Load status
 		uint32_t state = 0;
 		memcpy_s(&state, sizeof(state), Data->data() + Offset, sizeof(state));
@@ -480,9 +480,9 @@ size_t ObjectInfo::LoadObject(QByteArray* Data, size_t Offset, bool IncludeTarge
 		}
 
         return Offset;
-	}
+/* }
 
-	return Offset + sizeof(uint32_t) * 3;
+	return Offset + sizeof(uint32_t) * 3;*/
 }
 
 void ObjectInfo::ResetObject()
@@ -860,7 +860,7 @@ static size_t LoadWorldSceneArray(QByteArray* Data, size_t Offset, SceneObjects*
 {
 	for (size_t i = 0; i < NumOfScenes; i++)
 	{
-        if (Data->size() < Offset)
+        if (Data->size() < (qsizetype)Offset)
         {
             return Data->size();
         }
@@ -874,7 +874,34 @@ static size_t LoadWorldSceneArray(QByteArray* Data, size_t Offset, SceneObjects*
 			memcpy_s(&numObjs, sizeof(numObjs), Data->data() + Offset, sizeof(numObjs));
 			Offset += sizeof(numObjs);
 
-            if (numObjs <= Array[i].NumOfObjs)
+            for (size_t currObj = 0; currObj < numObjs; currObj++)
+            {
+                bool found = false;
+
+                // Load ID
+                uint32_t objID = 0;
+                memcpy_s(&objID, sizeof(objID), Data->data() + Offset, sizeof(objID));
+                Offset += sizeof(objID);
+
+                for (size_t k = 0; k < Array[i].NumOfObjs; k++)
+                {
+                    if (Array[i].Objects[k].ObjectID == objID)
+                    {
+                        Offset = Array[i].Objects[k].LoadObject(Data, Offset, true);
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                {   // Ensure that the file data are read even if we discard the object
+
+                    ObjectInfo tmp;
+                    Offset = tmp.LoadObject(Data, Offset, true);
+                }
+            }
+
+            /*if (numObjs <= Array[i].NumOfObjs)
 			{
 				for (size_t j = 0; j < numObjs; j++)
 				{
@@ -889,7 +916,7 @@ static size_t LoadWorldSceneArray(QByteArray* Data, size_t Offset, SceneObjects*
                 }
 
                 Offset += (numObjs - Array[i].NumOfObjs) * (sizeof(uint32_t) * 4);
-            }
+            }*/
 		}
 	}
 

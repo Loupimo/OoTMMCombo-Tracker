@@ -154,6 +154,12 @@ size_t SceneEntranceMetaInf::LoadMetaInf(QByteArray* Data, size_t Offset, Tracke
     memcpy_s(&sceneID, sizeof(sceneID), Data->data() + Offset, sizeof(sceneID));
     Offset += sizeof(sceneID);
 
+    for (auto& [currEntranceID, entrance] : this->EntranceIDs)
+    {	// Reset all entrance links
+
+        entrance.ResetLink();
+    }
+
     if (this->SceneID == sceneID)
     {	// The scene is correct
 
@@ -165,6 +171,26 @@ size_t SceneEntranceMetaInf::LoadMetaInf(QByteArray* Data, size_t Offset, Tracke
         //if (numObjs == this->EntranceIDs.size())
         //{	// It has the same number of objects
 
+        for (size_t currEntry = 0; currEntry < numObjs; currEntry++)
+        {
+            // Load entrance ID
+            uint32_t entranceID = 0;
+            memcpy_s(&entranceID, sizeof(entranceID), Data->data() + Offset, sizeof(entranceID));
+            Offset += sizeof(entranceID);
+
+            auto entrance = this->EntranceIDs.find(entranceID);
+            if (entrance != this->EntranceIDs.end() && entrance->first == entranceID)
+            {
+                Offset = entrance->second.LoadLink(Data, Offset, Version);
+            }
+            else
+            {   // Ensure that the file data are read even if we discard the link
+
+                EntranceLink tmp;
+                Offset = tmp.LoadLink(Data, Offset, Version);
+            }
+        }
+        /*
             for (auto& [currEntranceID, entrance] : this->EntranceIDs)
             {	// Load all entrance links
 
