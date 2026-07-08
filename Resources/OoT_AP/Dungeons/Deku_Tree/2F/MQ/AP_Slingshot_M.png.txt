@@ -10,8 +10,17 @@ QList<QPair<int, int>> FSPoints = {
 QList<QPair<int, int>> ChestPoints = {
 {2271, 291},
 };
+QList<QPair<int, int>> CowPoints = {
+{1640, 329},
+{906, 328},
+};
 QList<QPair<int, int>> GSPoints = {
 {2144, 28},
+};
+QList<QPair<int, int>> GrottoPoints = {
+{2223, 109},
+{2187, 109},
+{2117, 108},
 };
 QList<QPair<int, int>> FoesPoints = {
 {2049, 525},

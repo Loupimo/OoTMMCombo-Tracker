@@ -19,7 +19,7 @@ QList<QPair<int, int>> CratePoints = {
 {534, 129},
 };
 QList<QPair<int, int>> GrottoPoints = {
-{229, 190},
+{243, 136},
 };
 QList<QPair<int, int>> NPCsPoints = {
 {411, 337},

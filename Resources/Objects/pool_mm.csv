@@ -1916,9 +1916,9 @@ POSTMAN_HEART_PIECE;MM_POST_OFFICE;Game Prize;MM Post Office HP;npc;225;176;0;MM
 0x00001;MM_POTION_SHOP;Rupee;MM Swamp Potion Shop Rupee;rupee;566;464;0;MM_POTION_SHOP;rupee;render_type;All;0;all;overworld;;
 0x00000;MM_RANCH_HOUSE_BARN;Item 1;MM Romani Ranch Barn Wonder Item 1;wonder;524;525;0;MM_RANCH_HOUSE_BARN;wonder;render_type;All;0;all;overworld;;Can be found by walking in the hay
 0x00001;MM_RANCH_HOUSE_BARN;Item 2;MM Romani Ranch Barn Wonder Item 2;wonder;587;527;0;MM_RANCH_HOUSE_BARN;wonder;render_type;All;0;all;overworld;;Can be found by walking in the hay
-0x00;MM_ROAD_IKANA;Pillar;MM Road to Ikana Chest;chest;696;261;0;MM_ROAD_IKANA;chest;render_type;All;0;all;overworld;Hookshot (MM);Grab the chest with your hookshot
-0x004c;MM_ROAD_IKANA;Pot;MM Road to Ikana Pot;pot;305;239;0;MM_ROAD_IKANA;pot;render_type;All;0;all;overworld;Hookshot (MM) / Bow (MM);
-MASK_STONE;MM_ROAD_IKANA;Stone Mask;MM Road to Ikana Stone Mask;npc;255;220;0;MM_ROAD_IKANA;mask;stone;All;0;all;overworld;Red Potion (MM), Lens of Truth (MM), Magic Upgrade (MM), Soul of Citizens (MM);Use the <b>Lens of Truth</b> to see the guard. Then give him a red potion
+0x00;MM_ROAD_IKANA;Pillar;MM Road to Ikana Chest;chest;1155;469;0;MM_ROAD_IKANA;chest;render_type;All;0;all;overworld;Hookshot (MM);Grab the chest with your hookshot
+0x004c;MM_ROAD_IKANA;Pot;MM Road to Ikana Pot;pot;773;437;0;MM_ROAD_IKANA;pot;render_type;All;0;all;overworld;Hookshot (MM) / Bow (MM);
+MASK_STONE;MM_ROAD_IKANA;Stone Mask;MM Road to Ikana Stone Mask;npc;712;411;0;MM_ROAD_IKANA;mask;stone;All;0;all;overworld;Red Potion (MM), Lens of Truth (MM), Magic Upgrade (MM), Soul of Citizens (MM);Use the <b>Lens of Truth</b> to see the guard. Then give him a red potion
 0x16;MM_ROAD_IKANA;Chest;MM Road to Ikana Grotto;none;0;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;none;render_type;All;0;all;overworld;;
 0x03600;MM_ROAD_IKANA;Grass 1;MM Road to Ikana Grotto Grass 01;none;0;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;none;render_type;All;0;all;overworld;;
 0x03601;MM_ROAD_IKANA;Grass 2;MM Road to Ikana Grotto Grass 02;none;0;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;none;render_type;All;0;all;overworld;;
@@ -1934,15 +1934,15 @@ MASK_STONE;MM_ROAD_IKANA;Stone Mask;MM Road to Ikana Stone Mask;npc;255;220;0;MM
 0x03611;MM_ROAD_IKANA;Grass 12;MM Road to Ikana Grotto Grass 12;none;0;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;none;render_type;All;0;all;overworld;;
 0x03612;MM_ROAD_IKANA;Grass 13;MM Road to Ikana Grotto Grass 13;none;0;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;none;render_type;All;0;all;overworld;;
 0x03613;MM_ROAD_IKANA;Grass 14;MM Road to Ikana Grotto Grass 14;none;0;0;0;MM_GROTTO_IKANA_ROAD_GENERIC;none;render_type;All;0;all;overworld;;
-0x00005;MM_ROAD_IKANA;Boulder;MM Road to Ikana Red Boulder;redboulder;455;263;0;MM_ROAD_IKANA;redboulder;render_type;All;0;all;overworld;;
-0x00023;MM_ROAD_IKANA;Circle Rock 1;MM Road to Ikana Rock Circle Rock 1;rock;270;207;0;MM_ROAD_IKANA;rock;render_type;All;0;all;overworld;;
-0x10023;MM_ROAD_IKANA;Circle Rock 2;MM Road to Ikana Rock Circle Rock 2;rock;255;197;0;MM_ROAD_IKANA;rock;render_type;All;0;all;overworld;;
-0x20023;MM_ROAD_IKANA;Circle Rock 3;MM Road to Ikana Rock Circle Rock 3;rock;240;206;0;MM_ROAD_IKANA;rock;render_type;All;0;all;overworld;;
-0x30023;MM_ROAD_IKANA;Circle Rock 4;MM Road to Ikana Rock Circle Rock 4;rock;233;222;0;MM_ROAD_IKANA;rock;render_type;All;0;all;overworld;;
-0x40023;MM_ROAD_IKANA;Circle Rock 5;MM Road to Ikana Rock Circle Rock 5;rock;240;237;0;MM_ROAD_IKANA;rock;render_type;All;0;all;overworld;;
-0x50023;MM_ROAD_IKANA;Circle Rock 6;MM Road to Ikana Rock Circle Rock 6;rock;256;245;0;MM_ROAD_IKANA;rock;render_type;All;0;all;overworld;;
-0x60023;MM_ROAD_IKANA;Circle Rock 7;MM Road to Ikana Rock Circle Rock 7;rock;271;237;0;MM_ROAD_IKANA;rock;render_type;All;0;all;overworld;;
-0x70023;MM_ROAD_IKANA;Circle Rock 8;MM Road to Ikana Rock Circle Rock 8;rock;277;222;0;MM_ROAD_IKANA;rock;render_type;All;0;all;overworld;;
+0x00005;MM_ROAD_IKANA;Boulder;MM Road to Ikana Red Boulder;redboulder;927;460;0;MM_ROAD_IKANA;redboulder;render_type;All;0;all;overworld;;
+0x00023;MM_ROAD_IKANA;Circle Rock 1;MM Road to Ikana Rock Circle Rock 1;rock;727;396;0;MM_ROAD_IKANA;rock;render_type;All;0;all;overworld;;
+0x10023;MM_ROAD_IKANA;Circle Rock 2;MM Road to Ikana Rock Circle Rock 2;rock;713;387;0;MM_ROAD_IKANA;rock;render_type;All;0;all;overworld;;
+0x20023;MM_ROAD_IKANA;Circle Rock 3;MM Road to Ikana Rock Circle Rock 3;rock;697;395;0;MM_ROAD_IKANA;rock;render_type;All;0;all;overworld;;
+0x30023;MM_ROAD_IKANA;Circle Rock 4;MM Road to Ikana Rock Circle Rock 4;rock;689;412;0;MM_ROAD_IKANA;rock;render_type;All;0;all;overworld;;
+0x40023;MM_ROAD_IKANA;Circle Rock 5;MM Road to Ikana Rock Circle Rock 5;rock;698;427;0;MM_ROAD_IKANA;rock;render_type;All;0;all;overworld;;
+0x50023;MM_ROAD_IKANA;Circle Rock 6;MM Road to Ikana Rock Circle Rock 6;rock;713;435;0;MM_ROAD_IKANA;rock;render_type;All;0;all;overworld;;
+0x60023;MM_ROAD_IKANA;Circle Rock 7;MM Road to Ikana Rock Circle Rock 7;rock;729;428;0;MM_ROAD_IKANA;rock;render_type;All;0;all;overworld;;
+0x70023;MM_ROAD_IKANA;Circle Rock 8;MM Road to Ikana Rock Circle Rock 8;rock;734;412;0;MM_ROAD_IKANA;rock;render_type;All;0;all;overworld;;
 0x0002f;MM_ROAD_SOUTHERN_SWAMP;Grass 1;MM Road to Southern Swamp Grass 1;grass;108;303;0;MM_ROAD_SOUTHERN_SWAMP;grass;render_type;All;0;all;overworld;;
 0x00030;MM_ROAD_SOUTHERN_SWAMP;Grass 2;MM Road to Southern Swamp Grass 2;grass;98;290;0;MM_ROAD_SOUTHERN_SWAMP;grass;render_type;All;0;all;overworld;;
 0x00023;MM_ROAD_SOUTHERN_SWAMP;Pack 1 - Grass 1;MM Road to Southern Swamp Grass Pack 1 Grass 01;grass;661;312;0;MM_ROAD_SOUTHERN_SWAMP;grass;render_type;All;0;all;overworld;;
@@ -2453,9 +2453,9 @@ SPIDER_HOUSE_SWAMP;MM_SPIDER_HOUSE_SWAMP;Mask of Truth;MM Swamp Spider House Mas
 0x00004;MM_SPIDER_HOUSE_SWAMP;Entrance 2;MM Swamp Spider House Rock Entrance 2;rock;566;266;0;MM_SPIDER_HOUSE_SWAMP;rock;render_type;All;0;all;dungeon;;
 0x00405;MM_SPIDER_HOUSE_SWAMP;Pots Room;MM Swamp Spider House Rock Pots Room;rock;205;412;0;MM_SPIDER_HOUSE_SWAMP;rock;render_type;All;4;all;dungeon;;
 0x0020d;MM_SPIDER_HOUSE_SWAMP;Gold Room;MM Swamp Spider House Soil Gold;soil;275;322;0;MM_SPIDER_HOUSE_SWAMP;soil;render_type;All;2;all;dungeon;Bug (MM);Free some bugs next to the soil
-0x0030e;MM_SPIDER_HOUSE_SWAMP;Monument Item 1;MM Swamp Spider House Soil Monument Item 1;soil;757;480;0;MM_SPIDER_HOUSE_SWAMP;soil;render_type;All;3;all;dungeon;Bug (MM);Free some bugs next to the soil
-0x1030e;MM_SPIDER_HOUSE_SWAMP;Monument Item 2;MM Swamp Spider House Soil Monument Item 2;soil;726;480;0;MM_SPIDER_HOUSE_SWAMP;soil;render_type;All;3;all;dungeon;Bug (MM);Free some bugs next to the soil
-0x2030e;MM_SPIDER_HOUSE_SWAMP;Monument Item 3;MM Swamp Spider House Soil Monument Item 3;soil;741;471;0;MM_SPIDER_HOUSE_SWAMP;soil;render_type;All;3;all;dungeon;Bug (MM);Free some bugs next to the soil
+0x0030e;MM_SPIDER_HOUSE_SWAMP;Monument Item 1;MM Swamp Spider House Soil Monument Item 1;soil;757;480;1;MM_SPIDER_HOUSE_SWAMP;soil;render_type;All;3;all;dungeon;Bug (MM);Free some bugs next to the soil
+0x1030e;MM_SPIDER_HOUSE_SWAMP;Monument Item 2;MM Swamp Spider House Soil Monument Item 2;soil;726;480;1;MM_SPIDER_HOUSE_SWAMP;soil;render_type;All;3;all;dungeon;Bug (MM);Free some bugs next to the soil
+0x2030e;MM_SPIDER_HOUSE_SWAMP;Monument Item 3;MM Swamp Spider House Soil Monument Item 3;soil;741;471;1;MM_SPIDER_HOUSE_SWAMP;soil;render_type;All;3;all;dungeon;Bug (MM);Free some bugs next to the soil
 TOILET_HEART_PIECE;MM_STOCK_POT_INN;Toilet Paper;MM Stock Pot Inn ??? HP;npc;162;288;0;MM_STOCK_POT_INN;heart_piece;render_type;All;1;all;overworld;Land Tittle Deed / Swamp Tittle Deed / Ocean Title Deed / Letter to Kafei / Letter to Mama, Clock (Night 1) / Clock (Night 2), Soul of Toilet Hand;Give one of your paper item to the <b>Toilet Hand</b> in the toilet room during a night after 12 AM
 MASK_COUPLE;MM_STOCK_POT_INN;Couple's Mask;MM Stock Pot Inn Couple's Mask;npc;219;315;0;MM_STOCK_POT_INN;mask;couple;All;2;all;overworld;Pendant of Memories, Letter To Kafei, Clock (Day 1), Clock (Night 1), Clock (Day 2), Clock (Night 3), Soul of Kafei, Soul of Anju, Soul of Citizens (MM), Soul of Deku Babas (MM), Soul of Wolfos (MM);You first need to give the <b>Pendant of Memories</b> to <b>Anju</b> in order for her to be here on night 3. Then you need to help kafei to get the <b>Sun's Mask</b>. Once that is done, head back to the <b>Stock Pot Inn</b> and speak to <b>Anju & Kafei</b> in the staff room
 GRANDMA_HEART_PIECE_1;MM_STOCK_POT_INN;Grandma - Short Story;MM Stock Pot Inn Grandma HP 1;npc;338;468;0;MM_STOCK_POT_INN;heart_piece;render_type;All;2;all;overworld;Clock (Day 1) / Clock (Night 1) / Clock (Day 2) / Clock (Night 2), All-Night Mask, Soul of Anju's Grandmother;Listen to the first <b>Anju's Grandmother</b> story and answer : On the eve of the carnival
@@ -3860,26 +3860,26 @@ OWL_ZORA_CAPE;MM_OWLS;Owl Statue;MM Zora Cape Owl Statue;none;0;0;0;MM_ZORA_CAPE
 0x50000;MM_IKANA_GRAVEYARD;Rupee 6;MM Beneath The Graveyard Rupee 6;none;0;0;0;MM_BENEATH_THE_GRAVEYARD;none;render_type;All;0;all;overworld;Soul of Stalchildren (MM), Captain's Hat, Clock (Night 2) / Clock (Night 1) + Bunny Hood (MM) + Hover Boots (MM);
 0x60000;MM_IKANA_GRAVEYARD;Rupee 7;MM Beneath The Graveyard Rupee 7;none;0;0;0;MM_BENEATH_THE_GRAVEYARD;none;render_type;All;0;all;overworld;Soul of Stalchildren (MM), Captain's Hat, Clock (Night 2) / Clock (Night 1) + Bunny Hood (MM) + Hover Boots (MM);
 SONG_OF_STORMS;MM_IKANA_GRAVEYARD;Song of Storms;MM Beneath The Graveyard Song of Storms;none;0;0;0;MM_BENEATH_THE_GRAVEYARD;none;render_type;All;0;all;overworld;Din's fire (MM) / Bow (MM) + Fire Arrow (MM), Magic Upgrade (MM), Soul of Iron Knuckles (MM), Soul of Composer Bros. (MM), Clock (Night 1) / Clock (Night 2) + Bunny Hood (MM) + Hover Boots (MM);Defeat the <b>Iron Knuckle</b>
-0x00013;MM_DEKU_PALACE;Boulder 1;Deku Palace Boulder 1;boulder;0;0;0;MM_DEKU_PALACE;boulder;render_type;All;0;all;overworld;;
-0x00014;MM_DEKU_PALACE;Boulder 2;Deku Palace Boulder 2;boulder;0;0;0;MM_DEKU_PALACE;boulder;render_type;All;0;all;overworld;;
-0x00506;MM_GROTTOS;Large Boulder 1;Lone Peak Shrine Large Boulder 1;boulder;0;0;0;MM_LONE_PEAK;boulder;render_type;All;0;all;overworld;;
-0x00507;MM_GROTTOS;Large Boulder 2;Lone Peak Shrine Large Boulder 2;boulder;0;0;0;MM_LONE_PEAK;boulder;render_type;All;0;all;overworld;;
-0x00509;MM_GROTTOS;Large Boulder 3;Lone Peak Shrine Large Boulder 3;boulder;0;0;0;MM_LONE_PEAK;boulder;render_type;All;0;all;overworld;;
-0x00e0a;MM_GROTTOS;Large Boulder 1;Twin Islands Frozen Grotto Large Boulder 1;boulder;0;0;0;MM_GROTTO_TWIN_ISLANDS_FROZEN;boulder;render_type;All;0;all;overworld;;
-0x00e0b;MM_GROTTOS;Large Boulder 2;Twin Islands Frozen Grotto Large Boulder 2;boulder;0;0;0;MM_GROTTO_TWIN_ISLANDS_FROZEN;boulder;render_type;All;0;all;overworld;;
-0x00e0c;MM_GROTTOS;Large Boulder 3;Twin Islands Frozen Grotto Large Boulder 3;boulder;0;0;0;MM_GROTTO_TWIN_ISLANDS_FROZEN;boulder;render_type;All;0;all;overworld;;
-0x00e0d;MM_GROTTOS;Large Boulder 4;Twin Islands Frozen Grotto Large Boulder 4;boulder;0;0;0;MM_GROTTO_TWIN_ISLANDS_FROZEN;boulder;render_type;All;0;all;overworld;;
-0x00e0e;MM_GROTTOS;Large Boulder 5;Twin Islands Frozen Grotto Large Boulder 5;boulder;0;0;0;MM_GROTTO_TWIN_ISLANDS_FROZEN;boulder;render_type;All;0;all;overworld;;
-0x0003c;MM_ROAD_IKANA;Large Boulder 1;Road to Ikana Large Boulder 1;boulder;0;0;0;MM_ROAD_IKANA;boulder;render_type;All;0;all;overworld;;
-0x0003e;MM_ROAD_IKANA;Large Boulder 2;Road to Ikana Large Boulder 2;boulder;0;0;0;MM_ROAD_IKANA;boulder;render_type;All;0;all;overworld;;
-0x00040;MM_ROAD_IKANA;Large Boulder 3;Road to Ikana Large Boulder 3;boulder;0;0;0;MM_ROAD_IKANA;boulder;render_type;All;0;all;overworld;;
-0x00041;MM_ROAD_IKANA;Large Boulder 4;Road to Ikana Large Boulder 4;boulder;0;0;0;MM_ROAD_IKANA;boulder;render_type;All;0;all;overworld;;
-0x00042;MM_ROAD_IKANA;Large Boulder 5;Road to Ikana Large Boulder 5;boulder;0;0;0;MM_ROAD_IKANA;boulder;render_type;All;0;all;overworld;;
-0x00043;MM_ROAD_IKANA;Large Boulder 6;Road to Ikana Large Boulder 6;boulder;0;0;0;MM_ROAD_IKANA;boulder;render_type;All;0;all;overworld;;
-0x00044;MM_ROAD_IKANA;Large Boulder 7;Road to Ikana Large Boulder 7;boulder;0;0;0;MM_ROAD_IKANA;boulder;render_type;All;0;all;overworld;;
-0x00312;MM_SPIDER_HOUSE_SWAMP;Boulder;Swamp Spider House Boulder;boulder;0;0;0;MM_SPIDER_HOUSE_SWAMP;boulder;render_type;All;0;all;dungeon;;
-0x000c6;MM_TERMINA_FIELD;West Gossip;Termina Field Boulder West Gossip;boulder;0;0;0;MM_TERMINA_FIELD;boulder;render_type;All;0;all;overworld;;
-0x000c7;MM_TERMINA_FIELD;Bio Baba;Termina Field Boulder Bio Baba;boulder;0;0;0;MM_TERMINA_FIELD;boulder;render_type;All;0;all;overworld;;
-0x0002a;MM_ZORA_CAPE;Large Boulder 1;Zora Cape Large Boulder 1;boulder;0;0;0;MM_ZORA_CAPE;boulder;render_type;All;0;all;overworld;;
-0x0002b;MM_ZORA_CAPE;Large Boulder 2;Zora Cape Large Boulder 2;boulder;0;0;0;MM_ZORA_CAPE;boulder;render_type;All;0;all;overworld;;
-0x0002c;MM_ZORA_CAPE;Boulder;Zora Cape Boulder;boulder;0;0;0;MM_ZORA_CAPE;boulder;render_type;All;0;all;overworld;;
+0x00013;MM_DEKU_PALACE;Boulder 1;Deku Palace Boulder 1;boulder;436;428;0;MM_DEKU_PALACE;boulder;render_type;All;0;all;overworld;;
+0x00014;MM_DEKU_PALACE;Boulder 2;Deku Palace Boulder 2;boulder;545;428;0;MM_DEKU_PALACE;boulder;render_type;All;0;all;overworld;;
+0x00506;MM_GROTTOS;Large Boulder 1;Lone Peak Shrine Large Boulder 1;boulder;629;293;0;MM_LONE_PEAK;boulder;render_type;All;0;all;overworld;;
+0x00507;MM_GROTTOS;Large Boulder 2;Lone Peak Shrine Large Boulder 2;boulder;727;523;0;MM_LONE_PEAK;boulder;render_type;All;0;all;overworld;;
+0x00509;MM_GROTTOS;Large Boulder 3;Lone Peak Shrine Large Boulder 3;boulder;320;429;0;MM_LONE_PEAK;boulder;render_type;All;0;all;overworld;;
+0x00e0a;MM_GROTTOS;Large Boulder 1;Twin Islands Frozen Grotto Large Boulder 1;boulder;147;420;0;MM_GROTTO_TWIN_ISLANDS_FROZEN;boulder;render_type;All;0;all;overworld;;
+0x00e0b;MM_GROTTOS;Large Boulder 2;Twin Islands Frozen Grotto Large Boulder 2;boulder;285;490;0;MM_GROTTO_TWIN_ISLANDS_FROZEN;boulder;render_type;All;0;all;overworld;;
+0x00e0c;MM_GROTTOS;Large Boulder 3;Twin Islands Frozen Grotto Large Boulder 3;boulder;537;384;0;MM_GROTTO_TWIN_ISLANDS_FROZEN;boulder;render_type;All;0;all;overworld;;
+0x00e0d;MM_GROTTOS;Large Boulder 4;Twin Islands Frozen Grotto Large Boulder 4;boulder;227;356;0;MM_GROTTO_TWIN_ISLANDS_FROZEN;boulder;render_type;All;0;all;overworld;;
+0x00e0e;MM_GROTTOS;Large Boulder 5;Twin Islands Frozen Grotto Large Boulder 5;boulder;385;349;0;MM_GROTTO_TWIN_ISLANDS_FROZEN;boulder;render_type;All;0;all;overworld;;
+0x0003c;MM_ROAD_IKANA;Large Boulder 1;Road to Ikana Large Boulder 1;boulder;613;520;0;MM_ROAD_IKANA;boulder;render_type;All;0;all;overworld;;
+0x0003e;MM_ROAD_IKANA;Large Boulder 2;Road to Ikana Large Boulder 2;boulder;545;499;0;MM_ROAD_IKANA;boulder;render_type;All;0;all;overworld;;
+0x00040;MM_ROAD_IKANA;Large Boulder 3;Road to Ikana Large Boulder 3;boulder;461;472;0;MM_ROAD_IKANA;boulder;render_type;All;0;all;overworld;;
+0x00041;MM_ROAD_IKANA;Large Boulder 4;Road to Ikana Large Boulder 4;boulder;529;460;0;MM_ROAD_IKANA;boulder;render_type;All;0;all;overworld;;
+0x00042;MM_ROAD_IKANA;Large Boulder 5;Road to Ikana Large Boulder 5;boulder;368;437;0;MM_ROAD_IKANA;boulder;render_type;All;0;all;overworld;;
+0x00043;MM_ROAD_IKANA;Large Boulder 6;Road to Ikana Large Boulder 6;boulder;404;424;0;MM_ROAD_IKANA;boulder;render_type;All;0;all;overworld;;
+0x00044;MM_ROAD_IKANA;Large Boulder 7;Road to Ikana Large Boulder 7;boulder;349;399;0;MM_ROAD_IKANA;boulder;render_type;All;0;all;overworld;;
+0x00312;MM_SPIDER_HOUSE_SWAMP;Monument Room;Swamp Spider House Boulder;boulder;741;451;0;MM_SPIDER_HOUSE_SWAMP;boulder;render_type;All;3;all;dungeon;;
+0x000c6;MM_TERMINA_FIELD;West Gossip;Termina Field Boulder West Gossip;boulder;1050;532;0;MM_TERMINA_FIELD;boulder;render_type;All;0;all;overworld;;
+0x000c7;MM_TERMINA_FIELD;Bio Baba;Termina Field Boulder Bio Baba;boulder;643;756;0;MM_TERMINA_FIELD;boulder;render_type;All;0;all;overworld;;
+0x0002a;MM_ZORA_CAPE;Large Boulder 1;Zora Cape Large Boulder 1;boulder;404;471;0;MM_ZORA_CAPE;boulder;render_type;All;0;all;overworld;;
+0x0002b;MM_ZORA_CAPE;Large Boulder 2;Zora Cape Large Boulder 2;boulder;406;453;0;MM_ZORA_CAPE;boulder;render_type;All;0;all;overworld;;
+0x0002c;MM_ZORA_CAPE;Grotto Boulder;Zora Cape Boulder;boulder;449;338;0;MM_ZORA_CAPE;boulder;render_type;All;0;all;overworld;;

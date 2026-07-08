@@ -1,0 +1,5 @@
+QList<QPair<int, int>> GrottoPoints = {
+{1329, 516},
+{1312, 488},
+{1328, 461},
+};

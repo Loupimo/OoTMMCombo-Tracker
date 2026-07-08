@@ -1,8 +1,18 @@
+QList<QPair<int, int>> HivePoints = {
+{1746, 1776},
+{1778, 1775},
+{2408, 1666},
+{2327, 1665},
+};
 QList<QPair<int, int>> PotPoints = {
 {1746, 1775},
 {1777, 1775},
 {2408, 1666},
 {2327, 1666},
+};
+QList<QPair<int, int>> GrottoPoints = {
+{2001, 1689},
+{2171, 1628},
 };
 QList<QPair<int, int>> FoesPoints = {
 {2330, 1684},
