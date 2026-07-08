@@ -52,6 +52,8 @@ private:
     QHash<uint32_t, QCheckBox*> MQLayoutChecks;     // Scene id -> Master Quest layout toggle (Layouts page).
     QCheckBox* JPLayoutDekuPalace = nullptr;        // Single Majora's Mask JP Deku Palace layout toggle (Layouts page).
 
+    QCheckBox* FireTempleOpenAsChildCheck = nullptr;// OoT Fire Temple reachable as child toggle (World Items page); bound to Settings::IsFireTempleOpenAsChild.
+
     QPushButton* LoadSpoilerButton = nullptr;       // Spoiler log loader at the bottom of the navigation column.
     QPushButton* ApplyButton = nullptr;             // Apply button at the bottom of the navigation column.
     QPushButton* CancelButton = nullptr;            // Cancel button at the bottom of the navigation column.

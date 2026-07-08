@@ -98,6 +98,7 @@ public:
 	GameMode Mode;
     GoalMode Goal;
 	size_t NumOfTeams;
+    bool IsFireTempleOpenAsChild;
 	/* The local player's world / team id (1-based) used to route items in coop / multiworld.
 	   Matches the spoiler ("World 1") and the network ledger (playerFrom / playerTo). In
 	   single mode it is ignored. */
@@ -187,6 +188,13 @@ public:
 	*   @param LayoutSection    The text section containing the silver rupee pouches layout.
 	*/
     void ParseSilverPouches(QString& LayoutSection);
+
+    /*
+    *   Parse the opened dungeons for OoT and update the dungeons status accordingly.
+    *
+    *   @param LayoutSection    The text section containing the opened dungeons for OoT.
+    */
+    void ParseOpenDungeonsOoT(QString& LayoutSection);
 
     /*
     *   Parse the pre-activated owl layout and update the starting item IDs accordingly.

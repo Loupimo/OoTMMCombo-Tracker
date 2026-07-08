@@ -803,6 +803,24 @@ QWidget* SettingsTab::BuildWorldItemsPage()
         { "spookyMaskMm", "MM" },
     }));
 
+    // Open Dungeons group ------------------------------------------------
+    // Not backed by a Parameter (FilterSettings / ItemSettings): these toggles map directly to
+    // plain Settings members, so they are built by hand and synced in LoadFromSettings / OnApply.
+    QGroupBox* openBox = new QGroupBox("Open Dungeons", content);
+    QGridLayout* openGrid = new QGridLayout(openBox);
+    openGrid->setColumnStretch(1, 1);
+    openGrid->setHorizontalSpacing(10);
+    openGrid->setVerticalSpacing(6);
+
+    QLabel* fireBadge = this->MakeGameBadge("OoT");
+    QLabel* fireName = new QLabel("Fire Temple Open As Child");
+    fireName->setStyleSheet("color: #ddeeff;");
+    this->FireTempleOpenAsChildCheck = new QCheckBox();
+    openGrid->addWidget(fireBadge, 0, 0, Qt::AlignVCenter | Qt::AlignLeft);
+    openGrid->addWidget(fireName, 0, 1);
+    openGrid->addWidget(this->FireTempleOpenAsChildCheck, 0, 2);
+    contentLayout->addWidget(openBox);
+
     // Key Rings group ----------------------------------------------------
     QGroupBox* ringBox = new QGroupBox("Small Key Rings", content);
     QGridLayout* ringGrid = new QGridLayout(ringBox);
@@ -1038,6 +1056,12 @@ void SettingsTab::LoadFromSettings()
         SceneMetaInfo* info = GetSceneMetaInfo(MM_DEKU_PALACE, MM_GAME);
         this->JPLayoutDekuPalace->setChecked(info != nullptr && info->ActiveLayout == GameLayout::mm_jp);
     }
+
+    // Open dungeons: plain Settings members mirrored by their own checkboxes (World Items page).
+    if (this->FireTempleOpenAsChildCheck != nullptr)
+    {
+        this->FireTempleOpenAsChildCheck->setChecked(s.IsFireTempleOpenAsChild);
+    }
 }
 
 
@@ -1092,6 +1116,12 @@ void SettingsTab::OnApply()
         {
             p->Value = static_cast<ShuffleSetting>(combo->currentData().toInt());
         }
+    }
+
+    // Open dungeons: plain Settings members driven by their own checkboxes (World Items page).
+    if (this->FireTempleOpenAsChildCheck != nullptr)
+    {
+        s.IsFireTempleOpenAsChild = this->FireTempleOpenAsChildCheck->isChecked();
     }
 
     // Order matters: ApplyWorldItemSelections is what actually populates DisabledItemIDs from

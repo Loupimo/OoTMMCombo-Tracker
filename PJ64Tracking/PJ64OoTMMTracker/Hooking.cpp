@@ -35,8 +35,10 @@ uint32_t gActiveCurrSceneOffset = OOT_CURR_SCENE_OFFSET;    // The current offse
 uint32_t gActiveFaroreOffset = OOT_FARORE_STATE;            // The current offset to add to reach the farore state offset.
 uint32_t gActiveDeathOffset = OOT_DEATH_STATE;              // The current offset to add to reach the death state offset.
 uint32_t gNothingID = STABLE_NOTHING;                       // The current Nothing ID based on the game version.
-uint32_t gOOTActiveGlobalOffset = 0;                        // An offset to add to the active scene offset to reach the gLastScene variable for OoT.
-uint32_t gMMActiveGlobalOffset = 0;                         // An offset to add to the active scene offset to reach the gLastScene variable for MM.
+int16_t gOOTActiveGlobalOffset = 0;                         // An offset to add to the active scene offset to reach the gLastScene variable for OoT.
+int16_t gMMActiveGlobalOffset = 0;                          // An offset to add to the active scene offset to reach the gLastScene variable for MM.
+uint32_t gOOTLastSceneAddr = 0;                             // The actual address to get the gLastScene ID for OoT
+uint32_t gMMLastSceneAddr = 0;                              // The actual address to get the gLastScene ID for MM
 //uint32_t gActiveEntranceReg = S1_OFFSET;                  // The current register to use to get the next entrance value.
 uint32_t gDetectCounter = 0;                                // The counter used to trigger a game check.
 uint32_t gSP = 0;                                           // The last value of the stack pointer.
@@ -173,11 +175,10 @@ __asm mov[gActiveRoomOffset], ##Game##_CURR_ROOM                  \
 __asm mov[gActiveGrottoOffset], ##Game##_GROTTO_DATA              \
 __asm mov[gActiveCoordOffset], ##Game##_PLAYER_COORD              \
 __asm mov[gActiveCurrSceneOffset], ##Game##_CURR_SCENE_OFFSET     \
-__asm mov[gActiveSceneOffset], ##Game##_SCENE_OFFSET              \
 __asm mov[gActiveFaroreOffset], ##Game##_FARORE_STATE             \
 __asm mov[gActiveDeathOffset], ##Game##_DEATH_STATE               \
-__asm mov eax, g##Game##ActiveGlobalOffset                        \
-__asm add[gActiveSceneOffset], eax
+__asm mov eax, g##Game##LastSceneAddr                             \
+__asm mov[gActiveSceneOffset], eax                                \
 
 
 __declspec(naked) void CaptureXFlagASM()

@@ -129,8 +129,10 @@ extern uintptr_t gameRAMBase;               // The RAM address where the game da
 extern GameID gGame;                        // The current running game.
 extern uint32_t * gActivePCs;               // The current set of program counters that are tracked.
 extern uint32_t gActiveSceneOffset;         // The current offset to add to reach the last scene offset.
-extern uint32_t gOOTActiveGlobalOffset;     // An offset to add to the active scene offset to reach the gLastScene variable for OoT.
-extern uint32_t gMMActiveGlobalOffset;      // An offset to add to the active scene offset to reach the gLastScene variable for MM.
+extern int16_t gOOTActiveGlobalOffset;      // An offset to add to the active scene offset to reach the gLastScene variable for OoT.
+extern int16_t gMMActiveGlobalOffset;       // An offset to add to the active scene offset to reach the gLastScene variable for MM.
+extern uint32_t gOOTLastSceneAddr;          // The actual address to get the gLastScene ID for OoT.
+extern uint32_t gMMLastSceneAddr;           // The actual address to get the gLastScene ID for MM.
 extern bool isStable;                       // Tell if the current game is stable release (true) or dev (false).
 extern uint32_t gNothingID;                 // The current "Nothing" combo item ID (depends on stable/dev).
 

@@ -281,13 +281,22 @@ __forceinline void FindLastSceneAddress()
 {
     if (gGame == GAME_OOT)
     {
-        gOOTActiveGlobalOffset = (uint16_t)*(uint32_t*)((gPatternState[gGame].PCs[5] & 0x00FFFFFF) + gameRAMBase + OOT_LAST_SCENE_OFFSET);
-        gActiveSceneOffset = OOT_SCENE_OFFSET + gOOTActiveGlobalOffset;
+        gOOTLastSceneAddr = (uint16_t)*(uint32_t*)((gPatternState[gGame].PCs[5] & 0x00FFFFFF) + gameRAMBase + 0x2C);
+        gOOTLastSceneAddr <<= 16;
+        //gOOTActiveGlobalOffset = (int16_t)*(uint32_t*)((gPatternState[gGame].PCs[5] & 0x00FFFFFF) + gameRAMBase + OOT_LAST_SCENE_OFFSET);
+        gOOTActiveGlobalOffset = (int16_t)*(uint32_t*)((gPatternState[gGame].PCs[5] & 0x00FFFFFF) + gameRAMBase + 0x4C) - 0x08;
+        //gActiveSceneOffset = OOT_SCENE_OFFSET + gOOTActiveGlobalOffset;
+        gOOTLastSceneAddr = gOOTLastSceneAddr + gOOTActiveGlobalOffset;
+        gActiveSceneOffset = gOOTLastSceneAddr;
     }
     else if (gGame == GAME_MM)
     {
-        gMMActiveGlobalOffset = (uint16_t)*(uint32_t*)((gPatternState[gGame].PCs[5] & 0x00FFFFFF) + gameRAMBase + MM_LAST_SCENE_OFFSET);
-        gActiveSceneOffset = MM_SCENE_OFFSET + gMMActiveGlobalOffset;
+        gMMLastSceneAddr = (uint16_t)*(uint32_t*)((gPatternState[gGame].PCs[5] & 0x00FFFFFF) + gameRAMBase + MM_LAST_SCENE_OFFSET - 0x04);
+        gMMLastSceneAddr <<= 16;
+        gMMActiveGlobalOffset = (int16_t)*(uint32_t*)((gPatternState[gGame].PCs[5] & 0x00FFFFFF) + gameRAMBase + MM_LAST_SCENE_OFFSET);
+        //gActiveSceneOffset = MM_SCENE_OFFSET + gMMActiveGlobalOffset;
+        gMMLastSceneAddr = gMMLastSceneAddr + gMMActiveGlobalOffset;
+        gActiveSceneOffset = gMMLastSceneAddr;
     }
     else
     {

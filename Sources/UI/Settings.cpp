@@ -12,6 +12,7 @@ Settings::Settings()
     this->Goal = GoalMode::boss;
 	this->NumOfTeams = 1;
 	this->LocalWorld = 1;
+    this->IsFireTempleOpenAsChild = false;
     this->FilterSettings = QMap<QString, Parameter>({
 	{ "songs", { "Song Notes", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, {  } } },
 	{ "goldSkulltulaTokens", { "Gold Skulltula - OoT", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::all, {  } } },
@@ -417,6 +418,7 @@ void Settings::ParseWorldFlags(QString& LayoutSection)
 {
     this->ParseKeyRings(LayoutSection);
     this->ParseSilverPouches(LayoutSection);
+    this->ParseOpenDungeonsOoT(LayoutSection);
     this->ParsePreActivatedOwl(LayoutSection);
     this->ParseGamesLayouts(LayoutSection);
 }
@@ -649,6 +651,64 @@ void Settings::ParseSilverPouches(QString& LayoutSection)
                     {
                         this->DisabledItemIDs.insert(choice.value().first); // Disable sivler rupees
                         this->DisabledItemIDs.remove(choice.value().second);  // Enable silver pouches
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+void Settings::ParseOpenDungeonsOoT(QString& LayoutSection)
+{
+    QRegularExpression reg("^  ((?:Open Dungeons .+):(?: \\w*|(?:\n    - .+)*))", QRegularExpression::MultilineOption);
+    QRegularExpressionMatchIterator it = reg.globalMatch(LayoutSection);
+
+    while (it.hasNext())
+    {
+        QRegularExpressionMatch match = it.next();
+        QStringList layoutParams = match.captured(1).split("\n");
+
+        if (layoutParams.size() == 1)
+        {	// None or all
+
+            layoutParams = layoutParams.at(0).split(": ");
+            if (layoutParams.at(0) == "Open Dungeons (OoT)")
+            {	// Ocarina of Time
+
+                if (layoutParams.at(1) == "all")
+                {	// All dungeons are opened
+
+                    this->IsFireTempleOpenAsChild = true;
+                }
+            }
+        }
+        else
+        {
+            if (layoutParams.at(0) == "Open Dungeons (OoT):")
+            {	// Specific choice
+
+                /*QVector<QString> possibleChoice =
+                {
+                    "Bottom of the Well",
+                    "Bottom of the Well as Adult",
+                    "Deku Tree as Adult",
+                    "Dodongo's Cavern",
+                    "Fire Temple as Child",
+                    "Jabu-Jabu",
+                    "Shadow Temple",
+                    "Water Temple"
+                };
+                */
+                for (qsizetype i = 1; i < layoutParams.size(); i++)
+                {
+                    QString currKey = layoutParams.at(i);
+                    currKey = currKey.replace("    - ", "");
+
+                    if (currKey == "Fire Temple as Child")
+                    {
+                        this->IsFireTempleOpenAsChild = true;
+                        return;
                     }
                 }
             }
@@ -1212,7 +1272,7 @@ void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
 
                 case ObjectType::silverboulder:
                 {
-                    if (currObj->Scene == OOT_DEATH_MOUNTAIN_CRATER && this->FilterSettings["agelessStrength"].Value != ShuffleSetting::all)
+                    if (currObj->Scene == OOT_DEATH_MOUNTAIN_CRATER && (this->FilterSettings["agelessStrength"].Value != ShuffleSetting::all || this->IsFireTempleOpenAsChild))
                     {   // Special case for death mountain crater silver boulder that only appear when child. Silver / Golden Gauntlets required
 
                         this->CheckObjectExclusion(currObj, ShuffleSetting::vanilla, Filter);

@@ -340,19 +340,6 @@ void EntranceMessage::SetMessage(uint32_t MsgDirection, uint32_t OwlID, uint32_t
     if (this->GameID == MM_GAME)
     {
         this->Age = (LinkAge)((uint8_t)this->Age + (uint8_t)LinkAge::Child);
-
-
-        switch (GetActiveROMVersion())
-        {
-            case ROMVersion::stable_31_1:
-            {
-                if (this->SceneID == 0)
-                {
-                    this->SceneID = this->CurrSceneID;  // I don't know why but the gLastScene doesn't not seem to work
-                }
-                break;
-            }
-        }
     }
 }
 
