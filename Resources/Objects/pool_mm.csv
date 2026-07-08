@@ -3860,3 +3860,26 @@ OWL_ZORA_CAPE;MM_OWLS;Owl Statue;MM Zora Cape Owl Statue;none;0;0;0;MM_ZORA_CAPE
 0x50000;MM_IKANA_GRAVEYARD;Rupee 6;MM Beneath The Graveyard Rupee 6;none;0;0;0;MM_BENEATH_THE_GRAVEYARD;none;render_type;All;0;all;overworld;Soul of Stalchildren (MM), Captain's Hat, Clock (Night 2) / Clock (Night 1) + Bunny Hood (MM) + Hover Boots (MM);
 0x60000;MM_IKANA_GRAVEYARD;Rupee 7;MM Beneath The Graveyard Rupee 7;none;0;0;0;MM_BENEATH_THE_GRAVEYARD;none;render_type;All;0;all;overworld;Soul of Stalchildren (MM), Captain's Hat, Clock (Night 2) / Clock (Night 1) + Bunny Hood (MM) + Hover Boots (MM);
 SONG_OF_STORMS;MM_IKANA_GRAVEYARD;Song of Storms;MM Beneath The Graveyard Song of Storms;none;0;0;0;MM_BENEATH_THE_GRAVEYARD;none;render_type;All;0;all;overworld;Din's fire (MM) / Bow (MM) + Fire Arrow (MM), Magic Upgrade (MM), Soul of Iron Knuckles (MM), Soul of Composer Bros. (MM), Clock (Night 1) / Clock (Night 2) + Bunny Hood (MM) + Hover Boots (MM);Defeat the <b>Iron Knuckle</b>
+0x00013;MM_DEKU_PALACE;Boulder 1;Deku Palace Boulder 1;boulder;0;0;0;MM_DEKU_PALACE;boulder;render_type;All;0;all;overworld;;
+0x00014;MM_DEKU_PALACE;Boulder 2;Deku Palace Boulder 2;boulder;0;0;0;MM_DEKU_PALACE;boulder;render_type;All;0;all;overworld;;
+0x00506;MM_GROTTOS;Large Boulder 1;Lone Peak Shrine Large Boulder 1;boulder;0;0;0;MM_LONE_PEAK;boulder;render_type;All;0;all;overworld;;
+0x00507;MM_GROTTOS;Large Boulder 2;Lone Peak Shrine Large Boulder 2;boulder;0;0;0;MM_LONE_PEAK;boulder;render_type;All;0;all;overworld;;
+0x00509;MM_GROTTOS;Large Boulder 3;Lone Peak Shrine Large Boulder 3;boulder;0;0;0;MM_LONE_PEAK;boulder;render_type;All;0;all;overworld;;
+0x00e0a;MM_GROTTOS;Large Boulder 1;Twin Islands Frozen Grotto Large Boulder 1;boulder;0;0;0;MM_GROTTO_TWIN_ISLANDS_FROZEN;boulder;render_type;All;0;all;overworld;;
+0x00e0b;MM_GROTTOS;Large Boulder 2;Twin Islands Frozen Grotto Large Boulder 2;boulder;0;0;0;MM_GROTTO_TWIN_ISLANDS_FROZEN;boulder;render_type;All;0;all;overworld;;
+0x00e0c;MM_GROTTOS;Large Boulder 3;Twin Islands Frozen Grotto Large Boulder 3;boulder;0;0;0;MM_GROTTO_TWIN_ISLANDS_FROZEN;boulder;render_type;All;0;all;overworld;;
+0x00e0d;MM_GROTTOS;Large Boulder 4;Twin Islands Frozen Grotto Large Boulder 4;boulder;0;0;0;MM_GROTTO_TWIN_ISLANDS_FROZEN;boulder;render_type;All;0;all;overworld;;
+0x00e0e;MM_GROTTOS;Large Boulder 5;Twin Islands Frozen Grotto Large Boulder 5;boulder;0;0;0;MM_GROTTO_TWIN_ISLANDS_FROZEN;boulder;render_type;All;0;all;overworld;;
+0x0003c;MM_ROAD_IKANA;Large Boulder 1;Road to Ikana Large Boulder 1;boulder;0;0;0;MM_ROAD_IKANA;boulder;render_type;All;0;all;overworld;;
+0x0003e;MM_ROAD_IKANA;Large Boulder 2;Road to Ikana Large Boulder 2;boulder;0;0;0;MM_ROAD_IKANA;boulder;render_type;All;0;all;overworld;;
+0x00040;MM_ROAD_IKANA;Large Boulder 3;Road to Ikana Large Boulder 3;boulder;0;0;0;MM_ROAD_IKANA;boulder;render_type;All;0;all;overworld;;
+0x00041;MM_ROAD_IKANA;Large Boulder 4;Road to Ikana Large Boulder 4;boulder;0;0;0;MM_ROAD_IKANA;boulder;render_type;All;0;all;overworld;;
+0x00042;MM_ROAD_IKANA;Large Boulder 5;Road to Ikana Large Boulder 5;boulder;0;0;0;MM_ROAD_IKANA;boulder;render_type;All;0;all;overworld;;
+0x00043;MM_ROAD_IKANA;Large Boulder 6;Road to Ikana Large Boulder 6;boulder;0;0;0;MM_ROAD_IKANA;boulder;render_type;All;0;all;overworld;;
+0x00044;MM_ROAD_IKANA;Large Boulder 7;Road to Ikana Large Boulder 7;boulder;0;0;0;MM_ROAD_IKANA;boulder;render_type;All;0;all;overworld;;
+0x00312;MM_SPIDER_HOUSE_SWAMP;Boulder;Swamp Spider House Boulder;boulder;0;0;0;MM_SPIDER_HOUSE_SWAMP;boulder;render_type;All;0;all;dungeon;;
+0x000c6;MM_TERMINA_FIELD;West Gossip;Termina Field Boulder West Gossip;boulder;0;0;0;MM_TERMINA_FIELD;boulder;render_type;All;0;all;overworld;;
+0x000c7;MM_TERMINA_FIELD;Bio Baba;Termina Field Boulder Bio Baba;boulder;0;0;0;MM_TERMINA_FIELD;boulder;render_type;All;0;all;overworld;;
+0x0002a;MM_ZORA_CAPE;Large Boulder 1;Zora Cape Large Boulder 1;boulder;0;0;0;MM_ZORA_CAPE;boulder;render_type;All;0;all;overworld;;
+0x0002b;MM_ZORA_CAPE;Large Boulder 2;Zora Cape Large Boulder 2;boulder;0;0;0;MM_ZORA_CAPE;boulder;render_type;All;0;all;overworld;;
+0x0002c;MM_ZORA_CAPE;Boulder;Zora Cape Boulder;boulder;0;0;0;MM_ZORA_CAPE;boulder;render_type;All;0;all;overworld;;

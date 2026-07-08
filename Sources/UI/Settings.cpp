@@ -65,6 +65,7 @@ Settings::Settings()
 	{ "shuffleButterfliesOot", { "Butterflies - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
 	{ "shuffleButterfliesMm", { "Butterflies - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
     { "shuffleBouldersOot", { "Boulders - OoT", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::vanilla, {  } } },
+    { "shuffleBouldersMm", { "Boulders - MM", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::vanilla, {  } } },
     { "shuffleSilverBouldersOot", { "Silver Boulders - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, {  } } },
 	{ "shuffleRedBouldersOot", { "Red Boulders - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
 	{ "shuffleRedBouldersMm", { "Red Boulders - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
@@ -1638,6 +1639,12 @@ void Settings::ApplyMMSettingsToFilter(FilterManager* Filter)
 					this->CheckObjectExclusion(currObj, this->FilterSettings["shuffleButterfliesMm"].Value, Filter);
 					break;
 				}
+
+                case ObjectType::boulder:
+                {
+                    this->CheckObjectExclusion(currObj, this->FilterSettings["shuffleBouldersMm"].Value, Filter);
+                    break;
+                }
 
 				case ObjectType::redboulder:
 				{

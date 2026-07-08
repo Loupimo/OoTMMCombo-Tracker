@@ -853,7 +853,7 @@ static ObjectInfo MM_DEKU_KING_CHAMBERSceneObjects_Data [MM_DEKU_KING_CHAMBERNum
 };
 ObjectInfo * MM_DEKU_KING_CHAMBERSceneObjects = MM_DEKU_KING_CHAMBERSceneObjects_Data;
 
-const size_t MM_DEKU_PALACENumOfObjs = 107;
+const size_t MM_DEKU_PALACENumOfObjs = 109;
 static ObjectInfo MM_DEKU_PALACESceneObjects_Data [MM_DEKU_PALACENumOfObjs] =
 {
 	{ 0x1e, MM_DEKU_PALACE, "Garden", "MM Deku Palace HP", ObjectType::collectible, {210, 133, 0}, MM_DEKU_PALACE, ObjectType::heart_piece, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Avoid the deku guards to reach the heart piece" },
@@ -962,7 +962,9 @@ static ObjectInfo MM_DEKU_PALACESceneObjects_Data [MM_DEKU_PALACENumOfObjs] =
 	{ 0x00601, MM_DEKU_PALACE, "Grass 2", "MM Deku Palace JP Line Grotto Grass 2", ObjectType::none, {0, 0, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::mm_jp, LocType::overworld, NULL },
 	{ 0x00604, MM_DEKU_PALACE, "Grass 3", "MM Deku Palace JP Line Grotto Grass 3", ObjectType::none, {0, 0, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::mm_jp, LocType::overworld, NULL },
 	{ 0x00605, MM_DEKU_PALACE, "Grass 4", "MM Deku Palace JP Line Grotto Grass 4", ObjectType::none, {0, 0, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::mm_jp, LocType::overworld, NULL },
-	{ 0x00606, MM_DEKU_PALACE, "Grass 5", "MM Deku Palace JP Line Grotto Grass 5", ObjectType::none, {0, 0, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::mm_jp, LocType::overworld, NULL }
+	{ 0x00606, MM_DEKU_PALACE, "Grass 5", "MM Deku Palace JP Line Grotto Grass 5", ObjectType::none, {0, 0, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::mm_jp, LocType::overworld, NULL },
+	{ 0x00013, MM_DEKU_PALACE, "Boulder 1", "Deku Palace Boulder 1", ObjectType::boulder, {0, 0, 0}, MM_DEKU_PALACE, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x00014, MM_DEKU_PALACE, "Boulder 2", "Deku Palace Boulder 2", ObjectType::boulder, {0, 0, 0}, MM_DEKU_PALACE, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL }
 };
 ObjectInfo * MM_DEKU_PALACESceneObjects = MM_DEKU_PALACESceneObjects_Data;
 
@@ -1037,7 +1039,7 @@ static ObjectInfo MM_EXTRASceneObjects_Data [MM_EXTRANumOfObjs] =
 };
 ObjectInfo * MM_EXTRASceneObjects = MM_EXTRASceneObjects_Data;
 
-const size_t MM_ZORA_CAPENumOfObjs = 54;
+const size_t MM_ZORA_CAPENumOfObjs = 57;
 static ObjectInfo MM_ZORA_CAPESceneObjects_Data [MM_ZORA_CAPENumOfObjs] =
 {
 	{ 0x0000, MM_EXTRA, "Pot Game 1", "MM Zora Cape Pot Game 1", ObjectType::pot, {559, 168, 0}, MM_ZORA_CAPE, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "<b>Requirements:</b><br>- Soul of Zoras (MM)" },
@@ -1093,7 +1095,10 @@ static ObjectInfo MM_ZORA_CAPESceneObjects_Data [MM_ZORA_CAPENumOfObjs] =
 	{ 0x00019, MM_ZORA_CAPE, "Beach 2", "MM Zora Cape Palm Tree Beach 2", ObjectType::tree, {575, 199, 1}, MM_ZORA_CAPE, ObjectType::tree, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
 	{ 0x0001a, MM_ZORA_CAPE, "Island Near Fountain", "MM Zora Cape Palm Tree Island Near Fountain", ObjectType::tree, {331, 443, 0}, MM_ZORA_CAPE, ObjectType::tree, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
 	{ 0x0001b, MM_ZORA_CAPE, "Near Beach", "MM Zora Cape Palm Tree Island Near Beach", ObjectType::tree, {350, 367, 0}, MM_ZORA_CAPE, ObjectType::tree, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
-	{ 0x0001c, MM_ZORA_CAPE, "Island Center", "MM Zora Cape Palm Tree Island Center", ObjectType::tree, {297, 403, 0}, MM_ZORA_CAPE, ObjectType::tree, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL }
+	{ 0x0001c, MM_ZORA_CAPE, "Island Center", "MM Zora Cape Palm Tree Island Center", ObjectType::tree, {297, 403, 0}, MM_ZORA_CAPE, ObjectType::tree, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x0002a, MM_ZORA_CAPE, "Large Boulder 1", "Zora Cape Large Boulder 1", ObjectType::boulder, {0, 0, 0}, MM_ZORA_CAPE, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x0002b, MM_ZORA_CAPE, "Large Boulder 2", "Zora Cape Large Boulder 2", ObjectType::boulder, {0, 0, 0}, MM_ZORA_CAPE, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x0002c, MM_ZORA_CAPE, "Boulder", "Zora Cape Boulder", ObjectType::boulder, {0, 0, 0}, MM_ZORA_CAPE, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL }
 };
 ObjectInfo * MM_ZORA_CAPESceneObjects = MM_ZORA_CAPESceneObjects_Data;
 
@@ -1481,7 +1486,7 @@ static ObjectInfo MM_GROTTO_GREAT_BAY_COAST_COWSceneObjects_Data [MM_GROTTO_GREA
 };
 ObjectInfo * MM_GROTTO_GREAT_BAY_COAST_COWSceneObjects = MM_GROTTO_GREAT_BAY_COAST_COWSceneObjects_Data;
 
-const size_t MM_GROTTOSNumOfObjs = 444;
+const size_t MM_GROTTOSNumOfObjs = 452;
 static ObjectInfo MM_GROTTOSSceneObjects_Data [MM_GROTTOSNumOfObjs] =
 {
 	{ 0x00b00, MM_GROTTOS, "Grass 1", "MM Bio Baba Grotto Grass 1", ObjectType::grass, {685, 369, 0}, MM_GROTTO_TERMINA_BIO_BABA, ObjectType::grass, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
@@ -1927,7 +1932,15 @@ static ObjectInfo MM_GROTTOSSceneObjects_Data [MM_GROTTOSNumOfObjs] =
 	{ 0x00601, MM_GROTTOS, "Grass 2", "MM Deku Palace JP Line Grotto Grass 2", ObjectType::grass, {197, 617, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectType::grass, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::mm_jp, LocType::overworld, NULL },
 	{ 0x00604, MM_GROTTOS, "Grass 3", "MM Deku Palace JP Line Grotto Grass 3", ObjectType::grass, {108, 528, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectType::grass, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::mm_jp, LocType::overworld, NULL },
 	{ 0x00605, MM_GROTTOS, "Grass 4", "MM Deku Palace JP Line Grotto Grass 4", ObjectType::grass, {107, 613, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectType::grass, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::mm_jp, LocType::overworld, NULL },
-	{ 0x00606, MM_GROTTOS, "Grass 5", "MM Deku Palace JP Line Grotto Grass 5", ObjectType::grass, {102, 245, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectType::grass, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::mm_jp, LocType::overworld, NULL }
+	{ 0x00606, MM_GROTTOS, "Grass 5", "MM Deku Palace JP Line Grotto Grass 5", ObjectType::grass, {102, 245, 0}, MM_GROTTO_DEKU_PALACE_GENERIC, ObjectType::grass, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::mm_jp, LocType::overworld, NULL },
+	{ 0x00506, MM_GROTTOS, "Large Boulder 1", "Lone Peak Shrine Large Boulder 1", ObjectType::boulder, {0, 0, 0}, MM_LONE_PEAK, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x00507, MM_GROTTOS, "Large Boulder 2", "Lone Peak Shrine Large Boulder 2", ObjectType::boulder, {0, 0, 0}, MM_LONE_PEAK, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x00509, MM_GROTTOS, "Large Boulder 3", "Lone Peak Shrine Large Boulder 3", ObjectType::boulder, {0, 0, 0}, MM_LONE_PEAK, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x00e0a, MM_GROTTOS, "Large Boulder 1", "Twin Islands Frozen Grotto Large Boulder 1", ObjectType::boulder, {0, 0, 0}, MM_GROTTO_TWIN_ISLANDS_FROZEN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x00e0b, MM_GROTTOS, "Large Boulder 2", "Twin Islands Frozen Grotto Large Boulder 2", ObjectType::boulder, {0, 0, 0}, MM_GROTTO_TWIN_ISLANDS_FROZEN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x00e0c, MM_GROTTOS, "Large Boulder 3", "Twin Islands Frozen Grotto Large Boulder 3", ObjectType::boulder, {0, 0, 0}, MM_GROTTO_TWIN_ISLANDS_FROZEN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x00e0d, MM_GROTTOS, "Large Boulder 4", "Twin Islands Frozen Grotto Large Boulder 4", ObjectType::boulder, {0, 0, 0}, MM_GROTTO_TWIN_ISLANDS_FROZEN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x00e0e, MM_GROTTOS, "Large Boulder 5", "Twin Islands Frozen Grotto Large Boulder 5", ObjectType::boulder, {0, 0, 0}, MM_GROTTO_TWIN_ISLANDS_FROZEN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL }
 };
 ObjectInfo * MM_GROTTOSSceneObjects = MM_GROTTOSSceneObjects_Data;
 
@@ -2044,7 +2057,7 @@ static ObjectInfo MM_GROTTO_IKANA_VALLEY_OPENSceneObjects_Data [MM_GROTTO_IKANA_
 };
 ObjectInfo * MM_GROTTO_IKANA_VALLEY_OPENSceneObjects = MM_GROTTO_IKANA_VALLEY_OPENSceneObjects_Data;
 
-const size_t MM_LONE_PEAKNumOfObjs = 27;
+const size_t MM_LONE_PEAKNumOfObjs = 30;
 static ObjectInfo MM_LONE_PEAKSceneObjects_Data [MM_LONE_PEAKNumOfObjs] =
 {
 	{ 0x06, MM_GROTTOS, "Boulder", "MM Lone Peak Shrine Boulder Chest", ObjectType::chest, {320, 429, 0}, MM_LONE_PEAK, ObjectType::chest, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Explode the rock to reveal the chest<br><br><b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)" },
@@ -2073,7 +2086,10 @@ static ObjectInfo MM_LONE_PEAKSceneObjects_Data [MM_LONE_PEAKNumOfObjs] =
 	{ 0xa0502, MM_GROTTOS, "Pack 2 - Grass 11", "MM Lone Peak Shrine Grass Pack 2 Grass 11", ObjectType::grass, {413, 284, 0}, MM_LONE_PEAK, ObjectType::grass, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
 	{ 0xb0502, MM_GROTTOS, "Pack 2 - Grass 12", "MM Lone Peak Shrine Grass Pack 2 Grass 12", ObjectType::grass, {421, 272, 0}, MM_LONE_PEAK, ObjectType::grass, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
 	{ 0x03, MM_GROTTOS, "Invisible", "MM Lone Peak Shrine Invisible Chest", ObjectType::chest, {501, 237, 0}, MM_LONE_PEAK, ObjectType::chest, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Continue straight forward the <b>Lens of Truth</b> to find it. Having the <b>Lens of Truth</b> is not required" },
-	{ 0x01, MM_GROTTOS, "Lens of Truth", "MM Lone Peak Shrine Lens Chest", ObjectType::chest, {507, 346, 0}, MM_LONE_PEAK, ObjectType::chest, EGameIcon::lens, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL }
+	{ 0x01, MM_GROTTOS, "Lens of Truth", "MM Lone Peak Shrine Lens Chest", ObjectType::chest, {507, 346, 0}, MM_LONE_PEAK, ObjectType::chest, EGameIcon::lens, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x00506, MM_GROTTOS, "Large Boulder 1", "Lone Peak Shrine Large Boulder 1", ObjectType::boulder, {0, 0, 0}, MM_LONE_PEAK, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x00507, MM_GROTTOS, "Large Boulder 2", "Lone Peak Shrine Large Boulder 2", ObjectType::boulder, {0, 0, 0}, MM_LONE_PEAK, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x00509, MM_GROTTOS, "Large Boulder 3", "Lone Peak Shrine Large Boulder 3", ObjectType::boulder, {0, 0, 0}, MM_LONE_PEAK, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL }
 };
 ObjectInfo * MM_LONE_PEAKSceneObjects = MM_LONE_PEAKSceneObjects_Data;
 
@@ -2357,10 +2373,15 @@ static ObjectInfo MM_GROTTO_TERMINA_TALL_GRASSSceneObjects_Data [MM_GROTTO_TERMI
 };
 ObjectInfo * MM_GROTTO_TERMINA_TALL_GRASSSceneObjects = MM_GROTTO_TERMINA_TALL_GRASSSceneObjects_Data;
 
-const size_t MM_GROTTO_TWIN_ISLANDS_FROZENNumOfObjs = 1;
+const size_t MM_GROTTO_TWIN_ISLANDS_FROZENNumOfObjs = 6;
 static ObjectInfo MM_GROTTO_TWIN_ISLANDS_FROZENSceneObjects_Data [MM_GROTTO_TWIN_ISLANDS_FROZENNumOfObjs] =
 {
-	{ 0x02, MM_GROTTOS, "Chest", "MM Twin Islands Frozen Grotto Chest", ObjectType::chest, {147, 420, 0}, MM_GROTTO_TWIN_ISLANDS_FROZEN, ObjectType::chest, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Once inside the grotto, destroy the left boulder to reveal the chest<br><br><b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)<br>- Hot Spring Water / Bow (MM) + Fire Arrow (MM) + Magic Upgrade (MM) / Din's Fire (MM) + Magic Upgrade (MM) / Soul of Goht" }
+	{ 0x02, MM_GROTTOS, "Chest", "MM Twin Islands Frozen Grotto Chest", ObjectType::chest, {147, 420, 0}, MM_GROTTO_TWIN_ISLANDS_FROZEN, ObjectType::chest, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Once inside the grotto, destroy the left boulder to reveal the chest<br><br><b>Requirements:</b><br>- Bomb (MM) / Bombchu (MM) / Blast Mask (MM) / Goron Mask (MM) / Megaton Hammer (MM)<br>- Hot Spring Water / Bow (MM) + Fire Arrow (MM) + Magic Upgrade (MM) / Din's Fire (MM) + Magic Upgrade (MM) / Soul of Goht" },
+	{ 0x00e0a, MM_GROTTOS, "Large Boulder 1", "Twin Islands Frozen Grotto Large Boulder 1", ObjectType::boulder, {0, 0, 0}, MM_GROTTO_TWIN_ISLANDS_FROZEN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x00e0b, MM_GROTTOS, "Large Boulder 2", "Twin Islands Frozen Grotto Large Boulder 2", ObjectType::boulder, {0, 0, 0}, MM_GROTTO_TWIN_ISLANDS_FROZEN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x00e0c, MM_GROTTOS, "Large Boulder 3", "Twin Islands Frozen Grotto Large Boulder 3", ObjectType::boulder, {0, 0, 0}, MM_GROTTO_TWIN_ISLANDS_FROZEN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x00e0d, MM_GROTTOS, "Large Boulder 4", "Twin Islands Frozen Grotto Large Boulder 4", ObjectType::boulder, {0, 0, 0}, MM_GROTTO_TWIN_ISLANDS_FROZEN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x00e0e, MM_GROTTOS, "Large Boulder 5", "Twin Islands Frozen Grotto Large Boulder 5", ObjectType::boulder, {0, 0, 0}, MM_GROTTO_TWIN_ISLANDS_FROZEN, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL }
 };
 ObjectInfo * MM_GROTTO_TWIN_ISLANDS_FROZENSceneObjects = MM_GROTTO_TWIN_ISLANDS_FROZENSceneObjects_Data;
 
@@ -3607,7 +3628,7 @@ static ObjectInfo MM_OBSERVATORYSceneObjects_Data [MM_OBSERVATORYNumOfObjs] =
 };
 ObjectInfo * MM_OBSERVATORYSceneObjects = MM_OBSERVATORYSceneObjects_Data;
 
-const size_t MM_TERMINA_FIELDNumOfObjs = 421;
+const size_t MM_TERMINA_FIELDNumOfObjs = 423;
 static ObjectInfo MM_TERMINA_FIELDSceneObjects_Data [MM_TERMINA_FIELDNumOfObjs] =
 {
 	{ MOON_TEAR, MM_OBSERVATORY, "Moon Tear", "MM Astral Observatory Moon Tear", ObjectType::npc, {2199, 1058, 0}, MM_TERMINA_FIELD, ObjectType::collectible, EGameIcon::moon, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Talk to the <b>Astronomer</b> and watch the moon through the telescope to see the <b>Moon Tear</b> falling down. Then go outside to collect it<br><br><b>Requirements:</b><br>- Soul of Astronomer (MM)" },
@@ -4030,7 +4051,9 @@ static ObjectInfo MM_TERMINA_FIELDSceneObjects_Data [MM_TERMINA_FIELDNumOfObjs] 
 	{ 0x10007, MM_TERMINA_FIELD, "Wall Item 2", "MM Termina Field Soil Wall Item 2", ObjectType::soil, {1628, 1077, 0}, MM_TERMINA_FIELD, ObjectType::soil, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Free some bugs next to the soil<br><br><b>Requirements:</b><br>- Bug (MM)" },
 	{ 0x20007, MM_TERMINA_FIELD, "Wall Item 3", "MM Termina Field Soil Wall Item 3", ObjectType::soil, {1634, 1065, 0}, MM_TERMINA_FIELD, ObjectType::soil, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Free some bugs next to the soil<br><br><b>Requirements:</b><br>- Bug (MM)" },
 	{ 0x00008, MM_TERMINA_FIELD, "Pillar", "MM Termina Field Soil Pillar", ObjectType::soil, {1953, 670, 0}, MM_TERMINA_FIELD, ObjectType::soil, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Free some bugs next to the soil<br><br><b>Requirements:</b><br>- Bug (MM)" },
-	{ 0x00b01, MM_TERMINA_FIELD, "Rock", "MM Bio Baba Grotto Rock", ObjectType::none, {0, 0, 0}, MM_GROTTO_TERMINA_BIO_BABA, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL }
+	{ 0x00b01, MM_TERMINA_FIELD, "Rock", "MM Bio Baba Grotto Rock", ObjectType::none, {0, 0, 0}, MM_GROTTO_TERMINA_BIO_BABA, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x000c6, MM_TERMINA_FIELD, "West Gossip", "Termina Field Boulder West Gossip", ObjectType::boulder, {0, 0, 0}, MM_TERMINA_FIELD, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x000c7, MM_TERMINA_FIELD, "Bio Baba", "Termina Field Boulder Bio Baba", ObjectType::boulder, {0, 0, 0}, MM_TERMINA_FIELD, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL }
 };
 ObjectInfo * MM_TERMINA_FIELDSceneObjects = MM_TERMINA_FIELDSceneObjects_Data;
 
@@ -4265,7 +4288,7 @@ static ObjectInfo MM_RANCH_HOUSE_BARNSceneObjects_Data [MM_RANCH_HOUSE_BARNNumOf
 };
 ObjectInfo * MM_RANCH_HOUSE_BARNSceneObjects = MM_RANCH_HOUSE_BARNSceneObjects_Data;
 
-const size_t MM_ROAD_IKANANumOfObjs = 27;
+const size_t MM_ROAD_IKANANumOfObjs = 34;
 static ObjectInfo MM_ROAD_IKANASceneObjects_Data [MM_ROAD_IKANANumOfObjs] =
 {
 	{ 0x00, MM_ROAD_IKANA, "Pillar", "MM Road to Ikana Chest", ObjectType::chest, {696, 261, 0}, MM_ROAD_IKANA, ObjectType::chest, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, "Grab the chest with your hookshot<br><br><b>Requirements:</b><br>- Hookshot (MM)" },
@@ -4294,7 +4317,14 @@ static ObjectInfo MM_ROAD_IKANASceneObjects_Data [MM_ROAD_IKANANumOfObjs] =
 	{ 0x40023, MM_ROAD_IKANA, "Circle Rock 5", "MM Road to Ikana Rock Circle Rock 5", ObjectType::rock, {240, 237, 0}, MM_ROAD_IKANA, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
 	{ 0x50023, MM_ROAD_IKANA, "Circle Rock 6", "MM Road to Ikana Rock Circle Rock 6", ObjectType::rock, {256, 245, 0}, MM_ROAD_IKANA, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
 	{ 0x60023, MM_ROAD_IKANA, "Circle Rock 7", "MM Road to Ikana Rock Circle Rock 7", ObjectType::rock, {271, 237, 0}, MM_ROAD_IKANA, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
-	{ 0x70023, MM_ROAD_IKANA, "Circle Rock 8", "MM Road to Ikana Rock Circle Rock 8", ObjectType::rock, {277, 222, 0}, MM_ROAD_IKANA, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL }
+	{ 0x70023, MM_ROAD_IKANA, "Circle Rock 8", "MM Road to Ikana Rock Circle Rock 8", ObjectType::rock, {277, 222, 0}, MM_ROAD_IKANA, ObjectType::rock, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x0003c, MM_ROAD_IKANA, "Large Boulder 1", "Road to Ikana Large Boulder 1", ObjectType::boulder, {0, 0, 0}, MM_ROAD_IKANA, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x0003e, MM_ROAD_IKANA, "Large Boulder 2", "Road to Ikana Large Boulder 2", ObjectType::boulder, {0, 0, 0}, MM_ROAD_IKANA, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x00040, MM_ROAD_IKANA, "Large Boulder 3", "Road to Ikana Large Boulder 3", ObjectType::boulder, {0, 0, 0}, MM_ROAD_IKANA, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x00041, MM_ROAD_IKANA, "Large Boulder 4", "Road to Ikana Large Boulder 4", ObjectType::boulder, {0, 0, 0}, MM_ROAD_IKANA, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x00042, MM_ROAD_IKANA, "Large Boulder 5", "Road to Ikana Large Boulder 5", ObjectType::boulder, {0, 0, 0}, MM_ROAD_IKANA, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x00043, MM_ROAD_IKANA, "Large Boulder 6", "Road to Ikana Large Boulder 6", ObjectType::boulder, {0, 0, 0}, MM_ROAD_IKANA, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL },
+	{ 0x00044, MM_ROAD_IKANA, "Large Boulder 7", "Road to Ikana Large Boulder 7", ObjectType::boulder, {0, 0, 0}, MM_ROAD_IKANA, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL }
 };
 ObjectInfo * MM_ROAD_IKANASceneObjects = MM_ROAD_IKANASceneObjects_Data;
 
@@ -4717,7 +4747,7 @@ static ObjectInfo MM_SPIDER_HOUSE_OCEANSceneObjects_Data [MM_SPIDER_HOUSE_OCEANN
 };
 ObjectInfo * MM_SPIDER_HOUSE_OCEANSceneObjects = MM_SPIDER_HOUSE_OCEANSceneObjects_Data;
 
-const size_t MM_SPIDER_HOUSE_SWAMPNumOfObjs = 94;
+const size_t MM_SPIDER_HOUSE_SWAMPNumOfObjs = 95;
 static ObjectInfo MM_SPIDER_HOUSE_SWAMPSceneObjects_Data [MM_SPIDER_HOUSE_SWAMPNumOfObjs] =
 {
 	{ 0x12, MM_SPIDER_HOUSE_SWAMP, "Gold Room - Hive", "MM Swamp Skulltula Gold Room Hive", ObjectType::chest, {471, 95, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::gs, EGameIcon::render_type, ObjectContext::All, 2, GameLayout::all, LocType::dungeon, NULL },
@@ -4813,7 +4843,8 @@ static ObjectInfo MM_SPIDER_HOUSE_SWAMPSceneObjects_Data [MM_SPIDER_HOUSE_SWAMPN
 	{ 0x0020d, MM_SPIDER_HOUSE_SWAMP, "Gold Room", "MM Swamp Spider House Soil Gold", ObjectType::soil, {275, 322, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::soil, EGameIcon::render_type, ObjectContext::All, 2, GameLayout::all, LocType::dungeon, "Free some bugs next to the soil<br><br><b>Requirements:</b><br>- Bug (MM)" },
 	{ 0x0030e, MM_SPIDER_HOUSE_SWAMP, "Monument Item 1", "MM Swamp Spider House Soil Monument Item 1", ObjectType::soil, {757, 480, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::soil, EGameIcon::render_type, ObjectContext::All, 3, GameLayout::all, LocType::dungeon, "Free some bugs next to the soil<br><br><b>Requirements:</b><br>- Bug (MM)" },
 	{ 0x1030e, MM_SPIDER_HOUSE_SWAMP, "Monument Item 2", "MM Swamp Spider House Soil Monument Item 2", ObjectType::soil, {726, 480, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::soil, EGameIcon::render_type, ObjectContext::All, 3, GameLayout::all, LocType::dungeon, "Free some bugs next to the soil<br><br><b>Requirements:</b><br>- Bug (MM)" },
-	{ 0x2030e, MM_SPIDER_HOUSE_SWAMP, "Monument Item 3", "MM Swamp Spider House Soil Monument Item 3", ObjectType::soil, {741, 471, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::soil, EGameIcon::render_type, ObjectContext::All, 3, GameLayout::all, LocType::dungeon, "Free some bugs next to the soil<br><br><b>Requirements:</b><br>- Bug (MM)" }
+	{ 0x2030e, MM_SPIDER_HOUSE_SWAMP, "Monument Item 3", "MM Swamp Spider House Soil Monument Item 3", ObjectType::soil, {741, 471, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::soil, EGameIcon::render_type, ObjectContext::All, 3, GameLayout::all, LocType::dungeon, "Free some bugs next to the soil<br><br><b>Requirements:</b><br>- Bug (MM)" },
+	{ 0x00312, MM_SPIDER_HOUSE_SWAMP, "Boulder", "Swamp Spider House Boulder", ObjectType::boulder, {0, 0, 0}, MM_SPIDER_HOUSE_SWAMP, ObjectType::boulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::dungeon, NULL }
 };
 ObjectInfo * MM_SPIDER_HOUSE_SWAMPSceneObjects = MM_SPIDER_HOUSE_SWAMPSceneObjects_Data;
 

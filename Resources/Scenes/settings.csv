@@ -54,6 +54,7 @@ shuffleSnowballsMm;Snowballs - MM;shuffle;all;standard;
 shuffleButterfliesOot;Butterflies - OoT;boolean;all;standard;
 shuffleButterfliesMm;Butterflies - MM;boolean;all;standard;
 shuffleBouldersOot;Boulders - OoT;shuffle;vanilla;standard;
+shuffleBouldersMm;Boulders - MM;shuffle;vanilla;standard;
 shuffleSilverBouldersOot;Silver Boulders - OoT;boolean;vanilla;standard;
 shuffleRedBouldersOot;Red Boulders - OoT;boolean;all;standard;
 shuffleRedBouldersMm;Red Boulders - MM;boolean;all;standard;

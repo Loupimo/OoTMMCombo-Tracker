@@ -544,6 +544,7 @@ QWidget* SettingsTab::BuildBreakablePage()
         { "shuffleRocksOot",            "OoT" },
         { "shuffleRocksMm",             "MM"  },
         { "shuffleBouldersOot",         "OoT" },
+        { "shuffleBouldersMm",          "MM" },
         { "shuffleSilverBouldersOot",   "OoT" },
         { "shuffleRedBouldersOot",      "OoT" },
         { "shuffleRedBouldersMm",       "MM"  },

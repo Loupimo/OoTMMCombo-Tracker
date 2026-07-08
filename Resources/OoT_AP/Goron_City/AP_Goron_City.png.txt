@@ -1,6 +1,13 @@
 QList<QPair<int, int>> GrassPoints = {
 {742, 91},
 };
+QList<QPair<int, int>> HivePoints = {
+{733, 392},
+{704, 392},
+{313, 303},
+{228, 203},
+{454, 107},
+};
 QList<QPair<int, int>> ChestPoints = {
 {728, 93},
 {726, 71},
@@ -8,17 +15,21 @@ QList<QPair<int, int>> ChestPoints = {
 };
 QList<QPair<int, int>> PotPoints = {
 {733, 392},
-{710, 392},
-{699, 392},
-{309, 311},
-{317, 295},
+{704, 392},
+{313, 303},
 {228, 203},
-{458, 112},
-{448, 107},
-{457, 102},
+{455, 107},
 };
 QList<QPair<int, int>> GSPoints = {
 {437, 340},
+};
+QList<QPair<int, int>> FlyPoints = {
+{710, 360},
+{648, 348},
+{479, 343},
+{382, 246},
+{203, 189},
+{726, 82},
 };
 QList<QPair<int, int>> CratePoints = {
 {743, 107},
@@ -29,13 +40,19 @@ QList<QPair<int, int>> CratePoints = {
 {586, 28},
 };
 QList<QPair<int, int>> GrottoPoints = {
-{737, 580},
+{737, 579},
+{365, 420},
+{357, 407},
+{352, 392},
+{392, 210},
+{385, 194},
+{392, 178},
 };
 QList<QPair<int, int>> NPCsPoints = {
-{709, 360},
-{647, 348},
-{478, 343},
-{381, 246},
-{202, 189},
-{726, 82},
+{710, 360},
+{648, 348},
+{479, 343},
+{382, 246},
+{203, 189},
+{727, 82},
 };
