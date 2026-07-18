@@ -1,17 +1,16 @@
 #pragma array_limit 1000000
 
-struct inEntranceLink
+struct link
 {
-    u32 inLink;
-    u8 inLinkGame;
+    u32 linkID;
+    u8 linkGame;
 };
 
 struct entranceLink
 {
-    u32 outLink;
-    u8 outLinkGame;
-    u32 numOfInLinks;
-    inEntranceLink inLinks[numOfInLinks];
+    link outLink;
+    u32 numOfInLink;
+    link inLinks[numOfInLink];
 };
 
 struct entranceMap
@@ -24,8 +23,9 @@ struct entranceMap
 struct entranceMetaInf
 {
     u32 sceneID;
-    u64 numOfObjs;
-    entranceMap ent[numOfObjs];
+    u64 numOfEntrances;
+    //entranceMap ent;
+    entranceMap ent[numOfEntrances];
 };
 
 struct entrance
@@ -39,6 +39,7 @@ struct object
     u32 objectID;
     u32 state;
     u32 itemID;
+    u32 worldID;
 };
 
 struct scene
@@ -48,18 +49,24 @@ struct scene
     object objects[numObjs];
 };
 
+struct world
+{
+    scene oot[153];
+    scene mm[154];
+};
+
 struct settings
 {
     u32 version;
     u64 numOfParams;
+    u32 numOfWorlds;
+    world Worlds[numOfWorlds];
     //u8 params[numOfParams];
 };
 
 struct trck
 {
     settings set;
-    scene oot[153];
-    scene mm[154];
     entrance ootEnt;
     entrance mmEnt;
 };

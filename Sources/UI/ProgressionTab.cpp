@@ -53,7 +53,7 @@ ItemIconWidget::ItemIconWidget(EGameIcon IconValue, const QString& DisplayName, 
     this->NameLabel->setAttribute(Qt::WA_TransparentForMouseEvents);
 
     this->CountBadge = new QLabel(this);
-    this->CountBadge->setGeometry(49, 44, 24, 18);
+    this->CountBadge->setGeometry(41, 44, 32, 18);
     this->CountBadge->setAlignment(Qt::AlignCenter);
     this->CountBadge->setStyleSheet(
         "background-color: #4a9edb;"
@@ -179,7 +179,19 @@ void ItemIconWidget::RefreshVisual()
     }
     pixmap = pixmap.scaled(56, 56, Qt::KeepAspectRatio, Qt::SmoothTransformation);
 
-    if (!this->Found)
+    // A "full set" counter (song notes: static MaxCount > 0, not spoiler-derived)
+    // only reads as "obtained" once every piece is collected: a warp song split
+    // into notes is not usable until its whole melody is gathered. Below the
+    // threshold the icon stays greyed while the badge shows the running progress.
+    // Spoiler-derived collectables (MaxFromSpoiler) and unbounded entries keep the
+    // plain Found semantics: they light up on the first pickup.
+    bool complete = this->Found;
+    if (this->IsCounter && this->MaxCount > 0 && !this->MaxFromSpoiler)
+    {
+        complete = this->Count >= this->MaxCount;
+    }
+
+    if (!complete)
     {   // Greyscale + dim alpha so the icon reads as a placeholder.
 
         QImage img = pixmap.toImage().convertToFormat(QImage::Format_ARGB32);
@@ -213,8 +225,16 @@ void ItemIconWidget::RefreshVisual()
     this->IconLabel->setPixmap(pixmap);
 
     if (this->IsCounter && this->Count > 0)
-    {
-        this->CountBadge->setText(QString::number(this->Count));
+    {   // For a bounded counter show progress as "collected/total" (e.g. song
+        // notes: 1/6, 6/6); unbounded counters keep the plain running total.
+        if (this->MaxCount > 0)
+        {
+            this->CountBadge->setText(QString("%1/%2").arg(this->Count).arg(this->MaxCount));
+        }
+        else
+        {
+            this->CountBadge->setText(QString::number(this->Count));
+        }
         this->CountBadge->show();
     }
     else
@@ -402,6 +422,8 @@ QWidget* ProgressionTab::BuildPage(const ProgSection* Sections, size_t SectionCo
 
             ItemIconWidget* widget = new ItemIconWidget(entry.Icon, displayName, entry.IsCounter, gridHost);
             widget->Game = Game;
+            widget->MaxCount = entry.MaxCount;
+            widget->MaxFromSpoiler = entry.MaxFromSpoiler;
             //widget->LookupKey = entry.LookupKey ? QString::fromUtf8(entry.LookupKey) : QString();
             widget->LookupKeys = widget->LookupKeys.unite(entry.LookupKeys);
             grid->addWidget(widget, row, col);
@@ -574,8 +596,15 @@ void ProgressionTab::ShowDetailFor(ItemIconWidget* Widget)
     }
 
     if (Widget->IsCounter)
-    {
-        this->DetailCount->setText(QString::number(Widget->Count));
+    {   // Mirror the icon badge: "collected/total" when a total is known, plain count otherwise.
+        if (Widget->MaxCount > 0)
+        {
+            this->DetailCount->setText(QString("%1/%2").arg(Widget->Count).arg(Widget->MaxCount));
+        }
+        else
+        {
+            this->DetailCount->setText(QString::number(Widget->Count));
+        }
         this->DetailCount->show();
     }
     else
@@ -996,6 +1025,22 @@ QList<ItemIconWidget*> ProgressionTab::FindAllMatchingWidgets(const ItemInfo* It
 }
 
 
+void ProgressionTab::TallySpoilerMax(const ItemInfo* Item)
+{
+    // Non-progressive collectables map to one widget per game, so incrementing
+    // every match mirrors exactly how OnItemFound accumulates their live Count
+    // (shared items bump both the OoT and MM mirror, game-specific ones only
+    // their own). Only widgets that opted into spoiler-derived totals react.
+    for (ItemIconWidget* w : this->FindAllMatchingWidgets(Item))
+    {
+        if (w != nullptr && w->MaxFromSpoiler)
+        {
+            w->MaxCount += 1;
+        }
+    }
+}
+
+
 void ProgressionTab::OnItemFound(int Game, ObjectInfo* Object, const ItemInfo* Item, bool IsAddOp)
 {
     if (Item == nullptr || Item->ItemName == nullptr) return;
@@ -1296,6 +1341,23 @@ void ProgressionTab::RebuildFromSceneObjects()
     // Counters are summed naturally because OnItemFound increments on each call.
     this->ResetProgress();
 
+    // Spoiler-derived totals are recomputed from scratch on every replay (spoiler
+    // reload / world switch): clear them here, then TallySpoilerMax refills them
+    // from the placements below. Left at 0 when no spoiler is loaded, so the badge
+    // gracefully falls back to the plain running total.
+    {
+        GameProgData* maxRegistries[] = {
+            &this->OoTData, &this->MMData, &this->SoulsData, &this->CollectiblesData
+        };
+        for (GameProgData* reg : maxRegistries)
+        {
+            for (ItemIconWidget* w : reg->All)
+            {
+                if (w != nullptr && w->MaxFromSpoiler) w->MaxCount = 0;
+            }
+        }
+    }
+
     // Starting items are applied first so the world replay below can detect
     // them as already-found and progressive items advance to the right stage.
     // In multiworld each world has its own starting set (StartingItemIDsByWorld), so use the
@@ -1391,7 +1453,6 @@ void ProgressionTab::RebuildFromSceneObjects()
                 {
                     ObjectInfo& obj = scene.Objects[o];
                     if (obj.TargetWorld != activeWorld) continue;   // not destined to the active world
-                    if (obj.Status == ObjectState::Hidden) continue;
                     if (obj.Item == nullptr) continue;
                     if (obj.Type == ObjectType::none) continue;     // shadow placeholder
 
@@ -1403,8 +1464,31 @@ void ProgressionTab::RebuildFromSceneObjects()
                     if (seen.contains(key)) continue;
                     seen.insert(key);
 
+                    // Seed total for spoiler-derived collectables: every placement
+                    // counts toward the max, whether or not it has been collected.
+                    this->TallySpoilerMax(obj.Item);
+
+                    // Only collected / forced placements advance the live Count.
+                    if (obj.Status == ObjectState::Hidden) continue;
+
                     this->OnItemFound(page.Game, &obj, obj.Item, true);
                 }
+            }
+        }
+    }
+
+    // MaxCount is only fully known once every placement above has been tallied, but
+    // MarkFound refreshed each collected widget mid-walk with a partial total. Repaint
+    // the spoiler-derived widgets now so their badge shows the final "collected/total".
+    {
+        GameProgData* maxRegistries[] = {
+            &this->OoTData, &this->MMData, &this->SoulsData, &this->CollectiblesData
+        };
+        for (GameProgData* reg : maxRegistries)
+        {
+            for (ItemIconWidget* w : reg->All)
+            {
+                if (w != nullptr && w->MaxFromSpoiler) w->RefreshVisual();
             }
         }
     }

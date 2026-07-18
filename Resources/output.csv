@@ -1148,12 +1148,14 @@
 { SHARED_TUNIC_GORON, "Goron Tunic", EGameIcon::goron_tunic, false },
 { SHARED_TUNIC_ZORA, "Zora Tunic", EGameIcon::zora_tunic, false },
 { SHARED_WALLET, "Progressive Wallet", EGameIcon::wallet, false },
+{ OOT_PROG_WALLET, "Progressive Wallet (OoT)", EGameIcon::wallet, true },
 { OOT_SWORD, "Progressive Sword (OoT)", EGameIcon::kokiri, true },
 { OOT_OCARINA, "Progressive Ocarina (OoT)", EGameIcon::ocarina, true },
 { OOT_SCALE, "Progressive Scale (Oot)", EGameIcon::bronze_scale, true },
 { OOT_SHIELD, "Progressive Shield (OoT)", EGameIcon::deku_shield, true },
 { OOT_STRENGTH, "Progressive Strength (OoT)", EGameIcon::bracelet, true },
 { OOT_SWORD_GORON, "Progressive Goron Sword", EGameIcon::biggoron, true },
+{ MM_PROG_WALLET, "Progressive Wallet (MM)", EGameIcon::wallet, true },
 { MM_SWORD, "Progressive Sword (MM)", EGameIcon::kokiri_mm, true },
 { MM_CLOCK, "Progressive Clock", EGameIcon::clock_d1, false },
 { MM_OCARINA, "Ocarina (MM)", EGameIcon::ocarina, true },
@@ -1171,7 +1173,6 @@
 { SHARED_MASK_GERUDO, "Gerudo Mask", EGameIcon::gerudo, false },
 { SHARED_MASK_SKULL, "Skull Mask", EGameIcon::skull, false },
 { SHARED_MASK_SPOOKY, "Spooky Mask", EGameIcon::spooky, false },
-{ SHARED_POWDER_KEG, "Powder Keg", EGameIcon::powder, false },
 { SHARED_GREAT_FAIRY_SWORD, "Great Fairy's Sword", EGameIcon::fairy_sword, false },
 
 
@@ -2325,28 +2326,46 @@
 #define SHARED_TUNIC_GORON 0x47C
 #define SHARED_TUNIC_ZORA 0x47D
 #define SHARED_WALLET 0x47E
-#define OOT_SWORD 0x47F
-#define OOT_OCARINA 0x480
-#define OOT_SCALE 0x481
-#define OOT_SHIELD 0x482
-#define OOT_STRENGTH 0x483
-#define OOT_SWORD_GORON 0x484
-#define MM_SWORD 0x485
-#define MM_CLOCK 0x486
-#define MM_OCARINA 0x487
-#define MM_SCALE 0x488
-#define MM_SHIELD 0x489
-#define MM_STRENGTH 0x48A
-#define SHARED_SLINGSHOT 0x48B
-#define SHARED_DEKU_SEEDS_5 0x48C
-#define SHARED_DEKU_SEEDS_30 0x48D
-#define SHARED_BULLET_BAG2 0x48E
-#define SHARED_BULLET_BAG3 0x48F
-#define SHARED_QUIVER2 0x490
-#define SHARED_QUIVER3 0x491
-#define SHARED_POWDER_KEG 0x492
-#define SHARED_MASK_GERUDO 0x493
-#define SHARED_MASK_SKULL 0x494
-#define SHARED_MASK_SPOOKY 0x495
-#define SHARED_POWDER_KEG 0x496
-#define SHARED_GREAT_FAIRY_SWORD 0x497
+#define OOT_PROG_WALLET 0x47F
+#define OOT_SWORD 0x480
+#define OOT_OCARINA 0x481
+#define OOT_SCALE 0x482
+#define OOT_SHIELD 0x483
+#define OOT_STRENGTH 0x484
+#define OOT_SWORD_GORON 0x485
+#define MM_PROG_WALLET 0x486
+#define MM_SWORD 0x487
+#define MM_CLOCK 0x488
+#define MM_OCARINA 0x489
+#define MM_SCALE 0x48A
+#define MM_SHIELD 0x48B
+#define MM_STRENGTH 0x48C
+#define SHARED_SLINGSHOT 0x48D
+#define SHARED_DEKU_SEEDS_5 0x48E
+#define SHARED_DEKU_SEEDS_30 0x48F
+#define SHARED_BULLET_BAG2 0x490
+#define SHARED_BULLET_BAG3 0x491
+#define SHARED_QUIVER2 0x492
+#define SHARED_QUIVER3 0x493
+#define SHARED_POWDER_KEG 0x494
+#define SHARED_MASK_GERUDO 0x495
+#define SHARED_MASK_SKULL 0x496
+#define SHARED_MASK_SPOOKY 0x497
+#define SHARED_GREAT_FAIRY_SWORD 0x498
+
+
+// ==== Corps de ResolveRawItemID (stable -> dev), teste haut -> bas ====
+    if (RawItemID >= 826) return RawItemID + 107;   // +39 at MM_MASK_MAJORA
+    if (RawItemID >= 818) return RawItemID + 68;    // +1 at MM_STICK_UPGRADE
+    if (RawItemID >= 661) return RawItemID + 67;    // +5 at MM_SOUL_ENEMY_OCTOROK
+    if (RawItemID >= 622) return RawItemID + 62;    // +8 at MM_REMAINS_ODOLWA
+    if (RawItemID >= 610) return RawItemID + 54;    // +8 at MM_SONG_GORON_HALF
+    if (RawItemID >= 576) return RawItemID + 46;    // +3 at MM_CHATEAU
+    if (RawItemID >= 466) return RawItemID + 43;    // +27 at MM_RUPEE_GREEN
+    if (RawItemID >= 458) return RawItemID + 16;    // +1 at OOT_TRAP_ICE
+    if (RawItemID >= 452) return RawItemID + 15;    // +1 at OOT_WEIRD_MUSHROOM
+    if (RawItemID >= 451) return RawItemID + 14;    // +1 at OOT_SCALE_BRONZE
+    if (RawItemID >= 155) return RawItemID + 13;    // +6 at OOT_SWORD_MASTER
+    if (RawItemID >= 142) return RawItemID + 7;     // +7 at OOT_SONG_NOTE_TP_FOREST
+
+    return RawItemID;

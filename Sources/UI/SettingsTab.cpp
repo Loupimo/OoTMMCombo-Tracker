@@ -59,34 +59,60 @@ namespace
     };
 
     /*
-    *   Per-area Ocarina of Time silver rupee / silver pouch item id pairs, mirroring the
-    *   "Silver Rupee Pouches" parser table in Settings::ParseSilverPouches.
+    *   Per-area Ocarina of Time silver rupee / silver pouch descriptor, mirroring the
+    *   table in Settings::ParseSilverPouches. A cluster only exists when its scene's
+    *   active layout matches (Both = present in Vanilla and Master Quest alike), so the
+    *   editor can grey out the areas the current seed's layout does not contain.
     */
-    static const DungeonItemPair OoTSilverPouches[] =
+    enum class SilverLayout { Vanilla, MasterQuest, Both };
+
+    struct SilverPouchArea
     {
-        { "Dodongo's Cavern",          OOT_RUPEE_SILVER_DC,              OOT_POUCH_SILVER_DC              },
-        { "Bottom of the Well",        OOT_RUPEE_SILVER_BOTW,            OOT_POUCH_SILVER_BOTW            },
-        { "Spirit Temple (Child)",     OOT_RUPEE_SILVER_SPIRIT_CHILD,    OOT_POUCH_SILVER_SPIRIT_CHILD    },
-        { "Spirit Temple (Sun)",       OOT_RUPEE_SILVER_SPIRIT_SUN,      OOT_POUCH_SILVER_SPIRIT_SUN      },
-        { "Spirit Temple (Boulders)",  OOT_RUPEE_SILVER_SPIRIT_BOULDERS, OOT_POUCH_SILVER_SPIRIT_BOULDERS },
-        { "Spirit Temple (Lobby)",     OOT_RUPEE_SILVER_SPIRIT_LOBBY,    OOT_POUCH_SILVER_SPIRIT_LOBBY    },
-        { "Spirit Temple (Adult)",     OOT_RUPEE_SILVER_SPIRIT_ADULT,    OOT_POUCH_SILVER_SPIRIT_ADULT    },
-        { "Shadow Temple (Scythe)",    OOT_RUPEE_SILVER_SHADOW_SCYTHE,   OOT_POUCH_SILVER_SHADOW_SCYTHE   },
-        { "Shadow Temple (Pit)",       OOT_RUPEE_SILVER_SHADOW_PIT,      OOT_POUCH_SILVER_SHADOW_PIT      },
-        { "Shadow Temple (Spikes)",    OOT_RUPEE_SILVER_SHADOW_SPIKES,   OOT_POUCH_SILVER_SHADOW_SPIKES   },
-        { "Shadow Temple (Blades)",    OOT_RUPEE_SILVER_SHADOW_BLADES,   OOT_POUCH_SILVER_SHADOW_BLADES   },
-        { "Ice Cavern (Scythe)",       OOT_RUPEE_SILVER_IC_SCYTHE,       OOT_POUCH_SILVER_IC_SCYTHE       },
-        { "Ice Cavern (Block)",        OOT_RUPEE_SILVER_IC_BLOCK,        OOT_POUCH_SILVER_IC_BLOCK        },
-        { "GTG (Slopes)",              OOT_RUPEE_SILVER_GTG_SLOPES,      OOT_POUCH_SILVER_GTG_SLOPES      },
-        { "GTG (Lava)",                OOT_RUPEE_SILVER_GTG_LAVA,        OOT_POUCH_SILVER_GTG_LAVA        },
-        { "GTG (Water)",               OOT_RUPEE_SILVER_GTG_WATER,       OOT_POUCH_SILVER_GTG_WATER       },
-        { "Ganon's Castle (Light)",    OOT_RUPEE_SILVER_GANON_LIGHT,     OOT_POUCH_SILVER_GANON_LIGHT     },
-        { "Ganon's Castle (Forest)",   OOT_RUPEE_SILVER_GANON_FOREST,    OOT_POUCH_SILVER_GANON_FOREST    },
-        { "Ganon's Castle (Fire)",     OOT_RUPEE_SILVER_GANON_FIRE,      OOT_POUCH_SILVER_GANON_FIRE      },
-        { "Ganon's Castle (Water)",    OOT_RUPEE_SILVER_GANON_WATER,     OOT_POUCH_SILVER_GANON_WATER     },
-        { "Ganon's Castle (Shadow)",   OOT_RUPEE_SILVER_GANON_SHADOW,    OOT_POUCH_SILVER_GANON_SHADOW    },
-        { "Ganon's Castle (Spirit)",   OOT_RUPEE_SILVER_GANON_SPIRIT,    OOT_POUCH_SILVER_GANON_SPIRIT    }
+        const char* Label;
+        uint32_t RupeeId;
+        uint32_t PouchId;
+        uint32_t SceneId;
+        SilverLayout Layout;
     };
+
+    static const SilverPouchArea OoTSilverPouches[] =
+    {
+        { "Dodongo's Cavern",          OOT_RUPEE_SILVER_DC,              OOT_POUCH_SILVER_DC,              OOT_DODONGO_CAVERN,         SilverLayout::MasterQuest },
+        { "Bottom of the Well",        OOT_RUPEE_SILVER_BOTW,            OOT_POUCH_SILVER_BOTW,            OOT_BOTTOM_OF_THE_WELL,     SilverLayout::Vanilla     },
+        { "Spirit Temple (Child)",     OOT_RUPEE_SILVER_SPIRIT_CHILD,    OOT_POUCH_SILVER_SPIRIT_CHILD,    OOT_TEMPLE_SPIRIT,          SilverLayout::Vanilla     },
+        { "Spirit Temple (Sun)",       OOT_RUPEE_SILVER_SPIRIT_SUN,      OOT_POUCH_SILVER_SPIRIT_SUN,      OOT_TEMPLE_SPIRIT,          SilverLayout::Vanilla     },
+        { "Spirit Temple (Boulders)",  OOT_RUPEE_SILVER_SPIRIT_BOULDERS, OOT_POUCH_SILVER_SPIRIT_BOULDERS, OOT_TEMPLE_SPIRIT,          SilverLayout::Vanilla     },
+        { "Spirit Temple (Lobby)",     OOT_RUPEE_SILVER_SPIRIT_LOBBY,    OOT_POUCH_SILVER_SPIRIT_LOBBY,    OOT_TEMPLE_SPIRIT,          SilverLayout::MasterQuest },
+        { "Spirit Temple (Adult)",     OOT_RUPEE_SILVER_SPIRIT_ADULT,    OOT_POUCH_SILVER_SPIRIT_ADULT,    OOT_TEMPLE_SPIRIT,          SilverLayout::MasterQuest },
+        { "Shadow Temple (Scythe)",    OOT_RUPEE_SILVER_SHADOW_SCYTHE,   OOT_POUCH_SILVER_SHADOW_SCYTHE,   OOT_TEMPLE_SHADOW,          SilverLayout::Both        },
+        { "Shadow Temple (Pit)",       OOT_RUPEE_SILVER_SHADOW_PIT,      OOT_POUCH_SILVER_SHADOW_PIT,      OOT_TEMPLE_SHADOW,          SilverLayout::Both        },
+        { "Shadow Temple (Spikes)",    OOT_RUPEE_SILVER_SHADOW_SPIKES,   OOT_POUCH_SILVER_SHADOW_SPIKES,   OOT_TEMPLE_SHADOW,          SilverLayout::Both        },
+        { "Shadow Temple (Blades)",    OOT_RUPEE_SILVER_SHADOW_BLADES,   OOT_POUCH_SILVER_SHADOW_BLADES,   OOT_TEMPLE_SHADOW,          SilverLayout::MasterQuest },
+        { "Ice Cavern (Scythe)",       OOT_RUPEE_SILVER_IC_SCYTHE,       OOT_POUCH_SILVER_IC_SCYTHE,       OOT_ICE_CAVERN,             SilverLayout::Vanilla     },
+        { "Ice Cavern (Block)",        OOT_RUPEE_SILVER_IC_BLOCK,        OOT_POUCH_SILVER_IC_BLOCK,        OOT_ICE_CAVERN,             SilverLayout::Vanilla     },
+        { "GTG (Slopes)",              OOT_RUPEE_SILVER_GTG_SLOPES,      OOT_POUCH_SILVER_GTG_SLOPES,      OOT_GERUDO_TRAINING_GROUND, SilverLayout::Both        },
+        { "GTG (Lava)",                OOT_RUPEE_SILVER_GTG_LAVA,        OOT_POUCH_SILVER_GTG_LAVA,        OOT_GERUDO_TRAINING_GROUND, SilverLayout::Both        },
+        { "GTG (Water)",               OOT_RUPEE_SILVER_GTG_WATER,       OOT_POUCH_SILVER_GTG_WATER,       OOT_GERUDO_TRAINING_GROUND, SilverLayout::Both        },
+        { "Ganon's Castle (Light)",    OOT_RUPEE_SILVER_GANON_LIGHT,     OOT_POUCH_SILVER_GANON_LIGHT,     OOT_INSIDE_GANON_CASTLE,    SilverLayout::Vanilla     },
+        { "Ganon's Castle (Forest)",   OOT_RUPEE_SILVER_GANON_FOREST,    OOT_POUCH_SILVER_GANON_FOREST,    OOT_INSIDE_GANON_CASTLE,    SilverLayout::Vanilla     },
+        { "Ganon's Castle (Fire)",     OOT_RUPEE_SILVER_GANON_FIRE,      OOT_POUCH_SILVER_GANON_FIRE,      OOT_INSIDE_GANON_CASTLE,    SilverLayout::Both        },
+        { "Ganon's Castle (Water)",    OOT_RUPEE_SILVER_GANON_WATER,     OOT_POUCH_SILVER_GANON_WATER,     OOT_INSIDE_GANON_CASTLE,    SilverLayout::MasterQuest },
+        { "Ganon's Castle (Shadow)",   OOT_RUPEE_SILVER_GANON_SHADOW,    OOT_POUCH_SILVER_GANON_SHADOW,    OOT_INSIDE_GANON_CASTLE,    SilverLayout::MasterQuest },
+        { "Ganon's Castle (Spirit)",   OOT_RUPEE_SILVER_GANON_SPIRIT,    OOT_POUCH_SILVER_GANON_SPIRIT,    OOT_INSIDE_GANON_CASTLE,    SilverLayout::Vanilla     }
+    };
+
+    /*
+    *   True when the silver rupee cluster exists in its scene's currently active layout.
+    *   Mirrors the layout gating used by Settings::ParseSilverPouches.
+    */
+    static bool SilverAreaExists(const SilverPouchArea& Area)
+    {
+        SceneMetaInfo* info = GetSceneMetaInfo(Area.SceneId, OOT_GAME);
+        bool isMQ = (info != nullptr && info->ActiveLayout == GameLayout::oot_mq);
+        return Area.Layout == SilverLayout::Both
+            || (Area.Layout == SilverLayout::MasterQuest && isMQ)
+            || (Area.Layout == SilverLayout::Vanilla && !isMQ);
+    }
 
     struct OwlChoice
     {
@@ -864,7 +890,7 @@ QWidget* SettingsTab::BuildWorldItemsPage()
     pouchGrid->setVerticalSpacing(6);
 
     int pouchRow = 0;
-    for (const DungeonItemPair& pair : OoTSilverPouches)
+    for (const SilverPouchArea& pair : OoTSilverPouches)
     {
         QLabel* badge = this->MakeGameBadge("OoT");
         QLabel* nameLabel = new QLabel(pair.Label);
@@ -1022,13 +1048,17 @@ void SettingsTab::LoadFromSettings()
             it.value()->setChecked(!s.DisabledItemIDs.contains(pair.RingId));
         }
     }
-    for (const DungeonItemPair& pair : OoTSilverPouches)
+    for (const SilverPouchArea& pair : OoTSilverPouches)
     {
         auto it = this->SilverPouchChecks.find(QString::fromUtf8(pair.Label));
-        if (it != this->SilverPouchChecks.end())
-        {
-            it.value()->setChecked(!s.DisabledItemIDs.contains(pair.RingId));
-        }
+        if (it == this->SilverPouchChecks.end()) continue;
+
+        // A cluster absent from the active layout has neither rupees nor a pouch: grey the
+        // toggle out and leave it unchecked. Otherwise it is checked when the area currently
+        // delivers a pouch (its pouch id enabled).
+        bool exists = SilverAreaExists(pair);
+        it.value()->setEnabled(exists);
+        it.value()->setChecked(exists && !s.DisabledItemIDs.contains(pair.PouchId));
     }
     for (const OwlChoice& owl : MMOwlStatues)
     {
@@ -1175,21 +1205,36 @@ void SettingsTab::ApplyWorldItemSelections()
         }
     }
 
-    // Silver pouches: checked => silver rupee id is disabled and pouch id is enabled.
-    for (const DungeonItemPair& pair : OoTSilverPouches)
+    // Silver pouches: only the clusters that exist in the active layout can be enabled.
+    // Absent ones keep both their rupee and pouch ids disabled. For an existing cluster,
+    // checked => deliver a pouch (rupee disabled, pouch enabled), unchecked => individual
+    // silver rupees (rupee enabled, pouch disabled).
+    for (const SilverPouchArea& pair : OoTSilverPouches)
     {
         auto it = this->SilverPouchChecks.find(QString::fromUtf8(pair.Label));
         if (it == this->SilverPouchChecks.end()) continue;
 
+        // Keep the toggle greyed in sync with the active layout, in case it changed via
+        // the Master Quest checkboxes in this same Apply (ApplyLayoutSelections ran first).
+        bool exists = SilverAreaExists(pair);
+        it.value()->setEnabled(exists);
+
+        if (!exists)
+        {
+            s.DisabledItemIDs.insert(pair.RupeeId);
+            s.DisabledItemIDs.insert(pair.PouchId);
+            continue;
+        }
+
         if (it.value()->isChecked())
         {
-            s.DisabledItemIDs.insert(pair.SmallId);
-            s.DisabledItemIDs.remove(pair.RingId);
+            s.DisabledItemIDs.insert(pair.RupeeId);
+            s.DisabledItemIDs.remove(pair.PouchId);
         }
         else
         {
-            s.DisabledItemIDs.remove(pair.SmallId);
-            s.DisabledItemIDs.insert(pair.RingId);
+            s.DisabledItemIDs.remove(pair.RupeeId);
+            s.DisabledItemIDs.insert(pair.PouchId);
         }
     }
 

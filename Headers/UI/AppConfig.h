@@ -7,7 +7,8 @@
 enum class TrackerVersion
 {
     V1_0,		// Original release
-    V2_0        // Entrance support + hooking, multi-source InLink, multiworld (per-world scene objects + TargetWorld)
+    V2_0,       // Entrance support + hooking, multi-source InLink, multiworld (per-world scene objects + TargetWorld)
+    V2_1        // Layout-resilient save: each world/game block leads with its scene count; scenes & objects matched by id on load
 };
 
 
@@ -15,7 +16,7 @@ class AppConfig
 {
 public:
 
-    TrackerVersion Version = TrackerVersion::V2_0;
+    TrackerVersion Version = TrackerVersion::V2_1;
     QSettings Settings = QSettings("Loupimo", "OoTMMComboTracker");                                                          // The application persistant settings
     QString CurrentAutoSaveFile = "AutoSave-" + QDateTime::currentDateTime().toString("dd_MM_yyyy_hh_mm_ss") + ".trck";      // The current auto save file
 

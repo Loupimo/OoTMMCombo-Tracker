@@ -18,6 +18,8 @@ typedef struct ProgEntry
     //const char* LookupKey;      // Lowercase substring matched against the normalized item name.
     QSet<uint32_t> LookupKeys;
     bool IsCounter;             // Whether the widget shows a counter badge.
+    int MaxCount;               // Static total required to complete the item (e.g. song notes). 0 when unbounded / not applicable.
+    bool MaxFromSpoiler;        // When true, MaxCount is (re)computed at spoiler-load time by tallying every matching placement in the log, and the icon lights up on the first pickup instead of only once the whole set is gathered (used by collectables: hearts, tokens, keys, silver rupees...). When no spoiler log is loaded the badge falls back to the plain running total.
 } ProgEntry;
 
 

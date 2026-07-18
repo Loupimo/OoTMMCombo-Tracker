@@ -54,8 +54,8 @@ const ItemInfo ItemList[NUM_ITEM] =
     { OOT_TUNIC_ZORA, "Zora Tunic (OoT)", EGameIcon::zora_tunic, true },
     { OOT_BOOTS_IRON, "Iron Boots (OoT)", EGameIcon::iron, true },
     { OOT_BOOTS_HOVER, "Hover Boots (OoT)", EGameIcon::hover, true },
-    { OOT_QUIVER2, "Big Quiver (OoT)", EGameIcon::big_quiver, false },
-    { OOT_QUIVER3, "Biggest Quiver (OoT)", EGameIcon::biggest_quiver, false },
+    { OOT_QUIVER2, "Big Quiver (OoT)", EGameIcon::big_quiver, true },
+    { OOT_QUIVER3, "Biggest Quiver (OoT)", EGameIcon::biggest_quiver, true },
     { OOT_BOMB_BAG, "Bomb Bag (OoT)", EGameIcon::bomb_bag, true },
     { OOT_BOMB_BAG2, "Big Bomb Bag (OoT)", EGameIcon::big_bomb, true },
     { OOT_BOMB_BAG3, "Biggest Bomb Bag (OoT)", EGameIcon::biggest_bomb, true },
@@ -551,8 +551,8 @@ const ItemInfo ItemList[NUM_ITEM] =
     { MM_ARROWS_40, "40 Arrows (MM)", EGameIcon::arrow, true },
     { MM_UNK_21, "40 Arrows (MM)", EGameIcon::arrow, true },
     { MM_BOW, "Hero's Bow (MM)", EGameIcon::bow_mm, true },
-    { MM_QUIVER2, "Big Quiver (MM)", EGameIcon::big_quiver, false },
-    { MM_QUIVER3, "Biggest Quiver (MM)", EGameIcon::biggest_quiver, false },
+    { MM_QUIVER2, "Big Quiver (MM)", EGameIcon::big_quiver, true },
+    { MM_QUIVER3, "Biggest Quiver (MM)", EGameIcon::biggest_quiver, true },
     { MM_ARROW_FIRE, "Fire Arrows (MM)", EGameIcon::fire_arrow, true },
     { MM_ARROW_ICE, "Ice Arrows (MM)", EGameIcon::ice_arrow, true },
     { MM_ARROW_LIGHT, "Light Arrows (MM)", EGameIcon::light_arrow, true },
@@ -1157,12 +1157,14 @@ const ItemInfo ItemList[NUM_ITEM] =
     { SHARED_TUNIC_GORON, "Goron Tunic", EGameIcon::goron_tunic, false },
     { SHARED_TUNIC_ZORA, "Zora Tunic", EGameIcon::zora_tunic, false },
     { SHARED_WALLET, "Progressive Wallet", EGameIcon::wallet, false },
+    { OOT_PROG_WALLET, "Progressive Wallet (OoT)", EGameIcon::wallet, true },
     { OOT_SWORD, "Progressive Sword (OoT)", EGameIcon::kokiri, true },
     { OOT_OCARINA, "Progressive Ocarina (OoT)", EGameIcon::ocarina, true },
     { OOT_SCALE, "Progressive Scale (Oot)", EGameIcon::bronze_scale, true },
     { OOT_SHIELD, "Progressive Shield (OoT)", EGameIcon::deku_shield, true },
     { OOT_STRENGTH, "Progressive Strength (OoT)", EGameIcon::bracelet, true },
     { OOT_SWORD_GORON, "Progressive Goron Sword", EGameIcon::biggoron, true },
+    { MM_PROG_WALLET, "Progressive Wallet (MM)", EGameIcon::wallet, true },
     { MM_SWORD, "Progressive Sword (MM)", EGameIcon::kokiri_mm, true },
     { MM_CLOCK, "Progressive Clock", EGameIcon::clock_d1, false },
     { MM_OCARINA, "Ocarina (MM)", EGameIcon::ocarina, true },
@@ -1176,12 +1178,11 @@ const ItemInfo ItemList[NUM_ITEM] =
     { SHARED_BULLET_BAG3, "Largest Bullet Bag", EGameIcon::biggest_seed, false },
     { SHARED_QUIVER2, "Big Quiver", EGameIcon::big_quiver, false },
     { SHARED_QUIVER3, "Biggest Quiver", EGameIcon::biggest_quiver, false },
+    { SHARED_POWDER_KEG, "Powder Keg", EGameIcon::powder, false },
     { SHARED_MASK_GERUDO, "Gerudo Mask", EGameIcon::gerudo, false },
     { SHARED_MASK_SKULL, "Skull Mask", EGameIcon::skull, false },
     { SHARED_MASK_SPOOKY, "Spooky Mask", EGameIcon::spooky, false },
-    { SHARED_POWDER_KEG, "Powder Keg", EGameIcon::powder, false },
     { SHARED_GREAT_FAIRY_SWORD, "Great Fairy's Sword", EGameIcon::fairy_sword, false },
-
 };
 
 #pragma endregion 
@@ -1219,19 +1220,23 @@ const ItemInfo * FindItem(uint32_t gi)
     return currItem;
 }
 
-// Progressive capacity families whose members all share the base item's spoiler name, ordered
-// [base, first upgrade, second upgrade]: the base (bow / slingshot, which comes with its first
-// quiver / bullet bag) then its successive capacity upgrades. Per-game and shared variants are
-// distinct families so an OoT bow never matches an MM quiver, and a shared placement matches the
-// shared upgrades.
+// Progressive families whose upgrade tiers all share the base item's spoiler name AND whose tier
+// widgets do NOT already carry the base id in their LookupKeys (so an exact match cannot list a
+// base placement under the upgrade tiers). Ordered [base, first upgrade, second upgrade]; a family
+// with a single upgrade (e.g. Magic Upgrade -> Double Magic) pads the unused slot with 0, which is
+// never a valid item id. Per-game and shared variants are distinct families so an OoT item never
+// matches an MM one; shared magic needs no entry because both magic widgets already list
+// SHARED_MAGIC_UPGRADE explicitly.
 static const uint32_t ProgressiveFamilies[][3] =
 {
-    { OOT_BOW,          OOT_QUIVER2,        OOT_QUIVER3        },
-    { MM_BOW,           MM_QUIVER2,         MM_QUIVER3         },
-    { SHARED_BOW,       SHARED_QUIVER2,     SHARED_QUIVER3     },
-    { OOT_SLINGSHOT,    OOT_BULLET_BAG2,    OOT_BULLET_BAG3    },
-    { MM_SLINGSHOT,     MM_BULLET_BAG2,     MM_BULLET_BAG3     },
-    { SHARED_SLINGSHOT, SHARED_BULLET_BAG2, SHARED_BULLET_BAG3 },
+    { OOT_BOW,           OOT_QUIVER2,         OOT_QUIVER3        },
+    { MM_BOW,            MM_QUIVER2,          MM_QUIVER3         },
+    { SHARED_BOW,        SHARED_QUIVER2,      SHARED_QUIVER3     },
+    { OOT_SLINGSHOT,     OOT_BULLET_BAG2,     OOT_BULLET_BAG3    },
+    { MM_SLINGSHOT,      MM_BULLET_BAG2,      MM_BULLET_BAG3     },
+    { SHARED_SLINGSHOT,  SHARED_BULLET_BAG2,  SHARED_BULLET_BAG3 },
+    { OOT_MAGIC_UPGRADE, OOT_MAGIC_UPGRADE2,  0                  },
+    { MM_MAGIC_UPGRADE,  MM_MAGIC_UPGRADE2,   0                  },
 };
 
 bool ItemsShareProgressiveFamily(uint32_t ItemA, uint32_t ItemB)

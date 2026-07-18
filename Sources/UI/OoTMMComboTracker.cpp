@@ -1066,11 +1066,21 @@ void OoTMMComboTracker::LoadGameScenes(QString FilePath)
 
     switch ((TrackerVersion)version)
     {
-        case TrackerVersion::V2_0:
-        {   // Current format: re-allocate the worlds, load each one's scene objects, then entrances.
+        case TrackerVersion::V2_1:
+        {   // Current format: layout-resilient world blocks (each carries its scene count), then entrances.
 
             offset = this->ROMSettings.LoadFileSettings(&data, offset);
             offset = LoadAllWorlds(&data, offset);
+            offset = LoadEntrances(&data, offset, TrackerVersion::V2_1);
+            break;
+        }
+
+        case TrackerVersion::V2_0:
+        {   // Legacy world blocks (no scene count): best-effort load so pre-V2_1 saves don't crash.
+            // Not resilient to scene add / remove / reorder — re-save to migrate to V2_1.
+
+            offset = this->ROMSettings.LoadFileSettings(&data, offset);
+            offset = LoadAllWorlds_V2_0(&data, offset);
             offset = LoadEntrances(&data, offset, TrackerVersion::V2_0);
             break;
         }

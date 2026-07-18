@@ -37,6 +37,8 @@ public:
     EGameIcon Icon = EGameIcon::none;   // The EGameIcon associated with this widget (display + primary lookup key).
     bool IsCounter = false;             // Whether the widget shows a counter badge.
     int Count = 0;                      // Current counter value when IsCounter is true.
+    int MaxCount = 0;                   // Total pieces required to complete the item. When > 0 the badge reads "Count/MaxCount".
+    bool MaxFromSpoiler = false;        // When true, MaxCount is tallied from the loaded spoiler log (see ProgEntry) and the icon lights up on the first pickup; when false a positive MaxCount means the icon only lights once Count reaches it (song-note "full set" behaviour).
     bool Found = false;                 // True once at least one matching item has been collected.
 
     QStringList LocationsFound;         // Scenes where the item was tracked, used for the tooltip.
@@ -412,4 +414,13 @@ private:
     *   @return Every matching widget in declaration order. Empty when none.
     */
     QList<ItemIconWidget*> FindAllMatchingWidgets(const ItemInfo* Item) const;
+
+    /*
+    *   Add one to the MaxCount of every MaxFromSpoiler widget that matches the given
+    *   item. Called once per unique placement while replaying the loaded spoiler log
+    *   (collected or not), so a collectable's badge can read "collected/total".
+    *
+    *   @param Item     The item placed at the current location.
+    */
+    void TallySpoilerMax(const ItemInfo* Item);
 };

@@ -388,6 +388,18 @@ void SaveAllWorlds(QFile* SaveFile);
 size_t LoadAllWorlds(QByteArray* Data, size_t Offset);
 
 /*
+*   Legacy loader for pre-V2_1 saves (world blocks without a leading scene count). Same interface as
+*   LoadAllWorlds; kept so old saves still load (best-effort) instead of crashing. Re-save as V2_1 to
+*   get the layout-resilient format.
+*
+*   @param Data		The data that contains the worlds to load.
+*   @param Offset	The starting offset.
+*
+*	@return The end offset after the last loaded world.
+*/
+size_t LoadAllWorlds_V2_0(QByteArray* Data, size_t Offset);
+
+/*
 *   Reset all scene objects of both game.
 */
 void ResetSceneObjects();

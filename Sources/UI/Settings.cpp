@@ -417,10 +417,10 @@ void Settings::ParseStartingItems(QString& LayoutSection)
 void Settings::ParseWorldFlags(QString& LayoutSection)
 {
     this->ParseKeyRings(LayoutSection);
+    this->ParseGamesLayouts(LayoutSection);
     this->ParseSilverPouches(LayoutSection);
     this->ParseOpenDungeonsOoT(LayoutSection);
     this->ParsePreActivatedOwl(LayoutSection);
-    this->ParseGamesLayouts(LayoutSection);
 }
 
 
@@ -565,95 +565,104 @@ void Settings::ParseKeyRings(QString& LayoutSection)
 
 void Settings::ParseSilverPouches(QString& LayoutSection)
 {
+    // Which dungeon layout a silver rupee cluster belongs to. A cluster only exists
+    // when its scene's active layout matches (Both = present in Vanilla and MQ alike).
+    enum class SilverLayout { Vanilla, MasterQuest, Both };
+
+    struct SilverArea
+    {
+        const char* Key;        // Spoiler label, matching the "Silver Rupee Pouches" per-area list.
+        uint32_t RupeeId;       // Individual silver rupee item id (enabled when the area keeps its rupees).
+        uint32_t PouchId;       // Silver pouch item id (enabled when the area delivers a pouch instead).
+        uint32_t SceneId;       // Scene owning the cluster, used to read its active Vanilla/MQ layout.
+        SilverLayout Layout;    // Layout(s) the cluster exists in.
+    };
+
+    // Per-area table: which scene each cluster lives in and in which layout it exists.
+    // Derived from the OoT Vanilla / OoT MQ silver rupee location lists.
+    static const SilverArea areas[] =
+    {
+        { "Dodongo's Cavern",         OOT_RUPEE_SILVER_DC,              OOT_POUCH_SILVER_DC,              OOT_DODONGO_CAVERN,         SilverLayout::MasterQuest },
+        { "Bottom of the Well",       OOT_RUPEE_SILVER_BOTW,            OOT_POUCH_SILVER_BOTW,            OOT_BOTTOM_OF_THE_WELL,     SilverLayout::Vanilla     },
+        { "Spirit Temple (Child)",    OOT_RUPEE_SILVER_SPIRIT_CHILD,    OOT_POUCH_SILVER_SPIRIT_CHILD,    OOT_TEMPLE_SPIRIT,          SilverLayout::Vanilla     },
+        { "Spirit Temple (Sun)",      OOT_RUPEE_SILVER_SPIRIT_SUN,      OOT_POUCH_SILVER_SPIRIT_SUN,      OOT_TEMPLE_SPIRIT,          SilverLayout::Vanilla     },
+        { "Spirit Temple (Boulders)", OOT_RUPEE_SILVER_SPIRIT_BOULDERS, OOT_POUCH_SILVER_SPIRIT_BOULDERS, OOT_TEMPLE_SPIRIT,          SilverLayout::Vanilla     },
+        { "Spirit Temple (Lobby)",    OOT_RUPEE_SILVER_SPIRIT_LOBBY,    OOT_POUCH_SILVER_SPIRIT_LOBBY,    OOT_TEMPLE_SPIRIT,          SilverLayout::MasterQuest },
+        { "Spirit Temple (Adult)",    OOT_RUPEE_SILVER_SPIRIT_ADULT,    OOT_POUCH_SILVER_SPIRIT_ADULT,    OOT_TEMPLE_SPIRIT,          SilverLayout::MasterQuest },
+        { "Shadow Temple (Scythe)",   OOT_RUPEE_SILVER_SHADOW_SCYTHE,   OOT_POUCH_SILVER_SHADOW_SCYTHE,   OOT_TEMPLE_SHADOW,          SilverLayout::Both        },
+        { "Shadow Temple (Pit)",      OOT_RUPEE_SILVER_SHADOW_PIT,      OOT_POUCH_SILVER_SHADOW_PIT,      OOT_TEMPLE_SHADOW,          SilverLayout::Both        },
+        { "Shadow Temple (Spikes)",   OOT_RUPEE_SILVER_SHADOW_SPIKES,   OOT_POUCH_SILVER_SHADOW_SPIKES,   OOT_TEMPLE_SHADOW,          SilverLayout::Both        },
+        { "Shadow Temple (Blades)",   OOT_RUPEE_SILVER_SHADOW_BLADES,   OOT_POUCH_SILVER_SHADOW_BLADES,   OOT_TEMPLE_SHADOW,          SilverLayout::MasterQuest },
+        { "Ice Cavern (Scythe)",      OOT_RUPEE_SILVER_IC_SCYTHE,       OOT_POUCH_SILVER_IC_SCYTHE,       OOT_ICE_CAVERN,             SilverLayout::Vanilla     },
+        { "Ice Cavern (Block)",       OOT_RUPEE_SILVER_IC_BLOCK,        OOT_POUCH_SILVER_IC_BLOCK,        OOT_ICE_CAVERN,             SilverLayout::Vanilla     },
+        { "GTG (Slopes)",             OOT_RUPEE_SILVER_GTG_SLOPES,      OOT_POUCH_SILVER_GTG_SLOPES,      OOT_GERUDO_TRAINING_GROUND, SilverLayout::Both        },
+        { "GTG (Lava)",               OOT_RUPEE_SILVER_GTG_LAVA,        OOT_POUCH_SILVER_GTG_LAVA,        OOT_GERUDO_TRAINING_GROUND, SilverLayout::Both        },
+        { "GTG (Water)",              OOT_RUPEE_SILVER_GTG_WATER,       OOT_POUCH_SILVER_GTG_WATER,       OOT_GERUDO_TRAINING_GROUND, SilverLayout::Both        },
+        { "Ganon's Castle (Light)",   OOT_RUPEE_SILVER_GANON_LIGHT,     OOT_POUCH_SILVER_GANON_LIGHT,     OOT_INSIDE_GANON_CASTLE,    SilverLayout::Vanilla     },
+        { "Ganon's Castle (Forest)",  OOT_RUPEE_SILVER_GANON_FOREST,    OOT_POUCH_SILVER_GANON_FOREST,    OOT_INSIDE_GANON_CASTLE,    SilverLayout::Vanilla     },
+        { "Ganon's Castle (Fire)",    OOT_RUPEE_SILVER_GANON_FIRE,      OOT_POUCH_SILVER_GANON_FIRE,      OOT_INSIDE_GANON_CASTLE,    SilverLayout::Both        },
+        { "Ganon's Castle (Water)",   OOT_RUPEE_SILVER_GANON_WATER,     OOT_POUCH_SILVER_GANON_WATER,     OOT_INSIDE_GANON_CASTLE,    SilverLayout::MasterQuest },
+        { "Ganon's Castle (Shadow)",  OOT_RUPEE_SILVER_GANON_SHADOW,    OOT_POUCH_SILVER_GANON_SHADOW,    OOT_INSIDE_GANON_CASTLE,    SilverLayout::MasterQuest },
+        { "Ganon's Castle (Spirit)",  OOT_RUPEE_SILVER_GANON_SPIRIT,    OOT_POUCH_SILVER_GANON_SPIRIT,    OOT_INSIDE_GANON_CASTLE,    SilverLayout::Vanilla     },
+    };
+
+    // Step 1: disable every silver rupee and every pouch. Only the clusters that exist
+    // in the active layout are re-enabled below, each in the form the seed selected.
+    for (uint32_t i = OOT_RUPEE_SILVER_DC; i <= OOT_RUPEE_SILVER_GANON_WATER; i++) this->DisabledItemIDs.insert(i);
+    for (uint32_t i = OOT_POUCH_SILVER_DC; i <= OOT_POUCH_SILVER_GANON_WATER; i++) this->DisabledItemIDs.insert(i);
+
+    // Step 2: read the "Silver Rupee Pouches" setting into the set of areas delivering a
+    // pouch. "all" flags every area; a per-area list flags the named ones; "none" / absent
+    // leaves the set empty (every existing cluster keeps its individual rupees).
+    bool allPouches = false;
+    QSet<QString> pouchAreas;
+
     QRegularExpression reg("^  ((?:Silver Rupee Pouches):(?: \\w*|(?:\n    - .+)*))", QRegularExpression::MultilineOption);
     QRegularExpressionMatchIterator it = reg.globalMatch(LayoutSection);
-
-    for (uint32_t i = OOT_POUCH_SILVER_DC; i <= OOT_POUCH_SILVER_GANON_WATER; i++)
-    {   // Disable all OoT silver pouches by default
-
-        this->DisabledItemIDs.insert(i);
-    }
-
     while (it.hasNext())
     {
         QRegularExpressionMatch match = it.next();
         QStringList layoutParams = match.captured(1).split("\n");
 
         if (layoutParams.size() == 1)
-        {	// None or all
+        {	// "Silver Rupee Pouches: none" / ": all"
 
-            layoutParams = layoutParams.at(0).split(": ");
-            if (layoutParams.at(0) == "Silver Rupee Pouches")
-            {	// Ocarina of Time
-
-                if (layoutParams.at(1) == "all")
-                {	// All key rings
-
-                    for (uint32_t i = OOT_SMALL_KEY_FOREST; i <= OOT_SMALL_KEY_GTG; i++)
-                    {   // Disable all OoT small keys
-
-                        this->DisabledItemIDs.insert(i);
-                    }
-
-                    for (uint32_t i = OOT_KEY_RING_FOREST; i <= OOT_KEY_RING_GTG; i++)
-                    {   // Enable all OoT key rings
-
-                        this->DisabledItemIDs.remove(i);
-                    }
-
-                    if (this->FilterSettings["smallKeyShuffleChestGame"].Value != ShuffleSetting::vanilla)
-                    {
-                        this->DisabledItemIDs.insert(OOT_SMALL_KEY_TCG);
-                        this->DisabledItemIDs.remove(OOT_KEY_RING_TCG);
-                    }
-
-                }
+            QStringList kv = layoutParams.at(0).split(": ");
+            if (kv.size() == 2 && kv.at(0) == "Silver Rupee Pouches" && kv.at(1) == "all")
+            {
+                allPouches = true;
             }
+        }
+        else if (layoutParams.at(0) == "Silver Rupee Pouches:")
+        {	// Per-area list
+
+            for (qsizetype i = 1; i < layoutParams.size(); i++)
+            {
+                QString tmp = layoutParams.at(i);
+                pouchAreas.insert(tmp.replace("    - ", ""));
+            }
+        }
+    }
+
+    // Step 3: re-enable each cluster that exists in its scene's active layout, as a pouch
+    // when the setting selected it, otherwise as individual silver rupees.
+    for (const SilverArea& area : areas)
+    {
+        SceneMetaInfo* info = GetSceneMetaInfo(area.SceneId, OOT_GAME);
+        bool isMQ = (info != nullptr && info->ActiveLayout == GameLayout::oot_mq);
+
+        bool exists = (area.Layout == SilverLayout::Both)
+            || (area.Layout == SilverLayout::MasterQuest && isMQ)
+            || (area.Layout == SilverLayout::Vanilla && !isMQ);
+        if (!exists) continue;
+
+        if (allPouches || pouchAreas.contains(QString::fromUtf8(area.Key)))
+        {
+            this->DisabledItemIDs.remove(area.PouchId);   // deliver a pouch here
         }
         else
         {
-            if (layoutParams.at(0) == "Silver Rupee Pouches:")
-            {	// Ocarina of Time
-
-                QMap<QString, QPair<uint32_t, uint32_t>> possibleChoice =
-                {
-                    { "Dodongo's Cavern", { OOT_RUPEE_SILVER_DC, OOT_POUCH_SILVER_DC } },
-                    { "Bottom of the Well", { OOT_RUPEE_SILVER_BOTW, OOT_POUCH_SILVER_BOTW } },
-                    { "Spirit Temple (Child)", { OOT_RUPEE_SILVER_SPIRIT_CHILD, OOT_POUCH_SILVER_SPIRIT_CHILD } },
-                    { "Spirit Temple (Sun)", { OOT_RUPEE_SILVER_SPIRIT_SUN, OOT_POUCH_SILVER_SPIRIT_SUN } },
-                    { "Spirit Temple (Boulders)", { OOT_RUPEE_SILVER_SPIRIT_BOULDERS, OOT_POUCH_SILVER_SPIRIT_BOULDERS } },
-                    { "Spirit Temple (Lobby)", { OOT_RUPEE_SILVER_SPIRIT_LOBBY, OOT_POUCH_SILVER_SPIRIT_LOBBY } },
-                    { "Spirit Temple (Adult)", { OOT_RUPEE_SILVER_SPIRIT_ADULT, OOT_POUCH_SILVER_SPIRIT_ADULT } },
-                    { "Shadow Temple (Scythe)", { OOT_RUPEE_SILVER_SHADOW_SCYTHE, OOT_POUCH_SILVER_SHADOW_SCYTHE } },
-                    { "Shadow Temple (Pit)", { OOT_RUPEE_SILVER_SHADOW_PIT, OOT_POUCH_SILVER_SHADOW_PIT } },
-                    { "Shadow Temple (Spikes)", { OOT_RUPEE_SILVER_SHADOW_SPIKES, OOT_POUCH_SILVER_SHADOW_SPIKES } },
-                    { "Shadow Temple (Blades)", { OOT_RUPEE_SILVER_SHADOW_BLADES, OOT_POUCH_SILVER_SHADOW_BLADES } },
-                    { "Ice Cavern (Scythe)", { OOT_RUPEE_SILVER_IC_SCYTHE, OOT_POUCH_SILVER_IC_SCYTHE } },
-                    { "Ice Cavern (Block)", { OOT_RUPEE_SILVER_IC_BLOCK, OOT_POUCH_SILVER_IC_BLOCK } },
-                    { "GTG (Slopes)", { OOT_RUPEE_SILVER_GTG_SLOPES, OOT_POUCH_SILVER_GTG_SLOPES } },
-                    { "GTG (Lava)", { OOT_RUPEE_SILVER_GTG_LAVA, OOT_POUCH_SILVER_GTG_LAVA } },
-                    { "GTG (Water)", { OOT_RUPEE_SILVER_GTG_WATER, OOT_POUCH_SILVER_GTG_WATER } },
-                    { "Ganon's Castle (Light)", { OOT_RUPEE_SILVER_GANON_LIGHT,  OOT_POUCH_SILVER_GANON_LIGHT } },
-                    { "Ganon's Castle (Forest)", { OOT_RUPEE_SILVER_GANON_FOREST, OOT_POUCH_SILVER_GANON_FOREST } },
-                    { "Ganon's Castle (Fire)", { OOT_RUPEE_SILVER_GANON_FIRE, OOT_POUCH_SILVER_GANON_FIRE } },
-                    { "Ganon's Castle (Water)", { OOT_RUPEE_SILVER_GANON_WATER, OOT_POUCH_SILVER_GANON_WATER } },
-                    { "Ganon's Castle (Shadow)", { OOT_RUPEE_SILVER_GANON_SHADOW, OOT_POUCH_SILVER_GANON_SHADOW } },
-                    { "Ganon's Castle (Spirit)", { OOT_RUPEE_SILVER_GANON_SPIRIT, OOT_POUCH_SILVER_GANON_SPIRIT } }
-                };
-
-                for (qsizetype i = 1; i < layoutParams.size(); i++)
-                {
-                    QString currKey = layoutParams.at(i);
-                    currKey = currKey.replace("    - ", "");
-
-                    auto choice = possibleChoice.find(currKey);
-                    if (choice != possibleChoice.end())
-                    {
-                        this->DisabledItemIDs.insert(choice.value().first); // Disable sivler rupees
-                        this->DisabledItemIDs.remove(choice.value().second);  // Enable silver pouches
-                    }
-                }
-            }
+            this->DisabledItemIDs.remove(area.RupeeId);   // deliver individual silver rupees
         }
     }
 }
@@ -722,12 +731,6 @@ void Settings::ParsePreActivatedOwl(QString& LayoutSection)
     QRegularExpression reg("^  ((?:Pre-Activated Owl Statues):(?: \\w*|(?:\n    - .+)*))", QRegularExpression::MultilineOption);
     QRegularExpressionMatchIterator it = reg.globalMatch(LayoutSection);
 
-    for (uint32_t i = OOT_POUCH_SILVER_DC; i <= OOT_POUCH_SILVER_GANON_WATER; i++)
-    {   // Disable all OoT silver pouches by default
-
-        this->DisabledItemIDs.insert(i);
-    }
-
     while (it.hasNext())
     {
         QRegularExpressionMatch match = it.next();
@@ -741,7 +744,7 @@ void Settings::ParsePreActivatedOwl(QString& LayoutSection)
             {	// Ocarina of Time
 
                 if (layoutParams.at(1) == "all")
-                {	// All key rings
+                {	// All owl statues
 
                     for (uint32_t i = MM_OWL_GREAT_BAY; i <= MM_OWL_STONE_TOWER; i++)
                     {   // Add all owls status

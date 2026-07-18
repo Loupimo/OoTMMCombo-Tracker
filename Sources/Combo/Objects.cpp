@@ -794,7 +794,14 @@ size_t LoadSceneObjectsFor(QByteArray* Data, size_t Offset, SceneObjects * Array
 				for (size_t j = 0; j < Array[i].NumOfObjs; j++)
 				{	// Load all objects
 
-					Offset = Array[i].Objects[j].LoadObject(Data, Offset);
+                    uint32_t objID = 0;
+                    memcpy_s(&objID, sizeof(objID), Data->data() + Offset, sizeof(objID));
+                    Offset += sizeof(objID);
+
+                    if (objID == Array[i].Objects[j].ObjectID)
+                    {
+                        Offset = Array[i].Objects[j].LoadObject(Data, Offset);
+                    }
 				}
 			}
             else
@@ -835,6 +842,15 @@ void ResetSceneObjectsFor(SceneObjects* Array, size_t NumOfScenes)
 */
 static void SaveWorldSceneArray(QFile* SaveFile, SceneObjects* Array, size_t NumOfScenes)
 {
+	// Lead with the number of scene blocks so the loader knows exactly how many to read, without
+	// relying on the current OOT_NUM_SCENES / MM_NUM_SCENES (which can grow when scenes are added).
+	// Each block is self-describing (scene id + object count), so LoadWorldSceneArray stays aligned
+	// even if scenes or objects were added / removed / reordered since the save was written.
+	QByteArray sceneCountBuf(sizeof(uint32_t), 0);
+	uint32_t sceneCount = (uint32_t)NumOfScenes;
+	memcpy_s(sceneCountBuf.data(), sizeof(uint32_t), &sceneCount, sizeof(sceneCount));
+	SaveFile->write(sceneCountBuf);
+
 	QByteArray ID(sizeof(uint32_t), 0);
 	QByteArray numObj(sizeof(size_t), 0);
 
@@ -854,16 +870,94 @@ static void SaveWorldSceneArray(QFile* SaveFile, SceneObjects* Array, size_t Num
 }
 
 /*
-*   Like LoadSceneObjectsFor but also reads each placement's TargetWorld (V2_0 layout).
+*   Like LoadSceneObjectsFor but also reads each placement's TargetWorld (V2_0 layout), and is
+*   resilient to layout changes: the number of saved scene blocks is read from the file (not derived
+*   from the current OOT_NUM_SCENES / MM_NUM_SCENES), scenes and objects are matched by id rather than
+*   by position, and every record is consumed so the stream stays aligned. Scenes / objects that no
+*   longer exist are read then discarded; scenes / objects added since the save simply keep their
+*   default (uncollected, no item) state.
 */
 static size_t LoadWorldSceneArray(QByteArray* Data, size_t Offset, SceneObjects* Array, size_t NumOfScenes)
 {
+	// Number of scene blocks written for this world/game.
+	if ((qsizetype)(Offset + sizeof(uint32_t)) > Data->size()) return Data->size();
+	uint32_t sceneCount = 0;
+	memcpy_s(&sceneCount, sizeof(sceneCount), Data->data() + Offset, sizeof(sceneCount));
+	Offset += sizeof(sceneCount);
+
+	for (uint32_t s = 0; s < sceneCount; s++)
+	{
+		if ((qsizetype)(Offset + sizeof(uint32_t) + sizeof(size_t)) > Data->size()) return Data->size();
+
+		uint32_t sceneID = 0;
+		memcpy_s(&sceneID, sizeof(sceneID), Data->data() + Offset, sizeof(sceneID));
+		Offset += sizeof(sceneID);
+
+		size_t numObjs = 0;
+		memcpy_s(&numObjs, sizeof(numObjs), Data->data() + Offset, sizeof(numObjs));
+		Offset += sizeof(numObjs);
+
+		// Match the saved scene against the current array by id (a scene may have moved or vanished).
+		SceneObjects* scene = nullptr;
+		for (size_t i = 0; i < NumOfScenes; i++)
+		{
+			if (Array[i].SceneID == sceneID)
+			{
+				scene = &Array[i];
+				break;
+			}
+		}
+
+		for (size_t currObj = 0; currObj < numObjs; currObj++)
+		{
+			uint32_t objID = 0;
+			memcpy_s(&objID, sizeof(objID), Data->data() + Offset, sizeof(objID));
+			Offset += sizeof(objID);
+
+			// Match the saved object against the found scene by id (search, not positional).
+			ObjectInfo* target = nullptr;
+			if (scene != nullptr)
+			{
+				for (size_t k = 0; k < scene->NumOfObjs; k++)
+				{
+					if (scene->Objects[k].ObjectID == objID)
+					{
+						target = &scene->Objects[k];
+						break;
+					}
+				}
+			}
+
+			if (target != nullptr)
+			{
+				Offset = target->LoadObject(Data, Offset, true);
+			}
+			else
+			{   // Scene or object no longer exists: consume the record so the stream stays aligned.
+
+				ObjectInfo tmp;
+				Offset = tmp.LoadObject(Data, Offset, true);
+			}
+		}
+	}
+
+	return Offset;
+}
+
+/*
+*   Legacy V2_0 world loader: the block does NOT store a scene count, so scenes are read in lockstep
+*   with the current array (one block per current scene). Objects are still matched by id. Kept only
+*   to load pre-V2_1 saves without crashing; it is not resilient to scene add / remove / reorder
+*   (that is exactly why V2_1 exists), so such saves should be re-saved as V2_1.
+*/
+static size_t LoadWorldSceneArray_V2_0(QByteArray* Data, size_t Offset, SceneObjects* Array, size_t NumOfScenes)
+{
 	for (size_t i = 0; i < NumOfScenes; i++)
 	{
-        if (Data->size() < (qsizetype)Offset)
-        {
-            return Data->size();
-        }
+		if (Data->size() < (qsizetype)Offset)
+		{
+			return Data->size();
+		}
 		uint32_t sceneID = 0;
 		memcpy_s(&sceneID, sizeof(sceneID), Data->data() + Offset, sizeof(sceneID));
 		Offset += sizeof(sceneID);
@@ -874,49 +968,31 @@ static size_t LoadWorldSceneArray(QByteArray* Data, size_t Offset, SceneObjects*
 			memcpy_s(&numObjs, sizeof(numObjs), Data->data() + Offset, sizeof(numObjs));
 			Offset += sizeof(numObjs);
 
-            for (size_t currObj = 0; currObj < numObjs; currObj++)
-            {
-                bool found = false;
-
-                // Load ID
-                uint32_t objID = 0;
-                memcpy_s(&objID, sizeof(objID), Data->data() + Offset, sizeof(objID));
-                Offset += sizeof(objID);
-
-                for (size_t k = 0; k < Array[i].NumOfObjs; k++)
-                {
-                    if (Array[i].Objects[k].ObjectID == objID)
-                    {
-                        Offset = Array[i].Objects[k].LoadObject(Data, Offset, true);
-                        found = true;
-                        break;
-                    }
-                }
-
-                if (!found)
-                {   // Ensure that the file data are read even if we discard the object
-
-                    ObjectInfo tmp;
-                    Offset = tmp.LoadObject(Data, Offset, true);
-                }
-            }
-
-            /*if (numObjs <= Array[i].NumOfObjs)
+			for (size_t currObj = 0; currObj < numObjs; currObj++)
 			{
-				for (size_t j = 0; j < numObjs; j++)
+				bool found = false;
+
+				uint32_t objID = 0;
+				memcpy_s(&objID, sizeof(objID), Data->data() + Offset, sizeof(objID));
+				Offset += sizeof(objID);
+
+				for (size_t k = 0; k < Array[i].NumOfObjs; k++)
 				{
-					Offset = Array[i].Objects[j].LoadObject(Data, Offset, true);
+					if (Array[i].Objects[k].ObjectID == objID)
+					{
+						Offset = Array[i].Objects[k].LoadObject(Data, Offset, true);
+						found = true;
+						break;
+					}
+				}
+
+				if (!found)
+				{   // Consume the record even when discarded so the stream stays aligned.
+
+					ObjectInfo tmp;
+					Offset = tmp.LoadObject(Data, Offset, true);
 				}
 			}
-            else
-            {
-                for (size_t j = 0; j < Array[i].NumOfObjs; j++)
-                {
-                    Offset = Array[i].Objects[j].LoadObject(Data, Offset, true);
-                }
-
-                Offset += (numObjs - Array[i].NumOfObjs) * (sizeof(uint32_t) * 4);
-            }*/
 		}
 	}
 
@@ -960,6 +1036,29 @@ size_t LoadAllWorlds(QByteArray* Data, size_t Offset)
 	{
 		Offset = LoadWorldSceneArray(Data, Offset, GetWorldSceneObjects(w, OOT_GAME), OOT_NUM_SCENES);
 		Offset = LoadWorldSceneArray(Data, Offset, GetWorldSceneObjects(w, MM_GAME), MM_NUM_SCENES);
+	}
+
+	return Offset;
+}
+
+size_t LoadAllWorlds_V2_0(QByteArray* Data, size_t Offset)
+{
+	// Legacy loader for pre-V2_1 saves (no per-block scene count): same world header, but each
+	// world/game block is read in lockstep with the current scene arrays (see LoadWorldSceneArray_V2_0).
+	uint32_t numWorlds = 1;
+	memcpy_s(&numWorlds, sizeof(numWorlds), Data->data() + Offset, sizeof(numWorlds));
+	Offset += sizeof(numWorlds);
+	if (numWorlds < 1) numWorlds = 1;
+
+	if (GetNumWorlds() != (size_t)numWorlds)
+	{
+		InitWorlds((size_t)numWorlds);
+	}
+
+	for (uint32_t w = 0; w < numWorlds; w++)
+	{
+		Offset = LoadWorldSceneArray_V2_0(Data, Offset, GetWorldSceneObjects(w, OOT_GAME), OOT_NUM_SCENES);
+		Offset = LoadWorldSceneArray_V2_0(Data, Offset, GetWorldSceneObjects(w, MM_GAME), MM_NUM_SCENES);
 	}
 
 	return Offset;
