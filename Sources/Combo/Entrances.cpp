@@ -667,7 +667,7 @@ bool EntranceHelper::IsMMExtra(EntranceMessage& Message)
     {
         case MM_GAME:
         {
-            switch (Message.SceneID)
+            switch (Message.CurrSceneID)
             {
 
                 case MM_EXTRA:
@@ -2673,7 +2673,7 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
     }
     else if (Message.GameID == MM_GAME)
     {
-        switch (Message.SceneID)
+        switch (Message.CurrSceneID)
         {
             case MM_SOUTHERN_SWAMP_CLEAR:
             {
@@ -3031,6 +3031,7 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                         break;
                     }
 
+                    case MM_GROTTO_EXIT_BEAN:
                     case MM_GROTTO_BEAN_ENTR:
                     {   // Deku palace beans grotto entry
 
