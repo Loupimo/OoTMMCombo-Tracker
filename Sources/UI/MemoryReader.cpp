@@ -391,7 +391,7 @@ void MemoryReader::RunMemoryReader()
         if (IsActiveROMVersionFromSpoiler())
         {
             this->DLLData->HostROMVersion =
-                (GetActiveROMVersion() == ROMVersion::stable) ? HOST_VER_STABLE : HOST_VER_DEV;
+                (GetActiveROMVersion() == ROMVersion::stable_30_1) ? HOST_VER_STABLE : HOST_VER_DEV;
         }
 
         while (i < this->DLLData->CurrIndex && i < this->DLLData->MaxSize)

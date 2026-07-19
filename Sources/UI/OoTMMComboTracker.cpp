@@ -1143,9 +1143,9 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
 
             if (this->ROMSettings.Version == ROMVersion::stable)
             {
-                if (version == "v31.1")
+                if (version == "v30.1")
                 {
-                    this->ROMSettings.Version = ROMVersion::stable_31_1;
+                    this->ROMSettings.Version = ROMVersion::stable_30_1;
                 }
             }
         }

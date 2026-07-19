@@ -6,7 +6,7 @@
 
 Settings::Settings()
 {
-    this->Version = ROMVersion::stable_31_1;
+    this->Version = ROMVersion::stable;
 	this->Game = ROMGame::ootmm;
 	this->Mode = GameMode::single;
     this->Goal = GoalMode::boss;

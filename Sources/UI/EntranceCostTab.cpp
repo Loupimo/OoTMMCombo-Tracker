@@ -678,7 +678,7 @@ EntranceCostTab::EntranceCostTab(EntranceTab* Parent) : QWidget(Parent)
         "<li>No Epona travel (unless required).</li>"
         "<li>If you did not turn on Wallmaster randomization don't waste your time with them - the timer will not stop.</li>"
         "</ol>"
-        "<p>Tips: you can make a savestate before exiting a scene. Thus, once you have done a route that specific spawn you can reload just before spawning and then try another route for that spawn.</p>"
+        "<p>Tips: you can make a savestate before exiting a scene. Thus, once you have done a route for that specific spawn you can reload your state just before spawning and then try another route for that same spawn.</p>"
         "<p>This is pretty useful for entrances that requires you to do a long road before spawning by them again.</p>"
         "<p>Example: Let's say you want to try all the ways in Ikana Canyon starting from Sakon Hideout, first make a save state inside sakon hideout, then go to Ikana Canyon and do the route you want, then reload your save and go to Ikana Canyon and do another road. Repeat the process until your are done.");
     this->RulesLabel->setTextFormat(Qt::RichText);

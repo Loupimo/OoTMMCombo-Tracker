@@ -1349,7 +1349,7 @@ ROMVersion GetActiveROMVersion()
 
 uint32_t ResolveRawItemID(uint32_t RawItemID)
 {
-    if (ActiveROMVersion != ROMVersion::stable)
+    if (ActiveROMVersion != ROMVersion::stable_30_1)
     {   // Dev builds already use the tracker's internal numbering: nothing to translate.
 
         return RawItemID;
@@ -1380,7 +1380,7 @@ uint32_t ResolveRawItemID(uint32_t RawItemID)
 
 uint32_t ResolveRawOoTNpcID(uint32_t RawNpcID)
 {
-    if (ActiveROMVersion != ROMVersion::stable)
+    if (ActiveROMVersion != ROMVersion::stable_30_1)
     {   // Dev builds already use the tracker's internal NPC numbering.
 
         return RawNpcID;

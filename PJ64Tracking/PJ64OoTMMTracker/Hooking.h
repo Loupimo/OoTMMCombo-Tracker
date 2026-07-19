@@ -49,7 +49,7 @@
 #define OOT_BUTTERFLY_ID     0x0000001E     // The OoT butterfly actor ID.
 #define MM_BUTTERFLY_ID      0x00000015     // The MM butterfly actor ID.
 #define STABLE_NOTHING       0x0000033C     // The Nothing item ID for stable release (30.1).
-#define DEV_NOTHING          0x0000035D     // The Nothing item ID for dev release.
+#define DEV_NOTHING          0x000003A7     // The Nothing item ID for last dev release.
 
 // Entrance stuff
 //#define OOT_SCENE_OFFSET     0x00001A68     // The offset to add to the real game address to reach the gLastScene for OoT

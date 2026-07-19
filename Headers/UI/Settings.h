@@ -11,8 +11,8 @@ struct SceneObjects;
 
 enum class ROMVersion
 {
-    stable, // 30.1
-    stable_31_1,
+    stable_30_1,
+    stable,     // Latest stable release
     dev
 };
 
