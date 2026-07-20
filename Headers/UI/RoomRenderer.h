@@ -36,9 +36,9 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms =
 		OOT_DEATH_MOUNTAIN_TRAIL,
 		std::vector<RoomInfo>(
 			{
-				{ 0, "Bottom", "./Resources/OoT/Death_Mountain_Trail/Bottom.png" },
-				{ 1, "Middle", "./Resources/OoT/Death_Mountain_Trail/Middle.png" },
-				{ 2, "Top", "./Resources/OoT/Death_Mountain_Trail/Top.png" }
+				{ 0, "Bottom", "./Resources/OoT/Death_Mountain_Trail/Bottom.jpg" },
+				{ 1, "Middle", "./Resources/OoT/Death_Mountain_Trail/Middle.jpg" },
+				{ 2, "Top", "./Resources/OoT/Death_Mountain_Trail/Top.jpg" }
 			}
 		)
 	},
