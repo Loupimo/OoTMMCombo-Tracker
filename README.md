@@ -80,13 +80,20 @@ If you are unable to unzip the PJ64Injector.exe try the following:
 
 # For the dev
 
-The solution is built with **Visual Studio (MSVC)** — no CMake, no Makefile — and contains three projects that build independently:
+The solution is built with **Visual Studio 2022 (v143)** — no CMake, no Makefile — and contains three projects that build independently:
 
 - **Main tracker app** (root `.vcxproj`) — the Qt GUI application
 - **PJ64Injector** (`PJ64Injector/`) — CLI tool that injects the tracking DLL into Project64
 - **PJ64OoTMMTracker** (`PJ64Tracking/PJ64OoTMMTracker/`) — the Windows DLL that hooks Project64 internals
 
-Building requires **[Qt 6.9.1](https://www.qt.io/download)** installed and linked (the Qt libraries are dynamically linked).
+Building requires **[Qt 6.9.1](https://www.qt.io/development/download-qt-installer-oss)** installed and linked (the Qt libraries are dynamically linked).
+The installation settings used are the following
+
+<img width="926" height="641" alt="image" src="qt-conf.png" />
+
+Once you have built the project you can use the following command to run the .exe without the need of the IDE:
+- **For the release version** : windeployqt --release <path_to_the_release_folder>/OoTMMCombo-Tracker.exe
+- **For the debug version** : windeployqt --debug <path_to_the_debug_folder>/OoTMMCombo-Tracker.exe
 
 # 📜 Licenses used in this project
 

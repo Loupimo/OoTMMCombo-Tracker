@@ -54,7 +54,15 @@ namespace
         }
 
         const char* Name = nullptr;
-        if (Meta->FromSceneID == CurrentSceneID)
+        if (Meta->FromSceneID == Meta->ToSceneID)
+        {   // Self-loop entrance (wallmaster, Gerudo "caught", castle "gate", ...): there is no
+            // "other side" - both ends are in CurrentSceneID and ToName is just the generic scene
+            // name. FromName carries the descriptive label ("Wallmaster - Spirit Trial", ...), so
+            // use it - otherwise every such entry in a scene collapses to the same scene name and
+            // the rows look like duplicates.
+            Name = Meta->FromName;
+        }
+        else if (Meta->FromSceneID == CurrentSceneID)
         {
             Name = Meta->ToName;
         }
@@ -296,6 +304,58 @@ namespace
         }
         return S.toUInt(Ok, 10);
     }
+
+
+    /*
+    *   Translate the raw entrance ID carried by an OUT message (and therefore stored in the CSV)
+    *   into the ID the cost table uses in its "To" column.
+    *
+    *   The N64 entrance index always encodes the DESTINATION of a transition, so for a one-way
+    *   pair the game emits the One_Way_In half even when the player is LEAVING the other scene.
+    *   Example: jumping the Lon Lon Ranch fence emits 0x28a ("Hyrule Field - Jump Middle Fence",
+    *   One_Way_In) while the cost table lists the exit through its One_Way_Out partner 0x28a0
+    *   ("Lon Lon's Ranch -> Jump Middle Fence"), because that is the entry physically located in
+    *   the scene being left. Without this translation neither the CSV nor the live measurement
+    *   ever matches a row and every one-way exit stays red.
+    *
+    *   The emitted half is usually typed One_Way_In, but not always: a few pairs carry it as
+    *   Type::None (the Ganondorf cutscene out of Ganon Tower, the cleared-swamp Ikana waterfalls).
+    *   The type of the emitted half is therefore NOT the discriminator - what matters is that its
+    *   partner is a One_Way_Out living in the scene being left. Normal entrances are rejected by
+    *   that partner test (their partner is the reverse Normal entry, never a One_Way_Out).
+    *
+    *   Pairs already normalized upstream by EntranceHelper::CheckSpecialCase (the Gerudo "caught"
+    *   cases) arrive as a One_Way_Out ID and are returned untouched.
+    *
+    *   @param Game          OOT_GAME or MM_GAME.
+    *   @param EntranceID    The entrance ID as emitted by the game / read back from the CSV.
+    *   @param SceneID       The scene the player was leaving when the OUT was emitted.
+    *
+    *   @return The One_Way_Out partner ID when the pair exists in this scene, otherwise
+    *           EntranceID unchanged.
+    */
+    uint32_t NormalizeOutEntranceID(int Game, uint32_t EntranceID, uint32_t SceneID)
+    {
+        const EntranceMetaInfo* Meta = EntranceHelper::GetEntranceMetaInf(Game, EntranceID);
+        if (Meta == nullptr || Meta->Type == EntranceType::One_Way_Out)
+        {   // Unknown, or already the exact key the table rows are built on.
+
+            return EntranceID;
+        }
+
+        // The emitted half stores the key of its One_Way_Out partner in FromEntranceID.
+        const EntranceMetaInfo* Partner = EntranceHelper::GetEntranceMetaInf(Game, Meta->FromEntranceID);
+        if (Partner == nullptr || Partner->Type != EntranceType::One_Way_Out)
+        {
+            return EntranceID;
+        }
+        if (Partner->ToSceneID != SceneID)
+        {   // Partner lives in another scene (warp song / owl choice node, ...) - not our exit.
+
+            return EntranceID;
+        }
+        return Meta->FromEntranceID;
+    }
 }
 
 
@@ -308,6 +368,7 @@ void EntranceCostModel::LoadCsv(const QString& Path)
     {
         Row.BestSec = -1.0;
         Row.LastSec = -1.0;
+        Row.Impossible = false;
     }
 
     QFile File(Path);
@@ -333,16 +394,21 @@ void EntranceCostModel::LoadCsv(const QString& Path)
     // measurement runs), keep BOTH the fastest time (= best, lights up the green status stripe
     // and feeds the GPS pathfinder) AND the most recent time (= last, shown next to the best to
     // give a sense of "what's my current pace vs my record").
+    // A negative ElapsedSec is not a measurement: it is the hand-written "this walk is impossible
+    // in that direction" marker. It only raises the Impossible flag, and any real measurement for
+    // the same key clears it again (the pair turned out to be walkable after all).
     struct CsvAggregate
     {
         double Best = -1.0;
         double Last = -1.0;
+        bool Impossible = false;
     };
     std::map<std::tuple<uint8_t, uint32_t, uint32_t, uint32_t>, CsvAggregate> Times;
 
     int LineNo = 0;
     int Parsed = 0;
     int Skipped = 0;
+    int Impossibles = 0;
 
     QTextStream Stream(&File);
     bool FirstLine = true;
@@ -377,10 +443,22 @@ void EntranceCostModel::LoadCsv(const QString& Path)
         const uint32_t To = ParseUIntFlexible(Fields[4], &Ok);
         if (!Ok) { ++Skipped; continue; }
         const double Elapsed = Fields[6].trimmed().toDouble(&Ok);
-        if (!Ok || Elapsed < 0.0) { ++Skipped; continue; }
+        if (!Ok) { ++Skipped; continue; }
 
         ++Parsed;
-        CsvAggregate& Agg = Times[std::make_tuple(Game, SceneID, From, To)];
+        // One-way exits are written with the raw ID emitted by the game (the One_Way_In half of
+        // the pair); the table rows are keyed on the One_Way_Out half. Translate before indexing.
+        const uint32_t ToKey = NormalizeOutEntranceID((int)Game, To, SceneID);
+        CsvAggregate& Agg = Times[std::make_tuple(Game, SceneID, From, ToKey)];
+
+        if (Elapsed < 0.0)
+        {   // Impossible marker - flag the pair but leave the times untouched.
+
+            ++Impossibles;
+            Agg.Impossible = true;
+            continue;
+        }
+
         Agg.Last = Elapsed;     // CSV rows are read in append order so the final write wins.
         if (Agg.Best < 0.0 || Elapsed < Agg.Best)
         {
@@ -396,12 +474,14 @@ void EntranceCostModel::LoadCsv(const QString& Path)
         {
             Row.BestSec = It->second.Best;
             Row.LastSec = It->second.Last;
+            // A real measurement always wins over the impossible marker.
+            Row.Impossible = It->second.Impossible && It->second.Best < 0.0;
             ++Matched;
         }
     }
 
-    MultiLogger::LogMessage("[CostTab] CSV: %d data rows parsed, %d malformed/skipped, %d unique (Game,Scene,From,To) keys, %d matched to a table row (out of %d table rows).",
-        Parsed, Skipped, (int)Times.size(), Matched, (int)this->Rows.size());
+    MultiLogger::LogMessage("[CostTab] CSV: %d data rows parsed (%d impossible markers), %d malformed/skipped, %d unique (Game,Scene,From,To) keys, %d matched to a table row (out of %d table rows).",
+        Parsed, Impossibles, Skipped, (int)Times.size(), Matched, (int)this->Rows.size());
 
     // Now that the elapsed times are merged in, refresh the status stripe colors so the rows
     // with known measurements light up green and the unknown ones stay red.
@@ -436,10 +516,18 @@ QVariant EntranceCostModel::data(const QModelIndex& Index, int Role) const
 
     const EntranceCostRow& Row = this->Rows[Index.row()];
 
-    auto FormatSeconds = [](double Sec) -> QString
+    // Impossible walks show an explicit "N/A" rather than an empty cell so they don't look like
+    // a pair still waiting for a contribution.
+    auto FormatSeconds = [&Row](double Sec) -> QString
     {
+        if (Row.Impossible) return QString("N/A");
         return (Sec < 0.0) ? QString() : QString::number(Sec, 'f', 2);
     };
+
+    if (Role == Qt::ToolTipRole && Row.Impossible)
+    {
+        return QString("This walk is flagged as impossible in that direction (negative time in the CSV).");
+    }
 
     if (Role == Qt::DisplayRole)
     {
@@ -526,7 +614,11 @@ void EntranceCostModel::RebuildRowStatusColors()
     this->RowStatusColors.reserve(this->Rows.size());
     for (const EntranceCostRow& Row : this->Rows)
     {
-        if (Row.BestSec < 0.0)
+        if (Row.Impossible)
+        {
+            this->RowStatusColors.push_back(QColor(110, 110, 110));     // gray - walk flagged impossible
+        }
+        else if (Row.BestSec < 0.0)
         {
             this->RowStatusColors.push_back(QColor(200, 60, 60));       // red - missing measurement
         }
@@ -542,6 +634,10 @@ void EntranceCostModel::OnEntranceCostMeasured(int Game, uint32_t SceneID, uint3
 {
     if (ElapsedSec < 0.0) return;
 
+    // Same translation as in LoadCsv: the writer hands us the raw ID emitted by the game, which
+    // for a one-way pair is the One_Way_In half while the rows are keyed on the One_Way_Out half.
+    const uint32_t ToKey = NormalizeOutEntranceID(Game, ToEntranceID, SceneID);
+
     // Linear scan - rows aren't keyed, but ~5k entries take microseconds and this is called once
     // per traversal so the simplicity wins over a side index.
     for (size_t i = 0; i < this->Rows.size(); ++i)
@@ -550,15 +646,18 @@ void EntranceCostModel::OnEntranceCostMeasured(int Game, uint32_t SceneID, uint3
         if ((int)Row.Game != Game) continue;
         if (Row.SceneID != SceneID) continue;
         if (Row.FromEntranceID != FromEntranceID) continue;
-        if (Row.ToEntranceID != ToEntranceID) continue;
+        if (Row.ToEntranceID != ToKey) continue;
 
         // LastSec always tracks the most recent measurement, BestSec only updates when the
         // new time beats the previous record (or there was no record yet).
         Row.LastSec = ElapsedSec;
+        // The player just walked it, so any "impossible" marker from the CSV is stale.
+        const bool WasImpossible = Row.Impossible;
+        Row.Impossible = false;
         const bool BestUpdated = (Row.BestSec < 0.0 || ElapsedSec < Row.BestSec);
-        if (BestUpdated)
+        if (BestUpdated || WasImpossible)
         {
-            Row.BestSec = ElapsedSec;
+            if (BestUpdated) Row.BestSec = ElapsedSec;
             if (i < this->RowStatusColors.size())
             {
                 this->RowStatusColors[i] = QColor(60, 180, 80);     // green - first measurement or new record
@@ -567,7 +666,7 @@ void EntranceCostModel::OnEntranceCostMeasured(int Game, uint32_t SceneID, uint3
         const QModelIndex Top = this->index((int)i, 0);
         const QModelIndex Bottom = this->index((int)i, this->columnCount() - 1);
         emit dataChanged(Top, Bottom);
-        if (BestUpdated)
+        if (BestUpdated || WasImpossible)
         {
             emit headerDataChanged(Qt::Vertical, (int)i, (int)i);
         }
@@ -635,13 +734,15 @@ bool EntranceCostFilterProxy::filterAcceptsRow(int SourceRow, const QModelIndex&
     {
         return true;
     }
-    // Hide rows that already have at least one measurement (BestSec >= 0).
+    // Hide rows that already have at least one measurement (BestSec >= 0), and the ones flagged
+    // impossible - neither needs a contribution.
     const EntranceCostModel* Src = qobject_cast<const EntranceCostModel*>(this->sourceModel());
     if (Src == nullptr || SourceRow < 0 || SourceRow >= (int)Src->Rows.size())
     {
         return true;
     }
-    return Src->Rows[SourceRow].BestSec < 0.0;
+    const EntranceCostRow& Row = Src->Rows[SourceRow];
+    return Row.BestSec < 0.0 && !Row.Impossible;
 }
 
 #pragma endregion // EntranceCostFilterProxy

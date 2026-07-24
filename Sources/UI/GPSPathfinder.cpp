@@ -53,6 +53,50 @@ namespace
     }
 
 
+    /*
+    *   True when the given scene is one of the synthetic buckets the entrance data uses to park
+    *   nodes that have no physical location: the warp song / owl choice menus, the generic grotto
+    *   interiors and the cutscene / extra maps. "Walking" between two entrances of such a scene is
+    *   meaningless - you cannot stroll from one grotto interior to another - so their layout costs
+    *   must never become graph edges.
+    *
+    *   @param Game       OOT_GAME or MM_GAME.
+    *   @param SceneID    The scene to test.
+    *
+    *   @return True when the scene is synthetic.
+    */
+    inline bool IsSyntheticScene(uint8_t Game, uint32_t SceneID)
+    {
+        if (Game == OOT_GAME)
+        {
+            return SceneID == OOT_GROTTOS || SceneID == OOT_CUTSCENE_MAP || SceneID == OOT_SONGS;
+        }
+        return SceneID == MM_GROTTOS || SceneID == MM_CUTSCENE_MAP || SceneID == MM_EXTRA || SceneID == MM_OWLS;
+    }
+
+
+    /*
+    *   True when an entrance entry describes a real, walkable position inside its FromSceneID and
+    *   should therefore contribute layout walk edges to the graph.
+    *
+    *   Type::None is NOT a reliable filter on its own. It marks entries the tracker deliberately
+    *   keeps off the maps (spawn points, "wrong exit" loops, seasonal duplicates, half-typed doors
+    *   like the Happy Mask Shop) - but several of those are the ONLY entry describing their node.
+    *   Skipping them wholesale turned those nodes into dead ends: the router could reach them but
+    *   never walk away, e.g. leaving the Mask Shop into the Market stranded the GPS. What actually
+    *   has to be excluded is the synthetic scenes, so that is what we test.
+    *
+    *   @param Game    OOT_GAME or MM_GAME.
+    *   @param V       The entrance entry.
+    *
+    *   @return True when the entry's layout costs are real walks.
+    */
+    inline bool ContributesLayoutWalks(uint8_t Game, const EntranceMetaInfo& V)
+    {
+        return V.Type != EntranceType::None || !IsSyntheticScene(Game, V.FromSceneID);
+    }
+
+
     struct Edge
     {
         uint32_t    To = 0;
@@ -101,7 +145,7 @@ namespace
             for (auto& Pair : Map)
             {
                 const EntranceMetaInfo& V = Pair.second;
-                if (V.Type == EntranceType::None) continue;
+                if (!ContributesLayoutWalks(Game, V)) continue;
 
                 const uint32_t FromN = EncodeNode(Game, V.FromEntranceID);
                 const uint32_t ToN   = EncodeNode(Game, V.ToEntranceID);
@@ -116,7 +160,7 @@ namespace
             for (auto& Pair : Map)
             {
                 const EntranceMetaInfo& V = Pair.second;
-                if (V.Type == EntranceType::None) continue;
+                if (!ContributesLayoutWalks(Game, V)) continue;
                 const uint32_t FromN = EncodeNode(Game, V.FromEntranceID);
                 for (const auto& KV : V.Cost.Costs)
                 {

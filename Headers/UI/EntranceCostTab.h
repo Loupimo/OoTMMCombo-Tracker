@@ -29,6 +29,7 @@ typedef struct EntranceCostRow
     uint32_t ToEntranceID = 0;              // The exit entrance.
     double BestSec = -1.0;                  // Fastest measured time so far in seconds, or < 0 when unknown.
     double LastSec = -1.0;                  // Most recent measured time in seconds, or < 0 when unknown.
+    bool Impossible = false;                // True when the CSV flags this walk as impossible (negative ElapsedSec).
 
     QString GameName;                       // Pre-formatted "OoT" or "MM".
     QString SceneName;                      // Pre-formatted scene name.
@@ -130,6 +131,10 @@ public:
     *   Try to open the given CSV file and populate the ElapsedSec field of
     *   every matching row. Silently does nothing if the file cannot be opened.
     *
+    *   A negative ElapsedSec in the CSV is not a measurement but a hand-written marker meaning
+    *   "this walk is impossible in that direction"; it sets the row's Impossible flag instead of
+    *   its times. Any real (positive) measurement for the same key wins over the marker.
+    *
     *   @param Path    The CSV file path.
     */
     void LoadCsv(const QString& Path);
@@ -190,8 +195,9 @@ private:
     void RebuildRowColors();
 
     /*
-    *   Recompute the per-row status stripe color (green when ElapsedSec is known, red when not).
-    *   Must be called after BuildRows and after LoadCsv so the colors reflect the loaded data.
+    *   Recompute the per-row status stripe color (green when ElapsedSec is known, gray when the
+    *   walk is flagged impossible, red when a measurement is still missing). Must be called after
+    *   BuildRows and after LoadCsv so the colors reflect the loaded data.
     */
     void RebuildRowStatusColors();
 

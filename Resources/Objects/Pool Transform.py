@@ -360,6 +360,12 @@ def parse_entrance_costs(input_file, oot_output_file, mm_output_file):
             return int(s, 16)
         return int(s)
 
+    # A negative ElapsedSec is not a measurement: it is the hand-written "this walk is impossible
+    # in that direction" marker. It becomes UNREACHABLE_COST, which the GPS graph builder drops
+    # entirely instead of keeping the edge at DEFAULT_UNMEASURED_WALK_COST (999s) - otherwise
+    # Dijkstra stays free to route through a walk the player told us cannot be done.
+    UNREACHABLE_COST = 0xFFFFFFFF
+
     measurements_by_game = {0: {}, 1: {}}        # game -> {(scene, from, to): cost_sec}
     for _, row in df.iterrows():
         try:
@@ -370,15 +376,22 @@ def parse_entrance_costs(input_file, oot_output_file, mm_output_file):
             elapsed = float(str(row["ElapsedSec"]).strip())
         except (ValueError, KeyError):
             continue
-        if elapsed < 0:
-            continue
         if game not in measurements_by_game:
             continue
-        # Round to the nearest second, clamp to 1 so 0-cost edges don't break Dijkstra.
-        cost = max(1, int(round(elapsed)))
+
         key = (scene, from_id, to_id)
         existing = measurements_by_game[game].get(key)
-        if existing is None or cost < existing:
+
+        if elapsed < 0:
+            # Only mark the pair unreachable when no real measurement contradicts it. A later
+            # positive row overwrites it below, same "a real run wins" rule as the UI.
+            if existing is None:
+                measurements_by_game[game][key] = UNREACHABLE_COST
+            continue
+
+        # Round to the nearest second, clamp to 1 so 0-cost edges don't break Dijkstra.
+        cost = max(1, int(round(elapsed)))
+        if existing is None or existing == UNREACHABLE_COST or cost < existing:
             measurements_by_game[game][key] = cost
 
     GAME_NAMES = {0: "OoT", 1: "MM"}
@@ -390,7 +403,8 @@ def parse_entrance_costs(input_file, oot_output_file, mm_output_file):
 
         with open(out_path, 'w', encoding='utf-8') as outfile:
             outfile.write('#include "Combo/Entrances.h"\n')
-            outfile.write('#include "Combo/' + prefix + 'Entrances.h"\n\n')
+            outfile.write('#include "Combo/' + prefix + 'Entrances.h"\n')
+            outfile.write('#include <cstdint>\n\n')       # UINT32_MAX for the unreachable markers
             outfile.write('/*\n')
             outfile.write('*   Measured intra-scene travel times for ' + prefix + ', imported from entrance_costs.csv\n')
             outfile.write('*   by Pool Transform.py (parse_entrance_costs). Edit the CSV and re-run the\n')
@@ -401,8 +415,11 @@ def parse_entrance_costs(input_file, oot_output_file, mm_output_file):
                 outfile.write('    // No ' + prefix + ' measurements yet - run Pool Transform.py to regenerate.\n')
             else:
                 for (scene, from_id, to_id), cost in rows:
-                    outfile.write('    {{ 0x{scene:03x}, 0x{from_id:03x}, 0x{to_id:04x}, {cost:4d} }},\n'.format(
-                        scene=scene, from_id=from_id, to_id=to_id, cost=cost))
+                    # UINT32_MAX is emitted by name so the generated file reads as "unreachable"
+                    # rather than as a suspiciously huge travel time.
+                    cost_str = 'UINT32_MAX' if cost == UNREACHABLE_COST else '{:9d}'.format(cost)
+                    outfile.write('    {{ 0x{scene:03x}, 0x{from_id:03x}, 0x{to_id:04x}, {cost} }},\n'.format(
+                        scene=scene, from_id=from_id, to_id=to_id, cost=cost_str))
             outfile.write('};\n\n\n')
             outfile.write('void Initialize' + prefix + 'MeasuredCosts(std::map<int, EntranceMetaInfo>& Map)\n')
             outfile.write('{\n')
