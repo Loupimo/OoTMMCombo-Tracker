@@ -35,6 +35,7 @@ uint32_t gActiveCurrSceneOffset = OOT_CURR_SCENE_OFFSET;    // The current offse
 uint32_t gActiveFaroreOffset = OOT_FARORE_STATE;            // The current offset to add to reach the farore state offset.
 uint32_t gActiveDeathOffset = OOT_DEATH_STATE;              // The current offset to add to reach the death state offset.
 uint32_t gNothingID = STABLE_NOTHING;                       // The current Nothing ID based on the game version.
+PJVersion gPJVersion = EM_1_0_3;                            // The Project64-EM fork version the DLL is injected into.
 int16_t gOOTActiveGlobalOffset = 0;                         // An offset to add to the active scene offset to reach the gLastScene variable for OoT.
 int16_t gMMActiveGlobalOffset = 0;                          // An offset to add to the active scene offset to reach the gLastScene variable for MM.
 uint32_t gOOTLastSceneAddr = 0;                             // The actual address to get the gLastScene ID for OoT
@@ -48,18 +49,175 @@ uint32_t gV1 = 0;                                           // The last value of
 uint32_t gS0 = 0;                                           // the last value of the S0 register.
 
 
+#pragma comment(lib, "user32.lib")
+
+
+/*
+*   Extract the version token located between the given prefix and suffix in a source string.
+*
+*   @param  Source      The string to search into.
+*   @param  Prefix      The signature preceding the version token.
+*   @param  Suffix      The delimiter following the version token.
+*   @param  OutVersion  Buffer receiving the null-terminated version string.
+*   @param  Size        Size of the output buffer in bytes.
+*   @return true if a version token was successfully extracted, false otherwise.
+*/
+static bool ExtractVersion(const char* Source, const char* Prefix, const char* Suffix, char* OutVersion, size_t Size)
+{
+    const char* start = strstr(Source, Prefix);
+    if (start == nullptr)
+    {
+        return false;
+    }
+    start += strlen(Prefix);   // Move past the signature to the version token
+
+    const char* end = strstr(start, Suffix);
+    if (end == nullptr || end <= start)
+    {
+        return false;
+    }
+
+    size_t length = static_cast<size_t>(end - start);
+    if (length >= Size)
+    {
+        length = Size - 1;
+    }
+
+    memcpy(OutVersion, start, length);
+    OutVersion[length] = '\0';
+
+    return true;
+}
+
+
+/*
+*   Callback used by EnumWindows to locate the Project64 main window inside the current
+*   process. It stops on the first top-level, visible window owned by this process whose
+*   title carries the space-separated emulator signature.
+*
+*   @param  Handle  The window handle currently enumerated.
+*   @param  LParam  Pointer to the HWND that receives the found main window.
+*   @return FALSE to stop enumeration once found, TRUE to keep searching.
+*/
+static BOOL CALLBACK FindPJ64WindowProc(HWND Handle, LPARAM LParam)
+{
+    DWORD processId = 0;
+    GetWindowThreadProcessId(Handle, &processId);
+
+    if (processId != GetCurrentProcessId())
+    {   // Not our process, keep looking
+
+        return TRUE;
+    }
+
+    // Only consider top-level, visible windows (skip child / hidden windows).
+    if (GetWindow(Handle, GW_OWNER) != NULL || !IsWindowVisible(Handle))
+    {
+        return TRUE;
+    }
+
+    char title[512] = { 0 };
+    GetWindowTextA(Handle, title, sizeof(title));
+
+    // Require the space-separated signature so the debug AllocConsole window (whose title is
+    // the hyphen-joined exe path "…\Project64-EM-1.1.0-…") is skipped and the real main
+    // window "[<Game> - ]Project64-EM <version>-PJ-3.0.1" is matched instead.
+    if (strstr(title, "Project64-EM ") != nullptr)
+    {
+        *reinterpret_cast<HWND*>(LParam) = Handle;
+
+        return FALSE;   // Found it, stop enumeration
+    }
+
+    return TRUE;
+}
+
+
+/*
+*   Read the Project64-EM version token. The main window title is the primary, location
+*   independent source ("Project64-EM <version>-PJ-3.0.1"). The executable folder name
+*   ("Project64-EM-<version>-PJ-3.0.1-win32") is used as a fallback and only works if the
+*   user kept the distributed folder name.
+*
+*   @param  OutVersion  Buffer receiving the null-terminated version string.
+*   @param  Size        Size of the output buffer in bytes.
+*   @return true if a version token was successfully extracted, false otherwise.
+*/
+static bool GetPJ64Version(char* OutVersion, size_t Size)
+{
+    // Primary: the main window title, independent of where the emulator is installed.
+    HWND mainWindow = NULL;
+    EnumWindows(FindPJ64WindowProc, reinterpret_cast<LPARAM>(&mainWindow));
+
+    char title[512] = { 0 };
+    if (mainWindow != NULL
+        && GetWindowTextA(mainWindow, title, sizeof(title)) != 0
+        && ExtractVersion(title, "Project64-EM ", "-PJ-", OutVersion, Size))
+    {
+        return true;
+    }
+
+    // Fallback: parse the executable folder (only valid if the user kept the folder name).
+    char path[MAX_PATH] = { 0 };
+    if (GetModuleFileNameA(NULL, path, MAX_PATH) != 0
+        && ExtractVersion(path, "Project64-EM-", "-PJ-", OutVersion, Size))
+    {
+        return true;
+    }
+
+    return false;
+}
+
+
+void DetectPJVersion()
+{
+    char version[64] = { 0 };
+
+    if (!GetPJ64Version(version, sizeof(version)))
+    {   // Neither the window title nor the path could be parsed, keep the default version
+
+        LOG("PJ64-EM version not found, defaulting to 1.0.3");
+        gPJVersion = EM_1_0_3;
+        return;
+    }
+
+    if (strcmp(version, "1.1.0") == 0)
+    {
+        gPJVersion = EM_1_1_0;
+    }
+    else
+    {   // 1.0.3 and any unknown token fall back to the default version
+        gPJVersion = EM_1_0_3;
+    }
+
+    LOG("PJ64-EM version: %s (enum %d)", version, gPJVersion);
+}
+
+
 void TryResolveROMBase()
 {
     if (romBase)
     {
+        LOG("Oh No");
         return;
     }
 
     uintptr_t romPtrAddr = moduleBase + ROM_PTR_OFFSET;
+
+    switch (gPJVersion)
+    {
+        case PJVersion::EM_1_1_0:
+        {
+            romPtrAddr += OFFSET_PTR_V_1_1_0;
+            break;
+        }
+    }
+
     uintptr_t romStruct = *(uintptr_t*)romPtrAddr;
 
     if (!romStruct)
     {
+        LOG("AAAA");
         return;
     }
 
@@ -67,6 +225,7 @@ void TryResolveROMBase()
 
     if (!rom)
     {
+        LOG("PPPP");
         return;
     }
 
@@ -80,7 +239,19 @@ uintptr_t FindGameRAM()
 {
     while (true)
     {
-        uintptr_t obj = *(uintptr_t*)(moduleBase + 0x1B00BC);
+        uintptr_t mmu = moduleBase + MMU_PTR_OFFSET;
+
+        switch (gPJVersion)
+        {
+            case PJVersion::EM_1_1_0:
+            {
+                mmu += OFFSET_PTR_V_1_1_0;
+                break;
+            }
+        }
+
+        LOG("MMU: %p", mmu);
+        uintptr_t obj = *(uintptr_t*)mmu;
 
         if (obj)
         {
@@ -879,13 +1050,39 @@ __declspec(naked) void ROMHook()
 
 void InstallPCHook()
 {
-    InstallHook(HOOK_PC_OFFSET, HOOK_PC_SIZE, (uintptr_t)&PCHook, &gatewayPC, originalBytesPC);
+    switch (gPJVersion)
+    {
+        case PJVersion::EM_1_1_0:
+        {
+            InstallHook(HOOK_PC_OFFSET_V_1_1_0, HOOK_PC_SIZE, (uintptr_t)&PCHook, &gatewayPC, originalBytesPC);
+            break;
+        }
+
+        default:
+        {
+            InstallHook(HOOK_PC_OFFSET, HOOK_PC_SIZE, (uintptr_t)&PCHook, &gatewayPC, originalBytesPC);
+            break;
+        }
+    }
 }
 
 
 void InstallROMHook()
 {
-    InstallHook(HOOK_ROM_LOAD_OFFSET, HOOK_ROM_LOAD_SIZE, (uintptr_t)&ROMHook, &gatewayROM, originalBytesROM);
+    switch (gPJVersion)
+    {
+        case PJVersion::EM_1_1_0:
+        {
+            InstallHook(HOOK_ROM_LOAD_OFFSET_V_1_1_0, HOOK_ROM_LOAD_SIZE, (uintptr_t)&ROMHook, &gatewayROM, originalBytesROM);
+            break;
+        }
+
+        default:
+        {
+            InstallHook(HOOK_ROM_LOAD_OFFSET, HOOK_ROM_LOAD_SIZE, (uintptr_t)&ROMHook, &gatewayROM, originalBytesROM);
+            break;
+        }
+    }
 }
 
 

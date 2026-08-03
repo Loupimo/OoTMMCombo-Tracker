@@ -1,15 +1,18 @@
 #pragma once
 
 // PJ64 Hooks
-#define HOOK_ROM_LOAD_OFFSET    0xD5A9B     // Instruction offset to hook ROM loading to physical RAM address
-#define HOOK_ROM_LOAD_SIZE           11     // Original instruction size of the hooked ROM loading code
-#define HOOK_PC_OFFSET          0xE64C9		// Instruction offset to hook for the PC updating
-#define HOOK_PC_SIZE                  7     // Original instruction size of the hooked PC updating code
+#define HOOK_ROM_LOAD_OFFSET            0xD5A9B     // Instruction offset to hook ROM loading to physical RAM address (PJ-EM v1.0.3)
+#define HOOK_ROM_LOAD_OFFSET_V_1_1_0    0xD317B     // Instruction offset to hook ROM loading to physical RAM address (PJ-EM v1.1.0)
+#define HOOK_ROM_LOAD_SIZE                   11     // Original instruction size of the hooked ROM loading code
+#define HOOK_PC_OFFSET                  0xE64C9		// Instruction offset to hook for the PC updating (PJ-EM v1.0.3)
+#define HOOK_PC_OFFSET_V_1_1_0          0xE4009		// Instruction offset to hook for the PC updating (PJ-EM v1.1.0)
+#define HOOK_PC_SIZE                          7     // Original instruction size of the hooked PC updating code
 
 // Registers, Memory, ROM
-#define MMU_PTR_OFFSET         0x1B00BC     // The offset to get the MMU pointer structure
-#define REG_PTR_OFFSET         0x1B00C4     // The offset to get the register structure
-#define ROM_PTR_OFFSET         0x1B00CC     // The offset to get the ROM pointer structure
+#define MMU_PTR_OFFSET         0x1B00BC     // The offset to get the MMU pointer structure (PJ-EM 1.0.3)
+#define REG_PTR_OFFSET         0x1B00C4     // The offset to get the register structure (PJ-EM 1.0.3)
+#define ROM_PTR_OFFSET         0x1B00CC     // The offset to get the ROM pointer structure (PJ-EM 1.0.3)
+#define OFFSET_PTR_V_1_1_0       0x101C     // The offset to add to get the desired pointer structure for PJ 1.1.0
 
 // Registers offsets
 #define ROM_OFFSET                 0x10     // The offset to add to the ROM pointer structure to get the physical address of the loaded ROM.
@@ -100,6 +103,14 @@ enum GameID : uint8_t
 };
 
 
+/* The Project64-EM fork version the DLL is injected into, read from the main window title. */
+enum PJVersion : uint8_t
+{
+    EM_1_0_3 = 0,   // Default version assumed when the title cannot be parsed.
+    EM_1_1_0 = 1
+};
+
+
 typedef struct Event
 {
     uint32_t PC;
@@ -135,8 +146,16 @@ extern uint32_t gOOTLastSceneAddr;          // The actual address to get the gLa
 extern uint32_t gMMLastSceneAddr;           // The actual address to get the gLastScene ID for MM.
 extern bool isStable;                       // Tell if the current game is stable release (true) or dev (false).
 extern uint32_t gNothingID;                 // The current "Nothing" combo item ID (depends on stable/dev).
+extern PJVersion gPJVersion;                // The Project64-EM fork version the DLL is injected into.
 
 void TryResolveROMBase();
+
+/*
+*   Detect the Project64-EM fork version and store the result in gPJVersion. The main window
+*   title ("Project64-EM <version>-PJ-3.0.1") is the primary, location independent source; the
+*   executable folder name is used as a fallback. Defaults to EM_1_0_3 on failure.
+*/
+void DetectPJVersion();
 
 /*
 *   Applique la version fournie par le tracker (SharedData::HostROMVersion, issue du spoiler).

@@ -49,6 +49,18 @@ DWORD WINAPI MainThread(LPVOID)
         moduleBase = (uintptr_t)hModule;
         regBase = moduleBase + REG_PTR_OFFSET;
 
+        // Resolve the Project64-EM fork version so the rest of the DLL can adapt its offsets.
+        DetectPJVersion();
+
+        switch (gPJVersion)
+        {
+            case PJVersion::EM_1_1_0:
+            {
+                regBase += OFFSET_PTR_V_1_1_0;
+                break;
+            }
+        }
+
         InstallROMHook();
         TryResolveROMBase();
         gameRAMBase = FindGameRAM();
