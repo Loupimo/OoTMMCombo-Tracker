@@ -2678,6 +2678,7 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
             case MM_SOUTHERN_SWAMP_CLEAR:
             {
                 Message.SceneID = MM_SOUTHERN_SWAMP;
+                Message.CurrSceneID = MM_SOUTHERN_SWAMP;
                 switch (Message.EntranceID)
                 {   // We need to check for the entrance ID as southern swamp clear is equal to 0 and scene 0 is also used for new cycle detection.
 
@@ -2735,10 +2736,61 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                     {
                         return MM_KOUME_RIDE_FROM_TOURIST_ENTR;
                     }
+
+                    case MM_WOODFALL_ENTR:
+                    {
+                        return MM_WOODFALL_ENTR;
+                    }
+
+                    case MM_TOURIST_INFORMATION_ENTR:
+                    {
+                        return MM_TOURIST_INFORMATION_ENTR;
+                    }
+
+                    case MM_POTION_SHOP_ENTR:
+                    {
+                        return MM_POTION_SHOP_ENTR;
+                    }
+
+                    case MM_MYSTERY_WOODS_ENTR:
+                    {
+                        return MM_MYSTERY_WOODS_ENTR;
+                    }
+
+                    case MM_DEKU_PALACE_MAIN_ENTRANCE_ENTR:
+                    {
+                        return MM_DEKU_PALACE_MAIN_ENTRANCE_ENTR;
+                    }
+
+                    case MM_DEKU_PALACE_LEDGE_ENTR:
+                    {
+                        return MM_DEKU_PALACE_LEDGE_ENTR;
+                    }
+
+                    case MM_SPIDER_HOUSE_SWAMP_ENTR:
+                    {
+                        return MM_SPIDER_HOUSE_SWAMP_ENTR;
+                    }
+
+                    case MM_SWAMP_ROAD_FROM_SWAMP_ENTR:
+                    {
+                        return MM_SWAMP_ROAD_FROM_SWAMP_ENTR;
+                    }
+
+                    case MM_GROTTO_TYPE_GENERIC_ENTR:
+                    {
+                        return MM_GROTTO_TYPE_GENERIC_ENTR;
+                    }
+
+                    case MM_KOUME_RIDE_ENTR:
+                    {
+                        return MM_KOUME_RIDE_ENTR;
+                    }
                 }
 
                 // The entrance doesn't match ! Probably a new cycle
                 Message.SceneID = 0;
+                Message.CurrSceneID = 0;
                 break;
             }
 
@@ -2994,6 +3046,8 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                         break;
                     }
 
+                    case MM_GROTTO_EXIT_JP_LINE_START:
+                    case MM_GROTTO_EXIT_JP_LINE_END:
                     case MM_GROTTO_JP_LINE_START_ENTR:
                     case MM_GROTTO_JP_LINE_END_ENTR:
                     {   // MM JP layout deku palace line grotto entry
@@ -3009,6 +3063,8 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                         break;
                     }
 
+                    case MM_GROTTO_EXIT_JP_CLIMB_LEFT:
+                    case MM_GROTTO_EXIT_JP_CLIMB_RIGHT:
                     case MM_GROTTO_JP_CLIMB_LEFT_ENTR:
                     case MM_GROTTO_JP_CLIMB_RIGHT_ENTR:
                     {   // MM JP layout deku palace climb grotto entry
