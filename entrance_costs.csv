@@ -4767,3 +4767,954 @@ Game;SceneID;FromEntranceID;From;ToEntranceID;To;ElapsedSec
 1;0x14;0x2240;Pirate Fortress Exterior - Treasure Egg Side;0x4030;Treasure Egg Side -> Pirate Fortress Interior;2.83575
 1;0x23;0x4030;Pirate Fortress Interior - Treasure Egg Side;0x2230;Treasure -> Pirate Fortress Exterior;17.9364
 1;0x14;0x2230;Pirate Fortress Exterior - Treasure;0x4020;Treasure -> Pirate Fortress Interior;2.67126
+1;0x14;0x2200;Pirate Fortress Exterior - Entrance;0x4000;Hookshot -> Pirate Fortress Interior;15.3132
+1;0x23;0x4000;Pirate Fortress Interior - Hookshot;0x2210;Hookshot -> Pirate Fortress Exterior;2.81371
+1;0x14;0x2210;Pirate Fortress Exterior - Hookshot;0x7010;Exterior -> Pirate Fortress Entrance;11.6078
+1;0x3b;0x7010;Pirate Fortress Entrance - Exterior;0x2200;Entrance -> Pirate Fortress Exterior;3.11539
+1;0x14;0x2200;Pirate Fortress Exterior - Entrance;0x4060;Barrel -> Pirate Fortress Interior;15.8849
+1;0x23;0x4060;Pirate Fortress Interior - Barrel;0x2270;Barrel -> Pirate Fortress Exterior;3.41891
+1;0x14;0x2270;Pirate Fortress Exterior - Barrel;0x7010;Exterior -> Pirate Fortress Entrance;6.42247
+1;0x3b;0x7010;Pirate Fortress Entrance - Exterior;0x2200;Entrance -> Pirate Fortress Exterior;2.75689
+1;0x14;0x2200;Pirate Fortress Exterior - Entrance;0x4020;Treasure -> Pirate Fortress Interior;27.0488
+1;0x23;0x4020;Pirate Fortress Interior - Treasure;0x2230;Treasure -> Pirate Fortress Exterior;2.71674
+1;0x14;0x2230;Pirate Fortress Exterior - Treasure;0x7010;Exterior -> Pirate Fortress Entrance;19.4122
+1;0x3b;0x7010;Pirate Fortress Entrance - Exterior;0x2200;Entrance -> Pirate Fortress Exterior;3.46671
+1;0x14;0x2200;Pirate Fortress Exterior - Entrance;0x4030;Treasure Egg Side -> Pirate Fortress Interior;23.5885
+1;0x23;0x4030;Pirate Fortress Interior - Treasure Egg Side;0x2240;Treasure Egg Side -> Pirate Fortress Exterior;2.65896
+1;0x14;0x2240;Pirate Fortress Exterior - Treasure Egg Side;0x7010;Exterior -> Pirate Fortress Entrance;10.2148
+1;0x3b;0x7010;Pirate Fortress Entrance - Exterior;0x2200;Entrance -> Pirate Fortress Exterior;2.75065
+1;0x14;0x2200;Pirate Fortress Exterior - Entrance;0x4010;Hookshot Lookout -> Pirate Fortress Interior;27.9404
+1;0x23;0x4010;Pirate Fortress Interior - Hookshot Lookout;0x2220;Hookshot Lookout -> Pirate Fortress Exterior;2.84092
+1;0x14;0x2220;Pirate Fortress Exterior - Hookshot Lookout;0x7010;Exterior -> Pirate Fortress Entrance;13.725
+1;0x3b;0x7010;Pirate Fortress Entrance - Exterior;0x2200;Entrance -> Pirate Fortress Exterior;3.45482
+1;0x14;0x2200;Pirate Fortress Exterior - Entrance;0x4040;Canon -> Pirate Fortress Interior;27.3079
+1;0x23;0x4040;Pirate Fortress Interior - Canon;0x2250;Canon -> Pirate Fortress Exterior;3.03886
+1;0x14;0x2250;Pirate Fortress Exterior - Canon;0x7010;Exterior -> Pirate Fortress Entrance;17.1884
+1;0x3b;0x7010;Pirate Fortress Entrance - Exterior;0x2200;Entrance -> Pirate Fortress Exterior;3.93057
+1;0x14;0x2200;Pirate Fortress Exterior - Entrance;0x7050;Lookout -> Pirate Fortress Entrance;25.46
+1;0x3b;0x7050;Pirate Fortress Entrance - Lookout;0x22c0;Lookout -> Pirate Fortress Exterior;3.07341
+1;0x14;0x22c0;Pirate Fortress Exterior - Lookout;0x7010;Exterior -> Pirate Fortress Entrance;15.2932
+1;0x3b;0x7010;Pirate Fortress Entrance - Exterior;0x2200;Entrance -> Pirate Fortress Exterior;3.41532
+1;0x14;0x2200;Pirate Fortress Exterior - Entrance;0x4050;Canon Egg Side -> Pirate Fortress Interior;30.9228
+1;0x23;0x4050;Pirate Fortress Interior - Canon Egg Side;0x2260;Canon Egg Side -> Pirate Fortress Exterior;5.1306
+1;0x14;0x2260;Pirate Fortress Exterior - Canon Egg Side;0x7010;Exterior -> Pirate Fortress Entrance;21.3124
+1;0x3b;0x7010;Pirate Fortress Entrance - Exterior;0x2200;Entrance -> Pirate Fortress Exterior;2.76954
+1;0x14;0x2200;Pirate Fortress Exterior - Entrance;0x4070;Barrel Egg Side -> Pirate Fortress Interior;-1
+1;0x14;0x2200;Pirate Fortress Exterior - Entrance;0x4080;Sewers' Telescope -> Pirate Fortress Interior;-1
+1;0x14;0x2260;Pirate Fortress Exterior - Canon Egg Side;0x4070;Barrel Egg Side -> Pirate Fortress Interior;-1
+1;0x14;0x2260;Pirate Fortress Exterior - Canon Egg Side;0x4080;Sewers' Telescope -> Pirate Fortress Interior;-1
+1;0x14;0x22c0;Pirate Fortress Exterior - Lookout;0x4070;Barrel Egg Side -> Pirate Fortress Interior;-1
+1;0x14;0x22c0;Pirate Fortress Exterior - Lookout;0x4080;Sewers' Telescope -> Pirate Fortress Interior;-1
+1;0x14;0x2250;Pirate Fortress Exterior - Canon;0x4070;Barrel Egg Side -> Pirate Fortress Interior;-1
+1;0x14;0x2250;Pirate Fortress Exterior - Canon;0x4080;Sewers' Telescope -> Pirate Fortress Interior;-1
+1;0x14;0x2220;Pirate Fortress Exterior - Hookshot Lookout;0x4070;Barrel Egg Side -> Pirate Fortress Interior;-1
+1;0x14;0x2220;Pirate Fortress Exterior - Hookshot Lookout;0x4080;Sewers' Telescope -> Pirate Fortress Interior;-1
+1;0x14;0x2240;Pirate Fortress Exterior - Treasure Egg Side;0x4070;Barrel Egg Side -> Pirate Fortress Interior;-1
+1;0x14;0x2240;Pirate Fortress Exterior - Treasure Egg Side;0x4080;Sewers' Telescope -> Pirate Fortress Interior;-1
+1;0x14;0x2270;Pirate Fortress Exterior - Barrel;0x4070;Barrel Egg Side -> Pirate Fortress Interior;-1
+1;0x14;0x2270;Pirate Fortress Exterior - Barrel;0x4080;Sewers' Telescope -> Pirate Fortress Interior;-1
+1;0x14;0x2230;Pirate Fortress Exterior - Treasure;0x4070;Barrel Egg Side -> Pirate Fortress Interior;-1
+1;0x14;0x2230;Pirate Fortress Exterior - Treasure;0x4080;Sewers' Telescope -> Pirate Fortress Interior;-1
+1;0x14;0x2210;Pirate Fortress Exterior - Hookshot;0x4070;Barrel Egg Side -> Pirate Fortress Interior;-1
+1;0x14;0x2210;Pirate Fortress Exterior - Hookshot;0x4080;Sewers' Telescope -> Pirate Fortress Interior;-1
+1;0x14;0x22a0;Pirate Fortress Exterior - Telescope;0x4040;Canon -> Pirate Fortress Interior;-1
+1;0x14;0x22a0;Pirate Fortress Exterior - Telescope;0x7050;Lookout -> Pirate Fortress Entrance;-1
+1;0x14;0x22a0;Pirate Fortress Exterior - Telescope;0x7010;Exterior -> Pirate Fortress Entrance;-1
+1;0x14;0x22a0;Pirate Fortress Exterior - Telescope;0x4010;Hookshot Lookout -> Pirate Fortress Interior;-1
+1;0x14;0x22a0;Pirate Fortress Exterior - Telescope;0x4030;Treasure Egg Side -> Pirate Fortress Interior;-1
+1;0x14;0x22a0;Pirate Fortress Exterior - Telescope;0x4000;Hookshot -> Pirate Fortress Interior;-1
+1;0x14;0x22a0;Pirate Fortress Exterior - Telescope;0x4060;Barrel -> Pirate Fortress Interior;-1
+1;0x14;0x22a0;Pirate Fortress Exterior - Telescope;0x4070;Barrel Egg Side -> Pirate Fortress Interior;-1
+1;0x14;0x22a0;Pirate Fortress Exterior - Telescope;0x4020;Treasure -> Pirate Fortress Interior;-1
+1;0x14;0x22a0;Pirate Fortress Exterior - Telescope;0x7040;Trapdoor -> Pirate Fortress Entrance - Trapdoor;-1
+1;0x14;0x22a0;Pirate Fortress Exterior - Telescope;0x4050;Canon Egg Side -> Pirate Fortress Interior;-1
+1;0x14;0x2280;Pirate Fortress Exterior - Barrel Egg Side;0x4080;Sewers' Telescope -> Pirate Fortress Interior;-1
+1;0x23;0x4070;Pirate Fortress Interior - Barrel Egg Side;0x2280;Barrel Egg Side -> Pirate Fortress Exterior;19.5964
+1;0x14;0x2280;Pirate Fortress Exterior - Barrel Egg Side;0x7010;Exterior -> Pirate Fortress Entrance;10.3721
+1;0x14;0x2280;Pirate Fortress Exterior - Barrel Egg Side;0x4040;Canon -> Pirate Fortress Interior;24.4007
+1;0x14;0x2280;Pirate Fortress Exterior - Barrel Egg Side;0x7050;Lookout -> Pirate Fortress Entrance;24.2879
+1;0x14;0x2280;Pirate Fortress Exterior - Barrel Egg Side;0x4060;Barrel -> Pirate Fortress Interior;17.8773
+1;0x14;0x2280;Pirate Fortress Exterior - Barrel Egg Side;0x4020;Treasure -> Pirate Fortress Interior;34.9918
+1;0x14;0x2280;Pirate Fortress Exterior - Barrel Egg Side;0x4050;Canon Egg Side -> Pirate Fortress Interior;34.9807
+1;0x14;0x2280;Pirate Fortress Exterior - Barrel Egg Side;0x4010;Hookshot Lookout -> Pirate Fortress Interior;30.1824
+1;0x14;0x2280;Pirate Fortress Exterior - Barrel Egg Side;0x4000;Hookshot -> Pirate Fortress Interior;17.1393
+1;0x14;0x2280;Pirate Fortress Exterior - Barrel Egg Side;0x4030;Treasure Egg Side -> Pirate Fortress Interior;27.7338
+1;0x23;0x4030;Pirate Fortress Interior - Treasure Egg Side;0x2240;Treasure Egg Side -> Pirate Fortress Exterior;11.4871
+1;0x14;0x2240;Pirate Fortress Exterior - Treasure Egg Side;0x4060;Barrel -> Pirate Fortress Interior;13.4819
+1;0x23;0x4060;Pirate Fortress Interior - Barrel;0x2270;Barrel -> Pirate Fortress Exterior;3.3985
+1;0x14;0x2270;Pirate Fortress Exterior - Barrel;0x4030;Treasure Egg Side -> Pirate Fortress Interior;18.8638
+1;0x23;0x4030;Pirate Fortress Interior - Treasure Egg Side;0x2240;Treasure Egg Side -> Pirate Fortress Exterior;3.26652
+1;0x14;0x2240;Pirate Fortress Exterior - Treasure Egg Side;0x4020;Treasure -> Pirate Fortress Interior;15.995
+1;0x23;0x4020;Pirate Fortress Interior - Treasure;0x2230;Treasure -> Pirate Fortress Exterior;3.32408
+1;0x14;0x2230;Pirate Fortress Exterior - Treasure;0x4030;Treasure Egg Side -> Pirate Fortress Interior;23.217
+1;0x23;0x4030;Pirate Fortress Interior - Treasure Egg Side;0x2240;Treasure Egg Side -> Pirate Fortress Exterior;3.70636
+1;0x14;0x2240;Pirate Fortress Exterior - Treasure Egg Side;0x7010;Exterior -> Pirate Fortress Entrance;10.0033
+1;0x14;0x2240;Pirate Fortress Exterior - Treasure Egg Side;0x4050;Canon Egg Side -> Pirate Fortress Interior;22.8516
+1;0x23;0x4050;Pirate Fortress Interior - Canon Egg Side;0x2260;Canon Egg Side -> Pirate Fortress Exterior;3.32181
+1;0x14;0x2260;Pirate Fortress Exterior - Canon Egg Side;0x4030;Treasure Egg Side -> Pirate Fortress Interior;21.7614
+1;0x23;0x4030;Pirate Fortress Interior - Treasure Egg Side;0x2240;Treasure Egg Side -> Pirate Fortress Exterior;3.02166
+1;0x14;0x2240;Pirate Fortress Exterior - Treasure Egg Side;0x4010;Hookshot Lookout -> Pirate Fortress Interior;21.1557
+1;0x23;0x4010;Pirate Fortress Interior - Hookshot Lookout;0x2220;Hookshot Lookout -> Pirate Fortress Exterior;2.83639
+1;0x14;0x2220;Pirate Fortress Exterior - Hookshot Lookout;0x4030;Treasure Egg Side -> Pirate Fortress Interior;11.1135
+1;0x23;0x4030;Pirate Fortress Interior - Treasure Egg Side;0x2240;Treasure Egg Side -> Pirate Fortress Exterior;8.69325
+1;0x14;0x2240;Pirate Fortress Exterior - Treasure Egg Side;0x4000;Hookshot -> Pirate Fortress Interior;11.1705
+1;0x23;0x4000;Pirate Fortress Interior - Hookshot;0x2210;Hookshot -> Pirate Fortress Exterior;2.73698
+1;0x14;0x2210;Pirate Fortress Exterior - Hookshot;0x4030;Treasure Egg Side -> Pirate Fortress Interior;11.8115
+1;0x23;0x4030;Pirate Fortress Interior - Treasure Egg Side;0x2240;Treasure Egg Side -> Pirate Fortress Exterior;3.17342
+1;0x14;0x2240;Pirate Fortress Exterior - Treasure Egg Side;0x4040;Canon -> Pirate Fortress Interior;23.4737
+1;0x23;0x4040;Pirate Fortress Interior - Canon;0x2250;Canon -> Pirate Fortress Exterior;3.03704
+1;0x14;0x2250;Pirate Fortress Exterior - Canon;0x4030;Treasure Egg Side -> Pirate Fortress Interior;21.322
+1;0x23;0x4030;Pirate Fortress Interior - Treasure Egg Side;0x2240;Treasure Egg Side -> Pirate Fortress Exterior;4.17283
+1;0x14;0x2240;Pirate Fortress Exterior - Treasure Egg Side;0x7050;Lookout -> Pirate Fortress Entrance;21.2089
+1;0x3b;0x7050;Pirate Fortress Entrance - Lookout;0x22c0;Lookout -> Pirate Fortress Exterior;3.09942
+1;0x14;0x22c0;Pirate Fortress Exterior - Lookout;0x4030;Treasure Egg Side -> Pirate Fortress Interior;26.3969
+1;0x23;0x4030;Pirate Fortress Interior - Treasure Egg Side;0x2240;Treasure Egg Side -> Pirate Fortress Exterior;5.53873
+1;0x14;0x2240;Pirate Fortress Exterior - Treasure Egg Side;0x7040;Trapdoor -> Pirate Fortress Entrance - Trapdoor;9.99012
+1;0x14;0x2240;Pirate Fortress Exterior - Treasure Egg Side;0x4060;Barrel -> Pirate Fortress Interior;13.6003
+1;0x23;0x4060;Pirate Fortress Interior - Barrel;0x2280;Barrel Egg Side -> Pirate Fortress Exterior;16.0514
+1;0x14;0x2280;Pirate Fortress Exterior - Barrel Egg Side;0x7040;Trapdoor -> Pirate Fortress Entrance - Trapdoor;8.6904
+1;0x14;0x2280;Pirate Fortress Exterior - Barrel Egg Side;0x4060;Barrel -> Pirate Fortress Interior;17.389
+1;0x23;0x4060;Pirate Fortress Interior - Barrel;0x2270;Barrel -> Pirate Fortress Exterior;6.45623
+1;0x14;0x2270;Pirate Fortress Exterior - Barrel;0x4020;Treasure -> Pirate Fortress Interior;14.9842
+1;0x23;0x4020;Pirate Fortress Interior - Treasure;0x2230;Treasure -> Pirate Fortress Exterior;2.65964
+1;0x14;0x2230;Pirate Fortress Exterior - Treasure;0x4060;Barrel -> Pirate Fortress Interior;16.977
+1;0x23;0x4060;Pirate Fortress Interior - Barrel;0x2270;Barrel -> Pirate Fortress Exterior;3.94153
+1;0x14;0x2270;Pirate Fortress Exterior - Barrel;0x4000;Hookshot -> Pirate Fortress Interior;15.4104
+1;0x23;0x4000;Pirate Fortress Interior - Hookshot;0x2210;Hookshot -> Pirate Fortress Exterior;2.8343
+1;0x14;0x2210;Pirate Fortress Exterior - Hookshot;0x4060;Barrel -> Pirate Fortress Interior;14.2587
+1;0x23;0x4060;Pirate Fortress Interior - Barrel;0x2270;Barrel -> Pirate Fortress Exterior;4.96694
+1;0x14;0x2270;Pirate Fortress Exterior - Barrel;0x4050;Canon Egg Side -> Pirate Fortress Interior;32.4975
+1;0x23;0x4050;Pirate Fortress Interior - Canon Egg Side;0x2260;Canon Egg Side -> Pirate Fortress Exterior;3.38457
+1;0x14;0x2260;Pirate Fortress Exterior - Canon Egg Side;0x4060;Barrel -> Pirate Fortress Interior;20.3733
+1;0x23;0x4060;Pirate Fortress Interior - Barrel;0x2270;Barrel -> Pirate Fortress Exterior;6.12402
+1;0x14;0x2270;Pirate Fortress Exterior - Barrel;0x7050;Lookout -> Pirate Fortress Entrance;24.162
+1;0x3b;0x7050;Pirate Fortress Entrance - Lookout;0x22c0;Lookout -> Pirate Fortress Exterior;3.06344
+1;0x14;0x22c0;Pirate Fortress Exterior - Lookout;0x4060;Barrel -> Pirate Fortress Interior;23.961
+1;0x23;0x4060;Pirate Fortress Interior - Barrel;0x2270;Barrel -> Pirate Fortress Exterior;4.61519
+1;0x14;0x2270;Pirate Fortress Exterior - Barrel;0x4040;Canon -> Pirate Fortress Interior;19.2642
+1;0x23;0x4040;Pirate Fortress Interior - Canon;0x2250;Canon -> Pirate Fortress Exterior;3.05276
+1;0x14;0x2250;Pirate Fortress Exterior - Canon;0x4060;Barrel -> Pirate Fortress Interior;22.8978
+1;0x23;0x4060;Pirate Fortress Interior - Barrel;0x2270;Barrel -> Pirate Fortress Exterior;3.6648
+1;0x14;0x2270;Pirate Fortress Exterior - Barrel;0x7040;Trapdoor -> Pirate Fortress Entrance - Trapdoor;9.80142
+1;0x14;0x2270;Pirate Fortress Exterior - Barrel;0x4010;Hookshot Lookout -> Pirate Fortress Interior;25.0705
+1;0x23;0x4010;Pirate Fortress Interior - Hookshot Lookout;0x2220;Hookshot Lookout -> Pirate Fortress Exterior;3.26647
+1;0x14;0x2220;Pirate Fortress Exterior - Hookshot Lookout;0x4060;Barrel -> Pirate Fortress Interior;17.7593
+1;0x14;0x2220;Pirate Fortress Exterior - Hookshot Lookout;0x4050;Canon Egg Side -> Pirate Fortress Interior;21.8864
+1;0x23;0x4050;Pirate Fortress Interior - Canon Egg Side;0x2260;Canon Egg Side -> Pirate Fortress Exterior;3.75041
+1;0x14;0x2260;Pirate Fortress Exterior - Canon Egg Side;0x4010;Hookshot Lookout -> Pirate Fortress Interior;17.9786
+1;0x23;0x4010;Pirate Fortress Interior - Hookshot Lookout;0x2220;Hookshot Lookout -> Pirate Fortress Exterior;2.88942
+1;0x14;0x2220;Pirate Fortress Exterior - Hookshot Lookout;0x4020;Treasure -> Pirate Fortress Interior;31.1189
+1;0x23;0x4020;Pirate Fortress Interior - Treasure;0x2230;Treasure -> Pirate Fortress Exterior;3.47484
+1;0x14;0x2230;Pirate Fortress Exterior - Treasure;0x4010;Hookshot Lookout -> Pirate Fortress Interior;29.505
+1;0x23;0x4010;Pirate Fortress Interior - Hookshot Lookout;0x2220;Hookshot Lookout -> Pirate Fortress Exterior;3.27267
+1;0x14;0x2220;Pirate Fortress Exterior - Hookshot Lookout;0x7050;Lookout -> Pirate Fortress Entrance;19.0813
+1;0x3b;0x7050;Pirate Fortress Entrance - Lookout;0x22c0;Lookout -> Pirate Fortress Exterior;3.05662
+1;0x14;0x22c0;Pirate Fortress Exterior - Lookout;0x4010;Hookshot Lookout -> Pirate Fortress Interior;24.3553
+1;0x23;0x4010;Pirate Fortress Interior - Hookshot Lookout;0x2220;Hookshot Lookout -> Pirate Fortress Exterior;2.77966
+1;0x14;0x2220;Pirate Fortress Exterior - Hookshot Lookout;0x4040;Canon -> Pirate Fortress Interior;18.5147
+1;0x23;0x4040;Pirate Fortress Interior - Canon;0x2250;Canon -> Pirate Fortress Exterior;3.04824
+1;0x14;0x2250;Pirate Fortress Exterior - Canon;0x4010;Hookshot Lookout -> Pirate Fortress Interior;21.604
+1;0x23;0x4010;Pirate Fortress Interior - Hookshot Lookout;0x2220;Hookshot Lookout -> Pirate Fortress Exterior;5.07036
+1;0x14;0x2220;Pirate Fortress Exterior - Hookshot Lookout;0x7040;Trapdoor -> Pirate Fortress Entrance - Trapdoor;9.74595
+1;0x14;0x2220;Pirate Fortress Exterior - Hookshot Lookout;0x4000;Hookshot -> Pirate Fortress Interior;5.62753
+1;0x23;0x4000;Pirate Fortress Interior - Hookshot;0x2210;Hookshot -> Pirate Fortress Exterior;2.95946
+1;0x14;0x2210;Pirate Fortress Exterior - Hookshot;0x4010;Hookshot Lookout -> Pirate Fortress Interior;14.4085
+1;0x23;0x4010;Pirate Fortress Interior - Hookshot Lookout;0x2220;Hookshot Lookout -> Pirate Fortress Exterior;26.5264
+1;0x14;0x2220;Pirate Fortress Exterior - Hookshot Lookout;0x4010;Hookshot Lookout -> Pirate Fortress Interior;2.70468
+1;0x23;0x4010;Pirate Fortress Interior - Hookshot Lookout;0x2220;Hookshot Lookout -> Pirate Fortress Exterior;11.5983
+1;0x14;0x2220;Pirate Fortress Exterior - Hookshot Lookout;0x4000;Hookshot -> Pirate Fortress Interior;5.74166
+1;0x23;0x4000;Pirate Fortress Interior - Hookshot;0x2210;Hookshot -> Pirate Fortress Exterior;2.99385
+1;0x14;0x2210;Pirate Fortress Exterior - Hookshot;0x4000;Hookshot -> Pirate Fortress Interior;2.82283
+1;0x23;0x4000;Pirate Fortress Interior - Hookshot;0x2210;Hookshot -> Pirate Fortress Exterior;2.81279
+1;0x14;0x2210;Pirate Fortress Exterior - Hookshot;0x4050;Canon Egg Side -> Pirate Fortress Interior;19.0075
+1;0x23;0x4050;Pirate Fortress Interior - Canon Egg Side;0x2260;Canon Egg Side -> Pirate Fortress Exterior;3.42219
+1;0x14;0x2260;Pirate Fortress Exterior - Canon Egg Side;0x4000;Hookshot -> Pirate Fortress Interior;13.3641
+1;0x23;0x4000;Pirate Fortress Interior - Hookshot;0x2210;Hookshot -> Pirate Fortress Exterior;2.78202
+1;0x14;0x2210;Pirate Fortress Exterior - Hookshot;0x7050;Lookout -> Pirate Fortress Entrance;18.0045
+1;0x3b;0x7050;Pirate Fortress Entrance - Lookout;0x22c0;Lookout -> Pirate Fortress Exterior;3.09761
+1;0x14;0x22c0;Pirate Fortress Exterior - Lookout;0x4000;Hookshot -> Pirate Fortress Interior;18.7819
+1;0x23;0x4000;Pirate Fortress Interior - Hookshot;0x2210;Hookshot -> Pirate Fortress Exterior;2.78869
+1;0x14;0x2210;Pirate Fortress Exterior - Hookshot;0x7040;Trapdoor -> Pirate Fortress Entrance - Trapdoor;8.25527
+1;0x14;0x2210;Pirate Fortress Exterior - Hookshot;0x4040;Canon -> Pirate Fortress Interior;20.101
+1;0x23;0x4040;Pirate Fortress Interior - Canon;0x2250;Canon -> Pirate Fortress Exterior;3.07605
+1;0x14;0x2250;Pirate Fortress Exterior - Canon;0x4000;Hookshot -> Pirate Fortress Interior;16.6288
+1;0x23;0x4000;Pirate Fortress Interior - Hookshot;0x2210;Hookshot -> Pirate Fortress Exterior;2.88561
+1;0x14;0x2210;Pirate Fortress Exterior - Hookshot;0x4020;Treasure -> Pirate Fortress Interior;25.0776
+1;0x23;0x4020;Pirate Fortress Interior - Treasure;0x2230;Treasure -> Pirate Fortress Exterior;3.12641
+1;0x14;0x2230;Pirate Fortress Exterior - Treasure;0x4020;Treasure -> Pirate Fortress Interior;2.66991
+1;0x23;0x4020;Pirate Fortress Interior - Treasure;0x2230;Treasure -> Pirate Fortress Exterior;2.82165
+1;0x14;0x2230;Pirate Fortress Exterior - Treasure;0x7040;Trapdoor -> Pirate Fortress Entrance - Trapdoor;5.95266
+1;0x14;0x2230;Pirate Fortress Exterior - Treasure;0x4050;Canon Egg Side -> Pirate Fortress Interior;32.1307
+1;0x23;0x4050;Pirate Fortress Interior - Canon Egg Side;0x2260;Canon Egg Side -> Pirate Fortress Exterior;2.98759
+1;0x14;0x2260;Pirate Fortress Exterior - Canon Egg Side;0x4020;Treasure -> Pirate Fortress Interior;30.1673
+1;0x23;0x4020;Pirate Fortress Interior - Treasure;0x2230;Treasure -> Pirate Fortress Exterior;5.72705
+1;0x14;0x2230;Pirate Fortress Exterior - Treasure;0x4040;Canon -> Pirate Fortress Interior;31.5639
+1;0x23;0x4040;Pirate Fortress Interior - Canon;0x2250;Canon -> Pirate Fortress Exterior;3.04235
+1;0x14;0x2250;Pirate Fortress Exterior - Canon;0x4020;Treasure -> Pirate Fortress Interior;33.9387
+1;0x23;0x4020;Pirate Fortress Interior - Treasure;0x2230;Treasure -> Pirate Fortress Exterior;4.76293
+1;0x14;0x2230;Pirate Fortress Exterior - Treasure;0x4020;Treasure -> Pirate Fortress Interior;2.73664
+1;0x23;0x4020;Pirate Fortress Interior - Treasure;0x2230;Treasure -> Pirate Fortress Exterior;2.71499
+1;0x14;0x2230;Pirate Fortress Exterior - Treasure;0x7050;Lookout -> Pirate Fortress Entrance;31.652
+1;0x3b;0x7050;Pirate Fortress Entrance - Lookout;0x22c0;Lookout -> Pirate Fortress Exterior;3.07458
+1;0x14;0x22c0;Pirate Fortress Exterior - Lookout;0x4020;Treasure -> Pirate Fortress Interior;35.9763
+1;0x23;0x4020;Pirate Fortress Interior - Treasure;0x2230;Treasure -> Pirate Fortress Exterior;6.06797
+1;0x14;0x2230;Pirate Fortress Exterior - Treasure;0x7010;Exterior -> Pirate Fortress Entrance;16.1862
+1;0x14;0x2230;Pirate Fortress Exterior - Treasure;0x4030;Treasure Egg Side -> Pirate Fortress Interior;22.7801
+1;0x23;0x4030;Pirate Fortress Interior - Treasure Egg Side;0x2230;Treasure -> Pirate Fortress Exterior;15.2294
+1;0x14;0x2230;Pirate Fortress Exterior - Treasure;0x4060;Barrel -> Pirate Fortress Interior;15.5024
+1;0x14;0x2230;Pirate Fortress Exterior - Treasure;0x4000;Hookshot -> Pirate Fortress Interior;21.5941
+1;0x23;0x4000;Pirate Fortress Interior - Hookshot;0x2210;Hookshot -> Pirate Fortress Exterior;5.79713
+1;0x14;0x2210;Pirate Fortress Exterior - Hookshot;0x4050;Canon Egg Side -> Pirate Fortress Interior;19.7262
+1;0x23;0x4050;Pirate Fortress Interior - Canon Egg Side;0x2260;Canon Egg Side -> Pirate Fortress Exterior;6.53703
+1;0x14;0x2260;Pirate Fortress Exterior - Canon Egg Side;0x4050;Canon Egg Side -> Pirate Fortress Interior;3.07826
+1;0x23;0x4050;Pirate Fortress Interior - Canon Egg Side;0x2260;Canon Egg Side -> Pirate Fortress Exterior;2.96606
+1;0x14;0x2260;Pirate Fortress Exterior - Canon Egg Side;0x4040;Canon -> Pirate Fortress Interior;14.5667
+1;0x23;0x4040;Pirate Fortress Interior - Canon;0x2250;Canon -> Pirate Fortress Exterior;3.04983
+1;0x14;0x2250;Pirate Fortress Exterior - Canon;0x4040;Canon -> Pirate Fortress Interior;3.08936
+1;0x23;0x4040;Pirate Fortress Interior - Canon;0x2250;Canon -> Pirate Fortress Exterior;3.04515
+1;0x14;0x2250;Pirate Fortress Exterior - Canon;0x7050;Lookout -> Pirate Fortress Entrance;5.69261
+1;0x3b;0x7050;Pirate Fortress Entrance - Lookout;0x22c0;Lookout -> Pirate Fortress Exterior;3.07727
+1;0x14;0x22c0;Pirate Fortress Exterior - Lookout;0x7050;Lookout -> Pirate Fortress Entrance;3.12253
+1;0x3b;0x7050;Pirate Fortress Entrance - Lookout;0x22c0;Lookout -> Pirate Fortress Exterior;3.08104
+1;0x14;0x22c0;Pirate Fortress Exterior - Lookout;0x4040;Canon -> Pirate Fortress Interior;5.79642
+1;0x23;0x4040;Pirate Fortress Interior - Canon;0x2250;Canon -> Pirate Fortress Exterior;3.06312
+1;0x14;0x2250;Pirate Fortress Exterior - Canon;0x4050;Canon Egg Side -> Pirate Fortress Interior;24.1313
+1;0x23;0x4050;Pirate Fortress Interior - Canon Egg Side;0x2260;Canon Egg Side -> Pirate Fortress Exterior;2.96078
+1;0x14;0x2260;Pirate Fortress Exterior - Canon Egg Side;0x7050;Lookout -> Pirate Fortress Entrance;15.5042
+1;0x3b;0x7050;Pirate Fortress Entrance - Lookout;0x22c0;Lookout -> Pirate Fortress Exterior;3.05942
+1;0x14;0x22c0;Pirate Fortress Exterior - Lookout;0x4050;Canon Egg Side -> Pirate Fortress Interior;20.317
+1;0x23;0x4050;Pirate Fortress Interior - Canon Egg Side;0x2260;Canon Egg Side -> Pirate Fortress Exterior;2.96596
+1;0x14;0x2260;Pirate Fortress Exterior - Canon Egg Side;0x7040;Trapdoor -> Pirate Fortress Entrance - Trapdoor;8.26038
+1;0x14;0x2260;Pirate Fortress Exterior - Canon Egg Side;0x4050;Canon Egg Side -> Pirate Fortress Interior;3.08293
+1;0x23;0x4050;Pirate Fortress Interior - Canon Egg Side;0x2250;Canon -> Pirate Fortress Exterior;19.5393
+1;0x14;0x2250;Pirate Fortress Exterior - Canon;0x7040;Trapdoor -> Pirate Fortress Entrance - Trapdoor;10.2762
+1;0x14;0x2250;Pirate Fortress Exterior - Canon;0x7050;Lookout -> Pirate Fortress Entrance;5.65815
+1;0x3b;0x7050;Pirate Fortress Entrance - Lookout;0x22c0;Lookout -> Pirate Fortress Exterior;3.07457
+1;0x14;0x22c0;Pirate Fortress Exterior - Lookout;0x7040;Trapdoor -> Pirate Fortress Entrance - Trapdoor;9.80286
+1;0x23;0x4080;Pirate Fortress Interior - Sewers' Telescope;0x2280;Barrel Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4080;Pirate Fortress Interior - Sewers' Telescope;0x2270;Barrel -> Pirate Fortress Exterior;-1
+1;0x23;0x4080;Pirate Fortress Interior - Sewers' Telescope;0x2260;Canon Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4080;Pirate Fortress Interior - Sewers' Telescope;0x2250;Canon -> Pirate Fortress Exterior;-1
+1;0x23;0x4080;Pirate Fortress Interior - Sewers' Telescope;0x2240;Treasure Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4080;Pirate Fortress Interior - Sewers' Telescope;0x2230;Treasure -> Pirate Fortress Exterior;-1
+1;0x23;0x4080;Pirate Fortress Interior - Sewers' Telescope;0x2220;Hookshot Lookout -> Pirate Fortress Exterior;-1
+1;0x23;0x4080;Pirate Fortress Interior - Sewers' Telescope;0x2210;Hookshot -> Pirate Fortress Exterior;-1
+1;0x23;0x40a0;Pirate Fortress Interior - Sewers' Door;0x2280;Barrel Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x40a0;Pirate Fortress Interior - Sewers' Door;0x2270;Barrel -> Pirate Fortress Exterior;-1
+1;0x23;0x40a0;Pirate Fortress Interior - Sewers' Door;0x2260;Canon Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x40a0;Pirate Fortress Interior - Sewers' Door;0x2250;Canon -> Pirate Fortress Exterior;-1
+1;0x23;0x40a0;Pirate Fortress Interior - Sewers' Door;0x2240;Treasure Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x40a0;Pirate Fortress Interior - Sewers' Door;0x2230;Treasure -> Pirate Fortress Exterior;-1
+1;0x23;0x40a0;Pirate Fortress Interior - Sewers' Door;0x2220;Hookshot Lookout -> Pirate Fortress Exterior;-1
+1;0x23;0x40a0;Pirate Fortress Interior - Sewers' Door;0x2210;Hookshot -> Pirate Fortress Exterior;-1
+1;0x23;0x4090;Pirate Fortress Interior - Sewers' Gate;0x2280;Barrel Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4090;Pirate Fortress Interior - Sewers' Gate;0x2270;Barrel -> Pirate Fortress Exterior;-1
+1;0x23;0x4090;Pirate Fortress Interior - Sewers' Gate;0x2260;Canon Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4090;Pirate Fortress Interior - Sewers' Gate;0x2250;Canon -> Pirate Fortress Exterior;-1
+1;0x23;0x4090;Pirate Fortress Interior - Sewers' Gate;0x2240;Treasure Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4090;Pirate Fortress Interior - Sewers' Gate;0x2230;Treasure -> Pirate Fortress Exterior;-1
+1;0x23;0x4090;Pirate Fortress Interior - Sewers' Gate;0x2220;Hookshot Lookout -> Pirate Fortress Exterior;-1
+1;0x23;0x4090;Pirate Fortress Interior - Sewers' Gate;0x2210;Hookshot -> Pirate Fortress Exterior;-1
+1;0x23;0x4070;Pirate Fortress Interior - Barrel Egg Side;0x7060;Sewers' Door -> Pirate Fortress Entrance;-1
+1;0x23;0x4070;Pirate Fortress Interior - Barrel Egg Side;0x7020;Sewers' Gate -> Pirate Fortress Entrance;-1
+1;0x23;0x4070;Pirate Fortress Interior - Barrel Egg Side;0x7030;Sewers' Vent -> Pirate Fortress Entrance - Sewers' Vent;-1
+1;0x23;0x4070;Pirate Fortress Interior - Barrel Egg Side;0x2260;Canon Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4070;Pirate Fortress Interior - Barrel Egg Side;0x2250;Canon -> Pirate Fortress Exterior;-1
+1;0x23;0x4070;Pirate Fortress Interior - Barrel Egg Side;0x2240;Treasure Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4070;Pirate Fortress Interior - Barrel Egg Side;0x2230;Treasure -> Pirate Fortress Exterior;-1
+1;0x23;0x4070;Pirate Fortress Interior - Barrel Egg Side;0x2220;Hookshot Lookout -> Pirate Fortress Exterior;-1
+1;0x23;0x4070;Pirate Fortress Interior - Barrel Egg Side;0x2210;Hookshot -> Pirate Fortress Exterior;-1
+1;0x23;0x4070;Pirate Fortress Interior - Barrel Egg Side;0x22a0;Telescope -> Pirate Fortress Exterior;-1
+1;0x23;0x4060;Pirate Fortress Interior - Barrel;0x7060;Sewers' Door -> Pirate Fortress Entrance;-1
+1;0x23;0x4060;Pirate Fortress Interior - Barrel;0x7020;Sewers' Gate -> Pirate Fortress Entrance;-1
+1;0x23;0x4060;Pirate Fortress Interior - Barrel;0x7030;Sewers' Vent -> Pirate Fortress Entrance - Sewers' Vent;-1
+1;0x23;0x4060;Pirate Fortress Interior - Barrel;0x2260;Canon Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4060;Pirate Fortress Interior - Barrel;0x2250;Canon -> Pirate Fortress Exterior;-1
+1;0x23;0x4060;Pirate Fortress Interior - Barrel;0x2240;Treasure Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4060;Pirate Fortress Interior - Barrel;0x2230;Treasure -> Pirate Fortress Exterior;-1
+1;0x23;0x4060;Pirate Fortress Interior - Barrel;0x2220;Hookshot Lookout -> Pirate Fortress Exterior;-1
+1;0x23;0x4060;Pirate Fortress Interior - Barrel;0x2210;Hookshot -> Pirate Fortress Exterior;-1
+1;0x23;0x4060;Pirate Fortress Interior - Barrel;0x22a0;Telescope -> Pirate Fortress Exterior;-1
+1;0x23;0x4050;Pirate Fortress Interior - Canon Egg Side;0x7060;Sewers' Door -> Pirate Fortress Entrance;-1
+1;0x23;0x4050;Pirate Fortress Interior - Canon Egg Side;0x7020;Sewers' Gate -> Pirate Fortress Entrance;-1
+1;0x23;0x4050;Pirate Fortress Interior - Canon Egg Side;0x7030;Sewers' Vent -> Pirate Fortress Entrance - Sewers' Vent;-1
+1;0x23;0x4050;Pirate Fortress Interior - Canon Egg Side;0x2280;Barrel Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4050;Pirate Fortress Interior - Canon Egg Side;0x2270;Barrel -> Pirate Fortress Exterior;-1
+1;0x23;0x4050;Pirate Fortress Interior - Canon Egg Side;0x2240;Treasure Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4050;Pirate Fortress Interior - Canon Egg Side;0x2230;Treasure -> Pirate Fortress Exterior;-1
+1;0x23;0x4050;Pirate Fortress Interior - Canon Egg Side;0x2220;Hookshot Lookout -> Pirate Fortress Exterior;-1
+1;0x23;0x4050;Pirate Fortress Interior - Canon Egg Side;0x2210;Hookshot -> Pirate Fortress Exterior;-1
+1;0x23;0x4050;Pirate Fortress Interior - Canon Egg Side;0x22a0;Telescope -> Pirate Fortress Exterior;-1
+1;0x23;0x4040;Pirate Fortress Interior - Canon;0x7060;Sewers' Door -> Pirate Fortress Entrance;-1
+1;0x23;0x4040;Pirate Fortress Interior - Canon;0x7020;Sewers' Gate -> Pirate Fortress Entrance;-1
+1;0x23;0x4040;Pirate Fortress Interior - Canon;0x7030;Sewers' Vent -> Pirate Fortress Entrance - Sewers' Vent;-1
+1;0x23;0x4040;Pirate Fortress Interior - Canon;0x2280;Barrel Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4040;Pirate Fortress Interior - Canon;0x2270;Barrel -> Pirate Fortress Exterior;-1
+1;0x23;0x4040;Pirate Fortress Interior - Canon;0x2240;Treasure Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4040;Pirate Fortress Interior - Canon;0x2230;Treasure -> Pirate Fortress Exterior;-1
+1;0x23;0x4040;Pirate Fortress Interior - Canon;0x2220;Hookshot Lookout -> Pirate Fortress Exterior;-1
+1;0x23;0x4040;Pirate Fortress Interior - Canon;0x2210;Hookshot -> Pirate Fortress Exterior;-1
+1;0x23;0x4040;Pirate Fortress Interior - Canon;0x22a0;Telescope -> Pirate Fortress Exterior;-1
+1;0x23;0x4030;Pirate Fortress Interior - Treasure Egg Side;0x7060;Sewers' Door -> Pirate Fortress Entrance;-1
+1;0x23;0x4030;Pirate Fortress Interior - Treasure Egg Side;0x7020;Sewers' Gate -> Pirate Fortress Entrance;-1
+1;0x23;0x4030;Pirate Fortress Interior - Treasure Egg Side;0x7030;Sewers' Vent -> Pirate Fortress Entrance - Sewers' Vent;-1
+1;0x23;0x4030;Pirate Fortress Interior - Treasure Egg Side;0x2280;Barrel Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4030;Pirate Fortress Interior - Treasure Egg Side;0x2270;Barrel -> Pirate Fortress Exterior;-1
+1;0x23;0x4030;Pirate Fortress Interior - Treasure Egg Side;0x2260;Canon Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4030;Pirate Fortress Interior - Treasure Egg Side;0x2250;Canon -> Pirate Fortress Exterior;-1
+1;0x23;0x4030;Pirate Fortress Interior - Treasure Egg Side;0x2220;Hookshot Lookout -> Pirate Fortress Exterior;-1
+1;0x23;0x4030;Pirate Fortress Interior - Treasure Egg Side;0x2210;Hookshot -> Pirate Fortress Exterior;-1
+1;0x23;0x4030;Pirate Fortress Interior - Treasure Egg Side;0x22a0;Telescope -> Pirate Fortress Exterior;-1
+1;0x23;0x4020;Pirate Fortress Interior - Treasure;0x7060;Sewers' Door -> Pirate Fortress Entrance;-1
+1;0x23;0x4020;Pirate Fortress Interior - Treasure;0x7020;Sewers' Gate -> Pirate Fortress Entrance;-1
+1;0x23;0x4020;Pirate Fortress Interior - Treasure;0x7030;Sewers' Vent -> Pirate Fortress Entrance - Sewers' Vent;-1
+1;0x23;0x4020;Pirate Fortress Interior - Treasure;0x2280;Barrel Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4020;Pirate Fortress Interior - Treasure;0x2270;Barrel -> Pirate Fortress Exterior;-1
+1;0x23;0x4020;Pirate Fortress Interior - Treasure;0x2260;Canon Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4020;Pirate Fortress Interior - Treasure;0x2250;Canon -> Pirate Fortress Exterior;-1
+1;0x23;0x4020;Pirate Fortress Interior - Treasure;0x2220;Hookshot Lookout -> Pirate Fortress Exterior;-1
+1;0x23;0x4020;Pirate Fortress Interior - Treasure;0x2210;Hookshot -> Pirate Fortress Exterior;-1
+1;0x23;0x4020;Pirate Fortress Interior - Treasure;0x22a0;Telescope -> Pirate Fortress Exterior;-1
+1;0x23;0x4010;Pirate Fortress Interior - Hookshot Lookout;0x7060;Sewers' Door -> Pirate Fortress Entrance;-1
+1;0x23;0x4010;Pirate Fortress Interior - Hookshot Lookout;0x7020;Sewers' Gate -> Pirate Fortress Entrance;-1
+1;0x23;0x4010;Pirate Fortress Interior - Hookshot Lookout;0x7030;Sewers' Vent -> Pirate Fortress Entrance - Sewers' Vent;-1
+1;0x23;0x4010;Pirate Fortress Interior - Hookshot Lookout;0x2280;Barrel Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4010;Pirate Fortress Interior - Hookshot Lookout;0x2270;Barrel -> Pirate Fortress Exterior;-1
+1;0x23;0x4010;Pirate Fortress Interior - Hookshot Lookout;0x2260;Canon Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4010;Pirate Fortress Interior - Hookshot Lookout;0x2250;Canon -> Pirate Fortress Exterior;-1
+1;0x23;0x4010;Pirate Fortress Interior - Hookshot Lookout;0x2240;Treasure Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4010;Pirate Fortress Interior - Hookshot Lookout;0x2230;Treasure -> Pirate Fortress Exterior;-1
+1;0x23;0x4010;Pirate Fortress Interior - Hookshot Lookout;0x2210;Hookshot -> Pirate Fortress Exterior;-1
+1;0x23;0x4010;Pirate Fortress Interior - Hookshot Lookout;0x22a0;Telescope -> Pirate Fortress Exterior;-1
+1;0x23;0x4000;Pirate Fortress Interior - Hookshot;0x7060;Sewers' Door -> Pirate Fortress Entrance;-1
+1;0x23;0x4000;Pirate Fortress Interior - Hookshot;0x7020;Sewers' Gate -> Pirate Fortress Entrance;-1
+1;0x23;0x4000;Pirate Fortress Interior - Hookshot;0x7030;Sewers' Vent -> Pirate Fortress Entrance - Sewers' Vent;-1
+1;0x23;0x4000;Pirate Fortress Interior - Hookshot;0x2280;Barrel Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4000;Pirate Fortress Interior - Hookshot;0x2270;Barrel -> Pirate Fortress Exterior;-1
+1;0x23;0x4000;Pirate Fortress Interior - Hookshot;0x2260;Canon Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4000;Pirate Fortress Interior - Hookshot;0x2250;Canon -> Pirate Fortress Exterior;-1
+1;0x23;0x4000;Pirate Fortress Interior - Hookshot;0x2240;Treasure Egg Side -> Pirate Fortress Exterior;-1
+1;0x23;0x4000;Pirate Fortress Interior - Hookshot;0x2230;Treasure -> Pirate Fortress Exterior;-1
+1;0x23;0x4000;Pirate Fortress Interior - Hookshot;0x2220;Hookshot Lookout -> Pirate Fortress Exterior;-1
+1;0x23;0x4000;Pirate Fortress Interior - Hookshot;0x22a0;Telescope -> Pirate Fortress Exterior;-1
+1;0x3b;0x7040;Pirate Fortress Entrance - Trapdoor - Trapdoor;0x22c0;Lookout -> Pirate Fortress Exterior;26.5043
+1;0x14;0x22c0;Pirate Fortress Exterior - Lookout;0x7040;Trapdoor -> Pirate Fortress Entrance - Trapdoor;2.86018
+1;0x3b;0x7040;Pirate Fortress Entrance - Trapdoor - Trapdoor;0x2200;Entrance -> Pirate Fortress Exterior;11.7114
+1;0x14;0x2200;Pirate Fortress Exterior - Entrance;0x7040;Trapdoor -> Pirate Fortress Entrance - Trapdoor;2.09236
+1;0x3b;0x7040;Pirate Fortress Entrance - Trapdoor - Trapdoor;0x40a0;Sewers' Door -> Pirate Fortress Interior;5.01473
+1;0x3b;0x7040;Pirate Fortress Entrance - Trapdoor - Trapdoor;0x68c0;Trapdoor -> Great Bay Coast - Trapdoor;8.03701
+1;0x3b;0x7040;Pirate Fortress Entrance - Trapdoor - Trapdoor;0x4090;Sewers' Gate -> Pirate Fortress Interior;20.914
+1;0x23;0x4090;Pirate Fortress Interior - Sewers' Gate;0x7020;Sewers' Gate -> Pirate Fortress Entrance;5.7061
+1;0x3b;0x7040;Pirate Fortress Entrance - Trapdoor - Trapdoor;0x6850;Pirate Fortress Entrance -> Great Bay Coast;32.396
+1;0x37;0x6850;Great Bay Coast - Pirate Fortress Entrance;0x7000;Great Bay Coast -> Pirate Fortress Entrance;4.56952
+1;0x3b;0x7040;Pirate Fortress Entrance - Trapdoor - Trapdoor;0x4090;Sewers' Gate -> Pirate Fortress Interior;19.4587
+1;0x23;0x4090;Pirate Fortress Interior - Sewers' Gate;0x7030;Sewers' Vent -> Pirate Fortress Entrance - Sewers' Vent;53.9804
+1;0x23;0x4090;Pirate Fortress Interior - Sewers' Gate;0x22a0;Telescope -> Pirate Fortress Exterior;107.843
+1;0x14;0x22a0;Pirate Fortress Exterior - Telescope;0x4080;Sewers' Telescope -> Pirate Fortress Interior;3.30743
+1;0x23;0x4080;Pirate Fortress Interior - Sewers' Telescope;0x7030;Sewers' Vent -> Pirate Fortress Entrance - Sewers' Vent;15.8788
+1;0x3b;0x7040;Pirate Fortress Entrance - Trapdoor - Trapdoor;0x40a0;Sewers' Door -> Pirate Fortress Interior;5.66573
+1;0x23;0x40a0;Pirate Fortress Interior - Sewers' Door;0x7060;Sewers' Door -> Pirate Fortress Entrance;3.1954
+1;0x3b;0x7060;Pirate Fortress Entrance - Sewers' Door;0x22c0;Lookout -> Pirate Fortress Exterior;26.6799
+1;0x3b;0x7060;Pirate Fortress Entrance - Sewers' Door;0x4090;Sewers' Gate -> Pirate Fortress Interior;14.2892
+1;0x3b;0x7060;Pirate Fortress Entrance - Sewers' Door;0x6850;Pirate Fortress Entrance -> Great Bay Coast;27.4479
+1;0x3b;0x7060;Pirate Fortress Entrance - Sewers' Door;0x68c0;Trapdoor -> Great Bay Coast - Trapdoor;7.04487
+1;0x37;0x68c0;Great Bay Coast - Trapdoor - Trapdoor;0x4400;Great Bay Coast -> Pinnacle Rock;24.5938
+1;0x25;0x4400;Pinnacle Rock - Great Bay Coast;0x6830;Pinnacle Rock -> Great Bay Coast;7.69456
+1;0x37;0x6830;Great Bay Coast - Pinnacle Rock;0x7000;Great Bay Coast -> Pirate Fortress Entrance;26.8424
+1;0x3b;0x7000;Pirate Fortress Entrance - Great Bay Coast;0x4090;Sewers' Gate -> Pirate Fortress Interior;18.8861
+1;0x23;0x4090;Pirate Fortress Interior - Sewers' Gate;0x7030;Sewers' Vent -> Pirate Fortress Entrance - Sewers' Vent;52.982
+1;0x3b;0x7030;Pirate Fortress Entrance - Sewers' Vent - Sewers' Vent;0x4090;Sewers' Gate -> Pirate Fortress Interior;14.7777
+1;0x23;0x4090;Pirate Fortress Interior - Sewers' Gate;0x7030;Sewers' Vent -> Pirate Fortress Entrance - Sewers' Vent;26.4762
+1;0x3b;0x7030;Pirate Fortress Entrance - Sewers' Vent - Sewers' Vent;0x2200;Entrance -> Pirate Fortress Exterior;32.9734
+1;0x3b;0x7030;Pirate Fortress Entrance - Sewers' Vent - Sewers' Vent;0x22c0;Lookout -> Pirate Fortress Exterior;61.5066
+1;0x3b;0x7030;Pirate Fortress Entrance - Sewers' Vent - Sewers' Vent;0x40a0;Sewers' Door -> Pirate Fortress Interior;32.6975
+1;0x3b;0x7030;Pirate Fortress Entrance - Sewers' Vent - Sewers' Vent;0x6850;Pirate Fortress Entrance -> Great Bay Coast;33.2011
+1;0x3b;0x7030;Pirate Fortress Entrance - Sewers' Vent - Sewers' Vent;0x68c0;Trapdoor -> Great Bay Coast - Trapdoor;17.0442
+1;0x37;0x68c0;Great Bay Coast - Trapdoor - Trapdoor;0x6820;Beach -> Great Bay Coast - Beach;27.552
+1;0x37;0x6820;Great Bay Coast - Beach - Beach;0x7000;Great Bay Coast -> Pirate Fortress Entrance;38.2523
+1;0x3b;0x7000;Pirate Fortress Entrance - Great Bay Coast;0x4090;Sewers' Gate -> Pirate Fortress Interior;18.5795
+1;0x23;0x4090;Pirate Fortress Interior - Sewers' Gate;0x7020;Sewers' Gate -> Pirate Fortress Entrance;3.32516
+1;0x3b;0x7020;Pirate Fortress Entrance - Sewers' Gate;0x6850;Pirate Fortress Entrance -> Great Bay Coast;20.5939
+1;0x3b;0x7020;Pirate Fortress Entrance - Sewers' Gate;0x40a0;Sewers' Door -> Pirate Fortress Interior;38.957
+1;0x3b;0x7020;Pirate Fortress Entrance - Sewers' Gate;0x2200;Entrance -> Pirate Fortress Exterior;35.0268
+1;0x3b;0x7020;Pirate Fortress Entrance - Sewers' Gate;0x68c0;Trapdoor -> Great Bay Coast - Trapdoor;8.55884
+1;0x37;0x68c0;Great Bay Coast - Trapdoor - Trapdoor;0x1000e;Great Bay Coast -> Cow Grotto;38.0818
+1;0x87;0x1000e;Cow Grotto - Great Bay Coast;0x1010e;Cow Grotto -> Great Bay Coast;3.41105
+1;0x37;0x1010e;Great Bay Coast - Cow Grotto;0x1000e;Great Bay Coast -> Cow Grotto;3.53136
+1;0x87;0x1000e;Cow Grotto - Great Bay Coast;0x1010e;Cow Grotto -> Great Bay Coast;3.14302
+1;0x37;0x1010e;Great Bay Coast - Cow Grotto;0x7000;Great Bay Coast -> Pirate Fortress Entrance;18.6623
+1;0x3b;0x7020;Pirate Fortress Entrance - Sewers' Gate;0x4090;Sewers' Gate -> Pirate Fortress Interior;3.26299
+1;0x23;0x4090;Pirate Fortress Interior - Sewers' Gate;0x7020;Sewers' Gate -> Pirate Fortress Entrance;2.96738
+1;0x3b;0x7020;Pirate Fortress Entrance - Sewers' Gate;0x22c0;Lookout -> Pirate Fortress Exterior;61.8643
+1;0x14;0x22c0;Pirate Fortress Exterior - Lookout;0x7050;Lookout -> Pirate Fortress Entrance;3.5354
+1;0x3b;0x7050;Pirate Fortress Entrance - Lookout;0x4090;Sewers' Gate -> Pirate Fortress Interior;11.3004
+1;0x3b;0x7050;Pirate Fortress Entrance - Lookout;0x68c0;Trapdoor -> Great Bay Coast - Trapdoor;9.16762
+1;0x3b;0x7050;Pirate Fortress Entrance - Lookout;0x6850;Pirate Fortress Entrance -> Great Bay Coast;18.2118
+1;0x37;0x6850;Great Bay Coast - Pirate Fortress Entrance;0x1000e;Great Bay Coast -> Cow Grotto;27.5815
+1;0x3b;0x7050;Pirate Fortress Entrance - Lookout;0x40a0;Sewers' Door -> Pirate Fortress Interior;38.3582
+1;0x3b;0x7050;Pirate Fortress Entrance - Lookout;0x2200;Entrance -> Pirate Fortress Exterior;35.6801
+1;0x14;0x2200;Pirate Fortress Exterior - Entrance;0x7010;Exterior -> Pirate Fortress Entrance;3.14787
+1;0x3b;0x7010;Pirate Fortress Entrance - Exterior;0x2200;Entrance -> Pirate Fortress Exterior;2.78133
+1;0x14;0x2200;Pirate Fortress Exterior - Entrance;0x7010;Exterior -> Pirate Fortress Entrance;3.47478
+1;0x3b;0x7010;Pirate Fortress Entrance - Exterior;0x22c0;Lookout -> Pirate Fortress Exterior;28.0889
+1;0x3b;0x7010;Pirate Fortress Entrance - Exterior;0x40a0;Sewers' Door -> Pirate Fortress Interior;10.7116
+1;0x3b;0x7010;Pirate Fortress Entrance - Exterior;0x4090;Sewers' Gate -> Pirate Fortress Interior;20.8178
+1;0x23;0x4090;Pirate Fortress Interior - Sewers' Gate;0x7060;Sewers' Door -> Pirate Fortress Entrance;90.3308
+1;0x3b;0x7010;Pirate Fortress Entrance - Exterior;0x6850;Pirate Fortress Entrance -> Great Bay Coast;32.6384
+1;0x37;0x6850;Great Bay Coast - Pirate Fortress Entrance;0x4400;Great Bay Coast -> Pinnacle Rock;25.204
+1;0x25;0x4400;Pinnacle Rock - Great Bay Coast;0x4410;Void Entrance -> Pinnacle Rock - Void Entrance;6.78242
+1;0x25;0x4410;Pinnacle Rock - Void Entrance - Void Entrance;0x6830;Pinnacle Rock -> Great Bay Coast;3.65162
+1;0x37;0x6830;Great Bay Coast - Pinnacle Rock;0x7000;Great Bay Coast -> Pirate Fortress Entrance;26.3391
+1;0x3b;0x7010;Pirate Fortress Entrance - Exterior;0x68c0;Trapdoor -> Great Bay Coast - Trapdoor;13.4898
+1;0x37;0x68c0;Great Bay Coast - Trapdoor - Trapdoor;0x5420;Great Bay Coast -> Termina Field;56.3074
+1;0x2d;0x5420;Termina Field - Great Bay Coast;0x6800;Termina Field -> Great Bay Coast;9.02427
+1;0x37;0x6800;Great Bay Coast - Termina Field;0x7000;Great Bay Coast -> Pirate Fortress Entrance;55.7237
+1;0x3b;0x7010;Pirate Fortress Entrance - Exterior;0x40a0;Sewers' Door -> Pirate Fortress Interior;10.4286
+1;0x23;0x40a0;Pirate Fortress Interior - Sewers' Door;0x7030;Sewers' Vent -> Pirate Fortress Entrance - Sewers' Vent;16.6713
+1;0x3b;0x7030;Pirate Fortress Entrance - Sewers' Vent - Sewers' Vent;0x68c0;Trapdoor -> Great Bay Coast - Trapdoor;21.1723
+1;0x37;0x68c0;Great Bay Coast - Trapdoor - Trapdoor;0x5800;Great Bay Coast -> Laboratory;38.545
+1;0x2f;0x5800;Laboratory - Great Bay Coast;0x6870;Laboratory -> Great Bay Coast;5.55919
+1;0x37;0x6870;Great Bay Coast - Laboratory;0x7000;Great Bay Coast -> Pirate Fortress Entrance;34.308
+1;0x3b;0x7000;Pirate Fortress Entrance - Great Bay Coast;0x68c0;Trapdoor -> Great Bay Coast - Trapdoor;6.84402
+1;0x37;0x68c0;Great Bay Coast - Trapdoor - Trapdoor;0x4a00;Great Bay Coast -> Ocean Spider House;44.9164
+1;0x28;0x4a00;Ocean Spider House - Great Bay Coast;0x6880;Ocean Spider House -> Great Bay Coast;5.25004
+1;0x37;0x6880;Great Bay Coast - Ocean Spider House;0x7000;Great Bay Coast -> Pirate Fortress Entrance;42.8381
+1;0x3b;0x7000;Pirate Fortress Entrance - Great Bay Coast;0x68c0;Trapdoor -> Great Bay Coast - Trapdoor;1.98716
+1;0x37;0x68c0;Great Bay Coast - Trapdoor - Trapdoor;0x7200;Great Bay Coast -> Fisher Hut;44.941
+1;0x3c;0x7200;Fisher Hut - Great Bay Coast;0x6840;Fisherman Hut -> Great Bay Coast;5.29407
+1;0x37;0x6840;Great Bay Coast - Fisherman Hut;0x7000;Great Bay Coast -> Pirate Fortress Entrance;43.6423
+1;0x3b;0x7000;Pirate Fortress Entrance - Great Bay Coast;0x68c0;Trapdoor -> Great Bay Coast - Trapdoor;1.90793
+1;0x37;0x68c0;Great Bay Coast - Trapdoor - Trapdoor;0x10008;Great Bay Coast -> Open Grotto;49.1662
+1;0x86;0x10008;Open Grotto - Great Bay Coast;0x10108;Open Grotto -> Great Bay Coast;2.7778
+1;0x37;0x10108;Great Bay Coast - Open Grotto;0x7000;Great Bay Coast -> Pirate Fortress Entrance;46.4794
+1;0x3b;0x7000;Pirate Fortress Entrance - Great Bay Coast;0x68c0;Trapdoor -> Great Bay Coast - Trapdoor;1.88931
+1;0x37;0x68c0;Great Bay Coast - Trapdoor - Trapdoor;0x6a00;Great Bay Coast -> Zora Cape;43.8126
+1;0x38;0x6a00;Zora Cape - Great Bay Coast;0x6810;Zora Cape -> Great Bay Coast;5.1375
+1;0x37;0x6810;Great Bay Coast - Zora Cape;0x7000;Great Bay Coast -> Pirate Fortress Entrance;44.0512
+1;0x23;0x40a0;Pirate Fortress Interior - Sewers' Door;0x7020;Sewers' Gate -> Pirate Fortress Entrance;-1
+1;0x23;0x4080;Pirate Fortress Interior - Sewers' Telescope;0x7020;Sewers' Gate -> Pirate Fortress Entrance;-1
+1;0x37;0x68c0;Great Bay Coast - Trapdoor - Trapdoor;0x68a00;Great Bay Coast -> Mikau's Cutscene;40.8126
+1;0x37;0x68c0;Great Bay Coast - Trapdoor - Trapdoor;0x4400;Great Bay Coast -> Pinnacle Rock;20.6772
+1;0x25;0x4400;Pinnacle Rock - Great Bay Coast;0x4410;Void Entrance -> Pinnacle Rock - Void Entrance;8.53444
+1;0x25;0x4410;Pinnacle Rock - Void Entrance - Void Entrance;0x6830;Pinnacle Rock -> Great Bay Coast;3.5663
+1;0x37;0x6830;Great Bay Coast - Pinnacle Rock;0x4400;Great Bay Coast -> Pinnacle Rock;3.47326
+1;0x25;0x4400;Pinnacle Rock - Great Bay Coast;0x4410;Void Entrance -> Pinnacle Rock - Void Entrance;7.06834
+1;0x25;0x4410;Pinnacle Rock - Void Entrance - Void Entrance;0x6830;Pinnacle Rock -> Great Bay Coast;22.5146
+1;0x37;0x6830;Great Bay Coast - Pinnacle Rock;0x4400;Great Bay Coast -> Pinnacle Rock;42.1476
+1;0x25;0x4400;Pinnacle Rock - Great Bay Coast;0x4410;Void Entrance -> Pinnacle Rock - Void Entrance;9.13503
+1;0x25;0x4410;Pinnacle Rock - Void Entrance - Void Entrance;0x6830;Pinnacle Rock -> Great Bay Coast;66.2877
+1;0x37;0x6830;Great Bay Coast - Pinnacle Rock;0x4400;Great Bay Coast -> Pinnacle Rock;310.682
+1;0x25;0x4400;Pinnacle Rock - Great Bay Coast;0x4410;Void Entrance -> Pinnacle Rock - Void Entrance;7.10147
+1;0x25;0x4410;Pinnacle Rock - Void Entrance - Void Entrance;0x6830;Pinnacle Rock -> Great Bay Coast;4.21667
+1;0x37;0x6830;Great Bay Coast - Pinnacle Rock;0x4400;Great Bay Coast -> Pinnacle Rock;70.9927
+1;0x25;0x4410;Pinnacle Rock - Void Entrance - Void Entrance;0x44100;Void Entrance -> Pinnacle Rock - Void Entrance;7.03331
+1;0x37;0x6830;Great Bay Coast - Pinnacle Rock;0x6860;Ledge -> Great Bay Coast - Ledge;8.04455
+1;0x37;0x6860;Great Bay Coast - Ledge - Ledge;0x4400;Great Bay Coast -> Pinnacle Rock;29.5181
+1;0x25;0x4400;Pinnacle Rock - Great Bay Coast;0x6830;Pinnacle Rock -> Great Bay Coast;3.56956
+1;0x37;0x6830;Great Bay Coast - Pinnacle Rock;0x6820;Beach -> Great Bay Coast - Beach;7.00493
+1;0x37;0x6820;Great Bay Coast - Beach - Beach;0x4400;Great Bay Coast -> Pinnacle Rock;27.8581
+1;0x25;0x4400;Pinnacle Rock - Great Bay Coast;0x6830;Pinnacle Rock -> Great Bay Coast;3.60068
+1;0x37;0x6830;Great Bay Coast - Pinnacle Rock;0x1000e;Great Bay Coast -> Cow Grotto;42.0441
+1;0x87;0x1000e;Cow Grotto - Great Bay Coast;0x1010e;Cow Grotto -> Great Bay Coast;3.14201
+1;0x37;0x1010e;Great Bay Coast - Cow Grotto;0x1000e;Great Bay Coast -> Cow Grotto;3.57423
+1;0x87;0x1000e;Cow Grotto - Great Bay Coast;0x1010e;Cow Grotto -> Great Bay Coast;3.1455
+1;0x37;0x1010e;Great Bay Coast - Cow Grotto;0x4400;Great Bay Coast -> Pinnacle Rock;33.1481
+1;0x25;0x4400;Pinnacle Rock - Great Bay Coast;0x6830;Pinnacle Rock -> Great Bay Coast;3.60121
+1;0x37;0x6830;Great Bay Coast - Pinnacle Rock;0x5800;Great Bay Coast -> Laboratory;25.8824
+1;0x2f;0x5800;Laboratory - Great Bay Coast;0x6870;Laboratory -> Great Bay Coast;2.98436
+1;0x37;0x6870;Great Bay Coast - Laboratory;0x4400;Great Bay Coast -> Pinnacle Rock;21.5265
+1;0x25;0x4400;Pinnacle Rock - Great Bay Coast;0x6830;Pinnacle Rock -> Great Bay Coast;3.65685
+1;0x37;0x6830;Great Bay Coast - Pinnacle Rock;0x5420;Great Bay Coast -> Termina Field;46.364
+1;0x2d;0x5420;Termina Field - Great Bay Coast;0x6800;Termina Field -> Great Bay Coast;3.647
+1;0x37;0x6800;Great Bay Coast - Termina Field;0x4400;Great Bay Coast -> Pinnacle Rock;45.056
+1;0x25;0x4400;Pinnacle Rock - Great Bay Coast;0x6830;Pinnacle Rock -> Great Bay Coast;3.62067
+1;0x37;0x6830;Great Bay Coast - Pinnacle Rock;0x68a00;Great Bay Coast -> Mikau's Cutscene;30.9694
+1;0x37;0x6830;Great Bay Coast - Pinnacle Rock;0x6a00;Great Bay Coast -> Zora Cape;34.9694
+1;0x38;0x6a00;Zora Cape - Great Bay Coast;0x6810;Zora Cape -> Great Bay Coast;4.26152
+1;0x37;0x6810;Great Bay Coast - Zora Cape;0x4400;Great Bay Coast -> Pinnacle Rock;34.29
+1;0x25;0x4400;Pinnacle Rock - Great Bay Coast;0x6830;Pinnacle Rock -> Great Bay Coast;3.96879
+1;0x37;0x6830;Great Bay Coast - Pinnacle Rock;0x4a00;Great Bay Coast -> Ocean Spider House;35.9583
+1;0x28;0x4a00;Ocean Spider House - Great Bay Coast;0x6880;Ocean Spider House -> Great Bay Coast;4.06178
+1;0x37;0x6880;Great Bay Coast - Ocean Spider House;0x4400;Great Bay Coast -> Pinnacle Rock;34.2115
+1;0x25;0x4400;Pinnacle Rock - Great Bay Coast;0x6830;Pinnacle Rock -> Great Bay Coast;3.61415
+1;0x37;0x6830;Great Bay Coast - Pinnacle Rock;0x7200;Great Bay Coast -> Fisher Hut;34.1451
+1;0x3c;0x7200;Fisher Hut - Great Bay Coast;0x6840;Fisherman Hut -> Great Bay Coast;3.64163
+1;0x37;0x6840;Great Bay Coast - Fisherman Hut;0x4400;Great Bay Coast -> Pinnacle Rock;33.7222
+1;0x25;0x4400;Pinnacle Rock - Great Bay Coast;0x6830;Pinnacle Rock -> Great Bay Coast;3.60451
+1;0x37;0x6830;Great Bay Coast - Pinnacle Rock;0x7200;Great Bay Coast -> Fisher Hut;36.3329
+1;0x37;0x6830;Great Bay Coast - Pinnacle Rock;0x10008;Great Bay Coast -> Open Grotto;38.183
+1;0x86;0x10008;Open Grotto - Great Bay Coast;0x10108;Open Grotto -> Great Bay Coast;2.92972
+1;0x37;0x10108;Great Bay Coast - Open Grotto;0x10008;Great Bay Coast -> Open Grotto;3.48274
+1;0x86;0x10008;Open Grotto - Great Bay Coast;0x10108;Open Grotto -> Great Bay Coast;2.59433
+1;0x37;0x10108;Great Bay Coast - Open Grotto;0x4400;Great Bay Coast -> Pinnacle Rock;37.9227
+1;0x37;0x10108;Great Bay Coast - Open Grotto;0x7200;Great Bay Coast -> Fisher Hut;6.0012
+1;0x37;0x10108;Great Bay Coast - Open Grotto;0x4a00;Great Bay Coast -> Ocean Spider House;6.99165
+1;0x28;0x4a00;Ocean Spider House - Great Bay Coast;0x6880;Ocean Spider House -> Great Bay Coast;3.05202
+1;0x37;0x6880;Great Bay Coast - Ocean Spider House;0x10008;Great Bay Coast -> Open Grotto;7.16285
+1;0x86;0x10008;Open Grotto - Great Bay Coast;0x10108;Open Grotto -> Great Bay Coast;2.60202
+1;0x37;0x10108;Great Bay Coast - Open Grotto;0x7200;Great Bay Coast -> Fisher Hut;6.19119
+1;0x3c;0x7200;Fisher Hut - Great Bay Coast;0x6840;Fisherman Hut -> Great Bay Coast;2.39131
+1;0x37;0x6840;Great Bay Coast - Fisherman Hut;0x10008;Great Bay Coast -> Open Grotto;6.44477
+1;0x86;0x10008;Open Grotto - Great Bay Coast;0x10108;Open Grotto -> Great Bay Coast;2.60292
+1;0x37;0x10108;Great Bay Coast - Open Grotto;0x5420;Great Bay Coast -> Termina Field;25.8536
+1;0x2d;0x5420;Termina Field - Great Bay Coast;0x6800;Termina Field -> Great Bay Coast;3.70936
+1;0x37;0x6800;Great Bay Coast - Termina Field;0x10008;Great Bay Coast -> Open Grotto;25.9736
+1;0x86;0x10008;Open Grotto - Great Bay Coast;0x10108;Open Grotto -> Great Bay Coast;2.60643
+1;0x37;0x10108;Great Bay Coast - Open Grotto;0x6a00;Great Bay Coast -> Zora Cape;15.794
+1;0x38;0x6a00;Zora Cape - Great Bay Coast;0x6810;Zora Cape -> Great Bay Coast;5.7376
+1;0x37;0x6810;Great Bay Coast - Zora Cape;0x10008;Great Bay Coast -> Open Grotto;16.5647
+1;0x86;0x10008;Open Grotto - Great Bay Coast;0x10108;Open Grotto -> Great Bay Coast;2.60043
+1;0x37;0x10108;Great Bay Coast - Open Grotto;0x5800;Great Bay Coast -> Laboratory;32.1041
+1;0x2f;0x5800;Laboratory - Great Bay Coast;0x6870;Laboratory -> Great Bay Coast;1.99306
+1;0x37;0x6870;Great Bay Coast - Laboratory;0x10008;Great Bay Coast -> Open Grotto;27.41
+1;0x86;0x10008;Open Grotto - Great Bay Coast;0x10108;Open Grotto -> Great Bay Coast;2.57573
+1;0x37;0x10108;Great Bay Coast - Open Grotto;0x6820;Beach -> Great Bay Coast - Beach;30.4546
+1;0x37;0x6820;Great Bay Coast - Beach - Beach;0x10008;Great Bay Coast -> Open Grotto;14.9424
+1;0x86;0x10008;Open Grotto - Great Bay Coast;0x10108;Open Grotto -> Great Bay Coast;2.60868
+1;0x37;0x10108;Great Bay Coast - Open Grotto;0x6860;Ledge -> Great Bay Coast - Ledge;40.2034
+1;0x37;0x6860;Great Bay Coast - Ledge - Ledge;0x10008;Great Bay Coast -> Open Grotto;45.7144
+1;0x86;0x10008;Open Grotto - Great Bay Coast;0x10108;Open Grotto -> Great Bay Coast;2.6676
+1;0x37;0x10108;Great Bay Coast - Open Grotto;0x68a00;Great Bay Coast -> Mikau's Cutscene;11.794
+1;0x37;0x10108;Great Bay Coast - Open Grotto;0x1000e;Great Bay Coast -> Cow Grotto;52.4483
+1;0x87;0x1000e;Cow Grotto - Great Bay Coast;0x1010e;Cow Grotto -> Great Bay Coast;3.13105
+1;0x37;0x1010e;Great Bay Coast - Cow Grotto;0x10008;Great Bay Coast -> Open Grotto;48.3323
+1;0x86;0x10008;Open Grotto - Great Bay Coast;0x10108;Open Grotto -> Great Bay Coast;16.7207
+1;0x37;0x10108;Great Bay Coast - Open Grotto;0x7200;Great Bay Coast -> Fisher Hut;5.88809
+1;0x3c;0x7200;Fisher Hut - Great Bay Coast;0x6840;Fisherman Hut -> Great Bay Coast;2.72252
+1;0x37;0x6840;Great Bay Coast - Fisherman Hut;0x7200;Great Bay Coast -> Fisher Hut;3.33716
+1;0x3c;0x7200;Fisher Hut - Great Bay Coast;0x6840;Fisherman Hut -> Great Bay Coast;2.79474
+1;0x37;0x6840;Great Bay Coast - Fisherman Hut;0x4a00;Great Bay Coast -> Ocean Spider House;5.07476
+1;0x28;0x4a00;Ocean Spider House - Great Bay Coast;0x6880;Ocean Spider House -> Great Bay Coast;3.10349
+1;0x37;0x6880;Great Bay Coast - Ocean Spider House;0x7200;Great Bay Coast -> Fisher Hut;4.8392
+1;0x3c;0x7200;Fisher Hut - Great Bay Coast;0x6840;Fisherman Hut -> Great Bay Coast;2.69265
+1;0x37;0x6840;Great Bay Coast - Fisherman Hut;0x5420;Great Bay Coast -> Termina Field;24.4496
+1;0x2d;0x5420;Termina Field - Great Bay Coast;0x6800;Termina Field -> Great Bay Coast;4.00601
+1;0x37;0x6800;Great Bay Coast - Termina Field;0x7200;Great Bay Coast -> Fisher Hut;24.5859
+1;0x3c;0x7200;Fisher Hut - Great Bay Coast;0x6840;Fisherman Hut -> Great Bay Coast;10.6809
+1;0x37;0x6840;Great Bay Coast - Fisherman Hut;0x6a00;Great Bay Coast -> Zora Cape;15.7001
+1;0x38;0x6a00;Zora Cape - Great Bay Coast;0x6810;Zora Cape -> Great Bay Coast;4.28112
+1;0x37;0x6810;Great Bay Coast - Zora Cape;0x7200;Great Bay Coast -> Fisher Hut;14.9457
+1;0x3c;0x7200;Fisher Hut - Great Bay Coast;0x6840;Fisherman Hut -> Great Bay Coast;2.39042
+1;0x37;0x6840;Great Bay Coast - Fisherman Hut;0x5800;Great Bay Coast -> Laboratory;26.4926
+1;0x2f;0x5800;Laboratory - Great Bay Coast;0x6870;Laboratory -> Great Bay Coast;2.68238
+1;0x37;0x6870;Great Bay Coast - Laboratory;0x7200;Great Bay Coast -> Fisher Hut;22.4825
+1;0x3c;0x7200;Fisher Hut - Great Bay Coast;0x6840;Fisherman Hut -> Great Bay Coast;2.70731
+1;0x37;0x6840;Great Bay Coast - Fisherman Hut;0x6820;Beach -> Great Bay Coast - Beach;27.2589
+1;0x37;0x6820;Great Bay Coast - Beach - Beach;0x7200;Great Bay Coast -> Fisher Hut;13.122
+1;0x3c;0x7200;Fisher Hut - Great Bay Coast;0x6840;Fisherman Hut -> Great Bay Coast;2.39922
+1;0x37;0x6840;Great Bay Coast - Fisherman Hut;0x6860;Ledge -> Great Bay Coast - Ledge;35.9217
+1;0x37;0x6860;Great Bay Coast - Ledge - Ledge;0x7200;Great Bay Coast -> Fisher Hut;44.2872
+1;0x3c;0x7200;Fisher Hut - Great Bay Coast;0x6840;Fisherman Hut -> Great Bay Coast;3.46358
+1;0x37;0x6840;Great Bay Coast - Fisherman Hut;0x1000e;Great Bay Coast -> Cow Grotto;61.6178
+1;0x87;0x1000e;Cow Grotto - Great Bay Coast;0x1010e;Cow Grotto -> Great Bay Coast;3.15113
+1;0x37;0x1010e;Great Bay Coast - Cow Grotto;0x7200;Great Bay Coast -> Fisher Hut;47.5426
+1;0x3c;0x7200;Fisher Hut - Great Bay Coast;0x6840;Fisherman Hut -> Great Bay Coast;6.78638
+1;0x37;0x6840;Great Bay Coast - Fisherman Hut;0x68a00;Great Bay Coast -> Mikau's Cutscene;11.7001
+1;0x37;0x6840;Great Bay Coast - Fisherman Hut;0x4a00;Great Bay Coast -> Ocean Spider House;5.05021
+1;0x28;0x4a00;Ocean Spider House - Great Bay Coast;0x6880;Ocean Spider House -> Great Bay Coast;3.09411
+1;0x37;0x6880;Great Bay Coast - Ocean Spider House;0x4a00;Great Bay Coast -> Ocean Spider House;3.58925
+1;0x28;0x4a00;Ocean Spider House - Great Bay Coast;0x6880;Ocean Spider House -> Great Bay Coast;4.4057
+1;0x37;0x6880;Great Bay Coast - Ocean Spider House;0x6a00;Great Bay Coast -> Zora Cape;15.8747
+1;0x38;0x6a00;Zora Cape - Great Bay Coast;0x6810;Zora Cape -> Great Bay Coast;4.26542
+1;0x37;0x6810;Great Bay Coast - Zora Cape;0x4a00;Great Bay Coast -> Ocean Spider House;15.4291
+1;0x28;0x4a00;Ocean Spider House - Great Bay Coast;0x6880;Ocean Spider House -> Great Bay Coast;3.05628
+1;0x37;0x6880;Great Bay Coast - Ocean Spider House;0x5420;Great Bay Coast -> Termina Field;23.1308
+1;0x2d;0x5420;Termina Field - Great Bay Coast;0x6800;Termina Field -> Great Bay Coast;3.76569
+1;0x37;0x6800;Great Bay Coast - Termina Field;0x4a00;Great Bay Coast -> Ocean Spider House;23.0085
+1;0x28;0x4a00;Ocean Spider House - Great Bay Coast;0x6880;Ocean Spider House -> Great Bay Coast;3.05128
+1;0x37;0x6880;Great Bay Coast - Ocean Spider House;0x5800;Great Bay Coast -> Laboratory;27.0285
+1;0x2f;0x5800;Laboratory - Great Bay Coast;0x6870;Laboratory -> Great Bay Coast;2.69255
+1;0x37;0x6870;Great Bay Coast - Laboratory;0x4a00;Great Bay Coast -> Ocean Spider House;21.331
+1;0x28;0x4a00;Ocean Spider House - Great Bay Coast;0x6880;Ocean Spider House -> Great Bay Coast;5.71105
+1;0x37;0x6880;Great Bay Coast - Ocean Spider House;0x6820;Beach -> Great Bay Coast - Beach;25.1508
+1;0x37;0x6820;Great Bay Coast - Beach - Beach;0x4a00;Great Bay Coast -> Ocean Spider House;12.5117
+1;0x28;0x4a00;Ocean Spider House - Great Bay Coast;0x6880;Ocean Spider House -> Great Bay Coast;3.04793
+1;0x37;0x6880;Great Bay Coast - Ocean Spider House;0x6860;Ledge -> Great Bay Coast - Ledge;37.138
+1;0x37;0x6860;Great Bay Coast - Ledge - Ledge;0x4a00;Great Bay Coast -> Ocean Spider House;42.933
+1;0x28;0x4a00;Ocean Spider House - Great Bay Coast;0x6880;Ocean Spider House -> Great Bay Coast;6.56478
+1;0x37;0x6880;Great Bay Coast - Ocean Spider House;0x68a00;Great Bay Coast -> Mikau's Cutscene;11.8747
+1;0x37;0x6880;Great Bay Coast - Ocean Spider House;0x1000e;Great Bay Coast -> Cow Grotto;58.9866
+1;0x87;0x1000e;Cow Grotto - Great Bay Coast;0x1010e;Cow Grotto -> Great Bay Coast;3.53292
+1;0x37;0x1010e;Great Bay Coast - Cow Grotto;0x4a00;Great Bay Coast -> Ocean Spider House;46.6254
+1;0x37;0x1010e;Great Bay Coast - Cow Grotto;0x6860;Ledge -> Great Bay Coast - Ledge;32.417
+1;0x37;0x6860;Great Bay Coast - Ledge - Ledge;0x1000e;Great Bay Coast -> Cow Grotto;17.2104
+1;0x87;0x1000e;Cow Grotto - Great Bay Coast;0x1010e;Cow Grotto -> Great Bay Coast;3.14205
+1;0x37;0x1010e;Great Bay Coast - Cow Grotto;0x6820;Beach -> Great Bay Coast - Beach;31.4421
+1;0x37;0x6820;Great Bay Coast - Beach - Beach;0x1000e;Great Bay Coast -> Cow Grotto;51.3716
+1;0x87;0x1000e;Cow Grotto - Great Bay Coast;0x1010e;Cow Grotto -> Great Bay Coast;3.20176
+1;0x37;0x1010e;Great Bay Coast - Cow Grotto;0x5420;Great Bay Coast -> Termina Field;59.1607
+1;0x2d;0x5420;Termina Field - Great Bay Coast;0x6800;Termina Field -> Great Bay Coast;3.99983
+1;0x37;0x6800;Great Bay Coast - Termina Field;0x1000e;Great Bay Coast -> Cow Grotto;67.6997
+1;0x87;0x1000e;Cow Grotto - Great Bay Coast;0x1010e;Cow Grotto -> Great Bay Coast;3.15128
+1;0x37;0x1010e;Great Bay Coast - Cow Grotto;0x68a00;Great Bay Coast -> Mikau's Cutscene;41.5347
+1;0x37;0x1010e;Great Bay Coast - Cow Grotto;0x5800;Great Bay Coast -> Laboratory;40.27
+1;0x2f;0x5800;Laboratory - Great Bay Coast;0x6870;Laboratory -> Great Bay Coast;2.71564
+1;0x37;0x6870;Great Bay Coast - Laboratory;0x1000e;Great Bay Coast -> Cow Grotto;51.2582
+1;0x87;0x1000e;Cow Grotto - Great Bay Coast;0x1010e;Cow Grotto -> Great Bay Coast;8.87716
+1;0x37;0x1010e;Great Bay Coast - Cow Grotto;0x6a00;Great Bay Coast -> Zora Cape;46.5347
+1;0x38;0x6a00;Zora Cape - Great Bay Coast;0x6810;Zora Cape -> Great Bay Coast;4.86824
+1;0x37;0x6810;Great Bay Coast - Zora Cape;0x1000e;Great Bay Coast -> Cow Grotto;56.5059
+1;0x37;0x6810;Great Bay Coast - Zora Cape;0x5420;Great Bay Coast -> Termina Field;29.6412
+1;0x2d;0x5420;Termina Field - Great Bay Coast;0x6800;Termina Field -> Great Bay Coast;3.84054
+1;0x37;0x6800;Great Bay Coast - Termina Field;0x6a00;Great Bay Coast -> Zora Cape;29.9568
+1;0x38;0x6a00;Zora Cape - Great Bay Coast;0x6810;Zora Cape -> Great Bay Coast;3.65489
+1;0x37;0x6810;Great Bay Coast - Zora Cape;0x5800;Great Bay Coast -> Laboratory;20.8377
+1;0x2f;0x5800;Laboratory - Great Bay Coast;0x6870;Laboratory -> Great Bay Coast;5.27345
+1;0x37;0x6870;Great Bay Coast - Laboratory;0x6a00;Great Bay Coast -> Zora Cape;17.7953
+1;0x38;0x6a00;Zora Cape - Great Bay Coast;0x6810;Zora Cape -> Great Bay Coast;4.28891
+1;0x37;0x6810;Great Bay Coast - Zora Cape;0x68a00;Great Bay Coast -> Mikau's Cutscene;7.59424
+1;0x37;0x6810;Great Bay Coast - Zora Cape;0x6a00;Great Bay Coast -> Zora Cape;3.59424
+1;0x38;0x6a00;Zora Cape - Great Bay Coast;0x6810;Zora Cape -> Great Bay Coast;4.43563
+1;0x37;0x6810;Great Bay Coast - Zora Cape;0x6820;Beach -> Great Bay Coast - Beach;15.6602
+1;0x37;0x6820;Great Bay Coast - Beach - Beach;0x6a00;Great Bay Coast -> Zora Cape;10.8413
+1;0x38;0x6a00;Zora Cape - Great Bay Coast;0x6810;Zora Cape -> Great Bay Coast;4.69021
+1;0x37;0x6810;Great Bay Coast - Zora Cape;0x6860;Ledge -> Great Bay Coast - Ledge;36.6107
+1;0x37;0x6860;Great Bay Coast - Ledge - Ledge;0x6a00;Great Bay Coast -> Zora Cape;44.3611
+1;0x37;0x6860;Great Bay Coast - Ledge - Ledge;0x6820;Beach -> Great Bay Coast - Beach;29.4657
+1;0x37;0x6820;Great Bay Coast - Beach - Beach;0x6860;Ledge -> Great Bay Coast - Ledge;29.9702
+1;0x37;0x6860;Great Bay Coast - Ledge - Ledge;0x5420;Great Bay Coast -> Termina Field;55.0298
+1;0x2d;0x5420;Termina Field - Great Bay Coast;0x6800;Termina Field -> Great Bay Coast;3.72783
+1;0x37;0x6800;Great Bay Coast - Termina Field;0x6860;Ledge -> Great Bay Coast - Ledge;52.7815
+1;0x37;0x6860;Great Bay Coast - Ledge - Ledge;0x5800;Great Bay Coast -> Laboratory;40.1171
+1;0x2f;0x5800;Laboratory - Great Bay Coast;0x6870;Laboratory -> Great Bay Coast;2.72888
+1;0x37;0x6860;Great Bay Coast - Ledge - Ledge;0x68a00;Great Bay Coast -> Mikau's Cutscene;40.3611
+1;0x37;0x6860;Great Bay Coast - Ledge - Ledge;0x6860;Ledge -> Great Bay Coast - Ledge;26.883
+1;0x2f;0x5800;Laboratory - Great Bay Coast;0x6870;Laboratory -> Great Bay Coast;3.0342
+1;0x37;0x6870;Great Bay Coast - Laboratory;0x5800;Great Bay Coast -> Laboratory;3.11512
+1;0x2f;0x5800;Laboratory - Great Bay Coast;0x6870;Laboratory -> Great Bay Coast;2.78947
+1;0x37;0x6870;Great Bay Coast - Laboratory;0x5420;Great Bay Coast -> Termina Field;33.74
+1;0x2d;0x5420;Termina Field - Great Bay Coast;0x6800;Termina Field -> Great Bay Coast;3.63341
+1;0x37;0x6800;Great Bay Coast - Termina Field;0x5800;Great Bay Coast -> Laboratory;40.9256
+1;0x2f;0x5800;Laboratory - Great Bay Coast;0x6870;Laboratory -> Great Bay Coast;2.69242
+1;0x37;0x6870;Great Bay Coast - Laboratory;0x6860;Ledge -> Great Bay Coast - Ledge;23.0409
+1;0x37;0x6870;Great Bay Coast - Laboratory;0x6820;Beach -> Great Bay Coast - Beach;11.2905
+1;0x37;0x6870;Great Bay Coast - Laboratory;0x68a00;Great Bay Coast -> Mikau's Cutscene;12.7953
+1;0x37;0x6820;Great Bay Coast - Beach - Beach;0x5800;Great Bay Coast -> Laboratory;18.012
+1;0x2f;0x5800;Laboratory - Great Bay Coast;0x6870;Laboratory -> Great Bay Coast;11.9764
+1;0x37;0x6820;Great Bay Coast - Beach - Beach;0x6820;Beach -> Great Bay Coast - Beach;15.125
+1;0x37;0x6820;Great Bay Coast - Beach - Beach;0x5420;Great Bay Coast -> Termina Field;25.9878
+1;0x2d;0x5420;Termina Field - Great Bay Coast;0x6800;Termina Field -> Great Bay Coast;3.73793
+1;0x37;0x6800;Great Bay Coast - Termina Field;0x6820;Beach -> Great Bay Coast - Beach;37.4658
+1;0x37;0x6800;Great Bay Coast - Termina Field;0x68a00;Great Bay Coast -> Mikau's Cutscene;24.9568
+1;0x37;0x6820;Great Bay Coast - Beach - Beach;0x68b0;Warp Owl -> Great Bay Coast - Owl Statue;105.145
+1;0x37;0x68b0;Great Bay Coast - Owl Statue - Warp Owl;0x5800;Great Bay Coast -> Laboratory;8.59139
+1;0x37;0x68b0;Great Bay Coast - Owl Statue - Warp Owl;0x6820;Beach -> Great Bay Coast - Beach;8.73109
+1;0x37;0x6820;Great Bay Coast - Beach - Beach;0x68b0;Warp Owl -> Great Bay Coast - Owl Statue;2.21748
+1;0x37;0x6820;Great Bay Coast - Beach - Beach;0x68a00;Great Bay Coast -> Mikau's Cutscene;5.8413
+1;0x37;0x68b0;Great Bay Coast - Owl Statue - Warp Owl;0x4400;Great Bay Coast -> Pinnacle Rock;21.1511
+1;0x37;0x68b0;Great Bay Coast - Owl Statue - Warp Owl;0x6860;Ledge -> Great Bay Coast - Ledge;23.7362
+1;0x37;0x68b0;Great Bay Coast - Owl Statue - Warp Owl;0x5420;Great Bay Coast -> Termina Field;32.9424
+1;0x37;0x68b0;Great Bay Coast - Owl Statue - Warp Owl;0x10008;Great Bay Coast -> Open Grotto;23.7763
+1;0x37;0x68b0;Great Bay Coast - Owl Statue - Warp Owl;0x7200;Great Bay Coast -> Fisher Hut;20.9348
+1;0x37;0x68b0;Great Bay Coast - Owl Statue - Warp Owl;0x4a00;Great Bay Coast -> Ocean Spider House;20.4111
+1;0x37;0x68b0;Great Bay Coast - Owl Statue - Warp Owl;0x6a00;Great Bay Coast -> Zora Cape;16.8687
+1;0x37;0x68b0;Great Bay Coast - Owl Statue - Warp Owl;0x1000e;Great Bay Coast -> Cow Grotto;44.8914
+1;0x37;0x68b0;Great Bay Coast - Owl Statue - Warp Owl;0x7000;Great Bay Coast -> Pirate Fortress Entrance;33.5853
+1;0x37;0x68b0;Great Bay Coast - Owl Statue - Warp Owl;0x68a00;Great Bay Coast -> Mikau's Cutscene;11.8687
+1;0x3b;0x7000;Pirate Fortress Entrance - Great Bay Coast;0x6850;Pirate Fortress Entrance -> Great Bay Coast;9.13449
+1;0x37;0x6850;Great Bay Coast - Pirate Fortress Entrance;0x6820;Beach -> Great Bay Coast - Beach;27.1677
+1;0x37;0x6850;Great Bay Coast - Pirate Fortress Entrance;0x6860;Ledge -> Great Bay Coast - Ledge;20.921
+1;0x37;0x6850;Great Bay Coast - Pirate Fortress Entrance;0x5420;Great Bay Coast -> Termina Field;56.4296
+1;0x37;0x6850;Great Bay Coast - Pirate Fortress Entrance;0x5800;Great Bay Coast -> Laboratory;41.9284
+1;0x37;0x6850;Great Bay Coast - Pirate Fortress Entrance;0x4a00;Great Bay Coast -> Ocean Spider House;45.5605
+1;0x37;0x6850;Great Bay Coast - Pirate Fortress Entrance;0x7200;Great Bay Coast -> Fisher Hut;47.2093
+1;0x37;0x6850;Great Bay Coast - Pirate Fortress Entrance;0x10008;Great Bay Coast -> Open Grotto;49.8823
+1;0x37;0x6850;Great Bay Coast - Pirate Fortress Entrance;0x6a00;Great Bay Coast -> Zora Cape;45.229
+1;0x37;0x6850;Great Bay Coast - Pirate Fortress Entrance;0x68a00;Great Bay Coast -> Mikau's Cutscene;41.229
+1;0x37;0x68a0;Great Bay Coast - Mikau's Tomb;0x4a00;Great Bay Coast -> Ocean Spider House;7.58925
+1;0x37;0x68a0;Great Bay Coast - Mikau's Tomb;0x6a00;Great Bay Coast -> Zora Cape;10.8747
+1;0x37;0x68a0;Great Bay Coast - Mikau's Tomb;0x5420;Great Bay Coast -> Termina Field;18.1308
+1;0x37;0x68a0;Great Bay Coast - Mikau's Tomb;0x5800;Great Bay Coast -> Laboratory;22.0285
+1;0x37;0x68a0;Great Bay Coast - Mikau's Tomb;0x6820;Beach -> Great Bay Coast - Beach;20.1508
+1;0x37;0x68a0;Great Bay Coast - Mikau's Tomb;0x6860;Ledge -> Great Bay Coast - Ledge;31.138
+1;0x37;0x68a0;Great Bay Coast - Mikau's Tomb;0x68a00;Great Bay Coast -> Mikau's Cutscene;9.8747
+1;0x37;0x68a0;Great Bay Coast - Mikau's Tomb;0x1000e;Great Bay Coast -> Cow Grotto;52.9866
+1;0x37;0x68a0;Great Bay Coast - Mikau's Tomb;0x10008;Great Bay Coast -> Open Grotto;10.16285
+1;0x37;0x68a0;Great Bay Coast - Mikau's Tomb;0x7200;Great Bay Coast -> Fisher Hut;7.8392
+1;0x37;0x68a0;Great Bay Coast - Mikau's Tomb;0x4400;Great Bay Coast -> Pinnacle Rock;30.2115
+1;0x37;0x68a0;Great Bay Coast - Mikau's Tomb;0x7000;Great Bay Coast -> Pirate Fortress Entrance;38.84
+1;0x23;0x4080;Pirate Fortress Interior - Sewers' Telescope;0x22a0;Telescope -> Pirate Fortress Exterior;2.81384
+1;0x37;0x6850;Great Bay Coast - Pirate Fortress Entrance;0x6a00;Great Bay Coast -> Zora Cape;49.1493
+1;0x38;0x6a00;Zora Cape - Great Bay Coast;0x10009;Zora Cape -> Boulder Grotto;19.0155
+1;0x38;0x6a00;Zora Cape - Great Bay Coast;0x10009;Zora Cape -> Boulder Grotto;17.81
+1;0x88;0x10009;Boulder Grotto - Zora Cape;0x10109;Boulder Grotto -> Zora Cape;14.5192
+1;0x38;0x10109;Zora Cape - Boulder Grotto;0x6810;Zora Cape -> Great Bay Coast;16.0086
+1;0x37;0x6810;Great Bay Coast - Zora Cape;0x6a00;Great Bay Coast -> Zora Cape;3.61271
+1;0x38;0x6a00;Zora Cape - Great Bay Coast;0x4630;Zora Cape -> Ocean Fairy Fountain;45.8271
+1;0x2;0x4630;Ocean Fairy Fountain - Zora Cape;0x6a50;Ocean Fairy Fountain -> Zora Cape;3.41608
+1;0x38;0x6a50;Zora Cape - Ocean Fairy Fountain;0x6810;Zora Cape -> Great Bay Coast;20.8532
+1;0x37;0x6810;Great Bay Coast - Zora Cape;0x10008;Great Bay Coast -> Open Grotto;81.2158
+1;0x86;0x10008;Open Grotto - Great Bay Coast;0x10108;Open Grotto -> Great Bay Coast;34.2662
+1;0x37;0x10108;Great Bay Coast - Open Grotto;0x6a00;Great Bay Coast -> Zora Cape;20.2619
+1;0x38;0x6a00;Zora Cape - Great Bay Coast;0x8e00;Zora Cape -> Waterfall Rapids;62.0403
+1;0x4a;0x8e00;Waterfall Rapids - Zora Cape;0x6a40;Waterfall Rapids -> Zora Cape;7.08206
+1;0x38;0x6a40;Zora Cape - Waterfall Rapids;0x6810;Zora Cape -> Great Bay Coast;34.6374
+1;0x37;0x6810;Great Bay Coast - Zora Cape;0x6a00;Great Bay Coast -> Zora Cape;70.7408
+1;0x38;0x6a00;Zora Cape - Great Bay Coast;0x6a30;Beach -> Zora Cape - Beach;24.2973
+1;0x38;0x6a30;Zora Cape - Beach - Beach;0x6810;Zora Cape -> Great Bay Coast;7.0257
+1;0x37;0x6810;Great Bay Coast - Zora Cape;0x6a00;Great Bay Coast -> Zora Cape;3.62015
+1;0x38;0x6a00;Zora Cape - Great Bay Coast;0x8c00;Zora Cape -> Great Bay Temple;68.4394
+1;0x49;0x8c00;Great Bay Temple - Zora Cape;0xb800;Great Bay Temple -> Gyorg's Lair - Great Bay Temple;7.78582
+1;0x5f;0xb800;Gyorg's Lair - Great Bay Temple - Great Bay Temple;0xb9000;Warp Boss -> Gyorg's Lair -> Warp Boss;143.018
+1;0x38;0x6a70;Zora Cape - Great Bay Temple;0x6010;Zora Cape Peninsula -> Zora's Theater Back;3.94514
+1;0x33;0x6010;Zora's Theater Back - Zora Cape Peninsula;0x6a20;Zora's Theater Back -> Zora Cape Peninsula;3.79344
+1;0x38;0x6a20;Zora Cape Peninsula - Zora's Theater Back;0x8c00;Zora Cape -> Great Bay Temple;9.20478
+1;0x49;0x8c00;Great Bay Temple - Zora Cape;0xb800;Great Bay Temple -> Gyorg's Lair - Great Bay Temple;3.62227
+1;0x5f;0xb800;Gyorg's Lair - Great Bay Temple - Great Bay Temple;0xb9000;Warp Boss -> Gyorg's Lair -> Warp Boss;8.56485
+1;0x38;0x6a70;Zora Cape - Great Bay Temple;0x6a30;Beach -> Zora Cape - Beach;6.94709
+1;0x38;0x6a30;Zora Cape - Beach - Beach;0x8e00;Zora Cape -> Waterfall Rapids;57.8173
+1;0x4a;0x8e00;Waterfall Rapids - Zora Cape;0x6a40;Waterfall Rapids -> Zora Cape;38.4168
+1;0x38;0x6a40;Zora Cape - Waterfall Rapids;0x8e00;Zora Cape -> Waterfall Rapids;3.27492
+1;0x4a;0x8e00;Waterfall Rapids - Zora Cape;0x8e10;Race Begin -> Waterfall Rapids - Race Begin;34.5331
+1;0x4a;0x8e10;Waterfall Rapids - Race Begin - Race Begin;0x8e20;Race End -> Waterfall Rapids - Race End;92.7381
+1;0x4a;0x8e20;Waterfall Rapids - Race End - Race End;0x8e10;Race Begin -> Waterfall Rapids - Race Begin;27.2614
+1;0x4a;0x8e10;Waterfall Rapids - Race Begin - Race Begin;0x8e20;Race End -> Waterfall Rapids - Race End;89.8221
+1;0x4a;0x8e20;Waterfall Rapids - Race End - Race End;0x8e10;Race Begin -> Waterfall Rapids - Race Begin;6.31009
+1;0x4a;0x8e10;Waterfall Rapids - Race Begin - Race Begin;0x8e20;Race End -> Waterfall Rapids - Race End;94.0835
+1;0x4a;0x8e20;Waterfall Rapids - Race End - Race End;0x6a40;Waterfall Rapids -> Zora Cape;14.6104
+1;0x4a;0x8e10;Waterfall Rapids - Race Begin - Race Begin;0x8e100;Race Begin -> Waterfall Rapids - Race Begin;-1
+1;0x4a;0x8e20;Waterfall Rapids - Race End - Race End;0x8e200;Race End -> Waterfall Rapids - Race End;-1
+1;0x4a;0x8e00;Waterfall Rapids - Zora Cape;0x8e200;Race End -> Waterfall Rapids - Race End;-1
+1;0x4a;0x8e00;Waterfall Rapids - Zora Cape;0x8e10;Race Begin -> Waterfall Rapids - Race Begin;15.2271
+1;0x38;0x6a40;Zora Cape - Waterfall Rapids;0x8e00;Zora Cape -> Waterfall Rapids;13.3396
+1;0x4a;0x8e00;Waterfall Rapids - Zora Cape;0x8e10;Race Begin -> Waterfall Rapids - Race Begin;13.7137
+1;0x4a;0x8e10;Waterfall Rapids - Race Begin - Race Begin;0x6a40;Waterfall Rapids -> Zora Cape;14.0509
+1;0x4a;0x8e00;Waterfall Rapids - Zora Cape;0x6a40;Waterfall Rapids -> Zora Cape;27.6077
+1;0x38;0x6a40;Zora Cape - Waterfall Rapids;0x6a30;Beach -> Zora Cape - Beach;50.6716
+1;0x38;0x6a30;Zora Cape - Beach - Beach;0x6810;Zora Cape -> Great Bay Coast;7.45104
+1;0x37;0x6810;Great Bay Coast - Zora Cape;0x6a00;Great Bay Coast -> Zora Cape;29.5282
+1;0x38;0x6a00;Zora Cape - Great Bay Coast;0x6000;Zora Cape Front -> Zora's Theater Front;21.2265
+1;0x33;0x6000;Zora's Theater Front - Zora Cape Front;0x6a10;Zora's Theater Front -> Zora Cape Front;7.12348
+1;0x38;0x6a10;Zora Cape Front - Zora's Theater Front;0x6810;Zora Cape -> Great Bay Coast;24.1831
+1;0x37;0x6810;Great Bay Coast - Zora Cape;0x6a00;Great Bay Coast -> Zora Cape;7.2328
+1;0x38;0x6a00;Zora Cape - Great Bay Coast;0x6010;Zora Cape Peninsula -> Zora's Theater Back;31.6595
+1;0x33;0x6010;Zora's Theater Back - Zora Cape Peninsula;0x6a20;Zora's Theater Back -> Zora Cape Peninsula;2.85644
+1;0x38;0x6a20;Zora Cape Peninsula - Zora's Theater Back;0x6810;Zora Cape -> Great Bay Coast;32.463
+1;0x37;0x6810;Great Bay Coast - Zora Cape;0x6a00;Great Bay Coast -> Zora Cape;11.952
+1;0x38;0x6a00;Zora Cape - Great Bay Coast;0x6000;Zora Cape Front -> Zora's Theater Front;20.2874
+1;0x33;0x6000;Zora's Theater Front - Zora Cape Front;0x6a10;Zora's Theater Front -> Zora Cape Front;7.55032
+1;0x38;0x6a10;Zora Cape Front - Zora's Theater Front;0x10009;Zora Cape -> Boulder Grotto;25.1226
+1;0x88;0x10009;Boulder Grotto - Zora Cape;0x10109;Boulder Grotto -> Zora Cape;2.6178
+1;0x38;0x10109;Zora Cape - Boulder Grotto;0x6000;Zora Cape Front -> Zora's Theater Front;18.798
+1;0x33;0x6000;Zora's Theater Front - Zora Cape Front;0x6a10;Zora's Theater Front -> Zora Cape Front;5.55927
+1;0x38;0x6a10;Zora Cape Front - Zora's Theater Front;0x4630;Zora Cape -> Ocean Fairy Fountain;33.2199
+1;0x2;0x4630;Ocean Fairy Fountain - Zora Cape;0x6a50;Ocean Fairy Fountain -> Zora Cape;2.90944
+1;0x38;0x6a50;Zora Cape - Ocean Fairy Fountain;0x6000;Zora Cape Front -> Zora's Theater Front;20.3196
+1;0x33;0x6000;Zora's Theater Front - Zora Cape Front;0x6a10;Zora's Theater Front -> Zora Cape Front;5.22271
+1;0x38;0x6a10;Zora Cape Front - Zora's Theater Front;0x6010;Zora Cape Peninsula -> Zora's Theater Back;23.7103
+1;0x33;0x6010;Zora's Theater Back - Zora Cape Peninsula;0x6a10;Zora's Theater Front -> Zora Cape Front;7.42581
+1;0x38;0x6a10;Zora Cape Front - Zora's Theater Front;0x6000;Zora Cape Front -> Zora's Theater Front;4.05502
+1;0x33;0x6000;Zora's Theater Front - Zora Cape Front;0x6a10;Zora's Theater Front -> Zora Cape Front;6.70707
+1;0x38;0x6a10;Zora Cape Front - Zora's Theater Front;0x8c00;Zora Cape -> Great Bay Temple;25.0332
+1;0x49;0x8c00;Great Bay Temple - Zora Cape;0x6a70;Great Bay Temple -> Zora Cape;15.1454
+1;0x38;0x6a70;Zora Cape - Great Bay Temple;0x6000;Zora Cape Front -> Zora's Theater Front;21.2604
+1;0x33;0x6000;Zora's Theater Front - Zora Cape Front;0x6a10;Zora's Theater Front -> Zora Cape Front;6.5717
+1;0x38;0x6a10;Zora Cape Front - Zora's Theater Front;0x6a30;Beach -> Zora Cape - Beach;13.0212
+1;0x38;0x6a30;Zora Cape - Beach - Beach;0x6000;Zora Cape Front -> Zora's Theater Front;19.4516
+1;0x33;0x6000;Zora's Theater Front - Zora Cape Front;0x6a10;Zora's Theater Front -> Zora Cape Front;6.21583
+1;0x38;0x6a10;Zora Cape Front - Zora's Theater Front;0x8e00;Zora Cape -> Waterfall Rapids;75.9309
+1;0x4a;0x8e00;Waterfall Rapids - Zora Cape;0x6a40;Waterfall Rapids -> Zora Cape;3.51796
+1;0x38;0x6a40;Zora Cape - Waterfall Rapids;0x6000;Zora Cape Front -> Zora's Theater Front;49.0881
+1;0x33;0x6000;Zora's Theater Front - Zora Cape Front;0x6a10;Zora's Theater Front -> Zora Cape Front;8.40814
+1;0x38;0x6a10;Zora Cape Front - Zora's Theater Front;0x6010;Zora Cape Peninsula -> Zora's Theater Back;33.9651
+1;0x33;0x6010;Zora's Theater Back - Zora Cape Peninsula;0x6a20;Zora's Theater Back -> Zora Cape Peninsula;3.05083
+1;0x38;0x6a20;Zora Cape Peninsula - Zora's Theater Back;0x6010;Zora Cape Peninsula -> Zora's Theater Back;3.69561
+1;0x33;0x6010;Zora's Theater Back - Zora Cape Peninsula;0x6a20;Zora's Theater Back -> Zora Cape Peninsula;2.70071
+1;0x38;0x6a20;Zora Cape Peninsula - Zora's Theater Back;0x8c00;Zora Cape -> Great Bay Temple;6.89174
+1;0x49;0x8c00;Great Bay Temple - Zora Cape;0x6a70;Great Bay Temple -> Zora Cape;15.9307
+1;0x38;0x6a70;Zora Cape - Great Bay Temple;0x6010;Zora Cape Peninsula -> Zora's Theater Back;3.83872
+1;0x33;0x6010;Zora's Theater Back - Zora Cape Peninsula;0x6a20;Zora's Theater Back -> Zora Cape Peninsula;4.49747
+1;0x38;0x6a20;Zora Cape Peninsula - Zora's Theater Back;0x6000;Zora Cape Front -> Zora's Theater Front;22.3337
+1;0x38;0x6a20;Zora Cape Peninsula - Zora's Theater Back;0x4630;Zora Cape -> Ocean Fairy Fountain;45.2943
+1;0x2;0x4630;Ocean Fairy Fountain - Zora Cape;0x6a50;Ocean Fairy Fountain -> Zora Cape;2.93854
+1;0x38;0x6a50;Zora Cape - Ocean Fairy Fountain;0x6010;Zora Cape Peninsula -> Zora's Theater Back;22.4534
+1;0x33;0x6010;Zora's Theater Back - Zora Cape Peninsula;0x6a20;Zora's Theater Back -> Zora Cape Peninsula;3.30843
+1;0x38;0x6a20;Zora Cape Peninsula - Zora's Theater Back;0x6a30;Beach -> Zora Cape - Beach;6.15433
+1;0x38;0x6a30;Zora Cape - Beach - Beach;0x6010;Zora Cape Peninsula -> Zora's Theater Back;31.584
+1;0x33;0x6010;Zora's Theater Back - Zora Cape Peninsula;0x6a20;Zora's Theater Back -> Zora Cape Peninsula;3.97301
+1;0x38;0x6a20;Zora Cape Peninsula - Zora's Theater Back;0x10009;Zora Cape -> Boulder Grotto;35.9921
+1;0x88;0x10009;Boulder Grotto - Zora Cape;0x10109;Boulder Grotto -> Zora Cape;2.62986
+1;0x38;0x10109;Zora Cape - Boulder Grotto;0x6010;Zora Cape Peninsula -> Zora's Theater Back;34.285
+1;0x33;0x6010;Zora's Theater Back - Zora Cape Peninsula;0x6a20;Zora's Theater Back -> Zora Cape Peninsula;3.67097
+1;0x38;0x6a20;Zora Cape Peninsula - Zora's Theater Back;0x8e00;Zora Cape -> Waterfall Rapids;80.9488
+1;0x4a;0x8e00;Waterfall Rapids - Zora Cape;0x6a40;Waterfall Rapids -> Zora Cape;3.61494
+1;0x38;0x6a40;Zora Cape - Waterfall Rapids;0x6010;Zora Cape Peninsula -> Zora's Theater Back;56.4928
+1;0x33;0x6010;Zora's Theater Back - Zora Cape Peninsula;0x6a20;Zora's Theater Back -> Zora Cape Peninsula;6.9598
+1;0x38;0x6a20;Zora Cape Peninsula - Zora's Theater Back;0x6010;Zora Cape Peninsula -> Zora's Theater Back;3.67575
+1;0x33;0x6010;Zora's Theater Back - Zora Cape Peninsula;0x9250;Zora Hall -> Zora Shop;4.51942
+1;0x73;0x9250;Zora Shop - Zora Hall;0x6020;Zora Shop -> Zora Hall;2.64852
+1;0x33;0x6020;Zora Hall - Zora Shop;0x6a20;Zora's Theater Back -> Zora Cape Peninsula;4.18792
+1;0x38;0x6a20;Zora Cape Peninsula - Zora's Theater Back;0x6010;Zora Cape Peninsula -> Zora's Theater Back;3.69927
+1;0x33;0x6010;Zora's Theater Back - Zora Cape Peninsula;0x9200;Zora Hall -> Tijo's Room;7.13698
+1;0x76;0x9200;Tijo's Room - Zora Hall;0x6060;Tijo's Room -> Zora Hall;3.17534
+1;0x33;0x6060;Zora Hall - Tijo's Room;0x6a20;Zora's Theater Back -> Zora Cape Peninsula;6.37396
+1;0x38;0x6a20;Zora Cape Peninsula - Zora's Theater Back;0x6010;Zora Cape Peninsula -> Zora's Theater Back;3.69278
+1;0x33;0x6010;Zora's Theater Back - Zora Cape Peninsula;0x9210;Zora Hall -> Japas' Room;7.95134
+1;0x75;0x9210;Japas' Room - Zora Hall;0x6050;Japas' Room -> Zora Hall;3.12441
+1;0x33;0x6050;Zora Hall - Japas' Room;0x6a20;Zora's Theater Back -> Zora Cape Peninsula;8.23636
+1;0x38;0x6a20;Zora Cape Peninsula - Zora's Theater Back;0x6010;Zora Cape Peninsula -> Zora's Theater Back;3.70963
+1;0x33;0x6010;Zora's Theater Back - Zora Cape Peninsula;0x9230;Zora Hall -> Evans' Room;12.6524
+1;0x74;0x9230;Evans' Room - Zora Hall;0x6040;Evans' Room -> Zora Hall;2.7214
+1;0x33;0x6040;Zora Hall - Evans' Room;0x6a20;Zora's Theater Back -> Zora Cape Peninsula;12.9908
+1;0x38;0x6a20;Zora Cape Peninsula - Zora's Theater Back;0x6010;Zora Cape Peninsula -> Zora's Theater Back;3.69882
+1;0x33;0x6010;Zora's Theater Back - Zora Cape Peninsula;0x9220;Zora Hall -> Lulu's Room;13.804
+1;0x77;0x9220;Lulu's Room - Zora Hall;0x6030;Lulu's Room -> Zora Hall;3.33361
+1;0x33;0x6030;Zora Hall - Lulu's Room;0x6a20;Zora's Theater Back -> Zora Cape Peninsula;16.5635
+1;0x38;0x6a20;Zora Cape Peninsula - Zora's Theater Back;0x6010;Zora Cape Peninsula -> Zora's Theater Back;3.69389
+1;0x33;0x6010;Zora's Theater Back - Zora Cape Peninsula;0x6a10;Zora's Theater Front -> Zora Cape Front;18.7519
+1;0x38;0x6a10;Zora Cape Front - Zora's Theater Front;0x6000;Zora Cape Front -> Zora's Theater Front;3.9284
+1;0x33;0x6000;Zora's Theater Front - Zora Cape Front;0x9220;Zora Hall -> Lulu's Room;17.0186
+1;0x77;0x9220;Lulu's Room - Zora Hall;0x6030;Lulu's Room -> Zora Hall;2.68965
+1;0x33;0x6030;Zora Hall - Lulu's Room;0x6a10;Zora's Theater Front -> Zora Cape Front;19.1678
+1;0x38;0x6a10;Zora Cape Front - Zora's Theater Front;0x6000;Zora Cape Front -> Zora's Theater Front;3.97504
+1;0x33;0x6000;Zora's Theater Front - Zora Cape Front;0x9230;Zora Hall -> Evans' Room;17.4307
+1;0x74;0x9230;Evans' Room - Zora Hall;0x6040;Evans' Room -> Zora Hall;2.75863
+1;0x33;0x6040;Zora Hall - Evans' Room;0x6a10;Zora's Theater Front -> Zora Cape Front;17.8784
+1;0x38;0x6a10;Zora Cape Front - Zora's Theater Front;0x6000;Zora Cape Front -> Zora's Theater Front;3.93551
+1;0x33;0x6000;Zora's Theater Front - Zora Cape Front;0x9210;Zora Hall -> Japas' Room;19.6791
+1;0x75;0x9210;Japas' Room - Zora Hall;0x6050;Japas' Room -> Zora Hall;2.82978
+1;0x33;0x6050;Zora Hall - Japas' Room;0x6a10;Zora's Theater Front -> Zora Cape Front;20.4608
+1;0x38;0x6a10;Zora Cape Front - Zora's Theater Front;0x6000;Zora Cape Front -> Zora's Theater Front;4.04577
+1;0x33;0x6000;Zora's Theater Front - Zora Cape Front;0x9200;Zora Hall -> Tijo's Room;14.5869
+1;0x76;0x9200;Tijo's Room - Zora Hall;0x6060;Tijo's Room -> Zora Hall;2.68767
+1;0x33;0x6060;Zora Hall - Tijo's Room;0x6a10;Zora's Theater Front -> Zora Cape Front;18.0651
+1;0x38;0x6a10;Zora Cape Front - Zora's Theater Front;0x6000;Zora Cape Front -> Zora's Theater Front;3.89827
+1;0x33;0x6000;Zora's Theater Front - Zora Cape Front;0x9250;Zora Hall -> Zora Shop;14.8555
+1;0x73;0x9250;Zora Shop - Zora Hall;0x6020;Zora Shop -> Zora Hall;2.62292
+1;0x33;0x6020;Zora Hall - Zora Shop;0x6a10;Zora's Theater Front -> Zora Cape Front;18.5083
+1;0x38;0x6a10;Zora Cape Front - Zora's Theater Front;0x6000;Zora Cape Front -> Zora's Theater Front;4.00498
+1;0x33;0x6000;Zora's Theater Front - Zora Cape Front;0x6a20;Zora's Theater Back -> Zora Cape Peninsula;15.2926
+1;0x38;0x6a20;Zora Cape Peninsula - Zora's Theater Back;0x6010;Zora Cape Peninsula -> Zora's Theater Back;3.75101
+1;0x33;0x6010;Zora's Theater Back - Zora Cape Peninsula;0x9250;Zora Hall -> Zora Shop;4.26642
+1;0x73;0x9250;Zora Shop - Zora Hall;0x6020;Zora Shop -> Zora Hall;3.0274
+1;0x33;0x6020;Zora Hall - Zora Shop;0x9250;Zora Hall -> Zora Shop;2.78523
+1;0x73;0x9250;Zora Shop - Zora Hall;0x6020;Zora Shop -> Zora Hall;2.76599
+1;0x33;0x6020;Zora Hall - Zora Shop;0x9200;Zora Hall -> Tijo's Room;7.15732
+1;0x76;0x9200;Tijo's Room - Zora Hall;0x6060;Tijo's Room -> Zora Hall;2.6461
+1;0x33;0x6060;Zora Hall - Tijo's Room;0x9250;Zora Hall -> Zora Shop;6.01972
+1;0x73;0x9250;Zora Shop - Zora Hall;0x6020;Zora Shop -> Zora Hall;2.71183
+1;0x33;0x6020;Zora Hall - Zora Shop;0x9210;Zora Hall -> Japas' Room;7.57423
+1;0x75;0x9210;Japas' Room - Zora Hall;0x6050;Japas' Room -> Zora Hall;2.66885
+1;0x33;0x6050;Zora Hall - Japas' Room;0x9250;Zora Hall -> Zora Shop;7.63069
+1;0x73;0x9250;Zora Shop - Zora Hall;0x6020;Zora Shop -> Zora Hall;2.86654
+1;0x33;0x6020;Zora Hall - Zora Shop;0x9230;Zora Hall -> Evans' Room;11.9395
+1;0x74;0x9230;Evans' Room - Zora Hall;0x6040;Evans' Room -> Zora Hall;2.76303
+1;0x33;0x6040;Zora Hall - Evans' Room;0x9250;Zora Hall -> Zora Shop;12.3967
+1;0x73;0x9250;Zora Shop - Zora Hall;0x6020;Zora Shop -> Zora Hall;4.35767
+1;0x33;0x6020;Zora Hall - Zora Shop;0x9220;Zora Hall -> Lulu's Room;15.1656
+1;0x77;0x9220;Lulu's Room - Zora Hall;0x6030;Lulu's Room -> Zora Hall;2.69379
+1;0x33;0x6030;Zora Hall - Lulu's Room;0x9250;Zora Hall -> Zora Shop;16.4681
+1;0x73;0x9250;Zora Shop - Zora Hall;0x6020;Zora Shop -> Zora Hall;794.34
+1;0x33;0x6020;Zora Hall - Zora Shop;0x9200;Zora Hall -> Tijo's Room;5.87812
+1;0x76;0x9200;Tijo's Room - Zora Hall;0x6060;Tijo's Room -> Zora Hall;4.04608
+1;0x33;0x6060;Zora Hall - Tijo's Room;0x9200;Zora Hall -> Tijo's Room;4.08696
+1;0x76;0x9200;Tijo's Room - Zora Hall;0x6060;Tijo's Room -> Zora Hall;2.68896
+1;0x33;0x6060;Zora Hall - Tijo's Room;0x9210;Zora Hall -> Japas' Room;4.36148
+1;0x75;0x9210;Japas' Room - Zora Hall;0x6050;Japas' Room -> Zora Hall;2.77723
+1;0x33;0x6050;Zora Hall - Japas' Room;0x9200;Zora Hall -> Tijo's Room;4.51597
+1;0x76;0x9200;Tijo's Room - Zora Hall;0x6060;Tijo's Room -> Zora Hall;2.66684
+1;0x33;0x6060;Zora Hall - Tijo's Room;0x9230;Zora Hall -> Evans' Room;8.96538
+1;0x74;0x9230;Evans' Room - Zora Hall;0x6040;Evans' Room -> Zora Hall;2.77159
+1;0x33;0x6040;Zora Hall - Evans' Room;0x9200;Zora Hall -> Tijo's Room;9.23125
+1;0x76;0x9200;Tijo's Room - Zora Hall;0x6060;Tijo's Room -> Zora Hall;2.68336
+1;0x33;0x6060;Zora Hall - Tijo's Room;0x9220;Zora Hall -> Lulu's Room;10.4816
+1;0x77;0x9220;Lulu's Room - Zora Hall;0x6030;Lulu's Room -> Zora Hall;2.68635
+1;0x33;0x6030;Zora Hall - Lulu's Room;0x9200;Zora Hall -> Tijo's Room;10.7945
+1;0x76;0x9200;Tijo's Room - Zora Hall;0x6060;Tijo's Room -> Zora Hall;2.63585
+1;0x33;0x6060;Zora Hall - Tijo's Room;0x9200;Zora Hall -> Tijo's Room;2.9465
+1;0x76;0x9200;Tijo's Room - Zora Hall;0x6060;Tijo's Room -> Zora Hall;2.64699
+1;0x33;0x6060;Zora Hall - Tijo's Room;0x9210;Zora Hall -> Japas' Room;4.49728
+1;0x75;0x9210;Japas' Room - Zora Hall;0x6050;Japas' Room -> Zora Hall;2.89339
+1;0x33;0x6050;Zora Hall - Japas' Room;0x9210;Zora Hall -> Japas' Room;2.95655
+1;0x75;0x9210;Japas' Room - Zora Hall;0x6050;Japas' Room -> Zora Hall;2.67682
+1;0x33;0x6050;Zora Hall - Japas' Room;0x9230;Zora Hall -> Evans' Room;7.62064
+1;0x74;0x9230;Evans' Room - Zora Hall;0x6040;Evans' Room -> Zora Hall;2.8131
+1;0x33;0x6040;Zora Hall - Evans' Room;0x9210;Zora Hall -> Japas' Room;7.6692
+1;0x75;0x9210;Japas' Room - Zora Hall;0x6050;Japas' Room -> Zora Hall;2.66485
+1;0x33;0x6050;Zora Hall - Japas' Room;0x9220;Zora Hall -> Lulu's Room;9.07544
+1;0x77;0x9220;Lulu's Room - Zora Hall;0x6030;Lulu's Room -> Zora Hall;2.70667
+1;0x33;0x6030;Zora Hall - Lulu's Room;0x9210;Zora Hall -> Japas' Room;9.14038
+1;0x75;0x9210;Japas' Room - Zora Hall;0x6050;Japas' Room -> Zora Hall;3.55334
+1;0x33;0x6050;Zora Hall - Japas' Room;0x9230;Zora Hall -> Evans' Room;7.63422
+1;0x74;0x9230;Evans' Room - Zora Hall;0x6040;Evans' Room -> Zora Hall;3.01138
+1;0x33;0x6040;Zora Hall - Evans' Room;0x9230;Zora Hall -> Evans' Room;2.90714
+1;0x74;0x9230;Evans' Room - Zora Hall;0x6040;Evans' Room -> Zora Hall;2.76874
+1;0x33;0x6040;Zora Hall - Evans' Room;0x9220;Zora Hall -> Lulu's Room;5.76561
+1;0x77;0x9220;Lulu's Room - Zora Hall;0x6030;Lulu's Room -> Zora Hall;2.74336
+1;0x33;0x6030;Zora Hall - Lulu's Room;0x9220;Zora Hall -> Lulu's Room;2.95149
+1;0x77;0x9220;Lulu's Room - Zora Hall;0x6030;Lulu's Room -> Zora Hall;2.75335
+1;0x33;0x6030;Zora Hall - Lulu's Room;0x9230;Zora Hall -> Evans' Room;4.49737
+1;0x74;0x9230;Evans' Room - Zora Hall;0x6040;Evans' Room -> Zora Hall;2.77395
+1;0x33;0x6040;Zora Hall - Evans' Room;0x9220;Zora Hall -> Lulu's Room;4.70338
+1;0x33;0x6040;Zora Hall - Evans' Room;0x6a20;Zora's Theater Back -> Zora Cape Peninsula;13.1962
+1;0x38;0x6a20;Zora Cape Peninsula - Zora's Theater Back;0x6a30;Beach -> Zora Cape - Beach;26.4723
+1;0x38;0x6a30;Zora Cape - Beach - Beach;0x10009;Zora Cape -> Boulder Grotto;13.5861
+1;0x88;0x10009;Boulder Grotto - Zora Cape;0x10109;Boulder Grotto -> Zora Cape;2.61623
+1;0x38;0x10109;Zora Cape - Boulder Grotto;0x6a30;Beach -> Zora Cape - Beach;15.6086
+1;0x33;0x6040;Zora Hall - Evans' Room;0x6a20;Zora's Theater Back -> Zora Cape Peninsula;13.2902
+1;0x38;0x6a20;Zora Cape Peninsula - Zora's Theater Back;0x6a30;Beach -> Zora Cape - Beach;6.29339
+1;0x38;0x6a30;Zora Cape - Beach - Beach;0x4630;Zora Cape -> Ocean Fairy Fountain;34.6377
+1;0x2;0x4630;Ocean Fairy Fountain - Zora Cape;0x6a50;Ocean Fairy Fountain -> Zora Cape;3.08327
+1;0x38;0x6a50;Zora Cape - Ocean Fairy Fountain;0x6010;Zora Cape Peninsula -> Zora's Theater Back;22.1741
+1;0x33;0x6010;Zora's Theater Back - Zora Cape Peninsula;0x6a20;Zora's Theater Back -> Zora Cape Peninsula;2.68965
+1;0x38;0x6a20;Zora Cape Peninsula - Zora's Theater Back;0x6a30;Beach -> Zora Cape - Beach;8.61111
+1;0x38;0x6a30;Zora Cape - Beach - Beach;0x8c00;Zora Cape -> Great Bay Temple;32.2873
+1;0x49;0x8c00;Great Bay Temple - Zora Cape;0x6a70;Great Bay Temple -> Zora Cape;19.1926
+1;0x38;0x6a70;Zora Cape - Great Bay Temple;0x6a30;Beach -> Zora Cape - Beach;5.8423
+1;0x38;0x6a30;Zora Cape - Beach - Beach;0x6a300;Beach -> Zora Cape - Beach;23.556
+1;0x88;0x10009;Boulder Grotto - Zora Cape;0x10109;Boulder Grotto -> Zora Cape;13.1206
+1;0x38;0x10109;Zora Cape - Boulder Grotto;0x10009;Zora Cape -> Boulder Grotto;3.37231
+1;0x88;0x10009;Boulder Grotto - Zora Cape;0x10109;Boulder Grotto -> Zora Cape;3.39685
+1;0x38;0x10109;Zora Cape - Boulder Grotto;0x4630;Zora Cape -> Ocean Fairy Fountain;33.8542
+1;0x2;0x4630;Ocean Fairy Fountain - Zora Cape;0x6a50;Ocean Fairy Fountain -> Zora Cape;3.16601
+1;0x38;0x6a50;Zora Cape - Ocean Fairy Fountain;0x10009;Zora Cape -> Boulder Grotto;20.7093
+1;0x88;0x10009;Boulder Grotto - Zora Cape;0x10109;Boulder Grotto -> Zora Cape;2.82536
+1;0x38;0x10109;Zora Cape - Boulder Grotto;0x8c00;Zora Cape -> Great Bay Temple;30.1383
+1;0x49;0x8c00;Great Bay Temple - Zora Cape;0x6a70;Great Bay Temple -> Zora Cape;16.0743
+1;0x38;0x6a70;Zora Cape - Great Bay Temple;0x10009;Zora Cape -> Boulder Grotto;34.2952
+1;0x88;0x10009;Boulder Grotto - Zora Cape;0x10109;Boulder Grotto -> Zora Cape;2.61616
+1;0x38;0x10109;Zora Cape - Boulder Grotto;0x8e00;Zora Cape -> Waterfall Rapids;61.8781
+1;0x4a;0x8e00;Waterfall Rapids - Zora Cape;0x6a40;Waterfall Rapids -> Zora Cape;3.06086
+1;0x38;0x6a40;Zora Cape - Waterfall Rapids;0x10009;Zora Cape -> Boulder Grotto;39.5247
+1;0x88;0x10009;Boulder Grotto - Zora Cape;0x10109;Boulder Grotto -> Zora Cape;12.528
+1;0x38;0x10109;Zora Cape - Boulder Grotto;0x8c00;Zora Cape -> Great Bay Temple;32.0059
+1;0x49;0x8c00;Great Bay Temple - Zora Cape;0x6a70;Great Bay Temple -> Zora Cape;17.7445
+1;0x38;0x6a70;Zora Cape - Great Bay Temple;0x6810;Zora Cape -> Great Bay Coast;29.4275
+1;0x38;0x10109;Zora Cape - Boulder Grotto;0x8c00;Zora Cape -> Great Bay Temple;40.8351
+1;0x49;0x8c00;Great Bay Temple - Zora Cape;0x6a70;Great Bay Temple -> Zora Cape;14.4777
+1;0x38;0x6a70;Zora Cape - Great Bay Temple;0x8c00;Zora Cape -> Great Bay Temple;7.76401
+1;0x49;0x8c00;Great Bay Temple - Zora Cape;0x6a70;Great Bay Temple -> Zora Cape;16.3781
+1;0x38;0x6a70;Zora Cape - Great Bay Temple;0x8e00;Zora Cape -> Waterfall Rapids;81.2537
+1;0x4a;0x8e00;Waterfall Rapids - Zora Cape;0x6a40;Waterfall Rapids -> Zora Cape;3.07667
+1;0x38;0x6a40;Zora Cape - Waterfall Rapids;0x8e00;Zora Cape -> Waterfall Rapids;3.27284
+1;0x4a;0x8e00;Waterfall Rapids - Zora Cape;0x6a40;Waterfall Rapids -> Zora Cape;3.40111
+1;0x38;0x6a40;Zora Cape - Waterfall Rapids;0x8c00;Zora Cape -> Great Bay Temple;61.7566
+1;0x49;0x8c00;Great Bay Temple - Zora Cape;0x6a70;Great Bay Temple -> Zora Cape;15.623
+1;0x38;0x6a70;Zora Cape - Great Bay Temple;0x4630;Zora Cape -> Ocean Fairy Fountain;39.4633
+1;0x2;0x4630;Ocean Fairy Fountain - Zora Cape;0x6a50;Ocean Fairy Fountain -> Zora Cape;3.26081
+1;0x38;0x6a50;Zora Cape - Ocean Fairy Fountain;0x8c00;Zora Cape -> Great Bay Temple;28.7945
+1;0x38;0x6a50;Zora Cape - Ocean Fairy Fountain;0x4630;Zora Cape -> Ocean Fairy Fountain;3.291
+1;0x2;0x4630;Ocean Fairy Fountain - Zora Cape;0x6a50;Ocean Fairy Fountain -> Zora Cape;2.91906
+1;0x38;0x6a50;Zora Cape - Ocean Fairy Fountain;0x8e00;Zora Cape -> Waterfall Rapids;66.6422
+1;0x4a;0x8e00;Waterfall Rapids - Zora Cape;0x6a40;Waterfall Rapids -> Zora Cape;17.1031
+1;0x38;0x6a40;Zora Cape - Waterfall Rapids;0x4630;Zora Cape -> Ocean Fairy Fountain;55.0097
+1;0x2;0x4630;Ocean Fairy Fountain - Zora Cape;0x6a50;Ocean Fairy Fountain -> Zora Cape;16.5379
+1;0x38;0x6a50;Zora Cape - Ocean Fairy Fountain;0x10009;Zora Cape -> Boulder Grotto;25.3535
+1;0x88;0x10009;Boulder Grotto - Zora Cape;0x10109;Boulder Grotto -> Zora Cape;7.54985
+1;0x38;0x6a50;Zora Cape - Ocean Fairy Fountain;0x6a30;Beach -> Zora Cape - Beach;8.60533
+1;0x38;0x6a30;Zora Cape - Beach - Beach;0x4630;Zora Cape -> Ocean Fairy Fountain;29.8192
+1;0x2;0x4630;Ocean Fairy Fountain - Zora Cape;0x6a50;Ocean Fairy Fountain -> Zora Cape;16.6068
+1;0x38;0x6a50;Zora Cape - Ocean Fairy Fountain;0x6a60;Warp Owl -> Zora Cape - Owl Statue;17.0712
+1;0x38;0x6a60;Zora Cape - Owl Statue - Warp Owl;0x6010;Zora Cape Peninsula -> Zora's Theater Back;4.52777
+1;0x38;0x6a60;Zora Cape - Owl Statue - Warp Owl;0x8c00;Zora Cape -> Great Bay Temple;8.4401
+1;0x38;0x6a60;Zora Cape - Owl Statue - Warp Owl;0x6a30;Beach -> Zora Cape - Beach;7.08441
+1;0x38;0x6a60;Zora Cape - Owl Statue - Warp Owl;0x4630;Zora Cape -> Ocean Fairy Fountain;41.5546
+1;0x38;0x6a60;Zora Cape - Owl Statue - Warp Owl;0x6000;Zora Cape Front -> Zora's Theater Front;19.377
+1;0x38;0x6a60;Zora Cape - Owl Statue - Warp Owl;0x8e00;Zora Cape -> Waterfall Rapids;76.1437
+1;0x38;0x6a60;Zora Cape - Owl Statue - Warp Owl;0x10009;Zora Cape -> Boulder Grotto;33.3718
+1;0x38;0x6a60;Zora Cape - Owl Statue - Warp Owl;0x6810;Zora Cape -> Great Bay Coast;31.0372
+1;0x37;0x6810;Great Bay Coast - Zora Cape;0xd890;Warp Owl -> South Clock Town - Owl Statue;119.624
+1;0x6f;0xd890;South Clock Town - Owl Statue - Warp Owl;0xda00;South Clock Town -> Laundry Pool;17.1188
+1;0x70;0xda00;Laundry Pool - South Clock Town;0xe10;Laundry Pool -> Kafei Hideout;8.817
+1;0xd;0xe10;Kafei Hideout - Laundry Pool;0xda10;Kafei Hideout -> Laundry Pool;46.3396
+1;0x70;0xda10;Laundry Pool - Kafei Hideout;0xe10;Laundry Pool -> Kafei Hideout;3.44993
