@@ -5718,3 +5718,813 @@ Game;SceneID;FromEntranceID;From;ToEntranceID;To;ElapsedSec
 1;0x70;0xda00;Laundry Pool - South Clock Town;0xe10;Laundry Pool -> Kafei Hideout;8.817
 1;0xd;0xe10;Kafei Hideout - Laundry Pool;0xda10;Kafei Hideout -> Laundry Pool;46.3396
 1;0x70;0xda10;Laundry Pool - Kafei Hideout;0xe10;Laundry Pool -> Kafei Hideout;3.44993
+1;0xd;0xe10;Kafei Hideout - Laundry Pool;0xda10;Kafei Hideout -> Laundry Pool;6.24577
+1;0x70;0xda10;Laundry Pool - Kafei Hideout;0xd860;Laundry Pool -> South Clock Town;12.8173
+1;0x6f;0xd860;South Clock Town - Laundry Pool;0xd210;South East Clock Town Bottom -> East Clock Town;17.094
+1;0x6c;0xd210;East Clock Town - South East Clock Town Bottom;0x5470;East Clock Town -> Termina Field;12.3752
+1;0x2d;0x5470;Termina Field - East Clock Town;0xa000;Termina Field -> Road to Ikana;16.7597
+1;0x53;0xa000;Road to Ikana - Termina Field;0x1000a;Road to Ikana -> Red Boulder Grotto;23.4447
+1;0x8b;0x1000a;Red Boulder Grotto - Road to Ikana;0x1010a;Red Boulder Grotto -> Road to Ikana;3.87053
+1;0x53;0x1010a;Road to Ikana - Red Boulder Grotto;0x5440;Road to Ikana -> Termina Field;16.1686
+1;0x2d;0x5440;Termina Field - Road to Ikana;0xa000;Termina Field -> Road to Ikana;5.62919
+1;0x53;0xa000;Road to Ikana - Termina Field;0x2000;Road to Ikana -> Ikana Canyon;46.0491
+1;0x13;0x2000;Ikana Canyon - Road to Ikana;0xa010;Ikana Canyon -> Road to Ikana;9.4045
+1;0x53;0xa010;Road to Ikana - Ikana Canyon;0x2000;Road to Ikana -> Ikana Canyon;2.80836
+1;0x13;0x2000;Ikana Canyon - Road to Ikana;0xa010;Ikana Canyon -> Road to Ikana;3.50943
+1;0x53;0xa010;Road to Ikana - Ikana Canyon;0x5440;Road to Ikana -> Termina Field;38.4146
+1;0x2d;0x5440;Termina Field - Road to Ikana;0xa000;Termina Field -> Road to Ikana;3.24084
+1;0x53;0xa000;Road to Ikana - Termina Field;0x8000;Road to Ikana -> Ikana Graveyard;29.2917
+1;0x43;0x8000;Ikana Graveyard - Road to Ikana;0xa020;Ikana Graveyard -> Road to Ikana;5.15465
+1;0x53;0xa020;Road to Ikana - Ikana Graveyard;0x8000;Road to Ikana -> Ikana Graveyard;3.4254
+1;0x43;0x8000;Ikana Graveyard - Road to Ikana;0xa020;Ikana Graveyard -> Road to Ikana;3.87393
+1;0x53;0xa020;Road to Ikana - Ikana Graveyard;0x5440;Road to Ikana -> Termina Field;28.7305
+1;0x2d;0x5440;Termina Field - Road to Ikana;0xa000;Termina Field -> Road to Ikana;9.96585
+1;0x53;0xa000;Road to Ikana - Termina Field;0x1000a;Road to Ikana -> Red Boulder Grotto;16.3049
+1;0x8b;0x1000a;Red Boulder Grotto - Road to Ikana;0x1010a;Red Boulder Grotto -> Road to Ikana;4.85496
+1;0x53;0x1010a;Road to Ikana - Red Boulder Grotto;0x1000a;Road to Ikana -> Red Boulder Grotto;6.63451
+1;0x8b;0x1000a;Red Boulder Grotto - Road to Ikana;0x1010a;Red Boulder Grotto -> Road to Ikana;2.65237
+1;0x53;0x1010a;Road to Ikana - Red Boulder Grotto;0x2000;Road to Ikana -> Ikana Canyon;32.3413
+1;0x13;0x2000;Ikana Canyon - Road to Ikana;0xa010;Ikana Canyon -> Road to Ikana;3.64838
+1;0x53;0xa010;Road to Ikana - Ikana Canyon;0x1000a;Road to Ikana -> Red Boulder Grotto;31.87
+1;0x8b;0x1000a;Red Boulder Grotto - Road to Ikana;0x1010a;Red Boulder Grotto -> Road to Ikana;4.52305
+1;0x53;0x1010a;Road to Ikana - Red Boulder Grotto;0x8000;Road to Ikana -> Ikana Graveyard;23.9485
+1;0x43;0x8000;Ikana Graveyard - Road to Ikana;0xa020;Ikana Graveyard -> Road to Ikana;3.84843
+1;0x53;0xa020;Road to Ikana - Ikana Graveyard;0x8000;Road to Ikana -> Ikana Graveyard;3.40307
+1;0x43;0x8000;Ikana Graveyard - Road to Ikana;0xa020;Ikana Graveyard -> Road to Ikana;4.54788
+1;0x53;0xa020;Road to Ikana - Ikana Graveyard;0x2000;Road to Ikana -> Ikana Canyon;28.3709
+1;0x13;0x2000;Ikana Canyon - Road to Ikana;0xa010;Ikana Canyon -> Road to Ikana;3.5903
+1;0x53;0xa010;Road to Ikana - Ikana Canyon;0x8000;Road to Ikana -> Ikana Graveyard;28.5859
+1;0x43;0x8000;Ikana Graveyard - Road to Ikana;0xa020;Ikana Graveyard -> Road to Ikana;3.83679
+1;0x53;0xa020;Road to Ikana - Ikana Graveyard;0x1000a;Road to Ikana -> Red Boulder Grotto;20.4485
+1;0x8b;0x1000a;Red Boulder Grotto - Road to Ikana;0x1010a;Red Boulder Grotto -> Road to Ikana;4.09168
+1;0x53;0x1010a;Road to Ikana - Red Boulder Grotto;0x8000;Road to Ikana -> Ikana Graveyard;22.2429
+1;0x43;0x8000;Ikana Graveyard - Road to Ikana;0x8010;Ikana Grave 3 -> Ikana Graveyard -> Ikana Grave 3;119.733
+1;0x30;0x5a00;Dampe's House - Ikana Grave 3 - Ikana Grave 3;0x80400;Ikana Graveyard -> Dampe's House -> Ikana Graveyard;23.6293
+1;0x43;0x8040;Ikana Graveyard - Dampe's House - Dampe's House;0x8010;Ikana Grave 3 -> Ikana Graveyard -> Ikana Grave 3;14.5
+1;0x30;0x5a00;Dampe's House - Ikana Grave 3 - Ikana Grave 3;0xff00;Ikana Graveyard -> Dampe's House -> Wallmaster;18.122
+1;0x13;0x2040;Ikana Canyon - Owl Statue - Warp Owl;0xa010;Ikana Canyon -> Road to Ikana;26.3556
+1;0x53;0xa010;Road to Ikana - Ikana Canyon;0x8000;Road to Ikana -> Ikana Graveyard;31.6749
+1;0x43;0x8000;Ikana Graveyard - Road to Ikana;0x8010;Ikana Grave 3 -> Ikana Graveyard -> Ikana Grave 3;132.197
+1;0x30;0x5a00;Dampe's House - Ikana Grave 3 - Ikana Grave 3;0x80400;Ikana Graveyard -> Dampe's House -> Ikana Graveyard;16.9454
+1;0x43;0x8040;Ikana Graveyard - Dampe's House - Dampe's House;0x8010;Ikana Grave 3 -> Ikana Graveyard -> Ikana Grave 3;30.8143
+1;0x30;0x5a00;Dampe's House - Ikana Grave 3 - Ikana Grave 3;0x80400;Ikana Graveyard -> Dampe's House -> Ikana Graveyard;16.4905
+1;0x43;0x8040;Ikana Graveyard - Dampe's House - Dampe's House;0x1000b;Ikana Graveyard -> Bomb Grotto;6.97833
+1;0x89;0x1000b;Bomb Grotto - Ikana Graveyard;0x1010b;Bomb Grotto -> Ikana Graveyard;2.61372
+1;0x43;0x1010b;Ikana Graveyard - Bomb Grotto;0x1000b;Ikana Graveyard -> Bomb Grotto;7.08279
+1;0x43;0x8040;Ikana Graveyard - Dampe's House - Dampe's House;0x8010;Ikana Grave 3 -> Ikana Graveyard -> Ikana Grave 3;11.9958
+1;0x30;0x5a00;Dampe's House - Ikana Grave 3 - Ikana Grave 3;0x80400;Ikana Graveyard -> Dampe's House -> Ikana Graveyard;1.49783
+1;0x43;0x8040;Ikana Graveyard - Dampe's House - Dampe's House;0xa00;Ikana Graveyard -> Ikana Grave 2;11.9918
+1;0xc;0xa00;Ikana Grave 2 - Ikana Graveyard;0x8020;Ikana Grave 2 -> Ikana Graveyard;4.86082
+1;0x43;0x8020;Ikana Graveyard - Ikana Grave 2;0xa00;Ikana Graveyard -> Ikana Grave 2;3.65786
+1;0xc;0xa00;Ikana Grave 2 - Ikana Graveyard;0x8020;Ikana Grave 2 -> Ikana Graveyard;3.44683
+1;0x43;0x8020;Ikana Graveyard - Ikana Grave 2;0x8010;Ikana Grave 3 -> Ikana Graveyard -> Ikana Grave 3;6.46228
+1;0x30;0x5a00;Dampe's House - Ikana Grave 3 - Ikana Grave 3;0x80400;Ikana Graveyard -> Dampe's House -> Ikana Graveyard;2.40046
+1;0x43;0x8040;Ikana Graveyard - Dampe's House - Dampe's House;0xa10;Ikana Graveyard -> Ikana Grave 1;16.1748
+1;0xc;0xa10;Ikana Grave 1 - Ikana Graveyard;0x8030;Ikana Grave 1 -> Ikana Graveyard;2.99535
+1;0x43;0x8030;Ikana Graveyard - Ikana Grave 1;0xa10;Ikana Graveyard -> Ikana Grave 1;3.78817
+1;0xc;0xa10;Ikana Grave 1 - Ikana Graveyard;0x8030;Ikana Grave 1 -> Ikana Graveyard;2.87447
+1;0x43;0x8030;Ikana Graveyard - Ikana Grave 1;0xa00;Ikana Graveyard -> Ikana Grave 2;5.61204
+1;0xc;0xa00;Ikana Grave 2 - Ikana Graveyard;0x8020;Ikana Grave 2 -> Ikana Graveyard;2.64894
+1;0x43;0x8020;Ikana Graveyard - Ikana Grave 2;0xa10;Ikana Graveyard -> Ikana Grave 1;5.30128
+1;0xc;0xa10;Ikana Grave 1 - Ikana Graveyard;0x8030;Ikana Grave 1 -> Ikana Graveyard;2.75589
+1;0x43;0x8030;Ikana Graveyard - Ikana Grave 1;0x8010;Ikana Grave 3 -> Ikana Graveyard -> Ikana Grave 3;5.97892
+1;0x30;0x5a00;Dampe's House - Ikana Grave 3 - Ikana Grave 3;0x80400;Ikana Graveyard -> Dampe's House -> Ikana Graveyard;1.24564
+1;0x43;0x8040;Ikana Graveyard - Dampe's House - Dampe's House;0xa020;Ikana Graveyard -> Road to Ikana;16.0237
+1;0x53;0xa020;Road to Ikana - Ikana Graveyard;0x8000;Road to Ikana -> Ikana Graveyard;3.50069
+1;0x43;0x8000;Ikana Graveyard - Road to Ikana;0xa10;Ikana Graveyard -> Ikana Grave 1;4.14487
+1;0xc;0xa10;Ikana Grave 1 - Ikana Graveyard;0x8020;Ikana Grave 2 -> Ikana Graveyard;-1
+1;0xc;0xa00;Ikana Grave 2 - Ikana Graveyard;0x8030;Ikana Grave 1 -> Ikana Graveyard;-1
+1;0x43;0x8030;Ikana Graveyard - Ikana Grave 1;0xa020;Ikana Graveyard -> Road to Ikana;5.34182
+1;0x53;0xa020;Road to Ikana - Ikana Graveyard;0x8000;Road to Ikana -> Ikana Graveyard;3.41414
+1;0x43;0x8000;Ikana Graveyard - Road to Ikana;0xa00;Ikana Graveyard -> Ikana Grave 2;6.008
+1;0xc;0xa00;Ikana Grave 2 - Ikana Graveyard;0x8020;Ikana Grave 2 -> Ikana Graveyard;2.66583
+1;0x43;0x8020;Ikana Graveyard - Ikana Grave 2;0xa020;Ikana Graveyard -> Road to Ikana;8.81007
+1;0x53;0xa020;Road to Ikana - Ikana Graveyard;0x8000;Road to Ikana -> Ikana Graveyard;3.42153
+1;0x43;0x8000;Ikana Graveyard - Road to Ikana;0x1000b;Ikana Graveyard -> Bomb Grotto;15.5581
+1;0x89;0x1000b;Bomb Grotto - Ikana Graveyard;0x1010b;Bomb Grotto -> Ikana Graveyard;5.73195
+1;0x43;0x1010b;Ikana Graveyard - Bomb Grotto;0xa020;Ikana Graveyard -> Road to Ikana;15.1181
+1;0x53;0xa020;Road to Ikana - Ikana Graveyard;0x8000;Road to Ikana -> Ikana Graveyard;3.42063
+1;0x43;0x8000;Ikana Graveyard - Road to Ikana;0x8010;Ikana Grave 3 -> Ikana Graveyard -> Ikana Grave 3;5.95663
+1;0x43;0x8000;Ikana Graveyard - Road to Ikana;0xa10;Ikana Graveyard -> Ikana Grave 1;4.18977
+1;0xc;0xa10;Ikana Grave 1 - Ikana Graveyard;0x8030;Ikana Grave 1 -> Ikana Graveyard;2.89814
+1;0x43;0x8030;Ikana Graveyard - Ikana Grave 1;0x1000b;Ikana Graveyard -> Bomb Grotto;14.6754
+1;0x89;0x1000b;Bomb Grotto - Ikana Graveyard;0x1010b;Bomb Grotto -> Ikana Graveyard;2.6014
+1;0x43;0x1010b;Ikana Graveyard - Bomb Grotto;0xa10;Ikana Graveyard -> Ikana Grave 1;12.8195
+1;0xc;0xa10;Ikana Grave 1 - Ikana Graveyard;0x8030;Ikana Grave 1 -> Ikana Graveyard;2.77721
+1;0x43;0x8030;Ikana Graveyard - Ikana Grave 1;0xa00;Ikana Graveyard -> Ikana Grave 2;5.24504
+1;0xc;0xa00;Ikana Grave 2 - Ikana Graveyard;0x8020;Ikana Grave 2 -> Ikana Graveyard;2.65151
+1;0x43;0x8020;Ikana Graveyard - Ikana Grave 2;0x1000b;Ikana Graveyard -> Bomb Grotto;13.764
+1;0x89;0x1000b;Bomb Grotto - Ikana Graveyard;0x1010b;Bomb Grotto -> Ikana Graveyard;2.7589
+1;0x43;0x1010b;Ikana Graveyard - Bomb Grotto;0xa00;Ikana Graveyard -> Ikana Grave 2;12.0619
+1;0xc;0xa00;Ikana Grave 2 - Ikana Graveyard;0x8020;Ikana Grave 2 -> Ikana Graveyard;3.55137
+1;0x43;0x8020;Ikana Graveyard - Ikana Grave 2;0x1000b;Ikana Graveyard -> Bomb Grotto;11.5759
+1;0x89;0x1000b;Bomb Grotto - Ikana Graveyard;0x1010b;Bomb Grotto -> Ikana Graveyard;3.30808
+1;0x43;0x1010b;Ikana Graveyard - Bomb Grotto;0x8010;Ikana Grave 3 -> Ikana Graveyard -> Ikana Grave 3;11.0555
+1;0x43;0x8000;Ikana Graveyard - Road to Ikana;0xa020;Ikana Graveyard -> Road to Ikana;5.66869
+1;0x70;0xda00;Laundry Pool - South Clock Town;0xe10;Laundry Pool -> Kafei Hideout;9.52117
+1;0xd;0xe10;Kafei Hideout - Laundry Pool;0xda10;Kafei Hideout -> Laundry Pool;3.77327
+1;0x70;0xda10;Laundry Pool - Kafei Hideout;0xe10;Laundry Pool -> Kafei Hideout;2.96109
+1;0xd;0xe10;Kafei Hideout - Laundry Pool;0xda10;Kafei Hideout -> Laundry Pool;2.61116
+1;0x70;0xda10;Laundry Pool - Kafei Hideout;0xd860;Laundry Pool -> South Clock Town;8.58902
+1;0x6f;0xd860;South Clock Town - Laundry Pool;0xda00;South Clock Town -> Laundry Pool;3.37772
+1;0x70;0xda00;Laundry Pool - South Clock Town;0xe10;Laundry Pool -> Kafei Hideout;7.40837
+1;0xd;0xe10;Kafei Hideout - Laundry Pool;0xda10;Kafei Hideout -> Laundry Pool;28.9798
+1;0x70;0xda10;Laundry Pool - Kafei Hideout;0xd860;Laundry Pool -> South Clock Town;61.2162
+1;0x6f;0xd860;South Clock Town - Laundry Pool;0xda00;South Clock Town -> Laundry Pool;3.29011
+1;0x70;0xda00;Laundry Pool - South Clock Town;0xe10;Laundry Pool -> Kafei Hideout;7.37923
+1;0x70;0xda00;Laundry Pool - South Clock Town;0xe10;Laundry Pool -> Kafei Hideout;18.5108
+1;0xd;0xe10;Kafei Hideout - Laundry Pool;0xda10;Kafei Hideout -> Laundry Pool;24.5374
+1;0x70;0xda10;Laundry Pool - Kafei Hideout;0xe10;Laundry Pool -> Kafei Hideout;2.91348
+1;0xd;0xe10;Kafei Hideout - Laundry Pool;0xda10;Kafei Hideout -> Laundry Pool;17.5185
+1;0x70;0xda10;Laundry Pool - Kafei Hideout;0xe10;Laundry Pool -> Kafei Hideout;2.9148
+1;0xd;0xe10;Kafei Hideout - Laundry Pool;0xe20;Curiosity Shop Telescope -> Curiosity Shop;8.84715
+1;0xd;0xe20;Curiosity Shop - Curiosity Shop Telescope;0xe30;Kafei Hideout Telescope -> Kafei Hideout;2.32477
+1;0xd;0xe30;Kafei Hideout - Kafei Hideout Telescope;0xe20;Curiosity Shop Telescope -> Curiosity Shop;4.07843
+1;0xd;0xe20;Curiosity Shop - Curiosity Shop Telescope;0xe30;Kafei Hideout Telescope -> Kafei Hideout;1.27775
+1;0xd;0xe30;Kafei Hideout - Kafei Hideout Telescope;0xe20;Curiosity Shop Telescope -> Curiosity Shop;2.66002
+1;0xd;0xe20;Curiosity Shop - Curiosity Shop Telescope;0xe30;Kafei Hideout Telescope -> Kafei Hideout;1.35836
+1;0xd;0xe30;Kafei Hideout - Kafei Hideout Telescope;0xda10;Kafei Hideout -> Laundry Pool;6.98075
+1;0x70;0xda10;Laundry Pool - Kafei Hideout;0xe10;Laundry Pool -> Kafei Hideout;3.37491
+1;0xd;0xe10;Kafei Hideout - Laundry Pool;0xe20;Curiosity Shop Telescope -> Curiosity Shop;7.04314
+1;0xd;0xe20;Curiosity Shop - Curiosity Shop Telescope;0xe30;Kafei Hideout Telescope -> Kafei Hideout;0.627262
+1;0xd;0xe30;Kafei Hideout - Kafei Hideout Telescope;0xda10;Kafei Hideout -> Laundry Pool;7.91389
+1;0x70;0xda10;Laundry Pool - Kafei Hideout;0xe10;Laundry Pool -> Kafei Hideout;2.95351
+1;0xd;0xe10;Kafei Hideout - Laundry Pool;0xe20;Curiosity Shop Telescope -> Curiosity Shop;7.3442
+1;0xd;0xe20;Curiosity Shop - Curiosity Shop Telescope;0xe30;Kafei Hideout Telescope -> Kafei Hideout;1.67145
+1;0xd;0xe30;Kafei Hideout - Kafei Hideout Telescope;0xe20;Curiosity Shop Telescope -> Curiosity Shop;2.29686
+1;0xd;0xe20;Curiosity Shop - Curiosity Shop Telescope;0xe30;Kafei Hideout Telescope -> Kafei Hideout;0.618795
+1;0xd;0xe30;Kafei Hideout - Kafei Hideout Telescope;0xda10;Kafei Hideout -> Laundry Pool;6.74575
+1;0x70;0xda10;Laundry Pool - Kafei Hideout;0xd860;Laundry Pool -> South Clock Town;81.566
+1;0x6f;0xd860;South Clock Town - Laundry Pool;0xd410;South West Clock Town Bottom -> West Clock Town;5.38356
+1;0x6d;0xd410;West Clock Town - South West Clock Town Bottom;0xca00;West Clock Town -> Bomb Shop;13.0815
+1;0x68;0xca00;Bomb Shop - West Clock Town;0x2040;Warp Owl -> Ikana Canyon - Owl Statue;36.6563
+1;0x13;0x2040;Ikana Canyon - Owl Statue - Warp Owl;0x3410;Ikana Canyon -> Ikana Castle Exterior;10.5741
+1;0x1d;0x3410;Ikana Castle Exterior - Ikana Canyon;0x2080;Ikana Castle Exterior -> Ikana Canyon;18.7582
+1;0x13;0x2080;Ikana Canyon - Ikana Castle Exterior;0x3410;Ikana Canyon -> Ikana Castle Exterior;3.42945
+1;0x1d;0x3410;Ikana Castle Exterior - Ikana Canyon;0x3430;Ikana Castle Exterior -> Inside Ikana Castle;6.85906
+1;0x31;0x3430;Inside Ikana Castle - Ikana Castle Exterior;0x3420;Inside Ikana Castle -> Ikana Castle Exterior;3.57603
+1;0x1d;0x3420;Ikana Castle Exterior - Inside Ikana Castle;0x3430;Ikana Castle Exterior -> Inside Ikana Castle;3.32188
+1;0x31;0x3430;Inside Ikana Castle - Ikana Castle Exterior;0x3420;Inside Ikana Castle -> Ikana Castle Exterior;3.06861
+1;0x1d;0x3420;Ikana Castle Exterior - Inside Ikana Castle;0x2080;Ikana Castle Exterior -> Ikana Canyon;7.41787
+1;0x13;0x2080;Ikana Canyon - Ikana Castle Exterior;0x3410;Ikana Canyon -> Ikana Castle Exterior;3.41171
+1;0x1d;0x3410;Ikana Castle Exterior - Ikana Canyon;0x2080;Ikana Castle Exterior -> Ikana Canyon;2.88777
+1;0x13;0x2080;Ikana Canyon - Ikana Castle Exterior;0x3410;Ikana Canyon -> Ikana Castle Exterior;3.41922
+1;0x1d;0x3410;Ikana Castle Exterior - Ikana Canyon;0x9010;Ikana Castle Exterior -> Beneath the Well Back;17.2515
+1;0x4b;0x9010;Beneath the Well Back - Ikana Castle Exterior;0x3400;Beneath the Well Back -> Ikana Castle Exterior;3.93752
+1;0x1d;0x3400;Ikana Castle Exterior - Beneath the Well Back;0x9010;Ikana Castle Exterior -> Beneath the Well Back;3.73806
+1;0x4b;0x9010;Beneath the Well Back - Ikana Castle Exterior;0x3400;Beneath the Well Back -> Ikana Castle Exterior;3.18365
+1;0x1d;0x3400;Ikana Castle Exterior - Beneath the Well Back;0x2080;Ikana Castle Exterior -> Ikana Canyon;29.39
+1;0x13;0x2080;Ikana Canyon - Ikana Castle Exterior;0x3410;Ikana Canyon -> Ikana Castle Exterior;3.41713
+1;0x1d;0x3410;Ikana Castle Exterior - Ikana Canyon;0x3430;Ikana Castle Exterior -> Inside Ikana Castle;6.95575
+1;0x31;0x3440;Inside Ikana Castle - Powder Keg - Powder Keg;0x3420;Inside Ikana Castle -> Ikana Castle Exterior;36.6309
+1;0x1d;0x3400;Ikana Castle Exterior - Beneath the Well Back;0x3440;Powder Keg -> Inside Ikana Castle - Powder Keg;-1
+1;0x1d;0x3410;Ikana Castle Exterior - Ikana Canyon;0x3440;Powder Keg -> Inside Ikana Castle - Powder Keg;-1
+1;0x31;0x3440;Inside Ikana Castle - Powder Keg - Powder Keg;0xa600;Inside Ikana Castle -> Igos' Lair;6.27343
+1;0x56;0xa600;Igos' Lair - Inside Ikana Castle;0x3460;Igos' Lair -> Inside Ikana Castle;2.88604
+1;0x31;0x3460;Inside Ikana Castle - Igos' Lair;0xa600;Inside Ikana Castle -> Igos' Lair;3.09062
+1;0x56;0xa600;Igos' Lair - Inside Ikana Castle;0x3460;Igos' Lair -> Inside Ikana Castle;2.89218
+1;0x31;0x3460;Inside Ikana Castle - Igos' Lair;0x3420;Inside Ikana Castle -> Ikana Castle Exterior;7.75401
+1;0x1d;0x3420;Ikana Castle Exterior - Inside Ikana Castle;0x3440;Powder Keg -> Inside Ikana Castle - Powder Keg;-1
+1;0x31;0x3440;Inside Ikana Castle - Powder Keg - Powder Keg;0x3420;Inside Ikana Castle -> Ikana Castle Exterior;5.31195
+1;0x1d;0x3400;Ikana Castle Exterior - Beneath the Well Back;0x3450;Block -> Inside Ikana Castle - Block;-1
+1;0x1d;0x3410;Ikana Castle Exterior - Ikana Canyon;0x3450;Block -> Inside Ikana Castle - Block;-1
+1;0x31;0x3450;Inside Ikana Castle - Block - Block;0x3420;Inside Ikana Castle -> Ikana Castle Exterior;8.93639
+1;0x1d;0x3420;Ikana Castle Exterior - Inside Ikana Castle;0x3450;Block -> Inside Ikana Castle - Block;-1
+1;0x31;0x3450;Inside Ikana Castle - Block - Block;0xa600;Inside Ikana Castle -> Igos' Lair;10.1625
+1;0x56;0xa600;Igos' Lair - Inside Ikana Castle;0x3460;Igos' Lair -> Inside Ikana Castle;5.61464
+1;0x31;0x3460;Inside Ikana Castle - Igos' Lair;0x3420;Inside Ikana Castle -> Ikana Castle Exterior;10.2391
+1;0x1d;0x3420;Ikana Castle Exterior - Inside Ikana Castle;0x3430;Ikana Castle Exterior -> Inside Ikana Castle;3.33574
+1;0x31;0x3430;Inside Ikana Castle - Ikana Castle Exterior;0x3420;Inside Ikana Castle -> Ikana Castle Exterior;12.6782
+1;0x1d;0x3420;Ikana Castle Exterior - Inside Ikana Castle;0x3430;Ikana Castle Exterior -> Inside Ikana Castle;3.31337
+1;0x31;0x3430;Inside Ikana Castle - Ikana Castle Exterior;0xa600;Inside Ikana Castle -> Igos' Lair;7.44741
+1;0x31;0x3460;Inside Ikana Castle - Igos' Lair;0x3420;Inside Ikana Castle -> Ikana Castle Exterior;27.2192
+1;0x1d;0x3420;Ikana Castle Exterior - Inside Ikana Castle;0x9010;Ikana Castle Exterior -> Beneath the Well Back;15.3239
+1;0x4b;0x9010;Beneath the Well Back - Ikana Castle Exterior;0x3400;Beneath the Well Back -> Ikana Castle Exterior;3.17115
+1;0x1d;0x3400;Ikana Castle Exterior - Beneath the Well Back;0x3430;Ikana Castle Exterior -> Inside Ikana Castle;25.818
+1;0x31;0x3430;Inside Ikana Castle - Ikana Castle Exterior;0x3420;Inside Ikana Castle -> Ikana Castle Exterior;9.79979
+1;0x1d;0x3420;Ikana Castle Exterior - Inside Ikana Castle;0x9010;Ikana Castle Exterior -> Beneath the Well Back;17.2582
+1;0x4b;0x9010;Beneath the Well Back - Ikana Castle Exterior;0x2050;Beneath the Well -> Ikana Canyon;35.0257
+1;0x13;0x2050;Ikana Canyon - Beneath the Well;0x9000;Ikana Canyon -> Beneath the Well;3.49317
+1;0x4b;0x9000;Beneath the Well - Ikana Canyon;0x3400;Beneath the Well Back -> Ikana Castle Exterior;35.6376
+1;0x4b;0x9010;Beneath the Well Back - Ikana Castle Exterior;0xff03;Beneath the Well -> Wallmaster - Castle Corridor;22.0766
+1;0x4b;0x9010;Beneath the Well Back - Ikana Castle Exterior;0xff01;Beneath the Well -> Wallmaster - Right Corridor;37.7071
+1;0x4b;0x9010;Beneath the Well Back - Ikana Castle Exterior;0xff02;Beneath the Well -> Wallmaster - Fairy Fountain;56.0972
+1;0x4b;0x9010;Beneath the Well Back - Ikana Castle Exterior;0x2050;Beneath the Well -> Ikana Canyon;65.4519
+1;0x13;0x2050;Ikana Canyon - Beneath the Well;0x9000;Ikana Canyon -> Beneath the Well;3.92666
+1;0x4b;0x9000;Beneath the Well - Ikana Canyon;0xff02;Beneath the Well -> Wallmaster - Fairy Fountain;27.4204
+1;0x13;0x2050;Ikana Canyon - Beneath the Well;0x9000;Ikana Canyon -> Beneath the Well;21.3455
+1;0x4b;0x9000;Beneath the Well - Ikana Canyon;0xff03;Beneath the Well -> Wallmaster - Castle Corridor;31.7519
+1;0x13;0x2050;Ikana Canyon - Beneath the Well;0x9000;Ikana Canyon -> Beneath the Well;25.3923
+1;0x4b;0x9000;Beneath the Well - Ikana Canyon;0xff01;Beneath the Well -> Wallmaster - Right Corridor;21.7375
+1;0x13;0x2050;Ikana Canyon - Beneath the Well;0x9000;Ikana Canyon -> Beneath the Well;26.8742
+1;0x4b;0x9000;Beneath the Well - Ikana Canyon;0x2050;Beneath the Well -> Ikana Canyon;3.17101
+1;0x4b;0x9000;Beneath the Well - Ikana Canyon;0x2050;Beneath the Well -> Ikana Canyon;3.17657
+1;0x13;0x2050;Ikana Canyon - Beneath the Well;0x3410;Ikana Canyon -> Ikana Castle Exterior;29.8906
+1;0x1d;0x3410;Ikana Castle Exterior - Ikana Canyon;0x2080;Ikana Castle Exterior -> Ikana Canyon;2.90317
+1;0x13;0x2080;Ikana Canyon - Ikana Castle Exterior;0x9000;Ikana Canyon -> Beneath the Well;24.8401
+1;0x4b;0x9000;Beneath the Well - Ikana Canyon;0x2050;Beneath the Well -> Ikana Canyon;3.16221
+1;0x13;0x2050;Ikana Canyon - Beneath the Well;0x1000c;Ikana Canyon -> Open Grotto;41.882
+1;0x8a;0x1000c;Open Grotto - Ikana Canyon;0x1010c;Open Grotto -> Ikana Canyon;2.60991
+1;0x13;0x1010c;Ikana Canyon - Open Grotto;0x1000c;Ikana Canyon -> Open Grotto;3.94145
+1;0x8a;0x1000c;Open Grotto - Ikana Canyon;0x1010c;Open Grotto -> Ikana Canyon;2.60777
+1;0x13;0x1010c;Ikana Canyon - Open Grotto;0xba00;Ikana Canyon -> Shrine;6.75345
+1;0x60;0xba00;Shrine - Ikana Canyon;0x20c0;Secret Shrine -> Ikana Canyon;4.17725
+1;0x13;0x20c0;Ikana Canyon - Secret Shrine;0xba00;Ikana Canyon -> Shrine;6.28582
+1;0x60;0xba00;Shrine - Ikana Canyon;0x20c0;Secret Shrine -> Ikana Canyon;3.26463
+1;0x13;0x20c0;Ikana Canyon - Secret Shrine;0x1000c;Ikana Canyon -> Open Grotto;9.34614
+1;0x8a;0x1000c;Open Grotto - Ikana Canyon;0x1010c;Open Grotto -> Ikana Canyon;3.21317
+1;0x13;0x1010c;Ikana Canyon - Open Grotto;0x9000;Ikana Canyon -> Beneath the Well;59.8005
+1;0x4b;0x9000;Beneath the Well - Ikana Canyon;0x2050;Beneath the Well -> Ikana Canyon;3.15534
+1;0x13;0x2050;Ikana Canyon - Beneath the Well;0xba00;Ikana Canyon -> Shrine;42.0145
+1;0x60;0xba00;Shrine - Ikana Canyon;0x20c0;Secret Shrine -> Ikana Canyon;3.8757
+1;0x13;0x20c0;Ikana Canyon - Secret Shrine;0x9000;Ikana Canyon -> Beneath the Well;76.1326
+1;0x4b;0x9000;Beneath the Well - Ikana Canyon;0x2050;Beneath the Well -> Ikana Canyon;3.1781
+1;0x13;0x2050;Ikana Canyon - Beneath the Well;0x20e0;Ikana Canyon -> Spring Water Cave;33.1849
+1;0x99;0x20e0;Spring Water Cave - Ikana Canyon;0x20d0;Spring Water Cave -> Ikana Canyon;15.2062
+1;0x13;0x20d0;Ikana Canyon - Spring Water Cave;0xa400;Ikana Canyon -> Music Box House;14.4639
+1;0x55;0xa400;Music Box House - Ikana Canyon;0x2020;Music Box House -> Ikana Canyon;36.0926
+1;0x13;0x2020;Ikana Canyon - Music Box House;0xa400;Ikana Canyon -> Music Box House;3.00042
+1;0x55;0xa400;Music Box House - Ikana Canyon;0x2020;Music Box House -> Ikana Canyon;2.67367
+1;0x13;0x2020;Ikana Canyon - Music Box House;0x9000;Ikana Canyon -> Beneath the Well;22.2531
+1;0x4b;0x9000;Beneath the Well - Ikana Canyon;0x2050;Beneath the Well -> Ikana Canyon;3.53536
+1;0x13;0x2050;Ikana Canyon - Beneath the Well;0xa400;Ikana Canyon -> Music Box House;26.6526
+1;0x55;0xa400;Music Box House - Ikana Canyon;0x2020;Music Box House -> Ikana Canyon;6.94469
+1;0x13;0x2020;Ikana Canyon - Music Box House;0x4640;Ikana Canyon -> Ikana Fairy Fountain;6.76134
+1;0x5;0x4640;Ikana Fairy Fountain - Ikana Canyon;0x20b0;Ikana Fairy Fountain -> Ikana Canyon;3.35526
+1;0x13;0x20b0;Ikana Canyon - Ikana Fairy Fountain;0xa400;Ikana Canyon -> Music Box House;6.33305
+1;0x55;0xa400;Music Box House - Ikana Canyon;0x2020;Music Box House -> Ikana Canyon;2.77962
+1;0x13;0x2020;Ikana Canyon - Music Box House;0x3410;Ikana Canyon -> Ikana Castle Exterior;9.86733
+1;0x1d;0x3410;Ikana Castle Exterior - Ikana Canyon;0x2080;Ikana Castle Exterior -> Ikana Canyon;2.86239
+1;0x13;0x2080;Ikana Canyon - Ikana Castle Exterior;0xa400;Ikana Canyon -> Music Box House;11.8415
+1;0x55;0xa400;Music Box House - Ikana Canyon;0x2020;Music Box House -> Ikana Canyon;2.63202
+1;0x13;0x2020;Ikana Canyon - Music Box House;0x9c00;Ikana Canyon -> Ghost Hut;16.1152
+1;0x51;0x9c00;Ghost Hut - Ikana Canyon;0x2010;Ghost Hut -> Ikana Canyon;3.6859
+1;0x13;0x2010;Ikana Canyon - Ghost Hut;0xa400;Ikana Canyon -> Music Box House;9.69952
+1;0x55;0xa400;Music Box House - Ikana Canyon;0x2020;Music Box House -> Ikana Canyon;2.79209
+1;0x13;0x2020;Ikana Canyon - Music Box House;0x20e0;Ikana Canyon -> Spring Water Cave;20.3154
+1;0x99;0x20e0;Spring Water Cave - Ikana Canyon;0x20d0;Spring Water Cave -> Ikana Canyon;3.23525
+1;0x13;0x20d0;Ikana Canyon - Spring Water Cave;0xa400;Ikana Canyon -> Music Box House;11.4586
+1;0x55;0xa400;Music Box House - Ikana Canyon;0x2020;Music Box House -> Ikana Canyon;2.76689
+1;0x13;0x2020;Ikana Canyon - Music Box House;0xba00;Ikana Canyon -> Shrine;23.836
+1;0x60;0xba00;Shrine - Ikana Canyon;0x20c0;Secret Shrine -> Ikana Canyon;4.21122
+1;0x13;0x20c0;Ikana Canyon - Secret Shrine;0xa400;Ikana Canyon -> Music Box House;58.4518
+1;0x55;0xa400;Music Box House - Ikana Canyon;0x2020;Music Box House -> Ikana Canyon;2.79796
+1;0x13;0x2020;Ikana Canyon - Music Box House;0xaa00;Ikana Canyon -> Stone Tower;24.9775
+1;0x58;0xaa00;Stone Tower - Ikana Canyon;0x2030;Stone Tower -> Ikana Canyon;4.88452
+1;0x13;0x2030;Ikana Canyon - Stone Tower;0xa400;Ikana Canyon -> Music Box House;13.3417
+1;0x55;0xa400;Music Box House - Ikana Canyon;0x2020;Music Box House -> Ikana Canyon;2.73051
+1;0x13;0x2020;Ikana Canyon - Music Box House;0xa010;Ikana Canyon -> Road to Ikana;25.2478
+1;0x53;0xa010;Road to Ikana - Ikana Canyon;0x2000;Road to Ikana -> Ikana Canyon;2.87437
+1;0x13;0x2000;Ikana Canyon - Road to Ikana;0xa400;Ikana Canyon -> Music Box House;43.8569
+1;0x55;0xa400;Music Box House - Ikana Canyon;0x2020;Music Box House -> Ikana Canyon;2.66658
+1;0x13;0x2020;Ikana Canyon - Music Box House;0x1000c;Ikana Canyon -> Open Grotto;26.5807
+1;0x8a;0x1000c;Open Grotto - Ikana Canyon;0x1010c;Open Grotto -> Ikana Canyon;2.60795
+1;0x13;0x1010c;Ikana Canyon - Open Grotto;0x8490;Waterfalls -> Southern Swamp - Waterfalls;25.4828
+1;0x13;0x2050;Ikana Canyon - Beneath the Well;0x4640;Ikana Canyon -> Ikana Fairy Fountain;29.7647
+1;0x5;0x4640;Ikana Fairy Fountain - Ikana Canyon;0x20b0;Ikana Fairy Fountain -> Ikana Canyon;2.93758
+1;0x13;0x20b0;Ikana Canyon - Ikana Fairy Fountain;0xa400;Ikana Canyon -> Music Box House;6.56051
+1;0x55;0xa400;Music Box House - Ikana Canyon;0x2020;Music Box House -> Ikana Canyon;2.72692
+1;0x13;0x2020;Ikana Canyon - Music Box House;0x9800;Ikana Canyon -> Sakon Hideout;42.0875
+1;0x4f;0x9800;Sakon Hideout - Ikana Canyon;0x2060;Sakon Hideout -> Ikana Canyon;2.88615
+1;0x13;0x2060;Ikana Canyon - Sakon Hideout;0x9800;Ikana Canyon -> Sakon Hideout;11.723
+1;0x4f;0x9800;Sakon Hideout - Ikana Canyon;0x2060;Sakon Hideout -> Ikana Canyon;2.86837
+1;0x13;0x2060;Ikana Canyon - Sakon Hideout;0xa400;Ikana Canyon -> Music Box House;48.2753
+1;0x55;0xa400;Music Box House - Ikana Canyon;0x2020;Music Box House -> Ikana Canyon;5.62427
+1;0x13;0x2020;Ikana Canyon - Music Box House;0x8490;Waterfalls -> Southern Swamp - Waterfalls;27.7262
+1;0x13;0x2050;Ikana Canyon - Beneath the Well;0x2040;Warp Owl -> Ikana Canyon - Owl Statue;19.6096
+1;0x13;0x2040;Ikana Canyon - Owl Statue - Warp Owl;0xa400;Ikana Canyon -> Music Box House;10.3732
+1;0x55;0xa400;Music Box House - Ikana Canyon;0x68b0;Warp Owl -> Great Bay Coast - Owl Statue;75.9761
+1;0x37;0x68b0;Great Bay Coast - Owl Statue - Warp Owl;0x7000;Great Bay Coast -> Pirate Fortress Entrance;39.6758
+1;0x3b;0x7000;Pirate Fortress Entrance - Great Bay Coast;0x68c0;Trapdoor -> Great Bay Coast - Trapdoor;11.6979
+1;0x37;0x68c0;Great Bay Coast - Trapdoor - Trapdoor;0x7000;Great Bay Coast -> Pirate Fortress Entrance;14.753
+1;0x3b;0x7000;Pirate Fortress Entrance - Great Bay Coast;0x4090;Sewers' Gate -> Pirate Fortress Interior;55.5771
+1;0x23;0x4090;Pirate Fortress Interior - Sewers' Gate;0xaa30;Warp Owl -> Stone Tower - Owl Statue;107.241
+1;0x58;0xaa30;Stone Tower - Owl Statue - Warp Owl;0xac00;Stone Tower -> Stone Tower Inverted;54.3396
+1;0x59;0xac00;Stone Tower Inverted - Stone Tower;0x2a00;Stone Tower Inverted -> Stone Tower Temple Inverted;10.7574
+1;0x18;0x2a00;Stone Tower Temple Inverted - Stone Tower Inverted;0xac10;Stone Tower Temple Inverted -> Stone Tower Inverted;6.30687
+1;0x59;0xac10;Stone Tower Inverted - Stone Tower Temple Inverted;0x2a00;Stone Tower Inverted -> Stone Tower Temple Inverted;2.65739
+1;0x18;0x2a00;Stone Tower Temple Inverted - Stone Tower Inverted;0xac10;Stone Tower Temple Inverted -> Stone Tower Inverted;3.61332
+1;0x59;0xac10;Stone Tower Inverted - Stone Tower Temple Inverted;0xaa10;Stone Tower Inverted -> Stone Tower;14.9713
+1;0x58;0xaa10;Stone Tower - Stone Tower Inverted;0xac00;Stone Tower -> Stone Tower Inverted;31.2885
+1;0x58;0xaa30;Stone Tower - Owl Statue - Warp Owl;0xac00;Stone Tower -> Stone Tower Inverted;35.0175
+1;0x59;0xac00;Stone Tower Inverted - Stone Tower;0x2a00;Stone Tower Inverted -> Stone Tower Temple Inverted;11.3708
+1;0x36;0x6600;Boss Arena - Twinmold's Lair - Twinmold's Lair;0x20700;Warp Boss -> Twinmold's Lair -> Warp Boss;125.62
+1;0x13;0x2070;Ikana Canyon - Warp Twinmold - Warp Twinmold;0xa400;Ikana Canyon -> Music Box House;12.6605
+1;0x59;0xac00;Stone Tower Inverted - Stone Tower;0x2a00;Stone Tower Inverted -> Stone Tower Temple Inverted;14.939
+1;0x36;0x6600;Boss Arena - Twinmold's Lair - Twinmold's Lair;0x20700;Warp Boss -> Twinmold's Lair -> Warp Boss;6.62348
+1;0x13;0x2070;Ikana Canyon - Warp Twinmold - Warp Twinmold;0x4640;Ikana Canyon -> Ikana Fairy Fountain;9.77597
+1;0x58;0xaa30;Stone Tower - Owl Statue - Warp Owl;0xac00;Stone Tower -> Stone Tower Inverted;3.80232
+1;0x59;0xac00;Stone Tower Inverted - Stone Tower;0x2a00;Stone Tower Inverted -> Stone Tower Temple Inverted;10.7677
+1;0x36;0x6600;Boss Arena - Twinmold's Lair - Twinmold's Lair;0x20700;Warp Boss -> Twinmold's Lair -> Warp Boss;6.83227
+1;0x13;0x2070;Ikana Canyon - Warp Twinmold - Warp Twinmold;0x20e0;Ikana Canyon -> Spring Water Cave;11.5367
+1;0x13;0x2070;Ikana Canyon - Warp Twinmold - Warp Twinmold;0x9c00;Ikana Canyon -> Ghost Hut;12.1798
+1;0x13;0x2070;Ikana Canyon - Warp Twinmold - Warp Twinmold;0xaa00;Ikana Canyon -> Stone Tower;11.9923
+1;0x58;0xaa00;Stone Tower - Ikana Canyon;0xac00;Stone Tower -> Stone Tower Inverted;3.78082
+1;0x13;0x2070;Ikana Canyon - Warp Twinmold - Warp Twinmold;0x9000;Ikana Canyon -> Beneath the Well;22.386
+1;0x13;0x2070;Ikana Canyon - Warp Twinmold - Warp Twinmold;0x3410;Ikana Canyon -> Ikana Castle Exterior;13.8102
+1;0x13;0x2070;Ikana Canyon - Warp Twinmold - Warp Twinmold;0xba00;Ikana Canyon -> Shrine;33.994
+1;0x13;0x2070;Ikana Canyon - Warp Twinmold - Warp Twinmold;0x1000c;Ikana Canyon -> Open Grotto;34.3779
+1;0x13;0x2070;Ikana Canyon - Warp Twinmold - Warp Twinmold;0xa010;Ikana Canyon -> Road to Ikana;32.5744
+1;0x13;0x2070;Ikana Canyon - Warp Twinmold - Warp Twinmold;0x9800;Ikana Canyon -> Sakon Hideout;47.178
+1;0x4f;0x9800;Sakon Hideout - Ikana Canyon;0x2060;Sakon Hideout -> Ikana Canyon;3.20066
+1;0x13;0x2060;Ikana Canyon - Sakon Hideout;0x1000c;Ikana Canyon -> Open Grotto;32.3728
+1;0x13;0x2070;Ikana Canyon - Warp Twinmold - Warp Twinmold;0x8490;Waterfalls -> Southern Swamp - Waterfalls;30.1573
+1;0x13;0x2070;Ikana Canyon - Warp Twinmold - Warp Twinmold;0x1000c;Ikana Canyon -> Open Grotto;34.2278
+1;0x8a;0x1000c;Open Grotto - Ikana Canyon;0x1010c;Open Grotto -> Ikana Canyon;2.60377
+1;0x13;0x1010c;Ikana Canyon - Open Grotto;0xa400;Ikana Canyon -> Music Box House;47.1242
+1;0x55;0xa400;Music Box House - Ikana Canyon;0x2020;Music Box House -> Ikana Canyon;5015.63
+1;0x13;0x2020;Ikana Canyon - Music Box House;0x9000;Ikana Canyon -> Beneath the Well;21.9843
+1;0x4b;0x9000;Beneath the Well - Ikana Canyon;0x2050;Beneath the Well -> Ikana Canyon;3.17026
+1;0x13;0x2050;Ikana Canyon - Beneath the Well;0x9c00;Ikana Canyon -> Ghost Hut;26.0204
+1;0x51;0x9c00;Ghost Hut - Ikana Canyon;0x2010;Ghost Hut -> Ikana Canyon;2.94306
+1;0x13;0x2010;Ikana Canyon - Ghost Hut;0x9000;Ikana Canyon -> Beneath the Well;14.5137
+1;0x4b;0x9000;Beneath the Well - Ikana Canyon;0x2050;Beneath the Well -> Ikana Canyon;3.18206
+1;0x13;0x2050;Ikana Canyon - Beneath the Well;0xaa00;Ikana Canyon -> Stone Tower;34.9932
+1;0x58;0xaa00;Stone Tower - Ikana Canyon;0xac00;Stone Tower -> Stone Tower Inverted;3.80887
+1;0x59;0xac00;Stone Tower Inverted - Stone Tower;0xaa10;Stone Tower Inverted -> Stone Tower;17.6736
+1;0x58;0xaa10;Stone Tower - Stone Tower Inverted;0x2030;Stone Tower -> Ikana Canyon;17.5724
+1;0x13;0x2030;Ikana Canyon - Stone Tower;0x9000;Ikana Canyon -> Beneath the Well;23.6031
+1;0x4b;0x9000;Beneath the Well - Ikana Canyon;0x2050;Beneath the Well -> Ikana Canyon;3.16584
+1;0x13;0x2050;Ikana Canyon - Beneath the Well;0xa010;Ikana Canyon -> Road to Ikana;40.6617
+1;0x53;0xa010;Road to Ikana - Ikana Canyon;0x2000;Road to Ikana -> Ikana Canyon;2.89906
+1;0x13;0x2000;Ikana Canyon - Road to Ikana;0x9000;Ikana Canyon -> Beneath the Well;60.4099
+1;0x4b;0x9000;Beneath the Well - Ikana Canyon;0x2050;Beneath the Well -> Ikana Canyon;3.16503
+1;0x13;0x2050;Ikana Canyon - Beneath the Well;0x9000;Ikana Canyon -> Beneath the Well;61.088
+1;0x4b;0x9000;Beneath the Well - Ikana Canyon;0x2050;Beneath the Well -> Ikana Canyon;3.16889
+1;0x13;0x2050;Ikana Canyon - Beneath the Well;0x9800;Ikana Canyon -> Sakon Hideout;55.2547
+1;0x4f;0x9800;Sakon Hideout - Ikana Canyon;0x2060;Sakon Hideout -> Ikana Canyon;123.11
+1;0x13;0x2020;Ikana Canyon - Music Box House;0x9000;Ikana Canyon -> Beneath the Well;60.7188
+1;0x4b;0x9000;Beneath the Well - Ikana Canyon;0x2050;Beneath the Well -> Ikana Canyon;3.17219
+1;0x13;0x2050;Ikana Canyon - Beneath the Well;0x8490;Waterfalls -> Southern Swamp - Waterfalls;42.6757
+1;0x13;0x2020;Ikana Canyon - Music Box House;0x4640;Ikana Canyon -> Ikana Fairy Fountain;6.67235
+1;0x5;0x4640;Ikana Fairy Fountain - Ikana Canyon;0x20b0;Ikana Fairy Fountain -> Ikana Canyon;3.27207
+1;0x13;0x20b0;Ikana Canyon - Ikana Fairy Fountain;0x4640;Ikana Canyon -> Ikana Fairy Fountain;3.40746
+1;0x5;0x4640;Ikana Fairy Fountain - Ikana Canyon;0x20b0;Ikana Fairy Fountain -> Ikana Canyon;7.60853
+1;0x13;0x20b0;Ikana Canyon - Ikana Fairy Fountain;0x9000;Ikana Canyon -> Beneath the Well;24.1047
+1;0x4b;0x9000;Beneath the Well - Ikana Canyon;0x2050;Beneath the Well -> Ikana Canyon;3.36593
+1;0x13;0x20b0;Ikana Canyon - Ikana Fairy Fountain;0x3410;Ikana Canyon -> Ikana Castle Exterior;8.99894
+1;0x1d;0x3410;Ikana Castle Exterior - Ikana Canyon;0x2080;Ikana Castle Exterior -> Ikana Canyon;2.91881
+1;0x13;0x2080;Ikana Canyon - Ikana Castle Exterior;0x4640;Ikana Canyon -> Ikana Fairy Fountain;14.9502
+1;0x5;0x4640;Ikana Fairy Fountain - Ikana Canyon;0x20b0;Ikana Fairy Fountain -> Ikana Canyon;2.91592
+1;0x13;0x20b0;Ikana Canyon - Ikana Fairy Fountain;0xaa00;Ikana Canyon -> Stone Tower;13.3402
+1;0x58;0xaa00;Stone Tower - Ikana Canyon;0xac00;Stone Tower -> Stone Tower Inverted;3.80525
+1;0x59;0xac00;Stone Tower Inverted - Stone Tower;0xaa10;Stone Tower Inverted -> Stone Tower;14.7173
+1;0x58;0xaa10;Stone Tower - Stone Tower Inverted;0x2030;Stone Tower -> Ikana Canyon;12.1729
+1;0x13;0x2030;Ikana Canyon - Stone Tower;0x4640;Ikana Canyon -> Ikana Fairy Fountain;10.6782
+1;0x5;0x4640;Ikana Fairy Fountain - Ikana Canyon;0x20b0;Ikana Fairy Fountain -> Ikana Canyon;4.6278
+1;0x13;0x20b0;Ikana Canyon - Ikana Fairy Fountain;0x20e0;Ikana Canyon -> Spring Water Cave;10.3504
+1;0x99;0x20e0;Spring Water Cave - Ikana Canyon;0x20d0;Spring Water Cave -> Ikana Canyon;3.26566
+1;0x13;0x20d0;Ikana Canyon - Spring Water Cave;0x4640;Ikana Canyon -> Ikana Fairy Fountain;10.5021
+1;0x5;0x4640;Ikana Fairy Fountain - Ikana Canyon;0x20b0;Ikana Fairy Fountain -> Ikana Canyon;2.91874
+1;0x13;0x20b0;Ikana Canyon - Ikana Fairy Fountain;0x9c00;Ikana Canyon -> Ghost Hut;10.7435
+1;0x51;0x9c00;Ghost Hut - Ikana Canyon;0x2010;Ghost Hut -> Ikana Canyon;2.93253
+1;0x13;0x2010;Ikana Canyon - Ghost Hut;0x4640;Ikana Canyon -> Ikana Fairy Fountain;10.845
+1;0x5;0x4640;Ikana Fairy Fountain - Ikana Canyon;0x20b0;Ikana Fairy Fountain -> Ikana Canyon;2.92352
+1;0x13;0x20b0;Ikana Canyon - Ikana Fairy Fountain;0x9800;Ikana Canyon -> Sakon Hideout;39.7248
+1;0x4f;0x9800;Sakon Hideout - Ikana Canyon;0x2060;Sakon Hideout -> Ikana Canyon;2.94501
+1;0x13;0x2060;Ikana Canyon - Sakon Hideout;0x4640;Ikana Canyon -> Ikana Fairy Fountain;58.0808
+1;0x5;0x4640;Ikana Fairy Fountain - Ikana Canyon;0x20b0;Ikana Fairy Fountain -> Ikana Canyon;2.9265
+1;0x13;0x20b0;Ikana Canyon - Ikana Fairy Fountain;0xa010;Ikana Canyon -> Road to Ikana;24.0285
+1;0x53;0xa010;Road to Ikana - Ikana Canyon;0x2000;Road to Ikana -> Ikana Canyon;2.88189
+1;0x13;0x2000;Ikana Canyon - Road to Ikana;0x4640;Ikana Canyon -> Ikana Fairy Fountain;41.9564
+1;0x5;0x4640;Ikana Fairy Fountain - Ikana Canyon;0x20b0;Ikana Fairy Fountain -> Ikana Canyon;2.93241
+1;0x13;0x20b0;Ikana Canyon - Ikana Fairy Fountain;0x1000c;Ikana Canyon -> Open Grotto;26.7219
+1;0x8a;0x1000c;Open Grotto - Ikana Canyon;0x1010c;Open Grotto -> Ikana Canyon;2.73966
+1;0x13;0x1010c;Ikana Canyon - Open Grotto;0x4640;Ikana Canyon -> Ikana Fairy Fountain;58.0789
+1;0x5;0x4640;Ikana Fairy Fountain - Ikana Canyon;0x20b0;Ikana Fairy Fountain -> Ikana Canyon;2.93626
+1;0x13;0x20b0;Ikana Canyon - Ikana Fairy Fountain;0xba00;Ikana Canyon -> Shrine;30.9381
+1;0x60;0xba00;Shrine - Ikana Canyon;0x20c0;Secret Shrine -> Ikana Canyon;3.63853
+1;0x13;0x20c0;Ikana Canyon - Secret Shrine;0x4640;Ikana Canyon -> Ikana Fairy Fountain;57.1004
+1;0x5;0x4640;Ikana Fairy Fountain - Ikana Canyon;0x20b0;Ikana Fairy Fountain -> Ikana Canyon;2.93112
+1;0x13;0x20b0;Ikana Canyon - Ikana Fairy Fountain;0x8490;Waterfalls -> Southern Swamp - Waterfalls;23.5324
+1;0x13;0x20b0;Ikana Canyon - Ikana Fairy Fountain;0x3410;Ikana Canyon -> Ikana Castle Exterior;7.87399
+1;0x1d;0x3410;Ikana Castle Exterior - Ikana Canyon;0x2080;Ikana Castle Exterior -> Ikana Canyon;3.16929
+1;0x13;0x2080;Ikana Canyon - Ikana Castle Exterior;0x1000c;Ikana Canyon -> Open Grotto;22.0685
+1;0x8a;0x1000c;Open Grotto - Ikana Canyon;0x1010c;Open Grotto -> Ikana Canyon;2.59126
+1;0x13;0x1010c;Ikana Canyon - Open Grotto;0x3410;Ikana Canyon -> Ikana Castle Exterior;55.0609
+1;0x1d;0x3410;Ikana Castle Exterior - Ikana Canyon;0x2080;Ikana Castle Exterior -> Ikana Canyon;3.00973
+1;0x13;0x2080;Ikana Canyon - Ikana Castle Exterior;0xba00;Ikana Canyon -> Shrine;24.5426
+1;0x60;0xba00;Shrine - Ikana Canyon;0x20c0;Secret Shrine -> Ikana Canyon;3.50353
+1;0x13;0x20c0;Ikana Canyon - Secret Shrine;0x3410;Ikana Canyon -> Ikana Castle Exterior;56.27
+1;0x1d;0x3410;Ikana Castle Exterior - Ikana Canyon;0x2080;Ikana Castle Exterior -> Ikana Canyon;2.91291
+1;0x13;0x2080;Ikana Canyon - Ikana Castle Exterior;0xa010;Ikana Canyon -> Road to Ikana;21.749
+1;0x53;0xa010;Road to Ikana - Ikana Canyon;0x2000;Road to Ikana -> Ikana Canyon;2.89472
+1;0x13;0x2000;Ikana Canyon - Road to Ikana;0x3410;Ikana Canyon -> Ikana Castle Exterior;45.5416
+1;0x1d;0x3410;Ikana Castle Exterior - Ikana Canyon;0x2080;Ikana Castle Exterior -> Ikana Canyon;2.92234
+1;0x13;0x2080;Ikana Canyon - Ikana Castle Exterior;0x20e0;Ikana Canyon -> Spring Water Cave;20.4545
+1;0x99;0x20e0;Spring Water Cave - Ikana Canyon;0x20d0;Spring Water Cave -> Ikana Canyon;3.2612
+1;0x13;0x20d0;Ikana Canyon - Spring Water Cave;0x3410;Ikana Canyon -> Ikana Castle Exterior;13.859
+1;0x1d;0x3410;Ikana Castle Exterior - Ikana Canyon;0x2080;Ikana Castle Exterior -> Ikana Canyon;2.90758
+1;0x13;0x2080;Ikana Canyon - Ikana Castle Exterior;0x9800;Ikana Canyon -> Sakon Hideout;35.7414
+1;0x4f;0x9800;Sakon Hideout - Ikana Canyon;0x2060;Sakon Hideout -> Ikana Canyon;2.99086
+1;0x13;0x2060;Ikana Canyon - Sakon Hideout;0x3410;Ikana Canyon -> Ikana Castle Exterior;52.9566
+1;0x1d;0x3410;Ikana Castle Exterior - Ikana Canyon;0x2080;Ikana Castle Exterior -> Ikana Canyon;9.03359
+1;0x13;0x2080;Ikana Canyon - Ikana Castle Exterior;0x9c00;Ikana Canyon -> Ghost Hut;21.3393
+1;0x51;0x9c00;Ghost Hut - Ikana Canyon;0x2010;Ghost Hut -> Ikana Canyon;2.94465
+1;0x13;0x2010;Ikana Canyon - Ghost Hut;0x3410;Ikana Canyon -> Ikana Castle Exterior;13.9733
+1;0x1d;0x3410;Ikana Castle Exterior - Ikana Canyon;0x2080;Ikana Castle Exterior -> Ikana Canyon;2.91506
+1;0x13;0x2080;Ikana Canyon - Ikana Castle Exterior;0x8490;Waterfalls -> Southern Swamp - Waterfalls;20.4766
+1;0x13;0x2080;Ikana Canyon - Ikana Castle Exterior;0xaa00;Ikana Canyon -> Stone Tower;22.9274
+1;0x58;0xaa00;Stone Tower - Ikana Canyon;0xac00;Stone Tower -> Stone Tower Inverted;3.79983
+1;0x59;0xac00;Stone Tower Inverted - Stone Tower;0xaa10;Stone Tower Inverted -> Stone Tower;23.2979
+1;0x58;0xaa10;Stone Tower - Stone Tower Inverted;0x2030;Stone Tower -> Ikana Canyon;37.3442
+1;0x13;0x2030;Ikana Canyon - Stone Tower;0x9c00;Ikana Canyon -> Ghost Hut;13.7571
+1;0x51;0x9c00;Ghost Hut - Ikana Canyon;0x2010;Ghost Hut -> Ikana Canyon;2.92842
+1;0x13;0x2010;Ikana Canyon - Ghost Hut;0xaa00;Ikana Canyon -> Stone Tower;13.6026
+1;0x58;0xaa00;Stone Tower - Ikana Canyon;0x2030;Stone Tower -> Ikana Canyon;3.48266
+1;0x13;0x2030;Ikana Canyon - Stone Tower;0x3410;Ikana Canyon -> Ikana Castle Exterior;13.965
+1;0x13;0x2030;Ikana Canyon - Stone Tower;0x20e0;Ikana Canyon -> Spring Water Cave;11.3352
+1;0x99;0x20e0;Spring Water Cave - Ikana Canyon;0x20d0;Spring Water Cave -> Ikana Canyon;3.25432
+1;0x13;0x20d0;Ikana Canyon - Spring Water Cave;0xaa00;Ikana Canyon -> Stone Tower;11.3604
+1;0x58;0xaa00;Stone Tower - Ikana Canyon;0x2030;Stone Tower -> Ikana Canyon;3.12242
+1;0x13;0x2030;Ikana Canyon - Stone Tower;0xaa00;Ikana Canyon -> Stone Tower;3.05465
+1;0x58;0xaa00;Stone Tower - Ikana Canyon;0x2030;Stone Tower -> Ikana Canyon;3.12616
+1;0x13;0x2030;Ikana Canyon - Stone Tower;0x9800;Ikana Canyon -> Sakon Hideout;49.3994
+1;0x4f;0x9800;Sakon Hideout - Ikana Canyon;0x2060;Sakon Hideout -> Ikana Canyon;2.96181
+1;0x13;0x2060;Ikana Canyon - Sakon Hideout;0xaa00;Ikana Canyon -> Stone Tower;63.6317
+1;0x58;0xaa00;Stone Tower - Ikana Canyon;0x2030;Stone Tower -> Ikana Canyon;3.121
+1;0x13;0x2030;Ikana Canyon - Stone Tower;0x1000c;Ikana Canyon -> Open Grotto;29.2746
+1;0x8a;0x1000c;Open Grotto - Ikana Canyon;0x1010c;Open Grotto -> Ikana Canyon;2.61017
+1;0x13;0x1010c;Ikana Canyon - Open Grotto;0xaa00;Ikana Canyon -> Stone Tower;64.4739
+1;0x58;0xaa00;Stone Tower - Ikana Canyon;0x2030;Stone Tower -> Ikana Canyon;3.14941
+1;0x13;0x2030;Ikana Canyon - Stone Tower;0xba00;Ikana Canyon -> Shrine;35.8994
+1;0x60;0xba00;Shrine - Ikana Canyon;0x20c0;Secret Shrine -> Ikana Canyon;4.45624
+1;0x13;0x20c0;Ikana Canyon - Secret Shrine;0xaa00;Ikana Canyon -> Stone Tower;67.2346
+1;0x58;0xaa00;Stone Tower - Ikana Canyon;0x2030;Stone Tower -> Ikana Canyon;3.1269
+1;0x13;0x2030;Ikana Canyon - Stone Tower;0xa010;Ikana Canyon -> Road to Ikana;32.9925
+1;0x53;0xa010;Road to Ikana - Ikana Canyon;0x2000;Road to Ikana -> Ikana Canyon;2.87311
+1;0x13;0x2000;Ikana Canyon - Road to Ikana;0xaa00;Ikana Canyon -> Stone Tower;49.4266
+1;0x58;0xaa00;Stone Tower - Ikana Canyon;0x2030;Stone Tower -> Ikana Canyon;3.14273
+1;0x13;0x2030;Ikana Canyon - Stone Tower;0x8490;Waterfalls -> Southern Swamp - Waterfalls;30.4949
+1;0x13;0x2030;Ikana Canyon - Stone Tower;0x2040;Warp Owl -> Ikana Canyon - Owl Statue;29.2407
+1;0x13;0x2040;Ikana Canyon - Owl Statue - Warp Owl;0x8490;Waterfalls -> Southern Swamp - Waterfalls;20.1045
+1;0x45;0x8490;Southern Swamp - Waterfalls - Waterfalls;0x2040;Warp Owl -> Ikana Canyon - Owl Statue;27.3349
+1;0x13;0x2040;Ikana Canyon - Owl Statue - Warp Owl;0x1000c;Ikana Canyon -> Open Grotto;13.449
+1;0x13;0x2040;Ikana Canyon - Owl Statue - Warp Owl;0xba00;Ikana Canyon -> Shrine;17.3995
+1;0x13;0x2040;Ikana Canyon - Owl Statue - Warp Owl;0xba00;Ikana Canyon -> Shrine;14.6342
+1;0x13;0x2040;Ikana Canyon - Owl Statue - Warp Owl;0xa010;Ikana Canyon -> Road to Ikana;20.1677
+1;0x13;0x2040;Ikana Canyon - Owl Statue - Warp Owl;0x9800;Ikana Canyon -> Sakon Hideout;33.1761
+1;0x4f;0x9800;Sakon Hideout - Ikana Canyon;0x2060;Sakon Hideout -> Ikana Canyon;2.94283
+1;0x13;0x2060;Ikana Canyon - Sakon Hideout;0x9000;Ikana Canyon -> Beneath the Well;69.2355
+1;0x13;0x2040;Ikana Canyon - Owl Statue - Warp Owl;0x3410;Ikana Canyon -> Ikana Castle Exterior;12.3906
+1;0x13;0x2040;Ikana Canyon - Owl Statue - Warp Owl;0x4640;Ikana Canyon -> Ikana Fairy Fountain;13.4067
+1;0x13;0x2040;Ikana Canyon - Owl Statue - Warp Owl;0x9000;Ikana Canyon -> Beneath the Well;25.0349
+1;0x13;0x2040;Ikana Canyon - Owl Statue - Warp Owl;0xaa00;Ikana Canyon -> Stone Tower;21.078
+1;0x13;0x2040;Ikana Canyon - Owl Statue - Warp Owl;0x20e0;Ikana Canyon -> Spring Water Cave;18.9157
+1;0x13;0x2040;Ikana Canyon - Owl Statue - Warp Owl;0x9c00;Ikana Canyon -> Ghost Hut;22.9578
+1;0x51;0x9c00;Ghost Hut - Ikana Canyon;0x2010;Ghost Hut -> Ikana Canyon;18.1598
+1;0x13;0x2010;Ikana Canyon - Ghost Hut;0x9c00;Ikana Canyon -> Ghost Hut;3.1557
+1;0x51;0x9c00;Ghost Hut - Ikana Canyon;0x2010;Ghost Hut -> Ikana Canyon;2.93726
+1;0x13;0x2010;Ikana Canyon - Ghost Hut;0x1000c;Ikana Canyon -> Open Grotto;24.0473
+1;0x8a;0x1000c;Open Grotto - Ikana Canyon;0x1010c;Open Grotto -> Ikana Canyon;2.60239
+1;0x13;0x1010c;Ikana Canyon - Open Grotto;0x20e0;Ikana Canyon -> Spring Water Cave;61.6011
+1;0x99;0x20e0;Spring Water Cave - Ikana Canyon;0x20d0;Spring Water Cave -> Ikana Canyon;3.2619
+1;0x13;0x20d0;Ikana Canyon - Spring Water Cave;0x9c00;Ikana Canyon -> Ghost Hut;7.30995
+1;0x51;0x9c00;Ghost Hut - Ikana Canyon;0x2010;Ghost Hut -> Ikana Canyon;2.95092
+1;0x13;0x2010;Ikana Canyon - Ghost Hut;0x20e0;Ikana Canyon -> Spring Water Cave;7.13803
+1;0x99;0x20e0;Spring Water Cave - Ikana Canyon;0x20d0;Spring Water Cave -> Ikana Canyon;3.24286
+1;0x13;0x20d0;Ikana Canyon - Spring Water Cave;0x20e0;Ikana Canyon -> Spring Water Cave;3.48835
+1;0x99;0x20e0;Spring Water Cave - Ikana Canyon;0x20d0;Spring Water Cave -> Ikana Canyon;3.24921
+1;0x13;0x20d0;Ikana Canyon - Spring Water Cave;0x1000c;Ikana Canyon -> Open Grotto;27.4386
+1;0x8a;0x1000c;Open Grotto - Ikana Canyon;0x1010c;Open Grotto -> Ikana Canyon;2.61346
+1;0x13;0x1010c;Ikana Canyon - Open Grotto;0x9c00;Ikana Canyon -> Ghost Hut;60.5785
+1;0x51;0x9c00;Ghost Hut - Ikana Canyon;0x2010;Ghost Hut -> Ikana Canyon;2.94724
+1;0x13;0x2010;Ikana Canyon - Ghost Hut;0xba00;Ikana Canyon -> Shrine;27.3145
+1;0x60;0xba00;Shrine - Ikana Canyon;0x20c0;Secret Shrine -> Ikana Canyon;2.95136
+1;0x13;0x20c0;Ikana Canyon - Secret Shrine;0x9c00;Ikana Canyon -> Ghost Hut;62.7213
+1;0x51;0x9c00;Ghost Hut - Ikana Canyon;0x2010;Ghost Hut -> Ikana Canyon;3.52311
+1;0x13;0x2010;Ikana Canyon - Ghost Hut;0xa010;Ikana Canyon -> Road to Ikana;28.308
+1;0x53;0xa010;Road to Ikana - Ikana Canyon;0x2000;Road to Ikana -> Ikana Canyon;2.88321
+1;0x13;0x2000;Ikana Canyon - Road to Ikana;0x9c00;Ikana Canyon -> Ghost Hut;50.5881
+1;0x51;0x9c00;Ghost Hut - Ikana Canyon;0x2010;Ghost Hut -> Ikana Canyon;3.08295
+1;0x13;0x2010;Ikana Canyon - Ghost Hut;0x9800;Ikana Canyon -> Sakon Hideout;45.1289
+1;0x4f;0x9800;Sakon Hideout - Ikana Canyon;0x2060;Sakon Hideout -> Ikana Canyon;2.74861
+1;0x13;0x2060;Ikana Canyon - Sakon Hideout;0x9c00;Ikana Canyon -> Ghost Hut;61.585
+1;0x51;0x9c00;Ghost Hut - Ikana Canyon;0x2010;Ghost Hut -> Ikana Canyon;2.94591
+1;0x13;0x2010;Ikana Canyon - Ghost Hut;0x8490;Waterfalls -> Southern Swamp - Waterfalls;32.221
+1;0x13;0x2010;Ikana Canyon - Ghost Hut;0x20e0;Ikana Canyon -> Spring Water Cave;12.3066
+1;0x99;0x20e0;Spring Water Cave - Ikana Canyon;0x20d0;Spring Water Cave -> Ikana Canyon;3.63248
+1;0x13;0x20d0;Ikana Canyon - Spring Water Cave;0x9000;Ikana Canyon -> Beneath the Well;17.1098
+1;0x13;0x20d0;Ikana Canyon - Spring Water Cave;0xa010;Ikana Canyon -> Road to Ikana;30.2453
+1;0x53;0xa010;Road to Ikana - Ikana Canyon;0x2000;Road to Ikana -> Ikana Canyon;2.92993
+1;0x13;0x2000;Ikana Canyon - Road to Ikana;0x20e0;Ikana Canyon -> Spring Water Cave;46.1142
+1;0x99;0x20e0;Spring Water Cave - Ikana Canyon;0x20d0;Spring Water Cave -> Ikana Canyon;3.30486
+1;0x13;0x20d0;Ikana Canyon - Spring Water Cave;0x9800;Ikana Canyon -> Sakon Hideout;45.1707
+1;0x4f;0x9800;Sakon Hideout - Ikana Canyon;0x2060;Sakon Hideout -> Ikana Canyon;3.21283
+1;0x13;0x2060;Ikana Canyon - Sakon Hideout;0x20e0;Ikana Canyon -> Spring Water Cave;57.6095
+1;0x99;0x20e0;Spring Water Cave - Ikana Canyon;0x20d0;Spring Water Cave -> Ikana Canyon;3.45678
+1;0x13;0x20d0;Ikana Canyon - Spring Water Cave;0x1000c;Ikana Canyon -> Open Grotto;27.1232
+1;0x13;0x20d0;Ikana Canyon - Spring Water Cave;0xba00;Ikana Canyon -> Shrine;29.7974
+1;0x60;0xba00;Shrine - Ikana Canyon;0x20c0;Secret Shrine -> Ikana Canyon;3.38709
+1;0x13;0x20c0;Ikana Canyon - Secret Shrine;0x20e0;Ikana Canyon -> Spring Water Cave;62.754
+1;0x99;0x20e0;Spring Water Cave - Ikana Canyon;0x20d0;Spring Water Cave -> Ikana Canyon;3.29612
+1;0x13;0x20d0;Ikana Canyon - Spring Water Cave;0x8490;Waterfalls -> Southern Swamp - Waterfalls;30.611
+1;0x13;0x20d0;Ikana Canyon - Spring Water Cave;0x1000c;Ikana Canyon -> Open Grotto;28.2168
+1;0x8a;0x1000c;Open Grotto - Ikana Canyon;0x1010c;Open Grotto -> Ikana Canyon;2.61528
+1;0x13;0x1010c;Ikana Canyon - Open Grotto;0x9800;Ikana Canyon -> Sakon Hideout;36.0567
+1;0x4f;0x9800;Sakon Hideout - Ikana Canyon;0x2060;Sakon Hideout -> Ikana Canyon;2.93641
+1;0x13;0x2060;Ikana Canyon - Sakon Hideout;0x1000c;Ikana Canyon -> Open Grotto;33.8285
+1;0x8a;0x1000c;Open Grotto - Ikana Canyon;0x1010c;Open Grotto -> Ikana Canyon;2.61023
+1;0x13;0x1010c;Ikana Canyon - Open Grotto;0xa010;Ikana Canyon -> Road to Ikana;22.3788
+1;0x53;0xa010;Road to Ikana - Ikana Canyon;0x2000;Road to Ikana -> Ikana Canyon;4.40369
+1;0x13;0x2000;Ikana Canyon - Road to Ikana;0x1000c;Ikana Canyon -> Open Grotto;21.2996
+1;0x8a;0x1000c;Open Grotto - Ikana Canyon;0x1010c;Open Grotto -> Ikana Canyon;2.61495
+1;0x13;0x1010c;Ikana Canyon - Open Grotto;0xba00;Ikana Canyon -> Shrine;7.06855
+1;0x60;0xba00;Shrine - Ikana Canyon;0x20c0;Secret Shrine -> Ikana Canyon;3.86915
+1;0x13;0x20c0;Ikana Canyon - Secret Shrine;0xa010;Ikana Canyon -> Road to Ikana;21.5854
+1;0x53;0xa010;Road to Ikana - Ikana Canyon;0x2000;Road to Ikana -> Ikana Canyon;2.87742
+1;0x13;0x2000;Ikana Canyon - Road to Ikana;0xba00;Ikana Canyon -> Shrine;22.6686
+1;0x60;0xba00;Shrine - Ikana Canyon;0x20c0;Secret Shrine -> Ikana Canyon;3.39992
+1;0x13;0x20c0;Ikana Canyon - Secret Shrine;0x8490;Waterfalls -> Southern Swamp - Waterfalls;24.9179
+1;0x13;0x20c0;Ikana Canyon - Secret Shrine;0x9800;Ikana Canyon -> Sakon Hideout;39.5573
+1;0x4f;0x9800;Sakon Hideout - Ikana Canyon;0x2060;Sakon Hideout -> Ikana Canyon;3.3349
+1;0x13;0x2060;Ikana Canyon - Sakon Hideout;0xa010;Ikana Canyon -> Road to Ikana;19.6462
+1;0x53;0xa010;Road to Ikana - Ikana Canyon;0x2000;Road to Ikana -> Ikana Canyon;2.8783
+1;0x13;0x2000;Ikana Canyon - Road to Ikana;0x9800;Ikana Canyon -> Sakon Hideout;23.4329
+1;0x4f;0x9800;Sakon Hideout - Ikana Canyon;0x2060;Sakon Hideout -> Ikana Canyon;2.95522
+1;0x13;0x2060;Ikana Canyon - Sakon Hideout;0xba00;Ikana Canyon -> Shrine;31.5278
+1;0x13;0x2060;Ikana Canyon - Sakon Hideout;0x8490;Waterfalls -> Southern Swamp - Waterfalls;6.92346
+1;0x13;0x2060;Ikana Canyon - Sakon Hideout;0xa010;Ikana Canyon -> Road to Ikana;27.9273
+1;0x53;0xa010;Road to Ikana - Ikana Canyon;0x2000;Road to Ikana -> Ikana Canyon;2.93852
+1;0x13;0x2000;Ikana Canyon - Road to Ikana;0x8490;Waterfalls -> Southern Swamp - Waterfalls;21.4583
+1;0x13;0x2060;Ikana Canyon - Sakon Hideout;0x8490;Waterfalls -> Southern Swamp - Waterfalls;5.59409
+1;0x45;0x8490;Southern Swamp - Waterfalls - Waterfalls;0xaa30;Warp Owl -> Stone Tower - Owl Statue;7642.24
+1;0x58;0xaa30;Stone Tower - Owl Statue - Warp Owl;0x2600;Stone Tower -> Stone Tower Temple;47.0088
+1;0x16;0x2600;Stone Tower Temple - Stone Tower;0xaa20;Stone Tower Temple -> Stone Tower;4.24689
+1;0x58;0xaa20;Stone Tower - Stone Tower Temple;0x2600;Stone Tower -> Stone Tower Temple;2.84918
+1;0x16;0x2600;Stone Tower Temple - Stone Tower;0xaa20;Stone Tower Temple -> Stone Tower;3.66268
+1;0x58;0xaa20;Stone Tower - Stone Tower Temple;0x2030;Stone Tower -> Ikana Canyon;13.7853
+1;0x13;0x2030;Ikana Canyon - Stone Tower;0xaa00;Ikana Canyon -> Stone Tower;23.2899
+1;0x58;0xaa30;Stone Tower - Owl Statue - Warp Owl;0x2030;Stone Tower -> Ikana Canyon;16.9791
+1;0x13;0x2030;Ikana Canyon - Stone Tower;0xaa00;Ikana Canyon -> Stone Tower;5.01788
+1;0x58;0xaa00;Stone Tower - Ikana Canyon;0x2600;Stone Tower -> Stone Tower Temple;252.334
+1;0x16;0x2600;Stone Tower Temple - Stone Tower;0xaa20;Stone Tower Temple -> Stone Tower;32.2424
+1;0x58;0xaa20;Stone Tower - Stone Tower Temple;0xac00;Stone Tower -> Stone Tower Inverted;76.7462
+1;0x59;0xac00;Stone Tower Inverted - Stone Tower;0x2a00;Stone Tower Inverted -> Stone Tower Temple Inverted;11.9825
+1;0x18;0x2a00;Stone Tower Temple Inverted - Stone Tower Inverted;0xac10;Stone Tower Temple Inverted -> Stone Tower Inverted;13.6248
+1;0x59;0xac10;Stone Tower Inverted - Stone Tower Temple Inverted;0x2a00;Stone Tower Inverted -> Stone Tower Temple Inverted;2.67541
+1;0x18;0x2a00;Stone Tower Temple Inverted - Stone Tower Inverted;0xac10;Stone Tower Temple Inverted -> Stone Tower Inverted;73.8003
+1;0x59;0xac10;Stone Tower Inverted - Stone Tower Temple Inverted;0x2a00;Stone Tower Inverted -> Stone Tower Temple Inverted;2.80637
+1;0x18;0x2a00;Stone Tower Temple Inverted - Stone Tower Inverted;0x2a100;Twinmold's Lair -> Stone Tower Temple Inverted -> Twinmold's Lair;52.9858
+1;0x36;0x2a10;Twinmold's Lair - Stone Tower Temple Inverted - Stone Tower Temple Inverted;0x66000;Boss Arena -> Twinmold's Lair -> Boss Arena;8.40345
+1;0x36;0x6600;Boss Arena - Twinmold's Lair - Twinmold's Lair;0x20700;Warp Boss -> Twinmold's Lair -> Warp Boss;6.98812
+1;0x18;0x2a00;Stone Tower Temple Inverted - Stone Tower Inverted;0xac10;Stone Tower Temple Inverted -> Stone Tower Inverted;5.53879
+1;0x59;0xac10;Stone Tower Inverted - Stone Tower Temple Inverted;0xaa10;Stone Tower Inverted -> Stone Tower;14.0316
+1;0x58;0xaa10;Stone Tower - Stone Tower Inverted;0x2600;Stone Tower -> Stone Tower Temple;35.7427
+1;0x36;0x6600;Boss Arena - Twinmold's Lair - Twinmold's Lair;0x66000;Boss Arena -> Twinmold's Lair -> Boss Arena;-1
+1;0x36;0x2a10;Twinmold's Lair - Stone Tower Temple Inverted - Stone Tower Temple Inverted;0x20700;Warp Boss -> Twinmold's Lair -> Warp Boss;-1
+1;0x96;0xae70;Mountain Village - Warp Goht - Warp Goht;0x3210;Mountain Village -> Path to Mountain Village;11.9234
+1;0x96;0xae70;Mountain Village - Warp Goht - Warp Goht;0x5200;Mountain Village -> Blacksmith;11.3621
+1;0x2c;0x5200;Blacksmith - Mountain Village;0x9a10;Blacksmith -> Mountain Village;3.29259
+1;0x96;0x9a10;Mountain Village - Blacksmith;0x5200;Mountain Village -> Blacksmith;2.83526
+1;0x96;0xae70;Mountain Village - Warp Goht - Warp Goht;0xb230;Warp Owl -> Snowhead - Owl Statue;22.2248
+1;0x5c;0xb230;Snowhead - Owl Statue - Warp Owl;0x3c00;Snowhead -> Snowhead Temple;28.8504
+1;0x21;0x3c00;Snowhead Temple - Snowhead;0x8200;Snowhead Temple -> Goht's Lair - Snowhead Temple;4.10499
+1;0x44;0x8200;Goht's Lair - Snowhead Temple - Snowhead Temple;0xae700;Warp Boss -> Goht's Lair -> Warp Boss;8.73204
+1;0x96;0xae70;Mountain Village - Warp Goht - Warp Goht;0xb000;Mountain Village -> Path to Snowhead;17.0535
+1;0x96;0xae70;Mountain Village - Warp Goht - Warp Goht;0xb400;Mountain Village -> Twin Islands;18.6527
+1;0x96;0x10105;Mountain Village Spring - Tunnel Open Grotto;0x9600;Mountain Village -> Goron Graveyard;9.77878
+1;0x96;0xae70;Mountain Village - Warp Goht - Warp Goht;0x10005;Mountain Village Spring -> Tunnel Open Grotto;35.9016
+1;0x96;0xae70;Mountain Village - Warp Goht - Warp Goht;0x9600;Mountain Village -> Goron Graveyard;58.7262
+1;0x4e;0x9600;Goron Graveyard - Mountain Village;0x9a30;Goron Graveyard -> Mountain Village;13.6581
+1;0x96;0x9a30;Mountain Village - Goron Graveyard;0x9600;Mountain Village -> Goron Graveyard;4.03669
+1;0x4e;0x9600;Goron Graveyard - Mountain Village;0x9a30;Goron Graveyard -> Mountain Village;3.57655
+1;0x96;0x9a30;Mountain Village - Goron Graveyard;0x10005;Mountain Village Spring -> Tunnel Open Grotto;9.11867
+1;0x8f;0x10005;Tunnel Open Grotto - Mountain Village Spring;0x10105;Tunnel Open Grotto -> Mountain Village Spring;2.46189
+1;0x96;0x10105;Mountain Village Spring - Tunnel Open Grotto;0x9600;Mountain Village -> Goron Graveyard;10.6564
+1;0x4e;0x9600;Goron Graveyard - Mountain Village;0x9a30;Goron Graveyard -> Mountain Village;12.9471
+1;0x96;0x9a30;Mountain Village - Goron Graveyard;0xb400;Mountain Village -> Twin Islands;20.5535
+1;0x97;0xb400;Twin Islands - Mountain Village;0xae20;Twin Islands -> Mountain Village;3.74302
+1;0x96;0x9a20;Mountain Village - Twin Islands;0x9600;Mountain Village -> Goron Graveyard;55.0687
+1;0x4e;0x9600;Goron Graveyard - Mountain Village;0x9a30;Goron Graveyard -> Mountain Village;2.65929
+1;0x96;0x9a30;Mountain Village - Goron Graveyard;0xb000;Mountain Village -> Path to Snowhead;20.1067
+1;0x5b;0xb000;Path to Snowhead - Mountain Village;0xae40;Path to Snowhead -> Mountain Village;3.8134
+1;0x96;0x9a40;Mountain Village - Path to Snowhead;0x9600;Mountain Village -> Goron Graveyard;59.1425
+1;0x4e;0x9600;Goron Graveyard - Mountain Village;0x9a30;Goron Graveyard -> Mountain Village;37.668
+1;0x96;0x9a30;Mountain Village - Goron Graveyard;0x3210;Mountain Village -> Path to Mountain Village;21.9418
+1;0x1c;0x3210;Path to Mountain Village - Mountain Village;0x9a60;Path to Mountain Village -> Mountain Village;3.18682
+1;0x96;0x9a60;Mountain Village - Path to Mountain Village;0x9600;Mountain Village -> Goron Graveyard;58.0029
+1;0x4e;0x9600;Goron Graveyard - Mountain Village;0x9a30;Goron Graveyard -> Mountain Village;2.67215
+1;0x96;0x9a30;Mountain Village - Goron Graveyard;0x5200;Mountain Village -> Blacksmith;17.8946
+1;0x2c;0x5200;Blacksmith - Mountain Village;0x9a10;Blacksmith -> Mountain Village;2.94003
+1;0x96;0x9a10;Mountain Village - Blacksmith;0x9600;Mountain Village -> Goron Graveyard;54.0449
+1;0x4e;0x9600;Goron Graveyard - Mountain Village;0x9a30;Goron Graveyard -> Mountain Village;2.66436
+1;0x96;0x9a30;Mountain Village - Goron Graveyard;0x10005;Mountain Village Spring -> Tunnel Open Grotto;11.5857
+1;0x8f;0x10005;Tunnel Open Grotto - Mountain Village Spring;0x10105;Tunnel Open Grotto -> Mountain Village Spring;2.64512
+1;0x96;0x10105;Mountain Village Spring - Tunnel Open Grotto;0x10005;Mountain Village Spring -> Tunnel Open Grotto;3.29751
+1;0x8f;0x10005;Tunnel Open Grotto - Mountain Village Spring;0x10105;Tunnel Open Grotto -> Mountain Village Spring;4.90638
+1;0x96;0x10105;Mountain Village Spring - Tunnel Open Grotto;0xb400;Mountain Village -> Twin Islands;15.3888
+1;0x97;0xb400;Twin Islands - Mountain Village;0xae20;Twin Islands -> Mountain Village;4.04511
+1;0x96;0x9a20;Mountain Village - Twin Islands;0xae00;Open Grotto -> Mountain Village;6.81871
+1;0x96;0x9a20;Mountain Village - Twin Islands;0xb400;Mountain Village -> Twin Islands;2.84527
+1;0x97;0xb400;Twin Islands - Mountain Village;0xae20;Twin Islands -> Mountain Village;4.44137
+1;0x96;0x9a20;Mountain Village - Twin Islands;0xb400;Mountain Village -> Twin Islands;3.34096
+1;0x97;0xb400;Twin Islands - Mountain Village;0xae20;Twin Islands -> Mountain Village;4.46871
+1;0x96;0x9a20;Mountain Village - Twin Islands;0x10005;Mountain Village Spring -> Tunnel Open Grotto;18.396
+1;0x8f;0x10005;Tunnel Open Grotto - Mountain Village Spring;0x10105;Tunnel Open Grotto -> Mountain Village Spring;3.48928
+1;0x96;0x10105;Mountain Village Spring - Tunnel Open Grotto;0x5200;Mountain Village -> Blacksmith;17.8672
+1;0x2c;0x5200;Blacksmith - Mountain Village;0x9a10;Blacksmith -> Mountain Village;3.52854
+1;0x96;0x9a10;Mountain Village - Blacksmith;0x10005;Mountain Village Spring -> Tunnel Open Grotto;20.2772
+1;0x8f;0x10005;Tunnel Open Grotto - Mountain Village Spring;0x10105;Tunnel Open Grotto -> Mountain Village Spring;2.44727
+1;0x96;0x10105;Mountain Village Spring - Tunnel Open Grotto;0x3210;Mountain Village -> Path to Mountain Village;15.2624
+1;0x1c;0x3210;Path to Mountain Village - Mountain Village;0x9a60;Path to Mountain Village -> Mountain Village;3.42756
+1;0x96;0x9a60;Mountain Village - Path to Mountain Village;0x10005;Mountain Village Spring -> Tunnel Open Grotto;21.5683
+1;0x96;0x10105;Mountain Village Spring - Tunnel Open Grotto;0xb000;Mountain Village -> Path to Snowhead;16.8979
+1;0x5b;0xb000;Path to Snowhead - Mountain Village;0xae40;Path to Snowhead -> Mountain Village;3.81379
+1;0x96;0x9a40;Mountain Village - Path to Snowhead;0x10005;Mountain Village Spring -> Tunnel Open Grotto;24.5949
+1;0x8f;0x10005;Tunnel Open Grotto - Mountain Village Spring;0x10105;Tunnel Open Grotto -> Mountain Village Spring;3.65201
+1;0x96;0x10105;Mountain Village Spring - Tunnel Open Grotto;0x9a80;Warp Owl -> Mountain Village - Owl Statue;37.4513
+1;0x96;0x9a80;Mountain Village - Owl Statue - Warp Owl;0x9600;Mountain Village -> Goron Graveyard;52.555
+1;0x96;0x9a80;Mountain Village - Owl Statue - Warp Owl;0xb000;Mountain Village -> Path to Snowhead;8.11465
+1;0x96;0x9a80;Mountain Village - Owl Statue - Warp Owl;0x3210;Mountain Village -> Path to Mountain Village;12.2661
+1;0x96;0x9a80;Mountain Village - Owl Statue - Warp Owl;0x10005;Mountain Village Spring -> Tunnel Open Grotto;22.1631
+1;0x96;0x9a80;Mountain Village - Owl Statue - Warp Owl;0x3210;Mountain Village -> Path to Mountain Village;12.0546
+1;0x96;0x9a80;Mountain Village - Owl Statue - Warp Owl;0xb400;Mountain Village -> Twin Islands;15.167
+1;0x96;0x9a80;Mountain Village - Owl Statue - Warp Owl;0x5200;Mountain Village -> Blacksmith;8.7439
+1;0x2c;0x5200;Blacksmith - Mountain Village;0x9a10;Blacksmith -> Mountain Village;2.94066
+1;0x96;0x9a10;Mountain Village - Blacksmith;0xb000;Mountain Village -> Path to Snowhead;12.8069
+1;0x5b;0xb000;Path to Snowhead - Mountain Village;0xae40;Path to Snowhead -> Mountain Village;3.5251
+1;0x96;0x9a40;Mountain Village - Path to Snowhead;0x5200;Mountain Village -> Blacksmith;12.726
+1;0x2c;0x5200;Blacksmith - Mountain Village;0x9a10;Blacksmith -> Mountain Village;12.1286
+1;0x96;0x9a10;Mountain Village - Blacksmith;0xb400;Mountain Village -> Twin Islands;12.2715
+1;0x97;0xb400;Twin Islands - Mountain Village;0xae20;Twin Islands -> Mountain Village;3.88482
+1;0x96;0x9a20;Mountain Village - Twin Islands;0x5200;Mountain Village -> Blacksmith;13.8322
+1;0x2c;0x5200;Blacksmith - Mountain Village;0x9a10;Blacksmith -> Mountain Village;3.22476
+1;0x96;0x9a10;Mountain Village - Blacksmith;0xb400;Mountain Village -> Twin Islands;15.7071
+1;0x97;0xb400;Twin Islands - Mountain Village;0xae20;Twin Islands -> Mountain Village;3.83064
+1;0x96;0x9a20;Mountain Village - Twin Islands;0xb000;Mountain Village -> Path to Snowhead;20.3605
+1;0x5b;0xb000;Path to Snowhead - Mountain Village;0xae40;Path to Snowhead -> Mountain Village;3.61258
+1;0x96;0x9a40;Mountain Village - Path to Snowhead;0xb400;Mountain Village -> Twin Islands;20.066
+1;0x97;0xb400;Twin Islands - Mountain Village;0xae20;Twin Islands -> Mountain Village;3.80084
+1;0x96;0x9a20;Mountain Village - Twin Islands;0x3210;Mountain Village -> Path to Mountain Village;13.3817
+1;0x1c;0x3210;Path to Mountain Village - Mountain Village;0x9a60;Path to Mountain Village -> Mountain Village;3.18314
+1;0x96;0x9a60;Mountain Village - Path to Mountain Village;0xb400;Mountain Village -> Twin Islands;13.2439
+1;0x97;0xb400;Twin Islands - Mountain Village;0xae20;Twin Islands -> Mountain Village;3.57632
+1;0x96;0x9a20;Mountain Village - Twin Islands;0xb000;Mountain Village -> Path to Snowhead;20.6085
+1;0x5b;0xb000;Path to Snowhead - Mountain Village;0xae40;Path to Snowhead -> Mountain Village;3.69727
+1;0x96;0x9a40;Mountain Village - Path to Snowhead;0x3210;Mountain Village -> Path to Mountain Village;15.8959
+1;0x1c;0x3210;Path to Mountain Village - Mountain Village;0x9a60;Path to Mountain Village -> Mountain Village;3.18474
+1;0x96;0x9a60;Mountain Village - Path to Mountain Village;0xb000;Mountain Village -> Path to Snowhead;15.1537
+1;0x5b;0xb000;Path to Snowhead - Mountain Village;0xae40;Path to Snowhead -> Mountain Village;3.61628
+1;0x96;0x9a40;Mountain Village - Path to Snowhead;0xb000;Mountain Village -> Path to Snowhead;12.3182
+1;0x5b;0xb000;Path to Snowhead - Mountain Village;0xae40;Path to Snowhead -> Mountain Village;3.71284
+1;0x96;0x9a40;Mountain Village - Path to Snowhead;0xb000;Mountain Village -> Path to Snowhead;2.82799
+1;0x5b;0xb000;Path to Snowhead - Mountain Village;0xae40;Path to Snowhead -> Mountain Village;3.61275
+1;0x96;0x9a40;Mountain Village - Path to Snowhead;0x3210;Mountain Village -> Path to Mountain Village;15.9547
+1;0x1c;0x3210;Path to Mountain Village - Mountain Village;0x9a60;Path to Mountain Village -> Mountain Village;3.18269
+1;0x96;0x9a60;Mountain Village - Path to Mountain Village;0x5200;Mountain Village -> Blacksmith;9.05219
+1;0x2c;0x5200;Blacksmith - Mountain Village;0x9a10;Blacksmith -> Mountain Village;2.85784
+1;0x96;0x9a10;Mountain Village - Blacksmith;0x10005;Mountain Village Spring -> Tunnel Open Grotto;20.5654
+1;0x96;0x9a40;Mountain Village - Path to Snowhead;0x5200;Mountain Village -> Blacksmith;12.7473
+1;0x2c;0x5200;Blacksmith - Mountain Village;0x9a10;Blacksmith -> Mountain Village;2.82746
+1;0x96;0x9a10;Mountain Village - Blacksmith;0x3210;Mountain Village -> Path to Mountain Village;8.39723
+1;0x1c;0x3210;Path to Mountain Village - Mountain Village;0x9a60;Path to Mountain Village -> Mountain Village;3.19032
+1;0x96;0x9a60;Mountain Village - Path to Mountain Village;0x3210;Mountain Village -> Path to Mountain Village;7.7695
+1;0x1c;0x3210;Path to Mountain Village - Mountain Village;0x9a60;Path to Mountain Village -> Mountain Village;3.17243
+1;0x96;0x9a60;Mountain Village - Path to Mountain Village;0x3210;Mountain Village -> Path to Mountain Village;3.37678
+1;0x96;0x9a00;Mountain Village Winter - Open Grotto;0x10005;Mountain Village Spring -> Tunnel Open Grotto;-1
+1;0x96;0x9a00;Mountain Village Winter - Open Grotto;0x3210;Mountain Village -> Path to Mountain Village;10.39723
+1;0x96;0x9a00;Mountain Village Winter - Open Grotto;0xb400;Mountain Village -> Twin Islands;10.2715
+1;0x96;0x9a00;Mountain Village Winter - Open Grotto;0xb000;Mountain Village -> Path to Snowhead;10.8069
+1;0x96;0x9a00;Mountain Village Winter - Open Grotto;0x9600;Mountain Village -> Goron Graveyard;50.0449
+1;0x96;0x9a00;Mountain Village Winter - Open Grotto;0x5200;Mountain Village -> Blacksmith;6.7439
+1;0x96;0x9a60;Mountain Village - Path to Mountain Village;0x3210;Mountain Village -> Path to Mountain Village;53.9245
+1;0x1c;0x3210;Path to Mountain Village - Mountain Village;0x5430;Path to Mountain Village -> Termina Field;24.6221
+1;0x2d;0x5430;Termina Field - Path to Mountain Village;0x3200;Termina Field -> Path to Mountain Village;6.10311
+1;0x1c;0x3200;Path to Mountain Village - Termina Field;0x9a60;Path to Mountain Village -> Mountain Village;29.6897
+1;0x96;0x9a60;Mountain Village - Path to Mountain Village;0xb000;Mountain Village -> Path to Snowhead;16.6914
+1;0x5b;0xb000;Path to Snowhead - Mountain Village;0xb200;Path to Snowhead -> Snowhead;19.4491
+1;0x5c;0xb200;Snowhead - Path to Snowhead;0xb010;Snowhead -> Path to Snowhead;14.6764
+1;0x5b;0xb000;Path to Snowhead - Mountain Village;0x10007;Path To Snowhead -> Tree Grotto;20.9596
+1;0x8e;0x10007;Tree Grotto - Path To Snowhead;0x10107;Tree Grotto -> Path To Snowhead;4.08177
+1;0x5b;0x10107;Path To Snowhead - Tree Grotto;0x9a40;Path to Snowhead -> Mountain Village;16.8127
+1;0x5b;0x10107;Path To Snowhead - Tree Grotto;0x10007;Path To Snowhead -> Tree Grotto;4.81392
+1;0x8e;0x10007;Tree Grotto - Path To Snowhead;0x10107;Tree Grotto -> Path To Snowhead;4.2134
+1;0x5b;0x10107;Path To Snowhead - Tree Grotto;0xb200;Path to Snowhead -> Snowhead;8.06861
+1;0x5c;0xb200;Snowhead - Path to Snowhead;0xb010;Snowhead -> Path to Snowhead;5.13314
+1;0x5b;0xb000;Path to Snowhead - Mountain Village;0x9a40;Path to Snowhead -> Mountain Village;3.54268
+1;0x96;0x9a40;Mountain Village - Path to Snowhead;0xb000;Mountain Village -> Path to Snowhead;61.0761
+1;0x5b;0xb000;Path to Snowhead - Mountain Village;0xb200;Path to Snowhead -> Snowhead;18.7479
+1;0x5c;0xb200;Snowhead - Path to Snowhead;0xb010;Snowhead -> Path to Snowhead;6.62055
+1;0x5b;0xb010;Path to Snowhead - Snowhead;0xb200;Path to Snowhead -> Snowhead;3.6696
+1;0x5c;0xb200;Snowhead - Path to Snowhead;0xb010;Snowhead -> Path to Snowhead;9.22868
+1;0x5b;0xb010;Path to Snowhead - Snowhead;0x10007;Path To Snowhead -> Tree Grotto;11.3188
+1;0x5b;0xb010;Path to Snowhead - Snowhead;0x9a40;Path to Snowhead -> Mountain Village;18.4305
+1;0x5b;0xb010;Path to Snowhead - Snowhead;0xb200;Path to Snowhead -> Snowhead;23.0679
+1;0x5c;0xb200;Snowhead - Path to Snowhead;0x4620;Snowhead -> Snowhead Fairy Fountain;17.2481
+1;0x1;0x4620;Snowhead Fairy Fountain - Snowhead;0xb220;Snowhead Fairy Fountain -> Snowhead;3.48141
+1;0x5c;0xb220;Snowhead - Snowhead Fairy Fountain;0x4620;Snowhead -> Snowhead Fairy Fountain;3.28822
+1;0x1;0x4620;Snowhead Fairy Fountain - Snowhead;0xb220;Snowhead Fairy Fountain -> Snowhead;5.54027
+1;0x5c;0xb220;Snowhead - Snowhead Fairy Fountain;0x4620;Snowhead -> Snowhead Fairy Fountain;3.0444
+1;0x1;0x4620;Snowhead Fairy Fountain - Snowhead;0xb220;Snowhead Fairy Fountain -> Snowhead;2.91107
+1;0x5c;0xb220;Snowhead - Snowhead Fairy Fountain;0x3c00;Snowhead -> Snowhead Temple;20.2562
+1;0x21;0x3c00;Snowhead Temple - Snowhead;0xb210;Snowhead Temple -> Snowhead;4.06288
+1;0x5c;0xb210;Snowhead - Snowhead Temple;0x3c00;Snowhead -> Snowhead Temple;3.1052
+1;0x21;0x3c00;Snowhead Temple - Snowhead;0xb210;Snowhead Temple -> Snowhead;3.27334
+1;0x5c;0xb200;Snowhead - Path to Snowhead;0x3c00;Snowhead -> Snowhead Temple;27.6045
+1;0x21;0x3c00;Snowhead Temple - Snowhead;0xb210;Snowhead Temple -> Snowhead;3.50039
+1;0x5c;0xb210;Snowhead - Snowhead Temple;0x3c00;Snowhead -> Snowhead Temple;14.1653
+1;0x21;0x3c00;Snowhead Temple - Snowhead;0xb210;Snowhead Temple -> Snowhead;3.7891
+1;0x5c;0xb210;Snowhead - Snowhead Temple;0x3c00;Snowhead -> Snowhead Temple;3.3747
+1;0x5c;0xb210;Snowhead - Snowhead Temple;0xb010;Snowhead -> Path to Snowhead;19.6058
+1;0x5c;0xb210;Snowhead - Snowhead Temple;0x4620;Snowhead -> Snowhead Fairy Fountain;7.31575
+1;0x1;0x4620;Snowhead Fairy Fountain - Snowhead;0xb220;Snowhead Fairy Fountain -> Snowhead;7.56077
+1;0x5c;0xb220;Snowhead - Snowhead Fairy Fountain;0xb010;Snowhead -> Path to Snowhead;17.2174
+1;0x5b;0xb010;Path to Snowhead - Snowhead;0xb230;Warp Owl -> Snowhead - Owl Statue;16.4548
+1;0x5c;0xb230;Snowhead - Owl Statue - Warp Owl;0xb010;Snowhead -> Path to Snowhead;4.80404
+1;0x5b;0xb010;Path to Snowhead - Snowhead;0xb230;Warp Owl -> Snowhead - Owl Statue;1.89473
+1;0x5c;0xb230;Snowhead - Owl Statue - Warp Owl;0x4620;Snowhead -> Snowhead Fairy Fountain;17.0103
+1;0x5c;0xb230;Snowhead - Owl Statue - Warp Owl;0xb010;Snowhead -> Path to Snowhead;4.85061
+1;0x5b;0xb010;Path to Snowhead - Snowhead;0x9a40;Path to Snowhead -> Mountain Village;21.1779
+1;0x96;0x9a40;Mountain Village - Path to Snowhead;0xb400;Mountain Village -> Twin Islands;38.8843
+1;0x97;0xb400;Twin Islands - Mountain Village;0xae20;Twin Islands -> Mountain Village;6.63578
+1;0x96;0x9a20;Mountain Village - Twin Islands;0xb400;Mountain Village -> Twin Islands;3.28258
+1;0x97;0xb400;Twin Islands - Mountain Village;0xae20;Twin Islands -> Mountain Village;8.00689
+1;0x97;0xb400;Twin Islands - Mountain Village;0x9a20;Twin Islands -> Mountain Village;3.92493
+1;0x96;0x9a20;Mountain Village - Twin Islands;0xb400;Mountain Village -> Twin Islands;3.42739
+1;0x97;0xb400;Twin Islands - Mountain Village;0x10006;Twin Islands -> Ramp Grotto;12.5767
+1;0x8d;0x10006;Ramp Grotto - Twin Islands;0x10106;Ramp Grotto -> Twin Islands;2.99
+1;0x97;0x10106;Twin Islands - Ramp Grotto;0x10006;Twin Islands -> Ramp Grotto;4.8763
+1;0x8d;0x10006;Ramp Grotto - Twin Islands;0x10106;Ramp Grotto -> Twin Islands;2.61007
+1;0x97;0x10106;Twin Islands - Ramp Grotto;0x9a20;Twin Islands -> Mountain Village;9.22938
+1;0x96;0x9a20;Mountain Village - Twin Islands;0xb400;Mountain Village -> Twin Islands;3.49706
+1;0x97;0xb400;Twin Islands - Mountain Village;0xd000;Twin Islands -> Goron Racetrack;47.1032
+1;0x6b;0xd000;Goron Racetrack - Twin Islands;0xb420;Goron Racetrack -> Twin Islands;3.97984
+1;0x97;0xb420;Twin Islands - Goron Racetrack;0xd000;Twin Islands -> Goron Racetrack;3.47377
+1;0x6b;0xd000;Goron Racetrack - Twin Islands;0xb420;Goron Racetrack -> Twin Islands;3.16296
+1;0x97;0xb420;Twin Islands - Goron Racetrack;0x9a20;Twin Islands -> Mountain Village;11.9544
+1;0x96;0x9a20;Mountain Village - Twin Islands;0xb400;Mountain Village -> Twin Islands;3.57284
+1;0x97;0xb400;Twin Islands - Mountain Village;0xd000;Twin Islands -> Goron Racetrack;11.7151
+1;0x6b;0xd000;Goron Racetrack - Twin Islands;0xd010;Racetrack Alt -> Goron Racetrack;10.8263
+1;0x6b;0xd010;Goron Racetrack - Racetrack Alt;0xb420;Goron Racetrack -> Twin Islands;78.5831
+1;0x97;0xb420;Twin Islands - Goron Racetrack;0xd000;Twin Islands -> Goron Racetrack;5.89863
+1;0x6b;0xd000;Goron Racetrack - Twin Islands;0xb420;Goron Racetrack -> Twin Islands;3.2128
+1;0x97;0xb420;Twin Islands - Goron Racetrack;0x10006;Twin Islands -> Ramp Grotto;11.7167
+1;0x8d;0x10006;Ramp Grotto - Twin Islands;0x10106;Ramp Grotto -> Twin Islands;2.60519
+1;0x97;0x10106;Twin Islands - Ramp Grotto;0xd000;Twin Islands -> Goron Racetrack;9.75411
+1;0x6b;0xd000;Goron Racetrack - Twin Islands;0xb420;Goron Racetrack -> Twin Islands;6.31951
+1;0x97;0xb420;Twin Islands - Goron Racetrack;0x1450;Twin Islands -> Hot Water Grotto;10.9053
+1;0x8c;0x1450;Hot Water Grotto - Twin Islands;0x10117;Hot Water Grotto -> Twin Islands;2.70578
+1;0x97;0x10117;Twin Islands - Hot Water Grotto;0xd000;Twin Islands -> Goron Racetrack;18.7075
+1;0x6b;0xd000;Goron Racetrack - Twin Islands;0xb420;Goron Racetrack -> Twin Islands;3.26345
+1;0x97;0xb420;Twin Islands - Goron Racetrack;0x9400;Twin Islands -> Goron Village;14.2706
+1;0x98;0x9400;Goron Village - Twin Islands;0xb410;Goron Village -> Twin Islands;3.05696
+1;0x97;0xb410;Twin Islands - Goron Village;0xd000;Twin Islands -> Goron Racetrack;28.5822
+1;0x6b;0xd000;Goron Racetrack - Twin Islands;0xb420;Goron Racetrack -> Twin Islands;5.83571
+1;0x97;0xb420;Twin Islands - Goron Racetrack;0x9400;Twin Islands -> Goron Village;14.7087
+1;0x98;0x9400;Goron Village - Twin Islands;0xb410;Goron Village -> Twin Islands;3.05133
+1;0x97;0xb410;Twin Islands - Goron Village;0xd000;Twin Islands -> Goron Racetrack;24.1566
+1;0x6b;0xd000;Goron Racetrack - Twin Islands;0xb420;Goron Racetrack -> Twin Islands;7.2162
+1;0x97;0xb420;Twin Islands - Goron Racetrack;0x10006;Twin Islands -> Ramp Grotto;11.4163
+1;0x8d;0x10006;Ramp Grotto - Twin Islands;0x10106;Ramp Grotto -> Twin Islands;4.36219
+1;0x97;0x10106;Twin Islands - Ramp Grotto;0x1450;Twin Islands -> Hot Water Grotto;15.729
+1;0x8c;0x1450;Hot Water Grotto - Twin Islands;0x10117;Hot Water Grotto -> Twin Islands;3.20706
+1;0x97;0x10117;Twin Islands - Hot Water Grotto;0x10006;Twin Islands -> Ramp Grotto;16.6303
+1;0x8d;0x10006;Ramp Grotto - Twin Islands;0x10106;Ramp Grotto -> Twin Islands;2.60269
+1;0x97;0x10106;Twin Islands - Ramp Grotto;0x9400;Twin Islands -> Goron Village;19.0927
+1;0x98;0x9400;Goron Village - Twin Islands;0xb410;Goron Village -> Twin Islands;3.07309
+1;0x97;0xb410;Twin Islands - Goron Village;0x10006;Twin Islands -> Ramp Grotto;21.02
+1;0x8d;0x10006;Ramp Grotto - Twin Islands;0x10106;Ramp Grotto -> Twin Islands;2.79858
+1;0x97;0x10106;Twin Islands - Ramp Grotto;0x9a20;Twin Islands -> Mountain Village;9.80953
+1;0x96;0x9a20;Mountain Village - Twin Islands;0xb400;Mountain Village -> Twin Islands;3.28533
+1;0x97;0xb400;Twin Islands - Mountain Village;0x1450;Twin Islands -> Hot Water Grotto;16.9305
+1;0x8c;0x1450;Hot Water Grotto - Twin Islands;0x10117;Hot Water Grotto -> Twin Islands;2.70529
+1;0x97;0x10117;Twin Islands - Hot Water Grotto;0x9a20;Twin Islands -> Mountain Village;16.7081
+1;0x96;0x9a20;Mountain Village - Twin Islands;0xb400;Mountain Village -> Twin Islands;3.28912
+1;0x97;0xb400;Twin Islands - Mountain Village;0x9400;Twin Islands -> Goron Village;20.999
+1;0x98;0x9400;Goron Village - Twin Islands;0xb410;Goron Village -> Twin Islands;3.04121
+1;0x97;0xb410;Twin Islands - Goron Village;0x1450;Twin Islands -> Hot Water Grotto;6.74909
+1;0x8c;0x1450;Hot Water Grotto - Twin Islands;0x10117;Hot Water Grotto -> Twin Islands;2.69797
+1;0x97;0x10117;Twin Islands - Hot Water Grotto;0x1450;Twin Islands -> Hot Water Grotto;5.64982
+1;0x8c;0x1450;Hot Water Grotto - Twin Islands;0x10117;Hot Water Grotto -> Twin Islands;2.67624
+1;0x97;0x10117;Twin Islands - Hot Water Grotto;0x1450;Twin Islands -> Hot Water Grotto;3.49004
+1;0x8c;0x1450;Hot Water Grotto - Twin Islands;0x10117;Hot Water Grotto -> Twin Islands;2.70392
+1;0x97;0x10117;Twin Islands - Hot Water Grotto;0x9400;Twin Islands -> Goron Village;11.7916
+1;0x97;0x10106;Twin Islands - Ramp Grotto;0x1450;Twin Islands -> Hot Water Grotto;21.2031
+1;0x8c;0x1450;Hot Water Grotto - Twin Islands;0x10117;Hot Water Grotto -> Twin Islands;2.70751
+1;0x97;0x10117;Twin Islands - Hot Water Grotto;0x9400;Twin Islands -> Goron Village;9.89707
+1;0x98;0x9400;Goron Village - Twin Islands;0xb410;Goron Village -> Twin Islands;3.04366
+1;0x97;0xb410;Twin Islands - Goron Village;0x9a20;Twin Islands -> Mountain Village;20.3769
+1;0x96;0x9a20;Mountain Village - Twin Islands;0xb400;Mountain Village -> Twin Islands;3.29696
+1;0x97;0xb400;Twin Islands - Mountain Village;0x9400;Twin Islands -> Goron Village;20.9566
+1;0x98;0x9400;Goron Village - Twin Islands;0xb410;Goron Village -> Twin Islands;3.06801
+1;0x97;0xb410;Twin Islands - Goron Village;0x9400;Twin Islands -> Goron Village;3.41999
+1;0x98;0x9400;Goron Village - Twin Islands;0x5e00;Goron City -> Goron Shrine;6.76273
+1;0x32;0x5e00;Goron Shrine - Goron City;0x9420;Goron Shrine -> Goron City;4.00926
+1;0x98;0x9420;Goron City - Goron Shrine;0x5e00;Goron City -> Goron Shrine;3.44959
+1;0x32;0x5e00;Goron Shrine - Goron City;0x7400;Goron Shrine -> Goron Shop;7.00703
+1;0x3d;0x7400;Goron Shop - Goron Shrine;0x5e10;Goron Shop -> Goron Shrine;3.93052
+1;0x32;0x5e10;Goron Shrine - Goron Shop;0x7400;Goron Shrine -> Goron Shop;4.0884
+1;0x3d;0x7400;Goron Shop - Goron Shrine;0x5e10;Goron Shop -> Goron Shrine;2.815
+1;0x32;0x5e10;Goron Shrine - Goron Shop;0x9420;Goron Shrine -> Goron City;10.8832
+1;0x98;0x9420;Goron City - Goron Shrine;0xb410;Goron Village -> Twin Islands;9.89536
+1;0x97;0xb410;Twin Islands - Goron Village;0x9400;Twin Islands -> Goron Village;50.2554
+1;0x98;0x9400;Goron Village - Twin Islands;0x1500;Goron City -> Lone Peak Shrine;28.5075
+1;0x72;0x1500;Lone Peak Shrine - Goron City;0x9430;Lone Peak Shrine -> Goron City;3.23855
+1;0x98;0x9430;Goron City - Lone Peak Shrine;0x1500;Goron City -> Lone Peak Shrine;3.84209
+1;0x72;0x1500;Lone Peak Shrine - Goron City;0x9430;Lone Peak Shrine -> Goron City;3.93474
+1;0x98;0x9430;Goron City - Lone Peak Shrine;0x5e00;Goron City -> Goron Shrine;24.7241
+1;0x32;0x5e00;Goron Shrine - Goron City;0x9420;Goron Shrine -> Goron City;4.01844
+1;0x98;0x9420;Goron City - Goron Shrine;0x1500;Goron City -> Lone Peak Shrine;24.083
+1;0x72;0x1500;Lone Peak Shrine - Goron City;0x9430;Lone Peak Shrine -> Goron City;3.56652
+1;0x98;0x9430;Goron City - Lone Peak Shrine;0xb410;Goron Village -> Twin Islands;27.2244

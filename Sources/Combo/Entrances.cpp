@@ -2798,6 +2798,7 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
             case MM_MOUNTAIN_VILLAGE_SPRING:
             {
                 Message.SceneID = MM_MOUNTAIN_VILLAGE;
+                Message.CurrSceneID = MM_MOUNTAIN_VILLAGE;
 
                 switch (Message.EntranceID)
                 {
@@ -2831,6 +2832,11 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                         return MM_TWIN_ISLANDS_FROM_MOUNTAIN_VILLAGE_ENTR;
                     }
 
+                    case MM_MOUNTAIN_VILLAGE_SPRING_FROM_TERMINA_PATH_ENTR:
+                    {
+                        return MM_MOUNTAIN_VILLAGE_FROM_PATH_ENTR;
+                    }
+
                     break;
                 }
 
@@ -2841,7 +2847,8 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
             case MM_TWIN_ISLANDS_WINTER:
             {
                 Message.SceneID = MM_TWIN_ISLANDS;
-                
+                Message.CurrSceneID = MM_TWIN_ISLANDS;
+
                 switch (Message.EntranceID)
                 {
                     case MM_TWIN_ISLANDS_SPRING_FROM_MOUNTAIN_VILLAGE_ENTR:
@@ -2859,6 +2866,16 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                         return MM_TWIN_ISLANDS_FROM_GORON_RACETRACK_ENTR;
                     }
 
+                    case MM_MOUNTAIN_VILLAGE_SPRING_FROM_TWIN_ISLANDS_ENTR:
+                    {
+                        return MM_MOUNTAIN_VILLAGE_FROM_TWIN_ISLANDS_ENTR;
+                    }
+
+                    case MM_GORON_VILLAGE_SPRING_FROM_TWIN_ISLANDS_ENTR:
+                    {
+                        return MM_GORON_VILLAGE_FROM_TWIN_ISLANDS_ENTR;
+                    }
+
                     break;
                 }
                 break;
@@ -2868,6 +2885,7 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
             case MM_GORON_VILLAGE_WINTER:
             {
                 Message.SceneID = MM_GORON_VILLAGE;
+                Message.CurrSceneID = MM_GORON_VILLAGE;
 
                 switch (Message.EntranceID)
                 {
@@ -2890,6 +2908,45 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
                         }
                         return MM_GORON_VILLAGE_FROM_LONE_PEAK_SHRINE_ENTR;
                     }
+
+                    case MM_TWIN_ISLANDS_SPRING_FROM_GORON_VILLAGE_ENTR:
+                    {
+                        return MM_TWIN_ISLANDS_FROM_GORON_VILLAGE_ENTR;
+                    }
+                }
+
+                break;
+            }
+
+            case MM_PATH_MOUNTAIN_VILLAGE:
+            case MM_PATH_MOUNTAIN_VILLAGE_SPRING:
+            {
+                Message.SceneID = MM_PATH_MOUNTAIN_VILLAGE;
+                Message.CurrSceneID = MM_PATH_MOUNTAIN_VILLAGE;
+
+                switch (Message.EntranceID)
+                {
+                    case MM_MOUNTAIN_VILLAGE_SPRING_FROM_TERMINA_PATH_ENTR:
+                    {
+                        return MM_MOUNTAIN_VILLAGE_FROM_PATH_ENTR;
+                    }
+                }
+
+                break;
+            }
+
+            case MM_PATH_SNOWHEAD:
+            case MM_PATH_SNOWHEAD_SPRING:
+            {
+                Message.SceneID = MM_PATH_SNOWHEAD;
+                Message.CurrSceneID = MM_PATH_SNOWHEAD;
+
+                switch (Message.EntranceID)
+                {
+                    case MM_MOUNTAIN_VILLAGE_SPRING_FROM_SNOWHEAD_PATH_ENTR:
+                    {
+                        return MM_MOUNTAIN_VILLAGE_FROM_SNOWHEAD_PATH_ENTR;
+                    }
                 }
 
                 break;
@@ -2899,6 +2956,7 @@ uint32_t EntranceHelper::CheckSpecialCase(EntranceMessage& Message)
             {
                 switch (Message.EntranceID)
                 {
+                    case MM_GORON_VILLAGE_FROM_LONE_PEAK_SHRINE_ENTR:
                     case MM_LONE_PEAK_SHRINE_ENTR:
                     {   // Lone peak. Don't know why this is considered as a grotto...
 

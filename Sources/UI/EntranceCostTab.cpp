@@ -852,7 +852,7 @@ EntranceCostTab::EntranceCostTab(EntranceTab* Parent) : QWidget(Parent)
     SearchRow->addWidget(this->SearchBar, 1);       // search bar takes all remaining space
     SearchRow->addWidget(this->HideMeasuredButton, 0);
 
-    this->MainLayout->addWidget(this->RulesLabel);
+    //this->MainLayout->addWidget(this->RulesLabel);
     this->MainLayout->addLayout(SearchRow);
     this->MainLayout->addWidget(this->Table);
     this->setLayout(this->MainLayout);
