@@ -254,8 +254,13 @@ namespace
     *   every entrance of the start (Game, Scene), and every entrance of the end (Game, Scene)
     *   has a 0-cost edge to VirtSink. Returns true if both virtual nodes got at least one
     *   connection (otherwise no path can exist).
+    *
+    *   When FromEntrance / ToEntrance is not UINT32_MAX the corresponding endpoint is pinned
+    *   to that single entrance (by raw entrance ID, game-independent) instead of the whole
+    *   scene: the route must then depart from / arrive at exactly that entrance.
     */
-    bool AttachVirtualEndpoints(Graph& G, uint8_t StartGame, uint32_t StartScene, uint8_t EndGame, uint32_t EndScene)
+    bool AttachVirtualEndpoints(Graph& G, uint8_t StartGame, uint32_t StartScene, uint8_t EndGame, uint32_t EndScene,
+                                uint32_t FromEntrance, uint32_t ToEntrance)
     {
         bool HasStart = false;
         bool HasEnd   = false;
@@ -266,12 +271,14 @@ namespace
             const uint32_t Scene = Pair.second;
             const uint8_t  Game  = NodeGame(Node);
 
-            if (Game == StartGame && Scene == StartScene)
+            if (Game == StartGame && Scene == StartScene &&
+                (FromEntrance == UINT32_MAX || NodeID(Node) == FromEntrance))
             {
                 G.Adj[VirtSource].push_back({ Node, 0u, false });
                 HasStart = true;
             }
-            if (Game == EndGame && Scene == EndScene)
+            if (Game == EndGame && Scene == EndScene &&
+                (ToEntrance == UINT32_MAX || NodeID(Node) == ToEntrance))
             {
                 G.Adj[Node].push_back({ VirtSink, 0u, false });
                 HasEnd = true;
@@ -591,11 +598,17 @@ namespace
 GPSPathfindResult FindGPSRoutes(int FromGame, uint32_t FromScene,
                                 int ToGame,   uint32_t ToScene,
                                 int MaxRoutes,
-                                bool CrossWarpOot, bool CrossWarpMm)
+                                bool CrossWarpOot, bool CrossWarpMm,
+                                uint32_t FromEntrance, uint32_t ToEntrance)
 {
     GPSPathfindResult Out;
 
-    if (FromGame == ToGame && FromScene == ToScene)
+    // Same scene is only a no-op when the endpoints truly coincide: same scene AND (no specific
+    // entrance pinned on either side, or the same entrance on both). Two DIFFERENT pinned
+    // entrances of one scene are a real query - the player wants to get from one to the other,
+    // which (when they don't connect internally) means leaving the scene and coming back.
+    if (FromGame == ToGame && FromScene == ToScene &&
+        (FromEntrance == UINT32_MAX || ToEntrance == UINT32_MAX || FromEntrance == ToEntrance))
     {
         Out.Status = GPS_SameScene;
         return Out;
@@ -658,7 +671,7 @@ GPSPathfindResult FindGPSRoutes(int FromGame, uint32_t FromScene,
     // Build the unified graph (OoT + MM + cross-game portals + cross-game warp access) and
     // attach virtual endpoints over the (Game, Scene) of start and end.
     Graph G = BuildGraph(CrossWarpOot, CrossWarpMm);
-    if (!AttachVirtualEndpoints(G, (uint8_t)FromGame, FromScene, (uint8_t)ToGame, ToScene))
+    if (!AttachVirtualEndpoints(G, (uint8_t)FromGame, FromScene, (uint8_t)ToGame, ToScene, FromEntrance, ToEntrance))
     {
         Out.Status = GPS_NoPath;
         return Out;

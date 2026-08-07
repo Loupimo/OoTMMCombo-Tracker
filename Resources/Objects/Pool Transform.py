@@ -547,7 +547,7 @@ parse_settings(input_file, output_file)
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
 
 
-input_file = '..\\..\\entrance_costs.csv'
+input_file = '..\\Scenes\\entrance_costs.csv'
 oot_cpp_file = '..\\..\\Sources\\Combo\\OoTEntranceCosts.cpp'
 mm_cpp_file  = '..\\..\\Sources\\Combo\\MMEntranceCosts.cpp'
 parse_entrance_costs(input_file, oot_cpp_file, mm_cpp_file)

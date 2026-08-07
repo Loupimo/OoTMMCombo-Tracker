@@ -82,6 +82,12 @@ typedef struct GPSPathfindResult
 *   @param CrossWarpMm   Mirrors the "Cross-Games MM Song of Soaring" ROM parameter:
 *                        when true, the MM player is assumed to own the OoT warp songs
 *                        (i.e. OoT warp destinations are reachable from MM scenes).
+*   @param FromEntrance  Restrict the departure to this specific entrance of FromScene.
+*                        UINT32_MAX (the default) means "Any": the route may leave the
+*                        start scene through whichever entrance is cheapest.
+*   @param ToEntrance    Restrict the arrival to this specific entrance of ToScene.
+*                        UINT32_MAX (the default) means "Any": the route may reach the
+*                        destination scene at whichever entrance is cheapest.
 *
 *   @return A GPSPathfindResult whose Status describes the outcome and whose Routes
 *           holds the computed paths sorted from cheapest to most expensive (empty
@@ -90,6 +96,8 @@ typedef struct GPSPathfindResult
 GPSPathfindResult FindGPSRoutes(int FromGame, uint32_t FromScene,
                                 int ToGame,   uint32_t ToScene,
                                 int MaxRoutes = 3,
-                                bool CrossWarpOot = true, bool CrossWarpMm = true);
+                                bool CrossWarpOot = true, bool CrossWarpMm = true,
+                                uint32_t FromEntrance = UINT32_MAX,
+                                uint32_t ToEntrance = UINT32_MAX);
 
 #pragma endregion

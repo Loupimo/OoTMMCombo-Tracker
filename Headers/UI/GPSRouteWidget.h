@@ -38,8 +38,10 @@ public:
 
     QLabel*                 Tag = nullptr;
     QComboBox*              FromCombo = nullptr;
+    QComboBox*              FromEntranceCombo = nullptr;    // Departure entrance within FromCombo's scene ("Any" by default).
     QLabel*                 ArrowLabel = nullptr;
     QComboBox*              ToCombo = nullptr;
+    QComboBox*              ToEntranceCombo = nullptr;      // Arrival entrance within ToCombo's scene ("Any" by default).
     QPushButton*            SwapButton = nullptr;
     QLabel*                 Summary = nullptr;
     QLabel*                 Placeholder = nullptr;      // Shown when there are no routes to display.
@@ -112,8 +114,30 @@ private:
     *   Populate the two scene combos with all OoT and MM scenes that expose a
     *   non-empty name in their SceneMetaInfo entry. Each entry is prefixed by
     *   the game tag ("[OoT]" / "[MM]") so duplicates across games remain distinct.
+    *   Scenes that share a display name within a game (e.g. the many "Generic Grotto")
+    *   are further disambiguated by their region, then by scene ID as a last resort.
     */
     void PopulateSceneCombos();
+
+
+    /*
+    *   Fill an entrance combo with the entrances physically located in (Game, Scene): a
+    *   leading "Any entrance" item (data UINT32_MAX) followed by one item per entrance,
+    *   labelled by the scene it connects to and carrying the entrance ID as item data.
+    *   Signals are blocked during the refill and the selection is reset to "Any".
+    *
+    *   @param Combo    The entrance combo to (re)populate.
+    *   @param Game     OOT_GAME or MM_GAME.
+    *   @param Scene    The scene whose entrances should be listed.
+    */
+    void PopulateEntranceCombo(QComboBox* Combo, int Game, uint32_t Scene);
+
+
+    /*
+    *   Repopulate both entrance combos from the scenes currently selected in the From / To
+    *   scene combos. Used after the scene combos are first filled and after a swap.
+    */
+    void RefreshEntranceCombos();
 
 
     /*
@@ -143,6 +167,20 @@ private slots:
     *   empty placeholder instead.
     */
     void OnSelectionChanged();
+
+
+    /*
+    *   React to a change of the From scene combo: repopulate the From entrance combo for the
+    *   new scene (resetting it to "Any"), then recompute the routes.
+    */
+    void OnFromSceneChanged();
+
+
+    /*
+    *   React to a change of the To scene combo: repopulate the To entrance combo for the new
+    *   scene (resetting it to "Any"), then recompute the routes.
+    */
+    void OnToSceneChanged();
 
 
     /*

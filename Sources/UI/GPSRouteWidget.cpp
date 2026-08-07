@@ -7,6 +7,7 @@
 #include "Combo/OoTEntrances.h"
 #include "Combo/MMEntrances.h"
 #include "Combo/Scenes.h"
+#include "Combo/Regions.h"
 #include "Multi/Game.h"
 
 #include <QSignalBlocker>
@@ -18,6 +19,7 @@
 
 #include <algorithm>
 #include <set>
+#include <map>
 #include <vector>
 
 
@@ -25,6 +27,103 @@ namespace
 {
     constexpr int       SceneRoleGame  = Qt::UserRole + 1;
     constexpr int       SceneRoleID    = Qt::UserRole + 2;
+    constexpr int       EntranceRoleID = Qt::UserRole + 3;    // Entrance ID carried by each entrance-combo item (UINT32_MAX = Any).
+
+
+    /*
+    *   Return the display name of a scene's parent region, used to disambiguate scenes that
+    *   share a name (the many "Generic Grotto", "Deku Scrubs Grotto", ...). Returns an empty
+    *   string when the region is out of range or the scene has no meta.
+    */
+    QString SceneRegionName(int Game, const SceneMetaInfo* Meta)
+    {
+        if (Meta == nullptr) return QString();
+        if (Meta->ParentRegion == 0) return QString();      // "None" region: no useful qualifier.
+        if (Game == OOT_GAME)
+        {
+            if (Meta->ParentRegion <= (uint8_t)OoTRegions::Songs)
+                return QString::fromUtf8(OoTRegionsMetaInfo[Meta->ParentRegion].RegionName);
+        }
+        else
+        {
+            if (Meta->ParentRegion <= (uint8_t)MMRegions::Songs)
+                return QString::fromUtf8(MMRegionsMetaInfo[Meta->ParentRegion].RegionName);
+        }
+        return QString();
+    }
+
+
+    /*
+    *   One selectable entrance of a scene: the entrance ID (the scene-side graph node, shared
+    *   by both traversal directions) and the label shown to the user (the scene it connects to).
+    */
+    struct GpsEntranceItem
+    {
+        uint32_t    Id;
+        QString     Label;
+    };
+
+
+    /*
+    *   Collect every entrance physically located in (Game, Scene), each labelled by the scene it
+    *   connects to. An entry with FromSceneID == Scene contributes its FromEntranceID labelled by
+    *   ToName ("leads to X"); an entry with ToSceneID == Scene contributes its ToEntranceID
+    *   labelled by FromName ("comes from X"). Both directions of a normal door resolve to the same
+    *   scene-side node, so the result holds one item per physical door, sorted by label.
+    */
+    std::vector<GpsEntranceItem> CollectEntrancesForScene(int Game, uint32_t Scene)
+    {
+        const std::map<int, EntranceMetaInfo>& Map = (Game == OOT_GAME) ? OoTEntrances : MMEntrances;
+
+        // Per node we keep a short "primary" label (the scene it connects to) and a "full" label
+        // ("FromName -> ToName") used only to break ties: several doors of one scene can share a
+        // destination (Impa's House has two exits both to Kakariko), and only their own-side name
+        // ("Impa's House" vs "Impa's House Back") tells them apart.
+        struct Names { QString Primary; QString Full; };
+        std::map<uint32_t, Names> ById;
+        for (const auto& Pair : Map)
+        {
+            const EntranceMetaInfo& V = Pair.second;
+            if (V.Type == EntranceType::None) continue;
+
+            const QString From = (V.FromName != nullptr) ? QString::fromUtf8(V.FromName) : QString();
+            const QString To   = (V.ToName   != nullptr) ? QString::fromUtf8(V.ToName)   : QString();
+            const QString Full = QStringLiteral("%1 %2 %3").arg(From, QString(QChar(0x2192)), To);
+
+            // "Leads to" side is the primary identity; "comes from" only fills nodes that have no
+            // exit entry (e.g. one-way-in warp / spawn landings).
+            if (V.FromSceneID == Scene && V.ToName != nullptr)
+                ById[V.FromEntranceID] = Names{ To, Full };
+            if (V.ToSceneID == Scene && V.FromName != nullptr)
+                ById.emplace(V.ToEntranceID, Names{ From, Full });
+        }
+
+        // Use the short label when it is unique in this scene; fall back to the full label for
+        // the entrances that would otherwise collide.
+        std::map<QString, int> PrimaryCount;
+        for (const auto& KV : ById) PrimaryCount[KV.second.Primary]++;
+
+        std::vector<GpsEntranceItem> Out;
+        Out.reserve(ById.size());
+        for (const auto& KV : ById)
+        {
+            const Names& N = KV.second;
+            Out.push_back({ KV.first, (PrimaryCount[N.Primary] > 1) ? N.Full : N.Primary });
+        }
+
+        // Very last resort: if two entrances still share a label, append the entrance ID.
+        std::map<QString, int> LabelCount;
+        for (const auto& E : Out) LabelCount[E.Label]++;
+        for (auto& E : Out)
+            if (LabelCount[E.Label] > 1)
+                E.Label = QStringLiteral("%1 [0x%2]").arg(E.Label).arg(E.Id, 0, 16);
+
+        std::sort(Out.begin(), Out.end(),
+            [](const GpsEntranceItem& A, const GpsEntranceItem& B)
+            { return QString::localeAwareCompare(A.Label, B.Label) < 0; });
+
+        return Out;
+    }
 
     /*
     *   Format a raw cost (already expressed in seconds since the per-edge values come from
@@ -103,6 +202,7 @@ GPSRouteWidget::GPSRouteWidget(QWidget* Parent)
     this->BuildCardsHost();
 
     this->PopulateSceneCombos();
+    this->RefreshEntranceCombos();
 
     // Trigger the initial render once the combos are populated.
     this->OnSelectionChanged();
@@ -180,6 +280,12 @@ void GPSRouteWidget::BuildTopBar()
     this->MakeComboSearchable(this->FromCombo);
     this->TopBar->addWidget(this->FromCombo);
 
+    this->FromEntranceCombo = new QComboBox(this);
+    this->FromEntranceCombo->setObjectName("GpsFromEntranceCombo");
+    this->FromEntranceCombo->setSizeAdjustPolicy(QComboBox::AdjustToContents);
+    this->FromEntranceCombo->setToolTip(QStringLiteral("Departure entrance"));
+    this->TopBar->addWidget(this->FromEntranceCombo);
+
     this->ArrowLabel = new QLabel(QString(QChar(0x2192)), this);
     this->ArrowLabel->setObjectName("GpsArrow");
     this->TopBar->addWidget(this->ArrowLabel);
@@ -189,6 +295,12 @@ void GPSRouteWidget::BuildTopBar()
     this->ToCombo->setSizeAdjustPolicy(QComboBox::AdjustToContents);
     this->MakeComboSearchable(this->ToCombo);
     this->TopBar->addWidget(this->ToCombo);
+
+    this->ToEntranceCombo = new QComboBox(this);
+    this->ToEntranceCombo->setObjectName("GpsToEntranceCombo");
+    this->ToEntranceCombo->setSizeAdjustPolicy(QComboBox::AdjustToContents);
+    this->ToEntranceCombo->setToolTip(QStringLiteral("Arrival entrance"));
+    this->TopBar->addWidget(this->ToEntranceCombo);
 
     this->SwapButton = new QPushButton(QString(QChar(0x21C5)) + " Invert", this);
     this->SwapButton->setObjectName("GpsSwapButton");
@@ -204,9 +316,15 @@ void GPSRouteWidget::BuildTopBar()
 
     this->MainLayout->addLayout(this->TopBar);
 
+    // Scene changes rebuild the matching entrance combo (which resets it to "Any") before
+    // recomputing; entrance changes only recompute.
     connect(this->FromCombo, QOverload<int>::of(&QComboBox::currentIndexChanged),
-            this, &GPSRouteWidget::OnSelectionChanged);
+            this, &GPSRouteWidget::OnFromSceneChanged);
     connect(this->ToCombo,   QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &GPSRouteWidget::OnToSceneChanged);
+    connect(this->FromEntranceCombo, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &GPSRouteWidget::OnSelectionChanged);
+    connect(this->ToEntranceCombo,   QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &GPSRouteWidget::OnSelectionChanged);
     connect(this->SwapButton, &QPushButton::clicked,
             this, &GPSRouteWidget::OnSwapClicked);
@@ -266,8 +384,10 @@ void GPSRouteWidget::PopulateSceneCombos()
     {
         int     Game;           // OOT_GAME (= 0) sorts before MM_GAME (= 1) by integer order.
         uint32_t Id;
-        QString  Display;       // The combo label, e.g. "[OoT] Kokiri Forest".
+        QString  Display;       // The combo label, e.g. "[OoT] Kokiri Forest". Built after collection.
         QString  Name;          // Plain scene name used as the sort key (no tag prefix).
+        QString  Region;        // Parent region name, used to disambiguate scenes sharing a name.
+        QString  Tag;           // Game tag ("OoT" / "MM").
     };
 
     auto CollectScenesForGame = [](int Game, const char* Tag, std::vector<SceneEntry>& Out)
@@ -295,10 +415,11 @@ void GPSRouteWidget::PopulateSceneCombos()
             if (Meta->Name == nullptr || Meta->Name[0] == '\0') continue;
 
             SceneEntry E;
-            E.Game = Game;
-            E.Id = SceneID;
-            E.Name = QString::fromUtf8(Meta->Name);
-            E.Display = QString("[%1] %2").arg(Tag, E.Name);
+            E.Game   = Game;
+            E.Id     = SceneID;
+            E.Name   = QString::fromUtf8(Meta->Name);
+            E.Region = SceneRegionName(Game, Meta);
+            E.Tag    = QString::fromUtf8(Tag);
             Out.push_back(std::move(E));
         }
     };
@@ -315,6 +436,30 @@ void GPSRouteWidget::PopulateSceneCombos()
             if (A.Game != B.Game) return A.Game < B.Game;
             return QString::localeAwareCompare(A.Name, B.Name) < 0;
         });
+
+    // Disambiguate scenes that share a name within a game (the many "Generic Grotto",
+    // "Deku Scrubs Grotto", ...): qualify only the duplicated ones with their region so
+    // unique names stay clean. Two-key count is "game:name".
+    auto NameKey = [](const SceneEntry& E) { return QStringLiteral("%1:%2").arg(E.Game).arg(E.Name); };
+    std::map<QString, int> NameCount;
+    for (const SceneEntry& E : Entries)
+        NameCount[NameKey(E)]++;
+
+    for (SceneEntry& E : Entries)
+    {
+        QString Base = E.Name;
+        if (NameCount[NameKey(E)] > 1 && !E.Region.isEmpty())
+            Base = QStringLiteral("%1 (%2)").arg(E.Name, E.Region);
+        E.Display = QStringLiteral("[%1] %2").arg(E.Tag, Base);
+    }
+
+    // Last resort: if two scenes STILL share a display string (same name + region, or an empty
+    // region), append the scene ID so every combo row stays uniquely selectable.
+    std::map<QString, int> DisplayCount;
+    for (const SceneEntry& E : Entries) DisplayCount[E.Display]++;
+    for (SceneEntry& E : Entries)
+        if (DisplayCount[E.Display] > 1)
+            E.Display = QStringLiteral("%1 [0x%2]").arg(E.Display).arg(E.Id, 0, 16);
 
     for (const SceneEntry& E : Entries)
     {
@@ -393,6 +538,17 @@ void GPSRouteWidget::OnSelectionChanged()
     const int       ToGame    = this->ToCombo->currentData(SceneRoleGame).toInt();
     const uint32_t  ToScene   = this->ToCombo->currentData(SceneRoleID).toUInt();
 
+    // Optional entrance pinning. An empty / "Any" selection yields UINT32_MAX, which the
+    // pathfinder treats as "leave / arrive through whichever entrance is cheapest".
+    auto EntranceOf = [](QComboBox* Combo) -> uint32_t
+    {
+        if (Combo == nullptr || Combo->currentIndex() < 0) return UINT32_MAX;
+        const QVariant Data = Combo->currentData(EntranceRoleID);
+        return Data.isValid() ? Data.toUInt() : UINT32_MAX;
+    };
+    const uint32_t  FromEntrance = EntranceOf(this->FromEntranceCombo);
+    const uint32_t  ToEntrance   = EntranceOf(this->ToEntranceCombo);
+
     // The two cross-game warp ROM parameters live in the main window's ROMSettings. We
     // walk up the parent chain to find the OoTMMComboTracker instance and read them as
     // ShuffleSetting::all == enabled. If the lookup fails (test harness, orphan widget)
@@ -413,7 +569,7 @@ void GPSRouteWidget::OnSelectionChanged()
     // them down to 1-3 unique cards. K=3 was too tight: when all of Yen's first three paths
     // were minor variants of the same warp-based route they collapsed to a single card.
     const GPSPathfindResult Result = FindGPSRoutes(FromGame, FromScene, ToGame, ToScene, 5,
-                                                   CrossWarpOot, CrossWarpMm);
+                                                   CrossWarpOot, CrossWarpMm, FromEntrance, ToEntrance);
 
     switch (Result.Status)
     {
@@ -506,12 +662,80 @@ void GPSRouteWidget::OnSwapClicked()
     const int FromIdx = this->FromCombo->currentIndex();
     const int ToIdx   = this->ToCombo->currentIndex();
 
-    QSignalBlocker BlockFrom(this->FromCombo);
-    QSignalBlocker BlockTo(this->ToCombo);
-    this->FromCombo->setCurrentIndex(ToIdx);
-    this->ToCombo->setCurrentIndex(FromIdx);
+    {
+        QSignalBlocker BlockFrom(this->FromCombo);
+        QSignalBlocker BlockTo(this->ToCombo);
+        this->FromCombo->setCurrentIndex(ToIdx);
+        this->ToCombo->setCurrentIndex(FromIdx);
+    }
 
+    // The swapped scenes have different entrance sets, so rebuild both entrance combos
+    // (they reset to "Any") before recomputing.
+    this->RefreshEntranceCombos();
     this->OnSelectionChanged();
+}
+
+
+void GPSRouteWidget::OnFromSceneChanged()
+{
+    if (this->FromCombo == nullptr) return;
+    const int  Game  = this->FromCombo->currentData(SceneRoleGame).toInt();
+    const auto Scene = this->FromCombo->currentData(SceneRoleID).toUInt();
+    this->PopulateEntranceCombo(this->FromEntranceCombo, Game, Scene);
+    this->OnSelectionChanged();
+}
+
+
+void GPSRouteWidget::OnToSceneChanged()
+{
+    if (this->ToCombo == nullptr) return;
+    const int  Game  = this->ToCombo->currentData(SceneRoleGame).toInt();
+    const auto Scene = this->ToCombo->currentData(SceneRoleID).toUInt();
+    this->PopulateEntranceCombo(this->ToEntranceCombo, Game, Scene);
+    this->OnSelectionChanged();
+}
+
+#pragma endregion
+
+
+#pragma region // Entrance combos
+
+void GPSRouteWidget::PopulateEntranceCombo(QComboBox* Combo, int Game, uint32_t Scene)
+{
+    if (Combo == nullptr) return;
+
+    QSignalBlocker Block(Combo);
+    Combo->clear();
+
+    // Leading "Any" item: the pathfinder leaves / arrives through whichever entrance is cheapest.
+    Combo->addItem(QStringLiteral("Any entrance"));
+    Combo->setItemData(0, (uint)UINT32_MAX, EntranceRoleID);
+
+    for (const GpsEntranceItem& E : CollectEntrancesForScene(Game, Scene))
+    {
+        const int Idx = Combo->count();
+        Combo->addItem(E.Label);
+        Combo->setItemData(Idx, (uint)E.Id, EntranceRoleID);
+    }
+
+    Combo->setCurrentIndex(0);      // Default to "Any".
+}
+
+
+void GPSRouteWidget::RefreshEntranceCombos()
+{
+    if (this->FromCombo != nullptr && this->FromCombo->currentIndex() >= 0)
+    {
+        this->PopulateEntranceCombo(this->FromEntranceCombo,
+                                    this->FromCombo->currentData(SceneRoleGame).toInt(),
+                                    this->FromCombo->currentData(SceneRoleID).toUInt());
+    }
+    if (this->ToCombo != nullptr && this->ToCombo->currentIndex() >= 0)
+    {
+        this->PopulateEntranceCombo(this->ToEntranceCombo,
+                                    this->ToCombo->currentData(SceneRoleGame).toInt(),
+                                    this->ToCombo->currentData(SceneRoleID).toUInt());
+    }
 }
 
 #pragma endregion
