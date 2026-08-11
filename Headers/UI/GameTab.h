@@ -102,6 +102,15 @@ public:
     */
     void UpdateObjectVisibility();
 
+    /*
+    *   Forward a scene focus request to the underlying MapTab. Used by the auto-follow player
+    *   feature: OoTMMComboTracker resolves which game the player is in, brings that GameTab to
+    *   the front and calls this to line up the map on the new scene.
+    *
+    *   @param SceneID    The scene ID to focus on.
+    */
+    void FocusScene(uint32_t SceneID);
+
 #pragma endregion
 
 #pragma region Saving / Loading

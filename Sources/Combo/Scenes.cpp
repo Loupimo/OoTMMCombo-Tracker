@@ -242,7 +242,7 @@ SceneMetaInfo MMScenesMetaInfo[MM_NUM_SCENES] =
     { "Waterfall Rapids", "./Resources/MM/Zora_Cape/Waterfall_Rapids.jpg", "./Resources/MM/Zora_Cape/Waterfall_Rapids_Map.jpg", (uint8_t)MMRegions::Zora_Cape, false, GameLayout::mm },
     { "Beneath the Well", "./Resources/MM/Ikana_Canyon/Beneath_Well.jpg", "./Resources/MM/Ikana_Canyon/Beneath_Well_Map.jpg", (uint8_t)MMRegions::Ikana_Canyon, false, GameLayout::mm },
     { "Zora's Hall Rooms", "", "", (uint8_t)MMRegions::None, false, GameLayout::mm },
-    { "Goron's Village", "./Resources/MM/Goron_Village/Village.jpg", "", (uint8_t)MMRegions::Goron_Village, false, GameLayout::mm },
+    { "Goron's Village, Winter", "./Resources/MM/Goron_Village/Village.jpg", "", (uint8_t)MMRegions::None, false, GameLayout::mm },
     { "Goron's Graveyard", "./Resources/MM/Mountain_Village/Graveyard.jpg", "./Resources/MM/Mountain_Village/Graveyard_Map.jpg", (uint8_t)MMRegions::Mountain_Village, false, GameLayout::mm },
     { "Sakon's Hideout", "./Resources/MM/Ikana_Canyon/Sakon_Hideout.jpg", "./Resources/MM/Ikana_Canyon/Sakon_Hideout_Map.jpg", (uint8_t)MMRegions::Ikana_Canyon, false, GameLayout::mm },
     { "Mountain Village, Winter", "", "", (uint8_t)MMRegions::None, true, GameLayout::mm },
@@ -317,7 +317,7 @@ SceneMetaInfo MMScenesMetaInfo[MM_NUM_SCENES] =
     { "Climb Grotto", "", "./Resources/MM/Deku_Palace/JP_Grotto_1_Map.jpg", (uint8_t)MMRegions::None, false, GameLayout::mm },
     { "Mountain Village", "./Resources/MM/Mountain_Village/Village.jpg", "./Resources/MM/Mountain_Village/Village_Map.jpg", (uint8_t)MMRegions::Mountain_Village, true, GameLayout::mm },
     { "Twin Islands", "./Resources/MM/Twin_Islands/Twins.jpg", "./Resources/MM/Twin_Islands/Twins_Map.jpg", (uint8_t)MMRegions::Twin_Islands, true, GameLayout::mm },
-    { "Goron Village", "", "./Resources/MM/Goron_Village/Village_Map.jpg", (uint8_t)MMRegions::None, false, GameLayout::mm },
+    { "Goron's Village", "./Resources/MM/Goron_Village/Village.jpg", "./Resources/MM/Goron_Village/Village_Map.jpg", (uint8_t)MMRegions::Goron_Village, true, GameLayout::mm },
     { "Spring Water Cave", "", "./Resources/MM/Ikana_Canyon/Water_Cave_Map.jpg", (uint8_t)MMRegions::None, false, GameLayout::mm }
 };
 

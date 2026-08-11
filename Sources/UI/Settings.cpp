@@ -1388,6 +1388,8 @@ void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
                             break;
                         }
 					}
+
+                    break;
 				}
 
                 case ObjectType::song:
@@ -1740,6 +1742,7 @@ void Settings::ApplyMMSettingsToFilter(FilterManager* Filter)
 
 						this->CheckObjectExclusion(currObj, this->FilterSettings["shuffleLotteryMm"].Value, Filter);
 					}
+                    break;
 				}
 
 				case ObjectType::none:

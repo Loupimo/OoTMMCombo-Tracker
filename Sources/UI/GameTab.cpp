@@ -462,4 +462,14 @@ void GameTab::ResetScenes()
     MultiLogger::LogMessage("Resetting done.\n");
 }
 
+
+void GameTab::FocusScene(uint32_t SceneID)
+{
+    if (this->GameMaps == nullptr)
+    {
+        return;
+    }
+    this->GameMaps->FocusScene(SceneID);
+}
+
 #pragma endregion

@@ -340,6 +340,15 @@ public:
     */
     void FocusObject(ObjectInfo* Object);
 
+    /*
+    *   Switch the active scene to the one matching the given ID and select it in the map list.
+    *   Silently returns when the scene ID does not belong to this tab. Used by the auto-follow
+    *   player feature to move the map to the room the player just entered.
+    *
+    *   @param SceneID    The scene ID to focus on.
+    */
+    void FocusScene(uint32_t SceneID);
+
 #pragma endregion
 
 };

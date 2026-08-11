@@ -494,6 +494,27 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
         SettingsTab dialog(this, this);
         dialog.exec();
     });
+
+    // Auto-follow player toggles: three independent options attached to the Options menu at
+    // runtime (they are not part of the .ui file so we can iterate on wording without regenerating
+    // ui_OoTMMComboTracker.h). All three default to false in AppConfig so nothing changes for
+    // users who do not enable them.
+    this->ui.menuOptions->addSeparator();
+
+    QAction* autoFollowItemAction = this->ui.menuOptions->addAction("Auto-follow player (item map)");
+    autoFollowItemAction->setCheckable(true);
+    autoFollowItemAction->setChecked(AppConfig::GetAutoFollowItemMap());
+    connect(autoFollowItemAction, &QAction::toggled, this, &AppConfig::SetAutoFollowItemMap);
+
+    QAction* autoFollowEntranceAction = this->ui.menuOptions->addAction("Auto-follow player (entrance map)");
+    autoFollowEntranceAction->setCheckable(true);
+    autoFollowEntranceAction->setChecked(AppConfig::GetAutoFollowEntranceMap());
+    connect(autoFollowEntranceAction, &QAction::toggled, this, &AppConfig::SetAutoFollowEntranceMap);
+
+    QAction* autoGpsStartAction = this->ui.menuOptions->addAction("Auto-set GPS starting scene");
+    autoGpsStartAction->setCheckable(true);
+    autoGpsStartAction->setChecked(AppConfig::GetAutoSetGpsStart());
+    connect(autoGpsStartAction, &QAction::toggled, this, &AppConfig::SetAutoSetGpsStart);
 }
 
 OoTMMComboTracker::~OoTMMComboTracker()
@@ -510,7 +531,7 @@ void OoTMMComboTracker::ShowAboutDialog()
     QMessageBox msgBox(this);
     msgBox.setWindowTitle("About");
     msgBox.setTextFormat(Qt::RichText);
-    msgBox.setText("OoTMMCombo Auto Tracker<br>Version 2.1.0<br>&copy; 2025-2026 Loupimo<br><br>git repository: <a href='https://github.com/Loupimo/OoTMMCombo-Tracker'>https://github.com/Loupimo/OoTMMCombo-Tracker</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>Thanks for testing to :<br><br>- Wild<br><br>-DataSkywalker");
+    msgBox.setText("OoTMMCombo Auto Tracker<br>Version 2.2.1<br>&copy; 2025-2026 Loupimo<br><br>git repository: <a href='https://github.com/Loupimo/OoTMMCombo-Tracker'>https://github.com/Loupimo/OoTMMCombo-Tracker</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>Thanks for testing to :<br><br>- Wild<br><br>-DataSkywalker");
     msgBox.exec();
 }
 
@@ -849,6 +870,51 @@ void OoTMMComboTracker::UpdateTrackedEntrance(SceneEntranceUpdate OutEntrance, S
         const QString toName   = (toMeta   && toMeta->Name)   ? QString(toMeta->Name)   : QString::number(InEntrance.SceneID);
 
         this->LastActivityLabel->setText(QString("Last entrance: %1 → %2").arg(fromName, toName));
+    }
+
+    // Auto-follow player features. The InEntrance carries the destination scene the player just
+    // entered, which is exactly what the three toggles need to act on. Each is independent so
+    // the user can enable any subset.
+    const uint8_t  destGame  = InEntrance.Game;
+    const uint32_t destScene = InEntrance.SceneID;
+
+    if (AppConfig::GetAutoFollowItemMap())
+    {
+        GameTab* target = nullptr;
+        if (destGame == OOT_GAME)      target = this->OoTTab;
+        else if (destGame == MM_GAME)  target = this->MMTab;
+        if (target != nullptr)
+        {
+            // Bring the corresponding game tab to the foreground first — the user chose the
+            // "switch tab" behavior so the map jump is immediately visible.
+            const int idx = this->TabWidget->indexOf(target);
+            if (idx >= 0)
+            {
+                this->TabWidget->setCurrentIndex(idx);
+            }
+            target->FocusScene(destScene);
+        }
+    }
+
+    if (AppConfig::GetAutoFollowEntranceMap() && this->EntTab != nullptr)
+    {
+        // Switch to the entrance tab so the user actually sees the map jump, then focus the
+        // scene inside that tab's per-game view.
+        const int idx = this->TabWidget->indexOf(this->EntTab);
+        if (idx >= 0)
+        {
+            this->TabWidget->setCurrentIndex(idx);
+        }
+        this->EntTab->FocusSceneInGame((int)destGame, destScene);
+    }
+
+    if (AppConfig::GetAutoSetGpsStart() && this->EntTab != nullptr && this->EntTab->GPSTab != nullptr)
+    {
+        // GPS start follows the player but never triggers a recompute — that call was the user's
+        // explicit choice, so the routes shown stay stable until they click something themselves.
+        // We also forward the incoming entrance so the "from entrance" combo lines up with where
+        // the player just spawned rather than defaulting back to "Any" every time.
+        this->EntTab->GPSTab->SetFromScene((int)destGame, destScene, InEntrance.EntranceID);
     }
 }
 

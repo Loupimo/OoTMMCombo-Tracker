@@ -8,7 +8,7 @@ In **multiplayer**, it is a fork of the [multi-client](https://github.com/OoTMM/
 
 # Requirements
 
-- **[Project64-EM 1.0.3-PJ-3.0.1](https://github.com/OoTMM/Project64-EM/releases)** — this specific build is required (it is the only one the hook supports).
+- **[Project64-EM 1.0.3-PJ-3.0.1](https://github.com/OoTMM/Project64-EM/releases)** — 1.0.3 or 1.1.0 build is required (it is the only ones the hook supports).
 - `PJ64Injector.exe` and `PJ64OoTMMTracker.dll` must be in the **same folder** as the tracker (the tracker injects them automatically when you start tracking).
 - **OoTMM build**: the tracker targets the latest **dev** build (currently `dev-98a1ac3`). It also supports the **stable release 30.1**, and should keep working with newer dev builds.
 
@@ -27,7 +27,7 @@ In **multiplayer**, it is a fork of the [multi-client](https://github.com/OoTMM/
 
 ## Playing in singleplayer
 
-1. Launch **Project64-EM (1.0.3-PJ-3.0.1)** and start your OoTMM ROM.
+1. Launch **Project64-EM (1.0.3-PJ-3.0.1 or 1.1.0-PJ-3.0.1)** and start your OoTMM ROM.
 2. In the tracker's **"Launch"** tab, click **"Start Tracking"** — the tracker injects its hook into Project64.
 3. Create a new save and start playing. Collected items appear on the maps automatically.
 
@@ -53,6 +53,8 @@ It also lets the tracker show the expected item on each location, reveal uncolle
 - Tracking is **live**: items collected while the tracker is not running (or before injection) are not detected.
 - Master Quest and Majora's Mask JP layouts are supported, but the hook **cannot** detect them — they are read from the spoiler log, so import it to get the correct layouts (see the spoiler-log section above).
 - Multiworld is fully supported — use the world selector to browse any world's map and progression.
+
+<code style="color : red">Dev version above V32.0 are poorly supported right now, mainly due to fact that a lot of changes that impact AddItem functions, entrance variables and new multiplayer system have been done.</code>
 
 ## Troubleshooting
 

@@ -297,7 +297,7 @@ void MemoryReader::StartMemoryReader()
         if (this->PJ64PID == 0)
         {   // PJ64-EM not found. Wait 1 second before retrying
 
-            MultiLogger::LogMessage("No %s-EM 1.0.3-PJ-3.0.1 process found. Retrying in 1 second...\n", processName);
+            MultiLogger::LogMessage("No %s-EM 1.0.3-PJ-3.0.1 or %s-EM 1.1.0-PJ-3.0.1 process found. Retrying in 1 second...\n", processName);
             Sleep(1000);
         }
 

@@ -686,6 +686,60 @@ void GPSRouteWidget::OnFromSceneChanged()
 }
 
 
+void GPSRouteWidget::SetFromScene(int Game, uint32_t SceneID, uint32_t EntranceID)
+{
+    if (this->FromCombo == nullptr) return;
+
+    // Look up the matching scene entry in the FromCombo item list. The scenes are keyed by the
+    // (Game, SceneID) pair stored in the SceneRoleGame / SceneRoleID data roles at populate time.
+    int matchIdx = -1;
+    for (int i = 0; i < this->FromCombo->count(); i++)
+    {
+        const int  itemGame  = this->FromCombo->itemData(i, SceneRoleGame).toInt();
+        const auto itemScene = this->FromCombo->itemData(i, SceneRoleID).toUInt();
+        if (itemGame == Game && itemScene == SceneID)
+        {
+            matchIdx = i;
+            break;
+        }
+    }
+    // Skip only when the scene is unknown. We still fall through when the scene is already the
+    // current selection because the entrance may have changed even if the scene didn't (e.g. the
+    // player left and re-entered through a different door).
+    if (matchIdx < 0)
+    {
+        return;
+    }
+
+    // Block signals so OnFromSceneChanged does not fire — that would call OnSelectionChanged
+    // and re-run the pathfinder, but the auto-follow feature explicitly avoids recomputing on
+    // every player move. We repopulate the From-entrance combo ourselves so its options stay
+    // consistent with the newly selected scene (a stale "Any" pointing at old entrances would
+    // silently produce wrong routes if the user clicks recompute later).
+    if (matchIdx != this->FromCombo->currentIndex())
+    {
+        QSignalBlocker Block(this->FromCombo);
+        this->FromCombo->setCurrentIndex(matchIdx);
+    }
+    this->PopulateEntranceCombo(this->FromEntranceCombo, Game, SceneID);
+
+    // Preselect the specific entrance if it is present in the freshly populated combo. UINT32_MAX
+    // means "the caller has no preference" — the combo keeps its default "Any entrance" item.
+    if (EntranceID != UINT32_MAX && this->FromEntranceCombo != nullptr)
+    {
+        for (int i = 0; i < this->FromEntranceCombo->count(); i++)
+        {
+            if (this->FromEntranceCombo->itemData(i, EntranceRoleID).toUInt() == EntranceID)
+            {
+                QSignalBlocker Block(this->FromEntranceCombo);
+                this->FromEntranceCombo->setCurrentIndex(i);
+                break;
+            }
+        }
+    }
+}
+
+
 void GPSRouteWidget::OnToSceneChanged()
 {
     if (this->ToCombo == nullptr) return;
