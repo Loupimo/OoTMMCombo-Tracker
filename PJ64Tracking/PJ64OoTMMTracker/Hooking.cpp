@@ -3,10 +3,16 @@
 #include "PatternScanner.h"
 
 // Hooking installation
+HMODULE gSelfModule = nullptr;
 void* gatewayPC = NULL;                                     // The gateway to the original hook PC code. Called when the PC hook is finished.
 void* gatewayROM = NULL;                                    // The gateway to the original hook ROM code. Called when the ROM hook is finished.
 BYTE originalBytesPC[HOOK_PC_SIZE];                         // The original bytes codes loacted at the PC hook.
 BYTE originalBytesROM[HOOK_ROM_LOAD_SIZE];                  // The original bytes codes located at the ROM hook.
+bool isROMBaseResolved = false;
+bool gROMHookInstalled = false;                              // Tells if the ROM hook is already installed.
+bool gPCHookInstalled = false;                              // Tells if the PC hook is already installed.
+volatile LONG gShutdownWatcherRunning = 0;
+LPDWORD gShutdownWatcherThread = nullptr;
 
 // Game data / shared memeory data
 SharedData* gData = nullptr;                                // The shared data with the tracker.
@@ -133,17 +139,7 @@ static BOOL CALLBACK FindPJ64WindowProc(HWND Handle, LPARAM LParam)
 }
 
 
-/*
-*   Read the Project64-EM version token. The main window title is the primary, location
-*   independent source ("Project64-EM <version>-PJ-3.0.1"). The executable folder name
-*   ("Project64-EM-<version>-PJ-3.0.1-win32") is used as a fallback and only works if the
-*   user kept the distributed folder name.
-*
-*   @param  OutVersion  Buffer receiving the null-terminated version string.
-*   @param  Size        Size of the output buffer in bytes.
-*   @return true if a version token was successfully extracted, false otherwise.
-*/
-static bool GetPJ64Version(char* OutVersion, size_t Size)
+bool GetPJ64Version(char* OutVersion, size_t Size)
 {
     // Primary: the main window title, independent of where the emulator is installed.
     HWND mainWindow = NULL;
@@ -196,9 +192,10 @@ void DetectPJVersion()
 
 void TryResolveROMBase()
 {
-    if (romBase)
+    StartShutdownWatcher();
+
+    if (isROMBaseResolved)
     {
-        LOG("Oh No");
         return;
     }
 
@@ -217,7 +214,6 @@ void TryResolveROMBase()
 
     if (!romStruct)
     {
-        LOG("AAAA");
         return;
     }
 
@@ -225,13 +221,14 @@ void TryResolveROMBase()
 
     if (!rom)
     {
-        LOG("PPPP");
         return;
     }
 
     romBase = rom;
 
     LOG("ROM base resolved via pointer: 0x%08X", romBase);
+
+    isROMBaseResolved = true;
 }
 
 
@@ -250,7 +247,7 @@ uintptr_t FindGameRAM()
             }
         }
 
-        LOG("MMU: %p", mmu);
+        LOG("MMU: %p", &mmu);
         uintptr_t obj = *(uintptr_t*)mmu;
 
         if (obj)
@@ -265,6 +262,118 @@ uintptr_t FindGameRAM()
     }
 }
 
+
+#ifdef _DEBUG
+
+void CloseDebugConsole()
+{
+    FILE* fp = nullptr;
+
+    freopen_s(&fp, "NUL", "w", stdout);
+
+    if (fp)
+        fclose(fp);
+
+    FreeConsole();
+}
+
+#endif
+
+
+DWORD WINAPI DLLUnloadThread(LPVOID)
+{
+    LOG("DLLUnloadThread started.");
+
+    // Let the current PCHook invocation finish.
+    Sleep(100);
+
+    LOG("Calling FreeLibraryAndExitThread...");
+    ShutdownHooks();
+
+#ifdef _DEBUG
+    CloseDebugConsole();
+#endif
+
+    FreeLibraryAndExitThread(gSelfModule, 0);
+
+    return 0;
+}
+
+
+extern "C" void RequestDLLUnload()
+{
+    HANDLE hThread = CreateThread(nullptr, 0, DLLUnloadThread, nullptr, 0, nullptr);
+
+    if (hThread)
+        CloseHandle(hThread);
+}
+
+
+extern "C" void CheckTrackerCommand()
+{
+    if (gData == nullptr)
+        return;
+
+    if (gData->Command == TrackerCommand::Shutdown)
+    {
+        StopShutdownWatcher(); // Stop the watcher thread to avoid race condition
+
+        UninstallPCHook();
+
+        // Évite de refaire l'uninstall au prochain appel.
+        gData->Command = TrackerCommand::None;
+
+        RequestDLLUnload();
+    }
+}
+
+DWORD WINAPI ShutdownWatcherThread(LPVOID)
+{
+    LOG("Shutdown watcher started.");
+
+    while (InterlockedCompareExchange(&gShutdownWatcherRunning, 0, 0) != 0)
+    {
+        if (gData != nullptr && gData->Command == TrackerCommand::Shutdown)
+        {
+            gData->Command = TrackerCommand::None;
+
+            LOG("Shutdown detected by idle watcher.");
+
+            RequestDLLUnload();
+            break;
+        }
+
+        Sleep(50);
+    }
+
+    LOG("Shutdown watcher stopped.");
+
+    return 0;
+}
+
+void StartShutdownWatcher()
+{
+    if (InterlockedCompareExchange(&gShutdownWatcherRunning, 1, 0) != 0)
+    {
+        return;
+    }
+
+    HANDLE hThread = CreateThread(nullptr, 0, ShutdownWatcherThread, nullptr, 0, gShutdownWatcherThread);
+
+    if (hThread == nullptr)
+    {
+        InterlockedExchange(&gShutdownWatcherRunning, 0);
+        gShutdownWatcherThread = nullptr;
+
+        LOG("Failed to create shutdown watcher: %lu", GetLastError());
+        return;
+    }
+}
+
+void StopShutdownWatcher()
+{
+    InterlockedExchange(&gShutdownWatcherRunning, 0);
+}
 
 /*
 *   Check if the given address is in range 0x80000000 and 0x80FFFFFF.
@@ -457,6 +566,11 @@ __declspec(naked) void CheckGameVersionASM()
         mov edx, [romBase]
         mov eax, [edx + 0x10]
         mov ebx, [edx + 0x14]
+
+        // Check tracker command
+        pushad
+        call CheckTrackerCommand
+        popad
 
         // Compare game version
         cmp[ecx], eax // low
@@ -1024,6 +1138,94 @@ __declspec(naked) void PCHook()
     }
 }
 
+bool IsOoTMMROMLoaded(uintptr_t ROMBase)
+{
+    if (ROMBase == 0)
+        return false;
+
+    const BYTE* header = reinterpret_cast<const BYTE*>(ROMBase + 0x38);
+
+    static constexpr BYTE expected[8] =
+    {
+        0x4E, 0x00, 0x00, 0x00,
+        0x50, 0x45, 0x44, 0x45
+    };
+
+    LOG("ROM +0x38: %02X %02X %02X %02X %02X %02X %02X %02X", header[0], header[1], header[2], header[3], header[4], header[5], header[6], header[7]);
+
+    return memcmp(header, expected, sizeof(expected)) == 0;
+}
+
+
+DWORD WINAPI DelayedROMDetectionThread(LPVOID lpParam)
+{
+    uintptr_t currentROMBase = (uintptr_t)lpParam;
+
+    Sleep(100);
+
+    for (int attempt = 0; attempt < 50; ++attempt)
+    {
+        // A new ROM has been loaded.
+        if (romBase != currentROMBase)
+        {
+            LOG("ROM changed !");
+            return 0;
+        }
+
+        if (IsOoTMMROMLoaded(currentROMBase))
+        {
+            LOG("ROM data is ready.");
+
+            gameRAMBase = FindGameRAM();
+
+            LOG("Init Hook");
+
+            InstallPCHook();
+
+            return 0;
+        }
+
+        Sleep(100);
+    }
+
+    LOG("Loaded ROM is not OoT MM combo.");
+
+    if (gPCHookInstalled)
+    {
+        UninstallPCHook();
+    }
+
+    return 0;
+}
+
+void StartDelayedROMDetection()
+{
+    TryResolveROMBase();
+
+    if (isROMBaseResolved)
+    {
+        uintptr_t currentROMBase = romBase;
+
+        HANDLE hThread = CreateThread(nullptr, 0, DelayedROMDetectionThread, (LPVOID)currentROMBase, 0, nullptr
+        );
+
+        if (hThread != nullptr)
+        {
+            CloseHandle(hThread);
+        }
+        else
+        {
+            LOG("Failed to create ROM detection thread. Error: %lu", GetLastError());
+        }
+    }
+}
+
+
+extern "C" void StartDelayedROMDetectionASM()
+{
+    StartDelayedROMDetection();
+}
+
 __declspec(naked) void ROMHook()
 {
     __asm
@@ -1041,15 +1243,25 @@ __declspec(naked) void ROMHook()
         call CheckGameVersionASM
         mov byte ptr [gGame], GAME_UNKNOWN
         mov byte ptr [gIsRAMLoaded], 0
-        
+        mov byte ptr [isROMBaseResolved], 0
+
         popad
+
+        pushad
+        call StartDelayedROMDetectionASM
+        popad
+
         jmp gatewayROM // trampoline to original code
     }
 }
 
-
 void InstallPCHook()
 {
+    if (gPCHookInstalled)
+    {
+        return;
+    }
+
     switch (gPJVersion)
     {
         case PJVersion::EM_1_1_0:
@@ -1064,11 +1276,18 @@ void InstallPCHook()
             break;
         }
     }
+
+    gPCHookInstalled = true;
 }
 
 
 void InstallROMHook()
 {
+    if (gROMHookInstalled)
+    {
+        return;
+    }
+
     switch (gPJVersion)
     {
         case PJVersion::EM_1_1_0:
@@ -1083,10 +1302,12 @@ void InstallROMHook()
             break;
         }
     }
+
+    gROMHookInstalled = true;
 }
 
 
-void InstallHook(size_t HookOffset, size_t HookSize, uintptr_t HookFunction, void ** Gateway, BYTE OriginalBytes[])
+bool InstallHook(size_t HookOffset, size_t HookSize, uintptr_t HookFunction, void ** Gateway, BYTE OriginalBytes[])
 {
     uintptr_t target = moduleBase + HookOffset;
 
@@ -1102,6 +1323,19 @@ void InstallHook(size_t HookOffset, size_t HookSize, uintptr_t HookFunction, voi
     {
         printf("%02X ", OriginalBytes[i]);
     }*/
+
+    if (*Gateway == nullptr)
+    {
+        DWORD dummy;
+
+        VirtualProtect((LPVOID)target, HookSize, oldProtect, &dummy
+        );
+
+        LOG("InstallHook: VirtualAlloc failed. Error: %lu", GetLastError());
+
+        return false;
+    }
+
     memcpy(*Gateway, OriginalBytes, HookSize);
 
     uintptr_t gatewayEnd = (uintptr_t)*Gateway + HookSize;
@@ -1119,5 +1353,110 @@ void InstallHook(size_t HookOffset, size_t HookSize, uintptr_t HookFunction, voi
     for (size_t i = 5; i < HookSize; i++)
         *(BYTE*)(target + i) = 0x90;
 
-    VirtualProtect((LPVOID)target, HookSize, oldProtect, &oldProtect);
+    // Restore original memory protection.
+    DWORD dummy;
+
+    VirtualProtect((LPVOID)target, HookSize, oldProtect, &dummy);
+    LOG("Hook installed at 0x%08X", (unsigned int)target);
+
+    return true;
+}
+
+
+void UninstallROMHook()
+{
+    switch (gPJVersion)
+    {
+        case PJVersion::EM_1_1_0:
+        {
+            UninstallHook(HOOK_ROM_LOAD_OFFSET_V_1_1_0, HOOK_ROM_LOAD_SIZE, gatewayROM, originalBytesROM);
+
+            break;
+        }
+
+        default:
+        {
+            UninstallHook(HOOK_ROM_LOAD_OFFSET, HOOK_ROM_LOAD_SIZE, gatewayROM, originalBytesROM);
+
+            break;
+        }
+    }
+
+    gROMHookInstalled = false;
+}
+
+
+void UninstallPCHook()
+{
+    switch (gPJVersion)
+    {
+        case PJVersion::EM_1_1_0:
+        {
+            UninstallHook(HOOK_PC_OFFSET_V_1_1_0, HOOK_PC_SIZE, gatewayPC, originalBytesPC);
+
+            break;
+        }
+
+        default:
+        {
+            UninstallHook(HOOK_PC_OFFSET, HOOK_PC_SIZE, gatewayPC, originalBytesPC);
+
+            break;
+        }
+    }
+
+    gPCHookInstalled = false;
+}
+
+
+void UninstallHook(size_t HookOffset, size_t HookSize, void* Gateway, BYTE OriginalBytes[])
+{
+    uintptr_t target = moduleBase + HookOffset;
+
+    DWORD oldProtect;
+
+    if (!VirtualProtect(
+        (LPVOID)target,
+        HookSize,
+        PAGE_EXECUTE_READWRITE,
+        &oldProtect))
+    {
+        LOG("UninstallHook: VirtualProtect failed. Error: %lu", GetLastError());
+
+        return;
+    }
+
+    // Restore the original instructions.
+    memcpy((void*)target, OriginalBytes, HookSize);
+
+    // Restore the previous protection.
+    DWORD dummy;
+    VirtualProtect((LPVOID)target, HookSize, oldProtect, &dummy);
+
+    LOG("Hook uninstalled at 0x%08X", (unsigned int)target);
+}
+
+
+void ShutdownHooks()
+{
+    if (gPCHookInstalled)
+    {
+        UninstallPCHook();
+    }
+
+    if (gatewayPC != nullptr)
+    {
+        VirtualFree(gatewayPC, 0, MEM_RELEASE);
+    }
+    gatewayPC = nullptr;
+
+    if (gROMHookInstalled)
+    {
+        UninstallROMHook();
+    }
+    if (gatewayROM != nullptr)
+    {
+        VirtualFree(gatewayROM, 0, MEM_RELEASE);
+    }
+    gatewayROM = nullptr;
 }

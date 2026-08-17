@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Generate src/data.rs for the Rust tracker, straight from the CSV pools.
+"""Generate the src/data/ folder module for the Rust tracker, from the CSV pools.
+
+NOTE: src/data/ has since been hand-curated (item display names diverge from the
+C++ sources). Re-running this generator REVERTS those curated names. Port curated
+names into the C++ sources first, or transform src/data/ in place instead.
 
 Same source of truth as the C++ generator (`Resources/Objects/Pool Transform.py`):
   - Resources/Objects/pool_oot.csv, pool_mm.csv   -> objects
@@ -15,12 +19,31 @@ headers for their numeric values and enum variants, and emit:
 Stdlib only (no pandas). Re-run after editing a CSV:  python tools/gen_data.py
 """
 import csv
+import os
 import re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]          # repository root
-OUT = Path(__file__).resolve().parents[1] / "src" / "data.rs"
+# Output is now a folder module (src/data/*.rs). DATA_OUT env var overrides it
+# (used to dry-run the generator to a temp dir without touching the tree).
+OUTDIR = Path(os.environ.get("DATA_OUT",
+              Path(__file__).resolve().parents[1] / "src" / "data"))
+
+# id -> readable constant name, so the emitted arrays reference `iid::NAME` /
+# `entr::NAME` instead of raw hex. Populated in main(); first-seen wins.
+ITEM_REV = {}
+ENT_REV = {}
+
+
+def iid_ref(k):
+    """`iid::NAME` for an item id, else its raw hex (0 / unknown ids)."""
+    return f"iid::{ITEM_REV[k]}" if k in ITEM_REV else f"{k:#x}"
+
+
+def entr_ref(k):
+    """`entr::NAME` for an entrance id, else its raw hex."""
+    return f"entr::{ENT_REV[k]}" if k in ENT_REV else f"{k:#x}"
 
 # Kept in sync with Pool Transform.py: names stored unprefixed in the CSV that
 # must be prefixed with the game (OOT_/MM_) to become the real macro.
@@ -465,7 +488,7 @@ def parse_scene_entrances(text, scene_sym, ent_sym, missing, missing_ent):
 def emit_scene_entrances(name, entries):
     lines = [f"pub static {name}: &[(SceneId, &[u32])] = &["]
     for sid, ents in entries:
-        cells = ", ".join(f"{e:#x}" for e in ents)
+        cells = ", ".join(entr_ref(e) for e in ents)
         lines.append(f"    ({sid:#x}, &[{cells}]),")
     lines.append("];\n")
     return "\n".join(lines)
@@ -660,7 +683,7 @@ def parse_progressive_families(items_cpp, id_sym, missing_ids):
 
 
 def emit_progressive_families(fams):
-    cells = ", ".join("[{:#x}, {:#x}, {:#x}]".format(*f) for f in fams)
+    cells = ", ".join("[{}, {}, {}]".format(*(iid_ref(k) for k in f)) for f in fams)
     return (
         "/// Progressive capacity families [base, upgrade1, upgrade2] (Items.cpp).\n"
         f"pub static PROGRESSIVE_FAMILIES: &[[u32; 3]] = &[{cells}];\n")
@@ -719,7 +742,7 @@ def emit_prog(sections_map, arrays_map):
         for sec_title, arr_name in sections_map[sec_arr]:
             lines.append(f'        ProgSection {{ title: "{esc(sec_title)}", entries: &[')
             for e in arrays_map[arr_name]:
-                keys = ", ".join(f"{k:#x}" for k in e["keys"])
+                keys = ", ".join(iid_ref(k) for k in e["keys"])
                 lines.append(
                     f'            ProgEntry {{ icon: "{esc(e["icon"])}", '
                     f'name: "{esc(e["name"])}", lookup_keys: &[{keys}], '
@@ -753,7 +776,8 @@ def emit_entrances(name, entrs):
             "to_scene: scenes::{ts}, from_name: \"{fn}\", to_name: \"{tn}\", "
             "type_: EntranceType::{ty}, anchor: [{ax}, {ay}], text: [{tx}, {tyy}], "
             "icon: \"{ic}\", layout: GameLayout::{lay} }},".format(
-                ti=e["to_id"], fi=e["from_id"], fs=e["from_scene"], ts=e["to_scene"],
+                ti=entr_ref(e["to_id"]), fi=entr_ref(e["from_id"]),
+                fs=e["from_scene"], ts=e["to_scene"],
                 fn=esc(e["from_name"]), tn=esc(e["to_name"]), ty=rust_ident(e["type"]),
                 ax=e["ax"], ay=e["ay"], tx=e["tx"], tyy=e["ty"],
                 ic=esc(e["icon"]), lay=rust_ident(e["layout"])))
@@ -777,6 +801,90 @@ def emit_objects(name, objs):
                 lay=rust_ident(o["layout"]), lt=rust_ident(o["loc_type"])))
     out.append("];\n")
     return "\n".join(out)
+
+
+# --- split the generated source into a src/data/ folder module ---------------
+_CORE = {'ObjectType', 'ObjectContext', 'GameLayout', 'LocType', 'EntranceType',
+         'ParamType', 'ParamCategory', 'ShuffleSetting', 'SceneId', 'scenes',
+         'SceneDef', 'ObjectDef', 'RoomDef', 'GrottoPos', 'EntranceDef',
+         'SettingMeta', 'ItemDef', 'ProgEntry', 'ProgSection', 'ProgPage'}
+_CONSTS = {'ids', 'iid', 'entr', 'song_oot', 'song_mm', 'owl'}
+_TARGET = {'PROGRESSIVE_FAMILIES': 'prog', 'PROG_PAGES': 'prog',
+           'OOT_OBJECTS': 'oot_items', 'MM_OBJECTS': 'mm_items',
+           'OOT_SCENES': 'oot_world', 'OOT_ROOMS': 'oot_world',
+           'OOT_ENTRANCES': 'oot_world', 'OOT_SCENE_ENTRANCES': 'oot_world',
+           'MM_SCENES': 'mm_world', 'MM_ROOMS': 'mm_world',
+           'MM_ENTRANCES': 'mm_world', 'MM_SCENE_ENTRANCES': 'mm_world'}
+_SUB = [('consts', 'id / entrance / song constants'),
+        ('misc', 'items, icons, settings, grottos - misc tables'),
+        ('prog', 'progression dashboard'),
+        ('oot_items', 'OoT object/check pool'),
+        ('oot_world', 'OoT scenes / regions / entrances'),
+        ('mm_items', 'MM object/check pool'),
+        ('mm_world', 'MM scenes / regions / entrances')]
+_ALLOW = '#![allow(dead_code, non_camel_case_types, non_upper_case_globals)]'
+
+
+def write_split(full_text, outdir):
+    """Segment the generated source into top-level blocks and route each to its
+    category file (mirrors the tree layout: mod.rs + per-category submodules)."""
+    lines = full_text.split("\n")
+    blocks, lead, i, n = [], [], 0, len(lines)
+    while i < n:
+        s = lines[i]
+        if re.match(r'(pub (?:enum|mod|struct|static|type|const|fn)\b|#!\[)', s):
+            m = re.match(r'pub (?:enum|mod|struct|static|type|const|fn)\s+(\w+)', s)
+            name = m.group(1) if m else None
+            kind = s.split()[1] if s.startswith('pub ') else 'attr'
+            st = s.rstrip()
+            if kind == 'attr' or st.endswith(';') or st.endswith('}'):
+                end = i
+            else:
+                j = i + 1
+                while j < n and lines[j].rstrip() not in ('}', '];'):
+                    j += 1
+                end = j
+            blocks.append((name, kind, lead + lines[i:end + 1]))
+            lead, i = [], end + 1
+        else:
+            lead.append(s)
+            i += 1
+
+    buckets = {k: [] for k, _ in _SUB}
+    core, header = [], None
+    for name, kind, blk in blocks:
+        if kind == 'attr':
+            header = blk
+        elif kind in ('enum', 'struct', 'type') or name in _CORE:
+            core.append(blk)
+        elif kind == 'mod' and name in _CONSTS:
+            buckets['consts'].append(blk)
+        elif name in _TARGET:
+            buckets[_TARGET[name]].append(blk)
+        else:
+            buckets['misc'].append(blk)
+
+    os.makedirs(outdir, exist_ok=True)
+
+    def flat(chunks):
+        out = []
+        for c in chunks:
+            out += c + ['']
+        return out
+
+    for key, cat in _SUB:
+        head = [f'//! GENERATED by tools/gen_data.py - DO NOT EDIT BY HAND. ({cat})', _ALLOW]
+        if key != 'consts':                       # consts needs nothing from super
+            head.append('use super::*;')
+        head.append('')
+        Path(outdir, f'{key}.rs').write_text("\n".join(head + flat(buckets[key])), encoding="utf-8")
+
+    mod = list(header or [])                        # //! header + #![allow(...)]
+    mod.append('')
+    for key, _ in _SUB:
+        mod += [f'mod {key};', f'pub use {key}::*;']
+    mod.append('')
+    Path(outdir, 'mod.rs').write_text("\n".join(mod + flat(core)), encoding="utf-8")
 
 
 def main():
@@ -849,6 +957,14 @@ def main():
     id_consts = sorted(((n, id_sym[n]) for n in used_ids), key=lambda kv: (kv[1], kv[0]))
     all_id_consts = sorted(id_sym.items(), key=lambda kv: (kv[1], kv[0]))
     ent_consts = sorted(ent_sym.items(), key=lambda kv: (kv[1], kv[0]))
+
+    # Reverse maps for readable id references (iid::NAME / entr::NAME) in the
+    # emitted arrays. Items.h only (avoids NPC/song aliases sharing a value);
+    # first-seen wins, matching file order.
+    for nm, val in parse_defines(read("Headers/Combo/Items.h")).items():
+        ITEM_REV.setdefault(val, nm)
+    for nm, val in ent_sym.items():
+        ENT_REV.setdefault(val, nm)
 
     parts = [
         "//! GENERATED by tools/gen_data.py - DO NOT EDIT BY HAND.\n"
@@ -957,9 +1073,9 @@ def main():
         "\n" + emit_objects("OOT_OBJECTS", oot_objs),
         "\n" + emit_objects("MM_OBJECTS", mm_objs),
     ]
-    OUT.write_text("".join(parts), encoding="utf-8")
+    write_split("".join(parts), OUTDIR)
 
-    print(f"OK -> {OUT}")
+    print(f"OK -> {OUTDIR}/ (mod + {len(_SUB)} submodules)")
     print(f"  scenes  : OoT={len(oot_scenes)}  MM={len(mm_scenes)}")
     print(f"  objects : OoT={len(oot_objs)}  MM={len(mm_objs)}")
     print(f"  named ids used: {len(used_ids)}  | scene consts: {len(scene_consts)}")

@@ -28,6 +28,13 @@ typedef struct Event
 	uint32_t Query[6];	// The gathered data. The first 3 are combo key, gi, scene, entrance and the last 3 are always the last respawn player coordinates.
 } Event;
 
+
+enum class TrackerCommand : uint8_t
+{
+    None = 0,       // Nothing to do, continue what you were doing
+    Shutdown = 1    // The dll should stop and restore what have been patched (except for the ROM hook)
+};
+
 // Tracker -> DLL : version deduite du spoiler ("Version:"). Doit rester en phase avec Hooking.h (DLL).
 #define HOST_VER_UNKNOWN 0
 #define HOST_VER_DEV     1
@@ -40,7 +47,16 @@ typedef struct SharedData
 	volatile LONG CurrIndex;	// The index at which the next tracked element should be added.
 	Event Buffer[BUFFER_SIZE];	// The buffer containing all tracked events.
 	volatile int32_t HostROMVersion;	// Tracker -> DLL : voir HOST_VER_* (0 = inconnu / pas de spoiler).
+    TrackerCommand Command;
 } SharedData;
+
+
+struct Project64WindowSearch
+{
+    DWORD pid;
+    std::vector<HWND>* windows;
+};
+
 
 class MemoryReader
 {
@@ -57,6 +73,11 @@ public:
 	std::string CurrDirectory;				// The current directory the tracker is located at.
 	SharedData * DLLData = nullptr;			// A pointer to the shared memory with the injected DLL.
 	LogTab* Owner = nullptr;				// The log tab that owns this memory reader.
+
+    HANDLE SharedMemoryHandle = nullptr;    // A handler to the shared memory
+    std::vector<HWND> PJ64WindowsBeforeSettings;
+    std::filesystem::path PJTrackerDLLPath;
+
 
 #pragma endregion
 
@@ -95,23 +116,108 @@ public:
 	*/
 	DWORD GetProcessIdByName(const char* ProcessName);
 
-	/*
-	*   Create a handle to access the given process ID.
-	*
-	*   @param PID       The process ID of the process to watch.
-	*
-	*   @return The handle to access the desired process ID, NULL if a problem occured.
-	*/
-	HANDLE OpenDesiredProcess(DWORD PID);
+    /*
+    *   Retrieve the executable path of the given process ID.
+    *
+    *   @param pid       The process ID to retrieve the path from.
+    *
+    *   @return The executable path of the given process ID, empty if not found.
+    */
+    std::string GetProcessPath(DWORD pid);
 
-	/*
-	*   Tells if the process associated to the given handle is alive.
-	*
-	*   @param Process       The process handle to check.
-	*
-	*   @return <b>True</b> if the process is alive, <b>false</b> otherwise.
-	*/
-	bool IsProcessAlive(HANDLE Process);
+    /*
+    *   Create a handle to access the given process ID.
+    *
+    *   @param PID       The process ID of the process to watch.
+    *
+    *   @return The handle to access the desired process ID, NULL if a problem occured.
+    */
+    HANDLE OpenDesiredProcess(DWORD PID);
+
+    /*
+    *   Tells if the process associated to the given handle is alive.
+    *
+    *   @param Process       The process handle to check.
+    *
+    *   @return <b>True</b> if the process is alive, <b>false</b> otherwise.
+    */
+    bool IsProcessAlive(HANDLE Process);
+
+    /*
+    *   Open the shared memory and set up the shared data pointer.
+    *
+    *   @return <b>True</b> if the shared memory can be opened, <b>false</b> otherwise.
+    */
+    bool OpenSharedMemory();
+
+    /*
+    *   Copy the tracker DLL to the location it will be injected from.
+    *
+    *   @return <b>True</b> if the DLL has been copied, <b>false</b> otherwise.
+    */
+    bool CopyTrackerDLL();
+
+    /*
+    *   Inject the tracker's DLL into the project 64 process.
+    *
+    *   @return <b>True</b> if the DLL has been injected, <b>false</b> otherwise.
+    */
+    bool LoadTrackerPlugin();
+
+    /*
+    *   Tells if the given module is currently loaded in the given process.
+    *
+    *   @param processId       The process ID to check.
+    *   @param moduleName      The name of the module to look for.
+    *
+    *   @return <b>True</b> if the module is loaded, <b>false</b> otherwise.
+    */
+    bool IsModuleLoaded(DWORD processId, const char* moduleName);
+
+    /*
+    *   Remove the tracker DLL previously copied for injection.
+    *
+    *   @return <b>True</b> if the DLL has been removed, <b>false</b> otherwise.
+    */
+    bool RemoveTrackerDLL();
+
+    /*
+    *   Retrieve the main Project64 window handle.
+    *
+    *   @return The main Project64 window handle, NULL if not found.
+    */
+    HWND GetProject64Window();
+
+    /*
+    *   Window enumeration callback used to collect the windows owned by the Project64 process.
+    *
+    *   @param hwnd         The handle of the currently enumerated window.
+    *   @param lParam       A pointer to the Project64WindowSearch holding the target PID and result list.
+    *
+    *   @return <b>TRUE</b> to keep enumerating windows, <b>FALSE</b> to stop.
+    */
+    static BOOL CALLBACK EnumProject64WindowsProc(HWND hwnd, LPARAM lParam);
+
+    /*
+    *   Retrieve all the top-level windows owned by the Project64 process.
+    *
+    *   @return The list of window handles owned by the Project64 process.
+    */
+    std::vector<HWND> GetProject64Windows();
+
+    /*
+    *   Open the Project64 settings window.
+    *
+    *   @return <b>True</b> if the settings window has been opened, <b>false</b> otherwise.
+    */
+    bool OpenProject64Settings();
+
+    /*
+    *   Wait for the Project64 settings window to appear.
+    *
+    *   @return The handle of the settings window, NULL if it did not appear.
+    */
+    HWND WaitForSettingsWindow();
 
 	/*
 	*   Start to read the memory of the correct process.
@@ -129,20 +235,6 @@ public:
 	*   @param CollectedEvent       The event to check / process.
 	*/
 	void CheckEvent(Event* CollectedEvent);
-
-	/*
-	*   Inject the tracker's DLL into the project 64 process.
-	* 
-	*   @return <b>True</b> if the DLL has been injected, <b>false</b> otherwise.
-	*/
-	bool InjectTrackerDLL();
-
-	/*
-	*   Open the shared memory and set up the shared data pointer.
-	* 
-	*   @return <b>True</b> if the shared memory can be opened, <b>false</b> otherwise.
-	*/
-	bool OpenSharedMemory();
 
 #pragma endregion
 };

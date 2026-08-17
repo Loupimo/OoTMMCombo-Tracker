@@ -8,7 +8,7 @@
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <windows.h>
-#include <tlhelp32.h>
+#include <TlHelp32.h>
 #include <iostream>
 #include <stdio.h>
 #include <stdarg.h>

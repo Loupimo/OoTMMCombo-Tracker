@@ -4,6 +4,7 @@
 #include "Combo/OvTypes.h"
 #include "Combo/Objects.h"
 #include "Combo/Items.h"
+#include "Common.h"
 #include <bit>
 
 // SharedData::GameVersion words written by a stable OoTMM build. Any other value is a dev build.
@@ -133,10 +134,31 @@ DWORD MemoryReader::GetProcessIdByName(const char* ProcessName)
 }
 
 
-HANDLE MemoryReader::OpenDesiredProcess(DWORD PID)
-{   // Open the desired process with the right to access the process and reading its memory
+std::string MemoryReader::GetProcessPath(DWORD pid)
+{
+    HANDLE process = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, FALSE, pid);
 
-    return OpenProcess(PROCESS_ALL_ACCESS, TRUE, this->PJ64PID);
+    if (!process)
+        return {};
+
+    char path[MAX_PATH];
+    DWORD size = MAX_PATH;
+
+    if (!QueryFullProcessImageNameA(process, 0, path, &size))
+    {
+        CloseHandle(process);
+        return {};
+    }
+
+    CloseHandle(process);
+
+    return std::string(path, size);
+}
+
+
+HANDLE MemoryReader::OpenDesiredProcess(DWORD PID)
+{
+    return OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, FALSE, PID);
 }
 
 
@@ -151,6 +173,308 @@ bool MemoryReader::IsProcessAlive(HANDLE Process)
 
     return exitCode == STILL_ACTIVE;
 }
+
+
+bool MemoryReader::OpenSharedMemory()
+{
+    this->SharedMemoryHandle = OpenFileMappingA(FILE_MAP_ALL_ACCESS, FALSE, "PJ64_SHARED_MEM");
+
+    if (!this->SharedMemoryHandle)
+    {
+        MultiLogger::LogMessage("Shared memory not found.");
+        return false;
+    }
+
+    this->DLLData = (SharedData*)MapViewOfFile(this->SharedMemoryHandle, FILE_MAP_ALL_ACCESS, 0, 0, sizeof(SharedData));
+
+    if (this->DLLData != nullptr)
+    {
+        MultiLogger::LogMessage("Shared memory found !");
+        return true;
+    }
+
+    return false;
+}
+
+
+
+bool MemoryReader::CopyTrackerDLL()
+{
+    std::string pj64Path = this->GetProcessPath(this->PJ64PID);
+
+    if (pj64Path.empty())
+    {
+        MultiLogger::LogMessage("Cannot retrieve Project64 executable path.");
+
+        return false;
+    }
+
+    std::filesystem::path project64Path(pj64Path);
+    std::filesystem::path project64Directory = project64Path.parent_path();
+    std::filesystem::path pluginDirectory = project64Directory / "Plugin";
+    std::filesystem::path source = std::filesystem::path(this->CurrDirectory) / "PJ64OoTMMTracker.dll";
+
+    this->PJTrackerDLLPath = pluginDirectory / "PJ64OoTMMTracker.dll";
+
+    MultiLogger::LogMessage("Project64 path: %s", project64Path.string().c_str());
+    MultiLogger::LogMessage("Plugin directory: %s", pluginDirectory.string().c_str());
+    MultiLogger::LogMessage("Tracker DLL: %s", source.string().c_str());
+
+    // Check that tracker's DLL exist.
+    if (!std::filesystem::exists(source))
+    {
+        MultiLogger::LogMessage("Tracker DLL does not exist: %s", source.string().c_str());
+
+        return false;
+    }
+
+    // Check that Plugin folder exist.
+    if (!std::filesystem::exists(pluginDirectory))
+    {
+        MultiLogger::LogMessage("Project64 Plugin directory does not exist: %s", pluginDirectory.string().c_str());
+
+        return false;
+    }
+
+    try
+    {
+        std::filesystem::copy_file(source, this->PJTrackerDLLPath, std::filesystem::copy_options::overwrite_existing);
+    }
+    catch (const std::filesystem::filesystem_error& e)
+    {
+        MultiLogger::LogMessage("Failed to copy tracker DLL: %s", e.what());
+
+        return false;
+    }
+
+    MultiLogger::LogMessage("Tracker DLL copied successfully to %s", this->PJTrackerDLLPath);
+
+    return true;
+}
+
+
+bool MemoryReader::LoadTrackerPlugin()
+{
+    return this->CopyTrackerDLL();
+}
+
+
+bool MemoryReader::IsModuleLoaded(DWORD processId, const char* moduleName)
+{
+    HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE | TH32CS_SNAPMODULE32, processId);
+
+    if (snapshot == INVALID_HANDLE_VALUE)
+        return false;
+
+    MODULEENTRY32W entry{};
+    entry.dwSize = sizeof(entry);
+
+    bool found = false;
+
+    if (Module32FirstW(snapshot, &entry))
+    {
+        do
+        {
+            if (_stricmp(QString::fromWCharArray(entry.szModule).toStdString().c_str(), moduleName) == 0)
+            {
+                found = true;
+                break;
+            }
+
+        } while (Module32NextW(snapshot, &entry));
+    }
+
+    CloseHandle(snapshot);
+
+    return found;
+}
+
+
+bool MemoryReader::RemoveTrackerDLL()
+{
+    if (this->PJTrackerDLLPath.empty())
+    {
+        return true;
+    }
+
+    std::error_code error;
+
+    bool removed = std::filesystem::remove(this->PJTrackerDLLPath, error);
+
+    if (removed)
+    {
+        MultiLogger::LogMessage("Tracker DLL removed from Project64 Plugin folder.");
+
+        return true;
+    }
+
+    if (error)
+    {
+        MultiLogger::LogMessage("Cannot remove tracker DLL: %s", error.message().c_str());
+    }
+    else
+    {
+        MultiLogger::LogMessage("Tracker DLL was not found.");
+    }
+
+    return false;
+}
+
+
+HWND MemoryReader::GetProject64Window()
+{
+    std::vector<HWND> windows = this->GetProject64Windows();
+
+    for (HWND hwnd : windows)
+    {
+        if (!IsWindowVisible(hwnd))
+            continue;
+
+        // A window without an owner is generally the application's main window.
+        if (GetWindow(hwnd, GW_OWNER) != nullptr)
+            continue;
+
+        return hwnd;
+    }
+
+    return nullptr;
+}
+
+
+BOOL CALLBACK MemoryReader::EnumProject64WindowsProc(HWND hwnd, LPARAM lParam)
+{
+    auto* search = reinterpret_cast<Project64WindowSearch*>(lParam);
+
+    DWORD pid = 0;
+
+    GetWindowThreadProcessId(hwnd, &pid);
+
+    if (pid == search->pid)
+    {
+        search->windows->push_back(hwnd);
+    }
+
+    return TRUE;
+}
+
+
+std::vector<HWND> MemoryReader::GetProject64Windows()
+{
+    std::vector<HWND> windows;
+
+    Project64WindowSearch search;
+    search.pid = this->PJ64PID;
+    search.windows = &windows;
+
+    EnumWindows(MemoryReader::EnumProject64WindowsProc, reinterpret_cast<LPARAM>(&search));
+
+    return windows;
+}
+
+
+bool MemoryReader::OpenProject64Settings()
+{
+    HWND hwnd = this->GetProject64Window();
+
+    if (hwnd == nullptr)
+    {
+        MultiLogger::LogMessage("Cannot find Project64 main window.");
+
+        return false;
+    }
+
+    MultiLogger::LogMessage("Project64 main window found: 0x%p", hwnd);
+
+    // Restaurer la fenêtre si elle est minimisée.
+    if (IsIconic(hwnd))
+    {
+        ShowWindow(hwnd, SW_RESTORE);
+    }
+
+    // Donner le focus à Project64.
+    SetForegroundWindow(hwnd);
+
+    // Petite attente pour laisser Windows effectuer
+    // le changement de fenêtre active.
+    Sleep(100);
+
+    INPUT inputs[4] = {};
+
+    // CTRL down
+    inputs[0].type = INPUT_KEYBOARD;
+    inputs[0].ki.wVk = VK_CONTROL;
+
+    // T down
+    inputs[1].type = INPUT_KEYBOARD;
+    inputs[1].ki.wVk = 'T';
+
+    // T up
+    inputs[2].type = INPUT_KEYBOARD;
+    inputs[2].ki.wVk = 'T';
+    inputs[2].ki.dwFlags = KEYEVENTF_KEYUP;
+
+    // CTRL up
+    inputs[3].type = INPUT_KEYBOARD;
+    inputs[3].ki.wVk = VK_CONTROL;
+    inputs[3].ki.dwFlags = KEYEVENTF_KEYUP;
+
+    UINT sent = SendInput(4, inputs, sizeof(INPUT));
+
+    if (sent != 4)
+    {
+        MultiLogger::LogMessage("SendInput failed. Sent %u/4 events. Error: %lu", sent, GetLastError());
+
+        return false;
+    }
+
+    MultiLogger::LogMessage("Ctrl+T sent to Project64.");
+
+    return true;
+}
+
+
+HWND MemoryReader::WaitForSettingsWindow()
+{
+    constexpr DWORD timeout = 3000;
+    constexpr DWORD interval = 10;
+
+    DWORD elapsed = 0;
+
+    while (elapsed < timeout && this->IsRunning)
+    {
+        std::vector<HWND> currentWindows = this->GetProject64Windows();
+
+        for (HWND hwnd : currentWindows)
+        {
+            bool existedBefore = false;
+
+            for (HWND oldHwnd :
+            this->PJ64WindowsBeforeSettings)
+            {
+                if (oldHwnd == hwnd)
+                {
+                    existedBefore = true;
+                    break;
+                }
+            }
+
+            if (!existedBefore)
+            {
+                // A new window belonging to P64 has just appeared.
+                if (IsWindowVisible(hwnd))
+                {
+                    return hwnd;
+                }
+            }
+        }
+
+        Sleep(interval);
+        elapsed += interval;
+    }
+
+    return nullptr;
+}
+
 
 
 void MemoryReader::CheckEvent(Event * CollectedEvent)
@@ -288,72 +612,187 @@ void MemoryReader::CheckEvent(Event * CollectedEvent)
 void MemoryReader::StartMemoryReader()
 {
     this->IsRunning = true;
+
     const char* processName = "Project64";
+
+    // ---------------------------------------------------------
+    // 1. Wait for Project64
+    // ---------------------------------------------------------
 
     do
     {
         this->PJ64PID = this->GetProcessIdByName(processName);
 
         if (this->PJ64PID == 0)
-        {   // PJ64-EM not found. Wait 1 second before retrying
-
-            MultiLogger::LogMessage("No %s-EM 1.0.3-PJ-3.0.1 or %s-EM 1.1.0-PJ-3.0.1 process found. Retrying in 1 second...\n", processName);
+        {
+            MultiLogger::LogMessage("No %s-EM 1.0.3-PJ-3.0.1 or %s-EM 1.1.0-PJ-3.0.1 process found. Retrying in 1 second...\n",  processName, processName);
             Sleep(1000);
         }
 
     } while (this->PJ64PID == 0 && this->IsRunning);
 
-    if (this->PJ64PID != 0)
+    if (!this->IsRunning)
+        return;
+
+    // ---------------------------------------------------------
+    // 2. Open Project64 with minimum privileges.
+    // ---------------------------------------------------------
+
+    this->PJ64Handle = this->OpenDesiredProcess(this->PJ64PID);
+
+    if (this->PJ64Handle == nullptr)
     {
-        this->PJ64Handle = this->OpenDesiredProcess(this->PJ64PID);
-        if (this->PJ64Handle != 0)
-        {   // We have permission to watch the process memory
+        DWORD errorMessageID = GetLastError();
+        MultiLogger::LogMessage("Cannot access %s process. Error : %s (%d).\n", processName, GetErrorAsString(errorMessageID), errorMessageID);
+        return;
+    }
 
-            MultiLogger::LogMessage("Trying to inject the dll.");
+    // ---------------------------------------------------------
+    // 3. Copy DLL into Project64/Plugin
+    // ---------------------------------------------------------
 
-            if (this->InjectTrackerDLL())
-            {   // Injection successful
+    if (!this->LoadTrackerPlugin() && !IsModuleLoaded(this->PJ64PID, "PJ64OoTMMTracker.dll"))
+    {
+        MultiLogger::LogMessage("Cannot install tracker DLL.");
 
-                MultiLogger::LogMessage("DLL injected into Project64.");
-                MultiLogger::LogMessage("Trying to open the shared memory.");
+        CloseHandle(this->PJ64Handle);
+        this->PJ64Handle = nullptr;
 
-                while (this->OpenSharedMemory() == false && this->IsProcessAlive(this->PJ64Handle))
-                {   // The DLL is not active. The game is probably not launched yet
+        return;
+    }
 
-                    Sleep(10);
-                }
-                this->RunMemoryReader();
-            }
-            else
+    // ---------------------------------------------------------
+    // 4. Remember all existing P64 windows.
+    // ---------------------------------------------------------
+
+    this->PJ64WindowsBeforeSettings = this->GetProject64Windows();
+
+    // ---------------------------------------------------------
+    // 5. Open Settings with Ctrl+T to force PJ64 to load or dll.
+    // ---------------------------------------------------------
+
+    if (!this->OpenProject64Settings())
+    {
+        MultiLogger::LogMessage("Cannot open Project64 Settings.");
+
+        CloseHandle(this->PJ64Handle);
+        this->PJ64Handle = nullptr;
+
+        return;
+    }
+
+    // ---------------------------------------------------------
+    // 6. Immediately start looking for Settings.
+    //
+    //    The function runs quickly and remembers the HWND.
+    // ---------------------------------------------------------
+
+    HWND settingsWindow = this->WaitForSettingsWindow();
+
+    // ---------------------------------------------------------
+    // 7. Wait until the DLL creates the shared memory.
+    // ---------------------------------------------------------
+
+    bool sharedMemoryOpened = false;
+
+    while (this->IsRunning && this->IsProcessAlive(this->PJ64Handle))
+    {
+        if (this->OpenSharedMemory())
+        {
+            sharedMemoryOpened = true;
+            break;
+        }
+
+        Sleep(10);
+    }
+
+    if (!this->IsRunning)
+        return;
+
+    if (!sharedMemoryOpened)
+    {
+        MultiLogger::LogMessage("Tracker DLL failed to initialize.");
+
+        return;
+    }
+
+    MultiLogger::LogMessage("Tracker DLL successfully loaded.");
+
+    // ---------------------------------------------------------
+    // 8. Close Settings.
+    // ---------------------------------------------------------
+
+    if (settingsWindow != nullptr)
+    {
+        PostMessage(settingsWindow, WM_CLOSE, 0, 0);
+
+        MultiLogger::LogMessage("Project64 Settings closed.");
+    }
+    else
+    {
+        MultiLogger::LogMessage("Warning: Project64 Settings window could not be identified. The dll may have not been loaded correctly.");
+    }
+
+    // ---------------------------------------------------------
+    // 9. Normal tracking.
+    // ---------------------------------------------------------
+
+    this->RunMemoryReader();
+
+    // ---------------------------------------------------------
+    // 10. Ask the DLL to unload itself.
+    // ---------------------------------------------------------
+
+    bool dllUnloaded = false;
+
+    if (this->DLLData != nullptr)
+    {
+        MultiLogger::LogMessage("Requesting tracker DLL shutdown...");
+
+        this->DLLData->Command = TrackerCommand::Shutdown;
+
+        // Wait for DLL to disappear from Project64.
+        for (int i = 0; i < 100; ++i)
+        {
+            if (!IsModuleLoaded(this->PJ64PID, "PJ64OoTMMTracker.dll"))
             {
-                MultiLogger::LogMessage("Cannot inject tracker dll into %s.\nPlease check your process and ensure that %s and %s are in the same folder as the tracker.\nBe sure that your antivirus did not put it in quarantine.", processName, "PJ64Injector.exe", "PJ64OoTMMTracker.dll");
-                MultiLogger::LogMessage("If so, you can add an exception to your antivirus program(do not disable it entirely !). Here are the steps under Windows 11 using Window defender :");
-                MultiLogger::LogMessage("- Click on the Start button.");
-                MultiLogger::LogMessage("- Click on Settings.");
-                MultiLogger::LogMessage("- Click on Update & Security.");
-                MultiLogger::LogMessage("- Click on Windows Security.");
-                MultiLogger::LogMessage("- Click on Virus & threat protection.");
-                MultiLogger::LogMessage("- Click on Manage settings underneath Virus & threat protection settings.");
-                MultiLogger::LogMessage("- Go to the bottom and click on Add or Remove exclusions and select your OoTMMAutoTracker path folder.");
-                MultiLogger::LogMessage("\nIf you are unable to unzip the PJ64Injector.exe try the following:");
-                MultiLogger::LogMessage("- Click on the Start button.");
-                MultiLogger::LogMessage("- Click on Settings.");
-                MultiLogger::LogMessage("- Click on Update & Security.");
-                MultiLogger::LogMessage("- Click on Windows Security.");
-                MultiLogger::LogMessage("- Click on Virus & threat protection.");
-                MultiLogger::LogMessage("- Then you should see protection history or something like that.");
-                MultiLogger::LogMessage("- Then you will see the list of recently action the antivirus has taken.");
-                MultiLogger::LogMessage("- Look for the one matching the tracker path.");
-                MultiLogger::LogMessage("- If this is a quarentine threat you should have an action button on the bottom right.");
-                MultiLogger::LogMessage("- If so click restore.");
+                dllUnloaded = true;
+                break;
             }
-        }
-        else
-        {   // An error occured while trying to get a valid handler to read the process memory
 
-            DWORD errorMessageID = GetLastError();
-            MultiLogger::LogMessage("Cannot access %s process. Error : %s (%d).\nPlease check your process and restart the tracker.", processName, GetErrorAsString(errorMessageID), errorMessageID);
+            Sleep(50);
         }
+    }
+
+    // ---------------------------------------------------------
+    // 11. Now that the DLL is gone, close shared memory.
+    // ---------------------------------------------------------
+
+    if (this->DLLData != nullptr)
+    {
+        UnmapViewOfFile(this->DLLData);
+        this->DLLData = nullptr;
+    }
+
+    if (this->SharedMemoryHandle != nullptr)
+    {
+        CloseHandle(this->SharedMemoryHandle);
+        this->SharedMemoryHandle = nullptr;
+    }
+
+    // ---------------------------------------------------------
+    // 12. Remove DLL from Plugin directory.
+    // ---------------------------------------------------------
+
+    if (dllUnloaded)
+    {
+        MultiLogger::LogMessage("Tracker DLL successfully unloaded.");
+
+        this->RemoveTrackerDLL();
+    }
+    else
+    {
+        MultiLogger::LogMessage("Tracker DLL is still loaded. Cannot safely remove it.");
     }
 
     if (this->IsRunning && this->PJ64Handle != 0 && !this->IsProcessAlive(this->PJ64Handle))
@@ -390,8 +829,7 @@ void MemoryReader::RunMemoryReader()
         // choisisse le bon "Nothing" ID meme en session OoT-only (ou le hook MM ne tranche pas).
         if (IsActiveROMVersionFromSpoiler())
         {
-            this->DLLData->HostROMVersion =
-                (GetActiveROMVersion() == ROMVersion::stable_30_1) ? HOST_VER_STABLE : HOST_VER_DEV;
+            this->DLLData->HostROMVersion = (GetActiveROMVersion() == ROMVersion::stable_30_1) ? HOST_VER_STABLE : HOST_VER_DEV;
         }
 
         while (i < this->DLLData->CurrIndex && i < this->DLLData->MaxSize)
@@ -414,76 +852,4 @@ void MemoryReader::RunMemoryReader()
         }
 
     } while (this->IsRunning && this->IsProcessAlive(this->PJ64Handle));
-
-    //this->IsRunning = false;
-}
-
-
-bool MemoryReader::OpenSharedMemory()
-{
-    HANDLE hMap = OpenFileMappingA(FILE_MAP_ALL_ACCESS, FALSE, "PJ64_SHARED_MEM");
-
-    if (!hMap)
-    {
-        //MultiLogger::LogMessage("Shared memory not found.");
-
-        std::cout << "Shared memory not found\n";
-        return false;
-    }
-
-    this->DLLData = (SharedData*)MapViewOfFile(hMap, FILE_MAP_ALL_ACCESS, 0, 0, sizeof(SharedData));
-
-    if (this->DLLData != nullptr)
-    {
-        MultiLogger::LogMessage("Shared memory found !");
-        return true;
-    }
-
-    return false;
-}
-
-
-bool MemoryReader::InjectTrackerDLL()
-{
-    std::string injector = this->CurrDirectory + "\\PJ64Injector.exe";
-    std::string dll = this->CurrDirectory + "\\PJ64OoTMMTracker.dll";
-
-    // CreateProcess does not go through cmd.exe, so the path can contain spaces
-    // without any shell escaping. lpCommandLine must be a writable buffer ;
-    // argv[0] is the program name by convention, then the PID and the DLL path.
-    char cmdLine[1024];
-    snprintf(cmdLine, sizeof(cmdLine), "\"%s\" %lu \"%s\"", injector.c_str(), this->PJ64PID, dll.c_str());
-
-    MultiLogger::LogMessage("Executing: %s", cmdLine);
-
-    STARTUPINFOA si = { sizeof(si) };
-    PROCESS_INFORMATION pi = { 0 };
-
-    BOOL ok = CreateProcessA(
-        injector.c_str(),               // lpApplicationName : exact path, no parsing
-        cmdLine,                        // lpCommandLine : writable buffer
-        nullptr, nullptr, FALSE,
-        CREATE_NO_WINDOW,               // no flashing console window
-        nullptr,
-        this->CurrDirectory.c_str(),    // working directory
-        &si, &pi);
-
-    if (!ok)
-    {   // Failed to launch the injector process
-
-        MultiLogger::LogMessage("CreateProcess failed: %lu", GetLastError());
-        return false;
-    }
-
-    // Wait for the injector to complete and retrieve its real exit code
-    WaitForSingleObject(pi.hProcess, INFINITE);
-
-    DWORD exitCode = 1;
-    GetExitCodeProcess(pi.hProcess, &exitCode);
-
-    CloseHandle(pi.hThread);
-    CloseHandle(pi.hProcess);
-
-    MultiLogger::LogMessage("Injector exit code: %lu", exitCode);
-    return exitCode == 0;
 }

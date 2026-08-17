@@ -102,6 +102,11 @@ enum GameID : uint8_t
     GAME_UNKNOWN = 2
 };
 
+enum class TrackerCommand : uint8_t
+{
+    None = 0,       // Nothing to do, continue what you were doing
+    Shutdown = 1    // The dll should stop and restore what have been patched (except for the ROM hook)
+};
 
 /* The Project64-EM fork version the DLL is injected into, read from the main window title. */
 enum PJVersion : uint8_t
@@ -131,8 +136,10 @@ struct SharedData
     volatile LONG CurrIndex;
     Event Buffer[BUFFER_SIZE];
     volatile int32_t HostROMVersion;    // Tracker -> DLL : voir HOST_VER_* (0 = inconnu / pas de spoiler)
+    TrackerCommand Command;
 };
 
+extern HMODULE gSelfModule;                 // A reference to this module in order to keep it active after the dll has been loaded and to unload it properly.
 extern SharedData* gData;                   // The shared data with the tracker
 extern uintptr_t moduleBase;                // The module base address of Project 64
 extern uintptr_t regBase;                   // The RAM address where the Project 64 registers are stored.
@@ -148,7 +155,40 @@ extern bool isStable;                       // Tell if the current game is stabl
 extern uint32_t gNothingID;                 // The current "Nothing" combo item ID (depends on stable/dev).
 extern PJVersion gPJVersion;                // The Project64-EM fork version the DLL is injected into.
 
-void TryResolveROMBase();
+/*
+*   Extract the version token located between the given prefix and suffix in a source string.
+*
+*   @param  Source      The string to search into.
+*   @param  Prefix      The signature preceding the version token.
+*   @param  Suffix      The delimiter following the version token.
+*   @param  OutVersion  Buffer receiving the null-terminated version string.
+*   @param  Size        Size of the output buffer in bytes.
+*   @return true if a version token was successfully extracted, false otherwise.
+*/
+static bool ExtractVersion(const char* Source, const char* Prefix, const char* Suffix, char* OutVersion, size_t Size);
+
+/*
+*   Callback used by EnumWindows to locate the Project64 main window inside the current
+*   process. It stops on the first top-level, visible window owned by this process whose
+*   title carries the space-separated emulator signature.
+*
+*   @param  Handle  The window handle currently enumerated.
+*   @param  LParam  Pointer to the HWND that receives the found main window.
+*   @return FALSE to stop enumeration once found, TRUE to keep searching.
+*/
+static BOOL CALLBACK FindPJ64WindowProc(HWND Handle, LPARAM LParam);
+
+/*
+*   Read the Project64-EM version token. The main window title is the primary, location
+*   independent source ("Project64-EM <version>-PJ-3.0.1"). The executable folder name
+*   ("Project64-EM-<version>-PJ-3.0.1-win32") is used as a fallback and only works if the
+*   user kept the distributed folder name.
+*
+*   @param  OutVersion  Buffer receiving the null-terminated version string.
+*   @param  Size        Size of the output buffer in bytes.
+*   @return true if a version token was successfully extracted, false otherwise.
+*/
+bool GetPJ64Version(char* OutVersion, size_t Size);
 
 /*
 *   Detect the Project64-EM fork version and store the result in gPJVersion. The main window
@@ -158,10 +198,9 @@ void TryResolveROMBase();
 void DetectPJVersion();
 
 /*
-*   Applique la version fournie par le tracker (SharedData::HostROMVersion, issue du spoiler).
-*   Si elle est connue, elle fait foi sur la detection CRC/offset pour le choix du "Nothing" ID.
+*   Attempt to resolve and cache the Project64 ROM base address.
 */
-void ApplyHostVersion();
+void TryResolveROMBase();
 
 /*
 *   Find the real game RAM address.
@@ -170,10 +209,83 @@ void ApplyHostVersion();
 */
 uintptr_t FindGameRAM();
 
+#ifdef _DEBUG
+
+/*
+*   Close the debug console previously opened for logging.
+*/
+void CloseDebugConsole();
+
+#endif
+
+/*
+*   Thread routine that unloads this DLL once an unload has been requested.
+*
+*   @return The thread exit code.
+*/
+DWORD WINAPI DLLUnloadThread(LPVOID);
+/*
+*   Request this DLL to unload itself by spawning the unload thread.
+*/
+extern "C" void RequestDLLUnload();
+/*
+*   Check the command requested by the tracker in the shared data and act on it (e.g. shutdown).
+*/
+extern "C" void CheckTrackerCommand();
+/*
+*   Thread routine that watches for a shutdown request and triggers the DLL teardown.
+*
+*   @return The thread exit code.
+*/
+DWORD WINAPI ShutdownWatcherThread(LPVOID);
+/*
+*   Start the shutdown watcher thread.
+*/
+void StartShutdownWatcher();
+/*
+*   Stop the shutdown watcher thread.
+*/
+void StopShutdownWatcher();
+
+
+/*
+* Uses the version provided by the tracker (Share Data::HostROM Version, from the spoiler).
+* If known, this takes precedence over CRC/offset detection for selecting the "Nothing" ID.
+*/
+void ApplyHostVersion();
+
 /*
 *   The program counter hook function used to track items and entrances.
 */
 void PCHook();
+
+/*
+*   Tells if the ROM currently loaded at the given base is an OoTMM combo ROM.
+*
+*   @param ROMBase       The base address of the loaded ROM.
+*
+*   @return True if an OoTMM combo ROM is loaded, false otherwise.
+*/
+bool IsOoTMMROMLoaded(uintptr_t ROMBase);
+
+/*
+*   Thread routine that performs the ROM detection after a short delay.
+*
+*   @param lpParam       The thread parameter.
+*
+*   @return The thread exit code.
+*/
+DWORD WINAPI DelayedROMDetectionThread(LPVOID lpParam);
+
+/*
+*   Start the delayed ROM detection by spawning its worker thread.
+*/
+void StartDelayedROMDetection();
+
+/*
+*   Assembly-callable entry point that triggers the delayed ROM detection.
+*/
+extern "C" void StartDelayedROMDetectionASM();
 
 /*
 *   The ROM hook function used to catch game ROM changes.
@@ -197,5 +309,34 @@ void InstallROMHook();
 *   @param HookSize			    The size of the hooked instructions.
 *   @param Gateway			    The gateway used to execute the original hooked code.
 *   @param OriginalBytes		The original code to execute.
+*
+*   @return True if the hook has been installed, false otherwise.
 */
-void InstallHook(size_t HookOffset, size_t HookSize, uintptr_t HookFunction, void** Gateway, BYTE OriginalBytes[]);
+bool InstallHook(size_t HookOffset, size_t HookSize, uintptr_t HookFunction, void** Gateway, BYTE OriginalBytes[]);
+
+/*
+*   Uninstall the ROM hook.
+*/
+void UninstallROMHook();
+
+/*
+*   Uninstall the program counter hook.
+*/
+void UninstallPCHook();
+
+/*
+*   Uninstall the desired hook.
+*
+*   @param HookOffset		    The offset instruction to place the hook at.
+*   @param HookSize			    The size of the hooked instructions.
+*   @param Gateway			    The gateway used to execute the original hooked code.
+*   @param OriginalBytes		The original code to execute.
+*
+*   @return True if the hook has been uninstalled, false otherwise.
+*/
+void UninstallHook(size_t HookOffset, size_t HookSize, void* Gateway, BYTE OriginalBytes[]);
+
+/*
+*   Uninstall all the hooks installed by the dll.
+*/
+void ShutdownHooks();

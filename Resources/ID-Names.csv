@@ -1,1181 +1,1181 @@
-ID;Name;Render_Type;Can_Be_Shared;;;;
-MM_ARROW_FIRE;Fire Arrows (MM);fire_arrow;true;;;;
-MM_ARROW_ICE;Ice Arrows (MM);ice_arrow;true;;;;
-MM_ARROW_LIGHT;Light Arrows (MM);light_arrow;true;;;;
-MM_ARROWS_10;10 Arrows (MM);arrow;true;;;;
-MM_ARROWS_30;30 Arrows (MM);arrow;true;;;;
-MM_ARROWS_40;40 Arrows (MM);arrow;true;;;;
-MM_BIG_POE;Big Poe (MM);bottled_big_poe;true;;;;
-MM_BLUE_FIRE;Blue Fire;blue_fire;true;;;;
-MM_BOMB;Bomb (MM);bomb;true;;;;
-MM_BOMB_BAG;Bomb Bag (MM);bomb_bag;true;;;;
-MM_BOMB_BAG2;Big Bomb Bag (MM);big_bomb;true;;;;
-MM_BOMB_BAG3;Biggest Bomb Bag (MM);biggest_bomb;true;;;;
-MM_BOMBCHU;1 Bombchu (MM);bombchu;true;;;;
-MM_BOMBCHU_10;10 Bombchu (MM);bombchu;true;;;;
-MM_BOMBCHU_20;20 Bombchu (MM);bombchu;true;;;;
-MM_BOMBCHU_5;5 Bombchu (MM);bombchu;true;;;;
-MM_BOMBCHU_BAG;Bombchu Bag (MM);bombchu_bag;true;;;;
-MM_BOMBCHU_BAG_FIRST_1;Bombchu Bag (MM);bombchu_bag;true;;;;
-MM_BOMBCHU_BAG_FIRST_10;Bombchu Bag (MM);bombchu_bag;true;;;;
-MM_BOMBCHU_BAG_FIRST_20;Bombchu Bag (MM);bombchu_bag;true;;;;
-MM_BOMBCHU_BAG_FIRST_5;Bombchu Bag (MM);bombchu_bag;true;;;;
-MM_BOMBCHU_BAG2;Big Bombchu Bag (MM);bombchu_bag;true;;;;
-MM_BOMBCHU_BAG3;Biggest Bombchu Bag (MM);bombchu_bag;true;;;;
-MM_BOMBER_NOTEBOOK;Bombers' Notebook;bombers;false;;;;
-MM_BOMBS_10;10 Bombs (MM);bomb;true;;;;
-MM_BOMBS_20;20 Bombs (MM);bomb;true;;;;
-MM_BOMBS_30;30 Bombs (MM);bomb;true;;;;
-MM_BOMBS_5;5 Bombs (MM);bomb;true;;;;
-MM_BOOTS_HOVER;Hover Boots (MM);hover;true;;;;
-MM_BOOTS_IRON;Iron Boots (MM);iron;true;;;;
-MM_BOSS_KEY;Boss Key (MM);boss_key;false;;;;
-MM_BOSS_KEY_GB;Boss Key (Great Bay Temple);boss_key;false;;;;
-MM_BOSS_KEY_SH;Boss Key (Snowhead Temple);boss_key;false;;;;
-MM_BOSS_KEY_ST;Boss Key (Stone Tower Temple);boss_key;false;;;;
-MM_BOSS_KEY_WF;Boss Key (Woodfall Temple);boss_key;false;;;;
-MM_BOTTLE_BIG_POE;Bottled Big Poe (MM);bottled_big_poe;true;;;;
-MM_BOTTLE_BLUE_FIRE;Bottle of Blue Fire;blue_fire;true;;;;
-MM_BOTTLE_CHATEAU;Bottle of Chateau Romani;chateau;true;;;;
-MM_BOTTLE_EMPTY;Empty Bottle (MM);bottle;true;;;;
-MM_BOTTLE_FAIRY;Bottled Fairy (MM);bottled_fairy;true;;;;
-MM_BOTTLE_MILK;Bottle of Milk (MM);milk;true;;;;
-MM_BOTTLE_POE;Bottled Poe (MM);bottled_poe;true;;;;
-MM_BOTTLE_POTION_BLUE;Bottle of Blue Potion (MM);blue_potion;true;;;;
-MM_BOTTLE_POTION_GREEN;Bottle of Green Potion (MM);green_potion;true;;;;
-MM_BOTTLE_POTION_RED;Bottle of Red Potion (MM);red_potion;true;;;;
-MM_BOTTLE_RUTO_LETTER;Ruto's Letter;ruto;true;;;;
-MM_BOTTLED_GOLD_DUST;Bottle of Gold Dust;dust;true;;;;
-MM_BOW;Hero's Bow (MM);bow_mm;true;;;;
-MM_BUGS;Bugs (MM);bottled_bugs;true;;;;
-MM_BUTTON_A;A Button (MM);a_button;true;;;;
-MM_BUTTON_C_DOWN;C-Down Button (MM);c_down;true;;;;
-MM_BUTTON_C_LEFT;C-Left Button (MM);c_left;true;;;;
-MM_BUTTON_C_RIGHT;C-Right Button (MM);c_right;true;;;;
-MM_BUTTON_C_UP;C-Up Button (MM);c_up;true;;;;
-MM_CHATEAU;Chateau Romani Refill (MM);chateau;true;;;;
-MM_CLOCK;Progressive Clock;clock_d1;false;;;;
-MM_CLOCK1;Clock (Day 1);clock_d1;false;;;;
-MM_CLOCK2;Clock (Night 1);clock_n1;false;;;;
-MM_CLOCK3;Clock (Day 2);clock_d2;false;;;;
-MM_CLOCK4;Clock (Night 2);clock_n2;false;;;;
-MM_CLOCK5;Clock (Day 3);clock_d3;false;;;;
-MM_CLOCK6;Clock (Night 3);clock_n3;false;;;;
-MM_COMPASS;Compass (MM);compass;false;;;;
-MM_COMPASS_GB;Compass (Great Bay Temple);compass;false;;;;
-MM_COMPASS_SH;Compass (Snowhead Temple);compass;false;;;;
-MM_COMPASS_ST;Compass (Stone Tower Temple);compass;false;;;;
-MM_COMPASS_WF;Compass (Woodfall Temple);compass;false;;;;
-MM_DEED_LAND;Land Title Deed;land;false;;;;
-MM_DEED_MOUNTAIN;Mountain Title Deed;mountain;false;;;;
-MM_DEED_OCEAN;Ocean Title Deed;ocean;false;;;;
-MM_DEED_SWAMP;Swamp Title Deed;swamp;false;;;;
-MM_DEFENSE_UPGRADE;Double Defense (MM);defense;true;;;;
-MM_FAIRY;Fairy (MM);bottled_fairy;true;;;;
-MM_FAIRY_BIG;Big Fairy (MM);fairy;true;;;;
-MM_FISH;Fish (MM);bottled_fish;true;;;;
-MM_GOLD_DUST;Gold Dust;dust;true;;;;
-MM_GOLDEN_GAUNTLETS;Golden Gauntlets (MM);golden_gauntlet;true;;;;
-MM_GORON_BRACELET;Goron's Bracelet (MM);bracelet;true;;;;
-MM_GREAT_FAIRY_SWORD;Great Fairy's Sword;fairy_sword;true;;;;
-MM_GS_TOKEN_OCEAN;Ocean Skulltula Token;ocean_token;false;;;;
-MM_GS_TOKEN_SWAMP;Swamp Skulltula Token;swamp_token;false;;;;
-MM_HAMMER;Megaton Hammer (MM);hammer;true;;;;
-MM_HEART_CONTAINER;Heart Container (MM);heart_container;true;;;;
-MM_HEART_PIECE;Piece of Heart (MM);heart_piece;true;;;;
-MM_HOOKSHOT;Hookshot (MM);hookshot_mm;true;;;;
-MM_HOOKSHOT_SHORT;Short Hookshot (MM);hookshot_oot;true;;;;
-MM_KEY_RING;Key Ring (MM);key_ring;false;;;;
-MM_KEY_RING_GB;Key Ring (Great Bay);key_ring;false;;;;
-MM_KEY_RING_SH;Key Ring (Snowhead);key_ring;false;;;;
-MM_KEY_RING_ST;Key Ring (Stone Tower);key_ring;false;;;;
-MM_KEY_RING_WF;Key Ring (Woodfall);key_ring;false;;;;
-MM_LENS;Lens of Truth (MM);lens;true;;;;
-MM_LETTER_TO_KAFEI;Letter to Kafei;letter_kafei;false;;;;
-MM_LETTER_TO_MAMA;Letter to Mama;letter_mama;false;;;;
-MM_MAGIC_BEAN;Magic Bean (MM);bean;false;;;;
-MM_MAGIC_JAR_LARGE;Large Magic Jar (MM);double_magic;true;;;;
-MM_MAGIC_JAR_SMALL;Small Magic Jar (MM);magic;true;;;;
-MM_MAGIC_UPGRADE;Magic Upgrade (MM);magic_upgrade;true;;;;
-MM_MAGIC_UPGRADE2;Larger Magic Upgrade (MM);large_magic_upgrade;true;;;;
-MM_MAP;Map (MM);map;false;;;;
-MM_MAP_GB;Map (Great Bay Temple);map;false;;;;
-MM_MAP_SH;Map (Snowhead Temple);map;false;;;;
-MM_MAP_ST;Map (Stone Tower Temple);map;false;;;;
-MM_MAP_WF;Map (Woodfall Temple);map;false;;;;
-MM_MASK_ALL_NIGHT;All-Night Mask;night;false;;;;
-MM_MASK_BLAST;Blast Mask (MM);blast;true;;;;
-MM_MASK_BREMEN;Bremen Mask;bremen;false;;;;
-MM_MASK_BUNNY;Bunny Hood (MM);bunny;true;;;;
-MM_MASK_CAPTAIN;Captain's Hat;captain;false;;;;
-MM_MASK_COUPLE;Couple's Mask;couple;false;;;;
-MM_MASK_DEKU;Deku Mask;deku;false;;;;
-MM_MASK_DON_GERO;Don Gero's Mask;gero;false;;;;
-MM_MASK_FIERCE_DEITY;Fierce Deity's Mask;deity;false;;;;
-MM_MASK_GARO;Garo's Mask;garo;false;;;;
-MM_MASK_GIANT;Giant's Mask;giant;false;;;;
-MM_MASK_GIBDO;Gibdo Mask;gibdo;false;;;;
-MM_MASK_GORON;Goron Mask (MM);goron;true;;;;
-MM_MASK_GREAT_FAIRY;Great Fairy's Mask;fairy_mask;false;;;;
-MM_MASK_KAFEI;Kafei's Mask;kafei;false;;;;
-MM_MASK_KAMARO;Kamaro's Mask (MM);kamaro;true;;;;
-MM_MASK_KEATON;Keaton Mask (MM);keaton;true;;;;
-MM_MASK_MAJORA;Majora's Mask;mask;false;;;;
-MM_MASK_POSTMAN;Postman's Hat;postman;false;;;;
-MM_MASK_ROMANI;Romani's Mask;romani;false;;;;
-MM_MASK_SCENTS;Mask of Scents;scents;false;;;;
-MM_MASK_STONE;Stone Mask (MM);stone;true;;;;
-MM_MASK_TROUPE_LEADER;Circus Leader's Mask;troupe;false;;;;
-MM_MASK_TRUTH;Mask of Truth (MM);truth;true;;;;
-MM_MASK_ZORA;Zora Mask (MM);zora;true;;;;
-MM_MILK;Romani Milk;milk;true;;;;
-MM_MOON_TEAR;Moon's Tear;moon;false;;;;
-MM_NUT;Nut (MM);nut;true;;;;
-MM_NUT_UPGRADE;Deku Nut Upgrade (MM);nut_upgrade_1;true;;;;
-MM_NUT_UPGRADE2;Second Deku Nut Upgrade (MM);nut_upgrade_2;true;;;;
-MM_NUTS_10;10 Deku Nuts (MM);nut;true;;;;
-MM_NUTS_5;5 Deku Nuts (MM);nut;true;;;;
-MM_OCARINA;Ocarina (MM);ocarina;true;;;;
-MM_OCARINA_FAIRY;Fairy Ocarina (MM);fairy_ocarina;true;;;;
-MM_OCARINA_OF_TIME;Ocarina of Time (MM);ocarina;true;;;;
-MM_OWL_CLOCK_TOWN;Owl Statue (Clock Town);owl;false;;;;
-MM_OWL_GREAT_BAY;Owl Statue (Great Bay);owl;false;;;;
-MM_OWL_HIDDEN;Owl Statue (Hidden);owl;false;;;;
-MM_OWL_IKANA_CANYON;Owl Statue (Ikana Canyon);owl;false;;;;
-MM_OWL_MILK_ROAD;Owl Statue (Milk Road);owl;false;;;;
-MM_OWL_MOUNTAIN_VILLAGE;Owl Statue (Mountain Village);owl;false;;;;
-MM_OWL_SNOWHEAD;Owl Statue (Snowhead);owl;false;;;;
-MM_OWL_SOUTHERN_SWAMP;Owl Statue (Southern Swamp);owl;false;;;;
-MM_OWL_STONE_TOWER;Owl Statue (Stone Tower);owl;false;;;;
-MM_OWL_WOODFALL;Owl Statue (Woodfall);owl;false;;;;
-MM_OWL_ZORA_CAPE;Owl Statue (Zora Cape);owl;false;;;;
-MM_PENDANT_OF_MEMORIES;Pendant of Memories;pendant;false;;;;
-MM_PICTOGRAPH_BOX;Pictograph Box;picto;false;;;;
-MM_PLATINUM_TOKEN;Platinum Token (MM);platinum_token;true;;;;
-MM_POE;Poe (MM);bottled_poe;true;;;;
-MM_POTION_BLUE;Blue Potion (MM);blue_potion;true;;;;
-MM_POTION_GREEN;Green Potion (MM);green_potion;true;;;;
-MM_POTION_RED;Red Potion (MM);red_potion;true;;;;
-MM_POWDER_KEG;Powder Keg (MM);powder;true;;;;
-MM_PROGRESSIVE_SHIELD_DEKU;Progressive Deku Shield (MM);deku_shield;true;;;;
-MM_PROGRESSIVE_SHIELD_HERO;Progressive Hero's Shield;hero_shield;true;;;;
-MM_QUIVER2;Big Quiver (MM);big_quiver;true;;;;
-MM_QUIVER3;Biggest Quiver (MM);biggest_quiver;true;;;;
-MM_RECOVERY_HEART;Recovery Heart (MM);heart;true;;;;
-MM_REMAINS_GOHT;Goht's Remains;goht;false;;;;
-MM_REMAINS_GYORG;Gyorg's Remains;gyorg;false;;;;
-MM_REMAINS_ODOLWA;Odolwa's Remains;odolwa;false;;;;
-MM_REMAINS_TWINMOLD;Twinmold's Remains;twinmold;false;;;;
-MM_ROOM_KEY;Room Key;key;false;;;;
-MM_RUPEE_BLUE;Blue Rupee (MM);blue_rupee;true;;;;
-MM_RUPEE_GOLD;Gold Rupee (MM);gold_rupee;true;;;;
-MM_RUPEE_GREEN;Green Rupee (MM);rupee;true;;;;
-MM_RUPEE_PURPLE;Purple Rupee (MM);purple_rupee;true;;;;
-MM_RUPEE_RED;Red Rupee (MM);red_rupee;true;;;;
-MM_RUPEE_RED_10;Red Rupee (MM);red_rupee;true;;;;
-MM_RUPEE_SILVER;Silver Rupee (MM);sr;true;;;;
-MM_SCALE;Progressive Scale (MM);bronze_scale;true;;;;
-MM_SCALE_BRONZE;Bronze Scale (MM);bronze_scale;true;;;;
-MM_SCALE_GOLDEN;Golden Scale (MM);golden;true;;;;
-MM_SCALE_SILVER;Silver Scale (MM);silver;true;;;;
-MM_SCOOP;MM Scoop;none;false;;;;
-MM_SEAHORSE2;Seahorse;seahorse;false;;;;
-MM_SHIELD;Progressive Shield (MM);hero_shield;true;;;;
-MM_SHIELD_DEKU;Deku Shield (MM);deku_shield;true;;;;
-MM_SHIELD_HERO;Hero's Shield;hero_shield;true;;;;
-MM_SHIELD_MIRROR;Mirror Shield (MM);mirror_mm;true;;;;
-MM_SILVER_GAUNTLETS;Silver Gauntlets (MM);silver_gauntlet;true;;;;
-MM_SKELETON_KEY;Skeleton Key (MM);skeleton_key;true;;;;
-MM_SMALL_KEY;Small Key (MM);small_key;false;;;;
-MM_SMALL_KEY_GB;Small Key (Great Bay Temple);small_key;false;;;;
-MM_SMALL_KEY_SH;Small Key (Snowhead Temple);small_key;false;;;;
-MM_SMALL_KEY_ST;Small Key (Stone Tower Temple);small_key;false;;;;
-MM_SMALL_KEY_WF;Small Key (Woodfall Temple);small_key;false;;;;
-MM_SOLD_OUT;Sold Out;none;false;;;;
-MM_SONG_AWAKENING;Sonata of Awakening (MM);song_green;true;;;;
-MM_SONG_EMPTINESS;Elegy of Emptiness (MM);song_orange;true;;;;
-MM_SONG_EPONA;Epona's Song (MM);song;true;;;;
-MM_SONG_GORON;Goron Lullaby (MM);song_red;true;;;;
-MM_SONG_GORON_HALF;Progressive Goron Lullaby (MM);song_red;true;;;;
-MM_SONG_HEALING;Song of Healing (MM);song;true;;;;
-MM_SONG_NOTE_AWAKENING;Note from Sonata of Awakening (MM);song_green;true;;;;
-MM_SONG_NOTE_EMPTINESS;Note from Elegy of Emptiness (MM);song_orange;true;;;;
-MM_SONG_NOTE_EPONA;Note from Epona's Song (MM);song;true;;;;
-MM_SONG_NOTE_GORON;Note from Goron Lullaby (MM);song_red;true;;;;
-MM_SONG_NOTE_HEALING;Note from Song of Healing (MM);song;true;;;;
-MM_SONG_NOTE_ORDER;Note from Oath to Order (MM);song_purple;true;;;;
-MM_SONG_NOTE_SOARING;Note from Song of Soaring (MM);song;true;;;;
-MM_SONG_NOTE_STORMS;Note from Song of Storms (MM);song;true;;;;
-MM_SONG_NOTE_SUN;Note from Sun's Song (MM);song;true;;;;
-MM_SONG_NOTE_TIME;Note from Song of Time (MM);song;true;;;;
-MM_SONG_NOTE_ZORA;Note from New Wave Bossa Nova (MM);song_blue;true;;;;
-MM_SONG_ORDER;Oath to Order (MM);song_purple;true;;;;
-MM_SONG_SOARING;Song of Soaring (MM);song;true;;;;
-MM_SONG_STORMS;Song of Storms (MM);song;true;;;;
-MM_SONG_SUN;Sun's Song (MM);song;true;;;;
-MM_SONG_TIME;Song of Time (MM);song;true;;;;
-MM_SONG_ZORA;New Wave Bossa Nova (MM);song_blue;true;;;;
-MM_SOUL_ANIMAL_BUTTERFLY;Soul of Butterflies (MM);soul_of_animal;true;;;;
-MM_SOUL_ANIMAL_COW;Soul of Cows (MM);soul_of_animal;true;;;;
-MM_SOUL_ANIMAL_CUCCO;Soul of Cuccos (MM);soul_of_animal;true;;;;
-MM_SOUL_ANIMAL_DOG;Sould of Dogs (MM);soul_of_animal;true;;;;
-MM_SOUL_BOSS_GOHT;Soul of Goht;soul_of_boss;false;;;;
-MM_SOUL_BOSS_GYORG;Soul of Gyorg;soul_of_boss;false;;;;
-MM_SOUL_BOSS_IGOS;Soul of Igos;soul_of_boss;false;;;;
-MM_SOUL_BOSS_ODOLWA;Soul of Odolwa;soul_of_boss;false;;;;
-MM_SOUL_BOSS_TWINMOLD;Soul of Twinmold;soul_of_boss;false;;;;
-MM_SOUL_ENEMY_ARMOS;Soul of Armos (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_BAD_BAT;Soul of Bad Bats;soul_of_foe;false;;;;
-MM_SOUL_ENEMY_BEAMOS;Soul of Beamos (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_BIO_BABA;Soul of Bio Babas;soul_of_foe;false;;;;
-MM_SOUL_ENEMY_BOE;Soul of Boes;soul_of_foe;false;;;;
-MM_SOUL_ENEMY_BUBBLE;Soul of Bubbles (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_CAPTAIN_KEETA;Soul of Captain Keeta;soul_of_foe;false;;;;
-MM_SOUL_ENEMY_CHUCHU;Soul of Chuchus;soul_of_foe;false;;;;
-MM_SOUL_ENEMY_DEEP_PYTHON;Soul of Deep Pythons;soul_of_foe;false;;;;
-MM_SOUL_ENEMY_DEKU_BABA;Soul of Deku Babas (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_DEKU_SCRUB;Soul of Deku Scrubs (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_DEXIHAND;Soul of Dexihands;soul_of_foe;false;;;;
-MM_SOUL_ENEMY_DODONGO;Soul of Dodongos (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_DRAGONFLY;Soul of Dragonflies;soul_of_foe;false;;;;
-MM_SOUL_ENEMY_EENO;Soul of Eenoes;soul_of_foe;false;;;;
-MM_SOUL_ENEMY_EYEGORE;Soul of Eyegores;soul_of_foe;false;;;;
-MM_SOUL_ENEMY_FLOORMASTER;Soul of Floormasters (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_FLYING_POT;Soul of Flying Pots (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_FREEZARD;Soul of Freezards (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_GARO;Soul of Garo;soul_of_foe;false;;;;
-MM_SOUL_ENEMY_GEKKO;Soul of Gekkos;soul_of_foe;false;;;;
-MM_SOUL_ENEMY_GOMESS;Soul of Gomess;soul_of_foe;false;;;;
-MM_SOUL_ENEMY_GUAY;Soul of Guays (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_HIPLOOP;Soul of Hiploops;soul_of_foe;false;;;;
-MM_SOUL_ENEMY_IRON_KNUCKLE;Soul of Iron Knuckles (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_KEESE;Soul of Keese (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_LEEVER;Soul of Leevers (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_LIKE_LIKE;Soul of Like Likes (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_LIZALFOS_DINOLFOS;Soul of Lizalfos/Dinolfos (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_NEJIRON;Soul of Nejirons;soul_of_foe;false;;;;
-MM_SOUL_ENEMY_OCTOROK;Soul of Octoroks (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_PEAHAT;Soul of Peahats (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_POE;Soul of Poes (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_REAL_BOMBCHU;Soul of Real Bombchu;soul_of_foe;false;;;;
-MM_SOUL_ENEMY_REDEAD_GIBDO;Soul of ReDeads/Gibdos (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_SHELL_BLADE;Soul of Shell Blades (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_SKULLFISH;Soul of Skullfish (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_SKULLTULA;Soul of Skulltulas (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_SKULLWALLTULA;Soul of Skullwalltulas (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_SNAPPER;Soul of Snappers;soul_of_foe;false;;;;
-MM_SOUL_ENEMY_STALCHILD;Soul of Stalchildren (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_TAKKURI;Soul of Takkuri;soul_of_foe;false;;;;
-MM_SOUL_ENEMY_TEKTITE;Soul of Tektites (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_THIEVES;Soul of the Fighting Pirates;soul_of_foe;true;;;;
-MM_SOUL_ENEMY_WALLMASTER;Soul of Wallmasters (MM);soul_of_foe;true;;;;
-MM_SOUL_ENEMY_WART;Soul of Warts;soul_of_foe;false;;;;
-MM_SOUL_ENEMY_WIZZROBE;Soul of Wizzrobes;soul_of_foe;false;;;;
-MM_SOUL_ENEMY_WOLFOS;Soul of Wolfos (MM);soul_of_foe;true;;;;
-MM_SOUL_MISC_BUSINESS_SCRUB;Soul of Business Scrubs (MM);soul_of_npc;true;;;;
-MM_SOUL_MISC_GS;Soul of Gold Skulltulas (MM);soul_of_npc;true;;;;
-MM_SOUL_NPC_ANJU;Soul of Anju (MM);soul_of_npc;true;;;;
-MM_SOUL_NPC_AROMA;Soul of Madame Aroma (MM);soul_of_npc;false;;;;
-MM_SOUL_NPC_ASTRONOMER;Soul of Astronomer (MM);soul_of_npc;true;;;;
-MM_SOUL_NPC_BANKER;Soul of the Banker;soul_of_npc;true;;;;
-MM_SOUL_NPC_BAZAAR_SHOPKEEPER;Soul of Swamp Archery Owner;soul_of_npc;true;;;;
-MM_SOUL_NPC_BEAN_SALESMAN;Soul of the Beans Salesman (MM);soul_of_npc;true;;;;
-MM_SOUL_NPC_BIGGORON;Soul of Biggoron (MM);soul_of_npc;true;;;;
-MM_SOUL_NPC_BLACKSMITHS;Soul of Blacksmiths;soul_of_npc;false;;;;
-MM_SOUL_NPC_BOMBCHU_BOWLING_LADY;Soul of Chest Game Lady;soul_of_npc;true;;;;
-MM_SOUL_NPC_BOMBCHU_SHOPKEEPER;Soul of the Bomb Shop Owner;soul_of_npc;true;;;;
-MM_SOUL_NPC_BOMBERS;Soul of Bombers;soul_of_npc;true;;;;
-MM_SOUL_NPC_BUTLER_DEKU;Soul of the Deku Butler;soul_of_npc;false;;;;
-MM_SOUL_NPC_CARPENTERS;Soul of Carpenters (MM);soul_of_npc;true;;;;
-MM_SOUL_NPC_CARPET_MAN;Soul of Swordsman;soul_of_npc;true;;;;
-MM_SOUL_NPC_CHEST_GAME_OWNER;Soul of the Fisherman;soul_of_npc;true;;;;
-MM_SOUL_NPC_CITIZEN;Soul of Citizens (MM);soul_of_npc;true;;;;
-MM_SOUL_NPC_COMPOSER_BROS;Soul of Composer Bros. (MM);soul_of_npc;true;;;;
-MM_SOUL_NPC_DAMPE;Soul of Dampe (MM);soul_of_npc;true;;;;
-MM_SOUL_NPC_DEKU_KING;Soul of the Deku King;soul_of_npc;false;;;;
-MM_SOUL_NPC_DEKU_PRINCESS;Soul of the Deku Princess;soul_of_npc;false;;;;
-MM_SOUL_NPC_DOG_LADY;Soul of Dog Lady (MM);soul_of_npc;true;;;;
-MM_SOUL_NPC_FISHING_POND_OWNER;Soul of Trading Post Owner;soul_of_npc;true;;;;
-MM_SOUL_NPC_GORMAN;Soul of Gorman & Bros.;soul_of_npc;true;;;;
-MM_SOUL_NPC_GORON;Soul of Gorons (MM);soul_of_npc;true;;;;
-MM_SOUL_NPC_GORON_CHILD;Soul of the Goron Baby (MM);soul_of_npc;true;;;;
-MM_SOUL_NPC_GORON_ELDER;Soul of the Goron Elder;soul_of_npc;false;;;;
-MM_SOUL_NPC_GORON_SHOPKEEPER;Soul of the Goron Shopkeeper (MM);soul_of_npc;true;;;;
-MM_SOUL_NPC_GROG;Soul of Grog;soul_of_npc;true;;;;
-MM_SOUL_NPC_GURU_GURU;Soul of Guru-Guru (MM);soul_of_npc;true;;;;
-MM_SOUL_NPC_HONEY_DARLING;Soul of Honey & Darling (MM);soul_of_npc;true;;;;
-MM_SOUL_NPC_KAFEI;Soul of Kafei;soul_of_npc;false;;;;
-MM_SOUL_NPC_KEATON;Soul of Keaton;soul_of_npc;false;;;;
-MM_SOUL_NPC_KOUME_KOTAKE;Soul of Koume and Kotake;soul_of_npc;false;;;;
-MM_SOUL_NPC_MALON;Soul of Romani/Cremia;soul_of_npc;true;;;;
-MM_SOUL_NPC_MAYOR_DOTOUR;Soul of Mayor Dotour;soul_of_npc;false;;;;
-MM_SOUL_NPC_MEDIGORON;Soul of Keg Trial Goron;soul_of_npc;true;;;;
-MM_SOUL_NPC_MOON_CHILDREN;Soul of Moon Children;soul_of_npc;false;;;;
-MM_SOUL_NPC_OLD_HAG;Soul of Anju's Grandmother;soul_of_npc;true;;;;
-MM_SOUL_NPC_PLAYGROUND_SCRUBS;Soul of Playground Scrubs;soul_of_npc;false;;;;
-MM_SOUL_NPC_POE_COLLECTOR;Soul of Ghost Hut Owner;soul_of_npc;true;;;;
-MM_SOUL_NPC_ROOFTOP_MAN;Soul of Part-Timer;soul_of_npc;true;;;;
-MM_SOUL_NPC_RUTO;Soul of Lulu;soul_of_npc;true;;;;
-MM_SOUL_NPC_SCIENTIST;Soul of the Scientist (MM);soul_of_npc;true;;;;
-MM_SOUL_NPC_SHOOTING_GALLERY_OWNER;Soul of Town Archery Owner;soul_of_npc;true;;;;
-MM_SOUL_NPC_TALON;Soul of Mr. Barten (MM);soul_of_npc;true;;;;
-MM_SOUL_NPC_THIEVES;Soul of the Patrolling Pirates and their Chief;soul_of_npc;true;;;;
-MM_SOUL_NPC_TINGLE;Soul of Tingle;soul_of_npc;false;;;;
-MM_SOUL_NPC_TOILET_HAND;Soul of Toilet Hand;soul_of_npc;false;;;;
-MM_SOUL_NPC_TOTO;Soul of Toto(MM);soul_of_npc;false;;;;
-MM_SOUL_NPC_TOURIST_CENTER;Soul of Tourist Center Owner;soul_of_npc;false;;;;
-MM_SOUL_NPC_ZORA;Soul of Zoras (MM);soul_of_npc;true;;;;
-MM_SOUL_NPC_ZORA_MUSICIANS;Soul of the Zora Musicians;soul_of_npc;false;;;;
-MM_SOUL_NPC_ZORA_SHOPKEEPER;Soul of the Zora Shopkeeper (MM);soul_of_npc;true;;;;
-MM_SPELL_FIRE;Din's Fire (MM);din;true;;;;
-MM_SPELL_LOVE;Nayru's Love (MM);nayru;true;;;;
-MM_SPELL_WIND;Farore's Wind (MM);farore;true;;;;
-MM_SPIN_UPGRADE;Spin Attack Upgrade (MM);spin;true;;;;
-MM_STICK;Deku Stick (MM);stick;true;;;;
-MM_STICK_UPGRADE;Deku Stick Upgrade (MM);stick_upgrade_1;true;;;;
-MM_STICK_UPGRADE2;Second Deku Stick Upgrade (MM);stick_upgrade_2;true;;;;
-MM_STONE_OF_AGONY;Stone of Agony (MM);agony;true;;;;
-MM_STRAY_FAIRY;Stray Fairy (MM);sf;false;;;;
-MM_STRAY_FAIRY_GB;Stray Fairy (Great Bay Temple);sf_blue;false;;;;
-MM_STRAY_FAIRY_SH;Stray Fairy (Snowhead Temple);sf_green;false;;;;
-MM_STRAY_FAIRY_ST;Stray Fairy (Stone Tower Temple);sf_yellow;false;;;;
-MM_STRAY_FAIRY_TOWN;Stray Fairy (Clock Town);sf_orange;false;;;;
-MM_STRAY_FAIRY_WF;Stray Fairy (Woodfall Temple);sf;false;;;;
-MM_STRENGTH;Progressive Strength (MM);bracelet;true;;;;
-MM_SWORD;Progressive Sword (MM);kokiri_mm;true;;;;
-MM_SWORD_GILDED;Gilded Sword (MM);gilded;true;;;;
-MM_SWORD_KOKIRI;Kokiri Sword (MM);kokiri_mm;true;;;;
-MM_SWORD_RAZOR;Razor Sword (MM);razor;true;;;;
-MM_TRANSCENDENT_FAIRY;Transcendent Fairy;sf_transcendent;false;;;;
-MM_TUNIC_GORON;Goron Tunic (MM);goron_tunic;true;;;;
-MM_TUNIC_ZORA;Zora Tunic (MM);zora_tunic;true;;;;
-MM_UNK_21;40 Arrows (MM);arrow;true;;;;
-MM_UNK_2B;30 Deku Nuts (MM);nut;true;;;;
-MM_UNK_2C;30 Deku Nuts (MM);nut;true;;;;
-MM_UNK_2D;40 Deku Nuts (MM);nut;true;;;;
-MM_UNK_2F;20 Deku Sticks (MM);stick;true;;;;
-MM_UNK_30;20 Deku Sticks (MM);stick;true;;;;
-MM_UNK_31;30 Deku Sticks (MM);stick;true;;;;
-MM_PROG_WALLET;Progressive Wallet (MM);wallet;true;;;;
-MM_WALLET;Child Wallet (MM);child_wallet;true;;;;
-MM_WALLET2;Adult Wallet (MM);wallet;true;;;;
-MM_WALLET3;Giant Wallet (MM);big_wallet;true;;;;
-MM_WALLET4;Colossal Wallet (MM);colossal_wallet;true;;;;
-MM_WALLET5;Bottomless Wallet (MM);bottomless_wallet;true;;;;
-MM_WEIRD_MUSHROOM;Magic Mushroom;bottled_mushroom;true;;;;
-MM_WORLD_MAP_CLOCK_TOWN;World Map of Clock Town;map;false;;;;
-MM_WORLD_MAP_GREAT_BAY;World Map of Great Bay;map;false;;;;
-MM_WORLD_MAP_ROMANI_RANCH;World Map of Ranch;map;false;;;;
-MM_WORLD_MAP_SNOWHEAD;World Map of Snowhead;map;false;;;;
-MM_WORLD_MAP_STONE_TOWER;World Map of Stone Tower;map;false;;;;
-MM_WORLD_MAP_WOODFALL;World Map of Woodfall;map;false;;;;
-NOTHING;Nothing;nothing;false;;;;
-OOT_ARROW_FIRE;Fire Arrows (OoT);fire_arrow;true;;;;
-OOT_ARROW_ICE;Ice Arrows (OoT);ice_arrow;true;;;;
-OOT_ARROW_LIGHT;Light Arrows (OoT);light_arrow;true;;;;
-OOT_ARROWS_10;10 Arrows (OoT);arrow;true;;;;
-OOT_ARROWS_30;30 Arrows (OoT);arrow;true;;;;
-OOT_ARROWS_5;5 Arrows (OoT);arrow;true;;;;
-OOT_BIG_POE;Big Poe (OoT);bottled_big_poe;true;;;;
-OOT_BLUE_FIRE;Blue Fire;blue_fire;true;;;;
-OOT_BOMB;Bomb (OoT);bomb;true;;;;
-OOT_BOMB_BAG;Bomb Bag (OoT);bomb_bag;true;;;;
-OOT_BOMB_BAG2;Big Bomb Bag (OoT);big_bomb;true;;;;
-OOT_BOMB_BAG3;Biggest Bomb Bag (OoT);biggest_bomb;true;;;;
-OOT_BOMBCHU_10;10 Bombchu (OoT);bombchu;true;;;;
-OOT_BOMBCHU_20;20 Bombchu (OoT);bombchu;true;;;;
-OOT_BOMBCHU_5;5 Bombchu (OoT);bombchu;true;;;;
-OOT_BOMBCHU_BAG;Bombchu Bag (OoT);bombchu_bag;true;;;;
-OOT_BOMBCHU_BAG_FIRST_10;Bombchu Bag (OoT);bombchu_bag;true;;;;
-OOT_BOMBCHU_BAG_FIRST_20;Bombchu Bag (OoT);bombchu_bag;true;;;;
-OOT_BOMBCHU_BAG_FIRST_5;Bombchu Bag (OoT);bombchu_bag;true;;;;
-OOT_BOMBCHU_BAG2;Big Bombchu Bag (OoT);bombchu_bag;true;;;;
-OOT_BOMBCHU_BAG3;Biggest Bombchu Bag (OoT);bombchu_bag;true;;;;
-OOT_BOMBS_10;10 Bombs (OoT);bomb;true;;;;
-OOT_BOMBS_20;20 Bombs (OoT);bomb;true;;;;
-OOT_BOMBS_30;30 Bombs (OoT);bomb;true;;;;
-OOT_BOMBS_5;5 Bombs (OoT);bomb;true;;;;
-OOT_BOOMERANG;Boomerang (OoT);boomerang;true;;;;
-OOT_BOOTS_HOVER;Hover Boots (OoT);hover;true;;;;
-OOT_BOOTS_IRON;Iron Boots (OoT);iron;true;;;;
-OOT_BOSS_KEY;Boss Key (OoT);boss_key;false;;;;
-OOT_BOSS_KEY_FIRE;Boss Key (Fire Temple);boss_key;false;;;;
-OOT_BOSS_KEY_FOREST;Boss Key (Forest Temple);boss_key;false;;;;
-OOT_BOSS_KEY_GANON;Boss Key (Ganon's Castle);boss_key;false;;;;
-OOT_BOSS_KEY_SHADOW;Boss Key (Shadow Temple);boss_key;false;;;;
-OOT_BOSS_KEY_SPIRIT;Boss Key (Spirit Temple);boss_key;false;;;;
-OOT_BOSS_KEY_WATER;Boss Key (Water Temple);boss_key;false;;;;
-OOT_BOTTLE_BIG_POE;Bottled Big Poe (OoT);bottled_big_poe;true;;;;
-OOT_BOTTLE_BLUE_FIRE;Bottle of Blue Fire;blue_fire;true;;;;
-OOT_BOTTLE_CHATEAU;Bottle of Chateau Romani;chateau;true;;;;
-OOT_BOTTLE_EMPTY;Empty Bottle (OoT);bottle;true;;;;
-OOT_BOTTLE_FAIRY;Bottled Fairy (OoT);bottled_fairy;true;;;;
-OOT_BOTTLE_MILK;Bottle of Milk (OoT);milk;true;;;;
-OOT_BOTTLE_POE;Bottled Poe (OoT);bottled_poe;true;;;;
-OOT_BOTTLE_POTION_BLUE;Bottle of Blue Potion (OoT);blue_potion;true;;;;
-OOT_BOTTLE_POTION_GREEN;Bottle of Green Potion (OoT);green_potion;true;;;;
-OOT_BOTTLE_POTION_RED;Bottle of Red Potion (OoT);red_potion;true;;;;
-OOT_BOTTLE_RUTO_LETTER;Ruto's Letter;ruto;true;;;;
-OOT_BOTTLED_GOLD_DUST;Bottle of Gold Dust;dust;true;;;;
-OOT_BOW;Fairy Bow (OoT);bow_oot;true;;;;
-OOT_BROKEN_GORON_SWORD;Broken Goron's Sword;broken_big;false;;;;
-OOT_BUGS;Bugs (OoT);bottled_bugs;true;;;;
-OOT_BULLET_BAG;Bullet Bag;big_seed;false;;;;
-OOT_BULLET_BAG2;Large Bullet Bag (OoT);biggest_seed;false;;;;
-OOT_BULLET_BAG3;Largest Bullet Bag (OoT);biggest_seed;false;;;;
-OOT_BUTTON_A;A Button (OoT);a_button;true;;;;
-OOT_BUTTON_C_DOWN;C-Down Button (OoT);c_down;true;;;;
-OOT_BUTTON_C_LEFT;C-Left Button (OoT);c_left;true;;;;
-OOT_BUTTON_C_RIGHT;C-Right Button (OoT);c_right;true;;;;
-OOT_BUTTON_C_UP;C-Up Button (OoT);c_up;true;;;;
-OOT_CHATEAU;Chateau Romani Refill;chateau;true;;;;
-OOT_CHICKEN;Chicken;cucco;false;;;;
-OOT_CLAIM_CHECK;Claim Check;claim;false;;;;
-OOT_COIN_BLUE;Coin (Blue);blue_coin;false;;;;
-OOT_COIN_GREEN;Coin (Green);green_coin;false;;;;
-OOT_COIN_RED;Coin (Red);red_coin;false;;;;
-OOT_COIN_YELLOW;Coin (Yellow);yellow_coin;false;;;;
-OOT_COJIRO;Cojiro;cojiro;false;;;;
-OOT_COMPASS;Compass (OoT);compass;false;;;;
-OOT_COMPASS_BOTW;Compass (Bottom of the Well);compass;false;;;;
-OOT_COMPASS_DC;Compass (Dodongo's Cavern);compass;false;;;;
-OOT_COMPASS_DT;Compass (Deku Tree);compass;false;;;;
-OOT_COMPASS_FIRE;Compass (Fire Temple);compass;false;;;;
-OOT_COMPASS_FOREST;Compass (Forest Temple);compass;false;;;;
-OOT_COMPASS_IC;Compass (Ice Cavern);compass;false;;;;
-OOT_COMPASS_JJ;Compass (Jabu-Jabu's Belly);compass;false;;;;
-OOT_COMPASS_SHADOW;Compass (Shadow Temple);compass;false;;;;
-OOT_COMPASS_SPIRIT;Compass (Spirit Temple);compass;false;;;;
-OOT_COMPASS_WATER;Compass (Water Temple);compass;false;;;;
-OOT_DEFENSE_UPGRADE;Double Defense (OoT);defense;true;;;;
-OOT_DEKU_SEEDS_30;30 Deku Seeds (OoT);seeds;true;;;;
-OOT_DEKU_SEEDS_5;5 Deku Seeds (OoT);seeds;true;;;;
-OOT_EYE_DROPS;Eye Drops;eye_drops;false;;;;
-OOT_EYEBALL_FROG;Eyeball Frog;frog;false;;;;
-OOT_FAIRY;Fairy (OoT);bottled_fairy;true;;;;
-OOT_FAIRY_BIG;Big Fairy (OoT);fairy;true;;;;
-OOT_FISH;Fish (OoT);bottled_fish;true;;;;
-OOT_FISHING_POND_ADULT_FISH;Adult Fish (Placeholder);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_FISH_10LBS;Adult Fish (10 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_FISH_11LBS;Adult Fish (11 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_FISH_12LBS;Adult Fish (12 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_FISH_13LBS;Adult Fish (13 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_FISH_14LBS;Adult Fish (14 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_FISH_15LBS;Adult Fish (15 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_FISH_16LBS;Adult Fish (16 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_FISH_17LBS;Adult Fish (17 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_FISH_18LBS;Adult Fish (18 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_FISH_19LBS;Adult Fish (19 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_FISH_20LBS;Adult Fish (20 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_FISH_21LBS;Adult Fish (21 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_FISH_22LBS;Adult Fish (22 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_FISH_23LBS;Adult Fish (23 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_FISH_24LBS;Adult Fish (24 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_FISH_25LBS;Adult Fish (25 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_FISH_4LBS;Adult Fish (4 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_FISH_5LBS;Adult Fish (5 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_FISH_6LBS;Adult Fish (6 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_FISH_7LBS;Adult Fish (7 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_FISH_8LBS;Adult Fish (8 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_FISH_9LBS;Adult Fish (9 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_LOACH;Adult Loach (Placeholder);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_LOACH_29LBS;Adult Loach (29 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_LOACH_30LBS;Adult Loach (30 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_LOACH_31LBS;Adult Loach (31 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_LOACH_32LBS;Adult Loach (32 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_LOACH_33LBS;Adult Loach (33 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_LOACH_34LBS;Adult Loach (34 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_LOACH_35LBS;Adult Loach (35 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_ADULT_LOACH_36LBS;Adult Loach (36 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_CHILD_FISH;Child Fish (Placeholder);carp_fish;false;;;;
-OOT_FISHING_POND_CHILD_FISH_10LBS;Child Fish (10 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_CHILD_FISH_11LBS;Child Fish (11 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_CHILD_FISH_12LBS;Child Fish (12 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_CHILD_FISH_13LBS;Child Fish (13 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_CHILD_FISH_14LBS;Child Fish (14 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_CHILD_FISH_2LBS;Child Fish (2 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_CHILD_FISH_3LBS;Child Fish (3 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_CHILD_FISH_4LBS;Child Fish (4 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_CHILD_FISH_5LBS;Child Fish (5 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_CHILD_FISH_6LBS;Child Fish (6 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_CHILD_FISH_7LBS;Child Fish (7 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_CHILD_FISH_8LBS;Child Fish (8 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_CHILD_FISH_9LBS;Child Fish (9 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_CHILD_LOACH;Child Loach (Placeholder);carp_fish;false;;;;
-OOT_FISHING_POND_CHILD_LOACH_14LBS;Child Loach (14 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_CHILD_LOACH_15LBS;Child Loach (15 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_CHILD_LOACH_16LBS;Child Loach (16 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_CHILD_LOACH_17LBS;Child Loach (17 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_CHILD_LOACH_18LBS;Child Loach (18 pounds);carp_fish;false;;;;
-OOT_FISHING_POND_CHILD_LOACH_19LBS;Child Loach (19 pounds);carp_fish;false;;;;
-OOT_GERUDO_CARD;Gerudo's Membership Card;card;false;;;;
-OOT_GOLD_DUST;Gold Dust;dust;true;;;;
-OOT_GOLDEN_GAUNTLETS;Golden Gauntlets (OoT);golden_gauntlet;true;;;;
-OOT_GORON_BRACELET;Goron's Bracelet (OoT);bracelet;true;;;;
-OOT_GS_TOKEN;Gold Skulltula Token;gs_token;false;;;;
-OOT_HAMMER;Megaton Hammer (OoT);hammer;true;;;;
-OOT_HEART_CONTAINER;Heart Container (OoT);heart_container;true;;;;
-OOT_HEART_CONTAINER2;Heart Container (OoT);heart_container;true;;;;
-OOT_HEART_PIECE;Piece of Heart (OoT);heart_piece;true;;;;
-OOT_HOOKSHOT;Progressive Hookshot (OoT);hookshot_oot;true;;;;
-OOT_KEY_RING;Key Ring (OoT);key_ring;false;;;;
-OOT_KEY_RING_BOTW;Key Ring (Well);key_ring;false;;;;
-OOT_KEY_RING_FIRE;Key Ring (Fire);key_ring;false;;;;
-OOT_KEY_RING_FOREST;Key Ring (Forest);key_ring;false;;;;
-OOT_KEY_RING_GANON;Key Ring (Ganon);key_ring;false;;;;
-OOT_KEY_RING_GF;Key Ring (Hideout);key_ring;false;;;;
-OOT_KEY_RING_GTG;Key Ring (GTG);key_ring;false;;;;
-OOT_KEY_RING_SHADOW;Key Ring (Shadow);key_ring;false;;;;
-OOT_KEY_RING_SPIRIT;Key Ring (Spirit);key_ring;false;;;;
-OOT_KEY_RING_TCG;Key Ring (Chest Game);key_ring;false;;;;
-OOT_KEY_RING_WATER;Key Ring (Water);key_ring;false;;;;
-OOT_LENS;Lens of Truth (OoT);lens;true;;;;
-OOT_LONGSHOT;Longshot (OoT);longshot;true;;;;
-OOT_MAGIC_BEAN;Magic Beans (OoT);bean;false;;;;
-OOT_MAGIC_JAR_LARGE;Large Magic Jar (OoT);double_magic;true;;;;
-OOT_MAGIC_JAR_SMALL;Small Magic Jar (OoT);magic;true;;;;
-OOT_MAGIC_UPGRADE;Magic Upgrade (OoT);magic_upgrade;true;;;;
-OOT_MAGIC_UPGRADE2;Larger Magic Upgrade (OoT);large_magic_upgrade;true;;;;
-OOT_MAP;Map (OoT);map;false;;;;
-OOT_MAP_BOTW;Map (Bottom of the Well);map;false;;;;
-OOT_MAP_DC;Map (Dodongo's Cavern);map;false;;;;
-OOT_MAP_DT;Map (Deku Tree);map;false;;;;
-OOT_MAP_FIRE;Map (Fire Temple);map;false;;;;
-OOT_MAP_FOREST;Map (Forest Temple);map;false;;;;
-OOT_MAP_IC;Map (Ice Cavern);map;false;;;;
-OOT_MAP_JJ;Map (Jabu-Jabu's Belly);map;false;;;;
-OOT_MAP_SHADOW;Map (Shadow Temple);map;false;;;;
-OOT_MAP_SPIRIT;Map (Spirit Temple);map;false;;;;
-OOT_MAP_WATER;Map (Water Temple);map;false;;;;
-OOT_MASK_BLAST;Blast Mask (OoT);blast;true;;;;
-OOT_MASK_BUNNY;Bunny Hood (OoT);bunny;true;;;;
-OOT_MASK_GERUDO;Gerudo Mask (OoT);gerudo;true;;;;
-OOT_MASK_GORON;Goron Mask (OoT);goron;true;;;;
-OOT_MASK_KEATON;Keaton Mask (OoT);keaton;true;;;;
-OOT_MASK_SKULL;Skull Mask (OoT);skull;true;;;;
-OOT_MASK_SPOOKY;Spooky Mask (OoT);spooky;true;;;;
-OOT_MASK_STONE;Stone Mask (OoT);stone;true;;;;
-OOT_MASK_TRUTH;Mask of Truth (OoT);truth;true;;;;
-OOT_MASK_ZORA;Zora Mask (OoT);zora;true;;;;
-OOT_MEDALLION_FIRE;Fire Medallion;fire;false;;;;
-OOT_MEDALLION_FOREST;Forest Medallion;forest;false;;;;
-OOT_MEDALLION_LIGHT;Light Medallion;light;false;;;;
-OOT_MEDALLION_SHADOW;Shadow Medallion;shadow;false;;;;
-OOT_MEDALLION_SPIRIT;Spirit Medallion;spirit;false;;;;
-OOT_MEDALLION_WATER;Water Medallion;water;false;;;;
-OOT_MILK;Lon Lon Milk (OoT);milk;true;;;;
-OOT_NUT_UPGRADE;Deku Nut Upgrade (OoT);nut_upgrade_1;true;;;;
-OOT_NUT_UPGRADE2;Second Deku Nut Upgrade (OoT);nut_upgrade_2;true;;;;
-OOT_NUTS_10;10 Deku Nuts (OoT);nut;true;;;;
-OOT_NUTS_5;5 Deku Nuts (OoT);nut;true;;;;
-OOT_NUTS_5_ALT;5 Deku Nuts (OoT);nut;true;;;;
-OOT_OCARINA;Progressive Ocarina (OoT);ocarina;true;;;;
-OOT_OCARINA_FAIRY;Fairy Ocarina (OoT);fairy_ocarina;true;;;;
-OOT_OCARINA_TIME;Ocarina of Time (OoT);ocarina;true;;;;
-OOT_ODD_MUSHROOM;Odd Mushroom;mushroom;true;;;;
-OOT_ODD_POTION;Odd Potion;potion;true;;;;
-OOT_PLATINUM_TOKEN;Platinum Token (OoT);platinum_token;true;;;;
-OOT_POACHER_SAW;Poacher's Saw;saw;false;;;;
-OOT_POCKET_CUCCO;Pocket Cucco;cucco;false;;;;
-OOT_POCKET_EGG;Pocket Egg;egg;false;;;;
-OOT_POE;Poe (OoT);bottled_poe;true;;;;
-OOT_POTION_BLUE;Blue Potion (OoT);blue_potion;true;;;;
-OOT_POTION_GREEN;Green Potion (OoT);green_potion;true;;;;
-OOT_POTION_RED;Red Potion (OoT);red_potion;true;;;;
-OOT_POUCH_SILVER_BOTW;Silver Rupee Pouch (Bottom of the Well);silver_pouch;false;;;;
-OOT_POUCH_SILVER_DC;Silver Rupee Pouch (Dodongo's Cavern);silver_pouch;false;;;;
-OOT_POUCH_SILVER_GANON_FIRE;Silver Rupee Pouch (Ganon's Castle - Fire Trial);silver_pouch;false;;;;
-OOT_POUCH_SILVER_GANON_FOREST;Silver Rupee Pouch (Ganon's Castle - Forest Trial);silver_pouch;false;;;;
-OOT_POUCH_SILVER_GANON_LIGHT;Silver Rupee Pouch (Ganon's Castle - Light Trial);silver_pouch;false;;;;
-OOT_POUCH_SILVER_GANON_SHADOW;Silver Rupee Pouch (Ganon's Castle - Shadow Trial);silver_pouch;false;;;;
-OOT_POUCH_SILVER_GANON_SPIRIT;Silver Rupee Pouch (Ganon's Castle - Spirit Trial);silver_pouch;false;;;;
-OOT_POUCH_SILVER_GANON_WATER;Silver Rupee Pouch (Ganon's Castle - Water Trial);silver_pouch;false;;;;
-OOT_POUCH_SILVER_GTG_LAVA;Silver Rupee Pouch (Gerudo Training Ground - Lava);silver_pouch;false;;;;
-OOT_POUCH_SILVER_GTG_SLOPES;Silver Rupee Pouch (Gerudo Training Ground - Slopes);silver_pouch;false;;;;
-OOT_POUCH_SILVER_GTG_WATER;Silver Rupee Pouch (Gerudo Training Ground - Water);silver_pouch;false;;;;
-OOT_POUCH_SILVER_IC_BLOCK;Silver Rupee Pouch (Ice Cavern - Block);silver_pouch;false;;;;
-OOT_POUCH_SILVER_IC_SCYTHE;Silver Rupee Pouch (Ice Cavern - Scythe);silver_pouch;false;;;;
-OOT_POUCH_SILVER_SHADOW_BLADES;Silver Rupee Pouch (Shadow Temple - Invisible Blades);silver_pouch;false;;;;
-OOT_POUCH_SILVER_SHADOW_PIT;Silver Rupee Pouch (Shadow Temple - Large Pits);silver_pouch;false;;;;
-OOT_POUCH_SILVER_SHADOW_SCYTHE;Silver Rupee Pouch (Shadow Temple - Scythe);silver_pouch;false;;;;
-OOT_POUCH_SILVER_SHADOW_SPIKES;Silver Rupee Pouch (Shadow Temple - Spikes);silver_pouch;false;;;;
-OOT_POUCH_SILVER_SPIRIT_ADULT;Silver Rupee Pouch (Spirit Temple - Adult);silver_pouch;false;;;;
-OOT_POUCH_SILVER_SPIRIT_BOULDERS;Silver Rupee Pouch (Spirit Temple - Boulders);silver_pouch;false;;;;
-OOT_POUCH_SILVER_SPIRIT_CHILD;Silver Rupee Pouch (Spirit Temple - Child);silver_pouch;false;;;;
-OOT_POUCH_SILVER_SPIRIT_LOBBY;Silver Rupee Pouch (Spirit Temple - Lobby);silver_pouch;false;;;;
-OOT_POUCH_SILVER_SPIRIT_SUN;Silver Rupee Pouch (Spirit Temple - Sun Block);silver_pouch;false;;;;
-OOT_PRESCRIPTION;Prescription;prescription;false;;;;
-OOT_PROGRESSIVE_SHIELD_DEKU;Progressive Deku Shield (OoT);deku_shield;true;;;;
-OOT_PROGRESSIVE_SHIELD_HYLIAN;Progressive Hylian Shield;hylian_shield;true;;;;
-OOT_QUIVER2;Big Quiver (OoT);big_quiver;true;;;;
-OOT_QUIVER3;Biggest Quiver (OoT);biggest_quiver;true;;;;
-OOT_RECOVERY_HEART;Recovery Heart (OoT);heart;true;;;;
-OOT_RUPEE_BLUE;Blue Rupee (OoT);blue_rupee;true;;;;
-OOT_RUPEE_GREEN;Green Rupee (OoT);rupee;true;;;;
-OOT_RUPEE_HUGE;Gold Rupee (OoT);gold_rupee;true;;;;
-OOT_RUPEE_MAGICAL;Magical Silver Rupee;magical_rupee;false;;;;
-OOT_RUPEE_PURPLE;Purple Rupee (OoT);purple_rupee;true;;;;
-OOT_RUPEE_RAINBOW;Rainbow Rupee (OoT);rainbow_rupee;true;;;;
-OOT_RUPEE_RED;Red Rupee (OoT);red_rupee;true;;;;
-OOT_RUPEE_SILVER_BOTW;Silver Rupee (Bottom of the Well);sr;false;;;;
-OOT_RUPEE_SILVER_DC;Silver Rupee (Dodongo's Cavern);sr;false;;;;
-OOT_RUPEE_SILVER_GANON_FIRE;Silver Rupee (Ganon's Castle - Fire Trial);sr;false;;;;
-OOT_RUPEE_SILVER_GANON_FOREST;Silver Rupee (Ganon's Castle - Forest Trial);sr;false;;;;
-OOT_RUPEE_SILVER_GANON_LIGHT;Silver Rupee (Ganon's Castle - Light Trial);sr;false;;;;
-OOT_RUPEE_SILVER_GANON_SHADOW;Silver Rupee (Ganon's Castle - Shadow Trial);sr;false;;;;
-OOT_RUPEE_SILVER_GANON_SPIRIT;Silver Rupee (Ganon's Castle - Spirit Trial);sr;false;;;;
-OOT_RUPEE_SILVER_GANON_WATER;Silver Rupee (Ganon's Castle - Water Trial);sr;false;;;;
-OOT_RUPEE_SILVER_GTG_LAVA;Silver Rupee (Gerudo Training Ground - Lava);sr;false;;;;
-OOT_RUPEE_SILVER_GTG_SLOPES;Silver Rupee (Gerudo Training Ground - Slopes);sr;false;;;;
-OOT_RUPEE_SILVER_GTG_WATER;Silver Rupee (Gerudo Training Ground - Water);sr;false;;;;
-OOT_RUPEE_SILVER_IC_BLOCK;Silver Rupee (Ice Cavern - Block);sr;false;;;;
-OOT_RUPEE_SILVER_IC_SCYTHE;Silver Rupee (Ice Cavern - Scythe);sr;false;;;;
-OOT_RUPEE_SILVER_SHADOW_BLADES;Silver Rupee (Shadow Temple - Invisible Blades);sr;false;;;;
-OOT_RUPEE_SILVER_SHADOW_PIT;Silver Rupee (Shadow Temple - Large Pits);sr;false;;;;
-OOT_RUPEE_SILVER_SHADOW_SCYTHE;Silver Rupee (Shadow Temple - Scythe);sr;false;;;;
-OOT_RUPEE_SILVER_SHADOW_SPIKES;Silver Rupee (Shadow Temple - Spikes);sr;false;;;;
-OOT_RUPEE_SILVER_SPIRIT_ADULT;Silver Rupee (Spirit Temple - Adult);sr;false;;;;
-OOT_RUPEE_SILVER_SPIRIT_BOULDERS;Silver Rupee (Spirit Temple - Boulders);sr;false;;;;
-OOT_RUPEE_SILVER_SPIRIT_CHILD;Silver Rupee (Spirit Temple - Child);sr;false;;;;
-OOT_RUPEE_SILVER_SPIRIT_LOBBY;Silver Rupee (Spirit Temple - Lobby);sr;false;;;;
-OOT_RUPEE_SILVER_SPIRIT_SUN;Silver Rupee (Spirit Temple - Sun Block);sr;false;;;;
-OOT_SCALE;Progressive Scale (Oot);bronze_scale;true;;;;
-OOT_SCALE_BRONZE;Bronze Scale (OoT);bronze_scale;true;;;;
-OOT_SCALE_GOLDEN;Golden Scale (OoT);golden;true;;;;
-OOT_SCALE_SILVER;Silver Scale (OoT);silver;true;;;;
-OOT_SEAHORSE2;Seahorse;seahorse;false;;;;
-OOT_SHIELD;Progressive Shield (OoT);deku_shield;true;;;;
-OOT_SHIELD_DEKU;Deku Shield (OoT);deku_shield;true;;;;
-OOT_SHIELD_HYLIAN;Hylian Shield;hylian_shield;true;;;;
-OOT_SHIELD_MIRROR;Mirror Shield (OoT);mirror_oot;true;;;;
-OOT_SILVER_GAUNTLETS;Silver Gauntlets (OoT);silver_gauntlet;true;;;;
-OOT_SKELETON_KEY;Skeleton Key (OoT);skeleton_key;true;;;;
-OOT_SLINGSHOT;Fairy Slingshot (OoT);slingshot;true;;;;
-OOT_SMALL_KEY;Small Key (OoT);small_key;false;;;;
-OOT_SMALL_KEY_BOTW;Small Key (Bottom of the Well);small_key;false;;;;
-OOT_SMALL_KEY_FIRE;Small Key (Fire Temple);small_key;false;;;;
-OOT_SMALL_KEY_FOREST;Small Key (Forest Temple);small_key;false;;;;
-OOT_SMALL_KEY_GANON;Small Key (Ganon's Castle);small_key;false;;;;
-OOT_SMALL_KEY_GF;Small Key (Gerudo's Fortress);small_key;false;;;;
-OOT_SMALL_KEY_GTG;Small Key (Gerudo's Training Ground);small_key;false;;;;
-OOT_SMALL_KEY_SHADOW;Small Key (Shadow Temple);small_key;false;;;;
-OOT_SMALL_KEY_SPIRIT;Small Key (Spirit Temple);small_key;false;;;;
-OOT_SMALL_KEY_TCG;Small Key (Chest Game);small_key;false;;;;
-OOT_SMALL_KEY_WATER;Small Key (Water Temple);small_key;false;;;;
-OOT_SONG_EMPTINESS;Elegy of Emptiness (OoT);song_orange;true;;;;
-OOT_SONG_EPONA;Epona's Song (OoT);song;true;;;;
-OOT_SONG_NOTE_EMPTINESS;Note from Elegy of Emptiness (OoT);song_orange;true;;;;
-OOT_SONG_NOTE_EPONA;Note from Epona's Song (OoT);song;true;;;;
-OOT_SONG_NOTE_SARIA;Note from Saria's Song (OoT);song;true;;;;
-OOT_SONG_NOTE_STORMS;Note from Song of Storms (OoT);song;true;;;;
-OOT_SONG_NOTE_SUN;Note from Sun's Song (OoT);song;true;;;;
-OOT_SONG_NOTE_TIME;Note from Song of Time (OoT);song;true;;;;
-OOT_SONG_NOTE_TP_FIRE;Note from Bolero of Fire (OoT);song_red;true;;;;
-OOT_SONG_NOTE_TP_FOREST;Note from Minuet of Forest (OoT);song_green;true;;;;
-OOT_SONG_NOTE_TP_LIGHT;Note from Prelude of Light (OoT);song_yellow;true;;;;
-OOT_SONG_NOTE_TP_SHADOW;Note from Nocturne of Shadow (OoT);song_purple;true;;;;
-OOT_SONG_NOTE_TP_SPIRIT;Note from Requiem of Spirit (OoT);song_orange;true;;;;
-OOT_SONG_NOTE_TP_WATER;Note from Serenade of Water (OoT);song_blue;true;;;;
-OOT_SONG_NOTE_ZELDA;Note from Zelda's Lullaby (OoT);song;true;;;;
-OOT_SONG_SARIA;Saria's Song (OoT);song;true;;;;
-OOT_SONG_STORMS;Song of Storms (OoT);song;true;;;;
-OOT_SONG_SUN;Sun's Song (OoT);song;true;;;;
-OOT_SONG_TIME;Song of Time (OoT);song;true;;;;
-OOT_SONG_TP_FIRE;Bolero of Fire (OoT);song_red;true;;;;
-OOT_SONG_TP_FOREST;Minuet of Forest (OoT);song_green;true;;;;
-OOT_SONG_TP_LIGHT;Prelude of Light (OoT);song_yellow;true;;;;
-OOT_SONG_TP_SHADOW;Nocturne of Shadow (OoT);song_purple;true;;;;
-OOT_SONG_TP_SPIRIT;Requiem of Spirit (OoT);song_orange;true;;;;
-OOT_SONG_TP_WATER;Serenade of Water (OoT);song_blue;true;;;;
-OOT_SONG_ZELDA;Zelda's Lullaby (OoT);song;true;;;;
-OOT_SOUL_ANIMAL_BUTTERFLY;Soul of Butterflies (OoT);soul_of_animal;true;;;;
-OOT_SOUL_ANIMAL_COW;Soul of Cows (OoT);soul_of_animal;true;;;;
-OOT_SOUL_ANIMAL_CUCCO;Soul of Cuccos (OoT);soul_of_animal;true;;;;
-OOT_SOUL_ANIMAL_DOG;Soul of Dogs (OoT);soul_of_animal;true;;;;
-OOT_SOUL_BOSS_BARINADE;Soul of Barinade;soul_of_boss;false;;;;
-OOT_SOUL_BOSS_BONGO_BONGO;Soul of Bongo Bongo;soul_of_boss;false;;;;
-OOT_SOUL_BOSS_KING_DODONGO;Soul of King Dodongo;soul_of_boss;false;;;;
-OOT_SOUL_BOSS_MORPHA;Soul of Morpha;soul_of_boss;false;;;;
-OOT_SOUL_BOSS_PHANTOM_GANON;Soul of Phantom Ganon;soul_of_boss;false;;;;
-OOT_SOUL_BOSS_QUEEN_GOHMA;Soul of Queen Gohma;soul_of_boss;false;;;;
-OOT_SOUL_BOSS_TWINROVA;Soul of Twinrova;soul_of_boss;false;;;;
-OOT_SOUL_BOSS_VOLVAGIA;Soul of Volvagia;soul_of_boss;false;;;;
-OOT_SOUL_ENEMY_ANUBIS;Soul of Anubis;soul_of_foe;false;;;;
-OOT_SOUL_ENEMY_ARMOS;Soul of Armos (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_BABY_DODONGO;Soul of Baby Dodongos;soul_of_foe;false;;;;
-OOT_SOUL_ENEMY_BEAMOS;Soul of Beamos (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_BIRI_BARI;Soul of Biris/Baris;soul_of_foe;false;;;;
-OOT_SOUL_ENEMY_BUBBLE;Soul of Bubbles (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_DARK_LINK;Soul of Dark Link;soul_of_foe;false;;;;
-OOT_SOUL_ENEMY_DEAD_HAND;Soul of Dead Hands;soul_of_foe;false;;;;
-OOT_SOUL_ENEMY_DEKU_BABA;Soul of Deku Babas (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_DEKU_SCRUB;Soul of Deku Scrubs (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_DODONGO;Soul of Dodongos (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_FLARE_DANCER;Soul of Flare Dancers;soul_of_foe;false;;;;
-OOT_SOUL_ENEMY_FLOORMASTER;Soul of Floormasters (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_FLYING_POT;Soul of Flying Pots (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_FREEZARD;Soul of Freezards (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_GOHMA_LARVA;Soul of Gohma Larvaes;soul_of_foe;false;;;;
-OOT_SOUL_ENEMY_GUAY;Soul of Guays (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_IRON_KNUCKLE;Soul of Iron Knuckles (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_KEESE;Soul of Keese (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_LEEVER;Soul of Leevers (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_LIKE_LIKE;Soul of Like Likes (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_LIZALFOS_DINOLFOS;Soul of Lizalfos/Dinolfos (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_MOBLIN;Soul of Moblins;soul_of_foe;false;;;;
-OOT_SOUL_ENEMY_OCTOROK;Soul of Octoroks (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_PARASITE;Soul of Jabu-Jabu's Parasites;soul_of_foe;false;;;;
-OOT_SOUL_ENEMY_PEAHAT;Soul of Peahats (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_POE;Soul of Poes (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_REDEAD_GIBDO;Soul of ReDeads/Gibdos (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_SHABOM;Soul of Shaboms;soul_of_foe;false;;;;
-OOT_SOUL_ENEMY_SHELL_BLADE;Soul of Shell Blades (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_SKULL_KID;Soul of Skull Kids (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_SKULLTULA;Soul of Skulltulas (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_SKULLWALLTULA;Soul of Skullwalltulas (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_SPIKE;Soul of Spikes;soul_of_foe;false;;;;
-OOT_SOUL_ENEMY_STALCHILD;Soul of Stalchildren (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_STALFOS;Soul of Stalfos (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_STINGER;Soul of Stingers;soul_of_foe;false;;;;
-OOT_SOUL_ENEMY_TAILPASARN;Soul of Tailpasarans;soul_of_foe;false;;;;
-OOT_SOUL_ENEMY_TEKTITE;Soul of Tektites (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_THIEVES;Soul of the Fighting Gerudos;soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_TORCH_SLUG;Soul of Torch Slugs;soul_of_foe;false;;;;
-OOT_SOUL_ENEMY_WALLMASTER;Soul of Wallmasters (OoT);soul_of_foe;true;;;;
-OOT_SOUL_ENEMY_WOLFOS;Soul of Wolfoses (OoT);soul_of_foe;true;;;;
-OOT_SOUL_MISC_BUSINESS_SCRUB;Soul of Business Scrubs (OoT);soul_of_npc;true;;;;
-OOT_SOUL_MISC_GS;Soul of Gold Skulltulas (OoT);soul_of_npc;true;;;;
-OOT_SOUL_NPC_ANJU;Soul of Cucco Lady;soul_of_npc;true;;;;
-OOT_SOUL_NPC_ASTRONOMER;Soul of the Astronomer (OoT);soul_of_npc;true;;;;
-OOT_SOUL_NPC_BANKER;Soul of the Beggar;soul_of_npc;true;;;;
-OOT_SOUL_NPC_BAZAAR_SHOPKEEPER;Soul of Bazaar Shopkeeper;soul_of_npc;true;;;;
-OOT_SOUL_NPC_BEAN_SALESMAN;Soul of the Bean Salesman (OoT);soul_of_npc;true;;;;
-OOT_SOUL_NPC_BIGGORON;Soul of Biggoron (OoT);soul_of_npc;true;;;;
-OOT_SOUL_NPC_BOMBCHU_BOWLING_LADY;Soul of Bombchu Bowling Lady;soul_of_npc;true;;;;
-OOT_SOUL_NPC_BOMBCHU_SHOPKEEPER;Soul of Bombchu Shopkeeper;soul_of_npc;true;;;;
-OOT_SOUL_NPC_BOMBERS;Soul of Graveyard Kid;soul_of_npc;true;;;;
-OOT_SOUL_NPC_CARPENTERS;Soul of Carpenters (OoT);soul_of_npc;true;;;;
-OOT_SOUL_NPC_CARPET_MAN;Soul of the Carpet Man;soul_of_npc;true;;;;
-OOT_SOUL_NPC_CHEST_GAME_OWNER;Soul of Chest Game Owner;soul_of_npc;true;;;;
-OOT_SOUL_NPC_CITIZEN;Soul of the Citizens (OoT);soul_of_npc;true;;;;
-OOT_SOUL_NPC_COMPOSER_BROS;Soul of Composer Bros. (OoT);soul_of_npc;true;;;;
-OOT_SOUL_NPC_DAMPE;Soul of Dampe (OoT);soul_of_npc;true;;;;
-OOT_SOUL_NPC_DARUNIA;Soul of Darunia;soul_of_npc;false;;;;
-OOT_SOUL_NPC_DOG_LADY;Soul of the Dog Lady (OoT);soul_of_npc;true;;;;
-OOT_SOUL_NPC_FISHING_POND_OWNER;Soul of Fishing Pond Owner;soul_of_npc;false;;;;
-OOT_SOUL_NPC_GORMAN;Soul of Ingo;soul_of_npc;true;;;;
-OOT_SOUL_NPC_GORON;Soul of Goron (OoT);soul_of_npc;true;;;;
-OOT_SOUL_NPC_GORON_CHILD;Soul of Goron Child (OoT);soul_of_npc;true;;;;
-OOT_SOUL_NPC_GORON_SHOPKEEPER;Soul of Goron Shopkeeper (OoT);soul_of_npc;true;;;;
-OOT_SOUL_NPC_GROG;Soul of the Punk Kid;soul_of_npc;true;;;;
-OOT_SOUL_NPC_GURU_GURU;Soul of Guru-Guru (OoT);soul_of_npc;true;;;;
-OOT_SOUL_NPC_HONEY_DARLING;Soul of Honey & Darling (OoT);soul_of_npc;true;;;;
-OOT_SOUL_NPC_HYLIAN_GUARD;Soul of Hylian Guard;soul_of_npc;false;;;;
-OOT_SOUL_NPC_KING_ZORA;Soul of King Zora;soul_of_npc;false;;;;
-OOT_SOUL_NPC_KOKIRI;Soul of Kokiri;soul_of_npc;false;;;;
-OOT_SOUL_NPC_KOKIRI_SHOPKEEPER;Soul of Kokiri Shopkeeper;soul_of_npc;false;;;;
-OOT_SOUL_NPC_MALON;Soul of Malon;soul_of_npc;true;;;;
-OOT_SOUL_NPC_MEDIGORON;Soul of Medigoron;soul_of_npc;true;;;;
-OOT_SOUL_NPC_MIDO;Soul of Mido;soul_of_npc;false;;;;
-OOT_SOUL_NPC_OLD_HAG;Soul of the Old Hag;soul_of_npc;true;;;;
-OOT_SOUL_NPC_POE_COLLECTOR;Soul of Poe Collector;soul_of_npc;true;;;;
-OOT_SOUL_NPC_POTION_SHOPKEEPER;Soul of Potion Shopkeeper;soul_of_npc;false;;;;
-OOT_SOUL_NPC_ROOFTOP_MAN;Soul of the Rooftop Man;soul_of_npc;true;;;;
-OOT_SOUL_NPC_RUTO;Soul of Ruto;soul_of_npc;true;;;;
-OOT_SOUL_NPC_SARIA;Soul of Saria;soul_of_npc;false;;;;
-OOT_SOUL_NPC_SCIENTIST;Soul of the Scientist (OoT);soul_of_npc;true;;;;
-OOT_SOUL_NPC_SHEIK;Soul of Sheik;soul_of_npc;false;;;;
-OOT_SOUL_NPC_SHOOTING_GALLERY_OWNER;Soul of Shooting Gallery Owner;soul_of_npc;true;;;;
-OOT_SOUL_NPC_TALON;Soul of Talon;soul_of_npc;true;;;;
-OOT_SOUL_NPC_THIEVES;Soul of the Patrolling Gerudos;soul_of_npc;true;;;;
-OOT_SOUL_NPC_ZELDA;Soul of Zelda;soul_of_npc;false;;;;
-OOT_SOUL_NPC_ZORA;Soul of Zora (OoT);soul_of_npc;true;;;;
-OOT_SOUL_NPC_ZORA_SHOPKEEPER;Soul of Zora Shopkeeper (OoT);soul_of_npc;true;;;;
-OOT_SPELL_FIRE;Din's Fire (OoT);din;true;;;;
-OOT_SPELL_LOVE;Nayru's Love (OoT);nayru;true;;;;
-OOT_SPELL_WIND;Farore's Wind (OoT);farore;true;;;;
-OOT_SPIN_UPGRADE;Spin Attack Upgrade (OoT);spin;true;;;;
-OOT_STICK;Deku Stick (OoT);stick;true;;;;
-OOT_STICK_UPGRADE;Deku Stick Upgrade (OoT);stick_upgrade_1;true;;;;
-OOT_STICK_UPGRADE2;Second Deku Stick Upgrade (OoT);stick_upgrade_2;true;;;;
-OOT_STICKS_10;10 Deku Sticks (OoT);stick;true;;;;
-OOT_STICKS_5;5 Deku Sticks (OoT);stick;true;;;;
-OOT_STONE_EMERALD;Kokiri's Emerald;emerald;false;;;;
-OOT_STONE_OF_AGONY;Stone of Agony (OoT);agony;true;;;;
-OOT_STONE_RUBY;Goron's Ruby;ruby;false;;;;
-OOT_STONE_SAPPHIRE;Zora's Sapphire;sapphire;false;;;;
-OOT_STRENGTH;Progressive Strength (OoT);bracelet;true;;;;
-OOT_SWORD;Progressive Sword (OoT);kokiri;true;;;;
-OOT_SWORD_BIGGORON;Biggoron's Sword;biggoron;true;;;;
-OOT_SWORD_GILDED;Gilded Sword (OoT);gilded;true;;;;
-OOT_SWORD_GORON;Progressive Goron Sword;biggoron;true;;;;
-OOT_SWORD_KNIFE;Giant's Knife;biggoron;true;;;;
-OOT_SWORD_KOKIRI;Kokiri Sword (OoT);kokiri;true;;;;
-OOT_SWORD_MASTER;Master Sword;master;false;;;;
-OOT_SWORD_RAZOR;Razor Sword (OoT);razor;true;;;;
-OOT_TC_HEART_PIECE;Piece of Heart (OoT);heart_piece;true;;;;
-OOT_TC_RUPEE_BLUE;Blue Rupee (OoT);blue_rupee;true;;;;
-OOT_TC_RUPEE_GREEN;Green Rupee (OoT);rupee;true;;;;
-OOT_TC_RUPEE_PURPLE;Purple Rupee (OoT);purple_rupee;true;;;;
-OOT_TC_RUPEE_RED;Red Rupee (OoT);red_rupee;true;;;;
-OOT_TC_SMALL_KEY;Small Key (OoT);small_key;false;;;;
-OOT_TRAP_ANTI_MAGIC;Anti-Magic Trap;magic_trap;false;;;;
-OOT_TRAP_DRAIN;Drain Trap;drain_trap;false;;;;
-OOT_TRAP_FIRE;Fire Trap;fire_trap;false;;;;
-OOT_TRAP_ICE;Ice Trap;ice_trap;false;;;;
-OOT_TRAP_KNOCKBACK;Knockback Trap;knockback_trap;false;;;;
-OOT_TRAP_RUPOOR;Rupoor;rupoor;false;;;;
-OOT_TRAP_SHOCK;Shock Trap;shock_trap;false;;;;
-OOT_TRIFORCE;Triforce Piece;triforce_piece;true;;;;
-OOT_TRIFORCE_COURAGE;Triforce of Courage;triforce_courage;true;;;;
-OOT_TRIFORCE_FULL;Triforce (OoT);triforce_piece;true;;;;
-OOT_TRIFORCE_POWER;Triforce of Power;triforce_power;true;;;;
-OOT_TRIFORCE_WISDOM;Triforce of Wisdom;triforce_wisdom;true;;;;
-OOT_TUNIC_GORON;Goron Tunic (OoT);goron_tunic;true;;;;
-OOT_TUNIC_ZORA;Zora Tunic (OoT);zora_tunic;true;;;;
-OOT_UNK_7D;Unknown;none;false;;;;
-OOT_UNK_7E;Unknown;none;false;;;;
-OOT_UNK_7F;Unknown;none;false;;;;
-OOT_UNUSED_ICE_TRAP;Ice Trap (OoT);ice_trap;false;;;;
-OOT_PROG_WALLET;Progressive Wallet (OoT);wallet;true;;;;
-OOT_WALLET;Child's Wallet (OoT);child_wallet;true;;;;
-OOT_WALLET2;Adult's Wallet (OoT);wallet;true;;;;
-OOT_WALLET3;Giant's Wallet (OoT);big_wallet;true;;;;
-OOT_WALLET4;Colossal Wallet (OoT);colossal_wallet;true;;;;
-OOT_WALLET5;Bottomless Wallet (OoT);bottomless_wallet;true;;;;
-OOT_WEIRD_EGG;Weird Egg;egg;false;;;;
-OOT_WEIRD_MUSHROOM;Magic Mushroom;mushroom;true;;;;
-OOT_ZELDA_LETTER;Zelda's Letter;letter;false;;;;
-SHARED_ARROW_FIRE;Shared Fire Arrows;fire_arrow;false;;;;
-SHARED_ARROW_ICE;Shared Ice Arrows;ice_arrow;false;;;;
-SHARED_ARROW_LIGHT;Shared Light Arrows;light_arrow;false;;;;
-SHARED_ARROWS_10;10 Arrows;arrow;false;;;;
-SHARED_ARROWS_30;30 Arrows;arrow;false;;;;
-SHARED_ARROWS_40;40 Arrows;arrow;false;;;;
-SHARED_ARROWS_5;5 Arrows;arrow;false;;;;
-SHARED_BIG_POE;Big Poe;bottled_big_poe;false;;;;
-SHARED_BLUE_FIRE;Blue Fire;blue_fire;false;;;;
-SHARED_BOMB;1 Bomb;bomb;false;;;;
-SHARED_BOMB_BAG;Shared Bomb Bag;bomb_bag;false;;;;
-SHARED_BOMBCHU;Bombchu;bomb;false;;;;
-SHARED_BOMBCHU_10;10 Bombchu;bomb;false;;;;
-SHARED_BOMBCHU_20;20 Bombchu;bomb;false;;;;
-SHARED_BOMBCHU_5;5 Bombchu;bomb;false;;;;
-SHARED_BOMBCHU_BAG;Bombchu Bag;bombchu_bag;false;;;;
-SHARED_BOMBS_10;10 Bombs;bomb;false;;;;
-SHARED_BOMBS_20;20 Bombs;bomb;false;;;;
-SHARED_BOMBS_30;30 Bombs;bomb;false;;;;
-SHARED_BOMBS_5;5 Bombs;bomb;false;;;;
-SHARED_BOOTS_HOVER;Hover Boots;hover;false;;;;
-SHARED_BOOTS_IRON;Iron Boots;iron;false;;;;
-SHARED_BOTTLE_BIG_POE;Bottled Big Poe;bottled_big_poe;false;;;;
-SHARED_BOTTLE_BLUE_FIRE;Bottle of Blue Fire;blue_fire;false;;;;
-SHARED_BOTTLE_CHATEAU;Bottle of Chateau Romani;chateau;false;;;;
-SHARED_BOTTLE_EMPTY;Empty Bottle;bottle;false;;;;
-SHARED_BOTTLE_FAIRY;Bottled Fairy;fairy;false;;;;
-SHARED_BOTTLE_MILK;Bottle of Milk;milk;false;;;;
-SHARED_BOTTLE_POE;Bottled Poe;bottled_poe;false;;;;
-SHARED_BOTTLE_POTION_BLUE;Bottle of Blue Potion;blue_potion;false;;;;
-SHARED_BOTTLE_POTION_GREEN;Bottle of Green Potion;green_potion;false;;;;
-SHARED_BOTTLE_POTION_RED;Bottle of Red Potion;red_potion;false;;;;
-SHARED_BOTTLE_RUTO_LETTER;Ruto's Letter;ruto;false;;;;
-SHARED_BOTTLED_GOLD_DUST;Bottle of Gold Dust;dust;false;;;;
-SHARED_BOW;Shared Bow;bow_oot;false;;;;
-SHARED_BUGS;Bugs;bottled_bugs;false;;;;
-SHARED_BUTTON_A;A Button;a_button;false;;;;
-SHARED_BUTTON_C_DOWN;C-Down Button;c_down;false;;;;
-SHARED_BUTTON_C_LEFT;C-Left Button;c_left;false;;;;
-SHARED_BUTTON_C_RIGHT;C-Right Button;c_right;false;;;;
-SHARED_BUTTON_C_UP;C-Up Button;c_up;false;;;;
-SHARED_CHATEAU;Chateau Romani Refill;chateau;false;;;;
-SHARED_DEFENSE_UPGRADE;Double Defense;defense;false;;;;
-SHARED_FAIRY;Fairy;bottled_fairy;false;;;;
-SHARED_FAIRY_BIG;Big Fairy;fairy;false;;;;
-SHARED_FISH;Fish;bottled_fish;false;;;;
-SHARED_HAMMER;Megaton Hammer;hammer;false;;;;
-SHARED_HEART_CONTAINER;Heart Container;heart_container;false;;;;
-SHARED_HEART_PIECE;Piece of Heart;heart_piece;false;;;;
-SHARED_HOOKSHOT;Progressive Hookshot;hookshot_oot;false;;;;
-SHARED_LENS;Lens of Truth;lens;false;;;;
-SHARED_MAGIC_JAR_LARGE;Large Magic Jar;double_magic;false;;;;
-SHARED_MAGIC_JAR_SMALL;Small Magic Jar;magic;false;;;;
-SHARED_MAGIC_UPGRADE;Shared Magic Upgrade;magic_upgrade;false;;;;
-SHARED_MASK_BLAST;Blast Mask;blast;false;;;;
-SHARED_MASK_BUNNY;Bunny Hood;bunny;false;;;;
-SHARED_MASK_GORON;Goron Mask;goron;false;;;;
-SHARED_MASK_KEATON;Keaton Mask;keaton;false;;;;
-SHARED_MASK_STONE;Stone Mask;stone;false;;;;
-SHARED_MASK_TRUTH;Mask of Truth;truth;false;;;;
-SHARED_MASK_ZORA;Zora Mask;zora;false;;;;
-SHARED_MILK;Milk;milk;false;;;;
-SHARED_NUT;Deku Nut;nut;false;;;;
-SHARED_NUT_UPGRADE;Deku Nut Upgrade;nut_upgrade_1;false;;;;
-SHARED_NUTS_10;10 Deku Nuts;nut;false;;;;
-SHARED_NUTS_5;5 Deku Nuts;nut;false;;;;
-SHARED_OCARINA;Progressive Ocarina;ocarina;false;;;;
-SHARED_PLATINUM_TOKEN;Platinum Token;platinum_token;false;;;;
-SHARED_POE;Poe;bottled_poe;false;;;;
-SHARED_POTION_BLUE;Blue Potion;blue_potion;false;;;;
-SHARED_POTION_GREEN;Green Potion;green_potion;false;;;;
-SHARED_POTION_RED;Red Potion;red_potion;false;;;;
-SHARED_RECOVERY_HEART;Recovery Heart;heart;false;;;;
-SHARED_RUPEE_BLUE;Blue Rupee;blue_rupee;false;;;;
-SHARED_RUPEE_GOLD;Gold Rupee;gold_rupee;false;;;;
-SHARED_RUPEE_GREEN;Green Rupee;rupee;false;;;;
-SHARED_RUPEE_PURPLE;Purple Rupee;purple_rupee;false;;;;
-SHARED_RUPEE_RAINBOW;Rainbow Rupee;rainbow_rupee;false;;;;
-SHARED_RUPEE_RED;Red Rupee;red_rupee;false;;;;
-SHARED_RUPEE_SILVER;Silver Rupee;sr;false;;;;
-SHARED_SCALE;Progressive Scale;bronze_scale;false;;;;
-SHARED_SHIELD;Progressive Shield;hero_shield;false;;;;
-SHARED_SHIELD_DEKU;Deku Shield;deku_shield;false;;;;
-SHARED_SHIELD_HYLIAN;Hylian/Hero Shield;hylian_shield;false;;;;
-SHARED_SHIELD_MIRROR;Mirror Shield;mirror_oot;false;;;;
-SHARED_SKELETON_KEY;Skeleton Key;skeleton_key;false;;;;
-SHARED_SONG_EMPTINESS;Elegy of Emptiness;song_orange;false;;;;
-SHARED_SONG_EPONA;Epona's Song;song;false;;;;
-SHARED_SONG_NOTE_EMPTINESS;Note from Elegy of Emptiness;song_orange;false;;;;
-SHARED_SONG_NOTE_EPONA;Note from Epona's Song;song;false;;;;
-SHARED_SONG_NOTE_STORMS;Note from Song of Storms;song;false;;;;
-SHARED_SONG_NOTE_SUN;Note from Sun's Song;song;false;;;;
-SHARED_SONG_NOTE_TIME;Note from Song of Time;song;false;;;;
-SHARED_SONG_STORMS;Song of Storms;song;false;;;;
-SHARED_SONG_SUN;Sun's Song;song;false;;;;
-SHARED_SONG_TIME;Song of Time;song;false;;;;
-SHARED_SOUL_ANIMAL_BUTTERFLY;Soul of Butterflies;soul_of_animal;false;;;;
-SHARED_SOUL_ANIMAL_COW;Soul of Cows;soul_of_animal;false;;;;
-SHARED_SOUL_ANIMAL_CUCCO;Soul of Cuccos;soul_of_animal;false;;;;
-SHARED_SOUL_ANIMAL_DOG;Soul of Dogs;soul_of_animal;false;;;;
-SHARED_SOUL_ENEMY_ARMOS;Soul of Armos;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_BEAMOS;Soul of Beamos;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_BUBBLE;Soul of Bubbles;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_DEKU_BABA;Soul of Deku Babas;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_DEKU_SCRUB;Soul of Deku Scrubs;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_DODONGO;Soul of Dodongos;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_FLOORMASTER;Soul of Floormasters;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_FLYING_POT;Soul of Flying Pots;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_FREEZARD;Soul of Freezards;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_GUAY;Soul of Guays;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_IRON_KNUCKLE;Soul of Iron Knuckles;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_KEESE;Soul of Keese;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_LEEVER;Soul of Leevers;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_LIKE_LIKE;Soul of Like Likes;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_LIZALFOS_DINOLFOS;Soul of Lizalfos/Dinolfos;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_OCTOROK;Soul of Octoroks;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_PEAHAT;Soul of Peahats;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_POE;Soul of Poes;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_REDEAD_GIBDO;Soul of ReDeads/Gibdos;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_SHELL_BLADE;Soul of Shell Blades;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_SKULLTULA;Soul of Skulltulas;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_SKULLWALLTULA;Soul of Skullwalltulas;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_STALCHILD;Soul of Stalchildren;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_TEKTITE;Soul of Tektites;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_THIEVES;Soul of Fighting Thieves;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_WALLMASTER;Soul of Wallmasters;soul_of_foe;false;;;;
-SHARED_SOUL_ENEMY_WOLFOS;Soul of Wolfos;soul_of_foe;false;;;;
-SHARED_SOUL_MISC_BUSINESS_SCRUB;Soul of Business Scrubs;soul_of_npc;false;;;;
-SHARED_SOUL_MISC_GS;Soul of Gold Skulltulas;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_ANJU;Soul of Cucco Lady/Anju;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_ASTRONOMER;Soul of the Astronomer;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_BANKER;Soul of the Beggar/Banker;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_BAZAAR_SHOPKEEPER;Soul of the Bazaar/Swamp Archery Owner;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_BEAN_SALESMAN;Soul of the Bean Salesman;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_BIGGORON;Soul of Biggoron;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_BOMBCHU_BOWLING_LADY;Soul of Bombchu Bowling/Chest Game Lady;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_BOMBCHU_SHOPKEEPER;Soul of the Bombchu/Bomb Shop Owner;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_BOMBERS;Soul of the Graveyard Kid/Bombers;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_CARPENTERS;Soul of Carpenters;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_CARPET_MAN;Soul of the Carpet Man/Swordsman;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_CHEST_GAME_OWNER;Soul of the Chest Game Owner/Fisherman;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_CITIZEN;Soul of Citizens;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_COMPOSER_BROS;Soul of Composer Bros.;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_DAMPE;Soul of Dampe;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_DOG_LADY;Soul of the Dog Lady;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_FISHING_POND_OWNER;Soul of Fishing Pond/Trading Post Owner;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_GORMAN;Soul of Ingo/Gorman & Bros.;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_GORON;Soul of Gorons;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_GORON_CHILD;Soul of the Goron Child/Baby;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_GORON_SHOPKEEPER;Soul of the Goron Shopkeeper;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_GROG;Soul of the Punk Kid/Grog;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_GURU_GURU;Soul of Guru-Guru;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_HONEY_DARLING;Soul of Honey & Darling;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_MALON;Soul of Malon/Romani/Cremia;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_MEDIGORON;Soul of Medigoron/Keg Trial Goron;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_OLD_HAG;Soul of the Old Hag/Anju's Grandmother;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_POE_COLLECTOR;Soul of Poe Collector/Ghost Hut Owner;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_ROOFTOP_MAN;Soul of Rooftop Man/Part-Timer;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_RUTO;Soul of Ruto/Lulu;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_SCIENTIST;Soul of the Scientist;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_SHOOTING_GALLERY_OWNER;Soul of the Shooting Gallery/Town Archery Owner;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_TALON;Soul of Talon/Mr. Barten;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_THIEVES;Soul of the Patrolling Thieves and their Chief;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_ZORA;Soul of Zoras;soul_of_npc;false;;;;
-SHARED_SOUL_NPC_ZORA_SHOPKEEPER;Soul of the Zora Shopkeeper;soul_of_npc;false;;;;
-SHARED_SPELL_FIRE;Din's Fire;din;false;;;;
-SHARED_SPELL_LOVE;Nayru's Love;nayru;false;;;;
-SHARED_SPELL_WIND;Farore's Wind;farore;false;;;;
-SHARED_SPIN_UPGRADE;Spin Attack Upgrade;spin;false;;;;
-SHARED_STICK;Deku Stick;stick;false;;;;
-SHARED_STICK_UPGRADE;Deku Stick Upgrade;stick_upgrade_1;false;;;;
-SHARED_STICKS_10;10 Deku Sticks;stick;false;;;;
-SHARED_STICKS_5;5 Deku Sticks;stick;false;;;;
-SHARED_STONE_OF_AGONY;Stone of Agony;agony;false;;;;
-SHARED_STRENGTH;Progressive Strength;bracelet;false;;;;
-SHARED_SWORD;Progressive Sword;kokiri;false;;;;
-SHARED_TRIFORCE;Triforce Piece;triforce_piece;false;;;;
-SHARED_TRIFORCE_COURAGE;Triforce of Courage;triforce_courage;false;;;;
-SHARED_TRIFORCE_POWER;Triforce of Power;triforce_power;false;;;;
-SHARED_TRIFORCE_WISDOM;Triforce of Wisdom;triforce_wisdom;false;;;;
-SHARED_TUNIC_GORON;Goron Tunic;goron_tunic;false;;;;
-SHARED_TUNIC_ZORA;Zora Tunic;zora_tunic;false;;;;
-SHARED_WALLET;Progressive Wallet;wallet;false;;;;
-OOT_SONG_HEALING;Song of Healing (OoT);song;true;;;;
-OOT_SONG_SOARING;Song of Soaring (OoT);song;true;;;;
-OOT_SONG_AWAKENING;Sonata of Awakening (OoT);song_green;true;;;;
-OOT_SONG_GORON;Goron Lullaby (OoT);song_red;true;;;;
-OOT_SONG_GORON_HALF;Progressive Goron Lullaby (OoT);song_red;true;;;;
-OOT_SONG_ZORA;New Wave Bossa Nova (OoT);song_blue;true;;;;
-OOT_SONG_ORDER;Oath to Order (OoT);song_purple;true;;;;
-OOT_SONG_NOTE_HEALING;Note from Song of Healing (OoT);song;true;;;;
-OOT_SONG_NOTE_SOARING;Note from Song of Soaring (OoT);song;true;;;;
-OOT_SONG_NOTE_AWAKENING;Note from Sonata of Awakening (OoT);song_green;true;;;;
-OOT_SONG_NOTE_GORON;Note from Goron Lullaby (OoT);song_red;true;;;;
-OOT_SONG_NOTE_ZORA;Note from New Wave Bossa Nova (OoT);song_blue;true;;;;
-OOT_SONG_NOTE_ORDER;Note from Oath to Order (OoT);song_purple;true;;;;
-SHARED_SONG_NOTE_HEALING;Note from Song of Healing;song;false;;;;
-SHARED_SONG_NOTE_SOARING;Note from Song of Soaring;song;false;;;;
-SHARED_SONG_NOTE_AWAKENING;Note from Sonata of Awakening;song_green;false;;;;
-SHARED_SONG_NOTE_GORON;Note from Goron Lullaby;song_red;false;;;;
-SHARED_SONG_NOTE_ZORA;Note from New Wave Bossa Nova;song_blue;false;;;;
-SHARED_SONG_NOTE_ORDER;Note from Oath to Order;song_purple;false;;;;
-SHARED_SONG_HEALING;Song of Healing;song;false;;;;
-SHARED_SONG_SOARING;Song of Soaring;song;false;;;;
-SHARED_SONG_AWAKENING;Sonata of Awakening;song_green;false;;;;
-SHARED_SONG_GORON;Goron Lullaby;song_red;false;;;;
-SHARED_SONG_GORON_HALF;Progressive Goron Lullaby;song_red;false;;;;
-SHARED_SONG_ZORA;New Wave Bossa Nova;song_blue;false;;;;
-SHARED_SONG_ORDER;Oath to Order;song_purple;false;;;;
-OOT_MASK_KAMARO;Kamaro's Mask (OoT);kamaro;true;;;;
-SHARED_MASK_KAMARO;Kamaro's Mask;kamaro;false;;;;
-MM_BOOMERANG;Boomerang (MM);boomerang;true;;;;
-SHARED_BOOMERANG;Boomerang;boomerang;false;;;;
-MM_SONG_NOTE_SARIA;Note from Saria's Song (MM);song;true;;;;
-MM_SONG_NOTE_TP_FIRE;Note from Bolero of Fire (MM);song_red;true;;;;
-MM_SONG_NOTE_TP_FOREST;Note from Minuet of Forest (MM);song_green;true;;;;
-MM_SONG_NOTE_TP_LIGHT;Note from Prelude of Light (MM);song_yellow;true;;;;
-MM_SONG_NOTE_TP_SHADOW;Note from Nocturne of Shadow (MM);song_purple;true;;;;
-MM_SONG_NOTE_TP_SPIRIT;Note from Requiem of Spirit (MM);song_orange;true;;;;
-MM_SONG_NOTE_TP_WATER;Note from Serenade of Water (MM);song_blue;true;;;;
-MM_SONG_NOTE_ZELDA;Note from Zelda's Lullaby (MM);song;true;;;;
-MM_SONG_SARIA;Saria's Song (MM);song;true;;;;
-MM_SONG_TP_FIRE;Bolero of Fire (MM);song_red;true;;;;
-MM_SONG_TP_FOREST;Minuet of Forest (MM);song_green;true;;;;
-MM_SONG_TP_LIGHT;Prelude of Light (MM);song_yellow;true;;;;
-MM_SONG_TP_SHADOW;Nocturne of Shadow (MM);song_purple;true;;;;
-MM_SONG_TP_SPIRIT;Requiem of Spirit (MM);song_orange;true;;;;
-MM_SONG_TP_WATER;Serenade of Water (MM);song_blue;true;;;;
-MM_SONG_ZELDA;Zelda's Lullaby (MM);song;true;;;;
-SHARED_SONG_NOTE_SARIA;Note from Saria's Song;song;false;;;;
-SHARED_SONG_NOTE_TP_FIRE;Note from Bolero of Fire;song_red;false;;;;
-SHARED_SONG_NOTE_TP_FOREST;Note from Minuet of Forest;song_green;false;;;;
-SHARED_SONG_NOTE_TP_LIGHT;Note from Prelude of Light;song_yellow;false;;;;
-SHARED_SONG_NOTE_TP_SHADOW;Note from Nocturne of Shadow;song_purple;false;;;;
-SHARED_SONG_NOTE_TP_SPIRIT;Note from Requiem of Spirit;song_orange;false;;;;
-SHARED_SONG_NOTE_TP_WATER;Note from Serenade of Water;song_blue;false;;;;
-SHARED_SONG_NOTE_ZELDA;Note from Zelda's Lullaby;song;false;;;;
-SHARED_SONG_SARIA;Saria's Song;song;false;;;;
-SHARED_SONG_TP_FIRE;Bolero of Fire;song_red;false;;;;
-SHARED_SONG_TP_FOREST;Minuet of Forest;song_green;false;;;;
-SHARED_SONG_TP_LIGHT;Prelude of Light;song_yellow;false;;;;
-SHARED_SONG_TP_SHADOW;Nocturne of Shadow;song_purple;false;;;;
-SHARED_SONG_TP_SPIRIT;Requiem of Spirit;song_orange;false;;;;
-SHARED_SONG_TP_WATER;Serenade of Water;song_blue;false;;;;
-SHARED_SONG_ZELDA;Zelda's Lullaby;song;false;;;;
-SHARED_POWDER_KEG;Powder Keg;powder;false;;;;
-OOT_POWDER_KEG;Powder Keg (OoT);powder;true;;;;
-OOT_GREAT_FAIRY_SWORD;Great Fairy's Sword (OoT);fairy_sword;true;;;;
-SHARED_GREAT_FAIRY_SWORD;Great Fairy's Sword;fairy_sword;false;;;;
-OOT_RUSTY_KEY_TREASURE_CHEST_GAME;Rusty Key (Treasure Chest Game);rusty_key;false;;;Rusty Key (Treasure Chest Game);OOT_RUSTY_KEY_TREASURE_CHEST_GAME
-OOT_RUSTY_KEY_GUARD_HOUSE;Rusty Key (Guard House);rusty_key;false;;;Rusty Key (Guard House);OOT_RUSTY_KEY_GUARD_HOUSE
-OOT_RUSTY_KEY_HYRULE_CASTLE;Rusty Key (Hyrule Castle);rusty_key;false;;;Rusty Key (Hyrule Castle);OOT_RUSTY_KEY_HYRULE_CASTLE
-OOT_RUSTY_KEY_DOG_LADY_HOUSE;Rusty Key (Dog Lady House);rusty_key;false;;;Rusty Key (Dog Lady House);OOT_RUSTY_KEY_DOG_LADY_HOUSE
-OOT_RUSTY_KEY_BACK_ALLEY_HOUSE;Rusty Key (Back Alley House);rusty_key;false;;;Rusty Key (Back Alley House);OOT_RUSTY_KEY_BACK_ALLEY_HOUSE
-OOT_RUSTY_KEY_BOMBCHU_SHOP;Rusty Key (Bombchu Shop);rusty_key;false;;;Rusty Key (Bombchu Shop);OOT_RUSTY_KEY_BOMBCHU_SHOP
-OOT_RUSTY_KEY_MASK_SHOP;Rusty Key (Mask Shop);rusty_key;false;;;Rusty Key (Mask Shop);OOT_RUSTY_KEY_MASK_SHOP
-OOT_RUSTY_KEY_CHILD_BAZAAR;Rusty Key (Child Bazaar);rusty_key;false;;;Rusty Key (Child Bazaar);OOT_RUSTY_KEY_CHILD_BAZAAR
-OOT_RUSTY_KEY_CHILD_POTION_SHOP;Rusty Key (Child Potion Shop);rusty_key;false;;;Rusty Key (Child Potion Shop);OOT_RUSTY_KEY_CHILD_POTION_SHOP
-OOT_RUSTY_KEY_CHILD_SHOOTING_GALLERY;Rusty Key (Child Shooting Gallery);rusty_key;false;;;Rusty Key (Child Shooting Gallery);OOT_RUSTY_KEY_CHILD_SHOOTING_GALLERY
-OOT_RUSTY_KEY_BOMBCHU_BOWLING;Rusty Key (Bombchu Bowling);rusty_key;false;;;Rusty Key (Bombchu Bowling);OOT_RUSTY_KEY_BOMBCHU_BOWLING
-OOT_RUSTY_KEY_LABORATORY;Rusty Key (Laboratory);rusty_key;false;;;Rusty Key (Laboratory);OOT_RUSTY_KEY_LABORATORY
-OOT_RUSTY_KEY_FISHING_POND;Rusty Key (Fishing Pond);rusty_key;false;;;Rusty Key (Fishing Pond);OOT_RUSTY_KEY_FISHING_POND
-OOT_RUSTY_KEY_SILO;Rusty Key (Silo);rusty_key;false;;;Rusty Key (Silo);OOT_RUSTY_KEY_SILO
-OOT_RUSTY_KEY_RANCH_STABLE;Rusty Key (Ranch Stable);rusty_key;false;;;Rusty Key (Ranch Stable);OOT_RUSTY_KEY_RANCH_STABLE
-OOT_RUSTY_KEY_RANCH_HOUSE;Rusty Key (Ranch House);rusty_key;false;;;Rusty Key (Ranch House);OOT_RUSTY_KEY_RANCH_HOUSE
-OOT_RUSTY_KEY_RANCH_HOUSE_ROOM;Rusty Key (Malon's Room);rusty_key;false;;;Rusty Key (Malon's Room);OOT_RUSTY_KEY_RANCH_HOUSE_ROOM
-OOT_RUSTY_KEY_GRAVEYARD;Rusty Key (Kakariko Graveyard Hut);rusty_key;false;;;Rusty Key (Kakariko Graveyard Hut);OOT_RUSTY_KEY_GRAVEYARD
-OOT_RUSTY_KEY_WINDMILL;Rusty Key (Windmill);rusty_key;false;;;Rusty Key (Windmill);OOT_RUSTY_KEY_WINDMILL
-OOT_RUSTY_KEY_IMPA_HOUSE;Rusty Key (Impa's House);rusty_key;false;;;Rusty Key (Impa's House);OOT_RUSTY_KEY_IMPA_HOUSE
-OOT_RUSTY_KEY_CARPENTER_HOUSE;Rusty Key (Carpenter House);rusty_key;false;;;Rusty Key (Carpenter House);OOT_RUSTY_KEY_CARPENTER_HOUSE
-OOT_RUSTY_KEY_GRANNY_POTION_SHOP;Rusty Key (Granny Potion Shop);rusty_key;false;;;Rusty Key (Granny Potion Shop);OOT_RUSTY_KEY_GRANNY_POTION_SHOP
-OOT_RUSTY_KEY_ADULT_SHOOTING_GALLERY;Rusty Key (Adult Shooting Gallery);rusty_key;false;;;Rusty Key (Adult Shooting Gallery);OOT_RUSTY_KEY_ADULT_SHOOTING_GALLERY
-OOT_RUSTY_KEY_SKULLTULA_HOUSE;Rusty Key (Skulltula House);rusty_key;false;;;Rusty Key (Skulltula House);OOT_RUSTY_KEY_SKULLTULA_HOUSE
-OOT_RUSTY_KEY_ADULT_BAZAAR;Rusty Key (Adult Bazaar);rusty_key;false;;;Rusty Key (Adult Bazaar);OOT_RUSTY_KEY_ADULT_BAZAAR
-OOT_RUSTY_KEY_ADULT_POTION_SHOP;Rusty Key (Adult Potion Shop);rusty_key;false;;;Rusty Key (Adult Potion Shop);OOT_RUSTY_KEY_ADULT_POTION_SHOP
-OOT_RUSTY_KEY_ADULT_POTION_SHOP_BACK;Rusty Key (Adult Potion Shop Back);rusty_key;false;;;Rusty Key (Adult Potion Shop Back);OOT_RUSTY_KEY_ADULT_POTION_SHOP_BACK
-MM_RUSTY_KEY_TOURIST_INFORMATION;Rusty Key (Tourist Information);rusty_key;false;;;Rusty Key (Tourist Information);MM_RUSTY_KEY_TOURIST_INFORMATION
-MM_RUSTY_KEY_POTION_SHOP;Rusty Key (Potion Shop);rusty_key;false;;;Rusty Key (Potion Shop);MM_RUSTY_KEY_POTION_SHOP
-MM_RUSTY_KEY_POST_OFFICE;Rusty Key (Post Office);rusty_key;false;;;Rusty Key (Post Office);MM_RUSTY_KEY_POST_OFFICE
-MM_RUSTY_KEY_SWORDSMAN_SCHOOL;Rusty Key (Swordsman School);rusty_key;false;;;Rusty Key (Swordsman School);MM_RUSTY_KEY_SWORDSMAN_SCHOOL
-MM_RUSTY_KEY_LOTTERY;Rusty Key (Lottery);rusty_key;false;;;Rusty Key (Lottery);MM_RUSTY_KEY_LOTTERY
-MM_RUSTY_KEY_BOMB_SHOP;Rusty Key (Bomb Shop);rusty_key;false;;;Rusty Key (Bomb Shop);MM_RUSTY_KEY_BOMB_SHOP
-MM_RUSTY_KEY_TRADING_POST;Rusty Key (Trading Post);rusty_key;false;;;Rusty Key (Trading Post);MM_RUSTY_KEY_TRADING_POST
-MM_RUSTY_KEY_CURIOSITY_SHOP;Rusty Key (Curiosity Shop);rusty_key;false;;;Rusty Key (Curiosity Shop);MM_RUSTY_KEY_CURIOSITY_SHOP
-MM_RUSTY_KEY_KAFEI_HIDEOUT;Rusty Key (Kafei's Hideout);rusty_key;false;;;Rusty Key (Kafei's Hideout);MM_RUSTY_KEY_KAFEI_HIDEOUT
-MM_RUSTY_KEY_TOWN_ARCHERY;Rusty Key (Town Archery);rusty_key;false;;;Rusty Key (Town Archery);MM_RUSTY_KEY_TOWN_ARCHERY
-MM_RUSTY_KEY_SWAMP_ARCHERY;Rusty Key (Swamp Archery);rusty_key;false;;;Rusty Key (Swamp Archery);MM_RUSTY_KEY_SWAMP_ARCHERY
-MM_RUSTY_KEY_OBSERVATORY;Rusty Key (Observatory);rusty_key;false;;;Rusty Key (Observatory);MM_RUSTY_KEY_OBSERVATORY
-MM_RUSTY_KEY_BLACKSMITH;Rusty Key (Blacksmith);rusty_key;false;;;Rusty Key (Blacksmith);MM_RUSTY_KEY_BLACKSMITH
-MM_RUSTY_KEY_MUSIC_HOUSE;Rusty Key (Music House);rusty_key;false;;;Rusty Key (Music House);MM_RUSTY_KEY_MUSIC_HOUSE
-MM_RUSTY_KEY_LABORATORY;Rusty Key (Oceanic Laboratory);rusty_key;false;;;Rusty Key (Oceanic Laboratory);MM_RUSTY_KEY_LABORATORY
-MM_RUSTY_KEY_BENEATH_GRAVEYARD;Rusty Key (Beneath the Graveyard);rusty_key;false;;;Rusty Key (Beneath the Graveyard);MM_RUSTY_KEY_BENEATH_GRAVEYARD
-MM_RUSTY_KEY_DAMPE_HOUSE;Rusty Key (Dampe's House);rusty_key;false;;;Rusty Key (Dampe's House);MM_RUSTY_KEY_DAMPE_HOUSE
-MM_RUSTY_KEY_MAYOR_RESIDENCE;Rusty Key (Mayor's Residence);rusty_key;false;;;Rusty Key (Mayor's Residence);MM_RUSTY_KEY_MAYOR_RESIDENCE
-MM_RUSTY_KEY_MAYOR_RESIDENCE_OFFICE;Rusty Key (Mayor's Residence Office);rusty_key;false;;;Rusty Key (Mayor's Residence Office);MM_RUSTY_KEY_MAYOR_RESIDENCE_OFFICE
-MM_RUSTY_KEY_MAYOR_RESIDENCE_SALON;Rusty Key (Mayor's Residence Salon);rusty_key;false;;;Rusty Key (Mayor's Residence Salon);MM_RUSTY_KEY_MAYOR_RESIDENCE_SALON
-MM_RUSTY_KEY_MAYOR_RESIDENCE_KAFEI;Rusty Key (Kafei's Room);rusty_key;false;;;Rusty Key (Kafei's Room);MM_RUSTY_KEY_MAYOR_RESIDENCE_KAFEI
-MM_RUSTY_KEY_TREASURE_CHEST_GAME;Rusty Key (Treasure Game);rusty_key;false;;;Rusty Key (Treasure Game);MM_RUSTY_KEY_TREASURE_CHEST_GAME
-MM_RUSTY_KEY_HONEY_DARLING;Rusty Key (Honey & Darling);rusty_key;false;;;Rusty Key (Honey & Darling);MM_RUSTY_KEY_HONEY_DARLING
-MM_RUSTY_KEY_MILK_BAR;Rusty Key (Milk Bar);rusty_key;false;;;Rusty Key (Milk Bar);MM_RUSTY_KEY_MILK_BAR
-MM_RUSTY_KEY_DOG_RACETRACK;Rusty Key (Doggy Racetrack);rusty_key;false;;;Rusty Key (Doggy Racetrack);MM_RUSTY_KEY_DOG_RACETRACK
-MM_RUSTY_KEY_CUCCO_SHACK;Rusty Key (Cucco Shack);rusty_key;false;;;Rusty Key (Cucco Shack);MM_RUSTY_KEY_CUCCO_SHACK
-MM_RUSTY_KEY_RANCH_HOUSE;Rusty Key (Romani Ranch House);rusty_key;false;;;Rusty Key (Romani Ranch House);MM_RUSTY_KEY_RANCH_HOUSE
-MM_RUSTY_KEY_RANCH_BARN;Rusty Key (Romani Ranch Barn);rusty_key;false;;;Rusty Key (Romani Ranch Barn);MM_RUSTY_KEY_RANCH_BARN
-MM_RUSTY_KEY_RANCH_HOUSE_ROOM;Rusty Key (Romani's Room);rusty_key;false;;;Rusty Key (Romani's Room);MM_RUSTY_KEY_RANCH_HOUSE_ROOM
-MM_RUSTY_KEY_ZORA_SHOP;Rusty Key (Zora Shop);rusty_key;false;;;Rusty Key (Zora Shop);MM_RUSTY_KEY_ZORA_SHOP
-MM_RUSTY_KEY_ZORA_JAPAS_ROOM;Rusty Key (Japas' Room);rusty_key;false;;;Rusty Key (Japas' Room);MM_RUSTY_KEY_ZORA_JAPAS_ROOM
-MM_RUSTY_KEY_ZORA_TIJO_ROOM;Rusty Key (Tijo's Room);rusty_key;false;;;Rusty Key (Tijo's Room);MM_RUSTY_KEY_ZORA_TIJO_ROOM
-MM_RUSTY_KEY_ZORA_LULU_ROOM;Rusty Key (Lulu's Room);rusty_key;false;;;Rusty Key (Lulu's Room);MM_RUSTY_KEY_ZORA_LULU_ROOM
-MM_RUSTY_KEY_ZORA_EVAN_ROOM;Rusty Key (Evan's Room);rusty_key;false;;;Rusty Key (Evan's Room);MM_RUSTY_KEY_ZORA_EVAN_ROOM
-MM_RUSTY_KEY_STOCK_POT_INN;Rusty Key (Stock Pot Inn);rusty_key;false;;;Rusty Key (Stock Pot Inn);MM_RUSTY_KEY_STOCK_POT_INN
-MM_RUSTY_KEY_STOCK_POT_INN_ROOF;Rusty Key (Stock Pot Inn Roof);rusty_key;false;;;Rusty Key (Stock Pot Inn Roof);MM_RUSTY_KEY_STOCK_POT_INN_ROOF
-MM_RUSTY_KEY_GRANDMA_ROOM;Rusty Key (Grandma's Room);rusty_key;false;;;Rusty Key (Grandma's Room);MM_RUSTY_KEY_GRANDMA_ROOM
-MM_RUSTY_KEY_STOCK_POT_INN_STAFF_ROOM;Rusty Key (Stock Pot Inn Staff Room);rusty_key;false;;;Rusty Key (Stock Pot Inn Staff Room);MM_RUSTY_KEY_STOCK_POT_INN_STAFF_ROOM
-MM_RUSTY_KEY_STOCK_POT_INN_DORMITORY;Rusty Key (Stock Pot Inn Dormitory);rusty_key;false;;;Rusty Key (Stock Pot Inn Dormitory);MM_RUSTY_KEY_STOCK_POT_INN_DORMITORY
-MM_SLINGSHOT;Fairy Slingshot (MM);slingshot;true;;;;
-MM_DEKU_SEEDS_5;5 Deku Seeds (MM);seeds;true;;;;
-MM_DEKU_SEEDS_30;30 Deku Seeds (MM);seeds;true;;;;
-MM_BULLET_BAG2;Large Bullet Bag (MM);biggest_seed;true;;;;
-MM_BULLET_BAG3;Largest Bullet Bag (MM);biggest_seed;true;;;;
-SHARED_SLINGSHOT;Fairy Slingshot;slingshot;false;;;;
-SHARED_DEKU_SEEDS_5;5 Deku Seeds;seeds;false;;;;
-SHARED_DEKU_SEEDS_30;30 Deku Seeds;seeds;false;;;;
-SHARED_BULLET_BAG2;Large Bullet Bag;biggest_seed;false;;;;
-SHARED_BULLET_BAG3;Largest Bullet Bag;biggest_seed;false;;;;
-MM_MASK_GERUDO;Gerudo Mask (MM);gerudo;true;;;;
-MM_MASK_SKULL;Skull Mask (MM);skull;true;;;;
-MM_MASK_SPOOKY;Spooky Mask (MM);spooky;true;;;;
-SHARED_MASK_GERUDO;Gerudo Mask;gerudo;false;;;;
-SHARED_MASK_SKULL;Skull Mask;skull;false;;;;
-SHARED_MASK_SPOOKY;Spooky Mask;spooky;false;;;;
-SHARED_QUIVER2;Big Quiver;big_quiver;false;;;;
-SHARED_QUIVER3;Biggest Quiver;biggest_quiver;false;;;;
+ID;Name;Render_Type;Can_Be_Shared
+MM_ARROW_FIRE;Fire Arrows (MM);fire_arrow;true
+MM_ARROW_ICE;Ice Arrows (MM);ice_arrow;true
+MM_ARROW_LIGHT;Light Arrows (MM);light_arrow;true
+MM_ARROWS_10;10 Arrows (MM);arrow;true
+MM_ARROWS_30;30 Arrows (MM);arrow;true
+MM_ARROWS_40;40 Arrows (MM);arrow;true
+MM_BIG_POE;Big Poe (MM);bottled_big_poe;true
+MM_BLUE_FIRE;Blue Fire;blue_fire;true
+MM_BOMB;Bomb (MM);bomb;true
+MM_BOMB_BAG;Bomb Bag (MM);bomb_bag;true
+MM_BOMB_BAG2;Big Bomb Bag (MM);big_bomb;true
+MM_BOMB_BAG3;Biggest Bomb Bag (MM);biggest_bomb;true
+MM_BOMBCHU;1 Bombchu (MM);bombchu;true
+MM_BOMBCHU_10;10 Bombchu (MM);bombchu;true
+MM_BOMBCHU_20;20 Bombchu (MM);bombchu;true
+MM_BOMBCHU_5;5 Bombchu (MM);bombchu;true
+MM_BOMBCHU_BAG;Bombchu Bag (MM);bombchu_bag;true
+MM_BOMBCHU_BAG_FIRST_1;Bombchu Bag (MM);bombchu_bag;true
+MM_BOMBCHU_BAG_FIRST_10;Bombchu Bag (MM);bombchu_bag;true
+MM_BOMBCHU_BAG_FIRST_20;Bombchu Bag (MM);bombchu_bag;true
+MM_BOMBCHU_BAG_FIRST_5;Bombchu Bag (MM);bombchu_bag;true
+MM_BOMBCHU_BAG2;Big Bombchu Bag (MM);bombchu_bag;true
+MM_BOMBCHU_BAG3;Biggest Bombchu Bag (MM);bombchu_bag;true
+MM_BOMBER_NOTEBOOK;Bombers' Notebook;bombers;false
+MM_BOMBS_10;10 Bombs (MM);bomb;true
+MM_BOMBS_20;20 Bombs (MM);bomb;true
+MM_BOMBS_30;30 Bombs (MM);bomb;true
+MM_BOMBS_5;5 Bombs (MM);bomb;true
+MM_BOOTS_HOVER;Hover Boots (MM);hover;true
+MM_BOOTS_IRON;Iron Boots (MM);iron;true
+MM_BOSS_KEY;Boss Key (MM);boss_key;false
+MM_BOSS_KEY_GB;Boss Key (Great Bay Temple);boss_key;false
+MM_BOSS_KEY_SH;Boss Key (Snowhead Temple);boss_key;false
+MM_BOSS_KEY_ST;Boss Key (Stone Tower Temple);boss_key;false
+MM_BOSS_KEY_WF;Boss Key (Woodfall Temple);boss_key;false
+MM_BOTTLE_BIG_POE;Bottled Big Poe (MM);bottled_big_poe;true
+MM_BOTTLE_BLUE_FIRE;Bottle of Blue Fire;blue_fire;true
+MM_BOTTLE_CHATEAU;Bottle of Chateau Romani;chateau;true
+MM_BOTTLE_EMPTY;Empty Bottle (MM);bottle;true
+MM_BOTTLE_FAIRY;Bottled Fairy (MM);bottled_fairy;true
+MM_BOTTLE_MILK;Bottle of Milk (MM);milk;true
+MM_BOTTLE_POE;Bottled Poe (MM);bottled_poe;true
+MM_BOTTLE_POTION_BLUE;Bottle of Blue Potion (MM);blue_potion;true
+MM_BOTTLE_POTION_GREEN;Bottle of Green Potion (MM);green_potion;true
+MM_BOTTLE_POTION_RED;Bottle of Red Potion (MM);red_potion;true
+MM_BOTTLE_RUTO_LETTER;Ruto's Letter;ruto;true
+MM_BOTTLED_GOLD_DUST;Bottle of Gold Dust;dust;true
+MM_BOW;Hero's Bow (MM);bow_mm;true
+MM_BUGS;Bugs (MM);bottled_bugs;true
+MM_BUTTON_A;A Button (MM);a_button;true
+MM_BUTTON_C_DOWN;C-Down Button (MM);c_down;true
+MM_BUTTON_C_LEFT;C-Left Button (MM);c_left;true
+MM_BUTTON_C_RIGHT;C-Right Button (MM);c_right;true
+MM_BUTTON_C_UP;C-Up Button (MM);c_up;true
+MM_CHATEAU;Chateau Romani Refill (MM);chateau;true
+MM_CLOCK;Progressive Clock;clock_d1;false
+MM_CLOCK1;Clock (Day 1);clock_d1;false
+MM_CLOCK2;Clock (Night 1);clock_n1;false
+MM_CLOCK3;Clock (Day 2);clock_d2;false
+MM_CLOCK4;Clock (Night 2);clock_n2;false
+MM_CLOCK5;Clock (Day 3);clock_d3;false
+MM_CLOCK6;Clock (Night 3);clock_n3;false
+MM_COMPASS;Compass (MM);compass;false
+MM_COMPASS_GB;Compass (Great Bay Temple);compass;false
+MM_COMPASS_SH;Compass (Snowhead Temple);compass;false
+MM_COMPASS_ST;Compass (Stone Tower Temple);compass;false
+MM_COMPASS_WF;Compass (Woodfall Temple);compass;false
+MM_DEED_LAND;Land Title Deed;land;false
+MM_DEED_MOUNTAIN;Mountain Title Deed;mountain;false
+MM_DEED_OCEAN;Ocean Title Deed;ocean;false
+MM_DEED_SWAMP;Swamp Title Deed;swamp;false
+MM_DEFENSE_UPGRADE;Double Defense (MM);defense;true
+MM_FAIRY;Fairy (MM);bottled_fairy;true
+MM_FAIRY_BIG;Big Fairy (MM);fairy;true
+MM_FISH;Fish (MM);bottled_fish;true
+MM_GOLD_DUST;Gold Dust;dust;true
+MM_GOLDEN_GAUNTLETS;Golden Gauntlets (MM);golden_gauntlet;true
+MM_GORON_BRACELET;Goron's Bracelet (MM);bracelet;true
+MM_GREAT_FAIRY_SWORD;Great Fairy's Sword;fairy_sword;true
+MM_GS_TOKEN_OCEAN;Ocean Skulltula Token;ocean_token;false
+MM_GS_TOKEN_SWAMP;Swamp Skulltula Token;swamp_token;false
+MM_HAMMER;Megaton Hammer (MM);hammer;true
+MM_HEART_CONTAINER;Heart Container (MM);heart_container;true
+MM_HEART_PIECE;Piece of Heart (MM);heart_piece;true
+MM_HOOKSHOT;Hookshot (MM);hookshot_mm;true
+MM_HOOKSHOT_SHORT;Short Hookshot (MM);hookshot_oot;true
+MM_KEY_RING;Key Ring (MM);key_ring;false
+MM_KEY_RING_GB;Key Ring (Great Bay);key_ring;false
+MM_KEY_RING_SH;Key Ring (Snowhead);key_ring;false
+MM_KEY_RING_ST;Key Ring (Stone Tower);key_ring;false
+MM_KEY_RING_WF;Key Ring (Woodfall);key_ring;false
+MM_LENS;Lens of Truth (MM);lens;true
+MM_LETTER_TO_KAFEI;Letter to Kafei;letter_kafei;false
+MM_LETTER_TO_MAMA;Letter to Mama;letter_mama;false
+MM_MAGIC_BEAN;Magic Bean (MM);bean;false
+MM_MAGIC_JAR_LARGE;Large Magic Jar (MM);double_magic;true
+MM_MAGIC_JAR_SMALL;Small Magic Jar (MM);magic;true
+MM_MAGIC_UPGRADE;Magic Upgrade (MM);magic_upgrade;true
+MM_MAGIC_UPGRADE2;Larger Magic Upgrade (MM);large_magic_upgrade;true
+MM_MAP;Map (MM);map;false
+MM_MAP_GB;Map (Great Bay Temple);map;false
+MM_MAP_SH;Map (Snowhead Temple);map;false
+MM_MAP_ST;Map (Stone Tower Temple);map;false
+MM_MAP_WF;Map (Woodfall Temple);map;false
+MM_MASK_ALL_NIGHT;All-Night Mask;night;false
+MM_MASK_BLAST;Blast Mask (MM);blast;true
+MM_MASK_BREMEN;Bremen Mask;bremen;false
+MM_MASK_BUNNY;Bunny Hood (MM);bunny;true
+MM_MASK_CAPTAIN;Captain's Hat;captain;false
+MM_MASK_COUPLE;Couple's Mask;couple;false
+MM_MASK_DEKU;Deku Mask;deku;false
+MM_MASK_DON_GERO;Don Gero's Mask;gero;false
+MM_MASK_FIERCE_DEITY;Fierce Deity's Mask;deity;false
+MM_MASK_GARO;Garo's Mask;garo;false
+MM_MASK_GIANT;Giant's Mask;giant;false
+MM_MASK_GIBDO;Gibdo Mask;gibdo;false
+MM_MASK_GORON;Goron Mask (MM);goron;true
+MM_MASK_GREAT_FAIRY;Great Fairy's Mask;fairy_mask;false
+MM_MASK_KAFEI;Kafei's Mask;kafei;false
+MM_MASK_KAMARO;Kamaro's Mask (MM);kamaro;true
+MM_MASK_KEATON;Keaton Mask (MM);keaton;true
+MM_MASK_MAJORA;Majora's Mask;mask;false
+MM_MASK_POSTMAN;Postman's Hat;postman;false
+MM_MASK_ROMANI;Romani's Mask;romani;false
+MM_MASK_SCENTS;Mask of Scents;scents;false
+MM_MASK_STONE;Stone Mask (MM);stone;true
+MM_MASK_TROUPE_LEADER;Circus Leader's Mask;troupe;false
+MM_MASK_TRUTH;Mask of Truth (MM);truth;true
+MM_MASK_ZORA;Zora Mask (MM);zora;true
+MM_MILK;Romani Milk;milk;true
+MM_MOON_TEAR;Moon's Tear;moon;false
+MM_NUT;Nut (MM);nut;true
+MM_NUT_UPGRADE;Deku Nut Upgrade (MM);nut_upgrade_1;true
+MM_NUT_UPGRADE2;Second Deku Nut Upgrade (MM);nut_upgrade_2;true
+MM_NUTS_10;10 Deku Nuts (MM);nut;true
+MM_NUTS_5;5 Deku Nuts (MM);nut;true
+MM_OCARINA;Ocarina (MM);ocarina;true
+MM_OCARINA_FAIRY;Fairy Ocarina (MM);fairy_ocarina;true
+MM_OCARINA_OF_TIME;Ocarina of Time (MM);ocarina;true
+MM_OWL_CLOCK_TOWN;Owl Statue (Clock Town);owl;false
+MM_OWL_GREAT_BAY;Owl Statue (Great Bay);owl;false
+MM_OWL_HIDDEN;Owl Statue (Hidden);owl;false
+MM_OWL_IKANA_CANYON;Owl Statue (Ikana Canyon);owl;false
+MM_OWL_MILK_ROAD;Owl Statue (Milk Road);owl;false
+MM_OWL_MOUNTAIN_VILLAGE;Owl Statue (Mountain Village);owl;false
+MM_OWL_SNOWHEAD;Owl Statue (Snowhead);owl;false
+MM_OWL_SOUTHERN_SWAMP;Owl Statue (Southern Swamp);owl;false
+MM_OWL_STONE_TOWER;Owl Statue (Stone Tower);owl;false
+MM_OWL_WOODFALL;Owl Statue (Woodfall);owl;false
+MM_OWL_ZORA_CAPE;Owl Statue (Zora Cape);owl;false
+MM_PENDANT_OF_MEMORIES;Pendant of Memories;pendant;false
+MM_PICTOGRAPH_BOX;Pictograph Box;picto;false
+MM_PLATINUM_TOKEN;Platinum Token (MM);platinum_token;true
+MM_POE;Poe (MM);bottled_poe;true
+MM_POTION_BLUE;Blue Potion (MM);blue_potion;true
+MM_POTION_GREEN;Green Potion (MM);green_potion;true
+MM_POTION_RED;Red Potion (MM);red_potion;true
+MM_POWDER_KEG;Powder Keg (MM);powder;true
+MM_PROGRESSIVE_SHIELD_DEKU;Progressive Deku Shield (MM);deku_shield;true
+MM_PROGRESSIVE_SHIELD_HERO;Progressive Hero's Shield;hero_shield;true
+MM_QUIVER2;Big Quiver (MM);big_quiver;true
+MM_QUIVER3;Biggest Quiver (MM);biggest_quiver;true
+MM_RECOVERY_HEART;Recovery Heart (MM);heart;true
+MM_REMAINS_GOHT;Goht's Remains;goht;false
+MM_REMAINS_GYORG;Gyorg's Remains;gyorg;false
+MM_REMAINS_ODOLWA;Odolwa's Remains;odolwa;false
+MM_REMAINS_TWINMOLD;Twinmold's Remains;twinmold;false
+MM_ROOM_KEY;Room Key;key;false
+MM_RUPEE_BLUE;Blue Rupee (MM);blue_rupee;true
+MM_RUPEE_GOLD;Gold Rupee (MM);gold_rupee;true
+MM_RUPEE_GREEN;Green Rupee (MM);rupee;true
+MM_RUPEE_PURPLE;Purple Rupee (MM);purple_rupee;true
+MM_RUPEE_RED;Red Rupee (MM);red_rupee;true
+MM_RUPEE_RED_10;Red Rupee (MM);red_rupee;true
+MM_RUPEE_SILVER;Silver Rupee (MM);sr;true
+MM_SCALE;Progressive Scale (MM);bronze_scale;true
+MM_SCALE_BRONZE;Bronze Scale (MM);bronze_scale;true
+MM_SCALE_GOLDEN;Golden Scale (MM);golden;true
+MM_SCALE_SILVER;Silver Scale (MM);silver;true
+MM_SCOOP;MM Scoop;none;false
+MM_SEAHORSE2;Seahorse;seahorse;false
+MM_SHIELD;Progressive Shield (MM);hero_shield;true
+MM_SHIELD_DEKU;Deku Shield (MM);deku_shield;true
+MM_SHIELD_HERO;Hero's Shield;hero_shield;true
+MM_SHIELD_MIRROR;Mirror Shield (MM);mirror_mm;true
+MM_SILVER_GAUNTLETS;Silver Gauntlets (MM);silver_gauntlet;true
+MM_SKELETON_KEY;Skeleton Key (MM);skeleton_key;true
+MM_SMALL_KEY;Small Key (MM);small_key;false
+MM_SMALL_KEY_GB;Small Key (Great Bay Temple);small_key;false
+MM_SMALL_KEY_SH;Small Key (Snowhead Temple);small_key;false
+MM_SMALL_KEY_ST;Small Key (Stone Tower Temple);small_key;false
+MM_SMALL_KEY_WF;Small Key (Woodfall Temple);small_key;false
+MM_SOLD_OUT;Sold Out;none;false
+MM_SONG_AWAKENING;Sonata of Awakening (MM);song_green;true
+MM_SONG_EMPTINESS;Elegy of Emptiness (MM);song_orange;true
+MM_SONG_EPONA;Epona's Song (MM);song;true
+MM_SONG_GORON;Goron Lullaby (MM);song_red;true
+MM_SONG_GORON_HALF;Progressive Goron Lullaby (MM);song_red;true
+MM_SONG_HEALING;Song of Healing (MM);song;true
+MM_SONG_NOTE_AWAKENING;Note from Sonata of Awakening (MM);song_green;true
+MM_SONG_NOTE_EMPTINESS;Note from Elegy of Emptiness (MM);song_orange;true
+MM_SONG_NOTE_EPONA;Note from Epona's Song (MM);song;true
+MM_SONG_NOTE_GORON;Note from Goron Lullaby (MM);song_red;true
+MM_SONG_NOTE_HEALING;Note from Song of Healing (MM);song;true
+MM_SONG_NOTE_ORDER;Note from Oath to Order (MM);song_purple;true
+MM_SONG_NOTE_SOARING;Note from Song of Soaring (MM);song;true
+MM_SONG_NOTE_STORMS;Note from Song of Storms (MM);song;true
+MM_SONG_NOTE_SUN;Note from Sun's Song (MM);song;true
+MM_SONG_NOTE_TIME;Note from Song of Time (MM);song;true
+MM_SONG_NOTE_ZORA;Note from New Wave Bossa Nova (MM);song_blue;true
+MM_SONG_ORDER;Oath to Order (MM);song_purple;true
+MM_SONG_SOARING;Song of Soaring (MM);song;true
+MM_SONG_STORMS;Song of Storms (MM);song;true
+MM_SONG_SUN;Sun's Song (MM);song;true
+MM_SONG_TIME;Song of Time (MM);song;true
+MM_SONG_ZORA;New Wave Bossa Nova (MM);song_blue;true
+MM_SOUL_ANIMAL_BUTTERFLY;Soul of Butterflies (MM);soul_of_animal;true
+MM_SOUL_ANIMAL_COW;Soul of Cows (MM);soul_of_animal;true
+MM_SOUL_ANIMAL_CUCCO;Soul of Cuccos (MM);soul_of_animal;true
+MM_SOUL_ANIMAL_DOG;Sould of Dogs (MM);soul_of_animal;true
+MM_SOUL_BOSS_GOHT;Soul of Goht;soul_of_boss;false
+MM_SOUL_BOSS_GYORG;Soul of Gyorg;soul_of_boss;false
+MM_SOUL_BOSS_IGOS;Soul of Igos;soul_of_boss;false
+MM_SOUL_BOSS_ODOLWA;Soul of Odolwa;soul_of_boss;false
+MM_SOUL_BOSS_TWINMOLD;Soul of Twinmold;soul_of_boss;false
+MM_SOUL_ENEMY_ARMOS;Soul of Armos (MM);soul_of_foe;true
+MM_SOUL_ENEMY_BAD_BAT;Soul of Bad Bats;soul_of_foe;false
+MM_SOUL_ENEMY_BEAMOS;Soul of Beamos (MM);soul_of_foe;true
+MM_SOUL_ENEMY_BIO_BABA;Soul of Bio Babas;soul_of_foe;false
+MM_SOUL_ENEMY_BOE;Soul of Boes;soul_of_foe;false
+MM_SOUL_ENEMY_BUBBLE;Soul of Bubbles (MM);soul_of_foe;true
+MM_SOUL_ENEMY_CAPTAIN_KEETA;Soul of Captain Keeta;soul_of_foe;false
+MM_SOUL_ENEMY_CHUCHU;Soul of Chuchus;soul_of_foe;false
+MM_SOUL_ENEMY_DEEP_PYTHON;Soul of Deep Pythons;soul_of_foe;false
+MM_SOUL_ENEMY_DEKU_BABA;Soul of Deku Babas (MM);soul_of_foe;true
+MM_SOUL_ENEMY_DEKU_SCRUB;Soul of Deku Scrubs (MM);soul_of_foe;true
+MM_SOUL_ENEMY_DEXIHAND;Soul of Dexihands;soul_of_foe;false
+MM_SOUL_ENEMY_DODONGO;Soul of Dodongos (MM);soul_of_foe;true
+MM_SOUL_ENEMY_DRAGONFLY;Soul of Dragonflies;soul_of_foe;false
+MM_SOUL_ENEMY_EENO;Soul of Eenoes;soul_of_foe;false
+MM_SOUL_ENEMY_EYEGORE;Soul of Eyegores;soul_of_foe;false
+MM_SOUL_ENEMY_FLOORMASTER;Soul of Floormasters (MM);soul_of_foe;true
+MM_SOUL_ENEMY_FLYING_POT;Soul of Flying Pots (MM);soul_of_foe;true
+MM_SOUL_ENEMY_FREEZARD;Soul of Freezards (MM);soul_of_foe;true
+MM_SOUL_ENEMY_GARO;Soul of Garo;soul_of_foe;false
+MM_SOUL_ENEMY_GEKKO;Soul of Gekkos;soul_of_foe;false
+MM_SOUL_ENEMY_GOMESS;Soul of Gomess;soul_of_foe;false
+MM_SOUL_ENEMY_GUAY;Soul of Guays (MM);soul_of_foe;true
+MM_SOUL_ENEMY_HIPLOOP;Soul of Hiploops;soul_of_foe;false
+MM_SOUL_ENEMY_IRON_KNUCKLE;Soul of Iron Knuckles (MM);soul_of_foe;true
+MM_SOUL_ENEMY_KEESE;Soul of Keese (MM);soul_of_foe;true
+MM_SOUL_ENEMY_LEEVER;Soul of Leevers (MM);soul_of_foe;true
+MM_SOUL_ENEMY_LIKE_LIKE;Soul of Like Likes (MM);soul_of_foe;true
+MM_SOUL_ENEMY_LIZALFOS_DINOLFOS;Soul of Lizalfos/Dinolfos (MM);soul_of_foe;true
+MM_SOUL_ENEMY_NEJIRON;Soul of Nejirons;soul_of_foe;false
+MM_SOUL_ENEMY_OCTOROK;Soul of Octoroks (MM);soul_of_foe;true
+MM_SOUL_ENEMY_PEAHAT;Soul of Peahats (MM);soul_of_foe;true
+MM_SOUL_ENEMY_POE;Soul of Poes (MM);soul_of_foe;true
+MM_SOUL_ENEMY_REAL_BOMBCHU;Soul of Real Bombchu;soul_of_foe;false
+MM_SOUL_ENEMY_REDEAD_GIBDO;Soul of ReDeads/Gibdos (MM);soul_of_foe;true
+MM_SOUL_ENEMY_SHELL_BLADE;Soul of Shell Blades (MM);soul_of_foe;true
+MM_SOUL_ENEMY_SKULLFISH;Soul of Skullfish (MM);soul_of_foe;true
+MM_SOUL_ENEMY_SKULLTULA;Soul of Skulltulas (MM);soul_of_foe;true
+MM_SOUL_ENEMY_SKULLWALLTULA;Soul of Skullwalltulas (MM);soul_of_foe;true
+MM_SOUL_ENEMY_SNAPPER;Soul of Snappers;soul_of_foe;false
+MM_SOUL_ENEMY_STALCHILD;Soul of Stalchildren (MM);soul_of_foe;true
+MM_SOUL_ENEMY_TAKKURI;Soul of Takkuri;soul_of_foe;false
+MM_SOUL_ENEMY_TEKTITE;Soul of Tektites (MM);soul_of_foe;true
+MM_SOUL_ENEMY_THIEVES;Soul of the Fighting Pirates;soul_of_foe;true
+MM_SOUL_ENEMY_WALLMASTER;Soul of Wallmasters (MM);soul_of_foe;true
+MM_SOUL_ENEMY_WART;Soul of Warts;soul_of_foe;false
+MM_SOUL_ENEMY_WIZZROBE;Soul of Wizzrobes;soul_of_foe;false
+MM_SOUL_ENEMY_WOLFOS;Soul of Wolfos (MM);soul_of_foe;true
+MM_SOUL_MISC_BUSINESS_SCRUB;Soul of Business Scrubs (MM);soul_of_npc;true
+MM_SOUL_MISC_GS;Soul of Gold Skulltulas (MM);soul_of_npc;true
+MM_SOUL_NPC_ANJU;Soul of Anju (MM);soul_of_npc;true
+MM_SOUL_NPC_AROMA;Soul of Madame Aroma (MM);soul_of_npc;false
+MM_SOUL_NPC_ASTRONOMER;Soul of Astronomer (MM);soul_of_npc;true
+MM_SOUL_NPC_BANKER;Soul of the Banker;soul_of_npc;true
+MM_SOUL_NPC_BAZAAR_SHOPKEEPER;Soul of Swamp Archery Owner;soul_of_npc;true
+MM_SOUL_NPC_BEAN_SALESMAN;Soul of the Beans Salesman (MM);soul_of_npc;true
+MM_SOUL_NPC_BIGGORON;Soul of Biggoron (MM);soul_of_npc;true
+MM_SOUL_NPC_BLACKSMITHS;Soul of Blacksmiths;soul_of_npc;false
+MM_SOUL_NPC_BOMBCHU_BOWLING_LADY;Soul of Chest Game Lady;soul_of_npc;true
+MM_SOUL_NPC_BOMBCHU_SHOPKEEPER;Soul of the Bomb Shop Owner;soul_of_npc;true
+MM_SOUL_NPC_BOMBERS;Soul of Bombers;soul_of_npc;true
+MM_SOUL_NPC_BUTLER_DEKU;Soul of the Deku Butler;soul_of_npc;false
+MM_SOUL_NPC_CARPENTERS;Soul of Carpenters (MM);soul_of_npc;true
+MM_SOUL_NPC_CARPET_MAN;Soul of Swordsman;soul_of_npc;true
+MM_SOUL_NPC_CHEST_GAME_OWNER;Soul of the Fisherman;soul_of_npc;true
+MM_SOUL_NPC_CITIZEN;Soul of Citizens (MM);soul_of_npc;true
+MM_SOUL_NPC_COMPOSER_BROS;Soul of Composer Bros. (MM);soul_of_npc;true
+MM_SOUL_NPC_DAMPE;Soul of Dampe (MM);soul_of_npc;true
+MM_SOUL_NPC_DEKU_KING;Soul of the Deku King;soul_of_npc;false
+MM_SOUL_NPC_DEKU_PRINCESS;Soul of the Deku Princess;soul_of_npc;false
+MM_SOUL_NPC_DOG_LADY;Soul of Dog Lady (MM);soul_of_npc;true
+MM_SOUL_NPC_FISHING_POND_OWNER;Soul of Trading Post Owner;soul_of_npc;true
+MM_SOUL_NPC_GORMAN;Soul of Gorman & Bros.;soul_of_npc;true
+MM_SOUL_NPC_GORON;Soul of Gorons (MM);soul_of_npc;true
+MM_SOUL_NPC_GORON_CHILD;Soul of the Goron Baby (MM);soul_of_npc;true
+MM_SOUL_NPC_GORON_ELDER;Soul of the Goron Elder;soul_of_npc;false
+MM_SOUL_NPC_GORON_SHOPKEEPER;Soul of the Goron Shopkeeper (MM);soul_of_npc;true
+MM_SOUL_NPC_GROG;Soul of Grog;soul_of_npc;true
+MM_SOUL_NPC_GURU_GURU;Soul of Guru-Guru (MM);soul_of_npc;true
+MM_SOUL_NPC_HONEY_DARLING;Soul of Honey & Darling (MM);soul_of_npc;true
+MM_SOUL_NPC_KAFEI;Soul of Kafei;soul_of_npc;false
+MM_SOUL_NPC_KEATON;Soul of Keaton;soul_of_npc;false
+MM_SOUL_NPC_KOUME_KOTAKE;Soul of Koume and Kotake;soul_of_npc;false
+MM_SOUL_NPC_MALON;Soul of Romani/Cremia;soul_of_npc;true
+MM_SOUL_NPC_MAYOR_DOTOUR;Soul of Mayor Dotour;soul_of_npc;false
+MM_SOUL_NPC_MEDIGORON;Soul of Keg Trial Goron;soul_of_npc;true
+MM_SOUL_NPC_MOON_CHILDREN;Soul of Moon Children;soul_of_npc;false
+MM_SOUL_NPC_OLD_HAG;Soul of Anju's Grandmother;soul_of_npc;true
+MM_SOUL_NPC_PLAYGROUND_SCRUBS;Soul of Playground Scrubs;soul_of_npc;false
+MM_SOUL_NPC_POE_COLLECTOR;Soul of Ghost Hut Owner;soul_of_npc;true
+MM_SOUL_NPC_ROOFTOP_MAN;Soul of Part-Timer;soul_of_npc;true
+MM_SOUL_NPC_RUTO;Soul of Lulu;soul_of_npc;true
+MM_SOUL_NPC_SCIENTIST;Soul of the Scientist (MM);soul_of_npc;true
+MM_SOUL_NPC_SHOOTING_GALLERY_OWNER;Soul of Town Archery Owner;soul_of_npc;true
+MM_SOUL_NPC_TALON;Soul of Mr. Barten (MM);soul_of_npc;true
+MM_SOUL_NPC_THIEVES;Soul of the Patrolling Pirates and their Chief;soul_of_npc;true
+MM_SOUL_NPC_TINGLE;Soul of Tingle;soul_of_npc;false
+MM_SOUL_NPC_TOILET_HAND;Soul of Toilet Hand;soul_of_npc;false
+MM_SOUL_NPC_TOTO;Soul of Toto (MM);soul_of_npc;false
+MM_SOUL_NPC_TOURIST_CENTER;Soul of Tourist Center Owner;soul_of_npc;false
+MM_SOUL_NPC_ZORA;Soul of Zoras (MM);soul_of_npc;true
+MM_SOUL_NPC_ZORA_MUSICIANS;Soul of the Zora Musicians;soul_of_npc;false
+MM_SOUL_NPC_ZORA_SHOPKEEPER;Soul of the Zora Shopkeeper (MM);soul_of_npc;true
+MM_SPELL_FIRE;Din's Fire (MM);din;true
+MM_SPELL_LOVE;Nayru's Love (MM);nayru;true
+MM_SPELL_WIND;Farore's Wind (MM);farore;true
+MM_SPIN_UPGRADE;Spin Attack Upgrade (MM);spin;true
+MM_STICK;Deku Stick (MM);stick;true
+MM_STICK_UPGRADE;Deku Stick Upgrade (MM);stick_upgrade_1;true
+MM_STICK_UPGRADE2;Second Deku Stick Upgrade (MM);stick_upgrade_2;true
+MM_STONE_OF_AGONY;Stone of Agony (MM);agony;true
+MM_STRAY_FAIRY;Stray Fairy (MM);sf;false
+MM_STRAY_FAIRY_GB;Stray Fairy (Great Bay Temple);sf_blue;false
+MM_STRAY_FAIRY_SH;Stray Fairy (Snowhead Temple);sf_green;false
+MM_STRAY_FAIRY_ST;Stray Fairy (Stone Tower Temple);sf_yellow;false
+MM_STRAY_FAIRY_TOWN;Stray Fairy (Clock Town);sf_orange;false
+MM_STRAY_FAIRY_WF;Stray Fairy (Woodfall Temple);sf;false
+MM_STRENGTH;Progressive Strength (MM);bracelet;true
+MM_SWORD;Progressive Sword (MM);kokiri_mm;true
+MM_SWORD_GILDED;Gilded Sword (MM);gilded;true
+MM_SWORD_KOKIRI;Kokiri Sword (MM);kokiri_mm;true
+MM_SWORD_RAZOR;Razor Sword (MM);razor;true
+MM_TRANSCENDENT_FAIRY;Transcendent Fairy;sf_transcendent;false
+MM_TUNIC_GORON;Goron Tunic (MM);goron_tunic;true
+MM_TUNIC_ZORA;Zora Tunic (MM);zora_tunic;true
+MM_UNK_21;40 Arrows (MM);arrow;true
+MM_UNK_2B;30 Deku Nuts (MM);nut;true
+MM_UNK_2C;30 Deku Nuts (MM);nut;true
+MM_UNK_2D;40 Deku Nuts (MM);nut;true
+MM_UNK_2F;20 Deku Sticks (MM);stick;true
+MM_UNK_30;20 Deku Sticks (MM);stick;true
+MM_UNK_31;30 Deku Sticks (MM);stick;true
+MM_PROG_WALLET;Progressive Wallet (MM);wallet;true
+MM_WALLET;Child Wallet (MM);child_wallet;true
+MM_WALLET2;Adult Wallet (MM);wallet;true
+MM_WALLET3;Giant Wallet (MM);big_wallet;true
+MM_WALLET4;Colossal Wallet (MM);colossal_wallet;true
+MM_WALLET5;Bottomless Wallet (MM);bottomless_wallet;true
+MM_WEIRD_MUSHROOM;Magic Mushroom;bottled_mushroom;true
+MM_WORLD_MAP_CLOCK_TOWN;World Map of Clock Town;map;false
+MM_WORLD_MAP_GREAT_BAY;World Map of Great Bay;map;false
+MM_WORLD_MAP_ROMANI_RANCH;World Map of Ranch;map;false
+MM_WORLD_MAP_SNOWHEAD;World Map of Snowhead;map;false
+MM_WORLD_MAP_STONE_TOWER;World Map of Stone Tower;map;false
+MM_WORLD_MAP_WOODFALL;World Map of Woodfall;map;false
+NOTHING;Nothing;nothing;false
+OOT_ARROW_FIRE;Fire Arrows (OoT);fire_arrow;true
+OOT_ARROW_ICE;Ice Arrows (OoT);ice_arrow;true
+OOT_ARROW_LIGHT;Light Arrows (OoT);light_arrow;true
+OOT_ARROWS_10;10 Arrows (OoT);arrow;true
+OOT_ARROWS_30;30 Arrows (OoT);arrow;true
+OOT_ARROWS_5;5 Arrows (OoT);arrow;true
+OOT_BIG_POE;Big Poe (OoT);bottled_big_poe;true
+OOT_BLUE_FIRE;Blue Fire;blue_fire;true
+OOT_BOMB;Bomb (OoT);bomb;true
+OOT_BOMB_BAG;Bomb Bag (OoT);bomb_bag;true
+OOT_BOMB_BAG2;Big Bomb Bag (OoT);big_bomb;true
+OOT_BOMB_BAG3;Biggest Bomb Bag (OoT);biggest_bomb;true
+OOT_BOMBCHU_10;10 Bombchu (OoT);bombchu;true
+OOT_BOMBCHU_20;20 Bombchu (OoT);bombchu;true
+OOT_BOMBCHU_5;5 Bombchu (OoT);bombchu;true
+OOT_BOMBCHU_BAG;Bombchu Bag (OoT);bombchu_bag;true
+OOT_BOMBCHU_BAG_FIRST_10;Bombchu Bag (OoT);bombchu_bag;true
+OOT_BOMBCHU_BAG_FIRST_20;Bombchu Bag (OoT);bombchu_bag;true
+OOT_BOMBCHU_BAG_FIRST_5;Bombchu Bag (OoT);bombchu_bag;true
+OOT_BOMBCHU_BAG2;Big Bombchu Bag (OoT);bombchu_bag;true
+OOT_BOMBCHU_BAG3;Biggest Bombchu Bag (OoT);bombchu_bag;true
+OOT_BOMBS_10;10 Bombs (OoT);bomb;true
+OOT_BOMBS_20;20 Bombs (OoT);bomb;true
+OOT_BOMBS_30;30 Bombs (OoT);bomb;true
+OOT_BOMBS_5;5 Bombs (OoT);bomb;true
+OOT_BOOMERANG;Boomerang (OoT);boomerang;true
+OOT_BOOTS_HOVER;Hover Boots (OoT);hover;true
+OOT_BOOTS_IRON;Iron Boots (OoT);iron;true
+OOT_BOSS_KEY;Boss Key (OoT);boss_key;false
+OOT_BOSS_KEY_FIRE;Boss Key (Fire Temple);boss_key;false
+OOT_BOSS_KEY_FOREST;Boss Key (Forest Temple);boss_key;false
+OOT_BOSS_KEY_GANON;Boss Key (Ganon's Castle);boss_key;false
+OOT_BOSS_KEY_SHADOW;Boss Key (Shadow Temple);boss_key;false
+OOT_BOSS_KEY_SPIRIT;Boss Key (Spirit Temple);boss_key;false
+OOT_BOSS_KEY_WATER;Boss Key (Water Temple);boss_key;false
+OOT_BOTTLE_BIG_POE;Bottled Big Poe (OoT);bottled_big_poe;true
+OOT_BOTTLE_BLUE_FIRE;Bottle of Blue Fire;blue_fire;true
+OOT_BOTTLE_CHATEAU;Bottle of Chateau Romani;chateau;true
+OOT_BOTTLE_EMPTY;Empty Bottle (OoT);bottle;true
+OOT_BOTTLE_FAIRY;Bottled Fairy (OoT);bottled_fairy;true
+OOT_BOTTLE_MILK;Bottle of Milk (OoT);milk;true
+OOT_BOTTLE_POE;Bottled Poe (OoT);bottled_poe;true
+OOT_BOTTLE_POTION_BLUE;Bottle of Blue Potion (OoT);blue_potion;true
+OOT_BOTTLE_POTION_GREEN;Bottle of Green Potion (OoT);green_potion;true
+OOT_BOTTLE_POTION_RED;Bottle of Red Potion (OoT);red_potion;true
+OOT_BOTTLE_RUTO_LETTER;Ruto's Letter;ruto;true
+OOT_BOTTLED_GOLD_DUST;Bottle of Gold Dust;dust;true
+OOT_BOW;Fairy Bow (OoT);bow_oot;true
+OOT_BROKEN_GORON_SWORD;Broken Goron's Sword;broken_big;false
+OOT_BUGS;Bugs (OoT);bottled_bugs;true
+OOT_BULLET_BAG;Bullet Bag;big_seed;false
+OOT_BULLET_BAG2;Large Bullet Bag (OoT);biggest_seed;false
+OOT_BULLET_BAG3;Largest Bullet Bag (OoT);biggest_seed;false
+OOT_BUTTON_A;A Button (OoT);a_button;true
+OOT_BUTTON_C_DOWN;C-Down Button (OoT);c_down;true
+OOT_BUTTON_C_LEFT;C-Left Button (OoT);c_left;true
+OOT_BUTTON_C_RIGHT;C-Right Button (OoT);c_right;true
+OOT_BUTTON_C_UP;C-Up Button (OoT);c_up;true
+OOT_CHATEAU;Chateau Romani Refill;chateau;true
+OOT_CHICKEN;Chicken;cucco;false
+OOT_CLAIM_CHECK;Claim Check;claim;false
+OOT_COIN_BLUE;Coin (Blue);blue_coin;false
+OOT_COIN_GREEN;Coin (Green);green_coin;false
+OOT_COIN_RED;Coin (Red);red_coin;false
+OOT_COIN_YELLOW;Coin (Yellow);yellow_coin;false
+OOT_COJIRO;Cojiro;cojiro;false
+OOT_COMPASS;Compass (OoT);compass;false
+OOT_COMPASS_BOTW;Compass (Bottom of the Well);compass;false
+OOT_COMPASS_DC;Compass (Dodongo's Cavern);compass;false
+OOT_COMPASS_DT;Compass (Deku Tree);compass;false
+OOT_COMPASS_FIRE;Compass (Fire Temple);compass;false
+OOT_COMPASS_FOREST;Compass (Forest Temple);compass;false
+OOT_COMPASS_IC;Compass (Ice Cavern);compass;false
+OOT_COMPASS_JJ;Compass (Jabu-Jabu's Belly);compass;false
+OOT_COMPASS_SHADOW;Compass (Shadow Temple);compass;false
+OOT_COMPASS_SPIRIT;Compass (Spirit Temple);compass;false
+OOT_COMPASS_WATER;Compass (Water Temple);compass;false
+OOT_DEFENSE_UPGRADE;Double Defense (OoT);defense;true
+OOT_DEKU_SEEDS_30;30 Deku Seeds (OoT);seeds;true
+OOT_DEKU_SEEDS_5;5 Deku Seeds (OoT);seeds;true
+OOT_EYE_DROPS;Eye Drops;eye_drops;false
+OOT_EYEBALL_FROG;Eyeball Frog;frog;false
+OOT_FAIRY;Fairy (OoT);bottled_fairy;true
+OOT_FAIRY_BIG;Big Fairy (OoT);fairy;true
+OOT_FISH;Fish (OoT);bottled_fish;true
+OOT_FISHING_POND_ADULT_FISH;Adult Fish (Placeholder);carp_fish;false
+OOT_FISHING_POND_ADULT_FISH_10LBS;Adult Fish (10 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_FISH_11LBS;Adult Fish (11 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_FISH_12LBS;Adult Fish (12 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_FISH_13LBS;Adult Fish (13 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_FISH_14LBS;Adult Fish (14 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_FISH_15LBS;Adult Fish (15 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_FISH_16LBS;Adult Fish (16 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_FISH_17LBS;Adult Fish (17 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_FISH_18LBS;Adult Fish (18 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_FISH_19LBS;Adult Fish (19 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_FISH_20LBS;Adult Fish (20 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_FISH_21LBS;Adult Fish (21 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_FISH_22LBS;Adult Fish (22 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_FISH_23LBS;Adult Fish (23 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_FISH_24LBS;Adult Fish (24 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_FISH_25LBS;Adult Fish (25 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_FISH_4LBS;Adult Fish (4 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_FISH_5LBS;Adult Fish (5 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_FISH_6LBS;Adult Fish (6 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_FISH_7LBS;Adult Fish (7 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_FISH_8LBS;Adult Fish (8 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_FISH_9LBS;Adult Fish (9 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_LOACH;Adult Loach (Placeholder);carp_fish;false
+OOT_FISHING_POND_ADULT_LOACH_29LBS;Adult Loach (29 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_LOACH_30LBS;Adult Loach (30 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_LOACH_31LBS;Adult Loach (31 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_LOACH_32LBS;Adult Loach (32 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_LOACH_33LBS;Adult Loach (33 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_LOACH_34LBS;Adult Loach (34 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_LOACH_35LBS;Adult Loach (35 pounds);carp_fish;false
+OOT_FISHING_POND_ADULT_LOACH_36LBS;Adult Loach (36 pounds);carp_fish;false
+OOT_FISHING_POND_CHILD_FISH;Child Fish (Placeholder);carp_fish;false
+OOT_FISHING_POND_CHILD_FISH_10LBS;Child Fish (10 pounds);carp_fish;false
+OOT_FISHING_POND_CHILD_FISH_11LBS;Child Fish (11 pounds);carp_fish;false
+OOT_FISHING_POND_CHILD_FISH_12LBS;Child Fish (12 pounds);carp_fish;false
+OOT_FISHING_POND_CHILD_FISH_13LBS;Child Fish (13 pounds);carp_fish;false
+OOT_FISHING_POND_CHILD_FISH_14LBS;Child Fish (14 pounds);carp_fish;false
+OOT_FISHING_POND_CHILD_FISH_2LBS;Child Fish (2 pounds);carp_fish;false
+OOT_FISHING_POND_CHILD_FISH_3LBS;Child Fish (3 pounds);carp_fish;false
+OOT_FISHING_POND_CHILD_FISH_4LBS;Child Fish (4 pounds);carp_fish;false
+OOT_FISHING_POND_CHILD_FISH_5LBS;Child Fish (5 pounds);carp_fish;false
+OOT_FISHING_POND_CHILD_FISH_6LBS;Child Fish (6 pounds);carp_fish;false
+OOT_FISHING_POND_CHILD_FISH_7LBS;Child Fish (7 pounds);carp_fish;false
+OOT_FISHING_POND_CHILD_FISH_8LBS;Child Fish (8 pounds);carp_fish;false
+OOT_FISHING_POND_CHILD_FISH_9LBS;Child Fish (9 pounds);carp_fish;false
+OOT_FISHING_POND_CHILD_LOACH;Child Loach (Placeholder);carp_fish;false
+OOT_FISHING_POND_CHILD_LOACH_14LBS;Child Loach (14 pounds);carp_fish;false
+OOT_FISHING_POND_CHILD_LOACH_15LBS;Child Loach (15 pounds);carp_fish;false
+OOT_FISHING_POND_CHILD_LOACH_16LBS;Child Loach (16 pounds);carp_fish;false
+OOT_FISHING_POND_CHILD_LOACH_17LBS;Child Loach (17 pounds);carp_fish;false
+OOT_FISHING_POND_CHILD_LOACH_18LBS;Child Loach (18 pounds);carp_fish;false
+OOT_FISHING_POND_CHILD_LOACH_19LBS;Child Loach (19 pounds);carp_fish;false
+OOT_GERUDO_CARD;Gerudo's Membership Card;card;false
+OOT_GOLD_DUST;Gold Dust;dust;true
+OOT_GOLDEN_GAUNTLETS;Golden Gauntlets (OoT);golden_gauntlet;true
+OOT_GORON_BRACELET;Goron's Bracelet (OoT);bracelet;true
+OOT_GS_TOKEN;Gold Skulltula Token;gs_token;false
+OOT_HAMMER;Megaton Hammer (OoT);hammer;true
+OOT_HEART_CONTAINER;Heart Container (OoT);heart_container;true
+OOT_HEART_CONTAINER2;Heart Container (OoT);heart_container;true
+OOT_HEART_PIECE;Piece of Heart (OoT);heart_piece;true
+OOT_HOOKSHOT;Progressive Hookshot (OoT);hookshot_oot;true
+OOT_KEY_RING;Key Ring (OoT);key_ring;false
+OOT_KEY_RING_BOTW;Key Ring (Well);key_ring;false
+OOT_KEY_RING_FIRE;Key Ring (Fire);key_ring;false
+OOT_KEY_RING_FOREST;Key Ring (Forest);key_ring;false
+OOT_KEY_RING_GANON;Key Ring (Ganon);key_ring;false
+OOT_KEY_RING_GF;Key Ring (Hideout);key_ring;false
+OOT_KEY_RING_GTG;Key Ring (GTG);key_ring;false
+OOT_KEY_RING_SHADOW;Key Ring (Shadow);key_ring;false
+OOT_KEY_RING_SPIRIT;Key Ring (Spirit);key_ring;false
+OOT_KEY_RING_TCG;Key Ring (Chest Game);key_ring;false
+OOT_KEY_RING_WATER;Key Ring (Water);key_ring;false
+OOT_LENS;Lens of Truth (OoT);lens;true
+OOT_LONGSHOT;Longshot (OoT);longshot;true
+OOT_MAGIC_BEAN;Magic Beans (OoT);bean;false
+OOT_MAGIC_JAR_LARGE;Large Magic Jar (OoT);double_magic;true
+OOT_MAGIC_JAR_SMALL;Small Magic Jar (OoT);magic;true
+OOT_MAGIC_UPGRADE;Magic Upgrade (OoT);magic_upgrade;true
+OOT_MAGIC_UPGRADE2;Larger Magic Upgrade (OoT);large_magic_upgrade;true
+OOT_MAP;Map (OoT);map;false
+OOT_MAP_BOTW;Map (Bottom of the Well);map;false
+OOT_MAP_DC;Map (Dodongo's Cavern);map;false
+OOT_MAP_DT;Map (Deku Tree);map;false
+OOT_MAP_FIRE;Map (Fire Temple);map;false
+OOT_MAP_FOREST;Map (Forest Temple);map;false
+OOT_MAP_IC;Map (Ice Cavern);map;false
+OOT_MAP_JJ;Map (Jabu-Jabu's Belly);map;false
+OOT_MAP_SHADOW;Map (Shadow Temple);map;false
+OOT_MAP_SPIRIT;Map (Spirit Temple);map;false
+OOT_MAP_WATER;Map (Water Temple);map;false
+OOT_MASK_BLAST;Blast Mask (OoT);blast;true
+OOT_MASK_BUNNY;Bunny Hood (OoT);bunny;true
+OOT_MASK_GERUDO;Gerudo Mask (OoT);gerudo;true
+OOT_MASK_GORON;Goron Mask (OoT);goron;true
+OOT_MASK_KEATON;Keaton Mask (OoT);keaton;true
+OOT_MASK_SKULL;Skull Mask (OoT);skull;true
+OOT_MASK_SPOOKY;Spooky Mask (OoT);spooky;true
+OOT_MASK_STONE;Stone Mask (OoT);stone;true
+OOT_MASK_TRUTH;Mask of Truth (OoT);truth;true
+OOT_MASK_ZORA;Zora Mask (OoT);zora;true
+OOT_MEDALLION_FIRE;Fire Medallion;fire;false
+OOT_MEDALLION_FOREST;Forest Medallion;forest;false
+OOT_MEDALLION_LIGHT;Light Medallion;light;false
+OOT_MEDALLION_SHADOW;Shadow Medallion;shadow;false
+OOT_MEDALLION_SPIRIT;Spirit Medallion;spirit;false
+OOT_MEDALLION_WATER;Water Medallion;water;false
+OOT_MILK;Lon Lon Milk (OoT);milk;true
+OOT_NUT_UPGRADE;Deku Nut Upgrade (OoT);nut_upgrade_1;true
+OOT_NUT_UPGRADE2;Second Deku Nut Upgrade (OoT);nut_upgrade_2;true
+OOT_NUTS_10;10 Deku Nuts (OoT);nut;true
+OOT_NUTS_5;5 Deku Nuts (OoT);nut;true
+OOT_NUTS_5_ALT;5 Deku Nuts (OoT);nut;true
+OOT_OCARINA;Progressive Ocarina (OoT);ocarina;true
+OOT_OCARINA_FAIRY;Fairy Ocarina (OoT);fairy_ocarina;true
+OOT_OCARINA_TIME;Ocarina of Time (OoT);ocarina;true
+OOT_ODD_MUSHROOM;Odd Mushroom;mushroom;true
+OOT_ODD_POTION;Odd Potion;potion;true
+OOT_PLATINUM_TOKEN;Platinum Token (OoT);platinum_token;true
+OOT_POACHER_SAW;Poacher's Saw;saw;false
+OOT_POCKET_CUCCO;Pocket Cucco;cucco;false
+OOT_POCKET_EGG;Pocket Egg;egg;false
+OOT_POE;Poe (OoT);bottled_poe;true
+OOT_POTION_BLUE;Blue Potion (OoT);blue_potion;true
+OOT_POTION_GREEN;Green Potion (OoT);green_potion;true
+OOT_POTION_RED;Red Potion (OoT);red_potion;true
+OOT_POUCH_SILVER_BOTW;Silver Rupee Pouch (Bottom of the Well);silver_pouch;false
+OOT_POUCH_SILVER_DC;Silver Rupee Pouch (Dodongo's Cavern);silver_pouch;false
+OOT_POUCH_SILVER_GANON_FIRE;Silver Rupee Pouch (Ganon's Castle - Fire Trial);silver_pouch;false
+OOT_POUCH_SILVER_GANON_FOREST;Silver Rupee Pouch (Ganon's Castle - Forest Trial);silver_pouch;false
+OOT_POUCH_SILVER_GANON_LIGHT;Silver Rupee Pouch (Ganon's Castle - Light Trial);silver_pouch;false
+OOT_POUCH_SILVER_GANON_SHADOW;Silver Rupee Pouch (Ganon's Castle - Shadow Trial);silver_pouch;false
+OOT_POUCH_SILVER_GANON_SPIRIT;Silver Rupee Pouch (Ganon's Castle - Spirit Trial);silver_pouch;false
+OOT_POUCH_SILVER_GANON_WATER;Silver Rupee Pouch (Ganon's Castle - Water Trial);silver_pouch;false
+OOT_POUCH_SILVER_GTG_LAVA;Silver Rupee Pouch (Gerudo Training Ground - Lava);silver_pouch;false
+OOT_POUCH_SILVER_GTG_SLOPES;Silver Rupee Pouch (Gerudo Training Ground - Slopes);silver_pouch;false
+OOT_POUCH_SILVER_GTG_WATER;Silver Rupee Pouch (Gerudo Training Ground - Water);silver_pouch;false
+OOT_POUCH_SILVER_IC_BLOCK;Silver Rupee Pouch (Ice Cavern - Block);silver_pouch;false
+OOT_POUCH_SILVER_IC_SCYTHE;Silver Rupee Pouch (Ice Cavern - Scythe);silver_pouch;false
+OOT_POUCH_SILVER_SHADOW_BLADES;Silver Rupee Pouch (Shadow Temple - Invisible Blades);silver_pouch;false
+OOT_POUCH_SILVER_SHADOW_PIT;Silver Rupee Pouch (Shadow Temple - Large Pits);silver_pouch;false
+OOT_POUCH_SILVER_SHADOW_SCYTHE;Silver Rupee Pouch (Shadow Temple - Scythe);silver_pouch;false
+OOT_POUCH_SILVER_SHADOW_SPIKES;Silver Rupee Pouch (Shadow Temple - Spikes);silver_pouch;false
+OOT_POUCH_SILVER_SPIRIT_ADULT;Silver Rupee Pouch (Spirit Temple - Adult);silver_pouch;false
+OOT_POUCH_SILVER_SPIRIT_BOULDERS;Silver Rupee Pouch (Spirit Temple - Boulders);silver_pouch;false
+OOT_POUCH_SILVER_SPIRIT_CHILD;Silver Rupee Pouch (Spirit Temple - Child);silver_pouch;false
+OOT_POUCH_SILVER_SPIRIT_LOBBY;Silver Rupee Pouch (Spirit Temple - Lobby);silver_pouch;false
+OOT_POUCH_SILVER_SPIRIT_SUN;Silver Rupee Pouch (Spirit Temple - Sun Block);silver_pouch;false
+OOT_PRESCRIPTION;Prescription;prescription;false
+OOT_PROGRESSIVE_SHIELD_DEKU;Progressive Deku Shield (OoT);deku_shield;true
+OOT_PROGRESSIVE_SHIELD_HYLIAN;Progressive Hylian Shield;hylian_shield;true
+OOT_QUIVER2;Big Quiver (OoT);big_quiver;true
+OOT_QUIVER3;Biggest Quiver (OoT);biggest_quiver;true
+OOT_RECOVERY_HEART;Recovery Heart (OoT);heart;true
+OOT_RUPEE_BLUE;Blue Rupee (OoT);blue_rupee;true
+OOT_RUPEE_GREEN;Green Rupee (OoT);rupee;true
+OOT_RUPEE_HUGE;Gold Rupee (OoT);gold_rupee;true
+OOT_RUPEE_MAGICAL;Magical Silver Rupee;magical_rupee;false
+OOT_RUPEE_PURPLE;Purple Rupee (OoT);purple_rupee;true
+OOT_RUPEE_RAINBOW;Rainbow Rupee (OoT);rainbow_rupee;true
+OOT_RUPEE_RED;Red Rupee (OoT);red_rupee;true
+OOT_RUPEE_SILVER_BOTW;Silver Rupee (Bottom of the Well);sr;false
+OOT_RUPEE_SILVER_DC;Silver Rupee (Dodongo's Cavern);sr;false
+OOT_RUPEE_SILVER_GANON_FIRE;Silver Rupee (Ganon's Castle - Fire Trial);sr;false
+OOT_RUPEE_SILVER_GANON_FOREST;Silver Rupee (Ganon's Castle - Forest Trial);sr;false
+OOT_RUPEE_SILVER_GANON_LIGHT;Silver Rupee (Ganon's Castle - Light Trial);sr;false
+OOT_RUPEE_SILVER_GANON_SHADOW;Silver Rupee (Ganon's Castle - Shadow Trial);sr;false
+OOT_RUPEE_SILVER_GANON_SPIRIT;Silver Rupee (Ganon's Castle - Spirit Trial);sr;false
+OOT_RUPEE_SILVER_GANON_WATER;Silver Rupee (Ganon's Castle - Water Trial);sr;false
+OOT_RUPEE_SILVER_GTG_LAVA;Silver Rupee (Gerudo Training Ground - Lava);sr;false
+OOT_RUPEE_SILVER_GTG_SLOPES;Silver Rupee (Gerudo Training Ground - Slopes);sr;false
+OOT_RUPEE_SILVER_GTG_WATER;Silver Rupee (Gerudo Training Ground - Water);sr;false
+OOT_RUPEE_SILVER_IC_BLOCK;Silver Rupee (Ice Cavern - Block);sr;false
+OOT_RUPEE_SILVER_IC_SCYTHE;Silver Rupee (Ice Cavern - Scythe);sr;false
+OOT_RUPEE_SILVER_SHADOW_BLADES;Silver Rupee (Shadow Temple - Invisible Blades);sr;false
+OOT_RUPEE_SILVER_SHADOW_PIT;Silver Rupee (Shadow Temple - Large Pits);sr;false
+OOT_RUPEE_SILVER_SHADOW_SCYTHE;Silver Rupee (Shadow Temple - Scythe);sr;false
+OOT_RUPEE_SILVER_SHADOW_SPIKES;Silver Rupee (Shadow Temple - Spikes);sr;false
+OOT_RUPEE_SILVER_SPIRIT_ADULT;Silver Rupee (Spirit Temple - Adult);sr;false
+OOT_RUPEE_SILVER_SPIRIT_BOULDERS;Silver Rupee (Spirit Temple - Boulders);sr;false
+OOT_RUPEE_SILVER_SPIRIT_CHILD;Silver Rupee (Spirit Temple - Child);sr;false
+OOT_RUPEE_SILVER_SPIRIT_LOBBY;Silver Rupee (Spirit Temple - Lobby);sr;false
+OOT_RUPEE_SILVER_SPIRIT_SUN;Silver Rupee (Spirit Temple - Sun Block);sr;false
+OOT_SCALE;Progressive Scale (OoT);bronze_scale;true
+OOT_SCALE_BRONZE;Bronze Scale (OoT);bronze_scale;true
+OOT_SCALE_GOLDEN;Golden Scale (OoT);golden;true
+OOT_SCALE_SILVER;Silver Scale (OoT);silver;true
+OOT_SEAHORSE2;Seahorse;seahorse;false
+OOT_SHIELD;Progressive Shield (OoT);deku_shield;true
+OOT_SHIELD_DEKU;Deku Shield (OoT);deku_shield;true
+OOT_SHIELD_HYLIAN;Hylian Shield;hylian_shield;true
+OOT_SHIELD_MIRROR;Mirror Shield (OoT);mirror_oot;true
+OOT_SILVER_GAUNTLETS;Silver Gauntlets (OoT);silver_gauntlet;true
+OOT_SKELETON_KEY;Skeleton Key (OoT);skeleton_key;true
+OOT_SLINGSHOT;Fairy Slingshot (OoT);slingshot;true
+OOT_SMALL_KEY;Small Key (OoT);small_key;false
+OOT_SMALL_KEY_BOTW;Small Key (Bottom of the Well);small_key;false
+OOT_SMALL_KEY_FIRE;Small Key (Fire Temple);small_key;false
+OOT_SMALL_KEY_FOREST;Small Key (Forest Temple);small_key;false
+OOT_SMALL_KEY_GANON;Small Key (Ganon's Castle);small_key;false
+OOT_SMALL_KEY_GF;Small Key (Gerudo's Fortress);small_key;false
+OOT_SMALL_KEY_GTG;Small Key (Gerudo's Training Ground);small_key;false
+OOT_SMALL_KEY_SHADOW;Small Key (Shadow Temple);small_key;false
+OOT_SMALL_KEY_SPIRIT;Small Key (Spirit Temple);small_key;false
+OOT_SMALL_KEY_TCG;Small Key (Chest Game);small_key;false
+OOT_SMALL_KEY_WATER;Small Key (Water Temple);small_key;false
+OOT_SONG_EMPTINESS;Elegy of Emptiness (OoT);song_orange;true
+OOT_SONG_EPONA;Epona's Song (OoT);song;true
+OOT_SONG_NOTE_EMPTINESS;Note from Elegy of Emptiness (OoT);song_orange;true
+OOT_SONG_NOTE_EPONA;Note from Epona's Song (OoT);song;true
+OOT_SONG_NOTE_SARIA;Note from Saria's Song (OoT);song;true
+OOT_SONG_NOTE_STORMS;Note from Song of Storms (OoT);song;true
+OOT_SONG_NOTE_SUN;Note from Sun's Song (OoT);song;true
+OOT_SONG_NOTE_TIME;Note from Song of Time (OoT);song;true
+OOT_SONG_NOTE_TP_FIRE;Note from Bolero of Fire (OoT);song_red;true
+OOT_SONG_NOTE_TP_FOREST;Note from Minuet of Forest (OoT);song_green;true
+OOT_SONG_NOTE_TP_LIGHT;Note from Prelude of Light (OoT);song_yellow;true
+OOT_SONG_NOTE_TP_SHADOW;Note from Nocturne of Shadow (OoT);song_purple;true
+OOT_SONG_NOTE_TP_SPIRIT;Note from Requiem of Spirit (OoT);song_orange;true
+OOT_SONG_NOTE_TP_WATER;Note from Serenade of Water (OoT);song_blue;true
+OOT_SONG_NOTE_ZELDA;Note from Zelda's Lullaby (OoT);song;true
+OOT_SONG_SARIA;Saria's Song (OoT);song;true
+OOT_SONG_STORMS;Song of Storms (OoT);song;true
+OOT_SONG_SUN;Sun's Song (OoT);song;true
+OOT_SONG_TIME;Song of Time (OoT);song;true
+OOT_SONG_TP_FIRE;Bolero of Fire (OoT);song_red;true
+OOT_SONG_TP_FOREST;Minuet of Forest (OoT);song_green;true
+OOT_SONG_TP_LIGHT;Prelude of Light (OoT);song_yellow;true
+OOT_SONG_TP_SHADOW;Nocturne of Shadow (OoT);song_purple;true
+OOT_SONG_TP_SPIRIT;Requiem of Spirit (OoT);song_orange;true
+OOT_SONG_TP_WATER;Serenade of Water (OoT);song_blue;true
+OOT_SONG_ZELDA;Zelda's Lullaby (OoT);song;true
+OOT_SOUL_ANIMAL_BUTTERFLY;Soul of Butterflies (OoT);soul_of_animal;true
+OOT_SOUL_ANIMAL_COW;Soul of Cows (OoT);soul_of_animal;true
+OOT_SOUL_ANIMAL_CUCCO;Soul of Cuccos (OoT);soul_of_animal;true
+OOT_SOUL_ANIMAL_DOG;Soul of Dogs (OoT);soul_of_animal;true
+OOT_SOUL_BOSS_BARINADE;Soul of Barinade;soul_of_boss;false
+OOT_SOUL_BOSS_BONGO_BONGO;Soul of Bongo Bongo;soul_of_boss;false
+OOT_SOUL_BOSS_KING_DODONGO;Soul of King Dodongo;soul_of_boss;false
+OOT_SOUL_BOSS_MORPHA;Soul of Morpha;soul_of_boss;false
+OOT_SOUL_BOSS_PHANTOM_GANON;Soul of Phantom Ganon;soul_of_boss;false
+OOT_SOUL_BOSS_QUEEN_GOHMA;Soul of Queen Gohma;soul_of_boss;false
+OOT_SOUL_BOSS_TWINROVA;Soul of Twinrova;soul_of_boss;false
+OOT_SOUL_BOSS_VOLVAGIA;Soul of Volvagia;soul_of_boss;false
+OOT_SOUL_ENEMY_ANUBIS;Soul of Anubis;soul_of_foe;false
+OOT_SOUL_ENEMY_ARMOS;Soul of Armos (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_BABY_DODONGO;Soul of Baby Dodongos;soul_of_foe;false
+OOT_SOUL_ENEMY_BEAMOS;Soul of Beamos (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_BIRI_BARI;Soul of Biris/Baris;soul_of_foe;false
+OOT_SOUL_ENEMY_BUBBLE;Soul of Bubbles (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_DARK_LINK;Soul of Dark Link;soul_of_foe;false
+OOT_SOUL_ENEMY_DEAD_HAND;Soul of Dead Hands;soul_of_foe;false
+OOT_SOUL_ENEMY_DEKU_BABA;Soul of Deku Babas (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_DEKU_SCRUB;Soul of Deku Scrubs (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_DODONGO;Soul of Dodongos (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_FLARE_DANCER;Soul of Flare Dancers;soul_of_foe;false
+OOT_SOUL_ENEMY_FLOORMASTER;Soul of Floormasters (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_FLYING_POT;Soul of Flying Pots (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_FREEZARD;Soul of Freezards (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_GOHMA_LARVA;Soul of Gohma Larvaes;soul_of_foe;false
+OOT_SOUL_ENEMY_GUAY;Soul of Guays (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_IRON_KNUCKLE;Soul of Iron Knuckles (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_KEESE;Soul of Keese (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_LEEVER;Soul of Leevers (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_LIKE_LIKE;Soul of Like Likes (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_LIZALFOS_DINOLFOS;Soul of Lizalfos/Dinolfos (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_MOBLIN;Soul of Moblins;soul_of_foe;false
+OOT_SOUL_ENEMY_OCTOROK;Soul of Octoroks (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_PARASITE;Soul of Jabu-Jabu's Parasites;soul_of_foe;false
+OOT_SOUL_ENEMY_PEAHAT;Soul of Peahats (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_POE;Soul of Poes (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_REDEAD_GIBDO;Soul of ReDeads/Gibdos (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_SHABOM;Soul of Shaboms;soul_of_foe;false
+OOT_SOUL_ENEMY_SHELL_BLADE;Soul of Shell Blades (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_SKULL_KID;Soul of Skull Kids (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_SKULLTULA;Soul of Skulltulas (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_SKULLWALLTULA;Soul of Skullwalltulas (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_SPIKE;Soul of Spikes;soul_of_foe;false
+OOT_SOUL_ENEMY_STALCHILD;Soul of Stalchildren (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_STALFOS;Soul of Stalfos (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_STINGER;Soul of Stingers;soul_of_foe;false
+OOT_SOUL_ENEMY_TAILPASARN;Soul of Tailpasarans;soul_of_foe;false
+OOT_SOUL_ENEMY_TEKTITE;Soul of Tektites (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_THIEVES;Soul of the Fighting Gerudos;soul_of_foe;true
+OOT_SOUL_ENEMY_TORCH_SLUG;Soul of Torch Slugs;soul_of_foe;false
+OOT_SOUL_ENEMY_WALLMASTER;Soul of Wallmasters (OoT);soul_of_foe;true
+OOT_SOUL_ENEMY_WOLFOS;Soul of Wolfoses (OoT);soul_of_foe;true
+OOT_SOUL_MISC_BUSINESS_SCRUB;Soul of Business Scrubs (OoT);soul_of_npc;true
+OOT_SOUL_MISC_GS;Soul of Gold Skulltulas (OoT);soul_of_npc;true
+OOT_SOUL_NPC_ANJU;Soul of Cucco Lady;soul_of_npc;true
+OOT_SOUL_NPC_ASTRONOMER;Soul of the Astronomer (OoT);soul_of_npc;true
+OOT_SOUL_NPC_BANKER;Soul of the Beggar;soul_of_npc;true
+OOT_SOUL_NPC_BAZAAR_SHOPKEEPER;Soul of Bazaar Shopkeeper;soul_of_npc;true
+OOT_SOUL_NPC_BEAN_SALESMAN;Soul of the Bean Salesman (OoT);soul_of_npc;true
+OOT_SOUL_NPC_BIGGORON;Soul of Biggoron (OoT);soul_of_npc;true
+OOT_SOUL_NPC_BOMBCHU_BOWLING_LADY;Soul of Bombchu Bowling Lady;soul_of_npc;true
+OOT_SOUL_NPC_BOMBCHU_SHOPKEEPER;Soul of Bombchu Shopkeeper;soul_of_npc;true
+OOT_SOUL_NPC_BOMBERS;Soul of Graveyard Kid;soul_of_npc;true
+OOT_SOUL_NPC_CARPENTERS;Soul of Carpenters (OoT);soul_of_npc;true
+OOT_SOUL_NPC_CARPET_MAN;Soul of the Carpet Man;soul_of_npc;true
+OOT_SOUL_NPC_CHEST_GAME_OWNER;Soul of Chest Game Owner;soul_of_npc;true
+OOT_SOUL_NPC_CITIZEN;Soul of the Citizens (OoT);soul_of_npc;true
+OOT_SOUL_NPC_COMPOSER_BROS;Soul of Composer Bros. (OoT);soul_of_npc;true
+OOT_SOUL_NPC_DAMPE;Soul of Dampe (OoT);soul_of_npc;true
+OOT_SOUL_NPC_DARUNIA;Soul of Darunia;soul_of_npc;false
+OOT_SOUL_NPC_DOG_LADY;Soul of the Dog Lady (OoT);soul_of_npc;true
+OOT_SOUL_NPC_FISHING_POND_OWNER;Soul of Fishing Pond Owner;soul_of_npc;false
+OOT_SOUL_NPC_GORMAN;Soul of Ingo;soul_of_npc;true
+OOT_SOUL_NPC_GORON;Soul of Goron (OoT);soul_of_npc;true
+OOT_SOUL_NPC_GORON_CHILD;Soul of Goron Child (OoT);soul_of_npc;true
+OOT_SOUL_NPC_GORON_SHOPKEEPER;Soul of Goron Shopkeeper (OoT);soul_of_npc;true
+OOT_SOUL_NPC_GROG;Soul of the Punk Kid;soul_of_npc;true
+OOT_SOUL_NPC_GURU_GURU;Soul of Guru-Guru (OoT);soul_of_npc;true
+OOT_SOUL_NPC_HONEY_DARLING;Soul of Honey & Darling (OoT);soul_of_npc;true
+OOT_SOUL_NPC_HYLIAN_GUARD;Soul of Hylian Guard;soul_of_npc;false
+OOT_SOUL_NPC_KING_ZORA;Soul of King Zora;soul_of_npc;false
+OOT_SOUL_NPC_KOKIRI;Soul of Kokiri;soul_of_npc;false
+OOT_SOUL_NPC_KOKIRI_SHOPKEEPER;Soul of Kokiri Shopkeeper;soul_of_npc;false
+OOT_SOUL_NPC_MALON;Soul of Malon;soul_of_npc;true
+OOT_SOUL_NPC_MEDIGORON;Soul of Medigoron;soul_of_npc;true
+OOT_SOUL_NPC_MIDO;Soul of Mido;soul_of_npc;false
+OOT_SOUL_NPC_OLD_HAG;Soul of the Old Hag;soul_of_npc;true
+OOT_SOUL_NPC_POE_COLLECTOR;Soul of Poe Collector;soul_of_npc;true
+OOT_SOUL_NPC_POTION_SHOPKEEPER;Soul of Potion Shopkeeper;soul_of_npc;false
+OOT_SOUL_NPC_ROOFTOP_MAN;Soul of the Rooftop Man;soul_of_npc;true
+OOT_SOUL_NPC_RUTO;Soul of Ruto;soul_of_npc;true
+OOT_SOUL_NPC_SARIA;Soul of Saria;soul_of_npc;false
+OOT_SOUL_NPC_SCIENTIST;Soul of the Scientist (OoT);soul_of_npc;true
+OOT_SOUL_NPC_SHEIK;Soul of Sheik;soul_of_npc;false
+OOT_SOUL_NPC_SHOOTING_GALLERY_OWNER;Soul of Shooting Gallery Owner;soul_of_npc;true
+OOT_SOUL_NPC_TALON;Soul of Talon;soul_of_npc;true
+OOT_SOUL_NPC_THIEVES;Soul of the Patrolling Gerudos;soul_of_npc;true
+OOT_SOUL_NPC_ZELDA;Soul of Zelda;soul_of_npc;false
+OOT_SOUL_NPC_ZORA;Soul of Zora (OoT);soul_of_npc;true
+OOT_SOUL_NPC_ZORA_SHOPKEEPER;Soul of Zora Shopkeeper (OoT);soul_of_npc;true
+OOT_SPELL_FIRE;Din's Fire (OoT);din;true
+OOT_SPELL_LOVE;Nayru's Love (OoT);nayru;true
+OOT_SPELL_WIND;Farore's Wind (OoT);farore;true
+OOT_SPIN_UPGRADE;Spin Attack Upgrade (OoT);spin;true
+OOT_STICK;Deku Stick (OoT);stick;true
+OOT_STICK_UPGRADE;Deku Stick Upgrade (OoT);stick_upgrade_1;true
+OOT_STICK_UPGRADE2;Second Deku Stick Upgrade (OoT);stick_upgrade_2;true
+OOT_STICKS_10;10 Deku Sticks (OoT);stick;true
+OOT_STICKS_5;5 Deku Sticks (OoT);stick;true
+OOT_STONE_EMERALD;Kokiri's Emerald;emerald;false
+OOT_STONE_OF_AGONY;Stone of Agony (OoT);agony;true
+OOT_STONE_RUBY;Goron's Ruby;ruby;false
+OOT_STONE_SAPPHIRE;Zora's Sapphire;sapphire;false
+OOT_STRENGTH;Progressive Strength (OoT);bracelet;true
+OOT_SWORD;Progressive Sword (OoT);kokiri;true
+OOT_SWORD_BIGGORON;Biggoron's Sword;biggoron;true
+OOT_SWORD_GILDED;Gilded Sword (OoT);gilded;true
+OOT_SWORD_GORON;Progressive Goron Sword;biggoron;true
+OOT_SWORD_KNIFE;Giant's Knife;biggoron;true
+OOT_SWORD_KOKIRI;Kokiri Sword (OoT);kokiri;true
+OOT_SWORD_MASTER;Master Sword;master;false
+OOT_SWORD_RAZOR;Razor Sword (OoT);razor;true
+OOT_TC_HEART_PIECE;Piece of Heart (OoT);heart_piece;true
+OOT_TC_RUPEE_BLUE;Blue Rupee (OoT);blue_rupee;true
+OOT_TC_RUPEE_GREEN;Green Rupee (OoT);rupee;true
+OOT_TC_RUPEE_PURPLE;Purple Rupee (OoT);purple_rupee;true
+OOT_TC_RUPEE_RED;Red Rupee (OoT);red_rupee;true
+OOT_TC_SMALL_KEY;Small Key (OoT);small_key;false
+OOT_TRAP_ANTI_MAGIC;Anti-Magic Trap;magic_trap;false
+OOT_TRAP_DRAIN;Drain Trap;drain_trap;false
+OOT_TRAP_FIRE;Fire Trap;fire_trap;false
+OOT_TRAP_ICE;Ice Trap;ice_trap;false
+OOT_TRAP_KNOCKBACK;Knockback Trap;knockback_trap;false
+OOT_TRAP_RUPOOR;Rupoor;rupoor;false
+OOT_TRAP_SHOCK;Shock Trap;shock_trap;false
+OOT_TRIFORCE;Triforce Piece;triforce_piece;true
+OOT_TRIFORCE_COURAGE;Triforce of Courage;triforce_courage;true
+OOT_TRIFORCE_FULL;Triforce (OoT);triforce_piece;true
+OOT_TRIFORCE_POWER;Triforce of Power;triforce_power;true
+OOT_TRIFORCE_WISDOM;Triforce of Wisdom;triforce_wisdom;true
+OOT_TUNIC_GORON;Goron Tunic (OoT);goron_tunic;true
+OOT_TUNIC_ZORA;Zora Tunic (OoT);zora_tunic;true
+OOT_UNK_7D;Unknown;none;false
+OOT_UNK_7E;Unknown;none;false
+OOT_UNK_7F;Unknown;none;false
+OOT_UNUSED_ICE_TRAP;Ice Trap (OoT);ice_trap;false
+OOT_PROG_WALLET;Progressive Wallet (OoT);wallet;true
+OOT_WALLET;Child's Wallet (OoT);child_wallet;true
+OOT_WALLET2;Adult's Wallet (OoT);wallet;true
+OOT_WALLET3;Giant's Wallet (OoT);big_wallet;true
+OOT_WALLET4;Colossal Wallet (OoT);colossal_wallet;true
+OOT_WALLET5;Bottomless Wallet (OoT);bottomless_wallet;true
+OOT_WEIRD_EGG;Weird Egg;egg;false
+OOT_WEIRD_MUSHROOM;Magic Mushroom;mushroom;true
+OOT_ZELDA_LETTER;Zelda's Letter;letter;false
+SHARED_ARROW_FIRE;Shared Fire Arrows;fire_arrow;false
+SHARED_ARROW_ICE;Shared Ice Arrows;ice_arrow;false
+SHARED_ARROW_LIGHT;Shared Light Arrows;light_arrow;false
+SHARED_ARROWS_10;10 Arrows;arrow;false
+SHARED_ARROWS_30;30 Arrows;arrow;false
+SHARED_ARROWS_40;40 Arrows;arrow;false
+SHARED_ARROWS_5;5 Arrows;arrow;false
+SHARED_BIG_POE;Big Poe;bottled_big_poe;false
+SHARED_BLUE_FIRE;Blue Fire;blue_fire;false
+SHARED_BOMB;1 Bomb;bomb;false
+SHARED_BOMB_BAG;Shared Bomb Bag;bomb_bag;false
+SHARED_BOMBCHU;Bombchu;bomb;false
+SHARED_BOMBCHU_10;10 Bombchu;bomb;false
+SHARED_BOMBCHU_20;20 Bombchu;bomb;false
+SHARED_BOMBCHU_5;5 Bombchu;bomb;false
+SHARED_BOMBCHU_BAG;Bombchu Bag;bombchu_bag;false
+SHARED_BOMBS_10;10 Bombs;bomb;false
+SHARED_BOMBS_20;20 Bombs;bomb;false
+SHARED_BOMBS_30;30 Bombs;bomb;false
+SHARED_BOMBS_5;5 Bombs;bomb;false
+SHARED_BOOTS_HOVER;Hover Boots;hover;false
+SHARED_BOOTS_IRON;Iron Boots;iron;false
+SHARED_BOTTLE_BIG_POE;Bottled Big Poe;bottled_big_poe;false
+SHARED_BOTTLE_BLUE_FIRE;Bottle of Blue Fire;blue_fire;false
+SHARED_BOTTLE_CHATEAU;Bottle of Chateau Romani;chateau;false
+SHARED_BOTTLE_EMPTY;Empty Bottle;bottle;false
+SHARED_BOTTLE_FAIRY;Bottled Fairy;fairy;false
+SHARED_BOTTLE_MILK;Bottle of Milk;milk;false
+SHARED_BOTTLE_POE;Bottled Poe;bottled_poe;false
+SHARED_BOTTLE_POTION_BLUE;Bottle of Blue Potion;blue_potion;false
+SHARED_BOTTLE_POTION_GREEN;Bottle of Green Potion;green_potion;false
+SHARED_BOTTLE_POTION_RED;Bottle of Red Potion;red_potion;false
+SHARED_BOTTLE_RUTO_LETTER;Ruto's Letter;ruto;false
+SHARED_BOTTLED_GOLD_DUST;Bottle of Gold Dust;dust;false
+SHARED_BOW;Shared Bow;bow_oot;false
+SHARED_BUGS;Bugs;bottled_bugs;false
+SHARED_BUTTON_A;A Button;a_button;false
+SHARED_BUTTON_C_DOWN;C-Down Button;c_down;false
+SHARED_BUTTON_C_LEFT;C-Left Button;c_left;false
+SHARED_BUTTON_C_RIGHT;C-Right Button;c_right;false
+SHARED_BUTTON_C_UP;C-Up Button;c_up;false
+SHARED_CHATEAU;Chateau Romani Refill;chateau;false
+SHARED_DEFENSE_UPGRADE;Double Defense;defense;false
+SHARED_FAIRY;Fairy;bottled_fairy;false
+SHARED_FAIRY_BIG;Big Fairy;fairy;false
+SHARED_FISH;Fish;bottled_fish;false
+SHARED_HAMMER;Megaton Hammer;hammer;false
+SHARED_HEART_CONTAINER;Heart Container;heart_container;false
+SHARED_HEART_PIECE;Piece of Heart;heart_piece;false
+SHARED_HOOKSHOT;Progressive Hookshot;hookshot_oot;false
+SHARED_LENS;Lens of Truth;lens;false
+SHARED_MAGIC_JAR_LARGE;Large Magic Jar;double_magic;false
+SHARED_MAGIC_JAR_SMALL;Small Magic Jar;magic;false
+SHARED_MAGIC_UPGRADE;Shared Magic Upgrade;magic_upgrade;false
+SHARED_MASK_BLAST;Blast Mask;blast;false
+SHARED_MASK_BUNNY;Bunny Hood;bunny;false
+SHARED_MASK_GORON;Goron Mask;goron;false
+SHARED_MASK_KEATON;Keaton Mask;keaton;false
+SHARED_MASK_STONE;Stone Mask;stone;false
+SHARED_MASK_TRUTH;Mask of Truth;truth;false
+SHARED_MASK_ZORA;Zora Mask;zora;false
+SHARED_MILK;Milk;milk;false
+SHARED_NUT;Deku Nut;nut;false
+SHARED_NUT_UPGRADE;Deku Nut Upgrade;nut_upgrade_1;false
+SHARED_NUTS_10;10 Deku Nuts;nut;false
+SHARED_NUTS_5;5 Deku Nuts;nut;false
+SHARED_OCARINA;Progressive Ocarina;ocarina;false
+SHARED_PLATINUM_TOKEN;Platinum Token;platinum_token;false
+SHARED_POE;Poe;bottled_poe;false
+SHARED_POTION_BLUE;Blue Potion;blue_potion;false
+SHARED_POTION_GREEN;Green Potion;green_potion;false
+SHARED_POTION_RED;Red Potion;red_potion;false
+SHARED_RECOVERY_HEART;Recovery Heart;heart;false
+SHARED_RUPEE_BLUE;Blue Rupee;blue_rupee;false
+SHARED_RUPEE_GOLD;Gold Rupee;gold_rupee;false
+SHARED_RUPEE_GREEN;Green Rupee;rupee;false
+SHARED_RUPEE_PURPLE;Purple Rupee;purple_rupee;false
+SHARED_RUPEE_RAINBOW;Rainbow Rupee;rainbow_rupee;false
+SHARED_RUPEE_RED;Red Rupee;red_rupee;false
+SHARED_RUPEE_SILVER;Silver Rupee;sr;false
+SHARED_SCALE;Progressive Scale;bronze_scale;false
+SHARED_SHIELD;Progressive Shield;hero_shield;false
+SHARED_SHIELD_DEKU;Deku Shield;deku_shield;false
+SHARED_SHIELD_HYLIAN;Hylian/Hero Shield;hylian_shield;false
+SHARED_SHIELD_MIRROR;Mirror Shield;mirror_oot;false
+SHARED_SKELETON_KEY;Skeleton Key;skeleton_key;false
+SHARED_SONG_EMPTINESS;Elegy of Emptiness;song_orange;false
+SHARED_SONG_EPONA;Epona's Song;song;false
+SHARED_SONG_NOTE_EMPTINESS;Note from Elegy of Emptiness;song_orange;false
+SHARED_SONG_NOTE_EPONA;Note from Epona's Song;song;false
+SHARED_SONG_NOTE_STORMS;Note from Song of Storms;song;false
+SHARED_SONG_NOTE_SUN;Note from Sun's Song;song;false
+SHARED_SONG_NOTE_TIME;Note from Song of Time;song;false
+SHARED_SONG_STORMS;Song of Storms;song;false
+SHARED_SONG_SUN;Sun's Song;song;false
+SHARED_SONG_TIME;Song of Time;song;false
+SHARED_SOUL_ANIMAL_BUTTERFLY;Soul of Butterflies;soul_of_animal;false
+SHARED_SOUL_ANIMAL_COW;Soul of Cows;soul_of_animal;false
+SHARED_SOUL_ANIMAL_CUCCO;Soul of Cuccos;soul_of_animal;false
+SHARED_SOUL_ANIMAL_DOG;Soul of Dogs;soul_of_animal;false
+SHARED_SOUL_ENEMY_ARMOS;Soul of Armos;soul_of_foe;false
+SHARED_SOUL_ENEMY_BEAMOS;Soul of Beamos;soul_of_foe;false
+SHARED_SOUL_ENEMY_BUBBLE;Soul of Bubbles;soul_of_foe;false
+SHARED_SOUL_ENEMY_DEKU_BABA;Soul of Deku Babas;soul_of_foe;false
+SHARED_SOUL_ENEMY_DEKU_SCRUB;Soul of Deku Scrubs;soul_of_foe;false
+SHARED_SOUL_ENEMY_DODONGO;Soul of Dodongos;soul_of_foe;false
+SHARED_SOUL_ENEMY_FLOORMASTER;Soul of Floormasters;soul_of_foe;false
+SHARED_SOUL_ENEMY_FLYING_POT;Soul of Flying Pots;soul_of_foe;false
+SHARED_SOUL_ENEMY_FREEZARD;Soul of Freezards;soul_of_foe;false
+SHARED_SOUL_ENEMY_GUAY;Soul of Guays;soul_of_foe;false
+SHARED_SOUL_ENEMY_IRON_KNUCKLE;Soul of Iron Knuckles;soul_of_foe;false
+SHARED_SOUL_ENEMY_KEESE;Soul of Keese;soul_of_foe;false
+SHARED_SOUL_ENEMY_LEEVER;Soul of Leevers;soul_of_foe;false
+SHARED_SOUL_ENEMY_LIKE_LIKE;Soul of Like Likes;soul_of_foe;false
+SHARED_SOUL_ENEMY_LIZALFOS_DINOLFOS;Soul of Lizalfos/Dinolfos;soul_of_foe;false
+SHARED_SOUL_ENEMY_OCTOROK;Soul of Octoroks;soul_of_foe;false
+SHARED_SOUL_ENEMY_PEAHAT;Soul of Peahats;soul_of_foe;false
+SHARED_SOUL_ENEMY_POE;Soul of Poes;soul_of_foe;false
+SHARED_SOUL_ENEMY_REDEAD_GIBDO;Soul of ReDeads/Gibdos;soul_of_foe;false
+SHARED_SOUL_ENEMY_SHELL_BLADE;Soul of Shell Blades;soul_of_foe;false
+SHARED_SOUL_ENEMY_SKULLTULA;Soul of Skulltulas;soul_of_foe;false
+SHARED_SOUL_ENEMY_SKULLWALLTULA;Soul of Skullwalltulas;soul_of_foe;false
+SHARED_SOUL_ENEMY_STALCHILD;Soul of Stalchildren;soul_of_foe;false
+SHARED_SOUL_ENEMY_TEKTITE;Soul of Tektites;soul_of_foe;false
+SHARED_SOUL_ENEMY_THIEVES;Soul of Fighting Thieves;soul_of_foe;false
+SHARED_SOUL_ENEMY_WALLMASTER;Soul of Wallmasters;soul_of_foe;false
+SHARED_SOUL_ENEMY_WOLFOS;Soul of Wolfos;soul_of_foe;false
+SHARED_SOUL_MISC_BUSINESS_SCRUB;Soul of Business Scrubs;soul_of_npc;false
+SHARED_SOUL_MISC_GS;Soul of Gold Skulltulas;soul_of_npc;false
+SHARED_SOUL_NPC_ANJU;Soul of Cucco Lady/Anju;soul_of_npc;false
+SHARED_SOUL_NPC_ASTRONOMER;Soul of the Astronomer;soul_of_npc;false
+SHARED_SOUL_NPC_BANKER;Soul of the Beggar/Banker;soul_of_npc;false
+SHARED_SOUL_NPC_BAZAAR_SHOPKEEPER;Soul of the Bazaar/Swamp Archery Owner;soul_of_npc;false
+SHARED_SOUL_NPC_BEAN_SALESMAN;Soul of the Bean Salesman;soul_of_npc;false
+SHARED_SOUL_NPC_BIGGORON;Soul of Biggoron;soul_of_npc;false
+SHARED_SOUL_NPC_BOMBCHU_BOWLING_LADY;Soul of Bombchu Bowling/Chest Game Lady;soul_of_npc;false
+SHARED_SOUL_NPC_BOMBCHU_SHOPKEEPER;Soul of the Bombchu/Bomb Shop Owner;soul_of_npc;false
+SHARED_SOUL_NPC_BOMBERS;Soul of the Graveyard Kid/Bombers;soul_of_npc;false
+SHARED_SOUL_NPC_CARPENTERS;Soul of Carpenters;soul_of_npc;false
+SHARED_SOUL_NPC_CARPET_MAN;Soul of the Carpet Man/Swordsman;soul_of_npc;false
+SHARED_SOUL_NPC_CHEST_GAME_OWNER;Soul of the Chest Game Owner/Fisherman;soul_of_npc;false
+SHARED_SOUL_NPC_CITIZEN;Soul of Citizens;soul_of_npc;false
+SHARED_SOUL_NPC_COMPOSER_BROS;Soul of Composer Bros.;soul_of_npc;false
+SHARED_SOUL_NPC_DAMPE;Soul of Dampe;soul_of_npc;false
+SHARED_SOUL_NPC_DOG_LADY;Soul of the Dog Lady;soul_of_npc;false
+SHARED_SOUL_NPC_FISHING_POND_OWNER;Soul of Fishing Pond/Trading Post Owner;soul_of_npc;false
+SHARED_SOUL_NPC_GORMAN;Soul of Ingo/Gorman & Bros.;soul_of_npc;false
+SHARED_SOUL_NPC_GORON;Soul of Gorons;soul_of_npc;false
+SHARED_SOUL_NPC_GORON_CHILD;Soul of the Goron Child/Baby;soul_of_npc;false
+SHARED_SOUL_NPC_GORON_SHOPKEEPER;Soul of the Goron Shopkeeper;soul_of_npc;false
+SHARED_SOUL_NPC_GROG;Soul of the Punk Kid/Grog;soul_of_npc;false
+SHARED_SOUL_NPC_GURU_GURU;Soul of Guru-Guru;soul_of_npc;false
+SHARED_SOUL_NPC_HONEY_DARLING;Soul of Honey & Darling;soul_of_npc;false
+SHARED_SOUL_NPC_MALON;Soul of Malon/Romani/Cremia;soul_of_npc;false
+SHARED_SOUL_NPC_MEDIGORON;Soul of Medigoron/Keg Trial Goron;soul_of_npc;false
+SHARED_SOUL_NPC_OLD_HAG;Soul of the Old Hag/Anju's Grandmother;soul_of_npc;false
+SHARED_SOUL_NPC_POE_COLLECTOR;Soul of Poe Collector/Ghost Hut Owner;soul_of_npc;false
+SHARED_SOUL_NPC_ROOFTOP_MAN;Soul of Rooftop Man/Part-Timer;soul_of_npc;false
+SHARED_SOUL_NPC_RUTO;Soul of Ruto/Lulu;soul_of_npc;false
+SHARED_SOUL_NPC_SCIENTIST;Soul of the Scientist;soul_of_npc;false
+SHARED_SOUL_NPC_SHOOTING_GALLERY_OWNER;Soul of the Shooting Gallery/Town Archery Owner;soul_of_npc;false
+SHARED_SOUL_NPC_TALON;Soul of Talon/Mr. Barten;soul_of_npc;false
+SHARED_SOUL_NPC_THIEVES;Soul of the Patrolling Thieves and their Chief;soul_of_npc;false
+SHARED_SOUL_NPC_ZORA;Soul of Zoras;soul_of_npc;false
+SHARED_SOUL_NPC_ZORA_SHOPKEEPER;Soul of the Zora Shopkeeper;soul_of_npc;false
+SHARED_SPELL_FIRE;Din's Fire;din;false
+SHARED_SPELL_LOVE;Nayru's Love;nayru;false
+SHARED_SPELL_WIND;Farore's Wind;farore;false
+SHARED_SPIN_UPGRADE;Spin Attack Upgrade;spin;false
+SHARED_STICK;Deku Stick;stick;false
+SHARED_STICK_UPGRADE;Deku Stick Upgrade;stick_upgrade_1;false
+SHARED_STICKS_10;10 Deku Sticks;stick;false
+SHARED_STICKS_5;5 Deku Sticks;stick;false
+SHARED_STONE_OF_AGONY;Stone of Agony;agony;false
+SHARED_STRENGTH;Progressive Strength;bracelet;false
+SHARED_SWORD;Progressive Sword;kokiri;false
+SHARED_TRIFORCE;Triforce Piece;triforce_piece;false
+SHARED_TRIFORCE_COURAGE;Triforce of Courage;triforce_courage;false
+SHARED_TRIFORCE_POWER;Triforce of Power;triforce_power;false
+SHARED_TRIFORCE_WISDOM;Triforce of Wisdom;triforce_wisdom;false
+SHARED_TUNIC_GORON;Goron Tunic;goron_tunic;false
+SHARED_TUNIC_ZORA;Zora Tunic;zora_tunic;false
+SHARED_WALLET;Progressive Wallet;wallet;false
+OOT_SONG_HEALING;Song of Healing (OoT);song;true
+OOT_SONG_SOARING;Song of Soaring (OoT);song;true
+OOT_SONG_AWAKENING;Sonata of Awakening (OoT);song_green;true
+OOT_SONG_GORON;Goron Lullaby (OoT);song_red;true
+OOT_SONG_GORON_HALF;Progressive Goron Lullaby (OoT);song_red;true
+OOT_SONG_ZORA;New Wave Bossa Nova (OoT);song_blue;true
+OOT_SONG_ORDER;Oath to Order (OoT);song_purple;true
+OOT_SONG_NOTE_HEALING;Note from Song of Healing (OoT);song;true
+OOT_SONG_NOTE_SOARING;Note from Song of Soaring (OoT);song;true
+OOT_SONG_NOTE_AWAKENING;Note from Sonata of Awakening (OoT);song_green;true
+OOT_SONG_NOTE_GORON;Note from Goron Lullaby (OoT);song_red;true
+OOT_SONG_NOTE_ZORA;Note from New Wave Bossa Nova (OoT);song_blue;true
+OOT_SONG_NOTE_ORDER;Note from Oath to Order (OoT);song_purple;true
+SHARED_SONG_NOTE_HEALING;Note from Song of Healing;song;false
+SHARED_SONG_NOTE_SOARING;Note from Song of Soaring;song;false
+SHARED_SONG_NOTE_AWAKENING;Note from Sonata of Awakening;song_green;false
+SHARED_SONG_NOTE_GORON;Note from Goron Lullaby;song_red;false
+SHARED_SONG_NOTE_ZORA;Note from New Wave Bossa Nova;song_blue;false
+SHARED_SONG_NOTE_ORDER;Note from Oath to Order;song_purple;false
+SHARED_SONG_HEALING;Song of Healing;song;false
+SHARED_SONG_SOARING;Song of Soaring;song;false
+SHARED_SONG_AWAKENING;Sonata of Awakening;song_green;false
+SHARED_SONG_GORON;Goron Lullaby;song_red;false
+SHARED_SONG_GORON_HALF;Progressive Goron Lullaby;song_red;false
+SHARED_SONG_ZORA;New Wave Bossa Nova;song_blue;false
+SHARED_SONG_ORDER;Oath to Order;song_purple;false
+OOT_MASK_KAMARO;Kamaro's Mask (OoT);kamaro;true
+SHARED_MASK_KAMARO;Kamaro's Mask;kamaro;false
+MM_BOOMERANG;Boomerang (MM);boomerang;true
+SHARED_BOOMERANG;Boomerang;boomerang;false
+MM_SONG_NOTE_SARIA;Note from Saria's Song (MM);song;true
+MM_SONG_NOTE_TP_FIRE;Note from Bolero of Fire (MM);song_red;true
+MM_SONG_NOTE_TP_FOREST;Note from Minuet of Forest (MM);song_green;true
+MM_SONG_NOTE_TP_LIGHT;Note from Prelude of Light (MM);song_yellow;true
+MM_SONG_NOTE_TP_SHADOW;Note from Nocturne of Shadow (MM);song_purple;true
+MM_SONG_NOTE_TP_SPIRIT;Note from Requiem of Spirit (MM);song_orange;true
+MM_SONG_NOTE_TP_WATER;Note from Serenade of Water (MM);song_blue;true
+MM_SONG_NOTE_ZELDA;Note from Zelda's Lullaby (MM);song;true
+MM_SONG_SARIA;Saria's Song (MM);song;true
+MM_SONG_TP_FIRE;Bolero of Fire (MM);song_red;true
+MM_SONG_TP_FOREST;Minuet of Forest (MM);song_green;true
+MM_SONG_TP_LIGHT;Prelude of Light (MM);song_yellow;true
+MM_SONG_TP_SHADOW;Nocturne of Shadow (MM);song_purple;true
+MM_SONG_TP_SPIRIT;Requiem of Spirit (MM);song_orange;true
+MM_SONG_TP_WATER;Serenade of Water (MM);song_blue;true
+MM_SONG_ZELDA;Zelda's Lullaby (MM);song;true
+SHARED_SONG_NOTE_SARIA;Note from Saria's Song;song;false
+SHARED_SONG_NOTE_TP_FIRE;Note from Bolero of Fire;song_red;false
+SHARED_SONG_NOTE_TP_FOREST;Note from Minuet of Forest;song_green;false
+SHARED_SONG_NOTE_TP_LIGHT;Note from Prelude of Light;song_yellow;false
+SHARED_SONG_NOTE_TP_SHADOW;Note from Nocturne of Shadow;song_purple;false
+SHARED_SONG_NOTE_TP_SPIRIT;Note from Requiem of Spirit;song_orange;false
+SHARED_SONG_NOTE_TP_WATER;Note from Serenade of Water;song_blue;false
+SHARED_SONG_NOTE_ZELDA;Note from Zelda's Lullaby;song;false
+SHARED_SONG_SARIA;Saria's Song;song;false
+SHARED_SONG_TP_FIRE;Bolero of Fire;song_red;false
+SHARED_SONG_TP_FOREST;Minuet of Forest;song_green;false
+SHARED_SONG_TP_LIGHT;Prelude of Light;song_yellow;false
+SHARED_SONG_TP_SHADOW;Nocturne of Shadow;song_purple;false
+SHARED_SONG_TP_SPIRIT;Requiem of Spirit;song_orange;false
+SHARED_SONG_TP_WATER;Serenade of Water;song_blue;false
+SHARED_SONG_ZELDA;Zelda's Lullaby;song;false
+SHARED_POWDER_KEG;Powder Keg;powder;false
+OOT_POWDER_KEG;Powder Keg (OoT);powder;true
+OOT_GREAT_FAIRY_SWORD;Great Fairy's Sword (OoT);fairy_sword;true
+SHARED_GREAT_FAIRY_SWORD;Great Fairy's Sword;fairy_sword;false
+OOT_RUSTY_KEY_TREASURE_CHEST_GAME;Rusty Key (Market Treasure Chest Game);rusty_key;false
+OOT_RUSTY_KEY_GUARD_HOUSE;Rusty Key (Guard House);rusty_key;false
+OOT_RUSTY_KEY_HYRULE_CASTLE;Rusty Key (Hyrule Castle Gatehouse);rusty_key;false
+OOT_RUSTY_KEY_DOG_LADY_HOUSE;Rusty Key (Dog Lady House);rusty_key;false
+OOT_RUSTY_KEY_BACK_ALLEY_HOUSE;Rusty Key (Back Alley House);rusty_key;false
+OOT_RUSTY_KEY_BOMBCHU_SHOP;Rusty Key (Bombchu Shop);rusty_key;false
+OOT_RUSTY_KEY_MASK_SHOP;Rusty Key (Mask Shop);rusty_key;false
+OOT_RUSTY_KEY_CHILD_BAZAAR;Rusty Key (Market Bazaar);rusty_key;false
+OOT_RUSTY_KEY_CHILD_POTION_SHOP;Rusty Key (Market Potion Shop);rusty_key;false
+OOT_RUSTY_KEY_CHILD_SHOOTING_GALLERY;Rusty Key (Market Shooting Gallery);rusty_key;false
+OOT_RUSTY_KEY_BOMBCHU_BOWLING;Rusty Key (Bombchu Bowling);rusty_key;false
+OOT_RUSTY_KEY_LABORATORY;Rusty Key (Lakeside Laboratory);rusty_key;false
+OOT_RUSTY_KEY_FISHING_POND;Rusty Key (Fishing Pond);rusty_key;false
+OOT_RUSTY_KEY_SILO;Rusty Key (Lon Lon Silo);rusty_key;false
+OOT_RUSTY_KEY_RANCH_STABLE;Rusty Key (Lon Lon Ranch Stable);rusty_key;false
+OOT_RUSTY_KEY_RANCH_HOUSE;Rusty Key (Lon Lon Ranch House);rusty_key;false
+OOT_RUSTY_KEY_RANCH_HOUSE_ROOM;Rusty Key (Malon's Room);rusty_key;false
+OOT_RUSTY_KEY_GRAVEYARD;Rusty Key (Kakariko Graveyard Hut);rusty_key;false
+OOT_RUSTY_KEY_WINDMILL;Rusty Key (Windmill);rusty_key;false
+OOT_RUSTY_KEY_IMPA_HOUSE;Rusty Key (Impa's House);rusty_key;false
+OOT_RUSTY_KEY_CARPENTER_HOUSE;Rusty Key (Carpenter House);rusty_key;false
+OOT_RUSTY_KEY_GRANNY_POTION_SHOP;Rusty Key (Granny Potion Shop);rusty_key;false
+OOT_RUSTY_KEY_ADULT_SHOOTING_GALLERY;Rusty Key (Kakariko Shooting Gallery);rusty_key;false
+OOT_RUSTY_KEY_SKULLTULA_HOUSE;Rusty Key (House of Skulltula);rusty_key;false
+OOT_RUSTY_KEY_ADULT_BAZAAR;Rusty Key (Kakariko Bazaar);rusty_key;false
+OOT_RUSTY_KEY_ADULT_POTION_SHOP;Rusty Key (Kakariko Potion Shop);rusty_key;false
+OOT_RUSTY_KEY_ADULT_POTION_SHOP_BACK;Rusty Key (Kakariko Potion Shop Back);rusty_key;false
+MM_RUSTY_KEY_TOURIST_INFORMATION;Rusty Key (Tourist Information);rusty_key;false
+MM_RUSTY_KEY_POTION_SHOP;Rusty Key (Kotake's Potion Shop);rusty_key;false
+MM_RUSTY_KEY_POST_OFFICE;Rusty Key (Post Office);rusty_key;false
+MM_RUSTY_KEY_SWORDSMAN_SCHOOL;Rusty Key (Swordsman's School);rusty_key;false
+MM_RUSTY_KEY_LOTTERY;Rusty Key (Lottery);rusty_key;false
+MM_RUSTY_KEY_BOMB_SHOP;Rusty Key (Bomb Shop);rusty_key;false
+MM_RUSTY_KEY_TRADING_POST;Rusty Key (Trading Post);rusty_key;false
+MM_RUSTY_KEY_CURIOSITY_SHOP;Rusty Key (Curiosity Shop);rusty_key;false
+MM_RUSTY_KEY_KAFEI_HIDEOUT;Rusty Key (Kafei's Hideout);rusty_key;false
+MM_RUSTY_KEY_TOWN_ARCHERY;Rusty Key (Clock Town Shooting Gallery);rusty_key;false
+MM_RUSTY_KEY_SWAMP_ARCHERY;Rusty Key (Swamp Shooting Gallery);rusty_key;false
+MM_RUSTY_KEY_OBSERVATORY;Rusty Key (Astral Observatory);rusty_key;false
+MM_RUSTY_KEY_BLACKSMITH;Rusty Key (Mountain Smithy);rusty_key;false
+MM_RUSTY_KEY_MUSIC_HOUSE;Rusty Key (Music Box House);rusty_key;false
+MM_RUSTY_KEY_LABORATORY;Rusty Key (Marine Research Lab);rusty_key;false
+MM_RUSTY_KEY_BENEATH_GRAVEYARD;Rusty Key (Beneath the Graveyard);rusty_key;false
+MM_RUSTY_KEY_DAMPE_HOUSE;Rusty Key (Dampe's House);rusty_key;false
+MM_RUSTY_KEY_MAYOR_RESIDENCE;Rusty Key (Mayor's Residence);rusty_key;false
+MM_RUSTY_KEY_MAYOR_RESIDENCE_OFFICE;Rusty Key (Mayor's Residence Office);rusty_key;false
+MM_RUSTY_KEY_MAYOR_RESIDENCE_SALON;Rusty Key (Mayor's Residence Salon);rusty_key;false
+MM_RUSTY_KEY_MAYOR_RESIDENCE_KAFEI;Rusty Key (Mayor's Residence Bedroom);rusty_key;false
+MM_RUSTY_KEY_TREASURE_CHEST_GAME;Rusty Key (Clock Town Chest Game);rusty_key;false
+MM_RUSTY_KEY_HONEY_DARLING;Rusty Key (Honey & Darling);rusty_key;false
+MM_RUSTY_KEY_MILK_BAR;Rusty Key (Milk Bar);rusty_key;false
+MM_RUSTY_KEY_DOG_RACETRACK;Rusty Key (Doggy Racetrack);rusty_key;false
+MM_RUSTY_KEY_CUCCO_SHACK;Rusty Key (Cucco Shack);rusty_key;false
+MM_RUSTY_KEY_RANCH_HOUSE;Rusty Key (Romani Ranch House);rusty_key;false
+MM_RUSTY_KEY_RANCH_BARN;Rusty Key (Romani Ranch Barn);rusty_key;false
+MM_RUSTY_KEY_RANCH_HOUSE_ROOM;Rusty Key (Romani Ranch Bedroom);rusty_key;false
+MM_RUSTY_KEY_ZORA_SHOP;Rusty Key (Zora Shop);rusty_key;false
+MM_RUSTY_KEY_ZORA_JAPAS_ROOM;Rusty Key (Japas' Room);rusty_key;false
+MM_RUSTY_KEY_ZORA_TIJO_ROOM;Rusty Key (Tijo's Room);rusty_key;false
+MM_RUSTY_KEY_ZORA_LULU_ROOM;Rusty Key (Lulu's Room);rusty_key;false
+MM_RUSTY_KEY_ZORA_EVAN_ROOM;Rusty Key (Evan's Room);rusty_key;false
+MM_RUSTY_KEY_STOCK_POT_INN;Rusty Key (Stock Pot Inn);rusty_key;false
+MM_RUSTY_KEY_STOCK_POT_INN_ROOF;Rusty Key (Stock Pot Inn Roof);rusty_key;false
+MM_RUSTY_KEY_GRANDMA_ROOM;Rusty Key (Grandma's Room);rusty_key;false
+MM_RUSTY_KEY_STOCK_POT_INN_STAFF_ROOM;Rusty Key (Stock Pot Inn Staff Room);rusty_key;false
+MM_RUSTY_KEY_STOCK_POT_INN_DORMITORY;Rusty Key (Stock Pot Inn Dormitory);rusty_key;false
+MM_SLINGSHOT;Fairy Slingshot (MM);slingshot;true
+MM_DEKU_SEEDS_5;5 Deku Seeds (MM);seeds;true
+MM_DEKU_SEEDS_30;30 Deku Seeds (MM);seeds;true
+MM_BULLET_BAG2;Large Bullet Bag (MM);biggest_seed;true
+MM_BULLET_BAG3;Largest Bullet Bag (MM);biggest_seed;true
+SHARED_SLINGSHOT;Fairy Slingshot;slingshot;false
+SHARED_DEKU_SEEDS_5;5 Deku Seeds;seeds;false
+SHARED_DEKU_SEEDS_30;30 Deku Seeds;seeds;false
+SHARED_BULLET_BAG2;Large Bullet Bag;biggest_seed;false
+SHARED_BULLET_BAG3;Largest Bullet Bag;biggest_seed;false
+MM_MASK_GERUDO;Gerudo Mask (MM);gerudo;true
+MM_MASK_SKULL;Skull Mask (MM);skull;true
+MM_MASK_SPOOKY;Spooky Mask (MM);spooky;true
+SHARED_MASK_GERUDO;Gerudo Mask;gerudo;false
+SHARED_MASK_SKULL;Skull Mask;skull;false
+SHARED_MASK_SPOOKY;Spooky Mask;spooky;false
+SHARED_QUIVER2;Big Quiver;big_quiver;false
+SHARED_QUIVER3;Biggest Quiver;biggest_quiver;false

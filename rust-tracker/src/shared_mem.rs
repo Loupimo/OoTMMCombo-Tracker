@@ -9,12 +9,14 @@
 //! ```c
 //! #define BUFFER_SIZE 1024
 //! typedef struct Event    { uint32_t PC; uint32_t Mem; uint32_t Query[6]; } Event;
+//! enum class TrackerCommand : uint8_t { None = 0, Shutdown = 1 };
 //! typedef struct SharedData {
 //!     uint32_t GameVersion[2];
 //!     LONG     MaxSize;              // = i32
 //!     volatile LONG CurrIndex;       // = i32
 //!     Event    Buffer[BUFFER_SIZE];
 //!     volatile int32_t HostROMVersion;
+//!     TrackerCommand   Command;      // = u8 (tracker -> DLL : demande d'arrêt)
 //! } SharedData;
 //! ```
 //! Comme tous les champs font 4 octets et qu'il n'y a aucun pointeur, le layout
@@ -65,7 +67,17 @@ pub struct Event {
     pub query: [u32; 6],
 }
 
-/// Miroir exact de `SharedData` (Headers/UI/MemoryReader.h:36).
+/// Valeur de `TrackerCommand::Shutdown` (Headers/UI/MemoryReader.h:35) : demande
+/// à la DLL de s'arrêter et de restaurer ce qu'elle a patché avant de se décharger.
+pub const TRACKER_COMMAND_SHUTDOWN: u8 = 1;
+
+/// Miroir exact de `SharedData` (Headers/UI/MemoryReader.h:43).
+///
+/// Le champ `command` a été ajouté avec la nouvelle méthode d'injection : le
+/// tracker l'écrit à `Shutdown` pour que la DLL, chargée comme plugin PJ64, se
+/// décharge proprement (au lieu d'être arrachée par un injecteur externe). Le
+/// `#[repr(C)]` reproduit le padding C : un `u8` suivi de 3 octets de bourrage,
+/// donc `size_of::<SharedData>()` reste égal au `sizeof(SharedData)` du C++.
 #[repr(C)]
 pub struct SharedData {
     pub game_version: [u32; 2],
@@ -73,6 +85,7 @@ pub struct SharedData {
     pub curr_index: i32,
     pub buffer: [Event; BUFFER_SIZE],
     pub host_rom_version: i32,
+    pub command: u8,
 }
 
 /// Poignée sur la vue mappée + curseur de lecture du ring buffer.
@@ -126,6 +139,15 @@ impl SharedMemory {
         unsafe { (*self.view).game_version }
     }
 
+    /// Ask the DLL to shut down and undo its patches (mirror of
+    /// `MemoryReader::StartMemoryReader` step 10: `DLLData->Command = Shutdown`).
+    /// A volatile write so the DLL's poll loop observes it promptly.
+    pub fn request_shutdown(&self) {
+        unsafe {
+            ptr::write_volatile(ptr::addr_of_mut!((*self.view).command), TRACKER_COMMAND_SHUTDOWN);
+        }
+    }
+
     /// Consomme tous les Event apparus depuis le dernier appel.
     ///
     /// Réplique la logique du ring buffer de MemoryReader.cpp : on lit de
@@ -168,6 +190,22 @@ impl Drop for SharedMemory {
                 CloseHandle(self.map_handle);
             }
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// Le mapping DLL <-> tracker repose sur un layout binaire identique. Ce
+    /// test verrouille la taille attendue (calculée depuis le C++), notamment le
+    /// padding qui suit le `command: u8` : GameVersion(8) + MaxSize(4) +
+    /// CurrIndex(4) + Buffer(1024*32) + HostROMVersion(4) + command(1) -> arrondi
+    /// à un multiple de 4 = 32792.
+    #[test]
+    fn shared_data_layout_matches_cpp() {
+        assert_eq!(std::mem::size_of::<Event>(), 32);
+        assert_eq!(std::mem::size_of::<SharedData>(), 32792);
     }
 }
 

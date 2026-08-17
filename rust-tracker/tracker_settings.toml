@@ -1,0 +1,11 @@
+language = "fr"
+hide_collected_map = false
+hide_collected_list = false
+auto_snap = false
+auto_zoom = false
+backup_on_save = false
+auto_follow_item = false
+auto_follow_entrance = false
+auto_gps_start = false
+auto_load_tracking = true
+auto_load_spoiler = true
