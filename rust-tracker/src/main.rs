@@ -6,6 +6,9 @@ mod dialog;
 mod entrance;
 mod gps;
 mod inject;
+mod multi;
+mod multi_r4;
+mod patch;
 mod poller;
 mod progression;
 mod scene;
@@ -29,6 +32,12 @@ use tracking::RomVersion;
 
 /// Maximum number of events kept in the log panel.
 const LOG_CAP: usize = 500;
+/// Header tag written on the first line of a save file, followed by the version
+/// number. Marks a "latest version" save (which may carry a `PATCH <path>` line);
+/// older saves have no header and load unchanged.
+const SAVE_VERSION_TAG: &str = "TRACKER_SAVE";
+/// Current save-format version (3: adds the r4 patch file path).
+const SAVE_VERSION: u32 = 3;
 /// Scene loaded by default at startup (OoT Kokiri Forest = 0x55).
 const DEFAULT_SCENE: u16 = data::scenes::OOT_KOKIRI_FOREST;
 
@@ -60,6 +69,7 @@ enum LaunchAction {
     Spoiler,
     Reset,
     Toggle,
+    Patch,
 }
 
 /// Top-level tabs, mirroring the original Qt layout.
@@ -129,6 +139,7 @@ fn main() -> eframe::Result<()> {
         options,
         Box::new(|cc| {
             apply_qt_style(&cc.egui_ctx);
+            install_symbol_font(&cc.egui_ctx);
             Ok(Box::new(TrackerApp::new(&cc.egui_ctx)))
         }),
     )
@@ -165,29 +176,82 @@ fn shuffle_label(i18n: &I18n, s: data::ShuffleSetting) -> &str {
 /// The Qt tracker's accent blue (#4a9edb), reused for headers / selection.
 const ACCENT: Color32 = Color32::from_rgb(74, 158, 219);
 
+// The Qt "Dual Realm" navy palette (Resources/Styles/DualRealm.qss), so the egui
+// build reads like the Qt one instead of the default Fusion gray.
+const BG_BASE: Color32 = Color32::from_rgb(0x08, 0x0f, 0x1a); // #080f1a window / panels
+const BG_PANEL: Color32 = Color32::from_rgb(0x0d, 0x18, 0x27); // #0d1827 menus / groups / buttons
+const BG_INPUT: Color32 = Color32::from_rgb(0x06, 0x0c, 0x16); // #060c16 inputs / map / troughs
+const BG_HOVER: Color32 = Color32::from_rgb(0x0d, 0x2a, 0x4a); // #0d2a4a hover
+const BG_SEL: Color32 = Color32::from_rgb(0x1a, 0x4a, 0x7a); // #1a4a7a selection / active
+const BORDER: Color32 = Color32::from_rgb(0x1a, 0x30, 0x50); // #1a3050 borders / separators
+const TEXT: Color32 = Color32::from_rgb(0xdd, 0xee, 0xff); // #ddeeff primary text
+const TEXT_MUTED: Color32 = Color32::from_rgb(0x7a, 0x9a, 0xbf); // #7a9abf secondary text
+
 /// Sentinel `entrance_table` region meaning "every entrance of the game" (the Qt
 /// "All" node that has no child scenes, just the full global table).
 const ALL_REGION: u8 = 0xFF;
 
-/// A Qt "Fusion dark"-like theme: gray panels, blue accent + selection, and
+/// The Qt "Dual Realm" dark-navy theme: navy panels, blue accent + selection, and
 /// slightly roomier spacing so the trees / grids read like the Qt build.
+/// egui's bundled fonts (Ubuntu-Light / Hack) don't cover the arrow / check
+/// glyphs used in the entrance strings (→ U+2192, ↔, ✓). Append a Windows
+/// system font that does, as the *lowest*-priority fallback for both families,
+/// so those characters render instead of the "tofu" box. A missing font just
+/// leaves the defaults in place.
+fn install_symbol_font(ctx: &egui::Context) {
+    let candidates = [
+        "C:/Windows/Fonts/arial.ttf",
+        "C:/Windows/Fonts/segoeui.ttf",
+        "C:/Windows/Fonts/tahoma.ttf",
+    ];
+    let Some(bytes) = candidates.iter().find_map(|p| std::fs::read(p).ok()) else {
+        return;
+    };
+    let mut fonts = egui::FontDefinitions::default();
+    fonts.font_data.insert("winsym".to_owned(), egui::FontData::from_owned(bytes));
+    for family in [egui::FontFamily::Proportional, egui::FontFamily::Monospace] {
+        fonts.families.entry(family).or_default().push("winsym".to_owned());
+    }
+    ctx.set_fonts(fonts);
+}
+
 fn apply_qt_style(ctx: &egui::Context) {
     let mut style = (*ctx.style()).clone();
 
     let mut v = egui::Visuals::dark();
-    v.panel_fill = Color32::from_rgb(48, 48, 48);
-    v.window_fill = Color32::from_rgb(53, 53, 53);
-    v.extreme_bg_color = Color32::from_rgb(33, 33, 33);
-    v.faint_bg_color = Color32::from_rgb(60, 60, 60);
-    v.override_text_color = Some(Color32::from_rgb(221, 221, 221));
+    v.panel_fill = BG_BASE; // central + side panels
+    v.window_fill = BG_PANEL; // floating windows / menus / tooltips
+    v.window_stroke = Stroke::new(1.0_f32, BORDER);
+    v.extreme_bg_color = BG_INPUT; // text edits, combo popups, scroll troughs
+    v.faint_bg_color = Color32::from_rgb(0x0a, 0x12, 0x20); // striped rows (#0a1220)
+    v.override_text_color = Some(TEXT);
     // Softer translucent selection with a crisp accent outline (Qt highlight).
     v.selection.bg_fill = Color32::from_rgba_unmultiplied(74, 158, 219, 90);
     v.selection.stroke = Stroke::new(1.0_f32, ACCENT);
     v.hyperlink_color = ACCENT;
-    // Subtle hover / press feedback on rows and buttons.
-    v.widgets.hovered.weak_bg_fill = Color32::from_rgb(66, 66, 66);
-    v.widgets.active.weak_bg_fill = Color32::from_rgb(72, 72, 72);
-    v.widgets.hovered.bg_stroke = Stroke::new(1.0_f32, Color32::from_rgb(90, 90, 90));
+
+    // Widget states, navy like the Qt QPushButton / QComboBox / QGroupBox rules.
+    let border = Stroke::new(1.0_f32, BORDER);
+    let accent = Stroke::new(1.0_f32, ACCENT);
+    v.widgets.noninteractive.bg_fill = BG_PANEL; // ui.group() frame fill
+    v.widgets.noninteractive.weak_bg_fill = BG_PANEL;
+    v.widgets.noninteractive.bg_stroke = border;
+    v.widgets.noninteractive.fg_stroke = Stroke::new(1.0_f32, TEXT);
+    v.widgets.inactive.bg_fill = BG_PANEL; // idle buttons / combos
+    v.widgets.inactive.weak_bg_fill = BG_PANEL;
+    v.widgets.inactive.bg_stroke = border;
+    v.widgets.inactive.fg_stroke = Stroke::new(1.0_f32, TEXT_MUTED);
+    v.widgets.hovered.bg_fill = BG_HOVER;
+    v.widgets.hovered.weak_bg_fill = BG_HOVER;
+    v.widgets.hovered.bg_stroke = accent;
+    v.widgets.hovered.fg_stroke = Stroke::new(1.0_f32, TEXT);
+    v.widgets.active.bg_fill = BG_SEL;
+    v.widgets.active.weak_bg_fill = BG_SEL;
+    v.widgets.active.bg_stroke = accent;
+    v.widgets.active.fg_stroke = Stroke::new(1.0_f32, TEXT);
+    v.widgets.open.bg_fill = BG_PANEL;
+    v.widgets.open.weak_bg_fill = BG_PANEL;
+    v.widgets.open.bg_stroke = border;
     style.visuals = v;
 
     style.spacing.item_spacing = vec2(8.0, 5.0);
@@ -204,20 +268,23 @@ fn accent_heading(ui: &mut egui::Ui, text: &str) {
 }
 
 /// A precomputed entrance-table row: display strings + click navigation targets.
+/// The strings are owned because they carry the translated (`tr_scene` /
+/// `tr_entrance`) display names rather than the raw `&'static` data names.
 struct EntRow {
-    scene: &'static str,
-    entrance: &'static str,
+    scene: String,
+    entrance: String,
     ent_target: (Game, u16, u32),
     spawn: EntCell,
     leads: EntCell,
     dot: Color32,
 }
 
-/// One in/out-link cell: N/A (one-way), undiscovered ("?"), or a clickable link.
+/// One in/out-link cell: N/A (one-way), undiscovered ("?"), or a clickable link
+/// (its label carries the translated entrance name).
 enum EntCell {
     Na,
     Unknown,
-    Link(&'static str, (Game, u16, u32)),
+    Link(String, (Game, u16, u32)),
 }
 
 impl EntCell {
@@ -226,7 +293,7 @@ impl EntCell {
         match self {
             EntCell::Na => "N/A",
             EntCell::Unknown => "?",
-            EntCell::Link(n, _) => n,
+            EntCell::Link(n, _) => n.as_str(),
         }
     }
 }
@@ -236,7 +303,7 @@ impl EntCell {
 /// inbound source) and the single red "where it leads" row. Shared by the map
 /// overlay boxes and the right-panel entrance cards so both stay identical.
 pub(crate) struct EntranceBoxData {
-    pub title: &'static str,
+    pub title: String,
     pub icon: &'static str,
     pub has_in: bool,
     pub has_out: bool,
@@ -249,41 +316,44 @@ pub(crate) struct EntranceBoxData {
 
 /// Format one inbound-source label the way Qt `GetEntranceSpawnsString` /
 /// `GetOneWayInName` do: `e_type` is the described entrance's type, `s` the
-/// linked source entrance whose from/to names build the text.
-fn fmt_in_link(e_type: data::EntranceType, s: &data::EntranceDef) -> String {
+/// linked source entrance whose from/to names build the text. The name atoms
+/// are translated (`tr_entrance`); the arrow layout stays language-neutral.
+fn fmt_in_link(i18n: &I18n, e_type: data::EntranceType, s: &data::EntranceDef) -> String {
     use data::EntranceType::*;
+    let (from, to) = (i18n.tr_entrance(s.from_name), i18n.tr_entrance(s.to_name));
     match e_type {
         Normal => {
             if s.type_ == One_Way_Out {
-                format!("{} → {}", s.from_name, s.to_name)
+                format!("{from} → {to}")
             } else {
-                format!("{} → {}", s.to_name, s.from_name)
+                format!("{to} → {from}")
             }
         }
         One_Way_In => {
             if s.type_ == Normal {
-                format!("{} → {}", s.from_name, s.to_name)
+                format!("{from} → {to}")
             } else {
-                s.to_name.to_string()
+                to.to_string()
             }
         }
-        _ => s.to_name.to_string(),
+        _ => to.to_string(),
     }
 }
 
 /// Format the outbound-destination label the way Qt `GetEntranceLeadsString` /
 /// `GetOneWayOutName` do: `d` is the destination entrance.
-fn fmt_out_link(e_type: data::EntranceType, d: &data::EntranceDef) -> String {
+fn fmt_out_link(i18n: &I18n, e_type: data::EntranceType, d: &data::EntranceDef) -> String {
     use data::EntranceType::*;
+    let (from, to) = (i18n.tr_entrance(d.from_name), i18n.tr_entrance(d.to_name));
     match e_type {
         One_Way_Out => {
             if d.type_ == Normal {
-                format!("{} - {}", d.to_name, d.from_name)
+                format!("{to} - {from}")
             } else {
-                d.to_name.to_string()
+                to.to_string()
             }
         }
-        _ => format!("{} - {}", d.to_name, d.from_name),
+        _ => format!("{to} - {from}"),
     }
 }
 
@@ -292,6 +362,7 @@ fn fmt_out_link(e_type: data::EntranceType, d: &data::EntranceDef) -> String {
 /// by reference (rather than `&self`) so it can run while the scene is borrowed
 /// mutably in `draw_map`.
 pub(crate) fn entrance_box_data(
+    i18n: &I18n,
     game: Game,
     e: &'static data::EntranceDef,
     in_links: &HashMap<(Game, u32), Vec<(Game, u32)>>,
@@ -310,7 +381,7 @@ pub(crate) fn entrance_box_data(
             Some(sources) => {
                 for &(sg, sid) in sources {
                     match entrance::lookup(sg, sid) {
-                        Some(s) => in_rows.push((fmt_in_link(e.type_, s), Some((sg, s.to_scene, sid)))),
+                        Some(s) => in_rows.push((fmt_in_link(i18n, e.type_, s), Some((sg, s.to_scene, sid)))),
                         None => in_rows.push(("?".to_string(), None)),
                     }
                 }
@@ -322,7 +393,7 @@ pub(crate) fn entrance_box_data(
     // Red row: where this entrance leads once discovered.
     let out_row = has_out.then(|| match out_links.get(&key) {
         Some(&(dg, did)) => match entrance::lookup(dg, did) {
-            Some(d) => (fmt_out_link(e.type_, d), Some((dg, d.to_scene, did))),
+            Some(d) => (fmt_out_link(i18n, e.type_, d), Some((dg, d.to_scene, did))),
             None => ("?".to_string(), None),
         },
         None => ("?".to_string(), None),
@@ -331,7 +402,7 @@ pub(crate) fn entrance_box_data(
     // The box/card title is the entrance's own name (Qt `formatEntrance` ->
     // `GetEntranceFromName` -> `FromName`): the side facing away from this scene,
     // e.g. "Fire Temple" for the Fire Temple doorway inside Death Mountain Crater.
-    EntranceBoxData { title: e.from_name, icon: e.icon, has_in, has_out, in_rows, out_row }
+    EntranceBoxData { title: i18n.tr_entrance(e.from_name).to_string(), icon: e.icon, has_in, has_out, in_rows, out_row }
 }
 
 /// A fixed-width table cell (entrance table): allocates `w` px and runs `add`.
@@ -394,7 +465,7 @@ fn gps_entrance_combo(
         return;
     };
     let text = ent
-        .and_then(|e| entrance::lookup(game, e).map(|d| d.to_name))
+        .and_then(|e| entrance::lookup(game, e).map(|d| i18n.tr_entrance(d.to_name)))
         .unwrap_or(i18n.gps_whole_scene());
     egui::ComboBox::from_id_salt(id).width(220.0).selected_text(text).show_ui(ui, |ui| {
         if ui.selectable_label(ent.is_none(), i18n.gps_whole_scene()).clicked() {
@@ -404,7 +475,7 @@ fn gps_entrance_combo(
             if e.to_scene != sid || e.to_name.is_empty() {
                 continue;
             }
-            if ui.selectable_label(*ent == Some(e.to_id), e.to_name).clicked() {
+            if ui.selectable_label(*ent == Some(e.to_id), i18n.tr_entrance(e.to_name)).clicked() {
                 *ent = Some(e.to_id);
             }
         }
@@ -564,6 +635,24 @@ fn progress_bar(ui: &mut egui::Ui, done: usize, total: usize, color: Color32) {
     }
 }
 
+/// One world's spoiler placements and collected state (multiworld). World 0 is
+/// the local world (world 1); single / coop seeds have exactly one entry. Mirror
+/// of the Qt per-world `WorldObjects` clones: the physical layout is identical
+/// across worlds, only the items placed, their destination player and the
+/// collected status differ. The world selector swaps which one every view reads.
+#[derive(Default, Clone)]
+pub(crate) struct WorldData {
+    /// Physical placements in this world: object `Location` -> item name.
+    pub items: HashMap<String, String>,
+    /// Per-location destination player (1-based), when the spoiler gives an
+    /// explicit "Player N" prefix. Absent means the item belongs to this world.
+    pub dest: HashMap<String, u8>,
+    /// Objects collected in this world (`Game`, object index).
+    pub collected: HashSet<(Game, usize)>,
+    /// Manually-forced subset of `collected` (drawn gold on the map).
+    pub forced: HashSet<(Game, usize)>,
+}
+
 struct TrackerApp {
     /// --- Current UI language ---
     i18n: I18n,
@@ -585,19 +674,36 @@ struct TrackerApp {
     tracking: bool,
     /// Whether the program should auto save or not when an entrance or item is received.
     auto_save: bool,
-    /// Multiplayer launch options (Qt `NetCheckBox` / `Host` / `Port`). The
-    /// networking itself is not ported yet, but the controls mirror the Qt page.
+    /// Multiplayer launch options (Qt `NetCheckBox` / `Host` / `Port`).
     use_multiplayer: bool,
     mp_host: String,
     mp_port: String,
+    /// The running multiplayer client (Qt `App` + `TrackerThread`), spawned when
+    /// tracking starts with multiplayer enabled. `None` while stopped / disabled.
+    multi: Option<multi::MultiHandle>,
+    /// The running r4 multiplayer client (OoTMM builds > v32.0), spawned when
+    /// tracking starts with a patch loaded. `None` while stopped / no patch.
+    r4: Option<multi_r4::R4Handle>,
+    /// The OoTMM game patch file chosen by the user (`.ootmm` or the `.zip`
+    /// bundling it), for the r4 multiplayer mechanism. Persisted in the save file
+    /// so the next launch re-loads it automatically.
+    patch_path: Option<PathBuf>,
+    /// Session identity parsed from `patch_path` (world id / mode / session ids).
+    /// `None` until a patch is successfully loaded.
+    patch_info: Option<patch::PatchInfo>,
+    /// Set at startup when a patch path was restored from the save: the first
+    /// frame resolves it (loads the patch, or warns + prompts if the file moved).
+    patch_startup_check: bool,
     /// Text journal shown on the Launch page (Qt `LogViewer`): action / status
     /// messages, newest at the bottom.
     log_lines: VecDeque<String>,
-    /// Objets collectés, source de vérité globale (clé = jeu + index objet).
-    collected: HashSet<(Game, usize)>,
-    /// Subset of `collected` that was toggled by hand (ObjectState::Forced) — drawn
-    /// in the accent/violet tint on the map, distinct from auto-collected objects.
-    forced: HashSet<(Game, usize)>,
+    /// Multiworld: one entry per world (placements + collected + forced). Always
+    /// holds at least `worlds[0]` (the local world). The active world's entry is
+    /// what every map / tree / progression view reads. DLL-hook pickups land in
+    /// the local world (index 0); network ledger transfers (see `apply_net_item`)
+    /// land in their real "from" world. `active_world` is the 0-based displayed one.
+    worlds: Vec<WorldData>,
+    active_world: usize,
     /// Entrances visited live (keyed by game + entrance id).
     visited_entrances: HashSet<(Game, u32)>,
     /// EntranceLink OutLink: where leaving an entrance leads (entrance -> entrance).
@@ -632,10 +738,6 @@ struct TrackerApp {
     /// Entrance-table column width fractions (Scene / Entrance / spawn / leads),
     /// user-resizable by dragging a header separator.
     ent_col_frac: [f32; 4],
-    /// Item held at each object Location, from a loaded spoiler log.
-    spoiler_items: HashMap<String, String>,
-    /// Multiworld: destination player for a location's item (when it differs).
-    spoiler_worlds: HashMap<String, u8>,
     /// Scenes running the Master Quest / JP layout (from the spoiler settings).
     mq_scenes: HashSet<(Game, u16)>,
     /// Age/season toggle for scenes that have a context (false = Child/Winter,
@@ -669,6 +771,9 @@ struct TrackerApp {
     snap_pos: Option<(f32, f32)>,
     /// Whether the ROM Settings window is open.
     show_settings: bool,
+    /// Selected ROM Settings category (index into the left-nav list), so the
+    /// page persists while the window stays open.
+    settings_nav: usize,
     /// Whether the "About" dialog window is open.
     show_about: bool,
     /// Parsed / edited ROM build settings (shuffle parameters).
@@ -697,12 +802,20 @@ struct TrackerApp {
 
     // --- Connection / injection ---
     status: String,
-    /// ROM build reported by the DLL (drives the NPC id fix-up).
+    /// ROM build reported by the DLL (drives the item / NPC id fix-up).
     rom: RomVersion,
+    /// True once a spoiler's `Version:` line has set `rom` (mirror of the C++
+    /// `ActiveROMVersionFromSpoiler`): the spoiler is authoritative, so the
+    /// per-poll fingerprint detection must not override it (a fingerprint can't
+    /// tell v30.1 from a later stable, but the spoiler can).
+    rom_from_spoiler: bool,
 
     // --- Map rendering ---
     /// Object-type icon textures (None = load failed → colored fallback).
     icon_cache: HashMap<&'static str, Option<egui::TextureHandle>>,
+    /// Desaturated, half-alpha variants of the progression item icons, built on
+    /// demand for the "uncollected" placeholder look (mirrors the Qt ProgressionTab).
+    grey_icon_cache: HashMap<&'static str, Option<egui::TextureHandle>>,
     map_texture: Option<egui::TextureHandle>,
     map_size: Vec2,
     load_error: Option<String>,
@@ -736,4 +849,24 @@ fn load_color_image(path: &str) -> Result<egui::ColorImage, String> {
         [w as usize, h as usize],
         rgba.as_raw(),
     ))
+}
+
+/// Construit une copie désaturée et à demi-transparente d'une icône, pour la
+/// marque "non collecté" de l'onglet de progression. Reproduit l'effet Qt
+/// (ProgressionTab::RefreshVisual) : luminance qGray + alpha divisé par deux.
+fn greyscale_image(img: &egui::ColorImage) -> egui::ColorImage {
+    let pixels = img
+        .pixels
+        .iter()
+        .map(|c| {
+            let [r, g, b, a] = c.to_srgba_unmultiplied();
+            // qGray de Qt : luminance entière (r*11 + g*16 + b*5) / 32.
+            let gray = ((r as u32 * 11 + g as u32 * 16 + b as u32 * 5) / 32) as u8;
+            Color32::from_rgba_unmultiplied(gray, gray, gray, a / 2)
+        })
+        .collect();
+    egui::ColorImage {
+        size: img.size,
+        pixels,
+    }
 }

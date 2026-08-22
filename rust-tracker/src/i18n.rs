@@ -62,15 +62,35 @@ struct LocaleFile {
     region_names: HashMap<String, String>,
     #[serde(default)]
     object_names: HashMap<String, String>,
+    /// Optional overlay for the ROM Settings structural labels (category names,
+    /// group titles, parameter display names), keyed by the ENGLISH string used
+    /// in `settings_window.rs` / `data.rs`. Absent / empty keys fall back to
+    /// English, so translating these is optional and incremental.
+    #[serde(default)]
+    settings_names: HashMap<String, String>,
     /// Keyed by the canonical `ItemDef.name` (spoiler strings resolve to it via
     /// `progression::find_item_id`). Absent / empty keys fall back to the raw
     /// spoiler string.
     #[serde(default)]
     item_names: HashMap<String, String>,
+    /// Keyed by an entrance's English `from_name` / `to_name` atom (the box
+    /// titles and the in/out link rows are composed from these). Absent / empty
+    /// keys fall back to the English name.
+    #[serde(default)]
+    entrance_names: HashMap<String, String>,
 }
 
 fn default_true() -> bool {
     true
+}
+
+/// Default multiplayer server host / port (Qt `LogTab` line edits), used for
+/// first launch and for settings files written before these fields existed.
+fn default_mp_host() -> String {
+    "multi.ootmm.com".to_string()
+}
+fn default_mp_port() -> String {
+    "13248".to_string()
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -98,6 +118,14 @@ pub struct AppSettings {
     pub auto_load_tracking: bool,
     #[serde(default = "default_true")]
     pub auto_load_spoiler: bool,
+    // Multiplayer launch options (Qt `AppConfig` UseMultiplayer / Host / Port),
+    // persisted so the checkbox and server address survive across sessions.
+    #[serde(default)]
+    pub use_multiplayer: bool,
+    #[serde(default = "default_mp_host")]
+    pub mp_host: String,
+    #[serde(default = "default_mp_port")]
+    pub mp_port: String,
 }
 
 impl Default for AppSettings {
@@ -116,6 +144,9 @@ impl Default for AppSettings {
             auto_gps_start: false,
             auto_load_tracking: true,
             auto_load_spoiler: true,
+            use_multiplayer: false,
+            mp_host: default_mp_host(),
+            mp_port: default_mp_port(),
         }
     }
 }
@@ -442,6 +473,18 @@ impl I18n {
         Self::get(&self.strings.launch, "port_placeholder")
     }
 
+    pub fn load_patch(&self) -> &str {
+        Self::get(&self.strings.launch, "load_patch")
+    }
+
+    pub fn patch_none(&self) -> &str {
+        Self::get(&self.strings.launch, "patch_none")
+    }
+
+    pub fn patch_label(&self) -> &str {
+        Self::get(&self.strings.launch, "patch_label")
+    }
+
     // ---------------------------------------------------------------------
     // Common
     // ---------------------------------------------------------------------
@@ -490,6 +533,18 @@ impl I18n {
         Self::get(&self.strings.common, "choose_spoiler")
     }
 
+    pub fn choose_patch(&self) -> &str {
+        Self::get(&self.strings.common, "choose_patch")
+    }
+
+    pub fn patch_file(&self) -> &str {
+        Self::get(&self.strings.common, "patch_file")
+    }
+
+    pub fn all_files(&self) -> &str {
+        Self::get(&self.strings.common, "all_files")
+    }
+
     pub fn scenes(&self) -> &str {
         Self::get(&self.strings.common, "scenes")
     }
@@ -500,10 +555,6 @@ impl I18n {
 
     pub fn player(&self) -> &str {
         Self::get(&self.strings.common, "player")
-    }
-
-    pub fn filters(&self) -> &str {
-        Self::get(&self.strings.common, "filters")
     }
 
 
@@ -557,10 +608,6 @@ impl I18n {
 
     pub fn prog_world(&self) -> &str {
         Self::get(&self.strings.progression, "world")
-    }
-
-    pub fn prog_reveal(&self) -> &str {
-        Self::get(&self.strings.progression, "reveal_uncollected")
     }
 
     pub fn prog_select_item(&self) -> &str {
@@ -673,26 +720,6 @@ impl I18n {
         Self::get(&self.strings.settings, "hidden_objs")
     }
 
-    pub fn settings_general(&self) -> &str {
-        Self::get(&self.strings.settings, "general")
-    }
-
-    pub fn settings_layouts(&self) -> &str {
-        Self::get(&self.strings.settings, "layouts")
-    }
-
-    pub fn settings_layout_deku(&self) -> &str {
-        Self::get(&self.strings.settings, "layout_deku")
-    }
-
-    pub fn settings_map_filters(&self) -> &str {
-        Self::get(&self.strings.settings, "map_filters")
-    }
-
-    pub fn settings_item_settings(&self) -> &str {
-        Self::get(&self.strings.settings, "item_settings")
-    }
-    
     // ---------------------------------------------------------------------
     // Shuffle
     // ---------------------------------------------------------------------
@@ -824,6 +851,19 @@ impl I18n {
         self.strings.object_names.get(name).map(String::as_str).filter(|s| !s.is_empty()).unwrap_or(name)
     }
 
+    /// Translate a ROM Settings structural label (category / group title /
+    /// parameter name). Absent / empty keys fall back to the English string.
+    pub fn tr_settings<'a>(&'a self, name: &'a str) -> &'a str {
+        self.strings.settings_names.get(name).map(String::as_str).filter(|s| !s.is_empty()).unwrap_or(name)
+    }
+
+    /// Translate an entrance name atom (a `from_name` / `to_name` value). The
+    /// composed link rows ("A → B", "A - B") stay language-neutral; only these
+    /// atoms are translated. Absent / empty keys fall back to the English name.
+    pub fn tr_entrance<'a>(&'a self, name: &'a str) -> &'a str {
+        self.strings.entrance_names.get(name).map(String::as_str).filter(|s| !s.is_empty()).unwrap_or(name)
+    }
+
     /// The `[item_names]` translation for a canonical item id, if present and
     /// non-empty (the id resolves through the dense, id-ordered `ITEMS` table).
     fn item_fr_by_id(&self, id: u32) -> Option<&str> {
@@ -847,13 +887,23 @@ impl I18n {
     /// Display name for a progression entry: reuse the `[item_names]` overlay
     /// via the entry's item ids (so the progression page doesn't need its own
     /// translation table). Falls back to the English entry name for abstract
-    /// entries whose items aren't translated.
+    /// entries whose items aren't translated. The redundant " (OoT)" / " (MM)"
+    /// game tag is dropped — the OoT/MM tab already says which game — while
+    /// legitimate parentheticals (e.g. "(Forest Temple)") are kept.
     pub fn tr_prog_entry<'a>(&'a self, name: &'a str, lookup_keys: &[u32]) -> &'a str {
-        lookup_keys
+        let s = lookup_keys
             .iter()
             .find_map(|&id| self.item_fr_by_id(id))
-            .unwrap_or(name)
+            .unwrap_or(name);
+        strip_game_tag(s)
     }
+}
+
+/// Drop a trailing " (OoT)" / " (MM)" game tag, keeping any other parenthetical.
+fn strip_game_tag(s: &str) -> &str {
+    s.strip_suffix(" (OoT)")
+        .or_else(|| s.strip_suffix(" (MM)"))
+        .unwrap_or(s)
 }
 
 #[cfg(test)]
@@ -883,17 +933,16 @@ mod tests {
             i.address_placeholder(), i.port_placeholder(),
             i.all(), i.none(), i.choose(), i.search(), i.apply(), i.lang(),
             i.trck_file(), i.txt_file(), i.choose_name(), i.choose_trck(), i.choose_spoiler(),
-            i.scenes(), i.scenes_title(), i.player(), i.filters(),
+            i.scenes(), i.scenes_title(), i.player(),
             i.all_entrances(), i.gps(), i.entry(),
             i.entrance_col_scene(), i.entrance_col_spawn(), i.entrance_col_leads(),
-            i.prog_world(), i.prog_reveal(), i.prog_select_item(),
+            i.prog_world(), i.prog_select_item(),
             i.prog_found(), i.prog_not_found(), i.prog_starting_item(),
             i.prog_locations(), i.prog_no_location(), i.prog_not_found_yet(),
             i.departure(), i.arrival(), i.choose_route_scenes(),
             i.gps_route_title(), i.gps_already_there(), i.gps_no_route(), i.gps_whole_scene(),
             i.settings_rom_settings(), i.settings_game(), i.settings_build(), i.settings_mode(),
-            i.settings_goal(), i.settings_hidden_objs(), i.settings_general(), i.settings_layouts(),
-            i.settings_layout_deku(), i.settings_map_filters(), i.settings_item_settings(),
+            i.settings_goal(), i.settings_hidden_objs(),
             i.shuffle_vanilla(), i.shuffle_removed(), i.shuffle_starting(),
             i.shuffle_all(), i.shuffle_dungeons(), i.shuffle_overworld(),
             i.reading_mem(), i.log_tracker_stop(), i.file_saved(), i.file_loaded(),

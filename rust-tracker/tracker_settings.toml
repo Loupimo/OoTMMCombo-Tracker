@@ -9,3 +9,6 @@ auto_follow_entrance = false
 auto_gps_start = false
 auto_load_tracking = true
 auto_load_spoiler = true
+use_multiplayer = false
+mp_host = "multi.ootmm.com"
+mp_port = "13248"

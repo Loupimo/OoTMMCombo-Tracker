@@ -11,24 +11,20 @@ impl TrackerApp {
     /// on the right.
     pub(crate) fn draw_progression_tab(&mut self, ctx: &egui::Context) {
         // Recompute the per-entry state when the collected set / spoiler /
-        // settings changed (RebuildFromSceneObjects). Disjoint field borrows.
+        // settings / active world changed (RebuildFromSceneObjects). The world to
+        // display is driven by the global selector in the tab bar (SetActiveWorld
+        // keeps the dashboard's target world in sync), matching the Qt corner
+        // selector that switches maps and progression together.
         if self.prog_dirty {
-            self.dashboard.rebuild(
-                &self.collected,
-                &self.spoiler_items,
-                &self.spoiler_worlds,
-                &self.rom_settings,
-                &self.mq_scenes,
-            );
+            self.dashboard.rebuild(&self.worlds, &self.rom_settings, &self.mq_scenes);
             self.prog_dirty = false;
         }
 
-        // Number of worlds (multiworld): the highest destination player, or 1.
-        let num_worlds = self.spoiler_worlds.values().copied().max().unwrap_or(1).max(1);
+        // Build the greyscale "uncollected" icon variants (budgeted, cached).
+        self.ensure_prog_grey_icons(ctx);
 
         // Sub-tab selector + reveal toggle (top).
         let mut new_tab = self.dashboard.sub_tab;
-        let mut new_world = self.dashboard.active_world;
         egui::TopBottomPanel::top("prog_subtabs").show(ctx, |ui| {
             ui.horizontal(|ui| {
                 for (p, page) in data::PROG_PAGES.iter().enumerate() {
@@ -42,48 +38,26 @@ impl TrackerApp {
                         new_tab = p;
                     }
                 }
-                // Multiworld: pick which world's progression to view.
-                if num_worlds > 1 {
-                    ui.separator();
-                    ui.label(format!("{} :", self.i18n.prog_world()));
-                    egui::ComboBox::from_id_salt("prog_world")
-                        .selected_text(format!("{} {}", self.i18n.player(), self.dashboard.active_world))
-                        .show_ui(ui, |ui| {
-                            for w in 1..=num_worlds {
-                                ui.selectable_value(&mut new_world, w, format!("{} {w}", self.i18n.player()));
-                            }
-                        });
-                }
                 ui.separator();
-                let mut reveal = self.dashboard.reveal;
+                // Reveal pill: identical to the status-bar toggle (same dot, text
+                // and tooltip) so both controls for the shared `reveal` flag read
+                // the same, instead of a differently-worded checkbox.
+                let reveal = self.dashboard.reveal;
+                let green = Color32::from_rgb(120, 200, 90);
+                let gray = Color32::from_gray(120);
+                ui.colored_label(if reveal { green } else { gray }, "●");
                 if ui
-                    .checkbox(&mut reveal, self.i18n.prog_reveal())
-                    .changed()
+                    .selectable_label(false, self.i18n.items_revealed(reveal))
+                    .on_hover_text(self.i18n.items_revealed_tip())
+                    .clicked()
                 {
-                    self.dashboard.set_reveal(reveal);
+                    self.dashboard.set_reveal(!reveal);
                 }
             });
         });
 
-        // A world switch recomputes the whole dashboard (different target world).
-        if new_world != self.dashboard.active_world {
-            self.dashboard.set_active_world(new_world);
-            self.dashboard.rebuild(
-                &self.collected,
-                &self.spoiler_items,
-                &self.spoiler_worlds,
-                &self.rom_settings,
-                &self.mq_scenes,
-            );
-        }
-
         // Refresh the cached detail tree (mutably) before the read-only panels.
-        self.dashboard.ensure_tree(
-            &self.collected,
-            &self.spoiler_items,
-            &self.spoiler_worlds,
-            &self.mq_scenes,
-        );
+        self.dashboard.ensure_tree(&self.worlds, &self.mq_scenes);
 
         // Detail panel (right), then the icon grid (center).
         let mut nav: Option<(Game, u16)> = None;
@@ -113,6 +87,29 @@ impl TrackerApp {
             .ok()
             .map(|i| data::ICON_BY_NAME[i].1)?;
         self.icon_cache.get(path)?.as_ref()
+    }
+
+    /// The greyscale ("uncollected") variant of an EGameIcon texture, if built.
+    pub(crate) fn prog_icon_tex_grey(&self, icon: &str) -> Option<&egui::TextureHandle> {
+        let path = data::ICON_BY_NAME
+            .binary_search_by_key(&icon, |&(n, _)| n)
+            .ok()
+            .map(|i| data::ICON_BY_NAME[i].1)?;
+        self.grey_icon_cache.get(path)?.as_ref()
+    }
+
+    /// Pick the texture id + tint for a progression icon. `complete` → the full
+    /// colour icon; otherwise the desaturated placeholder (Qt look). While that
+    /// grey variant is still being built, fall back to the colour icon dimmed by a
+    /// grey tint so it never flashes at full colour.
+    pub(crate) fn prog_icon_display(&self, icon: &str, complete: bool) -> Option<(egui::TextureId, Color32)> {
+        if complete {
+            return self.prog_icon_tex(icon).map(|t| (t.id(), Color32::WHITE));
+        }
+        if let Some(t) = self.prog_icon_tex_grey(icon) {
+            return Some((t.id(), Color32::WHITE));
+        }
+        self.prog_icon_tex(icon).map(|t| (t.id(), Color32::from_gray(85)))
     }
 
     /// The left grid: each visible section of the active page as a header + a
@@ -157,17 +154,17 @@ impl TrackerApp {
         let st = self.dashboard.state(i);
         let complete = self.dashboard.complete(i);
         let accent = Color32::from_rgb(74, 158, 219);
-        let cell = vec2(78.0, 92.0);
+        const ICON: f32 = 56.0;
+        let cell = vec2(96.0, 112.0);
 
         let inner = ui.allocate_ui_with_layout(
             cell,
             egui::Layout::top_down(egui::Align::Center),
             |ui| {
-                let tint = if complete { Color32::WHITE } else { Color32::from_gray(85) };
-                if let Some(tex) = self.prog_icon_tex(e.icon) {
-                    ui.add(egui::Image::new((tex.id(), vec2(44.0, 44.0))).tint(tint));
+                if let Some((id, tint)) = self.prog_icon_display(e.icon, complete) {
+                    ui.add(egui::Image::new((id, vec2(ICON, ICON))).tint(tint));
                 } else {
-                    ui.add_space(44.0);
+                    ui.add_space(ICON);
                 }
                 if let Some(badge) = self.dashboard.badge_text(i) {
                     ui.label(
@@ -225,13 +222,8 @@ impl TrackerApp {
         let st = self.dashboard.state(i);
 
         ui.vertical_centered(|ui| {
-            let tint = if self.dashboard.complete(i) {
-                Color32::WHITE
-            } else {
-                Color32::from_gray(85)
-            };
-            if let Some(tex) = self.prog_icon_tex(e.icon) {
-                ui.add(egui::Image::new((tex.id(), vec2(64.0, 64.0))).tint(tint));
+            if let Some((id, tint)) = self.prog_icon_display(e.icon, self.dashboard.complete(i)) {
+                ui.add(egui::Image::new((id, vec2(72.0, 72.0))).tint(tint));
             }
             ui.label(egui::RichText::new(self.i18n.tr_prog_entry(e.name, e.lookup_keys)).heading().size(16.0));
             if st.found {
@@ -269,8 +261,16 @@ impl TrackerApp {
                 });
                 return;
             }
+            // Order scenes by their DISPLAYED (translated) name so the tree is alphabetical
+            // in the active language, keeping OoT before MM. The model sorts by the raw
+            // English name (no i18n there), which would not follow the language.
+            let mut ordered: Vec<_> = tree.iter().collect();
+            ordered.sort_by(|a, b| {
+                (a.game.idx(), self.i18n.tr_scene(&a.title).to_lowercase())
+                    .cmp(&(b.game.idx(), self.i18n.tr_scene(&b.title).to_lowercase()))
+            });
             let mut cur_game: Option<Game> = None;
-            for scene in tree {
+            for scene in ordered {
                 if cur_game != Some(scene.game) {
                     cur_game = Some(scene.game);
                     let col = if scene.game == Game::Oot {
@@ -281,12 +281,23 @@ impl TrackerApp {
                     ui.add_space(4.0);
                     ui.label(egui::RichText::new(scene.game.label()).strong().color(col));
                 }
-                egui::CollapsingHeader::new(format!("{} ({})", scene.title, scene.leaves.len()))
+                egui::CollapsingHeader::new(format!(
+                    "{} ({})",
+                    self.i18n.tr_scene(&scene.title),
+                    scene.leaves.len()
+                ))
                     .id_salt((scene.game.idx(), scene.title.as_str()))
                     .default_open(true)
                     .show(ui, |ui| {
-                        for leaf in &scene.leaves {
-                            let mut txt = egui::RichText::new(leaf.name).small();
+                        // Leaves: uncollected ("to-find") first, then alphabetical by the
+                        // translated name so the order follows the active language.
+                        let mut leaves: Vec<_> = scene.leaves.iter().collect();
+                        leaves.sort_by(|a, b| {
+                            (a.collected as u8, self.i18n.tr_object(a.name).to_lowercase())
+                                .cmp(&(b.collected as u8, self.i18n.tr_object(b.name).to_lowercase()))
+                        });
+                        for leaf in leaves {
+                            let mut txt = egui::RichText::new(self.i18n.tr_object(leaf.name)).small();
                             txt = if leaf.collected {
                                 txt.strikethrough().color(Color32::from_gray(140))
                             } else {

@@ -56,6 +56,27 @@ impl TrackerApp {
                 });
                 ui.add_space(4.0);
 
+                // Row 2.5: [Load Patch] + the current patch file status. The r4
+                // multiplayer reads the session identity from this .ootmm patch.
+                ui.horizontal(|ui| {
+                    if ui.button(format!("📦  {}", self.i18n.load_patch())).clicked() {
+                        action = LaunchAction::Patch;
+                    }
+                    let status = match (&self.patch_path, &self.patch_info) {
+                        (Some(p), Some(info)) => {
+                            let name = p.file_name().and_then(|n| n.to_str()).unwrap_or("?");
+                            format!("{}: {} — {}", self.i18n.patch_label(), name, info.summary())
+                        }
+                        (Some(p), None) => {
+                            let name = p.file_name().and_then(|n| n.to_str()).unwrap_or("?");
+                            format!("{}: {} (?)", self.i18n.patch_label(), name)
+                        }
+                        _ => self.i18n.patch_none().to_string(),
+                    };
+                    ui.weak(status);
+                });
+                ui.add_space(4.0);
+
                 // Row 3: Start / Stop tracking (full width).
                 let (label, fill) = if self.tracking {
                     (format!("⏹  {}", self.i18n.stop_tracking()), Color32::from_rgb(150, 60, 60))
@@ -78,15 +99,25 @@ impl TrackerApp {
                     self.simulate_event();
                 }
             });
-            egui::ScrollArea::vertical().stick_to_bottom(true).id_salt("launchlog").show(ui, |ui| {
-                if self.log_lines.is_empty() {
-                    ui.weak(self.i18n.no_event());
-                }
-                for line in self.log_lines.iter() {
-                    ui.monospace(line);
-                }
-            });
+            // Fill the panel width (auto_shrink off) so long log lines wrap inside
+            // the journal instead of stretching the view horizontally.
+            egui::ScrollArea::vertical()
+                .stick_to_bottom(true)
+                .auto_shrink([false, false])
+                .id_salt("launchlog")
+                .show(ui, |ui| {
+                    ui.style_mut().wrap_mode = Some(egui::TextWrapMode::Wrap);
+                    if self.log_lines.is_empty() {
+                        ui.weak(self.i18n.no_event());
+                    }
+                    for line in self.log_lines.iter() {
+                        ui.monospace(line);
+                    }
+                });
         });
+
+        // Persist the multiplayer checkbox / host / port if the user changed them.
+        self.persist_launch_settings();
 
         match action {
             LaunchAction::None => {}
@@ -94,7 +125,8 @@ impl TrackerApp {
             LaunchAction::Load => self.load_tracking_dialog(),
             LaunchAction::Spoiler => self.load_spoiler_dialog(),
             LaunchAction::Reset => self.reset_tracking(),
-            LaunchAction::Toggle => self.toggle_tracking(),
+            LaunchAction::Toggle => self.toggle_tracking(ctx),
+            LaunchAction::Patch => self.prompt_patch_dialog(),
         }
     }
 }

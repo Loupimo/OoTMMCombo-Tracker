@@ -294,7 +294,7 @@ SceneMetaInfo MMScenesMetaInfo[MM_NUM_SCENES] =
     { "Gossip Stones Grotto, Swamp", "", "./Resources/MM/Termina/Gossip_Map.jpg", (uint8_t)MMRegions::None, false, GameLayout::mm },
     { "Gossip Stones Grotto, Mountain", "", "./Resources/MM/Termina/Gossip_Map.jpg", (uint8_t)MMRegions::None, false, GameLayout::mm },
     { "Bio Baba Grotto", "./Resources/MM/Termina/Bio_Baba.jpg", "./Resources/MM/Termina/Bio_Baba_Map.jpg", (uint8_t)MMRegions::Termina, false, GameLayout::mm },
-    { "Peehat Grotto", "./Resources/MM/Termina/Peahat.jpg", "./Resources/MM/Termina/Peahat_Map.jpg", (uint8_t)MMRegions::Termina, false, GameLayout::mm },
+    { "Peahat Grotto", "./Resources/MM/Termina/Peahat.jpg", "./Resources/MM/Termina/Peahat_Map.jpg", (uint8_t)MMRegions::Termina, false, GameLayout::mm },
     { "Deku Scrub Grotto", "./Resources/MM/Termina/Scrub.jpg", "./Resources/MM/Termina/Scrub_Map.jpg", (uint8_t)MMRegions::Termina, false, GameLayout::mm },
     { "Tall Grass Grotto", "./Resources/MM/Grottos/Generic.jpg", "./Resources/MM/Grottos/Generic_Map.jpg", (uint8_t)MMRegions::Termina, false, GameLayout::mm },
     { "Cow Grotto", "./Resources/MM/Grottos/Cow.jpg", "./Resources/MM/Grottos/Cow_Map.jpg", (uint8_t)MMRegions::Termina, false, GameLayout::mm },

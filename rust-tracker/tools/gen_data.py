@@ -459,37 +459,44 @@ def emit_pairs(name, pairs):
 # The hand-authored map in SceneOoT/MMEntrances.cpp groups entrance ids by the
 # scene they belong to. Scene structs are anchored on the `(uint8_t)Region` cast;
 # entrance entries on the default `{ { { UINT32_MAX, NO_GAME } }, UINT32_MAX }`.
-SEMETA_SCENE = re.compile(r"(\w+)\s*,\s*\(uint8_t\)")
+# The scene anchor also carries the entrance-side region (the `(uint8_t)Region`
+# cast), which is DISTINCT from the scene's own ParentRegion — e.g. the Market /
+# ToT Entryway hub scenes are ParentRegion None but entrance-region Market. Group
+# 2 captures that region variant so the entrance nav can group by it.
+SEMETA_SCENE = re.compile(r"(\w+)\s*,\s*\(uint8_t\)(?:\w+::)?(\w+)")
 SEMETA_ENTR = re.compile(r"\{\s*(\w+)\s*,\s*\{\s*\{\s*\{\s*UINT32_MAX")
 
 
-def parse_scene_entrances(text, scene_sym, ent_sym, missing, missing_ent):
-    """SceneOoT/MMEntrances.cpp -> [(scene_id, [entrance_id, ...]), ...]."""
-    events = [(m.start(), "s", m.group(1)) for m in SEMETA_SCENE.finditer(text)]
+def parse_scene_entrances(text, scene_sym, ent_sym, missing, missing_ent, region_map):
+    """SceneOoT/MMEntrances.cpp -> [(scene_id, region_id, [entrance_id, ...]), ...]."""
+    events = [(m.start(), "s", (m.group(1), m.group(2))) for m in SEMETA_SCENE.finditer(text)]
     events += [(m.start(), "e", m.group(1)) for m in SEMETA_ENTR.finditer(text)]
-    events.sort()
+    events.sort(key=lambda e: e[0])  # by source position (unique) -> avoids tok type-compare
     out, cur = [], None
     for _, kind, tok in events:
         if kind == "s":
-            if tok in scene_sym:
-                cur = (scene_sym[tok], [])
+            scene_name, region_name = tok
+            if scene_name in scene_sym:
+                region = region_map.get(region_name)
+                rid = region[0] if region else 0
+                cur = (scene_sym[scene_name], rid, [])
                 out.append(cur)
             else:
-                missing.add(tok)
+                missing.add(scene_name)
                 cur = None
         elif cur is not None:
             eid = resolve_entr(tok, ent_sym, missing_ent)
             if eid is not None:
-                cur[1].append(eid)
+                cur[2].append(eid)
     out.sort(key=lambda kv: kv[0])  # sorted by scene id for binary search
     return out
 
 
 def emit_scene_entrances(name, entries):
-    lines = [f"pub static {name}: &[(SceneId, &[u32])] = &["]
-    for sid, ents in entries:
+    lines = [f"pub static {name}: &[(SceneId, u8, &[u32])] = &["]
+    for sid, rid, ents in entries:
         cells = ", ".join(entr_ref(e) for e in ents)
-        lines.append(f"    ({sid:#x}, &[{cells}]),")
+        lines.append(f"    ({sid:#x}, {rid}, &[{cells}]),")
     lines.append("];\n")
     return "\n".join(lines)
 
@@ -595,6 +602,12 @@ def emit_type_set(name, types):
 
 
 # --- ROM settings parameters (Settings.cpp FilterSettings / ItemSettings) -----
+# Display-name overrides, keyed by setting key: patch known Settings.cpp typos here
+# so a regen keeps the corrected label without editing the C++ source. The MM shovel
+# toggle is copy-pasted from the OoT one and still reads "Shovel - OoT" in Settings.cpp.
+SETTING_NAME_FIX = {
+    "shovelMm": "Shovel - MM",
+}
 SETTING_ENTRY = re.compile(
     r'\{\s*"([^"]+)"\s*,\s*\{\s*"([^"]*)"\s*,\s*ParamType::(\w+)\s*,'
     r"\s*ParamCategory::(\w+)\s*,\s*ShuffleSetting::(\w+)\s*,\s*\{([^}]*)\}",
@@ -609,6 +622,7 @@ def parse_settings_map(text, member, id_sym, missing_ids):
     out = []
     for e in SETTING_ENTRY.finditer(m.group(1)):
         key, name, ptype, pcat, shuf, aff = e.groups()
+        name = SETTING_NAME_FIX.get(key, name)
         ids = []
         for tok in aff.split(","):
             tok = tok.strip()
@@ -642,6 +656,19 @@ def _resolve_id(tok, id_sym, missing_ids):
     return None
 
 
+# Items defined in Items.h (and referenced by progression / settings) that are not
+# yet present in the Items.cpp ItemList, so parse_items can't find a display name
+# for them. They are spliced in at their id position below so ITEMS stays dense
+# (position == id - 1, the FindItem fast path). Remove an entry here once it has
+# been added to the C++ ItemList (then the parsed name / flag wins).
+EXTRA_ITEMS = [
+    ("OOT_CLOCK", "Clock (OoT)", False),
+    ("OOT_SHOVEL", "Shovel (OoT)", True),
+    ("MM_SHOVEL", "Shovel (MM)", True),
+    ("SHARED_SHOVEL", "Shovel", False),
+]
+
+
 def parse_items(items_cpp, id_sym, missing_ids):
     """The ItemList[] table (Items.cpp): [(id, name, can_be_shared), ...] in file order."""
     m = re.search(r"ItemList\[NUM_ITEM\]\s*=\s*\{(.*?)\n\};", items_cpp, re.S)
@@ -650,6 +677,15 @@ def parse_items(items_cpp, id_sym, missing_ids):
         iid = _resolve_id(e.group(1), id_sym, missing_ids)
         if iid is not None:
             out.append((iid, e.group(2), e.group(3) == "true"))
+    # Splice in the not-yet-in-ItemList items at their id position (keeps ITEMS
+    # dense). Skipped if the symbol is unknown or already parsed from the list.
+    have = {iid for iid, _, _ in out}
+    for sym, name, shared in EXTRA_ITEMS:
+        iid = id_sym.get(sym)
+        if iid is None or iid in have:
+            continue
+        pos = next((k for k, o in enumerate(out) if o[0] > iid), len(out))
+        out.insert(pos, (iid, name, shared))
     return out
 
 
@@ -938,9 +974,11 @@ def main():
     grottos = parse_grottos(entrances_cpp, ent_sym, missing_ent)
     spawn_oot, spawn_mm = parse_check_grotto_spawn(entrances_cpp, ent_sym, missing_ent)
     oot_scene_entr = parse_scene_entrances(
-        read("Sources/UI/SceneOoTEntrances.cpp"), scene_sym, ent_sym, missing, missing_ent)
+        read("Sources/UI/SceneOoTEntrances.cpp"), scene_sym, ent_sym, missing, missing_ent,
+        regions["OoTRegions"])
     mm_scene_entr = parse_scene_entrances(
-        read("Sources/UI/SceneMMEntrances.cpp"), scene_sym, ent_sym, missing, missing_ent)
+        read("Sources/UI/SceneMMEntrances.cpp"), scene_sym, ent_sym, missing, missing_ent,
+        regions["MMRegions"])
     settings_cpp = read("Sources/UI/Settings.cpp")
     filter_settings = parse_settings_map(
         settings_cpp, r"this->FilterSettings", id_sym, missing_ids)
@@ -1088,9 +1126,9 @@ def main():
     print(f"  items    : {len(items)}  | progressive families: {len(prog_families)}")
     print(f"  prog     : {n_sec} sections, {n_prog} entries")
     print(f"  scene-entrances: OoT scenes={len(oot_scene_entr)} "
-          f"({sum(len(e) for _, e in oot_scene_entr)} entr)  "
+          f"({sum(len(e) for _, _, e in oot_scene_entr)} entr)  "
           f"MM scenes={len(mm_scene_entr)} "
-          f"({sum(len(e) for _, e in mm_scene_entr)} entr)")
+          f"({sum(len(e) for _, _, e in mm_scene_entr)} entr)")
     if missing_ent:
         print(f"  WARN {len(missing_ent)} entrance ids unresolved: "
               f"{sorted(missing_ent)[:12]}", file=sys.stderr)

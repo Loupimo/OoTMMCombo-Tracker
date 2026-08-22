@@ -184,6 +184,7 @@ MM_SHIELD;Progressive Shield (MM);hero_shield;true
 MM_SHIELD_DEKU;Deku Shield (MM);deku_shield;true
 MM_SHIELD_HERO;Hero's Shield;hero_shield;true
 MM_SHIELD_MIRROR;Mirror Shield (MM);mirror_mm;true
+MM_SHOVEL;Shovel (MM);shovel;true
 MM_SILVER_GAUNTLETS;Silver Gauntlets (MM);silver_gauntlet;true
 MM_SKELETON_KEY;Skeleton Key (MM);skeleton_key;true
 MM_SMALL_KEY;Small Key (MM);small_key;false
@@ -431,6 +432,7 @@ OOT_BUTTON_C_UP;C-Up Button (OoT);c_up;true
 OOT_CHATEAU;Chateau Romani Refill;chateau;true
 OOT_CHICKEN;Chicken;cucco;false
 OOT_CLAIM_CHECK;Claim Check;claim;false
+OOT_CLOCK;Clock (OoT);clock_oot;false
 OOT_COIN_BLUE;Coin (Blue);blue_coin;false
 OOT_COIN_GREEN;Coin (Green);green_coin;false
 OOT_COIN_RED;Coin (Red);red_coin;false
@@ -648,6 +650,7 @@ OOT_SHIELD;Progressive Shield (OoT);deku_shield;true
 OOT_SHIELD_DEKU;Deku Shield (OoT);deku_shield;true
 OOT_SHIELD_HYLIAN;Hylian Shield;hylian_shield;true
 OOT_SHIELD_MIRROR;Mirror Shield (OoT);mirror_oot;true
+OOT_SHOVEL;Shovel (OoT);shovel;true
 OOT_SILVER_GAUNTLETS;Silver Gauntlets (OoT);silver_gauntlet;true
 OOT_SKELETON_KEY;Skeleton Key (OoT);skeleton_key;true
 OOT_SLINGSHOT;Fairy Slingshot (OoT);slingshot;true
@@ -931,6 +934,7 @@ SHARED_SHIELD;Progressive Shield;hero_shield;false
 SHARED_SHIELD_DEKU;Deku Shield;deku_shield;false
 SHARED_SHIELD_HYLIAN;Hylian/Hero Shield;hylian_shield;false
 SHARED_SHIELD_MIRROR;Mirror Shield;mirror_oot;false
+SHARED_SHOVEL;Shovel;shovel;false
 SHARED_SKELETON_KEY;Skeleton Key;skeleton_key;false
 SHARED_SONG_EMPTINESS;Elegy of Emptiness;song_orange;false
 SHARED_SONG_EPONA;Epona's Song;song;false

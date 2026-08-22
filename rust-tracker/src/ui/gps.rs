@@ -35,8 +35,8 @@ impl TrackerApp {
                 return;
             };
             // Optional start / arrival entrance names, for context.
-            let from_ent = self.gps_from_ent.and_then(|e| entrance::lookup(from.0, e)).map(|d| d.to_name);
-            let to_ent = self.gps_to_ent.and_then(|e| entrance::lookup(to.0, e)).map(|d| d.to_name);
+            let from_ent = self.gps_from_ent.and_then(|e| entrance::lookup(from.0, e)).map(|d| self.i18n.tr_entrance(d.to_name));
+            let to_ent = self.gps_to_ent.and_then(|e| entrance::lookup(to.0, e)).map(|d| self.i18n.tr_entrance(d.to_name));
             if let Some(fe) = from_ent {
                 ui.label(self.i18n.gps_from_entrance(fe, scene_label(Some(from))));
             }
@@ -57,7 +57,7 @@ impl TrackerApp {
                                 .map(|s| s.name)
                                 .unwrap_or("?");
                             let tag = if st.game == Game::Oot { "OoT" } else { "MM" };
-                            ui.label(self.i18n.gps_step_line(i + 1, st.entrance, tag, n));
+                            ui.label(self.i18n.gps_step_line(i + 1, self.i18n.tr_entrance(st.entrance), tag, n));
                         }
                         if let Some(te) = to_ent {
                             ui.label(

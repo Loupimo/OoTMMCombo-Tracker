@@ -128,7 +128,7 @@ MM_GROTTO_TERMINA_CANYON_GOSSIP;Gossip Stones Grotto, Canyon;./Resources/MM/Term
 MM_GROTTO_TERMINA_SWAMP_GOSSIP;Gossip Stones Grotto, Swamp;;./Resources/MM/Termina/Gossip_Map.jpg;None;false;mm
 MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP;Gossip Stones Grotto, Mountain;;./Resources/MM/Termina/Gossip_Map.jpg;None;false;mm
 MM_GROTTO_TERMINA_BIO_BABA;Bio Baba Grotto;./Resources/MM/Termina/Bio_Baba.jpg;./Resources/MM/Termina/Bio_Baba_Map.jpg;Termina;false;mm
-MM_GROTTO_TERMINA_PEAHAT;Peehat Grotto;./Resources/MM/Termina/Peahat.jpg;./Resources/MM/Termina/Peahat_Map.jpg;Termina;false;mm
+MM_GROTTO_TERMINA_PEAHAT;Peahat Grotto;./Resources/MM/Termina/Peahat.jpg;./Resources/MM/Termina/Peahat_Map.jpg;Termina;false;mm
 MM_GROTTO_TERMINA_SCRUB;Deku Scrub Grotto;./Resources/MM/Termina/Scrub.jpg;./Resources/MM/Termina/Scrub_Map.jpg;Termina;false;mm
 MM_GROTTO_TERMINA_TALL_GRASS;Tall Grass Grotto;./Resources/MM/Grottos/Generic.jpg;./Resources/MM/Grottos/Generic_Map.jpg;Termina;false;mm
 MM_GROTTO_TERMINA_COW;Cow Grotto;./Resources/MM/Grottos/Cow.jpg;./Resources/MM/Grottos/Cow_Map.jpg;Termina;false;mm

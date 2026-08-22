@@ -7,7 +7,7 @@
 
 const ItemInfo ItemList[NUM_ITEM] =
 {
-    { OOT_BOMBS_5, "5 Bombs (OoT)", EGameIcon::bomb, true },
+{ OOT_BOMBS_5, "5 Bombs (OoT)", EGameIcon::bomb, true },
 { OOT_NUTS_5, "5 Deku Nuts (OoT)", EGameIcon::nut, true },
 { OOT_BOMBCHU_10, "10 Bombchu (OoT)", EGameIcon::bombchu, true },
 { OOT_BOW, "Fairy Bow (OoT)", EGameIcon::bow_oot, true },
@@ -515,6 +515,8 @@ const ItemInfo ItemList[NUM_ITEM] =
 { OOT_RUSTY_KEY_ADULT_BAZAAR, "Rusty Key (Kakariko Bazaar)", EGameIcon::rusty_key, false },
 { OOT_RUSTY_KEY_ADULT_POTION_SHOP, "Rusty Key (Kakariko Potion Shop)", EGameIcon::rusty_key, false },
 { OOT_RUSTY_KEY_ADULT_POTION_SHOP_BACK, "Rusty Key (Kakariko Potion Shop Back)", EGameIcon::rusty_key, false },
+{ OOT_CLOCK, "Clock (OoT)", EGameIcon::clock_oot, false },
+{ OOT_SHOVEL, "Shovel (OoT)", EGameIcon::shovel, true },
 { MM_RUPEE_GREEN, "Green Rupee (MM)", EGameIcon::rupee, true },
 { MM_RUPEE_BLUE, "Blue Rupee (MM)", EGameIcon::blue_rupee, true },
 { MM_RUPEE_RED_10, "Red Rupee (MM)", EGameIcon::red_rupee, true },
@@ -939,6 +941,7 @@ const ItemInfo ItemList[NUM_ITEM] =
 { MM_RUSTY_KEY_GRANDMA_ROOM, "Rusty Key (Grandma's Room)", EGameIcon::rusty_key, false },
 { MM_RUSTY_KEY_STOCK_POT_INN_STAFF_ROOM, "Rusty Key (Stock Pot Inn Staff Room)", EGameIcon::rusty_key, false },
 { MM_RUSTY_KEY_STOCK_POT_INN_DORMITORY, "Rusty Key (Stock Pot Inn Dormitory)", EGameIcon::rusty_key, false },
+{ MM_SHOVEL, "Shovel (MM)", EGameIcon::shovel, true },
 { MM_MASK_MAJORA, "Majora's Mask", EGameIcon::mask, false },
 { MM_SOLD_OUT, "Sold Out", EGameIcon::none, false },
 { NOTHING, "Nothing", EGameIcon::nothing, false },
@@ -1030,6 +1033,7 @@ const ItemInfo ItemList[NUM_ITEM] =
 { SHARED_SHIELD_DEKU, "Deku Shield", EGameIcon::deku_shield, false },
 { SHARED_SHIELD_HYLIAN, "Hylian/Hero Shield", EGameIcon::hylian_shield, false },
 { SHARED_SHIELD_MIRROR, "Mirror Shield", EGameIcon::mirror_oot, false },
+{ SHARED_SHOVEL, "Shovel", EGameIcon::shovel, false },
 { SHARED_SKELETON_KEY, "Skeleton Key", EGameIcon::skeleton_key, false },
 { SHARED_SONG_EMPTINESS, "Elegy of Emptiness", EGameIcon::song_orange, false },
 { SHARED_SONG_EPONA, "Epona's Song", EGameIcon::song, false },

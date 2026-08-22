@@ -17,23 +17,31 @@ use crate::data::scenes as sc;
 use crate::scene::Game;
 use crate::tracking::RomVersion;
 
+/// One world's physical placements (multiworld). Index 0 is world 1 (the local
+/// world); single / coop seeds have exactly one entry.
+#[derive(Default, Clone)]
+pub struct WorldPlacements {
+    /// Object `Location` -> item name physically placed there in this world.
+    pub items: HashMap<String, String>,
+    /// `Location` -> destination player (1-based), when the spoiler carries an
+    /// explicit "Player N" prefix. Absent means the item belongs to this world.
+    pub dest: HashMap<String, u8>,
+}
+
 pub struct Spoiler {
     pub rom: RomVersion,
-    /// Object `Location` -> item name it holds.
-    pub items: HashMap<String, String>,
-    /// Multiworld: `Location` -> destination player (1-based), when it differs.
-    pub worlds: HashMap<String, u8>,
+    /// Per-world placements. Mirrors the Qt per-world scene-object arrays: worlds
+    /// beyond the first are the other players' seeds. Always at least one entry.
+    pub worlds: Vec<WorldPlacements>,
     /// Scenes running the Master Quest (OoT) / JP (MM) layout.
     pub mq_scenes: HashSet<(Game, u16)>,
 }
 
 /// Parse a spoiler log's text content.
 pub fn parse(text: &str) -> Spoiler {
-    let (items, worlds) = parse_locations(text);
     Spoiler {
         rom: parse_version(text),
-        items,
-        worlds,
+        worlds: parse_locations(text, build_predates_v32_1(text)),
         mq_scenes: parse_mq(text),
     }
 }
@@ -114,56 +122,148 @@ fn add_layout(
     }
 }
 
-/// Read the `Version:` line. Only `v30.1` (a.k.a. stable_30_1) needs the NPC id
-/// fix-up, so everything else — including dev — is treated as Dev here.
+/// Read the `Version:` line and map it to a build tier (mirror of the C++
+/// `OoTMMComboTracker` version parsing): a `dev` build is the internal numbering;
+/// `v30.1` is the old `Stable301` shift; any other stable release (v31 / v32.X) is
+/// the smaller `Stable` shift. No / unknown version line defaults to `Dev`.
 fn parse_version(text: &str) -> RomVersion {
     for line in text.lines() {
         if let Some(rest) = line.trim().strip_prefix("Version:") {
             let v = rest.trim();
-            if !v.starts_with("dev") && v.contains("30.1") {
-                return RomVersion::Stable;
+            if v.starts_with("dev") {
+                return RomVersion::Dev;
             }
-            return RomVersion::Dev;
+            if v.starts_with("v30.1") {
+                return RomVersion::Stable301;
+            }
+            return RomVersion::Stable;
         }
     }
     RomVersion::Dev
+}
+
+/// Whether the spoiler's build predates OoTMM v32.1, the release that renamed and reshuffled
+/// the Great Bay Coast pot / rock location labels. Such builds list those locations under their
+/// former names, so `parse_loc_line` translates them (see `legacy_location`). Dev builds and
+/// unrecognised version strings are treated as current (>= v32.1): no translation.
+fn build_predates_v32_1(text: &str) -> bool {
+    for line in text.lines() {
+        let Some(rest) = line.trim().strip_prefix("Version:") else { continue };
+        let v = rest.trim();
+        if v.starts_with("dev") {
+            return false;
+        }
+        // Parse the leading "MAJOR.MINOR" (ignoring a leading 'v' and any trailing text).
+        let digits = v.trim_start_matches(|c: char| !c.is_ascii_digit());
+        let mut parts = digits.split('.');
+        let major = parse_leading_u32(parts.next().unwrap_or(""));
+        let minor = parse_leading_u32(parts.next().unwrap_or(""));
+        return major < 32 || (major == 32 && minor < 1);
+    }
+    false
+}
+
+/// Parse the leading run of ASCII digits of `s` as a u32 (0 if none).
+fn parse_leading_u32(s: &str) -> u32 {
+    s.chars()
+        .take_while(|c| c.is_ascii_digit())
+        .collect::<String>()
+        .parse()
+        .unwrap_or(0)
+}
+
+/// Map a pre-v32.1 MM location label to its current pool name. Unlisted labels pass through
+/// unchanged. Applied only for legacy builds (see `build_predates_v32_1`) because the rename
+/// was a reshuffle: the same string denotes different objects across it, so a blind alias would
+/// mis-assign. Must stay in sync with the C++ `LegacyMMLocationAliases` table.
+fn legacy_location(loc: &str) -> &str {
+    match loc {
+        "MM Great Bay Coast Pot Ledge 1" => "MM Great Bay Coast Pot Upper Cliffs 1",
+        "MM Great Bay Coast Pot Ledge 2" => "MM Great Bay Coast Pot Upper Cliffs 2",
+        "MM Great Bay Coast Pot Ledge 3" => "MM Great Bay Coast Pot Upper Cliffs 3",
+        "MM Great Bay Coast Pot 01" => "MM Great Bay Coast Pot Ledge 1",
+        "MM Great Bay Coast Pot 02" => "MM Great Bay Coast Pot 1",
+        "MM Great Bay Coast Pot 03" => "MM Great Bay Coast Pot Lower Cliffs 3",
+        "MM Great Bay Coast Pot 04" => "MM Great Bay Coast Pot Lower Cliffs 2",
+        "MM Great Bay Coast Pot 05" => "MM Great Bay Coast Pot Platform 1",
+        "MM Great Bay Coast Pot 06" => "MM Great Bay Coast Pot Platform 3",
+        "MM Great Bay Coast Pot 07" => "MM Great Bay Coast Pot Platform 2",
+        "MM Great Bay Coast Pot 08" => "MM Great Bay Coast Pot Ledge 2",
+        "MM Great Bay Coast Pot 09" => "MM Great Bay Coast Pot 2",
+        "MM Great Bay Coast Pot 10" => "MM Great Bay Coast Pot Lower Cliffs 4",
+        "MM Great Bay Coast Pot 11" => "MM Great Bay Coast Pot Lower Cliffs 1",
+        "MM Great Bay Coast Pot 12" => "MM Great Bay Coast Pot Platform 4",
+        "MM Great Bay Coast Rock Ledge 1" => "MM Great Bay Coast Rock Cliffs 1",
+        "MM Great Bay Coast Rock Ledge 2" => "MM Great Bay Coast Rock Cliffs 2",
+        "MM Great Bay Coast Rock Ledge 3" => "MM Great Bay Coast Rock Cliffs 3",
+        other => other,
+    }
 }
 
 /// Collect every `<Location>: <Item>` line whose left side is a real object
 /// location (prefixed "OOT " / "MM "). Scene headers ("  Kokiri Forest:") have
 /// no "`: `" and are skipped; settings lines never carry the game prefix.
 ///
-/// Multiworld spoilers list each world under a "  World N" header. The Rust pool
-/// models the single LOCAL world, so we scope to world 1's block — otherwise a
-/// later world's identical location strings would overwrite the local ones. The
-/// per-location "Player N" destination is still captured (in `worlds`) so the
-/// progression can route items to the right player.
-fn parse_locations(text: &str) -> (HashMap<String, String>, HashMap<String, u8>) {
-    let mut items = HashMap::new();
-    let mut worlds = HashMap::new();
+/// Multiworld spoilers list each world under a "  World N" header (mirroring the
+/// Qt LoadGameSpoiler split). We parse EVERY world into its own placement set so
+/// the world selector can show any world's map, and each world keeps its own
+/// per-location "Player N" destination for the progression routing.
+fn parse_locations(text: &str, legacy: bool) -> Vec<WorldPlacements> {
     let multiworld = text.lines().any(|l| world_header(l).is_some());
-    // Single-world: every location line counts. Multiworld: only inside "World 1".
-    let mut in_local = !multiworld;
+    if !multiworld {
+        // Single / coop: one world, every location line counts.
+        let mut w = WorldPlacements::default();
+        for line in text.lines() {
+            if let Some((loc, item, dest)) = parse_loc_line(line, legacy) {
+                w.items.insert(loc.clone(), item);
+                if let Some(d) = dest {
+                    w.dest.insert(loc, d);
+                }
+            }
+        }
+        return vec![w];
+    }
+
+    // Multiworld: partition the location lines into per-world blocks by their
+    // "World N" headers (worlds are 1-based in the spoiler, index 0 = world 1).
+    let mut worlds: Vec<WorldPlacements> = Vec::new();
+    let mut cur: Option<usize> = None;
     for line in text.lines() {
         if let Some(n) = world_header(line) {
-            in_local = n == 1;
+            let idx = (n as usize).saturating_sub(1);
+            if worlds.len() <= idx {
+                worlds.resize_with(idx + 1, WorldPlacements::default);
+            }
+            cur = Some(idx);
             continue;
         }
-        if !in_local {
-            continue;
-        }
-        let Some((left, right)) = line.split_once(": ") else { continue };
-        let loc = left.trim();
-        if !(loc.starts_with("OOT ") || loc.starts_with("MM ")) {
-            continue;
-        }
-        let (item, world) = strip_player(right.trim());
-        items.insert(loc.to_string(), item.to_string());
-        if let Some(w) = world {
-            worlds.insert(loc.to_string(), w);
+        let Some(idx) = cur else { continue };
+        if let Some((loc, item, dest)) = parse_loc_line(line, legacy) {
+            worlds[idx].items.insert(loc.clone(), item);
+            if let Some(d) = dest {
+                worlds[idx].dest.insert(loc, d);
+            }
         }
     }
-    (items, worlds)
+    if worlds.is_empty() {
+        worlds.push(WorldPlacements::default());
+    }
+    worlds
+}
+
+/// Parse one `<Location>: <Item>` line into (location, item, destination player).
+/// Returns None for anything that is not a real object-location line.
+fn parse_loc_line(line: &str, legacy: bool) -> Option<(String, String, Option<u8>)> {
+    let (left, right) = line.split_once(": ")?;
+    let loc = left.trim();
+    if !(loc.starts_with("OOT ") || loc.starts_with("MM ")) {
+        return None;
+    }
+    // Pre-v32.1 spoilers label some MM locations by their former names; map them to the
+    // current pool names before keying (see legacy_location / build_predates_v32_1).
+    let loc = if legacy { legacy_location(loc) } else { loc };
+    let (item, dest) = strip_player(right.trim());
+    Some((loc.to_string(), item.to_string(), dest))
 }
 
 /// A multiworld "World N" section header (any indent) -> its 1-based number.
@@ -208,29 +308,35 @@ Playthrough
     fn parses_version_and_items() {
         let sp = parse(SAMPLE);
         assert_eq!(sp.rom, RomVersion::Dev);
-        assert_eq!(sp.items.len(), 3);
+        // Single-world seed: one world holding every location.
+        assert_eq!(sp.worlds.len(), 1);
+        let w = &sp.worlds[0];
+        assert_eq!(w.items.len(), 3);
         assert_eq!(
-            sp.items.get("OOT Kokiri Forest Kokiri Sword Chest").map(String::as_str),
+            w.items.get("OOT Kokiri Forest Kokiri Sword Chest").map(String::as_str),
             Some("Kokiri Sword")
         );
         // The multiworld "Player N " prefix is stripped and its world captured.
         assert_eq!(
-            sp.items.get("MM Great Bay Temple Boss").map(String::as_str),
+            w.items.get("MM Great Bay Temple Boss").map(String::as_str),
             Some("Progressive Sword")
         );
-        assert_eq!(sp.worlds.get("MM Great Bay Temple Boss"), Some(&2));
+        assert_eq!(w.dest.get("MM Great Bay Temple Boss"), Some(&2));
     }
 
     #[test]
     fn detects_stable_30_1() {
-        assert_eq!(parse("Version: v30.1\n").rom, RomVersion::Stable);
+        assert_eq!(parse("Version: v30.1\n").rom, RomVersion::Stable301);
         assert_eq!(parse("Version: dev-abc\n").rom, RomVersion::Dev);
+        // Any other stable release (v31 / v32.X) is the latest-stable tier.
+        assert_eq!(parse("Version: v32.1\n").rom, RomVersion::Stable);
+        assert_eq!(parse("Version: v31.0\n").rom, RomVersion::Stable);
     }
 
     #[test]
-    fn multiworld_scopes_to_local_world() {
-        // The same location exists in both worlds; the local (world 1) item must
-        // win, and its destination player is captured.
+    fn multiworld_parses_every_world() {
+        // The same location exists in both worlds with different placements; each
+        // world keeps its own item and destination player.
         let sp = parse(
             "Version: dev-mw\n\
              ===========================================================================\n\
@@ -243,14 +349,19 @@ Playthrough
              \x20\x20\x20\x20Kokiri Forest:\n\
              \x20\x20\x20\x20\x20\x20OOT Kokiri Forest Kokiri Sword Chest: Player 2 Fairy Bow\n",
         );
-        // World 1's item wins (not overwritten by world 2's identical location).
+        assert_eq!(sp.worlds.len(), 2, "both worlds are parsed");
+        // World 1 physically holds Player 1's Kokiri Sword.
         assert_eq!(
-            sp.items.get("OOT Kokiri Forest Kokiri Sword Chest").map(String::as_str),
+            sp.worlds[0].items.get("OOT Kokiri Forest Kokiri Sword Chest").map(String::as_str),
             Some("Kokiri Sword")
         );
-        // It is destined to player 1; world 2's line is out of scope entirely.
-        assert_eq!(sp.worlds.get("OOT Kokiri Forest Kokiri Sword Chest"), Some(&1));
-        assert_eq!(sp.items.len(), 1, "only world 1's locations are parsed");
+        assert_eq!(sp.worlds[0].dest.get("OOT Kokiri Forest Kokiri Sword Chest"), Some(&1));
+        // World 2 physically holds Player 2's Fairy Bow at the same coordinate.
+        assert_eq!(
+            sp.worlds[1].items.get("OOT Kokiri Forest Kokiri Sword Chest").map(String::as_str),
+            Some("Fairy Bow")
+        );
+        assert_eq!(sp.worlds[1].dest.get("OOT Kokiri Forest Kokiri Sword Chest"), Some(&2));
     }
 
     #[test]
@@ -263,5 +374,53 @@ Playthrough
         assert_eq!(mq.len(), 2);
         assert!(mq.contains(&(Game::Oot, sc::OOT_TEMPLE_WATER)));
         assert!(mq.contains(&(Game::Oot, sc::OOT_INSIDE_GANON_CASTLE)));
+    }
+
+    #[test]
+    fn build_version_boundary() {
+        // v32.1 is the first build using the new Great Bay Coast names.
+        assert!(build_predates_v32_1("Version: v30.1\n"));
+        assert!(build_predates_v32_1("Version: v32.0\n"));
+        assert!(!build_predates_v32_1("Version: v32.1\n"));
+        assert!(!build_predates_v32_1("Version: v33.0\n"));
+        assert!(!build_predates_v32_1("Version: dev-20260101\n"));
+        assert!(!build_predates_v32_1("Seed: no-version-line\n"));
+    }
+
+    #[test]
+    fn legacy_great_bay_names_translated_pre_v32_1() {
+        // A pre-v32.1 spoiler lists the reshuffled Great Bay Coast pots/rocks under their former
+        // names; they must be keyed by the current pool names.
+        let sp = parse(
+            "Version: v32.0\n\
+             \x20\x20Great Bay Coast:\n\
+             \x20\x20\x20\x20MM Great Bay Coast Pot 01: Item A\n\
+             \x20\x20\x20\x20MM Great Bay Coast Pot Ledge 1: Item B\n\
+             \x20\x20\x20\x20MM Great Bay Coast Rock Ledge 3: Item C\n",
+        );
+        let w = &sp.worlds[0];
+        // "Pot 01" (former) -> "Pot Ledge 1" (current).
+        assert_eq!(w.items.get("MM Great Bay Coast Pot Ledge 1").map(String::as_str), Some("Item A"));
+        // The collision case: "Pot Ledge 1" (former) -> "Pot Upper Cliffs 1" (current).
+        assert_eq!(w.items.get("MM Great Bay Coast Pot Upper Cliffs 1").map(String::as_str), Some("Item B"));
+        assert_eq!(w.items.get("MM Great Bay Coast Rock Cliffs 3").map(String::as_str), Some("Item C"));
+        // The former names must not survive as keys.
+        assert!(w.items.get("MM Great Bay Coast Pot 01").is_none());
+        assert!(w.items.get("MM Great Bay Coast Rock Ledge 3").is_none());
+    }
+
+    #[test]
+    fn current_build_keeps_new_great_bay_names() {
+        // A current (dev / >= v32.1) spoiler already uses the new names: no translation. The
+        // collision string "Pot Ledge 1" must map to its current object, not the former one.
+        let sp = parse(
+            "Version: dev-20260101\n\
+             \x20\x20Great Bay Coast:\n\
+             \x20\x20\x20\x20MM Great Bay Coast Pot Ledge 1: Item X\n\
+             \x20\x20\x20\x20MM Great Bay Coast Pot Upper Cliffs 1: Item Y\n",
+        );
+        let w = &sp.worlds[0];
+        assert_eq!(w.items.get("MM Great Bay Coast Pot Ledge 1").map(String::as_str), Some("Item X"));
+        assert_eq!(w.items.get("MM Great Bay Coast Pot Upper Cliffs 1").map(String::as_str), Some("Item Y"));
     }
 }

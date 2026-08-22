@@ -58,6 +58,8 @@ const ProgEntry OoTQuestStatus[] =
     // MaxFromSpoiler example: the badge reads "collected/total" once a spoiler log is
     // loaded (total = number of tokens the seed actually placed), and just "collected"
     // otherwise. Copy the ", 0, true" tail onto any other collectable counter to enable it.
+    { EGameIcon::clock_oot, "Clock (Day 1)", { OOT_CLOCK }, false },
+    { EGameIcon::shovel, "Shovel", { OOT_SHOVEL, SHARED_SHOVEL }, false },
     { EGameIcon::gs_token,       "Gold Skulltula Token", { OOT_GS_TOKEN }, true, 0, true },
     { EGameIcon::platinum_token, "Platinum Token", { OOT_PLATINUM_TOKEN, SHARED_PLATINUM_TOKEN }, false },
     { EGameIcon::agony, "Stone of Agony", { OOT_STONE_OF_AGONY, SHARED_STONE_OF_AGONY }, false },
@@ -391,6 +393,7 @@ const ProgEntry MMQuestStatus[] =
     { EGameIcon::owl, "Owl Statue (Stone Tower)", { MM_OWL_STONE_TOWER }, false },
 
     // Clocks
+    { EGameIcon::shovel, "Shovel", { MM_SHOVEL, SHARED_SHOVEL }, false },
     { EGameIcon::clock_d1, "Clock (Day 1)", { MM_CLOCK1, MM_CLOCK }, false },
     { EGameIcon::clock_n1, "Clock (Night 1)", { MM_CLOCK2, MM_CLOCK }, false },
     { EGameIcon::clock_d2, "Clock (Day 2)", { MM_CLOCK3, MM_CLOCK }, false },

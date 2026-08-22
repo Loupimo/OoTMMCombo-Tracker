@@ -117,6 +117,7 @@ enum class EGameIcon : uint8_t
     shadow,
     spirit,
     gs_token,
+    clock_oot,
     clock_d1,
     clock_d2,
     clock_d3,
@@ -155,6 +156,7 @@ enum class EGameIcon : uint8_t
     triforce_power,
     triforce_courage,
     triforce_wisdom,
+    shovel,
 
     // Equipment
     big_seed,

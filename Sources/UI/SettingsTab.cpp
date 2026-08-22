@@ -633,6 +633,8 @@ QWidget* SettingsTab::BuildSpecialPage()
     contentLayout->addWidget(this->MakeParamGroup(content, "Misc", {
         { "skipZelda",          "OoT" },
         { "agelessStrength",    "OoT" },
+        { "shovelOot", "OoT"   },
+        { "shovelMm", "MM"   },
         { "restoreBrokenActors", ""   },
     }));
     // Cross-game warp toggles: control whether the GPS pathfinder considers that the

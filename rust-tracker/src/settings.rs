@@ -95,6 +95,95 @@ pub const MM_JP_SCENES: &[u16] = &[
     s::MM_GROTTO_DEKU_PALACE_CLIMB,
 ];
 
+/// A dungeon's small-key / key-ring item id pair (SettingsTab OoTKeyRings /
+/// MMKeyRings). The World Items editor toggles between individual small keys and
+/// a single ring by moving these ids in / out of the disabled set.
+pub struct KeyRing {
+    pub label: &'static str,
+    pub small: u32,
+    pub ring: u32,
+}
+
+/// OoT small-key / key-ring pairs, keyed by the spoiler dungeon label.
+pub const KEY_RINGS_OOT: &[KeyRing] = &[
+    KeyRing { label: "Forest Temple", small: iid::OOT_SMALL_KEY_FOREST, ring: iid::OOT_KEY_RING_FOREST },
+    KeyRing { label: "Fire Temple", small: iid::OOT_SMALL_KEY_FIRE, ring: iid::OOT_KEY_RING_FIRE },
+    KeyRing { label: "Water Temple", small: iid::OOT_SMALL_KEY_WATER, ring: iid::OOT_KEY_RING_WATER },
+    KeyRing { label: "Shadow Temple", small: iid::OOT_SMALL_KEY_SHADOW, ring: iid::OOT_KEY_RING_SHADOW },
+    KeyRing { label: "Spirit Temple", small: iid::OOT_SMALL_KEY_SPIRIT, ring: iid::OOT_KEY_RING_SPIRIT },
+    KeyRing { label: "Bottom of the Well", small: iid::OOT_SMALL_KEY_BOTW, ring: iid::OOT_KEY_RING_BOTW },
+    KeyRing { label: "Gerudo Training Grounds", small: iid::OOT_SMALL_KEY_GTG, ring: iid::OOT_KEY_RING_GTG },
+    KeyRing { label: "Ganon's Castle", small: iid::OOT_SMALL_KEY_GANON, ring: iid::OOT_KEY_RING_GANON },
+    KeyRing { label: "Hideout", small: iid::OOT_SMALL_KEY_GF, ring: iid::OOT_KEY_RING_GF },
+    KeyRing { label: "Chest Game", small: iid::OOT_SMALL_KEY_TCG, ring: iid::OOT_KEY_RING_TCG },
+];
+
+/// MM small-key / key-ring pairs, keyed by the spoiler dungeon label.
+pub const KEY_RINGS_MM: &[KeyRing] = &[
+    KeyRing { label: "Woodfall Temple", small: iid::MM_SMALL_KEY_WF, ring: iid::MM_KEY_RING_WF },
+    KeyRing { label: "Snowhead Temple", small: iid::MM_SMALL_KEY_SH, ring: iid::MM_KEY_RING_SH },
+    KeyRing { label: "Great Bay Temple", small: iid::MM_SMALL_KEY_GB, ring: iid::MM_KEY_RING_GB },
+    KeyRing { label: "Stone Tower Temple", small: iid::MM_SMALL_KEY_ST, ring: iid::MM_KEY_RING_ST },
+];
+
+/// A silver-rupee cluster: its rupee / pouch ids, the scene it lives in and the
+/// layout that owns it (`layout`: 0 = Vanilla only, 1 = Master Quest only,
+/// 2 = Both). Mirrors the OoTSilverPouches table in the Qt SettingsTab.
+pub struct SilverArea {
+    pub label: &'static str,
+    pub rupee: u32,
+    pub pouch: u32,
+    pub scene: u16,
+    pub layout: u8,
+}
+
+/// Per-area silver-rupee / silver-pouch descriptors, gated by the scene layout.
+pub const SILVER_AREAS: &[SilverArea] = &[
+    SilverArea { label: "Dodongo's Cavern", rupee: iid::OOT_RUPEE_SILVER_DC, pouch: iid::OOT_POUCH_SILVER_DC, scene: s::OOT_DODONGO_CAVERN, layout: 1 },
+    SilverArea { label: "Bottom of the Well", rupee: iid::OOT_RUPEE_SILVER_BOTW, pouch: iid::OOT_POUCH_SILVER_BOTW, scene: s::OOT_BOTTOM_OF_THE_WELL, layout: 0 },
+    SilverArea { label: "Spirit Temple (Child)", rupee: iid::OOT_RUPEE_SILVER_SPIRIT_CHILD, pouch: iid::OOT_POUCH_SILVER_SPIRIT_CHILD, scene: s::OOT_TEMPLE_SPIRIT, layout: 0 },
+    SilverArea { label: "Spirit Temple (Sun)", rupee: iid::OOT_RUPEE_SILVER_SPIRIT_SUN, pouch: iid::OOT_POUCH_SILVER_SPIRIT_SUN, scene: s::OOT_TEMPLE_SPIRIT, layout: 0 },
+    SilverArea { label: "Spirit Temple (Boulders)", rupee: iid::OOT_RUPEE_SILVER_SPIRIT_BOULDERS, pouch: iid::OOT_POUCH_SILVER_SPIRIT_BOULDERS, scene: s::OOT_TEMPLE_SPIRIT, layout: 0 },
+    SilverArea { label: "Spirit Temple (Lobby)", rupee: iid::OOT_RUPEE_SILVER_SPIRIT_LOBBY, pouch: iid::OOT_POUCH_SILVER_SPIRIT_LOBBY, scene: s::OOT_TEMPLE_SPIRIT, layout: 1 },
+    SilverArea { label: "Spirit Temple (Adult)", rupee: iid::OOT_RUPEE_SILVER_SPIRIT_ADULT, pouch: iid::OOT_POUCH_SILVER_SPIRIT_ADULT, scene: s::OOT_TEMPLE_SPIRIT, layout: 1 },
+    SilverArea { label: "Shadow Temple (Scythe)", rupee: iid::OOT_RUPEE_SILVER_SHADOW_SCYTHE, pouch: iid::OOT_POUCH_SILVER_SHADOW_SCYTHE, scene: s::OOT_TEMPLE_SHADOW, layout: 2 },
+    SilverArea { label: "Shadow Temple (Pit)", rupee: iid::OOT_RUPEE_SILVER_SHADOW_PIT, pouch: iid::OOT_POUCH_SILVER_SHADOW_PIT, scene: s::OOT_TEMPLE_SHADOW, layout: 2 },
+    SilverArea { label: "Shadow Temple (Spikes)", rupee: iid::OOT_RUPEE_SILVER_SHADOW_SPIKES, pouch: iid::OOT_POUCH_SILVER_SHADOW_SPIKES, scene: s::OOT_TEMPLE_SHADOW, layout: 2 },
+    SilverArea { label: "Shadow Temple (Blades)", rupee: iid::OOT_RUPEE_SILVER_SHADOW_BLADES, pouch: iid::OOT_POUCH_SILVER_SHADOW_BLADES, scene: s::OOT_TEMPLE_SHADOW, layout: 1 },
+    SilverArea { label: "Ice Cavern (Scythe)", rupee: iid::OOT_RUPEE_SILVER_IC_SCYTHE, pouch: iid::OOT_POUCH_SILVER_IC_SCYTHE, scene: s::OOT_ICE_CAVERN, layout: 0 },
+    SilverArea { label: "Ice Cavern (Block)", rupee: iid::OOT_RUPEE_SILVER_IC_BLOCK, pouch: iid::OOT_POUCH_SILVER_IC_BLOCK, scene: s::OOT_ICE_CAVERN, layout: 0 },
+    SilverArea { label: "GTG (Slopes)", rupee: iid::OOT_RUPEE_SILVER_GTG_SLOPES, pouch: iid::OOT_POUCH_SILVER_GTG_SLOPES, scene: s::OOT_GERUDO_TRAINING_GROUND, layout: 2 },
+    SilverArea { label: "GTG (Lava)", rupee: iid::OOT_RUPEE_SILVER_GTG_LAVA, pouch: iid::OOT_POUCH_SILVER_GTG_LAVA, scene: s::OOT_GERUDO_TRAINING_GROUND, layout: 2 },
+    SilverArea { label: "GTG (Water)", rupee: iid::OOT_RUPEE_SILVER_GTG_WATER, pouch: iid::OOT_POUCH_SILVER_GTG_WATER, scene: s::OOT_GERUDO_TRAINING_GROUND, layout: 2 },
+    SilverArea { label: "Ganon's Castle (Light)", rupee: iid::OOT_RUPEE_SILVER_GANON_LIGHT, pouch: iid::OOT_POUCH_SILVER_GANON_LIGHT, scene: s::OOT_INSIDE_GANON_CASTLE, layout: 0 },
+    SilverArea { label: "Ganon's Castle (Forest)", rupee: iid::OOT_RUPEE_SILVER_GANON_FOREST, pouch: iid::OOT_POUCH_SILVER_GANON_FOREST, scene: s::OOT_INSIDE_GANON_CASTLE, layout: 0 },
+    SilverArea { label: "Ganon's Castle (Fire)", rupee: iid::OOT_RUPEE_SILVER_GANON_FIRE, pouch: iid::OOT_POUCH_SILVER_GANON_FIRE, scene: s::OOT_INSIDE_GANON_CASTLE, layout: 2 },
+    SilverArea { label: "Ganon's Castle (Water)", rupee: iid::OOT_RUPEE_SILVER_GANON_WATER, pouch: iid::OOT_POUCH_SILVER_GANON_WATER, scene: s::OOT_INSIDE_GANON_CASTLE, layout: 1 },
+    SilverArea { label: "Ganon's Castle (Shadow)", rupee: iid::OOT_RUPEE_SILVER_GANON_SHADOW, pouch: iid::OOT_POUCH_SILVER_GANON_SHADOW, scene: s::OOT_INSIDE_GANON_CASTLE, layout: 1 },
+    SilverArea { label: "Ganon's Castle (Spirit)", rupee: iid::OOT_RUPEE_SILVER_GANON_SPIRIT, pouch: iid::OOT_POUCH_SILVER_GANON_SPIRIT, scene: s::OOT_INSIDE_GANON_CASTLE, layout: 0 },
+];
+
+/// A pre-activated owl statue choice (SettingsTab MMOwlStatues): checking one
+/// adds the owl as an owned starting item.
+pub struct OwlStatue {
+    pub label: &'static str,
+    pub id: u32,
+}
+
+/// The MM owl statues that can start pre-activated.
+pub const OWL_STATUES: &[OwlStatue] = &[
+    OwlStatue { label: "Clock Town", id: iid::MM_OWL_CLOCK_TOWN },
+    OwlStatue { label: "Milk Road", id: iid::MM_OWL_MILK_ROAD },
+    OwlStatue { label: "Southern Swamp", id: iid::MM_OWL_SOUTHERN_SWAMP },
+    OwlStatue { label: "Woodfall", id: iid::MM_OWL_WOODFALL },
+    OwlStatue { label: "Mountain Village", id: iid::MM_OWL_MOUNTAIN_VILLAGE },
+    OwlStatue { label: "Snowhead", id: iid::MM_OWL_SNOWHEAD },
+    OwlStatue { label: "Great Bay Coast", id: iid::MM_OWL_GREAT_BAY },
+    OwlStatue { label: "Zora Cape", id: iid::MM_OWL_ZORA_CAPE },
+    OwlStatue { label: "Ikana Canyon", id: iid::MM_OWL_IKANA_CANYON },
+    OwlStatue { label: "Stone Tower", id: iid::MM_OWL_STONE_TOWER },
+];
+
 /// The objects excluded from the map by the ROM settings, as global indices into
 /// `game.objects()`, per game (FilterManager::ExcludedObj).
 #[derive(Default, Clone)]
@@ -182,6 +271,62 @@ impl Settings {
     }
     fn is_item_key(key: &str) -> bool {
         ITEM_SETTINGS.iter().any(|m| m.key == key)
+    }
+
+    // ── World Items editors (SettingsTab per-dungeon toggles) ────────────────
+    // These edit the `base_*` sets that survive a re-`apply` (mirror of the Qt
+    // SettingsTab checkboxes that write DisabledItemIDs / StartingItemIDs).
+
+    /// Whether a dungeon's key ring is delivered (ring id enabled).
+    pub fn key_ring_on(&self, ring: u32) -> bool {
+        !self.base_disabled.contains(&ring)
+    }
+
+    /// Toggle a dungeon's key ring: on => keep the ring, drop the small keys.
+    pub fn set_key_ring(&mut self, small: u32, ring: u32, on: bool) {
+        if on {
+            self.base_disabled.insert(small);
+            self.base_disabled.remove(&ring);
+        } else {
+            self.base_disabled.remove(&small);
+            self.base_disabled.insert(ring);
+        }
+    }
+
+    /// Whether a silver cluster exists in its scene's currently active layout.
+    pub fn silver_area_exists(&self, area: &SilverArea, mq: &HashSet<(Game, u16)>) -> bool {
+        let is_mq = mq.contains(&(Game::Oot, area.scene));
+        area.layout == 2 || (area.layout == 1 && is_mq) || (area.layout == 0 && !is_mq)
+    }
+
+    /// Whether a silver cluster currently delivers a pouch (pouch id enabled).
+    pub fn silver_pouch_on(&self, pouch: u32) -> bool {
+        !self.base_disabled.contains(&pouch)
+    }
+
+    /// Toggle a silver cluster: on => a pouch, off => the individual rupees.
+    pub fn set_silver_pouch(&mut self, rupee: u32, pouch: u32, on: bool) {
+        if on {
+            self.base_disabled.insert(rupee);
+            self.base_disabled.remove(&pouch);
+        } else {
+            self.base_disabled.remove(&rupee);
+            self.base_disabled.insert(pouch);
+        }
+    }
+
+    /// Whether an owl statue starts pre-activated (owned as a starting item).
+    pub fn owl_on(&self, owl: u32) -> bool {
+        self.base_starting.contains_key(&owl)
+    }
+
+    /// Toggle a pre-activated owl statue.
+    pub fn set_owl(&mut self, owl: u32, on: bool) {
+        if on {
+            self.base_starting.insert(owl, 1);
+        } else {
+            self.base_starting.remove(&owl);
+        }
     }
 
     // ── Spoiler parsing (ParseSettings + world flags) ────────────────────────
@@ -303,60 +448,40 @@ impl Settings {
             self.base_disabled.insert(i);
         }
 
-        // OoT small key -> key-ring pairs, keyed by the spoiler dungeon label.
-        const OOT_RINGS: &[(&str, u32, u32)] = &[
-            ("Forest Temple", iid::OOT_SMALL_KEY_FOREST, iid::OOT_KEY_RING_FOREST),
-            ("Fire Temple", iid::OOT_SMALL_KEY_FIRE, iid::OOT_KEY_RING_FIRE),
-            ("Water Temple", iid::OOT_SMALL_KEY_WATER, iid::OOT_KEY_RING_WATER),
-            ("Shadow Temple", iid::OOT_SMALL_KEY_SHADOW, iid::OOT_KEY_RING_SHADOW),
-            ("Spirit Temple", iid::OOT_SMALL_KEY_SPIRIT, iid::OOT_KEY_RING_SPIRIT),
-            ("Bottom of the Well", iid::OOT_SMALL_KEY_BOTW, iid::OOT_KEY_RING_BOTW),
-            ("Gerudo Training Grounds", iid::OOT_SMALL_KEY_GTG, iid::OOT_KEY_RING_GTG),
-            ("Ganon's Castle", iid::OOT_SMALL_KEY_GANON, iid::OOT_KEY_RING_GANON),
-            ("Hideout", iid::OOT_SMALL_KEY_GF, iid::OOT_KEY_RING_GF),
-            ("Chest Game", iid::OOT_SMALL_KEY_TCG, iid::OOT_KEY_RING_TCG),
-        ];
-        const MM_RINGS: &[(&str, u32, u32)] = &[
-            ("Woodfall Temple", iid::MM_SMALL_KEY_WF, iid::MM_KEY_RING_WF),
-            ("Snowhead Temple", iid::MM_SMALL_KEY_SH, iid::MM_KEY_RING_SH),
-            ("Great Bay Temple", iid::MM_SMALL_KEY_GB, iid::MM_KEY_RING_GB),
-            ("Stone Tower Temple", iid::MM_SMALL_KEY_ST, iid::MM_KEY_RING_ST),
-        ];
-
-        let enable_all = |slf: &mut Self, rings: &[(&str, u32, u32)]| {
-            for &(_, small, ring) in rings {
-                slf.base_disabled.insert(small);
-                slf.base_disabled.remove(&ring);
+        let enable_all = |slf: &mut Self, rings: &[KeyRing]| {
+            for r in rings {
+                slf.base_disabled.insert(r.small);
+                slf.base_disabled.remove(&r.ring);
             }
         };
 
         if let Some(list) = read_list(section, "Small Key Ring (OoT)") {
             match list {
                 ListValue::Inline(v) if v == "all" => {
-                    enable_all(self, OOT_RINGS);
+                    enable_all(self, KEY_RINGS_OOT);
                     if self.value("smallKeyShuffleChestGame") != ShuffleSetting::vanilla {
                         self.base_disabled.insert(iid::OOT_SMALL_KEY_TCG);
                         self.base_disabled.remove(&iid::OOT_KEY_RING_TCG);
                     }
                 }
-                ListValue::Items(items) => self.enable_rings(&items, OOT_RINGS),
+                ListValue::Items(items) => self.enable_rings(&items, KEY_RINGS_OOT),
                 _ => {}
             }
         }
         if let Some(list) = read_list(section, "Small Key Ring (MM)") {
             match list {
-                ListValue::Inline(v) if v == "all" => enable_all(self, MM_RINGS),
-                ListValue::Items(items) => self.enable_rings(&items, MM_RINGS),
+                ListValue::Inline(v) if v == "all" => enable_all(self, KEY_RINGS_MM),
+                ListValue::Items(items) => self.enable_rings(&items, KEY_RINGS_MM),
                 _ => {}
             }
         }
     }
 
-    fn enable_rings(&mut self, items: &[String], rings: &[(&str, u32, u32)]) {
+    fn enable_rings(&mut self, items: &[String], rings: &[KeyRing]) {
         for name in items {
-            if let Some(&(_, small, ring)) = rings.iter().find(|(n, _, _)| n == name) {
-                self.base_disabled.insert(small);
-                self.base_disabled.remove(&ring);
+            if let Some(r) = rings.iter().find(|r| r.label == name) {
+                self.base_disabled.insert(r.small);
+                self.base_disabled.remove(&r.ring);
             }
         }
     }
@@ -365,32 +490,6 @@ impl Settings {
     /// each cluster that exists in its scene's active layout, as a pouch when the
     /// seed selected it, otherwise as individual rupees.
     fn parse_silver_pouches(&mut self, section: &str, mq: &HashSet<(Game, u16)>) {
-        // (label, rupee id, pouch id, scene, layout) — layout: 0 = Vanilla, 1 = MQ, 2 = Both.
-        const AREAS: &[(&str, u32, u32, u16, u8)] = &[
-            ("Dodongo's Cavern", iid::OOT_RUPEE_SILVER_DC, iid::OOT_POUCH_SILVER_DC, s::OOT_DODONGO_CAVERN, 1),
-            ("Bottom of the Well", iid::OOT_RUPEE_SILVER_BOTW, iid::OOT_POUCH_SILVER_BOTW, s::OOT_BOTTOM_OF_THE_WELL, 0),
-            ("Spirit Temple (Child)", iid::OOT_RUPEE_SILVER_SPIRIT_CHILD, iid::OOT_POUCH_SILVER_SPIRIT_CHILD, s::OOT_TEMPLE_SPIRIT, 0),
-            ("Spirit Temple (Sun)", iid::OOT_RUPEE_SILVER_SPIRIT_SUN, iid::OOT_POUCH_SILVER_SPIRIT_SUN, s::OOT_TEMPLE_SPIRIT, 0),
-            ("Spirit Temple (Boulders)", iid::OOT_RUPEE_SILVER_SPIRIT_BOULDERS, iid::OOT_POUCH_SILVER_SPIRIT_BOULDERS, s::OOT_TEMPLE_SPIRIT, 0),
-            ("Spirit Temple (Lobby)", iid::OOT_RUPEE_SILVER_SPIRIT_LOBBY, iid::OOT_POUCH_SILVER_SPIRIT_LOBBY, s::OOT_TEMPLE_SPIRIT, 1),
-            ("Spirit Temple (Adult)", iid::OOT_RUPEE_SILVER_SPIRIT_ADULT, iid::OOT_POUCH_SILVER_SPIRIT_ADULT, s::OOT_TEMPLE_SPIRIT, 1),
-            ("Shadow Temple (Scythe)", iid::OOT_RUPEE_SILVER_SHADOW_SCYTHE, iid::OOT_POUCH_SILVER_SHADOW_SCYTHE, s::OOT_TEMPLE_SHADOW, 2),
-            ("Shadow Temple (Pit)", iid::OOT_RUPEE_SILVER_SHADOW_PIT, iid::OOT_POUCH_SILVER_SHADOW_PIT, s::OOT_TEMPLE_SHADOW, 2),
-            ("Shadow Temple (Spikes)", iid::OOT_RUPEE_SILVER_SHADOW_SPIKES, iid::OOT_POUCH_SILVER_SHADOW_SPIKES, s::OOT_TEMPLE_SHADOW, 2),
-            ("Shadow Temple (Blades)", iid::OOT_RUPEE_SILVER_SHADOW_BLADES, iid::OOT_POUCH_SILVER_SHADOW_BLADES, s::OOT_TEMPLE_SHADOW, 1),
-            ("Ice Cavern (Scythe)", iid::OOT_RUPEE_SILVER_IC_SCYTHE, iid::OOT_POUCH_SILVER_IC_SCYTHE, s::OOT_ICE_CAVERN, 0),
-            ("Ice Cavern (Block)", iid::OOT_RUPEE_SILVER_IC_BLOCK, iid::OOT_POUCH_SILVER_IC_BLOCK, s::OOT_ICE_CAVERN, 0),
-            ("GTG (Slopes)", iid::OOT_RUPEE_SILVER_GTG_SLOPES, iid::OOT_POUCH_SILVER_GTG_SLOPES, s::OOT_GERUDO_TRAINING_GROUND, 2),
-            ("GTG (Lava)", iid::OOT_RUPEE_SILVER_GTG_LAVA, iid::OOT_POUCH_SILVER_GTG_LAVA, s::OOT_GERUDO_TRAINING_GROUND, 2),
-            ("GTG (Water)", iid::OOT_RUPEE_SILVER_GTG_WATER, iid::OOT_POUCH_SILVER_GTG_WATER, s::OOT_GERUDO_TRAINING_GROUND, 2),
-            ("Ganon's Castle (Light)", iid::OOT_RUPEE_SILVER_GANON_LIGHT, iid::OOT_POUCH_SILVER_GANON_LIGHT, s::OOT_INSIDE_GANON_CASTLE, 0),
-            ("Ganon's Castle (Forest)", iid::OOT_RUPEE_SILVER_GANON_FOREST, iid::OOT_POUCH_SILVER_GANON_FOREST, s::OOT_INSIDE_GANON_CASTLE, 0),
-            ("Ganon's Castle (Fire)", iid::OOT_RUPEE_SILVER_GANON_FIRE, iid::OOT_POUCH_SILVER_GANON_FIRE, s::OOT_INSIDE_GANON_CASTLE, 2),
-            ("Ganon's Castle (Water)", iid::OOT_RUPEE_SILVER_GANON_WATER, iid::OOT_POUCH_SILVER_GANON_WATER, s::OOT_INSIDE_GANON_CASTLE, 1),
-            ("Ganon's Castle (Shadow)", iid::OOT_RUPEE_SILVER_GANON_SHADOW, iid::OOT_POUCH_SILVER_GANON_SHADOW, s::OOT_INSIDE_GANON_CASTLE, 1),
-            ("Ganon's Castle (Spirit)", iid::OOT_RUPEE_SILVER_GANON_SPIRIT, iid::OOT_POUCH_SILVER_GANON_SPIRIT, s::OOT_INSIDE_GANON_CASTLE, 0),
-        ];
-
         for i in iid::OOT_RUPEE_SILVER_DC..=iid::OOT_RUPEE_SILVER_GANON_WATER {
             self.base_disabled.insert(i);
         }
@@ -408,16 +507,14 @@ impl Settings {
             }
         }
 
-        for &(label, rupee, pouch, scene, layout) in AREAS {
-            let is_mq = mq.contains(&(Game::Oot, scene));
-            let exists = layout == 2 || (layout == 1 && is_mq) || (layout == 0 && !is_mq);
-            if !exists {
+        for a in SILVER_AREAS {
+            if !self.silver_area_exists(a, mq) {
                 continue;
             }
-            if all_pouches || pouch_areas.contains(label) {
-                self.base_disabled.remove(&pouch);
+            if all_pouches || pouch_areas.contains(a.label) {
+                self.base_disabled.remove(&a.pouch);
             } else {
-                self.base_disabled.remove(&rupee);
+                self.base_disabled.remove(&a.rupee);
             }
         }
     }
@@ -439,18 +536,6 @@ impl Settings {
 
     /// ParsePreActivatedOwl: pre-activated MM owl statues start as owned items.
     fn parse_pre_activated_owl(&mut self, section: &str) {
-        const OWLS: &[(&str, u32)] = &[
-            ("Clock Town", iid::MM_OWL_CLOCK_TOWN),
-            ("Milk Road", iid::MM_OWL_MILK_ROAD),
-            ("Southern Swamp", iid::MM_OWL_SOUTHERN_SWAMP),
-            ("Woodfall", iid::MM_OWL_WOODFALL),
-            ("Mountain Village", iid::MM_OWL_MOUNTAIN_VILLAGE),
-            ("Snowhead", iid::MM_OWL_SNOWHEAD),
-            ("Great Bay Coast", iid::MM_OWL_GREAT_BAY),
-            ("Zora Cape", iid::MM_OWL_ZORA_CAPE),
-            ("Ikana Canyon", iid::MM_OWL_IKANA_CANYON),
-            ("Stone Tower", iid::MM_OWL_STONE_TOWER),
-        ];
         if let Some(list) = read_list(section, "Pre-Activated Owl Statues") {
             match list {
                 ListValue::Inline(v) if v == "all" => {
@@ -460,8 +545,8 @@ impl Settings {
                 }
                 ListValue::Items(items) => {
                     for name in items {
-                        if let Some(&(_, id)) = OWLS.iter().find(|(n, _)| *n == name) {
-                            self.base_starting.insert(id, 1);
+                        if let Some(o) = OWL_STATUES.iter().find(|o| o.label == name) {
+                            self.base_starting.insert(o.id, 1);
                         }
                     }
                 }

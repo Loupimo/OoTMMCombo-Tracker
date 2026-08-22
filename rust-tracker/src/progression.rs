@@ -18,6 +18,7 @@ use std::collections::{HashMap, HashSet};
 use crate::data::{self, ProgEntry};
 use crate::scene::Game;
 use crate::settings::Settings;
+use crate::WorldData;
 
 /// Live state of one dashboard entry (the mutable `ItemIconWidget` fields).
 #[derive(Default, Clone)]
@@ -138,13 +139,17 @@ impl Dashboard {
 
     // ── Rebuild (RebuildFromSceneObjects) ─────────────────────────────────────
 
-    /// Recompute every entry's live state from the collected set + spoiler +
-    /// settings. Cheap enough to run whenever one of those changes.
+    /// Recompute every entry's live state from all worlds' placements + collected
+    /// sets + settings. Cheap enough to run whenever one of those changes.
+    ///
+    /// Multiworld (Qt "option b"): the active world's progression is every
+    /// placement DESTINED to that world, wherever it is physically placed. So we
+    /// scan every world and keep only the placements whose destination player
+    /// matches `active_world` (1-based). Single / coop seeds have one world whose
+    /// placements all default to destination 1, so this matches everything.
     pub fn rebuild(
         &mut self,
-        collected: &HashSet<(Game, usize)>,
-        spoiler_items: &HashMap<String, String>,
-        worlds: &HashMap<String, u8>,
+        worlds: &[WorldData],
         settings: &Settings,
         mq: &HashSet<(Game, u16)>,
     ) {
@@ -187,40 +192,47 @@ impl Dashboard {
             }
         }
 
-        // Tally spoiler-derived totals: every active placement that holds an item
-        // counts toward the max, collected or not (deduped per placement).
-        for (game, objs) in [(Game::Oot, data::OOT_OBJECTS), (Game::Mm, data::MM_OBJECTS)] {
-            let mut seen = HashSet::new();
-            for o in objs {
-                if o.type_ == data::ObjectType::none || !crate::tracking::object_active(o, game, mq) {
-                    continue;
+        // Tally spoiler-derived totals: every active placement (across all worlds)
+        // destined to the active world counts toward the max, collected or not.
+        // The dedup key carries the physical world so the same coordinate in two
+        // world clones counts twice (they are distinct placements).
+        let mut seen = HashSet::new();
+        for (wi, w) in worlds.iter().enumerate() {
+            for (game, objs) in [(Game::Oot, data::OOT_OBJECTS), (Game::Mm, data::MM_OBJECTS)] {
+                for o in objs {
+                    if o.type_ == data::ObjectType::none
+                        || !crate::tracking::object_active(o, game, mq)
+                    {
+                        continue;
+                    }
+                    let Some(name) = w.items.get(o.location) else { continue };
+                    if dest_world(w, wi, o.location) != self.active_world {
+                        continue;
+                    }
+                    let Some(id) = find_item_id(name) else { continue };
+                    if !seen.insert((wi, game.idx(), o.object_id, o.render_scene, o.type_ as u8)) {
+                        continue;
+                    }
+                    self.tally_max(id);
                 }
-                let Some(name) = spoiler_items.get(o.location) else { continue };
-                // Multiworld: only placements destined to the active world count.
-                if dest_world(worlds, o.location) != self.active_world {
-                    continue;
-                }
-                let Some(id) = find_item_id(name) else { continue };
-                if !seen.insert((o.object_id, o.render_scene, o.type_ as u8)) {
-                    continue;
-                }
-                self.tally_max(id);
             }
         }
 
-        // Replay every collected placement. Each pickup resolves to a single
-        // object index (the tracker never records a paired duplicate), so a plain
-        // walk of the collected set matches the C++ deduped placement replay.
-        for &(game, idx) in collected {
-            let o = &game.objects()[idx];
-            let Some(name) = spoiler_items.get(o.location) else { continue };
-            // Multiworld: a pickup destined to another player does not advance the
-            // active world's progression (it is sent to that player instead).
-            if dest_world(worlds, o.location) != self.active_world {
-                continue;
+        // Replay every collected placement across all worlds. Each pickup resolves
+        // to a single object index (the tracker never records a paired duplicate),
+        // so a plain walk of each world's collected set matches the C++ deduped
+        // placement replay. A pickup destined to another player does not advance
+        // the active world's progression.
+        for (wi, w) in worlds.iter().enumerate() {
+            for &(game, idx) in &w.collected {
+                let o = &game.objects()[idx];
+                let Some(name) = w.items.get(o.location) else { continue };
+                if dest_world(w, wi, o.location) != self.active_world {
+                    continue;
+                }
+                let Some(id) = find_item_id(name) else { continue };
+                self.on_item_found(id, settings);
             }
-            let Some(id) = find_item_id(name) else { continue };
-            self.on_item_found(id, settings);
         }
     }
 
@@ -349,18 +361,12 @@ impl Dashboard {
     /// Refresh the cached location tree of the selected entry when it went stale
     /// (selection / reveal / collected changed). Cheap no-op otherwise, so it can
     /// run every frame before the detail panel reads `tree`.
-    pub fn ensure_tree(
-        &mut self,
-        collected: &HashSet<(Game, usize)>,
-        spoiler_items: &HashMap<String, String>,
-        worlds: &HashMap<String, u8>,
-        mq: &HashSet<(Game, u16)>,
-    ) {
+    pub fn ensure_tree(&mut self, worlds: &[WorldData], mq: &HashSet<(Game, u16)>) {
         if !self.tree_dirty && self.tree_cache_key == self.selected {
             return;
         }
         self.tree_cache = match self.selected {
-            Some(i) => self.location_tree(i, collected, spoiler_items, worlds, mq),
+            Some(i) => self.location_tree(i, worlds, mq),
             None => Vec::new(),
         };
         self.tree_cache_key = self.selected;
@@ -372,52 +378,63 @@ impl Dashboard {
         &self.tree_cache
     }
 
-    /// Every placement of the selected entry's item(s), grouped by scene and
-    /// sorted (OoT before MM, then by scene name; uncollected leaves first).
+    /// Every placement of the selected entry's item(s) DESTINED to the active
+    /// world (across all physical worlds), grouped by scene and sorted (OoT before
+    /// MM, then by scene name; uncollected leaves first). A placement that lives in
+    /// another world is tagged "World N —" so it reads apart from own-world ones.
     fn location_tree(
         &self,
         i: usize,
-        collected: &HashSet<(Game, usize)>,
-        spoiler_items: &HashMap<String, String>,
-        worlds: &HashMap<String, u8>,
+        worlds: &[WorldData],
         mq: &HashSet<(Game, u16)>,
     ) -> Vec<LocScene> {
         let e = self.flat[i].entry;
-        let mut buckets: HashMap<(usize, u16), LocScene> = HashMap::new();
+        let multiworld = worlds.len() > 1;
+        // Bucket per (physical world, game, scene) so a foreign world's copy of a
+        // scene is a distinct group from the active world's.
+        let mut buckets: HashMap<(usize, usize, u16), LocScene> = HashMap::new();
         let mut seen = HashSet::new();
 
-        for (game, objs) in [(Game::Oot, data::OOT_OBJECTS), (Game::Mm, data::MM_OBJECTS)] {
-            for (idx, o) in objs.iter().enumerate() {
-                if o.type_ == data::ObjectType::none || !crate::tracking::object_active(o, game, mq) {
-                    continue;
+        for (wi, w) in worlds.iter().enumerate() {
+            for (game, objs) in [(Game::Oot, data::OOT_OBJECTS), (Game::Mm, data::MM_OBJECTS)] {
+                for (idx, o) in objs.iter().enumerate() {
+                    if o.type_ == data::ObjectType::none
+                        || !crate::tracking::object_active(o, game, mq)
+                    {
+                        continue;
+                    }
+                    let Some(name) = w.items.get(o.location) else { continue };
+                    if dest_world(w, wi, o.location) != self.active_world {
+                        continue;
+                    }
+                    let Some(id) = find_item_id(name) else { continue };
+                    if !item_matches(e, id) {
+                        continue;
+                    }
+                    let coll = w.collected.contains(&(game, idx));
+                    if !coll && !self.reveal {
+                        continue;
+                    }
+                    if !seen.insert((wi, game.idx(), o.object_id, o.render_scene, o.type_ as u8)) {
+                        continue;
+                    }
+                    let bucket =
+                        buckets.entry((wi, game.idx(), o.render_scene)).or_insert_with(|| {
+                            let base = scene_name(game, o.render_scene);
+                            let title = if multiworld && (wi as u8 + 1) != self.active_world {
+                                format!("World {} — {}", wi + 1, base)
+                            } else {
+                                base
+                            };
+                            LocScene { game, title, leaves: Vec::new() }
+                        });
+                    bucket.leaves.push(LocLeaf {
+                        game,
+                        render_scene: o.render_scene,
+                        name: o.name,
+                        collected: coll,
+                    });
                 }
-                let Some(name) = spoiler_items.get(o.location) else { continue };
-                // Multiworld: only list placements destined to the active world.
-                if dest_world(worlds, o.location) != self.active_world {
-                    continue;
-                }
-                let Some(id) = find_item_id(name) else { continue };
-                if !item_matches(e, id) {
-                    continue;
-                }
-                let coll = collected.contains(&(game, idx));
-                if !coll && !self.reveal {
-                    continue;
-                }
-                if !seen.insert((game.idx(), o.object_id, o.render_scene, o.type_ as u8)) {
-                    continue;
-                }
-                let bucket = buckets.entry((game.idx(), o.render_scene)).or_insert_with(|| LocScene {
-                    game,
-                    title: scene_name(game, o.render_scene),
-                    leaves: Vec::new(),
-                });
-                bucket.leaves.push(LocLeaf {
-                    game,
-                    render_scene: o.render_scene,
-                    name: o.name,
-                    collected: coll,
-                });
             }
         }
 
@@ -492,11 +509,11 @@ fn progressive_upgrade_requirement(id: u32) -> Option<(u32, u32)> {
     None
 }
 
-/// The destination world (1-based) of a placement: the spoiler's "Player N"
-/// prefix when present, else the local world (1). Mirrors ParseWorldLocations'
-/// `TargetWorld = WorldIndex + 1` default (the Rust pool is the single local world).
-fn dest_world(worlds: &HashMap<String, u8>, location: &str) -> u8 {
-    worlds.get(location).copied().unwrap_or(1)
+/// The destination world (1-based) of a placement physically in world `wi`: the
+/// spoiler's "Player N" prefix when present, else that world's own player.
+/// Mirrors ParseWorldLocations' `TargetWorld = WorldIndex + 1` default.
+fn dest_world(world: &WorldData, wi: usize, location: &str) -> u8 {
+    world.dest.get(location).copied().unwrap_or((wi + 1) as u8)
 }
 
 /// The song-family icons whose counter behaviour follows the 'songs' setting.
@@ -552,17 +569,32 @@ mod tests {
         d.flat().iter().position(|fe| fe.entry.name == name).expect("entry exists")
     }
 
+    /// Build a single local world from (location -> item) placements plus a
+    /// collected set, for the tests below.
+    fn one_world(
+        items: &[(&str, &str)],
+        dest: &[(&str, u8)],
+        collected: &[(Game, usize)],
+    ) -> Vec<WorldData> {
+        let mut w = WorldData::default();
+        for &(loc, it) in items {
+            w.items.insert(loc.to_string(), it.to_string());
+        }
+        for &(loc, d) in dest {
+            w.dest.insert(loc.to_string(), d);
+        }
+        w.collected = collected.iter().copied().collect();
+        vec![w]
+    }
+
     #[test]
     fn collecting_marks_the_matching_entry() {
         // Map an OoT object's location to "Fairy Bow (OoT)" and collect it.
         let obj = &data::OOT_OBJECTS[0];
-        let mut spoiler = HashMap::new();
-        spoiler.insert(obj.location.to_string(), "Fairy Bow (OoT)".to_string());
-        let mut collected = HashSet::new();
-        collected.insert((Game::Oot, 0));
+        let worlds = one_world(&[(obj.location, "Fairy Bow (OoT)")], &[], &[(Game::Oot, 0)]);
 
         let mut d = Dashboard::new();
-        d.rebuild(&collected, &spoiler, &HashMap::new(), &Settings::default(), &HashSet::new());
+        d.rebuild(&worlds, &Settings::default(), &HashSet::new());
 
         let bow = entry_by_name(&d, "Fairy Bow");
         assert!(d.state(bow).found, "the bow widget should light up");
@@ -579,15 +611,17 @@ mod tests {
             .position(|(i, o)| i != a && o.type_ == data::ObjectType::gs)
             .unwrap();
 
-        let mut spoiler = HashMap::new();
-        spoiler.insert(data::OOT_OBJECTS[a].location.to_string(), "Gold Skulltula Token".to_string());
-        spoiler.insert(data::OOT_OBJECTS[b].location.to_string(), "Gold Skulltula Token".to_string());
-        let mut collected = HashSet::new();
-        collected.insert((Game::Oot, a));
-        collected.insert((Game::Oot, b));
+        let worlds = one_world(
+            &[
+                (data::OOT_OBJECTS[a].location, "Gold Skulltula Token"),
+                (data::OOT_OBJECTS[b].location, "Gold Skulltula Token"),
+            ],
+            &[],
+            &[(Game::Oot, a), (Game::Oot, b)],
+        );
 
         let mut d = Dashboard::new();
-        d.rebuild(&collected, &spoiler, &HashMap::new(), &Settings::default(), &HashSet::new());
+        d.rebuild(&worlds, &Settings::default(), &HashSet::new());
 
         let gs = entry_by_name(&d, "Gold Skulltula Token");
         assert_eq!(d.state(gs).count, 2, "each collected token bumps the counter");
@@ -595,7 +629,9 @@ mod tests {
 
     #[test]
     fn multiworld_routes_by_destination_player() {
-        // Two GS placements holding a token; the second is destined to player 2.
+        // Two GS coordinates. In world 1, coord `a` holds a token for player 1
+        // (own, no prefix) and coord `b` holds one destined to player 2. Both are
+        // collected in world 1. World 2 is present but physically empty.
         let a = data::OOT_OBJECTS.iter().position(|o| o.type_ == data::ObjectType::gs).unwrap();
         let b = data::OOT_OBJECTS
             .iter()
@@ -603,26 +639,26 @@ mod tests {
             .position(|(i, o)| i != a && o.type_ == data::ObjectType::gs)
             .unwrap();
 
-        let mut spoiler = HashMap::new();
-        spoiler.insert(data::OOT_OBJECTS[a].location.to_string(), "Gold Skulltula Token".to_string());
-        spoiler.insert(data::OOT_OBJECTS[b].location.to_string(), "Gold Skulltula Token".to_string());
-        let mut worlds = HashMap::new();
-        worlds.insert(data::OOT_OBJECTS[b].location.to_string(), 2u8);
-        let mut collected = HashSet::new();
-        collected.insert((Game::Oot, a));
-        collected.insert((Game::Oot, b));
+        let mut w1 = WorldData::default();
+        w1.items.insert(data::OOT_OBJECTS[a].location.to_string(), "Gold Skulltula Token".to_string());
+        w1.items.insert(data::OOT_OBJECTS[b].location.to_string(), "Gold Skulltula Token".to_string());
+        w1.dest.insert(data::OOT_OBJECTS[b].location.to_string(), 2u8);
+        w1.collected.insert((Game::Oot, a));
+        w1.collected.insert((Game::Oot, b));
+        let worlds = vec![w1, WorldData::default()];
 
         let gs = |d: &Dashboard| entry_by_name(d, "Gold Skulltula Token");
         let mut d = Dashboard::new();
 
-        // World 1 (default): the player-2 pickup does not count.
-        d.rebuild(&collected, &spoiler, &worlds, &Settings::default(), &HashSet::new());
+        // World 1 (default): only the own token (a) counts; b is sent to player 2.
+        d.rebuild(&worlds, &Settings::default(), &HashSet::new());
         assert_eq!(d.state(gs(&d)).count, 1, "player-2 token excluded from world 1");
 
-        // World 2: only its own token counts.
+        // World 2: only the placement destined to player 2 (coord b) counts,
+        // even though it physically lives in world 1 (Qt "option b").
         d.set_active_world(2);
-        d.rebuild(&collected, &spoiler, &worlds, &Settings::default(), &HashSet::new());
-        assert_eq!(d.state(gs(&d)).count, 1, "world 2 sees only its own token");
+        d.rebuild(&worlds, &Settings::default(), &HashSet::new());
+        assert_eq!(d.state(gs(&d)).count, 1, "world 2 sees the token routed to it");
     }
 
     #[test]

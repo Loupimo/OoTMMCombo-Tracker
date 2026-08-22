@@ -12,10 +12,16 @@ use crate::shared_mem::Event;
 
 const IN_MAGIC: u32 = 0xFA00_0000;
 const OUT_MAGIC: u32 = 0xFB00_0000;
+/// The entrance-family gate (`ENTRANCE_MAGIC` in MemoryReader.h): any message
+/// whose top nibble is `0xF` is an entrance message. Qt routes on this nibble
+/// (`Mem & 0xF0000000 == ENTRANCE_MAGIC`) and only afterwards distinguishes the
+/// exact IN / OUT byte, so we must gate on the nibble too — otherwise a stray
+/// entrance-family message leaks into the item path.
+const ENTRANCE_MAGIC: u32 = 0xF000_0000;
 const MM_GAME: u32 = 0x01;
 
 /// Fully decoded entrance message (mirror of EntranceMessage::SetMessage).
-#[derive(Clone)]
+#[derive(Clone, Copy, Debug)]
 #[allow(dead_code)] // fields are consumed as the special-case handlers are ported
 pub struct EntranceMsg {
     pub game: Game,
@@ -55,9 +61,12 @@ const MM_SONG_DOUBLE_TIME: u8 = 0x0d;
 // LinkAge value (values above 1 are the death-reload marker, see `is_death`).
 const LINK_AGE_ADULT: u8 = 0;
 
-/// Whether a shared-memory event is an entrance message (IN or OUT).
+/// Whether a shared-memory event is an entrance message. Mirrors the Qt
+/// `CheckEvent` gate `(Mem & 0xF0000000) == ENTRANCE_MAGIC`: the whole `0xF_`
+/// family routes to the entrance parser, which then ignores anything that is not
+/// exactly IN / OUT.
 pub fn is_entrance(mem: u32) -> bool {
-    matches!(mem & 0xFF00_0000, IN_MAGIC | OUT_MAGIC)
+    mem & 0xF000_0000 == ENTRANCE_MAGIC
 }
 
 /// Full port of EntranceMessage::SetMessage. `mem` is the flag word, `query` the
@@ -1319,7 +1328,25 @@ pub fn scene_entrances(game: Game, scene: u32) -> Option<&'static [u32]> {
         Game::Mm => crate::data::MM_SCENE_ENTRANCES,
     };
     table
-        .binary_search_by_key(&(scene as u16), |&(s, _)| s)
+        .binary_search_by_key(&(scene as u16), |&(s, _, _)| s)
+        .ok()
+        .map(|i| table[i].2)
+}
+
+/// The entrance-side region id of a scene (SceneEntranceMeta RegionID), used to
+/// group scenes in the entrance nav. `None` when the scene has no entrances.
+/// Distinct from `SceneDef.region_id` (the Market / ToT hub scenes are region
+/// None as object scenes but Market as entrance scenes).
+pub fn scene_entrance_region(game: Game, scene: u32) -> Option<u8> {
+    if scene > u16::MAX as u32 {
+        return None;
+    }
+    let table = match game {
+        Game::Oot => crate::data::OOT_SCENE_ENTRANCES,
+        Game::Mm => crate::data::MM_SCENE_ENTRANCES,
+    };
+    table
+        .binary_search_by_key(&(scene as u16), |&(s, _, _)| s)
         .ok()
         .map(|i| table[i].1)
 }
@@ -1348,6 +1375,10 @@ pub struct EntranceEvent {
     pub in_game: Game,
     pub in_scene: u32,
     pub in_entrance: u32,
+    /// The raw OUT / IN messages at pairing time, so the UI can log the same
+    /// FROM/TO field table as the Qt `ParseIncomingMessage`.
+    pub out_msg: EntranceMsg,
+    pub in_msg: EntranceMsg,
 }
 
 /// Stateful two-message assembler — port of `EntranceHelper`'s OUT/IN parsing.
@@ -1359,6 +1390,8 @@ pub struct EntranceHelper {
     is_entrance_touched: bool,
     /// The last decoded OUT message, mutated in place by `parse_outgoing`.
     out: Option<EntranceMsg>,
+    /// TEMP DIAG: per-message parse trace, drained by the UI after each event.
+    pub(crate) trace: Vec<String>,
 }
 
 impl EntranceHelper {
@@ -1371,13 +1404,24 @@ impl EntranceHelper {
                 self.parse_outgoing(decode(ev));
                 None
             }
-            _ => None,
+            other => {
+                // TEMP DIAG: an entrance-family (0xF_) message that is neither IN
+                // nor OUT — Qt ignores it; log it so a magic mismatch is visible.
+                self.trace.push(format!("[DIAG] entrance msg with non IN/OUT magic 0x{other:08X}"));
+                None
+            }
         }
     }
 
     /// ParseOutgoingMessage: resolve the leaving entrance and arm the pairing.
     fn parse_outgoing(&mut self, mut msg: EntranceMsg) {
+        let g = if msg.game == Game::Oot { "OoT" } else { "MM" };
+        self.trace.push(format!(
+            "[DIAG] OUT {g} scene=0x{:X} curr=0x{:X} last=0x{:X} ent=0x{:X} age=0x{:X} fw=0x{:X} owl=0x{:X} song=0x{:X}",
+            msg.scene, msg.curr_scene, msg.last_scene, msg.entrance_id, msg.age, msg.farore_wind, msg.owl_id, msg.song
+        ));
         if is_mm_extra(&msg) {
+            self.trace.push("[DIAG] OUT drop: is_mm_extra".into());
             self.is_entrance_touched = false;
             self.out = Some(msg);
             return;
@@ -1391,6 +1435,7 @@ impl EntranceHelper {
 
         if msg.scene == e::WARP_SCENE {
             // We don't want to catch this.
+            self.trace.push("[DIAG] OUT drop: WARP_SCENE".into());
             self.is_entrance_touched = false;
             self.out = Some(msg);
             return;
@@ -1428,6 +1473,7 @@ impl EntranceHelper {
 
                 if msg.scene == e::WARP_SCENE {
                     // We don't want to catch this.
+                    self.trace.push("[DIAG] OUT drop: warp -> WARP_SCENE".into());
                     self.is_entrance_touched = false;
                     self.out = Some(msg);
                     return;
@@ -1435,6 +1481,7 @@ impl EntranceHelper {
             }
         } else if is_farore_wind(&msg) {
             // We don't want to catch this.
+            self.trace.push("[DIAG] OUT drop: is_farore_wind".into());
             self.is_entrance_touched = false;
             self.out = Some(msg);
             return;
@@ -1443,6 +1490,7 @@ impl EntranceHelper {
         // Retrieve the entrance meta information (entrance ids are unique per game).
         match lookup(msg.game, msg.entrance_id) {
             None => {
+                self.trace.push(format!("[DIAG] OUT drop: lookup None ent=0x{:X}", msg.entrance_id));
                 self.is_entrance_touched = false;
             }
             Some(meta) if !is_warp_song => {
@@ -1453,10 +1501,18 @@ impl EntranceHelper {
                     meta.from_scene as u32
                 };
                 if expected != msg.scene {
+                    self.trace.push(format!(
+                        "[DIAG] OUT drop: scene mismatch expected=0x{:X} got=0x{:X} ent=0x{:X}",
+                        expected, msg.scene, msg.entrance_id
+                    ));
                     self.is_entrance_touched = false;
+                } else {
+                    self.trace.push(format!("[DIAG] OUT armed ent=0x{:X} scene=0x{:X}", msg.entrance_id, msg.scene));
                 }
             }
-            Some(_) => {}
+            Some(_) => {
+                self.trace.push(format!("[DIAG] OUT armed (warp) ent=0x{:X}", msg.entrance_id));
+            }
         }
 
         self.out = Some(msg);
@@ -1465,7 +1521,13 @@ impl EntranceHelper {
     /// ParseIncomingMessage: resolve the arriving entrance, apply the validity
     /// predicates, and pair it with the armed OUT into a connection.
     fn parse_incoming(&mut self, mut msg: EntranceMsg) -> Option<EntranceEvent> {
+        let g = if msg.game == Game::Oot { "OoT" } else { "MM" };
+        self.trace.push(format!(
+            "[DIAG] IN  {g} scene=0x{:X} curr=0x{:X} last=0x{:X} ent=0x{:X} age=0x{:X} fw=0x{:X} owl=0x{:X} song=0x{:X}",
+            msg.scene, msg.curr_scene, msg.last_scene, msg.entrance_id, msg.age, msg.farore_wind, msg.owl_id, msg.song
+        ));
         if !self.is_entrance_touched {
+            self.trace.push("[DIAG] IN  drop: not touched (no armed OUT)".into());
             self.is_entrance_touched = false;
             return None;
         }
@@ -1475,6 +1537,7 @@ impl EntranceHelper {
         // Owned copy of the OUT so the predicates and later field reads don't
         // hold a borrow of `self` across the `is_entrance_touched` writes.
         let Some(out) = self.out.clone() else {
+            self.trace.push("[DIAG] IN  drop: no stored OUT".into());
             self.is_entrance_touched = false;
             return None;
         };
@@ -1487,6 +1550,11 @@ impl EntranceHelper {
             || is_sonata_woodfall(&out, &msg)
             || is_spawn(&msg)
         {
+            self.trace.push(format!(
+                "[DIAG] IN  drop: predicate death={} newcycle={} sodt={} sot={} sun={} sonata={} spawn={}",
+                is_death(&out), is_new_cycle(&out, &msg), is_song_of_double_time(&out, &msg),
+                is_song_of_time(&out, &msg), is_sun_song(&out, &msg), is_sonata_woodfall(&out, &msg), is_spawn(&msg)
+            ));
             self.is_entrance_touched = false;
             return None;
         }
@@ -1509,6 +1577,7 @@ impl EntranceHelper {
 
         // Unknown arriving entrance drops the transition.
         if lookup(msg.game, msg.entrance_id).is_none() {
+            self.trace.push(format!("[DIAG] IN  drop: in lookup None ent=0x{:X}", msg.entrance_id));
             self.is_entrance_touched = false;
             return None;
         }
@@ -1516,6 +1585,7 @@ impl EntranceHelper {
         // Resolve the OUT-side scene / entrance from its meta (One_Way_Out uses
         // the To side, everything else the From side).
         let Some(out_meta) = lookup(out.game, out.entrance_id) else {
+            self.trace.push(format!("[DIAG] IN  drop: out lookup None ent=0x{:X}", out.entrance_id));
             self.is_entrance_touched = false;
             return None;
         };
@@ -1526,12 +1596,17 @@ impl EntranceHelper {
         };
 
         // GetSceneEntranceMetaInf gate on both sides.
-        if !scene_has_entrance(out.game, out_scene, out_entrance)
-            || !scene_has_entrance(msg.game, msg.scene, msg.entrance_id)
-        {
+        let out_ok = scene_has_entrance(out.game, out_scene, out_entrance);
+        let in_ok = scene_has_entrance(msg.game, msg.scene, msg.entrance_id);
+        if !out_ok || !in_ok {
+            self.trace.push(format!(
+                "[DIAG] IN  drop: scene_has_entrance out_ok={out_ok} (scene=0x{out_scene:X} ent=0x{out_entrance:X}) in_ok={in_ok} (scene=0x{:X} ent=0x{:X})",
+                msg.scene, msg.entrance_id
+            ));
             self.is_entrance_touched = false;
             return None;
         }
+        self.trace.push("[DIAG] IN  PAIR OK".into());
 
         self.is_entrance_touched = false;
         Some(EntranceEvent {
@@ -1541,6 +1616,8 @@ impl EntranceHelper {
             in_game: msg.game,
             in_scene: msg.scene,
             in_entrance: msg.entrance_id,
+            out_msg: out,
+            in_msg: msg,
         })
     }
 }
@@ -1622,5 +1699,46 @@ mod tests {
         ));
         // The WARP_SCENE sentinel is not a real entrance scene.
         assert!(scene_entrances(Game::Mm, e::WARP_SCENE).is_none());
+    }
+
+    /// Build a shared-memory Event exactly as the DLL packs it (see Hooking.cpp):
+    /// Query[0] = (song<<24)|(room<<16)|(grotto<<8)|game, Query[1] = scene |
+    /// (curr<<16) | (last<<24), Query[2] = entrance id.
+    fn ev(mem: u32, game: u8, scene: u16, curr: u8, last: u8, ent: u32) -> Event {
+        Event {
+            pc: 0,
+            mem,
+            query: [
+                game as u32,
+                scene as u32 | ((curr as u32) << 16) | ((last as u32) << 24),
+                ent,
+                0,
+                0,
+                0,
+            ],
+        }
+    }
+
+    #[test]
+    fn oot_normal_transition_pairs() {
+        // A plain OoT transition (Kakariko 0x52 -> Bottom of the Well 0x08) must
+        // resolve to a connection. This exercises the full pipeline (decode +
+        // parse_outgoing + parse_incoming + both scene gates) with the exact byte
+        // layout the DLL emits, so a regression here is an OoT-specific parse bug
+        // rather than a runtime data mismatch.
+        let mut h = EntranceHelper::default();
+        // OUT: leaving Kakariko toward the Well (gNextEntrance = destination id).
+        let out = ev(OUT_MAGIC, 0x00, s::OOT_KAKARIKO_VILLAGE, 0x52, 0, e::OOT_BOTTOM_OF_THE_WELL_ENTR);
+        assert!(h.parse(&out).is_none(), "OUT never yields an event");
+        // IN: arriving at the Well via the same entrance id.
+        let inn = ev(IN_MAGIC, 0x00, s::OOT_BOTTOM_OF_THE_WELL, 0x08, 0x52, e::OOT_BOTTOM_OF_THE_WELL_ENTR);
+        let evt = h.parse(&inn);
+        let evt = match evt {
+            Some(evt) => evt,
+            None => panic!("OoT transition dropped; trace: {:#?}", h.trace),
+        };
+        assert_eq!(evt.in_game, Game::Oot);
+        assert_eq!(evt.in_entrance, e::OOT_BOTTOM_OF_THE_WELL_ENTR);
+        assert_eq!(evt.out_entrance, e::OOT_KAKARIKO_FROM_BOTTOM_OF_THE_WELL_ENTR);
     }
 }

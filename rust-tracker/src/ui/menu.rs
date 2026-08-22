@@ -130,7 +130,7 @@ impl TrackerApp {
             self.reset_tracking();
         }
         if act_toggle {
-            self.toggle_tracking();
+            self.toggle_tracking(ctx);
         }
         if recenter {
             self.view_initialized = false;
@@ -278,6 +278,10 @@ impl TrackerApp {
                 .filter(|e| tracking::scene_layout_active(e.layout, Game::Mm, e.to_scene, &self.mq_scenes))
                 .count();
         let ent_visited = self.visited_entrances.len();
+        // Multiworld: deferred world-selector choice (applied after the panel so
+        // set_active_world can borrow self mutably).
+        let mut pick_world: Option<usize> = None;
+        let num_worlds = self.num_worlds();
 
         egui::TopBottomPanel::top("tabs").show(ctx, |ui| {
             ui.add_space(2.0);
@@ -310,7 +314,9 @@ impl TrackerApp {
                     }
                 }
                 // Grand total on the far right, with a two-colour bar (blue = OoT
-                // progress, purple = MM progress) over the combined total.
+                // progress, purple = MM progress) over the combined total. The
+                // multiworld world selector (Qt corner WorldSelector) sits just to
+                // its left, hidden for single-world seeds.
                 ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
                     ui.label(
                         egui::RichText::new(format!("{} {}/{}", self.i18n.total(), oot.0 + mm.0, oot.1 + mm.1))
@@ -334,10 +340,37 @@ impl TrackerApp {
                         0.0,
                         game_accent(Game::Mm),
                     );
+                    // World selector: switches the maps AND progression to another
+                    // world at once (multiworld seeds only).
+                    if num_worlds > 1 {
+                        ui.add_space(12.0);
+                        let cur = self.active_world;
+                        egui::ComboBox::from_id_salt("world_selector")
+                            .selected_text(
+                                egui::RichText::new(format!("{} {}", self.i18n.prog_world(), cur + 1))
+                                    .strong()
+                                    .color(ACCENT),
+                            )
+                            .show_ui(ui, |ui| {
+                                for w in 0..num_worlds {
+                                    ui.selectable_value(
+                                        &mut pick_world,
+                                        Some(w),
+                                        format!("{} {}", self.i18n.prog_world(), w + 1),
+                                    );
+                                }
+                            });
+                    }
                 });
             });
             ui.add_space(2.0);
         });
+
+        // Apply a world switch after the panel (set_active_world borrows self mut):
+        // re-points every map and the progression tab at the chosen world at once.
+        if let Some(w) = pick_world {
+            self.set_active_world(w);
+        }
     }
 
     /// One tab button: bold name + a small dimmed count, and an optional thin
@@ -461,7 +494,7 @@ impl TrackerApp {
         });
 
         if toggle_tracking {
-            self.toggle_tracking();
+            self.toggle_tracking(ctx);
         }
         if toggle_auto_save {
             self.set_auto_save(!auto_save);

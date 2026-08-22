@@ -28,7 +28,7 @@ impl TrackerApp {
     /// collected, and the spoiler item (or "???") beneath. Returns the click
     /// response (a click toggles the object).
     fn object_leaf(&self, ui: &mut egui::Ui, game: Game, o: &scene::LiveObject) -> egui::Response {
-        let forced = self.forced.contains(&(game, o.index));
+        let forced = self.cw().forced.contains(&(game, o.index));
         let collected = o.collected;
         // Card + text tints (port of ObjectRenderer.cpp): amber/gold for the
         // user-forced entries (so they read apart from OoT blue / MM violet),
@@ -51,7 +51,7 @@ impl TrackerApp {
         // Item held here (spoiler). "Reveal uncollected items" off → hide unknown
         // items on undiscovered objects behind "???" (Qt ObjectRenderer).
         let item = if collected || self.dashboard.reveal {
-            match self.spoiler_items.get(o.location) {
+            match self.cw().items.get(o.location) {
                 Some(it) => self.i18n.tr_item(it),
                 None => "???",
             }
@@ -207,12 +207,18 @@ impl TrackerApp {
                             .iter()
                             .filter(in_cat)
                             .filter(|o| {
-                                query.is_empty()
-                                    || o.name.to_lowercase().contains(&query)
-                                    || self
-                                        .spoiler_items
-                                        .get(o.location)
-                                        .is_some_and(|it| it.to_lowercase().contains(&query))
+                                if query.is_empty() {
+                                    return true;
+                                }
+                                // Match both the raw (English) name and the translated
+                                // one shown in the tree, plus the placed item (raw +
+                                // translated) so a French search hits French labels.
+                                o.name.to_lowercase().contains(&query)
+                                    || self.i18n.tr_object(o.name).to_lowercase().contains(&query)
+                                    || self.cw().items.get(o.location).is_some_and(|it| {
+                                        it.to_lowercase().contains(&query)
+                                            || self.i18n.tr_item(it).to_lowercase().contains(&query)
+                                    })
                             })
                             .collect();
                         if objs.is_empty() {
@@ -349,34 +355,73 @@ impl TrackerApp {
                             }
                         }
 
+                        // Effective region of a scene for the current tab. The item
+                        // tabs group by the scene's own ParentRegion (Qt MapTab:
+                        // `ParentRegion != 0`). The entrance tab groups by the
+                        // entrance-side region and shows only scenes that actually
+                        // have entrances — so the Market / ToT hub scenes (ParentRegion
+                        // None, entrance-region Market) appear, while the object-only
+                        // Market Day / Night variants (no entrances) drop out.
+                        let eff_region = |s: &data::SceneDef| -> Option<u8> {
+                            if entrance_tab {
+                                entrance::scene_entrance_region(game, s.id as u32).filter(|&r| r != 0)
+                            } else if s.region_id != 0 {
+                                Some(s.region_id)
+                            } else {
+                                None
+                            }
+                        };
                         // Regions, sorted alphabetically by name (not by region id).
-                        // Region 0 ("None") holds scene-less technical maps that the
-                        // Qt tracker also hides (MapTab: `ParentRegion != 0`).
                         let mut regions: Vec<u8> = Vec::new();
                         for s in scenes {
-                            if s.region_id != 0 && !regions.contains(&s.region_id) {
-                                regions.push(s.region_id);
+                            if let Some(rid) = eff_region(s) {
+                                if !regions.contains(&rid) {
+                                    regions.push(rid);
+                                }
                             }
                         }
                         let region_name_of = |rid: u8| {
                             scenes.iter().find(|s| s.region_id == rid).map(|s| s.region_name).unwrap_or("")
                         };
+                        // Alphabetical by the DISPLAYED (translated) region name, so the
+                        // order follows the active language (e.g. Woodfall -> Cascade Mojo).
                         regions.sort_by(|&a, &b| {
-                            region_name_of(a).to_lowercase().cmp(&region_name_of(b).to_lowercase())
+                            self.i18n
+                                .tr_region(region_name_of(a))
+                                .to_lowercase()
+                                .cmp(&self.i18n.tr_region(region_name_of(b)).to_lowercase())
                         });
                         for rid in regions {
                             // Filter scenes by the search text; skip empty regions.
-                            let region_scenes: Vec<&'static data::SceneDef> = scenes
+                            let mut region_scenes: Vec<&'static data::SceneDef> = scenes
                                 .iter()
                                 .filter(|s| {
-                                    s.region_id == rid
-                                        && (query.is_empty() || s.name.to_lowercase().contains(&query))
+                                    eff_region(s) == Some(rid)
+                                        && (query.is_empty()
+                                            // Match the raw (English) name and the
+                                            // translated one shown in the tree.
+                                            || s.name.to_lowercase().contains(&query)
+                                            || self.i18n.tr_scene(s.name).to_lowercase().contains(&query))
                                 })
                                 .collect();
                             if region_scenes.is_empty() {
                                 continue;
                             }
-                            let rname = region_scenes.first().map(|s| s.region_name).unwrap_or("—");
+                            // Scenes alphabetical by their DISPLAYED (translated) name so the
+                            // order follows the active language, like the regions above.
+                            region_scenes.sort_by(|a, b| {
+                                self.i18n
+                                    .tr_scene(a.name)
+                                    .to_lowercase()
+                                    .cmp(&self.i18n.tr_scene(b.name).to_lowercase())
+                            });
+                            // Region name from the region id (the entrance hub scenes
+                            // carry region_name "None" on their own SceneDef, so read
+                            // the name from any scene owning that ParentRegion instead).
+                            let rname = match region_name_of(rid) {
+                                "" => "—",
+                                n => n,
+                            };
                             // Region count = sum of its scenes' counts.
                             let rcount = region_scenes.iter().fold((0, 0), |(d, t), s| {
                                 let (sd, st) = counts.get(&s.id).copied().unwrap_or((0, 0));
@@ -536,6 +581,10 @@ impl TrackerApp {
             let hide_map = self.app_settings.hide_collected_map;
             let auto_zoom = self.app_settings.auto_zoom;
             let snap = if entrance_view { None } else { self.snap_pos.take() };
+            // The displayed world (multiworld): its placements + collected marks are
+            // what this map shows. Captured before the scene borrow so the field
+            // accesses below stay disjoint from `self.scene`.
+            let aw = self.active_world;
             let (Some(tex), Some(scene)) = (self.map_texture.clone(), self.scene.as_mut()) else {
                 ui.centered_and_justified(|ui| ui.weak(self.i18n.map_select_scene()));
                 return;
@@ -551,7 +600,9 @@ impl TrackerApp {
                 ui.allocate_painter(ui.available_size(), Sense::click_and_drag());
             let rect = resp.rect;
             let painter = painter.with_clip_rect(rect);
-            painter.rect_filled(rect, 0.0, Color32::from_gray(20));
+            // Pure-black viewport backdrop for the scene render (user preference:
+            // the map viewport is black, not the near-black navy of the inputs).
+            painter.rect_filled(rect, 0.0, Color32::BLACK);
 
             // Ajustement initial : image centrée et "fit", ou recentrage zoomé sur
             // une entrée demandée depuis la table (Qt FocusEntranceInGame).
@@ -635,17 +686,18 @@ impl TrackerApp {
                         // (gold), a Forced click clears it, and auto-collected objects
                         // can't be unchecked by the user.
                         let key = (scene.game, scene.objects[i].index);
-                        let changed = if self.collected.contains(&key) {
-                            if self.forced.remove(&key) {
-                                self.collected.remove(&key);
+                        let world = &mut self.worlds[aw];
+                        let changed = if world.collected.contains(&key) {
+                            if world.forced.remove(&key) {
+                                world.collected.remove(&key);
                                 scene.objects[i].collected = false;
                                 true
                             } else {
                                 false
                             }
                         } else {
-                            self.collected.insert(key);
-                            self.forced.insert(key);
+                            world.collected.insert(key);
+                            world.forced.insert(key);
                             scene.objects[i].collected = true;
                             true
                         };
@@ -675,7 +727,7 @@ impl TrackerApp {
                 }
                 // Manually-forced objects render in violet (ObjectState::Forced),
                 // distinct from auto-collected (dimmed) ones.
-                let forced = self.forced.contains(&(scene.game, obj.index));
+                let forced = self.worlds[aw].forced.contains(&(scene.game, obj.index));
                 let c = img_min + vec2(obj.x, obj.y) * self.zoom;
                 let [r, g, b] = scene::color_for(obj.type_);
                 if let Some(hp) = hover {
@@ -750,7 +802,7 @@ impl TrackerApp {
                     {
                         continue;
                     }
-                    let data = entrance_box_data(scene.game, e, &self.in_links, &self.out_links);
+                    let data = entrance_box_data(&self.i18n, scene.game, e, &self.in_links, &self.out_links);
                     let in_count = if data.has_in { data.in_rows.len() } else { 0 };
 
                     // Box width = widest row (title incl. icon, in/out rows incl. their
@@ -766,7 +818,7 @@ impl TrackerApp {
                                 .x
                         })
                     };
-                    let mut content_w = (EB_TITLE_ICON + EB_ICON_GAP) * z + measure(data.title, EB_TITLE_FONT);
+                    let mut content_w = (EB_TITLE_ICON + EB_ICON_GAP) * z + measure(data.title.as_str(), EB_TITLE_FONT);
                     for (t, _) in &data.in_rows {
                         content_w = content_w.max(EB_ROW_MARK * z + measure(t, EB_ROW_FONT));
                     }
@@ -861,15 +913,18 @@ impl TrackerApp {
                 // Same reveal gate as the object tree: hide the contained item on
                 // undiscovered objects unless "Reveal items" is on.
                 let reveal = o.collected || self.dashboard.reveal;
-                let text = match self.spoiler_items.get(o.location).filter(|_| reveal) {
+                let world = &self.worlds[aw];
+                let text = match world.items.get(o.location).filter(|_| reveal) {
                     Some(item) => {
                         let it = self.i18n.tr_item(item);
-                        match self.spoiler_worlds.get(o.location) {
+                        // Tag the destination player only when the item is routed to
+                        // another world (multiworld); own-world items read plainly.
+                        match world.dest.get(o.location).filter(|w| **w != (aw as u8 + 1)) {
                             Some(w) => format!(
                                 "{name}  ·  {}  →  {it} ({} {w})",
                                 o.location, self.i18n.player()
                             ),
-                            None => format!("{name}  ·  {}  →  {it}", o.location),
+                            _ => format!("{name}  ·  {}  →  {it}", o.location),
                         }
                     }
                     None => format!("{name}  ·  {}", o.location),
@@ -1007,7 +1062,7 @@ fn draw_ent_box(
         title_x,
         rect.top() + EB_TITLE_H * z * 0.5,
         rect.right() - pad - title_x,
-        data.title,
+        data.title.as_str(),
         EB_TITLE_FONT * z,
         title_col,
         false,

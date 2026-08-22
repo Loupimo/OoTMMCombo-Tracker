@@ -71,7 +71,7 @@ impl TrackerApp {
                 egui::ScrollArea::vertical().id_salt("enttree_s").show(ui, |ui| {
                     ui.spacing_mut().item_spacing.y = 2.0;
                     for e in entrances {
-                        let data = entrance_box_data(game, e, &self.in_links, &self.out_links);
+                        let data = entrance_box_data(&self.i18n, game, e, &self.in_links, &self.out_links);
 
                         // Search matches the entrance name or any in/out row text.
                         if !query.is_empty() {
@@ -105,7 +105,7 @@ impl TrackerApp {
                         let col = if visited { Color32::from_rgb(230, 240, 255) } else { Color32::from_gray(190) };
                         let header = tinted_row(
                             ui, 26.0, 36.0, accent.linear_multiply(0.10),
-                            data.title, col, None, Some(open), icon_tex,
+                            &data.title, col, None, Some(open), icon_tex,
                         );
                         if header.clicked() {
                             open = !open;
@@ -160,12 +160,9 @@ impl TrackerApp {
             .iter()
             .filter(|e| {
                 !e.to_name.is_empty()
-                    && (all
-                        || game
-                            .scenes()
-                            .iter()
-                            .find(|s| s.id == e.to_scene)
-                            .is_some_and(|s| s.region_id == region))
+                    // Group by the entrance-side region of the destination scene, so
+                    // the Market hub scenes (ParentRegion None) land under Market.
+                    && (all || entrance::scene_entrance_region(game, e.to_scene as u32) == Some(region))
                     && tracking::scene_layout_active(e.layout, game, e.to_scene, &self.mq_scenes)
             })
             .collect();
@@ -184,12 +181,13 @@ impl TrackerApp {
 
         // Precompute the display + navigation data for each row (so sorting and
         // rendering don't re-touch self / the link maps).
+        let i18n = &self.i18n;
         let link_cell = |na_side: bool, target: Option<(Game, u32)>| -> EntCell {
             if na_side {
                 EntCell::Na
             } else if let Some((g, id)) = target {
                 match entrance::lookup(g, id) {
-                    Some(d) => EntCell::Link(d.to_name, (g, d.to_scene, id)),
+                    Some(d) => EntCell::Link(i18n.tr_entrance(d.to_name).to_string(), (g, d.to_scene, id)),
                     None => EntCell::Unknown,
                 }
             } else {
@@ -215,11 +213,11 @@ impl TrackerApp {
                 };
                 let scene = game.scenes().iter().find(|s| s.id == e.to_scene).map(|s| s.name).unwrap_or("?");
                 EntRow {
-                    scene,
+                    scene: i18n.tr_scene(scene).to_string(),
                     // Entrance name = the side facing away from this scene (Qt
                     // formatEntrance -> FromName), e.g. "Fire Temple" in Death
                     // Mountain Crater — same nomenclature as the map boxes.
-                    entrance: e.from_name,
+                    entrance: i18n.tr_entrance(e.from_name).to_string(),
                     ent_target: (game, e.to_scene, e.to_id),
                     spawn: link_cell(in_na, src),
                     leads: link_cell(out_na, dst),
@@ -233,8 +231,8 @@ impl TrackerApp {
         let asc = self.ent_sort_asc;
         let sort_text = |r: &EntRow, c: usize| -> String {
             match c {
-                0 => r.scene,
-                1 => r.entrance,
+                0 => r.scene.as_str(),
+                1 => r.entrance.as_str(),
                 2 => r.spawn.text(),
                 _ => r.leads.text(),
             }
@@ -360,10 +358,10 @@ impl TrackerApp {
                     );
                     // Scene (plain, truncated).
                     table_cell_at(ui, cell_rect(base, 1, 22.0), |ui| {
-                        ui.add(egui::Label::new(r.scene).truncate());
+                        ui.add(egui::Label::new(r.scene.as_str()).truncate());
                     });
                     // Entrance (clickable link → focus that entrance).
-                    if table_link_cell_at(ui, cell_rect(base, 2, 22.0), r.entrance).clicked() {
+                    if table_link_cell_at(ui, cell_rect(base, 2, 22.0), &r.entrance).clicked() {
                         focus = Some(r.ent_target);
                     }
                     // "How to arrive" (spawn) and "Where it leads" columns.
