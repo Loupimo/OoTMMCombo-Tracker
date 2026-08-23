@@ -1595,13 +1595,25 @@ impl EntranceHelper {
             (out_meta.from_scene as u32, out_meta.from_id)
         };
 
+        // Resolve the arriving scene. The raw message scene comes from a game
+        // register (V0) that is unreliable for some OoT interior transitions — it
+        // reads 0x0 e.g. entering Link's House — so when it does not list the
+        // arriving entrance we fall back to the entrance meta's own scene, under
+        // which the entrance is always registered. This mirrors the OUT side,
+        // which already resolves its scene from the meta rather than the message.
+        let in_scene = if scene_has_entrance(msg.game, msg.scene, msg.entrance_id) {
+            msg.scene
+        } else {
+            lookup(msg.game, msg.entrance_id).map(|m| m.to_scene as u32).unwrap_or(msg.scene)
+        };
+
         // GetSceneEntranceMetaInf gate on both sides.
         let out_ok = scene_has_entrance(out.game, out_scene, out_entrance);
-        let in_ok = scene_has_entrance(msg.game, msg.scene, msg.entrance_id);
+        let in_ok = scene_has_entrance(msg.game, in_scene, msg.entrance_id);
         if !out_ok || !in_ok {
             self.trace.push(format!(
-                "[DIAG] IN  drop: scene_has_entrance out_ok={out_ok} (scene=0x{out_scene:X} ent=0x{out_entrance:X}) in_ok={in_ok} (scene=0x{:X} ent=0x{:X})",
-                msg.scene, msg.entrance_id
+                "[DIAG] IN  drop: scene_has_entrance out_ok={out_ok} (scene=0x{out_scene:X} ent=0x{out_entrance:X}) in_ok={in_ok} (scene=0x{in_scene:X} ent=0x{:X})",
+                msg.entrance_id
             ));
             self.is_entrance_touched = false;
             return None;
@@ -1614,7 +1626,7 @@ impl EntranceHelper {
             out_scene,
             out_entrance,
             in_game: msg.game,
-            in_scene: msg.scene,
+            in_scene,
             in_entrance: msg.entrance_id,
             out_msg: out,
             in_msg: msg,
@@ -1687,6 +1699,125 @@ mod tests {
         assert!(!warp);
     }
 
+    /// Fresh entrance total (no discovered links, base layout), computed exactly
+    /// like `entrance_scene_counts`, so we can eyeball it against the Qt reference
+    /// (~1307 across both games) and catch a regression in the counting model.
+    #[test]
+    fn entrance_fresh_total_report() {
+        use crate::data::{self, GameLayout};
+        let base_active = |layout: GameLayout, game: Game| match layout {
+            GameLayout::all => true,
+            GameLayout::oot => game == Game::Oot,
+            GameLayout::mm => game == Game::Mm,
+            _ => false, // MQ / JP layouts are inactive in the base layout
+        };
+        let count = |game: Game| -> usize {
+            let scenes = match game {
+                Game::Oot => data::OOT_SCENE_ENTRANCES,
+                Game::Mm => data::MM_SCENE_ENTRANCES,
+            };
+            let mut total = 0usize;
+            for &(_scene, _r, ids) in scenes {
+                for &eid in ids {
+                    let Some(en) = lookup(game, eid) else { continue };
+                    if en.type_ == EntranceType::None || !base_active(en.layout, game) {
+                        continue;
+                    }
+                    total += match en.type_ {
+                        EntranceType::Normal => 2,      // in slot (>=1) + out slot
+                        EntranceType::One_Way_In => 1,  // in slot
+                        EntranceType::One_Way_Out => 1, // out slot
+                        EntranceType::None => 0,
+                    };
+                }
+            }
+            total
+        };
+        let (oot, mm) = (count(Game::Oot), count(Game::Mm));
+        eprintln!("fresh entrance total (base layout): OoT={oot} MM={mm} sum={}", oot + mm);
+        // Per-direction model over the curated lists (Qt shows ~1307 with a seed
+        // loaded); base layout lands near it — guard against a model regression
+        // back to the old ~823 per-EntranceDef count.
+        assert!((1200..1400).contains(&(oot + mm)), "unexpected fresh total {}", oot + mm);
+    }
+
+    #[test]
+    fn nav_scene_defs_cover_every_curated_entrance_scene() {
+        use crate::data;
+        use std::collections::HashMap;
+        // The entrance nav iterates SceneDefs and groups them by
+        // `scene_entrance_region` (including region 0). For the per-region counts
+        // to add up to the global entrance total, every curated entrance scene must
+        // resolve to exactly one SceneDef, and no SceneDef with an entrance region
+        // may fall outside the curated list.
+        for (game, curated) in [
+            (Game::Oot, data::OOT_SCENE_ENTRANCES),
+            (Game::Mm, data::MM_SCENE_ENTRANCES),
+        ] {
+            let mut def_by_id: HashMap<u16, usize> = HashMap::new();
+            for s in game.scenes() {
+                if scene_entrance_region(game, s.id as u32).is_some() {
+                    *def_by_id.entry(s.id).or_default() += 1;
+                }
+            }
+            for &(scene, _r, _ids) in curated {
+                let n = def_by_id.get(&scene).copied().unwrap_or(0);
+                assert_eq!(
+                    n, 1,
+                    "{game:?} curated entrance scene {scene:#x} maps to {n} SceneDef(s), expected exactly 1"
+                );
+            }
+            // Every entrance-tagged SceneDef is a curated scene (so the nav never
+            // shows a scene the total does not count).
+            let curated_ids: std::collections::HashSet<u16> =
+                curated.iter().map(|&(s, _, _)| s).collect();
+            for id in def_by_id.keys() {
+                assert!(
+                    curated_ids.contains(id),
+                    "{game:?} SceneDef {id:#x} has an entrance region but is not curated"
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn entranceless_scenes_are_hidden() {
+        use crate::data::{self, GameLayout};
+        // Base-layout (fresh) per-scene entrance total, matching the nav's `total > 0`
+        // visibility gate (Qt `hasValid`). A scene is shown iff it has >= 1 valid
+        // (non-None, active-layout) entrance.
+        let base_active = |layout: GameLayout, game: Game| match layout {
+            GameLayout::all => true,
+            GameLayout::oot => game == Game::Oot,
+            GameLayout::mm => game == Game::Mm,
+            _ => false,
+        };
+        let total = |game: Game, scene: u16| -> usize {
+            let ids = scene_entrances(game, scene as u32).unwrap_or(&[]);
+            ids.iter()
+                .filter_map(|&eid| lookup(game, eid))
+                .filter(|en| en.type_ != EntranceType::None && base_active(en.layout, game))
+                .map(|en| if en.type_ == EntranceType::Normal { 2 } else { 1 })
+                .sum()
+        };
+        // Scenes the user asked to hide (no entrances / exits) -> total 0.
+        for scene in [0x33u16, 0x3e] {
+            // OoT mask shop + grotto aggregate (region "None").
+            assert_eq!(total(Game::Oot, scene), 0, "OoT scene {scene:#x} should be hidden");
+        }
+        for scene in [0x7u16, 0x71] {
+            // MM grotto aggregate + Song-of-Time return (region "None").
+            assert_eq!(total(Game::Mm, scene), 0, "MM scene {scene:#x} should be hidden");
+        }
+        // Sanity: a normal scene with real entrances stays visible.
+        assert!(total(Game::Oot, s::OOT_KAKARIKO_BAZAAR as u16) > 0);
+        // The grand total is unaffected (hidden scenes contribute 0), so the sum
+        // over visible scenes still equals the global total.
+        let grand: usize = data::OOT_SCENE_ENTRANCES.iter().map(|&(sc, _, _)| total(Game::Oot, sc)).sum::<usize>()
+            + data::MM_SCENE_ENTRANCES.iter().map(|&(sc, _, _)| total(Game::Mm, sc)).sum::<usize>();
+        assert!((1200..1400).contains(&grand), "grand total {grand} drifted");
+    }
+
     #[test]
     fn scene_entrances_gate() {
         // Kakariko Bazaar lists its single entrance (OOT_KAKARIKO_BAZAAR_ENTR).
@@ -1740,5 +1871,27 @@ mod tests {
         assert_eq!(evt.in_game, Game::Oot);
         assert_eq!(evt.in_entrance, e::OOT_BOTTOM_OF_THE_WELL_ENTR);
         assert_eq!(evt.out_entrance, e::OOT_KAKARIKO_FROM_BOTTOM_OF_THE_WELL_ENTR);
+    }
+
+    #[test]
+    fn oot_interior_transition_with_bogus_in_scene_pairs() {
+        // Real capture: entering Link's House from Kokiri Forest. The IN message's
+        // scene register (V0) reads 0x0 instead of Link's House (0x34), so gating
+        // on the raw message scene wrongly dropped the transition. The IN scene
+        // must fall back to the entrance meta's own scene.
+        let mut h = EntranceHelper::default();
+        let out = ev(OUT_MAGIC, 0x00, s::OOT_KOKIRI_FOREST, 0x55, 0x00, e::OOT_HOUSE_LINK_ENTR);
+        assert!(h.parse(&out).is_none());
+        // IN with the bogus scene=0x0 (curr/last are register noise, 0x75 / 0xD5).
+        let inn = ev(IN_MAGIC, 0x00, 0x0000, 0x75, 0xD5, e::OOT_HOUSE_LINK_ENTR);
+        let evt = h.parse(&inn);
+        let evt = match evt {
+            Some(evt) => evt,
+            None => panic!("interior transition dropped; trace: {:#?}", h.trace),
+        };
+        assert_eq!(evt.in_entrance, e::OOT_HOUSE_LINK_ENTR);
+        assert_eq!(evt.out_entrance, e::OOT_KOKIRI_FOREST_FROM_LINK_ENTR);
+        // The arriving scene is resolved from the meta, not the bogus V0 value.
+        assert_eq!(evt.in_scene, s::OOT_LINK_HOUSE as u32);
     }
 }

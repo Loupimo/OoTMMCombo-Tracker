@@ -49,7 +49,7 @@ pub static PROG_PAGES: &[ProgPage] = &[
             ProgEntry { icon: "song_red", name: "Goron Lullaby", lookup_keys: &[iid::OOT_SONG_GORON_HALF, iid::OOT_SONG_GORON, iid::OOT_SONG_NOTE_GORON, iid::SHARED_SONG_NOTE_GORON, iid::SHARED_SONG_GORON, iid::SHARED_SONG_GORON_HALF], is_counter: true, max_count: 8, max_from_spoiler: false },
             ProgEntry { icon: "song_blue", name: "New Wave Bossa Nova", lookup_keys: &[iid::OOT_SONG_ZORA, iid::OOT_SONG_NOTE_ZORA, iid::SHARED_SONG_NOTE_ZORA, iid::SHARED_SONG_ZORA], is_counter: true, max_count: 7, max_from_spoiler: false },
             ProgEntry { icon: "song_purple", name: "Oath to Order", lookup_keys: &[iid::OOT_SONG_ORDER, iid::OOT_SONG_NOTE_ORDER, iid::SHARED_SONG_NOTE_ORDER, iid::SHARED_SONG_ORDER], is_counter: true, max_count: 6, max_from_spoiler: false },
-            ProgEntry { icon: "clock_oot", name: "Clock (Day 1)", lookup_keys: &[iid::OOT_CLOCK], is_counter: false, max_count: 0, max_from_spoiler: false },
+            ProgEntry { icon: "clock_oot", name: "Clock", lookup_keys: &[iid::OOT_CLOCK], is_counter: false, max_count: 0, max_from_spoiler: false },
             ProgEntry { icon: "shovel", name: "Shovel", lookup_keys: &[iid::OOT_SHOVEL, iid::SHARED_SHOVEL], is_counter: false, max_count: 0, max_from_spoiler: false },
             ProgEntry { icon: "gs_token", name: "Gold Skulltula Token", lookup_keys: &[iid::OOT_GS_TOKEN], is_counter: true, max_count: 0, max_from_spoiler: true },
             ProgEntry { icon: "platinum_token", name: "Platinum Token", lookup_keys: &[iid::OOT_PLATINUM_TOKEN, iid::SHARED_PLATINUM_TOKEN], is_counter: false, max_count: 0, max_from_spoiler: false },

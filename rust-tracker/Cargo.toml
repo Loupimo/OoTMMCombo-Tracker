@@ -1,8 +1,18 @@
 [package]
 name = "rust-tracker"
-version = "0.1.0"
+version = "3.0.0"
 edition = "2021"
 description = "Spike : réécriture Rust + egui du tracker OoTMM (tranche verticale)"
+
+# The shipped executable is named after the product, not the crate.
+[[bin]]
+name = "OoTMMCombo-Tracker"
+path = "src/main.rs"
+
+[build-dependencies]
+# Embeds the Windows icon (Logo.ico) as a PE resource so Explorer + the taskbar
+# show it on the .exe itself, not just the runtime window icon. No-op off Windows.
+winresource = "0.1"
 
 [dependencies]
 toml = "0.9"
@@ -15,7 +25,7 @@ zip = { version = "2", default-features = false, features = ["deflate"] }
 # GUI : egui (immediate-mode) + eframe (fenêtre + boucle de rendu, backend natif).
 eframe = { version = "0.29", default-features = true }
 # Décodage des JPG/PNG de maps et d'icônes en textures.
-image = { version = "0.25", default-features = false, features = ["jpeg", "png"] }
+image = { version = "0.25", default-features = false, features = ["jpeg", "png", "ico", "bmp"] }
 
 # La mémoire partagée Win32 est appelée via des extern "system" bruts dans
 # shared_mem.rs (kernel32) : zéro dépendance, layout garanti stable sans

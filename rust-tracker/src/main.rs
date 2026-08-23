@@ -11,6 +11,7 @@ mod multi_r4;
 mod patch;
 mod poller;
 mod progression;
+mod qtsave;
 mod scene;
 mod settings;
 mod shared_mem;
@@ -36,11 +37,10 @@ const LOG_CAP: usize = 500;
 /// number. Marks a "latest version" save (which may carry a `PATCH <path>` line);
 /// older saves have no header and load unchanged.
 const SAVE_VERSION_TAG: &str = "TRACKER_SAVE";
-/// Current save-format version (3: adds the r4 patch file path).
-const SAVE_VERSION: u32 = 3;
-/// Scene loaded by default at startup (OoT Kokiri Forest = 0x55).
-const DEFAULT_SCENE: u16 = data::scenes::OOT_KOKIRI_FOREST;
-
+/// Current save-format version (4: self-contained — persists each world's item
+/// placements / destinations so a load restores the map without a spoiler, like
+/// the Qt binary save. 3 added the r4 patch path; 2 and below had no header).
+const SAVE_VERSION: u32 = 4;
 /// Icons flanking the age/season context switch (Qt ContextSwitchButton): OoT
 /// child/adult heads and MM winter/spring, preloaded into the icon cache.
 const CONTEXT_ICON_PATHS: [&str; 4] = [
@@ -126,12 +126,26 @@ impl EntranceSub {
     }
 }
 
+/// Load the shared Qt window icon (Resources/Logo.ico) as egui `IconData`.
+/// Returns `None` if the file is missing or cannot be decoded.
+fn load_window_icon() -> Option<egui::IconData> {
+    let path = scene::resource_path("./Resources/Logo.ico");
+    let img = image::open(&path).ok()?.into_rgba8();
+    let (width, height) = img.dimensions();
+    Some(egui::IconData { rgba: img.into_raw(), width, height })
+}
+
 fn main() -> eframe::Result<()> {
+    let mut viewport = egui::ViewportBuilder::default()
+        .with_inner_size([1360.0, 860.0])
+        .with_min_inner_size([980.0, 640.0])
+        .with_title("OoTMMCombo Auto Tracker");
+    // Same window / taskbar icon as the Qt build (setWindowIcon(Logo.ico)).
+    if let Some(icon) = load_window_icon() {
+        viewport = viewport.with_icon(std::sync::Arc::new(icon));
+    }
     let options = eframe::NativeOptions {
-        viewport: egui::ViewportBuilder::default()
-            .with_inner_size([1360.0, 860.0])
-            .with_min_inner_size([980.0, 640.0])
-            .with_title("OoTMMCombo Auto Tracker"),
+        viewport,
         ..Default::default()
     };
     eframe::run_native(
@@ -415,7 +429,10 @@ fn table_cell_at(ui: &mut egui::Ui, rect: Rect, add: impl FnOnce(&mut egui::Ui))
     let mut child = ui.new_child(
         egui::UiBuilder::new().max_rect(rect).layout(egui::Layout::left_to_right(egui::Align::Center)),
     );
-    child.set_clip_rect(rect);
+    // Intersect with the ancestor clip (the ScrollArea viewport): setting the bare
+    // cell rect would *replace* the clip, letting rows scrolled above the viewport
+    // paint over the menu / tab bar.
+    child.set_clip_rect(rect.intersect(ui.clip_rect()));
     add(&mut child);
 }
 
@@ -428,28 +445,118 @@ fn gps_scene_combo(
     sel: &mut Option<(Game, u16)>,
     ent: &mut Option<u32>,
 ) {
+    // Scenes that own entrances — the curated SceneEntranceMeta list, the same set
+    // the entrance tab counts. Using it (rather than a region filter) keeps
+    // map-item-only scenes out while KEEPING region-less scenes that are real
+    // entrance destinations, like King Dodongo's Lair (region 0).
+    let ent_scenes = |game: Game| -> HashSet<u16> {
+        match game {
+            Game::Oot => data::OOT_SCENE_ENTRANCES,
+            Game::Mm => data::MM_SCENE_ENTRANCES,
+        }
+        .iter()
+        .map(|&(s, _, _)| s)
+        .collect()
+    };
+    // Display names that repeat within a game (fairy fountains, grottos…): the
+    // region is appended so the entries read apart.
+    let dupes = |game: Game, es: &HashSet<u16>| -> HashSet<String> {
+        let mut seen: HashMap<String, u32> = HashMap::new();
+        for s in game.scenes() {
+            if !es.contains(&s.id) {
+                continue;
+            }
+            *seen.entry(i18n.tr_scene(s.name).to_string()).or_default() += 1;
+        }
+        seen.into_iter().filter(|(_, c)| *c > 1).map(|(n, _)| n).collect()
+    };
+    // Translated scene name, suffixed with its region when the name is shared.
+    let label_for = |d: &data::SceneDef, dupes: &HashSet<String>| -> String {
+        let name = i18n.tr_scene(d.name);
+        if dupes.contains(name) {
+            let region = i18n.tr_region(d.region_name);
+            if !region.is_empty() && region != "None" {
+                return format!("{name} ({region})");
+            }
+        }
+        name.to_string()
+    };
+
     let text = sel
         .and_then(|(g, s)| {
             g.scenes().iter().find(|d| d.id == s).map(|d| {
                 let tag = if g == Game::Oot { "OoT" } else { "MM" };
-                format!("{tag} — {}", d.name)
+                format!("{tag} — {}", label_for(d, &dupes(g, &ent_scenes(g))))
             })
         })
         .unwrap_or_else(|| format!("({})", i18n.choose()));
-    egui::ComboBox::from_id_salt(id).width(230.0).selected_text(text).show_ui(ui, |ui| {
-        for game in [Game::Oot, Game::Mm] {
-            ui.label(egui::RichText::new(game.label()).strong().color(game_accent(game)));
-            for s in game.scenes() {
-                if s.region_id == 0 {
-                    continue; // technical / scene-less maps
-                }
-                if ui.selectable_label(*sel == Some((game, s.id)), s.name).clicked() {
-                    *sel = Some((game, s.id));
-                    *ent = None;
-                }
-            }
+
+    // A hand-rolled combo: egui's ComboBox popup closes on *any* click (CloseOnClick),
+    // so the embedded search field can never be focused. We drive the popup ourselves
+    // with CloseOnClickOutside — clicks inside the body (the search box, the scrollbar)
+    // keep it open; only a click outside, Escape, or a selection closes it.
+    let popup_id = egui::Id::new(id).with("gps_popup");
+    let search_id = egui::Id::new(id).with("gps_search");
+    let focus_id = egui::Id::new(id).with("gps_focus");
+    let btn = egui::Button::new(format!("{text}   ⏷")).min_size(vec2(230.0, 0.0));
+    let resp = ui.add(btn);
+    if resp.clicked() {
+        let was_open = ui.memory(|m| m.is_popup_open(popup_id));
+        ui.memory_mut(|m| m.toggle_popup(popup_id));
+        if !was_open {
+            ui.data_mut(|d| d.insert_temp(focus_id, true)); // focus the search on open
         }
-    });
+    }
+    egui::popup::popup_below_widget(
+        ui,
+        popup_id,
+        &resp,
+        egui::popup::PopupCloseBehavior::CloseOnClickOutside,
+        |ui| {
+            ui.set_min_width(230.0);
+            // Live search on the translated (disambiguated) name, persisted in egui
+            // temp memory so it survives across frames while the popup is open.
+            let mut query: String = ui.data_mut(|d| d.get_temp::<String>(search_id).unwrap_or_default());
+            let te = ui.add(
+                egui::TextEdit::singleline(&mut query)
+                    .hint_text(i18n.search())
+                    .desired_width(f32::INFINITY),
+            );
+            if ui.data_mut(|d| d.get_temp::<bool>(focus_id).unwrap_or(false)) {
+                te.request_focus();
+                ui.data_mut(|d| d.insert_temp(focus_id, false));
+            }
+            ui.data_mut(|d| d.insert_temp(search_id, query.clone()));
+            let q = query.trim().to_lowercase();
+            ui.separator();
+            egui::ScrollArea::vertical().max_height(320.0).show(ui, |ui| {
+                for game in [Game::Oot, Game::Mm] {
+                    let es = ent_scenes(game);
+                    let dupes = dupes(game, &es);
+                    let mut header_done = false;
+                    for s in game.scenes() {
+                        if !es.contains(&s.id) {
+                            continue; // scenes with no entrance
+                        }
+                        let label = label_for(s, &dupes);
+                        if !q.is_empty() && !label.to_lowercase().contains(&q) {
+                            continue;
+                        }
+                        if !header_done {
+                            ui.label(egui::RichText::new(game.label()).strong().color(game_accent(game)));
+                            header_done = true;
+                        }
+                        if ui.selectable_label(*sel == Some((game, s.id)), label.as_str()).clicked() {
+                            *sel = Some((game, s.id));
+                            *ent = None;
+                            ui.data_mut(|d| d.insert_temp(search_id, String::new()));
+                            ui.memory_mut(|m| m.close_popup());
+                        }
+                    }
+                }
+            });
+        },
+    );
 }
 
 /// GPS entrance picker for a chosen scene (or "(toute)" = the whole scene).
@@ -482,18 +589,53 @@ fn gps_entrance_combo(
     });
 }
 
+/// Translated scene name, suffixed with its (translated) region when another
+/// scene of the same game shares the display name (the fairy fountains and the
+/// grottos all read "Fairy Fountain" / "Grotto" otherwise). Used by the GPS.
+fn scene_display_name(i18n: &I18n, game: Game, scene_id: u16) -> String {
+    let Some(d) = game.scenes().iter().find(|s| s.id == scene_id) else {
+        return "?".to_string();
+    };
+    let name = i18n.tr_scene(d.name);
+    let shared = game.scenes().iter().any(|s| s.id != scene_id && i18n.tr_scene(s.name) == name);
+    if shared {
+        let region = i18n.tr_region(d.region_name);
+        if !region.is_empty() && region != "None" {
+            return format!("{name} ({region})");
+        }
+    }
+    name.to_string()
+}
+
 /// A clickable table cell (absolute sub-rect) showing a link-tinted, truncated
-/// label. Truncation clips to the column width so long names never overflow.
+/// label. Truncation clips to the column width so long names never overflow. On
+/// hover the cell lights up (accent background + underline + hand cursor) to
+/// signal that it is actionable.
 fn table_link_cell_at(ui: &mut egui::Ui, rect: Rect, text: &str) -> egui::Response {
+    let clip = rect.intersect(ui.clip_rect());
+    let hovered = ui.rect_contains_pointer(clip);
+    if hovered {
+        // Subtle accent fill behind the cell, inset so adjacent cells stay distinct.
+        ui.painter().rect_filled(rect.shrink2(vec2(1.0, 1.5)), 3.0, BG_HOVER);
+    }
     let mut child = ui.new_child(
         egui::UiBuilder::new().max_rect(rect).layout(egui::Layout::left_to_right(egui::Align::Center)),
     );
-    child.set_clip_rect(rect);
-    child.add(
-        egui::Label::new(egui::RichText::new(text).color(Color32::from_rgb(150, 190, 230)))
-            .truncate()
-            .sense(Sense::click()),
-    )
+    // See table_cell_at: clip to the viewport, not just the cell rect.
+    child.set_clip_rect(clip);
+    let mut rt = egui::RichText::new(text).color(if hovered {
+        Color32::from_rgb(190, 220, 250)
+    } else {
+        Color32::from_rgb(150, 190, 230)
+    });
+    if hovered {
+        rt = rt.underline();
+    }
+    let resp = child.add(egui::Label::new(rt).truncate().sense(Sense::click()));
+    if hovered {
+        ui.ctx().set_cursor_icon(egui::CursorIcon::PointingHand);
+    }
+    resp
 }
 
 /// Per-game accent colour (Qt GameTab::GetAccentColorFor: OoT #4a9edb / MM #9b5de5).
@@ -512,6 +654,15 @@ fn game_selection(game: Game) -> Color32 {
     }
 }
 
+/// Per-game row hover background (Qt MapTab QSS `::item:hover:!selected`:
+/// OoT #0d2a4a / MM #2a1248 — a dark blue / violet, not a white overlay).
+fn game_hover(game: Game) -> Color32 {
+    match game {
+        Game::Oot => Color32::from_rgb(0x0d, 0x2a, 0x4a),
+        Game::Mm => Color32::from_rgb(0x2a, 0x12, 0x48),
+    }
+}
+
 /// A full-width tinted tree row (Qt TintedTreeWidget): `bg` fills the whole row,
 /// `text` sits at `indent`, an optional collapse pill (`expand`: Some(true)=open
 /// "−", Some(false)=closed "+") at the far left, and an optional (collected, total)
@@ -522,6 +673,7 @@ fn tinted_row(
     height: f32,
     indent: f32,
     bg: Color32,
+    hover: Color32,
     text: &str,
     text_col: Color32,
     count: Option<(usize, usize)>,
@@ -532,9 +684,13 @@ fn tinted_row(
     let (rect, resp) = ui.allocate_exact_size(vec2(w, height), Sense::click());
     if ui.is_rect_visible(rect) {
         let painter = ui.painter();
-        painter.rect_filled(rect, 2.0, bg);
+        // Square corners (Qt tree rows are rectangular; rounding left a seam
+        // between adjacent regions).
+        painter.rect_filled(rect, 0.0, bg);
+        // Hover repaints the row in `hover` (Qt paints an opaque item background
+        // over the depth tint, rather than lightening it with a white overlay).
         if resp.hovered() {
-            painter.rect_filled(rect, 2.0, Color32::from_white_alpha(14));
+            painter.rect_filled(rect, 0.0, hover);
         }
         let mid = rect.left_center();
         // Collapse pill, redrawn from Qt's Plus.svg / Minus.svg (muted blue lines,
@@ -718,6 +874,9 @@ struct TrackerApp {
     gps_to: Option<(Game, u16)>,
     gps_from_ent: Option<u32>,
     gps_to_ent: Option<u32>,
+    /// Cached GPS routing result, reused until an input changes — the weighted
+    /// graph build + Yen search is far too heavy to run every frame.
+    gps_cache: Option<(gps::GpsKey, gps::GpsResult)>,
     /// Entrance tab: the active sub-tab (OoT / MM / GPS), like the Qt EntranceTab.
     entrance_sub: EntranceSub,
     /// Entrance tab: when a region is selected, its center shows the global
@@ -732,6 +891,8 @@ struct TrackerApp {
     /// Right-panel entrance tree: "Find…" filter + "expand/collapse all" state.
     ent_search: String,
     ent_all_expanded: bool,
+    /// Global entrance table ("All entrances" / region view): live search filter.
+    ent_table_search: String,
     /// Entrance table sort column (0=Scene 1=Entrance 2=spawn 3=leads) + order.
     ent_sort_col: usize,
     ent_sort_asc: bool,
@@ -756,7 +917,8 @@ struct TrackerApp {
     /// Active top-level tab.
     active_tab: Tab,
     /// Last selected scene per game (index by Game::idx), restored on tab switch.
-    sel_scene: [u16; 2],
+    /// `None` until the user opens a scene for that game (nothing shown at startup).
+    sel_scene: [Option<u16>; 2],
     /// Status-bar memory: last collected item and last entrance crossed.
     last_item: Option<String>,
     last_entrance: Option<String>,
@@ -827,6 +989,10 @@ struct TrackerApp {
 
     /// Wall-clock of the last rendered frame, for the interaction frame-rate cap.
     last_frame: Instant,
+
+    /// Keyboard navigation shared by the tree panels: which tree owns the arrows
+    /// (set on click) and the focused leaf within each one.
+    kbd: ui::kbdnav::KbdNav,
 }
 
 

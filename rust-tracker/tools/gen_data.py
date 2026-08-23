@@ -151,6 +151,39 @@ def emit_region_icons(name, region_dict):
     return f"pub static {name}: &[&str] = &[{cells}];\n"
 
 
+def parse_entrance_costs(text, arr):
+    """Parse an EntranceCostMeasurement[] array (OoT/MMEntranceCosts.cpp):
+    each `{ scene, from, to, cost }` -> (scene, from, to, cost) ints, in order."""
+    block = re.search(r"%s\s*\[\s*\]\s*=\s*\{(.*?)\n\};" % arr, text, re.S).group(1)
+    rows = []
+    for sc, fr, to, cost in re.findall(
+        r"\{\s*(0x[0-9a-fA-F]+|\d+)\s*,\s*(0x[0-9a-fA-F]+|\d+)\s*,"
+        r"\s*(0x[0-9a-fA-F]+|\d+)\s*,\s*(\d+)\s*\}",
+        block,
+    ):
+        rows.append((int(sc, 0), int(fr, 0), int(to, 0), int(cost, 0)))
+    return rows
+
+
+def emit_entrance_costs(name, rows):
+    """A `&[(u16, u32, u32, u32)]` of measured intra-scene walk times
+    (scene, from-entrance, to-entrance, cost seconds)."""
+    cells = ", ".join(f"({s}, {f}, {t}, {c})" for s, f, t, c in rows)
+    return f"pub static {name}: &[(u16, u32, u32, u32)] = &[{cells}];\n"
+
+
+def emit_region_names(name, region_dict):
+    """A `&[&str]` of region display names indexed by region id. Unlike the icon
+    table, warp regions (OoT Songs / MM Owls) carry a name here even though no
+    ordinary scene lives in them, so the entrance nav can label them instead of
+    deriving the name from a SceneDef.region_name that does not exist."""
+    by_id = {v[0]: (v[1] if len(v) > 1 else "") for v in region_dict.values()}
+    n = (max(by_id) + 1) if by_id else 0
+    # Region 0 is the "None" bucket: keep it empty like the icon table.
+    cells = ", ".join('"{}"'.format(esc(by_id.get(i, "")) if i else "") for i in range(n))
+    return f"pub static {name}: &[&str] = &[{cells}];\n"
+
+
 # --- CSV -> rows -----------------------------------------------------------
 def prefix_scene(name, prefix):
     name = name.strip()
@@ -849,8 +882,10 @@ _TARGET = {'PROGRESSIVE_FAMILIES': 'prog', 'PROG_PAGES': 'prog',
            'OOT_OBJECTS': 'oot_items', 'MM_OBJECTS': 'mm_items',
            'OOT_SCENES': 'oot_world', 'OOT_ROOMS': 'oot_world',
            'OOT_ENTRANCES': 'oot_world', 'OOT_SCENE_ENTRANCES': 'oot_world',
+           'OOT_ENTRANCE_COSTS': 'oot_world',
            'MM_SCENES': 'mm_world', 'MM_ROOMS': 'mm_world',
-           'MM_ENTRANCES': 'mm_world', 'MM_SCENE_ENTRANCES': 'mm_world'}
+           'MM_ENTRANCES': 'mm_world', 'MM_SCENE_ENTRANCES': 'mm_world',
+           'MM_ENTRANCE_COSTS': 'mm_world'}
 _SUB = [('consts', 'id / entrance / song constants'),
         ('misc', 'items, icons, settings, grottos - misc tables'),
         ('prog', 'progression dashboard'),
@@ -1083,6 +1118,15 @@ def main():
         "\n/// Region icon path per region id (Regions.h RegionsMetaInfo).\n"
         + emit_region_icons("OOT_REGION_ICONS", regions["OoTRegions"])
         + emit_region_icons("MM_REGION_ICONS", regions["MMRegions"]),
+        "\n/// Region display name per region id (Regions.h RegionsMetaInfo).\n"
+        + emit_region_names("OOT_REGION_NAMES", regions["OoTRegions"])
+        + emit_region_names("MM_REGION_NAMES", regions["MMRegions"]),
+        "\n/// Measured intra-scene walk times (scene, from-entrance, to-entrance,\n"
+        "/// cost seconds), imported from OoT/MMEntranceCosts.cpp. Feeds the GPS.\n"
+        + emit_entrance_costs("OOT_ENTRANCE_COSTS",
+                              parse_entrance_costs(read("Sources/Combo/OoTEntranceCosts.cpp"), "OoTMeasuredCosts"))
+        + emit_entrance_costs("MM_ENTRANCE_COSTS",
+                              parse_entrance_costs(read("Sources/Combo/MMEntranceCosts.cpp"), "MMMeasuredCosts")),
         "\n/// Filterable object types per game (Objects.h OoTTypes / MMTypes).\n"
         + emit_type_set("OOT_FILTER_TYPES", oot_filter_types)
         + emit_type_set("MM_FILTER_TYPES", mm_filter_types),

@@ -421,6 +421,10 @@ impl I18n {
         Self::get(&self.strings.objects, "filter_needs_game")
     }
 
+    pub fn object_type_name(&self, obj_type: &'static str) -> &str {
+        Self::get(&self.strings.objects, obj_type)
+    }
+
     // ---------------------------------------------------------------------
     // Launch
     // ---------------------------------------------------------------------
@@ -610,6 +614,10 @@ impl I18n {
         Self::get(&self.strings.progression, "world")
     }
 
+    pub fn prog_title<'a>(&'a self, name: &'a str) -> &'a str {
+        self.strings.progression.get(name).map(String::as_str).filter(|s| !s.is_empty()).unwrap_or(name)
+    }
+
     pub fn prog_select_item(&self) -> &str {
         Self::get(&self.strings.progression, "select_item")
     }
@@ -658,30 +666,8 @@ impl I18n {
         Self::get(&self.strings.gps, "route_title")
     }
 
-    pub fn gps_from_entrance(&self, ent: &str, scene: &str) -> String {
-        Self::get(&self.strings.gps, "from_entrance")
-            .replace("{ent}", ent)
-            .replace("{scene}", scene)
-    }
-
     pub fn gps_already_there(&self) -> &str {
         Self::get(&self.strings.gps, "already_there")
-    }
-
-    pub fn gps_steps(&self, count: usize) -> String {
-        Self::get(&self.strings.gps, "steps").replace("{count}", &count.to_string())
-    }
-
-    pub fn gps_step_line(&self, n: usize, entrance: &str, game: &str, scene: &str) -> String {
-        Self::get(&self.strings.gps, "step_line")
-            .replace("{n}", &n.to_string())
-            .replace("{entrance}", entrance)
-            .replace("{game}", game)
-            .replace("{scene}", scene)
-    }
-
-    pub fn gps_arrival_line(&self, ent: &str) -> String {
-        Self::get(&self.strings.gps, "arrival_line").replace("{ent}", ent)
     }
 
     pub fn gps_no_route(&self) -> &str {
@@ -690,6 +676,32 @@ impl I18n {
 
     pub fn gps_whole_scene(&self) -> &str {
         Self::get(&self.strings.gps, "whole_scene")
+    }
+
+    pub fn gps_fastest(&self) -> &str {
+        Self::get(&self.strings.gps, "fastest")
+    }
+
+    pub fn gps_alternative(&self, n: usize) -> String {
+        Self::get(&self.strings.gps, "alternative").replace("{n}", &n.to_string())
+    }
+
+    pub fn gps_transitions(&self, count: usize) -> String {
+        Self::get(&self.strings.gps, "transitions").replace("{count}", &count.to_string())
+    }
+
+    /// The label for the exit taken between two stations: a real entrance name
+    /// (translated elsewhere), or one of these fixed pseudo-exits.
+    pub fn gps_via_walk(&self) -> &str {
+        Self::get(&self.strings.gps, "via_walk")
+    }
+
+    pub fn gps_via_warp_song(&self) -> &str {
+        Self::get(&self.strings.gps, "via_warp_song")
+    }
+
+    pub fn gps_via_warp_owl(&self) -> &str {
+        Self::get(&self.strings.gps, "via_warp_owl")
     }
 
     // ---------------------------------------------------------------------
@@ -794,6 +806,25 @@ impl I18n {
 
     pub fn log_reset_tracking(&self) -> &str {
         Self::get(&self.strings.logs, "reset_tracking")
+    }
+
+    pub fn load_qt_imported(&self, version: u32) -> String {
+        // The on-disk version 1/2 map to the Qt "V2_0" / "V2_1" format names.
+        let name = match version {
+            1 => "V2_0",
+            2 => "V2_1",
+            3 => "V2_1+",
+            _ => "?",
+        };
+        Self::get(&self.strings.logs, "qt_imported").replace("{ver}", name)
+    }
+
+    pub fn load_qt_unsupported(&self) -> &str {
+        Self::get(&self.strings.logs, "qt_unsupported")
+    }
+
+    pub fn load_qt_partial(&self) -> &str {
+        Self::get(&self.strings.logs, "qt_partial")
     }
 
     pub fn no_img(&self) -> &str {
@@ -941,13 +972,16 @@ mod tests {
             i.prog_locations(), i.prog_no_location(), i.prog_not_found_yet(),
             i.departure(), i.arrival(), i.choose_route_scenes(),
             i.gps_route_title(), i.gps_already_there(), i.gps_no_route(), i.gps_whole_scene(),
+            i.gps_fastest(), i.gps_via_walk(), i.gps_via_warp_song(), i.gps_via_warp_owl(),
             i.settings_rom_settings(), i.settings_game(), i.settings_build(), i.settings_mode(),
             i.settings_goal(), i.settings_hidden_objs(),
             i.shuffle_vanilla(), i.shuffle_removed(), i.shuffle_starting(),
             i.shuffle_all(), i.shuffle_dungeons(), i.shuffle_overworld(),
             i.reading_mem(), i.log_tracker_stop(), i.file_saved(), i.file_loaded(),
             i.spoiler_loaded(), i.log_reset_tracking(),
+            i.load_qt_unsupported(), i.load_qt_partial(),
         ];
+        i.load_qt_imported(2);
         assert!(s.iter().all(|t| !t.is_empty()));
 
         let map: &[&str] = &[
@@ -967,10 +1001,8 @@ mod tests {
         i.entrance_count(3);
         i.spoiler_multiworld(1, 2);
         i.spoiler_singleworld(1, 2);
-        i.gps_from_entrance("e", "s");
-        i.gps_steps(2);
-        i.gps_step_line(1, "e", "OoT", "s");
-        i.gps_arrival_line("e");
+        i.gps_alternative(2);
+        i.gps_transitions(3);
     }
 
     /// Both shipped locales must define every key the UI asks for.

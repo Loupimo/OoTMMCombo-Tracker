@@ -13,14 +13,13 @@ use crate::i18n::{AppSettings, I18n, Language};
 
 impl TrackerApp {
     pub(crate) fn new(ctx: &egui::Context) -> Self {
-        let scene = Game::Oot
-            .scenes()
-            .iter()
-            .find(|s| s.id == DEFAULT_SCENE)
-            .map(|def| LiveScene::load(Game::Oot, def, &HashSet::new()));
+        // Start with no scene loaded: the map + object panels stay empty until the
+        // user picks a scene (or the tracker auto-follows the player into one).
+        let scene: Option<LiveScene> = None;
         // Restore the persisted UI language (system language on first launch).
-        let app_settings_path =
-            PathBuf::from(format!("{}/rust-tracker/tracker_settings.toml", scene::REPO_ROOT));
+        // Data files live next to the exe when deployed, or in the crate dir in dev.
+        let data_dir = scene::data_dir();
+        let app_settings_path = data_dir.join("tracker_settings.toml");
         let app_settings = AppSettings::load(&app_settings_path);
         // Restore the persisted multiplayer launch options (checkbox + server).
         let use_multiplayer = app_settings.use_multiplayer;
@@ -55,12 +54,14 @@ impl TrackerApp {
             gps_to: None,
             gps_from_ent: None,
             gps_to_ent: None,
+            gps_cache: None,
             entrance_sub: EntranceSub::Oot,
             entrance_table: None,
             focus_entrance: None,
-            nav_all_expanded: true,
+            nav_all_expanded: false, // scene trees start collapsed (regions folded)
             obj_all_expanded: true,
             ent_search: String::new(),
+            ent_table_search: String::new(),
             ent_all_expanded: true,
             ent_sort_col: 0,
             ent_sort_asc: true,
@@ -75,7 +76,7 @@ impl TrackerApp {
             ],
             current_room: 0,
             active_tab: Tab::Oot,
-            sel_scene: [DEFAULT_SCENE, 0x2d], // Kokiri Forest / Termina Field
+            sel_scene: [None, None], // nothing shown until the user opens a scene
             last_item: None,
             last_entrance: None,
             player_scene: None,
@@ -92,11 +93,8 @@ impl TrackerApp {
             cached_totals: [(0, 0); 2],
             cached_scene_counts: [HashMap::new(), HashMap::new()],
             counts_dirty: true,
-            save_path: PathBuf::from(format!("{}/rust-tracker/tracker_save.txt", scene::REPO_ROOT)),
-            spoiler_path_file: PathBuf::from(format!(
-                "{}/rust-tracker/tracker_spoiler.txt",
-                scene::REPO_ROOT
-            )),
+            save_path: data_dir.join("tracker_save.txt"),
+            spoiler_path_file: data_dir.join("tracker_spoiler.txt"),
             dirty: false,
             status: String::new(),
             rom: RomVersion::Dev,
@@ -110,6 +108,7 @@ impl TrackerApp {
             pan: Vec2::ZERO,
             view_initialized: false,
             last_frame: Instant::now(),
+            kbd: ui::kbdnav::KbdNav::default(),
         };
         // Startup auto-loads, each gated by its "Auto Load Most Recent" option.
         if app.app_settings.auto_load_tracking {
@@ -469,6 +468,16 @@ impl TrackerApp {
                 out.push_str(game.objects()[*idx].location);
                 out.push('\n');
             }
+            // Version 4: persist the spoiler placements (location -> item, and the
+            // destination player when multiworld) so a reload restores the item
+            // icons on its own — no spoiler needed, matching the Qt binary save.
+            // Tab-separated because locations and item names both contain spaces.
+            for (loc, item) in &world.items {
+                out.push_str(&format!("ITEM {loc}\t{item}\n"));
+            }
+            for (loc, player) in &world.dest {
+                out.push_str(&format!("DEST {loc}\t{player}\n"));
+            }
         }
         // Visited entrances, distinct from object-location lines by the "E " tag.
         for (game, id) in &self.visited_entrances {
@@ -494,7 +503,19 @@ impl TrackerApp {
     /// Restore the tracked state from a file (by Location). Shared by the startup
     /// autoload and the "Load Tracking" dialog.
     pub(crate) fn load_from(&mut self, path: &std::path::Path) {
-        let Ok(text) = std::fs::read_to_string(path) else { return };
+        let Ok(bytes) = std::fs::read(path) else { return };
+        // A Qt binary `.trck` leads with a small `u32` format version (0..=3); a
+        // Rust text save starts with ASCII ("TRACKER_SAVE", "OOT", "MM", "F ", …)
+        // whose first four bytes as a `u32` are far larger. So a tiny leading
+        // value means the file is a Qt binary save — import it instead.
+        if bytes.len() >= 4 && u32::from_le_bytes([bytes[0], bytes[1], bytes[2], bytes[3]]) <= 3 {
+            match qtsave::parse(&bytes) {
+                Some(save) => self.apply_qt_import(save),
+                None => self.log_msg(self.i18n.load_qt_unsupported().to_string()),
+            }
+            return;
+        }
+        let Ok(text) = String::from_utf8(bytes) else { return };
         // Location is globally unique (base and MQ carry distinct strings), so a
         // flat index has no collisions and restores either layout.
         let mut by_location: HashMap<&'static str, (Game, usize)> = HashMap::new();
@@ -542,6 +563,18 @@ impl TrackerApp {
                     let ig = if ig == 1 { Game::Mm } else { Game::Oot };
                     self.out_links.insert((og, oid), (ig, iid));
                 }
+            } else if let Some(rest) = line.strip_prefix("ITEM ") {
+                // Version 4: a persisted placement (location <TAB> item name).
+                if let Some((loc, item)) = rest.split_once('\t') {
+                    self.worlds[cur_world].items.insert(loc.to_string(), item.to_string());
+                }
+            } else if let Some(rest) = line.strip_prefix("DEST ") {
+                // Version 4: a placement's destination player (location <TAB> N).
+                if let Some((loc, player)) = rest.split_once('\t') {
+                    if let Ok(p) = player.trim().parse::<u8>() {
+                        self.worlds[cur_world].dest.insert(loc.to_string(), p);
+                    }
+                }
             } else if let Some(loc) = line.strip_prefix("F ") {
                 // Manually-forced object: collected AND forced (gold on the map).
                 if let Some(&key) = by_location.get(loc) {
@@ -554,6 +587,66 @@ impl TrackerApp {
             }
         }
         self.rebuild_in_links();
+    }
+
+    /// Apply a parsed Qt binary `.trck` (imported by [`qtsave`]): restore each
+    /// world's collected / forced marks, the item placements (so icons show with
+    /// no spoiler loaded, like the Qt app) and the discovered out-links. Callers
+    /// clear the tracked state first, exactly as for a text load.
+    pub(crate) fn apply_qt_import(&mut self, save: qtsave::QtSave) {
+        // Per-game (scene id, object id) -> (object index, Location). Qt matches
+        // objects by id (layout-resilient), so we do too rather than by position.
+        let mut lut: [HashMap<(u32, u32), (usize, &'static str)>; 2] =
+            [HashMap::new(), HashMap::new()];
+        for game in [Game::Oot, Game::Mm] {
+            for (i, o) in game.objects().iter().enumerate() {
+                lut[game.idx()].insert((o.scene as u32, o.object_id), (i, o.location));
+            }
+        }
+
+        for (w, objs) in save.worlds.into_iter().enumerate() {
+            if self.worlds.len() <= w {
+                self.worlds.resize_with(w + 1, crate::WorldData::default);
+            }
+            for ob in objs {
+                let Some(&(idx, location)) = lut[ob.game.idx()].get(&(ob.scene, ob.obj_id)) else {
+                    continue; // an object the current data no longer has
+                };
+                if ob.status == qtsave::ST_COLLECTED || ob.status == qtsave::ST_FORCED {
+                    self.worlds[w].collected.insert((ob.game, idx));
+                    if ob.status == qtsave::ST_FORCED {
+                        self.worlds[w].forced.insert((ob.game, idx));
+                    }
+                }
+                if let Some(name) = qtsave::item_name(ob.item_id) {
+                    self.worlds[w].items.insert(location.to_string(), name.to_string());
+                }
+            }
+        }
+
+        for (out, inc) in save.out_links {
+            self.out_links.insert(out, inc);
+        }
+        // Restore the full in-link lists (multiple discovered sources per target),
+        // dropping any that no longer exist in the current entrance data.
+        for (target, sources) in save.in_links {
+            let list = self.in_links.entry(target).or_default();
+            for src in sources {
+                if !list.contains(&src) {
+                    list.push(src);
+                }
+            }
+        }
+        // Mark every touched entrance visited so the found/total counters reflect
+        // the loaded state (the Qt save has no separate "visited" flag).
+        for v in save.visited {
+            self.visited_entrances.insert(v);
+        }
+
+        self.log_msg(self.i18n.load_qt_imported(save.version));
+        if save.partial {
+            self.log_msg(self.i18n.load_qt_partial().to_string());
+        }
     }
 
     /// Drain the poller thread's messages: update the connection status and
@@ -786,7 +879,7 @@ impl TrackerApp {
 
     /// Sélectionne une scène : réinitialise la texture et la vue.
     pub(crate) fn select_scene(&mut self, game: Game, def: &'static data::SceneDef) {
-        self.sel_scene[game.idx()] = def.id;
+        self.sel_scene[game.idx()] = Some(def.id);
         self.scene = Some(LiveScene::load(game, def, &self.mq_scenes));
         self.current_room = 0;
         self.map_texture = None;
@@ -916,6 +1009,59 @@ impl TrackerApp {
         for (&out, &inc) in &self.out_links {
             self.in_links.entry(inc).or_default().push(out);
         }
+    }
+
+    /// (found, total) entrance count for one scene, faithful to the Qt
+    /// `SceneEntranceItemTree::CountValidEntrances`. Entrances come from the
+    /// curated per-scene list (not `to_scene`), and each is counted per direction:
+    /// the in-side scales with its discovered sources (at least one slot to find),
+    /// and Normal / One_Way_Out add one out-side slot found once its OutLink is set.
+    pub(crate) fn entrance_scene_counts(&self, game: Game, scene: u16) -> (usize, usize) {
+        let Some(ids) = entrance::scene_entrances(game, scene as u32) else { return (0, 0) };
+        let (mut found, mut total) = (0usize, 0usize);
+        for &eid in ids {
+            let Some(e) = entrance::lookup(game, eid) else { continue };
+            if e.type_ == data::EntranceType::None
+                || !tracking::scene_layout_active(e.layout, game, scene, &self.mq_scenes)
+            {
+                continue;
+            }
+            let in_found = self.in_links.get(&(game, eid)).map_or(0, |v| v.len());
+            let in_total = in_found.max(1);
+            let out_set = self.out_links.contains_key(&(game, eid));
+            match e.type_ {
+                data::EntranceType::Normal => {
+                    total += in_total + 1;
+                    found += in_found + out_set as usize;
+                }
+                data::EntranceType::One_Way_In => {
+                    total += in_total;
+                    found += in_found;
+                }
+                data::EntranceType::One_Way_Out => {
+                    total += 1;
+                    found += out_set as usize;
+                }
+                data::EntranceType::None => {}
+            }
+        }
+        (found, total)
+    }
+
+    /// (found, total) entrances of a game, summed over its curated scene list —
+    /// the denominator the Qt entrance tab shows.
+    pub(crate) fn entrance_counts(&self, game: Game) -> (usize, usize) {
+        let scenes = match game {
+            Game::Oot => data::OOT_SCENE_ENTRANCES,
+            Game::Mm => data::MM_SCENE_ENTRANCES,
+        };
+        let (mut found, mut total) = (0usize, 0usize);
+        for &(scene, _region, _ids) in scenes {
+            let (f, t) = self.entrance_scene_counts(game, scene);
+            found += f;
+            total += t;
+        }
+        (found, total)
     }
 
     /// Refresh the current scene's markers from the active world's collected-set.
@@ -1146,14 +1292,27 @@ impl TrackerApp {
     /// selected scene). Launch / Progression / Entrance-GPS keep the current one.
     pub(crate) fn ensure_tab_scene(&mut self) {
         let Some(game) = self.current_game() else { return };
-        if self.scene.as_ref().map_or(true, |s| s.game != game) {
-            let id = self.sel_scene[game.idx()];
-            if let Some(def) = game.scenes().iter().find(|s| s.id == id) {
+        // Keep the scene if it already belongs to this tab's game.
+        if self.scene.as_ref().is_some_and(|s| s.game == game) {
+            return;
+        }
+        // Otherwise restore this game's remembered scene — or clear the view when
+        // the user hasn't opened one yet (startup / a freshly switched-to game).
+        match self.sel_scene[game.idx()].and_then(|id| game.scenes().iter().find(|s| s.id == id)) {
+            Some(def) => {
                 self.scene = Some(LiveScene::load(game, def, &self.mq_scenes));
                 self.current_room = 0;
                 self.map_texture = None;
                 self.load_error = None;
                 self.view_initialized = false;
+            }
+            None => {
+                if self.scene.is_some() {
+                    self.scene = None;
+                    self.map_texture = None;
+                    self.load_error = None;
+                    self.view_initialized = false;
+                }
             }
         }
     }

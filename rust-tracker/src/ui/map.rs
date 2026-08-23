@@ -5,6 +5,7 @@ use std::collections::{HashMap, HashSet};
 
 use crate::*;
 use crate::scene::{self, Game};
+use crate::ui::kbdnav;
 
 // Entrance info-box metrics, in map units (they scale with the view zoom, like
 // the Qt QGraphicsScene items). Mirror EntranceGroupBoxItem's k* constants.
@@ -64,9 +65,14 @@ impl TrackerApp {
             .and_then(|t| t.as_ref())
             .map(|t| t.id());
 
-        let (rect, resp) = ui.allocate_exact_size(vec2(ui.available_width(), 38.0), Sense::click());
+        let (rect, resp) = ui.allocate_exact_size(vec2(ui.available_width(), 42.0), Sense::click());
         if ui.is_rect_visible(rect) {
             let painter = ui.painter();
+            // Faint per-game accent tint over each object row (Qt TintedTreeWidget
+            // depth-1, alpha 16) — the "extra" background layer, but only as tall as
+            // the object cards, not the whole panel.
+            let a = game_accent(game);
+            painter.rect_filled(rect, 0.0, Color32::from_rgba_unmultiplied(a.r(), a.g(), a.b(), 16));
             // Collected/forced "card" highlight (undiscovered rows get no card).
             let card = rect.shrink2(vec2(3.0, 1.5));
             if let Some(bg) = card_bg {
@@ -76,7 +82,7 @@ impl TrackerApp {
                 painter.rect_filled(card, 6.0, Color32::from_white_alpha(10));
             }
             // Icon over a faint rounded square (Qt icon backdrop).
-            let icon_sz = 26.0;
+            let icon_sz = 30.0;
             let icon_center = pos2(rect.left() + 9.0 + icon_sz * 0.5, rect.center().y);
             painter.rect_filled(
                 Rect::from_center_size(icon_center, Vec2::splat(icon_sz)),
@@ -92,8 +98,8 @@ impl TrackerApp {
             // struck through once collected.
             let text_x = icon_center.x + icon_sz * 0.5 + 9.0;
             let max_w = rect.right() - text_x - 8.0;
-            elided_line(painter, text_x, rect.center().y - 7.0, max_w, name, 13.5, name_col, collected);
-            elided_line(painter, text_x, rect.center().y + 8.0, max_w, item, 11.0, item_col, collected);
+            elided_line(painter, text_x, rect.center().y - 8.0, max_w, name, 14.0, name_col, collected);
+            elided_line(painter, text_x, rect.center().y + 9.0, max_w, item, 11.5, item_col, collected);
         }
         resp
     }
@@ -136,8 +142,19 @@ impl TrackerApp {
 
     /// Right panel of the item tabs: objects grouped by category.
     pub(crate) fn draw_object_tree(&mut self, ctx: &egui::Context) {
+        // No scene open -> hide the whole panel (nothing to show until the user
+        // picks a scene), instead of an empty "Objects" placeholder.
+        if self.scene.is_none() {
+            return;
+        }
         let mut toggle: Option<(Game, usize)> = None;
         let mut obj_set_all: Option<bool> = None;
+        // Keyboard navigation: arrows move through category headers + objects,
+        // Left / Right fold / unfold a category, Enter / Space toggles an object.
+        let kid = egui::Id::new("kbd_obj_tree");
+        let mut klist = self.kbd.begin(kid);
+        let mut kout = kbdnav::KbdOut::default();
+        let mut obj_targets: HashMap<u64, (Game, usize)> = HashMap::new();
         egui::SidePanel::right("objtree")
             .resizable(true)
             .default_width(320.0)
@@ -149,6 +166,10 @@ impl TrackerApp {
                     accent_heading(ui, self.i18n.objects());
                     return;
                 };
+
+                // Slightly taller search bar / expand button (Qt QPushButton /
+                // QLineEdit min-height 24 + padding), applied to every tree.
+                ui.spacing_mut().interact_size.y = 26.0;
 
                 // Header: active scene name, collected/total, the category filter
                 // button (moved here from the menu bar), and a scene progress bar.
@@ -187,8 +208,9 @@ impl TrackerApp {
                 let accent = game_accent(game);
 
                 egui::ScrollArea::vertical().id_salt("objtree_s").show(ui, |ui| {
-                    ui.spacing_mut().item_spacing.y = 1.0;
-                    // Category order, respecting the ROM exclusion + the active filter.
+                    // Rows sit flush so the per-row accent tint is continuous (Qt tree).
+                    ui.spacing_mut().item_spacing.y = 0.0;
+                    // Categories present in this scene (ROM exclusion + active filter).
                     let mut order: Vec<data::ObjectType> = Vec::new();
                     for o in &scene.objects {
                         if self.excluded.contains(game, o.index) || !active.contains(&o.type_) {
@@ -198,6 +220,13 @@ impl TrackerApp {
                             order.push(o.type_);
                         }
                     }
+                    // Sort alphabetically by the DISPLAYED (translated) category name,
+                    // like the nav regions/scenes, so the order follows the language.
+                    order.sort_by(|&a, &b| {
+                        scene::type_label(a, &self.i18n)
+                            .to_lowercase()
+                            .cmp(&scene::type_label(b, &self.i18n).to_lowercase())
+                    });
                     for ty in order {
                         let in_cat =
                             |o: &&scene::LiveObject| o.type_ == ty && !self.excluded.contains(game, o.index);
@@ -245,8 +274,10 @@ impl TrackerApp {
                             .and_then(|t| t.as_ref())
                             .map(|t| t.id());
                         let header = tinted_row(
-                            ui, 24.0, 40.0, accent.linear_multiply(0.22),
-                            scene::type_label(ty), Color32::from_rgb(230, 240, 255),
+                            ui, 24.0, 40.0,
+                            Color32::from_rgba_unmultiplied(accent.r(), accent.g(), accent.b(), 64),
+                            game_hover(game),
+                            scene::type_label(ty, &self.i18n), TEXT,
                             Some((done, total)), Some(open), cat_tex,
                         );
                         // Faint white underline marking the category separation
@@ -259,20 +290,35 @@ impl TrackerApp {
                             open = !open;
                             ui.data_mut(|d| d.insert_persisted(id, open));
                         }
+                        // Keyboard branch: Left / Right fold / unfold this category.
+                        let ckey = kbdnav::key(("objcat", game.idx() as u8, ty as usize));
+                        klist.branch(ui, ckey, id, open, &header);
 
                         if open {
                             for o in objs {
                                 if hide_list && o.collected {
                                     continue; // "Hide Collected Object → From Object List"
                                 }
-                                if self.object_leaf(ui, game, o).clicked() {
+                                let resp = self.object_leaf(ui, game, o);
+                                let ok = ((game.idx() as u64) << 32) | o.index as u64;
+                                klist.leaf(ui, ok, &resp);
+                                obj_targets.insert(ok, (game, o.index));
+                                if resp.clicked() {
                                     toggle = Some((game, o.index));
                                 }
                             }
                         }
                     }
+                    // Read the arrow keys once every object row has registered.
+                    kout = klist.finish(ui);
                 });
             });
+        // Keep the tree's focus / active target in sync; Enter / Space toggles the
+        // highlighted object (arrow moves only move the highlight).
+        self.kbd.apply(kid, &kout);
+        if let Some((g, i)) = kout.activate.and_then(|k| obj_targets.get(&k).copied()) {
+            toggle = Some((g, i));
+        }
         if let Some((game, index)) = toggle {
             self.toggle_object(game, index);
         }
@@ -286,11 +332,23 @@ impl TrackerApp {
         let mut set_all: Option<bool> = None; // "expand/collapse all" this frame
         let entrance_tab = self.active_tab.is_entrance();
 
+        // Keyboard navigation: arrows move through region headers + scenes,
+        // Left / Right fold / unfold the focused region, and focusing a scene
+        // loads its map (the same action as a click).
+        let skey = |g: Game, id: u16| -> u64 { ((g.idx() as u64) << 32) | id as u64 };
+        let kid = egui::Id::new("kbd_nav_tree");
+        let mut klist = self.kbd.begin(kid);
+        let mut kout = kbdnav::KbdOut::default();
+        let mut key_targets: HashMap<u64, (Game, &'static data::SceneDef)> = HashMap::new();
+
         egui::SidePanel::left("nav")
             .resizable(true)
             .default_width(260.0)
             .show(ctx, |ui| {
                 accent_heading(ui, self.i18n.scenes_title());
+                // Slightly taller search bar / expand button (Qt min-height 24),
+                // consistent across every tree.
+                ui.spacing_mut().interact_size.y = 26.0;
                 // Live scene filter (Qt "Find…").
                 ui.add(
                     egui::TextEdit::singleline(&mut self.scene_search)
@@ -321,19 +379,50 @@ impl TrackerApp {
                     _ => &[Game::Oot, Game::Mm],
                 };
                 egui::ScrollArea::vertical().show(ui, |ui| {
-                    ui.spacing_mut().item_spacing.y = 3.0;
+                    // Rows sit flush (Qt tree has no inter-row gap); the rounded
+                    // corners + 3px spacing used to leave a visible seam between
+                    // regions.
+                    ui.spacing_mut().item_spacing.y = 0.0;
                     for &game in games {
                         let accent = game_accent(game);
                         let sel_bg = game_selection(game);
-                        let region_bg = accent.linear_multiply(0.25); // Qt alpha 64
-                        let scene_bg = accent.linear_multiply(0.06); //  Qt alpha 16
+                        // Qt MapTab drawRow: regions get an accent tint at alpha 64
+                        // *over the base*, scenes at alpha 16 — a muted navy, not the
+                        // heavily saturated blue a solid multiply produced.
+                        let region_bg =
+                            Color32::from_rgba_unmultiplied(accent.r(), accent.g(), accent.b(), 64);
+                        let scene_bg =
+                            Color32::from_rgba_unmultiplied(accent.r(), accent.g(), accent.b(), 16);
+                        let hover = game_hover(game); // Qt ::item:hover:!selected
                         let cur_id = self
                             .scene
                             .as_ref()
                             .filter(|s| s.game == game)
                             .map(|s| s.def.id);
                         let scenes = game.scenes();
-                        let counts = &self.cached_scene_counts[game.idx()];
+                        // Per-scene (found, total) counts driving the nav rows. The item
+                        // tabs show the object collection counts (cached). The entrance
+                        // tab instead shows the per-direction entrance counts (Qt
+                        // EntranceGameTabView::RefreshRegionCounters / RefreshName), so
+                        // songs / lairs / houses that own no map object still get a real
+                        // count and the region totals add up to the global total.
+                        let ent_counts: HashMap<u16, (usize, usize)> = if entrance_tab {
+                            let table = match game {
+                                Game::Oot => data::OOT_SCENE_ENTRANCES,
+                                Game::Mm => data::MM_SCENE_ENTRANCES,
+                            };
+                            table
+                                .iter()
+                                .map(|&(s, _, _)| (s, self.entrance_scene_counts(game, s)))
+                                .collect()
+                        } else {
+                            HashMap::new()
+                        };
+                        let counts: &HashMap<u16, (usize, usize)> = if entrance_tab {
+                            &ent_counts
+                        } else {
+                            &self.cached_scene_counts[game.idx()]
+                        };
 
                         // Game header (only when both games share the panel).
                         if games.len() > 1 {
@@ -347,8 +436,8 @@ impl TrackerApp {
                             let sel = matches!(self.entrance_table, Some((g, ALL_REGION)) if g == game);
                             let bg = if sel { sel_bg } else { region_bg };
                             let row = tinted_row(
-                                ui, 24.0, 22.0, bg, self.i18n.all_entrances(),
-                                Color32::from_rgb(230, 240, 255), None, None, None,
+                                ui, 24.0, 22.0, bg, hover, self.i18n.all_entrances(),
+                                TEXT, None, None, None,
                             );
                             if row.clicked() {
                                 region_selected = Some((game, ALL_REGION));
@@ -364,7 +453,11 @@ impl TrackerApp {
                         // Market Day / Night variants (no entrances) drop out.
                         let eff_region = |s: &data::SceneDef| -> Option<u8> {
                             if entrance_tab {
-                                entrance::scene_entrance_region(game, s.id as u32).filter(|&r| r != 0)
+                                // Group by the entrance-side region (region 0 included).
+                                // Scenes with no valid entrance are dropped later by the
+                                // `total > 0` gate below, so the region-0 grottos / MM
+                                // Song-of-Time never actually surface a "None" region.
+                                entrance::scene_entrance_region(game, s.id as u32)
                             } else if s.region_id != 0 {
                                 Some(s.region_id)
                             } else {
@@ -380,8 +473,16 @@ impl TrackerApp {
                                 }
                             }
                         }
+                        // Prefer a scene's own region name; fall back to the region
+                        // name table for warp regions (Songs / Owls) that own no
+                        // ordinary scene, so the entrance nav labels them instead of
+                        // showing a bare "—".
                         let region_name_of = |rid: u8| {
-                            scenes.iter().find(|s| s.region_id == rid).map(|s| s.region_name).unwrap_or("")
+                            scenes
+                                .iter()
+                                .find(|s| s.region_id == rid && s.region_name != "None")
+                                .map(|s| s.region_name)
+                                .unwrap_or_else(|| scene::region_name(game, rid))
                         };
                         // Alphabetical by the DISPLAYED (translated) region name, so the
                         // order follows the active language (e.g. Woodfall -> Cascade Mojo).
@@ -397,6 +498,14 @@ impl TrackerApp {
                                 .iter()
                                 .filter(|s| {
                                     eff_region(s) == Some(rid)
+                                        // Entrance tab: drop scenes with no valid entrance
+                                        // (all None-type / wrong layout -> total 0), exactly
+                                        // like Qt's `hasValid` gate in EntranceGameTabView::
+                                        // RefreshName. Hides the "None" region (grottos / MM
+                                        // Song-of-Time), the OoT mask shop, end/boss cutscene
+                                        // scenes, etc.
+                                        && (!entrance_tab
+                                            || counts.get(&s.id).is_some_and(|&(_, t)| t > 0))
                                         && (query.is_empty()
                                             // Match the raw (English) name and the
                                             // translated one shown in the tree.
@@ -419,7 +528,9 @@ impl TrackerApp {
                             // carry region_name "None" on their own SceneDef, so read
                             // the name from any scene owning that ParentRegion instead).
                             let rname = match region_name_of(rid) {
-                                "" => "—",
+                                // Region 0 has no name in the table; Qt labels it "None"
+                                // (Regions.h), which the locales render as "Aucune".
+                                "" => "None",
                                 n => n,
                             };
                             // Region count = sum of its scenes' counts.
@@ -430,14 +541,15 @@ impl TrackerApp {
 
                             let id = ui.make_persistent_id(("navreg", game.idx(), rid));
                             // A search forces every region open; "expand/collapse
-                            // all" overrides + persists; else the remembered state.
+                            // all" overrides + persists; else the remembered state
+                            // (scene trees start collapsed, so default to closed).
                             let mut open = if !query.is_empty() {
                                 true
                             } else if let Some(v) = set_all {
                                 ui.data_mut(|d| d.insert_persisted(id, v));
                                 v
                             } else {
-                                ui.data_mut(|d| d.get_persisted::<bool>(id)).unwrap_or(true)
+                                ui.data_mut(|d| d.get_persisted::<bool>(id)).unwrap_or(false)
                             };
 
                             // Region icon (Regions.h), loaded into the shared cache.
@@ -446,8 +558,8 @@ impl TrackerApp {
                                 .and_then(|t| t.as_ref())
                                 .map(|t| t.id());
                             let header = tinted_row(
-                                ui, 24.0, 40.0, region_bg, self.i18n.tr_region(rname),
-                                Color32::from_rgb(230, 240, 255), Some(rcount), Some(open), region_tex,
+                                ui, 24.0, 40.0, region_bg, hover, self.i18n.tr_region(rname),
+                                TEXT, Some(rcount), Some(open), region_tex,
                             );
                             // Region separator (Qt: faint white line under a region row).
                             ui.painter().line_segment(
@@ -463,16 +575,26 @@ impl TrackerApp {
                                     region_selected = Some((game, rid));
                                 }
                             }
+                            // Keyboard branch: Left / Right fold / unfold this region.
+                            let rkey = kbdnav::key(("navreg", game.idx() as u8, rid));
+                            klist.branch(ui, rkey, id, open, &header);
 
                             if open {
                                 for s in region_scenes {
                                     let selected = cur_id == Some(s.id);
+                                    // Qt MapTab drawRow: scenes carry a faint accent tint
+                                    // (alpha 16); the selected one takes the opaque
+                                    // selection fill, everything else lights up on hover.
                                     let bg = if selected { sel_bg } else { scene_bg };
+                                    let hov = if selected { sel_bg } else { hover };
                                     let scount = counts.get(&s.id).copied();
                                     let row = tinted_row(
-                                        ui, 22.0, 30.0, bg, self.i18n.tr_scene(s.name),
-                                        Color32::from_rgb(214, 224, 238), scount, None, None,
+                                        ui, 22.0, 30.0, bg, hov, self.i18n.tr_scene(s.name),
+                                        TEXT, scount, None, None,
                                     );
+                                    let sk = skey(game, s.id);
+                                    klist.leaf(ui, sk, &row);
+                                    key_targets.insert(sk, (game, s));
                                     if row.clicked() {
                                         clicked = Some((game, s));
                                     }
@@ -481,8 +603,18 @@ impl TrackerApp {
                         }
                         ui.add_space(2.0);
                     }
+                    // Read the arrow keys once every scene row has registered.
+                    kout = klist.finish(ui);
                 });
             });
+
+        // Keep the tree's focus / active target in sync, then (for the scene
+        // tree) load the focused scene exactly like a click on it. Region headers
+        // are not in `key_targets`, so focusing one only moves the highlight.
+        self.kbd.apply(kid, &kout);
+        if let Some((g, def)) = kout.moved.or(kout.activate).and_then(|k| key_targets.get(&k).copied()) {
+            clicked = Some((g, def));
+        }
 
         if let Some((game, def)) = clicked {
             self.select_scene(game, def);
@@ -498,6 +630,9 @@ impl TrackerApp {
         // mutably while the scene is borrowed, so we record the target and apply
         // it after the panel closure returns.
         let mut ent_nav: Option<(Game, u16, u32)> = None;
+        // Deferred pan target: clicking an entrance diamond re-centres the view on
+        // its info box (applied after the closure so it can write `self.pan`).
+        let mut center_pan: Option<Vec2> = None;
         egui::CentralPanel::default().show(ctx, |ui| {
             let entrance_view = self.active_tab.is_entrance();
 
@@ -844,6 +979,7 @@ impl TrackerApp {
                 let anchor_r = 7.0_f32;
                 let mut focus: Option<usize> = None;
                 let mut focus_row: i32 = -1; // 0 title, 1..in, out row, -1 = diamond/padding
+                let mut on_diamond = false; // pointer over the diamond, not the box
                 if let Some(hp) = hover {
                     for (i, b) in boxes.iter().enumerate() {
                         if b.rect.contains(hp) {
@@ -860,6 +996,7 @@ impl TrackerApp {
                                 best = d;
                                 focus = Some(i);
                                 focus_row = -1;
+                                on_diamond = true;
                             }
                         }
                     }
@@ -871,15 +1008,21 @@ impl TrackerApp {
                     if let Some(i) = focus {
                         let b = &boxes[i];
                         let self_focus = (scene.game, b.e.to_scene, b.e.to_id);
-                        ent_nav = Some(match focus_row {
-                            r if r >= 1 && (r as usize) <= b.in_count => {
-                                b.data.in_rows[r as usize - 1].1.unwrap_or(self_focus)
-                            }
-                            r if b.data.has_out && r == b.in_count as i32 + 1 => {
-                                b.data.out_row.as_ref().and_then(|o| o.1).unwrap_or(self_focus)
-                            }
-                            _ => self_focus,
-                        });
+                        if on_diamond {
+                            // Clicking a diamond pans the view so its info box is
+                            // centred (the box's TextPos can sit far from the anchor).
+                            center_pan = Some(self.pan + (rect.center() - b.rect.center()));
+                        } else {
+                            ent_nav = Some(match focus_row {
+                                r if r >= 1 && (r as usize) <= b.in_count => {
+                                    b.data.in_rows[r as usize - 1].1.unwrap_or(self_focus)
+                                }
+                                r if b.data.has_out && r == b.in_count as i32 + 1 => {
+                                    b.data.out_row.as_ref().and_then(|o| o.1).unwrap_or(self_focus)
+                                }
+                                _ => self_focus,
+                            });
+                        }
                     }
                 }
 
@@ -944,6 +1087,12 @@ impl TrackerApp {
 
         if let Some((g, sc, eid)) = ent_nav {
             self.focus_entrance_in_scene(g, sc, eid);
+        }
+        // Re-centre on a clicked diamond's info box (skips view re-init, so the
+        // pan sticks instead of being snapped back to the entrance anchor).
+        if let Some(pan) = center_pan {
+            self.pan = pan;
+            self.view_initialized = true;
         }
     }
 }

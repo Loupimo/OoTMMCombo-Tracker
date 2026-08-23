@@ -5,15 +5,49 @@
 //! (collection) and the render helpers (per-type colour/glyph).
 
 use std::collections::HashSet;
+use std::path::{Path, PathBuf};
+use std::sync::OnceLock;
+use crate::i18n::{I18n};
 
 use crate::data::{
     EntranceDef, ObjectContext, ObjectDef, ObjectType, RoomDef, SceneDef, MM_ENTRANCES, MM_OBJECTS,
     MM_ROOMS, MM_SCENES, OOT_ENTRANCES, OOT_OBJECTS, OOT_ROOMS, OOT_SCENES,
 };
 
-/// Repository root, resolved at compile time: lets us load the images
-/// (`./Resources/...`) whatever the cwd is during `cargo run`.
+/// Repository root, resolved at compile time. Used as the dev fallback when the
+/// build is run from the source tree (`cargo run`) rather than a deployed folder.
 pub const REPO_ROOT: &str = concat!(env!("CARGO_MANIFEST_DIR"), "/..");
+
+/// The executable's own directory, but only when it looks like a *deployed* build
+/// — i.e. it ships a `Resources/` folder next to the `.exe`. `None` in dev, where
+/// the exe sits under `target/…` with no adjacent `Resources/`.
+fn deployed_dir() -> Option<&'static Path> {
+    static DIR: OnceLock<Option<PathBuf>> = OnceLock::new();
+    DIR.get_or_init(|| {
+        std::env::current_exe()
+            .ok()
+            .and_then(|exe| exe.parent().map(Path::to_path_buf))
+            .filter(|dir| dir.join("Resources").is_dir())
+    })
+    .as_ref()
+    .map(|p| p.as_path())
+}
+
+/// Base directory for bundled assets (`Resources/…`): the executable's folder in a
+/// deployed build, else the repository root during development.
+pub fn base_dir() -> &'static Path {
+    deployed_dir().unwrap_or_else(|| Path::new(REPO_ROOT))
+}
+
+/// Directory for the tracker's own data files (settings / save / spoiler): next to
+/// the executable in a deployed build, or the `rust-tracker` crate dir in dev
+/// (where the tracked defaults live).
+pub fn data_dir() -> PathBuf {
+    match deployed_dir() {
+        Some(dir) => dir.to_path_buf(),
+        None => Path::new(REPO_ROOT).join("rust-tracker"),
+    }
+}
 
 #[derive(Clone, Copy, PartialEq, Eq, Hash, Debug)]
 pub enum Game {
@@ -67,9 +101,10 @@ impl Game {
     }
 }
 
-/// Absolute path of a `./Resources/...` asset relative to the repository.
+/// Absolute path of a `./Resources/...` asset, resolved against the base directory
+/// (the executable's folder when deployed, the repo root in dev).
 pub fn resource_path(rel: &str) -> String {
-    format!("{REPO_ROOT}/{}", rel.trim_start_matches("./"))
+    base_dir().join(rel.trim_start_matches("./")).to_string_lossy().into_owned()
 }
 
 /// The first of two relative paths that isn't empty.
@@ -107,6 +142,17 @@ pub fn region_icon(game: Game, region_id: u8) -> Option<&'static str> {
         Game::Mm => crate::data::MM_REGION_ICONS,
     };
     table.get(region_id as usize).copied().filter(|p| !p.is_empty())
+}
+
+/// The display name of a region (Regions.h RegionsMetaInfo), or "" for region 0
+/// / unknown. Unlike deriving it from a `SceneDef.region_name`, this table also
+/// names the warp regions (OoT "Songs" / MM "Owls"), which own no ordinary scene.
+pub fn region_name(game: Game, region_id: u8) -> &'static str {
+    let table = match game {
+        Game::Oot => crate::data::OOT_REGION_NAMES,
+        Game::Mm => crate::data::MM_REGION_NAMES,
+    };
+    table.get(region_id as usize).copied().unwrap_or("")
 }
 
 /// Resolve an entrance's icon (an EntranceIcons variant name) to its image path.
@@ -159,39 +205,39 @@ pub fn color_for(t: ObjectType) -> [u8; 3] {
 }
 
 /// Category label for the object tree (grouped by type).
-pub fn type_label(t: ObjectType) -> &'static str {
+pub fn type_label(t: ObjectType, i18n: &I18n) -> &str {
     use ObjectType::*;
     match t {
-        chest => "Coffres",
-        collectible => "Collectibles",
-        npc => "PNJ / Évènements",
-        gs => "Skulltulas d'or",
-        sf => "Fées égarées",
-        cow => "Vaches",
-        shop | merchant => "Boutiques",
-        scrub => "Scrubs",
-        sr => "Rupees d'argent",
-        fish => "Poissons",
-        wonder => "Objets cachés",
-        grass => "Herbes",
-        crate_ => "Caisses",
-        pot => "Pots",
-        hive => "Ruches",
-        butterfly => "Papillons",
-        rupee => "Rupees",
-        snowball => "Boules de neige",
-        barrel => "Tonneaux",
-        heart | heart_piece | heart_container => "Cœurs",
-        fairy | fairy_spot => "Fées",
-        redboulder | silverboulder | boulder | rock => "Rochers",
-        icicle | redice => "Glace",
-        soil => "Terre",
-        tree | bush => "Végétation",
-        song => "Chansons",
-        small_key | boss_key => "Clés",
-        map | compass => "Cartes / Boussoles",
-        sword | ocarina | mask | egg | owl => "Équipement",
-        none => "Autres",
+        chest => i18n.object_type_name("chest"),
+        collectible => i18n.object_type_name("collectible"),
+        npc => i18n.object_type_name("npc"),
+        gs => i18n.object_type_name("gs"),
+        sf => i18n.object_type_name("sf"),
+        cow => i18n.object_type_name("cow"),
+        shop | merchant => i18n.object_type_name("shop"),
+        scrub => i18n.object_type_name("scrub"),
+        sr => i18n.object_type_name("sr"),
+        fish => i18n.object_type_name("fish"),
+        wonder => i18n.object_type_name("wonder"),
+        grass => i18n.object_type_name("grass"),
+        crate_ => i18n.object_type_name("crate_"),
+        pot => i18n.object_type_name("pot"),
+        hive => i18n.object_type_name("hive"),
+        butterfly => i18n.object_type_name("butterfly"),
+        rupee => i18n.object_type_name("rupee"),
+        snowball => i18n.object_type_name("snowball"),
+        barrel => i18n.object_type_name("barrel"),
+        heart | heart_piece | heart_container => i18n.object_type_name("heart"),
+        fairy | fairy_spot => i18n.object_type_name("fairy"),
+        redboulder | silverboulder | boulder | rock => i18n.object_type_name("rock"),
+        icicle | redice => i18n.object_type_name("ice"),
+        soil => i18n.object_type_name("soil"),
+        tree | bush => i18n.object_type_name("bush"),
+        song => i18n.object_type_name("song"),
+        small_key | boss_key => i18n.object_type_name("key"),
+        map | compass => i18n.object_type_name("map"),
+        sword | ocarina | mask | egg | owl => i18n.object_type_name("equipement"),
+        none => i18n.object_type_name("none"),
     }
 }
 

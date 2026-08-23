@@ -3,6 +3,8 @@ use eframe::egui::{self, vec2, Align2, Color32, FontId, Sense, Stroke};
 
 use crate::*;
 use crate::scene::Game;
+use crate::ui::kbdnav;
+use std::collections::HashMap;
 
 impl TrackerApp {
 
@@ -32,7 +34,7 @@ impl TrackerApp {
                         continue; // whole page disabled by the ROM settings
                     }
                     if ui
-                        .selectable_label(self.dashboard.sub_tab == p, page.title)
+                        .selectable_label(self.dashboard.sub_tab == p, self.i18n.prog_title(page.title))
                         .clicked()
                     {
                         new_tab = p;
@@ -59,12 +61,21 @@ impl TrackerApp {
         // Refresh the cached detail tree (mutably) before the read-only panels.
         self.dashboard.ensure_tree(&self.worlds, &self.mq_scenes);
 
+        // Keyboard navigation for the location tree: arrows highlight a location,
+        // Enter / Space jumps to its scene (the same action as a click).
+        let kid = egui::Id::new("kbd_prog_tree");
+        let mut klist = self.kbd.begin(kid);
+        let mut kout = kbdnav::KbdOut::default();
+        let mut loc_targets: HashMap<u64, (Game, u16)> = HashMap::new();
+
         // Detail panel (right), then the icon grid (center).
         let mut nav: Option<(Game, u16)> = None;
         egui::SidePanel::right("prog_detail")
             .resizable(false)
             .exact_width(300.0)
-            .show(ctx, |ui| self.draw_prog_detail(ui, &mut nav));
+            .show(ctx, |ui| {
+                self.draw_prog_detail(ui, &mut nav, &mut klist, &mut loc_targets, &mut kout)
+            });
 
         let mut new_selected = self.dashboard.selected;
         egui::CentralPanel::default()
@@ -75,6 +86,12 @@ impl TrackerApp {
             self.dashboard.sub_tab = new_tab;
         }
         self.dashboard.selected = new_selected;
+        // Keyboard move: sync the tree focus / active target, then honour an
+        // Enter / Space activation as a navigation to that location's scene.
+        self.kbd.apply(kid, &kout);
+        if let Some(t) = kout.activate.and_then(|k| loc_targets.get(&k).copied()) {
+            nav = Some(t);
+        }
         if let Some((game, scene_id)) = nav {
             self.navigate_to(game, scene_id);
         }
@@ -120,14 +137,14 @@ impl TrackerApp {
 
         // Group the page's visible entries by section (flat order is page-major,
         // so a section's entries are contiguous). Fully-disabled sections vanish.
-        let mut sections: Vec<(&'static str, Vec<usize>)> = Vec::new();
+        let mut sections: Vec<(&str, Vec<usize>)> = Vec::new();
         let mut last_sec: Option<usize> = None;
         for (i, fe) in self.dashboard.flat().iter().enumerate() {
             if fe.page != page || self.dashboard.entry_hidden(i, &self.rom_settings) {
                 continue;
             }
             if last_sec != Some(fe.section) {
-                sections.push((fe.section_title, Vec::new()));
+                sections.push((self.i18n.prog_title(fe.section_title), Vec::new()));
                 last_sec = Some(fe.section);
             }
             sections.last_mut().unwrap().1.push(i);
@@ -212,7 +229,14 @@ impl TrackerApp {
 
     /// The right detail panel (BuildDetailPanel / ShowDetailFor): big icon, name,
     /// found status, counter, and the per-scene location tree.
-    pub(crate) fn draw_prog_detail(&self, ui: &mut egui::Ui, nav: &mut Option<(Game, u16)>) {
+    pub(crate) fn draw_prog_detail(
+        &self,
+        ui: &mut egui::Ui,
+        nav: &mut Option<(Game, u16)>,
+        klist: &mut kbdnav::KbdList,
+        loc_targets: &mut HashMap<u64, (Game, u16)>,
+        kout: &mut kbdnav::KbdOut,
+    ) {
         ui.add_space(6.0);
         let Some(i) = self.dashboard.selected else {
             ui.weak(self.i18n.prog_select_item());
@@ -303,12 +327,18 @@ impl TrackerApp {
                             } else {
                                 txt.color(Color32::from_rgb(230, 240, 255))
                             };
-                            if ui.selectable_label(false, txt).clicked() {
+                            let resp = ui.selectable_label(false, txt);
+                            let lk = kbdnav::key((leaf.game.idx() as u8, leaf.render_scene, leaf.name));
+                            klist.leaf(ui, lk, &resp);
+                            loc_targets.insert(lk, (leaf.game, leaf.render_scene));
+                            if resp.clicked() {
                                 *nav = Some((leaf.game, leaf.render_scene));
                             }
                         }
                     });
             }
         });
+        // Read the arrow keys once every location row has registered.
+        *kout = klist.finish(ui);
     }
 }

@@ -4,6 +4,8 @@ use eframe::egui::{self, pos2, vec2, Align2, Color32, FontId, Rect, Sense, Strok
 
 use crate::*;
 use crate::scene::{self, Game, LiveScene};
+use crate::ui::kbdnav;
+use std::collections::HashMap;
 
 impl TrackerApp {
 
@@ -18,6 +20,13 @@ impl TrackerApp {
         // which borrows `self`; apply the jump once it returns.
         let mut nav: Option<(Game, u16, u32)> = None;
         let mut set_all: Option<bool> = None; // "expand/collapse all" this frame
+        // Keyboard navigation: arrows move through entrance headers + in / out
+        // rows, Left / Right fold / unfold an entrance, Enter / Space jumps to a
+        // row's target scene (the same action as a click).
+        let kid = egui::Id::new("kbd_ent_tree");
+        let mut klist = self.kbd.begin(kid);
+        let mut kout = kbdnav::KbdOut::default();
+        let mut ent_targets: HashMap<u64, Option<(Game, u16, u32)>> = HashMap::new();
         egui::SidePanel::right("enttree")
             .resizable(true)
             .default_width(320.0)
@@ -25,26 +34,26 @@ impl TrackerApp {
                 accent_heading(ui, self.i18n.entrance());
                 let Some(scene) = self.scene.as_ref() else { return };
                 let (game, sid) = (scene.game, scene.def.id);
+                // Taller search bar / expand button (Qt min-height 24), like every tree.
+                ui.spacing_mut().interact_size.y = 26.0;
 
-                // Entrances of this scene under the active layout (skip the None
-                // type — end-credits / no-entry placeholders — and nameless rows),
-                // and how many have been walked (header count, like the objects).
-                let entrances: Vec<&'static data::EntranceDef> = game
-                    .entrances()
-                    .iter()
-                    .filter(|e| {
-                        e.to_scene == sid
-                            && e.type_ != data::EntranceType::None
-                            && !e.from_name.is_empty()
-                            && tracking::scene_layout_active(e.layout, game, e.to_scene, &self.mq_scenes)
-                    })
-                    .collect();
-                let visited = entrances
-                    .iter()
-                    .filter(|e| self.visited_entrances.contains(&(game, e.to_id)))
-                    .count();
-                ui.label(format!("{visited} / {}", entrances.len()));
-                progress_bar(ui, visited, entrances.len(), game_accent(game));
+                // Entrances of this scene from the curated per-scene list (Qt
+                // SceneEntranceMeta), skipping the None type and wrong-layout rows.
+                // The header count uses the Qt per-direction model (in-sources +
+                // out), so it matches the reference tracker exactly.
+                let entrances: Vec<&'static data::EntranceDef> =
+                    entrance::scene_entrances(game, sid as u32)
+                        .unwrap_or(&[])
+                        .iter()
+                        .filter_map(|&id| entrance::lookup(game, id))
+                        .filter(|e| {
+                            e.type_ != data::EntranceType::None
+                                && tracking::scene_layout_active(e.layout, game, sid, &self.mq_scenes)
+                        })
+                        .collect();
+                let (found, total) = self.entrance_scene_counts(game, sid);
+                ui.label(format!("{found} / {total}"));
+                progress_bar(ui, found, total, game_accent(game));
                 ui.add_space(2.0);
 
                 // Live filter (Qt "Find…") + expand / collapse all, like the object tree.
@@ -104,18 +113,33 @@ impl TrackerApp {
                             .map(|t| t.id());
                         let col = if visited { Color32::from_rgb(230, 240, 255) } else { Color32::from_gray(190) };
                         let header = tinted_row(
-                            ui, 26.0, 36.0, accent.linear_multiply(0.10),
+                            ui, 26.0, 36.0, accent.linear_multiply(0.10), game_hover(game),
                             &data.title, col, None, Some(open), icon_tex,
                         );
                         if header.clicked() {
                             open = !open;
                             ui.data_mut(|d| d.insert_persisted(id, open));
                         }
+                        // Keyboard branch: Left / Right fold / unfold this entrance.
+                        let hkey = kbdnav::key(("enthdr", game.idx() as u8, e.to_id));
+                        klist.branch(ui, hkey, id, open, &header);
 
                         if open {
-                            // Green in rows + red out row: full-width indented leaves.
-                            let mut leaf = |ui: &mut egui::Ui, c: Color32, text: &str, target: Option<(Game, u16, u32)>| {
-                                let r = tinted_row(ui, 22.0, 46.0, Color32::TRANSPARENT, text, c, None, None, None);
+                            // Green in rows + red out row: full-width indented leaves,
+                            // each registered as a keyboard-navigable leaf (stable key
+                            // = entrance id + row index within this entrance).
+                            let mut sub: u32 = 0;
+                            let mut leaf = |ui: &mut egui::Ui,
+                                            klist: &mut kbdnav::KbdList,
+                                            ent_targets: &mut HashMap<u64, Option<(Game, u16, u32)>>,
+                                            c: Color32,
+                                            text: &str,
+                                            target: Option<(Game, u16, u32)>| {
+                                let r = tinted_row(ui, 22.0, 46.0, Color32::TRANSPARENT, game_hover(game), text, c, None, None, None);
+                                let lk = kbdnav::key((game.idx() as u8, e.to_id, sub));
+                                klist.leaf(ui, lk, &r);
+                                ent_targets.insert(lk, target);
+                                sub += 1;
                                 if r.clicked() {
                                     if let Some(t) = target {
                                         nav = Some(t);
@@ -123,15 +147,24 @@ impl TrackerApp {
                                 }
                             };
                             for (t, target) in &data.in_rows {
-                                leaf(ui, green, t, *target);
+                                leaf(ui, &mut klist, &mut ent_targets, green, t, *target);
                             }
                             if let Some((t, target)) = &data.out_row {
-                                leaf(ui, red, t, *target);
+                                leaf(ui, &mut klist, &mut ent_targets, red, t, *target);
                             }
                         }
                     }
+                    // Read the arrow keys once every entrance row has registered.
+                    kout = klist.finish(ui);
                 });
             });
+
+        // Keep the tree's focus / active target in sync; Enter / Space jumps to
+        // the highlighted row's target (arrow moves only move the highlight).
+        self.kbd.apply(kid, &kout);
+        if let Some(t) = kout.activate.and_then(|k| ent_targets.get(&k).copied().flatten()) {
+            nav = Some(t);
+        }
 
         if let Some((g, sc, eid)) = nav {
             self.focus_entrance_in_scene(g, sc, eid);
@@ -243,8 +276,33 @@ impl TrackerApp {
             if asc { o } else { o.reverse() }
         });
 
+        // Live search over the visible columns (scene / entrance / spawn / leads).
+        let query = self.ent_table_search.trim().to_lowercase();
+        if !query.is_empty() {
+            data.retain(|r| {
+                r.scene.to_lowercase().contains(&query)
+                    || r.entrance.to_lowercase().contains(&query)
+                    || r.spawn.text().to_lowercase().contains(&query)
+                    || r.leads.text().to_lowercase().contains(&query)
+            });
+        }
+
+        // Alternating band per scene: every row of one scene shares a shade, which
+        // flips each time the scene changes, so a scene's entrances read as a group
+        // (Qt AllEntranceView). Works whatever the sort column is.
+        let mut bands: Vec<bool> = Vec::with_capacity(data.len());
+        let mut band = false;
+        let mut prev_scene: Option<&str> = None;
+        for r in &data {
+            if prev_scene != Some(r.scene.as_str()) {
+                band = !band;
+                prev_scene = Some(r.scene.as_str());
+            }
+            bands.push(band);
+        }
+
         let frac = self.ent_col_frac;
-        let stripe = Color32::from_white_alpha(8);
+        let stripe = Color32::from_white_alpha(12);
         let sep = Color32::from_gray(78);
         let n = data.len();
         let mut focus: Option<(Game, u16, u32)> = None;
@@ -257,6 +315,13 @@ impl TrackerApp {
                 accent_heading(ui, &region_name);
                 ui.label(egui::RichText::new(format!("· {}", self.i18n.entrance_count(n))).weak());
             });
+            // Search box above the table (Qt AllEntranceView filter).
+            ui.spacing_mut().interact_size.y = 26.0;
+            ui.add(
+                egui::TextEdit::singleline(&mut self.ent_table_search)
+                    .hint_text(self.i18n.search())
+                    .desired_width(f32::INFINITY),
+            );
             ui.separator();
 
             egui::ScrollArea::vertical().id_salt("enttable").show(ui, |ui| {
@@ -295,7 +360,7 @@ impl TrackerApp {
                     let mut child = ui.new_child(
                         egui::UiBuilder::new().max_rect(cr).layout(egui::Layout::left_to_right(egui::Align::Center)),
                     );
-                    child.set_clip_rect(cr);
+                    child.set_clip_rect(cr.intersect(ui.clip_rect()));
                     let r = child.add(
                         egui::Label::new(
                             egui::RichText::new(format!("{}{arrow}", headers[c])).strong().color(ACCENT),
@@ -338,7 +403,7 @@ impl TrackerApp {
                 for (i, r) in data.iter().enumerate() {
                     let (row_rect, _) = ui.allocate_exact_size(vec2(avail, 22.0), Sense::hover());
                     let base = row_rect.min;
-                    if i % 2 == 1 {
+                    if bands[i] {
                         ui.painter().rect_filled(row_rect, 0.0, stripe);
                     }
                     for sx in seps {
@@ -420,7 +485,7 @@ impl TrackerApp {
                 self.load_error = None;
             }
         }
-        self.sel_scene[game.idx()] = scene_id;
+        self.sel_scene[game.idx()] = Some(scene_id);
         // Follow the entrance to its own game so a cross-game jump (an OoT door
         // that leads into MM, say) lands on the matching sub-tab and nav tree.
         self.entrance_sub = if game == Game::Oot { EntranceSub::Oot } else { EntranceSub::Mm };
@@ -433,7 +498,7 @@ impl TrackerApp {
     /// tab and load the render scene), mirroring NavigateToObject.
     pub(crate) fn navigate_to(&mut self, game: Game, scene_id: u16) {
         self.active_tab = if game == Game::Oot { Tab::Oot } else { Tab::Mm };
-        self.sel_scene[game.idx()] = scene_id;
+        self.sel_scene[game.idx()] = Some(scene_id);
         if let Some(def) = game.scenes().iter().find(|s| s.id == scene_id) {
             self.scene = Some(LiveScene::load(game, def, &self.mq_scenes));
             self.current_room = 0;
@@ -443,20 +508,6 @@ impl TrackerApp {
         }
     }
 
-    /// (visited, total) entrances of a game (active layout, named), for the sub-tab
-    /// counters. Visited = discovered live (`visited_entrances`).
-    pub(crate) fn entrance_counts(&self, game: Game) -> (usize, usize) {
-        let total = game
-            .entrances()
-            .iter()
-            .filter(|e| {
-                !e.to_name.is_empty()
-                    && tracking::scene_layout_active(e.layout, game, e.to_scene, &self.mq_scenes)
-            })
-            .count();
-        let visited = self.visited_entrances.iter().filter(|(g, _)| *g == game).count();
-        (visited, total)
-    }
 
     /// The Entrance tab's OoT / MM / GPS sub-tab bar (Qt EntranceTab).
     pub(crate) fn draw_entrance_subtabs(&mut self, ctx: &egui::Context) {

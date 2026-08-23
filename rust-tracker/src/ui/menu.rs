@@ -172,13 +172,20 @@ impl TrackerApp {
             .open(&mut open)
             .anchor(egui::Align2::CENTER_CENTER, vec2(0.0, 0.0))
             .show(ctx, |ui| {
+                // Same content as the Qt ShowAboutDialog (version from Cargo.toml).
                 ui.vertical_centered(|ui| {
                     ui.add_space(4.0);
                     ui.label(egui::RichText::new("OoTMMCombo Auto Tracker").heading().color(ACCENT));
-                    ui.label("Rust / egui build");
+                    ui.label(concat!("Version ", env!("CARGO_PKG_VERSION")));
                     ui.label("© 2025-2026 Loupimo");
-                    ui.add_space(6.0);
+                    ui.add_space(8.0);
+                    ui.label("git repository:");
                     ui.hyperlink("https://github.com/Loupimo/OoTMMCombo-Tracker");
+                    ui.add_space(8.0);
+                    ui.label("Thanks for testing to:");
+                    ui.add_space(2.0);
+                    ui.label("- Wild");
+                    ui.label("- DataSkywalker");
                     ui.add_space(4.0);
                 });
             });
@@ -266,24 +273,27 @@ impl TrackerApp {
         // Per-game object totals (drive the OoT/MM tab counters + the grand total).
         let oot = self.cached_totals[Game::Oot.idx()];
         let mm = self.cached_totals[Game::Mm.idx()];
-        // Entrances visited / total (active-layout entrances of both games).
-        let ent_total = Game::Oot
-            .entrances()
-            .iter()
-            .filter(|e| tracking::scene_layout_active(e.layout, Game::Oot, e.to_scene, &self.mq_scenes))
-            .count()
-            + Game::Mm
-                .entrances()
-                .iter()
-                .filter(|e| tracking::scene_layout_active(e.layout, Game::Mm, e.to_scene, &self.mq_scenes))
-                .count();
-        let ent_visited = self.visited_entrances.len();
+        // Entrances found / total across both games, using the Qt per-direction
+        // model (see `entrance_counts`) so the tab-bar figure matches the entrance
+        // tab and the reference tracker.
+        let (oot_found, oot_total) = self.entrance_counts(Game::Oot);
+        let (mm_found, mm_total) = self.entrance_counts(Game::Mm);
+        let ent_total = oot_total + mm_total;
+        let ent_visited = oot_found + mm_found;
         // Multiworld: deferred world-selector choice (applied after the panel so
         // set_active_world can borrow self mutably).
         let mut pick_world: Option<usize> = None;
         let num_worlds = self.num_worlds();
 
-        egui::TopBottomPanel::top("tabs").show(ctx, |ui| {
+        // Qt QTabBar sits on the lighter panel colour (#0d1827) with a 1px bottom
+        // border, not the darker window fill — otherwise the bar reads too dark.
+        let tabs_frame = egui::Frame::none()
+            .fill(BG_PANEL)
+            .stroke(egui::Stroke::NONE)
+            .outer_margin(egui::Margin::ZERO)
+            .inner_margin(egui::Margin::symmetric(6.0, 0.0));
+        egui::TopBottomPanel::top("tabs").frame(tabs_frame).show(ctx, |ui| {
+            let full_x = ui.max_rect().x_range();
             ui.add_space(2.0);
             ui.horizontal(|ui| {
                 ui.spacing_mut().item_spacing.x = 6.0;
@@ -364,6 +374,9 @@ impl TrackerApp {
                 });
             });
             ui.add_space(2.0);
+            // 1px bottom border across the whole bar (Qt border-bottom #1a3050),
+            // painted at the panel's real bottom once the content height is known.
+            ui.painter().hline(full_x, ui.min_rect().bottom(), egui::Stroke::new(1.0_f32, BORDER));
         });
 
         // Apply a world switch after the panel (set_active_world borrows self mut):
@@ -384,11 +397,20 @@ impl TrackerApp {
         count: Option<&str>,
         bar: Option<(f32, Color32)>,
     ) -> bool {
-        let name_col = if selected {
-            Color32::from_rgb(221, 238, 255)
-        } else {
-            Color32::from_gray(190)
+        // Per-tab accent (Qt QTabBar::tab): the two game tabs carry their game
+        // colour (OoT blue / MM violet); every other tab uses the app accent.
+        let acc = match tab.game() {
+            Some(g) => game_accent(g),
+            None => ACCENT,
         };
+        // Text colour: game tabs always show their colour; the rest keep white
+        // when selected and a muted grey otherwise.
+        let name_col = match tab.game() {
+            Some(g) => game_accent(g),
+            None if selected => TEXT,
+            None => Color32::from_gray(160),
+        };
+
         let mut job = egui::text::LayoutJob::default();
         job.append(
             tab.label(&self.i18n),
@@ -410,11 +432,42 @@ impl TrackerApp {
                 },
             );
         }
-        let resp = ui.selectable_label(selected, job);
+        let galley = ui.fonts(|f| f.layout_job(job));
+
+        // Qt padding (8px vertical / 20px horizontal) plus 8px at the bottom for
+        // the progress bar and the 3px selected/hover underline, with a small gap
+        // between them.
+        let pad = vec2(18.0, 7.0);
+        let size = vec2(galley.size().x + pad.x * 2.0, galley.size().y + pad.y * 2.0 + 8.0);
+        let (rect, resp) = ui.allocate_exact_size(size, Sense::click());
+        let hovered = resp.hovered();
+        let p = ui.painter();
+
+        // Background: selected = accent @ low alpha (Qt rgba(acc, 24)); hover =
+        // the accent-dim fill; idle = transparent.
+        let bg = if selected {
+            Color32::from_rgba_unmultiplied(acc.r(), acc.g(), acc.b(), 28)
+        } else if hovered {
+            match tab.game() {
+                Some(g) => game_hover(g),
+                None => BG_HOVER,
+            }
+        } else {
+            Color32::TRANSPARENT
+        };
+        if bg != Color32::TRANSPARENT {
+            p.rect_filled(rect, 0.0, bg);
+        }
+
+        // Centred label, above the bottom indicators.
+        let text_pos = pos2(rect.center().x - galley.size().x / 2.0, rect.top() + pad.y);
+        p.galley(text_pos, galley, name_col);
+
+        // Progress bar (game tabs): a thin inset track just above the underline,
+        // always drawn (dim rail even at 0 %) with the accent fill on top.
         if let Some((frac, col)) = bar {
-            let r = resp.rect;
-            let track = Rect::from_min_max(pos2(r.left() + 6.0, r.bottom() - 3.0), pos2(r.right() - 6.0, r.bottom() - 1.0));
-            let p = ui.painter();
+            let y = rect.bottom() - 8.0;
+            let track = Rect::from_min_max(pos2(rect.left() + 10.0, y), pos2(rect.right() - 10.0, y + 2.0));
             p.rect_filled(track, 1.0, Color32::from_gray(70));
             let f = frac.clamp(0.0, 1.0);
             if f > 0.0 {
@@ -422,6 +475,27 @@ impl TrackerApp {
                 p.rect_filled(fill, 1.0, col);
             }
         }
+
+        // Selected / hover underline (Qt border-bottom: 3px). Selected uses the
+        // full accent; hover uses the softer accent tint.
+        let underline = if selected {
+            acc
+        } else if hovered {
+            match tab.game() {
+                Some(g) => game_selection(g),
+                None => BG_SEL,
+            }
+        } else {
+            Color32::TRANSPARENT
+        };
+        if underline != Color32::TRANSPARENT {
+            p.rect_filled(
+                Rect::from_min_max(pos2(rect.left(), rect.bottom() - 3.0), pos2(rect.right(), rect.bottom())),
+                0.0,
+                underline,
+            );
+        }
+
         resp.clicked()
     }
 
