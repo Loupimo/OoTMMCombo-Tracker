@@ -1,0 +1,155 @@
+"Goron City Shortcut":
+  region: GORON_CITY
+  exits:
+    "GLOBAL": "true"
+    "Lost Woods": "true"
+    "Goron City": "event(GORON_CITY_SHORTCUT) || climb_anywhere || hookshot_anywhere"
+  events:
+    GORON_CITY_SHORTCUT: "has_explosives_or_hammer || can_use_din"
+
+"Goron City":
+  region: GORON_CITY
+  exits:
+    "GLOBAL": "true"
+    "Goron City Shortcut": "event(GORON_CITY_SHORTCUT) || climb_anywhere || hookshot_anywhere"
+    "Death Mountain": "true"
+    "Darunia Chamber": "(is_adult && (has_explosives || can_use_bow || has_goron_bracelet) && soul_goron_child) || (is_child && song_event(4))"
+    "Goron Shop": "(has_bombflowers && (is_child || time_travel_at_will || (is_adult && soul_goron_child))) || (can_use_bow && soul_goron_child && (is_adult || time_travel_at_will)) || ((can_use_din || event(DARUNIA_TORCH)) && (is_child || time_travel_at_will)) || (has_blue_fire_arrows_mudwall && (is_child || time_travel_at_will))"
+    "Goron City Grotto": "has_shovel && ((is_adult && can_play_time) || (can_hookshot && (has_tunic_goron_strict || can_use_nayru)) || climb_anywhere)"
+    "Goron City Maze Boulders": "has_explosives_or_hammer"
+    "Goron City Red Boulders": "true"
+    "Goron City Silver Boulders": "can_lift_silver"
+  events:
+    GORON_CITY_SHORTCUT: "has_bombflowers || can_hammer || can_use_bow || can_use_din || event(DARUNIA_TORCH)"
+    STICKS: "is_child"
+    ARROWS: "is_adult"
+    BUGS: "has_bottle && (has_explosives_or_hammer || can_lift_silver)"
+    BUY_KEG: "is_adult && (has_bombflowers || can_hammer || has_blue_fire_arrows_mudwall) && soul_medigoron && can_carry_keg && has_keg && merchant_price(0x00)"
+  locations:
+    "Goron City Maze Center 1": "has_explosives_or_hammer || can_lift_silver || climb_anywhere || hookshot_anywhere"
+    "Goron City Maze Center 2": "has_explosives_or_hammer || can_lift_silver || climb_anywhere || hookshot_anywhere"
+    "Goron City Maze Left": "can_hammer || can_lift_silver || climb_anywhere || hookshot_anywhere"
+    "Goron City Big Pot HP": "is_child && has_bombs && (event(DARUNIA_TORCH) || has_fire)"
+    "Goron City Tunic": "is_adult && (has_explosives || can_use_bow || has_goron_bracelet) && soul_goron_child"
+    "Goron City Bomb Bag": "is_child && has_explosives && soul_goron"
+    "Goron City Medigoron Giant Knife": "is_adult && (has_bombflowers || can_hammer || has_blue_fire_arrows_mudwall) && merchant_price(0x00) && soul_medigoron"
+    "Goron City GS Platform": "gs && is_adult && can_damage_skull"
+    "Goron City GS Maze": "gs && is_child && (has_explosives_or_hammer || (climb_anywhere && can_damage_skull) || hookshot_anywhere)"
+    "Goron City Pot Stairs 1": "true"
+    "Goron City Pot Stairs 2": "true"
+    "Goron City Pot Stairs 3": "true"
+    "Goron City Pot Stairs 4": "true"
+    "Goron City Pot Stairs 5": "true"
+    "Goron City Pot Medigoron Room": "has_bombflowers || can_hammer || has_blue_fire_arrows_mudwall"
+    "Goron City Rock": "has_explosives_or_hammer || can_lift_silver || climb_anywhere || hookshot_anywhere"
+    "Goron City Boulder Upper 1": "has_explosives_or_hammer"
+    "Goron City Boulder Upper 2": "has_explosives_or_hammer"
+    "Goron City Boulder Upper 3": "has_explosives_or_hammer"
+    "Goron City Boulder Shortcut 1": "event(GORON_CITY_SHORTCUT)"
+    "Goron City Boulder Shortcut 2": "event(GORON_CITY_SHORTCUT)"
+    "Goron City Boulder Shortcut 3": "event(GORON_CITY_SHORTCUT)"
+  gossip:
+    "Goron City Gossip Boulder Maze": "has_explosives_or_hammer || can_lift_silver || climb_anywhere || hookshot_anywhere"
+    "Goron City Gossip Near Medigoron": "has_bombflowers || can_hammer"
+
+"Goron City Maze Boulders":
+  region: GORON_CITY
+  age_change: false
+  locations:
+    "Goron City Maze Boulder 01": "true"
+    "Goron City Maze Boulder 02": "true"
+    "Goron City Maze Boulder 03": "true"
+    "Goron City Maze Boulder 04": "true"
+    "Goron City Maze Boulder 05": "true"
+    "Goron City Maze Boulder 06": "true"
+    "Goron City Maze Boulder 07": "true"
+    "Goron City Maze Boulder 08": "true"
+    "Goron City Maze Boulder 09": "true"
+    "Goron City Maze Boulder 10": "true"
+
+"Goron City Silver Boulders":
+  region: GORON_CITY
+  age_change: false
+  locations:
+    "Goron City Silver Boulder 01": "true"
+    "Goron City Silver Boulder 02": "true"
+    "Goron City Silver Boulder 03": "true"
+    "Goron City Silver Boulder 04": "true"
+    "Goron City Silver Boulder 05": "true"
+    "Goron City Silver Boulder 06": "true"
+    "Goron City Silver Boulder 07": "true"
+    "Goron City Silver Boulder 08": "true"
+    "Goron City Silver Boulder 09": "true"
+    "Goron City Silver Boulder 10": "true"
+    "Goron City Silver Boulder 11": "true"
+    "Goron City Silver Boulder 12": "true"
+    "Goron City Silver Boulder 13": "true"
+    "Goron City Silver Boulder 14": "true"
+    "Goron City Silver Boulder 15": "true"
+    "Goron City Silver Boulder 16": "true"
+    "Goron City Silver Boulder 17": "true"
+    "Goron City Silver Boulder 18": "true"
+    "Goron City Silver Boulder 19": "true"
+    "Goron City Silver Boulder 20": "true"
+    "Goron City Silver Boulder 21": "true"
+    "Goron City Silver Boulder 22": "true"
+    "Goron City Silver Boulder 23": "true"
+    "Goron City Silver Boulder 24": "true"
+    "Goron City Silver Boulder 25": "true"
+    "Goron City Silver Boulder 26": "true"
+    "Goron City Silver Boulder 27": "true"
+    "Goron City Silver Boulder 28": "true"
+    "Goron City Silver Boulder 29": "true"
+
+"Goron City Red Boulders":
+  region: GORON_CITY
+  age_change: false
+  locations:
+    "Goron City Red Boulder 1": "can_hammer_or_keg"
+    "Goron City Red Boulder 2": "can_hammer_or_keg"
+    "Goron City Red Boulder 3": "can_hammer || (can_use_keg && (has_explosives_or_hammer || can_lift_silver || climb_anywhere || hookshot_anywhere))"
+    "Goron City Red Boulder 4": "can_hammer_or_keg"
+    "Goron City Red Boulder 5": "can_hammer || (can_use_keg && (has_explosives_or_hammer || can_lift_silver || climb_anywhere || hookshot_anywhere))"
+
+"Darunia Chamber":
+  region: GORON_CITY
+  exits:
+    "GLOBAL": "true"
+    "Death Mountain Crater Bottom": "is_adult || time_travel_at_will"
+    "Goron City": "true"
+  events:
+    DARUNIA_TORCH: "is_child && can_use_sticks"
+    STICKS: "is_child"
+    RUPEES: "is_adult"
+  locations:
+    "Darunia": "is_child && can_play_saria && soul_npc(SOUL_NPC_DARUNIA)"
+    "Goron City Pot Darunia Room 1": "true"
+    "Goron City Pot Darunia Room 2": "true"
+    "Goron City Pot Darunia Room 3": "true"
+
+"Goron Shop":
+  region: ENTRANCE
+  exits:
+    "GLOBAL": "true"
+    "Goron City": "true"
+  locations:
+    "Goron Shop Item 1": "shop_price(0x18) && soul_goron_shopkeeper"
+    "Goron Shop Item 2": "shop_price(0x19) && soul_goron_shopkeeper"
+    "Goron Shop Item 3": "shop_price(0x1a) && soul_goron_shopkeeper"
+    "Goron Shop Item 4": "shop_price(0x1b) && soul_goron_shopkeeper"
+    "Goron Shop Item 5": "shop_price(0x1c) && soul_goron_shopkeeper"
+    "Goron Shop Item 6": "shop_price(0x1d) && soul_goron_shopkeeper"
+    "Goron Shop Item 7": "shop_price(0x1e) && soul_goron_shopkeeper"
+    "Goron Shop Item 8": "shop_price(0x1f) && soul_goron_shopkeeper"
+
+"Goron City Grotto":
+  region: ENTRANCE
+  age_change: false
+  exits:
+    "GLOBAL": "true"
+    "Goron City": "true"
+  locations:
+    "Goron City Grotto Left Scrub": "business_scrub(0x0b)"
+    "Goron City Grotto Center Scrub": "business_scrub(0x0c)"
+    "Goron City Grotto Right Scrub": "business_scrub(0x0d)"
+    "Goron City Grotto Hive": "break_hive_high"

@@ -118,6 +118,14 @@ pub struct AppSettings {
     pub auto_load_tracking: bool,
     #[serde(default = "default_true")]
     pub auto_load_spoiler: bool,
+    // Reachability logic (accessibility): only show checks the player can reach
+    // given the items collected so far. Off by default (opt-in). When on,
+    // `logic_hide_unreachable` chooses how unreachable checks are shown: dimmed
+    // (false) or fully hidden (true).
+    #[serde(default)]
+    pub logic_filter_enabled: bool,
+    #[serde(default)]
+    pub logic_hide_unreachable: bool,
     // Multiplayer launch options (Qt `AppConfig` UseMultiplayer / Host / Port),
     // persisted so the checkbox and server address survive across sessions.
     #[serde(default)]
@@ -144,6 +152,8 @@ impl Default for AppSettings {
             auto_gps_start: false,
             auto_load_tracking: true,
             auto_load_spoiler: true,
+            logic_filter_enabled: false,
+            logic_hide_unreachable: false,
             use_multiplayer: false,
             mp_host: default_mp_host(),
             mp_port: default_mp_port(),
@@ -280,6 +290,26 @@ impl I18n {
 
     pub fn opt_from_list(&self) -> &str {
         Self::get(&self.strings.menu, "from_list")
+    }
+
+    pub fn opt_logic_menu(&self) -> &str {
+        Self::get(&self.strings.menu, "logic_menu")
+    }
+
+    pub fn opt_logic_filter(&self) -> &str {
+        Self::get(&self.strings.menu, "logic_filter")
+    }
+
+    pub fn opt_logic_mode(&self) -> &str {
+        Self::get(&self.strings.menu, "logic_mode")
+    }
+
+    pub fn opt_logic_dim(&self) -> &str {
+        Self::get(&self.strings.menu, "logic_dim")
+    }
+
+    pub fn opt_logic_hide(&self) -> &str {
+        Self::get(&self.strings.menu, "logic_hide")
     }
 
     pub fn opt_auto_snap(&self) -> &str {
@@ -461,8 +491,8 @@ impl I18n {
         Self::get(&self.strings.launch, "drop_spoiler_hint")
     }
 
-    pub fn simulate_event(&self) -> &str {
-        Self::get(&self.strings.launch, "simulate_event")
+    pub fn copy_log(&self) -> &str {
+        Self::get(&self.strings.launch, "copy_log")
     }
 
     pub fn no_event(&self) -> &str {
@@ -487,6 +517,14 @@ impl I18n {
 
     pub fn patch_label(&self) -> &str {
         Self::get(&self.strings.launch, "patch_label")
+    }
+
+    pub fn unload_patch(&self) -> &str {
+        Self::get(&self.strings.launch, "unload_patch")
+    }
+
+    pub fn patch_unloaded(&self) -> &str {
+        Self::get(&self.strings.launch, "patch_unloaded")
     }
 
     // ---------------------------------------------------------------------
@@ -949,6 +987,8 @@ mod tests {
             i.options(), i.recenter_view(), i.rom_settings(),
             i.menu_tracking(), i.reveal_items(), i.auto_saving(), i.about(),
             i.opt_hide_collected(), i.opt_from_map(), i.opt_from_list(),
+            i.opt_logic_menu(), i.opt_logic_filter(), i.opt_logic_mode(),
+            i.opt_logic_dim(), i.opt_logic_hide(),
             i.opt_auto_snap(), i.opt_auto_zoom(), i.opt_backup(),
             i.opt_follow_item(), i.opt_follow_entrance(), i.opt_gps_start(),
             i.opt_auto_load(), i.opt_auto_load_tracking(), i.opt_auto_load_spoiler(),
@@ -960,7 +1000,7 @@ mod tests {
             i.filter_tooltip(), i.filter_needs_game(),
             i.launch_options(), i.save_tracking(), i.load_tracking(), i.load_spoiler(),
             i.reset_tracking(), i.use_multiplayer(), i.journal(),
-            i.drop_spoiler_hint(), i.simulate_event(),
+            i.drop_spoiler_hint(), i.copy_log(), i.unload_patch(), i.patch_unloaded(),
             i.address_placeholder(), i.port_placeholder(),
             i.all(), i.none(), i.choose(), i.search(), i.apply(), i.lang(),
             i.trck_file(), i.txt_file(), i.choose_name(), i.choose_trck(), i.choose_spoiler(),

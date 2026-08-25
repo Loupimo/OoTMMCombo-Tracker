@@ -137,6 +137,7 @@ extern "system" {
     fn SetForegroundWindow(hwnd: isize) -> i32;
     fn SendInput(n: u32, inputs: *const Input, cb_size: i32) -> u32;
     fn PostMessageA(hwnd: isize, msg: u32, wparam: usize, lparam: isize) -> i32;
+    fn GetClassNameA(hwnd: isize, class_name: *mut u8, max_count: i32) -> i32;
 }
 
 // --- Utilitaires -------------------------------------------------------------
@@ -312,6 +313,21 @@ fn open_settings(hwnd: isize) -> bool {
     }
 }
 
+/// La console de debug de la DLL (`AllocConsole`) apparaît elle aussi comme une
+/// nouvelle fenêtre top-level de PJ64. La fermer plus tard avec WM_CLOSE
+/// terminerait tout l'émulateur (fermer une console tue le process attaché) : on
+/// l'ignore donc lors de la détection de la fenêtre de réglages.
+fn is_console_window(hwnd: isize) -> bool {
+    unsafe {
+        let mut buf = [0u8; 64];
+        let n = GetClassNameA(hwnd, buf.as_mut_ptr(), buf.len() as i32);
+        if n <= 0 {
+            return false;
+        }
+        String::from_utf8_lossy(&buf[..n as usize]) == "ConsoleWindowClass"
+    }
+}
+
 /// Attend qu'une NOUVELLE fenêtre PJ64 (absente de `before`) apparaisse, jusqu'à
 /// `timeout`. Mirror `WaitForSettingsWindow`.
 fn wait_for_new_window(pid: u32, before: &[isize], timeout: Duration) -> Option<isize> {
@@ -319,6 +335,10 @@ fn wait_for_new_window(pid: u32, before: &[isize], timeout: Duration) -> Option<
     while start.elapsed() < timeout {
         for hwnd in pj64_windows(pid) {
             if !before.contains(&hwnd) && unsafe { IsWindowVisible(hwnd) } != 0 {
+                // Ne jamais retourner la console de debug : la refermer tuerait PJ64.
+                if is_console_window(hwnd) {
+                    continue;
+                }
                 return Some(hwnd);
             }
         }

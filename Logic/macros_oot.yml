@@ -1,0 +1,437 @@
+#Generic Utility Macros
+"is_child": "age(child)"
+"is_adult": "age(adult)"
+"has_clock": "setting(clocksOot, none) || has(CLOCK)"
+"is_day": "(has_clock || setting(clocksOot, day)) && (oot_time(day) || can_play_sun || can_play_double_time)"
+"is_night": "(has_clock || setting(clocksOot, night)) && (oot_time(night) || can_play_sun || can_play_double_time)"
+"is_dusk": "has_clock && (oot_time(dusk) || can_play_sun || can_play_double_time)"
+"time_travel_at_will": "!setting(ageChange, none) && event(TIME_TRAVEL_AT_WILL)"
+
+# Spells
+"can_use_din": "can_use_din_raw"
+"can_use_farore": "can_use_farore_raw"
+"can_use_nayru": "can_use_nayru_raw"
+
+"rusty_key(x)": "cond(setting(rustyKeysOot), has(x), true)"
+
+# Ocarina
+"ocarina_button(x, y)": "cond(setting(ocarinaButtonsShuffleOot), cond(setting(sharedOcarinaButtons), has(y), has(x)), true)"
+"ocarina_button_a": "ocarina_button(BUTTON_A, SHARED_BUTTON_A)"
+"ocarina_button_right": "ocarina_button(BUTTON_C_RIGHT, SHARED_BUTTON_C_RIGHT)"
+"ocarina_button_left": "ocarina_button(BUTTON_C_LEFT, SHARED_BUTTON_C_LEFT)"
+"ocarina_button_up": "ocarina_button(BUTTON_C_UP, SHARED_BUTTON_C_UP)"
+"ocarina_button_down": "ocarina_button(BUTTON_C_DOWN, SHARED_BUTTON_C_DOWN)"
+
+"ocarina_button_any2": "ocarina_button_any2_a || ocarina_button_any2_right || ocarina_button_any2_left || ocarina_button_any2_up"
+"ocarina_button_any2_a": "ocarina_button_a && (ocarina_button_right || ocarina_button_left || ocarina_button_up || ocarina_button_down)"
+"ocarina_button_any2_right": "ocarina_button_right && (ocarina_button_left || ocarina_button_up || ocarina_button_down)"
+"ocarina_button_any2_left": "ocarina_button_left && (ocarina_button_up || ocarina_button_down)"
+"ocarina_button_any2_up": "ocarina_button_up && ocarina_button_down"
+
+"has_ocarina": "glitch_ocarina_items || has(OCARINA) || has(SHARED_OCARINA)"
+"has_ocarina_of_time": "has(OCARINA, 2) || has(SHARED_OCARINA, 2)"
+
+"can_play_soaring": "(setting(agelessSoaring) || is_child) && can_play_soaring_raw"
+"can_play_double_time": "setting(songOfDoubleTimeOot) && can_play_time"
+"can_play_goron_half": "can_play_goron || (can_play_goron_half_raw && setting(progressiveGoronLullabyOot, progressive))"
+
+"can_play_minigame": "has_ocarina && ocarina_button_a && ocarina_button_right && ocarina_button_down && ocarina_button_left && ocarina_button_up"
+"can_play_scarecrow": "has_ocarina && ocarina_button_any2"
+
+"soil_fairies(x)": "is_child && (can_play_storms || has_water) && (setting(ootPreplantedBeans) || event(x))"
+
+"has_shovel": "!setting(shovelOot) || has(SHOVEL) || has(SHARED_SHOVEL)"
+
+# Song events
+"song_event_zelda(x)": "_song_event_oot(x, 0) && can_play_zelda"
+"song_event_epona(x)": "_song_event_oot(x, 1) && can_play_epona"
+"song_event_saria(x)": "_song_event_oot(x, 2) && can_play_saria"
+"song_event_storms(x)": "_song_event_oot(x, 3) && can_play_storms"
+"song_event_sun(x)": "_song_event_oot(x, 4) && can_play_sun"
+"song_event_time(x)": "_song_event_oot(x, 5) && can_play_time"
+"song_event_tp_forest(x)": "_song_event_oot(x, 6) && can_play_tp_forest"
+"song_event_tp_fire(x)": "_song_event_oot(x, 7) && can_play_tp_fire"
+"song_event_tp_water(x)": "_song_event_oot(x, 8) && can_play_tp_water"
+"song_event_tp_spirit(x)": "_song_event_oot(x, 9) && can_play_tp_spirit"
+"song_event_tp_shadow(x)": "_song_event_oot(x, 10) && can_play_tp_shadow"
+"song_event_tp_light(x)": "_song_event_oot(x, 11) && can_play_tp_light"
+"song_event_healing(x)": "_song_event_oot(x, 12) && can_play_healing"
+"song_event_soaring(x)": "_song_event_oot(x, 13) && can_play_soaring"
+"song_event_awakening(x)": "_song_event_oot(x, 14) && can_play_awakening"
+"song_event_goron(x)": "_song_event_oot(x, 15) && can_play_goron"
+"song_event_goron_half(x)": "_song_event_oot(x, 16) && can_play_goron_half"
+"song_event_zora(x)": "_song_event_oot(x, 17) && can_play_zora"
+"song_event_elegy(x)": "_song_event_oot(x, 18) && can_play_emptiness"
+"song_event_order(x)": "_song_event_oot(x, 19) && can_play_order"
+"song_event(x)": "song_event_zelda(x) || song_event_epona(x) || song_event_saria(x) || song_event_storms(x) || song_event_sun(x) || song_event_time(x) || song_event_healing(x) || song_event_soaring(x) || song_event_awakening(x) || song_event_goron(x) || song_event_goron_half(x) || song_event_zora(x) || song_event_elegy(x) || song_event_order(x) || song_event_tp_forest(x) || song_event_tp_fire(x) || song_event_tp_water(x) || song_event_tp_spirit(x) || song_event_tp_shadow(x) || song_event_tp_light(x)"
+
+# Bombchu
+"bombchu_license_bag_first": "license(BOMBCHU_5) || license(BOMBCHU_10) || license(BOMBCHU_20) || license(SHARED_BOMBCHU) || license(SHARED_BOMBCHU_5) || license(SHARED_BOMBCHU_10) || license(SHARED_BOMBCHU_20)"
+"bombchu_license_bag_separate": "has(BOMBCHU_BAG) || has(SHARED_BOMBCHU_BAG)"
+"bombchu_license_bag": "(setting(bombchuBehaviorOot, bagSeparate) && bombchu_license_bag_separate) || (setting(bombchuBehaviorOot, bagFirst) && bombchu_license_bag_first)"
+"bombchu_license": "((setting(bombchuBehaviorOot, free) || setting(bombchuBehaviorOot, bombBag)) && has_bomb_bag) || bombchu_license_bag"
+"bombchu_drops": "bombchu_license_bag && (event(BOMBS_OR_BOMBCHU) || (setting(sharedBombchu) && event(MM_BOMBS_OR_BOMBCHU)))"
+"bombchu_source": "event(BOMBCHU) || bombchu_drops || renewable(BOMBCHU_5) || renewable(BOMBCHU_10) || renewable(BOMBCHU_20) || (setting(sharedBombchu) && (event(MM_BOMBCHU) || renewable(SHARED_BOMBCHU) || renewable(SHARED_BOMBCHU_5) || renewable(SHARED_BOMBCHU_10) || renewable(SHARED_BOMBCHU_20)))"
+"has_bombchu": "bombchu_source && bombchu_license"
+
+# Items
+
+## Slingshot
+"has_slingshot": "has(SLINGSHOT) || has(SHARED_SLINGSHOT)"
+"has_slingshot_ammo": "event(SEEDS) || (setting(sharedSlingshot) && event(MM_SEEDS)) || renewable(DEKU_SEEDS_5) || renewable(DEKU_SEEDS_30) || renewable(SHARED_DEKU_SEEDS_5) || renewable(SHARED_DEKU_SEEDS_30)"
+"can_use_slingshot": "age_slingshot && has_slingshot && has_slingshot_ammo"
+
+#Standard Single Item Use Macros
+"has_sticks_capacity": "!setting(sticksNutsUpgradesInitial) || has(STICK_UPGRADE) || has(SHARED_STICK_UPGRADE)"
+"has_nuts_capacity": "!setting(sticksNutsUpgradesInitial) || has(NUT_UPGRADE) || has(SHARED_NUT_UPGRADE)"
+"has_sticks": "has_sticks_capacity && (event(STICKS) || renewable(STICK) || renewable(STICKS_5) || renewable(STICKS_10) || renewable(SHARED_STICK) || renewable(SHARED_STICKS_5) || renewable(SHARED_STICKS_10) || (setting(sharedNutsSticks) && event(MM_STICKS)))"
+"has_nuts": "has_nuts_capacity && (event(NUTS) || renewable(NUTS_5) || renewable(NUTS_10) || renewable(SHARED_NUT) || renewable(SHARED_NUTS_5) || renewable(SHARED_NUTS_10) || (setting(sharedNutsSticks) && event(MM_NUTS)))"
+"can_use_sticks": "age_sticks && has_sticks"
+"has_bomb_bag": "has(BOMB_BAG) || has(SHARED_BOMB_BAG)"
+"has_bombs": "has_bomb_bag && (event(BOMBS) || event(BOMBS_OR_BOMBCHU) || (setting(sharedBombBags) && (event(MM_BOMBS) || event(MM_BOMBS_OR_BOMBCHU))) || renewable(BOMBS_5) || renewable(BOMBS_10) || renewable(BOMBS_20) || renewable(BOMBS_30) || renewable(SHARED_BOMBS_5) || renewable(SHARED_BOMBS_10) || renewable(SHARED_BOMBS_20) || renewable(SHARED_BOMBS_30))"
+"has_bow": "has(BOW) || has(SHARED_BOW)"
+"has_arrows": "has_bow && (event(ARROWS) || renewable(ARROWS_5) || renewable(ARROWS_10) || renewable(ARROWS_30) || renewable(SHARED_ARROWS_5) || renewable(SHARED_ARROWS_10) || renewable(SHARED_ARROWS_30) || renewable(SHARED_ARROWS_40) || (setting(sharedBows) && event(MM_ARROWS)))"
+"can_use_bow": "age_bow && has_arrows"
+"has_hookshot(x)": "has(HOOKSHOT, x) || has(SHARED_HOOKSHOT, x)"
+"can_hookshot_n(x)": "age_hookshot && has_hookshot(x)"
+"can_hookshot": "can_hookshot_n(1)"
+"can_longshot": "can_hookshot_n(2)"
+"can_boomerang": "age_boomerang && (has(BOOMERANG) || has(SHARED_BOOMERANG))"
+"can_hammer": "age_hammer && has_hammer_raw"
+"can_use_beans": "is_child && has(MAGIC_BEAN)"
+"has_keg": "has(POWDER_KEG) || has(SHARED_POWDER_KEG)"
+
+# Age macros
+"age_sticks": "glitch_equip_swap || is_child || setting(agelessSticks)"
+"age_boomerang": "glitch_equip_swap || is_child || setting(agelessBoomerang)"
+"age_boomerang_anyage": "glitch_equip_swap_anyage || setting(agelessBoomerang)"
+"age_hammer": "glitch_equip_swap || is_adult || setting(agelessHammer)"
+"age_hookshot": "glitch_equip_swap || is_adult || setting(agelessHookshot)"
+"age_hookshot_anyage": "glitch_equip_swap_anyage || setting(agelessHookshot)"
+"age_sword_child": "is_child || setting(agelessSwords)"
+"age_sword_adult": "is_adult || setting(agelessSwords)"
+"age_shield_child": "is_child || setting(agelessShields)"
+"age_shield_adult": "is_adult || setting(agelessShields)"
+"age_tunics": "is_adult || setting(agelessTunics)"
+"age_boots": "is_adult || setting(agelessBoots)"
+"age_child_trade": "glitch_equip_swap || is_child || setting(agelessChildTrade)"
+"age_slingshot": "is_child || setting(agelessSlingshot) || glitch_equip_swap"
+"age_bow": "is_adult || setting(agelessBow) || glitch_equip_swap"
+
+# Swords
+"starts_with_master_sword": "setting(startingAge, adult) && (!setting(shuffleMasterSword) && setting(timeTravelSword))"
+"has_sword_child(n)": "setting(extraChildSwordsOot) && cond(setting(sharedSwords), has(SHARED_SWORD, n), has(SWORD, n))"
+"has_sword_kokiri": "cond(setting(progressiveSwordsOot, progressive), has(SWORD), cond(setting(extraChildSwordsOot), has_sword_child(1), has(SWORD_KOKIRI)))"
+"has_sword_razor": "has_sword_child(2)"
+"has_sword_gilded": "has_sword_child(3)"
+"has_sword_master": "starts_with_master_sword || cond(setting(progressiveSwordsOot, progressive), has(SWORD, 2), has(SWORD_MASTER))"
+"has_sword_goron": "cond(setting(progressiveSwordsOot, progressive), cond(starts_with_master_sword, has(SWORD, 2), has(SWORD, 3)), cond(setting(progressiveSwordsOot, goron), has(SWORD_GORON), has(SWORD_KNIFE) || has(SWORD_BIGGORON)))"
+"has_sword_biggoron": "cond(setting(progressiveSwordsOot, progressive), cond(starts_with_master_sword, has(SWORD, 3), has(SWORD, 4)), cond(setting(progressiveSwordsOot, goron), has(SWORD_GORON, 2), has(SWORD_BIGGORON)))"
+"has_great_fairy_sword": "setting(gfsOot) && cond(setting(sharedGFS), has(SHARED_GREAT_FAIRY_SWORD), has(GREAT_FAIRY_SWORD))"
+"can_use_sword_kokiri": "age_sword_child && has_sword_kokiri"
+"can_use_sword_razor": "age_sword_child && has_sword_razor"
+"can_use_sword_gilded": "age_sword_child && has_sword_gilded"
+"can_use_sword_master": "age_sword_adult && has_sword_master"
+"can_use_sword_goron": "age_sword_adult && has_sword_goron"
+"can_use_sword_biggoron": "age_sword_adult && has_sword_biggoron"
+"can_use_great_fairy_sword": "(is_child || setting(agelessGFS)) && has_great_fairy_sword"
+"can_use_sword": "can_use_sword_kokiri || can_use_sword_master || can_use_sword_goron || can_use_great_fairy_sword"
+"can_use_sword_or_sticks": "can_use_sword || can_use_sticks"
+
+# Shields
+"has_shield_deku": "age_shield_child && (renewable(SHIELD_DEKU) || renewable(SHARED_SHIELD_DEKU) || event(SHIELD_DEKU) || has(SHIELD, 1) || has(SHARED_SHIELD, 1))"
+"has_shield_hylian": "renewable(SHARED_SHIELD_HYLIAN) || renewable(SHIELD_HYLIAN) || has(SHIELD, 2) || has(SHARED_SHIELD, 2)"
+"has_shield": "has_shield_hylian || has_mirror_shield || has_shield_deku"
+"has_shield_for_scrubs": "(is_adult && has_shield_hylian) || has_shield_deku"
+"has_mirror_shield_raw_nonshared": "cond(setting(progressiveShieldsOot, progressive), has(SHIELD, 3), has(SHIELD_MIRROR))"
+"has_mirror_shield_raw_shared": "cond(setting(progressiveShieldsOot, progressive), has(SHARED_SHIELD, 3), has(SHARED_SHIELD_MIRROR))"
+"has_mirror_shield": "age_shield_adult && cond(setting(sharedShields), has_mirror_shield_raw_shared, has_mirror_shield_raw_nonshared)"
+"has_one_hand_shield": "has_shield_for_scrubs || has_mirror_shield"
+
+"can_reflect_light": "has_sunlight_arrows || has_mirror_shield"
+
+#Equipment Use Macros
+"has_rupees": "event(RUPEES) || (setting(sharedWallets) && event(MM_RUPEES))"
+"stone_of_agony": "cond(setting(sharedStoneAgony), has(SHARED_STONE_OF_AGONY), has(STONE_OF_AGONY)) || trick(OOT_HIDDEN_GROTTOS)"
+
+"has_tunic_goron_strict": "age_tunics && has_tunic_goron_raw"
+"has_tunic_zora_strict": "age_tunics && has_tunic_zora_raw"
+"has_tunic_goron": "has_tunic_goron_strict || trick(OOT_TUNICS)"
+"has_tunic_zora": "has_tunic_zora_strict || trick(OOT_TUNICS)"
+
+"has_iron_boots": "age_boots && has_iron_boots_raw"
+"has_hover_boots": "age_boots && has_hover_boots_raw"
+
+"has_goron_bracelet": "has_strength_raw(1)"
+"can_lift_silver": "(is_adult || setting(agelessStrength)) && has_strength_raw(2)"
+"can_lift_gold": "(is_adult || setting(agelessStrength)) && has_strength_raw(3)"
+
+#Magic Item Macros
+"has_magic": "(has(MAGIC_UPGRADE) || has(SHARED_MAGIC_UPGRADE)) && (event(MAGIC) || has_magic_jar || (setting(sharedMagic) && event(MM_MAGIC)) || has_green_potion || has_blue_potion)"
+"has_light_arrow": "cond(setting(sharedMagicArrowLight), has(SHARED_ARROW_LIGHT), has(ARROW_LIGHT))"
+"has_ice_arrow": "cond(setting(sharedMagicArrowIce), has(SHARED_ARROW_ICE), has(ARROW_ICE))"
+"can_use_light_arrows": "has_light_arrow && has_magic && can_use_bow"
+"can_use_ice_arrow": "has_ice_arrow && has_magic && can_use_bow"
+"can_use_ice_arrow_platforms": "setting(iceArrowPlatformsOot) && can_use_ice_arrow"
+"has_blue_fire_arrows": "setting(blueFireArrows) && can_use_ice_arrow"
+"has_blue_fire_arrows_mudwall": "trick(OOT_BFA_MUDWALLS) && has_blue_fire_arrows"
+"has_sunlight_arrows": "setting(sunlightArrows) && can_use_light_arrows"
+"has_fire_arrows": "can_use_bow && (has(ARROW_FIRE) || has(SHARED_ARROW_FIRE)) && has_magic"
+"has_lens_strict": "has_magic && (has(LENS) || has(SHARED_LENS))"
+"has_spin_upgrade": "cond(setting(spinUpgradeOot), cond(setting(sharedSpinUpgrade), has(SHARED_SPIN_UPGRADE), has(SPIN_UPGRADE)), true)"
+
+#Item Combination Macros
+"has_explosives": "has_bombs || has_bombchu"
+"has_bombflowers": "has_explosives || has_strength_raw(1)"
+"has_explosives_or_hammer": "has_explosives || can_hammer || can_use_mask_blast"
+"can_hit_triggers_distance": "can_use_slingshot || can_use_bow"
+"has_ranged_weapon_child": "can_use_slingshot || can_boomerang"
+"has_ranged_weapon_adult": "can_use_bow || can_hookshot"
+"has_ranged_weapon": "has_ranged_weapon_child || has_ranged_weapon_adult"
+"has_weapon": "can_use_sword"
+"can_collect_distance": "can_hookshot || can_boomerang"
+"scarecrow_hookshot": "has_ocarina && can_hookshot && (event(SCARECROW) || setting(freeScarecrowOot))"
+"scarecrow_longshot": "has_ocarina && can_longshot && (event(SCARECROW) || setting(freeScarecrowOot))"
+"has_fire": "has_fire_arrows || can_use_din"
+"has_fire_or_sticks": "can_use_sticks || has_fire"
+"hidden_grotto_bomb": "has_shovel && stone_of_agony && has_explosives_or_hammer"
+"hidden_grotto_storms": "has_shovel && stone_of_agony && can_play_storms"
+"has_spiritual_stones": "has(STONE_EMERALD) && has(STONE_RUBY) && has(STONE_SAPPHIRE)"
+"can_jump_slash": "can_use_sword || can_use_sticks || can_hammer"
+"can_hammer_or_keg": "can_hammer || can_use_keg"
+
+# Scales
+"has_scale_bronze": "cond(setting(bronzeScale), has_scale_raw(1), true)"
+"has_scale_silver": "cond(setting(bronzeScale), has_scale_raw(2), has_scale_raw(1))"
+"has_scale_gold": "cond(setting(bronzeScale), has_scale_raw(3), has_scale_raw(2))"
+
+# Dive
+"can_swim": "has_scale_bronze"
+"can_swim_or_sink": "can_swim || has_iron_boots"
+"can_dive_small": "has_scale_silver || has_iron_boots"
+"can_dive_big": "has_scale_gold || has_iron_boots"
+
+# GS
+"gs": "soul_gs"
+"gs_soil": "gs && is_child && has_bugs"
+"gs_night": "gs && is_night && (trick(OOT_NIGHT_GS) || can_play_sun || can_play_double_time)"
+
+#Specific Interaction Macros:
+"can_ride_epona": "is_adult && can_play_epona"
+"adult_trade(x)": "is_adult && has(x)"
+"has_blue_fire": "has_blue_fire_arrows || has_blue_fire_in_bottle"
+"can_ride_bean(x)": "is_adult && (setting(ootPreplantedBeans) || event(x))"
+"can_damage": "can_use_sword || can_use_sticks || has_explosives || has_ranged_weapon || can_use_din"
+"can_damage_skull": "can_damage || can_collect_distance || can_hammer"
+"can_cut_grass_no_c_button": "can_use_sword || has_strength_raw(1) || can_use_mask_blast"
+"can_cut_grass": "can_cut_grass_no_c_button || can_boomerang || has_explosives || can_hammer || glitch_broken_stick"
+"can_cut_grass_for_bugs": "can_use_sword || can_use_sticks || can_use_mask_blast || can_boomerang || has_explosives || can_hammer"
+"can_kill_baba_sticks": "soul_deku_baba && (can_boomerang || (can_use_sword && (is_child || has_nuts || can_hookshot || can_hammer)))"
+"can_kill_baba_nuts": "soul_deku_baba && (can_use_sword || has_explosives || can_use_slingshot)"
+"can_hit_scrub": "has_nuts || can_hit_triggers_distance || has_shield_for_scrubs || can_collect_distance || can_hammer || has_explosives"
+"can_rescue_carpenter": "small_keys_hideout_all && (can_use_sword || ((can_boomerang || has_nuts) && can_use_sticks)) && soul_carpenters && soul_thief_fighter"
+"carpenters_rescued": "setting(gerudoFortress, open) || (event(CARPENTER_1) && (setting(gerudoFortress, single) || (event(CARPENTER_2) && event(CARPENTER_3) && event(CARPENTER_4))))"
+"get_past_skultullas": "has_nuts || can_use_sword_or_sticks || has_ranged_weapon || can_use_din || has_explosives || can_hammer || can_use_mask_blast || can_use_mask_stone"
+"get_past_skultullas_no_stone": "has_nuts || can_use_sword_or_sticks || has_ranged_weapon || can_use_din || has_explosives || can_hammer || can_use_mask_blast"
+"collect_gs_on_walls": "gs && (can_collect_distance || (has_ranged_weapon && climb_anywhere))" #TODO: Low/high macros like beehives; Din's, Blast mask, bomchus, bombs (if within throwing distance) and maybe even jump slashes if space permits (and damage?)
+"can_carry_keg": "can_lift_gold"
+"can_use_keg": "can_carry_keg && cond(setting(sharedPowderKeg), event(MM_BUY_KEG) || event(BUY_KEG), setting(powderKegOot) && event(BUY_KEG))"
+"can_hit_crystal_switch_close": "has_weapon || has_bombs || can_use_mask_blast || has_bombchu || can_use_bow || can_use_slingshot || can_hookshot || can_use_sticks || can_hammer || can_boomerang"
+
+
+#Trick Macros
+"has_lens": "has_lens_strict || trick(OOT_LENS)"
+"trick_mido": "trick(OOT_MIDO_SKIP) && (has_bow || has_hookshot(1) || has(SHARED_ARROW_FIRE) || has(ARROW_FIRE) || has(SHARED_ARROW_LIGHT) || has(ARROW_LIGHT))"
+
+# Mido / Deku Tree
+"can_move_mido_reqs": "is_child && has_sword_kokiri && has_shield_deku"
+"can_move_mido": "can_move_mido_reqs && soul_npc(SOUL_NPC_MIDO)"
+"can_bypass_mido": "setting(dekuTree, open) || is_adult || climb_anywhere || hookshot_anywhere || can_move_mido_reqs"
+
+#Specialty Macros
+"met_zelda": "event(MEET_ZELDA) || setting(skipZelda)"
+"woke_talon_child": "event(TALON_CHILD) || setting(skipZelda)"
+"has_fire_spirit_ageless": "has_magic && ((has_arrows && (has(ARROW_FIRE) || has(SHARED_ARROW_FIRE)) && has_sticks) || can_use_din) && cond(!setting(climbMostSurfacesOot, off), (has_explosives && can_reflect_light) || small_keys_spirit(3), has_explosives || small_keys_spirit(2))"
+"has_fire_spirit": "(time_travel_at_will && has_fire_or_sticks) || has_fire_spirit_ageless"
+"has_ranged_weapon_both_ageless": "has_explosives || (((has(SLINGSHOT) && (event(SEEDS) || renewable(DEKU_SEEDS_30))) || has(BOOMERANG) || has(SHARED_BOOMERANG)) && (has_hookshot(1) || has_arrows))"
+"has_ranged_weapon_both": "(time_travel_at_will && has_ranged_weapon) || has_ranged_weapon_both_ageless"
+"can_collect_ageless_raw": "(has_hookshot(1) && (has(BOOMERANG) || has(SHARED_BOOMERANG))) || (age_boomerang_anyage && (has(BOOMERANG) || has(SHARED_BOOMERANG))) || (age_hookshot_anyage && has_hookshot(1))"
+"can_collect_ageless": "(time_travel_at_will && can_collect_distance) || can_collect_ageless_raw"
+"king_zora_moved": "event(KING_ZORA_LETTER) || setting(zoraKing, open) || (setting(zoraKing, adult) && is_adult)"
+"business_scrub(id)": "soul_business_scrub && can_hit_scrub && scrub_price(id)"
+
+# Wallets
+"has_wallet(n)": "cond(setting(childWallets), has(WALLET, n) || has(SHARED_WALLET, n), has(WALLET, n - 1) || has(SHARED_WALLET, n - 1))"
+"can_use_wallet(n)": "has_rupees && has_wallet(n)"
+"wallet_price(range, id)": "price(range, id, 0) || (has_rupees && ((price(range, id, 99) && has_wallet(1)) || (price(range, id, 200) && has_wallet(2)) || (price(range, id, 500) && has_wallet(3)) || (setting(colossalWallets) && price(range, id, 999) && has_wallet(4)) || (setting(bottomlessWallets) && price(range, id, 9999) && has_wallet(5))))"
+"shop_price(id)": "wallet_price(OOT_SHOPS, id)"
+"scrub_price(id)": "wallet_price(OOT_SCRUBS, id)"
+"merchant_price(id)": "wallet_price(OOT_MERCHANTS, id)"
+
+# Keys
+"boss_key(x)": "setting(bossKeyShuffleOot, removed) || has(x)"
+"small_keys(type, x, y, count)": "has_skeleton_key || (setting(smallKeyShuffleOot, removed) || cond(setting(smallKeyRingOot, type), has(y), has(x, count)))"
+"small_keys_extra(type, x, y, count)": "has_skeleton_key || (setting(smallKeyShuffleOot, removed) || cond(setting(smallKeyRingOot, type), has(y), has(x, count + 1)))"
+"small_keys_forest(n)": "small_keys(Forest, SMALL_KEY_FOREST, KEY_RING_FOREST, n)"
+"small_keys_fire(n)": "cond(setting(smallKeyShuffleOot, anywhere), small_keys_extra(Fire, SMALL_KEY_FIRE, KEY_RING_FIRE, n), small_keys(Fire, SMALL_KEY_FIRE, KEY_RING_FIRE, n))"
+"small_keys_fire_mq(n)": "small_keys(Fire, SMALL_KEY_FIRE, KEY_RING_FIRE, n)"
+"small_keys_water(n)": "small_keys(Water, SMALL_KEY_WATER, KEY_RING_WATER, n)"
+"small_keys_shadow(n)": "small_keys(Shadow, SMALL_KEY_SHADOW, KEY_RING_SHADOW, n)"
+"small_keys_spirit(n)": "small_keys(Spirit, SMALL_KEY_SPIRIT, KEY_RING_SPIRIT, n)"
+"small_keys_hideout(n)": "has_skeleton_key || has(KEY_RING_GF) || has(SMALL_KEY_GF, n)"
+"small_keys_tcg(n)": "cond(setting(smallKeyShuffleChestGame, vanilla), has_lens_strict && can_use_wallet(1) && soul_chest_game_owner, has_skeleton_key || has(KEY_RING_TCG) || has(SMALL_KEY_TCG, n))"
+"small_keys_hideout_all": "setting(gerudoFortress, open) || cond(setting(gerudoFortress, single), small_keys_hideout(1), small_keys_hideout(4))"
+"small_keys_botw(n)": "small_keys(BotW, SMALL_KEY_BOTW, KEY_RING_BOTW, n)"
+"small_keys_gtg(n)": "small_keys(GTG, SMALL_KEY_GTG, KEY_RING_GTG, n)"
+"small_keys_ganon(n)": "small_keys(Ganon, SMALL_KEY_GANON, KEY_RING_GANON, n)"
+
+# Silver rupees
+"silver_rupees(type, rupee, pouch, count)": "(setting(magicalRupee) && has(RUPEE_MAGICAL)) || cond(setting(silverRupeePouches, type), has(pouch), has(rupee, count))"
+
+"silver_rupees_ganon_light": "silver_rupees(Ganon_Light, RUPEE_SILVER_GANON_LIGHT, POUCH_SILVER_GANON_LIGHT, 5)"
+"silver_rupees_ganon_forest": "silver_rupees(Ganon_Forest, RUPEE_SILVER_GANON_FOREST, POUCH_SILVER_GANON_FOREST, 5)"
+"silver_rupees_ganon_fire": "silver_rupees(Ganon_Fire, RUPEE_SILVER_GANON_FIRE, POUCH_SILVER_GANON_FIRE, 5)"
+"silver_rupees_ganon_spirit": "silver_rupees(Ganon_Spirit, RUPEE_SILVER_GANON_SPIRIT, POUCH_SILVER_GANON_SPIRIT, 5)"
+"silver_rupees_ganon_water": "silver_rupees(Ganon_Water, RUPEE_SILVER_GANON_WATER, POUCH_SILVER_GANON_WATER, 5)"
+"silver_rupees_ganon_shadow": "silver_rupees(Ganon_Shadow, RUPEE_SILVER_GANON_SHADOW, POUCH_SILVER_GANON_SHADOW, 5)"
+
+"silver_rupees_gtg_slopes": "silver_rupees(GTG_Slopes, RUPEE_SILVER_GTG_SLOPES, POUCH_SILVER_GTG_SLOPES, 5)"
+"silver_rupees_gtg_lava": "silver_rupees(GTG_Lava, RUPEE_SILVER_GTG_LAVA, POUCH_SILVER_GTG_LAVA, 5)"
+"silver_rupees_gtg_water": "silver_rupees(GTG_Water, RUPEE_SILVER_GTG_WATER, POUCH_SILVER_GTG_WATER, 5)"
+"silver_rupees_gtg_lava_mq": "silver_rupees(GTG_Lava, RUPEE_SILVER_GTG_LAVA, POUCH_SILVER_GTG_LAVA, 6)"
+"silver_rupees_gtg_water_mq": "silver_rupees(GTG_Water, RUPEE_SILVER_GTG_WATER, POUCH_SILVER_GTG_WATER, 3)"
+
+"silver_rupees_ic_scythe": "silver_rupees(IC_Scythe, RUPEE_SILVER_IC_SCYTHE, POUCH_SILVER_IC_SCYTHE, 5)"
+"silver_rupees_ic_block": "silver_rupees(IC_Block, RUPEE_SILVER_IC_BLOCK, POUCH_SILVER_IC_BLOCK, 5)"
+
+"silver_rupees_shadow_scythe": "silver_rupees(Shadow_Scythe, RUPEE_SILVER_SHADOW_SCYTHE, POUCH_SILVER_SHADOW_SCYTHE, 5)"
+"silver_rupees_shadow_pit": "silver_rupees(Shadow_Pit, RUPEE_SILVER_SHADOW_PIT, POUCH_SILVER_SHADOW_PIT, 5)"
+"silver_rupees_shadow_spikes": "silver_rupees(Shadow_Spikes, RUPEE_SILVER_SHADOW_SPIKES, POUCH_SILVER_SHADOW_SPIKES, 5)"
+"silver_rupees_shadow_blades": "silver_rupees(Shadow_Blades, RUPEE_SILVER_SHADOW_BLADES, POUCH_SILVER_SHADOW_BLADES, 10)"
+"silver_rupees_shadow_spikes_mq": "silver_rupees(Shadow_Spikes, RUPEE_SILVER_SHADOW_SPIKES, POUCH_SILVER_SHADOW_SPIKES, 10)"
+
+"silver_rupees_dc": "silver_rupees(DC, RUPEE_SILVER_DC, POUCH_SILVER_DC, 5)"
+
+"silver_rupees_spirit_child": "silver_rupees(Spirit_Child, RUPEE_SILVER_SPIRIT_CHILD, POUCH_SILVER_SPIRIT_CHILD, 5)"
+"silver_rupees_spirit_sun": "silver_rupees(Spirit_Sun, RUPEE_SILVER_SPIRIT_SUN, POUCH_SILVER_SPIRIT_SUN, 5)"
+"silver_rupees_spirit_boulders": "silver_rupees(Spirit_Boulders, RUPEE_SILVER_SPIRIT_BOULDERS, POUCH_SILVER_SPIRIT_BOULDERS, 5)"
+"silver_rupees_spirit_lobby": "silver_rupees(Spirit_Lobby, RUPEE_SILVER_SPIRIT_LOBBY, POUCH_SILVER_SPIRIT_LOBBY, 5)"
+"silver_rupees_spirit_adult": "silver_rupees(Spirit_Adult, RUPEE_SILVER_SPIRIT_ADULT, POUCH_SILVER_SPIRIT_ADULT, 5)"
+
+# Enemies
+"can_kill_stalfos": "soul_enemy(SOUL_ENEMY_STALFOS) && (can_use_sword || can_hammer)"
+"can_kill_octoroks": "soul_octorok && (can_use_slingshot || has_bomb_bag || can_use_bow || can_hookshot || can_boomerang || has_shield_for_scrubs)"
+"can_kill_octoroks_distance": "soul_octorok && (can_use_slingshot || can_use_bow)"
+"can_kill_big_octo": "soul_octorok && (can_boomerang && (has_sword_kokiri || has_sword_master || can_use_sticks))"
+"can_kill_wallmasters": "soul_wallmaster && (can_use_sword_or_sticks || can_hammer || can_use_slingshot || can_use_bow || has_bombchu || can_use_din)"
+"can_kill_floormasters": "soul_floormaster && (can_use_sword_or_sticks || can_hammer || can_use_slingshot || can_use_bow || has_bombchu || can_use_din)"
+"can_kill_dodongos": "soul_dodongo && (can_use_sword_or_sticks || can_hammer || can_use_bow || has_explosives)"
+"can_kill_baby_dodongos": "soul_baby_dodongo && (can_use_sword_or_sticks || can_hammer || can_use_slingshot || can_use_bow || has_explosives)"
+"can_kill_keese": "soul_keese && (can_use_sword_or_sticks || can_hammer || can_use_slingshot || can_boomerang || can_use_bow || can_hookshot)"
+"can_kill_guays": "soul_guay && (can_use_sword_or_sticks || can_hammer || can_use_slingshot || can_boomerang || can_use_bow || can_hookshot || can_use_din)"
+"can_kill_tektites": "soul_tektite && (can_use_sword_or_sticks || can_hammer || can_use_slingshot || can_use_bow || has_explosives || can_use_din)"
+"can_kill_tektites_distance": "soul_tektite && (can_use_slingshot || can_use_bow)"
+"can_kill_leevers": "soul_leever && (has_sword || can_hammer || can_use_slingshot || can_use_bow || has_explosives || can_use_din)"
+"can_kill_peahats_ground": "soul_peahat && (can_use_sword_or_sticks || has_arrows || can_hammer || can_hookshot || can_use_slingshot) || (is_night && has_explosives))"
+"can_kill_peahats_high": "soul_peahat && (can_use_slingshot || (is_night && has_explosives))"
+"can_kill_lizalfos_dinolfos": "soul_lizalfos_dinolfos && (can_use_sword_or_sticks || can_hammer || can_use_slingshot || can_use_bow)"
+"can_kill_larvae_eggs_low": "has_ranged_weapon || has_nuts"    #Can be used for clear rooms, but doesn't give enemy drops in OoTR.
+"can_kill_larvae_eggs_high": "has_ranged_weapon"
+"can_kill_larvae_hatched": "soul_gohma_larvae && (can_use_sword_or_sticks || can_hammer || can_use_slingshot || can_use_bow || can_hookshot || has_explosives || can_use_din)"
+"can_kill_shaboms": "soul_shaboms && (can_use_sword || can_boomerang || has_nuts || has_explosives || can_use_din)"
+"can_kill_dark_link": "soul_enemy(SOUL_ENEMY_DARK_LINK) && (can_use_sword || can_hammer || (can_use_din && has_chateau))" #Double magic may be enough but due to Dark Link matching player health chateau as a mercy? Din's is weird here.
+"can_kill_biris_baris": "soul_biris_baris && (can_use_sword_or_sticks || can_boomerang || has_explosives || can_use_din))"
+"can_kill_tailpasarans": "soul_tailpasarans && (can_boomerang || can_use_sword_or_sticks || can_hammer)" #It should be noted that Ruto can kill them but most players wouldn't know this.
+"can_kill_jabu_parasites": "soul_enemy(SOUL_ENEMY_PARASITE) && can_boomerang" #Can have glitches or tricks for bombchu later on.
+"can_kill_torch_slugs": "soul_enemy(SOUL_ENEMY_TORCH_SLUG) && (can_use_sword_or_sticks || can_hammer || cam_use_bow || can_use_mask_blast || has_explosives || has_sticks)"
+"can_kill_moblins": "soul_moblins && (can_use_sword_or_sticks || can_hammer || can_use_bow || can_hookshot)"
+"can_kill_poes": "soul_poe && (can_use_sword || can_hammer || can_use_slingshot || can_use_bow || can_hookshot)"
+"can_kill_poe_sisters": soul_poe && (can_use_sword || can_hammer || can_use_bow || can_hookshot)
+"can_kill_poe_meg": "soul_poe && (can_use_bow || can_hookshot)"
+"can_kill_armos": "soul_armos && (((can_use_sword_kokiri || can_use_sword_goron) && has_nuts) || can_use_sword_razor || can_use_sword_master || can_use_sword_biggoron || can_use_sticks || can_hammer || can_use_mask_blast || has_explosives || (can_use_slingshot && (has_nuts || can_boomerang)))"
+#"can_kill_small_babas": "soul_deku_baba &&"       #No enemy drops currently in OoTR.
+#"can_kill_big_babas": "soul_deku_baba &&"       #Enemy drops in OoTR only awarded when defeated with elemental arrows.
+"can_kill_mad_scrubs": "soul_deku_scrub && (can_use_sword_or_sticks || can_hammer || can_use_slingshot || can_boomerang || can_use_bow || can_hookshot || has_shield_for_scrubs)"
+"can_kill_yellow_scrubs": "soul_deku_scrub && (has_shield_for_scrubs || can_hammer)"
+"can_kill_bubbles": "soul_bubble && (can_use_sword_or_sticks || can_hammer || can_use_slingshot || can_use_bow || (has_bombchu && (can_boomerang || has_nuts)))"
+"can_kill_lava_bubbles": "soul_bubble && (has_spin_upgrade && (can_use_sword_master || can_use_sword_biggoron || can_use_sword_gilded))"
+"can_kill_beamos": "soul_beamos && (has_explosives || can_use_mask_blast)"
+"can_kill_redead_gibdo": "soul_redead_gibdo && (can_use_sword_or_sticks || can_hammer || can_use_din)"
+"can_kill_redead_gibdo_no_c_button": "soul_redead_gibdo && can_use_sword"
+"can_kill_skullwalltulas": "soul_skullwalltula && (can_use_slingshot || can_boomerang || can_use_bow || can_hookshot || can_hammer)"
+"can_kill_flare_dancer": "soul_enemy(SOUL_ENEMY_FLARE_DANCER) && (can_hammer || can_hookshot || has_explosives) && (can_use_sword || can_hammer || can_use_bow)"
+"can_kill_dead_hand": "soul_enemy(SOUL_ENEMY_DEAD_HAND) && (can_use_sword || (can_use_sticks && trick(OOT_DEAD_HAND_STICKS)))"
+"can_kill_shell_blades": "soul_shell_blade && (can_use_sword || can_use_bow || can_hookshot || can_use_din)"
+"can_kill_shell_blades_underwater": "soul_shell_blade && can_hookshot"
+"can_kill_like_like": "soul_like_like && (can_use_sword_or_sticks || can_hammer || can_use_slingshot || can_use_bow || has_explosives || can_use_din)"
+"can_kill_spike_enemies": "soul_spike_enemy && (can_use_sticks || can_use_sword_master || can_use_sword_biggoron || can_hammer || can_use_bow || can_hookshot || has_explosives)"
+"can_kill_spike_enemies_underwater": "soul_spike_enemy && can_hookshot"
+"can_kill_anubis": "soul_enemy(SOUL_ENEMY_ANUBIS) && has_fire"
+"can_kill_iron_knuckles": "soul_iron_knuckle && (can_use_sword || can_hammer || has_explosives)"
+"can_kill_gerudo_fighter": "soul_thief_fighter && (can_use_sword || can_hammer || can_use_bow || ((can_boomerang || has_nuts) && can_use_sticks))"
+"can_kill_skull_kids": "soul_skull_kids && can_use_sword"
+"can_kill_flying_pots": "soul_flying_pot" #They break themselves.
+"can_kill_freezards": "soul_freezard && (can_use_sticks || can_use_sword_master || can_use_sword_razor || can_use_sword_biggoron || can_hammer || can_hookshot || has_explosives || has_fire)"
+"can_kill_stingers": "soul_stingers && (can_use_sword_or_sticks || can_hammer || can_use_slingshot || can_use_bow || can_hookshot || can_use_din)"
+"can_kill_stingers_underwater": "soul_stingers && can_hookshot"
+"can_kill_wolfos": "soul_wolfos && (can_use_sword_or_sticks || can_hammer || can_use_slingshot || can_use_bow || has_explosives || can_use_din)"
+#"can_kill_stalchildren": "soul_stalchild" #Don't need to define combat, as they probably won't have enemy drops anyway, and they aren't in dungeons. Should be listed if ever part of enemizer.
+#"can_kill_invisible_enemies": "has_lens" #Enemizer or Actorizer might make this macro relevant for switching enemies.
+
+#OoT Bosses:
+"can_kill_gohma": "soul_boss(SOUL_BOSS_QUEEN_GOHMA) && (has_nuts || can_use_slingshot) && (can_use_sticks || can_use_sword)"
+"can_kill_king_dodongo": "soul_boss(SOUL_BOSS_KING_DODONGO) && ((has_bombs || has_strength_raw(1)) && (can_use_sticks || can_hammer || can_use_sword))"
+"can_kill_barinade": "soul_boss(SOUL_BOSS_BARINADE) && can_boomerang && (can_use_sticks || can_use_sword)"
+"can_kill_phantom_ganon": "soul_boss(SOUL_BOSS_PHANTOM_GANON) && (has_ranged_weapon_adult || can_use_slingshot) && (can_use_sword || has_bottle || can_boomerang) && (can_use_sword_or_sticks || can_hammer)"
+"can_kill_volvagia": "soul_boss(SOUL_BOSS_VOLVAGIA) && can_hammer && has_tunic_goron_strict"
+"can_kill_morpha": "soul_boss(SOUL_BOSS_MORPHA) && can_hookshot && (can_hammer || can_use_sword)"
+"can_kill_bongo": "soul_boss(SOUL_BOSS_BONGO_BONGO) && can_use_sword && has_lens && (can_use_bow || can_hookshot || can_use_slingshot)"
+"can_kill_twinrova": "soul_boss(SOUL_BOSS_TWINROVA) && soul_iron_knuckle && has_mirror_shield && (can_hammer || can_use_sword)"
+
+# Masks
+"has_mask_keaton": "has(MASK_KEATON) || has(SHARED_MASK_KEATON)"
+"has_mask_truth": "has(MASK_TRUTH) || has(SHARED_MASK_TRUTH)"
+"has_mask_bunny": "has(MASK_BUNNY) || has(SHARED_MASK_BUNNY)"
+"has_mask_stone": "setting(stoneMaskOot) && cond(setting(sharedMaskStone), has(SHARED_MASK_STONE), has(MASK_STONE))"
+"can_use_mask_stone": "age_child_trade && has_mask_stone"
+"has_mask_blast": "setting(blastMaskOot) && cond(setting(sharedMaskBlast), has(SHARED_MASK_BLAST), has(MASK_BLAST))"
+"can_use_mask_blast": "age_child_trade && has_mask_blast"
+
+# Glitches
+"glitch_equip_swap": "trick(GLITCH_OOT_EQUIP_SWAP) && ((has(SPELL_FIRE) || has(SHARED_SPELL_FIRE)) || (has_sticks && (is_child || setting(agelessSticks))))"
+"glitch_equip_swap_anyage": "trick(GLITCH_OOT_EQUIP_SWAP) && ((has(SPELL_FIRE) || has(SHARED_SPELL_FIRE)) || (has_sticks && setting(agelessSticks)))"
+"glitch_ocarina_items": "trick(GLITCH_OOT_OCARINA_ITEMS) && (has_bugs || has_fish)"
+"glitch_megaflip": "trick(GLITCH_OOT_MEGAFLIP) && has_explosives && has_one_hand_shield"
+"glitch_broken_stick": "trick(GLITCH_OOT_BROKEN_STICK) && can_use_sticks"
+
+# Misc
+"soul_enemy(x)": "(!setting(soulsEnemyOot)) || has(x)"
+"soul_boss(x)": "(!setting(soulsBossOot)) || has(x)"
+"soul_npc(x)": "(!setting(soulsNpcOot)) || has(x)"
+"soul_misc(x)": "(!setting(soulsMiscOot)) || has(x)"
+"soul_animal(x)": "(!setting(soulsAnimalOot)) || has(x)"
+"climb_anywhere": "setting(climbMostSurfacesOot, logical)"
+"hookshot_anywhere": "can_hookshot && setting(hookshotAnywhereOot, logical)"
+"longshot_anywhere": "can_longshot && setting(hookshotAnywhereOot, logical)"
+"evade_gerudo": "can_use_bow || can_hookshot || has(GERUDO_CARD) || can_use_mask_stone"
+"break_hive_with_slingbow": "setting(bowSlingshotBreakHives) && (can_use_bow || can_use_slingshot)"
+"break_hive_low": "can_collect_distance || has_bombs || (has_bombchu && trick(OOT_HIVE_BOMBCHU)) || break_hive_with_slingbow"
+"break_hive_high": "can_collect_distance || (has_bombchu && trick(OOT_HIVE_BOMBCHU)) || break_hive_with_slingbow"
+
+# Events
+"ganon_trial_light": "!setting(ganonTrials, Light) || event(GANON_TRIAL_LIGHT)"
+"ganon_trial_forest": "!setting(ganonTrials, Forest) || event(GANON_TRIAL_FOREST)"
+"ganon_trial_fire": "!setting(ganonTrials, Fire) || event(GANON_TRIAL_FIRE)"
+"ganon_trial_water": "!setting(ganonTrials, Water) || event(GANON_TRIAL_WATER)"
+"ganon_trial_shadow": "!setting(ganonTrials, Shadow) || event(GANON_TRIAL_SHADOW)"
+"ganon_trial_spirit": "!setting(ganonTrials, Spirit) || event(GANON_TRIAL_SPIRIT)"
+"ganon_barrier": "ganon_trial_light && ganon_trial_forest && ganon_trial_fire && ganon_trial_water && ganon_trial_shadow && ganon_trial_spirit"
+
+"rainbow_bridge_vanilla": "has(MEDALLION_SPIRIT) && has(MEDALLION_SHADOW) && (has(ARROW_LIGHT) || has(SHARED_ARROW_LIGHT))"
+"rainbow_bridge_medallions": "has(MEDALLION_LIGHT) && has(MEDALLION_FOREST) && has(MEDALLION_FIRE) && has(MEDALLION_WATER) && has(MEDALLION_SHADOW) && has(MEDALLION_SPIRIT)"
+"rainbow_bridge": "setting(rainbowBridge, open) || (setting(rainbowBridge, vanilla) && rainbow_bridge_vanilla) || (setting(rainbowBridge, medallions) && rainbow_bridge_medallions) || (setting(rainbowBridge, custom) && special(BRIDGE))"
+
+"lake_water_control": "(setting(erBoss, none) && setting(regionState, dungeonBeaten) && event(BOSS_MORPHA)) || event(CLEAR_STATE_LAKE)"
+
+"break_icicle": "can_use_sword_or_sticks || has_explosives_or_hammer"
+"break_icicle_ice_cavern": "can_use_sword || has_explosives_or_hammer || (can_use_sticks && (trick(OOT_ICE_CAVERN_ICICLES_STICKS) || glitch_broken_stick))"

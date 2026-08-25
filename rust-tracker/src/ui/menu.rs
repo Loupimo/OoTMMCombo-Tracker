@@ -74,6 +74,16 @@ impl TrackerApp {
                         ui.checkbox(&mut opts.hide_collected_map, self.i18n.opt_from_map());
                         ui.checkbox(&mut opts.hide_collected_list, self.i18n.opt_from_list());
                     });
+                    // Reachability (accessibility) filter: show only checks the
+                    // player can currently reach, unreachable ones dimmed or hidden.
+                    ui.menu_button(self.i18n.opt_logic_menu(), |ui| {
+                        ui.checkbox(&mut opts.logic_filter_enabled, self.i18n.opt_logic_filter());
+                        ui.add_enabled_ui(opts.logic_filter_enabled, |ui| {
+                            ui.label(self.i18n.opt_logic_mode());
+                            ui.radio_value(&mut opts.logic_hide_unreachable, false, self.i18n.opt_logic_dim());
+                            ui.radio_value(&mut opts.logic_hide_unreachable, true, self.i18n.opt_logic_hide());
+                        });
+                    });
                     ui.separator();
                     // Live-follow options (driven by the player's current scene).
                     ui.checkbox(&mut opts.auto_follow_item, self.i18n.opt_follow_item());
@@ -148,6 +158,14 @@ impl TrackerApp {
         // sync it into `opts` before the diff to avoid a spurious extra save).
         opts.language = self.app_settings.language;
         if opts != self.app_settings {
+            // A change to the reachability filter (on/off, or dim<->hide) changes
+            // what is shown and counted, so recompute reachability and the counts.
+            let logic_changed = opts.logic_filter_enabled != self.app_settings.logic_filter_enabled
+                || opts.logic_hide_unreachable != self.app_settings.logic_hide_unreachable;
+            if logic_changed {
+                self.logic_dirty = true;
+                self.counts_dirty = true;
+            }
             self.app_settings = opts;
             self.app_settings.save(&self.app_settings_path);
         }

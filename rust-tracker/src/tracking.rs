@@ -195,31 +195,48 @@ pub fn resolve_raw_item_id(raw: u32, rom: RomVersion) -> u32 {
     match rom {
         // Dev builds already use the tracker's internal numbering.
         RomVersion::Dev => raw,
-        // Latest stable (v31 / v32.X): only the newest dev items are missing, so a
-        // handful of insertion points. Generated from the old (v31/32.X) vs new
-        // (dev) iid numbering — see tools scratchpad compute_shift.py. Tested high->low.
+        // Latest stable (v31 / v32.X): the dev build has the four items the stable
+        // ROM lacks. dev-33 ALSO reordered the OoT stick/nut upgrades — the base
+        // upgrade was pushed up to 0x80/0x81 to open room for the new UPGRADE3 tier,
+        // and UPGRADE2 slid down — so raw 0x77..0x7a are an explicit permutation, not
+        // a step. Recomposed from the (v31/32.X)->old-dev table and the dev-33
+        // renumber (Items.h vs items_old.h, see tools scratchpad). Exact arms first.
         RomVersion::Stable => match raw {
-            r if r >= 1024 => r + 4, // +1 at SHARED_SHOVEL (before SHARED_SKELETON_KEY)
-            r if r >= 933 => r + 3,  // +1 at MM_SHOVEL (before MM_MASK_MAJORA)
-            r if r >= 509 => r + 2,  // +2 at OOT_CLOCK/OOT_SHOVEL (before MM_RUPEE_GREEN)
-            r => r,
+            0x77 => 0x80, // OOT_STICK_UPGRADE  (base moved up)
+            0x78 => 0x77, // OOT_STICK_UPGRADE2 (slid down)
+            0x79 => 0x81, // OOT_NUT_UPGRADE    (base moved up)
+            0x7a => 0x79, // OOT_NUT_UPGRADE2   (slid down)
+            r if r >= 1024 => r + 8, // +4 (Clock/Shovel/…) + 4 (dev-33 UPGRADE3 x4)
+            r if r >= 933 => r + 7,  // +3 + 4
+            r if r >= 890 => r + 6,  // MM_NUT_UPGRADE region: +2 + 4
+            r if r >= 888 => r + 5,  // MM_STICK_UPGRADE region: +2 + 3
+            r if r >= 509 => r + 4,  // +2 (OoT Clock/Shovel) + 2 (OoT UPGRADE3 x2)
+            r if r >= 128 => r + 2,  // OoT UPGRADE3 x2 inserted at 0x78 / 0x7a
+            r => r,                  // < 0x77 and 0x7b..0x7f are unchanged
         },
-        // v30.1: the older, larger shift, recomputed after the Shovel/Clock inserts
-        // (compose the v30.1->dev table with the dev renumber). Tested high->low.
+        // v30.1: the older, larger shift, recomposed after the dev-33 renumber (the
+        // same OoT stick/nut reorder applies at the low ids). Tested high->low.
         RomVersion::Stable301 => match raw {
-            r if r >= 826 => r + 110, // MM_MASK_MAJORA (MM rusty keys)
-            r if r >= 818 => r + 70,  // MM_STICK_UPGRADE
-            r if r >= 661 => r + 69,  // MM_SOUL_ENEMY_OCTOROK
-            r if r >= 622 => r + 64,  // MM_REMAINS_ODOLWA
-            r if r >= 610 => r + 56,  // MM_SONG_GORON_HALF
-            r if r >= 576 => r + 48,  // MM_CHATEAU
-            r if r >= 466 => r + 45,  // MM_RUPEE_GREEN (OoT rusty keys)
-            r if r >= 458 => r + 16,  // OOT_TRAP_ICE
-            r if r >= 452 => r + 15,  // OOT_WEIRD_MUSHROOM
-            r if r >= 451 => r + 14,  // OOT_SCALE_BRONZE
-            r if r >= 155 => r + 13,  // OOT_SWORD_MASTER
-            r if r >= 142 => r + 7,   // OOT_SONG_NOTE_TP_FOREST
-            r => r,                   // low ids are identical in both builds
+            0x77 => 0x80, // OOT_STICK_UPGRADE
+            0x78 => 0x77, // OOT_STICK_UPGRADE2
+            0x79 => 0x81, // OOT_NUT_UPGRADE
+            0x7a => 0x79, // OOT_NUT_UPGRADE2
+            r if r >= 826 => r + 114, // MM_MASK_MAJORA (MM rusty keys)
+            r if r >= 822 => r + 74,  // MM_STONE_OF_AGONY
+            r if r >= 820 => r + 73,  // MM_NUT_UPGRADE
+            r if r >= 818 => r + 72,  // MM_STICK_UPGRADE
+            r if r >= 661 => r + 71,  // MM_SOUL_ENEMY_OCTOROK
+            r if r >= 622 => r + 66,  // MM_REMAINS_ODOLWA
+            r if r >= 610 => r + 58,  // MM_SONG_GORON_HALF
+            r if r >= 576 => r + 50,  // MM_CHATEAU
+            r if r >= 466 => r + 47,  // MM_RUPEE_GREEN (OoT rusty keys)
+            r if r >= 458 => r + 18,  // OOT_TRAP_ICE
+            r if r >= 452 => r + 17,  // OOT_WEIRD_MUSHROOM
+            r if r >= 451 => r + 16,  // OOT_SCALE_BRONZE
+            r if r >= 155 => r + 15,  // OOT_SWORD_MASTER
+            r if r >= 142 => r + 9,   // OOT_SONG_NOTE_TP_FOREST
+            r if r >= 128 => r + 2,   // OOT_RUPEE_RAINBOW (OoT UPGRADE3 inserts)
+            r => r,                   // < 0x77 and 0x7b..0x7f are unchanged
         },
     }
 }
@@ -239,9 +256,10 @@ pub fn net_item_name(gi: u16, rom: RomVersion) -> Option<&'static str> {
         .map(|d| d.name)
 }
 
-/// Build a synthetic event that resolves to `o` (for the "Simulate" button).
-/// Returns None for objects this path cannot represent (e.g. ids that don't fit
-/// the DLL's single id byte, or render-only types).
+/// Build a synthetic event that resolves to `o` (test-only, exercised by the
+/// `encode_decode_round_trip` check). Returns None for objects this path cannot
+/// represent (e.g. ids that don't fit the DLL's single id byte, or render-only types).
+#[cfg(test)]
 pub fn demo_event(game: Game, o: &ObjectDef) -> Option<Event> {
     let t = o.type_ as u8;
     let (ov, id, room) = if t > OV_FISH {
@@ -365,17 +383,22 @@ mod tests {
         // Dev: identity. Item id 4 is the Fairy Bow (OoT).
         assert_eq!(resolve_raw_item_id(4, RomVersion::Dev), 4);
         assert_eq!(net_item_name(4, RomVersion::Dev), Some("Fairy Bow (OoT)"));
+        // dev-33 reordered the OoT stick/nut upgrades: on a stable ROM the base
+        // upgrade (raw 0x77 / 0x79) now resolves up to 0x80 / 0x81, UPGRADE2 down.
+        assert_eq!(resolve_raw_item_id(0x77, RomVersion::Stable), 0x80);
+        assert_eq!(resolve_raw_item_id(0x78, RomVersion::Stable), 0x77);
+        assert_eq!(resolve_raw_item_id(0x77, RomVersion::Stable301), 0x80);
         // v30.1: an id past a boundary is shifted up by the (recomputed) amount.
-        assert_eq!(resolve_raw_item_id(142, RomVersion::Stable301), 142 + 7);
-        assert_eq!(resolve_raw_item_id(141, RomVersion::Stable301), 141);
-        assert_eq!(resolve_raw_item_id(826, RomVersion::Stable301), 826 + 110);
-        // Latest stable (v31 / v32.X): only the newest dev items shift it. Below the
-        // first insertion (MM_RUPEE_GREEN = 509) it is the identity; at / past each
-        // insertion it climbs +2 / +3 / +4.
-        assert_eq!(resolve_raw_item_id(142, RomVersion::Stable), 142);
-        assert_eq!(resolve_raw_item_id(509, RomVersion::Stable), 511);
-        assert_eq!(resolve_raw_item_id(933, RomVersion::Stable), 936);
-        assert_eq!(resolve_raw_item_id(1024, RomVersion::Stable), 1028);
+        assert_eq!(resolve_raw_item_id(142, RomVersion::Stable301), 151);
+        assert_eq!(resolve_raw_item_id(141, RomVersion::Stable301), 143);
+        assert_eq!(resolve_raw_item_id(826, RomVersion::Stable301), 940);
+        // Latest stable (v31 / v32.X): the two OoT UPGRADE3 inserts now shift even
+        // the low ids by +2; each higher boundary climbs +4 / +5 / +6 / +7 / +8.
+        assert_eq!(resolve_raw_item_id(0x76, RomVersion::Stable), 0x76); // below reorder
+        assert_eq!(resolve_raw_item_id(142, RomVersion::Stable), 144);
+        assert_eq!(resolve_raw_item_id(509, RomVersion::Stable), 513);
+        assert_eq!(resolve_raw_item_id(933, RomVersion::Stable), 940);
+        assert_eq!(resolve_raw_item_id(1024, RomVersion::Stable), 1032);
         // A zero / unknown id (e.g. a "nothing" drop) has no name.
         assert_eq!(net_item_name(0, RomVersion::Dev), None);
     }

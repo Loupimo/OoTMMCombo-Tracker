@@ -19,6 +19,9 @@ mod mm_items;
 pub use mm_items::*;
 mod mm_world;
 pub use mm_world::*;
+mod logic;
+#[allow(unused_imports)]
+pub use logic::*;
 
 
 /// Scene identifier (matches the width of the C++ scene ids).

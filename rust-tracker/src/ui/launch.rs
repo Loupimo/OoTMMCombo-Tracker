@@ -62,6 +62,16 @@ impl TrackerApp {
                     if ui.button(format!("📦  {}", self.i18n.load_patch())).clicked() {
                         action = LaunchAction::Patch;
                     }
+                    // Small ✕ to unload the current patch (only while one is loaded),
+                    // so the tracker falls back to the DLL hook.
+                    if self.patch_path.is_some()
+                        && ui
+                            .add(egui::Button::new("✕").small())
+                            .on_hover_text(self.i18n.unload_patch())
+                            .clicked()
+                    {
+                        action = LaunchAction::ClearPatch;
+                    }
                     let status = match (&self.patch_path, &self.patch_info) {
                         (Some(p), Some(info)) => {
                             let name = p.file_name().and_then(|n| n.to_str()).unwrap_or("?");
@@ -95,23 +105,35 @@ impl TrackerApp {
             ui.horizontal(|ui| {
                 ui.label(format!("{} :", self.i18n.journal()));
                 ui.weak(self.i18n.drop_spoiler_hint());
-                if ui.small_button(self.i18n.simulate_event()).clicked() {
-                    self.simulate_event();
-                }
+                // Copy the whole journal to the clipboard (right-aligned). Disabled
+                // while the log is empty; the lines themselves are also selectable.
+                ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
+                    let has_lines = !self.log_lines.is_empty();
+                    let copy = egui::Button::new(format!("📋 {}", self.i18n.copy_log())).small();
+                    if ui.add_enabled(has_lines, copy).clicked() {
+                        let text: String = self.log_lines.iter().cloned().collect::<Vec<_>>().join("\n");
+                        ui.ctx().copy_text(text);
+                    }
+                });
             });
             // Fill the panel width (auto_shrink off) so long log lines wrap inside
-            // the journal instead of stretching the view horizontally.
+            // the journal instead of stretching the view horizontally. The whole log
+            // is one selectable monospace block, so the user can drag-select any part
+            // and Ctrl+C it (or use the Copy button above for the full journal).
             egui::ScrollArea::vertical()
                 .stick_to_bottom(true)
                 .auto_shrink([false, false])
                 .id_salt("launchlog")
                 .show(ui, |ui| {
-                    ui.style_mut().wrap_mode = Some(egui::TextWrapMode::Wrap);
                     if self.log_lines.is_empty() {
                         ui.weak(self.i18n.no_event());
-                    }
-                    for line in self.log_lines.iter() {
-                        ui.monospace(line);
+                    } else {
+                        let text: String = self.log_lines.iter().cloned().collect::<Vec<_>>().join("\n");
+                        ui.add(
+                            egui::Label::new(egui::RichText::new(text).monospace())
+                                .selectable(true)
+                                .wrap(),
+                        );
                     }
                 });
         });
@@ -127,6 +149,7 @@ impl TrackerApp {
             LaunchAction::Reset => self.reset_tracking(),
             LaunchAction::Toggle => self.toggle_tracking(ctx),
             LaunchAction::Patch => self.prompt_patch_dialog(),
+            LaunchAction::ClearPatch => self.clear_patch(),
         }
     }
 }

@@ -49,6 +49,19 @@ impl TrackerApp {
         } else {
             (None, Color32::from_rgb(221, 238, 255), Color32::from_rgb(122, 154, 191))
         };
+        // Accessibility filter (dim mode): an uncollected unreachable check reads
+        // faded. In hide mode the caller skips the row entirely, so this only ever
+        // applies while the row is still shown.
+        let unreachable = !collected && self.obj_unreachable(o.location);
+        let (card_bg, name_col, item_col) = if unreachable {
+            (
+                None,
+                Color32::from_rgb(110, 118, 130),
+                Color32::from_rgb(88, 96, 108),
+            )
+        } else {
+            (card_bg, name_col, item_col)
+        };
         // Item held here (spoiler). "Reveal uncollected items" off → hide unknown
         // items on undiscovered objects behind "???" (Qt ObjectRenderer).
         let item = if collected || self.dashboard.reveal {
@@ -227,9 +240,17 @@ impl TrackerApp {
                             .to_lowercase()
                             .cmp(&scene::type_label(b, &self.i18n).to_lowercase())
                     });
+                    // "Hide unreachable" mode: an uncollected unreachable object is
+                    // not listed, so it drops from the category counts too — a
+                    // category with nothing visible is left out entirely.
+                    let hide_mode = self.app_settings.logic_filter_enabled
+                        && self.app_settings.logic_hide_unreachable;
+                    let visible =
+                        |o: &scene::LiveObject| !(hide_mode && !o.collected && self.obj_unreachable(o.location));
                     for ty in order {
-                        let in_cat =
-                            |o: &&scene::LiveObject| o.type_ == ty && !self.excluded.contains(game, o.index);
+                        let in_cat = |o: &&scene::LiveObject| {
+                            o.type_ == ty && !self.excluded.contains(game, o.index) && visible(o)
+                        };
                         // Objects of this category matching the search box.
                         let objs: Vec<&scene::LiveObject> = scene
                             .objects
@@ -331,6 +352,11 @@ impl TrackerApp {
         let mut region_selected: Option<(Game, u8)> = None;
         let mut set_all: Option<bool> = None; // "expand/collapse all" this frame
         let entrance_tab = self.active_tab.is_entrance();
+        // "Hide unreachable" mode: the scene counts already drop hidden checks, so a
+        // scene with a zero visible total has nothing reachable and is left out of
+        // the tree (item tabs only; the entrance tab keeps its own `t > 0` gate).
+        let hide_mode = self.app_settings.logic_filter_enabled
+            && self.app_settings.logic_hide_unreachable;
 
         // Keyboard navigation: arrows move through region headers + scenes,
         // Left / Right fold / unfold the focused region, and focusing a scene
@@ -503,8 +529,10 @@ impl TrackerApp {
                                         // like Qt's `hasValid` gate in EntranceGameTabView::
                                         // RefreshName. Hides the "None" region (grottos / MM
                                         // Song-of-Time), the OoT mask shop, end/boss cutscene
-                                        // scenes, etc.
-                                        && (!entrance_tab
+                                        // scenes, etc. In hide-unreachable mode the item tabs
+                                        // apply the same `t > 0` gate to drop scenes with
+                                        // nothing reachable.
+                                        && ((!entrance_tab && !hide_mode)
                                             || counts.get(&s.id).is_some_and(|&(_, t)| t > 0))
                                         && (query.is_empty()
                                             // Match the raw (English) name and the
@@ -720,6 +748,24 @@ impl TrackerApp {
             // what this map shows. Captured before the scene borrow so the field
             // accesses below stay disjoint from `self.scene`.
             let aw = self.active_world;
+            // Reachability filter: the positions in the current scene the logic
+            // marks as unreachable, captured (with the hide/dim mode) before the
+            // mutable `scene` borrow below — `obj_unreachable` borrows all of self.
+            let logic_hide = self.app_settings.logic_hide_unreachable;
+            let logic_unreachable: HashSet<usize> = if self.app_settings.logic_filter_enabled {
+                match self.scene.as_ref() {
+                    Some(sc) => sc
+                        .objects
+                        .iter()
+                        .enumerate()
+                        .filter(|(_, o)| self.obj_unreachable(o.location))
+                        .map(|(i, _)| i)
+                        .collect(),
+                    None => HashSet::new(),
+                }
+            } else {
+                HashSet::new()
+            };
             let (Some(tex), Some(scene)) = (self.map_texture.clone(), self.scene.as_mut()) else {
                 ui.centered_and_justified(|ui| ui.weak(self.i18n.map_select_scene()));
                 return;
@@ -806,6 +852,9 @@ impl TrackerApp {
                             || self.excluded.contains(scene.game, obj.index)
                             || room_id.is_some_and(|rid| obj.room as u32 != rid)
                             || (hide_map && obj.collected)
+                            // Hidden-unreachable markers are not clickable; dimmed
+                            // ones (dim mode) still are.
+                            || (logic_hide && !obj.collected && logic_unreachable.contains(&i))
                         {
                             continue;
                         }
@@ -851,15 +900,20 @@ impl TrackerApp {
 
             // Objects are drawn in the item view only.
             let objects: &[scene::LiveObject] = if entrance_view { &[] } else { &scene.objects };
-            for obj in objects {
+            for (i, obj) in objects.iter().enumerate() {
                 if !context_allows(eff_ctx, obj.context)
                     || !active_types.contains(&obj.type_)
                     || self.excluded.contains(scene.game, obj.index)
                     || room_id.is_some_and(|rid| obj.room as u32 != rid)
                     || (hide_map && obj.collected)
+                    // Hide mode: an uncollected unreachable check is not drawn.
+                    || (logic_hide && !obj.collected && logic_unreachable.contains(&i))
                 {
                     continue;
                 }
+                // Dim mode: an uncollected unreachable check is drawn faded.
+                let logic_dim =
+                    !logic_hide && !obj.collected && logic_unreachable.contains(&i);
                 // Manually-forced objects render in violet (ObjectState::Forced),
                 // distinct from auto-collected (dimmed) ones.
                 let forced = self.worlds[aw].forced.contains(&(scene.game, obj.index));
@@ -885,6 +939,8 @@ impl TrackerApp {
                         Color32::from_rgb(253, 218, 0) // gold (user-forced)
                     } else if obj.collected {
                         Color32::from_rgba_unmultiplied(255, 255, 255, 70)
+                    } else if logic_dim {
+                        Color32::from_rgba_unmultiplied(130, 130, 130, 55) // unreachable
                     } else {
                         Color32::WHITE
                     };
@@ -897,6 +953,14 @@ impl TrackerApp {
                         Color32::from_rgba_unmultiplied(r, g, b, 110)
                     };
                     painter.circle_stroke(c, radius, Stroke::new(2.0_f32, ring));
+                } else if logic_dim {
+                    // Uncollected + unreachable: faded gray disc, no glyph.
+                    painter.circle_filled(c, radius, Color32::from_rgba_unmultiplied(90, 90, 90, 90));
+                    painter.circle_stroke(
+                        c,
+                        radius,
+                        Stroke::new(1.0_f32, Color32::from_rgba_unmultiplied(0, 0, 0, 90)),
+                    );
                 } else {
                     painter.circle_filled(c, radius, Color32::from_rgb(r, g, b));
                     painter.circle_stroke(c, radius, Stroke::new(1.5_f32, Color32::BLACK));

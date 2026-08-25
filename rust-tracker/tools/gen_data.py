@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Generate the src/data/ folder module for the Rust tracker, from the CSV pools.
 
-NOTE: src/data/ has since been hand-curated (item display names diverge from the
-C++ sources). Re-running this generator REVERTS those curated names. Port curated
-names into the C++ sources first, or transform src/data/ in place instead.
+Safe to re-run: the generator reproduces the committed src/data/ byte-for-byte
+(any previously hand-curated name has been ported back into the C++ sources, the
+single source of truth). Verify after a run with `git diff -- rust-tracker/src/data`.
+It also emits src/data/logic.rs via gen_logic.py (the OoTMM reachability graph).
 
 Same source of truth as the C++ generator (`Resources/Objects/Pool Transform.py`):
   - Resources/Objects/pool_oot.csv, pool_mm.csv   -> objects
@@ -25,6 +26,10 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]          # repository root
+# The Qt tracker (Headers/ + Sources/) was relocated under C++-Tracker/, while
+# Resources/ stayed at the repo root. `read()` tries C++-Tracker first, so a path
+# like "Headers/Combo/Items.h" resolves there and "Resources/..." falls back.
+CPP_ROOT = ROOT / "C++-Tracker" if (ROOT / "C++-Tracker" / "Headers").is_dir() else ROOT
 # Output is now a folder module (src/data/*.rs). DATA_OUT env var overrides it
 # (used to dry-run the generator to a temp dir without touching the tree).
 OUTDIR = Path(os.environ.get("DATA_OUT",
@@ -55,12 +60,19 @@ COMMON_ID = {"SONG_STORMS", "SONG_OF_STORMS"}
 LITERAL = re.compile(r"0x[0-9a-fA-F]+|\d+")
 
 
+def resolve(rel):
+    """Absolute path of a source file: under C++-Tracker/ if present there, else
+    at the repo root (keeps working after the Qt tracker was moved)."""
+    cand = CPP_ROOT / rel
+    return cand if cand.exists() else ROOT / rel
+
+
 def read(rel):
-    return (ROOT / rel).read_text(encoding="utf-8", errors="replace")
+    return resolve(rel).read_text(encoding="utf-8", errors="replace")
 
 
 def read_csv(rel):
-    with (ROOT / rel).open(newline="", encoding="utf-8", errors="replace") as f:
+    with resolve(rel).open(newline="", encoding="utf-8", errors="replace") as f:
         return list(csv.DictReader(f, delimiter=";"))
 
 
@@ -896,9 +908,12 @@ _SUB = [('consts', 'id / entrance / song constants'),
 _ALLOW = '#![allow(dead_code, non_camel_case_types, non_upper_case_globals)]'
 
 
-def write_split(full_text, outdir):
+def write_split(full_text, outdir, extra_mods=()):
     """Segment the generated source into top-level blocks and route each to its
-    category file (mirrors the tree layout: mod.rs + per-category submodules)."""
+    category file (mirrors the tree layout: mod.rs + per-category submodules).
+
+    `extra_mods` are submodules written by another generator (e.g. `logic` from
+    gen_logic.py): they are declared in mod.rs but their .rs file is left alone."""
     lines = full_text.split("\n")
     blocks, lead, i, n = [], [], 0, len(lines)
     while i < n:
@@ -954,6 +969,10 @@ def write_split(full_text, outdir):
     mod.append('')
     for key, _ in _SUB:
         mod += [f'mod {key};', f'pub use {key}::*;']
+    # Submodules generated separately (their .rs is written by another script).
+    # `allow(unused_imports)` keeps a clean build until the runtime consumes them.
+    for key in extra_mods:
+        mod += [f'mod {key};', '#[allow(unused_imports)]', f'pub use {key}::*;']
     mod.append('')
     Path(outdir, 'mod.rs').write_text("\n".join(mod + flat(core)), encoding="utf-8")
 
@@ -1155,9 +1174,14 @@ def main():
         "\n" + emit_objects("OOT_OBJECTS", oot_objs),
         "\n" + emit_objects("MM_OBJECTS", mm_objs),
     ]
-    write_split("".join(parts), OUTDIR)
+    write_split("".join(parts), OUTDIR, extra_mods=["logic"])
 
-    print(f"OK -> {OUTDIR}/ (mod + {len(_SUB)} submodules)")
+    # Compile the OoTMM logic graph (root Logic/ folder) into src/data/logic.rs.
+    # Deferred import to avoid a circular import (gen_logic imports from us).
+    import gen_logic
+    gen_logic.generate(OUTDIR / "logic.rs", id_sym=id_sym)
+
+    print(f"OK -> {OUTDIR}/ (mod + {len(_SUB)} submodules + logic)")
     print(f"  scenes  : OoT={len(oot_scenes)}  MM={len(mm_scenes)}")
     print(f"  objects : OoT={len(oot_objs)}  MM={len(mm_objs)}")
     print(f"  named ids used: {len(used_ids)}  | scene consts: {len(scene_consts)}")

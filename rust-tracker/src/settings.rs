@@ -228,6 +228,48 @@ pub struct Settings {
     pub shared_item_ids: HashSet<u32>,
     pub progressive_item_ids: HashSet<u32>,
     pub starting_item_ids: HashMap<u32, u32>,
+    /// Raw `key: value` of the spoiler's `Settings` section (every key, verbatim),
+    /// the source of truth for the reachability logic's `setting(k)` / `setting(k, v)`.
+    /// Kept alongside `values` (which only carries the tracker's filter settings).
+    pub raw_settings: HashMap<String, String>,
+    /// Trick ids enabled by the seed (into `data::TRICK_NAMES`), parsed from the
+    /// spoiler's `Tricks` / `Glitches` sections — the logic's `trick(id)` source.
+    pub enabled_trick_ids: HashSet<&'static str>,
+    /// Per game (`[OoT, MM]`) the song placed at each event slot, indexed by slot:
+    /// the song index (0..=19, the macro song ordering) the spoiler's `Song Events`
+    /// section assigns to that slot, or `u8::MAX` for an unresolved name. Drives
+    /// the logic's `_song_event_<game>(slot, song)`.
+    pub song_events: [Vec<u8>; 2],
+    /// Custom win-condition definitions (`special(X)`), keyed by the SPECIAL name
+    /// (BRIDGE / MOON / LACS / GANON_BK / MAJORA), from the spoiler's
+    /// `Special Conditions` section. Only consulted when the seed sets the matching
+    /// setting to `custom`.
+    pub special_conds: HashMap<String, SpecialCond>,
+    /// Shuffled entrances (from the spoiler's `Entrances` section): each remaps a
+    /// vanilla region edge to a new destination for the reachability solver. Empty
+    /// when the seed has no entrance randomizer.
+    pub entrance_remap: Vec<EntranceRemap>,
+}
+
+/// One custom win-condition: the token threshold (`count`) and which item
+/// categories count toward it (the `true` flags in the spoiler block).
+#[derive(Default, Clone)]
+pub struct SpecialCond {
+    pub count: u32,
+    /// Enabled category keys, e.g. `medallions`, `stones`, `skullsGold`.
+    pub cats: Vec<String>,
+}
+
+/// One shuffled entrance (from the spoiler's `Entrances` section): the vanilla
+/// edge `from -> via` (both in game `game`) now leads to region `dest` in game
+/// `dest_game` instead. The reachability solver redirects that graph edge.
+#[derive(Clone)]
+pub struct EntranceRemap {
+    pub game: u8,
+    pub from: String,
+    pub via: String,
+    pub dest_game: u8,
+    pub dest: String,
 }
 
 impl Default for Settings {
@@ -249,6 +291,11 @@ impl Default for Settings {
             shared_item_ids: HashSet::new(),
             progressive_item_ids: HashSet::new(),
             starting_item_ids: HashMap::new(),
+            raw_settings: HashMap::new(),
+            enabled_trick_ids: HashSet::new(),
+            song_events: [Vec::new(), Vec::new()],
+            special_conds: HashMap::new(),
+            entrance_remap: Vec::new(),
         }
     }
 }
@@ -346,9 +393,30 @@ impl Settings {
                         _ => continue,
                     };
                     if let Some((k, v)) = body.split_once(": ") {
-                        self.add_setting(k.trim(), v.trim());
+                        let (k, v) = (k.trim(), v.trim());
+                        // Keep every raw value for the reachability logic; the
+                        // tracker's own filter/item settings are also folded in.
+                        self.raw_settings.insert(k.to_string(), v.to_string());
+                        self.add_setting(k, v);
                     }
                 }
+            } else if section.starts_with("Tricks") || section.starts_with("Glitches") {
+                // Each `  <display name>` line names one enabled trick / glitch.
+                for line in section.lines() {
+                    let name = match line.strip_prefix("  ") {
+                        Some(n) if !n.starts_with(' ') => n.trim(),
+                        _ => continue,
+                    };
+                    if let Some(id) = resolve_trick_name(name) {
+                        self.enabled_trick_ids.insert(id);
+                    }
+                }
+            } else if section.starts_with("Song Events") {
+                self.parse_song_events(&section);
+            } else if section.starts_with("Special Conditions") {
+                self.parse_special_conds(&section);
+            } else if section.starts_with("Entrances") {
+                self.parse_entrances(&section);
             } else if section.starts_with("World") {
                 self.parse_key_rings(&section);
                 self.parse_silver_pouches(&section, mq);
@@ -384,6 +452,93 @@ impl Settings {
             if let Some(id) = crate::progression::find_item_id(name.trim()) {
                 *self.base_starting.entry(id).or_insert(0) += count;
             }
+        }
+    }
+
+    /// ParseSongEvents: read the spoiler's `Song Events` section into
+    /// `song_events`. The section groups slots by game (`  Ocarina of Time` /
+    /// `  Majora's Mask` sub-headers) and lists `    SONG_EVENT_X : Song` in enum
+    /// order, so the push order IS the slot id the logic's `_song_event_<game>`
+    /// uses. An unresolved song name is stored as `u8::MAX` (treated as "any" =
+    /// optimistic) to keep the slot alignment intact.
+    fn parse_song_events(&mut self, section: &str) {
+        let mut game: Option<usize> = None;
+        for line in section.lines() {
+            if let Some(rest) = line.strip_prefix("    ") {
+                // `SONG_EVENT_X            : Song Name`
+                let Some((_, song)) = rest.split_once(':') else { continue };
+                let n = resolve_song_name(song.trim()).unwrap_or(u8::MAX);
+                if let Some(g) = game {
+                    self.song_events[g].push(n);
+                }
+            } else if let Some(rest) = line.strip_prefix("  ") {
+                let head = rest.trim();
+                game = if head.starts_with("Ocarina") {
+                    Some(0)
+                } else if head.starts_with("Majora") {
+                    Some(1)
+                } else {
+                    game
+                };
+            }
+        }
+    }
+
+    /// ParseSpecialConds: read the spoiler's `Special Conditions` section into
+    /// `special_conds`. Each `  NAME:` block holds `    count: N` and a set of
+    /// `    category: true|false` flags; we keep the count and the enabled
+    /// categories, which the logic's `special(NAME)` sums against `count`.
+    fn parse_special_conds(&mut self, section: &str) {
+        let mut cur: Option<String> = None;
+        for line in section.lines() {
+            if let Some(rest) = line.strip_prefix("    ") {
+                let Some((k, v)) = rest.split_once(':') else { continue };
+                let (k, v) = (k.trim(), v.trim());
+                let Some(name) = cur.as_ref() else { continue };
+                let cond = self.special_conds.entry(name.clone()).or_default();
+                if k == "count" {
+                    cond.count = v.parse().unwrap_or(0);
+                } else if v == "true" {
+                    cond.cats.push(k.to_string());
+                }
+            } else if let Some(rest) = line.strip_prefix("  ") {
+                cur = Some(rest.trim().trim_end_matches(':').to_string());
+            }
+        }
+    }
+
+    /// ParseEntrances: read the spoiler's `Entrances` section into `entrance_remap`.
+    /// Each line is `<A> to <B> (SRC) -> <C> from <D> (DST)`, meaning the vanilla
+    /// entrance edge `A -> B` now leads to region `C`. Region names carry their
+    /// `OOT `/`MM ` game prefix; names themselves can contain ` to `/` from `, so
+    /// the A|B and C|D splits anchor on the game prefix that begins the right half.
+    fn parse_entrances(&mut self, section: &str) {
+        for line in section.lines() {
+            let Some((left, right)) = line.split_once("->") else { continue };
+            // Drop the trailing ` (ENTRANCE_ID)` on each half (names have no ` (`).
+            let left = left.trim().rsplit_once(" (").map_or(left.trim(), |(n, _)| n);
+            let right = right.trim().rsplit_once(" (").map_or(right.trim(), |(n, _)| n);
+            let (Some((a, b)), Some((c, _d))) =
+                (split_on_prefixed(left, " to "), split_on_prefixed(right, " from "))
+            else {
+                continue;
+            };
+            let (Some((game, from)), Some((bg, via)), Some((dest_game, dest))) =
+                (strip_game(a), strip_game(b), strip_game(c))
+            else {
+                continue;
+            };
+            // A and B are the same vanilla world; guard against a malformed split.
+            if game != bg {
+                continue;
+            }
+            self.entrance_remap.push(EntranceRemap {
+                game,
+                from: from.to_string(),
+                via: via.to_string(),
+                dest_game,
+                dest: dest.to_string(),
+            });
         }
     }
 
@@ -941,6 +1096,74 @@ enum ListValue {
 /// Split the spoiler into top-level sections: each starts at a column-0,
 /// non-empty line and includes the following indented lines (mirror of the
 /// ParseSettings section regex).
+/// Resolve a spoiler `Tricks` / `Glitches` display name to its logic trick id
+/// (an entry of `data::TRICK_NAMES`). Both sections list tricks by OoTMM display
+/// name; `data::TRICK_NAME_TO_ID` (vendored from OoTMM's tricks.ts, sorted by
+/// name) maps them back to ids — covering every trick the logic references. An
+/// unknown name (e.g. a trick the logic never checks) resolves to `None` and is
+/// simply ignored.
+fn resolve_trick_name(name: &str) -> Option<&'static str> {
+    let table = crate::data::TRICK_NAME_TO_ID;
+    table
+        .binary_search_by(|(n, _)| n.cmp(&name))
+        .ok()
+        .map(|i| table[i].1)
+}
+
+/// Resolve a spoiler `Song Events` song display name to its song index (0..=19),
+/// the ordering the logic macros use (`_song_event_<game>(slot, song)`): zelda=0,
+/// epona=1, saria=2, storms=3, sun=4, time=5, tp_forest=6, tp_fire=7, tp_water=8,
+/// tp_spirit=9, tp_shadow=10, tp_light=11, healing=12, soaring=13, awakening=14,
+/// goron=15, goron_half=16, zora=17, elegy=18, order=19.
+fn resolve_song_name(name: &str) -> Option<u8> {
+    Some(match name {
+        "Zelda's Lullaby" => 0,
+        "Epona's Song" => 1,
+        "Saria's Song" => 2,
+        "Song of Storms" => 3,
+        "Sun's Song" => 4,
+        "Song of Time" => 5,
+        "Minuet of Forest" => 6,
+        "Bolero of Fire" => 7,
+        "Serenade of Water" => 8,
+        "Requiem of Spirit" => 9,
+        "Nocturne of Shadow" => 10,
+        "Prelude of Light" => 11,
+        "Song of Healing" => 12,
+        "Song of Soaring" => 13,
+        "Sonata of Awakening" => 14,
+        "Goron Lullaby" => 15,
+        "Goron Lullaby Intro" => 16,
+        "New Wave Bossa Nova" => 17,
+        "Elegy of Emptiness" => 18,
+        "Oath to Order" => 19,
+        _ => return None,
+    })
+}
+
+/// Strip a spoiler region's `OOT `/`MM ` prefix -> `(game, bare name)`.
+fn strip_game(s: &str) -> Option<(u8, &str)> {
+    if let Some(r) = s.strip_prefix("OOT ") {
+        Some((0, r))
+    } else {
+        s.strip_prefix("MM ").map(|r| (1, r))
+    }
+}
+
+/// Split `"<left><sep><right>"` at the first `sep` that is immediately followed by
+/// a game prefix, so a region name containing `sep` itself (e.g. "Road to Southern
+/// Swamp") does not break the split. The returned right half keeps its prefix.
+fn split_on_prefixed<'a>(s: &'a str, sep: &str) -> Option<(&'a str, &'a str)> {
+    let mut best: Option<usize> = None;
+    for prefix in ["OOT ", "MM "] {
+        if let Some(i) = s.find(&format!("{sep}{prefix}")) {
+            best = Some(best.map_or(i, |b| b.min(i)));
+        }
+    }
+    let i = best?;
+    Some((&s[..i], &s[i + sep.len()..]))
+}
+
 fn split_sections(text: &str) -> Vec<String> {
     let mut sections: Vec<String> = Vec::new();
     let mut cur: Option<String> = None;
@@ -1013,6 +1236,70 @@ mod tests {
             .enumerate()
             .any(|(i, o)| o.render_type == ObjectType::gs && after.oot.contains(&i));
         assert!(gs_excluded, "GS objects excluded when goldSkulltulaTokens=vanilla");
+    }
+
+    /// The spoiler's `Tricks` / `Glitches` sections resolve to real logic trick
+    /// ids via the vendored name table, and the table stays sorted (the binary
+    /// search precondition).
+    #[test]
+    fn spoiler_tricks_and_glitches_resolve_to_ids() {
+        let mq = HashSet::new();
+        let mut s = Settings::default();
+        let spoiler = "Tricks\n  Backflip Over Mido\n  Fewer Lens Requirements (OoT)\n\
+                       Glitches\n  Equip Swap (OoT)\n  Broken Deku Stick (OoT)\n";
+        s.parse_spoiler(spoiler, &mq);
+
+        for id in ["OOT_MIDO_SKIP", "OOT_LENS", "GLITCH_OOT_EQUIP_SWAP",
+                   "GLITCH_OOT_BROKEN_STICK"] {
+            assert!(s.enabled_trick_ids.contains(id), "trick {id} not enabled");
+        }
+        // Everything resolved must be a real logic trick id.
+        for id in &s.enabled_trick_ids {
+            assert!(crate::data::TRICK_NAMES.contains(id), "unknown trick id {id}");
+        }
+        assert!(
+            crate::data::TRICK_NAME_TO_ID.windows(2).all(|w| w[0].0 <= w[1].0),
+            "TRICK_NAME_TO_ID must be sorted by name for binary search"
+        );
+    }
+
+    /// The `Song Events` section maps each slot (in push order = enum order) to
+    /// its song index, per game, resolving the display names.
+    #[test]
+    fn spoiler_song_events_map_slots_in_order() {
+        let mq = HashSet::new();
+        let mut s = Settings::default();
+        let spoiler = "Song Events\n  Ocarina of Time\n\
+                       \x20\x20\x20\x20SONG_EVENT_A : Prelude of Light\n\
+                       \x20\x20\x20\x20SONG_EVENT_B : Song of Time\n\
+                       \x20\x20Majora's Mask\n\
+                       \x20\x20\x20\x20SONG_EVENT_C : Goron Lullaby\n";
+        s.parse_spoiler(spoiler, &mq);
+        // Prelude of Light = 11, Song of Time = 5 (OoT slots 0,1).
+        assert_eq!(s.song_events[0], vec![11, 5]);
+        // Goron Lullaby = 15 (MM slot 0).
+        assert_eq!(s.song_events[1], vec![15]);
+    }
+
+    /// The `Entrances` split anchors on the game prefix, so a region name that
+    /// itself contains ` to ` / ` from ` (e.g. "Road to Southern Swamp") is kept
+    /// whole rather than split at its internal separator.
+    #[test]
+    fn spoiler_entrances_split_handles_names_with_to() {
+        let mq = HashSet::new();
+        let mut s = Settings::default();
+        s.parse_spoiler(
+            "Entrances\n  MM Road to Southern Swamp to MM Swamp Archery (MM_A) \
+             -> MM Path to Snowhead from MM Snowhead (MM_B)\n",
+            &mq,
+        );
+        assert_eq!(s.entrance_remap.len(), 1);
+        let m = &s.entrance_remap[0];
+        assert_eq!(m.game, 1);
+        assert_eq!(m.from, "Road to Southern Swamp");
+        assert_eq!(m.via, "Swamp Archery");
+        assert_eq!(m.dest_game, 1);
+        assert_eq!(m.dest, "Path to Snowhead");
     }
 
     /// The exclusion actually removes objects from what a loaded scene would

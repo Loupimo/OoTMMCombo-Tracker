@@ -1,0 +1,281 @@
+"Kakariko":
+  region: KAKARIKO
+  events:
+    KAKARIKO_GATE_OPEN: "is_child && has(ZELDA_LETTER) && soul_npc(SOUL_NPC_HYLIAN_GUARD)"
+    BUGS: "has_bottle"
+    BOMBS_OR_BOMBCHU: "can_cut_grass"
+    RUPEES: "can_cut_grass"
+    SEEDS: "is_child && can_cut_grass"
+    ARROWS: "is_adult"
+    MAGIC: "can_cut_grass"
+  exits:
+    "GLOBAL": "true"
+    "Hyrule Field": "true"
+    "Kakariko Trail Start": "setting(kakarikoGate, open) || event(KAKARIKO_GATE_OPEN) || (is_adult && !setting(kakarikoGate, closed)) || climb_anywhere || hookshot_anywhere"
+    "Graveyard": "true"
+    "Kakariko Well": "is_adult || has_iron_boots || longshot_anywhere || event(WELL_DRAIN) || setting(openDungeonsOot, BotW)"
+    "Skulltula House": "rusty_key(RUSTY_KEY_SKULLTULA_HOUSE)"
+    "Shooting Gallery Adult": "(is_adult && is_day && rusty_key(RUSTY_KEY_ADULT_SHOOTING_GALLERY)) || (time_travel_at_will && trick(OOT_ADULT_GALLERY_TT))"
+    "Kakariko Balcony": "(is_child && is_day && soul_cucco) || (is_adult && trick(OOT_PASS_COLLISION)) || climb_anywhere"
+    "Kakariko Rooftop": "can_hookshot || climb_anywhere"
+    "Kakariko Back": "is_adult || can_hookshot || has_hover_boots || (is_day && soul_cucco) || climb_anywhere"
+    "Kakariko Bazaar": "is_adult && is_day && rusty_key(RUSTY_KEY_ADULT_BAZAAR)"
+    "Kakariko Potion Shop": "is_day && rusty_key(RUSTY_KEY_ADULT_POTION_SHOP)"
+    "Windmill": "rusty_key(RUSTY_KEY_WINDMILL)"
+    "Kakariko Carpenter House": "rusty_key(RUSTY_KEY_CARPENTER_HOUSE)"
+    "Impa House Front": "rusty_key(RUSTY_KEY_IMPA_HOUSE)"
+    "ReDead Grotto": "hidden_grotto_bomb"
+    "Watchtower": "is_day || is_adult || can_use_slingshot || can_use_bow || can_longshot || has_bombchu || climb_anywhere"
+  locations:
+    "Kakariko Anju Bottle": "is_child && is_day && soul_anju && soul_cucco"
+    "Kakariko Anju Egg": "is_adult && is_day && soul_anju"
+    "Kakariko Anju Cojiro": "event(TALON_AWAKE) && is_day && soul_anju"
+    "Kakariko Song Shadow": "is_adult && soul_npc(SOUL_NPC_SHEIK) && has(MEDALLION_FOREST) && has(MEDALLION_FIRE) && has(MEDALLION_WATER)"
+    "Kakariko Man on Roof": "(can_hookshot || (is_adult && trick(OOT_MAN_ON_ROOF)) || climb_anywhere) && soul_rooftop_man"
+    "Kakariko Sell Keaton Mask": "soul_npc(SOUL_NPC_HYLIAN_GUARD) && is_child && (setting(kakarikoGate, open) || event(KAKARIKO_GATE_OPEN)) && has_mask_keaton"
+    "Kakariko GS Shooting Gallery": "gs_night && is_child"
+    "Kakariko GS Tree": "gs_night && is_child"
+    "Kakariko GS House of Skulltula": "gs_night && is_child"
+    "Kakariko GS Bazaar": "gs_night && is_child"
+    "Kakariko GS Ladder": "gs_night && is_child && (can_use_slingshot || can_use_bow || has_bombchu || can_longshot || (climb_anywhere && (can_use_sword || can_use_sticks)))"
+    # TODO: Some of these pots and crates should be in the Kakariko Back region
+    "Kakariko Pot 01": "is_child"
+    "Kakariko Pot 02": "is_child"
+    "Kakariko Pot 03": "is_child"
+    "Kakariko Pot 04": "is_child"
+    "Kakariko Pot 05": "is_child"
+    "Kakariko Pot 06": "is_child"
+    "Kakariko Pot 07": "is_child"
+    "Kakariko Pot 08": "is_child"
+    "Kakariko Pot 09": "is_child"
+    "Kakariko Crate Child Near Trail": "is_child"
+    "Kakariko Crate Child Near House": "is_child"
+    "Kakariko Crate Child Near Windmill Bottom": "is_child"
+    "Kakariko Crate Child Near Windmill Top": "is_child"
+    "Kakariko Crate Child Near Graveyard": "is_child"
+    "Kakariko Crate Adult Near First House": "is_adult"
+    "Kakariko Crate Adult Near Trail 1": "is_adult"
+    "Kakariko Crate Adult Near Trail 2": "is_adult"
+    "Kakariko Crate Adult Near Impa 1": "is_adult"
+    "Kakariko Crate Adult Near Impa 2": "is_adult"
+    "Kakariko Crate Adult Center 1": "is_adult"
+    "Kakariko Crate Adult Center 2": "is_adult"
+    "Kakariko Crate Adult Near Archery": "is_adult"
+    "Kakariko Crate Adult Near Potion Shop": "is_adult"
+    "Kakariko Grass 1": "can_cut_grass"
+    "Kakariko Grass 2": "can_cut_grass"
+    "Kakariko Grass 3": "can_cut_grass"
+    "Kakariko Grass 4": "can_cut_grass"
+    "Kakariko Grass 5": "can_cut_grass"
+    "Kakariko Grass 6": "can_cut_grass"
+    "Kakariko Grass 7": "can_cut_grass"
+    "Kakariko Grass 8": "can_cut_grass"
+    "Kakariko Wonder Item": "is_child"
+    # TODO: Too restrictive, we need a pseudo-region to represent the top of the watchtower
+    "Kakariko Butterfly 1": "is_day && is_child && butterfly"
+    "Kakariko Butterfly 2": "is_day && is_child && butterfly"
+    "Kakariko Rock Near Gate": "true"
+    "Kakariko Rock Near Spider House": "true"
+
+"Kakariko Balcony":
+  region: KAKARIKO
+  exits:
+    "GLOBAL": "true"
+    "Kakariko": "true"
+    "Kakariko Rooftop": "climb_anywhere"
+    "Impa House Back": "true"
+
+"Kakariko Rooftop":
+  region: KAKARIKO
+  exits:
+    "GLOBAL": "true"
+    "Kakariko": "true"
+    "Kakariko Balcony": "true"
+  locations:
+    "Kakariko GS Roof": "is_adult && gs_night && (can_hookshot || (climb_anywhere && can_damage))"
+
+"Kakariko Trail Start":
+  region: KAKARIKO
+  exits:
+    "GLOBAL": "true"
+    "Kakariko": "setting(kakarikoGate, open) || event(KAKARIKO_GATE_OPEN) || (is_adult && !setting(kakarikoGate, closed)) || trick(OOT_PASS_COLLISION) || climb_anywhere || hookshot_anywhere"
+    "Death Mountain": "true"
+
+"Kakariko Back":
+  region: KAKARIKO
+  exits:
+    "GLOBAL": "true"
+    "Kakariko": "true"
+    "Kakariko Potion Shop Back": "is_adult && is_day && rusty_key(RUSTY_KEY_ADULT_POTION_SHOP_BACK)"
+    "Kakariko Granny Shop": "is_adult && rusty_key(RUSTY_KEY_GRANNY_POTION_SHOP)"
+    "Kakariko Generic Grotto": "has_shovel"
+  locations:
+    "Kakariko Back Pot 1": "is_child"
+    "Kakariko Back Pot 2": "is_child"
+    "Kakariko Crate Adult Back 1": "is_adult"
+    "Kakariko Crate Adult Back 2": "is_adult"
+    "Kakariko Crate Adult Back 3": "is_adult"
+    "Kakariko Crate Adult Back 4": "is_adult"
+    "Kakariko Silver Boulder": "is_adult && can_lift_silver"
+
+"Kakariko Well":
+  region: KAKARIKO
+  exits:
+    "GLOBAL": "true"
+    "Kakariko": "can_swim || is_adult || (is_child && longshot_anywhere)"
+    "Bottom of the Well": "is_child || (setting(openDungeonsOot, wellAdult) && event(WELL_DRAIN)) || (time_travel_at_will && trick(OOT_WELL_ADULT_TT))"
+
+"Kakariko Bazaar":
+  region: ENTRANCE
+  exits:
+    "GLOBAL": "true"
+    "Kakariko": "true"
+  locations:
+    "Kakariko Bazaar Item 1": "shop_price(0x30) && soul_bazaar_shopkeeper"
+    "Kakariko Bazaar Item 2": "shop_price(0x31) && soul_bazaar_shopkeeper"
+    "Kakariko Bazaar Item 3": "shop_price(0x32) && soul_bazaar_shopkeeper"
+    "Kakariko Bazaar Item 4": "shop_price(0x33) && soul_bazaar_shopkeeper"
+    "Kakariko Bazaar Item 5": "shop_price(0x34) && soul_bazaar_shopkeeper"
+    "Kakariko Bazaar Item 6": "shop_price(0x35) && soul_bazaar_shopkeeper"
+    "Kakariko Bazaar Item 7": "shop_price(0x36) && soul_bazaar_shopkeeper"
+    "Kakariko Bazaar Item 8": "shop_price(0x37) && soul_bazaar_shopkeeper"
+
+"Kakariko Potion Shop":
+  region: ENTRANCE
+  exits:
+    "GLOBAL": "true"
+    "Kakariko": "true"
+    "Kakariko Potion Shop Junction": "true"
+  locations:
+    "Kakariko Potion Shop Item 1": "is_adult && shop_price(0x38) && soul_npc(SOUL_NPC_POTION_SHOPKEEPER)"
+    "Kakariko Potion Shop Item 2": "is_adult && shop_price(0x39) && soul_npc(SOUL_NPC_POTION_SHOPKEEPER)"
+    "Kakariko Potion Shop Item 3": "is_adult && shop_price(0x3a) && soul_npc(SOUL_NPC_POTION_SHOPKEEPER)"
+    "Kakariko Potion Shop Item 4": "is_adult && shop_price(0x3b) && soul_npc(SOUL_NPC_POTION_SHOPKEEPER)"
+    "Kakariko Potion Shop Item 5": "is_adult && shop_price(0x3c) && soul_npc(SOUL_NPC_POTION_SHOPKEEPER)"
+    "Kakariko Potion Shop Item 6": "is_adult && shop_price(0x3d) && soul_npc(SOUL_NPC_POTION_SHOPKEEPER)"
+    "Kakariko Potion Shop Item 7": "is_adult && shop_price(0x3e) && soul_npc(SOUL_NPC_POTION_SHOPKEEPER)"
+    "Kakariko Potion Shop Item 8": "is_adult && shop_price(0x3f) && soul_npc(SOUL_NPC_POTION_SHOPKEEPER)"
+
+"Kakariko Potion Shop Junction":
+  region: NONE
+  exits:
+    "GLOBAL": "true"
+    "Kakariko Potion Shop": "true"
+    "Kakariko Potion Shop Back": "is_adult || climb_anywhere"
+
+"Kakariko Potion Shop Back":
+  region: ENTRANCE
+  exits:
+    "GLOBAL": "true"
+    "Kakariko Back": "is_adult || climb_anywhere"
+    "Kakariko Potion Shop Junction": "true"
+
+"Kakariko Granny Shop":
+  region: ENTRANCE
+  exits:
+    "Kakariko Back": "rusty_key(RUSTY_KEY_GRANNY_POTION_SHOP)"
+  locations:
+    "Kakariko Potion Shop Odd Potion": "soul_old_hag && (adult_trade(ODD_MUSHROOM) || has_mushroom)"
+    "Kakariko Potion Shop Buy Blue Potion": "soul_old_hag && (adult_trade(ODD_MUSHROOM) || has_mushroom) && merchant_price(0x02)"
+
+"Shooting Gallery Adult":
+  region: ENTRANCE
+  exits:
+    "Kakariko": "rusty_key(RUSTY_KEY_ADULT_SHOOTING_GALLERY)"
+  locations:
+    "Shooting Gallery Adult": "is_adult && can_use_bow && can_use_wallet(1) && soul_shooting_gallery_owner"
+
+"Impa House Front":
+  region: ENTRANCE
+  exits:
+    "GLOBAL": "true"
+    "Kakariko": "rusty_key(RUSTY_KEY_IMPA_HOUSE)"
+  locations:
+    "Kakariko Cow": "cow"
+    "Kakariko Impa House Wonder Item": "true"
+
+"Impa House Back":
+  region: ENTRANCE
+  exits:
+    "GLOBAL": "true"
+    "Kakariko Balcony": "true"
+  locations:
+    "Kakariko Cow": "cow"
+    "Kakariko Impa House HP": "true"
+
+"Windmill":
+  region: ENTRANCE
+  exits:
+    "Kakariko": "rusty_key(RUSTY_KEY_WINDMILL)"
+    "Windmill Exit": "climb_anywhere || hookshot_anywhere || (is_adult && trick(OOT_WINDMILL_HP_NOTHING))"
+  events:
+    WELL_DRAIN: "is_child && song_event(1)"
+  locations:
+    "Windmill HP": "can_boomerang || event(WINDMILL_TOP) || (is_adult && trick(OOT_WINDMILL_HP_NOTHING)) || climb_anywhere || hookshot_anywhere"
+    "Windmill Song of Storms": "is_adult && has_ocarina && soul_guru_guru"
+
+"Windmill Exit":
+  region: NONE
+  exits:
+    "Windmill": "true"
+    "Dampe Grave Entrance": "trick(OOT_REVERSE_DAMPE) && ((climb_anywhere && (is_child || can_play_time)) || time_travel_at_will)" #blindly make your way backwards to the entrance
+
+"Kakariko Carpenter House":
+  region: ENTRANCE
+  exits:
+    "GLOBAL": "true"
+    "Kakariko": "rusty_key(RUSTY_KEY_CARPENTER_HOUSE)"
+  events:
+    TALON_AWAKE: "adult_trade(POCKET_CUCCO) && soul_talon"
+
+"Skulltula House":
+  region: ENTRANCE
+  exits:
+    "GLOBAL": "true"
+    "Kakariko": "rusty_key(RUSTY_KEY_SKULLTULA_HOUSE)"
+  locations:
+    "Skulltula House 10 Tokens": "(has(GS_TOKEN, 10) || has_platinum_token)"
+    "Skulltula House 20 Tokens": "(has(GS_TOKEN, 20) || has_platinum_token)"
+    "Skulltula House 30 Tokens": "(has(GS_TOKEN, 30) || has_platinum_token)"
+    "Skulltula House 40 Tokens": "(has(GS_TOKEN, 40) || has_platinum_token)"
+    "Skulltula House 50 Tokens": "(has(GS_TOKEN, 50) || has_platinum_token)"
+    "Skulltula House 100 Tokens": "(has(GS_TOKEN, 100) || has_platinum_token)"
+
+"ReDead Grotto":
+  region: ENTRANCE
+  age_change: false
+  exits:
+    "GLOBAL": "true"
+    "Kakariko": "true"
+  locations:
+    "Kakariko Grotto Front": "soul_redead_gibdo && (can_use_sword || can_use_sticks || can_use_din || can_hammer)"
+
+"Kakariko Generic Grotto":
+  region: ENTRANCE
+  age_change: false
+  exits:
+    "GLOBAL": "true"
+    "GENERIC_GROTTO_EVENTS": "true"
+    "Kakariko Back": "true"
+  locations:
+    "Kakariko Grotto Back": "true"
+    "Kakariko Grotto Back Grass 1": "can_cut_grass"
+    "Kakariko Grotto Back Grass 2": "can_cut_grass"
+    "Kakariko Grotto Back Grass 3": "can_cut_grass"
+    "Kakariko Grotto Back Grass 4": "can_cut_grass"
+    "Kakariko Grotto Back Hive 1": "break_hive_low"
+    "Kakariko Grotto Back Hive 2": "break_hive_low"
+    "Kakariko Grotto Butterfly 1": "butterfly"
+    "Kakariko Grotto Butterfly 2": "butterfly"
+    "Kakariko Grotto Butterfly 3": "butterfly"
+  gossip:
+    "Kakariko Gossip Grotto": "true"
+
+"Watchtower":
+  region: KAKARIKO
+  exits:
+    "GLOBAL": "true"
+    "Kakariko Back": "trick(OOT_MAN_ON_ROOF)"
+  locations:
+    "Kakariko Man on Roof": "trick(OOT_MAN_ON_ROOF) && soul_rooftop_man"
+    "Kakariko GS Ladder": "gs_night && is_child && can_use_din"

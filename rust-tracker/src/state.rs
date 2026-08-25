@@ -109,6 +109,9 @@ impl TrackerApp {
             view_initialized: false,
             last_frame: Instant::now(),
             kbd: ui::kbdnav::KbdNav::default(),
+            reach: None,
+            logic_dirty: true,
+            logic_locs: crate::logic::logic_location_set(),
         };
         // Startup auto-loads, each gated by its "Auto Load Most Recent" option.
         if app.app_settings.auto_load_tracking {
@@ -333,6 +336,20 @@ impl TrackerApp {
             }
             Err(e) => self.log_msg(format!("Failed to load patch file: {e}")),
         }
+    }
+
+    /// Unload the selected patch (the Launch ✕ button): drop the path + parsed
+    /// session info, stop the r4 client if it was running (it derives its identity
+    /// from the patch), and persist the removal. The DLL hook keeps tracking.
+    pub(crate) fn clear_patch(&mut self) {
+        if self.patch_path.is_none() && self.patch_info.is_none() {
+            return;
+        }
+        self.stop_r4();
+        self.patch_path = None;
+        self.patch_info = None;
+        self.log_msg(self.i18n.patch_unloaded().to_string());
+        self.save_state(); // drop the PATCH line from the save file
     }
 
     /// Persist the multiplayer launch options (checkbox + host + port) when they
@@ -1096,6 +1113,11 @@ impl TrackerApp {
     /// Feeds the tab-bar counters and the scene-tree counts.
     pub(crate) fn recompute_counts(&mut self) {
         let aw = self.active_world;
+        // "Hide unreachable" mode: an uncollected unreachable check is not shown, so
+        // it must not be counted either — the scene/category totals then reflect only
+        // the reachable-or-collected checks, and empty scenes drop from the trees.
+        let hide = self.app_settings.logic_filter_enabled
+            && self.app_settings.logic_hide_unreachable;
         for game in [Game::Oot, Game::Mm] {
             let mut totals = (0usize, 0usize);
             let mut sc: HashMap<u16, (usize, usize)> = HashMap::new();
@@ -1107,6 +1129,9 @@ impl TrackerApp {
                     continue;
                 }
                 let got = self.worlds[aw].collected.contains(&(game, i));
+                if hide && !got && self.obj_unreachable(o.location) {
+                    continue; // hidden on the map → excluded from the counts
+                }
                 totals.1 += 1;
                 let e = sc.entry(o.render_scene).or_default();
                 e.1 += 1;
@@ -1117,6 +1142,29 @@ impl TrackerApp {
             }
             self.cached_totals[game.idx()] = totals;
             self.cached_scene_counts[game.idx()] = sc;
+        }
+    }
+
+    /// Recompute the shown player's reachability from their multiworld inventory +
+    /// the seed settings. Called only when the accessibility filter is on and the
+    /// state is dirty (see the update loop).
+    pub(crate) fn recompute_reachability(&mut self) {
+        let player = (self.active_world + 1) as u8; // 1-based player whose map is shown
+        self.reach = Some(crate::logic::solve_world(&self.rom_settings, &self.worlds, player));
+    }
+
+    /// Whether a check must be treated as *unreachable* by the accessibility
+    /// filter: the filter is on, a reachability result exists, the location
+    /// carries a logic rule, and the solver did not reach it. A check with no
+    /// rule (not in `logic_locs`) is never considered unreachable — the logic has
+    /// nothing to say about it, so it stays fully shown.
+    pub(crate) fn obj_unreachable(&self, location: &str) -> bool {
+        if !self.app_settings.logic_filter_enabled {
+            return false;
+        }
+        match &self.reach {
+            Some(r) => self.logic_locs.contains(location) && !r.reachable(location),
+            None => false,
         }
     }
 
@@ -1213,24 +1261,6 @@ impl TrackerApp {
                     Some(ctx.load_texture("scene_map", img, egui::TextureOptions::LINEAR));
             }
             Err(e) => self.load_error = Some(e),
-        }
-    }
-
-    /// Fabricate a real collected-event for an uncollected object of the current
-    /// scene, so the auto-check can be seen without the game running.
-    pub(crate) fn simulate_event(&mut self) {
-        let (game, sid) = match self.scene.as_ref() {
-            Some(s) => (s.game, s.def.id),
-            None => return,
-        };
-        for (i, o) in game.objects().iter().enumerate() {
-            if o.render_scene != sid || self.worlds[self.active_world].collected.contains(&(game, i)) {
-                continue;
-            }
-            if let Some(ev) = tracking::demo_event(game, o) {
-                self.process_event(ev); // same path as a live event (logs + last item)
-                return;
-            }
         }
     }
 
@@ -1366,8 +1396,22 @@ impl eframe::App for TrackerApp {
         self.ensure_tab_scene();
         self.sync_collected();
         self.ensure_texture(ctx);
+        // A tracked-state change (collected / exclusions / layout / world) also
+        // invalidates reachability. Reachability must refresh BEFORE the counts,
+        // because in "hide" mode the counts (and the trees) drop unreachable checks.
         if self.counts_dirty {
-            self.recompute_counts(); // only when collected / exclusions / layout changed
+            self.logic_dirty = true;
+        }
+        // Reachability: only computed when the filter is on and something changed
+        // (never per mouse-move frame — the fixed point over ~1300 regions is far
+        // heavier than the count scan).
+        if self.app_settings.logic_filter_enabled && self.logic_dirty {
+            self.recompute_reachability();
+            self.logic_dirty = false;
+            self.counts_dirty = true; // hide-mode counts depend on the new reachability
+        }
+        if self.counts_dirty {
+            self.recompute_counts();
             self.counts_dirty = false;
         }
 

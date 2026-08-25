@@ -6,6 +6,7 @@ mod dialog;
 mod entrance;
 mod gps;
 mod inject;
+mod logic;
 mod multi;
 mod multi_r4;
 mod patch;
@@ -70,6 +71,7 @@ enum LaunchAction {
     Reset,
     Toggle,
     Patch,
+    ClearPatch,
 }
 
 /// Top-level tabs, mirroring the original Qt layout.
@@ -993,6 +995,17 @@ struct TrackerApp {
     /// Keyboard navigation shared by the tree panels: which tree owns the arrows
     /// (set on click) and the focused leaf within each one.
     kbd: ui::kbdnav::KbdNav,
+
+    // --- Reachability logic (accessibility filter) ---
+    /// Reachable-check set for the active world, recomputed from the inventory +
+    /// seed settings when `logic_dirty`. `None` until the filter is first enabled.
+    reach: Option<logic::Reachability>,
+    /// The reachability result is stale (collected / spoiler / settings / world
+    /// changed, or the filter was just enabled) and must be recomputed.
+    logic_dirty: bool,
+    /// Every location that carries a logic rule (cached once). A check outside
+    /// this set has no rule, so it is always shown (never dimmed / hidden).
+    logic_locs: std::collections::HashSet<&'static str>,
 }
 
 

@@ -1,0 +1,377 @@
+
+"Hyrule Field":
+  region: HYRULE_FIELD
+  time: flow
+  exits:
+    "GLOBAL": "true"
+    "Lost Woods Bridge": "true"
+    "Hyrule Field Near Market": "is_day || is_adult || longshot_anywhere || (climb_anywhere && (can_swim || hookshot_anywhere || has_hover_boots))" # With climb anywhere, MM air movement can also do this as well as a precisely aimed jump from the fence near boulder grotto
+    "Hyrule Field Moat": "can_swim_or_sink"
+    "Kakariko": "true"
+    "Zora River Front": "true"
+    "Lake Hylia": "true"
+    "Gerudo Valley": "true"
+    "Lon Lon Ranch": "true"
+    "Hyrule Field Grass": "can_cut_grass"
+    "Hyrule Field Scrub Grotto": "hidden_grotto_bomb"
+    "Hyrule Field Open Grotto": "has_shovel"
+    "Hyrule Field Southeast Grotto": "has_shovel && has_explosives_or_hammer"
+    "Hyrule Field Grotto Near Market": "has_shovel && has_explosives_or_hammer"
+    "Hyrule Field Tektite Grotto": "hidden_grotto_bomb"
+    "Hyrule Field Grotto Near GV": "(is_child && hidden_grotto_bomb) || (has_shovel && can_hammer_or_keg && stone_of_agony)"
+    "Hyrule Field Grotto Near Kak": "hidden_grotto_bomb"
+    "Hyrule Field Fairy Grotto": "has_shovel && has_explosives_or_hammer"
+    "Hyrule Field Red Boulders": "is_adult && can_hammer_or_keg"
+  events:
+    BIG_POE: "can_ride_epona && can_use_bow && has_bottle && soul_poe"
+    #There are rocks near Gerudo Valley you can farm for drops
+    BOMBS_OR_BOMBCHU: "true"
+    RUPEES: "true"
+    SEEDS: "is_child"
+    ARROWS: "is_adult"
+    MAGIC: "true"
+  locations:
+    "Hyrule Field Sell Bunny Mask": "is_child && has_spiritual_stones && has_mask_bunny && soul_citizen"
+    "Hyrule Field River Big Fairy": "can_play_storms"
+    "Hyrule Field Wonder Item 1": "is_child && (is_day || longshot_anywhere || (climb_anywhere && (can_swim || hookshot_anywhere || has_hover_boots)))"
+    "Hyrule Field Wonder Item 2": "is_child && (is_day || longshot_anywhere || (climb_anywhere && (can_swim || hookshot_anywhere || has_hover_boots)))"
+    "Hyrule Field Wonder Item 3": "is_child && (is_day || longshot_anywhere || (climb_anywhere && (can_swim || hookshot_anywhere || has_hover_boots)))"
+    "Hyrule Field Tree 01": "true"
+    "Hyrule Field Tree 02": "true"
+    "Hyrule Field Tree 03": "true"
+    "Hyrule Field Tree 04": "true"
+    "Hyrule Field Tree 05": "true"
+    "Hyrule Field Tree 06": "true"
+    "Hyrule Field Tree 07": "true"
+    "Hyrule Field Tree 08": "true"
+    "Hyrule Field Tree 09": "true"
+    "Hyrule Field Tree 10": "true"
+    "Hyrule Field Tree 11": "true"
+    "Hyrule Field Tree 12": "true"
+    "Hyrule Field Tree 13": "true"
+    "Hyrule Field Tree 14": "true"
+    "Hyrule Field Tree 15": "true"
+    "Hyrule Field Tree 16": "true"
+    "Hyrule Field Tree 17": "true"
+    "Hyrule Field Tree 18": "true"
+    "Hyrule Field Tree 19": "true"
+    "Hyrule Field Tree 20": "true"
+    "Hyrule Field Tree 21": "true"
+    "Hyrule Field Tree 22": "true"
+    "Hyrule Field Tree 23": "true"
+    "Hyrule Field Tree 24": "true"
+    "Hyrule Field Tree 25": "true"
+    "Hyrule Field Tree 26": "true"
+    "Hyrule Field Tree 27": "true"
+    "Hyrule Field Tree 28": "true"
+    "Hyrule Field Tree 29": "true"
+    "Hyrule Field Tree 30": "true"
+    "Hyrule Field Tree 31": "true"
+    "Hyrule Field Tree 32": "true"
+    "Hyrule Field Tree 33": "true"
+    "Hyrule Field Tree 34": "true"
+    "Hyrule Field Tree 35": "true"
+    "Hyrule Field Tree 36": "true"
+    "Hyrule Field Tree 37": "true"
+    "Hyrule Field Tree 38": "true"
+    "Hyrule Field Tree 39": "true"
+    "Hyrule Field Tree 40": "true"
+    "Hyrule Field Tree Child Near Lake 1": "is_child"
+    "Hyrule Field Tree Child Near Lake 2": "is_child"
+    "Hyrule Field Tree Child Near Lake 3": "is_child"
+    "Hyrule Field Tree Child Near Lake 4": "is_child"
+    "Hyrule Field Tree Child Near Lake 5": "is_child"
+    "Hyrule Field Tree Child Near Lake 6": "is_child"
+    "Hyrule Field Tree Child Near Valley": "is_child"
+    "Hyrule Field Tree Adult": "is_adult"
+    "Hyrule Field Bush 01": "true"
+    "Hyrule Field Bush 02": "true"
+    "Hyrule Field Bush 03": "true"
+    "Hyrule Field Bush 04": "true"
+    "Hyrule Field Bush 05": "true"
+    "Hyrule Field Bush 06": "true"
+    "Hyrule Field Bush 07": "true"
+    "Hyrule Field Bush 08": "true"
+    "Hyrule Field Bush 09": "true"
+    "Hyrule Field Bush 10": "true"
+    "Hyrule Field Bush 11": "true"
+    "Hyrule Field Bush 12": "true"
+    "Hyrule Field Bush 13": "true"
+    "Hyrule Field Bush 14": "true"
+    "Hyrule Field Bush 15": "true"
+    "Hyrule Field Bush 16": "true"
+    "Hyrule Field Bush 17": "true"
+    "Hyrule Field Bush 18": "true"
+    "Hyrule Field Bush 19": "true"
+    "Hyrule Field Bush 20": "true"
+    "Hyrule Field Bush 21": "true"
+    "Hyrule Field Bush 22": "true"
+    "Hyrule Field Bush 23": "true"
+    "Hyrule Field Bush 24": "true"
+    "Hyrule Field Bush 25": "true"
+    "Hyrule Field Bush 26": "true"
+    "Hyrule Field Bush 27": "true"
+    "Hyrule Field Bush 28": "true"
+    "Hyrule Field Bush 29": "true"
+    "Hyrule Field Bush 30": "true"
+    "Hyrule Field Bush 31": "true"
+    "Hyrule Field Bush 32": "true"
+    "Hyrule Field Bush 33": "true"
+    "Hyrule Field Bush 34": "true"
+    "Hyrule Field Bush 35": "true"
+    "Hyrule Field Bush Child 01": "is_child"
+    "Hyrule Field Bush Child 02": "is_child"
+    "Hyrule Field Bush Child 03": "is_child"
+    "Hyrule Field Bush Child 04": "is_child"
+    "Hyrule Field Bush Child 05": "is_child"
+    "Hyrule Field Bush Child 06": "is_child"
+    "Hyrule Field Bush Child 07": "is_child"
+    "Hyrule Field Bush Child 08": "is_child"
+    "Hyrule Field Bush Child 09": "is_child"
+    "Hyrule Field Bush Child 10": "is_child"
+    "Hyrule Field Bush Child 11": "is_child"
+    "Hyrule Field Bush Child 12": "is_child"
+    "Hyrule Field Bush Child 13": "is_child"
+    "Hyrule Field Bush Child 14": "is_child"
+    "Hyrule Field Bush Child 15": "is_child"
+    "Hyrule Field Bush Child 16": "is_child"
+    "Hyrule Field Bush Child 17": "is_child"
+    "Hyrule Field Bush Child 18": "is_child"
+    "Hyrule Field Bush Child 19": "is_child"
+    "Hyrule Field Bush Child 20": "is_child"
+    "Hyrule Field Bush Child 21": "is_child"
+    "Hyrule Field Bush Child 22": "is_child"
+    "Hyrule Field Bush Child 23": "is_child"
+    "Hyrule Field Rock Circle Rock 1": "true"
+    "Hyrule Field Rock Circle Rock 2": "true"
+    "Hyrule Field Rock Circle Rock 3": "true"
+    "Hyrule Field Rock Circle Rock 4": "true"
+    "Hyrule Field Rock Circle Rock 5": "true"
+    "Hyrule Field Rock Circle Rock 6": "true"
+    "Hyrule Field Rock Circle Rock 7": "true"
+    "Hyrule Field Rock Circle Rock 8": "true"
+    "Hyrule Field Boulder Near Lake": "has_explosives_or_hammer"
+    "Hyrule Field Boulder Near Market": "has_explosives_or_hammer"
+    "Hyrule Field Boulder Island": "has_explosives_or_hammer"
+    "Hyrule Field Silver Boulder": "can_lift_silver"
+
+"Hyrule Field Grass":
+  region: HYRULE_FIELD
+  age_change: false
+  locations:
+    "Hyrule Field Grass Pack 1 Bush 01": "true"
+    "Hyrule Field Grass Pack 1 Bush 02": "true"
+    "Hyrule Field Grass Pack 1 Bush 03": "true"
+    "Hyrule Field Grass Pack 1 Bush 04": "true"
+    "Hyrule Field Grass Pack 1 Bush 05": "true"
+    "Hyrule Field Grass Pack 1 Bush 06": "true"
+    "Hyrule Field Grass Pack 1 Bush 07": "true"
+    "Hyrule Field Grass Pack 1 Bush 08": "true"
+    "Hyrule Field Grass Pack 1 Bush 09": "true"
+    "Hyrule Field Grass Pack 1 Bush 10": "true"
+    "Hyrule Field Grass Pack 1 Bush 11": "true"
+    "Hyrule Field Grass Pack 1 Bush 12": "true"
+    "Hyrule Field Grass Pack 2 Bush 01": "true"
+    "Hyrule Field Grass Pack 2 Bush 02": "true"
+    "Hyrule Field Grass Pack 2 Bush 03": "true"
+    "Hyrule Field Grass Pack 2 Bush 04": "true"
+    "Hyrule Field Grass Pack 2 Bush 05": "true"
+    "Hyrule Field Grass Pack 2 Bush 06": "true"
+    "Hyrule Field Grass Pack 2 Bush 07": "true"
+    "Hyrule Field Grass Pack 2 Bush 08": "true"
+    "Hyrule Field Grass Pack 2 Bush 09": "true"
+    "Hyrule Field Grass Pack 2 Bush 10": "true"
+    "Hyrule Field Grass Pack 2 Bush 11": "true"
+    "Hyrule Field Grass Pack 2 Bush 12": "true"
+    "Hyrule Field Grass Pack 3 Bush 01": "true"
+    "Hyrule Field Grass Pack 3 Bush 02": "true"
+    "Hyrule Field Grass Pack 3 Bush 03": "true"
+    "Hyrule Field Grass Pack 3 Bush 04": "true"
+    "Hyrule Field Grass Pack 3 Bush 05": "true"
+    "Hyrule Field Grass Pack 3 Bush 06": "true"
+    "Hyrule Field Grass Pack 3 Bush 07": "true"
+    "Hyrule Field Grass Pack 3 Bush 08": "true"
+    "Hyrule Field Grass Pack 3 Bush 09": "true"
+    "Hyrule Field Grass Pack 3 Bush 10": "true"
+    "Hyrule Field Grass Pack 3 Bush 11": "true"
+    "Hyrule Field Grass Pack 3 Bush 12": "true"
+    "Hyrule Field Grass Pack 4 Bush 01": "true"
+    "Hyrule Field Grass Pack 4 Bush 02": "true"
+    "Hyrule Field Grass Pack 4 Bush 03": "true"
+    "Hyrule Field Grass Pack 4 Bush 04": "true"
+    "Hyrule Field Grass Pack 4 Bush 05": "true"
+    "Hyrule Field Grass Pack 4 Bush 06": "true"
+    "Hyrule Field Grass Pack 4 Bush 07": "true"
+    "Hyrule Field Grass Pack 4 Bush 08": "true"
+    "Hyrule Field Grass Pack 4 Bush 09": "true"
+    "Hyrule Field Grass Pack 4 Bush 10": "true"
+    "Hyrule Field Grass Pack 4 Bush 11": "true"
+    "Hyrule Field Grass Pack 4 Bush 12": "true"
+
+"Hyrule Field Red Boulders":
+  region: HYRULE_FIELD
+  age_change: false
+  locations:
+    "Hyrule Field Red Boulder 1": "true"
+    "Hyrule Field Red Boulder 2": "true"
+    "Hyrule Field Red Boulder 3": "true"
+    "Hyrule Field Red Boulder 4": "true"
+
+"Hyrule Field Near Market":
+  region: HYRULE_FIELD
+  time: flow
+  exits:
+    "GLOBAL": "true"
+    "Hyrule Field": "is_day || is_adult || longshot_anywhere || (climb_anywhere && has_hover_boots)"
+    "Market Entryway": "true"
+  locations:
+    "Hyrule Field Wonder Item 1": "is_child && (hookshot_anywhere || climb_anywhere)"
+    "Hyrule Field Wonder Item 2": "is_child && (hookshot_anywhere || climb_anywhere)"
+    "Hyrule Field Wonder Item 3": "is_child && (hookshot_anywhere || climb_anywhere)"
+
+"Hyrule Field Drawbridge":
+  region: HYRULE_FIELD
+  age_change: false
+  exits:
+    "Hyrule Field": "is_day || is_adult"
+    "Hyrule Field Moat": "can_swim_or_sink"
+
+"Hyrule Field Moat":
+  region: HYRULE_FIELD
+  time: flow
+  age_change: false
+  exits:
+    "Hyrule Field": "can_swim || (has_iron_boots && hookshot_anywhere)"
+  locations:
+    "Hyrule Field Ocarina of Time": "is_child && has_spiritual_stones && soul_npc(SOUL_NPC_ZELDA)"
+    "Hyrule Field Song of Time": "is_child && has_spiritual_stones && soul_npc(SOUL_NPC_ZELDA)"
+
+"Hyrule Field Scrub Grotto":
+  region: ENTRANCE
+  age_change: false
+  exits:
+    "GLOBAL": "true"
+    "Hyrule Field": "true"
+  locations:
+    "Hyrule Field Grotto Scrub HP": "business_scrub(0x07)"
+    "Hyrule Field Grotto Scrub Big Fairy": "can_play_storms"
+    "Hyrule Field Grotto Scrub Hive": "break_hive_high"
+
+"Hyrule Field Open Grotto":
+  region: ENTRANCE
+  age_change: false
+  exits:
+    "GLOBAL": "true"
+    "GENERIC_GROTTO_EVENTS": "true"
+    "Hyrule Field": "true"
+  locations:
+    "Hyrule Field Grotto Open": "true"
+    "Hyrule Field Grotto Open Grass 1": "can_cut_grass"
+    "Hyrule Field Grotto Open Grass 2": "can_cut_grass"
+    "Hyrule Field Grotto Open Grass 3": "can_cut_grass"
+    "Hyrule Field Grotto Open Grass 4": "can_cut_grass"
+    "Hyrule Field Grotto Open Hive 1": "break_hive_low"
+    "Hyrule Field Grotto Open Hive 2": "break_hive_low"
+    "Hyrule Field Grotto Open Butterfly 1": "butterfly"
+    "Hyrule Field Grotto Open Butterfly 2": "butterfly"
+    "Hyrule Field Grotto Open Butterfly 3": "butterfly"
+  gossip:
+    "Hyrule Field Gossip Near Lake Hylia": "true"
+
+"Hyrule Field Southeast Grotto":
+  region: ENTRANCE
+  age_change: false
+  exits:
+    "GLOBAL": "true"
+    "GENERIC_GROTTO_EVENTS": "true"
+    "Hyrule Field": "true"
+  locations:
+    "Hyrule Field Grotto Southeast": "true"
+    "Hyrule Field Grotto Southeast Grass 1": "can_cut_grass"
+    "Hyrule Field Grotto Southeast Grass 2": "can_cut_grass"
+    "Hyrule Field Grotto Southeast Grass 3": "can_cut_grass"
+    "Hyrule Field Grotto Southeast Grass 4": "can_cut_grass"
+    "Hyrule Field Grotto Southeast Hive 1": "break_hive_low"
+    "Hyrule Field Grotto Southeast Hive 2": "break_hive_low"
+    "Hyrule Field Grotto Southeast Butterfly 1": "butterfly"
+    "Hyrule Field Grotto Southeast Butterfly 2": "butterfly"
+    "Hyrule Field Grotto Southeast Butterfly 3": "butterfly"
+  gossip:
+    "Hyrule Field Gossip Southeast Grotto": "true"
+
+"Hyrule Field Grotto Near Market":
+  region: ENTRANCE
+  age_change: false
+  exits:
+    "GLOBAL": "true"
+    "GENERIC_GROTTO_EVENTS": "true"
+    "Hyrule Field": "true"
+  locations:
+    "Hyrule Field Grotto Market": "true"
+    "Hyrule Field Grotto Market Grass 1": "can_cut_grass"
+    "Hyrule Field Grotto Market Grass 2": "can_cut_grass"
+    "Hyrule Field Grotto Market Grass 3": "can_cut_grass"
+    "Hyrule Field Grotto Market Grass 4": "can_cut_grass"
+    "Hyrule Field Grotto Market Hive 1": "break_hive_low"
+    "Hyrule Field Grotto Market Hive 2": "break_hive_low"
+    "Hyrule Field Grotto Market Butterfly 1": "butterfly"
+    "Hyrule Field Grotto Market Butterfly 2": "butterfly"
+    "Hyrule Field Grotto Market Butterfly 3": "butterfly"
+  gossip:
+    "Hyrule Field Gossip Near Castle Town": "true"
+
+"Hyrule Field Tektite Grotto":
+  region: ENTRANCE
+  age_change: false
+  exits:
+    "GLOBAL": "true"
+    "Hyrule Field": "true"
+  locations:
+    "Hyrule Field Grotto Tektite HP": "can_dive_big"
+
+"Hyrule Field Grotto Near GV":
+  region: ENTRANCE
+  age_change: false
+  exits:
+    "GLOBAL": "true"
+    "Hyrule Field": "true"
+  events:
+    NUTS: "has_fire"
+    BUGS: "has_fire && can_cut_grass_for_bugs"
+  locations:
+    "Hyrule Field Grotto Near Gerudo GS": "gs && (can_collect_distance || climb_anywhere) && has_fire"
+    "Hyrule Field Cow": "has_fire && cow"
+    "Hyrule Field Cow Grotto Pot 1": "has_fire"
+    "Hyrule Field Cow Grotto Pot 2": "has_fire"
+    "Hyrule Field Grotto Near Gerudo Grass 1": "has_fire && can_cut_grass"
+    "Hyrule Field Grotto Near Gerudo Grass 2": "has_fire && can_cut_grass"
+  gossip:
+    "Hyrule Field Gossip Near Gerudo Valley": "has_fire"
+
+"Hyrule Field Grotto Near Kak":
+  region: ENTRANCE
+  age_change: false
+  exits:
+    "GLOBAL": "true"
+    "Hyrule Field": "true"
+  events:
+    SEEDS: "is_child && can_use_sword"
+    ARROWS: "is_adult && can_use_sword"
+  locations:
+    "Hyrule Field Grotto Near Kakariko GS": "gs && (can_collect_distance || (climb_anywhere && (has_ranged_weapon || has_explosives || can_use_din)))"
+
+"Hyrule Field Fairy Grotto":
+  region: ENTRANCE
+  age_change: false
+  exits:
+    "GLOBAL": "true"
+    "Hyrule Field": "true"
+  locations:
+    "Hyrule Field Fairy Fountain Fairy 1": "true"
+    "Hyrule Field Fairy Fountain Fairy 2": "true"
+    "Hyrule Field Fairy Fountain Fairy 3": "true"
+    "Hyrule Field Fairy Fountain Fairy 4": "true"
+    "Hyrule Field Fairy Fountain Fairy 5": "true"
+    "Hyrule Field Fairy Fountain Fairy 6": "true"
+    "Hyrule Field Fairy Fountain Fairy 7": "true"
+    "Hyrule Field Fairy Fountain Fairy 8": "true"

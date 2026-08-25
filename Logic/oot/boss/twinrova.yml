@@ -1,0 +1,16 @@
+"Spirit Temple Boss":
+  boss: true
+  age_change: false
+  dungeon: Spirit
+  events:
+    BOSS_TWINROVA: "can_kill_twinrova"
+  exits:
+    "Spirit Temple After Boss": "event(BOSS_TWINROVA)"
+
+"Spirit Temple After Boss":
+  boss: true
+  age_change: false
+  dungeon: Spirit
+  locations:
+    "Spirit Temple Boss HC": "true"
+    "Spirit Temple Boss": "true"

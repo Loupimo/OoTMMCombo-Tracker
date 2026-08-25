@@ -1,0 +1,103 @@
+# Climb grotto
+"Deku Palace Near JP Grotto Climb Left":
+  region: DEKU_PALACE
+  exits:
+    "GLOBAL": "true"
+    "JP Grotto Climb Left": "has_shovel"
+    "Deku Palace Main": "true"
+"Deku Palace Near JP Grotto Climb Right":
+  region: DEKU_PALACE
+  exits:
+    "GLOBAL": "true"
+    "JP Grotto Climb Right": "has_shovel"
+    "Deku Palace Main": "true"
+"JP Grotto Climb":
+  region: ENTRANCE
+  exits:
+    "GLOBAL": "true"
+    "JP Grotto Climb Left": "true"
+    "JP Grotto Climb Right": "true"
+"JP Grotto Climb Left":
+  region: BUFFER
+  exits:
+    "GLOBAL": "true"
+    "JP Grotto Climb": "true"
+    "Deku Palace Near JP Grotto Climb Left": "true"
+"JP Grotto Climb Right":
+  region: ENTRANCE
+  exits:
+    "GLOBAL": "true"
+    "JP Grotto Climb": "true"
+    "Deku Palace Near JP Grotto Climb Right": "true"
+
+# Line Grotto
+"Deku Palace Near JP Grotto Line Start":
+  region: DEKU_PALACE
+  exits:
+    "GLOBAL": "true"
+    "JP Grotto Line Start": "has_shovel"
+    "Deku Palace Main": "is_child" # TODO: Refactor Deku Palace
+"JP Grotto Line":
+  region: ENTRANCE
+  exits:
+    "GLOBAL": "true"
+    "JP Grotto Line Start": "true"
+    "JP Grotto Line End": "true"
+  locations:
+    "Deku Palace JP Line Grotto Butterfly 1": "butterfly"
+    "Deku Palace JP Line Grotto Butterfly 2": "butterfly"
+    "Deku Palace JP Line Grotto Butterfly 3": "butterfly"
+    "Deku Palace JP Line Grotto Butterfly 4": "butterfly"
+    "Deku Palace JP Line Grotto Butterfly 5": "butterfly"
+    "Deku Palace JP Line Grotto Grass 1": "true"
+    "Deku Palace JP Line Grotto Grass 2": "true"
+    "Deku Palace JP Line Grotto Grass 3": "true"
+    "Deku Palace JP Line Grotto Grass 4": "true"
+    "Deku Palace JP Line Grotto Grass 5": "true"
+"JP Grotto Line Start":
+  region: ENTRANCE
+  exits:
+    "GLOBAL": "true"
+    "JP Grotto Line": "true"
+    "Deku Palace Near JP Grotto Line Start": "true"
+"JP Grotto Line End":
+  region: BUFFER
+  exits:
+    "GLOBAL": "true"
+    "JP Grotto Line": "true"
+    "Deku Palace Corner Ledge Top": "true"
+
+# Beans Grotto
+"Deku Palace Near Beans Grotto":
+  region: DEKU_PALACE
+  exits:
+    "GLOBAL": "true"
+    "Deku Palace Corner Ledge Middle": "true"
+    "Deku Palace Beans Grotto": "has_shovel"
+
+"Deku Palace Corner Ledge Top":
+  region: DEKU_PALACE
+  exits:
+    "GLOBAL": "true"
+    "Deku Palace Corner Ledge Middle": "true"
+    "JP Grotto Line End": "has_shovel"
+"Deku Palace Corner Ledge Middle":
+  region: DEKU_PALACE
+  exits:
+    "GLOBAL": "true"
+    "Deku Palace Near Beans Grotto": "true"
+    "Deku Palace Corner Ledge Bottom": "true"
+    "Deku Palace Corner Ledge Top": "can_hookshot_short || is_tall"
+  locations:
+    "Deku Palace Rupee Layout-Dependant 1": "true"
+    "Deku Palace Rupee Layout-Dependant 2": "true"
+"Deku Palace Corner Ledge Bottom":
+  region: DEKU_PALACE
+  exits:
+    "GLOBAL": "true"
+    "Deku Palace Main": "true"
+    "Deku Palace Corner Ledge Middle": "can_hookshot_short || is_tall"
+
+# US stubs
+"Deku Palace Near US Beans Grotto":
+  region: DEKU_PALACE
