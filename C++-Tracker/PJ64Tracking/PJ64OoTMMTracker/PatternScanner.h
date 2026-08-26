@@ -45,6 +45,7 @@ typedef struct VersionProfile
     uint32_t         CrcLo;         // CRC ROM (romBase + 0x10). 0 = inconnu (build dev / futur), detecte par probe.
     uint32_t         CrcHi;         // CRC ROM (romBase + 0x14). 0 = inconnu.
     uint32_t         NothingID;     // "Nothing" combo item ID impose par le profil. 0 = garder la detection CRC/hookInit existante.
+    uint32_t         OoTHookInitOff;// The offset to add to find the sub pattern for the hook init function (OoT) 
     PCFastResolver*  OoTSigs;       // Table des signatures OoT de ce profil (meme ordre/taille que GamePatternState::PCs).
     size_t           OoTSigCount;   // Nombre d'entrees dans OoTSigs.
     PCFastResolver*  MMSigs;        // Table des signatures MM de ce profil.

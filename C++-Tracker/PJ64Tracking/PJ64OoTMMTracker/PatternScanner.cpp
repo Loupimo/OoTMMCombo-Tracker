@@ -281,10 +281,10 @@ void BuildPCsPatterns()
             if (gGame == GAME_OOT)
             {   // Resout dynamiquement le site du hook (independant du build : stable, dev, futurs)
 
-                uintptr_t site = FindSubPattern(base, &Sig_hookInit_Site_OoT, 0x800);
+                uintptr_t site = FindSubPattern(base, &Sig_hookInit_Site_OoT, prof->OoTHookInitOff);
                 if (site)
                 {
-                    uint32_t off = (uint32_t)(site - base);
+                    uint32_t off = (uint32_t)(site + sigs[i].Signature->PCOffset - base);
                     sigs[i].Signature->PCOffset = off;
 
                     // Le variant decoule de l'emplacement du hook -> selectionne le bon "Nothing" ID,
@@ -292,7 +292,7 @@ void BuildPCsPatterns()
                     if (!gData || gData->HostROMVersion == HOST_VER_UNKNOWN)
                     {
                         isStable = (off == OOT_HOOK_INIT_STABLE_PCOFF);
-                        gNothingID = isStable ? STABLE_NOTHING : DEV_NOTHING;
+                        gNothingID = prof->NothingID;
                     }
                 }
                 else
@@ -400,9 +400,9 @@ __forceinline void FindLastSceneAddress()
 {
     if (gGame == GAME_OOT)
     {
-        gOOTLastSceneAddr = (uint16_t) * (uint32_t*)((gPatternState[gGame].PCs[4] & 0x00FFFFFF) + gameRAMBase - 0x04);
+        gOOTLastSceneAddr = (uint16_t) * (uint32_t*)((gPatternState[gGame].PCs[4] & 0x00FFFFFF) + gameRAMBase - 0x08);
         gOOTLastSceneAddr <<= 16;
-        gOOTActiveGlobalOffset = (int16_t) * (uint32_t*)((gPatternState[gGame].PCs[4] & 0x00FFFFFF) + gameRAMBase) - 0x04;
+        gOOTActiveGlobalOffset = (int16_t) * (uint32_t*)((gPatternState[gGame].PCs[4] & 0x00FFFFFF) + gameRAMBase - 0x04) - 0x04;
         gOOTLastSceneAddr = gOOTLastSceneAddr + gOOTActiveGlobalOffset;
         gActiveSceneOffset = gOOTLastSceneAddr;
     }

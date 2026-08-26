@@ -188,13 +188,13 @@ uint32_t Mask_hookPlay_Init_OoT[] =
     0xFFFFFF00                      // LUI      V0, 0x8044
 };
 
-PCSignature Sig_hookPlay_Init_OoT = { 64, Pattern_hookPlay_Init_OoT, Mask_hookPlay_Init_OoT, 0x4D0 };
+PCSignature Sig_hookPlay_Init_OoT = { 64, Pattern_hookPlay_Init_OoT, Mask_hookPlay_Init_OoT, 0x04 }; // PC offset was 0x4D0 but it is now resolved by the subpattern function
 
-/* Ancre du site de hook OoT (identique stable/dev). L'adresse de match EST le PC a hooker. */
+/* Ancre du site de hook OoT (identique stable/dev). */
 uint8_t Pattern_hookInit_Site_OoT[] =
 {
-    0xAC,0x43,0xB3,0xEC,            // SW       V1, 0xB3EC (V0)   <-- HOOK
-    0x96,0x22,0x00,0xA4,            // LHU      V0, V0, 0x00A4
+    0xAC,0x43,0xB3,0xEC,            // SW       V1, 0xB3EC (V0)   
+    0x96,0x22,0x00,0xA4,            // LHU      V0, V0, 0x00A4      <-- HOOK
     0x24,0x03,0x00,0x3C,            // ADDIU    V1, R0, 0x003C
     0x30,0x44,0xFF,0xFD,            // ANDI     A0, V0, 0xFFFD
     0x54,0x83,0x00,0x3A             // BNEL     A0, V1, 0x80431C9C
@@ -665,18 +665,6 @@ PCSignature Sig_comboAddItemRawEx_OoT_V33 = { 32, Pattern_comboAddItemRawEx_OoT_
 
 /* ---- Squelettes OoT V33 a completer (PatternSize 0 => ignore tant que non rempli) ---- */
 
-/* Actor_Spawn  (hint PCOffset Legacy: 0x00 ; hook sur la fin de fonction) */
-uint8_t  Pattern_Actor_Spawn_OoT_V33[] =
-{
-    0x8F,0xB0,0x00,0x20             // LW       S0, 0x0020 (SP)
-};
-uint32_t Mask_Actor_Spawn_OoT_V33[]    =
-{
-    0xFFFFFFFF
-};
-
-PCSignature Sig_Actor_Spawn_OoT_V33    = { 4, Pattern_Actor_Spawn_OoT_V33, Mask_Actor_Spawn_OoT_V33, 0x00 };
-
 /* EnItem00_DropCustom  (hint PCOffset Legacy: 0x54) */
 uint8_t  Pattern_EnItem00_DropCustom_OoT_V33[] =
 {
@@ -778,8 +766,14 @@ uint8_t  Pattern_hookPlay_Init_OoT_V33[] =
     0x3C,0x02,0x80,0x45,            // LUI      V0, 0x8045
     0xAF,0xB6,0x00,0x48,            // SW       S6, 0x0048 (SP)
     0x3C,0x16,0x80,0x44,            // LUI      S6, 0x8044
-    0xAF,0xBF,0x00,0x54,            // SW       RA, 0x0054 (SP)
     0xAF,0xB3,0x00,0x3C,            // SW       S3, 0x003C (SP)
+    0xAC,0x44,0x27,0xFC,            // SW       A0, 0x27FC (V0)
+    0x26,0xD3,0xBE,0xD8,            // ADDIU    S3, S6, 0xBED8
+    0x3C,0x02,0x80,0x45,            // LUI      V0, 0x8045
+    0xA0,0x40,0xBC,0xE0,            // SB       R0, 0xBCE0 (V0)
+    0x92,0x62,0x00,0x15,            // LBU      V0, 0x0015 (S3)
+    0xAF,0xBF,0x00,0x54,            // SW       RA, 0x0054 (SP)
+    0x30,0x42,0x00,0xF7,            // ANDI     V0, V0, 0x00F7
     0xAF,0xB2,0x00,0x38,            // SW       S2, 0x0038 (SP)
     0xAF,0xB1,0x00,0x34,            // SW       S1, 0x0034 (SP)
     0xAF,0xB0,0x00,0x30,            // SW       S0, 0x0030 (SP)
@@ -787,9 +781,9 @@ uint8_t  Pattern_hookPlay_Init_OoT_V33[] =
     0xAF,0xB7,0x00,0x4C,            // SW       S7, 0x004C (SP)
     0xAF,0xB5,0x00,0x44,            // SW       S5, 0x0044 (SP)
     0xAF,0xB4,0x00,0x40,            // SW       S4, 0x0040 (SP)
-    0xAC,0x44,0x87,0x28,            // SW       A0, 0x8728 (SP)
-    0x26,0xD3,0x1C,0x68,            // ADDIU    S3, S6, 0x1C68
-    0x3C,0x02,0x80,0x44             // LUI      V0, 0x8044
+    0xA2,0x62,0x00,0x15,            // SB       V0, 0x0015 (S3)
+    0x3C,0x02,0x80,0x45,            // LUI      V0, 0x8045
+    0xAC,0x40,0xC3,0x68             // SW       R0, 0xC368 (V0)
 };
 uint32_t Mask_hookPlay_Init_OoT_V33[]    =
 {
@@ -797,8 +791,14 @@ uint32_t Mask_hookPlay_Init_OoT_V33[]    =
     0xFFFFFFFF,                     // LUI      V0, 0x8045
     0xFFFFFFFF,                     // SW       S6, 0x0048 (SP)
     0xFFFFFF00,                     // LUI      S6, 0x8044
-    0xFFFFFFFF,                     // SW       RA, 0x0054 (SP)
     0xFFFFFFFF,                     // SW       S3, 0x003C (SP)
+    0xFFFFFFFF,                     // SW       A0, 0x27FC (V0)
+    0xFFFFFFFF,                     // ADDIU    S3, S6, 0xBED8
+    0xFFFFFFFF,                     // LUI      V0, 0x8045
+    0xFFFFFFFF,                     // SB       R0, 0xBCE0 (V0)
+    0xFFFFFFFF,                     // LBU      V0, 0x0015 (S3)
+    0xFFFFFFFF,                     // SW       RA, 0x0054 (SP)
+    0xFFFFFFFF,                     // ANDI     V0, V0, 0x00F7
     0xFFFFFFFF,                     // SW       S2, 0x0038 (SP)
     0xFFFFFFFF,                     // SW       S1, 0x0034 (SP)
     0xFFFFFFFF,                     // SW       S0, 0x0030 (SP)
@@ -806,27 +806,53 @@ uint32_t Mask_hookPlay_Init_OoT_V33[]    =
     0xFFFFFFFF,                     // SW       S7, 0x004C (SP)
     0xFFFFFFFF,                     // SW       S5, 0x0044 (SP)
     0xFFFFFFFF,                     // SW       S4, 0x0040 (SP)
-    0xFFFF0000,                     // SW       A0, 0x8728 (SP)
-    0xFFFF0000,                     // ADDIU    S3, S6, 0x1C68
-    0xFFFFFF00                      // LUI      V0, 0x8044
+    0xFFFFFFFF,                     // SB       V0, 0x0015 (S3)
+    0xFFFFFFFF,                     // LUI      V0, 0x8045
+    0xFFFFFFFF                      // SW       R0, 0xC368 (V0)
 };
-PCSignature Sig_hookPlay_Init_OoT_V33    = { 64, Pattern_hookPlay_Init_OoT_V33, Mask_hookPlay_Init_OoT_V33, 0x00 };
+PCSignature Sig_hookPlay_Init_OoT_V33    = { 88, Pattern_hookPlay_Init_OoT_V33, Mask_hookPlay_Init_OoT_V33, 0x04 }; // Was 0x46C but resolved by sub pattern
 
 /* Play_TransitionDone  (hint PCOffset Legacy: 0x00) */
-uint8_t  Pattern_Play_TransitionDone_OoT_V33[] = { 0x00,0x00,0x00,0x00 };
-uint32_t Mask_Play_TransitionDone_OoT_V33[]    = { 0xFFFFFFFF };
-PCSignature Sig_Play_TransitionDone_OoT_V33    = { 0, Pattern_Play_TransitionDone_OoT_V33, Mask_Play_TransitionDone_OoT_V33, 0x00 };
+PCSignature Sig_Play_TransitionDone_OoT_V33 = Sig_Play_TransitionDone_OoT;
 
 /* EnButte_TransformIntoFairy  (hint PCOffset Legacy: 0x130) */
-uint8_t  Pattern_EnButte_TransformIntoFairy_OoT_V33[] = { 0x00,0x00,0x00,0x00 };
-uint32_t Mask_EnButte_TransformIntoFairy_OoT_V33[]    = { 0xFFFFFFFF };
-PCSignature Sig_EnButte_TransformIntoFairy_OoT_V33    = { 0, Pattern_EnButte_TransformIntoFairy_OoT_V33, Mask_EnButte_TransformIntoFairy_OoT_V33, 0x130 };
+uint8_t  Pattern_EnButte_TransformIntoFairy_OoT_V33[] =
+{
+    0x27,0xBD,0xFF,0xA8,             // ADD       SP, SP, -0x58         <-- EnButte_TransformIntoFairy_Start
+    0xAF,0xB0,0x00,0x48,             // SW        S0, 0x0048 (SP)
+    0x00,0x80,0x80,0x25,             // OR        S0, A0, R0
+    0x24,0x84,0x01,0x9C,             // ADDIU     A0, A0, 0x019C
+    0xAF,0xBF,0x00,0x54,             // SW        RA, 0x0054 (SP)
+    0xAF,0xB2,0x00,0x50,             // SW        S2, 0x0050 (SP)
+    0xAF,0xB1,0x00,0x4C,             // SW        S1, 0x004C (SP)
+    0x0C,0x02,0x32,0x70,             // JAL       SkelAnime_Update
+    0x00,0xA0,0x90,0x25,             // OR        S2, A1, R0
+    0x0C,0x07,0x84,0x45,             // JAL       EnButte_UpdateTransformationEffect
+    0x24,0x03,0x00,0x05,             // ADDIU     V1, R0, 0x0005
+    0x86,0x02,0x02,0x44              // LH        V0, 0x0244 (S0)       <-- Hook here
+};
+uint32_t Mask_EnButte_TransformIntoFairy_OoT_V33[]    =
+{
+    0xFFFFFFFF,                      // ADD       SP, SP, -0x58         <-- EnButte_TransformIntoFairy_Start
+    0xFFFFFFFF,                      // SW        S0, 0x0048 (SP)
+    0xFFFFFFFF,                      // OR        S0, A0, R0
+    0xFFFFFFFF,                      // ADDIU     A0, A0, 0x019C
+    0xFFFFFFFF,                      // SW        RA, 0x0054 (SP)
+    0xFFFFFFFF,                      // SW        S2, 0x0050 (SP)
+    0xFFFFFFFF,                      // SW        S1, 0x004C (SP)
+    0xFF000000,                      // JAL       SkelAnime_Update
+    0xFFFFFFFF,                      // OR        S2, A1, R0
+    0xFF000000,                      // JAL       EnButte_UpdateTransformationEffect
+    0xFFFFFFFF,                      // ADDIU     V1, R0, 0x0005
+    0xFFFFFFFF                       // LH        V0, 0x0244 (S0)       <-- Hook here
+};
+PCSignature Sig_EnButte_TransformIntoFairy_OoT_V33    = { 48, Pattern_EnButte_TransformIntoFairy_OoT_V33, Mask_EnButte_TransformIntoFairy_OoT_V33, 0x130 };
 
 /* BaseAddr 0x80000000 => FastPatternResolver echoue volontairement, on se repose sur le scan lent
    FindPatternInPayload (une seule fois par ROM). Les entrees a PatternSize 0 sont ignorees. */
 PCFastResolver OoTSignatures_V33[] =
 {
-    { 0x80025110, 0, { 0 }, &Sig_Actor_Spawn_OoT_V33 },               // 0 Actor_Spawn
+    { 0x800253E0, 0, { 0 }, &Sig_Actor_Spawn_OoT },               // 0 Actor_Spawn
     { 0x801DCCC0, 3, { 0, 0xBC, 0x68 }, &Sig_comboAddItemRawEx_OoT_V33 },   // 1 comboAddItemRawEx
     { 0x80000000, 1, { 0 }, &Sig_EnItem00_DropCustom_OoT_V33 },       // 2 EnItem00_DropCustom
     { 0x80000000, 1, { 0 }, &Sig_comboItemPrecond_OoT_V33 },          // 3 comboItemPrecond
@@ -910,10 +936,10 @@ size_t MMSignatures_V33_Count = sizeof(MMSignatures_V33) / sizeof(MMSignatures_V
 VersionProfile gProfiles[] =
 {
     // Legacy (<= v32.3 : stable + dev, meme payload ; NothingID gere par la logique CRC/hookInit)
-    { "Legacy", 0x69F7A146, 0x224AFE45, 0x000003A7, OoTSignatures,     OoTSignatureCount,       MMSignatures,     MMSignatureCount },
+    { "Legacy", 0x69F7A146, 0x224AFE45, 0x000003A7, 0x800, OoTSignatures,     OoTSignatureCount,       MMSignatures,     MMSignatureCount },
 
     // V33 (payload recompile ; CRC + NothingID a renseigner quand connus)
-    { "V33",    0x00000000, 0x00000000, 0x000003AE, OoTSignatures_V33, OoTSignatures_V33_Count, MMSignatures_V33, MMSignatures_V33_Count }
+    { "V33",    0x00000000, 0x00000000, 0x000003AE, 0x464, OoTSignatures_V33, OoTSignatures_V33_Count, MMSignatures_V33, MMSignatures_V33_Count }
 };
 size_t gProfileCount = sizeof(gProfiles) / sizeof(gProfiles[0]);
 
