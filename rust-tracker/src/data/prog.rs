@@ -468,6 +468,7 @@ pub static PROG_PAGES: &[ProgPage] = &[
             ProgEntry { icon: "skull", name: "Skull Mask", lookup_keys: &[iid::MM_MASK_SKULL, iid::SHARED_MASK_SKULL], is_counter: false, max_count: 0, max_from_spoiler: false },
             ProgEntry { icon: "spooky", name: "Spooky Mask", lookup_keys: &[iid::MM_MASK_SPOOKY, iid::SHARED_MASK_SPOOKY], is_counter: false, max_count: 0, max_from_spoiler: false },
             ProgEntry { icon: "gerudo", name: "Gerudo Mask", lookup_keys: &[iid::MM_MASK_GERUDO, iid::SHARED_MASK_GERUDO], is_counter: false, max_count: 0, max_from_spoiler: false },
+            ProgEntry { icon: "adult_mask", name: "Adult Mask", lookup_keys: &[iid::MM_MASK_ADULT], is_counter: false, max_count: 0, max_from_spoiler: false },
         ] },
         ProgSection { title: "Major Items", entries: &[
             ProgEntry { icon: "land", name: "Land Title Deed", lookup_keys: &[iid::MM_DEED_LAND], is_counter: false, max_count: 0, max_from_spoiler: false },

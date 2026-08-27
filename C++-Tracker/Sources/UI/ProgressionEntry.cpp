@@ -567,6 +567,7 @@ const ProgEntry MMMasks[] =
     { EGameIcon::skull, "Skull Mask", { MM_MASK_SKULL, SHARED_MASK_SKULL }, false },
     { EGameIcon::spooky, "Spooky Mask", { MM_MASK_SPOOKY, SHARED_MASK_SPOOKY }, false },
     { EGameIcon::gerudo, "Gerudo Mask", { MM_MASK_GERUDO, SHARED_MASK_GERUDO }, false },
+    { EGameIcon::adult_mask, "Adult Mask", { MM_MASK_ADULT }, false },
 };
 
 const ProgEntry MMMajorItems[] =

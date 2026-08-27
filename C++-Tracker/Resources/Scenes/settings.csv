@@ -1,0 +1,240 @@
+log_name;friendly_name;type;value;category;affected
+games;Games;game;ootmm;standard;
+mode;Mode;mode;coop;standard;
+teams;Number of teams;uint;1;standard;
+songs;Song Notes;boolean;vanilla;standard;
+goldSkulltulaTokens;Gold Skulltula - OoT;shuffle;all;standard;
+housesSkulltulaTokens;Gold Skulltula - MM;boolean;all;standard;
+tingleShuffle;Tingle Maps;boolean;all;standard;
+mapCompassShuffle;Map / Compass;boolean;all;standard;
+smallKeyShuffleOot;Small Key - OoT;shuffle;all;standard;
+smallKeyShuffleMm;Small Key - MM;shuffle;all;standard;
+smallKeyShuffleHideout;Small Key - Hideout;boolean;all;standard;
+smallKeyShuffleChestGame;Small Key - Chest Game;boolean;all;standard;
+bossKeyShuffleOot;Boss Key - OoT;boolean;all;standard;
+bossKeyShuffleMm;Boss Key - MM;boolean;all;standard;
+silverRupeeShuffle;Silver Rupee;boolean;all;standard;
+townFairyShuffle;Town Fairy;boolean;all;standard;
+strayFairyChestShuffle;Stray Fairy - Chest;boolean;all;standard;
+strayFairyOtherShuffle;Stray Fairy - Other;boolean;all;standard;
+ganonBossKey;Boss Key - Ganon;boolean;all;standard;
+scrubShuffleOot;Scrub - OoT;boolean;all;standard;
+scrubShuffleMm;Scrub - MM;boolean;all;standard;
+cowShuffleOot;Cow - OoT;boolean;all;standard;
+cowShuffleMm;Cow - MM;boolean;all;standard;
+shopShuffleOot;Shop - OoT;boolean;all;standard;
+shopShuffleMm;Shop - MM;boolean;all;standard;
+owlShuffle;Owl;boolean;all;standard;
+shuffleSkulltulaFinalReward;100 Gold Skulltula Reward;boolean;vanilla;standard;
+shufflePotsOot;Pots - OoT;shuffle;all;standard;
+shufflePotsMm;Pots - MM;shuffle;all;standard;
+shuffleCratesOot;Crates - OoT;shuffle;all;standard;
+shuffleCratesMm;Crates - MM;shuffle;all;standard;
+shuffleBarrelsMm;Barrels - MM;shuffle;all;standard;
+shuffleHivesOot;Hives - OoT;boolean;all;standard;
+shuffleHivesMm;Hives - MM;boolean;all;standard;
+shuffleGrassOot;Grass - OoT;shuffle;all;standard;
+shuffleRocksOot;Rocks - OoT;boolean;all;standard;
+shuffleRocksMm;Rocks - MM;shuffle;all;standard;
+shuffleGrassMm;Grass - MM;shuffle;all;standard;
+shuffleTFGrassMm;Termina Field Grass;boolean;all;standard;
+shuffleTreesOot;Trees - OoT;boolean;all;standard;
+shuffleTreesMm;Trees - MM;shuffle;all;standard;
+shuffleBushOot;Bush - OoT;boolean;all;standard;
+shuffleBushMm;Bush - MM;shuffle;all;standard;
+shuffleSoilOot;Soil - OoT;boolean;all;standard;
+shuffleSoilMm;Soil - MM;shuffle;all;standard;
+shuffleFreeRupeesOot;Freestanding Rupees - OoT;shuffle;all;standard;
+shuffleFreeRupeesMm;Freestanding Rupees - MM;shuffle;all;standard;
+shuffleFreeHeartsOot;Freestanding Hearts - OoT;shuffle;all;standard;
+shuffleFreeHeartsMm;Freestanding Hearts - MM;boolean;all;standard;
+shuffleWonderItemsOot;Wonder Items - OoT;shuffle;all;standard;
+shuffleWonderItemsMm;Wonder Items - MM;boolean;all;standard;
+shuffleSnowballsMm;Snowballs - MM;shuffle;all;standard;
+shuffleButterfliesOot;Butterflies - OoT;boolean;all;standard;
+shuffleButterfliesMm;Butterflies - MM;boolean;all;standard;
+shuffleBouldersOot;Boulders - OoT;shuffle;vanilla;standard;
+shuffleBouldersMm;Boulders - MM;shuffle;vanilla;standard;
+shuffleSilverBouldersOot;Silver Boulders - OoT;boolean;vanilla;standard;
+shuffleRedBouldersOot;Red Boulders - OoT;boolean;all;standard;
+shuffleRedBouldersMm;Red Boulders - MM;boolean;all;standard;
+shuffleFrogsRupeesOot;Frogs Rupees;boolean;all;standard;
+shuffleIciclesOot;Icicles - OoT;boolean;all;standard;
+shuffleIciclesMm;Icicles - MM;boolean;all;standard;
+shuffleRedIceOot;Red Ice;boolean;all;standard;
+shuffleOcarinasOot;Ocarinas;boolean;all;standard;
+shuffleMasterSword;Master Sword;boolean;all;standard;
+shuffleGerudoCard;Gerudo Card;boolean;all;standard;
+shuffleMaskTrades;Mask Trades;boolean;all;standard;
+shuffleMerchantsOot;Merchants - OoT;boolean;all;standard;
+shuffleMerchantsMm;Merchants - MM;boolean;all;standard;
+pondFishShuffle;Pond Fish;boolean;all;standard;
+divingGameRupeeShuffle;Diving Game Rupees;boolean;all;standard;
+fairyFountainFairyShuffleOot;Fairy Fountain - OoT;boolean;all;standard;
+fairyFountainFairyShuffleMm;Fairy Fountain - MM;boolean;all;standard;
+fairySpotShuffleOot;Fairy Spot;boolean;all;standard;
+eggShuffle;Egg Content;boolean;all;standard;
+skipZelda;Skip Zelda;boolean;vanilla;standard;
+agelessStrength;Use Silver / Golden Gauntlets as Child;boolean;vanilla;standard;
+restoreBrokenActors;Restore Broken Actors;boolean;all;standard;
+shuffleLotteryMm;Lottery Prizes;boolean;all;standard;
+crossWarpOot;Cross-Games OoT Warp Song;boolean;vanilla;standard;
+crossWarpMm;Cross-Games MM Song of Soaring;boolean;vanilla;standard;
+progressiveShieldsOot;Progressive Shields - OoT;boolean;vanilla;progressive;OOT_PROGRESSIVE_SHIELD_DEKU, OOT_PROGRESSIVE_SHIELD_HYLIAN
+progressiveSwordsOot;Progressive Swords - OoT;boolean;vanilla;progressive;OOT_SWORD_KOKIRI, OOT_SWORD_MASTER, OOT_SWORD_KNIFE, OOT_SWORD_GORON, OOT_SWORD_BIGGORON, OOT_SWORD_RAZOR, OOT_SWORD_GILDED, OOT_SWORD
+progressiveShieldsMm;Progressive Shields - Mm;boolean;vanilla;progressive;MM_PROGRESSIVE_SHIELD_DEKU, MM_PROGRESSIVE_SHIELD_HERO
+progressiveGFS;Progressive Great Fairy Sword;boolean;vanilla;progressive;MM_SWORD_KOKIRI, MM_SWORD_RAZOR, MM_SWORD_GILDED, MM_GREAT_FAIRY_SWORD, MM_SWORD
+progressiveClocks;Progressive Clock;boolean;all;progressive;MM_CLOCK, MM_CLOCK1, MM_CLOCK2, MM_CLOCK3, MM_CLOCK4, MM_CLOCK5, MM_CLOCK6
+sticksNutsUpgradesMm;Deku Sticks / Nuts Upgrades - MM;boolean;all;standard;MM_NUT_UPGRADE, MM_NUT_UPGRADE2, MM_STICK_UPGRADE, MM_STICK_UPGRADE2
+sunSongMm;Sun's Song - MM;boolean;all;standard;MM_SONG_SUN
+fairyOcarinaMm;Fairy Ocarina - MM;boolean;all;standard;MM_OCARINA_FAIRY
+shortHookshotMm;Short Hookshot - MM;boolean;all;standard;MM_HOOKSHOT_SHORT
+bronzeScale;Bonze Scale;boolean;all;standard;OOT_SCALE_BRONZE, MM_SCALE_BRONZE
+childWallets;Child Wallet;boolean;all;standard;OOT_WALLET, MM_WALLET
+colossalWallets;Colossal Wallet;boolean;all;standard;OOT_WALLET4, MM_WALLET4
+bottomlessWallets;Bottomless Wallet;boolean;all;standard;OOT_WALLET5, MM_WALLET5
+skeletonKeyOot;Skeleton Key - OoT;boolean;all;standard;OOT_SKELETON_KEY
+skeletonKeyMm;Skeleton Key - MM;boolean;all;standard;MM_SKELETON_KEY
+magicalRupee;Magical Rupee;boolean;all;standard;OOT_RUPEE_MAGICAL
+transcendentFairy;Transcendent Fairy;boolean;all;standard;MM_TRANSCENDENT_FAIRY
+platinumTokenOot;Platinum Token - OoT;boolean;all;standard;OOT_PLATINUM_TOKEN
+platinumTokenMm;Platinum Token - MM;boolean;all;standard;MM_PLATINUM_TOKEN
+spellFireMm;Din's Fire - MM;boolean;all;standard;MM_SPELL_FIRE
+spellWindMm;Farore's Wind - MM;boolean;all;standard;MM_SPELL_WIND
+spellLoveMm;Nayru's Love - MM;boolean;all;standard;MM_SPELL_LOVE
+bootsIronMm;Iron Boots - MM;boolean;all;standard;MM_BOOTS_IRON
+bootsHoverMm;Hover Boots - MM;boolean;all;standard;MM_BOOTS_HOVER
+tunicGoronMm;Goron Tunic - MM;boolean;all;standard;MM_TUNIC_GORON
+tunicZoraMm;Zora Tunic - MM;boolean;all;standard;MM_TUNIC_ZORA
+scalesMm;Scales - MM;boolean;all;standard;MM_SCALE_SILVER, MM_SCALE_GOLDEN
+strengthMm;Strength - MM;boolean;all;standard;MM_GORON_BRACELET, MM_SILVER_GAUNTLETS, MM_GOLDEN_GAUNTLETS
+hammerMm;Megaton Hammer - MM;boolean;all;standard;MM_HAMMER
+spinUpgradeOot;Spin Attack Upgrade - OoT;boolean;all;standard;OOT_SPIN_UPGRADE
+dekuShieldMm;Deku Shield - MM;boolean;all;standard;MM_SHIELD_DEKU
+blastMaskOot;Blast Mask - OoT;boolean;all;standard;OOT_MASK_BLAST
+stoneMaskOot;Stone Mask - OoT;boolean;all;standard;OOT_MASK_STONE
+elegyOot;Elegy of Emptiness - OoT;boolean;all;standard;OOT_SONG_EMPTINESS, OOT_SONG_NOTE_EMPTINESS
+ocarinaButtonsShuffleOot;Ocarina Buttons Shuffle - OoT;boolean;all;standard;OOT_BUTTON_A, OOT_BUTTON_C_DOWN, OOT_BUTTON_C_LEFT, OOT_BUTTON_C_RIGHT, OOT_BUTTON_C_UP
+ocarinaButtonsShuffleMm;Ocarina Buttons Shuffle - MM;boolean;all;standard;MM_BUTTON_A, MM_BUTTON_C_DOWN, MM_BUTTON_C_LEFT, MM_BUTTON_C_RIGHT, MM_BUTTON_C_UP
+soulsEnemyOot;Enemy Souls - OoT;boolean;all;souls;OOT_SOUL_ENEMY_STALFOS, OOT_SOUL_ENEMY_POE
+soulsEnemyMm;Enemy Souls - MM;boolean;all;souls;MM_SOUL_ENEMY_OCTOROK, MM_SOUL_ENEMY_POE
+soulsBossOot;Boss Souls - OoT;boolean;all;souls;OOT_SOUL_BOSS_QUEEN_GOHMA, OOT_SOUL_BOSS_TWINROVA
+soulsBossMm;Boss Souls - MM;boolean;all;souls;MM_SOUL_BOSS_ODOLWA, MM_SOUL_BOSS_IGOS
+soulsNpcOot;NPC Souls - OoT;boolean;all;souls;OOT_SOUL_NPC_SARIA, OOT_SOUL_NPC_THIEVES
+soulsNpcMm;NPC Souls - MM;boolean;all;souls;MM_SOUL_NPC_AROMA, MM_SOUL_NPC_THIEVES
+soulsAnimalOot;Animal Souls - OoT;boolean;all;souls;OOT_SOUL_ANIMAL_CUCCO, OOT_SOUL_ANIMAL_BUTTERFLY
+soulsAnimalMm;Animal Souls - MM;boolean;all;souls;MM_SOUL_ANIMAL_CUCCO, MM_SOUL_ANIMAL_BUTTERFLY
+soulsMiscOot;Misc Souls - OoT;boolean;all;souls;OOT_SOUL_MISC_GS, OOT_SOUL_MISC_BUSINESS_SCRUB
+soulsMiscMm;Misc Souls - MM;boolean;all;souls;MM_SOUL_MISC_GS, MM_SOUL_MISC_BUSINESS_SCRUB
+clocks;Clocks Shuffle;boolean;all;standard;MM_CLOCK1, MM_CLOCK2, MM_CLOCK3, MM_CLOCK4, MM_CLOCK5, MM_CLOCK6
+coins;Coins;boolean;all;standard;OOT_COIN_RED, OOT_COIN_GREEN, OOT_COIN_BLUE, OOT_COIN_YELLOW
+coinsRed;Red Coins;uint;1;standard;OOT_COIN_RED
+coinsGreen;Green Coins;uint;1;standard;OOT_COIN_GREEN
+coinsBlue;Blue Coins;uint;1;standard;OOT_COIN_BLUE
+coinsYellow;Yellow Coins;uint;1;standard;OOT_COIN_YELLOW
+trapIce;Ice Trap;boolean;all;standard;OOT_TRAP_ICE
+trapFire;Fire Trap;boolean;all;standard;OOT_TRAP_FIRE
+trapShock;Shock Trap;boolean;all;standard;OOT_TRAP_SHOCK
+trapDrain;Drain Trap;boolean;all;standard;OOT_TRAP_DRAIN
+trapAntiMagic;Magic Trap;boolean;all;standard;OOT_TRAP_ANTI_MAGIC
+trapKnockback;Knockback Trap;boolean;all;standard;OOT_TRAP_KNOCKBACK
+trapRupoor;Rupoor;boolean;all;standard;OOT_TRAP_RUPOOR
+sharedStoneAgony;Shared Stone of Agony;boolean;vanilla;shared;OOT_STONE_OF_AGONY, MM_STONE_OF_AGONY
+sharedSpinUpgrade;Shared Spin of Upgrade;boolean;vanilla;shared;OOT_SPIN_UPGRADE, MM_SPIN_UPGRADE
+sharedNutsSticks;Shared Nuts / Sticks;boolean;vanilla;shared;OOT_STICK, OOT_STICKS_5, OOT_STICKS_10, OOT_NUTS_5, OOT_NUTS_5_ALT, OOT_NUTS_10, OOT_STICK_UPGRADE, OOT_STICK_UPGRADE2, OOT_NUT_UPGRADE, OOT_NUT_UPGRADE2, MM_STICK, MM_UNK_2F, MM_UNK_30, MM_UNK_31, MM_NUT, MM_NUTS_5, MM_NUTS_10, MM_UNK_2B, MM_UNK_2C, MM_UNK_2D, OOT_STICK_UPGRADE, OOT_STICK_UPGRADE2, OOT_NUT_UPGRADE, OOT_NUT_UPGRADE2
+sharedBows;Shared Bows;boolean;vanilla;shared;OOT_BOW, OOT_ARROWS_5, OOT_ARROWS_10, OOT_ARROWS_30, OOT_QUIVER2, OOT_QUIVER3, MM_BOW, MM_ARROWS_10, MM_ARROWS_30, MM_ARROWS_40, MM_UNK_21, MM_QUIVER2, MM_QUIVER3
+sharedBombBags;Shared Bomb Bags;boolean;vanilla;shared;OOT_BOMBCHU_BAG, OOT_BOMBCHU_BAG2, OOT_BOMBCHU_BAG3, OOT_BOMB_BAG, OOT_BOMB_BAG2, OOT_BOMB_BAG3, OOT_BOMB, OOT_BOMBS_5, OOT_BOMBS_10, OOT_BOMBS_20, OOT_BOMBS_30, OOT_BOMBCHU_5, OOT_BOMBCHU_10, OOT_BOMBCHU_20, MM_BOMBCHU_BAG, MM_BOMBCHU_BAG2, MM_BOMBCHU_BAG3, MM_BOMB_BAG, MM_BOMB_BAG2, MM_BOMB_BAG3, MM_BOMB, MM_BOMBS_5, MM_BOMBS_10, MM_BOMBS_20, MM_BOMBS_30, MM_BOMBCHU, MM_BOMBCHU_5, MM_BOMBCHU_10, MM_BOMBCHU_20
+sharedMagic;Shared Magic;boolean;vanilla;shared;OOT_MAGIC_UPGRADE, OOT_MAGIC_UPGRADE2, OOT_MAGIC_JAR_SMALL, OOT_MAGIC_JAR_LARGE, MM_MAGIC_UPGRADE, MM_MAGIC_UPGRADE2, MM_MAGIC_JAR_SMALL, MM_MAGIC_JAR_LARGE
+sharedMagicArrowFire;Shared Fire Arrow;boolean;vanilla;shared;OOT_ARROW_FIRE, MM_ARROW_FIRE
+sharedMagicArrowIce;Shared Ice Arrow;boolean;vanilla;shared;OOT_ARROW_ICE, MM_ARROW_ICE
+sharedMagicArrowLight;Shared Light Arrow;boolean;vanilla;shared;OOT_ARROW_LIGHT, MM_ARROW_LIGHT
+sharedSongEpona;Shared Epona's Song;boolean;vanilla;shared;OOT_SONG_EPONA, OOT_SONG_NOTE_EPONA, MM_SONG_EPONA, MM_SONG_NOTE_EPONA
+sharedSongStorms;Shared Song of Storms;boolean;vanilla;shared;OOT_SONG_STORMS, OOT_SONG_NOTE_STORMS, MM_SONG_STORMS, MM_SONG_NOTE_STORMS
+sharedSongTime;Shared Song of Time;boolean;vanilla;shared;OOT_SONG_TIME, OOT_SONG_NOTE_TIME, MM_SONG_TIME, MM_SONG_NOTE_TIME
+sharedSongSun;Shared Sun's Sung;boolean;vanilla;shared;OOT_SONG_SUN, OOT_SONG_NOTE_SUN, MM_SONG_SUN, MM_SONG_NOTE_SUN
+sharedHookshot;Shared Hookshot;boolean;vanilla;shared;OOT_HOOKSHOT, OOT_LONGSHOT, MM_HOOKSHOT, MM_HOOKSHOT_SHORT
+sharedLens;Shared Lens of Truth;boolean;vanilla;shared;OOT_LENS, MM_LENS
+sharedOcarina;Shared Ocarina;boolean;vanilla;shared;OOT_OCARINA_FAIRY, OOT_OCARINA_TIME, MM_OCARINA_FAIRY, MM_OCARINA_OF_TIME
+sharedMaskGoron;Shared Goron Mask;boolean;vanilla;shared;OOT_MASK_GORON, MM_MASK_GORON
+sharedMaskZora;Shared Zora Mask;boolean;vanilla;shared;OOT_MASK_ZORA, MM_MASK_ZORA
+sharedMaskBunny;Shared Bunny Mask;boolean;vanilla;shared;OOT_MASK_BUNNY, MM_MASK_BUNNY
+sharedMaskKeaton;Shared Keaton Mask;boolean;vanilla;shared;OOT_MASK_KEATON, MM_MASK_KEATON
+sharedMaskTruth;Shared Truth Mask;boolean;vanilla;shared;OOT_MASK_TRUTH, MM_MASK_TRUTH
+sharedMaskBlast;Shared Blast Mask;boolean;vanilla;shared;OOT_MASK_BLAST, MM_MASK_BLAST
+sharedMaskStone;Shared Stone Mask;boolean;vanilla;shared;OOT_MASK_STONE, MM_MASK_STONE
+sharedSongElegy;Shared Elegy of Emptiness;boolean;vanilla;shared;OOT_SONG_EMPTINESS, OOT_SONG_NOTE_EMPTINESS, MM_SONG_EMPTINESS, MM_SONG_NOTE_EMPTINESS
+sharedWallets;Shared Wallets;boolean;vanilla;shared;OOT_WALLET, OOT_WALLET2, OOT_WALLET3, OOT_WALLET4, OOT_WALLET5, MM_WALLET, MM_WALLET2, MM_WALLET3, MM_WALLET4, MM_WALLET5
+sharedHealth;Shared Health;boolean;vanilla;shared;OOT_RECOVERY_HEART, OOT_TC_HEART_PIECE, OOT_HEART_PIECE, OOT_HEART_CONTAINER, OOT_DEFENSE_UPGRADE, MM_RECOVERY_HEART, MM_HEART_PIECE, MM_HEART_CONTAINER, MM_DEFENSE_UPGRADE
+sharedShields;Shared Shields;boolean;vanilla;shared;OOT_SHIELD_DEKU, OOT_SHIELD_HYLIAN, OOT_SHIELD_MIRROR, MM_SHIELD_DEKU, MM_SHIELD_HERO, MM_SHIELD_MIRROR
+sharedSoulsEnemy;Shared Souls of Enemy;boolean;vanilla;shared;OOT_SOUL_ENEMY_ARMOS, OOT_SOUL_ENEMY_BUBBLE, OOT_SOUL_ENEMY_BEAMOS, OOT_SOUL_ENEMY_DEKU_BABA, OOT_SOUL_ENEMY_DEKU_SCRUB, OOT_SOUL_ENEMY_DODONGO, OOT_SOUL_ENEMY_FLOORMASTER, OOT_SOUL_ENEMY_FLYING_POT, OOT_SOUL_ENEMY_FREEZARD, OOT_SOUL_ENEMY_GUAY, OOT_SOUL_ENEMY_IRON_KNUCKLE, OOT_SOUL_ENEMY_KEESE, OOT_SOUL_ENEMY_LEEVER, OOT_SOUL_ENEMY_LIKE_LIKE, OOT_SOUL_ENEMY_LIZALFOS_DINOLFOS, OOT_SOUL_ENEMY_OCTOROK, OOT_SOUL_ENEMY_PEAHAT, OOT_SOUL_ENEMY_POE, OOT_SOUL_ENEMY_REDEAD_GIBDO, OOT_SOUL_ENEMY_SHELL_BLADE, OOT_SOUL_ENEMY_SKULLTULA, OOT_SOUL_ENEMY_SKULLWALLTULA, OOT_SOUL_ENEMY_STALCHILD, OOT_SOUL_ENEMY_TEKTITE, OOT_SOUL_ENEMY_THIEVES, OOT_SOUL_ENEMY_WALLMASTER, OOT_SOUL_ENEMY_WOLFOS, MM_SOUL_ENEMY_ARMOS, MM_SOUL_ENEMY_BUBBLE, MM_SOUL_ENEMY_BEAMOS, MM_SOUL_ENEMY_DEKU_BABA, MM_SOUL_ENEMY_DEKU_SCRUB, MM_SOUL_ENEMY_DODONGO, MM_SOUL_ENEMY_FLOORMASTER, MM_SOUL_ENEMY_FLYING_POT, MM_SOUL_ENEMY_FREEZARD, MM_SOUL_ENEMY_GUAY, MM_SOUL_ENEMY_IRON_KNUCKLE, MM_SOUL_ENEMY_KEESE, MM_SOUL_ENEMY_LEEVER, MM_SOUL_ENEMY_LIKE_LIKE, MM_SOUL_ENEMY_LIZALFOS_DINOLFOS, MM_SOUL_ENEMY_OCTOROK, MM_SOUL_ENEMY_PEAHAT, MM_SOUL_ENEMY_POE, MM_SOUL_ENEMY_REDEAD_GIBDO, MM_SOUL_ENEMY_SHELL_BLADE, MM_SOUL_ENEMY_SKULLTULA, MM_SOUL_ENEMY_SKULLWALLTULA, MM_SOUL_ENEMY_STALCHILD, MM_SOUL_ENEMY_TEKTITE, MM_SOUL_ENEMY_THIEVES, MM_SOUL_ENEMY_WALLMASTER, MM_SOUL_ENEMY_WOLFOS
+sharedSoulsNpc;Shared Souls of NPC;boolean;vanilla;shared;OOT_SOUL_NPC_ANJU, OOT_SOUL_NPC_ASTRONOMER, OOT_SOUL_NPC_BANKER, OOT_SOUL_NPC_BAZAAR_SHOPKEEPER, OOT_SOUL_NPC_BEAN_SALESMAN, OOT_SOUL_NPC_BIGGORON, OOT_SOUL_NPC_BOMBCHU_BOWLING_LADY, OOT_SOUL_NPC_BOMBCHU_SHOPKEEPER, OOT_SOUL_NPC_BOMBERS, OOT_SOUL_NPC_CARPENTERS, OOT_SOUL_NPC_CARPET_MAN, OOT_SOUL_NPC_CHEST_GAME_OWNER, OOT_SOUL_NPC_CITIZEN, OOT_SOUL_NPC_COMPOSER_BROS, OOT_SOUL_NPC_DAMPE, OOT_SOUL_NPC_DOG_LADY, OOT_SOUL_NPC_FISHING_POND_OWNER, OOT_SOUL_NPC_GORMAN, OOT_SOUL_NPC_GORON, OOT_SOUL_NPC_GORON_CHILD, OOT_SOUL_NPC_GORON_SHOPKEEPER, OOT_SOUL_NPC_GROG, OOT_SOUL_NPC_GURU_GURU, OOT_SOUL_NPC_HONEY_DARLING, OOT_SOUL_NPC_MALON, OOT_SOUL_NPC_MEDIGORON, OOT_SOUL_NPC_OLD_HAG, OOT_SOUL_NPC_POE_COLLECTOR, OOT_SOUL_NPC_ROOFTOP_MAN, OOT_SOUL_NPC_RUTO, OOT_SOUL_NPC_SCIENTIST, OOT_SOUL_NPC_SHOOTING_GALLERY_OWNER, OOT_SOUL_NPC_TALON, OOT_SOUL_NPC_THIEVES, OOT_SOUL_NPC_ZORA, OOT_SOUL_NPC_ZORA_SHOPKEEPER, MM_SOUL_NPC_ANJU, MM_SOUL_NPC_ASTRONOMER, MM_SOUL_NPC_BANKER, MM_SOUL_NPC_BAZAAR_SHOPKEEPER, MM_SOUL_NPC_BEAN_SALESMAN, MM_SOUL_NPC_BIGGORON, MM_SOUL_NPC_BOMBCHU_BOWLING_LADY, MM_SOUL_NPC_BOMBCHU_SHOPKEEPER, MM_SOUL_NPC_BOMBERS, MM_SOUL_NPC_CARPENTERS, MM_SOUL_NPC_CARPET_MAN, MM_SOUL_NPC_CHEST_GAME_OWNER, MM_SOUL_NPC_CITIZEN, MM_SOUL_NPC_COMPOSER_BROS, MM_SOUL_NPC_DAMPE, MM_SOUL_NPC_DOG_LADY, MM_SOUL_NPC_FISHING_POND_OWNER, MM_SOUL_NPC_GORMAN, MM_SOUL_NPC_GORON, MM_SOUL_NPC_GORON_CHILD, MM_SOUL_NPC_GORON_SHOPKEEPER, MM_SOUL_NPC_GROG, MM_SOUL_NPC_GURU_GURU, MM_SOUL_NPC_HONEY_DARLING, MM_SOUL_NPC_MALON, MM_SOUL_NPC_MEDIGORON, MM_SOUL_NPC_OLD_HAG, MM_SOUL_NPC_POE_COLLECTOR, MM_SOUL_NPC_ROOFTOP_MAN, MM_SOUL_NPC_RUTO, MM_SOUL_NPC_SCIENTIST, MM_SOUL_NPC_SHOOTING_GALLERY_OWNER, MM_SOUL_NPC_TALON, MM_SOUL_NPC_THIEVES, MM_SOUL_NPC_ZORA, MM_SOUL_NPC_ZORA_SHOPKEEPER
+sharedSoulsAnimal;Shared Souls of Animal;boolean;vanilla;shared;OOT_SOUL_ANIMAL_CUCCO, OOT_SOUL_ANIMAL_COW, OOT_SOUL_ANIMAL_DOG, OOT_SOUL_ANIMAL_BUTTERFLY, MM_SOUL_ANIMAL_CUCCO, MM_SOUL_ANIMAL_COW, MM_SOUL_ANIMAL_DOG, MM_SOUL_ANIMAL_BUTTERFLY
+sharedSoulsMisc;Shared Misc Souls;boolean;vanilla;shared;OOT_SOUL_MISC_GS, OOT_SOUL_MISC_BUSINESS_SCRUB, MM_SOUL_MISC_GS, MM_SOUL_MISC_BUSINESS_SCRUB
+sharedOcarinaButtons;Shared Ocarina Buttons;boolean;vanilla;shared;OOT_BUTTON_A, OOT_BUTTON_C_LEFT, OOT_BUTTON_C_RIGHT, OOT_BUTTON_C_UP, OOT_BUTTON_C_DOWN, MM_BUTTON_A, MM_BUTTON_C_LEFT, MM_BUTTON_C_RIGHT, MM_BUTTON_C_UP, MM_BUTTON_C_DOWN
+sharedSkeletonKey;Shared Skeleton Key;boolean;vanilla;shared;OOT_SKELETON_KEY, MM_SKELETON_KEY
+sharedPlatinumToken;Shared Platinum Token;boolean;vanilla;shared;OOT_PLATINUM_TOKEN, MM_PLATINUM_TOKEN
+sharedSpellFire;Shared Din's Fire;boolean;vanilla;shared;OOT_SPELL_FIRE, MM_SPELL_FIRE
+sharedSpellWind;Shared Farore's Wind;boolean;vanilla;shared;OOT_SPELL_WIND, MM_SPELL_WIND
+sharedSpellLove;Shared Nayru's Love;boolean;vanilla;shared;OOT_SPELL_LOVE, MM_SPELL_LOVE
+sharedBootsIron;Shared Iron Boots;boolean;vanilla;shared;OOT_BOOTS_IRON, MM_BOOTS_IRON
+sharedBootsHover;Shared Hover Boots;boolean;vanilla;shared;OOT_BOOTS_HOVER, MM_BOOTS_HOVER
+sharedTunicGoron;Shared Goron Tunic;boolean;vanilla;shared;OOT_TUNIC_GORON, MM_TUNIC_GORON
+sharedTunicZora;Shared Zora Tunic;boolean;vanilla;shared;OOT_TUNIC_ZORA, MM_TUNIC_ZORA
+sharedScales;Shared Scales;boolean;vanilla;shared;OOT_SCALE_BRONZE, OOT_SCALE_SILVER, OOT_SCALE_GOLDEN, MM_SCALE_BRONZE, MM_SCALE_SILVER, MM_SCALE_GOLDEN
+sharedStrength;Shared Strength;boolean;vanilla;shared;OOT_GORON_BRACELET, OOT_SILVER_GAUNTLETS, OOT_GOLDEN_GAUNTLETS, MM_GORON_BRACELET, MM_SILVER_GAUNTLETS, MM_GOLDEN_GAUNTLETS
+sharedHammer;Shared Megaton Hammer;boolean;vanilla;shared;OOT_HAMMER, MM_HAMMER
+sharedBottles;Shared Bottles;boolean;vanilla;shared;OOT_BOTTLE_RUTO_LETTER, OOT_BOTTLE_BIG_POE, OOT_BOTTLE_BLUE_FIRE, OOT_BOTTLE_CHATEAU, OOT_BOTTLE_EMPTY, OOT_BOTTLE_FAIRY, OOT_BOTTLE_MILK, OOT_BOTTLE_POE, OOT_BOTTLE_POTION_BLUE, OOT_BOTTLE_POTION_GREEN, OOT_BOTTLE_POTION_RED, OOT_BOTTLED_GOLD_DUST, OOT_WEIRD_MUSHROOM, OOT_SEAHORSE2, MM_BOTTLE_RUTO_LETTER, MM_BOTTLE_BIG_POE, MM_BOTTLE_BLUE_FIRE, MM_BOTTLE_CHATEAU, MM_BOTTLE_EMPTY, MM_BOTTLE_FAIRY, MM_BOTTLE_MILK, MM_BOTTLE_POE, MM_BOTTLE_POTION_BLUE, MM_BOTTLE_POTION_GREEN, MM_BOTTLE_POTION_RED, MM_BOTTLED_GOLD_DUST, MM_WEIRD_MUSHROOM, MM_SEAHORSE2
+songSoaringOot;Song of Soaring - OoT;boolean;vanilla;standard;OOT_SONG_SOARING, OOT_SONG_NOTE_SOARING
+songHealingOot;Song of Healing - OoT;boolean;vanilla;standard;OOT_SONG_HEALING, OOT_SONG_NOTE_HEALING
+songAwakeningOot;Song of Awakening - OoT;boolean;vanilla;standard;OOT_SONG_AWAKENING, OOT_SONG_NOTE_AWAKENING
+songGoronOot;Song of Goron - OoT;boolean;vanilla;standard;OOT_SONG_GORON, OOT_SONG_GORON_HALF, OOT_SONG_NOTE_GORON
+songZoraOot;Song of Zora - OoT;boolean;vanilla;standard;OOT_SONG_ZORA, OOT_SONG_NOTE_ZORA
+songOrderOot;Song of Order - OoT;boolean;vanilla;standard;OOT_SONG_ORDER, OOT_SONG_NOTE_ORDER
+songSunMm;Sun's Song - MM;boolean;vanilla;standard;MM_SONG_SUN, MM_SONG_NOTE_SUN
+songZeldaLullabyMm;Zelda's Lullaby - MM;boolean;vanilla;standard;MM_SONG_ZELDA, MM_SONG_NOTE_ZELDA
+songSariasMm;Saria's Song - MM;boolean;vanilla;standard;MM_SONG_SARIA, MM_SONG_NOTE_SARIA
+songMinuetMm;Minuet of Forest - MM;boolean;vanilla;standard;MM_SONG_TP_FOREST, MM_SONG_NOTE_TP_FOREST
+songBoleroMm;Bolero of Fire - MM;boolean;vanilla;standard;MM_SONG_TP_FIRE, MM_SONG_NOTE_TP_FIRE
+songSerenadeMm;Serenade of Water - MM;boolean;vanilla;standard;MM_SONG_TP_WATER, MM_SONG_NOTE_TP_WATER
+songRequiemMm;Requiem of Spirit - MM;boolean;vanilla;standard;MM_SONG_TP_SPIRIT, MM_SONG_NOTE_TP_SPIRIT
+songNocturneMm;Nocturne of Shadow - MM;boolean;vanilla;standard;MM_SONG_TP_SHADOW, MM_SONG_NOTE_TP_SHADOW
+songPreludeMm;Prelude of Light - MM;boolean;vanilla;standard;MM_SONG_TP_LIGHT, MM_SONG_NOTE_TP_LIGHT
+kamaroMaskOot;Kamaro Mask (OoT);boolean;vanilla;standard;OOT_MASK_KAMARO
+boomerangMm;Boomerang (MM);boolean;vanilla;standard;MM_BOOMERANG
+sharedMaskKamaro;Shared Kamaro Mask;boolean;vanilla;shared;OOT_MASK_KAMARO, MM_MASK_KAMARO
+sharedBoomrang;Shared Boomerang;boolean;vanilla;shared;OOT_BOOMERANG, MM_BOOMERANG
+sharedSongHealing;Shared Song of Healing;boolean;vanilla;shared;OOT_SONG_HEALING, OOT_SONG_NOTE_HEALING, MM_SONG_HEALING, MM_SONG_NOTE_HEALING
+sharedSongSoaring;Shared Song of Soaring;boolean;vanilla;shared;OOT_SONG_SOARING, OOT_SONG_NOTE_SOARING, MM_SONG_SOARING, MM_SONG_NOTE_SOARING
+sharedSongAwakening;Shared Sonata of Awakening;boolean;vanilla;shared;OOT_SONG_AWAKENING, OOT_SONG_NOTE_AWAKENING, MM_SONG_AWAKENING, MM_SONG_NOTE_AWAKENING
+sharedSongGoron;Shared Goron Lullaby;boolean;vanilla;shared;OOT_SONG_GORON, OOT_SONG_GORON_HALF, OOT_SONG_NOTE_GORON, MM_SONG_GORON, MM_SONG_GORON_HALF, MM_SONG_NOTE_GORON
+sharedSongZora;Shared New Wave Bossa Nova;boolean;vanilla;shared;OOT_SONG_ZORA, OOT_SONG_NOTE_ZORA, MM_SONG_ZORA, MM_SONG_NOTE_ZORA
+sharedSongOrder;Shared Oath to Order;boolean;vanilla;shared;OOT_SONG_ORDER, OOT_SONG_NOTE_ORDER, MM_SONG_ORDER, MM_SONG_NOTE_ORDER
+sharedSongZeldaLullaby;Shared Zelda's Lullaby;boolean;vanilla;shared;OOT_SONG_ZELDA, OOT_SONG_NOTE_ZELDA, MM_SONG_ZELDA, MM_SONG_NOTE_ZELDA
+sharedSongSarias;Shared Saria's Song;boolean;vanilla;shared;OOT_SONG_SARIA, OOT_SONG_NOTE_SARIA, MM_SONG_SARIA, MM_SONG_NOTE_SARIA
+sharedSongMinuet;Shared Minuet of Forest;boolean;vanilla;shared;OOT_SONG_TP_FOREST, OOT_SONG_NOTE_TP_FOREST, MM_SONG_TP_FOREST, MM_SONG_NOTE_TP_FOREST
+sharedSongBolero;Shared Bolero of Fire;boolean;vanilla;shared;OOT_SONG_TP_FIRE, OOT_SONG_NOTE_TP_FIRE, MM_SONG_TP_FIRE, MM_SONG_NOTE_TP_FIRE
+sharedSongSerenade;Shared Serenade of Water;boolean;vanilla;shared;OOT_SONG_TP_WATER, OOT_SONG_NOTE_TP_WATER, MM_SONG_TP_WATER, MM_SONG_NOTE_TP_WATER
+sharedSongRequiem;Shared Requiem of Spirit;boolean;vanilla;shared;OOT_SONG_TP_SPIRIT, OOT_SONG_NOTE_TP_SPIRIT, MM_SONG_TP_SPIRIT, MM_SONG_NOTE_TP_SPIRIT
+sharedSongNocturne;Shared Nocturne of Shadow;boolean;vanilla;shared;OOT_SONG_TP_SHADOW, OOT_SONG_NOTE_TP_SHADOW, MM_SONG_TP_SHADOW, MM_SONG_NOTE_TP_SHADOW
+sharedSongPrelude;Shared Prelude of Light;boolean;vanilla;shared;OOT_SONG_TP_LIGHT, OOT_SONG_NOTE_TP_LIGHT, MM_SONG_TP_LIGHT, MM_SONG_NOTE_TP_LIGHT
+powderKegOot;Powder Keg (OoT);boolean;vanilla;standard;OOT_POWDER_KEG
+sharedPowderKeg;Shared Powder Keg;boolean;vanilla;shared;OOT_POWDER_KEG, MM_POWDER_KEG
+powderKegOot;Powder Keg - OoT;boolean;vanilla;standard;OOT_POWDER_KEG
+sharedPowderKeg;Shared Powder Keg;boolean;vanilla;shared;OOT_POWDER_KEG, MM_POWDER_KEG
+gfsOot;Great Fairy's Sword - OoT;boolean;vanilla;standard;OOT_GREAT_FAIRY_SWORD
+sharedGFS;Shared Great Fairy's Sword;boolean;vanilla;shared;OOT_GREAT_FAIRY_SWORD, MM_GREAT_FAIRY_SWORD
+slingshotMm;Slingshot - MM;boolean;vanilla;standard;MM_SLINGSHOT, MM_DEKU_SEEDS_5, MM_DEKU_SEEDS_30, MM_BULLET_BAG2, MM_BULLET_BAG3
+sharedSlingshot;Shared Slingshot;boolean;vanilla;shared;OOT_SLINGSHOT, OOT_DEKU_SEEDS_5, OOT_DEKU_SEEDS_30, OOT_BULLET_BAG2, OOT_BULLET_BAG3, MM_SLINGSHOT, MM_DEKU_SEEDS_5, MM_DEKU_SEEDS_30, MM_BULLET_BAG2, MM_BULLET_BAG3
+gerudoMaskMm;Gerudo Mask - MM;boolean;vanilla;standard;MM_MASK_GERUDO
+sharedMaskGerudo;Shared Gerudo Mask;boolean;vanilla;shared;OOT_MASK_GERUDO, MM_MASK_GERUDO
+skullMaskMm;Skull Mask - MM;boolean;vanilla;standard;MM_MASK_SKULL
+sharedMaskSkull;Shared Skull Mask;boolean;vanilla;shared;OOT_MASK_SKULL, MM_MASK_SKULL
+spookyMaskMm;Spooky Mask - MM;boolean;vanilla;standard;MM_MASK_SPOOKY
+sharedMaskSpooky;Shared Spooky Mask;boolean;vanilla;shared;OOT_MASK_SPOOKY, MM_MASK_SPOOKY
+rustyKeysOot;Rusty Keys - OoT;boolean;vanilla;standard;OOT_RUSTY_KEY_TREASURE_CHEST_GAME, OOT_RUSTY_KEY_GUARD_HOUSE, OOT_RUSTY_KEY_HYRULE_CASTLE, OOT_RUSTY_KEY_DOG_LADY_HOUSE, OOT_RUSTY_KEY_BACK_ALLEY_HOUSE, OOT_RUSTY_KEY_BOMBCHU_SHOP, OOT_RUSTY_KEY_MASK_SHOP, OOT_RUSTY_KEY_CHILD_BAZAAR, OOT_RUSTY_KEY_CHILD_POTION_SHOP, OOT_RUSTY_KEY_CHILD_SHOOTING_GALLERY, OOT_RUSTY_KEY_BOMBCHU_BOWLING, OOT_RUSTY_KEY_LABORATORY, OOT_RUSTY_KEY_FISHING_POND, OOT_RUSTY_KEY_SILO, OOT_RUSTY_KEY_RANCH_STABLE, OOT_RUSTY_KEY_RANCH_HOUSE, OOT_RUSTY_KEY_RANCH_HOUSE_ROOM, OOT_RUSTY_KEY_GRAVEYARD, OOT_RUSTY_KEY_WINDMILL, OOT_RUSTY_KEY_IMPA_HOUSE, OOT_RUSTY_KEY_CARPENTER_HOUSE, OOT_RUSTY_KEY_GRANNY_POTION_SHOP, OOT_RUSTY_KEY_ADULT_SHOOTING_GALLERY, OOT_RUSTY_KEY_SKULLTULA_HOUSE, OOT_RUSTY_KEY_ADULT_BAZAAR, OOT_RUSTY_KEY_ADULT_POTION_SHOP, OOT_RUSTY_KEY_ADULT_POTION_SHOP_BACK
+rustyKeysMm;Rusty Keys - MM;boolean;vanilla;standard;MM_RUSTY_KEY_TOURIST_INFORMATION, MM_RUSTY_KEY_POTION_SHOP, MM_RUSTY_KEY_POST_OFFICE, MM_RUSTY_KEY_SWORDSMAN_SCHOOL, MM_RUSTY_KEY_LOTTERY, MM_RUSTY_KEY_BOMB_SHOP, MM_RUSTY_KEY_TRADING_POST, MM_RUSTY_KEY_CURIOSITY_SHOP, MM_RUSTY_KEY_KAFEI_HIDEOUT, MM_RUSTY_KEY_TOWN_ARCHERY, MM_RUSTY_KEY_SWAMP_ARCHERY, MM_RUSTY_KEY_OBSERVATORY, MM_RUSTY_KEY_BLACKSMITH, MM_RUSTY_KEY_MUSIC_HOUSE, MM_RUSTY_KEY_LABORATORY, MM_RUSTY_KEY_BENEATH_GRAVEYARD, MM_RUSTY_KEY_DAMPE_HOUSE, MM_RUSTY_KEY_MAYOR_RESIDENCE, MM_RUSTY_KEY_MAYOR_RESIDENCE_OFFICE, MM_RUSTY_KEY_MAYOR_RESIDENCE_SALON, MM_RUSTY_KEY_MAYOR_RESIDENCE_KAFEI, MM_RUSTY_KEY_TREASURE_CHEST_GAME, MM_RUSTY_KEY_HONEY_DARLING, MM_RUSTY_KEY_MILK_BAR, MM_RUSTY_KEY_DOG_RACETRACK, MM_RUSTY_KEY_CUCCO_SHACK, MM_RUSTY_KEY_RANCH_HOUSE, MM_RUSTY_KEY_RANCH_BARN, MM_RUSTY_KEY_RANCH_HOUSE_ROOM, MM_RUSTY_KEY_ZORA_SHOP, MM_RUSTY_KEY_ZORA_JAPAS_ROOM, MM_RUSTY_KEY_ZORA_TIJO_ROOM, MM_RUSTY_KEY_ZORA_LULU_ROOM, MM_RUSTY_KEY_ZORA_EVAN_ROOM, MM_RUSTY_KEY_STOCK_POT_INN, MM_RUSTY_KEY_STOCK_POT_INN_ROOF, MM_RUSTY_KEY_GRANDMA_ROOM, MM_RUSTY_KEY_STOCK_POT_INN_STAFF_ROOM, MM_RUSTY_KEY_STOCK_POT_INN_DORMITORY
+sharedShovel;Shared Shovel;boolean;vanilla;shared;OOT_SHOVEL, MM_SHOVEL
+shovelOot;Shovel - OoT;boolean;vanilla;standard;OOT_SHOVEL
+shovelMm;Shovel - OoT;boolean;vanilla;standard;MM_SHOVEL
+clocksOot;Clocks - OoT;boolean;vanilla;standard;OOT_CLOCK
+adultMaskMm;Adult Mask;boolean;vanilla;standard;MM_MASK_ADULT

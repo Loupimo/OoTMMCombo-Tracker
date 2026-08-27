@@ -206,10 +206,11 @@ pub fn resolve_raw_item_id(raw: u32, rom: RomVersion) -> u32 {
             0x78 => 0x77, // OOT_STICK_UPGRADE2 (slid down)
             0x79 => 0x81, // OOT_NUT_UPGRADE    (base moved up)
             0x7a => 0x79, // OOT_NUT_UPGRADE2   (slid down)
-            r if r >= 1024 => r + 8, // +4 (Clock/Shovel/…) + 4 (dev-33 UPGRADE3 x4)
-            r if r >= 933 => r + 7,  // +3 + 4
-            r if r >= 890 => r + 6,  // MM_NUT_UPGRADE region: +2 + 4
-            r if r >= 888 => r + 5,  // MM_STICK_UPGRADE region: +2 + 3
+            r if r >= 1024 => r + 9, // +5 (Clock/Shovel/…) + 4 (dev-33 UPGRADE3 x4)
+            r if r >= 933 => r + 8,  // +4 + 4
+            r if r >= 890 => r + 7,  // MM_NUT_UPGRADE region: +3 + 4
+            r if r >= 888 => r + 6,  // MM_STICK_UPGRADE region: +3 + 3
+            r if r >= 626 => r + 5,  // MM_MASK_ADULT: +4 + 1
             r if r >= 509 => r + 4,  // +2 (OoT Clock/Shovel) + 2 (OoT UPGRADE3 x2)
             r if r >= 128 => r + 2,  // OoT UPGRADE3 x2 inserted at 0x78 / 0x7a
             r => r,                  // < 0x77 and 0x7b..0x7f are unchanged

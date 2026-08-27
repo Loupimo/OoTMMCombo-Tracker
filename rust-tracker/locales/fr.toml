@@ -4886,6 +4886,7 @@ help_hint = "Glisser = Clic Molette / Clic Gauche, Collecter = Clic Gauche sur u
 "Gerudo Mask (MM)" = "Masque Gerudo (MM)"
 "Skull Mask (MM)" = "Masque de Mort (MM)"
 "Spooky Mask (MM)" = "Masque de l'Effroi (MM)"
+"Adult Mask" = "Masque d'Adulte"
 "Chateau Romani Refill (MM)" = "Cuvée Romani (MM)"
 "Romani Milk" = "Lait de Romani"
 "Moon's Tear" = "Larme de Lune"
@@ -6272,6 +6273,11 @@ help_hint = "Glisser = Clic Molette / Clic Gauche, Collecter = Clic Gauche sur u
 "Shared Spooky Mask" = "Masque de l'Effroi Partagé"
 "Rusty Keys - OoT" = "Clés Rouilles - OoT"
 "Rusty Keys - MM" = "Clés Rouillées - MM"
+"Shared Shovel" = "Pelle Partagée"
+"Shovel - OoT" = "Pelle - OoT"
+"Shovel - MM" = "Pelle - MM"
+"Clocks - OoT" = "Horloges - OoT"
+"Adult Mask" = "Masque d'Adulte"
 
 # Libellés donjons — trousseaux / bourses / hiboux
 "Forest Temple" = "Temple de la Forêt"

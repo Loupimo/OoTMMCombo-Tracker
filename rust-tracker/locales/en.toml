@@ -4879,6 +4879,7 @@ help_hint = "Drag = Middle Click / Left Click, Collect = Left Click on an Item, 
 "Gerudo Mask (MM)" = "Gerudo Mask (MM)"
 "Skull Mask (MM)" = "Skull Mask (MM)"
 "Spooky Mask (MM)" = "Spooky Mask (MM)"
+"Adult Mask" = "Adult Mask"
 "Chateau Romani Refill (MM)" = "Chateau Romani Refill (MM)"
 "Romani Milk" = "Romani Milk"
 "Moon's Tear" = "Moon's Tear"
@@ -6265,6 +6266,11 @@ help_hint = "Drag = Middle Click / Left Click, Collect = Left Click on an Item, 
 "Shared Spooky Mask" = "Shared Spooky Mask"
 "Rusty Keys - OoT" = "Rusty Keys - OoT"
 "Rusty Keys - MM" = "Rusty Keys - MM"
+"Shared Shovel" = "Shared Shovel"
+"Shovel - OoT" = "Shovel - OoT"
+"Shovel - MM" = "Shovel - MM"
+"Clocks - OoT" = "Clocks - OoT"
+"Adult Mask" = "Adult Mask"
 
 # Libellés donjons — trousseaux / bourses / hiboux
 "Forest Temple" = "Forest Temple"

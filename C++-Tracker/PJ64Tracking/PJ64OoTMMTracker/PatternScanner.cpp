@@ -281,7 +281,7 @@ void BuildPCsPatterns()
             if (gGame == GAME_OOT)
             {   // Resout dynamiquement le site du hook (independant du build : stable, dev, futurs)
 
-                uintptr_t site = FindSubPattern(base, &Sig_hookInit_Site_OoT, prof->OoTHookInitOff);
+                uintptr_t site = FindSubPattern(base, &Sig_hookInit_Site_OoT, 0x800);
                 if (site)
                 {
                     uint32_t off = (uint32_t)(site + sigs[i].Signature->PCOffset - base);
