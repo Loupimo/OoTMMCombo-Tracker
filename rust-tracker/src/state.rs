@@ -25,13 +25,19 @@ impl TrackerApp {
         let use_multiplayer = app_settings.use_multiplayer;
         let mp_host = app_settings.mp_host.clone();
         let mp_port = app_settings.mp_port.clone();
+        let i18n = I18n::new(app_settings.language);
+        // Shared, swappable snapshot of the poller / inject journal + status strings
+        // for the background thread; rebuilt on a language change (see set_language).
+        let log_strings: poller::SharedLog =
+            std::sync::Arc::new(std::sync::Mutex::new(std::sync::Arc::new(i18n.log_strings())));
         let mut app = TrackerApp {
-            i18n: I18n::new(app_settings.language),
+            i18n,
             app_settings,
             app_settings_path,
             scene,
             // The poller thread wakes the UI only on a real event / status change.
-            poller: poller::spawn(ctx.clone()),
+            poller: poller::spawn(ctx.clone(), log_strings.clone()),
+            log_strings,
             connected: false,
             tracking: false,
             auto_save: true,
@@ -93,7 +99,9 @@ impl TrackerApp {
             cached_totals: [(0, 0); 2],
             cached_scene_counts: [HashMap::new(), HashMap::new()],
             counts_dirty: true,
-            save_path: data_dir.join("tracker_save.txt"),
+            autosave_dir: data_dir.join("autosave"),
+            seed_tag: "empty".to_string(),
+            legacy_save_path: data_dir.join("tracker_save.txt"),
             spoiler_path_file: data_dir.join("tracker_spoiler.txt"),
             dirty: false,
             status: String::new(),
@@ -101,6 +109,7 @@ impl TrackerApp {
             rom_from_spoiler: false,
             icon_cache: HashMap::new(),
             grey_icon_cache: HashMap::new(),
+            glow_icon_cache: HashMap::new(),
             map_texture: None,
             map_size: Vec2::ZERO,
             load_error: None,
@@ -117,12 +126,15 @@ impl TrackerApp {
         if app.app_settings.auto_load_tracking {
             app.load_state(); // restore previous progress (may set patch_path)
         }
-        // If a latest-version save restored a patch path, resolve it on the first
-        // frame (loads it, or warns + prompts if the file moved / disappeared).
-        app.patch_startup_check = app.patch_path.is_some();
         if app.app_settings.auto_load_spoiler {
-            app.auto_load_spoiler(); // re-apply the last spoiler's settings / MQ layout
+            // Applies the last spoiler's settings / MQ layout AND, since it switches
+            // to that seed's autosave, may restore a different patch path than the
+            // no-seed file did — so the patch check below runs after it.
+            app.auto_load_spoiler();
         }
+        // If a restored save carried a patch path, resolve it on the first frame
+        // (loads it, or warns + prompts if the file moved / disappeared).
+        app.patch_startup_check = app.patch_path.is_some();
         app // the poller thread handles connection / injection from here
     }
 
@@ -246,7 +258,8 @@ impl TrackerApp {
             server_port: port,
             net_enabled: true,
         };
-        self.log_msg(format!("Multiplayer enabled — server {}:{}", cfg.server_host, cfg.server_port));
+        let server = format!("{}:{}", cfg.server_host, cfg.server_port);
+        self.log_msg(self.i18n.log_mp_enabled(&server));
         self.multi = Some(multi::spawn(ctx.clone(), cfg));
     }
 
@@ -276,7 +289,8 @@ impl TrackerApp {
             server_port: 14236,
             data_dir: r4_data_dir(),
         };
-        self.log_msg(format!("r4 multiplayer — {} (server {}:{})", info.summary(), cfg.server_host, cfg.server_port));
+        let server = format!("{}:{}", cfg.server_host, cfg.server_port);
+        self.log_msg(self.i18n.log_r4_enabled(&info.summary(), &server));
         self.r4 = Some(multi_r4::spawn(ctx.clone(), cfg, info));
     }
 
@@ -295,19 +309,16 @@ impl TrackerApp {
         if path.is_file() {
             match patch::load(&path) {
                 Ok(info) => {
-                    self.log_msg(format!("Patch loaded: {} ({})", path.display(), info.summary()));
+                    self.log_msg(self.i18n.log_patch_loaded(&path.display().to_string(), &info.summary()));
                     self.patch_info = Some(info);
                 }
                 Err(e) => {
-                    self.log_msg(format!("Saved patch file is invalid ({e}). Please pick a patch file."));
+                    self.log_msg(self.i18n.log_patch_invalid(&e.to_string()));
                     self.prompt_patch_dialog();
                 }
             }
         } else {
-            self.log_msg(format!(
-                "Saved patch file no longer exists: {}. Please pick the new location.",
-                path.display()
-            ));
+            self.log_msg(self.i18n.log_patch_missing(&path.display().to_string()));
             self.prompt_patch_dialog();
         }
     }
@@ -329,12 +340,12 @@ impl TrackerApp {
     pub(crate) fn set_patch(&mut self, path: std::path::PathBuf) {
         match patch::load(&path) {
             Ok(info) => {
-                self.log_msg(format!("Patch loaded: {} ({})", path.display(), info.summary()));
+                self.log_msg(self.i18n.log_patch_loaded(&path.display().to_string(), &info.summary()));
                 self.patch_path = Some(path);
                 self.patch_info = Some(info);
                 self.save_state(); // persist the new patch path in the save file
             }
-            Err(e) => self.log_msg(format!("Failed to load patch file: {e}")),
+            Err(e) => self.log_msg(self.i18n.log_patch_load_failed(&e.to_string())),
         }
     }
 
@@ -378,6 +389,9 @@ impl TrackerApp {
     /// then clear collected items, forced marks and discovered entrances.
     pub(crate) fn reset_tracking(&mut self) {
         self.save_state(); // Qt autosaves the current state before wiping it
+        // Back to a no-spoiler run: future autosaves target `empty.xml`, so the seed
+        // file we just flushed keeps its progress instead of being overwritten empty.
+        self.seed_tag = "empty".to_string();
         // Full clean slate: the Qt `ResetObject` clears both `Status` AND `Item`, so
         // a reset drops the loaded spoiler too — not only the collected marks. Left
         // in place, the placements linger as item traces on every actor and the
@@ -405,10 +419,12 @@ impl TrackerApp {
         self.log_msg(self.i18n.log_reset_tracking().to_string());
     }
 
-    /// "Save Tracking": pick a `.trck` file and write the current state to it.
+    /// "Save Tracking": pick an `.xml` file and write the current state to it.
+    /// Saves are always the XML format now (the legacy Qt `.trck` binary is
+    /// read-only — importable via "Load Tracking", never written).
     pub(crate) fn save_tracking_dialog(&mut self) {
         if let Some(path) =
-            dialog::save_file(self.i18n.choose_name(), &[(self.i18n.trck_file(), "*.trck")], "trck")
+            dialog::save_file(self.i18n.choose_name(), &[(self.i18n.xml_file(), "*.xml")], "xml")
         {
             // Create Backup When Saving: copy any existing file to `.bak` first.
             if self.app_settings.backup_on_save && path.exists() {
@@ -419,11 +435,18 @@ impl TrackerApp {
         }
     }
 
-    /// "Load Tracking": pick a `.trck` file and restore the state from it.
+    /// "Load Tracking": pick an `.xml` save or a legacy `.trck` binary and restore
+    /// the state from it. `load_from` auto-detects the format from the file
+    /// contents, so both extensions are offered here.
     pub(crate) fn load_tracking_dialog(&mut self) {
-        if let Some(path) =
-            dialog::open_file(self.i18n.choose_trck(), &[(self.i18n.trck_file(), "*.trck")])
-        {
+        if let Some(path) = dialog::open_file(
+            self.i18n.choose_trck(),
+            &[
+                (self.i18n.tracking_files(), "*.xml;*.trck"),
+                (self.i18n.xml_file(), "*.xml"),
+                (self.i18n.trck_file(), "*.trck"),
+            ],
+        ) {
             for w in &mut self.worlds {
                 w.collected.clear();
                 w.forced.clear();
@@ -450,71 +473,57 @@ impl TrackerApp {
         }
     }
 
+    /// The active per-seed autosave file: `<autosave_dir>/<seed_tag>.xml`. The stem
+    /// is the loaded spoiler's seed hash, or `empty` when no spoiler is loaded, so a
+    /// new seed lands in a new file while the no-seed run always overwrites one.
+    fn autosave_path(&self) -> PathBuf {
+        self.autosave_dir.join(format!("{}.xml", self.seed_tag))
+    }
+
     pub(crate) fn save_state(&self) {
-        self.save_to(&self.save_path);
+        let _ = std::fs::create_dir_all(&self.autosave_dir);
+        self.save_to(&self.autosave_path());
     }
 
-    /// Serialize the tracked state (collected / forced / entrances / links) to a
-    /// file. Shared by the autosave and the "Save Tracking" dialog.
+    /// Serialize the tracked state to a human-readable / hand-editable XML save
+    /// (`<tracker version="6">`). Shared by the autosave and the "Save Tracking"
+    /// dialog. See [`Self::load_from_xml`] for the reader.
     ///
-    /// Multiworld: each world's collected / forced lines are grouped under a
-    /// `WORLD <n>` marker (0-based). A file with no marker (or a single world)
-    /// reads back into world 0, so old single-world saves still load. Entrances
-    /// and links are the local player's exploration and stay world-independent.
+    /// Layout: `<paths>` (remembered spoiler + r4 patch), then `<worlds>` — one
+    /// `<world index="N">` (1-based) per world, its collected/placed locations
+    /// grouped by scene — then `<entrances>` (visited flag + discovered out/in
+    /// links, grouped by scene). A `<location>` loads on its numeric identity
+    /// (`oid`/`type`/`layout` within the parent `<scene>`), with `loc` as a
+    /// fallback; a placed `<item>` loads on its stable `id`, with `name` as a
+    /// fallback. The remaining `name` annotations are readable and ignored on load.
     pub(crate) fn save_to(&self, path: &std::path::Path) {
-        let mut out = String::new();
-        // Version 3 header + the r4 patch file path. Older saves have no header
-        // (and no PATCH line); load treats a PATCH line as "latest version" and
-        // auto-loads the referenced patch on the next launch.
-        out.push_str(&format!("{} {}\n", SAVE_VERSION_TAG, SAVE_VERSION));
-        if let Some(p) = &self.patch_path {
-            out.push_str(&format!("PATCH {}\n", p.display()));
-        }
-        for (wi, world) in self.worlds.iter().enumerate() {
-            // The marker is only needed past world 0, so single-world saves keep
-            // their original (untagged) shape.
-            if wi > 0 {
-                out.push_str(&format!("WORLD {wi}\n"));
-            }
-            for (game, idx) in &world.collected {
-                // Manually-forced objects get an "F " tag so the gold tint survives
-                // a reload; auto-collected ones stay as a plain Location line.
-                if world.forced.contains(&(*game, *idx)) {
-                    out.push_str("F ");
-                }
-                out.push_str(game.objects()[*idx].location);
-                out.push('\n');
-            }
-            // Version 4: persist the spoiler placements (location -> item, and the
-            // destination player when multiworld) so a reload restores the item
-            // icons on its own — no spoiler needed, matching the Qt binary save.
-            // Tab-separated because locations and item names both contain spaces.
-            for (loc, item) in &world.items {
-                out.push_str(&format!("ITEM {loc}\t{item}\n"));
-            }
-            for (loc, player) in &world.dest {
-                out.push_str(&format!("DEST {loc}\t{player}\n"));
-            }
-        }
-        // Visited entrances, distinct from object-location lines by the "E " tag.
-        for (game, id) in &self.visited_entrances {
-            let g = if *game == Game::Mm { 1 } else { 0 };
-            out.push_str(&format!("E {g} {id}\n"));
-        }
-        // Discovered OutLinks: "O <outGame> <outId> <inGame> <inId>". The
-        // InLinks index is rebuilt from these on load.
-        for ((og, oid), (ig, iid)) in &self.out_links {
-            let og = if *og == Game::Mm { 1 } else { 0 };
-            let ig = if *ig == Game::Mm { 1 } else { 0 };
-            out.push_str(&format!("O {og} {oid} {ig} {iid}\n"));
-        }
-        let _ = std::fs::write(path, out);
+        // The remembered spoiler (sidecar) + the r4 patch path go in <paths>.
+        let spoiler = std::fs::read_to_string(&self.spoiler_path_file)
+            .ok()
+            .map(|s| s.trim().to_string())
+            .filter(|s| !s.is_empty());
+        let patch = self.patch_path.as_ref().map(|p| p.display().to_string());
+        let xml = render_save_xml(
+            &self.worlds,
+            patch.as_deref(),
+            spoiler.as_deref(),
+            &self.visited_entrances,
+            &self.out_links,
+            &self.in_links,
+        );
+        let _ = std::fs::write(path, xml);
     }
 
-    /// Restore the collected-set from the autosave file (by Location).
+    /// Restore the collected-set from the active seed's autosave file (by Location).
+    /// Falls back once to the pre-3.0 single autosave (`tracker_save.txt`) when no
+    /// per-seed file exists yet, so upgrading users keep their last no-seed progress.
     pub(crate) fn load_state(&mut self) {
-        let path = self.save_path.clone();
-        self.load_from(&path);
+        let path = self.autosave_path();
+        if path.is_file() {
+            self.load_from(&path);
+        } else if self.seed_tag == "empty" && self.legacy_save_path.is_file() {
+            self.load_from(&self.legacy_save_path.clone());
+        }
     }
 
     /// Restore the tracked state from a file (by Location). Shared by the startup
@@ -533,6 +542,13 @@ impl TrackerApp {
             return;
         }
         let Ok(text) = String::from_utf8(bytes) else { return };
+        // Version 5+: an XML document (`<?xml …` / `<tracker …`). Older Rust saves
+        // are the legacy line-based text format parsed below.
+        let head = text.trim_start();
+        if head.starts_with("<?xml") || head.starts_with("<tracker") {
+            self.load_from_xml(&text);
+            return;
+        }
         // Location is globally unique (base and MQ carry distinct strings), so a
         // flat index has no collisions and restores either layout.
         let mut by_location: HashMap<&'static str, (Game, usize)> = HashMap::new();
@@ -666,6 +682,48 @@ impl TrackerApp {
         }
     }
 
+    /// Restore the tracked state from a version-6 XML save (see [`Self::save_to`]).
+    /// Locations are matched by their unique `loc` attribute (layout-resilient);
+    /// the entrance graph (visited flag + out/in links) is restored directly, so —
+    /// unlike the legacy text load — no in-link rebuild is needed. Malformed XML
+    /// stops the parse and keeps whatever was read so far.
+    fn load_from_xml(&mut self, text: &str) {
+        let parsed = parse_save_xml(text);
+        // Merge into the live state. Dialog loads clear collected / forced /
+        // entrances first; the startup autoload merges into a fresh state. Growing
+        // the world Vec on demand restores a save with more worlds than allocated.
+        for (wi, w) in parsed.worlds.into_iter().enumerate() {
+            if self.worlds.len() <= wi {
+                self.worlds.resize_with(wi + 1, crate::WorldData::default);
+            }
+            let tw = &mut self.worlds[wi];
+            tw.collected.extend(w.collected);
+            tw.forced.extend(w.forced);
+            tw.items.extend(w.items);
+            tw.dest.extend(w.dest);
+        }
+        self.visited_entrances.extend(parsed.visited);
+        for (k, v) in parsed.out_links {
+            self.out_links.insert(k, v);
+        }
+        for (k, srcs) in parsed.in_links {
+            let list = self.in_links.entry(k).or_default();
+            for s in srcs {
+                if !list.contains(&s) {
+                    list.push(s);
+                }
+            }
+        }
+        if let Some(p) = parsed.patch_path {
+            self.patch_path = Some(p);
+        }
+        // Remember the referenced spoiler so the startup auto-load re-applies its
+        // ROM settings / MQ layout (mirrors how load_spoiler persists the path).
+        if let Some(sp) = parsed.spoiler_path {
+            let _ = std::fs::write(&self.spoiler_path_file, sp);
+        }
+    }
+
     /// Drain the poller thread's messages: update the connection status and
     /// process any live game events. Runs once per UI frame (a frame only happens
     /// on input or when the poller woke us).
@@ -755,9 +813,8 @@ impl TrackerApp {
         if self.worlds[map_idx].collected.insert((g, idx)) {
             let obj = &g.objects()[idx];
             let tag = if g == Game::Oot { "OoT" } else { "MM" };
-            self.log_msg(format!(
-                "{tag} World Object: {} - Item : {name} (from world {} to world {})",
-                obj.location, item.from_world, item.to_world
+            self.log_msg(self.i18n.log_world_object_net(
+                tag, obj.location, &name, item.from_world, item.to_world,
             ));
             self.dirty = true;
             self.prog_dirty = true;
@@ -833,7 +890,7 @@ impl TrackerApp {
             if self.worlds[LOCAL].collected.insert(hit) {
                 // Mirror the Qt MemoryReader log line.
                 let game = if hit.0 == Game::Oot { "OoT" } else { "MM" };
-                self.log_msg(format!("{game} World Object: {} - Item : {item}", obj.location));
+                self.log_msg(self.i18n.log_world_object(game, obj.location, &item));
                 self.dirty = true;
                 self.prog_dirty = true;
                 self.counts_dirty = true;
@@ -851,15 +908,36 @@ impl TrackerApp {
     pub(crate) fn load_spoiler(&mut self, path: &std::path::Path) {
         match std::fs::read_to_string(path) {
             Ok(text) => {
+                // A different seed is a distinct playthrough: flush the outgoing
+                // seed's progress to its own autosave, then start from a clean
+                // collected set (restored from the new seed's file further down).
+                // Re-loading the SAME seed keeps the in-memory progress (below).
+                let new_seed = seed_tag_from_spoiler(&text);
+                let seed_changed = new_seed != self.seed_tag;
+                if seed_changed {
+                    let has_progress = self.worlds.iter().any(|w| !w.collected.is_empty())
+                        || !self.visited_entrances.is_empty();
+                    if self.auto_save && has_progress {
+                        self.save_state(); // preserve the previous seed's file
+                    }
+                    for w in &mut self.worlds {
+                        w.collected.clear();
+                        w.forced.clear();
+                    }
+                    self.visited_entrances.clear();
+                    self.out_links.clear();
+                    self.in_links.clear();
+                    self.seed_tag = new_seed;
+                }
                 let sp = spoiler::parse(&text);
                 self.rom = sp.rom;
                 self.rom_from_spoiler = true;
                 self.mq_scenes = sp.mq_scenes;
                 let num_worlds = sp.worlds.len().max(1);
                 // Re-fill each world's placements, PRESERVING the collected / forced
-                // sets across the reload (Qt `preservedStatus`) so loading a spoiler
-                // never wipes progress — critical with auto-save on. Grow first, set
-                // the placements, then drop any world the new seed no longer has.
+                // sets across the reload (Qt `preservedStatus`) so re-loading the same
+                // spoiler never wipes progress — critical with auto-save on. Grow
+                // first, set the placements, then drop any world the seed no longer has.
                 if self.worlds.len() < num_worlds {
                     self.worlds.resize_with(num_worlds, crate::WorldData::default);
                 }
@@ -889,6 +967,16 @@ impl TrackerApp {
                 } else {
                     self.i18n.spoiler_singleworld(self.worlds[0].items.len(), self.mq_scenes.len())
                 };
+                // New seed: restore this seed's own progress from its autosave (the
+                // collected set was cleared above), if it has been played before.
+                if seed_changed {
+                    let auto = self.autosave_path();
+                    if auto.is_file() {
+                        self.load_from(&auto);
+                        self.prog_dirty = true;
+                        self.counts_dirty = true;
+                    }
+                }
             }
             Err(e) => self.status = format!("Lecture spoiler échouée : {e}"),
         }
@@ -969,44 +1057,58 @@ impl TrackerApp {
         let in_str = name(inc.game, inc.entrance_id);
         let game_lbl = |g: Game| if g == Game::Oot { "OoT" } else { "MM" };
 
+        // X/Y/Z are universal axis names; the coordinates line stays as-is.
         self.log_msg(format!("X = {:.6}, Y = {:.6}, Z = {:.6}", inc.x, inc.y, inc.z));
-        self.log_msg(format!(
-            "New scene Loaded ! From : {out_str} (0x{:X}), To : {in_str} (0x{:X})",
-            out.entrance_id, inc.entrance_id
-        ));
+        self.log_msg(self.i18n.log_new_scene(&out_str, out.entrance_id, &in_str, inc.entrance_id));
         if entrance::lookup(out.game, out.entrance_id)
             .is_some_and(|m| m.type_ == data::EntranceType::One_Way_In)
         {
-            self.log_msg(format!("Warning ! Entrance {out_str} (0x{:X}) is one way in only !", out.entrance_id));
+            self.log_msg(self.i18n.log_one_way_in(&out_str, out.entrance_id));
         }
         if entrance::lookup(inc.game, inc.entrance_id)
             .is_some_and(|m| m.type_ == data::EntranceType::One_Way_Out)
         {
-            self.log_msg(format!("Warning ! Entrance {in_str} (0x{:X}) is one way out only !", inc.entrance_id));
+            self.log_msg(self.i18n.log_one_way_out(&in_str, inc.entrance_id));
         }
+
+        // Gather the localized table labels up front (owned), so the log loop below
+        // never holds an `i18n` borrow across a `&mut self` `log_msg` call.
+        let h_from = self.i18n.tbl_from().to_string();
+        let h_to = self.i18n.tbl_to().to_string();
+        let l_game = self.i18n.tbl_game().to_string();
+        let l_scene = self.i18n.tbl_scene().to_string();
+        let l_entrance = self.i18n.tbl_entrance().to_string();
+        let l_room = self.i18n.tbl_room().to_string();
+        let l_grotto = self.i18n.tbl_grotto().to_string();
+        let l_age = self.i18n.tbl_age().to_string();
+        let l_farore = self.i18n.tbl_farore().to_string();
+        let l_owl = self.i18n.tbl_owl().to_string();
+        let l_song = self.i18n.tbl_song().to_string();
 
         let sep = || "-".repeat(49);
         let hex08 = |v: u32| format!("0x{v:08X}");
         let hex02 = |v: u8| format!("0x{v:02X}");
+        // Label column widened to 14 so the longer French labels still align.
         let row = |label: &str, from: String, to: String| {
-            format!("{label:<13} | {from:>14} | {to:>14} |")
+            format!("{label:<14} | {from:>14} | {to:>14} |")
         };
-        self.log_msg("              -----------------------------------".to_string());
-        self.log_msg("              |      FROM      |       TO       |".to_string());
+        let header = format!("{:<14} | {h_from:^14} | {h_to:^14} |", "");
         let lines = [
             self.i_row_f("X", out.x, inc.x),
             self.i_row_f("Y", out.y, inc.y),
             self.i_row_f("Z", out.z, inc.z),
-            row("Game", game_lbl(out.game).to_string(), game_lbl(inc.game).to_string()),
-            row("Scene", hex08(evt.out_scene), hex08(evt.in_scene)),
-            row("Entrance", hex08(evt.out_entrance), hex08(evt.in_entrance)),
-            row("Room ID", hex02(out.curr_room), hex02(inc.curr_room)),
-            row("Grotto Data", hex02(out.grotto_data), hex02(inc.grotto_data)),
-            row("Age", hex02(out.age), hex02(inc.age)),
-            row("Farore's Wind", hex02(out.farore_wind), hex02(inc.farore_wind)),
-            row("Owl ID", hex02(out.owl_id), hex02(inc.owl_id)),
-            row("Song ID", hex02(out.song), hex02(inc.song)),
+            row(&l_game, game_lbl(out.game).to_string(), game_lbl(inc.game).to_string()),
+            row(&l_scene, hex08(evt.out_scene), hex08(evt.in_scene)),
+            row(&l_entrance, hex08(evt.out_entrance), hex08(evt.in_entrance)),
+            row(&l_room, hex02(out.curr_room), hex02(inc.curr_room)),
+            row(&l_grotto, hex02(out.grotto_data), hex02(inc.grotto_data)),
+            row(&l_age, hex02(out.age), hex02(inc.age)),
+            row(&l_farore, hex02(out.farore_wind), hex02(inc.farore_wind)),
+            row(&l_owl, hex02(out.owl_id), hex02(inc.owl_id)),
+            row(&l_song, hex02(out.song), hex02(inc.song)),
         ];
+        self.log_msg(sep());
+        self.log_msg(header);
         for line in lines {
             self.log_msg(sep());
             self.log_msg(line);
@@ -1016,7 +1118,7 @@ impl TrackerApp {
 
     /// One float table row for `log_entrance_details`.
     fn i_row_f(&self, label: &str, from: f32, to: f32) -> String {
-        format!("{label:<13} | {:>14.6} | {:>14.6} |", from, to)
+        format!("{label:<14} | {:>14.6} | {:>14.6} |", from, to)
     }
 
     /// Rebuild the InLinks index from OutLinks (each out -> in edge implies the
@@ -1217,24 +1319,27 @@ impl TrackerApp {
         }
     }
 
-    /// Preload the greyscale ("uncollected") variants of the progression item
-    /// icons, a small budget per frame like `ensure_icons`. Only the icons the
-    /// progression grid can show (ICON_BY_NAME) get a grey copy — the map / region
-    /// icons never need one.
+    /// Preload the greyscale ("uncollected") and blue-silhouette ("obtained glow")
+    /// variants of the progression item icons, a small budget per frame like
+    /// `ensure_icons`. Only the icons the progression grid can show (ICON_BY_NAME)
+    /// get these copies — the map / region icons never need one.
     pub(crate) fn ensure_prog_grey_icons(&mut self, ctx: &egui::Context) {
+        // The accent blue reused for the "obtained" glow silhouette.
+        let glow = egui::Color32::from_rgb(74, 158, 219);
         let mut budget = 24;
         for &(_, path) in data::ICON_BY_NAME.iter() {
             if path.is_empty() || self.grey_icon_cache.contains_key(path) {
                 continue;
             }
-            let tex = load_color_image(&scene::resource_path(path)).ok().map(|img| {
-                ctx.load_texture(
-                    format!("{path}#grey"),
-                    greyscale_image(&img),
-                    egui::TextureOptions::LINEAR,
-                )
+            let img = load_color_image(&scene::resource_path(path)).ok();
+            let grey = img.as_ref().map(|img| {
+                ctx.load_texture(format!("{path}#grey"), greyscale_image(img), egui::TextureOptions::LINEAR)
             });
-            self.grey_icon_cache.insert(path, tex);
+            let sil = img.as_ref().map(|img| {
+                ctx.load_texture(format!("{path}#glow"), silhouette_image(img, glow), egui::TextureOptions::LINEAR)
+            });
+            self.grey_icon_cache.insert(path, grey);
+            self.glow_icon_cache.insert(path, sil);
             budget -= 1;
             if budget == 0 {
                 ctx.request_repaint(); // keep loading the rest next frame
@@ -1353,6 +1458,12 @@ impl TrackerApp {
         }
 
         self.i18n.set_language(language);
+
+        // Refresh the poller thread's log / status snapshot so its journal follows
+        // the new language too (it reads this on its next iteration).
+        if let Ok(mut guard) = self.log_strings.lock() {
+            *guard = std::sync::Arc::new(self.i18n.log_strings());
+        }
 
         // Persist the choice so it is restored on the next launch.
         self.app_settings.language = language;
@@ -1483,5 +1594,753 @@ fn r4_data_dir() -> std::path::PathBuf {
         std::path::PathBuf::from(appdata).join("OoTMM").join("tracker-client")
     } else {
         std::path::PathBuf::from("data").join("tracker-client")
+    }
+}
+
+/// The autosave file stem for a spoiler: its seed hash (the `Seed:` first line),
+/// reduced to filename-safe characters and capped so the name stays tidy. Returns
+/// `empty` when the text carries no seed, giving the no-spoiler run a stable file.
+fn seed_tag_from_spoiler(text: &str) -> String {
+    // The seed is the first non-empty line ("Seed: <hash>"); nothing else counts.
+    for line in text.lines() {
+        let line = line.trim();
+        if line.is_empty() {
+            continue;
+        }
+        if let Some(rest) = line.strip_prefix("Seed:") {
+            let tag: String =
+                rest.chars().filter(|c| c.is_ascii_alphanumeric()).take(32).collect();
+            if !tag.is_empty() {
+                return tag;
+            }
+        }
+        break;
+    }
+    "empty".to_string()
+}
+
+// ── XML save format (version 6) ──────────────────────────────────────────────
+// Pure (self-free) serializer/parser so a round-trip can be unit-tested without
+// constructing a full `TrackerApp`. `TrackerApp::save_to` / `load_from_xml` are
+// thin adapters over these.
+
+/// The tracked data recovered from a version-6 XML save. `worlds` reuses
+/// [`crate::WorldData`] (its `collected` / `forced` / `items` / `dest` are exactly
+/// the per-world fields we persist); the entrance graph and remembered paths are
+/// returned separately for the caller to merge into the live state.
+struct ParsedSave {
+    worlds: Vec<crate::WorldData>,
+    visited: HashSet<(Game, u32)>,
+    out_links: HashMap<(Game, u32), (Game, u32)>,
+    in_links: HashMap<(Game, u32), Vec<(Game, u32)>>,
+    patch_path: Option<PathBuf>,
+    spoiler_path: Option<String>,
+}
+
+/// Serialize the tracked state to the human-readable / hand-editable XML save.
+/// Output is deterministic (scenes, locations and entrances are sorted) so saves
+/// diff cleanly. The `loc` attribute — the globally-unique object `Location` — is
+/// the authoritative key for a `<location>`; a placed `<item>` additionally carries
+/// its stable `id` (preferred over the name on load). Entrance `name`s are the
+/// fully-qualified "scene - side" form and, like every other `name`, are readable
+/// annotations free to hand-edit (the entrance graph reloads from the `id`s).
+fn render_save_xml(
+    worlds: &[crate::WorldData],
+    patch: Option<&str>,
+    spoiler: Option<&str>,
+    visited: &HashSet<(Game, u32)>,
+    out_links: &HashMap<(Game, u32), (Game, u32)>,
+    in_links: &HashMap<(Game, u32), Vec<(Game, u32)>>,
+) -> String {
+    use std::fmt::Write as _;
+    // Minimal XML escaping for a double-quoted attribute: only `&`, `<` and `"`
+    // must be escaped there. Leaving `'` and `>` literal keeps the save readable —
+    // "Mido's House", and the spawn arrow "scene -> side" instead of "-&gt;". `&`
+    // is replaced first so we don't double-escape the entities we introduce.
+    let esc = |s: &str| {
+        s.replace('&', "&amp;").replace('<', "&lt;").replace('"', "&quot;")
+    };
+    let tag = |g: Game| if g == Game::Mm { "MM" } else { "OoT" };
+    let scene_name = |g: Game, id: u16| -> String {
+        g.scenes()
+            .iter()
+            .find(|s| s.id == id)
+            .map(|s| s.name.to_string())
+            .unwrap_or_else(|| format!("Scene {id:#x}"))
+    };
+    // The entrance's identity / where it leads: the dash "scene - side" form, used
+    // for the <entrance> itself and for its <out> link ("Kokiri Forest - Deku Tree",
+    // not just "Kokiri Forest").
+    let ent_name = |g: Game, id: u32| -> String {
+        entrance::display_name(g, id).unwrap_or_default()
+    };
+    // Where an entrance is entered FROM: the arrow "scene -> side" form (tracker
+    // GetEntranceSpawnsString), so an <in> link reads differently from an <out>.
+    let spawn_name = |g: Game, id: u32| -> String {
+        entrance::spawns_name(g, id).unwrap_or_default()
+    };
+
+    // location string -> (game, object index): lets an item/dest-only row (a
+    // placement whose object was never collected) still carry a scene + name.
+    let mut by_loc: HashMap<&str, (Game, usize)> = HashMap::new();
+    for game in [Game::Oot, Game::Mm] {
+        for (i, o) in game.objects().iter().enumerate() {
+            by_loc.insert(o.location, (game, i));
+        }
+    }
+
+    let mut out = String::new();
+    out.push_str("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+    writeln!(out, "<tracker version=\"{}\">", crate::SAVE_VERSION).ok();
+
+    // <paths>: the remembered spoiler (sidecar) + the r4 patch file.
+    out.push_str("  <paths>\n");
+    if let Some(sp) = spoiler {
+        writeln!(out, "    <spoiler>{}</spoiler>", esc(sp)).ok();
+    }
+    if let Some(p) = patch {
+        writeln!(out, "    <patch>{}</patch>", esc(p)).ok();
+    }
+    out.push_str("  </paths>\n");
+
+    // <worlds>: one <world index="N"> (1-based) per world, its touched locations
+    // grouped by scene. A location is written when it is collected, or carries an
+    // item placement / destination player.
+    struct Row<'a> {
+        game: Game,
+        scene: u16,
+        name: &'a str,
+        loc: &'a str,
+        state: &'static str,
+        item: Option<&'a str>,
+        dest: Option<u8>,
+        // Stable numeric identity, disambiguated within the parent <scene>: the
+        // object id, then its type + layout to split the (few) checks that share a
+        // scene + object id (MQ variants, co-located shops, overlapping id spaces).
+        // `None` only when the location matches no object (an item on an unknown loc).
+        oid: Option<u32>,
+        type_id: Option<u32>,
+        layout_id: Option<u32>,
+    }
+    // The numeric-key attributes for a <location>, in a stable order.
+    let key_attrs = |r: &Row| -> String {
+        let mut s = String::new();
+        if let Some(o) = r.oid { let _ = write!(s, " oid=\"{o:#x}\""); }
+        if let Some(t) = r.type_id { let _ = write!(s, " type=\"{t}\""); }
+        if let Some(l) = r.layout_id { let _ = write!(s, " layout=\"{l}\""); }
+        s
+    };
+    out.push_str("  <worlds>\n");
+    for (wi, w) in worlds.iter().enumerate() {
+        writeln!(out, "    <world index=\"{}\">", wi + 1).ok();
+
+        let mut rows: HashMap<&str, Row> = HashMap::new();
+        for &(g, idx) in &w.collected {
+            let o = &g.objects()[idx];
+            let state = if w.forced.contains(&(g, idx)) { "forced" } else { "collected" };
+            rows.insert(
+                o.location,
+                Row {
+                    game: g, scene: o.scene, name: o.name, loc: o.location, state,
+                    item: None, dest: None,
+                    oid: Some(o.object_id), type_id: Some(o.type_ as u32), layout_id: Some(o.layout as u32),
+                },
+            );
+        }
+        // A placement / destination on a location that was never collected still
+        // gets a row; its scene + name + numeric keys come from the object index.
+        for (loc, item) in &w.items {
+            rows.entry(loc.as_str())
+                .or_insert_with(|| {
+                    by_loc
+                        .get(loc.as_str())
+                        .map(|&(g, i)| {
+                            let o = &g.objects()[i];
+                            Row {
+                                game: g, scene: o.scene, name: o.name, loc: loc.as_str(), state: "none",
+                                item: None, dest: None,
+                                oid: Some(o.object_id), type_id: Some(o.type_ as u32), layout_id: Some(o.layout as u32),
+                            }
+                        })
+                        .unwrap_or(Row {
+                            game: Game::Oot, scene: 0, name: "", loc: loc.as_str(), state: "none",
+                            item: None, dest: None, oid: None, type_id: None, layout_id: None,
+                        })
+                })
+                .item = Some(item.as_str());
+        }
+        for (loc, d) in &w.dest {
+            rows.entry(loc.as_str())
+                .or_insert_with(|| {
+                    by_loc
+                        .get(loc.as_str())
+                        .map(|&(g, i)| {
+                            let o = &g.objects()[i];
+                            Row {
+                                game: g, scene: o.scene, name: o.name, loc: loc.as_str(), state: "none",
+                                item: None, dest: None,
+                                oid: Some(o.object_id), type_id: Some(o.type_ as u32), layout_id: Some(o.layout as u32),
+                            }
+                        })
+                        .unwrap_or(Row {
+                            game: Game::Oot, scene: 0, name: "", loc: loc.as_str(), state: "none",
+                            item: None, dest: None, oid: None, type_id: None, layout_id: None,
+                        })
+                })
+                .dest = Some(*d);
+        }
+
+        let mut list: Vec<Row> = rows.into_values().collect();
+        list.sort_by(|a, b| (a.game.idx(), a.scene, a.loc).cmp(&(b.game.idx(), b.scene, b.loc)));
+
+        out.push_str("      <scenes>\n");
+        let mut cur: Option<(usize, u16)> = None;
+        for r in &list {
+            let key = (r.game.idx(), r.scene);
+            if cur != Some(key) {
+                if cur.is_some() {
+                    out.push_str("        </scene>\n");
+                }
+                writeln!(
+                    out,
+                    "        <scene game=\"{}\" id=\"{:#x}\" name=\"{}\">",
+                    tag(r.game), r.scene, esc(&scene_name(r.game, r.scene))
+                ).ok();
+                cur = Some(key);
+            }
+            let keys = key_attrs(r);
+            if r.item.is_none() && r.dest.is_none() {
+                writeln!(
+                    out,
+                    "          <location loc=\"{}\" name=\"{}\"{keys} state=\"{}\"/>",
+                    esc(r.loc), esc(r.name), r.state
+                ).ok();
+            } else {
+                writeln!(
+                    out,
+                    "          <location loc=\"{}\" name=\"{}\"{keys} state=\"{}\">",
+                    esc(r.loc), esc(r.name), r.state
+                ).ok();
+                let mut attrs = String::new();
+                if let Some(it) = r.item {
+                    // The item id is stable and unique; write it as the authoritative
+                    // key (immune to item renames). Names that don't resolve to an id
+                    // (multiworld "Player N's …", unknowns) keep only their name.
+                    if let Some(id) = crate::progression::find_item_id(it) {
+                        write!(attrs, " id=\"{id:#x}\"").ok();
+                    }
+                    write!(attrs, " name=\"{}\"", esc(it)).ok();
+                }
+                if let Some(d) = r.dest {
+                    write!(attrs, " dest=\"{d}\"").ok();
+                }
+                writeln!(out, "            <item{attrs}/>").ok();
+                out.push_str("          </location>\n");
+            }
+        }
+        if cur.is_some() {
+            out.push_str("        </scene>\n");
+        }
+        out.push_str("      </scenes>\n");
+        out.push_str("    </world>\n");
+    }
+    out.push_str("  </worlds>\n");
+
+    // <entrances>: every entrance that is visited or carries a discovered link,
+    // grouped by its (departure) scene. `visited` is a flag; `out` is the single
+    // discovered destination, `in` the discovered sources.
+    struct Ent {
+        game: Game,
+        id: u32,
+        scene: Option<u16>,
+        name: String,
+        visited: bool,
+        out: Option<(Game, u32)>,
+        ins: Vec<(Game, u32)>,
+    }
+    let mut keys: HashSet<(Game, u32)> = HashSet::new();
+    keys.extend(visited.iter().copied());
+    keys.extend(out_links.keys().copied());
+    keys.extend(in_links.keys().copied());
+    let mut ents: Vec<Ent> = keys
+        .into_iter()
+        .map(|(g, id)| Ent {
+            game: g,
+            id,
+            scene: entrance::lookup(g, id).map(|e| e.from_scene),
+            name: ent_name(g, id),
+            visited: visited.contains(&(g, id)),
+            out: out_links.get(&(g, id)).copied(),
+            ins: in_links.get(&(g, id)).cloned().unwrap_or_default(),
+        })
+        .collect();
+    ents.sort_by_key(|e| (e.game.idx(), e.scene.unwrap_or(u16::MAX), e.id));
+
+    out.push_str("  <entrances>\n");
+    let mut cur: Option<(usize, u16)> = None;
+    for e in &ents {
+        let s = e.scene.unwrap_or(u16::MAX);
+        let key = (e.game.idx(), s);
+        if cur != Some(key) {
+            if cur.is_some() {
+                out.push_str("    </scene>\n");
+            }
+            let nm = e.scene.map(|id| scene_name(e.game, id)).unwrap_or_else(|| "Other".to_string());
+            writeln!(out, "    <scene game=\"{}\" id=\"{:#x}\" name=\"{}\">", tag(e.game), s, esc(&nm)).ok();
+            cur = Some(key);
+        }
+        if e.out.is_none() && e.ins.is_empty() {
+            writeln!(
+                out,
+                "      <entrance game=\"{}\" id=\"{:#x}\" name=\"{}\" visited=\"{}\"/>",
+                tag(e.game), e.id, esc(&e.name), e.visited
+            ).ok();
+        } else {
+            writeln!(
+                out,
+                "      <entrance game=\"{}\" id=\"{:#x}\" name=\"{}\" visited=\"{}\">",
+                tag(e.game), e.id, esc(&e.name), e.visited
+            ).ok();
+            if let Some((og, oid)) = e.out {
+                writeln!(
+                    out,
+                    "        <out game=\"{}\" id=\"{:#x}\" name=\"{}\"/>",
+                    tag(og), oid, esc(&ent_name(og, oid))
+                ).ok();
+            }
+            for &(ig, iid) in &e.ins {
+                writeln!(
+                    out,
+                    "        <in game=\"{}\" id=\"{:#x}\" name=\"{}\"/>",
+                    tag(ig), iid, esc(&spawn_name(ig, iid))
+                ).ok();
+            }
+            out.push_str("      </entrance>\n");
+        }
+    }
+    if cur.is_some() {
+        out.push_str("    </scene>\n");
+    }
+    out.push_str("  </entrances>\n");
+
+    out.push_str("</tracker>\n");
+    out
+}
+
+/// Parse a version-6 XML save (see [`render_save_xml`]). A `<location>` is matched
+/// by its stable numeric identity — the object id within the parent `<scene>`, then
+/// its type + layout to split the checks that share a scene + object id — and only
+/// falls back to the `loc` string when the numeric keys are absent (older save),
+/// unresolved (the object id changed), or still ambiguous. The entrance graph is
+/// restored directly from the entrance `id` attributes. Malformed XML stops the
+/// parse and keeps whatever was read so far.
+fn parse_save_xml(text: &str) -> ParsedSave {
+    use quick_xml::events::{BytesStart, Event};
+
+    let mut out = ParsedSave {
+        worlds: vec![crate::WorldData::default()],
+        visited: HashSet::new(),
+        out_links: HashMap::new(),
+        in_links: HashMap::new(),
+        patch_path: None,
+        spoiler_path: None,
+    };
+    // Location -> (game, object index): the last-resort match when the numeric keys
+    // can't resolve (an unknown id, or a genuine full-footprint tie).
+    let mut by_loc: HashMap<&'static str, (Game, usize)> = HashMap::new();
+    // (game, scene, object_id) -> candidate indices. Not unique on its own (MQ
+    // variants, co-located scenes, overlapping id spaces), hence the type/layout
+    // narrowing + loc tiebreak below.
+    let mut by_scene_oid: HashMap<(u8, u16, u32), Vec<usize>> = HashMap::new();
+    for game in [Game::Oot, Game::Mm] {
+        for (i, o) in game.objects().iter().enumerate() {
+            by_loc.insert(o.location, (game, i));
+            by_scene_oid.entry((game.idx() as u8, o.scene, o.object_id)).or_default().push(i);
+        }
+    }
+
+    fn attr_map(e: &BytesStart) -> HashMap<String, String> {
+        let mut m = HashMap::new();
+        for a in e.attributes().flatten() {
+            if let Ok(v) = a.unescape_value() {
+                m.insert(String::from_utf8_lossy(a.key.as_ref()).into_owned(), v.into_owned());
+            }
+        }
+        m
+    }
+    fn parse_game(s: Option<&String>) -> Game {
+        if s.is_some_and(|s| s.eq_ignore_ascii_case("MM")) { Game::Mm } else { Game::Oot }
+    }
+    fn parse_id(s: Option<&String>) -> Option<u32> {
+        let t = s?.trim();
+        match t.strip_prefix("0x").or_else(|| t.strip_prefix("0X")) {
+            Some(h) => u32::from_str_radix(h, 16).ok(),
+            None => t.parse::<u32>().ok(),
+        }
+    }
+
+    let mut reader = quick_xml::Reader::from_str(text);
+    let mut buf = Vec::new();
+    let mut cur_world = 0usize;
+    let mut cur_scene: Option<(Game, u16)> = None; // active <scene game id> (for oid keys)
+    let mut cur_loc: Option<String> = None; // active <location loc="…">
+    let mut cur_ent: Option<(Game, u32)> = None; // active <entrance>
+    let mut path_tag = 0u8; // 1 = inside <spoiler>, 2 = inside <patch>
+
+    loop {
+        match reader.read_event_into(&mut buf) {
+            Ok(Event::Eof) | Err(_) => break,
+            Ok(Event::Start(e)) | Ok(Event::Empty(e)) => match e.name().as_ref() {
+                b"world" => {
+                    let n = attr_map(&e).get("index").and_then(|s| s.parse::<usize>().ok()).unwrap_or(1);
+                    cur_world = n.saturating_sub(1);
+                    if out.worlds.len() <= cur_world {
+                        out.worlds.resize_with(cur_world + 1, crate::WorldData::default);
+                    }
+                }
+                b"scene" => {
+                    let a = attr_map(&e);
+                    cur_scene = parse_id(a.get("id")).map(|id| (parse_game(a.get("game")), id as u16));
+                }
+                b"location" => {
+                    let a = attr_map(&e);
+                    // Candidate objects for (parent scene, object id); empty when the
+                    // numeric keys are absent (older save) or the id is unknown.
+                    let g = cur_scene.map(|(g, _)| g).unwrap_or(Game::Oot);
+                    let mut cands: Vec<usize> =
+                        match (cur_scene, a.get("oid").and_then(|s| parse_id(Some(s)))) {
+                            (Some((_, sc)), Some(oid)) => {
+                                by_scene_oid.get(&(g.idx() as u8, sc, oid)).cloned().unwrap_or_default()
+                            }
+                            _ => Vec::new(),
+                        };
+                    // Narrow the (rare) multi-candidate case by type, then layout.
+                    if cands.len() > 1 {
+                        if let Some(t) = a.get("type").and_then(|s| parse_id(Some(s))) {
+                            let f: Vec<usize> =
+                                cands.iter().copied().filter(|&i| g.objects()[i].type_ as u32 == t).collect();
+                            if !f.is_empty() {
+                                cands = f;
+                            }
+                        }
+                    }
+                    if cands.len() > 1 {
+                        if let Some(l) = a.get("layout").and_then(|s| parse_id(Some(s))) {
+                            let f: Vec<usize> =
+                                cands.iter().copied().filter(|&i| g.objects()[i].layout as u32 == l).collect();
+                            if !f.is_empty() {
+                                cands = f;
+                            }
+                        }
+                    }
+                    let loc = a.get("loc");
+                    // Unique numeric match wins; a genuine full-footprint tie is split
+                    // by the loc string; an unresolved id falls back to loc entirely.
+                    let resolved: Option<(Game, usize)> = match cands.len() {
+                        1 => Some((g, cands[0])),
+                        0 => loc.and_then(|l| by_loc.get(l.as_str()).copied()),
+                        _ => loc
+                            .and_then(|l| {
+                                cands.iter().copied().find(|&i| g.objects()[i].location == l.as_str()).map(|i| (g, i))
+                            })
+                            .or(Some((g, cands[0]))),
+                    };
+                    if let Some((g, i)) = resolved {
+                        let state = a.get("state").map(String::as_str).unwrap_or("none");
+                        if state == "collected" || state == "forced" {
+                            out.worlds[cur_world].collected.insert((g, i));
+                            if state == "forced" {
+                                out.worlds[cur_world].forced.insert((g, i));
+                            }
+                        }
+                        // Key any child <item>/dest on the object's CURRENT location, so
+                        // a renamed location still lands on the right object.
+                        cur_loc = Some(g.objects()[i].location.to_string());
+                    } else {
+                        // Unresolved: keep the raw loc so a child <item>/dest round-trips.
+                        cur_loc = loc.cloned();
+                    }
+                }
+                b"item" => {
+                    if let Some(loc) = cur_loc.clone() {
+                        let a = attr_map(&e);
+                        // Prefer the stable item id (resolved to its current canonical
+                        // name); fall back to the saved name for ids that no longer
+                        // exist or items that never had one.
+                        let name = a
+                            .get("id")
+                            .and_then(|s| parse_id(Some(s)))
+                            .and_then(|id| qtsave::item_name(id).map(str::to_string))
+                            .or_else(|| a.get("name").filter(|s| !s.is_empty()).cloned());
+                        if let Some(name) = name {
+                            out.worlds[cur_world].items.insert(loc.clone(), name);
+                        }
+                        if let Some(d) = a.get("dest").and_then(|s| s.parse::<u8>().ok()) {
+                            out.worlds[cur_world].dest.insert(loc, d);
+                        }
+                    }
+                }
+                b"entrance" => {
+                    let a = attr_map(&e);
+                    let g = parse_game(a.get("game"));
+                    if let Some(id) = parse_id(a.get("id")) {
+                        if a.get("visited").map(String::as_str) == Some("true") {
+                            out.visited.insert((g, id));
+                        }
+                        cur_ent = Some((g, id));
+                    }
+                }
+                b"out" => {
+                    if let Some(key) = cur_ent {
+                        let a = attr_map(&e);
+                        if let Some(id) = parse_id(a.get("id")) {
+                            out.out_links.insert(key, (parse_game(a.get("game")), id));
+                        }
+                    }
+                }
+                b"in" => {
+                    if let Some(key) = cur_ent {
+                        let a = attr_map(&e);
+                        if let Some(id) = parse_id(a.get("id")) {
+                            let src = (parse_game(a.get("game")), id);
+                            let list = out.in_links.entry(key).or_default();
+                            if !list.contains(&src) {
+                                list.push(src);
+                            }
+                        }
+                    }
+                }
+                b"spoiler" => path_tag = 1,
+                b"patch" => path_tag = 2,
+                _ => {}
+            },
+            Ok(Event::Text(t)) => {
+                if path_tag != 0 {
+                    if let Ok(s) = t.unescape() {
+                        let s = s.trim();
+                        if !s.is_empty() {
+                            if path_tag == 1 {
+                                out.spoiler_path = Some(s.to_string());
+                            } else {
+                                out.patch_path = Some(PathBuf::from(s));
+                            }
+                        }
+                    }
+                }
+            }
+            Ok(Event::End(e)) => match e.name().as_ref() {
+                b"location" => cur_loc = None,
+                b"entrance" => cur_ent = None,
+                b"spoiler" | b"patch" => path_tag = 0,
+                _ => {}
+            },
+            _ => {}
+        }
+        buf.clear();
+    }
+    out
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn seed_tag_extraction() {
+        // The seed hash drives the per-seed autosave filename.
+        let spoiler = "Seed: 18316056476e293e4cc59cfd\nVersion: dev-6d50571\n";
+        assert_eq!(seed_tag_from_spoiler(spoiler), "18316056476e293e4cc59cfd");
+        // Capped at 32 chars, non-alphanumerics dropped.
+        let long = "Seed: abcd-efgh_0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ\n";
+        let tag = seed_tag_from_spoiler(long);
+        assert_eq!(tag.len(), 32);
+        assert!(tag.chars().all(|c| c.is_ascii_alphanumeric()));
+        // No seed line (or empty text) -> the shared no-spoiler file.
+        assert_eq!(seed_tag_from_spoiler("Version: dev\nSettings\n"), "empty");
+        assert_eq!(seed_tag_from_spoiler(""), "empty");
+    }
+
+    #[test]
+    fn xml_save_round_trips() {
+        // World 0: two collected objects (one forced), a placement + destination on
+        // a collected location, and an item-only placement (never collected) whose
+        // name exercises XML escaping. World 1: a lone MM collect.
+        let loc0 = Game::Oot.objects()[0].location.to_string();
+        let loc5 = Game::Oot.objects()[5].location.to_string();
+        let mut w0 = crate::WorldData::default();
+        w0.collected.insert((Game::Oot, 0));
+        w0.collected.insert((Game::Oot, 1));
+        w0.forced.insert((Game::Oot, 1));
+        w0.items.insert(loc0.clone(), "Kokiri Sword".to_string());
+        w0.dest.insert(loc0.clone(), 2);
+        w0.items.insert(loc5.clone(), "Rupee & <Stick>".to_string());
+        let mut w1 = crate::WorldData::default();
+        w1.collected.insert((Game::Mm, 3));
+        let worlds = vec![w0, w1];
+
+        // Entrances: a visited flag, a discovered out-link and its mirror in-link.
+        let a = (Game::Oot, Game::Oot.entrances()[0].to_id);
+        let b = (Game::Mm, Game::Mm.entrances()[0].to_id);
+        let mut visited = HashSet::new();
+        visited.insert(a);
+        visited.insert(b);
+        let mut out_links = HashMap::new();
+        out_links.insert(a, b);
+        let mut in_links = HashMap::new();
+        in_links.insert(b, vec![a]);
+
+        let xml = render_save_xml(
+            &worlds,
+            Some("C:/patch.ootmm"),
+            Some("C:/spoiler.txt"),
+            &visited,
+            &out_links,
+            &in_links,
+        );
+        // Sanity: it is the version-6 XML the loader routes on.
+        assert!(xml.starts_with("<?xml"));
+        assert!(xml.contains("<tracker version=\"6\">"));
+
+        let p = parse_save_xml(&xml);
+        assert_eq!(p.worlds.len(), 2);
+        // `Location` is the authoritative key, and a handful of pool locations are
+        // shared by two objects, so `by_loc` may resolve a saved location back to a
+        // different index. Compare the restored *locations*, which both the writer
+        // and reader collapse identically, not the raw indices.
+        let locs = |set: &HashSet<(Game, usize)>| -> HashSet<&'static str> {
+            set.iter().map(|&(g, i)| g.objects()[i].location).collect()
+        };
+        assert_eq!(locs(&p.worlds[0].collected), locs(&worlds[0].collected));
+        assert_eq!(locs(&p.worlds[0].forced), locs(&worlds[0].forced));
+        assert_eq!(locs(&p.worlds[1].collected), locs(&worlds[1].collected));
+        assert_eq!(p.worlds[0].items.get(&loc0).map(String::as_str), Some("Kokiri Sword"));
+        assert_eq!(p.worlds[0].dest.get(&loc0).copied(), Some(2));
+        // The escaped name survives the round trip verbatim.
+        assert_eq!(p.worlds[0].items.get(&loc5).map(String::as_str), Some("Rupee & <Stick>"));
+
+        assert_eq!(p.visited, visited);
+        assert_eq!(p.out_links, out_links);
+        assert_eq!(p.in_links, in_links);
+        assert_eq!(p.spoiler_path.as_deref(), Some("C:/spoiler.txt"));
+        assert_eq!(p.patch_path, Some(PathBuf::from("C:/patch.ootmm")));
+    }
+
+    #[test]
+    fn xml_location_survives_rename() {
+        // The whole point of the numeric key: a collected location still loads after
+        // its `loc` string is renamed in a future version. Pick an object whose full
+        // numeric footprint (scene, oid, type, layout) is unique so the match is
+        // unambiguous, render it collected, then corrupt only the loc string.
+        let objs = Game::Oot.objects();
+        let idx = (0..objs.len())
+            .find(|&i| {
+                let o = &objs[i];
+                objs.iter().filter(|x| {
+                    x.scene == o.scene
+                        && x.object_id == o.object_id
+                        && x.type_ as u32 == o.type_ as u32
+                        && x.layout as u32 == o.layout as u32
+                }).count() == 1
+                    && !o.location.contains(['&', '<', '>', '"'])
+            })
+            .expect("a uniquely-keyed plain-ASCII object");
+        let real_loc = objs[idx].location;
+
+        let mut w = crate::WorldData::default();
+        w.collected.insert((Game::Oot, idx));
+        let xml = render_save_xml(&[w], None, None, &HashSet::new(), &HashMap::new(), &HashMap::new());
+        assert!(xml.contains(&format!("oid=\"{:#x}\"", objs[idx].object_id)));
+
+        // Simulate an upstream rename: the saved loc no longer matches any object.
+        let renamed = xml.replacen(
+            &format!("loc=\"{real_loc}\""),
+            "loc=\"OOT Totally Renamed Location That Matches Nothing\"",
+            1,
+        );
+        assert_ne!(renamed, xml, "the loc attribute must have been rewritten");
+
+        let p = parse_save_xml(&renamed);
+        assert!(
+            p.worlds[0].collected.contains(&(Game::Oot, idx)),
+            "the object must still load via its (scene, oid, type, layout) key"
+        );
+    }
+
+    #[test]
+    fn xml_item_survives_rename() {
+        // A placed item loads from its stable `id` even if the saved `name` is stale.
+        // (Spoilers store the game-suffixed name, which is what the item table uses.)
+        let loc = Game::Oot.objects()[0].location.to_string();
+        let stored = "Kokiri Sword (OoT)";
+        let id = crate::progression::find_item_id(stored).expect("known item");
+        let canonical = qtsave::item_name(id).unwrap().to_string();
+
+        let mut w = crate::WorldData::default();
+        w.items.insert(loc.clone(), stored.to_string());
+        let xml = render_save_xml(&[w], None, None, &HashSet::new(), &HashMap::new(), &HashMap::new());
+        assert!(xml.contains(&format!("id=\"{id:#x}\"")));
+
+        // Corrupt the item name; the id must still resolve it to the canonical name.
+        let renamed = xml.replacen(&format!("name=\"{stored}\""), "name=\"Old Renamed Sword\"", 1);
+        assert_ne!(renamed, xml);
+        let p = parse_save_xml(&renamed);
+        assert_eq!(p.worlds[0].items.get(&loc).map(String::as_str), Some(canonical.as_str()));
+    }
+
+    #[test]
+    fn xml_entrance_names_are_fully_qualified() {
+        // <in>/<out> (and the entrance itself) name the resolved exit as
+        // "scene - side", not a bare, ambiguous destination.
+        let ent = Game::Oot.entrances()[0].to_id;
+        let full = entrance::display_name(Game::Oot, ent).unwrap();
+        assert!(full.contains(" - "), "expected a 'scene - side' name, got {full:?}");
+        let mut visited = HashSet::new();
+        visited.insert((Game::Oot, ent));
+        let xml = render_save_xml(
+            &[crate::WorldData::default()],
+            None,
+            None,
+            &visited,
+            &HashMap::new(),
+            &HashMap::new(),
+        );
+        assert!(xml.contains(&format!("name=\"{full}\"")));
+    }
+
+    #[test]
+    fn xml_in_link_uses_spawn_arrow_form() {
+        // An <in> link records where an entrance is entered FROM, and must read with
+        // the arrow "scene -> side" form (tracker GetEntranceSpawnsString), distinct
+        // from an <out> which keeps the dash "scene - side" form. Pick a Normal
+        // entrance so the arrow keeps the same token order as the dash form.
+        let src = Game::Oot
+            .entrances()
+            .iter()
+            .find(|e| e.type_ == crate::data::EntranceType::Normal && !e.from_name.is_empty())
+            .map(|e| e.to_id)
+            .expect("a Normal entrance");
+        let host = (Game::Oot, Game::Oot.entrances()[0].to_id);
+        let leads = entrance::display_name(Game::Oot, src).unwrap(); // "scene - side"
+        let spawn = entrance::spawns_name(Game::Oot, src).unwrap(); // "scene -> side"
+        assert!(spawn.contains(" -> "), "spawn form should use an arrow, got {spawn:?}");
+        assert_eq!(spawn, leads.replacen(" - ", " -> ", 1), "same tokens, arrow separator");
+
+        let mut out_links = HashMap::new();
+        out_links.insert(host, (Game::Oot, src));
+        let mut in_links = HashMap::new();
+        in_links.insert(host, vec![(Game::Oot, src)]);
+        let mut visited = HashSet::new();
+        visited.insert(host);
+        let xml = render_save_xml(
+            &[crate::WorldData::default()],
+            None,
+            None,
+            &visited,
+            &out_links,
+            &in_links,
+        );
+        // The <out> carries the dash form, the <in> the arrow form.
+        assert!(xml.contains(&format!("<out game=\"OoT\" id=\"{src:#x}\" name=\"{leads}\"/>")));
+        assert!(xml.contains(&format!("<in game=\"OoT\" id=\"{src:#x}\" name=\"{spawn}\"/>")));
     }
 }

@@ -217,6 +217,52 @@ pub struct I18n {
     strings: LocaleFile,
 }
 
+/// A plain, owned snapshot of every injection / connection log + status-bar string
+/// for the current language. Built on the UI thread and shared with the background
+/// poller thread (which has no `I18n`); swapped on a language change so the journal
+/// follows the UI language. Templated fields keep their `{…}` placeholders for the
+/// caller to fill.
+#[derive(Clone)]
+pub struct LogStrings {
+    // Journal (poller.rs)
+    pub requesting_shutdown: String,
+    pub dll_unloaded: String,
+    pub dll_removed: String,
+    pub dll_still_loaded: String,
+    pub pj64_closed_log: String,
+    pub shared_mem_found: String,
+    pub dll_loaded: String,
+    pub settings_closed: String,
+    pub settings_not_identified: String,
+    pub reading_mem: String,
+    pub dll_failed_init: String,
+    pub no_pj64_retry: String,
+    pub process_found: String, // {pid}
+    // Journal (inject.rs)
+    pub pj64_path: String,        // {path}
+    pub plugin_dir: String,       // {path}
+    pub tracker_dll: String,      // {path}
+    pub dll_copied: String,       // {path}
+    pub windowed_note: String,
+    pub main_window_found: String, // {hwnd}
+    pub ctrl_t_sent: String,
+    // Injection error strings (inject.rs `Err(String)`)
+    pub err_no_exe_path: String,
+    pub err_no_plugin_dir: String,
+    pub err_dll_missing: String, // {name}
+    pub err_dll_copy: String,    // {err}
+    pub err_no_main_window: String,
+    pub err_sendinput: String,
+    // Status bar (poller.rs)
+    pub st_inactive: String,
+    pub st_pj64_closed: String,
+    pub st_connected: String,
+    pub st_waiting_game: String,
+    pub st_loading_plugin: String,
+    pub st_injection_failed: String,
+    pub st_waiting_pj64: String,
+}
+
 impl I18n {
     pub fn new(language: Language) -> Self {
         let strings = Self::load(language);
@@ -559,6 +605,14 @@ impl I18n {
         Self::get(&self.strings.common, "trck_file")
     }
 
+    pub fn xml_file(&self) -> &str {
+        Self::get(&self.strings.common, "xml_file")
+    }
+
+    pub fn tracking_files(&self) -> &str {
+        Self::get(&self.strings.common, "tracking_files")
+    }
+
     pub fn txt_file(&self) -> &str {
         Self::get(&self.strings.common, "txt_file")
     }
@@ -869,6 +923,135 @@ impl I18n {
         Self::get(&self.strings.logs, "no_img")
     }
 
+    // --- Multiplayer / patch log lines (state.rs) ---
+
+    pub fn log_mp_enabled(&self, server: &str) -> String {
+        Self::get(&self.strings.logs, "mp_enabled").replace("{server}", server)
+    }
+
+    pub fn log_r4_enabled(&self, info: &str, server: &str) -> String {
+        Self::get(&self.strings.logs, "r4_enabled")
+            .replace("{info}", info)
+            .replace("{server}", server)
+    }
+
+    pub fn log_patch_loaded(&self, path: &str, info: &str) -> String {
+        Self::get(&self.strings.logs, "patch_loaded")
+            .replace("{path}", path)
+            .replace("{info}", info)
+    }
+
+    pub fn log_patch_invalid(&self, err: &str) -> String {
+        Self::get(&self.strings.logs, "patch_invalid").replace("{err}", err)
+    }
+
+    pub fn log_patch_missing(&self, path: &str) -> String {
+        Self::get(&self.strings.logs, "patch_missing").replace("{path}", path)
+    }
+
+    pub fn log_patch_load_failed(&self, err: &str) -> String {
+        Self::get(&self.strings.logs, "patch_load_failed").replace("{err}", err)
+    }
+
+    // --- Live-event log lines (state.rs) ---
+
+    pub fn log_world_object(&self, game: &str, loc: &str, item: &str) -> String {
+        Self::get(&self.strings.logs, "world_object")
+            .replace("{game}", game)
+            .replace("{loc}", loc)
+            .replace("{item}", item)
+    }
+
+    pub fn log_world_object_net(
+        &self,
+        game: &str,
+        loc: &str,
+        item: &str,
+        from: i32,
+        to: i32,
+    ) -> String {
+        Self::get(&self.strings.logs, "world_object_net")
+            .replace("{game}", game)
+            .replace("{loc}", loc)
+            .replace("{item}", item)
+            .replace("{from}", &from.to_string())
+            .replace("{to}", &to.to_string())
+    }
+
+    pub fn log_new_scene(&self, from: &str, fromid: u32, to: &str, toid: u32) -> String {
+        Self::get(&self.strings.logs, "ent_new_scene")
+            .replace("{from}", from)
+            .replace("{fromid}", &format!("{fromid:X}"))
+            .replace("{to}", to)
+            .replace("{toid}", &format!("{toid:X}"))
+    }
+
+    pub fn log_one_way_in(&self, ent: &str, id: u32) -> String {
+        Self::get(&self.strings.logs, "ent_one_way_in")
+            .replace("{ent}", ent)
+            .replace("{id}", &format!("{id:X}"))
+    }
+
+    pub fn log_one_way_out(&self, ent: &str, id: u32) -> String {
+        Self::get(&self.strings.logs, "ent_one_way_out")
+            .replace("{ent}", ent)
+            .replace("{id}", &format!("{id:X}"))
+    }
+
+    // --- Entrance debug-table headers / row labels (state.rs) ---
+    pub fn tbl_from(&self) -> &str { Self::get(&self.strings.logs, "ent_tbl_from") }
+    pub fn tbl_to(&self) -> &str { Self::get(&self.strings.logs, "ent_tbl_to") }
+    pub fn tbl_game(&self) -> &str { Self::get(&self.strings.logs, "ent_tbl_game") }
+    pub fn tbl_scene(&self) -> &str { Self::get(&self.strings.logs, "ent_tbl_scene") }
+    pub fn tbl_entrance(&self) -> &str { Self::get(&self.strings.logs, "ent_tbl_entrance") }
+    pub fn tbl_room(&self) -> &str { Self::get(&self.strings.logs, "ent_tbl_room") }
+    pub fn tbl_grotto(&self) -> &str { Self::get(&self.strings.logs, "ent_tbl_grotto") }
+    pub fn tbl_age(&self) -> &str { Self::get(&self.strings.logs, "ent_tbl_age") }
+    pub fn tbl_farore(&self) -> &str { Self::get(&self.strings.logs, "ent_tbl_farore") }
+    pub fn tbl_owl(&self) -> &str { Self::get(&self.strings.logs, "ent_tbl_owl") }
+    pub fn tbl_song(&self) -> &str { Self::get(&self.strings.logs, "ent_tbl_song") }
+
+    /// Snapshot every poller / injection log + status string for the current
+    /// language, for the background poller thread (see [`LogStrings`]).
+    pub fn log_strings(&self) -> LogStrings {
+        let g = |k: &str| Self::get(&self.strings.logs, k).to_string();
+        LogStrings {
+            requesting_shutdown: g("requesting_shutdown"),
+            dll_unloaded: g("dll_unloaded"),
+            dll_removed: g("dll_removed"),
+            dll_still_loaded: g("dll_still_loaded"),
+            pj64_closed_log: g("pj64_closed_log"),
+            shared_mem_found: g("shared_mem_found"),
+            dll_loaded: g("dll_loaded"),
+            settings_closed: g("settings_closed"),
+            settings_not_identified: g("settings_not_identified"),
+            reading_mem: g("reading_mem"),
+            dll_failed_init: g("dll_failed_init"),
+            no_pj64_retry: g("no_pj64_retry"),
+            process_found: g("process_found"),
+            pj64_path: g("pj64_path"),
+            plugin_dir: g("plugin_dir"),
+            tracker_dll: g("tracker_dll"),
+            dll_copied: g("dll_copied"),
+            windowed_note: g("windowed_note"),
+            main_window_found: g("main_window_found"),
+            ctrl_t_sent: g("ctrl_t_sent"),
+            err_no_exe_path: g("err_no_exe_path"),
+            err_no_plugin_dir: g("err_no_plugin_dir"),
+            err_dll_missing: g("err_dll_missing"),
+            err_dll_copy: g("err_dll_copy"),
+            err_no_main_window: g("err_no_main_window"),
+            err_sendinput: g("err_sendinput"),
+            st_inactive: g("st_inactive"),
+            st_pj64_closed: g("st_pj64_closed"),
+            st_connected: g("st_connected"),
+            st_waiting_game: g("st_waiting_game"),
+            st_loading_plugin: g("st_loading_plugin"),
+            st_injection_failed: g("st_injection_failed"),
+            st_waiting_pj64: g("st_waiting_pj64"),
+        }
+    }
+
     // ---------------------------------------------------------------------
     // Map
     // ---------------------------------------------------------------------
@@ -936,10 +1119,7 @@ impl I18n {
     /// The `[item_names]` translation for a canonical item id, if present and
     /// non-empty (the id resolves through the dense, id-ordered `ITEMS` table).
     fn item_fr_by_id(&self, id: u32) -> Option<&str> {
-        let def = crate::data::ITEMS
-            .get((id as usize).wrapping_sub(1))
-            .filter(|d| d.id == id)
-            .or_else(|| crate::data::ITEMS.iter().find(|d| d.id == id))?;
+        let def = item_def_by_id(id)?;
         self.strings.item_names.get(def.name).map(String::as_str).filter(|s| !s.is_empty())
     }
 
@@ -953,19 +1133,47 @@ impl I18n {
             .unwrap_or(raw)
     }
 
-    /// Display name for a progression entry: reuse the `[item_names]` overlay
-    /// via the entry's item ids (so the progression page doesn't need its own
-    /// translation table). Falls back to the English entry name for abstract
-    /// entries whose items aren't translated. The redundant " (OoT)" / " (MM)"
-    /// game tag is dropped — the OoT/MM tab already says which game — while
-    /// legitimate parentheticals (e.g. "(Forest Temple)") are kept.
+    /// Display name for a progression entry. This must be the entry's OWN curated
+    /// name (translated), never a sibling item that merely shares its lookup keys
+    /// — otherwise "Deku Stick Capacity" (keys `[…, SHARED_STICK_UPGRADE]`) shows
+    /// as its shared sibling "Deku Stick Upgrade", and the collectible counters
+    /// ("Deku Nuts", "Child Fish") show as a quantified pickup ("5 Deku Nuts",
+    /// "Child Fish (2 pounds)"). Resolution order:
+    ///   1. a direct `[item_names]` hit on the untagged entry name;
+    ///   2. the lookup-key item whose own (game-tag-stripped) name equals the
+    ///      entry name — so tagged item names still localize;
+    ///   3. the curated English entry name.
+    /// The redundant " (OoT)" / " (MM)" tag is stripped from the result (the
+    /// overlay is keyed — and often valued — by the tagged `ItemDef.name`, while
+    /// the OoT/MM sub-tab already says which game the widget belongs to).
     pub fn tr_prog_entry<'a>(&'a self, name: &'a str, lookup_keys: &[u32]) -> &'a str {
-        let s = lookup_keys
-            .iter()
-            .find_map(|&id| self.item_fr_by_id(id))
-            .unwrap_or(name);
-        strip_game_tag(s)
+        if let Some(tr) = self.strings.item_names.get(name).map(String::as_str).filter(|s| !s.is_empty()) {
+            return strip_game_tag(tr);
+        }
+        for &id in lookup_keys {
+            if let Some(def) = item_def_by_id(id) {
+                if strip_game_tag(def.name).eq_ignore_ascii_case(name) {
+                    let s = self
+                        .strings
+                        .item_names
+                        .get(def.name)
+                        .map(String::as_str)
+                        .filter(|s| !s.is_empty())
+                        .unwrap_or(name);
+                    return strip_game_tag(s);
+                }
+            }
+        }
+        name
     }
+}
+
+/// The dense, id-ordered `ITEMS` entry for a canonical item id, if any.
+fn item_def_by_id(id: u32) -> Option<&'static crate::data::ItemDef> {
+    crate::data::ITEMS
+        .get((id as usize).wrapping_sub(1))
+        .filter(|d| d.id == id)
+        .or_else(|| crate::data::ITEMS.iter().find(|d| d.id == id))
 }
 
 /// Drop a trailing " (OoT)" / " (MM)" game tag, keeping any other parenthetical.
@@ -1003,7 +1211,7 @@ mod tests {
             i.drop_spoiler_hint(), i.copy_log(), i.unload_patch(), i.patch_unloaded(),
             i.address_placeholder(), i.port_placeholder(),
             i.all(), i.none(), i.choose(), i.search(), i.apply(), i.lang(),
-            i.trck_file(), i.txt_file(), i.choose_name(), i.choose_trck(), i.choose_spoiler(),
+            i.trck_file(), i.xml_file(), i.tracking_files(), i.txt_file(), i.choose_name(), i.choose_trck(), i.choose_spoiler(),
             i.scenes(), i.scenes_title(), i.player(),
             i.all_entrances(), i.gps(), i.entry(),
             i.entrance_col_scene(), i.entrance_col_spawn(), i.entrance_col_leads(),
@@ -1043,6 +1251,27 @@ mod tests {
         i.spoiler_singleworld(1, 2);
         i.gps_alternative(2);
         i.gps_transitions(3);
+
+        // Multiplayer / patch / live-event log lines (state.rs) — templated.
+        i.log_mp_enabled("host:1");
+        i.log_r4_enabled("info", "host:1");
+        i.log_patch_loaded("p", "info");
+        i.log_patch_invalid("e");
+        i.log_patch_missing("p");
+        i.log_patch_load_failed("e");
+        i.log_world_object("OoT", "loc", "item");
+        i.log_world_object_net("OoT", "loc", "item", 1, 2);
+        i.log_new_scene("a", 1, "b", 2);
+        i.log_one_way_in("a", 1);
+        i.log_one_way_out("a", 1);
+        // Entrance debug-table headers / row labels.
+        let tbl: &[&str] = &[
+            i.tbl_from(), i.tbl_to(), i.tbl_game(), i.tbl_scene(), i.tbl_entrance(),
+            i.tbl_room(), i.tbl_grotto(), i.tbl_age(), i.tbl_farore(), i.tbl_owl(), i.tbl_song(),
+        ];
+        assert!(tbl.iter().all(|t| !t.is_empty()));
+        // Poller / inject snapshot: touches every injection / connection / status key.
+        let _ = i.log_strings();
     }
 
     /// Both shipped locales must define every key the UI asks for.
@@ -1051,5 +1280,36 @@ mod tests {
         for lang in Language::ALL {
             touch_all(&I18n::new(lang));
         }
+    }
+
+    /// A progression entry displays its OWN curated name, never a sibling item in
+    /// its lookup keys (regression for the "Deku Stick Capacity" widget showing
+    /// "Deku Stick Upgrade", and the collectible counters showing quantified
+    /// pickups like "5 Deku Nuts" / "Child Fish (2 pounds)").
+    #[test]
+    fn prog_entry_shows_curated_name_not_sibling() {
+        use crate::data::iid;
+        let en = I18n::new(Language::English);
+        // Capacity widget: keys hold the shared "Deku Stick Upgrade" sibling.
+        assert_eq!(
+            en.tr_prog_entry("Deku Stick Capacity", &[iid::OOT_STICK_UPGRADE, iid::SHARED_STICK_UPGRADE]),
+            "Deku Stick Capacity"
+        );
+        // Collectible counter: keys are the quantified pickups.
+        assert_eq!(en.tr_prog_entry("Deku Nuts", &[iid::OOT_NUTS_5, iid::OOT_NUTS_10]), "Deku Nuts");
+        assert_eq!(
+            en.tr_prog_entry("Child Fish", &[iid::OOT_FISHING_POND_CHILD_FISH_2LBS]),
+            "Child Fish"
+        );
+        // Localised (FR): still the entry's own item, and with the game tag
+        // stripped — asserted structurally so it survives translation rewording.
+        let fr = I18n::new(Language::French);
+        let cap = fr.tr_prog_entry("Deku Stick Capacity", &[iid::OOT_STICK_UPGRADE, iid::SHARED_STICK_UPGRADE]);
+        assert!(!cap.ends_with("(OoT)") && !cap.ends_with("(MM)"), "game tag stripped: {cap:?}");
+        assert_ne!(cap, "Deku Stick Capacity", "the FR locale translates this entry");
+        // And never the shared "Deku Stick Upgrade" sibling (its FR name).
+        let sibling_fr =
+            fr.tr_prog_entry("Deku Stick Upgrade", &[iid::OOT_STICK_UPGRADE2, iid::SHARED_STICK_UPGRADE]);
+        assert_ne!(cap, sibling_fr, "capacity widget must not borrow the upgrade sibling's name");
     }
 }

@@ -38,10 +38,17 @@ const LOG_CAP: usize = 500;
 /// number. Marks a "latest version" save (which may carry a `PATCH <path>` line);
 /// older saves have no header and load unchanged.
 const SAVE_VERSION_TAG: &str = "TRACKER_SAVE";
-/// Current save-format version (4: self-contained — persists each world's item
-/// placements / destinations so a load restores the map without a spoiler, like
-/// the Qt binary save. 3 added the r4 patch path; 2 and below had no header).
-const SAVE_VERSION: u32 = 4;
+/// Current save-format version. 6 keyed `<location>`s on the stable numeric object
+/// identity (object id within the parent scene, split by type + layout) with the
+/// `loc` string as a fallback, added the stable item `id` to placements, and made
+/// entrance links carry the fully-qualified "scene - side" name. 5 switched to a
+/// human-readable / hand-editable XML document (`<tracker version="…">`, see
+/// `save_to` / `load_from_xml`); the legacy line-based text format (4 and below) and
+/// the Qt binary `.trck` are still read. 4 was self-contained (persisted each
+/// world's item placements / destinations so a load restores the map without a
+/// spoiler); 3 added the r4 patch path; 2 and below had no header. The reader routes
+/// on the XML prefix, not this number, so every prior XML save still loads.
+const SAVE_VERSION: u32 = 6;
 /// Icons flanking the age/season context switch (Qt ContextSwitchButton): OoT
 /// child/adult heads and MM winter/spring, preloaded into the icon cache.
 const CONTEXT_ICON_PATHS: [&str; 4] = [
@@ -826,6 +833,9 @@ struct TrackerApp {
     /// Background poller (owns the shared-memory link off the UI thread) and the
     /// live connection state it reports.
     poller: poller::Poller,
+    /// Localized journal / status strings the poller thread reads; swapped on a
+    /// language change so its messages follow the UI language.
+    log_strings: poller::SharedLog,
     connected: bool,
     /// Whether the auto-tracker is started (Start/Stop button + status pill).
     /// Mirror of `LogTab::IsRunning`; drives the poller's connect/idle gate.
@@ -956,8 +966,16 @@ struct TrackerApp {
     /// Recompute the counts only when the collected set / exclusions / layout
     /// change — not on every mouse-move frame.
     counts_dirty: bool,
-    /// Autosave file for the collected-set, and whether it needs flushing.
-    save_path: PathBuf,
+    /// Autosave folder (`<data>/autosave`): one file per seed so each seed keeps
+    /// its own progress. The active file is `<autosave_dir>/<seed_tag>.xml`.
+    autosave_dir: PathBuf,
+    /// Stem of the active autosave file: the loaded spoiler's seed hash, or
+    /// `empty` when no spoiler is loaded (the no-seed file, overwritten in place).
+    /// Loading a spoiler with a different seed switches to that seed's own file.
+    seed_tag: String,
+    /// Pre-3.0 single autosave (`<data>/tracker_save.txt`), read once as a
+    /// migration fallback when no per-seed file exists yet.
+    legacy_save_path: PathBuf,
     /// Sidecar remembering the last loaded spoiler path (auto-loaded at startup,
     /// mirroring the Qt AutoLoadMostRecentSpoilerLog so the ROM settings — which
     /// filter the map — are applied from launch, not only after a manual drop).
@@ -980,6 +998,10 @@ struct TrackerApp {
     /// Desaturated, half-alpha variants of the progression item icons, built on
     /// demand for the "uncollected" placeholder look (mirrors the Qt ProgressionTab).
     grey_icon_cache: HashMap<&'static str, Option<egui::TextureHandle>>,
+    /// Solid-blue silhouette variants of the progression item icons (blue where the
+    /// icon is opaque, original alpha), stamped a few times behind a collected icon
+    /// to build a contour-following glow — the Qt drop-shadow, which blurs the alpha.
+    glow_icon_cache: HashMap<&'static str, Option<egui::TextureHandle>>,
     map_texture: Option<egui::TextureHandle>,
     map_size: Vec2,
     load_error: Option<String>,
@@ -1042,6 +1064,25 @@ fn greyscale_image(img: &egui::ColorImage) -> egui::ColorImage {
             // qGray de Qt : luminance entière (r*11 + g*16 + b*5) / 32.
             let gray = ((r as u32 * 11 + g as u32 * 16 + b as u32 * 5) / 32) as u8;
             Color32::from_rgba_unmultiplied(gray, gray, gray, a / 2)
+        })
+        .collect();
+    egui::ColorImage {
+        size: img.size,
+        pixels,
+    }
+}
+
+/// A solid-colour silhouette of an icon: every pixel takes `color`'s RGB and keeps
+/// the icon's own alpha. Stamped behind a collected progression icon to build a glow
+/// that follows the icon's contours (like Qt's alpha-blurred drop-shadow) instead of
+/// its square bounding box.
+fn silhouette_image(img: &egui::ColorImage, color: Color32) -> egui::ColorImage {
+    let pixels = img
+        .pixels
+        .iter()
+        .map(|c| {
+            let [.., a] = c.to_srgba_unmultiplied();
+            Color32::from_rgba_unmultiplied(color.r(), color.g(), color.b(), a)
         })
         .collect();
     egui::ColorImage {

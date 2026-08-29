@@ -6,7 +6,7 @@ fn main() {
     #[cfg(windows)]
     {
         // Logo.ico lives at the repository root, next to the crate (../Resources).
-        let icon = "../Resources/Logo.ico";
+        let icon = "../C++-Tracker/Resources/Logo.ico";
         println!("cargo:rerun-if-changed={icon}");
         let mut res = winresource::WindowsResource::new();
         res.set_icon(icon);

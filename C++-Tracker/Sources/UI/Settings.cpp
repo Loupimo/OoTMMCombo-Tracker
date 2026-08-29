@@ -100,7 +100,7 @@ Settings::Settings()
     { "progressiveShieldsMm", { "Progressive Shields - Mm", ParamType::boolean, ParamCategory::progressive, ShuffleSetting::vanilla, { MM_PROGRESSIVE_SHIELD_DEKU, MM_PROGRESSIVE_SHIELD_HERO } } },
     { "progressiveGFS", { "Progressive Great Fairy Sword", ParamType::boolean, ParamCategory::progressive, ShuffleSetting::vanilla, { MM_SWORD_KOKIRI, MM_SWORD_RAZOR, MM_SWORD_GILDED, MM_GREAT_FAIRY_SWORD, MM_SWORD } } },
     { "progressiveClocks", { "Progressive Clock", ParamType::boolean, ParamCategory::progressive, ShuffleSetting::all, { MM_CLOCK, MM_CLOCK1, MM_CLOCK2, MM_CLOCK3, MM_CLOCK4, MM_CLOCK5, MM_CLOCK6 } } },
-    { "sticksNutsUpgradesMm", { "Deku Sticks / Nuts Upgrades - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_NUT_UPGRADE, MM_NUT_UPGRADE2, MM_STICK_UPGRADE, MM_STICK_UPGRADE2 } } },
+    { "sticksNutsUpgradesMm", { "Deku Sticks / Nuts Upgrades - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_NUT_UPGRADE2, MM_NUT_UPGRADE3, MM_STICK_UPGRADE3, MM_STICK_UPGRADE2, MM_STICK_UPGRADE3 } } },
     { "sunSongMm", { "Sun's Song - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_SONG_SUN } } },
     { "fairyOcarinaMm", { "Fairy Ocarina - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_OCARINA_FAIRY } } },
     { "shortHookshotMm", { "Short Hookshot - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { MM_HOOKSHOT_SHORT } } },
@@ -156,9 +156,10 @@ Settings::Settings()
     { "trapRupoor", { "Rupoor", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, { OOT_TRAP_RUPOOR } } },
     { "sharedStoneAgony", { "Shared Stone of Agony", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_STONE_OF_AGONY, MM_STONE_OF_AGONY } } },
     { "sharedSpinUpgrade", { "Shared Spin of Upgrade", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_SPIN_UPGRADE, MM_SPIN_UPGRADE } } },
-    { "sharedNutsSticks", { "Shared Nuts / Sticks", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_STICK, OOT_STICKS_5, OOT_STICKS_10, OOT_NUTS_5, OOT_NUTS_5_ALT, OOT_NUTS_10, OOT_STICK_UPGRADE, OOT_STICK_UPGRADE2, OOT_NUT_UPGRADE, OOT_NUT_UPGRADE2, MM_STICK, MM_UNK_2F, MM_UNK_30, MM_UNK_31, MM_NUT, MM_NUTS_5, MM_NUTS_10, MM_UNK_2B, MM_UNK_2C, MM_UNK_2D, OOT_STICK_UPGRADE, OOT_STICK_UPGRADE2, OOT_NUT_UPGRADE, OOT_NUT_UPGRADE2 } } },
+    { "sharedNutsSticks", { "Shared Nuts / Sticks", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_STICK, OOT_STICKS_5, OOT_STICKS_10, OOT_NUTS_5, OOT_NUTS_5_ALT, OOT_NUTS_10, OOT_STICK_UPGRADE, OOT_STICK_UPGRADE2, OOT_STICK_UPGRADE3, OOT_NUT_UPGRADE, OOT_NUT_UPGRADE2, OOT_NUT_UPGRADE3, MM_STICK, MM_UNK_2F, MM_UNK_30, MM_UNK_31, MM_NUT, MM_NUTS_5, MM_NUTS_10, MM_UNK_2B, MM_UNK_2C, MM_UNK_2D, MM_STICK_UPGRADE, MM_STICK_UPGRADE2, MM_STICK_UPGRADE3, MM_NUT_UPGRADE, MM_NUT_UPGRADE2, MM_NUT_UPGRADE3 } } },
     { "sharedBows", { "Shared Bows", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_BOW, OOT_ARROWS_5, OOT_ARROWS_10, OOT_ARROWS_30, OOT_QUIVER2, OOT_QUIVER3, MM_BOW, MM_ARROWS_10, MM_ARROWS_30, MM_ARROWS_40, MM_UNK_21, MM_QUIVER2, MM_QUIVER3 } } },
-    { "sharedBombBags", { "Shared Bomb Bags", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_BOMBCHU_BAG, OOT_BOMBCHU_BAG2, OOT_BOMBCHU_BAG3, OOT_BOMB_BAG, OOT_BOMB_BAG2, OOT_BOMB_BAG3, OOT_BOMB, OOT_BOMBS_5, OOT_BOMBS_10, OOT_BOMBS_20, OOT_BOMBS_30, OOT_BOMBCHU_5, OOT_BOMBCHU_10, OOT_BOMBCHU_20, MM_BOMBCHU_BAG, MM_BOMBCHU_BAG2, MM_BOMBCHU_BAG3, MM_BOMB_BAG, MM_BOMB_BAG2, MM_BOMB_BAG3, MM_BOMB, MM_BOMBS_5, MM_BOMBS_10, MM_BOMBS_20, MM_BOMBS_30, MM_BOMBCHU, MM_BOMBCHU_5, MM_BOMBCHU_10, MM_BOMBCHU_20 } } },
+    { "sharedBombBags", { "Shared Bomb Bags", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_BOMB_BAG, OOT_BOMB_BAG2, OOT_BOMB_BAG3, OOT_BOMB, OOT_BOMBS_5, OOT_BOMBS_10, OOT_BOMBS_20, OOT_BOMBS_30, MM_BOMB_BAG, MM_BOMB_BAG2, MM_BOMB_BAG3, MM_BOMB, MM_BOMBS_5, MM_BOMBS_10, MM_BOMBS_20, MM_BOMBS_30 } } },
+    { "sharedBombchu", { "Shared Bombchu", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_BOMBCHU_BAG, OOT_BOMBCHU_BAG2, OOT_BOMBCHU_BAG3, OOT_BOMBCHU_BAG_FIRST_5, OOT_BOMBCHU_BAG_FIRST_10, OOT_BOMBCHU_BAG_FIRST_20, OOT_BOMBCHU_5, OOT_BOMBCHU_10, OOT_BOMBCHU_20, MM_BOMBCHU_BAG, MM_BOMBCHU_BAG2, MM_BOMBCHU_BAG3, MM_BOMBCHU_BAG_FIRST_1, MM_BOMBCHU_BAG_FIRST_5, MM_BOMBCHU_BAG_FIRST_10, MM_BOMBCHU_BAG_FIRST_20, MM_BOMBCHU, MM_BOMBCHU_5, MM_BOMBCHU_10, MM_BOMBCHU_20 } } },
     { "sharedMagic", { "Shared Magic", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_MAGIC_UPGRADE, OOT_MAGIC_UPGRADE2, OOT_MAGIC_JAR_SMALL, OOT_MAGIC_JAR_LARGE, MM_MAGIC_UPGRADE, MM_MAGIC_UPGRADE2, MM_MAGIC_JAR_SMALL, MM_MAGIC_JAR_LARGE } } },
     { "sharedMagicArrowFire", { "Shared Fire Arrow", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_ARROW_FIRE, MM_ARROW_FIRE } } },
     { "sharedMagicArrowIce", { "Shared Ice Arrow", ParamType::boolean, ParamCategory::shared, ShuffleSetting::vanilla, { OOT_ARROW_ICE, MM_ARROW_ICE } } },
@@ -250,8 +251,11 @@ Settings::Settings()
     { "shovelOot", { "Shovel - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_SHOVEL } } },
     { "shovelMm", { "Shovel - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { MM_SHOVEL } } },
     { "clocksOot", { "Clocks - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_CLOCK } } },
-    { "adultMaskMm", { "Adult Mask", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { MM_MASK_ADULT } } }
-	});
+    { "adultMaskMm", { "Adult Mask", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { MM_MASK_ADULT } } },
+    { "sticksNutsUpgradesInitial", { "Shuffle Initial Deku Stick & Nut Upgrades", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_STICK_UPGRADE, OOT_NUT_UPGRADE, MM_STICK_UPGRADE, MM_NUT_UPGRADE } } },
+    { "bombchuBehaviorOot", { "Bombchu Behavior - OoT", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { OOT_BOMBCHU_BAG, OOT_BOMBCHU_BAG2, OOT_BOMBCHU_BAG3, OOT_BOMBCHU_BAG_FIRST_5, OOT_BOMBCHU_BAG_FIRST_10, OOT_BOMBCHU_BAG_FIRST_20 } } },
+    { "bombchuBehaviorMm", { "Bombchu Behavior - MM", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, { MM_BOMBCHU_BAG, MM_BOMBCHU_BAG2, MM_BOMBCHU_BAG3, MM_BOMBCHU_BAG_FIRST_1, MM_BOMBCHU_BAG_FIRST_5, MM_BOMBCHU_BAG_FIRST_10, MM_BOMBCHU_BAG_FIRST_20 } } }
+  });
 }
 
 
@@ -1013,7 +1017,7 @@ void Settings::AddSetting(QString Name, QString Value)
 	{
 		ShuffleSetting setting;
 
-        if (Value == "all" || Value == "true" || Value == "full" || Value == "anywhere" || Value == "ganon" || Value == "child" || Value == "cross" || Value == "day" || Value == "night" || Value.toInt() > 0)
+        if (Value == "all" || Value == "true" || Value == "full" || Value == "anywhere" || Value == "ganon" || Value == "child" || Value == "cross" || Value == "day" || Value == "night" || "bagSeparate" || "bagFirst" || Value.toInt() > 0)
 		{
 			setting = ShuffleSetting::all;
 		}

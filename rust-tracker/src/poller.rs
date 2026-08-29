@@ -18,14 +18,20 @@
 use std::path::PathBuf;
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::mpsc::{self, Receiver, Sender};
-use std::sync::Arc;
+use std::sync::{Arc, Mutex};
 use std::thread;
 use std::time::{Duration, Instant};
 
 use eframe::egui;
 
+use crate::i18n::LogStrings;
 use crate::inject;
 use crate::shared_mem::{Event, SharedMemory};
+
+/// Localized log / status strings shared with this thread, swapped by the UI on a
+/// language change. An inner `Arc` makes each per-iteration read a cheap pointer
+/// clone rather than copying every string.
+pub type SharedLog = Arc<Mutex<Arc<LogStrings>>>;
 
 /// A message from the poller thread to the UI thread.
 pub enum PollMsg {
@@ -72,13 +78,13 @@ impl Poller {
 /// Spawn the poller thread bound to the given egui context (used to wake the UI).
 /// It starts idle: tracking begins only when the UI calls `set_tracking(true)`
 /// (the "Start Tracking" button), mirroring the Qt build.
-pub fn spawn(ctx: egui::Context) -> Poller {
+pub fn spawn(ctx: egui::Context, log_strings: SharedLog) -> Poller {
     let (tx, rx) = mpsc::channel();
     let running = Arc::new(AtomicBool::new(false));
     let shutdown = Arc::new(AtomicBool::new(false));
     let shutdown_done = Arc::new(AtomicBool::new(false));
     let (r, s, d) = (running.clone(), shutdown.clone(), shutdown_done.clone());
-    thread::spawn(move || run(ctx, tx, r, s, d));
+    thread::spawn(move || run(ctx, tx, r, s, d, log_strings));
     Poller { rx, running, shutdown, shutdown_done }
 }
 
@@ -120,9 +126,9 @@ struct Link {
 
 /// Ask the DLL to unload, wait (bounded) for it, then drop the mapping and
 /// remove the plugin file. Mirror of `StartMemoryReader` steps 10–12.
-fn unload(link: &mut Link, wait: Duration, log: &dyn Fn(&str)) {
+fn unload(link: &mut Link, wait: Duration, s: &LogStrings, log: &dyn Fn(&str)) {
     if let Some(sm) = link.shared.as_ref() {
-        log("Requesting tracker DLL shutdown...");
+        log(&s.requesting_shutdown);
         sm.request_shutdown();
     }
     let pid = link.pid.or_else(inject::find_pj64_pid);
@@ -134,10 +140,10 @@ fn unload(link: &mut Link, wait: Duration, log: &dyn Fn(&str)) {
     if let Some(path) = link.plugin_path.take() {
         if unloaded {
             inject::remove_tracker_dll(&path);
-            log("Tracker DLL successfully unloaded.");
-            log("Tracker DLL removed from Project64 Plugin folder.");
+            log(&s.dll_unloaded);
+            log(&s.dll_removed);
         } else {
-            log("Tracker DLL is still loaded. Cannot safely remove it.");
+            log(&s.dll_still_loaded);
         }
     }
     link.loading = false;
@@ -150,6 +156,7 @@ fn run(
     running: Arc<AtomicBool>,
     shutdown: Arc<AtomicBool>,
     shutdown_done: Arc<AtomicBool>,
+    log_strings: SharedLog,
 ) {
     let mut link = Link::default();
     let mut last_status = String::new();
@@ -159,9 +166,13 @@ fn run(
     let mut announced_search = false;
 
     loop {
+        // Snapshot the current-language strings once per iteration (cheap Arc clone).
+        // Picks up a language change without re-spawning the thread.
+        let s = log_strings.lock().unwrap().clone();
+
         // App exit: unload the DLL cleanly and end the thread.
         if shutdown.load(Ordering::Relaxed) {
-            unload(&mut link, Duration::from_secs(5), &|s| send_log(&ctx, &tx, s));
+            unload(&mut link, Duration::from_secs(5), &s, &|m| send_log(&ctx, &tx, m));
             shutdown_done.store(true, Ordering::Relaxed);
             return;
         }
@@ -170,11 +181,11 @@ fn run(
         // idle. Mirror of `PressLaunchButton` stopping the MemoryReader thread.
         if !running.load(Ordering::Relaxed) {
             if link.shared.is_some() || link.loading || link.plugin_path.is_some() {
-                unload(&mut link, Duration::from_secs(2), &|s| send_log(&ctx, &tx, s));
+                unload(&mut link, Duration::from_secs(2), &s, &|m| send_log(&ctx, &tx, m));
                 link.pid = None;
             }
             announced_search = false;
-            push_status(&ctx, &tx, &mut last_status, false, "Tracking inactif");
+            push_status(&ctx, &tx, &mut last_status, false, &s.st_inactive);
             thread::sleep(Duration::from_millis(200));
             continue;
         }
@@ -193,7 +204,7 @@ fn run(
                     Some(pid) => link.pid = Some(pid),
                     None => {
                         // PJ64 exited: its DLL went with it, remove the leftover file.
-                        send_log(&ctx, &tx, "Project 64 has been closed. Stop tracking...");
+                        send_log(&ctx, &tx, &s.pj64_closed_log);
                         link.shared = None;
                         link.loading = false;
                         link.settings_window = None;
@@ -202,7 +213,7 @@ fn run(
                             inject::remove_tracker_dll(&path);
                         }
                         announced_search = false;
-                        push_status(&ctx, &tx, &mut last_status, false, "Project64 fermé");
+                        push_status(&ctx, &tx, &mut last_status, false, &s.st_pj64_closed);
                     }
                 }
             }
@@ -214,23 +225,20 @@ fn run(
             // whole lifetime, so we must never treat "open succeeds" as connected
             // without re-injecting first.
             if let Some(sm) = SharedMemory::open() {
-                send_log(&ctx, &tx, "Shared memory found !");
-                send_log(&ctx, &tx, "Tracker DLL successfully loaded.");
+                send_log(&ctx, &tx, &s.shared_mem_found);
+                send_log(&ctx, &tx, &s.dll_loaded);
                 link.shared = Some(sm);
                 link.loading = false;
                 if let Some(hwnd) = link.settings_window.take() {
                     inject::close_window(hwnd);
-                    send_log(&ctx, &tx, "Project64 Settings closed.");
+                    send_log(&ctx, &tx, &s.settings_closed);
                 } else {
-                    send_log(
-                        &ctx, &tx,
-                        "Warning: Project64 Settings window could not be identified. The dll may have not been loaded correctly.",
-                    );
+                    send_log(&ctx, &tx, &s.settings_not_identified);
                 }
-                send_log(&ctx, &tx, "Reading game memory...");
-                push_status(&ctx, &tx, &mut last_status, true, "Connecté à Project64");
+                send_log(&ctx, &tx, &s.reading_mem);
+                push_status(&ctx, &tx, &mut last_status, true, &s.st_connected);
             } else if inject::find_pj64_pid().is_none() {
-                send_log(&ctx, &tx, "Tracker DLL failed to initialize.");
+                send_log(&ctx, &tx, &s.dll_failed_init);
                 link.loading = false;
                 link.settings_window = None;
                 link.pid = None;
@@ -238,9 +246,9 @@ fn run(
                     inject::remove_tracker_dll(&path);
                 }
                 announced_search = false;
-                push_status(&ctx, &tx, &mut last_status, false, "Project64 fermé");
+                push_status(&ctx, &tx, &mut last_status, false, &s.st_pj64_closed);
             } else {
-                push_status(&ctx, &tx, &mut last_status, false, "En attente du jeu…");
+                push_status(&ctx, &tx, &mut last_status, false, &s.st_waiting_game);
                 thread::sleep(Duration::from_millis(50));
             }
         } else {
@@ -250,30 +258,27 @@ fn run(
             match inject::find_pj64_pid() {
                 None => {
                     if !announced_search {
-                        send_log(
-                            &ctx, &tx,
-                            "No Project64 process found. Retrying in 1 second...",
-                        );
+                        send_log(&ctx, &tx, &s.no_pj64_retry);
                         announced_search = true;
                     }
-                    push_status(&ctx, &tx, &mut last_status, false, "En attente de Project64…");
+                    push_status(&ctx, &tx, &mut last_status, false, &s.st_waiting_pj64);
                     thread::sleep(Duration::from_millis(400));
                 }
                 Some(pid) => {
                     announced_search = false;
                     link.pid = Some(pid);
-                    send_log(&ctx, &tx, &format!("Process Found : {pid}"));
-                    let result = inject::load_plugin(pid, &|s| send_log(&ctx, &tx, s));
+                    send_log(&ctx, &tx, &s.process_found.replace("{pid}", &pid.to_string()));
+                    let result = inject::load_plugin(pid, &s, &|m| send_log(&ctx, &tx, m));
                     match result {
                         Ok(loaded) => {
                             link.plugin_path = Some(loaded.dll_path);
                             link.settings_window = loaded.settings_window;
                             link.loading = true;
-                            push_status(&ctx, &tx, &mut last_status, false, "Chargement du plugin…");
+                            push_status(&ctx, &tx, &mut last_status, false, &s.st_loading_plugin);
                         }
                         Err(e) => {
                             send_log(&ctx, &tx, &e);
-                            push_status(&ctx, &tx, &mut last_status, false, "Injection échouée");
+                            push_status(&ctx, &tx, &mut last_status, false, &s.st_injection_failed);
                             thread::sleep(Duration::from_millis(400));
                         }
                     }

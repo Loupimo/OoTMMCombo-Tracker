@@ -21,6 +21,7 @@ use std::path::PathBuf;
 use std::thread;
 use std::time::{Duration, Instant};
 
+use crate::i18n::LogStrings;
 use crate::scene::REPO_ROOT;
 
 // --- Constantes Win32 --------------------------------------------------------
@@ -369,17 +370,17 @@ pub struct Loaded {
 /// `log` reçoit les messages de progression (repris tels quels du C++).
 ///
 /// @return Les infos de nettoyage, ou un message d'erreur.
-pub fn load_plugin(pid: u32, log: &dyn Fn(&str)) -> Result<Loaded, String> {
-    let dll_path = plugin_dll_path(pid).ok_or("Cannot retrieve Project64 executable path.")?;
-    let plugin_dir = dll_path.parent().ok_or("Project64 Plugin directory does not exist.")?.to_path_buf();
-    let source = source_dll()
-        .ok_or_else(|| format!("Tracker DLL does not exist: {DLL_NAME}"))?;
+pub fn load_plugin(pid: u32, s: &LogStrings, log: &dyn Fn(&str)) -> Result<Loaded, String> {
+    let dll_path = plugin_dll_path(pid).ok_or_else(|| s.err_no_exe_path.clone())?;
+    let plugin_dir =
+        dll_path.parent().ok_or_else(|| s.err_no_plugin_dir.clone())?.to_path_buf();
+    let source = source_dll().ok_or_else(|| s.err_dll_missing.replace("{name}", DLL_NAME))?;
 
     if let Some(pj) = process_path(pid) {
-        log(&format!("Project64 path: {}", pj.display()));
+        log(&s.pj64_path.replace("{path}", &pj.display().to_string()));
     }
-    log(&format!("Plugin directory: {}", plugin_dir.display()));
-    log(&format!("Tracker DLL: {}", source.display()));
+    log(&s.plugin_dir.replace("{path}", &plugin_dir.display().to_string()));
+    log(&s.tracker_dll.replace("{path}", &source.display().to_string()));
 
     // Le dossier Plugin doit exister pour que PJ64 y trouve la DLL ; on le crée
     // au besoin (PJ64 le rescanne à l'ouverture des réglages).
@@ -388,10 +389,10 @@ pub fn load_plugin(pid: u32, log: &dyn Fn(&str)) -> Result<Loaded, String> {
     // Copier la DLL. Si la copie échoue MAIS que le module est déjà chargé
     // (fichier verrouillé par une session précédente), on continue quand même.
     match std::fs::copy(&source, &dll_path) {
-        Ok(_) => log(&format!("Tracker DLL copied successfully to {}", dll_path.display())),
+        Ok(_) => log(&s.dll_copied.replace("{path}", &dll_path.display().to_string())),
         Err(e) => {
             if !is_module_loaded(pid, DLL_NAME) {
-                return Err(format!("Failed to copy tracker DLL: {e}"));
+                return Err(s.err_dll_copy.replace("{err}", &e.to_string()));
             }
         }
     }
@@ -399,12 +400,14 @@ pub fn load_plugin(pid: u32, log: &dyn Fn(&str)) -> Result<Loaded, String> {
     // Mémoriser les fenêtres existantes AVANT d'ouvrir les réglages.
     let before = pj64_windows(pid);
 
-    let hwnd = main_window(pid).ok_or("Cannot find Project64 main window.")?;
-    log(&format!("Project64 main window found: 0x{hwnd:X}"));
+    let hwnd = main_window(pid).ok_or_else(|| s.err_no_main_window.clone())?;
+    log(&s.main_window_found.replace("{hwnd}", &format!("{hwnd:X}")));
+    // Ctrl+T is delivered to the focused PJ64 window; a fullscreen PJ64 swallows it.
+    log(&s.windowed_note);
     if !open_settings(hwnd) {
-        return Err("SendInput failed.".to_string());
+        return Err(s.err_sendinput.clone());
     }
-    log("Ctrl+T sent to Project64.");
+    log(&s.ctrl_t_sent);
 
     // Repérer la fenêtre de réglages fraîchement apparue (au plus 3 s, comme le C++).
     let settings_window = wait_for_new_window(pid, &before, Duration::from_millis(3000));

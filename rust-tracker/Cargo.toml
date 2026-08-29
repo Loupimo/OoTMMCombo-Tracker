@@ -19,6 +19,8 @@ toml = "0.9"
 serde = { version = "1", features = ["derive"] }
 # Lecture du meta.json des patch files (.ootmm) — voir src/patch.rs.
 serde_json = "1"
+# Sauvegardes du tracker au format XML lisible/éditable (src/state.rs save/load).
+quick-xml = "0.36"
 # Le patch file .ootmm est une archive zip (contient meta.json) ; le zip de ROM
 # en contient un. `deflate` suffit (pas d'AES / bzip2 / zstd inutiles ici).
 zip = { version = "2", default-features = false, features = ["deflate"] }

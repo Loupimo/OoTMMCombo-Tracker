@@ -406,7 +406,7 @@ pub static ITEM_SETTINGS: &[SettingMeta] = &[
     SettingMeta { key: "progressiveShieldsMm", name: "Progressive Shields - Mm", type_: ParamType::boolean, cat: ParamCategory::progressive, default: ShuffleSetting::vanilla, affected: &[0x237, 0x238] },
     SettingMeta { key: "progressiveGFS", name: "Progressive Great Fairy Sword", type_: ParamType::boolean, cat: ParamCategory::progressive, default: ShuffleSetting::vanilla, affected: &[0x23c, 0x23d, 0x23e, 0x240, 0x490] },
     SettingMeta { key: "progressiveClocks", name: "Progressive Clock", type_: ParamType::boolean, cat: ParamCategory::progressive, default: ShuffleSetting::all, affected: &[0x491, 0x373, 0x374, 0x375, 0x376, 0x377, 0x378] },
-    SettingMeta { key: "sticksNutsUpgradesMm", name: "Deku Sticks / Nuts Upgrades - MM", type_: ParamType::boolean, cat: ParamCategory::standard, default: ShuffleSetting::all, affected: &[0x37e, 0x37f, 0x37b, 0x37c] },
+    SettingMeta { key: "sticksNutsUpgradesMm", name: "Deku Sticks / Nuts Upgrades - MM", type_: ParamType::boolean, cat: ParamCategory::standard, default: ShuffleSetting::all, affected: &[0x37f, 0x380, 0x37d, 0x37c, 0x37d] },
     SettingMeta { key: "sunSongMm", name: "Sun's Song - MM", type_: ParamType::boolean, cat: ParamCategory::standard, default: ShuffleSetting::all, affected: &[0x294] },
     SettingMeta { key: "fairyOcarinaMm", name: "Fairy Ocarina - MM", type_: ParamType::boolean, cat: ParamCategory::standard, default: ShuffleSetting::all, affected: &[0x2c8] },
     SettingMeta { key: "shortHookshotMm", name: "Short Hookshot - MM", type_: ParamType::boolean, cat: ParamCategory::standard, default: ShuffleSetting::all, affected: &[0x2c9] },
@@ -462,9 +462,10 @@ pub static ITEM_SETTINGS: &[SettingMeta] = &[
     SettingMeta { key: "trapRupoor", name: "Rupoor", type_: ParamType::boolean, cat: ParamCategory::standard, default: ShuffleSetting::all, affected: &[0x1e2] },
     SettingMeta { key: "sharedStoneAgony", name: "Shared Stone of Agony", type_: ParamType::boolean, cat: ParamCategory::shared, default: ShuffleSetting::vanilla, affected: &[0x39, 0x381] },
     SettingMeta { key: "sharedSpinUpgrade", name: "Shared Spin of Upgrade", type_: ParamType::boolean, cat: ParamCategory::shared, default: ShuffleSetting::vanilla, affected: &[0x1cd, 0x289] },
-    SettingMeta { key: "sharedNutsSticks", name: "Shared Nuts / Sticks", type_: ParamType::boolean, cat: ParamCategory::shared, default: ShuffleSetting::vanilla, affected: &[0x7, 0x61, 0x62, 0x2, 0x63, 0x64, 0x80, 0x77, 0x81, 0x79, 0x21b, 0x231, 0x232, 0x233, 0x22a, 0x22b, 0x22c, 0x22d, 0x22e, 0x22f, 0x80, 0x77, 0x81, 0x79] },
+    SettingMeta { key: "sharedNutsSticks", name: "Shared Nuts / Sticks", type_: ParamType::boolean, cat: ParamCategory::shared, default: ShuffleSetting::vanilla, affected: &[0x7, 0x61, 0x62, 0x2, 0x63, 0x64, 0x80, 0x77, 0x78, 0x81, 0x79, 0x7a, 0x21b, 0x231, 0x232, 0x233, 0x22a, 0x22b, 0x22c, 0x22d, 0x22e, 0x22f, 0x37b, 0x37c, 0x37d, 0x37e, 0x37f, 0x380] },
     SettingMeta { key: "sharedBows", name: "Shared Bows", type_: ParamType::boolean, cat: ParamCategory::shared, default: ShuffleSetting::vanilla, affected: &[0x4, 0x49, 0x4a, 0x4b, 0x30, 0x31, 0x224, 0x220, 0x221, 0x222, 0x223, 0x225, 0x226] },
-    SettingMeta { key: "sharedBombBags", name: "Shared Bomb Bags", type_: ParamType::boolean, cat: ParamCategory::shared, default: ShuffleSetting::vanilla, affected: &[0x1c5, 0x1c6, 0x1c7, 0x32, 0x33, 0x34, 0x65, 0x1, 0x66, 0x67, 0x68, 0x6a, 0x3, 0x6b, 0x35e, 0x35f, 0x360, 0x21d, 0x21e, 0x21f, 0x216, 0x217, 0x218, 0x219, 0x21a, 0x23b, 0x23f, 0x21c, 0x230] },
+    SettingMeta { key: "sharedBombBags", name: "Shared Bomb Bags", type_: ParamType::boolean, cat: ParamCategory::shared, default: ShuffleSetting::vanilla, affected: &[0x32, 0x33, 0x34, 0x65, 0x1, 0x66, 0x67, 0x68, 0x21d, 0x21e, 0x21f, 0x216, 0x217, 0x218, 0x219, 0x21a] },
+    SettingMeta { key: "sharedBombchu", name: "Shared Bombchu", type_: ParamType::boolean, cat: ParamCategory::shared, default: ShuffleSetting::vanilla, affected: &[0x1c5, 0x1c6, 0x1c7, 0x1c8, 0x1c9, 0x1ca, 0x6a, 0x3, 0x6b, 0x35e, 0x35f, 0x360, 0x361, 0x362, 0x363, 0x364, 0x23b, 0x23f, 0x21c, 0x230] },
     SettingMeta { key: "sharedMagic", name: "Shared Magic", type_: ParamType::boolean, cat: ParamCategory::shared, default: ShuffleSetting::vanilla, affected: &[0xb4, 0xb5, 0x43, 0x44, 0x286, 0x287, 0x20d, 0x20e] },
     SettingMeta { key: "sharedMagicArrowFire", name: "Shared Fire Arrow", type_: ParamType::boolean, cat: ParamCategory::shared, default: ShuffleSetting::vanilla, affected: &[0x58, 0x227] },
     SettingMeta { key: "sharedMagicArrowIce", name: "Shared Ice Arrow", type_: ParamType::boolean, cat: ParamCategory::shared, default: ShuffleSetting::vanilla, affected: &[0x59, 0x228] },
@@ -557,6 +558,9 @@ pub static ITEM_SETTINGS: &[SettingMeta] = &[
     SettingMeta { key: "shovelMm", name: "Shovel - MM", type_: ParamType::boolean, cat: ParamCategory::standard, default: ShuffleSetting::vanilla, affected: &[0x3ac] },
     SettingMeta { key: "clocksOot", name: "Clocks - OoT", type_: ParamType::boolean, cat: ParamCategory::standard, default: ShuffleSetting::vanilla, affected: &[0x1ff] },
     SettingMeta { key: "adultMaskMm", name: "Adult Mask", type_: ParamType::boolean, cat: ParamCategory::standard, default: ShuffleSetting::vanilla, affected: &[0x272] },
+    SettingMeta { key: "sticksNutsUpgradesInitial", name: "Shuffle Initial Deku Stick & Nut Upgrades", type_: ParamType::boolean, cat: ParamCategory::standard, default: ShuffleSetting::vanilla, affected: &[0x80, 0x81, 0x37b, 0x37e] },
+    SettingMeta { key: "bombchuBehaviorOot", name: "Bombchu Behavior - OoT", type_: ParamType::boolean, cat: ParamCategory::standard, default: ShuffleSetting::vanilla, affected: &[0x1c5, 0x1c6, 0x1c7, 0x1c8, 0x1c9, 0x1ca] },
+    SettingMeta { key: "bombchuBehaviorMm", name: "Bombchu Behavior - MM", type_: ParamType::boolean, cat: ParamCategory::standard, default: ShuffleSetting::vanilla, affected: &[0x35e, 0x35f, 0x360, 0x361, 0x362, 0x363, 0x364] },
 ];
 
 

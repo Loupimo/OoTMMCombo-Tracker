@@ -55,6 +55,10 @@ pub struct LocLeaf {
     pub render_scene: u16,
     pub name: &'static str,
     pub collected: bool,
+    /// Resolved map-icon path for this check's type (chest / pot / GS / …), shown
+    /// ahead of the location name in the detail panel. `None` when the type has no
+    /// icon (the caller then reserves the same width so names stay aligned).
+    pub icon: Option<&'static str>,
 }
 
 pub struct Dashboard {
@@ -433,6 +437,7 @@ impl Dashboard {
                         render_scene: o.render_scene,
                         name: o.name,
                         collected: coll,
+                        icon: crate::scene::icon_path_for(o.map_icon, o.type_),
                     });
                 }
             }
@@ -470,10 +475,78 @@ pub fn find_item_id(name: &str) -> Option<u32> {
         }
     }
     let key = n.trim().to_lowercase();
-    data::ITEM_BY_NAME_LC
-        .binary_search_by(|&(nm, _)| nm.cmp(key.as_str()))
-        .ok()
-        .map(|idx| data::ITEM_BY_NAME_LC[idx].1)
+    if let Ok(idx) = data::ITEM_BY_NAME_LC.binary_search_by(|&(nm, _)| nm.cmp(key.as_str())) {
+        return Some(data::ITEM_BY_NAME_LC[idx].1);
+    }
+    // Fallback: OoTMM spoilers name rusty keys by their internal door/location
+    // string ("Rusty Key (Silo)"), while the tracker's item table uses the name
+    // shown in-game ("Rusty Key (Lon Lon Silo)"). Map the spoiler-only spellings
+    // onto the tracker id so a collected rusty key still shows in progression.
+    rusty_key_alias(&key).or_else(|| clock_alias(&key))
+}
+
+/// Since OoTMM added an OoT clock, newer spoilers / logs disambiguate the Majora's
+/// Mask clocks as "Clock (MM, Day 1)" where they used to read "Clock (Day 1)". The
+/// item table only carries one spelling, so on a direct miss try the other form so
+/// BOTH the old and new names resolve to the same MM clock. "Clock (OoT)" already
+/// matches directly and is never rewritten. Only reached after `ITEM_BY_NAME_LC`
+/// misses, so there is no ambiguity with whichever spelling the table itself uses.
+fn clock_alias(key_lc: &str) -> Option<u32> {
+    let lookup = |k: &str| {
+        data::ITEM_BY_NAME_LC
+            .binary_search_by(|&(nm, _)| nm.cmp(k))
+            .ok()
+            .map(|i| data::ITEM_BY_NAME_LC[i].1)
+    };
+    // New "clock (mm, X)" -> old "clock (X)".
+    if let Some(inner) = key_lc.strip_prefix("clock (mm, ").and_then(|s| s.strip_suffix(')')) {
+        return lookup(&format!("clock ({inner})"));
+    }
+    // Old "clock (X)" -> new "clock (mm, X)" (the OoT clock keeps its own name).
+    if let Some(inner) = key_lc.strip_prefix("clock (").and_then(|s| s.strip_suffix(')')) {
+        if !inner.eq_ignore_ascii_case("oot") {
+            return lookup(&format!("clock (mm, {inner})"));
+        }
+    }
+    None
+}
+
+/// Resolve the OoTMM spoiler spelling of a rusty key (lowercased) to the tracker
+/// item id whose in-game name differs. Only the diverging names are listed; every
+/// matching one already resolves through `ITEM_BY_NAME_LC`. Returns `None` for a
+/// non-rusty-key string.
+fn rusty_key_alias(key_lc: &str) -> Option<u32> {
+    use data::iid::*;
+    Some(match key_lc {
+        // OoT — the tracker prefixes the region (Market / Kakariko / Lon Lon).
+        "rusty key (treasure chest game)" => OOT_RUSTY_KEY_TREASURE_CHEST_GAME,
+        "rusty key (hyrule castle)" => OOT_RUSTY_KEY_HYRULE_CASTLE,
+        "rusty key (child bazaar)" => OOT_RUSTY_KEY_CHILD_BAZAAR,
+        "rusty key (child potion shop)" => OOT_RUSTY_KEY_CHILD_POTION_SHOP,
+        "rusty key (child shooting gallery)" => OOT_RUSTY_KEY_CHILD_SHOOTING_GALLERY,
+        "rusty key (laboratory)" => OOT_RUSTY_KEY_LABORATORY,
+        "rusty key (silo)" => OOT_RUSTY_KEY_SILO,
+        "rusty key (ranch stable)" => OOT_RUSTY_KEY_RANCH_STABLE,
+        "rusty key (ranch house)" => OOT_RUSTY_KEY_RANCH_HOUSE,
+        "rusty key (adult shooting gallery)" => OOT_RUSTY_KEY_ADULT_SHOOTING_GALLERY,
+        "rusty key (skulltula house)" => OOT_RUSTY_KEY_SKULLTULA_HOUSE,
+        "rusty key (adult bazaar)" => OOT_RUSTY_KEY_ADULT_BAZAAR,
+        "rusty key (adult potion shop)" => OOT_RUSTY_KEY_ADULT_POTION_SHOP,
+        "rusty key (adult potion shop back)" => OOT_RUSTY_KEY_ADULT_POTION_SHOP_BACK,
+        // MM.
+        "rusty key (potion shop)" => MM_RUSTY_KEY_POTION_SHOP,
+        "rusty key (swordsman school)" => MM_RUSTY_KEY_SWORDSMAN_SCHOOL,
+        "rusty key (town archery)" => MM_RUSTY_KEY_TOWN_ARCHERY,
+        "rusty key (swamp archery)" => MM_RUSTY_KEY_SWAMP_ARCHERY,
+        "rusty key (observatory)" => MM_RUSTY_KEY_OBSERVATORY,
+        "rusty key (blacksmith)" => MM_RUSTY_KEY_BLACKSMITH,
+        "rusty key (music house)" => MM_RUSTY_KEY_MUSIC_HOUSE,
+        "rusty key (oceanic laboratory)" => MM_RUSTY_KEY_LABORATORY,
+        "rusty key (treasure game)" => MM_RUSTY_KEY_TREASURE_CHEST_GAME,
+        "rusty key (romani's room)" => MM_RUSTY_KEY_RANCH_HOUSE_ROOM,
+        "rusty key (kafei's room)" => MM_RUSTY_KEY_MAYOR_RESIDENCE_KAFEI,
+        _ => return None,
+    })
 }
 
 /// ItemInfo::CanBeShared for the given id (ITEMS is dense, id-ordered).
@@ -491,9 +564,31 @@ fn item_matches(e: &ProgEntry, id: u32) -> bool {
     e.lookup_keys.contains(&id) || e.lookup_keys.iter().any(|&k| items_share_family(id, k))
 }
 
+/// Deku stick / nut upgrade families the generated `PROGRESSIVE_FAMILIES` omits.
+/// OoTMM places a progressive stick/nut upgrade under a SINGLE item name (every tier
+/// is e.g. "Deku Stick Upgrade (OoT)"), so all placements resolve to the middle
+/// tier's id. Their three prog entries (capacity / upgrade / second upgrade) don't
+/// share a common base id either — the capacity id was removed from the upgrade
+/// tiers to make the visual cope with the capacity × upgrade setting cross — so
+/// without a family the detail panel shows the shared pool only under the middle
+/// entry and "No Known Location" under the other two. Grouping [capacity, upgrade,
+/// second upgrade] pools the locations under all three, exactly like the bow/quiver
+/// and slingshot/bullet-bag families. Kept hand-written (not in the generated data)
+/// so it survives a regeneration, and only consulted by `items_share_family` → the
+/// location detail; the visual walk and starting-item logic are untouched.
+const STICK_NUT_FAMILIES: &[[u32; 3]] = &[
+    [data::iid::OOT_STICK_UPGRADE, data::iid::OOT_STICK_UPGRADE2, data::iid::OOT_STICK_UPGRADE3],
+    [data::iid::MM_STICK_UPGRADE, data::iid::MM_STICK_UPGRADE2, data::iid::MM_STICK_UPGRADE3],
+    [data::iid::OOT_NUT_UPGRADE, data::iid::OOT_NUT_UPGRADE2, data::iid::OOT_NUT_UPGRADE3],
+    [data::iid::MM_NUT_UPGRADE, data::iid::MM_NUT_UPGRADE2, data::iid::MM_NUT_UPGRADE3],
+];
+
 /// ItemsShareProgressiveFamily: both ids in the same [base, up1, up2] family.
 fn items_share_family(a: u32, b: u32) -> bool {
-    data::PROGRESSIVE_FAMILIES.iter().any(|f| f.contains(&a) && f.contains(&b))
+    data::PROGRESSIVE_FAMILIES
+        .iter()
+        .chain(STICK_NUT_FAMILIES.iter())
+        .any(|f| f.contains(&a) && f.contains(&b))
 }
 
 /// GetProgressiveUpgradeRequirement: for an upgrade tier, its base id and the
@@ -674,5 +769,106 @@ mod tests {
         );
         // The base itself is not an upgrade.
         assert_eq!(progressive_upgrade_requirement(data::iid::OOT_BOW), None);
+    }
+
+    #[test]
+    fn progressive_ocarina_lights_stages_in_order() {
+        // Two placements both holding a "Progressive Ocarina". Collecting the
+        // first must light ONLY the Fairy Ocarina, not Ocarina of Time — the
+        // regression being that the shared OOT_OCARINA id sits in both widgets'
+        // lookup keys and, when the ocarina wasn't treated as progressive, lit
+        // them both on the first pickup.
+        let gs: Vec<usize> = data::OOT_OBJECTS
+            .iter()
+            .enumerate()
+            .filter(|(_, o)| o.type_ == data::ObjectType::gs)
+            .map(|(i, _)| i)
+            .take(2)
+            .collect();
+        let (a, b) = (gs[0], gs[1]);
+        let places = [
+            (data::OOT_OBJECTS[a].location, "Progressive Ocarina (OoT)"),
+            (data::OOT_OBJECTS[b].location, "Progressive Ocarina (OoT)"),
+        ];
+        // apply() derives progressive_item_ids (incl. the always-progressive ocarina).
+        let mut settings = Settings::default();
+        settings.apply(&HashSet::new());
+
+        let mut d = Dashboard::new();
+        let fairy = entry_by_name(&d, "Fairy Ocarina");
+        let time = entry_by_name(&d, "Ocarina of Time"); // first match = the OoT page
+
+        // Only the first placement collected.
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a)]), &settings, &HashSet::new());
+        assert!(d.state(fairy).found, "first Progressive Ocarina lights Fairy Ocarina");
+        assert!(!d.state(time).found, "and not Ocarina of Time yet (progressive walk)");
+
+        // Both collected → the second advances to Ocarina of Time.
+        d.rebuild(
+            &one_world(&places, &[], &[(Game::Oot, a), (Game::Oot, b)]),
+            &settings,
+            &HashSet::new(),
+        );
+        assert!(d.state(time).found, "second Progressive Ocarina lights Ocarina of Time");
+    }
+
+    #[test]
+    fn resolves_rusty_key_spoiler_alias() {
+        // The spoiler names rusty keys by their internal door/location string,
+        // which differs from the tracker's in-game item name; the alias bridges
+        // them so a collected rusty key still resolves (and shows in progression).
+        assert_eq!(find_item_id("Rusty Key (Silo)"), Some(data::iid::OOT_RUSTY_KEY_SILO));
+        assert_eq!(
+            find_item_id("Rusty Key (Swordsman School)"),
+            Some(data::iid::MM_RUSTY_KEY_SWORDSMAN_SCHOOL)
+        );
+        // A name already matching the item table still resolves through it.
+        assert_eq!(find_item_id("Rusty Key (Windmill)"), Some(data::iid::OOT_RUSTY_KEY_WINDMILL));
+    }
+
+    #[test]
+    fn resolves_clock_both_formats() {
+        use data::iid::*;
+        // Old ("Clock (Night 3)") and new ("Clock (MM, Night 3)") MM clock spellings
+        // must resolve to the same item, whichever the current data table uses.
+        assert_eq!(find_item_id("Clock (Night 3)"), Some(MM_CLOCK6));
+        assert_eq!(find_item_id("Clock (MM, Night 3)"), Some(MM_CLOCK6));
+        assert_eq!(find_item_id("Clock (Day 1)"), Some(MM_CLOCK1));
+        assert_eq!(find_item_id("Clock (MM, Day 1)"), Some(MM_CLOCK1));
+        // Case-insensitive, like the rest of the resolver.
+        assert_eq!(find_item_id("clock (mm, night 1)"), Some(MM_CLOCK2));
+        // The OoT clock keeps its own name and is never rewritten to an MM clock.
+        assert_eq!(find_item_id("Clock (OoT)"), Some(OOT_CLOCK));
+        // A genuinely unknown clock stays unresolved.
+        assert_eq!(find_item_id("Clock (MM, Night 9)"), None);
+    }
+
+    #[test]
+    fn stick_nut_upgrade_family_pools_locations() {
+        use data::iid::*;
+        // OoTMM places the whole progressive stick/nut chain under the middle tier's
+        // id (e.g. every stick placement is "Deku Stick Upgrade (OoT)" = 0x77). The
+        // family must make the capacity and second-upgrade entries — which list only
+        // their own tier — still match that placement id, so the detail panel pools
+        // the locations under all three instead of showing "No Known Location".
+        let entry = |keys: &'static [u32]| ProgEntry {
+            icon: "stick",
+            name: "x",
+            lookup_keys: keys,
+            is_counter: false,
+            max_count: 0,
+            max_from_spoiler: false,
+        };
+        let cap = entry(&[OOT_STICK_UPGRADE, SHARED_STICK_UPGRADE]);
+        let second = entry(&[OOT_STICK_UPGRADE3, SHARED_STICK_UPGRADE]);
+        assert!(item_matches(&cap, OOT_STICK_UPGRADE2), "capacity pools the middle-tier placement");
+        assert!(item_matches(&second, OOT_STICK_UPGRADE2), "second upgrade pools it too");
+        // MM nuts behave the same.
+        let mm_nut_cap = entry(&[MM_NUT_UPGRADE, SHARED_NUT_UPGRADE]);
+        assert!(item_matches(&mm_nut_cap, MM_NUT_UPGRADE2));
+        assert!(item_matches(&mm_nut_cap, MM_NUT_UPGRADE3));
+        // Families don't bleed across item type or game.
+        assert!(!item_matches(&mm_nut_cap, OOT_STICK_UPGRADE2));
+        assert!(!item_matches(&cap, MM_STICK_UPGRADE2));
     }
 }

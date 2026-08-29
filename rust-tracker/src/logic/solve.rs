@@ -10,7 +10,7 @@
 //!
 //! ## Model (M2 v1, glitchless, vanilla entrances, single world)
 //! - **Seeds**: OoT `SPAWN` + `GLOBAL` and MM `GLOBAL`, at both ages. `SPAWN`'s
-//!   own exits then gate the real starting age via `setting(startingAge, …)` and
+//!   own exits then gate the real starting age via `setting(startingAgeOot, …)` and
 //!   the `TIME_TRAVEL` event, so seeding both ages is safe.
 //! - **Age change** is emergent: once the `TIME_TRAVEL` event fires (Temple of
 //!   Time, computed by the fixed point), `SPAWN`'s other-age exit opens.
@@ -270,7 +270,7 @@ mod tests {
     /// world for reachability tests.
     fn full() -> Cfg {
         let mut settings = HashMap::new();
-        settings.insert(setting_idx("startingAge"), value_idx("child"));
+        settings.insert(setting_idx("startingAgeOot"), value_idx("child"));
         settings.insert(setting_idx("doorOfTime"), value_idx("open"));
         Cfg {
             items_all: 99,
@@ -283,7 +283,7 @@ mod tests {
 
     fn empty() -> Cfg {
         let mut settings = HashMap::new();
-        settings.insert(setting_idx("startingAge"), value_idx("child"));
+        settings.insert(setting_idx("startingAgeOot"), value_idx("child"));
         Cfg { items_all: 0, settings, enabled: HashSet::new(), masks: 0, specials: false }
     }
 

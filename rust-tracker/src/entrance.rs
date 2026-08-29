@@ -190,6 +190,45 @@ pub fn lookup(game: Game, entrance_id: u32) -> Option<&'static EntranceDef> {
     game.entrances().iter().find(|entr| entr.to_id == entrance_id)
 }
 
+/// The fully-qualified display name of an entrance: its destination scene plus the
+/// side facing away (`from_name`) — the exact two-column identity the entrance tab
+/// shows. This disambiguates the many entrances that share a bare `to_name`: every
+/// entrance landing in Kokiri Forest has `to_name = "Kokiri Forest"`, but each has a
+/// distinct `from_name` (Deku Tree / Kokiri Shop / Storms Grotto…), so this yields
+/// "Kokiri Forest - Deku Tree" etc. English (untranslated) for a stable, hand-
+/// editable save. Returns `None` for an unknown id.
+pub fn display_name(game: Game, entrance_id: u32) -> Option<String> {
+    let d = lookup(game, entrance_id)?;
+    Some(format!("{} - {}", dest_scene_name(game, d), d.from_name))
+}
+
+/// The "spawns into" display of an entrance — mirrors the tracker's
+/// `GetEntranceSpawnsString`: the *arrow* form giving the direction of entry, so an
+/// `<in>` link reads differently from where an entrance *leads* (`display_name`, the
+/// dash form). A Normal entrance reads "<dest scene> -> <side>"; a `One_Way_Out`
+/// reverses to "<side> -> <dest scene>" (you spawn out of it). ASCII "->" (like the
+/// tracker's CSV export) keeps the save hand-editable. Returns `None` for an unknown
+/// id.
+pub fn spawns_name(game: Game, entrance_id: u32) -> Option<String> {
+    let d = lookup(game, entrance_id)?;
+    let scene = dest_scene_name(game, d);
+    Some(if d.type_ == EntranceType::One_Way_Out {
+        format!("{} -> {scene}", d.from_name)
+    } else {
+        format!("{scene} -> {}", d.from_name)
+    })
+}
+
+/// The destination-scene name of an entrance (the side it lands in), used by both
+/// display forms above.
+fn dest_scene_name(game: Game, d: &EntranceDef) -> &'static str {
+    game.scenes()
+        .iter()
+        .find(|sc| sc.id == d.to_scene)
+        .map(|sc| sc.name)
+        .unwrap_or("?")
+}
+
 // ── Grotto helpers (faithful port of Entrances.cpp) ──────────────────────────
 
 /// IsGrottoEntrance: the six generic grotto-entry ids (game-agnostic).

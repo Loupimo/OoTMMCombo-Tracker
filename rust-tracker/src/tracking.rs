@@ -394,12 +394,13 @@ mod tests {
         assert_eq!(resolve_raw_item_id(141, RomVersion::Stable301), 143);
         assert_eq!(resolve_raw_item_id(826, RomVersion::Stable301), 940);
         // Latest stable (v31 / v32.X): the two OoT UPGRADE3 inserts now shift even
-        // the low ids by +2; each higher boundary climbs +4 / +5 / +6 / +7 / +8.
+        // the low ids by +2; each higher boundary climbs +4 / +5 (MM_MASK_ADULT) /
+        // +6 / +7 / +8 / +9.
         assert_eq!(resolve_raw_item_id(0x76, RomVersion::Stable), 0x76); // below reorder
         assert_eq!(resolve_raw_item_id(142, RomVersion::Stable), 144);
         assert_eq!(resolve_raw_item_id(509, RomVersion::Stable), 513);
-        assert_eq!(resolve_raw_item_id(933, RomVersion::Stable), 940);
-        assert_eq!(resolve_raw_item_id(1024, RomVersion::Stable), 1032);
+        assert_eq!(resolve_raw_item_id(933, RomVersion::Stable), 941);
+        assert_eq!(resolve_raw_item_id(1024, RomVersion::Stable), 1033);
         // A zero / unknown id (e.g. a "nothing" drop) has no name.
         assert_eq!(net_item_name(0, RomVersion::Dev), None);
     }

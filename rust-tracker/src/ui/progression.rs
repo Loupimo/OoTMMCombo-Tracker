@@ -115,6 +115,16 @@ impl TrackerApp {
         self.grey_icon_cache.get(path)?.as_ref()
     }
 
+    /// The solid-blue silhouette variant of an EGameIcon texture (for the "obtained"
+    /// glow), if built.
+    pub(crate) fn prog_icon_tex_glow(&self, icon: &str) -> Option<&egui::TextureHandle> {
+        let path = data::ICON_BY_NAME
+            .binary_search_by_key(&icon, |&(n, _)| n)
+            .ok()
+            .map(|i| data::ICON_BY_NAME[i].1)?;
+        self.glow_icon_cache.get(path)?.as_ref()
+    }
+
     /// Pick the texture id + tint for a progression icon. `complete` → the full
     /// colour icon; otherwise the desaturated placeholder (Qt look). While that
     /// grey variant is still being built, fall back to the colour icon dimmed by a
@@ -178,26 +188,48 @@ impl TrackerApp {
             cell,
             egui::Layout::top_down(egui::Align::Center),
             |ui| {
+                // Icon slot: a discreet blue "obtained" glow that follows the icon's
+                // CONTOURS (mirrors the Qt drop-shadow, which blurs the alpha). We
+                // stamp a solid-blue silhouette of the icon a few times, offset in a
+                // ring, behind the real icon — so the halo hugs the shape (a skull, a
+                // sword…) instead of the square image bounds. Kept small (~3px) and
+                // low-alpha so it stays discreet and inside the cell.
+                let (icon_rect, _) = ui.allocate_exact_size(vec2(ICON, ICON), Sense::hover());
+                if complete {
+                    if let Some(sil) = self.prog_icon_tex_glow(e.icon) {
+                        // Clip to the icon slot as insurance against any bleed.
+                        let p = ui.painter().with_clip_rect(icon_rect.expand(6.0));
+                        let uv = egui::Rect::from_min_max(egui::pos2(0.0, 0.0), egui::pos2(1.0, 1.0));
+                        // Two fading rings of 8 offsets: the union is a soft, even
+                        // halo around the silhouette that fades outward.
+                        for (radius, alpha) in [(1.6_f32, 22u8), (3.2, 11)] {
+                            for k in 0..8 {
+                                let a = std::f32::consts::TAU * k as f32 / 8.0;
+                                let off = vec2(a.cos(), a.sin()) * radius;
+                                p.image(sil.id(), icon_rect.translate(off), uv, Color32::from_white_alpha(alpha));
+                            }
+                        }
+                    }
+                }
                 if let Some((id, tint)) = self.prog_icon_display(e.icon, complete) {
-                    ui.add(egui::Image::new((id, vec2(ICON, ICON))).tint(tint));
-                } else {
-                    ui.add_space(ICON);
+                    egui::Image::new((id, vec2(ICON, ICON))).tint(tint).paint_at(ui, icon_rect);
                 }
-                if let Some(badge) = self.dashboard.badge_text(i) {
-                    ui.label(
-                        egui::RichText::new(badge)
-                            .small()
-                            .strong()
-                            .color(Color32::from_rgb(221, 238, 255))
-                            .background_color(accent),
-                    );
-                }
+                // Name, then the counter BELOW it. The old blue-filled badge was
+                // illegible, so the count is now plain light-blue text (no fill).
                 let name_col = if complete {
                     Color32::from_rgb(221, 238, 255)
                 } else {
                     Color32::from_gray(120)
                 };
                 ui.label(egui::RichText::new(self.i18n.tr_prog_entry(e.name, e.lookup_keys)).small().color(name_col));
+                if let Some(badge) = self.dashboard.badge_text(i) {
+                    ui.label(
+                        egui::RichText::new(badge)
+                            .small()
+                            .strong()
+                            .color(Color32::from_rgb(130, 200, 255)),
+                    );
+                }
             },
         );
 
@@ -327,7 +359,29 @@ impl TrackerApp {
                             } else {
                                 txt.color(Color32::from_rgb(230, 240, 255))
                             };
-                            let resp = ui.selectable_label(false, txt);
+                            // Small per-type icon (chest / pot / GS / …) ahead of the name;
+                            // greyed to match a collected row. Reserve the width when the
+                            // type has no icon so the names stay aligned.
+                            let tex = leaf
+                                .icon
+                                .and_then(|p| self.icon_cache.get(p))
+                                .and_then(|t| t.as_ref())
+                                .map(|t| t.id());
+                            let resp = ui
+                                .horizontal(|ui| {
+                                    if let Some(id) = tex {
+                                        let tint = if leaf.collected {
+                                            Color32::from_gray(140)
+                                        } else {
+                                            Color32::WHITE
+                                        };
+                                        ui.add(egui::Image::new((id, vec2(16.0, 16.0))).tint(tint));
+                                    } else {
+                                        ui.add_space(16.0);
+                                    }
+                                    ui.selectable_label(false, txt)
+                                })
+                                .inner;
                             let lk = kbdnav::key((leaf.game.idx() as u8, leaf.render_scene, leaf.name));
                             klist.leaf(ui, lk, &resp);
                             loc_targets.insert(lk, (leaf.game, leaf.render_scene));

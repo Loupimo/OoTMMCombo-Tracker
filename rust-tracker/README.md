@@ -1,138 +1,159 @@
-# rust-tracker — spike Rust + egui
+# rust-tracker — le tracker OoTMM (Rust + egui)
 
-Tranche verticale expérimentale : réécrire la partie **tracker** (pas la DLL) en
-Rust + [egui](https://github.com/emilk/egui), pour évaluer une sortie de Qt.
+Application **Rust + [egui](https://github.com/emilk/egui)** : c'est le tracker OoTMM
+**livré depuis la 3.0.0**, réécriture de l'ancien tracker Qt/C++ (désormais rangé
+dans `C++-Tracker/`). L'exécutable produit s'appelle `OoTMMCombo-Tracker`.
 
-La DLL `PJ64OoTMMTracker` et `PJ64Injector` ne changent pas : ce spike se
-branche sur le **même contrat de mémoire partagée** `PJ64_SHARED_MEM`.
+Le tracker se branche sur la DLL de hook `PJ64OoTMMTracker` (toujours en C++, dans
+`C++-Tracker/PJ64Tracking/`) via le **même contrat de mémoire partagée**
+`PJ64_SHARED_MEM`. Il n'y a **plus d'injecteur externe** : le tracker copie la DLL
+dans le dossier `Plugin/` de Project64 et demande à PJ64 de la charger (Ctrl+T).
 
-## Ce que ça prouve
+## Compiler & lancer
 
-Les briques de l'architecture, sans Qt :
-
-1. **Mémoire partagée** — mappe `PJ64_SHARED_MEM` et consomme le ring buffer
-   d'`Event` en direct. Voir [`src/shared_mem.rs`](src/shared_mem.rs) : la struct
-   C `SharedData` est remirroir en `#[repr(C)]` et lue par **cast direct**, zéro
-   marshalling (c'est l'argument clé pour Rust ici).
-2. **Navigation complète** — arbre jeux → régions → scènes, sur **toutes** les
-   scènes des deux jeux (153 OoT + 154 MM), généré depuis les tables C++.
-3. **Rendu de map** — charge l'image de la scène sélectionnée avec pan/zoom.
-4. **Overlays cliquables** — les ~7650 objets aux coordonnées réelles, clic =
-   toggle « collecté ».
-5. **Auto-cochage (phase 1)** — les `Event` de la DLL cochent automatiquement
-   les overlays (voir [`src/tracking.rs`](src/tracking.rs)).
-
-## Génération des données (`tools/gen_data.py`)
-
-`src/data.rs` est **généré directement depuis les CSV** (la vraie source, comme
-`Resources/Objects/Pool Transform.py`), pas écrit à la main :
-`Resources/Objects/pool_*.csv` (objets) + `Resources/Scenes/scenes_*.csv` (scènes).
-
-Le Rust généré **préserve tes noms symboliques** : `mod scenes` / `mod ids`
-(les `#define`), et les enums `ObjectType` / `ObjectContext` / `GameLayout` /
-`LocType`. Valeurs des symboles lues dans `Headers/Combo/{Scenes,NPC,Items,Objects}.h`.
-Couverture : **100 %** des lignes des pools.
-
-Régénérer après une modif d'un CSV :
-
-```bash
-python tools/gen_data.py
-```
-
-## Correspondance avec le tracker C++
-
-| Spike Rust | Équivalent C++ |
-|---|---|
-| `shared_mem.rs` | `Sources/UI/MemoryReader.cpp` + struct de `Headers/UI/MemoryReader.h` |
-| `data.rs` (généré depuis les CSV) | `OoT/MMObjectScene.cpp` + `Scenes.cpp` |
-| `tracking.rs` | `MemoryReader::CheckEvent` + `FindObject` + `CorrectComboItem` |
-| `inject.rs` | `MemoryReader::InjectTrackerDLL` / `StartMemoryReader` |
-| `scene.rs` | types runtime + `SceneRenderer`/`ObjectRenderer` (couleurs, layout) |
-| `main.rs` (`draw_nav`) | arbre des scènes (`SceneItemTree` / `MapTab`) |
-| `main.rs` (`draw_map`) | `SceneRenderer` / `ObjectRenderer` |
-| `main.rs` (`draw_event_log`) | boucle de polling de `MemoryReader` |
-
-## Prérequis
-
-Rust n'est pas installé sur la machine. Installer la toolchain (MSVC) :
+Prérequis : la toolchain Rust MSVC.
 
 ```bash
 winget install Rustlang.Rustup
-```
-
-Puis, dans un nouveau terminal, s'assurer de la toolchain MSVC :
-
-```bash
 rustup default stable-x86_64-pc-windows-msvc
 ```
 
-## Lancer
-
-Depuis le dossier `rust-tracker/` :
+Puis, depuis `rust-tracker/` :
 
 ```bash
-cargo run --release
+cargo run --release      # lancer le tracker
+cargo build --release    # produire target/release/OoTMMCombo-Tracker.exe
+cargo test               # tests unitaires
 ```
 
-Les images sont chargées depuis `../Resources/...` (résolu via `CARGO_MANIFEST_DIR`),
-donc le dépôt complet doit être présent — pas besoin de copier les assets.
+Les assets (maps, icônes) et les fichiers propres au tracker (réglages, sauvegardes,
+sidecar spoiler, dossier `autosave/`) sont résolus au runtime par `scene::base_dir()`
+/ `scene::data_dir()` : à côté de l'`.exe` en build déployé, ou depuis l'arbre source
+en `cargo run`. Le dépôt complet doit donc être présent en développement.
 
-- **Sans PJ64** : « Simuler un évènement » fabrique un vrai ramassage pour un
-  objet de la scène courante → tu vois l'auto-cochage. Teste aussi pan/zoom +
-  clic sur la map.
-- **Avec PJ64** : lance le jeu et injecte la DLL comme d'habitude, puis
-  « Reconnecter ». Les objets se cochent tout seuls au fil du jeu.
+## Architecture (carte des modules)
+
+### Cœur / interface
+| Module | Rôle |
+|---|---|
+| `main.rs` | point d'entrée, struct `TrackerApp`, déclaration des modules |
+| `state.rs` | état de `TrackerApp` : persistance, gestion des évènements live, boucle `eframe::App` |
+| `scene.rs` | types runtime au-dessus des tables générées (`Game`, `LiveScene`) + résolution des chemins d'assets |
+| `ui/` | panneaux egui : `menu`, `map`, `launch`, `progression`, `entrance`, `gps`, `settings_window`, `kbdnav` |
+| `dialog.rs` | dialogues de fichiers natifs (ouvrir / enregistrer) |
+| `i18n.rs` | internationalisation EN/FR (`I18n`, locales), `AppSettings` |
+
+### Connexion au jeu (hook / mémoire partagée)
+| Module | Rôle |
+|---|---|
+| `shared_mem.rs` | mémoire partagée Win32 : `SharedData` `#[repr(C)]` + ring buffer d'`Event`, lu par cast direct |
+| `poller.rs` | thread de fond qui possède le lien mémoire partagée et orchestre le cycle de vie (chargement, attente, déchargement propre) |
+| `inject.rs` | chargement de la DLL : copie dans `Plugin/` + Ctrl+T (plus d'injecteur externe) |
+| `tracking.rs` | résolution `Event` → objet du pool, remap d'ids d'item, détection de version ROM |
+
+### Données de seed (spoiler / réglages / patch / logique)
+| Module | Rôle |
+|---|---|
+| `spoiler.rs` | parsing du spoiler log (placements par monde, version, MQ) |
+| `settings.rs` | réglages ROM parsés du spoiler, objets exclus, ids progressifs / partagés, remaps d'entrances |
+| `patch.rs` | chargement d'un patch `.ootmm` (archive zip + `meta.json`) |
+| `logic/` | moteur d'accessibilité : `mod` (`solve_world`), `inputs` (inventaire par joueur), `eval` (bytecode), `solve` (point fixe) |
+
+### Fonctionnalités
+| Module | Rôle |
+|---|---|
+| `progression.rs` | onglet progression (`Dashboard`), résolution `find_item_id`, familles progressives |
+| `entrance.rs` | `EntranceHelper` : décodage des messages d'entrance IN/OUT, cas spéciaux (grottos, songs, spawns, morts) |
+| `gps.rs` | routage GPS (BFS sur le graphe d'entrances + connexions découvertes, cross-game) |
+| `qtsave.rs` | import des sauvegardes binaires Qt `.trck` |
+| `multi/` | client multijoueur (fork du multi-client de Nax) |
+| `multi_r4/` | client multijoueur r4 (builds dev : pipe nommé + WAL) |
+
+### Données & build
+| Module | Rôle |
+|---|---|
+| `data/` | tables statiques immuables **générées** (voir plus bas) |
+| `build.rs` | embarque `Logo.ico` comme ressource PE (icône Explorer / barre des tâches) |
+
+## Génération des données
+
+La quasi-totalité de `src/data/*.rs` est **générée**, pas écrite à la main :
+
+- `python tools/gen_data.py` — tables de jeu depuis les sources C++ / CSV :
+  `consts.rs` (scenes / ids / enums symboliques), `oot_items.rs` + `mm_items.rs`
+  (pools d'objets), `oot_world.rs` + `mm_world.rs` (scènes / salles / entrances),
+  `misc.rs` (`ItemDef`, `ITEM_BY_NAME_LC`, méta-réglages…), `prog.rs` (dashboard +
+  `PROGRESSIVE_FAMILIES`).
+- `python tools/gen_logic.py` — `data/logic.rs` : compile les règles d'accessibilité
+  du dossier `Logic/` (racine du dépôt) en un graphe de régions + bytecode
+  (`Op` / `EXPRS`).
+
+Le Rust généré **préserve les noms symboliques** (`scenes::`, `ids::`, `iid::`, enums
+`ObjectType` / `GameLayout` / …). Régénérer après une modif d'une source :
+
+```bash
+python tools/gen_data.py
+python tools/gen_logic.py
+```
+
+**Écrit à la main** (n'est PAS régénéré) : `progression.rs`, `state.rs`, `settings.rs`,
+`i18n.rs`, `spoiler.rs`, `tracking.rs`, `entrance.rs`, `gps.rs`, `logic/*` (sauf
+`data/logic.rs`), `ui/*`, `locales/*.toml`. Les correctifs faits à la main (alias de
+noms d'items, familles progressives supplémentaires…) survivent donc à une
+régénération.
+
+## Sauvegardes
+
+- Format **XML lisible et éditable à la main** (`<tracker version="6">`), groupé par
+  scène. Chaque check est chargé sur son **identité numérique stable** (l'`object_id`
+  au sein de sa scène, départagé au besoin par `type` + `layout`), avec la chaîne
+  `Location` en **repli** — une sauvegarde survit donc au renommage d'une location
+  d'une version à l'autre. Les items placés portent aussi leur `id` d'item (stable),
+  et les liens d'entrance enregistrent le **nom entier résolu** de la sortie
+  (« scène - côté »). Voir `state.rs` (`render_save_xml` / `parse_save_xml`).
+- **Autosave par seed** : un fichier par seed sous `autosave/<seed>.xml` (hash de la
+  première ligne du spoiler), `empty.xml` en l'absence de spoiler. Charger un spoiler
+  d'une autre seed bascule sur son propre fichier.
+- Import rétro-compatible : anciens `.trck` binaires Qt (`qtsave.rs`) et ancien format
+  texte Rust.
 
 ## Notes techniques
 
-- Le tracker Rust cible **x86_64** ; la DLL/PJ64 sont en **x86 (32 bits)**. C'est
-  compatible : `SharedData` ne contient que des champs 32 bits sans pointeur,
-  donc le layout est identique entre les deux bitness. **Garder cette struct
-  sans pointeur** est la seule contrainte à respecter côté DLL.
-- Aucune dépendance `windows-sys` : les 4 appels kernel32 nécessaires sont
-  déclarés en `extern "system"` bruts (layout garanti stable, rien à compiler).
+- Le tracker est **x86_64** ; la DLL / PJ64 sont **x86 (32 bits)**. C'est compatible
+  car `SharedData` ne contient que des champs 32 bits **sans pointeur** → layout
+  identique entre les deux bitness. **Garder cette struct sans pointeur** est la seule
+  contrainte à respecter côté DLL (vérifié par le test `shared_data_layout_matches_cpp`).
+- Aucune dépendance `windows-sys` : les appels kernel32 nécessaires sont déclarés en
+  `extern "system"` bruts (`shared_mem.rs`, `inject.rs`).
+- **Project64 doit être en mode fenêtré** au démarrage du tracking : le chargement du
+  plugin passe par un Ctrl+T envoyé à la fenêtre PJ64, avalé en plein écran.
 
-## État des étapes
+## Tests
 
-- [x] Mémoire partagée live (ring buffer d'Event)
-- [x] Génération des données **depuis les CSV** (`tools/gen_data.py`)
-- [x] Constantes/enums symboliques préservés (`scenes::`, `ids::`, `ObjectType`…)
-- [x] Navigation toutes scènes (arbre jeux → régions → scènes)
-- [x] Rendu map + overlays cliquables (pan/zoom)
-- [x] **Auto-injection** — le tracker lance `PJ64Injector.exe` tout seul
-  (démarrage / bouton / re-tente toutes les ~0,7 s, détecte la fermeture de
-  PJ64). Voir [`src/inject.rs`](src/inject.rs).
-- [x] **Milestone B — phase 1** : overlays *direct* (chest / collectible /
-  stray-fairy) et *extended-flag* (grass, pot, butterfly…).
-- [x] **Milestone B — phase 2** : types à remap de scène (GS / shop / npc / cow /
-  scrub / silver-rupee / fish) via **recherche globale `(type, id)`** — l'objet
-  du pool porte déjà sa scène, donc aucun portage des `switch GetSceneX`. Filtre
-  de layout (base, hors MQ/JP). Tout validé par `cargo test`.
-- [x] Chemin « nothing » (grass/pots vides) via `ParseKey`
-- [x] ROM stable/dev — décalage NPC `ResolveRawOoTNpcID`, version depuis le spoiler
-- [x] **Spoiler log** — glisser-déposer un spoiler : item par emplacement (affiché
-  au survol) + version ROM. Match global par `Location` unique. Voir
-  [`src/spoiler.rs`](src/spoiler.rs).
-- [x] **Save/load** — auto-sauvegarde/-chargement de l'état collecté, clé par
-  `Location` (résilient à la régénération des données).
-- [x] **Layout MQ/JP** — lu dans les réglages du spoiler (`Master Quest
-  Dungeons: all|none|liste`), filtre de layout par-scène (`tracking::object_active`).
-- [x] **Filtre de contexte** — menu Tout/Enfant/Adulte/Hiver/Printemps.
-- [x] **Rendu par salle** des donjons (`RoomRenderer`) — table `OOT_ROOMS`/
-  `MM_ROOMS` générée ; sélecteur de salle + filtre des objets par `RoomID`.
-- [~] **Entrances** (`EntranceHelper`) + **GPS**
-  - [x] Phase 1 — données générées (`OOT/MM_ENTRANCES`) + affichage sur la
-    **minimap** (toggle vue **Objets/Entrées** ; `SceneDef` a `image_rel`
-    artistique **et** `minimap_rel`), losanges + nom au survol
-  - [x] Phase 2a — décodage des messages IN/OUT (`entrance.rs`, mirror de
-    `SetMessage`/`LookupEntrance`) + entrées **visitées** surlignées en vert
-    sur la minimap, persistées
-  - [x] Phase 2b — graphe de connexions (X→Y, chemin normal, persisté) ; cas
-    spéciaux (grottos par position, songs, spawns, morts) restent approximés
-  - [x] Phase 3 — GPS (`gps.rs`, BFS sur le graphe d'entrées + connexions
-    découvertes ; coûts mesurés = raffinement)
-- [x] **Onglet progression** — items obtenus (objets collectés × spoiler)
-- [x] **Multiworld** — routage « Player N » affiché (tracking par monde =
-  raffinement)
-- [x] **Icônes réelles** — `ICON_PATHS` généré depuis `Icons.cpp`, rendues sur
-  la map (fallback pastille colorée)
+```bash
+cargo test
+```
+
+Couvre entre autres : layout mémoire partagée ↔ C++, parsing spoiler (mono / multi,
+versions), résolution d'items (familles progressives, alias clocks / rusty keys),
+réglages & exclusions, solveur d'accessibilité (monotonie, routage multiworld),
+round-trip de sauvegarde XML, et i18n (toutes les clés présentes dans les deux
+locales).
+
+## Correspondance avec le tracker C++ (`C++-Tracker/`)
+
+Utile pour retrouver l'origine d'un comportement (les chemins sont relatifs à
+`C++-Tracker/`).
+
+| Rust | Équivalent C++ |
+|---|---|
+| `shared_mem.rs` | `Sources/UI/MemoryReader.cpp` + `Headers/UI/MemoryReader.h` |
+| `poller.rs` | boucle de polling de `MemoryReader` |
+| `inject.rs` | `MemoryReader::InjectTrackerDLL` / `StartMemoryReader` (sans injecteur) |
+| `tracking.rs` | `MemoryReader::CheckEvent` + `FindObject` + `CorrectComboItem` |
+| `data/` (généré) | `Sources/Combo/*` (`OoT`/`MMObjectScene.cpp`, `Scenes.cpp`, `Items.cpp`, `Entrances.cpp`…) |
+| `progression.rs` | `Sources/UI/ProgressionEntry.cpp` |
+| `settings.rs` | `Sources/UI/Settings.cpp` / `SettingsTab.cpp` |
+| `entrance.rs` | `Sources/Combo/Entrances.cpp` (`EntranceHelper`) |
+| `ui/map.rs` | `SceneRenderer` / `ObjectRenderer` |
+| `multi/` | `Sources/Multi` (fork du multi-client) |

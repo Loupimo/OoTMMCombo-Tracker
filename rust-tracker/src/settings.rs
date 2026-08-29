@@ -1021,6 +1021,17 @@ impl Settings {
                 }
             }
         }
+
+        // The ocarina is always progressive in OoTMM (Fairy Ocarina → Ocarina of
+        // Time): there is no toggle for it, and a placement hands out a single
+        // "Progressive Ocarina". Unlike the sword / shield families (covered by
+        // their always-applied progressive settings), no ITEM_SETTINGS row lists
+        // the ocarina, so mark its ids progressive here. Without this, the shared
+        // OOT_OCARINA / MM_OCARINA id sits in both ocarina widgets' lookup keys
+        // and lights them both on the first pickup instead of advancing a stage.
+        for id in [iid::OOT_OCARINA, iid::MM_OCARINA, iid::SHARED_OCARINA] {
+            self.progressive_item_ids.insert(id);
+        }
     }
 
     /// CheckItemEnabled: a vanilla item is disabled (and reported not enabled).
@@ -1064,7 +1075,7 @@ fn item_key(name: &str) -> &'static str {
 fn filter_value(value: &str) -> ShuffleSetting {
     let int_pos = value.parse::<i64>().map(|n| n > 0).unwrap_or(false);
     match value {
-        "all" | "true" | "full" | "anywhere" | "ganon" | "child" | "cross" => ShuffleSetting::all,
+        "all" | "true" | "full" | "anywhere" | "ganon" | "child" | "cross" | "night" | "day" | "bagSeparate" | "bagFirst" | "separate"  => ShuffleSetting::all,
         _ if int_pos => ShuffleSetting::all,
         "starting" => ShuffleSetting::starting,
         "dungeons" | "ownDungeon" => ShuffleSetting::dungeons,
@@ -1078,7 +1089,7 @@ fn filter_value(value: &str) -> ShuffleSetting {
 fn item_value(value: &str) -> ShuffleSetting {
     let int_pos = value.parse::<i64>().map(|n| n > 0).unwrap_or(false);
     match value {
-        "progressive" | "all" | "true" | "ascending" => ShuffleSetting::all,
+        "progressive" | "all" | "true" | "ascending" | "night" | "day" | "bagSeparate" | "bagFirst" | "separate" => ShuffleSetting::all,
         _ if int_pos => ShuffleSetting::all,
         "goron" | "descending" => ShuffleSetting::overworld,
         _ => ShuffleSetting::vanilla,

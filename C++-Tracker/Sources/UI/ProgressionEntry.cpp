@@ -251,11 +251,11 @@ const ProgEntry OoTEquipments[] =
     { EGameIcon::bombchu_bag, "Big Bombchu Bag", { OOT_BOMBCHU_BAG, OOT_BOMBCHU_BAG2, SHARED_BOMBCHU_BAG }, false },
     { EGameIcon::bombchu_bag, "Biggest Bombchu Bag", { OOT_BOMBCHU_BAG, OOT_BOMBCHU_BAG3, SHARED_BOMBCHU_BAG }, false },
     { EGameIcon::nut, "Deku Nut Capacity", { OOT_NUT_UPGRADE, SHARED_NUT_UPGRADE }, false },
-    { EGameIcon::nut_upgrade_1, "Deku Nut Upgrade", { OOT_NUT_UPGRADE, OOT_NUT_UPGRADE2, SHARED_NUT_UPGRADE }, false },
-    { EGameIcon::nut_upgrade_2, "Second Deku Nut Upgrade", { OOT_NUT_UPGRADE, OOT_NUT_UPGRADE2, OOT_NUT_UPGRADE3, SHARED_NUT_UPGRADE }, false },
+    { EGameIcon::nut_upgrade_1, "Deku Nut Upgrade", { OOT_NUT_UPGRADE2, SHARED_NUT_UPGRADE }, false },
+    { EGameIcon::nut_upgrade_2, "Second Deku Nut Upgrade", { OOT_NUT_UPGRADE3, SHARED_NUT_UPGRADE }, false },
     { EGameIcon::stick, "Deku Stick Capacity", { OOT_STICK_UPGRADE, SHARED_STICK_UPGRADE }, false },
-    { EGameIcon::stick_upgrade_1, "Deku Stick Upgrade", { OOT_STICK_UPGRADE, OOT_STICK_UPGRADE2, SHARED_STICK_UPGRADE }, false },
-    { EGameIcon::stick_upgrade_2, "Second Deku Stick Upgrade", { OOT_STICK_UPGRADE, OOT_STICK_UPGRADE2, OOT_STICK_UPGRADE3, SHARED_STICK_UPGRADE }, false },
+    { EGameIcon::stick_upgrade_1, "Deku Stick Upgrade", { OOT_STICK_UPGRADE2, SHARED_STICK_UPGRADE }, false },
+    { EGameIcon::stick_upgrade_2, "Second Deku Stick Upgrade", { OOT_STICK_UPGRADE3, SHARED_STICK_UPGRADE }, false },
 
     // Wallets
     { EGameIcon::child_wallet, "Child's Wallet", { OOT_WALLET, OOT_PROG_WALLET, SHARED_WALLET }, false },
@@ -522,12 +522,12 @@ const ProgEntry MMEquipments[] =
     { EGameIcon::bottomless_wallet, "Bottomless Wallet", { MM_WALLET5, MM_PROG_WALLET, SHARED_WALLET }, false },
 
     // OoT Upgrades
-    { EGameIcon::nut, "Deku Nut Capacity", { MM_NUT_UPGRADE, SHARED_STICK_UPGRADE }, false },
-    { EGameIcon::nut_upgrade_1, "Deku Nut Upgrade", { MM_NUT_UPGRADE, MM_NUT_UPGRADE2, SHARED_NUT_UPGRADE }, false },
-    { EGameIcon::nut_upgrade_2, "Second Deku Nut Upgrade", { MM_NUT_UPGRADE, MM_NUT_UPGRADE2, MM_NUT_UPGRADE3, SHARED_NUT_UPGRADE }, false },
+    { EGameIcon::nut, "Deku Nut Capacity", { MM_NUT_UPGRADE, SHARED_NUT_UPGRADE }, false },
+    { EGameIcon::nut_upgrade_1, "Deku Nut Upgrade", { MM_NUT_UPGRADE2, SHARED_NUT_UPGRADE }, false },
+    { EGameIcon::nut_upgrade_2, "Second Deku Nut Upgrade", { MM_NUT_UPGRADE3, SHARED_NUT_UPGRADE }, false },
     { EGameIcon::stick, "Deku Stick Capacity", { MM_STICK_UPGRADE, SHARED_STICK_UPGRADE }, false },
-    { EGameIcon::stick_upgrade_1, "Deku Stick Upgrade", { MM_STICK_UPGRADE, MM_STICK_UPGRADE2, SHARED_STICK_UPGRADE }, false },
-    { EGameIcon::stick_upgrade_2, "Second Deku Stick Upgrade", { MM_STICK_UPGRADE, MM_STICK_UPGRADE2, MM_STICK_UPGRADE3, SHARED_STICK_UPGRADE }, false },
+    { EGameIcon::stick_upgrade_1, "Deku Stick Upgrade", { MM_STICK_UPGRADE2, SHARED_STICK_UPGRADE }, false },
+    { EGameIcon::stick_upgrade_2, "Second Deku Stick Upgrade", { MM_STICK_UPGRADE3, SHARED_STICK_UPGRADE }, false },
     { EGameIcon::bronze_scale, "Bronze Scale", { MM_SCALE_BRONZE, MM_SCALE, SHARED_SCALE }, false },
     { EGameIcon::silver, "Silver Scale", { MM_SCALE_SILVER, MM_SCALE, SHARED_SCALE }, false },
     { EGameIcon::golden, "Golden Scale", { MM_SCALE_GOLDEN, MM_SCALE, SHARED_SCALE }, false },

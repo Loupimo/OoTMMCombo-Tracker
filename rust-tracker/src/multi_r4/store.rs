@@ -204,7 +204,7 @@ mod tests {
         assert_eq!(sq.pending().len(), 1);
         sq.ack(&id).unwrap();
         assert_eq!(sq.pending().len(), 0);
-        let mut sq2 = SendQueue::open(&path).unwrap();
+        let sq2 = SendQueue::open(&path).unwrap();
         assert_eq!(sq2.pending().len(), 0);
         let _ = std::fs::remove_file(&path);
     }
