@@ -381,6 +381,16 @@ def emit_enum(name, variants, comment, repr_u8=False):
             f"pub enum {name} {{\n    {body},\n}}\n\n")
 
 
+def emit_name_id_table(name, entries):
+    """`pub static NAME: &[(&str, u32)]` sorted by key, for runtime binary_search
+    (the spoiler `Entrances` section joins entrance const-names to ids)."""
+    lines = [f"pub static {name}: &[(&str, u32)] = &["]
+    for n, v in sorted(entries):
+        lines.append(f'    ("{n}", {v:#x}),')
+    lines.append("];\n")
+    return "\n".join(lines)
+
+
 def emit_consts(mod, entries, ty, use_scene_id=False):
     lines = [f"pub mod {mod} {{"]
     if use_scene_id:
@@ -1083,6 +1093,9 @@ def main():
         emit_consts("iid", all_id_consts, "u32"),
         "\n/// Entrance id constants (OoT/MM entrance headers).\n",
         emit_consts("entr", ent_consts, "u32"),
+        "\n/// Entrance const-name -> id, sorted by name for the spoiler `Entrances`\n"
+        "/// join (progressive discovery). Some names carry a trailing `_ENTR`.\n",
+        emit_name_id_table("ENTRANCE_ID_BY_NAME", ent_sym.items()),
         "\n/// Song / owl id values (Entrances.h enums).\n",
         emit_consts("song_oot", song_oot, "u8"),
         emit_consts("song_mm", song_mm, "u8"),

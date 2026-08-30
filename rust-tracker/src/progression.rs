@@ -66,6 +66,16 @@ pub struct Dashboard {
     flat: Vec<FlatEntry>,
     /// item id -> flat indices whose `lookup_keys` contain it (declaration order).
     by_item: HashMap<u32, Vec<usize>>,
+    /// Ids that stand for a progressive family: an id that several tiers of the
+    /// SAME page list in their `lookup_keys` (e.g. `OOT_STRENGTH` on the three
+    /// gauntlet widgets, `MM_SHIELD` on the three MM shields). OoTMM hands out one
+    /// generic "progressive" item for these families, so a single pickup must
+    /// advance ONE tier — not light every widget that references the shared id. The
+    /// ROM settings mark some of these (swords, clocks, the specific shield ids) but
+    /// miss the ones with no toggle (strength, wallet, scale, bomb bags…) and the
+    /// generic shield ids, so we derive the full set structurally here. Used
+    /// alongside `settings.progressive_item_ids` by [`Self::on_item_found`].
+    marker_ids: HashSet<u32>,
     /// Live per-entry state, aligned with `flat`.
     states: Vec<ProgState>,
     /// Whether the 'songs' setting shuffles notes individually (so a song widget
@@ -108,10 +118,26 @@ impl Dashboard {
                 }
             }
         }
+        // Derive the progressive-family markers: any id listed by two or more tiers
+        // of the same page (see `marker_ids`). A shared item that only mirrors one
+        // OoT + one MM widget lives on two DIFFERENT pages, so it is not caught here
+        // and keeps its shared-propagation behaviour.
+        let mut marker_ids: HashSet<u32> = HashSet::new();
+        for (&id, idxs) in &by_item {
+            let mut per_page: HashMap<usize, u32> = HashMap::new();
+            for &i in idxs {
+                *per_page.entry(flat[i].page).or_default() += 1;
+            }
+            if per_page.values().any(|&n| n >= 2) {
+                marker_ids.insert(id);
+            }
+        }
+
         let states = vec![ProgState::default(); flat.len()];
         Dashboard {
             flat,
             by_item,
+            marker_ids,
             states,
             songs_counter: false,
             sub_tab: 0,
@@ -274,7 +300,11 @@ impl Dashboard {
     fn on_item_found(&mut self, id: u32, settings: &Settings) {
         let Some(matches) = self.by_item.get(&id).cloned() else { return };
         let shared = item_can_be_shared(id) && settings.shared_item_ids.contains(&id);
-        let progressive = settings.progressive_item_ids.contains(&id);
+        // Progressive either because the ROM settings say so, or because the id is a
+        // structural family marker shared by several tiers of one page (strength,
+        // wallets, generic shields…) — see `marker_ids`. Both routes walk one stage
+        // at a time instead of lighting every tier that lists the shared id.
+        let progressive = settings.progressive_item_ids.contains(&id) || self.marker_ids.contains(&id);
 
         if shared && progressive {
             // Shared progressive items (shields) live on both pages: advance each
@@ -664,6 +694,12 @@ mod tests {
         d.flat().iter().position(|fe| fe.entry.name == name).expect("entry exists")
     }
 
+    /// Flat index of the entry whose lookup keys contain `key` (used to pick a
+    /// specific game's tier when the display name is shared across OoT and MM).
+    fn entry_with_key(d: &Dashboard, key: u32) -> usize {
+        d.flat().iter().position(|fe| fe.entry.lookup_keys.contains(&key)).expect("entry exists")
+    }
+
     /// Build a single local world from (location -> item) placements plus a
     /// collected set, for the tests below.
     fn one_world(
@@ -813,6 +849,82 @@ mod tests {
     }
 
     #[test]
+    fn progressive_strength_walks_one_tier_at_a_time() {
+        // Strength (Bracelet -> Silver -> Golden) is always progressive in OoTMM but
+        // has NO progressive setting row, so `OOT_STRENGTH` — the marker every
+        // gauntlet widget lists — was never marked progressive and one pickup lit all
+        // three. It is now derived as a structural family marker.
+        assert_eq!(find_item_id("Progressive Strength (OoT)"), Some(data::iid::OOT_STRENGTH));
+        let gs: Vec<usize> = data::OOT_OBJECTS
+            .iter()
+            .enumerate()
+            .filter(|(_, o)| o.type_ == data::ObjectType::gs)
+            .map(|(i, _)| i)
+            .take(2)
+            .collect();
+        let (a, b) = (gs[0], gs[1]);
+        let places = [
+            (data::OOT_OBJECTS[a].location, "Progressive Strength (OoT)"),
+            (data::OOT_OBJECTS[b].location, "Progressive Strength (OoT)"),
+        ];
+        let mut settings = Settings::default();
+        settings.apply(&HashSet::new());
+
+        let d0 = Dashboard::new();
+        assert!(d0.marker_ids.contains(&data::iid::OOT_STRENGTH), "strength marker derived");
+
+        let mut d = Dashboard::new();
+        let bracelet = entry_by_name(&d, "Goron's Bracelet"); // first match = OoT page
+        let silver = entry_by_name(&d, "Silver Gauntlets");
+        let golden = entry_by_name(&d, "Golden Gauntlets");
+
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a)]), &settings, &HashSet::new());
+        assert!(d.state(bracelet).found, "first strength lights Goron's Bracelet");
+        assert!(!d.state(silver).found, "and not Silver Gauntlets yet");
+        assert!(!d.state(golden).found, "and not Golden Gauntlets yet");
+
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a), (Game::Oot, b)]), &settings, &HashSet::new());
+        assert!(d.state(silver).found, "second strength advances to Silver Gauntlets");
+        assert!(!d.state(golden).found, "still not Golden Gauntlets (only two collected)");
+    }
+
+    #[test]
+    fn progressive_shield_walks_one_tier_at_a_time() {
+        // MM shields: the generic `MM_SHIELD` marker sits on all three shield widgets
+        // but the progressive setting only lists the specific ids, so a pickup that
+        // resolves to the generic id lit all three. Now covered by the structural
+        // marker set. (Uses the MM widgets, picked by a game-specific key since the
+        // display names are shared with OoT.)
+        assert_eq!(find_item_id("Progressive Shield (MM)"), Some(data::iid::MM_SHIELD));
+        let objs: Vec<usize> = data::MM_OBJECTS
+            .iter()
+            .enumerate()
+            .filter(|(_, o)| o.type_ == data::ObjectType::gs || o.type_ == data::ObjectType::chest)
+            .map(|(i, _)| i)
+            .take(2)
+            .collect();
+        let (a, b) = (objs[0], objs[1]);
+        let places = [
+            (data::MM_OBJECTS[a].location, "Progressive Shield (MM)"),
+            (data::MM_OBJECTS[b].location, "Progressive Shield (MM)"),
+        ];
+        let mut settings = Settings::default();
+        settings.apply(&HashSet::new());
+
+        let mut d = Dashboard::new();
+        assert!(d.marker_ids.contains(&data::iid::MM_SHIELD), "shield marker derived");
+        let deku = entry_with_key(&d, data::iid::MM_SHIELD_DEKU);
+        let hero = entry_with_key(&d, data::iid::MM_SHIELD_HERO);
+
+        d.rebuild(&one_world(&places, &[], &[(Game::Mm, a)]), &settings, &HashSet::new());
+        assert!(d.state(deku).found, "first MM shield lights the first tier");
+        assert!(!d.state(hero).found, "and not the second tier yet");
+
+        d.rebuild(&one_world(&places, &[], &[(Game::Mm, a), (Game::Mm, b)]), &settings, &HashSet::new());
+        assert!(d.state(hero).found, "second MM shield advances one tier");
+    }
+
+    #[test]
     fn resolves_rusty_key_spoiler_alias() {
         // The spoiler names rusty keys by their internal door/location string,
         // which differs from the tracker's in-game item name; the alias bridges
@@ -871,4 +983,5 @@ mod tests {
         assert!(!item_matches(&mm_nut_cap, OOT_STICK_UPGRADE2));
         assert!(!item_matches(&cap, MM_STICK_UPGRADE2));
     }
+
 }

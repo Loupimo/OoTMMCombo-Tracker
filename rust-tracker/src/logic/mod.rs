@@ -24,12 +24,18 @@ pub use inputs::WorldInputs;
 /// `settings` must already be `apply`-ed; `worlds` are all physical worlds and
 /// `player` is the 1-based player whose map is displayed. This is the single entry
 /// point the app calls when the tracked state changes.
+/// `discovered` holds the `(game, entrance_id)` of every entrance the player has
+/// walked (from `out_links`); `progressive` gates whether undiscovered shuffled
+/// entrances are treated as impassable (see [`WorldInputs::build`]). Pass an empty
+/// set + `false` for the full-knowledge default.
 pub fn solve_world(
     settings: &crate::settings::Settings,
     worlds: &[crate::WorldData],
     player: u8,
+    discovered: &HashSet<(u8, u32)>,
+    progressive: bool,
 ) -> Reachability {
-    solve(&WorldInputs::build(settings, worlds, player))
+    solve(&WorldInputs::build(settings, worlds, player, discovered, progressive))
 }
 
 /// Every location string that carries a logic rule (already game-prefixed, so it
@@ -154,6 +160,84 @@ mod tests {
                 "stale location {stale} still present"
             );
         }
+    }
+
+    /// Regression guard for the MQ Ice Cavern Sheik Song fix: the MQ variant was
+    /// named `OOT MQ Ice Cavern Sheik Song`, but OoTMM's logic + spoiler use the
+    /// same `Ice Cavern Sheik Song` key for both layouts. The stray "MQ" left it
+    /// with no rule, so it showed as reachable with an empty inventory (the report).
+    #[test]
+    fn ice_cavern_sheik_song_gated_when_empty() {
+        let set = logic_location_set();
+        assert!(
+            set.contains("OOT Ice Cavern Sheik Song"),
+            "canonical Ice Cavern Sheik Song has no logic rule"
+        );
+        assert!(
+            !data::OOT_OBJECTS
+                .iter()
+                .any(|o| o.location == "OOT MQ Ice Cavern Sheik Song"),
+            "stale MQ-prefixed Ice Cavern Sheik Song still present"
+        );
+        // Reproduce the report: a fresh seed (child start, no items) must NOT
+        // reach it — both the vanilla rule (soul_wolfos + sheik + weapon) and the
+        // MQ rule (final-room event + sheik) are unsatisfiable empty-handed.
+        let mut s = crate::settings::Settings::default();
+        let mq = std::collections::HashSet::new();
+        s.parse_spoiler("Settings\n  startingAge: child\n  doorOfTime: open\n", &mq);
+        s.apply(&mq);
+        let reach = solve_world(&s, std::slice::from_ref(&crate::WorldData::default()), 1, &Default::default(), false);
+        assert!(
+            !reach.reachable("OOT Ice Cavern Sheik Song"),
+            "Ice Cavern Sheik Song must be unreachable with no items"
+        );
+    }
+
+    /// Regression guard for the `gen_logic` region-body indent fix: the
+    /// `Dodongo Cavern GS Near Boss` region is indented with 4 spaces (not 2) in
+    /// the upstream yml. The parser used to emit it as an empty stub, dropping its
+    /// GS location (which then defaulted to always-reachable). It must now carry a
+    /// rule and be gated (unreachable with no items).
+    #[test]
+    fn dodongo_gs_near_boss_has_rule_and_is_gated() {
+        assert!(
+            logic_location_set().contains("OOT Dodongo Cavern GS Near Boss"),
+            "Dodongo Cavern GS Near Boss lost its logic rule (parser regression)"
+        );
+        let mut s = crate::settings::Settings::default();
+        let mq = std::collections::HashSet::new();
+        s.parse_spoiler("Settings\n  startingAge: child\n  doorOfTime: open\n", &mq);
+        s.apply(&mq);
+        let reach = solve_world(&s, std::slice::from_ref(&crate::WorldData::default()), 1, &Default::default(), false);
+        assert!(
+            !reach.reachable("OOT Dodongo Cavern GS Near Boss"),
+            "GS Near Boss must be gated (gs && can_damage_skull) with no items"
+        );
+    }
+
+    /// The remaining tracker locations with no logic rule are decorative / out of
+    /// the randomizer pool ("… Unreachable", "Out of Bounds", entries the logic
+    /// comments out). They must stay rule-less: the accessibility filter hides them
+    /// via the spoiler-placement check (`obj_unreachable`'s no-rule branch), not via
+    /// a logic rule. If a future logic update starts modelling one, this fails so we
+    /// revisit it.
+    #[test]
+    fn out_of_pool_checks_have_no_logic_rule() {
+        let set = logic_location_set();
+        for loc in [
+            "OOT Gerudo Fortress Crate Jail Top Child",
+            "OOT Gerudo Fortress Crate Archery Child",
+            "MM Deku Palace Rupee Left 4",
+            "MM Pinnacle Rock Rock Unreachable 1",
+            "MM Snowhead Small Snowball Spring Out of Bounds",
+            "OOT Gerudo Valley Crate Child Unreachable 1",
+        ] {
+            assert!(!set.contains(loc), "{loc} unexpectedly gained a logic rule");
+            let objs = if loc.starts_with("MM ") { data::MM_OBJECTS } else { data::OOT_OBJECTS };
+            assert!(objs.iter().any(|o| o.location == loc), "{loc} is not rendered");
+        }
+        // The real, in-pool sibling keeps its rule (only the "Child" fake is out).
+        assert!(set.contains("OOT Gerudo Fortress Crate Jail Top"));
     }
 
     /// Coverage: the overwhelming majority of the objects the tracker renders must

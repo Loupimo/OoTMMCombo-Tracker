@@ -138,6 +138,7 @@ def load_regions(path, game):
     regions = []
     cur = None
     cur_sub = None
+    body_indent = None  # indent of a region's direct children (attrs / subsections)
     for raw in read_text(path).splitlines():
         line = raw.rstrip()
         if not line.strip() or line.lstrip().startswith("#"):
@@ -149,22 +150,30 @@ def load_regions(path, game):
                    "exits": {}, "events": {}, "locations": {}}
             regions.append(cur)
             cur_sub = None
-        elif indent <= 2:
-            # `key:` (maybe with a trailing comment) with no value is a subsection
-            # header; `key: value` is a scalar attribute (dungeon / region / ...).
-            key, _, rest = content.partition(":")
-            key = key.strip()
-            if key in SUBSECTIONS and not rest.split("#", 1)[0].strip():
-                cur_sub = key
-            else:
+            body_indent = None
+        else:
+            # A region's direct children (attributes + subsection headers) sit at
+            # the first non-zero indent seen after its header; entries inside a
+            # subsection are deeper. The body indent is detected (not hard-coded to
+            # 2) so regions indented with 4 spaces parse the same as 2-space ones.
+            if body_indent is None:
+                body_indent = indent
+            if indent <= body_indent:
+                # `key:` (maybe with a trailing comment) with no value is a
+                # subsection header; `key: value` is a scalar attribute.
+                key, _, rest = content.partition(":")
+                key = key.strip()
+                if key in SUBSECTIONS and not rest.split("#", 1)[0].strip():
+                    cur_sub = key
+                else:
+                    k, v = _split_kv(content)
+                    cur["attrs"][k] = v
+                    cur_sub = None
+            else:  # entry inside a subsection
+                if cur is None or cur_sub is None:
+                    continue
                 k, v = _split_kv(content)
-                cur["attrs"][k] = v
-                cur_sub = None
-        else:  # entry inside a subsection
-            if cur is None or cur_sub is None:
-                continue
-            k, v = _split_kv(content)
-            cur[cur_sub][k] = v
+                cur[cur_sub][k] = v
     return [(r["name"], r["attrs"], {"exits": r["exits"], "events": r["events"],
                                      "locations": r["locations"]}) for r in regions]
 

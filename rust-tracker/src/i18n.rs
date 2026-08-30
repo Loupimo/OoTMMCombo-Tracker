@@ -126,6 +126,12 @@ pub struct AppSettings {
     pub logic_filter_enabled: bool,
     #[serde(default)]
     pub logic_hide_unreachable: bool,
+    // Progressive entrance discovery: when on, the reachability logic only crosses
+    // shuffled entrances the player has actually walked (from `out_links`), treating
+    // undiscovered ones as impassable. Needs the spoiler's `Entrances` section for
+    // the entrance->region mapping. Off by default (uses full spoiler knowledge).
+    #[serde(default)]
+    pub logic_progressive_entrances: bool,
     // Multiplayer launch options (Qt `AppConfig` UseMultiplayer / Host / Port),
     // persisted so the checkbox and server address survive across sessions.
     #[serde(default)]
@@ -154,6 +160,7 @@ impl Default for AppSettings {
             auto_load_spoiler: true,
             logic_filter_enabled: false,
             logic_hide_unreachable: false,
+            logic_progressive_entrances: false,
             use_multiplayer: false,
             mp_host: default_mp_host(),
             mp_port: default_mp_port(),
@@ -356,6 +363,10 @@ impl I18n {
 
     pub fn opt_logic_hide(&self) -> &str {
         Self::get(&self.strings.menu, "logic_hide")
+    }
+
+    pub fn opt_logic_progressive(&self) -> &str {
+        Self::get(&self.strings.menu, "logic_progressive")
     }
 
     pub fn opt_auto_snap(&self) -> &str {
@@ -1196,7 +1207,7 @@ mod tests {
             i.menu_tracking(), i.reveal_items(), i.auto_saving(), i.about(),
             i.opt_hide_collected(), i.opt_from_map(), i.opt_from_list(),
             i.opt_logic_menu(), i.opt_logic_filter(), i.opt_logic_mode(),
-            i.opt_logic_dim(), i.opt_logic_hide(),
+            i.opt_logic_dim(), i.opt_logic_hide(), i.opt_logic_progressive(),
             i.opt_auto_snap(), i.opt_auto_zoom(), i.opt_backup(),
             i.opt_follow_item(), i.opt_follow_entrance(), i.opt_gps_start(),
             i.opt_auto_load(), i.opt_auto_load_tracking(), i.opt_auto_load_spoiler(),

@@ -82,6 +82,11 @@ impl TrackerApp {
                             ui.label(self.i18n.opt_logic_mode());
                             ui.radio_value(&mut opts.logic_hide_unreachable, false, self.i18n.opt_logic_dim());
                             ui.radio_value(&mut opts.logic_hide_unreachable, true, self.i18n.opt_logic_hide());
+                            ui.separator();
+                            ui.checkbox(
+                                &mut opts.logic_progressive_entrances,
+                                self.i18n.opt_logic_progressive(),
+                            );
                         });
                     });
                     ui.separator();
@@ -161,7 +166,8 @@ impl TrackerApp {
             // A change to the reachability filter (on/off, or dim<->hide) changes
             // what is shown and counted, so recompute reachability and the counts.
             let logic_changed = opts.logic_filter_enabled != self.app_settings.logic_filter_enabled
-                || opts.logic_hide_unreachable != self.app_settings.logic_hide_unreachable;
+                || opts.logic_hide_unreachable != self.app_settings.logic_hide_unreachable
+                || opts.logic_progressive_entrances != self.app_settings.logic_progressive_entrances;
             if logic_changed {
                 self.logic_dirty = true;
                 self.counts_dirty = true;

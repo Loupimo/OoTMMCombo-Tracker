@@ -1017,7 +1017,13 @@ impl TrackerApp {
         let inc = (evt.in_game, evt.in_entrance);
 
         // OutLink: leaving `out` now leads to `inc`.
-        self.out_links.insert(out, inc);
+        let newly_discovered = self.out_links.insert(out, inc) != Some(inc);
+        // Progressive-discovery reachability crosses only walked entrances, so a
+        // freshly discovered one must invalidate the logic (`counts_dirty` in the
+        // update loop then cascades to a recompute when the filter is on).
+        if newly_discovered && self.app_settings.logic_progressive_entrances {
+            self.logic_dirty = true;
+        }
         // InLinks: `out` is a (distinct) source that leads to `inc`.
         let sources = self.in_links.entry(inc).or_default();
         if !sources.contains(&out) {
@@ -1252,22 +1258,45 @@ impl TrackerApp {
     /// state is dirty (see the update loop).
     pub(crate) fn recompute_reachability(&mut self) {
         let player = (self.active_world + 1) as u8; // 1-based player whose map is shown
-        self.reach = Some(crate::logic::solve_world(&self.rom_settings, &self.worlds, player));
+        let progressive = self.app_settings.logic_progressive_entrances;
+        // Progressive discovery only needs the set of walked entrances; skip the
+        // allocation entirely when the mode is off (full spoiler knowledge).
+        let discovered: std::collections::HashSet<(u8, u32)> = if progressive {
+            self.out_links.keys().map(|&(g, id)| (g as u8, id)).collect()
+        } else {
+            std::collections::HashSet::new()
+        };
+        self.reach = Some(crate::logic::solve_world(
+            &self.rom_settings,
+            &self.worlds,
+            player,
+            &discovered,
+            progressive,
+        ));
     }
 
     /// Whether a check must be treated as *unreachable* by the accessibility
-    /// filter: the filter is on, a reachability result exists, the location
-    /// carries a logic rule, and the solver did not reach it. A check with no
-    /// rule (not in `logic_locs`) is never considered unreachable — the logic has
-    /// nothing to say about it, so it stays fully shown.
+    /// filter, i.e. hidden/dimmed. Requires the filter on and a reachability
+    /// result. Then:
+    /// - a location that carries a logic rule is unreachable when the solver did
+    ///   not reach it;
+    /// - a location with no rule is normally kept fully shown (the logic has
+    ///   nothing to say), EXCEPT once a spoiler is loaded: a location with no item
+    ///   placed at it is not part of the randomizer pool at all (decorative
+    ///   "… Unreachable" / "Out of Bounds" checks, entries the logic comments out),
+    ///   so it is treated as unreachable rather than shown as always-reachable.
     pub(crate) fn obj_unreachable(&self, location: &str) -> bool {
         if !self.app_settings.logic_filter_enabled {
             return false;
         }
-        match &self.reach {
-            Some(r) => self.logic_locs.contains(location) && !r.reachable(location),
-            None => false,
+        let Some(r) = &self.reach else { return false };
+        if self.logic_locs.contains(location) {
+            return !r.reachable(location);
         }
+        // No logic rule: hide only a confirmed non-pool location — a spoiler is
+        // loaded (placements known) and it holds no item for this check.
+        let cw = &self.worlds[self.active_world];
+        !cw.items.is_empty() && !cw.items.contains_key(location)
     }
 
     /// Toggle an object by hand (map or tree click). A fresh click marks it Forced

@@ -270,6 +270,10 @@ pub struct EntranceRemap {
     pub via: String,
     pub dest_game: u8,
     pub dest: String,
+    /// Numeric id of the source (taken) entrance, resolved from the `(SRC)` token
+    /// on the spoiler line. Lets the progressive-discovery filter tell whether the
+    /// player has walked this entrance yet (`out_links` key). `None` if unresolved.
+    pub src_id: Option<u32>,
 }
 
 impl Default for Settings {
@@ -515,9 +519,15 @@ impl Settings {
     fn parse_entrances(&mut self, section: &str) {
         for line in section.lines() {
             let Some((left, right)) = line.split_once("->") else { continue };
-            // Drop the trailing ` (ENTRANCE_ID)` on each half (names have no ` (`).
-            let left = left.trim().rsplit_once(" (").map_or(left.trim(), |(n, _)| n);
+            // Split off the trailing ` (ENTRANCE_ID)` on each half (names have no
+            // ` (`). The left id is the source (taken) entrance — kept for the
+            // progressive-discovery filter; the right id is unused here.
+            let (left, src_tok) = left
+                .trim()
+                .rsplit_once(" (")
+                .map_or((left.trim(), None), |(n, id)| (n, Some(id.trim_end_matches(')'))));
             let right = right.trim().rsplit_once(" (").map_or(right.trim(), |(n, _)| n);
+            let src_id = src_tok.and_then(resolve_entrance_id);
             let (Some((a, b)), Some((c, _d))) =
                 (split_on_prefixed(left, " to "), split_on_prefixed(right, " from "))
             else {
@@ -538,6 +548,7 @@ impl Settings {
                 via: via.to_string(),
                 dest_game,
                 dest: dest.to_string(),
+                src_id,
             });
         }
     }
@@ -1119,6 +1130,20 @@ fn resolve_trick_name(name: &str) -> Option<&'static str> {
         .binary_search_by(|(n, _)| n.cmp(&name))
         .ok()
         .map(|i| table[i].1)
+}
+
+/// Resolve a spoiler `Entrances` entrance token (e.g. `MM_ZORA_SHOP`) to its
+/// numeric id. The header consts carry a trailing `_ENTR` for most entrances but
+/// not all (grotto / graveyard exits), so try the raw name then the `_ENTR` form.
+fn resolve_entrance_id(name: &str) -> Option<u32> {
+    let table = crate::data::ENTRANCE_ID_BY_NAME;
+    let find = |n: &str| {
+        table
+            .binary_search_by(|(k, _)| k.cmp(&n))
+            .ok()
+            .map(|i| table[i].1)
+    };
+    find(name).or_else(|| find(&format!("{name}_ENTR")))
 }
 
 /// Resolve a spoiler `Song Events` song display name to its song index (0..=19),

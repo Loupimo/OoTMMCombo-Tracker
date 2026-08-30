@@ -74,7 +74,13 @@ impl WorldInputs {
     /// inventory is every collected check, across all worlds, whose item is
     /// destined to that player (multiworld routing). Single / coop seeds have one
     /// world whose placements default to player 1, so this counts everything.
-    pub fn build(settings: &Settings, worlds: &[WorldData], player: u8) -> Self {
+    pub fn build(
+        settings: &Settings,
+        worlds: &[WorldData],
+        player: u8,
+        discovered: &HashSet<(u8, u32)>,
+        progressive: bool,
+    ) -> Self {
         // Inventory: starting items, then +1 per collected check destined to us.
         let mut items: HashMap<u32, u32> = settings.starting_item_ids.clone();
         for (wi, w) in worlds.iter().enumerate() {
@@ -135,7 +141,7 @@ impl WorldInputs {
             tricks,
             song_events: settings.song_events.clone(),
             special_conds: settings.special_conds.clone(),
-            exit_redirects: build_exit_redirects(&settings.entrance_remap),
+            exit_redirects: build_exit_redirects(&settings.entrance_remap, discovered, progressive),
         }
     }
 }
@@ -157,19 +163,32 @@ fn region_name_index() -> &'static [HashMap<&'static str, Vec<u32>>; 2] {
 /// each `from -> via` vanilla edge in the region graph, redirect it to the shuffled
 /// destination region(s). Dungeon destinations resolve to every layout variant; the
 /// solver keeps only the active one.
+///
+/// In `progressive` mode the redirect is only laid down once the player has walked
+/// that entrance (`discovered` holds `(game, src_id)`); an undiscovered entrance is
+/// mapped to *no* targets, which makes `solve` treat the edge as impassable. Outside
+/// progressive mode every remap is applied (full spoiler knowledge, the default).
 fn build_exit_redirects(
     remaps: &[crate::settings::EntranceRemap],
+    discovered: &HashSet<(u8, u32)>,
+    progressive: bool,
 ) -> HashMap<(u32, u32), Vec<u32>> {
     let names = region_name_index();
     let mut out: HashMap<(u32, u32), Vec<u32>> = HashMap::new();
     for m in remaps {
         let Some(dests) = names[m.dest_game as usize].get(m.dest.as_str()) else { continue };
         let Some(froms) = names[m.game as usize].get(m.from.as_str()) else { continue };
+        // Progressive: an entrance the player has not walked yet is a wall (empty
+        // targets). An unresolved `src_id` (rare) is treated as known, so we never
+        // wrongly hide reachability we cannot attribute to a specific entrance.
+        let found = !progressive
+            || m.src_id.map_or(true, |id| discovered.contains(&(m.game, id)));
+        let targets: &[u32] = if found { dests } else { &[] };
         for &fi in froms {
             for e in data::LOGIC_REGIONS[fi as usize].exits {
                 let to = &data::LOGIC_REGIONS[e.to as usize];
                 if to.game == m.game && to.name == m.via {
-                    out.insert((fi, e.to), dests.clone());
+                    out.insert((fi, e.to), targets.to_vec());
                 }
             }
         }
@@ -328,7 +347,7 @@ mod tests {
         world.items.insert(loc.to_string(), "Kokiri Sword (OoT)".to_string());
         world.collected.insert((Game::Oot, obj_idx(Game::Oot, loc)));
 
-        let inp = WorldInputs::build(&settings, std::slice::from_ref(&world), 1);
+        let inp = WorldInputs::build(&settings, std::slice::from_ref(&world), 1, &Default::default(), false);
 
         // The placed sword resolved to its dev id and was counted.
         let sword = find_item_id("Kokiri Sword (OoT)").expect("sword id");
@@ -360,7 +379,7 @@ mod tests {
             &mq,
         );
         settings.apply(&mq);
-        let inp = WorldInputs::build(&settings, &[WorldData::default()], 1);
+        let inp = WorldInputs::build(&settings, &[WorldData::default()], 1, &Default::default(), false);
 
         // OoT slot 0 holds Prelude of Light (song 11): only song 11 matches.
         assert!(inp.song_event(0, 0, 11));
@@ -398,7 +417,7 @@ mod tests {
         let idx = |g: u8, n: &str| region_name_index()[g as usize].get(n).unwrap()[0];
         let (kokiri, lost, zora) =
             (idx(0, "Kokiri Forest"), idx(0, "Lost Woods"), idx(0, "Zora River"));
-        let inp = WorldInputs::build(&settings, &[WorldData::default()], 1);
+        let inp = WorldInputs::build(&settings, &[WorldData::default()], 1, &Default::default(), false);
         let red = inp.exit_redirects().expect("redirects present");
         assert_eq!(red.get(&(kokiri, lost)).map(|v| v.contains(&zora)), Some(true));
 
@@ -406,7 +425,7 @@ mod tests {
         let mut vanilla = Settings::default();
         vanilla.parse_spoiler("Settings\n  startingAge: child\n", &mq);
         vanilla.apply(&mq);
-        assert!(WorldInputs::build(&vanilla, &[WorldData::default()], 1).exit_redirects().is_none());
+        assert!(WorldInputs::build(&vanilla, &[WorldData::default()], 1, &Default::default(), false).exit_redirects().is_none());
     }
 
     /// Multiworld: a collected check's item goes to its destination player, so it
@@ -428,8 +447,8 @@ mod tests {
         let worlds = vec![w1, WorldData::default()];
 
         // Player 1 does not receive it; player 2 does.
-        assert_eq!(WorldInputs::build(&settings, &worlds, 1).item_count(sword), 0);
-        assert_eq!(WorldInputs::build(&settings, &worlds, 2).item_count(sword), 1);
+        assert_eq!(WorldInputs::build(&settings, &worlds, 1, &Default::default(), false).item_count(sword), 0);
+        assert_eq!(WorldInputs::build(&settings, &worlds, 2, &Default::default(), false).item_count(sword), 1);
     }
 
     /// A custom `special(X)` counts owned items across the enabled categories
@@ -449,15 +468,15 @@ mod tests {
         let (bridge, lacs) = (idx("BRIDGE"), idx("LACS"));
 
         // No medallions -> BRIDGE (needs 2) unsatisfied.
-        assert!(!WorldInputs::build(&settings, &[WorldData::default()], 1).special(bridge));
+        assert!(!WorldInputs::build(&settings, &[WorldData::default()], 1, &Default::default(), false).special(bridge));
 
         // One medallion -> still short.
         settings.starting_item_ids.insert(iid::OOT_MEDALLION_FOREST, 1);
-        assert!(!WorldInputs::build(&settings, &[WorldData::default()], 1).special(bridge));
+        assert!(!WorldInputs::build(&settings, &[WorldData::default()], 1, &Default::default(), false).special(bridge));
 
         // Two medallions -> satisfied.
         settings.starting_item_ids.insert(iid::OOT_MEDALLION_FIRE, 1);
-        let inp = WorldInputs::build(&settings, &[WorldData::default()], 1);
+        let inp = WorldInputs::build(&settings, &[WorldData::default()], 1, &Default::default(), false);
         assert!(inp.special(bridge));
 
         // LACS requires a mask category the tracker does not model -> optimistic.
@@ -474,13 +493,13 @@ mod tests {
         settings.apply(&mq);
 
         let empty = WorldData::default();
-        let r0 = super::super::solve_world(&settings, std::slice::from_ref(&empty), 1);
+        let r0 = super::super::solve_world(&settings, std::slice::from_ref(&empty), 1, &Default::default(), false);
 
         let loc = "OOT Kokiri Forest Kokiri Sword Chest";
         let mut world = WorldData::default();
         world.items.insert(loc.to_string(), "Kokiri Sword (OoT)".to_string());
         world.collected.insert((Game::Oot, obj_idx(Game::Oot, loc)));
-        let r1 = super::super::solve_world(&settings, std::slice::from_ref(&world), 1);
+        let r1 = super::super::solve_world(&settings, std::slice::from_ref(&world), 1, &Default::default(), false);
 
         for l in &r0.locations {
             assert!(r1.locations.contains(l), "{l} lost after collecting a check");
