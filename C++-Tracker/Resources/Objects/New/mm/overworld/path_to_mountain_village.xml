@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="mm">
+  <scene id="PATH_MOUNTAIN_VILLAGE">
+    <scene_rendering id="MM_PATH_MOUNTAIN_VILLAGE" loc_type="overworld">
+      <rendering_option context="winter" layout="all">
+        <xflag type="snowball" location="Path to Mountain Village Big Snowball Lower 1" slice="0x0" setup="0x0" room="0x0" actor="0x1a" item="NOTHING" name="Lower - Big Snowball 1" xyz="639;175;0"/>
+        <xflag type="snowball" location="Path to Mountain Village Big Snowball Lower 2" slice="0x0" setup="0x0" room="0x0" actor="0x2a" item="NOTHING" name="Lower - Big Snowball 2" xyz="636;107;0"/>
+        <xflag type="snowball" location="Path to Mountain Village Big Snowball Lower 3" slice="0x0" setup="0x0" room="0x0" actor="0x1e" item="RECOVERY_HEART" name="Lower - Big Snowball 3" xyz="511;345;0"/>
+        <xflag type="snowball" location="Path to Mountain Village Big Snowball Lower 4" slice="0x0" setup="0x0" room="0x0" actor="0x1f" item="NOTHING" name="Lower - Big Snowball 4" xyz="466;423;0"/>
+        <xflag type="snowball" location="Path to Mountain Village Big Snowball Middle 1" slice="0x0" setup="0x0" room="0x0" actor="0x23" item="NOTHING" name="Middle - Big Snowball 1" xyz="358;401;3"/>
+        <xflag type="snowball" location="Path to Mountain Village Big Snowball Middle 2" slice="0x0" setup="0x0" room="0x0" actor="0x22" item="NOTHING" name="Middle - Big Snowball 2" xyz="361;383;2"/>
+        <xflag type="snowball" location="Path to Mountain Village Big Snowball Middle 3" slice="0x0" setup="0x0" room="0x0" actor="0x21" item="NOTHING" name="Middle - Big Snowball 3" xyz="351;367;1"/>
+        <xflag type="snowball" location="Path to Mountain Village Big Snowball Middle 4" slice="0x0" setup="0x0" room="0x0" actor="0x24" item="NOTHING" name="Middle - Big Snowball 4" xyz="353;352;0"/>
+        <xflag type="snowball" location="Path to Mountain Village Big Snowball Upper 1" slice="0x0" setup="0x0" room="0x0" actor="0x2b" item="RECOVERY_HEART" name="Upper - Big Snowball 1" xyz="201;218;2"/>
+        <xflag type="snowball" location="Path to Mountain Village Big Snowball Upper 2" slice="0x0" setup="0x0" room="0x0" actor="0x29" item="RECOVERY_HEART" name="Upper - Big Snowball 2" xyz="184;214;1"/>
+        <xflag type="snowball" location="Path to Mountain Village Big Snowball Upper 3" slice="0x0" setup="0x0" room="0x0" actor="0x2c" item="RECOVERY_HEART" name="Upper - Big Snowball 3" xyz="164;212;0"/>
+      </rendering_option>
+      <rendering_option context="winter" layout="all" type=" snowball">
+        <xflag type="snowball" location="Path to Mountain Village Small Snowball Lower Winter 1" slice="0x0" setup="0x0" room="0x0" actor="0x25" item="NOTHING" name="Lower - Small Snowball 1" xyz="594;141;0"/>
+        <xflag type="snowball" location="Path to Mountain Village Small Snowball Lower Winter 2" slice="0x0" setup="0x0" room="0x0" actor="0x26" item="RECOVERY_HEART" name="Lower - Small Snowball 2" xyz="472;342;0"/>
+        <xflag type="snowball" location="Path to Mountain Village Small Snowball Lower Winter 3" slice="0x0" setup="0x0" room="0x0" actor="0x27" item="RECOVERY_HEART" name="Lower - Small Snowball 3" xyz="505;390;0"/>
+      </rendering_option>
+      <rendering_option context="winter" layout="all">
+        <xflag type="snowball" location="Path to Mountain Village Small Snowball Upper Winter" slice="0x0" setup="0x0" room="0x0" actor="0x28" item="MAGIC_JAR_SMALL" name="Upper - Small Snowball" xyz="185;280;0"/>
+      </rendering_option>
+      <rendering_option context="spring" layout="all" type=" snowball">
+        <xflag type="snowball" location="Path to Mountain Village Small Snowball Lower Spring 1" slice="0x0" setup="0x1" room="0x0" actor="0xc" item="MAGIC_JAR_SMALL" name="Spring - Lower 1" xyz="636;107;0"/>
+        <xflag type="snowball" location="Path to Mountain Village Small Snowball Lower Spring 2" slice="0x0" setup="0x1" room="0x0" actor="0x11" item="RECOVERY_HEART" name="Spring - Lower 2" xyz="627;174;0"/>
+        <xflag type="snowball" location="Path to Mountain Village Small Snowball Lower Spring 3" slice="0x0" setup="0x1" room="0x0" actor="0xf" item="RECOVERY_HEART" name="Spring - Lower 3" xyz="511;345;0"/>
+        <xflag type="snowball" location="Path to Mountain Village Small Snowball Lower Spring 4" slice="0x0" setup="0x1" room="0x0" actor="0x10" item="MAGIC_JAR_SMALL" name="Spring - Lower 4" xyz="466;423;0"/>
+        <xflag type="snowball" location="Path to Mountain Village Small Snowball Upper Spring 1" slice="0x0" setup="0x1" room="0x0" actor="0xd" item="MAGIC_JAR_SMALL" name="Spring - Upper 1" xyz="201;218;2"/>
+        <xflag type="snowball" location="Path to Mountain Village Small Snowball Upper Spring 2" slice="0x0" setup="0x1" room="0x0" actor="0xb" item="RECOVERY_HEART" name="Spring - Upper 2" xyz="184;214;1"/>
+        <xflag type="snowball" location="Path to Mountain Village Small Snowball Upper Spring 3" slice="0x0" setup="0x1" room="0x0" actor="0xe" item="RECOVERY_HEART" name="Spring - Upper 3" xyz="164;212;0"/>
+      </rendering_option>
+      <rendering_option context="winter" layout="all">
+        <xflag type="tree" location="Path to Mountain Village Snow Tree Lower 1" slice="0x0" setup="0x0" room="0x0" actor="0xe" item="NOTHING" name="Lower 1" xyz="604;186;0"/>
+        <xflag type="tree" location="Path to Mountain Village Snow Tree Lower 2" slice="0x0" setup="0x0" room="0x0" actor="0xf" item="NOTHING" name="Lower 2" xyz="429;352;0"/>
+        <xflag type="tree" location="Path to Mountain Village Snow Tree Upper 1" slice="0x0" setup="0x0" room="0x0" actor="0x10" item="NOTHING" name="Upper 1" xyz="265;380;0"/>
+        <xflag type="tree" location="Path to Mountain Village Snow Tree Upper 2" slice="0x0" setup="0x0" room="0x0" actor="0x11" item="NOTHING" name="Upper 2" xyz="160;306;0"/>
+      </rendering_option>
+      <actor>
+        <match setup="0" actor="0x31"/>
+        <match setup="1" actor="0x01"/>
+        <xflag type="gossip" location="Path to Mountain Village Gossip Fairy" slice="0" item="FAIRY" name="Gossip Fairy" xyz="0;0;0"/>
+        <xflag type="gossip-big" location="Path to Mountain Village Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy" xyz="0;0;0"/>
+      </actor>
+    </scene_rendering>
+  </scene>
+</checks>

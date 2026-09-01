@@ -7,7 +7,7 @@ class QIcon;
 
 #pragma region Game Icons
 
-enum class EGameIcon : uint8_t
+enum class EGameIcon : uint16_t
 {
     //-------------------------- Object Category. They must follow the same order as ObjectType. --------------------------//
 
@@ -43,9 +43,11 @@ enum class EGameIcon : uint8_t
     bush = 29,
     silverboulder = 30,
     boulder = 31,
+    gossip = 32,
+    gossip_big = 33,
 
     // Extra type used for rendering
-    song = boulder + 1,
+    song = gossip_big + 1,
     heart_piece = song + 1,
     heart_container = heart_piece + 1,
     small_key = heart_container + 1,

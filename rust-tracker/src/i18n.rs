@@ -118,6 +118,11 @@ pub struct AppSettings {
     pub auto_load_tracking: bool,
     #[serde(default = "default_true")]
     pub auto_load_spoiler: bool,
+    // "Reveal uncollected placements": show the spoiler's item at every location,
+    // not just collected ones. On by default; persisted so the toggle survives a
+    // restart. Mirrored at runtime by `Dashboard::reveal` (which drives the tree).
+    #[serde(default = "default_true")]
+    pub reveal: bool,
     // Reachability logic (accessibility): only show checks the player can reach
     // given the items collected so far. Off by default (opt-in). When on,
     // `logic_hide_unreachable` chooses how unreachable checks are shown: dimmed
@@ -158,6 +163,7 @@ impl Default for AppSettings {
             auto_gps_start: false,
             auto_load_tracking: true,
             auto_load_spoiler: true,
+            reveal: true,
             logic_filter_enabled: false,
             logic_hide_unreachable: false,
             logic_progressive_entrances: false,

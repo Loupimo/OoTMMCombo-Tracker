@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="oot">
+  <scene id="LAIR_BONGO_BONGO">
+    <scene_rendering id="OOT_TEMPLE_SHADOW" loc_type="dungeon">
+      <rendering_option layout="all" room="4" type="heart_container">
+        <collectible location="Shadow Temple Boss HC" flag="0x1f" item="HEART_CONTAINER" name="Heart Container" xyz="278;190;0"/>
+      </rendering_option>
+      <rendering_option icon="shadow" layout="all" room="4">
+        <npc location="Shadow Temple Boss" npc="BLUE_WARP_BONGO_BONGO" item="MEDALLION_SHADOW" name="Shadow Medaillon" xyz="237;190;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

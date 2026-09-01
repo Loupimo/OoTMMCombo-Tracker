@@ -148,7 +148,7 @@ const ItemInfo ItemList[NUM_ITEM] =
 { OOT_SONG_SARIA, "Saria's Song (OoT)", EGameIcon::song, true },
 { OOT_SONG_SUN, "Sun's Song (OoT)", EGameIcon::song, true },
 { OOT_SONG_TIME, "Song of Time (OoT)", EGameIcon::song, true },
-{ OOT_SONG_STORMS, "Song of Storms (OoT)", EGameIcon::song, true },
+{ OOT_SONG_OF_STORMS, "Song of Storms (OoT)", EGameIcon::song, true },
 { OOT_SONG_EMPTINESS, "Elegy of Emptiness (OoT)", EGameIcon::song_orange, true },
 { OOT_SONG_HEALING, "Song of Healing (OoT)", EGameIcon::song, true },
 { OOT_SONG_SOARING, "Song of Soaring (OoT)", EGameIcon::song, true },
@@ -665,7 +665,7 @@ const ItemInfo ItemList[NUM_ITEM] =
 { MM_SONG_HEALING, "Song of Healing (MM)", EGameIcon::song, true },
 { MM_SONG_EPONA, "Epona's Song (MM)", EGameIcon::song, true },
 { MM_SONG_SOARING, "Song of Soaring (MM)", EGameIcon::song, true },
-{ MM_SONG_STORMS, "Song of Storms (MM)", EGameIcon::song, true },
+{ MM_SONG_OF_STORMS, "Song of Storms (MM)", EGameIcon::song, true },
 { MM_SONG_SUN, "Sun's Song (MM)", EGameIcon::song, true },
 { MM_SONG_TP_FOREST, "Minuet of Forest (MM)", EGameIcon::song_green, true },
 { MM_SONG_TP_FIRE, "Bolero of Fire (MM)", EGameIcon::song_red, true },
@@ -1047,7 +1047,7 @@ const ItemInfo ItemList[NUM_ITEM] =
 { SHARED_SONG_NOTE_STORMS, "Note from Song of Storms", EGameIcon::song, false },
 { SHARED_SONG_NOTE_SUN, "Note from Sun's Song", EGameIcon::song, false },
 { SHARED_SONG_NOTE_TIME, "Note from Song of Time", EGameIcon::song, false },
-{ SHARED_SONG_STORMS, "Song of Storms", EGameIcon::song, false },
+{ SHARED_SONG_OF_STORMS, "Song of Storms", EGameIcon::song, false },
 { SHARED_SONG_SUN, "Sun's Song", EGameIcon::song, false },
 { SHARED_SONG_TIME, "Song of Time", EGameIcon::song, false },
 { SHARED_SONG_NOTE_HEALING, "Note from Song of Healing", EGameIcon::song, false },
@@ -1202,10 +1202,10 @@ void ParseKey(uint8_t Key[5], ComboItem* Item)
     uint8_t index = 0;
 
     Item->GameID = Key[index];
-    Item->OvType = Key[++index];
-    Item->SceneID = Key[++index];
-    Item->RoomID = Key[++index];
-    Item->ObjectID = Key[++index];
+    Item->OvType = Key[++index] & 0x7f;
+    Item->SceneID = Key[++index] & 0xff;
+    Item->RoomID = Key[++index] & 0xff;
+    Item->ObjectID = Key[++index] & 0xff;
 }
 
 const ItemInfo * FindItem(uint32_t gi)

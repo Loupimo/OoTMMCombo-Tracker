@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="oot">
+  <scene id="TEMPLE_WATER">
+    <scene_rendering id="OOT_TEMPLE_WATER" loc_type="dungeon">
+      <rendering_option room="3" type="small_key">
+        <chest location="Water Temple Under Center" flag="0x06" item="RUPEE_BLUE" name="Under Center" xyz="565;109;0"/>
+      </rendering_option>
+      <rendering_option room="1" type="compass">
+        <chest location="Water Temple Compass" flag="0x09" item="COMPASS_WATER" name="Chest" xyz="1681;243;0"/>
+      </rendering_option>
+      <rendering_option icon="longshot" room="2">
+        <chest location="Water Temple Longshot" flag="0x07" item="HOOKSHOT" name="Longshot" xyz="333;497;0"/>
+      </rendering_option>
+      <rendering_option type="small_key">
+        <chest location="Water Temple Dragon Chest" flag="0x0a" item="SMALL_KEY_WATER" name="Dragon" xyz="112;1015;0"/>
+      </rendering_option>
+      <rendering_option type="boss_key">
+        <chest location="Water Temple Boss Key Chest" flag="0x05" item="BOSS_KEY_WATER" name="Chest" xyz="798;412;0"/>
+      </rendering_option>
+      <rendering_option type="small_key">
+        <chest location="Water Temple Bombable Chest" flag="0x00" item="SMALL_KEY_WATER" name="Bombable Wall" xyz="2053;1247;0"/>
+        <chest location="Water Temple Shell Chest" flag="0x01" item="SMALL_KEY_WATER" name="Shell" xyz="2281;1557;0"/>
+      </rendering_option>
+      <rendering_option type="map">
+        <chest location="Water Temple Map" flag="0x02" item="MAP_WATER" name="Chest" xyz="2281;919;0"/>
+      </rendering_option>
+      <rendering_option room="1" type="small_key">
+        <chest location="Water Temple Corridor Chest" flag="0x08" item="SMALL_KEY_WATER" name="Corridor" xyz="1330;1020;0"/>
+      </rendering_option>
+      <rendering_option room="2" type="small_key">
+        <chest location="Water Temple River Chest" flag="0x03" item="SMALL_KEY_WATER" hint="WATER_RIVER" name="River" xyz="1257;1186;0"/>
+      </rendering_option>
+      <rendering_option room="2">
+        <gs location="Water Temple GS River" flag="0x2c" item="GS_TOKEN" name="River" xyz="1014;967;0"/>
+      </rendering_option>
+      <rendering_option room="3">
+        <gs location="Water Temple GS Center" flag="0x2a" item="GS_TOKEN" name="Center" xyz="141;63;0"/>
+      </rendering_option>
+      <rendering_option room="2">
+        <gs location="Water Temple GS Large Pit" flag="0x29" item="GS_TOKEN" name="Large Pit" xyz="1089;1549;0"/>
+      </rendering_option>
+      <gs location="Water Temple GS Waterfalls" flag="0x2b" item="GS_TOKEN" name="Waterfalls" xyz="984;904;0"/>
+      <gs location="Water Temple GS Cage" flag="0x28" item="GS_TOKEN" name="Cage" xyz="378;1525;0"/>
+      <rendering_option room="1">
+        <xflag type="pot" location="Water Temple Pot Main Room Near Block 1" slice="0x0" setup="0x0" room="0x0" actor="0x17" item="RECOVERY_HEART" name="Main Room - Near Block 1" xyz="1148;444;1"/>
+        <xflag type="pot" location="Water Temple Pot Main Room Near Block 2" slice="0x0" setup="0x0" room="0x0" actor="0x18" item="RECOVERY_HEART" name="Main Room - Near Block 2" xyz="1148;424;0"/>
+      </rendering_option>
+      <rendering_option room="2">
+        <xflag type="pot" location="Water Temple Pot Main Room Near Boss 1" slice="0x0" setup="0x0" room="0x0" actor="0x19" item="FAIRY" name="Main Room - Near Boss 1" xyz="1841;1108;0"/>
+        <xflag type="pot" location="Water Temple Pot Main Room Near Boss 2" slice="0x0" setup="0x0" room="0x0" actor="0x1a" item="FAIRY" name="Main Room - Near Boss 2" xyz="1788;1108;0"/>
+      </rendering_option>
+      <xflag type="pot" location="Water Temple Pot Skull Cage 1" slice="0x0" setup="0x0" room="0x3" actor="0x9" item="BOMB" name="Skull Cage 1" xyz="419;1557;0"/>
+      <xflag type="pot" location="Water Temple Pot Skull Cage 2" slice="0x0" setup="0x0" room="0x3" actor="0xa" item="BOMB" name="Skull Cage 2" xyz="407;1561;0"/>
+      <xflag type="pot" location="Water Temple Pot Skull Cage 3" slice="0x0" setup="0x0" room="0x3" actor="0xd" item="ARROWS_10" name="Skull Cage 3" xyz="361;1576;1"/>
+      <xflag type="pot" location="Water Temple Pot Skull Cage 4" slice="0x0" setup="0x0" room="0x3" actor="0xe" item="ARROWS_10" name="Skull Cage 4" xyz="375;1571;0"/>
+      <rendering_option room="1">
+        <xflag type="pot" location="Water Temple Pot Compass Room 1" slice="0x0" setup="0x0" room="0x4" actor="0x8" item="RECOVERY_HEART" name="Compass Room 1" xyz="1408;307;0"/>
+        <xflag type="pot" location="Water Temple Pot Compass Room 2" slice="0x0" setup="0x0" room="0x4" actor="0x9" item="RECOVERY_HEART" name="Compass Room 2" xyz="1310;304;0"/>
+        <xflag type="pot" location="Water Temple Pot Compass Room 3" slice="0x0" setup="0x0" room="0x4" actor="0xa" item="RECOVERY_HEART" name="Compass Room 3" xyz="1359;306;0"/>
+      </rendering_option>
+      <rendering_option room="2">
+        <xflag type="pot" location="Water Temple Pot Before Dark Link 1" slice="0x0" setup="0x0" room="0x6" actor="0x6" item="MAGIC_JAR_LARGE" name="Before Dark Link 1" xyz="336;1302;0"/>
+        <xflag type="pot" location="Water Temple Pot Before Dark Link 2" slice="0x0" setup="0x0" room="0x6" actor="0x7" item="MAGIC_JAR_LARGE" name="Before Dark Link 2" xyz="367;1302;0"/>
+      </rendering_option>
+      <xflag type="pot" location="Water Temple Pot Blocks Room 1" slice="0x0" setup="0x0" room="0xe" actor="0xb" item="BOMB" name="Blocks Room 1" xyz="2256;423;0"/>
+      <xflag type="pot" location="Water Temple Pot Blocks Room 2" slice="0x0" setup="0x0" room="0xe" actor="0xc" item="BOMB" name="Blocks Room 2" xyz="2212;416;0"/>
+      <xflag type="pot" location="Water Temple Pot Boss Key Room 1" slice="0x0" setup="0x0" room="0x10" actor="0x1" item="FAIRY" name="Boss Key Room 1" xyz="678;301;0"/>
+      <xflag type="pot" location="Water Temple Pot Boss Key Room 2" slice="0x0" setup="0x0" room="0x10" actor="0x2" item="FAIRY" name="Boss Key Room 2" xyz="914;294;0"/>
+      <xflag type="pot" location="Water Temple Pot Ruto Room 1" slice="0x0" setup="0x0" room="0x11" actor="0x7" item="ARROWS_10" name="Ruto Room 1" xyz="1878;1459;0"/>
+      <xflag type="pot" location="Water Temple Pot Ruto Room 2" slice="0x0" setup="0x0" room="0x11" actor="0x8" item="ARROWS_10" name="Ruto Room 2" xyz="1916;1526;0"/>
+      <rendering_option room="1">
+        <xflag type="pot" location="Water Temple Pot Corridor 1" slice="0x0" setup="0x0" room="0x14" actor="0x3" item="RECOVERY_HEART" name="Corridor 1" xyz="1341;1074;0"/>
+        <xflag type="pot" location="Water Temple Pot Corridor 2" slice="0x0" setup="0x0" room="0x14" actor="0x4" item="RECOVERY_HEART" name="Corridor 2" xyz="1315;1073;0"/>
+      </rendering_option>
+      <rendering_option room="2">
+        <xflag type="pot" location="Water Temple Pot River 1" slice="0x0" setup="0x0" room="0x15" actor="0xd" item="ARROWS_10" name="River 1" xyz="1038;1245;0"/>
+        <xflag type="pot" location="Water Temple Pot River 2" slice="0x0" setup="0x0" room="0x15" actor="0xe" item="FAIRY" name="River 2" xyz="1053;1254;0"/>
+        <xflag type="heart" location="Water Temple Heart 1" slice="0x0" setup="0x0" room="0x15" actor="0xb" item="RECOVERY_HEART" name="Heart 1" xyz="848;1243;0"/>
+        <xflag type="heart" location="Water Temple Heart 2" slice="0x0" setup="0x0" room="0x15" actor="0xc" item="RECOVERY_HEART" name="Heart 2" xyz="938;1177;0"/>
+        <xflag type="heart" location="Water Temple Heart 3" slice="0x0" setup="0x0" room="0x15" actor="0xf" item="RECOVERY_HEART" name="Heart 3" xyz="972;1020;0"/>
+        <xflag type="heart" location="Water Temple Heart 4" slice="0x0" setup="0x0" room="0x15" actor="0x10" item="RECOVERY_HEART" name="Heart 4" xyz="1093;1116;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

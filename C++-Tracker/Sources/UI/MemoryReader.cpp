@@ -4,6 +4,7 @@
 #include "Combo/OvTypes.h"
 #include "Combo/Objects.h"
 #include "Combo/Items.h"
+#include "Combo/Xflags.h"
 #include "Common.h"
 #include <bit>
 
@@ -524,6 +525,7 @@ void MemoryReader::CheckEvent(Event * CollectedEvent)
                 memcpy(keyArr + 1, &key, sizeof(uint32_t));
 
                 ParseKey(keyArr, &finalItem);
+                ResolveXflagItem(&finalItem);   // Expand a compact XflagID (new ROMs) before matching
                 CorrectComboItem(&finalItem);
                 collectedItem = CollectedEvent->Query[1] & 0x0000FFFF;
                 CollectedEvent->Query[2] = 0xFFFFFFFF; // Update the treated flag in the shared memory
@@ -584,6 +586,7 @@ void MemoryReader::CheckEvent(Event * CollectedEvent)
                     finalItem.GameID = MM_GAME;
                 }
 
+                ResolveXflagItem(&finalItem);   // Expand a compact XflagID (new ROMs) before matching
                 CorrectComboItem(&finalItem);
                 collectedItem = CollectedEvent->Query[2] & 0x0000FFFF;
             }

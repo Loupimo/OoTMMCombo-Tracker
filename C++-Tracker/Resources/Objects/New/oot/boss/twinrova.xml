@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="oot">
+  <scene id="LAIR_TWINROVA">
+    <scene_rendering id="OOT_TEMPLE_SPIRIT" loc_type="dungeon">
+      <rendering_option layout="all" room="1" type="heart_container">
+        <collectible location="Spirit Temple Boss HC" flag="0x1f" item="HEART_CONTAINER" name="Heart Container" xyz="783;233;0"/>
+      </rendering_option>
+      <rendering_option icon="spirit" layout="all" room="1">
+        <npc location="Spirit Temple Boss" npc="BLUE_WARP_TWINROVA" item="MEDALLION_SPIRIT" name="Spirit Medaillon" xyz="889;339;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

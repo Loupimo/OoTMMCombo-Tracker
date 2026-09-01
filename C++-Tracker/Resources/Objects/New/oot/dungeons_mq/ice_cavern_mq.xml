@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="oot">
+  <scene id="ICE_CAVERN_MQ">
+    <scene_rendering id="OOT_ICE_CAVERN" loc_type="dungeon">
+      <rendering_option layout="oot_mq" type="map">
+        <chest location="MQ Ice Cavern Map Chest" flag="0x01" item="MAP_IC" name="Chest" xyz="1043;1096;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" type="compass">
+        <chest location="MQ Ice Cavern Compass Chest" flag="0x00" item="COMPASS_IC" name="Chest" xyz="720;131;0"/>
+      </rendering_option>
+      <rendering_option icon="iron" layout="oot_mq">
+        <chest location="MQ Ice Cavern Iron Boots" flag="0x02" item="BOOTS_IRON" hint="ICE_CAVERN_CHEST" name="Iron Boots" xyz="389;1270;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" type="heart_piece">
+        <collectible location="MQ Ice Cavern Piece of Heart" flag="0x01" item="HEART_PIECE" name="Piece of Heart" xyz="1018;239;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq">
+        <gs location="MQ Ice Cavern GS Compass Room" flag="0xf9" item="GS_TOKEN" name="Compass Room" xyz="759;310;0"/>
+        <gs location="MQ Ice Cavern GS Scarecrow" flag="0xf8" item="GS_TOKEN" name="Scarecrow" xyz="309;437;0"/>
+        <gs location="MQ Ice Cavern GS Clear Blocks" flag="0xfa" item="GS_TOKEN" name="Clear Blocks" xyz="257;869;0"/>
+        <xflag type="pot" location="MQ Ice Cavern Pot Entrance" slice="0x0" setup="0x0" room="0x0" actor="0x3" item="RECOVERY_HEART" name="Entrance" xyz="773;1601;0"/>
+        <xflag type="pot" location="MQ Ice Cavern Pot First Room 1" slice="0x0" setup="0x0" room="0x1" actor="0x5" item="RECOVERY_HEART" name="First Room 1" xyz="694;1153;0"/>
+        <xflag type="pot" location="MQ Ice Cavern Pot First Room 2" slice="0x0" setup="0x0" room="0x1" actor="0x6" item="RECOVERY_HEART" name="First Room 2" xyz="694;1173;0"/>
+        <xflag type="pot" location="MQ Ice Cavern Pot Main Room 1" slice="0x0" setup="0x0" room="0x3" actor="0xc" item="FLEXIBLE" name="Main Room 1" xyz="795;701;0"/>
+        <xflag type="pot" location="MQ Ice Cavern Pot Main Room 2" slice="0x0" setup="0x0" room="0x3" actor="0xd" item="RUPEE_BLUE" name="Main Room 2" xyz="840;863;0"/>
+        <xflag type="pot" location="MQ Ice Cavern Pot Main Room 3" slice="0x0" setup="0x0" room="0x3" actor="0xf" item="RECOVERY_HEART" name="Main Room 3" xyz="829;878;0"/>
+        <xflag type="pot" location="MQ Ice Cavern Pot Main Room 4" slice="0x0" setup="0x0" room="0x3" actor="0x12" item="FLEXIBLE" name="Main Room 4" xyz="710;721;0"/>
+        <xflag type="pot" location="MQ Ice Cavern Pot Final Corridor 1" slice="0x0" setup="0x0" room="0x6" actor="0x5" item="FLEXIBLE" name="Final Corridor 1" xyz="265;1136;0"/>
+        <xflag type="pot" location="MQ Ice Cavern Pot Final Corridor 2" slice="0x0" setup="0x0" room="0x6" actor="0x6" item="MAGIC_JAR_LARGE" name="Final Corridor 2" xyz="249;1121;0"/>
+        <xflag type="pot" location="MQ Ice Cavern Pot Compass Room 1" slice="0x0" setup="0x0" room="0x9" actor="0xa" item="BOMBS_5" name="Compass Room 1" xyz="922;98;0"/>
+        <xflag type="pot" location="MQ Ice Cavern Pot Compass Room 2" slice="0x0" setup="0x0" room="0x9" actor="0xb" item="BOMBS_5" name="Compass Room 2" xyz="791;103;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Entrance 1" slice="0x0" setup="0x0" room="0x0" actor="0x0" item="NOTHING" name="Entrance 1" xyz="798;1598;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Entrance 2" slice="0x0" setup="0x0" room="0x0" actor="0x1" item="NOTHING" name="Entrance 2" xyz="786;1620;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Before Main Room 1" slice="0x0" setup="0x0" room="0x2" actor="0x0" item="NOTHING" name="Before Main Room 1" xyz="590;1058;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Before Main Room 2" slice="0x0" setup="0x0" room="0x2" actor="0x1" item="NOTHING" name="Before Main Room 2" xyz="614;1055;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Before Main Room 3" slice="0x0" setup="0x0" room="0x2" actor="0x2" item="NOTHING" name="Before Main Room 3" xyz="571;1065;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Before Main Room 4" slice="0x0" setup="0x0" room="0x2" actor="0x3" item="NOTHING" name="Before Main Room 4" xyz="601;1076;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Before Main Room 5" slice="0x0" setup="0x0" room="0x2" actor="0x5" item="NOTHING" name="Before Main Room 5" xyz="668;990;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Main Room 1" slice="0x0" setup="0x0" room="0x3" actor="0x0" item="NOTHING" name="Main Room 1" xyz="867;814;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Main Room 2" slice="0x0" setup="0x0" room="0x3" actor="0x1" item="NOTHING" name="Main Room 2" xyz="855;824;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Main Room 3" slice="0x0" setup="0x0" room="0x3" actor="0x2" item="NOTHING" name="Main Room 3" xyz="843;836;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Main Room 4" slice="0x0" setup="0x0" room="0x3" actor="0x3" item="NOTHING" name="Main Room 4" xyz="852;850;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Main Room 5" slice="0x0" setup="0x0" room="0x3" actor="0x4" item="NOTHING" name="Main Room 5" xyz="860;865;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Before Map Room" slice="0x0" setup="0x0" room="0x4" actor="0x0" item="NOTHING" name="Left Corridor" xyz="581;675;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Compass Room 1" slice="0x0" setup="0x0" room="0x9" actor="0x6" item="NOTHING" name="Compass Room 1" xyz="876;175;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Compass Room 2" slice="0x0" setup="0x0" room="0x9" actor="0x7" item="NOTHING" name="Compass Room 2" xyz="893;178;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Compass Room 3" slice="0x0" setup="0x0" room="0x9" actor="0x8" item="NOTHING" name="Compass Room 3" xyz="927;206;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Compass Room 4" slice="0x0" setup="0x0" room="0x9" actor="0x9" item="NOTHING" name="Compass Room 4" xyz="936;222;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Map Room 1" slice="0x0" setup="0x0" room="0xb" actor="0x2" item="NOTHING" name="Map Room 1" xyz="1081;973;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Map Room 2" slice="0x0" setup="0x0" room="0xb" actor="0x3" item="NOTHING" name="Map Room 2" xyz="1091;986;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Map Room 3" slice="0x0" setup="0x0" room="0xb" actor="0x4" item="NOTHING" name="Map Room 3" xyz="1081;1000;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Map Room 4" slice="0x0" setup="0x0" room="0xb" actor="0x5" item="NOTHING" name="Map Room 4" xyz="1072;1013;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Map Room 5" slice="0x0" setup="0x0" room="0xb" actor="0x6" item="NOTHING" name="Map Room 5" xyz="1072;1029;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Map Room 6" slice="0x0" setup="0x0" room="0xb" actor="0x7" item="NOTHING" name="Map Room 6" xyz="1078;1044;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Map Room 7" slice="0x0" setup="0x0" room="0xb" actor="0x8" item="NOTHING" name="Map Room 7" xyz="1084;1060;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Map Room 8" slice="0x0" setup="0x0" room="0xb" actor="0x9" item="NOTHING" name="Map Room 8" xyz="1020;922;0"/>
+        <xflag type="icicle" location="MQ Ice Cavern Icicle Map Room 9" slice="0x0" setup="0x0" room="0xb" actor="0xa" item="NOTHING" name="Map Room 9" xyz="1028;938;0"/>
+        <xflag type="redice" location="MQ Ice Cavern Red Ice Main Room 1" slice="0x0" setup="0x0" room="0x3" actor="0x9" item="NOTHING" name="Main Room 1" xyz="630;786;0"/>
+        <xflag type="redice" location="MQ Ice Cavern Red Ice Main Room 2" slice="0x0" setup="0x0" room="0x3" actor="0xa" item="NOTHING" name="Main Room 2" xyz="638;800;0"/>
+        <xflag type="redice" location="MQ Ice Cavern Red Ice Main Room 3" slice="0x0" setup="0x0" room="0x3" actor="0xb" item="NOTHING" name="Main Room 3" xyz="629;816;0"/>
+        <xflag type="redice" location="MQ Ice Cavern Red Ice Main Room 4" slice="0x0" setup="0x0" room="0x3" actor="0xe" item="NOTHING" name="Main Room 4" xyz="835;672;0"/>
+        <xflag type="redice" location="MQ Ice Cavern Red Ice Main Room 5" slice="0x0" setup="0x0" room="0x3" actor="0x10" item="NOTHING" name="Main Room 5" xyz="850;684;0"/>
+        <xflag type="redice" location="MQ Ice Cavern Red Ice Main Room 6" slice="0x0" setup="0x0" room="0x3" actor="0x11" item="NOTHING" name="Main Room 6" xyz="865;696;0"/>
+        <xflag type="redice" location="MQ Ice Cavern Red Ice Block Room 1" slice="0x0" setup="0x0" room="0x5" actor="0xe" item="NOTHING" name="Block Room 1" xyz="233;895;0"/>
+        <xflag type="redice" location="MQ Ice Cavern Red Ice Block Room 2" slice="0x0" setup="0x0" room="0x5" actor="0xf" item="NOTHING" name="Block Room 2" xyz="253;895;0"/>
+        <xflag type="redice" location="MQ Ice Cavern Red Ice Block Room 3" slice="0x0" setup="0x0" room="0x5" actor="0x10" item="NOTHING" name="Block Room 3" xyz="274;895;0"/>
+        <xflag type="redice" location="MQ Ice Cavern Red Ice Compass Room" slice="0x0" setup="0x0" room="0x9" actor="0x12" item="NOTHING" name="Compass Room" xyz="759;310;1"/>
+        <xflag type="redice" location="MQ Ice Cavern Red Ice Map Room" slice="0x0" setup="0x0" room="0xb" actor="0x0" item="NOTHING" name="Map Room" xyz="1043;1096;1"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

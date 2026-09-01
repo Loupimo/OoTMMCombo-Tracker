@@ -32,6 +32,16 @@ const QHash<int, std::vector<RoomInfo>> OoTRooms =
 		)
 	},
 
+    {
+        OOT_KOKIRI_FOREST,
+        std::vector<RoomInfo>(
+            {
+                { 0, "Kokiri Forest", "./Resources/OoT/Kokiri_Forest/Kokiri_Forest.jpg" },
+                { 1, "Deku Tree", "./Resources/OoT/Kokiri_Forest/Deku_Tree.jpg" }
+            }
+        )
+    },
+
 	{
 		OOT_DEATH_MOUNTAIN_TRAIL,
 		std::vector<RoomInfo>(

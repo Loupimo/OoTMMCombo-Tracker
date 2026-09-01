@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="oot">
+  <scene id="SACRED_FOREST_MEADOW">
+    <scene_rendering id="OOT_SACRED_FOREST_MEADOW" loc_type="overworld">
+      <rendering_option context="child" type="song">
+        <npc location="Saria's Song" npc="SARIA_SONG" item="SONG_SARIA" name="Saria's Song" xyz="263;253;0"/>
+      </rendering_option>
+      <rendering_option context="adult" icon="song_green" type="song">
+        <npc location="Sacred Meadow Sheik Song" npc="SHEIK_FOREST" item="SONG_TP_FOREST" name="Minuet of Forest" xyz="399;391;0"/>
+      </rendering_option>
+      <rendering_option context="adult">
+        <gs location="Sacred Meadow GS Night Adult" flag="0x6b" item="GS_TOKEN" name="Night Adult" xyz="1001;90;0"/>
+      </rendering_option>
+      <xflag type="wonder" location="Sacred Meadow Wonder Item Entrance" slice="0x0" setup="0x0" room="0x0" actor="0xf" item="RUPEE_BLUE" name="Entrance" xyz="1688;437;0"/>
+      <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 1" slice="0x0" setup="0x0" room="0x0" actor="0xc" item="RUPEE_GREEN" name="Maze 1" xyz="1388;384;0"/>
+      <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 2" slice="0x0" setup="0x0" room="0x0" actor="0xd" item="RUPEE_GREEN" name="Maze 2" xyz="1418;277;0"/>
+      <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 3" slice="0x0" setup="0x0" room="0x0" actor="0xe" item="RUPEE_GREEN" name="Maze 3" xyz="1039;209;0"/>
+      <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 4" slice="0x0" setup="0x0" room="0x0" actor="0x10" item="RUPEE_BLUE" name="Maze 4" xyz="995;383;0"/>
+      <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 5" slice="0x0" setup="0x0" room="0x0" actor="0x11" item="RUPEE_BLUE" name="Maze 5" xyz="1317;277;0"/>
+      <rendering_option room="1">
+        <actor>
+          <match setup="0" actor="0x2"/>
+          <match setup="2" actor="0x1"/>
+          <xflag type="gossip" location="Sacred Meadow Gossip Fairy Maze 1" slice="0" item="FAIRY" name="Maze 1" xyz="1427;246;0"/>
+          <xflag type="gossip-big" location="Sacred Meadow Gossip Big Fairy Maze 1" slice="1" item="FAIRY_BIG" name="Maze 1" xyz="1427;226;0"/>
+        </actor>
+      </rendering_option>
+      <rendering_option room="2">
+        <actor>
+          <match setup="0" actor="0x3"/>
+          <match setup="2" actor="0x2"/>
+          <xflag type="gossip" location="Sacred Meadow Gossip Fairy Maze 2" slice="0" item="FAIRY" name="Maze 2" xyz="1168;433;0"/>
+          <xflag type="gossip-big" location="Sacred Meadow Gossip Big Fairy Maze 2" slice="1" item="FAIRY_BIG" name="Maze 2" xyz="1168;433;0"/>
+        </actor>
+      </rendering_option>
+      <rendering_option room="3">
+        <actor>
+          <match setup="0" actor="0x4"/>
+          <match setup="2" actor="0x3"/>
+          <xflag type="gossip" location="Sacred Meadow Gossip Fairy Deep" slice="0" item="FAIRY" name="Deep" xyz="546;450;0"/>
+          <xflag type="gossip-big" location="Sacred Meadow Gossip Big Fairy Deep" slice="1" item="FAIRY_BIG" name="Deep" xyz="515;450;0"/>
+        </actor>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene name="Sacred Meadow Grotto" id="GROTTOS">
+    <scene_rendering id="OOT_GROTTO_SACRED_MEADOW_WOLFOS" loc_type="overworld">
+      <chest location="Sacred Meadow Grotto" flag="0x11" item="RUPEE_PURPLE" name="Chest" xyz="670;308;0"/>
+    </scene_rendering>
+  </scene>
+  <scene name="Sacred Meadow Storms Grotto" id="GROTTOS">
+    <scene_rendering id="OOT_GROTTO_SACRED_MEADOW_STORMS" loc_type="overworld">
+      <scrub location="Sacred Meadow Storms Grotto Front Scrub" flag="0x05" item="POTION_GREEN" name="Front" xyz="714;302;0"/>
+      <scrub location="Sacred Meadow Storms Grotto Back Scrub" flag="0x06" item="POTION_RED" name="Back" xyz="649;207;0"/>
+      <xflag type="hive" location="Sacred Meadow Storms Grotto Hive" slice="0x0" setup="0x0" room="0x21" actor="0x2" item="RUPEE_RED" name="Hive" xyz="551;157;0"/>
+    </scene_rendering>
+  </scene>
+  <scene name="Sacred Meadow Fairy Fountain" id="FAIRY_FOUNTAIN">
+    <scene_rendering id="OOT_FAIRY_SACRED_MEADOW" loc_type="overworld">
+      <actor room="0x22" actor="0x0">
+        <xflag type="fairy" location="Sacred Meadow Fairy Fountain Fairy 1" slice="0" item="FAIRY" name="Fairy 1" xyz="484;209;0"/>
+        <xflag type="fairy" location="Sacred Meadow Fairy Fountain Fairy 2" slice="1" item="FAIRY" name="Fairy 2" xyz="499;204;0"/>
+        <xflag type="fairy" location="Sacred Meadow Fairy Fountain Fairy 3" slice="2" item="FAIRY" name="Fairy 3" xyz="469;203;0"/>
+        <xflag type="fairy" location="Sacred Meadow Fairy Fountain Fairy 4" slice="3" item="FAIRY" name="Fairy 4" xyz="484;191;0"/>
+        <xflag type="fairy" location="Sacred Meadow Fairy Fountain Fairy 5" slice="4" item="FAIRY" name="Fairy 5" xyz="502;189;0"/>
+        <xflag type="fairy" location="Sacred Meadow Fairy Fountain Fairy 6" slice="5" item="FAIRY" name="Fairy 6" xyz="466;189;0"/>
+        <xflag type="fairy" location="Sacred Meadow Fairy Fountain Fairy 7" slice="6" item="FAIRY" name="Fairy 7" xyz="491;176;0"/>
+        <xflag type="fairy" location="Sacred Meadow Fairy Fountain Fairy 8" slice="7" item="FAIRY" name="Fairy 8" xyz="474;176;0"/>
+      </actor>
+    </scene_rendering>
+  </scene>
+</checks>

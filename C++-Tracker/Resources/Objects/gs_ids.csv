@@ -1,0 +1,145 @@
+location;id
+OOT Bottom of the Well GS East Cage;0x48
+OOT Bottom of the Well GS Inner East;0x49
+OOT Bottom of the Well GS Inner West;0x4a
+OOT Death Mountain Crater GS Crate;0x87
+OOT Death Mountain Crater GS Soil;0x80
+OOT Death Mountain Trail GS Above Dodongo;0x83
+OOT Death Mountain Trail GS Before Climb;0x84
+OOT Death Mountain Trail GS Entrance;0x82
+OOT Death Mountain Trail GS Soil;0x81
+OOT Deku Tree GS Basement Back Room;0x08
+OOT Deku Tree GS Basement Gate;0x09
+OOT Deku Tree GS Basement Vines;0x0a
+OOT Deku Tree GS Compass;0x0b
+OOT Desert Colossus GS Plateau;0xb2
+OOT Desert Colossus GS Soil;0xb0
+OOT Desert Colossus GS Tree;0xb3
+OOT Dodongo Cavern GS Near Boss;0x13
+OOT Dodongo Cavern GS Scarecrow;0x11
+OOT Dodongo Cavern GS Side Room;0x14
+OOT Dodongo Cavern GS Stairs Top;0x12
+OOT Dodongo Cavern GS Stairs Vines;0x10
+OOT Fire Temple GS Hammer Statues;0x29
+OOT Fire Temple GS Lava Side Room;0x28
+OOT Fire Temple GS Maze;0x2a
+OOT Fire Temple GS Scarecrow Top;0x2b
+OOT Fire Temple GS Scarecrow Wall;0x2c
+OOT Forest Temple GS Antichamber;0x24
+OOT Forest Temple GS Entrance;0x21
+OOT Forest Temple GS Garden East;0x20
+OOT Forest Temple GS Garden West;0x22
+OOT Forest Temple GS Main;0x23
+OOT Ganon Castle Exterior GS;0x78
+OOT Gerudo Fortress GS Target;0xa8
+OOT Gerudo Fortress GS Wall;0xa9
+OOT Gerudo Valley GS Pillar;0xa2
+OOT Gerudo Valley GS Soil;0xa0
+OOT Gerudo Valley GS Tent;0xa3
+OOT Gerudo Valley GS Wall;0xa1
+OOT Goron City GS Maze;0x86
+OOT Goron City GS Platform;0x85
+OOT Graveyard GS Soil;0x88
+OOT Graveyard GS Wall;0x8f
+OOT Haunted Wasteland GS;0xb1
+OOT Hyrule Castle GS Grotto;0x79
+OOT Hyrule Castle GS Tree;0x7a
+OOT Hyrule Field Grotto Near Gerudo GS;0x58
+OOT Hyrule Field Grotto Near Kakariko GS;0x59
+OOT Ice Cavern GS Block Room;0x50
+OOT Ice Cavern GS HP Room;0x52
+OOT Ice Cavern GS Scythe Room;0x51
+OOT Jabu-Jabu GS Bottom Lower;0x18
+OOT Jabu-Jabu GS Bottom Upper;0x19
+OOT Jabu-Jabu GS Near Boss;0x1a
+OOT Jabu-Jabu GS Water Switch;0x1b
+OOT Kakariko GS Bazaar;0x89
+OOT Kakariko GS House of Skulltula;0x8c
+OOT Kakariko GS Ladder;0x8a
+OOT Kakariko GS Roof;0x8e
+OOT Kakariko GS Shooting Gallery;0x8b
+OOT Kakariko GS Tree;0x8d
+OOT Kokiri Forest GS Night Adult;0x6a
+OOT Kokiri Forest GS Night Child;0x69
+OOT Kokiri Forest GS Soil;0x68
+OOT Laboratory GS Crate;0x9b
+OOT Lake Hylia GS Big Tree;0x9c
+OOT Lake Hylia GS Island;0x99
+OOT Lake Hylia GS Lab Wall;0x9a
+OOT Lake Hylia GS Soil;0x98
+OOT Lon Lon Ranch GS Back Wall;0x60
+OOT Lon Lon Ranch GS House;0x62
+OOT Lon Lon Ranch GS Rain Shed;0x61
+OOT Lon Lon Ranch GS Tree;0x63
+OOT Lost Woods GS Bean Ride;0x72
+OOT Lost Woods GS Soil Bridge;0x70
+OOT Lost Woods GS Soil Theater;0x71
+OOT MQ Bottom of the Well GS Basement;0x48
+OOT MQ Bottom of the Well GS Coffin Room;0x4a
+OOT MQ Bottom of the Well GS West Middle Room;0x49
+OOT MQ Deku Tree GS Back Room;0x08
+OOT MQ Deku Tree GS Compass Room;0x0b
+OOT MQ Deku Tree GS Lobby Crate;0x09
+OOT MQ Deku Tree GS Song of Time Blocks;0x0a
+OOT MQ Dodongo Cavern GS Larve Room;0x14
+OOT MQ Dodongo Cavern GS Near Boss;0x10
+OOT MQ Dodongo Cavern GS Poe Room Side;0x11
+OOT MQ Dodongo Cavern GS Time Blocks;0x13
+OOT MQ Dodongo Cavern GS Upper Lizalfos;0x12
+OOT MQ Fire Temple GS 1f Lava Room;0x28
+OOT MQ Fire Temple GS Burning Block;0x2a
+OOT MQ Fire Temple GS Fire Walls Middle;0x2b
+OOT MQ Fire Temple GS Fire Walls Side Room;0x2c
+OOT MQ Fire Temple GS Topmost;0x29
+OOT MQ Forest Temple GS Climb Room;0x24
+OOT MQ Forest Temple GS East Garden;0x20
+OOT MQ Forest Temple GS Entryway;0x21
+OOT MQ Forest Temple GS Well;0x23
+OOT MQ Forest Temple GS West Garden;0x22
+OOT MQ Ice Cavern GS Clear Blocks;0x52
+OOT MQ Ice Cavern GS Compass Room;0x51
+OOT MQ Ice Cavern GS Scarecrow;0x50
+OOT MQ Jabu-Jabu GS Back;0x1a
+OOT MQ Jabu-Jabu GS Basement Side Room;0x1b
+OOT MQ Jabu-Jabu GS Pre-Boss;0x19
+OOT MQ Jabu-Jabu GS SoT Block;0x18
+OOT MQ Shadow Temple GS After Boat;0x44
+OOT MQ Shadow Temple GS After Wind Bomb;0x43
+OOT MQ Shadow Temple GS Pre-Boss;0x42
+OOT MQ Shadow Temple GS Spike Curtain;0x41
+OOT MQ Shadow Temple GS Wind Hint;0x40
+OOT MQ Spirit Temple GS Leever Room;0x39
+OOT MQ Spirit Temple GS Sun Block Room;0x38
+OOT MQ Spirit Temple GS Symphony Room;0x3b
+OOT MQ Spirit Temple GS Top Floor Back Wall;0x3c
+OOT MQ Spirit Temple GS Top Floor Left Wall;0x3a
+OOT MQ Water Temple GS High Water Changer;0x32
+OOT MQ Water Temple GS Lizalfos Hallway;0x30
+OOT MQ Water Temple GS River;0x31
+OOT MQ Water Temple GS Side Loop;0x33
+OOT MQ Water Temple GS Three Torch;0x34
+OOT Market Pot House GS;0x7b
+OOT Sacred Meadow GS Night Adult;0x73
+OOT Shadow Temple GS Falling Spikes;0x41
+OOT Shadow Temple GS Invisible Scythe;0x43
+OOT Shadow Temple GS Near Boat;0x44
+OOT Shadow Temple GS Skull Pot;0x40
+OOT Shadow Temple GS Triple Skull Pot;0x42
+OOT Spirit Temple GS Boulders;0x39
+OOT Spirit Temple GS Child Climb;0x3b
+OOT Spirit Temple GS Child Fence;0x3c
+OOT Spirit Temple GS Iron Knuckle;0x38
+OOT Spirit Temple GS Statue;0x3a
+OOT Water Temple GS Cage;0x30
+OOT Water Temple GS Center;0x32
+OOT Water Temple GS Large Pit;0x31
+OOT Water Temple GS River;0x34
+OOT Water Temple GS Waterfalls;0x33
+OOT Zora Domain GS Waterfall;0x96
+OOT Zora Fountain GS Tree;0x97
+OOT Zora Fountain GS Upper;0x95
+OOT Zora Fountain GS Wall;0x92
+OOT Zora River GS Ladder;0x90
+OOT Zora River GS Near Bridge;0x93
+OOT Zora River GS Near Grotto;0x94
+OOT Zora River GS Tree;0x91

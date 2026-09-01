@@ -86,6 +86,7 @@ impl TrackerApp {
             last_item: None,
             last_entrance: None,
             player_scene: None,
+            player_obj_scene: None,
             followed_scene: None,
             pending_snap: None,
             snap_pos: None,
@@ -122,6 +123,9 @@ impl TrackerApp {
             logic_dirty: true,
             logic_locs: crate::logic::logic_location_set(),
         };
+        // Restore the persisted "reveal uncollected placements" toggle into the
+        // dashboard (its runtime home, which drives the map + progression trees).
+        app.dashboard.reveal = app.app_settings.reveal;
         // Startup auto-loads, each gated by its "Auto Load Most Recent" option.
         if app.app_settings.auto_load_tracking {
             app.load_state(); // restore previous progress (may set patch_path)
@@ -382,6 +386,17 @@ impl TrackerApp {
     pub(crate) fn set_auto_save(&mut self, v: bool) {
         if self.auto_save != v {
             self.auto_save = v;
+        }
+    }
+
+    /// Toggle "reveal uncollected placements" and persist it. The flag lives in the
+    /// dashboard (it drives the map + progression trees), and is mirrored into the
+    /// saved `AppSettings` so the choice survives a restart.
+    pub(crate) fn set_reveal(&mut self, v: bool) {
+        self.dashboard.set_reveal(v);
+        if self.app_settings.reveal != v {
+            self.app_settings.reveal = v;
+            self.app_settings.save(&self.app_settings_path);
         }
     }
 
@@ -821,7 +836,7 @@ impl TrackerApp {
             self.counts_dirty = true;
             // Auto Snap View only when the affected world is the one on screen.
             if self.app_settings.auto_snap && self.active_world == map_idx {
-                self.pending_snap = Some((g, obj.render_scene, obj.x as f32, obj.y as f32));
+                self.pending_snap = Some((g, obj.render_scene, obj.room, obj.x as f32, obj.y as f32));
             }
         }
     }
@@ -886,7 +901,7 @@ impl TrackerApp {
                 .cloned()
                 .unwrap_or_else(|| obj.name.to_string());
             self.last_item = Some(item.clone());
-            let (rs, ox, oy) = (obj.render_scene, obj.x as f32, obj.y as f32);
+            let (rs, room, ox, oy) = (obj.render_scene, obj.room, obj.x as f32, obj.y as f32);
             if self.worlds[LOCAL].collected.insert(hit) {
                 // Mirror the Qt MemoryReader log line.
                 let game = if hit.0 == Game::Oot { "OoT" } else { "MM" };
@@ -898,7 +913,7 @@ impl TrackerApp {
                 // but only while the local world is the one on screen (else the
                 // mark isn't visible on the world the user is looking at).
                 if self.app_settings.auto_snap && self.active_world == LOCAL {
-                    self.pending_snap = Some((hit.0, rs, ox, oy));
+                    self.pending_snap = Some((hit.0, rs, room, ox, oy));
                 }
             }
         }
@@ -1036,8 +1051,15 @@ impl TrackerApp {
         // Status bar + journal: the entrance we just arrived at.
         if let Some(d) = entrance::lookup(evt.in_game, evt.in_entrance) {
             self.last_entrance = Some(self.i18n.tr_entrance(d.to_name).to_string());
-            // The player is now in this scene (drives auto-follow / auto-GPS).
+            // The player is now in this scene (drives auto-GPS + entrance-map
+            // auto-follow). `d.to_scene` is the entrance meta's map node — for the
+            // Market that is the generic combined scene, which carries no objects.
             self.player_scene = Some((evt.in_game, d.to_scene));
+            // The object-map follow needs the scene that actually renders objects:
+            // the generic Market resolves to its Day / Night variant (told apart by
+            // the raw arriving scene); object-less zones resolve to `None`.
+            self.player_obj_scene =
+                resolve_obj_scene(evt.in_game, d.to_scene, evt.in_msg.scene, &self.mq_scenes);
             let from = entrance::lookup(evt.out_game, evt.out_entrance).map(|o| o.to_name).unwrap_or("?");
             let msg = self.i18n.entrance_detect(self.i18n.tr_entrance(from), self.i18n.tr_entrance(d.to_name));
             self.log_msg(msg);
@@ -1418,19 +1440,30 @@ impl TrackerApp {
         if let Some(ps) = self.player_scene {
             if self.followed_scene != Some(ps) {
                 let (g, sid) = ps;
-                let follow = match self.active_tab {
-                    Tab::Oot | Tab::Mm => {
-                        self.app_settings.auto_follow_item && self.active_tab.game() == Some(g)
+                match self.active_tab {
+                    // Item map: follow only to a scene that actually holds tracked
+                    // objects. `player_obj_scene` already resolved that (the Market's
+                    // real Day / Night map), and is `None` for object-less zones
+                    // (Market Entrance, Back Alley…), which then keep the current map.
+                    Tab::Oot | Tab::Mm if self.app_settings.auto_follow_item => {
+                        if let Some((fg, fsid)) = self.player_obj_scene {
+                            if self.active_tab.game() == Some(fg) {
+                                if let Some(def) = fg.scenes().iter().find(|s| s.id == fsid) {
+                                    self.select_scene(fg, def);
+                                }
+                            }
+                        }
                     }
-                    Tab::Entrance => {
-                        self.app_settings.auto_follow_entrance && self.entrance_sub.game() == Some(g)
+                    // Entrance map: entrances render on the generic scene's minimap,
+                    // so follow it verbatim (object-less zones still carry entrances).
+                    Tab::Entrance if self.app_settings.auto_follow_entrance => {
+                        if self.entrance_sub.game() == Some(g) {
+                            if let Some(def) = g.scenes().iter().find(|s| s.id == sid) {
+                                self.select_scene(g, def);
+                            }
+                        }
                     }
-                    _ => false,
-                };
-                if follow {
-                    if let Some(def) = g.scenes().iter().find(|s| s.id == sid) {
-                        self.select_scene(g, def);
-                    }
+                    _ => {}
                 }
                 if self.app_settings.auto_gps_start {
                     self.gps_from = Some(ps);
@@ -1440,11 +1473,20 @@ impl TrackerApp {
             self.followed_scene = Some(ps);
         }
         // Auto Snap View: jump to the last collected object's scene and centre on it.
-        if let Some((g, sid, x, y)) = self.pending_snap.take() {
+        if let Some((g, sid, room, x, y)) = self.pending_snap.take() {
             if let Some(def) = g.scenes().iter().find(|s| s.id == sid) {
                 self.active_tab = if g == Game::Oot { Tab::Oot } else { Tab::Mm };
                 if self.scene.as_ref().map_or(true, |s| s.game != g || s.def.id != sid) {
                     self.select_scene(g, def);
+                }
+                // Multi-room scene: load the room that actually holds the object
+                // before zooming, so the view (and its object coordinates, which are
+                // relative to the room image) snap onto the right map.
+                if let Some(k) = g.rooms(sid).iter().position(|r| r.id == room as u32) {
+                    if self.current_room != k {
+                        self.current_room = k;
+                        self.map_texture = None; // different room image
+                    }
                 }
                 self.snap_pos = Some((x, y));
                 self.view_initialized = false;
@@ -1613,6 +1655,40 @@ impl eframe::App for TrackerApp {
         self.stop_r4();
         self.poller.shutdown_and_wait();
     }
+}
+
+/// The OoT Market's generic map node (`OOT_MARKET`) carries no objects: entrances
+/// render on its combined minimap, while the collectibles live on the Day / Night
+/// variants, told apart only by the raw runtime scene in the arriving message. Map
+/// the generic node + raw scene to the real object scene, or `None` for anything
+/// else (including the adult Market, which has no tracked objects).
+fn market_object_scene(game: Game, generic: u16, raw: u16) -> Option<u16> {
+    use crate::data::scenes as sc;
+    if game == Game::Oot && generic == sc::OOT_MARKET {
+        match raw {
+            sc::OOT_MARKET_CHILD_DAY | sc::OOT_MARKET_CHILD_NIGHT => Some(raw),
+            _ => None,
+        }
+    } else {
+        None
+    }
+}
+
+/// The object-rendering scene to auto-follow for the player's current location.
+/// `generic` is the entrance meta's scene; `raw` is the arriving message's own
+/// scene. Resolves the Market's Day / Night special case first, then follows the
+/// generic scene only when it actually holds tracked objects — so object-less
+/// zones (Market Entrance, Back Alley, plain interiors) yield `None` (no follow).
+fn resolve_obj_scene(
+    game: Game,
+    generic: u16,
+    raw: u32,
+    mq: &HashSet<(Game, u16)>,
+) -> Option<(Game, u16)> {
+    if let Some(obj) = market_object_scene(game, generic, raw as u16) {
+        return Some((game, obj));
+    }
+    game.scene_has_objects(generic, mq).then_some((game, generic))
 }
 
 /// Root directory for the r4 client's per-session data (WAL + send queue). Mirrors

@@ -154,7 +154,7 @@ enum class ROMVersion;
 #define OOT_SONG_SARIA 0x8B
 #define OOT_SONG_SUN 0x8C
 #define OOT_SONG_TIME 0x8D
-#define OOT_SONG_STORMS 0x8E
+#define OOT_SONG_OF_STORMS 0x8E
 #define OOT_SONG_EMPTINESS 0x8F
 #define OOT_SONG_HEALING 0x90
 #define OOT_SONG_SOARING 0x91
@@ -676,7 +676,7 @@ enum class ROMVersion;
 #define MM_SONG_HEALING 0x290
 #define MM_SONG_EPONA 0x291
 #define MM_SONG_SOARING 0x292
-#define MM_SONG_STORMS 0x293
+#define MM_SONG_OF_STORMS 0x293
 #define MM_SONG_SUN 0x294
 #define MM_SONG_TP_FOREST 0x295
 #define MM_SONG_TP_FIRE 0x296
@@ -1063,7 +1063,7 @@ enum class ROMVersion;
 #define SHARED_SONG_NOTE_STORMS 0x40E
 #define SHARED_SONG_NOTE_SUN 0x40F
 #define SHARED_SONG_NOTE_TIME 0x410
-#define SHARED_SONG_STORMS 0x411
+#define SHARED_SONG_OF_STORMS 0x411
 #define SHARED_SONG_SUN 0x412
 #define SHARED_SONG_TIME 0x413
 #define SHARED_SONG_NOTE_HEALING 0x414
@@ -1228,6 +1228,9 @@ typedef struct ComboItem
 	/* The room index within the scene in which this item is located. */
 	uint32_t RoomID;
 	uint32_t ObjectID;
+	/* Compact XflagID for the new xflag system (ROM > v32.3 / dev). 0xFFFF = not an xflag; set by
+	   ResolveXflagItem so FindObject can resolve the object directly (see Combo/Xflags). */
+	uint16_t XflagID = 0xFFFF;
 } ComboItem;
 
 

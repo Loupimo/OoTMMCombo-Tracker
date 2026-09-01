@@ -935,12 +935,22 @@ struct TrackerApp {
     last_item: Option<String>,
     last_entrance: Option<String>,
     /// The player's current scene, derived from the last IN entrance (drives the
-    /// auto-follow and auto-GPS-start options).
+    /// auto-follow and auto-GPS-start options). Holds the entrance meta's scene
+    /// (the generic map node, e.g. the combined Market minimap), which the GPS
+    /// graph keys on.
     player_scene: Option<(Game, u16)>,
+    /// The object-rendering scene for the player's current location, or `None`
+    /// when the zone carries no tracked objects (Market Entrance, Back Alley…).
+    /// Distinct from `player_scene`: the generic Market scene resolves here to its
+    /// real Day / Night object map (told apart by the arriving message's raw
+    /// scene). Drives the item-map auto-follow (which skips object-less zones).
+    player_obj_scene: Option<(Game, u16)>,
     /// Last scene we already auto-followed to (so a follow only fires on a move).
     followed_scene: Option<(Game, u16)>,
-    /// Pending auto-snap request (game, scene, x, y) from the last collected object.
-    pending_snap: Option<(Game, u16, f32, f32)>,
+    /// Pending auto-snap request (game, scene, room, x, y) from the last collected
+    /// object. `room` is the object's RoomID, so a multi-room dungeon loads the
+    /// room holding the object before the view zooms onto it.
+    pending_snap: Option<(Game, u16, u16, f32, f32)>,
     /// Map position to centre on when the view (re)initialises (auto-snap target).
     snap_pos: Option<(f32, f32)>,
     /// Whether the ROM Settings window is open.

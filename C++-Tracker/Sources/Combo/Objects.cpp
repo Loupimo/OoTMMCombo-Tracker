@@ -1,0 +1,1211 @@
+#include "Combo/Objects.h"
+#include "Combo/Items.h"
+#include "Combo/OvTypes.h"
+#include "Combo/OoTObjectScene.h"
+#include "Combo/MMObjectScene.h"
+#include "Multi/Game.h"
+#include <vector>
+#include <cstring>
+#include <cstdlib>
+#include <unordered_map>
+#include <mutex>
+#include <utility>
+
+
+#pragma region SceneObjects
+
+#pragma region OoT
+
+// Empty Scenes
+CreateEmptyScene(OOT_GANON_TOWER_COLLAPSING)
+CreateEmptyScene(OOT_INSIDE_GANON_CASTLE_COLLAPSING)
+CreateEmptyScene(OOT_LAIR_GANONDORF)
+CreateEmptyScene(OOT_TOWER_COLLAPSE_EXTERIOR)
+CreateEmptyScene(OOT_MARKET_ENTRANCE_CHILD_DAY)
+CreateEmptyScene(OOT_MARKET_ENTRANCE_CHILD_NIGHT)
+CreateEmptyScene(OOT_MARKET_ENTRANCE_ADULT)
+CreateEmptyScene(OOT_BACK_ALLEY_DAY)
+CreateEmptyScene(OOT_BACK_ALLEY_NIGHT)
+CreateEmptyScene(OOT_MARKET_ADULT)
+//CreateEmptyScene(OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY)	// now holds the temple-of-time gossips (generated)
+CreateEmptyScene(OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_NIGHT)
+CreateEmptyScene(OOT_TEMPLE_OF_TIME_EXTERIOR_ADULT)
+CreateEmptyScene(OOT_CARPENTER_BOSS_HOUSE)
+CreateEmptyScene(OOT_HAPPY_MASK_SHOP)
+CreateEmptyScene(OOT_CARPENTER_TENT)
+CreateEmptyScene(OOT_GRAVEKEEPER_HUT)
+CreateEmptyScene(OOT_CHAMBER_OF_THE_SAGES)
+CreateEmptyScene(OOT_CASTLE_MAZE_DAY)
+CreateEmptyScene(OOT_CASTLE_MAZE_NIGHT)
+CreateEmptyScene(OOT_CUTSCENE_MAP)
+CreateEmptyScene(OOT_GANON_BATTLE_ARENA)
+CreateEmptyScene(OOT_MARKET_ENTRANCE)
+CreateEmptyScene(OOT_TEMPLE_OF_TIME_ENTRYWAY)
+CreateEmptyScene(OOT_BACK_ALLEY)
+CreateEmptyScene(OOT_SONGS)
+CreateEmptyScene(OOT_GREAT_FAIRY_DEFENSE)
+CreateEmptyScene(OOT_GREAT_FAIRY)
+
+SceneObjects OoTSceneObjects[OOT_NUM_SCENES] =
+{
+	CreateSceneObjects(OOT_DEKU_TREE),
+	CreateSceneObjects(OOT_DODONGO_CAVERN),
+	CreateSceneObjects(OOT_INSIDE_JABU_JABU),
+	CreateSceneObjects(OOT_TEMPLE_FOREST),
+	CreateSceneObjects(OOT_TEMPLE_FIRE),
+	CreateSceneObjects(OOT_TEMPLE_WATER),
+	CreateSceneObjects(OOT_TEMPLE_SPIRIT),
+	CreateSceneObjects(OOT_TEMPLE_SHADOW),
+	CreateSceneObjects(OOT_BOTTOM_OF_THE_WELL),
+	CreateSceneObjects(OOT_ICE_CAVERN),
+	CreateSceneObjects(OOT_GANON_TOWER),
+	CreateSceneObjects(OOT_GERUDO_TRAINING_GROUND),
+	CreateSceneObjects(OOT_THIEVES_HIDEOUT),
+	CreateSceneObjects(OOT_INSIDE_GANON_CASTLE),
+	CreateSceneObjects(OOT_GANON_TOWER_COLLAPSING),
+	CreateSceneObjects(OOT_INSIDE_GANON_CASTLE_COLLAPSING),
+	CreateSceneObjects(OOT_TREASURE_SHOP),
+	CreateSceneObjects(OOT_LAIR_GOHMA),
+	CreateSceneObjects(OOT_LAIR_KING_DODONGO),
+	CreateSceneObjects(OOT_LAIR_BARINADE),
+	CreateSceneObjects(OOT_LAIR_PHANTOM_GANON),
+	CreateSceneObjects(OOT_LAIR_VOLVAGIA),
+	CreateSceneObjects(OOT_LAIR_MORPHA),
+	CreateSceneObjects(OOT_LAIR_TWINROVA),
+	CreateSceneObjects(OOT_LAIR_BONGO_BONGO),
+	CreateSceneObjects(OOT_LAIR_GANONDORF),
+	CreateSceneObjects(OOT_TOWER_COLLAPSE_EXTERIOR),
+	CreateSceneObjects(OOT_MARKET_ENTRANCE_CHILD_DAY),
+	CreateSceneObjects(OOT_MARKET_ENTRANCE_CHILD_NIGHT),
+	CreateSceneObjects(OOT_MARKET_ENTRANCE_ADULT),
+	CreateSceneObjects(OOT_BACK_ALLEY_DAY),
+	CreateSceneObjects(OOT_BACK_ALLEY_NIGHT),
+	CreateSceneObjects(OOT_MARKET_CHILD_DAY),
+	CreateSceneObjects(OOT_MARKET_CHILD_NIGHT),
+	CreateSceneObjects(OOT_MARKET_ADULT),
+	CreateSceneObjects(OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY),
+	CreateSceneObjects(OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_NIGHT),
+	CreateSceneObjects(OOT_TEMPLE_OF_TIME_EXTERIOR_ADULT),
+	CreateSceneObjects(OOT_KOKIRI_KNOW_IT_ALL),
+	CreateSceneObjects(OOT_KOKIRI_TWINS),
+	CreateSceneObjects(OOT_KOKIRI_MIDO),
+	CreateSceneObjects(OOT_KOKIRI_SARIA),
+	CreateSceneObjects(OOT_CARPENTER_BOSS_HOUSE),
+	CreateSceneObjects(OOT_BACK_ALLEY_HOUSE),
+	CreateSceneObjects(OOT_BAZAAR),
+	CreateSceneObjects(OOT_KOKIRI_SHOP),
+	CreateSceneObjects(OOT_GORON_SHOP),
+	CreateSceneObjects(OOT_ZORA_SHOP),
+	CreateSceneObjects(OOT_KAKARIKO_POTION_SHOP),
+	CreateSceneObjects(OOT_MARKET_POTION_SHOP),
+	CreateSceneObjects(OOT_BOMBCHU_SHOP),
+	CreateSceneObjects(OOT_HAPPY_MASK_SHOP),
+	CreateSceneObjects(OOT_LINK_HOUSE),
+	CreateSceneObjects(OOT_BACK_ALLEY_HOUSE2),
+	CreateSceneObjects(OOT_STABLE),
+	CreateSceneObjects(OOT_IMPA_HOUSE),
+	CreateSceneObjects(OOT_LABORATORY),
+	CreateSceneObjects(OOT_CARPENTER_TENT),
+	CreateSceneObjects(OOT_GRAVEKEEPER_HUT),
+	CreateSceneObjects(OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES),
+	CreateSceneObjects(OOT_FAIRY_FOUNTAIN),
+	CreateSceneObjects(OOT_GREAT_FAIRY_FOUNTAIN_SPELLS),
+	CreateSceneObjects(OOT_GROTTOS),
+	CreateSceneObjects(OOT_TOMB_REDEAD),
+	CreateSceneObjects(OOT_TOMB_FAIRY),
+	CreateSceneObjects(OOT_TOMB_ROYAL),
+	CreateSceneObjects(OOT_SHOOTING_GALLERY),
+	CreateSceneObjects(OOT_TEMPLE_OF_TIME),
+	CreateSceneObjects(OOT_CHAMBER_OF_THE_SAGES),
+	CreateSceneObjects(OOT_CASTLE_MAZE_DAY),
+	CreateSceneObjects(OOT_CASTLE_MAZE_NIGHT),
+	CreateSceneObjects(OOT_CUTSCENE_MAP),
+	CreateSceneObjects(OOT_TOMB_DAMPE_WINDMILL),
+	CreateSceneObjects(OOT_FISHING_POND),
+	CreateSceneObjects(OOT_CASTLE_COURTYARD),
+	CreateSceneObjects(OOT_BOMBCHU_BOWLING_ALLEY),
+	CreateSceneObjects(OOT_RANCH_HOUSE_SILO),
+	CreateSceneObjects(OOT_GUARD_HOUSE),
+	CreateSceneObjects(OOT_GRANNY_POTION_SHOP),
+	CreateSceneObjects(OOT_GANON_BATTLE_ARENA),
+	CreateSceneObjects(OOT_HOUSE_OF_SKULLTULA),
+	CreateSceneObjects(OOT_HYRULE_FIELD),
+	CreateSceneObjects(OOT_KAKARIKO_VILLAGE),
+	CreateSceneObjects(OOT_GRAVEYARD),
+	CreateSceneObjects(OOT_ZORA_RIVER),
+	CreateSceneObjects(OOT_KOKIRI_FOREST),
+	CreateSceneObjects(OOT_SACRED_FOREST_MEADOW),
+	CreateSceneObjects(OOT_LAKE_HYLIA),
+	CreateSceneObjects(OOT_ZORA_DOMAIN),
+	CreateSceneObjects(OOT_ZORA_FOUNTAIN),
+	CreateSceneObjects(OOT_GERUDO_VALLEY),
+	CreateSceneObjects(OOT_LOST_WOODS),
+	CreateSceneObjects(OOT_DESERT_COLOSSUS),
+	CreateSceneObjects(OOT_GERUDO_FORTRESS),
+	CreateSceneObjects(OOT_HAUNTED_WASTELAND),
+	CreateSceneObjects(OOT_HYRULE_CASTLE),
+	CreateSceneObjects(OOT_DEATH_MOUNTAIN_TRAIL),
+	CreateSceneObjects(OOT_DEATH_MOUNTAIN_CRATER),
+	CreateSceneObjects(OOT_GORON_CITY),
+	CreateSceneObjects(OOT_LON_LON_RANCH),
+	CreateSceneObjects(OOT_GANON_CASTLE_EXTERIOR),
+
+	// OoT detailed grotto scene
+	CreateSceneObjects(OOT_GROTTO_KOKIRI_FOREST_STORMS),
+	CreateSceneObjects(OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE),
+	CreateSceneObjects(OOT_GROTTO_LOST_WOODS_GENERIC),
+	CreateSceneObjects(OOT_GROTTO_LOST_WOODS_THEATER),
+	CreateSceneObjects(OOT_GROTTO_SACRED_MEADOW_WOLFOS),
+	CreateSceneObjects(OOT_GROTTO_SACRED_MEADOW_STORMS),
+	CreateSceneObjects(OOT_GROTTO_KAKARIKO_REDEAD),
+	CreateSceneObjects(OOT_GROTTO_KAKARIKO_OPEN),
+	CreateSceneObjects(OOT_GROTTO_DEATH_TRIAL_STORMS),
+	CreateSceneObjects(OOT_GROTTO_DEATH_TRIAL_COW),
+	CreateSceneObjects(OOT_GROTTO_GORON_CITY_SCRUBS),
+	CreateSceneObjects(OOT_GROTTO_DEATH_CRATER_GENERIC),
+	CreateSceneObjects(OOT_GROTTO_DEATH_CRATER_SCRUBS),
+	CreateSceneObjects(OOT_GROTTO_ZORA_RIVER_STORMS),
+	CreateSceneObjects(OOT_GROTTO_ZORA_RIVER_GENERIC),
+	CreateSceneObjects(OOT_GROTTO_LAKE_HYLIA_SCRUBS),
+	CreateSceneObjects(OOT_GROTTO_LON_LON_SCRUBS),
+	CreateSceneObjects(OOT_GROTTO_HYRULE_SCRUBS),
+	CreateSceneObjects(OOT_GROTTO_HYRULE_SE),
+	CreateSceneObjects(OOT_GROTTO_HYRULE_OPEN),
+	CreateSceneObjects(OOT_GROTTO_HYRULE_MARKET),
+	CreateSceneObjects(OOT_GROTTO_HYRULE_TEKTITE),
+	CreateSceneObjects(OOT_GROTTO_HYRULE_KAKARIKO),
+	CreateSceneObjects(OOT_GROTTO_HYRULE_GERUDO),
+	CreateSceneObjects(OOT_GROTTO_CASTLE_STORMS),
+	CreateSceneObjects(OOT_GROTTO_VALLEY_STORMS),
+	CreateSceneObjects(OOT_GROTTO_VALLEY_OCTOROK),
+	CreateSceneObjects(OOT_GROTTO_DESERT_SCRUBS),
+
+	// OoT detailed fairy scene
+	CreateSceneObjects(OOT_FAIRY_SACRED_MEADOW),
+	CreateSceneObjects(OOT_FAIRY_ZORA_RIVER),
+	CreateSceneObjects(OOT_FAIRY_ZORA_DOMAIN),
+	CreateSceneObjects(OOT_FAIRY_HYRULE),
+	CreateSceneObjects(OOT_FAIRY_GERUDO_FORTRESS),
+
+	// OoT detailed great fairy scene
+	CreateSceneObjects(OOT_GREAT_FAIRY_CASTLE),
+	CreateSceneObjects(OOT_GREAT_FAIRY_DEFENSE),
+	CreateSceneObjects(OOT_GREAT_FAIRY_FARORE),
+	CreateSceneObjects(OOT_GREAT_FAIRY_NAYRU),
+	CreateSceneObjects(OOT_GREAT_FAIRY_MAGIC),
+	CreateSceneObjects(OOT_GREAT_FAIRY_MAGIC2),
+	CreateSceneObjects(OOT_GREAT_FAIRY),
+
+	// OoT detailed other scene
+	CreateSceneObjects(OOT_KAKARIKO_BAZAAR),
+	CreateSceneObjects(OOT_MARKET_BAZAAR),
+	CreateSceneObjects(OOT_KAKARIKO_SHOOTING),
+	CreateSceneObjects(OOT_MARKET_SHOOTING),
+	CreateSceneObjects(OOT_SILO),
+	CreateSceneObjects(OOT_WINDMILL),
+	CreateSceneObjects(OOT_MARKET_ENTRANCE),
+	CreateSceneObjects(OOT_TEMPLE_OF_TIME_ENTRYWAY),
+	CreateSceneObjects(OOT_BACK_ALLEY),
+	CreateSceneObjects(OOT_SONGS),
+
+	// Spoiler Log
+	CreateSceneObjects(OOT_INSIDE_EGGS),
+	CreateSceneObjects(OOT_MARKET)
+};
+
+#pragma endregion
+
+#pragma region MM
+
+// Empty scene objects
+CreateEmptyScene(MM_FISHERMAN_HUT)
+CreateEmptyScene(MM_BENEATH_THE_GRAVEYARD_NIGHT1)
+CreateEmptyScene(MM_BENEATH_THE_GRAVEYARD_NIGHT2)
+CreateEmptyScene(MM_INSIDE_CASTLE_IKANA)
+CreateEmptyScene(MM_SOUTHERN_SWAMP_CLEAR)
+CreateEmptyScene(MM_CUTSCENE_MAP)
+CreateEmptyScene(MM_OPENING)
+CreateEmptyScene(MM_GORON_VILLAGE_SPRING)
+CreateEmptyScene(MM_GREAT_BAY_CUTSCENE)
+CreateEmptyScene(MM_CLOCK_TOWER_INTERIOR)
+CreateEmptyScene(MM_LOST_WOODS)
+CreateEmptyScene(MM_GIANT_CHAMBER)
+CreateEmptyScene(MM_PATH_SNOWHEAD_SPRING)
+CreateEmptyScene(MM_PATH_MOUNTAIN_VILLAGE_SPRING)
+CreateEmptyScene(MM_SNOWHEAD_SPRING)
+CreateEmptyScene(MM_ZORA_JAPAS_ROOM)
+CreateEmptyScene(MM_ZORA_TIJO_ROOM)
+CreateEmptyScene(MM_ROMANI_RANCH_BARN)
+CreateEmptyScene(MM_PIRATE_SEWERS)
+//CreateEmptyScene(MM_OWLS)
+CreateEmptyScene(MM_GROTTO_TERMINA_SWAMP_GOSSIP)
+CreateEmptyScene(MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP)
+CreateEmptyScene(MM_GROTTO_DEKU_PALACE_CLIMB)
+//CreateEmptyScene(MM_GORON_VILLAGE)
+CreateEmptyScene(MM_SPRING_WATER_CAVE)
+
+SceneObjects MMSceneObjects[MM_NUM_SCENES] =
+{
+	CreateSceneObjects(MM_SOUTHERN_SWAMP_CLEAR),
+	CreateSceneObjects(MM_FAIRY_SNOWHEAD),
+	CreateSceneObjects(MM_FAIRY_GREAT_BAY_COAST),
+	CreateSceneObjects(MM_FAIRY_WOODFALL),
+	CreateSceneObjects(MM_FAIRY_CLOCK_TOWN),
+	CreateSceneObjects(MM_FAIRY_IKANA),
+	CreateSceneObjects(MM_PATH_SNOWHEAD_SPRING),
+	CreateSceneObjects(MM_GROTTOS),
+	CreateSceneObjects(MM_CUTSCENE_MAP),
+	CreateSceneObjects(MM_PATH_MOUNTAIN_VILLAGE_SPRING),
+	CreateSceneObjects(MM_POTION_SHOP),
+	CreateSceneObjects(MM_LAIR_MAJORA),
+	CreateSceneObjects(MM_BENEATH_THE_GRAVEYARD),
+	CreateSceneObjects(MM_CURIOSITY_SHOP),
+	CreateSceneObjects(MM_BENEATH_THE_GRAVEYARD_NIGHT1),
+	CreateSceneObjects(MM_BENEATH_THE_GRAVEYARD_NIGHT2),
+	CreateSceneObjects(MM_RANCH_HOUSE_BARN),
+	CreateSceneObjects(MM_HONEY_DARLING),
+	CreateSceneObjects(MM_MAYOR_HOUSE),
+	CreateSceneObjects(MM_IKANA_CANYON),
+	CreateSceneObjects(MM_PIRATE_FORTRESS_EXTERIOR),
+	CreateSceneObjects(MM_MILK_BAR),
+	CreateSceneObjects(MM_TEMPLE_STONE_TOWER),
+	CreateSceneObjects(MM_TREASURE_SHOP),
+	CreateSceneObjects(MM_TEMPLE_STONE_TOWER_INVERTED),
+	CreateSceneObjects(MM_CLOCK_TOWER_ROOFTOP),
+	CreateSceneObjects(MM_OPENING),
+	CreateSceneObjects(MM_TEMPLE_WOODFALL),
+	CreateSceneObjects(MM_PATH_MOUNTAIN_VILLAGE),
+	CreateSceneObjects(MM_CASTLE_IKANA),
+	CreateSceneObjects(MM_DEKU_PLAYGROUND),
+	CreateSceneObjects(MM_LAIR_ODOLWA),
+	CreateSceneObjects(MM_SHOOTING_GALLERY),
+	CreateSceneObjects(MM_TEMPLE_SNOWHEAD),
+	CreateSceneObjects(MM_MILK_ROAD),
+	CreateSceneObjects(MM_PIRATE_FORTRESS_INTERIOR),
+	CreateSceneObjects(MM_SHOOTING_GALLERY_SWAMP),
+	CreateSceneObjects(MM_PINNACLE_ROCK),
+	CreateSceneObjects(MM_FAIRY_FOUNTAIN),
+	CreateSceneObjects(MM_SPIDER_HOUSE_SWAMP),
+	CreateSceneObjects(MM_SPIDER_HOUSE_OCEAN),
+	CreateSceneObjects(MM_OBSERVATORY),
+	CreateSceneObjects(MM_MOON_DEKU),
+	CreateSceneObjects(MM_DEKU_PALACE),
+	CreateSceneObjects(MM_BLACKSMITH),
+	CreateSceneObjects(MM_TERMINA_FIELD),
+	CreateSceneObjects(MM_POST_OFFICE),
+	CreateSceneObjects(MM_LABORATORY),
+	CreateSceneObjects(MM_DAMPE_HOUSE),
+	CreateSceneObjects(MM_INSIDE_CASTLE_IKANA),
+	CreateSceneObjects(MM_GORON_SHRINE),
+	CreateSceneObjects(MM_ZORA_HALL),
+	CreateSceneObjects(MM_TRADING_POST),
+	CreateSceneObjects(MM_ROMANI_RANCH),
+	CreateSceneObjects(MM_LAIR_TWINMOLD),
+	CreateSceneObjects(MM_GREAT_BAY_COAST),
+	CreateSceneObjects(MM_ZORA_CAPE),
+	CreateSceneObjects(MM_LOTTERY),
+	CreateSceneObjects(MM_SNOWHEAD_SPRING),
+	CreateSceneObjects(MM_PIRATE_FORTRESS_ENTRANCE),
+	CreateSceneObjects(MM_FISHERMAN_HUT),
+	CreateSceneObjects(MM_GORON_SHOP),
+	CreateSceneObjects(MM_DEKU_KING_CHAMBER),
+	CreateSceneObjects(MM_MOON_GORON),
+	CreateSceneObjects(MM_ROAD_SOUTHERN_SWAMP),
+	CreateSceneObjects(MM_DOG_RACETRACK),
+	CreateSceneObjects(MM_CUCCO_SHACK),
+	CreateSceneObjects(MM_IKANA_GRAVEYARD),
+	CreateSceneObjects(MM_LAIR_GOHT),
+	CreateSceneObjects(MM_SOUTHERN_SWAMP),
+	CreateSceneObjects(MM_WOODFALL),
+	CreateSceneObjects(MM_MOON_ZORA),
+	CreateSceneObjects(MM_GORON_VILLAGE_SPRING),
+	CreateSceneObjects(MM_TEMPLE_GREAT_BAY),
+	CreateSceneObjects(MM_WATERFALL_RAPIDS),
+	CreateSceneObjects(MM_BENEATH_THE_WELL),
+	CreateSceneObjects(MM_ZORA_HALL_ROOMS),
+	CreateSceneObjects(MM_GORON_VILLAGE_WINTER),
+	CreateSceneObjects(MM_GORON_GRAVEYARD),
+	CreateSceneObjects(MM_SAKON_HIDEOUT),
+	CreateSceneObjects(MM_MOUNTAIN_VILLAGE_WINTER),
+	CreateSceneObjects(MM_GHOST_HUT),
+	CreateSceneObjects(MM_DEKU_SHRINE),
+	CreateSceneObjects(MM_ROAD_IKANA),
+	CreateSceneObjects(MM_SWORDSMAN_SCHOOL),
+	CreateSceneObjects(MM_MUSIC_BOX_HOUSE),
+	CreateSceneObjects(MM_LAIR_IKANA),
+	CreateSceneObjects(MM_TOURIST_INFORMATION),
+	CreateSceneObjects(MM_STONE_TOWER),
+	CreateSceneObjects(MM_STONE_TOWER_INVERTED),
+	CreateSceneObjects(MM_MOUNTAIN_VILLAGE_SPRING),
+	CreateSceneObjects(MM_PATH_SNOWHEAD),
+	CreateSceneObjects(MM_SNOWHEAD),
+	CreateSceneObjects(MM_TWIN_ISLANDS_WINTER),
+	CreateSceneObjects(MM_TWIN_ISLANDS_SPRING),
+	CreateSceneObjects(MM_LAIR_GYORG),
+	CreateSceneObjects(MM_SECRET_SHRINE),
+	CreateSceneObjects(MM_STOCK_POT_INN),
+	CreateSceneObjects(MM_GREAT_BAY_CUTSCENE),
+	CreateSceneObjects(MM_CLOCK_TOWER_INTERIOR),
+	CreateSceneObjects(MM_WOODS_MYSTERY),
+	CreateSceneObjects(MM_LOST_WOODS),
+	CreateSceneObjects(MM_MOON_LINK),
+	CreateSceneObjects(MM_MOON),
+	CreateSceneObjects(MM_BOMB_SHOP),
+	CreateSceneObjects(MM_GIANT_CHAMBER),
+	CreateSceneObjects(MM_GORMAN_TRACK),
+	CreateSceneObjects(MM_GORON_RACETRACK),
+	CreateSceneObjects(MM_CLOCK_TOWN_EAST),
+	CreateSceneObjects(MM_CLOCK_TOWN_WEST),
+	CreateSceneObjects(MM_CLOCK_TOWN_NORTH),
+	CreateSceneObjects(MM_CLOCK_TOWN_SOUTH),
+	CreateSceneObjects(MM_LAUNDRY_POOL),
+	CreateSceneObjects(MM_EXTRA),
+
+	// MM detailed other
+	CreateSceneObjects(MM_LONE_PEAK),
+	CreateSceneObjects(MM_ZORA_SHOP),
+	CreateSceneObjects(MM_ZORA_EVANS_ROOM),
+	CreateSceneObjects(MM_ZORA_JAPAS_ROOM),
+	CreateSceneObjects(MM_ZORA_TIJO_ROOM),
+	CreateSceneObjects(MM_ZORA_LULU_ROOM),
+	CreateSceneObjects(MM_ROMANI_RANCH_BARN),
+	CreateSceneObjects(MM_PIRATE_SEWERS),
+	CreateSceneObjects(MM_OWLS),
+
+	// MM detailed grottos
+	CreateSceneObjects(MM_GROTTO_TERMINA_DODONGO),
+	CreateSceneObjects(MM_GROTTO_TERMINA_OCEAN_GOSSIP),
+	CreateSceneObjects(MM_GROTTO_TERMINA_CANYON_GOSSIP),
+	CreateSceneObjects(MM_GROTTO_TERMINA_SWAMP_GOSSIP),
+	CreateSceneObjects(MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP),
+	CreateSceneObjects(MM_GROTTO_TERMINA_BIO_BABA),
+	CreateSceneObjects(MM_GROTTO_TERMINA_PEAHAT),
+	CreateSceneObjects(MM_GROTTO_TERMINA_SCRUB),
+	CreateSceneObjects(MM_GROTTO_TERMINA_TALL_GRASS),
+	CreateSceneObjects(MM_GROTTO_TERMINA_COW),
+	CreateSceneObjects(MM_GROTTO_TERMINA_PILLAR),
+	CreateSceneObjects(MM_GROTTO_GREAT_BAY_COAST_FISHERMAN),
+	CreateSceneObjects(MM_GROTTO_GREAT_BAY_COAST_COW),
+	CreateSceneObjects(MM_GROTTO_ZORA_CAPE_GENERIC),
+	CreateSceneObjects(MM_GROTTO_IKANA_GRAVEYARD_GENERIC),
+	CreateSceneObjects(MM_GROTTO_IKANA_VALLEY_OPEN),
+	CreateSceneObjects(MM_GROTTO_IKANA_ROAD_GENERIC),
+	CreateSceneObjects(MM_GROTTO_TWIN_ISLANDS_FROZEN),
+	CreateSceneObjects(MM_GROTTO_TWIN_ISLANDS_RAMP),
+	CreateSceneObjects(MM_GROTTO_PATH_TO_SNOWHEAD_GENERIC),
+	CreateSceneObjects(MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC),
+	CreateSceneObjects(MM_GROTTO_SOUTHERN_SWAMP_ROAD_OPEN),
+	CreateSceneObjects(MM_GROTTO_SOUTHERN_SWAMP_OPEN),
+	CreateSceneObjects(MM_GROTTO_WOODS_OF_MYSTERY_OPEN),
+	CreateSceneObjects(MM_GROTTO_DEKU_PALACE_BEANS),
+	CreateSceneObjects(MM_GROTTO_DEKU_PALACE_GENERIC),
+	CreateSceneObjects(MM_GROTTO_DEKU_PALACE_CLIMB),
+
+	// Spoiler Log
+	CreateSceneObjects(MM_MOUNTAIN_VILLAGE),
+	CreateSceneObjects(MM_TWIN_ISLANDS),
+	CreateSceneObjects(MM_GORON_VILLAGE),
+	CreateSceneObjects(MM_SPRING_WATER_CAVE)
+};
+
+#pragma endregion
+
+#pragma endregion
+
+#pragma region ObjectInfo
+
+void ObjectInfo::SaveObject(QFile* SaveFile, bool IncludeTargetWorld)
+{
+	QByteArray tmp(sizeof(uint32_t), 0);
+
+	// Save ID
+	memcpy_s(tmp.data(), 4, &this->ObjectID, sizeof(this->ObjectID));
+	SaveFile->write(tmp);
+
+	// Save status
+	memcpy_s(tmp.data(), 4, &this->Status, sizeof(this->Status));
+	SaveFile->write(tmp);
+
+	// Save item
+	uint32_t itemID = 0;
+	if (this->Item && this->Item->ItemID != -1)
+	{
+		itemID = this->Item->ItemID;
+	}
+
+	memcpy_s(tmp.data(), 4, &itemID, sizeof(itemID));
+	SaveFile->write(tmp);
+
+	if (IncludeTargetWorld)
+	{	// Multiworld (V2_0): persist the destination world as a 32-bit value for alignment.
+
+		uint32_t targetWorld = this->TargetWorld;
+		memcpy_s(tmp.data(), 4, &targetWorld, sizeof(targetWorld));
+		SaveFile->write(tmp);
+	}
+}
+
+
+size_t ObjectInfo::LoadObject(QByteArray* Data, size_t Offset, bool IncludeTargetWorld)
+{
+/*	// Load ID
+	uint32_t objID = 0;
+	memcpy_s(&objID, sizeof(objID), Data->data() + Offset, sizeof(objID));
+	Offset += sizeof(objID);
+
+	if (objID == this->ObjectID)
+	{	// It is the correct object
+*/
+		// Load status
+		uint32_t state = 0;
+		memcpy_s(&state, sizeof(state), Data->data() + Offset, sizeof(state));
+		Offset += sizeof(state);
+		this->Status = (ObjectState)state;
+
+		// Load item
+		uint32_t itemID = 0;
+		memcpy_s(&itemID, sizeof(itemID), Data->data() + Offset, sizeof(itemID));
+		Offset += sizeof(itemID);
+
+		if (itemID != 0)
+		{	// There is an item to load
+
+			this->Item = FindItem(itemID);
+		}
+
+		if (IncludeTargetWorld)
+		{	// Multiworld (V2_0): read the destination world written by SaveObject.
+
+			uint32_t targetWorld = 1;
+			memcpy_s(&targetWorld, sizeof(targetWorld), Data->data() + Offset, sizeof(targetWorld));
+			Offset += sizeof(targetWorld);
+			this->TargetWorld = (uint8_t)targetWorld;
+		}
+
+        return Offset;
+/* }
+
+	return Offset + sizeof(uint32_t) * 3;*/
+}
+
+void ObjectInfo::ResetObject()
+{
+	this->Status = ObjectState::Hidden;
+	this->Item = nullptr;
+}
+
+
+bool ObjectInfo::HasCorrectLayout(GameLayout ActiveLayout)
+{
+	return this->Layout == GameLayout::all || this->Layout == ActiveLayout;
+}
+
+#pragma endregion
+
+#pragma region Object info getter
+
+// XflagID -> world-0 template object(s), built once from the static scene arrays. Only "primary"
+// instances are indexed (an object whose Scene matches the array it lives in), never the render
+// duplicates that parse_file2 mirrors into their RenderScene bucket. Returns the same kind of
+// template reference FindObject does, so multiworld remapping (FindObjectInWorld) still applies.
+//
+// A single XflagID can map to several objects when a check is placed differently across layouts
+// (e.g. the Deku Palace rupees that sit elsewhere in MM_JP, or the Ice Cavern Sheik song in
+// OoT_MQ): one <xflag> = one XflagID, but two ObjectInfo split by GameLayout. We keep every
+// candidate (with its game) and pick the one whose layout matches the active one at lookup time.
+static std::unordered_map<uint16_t, std::vector<std::pair<ObjectInfo*, uint32_t>>> gXflagObjectMap;
+static std::once_flag gXflagObjectMapOnce;
+
+static void BuildXflagObjectMap()
+{
+	auto Scan = [](SceneObjects* Arr, size_t NumScenes, uint32_t GameID)
+	{
+		for (size_t s = 0; s < NumScenes; s++)
+		{
+			for (size_t o = 0; o < Arr[s].NumOfObjs; o++)
+			{
+				ObjectInfo* Obj = &Arr[s].Objects[o];
+				if (Obj->XflagID == 0xFFFF) continue;        // not an xflag object
+				if (Obj->Scene != Arr[s].SceneID) continue;  // skip render duplicates
+				gXflagObjectMap[Obj->XflagID].push_back({ Obj, GameID });
+			}
+		}
+	};
+
+	Scan(OoTSceneObjects, OOT_NUM_SCENES, OOT_GAME);
+	Scan(MMSceneObjects, MM_NUM_SCENES, MM_GAME);
+}
+
+ObjectInfo* FindObjectByXflagID(uint16_t XflagID)
+{
+	std::call_once(gXflagObjectMapOnce, BuildXflagObjectMap);
+	auto It = gXflagObjectMap.find(XflagID);
+	if (It == gXflagObjectMap.end())
+	{
+		return nullptr;
+	}
+
+	std::vector<std::pair<ObjectInfo*, uint32_t>>& Candidates = It->second;
+	if (Candidates.size() == 1)
+	{	// The common case: exactly one object carries this XflagID.
+
+		return Candidates[0].first;
+	}
+
+	// Layout-variant check: return the placement whose layout matches its scene's active layout.
+	for (std::pair<ObjectInfo*, uint32_t>& Candidate : Candidates)
+	{
+		SceneMetaInfo* Meta = GetSceneMetaInfo(Candidate.first->Scene, Candidate.second);
+
+		if (Meta != nullptr && Candidate.first->HasCorrectLayout(Meta->ActiveLayout))
+		{
+			return Candidate.first;
+		}
+	}
+
+	return Candidates[0].first;   // no layout matched (unexpected): fall back to the first
+}
+
+/*
+*   Scan one scene's object array for the object matching a legacy (pre-xflag) combo item,
+*   mirroring FindObject's own per-object test (same scene, correct layout, then the type / id
+*   rules). Returns the object or nullptr. Used by the legacy-scene remap to search a check's
+*   true scene rather than the one the ROM reported.
+*/
+static ObjectInfo* ScanSceneForItem(uint32_t GameID, uint32_t SceneID, const ComboItem& Item)
+{
+	SceneObjects* Arr = (GameID == MM_GAME) ? MMSceneObjects : OoTSceneObjects;
+	ObjectInfo* Objs = Arr[SceneID].Objects;
+	size_t Num = Arr[SceneID].NumOfObjs;
+	SceneMetaInfo* Meta = GetSceneMetaInfo(SceneID, GameID);
+
+	for (size_t i = 0; i < Num; i++)
+	{
+		ObjectInfo* Obj = &Objs[i];
+
+		if (Obj->Scene != SceneID) continue;                                   // skip render duplicates
+		if (Meta == nullptr || !Obj->HasCorrectLayout(Meta->ActiveLayout)) continue;
+
+		if (Item.OvType > OV_FISH)
+		{	// Types above fish only need the id to match (their type is render-only).
+
+			if (Obj->Type > ObjectType::fish && Obj->ObjectID == Item.ObjectID) return Obj;
+		}
+		else if (Obj->Type == Item.OvType && Obj->ObjectID == Item.ObjectID)
+		{	// Otherwise the type must match exactly too.
+
+			return Obj;
+		}
+	}
+
+	return nullptr;
+}
+
+/*
+*   Legacy-scene remap: a handful of checks (cows, Granny's potion shop, hatch eggs, Tingle maps,
+*   Oath to Order, ...) live under a different scene now than the one pre-migration (<= v32.3) ROMs
+*   report. Given the reported (legacy) scene plus the object's id, resolve the object in its true
+*   scene. Safe for every ROM: the key only ever matches the old scene, which current ROMs no
+*   longer emit. Returns nullptr when nothing remaps.
+*/
+static ObjectInfo* FindObjectByLegacyScene(const ComboItem& Item)
+{
+	LegacySceneRemap* Table = (Item.GameID == MM_GAME) ? MMLegacySceneRemap : OoTLegacySceneRemap;
+	size_t Count = (Item.GameID == MM_GAME) ? MMLegacySceneRemapCount : OoTLegacySceneRemapCount;
+
+	for (size_t i = 0; i < Count; i++)
+	{
+		if (Table[i].LegacyScene == Item.SceneID && Table[i].ObjectID == Item.ObjectID)
+		{
+			ObjectInfo* Found = ScanSceneForItem(Item.GameID, Table[i].TrueScene, Item);
+			if (Found != nullptr) return Found;
+		}
+	}
+
+	return nullptr;
+}
+
+ObjectInfo* FindObject(ComboItem Item)
+{
+	SceneMetaInfo* arraySceneMeta = nullptr;
+	ObjectInfo* arrayObjs = nullptr;
+	size_t arraySize = 0;
+	ObjectInfo* currObj = nullptr;
+
+	if (Item.XflagID != 0xFFFF)
+	{	// New xflag ROMs: the compact XflagID resolves the object directly (set by ResolveXflagItem).
+		// Unknown ids (a table built from a different ROM version) fall through to the legacy scan.
+
+		ObjectInfo* xflagObj = FindObjectByXflagID((uint16_t)Item.XflagID);
+		if (xflagObj != nullptr)
+		{
+			return xflagObj;
+		}
+	}
+
+	if (Item.GameID == MM_GAME)
+	{	// Majora's Mask
+
+		arrayObjs = MMSceneObjects[Item.SceneID].Objects;
+		arraySize = MMSceneObjects[Item.SceneID].NumOfObjs;
+	}
+	else
+	{	// Ocarina of time
+
+		arrayObjs = OoTSceneObjects[Item.SceneID].Objects;
+		arraySize = OoTSceneObjects[Item.SceneID].NumOfObjs;
+	}
+
+	for (size_t i = 0; i < arraySize; i++)
+	{	// Browse all objects
+
+		currObj = &arrayObjs[i];
+
+		if (currObj->Scene == Item.SceneID)
+		{	// They have the same scene ID
+
+			SceneMetaInfo* currSceneMeta = GetSceneMetaInfo(Item.SceneID, Item.GameID);
+
+			if (currObj->HasCorrectLayout(currSceneMeta->ActiveLayout))
+			{	// We need to check for game ID as there might be conflict between OoT and OoT_MQ and MM and MM_JP object ID
+
+				if (Item.OvType > OV_FISH)
+				{	// We can check for the object only if its type is above the fish one
+
+					if (currObj->Type > ObjectType::fish)
+					{	// We can check the object
+
+						if (currObj->ObjectID == Item.ObjectID)
+						{	// This is the correct object.
+
+							return currObj;
+						}
+					}
+				}
+				else
+				{	// The object should have the exact same type
+
+					if (currObj->Type == Item.OvType)
+					{
+						if (currObj->ObjectID == Item.ObjectID)
+						{	// This is the correct object
+
+							return currObj;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// A few checks moved scene since the legacy (<= v32.3) ROMs: retry via the legacy-scene remap.
+	ObjectInfo* Remapped = FindObjectByLegacyScene(Item);
+	if (Remapped != nullptr)
+	{
+		return Remapped;
+	}
+
+	return currObj;
+}
+
+
+#pragma region Multiworld storage
+
+// World 0 always aliases the static template arrays (OoTSceneObjects / MMSceneObjects), so
+// when there is a single world nothing is copied and behaviour is identical to before.
+// Additional worlds are deep copies whose per-placement Item / Status / TargetWorld differ.
+static std::vector<WorldObjects> gWorlds;
+static size_t gActiveWorld = 0;
+
+/*
+*   Deep-copy a template scene-object array into freshly allocated storage. SceneObjects has a
+*   const NumOfObjs member, so we copy the raw bytes (the structs are trivially copyable) and
+*   give each scene its own ObjectInfo buffer.
+*/
+static SceneObjects* CloneSceneArray(const SceneObjects* Template, size_t NumOfScenes)
+{
+	SceneObjects* clone = (SceneObjects*)malloc(sizeof(SceneObjects) * NumOfScenes);
+	memcpy((void*)clone, (const void*)Template, sizeof(SceneObjects) * NumOfScenes);
+
+	for (size_t i = 0; i < NumOfScenes; i++)
+	{
+		size_t count = Template[i].NumOfObjs;
+		if (count == 0 || Template[i].Objects == nullptr)
+		{
+			// Keep the empty-scene sentinel (NumOfObjs == 0, Objects may be nullptr).
+			continue;
+		}
+
+		ObjectInfo* objs = (ObjectInfo*)malloc(sizeof(ObjectInfo) * count);
+		memcpy((void*)objs, (const void*)Template[i].Objects, sizeof(ObjectInfo) * count);
+		clone[i].Objects = objs;
+	}
+
+	return clone;
+}
+
+/*
+*   Free a cloned scene-object array previously produced by CloneSceneArray.
+*/
+static void FreeSceneArray(SceneObjects* Array, size_t NumOfScenes)
+{
+	if (Array == nullptr) return;
+	for (size_t i = 0; i < NumOfScenes; i++)
+	{
+		if (Array[i].NumOfObjs != 0 && Array[i].Objects != nullptr)
+		{
+			free(Array[i].Objects);
+		}
+	}
+	free(Array);
+}
+
+void InitWorlds(size_t NumWorlds)
+{
+	if (NumWorlds < 1) NumWorlds = 1;
+
+	// Release any previously allocated clones (world 0 is never owned: it aliases the templates).
+	for (WorldObjects& w : gWorlds)
+	{
+		if (w.Owned)
+		{
+			FreeSceneArray(w.OoT, OOT_NUM_SCENES);
+			FreeSceneArray(w.MM, MM_NUM_SCENES);
+		}
+	}
+	gWorlds.clear();
+
+	// World 0 aliases the static template arrays.
+	WorldObjects world0;
+	world0.OoT = OoTSceneObjects;
+	world0.MM = MMSceneObjects;
+	world0.Owned = false;
+	gWorlds.push_back(world0);
+
+	// Worlds 1..N-1 are deep copies of the templates.
+	for (size_t i = 1; i < NumWorlds; i++)
+	{
+		WorldObjects w;
+		w.OoT = CloneSceneArray(OoTSceneObjects, OOT_NUM_SCENES);
+		w.MM = CloneSceneArray(MMSceneObjects, MM_NUM_SCENES);
+		w.Owned = true;
+		gWorlds.push_back(w);
+	}
+
+	gActiveWorld = 0;
+}
+
+size_t GetNumWorlds()
+{
+	return gWorlds.empty() ? 1 : gWorlds.size();
+}
+
+void SetActiveWorld(size_t WorldIndex)
+{
+	if (!gWorlds.empty() && WorldIndex >= gWorlds.size())
+	{
+		WorldIndex = gWorlds.size() - 1;
+	}
+	gActiveWorld = WorldIndex;
+}
+
+size_t GetActiveWorld()
+{
+	return gActiveWorld;
+}
+
+SceneObjects* GetWorldSceneObjects(size_t WorldIndex, uint32_t GameID)
+{
+	if (gWorlds.empty())
+	{
+		// Worlds not initialised yet: fall back to the static templates.
+		return (GameID == OOT_GAME) ? OoTSceneObjects : MMSceneObjects;
+	}
+
+	if (WorldIndex >= gWorlds.size())
+	{
+		WorldIndex = gWorlds.size() - 1;
+	}
+
+	const WorldObjects& w = gWorlds[WorldIndex];
+	return (GameID == OOT_GAME) ? w.OoT : w.MM;
+}
+
+SceneObjects* GetGameSceneObjects(uint32_t GameID)
+{
+	return GetWorldSceneObjects(gActiveWorld, GameID);
+}
+
+ObjectInfo* FindObjectInWorld(size_t WorldIndex, int GameID, ObjectInfo* Reference)
+{
+	if (Reference == nullptr) return Reference;
+
+	// World 0 aliases the templates, so the reference is already correct for it.
+	if (gWorlds.empty() || WorldIndex == 0) return Reference;
+	if (WorldIndex >= gWorlds.size()) return Reference;
+
+	// The reference lives at &templates[scene].Objects[i]; find scene + i, then index the
+	// same slot in the destination world (clones keep the exact same layout / count).
+	SceneObjects* templates = (GameID == OOT_GAME) ? OoTSceneObjects : MMSceneObjects;
+	size_t numScenes = (GameID == OOT_GAME) ? OOT_NUM_SCENES : MM_NUM_SCENES;
+	SceneObjects* worldArr = GetWorldSceneObjects(WorldIndex, GameID);
+
+	for (size_t s = 0; s < numScenes; s++)
+	{
+		ObjectInfo* base = templates[s].Objects;
+		size_t count = templates[s].NumOfObjs;
+		if (base == nullptr || count == 0) continue;
+
+		if (Reference >= base && Reference < base + count)
+		{
+			size_t idx = (size_t)(Reference - base);
+			return &worldArr[s].Objects[idx];
+		}
+	}
+
+	return Reference;   // Not found in the templates: leave it untouched.
+}
+
+#pragma endregion
+
+#pragma endregion
+
+#pragma region Saving / Loading
+
+void SaveSceneObjects(QFile* SaveFile)
+{
+	SaveSceneObjectsFor(SaveFile, OoTSceneObjects, OOT_NUM_SCENES);
+	SaveSceneObjectsFor(SaveFile, MMSceneObjects, MM_NUM_SCENES);
+}
+
+
+void SaveSceneObjectsFor(QFile* SaveFile, SceneObjects* Array, size_t NumOfScenes)
+{
+	QByteArray ID(sizeof(uint32_t), 0);
+	QByteArray numObj(sizeof(size_t), 0);
+
+	for (size_t i = 0; i < NumOfScenes; i++)
+	{	// Browse all scenes
+
+		// Save scene ID
+		memcpy_s(ID.data(), sizeof(Array[i].SceneID), &Array[i].SceneID, sizeof(Array[i].SceneID));
+		SaveFile->write(ID);
+
+		// Save number of objects
+		memcpy_s(numObj.data(), sizeof(Array[i].NumOfObjs), &Array[i].NumOfObjs, sizeof(Array[i].NumOfObjs));
+		SaveFile->write(numObj);
+
+		for (size_t j = 0; j < Array[i].NumOfObjs; j++)
+		{	// Save all objects
+
+			Array[i].Objects[j].SaveObject(SaveFile);
+		}
+	}
+}
+
+
+size_t LoadSceneObjects(QByteArray * Data, size_t Offset)
+{
+	Offset = LoadSceneObjectsFor(Data, Offset, OoTSceneObjects, OOT_NUM_SCENES);
+	Offset = LoadSceneObjectsFor(Data, Offset, MMSceneObjects, MM_NUM_SCENES);
+	return Offset;
+}
+
+
+size_t LoadSceneObjectsFor(QByteArray* Data, size_t Offset, SceneObjects * Array, size_t NumOfScenes)
+{
+	for (size_t i = 0; i < NumOfScenes; i++)
+	{	// Browse all scenes
+
+		// Load scene ID
+		uint32_t sceneID = 0;
+		memcpy_s(&sceneID, sizeof(sceneID), Data->data() + Offset, sizeof(sceneID));
+		Offset += sizeof(sceneID);
+
+		if (Array[i].SceneID == sceneID)
+		{	// The scene is correct
+
+			// Load number of objects
+			size_t numObjs = 0;
+			memcpy_s(&numObjs, sizeof(numObjs), Data->data() + Offset, sizeof(numObjs));
+			Offset += sizeof(numObjs);
+
+			if (numObjs == Array[i].NumOfObjs)
+			{	// It has the same number of objects
+
+				for (size_t j = 0; j < Array[i].NumOfObjs; j++)
+				{	// Load all objects
+
+                    uint32_t objID = 0;
+                    memcpy_s(&objID, sizeof(objID), Data->data() + Offset, sizeof(objID));
+                    Offset += sizeof(objID);
+
+                    if (objID == Array[i].Objects[j].ObjectID)
+                    {
+                        Offset = Array[i].Objects[j].LoadObject(Data, Offset);
+                    }
+				}
+			}
+            else
+            {
+                qDebug() << sceneID;
+            }
+		}
+	}
+
+	return Offset;
+}
+
+
+void ResetSceneObjects()
+{
+	ResetSceneObjectsFor(OoTSceneObjects, OOT_NUM_SCENES);
+	ResetSceneObjectsFor(MMSceneObjects, MM_NUM_SCENES);
+}
+
+
+void ResetSceneObjectsFor(SceneObjects* Array, size_t NumOfScenes)
+{
+	for (size_t i = 0; i < NumOfScenes; i++)
+	{	// Browse all scenes
+
+		for (size_t j = 0; j < Array[i].NumOfObjs; j++)
+		{	// Reset all objects
+
+			Array[i].Objects[j].ResetObject();
+		}
+	}
+}
+
+#pragma region Multiworld save / load
+
+/*
+*   Like SaveSceneObjectsFor but also persists each placement's TargetWorld (V2_0 layout).
+*/
+static void SaveWorldSceneArray(QFile* SaveFile, SceneObjects* Array, size_t NumOfScenes)
+{
+	// Lead with the number of scene blocks so the loader knows exactly how many to read, without
+	// relying on the current OOT_NUM_SCENES / MM_NUM_SCENES (which can grow when scenes are added).
+	// Each block is self-describing (scene id + object count), so LoadWorldSceneArray stays aligned
+	// even if scenes or objects were added / removed / reordered since the save was written.
+	QByteArray sceneCountBuf(sizeof(uint32_t), 0);
+	uint32_t sceneCount = (uint32_t)NumOfScenes;
+	memcpy_s(sceneCountBuf.data(), sizeof(uint32_t), &sceneCount, sizeof(sceneCount));
+	SaveFile->write(sceneCountBuf);
+
+	QByteArray ID(sizeof(uint32_t), 0);
+	QByteArray numObj(sizeof(size_t), 0);
+
+	for (size_t i = 0; i < NumOfScenes; i++)
+	{
+		memcpy_s(ID.data(), sizeof(Array[i].SceneID), &Array[i].SceneID, sizeof(Array[i].SceneID));
+		SaveFile->write(ID);
+
+		memcpy_s(numObj.data(), sizeof(Array[i].NumOfObjs), &Array[i].NumOfObjs, sizeof(Array[i].NumOfObjs));
+		SaveFile->write(numObj);
+
+		for (size_t j = 0; j < Array[i].NumOfObjs; j++)
+		{
+			Array[i].Objects[j].SaveObject(SaveFile, /*IncludeTargetWorld*/ true);
+		}
+	}
+}
+
+/*
+*   Like LoadSceneObjectsFor but also reads each placement's TargetWorld (V2_0 layout), and is
+*   resilient to layout changes: the number of saved scene blocks is read from the file (not derived
+*   from the current OOT_NUM_SCENES / MM_NUM_SCENES), scenes and objects are matched by id rather than
+*   by position, and every record is consumed so the stream stays aligned. Scenes / objects that no
+*   longer exist are read then discarded; scenes / objects added since the save simply keep their
+*   default (uncollected, no item) state.
+*/
+static size_t LoadWorldSceneArray(QByteArray* Data, size_t Offset, SceneObjects* Array, size_t NumOfScenes)
+{
+	// Number of scene blocks written for this world/game.
+	if ((qsizetype)(Offset + sizeof(uint32_t)) > Data->size()) return Data->size();
+	uint32_t sceneCount = 0;
+	memcpy_s(&sceneCount, sizeof(sceneCount), Data->data() + Offset, sizeof(sceneCount));
+	Offset += sizeof(sceneCount);
+
+	for (uint32_t s = 0; s < sceneCount; s++)
+	{
+		if ((qsizetype)(Offset + sizeof(uint32_t) + sizeof(size_t)) > Data->size()) return Data->size();
+
+		uint32_t sceneID = 0;
+		memcpy_s(&sceneID, sizeof(sceneID), Data->data() + Offset, sizeof(sceneID));
+		Offset += sizeof(sceneID);
+
+		size_t numObjs = 0;
+		memcpy_s(&numObjs, sizeof(numObjs), Data->data() + Offset, sizeof(numObjs));
+		Offset += sizeof(numObjs);
+
+		// Match the saved scene against the current array by id (a scene may have moved or vanished).
+		SceneObjects* scene = nullptr;
+		for (size_t i = 0; i < NumOfScenes; i++)
+		{
+			if (Array[i].SceneID == sceneID)
+			{
+				scene = &Array[i];
+				break;
+			}
+		}
+
+		for (size_t currObj = 0; currObj < numObjs; currObj++)
+		{
+			uint32_t objID = 0;
+			memcpy_s(&objID, sizeof(objID), Data->data() + Offset, sizeof(objID));
+			Offset += sizeof(objID);
+
+			// Match the saved object against the found scene by id (search, not positional).
+			ObjectInfo* target = nullptr;
+			if (scene != nullptr)
+			{
+				for (size_t k = 0; k < scene->NumOfObjs; k++)
+				{
+					if (scene->Objects[k].ObjectID == objID)
+					{
+						target = &scene->Objects[k];
+						break;
+					}
+				}
+			}
+
+			if (target != nullptr)
+			{
+				Offset = target->LoadObject(Data, Offset, true);
+			}
+			else
+			{   // Scene or object no longer exists: consume the record so the stream stays aligned.
+
+				ObjectInfo tmp;
+				Offset = tmp.LoadObject(Data, Offset, true);
+			}
+		}
+	}
+
+	return Offset;
+}
+
+/*
+*   Legacy V2_0 world loader: the block does NOT store a scene count, so scenes are read in lockstep
+*   with the current array (one block per current scene). Objects are still matched by id. Kept only
+*   to load pre-V2_1 saves without crashing; it is not resilient to scene add / remove / reorder
+*   (that is exactly why V2_1 exists), so such saves should be re-saved as V2_1.
+*/
+static size_t LoadWorldSceneArray_V2_0(QByteArray* Data, size_t Offset, SceneObjects* Array, size_t NumOfScenes)
+{
+	for (size_t i = 0; i < NumOfScenes; i++)
+	{
+		if (Data->size() < (qsizetype)Offset)
+		{
+			return Data->size();
+		}
+		uint32_t sceneID = 0;
+		memcpy_s(&sceneID, sizeof(sceneID), Data->data() + Offset, sizeof(sceneID));
+		Offset += sizeof(sceneID);
+
+		if (Array[i].SceneID == sceneID)
+		{
+			size_t numObjs = 0;
+			memcpy_s(&numObjs, sizeof(numObjs), Data->data() + Offset, sizeof(numObjs));
+			Offset += sizeof(numObjs);
+
+			for (size_t currObj = 0; currObj < numObjs; currObj++)
+			{
+				bool found = false;
+
+				uint32_t objID = 0;
+				memcpy_s(&objID, sizeof(objID), Data->data() + Offset, sizeof(objID));
+				Offset += sizeof(objID);
+
+				for (size_t k = 0; k < Array[i].NumOfObjs; k++)
+				{
+					if (Array[i].Objects[k].ObjectID == objID)
+					{
+						Offset = Array[i].Objects[k].LoadObject(Data, Offset, true);
+						found = true;
+						break;
+					}
+				}
+
+				if (!found)
+				{   // Consume the record even when discarded so the stream stays aligned.
+
+					ObjectInfo tmp;
+					Offset = tmp.LoadObject(Data, Offset, true);
+				}
+			}
+		}
+	}
+
+	return Offset;
+}
+
+void SaveAllWorlds(QFile* SaveFile)
+{
+	// Header: number of worlds (32-bit).
+	uint32_t numWorlds = (uint32_t)GetNumWorlds();
+	QByteArray countBuf(sizeof(uint32_t), 0);
+	memcpy_s(countBuf.data(), sizeof(uint32_t), &numWorlds, sizeof(numWorlds));
+	SaveFile->write(countBuf);
+
+	for (uint32_t w = 0; w < numWorlds; w++)
+	{
+		SaveWorldSceneArray(SaveFile, GetWorldSceneObjects(w, OOT_GAME), OOT_NUM_SCENES);
+		SaveWorldSceneArray(SaveFile, GetWorldSceneObjects(w, MM_GAME), MM_NUM_SCENES);
+	}
+}
+
+size_t LoadAllWorlds(QByteArray* Data, size_t Offset)
+{
+	// Header: number of worlds.
+	uint32_t numWorlds = 1;
+	memcpy_s(&numWorlds, sizeof(numWorlds), Data->data() + Offset, sizeof(numWorlds));
+	Offset += sizeof(numWorlds);
+	if (numWorlds < 1) numWorlds = 1;
+
+	// Only (re)allocate the worlds when the current layout does not already match. A spoiler is
+	// normally loaded first and has already set up the right number of worlds with their item
+	// placements; re-cloning here would wipe those placements (LoadObject merges the collection
+	// state on top, it does not re-supply every item). We only InitWorlds when loading a save
+	// without a matching spoiler, so the arrays at least exist.
+	if (GetNumWorlds() != (size_t)numWorlds)
+	{
+		InitWorlds((size_t)numWorlds);
+	}
+
+	for (uint32_t w = 0; w < numWorlds; w++)
+	{
+		Offset = LoadWorldSceneArray(Data, Offset, GetWorldSceneObjects(w, OOT_GAME), OOT_NUM_SCENES);
+		Offset = LoadWorldSceneArray(Data, Offset, GetWorldSceneObjects(w, MM_GAME), MM_NUM_SCENES);
+	}
+
+	return Offset;
+}
+
+size_t LoadAllWorlds_V2_0(QByteArray* Data, size_t Offset)
+{
+	// Legacy loader for pre-V2_1 saves (no per-block scene count): same world header, but each
+	// world/game block is read in lockstep with the current scene arrays (see LoadWorldSceneArray_V2_0).
+	uint32_t numWorlds = 1;
+	memcpy_s(&numWorlds, sizeof(numWorlds), Data->data() + Offset, sizeof(numWorlds));
+	Offset += sizeof(numWorlds);
+	if (numWorlds < 1) numWorlds = 1;
+
+	if (GetNumWorlds() != (size_t)numWorlds)
+	{
+		InitWorlds((size_t)numWorlds);
+	}
+
+	for (uint32_t w = 0; w < numWorlds; w++)
+	{
+		Offset = LoadWorldSceneArray_V2_0(Data, Offset, GetWorldSceneObjects(w, OOT_GAME), OOT_NUM_SCENES);
+		Offset = LoadWorldSceneArray_V2_0(Data, Offset, GetWorldSceneObjects(w, MM_GAME), MM_NUM_SCENES);
+	}
+
+	return Offset;
+}
+
+#pragma endregion
+
+#pragma endregion

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="oot">
+  <scene name="Lost Woods" id="LOST_WOODS">
+    <scene_rendering id="OOT_LOST_WOODS" loc_type="overworld">
+      <rendering_option context="child" icon="fairy_ocarina" type="ocarina">
+        <npc location="Lost Woods Gift from Saria" npc="SARIA_OCARINA" item="OCARINA" name="Fairy Ocarina" xyz="211;2800;0"/>
+      </rendering_option>
+      <rendering_option icon="big_seed">
+        <npc location="Lost Woods Target" npc="LOST_WOODS_TARGET" item="SLINGSHOT" name="Slingshot Target" xyz="2069;1966;0"/>
+      </rendering_option>
+      <rendering_option context="child" type="heart_piece">
+        <npc location="Lost Woods Skull Kid" npc="LOST_WOODS_SKULL_KID" item="HEART_PIECE" name="Skull Kid" xyz="380;2066;0"/>
+      </rendering_option>
+      <rendering_option context="child" icon="skull" type="mask">
+        <npc location="Lost Woods Sell Skull Mask" npc="MASK_SELL_SKULL" item="RUPEE_RED" name="Skull Mask" xyz="262;1954;0"/>
+      </rendering_option>
+      <rendering_option context="child" type="heart_piece">
+        <npc location="Lost Woods Memory Game" npc="LOST_WOODS_MEMORY" item="HEART_PIECE" name="Memory Game" xyz="1896;2195;0"/>
+      </rendering_option>
+      <rendering_option context="adult" icon="mushroom">
+        <npc location="Lost Woods Odd Mushroom" npc="TRADE_ODD_MUSHROOM" item="ODD_MUSHROOM" hint="LOST_WOODS_TRADE" name="Odd Mushroom" xyz="289;1981;1"/>
+      </rendering_option>
+      <rendering_option context="adult" icon="saw">
+        <npc location="Lost Woods Poacher's Saw" npc="TRADE_POACHER_SAW" item="POACHER_SAW" hint="LOST_WOODS_TRADE" name="Poacher's Saw" xyz="301;1960;0"/>
+      </rendering_option>
+      <rendering_option context="child">
+        <gs location="Lost Woods GS Soil Bridge" flag="0x68" item="GS_TOKEN" name="Soil - Bridge" xyz="202;2443;1"/>
+        <gs location="Lost Woods GS Soil Theater" flag="0x69" item="GS_TOKEN" name="Soil - Theater" xyz="1395;850;1"/>
+      </rendering_option>
+      <rendering_option context="adult">
+        <gs location="Lost Woods GS Bean Ride" flag="0x6a" item="GS_TOKEN" name="Bean Ride - Theater" xyz="1526;752;0"/>
+      </rendering_option>
+      <rendering_option icon="stick_upgrade_2">
+        <scrub location="Lost Woods Scrub Sticks Upgrade" flag="0x00" item="STICK_UPGRADE" name="Deku Sticks Upgrade" xyz="238;3051;0"/>
+      </rendering_option>
+      <scrub location="Lost Woods Scrub Near Theater Left" flag="0x01" item="STICK" name="Near Theater - Left" xyz="1264;1102;0"/>
+      <scrub location="Lost Woods Scrub Near Theater Right" flag="0x02" item="NUTS_5" name="Near Theater - Right" xyz="1423;859;1"/>
+      <xflag type="grass" location="Lost Woods Grass 1" slice="0x0" setup="0x0" room="0x2" actor="0x2" item="RANDOM" name="Grass 1" xyz="1518;1633;0"/>
+      <xflag type="grass" location="Lost Woods Grass 2" slice="0x0" setup="0x0" room="0x2" actor="0x3" item="RANDOM" name="Grass 2" xyz="1508;1600;0"/>
+      <xflag type="grass" location="Lost Woods Grass 3" slice="0x0" setup="0x0" room="0x2" actor="0x4" item="RANDOM" name="Grass 3" xyz="1544;1621;0"/>
+      <xflag type="grass" location="Lost Woods Grass Deep 1" slice="0x0" setup="0x0" room="0x7" actor="0x1" item="RANDOM" name="Deep 1" xyz="2027;490;0"/>
+      <xflag type="grass" location="Lost Woods Grass Deep 2" slice="0x0" setup="0x0" room="0x7" actor="0x2" item="RANDOM" name="Deep 2" xyz="2015;453;0"/>
+      <xflag type="grass" location="Lost Woods Grass Deep 3" slice="0x0" setup="0x0" room="0x7" actor="0x3" item="RANDOM" name="Deep 3" xyz="2056;477;0"/>
+      <xflag type="grass" location="Lost Woods Grass Deep 4" slice="0x0" setup="0x0" room="0x8" actor="0x3" item="RANDOM" name="Deep 4" xyz="1607;434;0"/>
+      <xflag type="grass" location="Lost Woods Grass Deep 5" slice="0x0" setup="0x0" room="0x8" actor="0x4" item="RANDOM" name="Deep 5" xyz="1620;465;0"/>
+      <xflag type="grass" location="Lost Woods Grass Deep 6" slice="0x0" setup="0x0" room="0x8" actor="0x5" item="RANDOM" name="Deep 6" xyz="1583;473;0"/>
+      <rendering_option context="child">
+        <xflag type="rupee" location="Lost Woods Rupee Arrow 1" slice="0x0" setup="0x0" room="0x3" actor="0x4" item="RUPEE_GREEN" name="Underwater 1" xyz="2545;1466;2"/>
+        <xflag type="rupee" location="Lost Woods Rupee Arrow 2" slice="0x0" setup="0x0" room="0x3" actor="0x5" item="RUPEE_GREEN" name="Underwater 2" xyz="2517;1466;2"/>
+        <xflag type="rupee" location="Lost Woods Rupee Arrow 3" slice="0x0" setup="0x0" room="0x3" actor="0x6" item="RUPEE_GREEN" name="Underwater 3" xyz="2490;1465;1"/>
+        <xflag type="rupee" location="Lost Woods Rupee Arrow 4" slice="0x0" setup="0x0" room="0x3" actor="0x7" item="RUPEE_GREEN" name="Underwater 4" xyz="2462;1463;0"/>
+        <xflag type="rupee" location="Lost Woods Rupee Arrow 5" slice="0x0" setup="0x0" room="0x3" actor="0x8" item="RUPEE_GREEN" name="Underwater 5" xyz="2534;1441;1"/>
+        <xflag type="rupee" location="Lost Woods Rupee Arrow 6" slice="0x0" setup="0x0" room="0x3" actor="0x9" item="RUPEE_GREEN" name="Underwater 6" xyz="2515;1418;0"/>
+        <xflag type="rupee" location="Lost Woods Rupee Arrow 7" slice="0x0" setup="0x0" room="0x3" actor="0xa" item="RUPEE_GREEN" name="Underwater 7" xyz="2533;1486;2"/>
+        <xflag type="rupee" location="Lost Woods Rupee Arrow 8" slice="0x0" setup="0x0" room="0x3" actor="0xb" item="RUPEE_GREEN" name="Underwater 8" xyz="2510;1504;2"/>
+      </rendering_option>
+      <xflag type="rupee" location="Lost Woods Rupee Boulder" slice="0x0" setup="0x0" room="0x7" actor="0x4" item="RUPEE_BLUE" name="Boulder" xyz="2281;230;1"/>
+      <xflag type="fairy_spot" location="Lost Woods Pool Big Fairy" slice="0x0" setup="0x0" room="0x3" actor="0x3" item="FAIRY_BIG" name="Pool" xyz="2399;1504;0"/>
+      <rendering_option context="child">
+        <xflag type="wonder" location="Lost Woods Wonder Item 1" slice="0x0" setup="0x0" room="0x1" actor="0x5" item="RUPEE_GREEN" name="Memory Game Grass 1" xyz="1975;2105;0"/>
+        <xflag type="wonder" location="Lost Woods Wonder Item 2" slice="0x0" setup="0x0" room="0x1" actor="0x6" item="RUPEE_GREEN" name="Memory Game Grass 2" xyz="1847;2311;0"/>
+        <xflag type="wonder" location="Lost Woods Wonder Item 3" slice="0x0" setup="0x0" room="0x1" actor="0x7" item="RUPEE_BLUE" name="Memory Game Grass 3" xyz="2039;2274;0"/>
+        <actor room="0x6" setup="0x0" actor="0x1">
+          <xflag type="butterfly" location="Lost Woods Butterfly 1" slice="0" item="FAIRY" name="Butterfly 1" xyz="1042;907;0"/>
+          <xflag type="butterfly" location="Lost Woods Butterfly 2" slice="1" item="NOTHING" name="Butterfly 2" xyz="1018;914;0"/>
+          <xflag type="butterfly" location="Lost Woods Butterfly 3" slice="2" item="NOTHING" name="Butterfly 3" xyz="1037;926;0"/>
+          <xflag type="butterfly" location="Lost Woods Butterfly 4" slice="3" item="NOTHING" name="Butterfly 4" xyz="1018;935;0"/>
+          <xflag type="butterfly" location="Lost Woods Butterfly 5" slice="4" item="NOTHING" name="Butterfly 5" xyz="1035;946;0"/>
+        </actor>
+        <xflag type="soil" location="Lost Woods Soil Early 1" slice="0x0" setup="0x0" room="0x5" actor="0x3" item="FAIRY" name="Early - Soil 1" xyz="203;2469;0"/>
+        <xflag type="soil" location="Lost Woods Soil Early 2" slice="0x1" setup="0x0" room="0x5" actor="0x3" item="FAIRY" name="Early - Soil 2" xyz="211;2457;0"/>
+        <xflag type="soil" location="Lost Woods Soil Early 3" slice="0x2" setup="0x0" room="0x5" actor="0x3" item="FAIRY" name="Early - Soil 3" xyz="194;2457;0"/>
+        <xflag type="soil" location="Lost Woods Soil Late 1" slice="0x0" setup="0x0" room="0x6" actor="0x5" item="FAIRY" name="Late - Soil 1" xyz="1395;811;0"/>
+        <xflag type="soil" location="Lost Woods Soil Late 2" slice="0x1" setup="0x0" room="0x6" actor="0x5" item="FAIRY" name="Late - Soil 2" xyz="1403;799;0"/>
+        <xflag type="soil" location="Lost Woods Soil Late 3" slice="0x2" setup="0x0" room="0x6" actor="0x5" item="FAIRY" name="Late - Soil 3" xyz="1386;799;0"/>
+      </rendering_option>
+      <xflag type="boulder" location="Lost Woods Boulder Early" slice="0x0" setup="0x0" room="0x2" actor="0x6" item="NOTHING" name="Early" xyz="1741;1393;0"/>
+      <xflag type="boulder" location="Lost Woods Boulder Deep 1" slice="0x0" setup="0x0" room="0x7" actor="0x5" item="NOTHING" name="Deep 1" xyz="2281;230;0"/>
+      <xflag type="boulder" location="Lost Woods Boulder Deep 2" slice="0x0" setup="0x0" room="0x8" actor="0x8" item="NOTHING" name="Deep 2" xyz="1348;213;0"/>
+      <actor room="0x5">
+        <match setup="0" actor="0x4"/>
+        <match setup="2" actor="0x1"/>
+        <xflag type="gossip" location="Lost Woods Gossip Fairy" slice="0" item="FAIRY" name="Gossip Fairy" xyz="178;3114;0"/>
+        <xflag type="gossip-big" location="Lost Woods Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy" xyz="147;3114;0"/>
+      </actor>
+    </scene_rendering>
+  </scene>
+  <scene name="Lost Woods Scrub Grotto" id="GROTTOS">
+    <scene_rendering id="OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE" loc_type="overworld">
+      <rendering_option icon="nut_upgrade_2">
+        <scrub location="Lost Woods Grotto Scrub Nuts Upgrade" flag="0x03" item="NUT_UPGRADE" name="Deku Nuts Upgrade" xyz="642;328;0"/>
+      </rendering_option>
+      <scrub location="Lost Woods Grotto Scrub Back" flag="0x04" item="DEKU_SEEDS_30" name="Back" xyz="718;246;0"/>
+      <xflag type="fairy_spot" location="Lost Woods Grotto Scrub Big Fairy" slice="0x0" setup="0x0" room="0x6" actor="0x0" item="FAIRY_BIG" name="Big Fairy" xyz="673;245;0"/>
+      <xflag type="hive" location="Lost Woods Grotto Scrub Hive" slice="0x0" setup="0x0" room="0x6" actor="0x3" item="RUPEE_RED" name="Hive" xyz="770;410;0"/>
+    </scene_rendering>
+  </scene>
+  <scene name="Lost Woods Generic Grotto" id="GROTTOS" room="0x34">
+    <scene_rendering id="OOT_GROTTO_LOST_WOODS_GENERIC" loc_type="overworld">
+      <chest location="Lost Woods Grotto Generic" flag="0x14" item="RUPEE_BLUE" name="Chest" xyz="684;177;0"/>
+      <xflag type="grass" location="Lost Woods Grotto Generic Grass 1" actor="0x2" item="RANDOM" name="Grass 1" xyz="669;158;0"/>
+      <xflag type="grass" location="Lost Woods Grotto Generic Grass 2" actor="0x3" item="RANDOM" name="Grass 2" xyz="658;192;0"/>
+      <xflag type="grass" location="Lost Woods Grotto Generic Grass 3" actor="0x4" item="RANDOM" name="Grass 3" xyz="717;195;0"/>
+      <xflag type="grass" location="Lost Woods Grotto Generic Grass 4" actor="0x5" item="RANDOM" name="Grass 4" xyz="660;320;0"/>
+      <xflag type="hive" location="Lost Woods Grotto Generic Hive 1" actor="0x7" item="RUPEE_BLUE" name="Hive 1" xyz="551;157;0"/>
+      <xflag type="hive" location="Lost Woods Grotto Generic Hive 2" actor="0x8" item="RUPEE_RED" name="Hive 2" xyz="741;104;0"/>
+      <actor actor="0x6">
+        <xflag type="butterfly" location="Lost Woods Grotto Generic Butterfly 1" slice="0" item="FAIRY" name="Butterfly 1" xyz="651;645;0"/>
+        <xflag type="butterfly" location="Lost Woods Grotto Generic Butterfly 2" slice="1" item="NOTHING" name="Butterfly 2" xyz="617;632;0"/>
+        <xflag type="butterfly" location="Lost Woods Grotto Generic Butterfly 3" slice="2" item="NOTHING" name="Butterfly 3" xyz="637;631;0"/>
+      </actor>
+      <actor room="0x34" actor="0x9">
+        <xflag type="gossip" location="Lost Woods Generic Grotto Gossip Fairy" slice="0" item="FAIRY" name="Gossip Fairy" xyz="0;0;0"/>
+        <xflag type="gossip-big" location="Lost Woods Generic Grotto Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy" xyz="0;0;0"/>
+      </actor>
+    </scene_rendering>
+  </scene>
+  <scene name="Deku Theater" id="GROTTOS">
+    <scene_rendering id="OOT_GROTTO_LOST_WOODS_THEATER" loc_type="overworld">
+      <rendering_option icon="skull" type="mask">
+        <npc location="Deku Theater Sticks Upgrade" npc="THEATER_STICKS" item="STICK_UPGRADE" name="Deku Sticks Upgrade" xyz="727;561;0"/>
+      </rendering_option>
+      <rendering_option icon="truth" type="mask">
+        <npc location="Deku Theater Nuts Upgrade" npc="THEATER_NUTS" item="NUT_UPGRADE" name="Deku Nuts Upgrade" xyz="691;561;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

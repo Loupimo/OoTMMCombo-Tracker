@@ -53,7 +53,7 @@ impl TrackerApp {
                     .on_hover_text(self.i18n.items_revealed_tip())
                     .clicked()
                 {
-                    self.dashboard.set_reveal(!reveal);
+                    self.set_reveal(!reveal);
                 }
             });
         });

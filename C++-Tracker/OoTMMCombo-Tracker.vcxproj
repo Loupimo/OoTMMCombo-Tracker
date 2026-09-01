@@ -212,6 +212,7 @@
     <ClCompile Include="Sources\Combo\OoTObjectScene.cpp" />
     <ClCompile Include="Sources\Combo\OvTypes.cpp" />
     <ClCompile Include="Sources\Combo\Scenes.cpp" />
+    <ClCompile Include="Sources\Combo\Xflags.cpp" />
     <ClCompile Include="Sources\Multi\API.cpp" />
     <ClCompile Include="Sources\Multi\App.cpp" />
     <ClCompile Include="Sources\Multi\Buffer.cpp" />
@@ -264,6 +265,7 @@
     <ClInclude Include="Headers\Combo\OvTypes.h" />
     <ClInclude Include="Headers\Combo\Regions.h" />
     <ClInclude Include="Headers\Combo\Scenes.h" />
+    <ClInclude Include="Headers\Combo\Xflags.h" />
     <ClInclude Include="Headers\Multi\API.h" />
     <ClInclude Include="Headers\Multi\App.h" />
     <ClInclude Include="Headers\Multi\Buffer.h" />

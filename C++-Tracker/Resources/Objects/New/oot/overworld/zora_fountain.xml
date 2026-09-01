@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="oot">
+  <scene id="ZORA_FOUNTAIN">
+    <scene_rendering id="OOT_ZORA_FOUNTAIN" loc_type="overworld">
+      <rendering_option context="adult" type="heart_piece">
+        <collectible location="Zora Fountain Iceberg HP" flag="0x01" item="HEART_PIECE" name="Iceberg" xyz="352;375;0"/>
+        <collectible location="Zora Fountain Bottom HP" flag="0x14" item="HEART_PIECE" name="Underwater" xyz="473;386;0"/>
+      </rendering_option>
+      <rendering_option context="child">
+        <gs location="Zora Fountain GS Wall" flag="0x8a" item="GS_TOKEN" name="Child - Wall" xyz="700;159;0"/>
+        <gs location="Zora Fountain GS Tree" flag="0x8f" item="GS_TOKEN" name="Tree" xyz="447;119;0"/>
+      </rendering_option>
+      <rendering_option context="adult">
+        <gs location="Zora Fountain GS Upper" flag="0x8d" item="GS_TOKEN" name="Adult - Upper" xyz="331;144;0"/>
+      </rendering_option>
+      <rendering_option context="child">
+        <xflag type="pot" location="Zora Fountain Child Pot 1" slice="0x0" setup="0x0" room="0x0" actor="0x13" item="DEKU_SEEDS_5" name="Child 1" xyz="673;418;1"/>
+        <xflag type="pot" location="Zora Fountain Child Pot 2" slice="0x0" setup="0x0" room="0x0" actor="0x15" item="DEKU_SEEDS_5" name="Child 2" xyz="663;418;0"/>
+        <xflag type="pot" location="Zora Fountain Child Pot 3" slice="0x0" setup="0x0" room="0x0" actor="0x16" item="DEKU_SEEDS_5" name="Child 3" xyz="662;365;0"/>
+        <xflag type="pot" location="Zora Fountain Child Pot 4" slice="0x0" setup="0x0" room="0x0" actor="0x17" item="RECOVERY_HEART" name="Child 4" xyz="672;365;0"/>
+      </rendering_option>
+      <rendering_option context="adult">
+        <xflag type="pot" location="Zora Fountain Adult Pot 1" slice="0x0" setup="0x2" room="0x0" actor="0x2a" item="MAGIC_JAR_LARGE" name="Adult 1" xyz="422;98;2"/>
+        <xflag type="pot" location="Zora Fountain Adult Pot 2" slice="0x0" setup="0x2" room="0x0" actor="0x2b" item="MAGIC_JAR_LARGE" name="Adult 2" xyz="430;92;1"/>
+        <xflag type="pot" location="Zora Fountain Adult Pot 3" slice="0x0" setup="0x2" room="0x0" actor="0x2c" item="ARROWS_10" name="Adult 3" xyz="424;91;0"/>
+        <xflag type="rupee" location="Zora Fountain Rupee 01" slice="0x0" setup="0x2" room="0x0" actor="0x0" item="RUPEE_GREEN" name="Underwater 1" xyz="465;403;0"/>
+        <xflag type="rupee" location="Zora Fountain Rupee 02" slice="0x0" setup="0x2" room="0x0" actor="0x1" item="RUPEE_GREEN" name="Underwater 2" xyz="454;389;0"/>
+        <xflag type="rupee" location="Zora Fountain Rupee 03" slice="0x0" setup="0x2" room="0x0" actor="0x2" item="RUPEE_GREEN" name="Underwater 3" xyz="458;373;0"/>
+        <xflag type="rupee" location="Zora Fountain Rupee 04" slice="0x0" setup="0x2" room="0x0" actor="0x3" item="RUPEE_GREEN" name="Underwater 4" xyz="479;369;0"/>
+        <xflag type="rupee" location="Zora Fountain Rupee 05" slice="0x0" setup="0x2" room="0x0" actor="0x4" item="RUPEE_GREEN" name="Underwater 5" xyz="492;381;0"/>
+        <xflag type="rupee" location="Zora Fountain Rupee 06" slice="0x0" setup="0x2" room="0x0" actor="0x5" item="RUPEE_GREEN" name="Underwater 6" xyz="489;399;0"/>
+        <xflag type="rupee" location="Zora Fountain Rupee 07" slice="0x0" setup="0x2" room="0x0" actor="0x6" item="RUPEE_GREEN" name="Underwater 7" xyz="447;446;0"/>
+        <xflag type="rupee" location="Zora Fountain Rupee 08" slice="0x0" setup="0x2" room="0x0" actor="0x7" item="RUPEE_GREEN" name="Underwater 8" xyz="416;399;0"/>
+        <xflag type="rupee" location="Zora Fountain Rupee 09" slice="0x0" setup="0x2" room="0x0" actor="0x8" item="RUPEE_GREEN" name="Underwater 9" xyz="432;354;0"/>
+        <xflag type="rupee" location="Zora Fountain Rupee 10" slice="0x0" setup="0x2" room="0x0" actor="0x9" item="RUPEE_GREEN" name="Underwater 10" xyz="488;343;0"/>
+        <xflag type="rupee" location="Zora Fountain Rupee 11" slice="0x0" setup="0x2" room="0x0" actor="0xa" item="RUPEE_GREEN" name="Underwater 11" xyz="530;369;0"/>
+        <xflag type="rupee" location="Zora Fountain Rupee 12" slice="0x0" setup="0x2" room="0x0" actor="0xb" item="RUPEE_GREEN" name="Underwater 12" xyz="519;426;0"/>
+        <xflag type="rupee" location="Zora Fountain Rupee 13" slice="0x0" setup="0x2" room="0x0" actor="0xc" item="RUPEE_GREEN" name="Underwater 13" xyz="434;485;0"/>
+        <xflag type="rupee" location="Zora Fountain Rupee 14" slice="0x0" setup="0x2" room="0x0" actor="0xd" item="RUPEE_GREEN" name="Underwater 14" xyz="363;413;0"/>
+        <xflag type="rupee" location="Zora Fountain Rupee 15" slice="0x0" setup="0x2" room="0x0" actor="0xe" item="RUPEE_GREEN" name="Underwater 15" xyz="410;338;0"/>
+        <xflag type="rupee" location="Zora Fountain Rupee 16" slice="0x0" setup="0x2" room="0x0" actor="0xf" item="RUPEE_GREEN" name="Underwater 16" xyz="495;315;0"/>
+        <xflag type="rupee" location="Zora Fountain Rupee 17" slice="0x0" setup="0x2" room="0x0" actor="0x10" item="RUPEE_GREEN" name="Underwater 17" xyz="559;365;0"/>
+        <xflag type="rupee" location="Zora Fountain Rupee 18" slice="0x0" setup="0x2" room="0x0" actor="0x11" item="RUPEE_GREEN" name="Underwater 18" xyz="561;455;0"/>
+      </rendering_option>
+      <rendering_option context="child">
+        <actor room="0x0" setup="0x0" actor="0xe">
+          <xflag type="butterfly" location="Zora Fountain Butterfly 1" slice="0" item="FAIRY" name="Butterfly 1" xyz="641;206;0"/>
+          <xflag type="butterfly" location="Zora Fountain Butterfly 2" slice="1" item="NOTHING" name="Butterfly 2" xyz="649;198;0"/>
+        </actor>
+        <xflag type="bush" location="Zora Fountain Bush 1" slice="0x0" setup="0x0" room="0x0" actor="0x6" item="NOTHING" name="Bush 1" xyz="398;131;0"/>
+        <xflag type="bush" location="Zora Fountain Bush 2" slice="0x0" setup="0x0" room="0x0" actor="0x7" item="NOTHING" name="Bush 2" xyz="418;126;0"/>
+        <xflag type="bush" location="Zora Fountain Bush 3" slice="0x0" setup="0x0" room="0x0" actor="0x8" item="NOTHING" name="Bush 3" xyz="407;106;0"/>
+        <xflag type="bush" location="Zora Fountain Bush 4" slice="0x0" setup="0x0" room="0x0" actor="0x9" item="NOTHING" name="Bush 4" xyz="441;99;0"/>
+        <xflag type="bush" location="Zora Fountain Bush 5" slice="0x0" setup="0x0" room="0x0" actor="0xa" item="NOTHING" name="Bush 5" xyz="426;88;2"/>
+        <xflag type="bush" location="Zora Fountain Bush 6" slice="0x0" setup="0x0" room="0x0" actor="0xb" item="NOTHING" name="Bush 6" xyz="452;83;2"/>
+      </rendering_option>
+      <xflag type="boulder" location="Zora Fountain Boulder Exposed" slice="0x0" setup="0x0" room="0x0" actor="0x10" item="NOTHING" name="Exposed" xyz="451;69;0"/>
+      <xflag type="boulder" location="Zora Fountain Boulder Underground" slice="0x0" setup="0x0" room="0x0" actor="0x11" item="NOTHING" name="Underground" xyz="434;72;0"/>
+      <rendering_option type="silverboulder">
+        <xflag type="boulder-silver" location="Zora Fountain Silver Boulder" slice="0x0" setup="0x0" room="0x0" actor="0x5" item="NOTHING" name="Silver Boulder" xyz="434;80;1"/>
+      </rendering_option>
+      <actor>
+        <match setup="0" actor="0x12"/>
+        <match setup="1" actor="0x12"/>
+        <match setup="2" actor="0x16"/>
+        <xflag type="gossip" location="Zora Fountain Gossip Fairy Land" slice="0" item="FAIRY" name="Gossip Fairy Land" xyz="0;0;0"/>
+        <xflag type="gossip-big" location="Zora Fountain Gossip Big Fairy Land" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Land" xyz="0;0;0"/>
+      </actor>
+      <actor>
+        <match setup="0" actor="0x14"/>
+        <match setup="1" actor="0x14"/>
+        <match setup="2" actor="0x17"/>
+        <xflag type="gossip" location="Zora Fountain Gossip Fairy Water" slice="0" item="FAIRY" name="Gossip Fairy Water" xyz="0;0;0"/>
+        <xflag type="gossip-big" location="Zora Fountain Gossip Big Fairy Water" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Water" xyz="0;0;0"/>
+      </actor>
+    </scene_rendering>
+  </scene>
+  <scene id="GREAT_FAIRY_FOUNTAIN_SPELLS">
+    <scene_rendering id="OOT_GREAT_FAIRY_FARORE" loc_type="overworld">
+      <rendering_option icon="farore">
+        <npc location="Great Fairy Farore's Wind" npc="FAIRY_SPELL_WIND" item="SPELL_WIND" name="Farore's Wind" xyz="497;351;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

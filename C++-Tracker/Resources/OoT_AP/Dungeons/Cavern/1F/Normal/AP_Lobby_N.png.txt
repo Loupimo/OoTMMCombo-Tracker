@@ -1,0 +1,18 @@
+QList<QPair<int, int>> ChestPoints = {
+{701, 1522},
+};
+QList<QPair<int, int>> FlyPoints = {
+{694, 1708},
+{1303, 1346},
+{1302, 1316},
+};
+QList<QPair<int, int>> NPCsPoints = {
+{694, 1708},
+{1303, 1346},
+{1302, 1316},
+};
+QList<QPair<int, int>> FoesPoints = {
+{1226, 1615},
+{783, 1612},
+{1004, 1442},
+};

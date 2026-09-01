@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="oot">
+  <scene id="HYRULE_CASTLE">
+    <scene_rendering id="OOT_HYRULE_CASTLE" loc_type="overworld">
+      <rendering_option icon="egg">
+        <npc location="Malon Egg" npc="MALON_EGG" item="CHICKEN" name="Malon Egg" xyz="409;857;0"/>
+      </rendering_option>
+      <gs location="Hyrule Castle GS Tree" flag="0x72" item="GS_TOKEN" name="Tree" xyz="395;756;0"/>
+    </scene_rendering>
+    <scene_rendering id="OOT_HYRULE_CASTLE" loc_type="broken">
+      <xflag type="pot" location="Hyrule Castle Pot 1" slice="0x0" actor="0x8" item="RUPEE_GREEN" name="Pot 1" xyz="643;767;0"/>
+      <xflag type="pot" location="Hyrule Castle Pot 2" slice="0x0" actor="0x9" item="RUPEE_BLUE" name="Pot 2" xyz="643;783;0"/>
+    </scene_rendering>
+    <scene_rendering id="OOT_HYRULE_CASTLE" loc_type="overworld">
+      <xflag type="grass" location="Hyrule Castle Grass 1" slice="0x0" actor="0x2e" item="NOTHING" name="Grass 1" xyz="596;326;0"/>
+      <xflag type="grass" location="Hyrule Castle Grass 2" slice="0x0" actor="0x2f" item="NOTHING" name="Grass 2" xyz="614;317;0"/>
+      <xflag type="tree" location="Hyrule Castle Tree 1" slice="0x0" actor="0xf" item="RANDOM" name="Tree 1" xyz="341;438;0"/>
+      <xflag type="tree" location="Hyrule Castle Tree 2" slice="0x0" actor="0x10" item="RANDOM" name="Tree 2" xyz="394;442;0"/>
+      <xflag type="tree" location="Hyrule Castle Tree 3" slice="0x0" actor="0x11" item="RANDOM" name="Tree 3" xyz="496;429;0"/>
+      <xflag type="tree" location="Hyrule Castle Tree 4" slice="0x0" actor="0x12" item="RANDOM" name="Tree 4" xyz="578;435;0"/>
+      <xflag type="tree" location="Hyrule Castle Tree 5" slice="0x0" actor="0x13" item="RANDOM" name="Tree 5" xyz="601;561;0"/>
+      <xflag type="tree" location="Hyrule Castle Tree 6" slice="0x0" actor="0x15" item="RANDOM" name="Tree 6" xyz="657;601;0"/>
+      <xflag type="tree" location="Hyrule Castle Tree 7" slice="0x0" actor="0x31" item="RANDOM" name="Tree 7" xyz="578;317;0"/>
+      <xflag type="tree" location="Hyrule Castle Tree 8" slice="0x0" actor="0x32" item="RANDOM" name="Tree 8" xyz="714;572;0"/>
+      <xflag type="tree" location="Hyrule Castle Tree Guarded" slice="0x0" actor="0x14" item="RANDOM" name="Guarded" xyz="618;439;0"/>
+      <xflag type="rock" location="Hyrule Castle Rock 1" actor="0x2a" item="RANDOM" name="Rock 1" xyz="370;771;0"/>
+      <xflag type="rock" location="Hyrule Castle Rock 2" actor="0x2b" item="RANDOM" name="Rock 2" xyz="413;776;0"/>
+      <xflag type="rock" location="Hyrule Castle Rock 3" actor="0x2c" item="RANDOM" name="Rock 3" xyz="397;731;0"/>
+      <xflag type="boulder" location="Hyrule Castle Boulder" slice="0x0" actor="0x3a" item="NOTHING" name="Boulder" xyz="958;655;0"/>
+      <xflag type="wonder" location="Hyrule Castle Wonder Item Torch 1" slice="0x0" actor="0xc" item="MAGIC_JAR_LARGE" name="Torch 1" xyz="372;203;0"/>
+      <xflag type="wonder" location="Hyrule Castle Wonder Item Torch 2" slice="0x0" actor="0xd" item="RUPEE_RED" name="Torch 2" xyz="288;205;0"/>
+      <xflag type="wonder" location="Hyrule Castle Wonder Item Moat 01" slice="0x0" actor="0x20" item="RUPEE_GREEN" name="Moat 1" xyz="169;262;0"/>
+      <xflag type="wonder" location="Hyrule Castle Wonder Item Moat 02" slice="0x0" actor="0x21" item="RUPEE_GREEN" name="Moat 2" xyz="243;271;0"/>
+      <xflag type="wonder" location="Hyrule Castle Wonder Item Moat 03" slice="0x0" actor="0x22" item="RUPEE_GREEN" name="Moat 3" xyz="297;263;0"/>
+      <xflag type="wonder" location="Hyrule Castle Wonder Item Moat 04" slice="0x0" actor="0x23" item="RUPEE_GREEN" name="Moat 4" xyz="358;268;0"/>
+      <xflag type="wonder" location="Hyrule Castle Wonder Item Moat 05" slice="0x0" actor="0x24" item="RUPEE_GREEN" name="Moat 5" xyz="422;259;0"/>
+      <xflag type="wonder" location="Hyrule Castle Wonder Item Moat 06" slice="0x0" actor="0x25" item="RUPEE_GREEN" name="Moat 6" xyz="491;265;0"/>
+      <xflag type="wonder" location="Hyrule Castle Wonder Item Moat 07" slice="0x0" actor="0x26" item="RUPEE_GREEN" name="Moat 7" xyz="556;171;0"/>
+      <xflag type="wonder" location="Hyrule Castle Wonder Item Moat 08" slice="0x0" actor="0x27" item="RUPEE_GREEN" name="Moat 8" xyz="562;226;0"/>
+      <xflag type="wonder" location="Hyrule Castle Wonder Item Moat 09" slice="0x0" actor="0x28" item="RUPEE_GREEN" name="Moat 9" xyz="563;127;0"/>
+      <xflag type="wonder" location="Hyrule Castle Wonder Item Moat 10" slice="0x0" actor="0x29" item="RUPEE_BLUE" name="Moat 10" xyz="554;26;0"/>
+      <actor actor="0x33">
+        <xflag type="butterfly" location="Hyrule Castle Butterfly Pack 1 Butterfly 1" slice="0" item="FAIRY" name="Pack 1 - Butterfly 1" xyz="502;646;0"/>
+        <xflag type="butterfly" location="Hyrule Castle Butterfly Pack 1 Butterfly 2" slice="1" item="NOTHING" name="Pack 1 - Butterfly 2" xyz="520;646;0"/>
+      </actor>
+      <actor actor="0x34">
+        <xflag type="butterfly" location="Hyrule Castle Butterfly Pack 2 Butterfly 1" slice="0" item="FAIRY" name="Pack 2 - Butterfly 1" xyz="766;561;0"/>
+        <xflag type="butterfly" location="Hyrule Castle Butterfly Pack 2 Butterfly 2" slice="1" item="NOTHING" name="Pack 2 - Butterfly 2" xyz="761;545;0"/>
+      </actor>
+      <actor actor="0x35">
+        <xflag type="butterfly" location="Hyrule Castle Butterfly Pack 3 Butterfly 1" slice="0" item="FAIRY" name="Pack 3 - Butterfly 1" xyz="397;498;0"/>
+        <xflag type="butterfly" location="Hyrule Castle Butterfly Pack 3 Butterfly 2" slice="1" item="NOTHING" name="Pack 3 - Butterfly 2" xyz="410;483;0"/>
+        <xflag type="butterfly" location="Hyrule Castle Butterfly Pack 3 Butterfly 3" slice="2" item="NOTHING" name="Pack 3 - Butterfly 3" xyz="422;498;0"/>
+      </actor>
+      <actor actor="0x36">
+        <xflag type="butterfly" location="Hyrule Castle Butterfly Pack 4 Butterfly 1" slice="0" item="FAIRY" name="Pack 4 - Butterfly 1" xyz="273;648;0"/>
+        <xflag type="butterfly" location="Hyrule Castle Butterfly Pack 4 Butterfly 2" slice="1" item="NOTHING" name="Pack 4 - Butterfly 2" xyz="274;613;0"/>
+        <xflag type="butterfly" location="Hyrule Castle Butterfly Pack 4 Butterfly 3" slice="2" item="NOTHING" name="Pack 4 - Butterfly 3" xyz="285;631;0"/>
+        <xflag type="butterfly" location="Hyrule Castle Butterfly Pack 4 Butterfly 4" slice="3" item="NOTHING" name="Pack 4 - Butterfly 4" xyz="296;613;0"/>
+        <xflag type="butterfly" location="Hyrule Castle Butterfly Pack 4 Butterfly 5" slice="4" item="NOTHING" name="Pack 4 - Butterfly 5" xyz="298;647;0"/>
+      </actor>
+      <actor actor="0x2">
+        <xflag type="gossip" location="Hyrule Castle Gossip Fairy Near Castle" slice="0" item="FAIRY" name="Near Castle Fairy" xyz="247;396;0"/>
+        <xflag type="gossip-big" location="Hyrule Castle Gossip Big Fairy Near Castle" slice="1" item="FAIRY_BIG" name="Near Castle Big Fairy" xyz="221;396;0"/>
+      </actor>
+      <actor actor="0x3">
+        <xflag type="gossip" location="Hyrule Castle Gossip Fairy Near Entrance" slice="0" item="FAIRY" name="Near Entrance Fairy" xyz="524;852;0"/>
+        <xflag type="gossip-big" location="Hyrule Castle Gossip Big Fairy Near Entrance" slice="1" item="FAIRY_BIG" name="Near Entrance Big Fairy" xyz="500;852;0"/>
+      </actor>
+    </scene_rendering>
+  </scene>
+  <scene id="CASTLE_COURTYARD">
+    <scene_rendering id="OOT_CASTLE_COURTYARD" loc_type="overworld">
+      <rendering_option icon="letter">
+        <npc location="Zelda's Letter" npc="ZELDA_LETTER" item="ZELDA_LETTER" name="Zelda's Letter" xyz="757;318;0"/>
+      </rendering_option>
+      <rendering_option type="song">
+        <npc location="Zelda's Song" npc="ZELDA_SONG" item="SONG_ZELDA" name="Zelda's Song" xyz="174;470;0"/>
+      </rendering_option>
+      <xflag type="wonder" location="Castle Courtyard Wonder Item" slice="0x0" setup="0x0" room="0x0" actor="0x5" item="RUPEE_RED" name="Mario Painting" xyz="273;205;0"/>
+    </scene_rendering>
+  </scene>
+  <scene id="GREAT_FAIRY_FOUNTAIN_SPELLS">
+    <scene_rendering id="OOT_GREAT_FAIRY_CASTLE" loc_type="overworld">
+      <rendering_option context="child" icon="din">
+        <npc location="Great Fairy Din's Fire" npc="FAIRY_SPELL_FIRE" item="SPELL_FIRE" name="Din's Fire" xyz="497;351;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="GROTTOS" room="0x8">
+    <scene_rendering id="OOT_GROTTO_CASTLE_STORMS" loc_type="overworld">
+      <gs location="Hyrule Castle GS Grotto" flag="0x71" item="GS_TOKEN" name="Web" xyz="520;715;0"/>
+      <xflag type="pot" location="Hyrule Castle Grotto Pot 1" actor="0x6" item="RUPEE_RED" name="Pot 1" xyz="708;422;0"/>
+      <xflag type="pot" location="Hyrule Castle Grotto Pot 2" actor="0x7" item="BOMB" name="Pot 2" xyz="720;345;0"/>
+      <xflag type="pot" location="Hyrule Castle Grotto Pot 3" actor="0x9" item="ARROWS_5" name="Pot 3" xyz="659;381;0"/>
+      <xflag type="pot" location="Hyrule Castle Grotto Pot 4" actor="0xb" item="NUTS_5" name="Pot 4" xyz="658;312;0"/>
+      <actor actor="0x2">
+        <xflag type="rock" location="Hyrule Castle Grotto Rock Circle Rock 1" slice="0" item="RANDOM" name="Circle Rock 1" xyz="698;243;0"/>
+        <xflag type="rock" location="Hyrule Castle Grotto Rock Circle Rock 2" slice="1" item="RANDOM" name="Circle Rock 2" xyz="721;233;0"/>
+        <xflag type="rock" location="Hyrule Castle Grotto Rock Circle Rock 3" slice="2" item="RANDOM" name="Circle Rock 3" xyz="729;212;0"/>
+        <xflag type="rock" location="Hyrule Castle Grotto Rock Circle Rock 4" slice="3" item="RANDOM" name="Circle Rock 4" xyz="720;191;0"/>
+        <xflag type="rock" location="Hyrule Castle Grotto Rock Circle Rock 5" slice="4" item="RANDOM" name="Circle Rock 5" xyz="698;180;0"/>
+        <xflag type="rock" location="Hyrule Castle Grotto Rock Circle Rock 6" slice="5" item="RANDOM" name="Circle Rock 6" xyz="676;191;0"/>
+        <xflag type="rock" location="Hyrule Castle Grotto Rock Circle Rock 7" slice="6" item="RANDOM" name="Circle Rock 7" xyz="668;212;0"/>
+        <xflag type="rock" location="Hyrule Castle Grotto Rock Circle Rock 8" slice="7" item="RANDOM" name="Circle Rock 8" xyz="676;233;0"/>
+      </actor>
+      <actor actor="0xd">
+        <xflag type="gossip" location="Hyrule Castle Grotto Gossip Fairy" slice="0" item="FAIRY" name="Gossip Fairy" xyz="0;0;0"/>
+        <xflag type="gossip-big" location="Hyrule Castle Grotto Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy" xyz="0;0;0"/>
+      </actor>
+    </scene_rendering>
+  </scene>
+  <scene id="GANON_CASTLE_EXTERIOR">
+    <scene_rendering id="OOT_GANON_CASTLE_EXTERIOR" loc_type="overworld">
+      <gs location="Ganon Castle Exterior GS" flag="0x70" item="GS_TOKEN" name="Side Arch" xyz="373;413;0"/>
+      <rendering_option type="redboulder">
+        <xflag type="boulder-red" location="Ganon Castle Exterior Red Boulder 1" slice="0x0" setup="0x0" room="0x0" actor="0x3" item="NOTHING" name="Boulder 1" xyz="130;319;0"/>
+        <xflag type="boulder-red" location="Ganon Castle Exterior Red Boulder 2" slice="0x0" setup="0x0" room="0x0" actor="0x4" item="NOTHING" name="Boulder 2" xyz="265;373;0"/>
+        <xflag type="boulder-red" location="Ganon Castle Exterior Red Boulder 3" slice="0x0" setup="0x0" room="0x0" actor="0x5" item="NOTHING" name="Boulder 3" xyz="240;365;0"/>
+      </rendering_option>
+      <rendering_option type="silverboulder">
+        <xflag type="boulder-silver" location="Ganon Castle Exterior Silver Boulder 1" slice="0x0" setup="0x0" room="0x0" actor="0x6" item="NOTHING" name="Silver Boulder 1" xyz="146;331;0"/>
+        <xflag type="boulder-silver" location="Ganon Castle Exterior Silver Boulder 2" slice="0x0" setup="0x0" room="0x0" actor="0x7" item="NOTHING" name="Silver Boulder 2" xyz="241;383;0"/>
+        <xflag type="boulder-silver" location="Ganon Castle Exterior Silver Boulder 3" slice="0x0" setup="0x0" room="0x0" actor="0x8" item="NOTHING" name="Silver Boulder 3" xyz="221;355;0"/>
+        <xflag type="boulder-silver" location="Ganon Castle Exterior Silver Boulder 4" slice="0x0" setup="0x0" room="0x0" actor="0x9" item="NOTHING" name="Silver Boulder 4" xyz="224;373;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="GREAT_FAIRY_FOUNTAIN_UPGRADES">
+    <scene_rendering id="OOT_GREAT_FAIRY_CASTLE" loc_type="overworld">
+      <rendering_option context="adult" icon="defense">
+        <npc location="Great Fairy Defense Upgrade" npc="FAIRY_DEFENSE_UPGRADE" item="DEFENSE_UPGRADE" hint="GANON_FAIRY" name="Double Defense Upgrade" xyz="497;351;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

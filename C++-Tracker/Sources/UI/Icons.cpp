@@ -41,6 +41,8 @@ const IconMetaInf IconsMetaInfo[NumOfGameIcons] =
     {"./Resources/Common/Bush.png", { 25, 25 }},                        // ObjectType::bush
     {"./Resources/Common/Silver_Boulder.png", { 25, 25 }},              // ObjectType::silverboulder
     {"./Resources/Common/Boulder.png", { 25, 25 }},                     // ObjectType::boulder
+    {"./Resources/Common/Fairy.png", { 25, 25 }},                       // ObjectType::gossip
+    {"./Resources/Common/Fairy_Spot.png", { 25, 25 }},                  // ObjectType::gossip_big
 
     // Extra types
     {"./Resources/Common/Song.png", { 30, 30 }},

@@ -428,6 +428,53 @@ mod tests {
         assert!(WorldInputs::build(&vanilla, &[WorldData::default()], 1, &Default::default(), false).exit_redirects().is_none());
     }
 
+    /// Progressive entrance discovery: the same rerouted edge is a *wall* until the
+    /// player walks it. With `progressive=true` and nothing discovered the redirect
+    /// carries no targets (impassable); once the source entrance id is in the
+    /// discovered set the redirect is laid down exactly as in full-knowledge mode.
+    #[test]
+    fn progressive_entrances_gate_until_walked() {
+        let mq = std::collections::HashSet::new();
+        let mut settings = Settings::default();
+        // A real SRC entrance const (`..._ENTR` dropped, as the spoiler writes it)
+        // on the Kokiri Forest -> Lost Woods edge, rerouted to Zora River.
+        settings.parse_spoiler(
+            "Entrances\n  OOT Kokiri Forest to OOT Lost Woods (OOT_KOKIRI_FOREST_FROM_LOST_WOODS) \
+             -> OOT Zora River from OOT Hyrule Field (OOT_ZORA_RIVER)\n",
+            &mq,
+        );
+        settings.apply(&mq);
+
+        // The SRC entrance const resolved to a real id (the name<->id bridge).
+        let src_id = settings.entrance_remap[0].src_id.expect("SRC entrance resolved to an id");
+
+        let idx = |g: u8, n: &str| region_name_index()[g as usize].get(n).unwrap()[0];
+        let (kokiri, lost, zora) =
+            (idx(0, "Kokiri Forest"), idx(0, "Lost Woods"), idx(0, "Zora River"));
+        let edge = (kokiri, lost);
+
+        let empty = std::collections::HashSet::new();
+        let walked: std::collections::HashSet<(u8, u32)> = [(0u8, src_id)].into_iter().collect();
+
+        // Targets this edge is redirected to (empty when the edge is absent or walled).
+        let targets = |inp: &WorldInputs| -> Vec<u32> {
+            inp.exit_redirects().and_then(|m| m.get(&edge)).cloned().unwrap_or_default()
+        };
+
+        // Full knowledge (progressive off): rerouted to Zora River, ignoring `discovered`.
+        let full = WorldInputs::build(&settings, &[WorldData::default()], 1, &empty, false);
+        assert!(targets(&full).contains(&zora), "full knowledge should reroute to Zora River");
+
+        // Progressive, entrance not yet walked: the edge carries no targets (a wall),
+        // so the shuffled Zora River destination is unreachable through it.
+        let blocked = WorldInputs::build(&settings, &[WorldData::default()], 1, &empty, true);
+        assert!(targets(&blocked).is_empty(), "undiscovered entrance must be a wall");
+
+        // Progressive, entrance walked: identical to full knowledge.
+        let opened = WorldInputs::build(&settings, &[WorldData::default()], 1, &walked, true);
+        assert!(targets(&opened).contains(&zora), "walked entrance reroutes like full knowledge");
+    }
+
     /// Multiworld: a collected check's item goes to its destination player, so it
     /// enters that player's inventory — not the world it was physically found in.
     #[test]

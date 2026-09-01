@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="oot">
+  <scene id="TEMPLE_SPIRIT_MQ">
+    <scene_rendering id="OOT_TEMPLE_SPIRIT" loc_type="dungeon">
+      <rendering_option layout="oot_mq">
+        <chest location="MQ Spirit Temple Entrance Initial Chest" flag="0x1a" item="BOMBCHU_5" name="Entrance - Initial" xyz="705;1003;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" type="small_key">
+        <chest location="MQ Spirit Temple Lobby Back-Left Chest" flag="0x1e" item="SMALL_KEY_SPIRIT" name="Lobby - Back-Left" xyz="699;930;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq">
+        <chest location="MQ Spirit Temple Lobby Back-Right Chest" flag="0x1f" item="BOMBCHU_5" name="Lobby - Back-Right" xyz="787;930;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="1" type="compass">
+        <chest location="MQ Spirit Temple Compass Chest" flag="0x03" item="COMPASS_SPIRIT" name="Chest" xyz="884;1388;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="2">
+        <chest location="MQ Spirit Temple Sun Block Room Chest" flag="0x01" item="RECOVERY_HEART" name="Sun Block Room" xyz="529;221;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" type="map">
+        <chest location="MQ Spirit Temple Map Chest" flag="0x00" item="MAP_SPIRIT" name="Chest" xyz="160;639;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" type="small_key">
+        <chest location="MQ Spirit Temple Map Room Back Chest" flag="0x08" item="SMALL_KEY_SPIRIT" name="Map Room - Back" xyz="159;472;0"/>
+        <chest location="MQ Spirit Temple Paradox Chest" flag="0x1d" item="SMALL_KEY_SPIRIT" name="Paradox" xyz="378;949;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="1">
+        <chest location="MQ Spirit Temple Child Upper Ground Chest" flag="0x06" item="BOMBCHU_5" name="Child - Upper Ground" xyz="341;1442;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="1" type="small_key">
+        <chest location="MQ Spirit Temple Child Upper Ledge Chest" flag="0x0c" item="SMALL_KEY_SPIRIT" name="Child - Upper Ledge" xyz="213;1714;0"/>
+        <chest location="MQ Spirit Temple Silver Block Room Target Chest" flag="0x1c" item="SMALL_KEY_SPIRIT" name="Silver Block Room - Target" xyz="890;1842;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="1">
+        <chest location="MQ Spirit Temple Chest in Box" flag="0x0f" item="RUPEE_BLUE" name="Chest in Box" xyz="1057;1246;0"/>
+        <chest location="MQ Spirit Temple Statue Room Ledge Chest" flag="0x02" item="RECOVERY_HEART" name="Statue Room - Ledge" xyz="1167;1267;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" type="small_key">
+        <chest location="MQ Spirit Temple Lobby Front-Right Chest" flag="0x1b" item="SMALL_KEY_SPIRIT" name="Lobby - Front-Right" xyz="791;1003;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq">
+        <chest location="MQ Spirit Temple Purple Leever Chest" flag="0x04" item="RUPEE_PURPLE" name="Purple Leever" xyz="857;544;0"/>
+        <chest location="MQ Spirit Temple Symphony Room Chest" flag="0x07" item="RUPEE_PURPLE" hint="MQ_SPIRIT_SYMPHONY" name="Symphony Room" xyz="1275;358;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="2">
+        <chest location="MQ Spirit Temple Beamos Room Chest" flag="0x19" item="ARROWS_30" name="Beamos Room" xyz="1536;411;0"/>
+        <chest location="MQ Spirit Temple Dinolfos Room Chest" flag="0x18" item="ICE_TRAP" name="Dinolfos Room" xyz="1861;557;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="2" type="boss_key">
+        <chest location="MQ Spirit Temple Boss Key Chest" flag="0x05" item="BOSS_KEY_SPIRIT" name="Chest" xyz="1756;71;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="3" type="small_key">
+        <chest location="MQ Spirit Temple Topmost Chest" flag="0x12" item="SMALL_KEY_SPIRIT" name="Topmost" xyz="548;698;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="2">
+        <gs location="MQ Spirit Temple GS Sun Block Room" flag="0xe0" item="GS_TOKEN" name="Sun Block Room" xyz="501;618;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq">
+        <gs location="MQ Spirit Temple GS Leever Room" flag="0xe1" item="GS_TOKEN" name="Leever Room" xyz="897;645;0"/>
+        <gs location="MQ Spirit Temple GS Symphony Room" flag="0xe3" item="GS_TOKEN" name="Symphony Room" xyz="1322;442;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="3">
+        <gs location="MQ Spirit Temple GS Top Floor Left Wall" flag="0xe2" item="GS_TOKEN" name="Top Floor - Left Wall" xyz="1060;264;0"/>
+        <gs location="MQ Spirit Temple GS Top Floor Back Wall" flag="0xe4" item="GS_TOKEN" name="Top Floor - Back Wall" xyz="1191;72;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq">
+        <sr location="MQ Spirit Temple SR Lobby After Water Near Stairs" flag="0x8a" item="RUPEE_SILVER_SPIRIT_LOBBY" name="Lobby - After Water Near Stairs" xyz="1069;968;0"/>
+        <sr location="MQ Spirit Temple SR Lobby Rock Right" flag="0x8b" item="RUPEE_SILVER_SPIRIT_LOBBY" name="Lobby - Rock Right" xyz="795;1077;1"/>
+        <sr location="MQ Spirit Temple SR Lobby Rock Left" flag="0x8c" item="RUPEE_SILVER_SPIRIT_LOBBY" name="Lobby - Rock Left" xyz="695;1077;1"/>
+        <sr location="MQ Spirit Temple SR Lobby After Water Near Door" flag="0x8d" item="RUPEE_SILVER_SPIRIT_LOBBY" name="Lobby - After Water Near Door" xyz="1054;816;0"/>
+        <sr location="MQ Spirit Temple SR Lobby In Water" flag="0x8e" item="RUPEE_SILVER_SPIRIT_LOBBY" name="Lobby - In Water" xyz="983;992;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="3">
+        <sr location="MQ Spirit Temple SR Adult Bottom" flag="0x8f" item="RUPEE_SILVER_SPIRIT_ADULT" name="Adult - Bottom" xyz="1198;1371;0"/>
+        <sr location="MQ Spirit Temple SR Adult Bottom-Center" flag="0x90" item="RUPEE_SILVER_SPIRIT_ADULT" name="Adult - Bottom-Center" xyz="1128;1360;0"/>
+        <sr location="MQ Spirit Temple SR Adult Center-Top" flag="0x91" item="RUPEE_SILVER_SPIRIT_ADULT" name="Adult - Center-Top" xyz="1227;1329;0"/>
+        <sr location="MQ Spirit Temple SR Adult Top" flag="0x92" item="RUPEE_SILVER_SPIRIT_ADULT" name="Adult - Top" xyz="1163;1314;0"/>
+        <sr location="MQ Spirit Temple SR Adult Skulltula" flag="0x93" item="RUPEE_SILVER_SPIRIT_ADULT" name="Adult - Skulltula" xyz="1181;1350;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq">
+        <xflag type="pot" location="MQ Spirit Temple Pot Entrance 1" slice="0x0" setup="0x0" room="0x0" actor="0x11" item="RECOVERY_HEART" name="Entrance 1" xyz="666;1228;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Entrance 2" slice="0x0" setup="0x0" room="0x0" actor="0x12" item="RECOVERY_HEART" name="Entrance 2" xyz="842;1210;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Entrance 3" slice="0x0" setup="0x0" room="0x0" actor="0x13" item="BOMB" name="Entrance 3" xyz="650;1210;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Entrance 4" slice="0x0" setup="0x0" room="0x0" actor="0x15" item="MAGIC_JAR_LARGE" name="Entrance 4" xyz="827;1227;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Child Entrance" slice="0x0" setup="0x0" room="0x1" actor="0xb" item="BOMB" name="Child - Entrance" xyz="460;977;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Child Boulders 1" slice="0x0" setup="0x0" room="0x2" actor="0xc" item="RECOVERY_HEART" name="Child - Boulders 1" xyz="745;420;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Child Boulders 2" slice="0x0" setup="0x0" room="0x2" actor="0xd" item="MAGIC_JAR_LARGE" name="Child - Boulders 2" xyz="745;441;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="1">
+        <xflag type="pot" location="MQ Spirit Temple Pot Child Climb" slice="0x0" setup="0x0" room="0x4" actor="0xc" item="MAGIC_JAR_LARGE" name="Child - Climb" xyz="189;1372;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Statue Room Upper 1" slice="0x0" setup="0x0" room="0x5" actor="0x20" item="ARROWS_5" name="Statue Room - Upper 1" xyz="623;1250;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Statue Room Upper 2" slice="0x0" setup="0x0" room="0x5" actor="0x21" item="MAGIC_JAR_LARGE" name="Statue Room - Upper 2" xyz="590;1250;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Statue Room Lower 1" slice="0x0" setup="0x0" room="0x5" actor="0x1e" item="RECOVERY_HEART" name="Statue Room - Lower 1" xyz="1089;1385;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Statue Room Lower 2" slice="0x0" setup="0x0" room="0x5" actor="0x22" item="MAGIC_JAR_SMALL" name="Statue Room - Lower 2" xyz="666;1391;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Statue Room Lower 3" slice="0x0" setup="0x0" room="0x5" actor="0x23" item="DEKU_SEEDS_5" name="Statue Room - Lower 3" xyz="1112;1385;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="2">
+        <xflag type="pot" location="MQ Spirit Temple Pot Child Sun Room 1" slice="0x0" setup="0x0" room="0x8" actor="0x16" item="RECOVERY_HEART" name="Child - Sun Room 1" xyz="429;619;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Child Sun Room 2" slice="0x0" setup="0x0" room="0x8" actor="0x18" item="DEKU_SEEDS_5" name="Child - Sun Room 2" xyz="267;222;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="1">
+        <xflag type="pot" location="MQ Spirit Temple Pot Adult Climb 1" slice="0x0" setup="0x0" room="0xf" actor="0xe" item="RECOVERY_HEART" name="Adult - Climb 1" xyz="1633;1810;1"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Adult Climb 2" slice="0x0" setup="0x0" room="0xf" actor="0xf" item="RECOVERY_HEART" name="Adult - Climb 2" xyz="1630;1779;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="3">
+        <xflag type="pot" location="MQ Spirit Temple Pot Topmost Climb 1" slice="0x0" setup="0x0" room="0x17" actor="0xf" item="RECOVERY_HEART" name="Topmost Climb 1" xyz="1249;1542;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Topmost Climb 2" slice="0x0" setup="0x0" room="0x17" actor="0x10" item="RECOVERY_HEART" name="Topmost Climb 2" xyz="1104;1542;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Top Near Triforce Symbol 1" slice="0x0" setup="0x0" room="0x18" actor="0x3" item="RECOVERY_HEART" name="Top - Near Triforce Symbol 1" xyz="1281;541;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Top Near Triforce Symbol 2" slice="0x0" setup="0x0" room="0x18" actor="0x4" item="BOMB" name="Top - Near Triforce Symbol 2" xyz="1108;539;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Top Near Lowering Platform 1" slice="0x0" setup="0x0" room="0x19" actor="0x9" item="RECOVERY_HEART" name="Top - Near Lowering Platform 1" xyz="653;524;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Top Near Lowering Platform 2" slice="0x0" setup="0x0" room="0x19" actor="0xa" item="RECOVERY_HEART" name="Top - Near Lowering Platform 2" xyz="462;598;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Top Near Lowering Platform 3" slice="0x0" setup="0x0" room="0x19" actor="0xb" item="RECOVERY_HEART" name="Top - Near Lowering Platform 3" xyz="653;598;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Top Near Lowering Platform 4" slice="0x0" setup="0x0" room="0x19" actor="0xc" item="MAGIC_JAR_SMALL" name="Top - Near Lowering Platform 4" xyz="462;524;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq">
+        <xflag type="pot" location="MQ Spirit Temple Pot Child Back 1" slice="0x0" setup="0x0" room="0x1b" actor="0x9" item="RECOVERY_HEART" name="Child - Back 1" xyz="384;44;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Child Back 2" slice="0x0" setup="0x0" room="0x1b" actor="0xa" item="RECOVERY_HEART" name="Child - Back 2" xyz="483;45;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Child Back 3" slice="0x0" setup="0x0" room="0x1b" actor="0xb" item="DEKU_SEEDS_5" name="Child - Back 3" xyz="533;90;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Pot Child Back 4" slice="0x0" setup="0x0" room="0x1b" actor="0xc" item="FLEXIBLE" name="Child - Back 4" xyz="343;81;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="1">
+        <xflag type="pot" location="MQ Spirit Temple Flying Pot Statue Room Upper" slice="0x0" setup="0x0" room="0x5" actor="0x12" item="NOTHING" name="Statue Room - Upper Flying Pot" xyz="607;1265;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Flying Pot Statue Room Lower" slice="0x0" setup="0x0" room="0x5" actor="0x13" item="NOTHING" name="Statue Room - Lower Flying Pot" xyz="1100;1402;0"/>
+        <xflag type="pot" location="MQ Spirit Temple Flying Pot Statue Room Stairs" slice="0x0" setup="0x0" room="0x5" actor="0x16" item="NOTHING" name="Statue Room - Stairs Flying Pot" xyz="806;1589;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="2">
+        <xflag type="fairy_spot" location="MQ Spirit Temple Dinolfos Room Big Fairy" slice="0x0" setup="0x0" room="0x12" actor="0x2" item="FAIRY_BIG" name="Dinolfos Room" xyz="1838;395;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq">
+        <xflag type="heart" location="MQ Spirit Temple Heart 1" slice="0x0" setup="0x0" room="0x1" actor="0xd" item="RECOVERY_HEART" name="Heart 1" xyz="377;817;0"/>
+        <xflag type="heart" location="MQ Spirit Temple Heart 2" slice="0x0" setup="0x0" room="0x1" actor="0xe" item="RECOVERY_HEART" name="Heart 2" xyz="436;815;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="2">
+        <xflag type="wonder" location="MQ Spirit Temple Wonder Item Chest Hammer" slice="0x0" setup="0x0" room="0x12" actor="0x8" item="RECOVERY_HEART" name="Chest - Hammer" xyz="1873;570;0"/>
+        <xflag type="wonder" location="MQ Spirit Temple Wonder Item Chest Slash" slice="0x0" setup="0x0" room="0x12" actor="0x9" item="RECOVERY_HEART" name="Chest - Slash" xyz="1873;544;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="1">
+        <xflag type="crate" location="MQ Spirit Temple Giant Statue Room Large Crate 1" slice="0x0" setup="0x0" room="0x5" actor="0xb" item="RUPEE_GREEN" name="Giant Statue Room - Large Crate 1" xyz="1075;1276;1"/>
+        <xflag type="crate" location="MQ Spirit Temple Giant Statue Room Large Crate 2" slice="0x0" setup="0x0" room="0x5" actor="0xc" item="RUPEE_GREEN" name="Giant Statue Room - Large Crate 2" xyz="1040;1276;0"/>
+        <xflag type="crate" location="MQ Spirit Temple Giant Statue Room Small Crate" slice="0x0" setup="0x0" room="0x5" actor="0xd" item="NOTHING" name="Giant Statue Room - Small Crate" xyz="761;1481;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="2">
+        <xflag type="crate" location="MQ Spirit Temple Beamos Room Small Crate" slice="0x0" setup="0x0" room="0x11" actor="0x0" item="NOTHING" name="Beamos Room - Small Crate" xyz="1374;617;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="3">
+        <xflag type="crate" location="MQ Spirit Temple Top Near Lowering Platform Large Crate 1" slice="0x0" setup="0x0" room="0x19" actor="0x1" item="RUPEE_GREEN" name="Top - Near Lowering Platform 1" xyz="650;411;0"/>
+        <xflag type="crate" location="MQ Spirit Temple Top Near Lowering Platform Large Crate 2" slice="0x0" setup="0x0" room="0x19" actor="0x2" item="RUPEE_GREEN" name="Top - Near Lowering Platform 2" xyz="444;411;0"/>
+        <xflag type="crate" location="MQ Spirit Temple Top Near Lowering Platform Large Crate 3" slice="0x0" setup="0x0" room="0x19" actor="0x3" item="RUPEE_GREEN" name="Top - Near Lowering Platform 3" xyz="650;440;0"/>
+        <xflag type="crate" location="MQ Spirit Temple Top Near Lowering Platform Large Crate 4" slice="0x0" setup="0x0" room="0x19" actor="0x4" item="RUPEE_GREEN" name="Top - Near Lowering Platform 4" xyz="444;440;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq">
+        <xflag type="boulder" location="MQ Spirit Temple Boulder Entrance Left" slice="0x0" setup="0x0" room="0x0" actor="0x1" item="NOTHING" name="Entrance Left" xyz="695;1077;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="1">
+        <xflag type="boulder" location="MQ Spirit Temple Boulder Entrance Upper" slice="0x0" setup="0x0" room="0x0" actor="0x2" item="NOTHING" name="Entrance Upper" xyz="872;1978;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq">
+        <xflag type="boulder" location="MQ Spirit Temple Boulder Entrance Cobra" slice="0x0" setup="0x0" room="0x0" actor="0x3" item="NOTHING" name="Entrance Cobra" xyz="849;1054;0"/>
+        <xflag type="boulder" location="MQ Spirit Temple Boulder Entrance Right" slice="0x0" setup="0x0" room="0x0" actor="0x4" item="NOTHING" name="Entrance Right" xyz="795;1077;0"/>
+        <xflag type="boulder" location="MQ Spirit Temple Boulder Entrance Side" slice="0x0" setup="0x0" room="0x0" actor="0x5" item="NOTHING" name="Entrance Side" xyz="1091;897;0"/>
+        <xflag type="boulder" location="MQ Spirit Temple Boulder Child Crawl" slice="0x0" setup="0x0" room="0x1" actor="0x4" item="NOTHING" name="Child Crawl" xyz="407;765;0"/>
+        <xflag type="boulder" location="MQ Spirit Temple Boulder Child Bridge Ground" slice="0x0" setup="0x0" room="0x2" actor="0x7" item="NOTHING" name="Child Bridge Ground" xyz="656;390;0"/>
+        <xflag type="boulder" location="MQ Spirit Temple Boulder Child Bridge Wall Left" slice="0x0" setup="0x0" room="0x2" actor="0xa" item="NOTHING" name="Child Bridge Wall Left" xyz="563;547;0"/>
+        <xflag type="boulder" location="MQ Spirit Temple Boulder Child Bridge Wall Front" slice="0x0" setup="0x0" room="0x2" actor="0xb" item="NOTHING" name="Child Bridge Wall Front" xyz="723;525;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="oot">
+  <scene id="TEMPLE_SPIRIT">
+    <scene_rendering id="OOT_TEMPLE_SPIRIT" loc_type="dungeon">
+      <chest location="Spirit Temple Child First Chest" flag="0x08" item="SHIELD_DEKU" name="Child - First" xyz="119;368;0"/>
+      <rendering_option type="small_key">
+        <chest location="Spirit Temple Child Second Chest" flag="0x00" item="SMALL_KEY_SPIRIT" name="Child - Second" xyz="746;426;0"/>
+      </rendering_option>
+      <rendering_option room="1">
+        <chest location="Spirit Temple Child Climb 1" flag="0x0c" item="SHIELD_DEKU" name="Child - Climb 1" xyz="373;1421;0"/>
+        <chest location="Spirit Temple Child Climb 2" flag="0x06" item="BOMBCHU_10" name="Child - Climb 2" xyz="262;1331;0"/>
+      </rendering_option>
+      <rendering_option room="1" type="map">
+        <chest location="Spirit Temple Statue Base" flag="0x03" item="MAP_SPIRIT" name="Chest" xyz="885;1387;0"/>
+      </rendering_option>
+      <rendering_option room="1" type="small_key">
+        <chest location="Spirit Temple Statue Hands" flag="0x02" item="SMALL_KEY_SPIRIT" name="Statue - Hands" xyz="724;1377;0"/>
+      </rendering_option>
+      <rendering_option room="1">
+        <chest location="Spirit Temple Statue Upper Right" flag="0x0f" item="RUPEE_BLUE" name="Statue - Upper Right" xyz="1166;1338;0"/>
+      </rendering_option>
+      <rendering_option room="2" type="small_key">
+        <chest location="Spirit Temple Sun Block Room Torches" flag="0x01" item="SMALL_KEY_SPIRIT" name="Torches" xyz="430;617;0"/>
+      </rendering_option>
+      <rendering_option type="small_key">
+        <chest location="Spirit Temple Adult Silver Rupees" flag="0x07" item="SMALL_KEY_SPIRIT" name="Adult - Silver Rupees" xyz="1275;389;0"/>
+      </rendering_option>
+      <rendering_option type="compass">
+        <chest location="Spirit Temple Adult Lullaby" flag="0x04" item="COMPASS_SPIRIT" name="Adult - Zelda's Lullaby" xyz="862;535;0"/>
+      </rendering_option>
+      <rendering_option room="1">
+        <chest location="Spirit Temple Adult Suns on Wall 1" flag="0x0d" item="RECOVERY_HEART" name="Adult - Suns on Wall 1" xyz="1702;1566;0"/>
+        <chest location="Spirit Temple Adult Suns on Wall 2" flag="0x0e" item="ICE_TRAP" name="Adult - Suns on Wall 2" xyz="1715;1611;0"/>
+      </rendering_option>
+      <rendering_option room="2">
+        <chest location="Spirit Temple Adult Invisible 1" flag="0x14" item="RECOVERY_HEART" name="Adult - Invisible 1" xyz="1759;1012;0"/>
+        <chest location="Spirit Temple Adult Invisible 2" flag="0x15" item="RECOVERY_HEART" name="Adult - Invisible 2" xyz="1833;1012;0"/>
+      </rendering_option>
+      <rendering_option room="2" type="small_key">
+        <chest location="Spirit Temple Adult Late Sun on Wall" flag="0x05" item="SMALL_KEY_SPIRIT" name="Adult - Late Sun on Wall" xyz="1756;71;0"/>
+      </rendering_option>
+      <rendering_option room="3" type="boss_key">
+        <chest location="Spirit Temple Adult Boss Key Chest" flag="0x0a" item="BOSS_KEY_SPIRIT" name="Chest" xyz="1194;116;0"/>
+      </rendering_option>
+      <rendering_option room="3">
+        <chest location="Spirit Temple Adult Topmost Sun on Wall" flag="0x12" item="BOMBS_20" name="Adult - Topmost Sun on Wall" xyz="157;491;0"/>
+      </rendering_option>
+      <rendering_option room="1">
+        <gs location="Spirit Temple GS Child Climb" flag="0x33" item="GS_TOKEN" name="Child - Climb" xyz="141;1355;1"/>
+      </rendering_option>
+      <gs location="Spirit Temple GS Child Fence" flag="0x34" item="GS_TOKEN" name="Child - Fence" xyz="770;484;0"/>
+      <rendering_option room="2">
+        <gs location="Spirit Temple GS Iron Knuckle" flag="0x30" item="GS_TOKEN" name="Iron Knuckle" xyz="227;681;0"/>
+      </rendering_option>
+      <gs location="Spirit Temple GS Boulders" flag="0x31" item="GS_TOKEN" name="Boulders" xyz="1184;636;0"/>
+      <rendering_option room="1">
+        <gs location="Spirit Temple GS Statue" flag="0x32" item="GS_TOKEN" name="Statue" xyz="567;1257;0"/>
+      </rendering_option>
+      <sr location="Spirit Temple SR Child 1" flag="0x0a" item="RUPEE_SILVER_SPIRIT_CHILD" name="Child 1" xyz="569;452;0"/>
+      <sr location="Spirit Temple SR Child 2" flag="0x0b" item="RUPEE_SILVER_SPIRIT_CHILD" name="Child 2" xyz="622;485;0"/>
+      <sr location="Spirit Temple SR Child 3" flag="0x0c" item="RUPEE_SILVER_SPIRIT_CHILD" name="Child 3" xyz="690;490;0"/>
+      <sr location="Spirit Temple SR Child 4" flag="0x0d" item="RUPEE_SILVER_SPIRIT_CHILD" name="Child 4" xyz="775;453;0"/>
+      <sr location="Spirit Temple SR Child 5" flag="0x0e" item="RUPEE_SILVER_SPIRIT_CHILD" name="Child 5" xyz="764;367;0"/>
+      <rendering_option room="2">
+        <sr location="Spirit Temple SR Sun 1" flag="0x0f" item="RUPEE_SILVER_SPIRIT_SUN" name="Sun 1" xyz="179;222;0"/>
+        <sr location="Spirit Temple SR Sun 2" flag="0x10" item="RUPEE_SILVER_SPIRIT_SUN" name="Sun 2" xyz="357;294;0"/>
+        <sr location="Spirit Temple SR Sun 3" flag="0x11" item="RUPEE_SILVER_SPIRIT_SUN" name="Sun 3" xyz="427;310;0"/>
+        <sr location="Spirit Temple SR Sun 4" flag="0x12" item="RUPEE_SILVER_SPIRIT_SUN" name="Sun 4" xyz="499;618;0"/>
+        <sr location="Spirit Temple SR Sun 5" flag="0x13" item="RUPEE_SILVER_SPIRIT_SUN" name="Sun 5" xyz="556;222;0"/>
+      </rendering_option>
+      <sr location="Spirit Temple SR Boulders 1" flag="0x14" item="RUPEE_SILVER_SPIRIT_BOULDERS" name="Boulders 1" xyz="1192;561;0"/>
+      <sr location="Spirit Temple SR Boulders 2" flag="0x15" item="RUPEE_SILVER_SPIRIT_BOULDERS" name="Boulders 2" xyz="1192;714;0"/>
+      <sr location="Spirit Temple SR Boulders 3" flag="0x16" item="RUPEE_SILVER_SPIRIT_BOULDERS" name="Boulders 3" xyz="1356;676;0"/>
+      <sr location="Spirit Temple SR Boulders 4" flag="0x17" item="RUPEE_SILVER_SPIRIT_BOULDERS" name="Boulders 4" xyz="1356;599;0"/>
+      <sr location="Spirit Temple SR Boulders 5" flag="0x18" item="RUPEE_SILVER_SPIRIT_BOULDERS" name="Boulders 5" xyz="1275;683;0"/>
+      <xflag type="pot" location="Spirit Temple Pot Lobby 1" slice="0x0" setup="0x0" room="0x0" actor="0xa" item="RECOVERY_HEART" name="Lobby 1" xyz="689;1066;0"/>
+      <xflag type="pot" location="Spirit Temple Pot Lobby 2" slice="0x0" setup="0x0" room="0x0" actor="0xb" item="MAGIC_JAR_LARGE" name="Lobby 2" xyz="802;1066;0"/>
+      <rendering_option room="1">
+        <xflag type="pot" location="Spirit Temple Pot Child Climb" slice="0x0" setup="0x0" room="0x4" actor="0xa" item="DEKU_SEEDS_5" name="Child - Climb" xyz="167;1345;0"/>
+        <xflag type="pot" location="Spirit Temple Pot Statue Room 1" slice="0x0" setup="0x0" room="0x5" actor="0x17" item="NOTHING" name="Statue Room 1" xyz="652;1391;0"/>
+        <xflag type="pot" location="Spirit Temple Pot Statue Room 2" slice="0x0" setup="0x0" room="0x5" actor="0x18" item="NOTHING" name="Statue Room 2" xyz="665;1407;1"/>
+        <xflag type="pot" location="Spirit Temple Pot Statue Room 3" slice="0x0" setup="0x0" room="0x5" actor="0x19" item="NOTHING" name="Statue Room 3" xyz="678;1391;0"/>
+        <xflag type="pot" location="Spirit Temple Pot Statue Room 4" slice="0x0" setup="0x0" room="0x5" actor="0x1a" item="NOTHING" name="Statue Room 4" xyz="1089;1385;0"/>
+        <xflag type="pot" location="Spirit Temple Pot Statue Room 5" slice="0x0" setup="0x0" room="0x5" actor="0x1b" item="NOTHING" name="Statue Room 5" xyz="1100;1404;1"/>
+        <xflag type="pot" location="Spirit Temple Pot Statue Room 6" slice="0x0" setup="0x0" room="0x5" actor="0x1c" item="NOTHING" name="Statue Room 6" xyz="1112;1385;0"/>
+      </rendering_option>
+      <rendering_option room="2">
+        <xflag type="pot" location="Spirit Temple Pot Child Hand Stairway 1" slice="0x0" setup="0x0" room="0x9" actor="0x7" item="RECOVERY_HEART" name="Child - Hand Stairway 1" xyz="189;846;0"/>
+        <xflag type="pot" location="Spirit Temple Pot Child Hand Stairway 2" slice="0x0" setup="0x0" room="0x9" actor="0x8" item="RECOVERY_HEART" name="Child - Hand Stairway 2" xyz="265;846;0"/>
+        <xflag type="pot" location="Spirit Temple Pot Adult Upper" slice="0x0" setup="0x0" room="0x10" actor="0x5" item="BOMBS_5" name="Adult - Upper" xyz="1003;273;0"/>
+      </rendering_option>
+      <xflag type="pot" location="Spirit Temple Pot Child Anubis Room 1" slice="0x0" setup="0x0" room="0x1b" actor="0x4" item="NOTHING" name="Child - Anubis Room 1" xyz="474;130;0"/>
+      <xflag type="pot" location="Spirit Temple Pot Child Anubis Room 2" slice="0x0" setup="0x0" room="0x1b" actor="0x5" item="NOTHING" name="Child - Anubis Room 2" xyz="496;93;0"/>
+      <xflag type="pot" location="Spirit Temple Pot Child Anubis Room 3" slice="0x0" setup="0x0" room="0x1b" actor="0x6" item="RECOVERY_HEART" name="Child - Anubis Room 3" xyz="357;236;0"/>
+      <xflag type="pot" location="Spirit Temple Pot Child Anubis Room 4" slice="0x0" setup="0x0" room="0x1b" actor="0x7" item="SHIELD_DEKU" name="Child - Anubis Room 4" xyz="435;163;0"/>
+      <xflag type="pot" location="Spirit Temple Flying Pot Lobby 1" slice="0x0" setup="0x0" room="0x0" actor="0xc" item="RECOVERY_HEART" name="Lobby - Flying Pot 1" xyz="715;1139;0"/>
+      <xflag type="pot" location="Spirit Temple Flying Pot Lobby 2" slice="0x0" setup="0x0" room="0x0" actor="0xd" item="RECOVERY_HEART" name="Lobby - Flying Pot 2" xyz="778;1139;0"/>
+      <xflag type="pot" location="Spirit Temple Flying Pot Child After Bridge 1" slice="0x0" setup="0x0" room="0x3" actor="0x4" item="NOTHING" name="Child - After Bridge 1" xyz="73;365;0"/>
+      <xflag type="pot" location="Spirit Temple Flying Pot Child After Bridge 2" slice="0x0" setup="0x0" room="0x3" actor="0x5" item="RECOVERY_HEART" name="Child - After Bridge 2" xyz="161;365;0"/>
+      <rendering_option room="1">
+        <xflag type="pot" location="Spirit Temple Flying Pot Statue Room 1" slice="0x0" setup="0x0" room="0x5" actor="0x14" item="RECOVERY_HEART" name="Statue Room - Flying Pot 1" xyz="724;1248;0"/>
+        <xflag type="pot" location="Spirit Temple Flying Pot Statue Room 2" slice="0x0" setup="0x0" room="0x5" actor="0x15" item="RECOVERY_HEART" name="Statue Room - Flying Pot 2" xyz="1045;1248;0"/>
+        <xflag type="pot" location="Spirit Temple Flying Pot Adult Climb 1" slice="0x0" setup="0x0" room="0xf" actor="0xa" item="RECOVERY_HEART" name="Adult - Climb 1" xyz="1633;1810;1"/>
+        <xflag type="pot" location="Spirit Temple Flying Pot Adult Climb 2" slice="0x0" setup="0x0" room="0xf" actor="0xb" item="RECOVERY_HEART" name="Adult - Climb 2" xyz="1631;1779;0"/>
+      </rendering_option>
+      <rendering_option room="3">
+        <xflag type="pot" location="Spirit Temple Flying Pot Topmost 1" slice="0x0" setup="0x0" room="0x19" actor="0x4" item="NUTS_5" name="Topmost - Flying Pot 1" xyz="472;388;0"/>
+        <xflag type="pot" location="Spirit Temple Flying Pot Topmost 2" slice="0x0" setup="0x0" room="0x19" actor="0x5" item="RECOVERY_HEART" name="Topmost - Flying Pot 2" xyz="513;607;0"/>
+        <xflag type="pot" location="Spirit Temple Flying Pot Topmost 3" slice="0x0" setup="0x0" room="0x19" actor="0x6" item="NUTS_5" name="Topmost - Flying Pot 3" xyz="597;607;0"/>
+        <xflag type="pot" location="Spirit Temple Flying Pot Topmost 4" slice="0x0" setup="0x0" room="0x19" actor="0x7" item="RECOVERY_HEART" name="Topmost - Flying Pot 4" xyz="622;388;0"/>
+        <xflag type="pot" location="Spirit Temple Flying Pot Topmost 5" slice="0x0" setup="0x0" room="0x19" actor="0x8" item="NUTS_5" name="Topmost - Flying Pot 5" xyz="444;388;0"/>
+        <xflag type="pot" location="Spirit Temple Flying Pot Topmost 6" slice="0x0" setup="0x0" room="0x19" actor="0x9" item="NUTS_5" name="Topmost - Flying Pot 6" xyz="650;388;0"/>
+      </rendering_option>
+      <xflag type="crate" location="Spirit Temple Crate 1" slice="0x0" setup="0x0" room="0x1" actor="0x9" item="NUTS_5" name="Crate 1" xyz="376;689;0"/>
+      <xflag type="crate" location="Spirit Temple Crate 2" slice="0x0" setup="0x0" room="0x1" actor="0xa" item="BOMB" name="Crate 2" xyz="434;689;0"/>
+      <rendering_option room="3">
+        <xflag type="heart" location="Spirit Temple Heart 1" slice="0x0" setup="0x0" room="0x17" actor="0x2" item="RECOVERY_HEART" name="Heart 1" xyz="1202;1517;0"/>
+        <xflag type="heart" location="Spirit Temple Heart 2" slice="0x0" setup="0x0" room="0x17" actor="0x3" item="RECOVERY_HEART" name="Heart 2" xyz="1151;1517;0"/>
+      </rendering_option>
+      <xflag type="fairy_spot" location="Spirit Temple Adult Silver Rupees Big Fairy" slice="0x0" setup="0x0" room="0xc" actor="0x1" item="FAIRY_BIG" name="Adult - Silver Rupees" xyz="1274;406;0"/>
+      <rendering_option room="2">
+        <xflag type="fairy_spot" location="Spirit Temple Adult Sunlight Big Fairy" slice="0x0" setup="0x0" room="0x12" actor="0x6" item="FAIRY_BIG" name="Adult - Sunlight" xyz="1838;395;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

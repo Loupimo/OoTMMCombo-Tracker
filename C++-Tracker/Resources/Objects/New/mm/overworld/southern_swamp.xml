@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="mm">
+  <scene id="SOUTHERN_SWAMP">
+    <scene_rendering id="MM_SOUTHERN_SWAMP" loc_type="overworld">
+      <rendering_option layout="all" type="heart_piece">
+        <collectible location="Southern Swamp HP" flag="0x1e" item="HEART_PIECE" name="Rooftop" xyz="598;665;0"/>
+      </rendering_option>
+      <rendering_option icon="swamp" layout="all" type="scrub">
+        <npc location="Southern Swamp Scrub Deed" npc="SCRUB_SWAMP" item="DEED_SWAMP" name="Swamp Title Deed" xyz="566;654;0"/>
+      </rendering_option>
+      <rendering_option layout="all" type="shop">
+        <npc location="Southern Swamp Scrub Shop" npc="SCRUB_SHOP_BEANS" item="MAGIC_BEAN" name="Scrub - Shop" xyz="574;666;1"/>
+      </rendering_option>
+      <rendering_option layout="all" type="song">
+        <npc location="Southern Swamp Song of Soaring" npc="SONG_SOARING" item="SONG_SOARING" name="Song of Soaring" xyz="853;464;0"/>
+      </rendering_option>
+      <rendering_option layout="all" type="owl">
+        <npc location="Southern Swamp Owl Statue" npc="OWL_SOUTHERN_SWAMP" item="OWL_SOUTHERN_SWAMP" name="Owl Statue" xyz="632;775;0"/>
+      </rendering_option>
+      <rendering_option layout="all">
+        <xflag type="pot" location="Southern Swamp Pot 1" slice="0x0" setup="0x0" room="0x2" actor="0xe" item="RECOVERY_HEART" name="Pot 1" xyz="199;409;0"/>
+        <xflag type="pot" location="Southern Swamp Pot 2" slice="0x0" setup="0x0" room="0x2" actor="0xf" item="RUPEE_BLUE" name="Pot 2" xyz="208;409;0"/>
+        <xflag type="pot" location="Southern Swamp Pot 3" slice="0x0" setup="0x0" room="0x2" actor="0x10" item="RUPEE_GREEN" name="Pot 3" xyz="217;409;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Front 01" slice="0x0" setup="0x0" room="0x0" actor="0xb" item="RANDOM" name="Front 1" xyz="469;732;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Front 02" slice="0x1" setup="0x0" room="0x0" actor="0xb" item="RANDOM" name="Front 2" xyz="492;718;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Front 03" slice="0x2" setup="0x0" room="0x0" actor="0xb" item="RANDOM" name="Front 3" xyz="515;732;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Front 04" slice="0x3" setup="0x0" room="0x0" actor="0xb" item="RANDOM" name="Front 4" xyz="512;761;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Front 05" slice="0x4" setup="0x0" room="0x0" actor="0xb" item="RANDOM" name="Front 5" xyz="492;744;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Front 06" slice="0x5" setup="0x0" room="0x0" actor="0xb" item="RANDOM" name="Front 6" xyz="477;721;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Front 07" slice="0x6" setup="0x0" room="0x0" actor="0xb" item="RANDOM" name="Front 7" xyz="507;721;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Front 08" slice="0x7" setup="0x0" room="0x0" actor="0xb" item="RANDOM" name="Front 8" xyz="517;747;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Front 09" slice="0x8" setup="0x0" room="0x0" actor="0xb" item="RANDOM" name="Front 9" xyz="499;770;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Front 10" slice="0x9" setup="0x0" room="0x0" actor="0xb" item="RANDOM" name="Front 10" xyz="485;768;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Front 11" slice="0xa" setup="0x0" room="0x0" actor="0xb" item="RANDOM" name="Front 11" xyz="473;760;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Front 12" slice="0xb" setup="0x0" room="0x0" actor="0xb" item="RANDOM" name="Front 12" xyz="466;747;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Owl 1" slice="0x0" setup="0x0" room="0x0" actor="0x2d" item="RANDOM" name="Owl 1" xyz="603;787;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Owl 2" slice="0x0" setup="0x0" room="0x0" actor="0x2e" item="RANDOM" name="Owl 2" xyz="622;793;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Near Witch Pack 1 Grass 01" slice="0x0" setup="0x0" room="0x2" actor="0x7" item="RANDOM" name="Near Witch Pack 1 - Grass 1" xyz="278;481;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Near Witch Pack 1 Grass 02" slice="0x1" setup="0x0" room="0x2" actor="0x7" item="RANDOM" name="Near Witch Pack 1 - Grass 2" xyz="266;468;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Near Witch Pack 1 Grass 03" slice="0x2" setup="0x0" room="0x2" actor="0x7" item="RANDOM" name="Near Witch Pack 1 - Grass 3" xyz="278;461;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Near Witch Pack 1 Grass 04" slice="0x3" setup="0x0" room="0x2" actor="0x7" item="RANDOM" name="Near Witch Pack 1 - Grass 4" xyz="290;468;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Near Witch Pack 1 Grass 05" slice="0x4" setup="0x0" room="0x2" actor="0x7" item="RANDOM" name="Near Witch Pack 1 - Grass 5" xyz="295;480;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Near Witch Pack 1 Grass 06" slice="0x5" setup="0x0" room="0x2" actor="0x7" item="RANDOM" name="Near Witch Pack 1 - Grass 6" xyz="290;493;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Near Witch Pack 1 Grass 07" slice="0x6" setup="0x0" room="0x2" actor="0x7" item="RANDOM" name="Near Witch Pack 1 - Grass 7" xyz="278;499;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Near Witch Pack 1 Grass 08" slice="0x7" setup="0x0" room="0x2" actor="0x7" item="RANDOM" name="Near Witch Pack 1 - Grass 8" xyz="266;493;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Near Witch Pack 1 Grass 09" slice="0x8" setup="0x0" room="0x2" actor="0x7" item="RANDOM" name="Near Witch Pack 1 - Grass 9" xyz="261;480;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Near Witch Pack 2 Grass 01" slice="0x0" setup="0x0" room="0x2" actor="0x8" item="RANDOM" name="Near Witch Pack 2 - Grass 1" xyz="243;523;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Near Witch Pack 2 Grass 02" slice="0x1" setup="0x0" room="0x2" actor="0x8" item="RANDOM" name="Near Witch Pack 2 - Grass 2" xyz="231;511;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Near Witch Pack 2 Grass 03" slice="0x2" setup="0x0" room="0x2" actor="0x8" item="RANDOM" name="Near Witch Pack 2 - Grass 3" xyz="243;504;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Near Witch Pack 2 Grass 04" slice="0x3" setup="0x0" room="0x2" actor="0x8" item="RANDOM" name="Near Witch Pack 2 - Grass 4" xyz="254;511;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Near Witch Pack 2 Grass 05" slice="0x4" setup="0x0" room="0x2" actor="0x8" item="RANDOM" name="Near Witch Pack 2 - Grass 5" xyz="260;523;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Near Witch Pack 2 Grass 06" slice="0x5" setup="0x0" room="0x2" actor="0x8" item="RANDOM" name="Near Witch Pack 2 - Grass 6" xyz="255;536;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Near Witch Pack 2 Grass 07" slice="0x6" setup="0x0" room="0x2" actor="0x8" item="RANDOM" name="Near Witch Pack 2 - Grass 7" xyz="243;542;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Near Witch Pack 2 Grass 08" slice="0x7" setup="0x0" room="0x2" actor="0x8" item="RANDOM" name="Near Witch Pack 2 - Grass 8" xyz="231;536;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Near Witch Pack 2 Grass 09" slice="0x8" setup="0x0" room="0x2" actor="0x8" item="RANDOM" name="Near Witch Pack 2 - Grass 9" xyz="226;523;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Near Witch 1" slice="0x0" setup="0x0" room="0x2" actor="0x11" item="RANDOM" name="Near Witch 1" xyz="128;440;0"/>
+        <xflag type="grass" location="Southern Swamp Grass Near Witch 2" slice="0x0" setup="0x0" room="0x2" actor="0x12" item="RANDOM" name="Near Witch 2" xyz="127;448;0"/>
+        <xflag type="rupee" location="Southern Swamp Rupee 1" slice="0x0" setup="0x0" room="0x0" actor="0x28" item="RUPEE_BLUE" name="Flower 1" xyz="747;233;0"/>
+        <xflag type="rupee" location="Southern Swamp Rupee 2" slice="0x0" setup="0x0" room="0x0" actor="0x29" item="RUPEE_BLUE" name="Flower 2" xyz="778;230;0"/>
+        <xflag type="hive" location="Southern Swamp Hive" slice="0x0" setup="0x0" room="0x0" actor="0x2b" item="RUPEE_RED" name="Hive" xyz="559;361;0"/>
+      </rendering_option>
+      <actor>
+        <match room="0x2" actor="0x13" scene="SOUTHERN_SWAMP"/>
+        <match room="0x2" actor="0x10" scene="SOUTHERN_SWAMP_CLEAR"/>
+        <xflag type="gossip" location="Southern Swamp Gossip Fairy" slice="0" item="FAIRY" name="Gossip Fairy" xyz="0;0;0"/>
+        <xflag type="gossip-big" location="Southern Swamp Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy" xyz="0;0;0"/>
+      </actor>
+    </scene_rendering>
+  </scene>
+  <scene id="POTION_SHOP">
+    <scene_rendering id="MM_POTION_SHOP" loc_type="overworld">
+      <rendering_option layout="all">
+        <npc location="Swamp Potion Shop Kotake" npc="KOTAKE_RED_POTION" item="BOTTLE_POTION_RED" name="Red Potion Bottle" xyz="472;349;0" legacy_scene="WOODS_MYSTERY"/>
+        <shop location="Swamp Potion Shop Item 1" flag="0x0d" item="POTION_BLUE" name="Item 1" xyz="424;299;0"/>
+        <shop location="Swamp Potion Shop Item 2" flag="0x0e" item="POTION_GREEN" name="Item 2" xyz="448;299;0"/>
+        <shop location="Swamp Potion Shop Item 3" flag="0x0f" item="POTION_RED" name="Item 3" xyz="472;299;0"/>
+        <xflag type="rupee" location="Swamp Potion Shop Rupee" slice="0x0" setup="0x0" room="0x0" actor="0x1" item="RUPEE_GREEN" name="Rupee" xyz="566;464;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="TOURIST_INFORMATION">
+    <scene_rendering id="MM_TOURIST_INFORMATION" loc_type="overworld">
+      <rendering_option icon="picto" layout="all">
+        <npc location="Tourist Information Pictobox" npc="KOUME_PICTOGRAPH_BOX" item="PICTOGRAPH_BOX" name="Pictobox" xyz="299;334;0"/>
+      </rendering_option>
+      <rendering_option layout="all" type="heart_piece">
+        <npc location="Tourist Information Boat Archery" npc="KOUME_HEART_PIECE" item="HEART_PIECE" hint="BOAT_ARCHERY" name="Archery" xyz="617;205;0"/>
+        <npc location="Tourist Information Tingle Picture" npc="TOUR_GUIDE_HEART_PIECE" item="HEART_PIECE" name="Deku's King or Tingle Picture" xyz="376;335;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="GROTTOS">
+    <scene_rendering id="MM_GROTTO_SOUTHERN_SWAMP_OPEN" loc_type="overworld">
+      <rendering_option layout="all">
+        <chest location="Southern Swamp Grotto" flag="0x1d" item="RUPEE_RED" name="Chest" xyz="231;410;0"/>
+        <xflag type="grass" location="Southern Swamp Grotto Grass 01" slice="0x0" setup="0x0" room="0x3d" actor="0x0" item="RANDOM" name="Grass 1" xyz="612;542;0"/>
+        <xflag type="grass" location="Southern Swamp Grotto Grass 02" slice="0x0" setup="0x0" room="0x3d" actor="0x1" item="RANDOM" name="Grass 2" xyz="371;494;0"/>
+        <xflag type="grass" location="Southern Swamp Grotto Grass 03" slice="0x0" setup="0x0" room="0x3d" actor="0x2" item="RANDOM" name="Grass 3" xyz="281;467;0"/>
+        <xflag type="grass" location="Southern Swamp Grotto Grass 04" slice="0x0" setup="0x0" room="0x3d" actor="0x3" item="RANDOM" name="Grass 4" xyz="339;480;0"/>
+        <xflag type="grass" location="Southern Swamp Grotto Grass 05" slice="0x0" setup="0x0" room="0x3d" actor="0x5" item="RANDOM" name="Grass 5" xyz="294;449;0"/>
+        <xflag type="grass" location="Southern Swamp Grotto Grass 06" slice="0x0" setup="0x0" room="0x3d" actor="0x6" item="RANDOM" name="Grass 6" xyz="270;444;0"/>
+        <xflag type="grass" location="Southern Swamp Grotto Grass 07" slice="0x0" setup="0x0" room="0x3d" actor="0xa" item="RANDOM" name="Grass 7" xyz="699;497;0"/>
+        <xflag type="grass" location="Southern Swamp Grotto Grass 08" slice="0x0" setup="0x0" room="0x3d" actor="0xb" item="RANDOM" name="Grass 8" xyz="390;431;0"/>
+        <xflag type="grass" location="Southern Swamp Grotto Grass 09" slice="0x0" setup="0x0" room="0x3d" actor="0xc" item="RANDOM" name="Grass 9" xyz="556;453;0"/>
+        <xflag type="grass" location="Southern Swamp Grotto Grass 10" slice="0x0" setup="0x0" room="0x3d" actor="0xe" item="RANDOM" name="Grass 10" xyz="651;467;0"/>
+        <xflag type="grass" location="Southern Swamp Grotto Grass 11" slice="0x0" setup="0x0" room="0x3d" actor="0x10" item="RANDOM" name="Grass 11" xyz="255;388;0"/>
+        <xflag type="grass" location="Southern Swamp Grotto Grass 12" slice="0x0" setup="0x0" room="0x3d" actor="0x11" item="RANDOM" name="Grass 12" xyz="382;418;0"/>
+        <xflag type="grass" location="Southern Swamp Grotto Grass 13" slice="0x0" setup="0x0" room="0x3d" actor="0x12" item="RANDOM" name="Grass 13" xyz="583;448;0"/>
+        <xflag type="grass" location="Southern Swamp Grotto Grass 14" slice="0x0" setup="0x0" room="0x3d" actor="0x13" item="RANDOM" name="Grass 14" xyz="418;418;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

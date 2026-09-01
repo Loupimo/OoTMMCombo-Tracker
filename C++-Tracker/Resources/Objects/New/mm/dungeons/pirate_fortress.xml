@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="mm">
+  <scene id="PIRATE_FORTRESS_ENTRANCE">
+    <scene_rendering id="MM_PIRATE_FORTRESS_ENTRANCE" loc_type="dungeon">
+      <rendering_option layout="all">
+        <chest location="Pirate Fortress Entrance Chest 1" flag="0x00" item="RUPEE_RED" name="Entrance - Underwater 1" xyz="514;463;0"/>
+        <chest location="Pirate Fortress Entrance Chest 2" flag="0x01" item="RUPEE_RED" name="Entrance - Underwater 2" xyz="884;388;0"/>
+        <chest location="Pirate Fortress Entrance Chest 3" flag="0x02" item="RUPEE_RED" name="Entrance - Underwater 3" xyz="480;357;0"/>
+        <xflag type="barrel" location="Pirate Fortress Entrance Barrel" slice="0x0" setup="0x0" room="0x0" actor="0x7" item="NOTHING" name="Entrance" xyz="472;222;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="PIRATE_FORTRESS_EXTERIOR">
+    <scene_rendering id="MM_PIRATE_FORTRESS_EXTERIOR" loc_type="dungeon">
+      <rendering_option layout="all">
+        <chest location="Pirate Fortress Interior Lower Chest" flag="0x00" item="RUPEE_RED" name="Lower" xyz="563;172;0"/>
+        <chest location="Pirate Fortress Interior Upper Chest" flag="0x01" item="RUPEE_RED" name="Upper" xyz="799;316;0"/>
+        <xflag type="crate" location="Pirate Fortress Interior Crate Entrance" slice="0x0" setup="0x0" room="0x0" actor="0x1b" item="NOTHING" name="Entrance" xyz="266;404;0"/>
+        <xflag type="crate" location="Pirate Fortress Interior Crate Middle 1" slice="0x0" setup="0x0" room="0x0" actor="0x1c" item="NOTHING" name="Middle 1" xyz="468;339;0"/>
+        <xflag type="crate" location="Pirate Fortress Interior Crate Middle 2" slice="0x0" setup="0x0" room="0x0" actor="0x1d" item="NOTHING" name="Middle 2" xyz="468;387;0"/>
+        <xflag type="barrel" location="Pirate Fortress Interior Barrel Outside" slice="0x0" setup="0x0" room="0x0" actor="0x8" item="NOTHING" name="Outside" xyz="142;40;0"/>
+        <xflag type="heart" location="Pirate Fortress Interior Heart 1" slice="0x0" setup="0x0" room="0x0" actor="0x20" item="RECOVERY_HEART" name="Heart 1" xyz="170;96;2"/>
+        <xflag type="heart" location="Pirate Fortress Interior Heart 2" slice="0x0" setup="0x0" room="0x0" actor="0x21" item="RECOVERY_HEART" name="Heart 2" xyz="180;86;1"/>
+        <xflag type="heart" location="Pirate Fortress Interior Heart 3" slice="0x0" setup="0x0" room="0x0" actor="0x22" item="RECOVERY_HEART" name="Heart 3" xyz="164;86;0"/>
+        <xflag type="wonder" location="Pirate Fortress Interior Wonder Item Skull Eyes 1" slice="0x0" setup="0x0" room="0x0" actor="0x18" item="RUPEE_GREEN" name="Skull Eyes 1" xyz="386;167;0"/>
+        <xflag type="wonder" location="Pirate Fortress Interior Wonder Item Skull Eyes 2" slice="0x1" setup="0x0" room="0x0" actor="0x18" item="RUPEE_GREEN" name="Skull Eyes 2" xyz="402;167;1"/>
+        <xflag type="wonder" location="Pirate Fortress Interior Wonder Item Skull Eyes 3" slice="0x2" setup="0x0" room="0x0" actor="0x18" item="RUPEE_GREEN" name="Skull Eyes 3" xyz="374;167;0"/>
+        <xflag type="wonder" location="Pirate Fortress Interior Wonder Item Skull Eyes 4" slice="0x0" setup="0x0" room="0x0" actor="0x19" item="RUPEE_GREEN" name="Skull Eyes 4" xyz="414;167;0"/>
+        <xflag type="wonder" location="Pirate Fortress Interior Wonder Item Skull Eyes 5" slice="0x1" setup="0x0" room="0x0" actor="0x19" item="RUPEE_GREEN" name="Skull Eyes 5" xyz="430;167;1"/>
+        <xflag type="wonder" location="Pirate Fortress Interior Wonder Item Skull Eyes 6" slice="0x2" setup="0x0" room="0x0" actor="0x19" item="RUPEE_GREEN" name="Skull Eyes 6" xyz="442;167;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene name="Pirate Fortress Sewers" id="PIRATE_FORTRESS_INTERIOR">
+    <scene_rendering id="MM_PIRATE_FORTRESS_INTERIOR" loc_type="dungeon">
+      <rendering_option layout="all">
+        <chest location="Pirate Fortress Sewers Chest 1" flag="0x01" item="RUPEE_RED" name="Sewers 1" xyz="923;587;0"/>
+        <chest location="Pirate Fortress Sewers Chest 2" flag="0x04" item="RUPEE_RED" name="Sewers 2" xyz="504;484;0"/>
+        <chest location="Pirate Fortress Sewers Chest 3" flag="0x06" item="RUPEE_BLUE" name="Sewers 3" xyz="516;441;0"/>
+      </rendering_option>
+      <rendering_option layout="all" type="heart_piece">
+        <collectible location="Pirate Fortress Sewers HP" flag="0x0c" item="HEART_PIECE" name="Sewers - Jail" xyz="623;482;0"/>
+      </rendering_option>
+      <rendering_option layout="all">
+        <xflag type="pot" location="Pirate Fortress Sewers Pot End 1" slice="0x0" setup="0x0" room="0x9" actor="0x13" item="RECOVERY_HEART" name="Sewers - End 1" xyz="913;355;0"/>
+        <xflag type="pot" location="Pirate Fortress Sewers Pot End 2" slice="0x0" setup="0x0" room="0x9" actor="0x14" item="NUTS_10" name="Sewers - End 2" xyz="879;404;0"/>
+        <xflag type="pot" location="Pirate Fortress Sewers Pot End 3" slice="0x0" setup="0x0" room="0x9" actor="0x15" item="ARROWS_10" name="Sewers - End 3" xyz="931;355;0"/>
+        <xflag type="pot" location="Pirate Fortress Sewers Pot Waterway 1" slice="0x0" setup="0x0" room="0xa" actor="0x8" item="RECOVERY_HEART" name="Sewers - Waterway 1" xyz="738;486;1"/>
+        <xflag type="pot" location="Pirate Fortress Sewers Pot Waterway 2" slice="0x0" setup="0x0" room="0xa" actor="0x9" item="ARROWS_10" name="Sewers - Waterway 2" xyz="739;469;0"/>
+        <xflag type="pot" location="Pirate Fortress Sewers Pot Heart Piece Room 1" slice="0x0" setup="0x0" room="0xb" actor="0x22" item="ARROWS_20" name="Sewers - Heart Piece Room 1" xyz="636;480;1"/>
+        <xflag type="pot" location="Pirate Fortress Sewers Pot Heart Piece Room 2" slice="0x0" setup="0x0" room="0xb" actor="0x23" item="NOTHING" name="Sewers - Heart Piece Room 2" xyz="636;469;0"/>
+        <xflag type="rupee" location="Pirate Fortress Sewers Rupee Water Elevator 1" slice="0x0" setup="0x0" room="0x9" actor="0xb" item="RUPEE_BLUE" name="Sewers - Water Elevator 1" xyz="891;415;0"/>
+        <xflag type="rupee" location="Pirate Fortress Sewers Rupee Water Elevator 2" slice="0x0" setup="0x0" room="0x9" actor="0xc" item="RUPEE_BLUE" name="Sewers - Water Elevator 2" xyz="891;379;0"/>
+        <xflag type="rupee" location="Pirate Fortress Sewers Rupee Water Elevator 3" slice="0x0" setup="0x0" room="0x9" actor="0xd" item="RUPEE_BLUE" name="Sewers - Water Elevator 3" xyz="905;415;0"/>
+        <xflag type="rupee" location="Pirate Fortress Sewers Rupee Near Cage 1" slice="0x0" setup="0x0" room="0xb" actor="0x17" item="RUPEE_GREEN" name="Sewers - Near Cage 1" xyz="476;541;0"/>
+        <xflag type="rupee" location="Pirate Fortress Sewers Rupee Near Cage 2" slice="0x0" setup="0x0" room="0xb" actor="0x1a" item="RUPEE_GREEN" name="Sewers - Near Cage 2" xyz="504;541;0"/>
+        <xflag type="rupee" location="Pirate Fortress Sewers Rupee Near Cage 3" slice="0x0" setup="0x0" room="0xb" actor="0x1e" item="RUPEE_GREEN" name="Sewers - Near Cage 3" xyz="510;472;0"/>
+        <xflag type="rupee" location="Pirate Fortress Sewers Rupee Near Cage 4" slice="0x0" setup="0x0" room="0xb" actor="0x21" item="RUPEE_GREEN" name="Sewers - Near Cage 4" xyz="532;490;0"/>
+        <xflag type="rupee" location="Pirate Fortress Sewers Rupee Cage" slice="0x0" setup="0x0" room="0xb" actor="0x24" item="RUPEE_BLUE" name="Sewers - Cage" xyz="636;451;0"/>
+        <xflag type="barrel" location="Pirate Fortress Sewers Barrel End 1" slice="0x0" setup="0x0" room="0x9" actor="0x5" item="NOTHING" name="Sewers - End 1" xyz="893;403;0"/>
+        <xflag type="barrel" location="Pirate Fortress Sewers Barrel End 2" slice="0x0" setup="0x0" room="0x9" actor="0x6" item="NOTHING" name="Sewers - End 2" xyz="893;391;0"/>
+        <xflag type="barrel" location="Pirate Fortress Sewers Barrel End 3" slice="0x0" setup="0x0" room="0x9" actor="0x7" item="NOTHING" name="Sewers - End 3" xyz="905;403;0"/>
+        <xflag type="barrel" location="Pirate Fortress Sewers Barrel End 4" slice="0x0" setup="0x0" room="0x9" actor="0x8" item="NOTHING" name="Sewers - End 4" xyz="917;403;0"/>
+        <xflag type="barrel" location="Pirate Fortress Sewers Barrel End 5" slice="0x0" setup="0x0" room="0x9" actor="0x9" item="NOTHING" name="Sewers - End 5" xyz="905;391;0"/>
+        <xflag type="barrel" location="Pirate Fortress Sewers Barrel Cage Room 01" slice="0x0" setup="0x0" room="0xb" actor="0x6" item="NOTHING" name="Cage Room 1" xyz="503;526;0"/>
+        <xflag type="barrel" location="Pirate Fortress Sewers Barrel Cage Room 02" slice="0x0" setup="0x0" room="0xb" actor="0x7" item="NOTHING" name="Cage Room 2" xyz="503;513;0"/>
+        <xflag type="barrel" location="Pirate Fortress Sewers Barrel Cage Room 03" slice="0x0" setup="0x0" room="0xb" actor="0x8" item="NOTHING" name="Cage Room 3" xyz="489;526;0"/>
+        <xflag type="barrel" location="Pirate Fortress Sewers Barrel Cage Room 04" slice="0x0" setup="0x0" room="0xb" actor="0x9" item="NOTHING" name="Cage Room 4" xyz="495;460;0"/>
+        <xflag type="barrel" location="Pirate Fortress Sewers Barrel Cage Room 05" slice="0x0" setup="0x0" room="0xb" actor="0xa" item="NOTHING" name="Cage Room 5" xyz="509;460;0"/>
+        <xflag type="barrel" location="Pirate Fortress Sewers Barrel Cage Room 06" slice="0x0" setup="0x0" room="0xb" actor="0xb" item="NOTHING" name="Cage Room 6" xyz="489;513;0"/>
+        <xflag type="barrel" location="Pirate Fortress Sewers Barrel Cage Room 07" slice="0x0" setup="0x0" room="0xb" actor="0xc" item="NOTHING" name="Cage Room 7" xyz="524;460;0"/>
+        <xflag type="barrel" location="Pirate Fortress Sewers Barrel Cage Room 08" slice="0x0" setup="0x0" room="0xb" actor="0xd" item="NOTHING" name="Cage Room 8" xyz="476;526;0"/>
+        <xflag type="barrel" location="Pirate Fortress Sewers Barrel Cage Room 09" slice="0x0" setup="0x0" room="0xb" actor="0xe" item="NOTHING" name="Cage Room 9" xyz="476;513;0"/>
+        <xflag type="barrel" location="Pirate Fortress Sewers Barrel Cage Room 10" slice="0x0" setup="0x0" room="0xb" actor="0xf" item="NOTHING" name="Cage Room 10" xyz="481;460;0"/>
+        <xflag type="barrel" location="Pirate Fortress Sewers Barrel Cage Room 11" slice="0x0" setup="0x0" room="0xb" actor="0x10" item="NOTHING" name="Cage Room 11" xyz="622;450;0"/>
+        <xflag type="barrel" location="Pirate Fortress Sewers Barrel Cage Room 12" slice="0x0" setup="0x0" room="0xb" actor="0x11" item="NOTHING" name="Cage Room 12" xyz="609;450;0"/>
+        <xflag type="barrel" location="Pirate Fortress Sewers Barrel Cage Room 13" slice="0x0" setup="0x0" room="0xb" actor="0x12" item="NOTHING" name="Cage Room 13" xyz="595;450;0"/>
+        <xflag type="barrel" location="Pirate Fortress Sewers Barrel Cage Room 14" slice="0x0" setup="0x0" room="0xb" actor="0x13" item="NOTHING" name="Cage Room 14" xyz="546;489;0"/>
+        <xflag type="barrel" location="Pirate Fortress Sewers Barrel Cage Room 15" slice="0x0" setup="0x0" room="0xb" actor="0x14" item="NOTHING" name="Cage Room 15" xyz="560;489;0"/>
+        <xflag type="barrel" location="Pirate Fortress Sewers Barrel Cage Room 16" slice="0x0" setup="0x0" room="0xb" actor="0x15" item="NOTHING" name="Cage Room 16" xyz="573;489;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="PIRATE_FORTRESS_INTERIOR">
+    <scene_rendering id="MM_PIRATE_FORTRESS_INTERIOR" loc_type="dungeon">
+      <rendering_option icon="hookshot_mm" layout="all">
+        <chest location="Pirate Fortress Interior Hookshot" flag="0x02" item="HOOKSHOT" name="Hookshot" xyz="717;116;0"/>
+      </rendering_option>
+      <rendering_option layout="all">
+        <chest location="Pirate Fortress Interior Aquarium" flag="0x00" item="RUPEE_RED" name="Aquarium" xyz="486;699;1"/>
+        <chest location="Pirate Fortress Interior Silver Rupee Chest" flag="0x03" item="RUPEE_SILVER" name="Silver Rupee" xyz="473;99;0"/>
+        <xflag type="pot" location="Pirate Fortress Interior Pot Beehive 1" slice="0x0" setup="0x0" room="0x3" actor="0xc" item="ARROWS_10" name="Beehive 1" xyz="756;30;1"/>
+        <xflag type="pot" location="Pirate Fortress Interior Pot Beehive 2" slice="0x0" setup="0x0" room="0x3" actor="0xd" item="ARROWS_10" name="Beehive 2" xyz="756;15;0"/>
+        <xflag type="pot" location="Pirate Fortress Interior Pot Chest Aquarium 1" slice="0x0" setup="0x0" room="0x6" actor="0x3" item="RECOVERY_HEART" name="Aquarium 1" xyz="452;652;0"/>
+        <xflag type="pot" location="Pirate Fortress Interior Pot Chest Aquarium 2" slice="0x0" setup="0x0" room="0x6" actor="0x4" item="RECOVERY_HEART" name="Aquarium 2" xyz="500;652;0"/>
+        <xflag type="pot" location="Pirate Fortress Interior Pot Chest Aquarium 3" slice="0x0" setup="0x0" room="0x6" actor="0x5" item="ARROWS_20" name="Aquarium 3" xyz="499;682;0"/>
+        <xflag type="pot" location="Pirate Fortress Interior Pot Barrel Maze 1" slice="0x0" setup="0x0" room="0x8" actor="0x4" item="RECOVERY_HEART" name="Barrel Maze 1" xyz="999;273;0"/>
+        <xflag type="pot" location="Pirate Fortress Interior Pot Barrel Maze 2" slice="0x0" setup="0x0" room="0x8" actor="0x5" item="RUPEE_BLUE" name="Barrel Maze 2" xyz="1045;273;0"/>
+        <xflag type="pot" location="Pirate Fortress Interior Pot Barrel Maze 3" slice="0x0" setup="0x0" room="0x8" actor="0x6" item="ARROWS_10" name="Barrel Maze 3" xyz="999;245;0"/>
+        <xflag type="pot" location="Pirate Fortress Interior Pot Guarded 1" slice="0x0" setup="0x0" room="0xd" actor="0x6" item="RECOVERY_HEART" name="Guarded 1" xyz="569;172;0"/>
+        <xflag type="pot" location="Pirate Fortress Interior Pot Guarded 2" slice="0x0" setup="0x0" room="0xd" actor="0x7" item="ARROWS_10" name="Guarded 2" xyz="594;173;0"/>
+        <xflag type="barrel" location="Pirate Fortress Interior Barrel Hookshot Room 1" slice="0x0" setup="0x0" room="0x3" actor="0x6" item="NOTHING" name="Hookshot Room 1" xyz="712;163;0"/>
+        <xflag type="barrel" location="Pirate Fortress Interior Barrel Hookshot Room 2" slice="0x0" setup="0x0" room="0x3" actor="0x7" item="NOTHING" name="Hookshot Room 2" xyz="726;163;0"/>
+        <xflag type="barrel" location="Pirate Fortress Interior Barrel Aquarium" slice="0x0" setup="0x0" room="0xd" actor="0x1" item="NOTHING" name="Aquarium" xyz="564;213;0"/>
+        <xflag type="wonder" location="Pirate Fortress Interior Wonder Item Skull Forehead 1" slice="0x0" setup="0x0" room="0x3" actor="0x9" item="RUPEE_GREEN" name="Skull Forehead 1" xyz="721;35;0"/>
+        <xflag type="wonder" location="Pirate Fortress Interior Wonder Item Skull Forehead 2" slice="0x1" setup="0x0" room="0x3" actor="0x9" item="RUPEE_GREEN" name="Skull Forehead 2" xyz="732;46;0"/>
+        <xflag type="wonder" location="Pirate Fortress Interior Wonder Item Skull Forehead 3" slice="0x2" setup="0x0" room="0x3" actor="0x9" item="RUPEE_GREEN" name="Skull Forehead 3" xyz="711;46;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

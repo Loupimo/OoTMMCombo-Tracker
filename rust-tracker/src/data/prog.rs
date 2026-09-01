@@ -561,7 +561,7 @@ pub static PROG_PAGES: &[ProgPage] = &[
             ProgEntry { icon: "soul_of_foe", name: "Soul of Tektites", lookup_keys: &[iid::OOT_SOUL_ENEMY_TEKTITE, iid::SHARED_SOUL_ENEMY_TEKTITE], is_counter: false, max_count: 0, max_from_spoiler: false },
             ProgEntry { icon: "soul_of_foe", name: "Soul of Torch Slugs", lookup_keys: &[iid::OOT_SOUL_ENEMY_TORCH_SLUG], is_counter: false, max_count: 0, max_from_spoiler: false },
             ProgEntry { icon: "soul_of_foe", name: "Soul of Wallmasters", lookup_keys: &[iid::OOT_SOUL_ENEMY_WALLMASTER, iid::SHARED_SOUL_ENEMY_WALLMASTER], is_counter: false, max_count: 0, max_from_spoiler: false },
-            ProgEntry { icon: "soul_of_foe", name: "Soul of Wolfoses", lookup_keys: &[iid::OOT_SOUL_ENEMY_WOLFOS, iid::SHARED_SOUL_ENEMY_WOLFOS], is_counter: false, max_count: 0, max_from_spoiler: false },
+            ProgEntry { icon: "soul_of_foe", name: "Soul of Wolfos", lookup_keys: &[iid::OOT_SOUL_ENEMY_WOLFOS, iid::SHARED_SOUL_ENEMY_WOLFOS], is_counter: false, max_count: 0, max_from_spoiler: false },
         ] },
         ProgSection { title: "OoT NPC Souls", entries: &[
             ProgEntry { icon: "soul_of_npc", name: "Soul of Business Scrubs", lookup_keys: &[iid::OOT_SOUL_MISC_BUSINESS_SCRUB, iid::SHARED_SOUL_MISC_BUSINESS_SCRUB], is_counter: false, max_count: 0, max_from_spoiler: false },

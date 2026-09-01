@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="mm">
+  <scene id="LAIR_TWINMOLD">
+    <scene_rendering id="MM_TEMPLE_STONE_TOWER_INVERTED" loc_type="dungeon">
+      <rendering_option layout="all" room="7" type="heart_container">
+        <collectible location="Stone Tower Temple Inverted Boss HC" flag="0x1f" item="HEART_CONTAINER" name="Heart Container" xyz="472;301;0"/>
+      </rendering_option>
+      <rendering_option icon="twinmold" layout="all" room="7" type="mask">
+        <npc location="Stone Tower Temple Inverted Boss" npc="REMAINS_TWINMOLD" item="REMAINS_TWINMOLD" name="Twinmold's Remains" xyz="472;325;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

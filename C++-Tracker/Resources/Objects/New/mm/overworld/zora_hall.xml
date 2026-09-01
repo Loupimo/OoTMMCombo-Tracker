@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="mm">
+  <scene id="ZORA_HALL">
+    <scene_rendering id="MM_ZORA_HALL" loc_type="overworld">
+      <rendering_option layout="all">
+        <npc location="Zora Hall Scene Lights" npc="ZORA_HALL_LIGHTS" item="RUPEE_BLUE" name="Scene Lights" xyz="510;234;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="ZORA_HALL_ROOMS">
+    <scene_rendering id="MM_ZORA_LULU_ROOM" loc_type="overworld">
+      <rendering_option icon="ocean" layout="all" type="scrub">
+        <npc location="Zora Hall Scrub Deed" npc="SCRUB_OCEAN" item="DEED_OCEAN" name="Title Deed" xyz="471;296;1"/>
+      </rendering_option>
+      <rendering_option layout="all" type="shop">
+        <npc location="Zora Hall Scrub Shop" npc="SCRUB_SHOP_POTION_GREEN" item="POTION_GREEN" name="Scrub - Shop" xyz="497;296;0"/>
+      </rendering_option>
+      <rendering_option layout="all" type="heart_piece">
+        <collectible location="Zora Hall Scrub HP" flag="0x1e" item="HEART_PIECE" name="Shell" xyz="604;257;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="ZORA_HALL_ROOMS">
+    <scene_rendering id="MM_ZORA_EVANS_ROOM" loc_type="overworld">
+      <rendering_option layout="all" type="heart_piece">
+        <npc location="Zora Hall Evan HP" npc="ZORA_EVAN" item="HEART_PIECE" name="Evan" xyz="385;421;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="ZORA_HALL_ROOMS">
+    <scene_rendering id="MM_ZORA_SHOP" loc_type="overworld">
+      <rendering_option layout="all">
+        <shop location="Zora Shop Item 1" flag="0x13" item="SHIELD_HERO" name="Item 1" xyz="497;250;0"/>
+        <shop location="Zora Shop Item 2" flag="0x14" item="ARROWS_10" name="Item 2" xyz="476;250;0"/>
+        <shop location="Zora Shop Item 3" flag="0x15" item="POTION_RED" name="Item 3" xyz="455;250;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

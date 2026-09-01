@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="mm">
+  <scene id="TEMPLE_STONE_TOWER">
+    <scene_rendering id="MM_TEMPLE_STONE_TOWER" loc_type="dungeon">
+      <rendering_option layout="all" type="sf">
+        <chest location="Stone Tower Temple Entrance Chest" flag="0x16" item="STRAY_FAIRY_ST" name="Entrance - Eye Switch" xyz="473;371;0"/>
+        <chest location="Stone Tower Temple Entrance Switch Chest" flag="0x12" item="STRAY_FAIRY_ST" name="Entrance - Switch" xyz="473;401;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="4" type="sf">
+        <chest location="Stone Tower Temple Under West Garden Ledge Chest" flag="0x15" item="STRAY_FAIRY_ST" name="Lava - Ledge" xyz="344;119;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="4" type="small_key">
+        <chest location="Stone Tower Temple Under West Garden Lava Chest" flag="0x02" item="SMALL_KEY_ST" name="Lava" xyz="482;318;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="4" type="map">
+        <chest location="Stone Tower Temple Map" flag="0x1d" item="MAP_ST" name="Chest" xyz="484;564;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="1" type="sf">
+        <chest location="Stone Tower Temple Center Sun Block Chest" flag="0x18" item="STRAY_FAIRY_ST" name="Center - Sun Block" xyz="559;539;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="1" type="small_key">
+        <chest location="Stone Tower Temple Center Across Water Chest" flag="0x01" item="SMALL_KEY_ST" name="Center - Across Water" xyz="202;300;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="3" type="compass">
+        <chest location="Stone Tower Temple Compass" flag="0x1c" item="COMPASS_ST" name="Chest" xyz="785;382;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="3" type="sf">
+        <chest location="Stone Tower Temple Water Sun Switch Chest" flag="0x17" item="STRAY_FAIRY_ST" name="Water - Sun Switch" xyz="567;374;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="5" type="sf">
+        <chest location="Stone Tower Temple Mirrors Room Center Chest" flag="0x0f" item="STRAY_FAIRY_ST" name="Mirrors Room - Center" xyz="441;390;0"/>
+        <chest location="Stone Tower Temple Mirrors Room Right Chest" flag="0x0b" item="STRAY_FAIRY_ST" name="Mirrors Room - Right" xyz="486;103;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="7" type="sf">
+        <chest location="Stone Tower Temple Wind Room Ledge Chest" flag="0x19" item="STRAY_FAIRY_ST" name="Wind Room - Ledge" xyz="427;303;0"/>
+        <chest location="Stone Tower Temple Wind Room Jail Chest" flag="0x0d" item="STRAY_FAIRY_ST" name="Wind Room - Jail" xyz="195;309;0"/>
+      </rendering_option>
+      <rendering_option icon="light_arrow" layout="all" room="8">
+        <chest location="Stone Tower Temple Light Arrow" flag="0x1b" item="ARROW_LIGHT" name="Light Arrow" xyz="476;353;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="6" type="sf">
+        <chest location="Stone Tower Temple Before Water Bridge Chest" flag="0x14" item="STRAY_FAIRY_ST" name="Hiploop Bridge" xyz="292;511;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="1" type="sf">
+        <chest location="Stone Tower Temple Water Bridge Chest" flag="0x0c" item="STRAY_FAIRY_ST" name="Center - Bridge" xyz="474;518;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="1">
+        <xflag type="rupee" location="Stone Tower Temple Rupee Center Room Right" slice="0x0" setup="0x0" room="0x1" actor="0x0" item="RUPEE_RED" name="Center Room - Right" xyz="233;539;0"/>
+        <xflag type="rupee" location="Stone Tower Temple Rupee Center Room Left" slice="0x0" setup="0x0" room="0x1" actor="0x1" item="RUPEE_RED" name="Center Room - Left" xyz="653;539;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="6">
+        <xflag type="rupee" location="Stone Tower Temple Rupee Before Water Bridge 1" slice="0x0" setup="0x0" room="0x8" actor="0x0" item="RUPEE_BLUE" name="Hiploop Bridge 1" xyz="239;354;0"/>
+        <xflag type="rupee" location="Stone Tower Temple Rupee Before Water Bridge 2" slice="0x0" setup="0x0" room="0x8" actor="0x1" item="RUPEE_BLUE" name="Hiploop Bridge 2" xyz="260;301;0"/>
+        <xflag type="rupee" location="Stone Tower Temple Rupee Before Water Bridge 3" slice="0x0" setup="0x0" room="0x8" actor="0x2" item="RUPEE_BLUE" name="Hiploop Bridge 3" xyz="272;354;0"/>
+        <xflag type="rupee" location="Stone Tower Temple Rupee Before Water Bridge 4" slice="0x0" setup="0x0" room="0x8" actor="0x3" item="RUPEE_BLUE" name="Hiploop Bridge 4" xyz="290;301;0"/>
+        <xflag type="rupee" location="Stone Tower Temple Rupee Before Water Bridge 5" slice="0x0" setup="0x0" room="0x8" actor="0x4" item="RUPEE_BLUE" name="Hiploop Bridge 5" xyz="405;356;0"/>
+        <xflag type="rupee" location="Stone Tower Temple Rupee Before Water Bridge 6" slice="0x0" setup="0x0" room="0x8" actor="0x5" item="RUPEE_BLUE" name="Hiploop Bridge 6" xyz="412;303;0"/>
+        <xflag type="rupee" location="Stone Tower Temple Rupee Before Water Bridge 7" slice="0x0" setup="0x0" room="0x8" actor="0x6" item="RUPEE_BLUE" name="Hiploop Bridge 7" xyz="438;356;0"/>
+        <xflag type="rupee" location="Stone Tower Temple Rupee Before Water Bridge 8" slice="0x0" setup="0x0" room="0x8" actor="0x7" item="RUPEE_BLUE" name="Hiploop Bridge 8" xyz="443;303;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="7">
+        <xflag type="rupee" location="Stone Tower Temple Rupee Wind Room 1" slice="0x0" setup="0x0" room="0x9" actor="0x0" item="RUPEE_RED" name="Wind Room 1" xyz="481;304;0"/>
+        <xflag type="rupee" location="Stone Tower Temple Rupee Wind Room 2" slice="0x0" setup="0x0" room="0x9" actor="0x1" item="RUPEE_GREEN" name="Wind Room 2" xyz="521;284;0"/>
+        <xflag type="rupee" location="Stone Tower Temple Rupee Wind Room 3" slice="0x0" setup="0x0" room="0x9" actor="0x2" item="RUPEE_GREEN" name="Wind Room 3" xyz="521;324;0"/>
+        <xflag type="rupee" location="Stone Tower Temple Rupee Wind Room 4" slice="0x0" setup="0x0" room="0x9" actor="0x3" item="RUPEE_GREEN" name="Wind Room 4" xyz="521;304;0"/>
+        <xflag type="rupee" location="Stone Tower Temple Rupee Wind Room 5" slice="0x0" setup="0x0" room="0x9" actor="0x4" item="RUPEE_BLUE" name="Wind Room 5" xyz="501;294;0"/>
+        <xflag type="rupee" location="Stone Tower Temple Rupee Wind Room 6" slice="0x0" setup="0x0" room="0x9" actor="0x5" item="RUPEE_BLUE" name="Wind Room 6" xyz="501;313;0"/>
+      </rendering_option>
+      <rendering_option layout="all">
+        <xflag type="pot" location="Stone Tower Temple Pot Entrance 1" slice="0x0" setup="0x0" room="0x0" actor="0x7" item="RECOVERY_HEART" name="Entrance 1" xyz="487;286;0"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Entrance 2" slice="0x0" setup="0x0" room="0x0" actor="0x8" item="FAIRY" name="Entrance 2" xyz="457;286;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="3">
+        <xflag type="pot" location="Stone Tower Temple Pot Water Room Underwater Lower 1" slice="0x0" setup="0x0" room="0x3" actor="0xa" item="MAGIC_JAR_LARGE" name="Water Room - Underwater Lower 1" xyz="369;560;1"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Water Room Underwater Lower 2" slice="0x0" setup="0x0" room="0x3" actor="0xb" item="MAGIC_JAR_LARGE" name="Water Room - Underwater Lower 2" xyz="351;540;0"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Water Room Underwater Lower 3" slice="0x0" setup="0x0" room="0x3" actor="0xc" item="MAGIC_JAR_LARGE" name="Water Room - Underwater Lower 3" xyz="371;540;0"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Water Room Underwater Upper 1" slice="0x0" setup="0x0" room="0x3" actor="0xd" item="NOTHING" name="Water Room - Underwater Upper 1" xyz="492;193;0"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Water Room Underwater Upper 2" slice="0x0" setup="0x0" room="0x3" actor="0xe" item="NOTHING" name="Water Room - Underwater Upper 2" xyz="511;193;0"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Water Room Bridge 1" slice="0x0" setup="0x0" room="0x3" actor="0x16" item="RECOVERY_HEART" name="Water Room - Bridge 1" xyz="219;280;0"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Water Room Bridge 2" slice="0x0" setup="0x0" room="0x3" actor="0x17" item="RECOVERY_HEART" name="Water Room - Bridge 2" xyz="229;246;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="4">
+        <xflag type="pot" location="Stone Tower Temple Pot Lava Room After Block 1" slice="0x0" setup="0x0" room="0x4" actor="0xb" item="RECOVERY_HEART" name="Lava Room - After Block 1" xyz="449;497;0"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Lava Room After Block 2" slice="0x0" setup="0x0" room="0x4" actor="0xc" item="RECOVERY_HEART" name="Lava Room - After Block 2" xyz="518;497;0"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Lava Room 1" slice="0x0" setup="0x0" room="0x4" actor="0xd" item="RECOVERY_HEART" name="Lava Room 1" xyz="450;169;0"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Lava Room 2" slice="0x0" setup="0x0" room="0x4" actor="0xe" item="RECOVERY_HEART" name="Lava Room 2" xyz="450;203;0"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Lava Room 3" slice="0x0" setup="0x0" room="0x4" actor="0xf" item="RECOVERY_HEART" name="Lava Room 3" xyz="512;169;0"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Lava Room 4" slice="0x0" setup="0x0" room="0x4" actor="0x10" item="RECOVERY_HEART" name="Lava Room 4" xyz="512;203;0"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Lava Room After Block 3" slice="0x0" setup="0x0" room="0x4" actor="0x11" item="RECOVERY_HEART" name="Lava Room - After Block 3" xyz="518;454;0"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Lava Room After Block 4" slice="0x0" setup="0x0" room="0x4" actor="0x12" item="RECOVERY_HEART" name="Lava Room - After Block 4" xyz="449;454;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="5">
+        <xflag type="pot" location="Stone Tower Temple Pot Mirror Room 1" slice="0x0" setup="0x0" room="0x7" actor="0x5" item="ARROWS_10" name="Mirror Room 1" xyz="816;467;0"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Mirror Room 2" slice="0x0" setup="0x0" room="0x7" actor="0x6" item="MAGIC_JAR_SMALL" name="Mirror Room 2" xyz="813;406;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="6">
+        <xflag type="pot" location="Stone Tower Temple Pot Before Water Bridge 1" slice="0x0" setup="0x0" room="0x8" actor="0xe" item="RECOVERY_HEART" name="Hipoloop Bridge 1" xyz="253;497;3"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Before Water Bridge 2" slice="0x0" setup="0x0" room="0x8" actor="0xf" item="RECOVERY_HEART" name="Hipoloop Bridge 2" xyz="236;497;2"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Before Water Bridge 3" slice="0x0" setup="0x0" room="0x8" actor="0x10" item="RECOVERY_HEART" name="Hipoloop Bridge 3" xyz="244;525;3"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Before Water Bridge 4" slice="0x0" setup="0x0" room="0x8" actor="0x11" item="RECOVERY_HEART" name="Hipoloop Bridge 4" xyz="227;525;2"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Before Water Bridge 5" slice="0x0" setup="0x0" room="0x8" actor="0x12" item="RECOVERY_HEART" name="Hipoloop Bridge 5" xyz="219;496;1"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Before Water Bridge 6" slice="0x0" setup="0x0" room="0x8" actor="0x13" item="RECOVERY_HEART" name="Hipoloop Bridge 6" xyz="209;524;1"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Before Water Bridge 7" slice="0x0" setup="0x0" room="0x8" actor="0x14" item="RECOVERY_HEART" name="Hipoloop Bridge 7" xyz="192;524;0"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Before Water Bridge 8" slice="0x0" setup="0x0" room="0x8" actor="0x15" item="FAIRY" name="Hipoloop Bridge 8" xyz="203;496;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="7">
+        <xflag type="pot" location="Stone Tower Temple Pot Wind Room 1" slice="0x0" setup="0x0" room="0x9" actor="0xb" item="RECOVERY_HEART" name="Wind Room 1" xyz="220;160;1"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Wind Room 2" slice="0x0" setup="0x0" room="0x9" actor="0xc" item="RECOVERY_HEART" name="Wind Room 2" xyz="181;160;1"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Wind Room 3" slice="0x0" setup="0x0" room="0x9" actor="0xd" item="RECOVERY_HEART" name="Wind Room 3" xyz="221;147;0"/>
+        <xflag type="pot" location="Stone Tower Temple Pot Wind Room 4" slice="0x0" setup="0x0" room="0x9" actor="0xe" item="RECOVERY_HEART" name="Wind Room 4" xyz="182;147;0"/>
+      </rendering_option>
+      <rendering_option layout="all">
+        <xflag type="crate" location="Stone Tower Temple Crate Entrance 1" slice="0x0" setup="0x0" room="0x0" actor="0x11" item="RECOVERY_HEART" name="Entrance 1" xyz="635;220;0"/>
+        <xflag type="crate" location="Stone Tower Temple Crate Entrance 2" slice="0x0" setup="0x0" room="0x0" actor="0x12" item="ARROWS_10" name="Entrance 2" xyz="668;220;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="1">
+        <xflag type="crate" location="Stone Tower Temple Crate Water 1" slice="0x0" setup="0x0" room="0x1" actor="0x16" item="RECOVERY_HEART" name="Center 1" xyz="232;136;0"/>
+        <xflag type="crate" location="Stone Tower Temple Crate Water 2" slice="0x0" setup="0x0" room="0x1" actor="0x17" item="MAGIC_JAR_LARGE" name="Center 2" xyz="232;113;0"/>
+        <xflag type="crate" location="Stone Tower Temple Crate Water 3" slice="0x0" setup="0x0" room="0x1" actor="0x18" item="ARROWS_20" name="Center 3" xyz="232;90;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="2">
+        <xflag type="crate" location="Stone Tower Temple Crate Maze Large 1" slice="0x0" setup="0x0" room="0x2" actor="0x18" item="NOTHING" name="Maze - Large 1" xyz="685;445;0"/>
+        <xflag type="crate" location="Stone Tower Temple Crate Maze Large 2" slice="0x0" setup="0x0" room="0x2" actor="0x19" item="NOTHING" name="Maze - Large 2" xyz="716;445;0"/>
+        <xflag type="crate" location="Stone Tower Temple Crate Maze Large 3" slice="0x0" setup="0x0" room="0x2" actor="0x1a" item="NOTHING" name="Maze - Large 3" xyz="748;445;0"/>
+        <xflag type="crate" location="Stone Tower Temple Crate Maze Large 4" slice="0x0" setup="0x0" room="0x2" actor="0x1b" item="NOTHING" name="Maze - Large 4" xyz="779;445;0"/>
+        <xflag type="crate" location="Stone Tower Temple Crate Maze Large 5" slice="0x0" setup="0x0" room="0x2" actor="0x1c" item="NOTHING" name="Maze - Large 5" xyz="811;445;0"/>
+        <xflag type="crate" location="Stone Tower Temple Crate Maze Small 1" slice="0x0" setup="0x0" room="0x2" actor="0x1e" item="BOMBS_5" name="Maze - Small 1" xyz="734;469;0"/>
+        <xflag type="crate" location="Stone Tower Temple Crate Maze Small 2" slice="0x0" setup="0x0" room="0x2" actor="0x1f" item="BOMBS_5" name="Maze - Small 2" xyz="794;469;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="5">
+        <xflag type="crate" location="Stone Tower Temple Crate Mirrors 1" slice="0x0" setup="0x0" room="0x7" actor="0x1d" item="RUPEE_RED" name="Mirrors 1" xyz="250;315;0"/>
+        <xflag type="crate" location="Stone Tower Temple Crate Mirrors 2" slice="0x0" setup="0x0" room="0x7" actor="0x1e" item="RUPEE_RED" name="Mirrors 2" xyz="242;557;0"/>
+      </rendering_option>
+      <rendering_option layout="all">
+        <xflag type="grass" location="Stone Tower Temple Grass Entrance 1" slice="0x0" setup="0x0" room="0x0" actor="0xa" item="RANDOM" name="Entrance 1" xyz="610;234;0"/>
+        <xflag type="grass" location="Stone Tower Temple Grass Entrance 2" slice="0x0" setup="0x0" room="0x0" actor="0xb" item="RANDOM" name="Entrance 2" xyz="619;216;1"/>
+        <xflag type="grass" location="Stone Tower Temple Grass Entrance 3" slice="0x0" setup="0x0" room="0x0" actor="0xc" item="RANDOM" name="Entrance 3" xyz="638;234;1"/>
+      </rendering_option>
+      <rendering_option layout="all" room="2">
+        <xflag type="grass" location="Stone Tower Temple Grass Garden 1" slice="0x0" setup="0x0" room="0x2" actor="0x12" item="RANDOM" name="Garden 1" xyz="280;230;0"/>
+        <xflag type="grass" location="Stone Tower Temple Grass Garden 2" slice="0x0" setup="0x0" room="0x2" actor="0x13" item="RANDOM" name="Garden 2" xyz="265;215;0"/>
+        <xflag type="grass" location="Stone Tower Temple Grass Garden 3" slice="0x0" setup="0x0" room="0x2" actor="0x14" item="RANDOM" name="Garden 3" xyz="272;248;0"/>
+        <xflag type="grass" location="Stone Tower Temple Grass Garden 4" slice="0x0" setup="0x0" room="0x2" actor="0x15" item="RANDOM" name="Garden 4" xyz="256;239;0"/>
+        <xflag type="grass" location="Stone Tower Temple Grass Garden 5" slice="0x0" setup="0x0" room="0x2" actor="0x16" item="RANDOM" name="Garden 5" xyz="300;236;0"/>
+        <xflag type="grass" location="Stone Tower Temple Grass Garden 6" slice="0x0" setup="0x0" room="0x2" actor="0x17" item="RANDOM" name="Garden 6" xyz="293;209;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

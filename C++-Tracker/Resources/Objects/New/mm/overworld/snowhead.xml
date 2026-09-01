@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="mm">
+  <scene id="SNOWHEAD">
+    <scene_rendering id="MM_SNOWHEAD" loc_type="overworld">
+      <rendering_option layout="all" type="owl">
+        <npc location="Snowhead Owl Statue" npc="OWL_SNOWHEAD" item="OWL_SNOWHEAD" name="Owl Statue" xyz="186;509;1"/>
+      </rendering_option>
+      <rendering_option context="winter" layout="all">
+        <xflag type="snowball" location="Snowhead Big Snowball 1" slice="0x0" setup="0x0" room="0x0" actor="0x2e" item="MAGIC_JAR_SMALL" name="Winter - Big Snowball 1" xyz="619;306;0"/>
+        <xflag type="snowball" location="Snowhead Big Snowball 2" slice="0x0" setup="0x0" room="0x0" actor="0x2f" item="MAGIC_JAR_SMALL" name="Winter - Big Snowball 2" xyz="608;228;0"/>
+        <xflag type="snowball" location="Snowhead Big Snowball 3" slice="0x0" setup="0x0" room="0x0" actor="0x30" item="MAGIC_JAR_SMALL" name="Winter - Big Snowball 3" xyz="700;363;0"/>
+        <xflag type="snowball" location="Snowhead Big Snowball 4" slice="0x0" setup="0x0" room="0x0" actor="0x31" item="MAGIC_JAR_SMALL" name="Winter - Big Snowball 4" xyz="759;348;0"/>
+        <xflag type="snowball" location="Snowhead Big Snowball 5" slice="0x0" setup="0x0" room="0x0" actor="0x32" item="MAGIC_JAR_SMALL" name="Winter - Big Snowball 5" xyz="810;289;0"/>
+        <xflag type="snowball" location="Snowhead Big Snowball 6" slice="0x0" setup="0x0" room="0x0" actor="0x33" item="MAGIC_JAR_SMALL" name="Winter - Big Snowball 6" xyz="636;225;0"/>
+        <xflag type="snowball" location="Snowhead Small Snowball 1" slice="0x0" setup="0x0" room="0x0" actor="0x2a" item="BOMBS_5" name="Winter - Small Snowball 1" xyz="215;482;1"/>
+        <xflag type="snowball" location="Snowhead Small Snowball 2" slice="0x0" setup="0x0" room="0x0" actor="0x2b" item="ARROWS_20" name="Winter - Small Snowball 2" xyz="171;513;0"/>
+        <xflag type="snowball" location="Snowhead Small Snowball 3" slice="0x0" setup="0x0" room="0x0" actor="0x2c" item="FLEXIBLE" name="Winter - Small Snowball 3" xyz="220;465;0"/>
+        <xflag type="snowball" location="Snowhead Small Snowball 4" slice="0x0" setup="0x0" room="0x0" actor="0x2d" item="MAGIC_JAR_LARGE" name="Winter - Small Snowball 4" xyz="198;472;0"/>
+      </rendering_option>
+      <rendering_option context="spring" layout="all">
+        <xflag type="snowball" location="Snowhead Small Snowball Spring 1" slice="0x0" setup="0x1" room="0x0" actor="0xe" item="RECOVERY_HEART" name="Spring - Small Snowball 1" xyz="619;306;0"/>
+        <xflag type="snowball" location="Snowhead Small Snowball Spring 2" slice="0x0" setup="0x1" room="0x0" actor="0xf" item="RECOVERY_HEART" name="Spring - Small Snowball 2" xyz="608;228;0"/>
+        <xflag type="snowball" location="Snowhead Small Snowball Spring 3" slice="0x0" setup="0x1" room="0x0" actor="0x10" item="MAGIC_JAR_SMALL" name="Spring - Small Snowball 3" xyz="700;363;0"/>
+        <xflag type="snowball" location="Snowhead Small Snowball Spring 4" slice="0x0" setup="0x1" room="0x0" actor="0x11" item="RECOVERY_HEART" name="Spring - Small Snowball 4" xyz="759;348;0"/>
+        <xflag type="snowball" location="Snowhead Small Snowball Spring 5" slice="0x0" setup="0x1" room="0x0" actor="0x13" item="MAGIC_JAR_SMALL" name="Spring - Small Snowball 5" xyz="636;225;0"/>
+      </rendering_option>
+      <rendering_option context="spring" layout="all" type="none">
+        <xflag type="snowball" location="Snowhead Small Snowball Spring Out of Bounds" slice="0x0" setup="0x1" room="0x0" actor="0x12" item="MAGIC_JAR_SMALL" name="Out of Bounds" xyz="715;339;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="FAIRY_FOUNTAIN">
+    <scene_rendering id="MM_FAIRY_SNOWHEAD" loc_type="overworld">
+      <rendering_option icon="large_magic_upgrade" layout="all">
+        <npc location="Snowhead Great Fairy" npc="GREAT_FAIRY_MOUNTAIN" item="MAGIC_UPGRADE" name="Large Magic Upgrade" xyz="478;173;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

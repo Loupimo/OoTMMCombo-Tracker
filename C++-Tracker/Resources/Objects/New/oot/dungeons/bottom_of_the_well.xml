@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="oot">
+  <scene id="BOTTOM_OF_THE_WELL">
+    <scene_rendering id="OOT_BOTTOM_OF_THE_WELL" loc_type="dungeon">
+      <rendering_option type="compass">
+        <chest location="Bottom of the Well Compass" flag="0x01" item="COMPASS_BOTW" name="Chest" xyz="664;349;0"/>
+      </rendering_option>
+      <chest location="Bottom of the Well Under Debris" flag="0x02" item="BOMBCHU_10" name="Under Debris" xyz="700;399;0"/>
+      <chest location="Bottom of the Well Back West" flag="0x04" item="NUTS_10" name="Back West" xyz="463;74;0"/>
+      <rendering_option type="small_key">
+        <chest location="Bottom of the Well East" flag="0x05" item="SMALL_KEY_BOTW" name="East" xyz="867;411;0"/>
+        <chest location="Bottom of the Well Front West" flag="0x08" item="SMALL_KEY_BOTW" name="Front West" xyz="632;408;0"/>
+      </rendering_option>
+      <chest location="Bottom of the Well Underwater" flag="0x09" item="RECOVERY_HEART" name="Underwater" xyz="404;275;0"/>
+      <chest location="Bottom of the Well East Cage" flag="0x0c" item="SHIELD_DEKU" name="East Cage" xyz="1019;265;0"/>
+      <chest location="Bottom of the Well Blood Chest" flag="0x0e" item="NUTS_10" name="Blood" xyz="832;350;0"/>
+      <chest location="Bottom of the Well Underwater 2" flag="0x10" item="BOMBS_10" name="Underwater 2" xyz="741;512;0"/>
+      <rendering_option room="1" type="map">
+        <chest location="Bottom of the Well Map" flag="0x07" item="MAP_BOTW" name="Chest" xyz="841;527;0"/>
+      </rendering_option>
+      <rendering_option type="small_key">
+        <collectible location="Bottom of the Well Coffin" flag="0x01" item="SMALL_KEY_BOTW" name="Coffin" xyz="109;293;0"/>
+      </rendering_option>
+      <chest location="Bottom of the Well Pits" flag="0x0a" item="SHIELD_HYLIAN" name="Pits" xyz="1029;209;0"/>
+      <rendering_option icon="lens">
+        <chest location="Bottom of the Well Lens" flag="0x03" item="LENS" name="Lens of Truth" xyz="1185;525;0"/>
+      </rendering_option>
+      <chest location="Bottom of the Well Lens Side Chest" flag="0x14" item="RUPEE_HUGE" name="Lens of Truth - Side" xyz="1261;525;0"/>
+      <gs location="Bottom of the Well GS East Cage" flag="0x40" item="GS_TOKEN" name="East Cage" xyz="1053;259;0"/>
+      <gs location="Bottom of the Well GS Inner West" flag="0x42" item="GS_TOKEN" name="Inner West" xyz="658;119;0"/>
+      <gs location="Bottom of the Well GS Inner East" flag="0x41" item="GS_TOKEN" name="Inner East" xyz="782;139;0"/>
+      <rendering_option room="1">
+        <sr location="Bottom of the Well SR 1" flag="0x05" item="RUPEE_SILVER_BOTW" name="Silver Rupee 1" xyz="203;319;0"/>
+        <sr location="Bottom of the Well SR 2" flag="0x06" item="RUPEE_SILVER_BOTW" name="Silver Rupee 2" xyz="351;361;0"/>
+        <sr location="Bottom of the Well SR 3" flag="0x07" item="RUPEE_SILVER_BOTW" name="Silver Rupee 3" xyz="389;405;0"/>
+        <sr location="Bottom of the Well SR 4" flag="0x08" item="RUPEE_SILVER_BOTW" name="Silver Rupee 4" xyz="447;367;0"/>
+        <sr location="Bottom of the Well SR 5" flag="0x09" item="RUPEE_SILVER_BOTW" name="Silver Rupee 5" xyz="492;422;0"/>
+      </rendering_option>
+      <xflag type="pot" location="Bottom of the Well Pot Main Room 1" slice="0x0" setup="0x0" room="0x0" actor="0x16" item="RECOVERY_HEART" name="Main Room 1" xyz="493;481;2"/>
+      <xflag type="pot" location="Bottom of the Well Pot Main Room 2" slice="0x0" setup="0x0" room="0x0" actor="0x17" item="MAGIC_JAR_SMALL" name="Main Room 2" xyz="493;462;1"/>
+      <xflag type="pot" location="Bottom of the Well Pot Main Room 3" slice="0x0" setup="0x0" room="0x0" actor="0x18" item="RECOVERY_HEART" name="Main Room 3" xyz="493;444;0"/>
+      <xflag type="pot" location="Bottom of the Well Pot Main Room 4" slice="0x0" setup="0x0" room="0x0" actor="0x1a" item="STICK" name="Main Room 4" xyz="739;560;0"/>
+      <xflag type="pot" location="Bottom of the Well Pot Main Room 5" slice="0x0" setup="0x0" room="0x0" actor="0x1b" item="MAGIC_JAR_SMALL" name="Main Room 5" xyz="761;560;0"/>
+      <xflag type="pot" location="Bottom of the Well Pot Main Room Underwater" slice="0x0" setup="0x0" room="0x0" actor="0x1d" item="BOMB" name="Main Room - Underwater" xyz="733;54;0"/>
+      <rendering_option room="1">
+        <xflag type="pot" location="Bottom of the Well Pot Basement 01" slice="0x0" setup="0x0" room="0x1" actor="0x2c" item="RECOVERY_HEART" name="Basement 1" xyz="552;293;0"/>
+        <xflag type="pot" location="Bottom of the Well Pot Basement 02" slice="0x0" setup="0x0" room="0x1" actor="0x2d" item="MAGIC_JAR_LARGE" name="Basement 2" xyz="608;313;0"/>
+        <xflag type="pot" location="Bottom of the Well Pot Basement 03" slice="0x0" setup="0x0" room="0x1" actor="0x2e" item="RECOVERY_HEART" name="Basement 3" xyz="658;176;1"/>
+        <xflag type="pot" location="Bottom of the Well Pot Basement 04" slice="0x0" setup="0x0" room="0x1" actor="0x2f" item="RUPEE_GREEN" name="Basement 4" xyz="740;160;1"/>
+        <xflag type="pot" location="Bottom of the Well Pot Basement 05" slice="0x0" setup="0x0" room="0x1" actor="0x30" item="MAGIC_JAR_LARGE" name="Basement 5" xyz="692;193;0"/>
+        <xflag type="pot" location="Bottom of the Well Pot Basement 06" slice="0x0" setup="0x0" room="0x1" actor="0x31" item="RECOVERY_HEART" name="Basement 6" xyz="772;154;0"/>
+        <xflag type="pot" location="Bottom of the Well Pot Basement 07" slice="0x0" setup="0x0" room="0x1" actor="0x32" item="RECOVERY_HEART" name="Basement 7" xyz="740;129;0"/>
+        <xflag type="pot" location="Bottom of the Well Pot Basement 08" slice="0x0" setup="0x0" room="0x1" actor="0x33" item="RECOVERY_HEART" name="Basement 8" xyz="739;143;0"/>
+        <xflag type="pot" location="Bottom of the Well Pot Basement 09" slice="0x0" setup="0x0" room="0x1" actor="0x34" item="NUTS_5" name="Basement 9" xyz="673;194;1"/>
+        <xflag type="pot" location="Bottom of the Well Pot Basement 10" slice="0x0" setup="0x0" room="0x1" actor="0x35" item="STICK" name="Basement 10" xyz="757;156;0"/>
+        <xflag type="pot" location="Bottom of the Well Pot Basement 11" slice="0x0" setup="0x0" room="0x1" actor="0x36" item="MAGIC_JAR_LARGE" name="Basement 11" xyz="655;192;1"/>
+        <xflag type="pot" location="Bottom of the Well Pot Basement 12" slice="0x0" setup="0x0" room="0x1" actor="0x37" item="RECOVERY_HEART" name="Basement 12" xyz="665;163;0"/>
+      </rendering_option>
+      <xflag type="pot" location="Bottom of the Well Pot Side Room" slice="0x0" setup="0x0" room="0x3" actor="0x6" item="MAGIC_JAR_SMALL" name="Side Room" xyz="972;128;0"/>
+      <xflag type="pot" location="Bottom of the Well Flying Pot 1" slice="0x0" setup="0x0" room="0x6" actor="0x2" item="RECOVERY_HEART" name="Flying Pot 1" xyz="679;145;0"/>
+      <xflag type="pot" location="Bottom of the Well Flying Pot 2" slice="0x0" setup="0x0" room="0x6" actor="0x3" item="RECOVERY_HEART" name="Flying Pot 2" xyz="638;145;0"/>
+      <xflag type="pot" location="Bottom of the Well Flying Pot 3" slice="0x0" setup="0x0" room="0x6" actor="0x4" item="NUTS_5" name="Flying Pot 3" xyz="658;145;0"/>
+      <rendering_option room="1">
+        <xflag type="grass" location="Bottom of the Well Grass 01" slice="0x0" setup="0x0" room="0x1" actor="0x1" item="RECOVERY_HEART" name="Grass 1" xyz="321;111;0"/>
+        <xflag type="grass" location="Bottom of the Well Grass 02" slice="0x0" setup="0x0" room="0x1" actor="0x2" item="DEKU_SEEDS_5" name="Grass 2" xyz="318;128;0"/>
+        <xflag type="grass" location="Bottom of the Well Grass 03" slice="0x0" setup="0x0" room="0x1" actor="0x3" item="RECOVERY_HEART" name="Grass 3" xyz="317;145;0"/>
+        <xflag type="grass" location="Bottom of the Well Grass 04" slice="0x0" setup="0x0" room="0x1" actor="0x4" item="DEKU_SEEDS_5" name="Grass 4" xyz="317;186;0"/>
+        <xflag type="grass" location="Bottom of the Well Grass 05" slice="0x0" setup="0x0" room="0x1" actor="0x5" item="RECOVERY_HEART" name="Grass 5" xyz="332;157;0"/>
+        <xflag type="grass" location="Bottom of the Well Grass 06" slice="0x0" setup="0x0" room="0x1" actor="0x6" item="DEKU_SEEDS_5" name="Grass 6" xyz="342;109;0"/>
+        <xflag type="grass" location="Bottom of the Well Grass 07" slice="0x0" setup="0x0" room="0x1" actor="0x7" item="RECOVERY_HEART" name="Grass 7" xyz="343;126;0"/>
+        <xflag type="grass" location="Bottom of the Well Grass 08" slice="0x0" setup="0x0" room="0x1" actor="0x8" item="DEKU_SEEDS_5" name="Grass 8" xyz="326;210;0"/>
+        <xflag type="grass" location="Bottom of the Well Grass 09" slice="0x0" setup="0x0" room="0x1" actor="0x9" item="RECOVERY_HEART" name="Grass 9" xyz="344;142;0"/>
+        <xflag type="grass" location="Bottom of the Well Grass 10" slice="0x0" setup="0x0" room="0x1" actor="0xa" item="DEKU_SEEDS_5" name="Grass 10" xyz="387;302;0"/>
+        <xflag type="grass" location="Bottom of the Well Grass 11" slice="0x0" setup="0x0" room="0x1" actor="0xb" item="RECOVERY_HEART" name="Grass 11" xyz="406;298;0"/>
+        <xflag type="grass" location="Bottom of the Well Grass 12" slice="0x0" setup="0x0" room="0x1" actor="0xc" item="DEKU_SEEDS_5" name="Grass 12" xyz="410;282;0"/>
+        <xflag type="rupee" location="Bottom of the Well Rupee 1" slice="0x0" setup="0x0" room="0x1" actor="0x1a" item="RUPEE_BLUE" name="Rupee 1" xyz="597;229;0"/>
+        <xflag type="rupee" location="Bottom of the Well Rupee 2" slice="0x0" setup="0x0" room="0x1" actor="0x1b" item="RUPEE_BLUE" name="Rupee 2" xyz="616;241;0"/>
+        <xflag type="rupee" location="Bottom of the Well Rupee 3" slice="0x0" setup="0x0" room="0x1" actor="0x1c" item="RUPEE_BLUE" name="Rupee 3" xyz="611;257;0"/>
+        <xflag type="rupee" location="Bottom of the Well Rupee 4" slice="0x0" setup="0x0" room="0x1" actor="0x1d" item="RUPEE_BLUE" name="Rupee 4" xyz="561;245;0"/>
+        <xflag type="rupee" location="Bottom of the Well Rupee 5" slice="0x0" setup="0x0" room="0x1" actor="0x1e" item="RUPEE_BLUE" name="Rupee 5" xyz="575;222;0"/>
+      </rendering_option>
+      <xflag type="heart" location="Bottom of the Well Heart 1" slice="0x0" setup="0x0" room="0x2" actor="0xd" item="RECOVERY_HEART" name="Heart 1" xyz="213;293;0"/>
+      <xflag type="heart" location="Bottom of the Well Heart 2" slice="0x0" setup="0x0" room="0x2" actor="0xe" item="RECOVERY_HEART" name="Heart 2" xyz="163;233;0"/>
+      <rendering_option room="1">
+        <xflag type="fairy_spot" location="Bottom of the Well Basement Big Fairy" slice="0x0" setup="0x0" room="0x1" actor="0x13" item="FAIRY_BIG" name="Basement" xyz="753;100;0"/>
+        <xflag type="boulder" location="Bottom of the Well Boulder Near Chest 1" slice="0x0" setup="0x0" room="0x1" actor="0x20" item="NOTHING" name="Near Chest 1" xyz="711;535;0"/>
+        <xflag type="boulder" location="Bottom of the Well Boulder Near Chest 2" slice="0x0" setup="0x0" room="0x1" actor="0x21" item="NOTHING" name="Near Chest 2" xyz="720;501;0"/>
+        <xflag type="boulder" location="Bottom of the Well Boulder Middle 1" slice="0x0" setup="0x0" room="0x1" actor="0x22" item="NOTHING" name="Middle 1" xyz="713;311;0"/>
+        <xflag type="boulder" location="Bottom of the Well Boulder Middle 2" slice="0x0" setup="0x0" room="0x1" actor="0x23" item="NOTHING" name="Middle 2" xyz="684;289;0"/>
+        <xflag type="boulder" location="Bottom of the Well Boulder Far 1" slice="0x0" setup="0x0" room="0x1" actor="0x24" item="NOTHING" name="Far 1" xyz="384;243;0"/>
+        <xflag type="boulder" location="Bottom of the Well Boulder Far 2" slice="0x0" setup="0x0" room="0x1" actor="0x25" item="NOTHING" name="Far 2" xyz="363;265;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

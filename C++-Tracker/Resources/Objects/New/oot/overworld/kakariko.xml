@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="oot">
+  <scene name="Kakariko" id="KAKARIKO_VILLAGE">
+    <scene_rendering id="OOT_KAKARIKO_VILLAGE" loc_type="overworld">
+      <rendering_option icon="bottle" context="child">
+        <npc location="Kakariko Anju Bottle" npc="ANJU_BOTTLE" item="BOTTLE_EMPTY" name="Bottle" xyz="396;150;0"/>
+      </rendering_option>
+      <rendering_option icon="egg" context="adult">
+        <npc location="Kakariko Anju Egg" npc="TRADE_POCKET_EGG" item="POCKET_CUCCO" name="Egg" xyz="396;150;0"/>
+      </rendering_option>
+      <rendering_option icon="cojiro" context="adult">
+        <npc location="Kakariko Anju Cojiro" npc="TRADE_COJIRO" item="COJIRO" name="Cojiro" xyz="376;150;0"/>
+      </rendering_option>
+      <rendering_option type="song" icon="song_purple" context="adult">
+        <npc location="Kakariko Song Shadow" npc="SHEIK_SHADOW" item="SONG_TP_SHADOW" hint="RAVAGED_VILLAGE" name="Nocture of Shadow" xyz="383;279;0"/>
+      </rendering_option>
+      <rendering_option type="heart_piece">
+        <npc location="Kakariko Man on Roof" npc="KAKARIKO_ROOF_MAN" item="HEART_PIECE" name="Man on Roof" xyz="411;337;0"/>
+      </rendering_option>
+      <rendering_option type="mask" icon="keaton" context="child">
+        <npc location="Kakariko Sell Keaton Mask" npc="MASK_SELL_KEATON" item="RUPEE_RED" name="Keaton Mask" xyz="494;563;0"/>
+      </rendering_option>
+      <rendering_option context="adult">
+        <gs location="Kakariko GS Roof" flag="0x86" item="GS_TOKEN" name="Impa's Roof" xyz="474;67;0"/>
+      </rendering_option>
+      <rendering_option context="child">
+        <gs location="Kakariko GS Shooting Gallery" flag="0x83" item="GS_TOKEN" name="Shooting Gallery" xyz="422;217;0"/>
+        <gs location="Kakariko GS Tree" flag="0x85" item="GS_TOKEN" name="Tree" xyz="596;280;0"/>
+        <gs location="Kakariko GS House of Skulltula" flag="0x84" item="GS_TOKEN" name="House of Skulltula" xyz="560;190;0"/>
+        <gs location="Kakariko GS Bazaar" flag="0x81" item="GS_TOKEN" name="Bazaar" xyz="550;498;2"/>
+        <gs location="Kakariko GS Ladder" flag="0x82" item="GS_TOKEN" name="Ladder" xyz="471;381;0"/>
+      </rendering_option>
+      <rendering_option context="child">
+        <xflag type="pot" location="Kakariko Pot 01" slice="0x0" setup="0x0" actor="0x8" item="RECOVERY_HEART" name="Pot 1" xyz="440;415;3"/>
+        <xflag type="pot" location="Kakariko Pot 02" slice="0x0" setup="0x0" actor="0x9" item="RECOVERY_HEART" name="Pot 2" xyz="429;410;2"/>
+        <xflag type="pot" location="Kakariko Pot 03" slice="0x0" setup="0x0" actor="0xa" item="RECOVERY_HEART" name="Pot 3" xyz="418;405;0"/>
+        <xflag type="pot" location="Kakariko Pot 04" slice="0x0" setup="0x0" actor="0xb" item="RECOVERY_HEART" name="Pot 4" xyz="532;114;0"/>
+        <xflag type="pot" location="Kakariko Pot 05" slice="0x0" setup="0x0" actor="0xc" item="RECOVERY_HEART" name="Pot 5" xyz="532;126;0"/>
+        <xflag type="pot" location="Kakariko Pot 06" slice="0x0" setup="0x0" actor="0xd" item="RECOVERY_HEART" name="Pot 6" xyz="532;138;0"/>
+        <xflag type="pot" location="Kakariko Pot 07" slice="0x0" setup="0x0" actor="0xe" item="RECOVERY_HEART" name="Pot 7" xyz="538;499;2"/>
+        <xflag type="pot" location="Kakariko Pot 08" slice="0x0" setup="0x0" actor="0xf" item="RECOVERY_HEART" name="Pot 8" xyz="527;494;1"/>
+        <xflag type="pot" location="Kakariko Pot 09" slice="0x0" setup="0x0" actor="0x10" item="RECOVERY_HEART" name="Pot 9" xyz="516;489;0"/>
+        <xflag type="pot" location="Kakariko Back Pot 1" slice="0x0" setup="0x0" actor="0x11" item="RECOVERY_HEART" name="Back Pot 1" xyz="343;343;0"/>
+        <xflag type="pot" location="Kakariko Back Pot 2" slice="0x0" setup="0x0" actor="0x12" item="RECOVERY_HEART" name="Back Pot 2" xyz="330;343;0"/>
+      </rendering_option>
+      <rendering_option context="child">
+        <xflag type="crate" location="Kakariko Crate Child Near Trail" slice="0x0" setup="0x0" actor="0x31" item="NOTHING" name="Child - Near Trail" xyz="570;429;0"/>
+        <xflag type="crate" location="Kakariko Crate Child Near House" slice="0x0" setup="0x0" actor="0x32" item="NOTHING" name="Child - Near House" xyz="480;363;0"/>
+        <xflag type="crate" location="Kakariko Crate Child Near Windmill Bottom" slice="0x0" setup="0x0" actor="0x33" item="NOTHING" name="Child - Near Windmill Bottom" xyz="296;339;0"/>
+        <xflag type="crate" location="Kakariko Crate Child Near Windmill Top" slice="0x0" setup="0x0" actor="0x34" item="NOTHING" name="Child Near Windmill Top" xyz="292;262;0"/>
+        <xflag type="crate" location="Kakariko Crate Child Near Graveyard" slice="0x0" setup="0x0" actor="0x35" item="NOTHING" name="Child - Near Graveyard" xyz="213;151;0"/>
+      </rendering_option>
+      <rendering_option context="adult">
+        <xflag type="crate" location="Kakariko Crate Adult Near First House" slice="0x0" setup="0x2" actor="0x22" item="NOTHING" name="Adult - Near First House" xyz="578;227;0"/>
+        <xflag type="crate" location="Kakariko Crate Adult Near Trail 1" slice="0x0" setup="0x2" actor="0x23" item="NOTHING" name="Adult - Near Trail 1" xyz="555;422;1"/>
+        <xflag type="crate" location="Kakariko Crate Adult Near Trail 2" slice="0x0" setup="0x2" actor="0x24" item="ARROWS_5" name="Adult - Near Trail 2" xyz="541;415;0"/>
+        <xflag type="crate" location="Kakariko Crate Adult Near Impa 1" slice="0x0" setup="0x2" actor="0x25" item="NOTHING" name="Adult - Near Impa 1" xyz="534;137;1"/>
+        <xflag type="crate" location="Kakariko Crate Adult Near Impa 2" slice="0x0" setup="0x2" actor="0x26" item="NOTHING" name="Adult - Near Impa 2" xyz="534;122;0"/>
+        <xflag type="crate" location="Kakariko Crate Adult Center 1" slice="0x0" setup="0x2" actor="0x27" item="NOTHING" name="Adult - Center 1" xyz="468;301;1"/>
+        <xflag type="crate" location="Kakariko Crate Adult Center 2" slice="0x0" setup="0x2" actor="0x28" item="NOTHING" name="Adult - Center 2" xyz="452;301;0"/>
+        <xflag type="crate" location="Kakariko Crate Adult Near Archery" slice="0x0" setup="0x2" actor="0x29" item="NOTHING" name="Adult - Near Archery" xyz="444;239;0"/>
+        <xflag type="crate" location="Kakariko Crate Adult Near Potion Shop" slice="0x0" setup="0x2" actor="0x2a" item="NOTHING" name="Adult - Near Potion Shop" xyz="442;476;0"/>
+        <xflag type="crate" location="Kakariko Crate Adult Back 1" slice="0x0" setup="0x2" actor="0x2b" item="NOTHING" name="Adult - Back 1" xyz="400;388"/>
+        <xflag type="crate" location="Kakariko Crate Adult Back 2" slice="0x0" setup="0x2" actor="0x2c" item="NOTHING" name="Adult - Back 2" xyz="393;402"/>
+        <xflag type="crate" location="Kakariko Crate Adult Back 3" slice="0x0" setup="0x2" actor="0x2d" item="RUPEE_RED" name="Adult - Back 3" xyz="301;339"/>
+        <xflag type="crate" location="Kakariko Crate Adult Back 4" slice="0x0" setup="0x2" actor="0x2e" item="NOTHING" name="Adult - Back 4" xyz="317;339"/>
+      </rendering_option>
+      <xflag type="grass" location="Kakariko Grass 1" slice="0x0" setup="0x0" actor="0x24" item="RANDOM" name="Grass 1" xyz="605;291;0"/>
+      <xflag type="grass" location="Kakariko Grass 2" slice="0x0" setup="0x0" actor="0x25" item="RANDOM" name="Grass 2" xyz="605;269;0"/>
+      <xflag type="grass" location="Kakariko Grass 3" slice="0x0" setup="0x0" actor="0x26" item="RANDOM" name="Grass 3" xyz="590;291;0"/>
+      <xflag type="grass" location="Kakariko Grass 4" slice="0x0" setup="0x0" actor="0x27" item="RANDOM" name="Grass 4" xyz="590;269;0"/>
+      <xflag type="grass" location="Kakariko Grass 5" slice="0x0" setup="0x0" actor="0x28" item="RANDOM" name="Grass 5" xyz="585;280;0"/>
+      <xflag type="grass" location="Kakariko Grass 6" slice="0x0" setup="0x0" actor="0x29" item="RANDOM" name="Grass 6" xyz="318;125;0"/>
+      <xflag type="grass" location="Kakariko Grass 7" slice="0x0" setup="0x0" actor="0x2a" item="RANDOM" name="Grass 7" xyz="313;136;0"/>
+      <xflag type="grass" location="Kakariko Grass 8" slice="0x0" setup="0x0" actor="0x2b" item="RANDOM" name="Grass 8" xyz="306;127;0"/>
+      <rendering_option context="adult">
+        <xflag type="boulder-silver" location="Kakariko Silver Boulder" slice="0x0" setup="0x2" actor="0x30" item="NOTHING" name="Silver Boulder" xyz="243;136;0"/>
+      </rendering_option>
+      <rendering_option context="child">
+        <xflag type="wonder" location="Kakariko Wonder Item" slice="0x0" setup="0x0" actor="0x37" item="RUPEE_RED" name="Carpenter's Beam End" xyz="449;176;0"/>
+        <actor setup="0x0" actor="0x2e">
+          <xflag type="butterfly" location="Kakariko Butterfly 1" slice="0" item="FAIRY" name="Butterfly 1" xyz="456;372;0"/>
+          <xflag type="butterfly" location="Kakariko Butterfly 2" slice="1" item="NOTHING" name="Butterfly 2" xyz="463;359;0"/>
+        </actor>
+      </rendering_option>
+      <actor>
+      <match setup="0" actor="0x20"/>
+      <match setup="1" actor="0x1b"/>
+      <match setup="2" actor="0x15"/>
+      <match setup="3" actor="0x14"/>
+        <xflag type="rock" location="Kakariko Rock Near Gate" item="RANDOM" name="Gate" xyz="437;560;0"/>
+      </actor>
+      <actor>
+        <match setup="0" actor="0x21"/>
+        <match setup="1" actor="0x1c"/>
+        <match setup="2" actor="0x16"/>
+        <match setup="3" actor="0x15"/>
+        <xflag type="rock" location="Kakariko Rock Near Spider House" item="RANDOM" name="Spider House" xyz="560;158;0"/>
+      </actor>
+    </scene_rendering>
+  </scene>
+  <scene name="Impa House" id="IMPA_HOUSE">
+    <scene_rendering id="OOT_IMPA_HOUSE" loc_type="overworld">
+      <rendering_option type="heart_piece">
+        <collectible location="Kakariko Impa House HP" flag="0x01" item="HEART_PIECE" name="Jail" xyz="900;503;0"/>
+      </rendering_option>
+      <cow location="Kakariko Cow" flag="0x06" item="MILK" name="Cow" xyz="981;476;0" legacy_scene="KAKARIKO_VILLAGE"/>
+      <xflag type="wonder" location="Kakariko Impa House Wonder Item" slice="0x0" setup="0x0" room="0x0" actor="0x6" item="RUPEE_RED" name="Above Jail" xyz="1010;311;0"/>
+    </scene_rendering>
+  </scene>
+  <scene name="Kakariko ReDead Grotto" id="GROTTOS">
+    <scene_rendering id="OOT_GROTTO_KAKARIKO_REDEAD" loc_type="overworld">
+      <chest location="Kakariko Grotto Front" flag="0x0a" item="RUPEE_HUGE" name="Readead" xyz="691;284;0"/>
+    </scene_rendering>
+  </scene>
+  <scene name="Kakariko Generic Grotto" id="GROTTOS" room="0x28">
+    <scene_rendering id="OOT_GROTTO_KAKARIKO_OPEN" loc_type="overworld">
+      <chest location="Kakariko Grotto Back" flag="0x08" item="RUPEE_RED" name="Chest" xyz="684;177;0"/>
+      <xflag type="grass" location="Kakariko Grotto Back Grass 1" slice="0x0" actor="0x2" item="RANDOM" name="Grass 1" xyz="669;158;0"/>
+      <xflag type="grass" location="Kakariko Grotto Back Grass 2" slice="0x0" actor="0x3" item="RANDOM" name="Grass 2" xyz="658;192;0"/>
+      <xflag type="grass" location="Kakariko Grotto Back Grass 3" slice="0x0" actor="0x4" item="RANDOM" name="Grass 3" xyz="717;195;0"/>
+      <xflag type="grass" location="Kakariko Grotto Back Grass 4" slice="0x0" actor="0x5" item="RANDOM" name="Grass 4" xyz="660;320;0"/>
+      <xflag type="hive" location="Kakariko Grotto Back Hive 1" slice="0x0" actor="0x7" item="RUPEE_BLUE" name="Back Hive 1" xyz="551;157;0"/>
+      <xflag type="hive" location="Kakariko Grotto Back Hive 2" slice="0x0" actor="0x8" item="RUPEE_RED" name="Back Hive 2" xyz="741;104;0"/>
+      <actor actor="0x6">
+        <xflag type="butterfly" location="Kakariko Grotto Butterfly 1" slice="0" item="FAIRY" name="Butterfly 1" xyz="651;645;0"/>
+        <xflag type="butterfly" location="Kakariko Grotto Butterfly 2" slice="1" item="NOTHING" name="Butterfly 2" xyz="617;632;0"/>
+        <xflag type="butterfly" location="Kakariko Grotto Butterfly 3" slice="2" item="NOTHING" name="Butterfly 3" xyz="637;631;0"/>
+      </actor>
+      <actor actor="0x9">
+        <xflag type="gossip" location="Kakariko Generic Grotto Gossip Fairy" slice="0" item="FAIRY" name="Gossip Fairy" xyz="0;0;0"/>
+        <xflag type="gossip-big" location="Kakariko Generic Grotto Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy" xyz="0;0;0"/>
+      </actor>
+    </scene_rendering>
+  </scene>
+  <scene name="Kakariko Potion Shop" id="KAKARIKO_POTION_SHOP">
+    <scene_rendering id="OOT_KAKARIKO_POTION_SHOP" loc_type="overworld">
+      <shop location="Kakariko Potion Shop Item 1" flag="0x38" item="FISH" name="Item 1" xyz="465;277;0"/>
+      <shop location="Kakariko Potion Shop Item 2" flag="0x39" item="BUGS" name="Item 2" xyz="510;277;0"/>
+      <shop location="Kakariko Potion Shop Item 3" flag="0x3a" item="POE" name="Item 3" xyz="465;318;0"/>
+      <shop location="Kakariko Potion Shop Item 4" flag="0x3b" item="NUTS_5" name="Item 4" xyz="510;318;0"/>
+      <shop location="Kakariko Potion Shop Item 5" flag="0x3c" item="BLUE_FIRE" name="Item 5" xyz="644;277;0"/>
+      <shop location="Kakariko Potion Shop Item 6" flag="0x3d" item="FAIRY" name="Item 6" xyz="689;277;0"/>
+      <shop location="Kakariko Potion Shop Item 7" flag="0x3e" item="POTION_GREEN" name="Item 7" xyz="644;318;0"/>
+      <shop location="Kakariko Potion Shop Item 8" flag="0x3f" item="POTION_RED" name="Item 8" xyz="689;318;0"/>
+    </scene_rendering>
+  </scene>
+  <scene name="Kakariko Bazaar" id="BAZAAR">
+    <scene_rendering id="OOT_KAKARIKO_BAZAAR" loc_type="overworld">
+      <shop location="Kakariko Bazaar Item 1" flag="0x30" item="ARROWS_5" name="Item 1" xyz="367;328;0"/>
+      <shop location="Kakariko Bazaar Item 2" flag="0x31" item="ARROWS_10" name="Item 2" xyz="327;290;0"/>
+      <shop location="Kakariko Bazaar Item 3" flag="0x32" item="ARROWS_30" name="Item 3" xyz="367;290;0"/>
+      <shop location="Kakariko Bazaar Item 4" flag="0x33" item="STICK" name="Item 4" xyz="327;328;0"/>
+      <shop location="Kakariko Bazaar Item 5" flag="0x34" item="BOMBS_5" name="Item 5" xyz="624;290;0"/>
+      <shop location="Kakariko Bazaar Item 6" flag="0x35" item="RECOVERY_HEART" name="Item 6" xyz="664;290;0"/>
+      <shop location="Kakariko Bazaar Item 7" flag="0x36" item="NUTS_5" name="Item 7" xyz="664;328;0"/>
+      <shop location="Kakariko Bazaar Item 8" flag="0x37" item="SHIELD_HYLIAN" name="Item 8" xyz="624;328;0"/>
+    </scene_rendering>
+  </scene>
+  <scene name="Kakariko Granny Potion Shop" id="GRANNY_POTION_SHOP">
+    <scene_rendering id="OOT_GRANNY_POTION_SHOP" loc_type="overworld">
+      <rendering_option icon="potion">
+        <npc location="Kakariko Potion Shop Odd Potion" npc="TRADE_ODD_POTION" item="ODD_POTION" name="Odd Potion" xyz="474;520;0" legacy_scene="KAKARIKO_POTION_SHOP"/>
+      </rendering_option>
+      <rendering_option icon="blue_potion">
+        <npc location="Kakariko Potion Shop Buy Blue Potion" npc="WITCH_BLUE_POTION" item="POTION_BLUE" name="Buy Blue Potion" xyz="474;416;0" legacy_scene="KAKARIKO_POTION_SHOP"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="HOUSE_OF_SKULLTULA">
+    <scene_rendering id="OOT_HOUSE_OF_SKULLTULA" loc_type="overworld">
+      <rendering_option icon="wallet">
+        <npc location="Skulltula House 10 Tokens" npc="GS_10" item="WALLET" name="10 Tokens" xyz="657;431;0"/>
+      </rendering_option>
+      <rendering_option icon="agony">
+        <npc location="Skulltula House 20 Tokens" npc="GS_20" item="STONE_OF_AGONY" name="20 Tokens" xyz="287;434;0"/>
+      </rendering_option>
+      <rendering_option icon="big_wallet">
+        <npc location="Skulltula House 30 Tokens" npc="GS_30" item="WALLET" name="30 Tokens" xyz="469;126;0"/>
+      </rendering_option>
+      <rendering_option icon="bombchu">
+        <npc location="Skulltula House 40 Tokens" npc="GS_40" item="BOMBCHU_10" name="40 Tokens" xyz="290;222;0"/>
+      </rendering_option>
+      <rendering_option type="heart_piece">
+        <npc location="Skulltula House 50 Tokens" npc="GS_50" item="HEART_PIECE" name="50 Tokens" xyz="650;219;0"/>
+      </rendering_option>
+      <rendering_option icon="gold_rupee">
+        <npc location="Skulltula House 100 Tokens" npc="GS_100" item="RUPEE_HUGE" name="100 Tokens" xyz="472;311;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="TOMB_DAMPE_WINDMILL">
+    <scene_rendering id="OOT_WINDMILL" loc_type="overworld">
+      <rendering_option type="heart_piece">
+        <collectible location="Windmill HP" flag="0x01" item="HEART_PIECE" name="Platform" xyz="718;844;0"/>
+      </rendering_option>
+      <rendering_option type="song" context="adult">
+        <npc location="Windmill Song of Storms" npc="SONG_STORMS" item="SONG_STORMS" name="Song of Storms" xyz="720;120;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="SHOOTING_GALLERY">
+    <scene_rendering id="OOT_KAKARIKO_SHOOTING" loc_type="minigame">
+      <rendering_option icon="big_quiver">
+        <npc location="Shooting Gallery Adult" npc="SHOOTING_GAME_ADULT" item="BOW" name="Reward" xyz="616;354;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="oot">
+  <scene id="GERUDO_FORTRESS">
+    <scene_rendering id="OOT_GERUDO_FORTRESS" loc_type="overworld">
+      <rendering_option type="heart_piece">
+        <chest location="Gerudo Fortress Chest" flag="0x00" item="HEART_PIECE" name="Scarecrow Chest" xyz="443;431;0"/>
+      </rendering_option>
+    </scene_rendering>
+    <scene_rendering id="OOT_GERUDO_FORTRESS" loc_type="minigame">
+      <rendering_option context="adult" type="heart_piece">
+        <npc location="Gerudo Fortress Archery Reward 1" npc="GERUDO_ARCHERY_1" item="HEART_PIECE" hint="GERUDO_ARCHERY" name="Game Prize" xyz="644;154;2"/>
+      </rendering_option>
+      <rendering_option context="adult" icon="biggest_quiver">
+        <npc location="Gerudo Fortress Archery Reward 2" npc="GERUDO_ARCHERY_2" item="BOW" hint="GERUDO_ARCHERY" name="Biggest Quiver" xyz="668;154;1"/>
+      </rendering_option>
+    </scene_rendering>
+    <scene_rendering id="OOT_GERUDO_FORTRESS" loc_type="overworld">
+      <rendering_option context="adult">
+        <gs location="Gerudo Fortress GS Wall" flag="0xa1" item="GS_TOKEN" name="Scarecrow Wall" xyz="495;362;0"/>
+        <gs location="Gerudo Fortress GS Target" flag="0xa0" item="GS_TOKEN" name="Target" xyz="177;161;2"/>
+      </rendering_option>
+      <xflag type="crate" location="Gerudo Fortress Crate Main 1" slice="0x0" setup="0x2" room="0x0" actor="0xc" item="RUPEE_GREEN" name="Main 1" xyz="473;530;1"/>
+      <xflag type="crate" location="Gerudo Fortress Crate Main 2" slice="0x0" setup="0x2" room="0x0" actor="0xd" item="RUPEE_GREEN" name="Main 2" xyz="473;515;0"/>
+      <xflag type="crate" location="Gerudo Fortress Crate Main 3" slice="0x0" setup="0x2" room="0x0" actor="0xe" item="RUPEE_GREEN" name="Main 3" xyz="507;487;0"/>
+      <xflag type="crate" location="Gerudo Fortress Crate Main 4" slice="0x0" setup="0x2" room="0x0" actor="0xf" item="RUPEE_GREEN" name="Main 4" xyz="515;487;0"/>
+      <xflag type="crate" location="Gerudo Fortress Crate Main 5" slice="0x0" setup="0x2" room="0x0" actor="0x10" item="RUPEE_GREEN" name="Main 5" xyz="530;486;0"/>
+      <xflag type="crate" location="Gerudo Fortress Crate Main 6" slice="0x0" setup="0x2" room="0x0" actor="0x11" item="RUPEE_GREEN" name="Main 6" xyz="538;486;0"/>
+      <rendering_option context="adult">
+        <xflag type="crate" location="Gerudo Fortress Crate Jail Top" slice="0x0" setup="0x2" room="0x0" actor="0x12" item="RUPEE_PURPLE" name="Jail - Top" xyz="390;524;0"/>
+      </rendering_option>
+      <rendering_option context="child" type="none">
+        <xflag type="crate" location="Gerudo Fortress Crate Archery Child" slice="0x0" setup="0x0" room="0x1" actor="0x3" item="RUPEE_GREEN" name="Archery - Child" xyz="195;158;0"/>
+      </rendering_option>
+      <xflag type="crate" location="Gerudo Fortress Crate Archery 01" slice="0x0" setup="0x0" room="0x1" actor="0x0" item="RUPEE_GREEN" name="Archery 1" xyz="180;178;1"/>
+      <xflag type="crate" location="Gerudo Fortress Crate Archery 02" slice="0x0" setup="0x0" room="0x1" actor="0x1" item="RUPEE_GREEN" name="Archery 2" xyz="752;180;1"/>
+      <xflag type="crate" location="Gerudo Fortress Crate Archery 03" slice="0x0" setup="0x0" room="0x1" actor="0x2" item="RUPEE_GREEN" name="Archery 3" xyz="752;171;0"/>
+      <xflag type="crate" location="Gerudo Fortress Crate Archery 04" slice="0x0" setup="0x0" room="0x1" actor="0x4" item="RUPEE_GREEN" name="Archery 4" xyz="195;163;0"/>
+      <xflag type="crate" location="Gerudo Fortress Crate Archery 05" slice="0x0" setup="0x0" room="0x1" actor="0x5" item="RUPEE_GREEN" name="Archery 5" xyz="681;166;0"/>
+      <xflag type="crate" location="Gerudo Fortress Crate Archery 06" slice="0x0" setup="0x0" room="0x1" actor="0x6" item="RUPEE_GREEN" name="Archery 6" xyz="681;138;0"/>
+      <xflag type="crate" location="Gerudo Fortress Crate Archery 07" slice="0x0" setup="0x0" room="0x1" actor="0x7" item="RUPEE_GREEN" name="Archery 7" xyz="396;101;0"/>
+      <xflag type="crate" location="Gerudo Fortress Crate Archery 08" slice="0x0" setup="0x0" room="0x1" actor="0x8" item="RUPEE_GREEN" name="Archery 8" xyz="421;101;0"/>
+      <xflag type="crate" location="Gerudo Fortress Crate Archery 09" slice="0x0" setup="0x0" room="0x1" actor="0x9" item="RUPEE_GREEN" name="Archery 9" xyz="446;101;0"/>
+      <xflag type="crate" location="Gerudo Fortress Crate Archery 10" slice="0x0" setup="0x0" room="0x1" actor="0xa" item="RUPEE_GREEN" name="Archery 10" xyz="471;101;0"/>
+      <xflag type="crate" location="Gerudo Fortress Crate Archery 11" slice="0x0" setup="0x0" room="0x1" actor="0xb" item="RUPEE_GREEN" name="Archery 11" xyz="496;101;0"/>
+      <xflag type="crate" location="Gerudo Fortress Crate Archery 12" slice="0x0" setup="0x0" room="0x1" actor="0xc" item="RUPEE_GREEN" name="Archery 12" xyz="521;101;0"/>
+      <xflag type="crate" location="Gerudo Fortress Crate Archery 13" slice="0x0" setup="0x0" room="0x1" actor="0xd" item="RUPEE_GREEN" name="Archery 13" xyz="546;102;0"/>
+      <xflag type="wonder" location="Gerudo Fortress Wonder Item Sign Archery" slice="0x0" setup="0x0" room="0x0" actor="0x7" item="RUPEE_RED" name="Sign - Archery" xyz="655;415;0"/>
+      <xflag type="wonder" location="Gerudo Fortress Wonder Item Sign Entrance" slice="0x0" setup="0x0" room="0x0" actor="0x8" item="RUPEE_RED" name="Sign - Entrance" xyz="606;595;0"/>
+    </scene_rendering>
+  </scene>
+  <scene id="FAIRY_FOUNTAIN">
+    <scene_rendering id="OOT_FAIRY_GERUDO_FORTRESS" loc_type="overworld">
+      <actor room="0x24" actor="0x0">
+        <xflag type="fairy" location="Gerudo Fortress Fairy Fountain Fairy 1" slice="0" item="FAIRY" name="Fairy 1" xyz="484;209;0"/>
+        <xflag type="fairy" location="Gerudo Fortress Fairy Fountain Fairy 2" slice="1" item="FAIRY" name="Fairy 2" xyz="499;204;0"/>
+        <xflag type="fairy" location="Gerudo Fortress Fairy Fountain Fairy 3" slice="2" item="FAIRY" name="Fairy 3" xyz="469;203;0"/>
+        <xflag type="fairy" location="Gerudo Fortress Fairy Fountain Fairy 4" slice="3" item="FAIRY" name="Fairy 4" xyz="484;191;0"/>
+        <xflag type="fairy" location="Gerudo Fortress Fairy Fountain Fairy 5" slice="4" item="FAIRY" name="Fairy 5" xyz="502;189;0"/>
+        <xflag type="fairy" location="Gerudo Fortress Fairy Fountain Fairy 6" slice="5" item="FAIRY" name="Fairy 6" xyz="466;189;0"/>
+        <xflag type="fairy" location="Gerudo Fortress Fairy Fountain Fairy 7" slice="6" item="FAIRY" name="Fairy 7" xyz="491;176;0"/>
+        <xflag type="fairy" location="Gerudo Fortress Fairy Fountain Fairy 8" slice="7" item="FAIRY" name="Fairy 8" xyz="474;176;0"/>
+      </actor>
+    </scene_rendering>
+  </scene>
+</checks>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="mm">
+  <scene id="IKANA_GRAVEYARD">
+    <scene_rendering id="MM_IKANA_GRAVEYARD" loc_type="overworld">
+      <rendering_option icon="captain" layout="all" type="mask">
+        <chest location="Ikana Graveyard Captain Mask" flag="0x00" item="MASK_CAPTAIN" name="Captain's Hat" xyz="597;198;0"/>
+      </rendering_option>
+      <rendering_option layout="all">
+        <xflag type="grass" location="Ikana Graveyard Grass 1" slice="0x0" room="0x0" actor="0x1f" item="RANDOM" name="Grass 1" xyz="297;354;0"/>
+        <xflag type="grass" location="Ikana Graveyard Grass 2" slice="0x0" room="0x0" actor="0x27" item="RANDOM" name="Grass 2" xyz="291;345;0"/>
+        <xflag type="grass" location="Ikana Graveyard Grass 3" slice="0x0" room="0x0" actor="0x28" item="RANDOM" name="Grass 3" xyz="224;267;0"/>
+        <xflag type="grass" location="Ikana Graveyard Grass 4" slice="0x0" room="0x0" actor="0x29" item="RANDOM" name="Grass 4" xyz="216;273;0"/>
+        <xflag type="grass" location="Ikana Graveyard Grass 5" slice="0x0" room="0x0" actor="0x2a" item="RANDOM" name="Grass 5" xyz="265;335;0"/>
+        <actor room="0x1" actor="0x2f">
+          <xflag type="grass" location="Ikana Graveyard Grass Pack Grass 1" slice="0" item="RANDOM" name="Pack - Grass 1" xyz="535;201;0"/>
+          <xflag type="grass" location="Ikana Graveyard Grass Pack Grass 2" slice="1" item="RANDOM" name="Pack - Grass 2" xyz="516;201;0"/>
+          <xflag type="grass" location="Ikana Graveyard Grass Pack Grass 3" slice="2" item="RANDOM" name="Pack - Grass 3" xyz="522;214;0"/>
+          <xflag type="grass" location="Ikana Graveyard Grass Pack Grass 4" slice="3" item="RANDOM" name="Pack - Grass 4" xyz="535;220;0"/>
+          <xflag type="grass" location="Ikana Graveyard Grass Pack Grass 5" slice="4" item="RANDOM" name="Pack - Grass 5" xyz="548;214;0"/>
+          <xflag type="grass" location="Ikana Graveyard Grass Pack Grass 6" slice="5" item="RANDOM" name="Pack - Grass 6" xyz="554;201;0"/>
+          <xflag type="grass" location="Ikana Graveyard Grass Pack Grass 7" slice="6" item="RANDOM" name="Pack - Grass 7" xyz="548;188;0"/>
+          <xflag type="grass" location="Ikana Graveyard Grass Pack Grass 8" slice="7" item="RANDOM" name="Pack - Grass 8" xyz="535;182;0"/>
+          <xflag type="grass" location="Ikana Graveyard Grass Pack Grass 9" slice="8" item="RANDOM" name="Pack - Grass 9" xyz="522;188;0"/>
+        </actor>
+        <xflag type="rock" location="Ikana Graveyard Rock Wall 1" room="0x1" actor="0x22" item="RANDOM" name="Wall 1" xyz="707;200;2"/>
+        <xflag type="rock" location="Ikana Graveyard Rock Wall 2" room="0x1" actor="0x23" item="RANDOM" name="Wall 2" xyz="692;220;0"/>
+        <xflag type="rock" location="Ikana Graveyard Rock Wall 3" room="0x1" actor="0x24" item="RANDOM" name="Wall 3" xyz="718;213;1"/>
+        <xflag type="rock" location="Ikana Graveyard Rock Wall 4" room="0x1" actor="0x25" item="RANDOM" name="Wall 4" xyz="735;215;0"/>
+        <xflag type="rock" location="Ikana Graveyard Rock Wall 5" room="0x1" actor="0x26" item="RANDOM" name="Wall 5" xyz="695;208;0"/>
+        <actor room="0x1" actor="0x2c">
+          <xflag type="rock" location="Ikana Graveyard Rock Circle Rock 1" slice="0" item="RANDOM" name="Circle Rock 1" xyz="484;276;0"/>
+          <xflag type="rock" location="Ikana Graveyard Rock Circle Rock 2" slice="1" item="RANDOM" name="Circle Rock 2" xyz="491;289;0"/>
+          <xflag type="rock" location="Ikana Graveyard Rock Circle Rock 3" slice="2" item="RANDOM" name="Circle Rock 3" xyz="507;292;0"/>
+          <xflag type="rock" location="Ikana Graveyard Rock Circle Rock 4" slice="3" item="RANDOM" name="Circle Rock 4" xyz="521;283;0"/>
+          <xflag type="rock" location="Ikana Graveyard Rock Circle Rock 5" slice="4" item="RANDOM" name="Circle Rock 5" xyz="522;269;0"/>
+          <xflag type="rock" location="Ikana Graveyard Rock Circle Rock 6" slice="5" item="RANDOM" name="Circle Rock 6" xyz="515;256;0"/>
+          <xflag type="rock" location="Ikana Graveyard Rock Circle Rock 7" slice="6" item="RANDOM" name="Circle Rock 7" xyz="499;254;0"/>
+          <xflag type="rock" location="Ikana Graveyard Rock Circle Rock 8" slice="7" item="RANDOM" name="Circle Rock 8" xyz="486;261;0"/>
+        </actor>
+        <actor room="0x0" actor="0xa">
+          <xflag type="wonder" location="Ikana Graveyard Wonder Item 01" slice="0" item="RUPEE_GREEN" name="Item 1" xyz="295;262;0"/>
+          <xflag type="wonder" location="Ikana Graveyard Wonder Item 02" slice="1" item="RUPEE_GREEN" name="Item 2" xyz="280;262;1"/>
+          <xflag type="wonder" location="Ikana Graveyard Wonder Item 03" slice="2" item="RUPEE_GREEN" name="Item 3" xyz="287;255;0"/>
+        </actor>
+        <actor room="0x0" actor="0xb">
+          <xflag type="wonder" location="Ikana Graveyard Wonder Item 04" slice="0" item="RUPEE_GREEN" name="Item 4" xyz="180;355;0"/>
+          <xflag type="wonder" location="Ikana Graveyard Wonder Item 05" slice="1" item="RUPEE_GREEN" name="Item 5" xyz="172;348;0"/>
+          <xflag type="wonder" location="Ikana Graveyard Wonder Item 06" slice="2" item="RUPEE_GREEN" name="Item 6" xyz="180;341;0"/>
+        </actor>
+        <actor room="0x0" actor="0xc">
+          <xflag type="wonder" location="Ikana Graveyard Wonder Item 07" slice="0" item="RUPEE_GREEN" name="Item 7" xyz="297;376;1"/>
+          <xflag type="wonder" location="Ikana Graveyard Wonder Item 08" slice="1" item="RUPEE_GREEN" name="Item 8" xyz="305;370;0"/>
+          <xflag type="wonder" location="Ikana Graveyard Wonder Item 09" slice="2" item="RUPEE_GREEN" name="Item 9" xyz="288;370;2"/>
+        </actor>
+        <actor room="0x0" actor="0x9">
+          <xflag type="wonder" location="Ikana Graveyard Wonder Item 10" slice="0" item="RUPEE_GREEN" name="Item 10" xyz="568;223;0"/>
+          <xflag type="wonder" location="Ikana Graveyard Wonder Item 11" slice="1" item="RUPEE_GREEN" name="Item 11" xyz="576;213;0"/>
+          <xflag type="wonder" location="Ikana Graveyard Wonder Item 12" slice="2" item="RUPEE_GREEN" name="Item 12" xyz="568;209;0"/>
+        </actor>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="BENEATH_THE_GRAVEYARD">
+    <scene_rendering id="MM_BENEATH_THE_GRAVEYARD" loc_type="overworld">
+      <rendering_option layout="all">
+        <chest location="Beneath The Graveyard Chest" flag="0x03" item="RUPEE_PURPLE" name="Chest" xyz="606;476;0"/>
+      </rendering_option>
+      <rendering_option layout="all" type="song">
+        <npc location="Beneath The Graveyard Song of Storms" npc="SONG_STORMS" item="SONG_STORMS" name="Song of Storms" xyz="902;492;0"/>
+      </rendering_option>
+      <rendering_option layout="all" type="heart_piece">
+        <chest location="Beneath The Graveyard HP" flag="0x00" item="HEART_PIECE" name="Chest" xyz="113;332;0"/>
+      </rendering_option>
+      <rendering_option layout="all">
+        <xflag type="pot" location="Beneath The Graveyard Pot Night 1 Early 1" room="0x0" actor="0x4" item="RECOVERY_HEART" name="Early 1" xyz="430;458;0"/>
+        <xflag type="pot" location="Beneath The Graveyard Pot Night 1 Early 2" room="0x0" actor="0x5" item="ARROWS_10" name="Early 2" xyz="435;487;0"/>
+        <xflag type="pot" location="Beneath The Graveyard Pot Night 2 Early" room="0x0" actor="0x6" item="MAGIC_JAR_SMALL" name="Early 3" xyz="325;320;2"/>
+        <xflag type="pot" location="Beneath The Graveyard Pot Night 1 Bats 1" room="0x1" actor="0x4" item="ARROWS_10" name="Bats 1" xyz="548;454;0"/>
+        <xflag type="pot" location="Beneath The Graveyard Pot Night 1 Bats 2" room="0x1" actor="0x5" item="RECOVERY_HEART" name="Bats 2" xyz="549;494;0"/>
+        <xflag type="pot" location="Beneath The Graveyard Pot Night 1 Bats 3" room="0x1" actor="0x6" item="NOTHING" name="Bats 3" xyz="647;491;0"/>
+        <xflag type="pot" location="Beneath The Graveyard Pot Night 2 After Pit 1" room="0x3" actor="0x7" item="NOTHING" name="After Pit 1" xyz="125;85;0"/>
+        <xflag type="pot" location="Beneath The Graveyard Pot Night 2 After Pit 2" room="0x3" actor="0x8" item="NOTHING" name="After Pit 2" xyz="142;86;0"/>
+        <xflag type="pot" location="Beneath The Graveyard Pot Night 2 Before Pit 1" room="0x3" actor="0x9" item="ARROWS_10" name="Before Pit 1" xyz="331;122;0"/>
+        <xflag type="pot" location="Beneath The Graveyard Pot Night 2 Before Pit 2" room="0x3" actor="0xa" item="RECOVERY_HEART" name="Before Pit 2" xyz="341;134;0"/>
+        <xflag type="pot" location="Beneath The Graveyard Pot Night 2 After Pit 3" room="0x3" actor="0xb" item="RECOVERY_HEART" name="After Pit 3" xyz="115;193;0"/>
+        <xflag type="pot" location="Beneath The Graveyard Pot Night 2 After Pit 4" room="0x3" actor="0xc" item="NOTHING" name="After Pit 4" xyz="132;194;0"/>
+        <actor room="0x0" actor="0x0">
+          <xflag type="rupee" location="Beneath The Graveyard Rupee 1" slice="0x0" item="RUPEE_GREEN" name="Rupee 1" xyz="341;314;1"/>
+          <xflag type="rupee" location="Beneath The Graveyard Rupee 2" slice="0x1" item="RUPEE_GREEN" name="Rupee 2" xyz="355;305;1"/>
+          <xflag type="rupee" location="Beneath The Graveyard Rupee 3" slice="0x2" item="RUPEE_GREEN" name="Rupee 3" xyz="355;291;0"/>
+          <xflag type="rupee" location="Beneath The Graveyard Rupee 4" slice="0x3" item="RUPEE_GREEN" name="Rupee 4" xyz="341;284;0"/>
+          <xflag type="rupee" location="Beneath The Graveyard Rupee 5" slice="0x4" item="RUPEE_GREEN" name="Rupee 5" xyz="327;291;0"/>
+          <xflag type="rupee" location="Beneath The Graveyard Rupee 6" slice="0x5" item="RUPEE_GREEN" name="Rupee 6" xyz="327;305;0"/>
+          <xflag type="rupee" location="Beneath The Graveyard Rupee 7" slice="0x6" item="RUPEE_RED" name="Rupee 7" xyz="341;299;0"/>
+        </actor>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="DAMPE_HOUSE">
+    <scene_rendering id="MM_DAMPE_HOUSE" loc_type="overworld">
+      <rendering_option icon="bottle" layout="all">
+        <chest location="Beneath The Graveyard Dampe Chest" flag="0x00" item="BOTTLE_EMPTY" hint="GRAVEYARD_NIGHT3" name="Bottle" xyz="284;311;0"/>
+      </rendering_option>
+      <rendering_option layout="all">
+        <xflag type="pot" location="Beneath The Graveyard Pot Dampe 01" room="0x0" actor="0x10" item="RUPEE_GREEN" name="Pot 1" xyz="136;347;0"/>
+        <xflag type="pot" location="Beneath The Graveyard Pot Dampe 02" room="0x0" actor="0x11" item="RUPEE_GREEN" name="Pot 2" xyz="139;279;0"/>
+        <xflag type="pot" location="Beneath The Graveyard Pot Dampe 03" room="0x0" actor="0x12" item="ARROWS_10" name="Pot 3" xyz="179;347;0"/>
+        <xflag type="pot" location="Beneath The Graveyard Pot Dampe 04" room="0x0" actor="0x13" item="RECOVERY_HEART" name="Pot 4" xyz="181;279;0"/>
+        <xflag type="pot" location="Beneath The Graveyard Pot Dampe 05" room="0x0" actor="0x14" item="RUPEE_GREEN" name="Pot 5" xyz="222;346;0"/>
+        <xflag type="pot" location="Beneath The Graveyard Pot Dampe 06" room="0x0" actor="0x15" item="ARROWS_10" name="Pot 6" xyz="224;278;0"/>
+        <xflag type="pot" location="Beneath The Graveyard Pot Dampe 07" room="0x0" actor="0x16" item="RUPEE_PURPLE" name="Pot 7" xyz="822;350;0"/>
+        <xflag type="pot" location="Beneath The Graveyard Pot Dampe 08" room="0x0" actor="0x17" item="ARROWS_10" name="Pot 8" xyz="818;267;0"/>
+        <xflag type="pot" location="Beneath The Graveyard Pot Dampe 09" room="0x0" actor="0x18" item="ARROWS_10" name="Pot 9" xyz="772;350;0"/>
+        <xflag type="pot" location="Beneath The Graveyard Pot Dampe 10" room="0x0" actor="0x19" item="RECOVERY_HEART" name="Pot 10" xyz="768;267;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="GROTTOS" room="0x38">
+    <scene_rendering id="MM_GROTTO_IKANA_GRAVEYARD_GENERIC" loc_type="overworld">
+      <rendering_option layout="all">
+        <chest location="Ikana Graveyard Grotto" flag="0x18" item="BOMBCHU_5" name="Chest" xyz="231;410;0"/>
+        <xflag type="grass" location="Ikana Graveyard Grotto Grass 01" room="0x38" actor="0x00" item="RANDOM" name="Grass 1" xyz="612;542;0"/>
+        <xflag type="grass" location="Ikana Graveyard Grotto Grass 02" room="0x38" actor="0x01" item="RANDOM" name="Grass 2" xyz="371;494;0"/>
+        <xflag type="grass" location="Ikana Graveyard Grotto Grass 03" room="0x38" actor="0x02" item="RANDOM" name="Grass 3" xyz="281;467;0"/>
+        <xflag type="grass" location="Ikana Graveyard Grotto Grass 04" room="0x38" actor="0x03" item="RANDOM" name="Grass 4" xyz="339;480;0"/>
+        <xflag type="grass" location="Ikana Graveyard Grotto Grass 05" room="0x38" actor="0x05" item="RANDOM" name="Grass 5" xyz="294;449;0"/>
+        <xflag type="grass" location="Ikana Graveyard Grotto Grass 06" room="0x38" actor="0x06" item="RANDOM" name="Grass 6" xyz="270;444;0"/>
+        <xflag type="grass" location="Ikana Graveyard Grotto Grass 07" room="0x38" actor="0x0a" item="RANDOM" name="Grass 7" xyz="699;497;0"/>
+        <xflag type="grass" location="Ikana Graveyard Grotto Grass 08" room="0x38" actor="0x0b" item="RANDOM" name="Grass 8" xyz="390;431;0"/>
+        <xflag type="grass" location="Ikana Graveyard Grotto Grass 09" room="0x38" actor="0x0c" item="RANDOM" name="Grass 9" xyz="556;453;0"/>
+        <xflag type="grass" location="Ikana Graveyard Grotto Grass 10" room="0x38" actor="0x0e" item="RANDOM" name="Grass 10" xyz="651;467;0"/>
+        <xflag type="grass" location="Ikana Graveyard Grotto Grass 11" room="0x38" actor="0x10" item="RANDOM" name="Grass 11" xyz="255;388;0"/>
+        <xflag type="grass" location="Ikana Graveyard Grotto Grass 12" room="0x38" actor="0x11" item="RANDOM" name="Grass 12" xyz="382;418;0"/>
+        <xflag type="grass" location="Ikana Graveyard Grotto Grass 13" room="0x38" actor="0x12" item="RANDOM" name="Grass 13" xyz="583;448;0"/>
+        <xflag type="grass" location="Ikana Graveyard Grotto Grass 14" room="0x38" actor="0x13" item="RANDOM" name="Grass 14" xyz="418;418;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="oot">
+  <scene id="INSIDE_GANON_CASTLE_MQ">
+    <scene_rendering id="OOT_INSIDE_GANON_CASTLE" loc_type="dungeon">
+      <rendering_option layout="oot_mq">
+        <chest location="MQ Ganon Castle Light Trial Chest" flag="0x04" item="RECOVERY_HEART" name="Light Trial - Chest" xyz="1478;931;0"/>
+        <chest location="MQ Ganon Castle Forest Trial First Chest" flag="0x02" item="ARROWS_10" name="Forest Trial - Chest 1" xyz="751;2049;0"/>
+        <chest location="MQ Ganon Castle Forest Trial Second Chest" flag="0x03" item="BOMBS_5" name="Forest Trial - Chest 2" xyz="627;2205;0"/>
+        <chest location="MQ Ganon Castle Water Trial Chest" flag="0x01" item="RUPEE_RED" name="Water Trial - Chest" xyz="1542;2188;0"/>
+        <chest location="MQ Ganon Castle Spirit Trial First Chest" flag="0x0a" item="BOMBCHU_5" name="Spirit Trial - Chest 1" xyz="967;810;0"/>
+        <chest location="MQ Ganon Castle Spirit Trial Second Chest" flag="0x14" item="ARROWS_10" name="Spirit Trial - Chest 2" xyz="820;684;0"/>
+        <chest location="MQ Ganon Castle Spirit Trial Back Right Sun Chest" flag="0x09" item="RECOVERY_HEART" name="Spirit Trial - Back Right Sun" xyz="707;957;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" type="small_key">
+        <chest location="MQ Ganon Castle Spirit Trial Back Left Sun Chest" flag="0x08" item="SMALL_KEY_GANON" name="Spirit Trial - Back Left Sun" xyz="615;1073;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq">
+        <chest location="MQ Ganon Castle Spirit Trial Front Left Sun Chest" flag="0x07" item="RECOVERY_HEART" name="Spirit Trial - Front Left Sun" xyz="518;999;0"/>
+        <chest location="MQ Ganon Castle Spirit Trial Gold Gauntlets Chest" flag="0x06" item="STRENGTH" name="Spirit Trial - Gold Gauntlets" xyz="604;893;0"/>
+        <chest location="MQ Ganon Castle Shadow Trial Bomb Flower Chest" flag="0x00" item="ARROWS_10" name="Shadow Trial - Bomb Flower" xyz="1936;1815;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" type="small_key">
+        <chest location="MQ Ganon Castle Shadow Trial Switch Chest" flag="0x05" item="SMALL_KEY_GANON" name="Shadow Trial - Switch" xyz="2256;2168;0"/>
+        <collectible location="MQ Ganon Castle Forest Trial Key" flag="0x01" item="SMALL_KEY_GANON" name="Forest Trial" xyz="811;2021;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq">
+        <scrub location="MQ Ganon Castle Leftmost Scrub" flag="0xa1" item="POTION_GREEN" name="Leftmost" xyz="726;1870;0"/>
+        <scrub location="MQ Ganon Castle Left-Center Scrub" flag="0xa2" item="BOMBS_5" name="Left-Center" xyz="681;1844;0"/>
+        <scrub location="MQ Ganon Castle Center Scrub" flag="0xa3" item="ARROWS_10" name="Center" xyz="663;1790;0"/>
+        <scrub location="MQ Ganon Castle Right-Center Scrub" flag="0xa4" item="POTION_RED" name="Right-Center" xyz="683;1745;0"/>
+        <scrub location="MQ Ganon Castle Rightmost Scrub" flag="0xa5" item="NUTS_5" name="Rightmost" xyz="734;1725;0"/>
+        <sr location="MQ Ganon Castle SR Shadow Front-Right" flag="0xd1" item="RUPEE_SILVER_GANON_SHADOW" name="Shadow Trial - Front-Right" xyz="1865;2039;0"/>
+        <sr location="MQ Ganon Castle SR Shadow Middle" flag="0xd2" item="RUPEE_SILVER_GANON_SHADOW" name="Shadow Trial - Middle" xyz="2106;2025;0"/>
+        <sr location="MQ Ganon Castle SR Shadow Back-Left" flag="0xd3" item="RUPEE_SILVER_GANON_SHADOW" name="Shadow Trial - Back-Left" xyz="2385;2093;0"/>
+        <sr location="MQ Ganon Castle SR Shadow Back-Center" flag="0xd4" item="RUPEE_SILVER_GANON_SHADOW" name="Shadow Trial - Back-Center" xyz="2375;2176;0"/>
+        <sr location="MQ Ganon Castle SR Shadow Front-Center" flag="0xd5" item="RUPEE_SILVER_GANON_SHADOW" name="Shadow Trial - Front-Center" xyz="1950;1977;0"/>
+        <sr location="MQ Ganon Castle SR Water Shallow Hole" flag="0xd6" item="RUPEE_SILVER_GANON_WATER" name="Water Trial - Shallow Hole" xyz="1400;2631;0"/>
+        <sr location="MQ Ganon Castle SR Water Above Ground" flag="0xd7" item="RUPEE_SILVER_GANON_WATER" name="Water Trial - Above Ground" xyz="1478;2677;0"/>
+        <sr location="MQ Ganon Castle SR Water Alcove" flag="0xd8" item="RUPEE_SILVER_GANON_WATER" name="Water Trial - Alcove" xyz="1682;2671;0"/>
+        <sr location="MQ Ganon Castle SR Water Deep Hole" flag="0xd9" item="RUPEE_SILVER_GANON_WATER" name="Water Trial - Deep Hole" xyz="1355;2811;0"/>
+        <sr location="MQ Ganon Castle SR Water Under Alcove" flag="0xda" item="RUPEE_SILVER_GANON_WATER" name="Water Trial - Under Alcove" xyz="1583;2680;0"/>
+        <sr location="MQ Ganon Castle SR Fire Under Pillar" flag="0xdb" item="RUPEE_SILVER_GANON_FIRE" name="Fire Trial - Under Pillar" xyz="2334;1274;0"/>
+        <sr location="MQ Ganon Castle SR Fire Center-Left" flag="0xdc" item="RUPEE_SILVER_GANON_FIRE" name="Fire Trial - Center-Left" xyz="2035;1039;0"/>
+        <sr location="MQ Ganon Castle SR Fire Back-Left" flag="0xdd" item="RUPEE_SILVER_GANON_FIRE" name="Fire Trial - Back-Left" xyz="2198;979;0"/>
+        <sr location="MQ Ganon Castle SR Fire High Above Lava" flag="0xde" item="RUPEE_SILVER_GANON_FIRE" name="Fire Trial - High Above Lava" xyz="2108;1387;0"/>
+        <sr location="MQ Ganon Castle SR Fire Front-Left" flag="0xdf" item="RUPEE_SILVER_GANON_FIRE" name="Fire Trial - Front-Left" xyz="1878;1123;0"/>
+        <xflag type="pot" location="MQ Ganon Pot Water End 1" slice="0x0" setup="0x0" room="0x4" actor="0x4" item="RECOVERY_HEART" name="Water Trial - End 1" xyz="1459;2958;0"/>
+        <xflag type="pot" location="MQ Ganon Pot Water End 2" slice="0x0" setup="0x0" room="0x4" actor="0x5" item="ARROWS_10" name="Water Trial - End 2" xyz="1391;2958;0"/>
+        <xflag type="pot" location="MQ Ganon Pot Forest End 1" slice="0x0" setup="0x0" room="0x7" actor="0x4" item="RECOVERY_HEART" name="Forest Trial - End 1" xyz="367;2305;0"/>
+        <xflag type="pot" location="MQ Ganon Pot Forest End 2" slice="0x0" setup="0x0" room="0x7" actor="0x5" item="MAGIC_JAR_SMALL" name="Forest Trial - End 2" xyz="336;2259;0"/>
+        <xflag type="pot" location="MQ Ganon Pot Light End 1" slice="0x0" setup="0x0" room="0xb" actor="0x4" item="MAGIC_JAR_LARGE" name="Light Trial - End 1" xyz="1403;191;0"/>
+        <xflag type="pot" location="MQ Ganon Pot Light End 2" slice="0x0" setup="0x0" room="0xb" actor="0x5" item="RECOVERY_HEART" name="Light Trial - End 2" xyz="1473;191;0"/>
+        <xflag type="pot" location="MQ Ganon Pot Shadow End 1" slice="0x0" setup="0x0" room="0xd" actor="0x4" item="MAGIC_JAR_LARGE" name="Shadow Trial - End 1" xyz="2605;2299;0"/>
+        <xflag type="pot" location="MQ Ganon Pot Shadow End 2" slice="0x0" setup="0x0" room="0xd" actor="0x5" item="ARROWS_10" name="Shadow Trial - End 2" xyz="2582;2338;0"/>
+        <xflag type="pot" location="MQ Ganon Pot Fire End 1" slice="0x0" setup="0x0" room="0xf" actor="0x4" item="RECOVERY_HEART" name="Fire Trial - End 1" xyz="2482;937;0"/>
+        <xflag type="pot" location="MQ Ganon Pot Fire End 2" slice="0x0" setup="0x0" room="0xf" actor="0x5" item="MAGIC_JAR_SMALL" name="Fire Trial - End 2" xyz="2460;901;0"/>
+        <xflag type="pot" location="MQ Ganon Pot Spirit End 1" slice="0x0" setup="0x0" room="0x13" actor="0x4" item="NUTS_5" name="Spirit Trial - End 1" xyz="425;787;0"/>
+        <xflag type="pot" location="MQ Ganon Pot Spirit End 2" slice="0x0" setup="0x0" room="0x13" actor="0x5" item="MAGIC_JAR_SMALL" name="Spirit Trial - End 2" xyz="371;862;0"/>
+        <actor room="0x10" actor="0x5">
+          <xflag type="fairy" location="MQ Ganon Castle Fairy Fountain Fairy 1" slice="0" item="FAIRY" name="Fairy 1" xyz="726;1811;0"/>
+          <xflag type="fairy" location="MQ Ganon Castle Fairy Fountain Fairy 2" slice="1" item="FAIRY" name="Fairy 2" xyz="746;1811;0"/>
+          <xflag type="fairy" location="MQ Ganon Castle Fairy Fountain Fairy 3" slice="2" item="FAIRY" name="Fairy 3" xyz="714;1797;0"/>
+          <xflag type="fairy" location="MQ Ganon Castle Fairy Fountain Fairy 4" slice="3" item="FAIRY" name="Fairy 4" xyz="755;1795;0"/>
+          <xflag type="fairy" location="MQ Ganon Castle Fairy Fountain Fairy 5" slice="4" item="FAIRY" name="Fairy 5" xyz="735;1792;0"/>
+          <xflag type="fairy" location="MQ Ganon Castle Fairy Fountain Fairy 6" slice="5" item="FAIRY" name="Fairy 6" xyz="717;1779;0"/>
+          <xflag type="fairy" location="MQ Ganon Castle Fairy Fountain Fairy 7" slice="6" item="FAIRY" name="Fairy 7" xyz="752;1778;0"/>
+          <xflag type="fairy" location="MQ Ganon Castle Fairy Fountain Fairy 8" slice="7" item="FAIRY" name="Fairy 8" xyz="734;1769;0"/>
+        </actor>
+        <xflag type="heart" location="MQ Ganon Castle Heart Water" slice="0x0" setup="0x0" room="0x2" actor="0x1d" item="RECOVERY_HEART" name="Water Trial - Heart" xyz="1300;2186;0"/>
+        <xflag type="heart" location="MQ Ganon Castle Heart Light 1" slice="0x0" setup="0x0" room="0x8" actor="0x5" item="RECOVERY_HEART" name="Light Trial - Heart 1" xyz="1325;680;0"/>
+        <xflag type="heart" location="MQ Ganon Castle Heart Light 2" slice="0x0" setup="0x0" room="0x8" actor="0x6" item="RECOVERY_HEART" name="Light Trial - Heart 2" xyz="1541;738;0"/>
+        <xflag type="wonder" location="MQ Ganon Castle Wonder Item" slice="0x0" setup="0x0" room="0xc" actor="0xc" item="NUTS_5" name="Wonder Item" xyz="1871;2024;0"/>
+        <xflag type="icicle" location="MQ Ganon Castle Icicle Water 1" slice="0x0" setup="0x0" room="0x2" actor="0x4" item="NOTHING" name="Water Trial 1" xyz="1317;2280;0"/>
+        <xflag type="icicle" location="MQ Ganon Castle Icicle Water 2" slice="0x0" setup="0x0" room="0x2" actor="0x5" item="NOTHING" name="Water Trial 2" xyz="1312;2261;0"/>
+        <xflag type="icicle" location="MQ Ganon Castle Icicle Water 3" slice="0x0" setup="0x0" room="0x2" actor="0x6" item="NOTHING" name="Water Trial 3" xyz="1293;2253;0"/>
+        <xflag type="icicle" location="MQ Ganon Castle Icicle Water 4" slice="0x0" setup="0x0" room="0x2" actor="0x7" item="NOTHING" name="Water Trial 4" xyz="1326;2304;0"/>
+        <xflag type="icicle" location="MQ Ganon Castle Icicle Water 5" slice="0x0" setup="0x0" room="0x2" actor="0x8" item="NOTHING" name="Water Trial 5" xyz="1519;2268;0"/>
+        <xflag type="icicle" location="MQ Ganon Castle Icicle Water 6" slice="0x0" setup="0x0" room="0x2" actor="0x9" item="NOTHING" name="Water Trial 6" xyz="1519;2287;0"/>
+        <xflag type="icicle" location="MQ Ganon Castle Icicle Water 7" slice="0x0" setup="0x0" room="0x2" actor="0xa" item="NOTHING" name="Water Trial 7" xyz="1547;2227;0"/>
+        <xflag type="icicle" location="MQ Ganon Castle Icicle Water 8" slice="0x0" setup="0x0" room="0x2" actor="0xb" item="NOTHING" name="Water Trial 8" xyz="1532;2241;0"/>
+        <xflag type="redice" location="MQ Ganon Castle Red Ice Water 1" slice="0x0" setup="0x0" room="0x2" actor="0x13" item="NOTHING" name="Water Trial 1" xyz="1542;2188;0"/>
+        <xflag type="redice" location="MQ Ganon Castle Red Ice Water 2" slice="0x0" setup="0x0" room="0x2" actor="0x14" item="NOTHING" name="Water Trial 2" xyz="1300;2186;0"/>
+        <xflag type="redice" location="MQ Ganon Castle Red Ice Water 3" slice="0x0" setup="0x0" room="0x2" actor="0x15" item="NOTHING" name="Water Trial 3" xyz="1490;2319;0"/>
+        <xflag type="redice" location="MQ Ganon Castle Red Ice Water 4" slice="0x0" setup="0x0" room="0x2" actor="0x17" item="NOTHING" name="Water Trial 4" xyz="1447;2366;0"/>
+        <xflag type="redice" location="MQ Ganon Castle Red Ice Water 5" slice="0x0" setup="0x0" room="0x2" actor="0x18" item="NOTHING" name="Water Trial 5" xyz="1427;2360;0"/>
+        <xflag type="redice" location="MQ Ganon Castle Red Ice Water 6" slice="0x0" setup="0x0" room="0x2" actor="0x19" item="NOTHING" name="Water Trial 6" xyz="1407;2359;0"/>
+        <xflag type="redice" location="MQ Ganon Castle Red Ice Water 7" slice="0x0" setup="0x0" room="0x2" actor="0x1a" item="NOTHING" name="Water Trial 7" xyz="1390;2365;0"/>
+        <xflag type="redice" location="MQ Ganon Castle Red Ice Block Silver Rupee Room 1" slice="0x0" setup="0x0" room="0x3" actor="0x6" item="NOTHING" name="Silver Rupee Room 1" xyz="1682;2671;0"/>
+        <xflag type="redice" location="MQ Ganon Castle Red Ice Block Silver Rupee Room 2" slice="0x0" setup="0x0" room="0x3" actor="0xd" item="NOTHING" name="Silver Rupee Room 2" xyz="1471;2856;0"/>
+        <xflag type="redice" location="MQ Ganon Castle Red Ice Block Silver Rupee Room 3" slice="0x0" setup="0x0" room="0x3" actor="0xe" item="NOTHING" name="Silver Rupee Room 3" xyz="1450;2856;0"/>
+        <xflag type="redice" location="MQ Ganon Castle Red Ice Block Silver Rupee Room 4" slice="0x0" setup="0x0" room="0x3" actor="0xf" item="NOTHING" name="Silver Rupee Room 4" xyz="1426;2856;0"/>
+        <xflag type="redice" location="MQ Ganon Castle Red Ice Block Silver Rupee Room 5" slice="0x0" setup="0x0" room="0x3" actor="0x10" item="NOTHING" name="Silver Rupee Room 5" xyz="1405;2856;0"/>
+        <xflag type="redice" location="MQ Ganon Castle Red Ice Block Silver Rupee Room 6" slice="0x0" setup="0x0" room="0x3" actor="0x11" item="NOTHING" name="Silver Rupee Room 6" xyz="1385;2856;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

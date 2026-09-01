@@ -1338,6 +1338,42 @@ mod tests {
         assert_eq!(m.dest, "Path to Snowhead");
     }
 
+    /// The progressive-discovery id bridge: a spoiler `Entrances` token is the
+    /// header const name with the trailing `_ENTR` dropped, so `resolve_entrance_id`
+    /// must recover the id both for consts that carry `_ENTR` (655 of them) and the
+    /// bare ones (grotto / warp exits). Also guards the binary-search sort order.
+    #[test]
+    fn entrance_id_bridge_resolves_with_and_without_entr_suffix() {
+        let table = crate::data::ENTRANCE_ID_BY_NAME;
+        assert!(!table.is_empty());
+        assert!(
+            table.windows(2).all(|w| w[0].0 <= w[1].0),
+            "ENTRANCE_ID_BY_NAME must be sorted by name for binary search"
+        );
+
+        let (mut saw_suffix, mut saw_bare) = (false, false);
+        for &(name, id) in table {
+            // The exact table key always resolves to its own id.
+            assert_eq!(resolve_entrance_id(name), Some(id), "{name} did not resolve");
+            match name.strip_suffix("_ENTR") {
+                // A spoiler token drops `_ENTR`; the fallback must recover the id —
+                // unless the bare stem is itself a distinct key (then it wins first).
+                Some(stem) => {
+                    saw_suffix = true;
+                    if table.binary_search_by(|(k, _)| k.cmp(&stem)).is_err() {
+                        assert_eq!(
+                            resolve_entrance_id(stem),
+                            Some(id),
+                            "stem {stem} did not resolve via the _ENTR fallback"
+                        );
+                    }
+                }
+                None => saw_bare = true,
+            }
+        }
+        assert!(saw_suffix && saw_bare, "table should mix `_ENTR` and bare consts");
+    }
+
     /// The exclusion actually removes objects from what a loaded scene would
     /// render: a scene's GS markers all vanish once GS shuffle is vanilla.
     #[test]

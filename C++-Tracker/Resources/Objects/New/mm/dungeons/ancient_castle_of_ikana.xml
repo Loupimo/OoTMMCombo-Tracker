@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="mm">
+  <scene id="CASTLE_IKANA">
+    <scene_rendering id="MM_CASTLE_IKANA" loc_type="dungeon">
+      <rendering_option layout="all" type="heart_piece">
+        <collectible location="Ancient Castle of Ikana HP" flag="0x0a" item="HEART_PIECE" name="Pillar" xyz="249;19;0"/>
+      </rendering_option>
+      <rendering_option layout="all">
+        <xflag type="pot" location="Ancient Castle of Ikana Pot Exterior" slice="0x0" setup="0x0" room="0x0" actor="0x1e" item="FAIRY" name="Exterior" xyz="719;65;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="1">
+        <xflag type="pot" location="Ancient Castle of Ikana Pot Entrance 1" slice="0x0" setup="0x0" room="0x1" actor="0x7" item="RECOVERY_HEART" name="Entrance 1" xyz="447;588;0"/>
+        <xflag type="pot" location="Ancient Castle of Ikana Pot Entrance 2" slice="0x0" setup="0x0" room="0x1" actor="0x8" item="RECOVERY_HEART" name="Entrance 2" xyz="505;588;0"/>
+        <xflag type="pot" location="Ancient Castle of Ikana Pot Left First Room 1" slice="0x0" setup="0x0" room="0x2" actor="0x8" item="MAGIC_JAR_SMALL" name="Left - First Room 1" xyz="373;496;0"/>
+        <xflag type="pot" location="Ancient Castle of Ikana Pot Left First Room 2" slice="0x0" setup="0x0" room="0x2" actor="0x9" item="RECOVERY_HEART" name="Left - First Room 2" xyz="373;528;0"/>
+        <xflag type="pot" location="Ancient Castle of Ikana Pot Left Second Room 1" slice="0x0" setup="0x0" room="0x4" actor="0xb" item="FAIRY" name="Left - Second Room 1" xyz="401;200;0"/>
+        <xflag type="pot" location="Ancient Castle of Ikana Pot Left Second Room 2" slice="0x0" setup="0x0" room="0x4" actor="0xc" item="MAGIC_JAR_SMALL" name="Left - Second Room 2" xyz="401;230;2"/>
+        <xflag type="pot" location="Ancient Castle of Ikana Pot Left Second Room 3" slice="0x0" setup="0x0" room="0x4" actor="0xd" item="FAIRY" name="Left - Second Room 3" xyz="401;220;1"/>
+        <xflag type="pot" location="Ancient Castle of Ikana Pot Left Second Room 4" slice="0x0" setup="0x0" room="0x4" actor="0xe" item="MAGIC_JAR_SMALL" name="Left - Second Room 4" xyz="401;210;0"/>
+        <xflag type="pot" location="Ancient Castle of Ikana Pot Left Third Room 1" slice="0x0" setup="0x0" room="0x6" actor="0x2" item="RECOVERY_HEART" name="Left - Third Room 1" xyz="314;35;0"/>
+        <xflag type="pot" location="Ancient Castle of Ikana Pot Left Third Room 2" slice="0x0" setup="0x0" room="0x6" actor="0x3" item="NUTS_10" name="Left - Third Room 2" xyz="354;35;0"/>
+        <xflag type="pot" location="Ancient Castle of Ikana Pot Right 1" slice="0x0" setup="0x0" room="0x7" actor="0x4" item="RECOVERY_HEART" name="Right 1" xyz="605;35;0"/>
+        <xflag type="pot" location="Ancient Castle of Ikana Pot Right 2" slice="0x0" setup="0x0" room="0x7" actor="0x5" item="RECOVERY_HEART" name="Right 2" xyz="647;35;0"/>
+      </rendering_option>
+      <rendering_option layout="all">
+        <xflag type="grass" location="Ancient Castle of Ikana Grass 01" slice="0x0" setup="0x0" room="0x0" actor="0x20" item="RANDOM" name="Grass 1" xyz="692;175;0"/>
+        <xflag type="grass" location="Ancient Castle of Ikana Grass 02" slice="0x0" setup="0x0" room="0x0" actor="0x21" item="RANDOM" name="Grass 2" xyz="671;165;0"/>
+        <xflag type="grass" location="Ancient Castle of Ikana Grass 03" slice="0x0" setup="0x0" room="0x0" actor="0x22" item="RANDOM" name="Grass 3" xyz="691;152;0"/>
+        <xflag type="grass" location="Ancient Castle of Ikana Grass 04" slice="0x0" setup="0x0" room="0x0" actor="0x23" item="RANDOM" name="Grass 4" xyz="682;220;0"/>
+        <xflag type="grass" location="Ancient Castle of Ikana Grass 05" slice="0x0" setup="0x0" room="0x0" actor="0x24" item="RANDOM" name="Grass 5" xyz="683;296;0"/>
+        <xflag type="grass" location="Ancient Castle of Ikana Grass 06" slice="0x0" setup="0x0" room="0x0" actor="0x25" item="RANDOM" name="Grass 6" xyz="527;358;0"/>
+        <xflag type="grass" location="Ancient Castle of Ikana Grass 07" slice="0x0" setup="0x0" room="0x0" actor="0x26" item="RANDOM" name="Grass 7" xyz="527;376;0"/>
+        <xflag type="grass" location="Ancient Castle of Ikana Grass 08" slice="0x0" setup="0x0" room="0x0" actor="0x27" item="RANDOM" name="Grass 8" xyz="545;358;0"/>
+        <xflag type="grass" location="Ancient Castle of Ikana Grass 09" slice="0x0" setup="0x0" room="0x0" actor="0x28" item="RANDOM" name="Grass 9" xyz="273;215;0"/>
+        <xflag type="grass" location="Ancient Castle of Ikana Grass 10" slice="0x0" setup="0x0" room="0x0" actor="0x29" item="RANDOM" name="Grass 10" xyz="215;40;0"/>
+        <xflag type="grass" location="Ancient Castle of Ikana Grass 11" slice="0x0" setup="0x0" room="0x0" actor="0x2a" item="RANDOM" name="Grass 11" xyz="214;59;0"/>
+        <xflag type="grass" location="Ancient Castle of Ikana Grass 12" slice="0x0" setup="0x0" room="0x0" actor="0x2b" item="RANDOM" name="Grass 12" xyz="239;40;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="LAIR_IKANA">
+    <scene_rendering id="MM_CASTLE_IKANA" loc_type="dungeon">
+      <rendering_option icon="song_orange" layout="all" room="1" type="song">
+        <npc location="Ancient Castle of Ikana Song Emptiness" npc="SONG_EMPTINESS" item="SONG_EMPTINESS" hint="SONG_ELEGY" name="Elegy of Emptiness" xyz="479;99;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="1">
+        <xflag type="pot" location="Ancient Castle of Ikana Boss Pot 1" slice="0x0" setup="0x0" room="0x0" actor="0x2" item="ARROWS_10" name="Boss 1" xyz="456;318;1"/>
+        <xflag type="pot" location="Ancient Castle of Ikana Boss Pot 2" slice="0x0" setup="0x0" room="0x0" actor="0x3" item="ARROWS_10" name="Boss 2" xyz="456;307;0"/>
+        <xflag type="pot" location="Ancient Castle of Ikana Boss Pot 3" slice="0x0" setup="0x0" room="0x0" actor="0x4" item="MAGIC_JAR_SMALL" name="Boss 3" xyz="505;318;1"/>
+        <xflag type="pot" location="Ancient Castle of Ikana Boss Pot 4" slice="0x0" setup="0x0" room="0x0" actor="0x5" item="RECOVERY_HEART" name="Boss 4" xyz="505;307;0"/>
+        <xflag type="pot" location="Ancient Castle of Ikana Boss Pot 5" slice="0x0" setup="0x0" room="0x1" actor="0x5" item="ARROWS_10" name="Boss 5" xyz="547;265;0"/>
+        <xflag type="pot" location="Ancient Castle of Ikana Boss Pot 6" slice="0x0" setup="0x0" room="0x1" actor="0x6" item="MAGIC_JAR_LARGE" name="Boss 6" xyz="412;265;0"/>
+        <xflag type="pot" location="Ancient Castle of Ikana Boss Pot 7" slice="0x0" setup="0x0" room="0x1" actor="0x7" item="RECOVERY_HEART" name="Boss 7" xyz="547;122;0"/>
+        <xflag type="pot" location="Ancient Castle of Ikana Boss Pot 8" slice="0x0" setup="0x0" room="0x1" actor="0x8" item="ARROWS_10" name="Boss 8" xyz="412;122;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

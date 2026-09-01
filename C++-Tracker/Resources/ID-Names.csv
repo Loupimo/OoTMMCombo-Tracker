@@ -212,7 +212,7 @@ MM_SONG_NOTE_TIME;Note from Song of Time (MM);song;true
 MM_SONG_NOTE_ZORA;Note from New Wave Bossa Nova (MM);song_blue;true
 MM_SONG_ORDER;Oath to Order (MM);song_purple;true
 MM_SONG_SOARING;Song of Soaring (MM);song;true
-MM_SONG_STORMS;Song of Storms (MM);song;true
+MM_SONG_OF_STORMS;Song of Storms (MM);song;true
 MM_SONG_SUN;Sun's Song (MM);song;true
 MM_SONG_TIME;Song of Time (MM);song;true
 MM_SONG_ZORA;New Wave Bossa Nova (MM);song_blue;true
@@ -681,7 +681,7 @@ OOT_SONG_NOTE_TP_SPIRIT;Note from Requiem of Spirit (OoT);song_orange;true
 OOT_SONG_NOTE_TP_WATER;Note from Serenade of Water (OoT);song_blue;true
 OOT_SONG_NOTE_ZELDA;Note from Zelda's Lullaby (OoT);song;true
 OOT_SONG_SARIA;Saria's Song (OoT);song;true
-OOT_SONG_STORMS;Song of Storms (OoT);song;true
+OOT_SONG_OF_STORMS;Song of Storms (OoT);song;true
 OOT_SONG_SUN;Sun's Song (OoT);song;true
 OOT_SONG_TIME;Song of Time (OoT);song;true
 OOT_SONG_TP_FIRE;Bolero of Fire (OoT);song_red;true
@@ -943,7 +943,7 @@ SHARED_SONG_NOTE_EPONA;Note from Epona's Song;song;false
 SHARED_SONG_NOTE_STORMS;Note from Song of Storms;song;false
 SHARED_SONG_NOTE_SUN;Note from Sun's Song;song;false
 SHARED_SONG_NOTE_TIME;Note from Song of Time;song;false
-SHARED_SONG_STORMS;Song of Storms;song;false
+SHARED_SONG_OF_STORMS;Song of Storms;song;false
 SHARED_SONG_SUN;Sun's Song;song;false
 SHARED_SONG_TIME;Song of Time;song;false
 SHARED_SOUL_ANIMAL_BUTTERFLY;Soul of Butterflies;soul_of_animal;false

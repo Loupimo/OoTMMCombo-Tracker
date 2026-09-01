@@ -87,6 +87,18 @@ impl Game {
             Game::Mm => MM_ENTRANCES,
         }
     }
+    /// Whether the scene renders at least one active tracked object under the
+    /// current layout (`mq` = scenes running Master Quest / JP). Same gate as
+    /// `LiveScene::load`, but without building the object list — used by the
+    /// item-map auto-follow to skip object-less zones (Market Entrance, Back
+    /// Alley, plain interiors…).
+    pub fn scene_has_objects(self, scene_id: u16, mq: &HashSet<(Game, u16)>) -> bool {
+        self.objects().iter().any(|o| {
+            o.render_scene == scene_id
+                && o.type_ != ObjectType::none
+                && crate::tracking::object_active(o, self, mq)
+        })
+    }
     /// The rooms of a scene, or an empty slice for single-image scenes.
     pub fn rooms(self, scene_id: u16) -> &'static [RoomDef] {
         let table = match self {
@@ -214,7 +226,8 @@ pub fn type_label(t: ObjectType, i18n: &I18n) -> &str {
         gs => i18n.object_type_name("gs"),
         sf => i18n.object_type_name("sf"),
         cow => i18n.object_type_name("cow"),
-        shop | merchant => i18n.object_type_name("shop"),
+        shop => i18n.object_type_name("shop"),
+        merchant => i18n.object_type_name("merchant"),
         scrub => i18n.object_type_name("scrub"),
         sr => i18n.object_type_name("sr"),
         fish => i18n.object_type_name("fish"),
@@ -227,16 +240,29 @@ pub fn type_label(t: ObjectType, i18n: &I18n) -> &str {
         rupee => i18n.object_type_name("rupee"),
         snowball => i18n.object_type_name("snowball"),
         barrel => i18n.object_type_name("barrel"),
-        heart | heart_piece | heart_container => i18n.object_type_name("heart"),
-        fairy | fairy_spot => i18n.object_type_name("fairy"),
-        redboulder | silverboulder | boulder | rock => i18n.object_type_name("rock"),
+        heart => i18n.object_type_name("heart"),
+        heart_piece => i18n.object_type_name("heart_piece"),
+        heart_container => i18n.object_type_name("heart_container"),
+        fairy => i18n.object_type_name("fairy"),
+        fairy_spot => i18n.object_type_name("fairy_spot"),
+        redboulder => i18n.object_type_name("redboulder"),
+        silverboulder => i18n.object_type_name("silverboulder"),
+        boulder => i18n.object_type_name("boulder"),
+        rock => i18n.object_type_name("rock"),
         icicle | redice => i18n.object_type_name("ice"),
         soil => i18n.object_type_name("soil"),
-        tree | bush => i18n.object_type_name("bush"),
+        tree => i18n.object_type_name("tree"),
+        bush => i18n.object_type_name("bush"),
         song => i18n.object_type_name("song"),
-        small_key | boss_key => i18n.object_type_name("key"),
-        map | compass => i18n.object_type_name("map"),
-        sword | ocarina | mask | egg | owl => i18n.object_type_name("equipement"),
+        small_key => i18n.object_type_name("small_key"),
+        boss_key => i18n.object_type_name("boss_key"),
+        map => i18n.object_type_name("map"),
+        compass => i18n.object_type_name("compass"),
+        sword => i18n.object_type_name("sword"),
+        ocarina => i18n.object_type_name("ocarina"),
+        mask => i18n.object_type_name("mask"),
+        egg => i18n.object_type_name("egg"),
+        owl => i18n.object_type_name("owl"),
         none => i18n.object_type_name("none"),
     }
 }

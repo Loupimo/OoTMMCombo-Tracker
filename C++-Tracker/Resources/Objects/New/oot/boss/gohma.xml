@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="oot">
+  <scene id="LAIR_GOHMA">
+    <scene_rendering id="OOT_DEKU_TREE" loc_type="dungeon">
+      <rendering_option layout="all" room="4" type="heart_container">
+        <collectible location="Deku Tree Boss Container" flag="0x1f" item="HEART_CONTAINER" name="Heart Container" xyz="508;300;0"/>
+      </rendering_option>
+      <rendering_option icon="emerald" layout="all" room="4">
+        <npc location="Deku Tree Boss" npc="BLUE_WARP_GOHMA" item="STONE_EMERALD" name="Kokiri's Emerald" xyz="508;340;0"/>
+      </rendering_option>
+      <rendering_option layout="all" room="4">
+        <xflag type="grass" location="Deku Tree Boss Grass 1" slice="0x0" setup="0x0" room="0x1" actor="0x1" item="RECOVERY_HEART" name="Boss 1" xyz="698;206;0"/>
+        <xflag type="grass" location="Deku Tree Boss Grass 2" slice="0x0" setup="0x0" room="0x1" actor="0x2" item="DEKU_SEEDS_5" name="Boss 2" xyz="747;328;0"/>
+        <xflag type="grass" location="Deku Tree Boss Grass 3" slice="0x0" setup="0x0" room="0x1" actor="0x3" item="RECOVERY_HEART" name="Boss 3" xyz="353;191;0"/>
+        <xflag type="grass" location="Deku Tree Boss Grass 4" slice="0x0" setup="0x0" room="0x1" actor="0x4" item="DEKU_SEEDS_5" name="Boss 4" xyz="304;312;0"/>
+        <xflag type="grass" location="Deku Tree Boss Grass 5" slice="0x0" setup="0x0" room="0x1" actor="0x5" item="RECOVERY_HEART" name="Boss 5" xyz="358;498;0"/>
+        <xflag type="grass" location="Deku Tree Boss Grass 6" slice="0x0" setup="0x0" room="0x1" actor="0x6" item="DEKU_SEEDS_5" name="Boss 6" xyz="327;413;0"/>
+        <xflag type="grass" location="Deku Tree Boss Grass 7" slice="0x0" setup="0x0" room="0x1" actor="0x7" item="RECOVERY_HEART" name="Boss 7" xyz="721;423;0"/>
+        <xflag type="grass" location="Deku Tree Boss Grass 8" slice="0x0" setup="0x0" room="0x1" actor="0x8" item="DEKU_SEEDS_5" name="Boss 8" xyz="689;513;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

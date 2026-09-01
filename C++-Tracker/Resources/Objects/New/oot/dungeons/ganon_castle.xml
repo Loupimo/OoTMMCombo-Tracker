@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="oot">
+  <scene id="INSIDE_GANON_CASTLE">
+    <scene_rendering id="OOT_INSIDE_GANON_CASTLE" loc_type="dungeon">
+      <chest location="Ganon Castle Water Chest 1" flag="0x06" item="RECOVERY_HEART" name="Water Trial - Chest 1" xyz="1331;2304;0"/>
+      <chest location="Ganon Castle Water Chest 2" flag="0x07" item="ICE_TRAP" name="Water Trial - Chest 2" xyz="1515;2304;0"/>
+      <chest location="Ganon Castle Forest Chest" flag="0x09" item="RUPEE_BLUE" name="Forest Trial - Torches" xyz="937;1916;0"/>
+      <rendering_option type="small_key">
+        <chest location="Ganon Castle Light Chest Center" flag="0x10" item="SMALL_KEY_GANON" name="Light Trial - Center" xyz="1435;1130;0"/>
+      </rendering_option>
+      <chest location="Ganon Castle Light Chest Around 1" flag="0x0a" item="ARROWS_30" name="Light Trial - Around 1" xyz="1517;1129;0"/>
+      <chest location="Ganon Castle Light Chest Around 2" flag="0x0b" item="ICE_TRAP" name="Light Trial - Around 2" xyz="1357;1131;0"/>
+      <chest location="Ganon Castle Light Chest Around 3" flag="0x0c" item="RUPEE_BLUE" name="Light Trial - Around 3" xyz="1382;1194;0"/>
+      <chest location="Ganon Castle Light Chest Around 4" flag="0x0d" item="RECOVERY_HEART" name="Light Trial - Around 4" xyz="1376;1070;0"/>
+      <chest location="Ganon Castle Light Chest Around 5" flag="0x0e" item="ICE_TRAP" name="Light Trial - Around 5" xyz="1491;1198;0"/>
+      <chest location="Ganon Castle Light Chest Around 6" flag="0x0f" item="ICE_TRAP" name="Light Trial - Around 6" xyz="1497;1067;0"/>
+      <rendering_option type="small_key">
+        <chest location="Ganon Castle Light Chest Lullaby" flag="0x11" item="SMALL_KEY_GANON" name="Light Trial - Zelda's Lullaby" xyz="1476;935;0"/>
+      </rendering_option>
+      <chest location="Ganon Castle Shadow Chest 1" flag="0x08" item="RUPEE_BLUE" name="Shadow Trial - Small" xyz="1941;1825;0"/>
+      <chest location="Ganon Castle Shadow Chest 2" flag="0x05" item="STRENGTH" name="Shadow Trial - Gold Gauntlets" xyz="2256;2167;0"/>
+      <chest location="Ganon Castle Spirit Chest 1" flag="0x12" item="BOMBCHU_20" name="Spirit Trial - Chest 1" xyz="998;809;0"/>
+      <chest location="Ganon Castle Spirit Chest 2" flag="0x14" item="ARROWS_10" name="Spirit Trial - Chest 2" xyz="820;684;0"/>
+      <scrub location="Ganon Castle Leftmost Scrub" flag="0x21" item="POTION_GREEN" name="Leftmost" xyz="726;1870;3"/>
+      <scrub location="Ganon Castle Left-Center Scrub" flag="0x22" item="BOMBS_5" name="Left-Center" xyz="681;1844;2"/>
+      <scrub location="Ganon Castle Right-Center Scrub" flag="0x23" item="ARROWS_10" name="Right-Center" xyz="663;1790;1"/>
+      <scrub location="Ganon Castle Rightmost Scrub" flag="0x24" item="POTION_RED" name="Rightmost" xyz="683;1745;0"/>
+      <sr location="Ganon Castle SR Spirit Center Midair" flag="0x51" item="RUPEE_SILVER_GANON_SPIRIT" name="Spirit Trial - Center Midair" xyz="920;1265;0"/>
+      <sr location="Ganon Castle SR Spirit Front Right" flag="0x52" item="RUPEE_SILVER_GANON_SPIRIT" name="Spirit Trial - Front Right" xyz="1078;1206;0"/>
+      <sr location="Ganon Castle SR Spirit Center Bottom" flag="0x53" item="RUPEE_SILVER_GANON_SPIRIT" name="Spirit Trial - Center Bottom" xyz="866;1224;0"/>
+      <sr location="Ganon Castle SR Spirit Back Left" flag="0x54" item="RUPEE_SILVER_GANON_SPIRIT" name="Spirit Trial - Back Left" xyz="698;1287;0"/>
+      <sr location="Ganon Castle SR Spirit Back Right" flag="0x55" item="RUPEE_SILVER_GANON_SPIRIT" name="Spirit Trial - Back Right" xyz="892;1074;0"/>
+      <sr location="Ganon Castle SR Light Alcove Right" flag="0x56" item="RUPEE_SILVER_GANON_LIGHT" name="Light Trial - Alcove Right" xyz="1539;737;0"/>
+      <sr location="Ganon Castle SR Light Alcove Left" flag="0x57" item="RUPEE_SILVER_GANON_LIGHT" name="Light Trial - Alcove Left" xyz="1324;682;0"/>
+      <sr location="Ganon Castle SR Light Center Top" flag="0x58" item="RUPEE_SILVER_GANON_LIGHT" name="Light Trial - Center Top" xyz="1430;679;0"/>
+      <sr location="Ganon Castle SR Light Center Right" flag="0x59" item="RUPEE_SILVER_GANON_LIGHT" name="Light Trial - Center Right" xyz="1459;668;0"/>
+      <sr location="Ganon Castle SR Light Center Left" flag="0x5a" item="RUPEE_SILVER_GANON_LIGHT" name="Light Trial - Center Left" xyz="1407;667;0"/>
+      <sr location="Ganon Castle SR Fire Back Right" flag="0x5b" item="RUPEE_SILVER_GANON_FIRE" name="Fire Trial - Back Right" xyz="2318;1308;0"/>
+      <sr location="Ganon Castle SR Fire Left" flag="0x5c" item="RUPEE_SILVER_GANON_FIRE" name="Fire Trial - Left" xyz="1926;1145;0"/>
+      <sr location="Ganon Castle SR Fire Far Right" flag="0x5d" item="RUPEE_SILVER_GANON_FIRE" name="Fire Trial - Far Right" xyz="2205;1413;0"/>
+      <sr location="Ganon Castle SR Fire Front Right" flag="0x5e" item="RUPEE_SILVER_GANON_FIRE" name="Fire Trial - Front Right" xyz="2019;1400;0"/>
+      <sr location="Ganon Castle SR Fire Black Pillar" flag="0x5f" item="RUPEE_SILVER_GANON_FIRE" name="Fire Trial - Black Pillar" xyz="2035;1045;0"/>
+      <sr location="Ganon Castle SR Forest Center Right" flag="0x60" item="RUPEE_SILVER_GANON_FOREST" name="Forest Trial - Center Right" xyz="552;2062;0"/>
+      <sr location="Ganon Castle SR Forest Front" flag="0x61" item="RUPEE_SILVER_GANON_FOREST" name="Forest Trial - Front" xyz="739;2092;0"/>
+      <sr location="Ganon Castle SR Forest Back Right" flag="0x62" item="RUPEE_SILVER_GANON_FOREST" name="Forest Trial - Back Right" xyz="413;2163;0"/>
+      <sr location="Ganon Castle SR Forest Back Middle" flag="0x63" item="RUPEE_SILVER_GANON_FOREST" name="Forest Trial - Back Middle" xyz="484;2196;0"/>
+      <sr location="Ganon Castle SR Forest Center Left" flag="0x64" item="RUPEE_SILVER_GANON_FOREST" name="Forest Trial - Center Left" xyz="636;2187;0"/>
+      <xflag type="pot" location="Ganon Castle Pot Water" slice="0x0" setup="0x0" room="0x3" actor="0x3" item="FAIRY" name="Water Trial - Entrance" xyz="1300;2648;0"/>
+      <xflag type="pot" location="Ganon Castle Pot Water End 1" slice="0x0" setup="0x0" room="0x4" actor="0x4" item="RECOVERY_HEART" name="Water Trial - End 1" xyz="1455;2962;0"/>
+      <xflag type="pot" location="Ganon Castle Pot Water End 2" slice="0x0" setup="0x0" room="0x4" actor="0x5" item="MAGIC_JAR_SMALL" name="Water Trial - End 2" xyz="1394;2962;0"/>
+      <xflag type="pot" location="Ganon Castle Pot Forest End 1" slice="0x0" setup="0x0" room="0x7" actor="0x4" item="RECOVERY_HEART" name="Forest Trial - End 1" xyz="334;2258;0"/>
+      <xflag type="pot" location="Ganon Castle Pot Forest End 2" slice="0x0" setup="0x0" room="0x7" actor="0x5" item="MAGIC_JAR_SMALL" name="Forest Trial - End 2" xyz="370;2311;0"/>
+      <xflag type="pot" location="Ganon Castle Pot Light" slice="0x0" setup="0x0" room="0x8" actor="0xa" item="NOTHING" name="Light Trial - Entrance" xyz="1438;708;0"/>
+      <xflag type="pot" location="Ganon Castle Pot Light End 1" slice="0x0" setup="0x0" room="0xb" actor="0x4" item="RECOVERY_HEART" name="Light Trial - End 1" xyz="1469;192;0"/>
+      <xflag type="pot" location="Ganon Castle Pot Light End 2" slice="0x0" setup="0x0" room="0xb" actor="0x5" item="MAGIC_JAR_LARGE" name="Light Trial - End 2" xyz="1401;192;0"/>
+      <xflag type="pot" location="Ganon Castle Pot Shadow 1" slice="0x0" setup="0x0" room="0xc" actor="0xe" item="ARROWS_10" name="Shadow Trial - Platform 1" xyz="2178;2017;0"/>
+      <xflag type="pot" location="Ganon Castle Pot Shadow 2" slice="0x0" setup="0x0" room="0xc" actor="0xf" item="MAGIC_JAR_LARGE" name="Shadow Trial - Platform 2" xyz="2128;2105;0"/>
+      <xflag type="pot" location="Ganon Castle Pot Shadow End 1" slice="0x0" setup="0x0" room="0xd" actor="0x4" item="ARROWS_10" name="Shadow Trial - End 1" xyz="2604;2295;0"/>
+      <xflag type="pot" location="Ganon Castle Pot Shadow End 2" slice="0x0" setup="0x0" room="0xd" actor="0x5" item="MAGIC_JAR_LARGE" name="Shadow Trial - End 2" xyz="2579;2341;0"/>
+      <xflag type="pot" location="Ganon Castle Pot Fire End 1" slice="0x0" setup="0x0" room="0xf" actor="0x4" item="RECOVERY_HEART" name="Fire Trial - End 1" xyz="2451;902;0"/>
+      <xflag type="pot" location="Ganon Castle Pot Fire End 2" slice="0x0" setup="0x0" room="0xf" actor="0x5" item="MAGIC_JAR_SMALL" name="Fire Trial - End 2" xyz="2478;942;0"/>
+      <xflag type="pot" location="Ganon Castle Pot Spirit End 1" slice="0x0" setup="0x0" room="0x13" actor="0x4" item="NUTS_5" name="Spirit Trial - End 1" xyz="432;789;0"/>
+      <xflag type="pot" location="Ganon Castle Pot Spirit End 2" slice="0x0" setup="0x0" room="0x13" actor="0x5" item="MAGIC_JAR_SMALL" name="Spirit Trial - End 2" xyz="373;874;0"/>
+      <actor room="0x10" actor="0x4">
+        <xflag type="fairy" location="Ganon Castle Fairy Fountain Fairy 1" slice="0" item="FAIRY" name="Fairy 1" xyz="726;1811;0"/>
+        <xflag type="fairy" location="Ganon Castle Fairy Fountain Fairy 2" slice="1" item="FAIRY" name="Fairy 2" xyz="746;1811;0"/>
+        <xflag type="fairy" location="Ganon Castle Fairy Fountain Fairy 3" slice="2" item="FAIRY" name="Fairy 3" xyz="714;1797;0"/>
+        <xflag type="fairy" location="Ganon Castle Fairy Fountain Fairy 4" slice="3" item="FAIRY" name="Fairy 4" xyz="755;1795;0"/>
+        <xflag type="fairy" location="Ganon Castle Fairy Fountain Fairy 5" slice="4" item="FAIRY" name="Fairy 5" xyz="735;1792;0"/>
+        <xflag type="fairy" location="Ganon Castle Fairy Fountain Fairy 6" slice="5" item="FAIRY" name="Fairy 6" xyz="717;1779;0"/>
+        <xflag type="fairy" location="Ganon Castle Fairy Fountain Fairy 7" slice="6" item="FAIRY" name="Fairy 7" xyz="752;1778;0"/>
+        <xflag type="fairy" location="Ganon Castle Fairy Fountain Fairy 8" slice="7" item="FAIRY" name="Fairy 8" xyz="734;1769;0"/>
+      </actor>
+      <xflag type="heart" location="Ganon Castle Heart Shadow 1" slice="0x0" setup="0x0" room="0xc" actor="0x8" item="RECOVERY_HEART" name="Shadow Trial - Heart 1" xyz="2342;2184;0"/>
+      <xflag type="heart" location="Ganon Castle Heart Shadow 2" slice="0x0" setup="0x0" room="0xc" actor="0xa" item="RECOVERY_HEART" name="Shadow Trial - Heart 2" xyz="2366;2181;0"/>
+      <xflag type="heart" location="Ganon Castle Heart Shadow 3" slice="0x0" setup="0x0" room="0xc" actor="0xc" item="RECOVERY_HEART" name="Shadow Trial - Heart 3" xyz="2386;2176;0"/>
+      <xflag type="heart" location="Ganon Castle Heart Fire" slice="0x0" setup="0x0" room="0xe" actor="0x13" item="RECOVERY_HEART" name="Fire Trial - Heart" xyz="2128;1105;0"/>
+      <xflag type="heart" location="Ganon Castle Heart Spirit" slice="0x0" setup="0x0" room="0x11" actor="0x1b" item="RECOVERY_HEART" name="Spirit Trial - Heart" xyz="880;1427;0"/>
+      <xflag type="fairy_spot" location="Ganon Castle Spirit Big Fairy" slice="0x0" setup="0x0" room="0x11" actor="0xb" item="FAIRY_BIG" name="Spirit Trial - Big Fairy" xyz="900;1246;0"/>
+      <xflag type="icicle" location="Ganon Castle Icicle Water 01" slice="0x0" setup="0x0" room="0x2" actor="0x2" item="NOTHING" name="Water Trial 1" xyz="1397;2181;0"/>
+      <xflag type="icicle" location="Ganon Castle Icicle Water 02" slice="0x0" setup="0x0" room="0x2" actor="0x3" item="NOTHING" name="Water Trial 2" xyz="1406;2154;0"/>
+      <xflag type="icicle" location="Ganon Castle Icicle Water 03" slice="0x0" setup="0x0" room="0x2" actor="0x4" item="NOTHING" name="Water Trial 3" xyz="1422;2197;0"/>
+      <xflag type="icicle" location="Ganon Castle Icicle Water 04" slice="0x0" setup="0x0" room="0x2" actor="0x5" item="NOTHING" name="Water Trial 4" xyz="1450;2181;0"/>
+      <xflag type="icicle" location="Ganon Castle Icicle Water 05" slice="0x0" setup="0x0" room="0x2" actor="0x6" item="NOTHING" name="Water Trial 5" xyz="1450;2165;0"/>
+      <xflag type="icicle" location="Ganon Castle Icicle Water 06" slice="0x0" setup="0x0" room="0x2" actor="0x7" item="NOTHING" name="Water Trial 6" xyz="1439;2154;0"/>
+      <xflag type="icicle" location="Ganon Castle Icicle Water 07" slice="0x0" setup="0x0" room="0x2" actor="0x8" item="NOTHING" name="Water Trial 7" xyz="1406;2192;0"/>
+      <xflag type="icicle" location="Ganon Castle Icicle Water 08" slice="0x0" setup="0x0" room="0x2" actor="0x9" item="NOTHING" name="Water Trial 8" xyz="1397;2165;0"/>
+      <xflag type="icicle" location="Ganon Castle Icicle Water 09" slice="0x0" setup="0x0" room="0x2" actor="0xa" item="NOTHING" name="Water Trial 9" xyz="1439;2192;0"/>
+      <xflag type="icicle" location="Ganon Castle Icicle Water 10" slice="0x0" setup="0x0" room="0x2" actor="0xb" item="NOTHING" name="Water Trial 10" xyz="1422;2150;0"/>
+      <xflag type="icicle" location="Ganon Castle Icicle Water 11" slice="0x0" setup="0x0" room="0x2" actor="0xc" item="NOTHING" name="Water Trial 11" xyz="1530;2270;0"/>
+      <xflag type="icicle" location="Ganon Castle Icicle Water 12" slice="0x0" setup="0x0" room="0x2" actor="0xd" item="NOTHING" name="Water Trial 12" xyz="1475;2315;0"/>
+      <xflag type="icicle" location="Ganon Castle Icicle Water 13" slice="0x0" setup="0x0" room="0x2" actor="0xe" item="NOTHING" name="Water Trial 13" xyz="1316;2270;0"/>
+      <xflag type="icicle" location="Ganon Castle Icicle Water 14" slice="0x0" setup="0x0" room="0x2" actor="0xf" item="NOTHING" name="Water Trial 14" xyz="1368;2315;0"/>
+    </scene_rendering>
+  </scene>
+</checks>

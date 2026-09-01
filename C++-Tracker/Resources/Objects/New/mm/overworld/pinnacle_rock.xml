@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="mm">
+  <scene id="PINNACLE_ROCK">
+    <scene_rendering id="MM_PINNACLE_ROCK" loc_type="overworld">
+      <rendering_option layout="all">
+        <chest location="Pinnacle Rock Chest 1" flag="0x01" item="RUPEE_RED" name="Chest 1" xyz="258;585;0"/>
+        <chest location="Pinnacle Rock Chest 2" flag="0x02" item="RUPEE_RED" name="Chest 2" xyz="764;322;0"/>
+      </rendering_option>
+      <rendering_option layout="all" type="heart_piece">
+        <npc location="Pinnacle Rock HP" npc="SEAHORSE_HEART_PIECE" item="HEART_PIECE" hint="PINNACLE_ROCK_HP" name="Seahorse" xyz="311;235;0"/>
+      </rendering_option>
+      <rendering_option layout="all" type="none">
+        <xflag type="rock" location="Pinnacle Rock Rock Unreachable 1" slice="0x0" setup="0x0" room="0x0" actor="0x1c" item="RANDOM" name="Unreachable 1" xyz="0;0;0"/>
+        <xflag type="rock" location="Pinnacle Rock Rock Unreachable 2" slice="0x0" setup="0x0" room="0x0" actor="0x1d" item="RANDOM" name="Unreachable 2" xyz="0;0;0"/>
+      </rendering_option>
+      <rendering_option layout="all">
+        <xflag type="pot" location="Pinnacle Rock Pot 01" actor="0x3" item="MAGIC_JAR_SMALL" name="Pot 1" xyz="526;438;0"/>
+        <xflag type="pot" location="Pinnacle Rock Pot 02" actor="0x4" item="RECOVERY_HEART" name="Pot 2" xyz="586;429;0"/>
+        <xflag type="pot" location="Pinnacle Rock Pot 03" actor="0x5" item="RECOVERY_HEART" name="Pot 3" xyz="504;482;0"/>
+        <xflag type="pot" location="Pinnacle Rock Pot 04" actor="0x6" item="RECOVERY_HEART" name="Pot 4" xyz="279;313;0"/>
+        <xflag type="pot" location="Pinnacle Rock Pot 05" actor="0x7" item="RECOVERY_HEART" name="Pot 5" xyz="714;162;0"/>
+        <xflag type="pot" location="Pinnacle Rock Pot 06" actor="0x8" item="MAGIC_JAR_SMALL" name="Pot 6" xyz="631;152;0"/>
+        <xflag type="pot" location="Pinnacle Rock Pot 07" actor="0x9" item="RECOVERY_HEART" name="Pot 7" xyz="606;172;0"/>
+        <xflag type="pot" location="Pinnacle Rock Pot 08" actor="0xa" item="RECOVERY_HEART" name="Pot 8" xyz="596;177;0"/>
+        <xflag type="pot" location="Pinnacle Rock Pot 09" actor="0xb" item="MAGIC_JAR_SMALL" name="Pot 9" xyz="466;437;0"/>
+        <xflag type="pot" location="Pinnacle Rock Pot 10" actor="0xc" item="RECOVERY_HEART" name="Pot 10" xyz="408;421;0"/>
+        <xflag type="pot" location="Pinnacle Rock Pot 11" actor="0xd" item="MAGIC_JAR_SMALL" name="Pot 11" xyz="467;405;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

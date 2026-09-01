@@ -1,0 +1,154 @@
+scene_id;scene_name;image_path;minimap_path;parent_region;has_context;active_layout
+OOT_DEKU_TREE;Deku Tree;;./Resources/OoT/Dungeons/Deku_Tree/DEK_Map.jpg;Dungeons;false;oot
+OOT_DODONGO_CAVERN;Dodongo's Cavern;;./Resources/OoT/Dungeons/Cavern/CAV_Map.jpg;Dungeons;false;oot
+OOT_INSIDE_JABU_JABU;Inside Jabu-Jabu;;./Resources/OoT/Dungeons/Jabu-Jabu/JAB_Map.jpg;Dungeons;false;oot
+OOT_TEMPLE_FOREST;Forest Temple;;./Resources/OoT/Dungeons/Forest/FOT_Map.jpg;Dungeons;false;oot
+OOT_TEMPLE_FIRE;Fire Temple;;./Resources/OoT/Dungeons/Fire/FIT_Map.jpg;Dungeons;false;oot
+OOT_TEMPLE_WATER;Water Temple;;./Resources/OoT/Dungeons/Water/WT_Map.jpg;Dungeons;false;oot
+OOT_TEMPLE_SPIRIT;Spirit Temple;;./Resources/OoT/Dungeons/Spirit/SPT_Map.jpg;Dungeons;false;oot
+OOT_TEMPLE_SHADOW;Shadow Temple;;./Resources/OoT/Dungeons/Shadow/SHT_Map.jpg;Dungeons;false;oot
+OOT_BOTTOM_OF_THE_WELL;Bottom of the Well;;./Resources/OoT/Dungeons/Well/WEL_Map.jpg;Dungeons;false;oot
+OOT_ICE_CAVERN;Ice Cavern;./Resources/OoT/Dungeons/Ice/Ice.jpg;./Resources/OoT/Dungeons/Ice/Ice_Map.jpg;Dungeons;false;oot
+OOT_GANON_TOWER;Ganon Tower;;./Resources/OoT/Ganon/GT_Map.jpg;Dungeons;false;oot
+OOT_GERUDO_TRAINING_GROUND;Gerudo Training Ground;./Resources/OoT/Dungeons/GTG/GTG.jpg;./Resources/OoT/Dungeons/GTG/GTG_Map.jpg;Gerudo_Fortress;false;oot
+OOT_THIEVES_HIDEOUT;Thieves' Hideout;./Resources/OoT/Gerudo_Fortress/Hideout.jpg;./Resources/OoT/Gerudo_Fortress/Hideout_Map.jpg;Gerudo_Fortress;false;oot
+OOT_INSIDE_GANON_CASTLE;Inside Ganon Castle;./Resources/OoT/Ganon/GT_1F.jpg;./Resources/OoT/Ganon/GT_1F_Map.jpg;Dungeons;false;oot
+OOT_GANON_TOWER_COLLAPSING;Ganon Tower - Collapsing;;;None;false;oot
+OOT_INSIDE_GANON_CASTLE_COLLAPSING;Inside Ganon Castle - Collapsing;;;None;false;oot
+OOT_TREASURE_SHOP;Treasure Shop;./Resources/OoT/Market/Treasure_Game.jpg;./Resources/OoT/Market/Treasure_Game_Map.jpg;Market;false;oot
+OOT_LAIR_GOHMA;Gohma's Lair;;./Resources/OoT/Dungeons/Deku_Tree/Gohma_Map.jpg;None;false;oot
+OOT_LAIR_KING_DODONGO;King Dodongo's Lair;;./Resources/OoT/Dungeons/Cavern/King_Map.jpg;None;false;oot
+OOT_LAIR_BARINADE;Barinade's Lair;;./Resources/OoT/Dungeons/Jabu-Jabu/Barinade_Map.jpg;None;false;oot
+OOT_LAIR_PHANTOM_GANON;Phantom Ganon's Lair;;./Resources/OoT/Dungeons/Forest/Phantom_Map.jpg;None;false;oot
+OOT_LAIR_VOLVAGIA;Volvagia's Lair;;./Resources/OoT/Dungeons/Fire/Volvagia_Map.jpg;None;false;oot
+OOT_LAIR_MORPHA;Morpha's Lair;;./Resources/OoT/Dungeons/Water/Morpha_Map.jpg;None;false;oot
+OOT_LAIR_TWINROVA;Twinrova's Lair;;./Resources/OoT/Dungeons/Spirit/Twinrova_Map.jpg;None;false;oot
+OOT_LAIR_BONGO_BONGO;Bongo-Bongo's Lair;;./Resources/OoT/Dungeons/Shadow/Bongo_Map.jpg;None;false;oot
+OOT_LAIR_GANONDORF;Ganondorf's Lair;;./Resources/OoT/Ganon/Ganondorf_Map.jpg;None;false;oot
+OOT_TOWER_COLLAPSE_EXTERIOR;Tower Collapse - Exterior;;;None;false;oot
+OOT_MARKET_ENTRANCE_CHILD_DAY;Market Entrance - Child Day;;;None;false;oot
+OOT_MARKET_ENTRANCE_CHILD_NIGHT;Market Entrance - Child Night;;;None;false;oot
+OOT_MARKET_ENTRANCE_ADULT;Market Entrance - Adult;;;None;false;oot
+OOT_BACK_ALLEY_DAY;Back Alley - Day;;;None;false;oot
+OOT_BACK_ALLEY_NIGHT;Back Alley - Night;;;None;false;oot
+OOT_MARKET_CHILD_DAY;Market - Day;./Resources/OoT/Market/Market_Day.jpg;;Market;false;oot
+OOT_MARKET_CHILD_NIGHT;Market - Night;./Resources/OoT/Market/Market_Night.jpg;;Market;false;oot
+OOT_MARKET_ADULT;Market - Adult;;;None;false;oot
+OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;Temple of Time Exterior Child Day;;;None;false;oot
+OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_NIGHT;Temple of Time Exterior Child Night;;;None;false;oot
+OOT_TEMPLE_OF_TIME_EXTERIOR_ADULT;Temple of Time Exterior Adult;;;None;false;oot
+OOT_KOKIRI_KNOW_IT_ALL;Know-It-All Brothers's House;./Resources/OoT/Kokiri_Forest/Know_It_All.jpg;./Resources/OoT/Kokiri_Forest/Know_It_All_Map.jpg;Kokiri_Forest;false;oot
+OOT_KOKIRI_TWINS;Twins's House;./Resources/OoT/Kokiri_Forest/Twins_House.jpg;./Resources/OoT/Kokiri_Forest/Twins_House_Map.jpg;Kokiri_Forest;false;oot
+OOT_KOKIRI_MIDO;Mido's House;./Resources/OoT/Kokiri_Forest/Mido_House.jpg;./Resources/OoT/Kokiri_Forest/Mido_House_Map.jpg;Kokiri_Forest;false;oot
+OOT_KOKIRI_SARIA;Saria's House;./Resources/OoT/Kokiri_Forest/Saria_House.jpg;./Resources/OoT/Kokiri_Forest/Saria_House_Map.jpg;Kokiri_Forest;false;oot
+OOT_CARPENTER_BOSS_HOUSE;Carpenters Boss's House;;./Resources/OoT/Kakariko/Carpenter_House_Map.jpg;None;false;oot
+OOT_BACK_ALLEY_HOUSE;Back Alley's House;./Resources/OoT/Market/Back_Alley_House.jpg;./Resources/OoT/Market/Back_Alley_House_Map.jpg;Market;false;oot
+OOT_BAZAAR;Bazaar;;;None;false;oot
+OOT_KOKIRI_SHOP;Kokiri Shop;./Resources/OoT/Kokiri_Forest/Shop.jpg;./Resources/OoT/Kokiri_Forest/Shop_Map.jpg;Kokiri_Forest;false;oot
+OOT_GORON_SHOP;Goron Shop;./Resources/OoT/Goron_City/Shop.jpg;./Resources/OoT/Goron_City/Shop_Map.jpg;Goron_City;false;oot
+OOT_ZORA_SHOP;Zora Shop;./Resources/OoT/Zora_Domain/Shop.jpg;./Resources/OoT/Goron_City/Shop_Map.jpg;Zora_Domain;false;oot
+OOT_KAKARIKO_POTION_SHOP;Kakariko Potion Shop;./Resources/OoT/Kakariko/Potion_Shop.jpg;./Resources/OoT/Kakariko/Potion_Shop_Map.jpg;Kakariko;false;oot
+OOT_MARKET_POTION_SHOP;Market Potion Shop;./Resources/OoT/Market/Potion_Shop.jpg;./Resources/OoT/Market/Potion_Shop_Map.jpg;Market;false;oot
+OOT_BOMBCHU_SHOP;Bombchu Shop;./Resources/OoT/Market/Bombchu_Shop.jpg;./Resources/OoT/Market/Bombchu_Shop_Map.jpg;Market;false;oot
+OOT_HAPPY_MASK_SHOP;Happy Mask Shop;;;None;false;oot
+OOT_LINK_HOUSE;Link's House;./Resources/OoT/Kokiri_Forest/Link_House.jpg;./Resources/OoT/Kokiri_Forest/Link_House_Map.jpg;Kokiri_Forest;true;oot
+OOT_BACK_ALLEY_HOUSE2;Dog Lady's House;./Resources/OoT/Market/Dog_Lady_House.jpg;./Resources/OoT/Market/Dog_Lady_House_Map.jpg;Market;false;oot
+OOT_STABLE;Stable;./Resources/OoT/Ranch/Stable.jpg;./Resources/OoT/Ranch/Stable_Map.jpg;Lon_Lon_Ranch;false;oot
+OOT_IMPA_HOUSE;Impa's House;./Resources/OoT/Kakariko/Impa_House.jpg;./Resources/OoT/Kakariko/Impa_House_Map.jpg;Kakariko;false;oot
+OOT_LABORATORY;Laboratory;./Resources/OoT/Lake_Hylia/Laboratory.jpg;./Resources/OoT/Lake_Hylia/Laboratory_Map.jpg;Lake_Hylia;false;oot
+OOT_CARPENTER_TENT;Carpenter's Tent;;./Resources/OoT/Gerudo_Valley/Carpenter_Tent_Map.jpg;None;false;oot
+OOT_GRAVEKEEPER_HUT;Dampe's House;;./Resources/OoT/Graveyard/Dampe_House_Map.jpg;None;false;oot
+OOT_GREAT_FAIRY_FOUNTAIN_UPGRADES;Great Fairy Fountain - Upgrades;;;None;false;oot
+OOT_FAIRY_FOUNTAIN;Fairy Fountain;;;None;false;oot
+OOT_GREAT_FAIRY_FOUNTAIN_SPELLS;Great Fairy Fountain - Spells;;;None;false;oot
+OOT_GROTTOS;Grottos;;;None;false;oot
+OOT_TOMB_REDEAD;Redead's Tomb;./Resources/OoT/Graveyard/Redead_Tomb.jpg;./Resources/OoT/Graveyard/Redead_Tomb_Map.jpg;Graveyard;false;oot
+OOT_TOMB_FAIRY;Fairy's Fountain Tomb;./Resources/OoT/Graveyard/Fairy_Fountain_Tomb.jpg;./Resources/OoT/Graveyard/Fairy_Fountain_Tomb_Map.jpg;Graveyard;false;oot
+OOT_TOMB_ROYAL;Royal's Family Tomb;./Resources/OoT/Graveyard/Royal_Tomb.jpg;./Resources/OoT/Graveyard/Royal_Tomb_Map.jpg;Graveyard;false;oot
+OOT_SHOOTING_GALLERY;Shooting Gallery;;;None;false;oot
+OOT_TEMPLE_OF_TIME;Temple of Time;./Resources/OoT/Market/Temple_of_Time.jpg;./Resources/OoT/Market/Temple_of_Time_Map.jpg;Market;false;oot
+OOT_CHAMBER_OF_THE_SAGES;Chamber of the Sages;;;None;false;oot
+OOT_CASTLE_MAZE_DAY;Castle Maze - Day;;;None;false;oot
+OOT_CASTLE_MAZE_NIGHT;Castle Maze - Night;;;None;false;oot
+OOT_CUTSCENE_MAP;Cutscene Map;;;None;false;oot
+OOT_TOMB_DAMPE_WINDMILL;Dampe's Tomb;./Resources/OoT/Graveyard/Dampe_Tomb.jpg;./Resources/OoT/Graveyard/Dampe_Tomb_Map.jpg;Graveyard;false;oot
+OOT_FISHING_POND;Fishing Pond;./Resources/OoT/Lake_Hylia/Pond.jpg;./Resources/OoT/Lake_Hylia/Pond_Map.jpg;Lake_Hylia;true;oot
+OOT_CASTLE_COURTYARD;Castle Courtyard;./Resources/OoT/Hyrule/Castle_Courtyard.jpg;./Resources/OoT/Hyrule/Castle_Courtyard_Map.jpg;Castle;false;oot
+OOT_BOMBCHU_BOWLING_ALLEY;Bombchu Bowling;./Resources/OoT/Market/Bombchu_Bowling.jpg;./Resources/OoT/Market/Bombchu_Bowling_Map.jpg;Market;false;oot
+OOT_RANCH_HOUSE_SILO;Talon's House;./Resources/OoT/Ranch/Ranch_House_Silo.jpg;./Resources/OoT/Ranch/Ranch_House_Silo_Map.jpg;Lon_Lon_Ranch;true;oot
+OOT_GUARD_HOUSE;Pot's House;./Resources/OoT/Market/Pot_House.jpg;./Resources/OoT/Market/Pot_House_Map.jpg;Market;true;oot
+OOT_GRANNY_POTION_SHOP;Granny Potion Shop;./Resources/OoT/Kakariko/Granny_Potion_Shop.jpg;./Resources/OoT/Kakariko/Granny_Potion_Shop_Map.jpg;Kakariko;false;oot
+OOT_GANON_BATTLE_ARENA;Ganon Battle Arena;;;None;false;oot
+OOT_HOUSE_OF_SKULLTULA;House of Skulltula;./Resources/OoT/Kakariko/House_Skulltula.jpg;./Resources/OoT/Kakariko/House_Skulltula_Map.jpg;Kakariko;false;oot
+OOT_HYRULE_FIELD;Hyrule Field;./Resources/OoT/Hyrule/Hyrule_Field.jpg;./Resources/OoT/Hyrule/Hyrule_Field_Map.jpg;Hyrule;true;oot
+OOT_KAKARIKO_VILLAGE;Kakariko's Village;./Resources/OoT/Kakariko/Kakariko.jpg;./Resources/OoT/Kakariko/Kakariko_Map.jpg;Kakariko;true;oot
+OOT_GRAVEYARD;Graveyard;./Resources/OoT/Graveyard/Graveyard.jpg;./Resources/OoT/Graveyard/Graveyard_Map.jpg;Graveyard;true;oot
+OOT_ZORA_RIVER;Zora's River;./Resources/OoT/Zora_River/Zora_River.jpg;./Resources/OoT/Zora_River/Zora_River_Map.jpg;Zora_River;true;oot
+OOT_KOKIRI_FOREST;Kokiri Forest;./Resources/OoT/Kokiri_Forest/Kokiri_Forest.jpg;./Resources/OoT/Kokiri_Forest/Kokiri_Forest_Map.jpg;Kokiri_Forest;true;oot
+OOT_SACRED_FOREST_MEADOW;Sacred Forest Meadow;./Resources/OoT/Sacred_Forest_Meadow/Sacred_Forest_Meadow.jpg;./Resources/OoT/Sacred_Forest_Meadow/Sacred_Forest_Meadow_Map.jpg;Sacred_Forest_Meadow;true;oot
+OOT_LAKE_HYLIA;Lake Hylia;./Resources/OoT/Lake_Hylia/Lake_Hylia.jpg;./Resources/OoT/Lake_Hylia/Lake_Hylia_Map.jpg;Lake_Hylia;true;oot
+OOT_ZORA_DOMAIN;Zora's Domain;./Resources/OoT/Zora_Domain/Zora_Domain.jpg;./Resources/OoT/Zora_Domain/Zora_Domain_Map.jpg;Zora_Domain;true;oot
+OOT_ZORA_FOUNTAIN;Zora's Fountain;./Resources/OoT/Zora_Fountain/Zora_Fountain.jpg;./Resources/OoT/Zora_Fountain/Zora_Fountain_Map.jpg;Zora_Fountain;true;oot
+OOT_GERUDO_VALLEY;Gerudo Valley;./Resources/OoT/Gerudo_Valley/Valley.jpg;./Resources/OoT/Gerudo_Valley/Valley_Map.jpg;Gerudo_Valley;true;oot
+OOT_LOST_WOODS;Lost Woods;./Resources/OoT/Lost_Woods/Lost_Woods.jpg;./Resources/OoT/Lost_Woods/Lost_Woods_Map.jpg;Lost_Woods;true;oot
+OOT_DESERT_COLOSSUS;Desert Colossus;./Resources/OoT/Desert_Colossus/Desert_Colossus.jpg;./Resources/OoT/Desert_Colossus/Desert_Colossus_Map.jpg;Desert_Colossus;true;oot
+OOT_GERUDO_FORTRESS;Gerudo's Fortress;./Resources/OoT/Gerudo_Fortress/Fortress.jpg;./Resources/OoT/Gerudo_Fortress/Fortress_Map.jpg;Gerudo_Fortress;true;oot
+OOT_HAUNTED_WASTELAND;Haunted Wasteland;./Resources/OoT/Haunted_Wasteland/Haunted_Wasteland.jpg;./Resources/OoT/Haunted_Wasteland/Haunted_Wasteland_Map.jpg;Haunted_Wasteland;false;oot
+OOT_HYRULE_CASTLE;Hyrule Castle;./Resources/OoT/Hyrule/Hyrule_Castle.jpg;./Resources/OoT/Hyrule/Hyrule_Castle_Map.jpg;Castle;false;oot
+OOT_DEATH_MOUNTAIN_TRAIL;Death Mountain Trail;;./Resources/OoT/Death_Mountain_Trail/DMT_Map.jpg;Death_Mountain_Trail;true;oot
+OOT_DEATH_MOUNTAIN_CRATER;Death Mountain Crater;./Resources/OoT/Death_Mountain_Crater/Crater.jpg;./Resources/OoT/Death_Mountain_Crater/Crater_Map.jpg;Death_Mountain_Crater;true;oot
+OOT_GORON_CITY;Goron City;./Resources/OoT/Goron_City/Goron_City.jpg;./Resources/OoT/Goron_City/Goron_City_Map.jpg;Goron_City;true;oot
+OOT_LON_LON_RANCH;Lon Lon's Ranch;./Resources/OoT/Ranch/Lon_Lon_Ranch.jpg;./Resources/OoT/Ranch/Lon_Lon_Ranch_Map.jpg;Lon_Lon_Ranch;true;oot
+OOT_GANON_CASTLE_EXTERIOR;Ganon Castle Exterior;./Resources/OoT/Ganon/Exterior.jpg;./Resources/OoT/Ganon/Exterior_Map.jpg;Castle;false;oot
+OOT_GROTTO_KOKIRI_FOREST_STORMS;Song of Storms Grotto;./Resources/OoT/Grottos/Open.jpg;./Resources/OoT/Grottos/Open_Map.jpg;Kokiri_Forest;false;oot
+OOT_GROTTO_LOST_WOODS_SCRUB_UPGRADE;Deku Scrubs Grotto;./Resources/OoT/Grottos/Double_Scrubs.jpg;./Resources/OoT/Grottos/Double_Scrubs_Map.jpg;Lost_Woods;false;oot
+OOT_GROTTO_LOST_WOODS_GENERIC;Generic Grotto;./Resources/OoT/Grottos/Open.jpg;./Resources/OoT/Grottos/Open_Map.jpg;Lost_Woods;false;oot
+OOT_GROTTO_LOST_WOODS_THEATER;Deku's Theater;./Resources/OoT/Lost_Woods/Theater.jpg;./Resources/OoT/Lost_Woods/Theater_Map.jpg;Lost_Woods;false;oot
+OOT_GROTTO_SACRED_MEADOW_WOLFOS;Wolfos Grotto;./Resources/OoT/Sacred_Forest_Meadow/Wolfos.jpg;./Resources/OoT/Sacred_Forest_Meadow/Wolfos_Map.jpg;Sacred_Forest_Meadow;false;oot
+OOT_GROTTO_SACRED_MEADOW_STORMS;Song of Storms Grotto;./Resources/OoT/Grottos/Double_Scrubs.jpg;./Resources/OoT/Grottos/Double_Scrubs_Map.jpg;Sacred_Forest_Meadow;false;oot
+OOT_GROTTO_KAKARIKO_REDEAD;Redead Grotto;./Resources/OoT/Kakariko/Redead.jpg;./Resources/OoT/Kakariko/Redead_Map.jpg;Kakariko;false;oot
+OOT_GROTTO_KAKARIKO_OPEN;Open Grotto;./Resources/OoT/Grottos/Open.jpg;./Resources/OoT/Grottos/Open_Map.jpg;Kakariko;false;oot
+OOT_GROTTO_DEATH_TRIAL_STORMS;Song of Storms Grotto;./Resources/OoT/Grottos/Open.jpg;./Resources/OoT/Grottos/Open_Map.jpg;Death_Mountain_Trail;false;oot
+OOT_GROTTO_DEATH_TRIAL_COW;Cow Grotto;./Resources/OoT/Grottos/Cow.jpg;./Resources/OoT/Grottos/Cow_Map.jpg;Death_Mountain_Trail;false;oot
+OOT_GROTTO_GORON_CITY_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Grottos/Triple_Scrubs.jpg;./Resources/OoT/Grottos/Triple_Scrubs_Map.jpg;Goron_City;false;oot
+OOT_GROTTO_DEATH_CRATER_GENERIC;Generic Grotto;./Resources/OoT/Grottos/Open.jpg;./Resources/OoT/Grottos/Open_Map.jpg;Death_Mountain_Crater;false;oot
+OOT_GROTTO_DEATH_CRATER_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Grottos/Triple_Scrubs.jpg;./Resources/OoT/Grottos/Triple_Scrubs_Map.jpg;Death_Mountain_Crater;false;oot
+OOT_GROTTO_ZORA_RIVER_STORMS;Song of Storms Grotto;./Resources/OoT/Grottos/Double_Scrubs.jpg;./Resources/OoT/Grottos/Double_Scrubs_Map.jpg;Zora_River;false;oot
+OOT_GROTTO_ZORA_RIVER_GENERIC;Generic Grotto;./Resources/OoT/Grottos/Open.jpg;./Resources/OoT/Grottos/Open_Map.jpg;Zora_River;false;oot
+OOT_GROTTO_LAKE_HYLIA_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Grottos/Triple_Scrubs.jpg;./Resources/OoT/Grottos/Triple_Scrubs_Map.jpg;Lake_Hylia;false;oot
+OOT_GROTTO_LON_LON_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Grottos/Triple_Scrubs.jpg;./Resources/OoT/Grottos/Triple_Scrubs_Map.jpg;Lon_Lon_Ranch;false;oot
+OOT_GROTTO_HYRULE_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Grottos/Cow.jpg;./Resources/OoT/Grottos/Field_Scrub_Map.jpg;Hyrule;false;oot
+OOT_GROTTO_HYRULE_SE;Southeast Grotto;./Resources/OoT/Grottos/Open.jpg;./Resources/OoT/Grottos/Open_Map.jpg;Hyrule;false;oot
+OOT_GROTTO_HYRULE_OPEN;Open Grotto;./Resources/OoT/Grottos/Open.jpg;./Resources/OoT/Grottos/Open_Map.jpg;Hyrule;false;oot
+OOT_GROTTO_HYRULE_MARKET;Market Side Grotto;./Resources/OoT/Grottos/Open.jpg;./Resources/OoT/Grottos/Open_Map.jpg;Hyrule;false;oot
+OOT_GROTTO_HYRULE_TEKTITE;Tektite Grotto;./Resources/OoT/Hyrule/Field_Tektite.jpg;./Resources/OoT/Hyrule/Field_Tektite_Map.jpg;Hyrule;false;oot
+OOT_GROTTO_HYRULE_KAKARIKO;Kakariko Side Grotto;./Resources/OoT/Hyrule/Field_Kakariko.jpg;./Resources/OoT/Hyrule/Field_Kakariko_Map.jpg;Hyrule;false;oot
+OOT_GROTTO_HYRULE_GERUDO;Gerudo Side Grotto;./Resources/OoT/Hyrule/Field_Gerudo.jpg;./Resources/OoT/Hyrule/Field_Gerudo_Map.jpg;Hyrule;false;oot
+OOT_GROTTO_CASTLE_STORMS;Song of Storms Grotto;./Resources/OoT/Hyrule/Castle_Storms.jpg;./Resources/OoT/Hyrule/Castle_Storms_Map.jpg;Castle;false;oot
+OOT_GROTTO_VALLEY_STORMS;Song of Storms Grotto;./Resources/OoT/Grottos/Double_Scrubs.jpg;./Resources/OoT/Grottos/Double_Scrubs_Map.jpg;Gerudo_Valley;false;oot
+OOT_GROTTO_VALLEY_OCTOROK;Octorok Grotto;./Resources/OoT/Gerudo_Valley/Octorok.jpg;./Resources/OoT/Gerudo_Valley/Octorok_Map.jpg;Gerudo_Valley;false;oot
+OOT_GROTTO_DESERT_SCRUBS;Deku Scrubs Grotto;./Resources/OoT/Grottos/Double_Scrubs.jpg;./Resources/OoT/Grottos/Double_Scrubs_Map.jpg;Desert_Colossus;false;oot
+OOT_FAIRY_SACRED_MEADOW;Meadow Fairy Fountain;./Resources/OoT/Fairy/Fountain.jpg;./Resources/OoT/Fairy/Fountain_Map.jpg;Sacred_Forest_Meadow;false;oot
+OOT_FAIRY_ZORA_RIVER;River Fairy Fountain;./Resources/OoT/Fairy/Fountain.jpg;./Resources/OoT/Fairy/Fountain_Map.jpg;Zora_River;false;oot
+OOT_FAIRY_ZORA_DOMAIN;Domain Fairy Fountain;./Resources/OoT/Fairy/Fountain.jpg;./Resources/OoT/Fairy/Fountain_Map.jpg;Zora_Domain;false;oot
+OOT_FAIRY_HYRULE;Field Fairy Fountain;./Resources/OoT/Fairy/Fountain.jpg;./Resources/OoT/Fairy/Fountain_Map.jpg;Hyrule;false;oot
+OOT_FAIRY_GERUDO_FORTRESS;Fortress Fairy Fountain;./Resources/OoT/Fairy/Fountain.jpg;./Resources/OoT/Fairy/Fountain_Map.jpg;Gerudo_Fortress;false;oot
+OOT_GREAT_FAIRY_CASTLE;Castle Great Fairy Fountain;./Resources/OoT/Fairy/Great_Fairy.jpg;./Resources/OoT/Fairy/Great_Fairy_Map.jpg;Castle;true;oot
+OOT_GREAT_FAIRY_DEFENSE;Great Fairy Fountain;;./Resources/OoT/Fairy/Great_Fairy_Map.jpg;None;false;oot
+OOT_GREAT_FAIRY_FARORE;Zora Great Fairy Fountain;./Resources/OoT/Fairy/Great_Fairy.jpg;./Resources/OoT/Fairy/Great_Fairy_Map.jpg;Zora_Fountain;false;oot
+OOT_GREAT_FAIRY_NAYRU;Desert Great Fairy Fountain;./Resources/OoT/Fairy/Great_Fairy.jpg;./Resources/OoT/Fairy/Great_Fairy_Map.jpg;Desert_Colossus;false;oot
+OOT_GREAT_FAIRY_MAGIC;Trail Great Fairy Fountain;./Resources/OoT/Fairy/Great_Fairy.jpg;./Resources/OoT/Fairy/Great_Fairy_Map.jpg;Death_Mountain_Trail;false;oot
+OOT_GREAT_FAIRY_MAGIC2;Crater Great Fairy Fountain;./Resources/OoT/Fairy/Great_Fairy.jpg;./Resources/OoT/Fairy/Great_Fairy_Map.jpg;Death_Mountain_Crater;false;oot
+OOT_GREAT_FAIRY;Great Fairy Fountain;;;None;false;oot
+OOT_KAKARIKO_BAZAAR;Kakariko Bazaar;./Resources/OoT/Kakariko/Bazaar.jpg;./Resources/OoT/Market/Bazaar_Map.jpg;Kakariko;false;oot
+OOT_MARKET_BAZAAR;Market Bazaar;./Resources/OoT/Market/Bazaar.jpg;./Resources/OoT/Market/Bazaar_Map.jpg;Market;false;oot
+OOT_KAKARIKO_SHOOTING;Kakariko Shooting Gallery;./Resources/OoT/Kakariko/Shooting.jpg;./Resources/OoT/Market/Shooting_Map.jpg;Kakariko;false;oot
+OOT_MARKET_SHOOTING;Market Shooting Gallery;./Resources/OoT/Market/Shooting.jpg;./Resources/OoT/Market/Shooting_Map.jpg;Market;false;oot
+OOT_SILO;Silo;./Resources/OoT/Ranch/Silo.jpg;./Resources/OoT/Ranch/Silo_Map.jpg;Lon_Lon_Ranch;false;oot
+OOT_WINDMILL;Windmill;./Resources/OoT/Kakariko/Windmill.jpg;./Resources/OoT/Kakariko/Windmill_Map.jpg;Kakariko;true;oot
+OOT_MARKET_ENTRANCE;Market Entrance;;./Resources/OoT/Market/Market_Entrance_Map.jpg;None;false;oot
+OOT_TEMPLE_OF_TIME_ENTRYWAY;Temple of Time Entryway;./Resources/OoT/Market/Temple_Entry.jpg;./Resources/OoT/Market/Temple_of_Time_Entryway_Map.jpg;Market;false;oot
+OOT_BACK_ALLEY;Back Alley;;./Resources/OoT/Market/Back_Alley_Map.jpg;None;false;oot
+OOT_SONGS;Warp Songs;;./Resources/OoT/Songs/Song_Map.jpg;None;false;oot
+OOT_INSIDE_EGGS;Inside Eggs;;;None;false;oot
+OOT_MARKET;Market;;./Resources/OoT/Market/Market_Map.jpg;None;false;oot

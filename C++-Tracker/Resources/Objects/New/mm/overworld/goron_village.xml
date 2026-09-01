@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="mm">
+  <scene id="GORON_VILLAGE_WINTER">
+    <scene_rendering id="MM_GORON_VILLAGE" loc_type="overworld">
+      <rendering_option layout="all" type="heart_piece">
+        <collectible location="Goron Village HP" flag="0x1e" item="HEART_PIECE" name="Ledge" xyz="721;320;0"/>
+      </rendering_option>
+      <rendering_option icon="mountain" layout="all" type="scrub">
+        <npc location="Goron Village Scrub Deed" npc="SCRUB_MOUNTAIN" item="DEED_MOUNTAIN" name="Title Deed" xyz="685;332;1"/>
+      </rendering_option>
+      <rendering_option icon="biggest_bomb" layout="all" type="shop">
+        <npc location="Goron Village Scrub Bomb Bag" npc="SCRUB_BOMB_BAG" item="BOMB_BAG" name="Scrub - Shop" xyz="685;310;0"/>
+      </rendering_option>
+      <rendering_option icon="powder" layout="all">
+        <npc location="Goron Powder Keg" npc="GORON_KEG" item="POWDER_KEG" name="Powder Keg" xyz="117;323;0"/>
+      </rendering_option>
+      <rendering_option layout="all">
+        <xflag type="crate" location="Goron Village Crate" slice="0x0" setup="0x0" room="0x1" actor="0x3" item="NOTHING" name="Crate" xyz="188;354;0"/>
+      </rendering_option>
+      <rendering_option context="winter" layout="all">
+        <xflag type="snowball" location="Goron Village Big Snowball 1" slice="0x0" setup="0x0" room="0x0" actor="0x32" item="RUPEE_BLUE" name="Big Snowball 1" xyz="668;281;0"/>
+        <xflag type="snowball" location="Goron Village Big Snowball 2" slice="0x0" setup="0x0" room="0x0" actor="0x33" item="RUPEE_BLUE" name="Big Snowball 2" xyz="360;447;0"/>
+        <xflag type="snowball" location="Goron Village Big Snowball 3" slice="0x0" setup="0x0" room="0x0" actor="0x34" item="RUPEE_BLUE" name="Big Snowball 3" xyz="565;556;0"/>
+        <xflag type="snowball" location="Goron Village Big Snowball 4" slice="0x0" setup="0x0" room="0x0" actor="0x35" item="MAGIC_JAR_SMALL" name="Big Snowball 4" xyz="444;242;0"/>
+        <xflag type="snowball" location="Goron Village Big Snowball 5" slice="0x0" setup="0x0" room="0x0" actor="0x36" item="MAGIC_JAR_SMALL" name="Big Snowball 5" xyz="430;564;0"/>
+        <xflag type="snowball" location="Goron Village Big Snowball 6" slice="0x0" setup="0x0" room="0x0" actor="0x37" item="MAGIC_JAR_SMALL" name="Big Snowball 6" xyz="628;372;0"/>
+        <xflag type="snowball" location="Goron Village Big Snowball 7" slice="0x0" setup="0x0" room="0x0" actor="0x38" item="NOTHING" name="Big Snowball 7" xyz="380;350;0"/>
+        <xflag type="snowball" location="Goron Village Big Snowball 8" slice="0x0" setup="0x0" room="0x0" actor="0x39" item="NOTHING" name="Big Snowball 8" xyz="635;479;1"/>
+        <xflag type="snowball" location="Goron Village Big Snowball 9" slice="0x0" setup="0x0" room="0x0" actor="0x3a" item="NOTHING" name="Big Snowball 9" xyz="423;327;0"/>
+        <xflag type="snowball" location="Goron Village Small Snowball 01" slice="0x0" setup="0x0" room="0x0" actor="0x1d" item="RECOVERY_HEART" name="Small Snowball 1" xyz="510;331;0"/>
+        <xflag type="snowball" location="Goron Village Small Snowball 02" slice="0x0" setup="0x0" room="0x0" actor="0x1e" item="RECOVERY_HEART" name="Small Snowball 2" xyz="459;527;0"/>
+        <xflag type="snowball" location="Goron Village Small Snowball 03" slice="0x0" setup="0x0" room="0x0" actor="0x1f" item="MAGIC_JAR_SMALL" name="Small Snowball 3" xyz="480;536;0"/>
+        <xflag type="snowball" location="Goron Village Small Snowball 04" slice="0x0" setup="0x0" room="0x0" actor="0x20" item="MAGIC_JAR_SMALL" name="Small Snowball 4" xyz="512;202;0"/>
+        <xflag type="snowball" location="Goron Village Small Snowball 05" slice="0x0" setup="0x0" room="0x0" actor="0x21" item="NUTS_10" name="Small Snowball 5" xyz="649;459;0"/>
+        <xflag type="snowball" location="Goron Village Small Snowball 06" slice="0x0" setup="0x0" room="0x0" actor="0x22" item="NUTS_10" name="Small Snowball 6" xyz="393;289;0"/>
+        <xflag type="snowball" location="Goron Village Small Snowball 07" slice="0x0" setup="0x0" room="0x0" actor="0x23" item="BOMBS_5" name="Small Snowball 7" xyz="667;376;0"/>
+        <xflag type="snowball" location="Goron Village Small Snowball 08" slice="0x0" setup="0x0" room="0x0" actor="0x24" item="BOMBS_5" name="Small Snowball 8" xyz="396;399;0"/>
+        <xflag type="snowball" location="Goron Village Small Snowball 09" slice="0x0" setup="0x0" room="0x0" actor="0x25" item="STICK" name="Small Snowball 9" xyz="652;298;0"/>
+        <xflag type="snowball" location="Goron Village Small Snowball 10" slice="0x0" setup="0x0" room="0x0" actor="0x26" item="STICK" name="Small Snowball 10" xyz="341;419;0"/>
+        <xflag type="snowball" location="Goron Village Small Snowball 11" slice="0x0" setup="0x0" room="0x0" actor="0x27" item="ARROWS_10" name="Small Snowball 11" xyz="618;228;0"/>
+        <xflag type="snowball" location="Goron Village Small Snowball 12" slice="0x0" setup="0x0" room="0x0" actor="0x28" item="ARROWS_10" name="Small Snowball 12" xyz="565;350;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="GORON_SHRINE">
+    <scene_rendering id="MM_GORON_SHRINE" loc_type="overworld">
+      <rendering_option layout="all" type="song">
+        <npc location="Goron Baby" npc="GORON_BABY" item="SONG_GORON" name="Goron's Lulluby" xyz="855;284;0"/>
+      </rendering_option>
+      <rendering_option layout="all">
+        <actor room="0x0">
+          <match setup="0" actor="0x02"/>
+          <match setup="1" actor="0x07"/>
+          <xflag type="rock" location="Goron Shrine Rock 01" item="RANDOM" name="Rock 1" xyz="405;229;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="0" actor="0x03"/>
+          <match setup="1" actor="0x08"/>
+          <xflag type="rock" location="Goron Shrine Rock 02" item="RANDOM" name="Rock 2" xyz="430;409;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="0" actor="0x04"/>
+          <match setup="1" actor="0x09"/>
+          <xflag type="rock" location="Goron Shrine Rock 03" item="RANDOM" name="Rock 3" xyz="412;399;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="0" actor="0x05"/>
+          <match setup="1" actor="0x0a"/>
+          <xflag type="rock" location="Goron Shrine Rock 04" item="RANDOM" name="Rock 4" xyz="430;390;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="0" actor="0x06"/>
+          <match setup="1" actor="0x0b"/>
+          <xflag type="rock" location="Goron Shrine Rock 05" item="RANDOM" name="Rock 5" xyz="236;156;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="0" actor="0x07"/>
+          <match setup="1" actor="0x0c"/>
+          <xflag type="rock" location="Goron Shrine Rock 06" item="RANDOM" name="Rock 6" xyz="150;275;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="0" actor="0x08"/>
+          <match setup="1" actor="0x0d"/>
+          <xflag type="rock" location="Goron Shrine Rock 07" item="RANDOM" name="Rock 7" xyz="143;365;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="0" actor="0x09"/>
+          <match setup="1" actor="0x0e"/>
+          <xflag type="rock" location="Goron Shrine Rock 08" item="RANDOM" name="Rock 8" xyz="149;390;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="0" actor="0x0a"/>
+          <match setup="1" actor="0x0f"/>
+          <xflag type="rock" location="Goron Shrine Rock 09" item="RANDOM" name="Rock 9" xyz="459;381;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="0" actor="0x0b"/>
+          <match setup="1" actor="0x10"/>
+          <xflag type="rock" location="Goron Shrine Rock 10" item="RANDOM" name="Rock 10" xyz="465;365;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="0" actor="0x0c"/>
+          <match setup="1" actor="0x11"/>
+          <xflag type="rock" location="Goron Shrine Rock 11" item="RANDOM" name="Rock 11" xyz="593;359;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="0" actor="0x0d"/>
+          <match setup="1" actor="0x12"/>
+          <xflag type="rock" location="Goron Shrine Rock 12" item="RANDOM" name="Rock 12" xyz="518;399;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="0" actor="0x0e"/>
+          <match setup="1" actor="0x13"/>
+          <xflag type="rock" location="Goron Shrine Rock 13" item="RANDOM" name="Rock 13" xyz="518;162;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="0" actor="0x0f"/>
+          <match setup="1" actor="0x14"/>
+          <xflag type="rock" location="Goron Shrine Rock 14" item="RANDOM" name="Rock 14" xyz="486;187;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="0" actor="0x10"/>
+          <match setup="1" actor="0x15"/>
+          <xflag type="rock" location="Goron Shrine Rock 15" item="RANDOM" name="Rock 15" xyz="555;187;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="0" actor="0x11"/>
+          <match setup="1" actor="0x16"/>
+          <xflag type="rock" location="Goron Shrine Rock 16" item="RANDOM" name="Rock 16" xyz="561;359;0"/>
+        </actor>
+        <xflag type="pot" location="Goron Shrine Pot 01" setup="0x0" room="0x0" actor="0x23" item="STICK" name="Pot 1" xyz="452;418;0"/>
+        <xflag type="pot" location="Goron Shrine Pot 02" setup="0x0" room="0x0" actor="0x24" item="MAGIC_JAR_SMALL" name="Pot 2" xyz="445;431;0"/>
+        <xflag type="pot" location="Goron Shrine Pot 03" setup="0x0" room="0x0" actor="0x25" item="MAGIC_JAR_SMALL" name="Pot 3" xyz="254;373;2"/>
+        <xflag type="pot" location="Goron Shrine Pot 04" setup="0x0" room="0x0" actor="0x26" item="STICK" name="Pot 4" xyz="241;367;1"/>
+        <xflag type="pot" location="Goron Shrine Pot 05" setup="0x0" room="0x0" actor="0x27" item="MAGIC_JAR_LARGE" name="Pot 5" xyz="220;357;0"/>
+        <xflag type="pot" location="Goron Shrine Pot 06" setup="0x0" room="0x0" actor="0x28" item="MAGIC_JAR_LARGE" name="Pot 6" xyz="465;425;0"/>
+        <xflag type="pot" location="Goron Shrine Pot 07" setup="0x0" room="0x0" actor="0x29" item="MAGIC_JAR_LARGE" name="Pot 7" xyz="459;437;0"/>
+        <xflag type="pot" location="Goron Shrine Pot 08" setup="0x0" room="0x0" actor="0x2a" item="STICK" name="Pot 8" xyz="231;362;0"/>
+        <xflag type="pot" location="Goron Shrine Pot 09" setup="0x0" room="0x1" actor="0x6" item="STICK" name="Pot 9" xyz="795;333;0"/>
+        <xflag type="pot" location="Goron Shrine Pot 10" setup="0x0" room="0x1" actor="0x7" item="STICK" name="Pot 10" xyz="811;333;0"/>
+        <xflag type="pot" location="Goron Shrine Pot 11" setup="0x0" room="0x1" actor="0x8" item="MAGIC_JAR_LARGE" name="Pot 11" xyz="826;333;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="GORON_SHOP">
+    <scene_rendering id="MM_GORON_SHOP" loc_type="overworld">
+      <rendering_option layout="all">
+        <shop location="Goron Shop Item 1" flag="0x10" item="BOMBS_10" name="Item 1" xyz="302;191;0"/>
+        <shop location="Goron Shop Item 2" flag="0x11" item="ARROWS_10" name="Item 2" xyz="347;191;0"/>
+        <shop location="Goron Shop Item 3" flag="0x12" item="POTION_RED" name="Item 3" xyz="392;191;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="GROTTOS">
+    <scene_rendering id="MM_LONE_PEAK" loc_type="overworld">
+      <rendering_option icon="lens" layout="all">
+        <chest location="Lone Peak Shrine Lens Chest" flag="0x01" item="LENS" name="Lens of Truth" xyz="507;346;0"/>
+      </rendering_option>
+      <rendering_option layout="all">
+        <chest location="Lone Peak Shrine Boulder Chest" flag="0x06" item="RUPEE_RED" name="Boulder" xyz="320;429;0"/>
+        <chest location="Lone Peak Shrine Invisible Chest" flag="0x03" item="RUPEE_PURPLE" name="Invisible" xyz="501;237;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 1 Grass 01" slice="0x0" setup="0x0" room="0x5" actor="0x0" item="RANDOM" name="Pack 1 - Grass 1" xyz="554;427;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 1 Grass 02" slice="0x1" setup="0x0" room="0x5" actor="0x0" item="RANDOM" name="Pack 1 - Grass 2" xyz="577;442;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 1 Grass 03" slice="0x2" setup="0x0" room="0x5" actor="0x0" item="RANDOM" name="Pack 1 - Grass 3" xyz="575;471;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 1 Grass 04" slice="0x3" setup="0x0" room="0x5" actor="0x0" item="RANDOM" name="Pack 1 - Grass 4" xyz="546;478;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 1 Grass 05" slice="0x4" setup="0x0" room="0x5" actor="0x0" item="RANDOM" name="Pack 1 - Grass 5" xyz="554;453;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 1 Grass 06" slice="0x5" setup="0x0" room="0x5" actor="0x0" item="RANDOM" name="Pack 1 - Grass 6" xyz="568;430;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 1 Grass 07" slice="0x6" setup="0x0" room="0x5" actor="0x0" item="RANDOM" name="Pack 1 - Grass 7" xyz="579;456;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 1 Grass 08" slice="0x7" setup="0x0" room="0x5" actor="0x0" item="RANDOM" name="Pack 1 - Grass 8" xyz="562;479;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 1 Grass 09" slice="0x8" setup="0x0" room="0x5" actor="0x0" item="RANDOM" name="Pack 1 - Grass 9" xyz="535;469;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 1 Grass 10" slice="0x9" setup="0x0" room="0x5" actor="0x0" item="RANDOM" name="Pack 1 - Grass 10" xyz="528;456;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 1 Grass 11" slice="0xa" setup="0x0" room="0x5" actor="0x0" item="RANDOM" name="Pack 1 - Grass 11" xyz="531;442;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 1 Grass 12" slice="0xb" setup="0x0" room="0x5" actor="0x0" item="RANDOM" name="Pack 1 - Grass 12" xyz="539;430;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 2 Grass 01" slice="0x0" setup="0x0" room="0x5" actor="0x2" item="RANDOM" name="Pack 2 - Grass 1" xyz="436;269;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 2 Grass 02" slice="0x1" setup="0x0" room="0x5" actor="0x2" item="RANDOM" name="Pack 2 - Grass 2" xyz="459;284;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 2 Grass 03" slice="0x2" setup="0x0" room="0x5" actor="0x2" item="RANDOM" name="Pack 2 - Grass 3" xyz="457;313;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 2 Grass 04" slice="0x3" setup="0x0" room="0x5" actor="0x2" item="RANDOM" name="Pack 2 - Grass 4" xyz="428;320;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 2 Grass 05" slice="0x4" setup="0x0" room="0x5" actor="0x2" item="RANDOM" name="Pack 2 - Grass 5" xyz="436;295;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 2 Grass 06" slice="0x5" setup="0x0" room="0x5" actor="0x2" item="RANDOM" name="Pack 2 - Grass 6" xyz="450;272;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 2 Grass 07" slice="0x6" setup="0x0" room="0x5" actor="0x2" item="RANDOM" name="Pack 2 - Grass 7" xyz="461;298;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 2 Grass 08" slice="0x7" setup="0x0" room="0x5" actor="0x2" item="RANDOM" name="Pack 2 - Grass 8" xyz="444;321;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 2 Grass 09" slice="0x8" setup="0x0" room="0x5" actor="0x2" item="RANDOM" name="Pack 2 - Grass 9" xyz="417;311;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 2 Grass 10" slice="0x9" setup="0x0" room="0x5" actor="0x2" item="RANDOM" name="Pack 2 - Grass 10" xyz="410;298;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 2 Grass 11" slice="0xa" setup="0x0" room="0x5" actor="0x2" item="RANDOM" name="Pack 2 - Grass 11" xyz="413;284;0"/>
+        <xflag type="grass" location="Lone Peak Shrine Grass Pack 2 Grass 12" slice="0xb" setup="0x0" room="0x5" actor="0x2" item="RANDOM" name="Pack 2 - Grass 12" xyz="421;272;0"/>
+        <xflag type="boulder" location="Lone Peak Shrine Large Boulder 1" slice="0x0" setup="0x0" room="0x5" actor="0x6" item="NOTHING" name="Large Boulder 1" xyz="320;429;0"/>
+        <xflag type="boulder" location="Lone Peak Shrine Large Boulder 2" slice="0x0" setup="0x0" room="0x5" actor="0x7" item="NOTHING" name="Large Boulder 2" xyz="727;523;0"/>
+        <xflag type="boulder" location="Lone Peak Shrine Large Boulder 3" slice="0x0" setup="0x0" room="0x5" actor="0x9" item="NOTHING" name="Large Boulder 3" xyz="629;293;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

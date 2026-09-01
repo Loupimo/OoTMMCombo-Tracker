@@ -47,7 +47,7 @@ This release is a full rewrite of the tracker from Qt/C++ to Rust + egui. Every 
 - Progression-tab bugs: quiver / bullet-bag locations from a spoiler log, non-shuffled items, and regressions from multiworld and the new item list
 - Progression tab labelling the Deku Stick and Deku Nut capacity entries as "…Upgrade" instead of their real names
 - Progression tab showing quantified pickup names (e.g. "5 Deku nuts", "Child Fish (2 pounds)") instead of the clean item family name
-- Progressive items (ocarina, Deku stick capacity) lighting every stage on the first pickup instead of advancing one stage at a time
+- Progressive items lighting every stage on the first pickup instead of advancing one stage at a time — now covers every progressive family, including the ones with no dedicated setting (strength / gauntlets, wallets, scales, bomb bags) and the generic shield pickups, not just swords and the ocarina
 - Rusty keys collected but not reflected in the progression tab, now that spoiler names are mapped to the curated in-game item names
 - Multiworld / coop tracking bug
 - Race condition when emitting entrance updates

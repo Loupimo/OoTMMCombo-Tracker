@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="oot">
+  <scene id="LAIR_VOLVAGIA">
+    <scene_rendering id="OOT_TEMPLE_FIRE" loc_type="dungeon">
+      <rendering_option layout="all" type="heart_container">
+        <collectible location="Fire Temple Boss Container" flag="0x1f" item="HEART_CONTAINER" name="Heart Container" xyz="354;1213;0"/>
+      </rendering_option>
+      <rendering_option icon="fire" layout="all">
+        <npc location="Fire Temple Boss" npc="BLUE_WARP_VOLVAGIA" item="MEDALLION_FIRE" name="Fire Medaillon" xyz="358;1182;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

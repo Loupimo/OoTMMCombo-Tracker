@@ -39,7 +39,7 @@ const ProgEntry OoTQuestStatus[] =
     { EGameIcon::song,        "Saria's Song",        { OOT_SONG_SARIA, OOT_SONG_NOTE_SARIA, SHARED_SONG_NOTE_SARIA, SHARED_SONG_SARIA },           true, 6 },
     { EGameIcon::song,        "Sun's Song",          { OOT_SONG_SUN, OOT_SONG_NOTE_SUN, SHARED_SONG_SUN, SHARED_SONG_NOTE_SUN },      true, 6 },
     { EGameIcon::song,        "Song of Time",        { OOT_SONG_TIME, OOT_SONG_NOTE_TIME, SHARED_SONG_TIME, SHARED_SONG_NOTE_TIME },    true, 6 },
-    { EGameIcon::song,        "Song of Storms",      { OOT_SONG_STORMS, OOT_SONG_NOTE_STORMS, SHARED_SONG_STORMS, SHARED_SONG_NOTE_STORMS },  true, 6 },
+    { EGameIcon::song,        "Song of Storms",      { OOT_SONG_OF_STORMS, OOT_SONG_NOTE_STORMS, SHARED_SONG_OF_STORMS, SHARED_SONG_NOTE_STORMS },  true, 6 },
     { EGameIcon::song_green,  "Minuet of Forest",    { OOT_SONG_TP_FOREST, OOT_SONG_NOTE_TP_FOREST, SHARED_SONG_NOTE_TP_FOREST, SHARED_SONG_TP_FOREST },          true, 6 },
     { EGameIcon::song_red,    "Bolero of Fire",      { OOT_SONG_TP_FIRE, OOT_SONG_NOTE_TP_FIRE, SHARED_SONG_NOTE_TP_FIRE, SHARED_SONG_TP_FIRE },          true, 8 },
     { EGameIcon::song_blue,   "Serenade of Water",   { OOT_SONG_TP_WATER, OOT_SONG_NOTE_TP_WATER, SHARED_SONG_NOTE_TP_WATER, SHARED_SONG_TP_WATER },        true, 5 },
@@ -366,7 +366,7 @@ const ProgEntry MMQuestStatus[] =
     { EGameIcon::song,        "Song of Healing",     { MM_SONG_HEALING, MM_SONG_NOTE_HEALING, SHARED_SONG_NOTE_HEALING, SHARED_SONG_HEALING }, true, 6 },
     { EGameIcon::song,        "Epona's Song",        { MM_SONG_EPONA, MM_SONG_NOTE_EPONA, SHARED_SONG_EPONA, SHARED_SONG_NOTE_EPONA },           true, 6 },
     { EGameIcon::song,        "Song of Soaring",     { MM_SONG_SOARING, MM_SONG_NOTE_SOARING, SHARED_SONG_NOTE_SOARING, SHARED_SONG_SOARING }, true, 6 },
-    { EGameIcon::song,        "Song of Storms",      { MM_SONG_STORMS, MM_SONG_NOTE_STORMS, SHARED_SONG_STORMS, SHARED_SONG_NOTE_STORMS },  true, 6 },
+    { EGameIcon::song,        "Song of Storms",      { MM_SONG_OF_STORMS, MM_SONG_NOTE_STORMS, SHARED_SONG_OF_STORMS, SHARED_SONG_NOTE_STORMS },  true, 6 },
     { EGameIcon::song,        "Sun's Song",          { MM_SONG_SUN, MM_SONG_NOTE_SUN, SHARED_SONG_SUN, SHARED_SONG_NOTE_SUN },      true, 6 },
     { EGameIcon::song_green,  "Sonata of Awakening", { MM_SONG_AWAKENING, MM_SONG_NOTE_AWAKENING, SHARED_SONG_NOTE_AWAKENING, SHARED_SONG_AWAKENING },          true, 7 },
     { EGameIcon::song_red,    "Goron Lullaby",       { MM_SONG_GORON_HALF, MM_SONG_GORON, MM_SONG_NOTE_GORON, SHARED_SONG_NOTE_GORON, SHARED_SONG_GORON, SHARED_SONG_GORON_HALF },   true, 8 },
@@ -688,7 +688,7 @@ const ProgEntry SoulsOoTEnemies[] =
     { EGameIcon::soul_of_foe, "Soul of Tektites", { OOT_SOUL_ENEMY_TEKTITE, SHARED_SOUL_ENEMY_TEKTITE }, false },
     { EGameIcon::soul_of_foe, "Soul of Torch Slugs", { OOT_SOUL_ENEMY_TORCH_SLUG }, false },
     { EGameIcon::soul_of_foe, "Soul of Wallmasters", { OOT_SOUL_ENEMY_WALLMASTER, SHARED_SOUL_ENEMY_WALLMASTER }, false },
-    { EGameIcon::soul_of_foe, "Soul of Wolfoses", { OOT_SOUL_ENEMY_WOLFOS, SHARED_SOUL_ENEMY_WOLFOS }, false },
+    { EGameIcon::soul_of_foe, "Soul of Wolfos", { OOT_SOUL_ENEMY_WOLFOS, SHARED_SOUL_ENEMY_WOLFOS }, false },
 };
 
 const ProgEntry SoulsMMEnemies[] =

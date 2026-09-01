@@ -151,7 +151,7 @@ impl TrackerApp {
             self.view_initialized = false;
         }
         if let Some(v) = set_reveal {
-            self.dashboard.set_reveal(v);
+            self.set_reveal(v);
         }
         if let Some(v) = set_autosave {
             self.set_auto_save(v);
@@ -159,9 +159,11 @@ impl TrackerApp {
         if let Some(language) = new_language {
             self.set_language(language);
         }
-        // Persist any option toggle change (language already handled above, so we
-        // sync it into `opts` before the diff to avoid a spurious extra save).
+        // Persist any option toggle change (language + reveal already handled above
+        // via their own setters, so we sync them into `opts` before the diff to
+        // avoid clobbering them / a spurious extra save).
         opts.language = self.app_settings.language;
+        opts.reveal = self.app_settings.reveal;
         if opts != self.app_settings {
             // A change to the reachability filter (on/off, or dim<->hide) changes
             // what is shown and counted, so recompute reachability and the counts.
@@ -598,7 +600,7 @@ impl TrackerApp {
             self.set_auto_save(!auto_save);
         }
         if toggle_reveal {
-            self.dashboard.set_reveal(!reveal);
+            self.set_reveal(!reveal);
         }
     }
 }
