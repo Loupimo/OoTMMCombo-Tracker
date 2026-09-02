@@ -225,9 +225,9 @@ mod tests {
     fn out_of_pool_checks_have_no_logic_rule() {
         let set = logic_location_set();
         for loc in [
-            "OOT Gerudo Fortress Crate Jail Top Child",
+            "OOT Gerudo Valley Crate Child Unreachable 2",
             "OOT Gerudo Fortress Crate Archery Child",
-            "MM Deku Palace Rupee Left 4",
+            "MM Pinnacle Rock Rock Unreachable 2",
             "MM Pinnacle Rock Rock Unreachable 1",
             "MM Snowhead Small Snowball Spring Out of Bounds",
             "OOT Gerudo Valley Crate Child Unreachable 1",
@@ -243,6 +243,10 @@ mod tests {
     /// Coverage: the overwhelming majority of the objects the tracker renders must
     /// join to a logic rule. A big drop here means an upstream rename broke the
     /// `ObjectDef.location` <-> logic-location join (the thing to fix on update).
+    ///
+    /// Two object classes are not randomized checks and carry no logic rule by
+    /// design, so they are excluded from the denominator: `none`-typed unreachable
+    /// / out-of-bounds traces, and gossip-stone fairies (informational hint stones).
     #[test]
     fn object_location_coverage() {
         let set = logic_location_set();
@@ -250,7 +254,12 @@ mod tests {
         let mut covered = 0usize;
         for objs in [data::OOT_OBJECTS, data::MM_OBJECTS] {
             for o in objs {
-                if o.type_ == data::ObjectType::none {
+                if matches!(
+                    o.type_,
+                    data::ObjectType::none
+                        | data::ObjectType::gossip
+                        | data::ObjectType::gossip_big
+                ) {
                     continue;
                 }
                 total += 1;

@@ -1001,6 +1001,11 @@ struct TrackerApp {
     /// per-poll fingerprint detection must not override it (a fingerprint can't
     /// tell v30.1 from a later stable, but the spoiler can).
     rom_from_spoiler: bool,
+    /// True when the loaded ROM predates the compact-XflagID rework (stable <= v32.3),
+    /// so xflag events carry the full scene / room / actor identity in the key. Newer
+    /// builds send only a compact XflagID that `resolve_collected` expands by Location.
+    /// Mirror of the C++ `Settings.UsesLegacyXflags` / `SetUsesLegacyXflags`.
+    uses_legacy_xflags: bool,
 
     // --- Map rendering ---
     /// Object-type icon textures (None = load failed → colored fallback).

@@ -50,13 +50,15 @@
         <xflag type="rupee" location="Death Mountain Crater Rupee Child 8" slice="0x0" setup="0x0" room="0x1" actor="0x8" item="RUPEE_BLUE" name="Child 8" xyz="315;410;0"/>
       </rendering_option>
       <rendering_option context="adult">
-        <xflag type="rupee" location="Death Mountain Crater Rupee Adult 1" slice="0x0" setup="0x2" room="0x1" actor="0x12" item="RUPEE_GREEN" name="Adult 1" xyz="309;312;0"/>
-        <xflag type="rupee" location="Death Mountain Crater Rupee Adult 2" slice="0x1" setup="0x2" room="0x1" actor="0x12" item="RUPEE_GREEN" name="Adult 2" xyz="302;318;0"/>
-        <xflag type="rupee" location="Death Mountain Crater Rupee Adult 3" slice="0x2" setup="0x2" room="0x1" actor="0x12" item="RUPEE_GREEN" name="Adult 3" xyz="303;328;1"/>
-        <xflag type="rupee" location="Death Mountain Crater Rupee Adult 4" slice="0x3" setup="0x2" room="0x1" actor="0x12" item="RUPEE_GREEN" name="Adult 4" xyz="310;332;1"/>
-        <xflag type="rupee" location="Death Mountain Crater Rupee Adult 5" slice="0x4" setup="0x2" room="0x1" actor="0x12" item="RUPEE_GREEN" name="Adult 5" xyz="316;327;1"/>
-        <xflag type="rupee" location="Death Mountain Crater Rupee Adult 6" slice="0x5" setup="0x2" room="0x1" actor="0x12" item="RUPEE_GREEN" name="Adult 6" xyz="316;318;0"/>
-        <xflag type="rupee" location="Death Mountain Crater Rupee Adult 7" slice="0x6" setup="0x2" room="0x1" actor="0x12" item="RUPEE_RED" name="Adult 7" xyz="310;321;0"/>
+        <actor setup="2" room="0x1" actor="0x12">
+          <xflag type="rupee" location="Death Mountain Crater Rupee Adult 1" slice="0x0" item="RUPEE_GREEN" name="Adult 1" xyz="309;312;0"/>
+          <xflag type="rupee" location="Death Mountain Crater Rupee Adult 2" slice="0x1" item="RUPEE_GREEN" name="Adult 2" xyz="302;318;0"/>
+          <xflag type="rupee" location="Death Mountain Crater Rupee Adult 3" slice="0x2" item="RUPEE_GREEN" name="Adult 3" xyz="303;328;1"/>
+          <xflag type="rupee" location="Death Mountain Crater Rupee Adult 4" slice="0x3" item="RUPEE_GREEN" name="Adult 4" xyz="310;332;1"/>
+          <xflag type="rupee" location="Death Mountain Crater Rupee Adult 5" slice="0x4" item="RUPEE_GREEN" name="Adult 5" xyz="316;327;1"/>
+          <xflag type="rupee" location="Death Mountain Crater Rupee Adult 6" slice="0x5" item="RUPEE_GREEN" name="Adult 6" xyz="316;318;0"/>
+          <xflag type="rupee" location="Death Mountain Crater Rupee Adult 7" slice="0x6" item="RUPEE_RED" name="Adult 7" xyz="310;321;0"/>
+        </actor>
       </rendering_option>
       <xflag type="boulder" location="Death Mountain Crater Boulder 1" slice="0x0" setup="0x0" room="0x1" actor="0x23" item="NOTHING" name="Boulder 1" xyz="448;109;0"/>
       <xflag type="boulder" location="Death Mountain Crater Boulder 2" slice="0x0" setup="0x0" room="0x1" actor="0x24" item="NOTHING" name="Boulder 2" xyz="420;175;0"/>

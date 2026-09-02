@@ -13,16 +13,20 @@
         <chest location="Woodfall HP Chest" flag="0x01" item="HEART_PIECE" name="Chest" xyz="275;433;0"/>
       </rendering_option>
       <rendering_option layout="all">
-        <xflag type="pot" location="Woodfall Pot 1" slice="0x0" setup="0x0" room="0x0" actor="0x6" item="FAIRY" name="Pot 1" xyz="460;130;2"/>
-        <xflag type="pot" location="Woodfall Pot 2" slice="0x0" setup="0x0" room="0x0" actor="0x7" item="NUTS_10" name="Pot 2" xyz="460;122;1"/>
-        <xflag type="pot" location="Woodfall Pot 3" slice="0x0" setup="0x0" room="0x0" actor="0x8" item="STICK" name="Pot 3" xyz="460;138;2"/>
-        <xflag type="grass" location="Woodfall Grass 1" slice="0x0" setup="0x0" room="0x0" actor="0x11" item="RANDOM" name="Grass 1" xyz="502;504;0"/>
-        <xflag type="grass" location="Woodfall Grass 2" slice="0x0" setup="0x0" room="0x0" actor="0x12" item="RANDOM" name="Grass 2" xyz="492;497;0"/>
-        <xflag type="grass" location="Woodfall Grass 3" slice="0x0" setup="0x0" room="0x0" actor="0x13" item="RANDOM" name="Grass 3" xyz="500;493;0"/>
-        <xflag type="grass" location="Woodfall Grass 4" slice="0x0" setup="0x0" room="0x0" actor="0x14" item="RANDOM" name="Grass 4" xyz="454;493;0"/>
-        <xflag type="grass" location="Woodfall Grass 5" slice="0x0" setup="0x0" room="0x0" actor="0x15" item="RANDOM" name="Grass 5" xyz="453;505;0"/>
-        <xflag type="grass" location="Woodfall Grass 6" slice="0x0" setup="0x0" room="0x0" actor="0x16" item="RANDOM" name="Grass 6" xyz="461;498;0"/>
-        <xflag type="rupee" location="Woodfall Rupee" slice="0x0" setup="0x0" room="0x0" actor="0x0" item="RUPEE_BLUE" name="Rupee" xyz="597;322;0"/>
+        <xflag type="pot" location="Woodfall Pot 1" actor="0x6" item="FAIRY" name="Pot 1" xyz="460;130;2"/>
+        <xflag type="pot" location="Woodfall Pot 2" actor="0x7" item="NUTS_10" name="Pot 2" xyz="460;122;1"/>
+        <xflag type="pot" location="Woodfall Pot 3" actor="0x8" item="STICK" name="Pot 3" xyz="460;138;2"/>
+        <xflag type="grass" location="Woodfall Grass 1" actor="0x11" item="RANDOM" name="Grass 1" xyz="502;504;0"/>
+        <xflag type="grass" location="Woodfall Grass 2" actor="0x12" item="RANDOM" name="Grass 2" xyz="492;497;0"/>
+        <xflag type="grass" location="Woodfall Grass 3" actor="0x13" item="RANDOM" name="Grass 3" xyz="500;493;0"/>
+        <xflag type="grass" location="Woodfall Grass 4" actor="0x14" item="RANDOM" name="Grass 4" xyz="454;493;0"/>
+        <xflag type="grass" location="Woodfall Grass 5" actor="0x15" item="RANDOM" name="Grass 5" xyz="453;505;0"/>
+        <xflag type="grass" location="Woodfall Grass 6" actor="0x16" item="RANDOM" name="Grass 6" xyz="461;498;0"/>
+        <actor>
+          <match setup="0" actor="0x00"/>
+          <match setup="2" actor="0x25"/>
+          <xflag type="rupee" location="Woodfall Rupee" item="RUPEE_BLUE" name="Rupee" xyz="597;322;0"/>
+        </actor>
       </rendering_option>
     </scene_rendering>
   </scene>

@@ -3771,33 +3771,85 @@ FROGS_GAME;OOT_ZORA_RIVER;Frogs - Game;OOT Zora River Frogs Game;npc;785;628;0;O
 0x0003e;OOT_ZORA_RIVER;Lower 2;OOT Zora River Boulder Lower 2;boulder;1274;328;0;OOT_ZORA_RIVER;boulder;render_type;Child;0;oot;overworld;;;0x1312
 0x0003f;OOT_ZORA_RIVER;Lower 3;OOT Zora River Boulder Lower 3;boulder;1290;328;0;OOT_ZORA_RIVER;boulder;render_type;Child;0;oot;overworld;;;0x1313
 0x00040;OOT_ZORA_RIVER;Lower 4;OOT Zora River Boulder Lower 4;boulder;1261;319;0;OOT_ZORA_RIVER;boulder;render_type;Child;0;oot;overworld;;;0x1314
-0xf;OOT_KOKIRI_FOREST;Near Lost Woods;OOT Kokiri Forest Gossip Fairy Near Lost Woods;gossip;467;131;0;OOT_KOKIRI_FOREST;gossip;render_type;All;1;oot;overworld;;;0x119F
-0x7;OOT_KOKIRI_FOREST;Near Deku Tree 1;OOT Kokiri Forest Gossip Fairy Near Deku Tree 1;gossip;525;390;0;OOT_KOKIRI_FOREST;gossip;render_type;All;1;oot;overworld;;;0x11A1
-0x8;OOT_KOKIRI_FOREST;Near Deku Tree 2;OOT Kokiri Forest Gossip Fairy Near Deku Tree 2;gossip;794;288;0;OOT_KOKIRI_FOREST;gossip;render_type;All;1;oot;overworld;;;0x11A3
-0xf;OOT_KOKIRI_FOREST;Near Lost Woods;OOT Kokiri Forest Gossip Fairy Near Lost Woods;gossip_big;467;106;0;OOT_KOKIRI_FOREST;gossip_big;render_type;All;1;oot;overworld;;;0x119F
-0x7;OOT_KOKIRI_FOREST;Near Deku Tree 1;OOT Kokiri Forest Gossip Fairy Near Deku Tree 1;gossip_big;546;378;0;OOT_KOKIRI_FOREST;gossip_big;render_type;All;1;oot;overworld;;;0x11A1
-0x8;OOT_KOKIRI_FOREST;Near Deku Tree 2;OOT Kokiri Forest Gossip Fairy Near Deku Tree 2;gossip_big;814;280;0;OOT_KOKIRI_FOREST;gossip_big;render_type;All;1;oot;overworld;;;0x11A3
-0x4;OOT_LOST_WOODS;Gossip Fairy;OOT Lost Woods Gossip Fairy;gossip;178;3114;0;OOT_LOST_WOODS;gossip;render_type;All;0;oot;overworld;;;0x122E
-0x4;OOT_LOST_WOODS;Gossip Big Fairy;OOT Lost Woods Gossip Big Fairy;gossip_big;147;3114;0;OOT_LOST_WOODS;gossip_big;render_type;All;0;oot;overworld;;;0x122F
-0x2;OOT_SACRED_FOREST_MEADOW;Maze 1;OOT Sacred Meadow Gossip Fairy Maze 1;gossip;1427;246;0;OOT_SACRED_FOREST_MEADOW;gossip;render_type;All;1;oot;overworld;;;0x129E
-0x3;OOT_SACRED_FOREST_MEADOW;Maze 2;OOT Sacred Meadow Gossip Fairy Maze 2;gossip;1168;433;0;OOT_SACRED_FOREST_MEADOW;gossip;render_type;All;2;oot;overworld;;;0x12A0
-0x4;OOT_SACRED_FOREST_MEADOW;Deep;OOT Sacred Meadow Gossip Fairy Deep;gossip;546;450;0;OOT_SACRED_FOREST_MEADOW;gossip;render_type;All;3;oot;overworld;;;0x12A2
-0x2;OOT_SACRED_FOREST_MEADOW;Maze 1;OOT Sacred Meadow Gossip Big Fairy Maze 1;gossip_big;1427;226;0;OOT_SACRED_FOREST_MEADOW;gossip_big;render_type;All;4;oot;overworld;;;0x129F
-0x3;OOT_SACRED_FOREST_MEADOW;Maze 2;OOT Sacred Meadow Gossip Big Fairy Maze 1;gossip_big;1195;433;0;OOT_SACRED_FOREST_MEADOW;gossip_big;render_type;All;5;oot;overworld;;;0x129F
-0x4;OOT_SACRED_FOREST_MEADOW;Deep;OOT Sacred Meadow Gossip Big Fairy Deep;gossip_big;515;450;0;OOT_SACRED_FOREST_MEADOW;gossip_big;render_type;All;6;oot;overworld;;;0x12A3
-0x1;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;Gossip Fairy 1;OOT Temple of Time Exterior Gossip Fairy 1;gossip;901;522;0;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;gossip;render_type;All;0;oot;overworld;;;0x1290
-0x1;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;Gossip Big Fairy 1;OOT Temple of Time Exterior Gossip Big Fairy 1;gossip_big;874;522;0;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;gossip_big;render_type;All;0;oot;overworld;;;0x1291
-0x2;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;Gossip Fairy 2;OOT Temple of Time Exterior Gossip Fairy 2;gossip;963;522;0;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;gossip;render_type;All;0;oot;overworld;;;0x1292
-0x2;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;Gossip Big Fairy 2;OOT Temple of Time Exterior Gossip Big Fairy 2;gossip_big;939;522;0;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;gossip_big;render_type;All;0;oot;overworld;;;0x1293
-0x3;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;Gossip Fairy 3;OOT Temple of Time Exterior Gossip Fairy 3;gossip;1024;522;0;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;gossip;render_type;All;0;oot;overworld;;;0x1294
-0x3;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;Gossip Big Fairy 3;OOT Temple of Time Exterior Gossip Big Fairy 3;gossip_big;1001;522;0;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;gossip_big;render_type;All;0;oot;overworld;;;0x1295
-0x4;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;Gossip Fairy 4;OOT Temple of Time Exterior Gossip Fairy 4;gossip;1086;522;0;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;gossip;render_type;All;0;oot;overworld;;;0x1296
-0x4;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;Gossip Big Fairy 4;OOT Temple of Time Exterior Gossip Big Fairy 4;gossip_big;1063;522;0;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;gossip_big;render_type;All;0;oot;overworld;;;0x1297
-0x3;OOT_HYRULE_CASTLE;Near Entrance Fairy;OOT Hyrule Castle Gossip Fairy Near Entrance;gossip;524;852;0;OOT_HYRULE_CASTLE;gossip;render_type;All;0;oot;overworld;;;0x10FF
-0x3;OOT_HYRULE_CASTLE;Near Entrance Big Fairy;OOT Hyrule Castle Gossip Big Fairy Near Entrance;gossip_big;500;852;0;OOT_HYRULE_CASTLE;gossip_big;render_type;All;0;oot;overworld;;;0x1100
-0x2;OOT_HYRULE_CASTLE;Near Castle Fairy;OOT Hyrule Castle Gossip Fairy Near Castle;gossip;247;396;0;OOT_HYRULE_CASTLE;gossip;render_type;All;0;oot;overworld;;;0x10FD
-0x2;OOT_HYRULE_CASTLE;Near Castle Big Fairy;OOT Hyrule Castle Gossip Big Fairy Near Castle;gossip_big;221;396;0;OOT_HYRULE_CASTLE;gossip_big;render_type;All;0;oot;overworld;;;0x10FE
-0x0;OOT_DODONGO_CAVERN;Gossip Fairy;OOT MQ Dodongo Cavern Gossip Fairy;gossip;700;1533;0;OOT_DODONGO_CAVERN;gossip;render_type;All;0;oot_mq;dungeon;;;0x0C7A
-0x0;OOT_DODONGO_CAVERN;Gossip Big Fairy;OOT MQ Dodongo Cavern Gossip Big Fairy;gossip_big;700;1504;0;OOT_DODONGO_CAVERN;gossip_big;render_type;All;0;oot_mq;dungeon;;;0x0C7B
-0x19;OOT_DODONGO_CAVERN;Gossip Fairy;OOT Dodongo Cavern Gossip Fairy;gossip;1303;1346;0;OOT_DODONGO_CAVERN;gossip;render_type;All;0;oot;dungeon;;;0x0A69
-0x19;OOT_DODONGO_CAVERN;Gossip Big Fairy;OOT Dodongo Cavern Gossip Big Fairy;gossip_big;1303;1316;0;OOT_DODONGO_CAVERN;gossip_big;render_type;All;0;oot;dungeon;;;0x0A6A
+0x00019;OOT_DODONGO_CAVERN;Gossip Stone;OOT Dodongo Cavern Gossip Fairy;gossip;1303;1346;0;OOT_DODONGO_CAVERN;fairy;render_type;All;0;oot;dungeon;;;0xFFFF
+0x10019;OOT_DODONGO_CAVERN;Gossip Stone;OOT Dodongo Cavern Gossip Big Fairy;gossip_big;1303;1316;0;OOT_DODONGO_CAVERN;fairy_spot;render_type;All;0;oot;dungeon;;;0xFFFF
+0x00000;OOT_DODONGO_CAVERN;Gossip Stone;OOT MQ Dodongo Cavern Gossip Fairy;gossip;700;1533;0;OOT_DODONGO_CAVERN;fairy;render_type;All;0;oot_mq;dungeon;;;0xFFFF
+0x10000;OOT_DODONGO_CAVERN;Gossip Stone;OOT MQ Dodongo Cavern Gossip Big Fairy;gossip_big;700;1504;0;OOT_DODONGO_CAVERN;fairy_spot;render_type;All;0;oot_mq;dungeon;;;0xFFFF
+0x00109;OOT_DEATH_MOUNTAIN_CRATER;Gossip Stone;OOT Death Mountain Crater Gossip Fairy;gossip;255;87;0;OOT_DEATH_MOUNTAIN_CRATER;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10109;OOT_DEATH_MOUNTAIN_CRATER;Gossip Stone;OOT Death Mountain Crater Gossip Big Fairy;gossip_big;228;87;0;OOT_DEATH_MOUNTAIN_CRATER;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x03a09;OOT_GROTTOS;Gossip Stone;OOT Death Mountain Crater Generic Grotto Gossip Fairy;gossip;637;632;0;OOT_GROTTO_DEATH_CRATER_GENERIC;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x13a09;OOT_GROTTOS;Gossip Stone;OOT Death Mountain Crater Generic Grotto Gossip Big Fairy;gossip_big;617;632;0;OOT_GROTTO_DEATH_CRATER_GENERIC;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00004;OOT_DEATH_MOUNTAIN_TRAIL;Gossip Stone;OOT Death Mountain Trail Gossip Fairy;gossip;621;326;0;OOT_DEATH_MOUNTAIN_TRAIL;fairy;render_type;All;2;oot;overworld;;;0xFFFF
+0x10004;OOT_DEATH_MOUNTAIN_TRAIL;Gossip Stone;OOT Death Mountain Trail Gossip Big Fairy;gossip_big;601;315;0;OOT_DEATH_MOUNTAIN_TRAIL;fairy_spot;render_type;All;2;oot;overworld;;;0xFFFF
+0x03709;OOT_GROTTOS;Gossip Stone;OOT Death Mountain Trail Storms Grotto Gossip Fairy;gossip;637;632;0;OOT_GROTTO_DEATH_TRIAL_STORMS;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x13709;OOT_GROTTOS;Gossip Stone;OOT Death Mountain Trail Storms Grotto Gossip Big Fairy;gossip_big;617;632;0;OOT_GROTTO_DEATH_TRIAL_STORMS;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00003;OOT_DESERT_COLOSSUS;Gossip Stone;OOT Desert Colossus Gossip Fairy;gossip;700;51;0;OOT_DESERT_COLOSSUS;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10003;OOT_DESERT_COLOSSUS;Gossip Stone;OOT Desert Colossus Gossip Big Fairy;gossip_big;691;31;0;OOT_DESERT_COLOSSUS;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00008;OOT_GERUDO_VALLEY;Gossip Stone;OOT Gerudo Valley Gossip Fairy;gossip;435;174;0;OOT_GERUDO_VALLEY;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10008;OOT_GERUDO_VALLEY;Gossip Stone;OOT Gerudo Valley Gossip Big Fairy;gossip_big;414;174;0;OOT_GERUDO_VALLEY;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00030;OOT_GORON_CITY;Gossip Stone - Maze;OOT Goron City Gossip Fairy Maze;gossip;1094;150;0;OOT_GORON_CITY;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10030;OOT_GORON_CITY;Gossip Stone - Maze;OOT Goron City Gossip Big Fairy Maze;gossip_big;1063;150;0;OOT_GORON_CITY;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00205;OOT_GORON_CITY;Gossip Stone - Medigoron;OOT Goron City Gossip Fairy Medigoron;gossip;228;315;0;OOT_GORON_CITY;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10205;OOT_GORON_CITY;Gossip Stone - Medigoron;OOT Goron City Gossip Big Fairy Medigoron;gossip_big;206;310;0;OOT_GORON_CITY;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00102;OOT_GRAVEYARD;Gossip Stone;OOT Graveyard Gossip Fairy;gossip;525;318;0;OOT_GRAVEYARD;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10102;OOT_GRAVEYARD;Gossip Stone;OOT Graveyard Gossip Big Fairy;gossip_big;511;304;0;OOT_GRAVEYARD;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x02209;OOT_GROTTOS;Gossip Stone;OOT Hyrule Field Southeast Grotto Gossip Fairy;gossip;637;632;0;OOT_GROTTO_HYRULE_SE;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x12209;OOT_GROTTOS;Gossip Stone;OOT Hyrule Field Southeast Grotto Gossip Big Fairy;gossip_big;617;632;0;OOT_GROTTO_HYRULE_SE;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x02309;OOT_GROTTOS;Gossip Stone;OOT Hyrule Field Open Grotto Gossip Fairy;gossip;637;632;0;OOT_GROTTO_HYRULE_OPEN;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x12309;OOT_GROTTOS;Gossip Stone;OOT Hyrule Field Open Grotto Gossip Big Fairy;gossip_big;617;632;0;OOT_GROTTO_HYRULE_OPEN;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x02009;OOT_GROTTOS;Gossip Stone;OOT Hyrule Field Market Grotto Gossip Fairy;gossip;637;632;0;OOT_GROTTO_HYRULE_MARKET;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x12009;OOT_GROTTOS;Gossip Stone;OOT Hyrule Field Market Grotto Gossip Big Fairy;gossip_big;617;632;0;OOT_GROTTO_HYRULE_MARKET;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x0040a;OOT_GROTTOS;Gossip Stone;OOT Hyrule Field Cow Grotto Gossip Fairy;gossip;938;717;0;OOT_GROTTO_HYRULE_GERUDO;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x1040a;OOT_GROTTOS;Gossip Stone;OOT Hyrule Field Cow Grotto Gossip Big Fairy;gossip_big;923;700;0;OOT_GROTTO_HYRULE_GERUDO;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00002;OOT_HYRULE_CASTLE;Gossip Stone - Near Castle;OOT Hyrule Castle Gossip Fairy Near Castle;gossip;247;396;0;OOT_HYRULE_CASTLE;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10002;OOT_HYRULE_CASTLE;Gossip Stone - Near Castle;OOT Hyrule Castle Gossip Big Fairy Near Castle;gossip_big;221;396;0;OOT_HYRULE_CASTLE;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00003;OOT_HYRULE_CASTLE;Gossip Stone - Near Entrance;OOT Hyrule Castle Gossip Fairy Near Entrance;gossip;524;852;0;OOT_HYRULE_CASTLE;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10003;OOT_HYRULE_CASTLE;Gossip Stone - Near Entrance;OOT Hyrule Castle Gossip Big Fairy Near Entrance;gossip_big;500;852;0;OOT_HYRULE_CASTLE;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x0080d;OOT_GROTTOS;Gossip Stone;OOT Hyrule Castle Grotto Gossip Fairy;gossip;709;212;0;OOT_GROTTO_CASTLE_STORMS;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x1080d;OOT_GROTTOS;Gossip Stone;OOT Hyrule Castle Grotto Gossip Big Fairy;gossip_big;688;212;0;OOT_GROTTO_CASTLE_STORMS;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x02809;OOT_GROTTOS;Gossip Stone;OOT Kakariko Generic Grotto Gossip Fairy;gossip;637;632;0;OOT_GROTTO_KAKARIKO_OPEN;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x12809;OOT_GROTTOS;Gossip Stone;OOT Kakariko Generic Grotto Gossip Big Fairy;gossip_big;617;632;0;OOT_GROTTO_KAKARIKO_OPEN;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x0000f;OOT_KOKIRI_FOREST;Gossip Stone - Near Lost Woods;OOT Kokiri Forest Gossip Fairy Near Lost Woods;gossip;467;131;0;OOT_KOKIRI_FOREST;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x1000f;OOT_KOKIRI_FOREST;Gossip Stone - Near Lost Woods;OOT Kokiri Forest Gossip Big Fairy Near Lost Woods;gossip_big;467;106;0;OOT_KOKIRI_FOREST;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00107;OOT_KOKIRI_FOREST;Gossip Stone - Near Deku Tree 1;OOT Kokiri Forest Gossip Fairy Near Deku Tree 1;gossip;525;390;0;OOT_KOKIRI_FOREST;fairy;render_type;All;1;oot;overworld;;;0xFFFF
+0x10107;OOT_KOKIRI_FOREST;Gossip Stone - Near Deku Tree 1;OOT Kokiri Forest Gossip Big Fairy Near Deku Tree 1;gossip_big;546;378;0;OOT_KOKIRI_FOREST;fairy_spot;render_type;All;1;oot;overworld;;;0xFFFF
+0x00108;OOT_KOKIRI_FOREST;Gossip Stone - Near Deku Tree 2;OOT Kokiri Forest Gossip Fairy Near Deku Tree 2;gossip;794;288;0;OOT_KOKIRI_FOREST;fairy;render_type;All;1;oot;overworld;;;0xFFFF
+0x10108;OOT_KOKIRI_FOREST;Gossip Stone - Near Deku Tree 2;OOT Kokiri Forest Gossip Big Fairy Near Deku Tree 2;gossip_big;814;280;0;OOT_KOKIRI_FOREST;fairy_spot;render_type;All;1;oot;overworld;;;0xFFFF
+0x02c09;OOT_GROTTOS;Gossip Stone;OOT Kokiri Forest Storms Grotto Gossip Fairy;gossip;637;632;0;OOT_GROTTO_KOKIRI_FOREST_STORMS;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x12c09;OOT_GROTTOS;Gossip Stone;OOT Kokiri Forest Storms Grotto Gossip Big Fairy;gossip_big;617;632;0;OOT_GROTTO_KOKIRI_FOREST_STORMS;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00034;OOT_LAKE_HYLIA;Gossip Stone - Land;OOT Lake Hylia Gossip Fairy Land;gossip;1001;676;0;OOT_LAKE_HYLIA;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10034;OOT_LAKE_HYLIA;Gossip Stone - Land;OOT Lake Hylia Gossip Big Fairy Land;gossip_big;980;676;0;OOT_LAKE_HYLIA;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00035;OOT_LAKE_HYLIA;Gossip Stone - Water East;OOT Lake Hylia Gossip Fairy Water East;gossip;982;186;0;OOT_LAKE_HYLIA;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10035;OOT_LAKE_HYLIA;Gossip Stone - Water East;OOT Lake Hylia Gossip Big Fairy Water East;gossip_big;960;173;0;OOT_LAKE_HYLIA;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00036;OOT_LAKE_HYLIA;Gossip Stone - Water West;OOT Lake Hylia Gossip Fairy Water West;gossip;441;125;0;OOT_LAKE_HYLIA;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10036;OOT_LAKE_HYLIA;Gossip Stone - Water West;OOT Lake Hylia Gossip Big Fairy Water West;gossip_big;424;110;0;OOT_LAKE_HYLIA;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00504;OOT_LOST_WOODS;Gossip Stone;OOT Lost Woods Gossip Fairy;gossip;178;3114;0;OOT_LOST_WOODS;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10504;OOT_LOST_WOODS;Gossip Stone;OOT Lost Woods Gossip Big Fairy;gossip_big;147;3114;0;OOT_LOST_WOODS;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x03409;OOT_GROTTOS;Gossip Stone;OOT Lost Woods Generic Grotto Gossip Fairy;gossip;637;632;0;OOT_GROTTO_LOST_WOODS_GENERIC;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x13409;OOT_GROTTOS;Gossip Stone;OOT Lost Woods Generic Grotto Gossip Big Fairy;gossip_big;617;632;0;OOT_GROTTO_LOST_WOODS_GENERIC;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00001;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;Gossip Stone 1;OOT Temple of Time Exterior Gossip Fairy 1;gossip;901;522;0;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10001;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;Gossip Stone 1;OOT Temple of Time Exterior Gossip Big Fairy 1;gossip_big;874;522;0;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00002;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;Gossip Stone 2;OOT Temple of Time Exterior Gossip Fairy 2;gossip;963;522;0;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10002;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;Gossip Stone 2;OOT Temple of Time Exterior Gossip Big Fairy 2;gossip_big;939;522;0;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00003;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;Gossip Stone 3;OOT Temple of Time Exterior Gossip Fairy 3;gossip;1024;522;0;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10003;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;Gossip Stone 3;OOT Temple of Time Exterior Gossip Big Fairy 3;gossip_big;1001;522;0;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00004;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;Gossip Stone 4;OOT Temple of Time Exterior Gossip Fairy 4;gossip;1086;522;0;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10004;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;Gossip Stone 4;OOT Temple of Time Exterior Gossip Big Fairy 4;gossip_big;1063;522;0;OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00002;OOT_SACRED_FOREST_MEADOW;Gossip Stone - Maze 1;OOT Sacred Meadow Gossip Fairy Maze 1;gossip;1427;246;0;OOT_SACRED_FOREST_MEADOW;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10002;OOT_SACRED_FOREST_MEADOW;Gossip Stone - Maze 1;OOT Sacred Meadow Gossip Big Fairy Maze 1;gossip_big;1427;226;0;OOT_SACRED_FOREST_MEADOW;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00003;OOT_SACRED_FOREST_MEADOW;Gossip Stone - Maze 2;OOT Sacred Meadow Gossip Fairy Maze 2;gossip;1195;433;0;OOT_SACRED_FOREST_MEADOW;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10003;OOT_SACRED_FOREST_MEADOW;Gossip Stone - Maze 2;OOT Sacred Meadow Gossip Big Fairy Maze 2;gossip_big;1168;433;0;OOT_SACRED_FOREST_MEADOW;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00004;OOT_SACRED_FOREST_MEADOW;Gossip Stone - Deep;OOT Sacred Meadow Gossip Fairy Deep;gossip;546;450;0;OOT_SACRED_FOREST_MEADOW;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10004;OOT_SACRED_FOREST_MEADOW;Gossip Stone - Deep;OOT Sacred Meadow Gossip Big Fairy Deep;gossip_big;515;450;0;OOT_SACRED_FOREST_MEADOW;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x0000d;OOT_ZORA_DOMAIN;Gossip Stone;OOT Zora Domain Gossip Fairy;gossip;589;167;0;OOT_ZORA_DOMAIN;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x1000d;OOT_ZORA_DOMAIN;Gossip Stone;OOT Zora Domain Gossip Big Fairy;gossip_big;569;167;0;OOT_ZORA_DOMAIN;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00012;OOT_ZORA_FOUNTAIN;Gossip Stone - Land;OOT Zora Fountain Gossip Fairy Land;gossip;403;120;0;OOT_ZORA_FOUNTAIN;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10012;OOT_ZORA_FOUNTAIN;Gossip Stone - Land;OOT Zora Fountain Gossip Big Fairy Land;gossip_big;389;118;0;OOT_ZORA_FOUNTAIN;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00014;OOT_ZORA_FOUNTAIN;Gossip Stone - Water;OOT Zora Fountain Gossip Fairy Water;gossip;649;505;0;OOT_ZORA_FOUNTAIN;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10014;OOT_ZORA_FOUNTAIN;Gossip Stone - Water;OOT Zora Fountain Gossip Big Fairy Water;gossip_big;637;524;0;OOT_ZORA_FOUNTAIN;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00007;OOT_ZORA_RIVER;Gossip Stone - Upper;OOT Zora River Gossip Fairy Upper;gossip;865;619;0;OOT_ZORA_RIVER;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10007;OOT_ZORA_RIVER;Gossip Stone - Upper;OOT Zora River Gossip Big Fairy Upper;gossip_big;847;619;0;OOT_ZORA_RIVER;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x00101;OOT_ZORA_RIVER;Gossip Stone - Water;OOT Zora River Gossip Fairy Water;gossip;201;752;0;OOT_ZORA_RIVER;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x10101;OOT_ZORA_RIVER;Gossip Stone - Water;OOT Zora River Gossip Big Fairy Water;gossip_big;185;752;0;OOT_ZORA_RIVER;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF
+0x02909;OOT_GROTTOS;Gossip Stone;OOT Zora River Generic Grotto Gossip Fairy;gossip;637;632;0;OOT_GROTTO_ZORA_RIVER_GENERIC;fairy;render_type;All;0;oot;overworld;;;0xFFFF
+0x12909;OOT_GROTTOS;Gossip Stone;OOT Zora River Generic Grotto Gossip Big Fairy;gossip_big;617;632;0;OOT_GROTTO_ZORA_RIVER_GENERIC;fairy_spot;render_type;All;0;oot;overworld;;;0xFFFF

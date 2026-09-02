@@ -1213,7 +1213,7 @@ HONEY_DARLING_1;MM_HONEY_DARLING;Reward - Any Day;MM Honey & Darling Reward Any 
 0x0003d;MM_IKANA_CANYON;Grass 3;MM Ikana Canyon Grass 3;grass;417;421;0;MM_IKANA_CANYON;grass;render_type;All;0;all;overworld;;;0x051E
 0x0003e;MM_IKANA_CANYON;Grass 4;MM Ikana Canyon Grass 4;grass;399;483;0;MM_IKANA_CANYON;grass;render_type;All;0;all;overworld;;;0x051F
 OWL_IKANA_CANYON;MM_IKANA_CANYON;Owl Statue;MM Ikana Canyon Owl Statue;npc;389;465;0;MM_IKANA_CANYON;owl;render_type;All;0;all;overworld;Sword (MM);Hit the statue with a sword;0xFFFF
-0x1e;MM_IKANA_CANYON;Ledge;MM Ikana Valley Scrub HP;collectible;791;200;0;MM_IKANA_CANYON;heart_piece;render_type;All;0;all;overworld;Zora Mask (MM), Deku Mask, Ocean Title Deed, Soul of Business Scrubs (MM);Use the deku flower to reach the ledge;0xFFFF
+0x1e;MM_IKANA_CANYON;Ledge;MM Ikana Valley Scrub HP;collectible;793;209;0;MM_IKANA_CANYON;heart_piece;render_type;All;0;all;overworld;Zora Mask (MM), Deku Mask, Ocean Title Deed, Soul of Business Scrubs (MM);Use the deku flower to reach the ledge;0xFFFF
 SCRUB_VALLEY;MM_IKANA_CANYON;Scrub - Rupee;MM Ikana Valley Scrub Rupee;npc;779;277;0;MM_IKANA_CANYON;scrub;render_type;All;0;all;overworld;Zora Mask (MM), Ocean Title Deed, Soul of Business Scrubs (MM);Give the <b>Ocean Title Deed</b> while wearing the <b>Zora Mask</b>;0xFFFF
 SCRUB_SHOP_POTION_BLUE;MM_IKANA_CANYON;Scrub - Shop;MM Ikana Valley Scrub Shop;npc;767;276;1;MM_IKANA_CANYON;shop;render_type;All;0;all;overworld;Soul of Business Scrubs (MM);Buy the item from the scrub while in human form;0xFFFF
 GHOST_HUT_HEART_PIECE;MM_IKANA_CANYON;Game Prize;MM Ghost Hut HP;none;0;0;0;MM_GHOST_HUT;none;render_type;All;0;all;overworld;;;0xFFFF
@@ -3544,41 +3544,41 @@ TOUR_GUIDE_HEART_PIECE;MM_TOURIST_INFORMATION;Deku's King or Tingle Picture;MM T
 0x00005;MM_TRADING_POST;Bush 4;MM Trading Post Bush 4;bush;929;598;0;MM_TRADING_POST;bush;render_type;All;0;all;overworld;;;0x037A
 CHEST_GAME;MM_TREASURE_SHOP;Game Prize;MM Chest Game HP;npc;259;447;0;MM_TREASURE_SHOP;heart_piece;render_type;All;0;all;minigame;;;0xFFFF
 GORON_ELDER;MM_TWIN_ISLANDS;Goron's Lulluby - Intro;MM Goron Elder;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0xFFFF
-0x0003b;MM_TWIN_ISLANDS;Big Snowball 1;MM Twin Islands Big Snowball 01;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0922
-0x0003a;MM_TWIN_ISLANDS;Big Snowball 2;MM Twin Islands Big Snowball 02;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0923
-0x00039;MM_TWIN_ISLANDS;Big Snowball 3;MM Twin Islands Big Snowball 03;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0924
-0x00037;MM_TWIN_ISLANDS;Big Snowball 4;MM Twin Islands Big Snowball 04;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0925
-0x00016;MM_TWIN_ISLANDS;Big Snowball 5;MM Twin Islands Big Snowball 05;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0926
-0x0003c;MM_TWIN_ISLANDS;Big Snowball 6;MM Twin Islands Big Snowball 06;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0927
-0x00013;MM_TWIN_ISLANDS;Big Snowball 7;MM Twin Islands Big Snowball 07;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0928
-0x00005;MM_TWIN_ISLANDS;Big Snowball 8;MM Twin Islands Big Snowball 08;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0929
-0x00038;MM_TWIN_ISLANDS;Big Snowball 9;MM Twin Islands Big Snowball 09;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x092A
-0x0001e;MM_TWIN_ISLANDS;Big Snowball 10;MM Twin Islands Big Snowball 10;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x092B
-0x00036;MM_TWIN_ISLANDS;Big Snowball 11;MM Twin Islands Big Snowball 11;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x092C
-0x00012;MM_TWIN_ISLANDS;Big Snowball 12;MM Twin Islands Big Snowball 12;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x092D
-0x0003d;MM_TWIN_ISLANDS;Big Snowball 13;MM Twin Islands Big Snowball 13;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x092E
-0x0000b;MM_TWIN_ISLANDS;Grass 1;MM Twin Islands Grass 01;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0935
-0x1000b;MM_TWIN_ISLANDS;Grass 2;MM Twin Islands Grass 02;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0936
-0x2000b;MM_TWIN_ISLANDS;Grass 3;MM Twin Islands Grass 03;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0937
-0x3000b;MM_TWIN_ISLANDS;Grass 4;MM Twin Islands Grass 04;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0938
-0x4000b;MM_TWIN_ISLANDS;Grass 5;MM Twin Islands Grass 05;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0939
-0x5000b;MM_TWIN_ISLANDS;Grass 6;MM Twin Islands Grass 06;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x093A
-0x6000b;MM_TWIN_ISLANDS;Grass 7;MM Twin Islands Grass 07;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x093B
-0x7000b;MM_TWIN_ISLANDS;Grass 8;MM Twin Islands Grass 08;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x093C
-0x8000b;MM_TWIN_ISLANDS;Grass 9;MM Twin Islands Grass 09;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x093D
-0x9000b;MM_TWIN_ISLANDS;Grass 10;MM Twin Islands Grass 10;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x093E
-0xa000b;MM_TWIN_ISLANDS;Grass 11;MM Twin Islands Grass 11;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x093F
-0xb000b;MM_TWIN_ISLANDS;Grass 12;MM Twin Islands Grass 12;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0940
-0x0000e;MM_TWIN_ISLANDS;Rupee 1;MM Twin Islands Rupee 1;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0944
-0x0000f;MM_TWIN_ISLANDS;Rupee 2;MM Twin Islands Rupee 2;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0945
-0x00010;MM_TWIN_ISLANDS;Rupee 3;MM Twin Islands Rupee 3;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0946
-0x00012;MM_TWIN_ISLANDS;Rupee 4;MM Twin Islands Rupee 4;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0947
-0x0003e;MM_TWIN_ISLANDS;Small Snowball 1;MM Twin Islands Small Snowball 1;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x092F
-0x0003f;MM_TWIN_ISLANDS;Small Snowball 2;MM Twin Islands Small Snowball 2;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0930
-0x00040;MM_TWIN_ISLANDS;Small Snowball 3;MM Twin Islands Small Snowball 3;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0931
-0x00041;MM_TWIN_ISLANDS;Ramp 1;MM Twin Islands Small Snowball Ramp 1;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0932
-0x00042;MM_TWIN_ISLANDS;Ramp 2;MM Twin Islands Small Snowball Ramp 2;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0933
-0x00043;MM_TWIN_ISLANDS;Ramp 3;MM Twin Islands Small Snowball Ramp 3;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0934
+0x0003b;MM_TWIN_ISLANDS;Big Snowball 1;MM Twin Islands Big Snowball 01;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0926
+0x0003a;MM_TWIN_ISLANDS;Big Snowball 2;MM Twin Islands Big Snowball 02;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0927
+0x00039;MM_TWIN_ISLANDS;Big Snowball 3;MM Twin Islands Big Snowball 03;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0928
+0x00037;MM_TWIN_ISLANDS;Big Snowball 4;MM Twin Islands Big Snowball 04;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0929
+0x00016;MM_TWIN_ISLANDS;Big Snowball 5;MM Twin Islands Big Snowball 05;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x092A
+0x0003c;MM_TWIN_ISLANDS;Big Snowball 6;MM Twin Islands Big Snowball 06;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x092B
+0x00013;MM_TWIN_ISLANDS;Big Snowball 7;MM Twin Islands Big Snowball 07;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x092C
+0x00005;MM_TWIN_ISLANDS;Big Snowball 8;MM Twin Islands Big Snowball 08;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x092D
+0x00038;MM_TWIN_ISLANDS;Big Snowball 9;MM Twin Islands Big Snowball 09;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x092E
+0x0001e;MM_TWIN_ISLANDS;Big Snowball 10;MM Twin Islands Big Snowball 10;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x092F
+0x00036;MM_TWIN_ISLANDS;Big Snowball 11;MM Twin Islands Big Snowball 11;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0930
+0x00012;MM_TWIN_ISLANDS;Big Snowball 12;MM Twin Islands Big Snowball 12;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0931
+0x0003d;MM_TWIN_ISLANDS;Big Snowball 13;MM Twin Islands Big Snowball 13;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0932
+0x0000b;MM_TWIN_ISLANDS;Grass 1;MM Twin Islands Grass 01;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0939
+0x1000b;MM_TWIN_ISLANDS;Grass 2;MM Twin Islands Grass 02;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x093A
+0x2000b;MM_TWIN_ISLANDS;Grass 3;MM Twin Islands Grass 03;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x093B
+0x3000b;MM_TWIN_ISLANDS;Grass 4;MM Twin Islands Grass 04;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x093C
+0x4000b;MM_TWIN_ISLANDS;Grass 5;MM Twin Islands Grass 05;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x093D
+0x5000b;MM_TWIN_ISLANDS;Grass 6;MM Twin Islands Grass 06;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x093E
+0x6000b;MM_TWIN_ISLANDS;Grass 7;MM Twin Islands Grass 07;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x093F
+0x7000b;MM_TWIN_ISLANDS;Grass 8;MM Twin Islands Grass 08;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0940
+0x8000b;MM_TWIN_ISLANDS;Grass 9;MM Twin Islands Grass 09;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0941
+0x9000b;MM_TWIN_ISLANDS;Grass 10;MM Twin Islands Grass 10;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0942
+0xa000b;MM_TWIN_ISLANDS;Grass 11;MM Twin Islands Grass 11;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0943
+0xb000b;MM_TWIN_ISLANDS;Grass 12;MM Twin Islands Grass 12;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0944
+0x0000e;MM_TWIN_ISLANDS;Rupee 1;MM Twin Islands Rupee 1;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0922
+0x0000f;MM_TWIN_ISLANDS;Rupee 2;MM Twin Islands Rupee 2;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0923
+0x00010;MM_TWIN_ISLANDS;Rupee 3;MM Twin Islands Rupee 3;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0924
+0x00012;MM_TWIN_ISLANDS;Rupee 4;MM Twin Islands Rupee 4;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0925
+0x0003e;MM_TWIN_ISLANDS;Small Snowball 1;MM Twin Islands Small Snowball 1;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0933
+0x0003f;MM_TWIN_ISLANDS;Small Snowball 2;MM Twin Islands Small Snowball 2;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0934
+0x00040;MM_TWIN_ISLANDS;Small Snowball 3;MM Twin Islands Small Snowball 3;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0935
+0x00041;MM_TWIN_ISLANDS;Ramp 1;MM Twin Islands Small Snowball Ramp 1;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0936
+0x00042;MM_TWIN_ISLANDS;Ramp 2;MM Twin Islands Small Snowball Ramp 2;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0937
+0x00043;MM_TWIN_ISLANDS;Ramp 3;MM Twin Islands Small Snowball Ramp 3;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0938
 0x06;MM_TWIN_ISLANDS;Underwater 1;MM Twin Islands Underwater Chest 1;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0xFFFF
 0x00;MM_TWIN_ISLANDS;Underwater 2;MM Twin Islands Underwater Chest 2;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0xFFFF
 0x0002;MM_TWIN_ISLANDS;Pot 1;MM Goron Race Pot 01;none;0;0;0;MM_GORON_RACETRACK;none;render_type;All;0;all;overworld;;;0x094B
@@ -3638,57 +3638,57 @@ GORON_RACE;MM_TWIN_ISLANDS;Reward;MM Goron Race Reward;none;0;0;0;MM_GORON_RACET
 0x00042;MM_TWIN_ISLANDS;Tree 8;MM Goron Race Forked Tree 8;none;0;0;0;MM_GORON_RACETRACK;none;render_type;All;0;all;overworld;;;0x0970
 0x00043;MM_TWIN_ISLANDS;Tree 9;MM Goron Race Forked Tree 9;none;0;0;0;MM_GORON_RACETRACK;none;render_type;All;0;all;overworld;;;0x0971
 0x00044;MM_TWIN_ISLANDS;Tree 10;MM Goron Race Forked Tree 10;none;0;0;0;MM_GORON_RACETRACK;none;render_type;All;0;all;overworld;;;0x0972
-0x00007;MM_TWIN_ISLANDS;Spring - Island 1;MM Twin Islands Tree Island 1;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0941
-0x00008;MM_TWIN_ISLANDS;Spring - Island 2;MM Twin Islands Tree Island 2;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0942
-0x00009;MM_TWIN_ISLANDS;Spring - Ramp;MM Twin Islands Tree Ramp;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0943
+0x00007;MM_TWIN_ISLANDS;Spring - Island 1;MM Twin Islands Tree Island 1;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0945
+0x00008;MM_TWIN_ISLANDS;Spring - Island 2;MM Twin Islands Tree Island 2;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0946
+0x00009;MM_TWIN_ISLANDS;Spring - Ramp;MM Twin Islands Tree Ramp;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0947
 0x00018;MM_TWIN_ISLANDS;Rock 1;MM Twin Islands Rock 1;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0948
 0x00019;MM_TWIN_ISLANDS;Rock 2;MM Twin Islands Rock 2;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x0949
 0x0001a;MM_TWIN_ISLANDS;Rock 3;MM Twin Islands Rock 3;none;0;0;0;MM_TWIN_ISLANDS_SPRING;none;render_type;Spring;0;all;overworld;;;0x094A
 0x00007;MM_TWIN_ISLANDS;Winter - Island 1;MM Twin Islands Snow Tree Island 1;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x091F
 0x00008;MM_TWIN_ISLANDS;Winter - Island 2;MM Twin Islands Snow Tree Island 2;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0920
 0x00009;MM_TWIN_ISLANDS;Winter - Ramp;MM Twin Islands Snow Tree Ramp;none;0;0;0;MM_TWIN_ISLANDS_WINTER;none;render_type;Winter;0;all;overworld;;;0x0921
-0x0000b;MM_TWIN_ISLANDS_SPRING;Grass 1;MM Twin Islands Grass 01;grass;193;470;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x0935
-0x1000b;MM_TWIN_ISLANDS_SPRING;Grass 2;MM Twin Islands Grass 02;grass;173;497;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x0936
-0x2000b;MM_TWIN_ISLANDS_SPRING;Grass 3;MM Twin Islands Grass 03;grass;143;485;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x0937
-0x3000b;MM_TWIN_ISLANDS_SPRING;Grass 4;MM Twin Islands Grass 04;grass;137;453;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x0938
-0x4000b;MM_TWIN_ISLANDS_SPRING;Grass 5;MM Twin Islands Grass 05;grass;164;466;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x0939
-0x5000b;MM_TWIN_ISLANDS_SPRING;Grass 6;MM Twin Islands Grass 06;grass;188;487;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x093A
-0x6000b;MM_TWIN_ISLANDS_SPRING;Grass 7;MM Twin Islands Grass 07;grass;156;494;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x093B
-0x7000b;MM_TWIN_ISLANDS_SPRING;Grass 8;MM Twin Islands Grass 08;grass;134;470;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x093C
-0x8000b;MM_TWIN_ISLANDS_SPRING;Grass 9;MM Twin Islands Grass 09;grass;147;438;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x093D
-0x9000b;MM_TWIN_ISLANDS_SPRING;Grass 10;MM Twin Islands Grass 10;grass;165;436;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x093E
-0xa000b;MM_TWIN_ISLANDS_SPRING;Grass 11;MM Twin Islands Grass 11;grass;181;439;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x093F
-0xb000b;MM_TWIN_ISLANDS_SPRING;Grass 12;MM Twin Islands Grass 12;grass;192;453;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x0940
-0x0000e;MM_TWIN_ISLANDS_SPRING;Rupee 1;MM Twin Islands Rupee 1;rupee;684;211;0;MM_TWIN_ISLANDS;rupee;render_type;Spring;0;all;overworld;;;0x0944
-0x0000f;MM_TWIN_ISLANDS_SPRING;Rupee 2;MM Twin Islands Rupee 2;rupee;495;185;0;MM_TWIN_ISLANDS;rupee;render_type;Spring;0;all;overworld;;;0x0945
-0x00010;MM_TWIN_ISLANDS_SPRING;Rupee 3;MM Twin Islands Rupee 3;rupee;596;517;0;MM_TWIN_ISLANDS;rupee;render_type;Spring;0;all;overworld;;;0x0946
-0x00012;MM_TWIN_ISLANDS_SPRING;Rupee 4;MM Twin Islands Rupee 4;rupee;780;349;0;MM_TWIN_ISLANDS;rupee;render_type;Spring;0;all;overworld;;;0x0947
-0x00007;MM_TWIN_ISLANDS_SPRING;Spring - Island 1;MM Twin Islands Tree Island 1;tree;424;299;0;MM_TWIN_ISLANDS;tree;render_type;Spring;0;all;overworld;;;0x0941
-0x00008;MM_TWIN_ISLANDS_SPRING;Spring - Island 2;MM Twin Islands Tree Island 2;tree;672;317;0;MM_TWIN_ISLANDS;tree;render_type;Spring;0;all;overworld;;;0x0942
-0x00009;MM_TWIN_ISLANDS_SPRING;Spring - Ramp;MM Twin Islands Tree Ramp;tree;242;265;1;MM_TWIN_ISLANDS;tree;render_type;Spring;0;all;overworld;;;0x0943
+0x0000b;MM_TWIN_ISLANDS_SPRING;Grass 1;MM Twin Islands Grass 01;grass;193;470;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x0939
+0x1000b;MM_TWIN_ISLANDS_SPRING;Grass 2;MM Twin Islands Grass 02;grass;173;497;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x093A
+0x2000b;MM_TWIN_ISLANDS_SPRING;Grass 3;MM Twin Islands Grass 03;grass;143;485;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x093B
+0x3000b;MM_TWIN_ISLANDS_SPRING;Grass 4;MM Twin Islands Grass 04;grass;137;453;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x093C
+0x4000b;MM_TWIN_ISLANDS_SPRING;Grass 5;MM Twin Islands Grass 05;grass;164;466;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x093D
+0x5000b;MM_TWIN_ISLANDS_SPRING;Grass 6;MM Twin Islands Grass 06;grass;188;487;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x093E
+0x6000b;MM_TWIN_ISLANDS_SPRING;Grass 7;MM Twin Islands Grass 07;grass;156;494;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x093F
+0x7000b;MM_TWIN_ISLANDS_SPRING;Grass 8;MM Twin Islands Grass 08;grass;134;470;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x0940
+0x8000b;MM_TWIN_ISLANDS_SPRING;Grass 9;MM Twin Islands Grass 09;grass;147;438;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x0941
+0x9000b;MM_TWIN_ISLANDS_SPRING;Grass 10;MM Twin Islands Grass 10;grass;165;436;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x0942
+0xa000b;MM_TWIN_ISLANDS_SPRING;Grass 11;MM Twin Islands Grass 11;grass;181;439;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x0943
+0xb000b;MM_TWIN_ISLANDS_SPRING;Grass 12;MM Twin Islands Grass 12;grass;192;453;0;MM_TWIN_ISLANDS;grass;render_type;Spring;0;all;overworld;;;0x0944
+0x0000e;MM_TWIN_ISLANDS_SPRING;Rupee 1;MM Twin Islands Rupee 1;rupee;684;211;0;MM_TWIN_ISLANDS;rupee;render_type;Spring;0;all;overworld;;;0x0922
+0x0000f;MM_TWIN_ISLANDS_SPRING;Rupee 2;MM Twin Islands Rupee 2;rupee;495;185;0;MM_TWIN_ISLANDS;rupee;render_type;Spring;0;all;overworld;;;0x0923
+0x00010;MM_TWIN_ISLANDS_SPRING;Rupee 3;MM Twin Islands Rupee 3;rupee;596;517;0;MM_TWIN_ISLANDS;rupee;render_type;Spring;0;all;overworld;;;0x0924
+0x00012;MM_TWIN_ISLANDS_SPRING;Rupee 4;MM Twin Islands Rupee 4;rupee;780;349;0;MM_TWIN_ISLANDS;rupee;render_type;Spring;0;all;overworld;;;0x0925
+0x00007;MM_TWIN_ISLANDS_SPRING;Spring - Island 1;MM Twin Islands Tree Island 1;tree;424;299;0;MM_TWIN_ISLANDS;tree;render_type;Spring;0;all;overworld;;;0x0945
+0x00008;MM_TWIN_ISLANDS_SPRING;Spring - Island 2;MM Twin Islands Tree Island 2;tree;672;317;0;MM_TWIN_ISLANDS;tree;render_type;Spring;0;all;overworld;;;0x0946
+0x00009;MM_TWIN_ISLANDS_SPRING;Spring - Ramp;MM Twin Islands Tree Ramp;tree;242;265;1;MM_TWIN_ISLANDS;tree;render_type;Spring;0;all;overworld;;;0x0947
 0x00018;MM_TWIN_ISLANDS_SPRING;Rock 1;MM Twin Islands Rock 1;rock;227;279;1;MM_TWIN_ISLANDS;rock;render_type;Spring;0;all;overworld;;;0x0948
 0x00019;MM_TWIN_ISLANDS_SPRING;Rock 2;MM Twin Islands Rock 2;rock;226;265;0;MM_TWIN_ISLANDS;rock;render_type;Spring;0;all;overworld;;;0x0949
 0x0001a;MM_TWIN_ISLANDS_SPRING;Rock 3;MM Twin Islands Rock 3;rock;242;280;2;MM_TWIN_ISLANDS;rock;render_type;Spring;0;all;overworld;;;0x094A
 GORON_ELDER;MM_TWIN_ISLANDS_WINTER;Goron's Lulluby - Intro;MM Goron Elder;npc;738;268;0;MM_TWIN_ISLANDS;song;render_type;Winter;0;all;overworld;;;0xFFFF
-0x0003b;MM_TWIN_ISLANDS_WINTER;Big Snowball 1;MM Twin Islands Big Snowball 01;snowball;412;438;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0922
-0x0003a;MM_TWIN_ISLANDS_WINTER;Big Snowball 2;MM Twin Islands Big Snowball 02;snowball;322;376;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0923
-0x00039;MM_TWIN_ISLANDS_WINTER;Big Snowball 3;MM Twin Islands Big Snowball 03;snowball;319;263;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0924
-0x00037;MM_TWIN_ISLANDS_WINTER;Big Snowball 4;MM Twin Islands Big Snowball 04;snowball;438;187;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0925
-0x00016;MM_TWIN_ISLANDS_WINTER;Big Snowball 5;MM Twin Islands Big Snowball 05;snowball;531;136;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0926
-0x0003c;MM_TWIN_ISLANDS_WINTER;Big Snowball 6;MM Twin Islands Big Snowball 06;snowball;553;207;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0927
-0x00013;MM_TWIN_ISLANDS_WINTER;Big Snowball 7;MM Twin Islands Big Snowball 07;snowball;523;392;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0928
-0x00005;MM_TWIN_ISLANDS_WINTER;Big Snowball 8;MM Twin Islands Big Snowball 08;snowball;749;281;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0929
-0x00038;MM_TWIN_ISLANDS_WINTER;Big Snowball 9;MM Twin Islands Big Snowball 09;snowball;768;400;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x092A
-0x0001e;MM_TWIN_ISLANDS_WINTER;Big Snowball 10;MM Twin Islands Big Snowball 10;snowball;672;494;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x092B
-0x00036;MM_TWIN_ISLANDS_WINTER;Big Snowball 11;MM Twin Islands Big Snowball 11;snowball;566;498;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x092C
-0x00012;MM_TWIN_ISLANDS_WINTER;Big Snowball 12;MM Twin Islands Big Snowball 12;snowball;641;216;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x092D
-0x0003d;MM_TWIN_ISLANDS_WINTER;Big Snowball 13;MM Twin Islands Big Snowball 13;snowball;540;312;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x092E
-0x0003e;MM_TWIN_ISLANDS_WINTER;Small Snowball 1;MM Twin Islands Small Snowball 1;snowball;127;511;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x092F
-0x0003f;MM_TWIN_ISLANDS_WINTER;Small Snowball 2;MM Twin Islands Small Snowball 2;snowball;196;412;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0930
-0x00040;MM_TWIN_ISLANDS_WINTER;Small Snowball 3;MM Twin Islands Small Snowball 3;snowball;561;273;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0931
-0x00041;MM_TWIN_ISLANDS_WINTER;Ramp 1;MM Twin Islands Small Snowball Ramp 1;snowball;226;265;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0932
-0x00042;MM_TWIN_ISLANDS_WINTER;Ramp 2;MM Twin Islands Small Snowball Ramp 2;snowball;242;280;1;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0933
-0x00043;MM_TWIN_ISLANDS_WINTER;Ramp 3;MM Twin Islands Small Snowball Ramp 3;snowball;227;279;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0934
+0x0003b;MM_TWIN_ISLANDS_WINTER;Big Snowball 1;MM Twin Islands Big Snowball 01;snowball;412;438;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0926
+0x0003a;MM_TWIN_ISLANDS_WINTER;Big Snowball 2;MM Twin Islands Big Snowball 02;snowball;322;376;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0927
+0x00039;MM_TWIN_ISLANDS_WINTER;Big Snowball 3;MM Twin Islands Big Snowball 03;snowball;319;263;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0928
+0x00037;MM_TWIN_ISLANDS_WINTER;Big Snowball 4;MM Twin Islands Big Snowball 04;snowball;438;187;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0929
+0x00016;MM_TWIN_ISLANDS_WINTER;Big Snowball 5;MM Twin Islands Big Snowball 05;snowball;531;136;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x092A
+0x0003c;MM_TWIN_ISLANDS_WINTER;Big Snowball 6;MM Twin Islands Big Snowball 06;snowball;553;207;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x092B
+0x00013;MM_TWIN_ISLANDS_WINTER;Big Snowball 7;MM Twin Islands Big Snowball 07;snowball;523;392;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x092C
+0x00005;MM_TWIN_ISLANDS_WINTER;Big Snowball 8;MM Twin Islands Big Snowball 08;snowball;749;281;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x092D
+0x00038;MM_TWIN_ISLANDS_WINTER;Big Snowball 9;MM Twin Islands Big Snowball 09;snowball;768;400;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x092E
+0x0001e;MM_TWIN_ISLANDS_WINTER;Big Snowball 10;MM Twin Islands Big Snowball 10;snowball;672;494;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x092F
+0x00036;MM_TWIN_ISLANDS_WINTER;Big Snowball 11;MM Twin Islands Big Snowball 11;snowball;566;498;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0930
+0x00012;MM_TWIN_ISLANDS_WINTER;Big Snowball 12;MM Twin Islands Big Snowball 12;snowball;641;216;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0931
+0x0003d;MM_TWIN_ISLANDS_WINTER;Big Snowball 13;MM Twin Islands Big Snowball 13;snowball;540;312;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0932
+0x0003e;MM_TWIN_ISLANDS_WINTER;Small Snowball 1;MM Twin Islands Small Snowball 1;snowball;127;511;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0933
+0x0003f;MM_TWIN_ISLANDS_WINTER;Small Snowball 2;MM Twin Islands Small Snowball 2;snowball;196;412;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0934
+0x00040;MM_TWIN_ISLANDS_WINTER;Small Snowball 3;MM Twin Islands Small Snowball 3;snowball;561;273;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0935
+0x00041;MM_TWIN_ISLANDS_WINTER;Ramp 1;MM Twin Islands Small Snowball Ramp 1;snowball;226;265;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0936
+0x00042;MM_TWIN_ISLANDS_WINTER;Ramp 2;MM Twin Islands Small Snowball Ramp 2;snowball;242;280;1;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0937
+0x00043;MM_TWIN_ISLANDS_WINTER;Ramp 3;MM Twin Islands Small Snowball Ramp 3;snowball;227;279;0;MM_TWIN_ISLANDS;snowball;render_type;Winter;0;all;overworld;;;0x0938
 0x06;MM_TWIN_ISLANDS_WINTER;Underwater 1;MM Twin Islands Underwater Chest 1;chest;450;479;0;MM_TWIN_ISLANDS;heart_piece;render_type;Spring;0;all;overworld;;;0xFFFF
 0x00;MM_TWIN_ISLANDS_WINTER;Underwater 2;MM Twin Islands Underwater Chest 2;chest;630;74;0;MM_TWIN_ISLANDS;chest;render_type;Spring;0;all;overworld;;;0xFFFF
 0x00007;MM_TWIN_ISLANDS_WINTER;Winter - Island 1;MM Twin Islands Snow Tree Island 1;tree;424;299;0;MM_TWIN_ISLANDS;tree;render_type;Winter;0;all;overworld;;;0x091F
@@ -3883,3 +3883,123 @@ SONG_STORMS;MM_IKANA_GRAVEYARD;Song of Storms;MM Beneath The Graveyard Song of S
 0x0002a;MM_ZORA_CAPE;Large Boulder 1;MM Zora Cape Large Boulder 1;boulder;406;453;0;MM_ZORA_CAPE;boulder;render_type;All;0;all;overworld;;;0x09C4
 0x0002b;MM_ZORA_CAPE;Large Boulder 2;MM Zora Cape Large Boulder 2;boulder;404;471;0;MM_ZORA_CAPE;boulder;render_type;All;0;all;overworld;;;0x09C5
 0x0002c;MM_ZORA_CAPE;Grotto Boulder;MM Zora Cape Boulder;boulder;449;338;0;MM_ZORA_CAPE;boulder;render_type;All;0;all;overworld;;;0x09C6
+0x00000;MM_MOON_DEKU;Gossip Stone - Front-Left;MM Moon Trial Deku Gossip Fairy Front-Left;gossip;675;435;0;MM_MOON_DEKU;fairy;render_type;All;0;mm;dungeon;;;0x00FF
+0x10000;MM_MOON_DEKU;Gossip Stone - Front-Left;MM Moon Trial Deku Gossip Big Fairy Front-Left;gossip_big;653;440;0;MM_MOON_DEKU;fairy_spot;render_type;All;0;mm;dungeon;;;0x0100
+0x00001;MM_MOON_DEKU;Gossip Stone - Front-Right;MM Moon Trial Deku Gossip Fairy Front-Right;gossip;663;208;0;MM_MOON_DEKU;fairy;render_type;All;0;mm;dungeon;;;0x0101
+0x10001;MM_MOON_DEKU;Gossip Stone - Front-Right;MM Moon Trial Deku Gossip Big Fairy Front-Right;gossip_big;640;208;0;MM_MOON_DEKU;fairy_spot;render_type;All;0;mm;dungeon;;;0x0102
+0x00002;MM_MOON_DEKU;Gossip Stone - Mid-Left;MM Moon Trial Deku Gossip Fairy Mid-Left;gossip;479;431;0;MM_MOON_DEKU;fairy;render_type;All;0;mm;dungeon;;;0x0103
+0x10002;MM_MOON_DEKU;Gossip Stone - Mid-Left;MM Moon Trial Deku Gossip Big Fairy Mid-Left;gossip_big;457;435;0;MM_MOON_DEKU;fairy_spot;render_type;All;0;mm;dungeon;;;0x0104
+0x00003;MM_MOON_DEKU;Gossip Stone - Mid-Right;MM Moon Trial Deku Gossip Fairy Mid-Right;gossip;459;185;0;MM_MOON_DEKU;fairy;render_type;All;0;mm;dungeon;;;0x0105
+0x10003;MM_MOON_DEKU;Gossip Stone - Mid-Right;MM Moon Trial Deku Gossip Big Fairy Mid-Right;gossip_big;438;185;0;MM_MOON_DEKU;fairy_spot;render_type;All;0;mm;dungeon;;;0x0106
+0x00004;MM_MOON_DEKU;Gossip Stone - Back;MM Moon Trial Deku Gossip Fairy Back;gossip;198;140;0;MM_MOON_DEKU;fairy;render_type;All;0;mm;dungeon;;;0x0107
+0x10004;MM_MOON_DEKU;Gossip Stone - Back;MM Moon Trial Deku Gossip Big Fairy Back;gossip_big;182;156;0;MM_MOON_DEKU;fairy_spot;render_type;All;0;mm;dungeon;;;0x0108
+0x00004;MM_MOON_GORON;Gossip Stone - Center Left;MM Moon Trial Goron Gossip Fairy Center Left;gossip;437;277;0;MM_MOON_GORON;fairy;render_type;All;0;mm;dungeon;;;0x011C
+0x10004;MM_MOON_GORON;Gossip Stone - Center Left;MM Moon Trial Goron Gossip Big Fairy Center Left;gossip_big;437;258;0;MM_MOON_GORON;fairy_spot;render_type;All;0;mm;dungeon;;;0x011D
+0x00005;MM_MOON_GORON;Gossip Stone - Center Right;MM Moon Trial Goron Gossip Fairy Center Right;gossip;409;277;0;MM_MOON_GORON;fairy;render_type;All;0;mm;dungeon;;;0x011E
+0x10005;MM_MOON_GORON;Gossip Stone - Center Right;MM Moon Trial Goron Gossip Big Fairy Center Right;gossip_big;409;258;0;MM_MOON_GORON;fairy_spot;render_type;All;0;mm;dungeon;;;0x011F
+0x00006;MM_MOON_GORON;Gossip Stone - West Left;MM Moon Trial Goron Gossip Fairy West Left;gossip;635;252;0;MM_MOON_GORON;fairy;render_type;All;0;mm;dungeon;;;0x0120
+0x10006;MM_MOON_GORON;Gossip Stone - West Left;MM Moon Trial Goron Gossip Big Fairy West Left;gossip_big;635;233;0;MM_MOON_GORON;fairy_spot;render_type;All;0;mm;dungeon;;;0x0121
+0x00007;MM_MOON_GORON;Gossip Stone - West Right;MM Moon Trial Goron Gossip Fairy West Right;gossip;613;252;0;MM_MOON_GORON;fairy;render_type;All;0;mm;dungeon;;;0x0122
+0x10007;MM_MOON_GORON;Gossip Stone - West Right;MM Moon Trial Goron Gossip Big Fairy West Right;gossip_big;613;233;0;MM_MOON_GORON;fairy_spot;render_type;All;0;mm;dungeon;;;0x0123
+0x00008;MM_MOON_GORON;Gossip Stone - By Heart Piece;MM Moon Trial Goron Gossip Fairy By Heart Piece;gossip;220;350;0;MM_MOON_GORON;fairy;render_type;All;0;mm;dungeon;;;0x0124
+0x10008;MM_MOON_GORON;Gossip Stone - By Heart Piece;MM Moon Trial Goron Gossip Big Fairy By Heart Piece;gossip_big;203;350;0;MM_MOON_GORON;fairy_spot;render_type;All;0;mm;dungeon;;;0x0125
+0x00001;MM_MOON_ZORA;Gossip Stone - Outer Left;MM Moon Trial Zora Gossip Fairy Outer Left;gossip;81;363;0;MM_MOON_ZORA;fairy;render_type;All;0;mm;dungeon;;;0x0126
+0x10001;MM_MOON_ZORA;Gossip Stone - Outer Left;MM Moon Trial Zora Gossip Big Fairy Outer Left;gossip_big;64;363;0;MM_MOON_ZORA;fairy_spot;render_type;All;0;mm;dungeon;;;0x0127
+0x00002;MM_MOON_ZORA;Gossip Stone - Middle Left;MM Moon Trial Zora Gossip Fairy Middle Left;gossip;431;344;0;MM_MOON_ZORA;fairy;render_type;All;0;mm;dungeon;;;0x0128
+0x10002;MM_MOON_ZORA;Gossip Stone - Middle Left;MM Moon Trial Zora Gossip Big Fairy Middle Left;gossip_big;416;344;0;MM_MOON_ZORA;fairy_spot;render_type;All;0;mm;dungeon;;;0x0129
+0x00003;MM_MOON_ZORA;Gossip Stone - Inner Right;MM Moon Trial Zora Gossip Fairy Inner Right;gossip;720;357;0;MM_MOON_ZORA;fairy;render_type;All;0;mm;dungeon;;;0x012A
+0x10003;MM_MOON_ZORA;Gossip Stone - Inner Right;MM Moon Trial Zora Gossip Big Fairy Inner Right;gossip_big;703;357;0;MM_MOON_ZORA;fairy_spot;render_type;All;0;mm;dungeon;;;0x012B
+0x00004;MM_MOON_ZORA;Gossip Stone - Middle Right;MM Moon Trial Zora Gossip Fairy Middle Right;gossip;431;323;0;MM_MOON_ZORA;fairy;render_type;All;0;mm;dungeon;;;0x012C
+0x10004;MM_MOON_ZORA;Gossip Stone - Middle Right;MM Moon Trial Zora Gossip Big Fairy Middle Right;gossip_big;416;323;0;MM_MOON_ZORA;fairy_spot;render_type;All;0;mm;dungeon;;;0x012D
+0x00005;MM_MOON_ZORA;Gossip Stone - Outer Right;MM Moon Trial Zora Gossip Fairy Outer Right;gossip;81;320;0;MM_MOON_ZORA;fairy;render_type;All;0;mm;dungeon;;;0x012E
+0x10005;MM_MOON_ZORA;Gossip Stone - Outer Right;MM Moon Trial Zora Gossip Big Fairy Outer Right;gossip_big;64;320;0;MM_MOON_ZORA;fairy_spot;render_type;All;0;mm;dungeon;;;0x012F
+0x00302;MM_MOON_LINK;Gossip Stone - Left;MM Moon Trial Link Gossip Fairy Left;gossip;754;251;0;MM_MOON_LINK;fairy;render_type;All;0;mm;dungeon;;;0x0138
+0x10302;MM_MOON_LINK;Gossip Stone - Left;MM Moon Trial Link Gossip Big Fairy Left;gossip_big;737;251;0;MM_MOON_LINK;fairy_spot;render_type;All;0;mm;dungeon;;;0x0139
+0x00303;MM_MOON_LINK;Gossip Stone - Right;MM Moon Trial Link Gossip Fairy Right;gossip;754;344;0;MM_MOON_LINK;fairy;render_type;All;0;mm;dungeon;;;0x013A
+0x10303;MM_MOON_LINK;Gossip Stone - Right;MM Moon Trial Link Gossip Big Fairy Right;gossip_big;737;344;0;MM_MOON_LINK;fairy_spot;render_type;All;0;mm;dungeon;;;0x013B
+0x00400;MM_MOON_LINK;Gossip Stone - Last;MM Moon Trial Link Gossip Fairy Last;gossip;862;305;0;MM_MOON_LINK;fairy;render_type;All;0;mm;dungeon;;;0x013C
+0x10400;MM_MOON_LINK;Gossip Stone - Last;MM Moon Trial Link Gossip Big Fairy Last;gossip_big;862;288;0;MM_MOON_LINK;fairy_spot;render_type;All;0;mm;dungeon;;;0x013D
+0x00600;MM_MOON_LINK;Gossip Stone 1;MM Moon Trial Link Gossip Fairy 1;gossip;314;316;0;MM_MOON_LINK;fairy;render_type;All;0;mm;dungeon;;;0x013E
+0x10600;MM_MOON_LINK;Gossip Stone 1;MM Moon Trial Link Gossip Big Fairy 1;gossip_big;315;296;0;MM_MOON_LINK;fairy_spot;render_type;All;0;mm;dungeon;;;0x013F
+0x00700;MM_MOON_LINK;Gossip Stone 2;MM Moon Trial Link Gossip Fairy 2;gossip;553;306;0;MM_MOON_LINK;fairy;render_type;All;0;mm;dungeon;;;0x0140
+0x10700;MM_MOON_LINK;Gossip Stone 2;MM Moon Trial Link Gossip Big Fairy 2;gossip_big;553;288;0;MM_MOON_LINK;fairy_spot;render_type;All;0;mm;dungeon;;;0x0141
+0x00500;MM_SPIDER_HOUSE_SWAMP;Gossip Stone;MM Swamp Spider House Gossip Fairy;gossip;511;506;0;MM_SPIDER_HOUSE_SWAMP;fairy;render_type;All;5;mm;dungeon;;;0x0288
+0x10500;MM_SPIDER_HOUSE_SWAMP;Gossip Stone;MM Swamp Spider House Gossip Big Fairy;gossip_big;487;506;0;MM_SPIDER_HOUSE_SWAMP;fairy_spot;render_type;All;5;mm;dungeon;;;0x0289
+0x0007a;MM_GREAT_BAY_COAST;Gossip Stone;MM Great Bay Coast Gossip Fairy;gossip;655;113;0;MM_GREAT_BAY_COAST;fairy;render_type;All;0;mm;overworld;;;0x046E
+0x1007a;MM_GREAT_BAY_COAST;Gossip Stone;MM Great Bay Coast Gossip Big Fairy;gossip_big;649;98;0;MM_GREAT_BAY_COAST;fairy_spot;render_type;All;0;mm;overworld;;;0x046F
+0x00006;MM_IKANA_CANYON;Gossip Stone - Lower;MM Ikana Valley Gossip Fairy Lower;gossip;571;457;0;MM_IKANA_CANYON;fairy;render_type;All;0;mm;overworld;;;0x0520
+0x10006;MM_IKANA_CANYON;Gossip Stone - Lower;MM Ikana Valley Gossip Big Fairy Lower;gossip_big;558;446;0;MM_IKANA_CANYON;fairy_spot;render_type;All;0;mm;overworld;;;0x0521
+0x00007;MM_IKANA_CANYON;Gossip Stone - Upper;MM Ikana Valley Gossip Fairy Upper;gossip;96;326;0;MM_IKANA_CANYON;fairy;render_type;All;0;mm;overworld;;;0x0522
+0x10007;MM_IKANA_CANYON;Gossip Stone - Upper;MM Ikana Valley Gossip Big Fairy Upper;gossip_big;87;311;0;MM_IKANA_CANYON;fairy_spot;render_type;All;0;mm;overworld;;;0x0523
+0x00401;MM_IKANA_CANYON;Gossip Stone - Scrub;MM Ikana Valley Gossip Fairy Scrub;gossip;808;199;0;MM_IKANA_CANYON;fairy;render_type;All;0;mm;overworld;;;0x0524
+0x10401;MM_IKANA_CANYON;Gossip Stone - Scrub;MM Ikana Valley Gossip Big Fairy Scrub;gossip_big;792;192;0;MM_IKANA_CANYON;fairy_spot;render_type;All;0;mm;overworld;;;0x0525
+0x00002;MM_MILK_ROAD;Gossip Stone;MM Milk Road Gossip Fairy;gossip;568;395;0;MM_MILK_ROAD;fairy;render_type;All;0;mm;overworld;;;0x0545
+0x10002;MM_MILK_ROAD;Gossip Stone;MM Milk Road Gossip Big Fairy;gossip_big;549;385;0;MM_MILK_ROAD;fairy_spot;render_type;All;0;mm;overworld;;;0x0546
+0x00039;MM_MOUNTAIN_VILLAGE_WINTER;Gossip Stone - Outside;MM Mountain Village Gossip Outside Fairy;gossip;319;521;0;MM_MOUNTAIN_VILLAGE;fairy;render_type;All;0;mm;overworld;;;0x058E
+0x10039;MM_MOUNTAIN_VILLAGE_WINTER;Gossip Stone - Outside;MM Mountain Village Gossip Outside Big Fairy;gossip_big;306;509;0;MM_MOUNTAIN_VILLAGE;fairy_spot;render_type;All;0;mm;overworld;;;0x058F
+0x00118;MM_MOUNTAIN_VILLAGE_SPRING;Gossip Stone - Tunnel;MM Mountain Village Gossip Tunnel Fairy;gossip;1451;105;0;MM_MOUNTAIN_VILLAGE;fairy;render_type;spring;0;mm;overworld;;;0x05CC
+0x10118;MM_MOUNTAIN_VILLAGE_SPRING;Gossip Stone - Tunnel;MM Mountain Village Gossip Tunnel Big Fairy;gossip_big;1439;90;0;MM_MOUNTAIN_VILLAGE;fairy_spot;render_type;spring;0;mm;overworld;;;0x05CD
+0x00031;MM_PATH_MOUNTAIN_VILLAGE;Gossip Stone;MM Path to Mountain Village Gossip Fairy;gossip;0;0;0;MM_PATH_MOUNTAIN_VILLAGE;fairy;render_type;All;0;mm;overworld;;;0x05FA
+0x10031;MM_PATH_MOUNTAIN_VILLAGE;Gossip Stone;MM Path to Mountain Village Gossip Big Fairy;gossip_big;0;0;0;MM_PATH_MOUNTAIN_VILLAGE;fairy_spot;render_type;All;0;mm;overworld;;;0x05FB
+0x00002;MM_ROAD_IKANA;Gossip Stone;MM Road to Ikana Gossip Fairy;gossip;0;0;0;MM_ROAD_IKANA;fairy;render_type;All;0;mm;overworld;;;0x0637
+0x10002;MM_ROAD_IKANA;Gossip Stone;MM Road to Ikana Gossip Big Fairy;gossip_big;0;0;0;MM_ROAD_IKANA;fairy_spot;render_type;All;0;mm;overworld;;;0x0638
+0x0002e;MM_ROAD_SOUTHERN_SWAMP;Gossip Stone;MM Road to Southern Swamp Gossip Fairy;gossip;0;0;0;MM_ROAD_SOUTHERN_SWAMP;fairy;render_type;All;0;mm;overworld;;;0x0665
+0x1002e;MM_ROAD_SOUTHERN_SWAMP;Gossip Stone;MM Road to Southern Swamp Gossip Big Fairy;gossip_big;0;0;0;MM_ROAD_SOUTHERN_SWAMP;fairy_spot;render_type;All;0;mm;overworld;;;0x0666
+0x00033;MM_ROMANI_RANCH;Gossip Stone - Entrance;MM Romani Ranch Gossip Fairy Entrance;gossip;0;0;0;MM_ROMANI_RANCH;fairy;render_type;All;0;mm;overworld;;;0x06C4
+0x10033;MM_ROMANI_RANCH;Gossip Stone - Entrance;MM Romani Ranch Gossip Big Fairy Entrance;gossip_big;0;0;0;MM_ROMANI_RANCH;fairy_spot;render_type;All;0;mm;overworld;;;0x06C5
+0x00034;MM_ROMANI_RANCH;Gossip Stone - Near Tree;MM Romani Ranch Gossip Fairy Near Tree;gossip;0;0;0;MM_ROMANI_RANCH;fairy;render_type;All;0;mm;overworld;;;0x06C6
+0x10034;MM_ROMANI_RANCH;Gossip Stone - Near Tree;MM Romani Ranch Gossip Big Fairy Near Tree;gossip_big;0;0;0;MM_ROMANI_RANCH;fairy_spot;render_type;All;0;mm;overworld;;;0x06C7
+0x00035;MM_ROMANI_RANCH;Gossip Stone - Behind House;MM Romani Ranch Gossip Fairy Behind House;gossip;0;0;0;MM_ROMANI_RANCH;fairy;render_type;All;0;mm;overworld;;;0x06C8
+0x10035;MM_ROMANI_RANCH;Gossip Stone - Behind House;MM Romani Ranch Gossip Big Fairy Behind House;gossip_big;0;0;0;MM_ROMANI_RANCH;fairy_spot;render_type;All;0;mm;overworld;;;0x06C9
+0x00018;MM_CUCCO_SHACK;Gossip Stone;MM Cucco Shack Gossip Fairy;gossip;0;0;0;MM_CUCCO_SHACK;fairy;render_type;All;0;mm;overworld;;;0x06E1
+0x10018;MM_CUCCO_SHACK;Gossip Stone;MM Cucco Shack Gossip Big Fairy;gossip_big;0;0;0;MM_CUCCO_SHACK;fairy_spot;render_type;All;0;mm;overworld;;;0x06E2
+0x0000e;MM_DOG_RACETRACK;Gossip Stone;MM Doggy Racetrack Gossip Fairy;gossip;0;0;0;MM_DOG_RACETRACK;fairy;render_type;All;0;mm;overworld;;;0x06E8
+0x1000e;MM_DOG_RACETRACK;Gossip Stone;MM Doggy Racetrack Gossip Big Fairy;gossip_big;0;0;0;MM_DOG_RACETRACK;fairy_spot;render_type;All;0;mm;overworld;;;0x06E9
+0x00213;MM_SOUTHERN_SWAMP;Gossip Stone;MM Southern Swamp Gossip Fairy;gossip;0;0;0;MM_SOUTHERN_SWAMP;fairy;render_type;All;0;mm;overworld;;;0x0722
+0x10213;MM_SOUTHERN_SWAMP;Gossip Stone;MM Southern Swamp Gossip Big Fairy;gossip_big;0;0;0;MM_SOUTHERN_SWAMP;fairy_spot;render_type;All;0;mm;overworld;;;0x0723
+0x00015;MM_TERMINA_FIELD;Gossip Stone - Southeast;MM Termina Field Gossip Fairy Southeast;gossip;0;0;0;MM_TERMINA_FIELD;fairy;render_type;All;0;mm;overworld;;;0x0868
+0x10015;MM_TERMINA_FIELD;Gossip Stone - Southeast;MM Termina Field Gossip Big Fairy Southeast;gossip_big;0;0;0;MM_TERMINA_FIELD;fairy_spot;render_type;All;0;mm;overworld;;;0x0869
+0x00016;MM_TERMINA_FIELD;Gossip Stone - Near Kamaro;MM Termina Field Gossip Fairy Near Kamaro;gossip;0;0;0;MM_TERMINA_FIELD;fairy;render_type;All;0;mm;overworld;;;0x086A
+0x10016;MM_TERMINA_FIELD;Gossip Stone - Near Kamaro;MM Termina Field Gossip Big Fairy Near Kamaro;gossip_big;0;0;0;MM_TERMINA_FIELD;fairy_spot;render_type;All;0;mm;overworld;;;0x086B
+0x00017;MM_TERMINA_FIELD;Gossip Stone - Near Mountain;MM Termina Field Gossip Fairy Near Mountain;gossip;0;0;0;MM_TERMINA_FIELD;fairy;render_type;All;0;mm;overworld;;;0x086C
+0x10017;MM_TERMINA_FIELD;Gossip Stone - Near Mountain;MM Termina Field Gossip Big Fairy Near Mountain;gossip_big;0;0;0;MM_TERMINA_FIELD;fairy_spot;render_type;All;0;mm;overworld;;;0x086D
+0x00018;MM_TERMINA_FIELD;Gossip Stone - Southwest;MM Termina Field Gossip Fairy Southwest;gossip;0;0;0;MM_TERMINA_FIELD;fairy;render_type;All;0;mm;overworld;;;0x086E
+0x10018;MM_TERMINA_FIELD;Gossip Stone - Southwest;MM Termina Field Gossip Big Fairy Southwest;gossip_big;0;0;0;MM_TERMINA_FIELD;fairy_spot;render_type;All;0;mm;overworld;;;0x086F
+0x00019;MM_TERMINA_FIELD;Gossip Stone - Northeast;MM Termina Field Gossip Fairy Northeast;gossip;0;0;0;MM_TERMINA_FIELD;fairy;render_type;All;0;mm;overworld;;;0x0870
+0x10019;MM_TERMINA_FIELD;Gossip Stone - Northeast;MM Termina Field Gossip Big Fairy Northeast;gossip_big;0;0;0;MM_TERMINA_FIELD;fairy_spot;render_type;All;0;mm;overworld;;;0x0871
+0x0001a;MM_TERMINA_FIELD;Gossip Stone - Observatory;MM Termina Field Gossip Fairy Observatory;gossip;0;0;0;MM_TERMINA_FIELD;fairy;render_type;All;0;mm;overworld;;;0x0872
+0x1001a;MM_TERMINA_FIELD;Gossip Stone - Observatory;MM Termina Field Gossip Big Fairy Observatory;gossip_big;0;0;0;MM_TERMINA_FIELD;fairy_spot;render_type;All;0;mm;overworld;;;0x0873
+0x00009;MM_GROTTOS;Gossip Stone 1;MM Ocean Gossip Grotto Gossip Fairy 1;gossip;721;377;0;MM_GROTTO_TERMINA_OCEAN_GOSSIP;fairy;render_type;All;0;mm;overworld;;;0x08FA
+0x10009;MM_GROTTOS;Gossip Stone 1;MM Ocean Gossip Grotto Gossip Big Fairy 1;gossip_big;706;363;0;MM_GROTTO_TERMINA_OCEAN_GOSSIP;fairy_spot;render_type;All;0;mm;overworld;;;0x08FB
+0x0000a;MM_GROTTOS;Gossip Stone 2;MM Ocean Gossip Grotto Gossip Fairy 2;gossip;752;403;0;MM_GROTTO_TERMINA_OCEAN_GOSSIP;fairy;render_type;All;0;mm;overworld;;;0x08FC
+0x1000a;MM_GROTTOS;Gossip Stone 2;MM Ocean Gossip Grotto Gossip Big Fairy 2;gossip_big;740;391;0;MM_GROTTO_TERMINA_OCEAN_GOSSIP;fairy_spot;render_type;All;0;mm;overworld;;;0x08FD
+0x0000b;MM_GROTTOS;Gossip Stone 3;MM Ocean Gossip Grotto Gossip Fairy 3;gossip;796;424;0;MM_GROTTO_TERMINA_OCEAN_GOSSIP;fairy;render_type;All;0;mm;overworld;;;0x08FE
+0x1000b;MM_GROTTOS;Gossip Stone 3;MM Ocean Gossip Grotto Gossip Big Fairy 3;gossip_big;782;410;0;MM_GROTTO_TERMINA_OCEAN_GOSSIP;fairy_spot;render_type;All;0;mm;overworld;;;0x08FF
+0x0000c;MM_GROTTOS;Gossip Stone 4;MM Ocean Gossip Grotto Gossip Fairy 4;gossip;841;469;0;MM_GROTTO_TERMINA_OCEAN_GOSSIP;fairy;render_type;All;0;mm;overworld;;;0x0900
+0x1000c;MM_GROTTOS;Gossip Stone 4;MM Ocean Gossip Grotto Gossip Big Fairy 4;gossip_big;825;453;0;MM_GROTTO_TERMINA_OCEAN_GOSSIP;fairy_spot;render_type;All;0;mm;overworld;;;0x0901
+0x00103;MM_GROTTOS;Gossip Stone 1;MM Swamp Gossip Grotto Gossip Fairy 1;gossip;237;395;0;MM_GROTTO_TERMINA_SWAMP_GOSSIP;fairy;render_type;All;0;mm;overworld;;;0x0902
+0x10103;MM_GROTTOS;Gossip Stone 1;MM Swamp Gossip Grotto Gossip Big Fairy 1;gossip_big;221;404;0;MM_GROTTO_TERMINA_SWAMP_GOSSIP;fairy_spot;render_type;All;0;mm;overworld;;;0x0903
+0x00104;MM_GROTTOS;Gossip Stone 2;MM Swamp Gossip Grotto Gossip Fairy 2;gossip;285;378;0;MM_GROTTO_TERMINA_SWAMP_GOSSIP;fairy;render_type;All;0;mm;overworld;;;0x0904
+0x10104;MM_GROTTOS;Gossip Stone 2;MM Swamp Gossip Grotto Gossip Big Fairy 2;gossip_big;270;387;0;MM_GROTTO_TERMINA_SWAMP_GOSSIP;fairy_spot;render_type;All;0;mm;overworld;;;0x0905
+0x00105;MM_GROTTOS;Gossip Stone 3;MM Swamp Gossip Grotto Gossip Fairy 3;gossip;332;362;0;MM_GROTTO_TERMINA_SWAMP_GOSSIP;fairy;render_type;All;0;mm;overworld;;;0x0906
+0x10105;MM_GROTTOS;Gossip Stone 3;MM Swamp Gossip Grotto Gossip Big Fairy 3;gossip_big;317;369;0;MM_GROTTO_TERMINA_SWAMP_GOSSIP;fairy_spot;render_type;All;0;mm;overworld;;;0x0907
+0x00106;MM_GROTTOS;Gossip Stone 4;MM Swamp Gossip Grotto Gossip Fairy 4;gossip;363;350;0;MM_GROTTO_TERMINA_SWAMP_GOSSIP;fairy;render_type;All;0;mm;overworld;;;0x0908
+0x10106;MM_GROTTOS;Gossip Stone 4;MM Swamp Gossip Grotto Gossip Big Fairy 4;gossip_big;349;357;0;MM_GROTTO_TERMINA_SWAMP_GOSSIP;fairy_spot;render_type;All;0;mm;overworld;;;0x0909
+0x00205;MM_GROTTOS;Gossip Stone 1;MM Canyon Gossip Grotto Gossip Fairy 1;gossip;138;459;0;MM_GROTTO_TERMINA_CANYON_GOSSIP;fairy;render_type;All;0;mm;overworld;;;0x090F
+0x10205;MM_GROTTOS;Gossip Stone 1;MM Canyon Gossip Grotto Gossip Big Fairy 1;gossip_big;126;473;0;MM_GROTTO_TERMINA_CANYON_GOSSIP;fairy_spot;render_type;All;0;mm;overworld;;;0x0910
+0x00206;MM_GROTTOS;Gossip Stone 2;MM Canyon Gossip Grotto Gossip Fairy 2;gossip;175;421;0;MM_GROTTO_TERMINA_CANYON_GOSSIP;fairy;render_type;All;0;mm;overworld;;;0x0911
+0x10206;MM_GROTTOS;Gossip Stone 2;MM Canyon Gossip Grotto Gossip Big Fairy 2;gossip_big;162;434;0;MM_GROTTO_TERMINA_CANYON_GOSSIP;fairy_spot;render_type;All;0;mm;overworld;;;0x0912
+0x00207;MM_GROTTOS;Gossip Stone 3;MM Canyon Gossip Grotto Gossip Fairy 3;gossip;281;408;0;MM_GROTTO_TERMINA_CANYON_GOSSIP;fairy;render_type;All;0;mm;overworld;;;0x0913
+0x10207;MM_GROTTOS;Gossip Stone 3;MM Canyon Gossip Grotto Gossip Big Fairy 3;gossip_big;194;403;0;MM_GROTTO_TERMINA_CANYON_GOSSIP;fairy_spot;render_type;All;0;mm;overworld;;;0x0914
+0x00208;MM_GROTTOS;Gossip Stone 4;MM Canyon Gossip Grotto Gossip Fairy 4;gossip;243;356;0;MM_GROTTO_TERMINA_CANYON_GOSSIP;fairy;render_type;All;0;mm;overworld;;;0x0915
+0x10208;MM_GROTTOS;Gossip Stone 4;MM Canyon Gossip Grotto Gossip Big Fairy 4;gossip_big;229;370;0;MM_GROTTO_TERMINA_CANYON_GOSSIP;fairy_spot;render_type;All;0;mm;overworld;;;0x0916
+0x00301;MM_GROTTOS;Gossip Stone 1;MM Mountain Gossip Grotto Gossip Fairy 1;gossip;328;556;0;MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP;fairy;render_type;All;0;mm;overworld;;;0x0917
+0x10301;MM_GROTTOS;Gossip Stone 1;MM Mountain Gossip Grotto Gossip Big Fairy 1;gossip_big;310;568;0;MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP;fairy_spot;render_type;All;0;mm;overworld;;;0x0918
+0x00302;MM_GROTTOS;Gossip Stone 2;MM Mountain Gossip Grotto Gossip Fairy 2;gossip;384;525;0;MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP;fairy;render_type;All;0;mm;overworld;;;0x0919
+0x10302;MM_GROTTOS;Gossip Stone 2;MM Mountain Gossip Grotto Gossip Big Fairy 2;gossip_big;359;537;0;MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP;fairy_spot;render_type;All;0;mm;overworld;;;0x091A
+0x00303;MM_GROTTOS;Gossip Stone 3;MM Mountain Gossip Grotto Gossip Fairy 3;gossip;437;499;0;MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP;fairy;render_type;All;0;mm;overworld;;;0x091B
+0x10303;MM_GROTTOS;Gossip Stone 3;MM Mountain Gossip Grotto Gossip Big Fairy 3;gossip_big;423;509;0;MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP;fairy_spot;render_type;All;0;mm;overworld;;;0x091C
+0x00304;MM_GROTTOS;Gossip Stone 4;MM Mountain Gossip Grotto Gossip Fairy 4;gossip;473;479;0;MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP;fairy;render_type;All;0;mm;overworld;;;0x091D
+0x10304;MM_GROTTOS;Gossip Stone 4;MM Mountain Gossip Grotto Gossip Big Fairy 4;gossip_big;459;489;0;MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP;fairy_spot;render_type;All;0;mm;overworld;;;0x091E
+0x0003e;MM_ZORA_CAPE;Gossip Stone;MM Zora Cape Gossip Fairy;gossip;0;0;0;MM_ZORA_CAPE;fairy;render_type;All;0;mm;overworld;;;0x09D2
+0x1003e;MM_ZORA_CAPE;Gossip Stone;MM Zora Cape Gossip Big Fairy;gossip_big;0;0;0;MM_ZORA_CAPE;fairy_spot;render_type;All;0;mm;overworld;;;0x09D3

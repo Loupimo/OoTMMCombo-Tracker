@@ -253,20 +253,20 @@
           <xflag type="rock" location="Termina Field Rock Circle Rock 7" slice="6" item="RANDOM" name="Circle Rock 7" xyz="1048;322;0"/>
           <xflag type="rock" location="Termina Field Rock Circle Rock 8" slice="7" item="RANDOM" name="Circle Rock 8" xyz="1057;349;0"/>
         </actor>
-        <xflag type="boulder" location="Termina Field Boulder West Gossip" slice="0x0" actor="0xc6" item="NOTHING" name="West Gossip Grotto" xyz="1050;532;0"/>
-        <xflag type="boulder" location="Termina Field Boulder Bio Baba" slice="0x0" actor="0xc7" item="NOTHING" name="Bio Baba Grotto" xyz="643;756;0"/>
-        <xflag type="rupee" location="Termina Field Rupee" slice="0x0" actor="0x4" item="RUPEE_RED" name="Pillar" xyz="2174;643;0"/>
-        <xflag type="wonder" location="Termina Field Wonder Item Grass 1" slice="0x0" actor="0x59" item="RUPEE_GREEN" name="Grass 1" xyz="1172;1395;0"/>
-        <xflag type="wonder" location="Termina Field Wonder Item Grass 2" slice="0x0" actor="0x5a" item="RUPEE_GREEN" name="Grass 2" xyz="1184;1471;0"/>
-        <xflag type="wonder" location="Termina Field Wonder Item Grass 3" slice="0x0" actor="0x5b" item="RUPEE_GREEN" name="Grass 3" xyz="1336;1650;0"/>
-        <xflag type="wonder" location="Termina Field Wonder Item Grass 4" slice="0x0" actor="0x5c" item="RUPEE_GREEN" name="Grass 4" xyz="1722;1630;0"/>
-        <xflag type="wonder" location="Termina Field Wonder Item Grass 5" slice="0x0" actor="0x5d" item="RUPEE_GREEN" name="Grass 5" xyz="1838;1489;0"/>
-        <xflag type="wonder" location="Termina Field Wonder Item Hollow Trunk" slice="0x0" actor="0x5e" item="RUPEE_BLUE" name="Hollow Trunk" xyz="1480;1534;0"/>
-        <xflag type="wonder" location="Termina Field Wonder Item Fountains 1" slice="0x0" actor="0x5f" item="RUPEE_BLUE" name="Fountains 1" xyz="921;684;0"/>
-        <xflag type="wonder" location="Termina Field Wonder Item Fountains 2" slice="0x0" actor="0x60" item="RUPEE_BLUE" name="Fountains 2" xyz="921;835;0"/>
-        <xflag type="wonder" location="Termina Field Wonder Item North Ramp" slice="0x0" actor="0x61" item="RUPEE_BLUE" name="North - Ramp" xyz="1453;167;0"/>
-        <xflag type="wonder" location="Termina Field Wonder Item West Ramp" slice="0x0" actor="0x62" item="RUPEE_BLUE" name="West - Ramp" xyz="956;732;0"/>
-        <xflag type="wonder" location="Termina Field Wonder Item South West Ramp" slice="0x0" actor="0x63" item="RUPEE_BLUE" name="South West - Ramp" xyz="826;1137;0"/>
+        <xflag type="boulder" location="Termina Field Boulder West Gossip" actor="0xc6" item="NOTHING" name="West Gossip Grotto" xyz="1050;532;0"/>
+        <xflag type="boulder" location="Termina Field Boulder Bio Baba" actor="0xc7" item="NOTHING" name="Bio Baba Grotto" xyz="643;756;0"/>
+        <xflag type="rupee" location="Termina Field Rupee" actor="0x4" item="RUPEE_RED" name="Pillar" xyz="2174;643;0"/>
+        <xflag type="wonder" location="Termina Field Wonder Item Grass 1" actor="0x59" item="RUPEE_GREEN" name="Grass 1" xyz="1172;1395;0"/>
+        <xflag type="wonder" location="Termina Field Wonder Item Grass 2" actor="0x5a" item="RUPEE_GREEN" name="Grass 2" xyz="1184;1471;0"/>
+        <xflag type="wonder" location="Termina Field Wonder Item Grass 3" actor="0x5b" item="RUPEE_GREEN" name="Grass 3" xyz="1336;1650;0"/>
+        <xflag type="wonder" location="Termina Field Wonder Item Grass 4" actor="0x5c" item="RUPEE_GREEN" name="Grass 4" xyz="1722;1630;0"/>
+        <xflag type="wonder" location="Termina Field Wonder Item Grass 5" actor="0x5d" item="RUPEE_GREEN" name="Grass 5" xyz="1838;1489;0"/>
+        <xflag type="wonder" location="Termina Field Wonder Item Hollow Trunk" actor="0x5e" item="RUPEE_BLUE" name="Hollow Trunk" xyz="1480;1534;0"/>
+        <xflag type="wonder" location="Termina Field Wonder Item Fountains 1" actor="0x5f" item="RUPEE_BLUE" name="Fountains 1" xyz="921;684;0"/>
+        <xflag type="wonder" location="Termina Field Wonder Item Fountains 2" actor="0x60" item="RUPEE_BLUE" name="Fountains 2" xyz="921;835;0"/>
+        <xflag type="wonder" location="Termina Field Wonder Item North Ramp" actor="0x61" item="RUPEE_BLUE" name="North - Ramp" xyz="1453;167;0"/>
+        <xflag type="wonder" location="Termina Field Wonder Item West Ramp" actor="0x62" item="RUPEE_BLUE" name="West - Ramp" xyz="956;732;0"/>
+        <xflag type="wonder" location="Termina Field Wonder Item South West Ramp" actor="0x63" item="RUPEE_BLUE" name="South West - Ramp" xyz="826;1137;0"/>
         <xflag type="wonder" location="Termina Field Wonder Item Shell 1" slice="0x0" actor="0x64" item="RUPEE_GREEN" name="West Door - Shell 1" xyz="1077;729;0"/>
         <xflag type="wonder" location="Termina Field Wonder Item Shell 2" slice="0x1" actor="0x64" item="RUPEE_GREEN" name="West Door - Shell 2" xyz="1092;748;0"/>
         <xflag type="wonder" location="Termina Field Wonder Item Shell 3" slice="0x2" actor="0x64" item="RUPEE_GREEN" name="West Door - Shell 3" xyz="1084;770;0"/>

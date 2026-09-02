@@ -45,16 +45,20 @@
       <xflag type="grass" location="Lost Woods Grass Deep 5" slice="0x0" setup="0x0" room="0x8" actor="0x4" item="RANDOM" name="Deep 5" xyz="1620;465;0"/>
       <xflag type="grass" location="Lost Woods Grass Deep 6" slice="0x0" setup="0x0" room="0x8" actor="0x5" item="RANDOM" name="Deep 6" xyz="1583;473;0"/>
       <rendering_option context="child">
-        <xflag type="rupee" location="Lost Woods Rupee Arrow 1" slice="0x0" setup="0x0" room="0x3" actor="0x4" item="RUPEE_GREEN" name="Underwater 1" xyz="2545;1466;2"/>
-        <xflag type="rupee" location="Lost Woods Rupee Arrow 2" slice="0x0" setup="0x0" room="0x3" actor="0x5" item="RUPEE_GREEN" name="Underwater 2" xyz="2517;1466;2"/>
-        <xflag type="rupee" location="Lost Woods Rupee Arrow 3" slice="0x0" setup="0x0" room="0x3" actor="0x6" item="RUPEE_GREEN" name="Underwater 3" xyz="2490;1465;1"/>
-        <xflag type="rupee" location="Lost Woods Rupee Arrow 4" slice="0x0" setup="0x0" room="0x3" actor="0x7" item="RUPEE_GREEN" name="Underwater 4" xyz="2462;1463;0"/>
-        <xflag type="rupee" location="Lost Woods Rupee Arrow 5" slice="0x0" setup="0x0" room="0x3" actor="0x8" item="RUPEE_GREEN" name="Underwater 5" xyz="2534;1441;1"/>
-        <xflag type="rupee" location="Lost Woods Rupee Arrow 6" slice="0x0" setup="0x0" room="0x3" actor="0x9" item="RUPEE_GREEN" name="Underwater 6" xyz="2515;1418;0"/>
-        <xflag type="rupee" location="Lost Woods Rupee Arrow 7" slice="0x0" setup="0x0" room="0x3" actor="0xa" item="RUPEE_GREEN" name="Underwater 7" xyz="2533;1486;2"/>
-        <xflag type="rupee" location="Lost Woods Rupee Arrow 8" slice="0x0" setup="0x0" room="0x3" actor="0xb" item="RUPEE_GREEN" name="Underwater 8" xyz="2510;1504;2"/>
+        <xflag type="rupee" location="Lost Woods Rupee Arrow 1" setup="0x0" room="0x3" actor="0x4" item="RUPEE_GREEN" name="Underwater 1" xyz="2545;1466;2"/>
+        <xflag type="rupee" location="Lost Woods Rupee Arrow 2" setup="0x0" room="0x3" actor="0x5" item="RUPEE_GREEN" name="Underwater 2" xyz="2517;1466;2"/>
+        <xflag type="rupee" location="Lost Woods Rupee Arrow 3" setup="0x0" room="0x3" actor="0x6" item="RUPEE_GREEN" name="Underwater 3" xyz="2490;1465;1"/>
+        <xflag type="rupee" location="Lost Woods Rupee Arrow 4" setup="0x0" room="0x3" actor="0x7" item="RUPEE_GREEN" name="Underwater 4" xyz="2462;1463;0"/>
+        <xflag type="rupee" location="Lost Woods Rupee Arrow 5" setup="0x0" room="0x3" actor="0x8" item="RUPEE_GREEN" name="Underwater 5" xyz="2534;1441;1"/>
+        <xflag type="rupee" location="Lost Woods Rupee Arrow 6" setup="0x0" room="0x3" actor="0x9" item="RUPEE_GREEN" name="Underwater 6" xyz="2515;1418;0"/>
+        <xflag type="rupee" location="Lost Woods Rupee Arrow 7" setup="0x0" room="0x3" actor="0xa" item="RUPEE_GREEN" name="Underwater 7" xyz="2533;1486;2"/>
+        <xflag type="rupee" location="Lost Woods Rupee Arrow 8" setup="0x0" room="0x3" actor="0xb" item="RUPEE_GREEN" name="Underwater 8" xyz="2510;1504;2"/>
       </rendering_option>
-      <xflag type="rupee" location="Lost Woods Rupee Boulder" slice="0x0" setup="0x0" room="0x7" actor="0x4" item="RUPEE_BLUE" name="Boulder" xyz="2281;230;1"/>
+      <actor room="0x7">
+        <match setup="0" actor="0x4"/>
+        <match setup="2" actor="0x1"/>
+        <xflag type="rupee" location="Lost Woods Rupee Boulder" item="RUPEE_BLUE" name="Boulder" xyz="2281;230;1"/>
+      </actor>
       <xflag type="fairy_spot" location="Lost Woods Pool Big Fairy" slice="0x0" setup="0x0" room="0x3" actor="0x3" item="FAIRY_BIG" name="Pool" xyz="2399;1504;0"/>
       <rendering_option context="child">
         <xflag type="wonder" location="Lost Woods Wonder Item 1" slice="0x0" setup="0x0" room="0x1" actor="0x5" item="RUPEE_GREEN" name="Memory Game Grass 1" xyz="1975;2105;0"/>

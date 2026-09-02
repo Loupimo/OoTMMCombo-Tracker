@@ -45,103 +45,103 @@
         <cow location="MQ Jabu-Jabu Cow" flag="0x09" item="MILK" name="Cow" xyz="660;235;0"/>
       </rendering_option>
       <rendering_option layout="oot_mq">
-        <xflag type="pot" location="MQ Jabu-Jabu Pot Entrance 1" slice="0x0" setup="0x0" room="0x0" actor="0xf" item="BOMB" name="Entrance 1" xyz="2288;706;0"/>
-        <xflag type="pot" location="MQ Jabu-Jabu Pot Entrance 2" slice="0x0" setup="0x0" room="0x0" actor="0x10" item="NUTS_5" name="Entrance 2" xyz="2421;572;0"/>
+        <xflag type="pot" location="MQ Jabu-Jabu Pot Entrance 1" room="0x0" actor="0xf" item="BOMB" name="Entrance 1" xyz="2288;706;0"/>
+        <xflag type="pot" location="MQ Jabu-Jabu Pot Entrance 2" room="0x0" actor="0x10" item="NUTS_5" name="Entrance 2" xyz="2421;572;0"/>
       </rendering_option>
       <rendering_option layout="oot_mq" room="1">
-        <xflag type="pot" location="MQ Jabu-Jabu Pot Underwater Alcove 1" slice="0x0" setup="0x0" room="0x1" actor="0x15" item="ARROWS_5" name="Underwater Alcove 1" xyz="107;692;0"/>
-        <xflag type="pot" location="MQ Jabu-Jabu Pot Underwater Alcove 2" slice="0x0" setup="0x0" room="0x1" actor="0x16" item="NUTS_5" name="Underwater Alcove 2" xyz="81;738;0"/>
+        <xflag type="pot" location="MQ Jabu-Jabu Pot Underwater Alcove 1" room="0x1" actor="0x15" item="ARROWS_5" name="Underwater Alcove 1" xyz="107;692;0"/>
+        <xflag type="pot" location="MQ Jabu-Jabu Pot Underwater Alcove 2" room="0x1" actor="0x16" item="NUTS_5" name="Underwater Alcove 2" xyz="81;738;0"/>
       </rendering_option>
       <rendering_option layout="oot_mq">
-        <xflag type="pot" location="MQ Jabu-Jabu Pot Before Boss" slice="0x0" setup="0x0" room="0x5" actor="0xd" item="FLEXIBLE" name="Before Boss" xyz="1617;280;0"/>
-        <xflag type="pot" location="MQ Jabu-Jabu Pot Like-Like Room 1" slice="0x0" setup="0x0" room="0xb" actor="0x1a" item="ARROWS_5" name="Like-Like Room 1" xyz="109;472;0"/>
-        <xflag type="pot" location="MQ Jabu-Jabu Pot Like-Like Room 2" slice="0x0" setup="0x0" room="0xb" actor="0x1e" item="BOMBS_5" name="Like-Like Room 2" xyz="109;417;0"/>
+        <xflag type="pot" location="MQ Jabu-Jabu Pot Before Boss" room="0x5" actor="0xd" item="FLEXIBLE" name="Before Boss" xyz="1617;280;0"/>
+        <xflag type="pot" location="MQ Jabu-Jabu Pot Like-Like Room 1" room="0xb" actor="0x1a" item="ARROWS_5" name="Like-Like Room 1" xyz="109;472;0"/>
+        <xflag type="pot" location="MQ Jabu-Jabu Pot Like-Like Room 2" room="0xb" actor="0x1e" item="BOMBS_5" name="Like-Like Room 2" xyz="109;417;0"/>
       </rendering_option>
       <rendering_option layout="oot_mq" room="1">
-        <xflag type="pot" location="MQ Jabu-Jabu Pot Boomerang Room 1" slice="0x0" setup="0x0" room="0xe" actor="0xa" item="BOMB" name="Boomerang Room 1" xyz="798;887;0"/>
-        <xflag type="pot" location="MQ Jabu-Jabu Pot Boomerang Room 2" slice="0x0" setup="0x0" room="0xe" actor="0xe" item="ARROWS_5" name="Boomerang Room 2" xyz="855;887;0"/>
+        <xflag type="pot" location="MQ Jabu-Jabu Pot Boomerang Room 1" room="0xe" actor="0xa" item="BOMB" name="Boomerang Room 1" xyz="798;887;0"/>
+        <xflag type="pot" location="MQ Jabu-Jabu Pot Boomerang Room 2" room="0xe" actor="0xe" item="ARROWS_5" name="Boomerang Room 2" xyz="855;887;0"/>
       </rendering_option>
       <rendering_option layout="oot_mq">
-        <xflag type="grass" location="MQ Jabu-Jabu Grass Entrance 1" slice="0x0" setup="0x0" room="0x0" actor="0x1" item="RECOVERY_HEART" name="Entrance 1" xyz="2306;568;0"/>
-        <xflag type="grass" location="MQ Jabu-Jabu Grass Entrance 2" slice="0x0" setup="0x0" room="0x0" actor="0x2" item="DEKU_SEEDS_5" name="Entrance 2" xyz="2427;719;0"/>
-        <xflag type="grass" location="MQ Jabu-Jabu Grass Main Room Top 1" slice="0x0" setup="0x0" room="0x2" actor="0x0" item="RECOVERY_HEART" name="Main Room - Top 1" xyz="1023;728;1"/>
-        <xflag type="grass" location="MQ Jabu-Jabu Grass Main Room Top 2" slice="0x0" setup="0x0" room="0x2" actor="0x1" item="DEKU_SEEDS_5" name="Main Room - Top 2" xyz="906;532;1"/>
+        <xflag type="grass" location="MQ Jabu-Jabu Grass Entrance 1" room="0x0" actor="0x1" item="RECOVERY_HEART" name="Entrance 1" xyz="2306;568;0"/>
+        <xflag type="grass" location="MQ Jabu-Jabu Grass Entrance 2" room="0x0" actor="0x2" item="DEKU_SEEDS_5" name="Entrance 2" xyz="2427;719;0"/>
+        <xflag type="grass" location="MQ Jabu-Jabu Grass Main Room Top 1" room="0x2" actor="0x0" item="RECOVERY_HEART" name="Main Room - Top 1" xyz="1023;728;1"/>
+        <xflag type="grass" location="MQ Jabu-Jabu Grass Main Room Top 2" room="0x2" actor="0x1" item="DEKU_SEEDS_5" name="Main Room - Top 2" xyz="906;532;1"/>
       </rendering_option>
       <rendering_option layout="oot_mq" room="1">
-        <xflag type="grass" location="MQ Jabu-Jabu Grass Main Room Bottom 1" slice="0x0" setup="0x0" room="0x3" actor="0x0" item="RECOVERY_HEART" name="Main Room - Bottom 1" xyz="1090;424;0"/>
-        <xflag type="grass" location="MQ Jabu-Jabu Grass Main Room Bottom 2" slice="0x0" setup="0x0" room="0x3" actor="0x1" item="DEKU_SEEDS_5" name="Main Room - Bottom 2" xyz="1060;448;0"/>
-        <xflag type="grass" location="MQ Jabu-Jabu Grass Main Room Bottom 3" slice="0x0" setup="0x0" room="0x3" actor="0x2" item="RECOVERY_HEART" name="Main Room - Bottom 3" xyz="1305;551;0"/>
-        <xflag type="grass" location="MQ Jabu-Jabu Grass Room After Big Octo" slice="0x0" setup="0x0" room="0x4" actor="0x4" item="DEKU_SEEDS_5" name="Room After Big Octo" xyz="634;299;0"/>
+        <xflag type="grass" location="MQ Jabu-Jabu Grass Main Room Bottom 1" room="0x3" actor="0x0" item="RECOVERY_HEART" name="Main Room - Bottom 1" xyz="1090;424;0"/>
+        <xflag type="grass" location="MQ Jabu-Jabu Grass Main Room Bottom 2" room="0x3" actor="0x1" item="DEKU_SEEDS_5" name="Main Room - Bottom 2" xyz="1060;448;0"/>
+        <xflag type="grass" location="MQ Jabu-Jabu Grass Main Room Bottom 3" room="0x3" actor="0x2" item="RECOVERY_HEART" name="Main Room - Bottom 3" xyz="1305;551;0"/>
+        <xflag type="grass" location="MQ Jabu-Jabu Grass Room After Big Octo" room="0x4" actor="0x4" item="DEKU_SEEDS_5" name="Room After Big Octo" xyz="634;299;0"/>
       </rendering_option>
       <rendering_option layout="oot_mq">
-        <xflag type="grass" location="MQ Jabu-Jabu Grass Before Boss 1" slice="0x0" setup="0x0" room="0x5" actor="0x2" item="RECOVERY_HEART" name="Before Boss 1" xyz="1795;230;0"/>
-        <xflag type="grass" location="MQ Jabu-Jabu Grass Before Boss 2" slice="0x0" setup="0x0" room="0x5" actor="0x3" item="DEKU_SEEDS_5" name="Before Boss 2" xyz="1738;171;0"/>
+        <xflag type="grass" location="MQ Jabu-Jabu Grass Before Boss 1" room="0x5" actor="0x2" item="RECOVERY_HEART" name="Before Boss 1" xyz="1795;230;0"/>
+        <xflag type="grass" location="MQ Jabu-Jabu Grass Before Boss 2" room="0x5" actor="0x3" item="DEKU_SEEDS_5" name="Before Boss 2" xyz="1738;171;0"/>
       </rendering_option>
       <rendering_option layout="oot_mq" room="1">
-        <xflag type="grass" location="MQ Jabu-Jabu Grass Big Octo Top 1" slice="0x0" setup="0x0" room="0x6" actor="0x4" item="RECOVERY_HEART" name="Big Octo Top 1" xyz="1246;278;0"/>
-        <xflag type="grass" location="MQ Jabu-Jabu Grass Big Octo Top 2" slice="0x0" setup="0x0" room="0x6" actor="0x5" item="DEKU_SEEDS_5" name="Big Octo Top 2" xyz="1312;208;0"/>
+        <xflag type="grass" location="MQ Jabu-Jabu Grass Big Octo Top 1" room="0x6" actor="0x4" item="RECOVERY_HEART" name="Big Octo Top 1" xyz="1246;278;0"/>
+        <xflag type="grass" location="MQ Jabu-Jabu Grass Big Octo Top 2" room="0x6" actor="0x5" item="DEKU_SEEDS_5" name="Big Octo Top 2" xyz="1312;208;0"/>
       </rendering_option>
       <rendering_option layout="oot_mq">
-        <xflag type="grass" location="MQ Jabu-Jabu Grass Torch Room" slice="0x0" setup="0x0" room="0xb" actor="0x4" item="RECOVERY_HEART" name="Torch Room" xyz="199;447;0"/>
+        <xflag type="grass" location="MQ Jabu-Jabu Grass Torch Room" room="0xb" actor="0x4" item="RECOVERY_HEART" name="Torch Room" xyz="199;447;0"/>
       </rendering_option>
       <rendering_option layout="oot_mq" room="1">
-        <xflag type="grass" location="MQ Jabu-Jabu Grass Boomerang Room" slice="0x0" setup="0x0" room="0xe" actor="0x2" item="DEKU_SEEDS_5" name="Boomerang Room" xyz="916;1076;0"/>
-        <xflag type="rupee" location="MQ Jabu-Jabu Rupee Bottom" slice="0x0" setup="0x0" room="0x1" actor="0x0" item="RUPEE_GREEN" name="Bottom" xyz="229;814;0"/>
-        <xflag type="rupee" location="MQ Jabu-Jabu Rupee Middle" slice="0x0" setup="0x0" room="0x1" actor="0x1" item="RUPEE_GREEN" name="Middle" xyz="191;795;0"/>
-        <xflag type="rupee" location="MQ Jabu-Jabu Rupee Top" slice="0x0" setup="0x0" room="0x1" actor="0x2" item="RUPEE_GREEN" name="Top" xyz="164;769;0"/>
+        <xflag type="grass" location="MQ Jabu-Jabu Grass Boomerang Room" room="0xe" actor="0x2" item="DEKU_SEEDS_5" name="Boomerang Room" xyz="916;1076;0"/>
+        <xflag type="rupee" location="MQ Jabu-Jabu Rupee Bottom" room="0x1" actor="0x0" item="RUPEE_GREEN" name="Bottom" xyz="229;814;0"/>
+        <xflag type="rupee" location="MQ Jabu-Jabu Rupee Middle" room="0x1" actor="0x1" item="RUPEE_GREEN" name="Middle" xyz="191;795;0"/>
+        <xflag type="rupee" location="MQ Jabu-Jabu Rupee Top" room="0x1" actor="0x2" item="RUPEE_GREEN" name="Top" xyz="164;769;0"/>
       </rendering_option>
       <rendering_option layout="oot_mq">
-        <xflag type="heart" location="MQ Jabu-Jabu Heart 1" slice="0x0" setup="0x0" room="0x1" actor="0x8" item="RECOVERY_HEART" name="Heart 1" xyz="1771;730;0"/>
-        <xflag type="heart" location="MQ Jabu-Jabu Heart 2" slice="0x0" setup="0x0" room="0x1" actor="0x9" item="RECOVERY_HEART" name="Heart 2" xyz="1661;730;0"/>
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Entrance Left Cow" slice="0x0" setup="0x0" room="0x0" actor="0xd" item="RECOVERY_HEART" name="Entrance - Left Cow" xyz="2249;719;0"/>
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Entrance Right Cow" slice="0x0" setup="0x0" room="0x0" actor="0xe" item="RECOVERY_HEART" name="Entrance - Right Cow" xyz="2253;565;0"/>
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Elevator Cow" slice="0x0" setup="0x0" room="0x1" actor="0x13" item="RECOVERY_HEART" name="Elevator - Cow" xyz="1661;589;0"/>
+        <xflag type="heart" location="MQ Jabu-Jabu Heart 1" room="0x1" actor="0x8" item="RECOVERY_HEART" name="Heart 1" xyz="1771;730;0"/>
+        <xflag type="heart" location="MQ Jabu-Jabu Heart 2" room="0x1" actor="0x9" item="RECOVERY_HEART" name="Heart 2" xyz="1661;730;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Entrance Left Cow" room="0x0" actor="0xd" item="RECOVERY_HEART" name="Entrance - Left Cow" xyz="2249;719;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Entrance Right Cow" room="0x0" actor="0xe" item="RECOVERY_HEART" name="Entrance - Right Cow" xyz="2253;565;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Elevator Cow" room="0x1" actor="0x13" item="RECOVERY_HEART" name="Elevator - Cow" xyz="1661;589;0"/>
       </rendering_option>
       <rendering_option layout="oot_mq" room="1">
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Basement Right Cow 1" slice="0x0" setup="0x0" room="0x3" actor="0xd" item="DEKU_SEEDS_5" name="Basement - Right Cow 1" xyz="1054;655;0"/>
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Basement Right Cow 2" slice="0x0" setup="0x0" room="0x3" actor="0xe" item="DEKU_SEEDS_5" name="Basement - Right Cow 2" xyz="1049;639;0"/>
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Basement Right Cow 3" slice="0x0" setup="0x0" room="0x3" actor="0xf" item="DEKU_SEEDS_5" name="Basement - Right Cow 3" xyz="1033;638;0"/>
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Basement Left Cow 1" slice="0x0" setup="0x0" room="0x3" actor="0x10" item="DEKU_SEEDS_5" name="Basement - Left Cow 1" xyz="1215;673;0"/>
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Basement Left Cow 2" slice="0x0" setup="0x0" room="0x3" actor="0x11" item="DEKU_SEEDS_5" name="Basement - Left Cow 2" xyz="1188;671;0"/>
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Basement Left Cow 3" slice="0x0" setup="0x0" room="0x3" actor="0x12" item="DEKU_SEEDS_5" name="Basement - Left Cow 3" xyz="1203;663;0"/>
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Platforms Cow" slice="0x0" setup="0x0" room="0x4" actor="0xd" item="DEKU_SEEDS_5" name="Platforms - Cow" xyz="513;211;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Basement Right Cow 1" room="0x3" actor="0xd" item="DEKU_SEEDS_5" name="Basement - Right Cow 1" xyz="1054;655;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Basement Right Cow 2" room="0x3" actor="0xe" item="DEKU_SEEDS_5" name="Basement - Right Cow 2" xyz="1049;639;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Basement Right Cow 3" room="0x3" actor="0xf" item="DEKU_SEEDS_5" name="Basement - Right Cow 3" xyz="1033;638;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Basement Left Cow 1" room="0x3" actor="0x10" item="DEKU_SEEDS_5" name="Basement - Left Cow 1" xyz="1215;673;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Basement Left Cow 2" room="0x3" actor="0x11" item="DEKU_SEEDS_5" name="Basement - Left Cow 2" xyz="1188;671;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Basement Left Cow 3" room="0x3" actor="0x12" item="DEKU_SEEDS_5" name="Basement - Left Cow 3" xyz="1203;663;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Platforms Cow" room="0x4" actor="0xd" item="DEKU_SEEDS_5" name="Platforms - Cow" xyz="513;211;0"/>
       </rendering_option>
       <rendering_option layout="oot_mq">
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Before Boss Left Cow" slice="0x0" setup="0x0" room="0x5" actor="0xa" item="DEKU_SEEDS_5" name="Before Boss - Left Cow" xyz="1709;100;0"/>
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Before Boss Right Cow 1" slice="0x0" setup="0x0" room="0x5" actor="0x9" item="RECOVERY_HEART" name="Before Boss - Right Cow 1" xyz="1867;256;0"/>
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Before Boss Right Cow 2" slice="0x0" setup="0x0" room="0x5" actor="0xb" item="FLEXIBLE" name="Before Boss - Right Cow 2" xyz="1867;238;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Before Boss Left Cow" room="0x5" actor="0xa" item="DEKU_SEEDS_5" name="Before Boss - Left Cow" xyz="1709;100;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Before Boss Right Cow 1" room="0x5" actor="0x9" item="RECOVERY_HEART" name="Before Boss - Right Cow 1" xyz="1867;256;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Before Boss Right Cow 2" room="0x5" actor="0xb" item="FLEXIBLE" name="Before Boss - Right Cow 2" xyz="1867;238;0"/>
       </rendering_option>
       <rendering_option layout="oot_mq" room="1">
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item After Big Octo" slice="0x0" setup="0x0" room="0x6" actor="0x7" item="RECOVERY_HEART" name="After Big Octo" xyz="1258;120;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item After Big Octo" room="0x6" actor="0x7" item="RECOVERY_HEART" name="After Big Octo" xyz="1258;120;0"/>
       </rendering_option>
       <rendering_option layout="oot_mq">
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Falling Like-Likes Cow Right 1" slice="0x0" setup="0x0" room="0xb" actor="0x13" item="MAGIC_JAR_SMALL" name="Like-Likes - Cow Right 1" xyz="185;349;0"/>
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Falling Like-Likes Cow Right 2" slice="0x0" setup="0x0" room="0xb" actor="0x14" item="MAGIC_JAR_SMALL" name="Like-Likes - Cow Right 2" xyz="168;347;0"/>
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Falling Like-Likes Cow Right 3" slice="0x0" setup="0x0" room="0xb" actor="0x15" item="MAGIC_JAR_SMALL" name="Like-Likes - Cow Right 3" xyz="202;347;0"/>
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Falling Like-Likes Cow Left 1" slice="0x0" setup="0x0" room="0xb" actor="0x16" item="DEKU_SEEDS_5" name="Like-Likes - Cow Left 1" xyz="185;536;0"/>
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Falling Like-Likes Cow Left 2" slice="0x0" setup="0x0" room="0xb" actor="0x17" item="DEKU_SEEDS_5" name="Like-Likes - Cow Left 2" xyz="202;538;0"/>
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Falling Like-Likes Cow Left 3" slice="0x0" setup="0x0" room="0xb" actor="0x18" item="DEKU_SEEDS_5" name="Like-Likes - Cow Left 3" xyz="168;538;0"/>
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Falling Like-Likes Explosion 1" slice="0x0" setup="0x0" room="0xb" actor="0x1b" item="FLEXIBLE" name="Falling Like-Likes - Explosion 1" xyz="182;446;0"/>
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Falling Like-Likes Explosion 2" slice="0x0" setup="0x0" room="0xb" actor="0x1c" item="FLEXIBLE" name="Falling Like-Likes - Explosion 2" xyz="182;429;0"/>
-        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Falling Like-Likes Explosion 3" slice="0x0" setup="0x0" room="0xb" actor="0x1d" item="FLEXIBLE" name="Falling Like-Likes - Explosion 3" xyz="182;463;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Falling Like-Likes Cow Right 1" room="0xb" actor="0x13" item="MAGIC_JAR_SMALL" name="Like-Likes - Cow Right 1" xyz="185;349;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Falling Like-Likes Cow Right 2" room="0xb" actor="0x14" item="MAGIC_JAR_SMALL" name="Like-Likes - Cow Right 2" xyz="168;347;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Falling Like-Likes Cow Right 3" room="0xb" actor="0x15" item="MAGIC_JAR_SMALL" name="Like-Likes - Cow Right 3" xyz="202;347;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Falling Like-Likes Cow Left 1" room="0xb" actor="0x16" item="DEKU_SEEDS_5" name="Like-Likes - Cow Left 1" xyz="185;536;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Falling Like-Likes Cow Left 2" room="0xb" actor="0x17" item="DEKU_SEEDS_5" name="Like-Likes - Cow Left 2" xyz="202;538;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Falling Like-Likes Cow Left 3" room="0xb" actor="0x18" item="DEKU_SEEDS_5" name="Like-Likes - Cow Left 3" xyz="168;538;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Falling Like-Likes Explosion 1" room="0xb" actor="0x1b" item="FLEXIBLE" name="Falling Like-Likes - Explosion 1" xyz="182;446;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Falling Like-Likes Explosion 2" room="0xb" actor="0x1c" item="FLEXIBLE" name="Falling Like-Likes - Explosion 2" xyz="182;429;0"/>
+        <xflag type="wonder" location="MQ Jabu-Jabu Wonder Item Falling Like-Likes Explosion 3" room="0xb" actor="0x1d" item="FLEXIBLE" name="Falling Like-Likes - Explosion 3" xyz="182;463;0"/>
       </rendering_option>
       <rendering_option layout="oot_mq" room="1">
-        <xflag type="crate" location="MQ Jabu-Jabu Room After Above Big Octo Small Crate 1" slice="0x0" setup="0x0" room="0x4" actor="0xb" item="NOTHING" name="After Big Octo - Small Crate 1" xyz="856;211;0"/>
-        <xflag type="crate" location="MQ Jabu-Jabu Room After Above Big Octo Small Crate 2" slice="0x0" setup="0x0" room="0x4" actor="0xc" item="NOTHING" name="After Big Octo - Small Crate 2" xyz="856;186;0"/>
+        <xflag type="crate" location="MQ Jabu-Jabu Room After Above Big Octo Small Crate 1" room="0x4" actor="0xb" item="NOTHING" name="After Big Octo - Small Crate 1" xyz="856;211;0"/>
+        <xflag type="crate" location="MQ Jabu-Jabu Room After Above Big Octo Small Crate 2" room="0x4" actor="0xc" item="NOTHING" name="After Big Octo - Small Crate 2" xyz="856;186;0"/>
       </rendering_option>
       <rendering_option layout="oot_mq">
-        <xflag type="crate" location="MQ Jabu-Jabu Back Forked Paths Main Room Small Crate 1" slice="0x0" setup="0x0" room="0x7" actor="0x5" item="NOTHING" name="Back Forked Paths Main Room - Small Crate 1" xyz="506;854;0"/>
-        <xflag type="crate" location="MQ Jabu-Jabu Back Forked Paths Main Room Small Crate 2" slice="0x0" setup="0x0" room="0x7" actor="0x6" item="NOTHING" name="Back Forked Paths Main Room - Small Crate 2" xyz="530;809;0"/>
-        <xflag type="boulder" location="MQ Jabu-Jabu Room Boulder Entrance" slice="0x0" setup="0x0" room="0x0" actor="0x6" item="NOTHING" name="Entrance" xyz="2344;643;0"/>
-        <xflag type="boulder" location="MQ Jabu-Jabu Room Boulder Holes Room Ground 1" slice="0x0" setup="0x0" room="0x2" actor="0x8" item="NOTHING" name="Holes Room Ground 1" xyz="906;532;0"/>
-        <xflag type="boulder" location="MQ Jabu-Jabu Room Boulder Holes Room Ground 2" slice="0x0" setup="0x0" room="0x2" actor="0x9" item="NOTHING" name="Holes Room Ground 2" xyz="1023;728;0"/>
-        <xflag type="boulder" location="MQ Jabu-Jabu Room Boulder Holes Room Wall 1" slice="0x0" setup="0x0" room="0x2" actor="0x7" item="NOTHING" name="Holes Room Wall 1" xyz="1199;552;0"/>
-        <xflag type="boulder" location="MQ Jabu-Jabu Room Boulder Holes Room Wall 2" slice="0x0" setup="0x0" room="0x2" actor="0xa" item="NOTHING" name="Holes Room Wall 2" xyz="1209;572;0"/>
-        <xflag type="boulder" location="MQ Jabu-Jabu Room Boulder Holes Room Wall 3" slice="0x0" setup="0x0" room="0x2" actor="0xb" item="NOTHING" name="Holes Room Wall 3" xyz="1209;532;0"/>
-        <xflag type="boulder" location="MQ Jabu-Jabu Room Boulder Fork Room 1" slice="0x0" setup="0x0" room="0x7" actor="0x3" item="NOTHING" name="Fork Room 1" xyz="367;673;0"/>
-        <xflag type="boulder" location="MQ Jabu-Jabu Room Boulder Fork Room 2" slice="0x0" setup="0x0" room="0x7" actor="0x4" item="NOTHING" name="Fork Room 2" xyz="367;639;0"/>
-        <xflag type="boulder" location="MQ Jabu-Jabu Room Boulder Side Room Wall" slice="0x0" setup="0x0" room="0xc" actor="0x7" item="NOTHING" name="Side Room Wall" xyz="151;782;0"/>
-        <xflag type="boulder" location="MQ Jabu-Jabu Room Boulder Side Room Ground" slice="0x0" setup="0x0" room="0xc" actor="0x8" item="NOTHING" name="Side Room Ground" xyz="132;928;0"/>
+        <xflag type="crate" location="MQ Jabu-Jabu Back Forked Paths Main Room Small Crate 1" room="0x7" actor="0x5" item="NOTHING" name="Back Forked Paths Main Room - Small Crate 1" xyz="506;854;0"/>
+        <xflag type="crate" location="MQ Jabu-Jabu Back Forked Paths Main Room Small Crate 2" room="0x7" actor="0x6" item="NOTHING" name="Back Forked Paths Main Room - Small Crate 2" xyz="530;809;0"/>
+        <xflag type="boulder" location="MQ Jabu-Jabu Room Boulder Entrance" room="0x0" actor="0x6" item="NOTHING" name="Entrance" xyz="2344;643;0"/>
+        <xflag type="boulder" location="MQ Jabu-Jabu Room Boulder Holes Room Ground 1" room="0x2" actor="0x8" item="NOTHING" name="Holes Room Ground 1" xyz="906;532;0"/>
+        <xflag type="boulder" location="MQ Jabu-Jabu Room Boulder Holes Room Ground 2" room="0x2" actor="0x9" item="NOTHING" name="Holes Room Ground 2" xyz="1023;728;0"/>
+        <xflag type="boulder" location="MQ Jabu-Jabu Room Boulder Holes Room Wall 1" room="0x2" actor="0x7" item="NOTHING" name="Holes Room Wall 1" xyz="1199;552;0"/>
+        <xflag type="boulder" location="MQ Jabu-Jabu Room Boulder Holes Room Wall 2" room="0x2" actor="0xa" item="NOTHING" name="Holes Room Wall 2" xyz="1209;572;0"/>
+        <xflag type="boulder" location="MQ Jabu-Jabu Room Boulder Holes Room Wall 3" room="0x2" actor="0xb" item="NOTHING" name="Holes Room Wall 3" xyz="1209;532;0"/>
+        <xflag type="boulder" location="MQ Jabu-Jabu Room Boulder Fork Room 1" room="0x7" actor="0x3" item="NOTHING" name="Fork Room 1" xyz="367;673;0"/>
+        <xflag type="boulder" location="MQ Jabu-Jabu Room Boulder Fork Room 2" room="0x7" actor="0x4" item="NOTHING" name="Fork Room 2" xyz="367;639;0"/>
+        <xflag type="boulder" location="MQ Jabu-Jabu Room Boulder Side Room Wall" room="0xc" actor="0x7" item="NOTHING" name="Side Room Wall" xyz="151;782;0"/>
+        <xflag type="boulder" location="MQ Jabu-Jabu Room Boulder Side Room Ground" room="0xc" actor="0x8" item="NOTHING" name="Side Room Ground" xyz="132;928;0"/>
       </rendering_option>
     </scene_rendering>
   </scene>

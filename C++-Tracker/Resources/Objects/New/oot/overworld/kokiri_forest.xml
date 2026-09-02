@@ -76,28 +76,32 @@
         <xflag type="rock" location="Kokiri Forest Rock Circle Rock 8" slice="7" item="RANDOM" name="Circle Rock 8" xyz="648;373;0"/>
       </actor>
       <rendering_option context="child">
-        <xflag type="rupee" location="Kokiri Forest Rupee Child 1" slice="0x0" setup="0x0" room="0x0" actor="0x5" item="RUPEE_BLUE" name="Child - Rupee 1" xyz="591;251;0"/>
-        <xflag type="rupee" location="Kokiri Forest Rupee Child 2" slice="0x0" setup="0x0" room="0x0" actor="0x6" item="RUPEE_BLUE" name="Child - Rupee 2" xyz="779;430;0"/>
-        <xflag type="rupee" location="Kokiri Forest Rupee Crawl 1" slice="0x0" setup="0x0" room="0x2" actor="0x0" item="RUPEE_BLUE" name="Crawl 1" xyz="555;1052;0"/>
-        <xflag type="rupee" location="Kokiri Forest Rupee Crawl 2" slice="0x0" setup="0x0" room="0x2" actor="0x1" item="RUPEE_BLUE" name="Crawl 2" xyz="710;1205;0"/>
+        <xflag type="rupee" location="Kokiri Forest Rupee Child 1" setup="0x0" room="0x0" actor="0x5" item="RUPEE_BLUE" name="Child - Rupee 1" xyz="591;251;0"/>
+        <xflag type="rupee" location="Kokiri Forest Rupee Child 2" setup="0x0" room="0x0" actor="0x6" item="RUPEE_BLUE" name="Child - Rupee 2" xyz="779;430;0"/>
+        <xflag type="rupee" location="Kokiri Forest Rupee Crawl 1" setup="0x0" room="0x2" actor="0x0" item="RUPEE_BLUE" name="Crawl 1" xyz="555;1052;0"/>
+        <xflag type="rupee" location="Kokiri Forest Rupee Crawl 2" setup="0x0" room="0x2" actor="0x1" item="RUPEE_BLUE" name="Crawl 2" xyz="710;1205;0"/>
       </rendering_option>
       <rendering_option context="adult">
-        <xflag type="rupee" location="Kokiri Forest Rupee Adult 1" slice="0x0" setup="0x2" room="0x0" actor="0xb" item="RUPEE_GREEN" name="Adult - Rupee 1" xyz="1106;147;2"/>
-        <xflag type="rupee" location="Kokiri Forest Rupee Adult 2" slice="0x1" setup="0x2" room="0x0" actor="0xb" item="RUPEE_GREEN" name="Adult - Rupee 2" xyz="1120;138;1"/>
-        <xflag type="rupee" location="Kokiri Forest Rupee Adult 3" slice="0x2" setup="0x2" room="0x0" actor="0xb" item="RUPEE_GREEN" name="Adult - Rupee 3" xyz="1120;124;0"/>
-        <xflag type="rupee" location="Kokiri Forest Rupee Adult 4" slice="0x3" setup="0x2" room="0x0" actor="0xb" item="RUPEE_GREEN" name="Adult - Rupee 4" xyz="1106;117;0"/>
-        <xflag type="rupee" location="Kokiri Forest Rupee Adult 5" slice="0x4" setup="0x2" room="0x0" actor="0xb" item="RUPEE_GREEN" name="Adult - Rupee 5" xyz="1092;124;0"/>
-        <xflag type="rupee" location="Kokiri Forest Rupee Adult 6" slice="0x5" setup="0x2" room="0x0" actor="0xb" item="RUPEE_GREEN" name="Adult - Rupee 6" xyz="1092;138;1"/>
-        <xflag type="rupee" location="Kokiri Forest Rupee Adult 7" slice="0x6" setup="0x2" room="0x0" actor="0xb" item="RUPEE_RED" name="Adult - Rupee 7" xyz="1106;132;0"/>
+        <actor room="0x0">
+          <match setup="2" actor="0xb"/>
+          <match setup="3" actor="0x9"/>
+          <xflag type="rupee" location="Kokiri Forest Rupee Adult 1" slice="0x0" item="RUPEE_GREEN" name="Adult - Rupee 1" xyz="1106;147;2"/>
+          <xflag type="rupee" location="Kokiri Forest Rupee Adult 2" slice="0x1" item="RUPEE_GREEN" name="Adult - Rupee 2" xyz="1120;138;1"/>
+          <xflag type="rupee" location="Kokiri Forest Rupee Adult 3" slice="0x2" item="RUPEE_GREEN" name="Adult - Rupee 3" xyz="1120;124;0"/>
+          <xflag type="rupee" location="Kokiri Forest Rupee Adult 4" slice="0x3" item="RUPEE_GREEN" name="Adult - Rupee 4" xyz="1106;117;0"/>
+          <xflag type="rupee" location="Kokiri Forest Rupee Adult 5" slice="0x4" item="RUPEE_GREEN" name="Adult - Rupee 5" xyz="1092;124;0"/>
+          <xflag type="rupee" location="Kokiri Forest Rupee Adult 6" slice="0x5" item="RUPEE_GREEN" name="Adult - Rupee 6" xyz="1092;138;1"/>
+          <xflag type="rupee" location="Kokiri Forest Rupee Adult 7" slice="0x6" item="RUPEE_RED" name="Adult - Rupee 7" xyz="1106;132;0"/>
+        </actor>
       </rendering_option>
       <rendering_option context="child">
         <xflag type="heart" location="Kokiri Forest Heart 1" slice="0x0" setup="0x0" room="0x0" actor="0x13" item="RECOVERY_HEART" name="Heart 1" xyz="1007;638;0"/>
         <xflag type="heart" location="Kokiri Forest Heart 2" slice="0x0" setup="0x0" room="0x0" actor="0x14" item="RECOVERY_HEART" name="Heart 2" xyz="1016;607;0"/>
         <xflag type="heart" location="Kokiri Forest Heart 3" slice="0x0" setup="0x0" room="0x0" actor="0x15" item="RECOVERY_HEART" name="Heart 3" xyz="1043;632;0"/>
-        <xflag type="wonder" location="Kokiri Forest Wonder Item Invisible Rupee 1" slice="0x0" setup="0x0" room="0x0" actor="0x1" item="RUPEE_GREEN" name="Invisible Rupee 1" xyz="652;539;0"/>
-        <xflag type="wonder" location="Kokiri Forest Wonder Item Invisible Rupee 2" slice="0x0" setup="0x0" room="0x0" actor="0x2" item="RUPEE_GREEN" name="Invisible Rupee 2" xyz="679;546;0"/>
-        <xflag type="wonder" location="Kokiri Forest Wonder Item Invisible Rupee 3" slice="0x0" setup="0x0" room="0x0" actor="0x3" item="RUPEE_GREEN" name="Invisible Rupee 3" xyz="737;312;0"/>
-        <xflag type="wonder" location="Kokiri Forest Wonder Item Invisible Rupee 4" slice="0x0" setup="0x0" room="0x0" actor="0x4" item="RUPEE_GREEN" name="Invisible Rupee 4" xyz="770;307;0"/>
+        <xflag type="wonder" location="Kokiri Forest Wonder Item Invisible Rupee 1" setup="0x0" room="0x0" actor="0x1" item="RUPEE_GREEN" name="Invisible Rupee 1" xyz="652;539;0"/>
+        <xflag type="wonder" location="Kokiri Forest Wonder Item Invisible Rupee 2" setup="0x0" room="0x0" actor="0x2" item="RUPEE_GREEN" name="Invisible Rupee 2" xyz="679;546;0"/>
+        <xflag type="wonder" location="Kokiri Forest Wonder Item Invisible Rupee 3" setup="0x0" room="0x0" actor="0x3" item="RUPEE_GREEN" name="Invisible Rupee 3" xyz="737;312;0"/>
+        <xflag type="wonder" location="Kokiri Forest Wonder Item Invisible Rupee 4" setup="0x0" room="0x0" actor="0x4" item="RUPEE_GREEN" name="Invisible Rupee 4" xyz="770;307;0"/>
         <xflag type="wonder" location="Kokiri Forest Wonder Item Sign" slice="0x0" setup="0x0" room="0x0" actor="0x20" item="RUPEE_BLUE" name="Training Signpost" xyz="699;669;0"/>
         <xflag type="wonder" location="Kokiri Forest Wonder Item Midair 1" slice="0x0" setup="0x0" room="0x0" actor="0x27" item="RUPEE_GREEN" name="Midair 1" xyz="658;805;0"/>
         <xflag type="wonder" location="Kokiri Forest Wonder Item Midair 2" slice="0x0" setup="0x0" room="0x0" actor="0x28" item="RUPEE_GREEN" name="Midair 2" xyz="660;762;0"/>

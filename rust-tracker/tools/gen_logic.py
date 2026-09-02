@@ -47,6 +47,18 @@ OOT, MM = 0, 1
 GAME_PREFIX = {OOT: "OOT ", MM: "MM "}
 ITEM_PREFIX = {OOT: "OOT_", MM: "MM_"}
 
+# OoTMM's logic names the Song of Storms item SONG_STORMS / SHARED_SONG_STORMS, but
+# the Qt tracker (and thus the generated data) defines it as SONG_OF_STORMS /
+# SHARED_SONG_OF_STORMS -- SONG_STORMS was repurposed as the NPC symbol (NPC.h:
+# OOT_SONG_STORMS = 0x06). Without this alias, has(SONG_STORMS) would silently
+# resolve to that NPC id (a collision, since id_sym holds both namespaces) and
+# has(SHARED_SONG_STORMS) would not resolve at all. Alias the logic name to the
+# tracker's item name. Keep in sync with the Qt Items.h / NPC.h naming.
+LOGIC_ITEM_ALIASES = {
+    "SONG_STORMS": "SONG_OF_STORMS",
+    "SHARED_SONG_STORMS": "SHARED_SONG_OF_STORMS",
+}
+
 # Native primitives (called but never defined as a macro). Each compiles to a
 # dedicated op. Any *other* native still becomes a generic `Builtin` leaf,
 # recorded in `builtins_seen` (should be empty now — a non-empty set flags a new
@@ -389,7 +401,7 @@ class Compiler:
         return self._intern(self.builtins, self.builtins_l, name)
 
     def resolve_item(self, tok):
-        t = tok
+        t = LOGIC_ITEM_ALIASES.get(tok, tok)
         if not (t.startswith("OOT_") or t.startswith("MM_") or t.startswith("SHARED_")):
             t = ITEM_PREFIX[self.game] + t
         v = self.id_sym.get(t)

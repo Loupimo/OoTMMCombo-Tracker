@@ -50,7 +50,8 @@ XFLAG_TYPE = {
     "gossip-big": "gossip_big",
 }
 
-# Object IDs Pool Transform.py prefixes with the game prefix (shared OoT/MM symbols).
+# Shared object-id symbols the pool stores bare but whose C++ define is game-prefixed (OoT and MM
+# hold different values, e.g. OOT_SONG_STORMS 0x06 vs MM_SONG_STORMS 0x0d) -> prefix per game.
 COMMON_ID = {"SONG_STORMS", "SONG_OF_STORMS"}
 
 GAME_META = {  # <checks game> -> (scene prefix, GameLayout, cpp bucket)
@@ -93,9 +94,10 @@ def parse_xyz(xyz):
 
 
 class Gen:
-    def __init__(self, gs_map, xflags):
+    def __init__(self, gs_map, xflags, pool_ids):
         self.gs_map = gs_map
         self.xflags = xflags
+        self.pool_ids = pool_ids
         self.rows = []
         self.remap = []   # (bucket, legacy_scene, objid, type, true_scene, location)
         self.warn = []
@@ -157,8 +159,6 @@ class Gen:
 
         if tag == "npc":
             objid = a.get("npc", "?")
-            if objid in COMMON_ID:
-                objid = prefix + objid
         elif tag == "gs":
             objid = self.gs_map.get(loc)
             if objid is None:
@@ -170,6 +170,14 @@ class Gen:
             objid = "0x%05X" % compose_xflag_id(idc)
         else:
             objid = "?"
+
+        # The legacy ObjectID is what <= v32.3 ROMs emit, so the pool (a snapshot of that era) is
+        # authoritative: prefer its value by Location, keeping the composed id only as the fallback
+        # for checks the pool never had (new gossips, ...). New ROMs (> v32.3) use the XflagID and
+        # ignore this entirely.
+        objid = self.pool_ids.get(loc, objid)
+        if objid in COMMON_ID:                  # bare shared symbol -> its game-prefixed C++ define
+            objid = prefix + objid
 
         x, y, z = parse_xyz(a.get("xyz", ""))
         xid = self.xflags.get(loc)
@@ -265,6 +273,20 @@ def load_gs_ids():
             if line:
                 loc, i = line.split(";")
                 m[loc] = i
+    return m
+
+
+def load_pool_ids():
+    """location -> legacy ObjectID from the pool (authoritative for <= v32.3 ROMs). Prefer a
+    non-none row (the real check) over its type=none render-dup placeholders."""
+    m = {}
+    for p in (POOL_OOT, POOL_MM):
+        if not os.path.exists(p):
+            continue
+        rows, idx = load_pool(p)
+        for loc, plist in rows.items():
+            real = next((c for c in plist if c[idx["type"]] != "none"), plist[0])
+            m[loc] = real[idx["id"]]
     return m
 
 
@@ -444,6 +466,88 @@ def run_diff(g):
         print(d)
 
 
+def sync_pool(g, write=False):
+    """Back-fill the pool CSVs with checks that live in the New/** XML render layer but are absent
+    from the pool (typically freshly-added gossips). The pool is the DURABLE store of the render
+    layer (xyz / name / icon / layout), so `augment.py --all` or overwriting the XML from a fresh
+    OoTMM checkout would otherwise drop those hand-entered coordinates. Dry-run by default (lists
+    what it would add); pass write=True to append the rows (columns in the pool's own order;
+    `requierements` / `tooltip` left empty; `xflag_id` = whatever the build carries, so run WITH an
+    <ootmm_root> for real ids, or fill them later with `gen_xflags.py --stamp-csv`)."""
+    targets = {"OoT": POOL_OOT, "MM": POOL_MM}
+    total = 0
+    for bucket, path in targets.items():
+        if not os.path.exists(path):
+            print(f"  {bucket}: pool absent ({os.path.relpath(path, HERE)}) - skipped")
+            continue
+        pool, idx = load_pool(path)
+        header = [n for n, _ in sorted(idx.items(), key=lambda kv: kv[1])]
+        existing = set(pool.keys())               # Locations already stored (any layout row)
+        missing = [r for r in g.rows if r["bucket"] == bucket and r["location"] not in existing]
+
+        lines, skipped = [], []
+        for r in missing:
+            cells = ["" if r.get(c) is None else str(r.get(c, "")) for c in header]
+            if any(";" in c or "\n" in c for c in cells):
+                skipped.append(r["location"])       # a ';' would corrupt the row - never write it
+                continue
+            lines.append(";".join(cells))
+
+        print(f"  {bucket}: {len(lines)} check(s) missing from {os.path.basename(path)}"
+              + (" (dry-run)" if not write else ""))
+        for r in missing:
+            if r["location"] not in skipped:
+                print(f"     + {r['location']}  [{r['type']}] id={r['id']} "
+                      f"xyz={r['x']};{r['y']};{r['z']} xflag={r['xflag_id']}")
+        if skipped:
+            print(f"     ! {len(skipped)} skipped (a field contains ';' or a newline): {skipped[:5]}")
+        total += len(lines)
+
+        if write and lines:
+            with open(path, "rb") as f:
+                raw = f.read()
+            nl = b"\r\n" if b"\r\n" in raw else b"\n"
+            if raw and not raw.endswith(nl):
+                raw += nl                            # ensure we append on a fresh line
+            raw += nl.join(l.encode("utf-8") for l in lines) + nl
+            with open(path, "wb") as f:
+                f.write(raw)
+            print(f"     -> appended {len(lines)} row(s) to {os.path.basename(path)}")
+
+    if write:
+        print(f"\n  done: {total} row(s) added. Next: `gen_xflags.py <ootmm_root> --stamp-csv "
+              "Objects/pool_oot.csv Objects/pool_mm.csv` to fill the XflagID, then re-run the "
+              "generators.")
+    else:
+        print(f"\n  (dry-run) {total} row(s) would be added. Re-run with --sync-pool --write to apply.")
+
+
+# ---------------------------------------------------------------- reusable build
+def build_objects(ootmm_root=None, quiet=True):
+    """Parse every converted New/** file into the object rows + legacy-scene remap. Shared entry
+    point so other generators (the Rust tracker's tools/gen_data.py) consume the same New/ XML.
+    Returns the populated Gen (`.rows`, `.remap`, `.warn`). XflagID comes from the OoTMM checkout
+    when given, else from the pool CSVs; the legacy ObjectID is always pool-preferred."""
+    gs_map = load_gs_ids()
+    xflags = load_xflags(ootmm_root) if ootmm_root else load_xflags_from_pool()
+    g = Gen(gs_map, xflags, load_pool_ids())
+    skipped = 0
+    for path in sorted(glob.glob(os.path.join(NEW_DIR, "**", "*.xml"), recursive=True)):
+        # Only converted files carry the render layer; identity-only originals are skipped.
+        if "<scene_rendering" not in open(path, encoding="utf-8").read():
+            skipped += 1
+            continue
+        g.process(path)
+    g.skipped = skipped
+    if not quiet:
+        src = f"checkout {ootmm_root}" if ootmm_root else "pool CSVs"
+        print(f"XflagIDs from {src}; parsed {len(g.rows)} objects ({skipped} not-yet-converted "
+              f"skipped); {len(g.remap)} legacy-scene remaps; {len(g.warn)} warnings")
+        for w in g.warn:
+            print("  WARN:", w)
+    return g
+
+
 # ---------------------------------------------------------------- main
 def main():
     ap = argparse.ArgumentParser()
@@ -453,6 +557,10 @@ def main():
                     help="allow --emit while files are still un-converted (partial cpp!)")
     ap.add_argument("--diff", action="store_true", help="compare rows against the pool CSVs")
     ap.add_argument("--dump-gs", action="store_true", help="(re)write Objects/gs_ids.csv from the pool")
+    ap.add_argument("--sync-pool", action="store_true",
+                    help="propose pool rows for checks present in New/** but missing from the pool "
+                         "(e.g. new gossips); dry-run unless --write")
+    ap.add_argument("--write", action="store_true", help="with --sync-pool: append the missing rows")
     args = ap.parse_args()
 
     if args.dump_gs:
@@ -463,29 +571,12 @@ def main():
         if not (args.emit or args.diff):
             return
 
-    gs_map = load_gs_ids()
-    if args.ootmm_root:
-        xflags = load_xflags(args.ootmm_root)
-        print(f"XflagIDs: {len(xflags)} from OoTMM checkout {args.ootmm_root}")
-    else:
-        xflags = load_xflags_from_pool()
-        print(f"XflagIDs: {len(xflags)} reused from the pool CSVs (no <ootmm_root> given)")
-    if not xflags:
-        print("WARNING: no XflagID source -> XflagIDs default to 0xFFFF")
+    g = build_objects(args.ootmm_root, quiet=False)
+    skipped = getattr(g, "skipped", 0)
 
-    g = Gen(gs_map, xflags)
-    skipped = 0
-    for path in sorted(glob.glob(os.path.join(NEW_DIR, "**", "*.xml"), recursive=True)):
-        # Only converted files carry the render layer; originals (identity-only OoTMM
-        # data/checks) are skipped until they are augmented (Phase B).
-        if "<scene_rendering" not in open(path, encoding="utf-8").read():
-            skipped += 1
-            continue
-        g.process(path)
-    print(f"parsed {len(g.rows)} objects from converted files ({skipped} not-yet-converted skipped); "
-          f"{len(g.remap)} legacy-scene remaps; {len(g.warn)} warnings")
-    for w in g.warn:
-        print("  WARN:", w)
+    if args.sync_pool:
+        sync_pool(g, write=args.write)
+        return
 
     if args.emit:
         if skipped and not args.force:

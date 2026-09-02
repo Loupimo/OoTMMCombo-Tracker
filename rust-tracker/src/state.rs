@@ -108,6 +108,7 @@ impl TrackerApp {
             status: String::new(),
             rom: RomVersion::Dev,
             rom_from_spoiler: false,
+            uses_legacy_xflags: false,
             icon_cache: HashMap::new(),
             grey_icon_cache: HashMap::new(),
             glow_icon_cache: HashMap::new(),
@@ -420,6 +421,7 @@ impl TrackerApp {
         self.excluded = settings::Excluded::default();
         self.mq_scenes.clear();
         self.rom_from_spoiler = false;
+        self.uses_legacy_xflags = false;
         // Live exploration (entrances / links / last picks).
         self.visited_entrances.clear();
         self.out_links.clear();
@@ -805,7 +807,7 @@ impl TrackerApp {
     pub(crate) fn apply_net_item(&mut self, item: multi::NetItem) {
         let game = if item.game_id == 0 { Game::Oot } else { Game::Mm };
         let Some((g, idx)) =
-            tracking::match_object(game, item.scene, item.ov_type, item.object, item.room, self.rom, &self.mq_scenes)
+            tracking::match_object(game, item.scene, item.ov_type, item.object, item.room, self.rom, self.uses_legacy_xflags, &self.mq_scenes)
         else {
             return; // no matching placement (e.g. filtered / unknown overlay)
         };
@@ -886,7 +888,7 @@ impl TrackerApp {
         let r4_owns = self.r4.as_ref().map(|h| h.is_connected()).unwrap_or(false)
             && self.patch_info.as_ref().map(|p| p.mode != patch::PatchMode::Single).unwrap_or(false);
         let net_owns_real = old_owns || r4_owns;
-        if let Some(hit) = tracking::resolve_collected(&ev, self.rom, &self.mq_scenes) {
+        if let Some(hit) = tracking::resolve_collected(&ev, self.rom, self.uses_legacy_xflags, &self.mq_scenes) {
             if !is_nothing && net_owns_real {
                 return; // let the network ledger own this real item
             }
@@ -947,6 +949,7 @@ impl TrackerApp {
                 let sp = spoiler::parse(&text);
                 self.rom = sp.rom;
                 self.rom_from_spoiler = true;
+                self.uses_legacy_xflags = sp.uses_legacy_xflags;
                 self.mq_scenes = sp.mq_scenes;
                 let num_worlds = sp.worlds.len().max(1);
                 // Re-fill each world's placements, PRESERVING the collected / forced
@@ -1406,7 +1409,7 @@ impl TrackerApp {
         }
         let Some(scene) = &self.scene else { return };
         let entrance_view = self.active_tab.is_entrance();
-        let Some(path) = scene.image_path(self.current_room, entrance_view) else {
+        let Some(path) = scene.image_path(self.current_room, entrance_view, self.context_toggle) else {
             self.load_error = Some(self.i18n.no_img().to_owned());
             return;
         };

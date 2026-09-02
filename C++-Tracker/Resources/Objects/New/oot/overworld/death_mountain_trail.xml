@@ -70,8 +70,8 @@
         </actor>
       </rendering_option>
       <rendering_option context="child" room="1">
-        <xflag type="rupee" location="Death Mountain Trail Rupee Upper" slice="0x0" setup="0x0" actor="0x1" item="RUPEE_RED" name="Upper" xyz="893;412;1"/>
-        <xflag type="rupee" location="Death Mountain Trail Rupee Lower" slice="0x0" setup="0x0" actor="0x2" item="RUPEE_BLUE" name="Lower" xyz="861;345;1"/>
+        <xflag type="rupee" location="Death Mountain Trail Rupee Upper" setup="0x0" actor="0x1" item="RUPEE_RED" name="Upper" xyz="893;412;1"/>
+        <xflag type="rupee" location="Death Mountain Trail Rupee Lower" setup="0x0" actor="0x2" item="RUPEE_BLUE" name="Lower" xyz="861;345;1"/>
       </rendering_option>
       <rendering_option room="1">
         <xflag type="fairy_spot" location="Death Mountain Trail Big Fairy" slice="0x0" setup="0x0" actor="0x26" item="FAIRY_BIG" name="Mast" xyz="643;580;0"/>
@@ -134,24 +134,26 @@
       </actor>
     </scene_rendering>
   </scene>
-  <scene name="Death Mountain Trail Cow Grotto" id="GROTTOS">
+  <scene name="Death Mountain Trail Cow Grotto" id="GROTTOS" room="0x3">
     <scene_rendering id="OOT_GROTTO_DEATH_TRIAL_COW" loc_type="overworld">
       <cow location="Death Mountain Trail Cow" flag="0x07" item="MILK" name="Cow" xyz="719;198;0" legacy_scene="DEATH_MOUNTAIN_TRAIL"/>
-      <xflag type="grass" location="Death Mountain Trail Cow Grotto Grass 1" slice="0x0" setup="0x0" room="0x3" actor="0x1" item="RANDOM" name="Grass 1" xyz="717;250;0"/>
-      <xflag type="grass" location="Death Mountain Trail Cow Grotto Grass 2" slice="0x0" setup="0x0" room="0x3" actor="0x2" item="RANDOM" name="Grass 2" xyz="752;220;0"/>
-      <xflag type="rupee" location="Death Mountain Trail Cow Grotto Rupee 1" slice="0x0" setup="0x0" room="0x3" actor="0x5" item="RUPEE_GREEN" name="Rupee 1" xyz="697;466;0"/>
-      <xflag type="rupee" location="Death Mountain Trail Cow Grotto Rupee 2" slice="0x1" setup="0x0" room="0x3" actor="0x5" item="RUPEE_GREEN" name="Rupee 2" xyz="721;452;0"/>
-      <xflag type="rupee" location="Death Mountain Trail Cow Grotto Rupee 3" slice="0x2" setup="0x0" room="0x3" actor="0x5" item="RUPEE_GREEN" name="Rupee 3" xyz="721;424;0"/>
-      <xflag type="rupee" location="Death Mountain Trail Cow Grotto Rupee 4" slice="0x3" setup="0x0" room="0x3" actor="0x5" item="RUPEE_GREEN" name="Rupee 4" xyz="697;410;0"/>
-      <xflag type="rupee" location="Death Mountain Trail Cow Grotto Rupee 5" slice="0x4" setup="0x0" room="0x3" actor="0x5" item="RUPEE_GREEN" name="Rupee 5" xyz="671;424;0"/>
-      <xflag type="rupee" location="Death Mountain Trail Cow Grotto Rupee 6" slice="0x5" setup="0x0" room="0x3" actor="0x5" item="RUPEE_GREEN" name="Rupee 6" xyz="671;452;0"/>
-      <xflag type="rupee" location="Death Mountain Trail Cow Grotto Rupee 7" slice="0x6" setup="0x0" room="0x3" actor="0x5" item="RUPEE_RED" name="Rupee 7" xyz="697;438;0"/>
-      <xflag type="heart" location="Death Mountain Trail Cow Grotto Heart 1" slice="0x0" setup="0x0" room="0x3" actor="0x6" item="RECOVERY_HEART" name="Heart 1" xyz="613;238;0"/>
-      <xflag type="heart" location="Death Mountain Trail Cow Grotto Heart 2" slice="0x0" setup="0x0" room="0x3" actor="0x7" item="RECOVERY_HEART" name="Heart 2" xyz="671;160;0"/>
-      <xflag type="heart" location="Death Mountain Trail Cow Grotto Heart 3" slice="0x0" setup="0x0" room="0x3" actor="0x8" item="RECOVERY_HEART" name="Heart 3" xyz="723;161;0"/>
-      <xflag type="heart" location="Death Mountain Trail Cow Grotto Heart 4" slice="0x0" setup="0x0" room="0x3" actor="0x9" item="RECOVERY_HEART" name="Heart 4" xyz="802;228;0"/>
-      <xflag type="fairy_spot" location="Death Mountain Trail Cow Grotto Big Fairy" slice="0x0" setup="0x0" room="0x3" actor="0x4" item="FAIRY_BIG" name="Big Fairy" xyz="753;308;0"/>
-      <xflag type="hive" location="Death Mountain Trail Cow Grotto Hive" slice="0x0" setup="0x0" room="0x3" actor="0x3" item="RUPEE_RED" name="Hive" xyz="829;166;0"/>
+      <xflag type="grass" location="Death Mountain Trail Cow Grotto Grass 1" slice="0x0" actor="0x1" item="RANDOM" name="Grass 1" xyz="717;250;0"/>
+      <xflag type="grass" location="Death Mountain Trail Cow Grotto Grass 2" slice="0x0" actor="0x2" item="RANDOM" name="Grass 2" xyz="752;220;0"/>
+      <actor actor="0x5">
+        <xflag type="rupee" location="Death Mountain Trail Cow Grotto Rupee 1" slice="0x0" item="RUPEE_GREEN" name="Rupee 1" xyz="697;466;0"/>
+        <xflag type="rupee" location="Death Mountain Trail Cow Grotto Rupee 2" slice="0x1" item="RUPEE_GREEN" name="Rupee 2" xyz="721;452;0"/>
+        <xflag type="rupee" location="Death Mountain Trail Cow Grotto Rupee 3" slice="0x2" item="RUPEE_GREEN" name="Rupee 3" xyz="721;424;0"/>
+        <xflag type="rupee" location="Death Mountain Trail Cow Grotto Rupee 4" slice="0x3" item="RUPEE_GREEN" name="Rupee 4" xyz="697;410;0"/>
+        <xflag type="rupee" location="Death Mountain Trail Cow Grotto Rupee 5" slice="0x4" item="RUPEE_GREEN" name="Rupee 5" xyz="671;424;0"/>
+        <xflag type="rupee" location="Death Mountain Trail Cow Grotto Rupee 6" slice="0x5" item="RUPEE_GREEN" name="Rupee 6" xyz="671;452;0"/>
+        <xflag type="rupee" location="Death Mountain Trail Cow Grotto Rupee 7" slice="0x6" item="RUPEE_RED" name="Rupee 7" xyz="697;438;0"/>
+      </actor>
+      <xflag type="heart" location="Death Mountain Trail Cow Grotto Heart 1" slice="0x0" actor="0x6" item="RECOVERY_HEART" name="Heart 1" xyz="613;238;0"/>
+      <xflag type="heart" location="Death Mountain Trail Cow Grotto Heart 2" slice="0x0" actor="0x7" item="RECOVERY_HEART" name="Heart 2" xyz="671;160;0"/>
+      <xflag type="heart" location="Death Mountain Trail Cow Grotto Heart 3" slice="0x0" actor="0x8" item="RECOVERY_HEART" name="Heart 3" xyz="723;161;0"/>
+      <xflag type="heart" location="Death Mountain Trail Cow Grotto Heart 4" slice="0x0" actor="0x9" item="RECOVERY_HEART" name="Heart 4" xyz="802;228;0"/>
+      <xflag type="fairy_spot" location="Death Mountain Trail Cow Grotto Big Fairy" slice="0x0" actor="0x4" item="FAIRY_BIG" name="Big Fairy" xyz="753;308;0"/>
+      <xflag type="hive" location="Death Mountain Trail Cow Grotto Hive" slice="0x0" actor="0x3" item="RUPEE_RED" name="Hive" xyz="829;166;0"/>
     </scene_rendering>
   </scene>
   <scene id="GREAT_FAIRY_FOUNTAIN_UPGRADES">

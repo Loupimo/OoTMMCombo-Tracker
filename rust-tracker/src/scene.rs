@@ -248,6 +248,8 @@ pub fn type_label(t: ObjectType, i18n: &I18n) -> &str {
         redboulder => i18n.object_type_name("redboulder"),
         silverboulder => i18n.object_type_name("silverboulder"),
         boulder => i18n.object_type_name("boulder"),
+        gossip => i18n.object_type_name("gossip"),
+        gossip_big => i18n.object_type_name("gossip_big"),
         rock => i18n.object_type_name("rock"),
         icicle | redice => i18n.object_type_name("ice"),
         soil => i18n.object_type_name("soil"),
@@ -285,6 +287,7 @@ pub fn glyph_for(t: ObjectType) -> &'static str {
         mask => "☺",
         small_key | boss_key => "K",
         fairy | fairy_spot => "*",
+        gossip | gossip_big => "G",
         _ => "•",
     }
 }
@@ -352,13 +355,16 @@ impl LiveScene {
     /// Absolute path of the background image to display.
     ///
     /// - `entrance_view`: entrances live on the scene's minimap.
-    /// - otherwise (items): the room image if any, else the artistic map, else
-    ///   the minimap as a fallback.
-    pub fn image_path(&self, room: usize, entrance_view: bool) -> Option<String> {
+    /// - otherwise (items): the room image if any, else — for a scene that ships a
+    ///   per-context map with the toggle ON (Spring / Adult) — its context image,
+    ///   else the artistic map, else the minimap as a fallback.
+    pub fn image_path(&self, room: usize, entrance_view: bool, context_on: bool) -> Option<String> {
         let rel = if entrance_view {
             first_non_empty(self.def.minimap_rel, self.def.image_rel)
         } else if let Some(r) = self.rooms.get(room) {
             r.image_rel
+        } else if self.def.has_context && context_on && !self.def.context_image_rel.is_empty() {
+            self.def.context_image_rel
         } else {
             first_non_empty(self.def.image_rel, self.def.minimap_rel)
         };

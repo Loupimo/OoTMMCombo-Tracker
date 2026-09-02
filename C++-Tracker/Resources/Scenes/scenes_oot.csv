@@ -1,4 +1,4 @@
-scene_id;scene_name;image_path;minimap_path;parent_region;has_context;active_layout
+scene_id;scene_name;image_path;minimap_path;parent_region;has_context;active_layout;context_image_path
 OOT_DEKU_TREE;Deku Tree;;./Resources/OoT/Dungeons/Deku_Tree/DEK_Map.jpg;Dungeons;false;oot
 OOT_DODONGO_CAVERN;Dodongo's Cavern;;./Resources/OoT/Dungeons/Cavern/CAV_Map.jpg;Dungeons;false;oot
 OOT_INSIDE_JABU_JABU;Inside Jabu-Jabu;;./Resources/OoT/Dungeons/Jabu-Jabu/JAB_Map.jpg;Dungeons;false;oot

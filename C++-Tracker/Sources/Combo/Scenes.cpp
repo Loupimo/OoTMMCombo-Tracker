@@ -315,7 +315,7 @@ SceneMetaInfo MMScenesMetaInfo[MM_NUM_SCENES] =
     { "Beans Grotto", "./Resources/MM/Deku_Palace/Beans.jpg", "./Resources/MM/Deku_Palace/Beans_Map.jpg", (uint8_t)MMRegions::Deku_Palace, false, GameLayout::mm },
     { "Generic Grotto", "./Resources/MM/Deku_Palace/JP_Grotto_2.jpg", "./Resources/MM/Deku_Palace/JP_Grotto_2_Map.jpg", (uint8_t)MMRegions::Deku_Palace, false, GameLayout::mm },
     { "Climb Grotto", "", "./Resources/MM/Deku_Palace/JP_Grotto_1_Map.jpg", (uint8_t)MMRegions::None, false, GameLayout::mm },
-    { "Mountain Village", "./Resources/MM/Mountain_Village/Village.jpg", "./Resources/MM/Mountain_Village/Village_Map.jpg", (uint8_t)MMRegions::Mountain_Village, true, GameLayout::mm },
+    { "Mountain Village", "./Resources/MM/Mountain_Village/Village.jpg", "./Resources/MM/Mountain_Village/Village_Map.jpg", (uint8_t)MMRegions::Mountain_Village, true, GameLayout::mm, "./Resources/MM/Mountain_Village/Village_Spring.jpg" },
     { "Twin Islands", "./Resources/MM/Twin_Islands/Twins.jpg", "./Resources/MM/Twin_Islands/Twins_Map.jpg", (uint8_t)MMRegions::Twin_Islands, true, GameLayout::mm },
     { "Goron's Village", "./Resources/MM/Goron_Village/Village.jpg", "./Resources/MM/Goron_Village/Village_Map.jpg", (uint8_t)MMRegions::Goron_Village, true, GameLayout::mm },
     { "Spring Water Cave", "", "./Resources/MM/Ikana_Canyon/Water_Cave_Map.jpg", (uint8_t)MMRegions::None, false, GameLayout::mm }

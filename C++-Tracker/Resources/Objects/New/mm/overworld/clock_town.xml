@@ -63,8 +63,8 @@
         <npc location="Clock Town Postman Hat" npc="MASK_POSTMAN" item="MASK_POSTMAN" name="Postman Hat" xyz="356;299;0"/>
       </rendering_option>
       <rendering_option layout="all">
-        <xflag type="crate" location="Clock Town East Small Crate 1" slice="0x0" setup="0x0" room="0x0" actor="0xa" item="RUPEE_GREEN" name="Small Crate 1" xyz="449;352;0"/>
-        <xflag type="crate" location="Clock Town East Small Crate 2" slice="0x0" setup="0x0" room="0x0" actor="0xb" item="RECOVERY_HEART" name="Small Crate 2" xyz="407;413;0"/>
+        <xflag type="crate" location="Clock Town East Small Crate 1" room="0x0" actor="0xa" item="RUPEE_GREEN" name="Small Crate 1" xyz="449;352;0"/>
+        <xflag type="crate" location="Clock Town East Small Crate 2" room="0x0" actor="0xb" item="RECOVERY_HEART" name="Small Crate 2" xyz="407;413;0"/>
         <xflag type="wonder" location="Clock Town East Wonder Item Target Left 1" slice="0x0" setup="0x0" room="0x0" actor="0x2a" item="RUPEE_GREEN" name="Target Left 1" xyz="528;273;0"/>
         <xflag type="wonder" location="Clock Town East Wonder Item Target Left 2" slice="0x1" setup="0x0" room="0x0" actor="0x2a" item="RUPEE_GREEN" name="Target Left 2" xyz="521;266;0"/>
         <xflag type="wonder" location="Clock Town East Wonder Item Target Left 3" slice="0x2" setup="0x0" room="0x0" actor="0x2a" item="RUPEE_GREEN" name="Target Left 3" xyz="512;271;0"/>
@@ -109,13 +109,28 @@
         <npc location="Clock Town Stray Fairy" npc="STRAY_FAIRY_TOWN" item="STRAY_FAIRY_TOWN" name="Pool" xyz="647;411;0"/>
       </rendering_option>
       <rendering_option layout="all">
-        <xflag type="crate" location="Clock Town Laundry Pool Small Crate" slice="0x0" setup="0x0" room="0x0" actor="0x7" item="RUPEE_BLUE" name="Small Crate" xyz="800;75;0"/>
-        <xflag type="grass" location="Clock Town Laundry Pool Grass 1" slice="0x0" setup="0x0" room="0x0" actor="0xd" item="RANDOM" name="Grass 1" xyz="542;249;0"/>
-        <xflag type="grass" location="Clock Town Laundry Pool Grass 2" slice="0x0" setup="0x0" room="0x0" actor="0xe" item="RANDOM" name="Grass 2" xyz="466;263;0"/>
-        <xflag type="grass" location="Clock Town Laundry Pool Grass 3" slice="0x0" setup="0x0" room="0x0" actor="0xf" item="RANDOM" name="Grass 3" xyz="458;214;0"/>
-        <xflag type="rupee" location="Clock Town Laundry Pool Rupee 1" slice="0x0" setup="0x0" room="0x0" actor="0x13" item="RUPEE_RED" name="Rupee 1" xyz="438;416;0"/>
-        <xflag type="rupee" location="Clock Town Laundry Pool Rupee 2" slice="0x0" setup="0x0" room="0x0" actor="0x16" item="RUPEE_RED" name="Rupee 2" xyz="452;387;0"/>
-        <xflag type="rupee" location="Clock Town Laundry Pool Rupee 3" slice="0x0" setup="0x0" room="0x0" actor="0x19" item="RUPEE_RED" name="Rupee 3" xyz="467;356;0"/>
+        <xflag type="crate" location="Clock Town Laundry Pool Small Crate" actor="0x7" item="RUPEE_BLUE" name="Small Crate" xyz="800;75;0"/>
+        <xflag type="grass" location="Clock Town Laundry Pool Grass 1" actor="0xd" item="RANDOM" name="Grass 1" xyz="542;249;0"/>
+        <xflag type="grass" location="Clock Town Laundry Pool Grass 2" actor="0xe" item="RANDOM" name="Grass 2" xyz="466;263;0"/>
+        <xflag type="grass" location="Clock Town Laundry Pool Grass 3" actor="0xf" item="RANDOM" name="Grass 3" xyz="458;214;0"/>
+        <actor>
+          <match actor="0x13"/>
+          <match actor="0x14"/>
+          <match actor="0x15"/>
+          <xflag type="rupee" location="Clock Town Laundry Pool Rupee 1" item="RUPEE_RED" name="Rupee 1" xyz="438;416;0"/>
+        </actor>
+        <actor>
+          <match actor="0x16"/>
+          <match actor="0x17"/>
+          <match actor="0x18"/>
+          <xflag type="rupee" location="Clock Town Laundry Pool Rupee 2" item="RUPEE_RED" name="Rupee 2" xyz="452;387;0"/>
+        </actor>
+        <actor>
+          <match actor="0x19"/>
+          <match actor="0x1a"/>
+          <match actor="0x1b"/>
+          <xflag type="rupee" location="Clock Town Laundry Pool Rupee 3" item="RUPEE_RED" name="Rupee 3" xyz="467;356;0"/>
+        </actor>
       </rendering_option>
     </scene_rendering>
   </scene>

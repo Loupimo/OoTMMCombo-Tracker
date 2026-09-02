@@ -8,12 +8,23 @@ XflagID is a global running counter (OoT + MM in one pass) assigned to every <xf
 (scene-level or inside <actor>), walking data/checks/**/*.xml sorted by relative posix path, in
 document order. Run against the SAME OoTMM checkout used to build the ROM you play:
 
-    python gen_xflags.py <ootmm_root> --stamp-csv Resources/Objects/pool_oot.csv Resources/Objects/pool_mm.csv
+    python gen_xflags.py <ootmm_root> --stamp-csv Objects/pool_oot.csv Objects/pool_mm.csv
 
-then re-run "Pool Transform.py" to regenerate OoTObjectScene.cpp / MMObjectScene.cpp.
+then re-run gen_objects.py --emit to regenerate OoTObjectScene.cpp / MMObjectScene.cpp.
 Add --csv <path> to also dump a full audit table.
+
+<ootmm_root> may be either a LOCAL folder (the OoTMM repo root, holding data/checks and
+data/defs/scenes.yml) OR a GitHub reference, which is downloaded once and cached under the temp
+folder (only the data/ subtree is extracted):
+
+    python gen_xflags.py https://github.com/OoTMM/OoTMM/tree/master --stamp-csv ...
+    python gen_xflags.py OoTMM/OoTMM            --stamp-csv ...   # defaults to the master branch
+    python gen_xflags.py OoTMM/OoTMM@v14.0      --stamp-csv ...   # a tag / branch / commit
+
+NB: pick the ref matching YOUR ROM's OoTMM version -- master's HEAD can have XflagIDs that differ
+from an older ROM. To force a fresh download, delete the printed cache folder.
 """
-import sys, os, glob
+import sys, os, glob, io, re, tarfile, tempfile, shutil, urllib.request
 import xml.etree.ElementTree as ET
 
 def load_scenes(scenes_yml):
@@ -102,7 +113,85 @@ class Builder:
             else:
                 raise SystemExit(f"{path}: unexpected <{scene.tag}> under <checks>")
 
+def _parse_github(spec):
+    """(owner, repo, ref) from 'https://github.com/OWNER/REPO[/tree/REF]', 'OWNER/REPO' or
+    'OWNER/REPO@REF'. Defaults ref to 'master'. Returns None if `spec` isn't a GitHub reference."""
+    s = spec.strip()
+    if s.startswith("http://") or s.startswith("https://"):
+        if "github.com/" not in s:
+            return None
+        path = s.split("github.com/", 1)[1]
+    elif re.fullmatch(r"[\w.-]+/[\w.@/-]+", s):   # bare "owner/repo" (no drive letter / backslash)
+        path = s
+    else:
+        return None
+    parts = path.rstrip("/").split("/")
+    if len(parts) < 2:
+        return None
+    owner, repo, ref = parts[0], parts[1], "master"
+    if "@" in repo:
+        repo, ref = repo.split("@", 1)
+    elif len(parts) >= 4 and parts[2] == "tree":
+        ref = "/".join(parts[3:])                 # branch names may contain '/'
+    if repo.endswith(".git"):
+        repo = repo[:-4]
+    return owner, repo, ref
+
+
+def _fetch_github(owner, repo, ref):
+    """Download OWNER/REPO@REF's source tarball once, extract only its data/ subtree to a temp
+    cache, and return that folder (usable as <ootmm_root>). Reuses the cache on later runs."""
+    cache = os.path.join(tempfile.gettempdir(), "ootmm_checks_cache",
+                         f"{owner}_{repo}_{ref.replace('/', '_')}")
+    if os.path.isdir(os.path.join(cache, "data", "checks")):
+        print(f"  using cached OoTMM data: {cache}")
+        return cache
+    url = f"https://github.com/{owner}/{repo}/archive/{ref}.tar.gz"
+    print(f"  downloading {url}\n  (full source tarball; only data/ is kept) ...")
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "gen_xflags"})
+        with urllib.request.urlopen(req, timeout=180) as resp:
+            blob = resp.read()
+    except Exception as e:
+        raise SystemExit(f"  download failed ({e}). Check the ref, or use a local checkout instead.")
+    os.makedirs(cache, exist_ok=True)
+    root = os.path.normpath(cache)
+    n = 0
+    with tarfile.open(fileobj=io.BytesIO(blob), mode="r:gz") as tar:
+        for m in tar.getmembers():
+            top, _, rel = m.name.partition("/")   # strip the "REPO-REF/" top folder
+            if not m.isfile() or not (rel == "data" or rel.startswith("data/")):
+                continue
+            dest = os.path.normpath(os.path.join(cache, rel))
+            if os.path.commonpath([dest, root]) != root:
+                continue                          # tarbomb / path-traversal guard
+            os.makedirs(os.path.dirname(dest), exist_ok=True)
+            with tar.extractfile(m) as src, open(dest, "wb") as out:
+                shutil.copyfileobj(src, out)
+            n += 1
+    if not os.path.isdir(os.path.join(cache, "data", "checks")):
+        shutil.rmtree(cache, ignore_errors=True)
+        raise SystemExit(f"  '{ref}' has no data/checks (wrong ref?). Extracted {n} data/ file(s).")
+    print(f"  extracted {n} file(s) from data/ -> {cache}")
+    return cache
+
+
+def resolve_root(spec):
+    """Turn <ootmm_root> into a local folder holding data/checks + data/defs/scenes.yml. Accepts a
+    local path (used as-is) or a GitHub URL / owner-repo (downloaded & cached, see _fetch_github)."""
+    if os.path.isdir(spec):
+        if os.path.isdir(os.path.join(spec, "data", "checks")):
+            return spec
+        raise SystemExit(f"'{spec}' has no data/checks/ subfolder. Point at the OoTMM repo root "
+                         "(the folder containing data/checks and data/defs/scenes.yml).")
+    gh = _parse_github(spec)
+    if gh is None:
+        raise SystemExit(f"'{spec}' is neither a local OoTMM checkout nor a GitHub URL/owner-repo.")
+    return _fetch_github(*gh)
+
+
 def build_rows(root_dir):
+    root_dir = resolve_root(root_dir)
     checks_dir = os.path.join(root_dir, 'data', 'checks')
     scenes = load_scenes(os.path.join(root_dir, 'data', 'defs', 'scenes.yml'))
     files = glob.glob(os.path.join(checks_dir, '**', '*.xml'), recursive=True)

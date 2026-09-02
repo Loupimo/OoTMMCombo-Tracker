@@ -35,6 +35,10 @@ pub struct Spoiler {
     pub worlds: Vec<WorldPlacements>,
     /// Scenes running the Master Quest (OoT) / JP (MM) layout.
     pub mq_scenes: HashSet<(Game, u16)>,
+    /// True when the build predates the compact-XflagID rework (stable <= v32.3):
+    /// xflag events carry the full identity in the key. Newer builds send only a
+    /// compact XflagID that `tracking::resolve_collected` expands by Location.
+    pub uses_legacy_xflags: bool,
 }
 
 /// Parse a spoiler log's text content.
@@ -43,6 +47,7 @@ pub fn parse(text: &str) -> Spoiler {
         rom: parse_version(text),
         worlds: parse_locations(text, build_predates_v32_1(text)),
         mq_scenes: parse_mq(text),
+        uses_legacy_xflags: build_predates_v32_3(text),
     }
 }
 
@@ -159,6 +164,28 @@ fn build_predates_v32_1(text: &str) -> bool {
         let major = parse_leading_u32(parts.next().unwrap_or(""));
         let minor = parse_leading_u32(parts.next().unwrap_or(""));
         return major < 32 || (major == 32 && minor < 1);
+    }
+    false
+}
+
+/// Whether the spoiler's build predates OoTMM v32.3, the last release that encodes the full
+/// xflag identity (scene / room / actor) in the collected-item key. Later builds only carry a
+/// compact XflagID that `tracking::resolve_collected` expands by Location, so this gates the two
+/// resolution paths. Dev builds and unrecognised version strings are treated as current (> v32.3):
+/// the compact system. Mirror of the C++ `SpoilerBuildPredatesV32_3`.
+fn build_predates_v32_3(text: &str) -> bool {
+    for line in text.lines() {
+        let Some(rest) = line.trim().strip_prefix("Version:") else { continue };
+        let v = rest.trim();
+        if v.starts_with("dev") {
+            return false;
+        }
+        // Parse the leading "MAJOR.MINOR" (ignoring a leading 'v' and any trailing text).
+        let digits = v.trim_start_matches(|c: char| !c.is_ascii_digit());
+        let mut parts = digits.split('.');
+        let major = parse_leading_u32(parts.next().unwrap_or(""));
+        let minor = parse_leading_u32(parts.next().unwrap_or(""));
+        return major < 32 || (major == 32 && minor <= 3);
     }
     false
 }

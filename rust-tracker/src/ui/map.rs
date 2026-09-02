@@ -703,7 +703,18 @@ impl TrackerApp {
                             let (new_ctx, resp) =
                                 self.context_switch(ui, self.context_toggle, left, right);
                             resp.on_hover_text(format!("{off}  ↔  {on_}"));
-                            self.context_toggle = new_ctx;
+                            if new_ctx != self.context_toggle {
+                                self.context_toggle = new_ctx;
+                                // A scene that ships a per-context map must reload its
+                                // background when the winter/spring (child/adult) toggle flips.
+                                if self
+                                    .scene
+                                    .as_ref()
+                                    .is_some_and(|s| !s.def.context_image_rel.is_empty())
+                                {
+                                    self.map_texture = None;
+                                }
+                            }
                         }
                         if has_context && !rooms.is_empty() {
                             ui.separator();

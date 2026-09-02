@@ -118,8 +118,8 @@
   <scene id="RANCH_HOUSE_BARN">
     <scene_rendering id="MM_RANCH_HOUSE_BARN" loc_type="overworld">
       <rendering_option layout="all">
-        <xflag type="wonder" location="Romani Ranch Barn Wonder Item 1" slice="0x0" setup="0x0" room="0x0" actor="0x0" item="RUPEE_BLUE" name="Item 1" xyz="524;525;0"/>
-        <xflag type="wonder" location="Romani Ranch Barn Wonder Item 2" slice="0x0" setup="0x0" room="0x0" actor="0x1" item="RUPEE_BLUE" name="Item 2" xyz="587;527;0"/>
+        <xflag type="wonder" location="Romani Ranch Barn Wonder Item 1" room="0x0" actor="0x0" item="RUPEE_BLUE" name="Item 1" xyz="524;525;0"/>
+        <xflag type="wonder" location="Romani Ranch Barn Wonder Item 2" room="0x0" actor="0x1" item="RUPEE_BLUE" name="Item 2" xyz="587;527;0"/>
       </rendering_option>
     </scene_rendering>
   </scene>

@@ -128,9 +128,9 @@
         <npc location="Laboratory Eye Drops" npc="TRADE_EYE_DROPS" item="EYE_DROPS" name="Eye Drops" xyz="919;418;0"/>
       </rendering_option>
       <gs location="Laboratory GS Crate" flag="0x93" item="GS_TOKEN" name="Underwater Crate" xyz="707;711;0"/>
-      <xflag type="rupee" location="Laboratory Rupee 1" slice="0x0" setup="0x0" room="0x0" actor="0x1" item="RUPEE_RED" name="Rupee 1" xyz="728;804;0"/>
-      <xflag type="rupee" location="Laboratory Rupee 2" slice="0x0" setup="0x0" room="0x0" actor="0x2" item="RUPEE_RED" name="Rupee 2" xyz="849;624;0"/>
-      <xflag type="rupee" location="Laboratory Rupee 3" slice="0x0" setup="0x0" room="0x0" actor="0x3" item="RUPEE_RED" name="Rupee 3" xyz="968;717;0"/>
+      <xflag type="rupee" location="Laboratory Rupee 1" actor="0x1" item="RUPEE_RED" name="Rupee 1" xyz="728;804;0"/>
+      <xflag type="rupee" location="Laboratory Rupee 2" actor="0x2" item="RUPEE_RED" name="Rupee 2" xyz="849;624;0"/>
+      <xflag type="rupee" location="Laboratory Rupee 3" actor="0x3" item="RUPEE_RED" name="Rupee 3" xyz="968;717;0"/>
     </scene_rendering>
   </scene>
   <scene id="FISHING_POND">

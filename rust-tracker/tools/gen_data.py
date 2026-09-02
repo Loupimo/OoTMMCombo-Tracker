@@ -250,6 +250,79 @@ def load_objects(rel, prefix, scene_sym, id_sym, used_ids, missing, missing_ids)
     return objs
 
 
+# --- New-system objects: reuse the C++ generator (single source = New/** XML) ----
+_GEN_OBJECTS = None
+
+
+def gen_object_rows():
+    """Import the C++ object generator (Resources/gen_objects.py) and build every check once from
+    the New/** XML: legacy ObjectID pool-preferred, XflagID by Location, plus the legacy-scene
+    remap. Shared so the Rust tracker and the Qt tracker resolve checks identically."""
+    global _GEN_OBJECTS
+    if _GEN_OBJECTS is None:
+        sys.path.insert(0, str(CPP_ROOT / "Resources"))
+        import gen_objects
+        _GEN_OBJECTS = gen_objects.build_objects()
+    return _GEN_OBJECTS
+
+
+def _id_ref(idtok, id_sym, used_ids, missing_ids):
+    idtok = str(idtok).strip()
+    if LITERAL.fullmatch(idtok):
+        return idtok
+    if idtok in id_sym:
+        used_ids.add(idtok)
+        return f"ids::{idtok}"
+    missing_ids.add(idtok)
+    return "0xFFFF_FFFF"
+
+
+def objects_from_rows(bucket, scene_sym, id_sym, used_ids, missing, missing_ids):
+    """gen_objects rows for one game -> ObjectDef dicts (adds xflag_id + legacy_scene). Scenes and
+    the legacy ObjectID come already game-prefixed from gen_objects, so no re-prefixing here."""
+    def i0(v, d=0):
+        try:
+            return int(str(v), 0)
+        except (ValueError, TypeError):
+            return d
+    objs = []
+    for r in gen_object_rows().rows:
+        if r["bucket"] != bucket:
+            continue
+        scene, render = r["scene"], r["renderscene"]
+        if scene not in scene_sym:
+            missing.add(scene)
+            continue
+        if render not in scene_sym:
+            missing.add(render)
+            render = scene
+        legacy = r.get("legacy_scene")
+        objs.append({
+            "id_ref": _id_ref(r["id"], id_sym, used_ids, missing_ids),
+            "scene": scene, "name": r["friendly_name"], "location": r["location"],
+            "type": r["type"], "x": r["x"], "y": r["y"], "z": r["z"],
+            "render": render, "render_type": r["rendertype"], "map_icon": r["icontype"],
+            "context": r["context"], "room": i0(r["room"]), "layout": r["game_layout"],
+            "loc_type": r["loc_type"], "xflag_id": i0(r["xflag_id"], 0xFFFF),
+            "legacy_scene": legacy if legacy in scene_sym else None,
+        })
+    return objs
+
+
+def emit_legacy_remap(name, bucket, id_sym, used_ids, missing_ids):
+    """The per-game legacy-scene remap table for the Rust runtime's find_object fallback."""
+    out = [f"pub static {name}: &[LegacySceneRemap] = &["]
+    for bk, legacy, objid, otype, true_scene, loc in gen_object_rows().remap:
+        if bk != bucket:
+            continue
+        out.append(
+            f"    LegacySceneRemap {{ legacy_scene: scenes::{legacy}, "
+            f"object_id: {_id_ref(objid, id_sym, used_ids, missing_ids)}, "
+            f"type_: ObjectType::{rust_ident(otype)}, true_scene: scenes::{true_scene} }}, // {loc}")
+    out.append("];\n")
+    return "\n".join(out)
+
+
 # --- CSV-independent: room tables from RoomRenderer.h ----------------------
 ROOM_ENTRY = re.compile(
     r"(\w+)\s*,\s*std::vector<RoomInfo>\s*\(\s*\{(.*?)\}\s*\)", re.S
@@ -346,6 +419,8 @@ def load_scenes(rel, region_map, scene_sym, missing):
             "region_name": rname,
             "has_context": str(row["has_context"]).strip().lower() == "true",
             "layout": row["active_layout"].strip(),
+            # Optional per-context map (Spring / Adult); missing column -> "".
+            "context_image_rel": (row.get("context_image_path") or "").strip(),
         })
     return scenes
 
@@ -407,10 +482,11 @@ def emit_scenes(name, scenes):
         out.append(
             "    SceneDef {{ id: scenes::{id}, name: \"{nm}\", image_rel: \"{img}\", "
             "minimap_rel: \"{mini}\", region_id: {rid}, region_name: \"{rn}\", "
-            "has_context: {ctx}, layout: GameLayout::{lay} }},".format(
+            "has_context: {ctx}, layout: GameLayout::{lay}, context_image_rel: \"{cimg}\" }},".format(
                 id=s["id_name"], nm=esc(s["name"]), img=esc(s["image_rel"]),
                 mini=esc(s["minimap_rel"]), rid=s["region_id"], rn=esc(s["region_name"]),
-                ctx=str(s["has_context"]).lower(), lay=rust_ident(s["layout"])))
+                ctx=str(s["has_context"]).lower(), lay=rust_ident(s["layout"]),
+                cimg=esc(s["context_image_rel"])))
     out.append("];\n")
     return "\n".join(out)
 
@@ -884,12 +960,13 @@ def emit_objects(name, objs):
             "location: \"{loc}\", type_: ObjectType::{ty}, x: {x}, y: {y}, z: {z}, "
             "render_scene: scenes::{rs}, render_type: ObjectType::{rt}, map_icon: \"{mi}\", "
             "context: ObjectContext::{cx}, room: {rm}, layout: GameLayout::{lay}, "
-            "loc_type: LocType::{lt} }},".format(
+            "loc_type: LocType::{lt}, xflag_id: {xf} }},".format(
                 oid=o["id_ref"], sc=o["scene"], nm=esc(o["name"]), loc=esc(o["location"]),
                 ty=rust_ident(o["type"]), x=o["x"], y=o["y"], z=o["z"], rs=o["render"],
                 rt=rust_ident(o["render_type"]), mi=esc(o["map_icon"]),
                 cx=rust_ident(o["context"]), rm=o["room"],
-                lay=rust_ident(o["layout"]), lt=rust_ident(o["loc_type"])))
+                lay=rust_ident(o["layout"]), lt=rust_ident(o["loc_type"]),
+                xf=f'0x{o["xflag_id"]:04X}'))
     out.append("];\n")
     return "\n".join(out)
 
@@ -897,11 +974,12 @@ def emit_objects(name, objs):
 # --- split the generated source into a src/data/ folder module ---------------
 _CORE = {'ObjectType', 'ObjectContext', 'GameLayout', 'LocType', 'EntranceType',
          'ParamType', 'ParamCategory', 'ShuffleSetting', 'SceneId', 'scenes',
-         'SceneDef', 'ObjectDef', 'RoomDef', 'GrottoPos', 'EntranceDef',
+         'SceneDef', 'ObjectDef', 'LegacySceneRemap', 'RoomDef', 'GrottoPos', 'EntranceDef',
          'SettingMeta', 'ItemDef', 'ProgEntry', 'ProgSection', 'ProgPage'}
 _CONSTS = {'ids', 'iid', 'entr', 'song_oot', 'song_mm', 'owl'}
 _TARGET = {'PROGRESSIVE_FAMILIES': 'prog', 'PROG_PAGES': 'prog',
            'OOT_OBJECTS': 'oot_items', 'MM_OBJECTS': 'mm_items',
+           'OOT_LEGACY_SCENE_REMAP': 'oot_items', 'MM_LEGACY_SCENE_REMAP': 'mm_items',
            'OOT_SCENES': 'oot_world', 'OOT_ROOMS': 'oot_world',
            'OOT_ENTRANCES': 'oot_world', 'OOT_SCENE_ENTRANCES': 'oot_world',
            'OOT_ENTRANCE_COSTS': 'oot_world',
@@ -1014,10 +1092,8 @@ def main():
     regions = parse_regions(read("Headers/Combo/Regions.h"))
 
     missing, missing_ids, missing_ent, used_ids = set(), set(), set(), set()
-    oot_objs = load_objects("Resources/Objects/pool_oot.csv", "OOT_",
-                            scene_sym, id_sym, used_ids, missing, missing_ids)
-    mm_objs = load_objects("Resources/Objects/pool_mm.csv", "MM_",
-                           scene_sym, id_sym, used_ids, missing, missing_ids)
+    oot_objs = objects_from_rows("OoT", scene_sym, id_sym, used_ids, missing, missing_ids)
+    mm_objs = objects_from_rows("MM", scene_sym, id_sym, used_ids, missing, missing_ids)
     oot_scenes = load_scenes("Resources/Scenes/scenes_oot.csv",
                              regions["OoTRegions"], scene_sym, missing)
     mm_scenes = load_scenes("Resources/Scenes/scenes_mm.csv",
@@ -1106,14 +1182,24 @@ def main():
         "    pub image_rel: &'static str,\n"
         "    /// Minimap (entrances).\n    pub minimap_rel: &'static str,\n"
         "    pub region_id: u8,\n    pub region_name: &'static str,\n"
-        "    pub has_context: bool,\n    pub layout: GameLayout,\n}\n\n"
+        "    pub has_context: bool,\n    pub layout: GameLayout,\n"
+        "    /// Alternate map shown when the context toggle is ON (Spring / Adult);\n"
+        "    /// empty => image_rel is used for both contexts.\n"
+        "    pub context_image_rel: &'static str,\n}\n\n"
         "pub struct ObjectDef {\n"
         "    pub object_id: u32,\n    pub scene: SceneId,\n    pub name: &'static str,\n"
         "    pub location: &'static str,\n    pub type_: ObjectType,\n"
         "    pub x: i32,\n    pub y: i32,\n    pub z: i32,\n    pub render_scene: SceneId,\n"
         "    pub render_type: ObjectType,\n    pub map_icon: &'static str,\n"
         "    pub context: ObjectContext,\n    pub room: u16,\n    pub layout: GameLayout,\n"
-        "    pub loc_type: LocType,\n}\n\n"
+        "    pub loc_type: LocType,\n"
+        "    /// Compact XflagID (new xflag ROMs > v32.3) stamped by Location; 0xFFFF = none.\n"
+        "    pub xflag_id: u16,\n}\n\n"
+        "/// A check whose true scene differs from the one pre-migration (<= v32.3) ROMs report.\n"
+        "/// Keyed by the reported (legacy) scene + the check's unchanged legacy ObjectID.\n"
+        "pub struct LegacySceneRemap {\n"
+        "    pub legacy_scene: SceneId,\n    pub object_id: u32,\n"
+        "    pub type_: ObjectType,\n    pub true_scene: SceneId,\n}\n\n"
         "pub struct RoomDef {\n"
         "    pub id: u32,\n    pub name: &'static str,\n    pub image_rel: &'static str,\n}\n\n"
         "pub struct GrottoPos {\n    pub id: u32,\n    pub pos: [f32; 3],\n}\n\n"
@@ -1186,6 +1272,8 @@ def main():
         + emit_scene_entrances("MM_SCENE_ENTRANCES", mm_scene_entr),
         "\n" + emit_objects("OOT_OBJECTS", oot_objs),
         "\n" + emit_objects("MM_OBJECTS", mm_objs),
+        "\n" + emit_legacy_remap("OOT_LEGACY_SCENE_REMAP", "OoT", id_sym, used_ids, missing_ids),
+        "\n" + emit_legacy_remap("MM_LEGACY_SCENE_REMAP", "MM", id_sym, used_ids, missing_ids),
     ]
     write_split("".join(parts), OUTDIR, extra_mods=["logic"])
 

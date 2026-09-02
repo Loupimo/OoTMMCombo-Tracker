@@ -83,6 +83,7 @@ pub fn detect_rom(game_version: [u32; 2]) -> RomVersion {
 pub fn resolve_collected(
     ev: &Event,
     rom: RomVersion,
+    uses_legacy: bool,
     mq: &HashSet<(Game, u16)>,
 ) -> Option<(Game, usize)> {
     // Entrance messages are handled elsewhere.
@@ -99,7 +100,7 @@ pub fn resolve_collected(
         let scene = ((ev.query[0] >> 16) & 0xFF) as u16;
         let room = (ev.query[0] >> 8) & 0xFF;
         let id = ev.query[0] & 0xFF;
-        return match_object(game, scene, ov_type, id, room, rom, mq);
+        return match_object(game, scene, ov_type, id, room, rom, uses_legacy, mq);
     }
 
     // Collected item: Query[0..1] is the head of a ComboItemQuery.
@@ -109,11 +110,15 @@ pub fn resolve_collected(
     let ov_type = ((ev.query[0] >> 8) & 0xFF) as u8;
     let id = (ev.query[1] >> 16) & 0xFF;
     let room = (ev.query[1] >> 24) & 0xFF;
-    match_object(game, scene, ov_type, id, room, rom, mq)
+    match_object(game, scene, ov_type, id, room, rom, uses_legacy, mq)
 }
 
 /// CorrectComboItem + FindObject: resolve a decoded placement to a pool object.
 /// Shared by the collected-item, "nothing" drop and network-ledger paths.
+///
+/// `uses_legacy` selects the xflag system: legacy ROMs (<= v32.3) put the full
+/// scene / room / actor identity in the key; newer ROMs send only a compact
+/// XflagID that we resolve by Location (mirror of C++ ResolveXflagItem).
 pub(crate) fn match_object(
     game: Game,
     scene: u16,
@@ -121,13 +126,24 @@ pub(crate) fn match_object(
     id: u32,
     room: u32,
     rom: RomVersion,
+    uses_legacy: bool,
     mq: &HashSet<(Game, u16)>,
 ) -> Option<(Game, usize)> {
     if ov_type == OV_NONE {
         return None;
     }
     if ov_type >= OV_XFLAG0 {
-        // Extended flag: fold the flag index + room into the id, match in-scene.
+        if !uses_legacy {
+            // Compact system (> v32.3): the query only holds a 16-bit XflagID, split
+            // across room (high byte) and id (low byte), with no scene. Resolve it by
+            // Location (layout-aware). An unknown id (table built from a different ROM
+            // version) falls through to the legacy scan, which fails harmlessly.
+            let xflag_id = (((room & 0xFF) << 8) | (id & 0xFF)) as u16;
+            if let Some(hit) = find_object_by_xflag_id(game, xflag_id, mq) {
+                return Some(hit);
+            }
+        }
+        // Legacy flag: fold the flag index (slice) + room into the id, match in-scene.
         let composite = (((ov_type - OV_XFLAG0) as u32) << 16) | (room << 8) | id;
         return find_object(game, Some(scene), composite, ov_type, mq);
     }
@@ -162,14 +178,85 @@ fn find_object(
                 continue;
             }
         }
-        let type_num = o.type_ as u8;
-        let ok = if ov_type > OV_FISH {
-            type_num > OV_FISH // any extended object type
-        } else {
-            type_num == ov_type
-        };
-        if ok {
+        if type_matches(o.type_ as u8, ov_type) {
             return Some((game, i));
+        }
+    }
+    // A few checks moved scene since the legacy (<= v32.3) ROMs: when the reported
+    // scene came up empty, retry via the legacy-scene remap (mirror of C++ FindObject
+    // falling back to FindObjectByLegacyScene).
+    if let Some(s) = scene {
+        return find_object_by_legacy_scene(game, s, object_id, ov_type, mq);
+    }
+    None
+}
+
+/// Whether an object of raw type `obj_type` satisfies an overlay of type `ov_type`:
+/// exact match for the direct overlays, "any extended type" above fish (whose
+/// ObjectType is render-only). Shared by every object scan.
+fn type_matches(obj_type: u8, ov_type: u8) -> bool {
+    if ov_type > OV_FISH {
+        obj_type > OV_FISH
+    } else {
+        obj_type == ov_type
+    }
+}
+
+/// Compact-XflagID lookup (new xflag ROMs > v32.3): the DLL no longer sends the
+/// scene / room / actor, only a 16-bit XflagID stamped on each object by Location.
+/// Return the active-layout object carrying it. A single XflagID can belong to
+/// several objects when a check is placed differently across layouts (Deku Palace
+/// rupees in MM_JP, Ice Cavern Sheik song in OoT_MQ): `object_active` keeps the one
+/// whose scene runs the active layout, mirroring C++ FindObjectByXflagID.
+fn find_object_by_xflag_id(
+    game: Game,
+    xflag_id: u16,
+    mq: &HashSet<(Game, u16)>,
+) -> Option<(Game, usize)> {
+    if xflag_id == 0xFFFF {
+        return None; // sentinel: not an xflag object
+    }
+    game.objects()
+        .iter()
+        .position(|o| o.xflag_id == xflag_id && object_active(o, game, mq))
+        .map(|i| (game, i))
+}
+
+/// Legacy-scene remap fallback: a handful of checks (cows, Granny's potions, hatch
+/// eggs, Oath to Order, Tingle maps) live under a different scene now than the one
+/// pre-migration (<= v32.3) ROMs report. Given the reported (legacy) scene + the
+/// object's id, resolve it in its true scene. Safe for every ROM: the key only ever
+/// matches the old scene, which current ROMs no longer emit. Mirror of C++
+/// FindObjectByLegacyScene.
+///
+/// The current tables are all cow / npc entries, which this runtime already resolves
+/// through the global `(type, id)` match (scene = None), so the fallback is only
+/// reached by scene-scoped overlays (chest / collectible / sf / extended) — kept for
+/// parity with the Qt tracker and to cover any future scene-scoped remap.
+fn find_object_by_legacy_scene(
+    game: Game,
+    reported_scene: u16,
+    object_id: u32,
+    ov_type: u8,
+    mq: &HashSet<(Game, u16)>,
+) -> Option<(Game, usize)> {
+    let table = match game {
+        Game::Oot => crate::data::OOT_LEGACY_SCENE_REMAP,
+        Game::Mm => crate::data::MM_LEGACY_SCENE_REMAP,
+    };
+    for r in table {
+        if r.legacy_scene != reported_scene || r.object_id != object_id {
+            continue;
+        }
+        // Scan the true scene directly (no recursion back through find_object).
+        for (i, o) in game.objects().iter().enumerate() {
+            if o.scene == r.true_scene
+                && object_active(o, game, mq)
+                && o.object_id == object_id
+                && type_matches(o.type_ as u8, ov_type)
+            {
+                return Some((game, i));
+            }
         }
     }
     None
@@ -304,7 +391,7 @@ mod tests {
                 }
                 let Some(ev) = demo_event(game, o) else { continue };
                 encodable += 1;
-                let (_, j) = resolve_collected(&ev, RomVersion::Dev, &no_mq())
+                let (_, j) = resolve_collected(&ev, RomVersion::Dev, true, &no_mq())
                     .unwrap_or_else(|| panic!("no match: {} (id {:#x})", o.location, o.object_id));
                 // The matched object shares the placement key (scene + id).
                 assert_eq!(objs[j].scene, o.scene, "scene mismatch: {}", o.location);
@@ -328,7 +415,7 @@ mod tests {
             mem: 0,
             query: [0xFF | ((o.type_ as u32) << 8), o.object_id << 16, 0, 0, 0, 0],
         };
-        let (_, j) = resolve_collected(&ev, RomVersion::Dev, &no_mq()).expect("gs resolves globally");
+        let (_, j) = resolve_collected(&ev, RomVersion::Dev, true, &no_mq()).expect("gs resolves globally");
         assert_eq!(OOT_OBJECTS[j].object_id, o.object_id);
         assert_eq!(OOT_OBJECTS[j].type_ as u8, ObjectType::gs as u8);
     }
@@ -372,9 +459,31 @@ mod tests {
         let q0 = id | (room << 8) | ((o.scene as u32 & 0xFF) << 16) | (ov << 24);
         // Query[2] high half = 0xFFFF marks the "nothing" path; low byte = game.
         let ev = Event { pc: 0x8009_0000, mem: 0, query: [q0, 0, 0xFFFF_0000, 0, 0, 0] };
-        let (_, j) = resolve_collected(&ev, RomVersion::Dev, &no_mq()).expect("nothing-drop grass resolves");
+        let (_, j) = resolve_collected(&ev, RomVersion::Dev, true, &no_mq()).expect("nothing-drop grass resolves");
         assert_eq!(OOT_OBJECTS[j].object_id, o.object_id);
         assert_eq!(OOT_OBJECTS[j].type_ as u8, ObjectType::grass as u8);
+    }
+
+    /// Compact-XflagID resolution (new ROMs > v32.3): an event carrying only a
+    /// 16-bit XflagID (no scene) resolves to the object stamped with it, by Location.
+    #[test]
+    fn xflag_by_location_resolves() {
+        let o = OOT_OBJECTS
+            .iter()
+            .find(|o| o.xflag_id != 0xFFFF && object_active(o, Game::Oot, &no_mq()))
+            .expect("a base-layout object carrying an XflagID");
+        let xf = o.xflag_id as u32;
+        // Compact query: ov = OV_XFLAG (0x10), scene byte = 0, id = xf low, room = xf high.
+        let q0 = (OV_XFLAG0 as u32) << 8; // scene = 0
+        let q1 = ((xf & 0xFF) << 16) | ((xf >> 8) << 24);
+        let ev = Event { pc: 0x8009_0000, mem: 0, query: [q0, q1, 0, 0, 0, 0] };
+        // New system (uses_legacy = false): resolves by XflagID.
+        let (_, j) = resolve_collected(&ev, RomVersion::Dev, false, &no_mq())
+            .expect("compact XflagID resolves");
+        assert_eq!(OOT_OBJECTS[j].xflag_id, o.xflag_id);
+        // Legacy system (uses_legacy = true) would instead scan scene 0 by the composite
+        // id and miss (scene 0 carries no object with that id) — the paths are distinct.
+        assert!(resolve_collected(&ev, RomVersion::Dev, true, &no_mq()).is_none());
     }
 
     /// The stable-ROM item-id shift is the identity on dev and adds the boundary
@@ -409,8 +518,8 @@ mod tests {
     #[test]
     fn non_item_events_ignored() {
         let entrance = Event { pc: 0x8009_0000, mem: 0xF000_1234, query: [0; 6] };
-        assert!(resolve_collected(&entrance, RomVersion::Dev, &no_mq()).is_none());
+        assert!(resolve_collected(&entrance, RomVersion::Dev, true, &no_mq()).is_none());
         let empty = Event { pc: 0x8009_0000, mem: 0, query: [0, 0, 0xFFFF_0000, 0, 0, 0] };
-        assert!(resolve_collected(&empty, RomVersion::Dev, &no_mq()).is_none());
+        assert!(resolve_collected(&empty, RomVersion::Dev, true, &no_mq()).is_none());
     }
 }
