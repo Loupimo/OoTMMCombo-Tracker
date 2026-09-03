@@ -9,12 +9,12 @@
         <npc location="Jabu-Jabu Boss" npc="BLUE_WARP_BARINADE" item="STONE_SAPPHIRE" name="Zora's Sapphire" xyz="1295;255;0"/>
       </rendering_option>
       <rendering_option layout="all">
-        <xflag type="pot" location="Jabu-Jabu Boss Pot 1" slice="0x0" setup="0x0" room="0x1" actor="0x1" item="RECOVERY_HEART" name="Boss Pot 1" xyz="1160;193;0"/>
-        <xflag type="pot" location="Jabu-Jabu Boss Pot 2" slice="0x0" setup="0x0" room="0x1" actor="0x2" item="RECOVERY_HEART" name="Boss Pot 2" xyz="1157;321;0"/>
-        <xflag type="pot" location="Jabu-Jabu Boss Pot 3" slice="0x0" setup="0x0" room="0x1" actor="0x3" item="RECOVERY_HEART" name="Boss Pot 3" xyz="1223;387;0"/>
-        <xflag type="pot" location="Jabu-Jabu Boss Pot 4" slice="0x0" setup="0x0" room="0x1" actor="0x4" item="RECOVERY_HEART" name="Boss Pot 4" xyz="1221;126;0"/>
-        <xflag type="pot" location="Jabu-Jabu Boss Pot 5" slice="0x0" setup="0x0" room="0x1" actor="0x5" item="RECOVERY_HEART" name="Boss Pot 5" xyz="1347;123;0"/>
-        <xflag type="pot" location="Jabu-Jabu Boss Pot 6" slice="0x0" setup="0x0" room="0x1" actor="0x6" item="RECOVERY_HEART" name="Boss Pot 6" xyz="1349;390;0"/>
+        <xflag type="pot" location="Jabu-Jabu Boss Pot 1" room="0x1" actor="0x1" item="RECOVERY_HEART" name="Boss Pot 1" xyz="1160;193;0"/>
+        <xflag type="pot" location="Jabu-Jabu Boss Pot 2" room="0x1" actor="0x2" item="RECOVERY_HEART" name="Boss Pot 2" xyz="1157;321;0"/>
+        <xflag type="pot" location="Jabu-Jabu Boss Pot 3" room="0x1" actor="0x3" item="RECOVERY_HEART" name="Boss Pot 3" xyz="1223;387;0"/>
+        <xflag type="pot" location="Jabu-Jabu Boss Pot 4" room="0x1" actor="0x4" item="RECOVERY_HEART" name="Boss Pot 4" xyz="1221;126;0"/>
+        <xflag type="pot" location="Jabu-Jabu Boss Pot 5" room="0x1" actor="0x5" item="RECOVERY_HEART" name="Boss Pot 5" xyz="1347;123;0"/>
+        <xflag type="pot" location="Jabu-Jabu Boss Pot 6" room="0x1" actor="0x6" item="RECOVERY_HEART" name="Boss Pot 6" xyz="1349;390;0"/>
       </rendering_option>
     </scene_rendering>
   </scene>

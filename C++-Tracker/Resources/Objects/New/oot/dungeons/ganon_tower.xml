@@ -6,24 +6,106 @@
         <chest location="Ganon Castle Boss Key" flag="0x0b" item="BOSS_KEY_GANON" name="Boss Key Chest" xyz="472;320;0"/>
       </rendering_option>
       <rendering_option room="1">
-        <xflag type="pot" location="Ganon Tower Pot 01" slice="0x0" setup="0x0" room="0x8" actor="0x1" item="MAGIC_JAR_LARGE" name="Tower 1" xyz="252;171;0"/>
-        <xflag type="pot" location="Ganon Tower Pot 02" slice="0x0" setup="0x0" room="0x8" actor="0x2" item="RECOVERY_HEART" name="Tower 2" xyz="273;150;0"/>
-        <xflag type="pot" location="Ganon Tower Pot 03" slice="0x0" setup="0x0" room="0x8" actor="0x3" item="MAGIC_JAR_SMALL" name="Tower 3" xyz="294;129;0"/>
-        <xflag type="pot" location="Ganon Tower Pot 04" slice="0x0" setup="0x0" room="0x8" actor="0x4" item="MAGIC_JAR_SMALL" name="Tower 4" xyz="317;108;0"/>
-        <xflag type="pot" location="Ganon Tower Pot 05" slice="0x0" setup="0x0" room="0x8" actor="0x5" item="RECOVERY_HEART" name="Tower 5" xyz="338;88;0"/>
-        <xflag type="pot" location="Ganon Tower Pot 06" slice="0x0" setup="0x0" room="0x8" actor="0x6" item="ARROWS_10" name="Tower 6" xyz="273;171;0"/>
-        <xflag type="pot" location="Ganon Tower Pot 07" slice="0x0" setup="0x0" room="0x8" actor="0x7" item="ARROWS_10" name="Tower 7" xyz="294;150;0"/>
-        <xflag type="pot" location="Ganon Tower Pot 08" slice="0x0" setup="0x0" room="0x8" actor="0x8" item="RECOVERY_HEART" name="Tower 8" xyz="315;129;0"/>
-        <xflag type="pot" location="Ganon Tower Pot 09" slice="0x0" setup="0x0" room="0x8" actor="0x9" item="NOTHING" name="Tower 9" xyz="337;108;0"/>
-        <xflag type="pot" location="Ganon Tower Pot 10" slice="0x0" setup="0x0" room="0x8" actor="0xa" item="NOTHING" name="Tower 10" xyz="685;166;0"/>
-        <xflag type="pot" location="Ganon Tower Pot 11" slice="0x0" setup="0x0" room="0x8" actor="0xb" item="ARROWS_10" name="Tower 11" xyz="663;146;0"/>
-        <xflag type="pot" location="Ganon Tower Pot 12" slice="0x0" setup="0x0" room="0x8" actor="0xc" item="ARROWS_10" name="Tower 12" xyz="643;127;0"/>
-        <xflag type="pot" location="Ganon Tower Pot 13" slice="0x0" setup="0x0" room="0x8" actor="0xd" item="RECOVERY_HEART" name="Tower 13" xyz="623;107;0"/>
-        <xflag type="pot" location="Ganon Tower Pot 14" slice="0x0" setup="0x0" room="0x8" actor="0xe" item="RECOVERY_HEART" name="Tower 14" xyz="602;88;0"/>
-        <xflag type="pot" location="Ganon Tower Pot 15" slice="0x0" setup="0x0" room="0x8" actor="0xf" item="RECOVERY_HEART" name="Tower 15" xyz="665;166;0"/>
-        <xflag type="pot" location="Ganon Tower Pot 16" slice="0x0" setup="0x0" room="0x8" actor="0x10" item="NOTHING" name="Tower 16" xyz="643;147;0"/>
-        <xflag type="pot" location="Ganon Tower Pot 17" slice="0x0" setup="0x0" room="0x8" actor="0x11" item="NOTHING" name="Tower 17" xyz="623;127;0"/>
-        <xflag type="pot" location="Ganon Tower Pot 18" slice="0x0" setup="0x0" room="0x8" actor="0x12" item="ARROWS_10" name="Tower 18" xyz="602;107;0"/>
+        <actor>
+          <match room="0x8" actor="0x1" scene="GANON_TOWER"/>
+          <match room="0x0" actor="0x2f" scene="LAIR_GANONDORF"/>
+          <xflag type="pot" location="Ganon Tower Pot 01" item="MAGIC_JAR_LARGE" name="Tower 1" xyz="252;171;0"/>
+        </actor>
+        <actor>
+          <match room="0x8" actor="0x2" scene="GANON_TOWER"/>
+          <match room="0x0" actor="0x30" scene="LAIR_GANONDORF"/>
+          <match room="0x4" actor="0x10" scene="GANON_TOWER_COLLAPSING"/>
+          <xflag type="pot" location="Ganon Tower Pot 02" item="RECOVERY_HEART" name="Tower 2" xyz="273;150;0"/>
+        </actor>
+        <actor>
+          <match room="0x8" actor="0x3" scene="GANON_TOWER"/>
+          <match room="0x0" actor="0x32" scene="LAIR_GANONDORF"/>
+          <match room="0x4" actor="0x11" scene="GANON_TOWER_COLLAPSING"/>
+          <xflag type="pot" location="Ganon Tower Pot 03" item="MAGIC_JAR_SMALL" name="Tower 3" xyz="294;129;0"/>
+        </actor>
+        <actor>
+          <match room="0x8" actor="0x4" scene="GANON_TOWER"/>
+          <match room="0x0" actor="0x35" scene="LAIR_GANONDORF"/>
+          <match room="0x4" actor="0x14" scene="GANON_TOWER_COLLAPSING"/>
+          <xflag type="pot" location="Ganon Tower Pot 04" item="MAGIC_JAR_SMALL" name="Tower 4" xyz="317;108;0"/>
+        </actor>
+        <actor>
+          <match room="0x8" actor="0x5" scene="GANON_TOWER"/>
+          <match room="0x0" actor="0x37" scene="LAIR_GANONDORF"/>
+          <xflag type="pot" location="Ganon Tower Pot 05" item="RECOVERY_HEART" name="Tower 5" xyz="338;88;0"/>
+        </actor>
+        <actor>
+          <match room="0x8" actor="0x6" scene="GANON_TOWER"/>
+          <match room="0x0" actor="0x31" scene="LAIR_GANONDORF"/>
+          <xflag type="pot" location="Ganon Tower Pot 06" item="ARROWS_10" name="Tower 6" xyz="273;171;0"/>
+        </actor>
+        <actor>
+          <match room="0x8" actor="0x7" scene="GANON_TOWER"/>
+          <match room="0x0" actor="0x33" scene="LAIR_GANONDORF"/>
+          <match room="0x4" actor="0x12" scene="GANON_TOWER_COLLAPSING"/>
+          <xflag type="pot" location="Ganon Tower Pot 07" item="ARROWS_10" name="Tower 7" xyz="294;150;0"/>
+        </actor>
+        <actor>
+          <match room="0x8" actor="0x8" scene="GANON_TOWER"/>
+          <match room="0x0" actor="0x34" scene="LAIR_GANONDORF"/>
+          <match room="0x4" actor="0x13" scene="GANON_TOWER_COLLAPSING"/>
+          <xflag type="pot" location="Ganon Tower Pot 08" item="RECOVERY_HEART" name="Tower 8" xyz="315;129;0"/>
+        </actor>
+        <actor>
+          <match room="0x8" actor="0x9" scene="GANON_TOWER"/>
+          <match room="0x0" actor="0x36" scene="LAIR_GANONDORF"/>
+          <xflag type="pot" location="Ganon Tower Pot 09" item="NOTHING" name="Tower 9" xyz="337;108;0"/>
+        </actor>
+        <actor>
+          <match room="0x8" actor="0xa" scene="GANON_TOWER"/>
+          <match room="0x0" actor="0x38" scene="LAIR_GANONDORF"/>
+          <xflag type="pot" location="Ganon Tower Pot 10" item="NOTHING" name="Tower 10" xyz="685;166;0"/>
+        </actor>
+        <actor>
+          <match room="0x8" actor="0xb" scene="GANON_TOWER"/>
+          <match room="0x0" actor="0x39" scene="LAIR_GANONDORF"/>
+          <match room="0x4" actor="0x15" scene="GANON_TOWER_COLLAPSING"/>
+          <xflag type="pot" location="Ganon Tower Pot 11" item="ARROWS_10" name="Tower 11" xyz="663;146;0"/>
+        </actor>
+        <actor>
+          <match room="0x8" actor="0xc" scene="GANON_TOWER"/>
+          <match room="0x0" actor="0x3a" scene="LAIR_GANONDORF"/>
+          <match room="0x4" actor="0x16" scene="GANON_TOWER_COLLAPSING"/>
+          <xflag type="pot" location="Ganon Tower Pot 12" item="ARROWS_10" name="Tower 12" xyz="643;127;0"/>
+        </actor>
+        <actor>
+          <match room="0x8" actor="0xd" scene="GANON_TOWER"/>
+          <match room="0x0" actor="0x3b" scene="LAIR_GANONDORF"/>
+          <match room="0x4" actor="0x17" scene="GANON_TOWER_COLLAPSING"/>
+          <xflag type="pot" location="Ganon Tower Pot 13" item="RECOVERY_HEART" name="Tower 13" xyz="623;107;0"/>
+        </actor>
+        <actor>
+          <match room="0x8" actor="0xe" scene="GANON_TOWER"/>
+          <match room="0x0" actor="0x3c" scene="LAIR_GANONDORF"/>
+          <xflag type="pot" location="Ganon Tower Pot 14" item="RECOVERY_HEART" name="Tower 14" xyz="602;88;0"/>
+        </actor>
+        <actor>
+          <match room="0x8" actor="0xf" scene="GANON_TOWER"/>
+          <match room="0x0" actor="0x3d" scene="LAIR_GANONDORF"/>
+          <xflag type="pot" location="Ganon Tower Pot 15" item="RECOVERY_HEART" name="Tower 15" xyz="665;166;0"/>
+        </actor>
+        <actor>
+          <match room="0x8" actor="0x10" scene="GANON_TOWER"/>
+          <match room="0x0" actor="0x3e" scene="LAIR_GANONDORF"/>
+          <match room="0x4" actor="0x18" scene="GANON_TOWER_COLLAPSING"/>
+          <xflag type="pot" location="Ganon Tower Pot 16" item="NOTHING" name="Tower 16" xyz="643;147;0"/>
+        </actor>
+        <actor>
+          <match room="0x8" actor="0x11" scene="GANON_TOWER"/>
+          <match room="0x0" actor="0x3f" scene="LAIR_GANONDORF"/>
+          <match room="0x4" actor="0x19" scene="GANON_TOWER_COLLAPSING"/>
+          <xflag type="pot" location="Ganon Tower Pot 17" item="NOTHING" name="Tower 17" xyz="623;127;0"/>
+        </actor>
+        <actor>
+          <match room="0x8" actor="0x12" scene="GANON_TOWER"/>
+          <match room="0x0" actor="0x40" scene="LAIR_GANONDORF"/>
+          <xflag type="pot" location="Ganon Tower Pot 18" item="ARROWS_10" name="Tower 18" xyz="602;107;0"/>
+        </actor>
       </rendering_option>
     </scene_rendering>
   </scene>

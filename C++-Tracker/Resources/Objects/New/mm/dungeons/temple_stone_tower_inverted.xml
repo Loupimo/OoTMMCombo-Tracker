@@ -99,8 +99,8 @@
           <xflag type="rupee" location="Stone Tower Temple Inverted Rupee Dexihand 1" item="RUPEE_RED" name="Dexihand 1" xyz="665;197;0"/>
         </actor>
         <actor>
-        <match room="0x1" actor="0x1"/>
-        <match room="0x3" actor="0x3"/>
+          <match room="0x1" actor="0x1"/>
+          <match room="0x3" actor="0x3"/>
           <xflag type="rupee" location="Stone Tower Temple Inverted Rupee Dexihand 2" item="RUPEE_GREEN" name="Dexihand 2" xyz="667;152;0"/>
         </actor>
         <actor>

@@ -28,24 +28,44 @@
         <collectible location="Moon Trial Deku HP" flag="0x01" item="HEART_PIECE" name="Heart Piece" xyz="222;166;0"/>
       </rendering_option>
       <actor room="0x0" actor="0x0">
-        <xflag type="gossip" location="Moon Trial Deku Gossip Fairy Front-Left" slice="0" item="FAIRY" name="Gossip Fairy Front-Left" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Moon Trial Deku Gossip Big Fairy Front-Left" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Front-Left" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Moon Trial Deku Gossip Fairy Front-Left" slice="0" item="FAIRY" name="Gossip Stone - Front-Left" xyz="675;435;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Moon Trial Deku Gossip Big Fairy Front-Left" slice="1" item="FAIRY_BIG" name="Gossip Stone - Front-Left" xyz="653;440;0"/>
+        </rendering_option>
       </actor>
       <actor room="0x0" actor="0x1">
-        <xflag type="gossip" location="Moon Trial Deku Gossip Fairy Front-Right" slice="0" item="FAIRY" name="Gossip Fairy Front-Right" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Moon Trial Deku Gossip Big Fairy Front-Right" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Front-Right" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Moon Trial Deku Gossip Fairy Front-Right" slice="0" item="FAIRY" name="Gossip Stone - Front-Right" xyz="663;208;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Moon Trial Deku Gossip Big Fairy Front-Right" slice="1" item="FAIRY_BIG" name="Gossip Stone - Front-Right" xyz="640;208;0"/>
+        </rendering_option>
       </actor>
       <actor room="0x0" actor="0x2">
-        <xflag type="gossip" location="Moon Trial Deku Gossip Fairy Mid-Left" slice="0" item="FAIRY" name="Gossip Fairy Mid-Left" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Moon Trial Deku Gossip Big Fairy Mid-Left" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Mid-Left" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Moon Trial Deku Gossip Fairy Mid-Left" slice="0" item="FAIRY" name="Gossip Stone - Mid-Left" xyz="479;431;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Moon Trial Deku Gossip Big Fairy Mid-Left" slice="1" item="FAIRY_BIG" name="Gossip Stone - Mid-Left" xyz="457;435;0"/>
+        </rendering_option>
       </actor>
       <actor room="0x0" actor="0x3">
-        <xflag type="gossip" location="Moon Trial Deku Gossip Fairy Mid-Right" slice="0" item="FAIRY" name="Gossip Fairy Mid-Right" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Moon Trial Deku Gossip Big Fairy Mid-Right" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Mid-Right" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Moon Trial Deku Gossip Fairy Mid-Right" slice="0" item="FAIRY" name="Gossip Stone - Mid-Right" xyz="459;185;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Moon Trial Deku Gossip Big Fairy Mid-Right" slice="1" item="FAIRY_BIG" name="Gossip Stone - Mid-Right" xyz="438;185;0"/>
+        </rendering_option>
       </actor>
       <actor room="0x0" actor="0x4">
-        <xflag type="gossip" location="Moon Trial Deku Gossip Fairy Back" slice="0" item="FAIRY" name="Gossip Fairy Back" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Moon Trial Deku Gossip Big Fairy Back" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Back" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Moon Trial Deku Gossip Fairy Back" slice="0" item="FAIRY" name="Gossip Stone - Back" xyz="198;140;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Moon Trial Deku Gossip Big Fairy Back" slice="1" item="FAIRY_BIG" name="Gossip Stone - Back" xyz="182;156;0"/>
+        </rendering_option>
       </actor>
     </scene_rendering>
   </scene>
@@ -55,45 +75,65 @@
         <collectible location="Moon Trial Goron HP" flag="0x01" item="HEART_PIECE" name="Heart Piece" xyz="217;433;0"/>
       </rendering_option>
       <rendering_option layout="all">
-        <xflag type="pot" location="Moon Trial Goron Pot Early 1" slice="0x0" setup="0x0" room="0x0" actor="0x1c" item="MAGIC_JAR_LARGE" name="Early 1" xyz="909;361;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot Early 2" slice="0x0" setup="0x0" room="0x0" actor="0x1d" item="MAGIC_JAR_LARGE" name="Early 2" xyz="917;361;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot Early 3" slice="0x0" setup="0x0" room="0x0" actor="0x1e" item="MAGIC_JAR_LARGE" name="Early 3" xyz="910;378;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot Early 4" slice="0x0" setup="0x0" room="0x0" actor="0x1f" item="MAGIC_JAR_LARGE" name="Early 4" xyz="918;378;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot 01" slice="0x0" setup="0x0" room="0x0" actor="0x15" item="MAGIC_JAR_LARGE" name="Pot 1" xyz="347;270;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot 02" slice="0x0" setup="0x0" room="0x0" actor="0x16" item="MAGIC_JAR_LARGE" name="Pot 2" xyz="338;270;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot 03" slice="0x0" setup="0x0" room="0x0" actor="0x17" item="MAGIC_JAR_LARGE" name="Pot 3" xyz="673;243;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot 04" slice="0x0" setup="0x0" room="0x0" actor="0x18" item="MAGIC_JAR_LARGE" name="Pot 4" xyz="680;243;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot 05" slice="0x0" setup="0x0" room="0x0" actor="0x19" item="MAGIC_JAR_LARGE" name="Pot 5" xyz="665;243;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot 06" slice="0x0" setup="0x0" room="0x0" actor="0x1a" item="MAGIC_JAR_LARGE" name="Pot 6" xyz="423;367;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot 07" slice="0x0" setup="0x0" room="0x0" actor="0x1b" item="MAGIC_JAR_LARGE" name="Pot 7" xyz="423;375;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot 08" slice="0x0" setup="0x0" room="0x0" actor="0x20" item="MAGIC_JAR_LARGE" name="Pot 8" xyz="154;365;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot 09" slice="0x0" setup="0x0" room="0x0" actor="0x21" item="MAGIC_JAR_LARGE" name="Pot 9" xyz="153;379;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot 10" slice="0x0" setup="0x0" room="0x0" actor="0x22" item="MAGIC_JAR_LARGE" name="Pot 10" xyz="162;365;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot 11" slice="0x0" setup="0x0" room="0x0" actor="0x23" item="MAGIC_JAR_LARGE" name="Pot 11" xyz="162;379;0"/>
-        <xflag type="icicle" location="Moon Trial Goron Icicle 1" slice="0x0" setup="0x0" room="0x0" actor="0x0" item="MAGIC_JAR_LARGE" name="Icicle 1" xyz="413;51;0"/>
-        <xflag type="icicle" location="Moon Trial Goron Icicle 2" slice="0x0" setup="0x0" room="0x0" actor="0x1" item="MAGIC_JAR_LARGE" name="Icicle 2" xyz="433;51;0"/>
-        <xflag type="icicle" location="Moon Trial Goron Icicle 3" slice="0x0" setup="0x0" room="0x0" actor="0x2" item="MAGIC_JAR_LARGE" name="Icicle 3" xyz="413;69;0"/>
-        <xflag type="icicle" location="Moon Trial Goron Icicle 4" slice="0x0" setup="0x0" room="0x0" actor="0x3" item="MAGIC_JAR_LARGE" name="Icicle 4" xyz="433;69;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot Early 1" slice="0x0" setup="0" room="0x0" actor="0x1c" item="MAGIC_JAR_LARGE" name="Early 1" xyz="909;361;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot Early 2" slice="0x0" setup="0" room="0x0" actor="0x1d" item="MAGIC_JAR_LARGE" name="Early 2" xyz="917;361;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot Early 3" slice="0x0" setup="0" room="0x0" actor="0x1e" item="MAGIC_JAR_LARGE" name="Early 3" xyz="910;378;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot Early 4" slice="0x0" setup="0" room="0x0" actor="0x1f" item="MAGIC_JAR_LARGE" name="Early 4" xyz="918;378;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot 01" slice="0x0" setup="0" room="0x0" actor="0x15" item="MAGIC_JAR_LARGE" name="Pot 1" xyz="347;270;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot 02" slice="0x0" setup="0" room="0x0" actor="0x16" item="MAGIC_JAR_LARGE" name="Pot 2" xyz="338;270;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot 03" slice="0x0" setup="0" room="0x0" actor="0x17" item="MAGIC_JAR_LARGE" name="Pot 3" xyz="673;243;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot 04" slice="0x0" setup="0" room="0x0" actor="0x18" item="MAGIC_JAR_LARGE" name="Pot 4" xyz="680;243;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot 05" slice="0x0" setup="0" room="0x0" actor="0x19" item="MAGIC_JAR_LARGE" name="Pot 5" xyz="665;243;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot 06" slice="0x0" setup="0" room="0x0" actor="0x1a" item="MAGIC_JAR_LARGE" name="Pot 6" xyz="423;367;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot 07" slice="0x0" setup="0" room="0x0" actor="0x1b" item="MAGIC_JAR_LARGE" name="Pot 7" xyz="423;375;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot 08" slice="0x0" setup="0" room="0x0" actor="0x20" item="MAGIC_JAR_LARGE" name="Pot 8" xyz="154;365;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot 09" slice="0x0" setup="0" room="0x0" actor="0x21" item="MAGIC_JAR_LARGE" name="Pot 9" xyz="153;379;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot 10" slice="0x0" setup="0" room="0x0" actor="0x22" item="MAGIC_JAR_LARGE" name="Pot 10" xyz="162;365;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot 11" slice="0x0" setup="0" room="0x0" actor="0x23" item="MAGIC_JAR_LARGE" name="Pot 11" xyz="162;379;0"/>
+        <xflag type="icicle" location="Moon Trial Goron Icicle 1" slice="0x0" setup="0" room="0x0" actor="0x0" item="MAGIC_JAR_LARGE" name="Icicle 1" xyz="413;51;0"/>
+        <xflag type="icicle" location="Moon Trial Goron Icicle 2" slice="0x0" setup="0" room="0x0" actor="0x1" item="MAGIC_JAR_LARGE" name="Icicle 2" xyz="433;51;0"/>
+        <xflag type="icicle" location="Moon Trial Goron Icicle 3" slice="0x0" setup="0" room="0x0" actor="0x2" item="MAGIC_JAR_LARGE" name="Icicle 3" xyz="413;69;0"/>
+        <xflag type="icicle" location="Moon Trial Goron Icicle 4" slice="0x0" setup="0" room="0x0" actor="0x3" item="MAGIC_JAR_LARGE" name="Icicle 4" xyz="433;69;0"/>
       </rendering_option>
       <actor room="0x0" actor="0x4">
-        <xflag type="gossip" location="Moon Trial Goron Gossip Fairy Center Left" slice="0" item="FAIRY" name="Gossip Fairy Center Left" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Moon Trial Goron Gossip Big Fairy Center Left" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Center Left" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Moon Trial Goron Gossip Fairy Center Left" slice="0" item="FAIRY" name="Gossip Stone - Center Left" xyz="437;277;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Moon Trial Goron Gossip Big Fairy Center Left" slice="1" item="FAIRY_BIG" name="Gossip Stone - Center Left" xyz="437;258;0"/>
+        </rendering_option>
       </actor>
       <actor room="0x0" actor="0x5">
-        <xflag type="gossip" location="Moon Trial Goron Gossip Fairy Center Right" slice="0" item="FAIRY" name="Gossip Fairy Center Right" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Moon Trial Goron Gossip Big Fairy Center Right" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Center Right" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Moon Trial Goron Gossip Fairy Center Right" slice="0" item="FAIRY" name="Gossip Stone - Center Right" xyz="409;277;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Moon Trial Goron Gossip Big Fairy Center Right" slice="1" item="FAIRY_BIG" name="Gossip Stone - Center Right" xyz="409;258;0"/>
+        </rendering_option>
       </actor>
       <actor room="0x0" actor="0x6">
-        <xflag type="gossip" location="Moon Trial Goron Gossip Fairy West Left" slice="0" item="FAIRY" name="Gossip Fairy West Left" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Moon Trial Goron Gossip Big Fairy West Left" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy West Left" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Moon Trial Goron Gossip Fairy West Left" slice="0" item="FAIRY" name="Gossip Stone - West Left" xyz="635;252;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Moon Trial Goron Gossip Big Fairy West Left" slice="1" item="FAIRY_BIG" name="Gossip Stone - West Left" xyz="635;233;0"/>
+        </rendering_option>
       </actor>
       <actor room="0x0" actor="0x7">
-        <xflag type="gossip" location="Moon Trial Goron Gossip Fairy West Right" slice="0" item="FAIRY" name="Gossip Fairy West Right" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Moon Trial Goron Gossip Big Fairy West Right" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy West Right" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Moon Trial Goron Gossip Fairy West Right" slice="0" item="FAIRY" name="Gossip Stone - West Right" xyz="613;252;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Moon Trial Goron Gossip Big Fairy West Right" slice="1" item="FAIRY_BIG" name="Gossip Stone - West Right" xyz="613;233;0"/>
+        </rendering_option>
       </actor>
       <actor room="0x0" actor="0x8">
-        <xflag type="gossip" location="Moon Trial Goron Gossip Fairy By Heart Piece" slice="0" item="FAIRY" name="Gossip Fairy By Heart Piece" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Moon Trial Goron Gossip Big Fairy By Heart Piece" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy By Heart Piece" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Moon Trial Goron Gossip Fairy By Heart Piece" slice="0" item="FAIRY" name="Gossip Stone - By Heart Piece" xyz="220;350;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Moon Trial Goron Gossip Big Fairy By Heart Piece" slice="1" item="FAIRY_BIG" name="Gossip Stone - By Heart Piece" xyz="203;350;0"/>
+        </rendering_option>
       </actor>
     </scene_rendering>
   </scene>
@@ -103,24 +143,44 @@
         <collectible location="Moon Trial Zora HP" flag="0x01" item="HEART_PIECE" name="Heart Piece" xyz="71;366;0"/>
       </rendering_option>
       <actor actor="0x1">
-        <xflag type="gossip" location="Moon Trial Zora Gossip Fairy Outer Left" slice="0" item="FAIRY" name="Gossip Fairy Outer Left" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Moon Trial Zora Gossip Big Fairy Outer Left" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Outer Left" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Moon Trial Zora Gossip Fairy Outer Left" slice="0" item="FAIRY" name="Gossip Stone - Outer Left" xyz="81;363;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Moon Trial Zora Gossip Big Fairy Outer Left" slice="1" item="FAIRY_BIG" name="Gossip Stone - Outer Left" xyz="64;363;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0x2">
-        <xflag type="gossip" location="Moon Trial Zora Gossip Fairy Middle Left" slice="0" item="FAIRY" name="Gossip Fairy Middle Left" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Moon Trial Zora Gossip Big Fairy Middle Left" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Middle Left" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Moon Trial Zora Gossip Fairy Middle Left" slice="0" item="FAIRY" name="Gossip Stone - Middle Left" xyz="431;344;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Moon Trial Zora Gossip Big Fairy Middle Left" slice="1" item="FAIRY_BIG" name="Gossip Stone - Middle Left" xyz="416;344;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0x3">
-        <xflag type="gossip" location="Moon Trial Zora Gossip Fairy Inner Right" slice="0" item="FAIRY" name="Gossip Fairy Inner Right" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Moon Trial Zora Gossip Big Fairy Inner Right" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Inner Right" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Moon Trial Zora Gossip Fairy Inner Right" slice="0" item="FAIRY" name="Gossip Stone - Inner Right" xyz="720;357;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Moon Trial Zora Gossip Big Fairy Inner Right" slice="1" item="FAIRY_BIG" name="Gossip Stone - Inner Right" xyz="703;357;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0x4">
-        <xflag type="gossip" location="Moon Trial Zora Gossip Fairy Middle Right" slice="0" item="FAIRY" name="Gossip Fairy Middle Right" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Moon Trial Zora Gossip Big Fairy Middle Right" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Middle Right" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Moon Trial Zora Gossip Fairy Middle Right" slice="0" item="FAIRY" name="Gossip Stone - Middle Right" xyz="431;323;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Moon Trial Zora Gossip Big Fairy Middle Right" slice="1" item="FAIRY_BIG" name="Gossip Stone - Middle Right" xyz="416;323;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0x5">
-        <xflag type="gossip" location="Moon Trial Zora Gossip Fairy Outer Right" slice="0" item="FAIRY" name="Gossip Fairy Outer Right" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Moon Trial Zora Gossip Big Fairy Outer Right" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Outer Right" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Moon Trial Zora Gossip Fairy Outer Right" slice="0" item="FAIRY" name="Gossip Stone - Outer Right" xyz="81;320;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Moon Trial Zora Gossip Big Fairy Outer Right" slice="1" item="FAIRY_BIG" name="Gossip Stone - Outer Right" xyz="64;320;0"/>
+        </rendering_option>
       </actor>
     </scene_rendering>
   </scene>
@@ -134,42 +194,62 @@
         <collectible location="Moon Trial Link HP" flag="0x01" item="HEART_PIECE" name="Heart Piece" xyz="827;295;0"/>
       </rendering_option>
       <rendering_option layout="all">
-        <xflag type="pot" location="Moon Trial Link Pot 1" slice="0x0" setup="0x0" room="0x0" actor="0x1" item="RECOVERY_HEART" name="Pot 1" xyz="135;254;0"/>
-        <xflag type="pot" location="Moon Trial Link Pot 2" slice="0x0" setup="0x0" room="0x0" actor="0x2" item="RECOVERY_HEART" name="Pot 2" xyz="135;265;0"/>
-        <xflag type="pot" location="Moon Trial Link Pot 3" slice="0x0" setup="0x0" room="0x0" actor="0x3" item="RECOVERY_HEART" name="Pot 3" xyz="124;254;0"/>
-        <xflag type="pot" location="Moon Trial Link Pot 4" slice="0x0" setup="0x0" room="0x0" actor="0x4" item="RECOVERY_HEART" name="Pot 4" xyz="123;266;0"/>
-        <xflag type="pot" location="Moon Trial Link Pot 5" slice="0x0" setup="0x0" room="0x0" actor="0x5" item="MAGIC_JAR_LARGE" name="Pot 5" xyz="131;347;0"/>
-        <xflag type="pot" location="Moon Trial Link Pot 6" slice="0x0" setup="0x0" room="0x0" actor="0x6" item="MAGIC_JAR_LARGE" name="Pot 6" xyz="131;358;0"/>
-        <xflag type="pot" location="Moon Trial Link Pot 7" slice="0x0" setup="0x0" room="0x0" actor="0x7" item="MAGIC_JAR_LARGE" name="Pot 7" xyz="120;347;0"/>
-        <xflag type="pot" location="Moon Trial Link Pot 8" slice="0x0" setup="0x0" room="0x0" actor="0x8" item="MAGIC_JAR_LARGE" name="Pot 8" xyz="119;358;0"/>
+        <xflag type="pot" location="Moon Trial Link Pot 1" slice="0x0" setup="0" room="0x0" actor="0x1" item="RECOVERY_HEART" name="Pot 1" xyz="135;254;0"/>
+        <xflag type="pot" location="Moon Trial Link Pot 2" slice="0x0" setup="0" room="0x0" actor="0x2" item="RECOVERY_HEART" name="Pot 2" xyz="135;265;0"/>
+        <xflag type="pot" location="Moon Trial Link Pot 3" slice="0x0" setup="0" room="0x0" actor="0x3" item="RECOVERY_HEART" name="Pot 3" xyz="124;254;0"/>
+        <xflag type="pot" location="Moon Trial Link Pot 4" slice="0x0" setup="0" room="0x0" actor="0x4" item="RECOVERY_HEART" name="Pot 4" xyz="123;266;0"/>
+        <xflag type="pot" location="Moon Trial Link Pot 5" slice="0x0" setup="0" room="0x0" actor="0x5" item="MAGIC_JAR_LARGE" name="Pot 5" xyz="131;347;0"/>
+        <xflag type="pot" location="Moon Trial Link Pot 6" slice="0x0" setup="0" room="0x0" actor="0x6" item="MAGIC_JAR_LARGE" name="Pot 6" xyz="131;358;0"/>
+        <xflag type="pot" location="Moon Trial Link Pot 7" slice="0x0" setup="0" room="0x0" actor="0x7" item="MAGIC_JAR_LARGE" name="Pot 7" xyz="120;347;0"/>
+        <xflag type="pot" location="Moon Trial Link Pot 8" slice="0x0" setup="0" room="0x0" actor="0x8" item="MAGIC_JAR_LARGE" name="Pot 8" xyz="119;358;0"/>
       </rendering_option>
       <actor room="0x3" actor="0x2">
-        <xflag type="gossip" location="Moon Trial Link Gossip Fairy Left" slice="0" item="FAIRY" name="Gossip Fairy Left" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Moon Trial Link Gossip Big Fairy Left" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Left" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Moon Trial Link Gossip Fairy Left" slice="0" item="FAIRY" name="Gossip Stone - Left" xyz="754;251;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Moon Trial Link Gossip Big Fairy Left" slice="1" item="FAIRY_BIG" name="Gossip Stone - Left" xyz="737;251;0"/>
+        </rendering_option>
       </actor>
       <actor room="0x3" actor="0x3">
-        <xflag type="gossip" location="Moon Trial Link Gossip Fairy Right" slice="0" item="FAIRY" name="Gossip Fairy Right" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Moon Trial Link Gossip Big Fairy Right" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Right" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Moon Trial Link Gossip Fairy Right" slice="0" item="FAIRY" name="Gossip Stone - Right" xyz="754;344;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Moon Trial Link Gossip Big Fairy Right" slice="1" item="FAIRY_BIG" name="Gossip Stone - Right" xyz="737;344;0"/>
+        </rendering_option>
       </actor>
       <actor room="0x4" actor="0x0">
-        <xflag type="gossip" location="Moon Trial Link Gossip Fairy Last" slice="0" item="FAIRY" name="Gossip Fairy Last" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Moon Trial Link Gossip Big Fairy Last" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Last" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Moon Trial Link Gossip Fairy Last" slice="0" item="FAIRY" name="Gossip Stone - Last" xyz="862;305;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Moon Trial Link Gossip Big Fairy Last" slice="1" item="FAIRY_BIG" name="Gossip Stone - Last" xyz="862;288;0"/>
+        </rendering_option>
       </actor>
       <actor room="0x6" actor="0x0">
-        <xflag type="gossip" location="Moon Trial Link Gossip Fairy 1" slice="0" item="FAIRY" name="Gossip Fairy 1" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Moon Trial Link Gossip Big Fairy 1" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy 1" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Moon Trial Link Gossip Fairy 1" slice="0" item="FAIRY" name="Gossip Stone 1" xyz="314;316;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Moon Trial Link Gossip Big Fairy 1" slice="1" item="FAIRY_BIG" name="Gossip Stone 1" xyz="315;296;0"/>
+        </rendering_option>
       </actor>
       <actor room="0x7" actor="0x0">
-        <xflag type="gossip" location="Moon Trial Link Gossip Fairy 2" slice="0" item="FAIRY" name="Gossip Fairy 2" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Moon Trial Link Gossip Big Fairy 2" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy 2" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Moon Trial Link Gossip Fairy 2" slice="0" item="FAIRY" name="Gossip Stone 2" xyz="553;306;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Moon Trial Link Gossip Big Fairy 2" slice="1" item="FAIRY_BIG" name="Gossip Stone 2" xyz="553;288;0"/>
+        </rendering_option>
       </actor>
     </scene_rendering>
   </scene>
   <scene id="LAIR_MAJORA">
     <scene_rendering id="MM_LAIR_MAJORA" loc_type="dungeon">
       <rendering_option layout="all">
-        <xflag type="pot" location="Moon Majora Pot 1" slice="0x0" setup="0x0" room="0x0" actor="0x1" item="ARROWS_20" name="Pot 1" xyz="493;99;0"/>
-        <xflag type="pot" location="Moon Majora Pot 2" slice="0x0" setup="0x0" room="0x0" actor="0x2" item="MAGIC_JAR_LARGE" name="Pot 2" xyz="450;99;0"/>
+        <xflag type="pot" location="Moon Majora Pot 1" actor="0x1" item="ARROWS_20" name="Pot 1" xyz="493;99;0"/>
+        <xflag type="pot" location="Moon Majora Pot 2" actor="0x2" item="MAGIC_JAR_LARGE" name="Pot 2" xyz="450;99;0"/>
       </rendering_option>
     </scene_rendering>
   </scene>

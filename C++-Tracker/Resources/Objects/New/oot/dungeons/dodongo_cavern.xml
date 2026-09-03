@@ -30,58 +30,62 @@
       </rendering_option>
       <gs location="Dodongo Cavern GS Scarecrow" flag="0x09" item="GS_TOKEN" name="Scarecrow" xyz="1887;1568;0"/>
       <gs location="Dodongo Cavern GS Near Boss" flag="0x0b" item="GS_TOKEN" name="Near Boss" xyz="1581;84;0"/>
-      <xflag type="pot" location="Dodongo Cavern Pot Right Corridor Pot 1" slice="0x0" setup="0x0" room="0x1" actor="0xc" item="RUPEE_GREEN" name="Right Corridor 1" xyz="1755;1676;0"/>
-      <xflag type="pot" location="Dodongo Cavern Pot Right Corridor Pot 2" slice="0x0" setup="0x0" room="0x1" actor="0xd" item="RUPEE_BLUE" name="Right Corridor 2" xyz="1768;1691;0"/>
-      <xflag type="pot" location="Dodongo Cavern Pot Right Corridor Pot 3" slice="0x0" setup="0x0" room="0x1" actor="0xf" item="RUPEE_GREEN" name="Right Corridor 3" xyz="2038;1669;0"/>
-      <xflag type="pot" location="Dodongo Cavern Pot Right Corridor Pot 4" slice="0x0" setup="0x0" room="0x1" actor="0x10" item="RUPEE_BLUE" name="Right Corridor 4" xyz="2057;1669;0"/>
-      <xflag type="pot" location="Dodongo Cavern Pot Right Corridor Pot 5" slice="0x0" setup="0x0" room="0x1" actor="0x11" item="RUPEE_GREEN" name="Right Corridor 5" xyz="2329;1522;0"/>
-      <xflag type="pot" location="Dodongo Cavern Pot Right Corridor Pot 6" slice="0x0" setup="0x0" room="0x1" actor="0x12" item="RECOVERY_HEART" name="Right Corridor 6" xyz="2368;1535;0"/>
+      <xflag type="pot" location="Dodongo Cavern Pot Right Corridor Pot 1" room="0x1" actor="0xc" item="RUPEE_GREEN" name="Right Corridor 1" xyz="1755;1676;0"/>
+      <xflag type="pot" location="Dodongo Cavern Pot Right Corridor Pot 2" room="0x1" actor="0xd" item="RUPEE_BLUE" name="Right Corridor 2" xyz="1768;1691;0"/>
+      <xflag type="pot" location="Dodongo Cavern Pot Right Corridor Pot 3" room="0x1" actor="0xf" item="RUPEE_GREEN" name="Right Corridor 3" xyz="2038;1669;0"/>
+      <xflag type="pot" location="Dodongo Cavern Pot Right Corridor Pot 4" room="0x1" actor="0x10" item="RUPEE_BLUE" name="Right Corridor 4" xyz="2057;1669;0"/>
+      <xflag type="pot" location="Dodongo Cavern Pot Right Corridor Pot 5" room="0x1" actor="0x11" item="RUPEE_GREEN" name="Right Corridor 5" xyz="2329;1522;0"/>
+      <xflag type="pot" location="Dodongo Cavern Pot Right Corridor Pot 6" room="0x1" actor="0x12" item="RECOVERY_HEART" name="Right Corridor 6" xyz="2368;1535;0"/>
       <rendering_option room="1">
-        <xflag type="pot" location="Dodongo Cavern Pot Stairs Pot 1" slice="0x0" setup="0x0" room="0x2" actor="0x17" item="RECOVERY_HEART" name="Stairs 1" xyz="62;133;1"/>
-        <xflag type="pot" location="Dodongo Cavern Pot Stairs Pot 2" slice="0x0" setup="0x0" room="0x2" actor="0x18" item="RUPEE_RED" name="Stairs 2" xyz="80;133;0"/>
-        <xflag type="pot" location="Dodongo Cavern Pot Stairs Pot 3" slice="0x0" setup="0x0" room="0x2" actor="0x19" item="RUPEE_RED" name="Stairs 3" xyz="313;131;0"/>
-        <xflag type="pot" location="Dodongo Cavern Pot Stairs Pot 4" slice="0x0" setup="0x0" room="0x2" actor="0x1a" item="RECOVERY_HEART" name="Stairs 4" xyz="331;130;0"/>
+        <xflag type="pot" location="Dodongo Cavern Pot Stairs Pot 1" room="0x2" actor="0x17" item="RECOVERY_HEART" name="Stairs 1" xyz="62;133;1"/>
+        <xflag type="pot" location="Dodongo Cavern Pot Stairs Pot 2" room="0x2" actor="0x18" item="RUPEE_RED" name="Stairs 2" xyz="80;133;0"/>
+        <xflag type="pot" location="Dodongo Cavern Pot Stairs Pot 3" room="0x2" actor="0x19" item="RUPEE_RED" name="Stairs 3" xyz="313;131;0"/>
+        <xflag type="pot" location="Dodongo Cavern Pot Stairs Pot 4" room="0x2" actor="0x1a" item="RECOVERY_HEART" name="Stairs 4" xyz="331;130;0"/>
       </rendering_option>
-      <xflag type="pot" location="Dodongo Cavern Pot Miniboss 1" slice="0x0" setup="0x0" room="0x3" actor="0x8" item="RECOVERY_HEART" name="Miniboss 1" xyz="2036;1195;1"/>
-      <xflag type="pot" location="Dodongo Cavern Pot Miniboss 2" slice="0x0" setup="0x0" room="0x3" actor="0x9" item="RECOVERY_HEART" name="Miniboss 2" xyz="2041;1179;0"/>
-      <xflag type="pot" location="Dodongo Cavern Pot Miniboss 3" slice="0x0" setup="0x0" room="0x3" actor="0xa" item="RUPEE_BLUE" name="Miniboss 3" xyz="2248;990;1"/>
-      <xflag type="pot" location="Dodongo Cavern Pot Miniboss 4" slice="0x0" setup="0x0" room="0x3" actor="0xb" item="RUPEE_BLUE" name="Miniboss 4" xyz="2265;985;0"/>
-      <xflag type="pot" location="Dodongo Cavern Pot Green Room Pot 1" slice="0x0" setup="0x0" room="0x4" actor="0xa" item="RUPEE_BLUE" name="Blue Room 1" xyz="1704;1184;0"/>
-      <xflag type="pot" location="Dodongo Cavern Pot Green Room Pot 2" slice="0x0" setup="0x0" room="0x4" actor="0xb" item="RUPEE_GREEN" name="Blue Room 2" xyz="1635;1412;0"/>
-      <xflag type="pot" location="Dodongo Cavern Pot Green Room Pot 3" slice="0x0" setup="0x0" room="0x4" actor="0xc" item="RUPEE_BLUE" name="Blue Room 3" xyz="1640;1210;0"/>
-      <xflag type="pot" location="Dodongo Cavern Pot Green Room Pot 4" slice="0x0" setup="0x0" room="0x4" actor="0xd" item="RECOVERY_HEART" name="Blue Room 4" xyz="1777;1237;0"/>
-      <xflag type="pot" location="Dodongo Cavern Pot Skull 1" slice="0x0" setup="0x0" room="0x7" actor="0x6" item="BOMB" name="Skull 1" xyz="1023;427;1"/>
-      <xflag type="pot" location="Dodongo Cavern Pot Skull 2" slice="0x0" setup="0x0" room="0x7" actor="0x7" item="RECOVERY_HEART" name="Skull 2" xyz="1041;419;0"/>
-      <xflag type="pot" location="Dodongo Cavern Pot Skull 3" slice="0x0" setup="0x0" room="0x8" actor="0x6" item="DEKU_SEEDS_5" name="Skull 3" xyz="1393;478;0"/>
-      <xflag type="pot" location="Dodongo Cavern Pot Skull 4" slice="0x0" setup="0x0" room="0x8" actor="0x7" item="FAIRY" name="Skull 4" xyz="1416;478;0"/>
+      <xflag type="pot" location="Dodongo Cavern Pot Miniboss 1" room="0x3" actor="0x8" item="RECOVERY_HEART" name="Miniboss 1" xyz="2036;1195;1"/>
+      <xflag type="pot" location="Dodongo Cavern Pot Miniboss 2" room="0x3" actor="0x9" item="RECOVERY_HEART" name="Miniboss 2" xyz="2041;1179;0"/>
+      <xflag type="pot" location="Dodongo Cavern Pot Miniboss 3" room="0x3" actor="0xa" item="RUPEE_BLUE" name="Miniboss 3" xyz="2248;990;1"/>
+      <xflag type="pot" location="Dodongo Cavern Pot Miniboss 4" room="0x3" actor="0xb" item="RUPEE_BLUE" name="Miniboss 4" xyz="2265;985;0"/>
+      <xflag type="pot" location="Dodongo Cavern Pot Green Room Pot 1" room="0x4" actor="0xa" item="RUPEE_BLUE" name="Blue Room 1" xyz="1704;1184;0"/>
+      <xflag type="pot" location="Dodongo Cavern Pot Green Room Pot 2" room="0x4" actor="0xb" item="RUPEE_GREEN" name="Blue Room 2" xyz="1635;1412;0"/>
+      <xflag type="pot" location="Dodongo Cavern Pot Green Room Pot 3" room="0x4" actor="0xc" item="RUPEE_BLUE" name="Blue Room 3" xyz="1640;1210;0"/>
+      <xflag type="pot" location="Dodongo Cavern Pot Green Room Pot 4" room="0x4" actor="0xd" item="RECOVERY_HEART" name="Blue Room 4" xyz="1777;1237;0"/>
+      <xflag type="pot" location="Dodongo Cavern Pot Skull 1" room="0x7" actor="0x6" item="BOMB" name="Skull 1" xyz="1023;427;1"/>
+      <xflag type="pot" location="Dodongo Cavern Pot Skull 2" room="0x7" actor="0x7" item="RECOVERY_HEART" name="Skull 2" xyz="1041;419;0"/>
+      <xflag type="pot" location="Dodongo Cavern Pot Skull 3" room="0x8" actor="0x6" item="DEKU_SEEDS_5" name="Skull 3" xyz="1393;478;0"/>
+      <xflag type="pot" location="Dodongo Cavern Pot Skull 4" room="0x8" actor="0x7" item="FAIRY" name="Skull 4" xyz="1416;478;0"/>
       <rendering_option room="1">
-        <xflag type="pot" location="Dodongo Cavern Pot Bomb Bag Room 1" slice="0x0" setup="0x0" room="0x9" actor="0xe" item="RECOVERY_HEART" name="Bomb Bag Room 1" xyz="1691;628;0"/>
-        <xflag type="pot" location="Dodongo Cavern Pot Bomb Bag Room 2" slice="0x0" setup="0x0" room="0x9" actor="0xf" item="RECOVERY_HEART" name="Bomb Bag Room 2" xyz="1758;603;0"/>
-        <xflag type="pot" location="Dodongo Cavern Pot Room Before Miniboss 1" slice="0x0" setup="0x0" room="0xa" actor="0x6" item="RECOVERY_HEART" name="Before Miniboss 1" xyz="2293;756;0"/>
-        <xflag type="pot" location="Dodongo Cavern Pot Room Before Miniboss 2" slice="0x0" setup="0x0" room="0xa" actor="0x7" item="RUPEE_BLUE" name="Before Miniboss 2" xyz="2125;649;0"/>
-        <xflag type="pot" location="Dodongo Cavern Pot Room After Miniboss 1" slice="0x0" setup="0x0" room="0xc" actor="0x5" item="RECOVERY_HEART" name="After Miniboss 1" xyz="2308;531;0"/>
-        <xflag type="pot" location="Dodongo Cavern Pot Room After Miniboss 2" slice="0x0" setup="0x0" room="0xc" actor="0x6" item="RUPEE_BLUE" name="After Miniboss 2" xyz="2102;419;0"/>
-        <xflag type="grass" location="Dodongo Cavern Grass Lobby" slice="0x0" setup="0x0" room="0x0" actor="0x2" item="DEKU_SEEDS_5" name="Lobby" xyz="735;659;0"/>
+        <xflag type="pot" location="Dodongo Cavern Pot Bomb Bag Room 1" room="0x9" actor="0xe" item="RECOVERY_HEART" name="Bomb Bag Room 1" xyz="1691;628;0"/>
+        <xflag type="pot" location="Dodongo Cavern Pot Bomb Bag Room 2" room="0x9" actor="0xf" item="RECOVERY_HEART" name="Bomb Bag Room 2" xyz="1758;603;0"/>
+        <xflag type="pot" location="Dodongo Cavern Pot Room Before Miniboss 1" room="0xa" actor="0x6" item="RECOVERY_HEART" name="Before Miniboss 1" xyz="2293;756;0"/>
+        <xflag type="pot" location="Dodongo Cavern Pot Room Before Miniboss 2" room="0xa" actor="0x7" item="RUPEE_BLUE" name="Before Miniboss 2" xyz="2125;649;0"/>
+        <xflag type="pot" location="Dodongo Cavern Pot Room After Miniboss 1" room="0xc" actor="0x5" item="RECOVERY_HEART" name="After Miniboss 1" xyz="2308;531;0"/>
+        <xflag type="pot" location="Dodongo Cavern Pot Room After Miniboss 2" room="0xc" actor="0x6" item="RUPEE_BLUE" name="After Miniboss 2" xyz="2102;419;0"/>
+        <xflag type="grass" location="Dodongo Cavern Grass Lobby" room="0x0" actor="0x2" item="DEKU_SEEDS_5" name="Lobby" xyz="735;659;0"/>
       </rendering_option>
-      <xflag type="grass" location="Dodongo Cavern Grass Pre-Boss" slice="0x0" setup="0x0" room="0x7" actor="0x0" item="RECOVERY_HEART" name="Pre-Boss" xyz="914;890;0"/>
+      <xflag type="grass" location="Dodongo Cavern Grass Pre-Boss" room="0x7" actor="0x0" item="RECOVERY_HEART" name="Pre-Boss" xyz="914;890;0"/>
       <rendering_option room="1">
-        <xflag type="grass" location="Dodongo Cavern Grass Bomb Bag Room" slice="0x0" setup="0x0" room="0x9" actor="0x0" item="DEKU_SEEDS_5" name="Bomb Bag Room" xyz="1706;372;0"/>
-        <xflag type="grass" location="Dodongo Cavern Grass Pre-Miniboss" slice="0x0" setup="0x0" room="0xa" actor="0x0" item="RECOVERY_HEART" name="Pre-Miniboss" xyz="2289;645;0"/>
+        <xflag type="grass" location="Dodongo Cavern Grass Bomb Bag Room" room="0x9" actor="0x0" item="DEKU_SEEDS_5" name="Bomb Bag Room" xyz="1706;372;0"/>
+        <xflag type="grass" location="Dodongo Cavern Grass Pre-Miniboss" room="0xa" actor="0x0" item="RECOVERY_HEART" name="Pre-Miniboss" xyz="2289;645;0"/>
       </rendering_option>
     </scene_rendering>
     <scene_rendering id="OOT_DODONGO_CAVERN" loc_type="broken">
-      <xflag type="grass" location="Dodongo Cavern Grass East Corridor Side Room" slice="0x0" setup="0x0" room="0xb" actor="0x3" item="DEKU_SEEDS_5" name="East Corridor - Side Room" xyz="1967;1955;0"/>
+      <xflag type="grass" location="Dodongo Cavern Grass East Corridor Side Room" room="0xb" actor="0x3" item="DEKU_SEEDS_5" name="East Corridor - Side Room" xyz="1967;1955;0"/>
     </scene_rendering>
     <scene_rendering id="OOT_DODONGO_CAVERN" loc_type="dungeon">
-      <xflag type="heart" location="Dodongo Cavern Heart Miniboss Lava" slice="0x0" setup="0x0" room="0x3" actor="0x5" item="RECOVERY_HEART" name="Miniboss Lava" xyz="2540;1235;0"/>
+      <xflag type="heart" location="Dodongo Cavern Heart Miniboss Lava" room="0x3" actor="0x5" item="RECOVERY_HEART" name="Miniboss Lava" xyz="2540;1235;0"/>
       <rendering_option room="1">
-        <xflag type="heart" location="Dodongo Cavern Heart Miniboss Upper 1" slice="0x0" setup="0x0" room="0x3" actor="0x6" item="RECOVERY_HEART" name="Miniboss Upper 1" xyz="2477;159;0"/>
-        <xflag type="heart" location="Dodongo Cavern Heart Miniboss Upper 2" slice="0x0" setup="0x0" room="0x3" actor="0x7" item="RECOVERY_HEART" name="Miniboss Upper 2" xyz="2469;172;0"/>
-        <xflag type="heart" location="Dodongo Cavern Heart Bomb Bag Room" slice="0x0" setup="0x0" room="0x9" actor="0xd" item="RECOVERY_HEART" name="Bomb Bag Room" xyz="1808;688;0"/>
+        <xflag type="heart" location="Dodongo Cavern Heart Miniboss Upper 1" room="0x3" actor="0x6" item="RECOVERY_HEART" name="Miniboss Upper 1" xyz="2477;159;0"/>
+        <xflag type="heart" location="Dodongo Cavern Heart Miniboss Upper 2" room="0x3" actor="0x7" item="RECOVERY_HEART" name="Miniboss Upper 2" xyz="2469;172;0"/>
+        <xflag type="heart" location="Dodongo Cavern Heart Bomb Bag Room" room="0x9" actor="0xd" item="RECOVERY_HEART" name="Bomb Bag Room" xyz="1808;688;0"/>
       </rendering_option>
       <actor room="0x0" actor="0x19">
-        <xflag type="gossip" location="Dodongo Cavern Gossip Fairy" slice="0" item="FAIRY" name="Gossip Fairy" xyz="1303;1346;0"/>
-        <xflag type="gossip-big" location="Dodongo Cavern Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy" xyz="1303;1316;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Dodongo Cavern Gossip Fairy" slice="0" item="FAIRY" name="Gossip Stone" xyz="1303;1346;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Dodongo Cavern Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Stone" xyz="1303;1316;0"/>
+        </rendering_option>
       </actor>
     </scene_rendering>
   </scene>

@@ -531,18 +531,21 @@ def build_objects(ootmm_root=None, quiet=True):
     gs_map = load_gs_ids()
     xflags = load_xflags(ootmm_root) if ootmm_root else load_xflags_from_pool()
     g = Gen(gs_map, xflags, load_pool_ids())
-    skipped = 0
+    skipped_files = []
     for path in sorted(glob.glob(os.path.join(NEW_DIR, "**", "*.xml"), recursive=True)):
         # Only converted files carry the render layer; identity-only originals are skipped.
         if "<scene_rendering" not in open(path, encoding="utf-8").read():
-            skipped += 1
+            skipped_files.append(os.path.relpath(path, NEW_DIR).replace("\\", "/"))
             continue
         g.process(path)
-    g.skipped = skipped
+    g.skipped_files = skipped_files
+    g.skipped = len(skipped_files)
     if not quiet:
         src = f"checkout {ootmm_root}" if ootmm_root else "pool CSVs"
-        print(f"XflagIDs from {src}; parsed {len(g.rows)} objects ({skipped} not-yet-converted "
+        print(f"XflagIDs from {src}; parsed {len(g.rows)} objects ({g.skipped} not-yet-converted "
               f"skipped); {len(g.remap)} legacy-scene remaps; {len(g.warn)} warnings")
+        for sf in skipped_files:
+            print(f"  un-converted (no <scene_rendering>): {sf}")
         for w in g.warn:
             print("  WARN:", w)
     return g
@@ -580,8 +583,10 @@ def main():
 
     if args.emit:
         if skipped and not args.force:
-            print(f"\nREFUSING --emit: {skipped} file(s) still un-converted -> the generated cpp "
-                  "would DROP every not-yet-converted scene. Convert them all first, or pass --force.")
+            print(f"\nREFUSING --emit: {skipped} file(s) still un-converted (no <scene_rendering>) -> "
+                  "the generated cpp would DROP those scenes. Convert them first, or pass --force:")
+            for sf in getattr(g, "skipped_files", []):
+                print("     ", sf)
         else:
             rep_oot = emit_cpp(g.rows, g.remap, "OoT", os.path.normpath(OUT_OOT))
             rep_mm = emit_cpp(g.rows, g.remap, "MM", os.path.normpath(OUT_MM))

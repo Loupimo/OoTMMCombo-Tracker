@@ -10,18 +10,46 @@
         <gs location="Lon Lon Ranch GS House" flag="0x5a" item="GS_TOKEN" name="House" xyz="746;446;0"/>
         <gs location="Lon Lon Ranch GS Rain Shed" flag="0x59" item="GS_TOKEN" name="Rain Shed" xyz="337;419;0"/>
         <gs location="Lon Lon Ranch GS Back Wall" flag="0x58" item="GS_TOKEN" name="Back Wall" xyz="273;33;0"/>
-        <xflag type="pot" location="Lon Lon Ranch Pot 1" slice="0x0" setup="0x0" room="0x0" actor="0x3" item="RUPEE_GREEN" name="Pot 1" xyz="815;410;1"/>
-        <xflag type="pot" location="Lon Lon Ranch Pot 2" slice="0x0" setup="0x0" room="0x0" actor="0x4" item="RUPEE_GREEN" name="Pot 2" xyz="780;410;0"/>
-        <xflag type="pot" location="Lon Lon Ranch Pot 3" slice="0x0" setup="0x0" room="0x0" actor="0x5" item="RECOVERY_HEART" name="Pot 3" xyz="825;410;1"/>
-        <xflag type="pot" location="Lon Lon Ranch Pot 4" slice="0x0" setup="0x0" room="0x0" actor="0x6" item="RECOVERY_HEART" name="Pot 4" xyz="795;410;0"/>
-        <xflag type="pot" location="Lon Lon Ranch Pot 5" slice="0x0" setup="0x0" room="0x0" actor="0x7" item="RECOVERY_HEART" name="Pot 5" xyz="370;424;3"/>
-        <xflag type="pot" location="Lon Lon Ranch Pot 6" slice="0x0" setup="0x0" room="0x0" actor="0x8" item="RECOVERY_HEART" name="Pot 6" xyz="351;435;2"/>
-        <xflag type="pot" location="Lon Lon Ranch Pot 7" slice="0x0" setup="0x0" room="0x0" actor="0x9" item="RECOVERY_HEART" name="Pot 7" xyz="352;420;1"/>
-        <xflag type="crate" location="Lon Lon Ranch Crate" slice="0x0" setup="0x0" room="0x0" actor="0x18" item="RUPEE_GREEN" name="Crate" xyz="691;465;0"/>
+        <actor>
+          <match setup="0" actor="0x03"/>
+          <match setup="1" actor="0x02"/>
+          <xflag type="pot" location="Lon Lon Ranch Pot 1" item="RUPEE_GREEN" name="Pot 1" xyz="815;410;1"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x04"/>
+          <match setup="1" actor="0x03"/>
+          <xflag type="pot" location="Lon Lon Ranch Pot 2" item="RUPEE_GREEN" name="Pot 2" xyz="780;410;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x05"/>
+          <match setup="1" actor="0x04"/>
+          <xflag type="pot" location="Lon Lon Ranch Pot 3" item="RECOVERY_HEART" name="Pot 3" xyz="825;410;1"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x06"/>
+          <match setup="1" actor="0x05"/>
+          <xflag type="pot" location="Lon Lon Ranch Pot 4" item="RECOVERY_HEART" name="Pot 4" xyz="795;410;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x07"/>
+          <match setup="1" actor="0x06"/>
+          <xflag type="pot" location="Lon Lon Ranch Pot 5" item="RECOVERY_HEART" name="Pot 5" xyz="370;424;3"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x08"/>
+          <match setup="1" actor="0x07"/>
+          <xflag type="pot" location="Lon Lon Ranch Pot 6" item="RECOVERY_HEART" name="Pot 6" xyz="351;435;2"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x09"/>
+          <match setup="1" actor="0x08"/>
+          <xflag type="pot" location="Lon Lon Ranch Pot 7" item="RECOVERY_HEART" name="Pot 7" xyz="352;420;1"/>
+        </actor>
+        <xflag type="crate" location="Lon Lon Ranch Crate" setup="0" actor="0x18" item="RUPEE_GREEN" name="Crate" xyz="691;465;0"/>
       </rendering_option>
       <rendering_option context="adult">
-        <xflag type="wonder" location="Lon Lon Ranch Wonder Item 1" slice="0x0" setup="0x2" room="0x0" actor="0x18" item="RUPEE_BLUE" name="Hurdles 1" xyz="508;351;0"/>
-        <xflag type="wonder" location="Lon Lon Ranch Wonder Item 2" slice="0x0" setup="0x2" room="0x0" actor="0x19" item="RUPEE_BLUE" name="Hurdles 2" xyz="421;255;0"/>
+        <xflag type="wonder" location="Lon Lon Ranch Wonder Item 1" setup="2" actor="0x18" item="RUPEE_BLUE" name="Hurdles 1" xyz="508;351;0"/>
+        <xflag type="wonder" location="Lon Lon Ranch Wonder Item 2" setup="2" actor="0x19" item="RUPEE_BLUE" name="Hurdles 2" xyz="421;255;0"/>
       </rendering_option>
     </scene_rendering>
   </scene>
@@ -42,9 +70,9 @@
       <rendering_option context="child" icon="milk">
         <npc location="Lon Lon Ranch Talon Buy Milk" npc="TALON_MILK" item="MILK" name="Buy Milk" xyz="505;402;0"/>
       </rendering_option>
-      <xflag type="pot" location="Lon Lon Ranch Talon House Pot 1" slice="0x0" setup="0x0" room="0x2" actor="0x0" item="RUPEE_BLUE" name="Pot 1" xyz="359;439;1"/>
-      <xflag type="pot" location="Lon Lon Ranch Talon House Pot 2" slice="0x0" setup="0x0" room="0x2" actor="0x1" item="RUPEE_BLUE" name="Pot 2" xyz="359;421;0"/>
-      <xflag type="pot" location="Lon Lon Ranch Talon House Pot 3" slice="0x0" setup="0x0" room="0x2" actor="0x2" item="RUPEE_GREEN" name="Pot 3" xyz="358;355;0"/>
+      <xflag type="pot" location="Lon Lon Ranch Talon House Pot 1" room="0x2" actor="0x0" item="RUPEE_BLUE" name="Pot 1" xyz="359;439;1"/>
+      <xflag type="pot" location="Lon Lon Ranch Talon House Pot 2" room="0x2" actor="0x1" item="RUPEE_BLUE" name="Pot 2" xyz="359;421;0"/>
+      <xflag type="pot" location="Lon Lon Ranch Talon House Pot 3" room="0x2" actor="0x2" item="RUPEE_GREEN" name="Pot 3" xyz="358;355;0"/>
     </scene_rendering>
   </scene>
   <scene id="STABLE">
@@ -53,12 +81,12 @@
       <cow location="Lon Lon Ranch Stables Cow Right" flag="0x03" item="MILK" name="Right" xyz="604;531;0" legacy_scene="LON_LON_RANCH"/>
     </scene_rendering>
   </scene>
-  <scene id="GROTTOS">
+  <scene id="GROTTOS" room="0x27">
     <scene_rendering id="OOT_GROTTO_LON_LON_SCRUBS" loc_type="overworld">
       <scrub location="Lon Lon Ranch Grotto Left Scrub" flag="0x08" item="NUTS_5" name="Left" xyz="457;344;0"/>
       <scrub location="Lon Lon Ranch Grotto Center Scrub" flag="0x09" item="DEKU_SEEDS_30" name="Center" xyz="691;124;0"/>
       <scrub location="Lon Lon Ranch Grotto Right Scrub" flag="0x0a" item="BOMBS_5" name="Right" xyz="933;344;0"/>
-      <xflag type="hive" location="Lon Lon Ranch Grotto Hive" slice="0x0" setup="0x0" room="0x27" actor="0x3" item="RUPEE_RED" name="Hive" xyz="982;210;0"/>
+      <xflag type="hive" location="Lon Lon Ranch Grotto Hive" actor="0x3" item="RUPEE_RED" name="Hive" xyz="982;210;0"/>
     </scene_rendering>
   </scene>
 </checks>

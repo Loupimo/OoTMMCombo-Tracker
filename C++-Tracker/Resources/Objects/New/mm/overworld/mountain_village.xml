@@ -15,33 +15,45 @@
         <npc location="Mountain Village Owl Statue" npc="OWL_MOUNTAIN_VILLAGE" item="OWL_MOUNTAIN_VILLAGE" name="Owl Statue" xyz="345;325;1"/>
       </rendering_option>
       <rendering_option context="winter" layout="all">
-        <xflag type="pot" location="Mountain Village Pot" slice="0x0" setup="0x0" room="0x0" actor="0x26" item="FAIRY" name="Roof" xyz="566;365;0"/>
-        <xflag type="pot" location="Mountain Village Potted Plant 1 Pot" slice="0x0" setup="0x0" room="0x0" actor="0x23" item="NOTHING" name="Potted Plant 1" xyz="485;413;0"/>
-        <xflag type="grass" location="Mountain Village Potted Plant 1 Grass" slice="0x1" setup="0x0" room="0x0" actor="0x23" item="RECOVERY_HEART" name="Potted Plant 1" xyz="472;415;1"/>
-        <xflag type="pot" location="Mountain Village Potted Plant 2 Pot" slice="0x0" setup="0x0" room="0x0" actor="0x24" item="NOTHING" name="Potted Plant 2" xyz="488;434;0"/>
-        <xflag type="grass" location="Mountain Village Potted Plant 2 Grass" slice="0x1" setup="0x0" room="0x0" actor="0x24" item="RECOVERY_HEART" name="Potted Plant 2" xyz="474;437;1"/>
-        <xflag type="snowball" location="Mountain Village Big Snowball 1" slice="0x0" setup="0x0" room="0x0" actor="0x11" item="NOTHING" name="Big Snowball 1" xyz="268;455;0"/>
-        <xflag type="snowball" location="Mountain Village Big Snowball 2" slice="0x0" setup="0x0" room="0x0" actor="0xe" item="NOTHING" name="Big Snowball 2" xyz="292;363;0"/>
-        <xflag type="snowball" location="Mountain Village Big Snowball 3" slice="0x0" setup="0x0" room="0x0" actor="0x2e" item="MAGIC_JAR_SMALL" name="Big Snowball 3" xyz="429;326;0"/>
-        <xflag type="snowball" location="Mountain Village Big Snowball 4" slice="0x0" setup="0x0" room="0x0" actor="0x34" item="RECOVERY_HEART" name="Big Snowball 4" xyz="737;417;0"/>
-        <xflag type="snowball" location="Mountain Village Big Snowball 5" slice="0x0" setup="0x0" room="0x0" actor="0x12" item="NOTHING" name="Big Snowball 5" xyz="800;403;0"/>
-        <xflag type="snowball" location="Mountain Village Small Snowball 1" slice="0x0" setup="0x0" room="0x0" actor="0x29" item="RECOVERY_HEART" name="Small Snowball 1" xyz="317;356;0"/>
-        <xflag type="snowball" location="Mountain Village Small Snowball 2" slice="0x0" setup="0x0" room="0x0" actor="0x38" item="MAGIC_JAR_LARGE" name="Small Snowball 2" xyz="333;331;0"/>
-        <xflag type="snowball" location="Mountain Village Small Snowball 3" slice="0x0" setup="0x0" room="0x0" actor="0x35" item="BOMBS_5" name="Small Snowball 3" xyz="347;336;0"/>
-        <xflag type="snowball" location="Mountain Village Small Snowball 4" slice="0x0" setup="0x0" room="0x0" actor="0x36" item="ARROWS_20" name="Small Snowball 4" xyz="357;326;0"/>
-        <xflag type="snowball" location="Mountain Village Small Snowball 5" slice="0x0" setup="0x0" room="0x0" actor="0x37" item="FLEXIBLE" name="Small Snowball 5" xyz="397;337;0"/>
-        <xflag type="snowball" location="Mountain Village Small Snowball Winter 1" slice="0x0" setup="0x0" room="0x0" actor="0x2a" item="RECOVERY_HEART" name="Winter 1" xyz="608;315;0"/>
-        <xflag type="snowball" location="Mountain Village Small Snowball Winter 2" slice="0x0" setup="0x0" room="0x0" actor="0x28" item="NOTHING" name="Winter 2" xyz="591;419;0"/>
-        <xflag type="snowball" location="Mountain Village Small Snowball Winter 3" slice="0x0" setup="0x0" room="0x0" actor="0x27" item="MAGIC_JAR_SMALL" name="Winter 3" xyz="740;388;0"/>
-        <xflag type="snowball" location="Mountain Village Small Snowball Winter 4" slice="0x0" setup="0x0" room="0x0" actor="0x2b" item="MAGIC_JAR_SMALL" name="Winter 4" xyz="596;317;0"/>
-        <xflag type="snowball" location="Mountain Village Small Snowball Cliff 1" slice="0x0" setup="0x0" room="0x0" actor="0x31" item="MAGIC_JAR_LARGE" name="Cliff 1" xyz="485;49;0"/>
-        <xflag type="snowball" location="Mountain Village Small Snowball Cliff 2" slice="0x0" setup="0x0" room="0x0" actor="0x32" item="MAGIC_JAR_LARGE" name="Cliff 2" xyz="527;53;0"/>
+        <xflag type="pot" location="Mountain Village Pot" room="0x0" actor="0x26" item="FAIRY" name="Roof" xyz="566;365;0"/>
+        <actor room="0x0">
+          <match actor="0x23" scene="MOUNTAIN_VILLAGE_WINTER"/>
+          <match actor="0x29" scene="MOUNTAIN_VILLAGE_SPRING"/>
+          <xflag type="pot" location="Mountain Village Potted Plant 1 Pot" slice="0" item="NOTHING" name="Potted Plant 1" xyz="485;413;0"/>
+          <xflag type="grass" location="Mountain Village Potted Plant 1 Grass" slice="1" item="RECOVERY_HEART" name="Potted Plant 1" xyz="472;415;1"/>
+        </actor>
+        <actor room="0x0">
+          <match actor="0x24" scene="MOUNTAIN_VILLAGE_WINTER"/>
+          <match actor="0x2a" scene="MOUNTAIN_VILLAGE_SPRING"/>
+          <xflag type="pot" location="Mountain Village Potted Plant 2 Pot" slice="0" item="NOTHING" name="Potted Plant 2" xyz="488;434;0"/>
+          <xflag type="grass" location="Mountain Village Potted Plant 2 Grass" slice="1" item="RECOVERY_HEART" name="Potted Plant 2" xyz="474;437;1"/>
+        </actor>
+        <xflag type="snowball" location="Mountain Village Big Snowball 1" room="0x0" actor="0x11" item="NOTHING" name="Big Snowball 1" xyz="268;455;0"/>
+        <xflag type="snowball" location="Mountain Village Big Snowball 2" room="0x0" actor="0xe" item="NOTHING" name="Big Snowball 2" xyz="292;363;0"/>
+        <xflag type="snowball" location="Mountain Village Big Snowball 3" room="0x0" actor="0x2e" item="MAGIC_JAR_SMALL" name="Big Snowball 3" xyz="429;326;0"/>
+        <xflag type="snowball" location="Mountain Village Big Snowball 4" room="0x0" actor="0x34" item="RECOVERY_HEART" name="Big Snowball 4" xyz="737;417;0"/>
+        <xflag type="snowball" location="Mountain Village Big Snowball 5" room="0x0" actor="0x12" item="NOTHING" name="Big Snowball 5" xyz="800;403;0"/>
+        <xflag type="snowball" location="Mountain Village Small Snowball 1" room="0x0" actor="0x29" item="RECOVERY_HEART" name="Small Snowball 1" xyz="317;356;0"/>
+        <xflag type="snowball" location="Mountain Village Small Snowball 2" room="0x0" actor="0x38" item="MAGIC_JAR_LARGE" name="Small Snowball 2" xyz="333;331;0"/>
+        <xflag type="snowball" location="Mountain Village Small Snowball 3" room="0x0" actor="0x35" item="BOMBS_5" name="Small Snowball 3" xyz="347;336;0"/>
+        <xflag type="snowball" location="Mountain Village Small Snowball 4" room="0x0" actor="0x36" item="ARROWS_20" name="Small Snowball 4" xyz="357;326;0"/>
+        <xflag type="snowball" location="Mountain Village Small Snowball 5" room="0x0" actor="0x37" item="FLEXIBLE" name="Small Snowball 5" xyz="397;337;0"/>
+        <xflag type="snowball" location="Mountain Village Small Snowball Winter 1" room="0x0" actor="0x2a" item="RECOVERY_HEART" name="Winter 1" xyz="608;315;0"/>
+        <xflag type="snowball" location="Mountain Village Small Snowball Winter 2" room="0x0" actor="0x28" item="NOTHING" name="Winter 2" xyz="591;419;0"/>
+        <xflag type="snowball" location="Mountain Village Small Snowball Winter 3" room="0x0" actor="0x27" item="MAGIC_JAR_SMALL" name="Winter 3" xyz="740;388;0"/>
+        <xflag type="snowball" location="Mountain Village Small Snowball Winter 4" room="0x0" actor="0x2b" item="MAGIC_JAR_SMALL" name="Winter 4" xyz="596;317;0"/>
+        <xflag type="snowball" location="Mountain Village Small Snowball Cliff 1" room="0x0" actor="0x31" item="MAGIC_JAR_LARGE" name="Cliff 1" xyz="485;49;0"/>
+        <xflag type="snowball" location="Mountain Village Small Snowball Cliff 2" room="0x0" actor="0x32" item="MAGIC_JAR_LARGE" name="Cliff 2" xyz="527;53;0"/>
       </rendering_option>
       <actor room="0x00">
         <match actor="0x39" scene="MOUNTAIN_VILLAGE_WINTER"/>
         <match actor="0x33" scene="MOUNTAIN_VILLAGE_SPRING"/>
-        <xflag type="gossip" location="Mountain Village Gossip Outside Fairy" slice="0" item="FAIRY" name="Gossip Fairy Outside" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Mountain Village Gossip Outside Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Outside" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Mountain Village Gossip Outside Fairy" slice="0" item="FAIRY" name="Gossip Stone - Outside" xyz="319;521;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Mountain Village Gossip Outside Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Stone - Outside" xyz="306;509;0"/>
+        </rendering_option>
       </actor>
     </scene_rendering>
   </scene>
@@ -79,15 +91,15 @@
         <xflag type="grass" location="Mountain Village Grass Pack 3 Grass 8" slice="0x7" room="0x0" actor="0x1f" item="RANDOM" name="Pack 3 - Grass 8" xyz="551;324;0"/>
         <xflag type="grass" location="Mountain Village Grass Pack 3 Grass 9" slice="0x8" room="0x0" actor="0x1f" item="RANDOM" name="Pack 3 - Grass 9" xyz="555;335;0"/>
         <actor room="0x0" actor="0x2c">
-          <xflag type="grass" location="Mountain Village Keaton Grass Reward 1" slice="0x0" item="RUPEE_GREEN" name="Keaton Grass 1" xyz="629;477;0"/>
-          <xflag type="grass" location="Mountain Village Keaton Grass Reward 2" slice="0x1" item="RUPEE_GREEN" name="Keaton Grass 2" xyz="646;477;0"/>
-          <xflag type="grass" location="Mountain Village Keaton Grass Reward 3" slice="0x2" item="RUPEE_GREEN" name="Keaton Grass 3" xyz="641;488;0"/>
-          <xflag type="grass" location="Mountain Village Keaton Grass Reward 4" slice="0x3" item="RUPEE_GREEN" name="Keaton Grass 4" xyz="629;493;0"/>
-          <xflag type="grass" location="Mountain Village Keaton Grass Reward 5" slice="0x4" item="RUPEE_GREEN" name="Keaton Grass 5" xyz="617;488;0"/>
-          <xflag type="grass" location="Mountain Village Keaton Grass Reward 6" slice="0x5" item="RUPEE_GREEN" name="Keaton Grass 6" xyz="613;477;0"/>
-          <xflag type="grass" location="Mountain Village Keaton Grass Reward 7" slice="0x6" item="RUPEE_GREEN" name="Keaton Grass 7" xyz="617;466;0"/>
-          <xflag type="grass" location="Mountain Village Keaton Grass Reward 8" slice="0x7" item="RUPEE_GREEN" name="Keaton Grass 8" xyz="629;463;0"/>
-          <xflag type="grass" location="Mountain Village Keaton Grass Reward 9" slice="0x8" item="RUPEE_RED" name="Keaton Grass 9" xyz="641;466;0"/>
+          <xflag type="grass" location="Mountain Village Keaton Grass Reward 1" slice="0" item="RUPEE_GREEN" name="Keaton Grass 1" xyz="629;477;0"/>
+          <xflag type="grass" location="Mountain Village Keaton Grass Reward 2" slice="1" item="RUPEE_GREEN" name="Keaton Grass 2" xyz="646;477;0"/>
+          <xflag type="grass" location="Mountain Village Keaton Grass Reward 3" slice="2" item="RUPEE_GREEN" name="Keaton Grass 3" xyz="641;488;0"/>
+          <xflag type="grass" location="Mountain Village Keaton Grass Reward 4" slice="3" item="RUPEE_GREEN" name="Keaton Grass 4" xyz="629;493;0"/>
+          <xflag type="grass" location="Mountain Village Keaton Grass Reward 5" slice="4" item="RUPEE_GREEN" name="Keaton Grass 5" xyz="617;488;0"/>
+          <xflag type="grass" location="Mountain Village Keaton Grass Reward 6" slice="5" item="RUPEE_GREEN" name="Keaton Grass 6" xyz="613;477;0"/>
+          <xflag type="grass" location="Mountain Village Keaton Grass Reward 7" slice="6" item="RUPEE_GREEN" name="Keaton Grass 7" xyz="617;466;0"/>
+          <xflag type="grass" location="Mountain Village Keaton Grass Reward 8" slice="7" item="RUPEE_GREEN" name="Keaton Grass 8" xyz="629;463;0"/>
+          <xflag type="grass" location="Mountain Village Keaton Grass Reward 9" slice="8" item="RUPEE_RED" name="Keaton Grass 9" xyz="641;466;0"/>
         </actor>
         <xflag type="rupee" location="Mountain Village Rupee" room="0x0" actor="0x28" item="RUPEE_RED" name="Rupee" xyz="474;439;0"/>
         <xflag type="hive" location="Mountain Village Hive" room="0x0" actor="0x24" item="NOTHING" name="Hive" xyz="663;373;0"/>
@@ -120,8 +132,12 @@
         <xflag type="rock" location="Mountain Village Rock Ground 5" room="0x0" actor="0x14" item="RANDOM" name="Ground 5" xyz="609;399;0"/>
       </rendering_option>
       <actor room="0x01" actor="0x18">
-        <xflag type="gossip" location="Mountain Village Gossip Tunnel Fairy" slice="0" item="FAIRY" name="Gossip Fairy Tunnel" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Mountain Village Gossip Tunnel Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Tunnel" xyz="0;0;0"/>
+        <rendering_option context="spring" type="fairy">
+          <xflag type="gossip" location="Mountain Village Gossip Tunnel Fairy" slice="0" item="FAIRY" name="Gossip Stone - Tunnel" xyz="1451;105;0"/>
+        </rendering_option>
+        <rendering_option context="spring" type="fairy_spot">
+          <xflag type="gossip-big" location="Mountain Village Gossip Tunnel Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Stone - Tunnel" xyz="1439;90;0"/>
+        </rendering_option>
       </actor>
     </scene_rendering>
   </scene>
@@ -134,10 +150,14 @@
         <npc location="Blacksmith Gilded Sword" npc="SWORD_GILDED" item="SWORD" hint="BLACKSMITH" name="Gilded Sword" xyz="543;204;0"/>
       </rendering_option>
       <rendering_option layout="all">
-        <xflag type="pot" location="Blacksmith Potted Plant 1 Pot" slice="0x0" setup="0x0" room="0x0" actor="0x4" item="NOTHING" name="Potted Plant 1" xyz="687;308;0"/>
-        <xflag type="grass" location="Blacksmith Potted Plant 1 Grass" slice="0x1" setup="0x0" room="0x0" actor="0x4" item="RECOVERY_HEART" name="Potted Plant 1" xyz="687;294;1"/>
-        <xflag type="pot" location="Blacksmith Potted Plant 2 Pot" slice="0x0" setup="0x0" room="0x0" actor="0x8" item="NOTHING" name="Potted Plant 2" xyz="690;395;0"/>
-        <xflag type="grass" location="Blacksmith Potted Plant 2 Grass" slice="0x1" setup="0x0" room="0x0" actor="0x8" item="RECOVERY_HEART" name="Potted Plant 2" xyz="690;379;1"/>
+        <actor actor="0x4">
+          <xflag type="pot" location="Blacksmith Potted Plant 1 Pot" slice="0" item="NOTHING" name="Potted Plant 1" xyz="687;308;0"/>
+          <xflag type="grass" location="Blacksmith Potted Plant 1 Grass" slice="1" item="RECOVERY_HEART" name="Potted Plant 1" xyz="687;294;1"/>
+        </actor>
+        <actor actor="0x8">
+          <xflag type="pot" location="Blacksmith Potted Plant 2 Pot" slice="0" item="NOTHING" name="Potted Plant 2" xyz="690;395;0"/>
+          <xflag type="grass" location="Blacksmith Potted Plant 2 Grass" slice="1" item="RECOVERY_HEART" name="Potted Plant 2" xyz="690;379;1"/>
+        </actor>
       </rendering_option>
     </scene_rendering>
   </scene>
@@ -152,20 +172,20 @@
     <scene_rendering id="MM_GROTTO_MOUNTAIN_VILLAGE_GENERIC" loc_type="overworld">
       <rendering_option layout="all">
         <chest location="Mountain Village Tunnel Grotto" flag="0x1b" item="RUPEE_RED" name="Chest" xyz="231;410;0"/>
-        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 01" slice="0x0" setup="0x0" room="0x3b" actor="0x0" item="RANDOM" name="Grass 1" xyz="612;542;0"/>
-        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 02" slice="0x0" setup="0x0" room="0x3b" actor="0x1" item="RANDOM" name="Grass 2" xyz="371;494;0"/>
-        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 03" slice="0x0" setup="0x0" room="0x3b" actor="0x2" item="RANDOM" name="Grass 3" xyz="281;467;0"/>
-        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 04" slice="0x0" setup="0x0" room="0x3b" actor="0x3" item="RANDOM" name="Grass 4" xyz="339;480;0"/>
-        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 05" slice="0x0" setup="0x0" room="0x3b" actor="0x5" item="RANDOM" name="Grass 5" xyz="294;449;0"/>
-        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 06" slice="0x0" setup="0x0" room="0x3b" actor="0x6" item="RANDOM" name="Grass 6" xyz="270;444;0"/>
-        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 07" slice="0x0" setup="0x0" room="0x3b" actor="0xa" item="RANDOM" name="Grass 7" xyz="699;497;0"/>
-        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 08" slice="0x0" setup="0x0" room="0x3b" actor="0xb" item="RANDOM" name="Grass 8" xyz="390;431;0"/>
-        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 09" slice="0x0" setup="0x0" room="0x3b" actor="0xc" item="RANDOM" name="Grass 9" xyz="556;453;0"/>
-        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 10" slice="0x0" setup="0x0" room="0x3b" actor="0xe" item="RANDOM" name="Grass 10" xyz="651;467;0"/>
-        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 11" slice="0x0" setup="0x0" room="0x3b" actor="0x10" item="RANDOM" name="Grass 11" xyz="255;388;0"/>
-        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 12" slice="0x0" setup="0x0" room="0x3b" actor="0x11" item="RANDOM" name="Grass 12" xyz="382;418;0"/>
-        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 13" slice="0x0" setup="0x0" room="0x3b" actor="0x12" item="RANDOM" name="Grass 13" xyz="583;448;0"/>
-        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 14" slice="0x0" setup="0x0" room="0x3b" actor="0x13" item="RANDOM" name="Grass 14" xyz="418;418;0"/>
+        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 01" slice="0x0" setup="0" room="0x3b" actor="0x0" item="RANDOM" name="Grass 1" xyz="612;542;0"/>
+        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 02" slice="0x0" setup="0" room="0x3b" actor="0x1" item="RANDOM" name="Grass 2" xyz="371;494;0"/>
+        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 03" slice="0x0" setup="0" room="0x3b" actor="0x2" item="RANDOM" name="Grass 3" xyz="281;467;0"/>
+        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 04" slice="0x0" setup="0" room="0x3b" actor="0x3" item="RANDOM" name="Grass 4" xyz="339;480;0"/>
+        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 05" slice="0x0" setup="0" room="0x3b" actor="0x5" item="RANDOM" name="Grass 5" xyz="294;449;0"/>
+        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 06" slice="0x0" setup="0" room="0x3b" actor="0x6" item="RANDOM" name="Grass 6" xyz="270;444;0"/>
+        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 07" slice="0x0" setup="0" room="0x3b" actor="0xa" item="RANDOM" name="Grass 7" xyz="699;497;0"/>
+        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 08" slice="0x0" setup="0" room="0x3b" actor="0xb" item="RANDOM" name="Grass 8" xyz="390;431;0"/>
+        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 09" slice="0x0" setup="0" room="0x3b" actor="0xc" item="RANDOM" name="Grass 9" xyz="556;453;0"/>
+        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 10" slice="0x0" setup="0" room="0x3b" actor="0xe" item="RANDOM" name="Grass 10" xyz="651;467;0"/>
+        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 11" slice="0x0" setup="0" room="0x3b" actor="0x10" item="RANDOM" name="Grass 11" xyz="255;388;0"/>
+        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 12" slice="0x0" setup="0" room="0x3b" actor="0x11" item="RANDOM" name="Grass 12" xyz="382;418;0"/>
+        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 13" slice="0x0" setup="0" room="0x3b" actor="0x12" item="RANDOM" name="Grass 13" xyz="583;448;0"/>
+        <xflag type="grass" location="Mountain Village Tunnel Grotto Grass 14" slice="0x0" setup="0" room="0x3b" actor="0x13" item="RANDOM" name="Grass 14" xyz="418;418;0"/>
       </rendering_option>
     </scene_rendering>
   </scene>

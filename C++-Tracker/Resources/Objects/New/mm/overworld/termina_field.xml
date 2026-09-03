@@ -290,28 +290,52 @@
         <xflag type="soil" location="Termina Field Soil Pillar" slice="0x0" actor="0x8" item="ARROWS_30" name="Pillar" xyz="1953;670;0"/>
       </rendering_option>
       <actor actor="0x15">
-        <xflag type="gossip" location="Termina Field Gossip Fairy Southeast" slice="0" item="FAIRY" name="Gossip Fairy Southeast" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Termina Field Gossip Big Fairy Southeast" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Southeast" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Termina Field Gossip Fairy Southeast" slice="0" item="FAIRY" name="Gossip Stone - Southeast" xyz="1743;1571;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Termina Field Gossip Big Fairy Southeast" slice="1" item="FAIRY_BIG" name="Gossip Stone - Southeast" xyz="1729;1555;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0x16">
-        <xflag type="gossip" location="Termina Field Gossip Fairy Near Kamaro" slice="0" item="FAIRY" name="Gossip Fairy Near Kamaro" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Termina Field Gossip Big Fairy Near Kamaro" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Near Kamaro" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Termina Field Gossip Fairy Near Kamaro" slice="0" item="FAIRY" name="Gossip Stone - Near Kamaro" xyz="1110;418;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Termina Field Gossip Big Fairy Near Kamaro" slice="1" item="FAIRY_BIG" name="Gossip Stone - Near Kamaro" xyz="1096;430;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0x17">
-        <xflag type="gossip" location="Termina Field Gossip Fairy Near Mountain" slice="0" item="FAIRY" name="Gossip Fairy Near Mountain" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Termina Field Gossip Big Fairy Near Mountain" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Near Mountain" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Termina Field Gossip Fairy Near Mountain" slice="0" item="FAIRY" name="Gossip Stone - Near Mountain" xyz="1531;132;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Termina Field Gossip Big Fairy Near Mountain" slice="1" item="FAIRY_BIG" name="Gossip Stone - Near Mountain" xyz="1510;137;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0x18">
-        <xflag type="gossip" location="Termina Field Gossip Fairy Southwest" slice="0" item="FAIRY" name="Gossip Fairy Southwest" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Termina Field Gossip Big Fairy Southwest" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Southwest" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Termina Field Gossip Fairy Southwest" slice="0" item="FAIRY" name="Gossip Stone - Southwest" xyz="1033;1462;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Termina Field Gossip Big Fairy Southwest" slice="1" item="FAIRY_BIG" name="Gossip Stone - Southwest" xyz="1017;1475;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0x19">
-        <xflag type="gossip" location="Termina Field Gossip Fairy Northeast" slice="0" item="FAIRY" name="Gossip Fairy Northeast" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Termina Field Gossip Big Fairy Northeast" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Northeast" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Termina Field Gossip Fairy Northeast" slice="0" item="FAIRY" name="Gossip Stone - Northeast" xyz="2086;377;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Termina Field Gossip Big Fairy Northeast" slice="1" item="FAIRY_BIG" name="Gossip Stone - Northeast" xyz="2071;366;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0x1a">
-        <xflag type="gossip" location="Termina Field Gossip Fairy Observatory" slice="0" item="FAIRY" name="Gossip Fairy Observatory" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Termina Field Gossip Big Fairy Observatory" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Observatory" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Termina Field Gossip Fairy Observatory" slice="0" item="FAIRY" name="Gossip Stone - Observatory" xyz="2344;1031;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Termina Field Gossip Big Fairy Observatory" slice="1" item="FAIRY_BIG" name="Gossip Stone - Observatory" xyz="2341;1009;0"/>
+        </rendering_option>
       </actor>
     </scene_rendering>
   </scene>
@@ -323,9 +347,9 @@
     </scene_rendering>
     <scene_rendering id="MM_OBSERVATORY" loc_type="overworld">
       <rendering_option layout="all">
-        <xflag type="pot" location="Astral Observatory Pot 1" slice="0x0" setup="0x0" room="0x1" actor="0x4" item="RUPEE_BLUE" name="Astral Observatory 1" xyz="508;463;0"/>
-        <xflag type="pot" location="Astral Observatory Pot 2" slice="0x0" setup="0x0" room="0x1" actor="0x5" item="RUPEE_BLUE" name="Astral Observatory 2" xyz="479;471;1"/>
-        <xflag type="pot" location="Astral Observatory Pot 3" slice="0x0" setup="0x0" room="0x1" actor="0x6" item="MAGIC_JAR_SMALL" name="Astral Observatory 3" xyz="478;458;0"/>
+        <xflag type="pot" location="Astral Observatory Pot 1" slice="0x0" setup="0" room="0x1" actor="0x4" item="RUPEE_BLUE" name="Astral Observatory 1" xyz="508;463;0"/>
+        <xflag type="pot" location="Astral Observatory Pot 2" slice="0x0" setup="0" room="0x1" actor="0x5" item="RUPEE_BLUE" name="Astral Observatory 2" xyz="479;471;1"/>
+        <xflag type="pot" location="Astral Observatory Pot 3" slice="0x0" setup="0" room="0x1" actor="0x6" item="MAGIC_JAR_SMALL" name="Astral Observatory 3" xyz="478;458;0"/>
       </rendering_option>
     </scene_rendering>
   </scene>
@@ -333,20 +357,20 @@
     <scene_rendering id="MM_GROTTO_TERMINA_TALL_GRASS" loc_type="overworld">
       <rendering_option layout="all">
         <chest location="Termina Field Tall Grass Grotto" flag="0x1f" item="RUPEE_RED" name="Chest" xyz="231;410;0"/>
-        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 01" slice="0x0" setup="0x0" room="0x3f" actor="0x0" item="RANDOM" name="Grass 1" xyz="612;542;0"/>
-        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 02" slice="0x0" setup="0x0" room="0x3f" actor="0x1" item="RANDOM" name="Grass 2" xyz="371;494;0"/>
-        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 03" slice="0x0" setup="0x0" room="0x3f" actor="0x2" item="RANDOM" name="Grass 3" xyz="281;467;0"/>
-        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 04" slice="0x0" setup="0x0" room="0x3f" actor="0x3" item="RANDOM" name="Grass 4" xyz="339;480;0"/>
-        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 05" slice="0x0" setup="0x0" room="0x3f" actor="0x5" item="RANDOM" name="Grass 5" xyz="294;449;0"/>
-        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 06" slice="0x0" setup="0x0" room="0x3f" actor="0x6" item="RANDOM" name="Grass 6" xyz="270;444;0"/>
-        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 07" slice="0x0" setup="0x0" room="0x3f" actor="0xa" item="RANDOM" name="Grass 7" xyz="699;497;0"/>
-        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 08" slice="0x0" setup="0x0" room="0x3f" actor="0xb" item="RANDOM" name="Grass 8" xyz="390;431;0"/>
-        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 09" slice="0x0" setup="0x0" room="0x3f" actor="0xc" item="RANDOM" name="Grass 9" xyz="556;453;0"/>
-        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 10" slice="0x0" setup="0x0" room="0x3f" actor="0xe" item="RANDOM" name="Grass 10" xyz="651;467;0"/>
-        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 11" slice="0x0" setup="0x0" room="0x3f" actor="0x10" item="RANDOM" name="Grass 11" xyz="255;388;0"/>
-        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 12" slice="0x0" setup="0x0" room="0x3f" actor="0x11" item="RANDOM" name="Grass 12" xyz="382;418;0"/>
-        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 13" slice="0x0" setup="0x0" room="0x3f" actor="0x12" item="RANDOM" name="Grass 13" xyz="583;448;0"/>
-        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 14" slice="0x0" setup="0x0" room="0x3f" actor="0x13" item="RANDOM" name="Grass 14" xyz="418;418;0"/>
+        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 01" slice="0x0" setup="0" room="0x3f" actor="0x0" item="RANDOM" name="Grass 1" xyz="612;542;0"/>
+        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 02" slice="0x0" setup="0" room="0x3f" actor="0x1" item="RANDOM" name="Grass 2" xyz="371;494;0"/>
+        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 03" slice="0x0" setup="0" room="0x3f" actor="0x2" item="RANDOM" name="Grass 3" xyz="281;467;0"/>
+        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 04" slice="0x0" setup="0" room="0x3f" actor="0x3" item="RANDOM" name="Grass 4" xyz="339;480;0"/>
+        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 05" slice="0x0" setup="0" room="0x3f" actor="0x5" item="RANDOM" name="Grass 5" xyz="294;449;0"/>
+        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 06" slice="0x0" setup="0" room="0x3f" actor="0x6" item="RANDOM" name="Grass 6" xyz="270;444;0"/>
+        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 07" slice="0x0" setup="0" room="0x3f" actor="0xa" item="RANDOM" name="Grass 7" xyz="699;497;0"/>
+        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 08" slice="0x0" setup="0" room="0x3f" actor="0xb" item="RANDOM" name="Grass 8" xyz="390;431;0"/>
+        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 09" slice="0x0" setup="0" room="0x3f" actor="0xc" item="RANDOM" name="Grass 9" xyz="556;453;0"/>
+        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 10" slice="0x0" setup="0" room="0x3f" actor="0xe" item="RANDOM" name="Grass 10" xyz="651;467;0"/>
+        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 11" slice="0x0" setup="0" room="0x3f" actor="0x10" item="RANDOM" name="Grass 11" xyz="255;388;0"/>
+        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 12" slice="0x0" setup="0" room="0x3f" actor="0x11" item="RANDOM" name="Grass 12" xyz="382;418;0"/>
+        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 13" slice="0x0" setup="0" room="0x3f" actor="0x12" item="RANDOM" name="Grass 13" xyz="583;448;0"/>
+        <xflag type="grass" location="Termina Field Tall Grass Grotto Grass 14" slice="0x0" setup="0" room="0x3f" actor="0x13" item="RANDOM" name="Grass 14" xyz="418;418;0"/>
       </rendering_option>
     </scene_rendering>
   </scene>
@@ -354,20 +378,20 @@
     <scene_rendering id="MM_GROTTO_TERMINA_PILLAR" loc_type="overworld">
       <rendering_option layout="all">
         <chest location="Termina Field Pillar Grotto" flag="0x1a" item="BOMBCHU" name="Chest" xyz="231;410;0"/>
-        <xflag type="grass" location="Termina Field Pillar Grotto Grass 01" slice="0x0" setup="0x0" room="0x3a" actor="0x0" item="RANDOM" name="Grass 1" xyz="612;542;0"/>
-        <xflag type="grass" location="Termina Field Pillar Grotto Grass 02" slice="0x0" setup="0x0" room="0x3a" actor="0x1" item="RANDOM" name="Grass 2" xyz="371;494;0"/>
-        <xflag type="grass" location="Termina Field Pillar Grotto Grass 03" slice="0x0" setup="0x0" room="0x3a" actor="0x2" item="RANDOM" name="Grass 3" xyz="281;467;0"/>
-        <xflag type="grass" location="Termina Field Pillar Grotto Grass 04" slice="0x0" setup="0x0" room="0x3a" actor="0x3" item="RANDOM" name="Grass 4" xyz="339;480;0"/>
-        <xflag type="grass" location="Termina Field Pillar Grotto Grass 05" slice="0x0" setup="0x0" room="0x3a" actor="0x5" item="RANDOM" name="Grass 5" xyz="294;449;0"/>
-        <xflag type="grass" location="Termina Field Pillar Grotto Grass 06" slice="0x0" setup="0x0" room="0x3a" actor="0x6" item="RANDOM" name="Grass 6" xyz="270;444;0"/>
-        <xflag type="grass" location="Termina Field Pillar Grotto Grass 07" slice="0x0" setup="0x0" room="0x3a" actor="0xa" item="RANDOM" name="Grass 7" xyz="699;497;0"/>
-        <xflag type="grass" location="Termina Field Pillar Grotto Grass 08" slice="0x0" setup="0x0" room="0x3a" actor="0xb" item="RANDOM" name="Grass 8" xyz="390;431;0"/>
-        <xflag type="grass" location="Termina Field Pillar Grotto Grass 09" slice="0x0" setup="0x0" room="0x3a" actor="0xc" item="RANDOM" name="Grass 9" xyz="556;453;0"/>
-        <xflag type="grass" location="Termina Field Pillar Grotto Grass 10" slice="0x0" setup="0x0" room="0x3a" actor="0xe" item="RANDOM" name="Grass 10" xyz="651;467;0"/>
-        <xflag type="grass" location="Termina Field Pillar Grotto Grass 11" slice="0x0" setup="0x0" room="0x3a" actor="0x10" item="RANDOM" name="Grass 11" xyz="255;388;0"/>
-        <xflag type="grass" location="Termina Field Pillar Grotto Grass 12" slice="0x0" setup="0x0" room="0x3a" actor="0x11" item="RANDOM" name="Grass 12" xyz="382;418;0"/>
-        <xflag type="grass" location="Termina Field Pillar Grotto Grass 13" slice="0x0" setup="0x0" room="0x3a" actor="0x12" item="RANDOM" name="Grass 13" xyz="583;448;0"/>
-        <xflag type="grass" location="Termina Field Pillar Grotto Grass 14" slice="0x0" setup="0x0" room="0x3a" actor="0x13" item="RANDOM" name="Grass 14" xyz="418;418;0"/>
+        <xflag type="grass" location="Termina Field Pillar Grotto Grass 01" slice="0x0" setup="0" room="0x3a" actor="0x0" item="RANDOM" name="Grass 1" xyz="612;542;0"/>
+        <xflag type="grass" location="Termina Field Pillar Grotto Grass 02" slice="0x0" setup="0" room="0x3a" actor="0x1" item="RANDOM" name="Grass 2" xyz="371;494;0"/>
+        <xflag type="grass" location="Termina Field Pillar Grotto Grass 03" slice="0x0" setup="0" room="0x3a" actor="0x2" item="RANDOM" name="Grass 3" xyz="281;467;0"/>
+        <xflag type="grass" location="Termina Field Pillar Grotto Grass 04" slice="0x0" setup="0" room="0x3a" actor="0x3" item="RANDOM" name="Grass 4" xyz="339;480;0"/>
+        <xflag type="grass" location="Termina Field Pillar Grotto Grass 05" slice="0x0" setup="0" room="0x3a" actor="0x5" item="RANDOM" name="Grass 5" xyz="294;449;0"/>
+        <xflag type="grass" location="Termina Field Pillar Grotto Grass 06" slice="0x0" setup="0" room="0x3a" actor="0x6" item="RANDOM" name="Grass 6" xyz="270;444;0"/>
+        <xflag type="grass" location="Termina Field Pillar Grotto Grass 07" slice="0x0" setup="0" room="0x3a" actor="0xa" item="RANDOM" name="Grass 7" xyz="699;497;0"/>
+        <xflag type="grass" location="Termina Field Pillar Grotto Grass 08" slice="0x0" setup="0" room="0x3a" actor="0xb" item="RANDOM" name="Grass 8" xyz="390;431;0"/>
+        <xflag type="grass" location="Termina Field Pillar Grotto Grass 09" slice="0x0" setup="0" room="0x3a" actor="0xc" item="RANDOM" name="Grass 9" xyz="556;453;0"/>
+        <xflag type="grass" location="Termina Field Pillar Grotto Grass 10" slice="0x0" setup="0" room="0x3a" actor="0xe" item="RANDOM" name="Grass 10" xyz="651;467;0"/>
+        <xflag type="grass" location="Termina Field Pillar Grotto Grass 11" slice="0x0" setup="0" room="0x3a" actor="0x10" item="RANDOM" name="Grass 11" xyz="255;388;0"/>
+        <xflag type="grass" location="Termina Field Pillar Grotto Grass 12" slice="0x0" setup="0" room="0x3a" actor="0x11" item="RANDOM" name="Grass 12" xyz="382;418;0"/>
+        <xflag type="grass" location="Termina Field Pillar Grotto Grass 13" slice="0x0" setup="0" room="0x3a" actor="0x12" item="RANDOM" name="Grass 13" xyz="583;448;0"/>
+        <xflag type="grass" location="Termina Field Pillar Grotto Grass 14" slice="0x0" setup="0" room="0x3a" actor="0x13" item="RANDOM" name="Grass 14" xyz="418;418;0"/>
       </rendering_option>
     </scene_rendering>
   </scene>
@@ -377,18 +401,18 @@
         <chest location="Termina Field Peahat Grotto" flag="0x04" item="HEART_PIECE" name="Peahat" xyz="400;392;0"/>
       </rendering_option>
       <rendering_option layout="all">
-        <xflag type="grass" location="Peahat Grotto Grass 01" slice="0x0" setup="0x0" room="0xd" actor="0x1" item="RANDOM" name="Grass 1" xyz="492;372;0"/>
-        <xflag type="grass" location="Peahat Grotto Grass 02" slice="0x1" setup="0x0" room="0xd" actor="0x1" item="RANDOM" name="Grass 2" xyz="475;395;0"/>
-        <xflag type="grass" location="Peahat Grotto Grass 03" slice="0x2" setup="0x0" room="0xd" actor="0x1" item="RANDOM" name="Grass 3" xyz="448;385;0"/>
-        <xflag type="grass" location="Peahat Grotto Grass 04" slice="0x3" setup="0x0" room="0xd" actor="0x1" item="RANDOM" name="Grass 4" xyz="444;358;0"/>
-        <xflag type="grass" location="Peahat Grotto Grass 05" slice="0x4" setup="0x0" room="0xd" actor="0x1" item="RANDOM" name="Grass 5" xyz="467;369;0"/>
-        <xflag type="grass" location="Peahat Grotto Grass 06" slice="0x5" setup="0x0" room="0xd" actor="0x1" item="RANDOM" name="Grass 6" xyz="488;387;0"/>
-        <xflag type="grass" location="Peahat Grotto Grass 07" slice="0x6" setup="0x0" room="0xd" actor="0x1" item="RANDOM" name="Grass 7" xyz="459;394;0"/>
-        <xflag type="grass" location="Peahat Grotto Grass 08" slice="0x7" setup="0x0" room="0xd" actor="0x1" item="RANDOM" name="Grass 8" xyz="441;372;0"/>
-        <xflag type="grass" location="Peahat Grotto Grass 09" slice="0x8" setup="0x0" room="0xd" actor="0x1" item="RANDOM" name="Grass 9" xyz="452;346;0"/>
-        <xflag type="grass" location="Peahat Grotto Grass 10" slice="0x9" setup="0x0" room="0xd" actor="0x1" item="RANDOM" name="Grass 10" xyz="467;343;0"/>
-        <xflag type="grass" location="Peahat Grotto Grass 11" slice="0xa" setup="0x0" room="0xd" actor="0x1" item="RANDOM" name="Grass 11" xyz="481;346;0"/>
-        <xflag type="grass" location="Peahat Grotto Grass 12" slice="0xb" setup="0x0" room="0xd" actor="0x1" item="RANDOM" name="Grass 12" xyz="490;358;0"/>
+        <xflag type="grass" location="Peahat Grotto Grass 01" slice="0x0" setup="0" room="0xd" actor="0x1" item="RANDOM" name="Grass 1" xyz="492;372;0"/>
+        <xflag type="grass" location="Peahat Grotto Grass 02" slice="0x1" setup="0" room="0xd" actor="0x1" item="RANDOM" name="Grass 2" xyz="475;395;0"/>
+        <xflag type="grass" location="Peahat Grotto Grass 03" slice="0x2" setup="0" room="0xd" actor="0x1" item="RANDOM" name="Grass 3" xyz="448;385;0"/>
+        <xflag type="grass" location="Peahat Grotto Grass 04" slice="0x3" setup="0" room="0xd" actor="0x1" item="RANDOM" name="Grass 4" xyz="444;358;0"/>
+        <xflag type="grass" location="Peahat Grotto Grass 05" slice="0x4" setup="0" room="0xd" actor="0x1" item="RANDOM" name="Grass 5" xyz="467;369;0"/>
+        <xflag type="grass" location="Peahat Grotto Grass 06" slice="0x5" setup="0" room="0xd" actor="0x1" item="RANDOM" name="Grass 6" xyz="488;387;0"/>
+        <xflag type="grass" location="Peahat Grotto Grass 07" slice="0x6" setup="0" room="0xd" actor="0x1" item="RANDOM" name="Grass 7" xyz="459;394;0"/>
+        <xflag type="grass" location="Peahat Grotto Grass 08" slice="0x7" setup="0" room="0xd" actor="0x1" item="RANDOM" name="Grass 8" xyz="441;372;0"/>
+        <xflag type="grass" location="Peahat Grotto Grass 09" slice="0x8" setup="0" room="0xd" actor="0x1" item="RANDOM" name="Grass 9" xyz="452;346;0"/>
+        <xflag type="grass" location="Peahat Grotto Grass 10" slice="0x9" setup="0" room="0xd" actor="0x1" item="RANDOM" name="Grass 10" xyz="467;343;0"/>
+        <xflag type="grass" location="Peahat Grotto Grass 11" slice="0xa" setup="0" room="0xd" actor="0x1" item="RANDOM" name="Grass 11" xyz="481;346;0"/>
+        <xflag type="grass" location="Peahat Grotto Grass 12" slice="0xb" setup="0" room="0xd" actor="0x1" item="RANDOM" name="Grass 12" xyz="490;358;0"/>
       </rendering_option>
     </scene_rendering>
   </scene>
@@ -413,14 +437,14 @@
       </rendering_option>
     </scene_rendering>
   </scene>
-  <scene id="GROTTOS">
+  <scene id="GROTTOS" room="0x9">
     <scene_rendering id="MM_GROTTO_TERMINA_SCRUB" loc_type="overworld">
       <rendering_option layout="all" type="heart_piece">
         <npc location="Termina Field Scrub" npc="SCRUB_TELESCOPE" item="HEART_PIECE" name="Scrub" xyz="239;428;0"/>
       </rendering_option>
       <rendering_option layout="all">
-        <xflag type="pot" location="Termina Field Scrub Pot" slice="0x0" setup="0x0" room="0x9" actor="0x3" item="RECOVERY_HEART" name="Pot" xyz="226;406;0"/>
-        <xflag type="crate" location="Termina Field Scrub Crate" slice="0x0" setup="0x0" room="0x9" actor="0x0" item="NOTHING" name="Crate" xyz="268;474;0"/>
+        <xflag type="pot" location="Termina Field Scrub Pot" actor="0x3" item="RECOVERY_HEART" name="Pot" xyz="226;406;0"/>
+        <xflag type="crate" location="Termina Field Scrub Crate" actor="0x0" item="NOTHING" name="Crate" xyz="268;474;0"/>
       </rendering_option>
     </scene_rendering>
   </scene>
@@ -532,40 +556,72 @@
         </actor>
       </rendering_option>
       <actor actor="0x9">
-        <xflag type="gossip" location="Ocean Gossip Grotto Gossip Fairy 1" slice="0" item="FAIRY" name="Gossip Fairy Grotto Gossip 1" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Ocean Gossip Grotto Gossip Big Fairy 1" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Grotto Gossip 1" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Ocean Gossip Grotto Gossip Fairy 1" slice="0" item="FAIRY" name="Gossip Stone 1" xyz="721;377;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Ocean Gossip Grotto Gossip Big Fairy 1" slice="1" item="FAIRY_BIG" name="Gossip Stone 1" xyz="706;363;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0xa">
-        <xflag type="gossip" location="Ocean Gossip Grotto Gossip Fairy 2" slice="0" item="FAIRY" name="Gossip Fairy Grotto Gossip 2" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Ocean Gossip Grotto Gossip Big Fairy 2" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Grotto Gossip 2" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Ocean Gossip Grotto Gossip Fairy 2" slice="0" item="FAIRY" name="Gossip Stone 2" xyz="752;403;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Ocean Gossip Grotto Gossip Big Fairy 2" slice="1" item="FAIRY_BIG" name="Gossip Stone 2" xyz="740;391;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0xb">
-        <xflag type="gossip" location="Ocean Gossip Grotto Gossip Fairy 3" slice="0" item="FAIRY" name="Gossip Fairy Grotto Gossip 3" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Ocean Gossip Grotto Gossip Big Fairy 3" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Grotto Gossip 3" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Ocean Gossip Grotto Gossip Fairy 3" slice="0" item="FAIRY" name="Gossip Stone 3" xyz="796;424;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Ocean Gossip Grotto Gossip Big Fairy 3" slice="1" item="FAIRY_BIG" name="Gossip Stone 3" xyz="782;410;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0xc">
-        <xflag type="gossip" location="Ocean Gossip Grotto Gossip Fairy 4" slice="0" item="FAIRY" name="Gossip Fairy Grotto Gossip 4" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Ocean Gossip Grotto Gossip Big Fairy 4" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Grotto Gossip 4" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Ocean Gossip Grotto Gossip Fairy 4" slice="0" item="FAIRY" name="Gossip Stone 4" xyz="841;469;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Ocean Gossip Grotto Gossip Big Fairy 4" slice="1" item="FAIRY_BIG" name="Gossip Stone 4" xyz="825;453;0"/>
+        </rendering_option>
       </actor>
     </scene_rendering>
   </scene>
   <scene id="GROTTOS" room="0x1">
-    <scene_rendering id="MM_GROTTOS" loc_type="overworld">
+    <scene_rendering id="MM_GROTTO_TERMINA_SWAMP_GOSSIP" loc_type="overworld">
       <actor actor="0x3">
-        <xflag type="gossip" location="Swamp Gossip Grotto Gossip Fairy 1" slice="0" item="FAIRY" name="Gossip Fairy Grotto Gossip 1" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Swamp Gossip Grotto Gossip Big Fairy 1" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Grotto Gossip 1" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Swamp Gossip Grotto Gossip Fairy 1" slice="0" item="FAIRY" name="Gossip Stone 1" xyz="237;395;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Swamp Gossip Grotto Gossip Big Fairy 1" slice="1" item="FAIRY_BIG" name="Gossip Stone 1" xyz="221;404;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0x4">
-        <xflag type="gossip" location="Swamp Gossip Grotto Gossip Fairy 2" slice="0" item="FAIRY" name="Gossip Fairy Grotto Gossip 2" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Swamp Gossip Grotto Gossip Big Fairy 2" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Grotto Gossip 2" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Swamp Gossip Grotto Gossip Fairy 2" slice="0" item="FAIRY" name="Gossip Stone 2" xyz="285;378;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Swamp Gossip Grotto Gossip Big Fairy 2" slice="1" item="FAIRY_BIG" name="Gossip Stone 2" xyz="270;387;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0x5">
-        <xflag type="gossip" location="Swamp Gossip Grotto Gossip Fairy 3" slice="0" item="FAIRY" name="Gossip Fairy Grotto Gossip 3" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Swamp Gossip Grotto Gossip Big Fairy 3" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Grotto Gossip 3" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Swamp Gossip Grotto Gossip Fairy 3" slice="0" item="FAIRY" name="Gossip Stone 3" xyz="332;362;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Swamp Gossip Grotto Gossip Big Fairy 3" slice="1" item="FAIRY_BIG" name="Gossip Stone 3" xyz="317;369;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0x6">
-        <xflag type="gossip" location="Swamp Gossip Grotto Gossip Fairy 4" slice="0" item="FAIRY" name="Gossip Fairy Grotto Gossip 4" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Swamp Gossip Grotto Gossip Big Fairy 4" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Grotto Gossip 4" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Swamp Gossip Grotto Gossip Fairy 4" slice="0" item="FAIRY" name="Gossip Stone 4" xyz="363;350;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Swamp Gossip Grotto Gossip Big Fairy 4" slice="1" item="FAIRY_BIG" name="Gossip Stone 4" xyz="349;357;0"/>
+        </rendering_option>
       </actor>
     </scene_rendering>
   </scene>
@@ -579,40 +635,72 @@
         <xflag type="grass" location="Canyon Gossip Grotto Grass 5" actor="0x4" item="RANDOM" name="Grass 5" xyz="702;422;0"/>
       </rendering_option>
       <actor actor="0x5">
-        <xflag type="gossip" location="Canyon Gossip Grotto Gossip Fairy 1" slice="0" item="FAIRY" name="Gossip Fairy Grotto Gossip 1" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Canyon Gossip Grotto Gossip Big Fairy 1" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Grotto Gossip 1" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Canyon Gossip Grotto Gossip Fairy 1" slice="0" item="FAIRY" name="Gossip Stone 1" xyz="138;459;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Canyon Gossip Grotto Gossip Big Fairy 1" slice="1" item="FAIRY_BIG" name="Gossip Stone 1" xyz="126;473;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0x6">
-        <xflag type="gossip" location="Canyon Gossip Grotto Gossip Fairy 2" slice="0" item="FAIRY" name="Gossip Fairy Grotto Gossip 2" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Canyon Gossip Grotto Gossip Big Fairy 2" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Grotto Gossip 2" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Canyon Gossip Grotto Gossip Fairy 2" slice="0" item="FAIRY" name="Gossip Stone 2" xyz="175;421;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Canyon Gossip Grotto Gossip Big Fairy 2" slice="1" item="FAIRY_BIG" name="Gossip Stone 2" xyz="162;434;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0x7">
-        <xflag type="gossip" location="Canyon Gossip Grotto Gossip Fairy 3" slice="0" item="FAIRY" name="Gossip Fairy Grotto Gossip 3" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Canyon Gossip Grotto Gossip Big Fairy 3" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Grotto Gossip 3" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Canyon Gossip Grotto Gossip Fairy 3" slice="0" item="FAIRY" name="Gossip Stone 3" xyz="281;408;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Canyon Gossip Grotto Gossip Big Fairy 3" slice="1" item="FAIRY_BIG" name="Gossip Stone 3" xyz="194;403;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0x8">
-        <xflag type="gossip" location="Canyon Gossip Grotto Gossip Fairy 4" slice="0" item="FAIRY" name="Gossip Fairy Grotto Gossip 4" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Canyon Gossip Grotto Gossip Big Fairy 4" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Grotto Gossip 4" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Canyon Gossip Grotto Gossip Fairy 4" slice="0" item="FAIRY" name="Gossip Stone 4" xyz="243;356;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Canyon Gossip Grotto Gossip Big Fairy 4" slice="1" item="FAIRY_BIG" name="Gossip Stone 4" xyz="229;370;0"/>
+        </rendering_option>
       </actor>
     </scene_rendering>
   </scene>
   <scene id="GROTTOS" room="0x3">
-    <scene_rendering id="MM_GROTTOS" loc_type="overworld">
+    <scene_rendering id="MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP" loc_type="overworld">
       <actor actor="0x1">
-        <xflag type="gossip" location="Mountain Gossip Grotto Gossip Fairy 1" slice="0" item="FAIRY" name="Gossip Fairy Grotto Gossip 1" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Mountain Gossip Grotto Gossip Big Fairy 1" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Grotto Gossip 1" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Mountain Gossip Grotto Gossip Fairy 1" slice="0" item="FAIRY" name="Gossip Stone 1" xyz="328;556;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Mountain Gossip Grotto Gossip Big Fairy 1" slice="1" item="FAIRY_BIG" name="Gossip Stone 1" xyz="310;568;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0x2">
-        <xflag type="gossip" location="Mountain Gossip Grotto Gossip Fairy 2" slice="0" item="FAIRY" name="Gossip Fairy Grotto Gossip 2" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Mountain Gossip Grotto Gossip Big Fairy 2" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Grotto Gossip 2" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Mountain Gossip Grotto Gossip Fairy 2" slice="0" item="FAIRY" name="Gossip Stone 2" xyz="384;525;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Mountain Gossip Grotto Gossip Big Fairy 2" slice="1" item="FAIRY_BIG" name="Gossip Stone 2" xyz="359;537;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0x3">
-        <xflag type="gossip" location="Mountain Gossip Grotto Gossip Fairy 3" slice="0" item="FAIRY" name="Gossip Fairy Grotto Gossip 3" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Mountain Gossip Grotto Gossip Big Fairy 3" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Grotto Gossip 3" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Mountain Gossip Grotto Gossip Fairy 3" slice="0" item="FAIRY" name="Gossip Stone 3" xyz="437;499;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Mountain Gossip Grotto Gossip Big Fairy 3" slice="1" item="FAIRY_BIG" name="Gossip Stone 3" xyz="423;509;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0x4">
-        <xflag type="gossip" location="Mountain Gossip Grotto Gossip Fairy 4" slice="0" item="FAIRY" name="Gossip Fairy Grotto Gossip 4" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Mountain Gossip Grotto Gossip Big Fairy 4" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Grotto Gossip 4" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Mountain Gossip Grotto Gossip Fairy 4" slice="0" item="FAIRY" name="Gossip Stone 4" xyz="473;479;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Mountain Gossip Grotto Gossip Big Fairy 4" slice="1" item="FAIRY_BIG" name="Gossip Stone 4" xyz="459;489;0"/>
+        </rendering_option>
       </actor>
     </scene_rendering>
   </scene>

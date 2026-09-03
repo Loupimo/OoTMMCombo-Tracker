@@ -32,8 +32,12 @@
         <xflag type="boulder-red" location="Road to Ikana Red Boulder" slice="0x0" actor="0x5" item="NOTHING" name="Boulder" xyz="927;460;0"/>
       </rendering_option>
       <actor actor="0x2">
-        <xflag type="gossip" location="Road to Ikana Gossip Fairy" slice="0" item="FAIRY" name="Gossip Fairy" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Road to Ikana Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Road to Ikana Gossip Fairy" slice="0" item="FAIRY" name="Gossip Stone" xyz="762;566;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Road to Ikana Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Stone" xyz="758;583;0"/>
+        </rendering_option>
       </actor>
     </scene_rendering>
   </scene>

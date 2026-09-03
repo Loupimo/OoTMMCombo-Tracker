@@ -49,38 +49,38 @@
       <rendering_option room="4">
         <gs location="Fire Temple GS Scarecrow Top" flag="0x23" item="GS_TOKEN" name="Scarecrow - Top" xyz="1152;352;0"/>
       </rendering_option>
-      <xflag type="pot" location="Fire Temple Pot Lava Room 1" slice="0x0" setup="0x0" room="0x1" actor="0x1a" item="ARROWS_10" name="Lava Room 1" xyz="1849;933;0"/>
-      <xflag type="pot" location="Fire Temple Pot Lava Room 2" slice="0x0" setup="0x0" room="0x1" actor="0x1b" item="RECOVERY_HEART" name="Lava Room 2" xyz="1860;933;0"/>
-      <xflag type="pot" location="Fire Temple Pot Lava Room 3" slice="0x0" setup="0x0" room="0x1" actor="0x1c" item="ARROWS_10" name="Lava Room 3" xyz="1872;933;0"/>
-      <xflag type="pot" location="Fire Temple Pot Pre-Boss Room 1" slice="0x0" setup="0x0" room="0x2" actor="0x8" item="FAIRY" name="Pre-Boss Room 1" xyz="864;957;0"/>
-      <xflag type="pot" location="Fire Temple Pot Pre-Boss Room 2" slice="0x0" setup="0x0" room="0x2" actor="0x9" item="BOMB" name="Pre-Boss Room 2" xyz="864;968;0"/>
-      <xflag type="pot" location="Fire Temple Pot Pre-Boss Room 3" slice="0x0" setup="0x0" room="0x2" actor="0xa" item="BOMB" name="Pre-Boss Room 3" xyz="880;957;0"/>
-      <xflag type="pot" location="Fire Temple Pot Pre-Boss Room 4" slice="0x0" setup="0x0" room="0x2" actor="0xb" item="FAIRY" name="Pre-Boss Room 4" xyz="880;968;0"/>
+      <xflag type="pot" location="Fire Temple Pot Lava Room 1" room="0x1" actor="0x1a" item="ARROWS_10" name="Lava Room 1" xyz="1849;933;0"/>
+      <xflag type="pot" location="Fire Temple Pot Lava Room 2" room="0x1" actor="0x1b" item="RECOVERY_HEART" name="Lava Room 2" xyz="1860;933;0"/>
+      <xflag type="pot" location="Fire Temple Pot Lava Room 3" room="0x1" actor="0x1c" item="ARROWS_10" name="Lava Room 3" xyz="1872;933;0"/>
+      <xflag type="pot" location="Fire Temple Pot Pre-Boss Room 1" room="0x2" actor="0x8" item="FAIRY" name="Pre-Boss Room 1" xyz="864;957;0"/>
+      <xflag type="pot" location="Fire Temple Pot Pre-Boss Room 2" room="0x2" actor="0x9" item="BOMB" name="Pre-Boss Room 2" xyz="864;968;0"/>
+      <xflag type="pot" location="Fire Temple Pot Pre-Boss Room 3" room="0x2" actor="0xa" item="BOMB" name="Pre-Boss Room 3" xyz="880;957;0"/>
+      <xflag type="pot" location="Fire Temple Pot Pre-Boss Room 4" room="0x2" actor="0xb" item="FAIRY" name="Pre-Boss Room 4" xyz="880;968;0"/>
       <rendering_option room="2">
-        <xflag type="pot" location="Fire Temple Pot Before Miniboss 1" slice="0x0" setup="0x0" room="0xa" actor="0x33" item="BOMB" name="Before Miniboss 1" xyz="849;778;1"/>
-        <xflag type="pot" location="Fire Temple Pot Before Miniboss 2" slice="0x0" setup="0x0" room="0xa" actor="0x34" item="RECOVERY_HEART" name="Before Miniboss 2" xyz="833;777;0"/>
-        <xflag type="pot" location="Fire Temple Pot Before Miniboss 3" slice="0x0" setup="0x0" room="0xa" actor="0x35" item="RECOVERY_HEART" name="Before Miniboss 3" xyz="727;859;0"/>
-        <xflag type="pot" location="Fire Temple Pot Before Miniboss 4" slice="0x0" setup="0x0" room="0xa" actor="0x36" item="BOMB" name="Before Miniboss 4" xyz="727;875;0"/>
-        <xflag type="pot" location="Fire Temple Pot Ring 1" slice="0x0" setup="0x0" room="0xa" actor="0x37" item="RECOVERY_HEART" name="Ring 1" xyz="484;830;0"/>
-        <xflag type="pot" location="Fire Temple Pot Ring 2" slice="0x0" setup="0x0" room="0xa" actor="0x38" item="RECOVERY_HEART" name="Ring 2" xyz="498;842;0"/>
-        <xflag type="pot" location="Fire Temple Pot Ring 3" slice="0x0" setup="0x0" room="0xa" actor="0x39" item="RECOVERY_HEART" name="Ring 3" xyz="431;834;0"/>
-        <xflag type="pot" location="Fire Temple Pot Ring 4" slice="0x0" setup="0x0" room="0xa" actor="0x3a" item="RECOVERY_HEART" name="Ring 4" xyz="417;846;0"/>
+        <xflag type="pot" location="Fire Temple Pot Before Miniboss 1" room="0xa" actor="0x33" item="BOMB" name="Before Miniboss 1" xyz="849;778;1"/>
+        <xflag type="pot" location="Fire Temple Pot Before Miniboss 2" room="0xa" actor="0x34" item="RECOVERY_HEART" name="Before Miniboss 2" xyz="833;777;0"/>
+        <xflag type="pot" location="Fire Temple Pot Before Miniboss 3" room="0xa" actor="0x35" item="RECOVERY_HEART" name="Before Miniboss 3" xyz="727;859;0"/>
+        <xflag type="pot" location="Fire Temple Pot Before Miniboss 4" room="0xa" actor="0x36" item="BOMB" name="Before Miniboss 4" xyz="727;875;0"/>
+        <xflag type="pot" location="Fire Temple Pot Ring 1" room="0xa" actor="0x37" item="RECOVERY_HEART" name="Ring 1" xyz="484;830;0"/>
+        <xflag type="pot" location="Fire Temple Pot Ring 2" room="0xa" actor="0x38" item="RECOVERY_HEART" name="Ring 2" xyz="498;842;0"/>
+        <xflag type="pot" location="Fire Temple Pot Ring 3" room="0xa" actor="0x39" item="RECOVERY_HEART" name="Ring 3" xyz="431;834;0"/>
+        <xflag type="pot" location="Fire Temple Pot Ring 4" room="0xa" actor="0x3a" item="RECOVERY_HEART" name="Ring 4" xyz="417;846;0"/>
       </rendering_option>
       <rendering_option room="3">
-        <xflag type="crate" location="Fire Temple Crate 1" slice="0x0" setup="0x0" room="0xe" actor="0x2" item="NOTHING" name="Small Crate 1" xyz="402;1248;0"/>
-        <xflag type="crate" location="Fire Temple Crate 2" slice="0x0" setup="0x0" room="0xe" actor="0x3" item="NOTHING" name="Small Crate 2" xyz="315;1245;0"/>
+        <xflag type="crate" location="Fire Temple Crate 1" room="0xe" actor="0x2" item="NOTHING" name="Small Crate 1" xyz="402;1248;0"/>
+        <xflag type="crate" location="Fire Temple Crate 2" room="0xe" actor="0x3" item="NOTHING" name="Small Crate 2" xyz="315;1245;0"/>
       </rendering_option>
       <rendering_option room="2">
-        <xflag type="heart" location="Fire Temple Heart Ledge Above Main 1" slice="0x0" setup="0x0" room="0x6" actor="0x0" item="RECOVERY_HEART" name="Ledge Above Main 1" xyz="876;2659;0"/>
-        <xflag type="heart" location="Fire Temple Heart Ledge Above Main 2" slice="0x0" setup="0x0" room="0x6" actor="0x1" item="RECOVERY_HEART" name="Ledge Above Main 2" xyz="912;2638;0"/>
-        <xflag type="heart" location="Fire Temple Heart Ledge Above Main 3" slice="0x0" setup="0x0" room="0x6" actor="0x2" item="RECOVERY_HEART" name="Ledge Above Main 3" xyz="940;2619;0"/>
-        <xflag type="heart" location="Fire Temple Heart Map Room 1" slice="0x0" setup="0x0" room="0x10" actor="0x7" item="RECOVERY_HEART" name="Map Room 1" xyz="824;1927;0"/>
-        <xflag type="heart" location="Fire Temple Heart Map Room 2" slice="0x0" setup="0x0" room="0x10" actor="0x8" item="RECOVERY_HEART" name="Map Room 2" xyz="821;2006;0"/>
-        <xflag type="heart" location="Fire Temple Heart Map Room 3" slice="0x0" setup="0x0" room="0x10" actor="0x9" item="RECOVERY_HEART" name="Map Room 3" xyz="1225;2225;0"/>
+        <xflag type="heart" location="Fire Temple Heart Ledge Above Main 1" room="0x6" actor="0x0" item="RECOVERY_HEART" name="Ledge Above Main 1" xyz="876;2659;0"/>
+        <xflag type="heart" location="Fire Temple Heart Ledge Above Main 2" room="0x6" actor="0x1" item="RECOVERY_HEART" name="Ledge Above Main 2" xyz="912;2638;0"/>
+        <xflag type="heart" location="Fire Temple Heart Ledge Above Main 3" room="0x6" actor="0x2" item="RECOVERY_HEART" name="Ledge Above Main 3" xyz="940;2619;0"/>
+        <xflag type="heart" location="Fire Temple Heart Map Room 1" room="0x10" actor="0x7" item="RECOVERY_HEART" name="Map Room 1" xyz="824;1927;0"/>
+        <xflag type="heart" location="Fire Temple Heart Map Room 2" room="0x10" actor="0x8" item="RECOVERY_HEART" name="Map Room 2" xyz="821;2006;0"/>
+        <xflag type="heart" location="Fire Temple Heart Map Room 3" room="0x10" actor="0x9" item="RECOVERY_HEART" name="Map Room 3" xyz="1225;2225;0"/>
       </rendering_option>
-      <xflag type="heart" location="Fire Temple Heart Elevator 1" slice="0x0" setup="0x0" room="0x15" actor="0x6" item="RECOVERY_HEART" name="Elevator 1" xyz="2047;240;0"/>
-      <xflag type="heart" location="Fire Temple Heart Elevator 2" slice="0x0" setup="0x0" room="0x15" actor="0x7" item="RECOVERY_HEART" name="Elevator 2" xyz="2082;240;0"/>
-      <xflag type="heart" location="Fire Temple Heart Elevator 3" slice="0x0" setup="0x0" room="0x15" actor="0x8" item="RECOVERY_HEART" name="Elevator 3" xyz="2062;221;0"/>
+      <xflag type="heart" location="Fire Temple Heart Elevator 1" room="0x15" actor="0x6" item="RECOVERY_HEART" name="Elevator 1" xyz="2047;240;0"/>
+      <xflag type="heart" location="Fire Temple Heart Elevator 2" room="0x15" actor="0x7" item="RECOVERY_HEART" name="Elevator 2" xyz="2082;240;0"/>
+      <xflag type="heart" location="Fire Temple Heart Elevator 3" room="0x15" actor="0x8" item="RECOVERY_HEART" name="Elevator 3" xyz="2062;221;0"/>
     </scene_rendering>
   </scene>
 </checks>

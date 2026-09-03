@@ -1,0 +1,16 @@
+"Forest Temple Boss":
+  boss: true
+  age_change: false
+  dungeon: Forest
+  events:
+    BOSS_PHANTOM_GANON: "can_kill_phantom_ganon"
+  exits:
+    "Forest Temple After Boss": "event(BOSS_PHANTOM_GANON)"
+
+"Forest Temple After Boss":
+  boss: true
+  age_change: false
+  dungeon: Forest
+  locations:
+    "Forest Temple Boss": "true"
+    "Forest Temple Boss Container": "true"

@@ -829,8 +829,24 @@ impl Settings {
                 T::mask => self.exclude(excluded, game, idx, o, self.value("shuffleMaskTrades")),
                 T::merchant => self.exclude(excluded, game, idx, o, self.value("shuffleMerchantsOot")),
                 T::fish => self.exclude(excluded, game, idx, o, self.value("pondFishShuffle")),
-                T::fairy => self.exclude(excluded, game, idx, o, self.value("fairyFountainFairyShuffleOot")),
-                T::fairy_spot => self.exclude(excluded, game, idx, o, self.value("fairySpotShuffleOot")),
+                T::fairy => {
+                    // render_type=fairy groups small gossip-stone fairies with real fountain fairies.
+                    let key = if o.type_ == T::gossip {
+                        "shuffleGossipFairiesOot"
+                    } else {
+                        "fairyFountainFairyShuffleOot"
+                    };
+                    self.exclude(excluded, game, idx, o, self.value(key));
+                }
+                T::fairy_spot => {
+                    // render_type=fairy_spot groups big gossip-stone fairies with real fairy spots.
+                    let key = if o.type_ == T::gossip_big {
+                        "shuffleGossipBigFairiesOot"
+                    } else {
+                        "fairySpotShuffleOot"
+                    };
+                    self.exclude(excluded, game, idx, o, self.value(key));
+                }
                 T::egg => self.exclude(excluded, game, idx, o, self.value("eggShuffle")),
                 T::npc => {
                     match o.map_icon {
@@ -940,7 +956,17 @@ impl Settings {
                 T::redboulder => self.exclude(excluded, game, idx, o, self.value("shuffleRedBouldersMm")),
                 T::icicle => self.exclude(excluded, game, idx, o, self.value("shuffleIciclesMm")),
                 T::merchant => self.exclude(excluded, game, idx, o, self.value("shuffleMerchantsMm")),
-                T::fairy => self.exclude(excluded, game, idx, o, self.value("fairyFountainFairyShuffleMm")),
+                T::fairy => {
+                    // render_type=fairy groups small gossip-stone fairies with real fountain fairies.
+                    let key = if o.type_ == T::gossip {
+                        "shuffleGossipFairiesMm"
+                    } else {
+                        "fairyFountainFairyShuffleMm"
+                    };
+                    self.exclude(excluded, game, idx, o, self.value(key));
+                }
+                // MM fairy_spot render type is only ever big gossip-stone fairies.
+                T::fairy_spot => self.exclude(excluded, game, idx, o, self.value("shuffleGossipBigFairiesMm")),
                 T::npc => {
                     if o.scene == s::MM_LOTTERY {
                         self.exclude(excluded, game, idx, o, self.value("shuffleLotteryMm"));

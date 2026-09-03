@@ -7,15 +7,15 @@
       </rendering_option>
       <chest location="Haunted Wasteland Chest" flag="0x00" item="RUPEE_PURPLE" hint="HAUNTED_WASTELAND" name="Stele" xyz="199;225;0"/>
       <gs location="Haunted Wasteland GS" flag="0xa9" item="GS_TOKEN" name="Stele" xyz="169;208;0"/>
-      <xflag type="pot" location="Haunted Wasteland Pot 1" slice="0x0" setup="0x0" room="0x0" actor="0x0" item="RECOVERY_HEART" name="Pot 1" xyz="190;200;0"/>
-      <xflag type="pot" location="Haunted Wasteland Pot 2" slice="0x0" setup="0x0" room="0x0" actor="0x1" item="NUTS_5" name="Pot 2" xyz="196;203;0"/>
-      <xflag type="pot" location="Haunted Wasteland Pot 3" slice="0x0" setup="0x0" room="0x0" actor="0x2" item="FAIRY" name="Pot 3" xyz="171;229;0"/>
-      <xflag type="pot" location="Haunted Wasteland Pot 4" slice="0x0" setup="0x0" room="0x0" actor="0x3" item="MAGIC_JAR_SMALL" name="Pot 4" xyz="177;232;0"/>
-      <xflag type="crate" location="Haunted Wasteland Crate Entrance" slice="0x0" setup="0x0" room="0x1" actor="0x25" item="RUPEE_GREEN" name="Entrance" xyz="866;211;0"/>
-      <xflag type="crate" location="Haunted Wasteland Crate After Pit 1" slice="0x0" setup="0x0" room="0x1" actor="0x22" item="RUPEE_GREEN" name="After Pit 1" xyz="794;255;1"/>
-      <xflag type="crate" location="Haunted Wasteland Crate After Pit 2" slice="0x0" setup="0x0" room="0x1" actor="0x23" item="RUPEE_GREEN" name="After Pit 2" xyz="806;275;1"/>
-      <xflag type="crate" location="Haunted Wasteland Crate After Pit 3" slice="0x0" setup="0x0" room="0x1" actor="0x24" item="RUPEE_GREEN" name="After Pit 3" xyz="785;236;0"/>
-      <xflag type="crate" location="Haunted Wasteland Crate Deep" slice="0x0" setup="0x0" room="0x1" actor="0x21" item="RUPEE_GREEN" name="Poe Chase" xyz="159;520;0"/>
+      <xflag type="pot" location="Haunted Wasteland Pot 1" room="0x0" actor="0x0" item="RECOVERY_HEART" name="Pot 1" xyz="190;200;0"/>
+      <xflag type="pot" location="Haunted Wasteland Pot 2" room="0x0" actor="0x1" item="NUTS_5" name="Pot 2" xyz="196;203;0"/>
+      <xflag type="pot" location="Haunted Wasteland Pot 3" room="0x0" actor="0x2" item="FAIRY" name="Pot 3" xyz="171;229;0"/>
+      <xflag type="pot" location="Haunted Wasteland Pot 4" room="0x0" actor="0x3" item="MAGIC_JAR_SMALL" name="Pot 4" xyz="177;232;0"/>
+      <xflag type="crate" location="Haunted Wasteland Crate Entrance" room="0x1" actor="0x25" item="RUPEE_GREEN" name="Entrance" xyz="866;211;0"/>
+      <xflag type="crate" location="Haunted Wasteland Crate After Pit 1" room="0x1" actor="0x22" item="RUPEE_GREEN" name="After Pit 1" xyz="794;255;1"/>
+      <xflag type="crate" location="Haunted Wasteland Crate After Pit 2" room="0x1" actor="0x23" item="RUPEE_GREEN" name="After Pit 2" xyz="806;275;1"/>
+      <xflag type="crate" location="Haunted Wasteland Crate After Pit 3" room="0x1" actor="0x24" item="RUPEE_GREEN" name="After Pit 3" xyz="785;236;0"/>
+      <xflag type="crate" location="Haunted Wasteland Crate Deep" room="0x1" actor="0x21" item="RUPEE_GREEN" name="Poe Chase" xyz="159;520;0"/>
     </scene_rendering>
   </scene>
 </checks>

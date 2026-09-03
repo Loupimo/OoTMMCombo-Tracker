@@ -154,7 +154,7 @@ enum class ROMVersion;
 #define OOT_SONG_SARIA 0x8B
 #define OOT_SONG_SUN 0x8C
 #define OOT_SONG_TIME 0x8D
-#define OOT_SONG_OF_STORMS 0x8E
+#define OOT_SONG_STORMS 0x8E
 #define OOT_SONG_EMPTINESS 0x8F
 #define OOT_SONG_HEALING 0x90
 #define OOT_SONG_SOARING 0x91
@@ -676,7 +676,7 @@ enum class ROMVersion;
 #define MM_SONG_HEALING 0x290
 #define MM_SONG_EPONA 0x291
 #define MM_SONG_SOARING 0x292
-#define MM_SONG_OF_STORMS 0x293
+#define MM_SONG_STORMS 0x293
 #define MM_SONG_SUN 0x294
 #define MM_SONG_TP_FOREST 0x295
 #define MM_SONG_TP_FIRE 0x296

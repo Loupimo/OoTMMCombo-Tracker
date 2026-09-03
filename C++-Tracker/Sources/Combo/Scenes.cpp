@@ -614,7 +614,7 @@ uint32_t GetSceneNPC(uint32_t NPC, uint32_t Game)
 				return OOT_TEMPLE_OF_TIME;
 
 			// Tomb Dampe Windmill
-			case OOT_SONG_STORMS:
+			case OOT_SONG_OF_STORMS:
 				return OOT_TOMB_DAMPE_WINDMILL;
 
 			// Gerudo Valley
@@ -961,7 +961,7 @@ uint32_t GetSceneNPC(uint32_t NPC, uint32_t Game)
 				return MM_GORMAN_TRACK;
 
 			// Beneath the Graveyard
-			case MM_SONG_STORMS:
+			case MM_SONG_OF_STORMS:
 				return MM_BENEATH_THE_GRAVEYARD;
 
 			// Ikana Canyon

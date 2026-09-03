@@ -10,8 +10,8 @@
         <npc location="Pinnacle Rock HP" npc="SEAHORSE_HEART_PIECE" item="HEART_PIECE" hint="PINNACLE_ROCK_HP" name="Seahorse" xyz="311;235;0"/>
       </rendering_option>
       <rendering_option layout="all" type="none">
-        <xflag type="rock" location="Pinnacle Rock Rock Unreachable 1" slice="0x0" setup="0x0" room="0x0" actor="0x1c" item="RANDOM" name="Unreachable 1" xyz="0;0;0"/>
-        <xflag type="rock" location="Pinnacle Rock Rock Unreachable 2" slice="0x0" setup="0x0" room="0x0" actor="0x1d" item="RANDOM" name="Unreachable 2" xyz="0;0;0"/>
+        <xflag type="rock" location="Pinnacle Rock Rock Unreachable 1" actor="0x1c" item="RANDOM" name="Unreachable 1" xyz="0;0;0"/>
+        <xflag type="rock" location="Pinnacle Rock Rock Unreachable 2" actor="0x1d" item="RANDOM" name="Unreachable 2" xyz="0;0;0"/>
       </rendering_option>
       <rendering_option layout="all">
         <xflag type="pot" location="Pinnacle Rock Pot 01" actor="0x3" item="MAGIC_JAR_SMALL" name="Pot 1" xyz="526;438;0"/>

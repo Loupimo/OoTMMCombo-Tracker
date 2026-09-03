@@ -158,22 +158,65 @@ class Aug:
                 parts.append(f'{k}="{esc(a[k])}"')
         return f'{indent}<{el.tag} ' + " ".join(parts) + "/>"
 
-    def actor_render(self, actor):
-        """(rs, lt, ro_key) for grouping, taken from the actor's first xflag."""
+    def _actor_checks(self, actor):
+        """The actor's checks in document order, descending any nested <rendering_option> a
+        prior augment left inside the actor (keeps re-augmentation idempotent)."""
         for c in actor:
-            if c.tag in OBJ_TAGS:
-                rs, lt, ro, _, _, _ = self.render_of(c)
-                return rs, lt, ro
-        return None, "", ()
+            if c.tag == "rendering_option":
+                yield from self._actor_checks(c)
+            elif c.tag in OBJ_TAGS:
+                yield c
+
+    def actor_render(self, actor):
+        """(rs, lt, ro_key) for placing the actor. rs/lt come from its first check; the ro_key
+        is shared only when every check renders the same way. A heterogeneous actor - e.g. a
+        gossip stone whose small 'gossip' fairy renders as 'fairy' and its 'gossip-big' as
+        'fairy_spot' - returns an empty ro so scene_xml does not wrap it in one shared
+        <rendering_option>; emit_actor then gives each check its own nested one instead."""
+        rs = lt = None
+        ros = []
+        for c in self._actor_checks(actor):
+            crs, clt, cro, _, _, _ = self.render_of(c)
+            if rs is None:
+                rs, lt = crs, clt
+            ros.append(cro)
+        if not ros:
+            return None, "", ()
+        common = ros[0] if all(r == ros[0] for r in ros) else ()
+        return rs, lt, common
 
     def emit_actor(self, actor, indent, scene_sym=None):
+        checks = list(self._actor_checks(actor))
+        ros = [self.render_of(c)[2] for c in checks]
+        homogeneous = (not ros) or all(r == ros[0] for r in ros)
         lines = [f"{indent}<actor" + _attrs(actor) + ">"]
-        for c in actor:
+        for c in actor:                       # matches carry the identity; keep them first
             if c.tag == "match":
                 lines.append(f"{indent}  <match" + _attrs(c) + "/>")
-            elif c.tag in OBJ_TAGS:
+        if homogeneous:
+            # the actor's single render is carried by the enclosing <rendering_option> (scene_xml)
+            for c in checks:
                 _, _, _, name, xyz, _ = self.render_of(c)
                 lines.append(self.obj_xml(c, name, xyz, indent + "  ", scene_sym))
+        else:
+            # split: each check keeps its own render type via a nested <rendering_option>
+            k = 0
+            while k < len(checks):
+                ro = ros[k]
+                m = k
+                while m < len(checks) and ros[m] == ro:
+                    m += 1
+                pad = indent + "  "
+                if ro:
+                    roattr = " ".join(f'{kk}="{esc(vv)}"' for kk, vv in ro)
+                    lines.append(f"{indent}  <rendering_option {roattr}>")
+                    pad = indent + "    "
+                for c in checks[k:m]:
+                    _, _, _, name, xyz, _ = self.render_of(c)
+                    lines.append(self.obj_xml(c, name, xyz, pad, scene_sym))
+                if ro:
+                    lines.append(f"{indent}  </rendering_option>")
+                k = m
         lines.append(f"{indent}</actor>")
         return lines
 
@@ -294,9 +337,11 @@ def main():
     import glob
     pools = {"OOT_": load_pool(POOL_OOT), "MM_": load_pool(POOL_MM)}
 
-    # Hand-authored files carry user customisations absent from the pool -> never re-augment them.
-    HAND = {"oot/special.xml", "oot/overworld/kakariko.xml",
-            "oot/dungeons_mq/bottom_of_the_well_mq.xml"}
+    # Files whose render layer is NOT recoverable from the pool -> never re-augment them (they must
+    # be maintained by hand). Currently none: the former examples (oot/special, oot/overworld/kakariko,
+    # oot/dungeons_mq/bottom_of_the_well_mq) are now fully backed by the pool, so --all augments them
+    # like every other file. Add a "game/path.xml" here only if a file gains hand-only render data.
+    HAND = set()
     if sys.argv[1] == "--all":
         total = conv = 0
         report = {}

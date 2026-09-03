@@ -49,12 +49,12 @@
       <sr location="Gerudo Training Grounds SR Water 3" flag="0x4e" item="RUPEE_SILVER_GTG_WATER" name="Water 3" xyz="1359;1002;0"/>
       <sr location="Gerudo Training Grounds SR Water 4" flag="0x4f" item="RUPEE_SILVER_GTG_WATER" name="Water 4" xyz="1382;944;0"/>
       <sr location="Gerudo Training Grounds SR Water 5" flag="0x50" item="RUPEE_SILVER_GTG_WATER" name="Water 5" xyz="1269;1055;0"/>
-      <xflag type="heart" location="Gerudo Training Grounds Heart 1" slice="0x0" setup="0x0" room="0x7" actor="0xa" item="RECOVERY_HEART" name="Heart 1" xyz="1044;1256;0"/>
-      <xflag type="heart" location="Gerudo Training Grounds Heart 2" slice="0x0" setup="0x0" room="0x7" actor="0xb" item="RECOVERY_HEART" name="Heart 2" xyz="1132;1161;0"/>
-      <xflag type="fairy_spot" location="Gerudo Training Grounds Entrance Big Fairy" slice="0x0" setup="0x0" room="0x0" actor="0x8" item="FAIRY_BIG" name="Entrance" xyz="594;1103;0"/>
-      <xflag type="wonder" location="Gerudo Training Grounds Wonder Item Eye Statue Room" slice="0x0" setup="0x0" room="0x4" actor="0x2" item="MAGIC_JAR_LARGE" name="Eye Statue Room" xyz="578;409;0"/>
-      <xflag type="wonder" location="Gerudo Training Grounds Wonder Item Torch Slugs Room" slice="0x0" setup="0x0" room="0x5" actor="0x10" item="RUPEE_RED" name="Torch Slugs Room" xyz="1022;484;0"/>
-      <xflag type="wonder" location="Gerudo Training Grounds Wonder Item Beamos Room" slice="0x0" setup="0x0" room="0x7" actor="0xc" item="FLEXIBLE" name="Beamos Room" xyz="1041;1068;0"/>
+      <xflag type="heart" location="Gerudo Training Grounds Heart 1" slice="0x0" setup="0" room="0x7" actor="0xa" item="RECOVERY_HEART" name="Heart 1" xyz="1044;1256;0"/>
+      <xflag type="heart" location="Gerudo Training Grounds Heart 2" slice="0x0" setup="0" room="0x7" actor="0xb" item="RECOVERY_HEART" name="Heart 2" xyz="1132;1161;0"/>
+      <xflag type="fairy_spot" location="Gerudo Training Grounds Entrance Big Fairy" slice="0x0" setup="0" room="0x0" actor="0x8" item="FAIRY_BIG" name="Entrance" xyz="594;1103;0"/>
+      <xflag type="wonder" location="Gerudo Training Grounds Wonder Item Eye Statue Room" slice="0x0" setup="0" room="0x4" actor="0x2" item="MAGIC_JAR_LARGE" name="Eye Statue Room" xyz="578;409;0"/>
+      <xflag type="wonder" location="Gerudo Training Grounds Wonder Item Torch Slugs Room" slice="0x0" setup="0" room="0x5" actor="0x10" item="RUPEE_RED" name="Torch Slugs Room" xyz="1022;484;0"/>
+      <xflag type="wonder" location="Gerudo Training Grounds Wonder Item Beamos Room" slice="0x0" setup="0" room="0x7" actor="0xc" item="FLEXIBLE" name="Beamos Room" xyz="1041;1068;0"/>
     </scene_rendering>
   </scene>
 </checks>

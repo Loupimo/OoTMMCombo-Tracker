@@ -17,7 +17,6 @@ pub mod ids {
     pub const GORON_BABY: u32 = 0x5;
     pub const ZORA_KING_TUNIC: u32 = 0x5;
     pub const GORON_KEG: u32 = 0x6;
-    pub const OOT_SONG_STORMS: u32 = 0x6;
     pub const GERUDO_CARD: u32 = 0x7;
     pub const SONG_EPONA: u32 = 0x7;
     pub const LOST_WOODS_TARGET: u32 = 0x8;
@@ -30,7 +29,6 @@ pub mod ids {
     pub const MASK_STONE: u32 = 0xb;
     pub const LOST_WOODS_MEMORY: u32 = 0xc;
     pub const MASK_GARO: u32 = 0xc;
-    pub const MM_SONG_STORMS: u32 = 0xd;
     pub const THEATER_STICKS: u32 = 0xd;
     pub const MASK_GIBDO: u32 = 0xe;
     pub const THEATER_NUTS: u32 = 0xe;
@@ -223,6 +221,8 @@ pub mod ids {
     pub const LOTTERY_NIGHT_1: u32 = 0x7a;
     pub const LOTTERY_NIGHT_2: u32 = 0x7b;
     pub const LOTTERY_NIGHT_3: u32 = 0x7c;
+    pub const OOT_SONG_STORMS: u32 = 0x8e;
+    pub const MM_SONG_STORMS: u32 = 0x293;
 }
 
 
@@ -247,7 +247,7 @@ pub mod iid {
     pub const ZORA_KING_TUNIC: u32 = 0x5;
     pub const GORON_KEG: u32 = 0x6;
     pub const OOT_BOOMERANG: u32 = 0x6;
-    pub const OOT_SONG_STORMS: u32 = 0x6;
+    pub const OOT_SONG_OF_STORMS: u32 = 0x6;
     pub const GERUDO_CARD: u32 = 0x7;
     pub const OOT_STICK: u32 = 0x7;
     pub const SONG_EPONA: u32 = 0x7;
@@ -266,7 +266,7 @@ pub mod iid {
     pub const LOST_WOODS_MEMORY: u32 = 0xc;
     pub const MASK_GARO: u32 = 0xc;
     pub const OOT_OCARINA_TIME: u32 = 0xc;
-    pub const MM_SONG_STORMS: u32 = 0xd;
+    pub const MM_SONG_OF_STORMS: u32 = 0xd;
     pub const OOT_HAMMER: u32 = 0xd;
     pub const THEATER_STICKS: u32 = 0xd;
     pub const MASK_GIBDO: u32 = 0xe;
@@ -591,7 +591,7 @@ pub mod iid {
     pub const OOT_SONG_SARIA: u32 = 0x8b;
     pub const OOT_SONG_SUN: u32 = 0x8c;
     pub const OOT_SONG_TIME: u32 = 0x8d;
-    pub const OOT_SONG_OF_STORMS: u32 = 0x8e;
+    pub const OOT_SONG_STORMS: u32 = 0x8e;
     pub const OOT_SONG_EMPTINESS: u32 = 0x8f;
     pub const OOT_SONG_HEALING: u32 = 0x90;
     pub const OOT_SONG_SOARING: u32 = 0x91;
@@ -1108,7 +1108,7 @@ pub mod iid {
     pub const MM_SONG_HEALING: u32 = 0x290;
     pub const MM_SONG_EPONA: u32 = 0x291;
     pub const MM_SONG_SOARING: u32 = 0x292;
-    pub const MM_SONG_OF_STORMS: u32 = 0x293;
+    pub const MM_SONG_STORMS: u32 = 0x293;
     pub const MM_SONG_SUN: u32 = 0x294;
     pub const MM_SONG_TP_FOREST: u32 = 0x295;
     pub const MM_SONG_TP_FIRE: u32 = 0x296;

@@ -1,0 +1,65 @@
+animations:
+  - name: gPlayerAnim_alink_dance_loop
+    home_game: mm
+    header_offset: 0xCF98
+    frame_data_offset: 0x2CB480
+
+  - name: gPlayerAnim_link_hammer_hit
+    home_game: oot
+    header_offset: 0x2C40
+    frame_data_offset: 0x125170
+
+  - name: gPlayerAnim_link_hammer_hit_end
+    home_game: oot
+    header_offset: 0x2C50
+    frame_data_offset: 0x125740
+
+  - name: gPlayerAnim_link_hammer_hit_endR
+    home_game: oot
+    header_offset: 0x2C48
+    frame_data_offset: 0x126350
+
+  - name: gPlayerAnim_link_hammer_side_hit
+    home_game: oot
+    header_offset: 0x2C70
+    frame_data_offset: 0x128EE0
+
+  - name: gPlayerAnim_link_hammer_side_hit_end
+    home_game: oot
+    header_offset: 0x2C80
+    frame_data_offset: 0x129530
+
+  - name: gPlayerAnim_link_hammer_side_hit_endR
+    home_game: oot
+    header_offset: 0x2C78
+    frame_data_offset: 0x12A140
+
+  - name: gPlayerAnim_link_boom_catch
+    home_game: oot
+    header_offset: 0x25F8
+    frame_data_offset: 0x756E0
+
+  - name: gPlayerAnim_link_boom_throwL
+    home_game: oot
+    header_offset: 0x2600
+    frame_data_offset: 0x76AD0
+
+  - name: gPlayerAnim_link_boom_throwR
+    home_game: oot
+    header_offset: 0x2608
+    frame_data_offset: 0x77550
+
+  - name: gPlayerAnim_link_boom_throw_side_walkL
+    home_game: oot
+    header_offset: 0x2618
+    frame_data_offset: 0x77FD0
+
+  - name: gPlayerAnim_link_boom_throw_side_walkR
+    home_game: oot
+    header_offset: 0x2620
+    frame_data_offset: 0x78830
+
+  - name: gPlayerAnim_link_boom_throw_wait2waitR
+    home_game: oot
+    header_offset: 0x2628
+    frame_data_offset: 0x79090

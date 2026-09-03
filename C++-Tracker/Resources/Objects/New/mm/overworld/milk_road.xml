@@ -6,22 +6,26 @@
         <npc location="Milk Road Owl Statue" npc="OWL_MILK_ROAD" item="OWL_MILK_ROAD" name="Owl Statue" xyz="400;221;0"/>
       </rendering_option>
       <rendering_option layout="all">
-        <xflag type="grass" location="Milk Road Grass 1" slice="0x0" setup="0x0" room="0x0" actor="0x11" item="RANDOM" name="Grass 1" xyz="407;256;0"/>
-        <xflag type="grass" location="Milk Road Grass 2" slice="0x0" setup="0x0" room="0x0" actor="0x12" item="RANDOM" name="Grass 2" xyz="447;251;0"/>
-        <xflag type="grass" location="Milk Road Grass 3" slice="0x0" setup="0x0" room="0x0" actor="0x13" item="RANDOM" name="Grass 3" xyz="417;241;0"/>
-        <xflag type="grass" location="Milk Road Keaton Grass Reward 1" slice="0x0" setup="0x0" room="0x0" actor="0x6" item="RUPEE_GREEN" name="Keaton Grass 1" xyz="634;386;0"/>
-        <xflag type="grass" location="Milk Road Keaton Grass Reward 2" slice="0x1" setup="0x0" room="0x0" actor="0x6" item="RUPEE_GREEN" name="Keaton Grass 2" xyz="657;386;0"/>
-        <xflag type="grass" location="Milk Road Keaton Grass Reward 3" slice="0x2" setup="0x0" room="0x0" actor="0x6" item="RUPEE_GREEN" name="Keaton Grass 3" xyz="647;374;0"/>
-        <xflag type="grass" location="Milk Road Keaton Grass Reward 4" slice="0x3" setup="0x0" room="0x0" actor="0x6" item="RUPEE_GREEN" name="Keaton Grass 4" xyz="634;407;0"/>
-        <xflag type="grass" location="Milk Road Keaton Grass Reward 5" slice="0x4" setup="0x0" room="0x0" actor="0x6" item="RUPEE_GREEN" name="Keaton Grass 5" xyz="621;374;0"/>
-        <xflag type="grass" location="Milk Road Keaton Grass Reward 6" slice="0x5" setup="0x0" room="0x0" actor="0x6" item="RUPEE_GREEN" name="Keaton Grass 6" xyz="611;386;0"/>
-        <xflag type="grass" location="Milk Road Keaton Grass Reward 7" slice="0x6" setup="0x0" room="0x0" actor="0x6" item="RUPEE_GREEN" name="Keaton Grass 7" xyz="621;398;0"/>
-        <xflag type="grass" location="Milk Road Keaton Grass Reward 8" slice="0x7" setup="0x0" room="0x0" actor="0x6" item="RUPEE_GREEN" name="Keaton Grass 8" xyz="634;365;0"/>
-        <xflag type="grass" location="Milk Road Keaton Grass Reward 9" slice="0x8" setup="0x0" room="0x0" actor="0x6" item="RUPEE_RED" name="Keaton Grass 9" xyz="647;398;0"/>
+        <xflag type="grass" location="Milk Road Grass 1" slice="0x0" setup="0" room="0x0" actor="0x11" item="RANDOM" name="Grass 1" xyz="407;256;0"/>
+        <xflag type="grass" location="Milk Road Grass 2" slice="0x0" setup="0" room="0x0" actor="0x12" item="RANDOM" name="Grass 2" xyz="447;251;0"/>
+        <xflag type="grass" location="Milk Road Grass 3" slice="0x0" setup="0" room="0x0" actor="0x13" item="RANDOM" name="Grass 3" xyz="417;241;0"/>
+        <xflag type="grass" location="Milk Road Keaton Grass Reward 1" slice="0x0" setup="0" room="0x0" actor="0x6" item="RUPEE_GREEN" name="Keaton Grass 1" xyz="634;386;0"/>
+        <xflag type="grass" location="Milk Road Keaton Grass Reward 2" slice="0x1" setup="0" room="0x0" actor="0x6" item="RUPEE_GREEN" name="Keaton Grass 2" xyz="657;386;0"/>
+        <xflag type="grass" location="Milk Road Keaton Grass Reward 3" slice="0x2" setup="0" room="0x0" actor="0x6" item="RUPEE_GREEN" name="Keaton Grass 3" xyz="647;374;0"/>
+        <xflag type="grass" location="Milk Road Keaton Grass Reward 4" slice="0x3" setup="0" room="0x0" actor="0x6" item="RUPEE_GREEN" name="Keaton Grass 4" xyz="634;407;0"/>
+        <xflag type="grass" location="Milk Road Keaton Grass Reward 5" slice="0x4" setup="0" room="0x0" actor="0x6" item="RUPEE_GREEN" name="Keaton Grass 5" xyz="621;374;0"/>
+        <xflag type="grass" location="Milk Road Keaton Grass Reward 6" slice="0x5" setup="0" room="0x0" actor="0x6" item="RUPEE_GREEN" name="Keaton Grass 6" xyz="611;386;0"/>
+        <xflag type="grass" location="Milk Road Keaton Grass Reward 7" slice="0x6" setup="0" room="0x0" actor="0x6" item="RUPEE_GREEN" name="Keaton Grass 7" xyz="621;398;0"/>
+        <xflag type="grass" location="Milk Road Keaton Grass Reward 8" slice="0x7" setup="0" room="0x0" actor="0x6" item="RUPEE_GREEN" name="Keaton Grass 8" xyz="634;365;0"/>
+        <xflag type="grass" location="Milk Road Keaton Grass Reward 9" slice="0x8" setup="0" room="0x0" actor="0x6" item="RUPEE_RED" name="Keaton Grass 9" xyz="647;398;0"/>
       </rendering_option>
       <actor actor="0x2">
-        <xflag type="gossip" location="Milk Road Gossip Fairy" slice="0" item="FAIRY" name="Gossip Fairy" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Milk Road Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Milk Road Gossip Fairy" slice="0" item="FAIRY" name="Gossip Stone" xyz="568;395;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Milk Road Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Stone" xyz="549;385;0"/>
+        </rendering_option>
       </actor>
     </scene_rendering>
   </scene>
@@ -34,56 +38,56 @@
         <npc location="Gorman Track Milk Purchase" npc="GORMAN_MILK" item="MILK" name="Purchase - Milk" xyz="663;235;0"/>
       </rendering_option>
       <rendering_option layout="all">
-        <xflag type="crate" location="Gorman Track Crate" slice="0x0" setup="0x0" room="0x0" actor="0x49" item="NOTHING" name="Crate" xyz="640;242;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 01" slice="0x0" setup="0x0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 1" xyz="54;398;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 02" slice="0x1" setup="0x0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 2" xyz="48;366;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 03" slice="0x2" setup="0x0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 3" xyz="76;349;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 04" slice="0x3" setup="0x0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 4" xyz="103;366;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 05" slice="0x4" setup="0x0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 5" xyz="75;379;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 06" slice="0x5" setup="0x0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 6" xyz="45;383;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 07" slice="0x6" setup="0x0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 7" xyz="58;351;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 08" slice="0x7" setup="0x0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 8" xyz="92;352;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 09" slice="0x8" setup="0x0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 9" xyz="104;383;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 10" slice="0x9" setup="0x0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 10" xyz="99;400;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 11" slice="0xa" setup="0x0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 11" xyz="84;410;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 12" slice="0xb" setup="0x0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 12" xyz="67;407;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 01" slice="0x0" setup="0x0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 1" xyz="144;444;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 02" slice="0x1" setup="0x0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 2" xyz="138;412;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 03" slice="0x2" setup="0x0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 3" xyz="166;395;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 04" slice="0x3" setup="0x0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 4" xyz="193;412;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 05" slice="0x4" setup="0x0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 5" xyz="165;425;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 06" slice="0x5" setup="0x0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 6" xyz="135;429;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 07" slice="0x6" setup="0x0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 7" xyz="148;397;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 08" slice="0x7" setup="0x0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 8" xyz="182;398;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 09" slice="0x8" setup="0x0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 9" xyz="194;429;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 10" slice="0x9" setup="0x0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 10" xyz="189;446;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 11" slice="0xa" setup="0x0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 11" xyz="174;456;0"/>
-        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 12" slice="0xb" setup="0x0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 12" xyz="157;453;0"/>
-        <xflag type="tree" location="Gorman Track Tree 01" slice="0x0" setup="0x0" room="0x0" actor="0xb" item="NOTHING" name="Tree 1" xyz="108;102;1"/>
-        <xflag type="tree" location="Gorman Track Tree 02" slice="0x0" setup="0x0" room="0x0" actor="0xc" item="NOTHING" name="Tree 2" xyz="106;86;0"/>
-        <xflag type="tree" location="Gorman Track Tree 03" slice="0x0" setup="0x0" room="0x0" actor="0xd" item="NOTHING" name="Tree 3" xyz="135;89;1"/>
-        <xflag type="tree" location="Gorman Track Tree 04" slice="0x0" setup="0x0" room="0x0" actor="0xe" item="NOTHING" name="Tree 4" xyz="135;74;0"/>
-        <xflag type="tree" location="Gorman Track Tree 05" slice="0x0" setup="0x0" room="0x0" actor="0xf" item="NOTHING" name="Tree 5" xyz="162;87;2"/>
-        <xflag type="tree" location="Gorman Track Tree 06" slice="0x0" setup="0x0" room="0x0" actor="0x10" item="NOTHING" name="Tree 6" xyz="213;74;0"/>
-        <xflag type="tree" location="Gorman Track Tree 07" slice="0x0" setup="0x0" room="0x0" actor="0x11" item="NOTHING" name="Tree 7" xyz="164;75;1"/>
-        <xflag type="tree" location="Gorman Track Tree 08" slice="0x0" setup="0x0" room="0x0" actor="0x12" item="NOTHING" name="Tree 8" xyz="165;63;0"/>
-        <xflag type="tree" location="Gorman Track Tree 09" slice="0x0" setup="0x0" room="0x0" actor="0x13" item="NOTHING" name="Tree 9" xyz="181;78;0"/>
-        <xflag type="tree" location="Gorman Track Tree 10" slice="0x0" setup="0x0" room="0x0" actor="0x14" item="NOTHING" name="Tree 10" xyz="195;63;0"/>
-        <xflag type="tree" location="Gorman Track Tree 11" slice="0x0" setup="0x0" room="0x0" actor="0x15" item="NOTHING" name="Tree 11" xyz="225;57;0"/>
-        <xflag type="tree" location="Gorman Track Tree 12" slice="0x0" setup="0x0" room="0x0" actor="0x16" item="NOTHING" name="Tree 12" xyz="245;66;0"/>
-        <xflag type="tree" location="Gorman Track Tree 13" slice="0x0" setup="0x0" room="0x0" actor="0x17" item="NOTHING" name="Tree 13" xyz="828;548;0"/>
-        <xflag type="tree" location="Gorman Track Tree 14" slice="0x0" setup="0x0" room="0x0" actor="0x18" item="NOTHING" name="Tree 14" xyz="732;560;0"/>
-        <xflag type="tree" location="Gorman Track Tree 15" slice="0x0" setup="0x0" room="0x0" actor="0x19" item="NOTHING" name="Tree 15" xyz="663;542;0"/>
-        <xflag type="tree" location="Gorman Track Tree 16" slice="0x0" setup="0x0" room="0x0" actor="0x1a" item="NOTHING" name="Tree 16" xyz="498;526;0"/>
-        <xflag type="tree" location="Gorman Track Tree 17" slice="0x0" setup="0x0" room="0x0" actor="0x1b" item="NOTHING" name="Tree 17" xyz="364;520;0"/>
-        <xflag type="tree" location="Gorman Track Tree 18" slice="0x0" setup="0x0" room="0x0" actor="0x1c" item="NOTHING" name="Tree 18" xyz="852;482;0"/>
-        <xflag type="tree" location="Gorman Track Tree 19" slice="0x0" setup="0x0" room="0x0" actor="0x1d" item="NOTHING" name="Tree 19" xyz="697;589;0"/>
-        <xflag type="tree" location="Gorman Track Tree 20" slice="0x0" setup="0x0" room="0x0" actor="0x1e" item="NOTHING" name="Tree 20" xyz="636;572;0"/>
-        <xflag type="tree" location="Gorman Track Tree 21" slice="0x0" setup="0x0" room="0x0" actor="0x1f" item="NOTHING" name="Tree 21" xyz="576;520;0"/>
-        <xflag type="tree" location="Gorman Track Tree 22" slice="0x0" setup="0x0" room="0x0" actor="0x20" item="NOTHING" name="Tree 22" xyz="510;548;0"/>
-        <xflag type="tree" location="Gorman Track Tree 23" slice="0x0" setup="0x0" room="0x0" actor="0x21" item="NOTHING" name="Tree 23" xyz="398;494;0"/>
-        <xflag type="tree" location="Gorman Track Tree 24" slice="0x0" setup="0x0" room="0x0" actor="0x22" item="NOTHING" name="Tree 24" xyz="386;554;0"/>
-        <xflag type="tree" location="Gorman Track Tree 25" slice="0x0" setup="0x0" room="0x0" actor="0x23" item="NOTHING" name="Tree 25" xyz="303;488;0"/>
+        <xflag type="crate" location="Gorman Track Crate" slice="0x0" setup="0" room="0x0" actor="0x49" item="NOTHING" name="Crate" xyz="640;242;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 01" slice="0x0" setup="0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 1" xyz="54;398;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 02" slice="0x1" setup="0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 2" xyz="48;366;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 03" slice="0x2" setup="0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 3" xyz="76;349;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 04" slice="0x3" setup="0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 4" xyz="103;366;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 05" slice="0x4" setup="0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 5" xyz="75;379;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 06" slice="0x5" setup="0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 6" xyz="45;383;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 07" slice="0x6" setup="0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 7" xyz="58;351;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 08" slice="0x7" setup="0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 8" xyz="92;352;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 09" slice="0x8" setup="0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 9" xyz="104;383;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 10" slice="0x9" setup="0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 10" xyz="99;400;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 11" slice="0xa" setup="0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 11" xyz="84;410;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 1 Grass 12" slice="0xb" setup="0" room="0x0" actor="0x24" item="RANDOM" name="Pack 1 - Grass 12" xyz="67;407;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 01" slice="0x0" setup="0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 1" xyz="144;444;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 02" slice="0x1" setup="0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 2" xyz="138;412;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 03" slice="0x2" setup="0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 3" xyz="166;395;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 04" slice="0x3" setup="0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 4" xyz="193;412;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 05" slice="0x4" setup="0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 5" xyz="165;425;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 06" slice="0x5" setup="0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 6" xyz="135;429;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 07" slice="0x6" setup="0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 7" xyz="148;397;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 08" slice="0x7" setup="0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 8" xyz="182;398;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 09" slice="0x8" setup="0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 9" xyz="194;429;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 10" slice="0x9" setup="0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 10" xyz="189;446;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 11" slice="0xa" setup="0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 11" xyz="174;456;0"/>
+        <xflag type="grass" location="Gorman Track Grass Pack 2 Grass 12" slice="0xb" setup="0" room="0x0" actor="0x25" item="RANDOM" name="Pack 2 - Grass 12" xyz="157;453;0"/>
+        <xflag type="tree" location="Gorman Track Tree 01" slice="0x0" setup="0" room="0x0" actor="0xb" item="NOTHING" name="Tree 1" xyz="108;102;1"/>
+        <xflag type="tree" location="Gorman Track Tree 02" slice="0x0" setup="0" room="0x0" actor="0xc" item="NOTHING" name="Tree 2" xyz="106;86;0"/>
+        <xflag type="tree" location="Gorman Track Tree 03" slice="0x0" setup="0" room="0x0" actor="0xd" item="NOTHING" name="Tree 3" xyz="135;89;1"/>
+        <xflag type="tree" location="Gorman Track Tree 04" slice="0x0" setup="0" room="0x0" actor="0xe" item="NOTHING" name="Tree 4" xyz="135;74;0"/>
+        <xflag type="tree" location="Gorman Track Tree 05" slice="0x0" setup="0" room="0x0" actor="0xf" item="NOTHING" name="Tree 5" xyz="162;87;2"/>
+        <xflag type="tree" location="Gorman Track Tree 06" slice="0x0" setup="0" room="0x0" actor="0x10" item="NOTHING" name="Tree 6" xyz="213;74;0"/>
+        <xflag type="tree" location="Gorman Track Tree 07" slice="0x0" setup="0" room="0x0" actor="0x11" item="NOTHING" name="Tree 7" xyz="164;75;1"/>
+        <xflag type="tree" location="Gorman Track Tree 08" slice="0x0" setup="0" room="0x0" actor="0x12" item="NOTHING" name="Tree 8" xyz="165;63;0"/>
+        <xflag type="tree" location="Gorman Track Tree 09" slice="0x0" setup="0" room="0x0" actor="0x13" item="NOTHING" name="Tree 9" xyz="181;78;0"/>
+        <xflag type="tree" location="Gorman Track Tree 10" slice="0x0" setup="0" room="0x0" actor="0x14" item="NOTHING" name="Tree 10" xyz="195;63;0"/>
+        <xflag type="tree" location="Gorman Track Tree 11" slice="0x0" setup="0" room="0x0" actor="0x15" item="NOTHING" name="Tree 11" xyz="225;57;0"/>
+        <xflag type="tree" location="Gorman Track Tree 12" slice="0x0" setup="0" room="0x0" actor="0x16" item="NOTHING" name="Tree 12" xyz="245;66;0"/>
+        <xflag type="tree" location="Gorman Track Tree 13" slice="0x0" setup="0" room="0x0" actor="0x17" item="NOTHING" name="Tree 13" xyz="828;548;0"/>
+        <xflag type="tree" location="Gorman Track Tree 14" slice="0x0" setup="0" room="0x0" actor="0x18" item="NOTHING" name="Tree 14" xyz="732;560;0"/>
+        <xflag type="tree" location="Gorman Track Tree 15" slice="0x0" setup="0" room="0x0" actor="0x19" item="NOTHING" name="Tree 15" xyz="663;542;0"/>
+        <xflag type="tree" location="Gorman Track Tree 16" slice="0x0" setup="0" room="0x0" actor="0x1a" item="NOTHING" name="Tree 16" xyz="498;526;0"/>
+        <xflag type="tree" location="Gorman Track Tree 17" slice="0x0" setup="0" room="0x0" actor="0x1b" item="NOTHING" name="Tree 17" xyz="364;520;0"/>
+        <xflag type="tree" location="Gorman Track Tree 18" slice="0x0" setup="0" room="0x0" actor="0x1c" item="NOTHING" name="Tree 18" xyz="852;482;0"/>
+        <xflag type="tree" location="Gorman Track Tree 19" slice="0x0" setup="0" room="0x0" actor="0x1d" item="NOTHING" name="Tree 19" xyz="697;589;0"/>
+        <xflag type="tree" location="Gorman Track Tree 20" slice="0x0" setup="0" room="0x0" actor="0x1e" item="NOTHING" name="Tree 20" xyz="636;572;0"/>
+        <xflag type="tree" location="Gorman Track Tree 21" slice="0x0" setup="0" room="0x0" actor="0x1f" item="NOTHING" name="Tree 21" xyz="576;520;0"/>
+        <xflag type="tree" location="Gorman Track Tree 22" slice="0x0" setup="0" room="0x0" actor="0x20" item="NOTHING" name="Tree 22" xyz="510;548;0"/>
+        <xflag type="tree" location="Gorman Track Tree 23" slice="0x0" setup="0" room="0x0" actor="0x21" item="NOTHING" name="Tree 23" xyz="398;494;0"/>
+        <xflag type="tree" location="Gorman Track Tree 24" slice="0x0" setup="0" room="0x0" actor="0x22" item="NOTHING" name="Tree 24" xyz="386;554;0"/>
+        <xflag type="tree" location="Gorman Track Tree 25" slice="0x0" setup="0" room="0x0" actor="0x23" item="NOTHING" name="Tree 25" xyz="303;488;0"/>
       </rendering_option>
     </scene_rendering>
   </scene>

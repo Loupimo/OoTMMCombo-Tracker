@@ -21,97 +21,109 @@
     </scene_rendering>
     <scene_rendering id="MM_ROMANI_RANCH" loc_type="overworld">
       <rendering_option layout="all">
-        <xflag type="crate" location="Romani Ranch Crate" slice="0x0" setup="0x0" room="0x0" actor="0x23" item="ARROWS_20" name="Flooting Balloon" xyz="367;172;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 01" slice="0x0" setup="0x0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 1" xyz="478;534;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 02" slice="0x1" setup="0x0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 2" xyz="463;553;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 03" slice="0x2" setup="0x0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 3" xyz="440;545;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 04" slice="0x3" setup="0x0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 4" xyz="437;521;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 05" slice="0x4" setup="0x0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 5" xyz="457;531;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 06" slice="0x5" setup="0x0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 6" xyz="475;545;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 07" slice="0x6" setup="0x0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 7" xyz="451;552;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 08" slice="0x7" setup="0x0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 8" xyz="434;534;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 09" slice="0x8" setup="0x0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 9" xyz="444;511;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 10" slice="0x9" setup="0x0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 10" xyz="457;507;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 11" slice="0xa" setup="0x0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 11" xyz="470;511;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 12" slice="0xb" setup="0x0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 12" xyz="477;521;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 01" slice="0x0" setup="0x0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 1" xyz="303;517;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 02" slice="0x1" setup="0x0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 2" xyz="301;541;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 03" slice="0x2" setup="0x0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 3" xyz="277;548;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 04" slice="0x3" setup="0x0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 4" xyz="260;530;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 05" slice="0x4" setup="0x0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 5" xyz="283;527;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 06" slice="0x5" setup="0x0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 6" xyz="304;530;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 07" slice="0x6" setup="0x0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 7" xyz="289;549;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 08" slice="0x7" setup="0x0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 8" xyz="266;541;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 09" slice="0x8" setup="0x0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 9" xyz="263;517;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 10" slice="0x9" setup="0x0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 10" xyz="270;507;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 11" slice="0xa" setup="0x0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 11" xyz="283;503;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 12" slice="0xb" setup="0x0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 12" xyz="296;507;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 01" slice="0x0" setup="0x0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 1" xyz="704;436;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 02" slice="0x1" setup="0x0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 2" xyz="680;443;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 03" slice="0x2" setup="0x0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 3" xyz="663;425;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 04" slice="0x3" setup="0x0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 4" xyz="673;402;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 05" slice="0x4" setup="0x0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 5" xyz="686;422;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 06" slice="0x5" setup="0x0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 6" xyz="692;444;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 07" slice="0x6" setup="0x0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 7" xyz="669;436;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 08" slice="0x7" setup="0x0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 8" xyz="666;412;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 09" slice="0x8" setup="0x0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 9" xyz="686;398;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 10" slice="0x9" setup="0x0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 10" xyz="699;402;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 11" slice="0xa" setup="0x0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 11" xyz="706;412;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 12" slice="0xb" setup="0x0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 12" xyz="707;425;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 01" slice="0x0" setup="0x0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 1" xyz="587;146;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 02" slice="0x1" setup="0x0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 2" xyz="563;153;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 03" slice="0x2" setup="0x0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 3" xyz="546;135;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 04" slice="0x3" setup="0x0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 4" xyz="549;122;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 05" slice="0x4" setup="0x0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 5" xyz="569;132;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 06" slice="0x5" setup="0x0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 6" xyz="575;154;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 07" slice="0x6" setup="0x0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 7" xyz="552;146;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 08" slice="0x7" setup="0x0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 8" xyz="556;112;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 09" slice="0x8" setup="0x0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 9" xyz="569;108;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 10" slice="0x9" setup="0x0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 10" xyz="582;112;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 11" slice="0xa" setup="0x0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 11" xyz="589;122;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 12" slice="0xb" setup="0x0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 12" xyz="590;135;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 5 Grass 01" slice="0x0" setup="0x0" room="0x0" actor="0x20" item="RANDOM" name="Pack 5 - Grass 1" xyz="400;32;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 5 Grass 02" slice="0x1" setup="0x0" room="0x0" actor="0x20" item="RANDOM" name="Pack 5 - Grass 2" xyz="423;32;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 5 Grass 03" slice="0x2" setup="0x0" room="0x0" actor="0x20" item="RANDOM" name="Pack 5 - Grass 3" xyz="413;44;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 5 Grass 04" slice="0x3" setup="0x0" room="0x0" actor="0x20" item="RANDOM" name="Pack 5 - Grass 4" xyz="400;53;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 5 Grass 05" slice="0x4" setup="0x0" room="0x0" actor="0x20" item="RANDOM" name="Pack 5 - Grass 5" xyz="387;44;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 5 Grass 06" slice="0x5" setup="0x0" room="0x0" actor="0x20" item="RANDOM" name="Pack 5 - Grass 6" xyz="377;32;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 5 Grass 07" slice="0x6" setup="0x0" room="0x0" actor="0x20" item="RANDOM" name="Pack 5 - Grass 7" xyz="387;20;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 5 Grass 08" slice="0x7" setup="0x0" room="0x0" actor="0x20" item="RANDOM" name="Pack 5 - Grass 8" xyz="400;11;0"/>
-        <xflag type="grass" location="Romani Ranch Grass Pack 5 Grass 09" slice="0x8" setup="0x0" room="0x0" actor="0x20" item="RANDOM" name="Pack 5 - Grass 9" xyz="413;20;0"/>
-        <xflag type="tree" location="Romani Ranch Tree 1" slice="0x0" setup="0x0" room="0x0" actor="0x14" item="NOTHING" name="Tree 1" xyz="458;359;0"/>
-        <xflag type="tree" location="Romani Ranch Tree 2" slice="0x0" setup="0x0" room="0x0" actor="0x15" item="NOTHING" name="Tree 2" xyz="446;274;0"/>
-        <xflag type="tree" location="Romani Ranch Tree 3" slice="0x0" setup="0x0" room="0x0" actor="0x16" item="NOTHING" name="Tree 3" xyz="647;280;0"/>
-        <xflag type="tree" location="Romani Ranch Tree 4" slice="0x0" setup="0x0" room="0x0" actor="0x17" item="NOTHING" name="Tree 4" xyz="635;365;0"/>
-        <xflag type="tree" location="Romani Ranch Tree 5" slice="0x0" setup="0x0" room="0x0" actor="0x18" item="NOTHING" name="Tree 5" xyz="327;412;0"/>
-        <xflag type="tree" location="Romani Ranch Tree 6" slice="0x0" setup="0x0" room="0x0" actor="0x19" item="NOTHING" name="Tree 6" xyz="184;444;0"/>
-        <xflag type="tree" location="Romani Ranch Tree 7" slice="0x0" setup="0x0" room="0x0" actor="0x1a" item="NOTHING" name="Tree 7" xyz="372;568;0"/>
-        <xflag type="bush" location="Romani Ranch Bush 1" slice="0x0" setup="0x0" room="0x0" actor="0x10" item="NOTHING" name="Bush 1" xyz="197;311;0"/>
-        <xflag type="bush" location="Romani Ranch Bush 2" slice="0x0" setup="0x0" room="0x0" actor="0x11" item="NOTHING" name="Bush 2" xyz="412;405;0"/>
-        <xflag type="bush" location="Romani Ranch Bush 3" slice="0x0" setup="0x0" room="0x0" actor="0x12" item="NOTHING" name="Bush 3" xyz="557;518;0"/>
-        <xflag type="bush" location="Romani Ranch Bush 4" slice="0x0" setup="0x0" room="0x0" actor="0x13" item="NOTHING" name="Bush 4" xyz="181;144;0"/>
-        <xflag type="wonder" location="Romani Ranch Wonder Item Fence 1" slice="0x0" setup="0x0" room="0x0" actor="0x2a" item="RUPEE_BLUE" name="Entrance - Fence 1" xyz="758;339;0"/>
-        <xflag type="wonder" location="Romani Ranch Wonder Item Fence 2" slice="0x0" setup="0x0" room="0x0" actor="0x2b" item="RUPEE_BLUE" name="Entrance - Fence 2" xyz="756;347;0"/>
-        <xflag type="wonder" location="Romani Ranch Wonder Item Fence 3" slice="0x0" setup="0x0" room="0x0" actor="0x2c" item="RUPEE_GREEN" name="Entrance - Fence 3" xyz="756;286;0"/>
-        <xflag type="wonder" location="Romani Ranch Wonder Item Fence 4" slice="0x0" setup="0x0" room="0x0" actor="0x2d" item="RUPEE_GREEN" name="Entrance - Fence 4" xyz="757;309;0"/>
-        <xflag type="wonder" location="Romani Ranch Wonder Item Fence 5" slice="0x0" setup="0x0" room="0x0" actor="0x2e" item="RUPEE_GREEN" name="Entrance - Fence 5" xyz="746;380;0"/>
-        <xflag type="wonder" location="Romani Ranch Wonder Item Fence 6" slice="0x0" setup="0x0" room="0x0" actor="0x2f" item="RUPEE_GREEN" name="Entrance - Fence 6" xyz="752;419;0"/>
-        <xflag type="soil" location="Romani Ranch Soil Days 2-3 Item 1" slice="0x0" setup="0x0" room="0x0" actor="0x30" item="RUPEE_BLUE" name="Days 2-3 Item 1" xyz="234;89;0"/>
-        <xflag type="soil" location="Romani Ranch Soil Days 2-3 Item 2" slice="0x1" setup="0x0" room="0x0" actor="0x30" item="RUPEE_BLUE" name="Days 2-3 Item 2" xyz="245;83;0"/>
-        <xflag type="soil" location="Romani Ranch Soil Days 2-3 Item 3" slice="0x2" setup="0x0" room="0x0" actor="0x30" item="RUPEE_BLUE" name="Days 2-3 Item 3" xyz="256;78;0"/>
-        <xflag type="soil" location="Romani Ranch Soil Day 1" slice="0x0" setup="0x0" room="0x0" actor="0x31" item="ARROWS_30" name="Day 1" xyz="240;72;0"/>
+        <xflag type="crate" location="Romani Ranch Crate" slice="0x0" setup="0" room="0x0" actor="0x23" item="ARROWS_20" name="Flooting Balloon" xyz="367;172;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 01" slice="0x0" setup="0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 1" xyz="478;534;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 02" slice="0x1" setup="0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 2" xyz="463;553;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 03" slice="0x2" setup="0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 3" xyz="440;545;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 04" slice="0x3" setup="0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 4" xyz="437;521;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 05" slice="0x4" setup="0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 5" xyz="457;531;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 06" slice="0x5" setup="0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 6" xyz="475;545;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 07" slice="0x6" setup="0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 7" xyz="451;552;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 08" slice="0x7" setup="0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 8" xyz="434;534;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 09" slice="0x8" setup="0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 9" xyz="444;511;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 10" slice="0x9" setup="0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 10" xyz="457;507;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 11" slice="0xa" setup="0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 11" xyz="470;511;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 1 Grass 12" slice="0xb" setup="0" room="0x0" actor="0x1c" item="RANDOM" name="Pack 1 - Grass 12" xyz="477;521;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 01" slice="0x0" setup="0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 1" xyz="303;517;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 02" slice="0x1" setup="0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 2" xyz="301;541;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 03" slice="0x2" setup="0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 3" xyz="277;548;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 04" slice="0x3" setup="0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 4" xyz="260;530;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 05" slice="0x4" setup="0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 5" xyz="283;527;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 06" slice="0x5" setup="0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 6" xyz="304;530;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 07" slice="0x6" setup="0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 7" xyz="289;549;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 08" slice="0x7" setup="0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 8" xyz="266;541;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 09" slice="0x8" setup="0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 9" xyz="263;517;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 10" slice="0x9" setup="0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 10" xyz="270;507;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 11" slice="0xa" setup="0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 11" xyz="283;503;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 2 Grass 12" slice="0xb" setup="0" room="0x0" actor="0x1d" item="RANDOM" name="Pack 2 - Grass 12" xyz="296;507;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 01" slice="0x0" setup="0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 1" xyz="704;436;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 02" slice="0x1" setup="0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 2" xyz="680;443;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 03" slice="0x2" setup="0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 3" xyz="663;425;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 04" slice="0x3" setup="0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 4" xyz="673;402;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 05" slice="0x4" setup="0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 5" xyz="686;422;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 06" slice="0x5" setup="0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 6" xyz="692;444;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 07" slice="0x6" setup="0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 7" xyz="669;436;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 08" slice="0x7" setup="0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 8" xyz="666;412;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 09" slice="0x8" setup="0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 9" xyz="686;398;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 10" slice="0x9" setup="0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 10" xyz="699;402;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 11" slice="0xa" setup="0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 11" xyz="706;412;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 3 Grass 12" slice="0xb" setup="0" room="0x0" actor="0x1e" item="RANDOM" name="Pack 3 - Grass 12" xyz="707;425;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 01" slice="0x0" setup="0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 1" xyz="587;146;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 02" slice="0x1" setup="0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 2" xyz="563;153;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 03" slice="0x2" setup="0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 3" xyz="546;135;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 04" slice="0x3" setup="0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 4" xyz="549;122;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 05" slice="0x4" setup="0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 5" xyz="569;132;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 06" slice="0x5" setup="0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 6" xyz="575;154;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 07" slice="0x6" setup="0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 7" xyz="552;146;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 08" slice="0x7" setup="0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 8" xyz="556;112;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 09" slice="0x8" setup="0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 9" xyz="569;108;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 10" slice="0x9" setup="0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 10" xyz="582;112;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 11" slice="0xa" setup="0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 11" xyz="589;122;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 4 Grass 12" slice="0xb" setup="0" room="0x0" actor="0x1f" item="RANDOM" name="Pack 4 - Grass 12" xyz="590;135;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 5 Grass 01" slice="0x0" setup="0" room="0x0" actor="0x20" item="RANDOM" name="Pack 5 - Grass 1" xyz="400;32;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 5 Grass 02" slice="0x1" setup="0" room="0x0" actor="0x20" item="RANDOM" name="Pack 5 - Grass 2" xyz="423;32;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 5 Grass 03" slice="0x2" setup="0" room="0x0" actor="0x20" item="RANDOM" name="Pack 5 - Grass 3" xyz="413;44;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 5 Grass 04" slice="0x3" setup="0" room="0x0" actor="0x20" item="RANDOM" name="Pack 5 - Grass 4" xyz="400;53;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 5 Grass 05" slice="0x4" setup="0" room="0x0" actor="0x20" item="RANDOM" name="Pack 5 - Grass 5" xyz="387;44;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 5 Grass 06" slice="0x5" setup="0" room="0x0" actor="0x20" item="RANDOM" name="Pack 5 - Grass 6" xyz="377;32;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 5 Grass 07" slice="0x6" setup="0" room="0x0" actor="0x20" item="RANDOM" name="Pack 5 - Grass 7" xyz="387;20;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 5 Grass 08" slice="0x7" setup="0" room="0x0" actor="0x20" item="RANDOM" name="Pack 5 - Grass 8" xyz="400;11;0"/>
+        <xflag type="grass" location="Romani Ranch Grass Pack 5 Grass 09" slice="0x8" setup="0" room="0x0" actor="0x20" item="RANDOM" name="Pack 5 - Grass 9" xyz="413;20;0"/>
+        <xflag type="tree" location="Romani Ranch Tree 1" slice="0x0" setup="0" room="0x0" actor="0x14" item="NOTHING" name="Tree 1" xyz="458;359;0"/>
+        <xflag type="tree" location="Romani Ranch Tree 2" slice="0x0" setup="0" room="0x0" actor="0x15" item="NOTHING" name="Tree 2" xyz="446;274;0"/>
+        <xflag type="tree" location="Romani Ranch Tree 3" slice="0x0" setup="0" room="0x0" actor="0x16" item="NOTHING" name="Tree 3" xyz="647;280;0"/>
+        <xflag type="tree" location="Romani Ranch Tree 4" slice="0x0" setup="0" room="0x0" actor="0x17" item="NOTHING" name="Tree 4" xyz="635;365;0"/>
+        <xflag type="tree" location="Romani Ranch Tree 5" slice="0x0" setup="0" room="0x0" actor="0x18" item="NOTHING" name="Tree 5" xyz="327;412;0"/>
+        <xflag type="tree" location="Romani Ranch Tree 6" slice="0x0" setup="0" room="0x0" actor="0x19" item="NOTHING" name="Tree 6" xyz="184;444;0"/>
+        <xflag type="tree" location="Romani Ranch Tree 7" slice="0x0" setup="0" room="0x0" actor="0x1a" item="NOTHING" name="Tree 7" xyz="372;568;0"/>
+        <xflag type="bush" location="Romani Ranch Bush 1" slice="0x0" setup="0" room="0x0" actor="0x10" item="NOTHING" name="Bush 1" xyz="197;311;0"/>
+        <xflag type="bush" location="Romani Ranch Bush 2" slice="0x0" setup="0" room="0x0" actor="0x11" item="NOTHING" name="Bush 2" xyz="412;405;0"/>
+        <xflag type="bush" location="Romani Ranch Bush 3" slice="0x0" setup="0" room="0x0" actor="0x12" item="NOTHING" name="Bush 3" xyz="557;518;0"/>
+        <xflag type="bush" location="Romani Ranch Bush 4" slice="0x0" setup="0" room="0x0" actor="0x13" item="NOTHING" name="Bush 4" xyz="181;144;0"/>
+        <xflag type="wonder" location="Romani Ranch Wonder Item Fence 1" slice="0x0" setup="0" room="0x0" actor="0x2a" item="RUPEE_BLUE" name="Entrance - Fence 1" xyz="758;339;0"/>
+        <xflag type="wonder" location="Romani Ranch Wonder Item Fence 2" slice="0x0" setup="0" room="0x0" actor="0x2b" item="RUPEE_BLUE" name="Entrance - Fence 2" xyz="756;347;0"/>
+        <xflag type="wonder" location="Romani Ranch Wonder Item Fence 3" slice="0x0" setup="0" room="0x0" actor="0x2c" item="RUPEE_GREEN" name="Entrance - Fence 3" xyz="756;286;0"/>
+        <xflag type="wonder" location="Romani Ranch Wonder Item Fence 4" slice="0x0" setup="0" room="0x0" actor="0x2d" item="RUPEE_GREEN" name="Entrance - Fence 4" xyz="757;309;0"/>
+        <xflag type="wonder" location="Romani Ranch Wonder Item Fence 5" slice="0x0" setup="0" room="0x0" actor="0x2e" item="RUPEE_GREEN" name="Entrance - Fence 5" xyz="746;380;0"/>
+        <xflag type="wonder" location="Romani Ranch Wonder Item Fence 6" slice="0x0" setup="0" room="0x0" actor="0x2f" item="RUPEE_GREEN" name="Entrance - Fence 6" xyz="752;419;0"/>
+        <xflag type="soil" location="Romani Ranch Soil Days 2-3 Item 1" slice="0x0" setup="0" room="0x0" actor="0x30" item="RUPEE_BLUE" name="Days 2-3 Item 1" xyz="234;89;0"/>
+        <xflag type="soil" location="Romani Ranch Soil Days 2-3 Item 2" slice="0x1" setup="0" room="0x0" actor="0x30" item="RUPEE_BLUE" name="Days 2-3 Item 2" xyz="245;83;0"/>
+        <xflag type="soil" location="Romani Ranch Soil Days 2-3 Item 3" slice="0x2" setup="0" room="0x0" actor="0x30" item="RUPEE_BLUE" name="Days 2-3 Item 3" xyz="256;78;0"/>
+        <xflag type="soil" location="Romani Ranch Soil Day 1" slice="0x0" setup="0" room="0x0" actor="0x31" item="ARROWS_30" name="Day 1" xyz="240;72;0"/>
       </rendering_option>
       <actor actor="0x33">
-        <xflag type="gossip" location="Romani Ranch Gossip Fairy Entrance" slice="0" item="FAIRY" name="Gossip Fairy Entrance" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Romani Ranch Gossip Big Fairy Entrance" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Entrance" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Romani Ranch Gossip Fairy Entrance" slice="0" item="FAIRY" name="Gossip Stone - Entrance" xyz="786;379;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Romani Ranch Gossip Big Fairy Entrance" slice="1" item="FAIRY_BIG" name="Gossip Stone - Entrance" xyz="774;394;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0x34">
-        <xflag type="gossip" location="Romani Ranch Gossip Fairy Near Tree" slice="0" item="FAIRY" name="Gossip Fairy Near Tree" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Romani Ranch Gossip Big Fairy Near Tree" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Near Tree" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Romani Ranch Gossip Fairy Near Tree" slice="0" item="FAIRY" name="Gossip Stone - Near Tree" xyz="387;577;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Romani Ranch Gossip Big Fairy Near Tree" slice="1" item="FAIRY_BIG" name="Gossip Stone - Near Tree" xyz="387;560;0"/>
+        </rendering_option>
       </actor>
       <actor actor="0x35">
-        <xflag type="gossip" location="Romani Ranch Gossip Fairy Behind House" slice="0" item="FAIRY" name="Gossip Fairy Behind House" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Romani Ranch Gossip Big Fairy Behind House" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy Behind House" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Romani Ranch Gossip Fairy Behind House" slice="0" item="FAIRY" name="Gossip Stone - Behind House" xyz="358;73;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Romani Ranch Gossip Big Fairy Behind House" slice="1" item="FAIRY_BIG" name="Gossip Stone - Behind House" xyz="354;90;0"/>
+        </rendering_option>
       </actor>
     </scene_rendering>
   </scene>
@@ -129,31 +141,39 @@
         <npc location="Cucco Shack Bunny Mask" npc="MASK_BUNNY" item="MASK_BUNNY" hint="CUCCOS" name="Bunny Mask" xyz="407;318;0"/>
       </rendering_option>
       <rendering_option layout="all">
-        <xflag type="wonder" location="Cucco Shack Wonder Item 1" slice="0x0" setup="0x0" room="0x0" actor="0x11" item="RUPEE_GREEN" name="Wood Hole 1" xyz="279;289;1"/>
-        <xflag type="wonder" location="Cucco Shack Wonder Item 2" slice="0x1" setup="0x0" room="0x0" actor="0x11" item="RUPEE_GREEN" name="Wood Hole 2" xyz="284;300;2"/>
-        <xflag type="wonder" location="Cucco Shack Wonder Item 3" slice="0x2" setup="0x0" room="0x0" actor="0x11" item="RUPEE_GREEN" name="Wood Hole 3" xyz="284;278;0"/>
-        <xflag type="wonder" location="Cucco Shack Wonder Item 4" slice="0x0" setup="0x0" room="0x0" actor="0x12" item="RUPEE_GREEN" name="Wood Hole 4" xyz="284;357;2"/>
-        <xflag type="wonder" location="Cucco Shack Wonder Item 5" slice="0x1" setup="0x0" room="0x0" actor="0x12" item="RUPEE_GREEN" name="Wood Hole 5" xyz="279;347;1"/>
-        <xflag type="wonder" location="Cucco Shack Wonder Item 6" slice="0x2" setup="0x0" room="0x0" actor="0x12" item="RUPEE_GREEN" name="Wood Hole 6" xyz="284;335;0"/>
-        <xflag type="crate" location="Cucco Shack Crate 1" slice="0x0" setup="0x0" room="0x0" actor="0xe" item="NOTHING" name="Crate 1" xyz="871;317;0"/>
-        <xflag type="crate" location="Cucco Shack Crate 2" slice="0x0" setup="0x0" room="0x0" actor="0xf" item="NOTHING" name="Crate 2" xyz="851;317;0"/>
-        <xflag type="crate" location="Cucco Shack Crate 3" slice="0x0" setup="0x0" room="0x0" actor="0x16" item="ARROWS_10" name="Crate 3" xyz="831;317;0"/>
-        <xflag type="pot" location="Cucco Shack Potted Plant 1 Pot" slice="0x0" setup="0x0" room="0x0" actor="0xd" item="NOTHING" name="Potted Plant 1" xyz="755;507;0"/>
-        <xflag type="grass" location="Cucco Shack Potted Plant 1 Grass" slice="0x1" setup="0x0" room="0x0" actor="0xd" item="NOTHING" name="Potted Plant 1" xyz="740;507;1"/>
-        <xflag type="pot" location="Cucco Shack Potted Plant 2 Pot" slice="0x0" setup="0x0" room="0x0" actor="0x17" item="NOTHING" name="Potted Plant 2" xyz="720;507;0"/>
-        <xflag type="grass" location="Cucco Shack Potted Plant 2 Grass" slice="0x1" setup="0x0" room="0x0" actor="0x17" item="RUPEE_BLUE" name="Potted Plant 2" xyz="705;507;1"/>
-        <xflag type="tree" location="Cucco Shack Tree" slice="0x0" setup="0x0" room="0x0" actor="0xc" item="NOTHING" name="Tree" xyz="389;317;0"/>
-        <xflag type="bush" location="Cucco Shack Bush 1" slice="0x0" setup="0x0" room="0x0" actor="0xb" item="NOTHING" name="Bush 1" xyz="363;333;0"/>
-        <xflag type="bush" location="Cucco Shack Bush 2" slice="0x1" setup="0x0" room="0x0" actor="0xb" item="NOTHING" name="Bush 2" xyz="643;473;0"/>
-        <xflag type="bush" location="Cucco Shack Bush 3" slice="0x2" setup="0x0" room="0x0" actor="0xb" item="NOTHING" name="Bush 3" xyz="562;259;0"/>
-        <xflag type="bush" location="Cucco Shack Bush 4" slice="0x3" setup="0x0" room="0x0" actor="0xb" item="NOTHING" name="Bush 4" xyz="390;181;0"/>
-        <xflag type="bush" location="Cucco Shack Bush 5" slice="0x4" setup="0x0" room="0x0" actor="0xb" item="NOTHING" name="Bush 5" xyz="240;304;0"/>
-        <xflag type="bush" location="Cucco Shack Bush 6" slice="0x5" setup="0x0" room="0x0" actor="0xb" item="NOTHING" name="Bush 6" xyz="265;488;0"/>
-        <xflag type="bush" location="Cucco Shack Bush 7" slice="0x0" setup="0x0" room="0x0" actor="0x13" item="NOTHING" name="Bush 7" xyz="643;188;0"/>
+        <xflag type="wonder" location="Cucco Shack Wonder Item 1" slice="0x0" actor="0x11" item="RUPEE_GREEN" name="Wood Hole 1" xyz="279;289;1"/>
+        <xflag type="wonder" location="Cucco Shack Wonder Item 2" slice="0x1" actor="0x11" item="RUPEE_GREEN" name="Wood Hole 2" xyz="284;300;2"/>
+        <xflag type="wonder" location="Cucco Shack Wonder Item 3" slice="0x2" actor="0x11" item="RUPEE_GREEN" name="Wood Hole 3" xyz="284;278;0"/>
+        <xflag type="wonder" location="Cucco Shack Wonder Item 4" slice="0x0" actor="0x12" item="RUPEE_GREEN" name="Wood Hole 4" xyz="284;357;2"/>
+        <xflag type="wonder" location="Cucco Shack Wonder Item 5" slice="0x1" actor="0x12" item="RUPEE_GREEN" name="Wood Hole 5" xyz="279;347;1"/>
+        <xflag type="wonder" location="Cucco Shack Wonder Item 6" slice="0x2" actor="0x12" item="RUPEE_GREEN" name="Wood Hole 6" xyz="284;335;0"/>
+        <xflag type="crate" location="Cucco Shack Crate 1" slice="0x0" actor="0x0e" item="NOTHING" name="Crate 1" xyz="871;317;0"/>
+        <xflag type="crate" location="Cucco Shack Crate 2" slice="0x0" actor="0x0f" item="NOTHING" name="Crate 2" xyz="851;317;0"/>
+        <xflag type="crate" location="Cucco Shack Crate 3" slice="0x0" actor="0x16" item="ARROWS_10" name="Crate 3" xyz="831;317;0"/>
+        <actor actor="0x0d">
+          <xflag type="pot" location="Cucco Shack Potted Plant 1 Pot" slice="0" item="NOTHING" name="Potted Plant 1" xyz="755;507;0"/>
+          <xflag type="grass" location="Cucco Shack Potted Plant 1 Grass" slice="1" item="NOTHING" name="Potted Plant 1" xyz="740;507;1"/>
+        </actor>
+        <actor actor="0x17">
+          <xflag type="pot" location="Cucco Shack Potted Plant 2 Pot" slice="0" item="NOTHING" name="Potted Plant 2" xyz="720;507;0"/>
+          <xflag type="grass" location="Cucco Shack Potted Plant 2 Grass" slice="1" item="RUPEE_BLUE" name="Potted Plant 2" xyz="705;507;1"/>
+        </actor>
+        <xflag type="tree" location="Cucco Shack Tree" actor="0x0c" item="NOTHING" name="Tree" xyz="389;317;0"/>
+        <xflag type="bush" location="Cucco Shack Bush 1" slice="0x0" actor="0x0b" item="NOTHING" name="Bush 1" xyz="363;333;0"/>
+        <xflag type="bush" location="Cucco Shack Bush 2" slice="0x1" actor="0x0b" item="NOTHING" name="Bush 2" xyz="643;473;0"/>
+        <xflag type="bush" location="Cucco Shack Bush 3" slice="0x2" actor="0x0b" item="NOTHING" name="Bush 3" xyz="562;259;0"/>
+        <xflag type="bush" location="Cucco Shack Bush 4" slice="0x3" actor="0x0b" item="NOTHING" name="Bush 4" xyz="390;181;0"/>
+        <xflag type="bush" location="Cucco Shack Bush 5" slice="0x4" actor="0x0b" item="NOTHING" name="Bush 5" xyz="240;304;0"/>
+        <xflag type="bush" location="Cucco Shack Bush 6" slice="0x5" actor="0x0b" item="NOTHING" name="Bush 6" xyz="265;488;0"/>
+        <xflag type="bush" location="Cucco Shack Bush 7" slice="0x0" actor="0x13" item="NOTHING" name="Bush 7" xyz="643;188;0"/>
       </rendering_option>
       <actor actor="0x18">
-        <xflag type="gossip" location="Cucco Shack Gossip Fairy" slice="0" item="FAIRY" name="Gossip Fairy" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Cucco Shack Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Cucco Shack Gossip Fairy" slice="0" item="FAIRY" name="Gossip Stone" xyz="757;222;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Cucco Shack Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Stone" xyz="757;204;0"/>
+        </rendering_option>
       </actor>
     </scene_rendering>
   </scene>
@@ -166,15 +186,19 @@
         <npc location="Doggy Racetrack HP" npc="DOG_LADY_HEART_PIECE" item="HEART_PIECE" name="Game Prize" xyz="650;377;0"/>
       </rendering_option>
       <rendering_option layout="all">
-        <xflag type="pot" location="Doggy Racetrack Pot 1" slice="0x0" setup="0x0" room="0x0" actor="0x9" item="RUPEE_BLUE" name="Pot 1" xyz="308;284;0"/>
-        <xflag type="pot" location="Doggy Racetrack Pot 2" slice="0x0" setup="0x0" room="0x0" actor="0xa" item="RUPEE_BLUE" name="Pot 2" xyz="295;294;0"/>
-        <xflag type="pot" location="Doggy Racetrack Pot 3" slice="0x0" setup="0x0" room="0x0" actor="0xc" item="RUPEE_BLUE" name="Pot 3" xyz="281;307;0"/>
-        <xflag type="pot" location="Doggy Racetrack Pot 4" slice="0x0" setup="0x0" room="0x0" actor="0xd" item="RUPEE_BLUE" name="Pot 4" xyz="265;319;0"/>
-        <xflag type="soil" location="Doggy Racetrack Soil" slice="0x0" setup="0x0" room="0x0" actor="0x8" item="RUPEE_RED" name="Soil" xyz="384;391;0"/>
+        <xflag type="pot" location="Doggy Racetrack Pot 1" slice="0x0" setup="0" room="0x0" actor="0x9" item="RUPEE_BLUE" name="Pot 1" xyz="308;284;0"/>
+        <xflag type="pot" location="Doggy Racetrack Pot 2" slice="0x0" setup="0" room="0x0" actor="0xa" item="RUPEE_BLUE" name="Pot 2" xyz="295;294;0"/>
+        <xflag type="pot" location="Doggy Racetrack Pot 3" slice="0x0" setup="0" room="0x0" actor="0xc" item="RUPEE_BLUE" name="Pot 3" xyz="281;307;0"/>
+        <xflag type="pot" location="Doggy Racetrack Pot 4" slice="0x0" setup="0" room="0x0" actor="0xd" item="RUPEE_BLUE" name="Pot 4" xyz="265;319;0"/>
+        <xflag type="soil" location="Doggy Racetrack Soil" slice="0x0" setup="0" room="0x0" actor="0x8" item="RUPEE_RED" name="Soil" xyz="384;391;0"/>
       </rendering_option>
       <actor actor="0xe">
-        <xflag type="gossip" location="Doggy Racetrack Gossip Fairy" slice="0" item="FAIRY" name="Gossip Fairy" xyz="0;0;0"/>
-        <xflag type="gossip-big" location="Doggy Racetrack Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Big Fairy" xyz="0;0;0"/>
+        <rendering_option type="fairy">
+          <xflag type="gossip" location="Doggy Racetrack Gossip Fairy" slice="0" item="FAIRY" name="Gossip Stone" xyz="114;313;0"/>
+        </rendering_option>
+        <rendering_option type="fairy_spot">
+          <xflag type="gossip-big" location="Doggy Racetrack Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Stone" xyz="111;332;0"/>
+        </rendering_option>
       </actor>
     </scene_rendering>
   </scene>

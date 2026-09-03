@@ -46,18 +46,18 @@
         <sr location="MQ Gerudo Training Grounds SR Water Top-Left" flag="0xcc" item="RUPEE_SILVER_GTG_WATER" name="Water - Top-Left" xyz="1359;1002;0"/>
         <sr location="MQ Gerudo Training Grounds SR Water Center" flag="0xcd" item="RUPEE_SILVER_GTG_WATER" name="Water - Center" xyz="1316;1000;0"/>
         <sr location="MQ Gerudo Training Grounds SR Water Bottom-Right" flag="0xce" item="RUPEE_SILVER_GTG_WATER" name="Water - Bottom-Right" xyz="1268;1057;0"/>
-        <xflag type="pot" location="MQ Gerudo Training Grounds Pot 1" slice="0x0" setup="0x0" room="0x0" actor="0x5" item="RECOVERY_HEART" name="Pot 1" xyz="530;1167;0"/>
-        <xflag type="pot" location="MQ Gerudo Training Grounds Pot 2" slice="0x0" setup="0x0" room="0x0" actor="0x6" item="MAGIC_JAR_SMALL" name="Pot 2" xyz="530;1190;0"/>
-        <xflag type="pot" location="MQ Gerudo Training Grounds Pot 3" slice="0x0" setup="0x0" room="0x0" actor="0x7" item="MAGIC_JAR_LARGE" name="Pot 3" xyz="653;1167;0"/>
-        <xflag type="pot" location="MQ Gerudo Training Grounds Pot 4" slice="0x0" setup="0x0" room="0x0" actor="0x8" item="RECOVERY_HEART" name="Pot 4" xyz="653;1190;0"/>
-        <xflag type="wonder" location="MQ Gerudo Training Grounds Wonder Item Eye Statue" slice="0x0" setup="0x0" room="0x4" actor="0x4" item="MAGIC_JAR_LARGE" name="Eye Statue" xyz="578;407;0"/>
-        <xflag type="wonder" location="MQ Gerudo Training Grounds Wonder Item Dodongo Room Wall" slice="0x0" setup="0x0" room="0x7" actor="0x9" item="FLEXIBLE" name="Dodongo Room Wall" xyz="1040;1069;0"/>
-        <xflag type="crate" location="MQ Gerudo Training Grounds Maze Center Room Large Crate" slice="0x0" setup="0x0" room="0x8" actor="0x1" item="RUPEE_GREEN" name="Maze Center Room" xyz="585;773;0"/>
-        <xflag type="icicle" location="MQ Gerudo Training Grounds Icicle Slopes 1" slice="0x0" setup="0x0" room="0x2" actor="0x9" item="NOTHING" name="Slopes 1" xyz="236;642;0"/>
-        <xflag type="icicle" location="MQ Gerudo Training Grounds Icicle Slopes 2" slice="0x0" setup="0x0" room="0x2" actor="0xa" item="NOTHING" name="Slopes 2" xyz="237;659;0"/>
-        <xflag type="icicle" location="MQ Gerudo Training Grounds Icicle Slopes 3" slice="0x0" setup="0x0" room="0x2" actor="0xb" item="NOTHING" name="Slopes 3" xyz="252;653;0"/>
-        <xflag type="icicle" location="MQ Gerudo Training Grounds Icicle Slopes 4" slice="0x0" setup="0x0" room="0x2" actor="0xc" item="NOTHING" name="Slopes 4" xyz="212;660;0"/>
-        <xflag type="icicle" location="MQ Gerudo Training Grounds Icicle Slopes 5" slice="0x0" setup="0x0" room="0x2" actor="0xd" item="NOTHING" name="Slopes 5" xyz="225;669;0"/>
+        <xflag type="pot" location="MQ Gerudo Training Grounds Pot 1" room="0x0" actor="0x5" item="RECOVERY_HEART" name="Pot 1" xyz="530;1167;0"/>
+        <xflag type="pot" location="MQ Gerudo Training Grounds Pot 2" room="0x0" actor="0x6" item="MAGIC_JAR_SMALL" name="Pot 2" xyz="530;1190;0"/>
+        <xflag type="pot" location="MQ Gerudo Training Grounds Pot 3" room="0x0" actor="0x7" item="MAGIC_JAR_LARGE" name="Pot 3" xyz="653;1167;0"/>
+        <xflag type="pot" location="MQ Gerudo Training Grounds Pot 4" room="0x0" actor="0x8" item="RECOVERY_HEART" name="Pot 4" xyz="653;1190;0"/>
+        <xflag type="wonder" location="MQ Gerudo Training Grounds Wonder Item Eye Statue" room="0x4" actor="0x4" item="MAGIC_JAR_LARGE" name="Eye Statue" xyz="578;407;0"/>
+        <xflag type="wonder" location="MQ Gerudo Training Grounds Wonder Item Dodongo Room Wall" room="0x7" actor="0x9" item="FLEXIBLE" name="Dodongo Room Wall" xyz="1040;1069;0"/>
+        <xflag type="crate" location="MQ Gerudo Training Grounds Maze Center Room Large Crate" room="0x8" actor="0x1" item="RUPEE_GREEN" name="Maze Center Room" xyz="585;773;0"/>
+        <xflag type="icicle" location="MQ Gerudo Training Grounds Icicle Slopes 1" room="0x2" actor="0x9" item="NOTHING" name="Slopes 1" xyz="236;642;0"/>
+        <xflag type="icicle" location="MQ Gerudo Training Grounds Icicle Slopes 2" room="0x2" actor="0xa" item="NOTHING" name="Slopes 2" xyz="237;659;0"/>
+        <xflag type="icicle" location="MQ Gerudo Training Grounds Icicle Slopes 3" room="0x2" actor="0xb" item="NOTHING" name="Slopes 3" xyz="252;653;0"/>
+        <xflag type="icicle" location="MQ Gerudo Training Grounds Icicle Slopes 4" room="0x2" actor="0xc" item="NOTHING" name="Slopes 4" xyz="212;660;0"/>
+        <xflag type="icicle" location="MQ Gerudo Training Grounds Icicle Slopes 5" room="0x2" actor="0xd" item="NOTHING" name="Slopes 5" xyz="225;669;0"/>
       </rendering_option>
     </scene_rendering>
   </scene>

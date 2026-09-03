@@ -3937,38 +3937,38 @@ SONG_STORMS;MM_IKANA_GRAVEYARD;Song of Storms;MM Beneath The Graveyard Song of S
 0x10002;MM_MILK_ROAD;Gossip Stone;MM Milk Road Gossip Big Fairy;gossip_big;549;385;0;MM_MILK_ROAD;fairy_spot;render_type;All;0;mm;overworld;;;0x0546
 0x00039;MM_MOUNTAIN_VILLAGE_WINTER;Gossip Stone - Outside;MM Mountain Village Gossip Outside Fairy;gossip;319;521;0;MM_MOUNTAIN_VILLAGE;fairy;render_type;All;0;mm;overworld;;;0x058E
 0x10039;MM_MOUNTAIN_VILLAGE_WINTER;Gossip Stone - Outside;MM Mountain Village Gossip Outside Big Fairy;gossip_big;306;509;0;MM_MOUNTAIN_VILLAGE;fairy_spot;render_type;All;0;mm;overworld;;;0x058F
-0x00118;MM_MOUNTAIN_VILLAGE_SPRING;Gossip Stone - Tunnel;MM Mountain Village Gossip Tunnel Fairy;gossip;1451;105;0;MM_MOUNTAIN_VILLAGE;fairy;render_type;spring;0;mm;overworld;;;0x05CC
-0x10118;MM_MOUNTAIN_VILLAGE_SPRING;Gossip Stone - Tunnel;MM Mountain Village Gossip Tunnel Big Fairy;gossip_big;1439;90;0;MM_MOUNTAIN_VILLAGE;fairy_spot;render_type;spring;0;mm;overworld;;;0x05CD
-0x00031;MM_PATH_MOUNTAIN_VILLAGE;Gossip Stone;MM Path to Mountain Village Gossip Fairy;gossip;0;0;0;MM_PATH_MOUNTAIN_VILLAGE;fairy;render_type;All;0;mm;overworld;;;0x05FA
-0x10031;MM_PATH_MOUNTAIN_VILLAGE;Gossip Stone;MM Path to Mountain Village Gossip Big Fairy;gossip_big;0;0;0;MM_PATH_MOUNTAIN_VILLAGE;fairy_spot;render_type;All;0;mm;overworld;;;0x05FB
-0x00002;MM_ROAD_IKANA;Gossip Stone;MM Road to Ikana Gossip Fairy;gossip;0;0;0;MM_ROAD_IKANA;fairy;render_type;All;0;mm;overworld;;;0x0637
-0x10002;MM_ROAD_IKANA;Gossip Stone;MM Road to Ikana Gossip Big Fairy;gossip_big;0;0;0;MM_ROAD_IKANA;fairy_spot;render_type;All;0;mm;overworld;;;0x0638
-0x0002e;MM_ROAD_SOUTHERN_SWAMP;Gossip Stone;MM Road to Southern Swamp Gossip Fairy;gossip;0;0;0;MM_ROAD_SOUTHERN_SWAMP;fairy;render_type;All;0;mm;overworld;;;0x0665
-0x1002e;MM_ROAD_SOUTHERN_SWAMP;Gossip Stone;MM Road to Southern Swamp Gossip Big Fairy;gossip_big;0;0;0;MM_ROAD_SOUTHERN_SWAMP;fairy_spot;render_type;All;0;mm;overworld;;;0x0666
-0x00033;MM_ROMANI_RANCH;Gossip Stone - Entrance;MM Romani Ranch Gossip Fairy Entrance;gossip;0;0;0;MM_ROMANI_RANCH;fairy;render_type;All;0;mm;overworld;;;0x06C4
-0x10033;MM_ROMANI_RANCH;Gossip Stone - Entrance;MM Romani Ranch Gossip Big Fairy Entrance;gossip_big;0;0;0;MM_ROMANI_RANCH;fairy_spot;render_type;All;0;mm;overworld;;;0x06C5
-0x00034;MM_ROMANI_RANCH;Gossip Stone - Near Tree;MM Romani Ranch Gossip Fairy Near Tree;gossip;0;0;0;MM_ROMANI_RANCH;fairy;render_type;All;0;mm;overworld;;;0x06C6
-0x10034;MM_ROMANI_RANCH;Gossip Stone - Near Tree;MM Romani Ranch Gossip Big Fairy Near Tree;gossip_big;0;0;0;MM_ROMANI_RANCH;fairy_spot;render_type;All;0;mm;overworld;;;0x06C7
-0x00035;MM_ROMANI_RANCH;Gossip Stone - Behind House;MM Romani Ranch Gossip Fairy Behind House;gossip;0;0;0;MM_ROMANI_RANCH;fairy;render_type;All;0;mm;overworld;;;0x06C8
-0x10035;MM_ROMANI_RANCH;Gossip Stone - Behind House;MM Romani Ranch Gossip Big Fairy Behind House;gossip_big;0;0;0;MM_ROMANI_RANCH;fairy_spot;render_type;All;0;mm;overworld;;;0x06C9
-0x00018;MM_CUCCO_SHACK;Gossip Stone;MM Cucco Shack Gossip Fairy;gossip;0;0;0;MM_CUCCO_SHACK;fairy;render_type;All;0;mm;overworld;;;0x06E1
-0x10018;MM_CUCCO_SHACK;Gossip Stone;MM Cucco Shack Gossip Big Fairy;gossip_big;0;0;0;MM_CUCCO_SHACK;fairy_spot;render_type;All;0;mm;overworld;;;0x06E2
-0x0000e;MM_DOG_RACETRACK;Gossip Stone;MM Doggy Racetrack Gossip Fairy;gossip;0;0;0;MM_DOG_RACETRACK;fairy;render_type;All;0;mm;overworld;;;0x06E8
-0x1000e;MM_DOG_RACETRACK;Gossip Stone;MM Doggy Racetrack Gossip Big Fairy;gossip_big;0;0;0;MM_DOG_RACETRACK;fairy_spot;render_type;All;0;mm;overworld;;;0x06E9
-0x00213;MM_SOUTHERN_SWAMP;Gossip Stone;MM Southern Swamp Gossip Fairy;gossip;0;0;0;MM_SOUTHERN_SWAMP;fairy;render_type;All;0;mm;overworld;;;0x0722
-0x10213;MM_SOUTHERN_SWAMP;Gossip Stone;MM Southern Swamp Gossip Big Fairy;gossip_big;0;0;0;MM_SOUTHERN_SWAMP;fairy_spot;render_type;All;0;mm;overworld;;;0x0723
-0x00015;MM_TERMINA_FIELD;Gossip Stone - Southeast;MM Termina Field Gossip Fairy Southeast;gossip;0;0;0;MM_TERMINA_FIELD;fairy;render_type;All;0;mm;overworld;;;0x0868
-0x10015;MM_TERMINA_FIELD;Gossip Stone - Southeast;MM Termina Field Gossip Big Fairy Southeast;gossip_big;0;0;0;MM_TERMINA_FIELD;fairy_spot;render_type;All;0;mm;overworld;;;0x0869
-0x00016;MM_TERMINA_FIELD;Gossip Stone - Near Kamaro;MM Termina Field Gossip Fairy Near Kamaro;gossip;0;0;0;MM_TERMINA_FIELD;fairy;render_type;All;0;mm;overworld;;;0x086A
-0x10016;MM_TERMINA_FIELD;Gossip Stone - Near Kamaro;MM Termina Field Gossip Big Fairy Near Kamaro;gossip_big;0;0;0;MM_TERMINA_FIELD;fairy_spot;render_type;All;0;mm;overworld;;;0x086B
-0x00017;MM_TERMINA_FIELD;Gossip Stone - Near Mountain;MM Termina Field Gossip Fairy Near Mountain;gossip;0;0;0;MM_TERMINA_FIELD;fairy;render_type;All;0;mm;overworld;;;0x086C
-0x10017;MM_TERMINA_FIELD;Gossip Stone - Near Mountain;MM Termina Field Gossip Big Fairy Near Mountain;gossip_big;0;0;0;MM_TERMINA_FIELD;fairy_spot;render_type;All;0;mm;overworld;;;0x086D
-0x00018;MM_TERMINA_FIELD;Gossip Stone - Southwest;MM Termina Field Gossip Fairy Southwest;gossip;0;0;0;MM_TERMINA_FIELD;fairy;render_type;All;0;mm;overworld;;;0x086E
-0x10018;MM_TERMINA_FIELD;Gossip Stone - Southwest;MM Termina Field Gossip Big Fairy Southwest;gossip_big;0;0;0;MM_TERMINA_FIELD;fairy_spot;render_type;All;0;mm;overworld;;;0x086F
-0x00019;MM_TERMINA_FIELD;Gossip Stone - Northeast;MM Termina Field Gossip Fairy Northeast;gossip;0;0;0;MM_TERMINA_FIELD;fairy;render_type;All;0;mm;overworld;;;0x0870
-0x10019;MM_TERMINA_FIELD;Gossip Stone - Northeast;MM Termina Field Gossip Big Fairy Northeast;gossip_big;0;0;0;MM_TERMINA_FIELD;fairy_spot;render_type;All;0;mm;overworld;;;0x0871
-0x0001a;MM_TERMINA_FIELD;Gossip Stone - Observatory;MM Termina Field Gossip Fairy Observatory;gossip;0;0;0;MM_TERMINA_FIELD;fairy;render_type;All;0;mm;overworld;;;0x0872
-0x1001a;MM_TERMINA_FIELD;Gossip Stone - Observatory;MM Termina Field Gossip Big Fairy Observatory;gossip_big;0;0;0;MM_TERMINA_FIELD;fairy_spot;render_type;All;0;mm;overworld;;;0x0873
+0x00118;MM_MOUNTAIN_VILLAGE_SPRING;Gossip Stone - Tunnel;MM Mountain Village Gossip Tunnel Fairy;gossip;1451;105;0;MM_MOUNTAIN_VILLAGE;fairy;render_type;Spring;0;mm;overworld;;;0x05CC
+0x10118;MM_MOUNTAIN_VILLAGE_SPRING;Gossip Stone - Tunnel;MM Mountain Village Gossip Tunnel Big Fairy;gossip_big;1439;90;0;MM_MOUNTAIN_VILLAGE;fairy_spot;render_type;Spring;0;mm;overworld;;;0x05CD
+0x00031;MM_PATH_MOUNTAIN_VILLAGE;Gossip Stone;MM Path to Mountain Village Gossip Fairy;gossip;550;404;0;MM_PATH_MOUNTAIN_VILLAGE;fairy;render_type;All;0;mm;overworld;;;0x05FA
+0x10031;MM_PATH_MOUNTAIN_VILLAGE;Gossip Stone;MM Path to Mountain Village Gossip Big Fairy;gossip_big;538;419;0;MM_PATH_MOUNTAIN_VILLAGE;fairy_spot;render_type;All;0;mm;overworld;;;0x05FB
+0x00002;MM_ROAD_IKANA;Gossip Stone;MM Road to Ikana Gossip Fairy;gossip;762;566;0;MM_ROAD_IKANA;fairy;render_type;All;0;mm;overworld;;;0x0637
+0x10002;MM_ROAD_IKANA;Gossip Stone;MM Road to Ikana Gossip Big Fairy;gossip_big;758;583;0;MM_ROAD_IKANA;fairy_spot;render_type;All;0;mm;overworld;;;0x0638
+0x0002e;MM_ROAD_SOUTHERN_SWAMP;Gossip Stone;MM Road to Southern Swamp Gossip Fairy;gossip;365;427;0;MM_ROAD_SOUTHERN_SWAMP;fairy;render_type;All;0;mm;overworld;;;0x0665
+0x1002e;MM_ROAD_SOUTHERN_SWAMP;Gossip Stone;MM Road to Southern Swamp Gossip Big Fairy;gossip_big;340;424;0;MM_ROAD_SOUTHERN_SWAMP;fairy_spot;render_type;All;0;mm;overworld;;;0x0666
+0x00033;MM_ROMANI_RANCH;Gossip Stone - Entrance;MM Romani Ranch Gossip Fairy Entrance;gossip;786;379;0;MM_ROMANI_RANCH;fairy;render_type;All;0;mm;overworld;;;0x06C4
+0x10033;MM_ROMANI_RANCH;Gossip Stone - Entrance;MM Romani Ranch Gossip Big Fairy Entrance;gossip_big;774;394;0;MM_ROMANI_RANCH;fairy_spot;render_type;All;0;mm;overworld;;;0x06C5
+0x00034;MM_ROMANI_RANCH;Gossip Stone - Near Tree;MM Romani Ranch Gossip Fairy Near Tree;gossip;387;577;0;MM_ROMANI_RANCH;fairy;render_type;All;0;mm;overworld;;;0x06C6
+0x10034;MM_ROMANI_RANCH;Gossip Stone - Near Tree;MM Romani Ranch Gossip Big Fairy Near Tree;gossip_big;387;560;0;MM_ROMANI_RANCH;fairy_spot;render_type;All;0;mm;overworld;;;0x06C7
+0x00035;MM_ROMANI_RANCH;Gossip Stone - Behind House;MM Romani Ranch Gossip Fairy Behind House;gossip;358;73;0;MM_ROMANI_RANCH;fairy;render_type;All;0;mm;overworld;;;0x06C8
+0x10035;MM_ROMANI_RANCH;Gossip Stone - Behind House;MM Romani Ranch Gossip Big Fairy Behind House;gossip_big;354;90;0;MM_ROMANI_RANCH;fairy_spot;render_type;All;0;mm;overworld;;;0x06C9
+0x00018;MM_CUCCO_SHACK;Gossip Stone;MM Cucco Shack Gossip Fairy;gossip;757;222;0;MM_CUCCO_SHACK;fairy;render_type;All;0;mm;overworld;;;0x06E1
+0x10018;MM_CUCCO_SHACK;Gossip Stone;MM Cucco Shack Gossip Big Fairy;gossip_big;757;204;0;MM_CUCCO_SHACK;fairy_spot;render_type;All;0;mm;overworld;;;0x06E2
+0x0000e;MM_DOG_RACETRACK;Gossip Stone;MM Doggy Racetrack Gossip Fairy;gossip;114;313;0;MM_DOG_RACETRACK;fairy;render_type;All;0;mm;overworld;;;0x06E8
+0x1000e;MM_DOG_RACETRACK;Gossip Stone;MM Doggy Racetrack Gossip Big Fairy;gossip_big;111;332;0;MM_DOG_RACETRACK;fairy_spot;render_type;All;0;mm;overworld;;;0x06E9
+0x00213;MM_SOUTHERN_SWAMP;Gossip Stone;MM Southern Swamp Gossip Fairy;gossip;120;432;0;MM_SOUTHERN_SWAMP;fairy;render_type;All;0;mm;overworld;;;0x0722
+0x10213;MM_SOUTHERN_SWAMP;Gossip Stone;MM Southern Swamp Gossip Big Fairy;gossip_big;119;452;0;MM_SOUTHERN_SWAMP;fairy_spot;render_type;All;0;mm;overworld;;;0x0723
+0x00015;MM_TERMINA_FIELD;Gossip Stone - Southeast;MM Termina Field Gossip Fairy Southeast;gossip;1743;1571;0;MM_TERMINA_FIELD;fairy;render_type;All;0;mm;overworld;;;0x0868
+0x10015;MM_TERMINA_FIELD;Gossip Stone - Southeast;MM Termina Field Gossip Big Fairy Southeast;gossip_big;1729;1555;0;MM_TERMINA_FIELD;fairy_spot;render_type;All;0;mm;overworld;;;0x0869
+0x00016;MM_TERMINA_FIELD;Gossip Stone - Near Kamaro;MM Termina Field Gossip Fairy Near Kamaro;gossip;1110;418;0;MM_TERMINA_FIELD;fairy;render_type;All;0;mm;overworld;;;0x086A
+0x10016;MM_TERMINA_FIELD;Gossip Stone - Near Kamaro;MM Termina Field Gossip Big Fairy Near Kamaro;gossip_big;1096;430;0;MM_TERMINA_FIELD;fairy_spot;render_type;All;0;mm;overworld;;;0x086B
+0x00017;MM_TERMINA_FIELD;Gossip Stone - Near Mountain;MM Termina Field Gossip Fairy Near Mountain;gossip;1531;132;0;MM_TERMINA_FIELD;fairy;render_type;All;0;mm;overworld;;;0x086C
+0x10017;MM_TERMINA_FIELD;Gossip Stone - Near Mountain;MM Termina Field Gossip Big Fairy Near Mountain;gossip_big;1510;137;0;MM_TERMINA_FIELD;fairy_spot;render_type;All;0;mm;overworld;;;0x086D
+0x00018;MM_TERMINA_FIELD;Gossip Stone - Southwest;MM Termina Field Gossip Fairy Southwest;gossip;1033;1462;0;MM_TERMINA_FIELD;fairy;render_type;All;0;mm;overworld;;;0x086E
+0x10018;MM_TERMINA_FIELD;Gossip Stone - Southwest;MM Termina Field Gossip Big Fairy Southwest;gossip_big;1017;1475;0;MM_TERMINA_FIELD;fairy_spot;render_type;All;0;mm;overworld;;;0x086F
+0x00019;MM_TERMINA_FIELD;Gossip Stone - Northeast;MM Termina Field Gossip Fairy Northeast;gossip;2086;377;0;MM_TERMINA_FIELD;fairy;render_type;All;0;mm;overworld;;;0x0870
+0x10019;MM_TERMINA_FIELD;Gossip Stone - Northeast;MM Termina Field Gossip Big Fairy Northeast;gossip_big;2071;366;0;MM_TERMINA_FIELD;fairy_spot;render_type;All;0;mm;overworld;;;0x0871
+0x0001a;MM_TERMINA_FIELD;Gossip Stone - Observatory;MM Termina Field Gossip Fairy Observatory;gossip;2344;1031;0;MM_TERMINA_FIELD;fairy;render_type;All;0;mm;overworld;;;0x0872
+0x1001a;MM_TERMINA_FIELD;Gossip Stone - Observatory;MM Termina Field Gossip Big Fairy Observatory;gossip_big;2341;1009;0;MM_TERMINA_FIELD;fairy_spot;render_type;All;0;mm;overworld;;;0x0873
 0x00009;MM_GROTTOS;Gossip Stone 1;MM Ocean Gossip Grotto Gossip Fairy 1;gossip;721;377;0;MM_GROTTO_TERMINA_OCEAN_GOSSIP;fairy;render_type;All;0;mm;overworld;;;0x08FA
 0x10009;MM_GROTTOS;Gossip Stone 1;MM Ocean Gossip Grotto Gossip Big Fairy 1;gossip_big;706;363;0;MM_GROTTO_TERMINA_OCEAN_GOSSIP;fairy_spot;render_type;All;0;mm;overworld;;;0x08FB
 0x0000a;MM_GROTTOS;Gossip Stone 2;MM Ocean Gossip Grotto Gossip Fairy 2;gossip;752;403;0;MM_GROTTO_TERMINA_OCEAN_GOSSIP;fairy;render_type;All;0;mm;overworld;;;0x08FC
@@ -4001,5 +4001,5 @@ SONG_STORMS;MM_IKANA_GRAVEYARD;Song of Storms;MM Beneath The Graveyard Song of S
 0x10303;MM_GROTTOS;Gossip Stone 3;MM Mountain Gossip Grotto Gossip Big Fairy 3;gossip_big;423;509;0;MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP;fairy_spot;render_type;All;0;mm;overworld;;;0x091C
 0x00304;MM_GROTTOS;Gossip Stone 4;MM Mountain Gossip Grotto Gossip Fairy 4;gossip;473;479;0;MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP;fairy;render_type;All;0;mm;overworld;;;0x091D
 0x10304;MM_GROTTOS;Gossip Stone 4;MM Mountain Gossip Grotto Gossip Big Fairy 4;gossip_big;459;489;0;MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP;fairy_spot;render_type;All;0;mm;overworld;;;0x091E
-0x0003e;MM_ZORA_CAPE;Gossip Stone;MM Zora Cape Gossip Fairy;gossip;0;0;0;MM_ZORA_CAPE;fairy;render_type;All;0;mm;overworld;;;0x09D2
-0x1003e;MM_ZORA_CAPE;Gossip Stone;MM Zora Cape Gossip Big Fairy;gossip_big;0;0;0;MM_ZORA_CAPE;fairy_spot;render_type;All;0;mm;overworld;;;0x09D3
+0x0003e;MM_ZORA_CAPE;Gossip Stone;MM Zora Cape Gossip Fairy;gossip;686;234;0;MM_ZORA_CAPE;fairy;render_type;All;0;mm;overworld;;;0x09D2
+0x1003e;MM_ZORA_CAPE;Gossip Stone;MM Zora Cape Gossip Big Fairy;gossip_big;670;228;0;MM_ZORA_CAPE;fairy_spot;render_type;All;0;mm;overworld;;;0x09D3

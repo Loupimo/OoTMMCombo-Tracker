@@ -78,6 +78,10 @@ skipZelda;Skip Zelda;boolean;vanilla;standard;
 agelessStrength;Use Silver / Golden Gauntlets as Child;boolean;vanilla;standard;
 restoreBrokenActors;Restore Broken Actors;boolean;all;standard;
 shuffleLotteryMm;Lottery Prizes;boolean;all;standard;
+shuffleGossipFairiesOot;Gossip Stone Fairies - OoT;shuffle;vanilla;standard;
+shuffleGossipBigFairiesOot;Gossip Stone Big Fairies - OoT;shuffle;vanilla;standard;
+shuffleGossipFairiesMm;Gossip Stone Fairies- MM;shuffle;vanilla;standard;
+shuffleGossipBigFairiesMm;Gossip Stone Big Fairies - MM;shuffle;vanilla;standard;
 crossWarpOot;Cross-Games OoT Warp Song;boolean;vanilla;standard;
 crossWarpMm;Cross-Games MM Song of Soaring;boolean;vanilla;standard;
 progressiveShieldsOot;Progressive Shields - OoT;boolean;vanilla;progressive;OOT_PROGRESSIVE_SHIELD_DEKU, OOT_PROGRESSIVE_SHIELD_HYLIAN

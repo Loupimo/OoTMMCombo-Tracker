@@ -1,0 +1,29 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "start:config",
+			"problemMatcher": {
+        "base": "$gcc",
+      },
+			"label": "Generate Seed",
+		},
+    {
+			"type": "npm",
+			"script": "gui:dev",
+			"problemMatcher": {
+        "base": "$gcc",
+      },
+			"label": "Start Web Generator",
+		},
+    {
+			"type": "npm",
+			"script": "web:dev",
+			"problemMatcher": {
+        "base": "$gcc",
+      },
+			"label": "Start Website",
+		}
+	]
+}

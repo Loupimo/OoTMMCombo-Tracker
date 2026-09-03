@@ -90,6 +90,10 @@ Settings::Settings()
     { "agelessStrength", { "Use Silver / Golden Gauntlets as Child", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, {  } } },
 	{ "restoreBrokenActors", { "Restore Broken Actors", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
 	{ "shuffleLotteryMm", { "Lottery Prizes", ParamType::boolean, ParamCategory::standard, ShuffleSetting::all, {  } } },
+    { "shuffleGossipFairiesOot", { "Gossip Stone Fairies - OoT", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::vanilla, {  } } },
+    { "shuffleGossipBigFairiesOot", { "Gossip Stone Big Fairies - OoT", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::vanilla, {  } } },
+    { "shuffleGossipFairiesMm", { "Gossip Stone Fairies- MM", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::vanilla, {  } } },
+    { "shuffleGossipBigFairiesMm", { "Gossip Stone Big Fairies - MM", ParamType::shuffle, ParamCategory::standard, ShuffleSetting::vanilla, {  } } },
     { "crossWarpOot", { "Cross-Games OoT Warp Song", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, {  } } },
     { "crossWarpMm", { "Cross-Games MM Song of Soaring", ParamType::boolean, ParamCategory::standard, ShuffleSetting::vanilla, {  } } },
     });
@@ -1346,14 +1350,28 @@ void Settings::ApplyOoTSettingsToFilter(FilterManager* Filter)
 
 				case ObjectType::fairy:
 				{
-					this->CheckObjectExclusion(currObj, this->FilterSettings["fairyFountainFairyShuffleOot"].Value, Filter);
+                    if (currObj->Type == ObjectType::gossip)
+                    {
+                        this->CheckObjectExclusion(currObj, this->FilterSettings["shuffleGossipFairiesOot"].Value, Filter);
+                    }
+                    else
+                    {
+                        this->CheckObjectExclusion(currObj, this->FilterSettings["fairyFountainFairyShuffleOot"].Value, Filter);
+                    }
 					break;
 				}
 
 				case ObjectType::fairy_spot:
 				{
-					this->CheckObjectExclusion(currObj, this->FilterSettings["fairySpotShuffleOot"].Value, Filter);
-					break;
+                    if (currObj->Type == ObjectType::gossip_big)
+                    {
+                        this->CheckObjectExclusion(currObj, this->FilterSettings["shuffleGossipBigFairiesOot"].Value, Filter);
+                    }
+                    else
+                    {
+                        this->CheckObjectExclusion(currObj, this->FilterSettings["fairySpotShuffleOot"].Value, Filter);
+                    }
+                    break;
 				}
 
 				case ObjectType::egg:
@@ -1740,9 +1758,22 @@ void Settings::ApplyMMSettingsToFilter(FilterManager* Filter)
 
 				case ObjectType::fairy:
 				{
-					this->CheckObjectExclusion(currObj, this->FilterSettings["fairyFountainFairyShuffleMm"].Value, Filter);
+                    if (currObj->Type == ObjectType::gossip)
+                    {
+                        this->CheckObjectExclusion(currObj, this->FilterSettings["shuffleGossipFairiesMm"].Value, Filter);
+                    }
+                    else
+                    {
+                        this->CheckObjectExclusion(currObj, this->FilterSettings["fairyFountainFairyShuffleMm"].Value, Filter);
+                    }
 					break;
 				}
+
+                case ObjectType::fairy_spot:
+                {
+                    this->CheckObjectExclusion(currObj, this->FilterSettings["shuffleGossipBigFairiesMm"].Value, Filter);
+                    break;
+                }
 
 				case ObjectType::npc:
 				{

@@ -189,8 +189,13 @@ Signaux à lire dans la sortie :
   dossier pour forcer un re-téléchargement). ⚠️ Choisis le **REF qui correspond à ta ROM** : le HEAD
   de `master` peut avoir des XflagID différents d'une ROM plus ancienne. (Le téléchargement tire
   l'archive complète du repo mais ne garde que `data/` sur le disque.)
-- **Set HAND de `augment.py`** (jamais ré-augmentés automatiquement, édités à la main) :
-  `oot/special.xml`, `oot/overworld/kakariko.xml`, `oot/dungeons_mq/bottom_of_the_well_mq.xml`.
+- **Set HAND de `augment.py` = VIDE.** Il exclut les fichiers dont la couche render n'est PAS
+  reconstructible depuis le pool (à maintenir à la main). Il n'y en a plus aucun : les anciens
+  exemples (`oot/special.xml`, `oot/overworld/kakariko.xml`, `oot/dungeons_mq/bottom_of_the_well_mq.xml`)
+  sont désormais entièrement adossés au pool, donc `augment --all` les régénère comme les autres. Un
+  fichier n'apparaît « un-converted » (`gen_objects` **liste lesquels** désormais) que s'il n'a pas
+  encore de `<scene_rendering>` → `augment --all` le corrige (join pool). N'ajoute une entrée dans
+  `HAND` que si un fichier reçoit des données render qui n'existent que dans le XML (jamais dans le pool).
 - **Drift de registration** (affiché par `gen_objects --emit`) : quand une scène devient non-vide
   (ou l'inverse), le script te dit quoi corriger **à la main** dans `Objects.cpp` /
   `Headers/Combo/OoTObjectScene.h` : retirer un `CreateEmptyScene(...)`, ajouter un
@@ -204,7 +209,24 @@ Signaux à lire dans la sortie :
   absent du pool ⇒ `xflag_id = 0xFFFF` (non tracké en système compact) : à compléter dans le pool
   puis re-stamper.
 - **Gossips & unreachables** n'ont pas de règle de logique (normal) : exclus du test de couverture.
+- **Acteur « hétérogène » = un `<rendering_option>` par check.** Quand plusieurs checks partagent un
+  même `<actor>` mais rendent différemment (cas type : une gossip stone dont le `gossip` (petite fée)
+  rend en `fairy` et le `gossip-big` (grande fée) en `fairy_spot`), `augment.py` **ne** met **pas**
+  l'acteur sous un seul `<rendering_option>` (il prendrait le type du 1ᵉʳ check). Il donne à chaque
+  check son propre `<rendering_option>` **imbriqué dans l'`<actor>`** ; `gen_objects` sait lire cette
+  imbrication (l'identité vient de l'`<actor>`/`<match>`, le rendertype du `<rendering_option>` interne).
+  Un acteur homogène (fontaines de fées, groupes pot/herbe) reste sous un `<rendering_option>` unique.
+  → le rendertype vient du **pool** (`rendertype` = `fairy`/`fairy_spot`) : le corriger là puis
+  `augment` + `gen_objects --emit` + `gen_data.py`.
 - **Nommage items logique ↔ tracker.** La logique OoTMM nomme certains items autrement que tes
   `#define` (ex. `SONG_STORMS`/`SHARED_SONG_STORMS` côté logique = `SONG_OF_STORMS`/
   `SHARED_SONG_OF_STORMS` côté tracker). L'alias est dans `gen_logic.py` → `LOGIC_ITEM_ALIASES` ;
   ajoute une entrée là si un futur item OoTMM ne résout pas (`WARN unresolved items`).
+- **Réglages de filtre C++ → Rust (2 étapes).** `gen_data.py` **parse `Settings.cpp`** (`FilterSettings` /
+  `ItemSettings`) et régénère la **métadonnée** Rust (`data/misc.rs` → `FILTER_SETTINGS`/`ITEM_SETTINGS` :
+  clé, nom, type, défaut). Donc ajouter un `FilterSetting` en C++ puis relancer `gen_data.py` suffit pour
+  que le réglage **existe** côté Rust (parsé du save, valeur par défaut, listé dans l'UI). MAIS la **logique
+  de filtrage** (quel objet le réglage cache) n'est **pas** générée : c'est du code à mirrorer **à la main**
+  dans `rust-tracker/src/settings.rs` (`apply_oot` / `apply_mm`, `match o.render_type { … }`, miroir de
+  `ApplyOoT/MMSettingsToFilter`). Les noms de réglage ne passent pas par les locales (affichés depuis
+  `SettingMeta.name`, anglais) → rien à traduire. Ex. gossips : `shuffleGossip[Big]Fairies{Oot,Mm}`.
