@@ -582,12 +582,7 @@ impl Settings {
                 self.num_teams = value.parse().unwrap_or(1);
             }
             "songs" => {
-                let v = if value == "notes" {
-                    ShuffleSetting::all
-                } else {
-                    ShuffleSetting::vanilla
-                };
-                self.set_value("songs", v);
+                self.set_value("songs", setting_bucket("songs", value));
             }
             _ if Self::is_filter_key(name) => {
                 let v = filter_value(value);
@@ -1137,6 +1132,25 @@ fn item_key(name: &str) -> &'static str {
 /// The filter-parameter value mapping of AddSetting. Maps an OoTMM setting value
 /// (e.g. "ownDungeon", "none", "anywhere") to the tracker's visibility bucket. Public
 /// so the ROM-settings editor can turn a per-parameter option into the value to store.
+/// The `ShuffleSetting` bucket a raw option value collapses to for a GIVEN setting.
+/// Most settings use the generic `filter_value`, but a few carry a bespoke meaning the
+/// coarse buckets can't express and must map per-key so the editor combo and `apply`
+/// agree. `songs` is the notable one: it is a 3-value enum (songLocations / anywhere /
+/// notes) whose only tracker-relevant state is "note items are shuffled into the pool"
+/// (`notes`), so only `notes` counts as `all` and every other value is `vanilla`.
+pub(crate) fn setting_bucket(key: &str, value: &str) -> ShuffleSetting {
+    match key {
+        "songs" => {
+            if value == "notes" {
+                ShuffleSetting::all
+            } else {
+                ShuffleSetting::vanilla
+            }
+        }
+        _ => filter_value(value),
+    }
+}
+
 pub(crate) fn filter_value(value: &str) -> ShuffleSetting {
     let int_pos = value.parse::<i64>().map(|n| n > 0).unwrap_or(false);
     match value {
@@ -1437,6 +1451,35 @@ mod tests {
         assert_eq!(s.song_events[0], vec![11, 5]);
         // Goron Lullaby = 15 (MM slot 0).
         assert_eq!(s.song_events[1], vec![15]);
+    }
+
+    /// The `songs` setting is a 3-value enum the tracker collapses to a boolean: only
+    /// `notes` (song-note items in the pool) counts as shuffled. `setting_bucket` must
+    /// agree with `apply`, and two of its values (songLocations / anywhere) share the
+    /// `vanilla` bucket — the combo highlight relies on the exact raw value, not the
+    /// bucket, to pick one. A generic key still delegates to `filter_value`.
+    #[test]
+    fn songs_setting_bucket_and_exact_raw_value() {
+        // (ShuffleSetting is a generated enum without Debug, so compare with `==`.)
+        assert!(setting_bucket("songs", "notes") == ShuffleSetting::all);
+        assert!(setting_bucket("songs", "songLocations") == ShuffleSetting::vanilla);
+        assert!(setting_bucket("songs", "anywhere") == ShuffleSetting::vanilla);
+        // Non-`songs` keys fall through to the generic mapping (anywhere => all there).
+        assert!(setting_bucket("ganonBossKey", "anywhere") == ShuffleSetting::all);
+
+        // A spoiler keeps the EXACT value for the logic feed while `apply` derives the
+        // coarse bucket: notes => shuffled (all), any other value => vanilla.
+        let mq = HashSet::new();
+        for (raw, bucket) in [
+            ("notes", ShuffleSetting::all),
+            ("songLocations", ShuffleSetting::vanilla),
+            ("anywhere", ShuffleSetting::vanilla),
+        ] {
+            let mut s = Settings::default();
+            s.parse_spoiler(&format!("Settings\n  songs: {raw}\n"), &mq);
+            assert_eq!(s.raw_settings.get("songs").map(String::as_str), Some(raw), "exact raw for logic");
+            assert!(s.value("songs") == bucket, "coarse bucket for the map filter: {raw}");
+        }
     }
 
     /// The `Entrances` split anchors on the game prefix, so a region name that

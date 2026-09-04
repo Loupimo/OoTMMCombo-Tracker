@@ -74,7 +74,11 @@
         <xflag type="rupee" location="Death Mountain Trail Rupee Lower" setup="0" actor="0x2" item="RUPEE_BLUE" name="Lower" xyz="861;345;1"/>
       </rendering_option>
       <rendering_option room="1" type="fairy_spot">
-        <xflag type="fairy-spot" location="Death Mountain Trail Big Fairy" setup="0" actor="0x26" item="FAIRY_BIG" name="Mast" xyz="643;580;0"/>
+        <actor>
+          <match setup="0" actor="0x26"/>
+          <match setup="2" actor="0x2b"/>
+          <xflag type="fairy-spot" location="Death Mountain Trail Big Fairy" item="FAIRY_BIG" name="Mast" xyz="643;580;0"/>
+        </actor>
       </rendering_option>
       <rendering_option context="child" room="1">
         <xflag type="boulder" location="Death Mountain Trail Boulder Child" setup="0" actor="0x2f" item="NOTHING" name="Child" xyz="861;345;0"/>

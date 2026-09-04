@@ -96,7 +96,11 @@
         <xflag type="rupee" location="Lost Woods Rupee Boulder" item="RUPEE_BLUE" name="Boulder" xyz="2281;230;1"/>
       </actor>
       <rendering_option type="fairy_spot">
-        <xflag type="fairy-spot" location="Lost Woods Pool Big Fairy" setup="0" room="0x3" actor="0x3" item="FAIRY_BIG" name="Pool" xyz="2399;1504;0"/>
+        <actor room="0x3">
+          <match setup="0" actor="0x3"/>
+          <match setup="2" actor="0x5"/>
+          <xflag type="fairy-spot" location="Lost Woods Pool Big Fairy" item="FAIRY_BIG" name="Pool" xyz="2399;1504;0"/>
+        </actor>
       </rendering_option>
       <rendering_option context="child">
         <xflag type="wonder" location="Lost Woods Wonder Item 1" setup="0" room="0x1" actor="0x5" item="RUPEE_GREEN" name="Memory Game Grass 1" xyz="1975;2105;0"/>

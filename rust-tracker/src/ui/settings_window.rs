@@ -563,20 +563,29 @@ impl TrackerApp {
                     let raw_cur = is_logic_key(key)
                         .then(|| self.rom_settings.raw_settings.get(key).cloned())
                         .flatten();
+                    // When only the coarse bucket is known (no exact raw value), highlight a
+                    // SINGLE representative — the first option that maps to the current bucket
+                    // — so an enum whose values share a bucket (e.g. `songs`: songLocations and
+                    // anywhere both collapse to `vanilla`) never lights up two options at once.
+                    let repr = m
+                        .options
+                        .iter()
+                        .find(|o| crate::settings::setting_bucket(key, o.value) == cur)
+                        .map(|o| o.value);
                     let cur_label = raw_cur
                         .as_deref()
                         .and_then(|rc| m.options.iter().find(|o| o.value == rc))
-                        .or_else(|| m.options.iter().find(|o| crate::settings::filter_value(o.value) == cur))
+                        .or_else(|| m.options.iter().find(|o| Some(o.value) == repr))
                         .map(|o| self.i18n.tr_settings(o.label))
                         .unwrap_or_else(|| shuffle_label(&self.i18n, cur));
                     combo
                         .selected_text(RichText::new(cur_label).color(state_color(cur)))
                         .show_ui(ui, |ui| {
                             for o in m.options {
-                                let bucket = crate::settings::filter_value(o.value);
+                                let bucket = crate::settings::setting_bucket(key, o.value);
                                 let selected = match raw_cur.as_deref() {
                                     Some(rc) => o.value == rc,
-                                    None => bucket == cur,
+                                    None => Some(o.value) == repr,
                                 };
                                 let lbl = RichText::new(self.i18n.tr_settings(o.label)).color(state_color(bucket));
                                 if ui.selectable_label(selected, lbl).clicked() {
@@ -1193,7 +1202,7 @@ impl TrackerApp {
         settings_group(ui, 0, &mq_t, |ui| {
             for &(name, scene) in settings::OOT_MQ_DUNGEONS {
                 game_badge(ui, Badge::Oot);
-                ui.label(name);
+                ui.label(self.i18n.tr_settings(name).to_owned());
                 let key = (Game::Oot, scene);
                 let mut on = self.mq_scenes.contains(&key);
                 if ui.checkbox(&mut on, "").changed() {

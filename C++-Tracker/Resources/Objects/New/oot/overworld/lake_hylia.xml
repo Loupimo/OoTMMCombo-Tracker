@@ -109,7 +109,11 @@
         <xflag type="rupee" location="Lake Hylia Rupee 3" setup="0" actor="0x33" item="RUPEE_GREEN" name="Rupee 3" xyz="676;553;1"/>
       </rendering_option>
       <rendering_option type="fairy_spot">
-        <xflag type="fairy-spot" location="Lake Hylia Island Big Fairy" setup="0" actor="0x37" item="FAIRY_BIG" name="Fire Arrow Island" xyz="505;225;0"/>
+        <actor>
+          <match setup="0" actor="0x37"/>
+          <match setup="2" actor="0x26"/>
+          <xflag type="fairy-spot" location="Lake Hylia Island Big Fairy" item="FAIRY_BIG" name="Fire Arrow Island" xyz="505;225;0"/>
+        </actor>
       </rendering_option>
       <rendering_option context="child">
         <actor setup="0" actor="0x21">
