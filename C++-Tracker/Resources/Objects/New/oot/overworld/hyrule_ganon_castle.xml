@@ -85,7 +85,7 @@
       <rendering_option type="song">
         <npc location="Zelda's Song" npc="ZELDA_SONG" item="SONG_ZELDA" name="Zelda's Song" xyz="174;470;0"/>
       </rendering_option>
-      <xflag type="wonder" location="Castle Courtyard Wonder Item" slice="0x0" setup="0" room="0x0" actor="0x5" item="RUPEE_RED" name="Mario Painting" xyz="273;205;0"/>
+      <xflag type="wonder" location="Castle Courtyard Wonder Item" setup="0" room="0x0" actor="0x5" item="RUPEE_RED" name="Mario Painting" xyz="273;205;0"/>
     </scene_rendering>
   </scene>
   <scene id="GREAT_FAIRY_FOUNTAIN_SPELLS">
@@ -126,15 +126,15 @@
     <scene_rendering id="OOT_GANON_CASTLE_EXTERIOR" loc_type="overworld">
       <gs location="Ganon Castle Exterior GS" flag="0x70" item="GS_TOKEN" name="Side Arch" xyz="373;413;0"/>
       <rendering_option type="redboulder">
-        <xflag type="boulder-red" location="Ganon Castle Exterior Red Boulder 1" slice="0x0" setup="0" room="0x0" actor="0x3" item="NOTHING" name="Boulder 1" xyz="130;319;0"/>
-        <xflag type="boulder-red" location="Ganon Castle Exterior Red Boulder 2" slice="0x0" setup="0" room="0x0" actor="0x4" item="NOTHING" name="Boulder 2" xyz="265;373;0"/>
-        <xflag type="boulder-red" location="Ganon Castle Exterior Red Boulder 3" slice="0x0" setup="0" room="0x0" actor="0x5" item="NOTHING" name="Boulder 3" xyz="240;365;0"/>
+        <xflag type="boulder-red" location="Ganon Castle Exterior Red Boulder 1" actor="0x3" item="NOTHING" name="Boulder 1" xyz="130;319;0"/>
+        <xflag type="boulder-red" location="Ganon Castle Exterior Red Boulder 2" actor="0x4" item="NOTHING" name="Boulder 2" xyz="265;373;0"/>
+        <xflag type="boulder-red" location="Ganon Castle Exterior Red Boulder 3" actor="0x5" item="NOTHING" name="Boulder 3" xyz="240;365;0"/>
       </rendering_option>
       <rendering_option type="silverboulder">
-        <xflag type="boulder-silver" location="Ganon Castle Exterior Silver Boulder 1" slice="0x0" setup="0" room="0x0" actor="0x6" item="NOTHING" name="Silver Boulder 1" xyz="146;331;0"/>
-        <xflag type="boulder-silver" location="Ganon Castle Exterior Silver Boulder 2" slice="0x0" setup="0" room="0x0" actor="0x7" item="NOTHING" name="Silver Boulder 2" xyz="241;383;0"/>
-        <xflag type="boulder-silver" location="Ganon Castle Exterior Silver Boulder 3" slice="0x0" setup="0" room="0x0" actor="0x8" item="NOTHING" name="Silver Boulder 3" xyz="221;355;0"/>
-        <xflag type="boulder-silver" location="Ganon Castle Exterior Silver Boulder 4" slice="0x0" setup="0" room="0x0" actor="0x9" item="NOTHING" name="Silver Boulder 4" xyz="224;373;0"/>
+        <xflag type="boulder-silver" location="Ganon Castle Exterior Silver Boulder 1" actor="0x6" item="NOTHING" name="Silver Boulder 1" xyz="146;331;0"/>
+        <xflag type="boulder-silver" location="Ganon Castle Exterior Silver Boulder 2" actor="0x7" item="NOTHING" name="Silver Boulder 2" xyz="241;383;0"/>
+        <xflag type="boulder-silver" location="Ganon Castle Exterior Silver Boulder 3" actor="0x8" item="NOTHING" name="Silver Boulder 3" xyz="221;355;0"/>
+        <xflag type="boulder-silver" location="Ganon Castle Exterior Silver Boulder 4" actor="0x9" item="NOTHING" name="Silver Boulder 4" xyz="224;373;0"/>
       </rendering_option>
     </scene_rendering>
   </scene>

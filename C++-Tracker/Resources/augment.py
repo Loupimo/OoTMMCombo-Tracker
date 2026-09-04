@@ -11,6 +11,11 @@ location. Preserves <xflag> document order (so the XflagID counter is unaffected
 Idempotent: flatten() re-descends already-converted files, and layout-variant checks (one
 location placed differently across MM/MM_JP or OoT/OoT_MQ) are collapsed by location then
 re-expanded from every matching pool row, so a re-run reproduces the same output.
+
+Also RE-INJECTS version-specific checks the source XML no longer carries: for any pool row whose
+`system` column is in AUGMENT_SYNTH_SYSTEMS (checks OoTMM merged / removed upstream, e.g. the legacy
+Kokiri crawl grass), the check is synthesized back from the pool (identity rebuilt from the id, render
+from the pool row) so overwriting the XML with a fresh OoTMM copy no longer drops it. See REGEN.md.
 """
 import sys, os
 import xml.etree.ElementTree as ET
@@ -23,12 +28,22 @@ NEW_DIR = os.path.join(HERE, "Objects", "New")
 OBJ_TAGS = {"chest", "collectible", "npc", "gs", "cow", "shop", "scrub",
             "xflag", "sf", "sr", "fish"}
 # attribute emission order per identity tag (identity attrs preserved verbatim from source)
-ORDER = ["type", "location", "flag", "npc", "slice", "setup", "room", "actor",
+ORDER = ["type", "location", "system", "flag", "npc", "slice", "setup", "room", "actor",
          "item", "hint", "name", "xyz", "legacy_scene"]
 
 
 TYPE_MAP = {"boulder-silver": "silverboulder", "boulder-red": "redboulder",
             "gossip-big": "gossip_big"}
+
+# Pool `system` tokens whose checks are ABSENT from current OoTMM data (an older representation that
+# was merged / removed upstream). augment re-injects them from the pool so a fresh OoTMM XML doesn't
+# drop them. Extend this set (and gen_objects.SYSTEM_ENUM + the ObjSystem enum) for a new tier.
+AUGMENT_SYNTH_SYSTEMS = {"legacy"}
+
+# Direct-identity object tags: the pool `id` is the raw flag / npc id (not a composed xflag key).
+# Everything else is an extended overlay authored as <xflag type="...">, whose composed identity we
+# rebuild from the pool id when synthesizing.
+DIRECT_TAGS = {"chest", "collectible", "npc", "gs", "cow", "shop", "scrub", "sf", "sr", "fish"}
 
 
 def load_pool(path):
@@ -41,6 +56,8 @@ def load_pool(path):
             if not line:
                 continue
             c = line.split(";")
+            if len(c) < len(hdr):               # tolerate rows missing trailing optional columns
+                c += [""] * (len(hdr) - len(c))
             row = {n: c[idx[n]] for n in idx}
             # Keep type=none rows: for a normal check they're render-dup placeholders that
             # pool_rows filters out by type, but for an *unreachable* check (its only pool row)
@@ -149,6 +166,12 @@ class Aug:
                 if leg.startswith(pre):
                     leg = leg[len(pre):]
             a["legacy_scene"] = leg
+        # Surface the xflag system (pool `system` column) on the check so the XML is self-documenting
+        # and hand-editable; gen_objects reads this attr (falling back to the pool). Empty = "any".
+        if p and p.get("system", ""):
+            a["system"] = p["system"]
+        else:
+            a.pop("system", None)              # drop a stale attr if the pool no longer tags it
         parts = []
         for k in ORDER:
             if k in a:
@@ -220,6 +243,34 @@ class Aug:
         lines.append(f"{indent}</actor>")
         return lines
 
+    def _synth_element(self, p, short):
+        """Build a synthetic identity element for a pool check re-injected from the pool (absent from
+        the source XML, see AUGMENT_SYNTH_SYSTEMS). gen_objects resolves the ObjectID by Location, so
+        the identity attrs are cosmetic; for xflag types we still rebuild the composed key from the
+        pool id so the XML stays self-consistent. name/xyz are supplied later from the pool render."""
+        ptype = p["type"]
+        if ptype in DIRECT_TAGS:
+            el = ET.Element(ptype)
+            el.set("location", short)
+            el.set("npc" if ptype == "npc" else "flag", p["id"])
+        else:
+            el = ET.Element("xflag")
+            el.set("type", ptype)
+            el.set("location", short)
+            try:
+                oid = int(p["id"], 0)
+            except ValueError:
+                oid = 0
+            high = (oid >> 8) & 0xFF
+            slc = (oid >> 16) & 0xFF
+            el.set("setup", str((high >> 6) & 0x3))
+            el.set("room", "0x%x" % (high & 0x3F))
+            el.set("actor", "0x%x" % (oid & 0xFF))
+            if slc:
+                el.set("slice", "0x%x" % slc)
+        el.set("item", "RANDOM")
+        return el
+
     def scene_xml(self, scene):
         sid = scene.attrib.get("id")
         scene_sym = None if sid in (None, "NONE") else \
@@ -231,6 +282,8 @@ class Aug:
             if ch.tag == "actor":
                 rs, lt, ro = self.actor_render(ch)
                 items.append(("actor", ch, rs, lt, ro))
+                for c in self._actor_checks(ch):     # record the actor's checks so synthesis skips them
+                    seen.add(c.attrib.get("location", ""))
             elif ch.tag in OBJ_TAGS:
                 loc = ch.attrib.get("location", "")
                 if loc in seen:
@@ -239,6 +292,21 @@ class Aug:
                 # renders_of expands one check into every pool layout-variant placement.
                 for rs, lt, ro, name, xyz, _ in self.renders_of(ch):
                     items.append(("obj", (ch, name, xyz), rs, lt, ro))
+        # Re-inject version-specific checks that a fresh OoTMM XML no longer carries (e.g. a legacy
+        # form merged upstream) but the pool still marks (system in AUGMENT_SYNTH_SYSTEMS). Their
+        # identity/render come from the pool; gen_objects resolves the ObjectID by Location. Appended
+        # after the flattened items, grouped like the rest by (rs, lt) then rendering_option.
+        for full_loc, prows in self.pool.items():
+            p = prows[0]
+            if p.get("system", "") not in AUGMENT_SYNTH_SYSTEMS or p["scene"] != scene_sym:
+                continue
+            short = full_loc[len(self.prefix[:-1]) + 1:]     # strip "OOT "/"MM " -> XML-local location
+            if short in seen:
+                continue
+            seen.add(short)
+            el = self._synth_element(p, short)
+            for rs, lt, ro, name, xyz, _ in self.renders_of(el):
+                items.append(("obj", (el, name, xyz), rs, lt, ro))
         # objects missing from the pool have rs=None: fall back to the scene's own render scene
         # (keeps the XML valid; their xyz stays 0;0;0 for the user to fill in).
         default_rs = next((it[2] for it in items if it[2]), None) or scene_sym

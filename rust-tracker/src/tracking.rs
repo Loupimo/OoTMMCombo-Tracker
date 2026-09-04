@@ -10,12 +10,29 @@
 //! and the "nothing" drop path need the GetSceneX / ParseKey tables — phase 2.
 
 use std::collections::HashSet;
+use std::sync::atomic::{AtomicBool, Ordering};
 
-use crate::data::{GameLayout, ObjectDef};
+use crate::data::{GameLayout, ObjSystem, ObjectDef};
 use crate::scene::Game;
 use crate::shared_mem::Event;
 
 const ENTRANCE_MAGIC: u32 = 0xF000_0000;
+
+/// Whether the loaded ROM predates the compact-XflagID rework (stable <= v32.3). Mirror of the
+/// C++ `UsesLegacyXflagsFlag` global: published once when a spoiler loads (`set_uses_legacy`),
+/// read by `object_active` to gate version-specific objects (ObjSystem::Legacy / New) across
+/// both display and resolution without threading the flag through every call site.
+static USES_LEGACY: AtomicBool = AtomicBool::new(false);
+
+/// Publish the ROM's xflag system (spoiler load / reset). Mirror of C++ SetUsesLegacyXflags.
+pub fn set_uses_legacy(legacy: bool) {
+    USES_LEGACY.store(legacy, Ordering::Relaxed);
+}
+
+/// Whether the loaded ROM uses the legacy xflag system. Mirror of C++ UsesLegacyXflags().
+pub fn uses_legacy() -> bool {
+    USES_LEGACY.load(Ordering::Relaxed)
+}
 
 // Overlay types (Headers/Combo/OvTypes.h). Values 0..=fish share ObjectType's
 // numbering, which is what FindObject relies on to compare Type == OvType.
@@ -46,8 +63,21 @@ pub fn scene_layout_active(
     }
 }
 
+/// Whether an object's xflag system matches the loaded ROM's. Version-specific objects (a check
+/// whose representation changed across OoTMM versions, e.g. the Kokiri Forest crawl grass) exist
+/// under only one system: Legacy on <= v32.3 ROMs, New on > v32.3, Any on both. Pure so the gate
+/// can be unit-tested without the `USES_LEGACY` global.
+fn system_active(system: ObjSystem, legacy: bool) -> bool {
+    match system {
+        ObjSystem::Legacy => legacy,
+        ObjSystem::New => !legacy,
+        ObjSystem::Any => true,
+    }
+}
+
 pub fn object_active(o: &ObjectDef, game: Game, mq: &HashSet<(Game, u16)>) -> bool {
-    scene_layout_active(o.layout, game, o.scene, mq)
+    // Mirror of C++ HasCorrectLayout: layout gate, then the ObjSystem gate.
+    scene_layout_active(o.layout, game, o.scene, mq) && system_active(o.system, uses_legacy())
 }
 
 /// Which OoTMM ROM build is running, for the id numbering differences (mirror of
@@ -373,11 +403,66 @@ pub fn demo_event(game: Game, o: &ObjectDef) -> Option<Event> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::data::{ObjectType, MM_OBJECTS, OOT_OBJECTS};
+    use crate::data::{ObjectContext, ObjectType, MM_OBJECTS, OOT_OBJECTS};
 
     /// Empty Master-Quest set: base layout everywhere.
     fn no_mq() -> HashSet<(Game, u16)> {
         HashSet::new()
+    }
+
+    /// The Kokiri Forest crawl grass changed representation across OoTMM versions: the per-era
+    /// Child/Adult "Near Crawl 7 & 8" (legacy) were merged into the era-agnostic "Near Crawl 1 & 2"
+    /// (new). Each set exists under only one xflag system, and legacy Child Near Crawl 7 shares its
+    /// ObjectID with new Near Crawl 1 — the ObjSystem gate must keep the pair from ever both being
+    /// active (mirror of the C++ HasCorrectLayout system branch).
+    #[test]
+    fn kokiri_crawl_system_gate() {
+        let by_loc = |loc: &str| {
+            OOT_OBJECTS
+                .iter()
+                .find(|o| o.location == loc)
+                .unwrap_or_else(|| panic!("missing {loc}"))
+        };
+
+        // Any objects are active regardless of the ROM.
+        assert!(system_active(ObjSystem::Any, true) && system_active(ObjSystem::Any, false));
+
+        for loc in [
+            "OOT Kokiri Forest Grass Child Near Crawl 7",
+            "OOT Kokiri Forest Grass Child Near Crawl 8",
+            "OOT Kokiri Forest Grass Adult Near Crawl 7",
+            "OOT Kokiri Forest Grass Adult Near Crawl 8",
+        ] {
+            let o = by_loc(loc);
+            assert!(o.system == ObjSystem::Legacy, "{loc} should be Legacy");
+            // Legacy-only checks are absent from current OoTMM data -> no compact XflagID.
+            assert_eq!(o.xflag_id, 0xFFFF, "{loc} should carry no XflagID");
+            assert!(system_active(o.system, true), "{loc} shows on a legacy ROM");
+            assert!(!system_active(o.system, false), "{loc} hidden on a new ROM");
+        }
+
+        for loc in [
+            "OOT Kokiri Forest Grass Near Crawl 1",
+            "OOT Kokiri Forest Grass Near Crawl 2",
+        ] {
+            let o = by_loc(loc);
+            assert!(o.system == ObjSystem::New, "{loc} should be New");
+            assert!(o.context == ObjectContext::All, "{loc} should be era-agnostic");
+            assert!(system_active(o.system, false), "{loc} shows on a new ROM");
+            assert!(!system_active(o.system, true), "{loc} hidden on a legacy ROM");
+        }
+
+        // The colliding pair (same scene + ObjectID) never both pass the gate, on either ROM.
+        let child7 = by_loc("OOT Kokiri Forest Grass Child Near Crawl 7");
+        let near1 = by_loc("OOT Kokiri Forest Grass Near Crawl 1");
+        assert_eq!(child7.object_id, near1.object_id);
+        assert_eq!(child7.scene, near1.scene);
+        for legacy in [true, false] {
+            assert!(
+                system_active(child7.system, legacy) != system_active(near1.system, legacy),
+                "exactly one of the legacy/new pair is active (legacy={legacy})"
+            );
+        }
     }
 
     /// Every encodable, active-layout object must decode back to its placement.

@@ -128,14 +128,14 @@
         <xflag type="pot" location="MQ Shadow Temple Flying Pot Room Before Boat 1" room="0x14" actor="0x5" item="RECOVERY_HEART" name="Before Boat - Flying Pot 1" xyz="1376;2600;0"/>
         <xflag type="pot" location="MQ Shadow Temple Flying Pot Room Before Boat 2" room="0x14" actor="0x6" item="NUTS_5" name="Before Boat - Flying Pot 2" xyz="1376;2710;0"/>
       </rendering_option>
-      <rendering_option layout="oot_mq" room="1">
-        <xflag type="fairy_spot" location="MQ Shadow Temple Beamos Big Fairy" room="0x5" actor="0x3" item="FAIRY_BIG" name="Beamos" xyz="541;528;0"/>
+      <rendering_option layout="oot_mq" room="1" type="fairy_spot">
+        <xflag type="fairy-spot" location="MQ Shadow Temple Beamos Big Fairy" room="0x5" actor="0x3" item="FAIRY_BIG" name="Beamos" xyz="541;528;0"/>
       </rendering_option>
-      <rendering_option layout="oot_mq" room="2">
-        <xflag type="fairy_spot" location="MQ Shadow Temple Guillotines Room Big Fairy" room="0x9" actor="0x1d" item="FAIRY_BIG" name="Guillotines Room" xyz="744;257;0"/>
+      <rendering_option layout="oot_mq" room="2" type="fairy_spot">
+        <xflag type="fairy-spot" location="MQ Shadow Temple Guillotines Room Big Fairy" room="0x9" actor="0x1d" item="FAIRY_BIG" name="Guillotines Room" xyz="744;257;0"/>
       </rendering_option>
-      <rendering_option layout="oot_mq" room="3">
-        <xflag type="fairy_spot" location="MQ Shadow Temple Big Fairy After Wind" room="0x13" actor="0x5" item="FAIRY_BIG" name="After Wind" xyz="958;2928;0"/>
+      <rendering_option layout="oot_mq" room="3" type="fairy_spot">
+        <xflag type="fairy-spot" location="MQ Shadow Temple Big Fairy After Wind" room="0x13" actor="0x5" item="FAIRY_BIG" name="After Wind" xyz="958;2928;0"/>
       </rendering_option>
       <rendering_option layout="oot_mq" room="2">
         <xflag type="heart" location="MQ Shadow Temple Heart Invisible Blades 1" room="0x10" actor="0x4" item="RECOVERY_HEART" name="Invisible Blades 1" xyz="150;804;0"/>

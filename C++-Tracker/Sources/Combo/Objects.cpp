@@ -1,6 +1,7 @@
 #include "Combo/Objects.h"
 #include "Combo/Items.h"
 #include "Combo/OvTypes.h"
+#include "Combo/Xflags.h"
 #include "Combo/OoTObjectScene.h"
 #include "Combo/MMObjectScene.h"
 #include "Multi/Game.h"
@@ -497,7 +498,20 @@ void ObjectInfo::ResetObject()
 
 bool ObjectInfo::HasCorrectLayout(GameLayout ActiveLayout)
 {
-	return this->Layout == GameLayout::all || this->Layout == ActiveLayout;
+	if (this->Layout != GameLayout::all && this->Layout != ActiveLayout)
+	{	// Wrong game layout (OoT / OoT MQ / MM / MM JP).
+
+		return false;
+	}
+
+	switch (this->System)
+	{	// Version-specific objects (a check whose representation changed across OoTMM versions):
+		// legacy-only objects exist on <= v32.3 ROMs, new-only on > v32.3 ROMs, Any on both.
+
+		case ObjSystem::Legacy:	return UsesLegacyXflags();
+		case ObjSystem::New:	return !UsesLegacyXflags();
+		default:				return true;
+	}
 }
 
 #pragma endregion

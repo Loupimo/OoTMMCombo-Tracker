@@ -81,8 +81,10 @@
       </rendering_option>
       <xflag type="heart" location="Bottom of the Well Heart 1" room="0x2" actor="0xd" item="RECOVERY_HEART" name="Heart 1" xyz="213;293;0"/>
       <xflag type="heart" location="Bottom of the Well Heart 2" room="0x2" actor="0xe" item="RECOVERY_HEART" name="Heart 2" xyz="163;233;0"/>
+      <rendering_option room="1" type="fairy_spot">
+        <xflag type="fairy-spot" location="Bottom of the Well Basement Big Fairy" room="0x1" actor="0x13" item="FAIRY_BIG" name="Basement" xyz="753;100;0"/>
+      </rendering_option>
       <rendering_option room="1">
-        <xflag type="fairy_spot" location="Bottom of the Well Basement Big Fairy" room="0x1" actor="0x13" item="FAIRY_BIG" name="Basement" xyz="753;100;0"/>
         <xflag type="boulder" location="Bottom of the Well Boulder Near Chest 1" room="0x1" actor="0x20" item="NOTHING" name="Near Chest 1" xyz="711;535;0"/>
         <xflag type="boulder" location="Bottom of the Well Boulder Near Chest 2" room="0x1" actor="0x21" item="NOTHING" name="Near Chest 2" xyz="720;501;0"/>
         <xflag type="boulder" location="Bottom of the Well Boulder Middle 1" room="0x1" actor="0x22" item="NOTHING" name="Middle 1" xyz="713;311;0"/>

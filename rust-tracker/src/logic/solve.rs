@@ -34,6 +34,11 @@ pub trait Inputs {
     fn item_count(&self, id: u32) -> u32;
     /// The value a setting is fixed to (`Some(value_id)` into `SETTING_VALUES`).
     fn setting_value(&self, key: u32) -> Option<u32>;
+    /// Whether setting `key` holds `val` — enum equality, or set membership for a
+    /// set-valued setting. Default single-value equality; overridden by the app inputs.
+    fn setting_has(&self, key: u32, val: u32) -> bool {
+        self.setting_value(key) == Some(val)
+    }
     /// Whether a boolean-form setting is enabled.
     fn setting_enabled(&self, key: u32) -> bool;
     /// Whether a region layout is active for this seed (base vs MQ / US vs JP).
@@ -77,6 +82,9 @@ impl<I: Inputs> WorldState for View<'_, I> {
     }
     fn setting_value(&self, key: u32) -> Option<u32> {
         self.inp.setting_value(key)
+    }
+    fn setting_has(&self, key: u32, val: u32) -> bool {
+        self.inp.setting_has(key, val)
     }
     fn setting_enabled(&self, key: u32) -> bool {
         self.inp.setting_enabled(key)
@@ -367,5 +375,154 @@ mod tests {
             poor.locations.len(),
             rich.locations.len()
         );
+    }
+
+    /// End-to-end check on the real "all open" spoiler fixture: it loads, the access /
+    /// win-condition settings land in `raw_settings` (so the solver reads them), and once
+    /// every placement is collected the seed reaches ~all of its active, logic-gated
+    /// checks — i.e. it is clearable and the access logic did not wrongly wall anything
+    /// off. Skips gracefully when the fixture is absent (it is a hand-supplied file).
+    /// Run with `cargo test all_open_spoiler -- --nocapture` to see the numbers.
+    #[test]
+    fn all_open_spoiler_is_clearable() {
+        use crate::scene::Game;
+        let path = concat!(env!("CARGO_MANIFEST_DIR"), "/OoTMM-Spoiler-all-open.txt");
+        let Ok(text) = std::fs::read_to_string(path) else {
+            eprintln!("skip all_open_spoiler_is_clearable: {path} absent");
+            return;
+        };
+
+        let sp = crate::spoiler::parse(&text);
+        let mut settings = crate::settings::Settings::default();
+        settings.parse_spoiler(&text, &sp.mq_scenes);
+        settings.apply(&sp.mq_scenes);
+
+        // The access / condition settings reached the logic feed (raw_settings).
+        let got = |k: &str| settings.raw_settings.get(k).cloned().unwrap_or_default();
+        assert_eq!(got("doorOfTime"), "open");
+        assert_eq!(got("beneathWell"), "open");
+        assert_eq!(got("rainbowBridge"), "custom");
+        assert_eq!(got("ganonBossKey"), "anywhere");
+        // The open-dungeon / trial SETS live in the World Flags section (display-label
+        // lists) and are folded into raw_settings as their raw members.
+        let members = |k: &str| got(k).split(',').filter(|t| !t.is_empty() && *t != "none").count();
+        eprintln!(
+            "sets: openDungeonsOot={} openDungeonsMm={} ganonTrials={} clearStateDungeonsMm={}",
+            members("openDungeonsOot"), members("openDungeonsMm"),
+            members("ganonTrials"), members("clearStateDungeonsMm"),
+        );
+        assert_eq!(members("openDungeonsOot"), 8, "all 8 OoT dungeons open");
+        assert_eq!(members("openDungeonsMm"), 4, "all 4 MM temples open");
+        assert_eq!(members("ganonTrials"), 6, "all 6 Ganon trials");
+        assert_eq!(members("clearStateDungeonsMm"), 2, "WF + GB clear-state (World Flags)");
+        // The dual setting fire_temple_open_as_child is DERIVED from openDungeonsOot's
+        // `fireChild` member, so the one dungeon toggle drives display + logic.
+        assert!(settings.fire_temple_open_as_child, "fireChild open => the map flag is set");
+        // The Song Events section (shuffled event->song) reached the logic feed: every
+        // slot resolved to a real song index (no u8::MAX), and the slot counts match the
+        // spoiler (18 OoT event slots, 13 MM), so `_song_event_<game>(slot, song)` gates
+        // are evaluated against the actual placement rather than the optimistic default.
+        eprintln!(
+            "song_events: OoT={} MM={} (unresolved={})",
+            settings.song_events[0].len(), settings.song_events[1].len(),
+            settings.song_events.iter().flatten().filter(|&&n| n == u8::MAX).count(),
+        );
+        assert_eq!(settings.song_events[0].len(), 18, "18 OoT song-event slots");
+        assert_eq!(settings.song_events[1].len(), 13, "13 MM song-event slots");
+        assert!(
+            settings.song_events.iter().flatten().all(|&n| n != u8::MAX),
+            "every song-event name resolved to an index",
+        );
+        let n_access = data::ACCESS_SETTINGS
+            .iter()
+            .filter(|a| settings.raw_settings.contains_key(a.key))
+            .count();
+        eprintln!("rom={:?}  mq_scenes={}", sp.rom, sp.mq_scenes.len());
+        eprintln!("access/condition settings present: {n_access}/{}", data::ACCESS_SETTINGS.len());
+
+        // The `custom` win conditions parsed their Special Conditions thresholds (these
+        // back `special(BRIDGE/MOON/LACS)` when the setting is `custom`).
+        for name in ["BRIDGE", "MOON", "LACS"] {
+            let c = settings.special_conds.get(name).unwrap_or_else(|| panic!("{name} custom cond parsed"));
+            eprintln!("special {name}: count={} cats={}", c.count, c.cats.len());
+            assert!(c.count > 0 && !c.cats.is_empty(), "{name} threshold parsed");
+        }
+
+        // Build the (single) world from the seed's placements.
+        let mut world = crate::WorldData::default();
+        world.items = sp.worlds.into_iter().next().map(|w| w.items).unwrap_or_default();
+        eprintln!("placements: {}", world.items.len());
+
+        // Sphere 0 (starting items only), all-open settings.
+        let start = crate::logic::solve_world(&settings, std::slice::from_ref(&world), 1, &Default::default(), false);
+
+        // The access settings genuinely drive the logic: at sphere 0 the all-open config
+        // opens strictly more than the SAME seed with every access / condition setting
+        // stripped back to its logic default (door closed, bridge vanilla, …).
+        let mut defaults = crate::settings::Settings::default();
+        defaults.parse_spoiler(&text, &sp.mq_scenes);
+        defaults.apply(&sp.mq_scenes);
+        for a in data::ACCESS_SETTINGS {
+            defaults.raw_settings.remove(a.key);
+        }
+        let start_closed = crate::logic::solve_world(&defaults, std::slice::from_ref(&world), 1, &Default::default(), false);
+        eprintln!(
+            "sphere0 reachable: all-open={}  access-defaults={}  (delta={})",
+            start.locations.len(),
+            start_closed.locations.len(),
+            start.locations.len() as i64 - start_closed.locations.len() as i64,
+        );
+        assert!(
+            start.locations.len() > start_closed.locations.len(),
+            "the open-access settings must open more at sphere 0 (open={}, defaults={})",
+            start.locations.len(),
+            start_closed.locations.len(),
+        );
+
+        // Full clear (every placement collected).
+        for (game, objs) in [(Game::Oot, data::OOT_OBJECTS), (Game::Mm, data::MM_OBJECTS)] {
+            for (i, o) in objs.iter().enumerate() {
+                if world.items.contains_key(o.location) {
+                    world.collected.insert((game, i));
+                }
+            }
+        }
+        let full = crate::logic::solve_world(&settings, std::slice::from_ref(&world), 1, &Default::default(), false);
+        eprintln!("reachable locations: sphere0={}  full-clear={}", start.locations.len(), full.locations.len());
+        assert!(
+            full.locations.len() > start.locations.len(),
+            "collecting the seed's items must open more checks (start={}, full={})",
+            start.locations.len(),
+            full.locations.len()
+        );
+
+        // On a full clear, ~all active logic-gated checks are reachable (the seed clears).
+        let logic_set = crate::logic::logic_location_set();
+        let active = |l| matches!(l, GameLayout::all | GameLayout::oot | GameLayout::mm);
+        for (label, objs, floor) in [("OoT", data::OOT_OBJECTS, 0.90), ("MM", data::MM_OBJECTS, 0.85)] {
+            let (mut tot, mut reach) = (0.0f64, 0.0f64);
+            for o in objs {
+                if o.type_ == data::ObjectType::none || !active(o.layout) || !logic_set.contains(o.location) {
+                    continue;
+                }
+                tot += 1.0;
+                if full.locations.contains(o.location) {
+                    reach += 1.0;
+                }
+            }
+            eprintln!(
+                "{label}: {:.1}% of active checks reachable on full clear ({}/{})",
+                100.0 * reach / tot,
+                reach as u32,
+                tot as u32
+            );
+            assert!(
+                reach / tot >= floor,
+                "{label}: only {:.1}% reachable on full clear ({}/{})",
+                100.0 * reach / tot,
+                reach as u32,
+                tot as u32
+            );
+        }
     }
 }

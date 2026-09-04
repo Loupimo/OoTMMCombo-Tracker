@@ -76,7 +76,9 @@
       <xflag type="heart" location="Ganon Castle Heart Shadow 3" room="0xc" actor="0xc" item="RECOVERY_HEART" name="Shadow Trial - Heart 3" xyz="2386;2176;0"/>
       <xflag type="heart" location="Ganon Castle Heart Fire" room="0xe" actor="0x13" item="RECOVERY_HEART" name="Fire Trial - Heart" xyz="2128;1105;0"/>
       <xflag type="heart" location="Ganon Castle Heart Spirit" room="0x11" actor="0x1b" item="RECOVERY_HEART" name="Spirit Trial - Heart" xyz="880;1427;0"/>
-      <xflag type="fairy_spot" location="Ganon Castle Spirit Big Fairy" room="0x11" actor="0xb" item="FAIRY_BIG" name="Spirit Trial - Big Fairy" xyz="900;1246;0"/>
+      <rendering_option type="fairy_spot">
+        <xflag type="fairy-spot" location="Ganon Castle Spirit Big Fairy" room="0x11" actor="0xb" item="FAIRY_BIG" name="Spirit Trial - Big Fairy" xyz="900;1246;0"/>
+      </rendering_option>
       <xflag type="icicle" location="Ganon Castle Icicle Water 01" room="0x2" actor="0x2" item="NOTHING" name="Water Trial 1" xyz="1397;2181;0"/>
       <xflag type="icicle" location="Ganon Castle Icicle Water 02" room="0x2" actor="0x3" item="NOTHING" name="Water Trial 2" xyz="1406;2154;0"/>
       <xflag type="icicle" location="Ganon Castle Icicle Water 03" room="0x2" actor="0x4" item="NOTHING" name="Water Trial 3" xyz="1422;2197;0"/>

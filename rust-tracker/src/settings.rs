@@ -424,7 +424,7 @@ impl Settings {
             } else if section.starts_with("World") {
                 self.parse_key_rings(&section);
                 self.parse_silver_pouches(&section, mq);
-                self.parse_open_dungeons_oot(&section);
+                self.parse_logic_sets(&section);
                 self.parse_pre_activated_owl(&section);
             } else if section.starts_with("Starting Items") {
                 self.parse_starting_items(&section);
@@ -686,17 +686,35 @@ impl Settings {
     }
 
     /// ParseOpenDungeonsOoT: only the "Fire Temple as Child" flag is tracked.
-    fn parse_open_dungeons_oot(&mut self, section: &str) {
-        if let Some(list) = read_list(section, "Open Dungeons (OoT)") {
-            match list {
-                ListValue::Inline(v) if v == "all" => self.fire_temple_open_as_child = true,
-                ListValue::Items(items) => {
-                    if items.iter().any(|i| i == "Fire Temple as Child") {
-                        self.fire_temple_open_as_child = true;
-                    }
+    /// Parse the World Flags open-dungeon / Ganon-trial **sets** into `raw_settings`
+    /// (their raw member values), so the reachability logic's `setting(k, member)` reads
+    /// them. OoTMM writes these in the World Flags section (not Settings), naming members
+    /// by display label — mapped here — and accepts the inline `all` (every member) /
+    /// `none` (empty) shorthands. Stored comma-joined; `inputs::WorldInputs` tokenises it.
+    fn parse_logic_sets(&mut self, section: &str) {
+        for &(label, key, map) in &[
+            ("Open Dungeons (OoT)", "openDungeonsOot", OPEN_DUNGEONS_OOT),
+            ("Open Dungeons (MM)", "openDungeonsMm", OPEN_DUNGEONS_MM),
+            ("Ganon Trials", "ganonTrials", GANON_TRIALS),
+            // Only WF / GB carry a logic value; other temples map harmlessly (unused).
+            ("Clear State Dungeons (MM)", "clearStateDungeonsMm", OPEN_DUNGEONS_MM),
+        ] {
+            let Some(list) = read_list(section, label) else { continue };
+            let value = match list {
+                ListValue::Inline(v) if v == "all" => {
+                    map.iter().map(|&(_, val)| val).collect::<Vec<_>>().join(",")
                 }
-                _ => {}
-            }
+                // `none` or any other inline shorthand = the empty set.
+                ListValue::Inline(_) => "none".to_string(),
+                ListValue::Items(items) => {
+                    let vals: Vec<&str> = items
+                        .iter()
+                        .filter_map(|it| map.iter().find(|&&(lbl, _)| lbl == it.as_str()).map(|&(_, v)| v))
+                        .collect();
+                    if vals.is_empty() { "none".to_string() } else { vals.join(",") }
+                }
+            };
+            self.raw_settings.insert(key.to_string(), value);
         }
     }
 
@@ -732,6 +750,14 @@ impl Settings {
         self.starting_item_ids = self.base_starting.clone();
         self.shared_item_ids.clear();
         self.progressive_item_ids.clear();
+
+        // The OoT Fire Temple "open as child" map filter is the `fireChild` member of the
+        // openDungeonsOot logic set: derive it from `raw_settings` so the one dungeon-set
+        // toggle drives BOTH the map display and the reachability logic (they cannot drift).
+        self.fire_temple_open_as_child = self
+            .raw_settings
+            .get("openDungeonsOot")
+            .is_some_and(|v| v.split(|c: char| c == ',' || c.is_whitespace()).any(|t| t == "fireChild"));
 
         match self.game {
             RomGame::Oot => self.apply_oot(&mut excluded),
@@ -1108,8 +1134,10 @@ fn item_key(name: &str) -> &'static str {
     ITEM_SETTINGS.iter().find(|m| m.key == name).map(|m| m.key).unwrap_or("")
 }
 
-/// The filter-parameter value mapping of AddSetting.
-fn filter_value(value: &str) -> ShuffleSetting {
+/// The filter-parameter value mapping of AddSetting. Maps an OoTMM setting value
+/// (e.g. "ownDungeon", "none", "anywhere") to the tracker's visibility bucket. Public
+/// so the ROM-settings editor can turn a per-parameter option into the value to store.
+pub(crate) fn filter_value(value: &str) -> ShuffleSetting {
     let int_pos = value.parse::<i64>().map(|n| n > 0).unwrap_or(false);
     match value {
         "all" | "true" | "full" | "anywhere" | "ganon" | "child" | "cross" | "night" | "day" | "bagSeparate" | "bagFirst" | "separate"  => ShuffleSetting::all,
@@ -1134,6 +1162,36 @@ fn item_value(value: &str) -> ShuffleSetting {
 }
 
 // ── Spoiler text helpers ─────────────────────────────────────────────────────
+
+// World Flags set members: (spoiler display label, raw logic value). The spoiler names
+// open dungeons / trials by dungeon display name, which can differ from the settings
+// value labels (e.g. "Dodongo's Cavern" vs the value `DC`), so map them explicitly. The
+// values must match `SETTING_VALUES` for `setting(k, member)` to resolve. See
+// `Settings::parse_logic_sets`.
+const OPEN_DUNGEONS_OOT: &[(&str, &str)] = &[
+    ("Deku Tree as Adult", "dekuTreeAdult"),
+    ("Bottom of the Well as Adult", "wellAdult"),
+    ("Fire Temple as Child", "fireChild"),
+    ("Dodongo's Cavern", "DC"),
+    ("Bottom of the Well", "BotW"),
+    ("Jabu-Jabu", "JJ"),
+    ("Shadow Temple", "Shadow"),
+    ("Water Temple", "Water"),
+];
+const OPEN_DUNGEONS_MM: &[(&str, &str)] = &[
+    ("Woodfall Temple", "WF"),
+    ("Snowhead Temple", "SH"),
+    ("Great Bay Temple", "GB"),
+    ("Stone Tower Temple", "ST"),
+];
+const GANON_TRIALS: &[(&str, &str)] = &[
+    ("Light Trial", "Light"),
+    ("Forest Trial", "Forest"),
+    ("Fire Trial", "Fire"),
+    ("Water Trial", "Water"),
+    ("Shadow Trial", "Shadow"),
+    ("Spirit Trial", "Spirit"),
+];
 
 /// A parsed `  Label: ...` entry: an inline value or an indented `- item` list.
 enum ListValue {
@@ -1279,6 +1337,44 @@ fn read_list(section: &str, label: &str) -> Option<ListValue> {
 mod tests {
     use super::*;
     use crate::data::OOT_OBJECTS;
+
+    /// World Flags open-dungeon / trial SETS parse (display labels -> raw members,
+    /// including the `all`/`none` shorthands), and `fire_temple_open_as_child` is derived
+    /// from openDungeonsOot's `fireChild` member so the one toggle drives both fields.
+    #[test]
+    fn world_flags_sets_parse_and_fire_temple_derives() {
+        let mq = HashSet::new();
+        let members = |s: &Settings, k: &str| {
+            s.raw_settings
+                .get(k)
+                .map(|v| v.split(',').filter(|t| !t.is_empty() && *t != "none").count())
+                .unwrap_or(0)
+        };
+
+        // Explicit lists (with the fire temple open) + an inline `all` / `none`.
+        let mut s = Settings::default();
+        s.parse_spoiler(
+            "World Flags\n  Open Dungeons (OoT):\n    - Fire Temple as Child\n    - Water Temple\n\
+             \x20\x20Open Dungeons (MM): all\n  Ganon Trials: none\n\
+             \x20\x20Clear State Dungeons (MM):\n    - Woodfall Temple\n    - Great Bay Temple\n",
+            &mq,
+        );
+        s.apply(&mq);
+        assert_eq!(members(&s, "openDungeonsOot"), 2, "fireChild + Water");
+        assert_eq!(members(&s, "openDungeonsMm"), 4, "inline `all` = every MM temple");
+        assert_eq!(members(&s, "ganonTrials"), 0, "inline `none` = empty set");
+        assert_eq!(members(&s, "clearStateDungeonsMm"), 2, "WF + GB");
+        assert!(s.fire_temple_open_as_child, "fireChild present => flag derived on");
+
+        // The same seed without the fire temple leaves the display flag off.
+        let mut s2 = Settings::default();
+        s2.parse_spoiler(
+            "World Flags\n  Open Dungeons (OoT):\n    - Water Temple\n",
+            &mq,
+        );
+        s2.apply(&mq);
+        assert!(!s2.fire_temple_open_as_child, "no fireChild => flag derived off");
+    }
 
     #[test]
     fn spoiler_settings_exclude_map_objects() {

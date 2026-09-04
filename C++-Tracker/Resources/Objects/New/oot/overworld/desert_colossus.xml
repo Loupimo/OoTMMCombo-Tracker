@@ -33,13 +33,13 @@
         <xflag type="fairy" location="Desert Colossus Oasis Fairy 7" slice="6" item="FAIRY" name="Oasis 7" xyz="350;77;0"/>
         <xflag type="fairy" location="Desert Colossus Oasis Fairy 8" slice="7" item="FAIRY" name="Oasis 8" xyz="333;77;0"/>
       </actor>
-      <xflag type="wonder" location="Desert Colossus Wonder Item Oasis 1" slice="0x0" setup="0" actor="0x13" item="MAGIC_JAR_SMALL" name="Oasis 1" xyz="284;59;0"/>
-      <xflag type="wonder" location="Desert Colossus Wonder Item Oasis 2" slice="0x0" setup="0" actor="0x15" item="RUPEE_BLUE" name="Oasis 2" xyz="289;84;0"/>
+      <xflag type="wonder" location="Desert Colossus Wonder Item Oasis 1" setup="0" actor="0x13" item="MAGIC_JAR_SMALL" name="Oasis 1" xyz="284;59;0"/>
+      <xflag type="wonder" location="Desert Colossus Wonder Item Oasis 2" setup="0" actor="0x15" item="RUPEE_BLUE" name="Oasis 2" xyz="289;84;0"/>
       <rendering_option context="child">
-        <xflag type="wonder" location="Desert Colossus Wonder Item Oasis Child" slice="0x0" setup="0" actor="0x16" item="RUPEE_BLUE" name="Oasis - Child" xyz="372;50;0"/>
+        <xflag type="wonder" location="Desert Colossus Wonder Item Oasis Child" setup="0" actor="0x16" item="RUPEE_BLUE" name="Oasis - Child" xyz="372;50;0"/>
       </rendering_option>
-      <xflag type="wonder" location="Desert Colossus Wonder Item Fountain 1" slice="0x0" setup="0" actor="0x14" item="RUPEE_BLUE" name="Fountain 1" xyz="391;582;0"/>
-      <xflag type="wonder" location="Desert Colossus Wonder Item Fountain 2" slice="0x0" setup="0" actor="0x17" item="RUPEE_RED" name="Fountain 2" xyz="353;601;0"/>
+      <xflag type="wonder" location="Desert Colossus Wonder Item Fountain 1" setup="0" actor="0x14" item="RUPEE_BLUE" name="Fountain 1" xyz="391;582;0"/>
+      <xflag type="wonder" location="Desert Colossus Wonder Item Fountain 2" setup="0" actor="0x17" item="RUPEE_RED" name="Fountain 2" xyz="353;601;0"/>
       <actor>
         <match setup="0" actor="0x19"/>
         <match setup="2" actor="0x1b"/>
@@ -70,12 +70,18 @@
         <xflag type="rock" location="Desert Colossus Rock Circle 2 Rock 8" slice="7" item="RANDOM" name="Circle 2 - Rock 8" xyz="655;403;0"/>
       </actor>
       <rendering_option type="silverboulder">
-        <xflag type="boulder-silver" location="Desert Colossus Silver Boulder" slice="0x0" setup="0" actor="0x12" item="NOTHING" name="Silver Boulder" xyz="615;440;0"/>
+        <actor>
+          <match setup="0" actor="0x12"/>
+          <match setup="2" actor="0x15"/>
+          <xflag type="boulder-silver" location="Desert Colossus Silver Boulder" item="NOTHING" name="Silver Boulder" xyz="615;440;0"/>
+        </actor>
       </rendering_option>
       <rendering_option context="child">
-        <xflag type="soil" location="Desert Colossus Soil 1" slice="0x0" setup="0" actor="0x1d" item="FAIRY" name="Soil 1" xyz="689;204;0"/>
-        <xflag type="soil" location="Desert Colossus Soil 2" slice="0x1" setup="0" actor="0x1d" item="FAIRY" name="Soil 2" xyz="662;194;0"/>
-        <xflag type="soil" location="Desert Colossus Soil 3" slice="0x2" setup="0" actor="0x1d" item="FAIRY" name="Soil 3" xyz="668;164;0"/>
+        <actor setup="0" actor="0x1d">
+          <xflag type="soil" location="Desert Colossus Soil 1" slice="0x0" item="FAIRY" name="Soil 1" xyz="689;204;0"/>
+          <xflag type="soil" location="Desert Colossus Soil 2" slice="0x1" item="FAIRY" name="Soil 2" xyz="662;194;0"/>
+          <xflag type="soil" location="Desert Colossus Soil 3" slice="0x2" item="FAIRY" name="Soil 3" xyz="668;164;0"/>
+        </actor>
       </rendering_option>
       <actor>
         <match setup="0" actor="0x3"/>
@@ -93,7 +99,7 @@
     <scene_rendering id="OOT_GROTTO_DESERT_SCRUBS" loc_type="overworld">
       <scrub location="Desert Colossus Grotto Front Scrub" flag="0x19" item="POTION_GREEN" name="Front" xyz="714;302;0"/>
       <scrub location="Desert Colossus Grotto Back Scrub" flag="0x1a" item="POTION_RED" name="Back" xyz="649;207;0"/>
-      <xflag type="hive" location="Desert Colossus Grotto Hive" slice="0x0" setup="0" room="0x26" actor="0x2" item="RUPEE_RED" name="Hive" xyz="551;157;0"/>
+      <xflag type="hive" location="Desert Colossus Grotto Hive" setup="0" room="0x26" actor="0x2" item="RUPEE_RED" name="Hive" xyz="551;157;0"/>
     </scene_rendering>
   </scene>
   <scene id="GREAT_FAIRY_FOUNTAIN_SPELLS">

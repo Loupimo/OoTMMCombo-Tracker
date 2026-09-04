@@ -120,14 +120,16 @@
         <xflag type="heart" location="Shadow Temple Heart Pre-Boss 2" room="0x15" actor="0x9" item="RECOVERY_HEART" name="Pre-Boss 2" xyz="1399;898;0"/>
         <xflag type="heart" location="Shadow Temple Heart Pre-Boss 3" room="0x15" actor="0xa" item="RECOVERY_HEART" name="Pre-Boss 3" xyz="1368;974;0"/>
       </rendering_option>
-      <rendering_option room="1">
-        <xflag type="fairy_spot" location="Shadow Temple Beamos Big Fairy" room="0x5" actor="0x3" item="FAIRY_BIG" name="Beamos" xyz="541;528;0"/>
+      <rendering_option room="1" type="fairy_spot">
+        <xflag type="fairy-spot" location="Shadow Temple Beamos Big Fairy" room="0x5" actor="0x3" item="FAIRY_BIG" name="Beamos" xyz="541;528;0"/>
       </rendering_option>
-      <rendering_option room="2">
-        <xflag type="fairy_spot" location="Shadow Temple Stalfos Big Fairy" room="0x9" actor="0x15" item="FAIRY_BIG" name="Stalfos" xyz="746;262;0"/>
+      <rendering_option room="2" type="fairy_spot">
+        <xflag type="fairy-spot" location="Shadow Temple Stalfos Big Fairy" room="0x9" actor="0x15" item="FAIRY_BIG" name="Stalfos" xyz="746;262;0"/>
+      </rendering_option>
+      <rendering_option room="3" type="fairy_spot">
+        <xflag type="fairy-spot" location="Shadow Temple Big Fairy After Wind" room="0x13" actor="0x2" item="FAIRY_BIG" name="After Wind" xyz="959;2927;0"/>
       </rendering_option>
       <rendering_option room="3">
-        <xflag type="fairy_spot" location="Shadow Temple Big Fairy After Wind" room="0x13" actor="0x2" item="FAIRY_BIG" name="After Wind" xyz="959;2927;0"/>
         <xflag type="wonder" location="Shadow Temple Wonder Item" room="0xc" actor="0x1" item="ARROWS_30" name="Triple Pot Room - Painting" xyz="1558;355;0"/>
       </rendering_option>
     </scene_rendering>

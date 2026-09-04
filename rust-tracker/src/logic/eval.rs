@@ -24,6 +24,12 @@ pub trait WorldState {
     fn mask_count(&self) -> u16;
     /// The value a setting is fixed to (`Some(value_id)`), for `setting(k, v)`.
     fn setting_value(&self, key: u32) -> Option<u32>;
+    /// Whether setting `key` holds value `val` — enum equality, or, for a set-valued
+    /// setting (`openDungeonsOot/Mm`, `ganonTrials`), membership of `val` in the chosen
+    /// set. The default single-value equality keeps minimal impls (tests) unchanged.
+    fn setting_has(&self, key: u32, val: u32) -> bool {
+        self.setting_value(key) == Some(val)
+    }
     /// Whether a boolean-form setting is enabled (`setting(k)`).
     fn setting_enabled(&self, key: u32) -> bool;
     /// Whether a trick is enabled for this seed.
@@ -79,7 +85,7 @@ pub fn eval<W: WorldState + ?Sized>(expr: &[Op], w: &W) -> bool {
             Op::Event(id) => stack.push(w.event(id)),
             Op::Trick(id) => stack.push(w.trick(id)),
             Op::Setting(k) => stack.push(w.setting_enabled(k)),
-            Op::SettingEq(k, v) => stack.push(w.setting_value(k) == Some(v)),
+            Op::SettingEq(k, v) => stack.push(w.setting_has(k, v)),
             Op::Age(a) => stack.push(w.age() == a),
             Op::OotTime(_) | Op::MmTime(_) => stack.push(w.time_reachable()),
             Op::Masks(n) => stack.push(w.mask_count() >= n),

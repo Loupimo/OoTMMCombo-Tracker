@@ -123,8 +123,8 @@
         <xflag type="pot" location="MQ Spirit Temple Flying Pot Statue Room Lower" room="0x5" actor="0x13" item="NOTHING" name="Statue Room - Lower Flying Pot" xyz="1100;1402;0"/>
         <xflag type="pot" location="MQ Spirit Temple Flying Pot Statue Room Stairs" room="0x5" actor="0x16" item="NOTHING" name="Statue Room - Stairs Flying Pot" xyz="806;1589;0"/>
       </rendering_option>
-      <rendering_option layout="oot_mq" room="2">
-        <xflag type="fairy_spot" location="MQ Spirit Temple Dinolfos Room Big Fairy" room="0x12" actor="0x2" item="FAIRY_BIG" name="Dinolfos Room" xyz="1838;395;0"/>
+      <rendering_option layout="oot_mq" room="2" type="fairy_spot">
+        <xflag type="fairy-spot" location="MQ Spirit Temple Dinolfos Room Big Fairy" room="0x12" actor="0x2" item="FAIRY_BIG" name="Dinolfos Room" xyz="1838;395;0"/>
       </rendering_option>
       <rendering_option layout="oot_mq">
         <xflag type="heart" location="MQ Spirit Temple Heart 1" room="0x1" actor="0xd" item="RECOVERY_HEART" name="Heart 1" xyz="377;817;0"/>

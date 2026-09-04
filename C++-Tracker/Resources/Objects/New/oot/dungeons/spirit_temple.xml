@@ -117,9 +117,11 @@
         <xflag type="heart" location="Spirit Temple Heart 1" room="0x17" actor="0x2" item="RECOVERY_HEART" name="Heart 1" xyz="1202;1517;0"/>
         <xflag type="heart" location="Spirit Temple Heart 2" room="0x17" actor="0x3" item="RECOVERY_HEART" name="Heart 2" xyz="1151;1517;0"/>
       </rendering_option>
-      <xflag type="fairy_spot" location="Spirit Temple Adult Silver Rupees Big Fairy" room="0xc" actor="0x1" item="FAIRY_BIG" name="Adult - Silver Rupees" xyz="1274;406;0"/>
-      <rendering_option room="2">
-        <xflag type="fairy_spot" location="Spirit Temple Adult Sunlight Big Fairy" room="0x12" actor="0x6" item="FAIRY_BIG" name="Adult - Sunlight" xyz="1838;395;0"/>
+      <rendering_option type="fairy_spot">
+        <xflag type="fairy-spot" location="Spirit Temple Adult Silver Rupees Big Fairy" room="0xc" actor="0x1" item="FAIRY_BIG" name="Adult - Silver Rupees" xyz="1274;406;0"/>
+      </rendering_option>
+      <rendering_option room="2" type="fairy_spot">
+        <xflag type="fairy-spot" location="Spirit Temple Adult Sunlight Big Fairy" room="0x12" actor="0x6" item="FAIRY_BIG" name="Adult - Sunlight" xyz="1838;395;0"/>
       </rendering_option>
     </scene_rendering>
   </scene>

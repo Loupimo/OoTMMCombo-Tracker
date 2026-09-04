@@ -47,8 +47,17 @@ OBJ_TAGS = {"chest", "collectible", "npc", "gs", "cow", "shop", "scrub",
 # xflag `type` attr -> ObjectType enum name (only where they differ from the attr)
 XFLAG_TYPE = {
     "boulder-silver": "silverboulder", "boulder-red": "redboulder",
-    "gossip-big": "gossip_big",
+    "gossip-big": "gossip_big", "fairy-spot": "fairy_spot",
 }
+
+# xflag `system` token (pool CSV `system` column) -> ObjSystem C++/Rust enum variant. Tags the few
+# checks whose representation changed across OoTMM versions: "legacy" objects exist only on the older
+# ROMs, "new" only on the current ones; an empty / unknown token means "any" (both). The token is the
+# durable authority for the `system` field, stored in the pool by Location (see load_pool_system);
+# augment.py re-injects the legacy-tagged checks that vanish from a fresh OoTMM XML. Runtime gate:
+# UsesLegacyXflags() (ObjectInfo::HasCorrectLayout / Rust object_active).
+#   To add a future version tier, add its token here + a matching ObjSystem variant + a runtime case.
+SYSTEM_ENUM = {"legacy": "Legacy", "new": "New"}
 
 # Shared object-id symbols the pool stores bare but whose C++ define is game-prefixed (OoT and MM
 # hold different values, e.g. OOT_SONG_STORMS 0x06 vs MM_SONG_STORMS 0x0d) -> prefix per game.
@@ -94,10 +103,11 @@ def parse_xyz(xyz):
 
 
 class Gen:
-    def __init__(self, gs_map, xflags, pool_ids):
+    def __init__(self, gs_map, xflags, pool_ids, pool_system=None):
         self.gs_map = gs_map
         self.xflags = xflags
         self.pool_ids = pool_ids
+        self.pool_system = pool_system or {}
         self.rows = []
         self.remap = []   # (bucket, legacy_scene, objid, type, true_scene, location)
         self.warn = []
@@ -202,6 +212,9 @@ class Gen:
             "room": render.get("rroom", "0"), "game_layout": render.get("layout", layout),
             "loc_type": render.get("loc_type", ""),
             "xflag_id": ("0x%04X" % xid) if xid is not None else "0xFFFF",
+            # xflag system: prefer the self-documenting XML attr (written by augment / hand-editable),
+            # fall back to the pool `system` column (authority) for a not-yet-augmented raw XML.
+            "system": a.get("system") or self.pool_system.get(loc, ""),
             "bucket": bucket, "tag": tag, "legacy_scene": legacy,
         }
         self.rows.append(row)
@@ -238,6 +251,8 @@ def load_pool(path):
             line = line.rstrip("\n")
             if line:
                 c = line.split(";")
+                if len(c) < len(header):        # tolerate rows missing trailing optional columns
+                    c += [""] * (len(header) - len(c))
                 rows.setdefault(c[idx["location"]], []).append(c)
     return rows, idx
 
@@ -290,6 +305,26 @@ def load_pool_ids():
     return m
 
 
+def load_pool_system():
+    """location -> xflag `system` token (pool `system` column). The pool is the durable authority
+    for the version tag (immune to augment.py, which re-injects the legacy-tagged checks). Absent /
+    empty column -> "" (any)."""
+    m = {}
+    for p in (POOL_OOT, POOL_MM):
+        if not os.path.exists(p):
+            continue
+        rows, idx = load_pool(p)
+        if "system" not in idx:
+            continue
+        for loc, plist in rows.items():
+            for c in plist:
+                v = c[idx["system"]].strip()
+                if v:
+                    m[loc] = v
+                    break
+    return m
+
+
 def load_xflags(ootmm_root):
     rows = build_rows(ootmm_root)
     return {r["location"]: r["id"] for r in rows}
@@ -322,7 +357,8 @@ def emit_struct(r):
             + str(r["renderscene"]) + ", ObjectType::" + r["rendertype"] + ", EGameIcon::"
             + r["icontype"] + ", ObjectContext::" + r["context"] + ", " + str(r["room"])
             + ", GameLayout::" + r["game_layout"] + ", LocType::" + r["loc_type"]
-            + ", NULL, " + r["xflag_id"] + " }")
+            + ", NULL, " + r["xflag_id"] + ", ObjSystem::" + SYSTEM_ENUM.get(r.get("system", ""), "Any")
+            + " }")
 
 
 def wrap_cpp(bucket, content):
@@ -530,7 +566,7 @@ def build_objects(ootmm_root=None, quiet=True):
     when given, else from the pool CSVs; the legacy ObjectID is always pool-preferred."""
     gs_map = load_gs_ids()
     xflags = load_xflags(ootmm_root) if ootmm_root else load_xflags_from_pool()
-    g = Gen(gs_map, xflags, load_pool_ids())
+    g = Gen(gs_map, xflags, load_pool_ids(), load_pool_system())
     skipped_files = []
     for path in sorted(glob.glob(os.path.join(NEW_DIR, "**", "*.xml"), recursive=True)):
         # Only converted files carry the render layer; identity-only originals are skipped.

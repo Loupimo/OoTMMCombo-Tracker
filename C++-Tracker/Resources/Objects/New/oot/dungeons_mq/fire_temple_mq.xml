@@ -80,8 +80,12 @@
         <xflag type="pot" location="MQ Fire Temple Pot Hammer Loop 8" room="0x12" actor="0xf" item="FLEXIBLE" name="Hammer Loop 8" xyz="509;417;0"/>
         <xflag type="pot" location="MQ Fire Temple Pot Boss Key Room 1" room="0x13" actor="0xd" item="FLEXIBLE" name="Boss Key Room 1" xyz="1301;559;0"/>
         <xflag type="pot" location="MQ Fire Temple Pot Boss Key Room 2" room="0x13" actor="0xe" item="MAGIC_JAR_SMALL" name="Boss Key Room 2" xyz="1333;558;0"/>
-        <xflag type="fairy_spot" location="MQ Fire Temple Hammer Loop Stalfos Big Fairy" room="0xf" actor="0x1" item="FAIRY_BIG" name="Stalfos" xyz="792;392;0"/>
-        <xflag type="fairy_spot" location="MQ Fire Temple Hammer Loop Iron Knuckle Big Fairy" room="0x12" actor="0x7" item="FAIRY_BIG" name="Iron Knuckle" xyz="190;261;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" type="fairy_spot">
+        <xflag type="fairy-spot" location="MQ Fire Temple Hammer Loop Stalfos Big Fairy" room="0xf" actor="0x1" item="FAIRY_BIG" name="Stalfos" xyz="792;392;0"/>
+        <xflag type="fairy-spot" location="MQ Fire Temple Hammer Loop Iron Knuckle Big Fairy" room="0x12" actor="0x7" item="FAIRY_BIG" name="Iron Knuckle" xyz="190;261;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq">
         <xflag type="heart" location="MQ Fire Temple Heart 1" room="0x15" actor="0x2" item="RECOVERY_HEART" name="Heart 1" xyz="2062;240;0"/>
         <xflag type="heart" location="MQ Fire Temple Heart 2" room="0x15" actor="0x3" item="RECOVERY_HEART" name="Heart 2" xyz="2340;383;0"/>
         <xflag type="heart" location="MQ Fire Temple Heart 3" room="0x15" actor="0x4" item="RECOVERY_HEART" name="Heart 3" xyz="2420;232;0"/>

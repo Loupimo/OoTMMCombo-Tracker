@@ -29,23 +29,31 @@
         <gs location="Graveyard GS Soil" flag="0x80" item="GS_TOKEN" name="Soil" xyz="635;439;0"/>
         <gs location="Graveyard GS Wall" flag="0x87" item="GS_TOKEN" name="Wall" xyz="401;130;0"/>
       </rendering_option>
-      <xflag type="crate" location="Graveyard Crate" slice="0x0" setup="0" room="0x1" actor="0x15" item="NOTHING" name="Crate" xyz="712;445;0"/>
-      <xflag type="grass" location="Graveyard Grass 01" slice="0x0" setup="0" room="0x1" actor="0x10" item="RANDOM" name="Grass 1" xyz="708;191;0"/>
-      <xflag type="grass" location="Graveyard Grass 02" slice="0x1" setup="0" room="0x1" actor="0x10" item="RANDOM" name="Grass 2" xyz="721;206;0"/>
-      <xflag type="grass" location="Graveyard Grass 03" slice="0x2" setup="0" room="0x1" actor="0x10" item="RANDOM" name="Grass 3" xyz="740;201;0"/>
-      <xflag type="grass" location="Graveyard Grass 04" slice="0x3" setup="0" room="0x1" actor="0x10" item="RANDOM" name="Grass 4" xyz="742;181;0"/>
-      <xflag type="grass" location="Graveyard Grass 05" slice="0x4" setup="0" room="0x1" actor="0x10" item="RANDOM" name="Grass 5" xyz="726;189;0"/>
-      <xflag type="grass" location="Graveyard Grass 06" slice="0x5" setup="0" room="0x1" actor="0x10" item="RANDOM" name="Grass 6" xyz="713;200;0"/>
-      <xflag type="grass" location="Graveyard Grass 07" slice="0x6" setup="0" room="0x1" actor="0x10" item="RANDOM" name="Grass 7" xyz="731;207;0"/>
-      <xflag type="grass" location="Graveyard Grass 08" slice="0x7" setup="0" room="0x1" actor="0x10" item="RANDOM" name="Grass 8" xyz="743;191;0"/>
-      <xflag type="grass" location="Graveyard Grass 09" slice="0x8" setup="0" room="0x1" actor="0x10" item="RANDOM" name="Grass 9" xyz="736;173;0"/>
-      <xflag type="grass" location="Graveyard Grass 10" slice="0x9" setup="0" room="0x1" actor="0x10" item="RANDOM" name="Grass 10" xyz="726;171;0"/>
-      <xflag type="grass" location="Graveyard Grass 11" slice="0xa" setup="0" room="0x1" actor="0x10" item="RANDOM" name="Grass 11" xyz="716;173;0"/>
-      <xflag type="grass" location="Graveyard Grass 12" slice="0xb" setup="0" room="0x1" actor="0x10" item="RANDOM" name="Grass 12" xyz="710;181;0"/>
+      <xflag type="crate" location="Graveyard Crate" setup="0" room="0x1" actor="0x15" item="NOTHING" name="Crate" xyz="712;445;0"/>
+      <actor room="0x1">
+        <match setup="0" actor="0x10"/>
+        <match setup="1" actor="0x14"/>
+        <match setup="2" actor="0x1d"/>
+        <match setup="3" actor="0x1d"/>
+        <xflag type="grass" location="Graveyard Grass 01" slice="0x0" item="RANDOM" name="Grass 1" xyz="708;191;0"/>
+        <xflag type="grass" location="Graveyard Grass 02" slice="0x1" item="RANDOM" name="Grass 2" xyz="721;206;0"/>
+        <xflag type="grass" location="Graveyard Grass 03" slice="0x2" item="RANDOM" name="Grass 3" xyz="740;201;0"/>
+        <xflag type="grass" location="Graveyard Grass 04" slice="0x3" item="RANDOM" name="Grass 4" xyz="742;181;0"/>
+        <xflag type="grass" location="Graveyard Grass 05" slice="0x4" item="RANDOM" name="Grass 5" xyz="726;189;0"/>
+        <xflag type="grass" location="Graveyard Grass 06" slice="0x5" item="RANDOM" name="Grass 6" xyz="713;200;0"/>
+        <xflag type="grass" location="Graveyard Grass 07" slice="0x6" item="RANDOM" name="Grass 7" xyz="731;207;0"/>
+        <xflag type="grass" location="Graveyard Grass 08" slice="0x7" item="RANDOM" name="Grass 8" xyz="743;191;0"/>
+        <xflag type="grass" location="Graveyard Grass 09" slice="0x8" item="RANDOM" name="Grass 9" xyz="736;173;0"/>
+        <xflag type="grass" location="Graveyard Grass 10" slice="0x9" item="RANDOM" name="Grass 10" xyz="726;171;0"/>
+        <xflag type="grass" location="Graveyard Grass 11" slice="0xa" item="RANDOM" name="Grass 11" xyz="716;173;0"/>
+        <xflag type="grass" location="Graveyard Grass 12" slice="0xb" item="RANDOM" name="Grass 12" xyz="710;181;0"/>
+      </actor>
       <rendering_option context="child">
-        <xflag type="soil" location="Graveyard Soil 1" slice="0x0" setup="0" room="0x1" actor="0x12" item="FAIRY" name="Soil 1" xyz="636;463;0"/>
-        <xflag type="soil" location="Graveyard Soil 2" slice="0x1" setup="0" room="0x1" actor="0x12" item="FAIRY" name="Soil 2" xyz="641;452;0"/>
-        <xflag type="soil" location="Graveyard Soil 3" slice="0x2" setup="0" room="0x1" actor="0x12" item="FAIRY" name="Soil 3" xyz="630;452;0"/>
+        <actor room="0x1" setup="0" actor="0x12">
+          <xflag type="soil" location="Graveyard Soil 1" slice="0x0" item="FAIRY" name="Soil 1" xyz="636;463;0"/>
+          <xflag type="soil" location="Graveyard Soil 2" slice="0x1" item="FAIRY" name="Soil 2" xyz="641;452;0"/>
+          <xflag type="soil" location="Graveyard Soil 3" slice="0x2" item="FAIRY" name="Soil 3" xyz="630;452;0"/>
+        </actor>
       </rendering_option>
       <actor room="0x01">
         <match setup="0" actor="0x2"/>
@@ -74,7 +82,9 @@
         <npc location="Graveyard Royal Tomb Song" npc="ROYAL_TOMB_SONG" item="SONG_SUN" name="Sun's Song" xyz="149;24;0"/>
       </rendering_option>
       <chest location="Graveyard Royal Tomb Chest" flag="0x00" item="BOMBS_5" name="Torches" xyz="150;522;0"/>
-      <xflag type="fairy_spot" location="Graveyard Royal Tomb Big Fairy" slice="0x0" setup="0" room="0x0" actor="0x8" item="FAIRY_BIG" name="Skull" xyz="111;506;0"/>
+      <rendering_option type="none">
+        <xflag type="fairy-spot" location="Graveyard Royal Tomb Big Fairy" setup="0" room="0x0" actor="0x8" item="FAIRY_BIG" name="Skull" xyz="0;0;0" legacy_scene="GRAVEYARD"/>
+      </rendering_option>
     </scene_rendering>
   </scene>
   <scene id="TOMB_FAIRY">

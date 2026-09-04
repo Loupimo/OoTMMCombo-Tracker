@@ -1,0 +1,3914 @@
+{
+ "adultMaskMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "ageChange": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "oot",
+    "Ocarina of Time"
+   ],
+   [
+    "always",
+    "Always"
+   ]
+  ]
+ },
+ "agelessBoomerang": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "agelessBoots": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "agelessBow": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "agelessChildTrade": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "agelessGFS": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "agelessHammer": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "agelessHookshot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "agelessShields": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "agelessSlingshot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "agelessSoaring": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "agelessSticks": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "agelessStrength": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "agelessSwords": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "agelessTunics": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "alterLostWoodsExits": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "autoInvert": {
+  "default": "never",
+  "type": "enum",
+  "values": [
+   [
+    "never",
+    "Never"
+   ],
+   [
+    "firstCycle",
+    "First Cycle"
+   ],
+   [
+    "always",
+    "Always"
+   ]
+  ]
+ },
+ "beneathWell": {
+  "default": "vanilla",
+  "type": "enum",
+  "values": [
+   [
+    "vanilla",
+    "Vanilla"
+   ],
+   [
+    "remorseless",
+    "Remorseless"
+   ],
+   [
+    "open",
+    "Open"
+   ]
+  ]
+ },
+ "blastMaskCooldown": {
+  "default": "default",
+  "type": "enum",
+  "values": [
+   [
+    "instant",
+    "Instant (0s)"
+   ],
+   [
+    "veryshort",
+    "Very Short (~2s)"
+   ],
+   [
+    "short",
+    "Short (~6s)"
+   ],
+   [
+    "default",
+    "Default (~15s)"
+   ],
+   [
+    "long",
+    "Long (~25s)"
+   ],
+   [
+    "verylong",
+    "Very Long (~51s)"
+   ]
+  ]
+ },
+ "blastMaskOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "blueFireArrows": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "bombchuBehaviorMm": {
+  "default": "bombBag",
+  "type": "enum",
+  "values": [
+   [
+    "free",
+    "Vanilla (OoT)"
+   ],
+   [
+    "bombBag",
+    "Vanilla (MM)"
+   ],
+   [
+    "bagFirst",
+    "Bombchu Bag (First Pack)"
+   ],
+   [
+    "bagSeparate",
+    "Bombchu Bag (Separate Items)"
+   ]
+  ]
+ },
+ "bombchuBehaviorOot": {
+  "default": "free",
+  "type": "enum",
+  "values": [
+   [
+    "free",
+    "Vanilla (OoT)"
+   ],
+   [
+    "bombBag",
+    "Vanilla (MM)"
+   ],
+   [
+    "bagFirst",
+    "Bombchu Bag (First Pack)"
+   ],
+   [
+    "bagSeparate",
+    "Bombchu Bag (Separate Items)"
+   ]
+  ]
+ },
+ "boomerangMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "bootsHoverMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "bootsIronMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "bossKeyShuffleMm": {
+  "default": "ownDungeon",
+  "type": "enum",
+  "values": [
+   [
+    "ownDungeon",
+    "Own Dungeon"
+   ],
+   [
+    "anywhere",
+    "Anywhere"
+   ],
+   [
+    "removed",
+    "Removed"
+   ],
+   [
+    "vanilla",
+    "Vanilla"
+   ]
+  ]
+ },
+ "bossKeyShuffleOot": {
+  "default": "ownDungeon",
+  "type": "enum",
+  "values": [
+   [
+    "ownDungeon",
+    "Own Dungeon"
+   ],
+   [
+    "anywhere",
+    "Anywhere"
+   ],
+   [
+    "removed",
+    "Removed"
+   ],
+   [
+    "vanilla",
+    "Vanilla"
+   ]
+  ]
+ },
+ "bossWarpPads": {
+  "default": "bossBeaten",
+  "type": "enum",
+  "values": [
+   [
+    "bossBeaten",
+    "Boss Beaten"
+   ],
+   [
+    "remains",
+    "Remains"
+   ]
+  ]
+ },
+ "bottleContentShuffle": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "bottomlessWallets": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "bowSlingshotBreakHives": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "bronzeScale": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "childWallets": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "clearStateDungeonsMm": {
+  "default": "none",
+  "type": "set",
+  "values": [
+   [
+    "WF",
+    "Woodfall Temple"
+   ],
+   [
+    "GB",
+    "Great Bay Temple"
+   ]
+  ]
+ },
+ "climbMostSurfacesMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "climbMostSurfacesOot": {
+  "default": "off",
+  "type": "enum",
+  "values": [
+   [
+    "off",
+    "Off"
+   ],
+   [
+    "enabled",
+    "On"
+   ],
+   [
+    "logical",
+    "Logical"
+   ]
+  ]
+ },
+ "cloakTraps": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "clockSpeed": {
+  "default": "default",
+  "type": "enum",
+  "values": [
+   [
+    "veryslow",
+    "Very Slow"
+   ],
+   [
+    "slow",
+    "Slow"
+   ],
+   [
+    "default",
+    "Default"
+   ],
+   [
+    "fast",
+    "Fast"
+   ],
+   [
+    "veryfast",
+    "Very Fast"
+   ],
+   [
+    "superfast",
+    "Super Fast"
+   ]
+  ]
+ },
+ "clocksMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "clocksOot": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "day",
+    "Day"
+   ],
+   [
+    "night",
+    "Night"
+   ],
+   [
+    "random",
+    "Random"
+   ]
+  ]
+ },
+ "coins": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "coinsBlue": {
+  "default": null,
+  "type": "number",
+  "values": []
+ },
+ "coinsGreen": {
+  "default": null,
+  "type": "number",
+  "values": []
+ },
+ "coinsRed": {
+  "default": null,
+  "type": "number",
+  "values": []
+ },
+ "coinsYellow": {
+  "default": null,
+  "type": "number",
+  "values": []
+ },
+ "colossalWallets": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "cowShuffleMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "cowShuffleOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "critWiggleDisable": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "crossAge": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "crossGameFw": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "csmc": {
+  "default": "always",
+  "type": "enum",
+  "values": [
+   [
+    "never",
+    "Never"
+   ],
+   [
+    "agony",
+    "Stone of Agony"
+   ],
+   [
+    "always",
+    "Always"
+   ]
+  ]
+ },
+ "csmcCow": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "csmcHearts": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "csmcMapCompass": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "csmcSkulltula": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "cutsceneGlitchOoT": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "cutsceneIntroBarinade": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "cutsceneIntroBongoBongo": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "cutsceneIntroGanondorf": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "cutsceneIntroGohma": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "cutsceneIntroGoht": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "cutsceneIntroGomess": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "cutsceneIntroGyorg": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "cutsceneIntroIgos": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "cutsceneIntroKingDodongo": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "cutsceneIntroMajora": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "cutsceneIntroMorpha": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "cutsceneIntroOdolwa": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "cutsceneIntroPhantomGanon": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "cutsceneIntroTwinmold": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "cutsceneIntroTwinrova": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "cutsceneIntroVolvagia": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "cutsceneIntroWart": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "cutsceneSkipMM": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "cutsceneSkipOoT": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "damageMultiplierMm": {
+  "default": "normal",
+  "type": "enum",
+  "values": [
+   [
+    "normal",
+    "Normal (x1)"
+   ],
+   [
+    "double",
+    "Double (x2)"
+   ],
+   [
+    "quadruple",
+    "Quadruple (x4)"
+   ],
+   [
+    "octuple",
+    "Octuple (x8)"
+   ],
+   [
+    "ohko",
+    "OHKO (One-Hit K.O.)"
+   ]
+  ]
+ },
+ "damageMultiplierOot": {
+  "default": "normal",
+  "type": "enum",
+  "values": [
+   [
+    "normal",
+    "Normal (x1)"
+   ],
+   [
+    "double",
+    "Double (x2)"
+   ],
+   [
+    "quadruple",
+    "Quadruple (x4)"
+   ],
+   [
+    "octuple",
+    "Octuple (x8)"
+   ],
+   [
+    "ohko",
+    "OHKO (One-Hit K.O.)"
+   ]
+  ]
+ },
+ "dekuShieldMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "dekuTree": {
+  "default": "open",
+  "type": "enum",
+  "values": [
+   [
+    "closed",
+    "Closed"
+   ],
+   [
+    "vanilla",
+    "Vanilla"
+   ],
+   [
+    "open",
+    "Open"
+   ]
+  ]
+ },
+ "divingGameRupeeShuffle": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "doorOfTime": {
+  "default": "closed",
+  "type": "enum",
+  "values": [
+   [
+    "closed",
+    "Closed"
+   ],
+   [
+    "open",
+    "Open"
+   ]
+  ]
+ },
+ "dungeonRewardShuffle": {
+  "default": "dungeonBlueWarps",
+  "type": "enum",
+  "values": [
+   [
+    "dungeonBlueWarps",
+    "Dungeon Blue Warps"
+   ],
+   [
+    "dungeonsLimited",
+    "Dungeons (Max one per dungeon)"
+   ],
+   [
+    "dungeons",
+    "Dungeons (Unrestricted)"
+   ],
+   [
+    "anywhere",
+    "Anywhere"
+   ]
+  ]
+ },
+ "eggShuffle": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "elegyOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erBeneathWell": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erBoss": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "ownGame",
+    "Own Game"
+   ],
+   [
+    "full",
+    "Full"
+   ]
+  ]
+ },
+ "erDecoupled": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erDungeons": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "ownGame",
+    "Own Game"
+   ],
+   [
+    "full",
+    "Full"
+   ]
+  ]
+ },
+ "erGanonCastle": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erGanonTower": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erGrottos": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "ownGame",
+    "Own Game"
+   ],
+   [
+    "full",
+    "Full"
+   ]
+  ]
+ },
+ "erIkanaCastle": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erIndoors": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "ownGame",
+    "Own Game"
+   ],
+   [
+    "full",
+    "Full"
+   ]
+  ]
+ },
+ "erIndoorsExtra": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erIndoorsGameLinks": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erIndoorsMajor": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erIndoorsTelescopes": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erMajorDungeons": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erMinorDungeons": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erMixed": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "ownGame",
+    "Own Game"
+   ],
+   [
+    "full",
+    "Full"
+   ]
+  ]
+ },
+ "erMixedDungeons": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erMixedGrottos": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erMixedIndoors": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erMixedOverworld": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erMixedRegions": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erMoon": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erNoPolarity": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erOneWays": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "ownGame",
+    "Own Game"
+   ],
+   [
+    "full",
+    "Full"
+   ]
+  ]
+ },
+ "erOneWaysAnywhere": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erOneWaysIkana": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erOneWaysMajor": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erOneWaysOwls": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erOneWaysSongs": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erOneWaysStatues": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erOneWaysWaterVoids": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erOneWaysWoods": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erOverworld": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "ownGame",
+    "Own Game"
+   ],
+   [
+    "full",
+    "Full"
+   ]
+  ]
+ },
+ "erPirateFortress": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erPiratesWorld": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erRegions": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "ownGame",
+    "Own Game"
+   ],
+   [
+    "full",
+    "Full"
+   ]
+  ]
+ },
+ "erRegionsExtra": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erRegionsShortcuts": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erSecretShrine": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erSelfLoops": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erSpawns": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "child",
+    "Child Only"
+   ],
+   [
+    "adult",
+    "Adult Only"
+   ],
+   [
+    "both",
+    "Both"
+   ]
+  ]
+ },
+ "erSpiderHouses": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "erWallmasters": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "ownGame",
+    "Own Game"
+   ],
+   [
+    "full",
+    "Full"
+   ]
+  ]
+ },
+ "erWarps": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "ootOnly",
+    "OoT Only"
+   ],
+   [
+    "mmOnly",
+    "MM Only"
+   ],
+   [
+    "ownGame",
+    "Own Game"
+   ],
+   [
+    "full",
+    "Full"
+   ]
+  ]
+ },
+ "extraChildSwordsOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "extraHintRegions": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "fairyFountainFairyShuffleMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "fairyFountainFairyShuffleOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "fairyOcarinaMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "fairySpotShuffleOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "fastBunnyHood": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "fastMasks": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "fierceDeityAnywhere": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "fillWallets": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "freeScarecrowMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "freeScarecrowOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "games": {
+  "default": "ootmm",
+  "type": "enum",
+  "values": [
+   [
+    "ootmm",
+    "OoT+MM"
+   ],
+   [
+    "oot",
+    "OoT Only"
+   ],
+   [
+    "mm",
+    "MM Only"
+   ]
+  ]
+ },
+ "ganonBossKey": {
+  "default": "removed",
+  "type": "enum",
+  "values": [
+   [
+    "removed",
+    "Removed"
+   ],
+   [
+    "vanilla",
+    "Vanilla"
+   ],
+   [
+    "ganon",
+    "Ganon"
+   ],
+   [
+    "anywhere",
+    "Anywhere"
+   ],
+   [
+    "custom",
+    "Custom"
+   ]
+  ]
+ },
+ "ganonTrials": {
+  "default": "none",
+  "type": "set",
+  "values": [
+   [
+    "Light",
+    "Light Trial"
+   ],
+   [
+    "Forest",
+    "Forest Trial"
+   ],
+   [
+    "Fire",
+    "Fire Trial"
+   ],
+   [
+    "Water",
+    "Water Trial"
+   ],
+   [
+    "Shadow",
+    "Shadow Trial"
+   ],
+   [
+    "Spirit",
+    "Spirit Trial"
+   ]
+  ]
+ },
+ "generateSpoilerLog": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "gerudoFortress": {
+  "default": "vanilla",
+  "type": "enum",
+  "values": [
+   [
+    "vanilla",
+    "Vanilla"
+   ],
+   [
+    "single",
+    "One Carpenter"
+   ],
+   [
+    "open",
+    "Open"
+   ]
+  ]
+ },
+ "gerudoMaskMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "gfsOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "goal": {
+  "default": "both",
+  "type": "enum",
+  "values": [
+   [
+    "any",
+    "Any Final Boss"
+   ],
+   [
+    "ganon",
+    "Ganon"
+   ],
+   [
+    "majora",
+    "Majora"
+   ],
+   [
+    "both",
+    "Ganon & Majora"
+   ],
+   [
+    "triforce",
+    "Triforce Hunt"
+   ],
+   [
+    "triforce3",
+    "Triforce Quest"
+   ]
+  ]
+ },
+ "goldSkulltulaTokens": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "No Shuffle"
+   ],
+   [
+    "dungeons",
+    "Dungeons Only"
+   ],
+   [
+    "overworld",
+    "Overworld Only"
+   ],
+   [
+    "all",
+    "All Tokens"
+   ]
+  ]
+ },
+ "hammerMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "hintImportance": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "hintPathBoss": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "hintPathDungeons": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "hintPathEndBoss": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "hintPathEvents": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "hookshotAnywhereMm": {
+  "default": "off",
+  "type": "enum",
+  "values": [
+   [
+    "off",
+    "Off"
+   ],
+   [
+    "enabled",
+    "On"
+   ],
+   [
+    "logical",
+    "Logical"
+   ]
+  ]
+ },
+ "hookshotAnywhereOot": {
+  "default": "off",
+  "type": "enum",
+  "values": [
+   [
+    "off",
+    "Off"
+   ],
+   [
+    "enabled",
+    "On"
+   ],
+   [
+    "logical",
+    "Logical"
+   ]
+  ]
+ },
+ "housesSkulltulaTokens": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "No Shuffle"
+   ],
+   [
+    "all",
+    "All Tokens"
+   ]
+  ]
+ },
+ "iceArrowPlatformsOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "itemPool": {
+  "default": "normal",
+  "type": "enum",
+  "values": [
+   [
+    "plentiful",
+    "Plentiful"
+   ],
+   [
+    "normal",
+    "Normal"
+   ],
+   [
+    "scarce",
+    "Scarce"
+   ],
+   [
+    "minimal",
+    "Minimal"
+   ],
+   [
+    "barren",
+    "Barren"
+   ]
+  ]
+ },
+ "jpLayouts": {
+  "default": "none",
+  "type": "set",
+  "values": [
+   [
+    "DekuPalace",
+    "Deku Palace"
+   ],
+   [
+    "StoneTower",
+    "Stone Tower"
+   ],
+   [
+    "ST",
+    "Stone Tower Temple"
+   ],
+   [
+    "GreatBayCoast",
+    "Great Bay Coast"
+   ]
+  ]
+ },
+ "kakarikoGate": {
+  "default": "vanilla",
+  "type": "enum",
+  "values": [
+   [
+    "closed",
+    "Closed"
+   ],
+   [
+    "vanilla",
+    "Vanilla"
+   ],
+   [
+    "open",
+    "Open"
+   ]
+  ]
+ },
+ "kamaroMaskOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "keepBottlesReset": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "keepItemsReset": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "kegStrength3": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "lacs": {
+  "default": "vanilla",
+  "type": "enum",
+  "values": [
+   [
+    "vanilla",
+    "Vanilla"
+   ],
+   [
+    "custom",
+    "Custom"
+   ]
+  ]
+ },
+ "lenientSpikes": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "logic": {
+  "default": "allLocations",
+  "type": "enum",
+  "values": [
+   [
+    "allLocations",
+    "All Locations"
+   ],
+   [
+    "beatable",
+    "Beatable Only"
+   ],
+   [
+    "none",
+    "No Logic"
+   ]
+  ]
+ },
+ "magicalRupee": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "majoraChild": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "custom",
+    "Custom"
+   ]
+  ]
+ },
+ "mapCompassShuffle": {
+  "default": "ownDungeon",
+  "type": "enum",
+  "values": [
+   [
+    "ownDungeon",
+    "Own Dungeon"
+   ],
+   [
+    "anywhere",
+    "Anywhere"
+   ],
+   [
+    "starting",
+    "Starting Items"
+   ],
+   [
+    "removed",
+    "Removed"
+   ]
+  ]
+ },
+ "menuNotebook": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "mmEasierLightblock": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "mmHyperEnemies": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "mmPreActivatedOwls": {
+  "default": "none",
+  "type": "set",
+  "values": [
+   [
+    "clocktown",
+    "Clock Town"
+   ],
+   [
+    "milkroad",
+    "Milk Road"
+   ],
+   [
+    "swamp",
+    "Southern Swamp"
+   ],
+   [
+    "woodfall",
+    "Woodfall"
+   ],
+   [
+    "mountain",
+    "Mountain Village"
+   ],
+   [
+    "snowhead",
+    "Snowhead"
+   ],
+   [
+    "greatbay",
+    "Great Bay Coast"
+   ],
+   [
+    "zoracape",
+    "Zora Cape"
+   ],
+   [
+    "canyon",
+    "Ikana Canyon"
+   ],
+   [
+    "tower",
+    "Stone Tower"
+   ]
+  ]
+ },
+ "mmSongOfDoubleTimeTimeSelector": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "mmStyleAirMovementOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "mode": {
+  "default": "single",
+  "type": "enum",
+  "values": [
+   [
+    "single",
+    "Singleplayer"
+   ],
+   [
+    "coop",
+    "Co-op"
+   ],
+   [
+    "multi",
+    "Multiworld"
+   ]
+  ]
+ },
+ "moon": {
+  "default": "vanilla",
+  "type": "enum",
+  "values": [
+   [
+    "open",
+    "Open"
+   ],
+   [
+    "vanilla",
+    "Vanilla"
+   ],
+   [
+    "custom",
+    "Custom"
+   ]
+  ]
+ },
+ "moonCrash": {
+  "default": "reset",
+  "type": "enum",
+  "values": [
+   [
+    "reset",
+    "Last Save"
+   ],
+   [
+    "cycle",
+    "New Cycle"
+   ]
+  ]
+ },
+ "mqDungeons": {
+  "default": "none",
+  "type": "set",
+  "values": [
+   [
+    "DT",
+    "Deku Tree"
+   ],
+   [
+    "DC",
+    "Dodongo Cavern"
+   ],
+   [
+    "JJ",
+    "Jabu-Jabu"
+   ],
+   [
+    "Forest",
+    "Forest Temple"
+   ],
+   [
+    "Fire",
+    "Fire Temple"
+   ],
+   [
+    "Water",
+    "Water Temple"
+   ],
+   [
+    "Spirit",
+    "Spirit Temple"
+   ],
+   [
+    "Shadow",
+    "Shadow Temple"
+   ],
+   [
+    "BotW",
+    "Bottom of the Well"
+   ],
+   [
+    "IC",
+    "Ice Cavern"
+   ],
+   [
+    "GTG",
+    "Gerudo Training Grounds"
+   ],
+   [
+    "Ganon",
+    "Ganon"
+   ]
+  ]
+ },
+ "noDuplicatePlaythroughHints": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "noPlandoHints": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "ocarinaButtonsShuffleMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "ocarinaButtonsShuffleOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "ootHyperEnemies": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "ootPreplantedBeans": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "openDungeonsMm": {
+  "default": "none",
+  "type": "set",
+  "values": [
+   [
+    "WF",
+    "Woodfall Temple"
+   ],
+   [
+    "SH",
+    "Snowhead Temple"
+   ],
+   [
+    "GB",
+    "Great Bay Temple"
+   ],
+   [
+    "ST",
+    "Stone Tower Temple"
+   ]
+  ]
+ },
+ "openDungeonsOot": {
+  "default": "none",
+  "type": "set",
+  "values": [
+   [
+    "dekuTreeAdult",
+    "Deku Tree as Adult"
+   ],
+   [
+    "wellAdult",
+    "Bottom of the Well as Adult"
+   ],
+   [
+    "fireChild",
+    "Fire Temple as Child"
+   ],
+   [
+    "DC",
+    "Dodongo"
+   ],
+   [
+    "BotW",
+    "Bottom of the Well"
+   ],
+   [
+    "JJ",
+    "Jabu-Jabu"
+   ],
+   [
+    "Shadow",
+    "Shadow Temple"
+   ],
+   [
+    "Water",
+    "Water Temple"
+   ]
+  ]
+ },
+ "openMaskShop": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "openMoon": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "openZdShortcut": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "owlShuffle": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "anywhere",
+    "Anywhere"
+   ]
+  ]
+ },
+ "platinumTokenMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "platinumTokenOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "players": {
+  "default": null,
+  "type": "number",
+  "values": []
+ },
+ "pondFishShuffle": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "powderKegOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "preCompletedDungeons": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "preCompletedDungeonsMajor": {
+  "default": null,
+  "type": "number",
+  "values": []
+ },
+ "preCompletedDungeonsMedallions": {
+  "default": null,
+  "type": "number",
+  "values": []
+ },
+ "preCompletedDungeonsRemains": {
+  "default": null,
+  "type": "number",
+  "values": []
+ },
+ "preCompletedDungeonsStones": {
+  "default": null,
+  "type": "number",
+  "values": []
+ },
+ "priceMmShops": {
+  "default": null,
+  "type": "?",
+  "values": []
+ },
+ "priceMmTingle": {
+  "default": null,
+  "type": "?",
+  "values": []
+ },
+ "priceOotMerchants": {
+  "default": null,
+  "type": "?",
+  "values": []
+ },
+ "priceOotScrubs": {
+  "default": null,
+  "type": "?",
+  "values": []
+ },
+ "priceOotShops": {
+  "default": null,
+  "type": "?",
+  "values": []
+ },
+ "probabilisticFoolish": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "progressiveClocks": {
+  "default": "ascending",
+  "type": "enum",
+  "values": [
+   [
+    "separate",
+    "Separate"
+   ],
+   [
+    "ascending",
+    "Ascending"
+   ],
+   [
+    "descending",
+    "Descending"
+   ]
+  ]
+ },
+ "progressiveGFS": {
+  "default": "separate",
+  "type": "enum",
+  "values": [
+   [
+    "separate",
+    "Separate"
+   ],
+   [
+    "progressive",
+    "Progressive"
+   ]
+  ]
+ },
+ "progressiveGoronLullabyMm": {
+  "default": "progressive",
+  "type": "enum",
+  "values": [
+   [
+    "single",
+    "Full Lullaby Only"
+   ],
+   [
+    "progressive",
+    "Progressive"
+   ]
+  ]
+ },
+ "progressiveGoronLullabyOot": {
+  "default": "progressive",
+  "type": "enum",
+  "values": [
+   [
+    "single",
+    "Full Lullaby Only"
+   ],
+   [
+    "progressive",
+    "Progressive"
+   ]
+  ]
+ },
+ "progressiveShieldsMm": {
+  "default": "separate",
+  "type": "enum",
+  "values": [
+   [
+    "separate",
+    "Separate"
+   ],
+   [
+    "progressive",
+    "Progressive"
+   ]
+  ]
+ },
+ "progressiveShieldsOot": {
+  "default": "separate",
+  "type": "enum",
+  "values": [
+   [
+    "separate",
+    "Separate"
+   ],
+   [
+    "progressive",
+    "Progressive"
+   ]
+  ]
+ },
+ "progressiveSwordsOot": {
+  "default": "goron",
+  "type": "enum",
+  "values": [
+   [
+    "separate",
+    "Separate"
+   ],
+   [
+    "goron",
+    "Progressive Knife and Biggoron"
+   ],
+   [
+    "progressive",
+    "Progressive"
+   ]
+  ]
+ },
+ "rainbowBridge": {
+  "default": "medallions",
+  "type": "enum",
+  "values": [
+   [
+    "open",
+    "Open"
+   ],
+   [
+    "vanilla",
+    "Vanilla"
+   ],
+   [
+    "medallions",
+    "Medallions"
+   ],
+   [
+    "custom",
+    "Custom"
+   ]
+  ]
+ },
+ "regionState": {
+  "default": "dungeonBeaten",
+  "type": "enum",
+  "values": [
+   [
+    "dungeonBeaten",
+    "Dungeon Beaten"
+   ],
+   [
+    "bossBeaten",
+    "Boss Beaten"
+   ],
+   [
+    "reward",
+    "Rewards"
+   ],
+   [
+    "free",
+    "Free"
+   ]
+  ]
+ },
+ "restoreBrokenActors": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "rupeeScaling": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "rustyKeysMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "rustyKeysOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "scalesMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "scrubShuffleMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "scrubShuffleOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shadowFastBoat": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedBombBags": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedBombchu": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedBoomerang": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedBootsHover": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedBootsIron": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedBottles": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedBows": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedGFS": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedHammer": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedHealth": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedHookshot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedLens": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedMagic": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedMagicArrowFire": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedMagicArrowIce": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedMagicArrowLight": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedMaskBlast": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedMaskBunny": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedMaskGerudo": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedMaskGoron": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedMaskKamaro": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedMaskKeaton": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedMaskSkull": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedMaskSpooky": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedMaskStone": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedMaskTruth": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedMaskZora": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedNutsSticks": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedOcarina": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedOcarinaButtons": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedPlatinumToken": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedPowderKeg": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedScales": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedShields": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedShovel": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSkeletonKey": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSlingshot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSongAwakening": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSongBolero": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSongElegy": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSongEpona": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSongGoron": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSongHealing": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSongMinuet": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSongNocturne": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSongOrder": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSongPrelude": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSongRequiem": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSongSarias": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSongSerenade": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSongSoaring": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSongStorms": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSongSun": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSongTime": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSongZeldaLullaby": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSongZora": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSoulsAnimal": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSoulsEnemy": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSoulsMisc": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSoulsNpc": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSpellFire": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSpellLove": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSpellWind": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSpinUpgrade": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedStoneAgony": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedStrength": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedSwords": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedTunicGoron": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedTunicZora": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sharedWallets": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shopShuffleMm": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "full",
+    "Full"
+   ]
+  ]
+ },
+ "shopShuffleOot": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "full",
+    "Full"
+   ]
+  ]
+ },
+ "shortHookshotMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shovelMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shovelOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleBarrelsMm": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "all",
+    "All"
+   ],
+   [
+    "overworld",
+    "Overworld"
+   ],
+   [
+    "dungeons",
+    "Dungeons only"
+   ]
+  ]
+ },
+ "shuffleBouldersMm": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "all",
+    "All"
+   ],
+   [
+    "overworld",
+    "Overworld"
+   ],
+   [
+    "dungeons",
+    "Dungeons only"
+   ]
+  ]
+ },
+ "shuffleBouldersOot": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "all",
+    "All"
+   ],
+   [
+    "overworld",
+    "Overworld"
+   ],
+   [
+    "dungeons",
+    "Dungeons only"
+   ]
+  ]
+ },
+ "shuffleBushMm": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "all",
+    "All"
+   ],
+   [
+    "overworld",
+    "Overworld"
+   ],
+   [
+    "dungeons",
+    "Dungeons only"
+   ]
+  ]
+ },
+ "shuffleBushOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleButterfliesMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleButterfliesOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleCratesMm": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "all",
+    "All"
+   ],
+   [
+    "overworld",
+    "Overworld"
+   ],
+   [
+    "dungeons",
+    "Dungeons only"
+   ]
+  ]
+ },
+ "shuffleCratesOot": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "all",
+    "All"
+   ],
+   [
+    "overworld",
+    "Overworld"
+   ],
+   [
+    "dungeons",
+    "Dungeons only"
+   ]
+  ]
+ },
+ "shuffleFreeHeartsMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleFreeHeartsOot": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "all",
+    "All"
+   ],
+   [
+    "overworld",
+    "Overworld"
+   ],
+   [
+    "dungeons",
+    "Dungeons only"
+   ]
+  ]
+ },
+ "shuffleFreeRupeesMm": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "all",
+    "All"
+   ],
+   [
+    "overworld",
+    "Overworld"
+   ],
+   [
+    "dungeons",
+    "Dungeons only"
+   ]
+  ]
+ },
+ "shuffleFreeRupeesOot": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "all",
+    "All"
+   ],
+   [
+    "overworld",
+    "Overworld"
+   ],
+   [
+    "dungeons",
+    "Dungeons only"
+   ]
+  ]
+ },
+ "shuffleFrogsRupeesOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleGerudoCard": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleGossipBigFairiesMm": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "all",
+    "All"
+   ],
+   [
+    "overworld",
+    "Overworld"
+   ],
+   [
+    "dungeons",
+    "Dungeons only"
+   ]
+  ]
+ },
+ "shuffleGossipBigFairiesOot": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "all",
+    "All"
+   ],
+   [
+    "overworld",
+    "Overworld"
+   ],
+   [
+    "dungeons",
+    "Dungeons only"
+   ]
+  ]
+ },
+ "shuffleGossipFairiesMm": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "all",
+    "All"
+   ],
+   [
+    "overworld",
+    "Overworld"
+   ],
+   [
+    "dungeons",
+    "Dungeons only"
+   ]
+  ]
+ },
+ "shuffleGossipFairiesOot": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "all",
+    "All"
+   ],
+   [
+    "overworld",
+    "Overworld"
+   ],
+   [
+    "dungeons",
+    "Dungeons only"
+   ]
+  ]
+ },
+ "shuffleGrassMm": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "all",
+    "All"
+   ],
+   [
+    "overworld",
+    "Overworld"
+   ],
+   [
+    "dungeons",
+    "Dungeons only"
+   ]
+  ]
+ },
+ "shuffleGrassOot": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "all",
+    "All"
+   ],
+   [
+    "overworld",
+    "Overworld"
+   ],
+   [
+    "dungeons",
+    "Dungeons only"
+   ]
+  ]
+ },
+ "shuffleHivesMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleHivesOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleIciclesMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleIciclesOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleLotteryMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleMaskTrades": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleMasterSword": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleMerchantsMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleMerchantsOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleOcarinasOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shufflePotsMm": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "all",
+    "All"
+   ],
+   [
+    "overworld",
+    "Overworld"
+   ],
+   [
+    "dungeons",
+    "Dungeons only"
+   ]
+  ]
+ },
+ "shufflePotsOot": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "all",
+    "All"
+   ],
+   [
+    "overworld",
+    "Overworld"
+   ],
+   [
+    "dungeons",
+    "Dungeons only"
+   ]
+  ]
+ },
+ "shuffleRedBouldersMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleRedBouldersOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleRedIceOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleRocksMm": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "all",
+    "All"
+   ],
+   [
+    "overworld",
+    "Overworld"
+   ],
+   [
+    "dungeons",
+    "Dungeons only"
+   ]
+  ]
+ },
+ "shuffleRocksOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleSilverBouldersOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleSkulltulaFinalReward": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleSnowballsMm": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "all",
+    "All"
+   ],
+   [
+    "overworld",
+    "Overworld"
+   ],
+   [
+    "dungeons",
+    "Dungeons only"
+   ]
+  ]
+ },
+ "shuffleSoilMm": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "all",
+    "All"
+   ],
+   [
+    "overworld",
+    "Overworld"
+   ],
+   [
+    "dungeons",
+    "Dungeons only"
+   ]
+  ]
+ },
+ "shuffleSoilOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleTFGrassMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleTreesMm": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "all",
+    "All"
+   ],
+   [
+    "overworld",
+    "Overworld"
+   ],
+   [
+    "dungeons",
+    "Dungeons only"
+   ]
+  ]
+ },
+ "shuffleTreesOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleWonderItemsMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "shuffleWonderItemsOot": {
+  "default": "none",
+  "type": "enum",
+  "values": [
+   [
+    "none",
+    "None"
+   ],
+   [
+    "all",
+    "All"
+   ],
+   [
+    "overworld",
+    "Overworld"
+   ],
+   [
+    "dungeons",
+    "Dungeons only"
+   ]
+  ]
+ },
+ "silverRupeePouches": {
+  "default": "none",
+  "type": "set",
+  "values": [
+   [
+    "DC",
+    "Dodongo"
+   ],
+   [
+    "BotW",
+    "Bottom of the Well"
+   ],
+   [
+    "Spirit_Child",
+    "Spirit Temple (Child)"
+   ],
+   [
+    "Spirit_Sun",
+    "Spirit Temple (Sun)"
+   ],
+   [
+    "Spirit_Boulders",
+    "Spirit Temple (Boulders)"
+   ],
+   [
+    "Spirit_Lobby",
+    "Spirit Temple (Lobby)"
+   ],
+   [
+    "Spirit_Adult",
+    "Spirit Temple (Adult)"
+   ],
+   [
+    "Shadow_Scythe",
+    "Shadow Temple (Scythe)"
+   ],
+   [
+    "Shadow_Pit",
+    "Shadow Temple (Pit)"
+   ],
+   [
+    "Shadow_Spikes",
+    "Shadow Temple (Spikes)"
+   ],
+   [
+    "Shadow_Blades",
+    "Shadow Temple (Blades)"
+   ],
+   [
+    "IC_Scythe",
+    "Ice Cavern (Scythe)"
+   ],
+   [
+    "IC_Block",
+    "Ice Cavern (Block)"
+   ],
+   [
+    "GTG_Slopes",
+    "GTG (Slopes)"
+   ],
+   [
+    "GTG_Lava",
+    "GTG (Lava)"
+   ],
+   [
+    "GTG_Water",
+    "GTG (Water)"
+   ],
+   [
+    "Ganon_Light",
+    "Ganon"
+   ],
+   [
+    "Ganon_Forest",
+    "Ganon"
+   ],
+   [
+    "Ganon_Fire",
+    "Ganon"
+   ],
+   [
+    "Ganon_Water",
+    "Ganon"
+   ],
+   [
+    "Ganon_Shadow",
+    "Ganon"
+   ],
+   [
+    "Ganon_Spirit",
+    "Ganon"
+   ]
+  ]
+ },
+ "silverRupeeShuffle": {
+  "default": "vanilla",
+  "type": "enum",
+  "values": [
+   [
+    "vanilla",
+    "Vanilla"
+   ],
+   [
+    "ownDungeon",
+    "Own Dungeon"
+   ],
+   [
+    "anywhere",
+    "Anywhere"
+   ]
+  ]
+ },
+ "skeletonKeyMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "skeletonKeyOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "skipZelda": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "skullMaskMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "slingshotMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "smallKeyRingMm": {
+  "default": "none",
+  "type": "set",
+  "values": [
+   [
+    "WF",
+    "Woodfall Temple"
+   ],
+   [
+    "SH",
+    "Snowhead Temple"
+   ],
+   [
+    "GB",
+    "Great Bay Temple"
+   ],
+   [
+    "ST",
+    "Stone Tower Temple"
+   ]
+  ]
+ },
+ "smallKeyRingOot": {
+  "default": "none",
+  "type": "set",
+  "values": [
+   [
+    "Forest",
+    "Forest Temple"
+   ],
+   [
+    "Fire",
+    "Fire Temple"
+   ],
+   [
+    "Water",
+    "Water Temple"
+   ],
+   [
+    "Shadow",
+    "Shadow Temple"
+   ],
+   [
+    "Spirit",
+    "Spirit Temple"
+   ],
+   [
+    "BotW",
+    "Bottom of the Well"
+   ],
+   [
+    "GTG",
+    "Gerudo Training Grounds"
+   ],
+   [
+    "Ganon",
+    "Ganon"
+   ],
+   [
+    "GF",
+    "Hideout"
+   ],
+   [
+    "TCG",
+    "Chest Game"
+   ]
+  ]
+ },
+ "smallKeyShuffleChestGame": {
+  "default": "vanilla",
+  "type": "enum",
+  "values": [
+   [
+    "vanilla",
+    "Vanilla"
+   ],
+   [
+    "ownDungeon",
+    "Own Minigame"
+   ],
+   [
+    "anywhere",
+    "Anywhere"
+   ]
+  ]
+ },
+ "smallKeyShuffleHideout": {
+  "default": "ownDungeon",
+  "type": "enum",
+  "values": [
+   [
+    "vanilla",
+    "Vanilla"
+   ],
+   [
+    "ownDungeon",
+    "Own Dungeon"
+   ],
+   [
+    "anywhere",
+    "Anywhere"
+   ]
+  ]
+ },
+ "smallKeyShuffleMm": {
+  "default": "ownDungeon",
+  "type": "enum",
+  "values": [
+   [
+    "ownDungeon",
+    "Own Dungeon"
+   ],
+   [
+    "anywhere",
+    "Anywhere"
+   ],
+   [
+    "removed",
+    "Removed"
+   ],
+   [
+    "vanilla",
+    "Vanilla"
+   ]
+  ]
+ },
+ "smallKeyShuffleOot": {
+  "default": "ownDungeon",
+  "type": "enum",
+  "values": [
+   [
+    "ownDungeon",
+    "Own Dungeon"
+   ],
+   [
+    "anywhere",
+    "Anywhere"
+   ],
+   [
+    "removed",
+    "Removed"
+   ],
+   [
+    "vanilla",
+    "Vanilla"
+   ]
+  ]
+ },
+ "songAwakeningOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "songBoleroMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "songEventsShuffleMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "songEventsShuffleOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "songGoronOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "songHealingOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "songMinuetMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "songNocturneMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "songOfDoubleTimeOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "songOrderOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "songPreludeMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "songRequiemMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "songSariasMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "songSerenadeMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "songSoaringOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "songSunMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "songZeldaLullabyMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "songZoraOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "songs": {
+  "default": "songLocations",
+  "type": "enum",
+  "values": [
+   [
+    "songLocations",
+    "Song Locations"
+   ],
+   [
+    "anywhere",
+    "Anywhere"
+   ],
+   [
+    "notes",
+    "Notes"
+   ]
+  ]
+ },
+ "soulsAnimalMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "soulsAnimalOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "soulsBossMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "soulsBossOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "soulsEnemyMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "soulsEnemyOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "soulsMiscMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "soulsMiscOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "soulsNpcMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "soulsNpcOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "spellFireMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "spellLoveMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "spellWindMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "spinUpgradeOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "spookyMaskMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "startingAgeMm": {
+  "default": "child",
+  "type": "enum",
+  "values": [
+   [
+    "child",
+    "Child"
+   ],
+   [
+    "adult",
+    "Adult"
+   ],
+   [
+    "random",
+    "Random"
+   ]
+  ]
+ },
+ "startingAgeOot": {
+  "default": "child",
+  "type": "enum",
+  "values": [
+   [
+    "child",
+    "Child"
+   ],
+   [
+    "adult",
+    "Adult"
+   ],
+   [
+    "random",
+    "Random"
+   ]
+  ]
+ },
+ "sticksNutsUpgradesInitial": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sticksNutsUpgradesMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "stoneAgonyMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "stoneMaskOot": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "strayFairyChestShuffle": {
+  "default": "ownDungeon",
+  "type": "enum",
+  "values": [
+   [
+    "starting",
+    "Starting"
+   ],
+   [
+    "vanilla",
+    "Vanilla"
+   ],
+   [
+    "ownDungeon",
+    "Own Dungeon"
+   ],
+   [
+    "anywhere",
+    "Anywhere"
+   ]
+  ]
+ },
+ "strayFairyOtherShuffle": {
+  "default": "vanilla",
+  "type": "enum",
+  "values": [
+   [
+    "removed",
+    "Removed"
+   ],
+   [
+    "starting",
+    "Starting"
+   ],
+   [
+    "vanilla",
+    "Vanilla"
+   ],
+   [
+    "ownDungeon",
+    "Own Dungeon"
+   ],
+   [
+    "anywhere",
+    "Anywhere"
+   ]
+  ]
+ },
+ "strayFairyRewardCount": {
+  "default": null,
+  "type": "number",
+  "values": []
+ },
+ "strengthMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "sunlightArrows": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "teams": {
+  "default": null,
+  "type": "number",
+  "values": []
+ },
+ "timeTravelSword": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "tingleShuffle": {
+  "default": "vanilla",
+  "type": "enum",
+  "values": [
+   [
+    "vanilla",
+    "Vanilla"
+   ],
+   [
+    "anywhere",
+    "Anywhere"
+   ],
+   [
+    "starting",
+    "Starting Items"
+   ],
+   [
+    "removed",
+    "Removed"
+   ]
+  ]
+ },
+ "townFairyShuffle": {
+  "default": "vanilla",
+  "type": "enum",
+  "values": [
+   [
+    "vanilla",
+    "Vanilla"
+   ],
+   [
+    "anywhere",
+    "Anywhere"
+   ]
+  ]
+ },
+ "transcendentFairy": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "trapAntiMagic": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "trapDrain": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "trapFire": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "trapIce": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "trapKnockback": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "trapRupoor": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "trapShock": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "trapsLink": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "trapsQuantity": {
+  "default": "small",
+  "type": "enum",
+  "values": [
+   [
+    "small",
+    "Small"
+   ],
+   [
+    "medium",
+    "Medium"
+   ],
+   [
+    "large",
+    "Large"
+   ],
+   [
+    "verylarge",
+    "Very Large"
+   ],
+   [
+    "extreme",
+    "Extreme"
+   ],
+   [
+    "insane",
+    "Insane"
+   ],
+   [
+    "obnoxious",
+    "Obnoxious"
+   ],
+   [
+    "absurd",
+    "Absurd"
+   ]
+  ]
+ },
+ "triforceGoal": {
+  "default": null,
+  "type": "number",
+  "values": []
+ },
+ "triforcePieces": {
+  "default": null,
+  "type": "number",
+  "values": []
+ },
+ "triforceSharedMulti": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "tunicGoronMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "tunicZoraMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "voidWarpMm": {
+  "default": null,
+  "type": "boolean",
+  "values": []
+ },
+ "zoraKing": {
+  "default": "vanilla",
+  "type": "enum",
+  "values": [
+   [
+    "vanilla",
+    "Vanilla"
+   ],
+   [
+    "adult",
+    "Open (Adult Only)"
+   ],
+   [
+    "open",
+    "Open"
+   ]
+  ]
+ }
+}

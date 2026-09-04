@@ -422,6 +422,7 @@ impl TrackerApp {
         self.mq_scenes.clear();
         self.rom_from_spoiler = false;
         self.uses_legacy_xflags = false;
+        tracking::set_uses_legacy(false);
         // Live exploration (entrances / links / last picks).
         self.visited_entrances.clear();
         self.out_links.clear();
@@ -950,6 +951,7 @@ impl TrackerApp {
                 self.rom = sp.rom;
                 self.rom_from_spoiler = true;
                 self.uses_legacy_xflags = sp.uses_legacy_xflags;
+                tracking::set_uses_legacy(sp.uses_legacy_xflags);
                 self.mq_scenes = sp.mq_scenes;
                 let num_worlds = sp.worlds.len().max(1);
                 // Re-fill each world's placements, PRESERVING the collected / forced

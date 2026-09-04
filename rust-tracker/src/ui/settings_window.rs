@@ -1,7 +1,9 @@
-//! The ROM Settings window: a left category nav + a grouped, paged editor,
-//! mirroring the Qt SettingsTab (left QListWidget + QStackedWidget of pages).
-//! Each page is a stack of titled group "bubbles"; every row is
-//! `badge | name | editor`, exactly like the Qt `AddParamRow` grid.
+//! The ROM Settings window: a left category nav + a paged editor.
+//! The filter pages (Keys & Dungeons … Unique & Rules) render as a 2-column
+//! dashboard of group "cards" — each card carries a shuffled-count meter, rows of
+//! `[state dot] name | badge | value`, and bulk Shuffle-all / Reset actions, so a
+//! group's state reads at a glance. The item pages (General, Progressive, Shared,
+//! Songs, World, Layouts) keep the plainer Qt-style titled `settings_group` bubbles.
 use eframe::egui::{self, Color32, RichText};
 
 use crate::*;
@@ -26,17 +28,58 @@ struct Group {
 const OOT_BLUE: Color32 = Color32::from_rgb(74, 158, 219);
 const MM_PURPLE: Color32 = Color32::from_rgb(155, 93, 229);
 
-/// The left-nav categories (index == `self.settings_nav`), in Qt page order.
+// Card-dashboard state palette: a check type that is placed somewhere (so the tracker
+// shows it) reads soft green; left at Vanilla it is muted grey; Removed is soft red.
+const STATE_ON: Color32 = Color32::from_rgb(0x6b, 0xd0, 0x8a);
+const STATE_OFF: Color32 = Color32::from_rgb(0xd9, 0x6a, 0x80);
+
+/// A shuffle value that actually places the check somewhere (i.e. the tracker shows it).
+fn is_shuffled(v: data::ShuffleSetting) -> bool {
+    use data::ShuffleSetting as S;
+    matches!(v, S::all | S::dungeons | S::overworld | S::starting)
+}
+
+/// The state colour for a value: green when shuffled, red when removed, muted otherwise.
+fn state_color(v: data::ShuffleSetting) -> Color32 {
+    use data::ShuffleSetting as S;
+    match v {
+        S::removed => STATE_OFF,
+        S::vanilla => TEXT_MUTED,
+        _ => STATE_ON,
+    }
+}
+
+/// A thin "N shuffled / total" progress bar drawn under a group card's header.
+fn meter(ui: &mut egui::Ui, frac: f32) {
+    let w = ui.available_width();
+    let (rect, _) = ui.allocate_exact_size(egui::vec2(w, 4.0), egui::Sense::hover());
+    let p = ui.painter();
+    p.rect_filled(rect, 2.0, BG_INPUT);
+    let frac = frac.clamp(0.0, 1.0);
+    if frac > 0.0 {
+        let mut fill = rect;
+        fill.set_width(w * frac);
+        p.rect_filled(fill, 2.0, STATE_ON);
+    }
+}
+
+/// The left-nav categories (index == `self.settings_nav`). The four "world-check"
+/// filter pages (Breakables / Fairies & Gossips / Collectibles / Unique & Rules)
+/// replace the old catch-all "Special" page so every check type has an obvious home.
 const CATEGORIES: &[&str] = &[
     "General",
     "Keys & Dungeons",
     "NPC & Shops",
     "Breakables",
-    "Special",
+    "Fairies & Gossips",
+    "Collectibles",
+    "Unique & Rules",
     "Progressive Items",
     "Shared Items",
     "Songs",
     "World Items",
+    "Starting & Tricks",
+    "Logic / Access",
     "MQ / JP Layouts",
 ];
 
@@ -122,47 +165,63 @@ const BREAK_GROUPS: &[Group] = &[
         ("shuffleRedIceOot", Badge::Oot),
         ("shuffleSnowballsMm", Badge::Mm),
     ] },
-    Group { title: "Misc", rows: &[
-        ("shuffleWonderItemsOot", Badge::Oot),
-        ("shuffleWonderItemsMm", Badge::Mm),
-        ("shuffleButterfliesOot", Badge::Oot),
-        ("shuffleButterfliesMm", Badge::Mm),
-    ] },
 ];
 
-const SPECIAL_GROUPS: &[Group] = &[
-    Group { title: "Tokens & Souls", rows: &[
-        ("goldSkulltulaTokens", Badge::Oot),
-        ("housesSkulltulaTokens", Badge::Mm),
-    ] },
-    Group { title: "Fairies", rows: &[
+const FAIRIES_GROUPS: &[Group] = &[
+    Group { title: "Fountain Fairies", rows: &[
         ("fairyFountainFairyShuffleOot", Badge::Oot),
         ("fairyFountainFairyShuffleMm", Badge::Mm),
+    ] },
+    Group { title: "Fairy Spots", rows: &[
         ("fairySpotShuffleOot", Badge::Oot),
+    ] },
+    Group { title: "Gossip Stones", rows: &[
+        ("shuffleGossipFairiesOot", Badge::Oot),
+        ("shuffleGossipBigFairiesOot", Badge::Oot),
+        ("shuffleGossipFairiesMm", Badge::Mm),
+        ("shuffleGossipBigFairiesMm", Badge::Mm),
+    ] },
+    Group { title: "Stray Fairies", rows: &[
         ("townFairyShuffle", Badge::Mm),
         ("strayFairyChestShuffle", Badge::Mm),
         ("strayFairyOtherShuffle", Badge::Mm),
     ] },
+];
+
+const COLLECTIBLES_GROUPS: &[Group] = &[
     Group { title: "Freestanding", rows: &[
         ("shuffleFreeRupeesOot", Badge::Oot),
         ("shuffleFreeRupeesMm", Badge::Mm),
         ("shuffleFreeHeartsOot", Badge::Oot),
         ("shuffleFreeHeartsMm", Badge::Mm),
     ] },
+    Group { title: "Wonder Items & Bugs", rows: &[
+        ("shuffleWonderItemsOot", Badge::Oot),
+        ("shuffleWonderItemsMm", Badge::Mm),
+        ("shuffleButterfliesOot", Badge::Oot),
+        ("shuffleButterfliesMm", Badge::Mm),
+    ] },
+    Group { title: "Tokens & Souls", rows: &[
+        ("goldSkulltulaTokens", Badge::Oot),
+        ("housesSkulltulaTokens", Badge::Mm),
+    ] },
+];
+
+const RULES_GROUPS: &[Group] = &[
     Group { title: "Unique Items", rows: &[
         ("songs", Badge::None),
         ("shuffleOcarinasOot", Badge::Oot),
         ("shuffleMasterSword", Badge::Oot),
         ("shuffleGerudoCard", Badge::Oot),
     ] },
-    Group { title: "Misc", rows: &[
-        ("skipZelda", Badge::Oot),
-        ("agelessStrength", Badge::Oot),
-        ("restoreBrokenActors", Badge::None),
-    ] },
     Group { title: "Cross-Games Warps", rows: &[
         ("crossWarpOot", Badge::Oot),
         ("crossWarpMm", Badge::Mm),
+    ] },
+    Group { title: "Game Rules", rows: &[
+        ("skipZelda", Badge::Oot),
+        ("agelessStrength", Badge::Oot),
+        ("restoreBrokenActors", Badge::None),
     ] },
 ];
 
@@ -209,6 +268,52 @@ fn find_meta(key: &str) -> Option<&'static data::SettingMeta> {
         .iter()
         .chain(data::ITEM_SETTINGS.iter())
         .find(|m| m.key == key)
+}
+
+/// The English name of an item id (mirror of `net_item_name`'s dense-then-linear
+/// lookup over `data::ITEMS`). Used to label spoiler-derived starting items.
+fn item_name_by_id(id: u32) -> Option<&'static str> {
+    let items = crate::data::ITEMS;
+    (id as usize)
+        .checked_sub(1)
+        .and_then(|i| items.get(i))
+        .filter(|d| d.id == id)
+        .or_else(|| items.iter().find(|d| d.id == id))
+        .map(|d| d.name)
+}
+
+/// The OoTMM display name of a trick id (reverse of `data::TRICK_NAME_TO_ID`).
+fn trick_display_name(id: &str) -> Option<&'static str> {
+    crate::data::TRICK_NAME_TO_ID
+        .iter()
+        .find(|(_, tid)| *tid == id)
+        .map(|(name, _)| *name)
+}
+
+/// Whether a setting key also drives the reachability logic (it is one of the compiled
+/// `SETTING_KEYS`). A filter / item setting that is also a logic key must mirror its edit
+/// into `raw_settings`, so the single control feeds both the map filter and the solver.
+fn is_logic_key(key: &str) -> bool {
+    crate::data::SETTING_KEYS.contains(&key)
+}
+
+/// The selected members of a set setting's raw value (comma / whitespace separated),
+/// dropping the empty-set sentinel `none`.
+fn set_members(s: &str) -> impl Iterator<Item = &str> {
+    s.split(|c: char| c == ',' || c.is_whitespace())
+        .filter(|t| !t.is_empty() && *t != "none")
+}
+
+/// The `Special Conditions` block name for a win-condition setting (its `custom`
+/// threshold lives there): `rainbowBridge` -> `BRIDGE`, etc. `None` if it has none.
+fn special_name_for(key: &str) -> Option<&'static str> {
+    Some(match key {
+        "rainbowBridge" => "BRIDGE",
+        "moon" => "MOON",
+        "lacs" => "LACS",
+        "ganonBossKey" => "GANON_BK",
+        _ => return None,
+    })
 }
 
 /// A small coloured "OoT" / "MM" chip in the badge column (Qt `MakeGameBadge`).
@@ -339,51 +444,281 @@ impl TrackerApp {
             1 => self.groups_page(ui, KEYS_GROUPS),
             2 => self.groups_page(ui, NPC_GROUPS),
             3 => self.groups_page(ui, BREAK_GROUPS),
-            4 => self.groups_page(ui, SPECIAL_GROUPS),
-            5 => self.page_progressive(ui),
-            6 => self.page_shared(ui),
-            7 => self.page_songs(ui),
-            8 => self.page_world(ui),
-            9 => self.page_layouts(ui),
+            4 => self.groups_page(ui, FAIRIES_GROUPS),
+            5 => self.groups_page(ui, COLLECTIBLES_GROUPS),
+            6 => self.groups_page(ui, RULES_GROUPS),
+            7 => self.page_progressive(ui),
+            8 => self.page_shared(ui),
+            9 => self.page_songs(ui),
+            10 => self.page_world(ui),
+            11 => self.page_starting_tricks(ui),
+            12 => self.page_access(ui),
+            13 => self.page_layouts(ui),
             _ => {}
         }
     }
 
-    /// A page built entirely from static parameter groups.
+    /// A filter page as a 2-column dashboard of group "cards" (the Option C layout):
+    /// each card shows a shuffled-count meter and bulk Shuffle-all / Reset actions, so
+    /// the state of a whole group reads at a glance and many rows flip in one click.
     fn groups_page(&mut self, ui: &mut egui::Ui, groups: &'static [Group]) {
-        for (gi, g) in groups.iter().enumerate() {
-            let title = self.i18n.tr_settings(g.title).to_owned();
-            settings_group(ui, gi, &title, |ui| {
-                for &(key, badge) in g.rows {
-                    self.param_row(ui, key, badge);
-                }
-            });
-        }
+        ui.columns(2, |cols| {
+            for (gi, g) in groups.iter().enumerate() {
+                self.group_card(&mut cols[gi % 2], g);
+            }
+        });
     }
 
-    /// One parameter row: badge, translated name, and a shuffle / boolean combo
-    /// (the editor mirrors the current Rust settings — a combo for every value).
-    fn param_row(&mut self, ui: &mut egui::Ui, key: &'static str, badge: Badge) {
+    /// One group card: header (title + `shuffled / total`), a fill meter, the rows,
+    /// then the bulk actions.
+    fn group_card(&mut self, ui: &mut egui::Ui, g: &'static Group) {
+        let mut total = 0usize;
+        let mut shuffled = 0usize;
+        for &(key, _) in g.rows {
+            if find_meta(key).is_some() {
+                total += 1;
+                if is_shuffled(self.rom_settings.value(key)) {
+                    shuffled += 1;
+                }
+            }
+        }
+        egui::Frame::group(ui.style())
+            .fill(BG_PANEL)
+            .stroke(egui::Stroke::new(1.0_f32, BORDER))
+            .rounding(8.0)
+            .inner_margin(egui::Margin::symmetric(12.0, 10.0))
+            .show(ui, |ui| {
+                ui.set_width(ui.available_width());
+                ui.horizontal(|ui| {
+                    ui.label(RichText::new(self.i18n.tr_settings(g.title)).strong().color(ACCENT));
+                    ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
+                        let c = if shuffled > 0 { STATE_ON } else { TEXT_MUTED };
+                        ui.label(RichText::new(format!("{shuffled} / {total}")).color(c).size(11.0));
+                    });
+                });
+                ui.add_space(6.0);
+                meter(ui, shuffled as f32 / total.max(1) as f32);
+                ui.add_space(8.0);
+                for &(key, badge) in g.rows {
+                    self.card_row(ui, key, badge);
+                }
+                ui.add_space(8.0);
+                ui.horizontal(|ui| {
+                    if ui.button(self.i18n.tr_settings("Shuffle all")).clicked() {
+                        for &(key, _) in g.rows {
+                            if find_meta(key).is_some() {
+                                self.rom_settings.set_value(key, data::ShuffleSetting::all);
+                            }
+                        }
+                    }
+                    if ui.button(self.i18n.tr_settings("Reset")).clicked() {
+                        for &(key, _) in g.rows {
+                            if let Some(m) = find_meta(key) {
+                                self.rom_settings.set_value(key, m.default);
+                            }
+                        }
+                    }
+                });
+            });
+        ui.add_space(10.0);
+    }
+
+    /// One card row: `[state dot] name … [badge] [value combo]`, the dot and the combo
+    /// text both coloured by the current state so the row's meaning is scannable. The
+    /// combo offers this parameter's REAL OoTMM options (`m.options`) when known, so a
+    /// key shows "Own Dungeon / Anywhere / …" and a breakable "None / All / Overworld /
+    /// Dungeons"; only settings OoTMM has no option list for fall back to the generic set.
+    fn card_row(&mut self, ui: &mut egui::Ui, key: &'static str, badge: Badge) {
         use data::ParamType as PT;
         let Some(m) = find_meta(key) else { return };
-        game_badge(ui, badge);
-        ui.label(self.i18n.tr_settings(m.name));
         let cur = self.rom_settings.value(key);
-        let opts: &[data::ShuffleSetting] = match m.type_ {
-            PT::shuffle => &SHUFFLE_OPTIONS,
-            _ => &BOOL_OPTIONS,
-        };
-        egui::ComboBox::from_id_salt(key)
-            .width(120.0)
-            .selected_text(shuffle_label(&self.i18n, cur))
-            .show_ui(ui, |ui| {
-                for &opt in opts {
-                    if ui.selectable_label(cur == opt, shuffle_label(&self.i18n, opt)).clicked() {
-                        self.rom_settings.set_value(key, opt);
+        ui.horizontal(|ui| {
+            ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
+                let combo = egui::ComboBox::from_id_salt(key).width(118.0);
+                if m.options.is_empty() {
+                    // No OoTMM option list (a handful of tracker-only keys): generic set.
+                    let opts: &[data::ShuffleSetting] = match m.type_ {
+                        PT::shuffle => &SHUFFLE_OPTIONS,
+                        _ => &BOOL_OPTIONS,
+                    };
+                    combo
+                        .selected_text(RichText::new(shuffle_label(&self.i18n, cur)).color(state_color(cur)))
+                        .show_ui(ui, |ui| {
+                            for &opt in opts {
+                                if ui.selectable_label(cur == opt, shuffle_label(&self.i18n, opt)).clicked() {
+                                    self.rom_settings.set_value(key, opt);
+                                    // A boolean setting that also drives the logic (e.g.
+                                    // skipZelda) mirrors on/off into raw_settings.
+                                    if m.type_ == PT::boolean && is_logic_key(key) {
+                                        let raw = if opt == data::ShuffleSetting::all { "true" } else { "false" };
+                                        self.rom_settings.raw_settings.insert(key.to_string(), raw.to_string());
+                                    }
+                                }
+                            }
+                        });
+                } else {
+                    // For a logic setting the exact raw value (from raw_settings) is the
+                    // source of truth — it disambiguates buckets that collide (ganonBossKey
+                    // `ganon` vs `anywhere` both map to `all`). Others show the bucket.
+                    let raw_cur = is_logic_key(key)
+                        .then(|| self.rom_settings.raw_settings.get(key).cloned())
+                        .flatten();
+                    let cur_label = raw_cur
+                        .as_deref()
+                        .and_then(|rc| m.options.iter().find(|o| o.value == rc))
+                        .or_else(|| m.options.iter().find(|o| crate::settings::filter_value(o.value) == cur))
+                        .map(|o| self.i18n.tr_settings(o.label))
+                        .unwrap_or_else(|| shuffle_label(&self.i18n, cur));
+                    combo
+                        .selected_text(RichText::new(cur_label).color(state_color(cur)))
+                        .show_ui(ui, |ui| {
+                            for o in m.options {
+                                let bucket = crate::settings::filter_value(o.value);
+                                let selected = match raw_cur.as_deref() {
+                                    Some(rc) => o.value == rc,
+                                    None => bucket == cur,
+                                };
+                                let lbl = RichText::new(self.i18n.tr_settings(o.label)).color(state_color(bucket));
+                                if ui.selectable_label(selected, lbl).clicked() {
+                                    self.rom_settings.set_value(key, bucket);
+                                    // Mirror the exact choice into the logic feed too.
+                                    if is_logic_key(key) {
+                                        self.rom_settings.raw_settings.insert(key.to_string(), o.value.to_string());
+                                    }
+                                }
+                            }
+                        });
+                }
+                game_badge(ui, badge);
+                // Remaining space, left-aligned: the state dot then the (truncating) name.
+                ui.with_layout(egui::Layout::left_to_right(egui::Align::Center), |ui| {
+                    let (dot, _) = ui.allocate_exact_size(egui::vec2(11.0, 11.0), egui::Sense::hover());
+                    ui.painter().circle_filled(dot.center(), 3.5, state_color(cur));
+                    ui.add(egui::Label::new(RichText::new(self.i18n.tr_settings(m.name)).size(13.0)).truncate());
+                });
+            });
+        });
+    }
+
+    /// One settings card: the same chrome as `group_card` (header + `on / total` count,
+    /// fill meter, bulk Shuffle-all / Reset). Each row is a checkbox (boolean setting) or
+    /// a combo (everything else), so an item page reads as checkboxes while a numeric
+    /// coin count keeps its combo. Built from a dynamic `rows` list so an item card can't
+    /// drift from `ITEM_SETTINGS`. An empty `rows` renders nothing.
+    fn settings_card(&mut self, ui: &mut egui::Ui, title: &'static str, rows: &[(&'static str, Badge)]) {
+        if rows.is_empty() {
+            return;
+        }
+        let mut total = 0usize;
+        let mut on = 0usize;
+        for &(key, _) in rows {
+            if find_meta(key).is_some() {
+                total += 1;
+                if is_shuffled(self.rom_settings.value(key)) {
+                    on += 1;
+                }
+            }
+        }
+        egui::Frame::group(ui.style())
+            .fill(BG_PANEL)
+            .stroke(egui::Stroke::new(1.0_f32, BORDER))
+            .rounding(8.0)
+            .inner_margin(egui::Margin::symmetric(12.0, 10.0))
+            .show(ui, |ui| {
+                ui.set_width(ui.available_width());
+                ui.horizontal(|ui| {
+                    ui.label(RichText::new(self.i18n.tr_settings(title)).strong().color(ACCENT));
+                    ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
+                        let c = if on > 0 { STATE_ON } else { TEXT_MUTED };
+                        ui.label(RichText::new(format!("{on} / {total}")).color(c).size(11.0));
+                    });
+                });
+                ui.add_space(6.0);
+                meter(ui, on as f32 / total.max(1) as f32);
+                ui.add_space(8.0);
+                for &(key, badge) in rows {
+                    match find_meta(key).map(|m| m.type_) {
+                        Some(data::ParamType::boolean) => self.bool_card_row(ui, key, badge),
+                        _ => self.card_row(ui, key, badge),
+                    }
+                }
+                ui.add_space(8.0);
+                ui.horizontal(|ui| {
+                    if ui.button(self.i18n.tr_settings("Shuffle all")).clicked() {
+                        for &(key, _) in rows {
+                            if find_meta(key).is_some() {
+                                self.rom_settings.set_value(key, data::ShuffleSetting::all);
+                            }
+                        }
+                    }
+                    if ui.button(self.i18n.tr_settings("Reset")).clicked() {
+                        for &(key, _) in rows {
+                            if let Some(m) = find_meta(key) {
+                                self.rom_settings.set_value(key, m.default);
+                            }
+                        }
+                    }
+                });
+            });
+        ui.add_space(10.0);
+    }
+
+    /// A read-only info card (same chrome, no meter or bulk actions): a header with a
+    /// count, then one muted line per entry. Used for spoiler-derived data the user
+    /// can't toggle here (starting inventory, enabled tricks / glitches).
+    fn info_card(&mut self, ui: &mut egui::Ui, title: &'static str, lines: &[String]) {
+        egui::Frame::group(ui.style())
+            .fill(BG_PANEL)
+            .stroke(egui::Stroke::new(1.0_f32, BORDER))
+            .rounding(8.0)
+            .inner_margin(egui::Margin::symmetric(12.0, 10.0))
+            .show(ui, |ui| {
+                ui.set_width(ui.available_width());
+                ui.horizontal(|ui| {
+                    ui.label(RichText::new(self.i18n.tr_settings(title)).strong().color(ACCENT));
+                    ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
+                        let c = if lines.is_empty() { TEXT_MUTED } else { STATE_ON };
+                        ui.label(RichText::new(format!("{}", lines.len())).color(c).size(11.0));
+                    });
+                });
+                ui.add_space(6.0);
+                if lines.is_empty() {
+                    ui.label(RichText::new(self.i18n.tr_settings("(load a spoiler)")).color(TEXT_MUTED).italics());
+                } else {
+                    for line in lines {
+                        ui.label(RichText::new(line).size(13.0).color(TEXT));
                     }
                 }
             });
-        ui.end_row();
+        ui.add_space(10.0);
+    }
+
+    /// One boolean card row: `[state dot] name … [badge] [checkbox]`, mirroring
+    /// `card_row` but with a checkbox (checked → `all`, unchecked → `vanilla`).
+    fn bool_card_row(&mut self, ui: &mut egui::Ui, key: &'static str, badge: Badge) {
+        let Some(m) = find_meta(key) else { return };
+        let cur = self.rom_settings.value(key);
+        ui.horizontal(|ui| {
+            ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
+                let mut on = is_shuffled(cur);
+                if ui.checkbox(&mut on, "").changed() {
+                    let v = if on { data::ShuffleSetting::all } else { data::ShuffleSetting::vanilla };
+                    self.rom_settings.set_value(key, v);
+                    // An item toggle that also drives the logic (shared / progressive
+                    // items are `SETTING_KEYS`) mirrors on/off into raw_settings.
+                    if is_logic_key(key) {
+                        let raw = if on { "true" } else { "false" };
+                        self.rom_settings.raw_settings.insert(key.to_string(), raw.to_string());
+                    }
+                }
+                game_badge(ui, badge);
+                ui.with_layout(egui::Layout::left_to_right(egui::Align::Center), |ui| {
+                    let (dot, _) = ui.allocate_exact_size(egui::vec2(11.0, 11.0), egui::Sense::hover());
+                    ui.painter().circle_filled(dot.center(), 3.5, state_color(cur));
+                    ui.add(egui::Label::new(RichText::new(self.i18n.tr_settings(m.name)).size(13.0)).truncate());
+                });
+            });
+        });
     }
 
     /// General: game / mode / goal selectors (radio rows) + the team count.
@@ -418,143 +753,437 @@ impl TrackerApp {
         });
     }
 
-    /// Progressive Items: every non-shared, non-song item setting that isn't shown
-    /// on the Songs / World Items / Keys pages (Qt `BuildProgressiveItemsPage`).
+    /// Progressive Items: every non-shared, non-song item setting that isn't shown on the
+    /// Songs / World Items / Keys pages (Qt `BuildProgressiveItemsPage`), as a card
+    /// dashboard split by kind (progressive families, souls, traps, coins, the rest).
     fn page_progressive(&mut self, ui: &mut egui::Ui) {
-        let title = self.i18n.tr_settings("Progressive Items").to_owned();
-        settings_group(ui, 0, &title, |ui| {
-            for m in data::ITEM_SETTINGS {
-                let key = m.key;
-                if key.starts_with("shared") || key.starts_with("song") || on_other_page(key) {
-                    continue;
-                }
-                self.param_row(ui, key, badge_from_suffix(key));
+        use data::ParamCategory as PC;
+        // The item settings that belong on this page (not shared, song, or another page).
+        let pick = |f: &dyn Fn(&data::SettingMeta) -> bool| -> Vec<(&'static str, Badge)> {
+            data::ITEM_SETTINGS
+                .iter()
+                .filter(|m| {
+                    !m.key.starts_with("shared")
+                        && !m.key.starts_with("song")
+                        && !on_other_page(m.key)
+                        && f(m)
+                })
+                .map(|m| (m.key, badge_from_suffix(m.key)))
+                .collect()
+        };
+        let cards: Vec<(&'static str, Vec<(&'static str, Badge)>)> = vec![
+            ("Progressive Items", pick(&|m| m.cat == PC::progressive)),
+            ("Souls", pick(&|m| m.cat == PC::souls)),
+            ("Traps", pick(&|m| m.cat == PC::standard && m.key.starts_with("trap"))),
+            ("Coins", pick(&|m| m.cat == PC::standard && m.key.starts_with("coin"))),
+            ("Other Items", pick(&|m| {
+                m.cat == PC::standard && !m.key.starts_with("trap") && !m.key.starts_with("coin")
+            })),
+        ];
+        ui.columns(2, |cols| {
+            for (i, (title, rows)) in cards.iter().enumerate() {
+                self.settings_card(&mut cols[i % 2], title, rows);
             }
         });
     }
 
-    /// Shared Items: every `shared*` item setting except the shared songs.
+    /// Shared Items: every `shared*` item setting except the shared songs, as a card
+    /// dashboard (equipment, masks, souls). OoTMM models each as a boolean → checkboxes.
     fn page_shared(&mut self, ui: &mut egui::Ui) {
-        let title = self.i18n.tr_settings("Shared Items").to_owned();
-        settings_group(ui, 0, &title, |ui| {
-            for m in data::ITEM_SETTINGS {
-                let key = m.key;
-                if !key.starts_with("shared") || key.starts_with("sharedSong") {
-                    continue;
-                }
-                self.param_row(ui, key, Badge::None);
+        let pick = |f: &dyn Fn(&data::SettingMeta) -> bool| -> Vec<(&'static str, Badge)> {
+            data::ITEM_SETTINGS
+                .iter()
+                .filter(|m| m.key.starts_with("shared") && !m.key.starts_with("sharedSong") && f(m))
+                .map(|m| (m.key, Badge::None))
+                .collect()
+        };
+        let cards: Vec<(&'static str, Vec<(&'static str, Badge)>)> = vec![
+            ("Shared Items", pick(&|m| !m.key.starts_with("sharedSouls") && !m.key.starts_with("sharedMask"))),
+            ("Shared Masks", pick(&|m| m.key.starts_with("sharedMask"))),
+            ("Shared Souls", pick(&|m| m.key.starts_with("sharedSouls"))),
+        ];
+        ui.columns(2, |cols| {
+            for (i, (title, rows)) in cards.iter().enumerate() {
+                self.settings_card(&mut cols[i % 2], title, rows);
             }
         });
     }
 
-    /// Songs: per-game songs + shared songs, in two groups (Qt `BuildSongsPage`).
+    /// Songs: per-game songs + shared songs, as two cards (checkbox rows). Rows are built
+    /// from `ITEM_SETTINGS` so the cards track the data. OoTMM models each as a boolean.
     fn page_songs(&mut self, ui: &mut egui::Ui) {
-        let songs_t = self.i18n.tr_settings("Songs").to_owned();
-        settings_group(ui, 0, &songs_t, |ui| {
-            for m in data::ITEM_SETTINGS {
-                let key = m.key;
-                if !key.starts_with("song") {
-                    continue;
-                }
-                self.param_row(ui, key, badge_from_suffix(key));
-            }
+        let per_game: Vec<(&'static str, Badge)> = data::ITEM_SETTINGS
+            .iter()
+            .filter(|m| m.key.starts_with("song"))
+            .map(|m| (m.key, badge_from_suffix(m.key)))
+            .collect();
+        let shared: Vec<(&'static str, Badge)> = data::ITEM_SETTINGS
+            .iter()
+            .filter(|m| m.key.starts_with("sharedSong"))
+            .map(|m| (m.key, Badge::None))
+            .collect();
+        ui.columns(2, |cols| {
+            self.settings_card(&mut cols[0], "Songs", &per_game);
+            self.settings_card(&mut cols[1], "Shared Songs", &shared);
         });
-        let shared_t = self.i18n.tr_settings("Shared Songs").to_owned();
-        settings_group(ui, 1, &shared_t, |ui| {
-            for m in data::ITEM_SETTINGS {
-                let key = m.key;
-                if !key.starts_with("sharedSong") {
-                    continue;
-                }
-                self.param_row(ui, key, Badge::None);
+    }
+
+    /// Starting & Tricks: read-only info cards for the spoiler-derived starting inventory
+    /// and the enabled tricks / glitches (a trick id whose `GLITCH_` prefix marks it a
+    /// glitch). These come from the loaded spoiler, not user toggles.
+    fn page_starting_tricks(&mut self, ui: &mut egui::Ui) {
+        let mut starting: Vec<String> = self
+            .rom_settings
+            .starting_item_ids
+            .iter()
+            .filter_map(|(&id, &n)| {
+                item_name_by_id(id).map(|nm| if n > 1 { format!("{nm} ×{n}") } else { nm.to_string() })
+            })
+            .collect();
+        starting.sort();
+
+        let mut tricks: Vec<String> = Vec::new();
+        let mut glitches: Vec<String> = Vec::new();
+        for &id in &self.rom_settings.enabled_trick_ids {
+            let name = trick_display_name(id).unwrap_or(id).to_string();
+            if id.starts_with("GLITCH_") {
+                glitches.push(name);
+            } else {
+                tricks.push(name);
+            }
+        }
+        tricks.sort();
+        glitches.sort();
+
+        let cards: [(&'static str, &[String]); 3] = [
+            ("Starting Items", &starting),
+            ("Tricks", &tricks),
+            ("Glitches", &glitches),
+        ];
+        ui.columns(2, |cols| {
+            for (i, (title, lines)) in cards.iter().enumerate() {
+                self.info_card(&mut cols[i % 2], title, lines);
             }
         });
     }
 
-    /// World Items: unique items + masks (params), open dungeons + the per-dungeon
-    /// key ring / silver pouch / owl editors (Qt `BuildWorldItemsPage`).
-    fn page_world(&mut self, ui: &mut egui::Ui) {
-        for (gi, g) in WORLD_PARAM_GROUPS.iter().enumerate() {
-            let title = self.i18n.tr_settings(g.title).to_owned();
-            settings_group(ui, gi, &title, |ui| {
-                for &(key, badge) in g.rows {
-                    self.param_row(ui, key, badge);
+    /// Logique / Accès: the access + win-condition settings the reachability solver
+    /// reads (open dungeons, door of time, rainbow bridge / moon / LACS …) but the
+    /// filter / item pages never exposed. Edited straight into `raw_settings` (the raw
+    /// OoTMM value string), so the solver honours a manual config with no spoiler; a
+    /// loaded spoiler overwrites them (parse_spoiler resets `raw_settings`).
+    fn page_access(&mut self, ui: &mut egui::Ui) {
+        const WIN: [&str; 4] = ["rainbowBridge", "moon", "lacs", "ganonTrials"];
+        let access: Vec<&'static data::AccessSetting> =
+            data::ACCESS_SETTINGS.iter().filter(|a| !WIN.contains(&a.key)).collect();
+        let conds: Vec<&'static data::AccessSetting> =
+            data::ACCESS_SETTINGS.iter().filter(|a| WIN.contains(&a.key)).collect();
+        ui.columns(2, |cols| {
+            self.access_card(&mut cols[0], "Open Dungeons & Access", &access);
+            self.access_card(&mut cols[1], "Win Conditions", &conds);
+        });
+    }
+
+    /// One access card: header + `active / total` count + meter, then a row per setting
+    /// (enum combo, boolean checkbox, or a set's member checkboxes). "Active" = a value
+    /// moved away from its OoTMM default (bool true / enum ≠ default / non-empty set).
+    fn access_card(&mut self, ui: &mut egui::Ui, title: &'static str, items: &[&'static data::AccessSetting]) {
+        let active = items.iter().filter(|a| self.access_active(a)).count();
+        let total = items.len();
+        egui::Frame::group(ui.style())
+            .fill(BG_PANEL)
+            .stroke(egui::Stroke::new(1.0_f32, BORDER))
+            .rounding(8.0)
+            .inner_margin(egui::Margin::symmetric(12.0, 10.0))
+            .show(ui, |ui| {
+                ui.set_width(ui.available_width());
+                ui.horizontal(|ui| {
+                    ui.label(RichText::new(self.i18n.tr_settings(title)).strong().color(ACCENT));
+                    ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
+                        let c = if active > 0 { STATE_ON } else { TEXT_MUTED };
+                        ui.label(RichText::new(format!("{active} / {total}")).color(c).size(11.0));
+                    });
+                });
+                ui.add_space(6.0);
+                meter(ui, active as f32 / total.max(1) as f32);
+                ui.add_space(8.0);
+                for &a in items {
+                    match a.kind {
+                        data::AccessKind::Bool => self.access_bool_row(ui, a),
+                        data::AccessKind::Enum => self.access_enum_row(ui, a),
+                        data::AccessKind::Set => self.access_set_block(ui, a),
+                    }
                 }
             });
+        ui.add_space(10.0);
+    }
+
+    /// The current raw value of an access setting (its OoTMM default when unset).
+    fn access_value(&self, a: &data::AccessSetting) -> String {
+        self.rom_settings
+            .raw_settings
+            .get(a.key)
+            .cloned()
+            .unwrap_or_else(|| a.default.to_string())
+    }
+
+    /// Whether a setting sits away from its default (drives the dot / active count).
+    fn access_active(&self, a: &data::AccessSetting) -> bool {
+        let cur = self.access_value(a);
+        match a.kind {
+            data::AccessKind::Bool => cur == "true",
+            data::AccessKind::Enum => cur != a.default,
+            data::AccessKind::Set => set_members(&cur).next().is_some(),
         }
+    }
 
-        // Open Dungeons: a plain Settings member, not a shuffle parameter.
-        let open_t = self.i18n.tr_settings("Open Dungeons").to_owned();
-        let fire_label = self.i18n.tr_settings("Fire Temple Open As Child").to_owned();
-        settings_group(ui, 10, &open_t, |ui| {
-            game_badge(ui, Badge::Oot);
-            ui.label(fire_label);
-            ui.checkbox(&mut self.rom_settings.fire_temple_open_as_child, "");
-            ui.end_row();
-        });
-
-        // Small Key Rings: checked => deliver a ring, unchecked => small keys.
-        let ring_t = self.i18n.tr_settings("Small Key Rings").to_owned();
-        settings_group(ui, 11, &ring_t, |ui| {
-            for r in settings::KEY_RINGS_OOT {
-                self.key_ring_row(ui, r, Badge::Oot);
-            }
-            for r in settings::KEY_RINGS_MM {
-                self.key_ring_row(ui, r, Badge::Mm);
-            }
-        });
-
-        // Silver Rupee Pouches: clusters absent from the active layout are greyed.
-        let pouch_t = self.i18n.tr_settings("Silver Rupee Pouches").to_owned();
-        settings_group(ui, 12, &pouch_t, |ui| {
-            for a in settings::SILVER_AREAS {
-                self.silver_row(ui, a);
-            }
-        });
-
-        // Pre-Activated Owl Statues.
-        let owl_t = self.i18n.tr_settings("Pre-Activated Owl Statues").to_owned();
-        settings_group(ui, 13, &owl_t, |ui| {
-            for o in settings::OWL_STATUES {
-                self.owl_row(ui, o);
-            }
+    fn access_bool_row(&mut self, ui: &mut egui::Ui, a: &'static data::AccessSetting) {
+        let on0 = self.access_value(a) == "true";
+        let label = self.i18n.tr_settings(a.name).to_owned();
+        let badge = badge_from_suffix(a.key);
+        ui.horizontal(|ui| {
+            ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
+                let mut on = on0;
+                if ui.checkbox(&mut on, "").changed() {
+                    let v = if on { "true" } else { "false" };
+                    self.rom_settings.raw_settings.insert(a.key.to_string(), v.to_string());
+                }
+                game_badge(ui, badge);
+                ui.with_layout(egui::Layout::left_to_right(egui::Align::Center), |ui| {
+                    let (dot, _) = ui.allocate_exact_size(egui::vec2(11.0, 11.0), egui::Sense::hover());
+                    ui.painter().circle_filled(dot.center(), 3.5, if on0 { STATE_ON } else { TEXT_MUTED });
+                    ui.add(egui::Label::new(RichText::new(label).size(13.0)).truncate());
+                });
+            });
         });
     }
 
-    fn key_ring_row(&mut self, ui: &mut egui::Ui, r: &settings::KeyRing, badge: Badge) {
-        game_badge(ui, badge);
-        ui.label(self.i18n.tr_settings(r.label));
-        let mut on = self.rom_settings.key_ring_on(r.ring);
-        if ui.checkbox(&mut on, "").changed() {
-            self.rom_settings.set_key_ring(r.small, r.ring, on);
+    fn access_enum_row(&mut self, ui: &mut egui::Ui, a: &'static data::AccessSetting) {
+        let cur = self.access_value(a);
+        let active = cur != a.default;
+        // A win condition set to `custom` carries a spoiler-defined token threshold;
+        // surface it so the row explains what "custom" resolves to.
+        let mut label = self.i18n.tr_settings(a.name).to_owned();
+        if cur == "custom" {
+            if let Some(c) = special_name_for(a.key).and_then(|n| self.rom_settings.special_conds.get(n)) {
+                label = format!("{label}  (≥{})", c.count);
+            }
         }
-        ui.end_row();
+        let badge = badge_from_suffix(a.key);
+        let cur_label = a
+            .options
+            .iter()
+            .find(|o| o.value == cur)
+            .map(|o| self.i18n.tr_settings(o.label).to_owned())
+            .unwrap_or_else(|| cur.clone());
+        ui.horizontal(|ui| {
+            ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
+                egui::ComboBox::from_id_salt(a.key)
+                    .width(130.0)
+                    .selected_text(RichText::new(cur_label).color(if active { STATE_ON } else { TEXT_MUTED }))
+                    .show_ui(ui, |ui| {
+                        for o in a.options {
+                            if ui.selectable_label(o.value == cur, self.i18n.tr_settings(o.label)).clicked() {
+                                self.rom_settings.raw_settings.insert(a.key.to_string(), o.value.to_string());
+                            }
+                        }
+                    });
+                game_badge(ui, badge);
+                ui.with_layout(egui::Layout::left_to_right(egui::Align::Center), |ui| {
+                    let (dot, _) = ui.allocate_exact_size(egui::vec2(11.0, 11.0), egui::Sense::hover());
+                    ui.painter().circle_filled(dot.center(), 3.5, if active { STATE_ON } else { TEXT_MUTED });
+                    ui.add(egui::Label::new(RichText::new(label).size(13.0)).truncate());
+                });
+            });
+        });
     }
 
-    fn silver_row(&mut self, ui: &mut egui::Ui, a: &settings::SilverArea) {
+    /// A set setting (open dungeons / trials): a header line then wrapped member
+    /// checkboxes. Selected members are written comma-joined (empty → `none`), which the
+    /// solver tokenises for `setting(k, member)` (see `inputs::WorldInputs`).
+    fn access_set_block(&mut self, ui: &mut egui::Ui, a: &'static data::AccessSetting) {
+        let cur = self.access_value(a);
+        let mut members: std::collections::HashSet<String> = set_members(&cur).map(str::to_string).collect();
+        let active = !members.is_empty();
+        let label = self.i18n.tr_settings(a.name).to_owned();
+        let badge = badge_from_suffix(a.key);
+        ui.horizontal(|ui| {
+            let (dot, _) = ui.allocate_exact_size(egui::vec2(11.0, 11.0), egui::Sense::hover());
+            ui.painter().circle_filled(dot.center(), 3.5, if active { STATE_ON } else { TEXT_MUTED });
+            ui.label(RichText::new(label).size(13.0).strong());
+            game_badge(ui, badge);
+            ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
+                ui.label(RichText::new(format!("{}/{}", members.len(), a.options.len())).size(11.0).color(TEXT_MUTED));
+            });
+        });
+        let mut changed = false;
+        ui.horizontal_wrapped(|ui| {
+            for o in a.options {
+                let mut on = members.contains(o.value);
+                if ui.checkbox(&mut on, self.i18n.tr_settings(o.label)).changed() {
+                    if on {
+                        members.insert(o.value.to_string());
+                    } else {
+                        members.remove(o.value);
+                    }
+                    changed = true;
+                }
+            }
+        });
+        if changed {
+            // Keep the option order, and write `none` for the empty set (OoTMM's default).
+            let sel: Vec<&str> = a.options.iter().map(|o| o.value).filter(|v| members.contains(*v)).collect();
+            let value = if sel.is_empty() { "none".to_string() } else { sel.join(",") };
+            self.rom_settings.raw_settings.insert(a.key.to_string(), value);
+        }
+        ui.add_space(6.0);
+    }
+
+    /// World Items: unique items + masks (shuffle-model cards) plus the open-dungeon,
+    /// key-ring, silver-pouch and owl editors (base-set / member / layout toggles) as
+    /// matching editor cards (Qt `BuildWorldItemsPage`).
+    fn page_world(&mut self, ui: &mut egui::Ui) {
+        // Shuffle-model item cards (unique items + masks): checkbox / combo rows.
+        ui.columns(2, |cols| {
+            for (i, g) in WORLD_PARAM_GROUPS.iter().enumerate() {
+                self.settings_card(&mut cols[i % 2], g.title, g.rows);
+            }
+        });
+
+        // Editor cards: their `on / total` counts need `&self`, so compute them before
+        // the `&mut`-borrowing columns closure. (The OoT Fire Temple "open as child" toggle
+        // now lives with the other dungeons, on the Logic / Access page's openDungeonsOot
+        // set — it drives both the map filter and the logic from there.)
+        let ring_total = settings::KEY_RINGS_OOT.len() + settings::KEY_RINGS_MM.len();
+        let ring_on = settings::KEY_RINGS_OOT
+            .iter()
+            .chain(settings::KEY_RINGS_MM.iter())
+            .filter(|r| self.rom_settings.key_ring_on(r.ring))
+            .count();
+        let silver_total = settings::SILVER_AREAS.len();
+        let silver_on = settings::SILVER_AREAS
+            .iter()
+            .filter(|a| {
+                self.rom_settings.silver_area_exists(a, &self.mq_scenes)
+                    && self.rom_settings.silver_pouch_on(a.pouch)
+            })
+            .count();
+        let owl_total = settings::OWL_STATUES.len();
+        let owl_on = settings::OWL_STATUES
+            .iter()
+            .filter(|o| self.rom_settings.owl_on(o.id))
+            .count();
+        ui.columns(2, |cols| {
+            self.editor_card(&mut cols[0], "Small Key Rings", ring_on, ring_total, |s, ui| {
+                for r in settings::KEY_RINGS_OOT {
+                    s.key_ring_card_row(ui, r, Badge::Oot);
+                }
+                for r in settings::KEY_RINGS_MM {
+                    s.key_ring_card_row(ui, r, Badge::Mm);
+                }
+            });
+            self.editor_card(&mut cols[1], "Silver Rupee Pouches", silver_on, silver_total, |s, ui| {
+                for a in settings::SILVER_AREAS {
+                    s.silver_card_row(ui, a);
+                }
+            });
+            self.editor_card(&mut cols[0], "Pre-Activated Owl Statues", owl_on, owl_total, |s, ui| {
+                for o in settings::OWL_STATUES {
+                    s.owl_card_row(ui, o);
+                }
+            });
+        });
+    }
+
+    /// Card chrome for the World-Items editors: framed panel, header with an `on / total`
+    /// count and a fill meter, then a custom `body`. (The item-shuffle groups use
+    /// `settings_card`; these edit base sets / members / layout, so they bring their own
+    /// rows and have no Shuffle-all / Reset.)
+    fn editor_card(
+        &mut self,
+        ui: &mut egui::Ui,
+        title: &'static str,
+        on: usize,
+        total: usize,
+        body: impl FnOnce(&mut Self, &mut egui::Ui),
+    ) {
+        egui::Frame::group(ui.style())
+            .fill(BG_PANEL)
+            .stroke(egui::Stroke::new(1.0_f32, BORDER))
+            .rounding(8.0)
+            .inner_margin(egui::Margin::symmetric(12.0, 10.0))
+            .show(ui, move |ui| {
+                ui.set_width(ui.available_width());
+                ui.horizontal(|ui| {
+                    ui.label(RichText::new(self.i18n.tr_settings(title)).strong().color(ACCENT));
+                    ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
+                        let c = if on > 0 { STATE_ON } else { TEXT_MUTED };
+                        ui.label(RichText::new(format!("{on} / {total}")).color(c).size(11.0));
+                    });
+                });
+                ui.add_space(6.0);
+                meter(ui, on as f32 / total.max(1) as f32);
+                ui.add_space(8.0);
+                body(self, ui);
+            });
+        ui.add_space(10.0);
+    }
+
+    /// A card row: `[state dot] name … [badge] [checkbox]` — the shared layout of the
+    /// World-Items editor rows (mirror of `bool_card_row`). `on` colours the dot / drives
+    /// the box; `enabled` greys a row whose cluster is absent from the active layout.
+    fn editor_row(
+        &mut self,
+        ui: &mut egui::Ui,
+        label: &str,
+        badge: Badge,
+        on: bool,
+        enabled: bool,
+        toggle: impl FnOnce(&mut Self, bool),
+    ) {
+        ui.horizontal(|ui| {
+            ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
+                let mut v = on;
+                if ui.add_enabled(enabled, egui::Checkbox::new(&mut v, "")).changed() {
+                    toggle(self, v);
+                }
+                game_badge(ui, badge);
+                ui.with_layout(egui::Layout::left_to_right(egui::Align::Center), |ui| {
+                    let (dot, _) = ui.allocate_exact_size(egui::vec2(11.0, 11.0), egui::Sense::hover());
+                    ui.painter().circle_filled(dot.center(), 3.5, if on { STATE_ON } else { TEXT_MUTED });
+                    let mut txt = RichText::new(label).size(13.0);
+                    if !enabled {
+                        txt = txt.weak();
+                    }
+                    ui.add(egui::Label::new(txt).truncate());
+                });
+            });
+        });
+    }
+
+    fn key_ring_card_row(&mut self, ui: &mut egui::Ui, r: &'static settings::KeyRing, badge: Badge) {
+        let on = self.rom_settings.key_ring_on(r.ring);
+        let label = self.i18n.tr_settings(r.label).to_owned();
+        self.editor_row(ui, &label, badge, on, true, |s, v| {
+            s.rom_settings.set_key_ring(r.small, r.ring, v);
+        });
+    }
+
+    fn silver_card_row(&mut self, ui: &mut egui::Ui, a: &'static settings::SilverArea) {
         let exists = self.rom_settings.silver_area_exists(a, &self.mq_scenes);
-        game_badge(ui, Badge::Oot);
+        let on = exists && self.rom_settings.silver_pouch_on(a.pouch);
         let label = self.i18n.tr_settings(a.label).to_owned();
-        if exists {
-            ui.label(label);
-        } else {
-            ui.weak(label); // cluster not present in this seed's layout
-        }
-        let mut on = exists && self.rom_settings.silver_pouch_on(a.pouch);
-        if ui.add_enabled(exists, egui::Checkbox::new(&mut on, "")).changed() {
-            self.rom_settings.set_silver_pouch(a.rupee, a.pouch, on);
-        }
-        ui.end_row();
+        self.editor_row(ui, &label, Badge::Oot, on, exists, |s, v| {
+            s.rom_settings.set_silver_pouch(a.rupee, a.pouch, v);
+        });
     }
 
-    fn owl_row(&mut self, ui: &mut egui::Ui, o: &settings::OwlStatue) {
-        game_badge(ui, Badge::Mm);
-        ui.label(self.i18n.tr_settings(o.label));
-        let mut on = self.rom_settings.owl_on(o.id);
-        if ui.checkbox(&mut on, "").changed() {
-            self.rom_settings.set_owl(o.id, on);
-        }
-        ui.end_row();
+    fn owl_card_row(&mut self, ui: &mut egui::Ui, o: &'static settings::OwlStatue) {
+        let on = self.rom_settings.owl_on(o.id);
+        let label = self.i18n.tr_settings(o.label).to_owned();
+        self.editor_row(ui, &label, Badge::Mm, on, true, |s, v| {
+            s.rom_settings.set_owl(o.id, v);
+        });
     }
 
     /// MQ / JP Layouts: per-dungeon Master Quest toggles + the MM JP Deku Palace

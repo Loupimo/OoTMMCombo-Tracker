@@ -11,12 +11,12 @@
       <rendering_option context="adult">
         <gs location="Sacred Meadow GS Night Adult" flag="0x6b" item="GS_TOKEN" name="Night Adult" xyz="1001;90;0"/>
       </rendering_option>
-      <xflag type="wonder" location="Sacred Meadow Wonder Item Entrance" slice="0x0" setup="0" room="0x0" actor="0xf" item="RUPEE_BLUE" name="Entrance" xyz="1688;437;0"/>
-      <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 1" slice="0x0" setup="0" room="0x0" actor="0xc" item="RUPEE_GREEN" name="Maze 1" xyz="1388;384;0"/>
-      <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 2" slice="0x0" setup="0" room="0x0" actor="0xd" item="RUPEE_GREEN" name="Maze 2" xyz="1418;277;0"/>
-      <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 3" slice="0x0" setup="0" room="0x0" actor="0xe" item="RUPEE_GREEN" name="Maze 3" xyz="1039;209;0"/>
-      <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 4" slice="0x0" setup="0" room="0x0" actor="0x10" item="RUPEE_BLUE" name="Maze 4" xyz="995;383;0"/>
-      <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 5" slice="0x0" setup="0" room="0x0" actor="0x11" item="RUPEE_BLUE" name="Maze 5" xyz="1317;277;0"/>
+      <xflag type="wonder" location="Sacred Meadow Wonder Item Entrance" setup="0" room="0x0" actor="0xf" item="RUPEE_BLUE" name="Entrance" xyz="1688;437;0"/>
+      <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 1" setup="0" room="0x0" actor="0xc" item="RUPEE_GREEN" name="Maze 1" xyz="1388;384;0"/>
+      <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 2" setup="0" room="0x0" actor="0xd" item="RUPEE_GREEN" name="Maze 2" xyz="1418;277;0"/>
+      <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 3" setup="0" room="0x0" actor="0xe" item="RUPEE_GREEN" name="Maze 3" xyz="1039;209;0"/>
+      <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 4" setup="0" room="0x0" actor="0x10" item="RUPEE_BLUE" name="Maze 4" xyz="995;383;0"/>
+      <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 5" setup="0" room="0x0" actor="0x11" item="RUPEE_BLUE" name="Maze 5" xyz="1317;277;0"/>
       <actor>
         <match setup="0" actor="0x2"/>
         <match setup="2" actor="0x1"/>
@@ -58,7 +58,7 @@
     <scene_rendering id="OOT_GROTTO_SACRED_MEADOW_STORMS" loc_type="overworld">
       <scrub location="Sacred Meadow Storms Grotto Front Scrub" flag="0x05" item="POTION_GREEN" name="Front" xyz="714;302;0"/>
       <scrub location="Sacred Meadow Storms Grotto Back Scrub" flag="0x06" item="POTION_RED" name="Back" xyz="649;207;0"/>
-      <xflag type="hive" location="Sacred Meadow Storms Grotto Hive" slice="0x0" setup="0" room="0x21" actor="0x2" item="RUPEE_RED" name="Hive" xyz="551;157;0"/>
+      <xflag type="hive" location="Sacred Meadow Storms Grotto Hive" setup="0" room="0x21" actor="0x2" item="RUPEE_RED" name="Hive" xyz="551;157;0"/>
     </scene_rendering>
   </scene>
   <scene name="Sacred Meadow Fairy Fountain" id="FAIRY_FOUNTAIN">

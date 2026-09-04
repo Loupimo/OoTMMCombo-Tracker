@@ -19,17 +19,17 @@
           <xflag type="rock" location="Road to Ikana Rock Circle Rock 7" slice="6" item="RANDOM" name="Circle Rock 7" xyz="729;428;0"/>
           <xflag type="rock" location="Road to Ikana Rock Circle Rock 8" slice="7" item="RANDOM" name="Circle Rock 8" xyz="734;412;0"/>
         </actor>
-        <xflag type="pot" location="Road to Ikana Pot" slice="0x0" actor="0x4c" item="FAIRY" name="Pot" xyz="773;437;0"/>
-        <xflag type="boulder" location="Road to Ikana Large Boulder 1" slice="0x0" actor="0x3c" item="NOTHING" name="Large Boulder 1" xyz="545;499;0"/>
-        <xflag type="boulder" location="Road to Ikana Large Boulder 2" slice="0x0" actor="0x3e" item="NOTHING" name="Large Boulder 2" xyz="613;520;0"/>
-        <xflag type="boulder" location="Road to Ikana Large Boulder 3" slice="0x0" actor="0x40" item="NOTHING" name="Large Boulder 3" xyz="529;460;0"/>
-        <xflag type="boulder" location="Road to Ikana Large Boulder 4" slice="0x0" actor="0x41" item="NOTHING" name="Large Boulder 4" xyz="461;472;0"/>
-        <xflag type="boulder" location="Road to Ikana Large Boulder 5" slice="0x0" actor="0x42" item="NOTHING" name="Large Boulder 5" xyz="404;424;0"/>
-        <xflag type="boulder" location="Road to Ikana Large Boulder 6" slice="0x0" actor="0x43" item="NOTHING" name="Large Boulder 6" xyz="368;437;0"/>
-        <xflag type="boulder" location="Road to Ikana Large Boulder 7" slice="0x0" actor="0x44" item="NOTHING" name="Large Boulder 7" xyz="349;399;0"/>
+        <xflag type="pot" location="Road to Ikana Pot" actor="0x4c" item="FAIRY" name="Pot" xyz="773;437;0"/>
+        <xflag type="boulder" location="Road to Ikana Large Boulder 1" actor="0x3c" item="NOTHING" name="Large Boulder 1" xyz="545;499;0"/>
+        <xflag type="boulder" location="Road to Ikana Large Boulder 2" actor="0x3e" item="NOTHING" name="Large Boulder 2" xyz="613;520;0"/>
+        <xflag type="boulder" location="Road to Ikana Large Boulder 3" actor="0x40" item="NOTHING" name="Large Boulder 3" xyz="529;460;0"/>
+        <xflag type="boulder" location="Road to Ikana Large Boulder 4" actor="0x41" item="NOTHING" name="Large Boulder 4" xyz="461;472;0"/>
+        <xflag type="boulder" location="Road to Ikana Large Boulder 5" actor="0x42" item="NOTHING" name="Large Boulder 5" xyz="404;424;0"/>
+        <xflag type="boulder" location="Road to Ikana Large Boulder 6" actor="0x43" item="NOTHING" name="Large Boulder 6" xyz="368;437;0"/>
+        <xflag type="boulder" location="Road to Ikana Large Boulder 7" actor="0x44" item="NOTHING" name="Large Boulder 7" xyz="349;399;0"/>
       </rendering_option>
       <rendering_option layout="all" type="redboulder">
-        <xflag type="boulder-red" location="Road to Ikana Red Boulder" slice="0x0" actor="0x5" item="NOTHING" name="Boulder" xyz="927;460;0"/>
+        <xflag type="boulder-red" location="Road to Ikana Red Boulder" actor="0x5" item="NOTHING" name="Boulder" xyz="927;460;0"/>
       </rendering_option>
       <actor actor="0x2">
         <rendering_option type="fairy">

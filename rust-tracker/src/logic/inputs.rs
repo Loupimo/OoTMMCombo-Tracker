@@ -55,6 +55,10 @@ pub struct WorldInputs {
     settings_enabled: HashSet<u32>,
     /// `SETTING_KEYS` index -> `SETTING_VALUES` index (`setting(k, v)`).
     settings_value: HashMap<u32, u32>,
+    /// `SETTING_KEYS` index -> the set of `SETTING_VALUES` indices selected for a
+    /// set-valued setting (`openDungeonsOot/Mm`, `ganonTrials`), so `setting(k, member)`
+    /// resolves by membership. A single-valued enum lands here too (a one-member set).
+    settings_multi: HashMap<u32, HashSet<u32>>,
     /// `TRICK_NAMES` indices enabled by the seed.
     tricks: HashSet<u32>,
     /// Per game (`[OoT, MM]`) the song index placed at each event slot (indexed by
@@ -115,6 +119,7 @@ impl WorldInputs {
         let (skeys, svals) = (setting_key_index(), setting_value_index());
         let mut settings_enabled = HashSet::new();
         let mut settings_value = HashMap::new();
+        let mut settings_multi: HashMap<u32, HashSet<u32>> = HashMap::new();
         for (name, val) in &settings.raw_settings {
             let Some(&ki) = skeys.get(name.as_str()) else { continue };
             if val.eq_ignore_ascii_case("true") {
@@ -122,6 +127,13 @@ impl WorldInputs {
             }
             if let Some(&vi) = svals.get(val.as_str()) {
                 settings_value.insert(ki, vi);
+            }
+            // A set-valued setting stores a list of members (comma / whitespace
+            // separated); index each recognised member so `setting(k, member)` holds.
+            for tok in val.split(|c: char| c == ',' || c.is_whitespace()).filter(|t| !t.is_empty()) {
+                if let Some(&vi) = svals.get(tok) {
+                    settings_multi.entry(ki).or_default().insert(vi);
+                }
             }
         }
 
@@ -138,6 +150,7 @@ impl WorldInputs {
             masks,
             settings_enabled,
             settings_value,
+            settings_multi,
             tricks,
             song_events: settings.song_events.clone(),
             special_conds: settings.special_conds.clone(),
@@ -240,6 +253,10 @@ impl Inputs for WorldInputs {
     }
     fn setting_value(&self, key: u32) -> Option<u32> {
         self.settings_value.get(&key).copied()
+    }
+    fn setting_has(&self, key: u32, val: u32) -> bool {
+        self.settings_value.get(&key) == Some(&val)
+            || self.settings_multi.get(&key).is_some_and(|s| s.contains(&val))
     }
     fn setting_enabled(&self, key: u32) -> bool {
         self.settings_enabled.contains(&key)
@@ -364,6 +381,27 @@ mod tests {
         let ti = trick_index();
         let mido = ti.get("OOT_MIDO_SKIP").copied().expect("trick indexed");
         assert!(inp.trick(mido), "Backflip Over Mido should be enabled");
+    }
+
+    /// A set-valued setting (`openDungeonsOot`) parses its comma-separated members so
+    /// `setting(k, member)` holds for each selected dungeon and no other. This is the
+    /// path the manual ROM editor and a list-style spoiler value both feed.
+    #[test]
+    fn set_setting_resolves_each_member() {
+        let mq = std::collections::HashSet::new();
+        let mut settings = Settings::default();
+        // The editor writes the chosen members comma-joined into raw_settings.
+        settings.raw_settings.insert("openDungeonsOot".to_string(), "DC, Water".to_string());
+        settings.apply(&mq);
+        let inp = WorldInputs::build(&settings, &[WorldData::default()], 1, &Default::default(), false);
+
+        let sk = setting_key_index();
+        let sv = setting_value_index();
+        let k = *sk.get("openDungeonsOot").expect("openDungeonsOot is a logic key");
+        let member = |name: &str| *sv.get(name).expect("known member value");
+        assert!(inp.setting_has(k, member("DC")), "DC is in the open set");
+        assert!(inp.setting_has(k, member("Water")), "Water is in the open set");
+        assert!(!inp.setting_has(k, member("JJ")), "JJ was not selected");
     }
 
     /// `song_event` reflects the spoiler's slot->song map: the exact placement

@@ -73,7 +73,12 @@
       <xflag type="boulder" location="Zora Fountain Boulder Exposed" setup="0" room="0x0" actor="0x10" item="NOTHING" name="Exposed" xyz="451;69;0"/>
       <xflag type="boulder" location="Zora Fountain Boulder Underground" setup="0" room="0x0" actor="0x11" item="NOTHING" name="Underground" xyz="434;72;0"/>
       <rendering_option type="silverboulder">
-        <xflag type="boulder-silver" location="Zora Fountain Silver Boulder" setup="0" room="0x0" actor="0x5" item="NOTHING" name="Silver Boulder" xyz="434;80;1"/>
+        <actor room="0x0">
+          <match setup="0" actor="0x05"/>
+          <match setup="1" actor="0x05"/>
+          <match setup="2" actor="0x30"/>
+          <xflag type="boulder-silver" location="Zora Fountain Silver Boulder" item="NOTHING" name="Silver Boulder" xyz="434;80;1"/>
+        </actor>
       </rendering_option>
       <actor>
         <match setup="0" actor="0x12"/>

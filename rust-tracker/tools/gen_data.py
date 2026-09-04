@@ -20,6 +20,7 @@ headers for their numeric values and enum variants, and emit:
 Stdlib only (no pandas). Re-run after editing a CSV:  python tools/gen_data.py
 """
 import csv
+import json
 import os
 import re
 import sys
@@ -285,8 +286,10 @@ def objects_from_rows(bucket, scene_sym, id_sym, used_ids, missing, missing_ids)
             return int(str(v), 0)
         except (ValueError, TypeError):
             return d
+    rows = gen_object_rows().rows      # puts Resources/ on sys.path + imports gen_objects
+    import gen_objects                 # now resolvable (for SYSTEM_ENUM: token -> ObjSystem variant)
     objs = []
-    for r in gen_object_rows().rows:
+    for r in rows:
         if r["bucket"] != bucket:
             continue
         scene, render = r["scene"], r["renderscene"]
@@ -304,6 +307,7 @@ def objects_from_rows(bucket, scene_sym, id_sym, used_ids, missing, missing_ids)
             "render": render, "render_type": r["rendertype"], "map_icon": r["icontype"],
             "context": r["context"], "room": i0(r["room"]), "layout": r["game_layout"],
             "loc_type": r["loc_type"], "xflag_id": i0(r["xflag_id"], 0xFFFF),
+            "system": gen_objects.SYSTEM_ENUM.get(r.get("system", ""), "Any"),
             "legacy_scene": legacy if legacy in scene_sym else None,
         })
     return objs
@@ -922,15 +926,85 @@ def emit_prog(sections_map, arrays_map):
     return "\n".join(lines)
 
 
-def emit_settings(name, entries):
+def emit_settings(name, entries, setting_opts):
+    """`setting_opts` is the OoTMM snapshot (tools/ootmm_settings.json): each setting's
+    real per-parameter option list. We stamp it onto SettingMeta so the ROM-settings
+    editor offers exactly the choices OoTMM's generator does for that key."""
     lines = [f"pub static {name}: &[SettingMeta] = &["]
     for key, disp, ptype, pcat, shuf, ids in entries:
         cells = ", ".join(f"{i:#x}" for i in ids)
+        vals = setting_opts.get(key, {}).get("values", [])
+        if vals:
+            opts = "&[" + ", ".join(
+                f'SettingOption {{ value: "{esc(v)}", label: "{esc(lbl)}" }}'
+                for v, lbl in vals) + "]"
+        else:
+            opts = "&[]"
         lines.append(
             f'    SettingMeta {{ key: "{esc(key)}", name: "{esc(disp)}", '
             f"type_: ParamType::{rust_ident(ptype)}, "
             f"cat: ParamCategory::{rust_ident(pcat)}, "
-            f"default: ShuffleSetting::{rust_ident(shuf)}, affected: &[{cells}] }},")
+            f"default: ShuffleSetting::{rust_ident(shuf)}, affected: &[{cells}], "
+            f"options: {opts} }},")
+    lines.append("];\n")
+    return "\n".join(lines)
+
+
+# Access / win-condition settings the reachability logic reads but the tracker's
+# FilterSettings / ItemSettings do not expose. Each key is a real logic setting
+# (present in SETTING_KEYS) whose value only affects reachability (open dungeons,
+# door of time, bridge / moon / LACS conditions, …). Curated, ordered for the UI;
+# type / default / option list come from the OoTMM snapshot. Set-valued keys
+# (openDungeons*, ganonTrials) list their members and drive `setting(k, member)`.
+ACCESS_KEYS = [
+    ("doorOfTime", "Door of Time"),
+    ("beneathWell", "Beneath the Well"),
+    ("gerudoFortress", "Gerudo Fortress"),
+    ("zoraKing", "Zora King"),
+    ("openZdShortcut", "Open Zora's Domain Shortcut"),
+    ("openMaskShop", "Open Mask Shop"),
+    ("crossAge", "Cross-Age Items"),
+    ("freeScarecrowOot", "Free Scarecrow (OoT)"),
+    ("freeScarecrowMm", "Free Scarecrow (MM)"),
+    ("openMoon", "Open Moon"),
+    ("moonCrash", "Moon Crash"),
+    ("majoraChild", "Majora as Child"),
+    ("bossWarpPads", "Boss Warp Pads"),
+    ("openDungeonsOot", "Open Dungeons (OoT)"),
+    ("openDungeonsMm", "Open Dungeons (MM)"),
+    ("clearStateDungeonsMm", "Clear State Dungeons (MM)"),
+    ("rainbowBridge", "Rainbow Bridge"),
+    ("moon", "Moon Access"),
+    ("lacs", "Light Arrow Cutscene"),
+    ("ganonTrials", "Ganon's Trials"),
+]
+# `ganonBossKey` and `skipZelda` are also FilterSettings (they gate map visibility), so
+# they stay on their filter pages; the filter edit is synced into raw_settings there so
+# they drive the logic too. Do not duplicate them here.
+
+
+def emit_access_settings(setting_opts):
+    """Emit ACCESS_SETTINGS from the OoTMM snapshot: kind (enum / bool / set), default
+    value, and member/option list per curated key (see ACCESS_KEYS)."""
+    kinds = {"enum": "Enum", "boolean": "Bool", "set": "Set"}
+    lines = ["pub static ACCESS_SETTINGS: &[AccessSetting] = &["]
+    for key, disp in ACCESS_KEYS:
+        s = setting_opts.get(key, {})
+        typ = s.get("type", "boolean")
+        kind = kinds.get(typ, "Bool")
+        default = s.get("default")
+        if default is None:
+            default = "false" if typ == "boolean" else ""
+        vals = s.get("values", [])
+        if vals:
+            opts = "&[" + ", ".join(
+                f'SettingOption {{ value: "{esc(v)}", label: "{esc(lbl)}" }}'
+                for v, lbl in vals) + "]"
+        else:
+            opts = "&[]"
+        lines.append(
+            f'    AccessSetting {{ key: "{esc(key)}", name: "{esc(disp)}", '
+            f"kind: AccessKind::{kind}, default: \"{esc(default)}\", options: {opts} }},")
     lines.append("];\n")
     return "\n".join(lines)
 
@@ -960,22 +1034,23 @@ def emit_objects(name, objs):
             "location: \"{loc}\", type_: ObjectType::{ty}, x: {x}, y: {y}, z: {z}, "
             "render_scene: scenes::{rs}, render_type: ObjectType::{rt}, map_icon: \"{mi}\", "
             "context: ObjectContext::{cx}, room: {rm}, layout: GameLayout::{lay}, "
-            "loc_type: LocType::{lt}, xflag_id: {xf} }},".format(
+            "loc_type: LocType::{lt}, xflag_id: {xf}, system: ObjSystem::{sys} }},".format(
                 oid=o["id_ref"], sc=o["scene"], nm=esc(o["name"]), loc=esc(o["location"]),
                 ty=rust_ident(o["type"]), x=o["x"], y=o["y"], z=o["z"], rs=o["render"],
                 rt=rust_ident(o["render_type"]), mi=esc(o["map_icon"]),
                 cx=rust_ident(o["context"]), rm=o["room"],
                 lay=rust_ident(o["layout"]), lt=rust_ident(o["loc_type"]),
-                xf=f'0x{o["xflag_id"]:04X}'))
+                xf=f'0x{o["xflag_id"]:04X}', sys=o["system"]))
     out.append("];\n")
     return "\n".join(out)
 
 
 # --- split the generated source into a src/data/ folder module ---------------
-_CORE = {'ObjectType', 'ObjectContext', 'GameLayout', 'LocType', 'EntranceType',
+_CORE = {'ObjectType', 'ObjectContext', 'ObjSystem', 'GameLayout', 'LocType', 'EntranceType',
          'ParamType', 'ParamCategory', 'ShuffleSetting', 'SceneId', 'scenes',
          'SceneDef', 'ObjectDef', 'LegacySceneRemap', 'RoomDef', 'GrottoPos', 'EntranceDef',
-         'SettingMeta', 'ItemDef', 'ProgEntry', 'ProgSection', 'ProgPage'}
+         'SettingMeta', 'SettingOption', 'AccessSetting', 'AccessKind',
+         'ItemDef', 'ProgEntry', 'ProgSection', 'ProgPage'}
 _CONSTS = {'ids', 'iid', 'entr', 'song_oot', 'song_mm', 'owl'}
 _TARGET = {'PROGRESSIVE_FAMILIES': 'prog', 'PROG_PAGES': 'prog',
            'OOT_OBJECTS': 'oot_items', 'MM_OBJECTS': 'mm_items',
@@ -1124,6 +1199,10 @@ def main():
         settings_cpp, r"this->FilterSettings", id_sym, missing_ids)
     item_settings = parse_settings_map(
         settings_cpp, r"this->ItemSettings", id_sym, missing_ids)
+    # OoTMM's real per-parameter option lists (tools/ootmm_settings.json snapshot).
+    setting_opts = json.load(open(
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "ootmm_settings.json"),
+        encoding="utf-8"))
     items_cpp = read("Sources/Combo/Items.cpp")
     items = parse_items(items_cpp, id_sym, missing_ids)
     prog_families = parse_progressive_families(items_cpp, id_sym, missing_ids)
@@ -1155,6 +1234,8 @@ def main():
         "pub type SceneId = u16;\n\n",
         emit_enum("ObjectType", obj_types, "ObjectType (Headers/Combo/Objects.h)", repr_u8=True),
         emit_enum("ObjectContext", obj_ctx, "ObjectContext (Headers/Combo/Objects.h)"),
+        emit_enum("ObjSystem", ["Any", "Legacy", "New"],
+                  "ObjSystem (Headers/Combo/Objects.h)", repr_u8=True),
         emit_enum("GameLayout", layouts, "GameLayout (Headers/Multi/Game.h)"),
         emit_enum("LocType", loc_types, "LocType (Headers/Combo/Scenes.h)"),
         emit_enum("EntranceType", ent_types, "EntranceType (Headers/Combo/Entrances.h)"),
@@ -1194,7 +1275,11 @@ def main():
         "    pub context: ObjectContext,\n    pub room: u16,\n    pub layout: GameLayout,\n"
         "    pub loc_type: LocType,\n"
         "    /// Compact XflagID (new xflag ROMs > v32.3) stamped by Location; 0xFFFF = none.\n"
-        "    pub xflag_id: u16,\n}\n\n"
+        "    pub xflag_id: u16,\n"
+        "    /// Which ROM xflag system this object exists under (legacy / new / both). A few\n"
+        "    /// checks changed representation across OoTMM versions; gated by uses_legacy at\n"
+        "    /// display / resolution time (object_active).\n"
+        "    pub system: ObjSystem,\n}\n\n"
         "/// A check whose true scene differs from the one pre-migration (<= v32.3) ROMs report.\n"
         "/// Keyed by the reported (legacy) scene + the check's unchanged legacy ObjectID.\n"
         "pub struct LegacySceneRemap {\n"
@@ -1209,12 +1294,33 @@ def main():
         "    pub to_name: &'static str,\n    pub type_: EntranceType,\n"
         "    pub anchor: [i32; 2],\n    pub text: [i32; 2],\n    pub icon: &'static str,\n"
         "    pub layout: GameLayout,\n}\n\n"
+        "/// One selectable value of a setting: the raw OoTMM value plus its display label\n"
+        "/// (from OoTMM's settings/data.ts, snapshotted in tools/ootmm_settings.json).\n"
+        "pub struct SettingOption {\n"
+        "    pub value: &'static str,\n    pub label: &'static str,\n}\n\n"
         "/// A ROM build parameter (mirror of Settings.cpp Parameter, minus the\n"
-        "/// runtime shuffle value which lives in the Settings struct).\n"
+        "/// runtime shuffle value which lives in the Settings struct). `options` is the\n"
+        "/// real per-parameter choice list OoTMM's generator offers (empty = fall back to\n"
+        "/// the type's generic list).\n"
         "pub struct SettingMeta {\n"
         "    pub key: &'static str,\n    pub name: &'static str,\n"
         "    pub type_: ParamType,\n    pub cat: ParamCategory,\n"
-        "    pub default: ShuffleSetting,\n    pub affected: &'static [u32],\n}\n\n"
+        "    pub default: ShuffleSetting,\n    pub affected: &'static [u32],\n"
+        "    pub options: &'static [SettingOption],\n}\n\n"
+        "/// The shape of an access / win-condition setting's value (see ACCESS_SETTINGS).\n"
+        "#[derive(Clone, Copy, PartialEq, Eq)]\n"
+        "pub enum AccessKind {\n    /// One value out of `options`.\n    Enum,\n"
+        "    /// On / off (`true` / `false`).\n    Bool,\n"
+        "    /// Any subset of `options` (members joined into the raw value).\n    Set,\n}\n\n"
+        "/// A logic-only ROM setting (open dungeons, door of time, bridge / moon / LACS\n"
+        "/// conditions, …) the reachability solver reads from the spoiler's raw settings\n"
+        "/// but the tracker's filter / item settings do not expose. Edited straight into\n"
+        "/// `Settings::raw_settings` (the raw OoTMM value string), so the solver picks it\n"
+        "/// up with or without a spoiler. `default` is the OoTMM default value string.\n"
+        "pub struct AccessSetting {\n"
+        "    pub key: &'static str,\n    pub name: &'static str,\n"
+        "    pub kind: AccessKind,\n    pub default: &'static str,\n"
+        "    pub options: &'static [SettingOption],\n}\n\n"
         "/// A tracked item (mirror of Items.cpp ItemInfo, minus the render icon).\n"
         "pub struct ItemDef {\n"
         "    pub id: u32,\n    pub name: &'static str,\n    pub can_be_shared: bool,\n}\n\n"
@@ -1249,8 +1355,11 @@ def main():
         + emit_type_set("OOT_FILTER_TYPES", oot_filter_types)
         + emit_type_set("MM_FILTER_TYPES", mm_filter_types),
         "\n/// ROM build parameters (Settings.cpp FilterSettings / ItemSettings).\n"
-        + emit_settings("FILTER_SETTINGS", filter_settings)
-        + emit_settings("ITEM_SETTINGS", item_settings),
+        + emit_settings("FILTER_SETTINGS", filter_settings, setting_opts)
+        + emit_settings("ITEM_SETTINGS", item_settings, setting_opts),
+        "\n/// Logic-only access / win-condition settings (open dungeons, door of time,\n"
+        "/// bridge / moon / LACS), edited into Settings::raw_settings for the solver.\n"
+        + emit_access_settings(setting_opts),
         "\n/// Item table + name lookup (Items.cpp ItemList / FindItemByName).\n"
         + emit_items(items),
         "\n" + emit_progressive_families(prog_families),

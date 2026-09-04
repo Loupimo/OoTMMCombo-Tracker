@@ -53,6 +53,7 @@ qui bouge des checks, ou quand tu changes le rendu (positions / icônes / noms /
 | `gen_objects.py` | `C++-Tracker/Resources/` | Génère `OoT/MMObjectScene.cpp` (Qt) depuis `New/**`. `--emit` écrit, `--diff` compare au pool, **`--sync-pool`** back-fill le pool avec les checks du XML absents du pool (voir Cas D). Source unique des objets pour Qt **et** Rust (`build_objects()`). |
 | `gen_data.py` | `rust-tracker/tools/` | Génère `rust-tracker/src/data/*.rs` (objets via `gen_objects.build_objects()`, + items/scènes/entrées/progression). Appelle `gen_logic`. |
 | `gen_logic.py` | `rust-tracker/tools/` | Compile `Logic/**.yml` → `src/data/logic.rs`. |
+| `gen_setting_options.py` | `rust-tracker/tools/` | Extrait les **listes d'options par paramètre** de `packages/core/src/settings/data.ts` (OoTMM) → snapshot `tools/ootmm_settings.json`. Lu **hors-ligne** par `gen_data.py` pour peupler `SettingMeta.options`. Accepte un `data.ts`, une racine OoTMM, ou télécharge depuis master. À relancer après un update OoTMM (voir §5). |
 | `Position Finder.py` | `C++-Tracker/Resources/` | Utilitaire : extrait des positions xyz depuis une image de map color-codée (aide à remplir le rendu). |
 | `ItemShift.py` | `C++-Tracker/Resources/` | Utilitaire ad-hoc : renumérote des IDs d'items selon un ordre donné (décalages dev/stable). |
 
@@ -209,6 +210,33 @@ Signaux à lire dans la sortie :
   absent du pool ⇒ `xflag_id = 0xFFFF` (non tracké en système compact) : à compléter dans le pool
   puis re-stamper.
 - **Gossips & unreachables** n'ont pas de règle de logique (normal) : exclus du test de couverture.
+- **Objets versionnés legacy/new (colonne `system` du pool).** Quand OoTMM change la *représentation*
+  d'un check entre versions (ex. l'herbe du crawl de Cocorico : l'ancien split par ère « Child/Adult
+  Near Crawl 7 & 8 » fusionné en « Near Crawl 1 & 2 » agnostiques d'ère par le nouveau format de
+  checks), les deux formes coexistent : l'ancienne sur les ROMs `<= v32.3`, la nouvelle sur `> v32.3`.
+  - **Où c'est écrit :** la **colonne `system` du pool** (`legacy` / `new` ; vide = `any`) est le
+    stockage durable. `augment.py` la recopie en **attribut `system="…"` sur le `<xflag>`** (juste après
+    `location`) → le XML est **auto-documenté** (tu vois d'un coup d'œil qu'une location est legacy) et
+    hand-éditable. `gen_objects` lit cet **attribut XML en priorité**, avec repli sur le pool par
+    Location (`load_pool_system`) pour un XML pas encore augmenté ; `gen_data` reçoit la même valeur.
+    Le token est mappé via `SYSTEM_ENUM` (`gen_objects.py`) vers l'enum `ObjSystem`, stampé sur chaque
+    objet Qt **et** Rust. ⇒ pour tagger un check : mets `legacy`/`new` dans la colonne `system` du pool
+    (ou directement l'attribut `system=` sur le `<xflag>`), puis `augment` + `gen_objects` + `gen_data`.
+  - **`augment.py` ré-injecte les checks legacy** absents du XML source (cas typique : tu écrases le
+    XML par une copie fraîche d'OoTMM qui ne les a plus). Pour tout row du pool `system ∈
+    AUGMENT_SYNTH_SYSTEMS` (= `{"legacy"}`) dont la Location manque, il synthétise le `<xflag>` (identité
+    reconstruite depuis l'id du pool, `rendering_option` selon le `context` du pool). Idempotent. Donc
+    **`augment --all` ne perd plus les legacy** — c'est ça qui remplace l'ancienne fragilité.
+  - Gate runtime : `UsesLegacyXflags()` (C++ `ObjectInfo::HasCorrectLayout`) / `object_active` (Rust,
+    global `USES_LEGACY`). Gate **affichage ET résolution** → une paire legacy/new partageant un
+    ObjectID ne matche jamais les deux.
+  - **Nouveau tier de version** (ex. si v33 rebouge un check) : ajoute le token à `SYSTEM_ENUM` + une
+    variante `ObjSystem` + un cas runtime (aujourd'hui binaire via `UsesLegacyXflags`), et au besoin à
+    `AUGMENT_SYNTH_SYSTEMS`.
+  - ⚠️ Les fusionnés « new » ne se tracke en système compact que si leur `xflag_id` est stampé dans le
+    pool (Cas B) ; sinon ils s'affichent mais la collecte ne les résout pas sur ROM new.
+  - Note : la colonne `system` est en fin de pool ; `load_pool` (gen_objects + augment) tolère les
+    rows plus courtes (colonne absente → `any`).
 - **Acteur « hétérogène » = un `<rendering_option>` par check.** Quand plusieurs checks partagent un
   même `<actor>` mais rendent différemment (cas type : une gossip stone dont le `gossip` (petite fée)
   rend en `fairy` et le `gossip-big` (grande fée) en `fairy_spot`), `augment.py` **ne** met **pas**
@@ -228,5 +256,41 @@ Signaux à lire dans la sortie :
   que le réglage **existe** côté Rust (parsé du save, valeur par défaut, listé dans l'UI). MAIS la **logique
   de filtrage** (quel objet le réglage cache) n'est **pas** générée : c'est du code à mirrorer **à la main**
   dans `rust-tracker/src/settings.rs` (`apply_oot` / `apply_mm`, `match o.render_type { … }`, miroir de
-  `ApplyOoT/MMSettingsToFilter`). Les noms de réglage ne passent pas par les locales (affichés depuis
-  `SettingMeta.name`, anglais) → rien à traduire. Ex. gossips : `shuffleGossip[Big]Fairies{Oot,Mm}`.
+  `ApplyOoT/MMSettingsToFilter`). Le **nom** du réglage ne passe pas par les locales (affiché depuis
+  `SettingMeta.name`, anglais) → rien à traduire pour le titre. Ex. gossips : `shuffleGossip[Big]Fairies{Oot,Mm}`.
+- **Options par paramètre alignées sur OoTMM (Rust).** L'éditeur ROM propose, par réglage, les **vrais choix
+  OoTMM** (ex. une clé → « Own Dungeon / Anywhere / Removed / Vanilla », un cassable → « None / All /
+  Overworld / Dungeons only ») au lieu d'une liste générique. Ces choix viennent du snapshot
+  `tools/ootmm_settings.json` (généré par `gen_setting_options.py`), que `gen_data.py` lit pour remplir
+  `SettingMeta.options: &[SettingOption{value,label}]` dans `data/misc.rs`. À l'affichage, chaque `label`
+  OoTMM (`o.label`) **passe** par `tr_settings` → ajoute la traduction FR dans `locales/fr.toml`
+  `[settings_names]` (ex. `None`=Aucun, `Own Dungeon`=Propre donjon…). Le tracker mappe chaque option vers
+  un **bucket** `ShuffleSetting` via `settings::filter_value` : plusieurs options OoTMM peuvent tomber dans le
+  même bucket (ex. `ganonBossKey` : `ganon`+`anywhere`→`all`) — c'est voulu, le filtrage est bucket-based.
+  Après un update OoTMM : relancer `gen_setting_options.py` puis `gen_data.py`.
+- **Réglages « Logique / Accès » (raw_settings, Rust).** La logique d'accessibilité lit **uniquement**
+  `Settings::raw_settings` (rempli par `parse_spoiler`) → `logic/inputs.rs`. Les réglages d'accès / conditions
+  de victoire (open dungeons, `doorOfTime`, `rainbowBridge`/`moon`/`lacs`, `ganonTrials`…) ne sont **pas** des
+  FilterSettings ; ils sont exposés par une page dédiée qui édite **directement `raw_settings`** (la valeur
+  brute OoTMM), donc le solveur les honore même sans spoiler (un spoiler chargé écrase via `parse_spoiler`).
+  Métadonnée générée : `gen_data.py` émet `ACCESS_SETTINGS` (struct `AccessSetting`, enum `AccessKind`
+  Enum/Bool/Set) depuis la **liste curée `ACCESS_KEYS`** + le snapshot `ootmm_settings.json` (type / défaut /
+  options+labels). Pour ajouter une clé : l'ajouter à `ACCESS_KEYS` (elle doit être dans `SETTING_KEYS` de la
+  logique) puis relancer `gen_data.py`.
+- **Réglages « duaux » (logique ET affichage/filtre).** Une clé peut être à la fois un item/FilterSetting
+  (page World/Progressive/Shared) et une clé logique (`SETTING_KEYS`) — ex. `skipZelda`, `ganonBossKey`, les
+  items shared/progressive. Elle reste sur sa page d'origine mais doit écrire **les 2 champs** : `card_row` /
+  `bool_card_row` (settings_window.rs), quand `is_logic_key(key)` (= `data::SETTING_KEYS.contains`), miroitent
+  la valeur dans `raw_settings` en plus de `values` ; `card_row` lit `raw_settings` pour l'affichage exact.
+  Cas dérivé : **`fire_temple_open_as_child`** n'a pas de toggle — `apply()` le calcule depuis la présence du
+  membre `fireChild` dans `openDungeonsOot` (set de la page Accès), avant `apply_oot` ; l'ancienne carte
+  « Open Dungeons » de World Items a été retirée.
+- **Settings « set » multi-membres (solveur).** `openDungeonsOot/Mm`, `ganonTrials` et `clearStateDungeonsMm`
+  sont référencés par la logique via `setting(k, membre)` pour **plusieurs** membres. Le modèle `setting_value`
+  (une valeur/clé) ne suffit pas : `logic/inputs.rs` tokenise la valeur brute (séparateurs `,`/espaces) dans
+  `settings_multi`, et `setting_has(k, v)` (trait `Inputs`/`WorldState`, `Op::SettingEq`) teste l'appartenance.
+  L'éditeur écrit les membres joints par `,` (vide → `none`). **Source spoiler = section `World Flags`** (pas
+  `Settings`) : OoTMM y écrit ces sets par **nom d'affichage** (liste `- …` ou inline `all`/`none`) ;
+  `settings.rs::parse_logic_sets` mappe ces labels → valeurs brutes (tables `OPEN_DUNGEONS_OOT/MM`,
+  `GANON_TRIALS` ; `clearStateDungeonsMm` réutilise `OPEN_DUNGEONS_MM` ; ⚠️ certains labels diffèrent du
+  snapshot, ex. « Dodongo's Cavern » → `DC`).

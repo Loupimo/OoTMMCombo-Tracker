@@ -28,6 +28,19 @@ enum ObjectContext
 	Spring		// The object is only present when season is spring
 };
 
+/*
+*	Which ROM xflag system an object belongs to. A few checks changed representation across OoTMM
+*	versions (e.g. the Kokiri Forest crawl grass, split per era on legacy ROMs but merged into a
+*	single xflag check on newer ones). Such objects exist under only one system: gated at display /
+*	resolution time by UsesLegacyXflags() (see ObjectInfo::HasCorrectLayout).
+*/
+enum class ObjSystem : uint8_t
+{
+	Any,		// Present regardless of the ROM's xflag system (the common case)
+	Legacy,		// Only on legacy ROMs (<= v32.3, full identity keys)
+	New			// Only on new-xflag ROMs (> v32.3, compact XflagID)
+};
+
 
 enum ObjectType
 {
@@ -122,6 +135,7 @@ typedef struct ObjectInfo
 	LocType LocationType;							// The type of location the object is located to.
 	const char* Tooltip;							// The text to display in tooltip to give some hint on how to get the object.
 	uint16_t XflagID = 0xFFFF;						// Compact XflagID (new xflag ROMs > v32.3) stamped from the check data by Location; 0xFFFF = none
+	ObjSystem System = ObjSystem::Any;				// Which ROM xflag system this object exists under (legacy / new / both)
 	const ItemInfo* Item;							// The item contained in the object
 	ObjectState Status = ObjectState::Hidden;		// The status object
 	bool PosSet = false;							// Tells if the position has already been set.
@@ -158,11 +172,16 @@ public:
 	void ResetObject();
 
 	/*
-	*   Tells if the object layout does match the active one.
+	*   Tells if the object is active for the current ROM: its layout must match the active one AND
+	*   its xflag system (ObjSystem) must match the loaded ROM (UsesLegacyXflags()). Objects tagged
+	*   Legacy show only on <= v32.3 ROMs, New only on > v32.3 ROMs, Any on both. Gates both display
+	*   (SceneRenderer / ObjectRenderer) and resolution (FindObject), so a legacy/new duplicate pair
+	*   sharing an ObjectID never collides.
 	*
 	*   @param ActiveLayout		The active layout
 	*
-	*	@return <b>True</b> if the object layout matches the active layout, <b>false</b> otherwise.
+	*	@return <b>True</b> if the object matches both the active layout and the active xflag system,
+	*			<b>false</b> otherwise.
 	*/
 	bool HasCorrectLayout(GameLayout ActiveLayout);
 

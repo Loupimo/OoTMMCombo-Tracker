@@ -15,10 +15,26 @@
         <collectible location="Ikana Valley Scrub HP" flag="0x1e" item="HEART_PIECE" name="Ledge" xyz="793;209;0"/>
       </rendering_option>
       <rendering_option layout="all">
-        <xflag type="grass" location="Ikana Canyon Grass 1" slice="0x0" setup="0" room="0x0" actor="0x3b" item="RANDOM" name="Grass 1" xyz="425;421;0"/>
-        <xflag type="grass" location="Ikana Canyon Grass 2" slice="0x0" setup="0" room="0x0" actor="0x3c" item="RANDOM" name="Grass 2" xyz="408;413;0"/>
-        <xflag type="grass" location="Ikana Canyon Grass 3" slice="0x0" setup="0" room="0x0" actor="0x3d" item="RANDOM" name="Grass 3" xyz="417;421;0"/>
-        <xflag type="grass" location="Ikana Canyon Grass 4" slice="0x0" setup="0" room="0x0" actor="0x3e" item="RANDOM" name="Grass 4" xyz="399;483;0"/>
+        <actor room="0x0">
+          <match setup="0" actor="0x3b"/>
+          <match setup="3" actor="0x1d"/>
+          <xflag type="grass" location="Ikana Canyon Grass 1" item="RANDOM" name="Grass 1" xyz="425;421;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="0" actor="0x3c"/>
+          <match setup="3" actor="0x1e"/>
+          <xflag type="grass" location="Ikana Canyon Grass 2" item="RANDOM" name="Grass 2" xyz="408;413;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="0" actor="0x3d"/>
+          <match setup="3" actor="0x1f"/>
+          <xflag type="grass" location="Ikana Canyon Grass 3" item="RANDOM" name="Grass 3" xyz="417;421;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="0" actor="0x3e"/>
+          <match setup="3" actor="0x20"/>
+          <xflag type="grass" location="Ikana Canyon Grass 4" item="RANDOM" name="Grass 4" xyz="399;483;0"/>
+        </actor>
       </rendering_option>
       <actor room="0x0">
         <match setup="0" actor="0x6"/>
@@ -78,11 +94,11 @@
   <scene id="SAKON_HIDEOUT">
     <scene_rendering id="MM_SAKON_HIDEOUT" loc_type="overworld">
       <rendering_option layout="all">
-        <xflag type="pot" location="Sakon Hideout Pot Second Room 1" slice="0x0" setup="0" room="0x1" actor="0x27" item="RECOVERY_HEART" name="Second Room 1" xyz="627;257;0"/>
-        <xflag type="pot" location="Sakon Hideout Pot Second Room 2" slice="0x0" setup="0" room="0x1" actor="0x28" item="RECOVERY_HEART" name="Second Room 2" xyz="571;257;0"/>
-        <xflag type="pot" location="Sakon Hideout Pot First Room 1" slice="0x0" setup="0" room="0x1" actor="0x29" item="RECOVERY_HEART" name="First Room 1" xyz="529;257;0"/>
-        <xflag type="pot" location="Sakon Hideout Pot First Room 2" slice="0x0" setup="0" room="0x1" actor="0x2a" item="RECOVERY_HEART" name="First Room 2" xyz="472;257;0"/>
-        <xflag type="pot" location="Sakon Hideout Pot Third Room" slice="0x0" setup="0" room="0x1" actor="0x2b" item="RECOVERY_HEART" name="Third Room" xyz="697;257;0"/>
+        <xflag type="pot" location="Sakon Hideout Pot Second Room 1" setup="0" room="0x1" actor="0x27" item="RECOVERY_HEART" name="Second Room 1" xyz="627;257;0"/>
+        <xflag type="pot" location="Sakon Hideout Pot Second Room 2" setup="0" room="0x1" actor="0x28" item="RECOVERY_HEART" name="Second Room 2" xyz="571;257;0"/>
+        <xflag type="pot" location="Sakon Hideout Pot First Room 1" setup="0" room="0x1" actor="0x29" item="RECOVERY_HEART" name="First Room 1" xyz="529;257;0"/>
+        <xflag type="pot" location="Sakon Hideout Pot First Room 2" setup="0" room="0x1" actor="0x2a" item="RECOVERY_HEART" name="First Room 2" xyz="472;257;0"/>
+        <xflag type="pot" location="Sakon Hideout Pot Third Room" setup="0" room="0x1" actor="0x2b" item="RECOVERY_HEART" name="Third Room" xyz="697;257;0"/>
       </rendering_option>
     </scene_rendering>
   </scene>
@@ -90,20 +106,20 @@
     <scene_rendering id="MM_GROTTO_IKANA_VALLEY_OPEN" loc_type="overworld">
       <rendering_option layout="all">
         <chest location="Ikana Valley Grotto" flag="0x14" item="BOMBCHU_5" name="Chest" xyz="231;410;0"/>
-        <xflag type="grass" location="Ikana Valley Grotto Grass 01" slice="0x0" setup="0" room="0x34" actor="0x0" item="RANDOM" name="Grass 1" xyz="612;542;0"/>
-        <xflag type="grass" location="Ikana Valley Grotto Grass 02" slice="0x0" setup="0" room="0x34" actor="0x1" item="RANDOM" name="Grass 2" xyz="371;494;0"/>
-        <xflag type="grass" location="Ikana Valley Grotto Grass 03" slice="0x0" setup="0" room="0x34" actor="0x2" item="RANDOM" name="Grass 3" xyz="281;467;0"/>
-        <xflag type="grass" location="Ikana Valley Grotto Grass 04" slice="0x0" setup="0" room="0x34" actor="0x3" item="RANDOM" name="Grass 4" xyz="339;480;0"/>
-        <xflag type="grass" location="Ikana Valley Grotto Grass 05" slice="0x0" setup="0" room="0x34" actor="0x5" item="RANDOM" name="Grass 5" xyz="294;449;0"/>
-        <xflag type="grass" location="Ikana Valley Grotto Grass 06" slice="0x0" setup="0" room="0x34" actor="0x6" item="RANDOM" name="Grass 6" xyz="270;444;0"/>
-        <xflag type="grass" location="Ikana Valley Grotto Grass 07" slice="0x0" setup="0" room="0x34" actor="0xa" item="RANDOM" name="Grass 7" xyz="699;497;0"/>
-        <xflag type="grass" location="Ikana Valley Grotto Grass 08" slice="0x0" setup="0" room="0x34" actor="0xb" item="RANDOM" name="Grass 8" xyz="390;431;0"/>
-        <xflag type="grass" location="Ikana Valley Grotto Grass 09" slice="0x0" setup="0" room="0x34" actor="0xc" item="RANDOM" name="Grass 9" xyz="556;453;0"/>
-        <xflag type="grass" location="Ikana Valley Grotto Grass 10" slice="0x0" setup="0" room="0x34" actor="0xe" item="RANDOM" name="Grass 10" xyz="651;467;0"/>
-        <xflag type="grass" location="Ikana Valley Grotto Grass 11" slice="0x0" setup="0" room="0x34" actor="0x10" item="RANDOM" name="Grass 11" xyz="255;388;0"/>
-        <xflag type="grass" location="Ikana Valley Grotto Grass 12" slice="0x0" setup="0" room="0x34" actor="0x11" item="RANDOM" name="Grass 12" xyz="382;418;0"/>
-        <xflag type="grass" location="Ikana Valley Grotto Grass 13" slice="0x0" setup="0" room="0x34" actor="0x12" item="RANDOM" name="Grass 13" xyz="583;448;0"/>
-        <xflag type="grass" location="Ikana Valley Grotto Grass 14" slice="0x0" setup="0" room="0x34" actor="0x13" item="RANDOM" name="Grass 14" xyz="418;418;0"/>
+        <xflag type="grass" location="Ikana Valley Grotto Grass 01" setup="0" room="0x34" actor="0x0" item="RANDOM" name="Grass 1" xyz="612;542;0"/>
+        <xflag type="grass" location="Ikana Valley Grotto Grass 02" setup="0" room="0x34" actor="0x1" item="RANDOM" name="Grass 2" xyz="371;494;0"/>
+        <xflag type="grass" location="Ikana Valley Grotto Grass 03" setup="0" room="0x34" actor="0x2" item="RANDOM" name="Grass 3" xyz="281;467;0"/>
+        <xflag type="grass" location="Ikana Valley Grotto Grass 04" setup="0" room="0x34" actor="0x3" item="RANDOM" name="Grass 4" xyz="339;480;0"/>
+        <xflag type="grass" location="Ikana Valley Grotto Grass 05" setup="0" room="0x34" actor="0x5" item="RANDOM" name="Grass 5" xyz="294;449;0"/>
+        <xflag type="grass" location="Ikana Valley Grotto Grass 06" setup="0" room="0x34" actor="0x6" item="RANDOM" name="Grass 6" xyz="270;444;0"/>
+        <xflag type="grass" location="Ikana Valley Grotto Grass 07" setup="0" room="0x34" actor="0xa" item="RANDOM" name="Grass 7" xyz="699;497;0"/>
+        <xflag type="grass" location="Ikana Valley Grotto Grass 08" setup="0" room="0x34" actor="0xb" item="RANDOM" name="Grass 8" xyz="390;431;0"/>
+        <xflag type="grass" location="Ikana Valley Grotto Grass 09" setup="0" room="0x34" actor="0xc" item="RANDOM" name="Grass 9" xyz="556;453;0"/>
+        <xflag type="grass" location="Ikana Valley Grotto Grass 10" setup="0" room="0x34" actor="0xe" item="RANDOM" name="Grass 10" xyz="651;467;0"/>
+        <xflag type="grass" location="Ikana Valley Grotto Grass 11" setup="0" room="0x34" actor="0x10" item="RANDOM" name="Grass 11" xyz="255;388;0"/>
+        <xflag type="grass" location="Ikana Valley Grotto Grass 12" setup="0" room="0x34" actor="0x11" item="RANDOM" name="Grass 12" xyz="382;418;0"/>
+        <xflag type="grass" location="Ikana Valley Grotto Grass 13" setup="0" room="0x34" actor="0x12" item="RANDOM" name="Grass 13" xyz="583;448;0"/>
+        <xflag type="grass" location="Ikana Valley Grotto Grass 14" setup="0" room="0x34" actor="0x13" item="RANDOM" name="Grass 14" xyz="418;418;0"/>
       </rendering_option>
     </scene_rendering>
   </scene>

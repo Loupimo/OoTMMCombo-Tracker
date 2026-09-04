@@ -40,7 +40,9 @@
       <xflag type="crate" location="Thieves Hideout Crate Kitchen Corridor 4" room="0x3" actor="0xd" item="RUPEE_GREEN" name="Kitchen Corridor 4" xyz="418;243;0"/>
       <xflag type="crate" location="Thieves Hideout Crate Jail 2 1" room="0x5" actor="0xf" item="RUPEE_GREEN" name="Jail 2 - Crate 1" xyz="563;86;0"/>
       <xflag type="crate" location="Thieves Hideout Crate Jail 2 2" room="0x5" actor="0x10" item="RUPEE_GREEN" name="Jail 2 - Crate 2" xyz="578;86;0"/>
-      <xflag type="fairy_spot" location="Gerudo Fortress Kitchen Big Fairy" room="0x3" actor="0x9" item="FAIRY_BIG" name="Kitchen" xyz="285;168;0"/>
+      <rendering_option type="fairy_spot">
+        <xflag type="fairy-spot" location="Gerudo Fortress Kitchen Big Fairy" room="0x3" actor="0x9" item="FAIRY_BIG" name="Kitchen" xyz="285;168;0"/>
+      </rendering_option>
       <xflag type="wonder" location="Gerudo Fortress Wonder Item Jail 1 1" room="0x2" actor="0x2" item="RANDOM" name="Jail 1 - Skull 1" xyz="623;381;0"/>
       <xflag type="wonder" location="Gerudo Fortress Wonder Item Jail 1 2" room="0x2" actor="0x3" item="RANDOM" name="Jail 1 - Skull 2" xyz="624;443;0"/>
       <xflag type="wonder" location="Gerudo Fortress Wonder Item Jail 2 1" room="0x5" actor="0x2" item="RANDOM" name="Jail 2 - Skull 1" xyz="583;55;0"/>

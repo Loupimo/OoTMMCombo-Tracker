@@ -66,9 +66,9 @@
         <xflag type="pot" location="Zora Domain Pot 5" item="STICK" name="Pot 5" xyz="496;528;0"/>
       </actor>
       <rendering_option context="child">
-        <xflag type="hive" location="Zora Domain Hive Front 1" slice="0x0" setup="0" room="0x0" actor="0x9" item="RUPEE_RED" name="Front 1" xyz="533;202;0"/>
-        <xflag type="hive" location="Zora Domain Hive Front 2" slice="0x0" setup="0" room="0x0" actor="0xa" item="RUPEE_RED" name="Front 2" xyz="651;166;0"/>
-        <xflag type="hive" location="Zora Domain Hive Back" slice="0x0" setup="0" room="0x0" actor="0xb" item="RUPEE_RED" name="Back" xyz="598;51;0"/>
+        <xflag type="hive" location="Zora Domain Hive Front 1" setup="0" room="0x0" actor="0x9" item="RUPEE_RED" name="Front 1" xyz="533;202;0"/>
+        <xflag type="hive" location="Zora Domain Hive Front 2" setup="0" room="0x0" actor="0xa" item="RUPEE_RED" name="Front 2" xyz="651;166;0"/>
+        <xflag type="hive" location="Zora Domain Hive Back" setup="0" room="0x0" actor="0xb" item="RUPEE_RED" name="Back" xyz="598;51;0"/>
       </rendering_option>
       <actor room="0x0">
         <match setup="0" actor="0xd"/>

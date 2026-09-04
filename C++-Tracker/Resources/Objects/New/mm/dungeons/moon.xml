@@ -75,25 +75,25 @@
         <collectible location="Moon Trial Goron HP" flag="0x01" item="HEART_PIECE" name="Heart Piece" xyz="217;433;0"/>
       </rendering_option>
       <rendering_option layout="all">
-        <xflag type="pot" location="Moon Trial Goron Pot Early 1" slice="0x0" setup="0" room="0x0" actor="0x1c" item="MAGIC_JAR_LARGE" name="Early 1" xyz="909;361;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot Early 2" slice="0x0" setup="0" room="0x0" actor="0x1d" item="MAGIC_JAR_LARGE" name="Early 2" xyz="917;361;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot Early 3" slice="0x0" setup="0" room="0x0" actor="0x1e" item="MAGIC_JAR_LARGE" name="Early 3" xyz="910;378;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot Early 4" slice="0x0" setup="0" room="0x0" actor="0x1f" item="MAGIC_JAR_LARGE" name="Early 4" xyz="918;378;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot 01" slice="0x0" setup="0" room="0x0" actor="0x15" item="MAGIC_JAR_LARGE" name="Pot 1" xyz="347;270;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot 02" slice="0x0" setup="0" room="0x0" actor="0x16" item="MAGIC_JAR_LARGE" name="Pot 2" xyz="338;270;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot 03" slice="0x0" setup="0" room="0x0" actor="0x17" item="MAGIC_JAR_LARGE" name="Pot 3" xyz="673;243;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot 04" slice="0x0" setup="0" room="0x0" actor="0x18" item="MAGIC_JAR_LARGE" name="Pot 4" xyz="680;243;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot 05" slice="0x0" setup="0" room="0x0" actor="0x19" item="MAGIC_JAR_LARGE" name="Pot 5" xyz="665;243;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot 06" slice="0x0" setup="0" room="0x0" actor="0x1a" item="MAGIC_JAR_LARGE" name="Pot 6" xyz="423;367;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot 07" slice="0x0" setup="0" room="0x0" actor="0x1b" item="MAGIC_JAR_LARGE" name="Pot 7" xyz="423;375;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot 08" slice="0x0" setup="0" room="0x0" actor="0x20" item="MAGIC_JAR_LARGE" name="Pot 8" xyz="154;365;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot 09" slice="0x0" setup="0" room="0x0" actor="0x21" item="MAGIC_JAR_LARGE" name="Pot 9" xyz="153;379;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot 10" slice="0x0" setup="0" room="0x0" actor="0x22" item="MAGIC_JAR_LARGE" name="Pot 10" xyz="162;365;0"/>
-        <xflag type="pot" location="Moon Trial Goron Pot 11" slice="0x0" setup="0" room="0x0" actor="0x23" item="MAGIC_JAR_LARGE" name="Pot 11" xyz="162;379;0"/>
-        <xflag type="icicle" location="Moon Trial Goron Icicle 1" slice="0x0" setup="0" room="0x0" actor="0x0" item="MAGIC_JAR_LARGE" name="Icicle 1" xyz="413;51;0"/>
-        <xflag type="icicle" location="Moon Trial Goron Icicle 2" slice="0x0" setup="0" room="0x0" actor="0x1" item="MAGIC_JAR_LARGE" name="Icicle 2" xyz="433;51;0"/>
-        <xflag type="icicle" location="Moon Trial Goron Icicle 3" slice="0x0" setup="0" room="0x0" actor="0x2" item="MAGIC_JAR_LARGE" name="Icicle 3" xyz="413;69;0"/>
-        <xflag type="icicle" location="Moon Trial Goron Icicle 4" slice="0x0" setup="0" room="0x0" actor="0x3" item="MAGIC_JAR_LARGE" name="Icicle 4" xyz="433;69;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot Early 1" setup="0" room="0x0" actor="0x1c" item="MAGIC_JAR_LARGE" name="Early 1" xyz="909;361;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot Early 2" setup="0" room="0x0" actor="0x1d" item="MAGIC_JAR_LARGE" name="Early 2" xyz="917;361;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot Early 3" setup="0" room="0x0" actor="0x1e" item="MAGIC_JAR_LARGE" name="Early 3" xyz="910;378;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot Early 4" setup="0" room="0x0" actor="0x1f" item="MAGIC_JAR_LARGE" name="Early 4" xyz="918;378;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot 01" setup="0" room="0x0" actor="0x15" item="MAGIC_JAR_LARGE" name="Pot 1" xyz="347;270;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot 02" setup="0" room="0x0" actor="0x16" item="MAGIC_JAR_LARGE" name="Pot 2" xyz="338;270;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot 03" setup="0" room="0x0" actor="0x17" item="MAGIC_JAR_LARGE" name="Pot 3" xyz="673;243;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot 04" setup="0" room="0x0" actor="0x18" item="MAGIC_JAR_LARGE" name="Pot 4" xyz="680;243;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot 05" setup="0" room="0x0" actor="0x19" item="MAGIC_JAR_LARGE" name="Pot 5" xyz="665;243;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot 06" setup="0" room="0x0" actor="0x1a" item="MAGIC_JAR_LARGE" name="Pot 6" xyz="423;367;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot 07" setup="0" room="0x0" actor="0x1b" item="MAGIC_JAR_LARGE" name="Pot 7" xyz="423;375;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot 08" setup="0" room="0x0" actor="0x20" item="MAGIC_JAR_LARGE" name="Pot 8" xyz="154;365;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot 09" setup="0" room="0x0" actor="0x21" item="MAGIC_JAR_LARGE" name="Pot 9" xyz="153;379;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot 10" setup="0" room="0x0" actor="0x22" item="MAGIC_JAR_LARGE" name="Pot 10" xyz="162;365;0"/>
+        <xflag type="pot" location="Moon Trial Goron Pot 11" setup="0" room="0x0" actor="0x23" item="MAGIC_JAR_LARGE" name="Pot 11" xyz="162;379;0"/>
+        <xflag type="icicle" location="Moon Trial Goron Icicle 1" setup="0" room="0x0" actor="0x0" item="MAGIC_JAR_LARGE" name="Icicle 1" xyz="413;51;0"/>
+        <xflag type="icicle" location="Moon Trial Goron Icicle 2" setup="0" room="0x0" actor="0x1" item="MAGIC_JAR_LARGE" name="Icicle 2" xyz="433;51;0"/>
+        <xflag type="icicle" location="Moon Trial Goron Icicle 3" setup="0" room="0x0" actor="0x2" item="MAGIC_JAR_LARGE" name="Icicle 3" xyz="413;69;0"/>
+        <xflag type="icicle" location="Moon Trial Goron Icicle 4" setup="0" room="0x0" actor="0x3" item="MAGIC_JAR_LARGE" name="Icicle 4" xyz="433;69;0"/>
       </rendering_option>
       <actor room="0x0" actor="0x4">
         <rendering_option type="fairy">
@@ -194,14 +194,14 @@
         <collectible location="Moon Trial Link HP" flag="0x01" item="HEART_PIECE" name="Heart Piece" xyz="827;295;0"/>
       </rendering_option>
       <rendering_option layout="all">
-        <xflag type="pot" location="Moon Trial Link Pot 1" slice="0x0" setup="0" room="0x0" actor="0x1" item="RECOVERY_HEART" name="Pot 1" xyz="135;254;0"/>
-        <xflag type="pot" location="Moon Trial Link Pot 2" slice="0x0" setup="0" room="0x0" actor="0x2" item="RECOVERY_HEART" name="Pot 2" xyz="135;265;0"/>
-        <xflag type="pot" location="Moon Trial Link Pot 3" slice="0x0" setup="0" room="0x0" actor="0x3" item="RECOVERY_HEART" name="Pot 3" xyz="124;254;0"/>
-        <xflag type="pot" location="Moon Trial Link Pot 4" slice="0x0" setup="0" room="0x0" actor="0x4" item="RECOVERY_HEART" name="Pot 4" xyz="123;266;0"/>
-        <xflag type="pot" location="Moon Trial Link Pot 5" slice="0x0" setup="0" room="0x0" actor="0x5" item="MAGIC_JAR_LARGE" name="Pot 5" xyz="131;347;0"/>
-        <xflag type="pot" location="Moon Trial Link Pot 6" slice="0x0" setup="0" room="0x0" actor="0x6" item="MAGIC_JAR_LARGE" name="Pot 6" xyz="131;358;0"/>
-        <xflag type="pot" location="Moon Trial Link Pot 7" slice="0x0" setup="0" room="0x0" actor="0x7" item="MAGIC_JAR_LARGE" name="Pot 7" xyz="120;347;0"/>
-        <xflag type="pot" location="Moon Trial Link Pot 8" slice="0x0" setup="0" room="0x0" actor="0x8" item="MAGIC_JAR_LARGE" name="Pot 8" xyz="119;358;0"/>
+        <xflag type="pot" location="Moon Trial Link Pot 1" setup="0" room="0x0" actor="0x1" item="RECOVERY_HEART" name="Pot 1" xyz="135;254;0"/>
+        <xflag type="pot" location="Moon Trial Link Pot 2" setup="0" room="0x0" actor="0x2" item="RECOVERY_HEART" name="Pot 2" xyz="135;265;0"/>
+        <xflag type="pot" location="Moon Trial Link Pot 3" setup="0" room="0x0" actor="0x3" item="RECOVERY_HEART" name="Pot 3" xyz="124;254;0"/>
+        <xflag type="pot" location="Moon Trial Link Pot 4" setup="0" room="0x0" actor="0x4" item="RECOVERY_HEART" name="Pot 4" xyz="123;266;0"/>
+        <xflag type="pot" location="Moon Trial Link Pot 5" setup="0" room="0x0" actor="0x5" item="MAGIC_JAR_LARGE" name="Pot 5" xyz="131;347;0"/>
+        <xflag type="pot" location="Moon Trial Link Pot 6" setup="0" room="0x0" actor="0x6" item="MAGIC_JAR_LARGE" name="Pot 6" xyz="131;358;0"/>
+        <xflag type="pot" location="Moon Trial Link Pot 7" setup="0" room="0x0" actor="0x7" item="MAGIC_JAR_LARGE" name="Pot 7" xyz="120;347;0"/>
+        <xflag type="pot" location="Moon Trial Link Pot 8" setup="0" room="0x0" actor="0x8" item="MAGIC_JAR_LARGE" name="Pot 8" xyz="119;358;0"/>
       </rendering_option>
       <actor room="0x3" actor="0x2">
         <rendering_option type="fairy">

@@ -75,9 +75,11 @@
       <rendering_option layout="oot_mq" room="2">
         <xflag type="pot" location="MQ Water Temple Pot River 1" room="0x15" actor="0x12" item="ARROWS_10" name="River 1" xyz="1038;1243;0"/>
         <xflag type="pot" location="MQ Water Temple Pot River 2" room="0x15" actor="0x13" item="FLEXIBLE" name="River 2" xyz="1053;1254;0"/>
-        <xflag type="fairy_spot" location="MQ Water Temple Big Fairy Before Dark Link Ledge" room="0x6" actor="0x1" item="FAIRY_BIG" name="Before Dark Link - Near Door 2" xyz="377;1311;0"/>
-        <xflag type="fairy_spot" location="MQ Water Temple Big Fairy Before Dark Link Near Door 1" room="0x6" actor="0x5" item="FAIRY_BIG" name="Before Dark Link - Near Door 1" xyz="328;1310;0"/>
-        <xflag type="fairy_spot" location="MQ Water Temple Big Fairy Before Dark Link Near Door 2" room="0x6" actor="0x6" item="FAIRY_BIG" name="Before Dark Link - Ledge" xyz="352;1512;0"/>
+      </rendering_option>
+      <rendering_option layout="oot_mq" room="2" type="fairy_spot">
+        <xflag type="fairy-spot" location="MQ Water Temple Big Fairy Before Dark Link Ledge" room="0x6" actor="0x1" item="FAIRY_BIG" name="Before Dark Link - Near Door 2" xyz="377;1311;0"/>
+        <xflag type="fairy-spot" location="MQ Water Temple Big Fairy Before Dark Link Near Door 1" room="0x6" actor="0x5" item="FAIRY_BIG" name="Before Dark Link - Near Door 1" xyz="328;1310;0"/>
+        <xflag type="fairy-spot" location="MQ Water Temple Big Fairy Before Dark Link Near Door 2" room="0x6" actor="0x6" item="FAIRY_BIG" name="Before Dark Link - Ledge" xyz="352;1512;0"/>
       </rendering_option>
       <rendering_option layout="oot_mq" room="3">
         <xflag type="wonder" location="MQ Water Temple Wonder Item Under Pillar Room" room="0x2" actor="0x18" item="MAGIC_JAR_LARGE" name="Under Pillar Room - Portrait" xyz="568;77;0"/>

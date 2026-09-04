@@ -13,45 +13,85 @@
         <gs location="Kokiri Forest GS Night Adult" flag="0x62" item="GS_TOKEN" name="Adult - Twin's House Roof" xyz="1205;498;0"/>
       </rendering_option>
       <rendering_option context="child">
-        <xflag type="grass" location="Kokiri Forest Grass Child Near Crawl 1" slice="0x0" setup="0" room="0x0" actor="0x3c" item="RANDOM" name="Child - Near Crawl 1" xyz="597;706;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Child Near Crawl 2" slice="0x0" setup="0" room="0x0" actor="0x3d" item="RANDOM" name="Child - Near Crawl 2" xyz="607;723;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Child Near Crawl 3" slice="0x0" setup="0" room="0x0" actor="0x3e" item="RANDOM" name="Child - Near Crawl 3" xyz="631;729;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Child Near Crawl 4" slice="0x0" setup="0" room="0x0" actor="0x3f" item="RANDOM" name="Child - Near Crawl 4" xyz="626;705;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Child Near Crawl 5" slice="0x0" setup="0" room="0x0" actor="0x40" item="RANDOM" name="Child - Near Crawl 5" xyz="652;709;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Child Near Crawl 6" slice="0x0" setup="0" room="0x0" actor="0x41" item="RANDOM" name="Child - Near Crawl 6" xyz="677;722;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Child Near Crawl 7" slice="0x0" setup="0" room="0x0" actor="0x42" item="RANDOM" name="Child - Near Crawl 7" xyz="707;723;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Child Near Crawl 8" slice="0x0" setup="0" room="0x0" actor="0x43" item="RANDOM" name="Child - Near Crawl 8" xyz="706;698;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Child 1" slice="0x0" setup="0" room="0x0" actor="0x44" item="RANDOM" name="Child - Grass 1" xyz="958;574;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Child 2" slice="0x0" setup="0" room="0x0" actor="0x45" item="RANDOM" name="Child - Grass 2" xyz="999;558;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Child 3" slice="0x0" setup="0" room="0x0" actor="0x46" item="RANDOM" name="Child - Grass 3" xyz="999;538;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Child 4" slice="0x0" setup="0" room="0x0" actor="0x47" item="RANDOM" name="Child - Grass 4" xyz="1028;545;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Child Crawl 1" slice="0x0" setup="0" room="0x2" actor="0x2" item="RECOVERY_HEART" name="Child - Crawl 1" xyz="562;1039;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Child Crawl 2" slice="0x0" setup="0" room="0x2" actor="0x3" item="DEKU_SEEDS_5" name="Child - Crawl 2" xyz="715;1218;1"/>
-        <xflag type="grass" location="Kokiri Forest Grass Child Crawl 3" slice="0x0" setup="0" room="0x2" actor="0x4" item="RECOVERY_HEART" name="Child - Crawl 3" xyz="919;1427;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Child Kokiri" slice="0x0" setup="0" room="0x0" actor="0x3b" item="NOTHING" name="Child - Kokiri" xyz="1018;525;0"/>
+        <xflag type="grass" location="Kokiri Forest Grass Child Near Crawl 1" setup="0" room="0x0" actor="0x3c" item="RANDOM" name="Child - Near Crawl 1" xyz="597;706;0"/>
+        <xflag type="grass" location="Kokiri Forest Grass Child Near Crawl 2" setup="0" room="0x0" actor="0x3d" item="RANDOM" name="Child - Near Crawl 2" xyz="607;723;0"/>
+        <actor>
+          <match room="0x0" setup="0" actor="0x3e"/>
+          <match room="0x2" setup="0" actor="0x09"/>
+          <xflag type="grass" location="Kokiri Forest Grass Child Near Crawl 3" item="RANDOM" name="Child - Near Crawl 3" xyz="631;729;0"/>
+        </actor>
+        <xflag type="grass" location="Kokiri Forest Grass Child Near Crawl 4" setup="0" room="0x0" actor="0x3f" item="RANDOM" name="Child - Near Crawl 4" xyz="626;705;0"/>
+        <xflag type="grass" location="Kokiri Forest Grass Child Near Crawl 5" setup="0" room="0x0" actor="0x40" item="RANDOM" name="Child - Near Crawl 5" xyz="652;709;0"/>
+        <xflag type="grass" location="Kokiri Forest Grass Child Near Crawl 6" setup="0" room="0x0" actor="0x41" item="RANDOM" name="Child - Near Crawl 6" xyz="677;722;0"/>
+        <xflag type="grass" location="Kokiri Forest Grass Child 1" setup="0" room="0x0" actor="0x44" item="RANDOM" name="Child - Grass 1" xyz="958;574;0"/>
+        <xflag type="grass" location="Kokiri Forest Grass Child 2" setup="0" room="0x0" actor="0x45" item="RANDOM" name="Child - Grass 2" xyz="999;558;0"/>
+        <xflag type="grass" location="Kokiri Forest Grass Child 3" setup="0" room="0x0" actor="0x46" item="RANDOM" name="Child - Grass 3" xyz="999;538;0"/>
+        <xflag type="grass" location="Kokiri Forest Grass Child 4" setup="0" room="0x0" actor="0x47" item="RANDOM" name="Child - Grass 4" xyz="1028;545;0"/>
+        <xflag type="grass" location="Kokiri Forest Grass Child Crawl 1" setup="0" room="0x2" actor="0x2" item="RECOVERY_HEART" name="Child - Crawl 1" xyz="562;1039;0"/>
+        <xflag type="grass" location="Kokiri Forest Grass Child Crawl 2" setup="0" room="0x2" actor="0x3" item="DEKU_SEEDS_5" name="Child - Crawl 2" xyz="715;1218;1"/>
+        <xflag type="grass" location="Kokiri Forest Grass Child Crawl 3" setup="0" room="0x2" actor="0x4" item="RECOVERY_HEART" name="Child - Crawl 3" xyz="919;1427;0"/>
+        <xflag type="grass" location="Kokiri Forest Grass Child Kokiri" setup="0" room="0x0" actor="0x3b" item="NOTHING" name="Child - Kokiri" xyz="1018;525;0"/>
       </rendering_option>
       <rendering_option context="adult">
-        <xflag type="grass" location="Kokiri Forest Grass Adult 01" slice="0x0" setup="2" room="0x0" actor="0x17" item="RANDOM" name="Adult - Grass 1" xyz="1085;540;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Adult 02" slice="0x1" setup="2" room="0x0" actor="0x17" item="RANDOM" name="Adult - Grass 2" xyz="1078;522;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Adult 03" slice="0x2" setup="2" room="0x0" actor="0x17" item="RANDOM" name="Adult - Grass 3" xyz="1058;522;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Adult 04" slice="0x3" setup="2" room="0x0" actor="0x17" item="RANDOM" name="Adult - Grass 4" xyz="1050;540;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Adult 05" slice="0x4" setup="2" room="0x0" actor="0x17" item="RANDOM" name="Adult - Grass 5" xyz="1068;538;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Adult 06" slice="0x5" setup="2" room="0x0" actor="0x17" item="RANDOM" name="Adult - Grass 6" xyz="1084;530;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Adult 07" slice="0x6" setup="2" room="0x0" actor="0x17" item="RANDOM" name="Adult - Grass 7" xyz="1068;520;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Adult 08" slice="0x7" setup="2" room="0x0" actor="0x17" item="RANDOM" name="Adult - Grass 8" xyz="1052;530;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Adult 09" slice="0x8" setup="2" room="0x0" actor="0x17" item="RANDOM" name="Adult - Grass 9" xyz="1055;549;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Adult 10" slice="0x9" setup="2" room="0x0" actor="0x17" item="RANDOM" name="Adult - Grass 10" xyz="1063;555;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Adult 11" slice="0xa" setup="2" room="0x0" actor="0x17" item="RANDOM" name="Adult - Grass 11" xyz="1073;556;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Adult 12" slice="0xb" setup="2" room="0x0" actor="0x17" item="RANDOM" name="Adult - Grass 12" xyz="1082;550;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Adult Near Crawl 1" slice="0x0" setup="2" room="0x0" actor="0xf" item="RANDOM" name="Adult - Near Crawl 1" xyz="597;733;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Adult Near Crawl 2" slice="0x0" setup="2" room="0x0" actor="0x10" item="RANDOM" name="Adult - Near Crawl 2" xyz="597;707;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Adult Near Crawl 3" slice="0x0" setup="2" room="0x0" actor="0x11" item="RANDOM" name="Adult - Near Crawl 3" xyz="607;720;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Adult Near Crawl 4" slice="0x0" setup="2" room="0x0" actor="0x12" item="RANDOM" name="Adult - Near Crawl 4" xyz="617;732;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Adult Near Crawl 5" slice="0x0" setup="2" room="0x0" actor="0x13" item="RANDOM" name="Adult - Near Crawl 5" xyz="615;706;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Adult Near Crawl 6" slice="0x0" setup="2" room="0x0" actor="0x14" item="RANDOM" name="Adult - Near Crawl 6" xyz="625;719;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Adult Near Crawl 7" slice="0x0" setup="2" room="0x0" actor="0x15" item="RANDOM" name="Adult - Near Crawl 7" xyz="698;724;0"/>
-        <xflag type="grass" location="Kokiri Forest Grass Adult Near Crawl 8" slice="0x0" setup="2" room="0x0" actor="0x16" item="RANDOM" name="Adult - Near Crawl 8" xyz="698;699;0"/>
+        <actor room="0x0">
+          <match setup="2" actor="0x17"/>
+          <match setup="3" actor="0x1e"/>
+          <xflag type="grass" location="Kokiri Forest Grass Adult 01" slice="0x0" item="RANDOM" name="Adult - Grass 1" xyz="1085;540;0"/>
+          <xflag type="grass" location="Kokiri Forest Grass Adult 02" slice="0x1" item="RANDOM" name="Adult - Grass 2" xyz="1078;522;0"/>
+          <xflag type="grass" location="Kokiri Forest Grass Adult 03" slice="0x2" item="RANDOM" name="Adult - Grass 3" xyz="1058;522;0"/>
+          <xflag type="grass" location="Kokiri Forest Grass Adult 04" slice="0x3" item="RANDOM" name="Adult - Grass 4" xyz="1050;540;0"/>
+          <xflag type="grass" location="Kokiri Forest Grass Adult 05" slice="0x4" item="RANDOM" name="Adult - Grass 5" xyz="1068;538;0"/>
+          <xflag type="grass" location="Kokiri Forest Grass Adult 06" slice="0x5" item="RANDOM" name="Adult - Grass 6" xyz="1084;530;0"/>
+          <xflag type="grass" location="Kokiri Forest Grass Adult 07" slice="0x6" item="RANDOM" name="Adult - Grass 7" xyz="1068;520;0"/>
+          <xflag type="grass" location="Kokiri Forest Grass Adult 08" slice="0x7" item="RANDOM" name="Adult - Grass 8" xyz="1052;530;0"/>
+          <xflag type="grass" location="Kokiri Forest Grass Adult 09" slice="0x8" item="RANDOM" name="Adult - Grass 9" xyz="1055;549;0"/>
+          <xflag type="grass" location="Kokiri Forest Grass Adult 10" slice="0x9" item="RANDOM" name="Adult - Grass 10" xyz="1063;555;0"/>
+          <xflag type="grass" location="Kokiri Forest Grass Adult 11" slice="0xa" item="RANDOM" name="Adult - Grass 11" xyz="1073;556;0"/>
+          <xflag type="grass" location="Kokiri Forest Grass Adult 12" slice="0xb" item="RANDOM" name="Adult - Grass 12" xyz="1082;550;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="2" actor="0x0f"/>
+          <match setup="3" actor="0x1d"/>
+          <xflag type="grass" location="Kokiri Forest Grass Adult Near Crawl 1" item="RANDOM" name="Adult - Near Crawl 1" xyz="597;733;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="2" actor="0x10"/>
+          <match setup="3" actor="0x1c"/>
+          <xflag type="grass" location="Kokiri Forest Grass Adult Near Crawl 2" item="RANDOM" name="Adult - Near Crawl 2" xyz="597;707;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="2" actor="0x11"/>
+          <match setup="3" actor="0x1b"/>
+          <xflag type="grass" location="Kokiri Forest Grass Adult Near Crawl 3" item="RANDOM" name="Adult - Near Crawl 3" xyz="607;720;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="2" actor="0x12"/>
+          <match setup="3" actor="0x1a"/>
+          <xflag type="grass" location="Kokiri Forest Grass Adult Near Crawl 4" item="RANDOM" name="Adult - Near Crawl 4" xyz="617;732;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="2" actor="0x13"/>
+          <match setup="3" actor="0x19"/>
+          <xflag type="grass" location="Kokiri Forest Grass Adult Near Crawl 5" item="RANDOM" name="Adult - Near Crawl 5" xyz="615;706;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="2" actor="0x14"/>
+          <match setup="3" actor="0x18"/>
+          <xflag type="grass" location="Kokiri Forest Grass Adult Near Crawl 6" item="RANDOM" name="Adult - Near Crawl 6" xyz="625;719;0"/>
+        </actor>
       </rendering_option>
+      <actor room="0x0">
+        <match setup="0" actor="0x42"/>
+        <match setup="2" actor="0x15"/>
+        <match setup="3" actor="0x17"/>
+        <xflag type="grass" location="Kokiri Forest Grass Near Crawl 1" system="new" item="RANDOM" name="Near Crawl 1" xyz="707;723;0"/>
+      </actor>
+      <actor room="0x0">
+        <match setup="0" actor="0x43"/>
+        <match setup="2" actor="0x16"/>
+        <match setup="3" actor="0x16"/>
+        <xflag type="grass" location="Kokiri Forest Grass Near Crawl 2" system="new" item="RANDOM" name="Near Crawl 2" xyz="706;698;0"/>
+      </actor>
       <rendering_option context="child">
         <xflag type="rock" location="Kokiri Forest Rock Child 1" setup="0" room="0x0" actor="0x2a" item="NOTHING" name="Child - Rock 1" xyz="599;799;1"/>
         <xflag type="rock" location="Kokiri Forest Rock Child 2" setup="0" room="0x0" actor="0x2b" item="NOTHING" name="Child - Rock 2" xyz="598;782;0"/>
@@ -102,17 +142,19 @@
         <xflag type="wonder" location="Kokiri Forest Wonder Item Invisible Rupee 2" setup="0" room="0x0" actor="0x2" item="RUPEE_GREEN" name="Invisible Rupee 2" xyz="679;546;0"/>
         <xflag type="wonder" location="Kokiri Forest Wonder Item Invisible Rupee 3" setup="0" room="0x0" actor="0x3" item="RUPEE_GREEN" name="Invisible Rupee 3" xyz="737;312;0"/>
         <xflag type="wonder" location="Kokiri Forest Wonder Item Invisible Rupee 4" setup="0" room="0x0" actor="0x4" item="RUPEE_GREEN" name="Invisible Rupee 4" xyz="770;307;0"/>
-        <xflag type="wonder" location="Kokiri Forest Wonder Item Sign" slice="0x0" setup="0" room="0x0" actor="0x20" item="RUPEE_BLUE" name="Training Signpost" xyz="699;669;0"/>
-        <xflag type="wonder" location="Kokiri Forest Wonder Item Midair 1" slice="0x0" setup="0" room="0x0" actor="0x27" item="RUPEE_GREEN" name="Midair 1" xyz="658;805;0"/>
-        <xflag type="wonder" location="Kokiri Forest Wonder Item Midair 2" slice="0x0" setup="0" room="0x0" actor="0x28" item="RUPEE_GREEN" name="Midair 2" xyz="660;762;0"/>
-        <xflag type="wonder" location="Kokiri Forest Wonder Item Midair 3" slice="0x0" setup="0" room="0x0" actor="0x29" item="RUPEE_BLUE" name="Midair 3" xyz="674;781;0"/>
-        <xflag type="wonder" location="Kokiri Forest Wonder Item Crawl 1" slice="0x0" setup="0" room="0x2" actor="0x5" item="RUPEE_GREEN" name="Crawl 1" xyz="776;1100;0"/>
-        <xflag type="wonder" location="Kokiri Forest Wonder Item Crawl 2" slice="0x0" setup="0" room="0x2" actor="0x6" item="RUPEE_GREEN" name="Crawl 2" xyz="780;1170;0"/>
-        <xflag type="wonder" location="Kokiri Forest Wonder Item Platforms 1" slice="0x0" setup="0" room="0x0" actor="0x21" item="RUPEE_BLUE" name="Platforms 1" xyz="1093;389;0"/>
-        <xflag type="wonder" location="Kokiri Forest Wonder Item Platforms 2" slice="0x0" setup="0" room="0x0" actor="0x26" item="RUPEE_BLUE" name="Platforms 2" xyz="861;360;0"/>
-        <xflag type="soil" location="Kokiri Forest Soil 1" slice="0x0" setup="0" room="0x0" actor="0x49" item="FAIRY" name="Soil 1" xyz="1056;226;0"/>
-        <xflag type="soil" location="Kokiri Forest Soil 2" slice="0x1" setup="0" room="0x0" actor="0x49" item="FAIRY" name="Soil 2" xyz="1064;214;0"/>
-        <xflag type="soil" location="Kokiri Forest Soil 3" slice="0x2" setup="0" room="0x0" actor="0x49" item="FAIRY" name="Soil 3" xyz="1047;214;0"/>
+        <xflag type="wonder" location="Kokiri Forest Wonder Item Sign" setup="0" room="0x0" actor="0x20" item="RUPEE_BLUE" name="Training Signpost" xyz="699;669;0"/>
+        <xflag type="wonder" location="Kokiri Forest Wonder Item Midair 1" setup="0" room="0x0" actor="0x27" item="RUPEE_GREEN" name="Midair 1" xyz="658;805;0"/>
+        <xflag type="wonder" location="Kokiri Forest Wonder Item Midair 2" setup="0" room="0x0" actor="0x28" item="RUPEE_GREEN" name="Midair 2" xyz="660;762;0"/>
+        <xflag type="wonder" location="Kokiri Forest Wonder Item Midair 3" setup="0" room="0x0" actor="0x29" item="RUPEE_BLUE" name="Midair 3" xyz="674;781;0"/>
+        <xflag type="wonder" location="Kokiri Forest Wonder Item Crawl 1" setup="0" room="0x2" actor="0x5" item="RUPEE_GREEN" name="Crawl 1" xyz="776;1100;0"/>
+        <xflag type="wonder" location="Kokiri Forest Wonder Item Crawl 2" setup="0" room="0x2" actor="0x6" item="RUPEE_GREEN" name="Crawl 2" xyz="780;1170;0"/>
+        <xflag type="wonder" location="Kokiri Forest Wonder Item Platforms 1" setup="0" room="0x0" actor="0x21" item="RUPEE_BLUE" name="Platforms 1" xyz="1093;389;0"/>
+        <xflag type="wonder" location="Kokiri Forest Wonder Item Platforms 2" setup="0" room="0x0" actor="0x26" item="RUPEE_BLUE" name="Platforms 2" xyz="861;360;0"/>
+        <actor room="0x0" setup="0" actor="0x49">
+          <xflag type="soil" location="Kokiri Forest Soil 1" slice="0x0" item="FAIRY" name="Soil 1" xyz="1056;226;0"/>
+          <xflag type="soil" location="Kokiri Forest Soil 2" slice="0x1" item="FAIRY" name="Soil 2" xyz="1064;214;0"/>
+          <xflag type="soil" location="Kokiri Forest Soil 3" slice="0x2" item="FAIRY" name="Soil 3" xyz="1047;214;0"/>
+        </actor>
       </rendering_option>
       <actor room="0x0">
         <match setup="0" actor="0xf"/>
@@ -147,6 +189,14 @@
           <xflag type="gossip-big" location="Kokiri Forest Gossip Big Fairy Near Deku Tree 2" slice="1" item="FAIRY_BIG" name="Gossip Stone - Near Deku Tree 2" xyz="814;280;0"/>
         </rendering_option>
       </actor>
+      <rendering_option context="child">
+        <xflag type="grass" location="Kokiri Forest Grass Child Near Crawl 7" system="legacy" setup="0" room="0x0" actor="0x42" item="RANDOM" name="Child - Near Crawl 7" xyz="707;723;0"/>
+        <xflag type="grass" location="Kokiri Forest Grass Child Near Crawl 8" system="legacy" setup="0" room="0x0" actor="0x43" item="RANDOM" name="Child - Near Crawl 8" xyz="706;698;0"/>
+      </rendering_option>
+      <rendering_option context="adult">
+        <xflag type="grass" location="Kokiri Forest Grass Adult Near Crawl 7" system="legacy" setup="2" room="0x0" actor="0x15" item="RANDOM" name="Adult - Near Crawl 7" xyz="698;724;0"/>
+        <xflag type="grass" location="Kokiri Forest Grass Adult Near Crawl 8" system="legacy" setup="2" room="0x0" actor="0x16" item="RANDOM" name="Adult - Near Crawl 8" xyz="698;699;0"/>
+      </rendering_option>
     </scene_rendering>
   </scene>
   <scene name="Link's House" id="LINK_HOUSE">

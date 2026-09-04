@@ -2,30 +2,62 @@
 <checks game="oot">
   <scene id="MARKET_CHILD_DAY">
     <scene_rendering id="OOT_MARKET_CHILD_DAY" loc_type="overworld">
-      <xflag type="crate" location="Market Crate 1" slice="0x0" setup="0" room="0x0" actor="0x21" item="RUPEE_RED" name="Crate 1" xyz="438;41;0"/>
-      <xflag type="crate" location="Market Crate 2" slice="0x0" setup="0" room="0x0" actor="0x22" item="RUPEE_GREEN" name="Crate 2" xyz="410;41;0"/>
-      <xflag type="crate" location="Market Crate 3" slice="0x0" setup="0" room="0x0" actor="0x23" item="RUPEE_GREEN" name="Crate 3" xyz="721;372;0"/>
-      <xflag type="crate" location="Market Crate 4" slice="0x0" setup="0" room="0x0" actor="0x24" item="RUPEE_GREEN" name="Crate 4" xyz="724;474;0"/>
-      <xflag type="grass" location="Market Grass 1" slice="0x0" setup="0" room="0x0" actor="0x17" item="RANDOM" name="Grass 1" xyz="518;212;0"/>
-      <xflag type="grass" location="Market Grass 2" slice="0x0" setup="0" room="0x0" actor="0x18" item="RANDOM" name="Grass 2" xyz="518;153;0"/>
-      <xflag type="grass" location="Market Grass 3" slice="0x0" setup="0" room="0x0" actor="0x19" item="RANDOM" name="Grass 3" xyz="518;99;0"/>
-      <xflag type="grass" location="Market Grass 4" slice="0x0" setup="0" room="0x0" actor="0x1a" item="RANDOM" name="Grass 4" xyz="682;52;0"/>
-      <xflag type="grass" location="Market Grass 5" slice="0x0" setup="0" room="0x0" actor="0x1b" item="RANDOM" name="Grass 5" xyz="697;53;0"/>
-      <xflag type="grass" location="Market Grass 6" slice="0x0" setup="0" room="0x0" actor="0x1c" item="RANDOM" name="Grass 6" xyz="716;53;0"/>
-      <xflag type="grass" location="Market Grass 7" slice="0x0" setup="0" room="0x0" actor="0x1d" item="RANDOM" name="Grass 7" xyz="417;418;0"/>
-      <xflag type="grass" location="Market Grass 8" slice="0x0" setup="0" room="0x0" actor="0x1e" item="RANDOM" name="Grass 8" xyz="429;444;0"/>
-      <xflag type="tree" location="Market Tree" slice="0x0" setup="0" room="0x0" actor="0xe" item="NOTHING" name="Tree" xyz="433;427;0"/>
-      <xflag type="wonder" location="Market Wonder Item Day 1" slice="0x0" setup="0" room="0x0" actor="0xf" item="RUPEE_GREEN" name="Day - Balcony 1" xyz="202;118;0"/>
-      <xflag type="wonder" location="Market Wonder Item Day 2" slice="0x0" setup="0" room="0x0" actor="0x10" item="RUPEE_GREEN" name="Day - Balcony 2" xyz="200;179;0"/>
-      <xflag type="wonder" location="Market Wonder Item Day 3" slice="0x0" setup="0" room="0x0" actor="0x11" item="RUPEE_GREEN" name="Day - Balcony 3" xyz="199;238;0"/>
-      <xflag type="wonder" location="Market Wonder Item Day 4" slice="0x0" setup="0" room="0x0" actor="0x12" item="RUPEE_GREEN" name="Day - Balcony 4" xyz="197;298;0"/>
-      <xflag type="wonder" location="Market Wonder Item Day 5" slice="0x0" setup="0" room="0x0" actor="0x13" item="RUPEE_GREEN" name="Day - Balcony 5" xyz="198;363;0"/>
+      <xflag type="crate" location="Market Crate 1" actor="0x21" item="RUPEE_RED" name="Crate 1" xyz="438;41;0"/>
+      <xflag type="crate" location="Market Crate 2" actor="0x22" item="RUPEE_GREEN" name="Crate 2" xyz="410;41;0"/>
+      <xflag type="crate" location="Market Crate 3" actor="0x23" item="RUPEE_GREEN" name="Crate 3" xyz="721;372;0"/>
+      <xflag type="crate" location="Market Crate 4" actor="0x24" item="RUPEE_GREEN" name="Crate 4" xyz="724;474;0"/>
+      <actor>
+        <match actor="0x17" scene="MARKET_CHILD_DAY"/>
+        <match actor="0x07" scene="MARKET_CHILD_NIGHT"/>
+        <xflag type="grass" location="Market Grass 1" item="RANDOM" name="Grass 1" xyz="518;212;0"/>
+      </actor>
+      <actor>
+        <match actor="0x18" scene="MARKET_CHILD_DAY"/>
+        <match actor="0x08" scene="MARKET_CHILD_NIGHT"/>
+        <xflag type="grass" location="Market Grass 2" item="RANDOM" name="Grass 2" xyz="518;153;0"/>
+      </actor>
+      <actor>
+        <match actor="0x19" scene="MARKET_CHILD_DAY"/>
+        <match actor="0x09" scene="MARKET_CHILD_NIGHT"/>
+        <xflag type="grass" location="Market Grass 3" item="RANDOM" name="Grass 3" xyz="518;99;0"/>
+      </actor>
+      <actor>
+        <match actor="0x1a" scene="MARKET_CHILD_DAY"/>
+        <match actor="0x0a" scene="MARKET_CHILD_NIGHT"/>
+        <xflag type="grass" location="Market Grass 4" item="RANDOM" name="Grass 4" xyz="682;52;0"/>
+      </actor>
+      <actor>
+        <match actor="0x1b" scene="MARKET_CHILD_DAY"/>
+        <match actor="0x0b" scene="MARKET_CHILD_NIGHT"/>
+        <xflag type="grass" location="Market Grass 5" item="RANDOM" name="Grass 5" xyz="697;53;0"/>
+      </actor>
+      <actor>
+        <match actor="0x1c" scene="MARKET_CHILD_DAY"/>
+        <match actor="0x0c" scene="MARKET_CHILD_NIGHT"/>
+        <xflag type="grass" location="Market Grass 6" item="RANDOM" name="Grass 6" xyz="716;53;0"/>
+      </actor>
+      <actor>
+        <match actor="0x1d" scene="MARKET_CHILD_DAY"/>
+        <match actor="0x0d" scene="MARKET_CHILD_NIGHT"/>
+        <xflag type="grass" location="Market Grass 7" item="RANDOM" name="Grass 7" xyz="417;418;0"/>
+      </actor>
+      <actor>
+        <match actor="0x1e" scene="MARKET_CHILD_DAY"/>
+        <match actor="0x0e" scene="MARKET_CHILD_NIGHT"/>
+        <xflag type="grass" location="Market Grass 8" item="RANDOM" name="Grass 8" xyz="429;444;0"/>
+      </actor>
+      <xflag type="tree" location="Market Tree" actor="0xe" item="NOTHING" name="Tree" xyz="433;427;0"/>
+      <xflag type="wonder" location="Market Wonder Item Day 1" actor="0xf" item="RUPEE_GREEN" name="Day - Balcony 1" xyz="202;118;0"/>
+      <xflag type="wonder" location="Market Wonder Item Day 2" actor="0x10" item="RUPEE_GREEN" name="Day - Balcony 2" xyz="200;179;0"/>
+      <xflag type="wonder" location="Market Wonder Item Day 3" actor="0x11" item="RUPEE_GREEN" name="Day - Balcony 3" xyz="199;238;0"/>
+      <xflag type="wonder" location="Market Wonder Item Day 4" actor="0x12" item="RUPEE_GREEN" name="Day - Balcony 4" xyz="197;298;0"/>
+      <xflag type="wonder" location="Market Wonder Item Day 5" actor="0x13" item="RUPEE_GREEN" name="Day - Balcony 5" xyz="198;363;0"/>
     </scene_rendering>
   </scene>
   <scene id="MARKET_CHILD_NIGHT">
     <scene_rendering id="OOT_MARKET_CHILD_NIGHT" loc_type="overworld">
-      <xflag type="wonder" location="Market Wonder Item Night 1" slice="0x0" setup="0" room="0x0" actor="0x5" item="RUPEE_BLUE" name="Night - Balcony 1" xyz="200;168;0"/>
-      <xflag type="wonder" location="Market Wonder Item Night 2" slice="0x0" setup="0" room="0x0" actor="0x6" item="RUPEE_BLUE" name="Night - Balcony 2" xyz="196;314;0"/>
+      <xflag type="wonder" location="Market Wonder Item Night 1" setup="0" room="0x0" actor="0x5" item="RUPEE_BLUE" name="Night - Balcony 1" xyz="200;168;0"/>
+      <xflag type="wonder" location="Market Wonder Item Night 2" setup="0" room="0x0" actor="0x6" item="RUPEE_BLUE" name="Night - Balcony 2" xyz="196;314;0"/>
     </scene_rendering>
   </scene>
   <scene id="BACK_ALLEY_HOUSE">
@@ -40,7 +72,7 @@
       <rendering_option type="heart_piece">
         <npc location="Market Dog Lady HP" npc="DOG_LADY" item="HEART_PIECE" name="Dog Lady" xyz="436;214;0"/>
       </rendering_option>
-      <xflag type="crate" location="Market Dog Lady Crate" slice="0x0" setup="0" room="0x0" actor="0x2" item="RUPEE_BLUE" name="Crate" xyz="657;105;0"/>
+      <xflag type="crate" location="Market Dog Lady Crate" setup="0" room="0x0" actor="0x2" item="RUPEE_BLUE" name="Crate" xyz="657;105;0"/>
     </scene_rendering>
   </scene>
   <scene id="GUARD_HOUSE">
