@@ -4,6 +4,12 @@
 #include "Patterns.h"
 
 GamePatternState gPatternState[2]; // 0 = OoT, 1 = MM
+
+// L'ASM de PCHook/CheckGameVersionASM indexe gPatternState avec la constante PATTERN_STATE_SIZE
+// (imul edx, PATTERN_STATE_SIZE + resets), alors que le C++ utilise sizeof(GamePatternState).
+// Les deux DOIVENT coincider, sinon l'index MM (game 1) est decale (bug MM -> OoT -> MM).
+static_assert(sizeof(GamePatternState) == PATTERN_STATE_SIZE,
+    "PATTERN_STATE_SIZE doit egaler sizeof(GamePatternState) : ajuste la macro dans PatternScanner.h apres tout changement du nombre de PCs.");
 int32_t gActiveProfile = -1;       // Index du profil de version actif dans gProfiles (-1 = non detecte)
 
 __forceinline uint32_t ByteSwap32(uint32_t x)

@@ -5,7 +5,7 @@
 #define PAYLOAD_START 0x80400000         // The combo payload start RAM address.
 #define PAYLOAD_END   0x80800000         // The combo payload last RAM address.
 #define MAX_JAL 10                       // The maximum number of JAL instructions a fast pattern resolver can have.
-#define PATTERN_STATE_SIZE 32            // The size of the GamePatternState structure.
+#define PATTERN_STATE_SIZE 36            // The size of the GamePatternState structure (bool Resolved + 3 padding + uint32_t PCs[8]). MUST match sizeof(GamePatternState), see the static_assert in PatternScanner.cpp.
 #define OOT_HOOK_INIT_STABLE_PCOFF 0x4D0 // The offset to add to the hookInit_Play OoT function to place the hook for stable release.
 #define OOT_HOOK_INIT_DEV_PCOFF 0x490    // The offset to add to the hookInit_Play OoT function to place the hook for dev release.
 #define MM_HOOK_INIT_STABLE_PCOFF 0x58C  // The offset to add to the hookInit_Play MM function to place the hook for stable release.

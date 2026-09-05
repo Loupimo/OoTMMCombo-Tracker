@@ -234,15 +234,15 @@ uint32_t Mask_Play_TransitionDone_OoT[] =
 {
     0xFFFFFFFF,                     // LUI      V0, 0x0001             <-- Play_TransitionDone_Start
     0xFFFFFFFF,                     // ADDU     V0, A0, V0
-    0xFFFFFFFF,                     // LHU      V0, 0x1E1A (V0)
+    0xFF00FFFF,                     // LHU      V0, 0x1E1A (V0)
     0xFFFFFFFF,                     // ADDIU    SP, SP, -0x28
-    0xFFFFFFFF,                     // ORI      V1, R0, 0xFFFD
+    0xFF00FFFF,                     // ORI      V1, R0, 0xFFFD
     0xFFFFFFFF,                     // SW       S1, 0x0020 (SP)
     0xFFFFFFFF,                     // SW       S0, 0x001C (SP)
     0xFFFFFFFF,                     // SW       RA, 0x0024 (SP)
     0xFFFFFFFF,                     // OR       S0, A0, R0
-    0xFFFFFFFF,                     // SW       V0, 0x0010 (SP)
-    0xFFFFFFFF                      // BEQ      V0, V1, 0x8042BF88
+    0xFF00FFFF,                     // SW       V0, 0x0010 (SP)
+    0xFF000000                      // BEQ      V0, V1, 0x8042BF88
 };
 
 //PCSignature Sig_Play_TransitionDone_OoT = { 44, Pattern_Play_TransitionDone_OoT, Mask_Play_TransitionDone_OoT, 0x90 };
@@ -968,90 +968,93 @@ PCSignature Sig_comboItemPrecond_MM_V33    = { 0, Pattern_comboItemPrecond_MM_V3
    NB: le site de hook a peut-etre aussi change en V33 -> prevoir un Sig_hookInit_Site_MM_V33 si besoin) */
 uint8_t  Pattern_hookPlay_Init_MM_V33[] =
 {
-    0x27,0xBD,0xFF,0xB0,            // ADDIU    SP, SP, -0x50           <-- hookPlay_Init_Start
+    0x27,0xBD,0xFF,0xA8,            // ADDIU    SP, SP, -0x58           <-- hookPlay_Init_Start
     0x3C,0x02,0x80,0x77,            // LUI      V0, 0x8077
-    0xAF,0xB4,0x00,0x40,            // SW       S4, 0x0040 (SP)
-    0x3C,0x14,0x80,0x77,            // LUI      S4, 0x8077
-    0xAF,0xB3,0x00,0x3C,            // SW       S3, 0x003C (SP)
-    0xAC,0x44,0x2C,0xF0,            // SW       A0, 0x2CF0 (V0)
-    0x26,0x93,0xF9,0xF8,            // ADDIU    S3, S4, 0xF9F8
+    0xAF,0xB6,0x00,0x4C,            // SW       S6, 0x004C (SP)
+    0x3C,0x16,0x80,0x77,            // LUI      S6, 0x8077
+    0xAF,0xB3,0x00,0x40,            // SW       S3, 0x0040 (SP)
+    0xAC,0x44,0x28,0xF0,            // SW       A0, 0x28F0 (V0)
+    0x26,0xD3,0xF9,0xF8,            // ADDIU    S3, S6, 0xF918
     0x24,0x02,0xFF,0xFF,            // ADDIU    V0, R0, 0xFFFF
-    0xAF,0xBF,0x00,0x4C,            // SW       RA, 0x004C (SP)
-    0xAF,0xB5,0x00,0x44,            // SW       S5, 0x0044 (SP)
-    0xAF,0xB1,0x00,0x34,            // SW       S1, 0x0034 (SP)
-    0xAF,0xB0,0x00,0x30,            // SW       S0, 0x0030 (SP)
-    0xAF,0xB6,0x00,0x48,            // SW       S6, 0x0048 (SP)
-    0xAF,0xB2,0x00,0x38,            // SW       S2, 0x0038 (SP)
+    0xAF,0xBF,0x00,0x54,            // SW       RA, 0x0054 (SP)
+    0xAF,0xB5,0x00,0x48,            // SW       S5, 0x0048 (SP)
+    0xAF,0xB1,0x00,0x38,            // SW       S1, 0x0038 (SP)
+    0xAF,0xB0,0x00,0x34,            // SW       S0, 0x0034 (SP)
+    0xAF,0xB7,0x00,0x50,            // SW       S7, 0x0050 (SP)
+    0xAF,0xB4,0x00,0x44,            // SW       S4, 0x0044 (SP)
+    0xAF,0xB2,0x00,0x3C,            // SW       S2, 0x003C (SP)
     0xA2,0x62,0x00,0x38,            // SB       V0, 0x0038 (S3)
     0x3C,0x02,0x80,0x77,            // LUI      V0, 0x8077
-    0xA0,0x40,0xF8,0xE8             // SB       R0, 0xF8E8 (V0)
+    0xA0,0x40,0xF8,0x08             // SB       R0, 0xF808 (V0)
 };
 uint32_t Mask_hookPlay_Init_MM_V33[] =
 {
-    0xFFFFFFFF,                     // ADDIU    SP, SP, -0x50           <-- hookPlay_Init_Start
+    0xFFFFFFFF,                     // ADDIU    SP, SP, -0x58           <-- hookPlay_Init_Start
     0xFFFFFFFF,                     // LUI      V0, 0x8077
-    0xFFFFFFFF,                     // SW       S4, 0x0040 (SP)
-    0xFFFFFFFF,                     // LUI      S4, 0x8077
-    0xFFFFFFFF,                     // SW       S3, 0x003C (SP)
-    0xFFFF0000,                     // SW       A0, 0x2CF0 (V0)
-    0xFFFF0000,                     // ADDIU    S3, S4, 0xF9F8
+    0xFFFFFFFF,                     // SW       S6, 0x004C (SP)
+    0xFFFFFFFF,                     // LUI      S6, 0x8077
+    0xFFFFFFFF,                     // SW       S3, 0x0040 (SP)
+    0xFFFF0000,                     // SW       A0, 0x28F0 (V0)
+    0xFFFF0000,                     // ADDIU    S3, S6, 0xF918
     0xFFFFFFFF,                     // ADDIU    V0, R0, 0xFFFF
-    0xFFFFFFFF,                     // SW       RA, 0x004C (SP)
-    0xFFFFFFFF,                     // SW       S5, 0x0044 (SP)
-    0xFFFFFFFF,                     // SW       S1, 0x0034 (SP)
-    0xFFFFFFFF,                     // SW       S0, 0x0030 (SP)
-    0xFFFFFFFF,                     // SW       S6, 0x0048 (SP)
-    0xFFFFFFFF,                     // SW       S2, 0x0038 (SP)
+    0xFFFFFFFF,                     // SW       RA, 0x0054 (SP)
+    0xFFFFFFFF,                     // SW       S5, 0x0048 (SP)
+    0xFFFFFFFF,                     // SW       S1, 0x0038 (SP)
+    0xFFFFFFFF,                     // SW       S0, 0x0034 (SP)
+    0xFFFFFFFF,                     // SW       S0, 0x0050 (SP)
+    0xFFFFFFFF,                     // SW       S4, 0x0044 (SP)
+    0xFFFFFFFF,                     // SW       S2, 0x003C (SP)
     0xFFFFFFFF,                     // SB       V0, 0x0038 (S3)
     0xFFFFFFFF,                     // LUI      V0, 0x8077
-    0xFFFF0000                      // SB       R0, 0xF8E8 (V0)
+    0xFFFF0000                      // SB       R0, 0xF808 (V0)
 };
-PCSignature Sig_hookPlay_Init_MM_V33    = { 68, Pattern_hookPlay_Init_MM_V33, Mask_hookPlay_Init_MM_V33, 0x58C };
+PCSignature Sig_hookPlay_Init_MM_V33    = { 72, Pattern_hookPlay_Init_MM_V33, Mask_hookPlay_Init_MM_V33, 0x58C };
 
 /* Play_TransitionDone  (hint PCOffset Legacy: 0x00) */
 uint8_t  Pattern_Play_TransitionDone_MM_V33[] =
 {
     0x3C,0x02,0x00,0x02,            // LUI      V0, 0x0002           <-- Play_TransitionDone_Start
+    0x27,0xBD,0xFF,0xD0,            // ADDIU    SP, SP, -0x30
     0x00,0x82,0x10,0x21,            // ADDU     V0, A0, V0
-    0x94,0x42,0x88,0x7A,            // LHU      V0, 0x887A (V0)
-    0x27,0xBD,0xFF,0xD8,            // ADDIU    SP, SP, -0x28
-    0x34,0x03,0xFF,0xFD,            // ORI      V1, R0, 0xFFFD
+    0xAF,0xB2,0x00,0x24,            // SW       S2, 0x0024 (SP)
+    0x94,0x52,0x88,0x7A,            // LHU      S2, 0x887A (V0)
+    0x34,0x02,0xFF,0xFD,            // ORI      V0, R0, 0xFFFD
+    0xAF,0xB3,0x00,0x28,            // SW       S3, 0x0028 (SP)
     0xAF,0xB1,0x00,0x20,            // SW       S1, 0x0020 (SP)
+    0xAF,0xBF,0x00,0x2C,            // SW       RA, 0x002C (SP)
     0xAF,0xB0,0x00,0x1C,            // SW       S0, 0x001C (SP)
-    0xAF,0xBF,0x00,0x24,            // SW       RA, 0x0024 (SP)
     0x00,0x80,0x88,0x25,            // OR       S1, A0, R0
-    0xAF,0xA2,0x00,0x10,            // SW       V0, 0x0010 (SP)
-    0x10,0x43,0x00,0x20,            // BEQ      V0, V1, 0x80759DDC
-    0x3C,0x10,0x80,0x77,            // LUI      S0, 0x8077
-    0x34,0x03,0xFF,0xFE,            // ORI      V1, R0, 0xFFFE
-    0x10,0x43,0x00,0x19,            // BEQ      V0, C1, 0x80759DDC
-    0x34,0x03,0xFF,0xFC,            // ORI      V1, R0, 0xFFFC
-    0x50,0x43,0x00,0x49,            // BEQL     V0, V1, 0x80759E94
-    0x3C,0x02,0x80,0x77,            // LUI      V0, 0x8077
-    0x34,0x03,0xFF,0xFF,            // ORI      V1, R0, 0xFFFF
-    0x54,0x43,0x00,0x21             // BNEL     V0, V1, 0x80759E00
+    0xAF,0xB2,0x00,0x10,            // SW       S2, 0x0010 (SP)
+    0x12,0x42,0x00,0x20,            // BEQ      S2, V0, 0x80753DCC
+    0x3C,0x13,0x80,0x77,            // LUI      S3, 0x8077
+    0x34,0x02,0xFF,0xFE,            // ORI      V0, R0, 0xFFFE
+    0x12,0x42,0x00,0x19,            // BEQ      S2, V0, 0x80753DBC
+    0x34,0x02,0xFF,0xFC,            // ORI      V0, R0, 0xFFFC
+    0x12,0x42,0x00,0x60,            // BEQ      S2, V0, 0x80753EE0
+    0x3C,0x02,0x80,0x77             // LUI      V0, 0x8077
 };
+
 uint32_t Mask_Play_TransitionDone_MM_V33[] =
 {
     0xFFFFFFFF,                     // LUI      V0, 0x0002           <-- Play_TransitionDone_Start
+    0xFFFFFFFF,                     // ADDIU    SP, SP, -0x30
     0xFFFFFFFF,                     // ADDU     V0, A0, V0
-    0xFFFFFFFF,                     // LHU      V0, 0x887A (V0)
-    0xFFFFFFFF,                     // ADDIU    SP, SP, -0x28
-    0xFFFFFFFF,                     // ORI      V1, R0, 0xFFFD
+    0xFFFFFFFF,                     // SW       S2, 0x0024 (SP)
+    0xFFFFFFFF,                     // LHU      S2, 0x887A (V0)
+    0xFFFFFFFF,                     // ORI      V0, R0, 0xFFFD
+    0xFFFFFFFF,                     // SW       S3, 0x0028 (SP)
     0xFFFFFFFF,                     // SW       S1, 0x0020 (SP)
+    0xFFFFFFFF,                     // SW       RA, 0x002C (SP)
     0xFFFFFFFF,                     // SW       S0, 0x001C (SP)
-    0xFFFFFFFF,                     // SW       RA, 0x0024 (SP)
     0xFFFFFFFF,                     // OR       S1, A0, R0
-    0xFFFFFFFF,                     // SW       V0, 0x0010 (SP)
-    0xFFFFFFFF,                     // BEQ      V0, V1, 0x80759DDC
-    0xFFFFFFFF,                     // LUI      S0, 0x8077
-    0xFFFFFFFF,                     // ORI      V1, R0, 0xFFFE
-    0xFFFFFFFF,                     // BEQ      V0, C1, 0x80759DDC
-    0xFFFFFFFF,                     // ORI      V1, R0, 0xFFFC
-    0xFFFF0000,                     // BEQL     V0, V1, 0x80759E94
-    0xFFFFFFFF,                     // LUI      V0, 0x8077
-    0xFFFFFFFF,                     // ORI      V1, R0, 0xFFFF
-    0xFFFF0000                      // BNEL     V0, V1, 0x80759E00
+    0xFFFFFFFF,                     // SW       S2, 0x0010 (SP)
+    0xFFFFFFFF,                     // BEQ      S2, V0, 0x80753DCC
+    0xFFFFFFFF,                     // LUI      S3, 0x8077
+    0xFFFFFFFF,                     // ORI      V0, R0, 0xFFFE
+    0xFFFF0000,                     // BEQ      S2, V0, 0x80753DBC
+    0xFFFFFFFF,                     // ORI      V0, R0, 0xFFFC
+    0xFFFFFFFF,                     // BEQ      S2, V0, 0x80753EE0
+    0xFFFF0000                      // LUI      V0, 0x8077
 };
 PCSignature Sig_Play_TransitionDone_MM_V33    = { 76, Pattern_Play_TransitionDone_MM_V33, Mask_Play_TransitionDone_MM_V33, 0x00 };
 

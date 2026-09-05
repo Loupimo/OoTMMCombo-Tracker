@@ -72,11 +72,31 @@
         <xflag type="boulder" location="Zora Cape Large Boulder 1" setup="0" actor="0x2a" item="NOTHING" name="Large Boulder 1" xyz="406;453;0"/>
         <xflag type="boulder" location="Zora Cape Large Boulder 2" setup="0" actor="0x2b" item="NOTHING" name="Large Boulder 2" xyz="404;471;0"/>
         <xflag type="boulder" location="Zora Cape Boulder" setup="0" actor="0x2c" item="NOTHING" name="Grotto Boulder" xyz="449;338;0"/>
-        <xflag type="tree" location="Zora Cape Palm Tree Beach 1" setup="0" actor="0x18" item="NUT" name="Beach 1" xyz="530;172;0"/>
-        <xflag type="tree" location="Zora Cape Palm Tree Beach 2" setup="0" actor="0x19" item="NUT" name="Beach 2" xyz="575;199;1"/>
-        <xflag type="tree" location="Zora Cape Palm Tree Island Near Fountain" setup="0" actor="0x1a" item="NUT" name="Island Near Fountain" xyz="331;443;0"/>
-        <xflag type="tree" location="Zora Cape Palm Tree Island Near Beach" setup="0" actor="0x1b" item="NUT" name="Near Beach" xyz="350;367;0"/>
-        <xflag type="tree" location="Zora Cape Palm Tree Island Center" setup="0" actor="0x1c" item="NUT" name="Island Center" xyz="297;403;0"/>
+        <actor>
+          <match setup="0" actor="0x18"/>
+          <match setup="1" actor="0x19"/>
+          <xflag type="tree" location="Zora Cape Palm Tree Beach 1" item="NUT" name="Beach 1" xyz="530;172;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x19"/>
+          <match setup="1" actor="0x1a"/>
+          <xflag type="tree" location="Zora Cape Palm Tree Beach 2" item="NUT" name="Beach 2" xyz="575;199;1"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x1a"/>
+          <match setup="1" actor="0x1b"/>
+          <xflag type="tree" location="Zora Cape Palm Tree Island Near Fountain" item="NUT" name="Island Near Fountain" xyz="331;443;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x1b"/>
+          <match setup="1" actor="0x1c"/>
+          <xflag type="tree" location="Zora Cape Palm Tree Island Near Beach" item="NUT" name="Near Beach" xyz="350;367;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x1c"/>
+          <match setup="1" actor="0x1d"/>
+          <xflag type="tree" location="Zora Cape Palm Tree Island Center" item="NUT" name="Island Center" xyz="297;403;0"/>
+        </actor>
         <xflag type="pot" location="Zora Cape Pot Near Beavers 1" setup="0" actor="0x43" item="RECOVERY_HEART" name="Near Beavers 1" xyz="769;366;0"/>
         <xflag type="pot" location="Zora Cape Pot Near Beavers 2" setup="0" actor="0x44" item="MAGIC_JAR_SMALL" name="Near Beavers 2" xyz="780;363;0"/>
         <actor>

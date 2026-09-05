@@ -585,8 +585,8 @@ __declspec(naked) void CheckGameVersionASM()
         STORE_VERSION :
             mov [ecx], eax
             mov [ecx + 4], ebx
-            mov byte ptr[gPatternState], 0            // Reset gPatternState[GAME_OOT].Resolved
-            mov byte ptr[gPatternState + 32], 0       // Reset gPatternState[GAME_MM].Resolved
+            mov byte ptr[gPatternState], 0                          // Reset gPatternState[GAME_OOT].Resolved
+            mov byte ptr[gPatternState + PATTERN_STATE_SIZE], 0     // Reset gPatternState[GAME_MM].Resolved (offset = 1 * sizeof(GamePatternState))
             mov dword ptr[gActiveProfile], 0FFFFFFFFh // Force la re-detection du profil de version (-1)
 
         // Check if version is stable release
@@ -799,6 +799,10 @@ __declspec(naked) void PCHook()
 
         CHECK_ACTOR:
 
+            // Test if we are currently changing room. If yes then this should be aborted as Gossip PC could be reached by a Game switch without being a real gossip stone
+            cmp[forceGameCheck], 1
+            je DONE
+
             READ_N64_REG(SP_OFFSET, eax)
             add eax, [gActiveActorOff]
             IS_ADDR_VALID(eax, ebx, DONE)
@@ -823,6 +827,10 @@ __declspec(naked) void PCHook()
             jmp DONE
 
         FAIRY_TEST:
+
+            // Test if we are currently changing room. If yes then this should be aborted as Gossip PC could be reached by a Game switch without being a real gossip stone
+            cmp[forceGameCheck], 1
+            je DONE
 
             // check that the object is "Nothing"
             sub eax, [gActiveActorOff]
@@ -864,6 +872,10 @@ __declspec(naked) void PCHook()
 
         ADD_ITEM_TEST:
 
+            // Test if we are currently changing room. If yes then this should be aborted as Gossip PC could be reached by a Game switch without being a real gossip stone
+            cmp[forceGameCheck], 1
+            je DONE
+
             // Read the S0 register to retreive the ComboItemQuery address
             READ_N64_REG(S0_OFFSET, eax)
             IS_ADDR_VALID(eax, ebx, DONE)
@@ -902,6 +914,10 @@ __declspec(naked) void PCHook()
 
         DROP_CUSTOM_TEST:
 
+            // Test if we are currently changing room. If yes then this should be aborted as Gossip PC could be reached by a Game switch without being a real gossip stone
+            cmp[forceGameCheck], 1
+            je DONE
+
             READ_N64_REG(SP_OFFSET, ebx)
             add ebx, DROP_CUSTOM
 
@@ -909,6 +925,10 @@ __declspec(naked) void PCHook()
             jmp DONE
 
         SHOP_TEST:
+
+            // Test if we are currently changing room. If yes then this should be aborted as Gossip PC could be reached by a Game switch without being a real gossip stone
+            cmp[forceGameCheck], 1
+            je DONE
 
             // The item is buyable, therefore it is not a "Nothing item", we can exit
             READ_N64_REG(V0_OFFSET, eax)
@@ -1118,8 +1138,13 @@ __declspec(naked) void PCHook()
             INC_INDEX(gData, eax)
             pop edi
 
-        BUTTERFLY_TEST:
         GOSSIP_TEST:
+        BUTTERFLY_TEST:
+
+            // Test if we are currently changing room. If yes then this should be aborted as Gossip PC could be reached by a Game switch without being a real gossip stone
+            cmp[forceGameCheck], 1
+            je DONE
+
             // Handle "Nothing" Butterflies / Gossip Stone Fiaries
             mov edx, [regBase]
             mov edx, [edx]

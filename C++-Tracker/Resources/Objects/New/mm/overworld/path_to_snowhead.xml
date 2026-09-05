@@ -6,25 +6,41 @@
         <collectible location="Path to Snowhead HP" flag="0x08" item="HEART_PIECE" name="Pillar" xyz="422;350;0"/>
       </rendering_option>
       <rendering_option context="winter" layout="all">
-        <xflag type="snowball" location="Path to Snowhead Big Snowball Middle 1" setup="0" room="0x0" actor="0x1e" item="MAGIC_JAR_SMALL" name="Middle - Big Snowball 1" xyz="593;159;0"/>
-        <xflag type="snowball" location="Path to Snowhead Big Snowball Middle 2" setup="0" room="0x0" actor="0x1f" item="MAGIC_JAR_SMALL" name="Middle - Big Snowball 2" xyz="210;235;0"/>
-        <xflag type="snowball" location="Path to Snowhead Big Snowball Back 1" setup="0" room="0x0" actor="0x1c" item="MAGIC_JAR_SMALL" name="Back - Big Snowball 1" xyz="817;147;0"/>
-        <xflag type="snowball" location="Path to Snowhead Big Snowball Back 2" setup="0" room="0x0" actor="0x1d" item="MAGIC_JAR_SMALL" name="Back - Big Snowball 2" xyz="731;159;0"/>
-        <xflag type="snowball" location="Path to Snowhead Small Snowball Back 1" setup="0" room="0x0" actor="0x9" item="NOTHING" name="Back - Small Snowball 1" xyz="708;202;1"/>
-        <xflag type="snowball" location="Path to Snowhead Small Snowball Back 2" setup="0" room="0x0" actor="0xa" item="NOTHING" name="Back - Small Snowball 2" xyz="690;210;0"/>
-        <xflag type="snowball" location="Path to Snowhead Small Snowball Back 3" setup="0" room="0x0" actor="0xb" item="NOTHING" name="Back - Small Snowball 3" xyz="691;192;0"/>
+        <xflag type="snowball" location="Path to Snowhead Big Snowball Middle 1" setup="0" actor="0x1e" item="MAGIC_JAR_SMALL" name="Middle - Big Snowball 1" xyz="593;159;0"/>
+        <xflag type="snowball" location="Path to Snowhead Big Snowball Middle 2" setup="0" actor="0x1f" item="MAGIC_JAR_SMALL" name="Middle - Big Snowball 2" xyz="210;235;0"/>
+        <xflag type="snowball" location="Path to Snowhead Big Snowball Back 1" setup="0" actor="0x1c" item="MAGIC_JAR_SMALL" name="Back - Big Snowball 1" xyz="817;147;0"/>
+        <xflag type="snowball" location="Path to Snowhead Big Snowball Back 2" setup="0" actor="0x1d" item="MAGIC_JAR_SMALL" name="Back - Big Snowball 2" xyz="731;159;0"/>
+        <xflag type="snowball" location="Path to Snowhead Small Snowball Back 1" setup="0" actor="0x9" item="NOTHING" name="Back - Small Snowball 1" xyz="708;202;1"/>
+        <xflag type="snowball" location="Path to Snowhead Small Snowball Back 2" setup="0" actor="0xa" item="NOTHING" name="Back - Small Snowball 2" xyz="690;210;0"/>
+        <xflag type="snowball" location="Path to Snowhead Small Snowball Back 3" setup="0" actor="0xb" item="NOTHING" name="Back - Small Snowball 3" xyz="691;192;0"/>
       </rendering_option>
       <rendering_option context="spring" layout="all">
-        <xflag type="snowball" location="Path to Snowhead Small Snowball Spring Middle 1" setup="1" room="0x0" actor="0x5" item="MAGIC_JAR_LARGE" name="Spring - Middle 1" xyz="593;159;0"/>
-        <xflag type="snowball" location="Path to Snowhead Small Snowball Spring Middle 2" setup="1" room="0x0" actor="0x6" item="MAGIC_JAR_LARGE" name="Spring - Middle 2" xyz="210;235;0"/>
-        <xflag type="snowball" location="Path to Snowhead Small Snowball Spring Back 1" setup="1" room="0x0" actor="0x7" item="MAGIC_JAR_LARGE" name="Spring - Back 1" xyz="731;159;0"/>
-        <xflag type="snowball" location="Path to Snowhead Small Snowball Spring Back 2" setup="1" room="0x0" actor="0x8" item="MAGIC_JAR_LARGE" name="Spring - Back 2" xyz="817;147;0"/>
+        <xflag type="snowball" location="Path to Snowhead Small Snowball Spring Middle 1" setup="1" actor="0x5" item="MAGIC_JAR_LARGE" name="Spring - Middle 1" xyz="593;159;0"/>
+        <xflag type="snowball" location="Path to Snowhead Small Snowball Spring Middle 2" setup="1" actor="0x6" item="MAGIC_JAR_LARGE" name="Spring - Middle 2" xyz="210;235;0"/>
+        <xflag type="snowball" location="Path to Snowhead Small Snowball Spring Back 1" setup="1" actor="0x7" item="MAGIC_JAR_LARGE" name="Spring - Back 1" xyz="731;159;0"/>
+        <xflag type="snowball" location="Path to Snowhead Small Snowball Spring Back 2" setup="1" actor="0x8" item="MAGIC_JAR_LARGE" name="Spring - Back 2" xyz="817;147;0"/>
       </rendering_option>
       <rendering_option context="winter" layout="all">
-        <xflag type="tree" location="Path to Snowhead Snow Tree End 1" setup="0" room="0x0" actor="0x16" item="NOTHING" name="End 1" xyz="868;105;0"/>
-        <xflag type="tree" location="Path to Snowhead Snow Tree End 2" setup="0" room="0x0" actor="0x17" item="NOTHING" name="End 2" xyz="795;139;0"/>
-        <xflag type="tree" location="Path to Snowhead Snow Tree End 3" setup="0" room="0x0" actor="0x18" item="NOTHING" name="End 3" xyz="735;178;0"/>
-        <xflag type="tree" location="Path to Snowhead Snow Tree Entrance" setup="0" room="0x0" actor="0x19" item="NOTHING" name="Entrance" xyz="97;246;0"/>
+        <actor>
+          <match setup="0" actor="0x16"/>
+          <match setup="1" actor="0x02"/>
+          <xflag type="tree" location="Path to Snowhead Snow Tree End 1" item="NOTHING" name="End 1" xyz="868;105;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x17"/>
+          <match setup="1" actor="0x01"/>
+          <xflag type="tree" location="Path to Snowhead Snow Tree End 2" item="NOTHING" name="End 2" xyz="795;139;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x18"/>
+          <match setup="1" actor="0x00"/>
+          <xflag type="tree" location="Path to Snowhead Snow Tree End 3" item="NOTHING" name="End 3" xyz="735;178;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x19"/>
+          <match setup="1" actor="0x03"/>
+          <xflag type="tree" location="Path to Snowhead Snow Tree Entrance" item="NOTHING" name="Entrance" xyz="97;246;0"/>
+        </actor>
       </rendering_option>
     </scene_rendering>
   </scene>

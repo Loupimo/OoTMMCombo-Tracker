@@ -115,10 +115,26 @@
           <match setup="1" actor="0x73"/>
           <xflag type="grass" location="Great Bay Coast Grass 5" item="RANDOM" name="Grass 5" xyz="646;572;0"/>
         </actor>
-        <xflag type="tree" location="Great Bay Coast Palm Tree Island" setup="0" room="0x0" actor="0xa" item="NUT" name="Island" xyz="516;168;1"/>
-        <xflag type="tree" location="Great Bay Coast Palm Tree Beach 1" setup="0" room="0x0" actor="0xb" item="NUT" name="Beach 1" xyz="597;436;0"/>
-        <xflag type="tree" location="Great Bay Coast Palm Tree Beach 2" setup="0" room="0x0" actor="0xc" item="NUT" name="Beach 2" xyz="593;519;0"/>
-        <xflag type="tree" location="Great Bay Coast Palm Tree Beach 3" setup="0" room="0x0" actor="0xd" item="NUT" name="Beach 3" xyz="558;557;0"/>
+        <actor>
+          <match setup="0" actor="0x0a"/>
+          <match setup="1" actor="0x1f"/>
+          <xflag type="tree" location="Great Bay Coast Palm Tree Island" item="NUT" name="Island" xyz="516;168;1"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x0b"/>
+          <match setup="1" actor="0x21"/>
+          <xflag type="tree" location="Great Bay Coast Palm Tree Beach 1" item="NUT" name="Beach 1" xyz="597;436;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x0c"/>
+          <match setup="1" actor="0x22"/>
+          <xflag type="tree" location="Great Bay Coast Palm Tree Beach 2" item="NUT" name="Beach 2" xyz="593;519;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x0d"/>
+          <match setup="1" actor="0x20"/>
+          <xflag type="tree" location="Great Bay Coast Palm Tree Beach 3" item="NUT" name="Beach 3" xyz="558;557;0"/>
+        </actor>
         <actor>
           <match setup="0" actor="0x45"/>
           <match setup="1" actor="0x56"/>
