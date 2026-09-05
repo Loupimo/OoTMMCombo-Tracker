@@ -14,7 +14,7 @@
 typedef struct GamePatternState
 {
     bool Resolved = false;
-    uint32_t PCs[7] = { 0 };    // ID 0 = Actor_Spawn, ID 1 = comboAddItemRawEx, ID 2 = EnItem00_DropCustom, ID 3 = comboItemPrecond, ID 4 = hookPlay_Init, ID 5 = Play_TransitionDone, ID 6 = EnButte_TransformIntoFairy
+    uint32_t PCs[8] = { 0 };    // ID 0 = Actor_Spawn, ID 1 = comboAddItemRawEx, ID 2 = EnItem00_DropCustom, ID 3 = comboItemPrecond, ID 4 = hookPlay_Init, ID 5 = Play_TransitionDone, ID 6 = EnGs_SpawnFairy, ID 7 = EnButte_TransformIntoFairy
 } GamePatternState;
 
 

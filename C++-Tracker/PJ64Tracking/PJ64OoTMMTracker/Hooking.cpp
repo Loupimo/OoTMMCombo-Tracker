@@ -786,8 +786,12 @@ __declspec(naked) void PCHook()
             cmp ecx, [eax + 20]
             je TRANSITION_TEST
 
-            // if PC = EnButte_TransformIntoFairy -> Butterfly test
+            // if PC = EnGs_SpawnFairy -> Gossip stone test
             cmp ecx, [eax + 24]
+            je GOSSIP_TEST
+
+            // if PC = EnButte_TransformIntoFairy -> Butterfly test
+            cmp ecx, [eax + 28]
             je BUTTERFLY_TEST
 
             // Not a tracked PC
@@ -1115,13 +1119,13 @@ __declspec(naked) void PCHook()
             pop edi
 
         BUTTERFLY_TEST:
-
-            // Handle "Nothing" Butterflies
+        GOSSIP_TEST:
+            // Handle "Nothing" Butterflies / Gossip Stone Fiaries
             mov edx, [regBase]
             mov edx, [edx]
-            mov eax, [edx + V1_OFFSET]  // Get the buttlerfly object ID
+            mov eax, [edx + V1_OFFSET]  // Get the buttlerfly / gossip object ID
 
-            // if butterfly item != Nothing -> done
+            // if butterfly / gossip fairy item != Nothing -> done
             cmp eax, [gNothingID]
             jne DONE
 

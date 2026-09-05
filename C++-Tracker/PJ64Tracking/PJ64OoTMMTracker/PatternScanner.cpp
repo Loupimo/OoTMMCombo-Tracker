@@ -41,6 +41,11 @@ __forceinline uintptr_t FindPatternInPayload(const PCSignature* Sig, size_t Payl
     uintptr_t res = PayloadStart;
 
     size_t size = PayloadEnd - PayloadStart;
+    LOG("Base: 0x%08X", base);
+    LOG("Start Offset: 0x%08X", PayloadStart);
+    LOG("End OffSet: 0x%08X", PayloadEnd);
+    LOG("Size: 0x%08X", size);
+    LOG("Pattern Size: 0x%08X", Sig->PatternSize);
 
     uint32_t firstWord = ByteSwap32(*(uint32_t*)Sig->Pattern);   // We need to swap byte order as they are store in big endian order
 
@@ -54,11 +59,13 @@ __forceinline uintptr_t FindPatternInPayload(const PCSignature* Sig, size_t Payl
             continue;
         }
 
+        LOG("New Pattern Match : 0x80%06X", base + i - gameRAMBase);
         if (MatchPattern(base + i, Sig))
         {
             return res;
         }
     }
+
 
     return 0;
 }
@@ -87,19 +94,19 @@ void ResolveButterflyTransform()
         return;
     }
 
-    if (sigs == NULL || sigs[6].Signature == NULL || sigs[6].Signature->PatternSize == 0)
+    if (sigs == NULL || sigs[6].Signature == NULL || sigs[7].Signature->PatternSize == 0)
     {   // Signature stub (pas encore trouvee pour cette version) : tracking papillon desactive
         return;
     }
 
-    uintptr_t base = FindPatternInPayload(sigs[6].Signature, PC_RANGE_START, PAYLOAD_END);
+    uintptr_t base = FindPatternInPayload(sigs[7].Signature, PC_RANGE_START, PAYLOAD_END);
 
     if (base != 0)
     {   // We have find the desired start address of the function
 
-        uintptr_t PC = base + sigs[6].Signature->PCOffset;  // The specific instruction to track
+        uintptr_t PC = base + sigs[7].Signature->PCOffset;  // The specific instruction to track
 
-        gPatternState[gGame].PCs[6] = PC;
+        gPatternState[gGame].PCs[7] = PC;
         LOG("[OK] PC 0x%08X", PC);
     }
 }
@@ -161,8 +168,8 @@ int32_t DetectVersionProfile()
 
 void ResetButterflyTransform()
 {
-    gPatternState[GAME_OOT].PCs[6] = 0;
-    gPatternState[GAME_MM].PCs[6] = 0;
+    gPatternState[GAME_OOT].PCs[7] = 0;
+    gPatternState[GAME_MM].PCs[7] = 0;
 }
 
 
@@ -244,7 +251,7 @@ void BuildPCsPatterns()
 
             LOG("[FAIL] Fast Pattern %zu\nTrying slow pattern.", i);
 
-            base = FindPatternInPayload(sigs[i].Signature, i == count - 3 ? PC_RANGE_START : PAYLOAD_START, PAYLOAD_END);
+            base = FindPatternInPayload(sigs[i].Signature, i == count - 4 ? PC_RANGE_START : PAYLOAD_START, PAYLOAD_END);
 
             if (!base)
             {   // The function cannot be found
@@ -261,7 +268,7 @@ void BuildPCsPatterns()
             if (!MatchPattern(gameRAMBase + (base & 0x00FFFFFF), sigs[i].Signature))
             {   // The found address was wrong. Try the slow method
 
-                base = FindPatternInPayload(sigs[i].Signature, i >= count - 3 ? PC_RANGE_START : PAYLOAD_START, PAYLOAD_END);
+                base = FindPatternInPayload(sigs[i].Signature, i >= count - 4 ? PC_RANGE_START : PAYLOAD_START, PAYLOAD_END);
 
                 if (!base)
                 {   // The function cannot be found
