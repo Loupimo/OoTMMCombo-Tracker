@@ -375,235 +375,156 @@ void StopShutdownWatcher()
     InterlockedExchange(&gShutdownWatcherRunning, 0);
 }
 
-/*
-*   Check if the given address is in range 0x80000000 and 0x80FFFFFF.
-*
-*   @param Addr     The address to test.
-*   @param Tmp      The temporary register to use.
-*   @param Jump     The label to jump to in case the address in not in the range.
-*/
-#define IS_ADDR_VALID(Addr, Tmp, Jump)  \
-__asm mov Tmp, Addr                     \
-__asm and Tmp, 0FF000000h               \
-__asm cmp Tmp, 080000000h               \
-__asm jne Jump
+
+// ============================================================================
+//  Hook helpers
+//
+//  The heavy per-PC logic used to be written as hand-tuned x86 inline assembly.
+//  It is now expressed in plain C so the optimizer can schedule registers and
+//  fold the address maths itself. Only the two real hook entry points (PCHook /
+//  ROMHook) remain __declspec(naked): they are jumped into from the emulator's
+//  recompiled code with a specific register state and must end with a jmp to the
+//  gateway, so they cannot follow the C calling convention. Each of them simply
+//  preserves the context (pushad), forwards the one value it receives in a
+//  register, calls the C implementation and trampolines back.
+// ============================================================================
 
 
 /*
-*   Compute and store the address matching the desired index of a SharedData structure.
+*   Tell if the given emulated address sits in the tracked 0x80000000 - 0x80FFFFFF range.
 *
-*   @param DataStart     The address to start at.
-*   @param CurrIndex     The index to reach.
-*   @param Dst           The register to store the address to.
+*   @param Addr     The emulated (virtual) address to test.
+*   @return true if the address is in range, false otherwise.
 */
-#define COMPUTE_INDEX(DataStart, CurrIndex, Dst) \
-__asm lea Dst, [CurrIndex * 8]                   \
-__asm lea Dst, [DataStart + Dst * 4 + 16]
-
-
-/*
-*   Increment the index of a SharedData structure.
-*
-*   @param Target     The SharedData Structure to increment.
-*   @param Tmp        The temporary register to use.
-*/
-#define INC_INDEX(Target, Tmp)                   \
-__asm mov Tmp, [Target]                          \
-__asm inc dword ptr[Tmp + 12]                    \
-__asm and dword ptr[Tmp + 12], BUFFER_SIZE - 1
-
-
-/*
-*   Read the value of the desired N64 register.
-*
-*   @param N64Register     The N64 register to read.
-*   @param DstReg          The register to store the read value.
-*/
-#define READ_N64_REG(N64Register, DstReg)  \
-__asm mov DstReg, [regBase]                \
-__asm mov DstReg, [DstReg]                 \
-__asm mov DstReg, [DstReg + N64Register]
-
-
-/*
-*   Compute and store the real RAM address matching the given virtual game RAM address.
-*
-*   @param GameAddr     The virtual game RAM address (0x80000000 - 0x80FFFFFF).
-*   @param DstReg       The register to store the real RAM address to.
-*/
-#define COMPUTE_RAM_ADDR(GameAddr, DstReg)  \
-__asm mov DstReg, GameAddr                  \
-__asm and DstReg, 00FFFFFFh                 \
-__asm add DstReg, [gameRAMBase]
-
-
-/*
-*   Set all active settings based on the given game.
-*
-*   @param Game     The game to activate the settings on.
-*/
-#define SET_ACTIVE_SETTINGS(Game)                                 \
-__asm mov[gActiveButterflyID], ##Game##_BUTTERFLY_ID              \
-__asm mov[gActiveFairyID], ##Game##_FAIRY_ID                      \
-__asm mov[gActiveBigFairyID], ##Game##_BIG_FAIRY_ID               \
-__asm mov[gActiveActorOff], ##Game##_ACTOR_ID                     \
-__asm mov[gActiveFairyActorCombo], ##Game##_FAIRY_COMBO_OFFSET    \
-__asm mov[gActiveNextEntrance], ##Game##_NEXT_ENTRANCE            \
-__asm mov[gActiveSongOffset], ##Game##_LAST_SONG_ID               \
-__asm mov[gActiveOwlOffset], ##Game##_OWL_CHOICE_ID               \
-__asm mov[gActiveRoomOffset], ##Game##_CURR_ROOM                  \
-__asm mov[gActiveGrottoOffset], ##Game##_GROTTO_DATA              \
-__asm mov[gActiveCoordOffset], ##Game##_PLAYER_COORD              \
-__asm mov[gActiveCurrSceneOffset], ##Game##_CURR_SCENE_OFFSET     \
-__asm mov[gActiveFaroreOffset], ##Game##_FARORE_STATE             \
-__asm mov[gActiveDeathOffset], ##Game##_DEATH_STATE               \
-__asm mov eax, g##Game##LastSceneAddr                             \
-__asm mov[gActiveSceneOffset], eax                                \
-
-
-__declspec(naked) void CaptureXFlagASM()
+static __forceinline bool IsAddrValid(uint32_t Addr)
 {
-    __asm
-    {
-        IS_ADDR_VALID(ebx, eax, Done)
-
-        push edi
-
-        mov eax, [gData]
-
-        // Get CurrIndex
-        mov edx, [eax + 12]
-
-        COMPUTE_INDEX(eax, edx, edi)
-        COMPUTE_RAM_ADDR(ebx, edx)
-
-        // Fill the buffer at the correct index
-        mov[edi], ecx       // Store PC
-        mov[edi + 4], ebx   // Store Mem
-
-        mov eax, [edx]      // Load Key
-        mov ecx, [edx + 4]  // Load GI
-
-        mov[edi + 8], eax   // Store Key
-        mov[edi + 12], ecx  // Store GI
-
-        // Build flags
-        movzx eax, byte ptr[gGame] // The game the XFlag comes from 
-        or eax, 0FFFF0000h         // Set the IsConsume flag
-        mov[edi + 16], eax         // Store flags
-
-        mov[edi + 20], 0  // q3
-        mov[edi + 24], 0  // q4
-        mov[edi + 28], 0  // q5
-
-        INC_INDEX(gData, eax)
-
-        pop edi
-
-        Done:
-            ret
-    }
+    return (Addr & 0xFF000000u) == 0x80000000u;
 }
 
 
-__declspec(naked) void DetectCurrentGameASM()
+/*
+*   Convert a virtual game RAM address (0x80000000 - 0x80FFFFFF) into the matching
+*   real host RAM address.
+*
+*   @param GameAddr     The virtual game RAM address.
+*   @return The real host RAM address.
+*/
+static __forceinline uintptr_t ComputeRamAddr(uint32_t GameAddr)
 {
-    __asm
-    {
-        mov eax, [gameRAMBase]
-
-        // ====================
-        // Check OoT
-        // ====================
-
-        mov ecx, [eax + (0x8011A5F0 & 0x00FFFFFF)]
-        and ecx, 0FFFF0000h
-
-        // ZELD
-        cmp dword ptr [eax + (0x8011A5EC & 0x00FFFFFF)], 0x5A454C44
-        jne CHECK_MM
-
-        // AZ
-        cmp ecx, 0x415A0000
-        jne CHECK_MM
-
-        mov byte ptr [gGame], GAME_OOT
-        ret
-
-        // ====================
-        // Check MM
-        // ====================
-
-        CHECK_MM:
-
-            mov ecx, [eax + (0x801EF698 & 0x00FFFFFF)]
-            and ecx, 0FFFF0000h
-
-            // ZELD
-            cmp dword ptr [eax + (0x801EF694 & 0x00FFFFFF)], 0x5A454C44
-            jne DONE
-
-            // A3
-            cmp ecx, 0x41330000
-            jne DONE
-
-            mov byte ptr [gGame], GAME_MM
-            ret
-
-       DONE:
-
-            mov byte ptr [gGame], GAME_UNKNOWN
-            ret
-    }
+    return (uintptr_t)((GameAddr & 0x00FFFFFFu) + gameRAMBase);
 }
 
 
-__declspec(naked) void CheckGameVersionASM()
+/*
+*   Read the current value of an N64 CPU register through the emulator register block.
+*
+*   @param RegOffset    The register offset inside the CPU structure (see *_OFFSET).
+*   @return The 32-bit register value.
+*/
+static __forceinline uint32_t ReadN64Reg(uint32_t RegOffset)
 {
-    __asm
+    uintptr_t cpu = *(uintptr_t*)regBase;   // regBase holds the address of the CPU structure pointer
+
+    return *(uint32_t*)(cpu + RegOffset);
+}
+
+
+/*
+*   Push a "Nothing" cross-flag event (Key / GI query) into the shared ring buffer.
+*
+*   @param PC       The program counter that produced the event.
+*   @param MemAddr  The virtual game RAM address of the query (also stored as Event::Mem).
+*/
+static void CaptureXFlag(uint32_t PC, uint32_t MemAddr)
+{
+    if (!IsAddrValid(MemAddr))
     {
-        mov ecx, [gData]
-        mov edx, [romBase]
-        mov eax, [edx + 0x10]
-        mov ebx, [edx + 0x14]
+        return;
+    }
 
-        // Check tracker command
-        pushad
-        call CheckTrackerCommand
-        popad
+    uintptr_t real = ComputeRamAddr(MemAddr);
 
-        // Compare game version
-        cmp[ecx], eax // low
-        jne STORE_VERSION
+    Event* e = &gData->Buffer[gData->CurrIndex];
+    e->PC       = PC;
+    e->Mem      = MemAddr;
+    e->Query[0] = *(uint32_t*)(real);           // Key
+    e->Query[1] = *(uint32_t*)(real + 4);       // GI
+    e->Query[2] = ((uint32_t)(uint8_t)gGame) | 0xFFFF0000u;   // source game + IsConsume flag
+    e->Query[3] = 0;
+    e->Query[4] = 0;
+    e->Query[5] = 0;
 
-        cmp[ecx + 4], ebx // high
-        jne STORE_VERSION
+    gData->CurrIndex = (gData->CurrIndex + 1) & (BUFFER_SIZE - 1);
+}
 
-        mov eax, 1
-        ret
 
-        STORE_VERSION :
-            mov [ecx], eax
-            mov [ecx + 4], ebx
-            mov byte ptr[gPatternState], 0                          // Reset gPatternState[GAME_OOT].Resolved
-            mov byte ptr[gPatternState + PATTERN_STATE_SIZE], 0     // Reset gPatternState[GAME_MM].Resolved (offset = 1 * sizeof(GamePatternState))
-            mov dword ptr[gActiveProfile], 0FFFFFFFFh // Force la re-detection du profil de version (-1)
+/*
+*   Detect which game is currently loaded from its RAM signature and store the result in gGame.
+*/
+static void DetectCurrentGame()
+{
+    uintptr_t ram = gameRAMBase;
 
-        // Check if version is stable release
-        cmp eax, 0x69F7A146
-        jne DEV_VERSION
+    // ====================
+    // Check OoT ("ZELDAZ")
+    // ====================
+    if (*(uint32_t*)(ram + (0x8011A5EC & 0x00FFFFFF)) == 0x5A454C44                  // "ZELD"
+        && (*(uint32_t*)(ram + (0x8011A5F0 & 0x00FFFFFF)) & 0xFFFF0000) == 0x415A0000) // "AZ"
+    {
+        gGame = GAME_OOT;
+        return;
+    }
 
-        cmp ebx, 0x224AFE45
-        jne DEV_VERSION
+    // ====================
+    // Check MM ("ZELDA3")
+    // ====================
+    if (*(uint32_t*)(ram + (0x801EF694 & 0x00FFFFFF)) == 0x5A454C44                  // "ZELD"
+        && (*(uint32_t*)(ram + (0x801EF698 & 0x00FFFFFF)) & 0xFFFF0000) == 0x41330000) // "A3"
+    {
+        gGame = GAME_MM;
+        return;
+    }
 
-        mov [gNothingID], STABLE_NOTHING
-        mov [isStable], 1
-        ret
+    gGame = GAME_UNKNOWN;
+}
 
-        DEV_VERSION :
-            mov [gNothingID], DEV_NOTHING
-            mov [isStable], 0
-            ret
+
+/*
+*   Compare the ROM CRC against the value cached in the shared data. When it changed, refresh the
+*   stored version, invalidate the resolved patterns / profile and pick the matching "Nothing" ID.
+*   The tracker shutdown command is polled on the way (same behaviour as the former ASM version).
+*/
+static void CheckGameVersion()
+{
+    uint32_t crcLo = *(uint32_t*)(romBase + 0x10);
+    uint32_t crcHi = *(uint32_t*)(romBase + 0x14);
+
+    // Check tracker command
+    CheckTrackerCommand();
+
+    // Compare game version: nothing to do when it is unchanged.
+    if (gData->GameVersion[0] == crcLo && gData->GameVersion[1] == crcHi)
+    {
+        return;
+    }
+
+    gData->GameVersion[0] = crcLo;
+    gData->GameVersion[1] = crcHi;
+
+    gPatternState[GAME_OOT].Resolved = false;   // Reset gPatternState[GAME_OOT].Resolved
+    gPatternState[GAME_MM].Resolved  = false;   // Reset gPatternState[GAME_MM].Resolved
+    gActiveProfile = -1;                         // Force la re-detection du profil de version
+
+    // Check if version is stable release
+    if (crcLo == 0x69F7A146 && crcHi == 0x224AFE45)
+    {
+        gNothingID = STABLE_NOTHING;
+        isStable = true;
+    }
+    else
+    {
+        gNothingID = DEV_NOTHING;
+        isStable = false;
     }
 }
 
@@ -631,540 +552,532 @@ void ApplyHostVersion()
 }
 
 
+/*
+*   Apply every active setting (actor IDs, RAM offsets, resolved scene address) for the given game.
+*
+*   @param Game     The game to activate the settings for.
+*/
+static void SetActiveSettings(GameID Game)
+{
+    if (Game == GAME_OOT)
+    {
+        gActiveButterflyID     = OOT_BUTTERFLY_ID;
+        gActiveFairyID         = OOT_FAIRY_ID;
+        gActiveBigFairyID      = OOT_BIG_FAIRY_ID;
+        gActiveActorOff        = OOT_ACTOR_ID;
+        gActiveFairyActorCombo = OOT_FAIRY_COMBO_OFFSET;
+        gActiveNextEntrance    = OOT_NEXT_ENTRANCE;
+        gActiveSongOffset      = OOT_LAST_SONG_ID;
+        gActiveOwlOffset       = OOT_OWL_CHOICE_ID;
+        gActiveRoomOffset      = OOT_CURR_ROOM;
+        gActiveGrottoOffset    = OOT_GROTTO_DATA;
+        gActiveCoordOffset     = OOT_PLAYER_COORD;
+        gActiveCurrSceneOffset = OOT_CURR_SCENE_OFFSET;
+        gActiveFaroreOffset    = OOT_FARORE_STATE;
+        gActiveDeathOffset     = OOT_DEATH_STATE;
+        gActiveSceneOffset     = gOOTLastSceneAddr;
+    }
+    else
+    {   // GAME_MM
+        gActiveButterflyID     = MM_BUTTERFLY_ID;
+        gActiveFairyID         = MM_FAIRY_ID;
+        gActiveBigFairyID      = MM_BIG_FAIRY_ID;
+        gActiveActorOff        = MM_ACTOR_ID;
+        gActiveFairyActorCombo = MM_FAIRY_COMBO_OFFSET;
+        gActiveNextEntrance    = MM_NEXT_ENTRANCE;
+        gActiveSongOffset      = MM_LAST_SONG_ID;
+        gActiveOwlOffset       = MM_OWL_CHOICE_ID;
+        gActiveRoomOffset      = MM_CURR_ROOM;
+        gActiveGrottoOffset    = MM_GROTTO_DATA;
+        gActiveCoordOffset     = MM_PLAYER_COORD;
+        gActiveCurrSceneOffset = MM_CURR_SCENE_OFFSET;
+        gActiveFaroreOffset    = MM_FARORE_STATE;
+        gActiveDeathOffset     = MM_DEATH_STATE;
+        gActiveSceneOffset     = gMMLastSceneAddr;
+    }
+}
+
+
+/*
+*   Actor_Spawn handler: detect a fairy / big fairy / butterfly and, for a "Nothing" fairy,
+*   capture its combo item query.
+*/
+static void HandleActorSpawn(uint32_t PC)
+{
+    // Aborted during a room change: the actor PC can be reached by a game switch without
+    // being a real spawn.
+    if (forceGameCheck)
+    {
+        return;
+    }
+
+    uint32_t sp = ReadN64Reg(SP_OFFSET);
+    uint32_t actorAddr = sp + gActiveActorOff;
+
+    if (!IsAddrValid(actorAddr))
+    {
+        return;
+    }
+
+    uint16_t actorId = (uint16_t)(*(uint32_t*)ComputeRamAddr(actorAddr));
+
+    // Butterfly and big fairy both resolve the butterfly transform.
+    if (actorId == (uint16_t)gActiveButterflyID || actorId == (uint16_t)gActiveBigFairyID)
+    {
+        ResolveButterflyTransform();
+        return;
+    }
+
+    // Anything but a fairy is ignored.
+    if (actorId != (uint16_t)gActiveFairyID)
+    {
+        return;
+    }
+
+    // Fairy: only capture it if its combo object is "Nothing".
+    uint32_t comboAddr = sp + gActiveFairyActorCombo;
+    uintptr_t combo = ComputeRamAddr(comboAddr);
+
+    if ((uint16_t)(*(uint32_t*)(combo + 8)) != (uint16_t)gNothingID)
+    {
+        return;
+    }
+
+    Event* e = &gData->Buffer[gData->CurrIndex];
+    e->PC       = PC;
+    e->Mem      = comboAddr;
+    e->Query[0] = *(uint32_t*)(combo);          // ComboItemQuery (12 bytes)
+    e->Query[1] = *(uint32_t*)(combo + 4);
+    e->Query[2] = *(uint32_t*)(combo + 8);
+    e->Query[3] = 0;
+    e->Query[4] = 0;
+    e->Query[5] = 0;
+
+    gData->CurrIndex = (gData->CurrIndex + 1) & (BUFFER_SIZE - 1);
+}
+
+
+/*
+*   comboItemAddRawEx handler: capture the ComboItemQuery pointed to by S0.
+*/
+static void HandleAddItem(uint32_t PC)
+{
+    if (forceGameCheck)
+    {
+        return;
+    }
+
+    // Read the S0 register to retreive the ComboItemQuery address
+    uint32_t queryAddr = ReadN64Reg(S0_OFFSET);
+
+    if (!IsAddrValid(queryAddr))
+    {
+        return;
+    }
+
+    uintptr_t real = ComputeRamAddr(queryAddr);
+
+    Event* e = &gData->Buffer[gData->CurrIndex];
+    e->PC       = PC;
+    e->Mem      = queryAddr;
+    e->Query[0] = *(uint32_t*)(real + 4);       // ComboItemQuery (12 bytes)
+    e->Query[1] = *(uint32_t*)(real + 8);
+    e->Query[2] = ReadN64Reg(A1_OFFSET);
+    e->Query[3] = 0;
+    e->Query[4] = 0;
+    e->Query[5] = 0;
+
+    gData->CurrIndex = (gData->CurrIndex + 1) & (BUFFER_SIZE - 1);
+}
+
+
+/*
+*   En_Item00_DropCustom handler: capture a "Nothing" item dropped from a bush / rock / pot / ...
+*/
+static void HandleDropCustom(uint32_t PC)
+{
+    if (forceGameCheck)
+    {
+        return;
+    }
+
+    CaptureXFlag(PC, ReadN64Reg(SP_OFFSET) + DROP_CUSTOM);
+}
+
+
+/*
+*   comboItemPrecond handler: capture a "Nothing" item bought at a shop.
+*/
+static void HandleShop(uint32_t PC)
+{
+    if (forceGameCheck)
+    {
+        return;
+    }
+
+    // The item is buyable, therefore it is not a "Nothing" item, we can exit
+    if (ReadN64Reg(V0_OFFSET) != 0x02)
+    {
+        return;
+    }
+
+    // The item is not a nothing object, we can exit
+    if (ReadN64Reg(V1_OFFSET) != gNothingID)
+    {
+        return;
+    }
+
+    CaptureXFlag(PC, ReadN64Reg(SP_OFFSET) + SHOP_CUSTOM);
+}
+
+
+/*
+*   hookPlay_Init handler: build the incoming entrance / scene / coordinates snapshot.
+*/
+static void HandlePlayInit(uint32_t PC)
+{
+    forceGameCheck = false;
+
+    Event* e = &gData->Buffer[gData->CurrIndex];
+    e->PC = PC;
+
+    // Mem = incoming entrance flag + owl choice (+ Link age for OoT).
+    uint32_t mem = IN_MAGIC | *(uint8_t*)ComputeRamAddr(gActiveOwlOffset);
+
+    if (gGame == GAME_OOT)
+    {
+        uint32_t linkAge = *(uint32_t*)ComputeRamAddr(OOT_LINK_AGE);
+        mem |= (linkAge >> 8) & 0x00FF0000;
+    }
+
+    e->Mem = mem;
+
+    // Scene ID = spawned scene (V0) | gLastScene << 24 | current scene high word.
+    uint32_t sceneId = ReadN64Reg(V0_OFFSET);
+    sceneId |= (*(uint32_t*)ComputeRamAddr(gActiveSceneOffset)) << 24;
+    sceneId |= (*(uint32_t*)ComputeRamAddr(gActiveCurrSceneOffset)) & 0xFFFF0000;
+
+    // Query[0] = last song << 24 | current room << 16 | grotto data << 8 | game.
+    uint32_t lastSong = *(uint8_t*)ComputeRamAddr(gActiveSongOffset);
+    uint32_t currRoom = *(uint8_t*)ComputeRamAddr(gActiveRoomOffset);
+    uint32_t grotto   = *(uint8_t*)ComputeRamAddr(gActiveGrottoOffset);
+
+    e->Query[0] = (lastSong << 24) | (currRoom << 16) | (grotto << 8) | (uint8_t)gGame;
+    e->Query[1] = sceneId;
+    e->Query[2] = ReadN64Reg(V1_OFFSET);        // entrance spawn ID
+
+    uintptr_t coord = ComputeRamAddr(gActiveCoordOffset);
+    e->Query[3] = *(uint32_t*)(coord);          // X
+    e->Query[4] = *(uint32_t*)(coord + 4);      // Y
+    e->Query[5] = *(uint32_t*)(coord + 8);      // Z
+
+    gData->CurrIndex = (gData->CurrIndex + 1) & (BUFFER_SIZE - 1);
+}
+
+
+/*
+*   Play_TransitionDone handler: build the outgoing entrance / scene / coordinates snapshot.
+*/
+static void HandleTransition(uint32_t PC)
+{
+    forceGameCheck = true;
+
+    Event* e = &gData->Buffer[gData->CurrIndex];
+    e->PC = PC;
+
+    // Mem = outgoing entrance flag + owl choice + farore state (+ Link age for OoT) + death flag.
+    uint32_t mem = OUT_MAGIC | *(uint8_t*)ComputeRamAddr(gActiveOwlOffset);
+
+    // Build farore wind state
+    if (*(uint32_t*)ComputeRamAddr(gActiveFaroreOffset) == FARORE_USED)
+    {
+        mem += 1u << 8;
+    }
+
+    if (gGame == GAME_OOT)
+    {
+        uint32_t linkAge = *(uint32_t*)ComputeRamAddr(OOT_LINK_AGE);
+        mem |= (linkAge >> 8) & 0x00FF0000;
+    }
+
+    // Death flag: added to the Link age byte, so an age > 1 means a death occurred.
+    mem += (*(uint32_t*)ComputeRamAddr(gActiveDeathOffset)) & 0x00FF0000;
+
+    e->Mem = mem;
+
+    // Scene ID = gLastScene | current scene high word.
+    uint32_t sceneId = *(uint32_t*)ComputeRamAddr(gActiveSceneOffset);
+    sceneId |= (*(uint32_t*)ComputeRamAddr(gActiveCurrSceneOffset)) & 0xFFFF0000;
+
+    // Query[0] = last song << 24 | current room << 16 | grotto data << 8 | game.
+    uint32_t lastSong = *(uint8_t*)ComputeRamAddr(gActiveSongOffset);
+    uint32_t currRoom = *(uint8_t*)ComputeRamAddr(gActiveRoomOffset);
+    uint32_t grotto   = *(uint8_t*)ComputeRamAddr(gActiveGrottoOffset);
+
+    e->Query[0] = (lastSong << 24) | (currRoom << 16) | (grotto << 8) | (uint8_t)gGame;
+    e->Query[1] = sceneId;
+    e->Query[2] = *(uint32_t*)ComputeRamAddr(gActiveNextEntrance);   // gNextEntrance
+
+    uintptr_t coord = ComputeRamAddr(gActiveCoordOffset);
+    e->Query[3] = *(uint32_t*)(coord);          // X
+    e->Query[4] = *(uint32_t*)(coord + 4);      // Y
+    e->Query[5] = *(uint32_t*)(coord + 8);      // Z
+
+    gData->CurrIndex = (gData->CurrIndex + 1) & (BUFFER_SIZE - 1);
+
+    // NOTE: the original hand-written hook physically fell through from the transition
+    // code into the gossip / butterfly code, but that path bailed out immediately because
+    // forceGameCheck had just been set to true. Returning here is therefore equivalent.
+}
+
+
+/*
+*   EnGs_SpawnFairy / EnButte_TransformIntoFairy handler: capture a "Nothing" gossip fairy or
+*   butterfly cross-flag.
+*/
+static void HandleGossipButterfly(uint32_t PC)
+{
+    // Test if we are currently changing room. If yes then this should be aborted as the gossip
+    // PC could be reached by a game switch without being a real gossip stone.
+    if (forceGameCheck)
+    {
+        return;
+    }
+
+    // Get the butterfly / gossip object ID
+    if (ReadN64Reg(V1_OFFSET) != gNothingID)
+    {
+        return;
+    }
+
+    CaptureXFlag(PC, ReadN64Reg(SP_OFFSET) + BUTTERFLY_CUSTOM);
+}
+
+
+/*
+*   Dispatch the current PC to the matching tracking handler.
+*
+*   If a crash occurs here it has a high probability that gActivePCs = nullptr. No check is done
+*   to not impact perf so be sure it points somewhere valid before calling the dispatcher.
+*
+*   __forceinline: this is the hot path (runs on every hooked PC). Inlining it into PCHookImpl
+*   removes one call/ret per hook invocation. Only the handlers (cold, run on a match) stay
+*   as real calls.
+*/
+static __forceinline void DispatchPC(uint32_t PC)
+{
+    const uint32_t* pcs = gActivePCs;
+
+    if (PC == pcs[0])                       // Actor_Spawn
+    {
+        HandleActorSpawn(PC);
+    }
+    else if (PC == pcs[1])                  // comboItemAddRawEx
+    {
+        HandleAddItem(PC);
+    }
+    else if (PC == pcs[2])                  // En_Item00_DropCustom
+    {
+        HandleDropCustom(PC);
+    }
+    else if (PC == pcs[3])                  // comboItemPrecond (shop)
+    {
+        HandleShop(PC);
+    }
+    else if (PC == pcs[4])                  // hookPlay_Init
+    {
+        HandlePlayInit(PC);
+    }
+    else if (PC == pcs[5])                  // Play_TransitionDone
+    {
+        HandleTransition(PC);
+    }
+    else if (PC == pcs[6] || PC == pcs[7])  // EnGs_SpawnFairy / EnButte_TransformIntoFairy
+    {
+        HandleGossipButterfly(PC);
+    }
+}
+
+
+/*
+*   The actual program counter hook body (called from the naked PCHook trampoline).
+*
+*   @param PC   The current emulated program counter.
+*
+*   __fastcall: the PC arrives in ecx, so the hot path needs no stack-arg access and the compiler
+*   can drop the frame pointer entirely.
+*/
+void __fastcall PCHookImpl(uint32_t PC)
+{
+    // ====================
+    // Check if game is known
+    // ====================
+    if (gGame == GAME_UNKNOWN)
+    {
+        // Detect which game is loaded and if valid, gather the version
+        DetectCurrentGame();
+
+        if (gGame == GAME_UNKNOWN)
+        {
+            return;
+        }
+
+        // The game has changed gIsRAMLoaded should be set to false
+        gIsRAMLoaded = false;
+    }
+    else
+    {
+        // Periodic game check: forced (after a transition) or throttled by a counter.
+        bool runCheck = forceGameCheck;
+
+        if (!runCheck)
+        {
+            // Trigger a game check when condition are met
+            gDetectCounter++;
+            runCheck = (gDetectCounter >= DETECT_THROTTLE);
+        }
+
+        if (runCheck)
+        {
+            // Check the game version
+            CheckGameVersion();
+
+            // Le spoiler charge par le tracker (s'il y en a un) fait foi pour le "Nothing" ID
+            ApplyHostVersion();
+
+            // Reset the counter
+            gDetectCounter = 0;
+
+            GameID previousGame = gGame;
+            DetectCurrentGame();
+
+            if (gGame != previousGame)
+            {   // The game has changed, we need to check for RAM status and pattern first
+                gIsRAMLoaded = false;
+                ResetButterflyTransform();
+            }
+        }
+    }
+
+    // ====================
+    // Make sure the game RAM is loaded before tracking anything.
+    // ====================
+    if (!gIsRAMLoaded)
+    {
+        if (gGame == GAME_OOT)
+        {
+            // Set OoT active settings
+            SetActiveSettings(GAME_OOT);
+
+            // Check that the RAM is loaded (via Play_Main or Play_Init)
+            if (PC != OOT_PLAY_MAIN && PC != OOT_PLAY_INIT)
+            {
+                return;
+            }
+        }
+        else
+        {   // GAME_MM (and, defensively, GAME_UNKNOWN) share this path.
+            // Set the MM active settings
+            SetActiveSettings(GAME_MM);
+
+            // Check that the RAM is loaded (via Play_Main or Play_Init)
+            if (PC != MM_PLAY_MAIN && PC != MM_PLAY_INIT)
+            {
+                return;
+            }
+        }
+
+        // RAM is ready.
+        gIsRAMLoaded = true;
+        forceGameCheck = false;
+
+        // Apply the gPatternState[gGame].PCs array to the activePCs array in any cases
+        gActivePCs = gPatternState[gGame].PCs;
+
+        // The pattern is not built yet -> build it
+        if (!gPatternState[gGame].Resolved)
+        {
+            BuildPCsPatterns();
+        }
+    }
+
+    // ====================
+    // Test dispatcher
+    // ====================
+    DispatchPC(PC);
+}
+
+
 __declspec(naked) void PCHook()
 {
     __asm
     {
-        // Setup
+        // ---------------------------------------------------------------
+        //  HOT PATH, kept in ASM so it runs with zero call overhead on
+        //  every hooked PC. It only touches eax/ecx, so only those two are
+        //  saved here; edx is saved lazily on the cold path (the C call
+        //  clobbers it) and ebx/esi/edi/ebp are never touched. The moment
+        //  anything needs the real logic (game not identified, periodic
+        //  re-check due, RAM not ready, or a PC that matches a tracked
+        //  event) we branch to Cold and hand off to PCHookImpl, which
+        //  re-evaluates everything in C.
+        // ---------------------------------------------------------------
         push eax
         push ecx
+
+        mov  ecx, [esi]                             // ecx = current emulated PC (fastcall arg)
+
+        cmp  byte ptr [gGame], GAME_UNKNOWN
+        je   Cold                                   // game not identified yet
+
+        cmp  byte ptr [forceGameCheck], 1
+        je   Cold                                   // a forced game re-check is pending
+
+        inc  dword ptr [gDetectCounter]             // throttle the periodic re-check
+        cmp  dword ptr [gDetectCounter], DETECT_THROTTLE
+        jae  Cold                                   // periodic re-check is due
+
+        cmp  byte ptr [gIsRAMLoaded], 0
+        je   Cold                                   // game RAM not ready
+
+        // ---- dispatch: is this PC one of the 8 tracked events? ----
+        mov  eax, [gActivePCs]
+        cmp  ecx, [eax]
+        je   Cold
+        cmp  ecx, [eax + 4]
+        je   Cold
+        cmp  ecx, [eax + 8]
+        je   Cold
+        cmp  ecx, [eax + 12]
+        je   Cold
+        cmp  ecx, [eax + 16]
+        je   Cold
+        cmp  ecx, [eax + 20]
+        je   Cold
+        cmp  ecx, [eax + 24]
+        je   Cold
+        cmp  ecx, [eax + 28]
+        je   Cold
+
+        // Untracked PC: the overwhelmingly common case. No C call at all.
+        pop  ecx
+        pop  eax
+        jmp  gatewayPC
+
+    Cold:
+        // ecx still holds the PC (the __fastcall argument). Save edx (the C
+        // call may clobber it) and let the full implementation run.
+        //
+        // Note: PCHookImpl re-increments gDetectCounter on the cold path, so
+        // the counter can advance one extra tick on a match / while RAM is
+        // loading. That only nudges the *periodic re-check cadence* and is
+        // harmless (the counter is reset to 0 whenever the re-check fires).
         push edx
-        push ebx
-
-        // ====================
-        // Check if game is known
-        // ====================
-
-        // if gGame = GAME_UNKNOWN then check game
-        cmp byte ptr [gGame], GAME_UNKNOWN
-        jne PERIODIC_GAME_CHECK
-
-        // Detect which game is loaded and if valid, gather the version
-        call DetectCurrentGameASM
-        cmp byte ptr [gGame], GAME_UNKNOWN
-        je DONE
-
-        // The game has changed gIsRAMLoaded should be set to false
-        mov ecx, [esi]
-        mov byte ptr [gIsRAMLoaded], 0
-        jmp IS_RAM_LOADED
-        
-        PERIODIC_GAME_CHECK:
-            
-            // Check if we are forcing game detection
-            cmp [forceGameCheck], 1
-            je GAME_CHECK
-
-            // Trigger a game check when condition are met
-            inc dword ptr [gDetectCounter]
-            cmp dword ptr [gDetectCounter], DETECT_THROTTLE
-            jb IS_RAM_LOADED
-
-        GAME_CHECK:
-
-            // Check the game version
-            call CheckGameVersionASM
-
-            // Le spoiler charge par le tracker (s'il y en a un) fait foi pour le "Nothing" ID
-            call ApplyHostVersion
-
-            // Reset the counter
-            mov dword ptr [gDetectCounter], 0
-
-            // ebx is not used by the detect game function
-            mov bl, byte ptr [gGame]            // Store the current game state
-            call DetectCurrentGameASM           // Get the current game and store it to gGame
-
-            // if curr game = prev game -> check that RAM is loaded
-            cmp byte ptr [gGame], bl
-            je IS_RAM_LOADED
-
-            // The game has changed, we need to check for RAM status and pattern first
-            mov byte ptr [gIsRAMLoaded], 0
-            call ResetButterflyTransform
-            jmp IS_RAM_LOADED
-
-        IS_RAM_LOADED :
-
-            // Read PC
-            mov ecx, [esi]
-
-            // if RAM loaded -> start test
-            cmp byte ptr [gIsRAMLoaded], 0
-            jne TEST_DISPATCHER
-
-            // Check if game is OoT and Play_Main active
-            cmp byte ptr [gGame], GAME_OOT
-            jne CHECK_MM
-
-            // Set OoT active settings
-            SET_ACTIVE_SETTINGS(OOT)
-            //mov [gActiveEntranceReg], S1_OFFSET
-            
-            // Check that the RAM is loaded
-            cmp ecx, OOT_PLAY_MAIN
-            je RAM_LOADED
-
-            // Check that the RAM is loaded via play init
-            cmp ecx, OOT_PLAY_INIT
-            je RAM_LOADED
-
-            jmp DONE
-
-        CHECK_MM :
-            
-            // Set the MM active settings
-            SET_ACTIVE_SETTINGS(MM)
-            //mov[gActiveEntranceReg], V1_OFFSET
-
-            // Check that the RAM is loaded
-            cmp ecx, MM_PLAY_MAIN
-            je RAM_LOADED
-
-            // Check that the RAM is loaded via play init
-            cmp ecx, MM_PLAY_INIT
-            je RAM_LOADED
-
-            jmp DONE
-
-        RAM_LOADED :
-            mov [gIsRAMLoaded], 1
-            mov [forceGameCheck], 0
-
-            // Get the current game pattern state
-            lea eax, [gPatternState]
-            movzx edx, byte ptr [gGame]
-            imul edx, PATTERN_STATE_SIZE
-
-            // Apply the gPatternState[gGame].PCs array to the activePCs array in any cases
-            lea ebx, [eax + edx + 4]
-            mov [gActivePCs], ebx
-
-            // if patterns are resolved -> Test Dispatcher
-            cmp byte ptr [eax + edx], 0
-            jne TEST_DISPATCHER
-
-            // The pattern is not built
-            call BuildPCsPatterns
-
-        TEST_DISPATCHER :
-
-            // Get the active PCs. If a crash occurs here it has a high probability that gActivePCs = nullptr. No check is done to not impact perf so be sure it points somewhere valid before calling the dispatcher
-            mov eax, [gActivePCs]
-
-            // if PC = Actor_Spawn -> check if it is a FAIRY, BIG_FAIRY or BUTTERFLY
-            cmp ecx, [eax]
-            je CHECK_ACTOR
-
-            // if PC = comboItemAddRawEx -> add item test
-            cmp ecx, [eax + 4]
-            je ADD_ITEM_TEST
-
-            // if PC = En_Item00_DropCustom -> Drop custom test ("Nothing" items from boulders, trees, bushes, grass, rocks, pots, ...)
-            cmp ecx, [eax + 8]
-            je DROP_CUSTOM_TEST
-
-            // if PC = comboItemPrecond -> Shop test (Buying a "Nothing" item at the shop)
-            cmp ecx, [eax + 12]
-            je SHOP_TEST
-
-            // if PC = hookPlay_Init -> Play init test
-            cmp ecx, [eax + 16]
-            je PLAY_INIT_TEST
-
-            // if PC = Play_TransitionDone -> Transition test
-            cmp ecx, [eax + 20]
-            je TRANSITION_TEST
-
-            // if PC = EnGs_SpawnFairy -> Gossip stone test
-            cmp ecx, [eax + 24]
-            je GOSSIP_TEST
-
-            // if PC = EnButte_TransformIntoFairy -> Butterfly test
-            cmp ecx, [eax + 28]
-            je BUTTERFLY_TEST
-
-            // Not a tracked PC
-            jmp DONE
-
-        CHECK_ACTOR:
-
-            // Test if we are currently changing room. If yes then this should be aborted as Gossip PC could be reached by a Game switch without being a real gossip stone
-            cmp[forceGameCheck], 1
-            je DONE
-
-            READ_N64_REG(SP_OFFSET, eax)
-            add eax, [gActiveActorOff]
-            IS_ADDR_VALID(eax, ebx, DONE)
-            COMPUTE_RAM_ADDR(eax, ebx)
-
-            mov edx, [ebx]
-
-            cmp dx, word ptr[gActiveButterflyID]
-            je CHECK_BUTTERFLY
-
-            // check if the actor is a fairy
-            cmp dx, word ptr [gActiveFairyID]
-            je FAIRY_TEST
-
-            // check if the actor is a big fairy
-            cmp dx, word ptr [gActiveBigFairyID]
-            jne DONE
-
-        CHECK_BUTTERFLY :
-
-            call ResolveButterflyTransform
-            jmp DONE
-
-        FAIRY_TEST:
-
-            // Test if we are currently changing room. If yes then this should be aborted as Gossip PC could be reached by a Game switch without being a real gossip stone
-            cmp[forceGameCheck], 1
-            je DONE
-
-            // check that the object is "Nothing"
-            sub eax, [gActiveActorOff]
-            add eax, [gActiveFairyActorCombo]
-            COMPUTE_RAM_ADDR(eax, ebx)
-            mov edx, [gNothingID]
-            cmp word ptr [ebx + 8], dx
-            jne DONE
-
-            push edi
-
-            mov edx, [gData]
-
-            // Get CurrIndex
-            mov edi, [edx + 12]
-
-            COMPUTE_INDEX(edx, edi, edi)
-
-            mov[edi], ecx       // Store PC
-            mov[edi + 4], eax   // Store Mem
-
-            // Read ComboItemQuery (12 bytes)
-            mov eax, [ebx]      // q0
-            mov edx, [ebx + 4]  // q1
-            mov ecx, [ebx + 8]  // q1
-
-            // Fill the buffer at the correct index
-            mov[edi + 8], eax   // q0
-            mov[edi + 12], edx  // q1
-            mov[edi + 16], ecx  // q2
-            mov[edi + 20], 0  // q3
-            mov[edi + 24], 0  // q4
-            mov[edi + 28], 0  // q5
-
-            INC_INDEX(gData, eax)
-            pop edi
-
-            jmp DONE
-
-        ADD_ITEM_TEST:
-
-            // Test if we are currently changing room. If yes then this should be aborted as Gossip PC could be reached by a Game switch without being a real gossip stone
-            cmp[forceGameCheck], 1
-            je DONE
-
-            // Read the S0 register to retreive the ComboItemQuery address
-            READ_N64_REG(S0_OFFSET, eax)
-            IS_ADDR_VALID(eax, ebx, DONE)
-            COMPUTE_RAM_ADDR(eax, ebx)
-
-            push edi
-            
-            mov edx, [gData]
-
-            // Get CurrIndex
-            mov edi, [edx + 12]
-
-            COMPUTE_INDEX(edx, edi, edi)
-
-            mov[edi], ecx       // Store PC
-            mov[edi + 4], eax   // Store Mem
-
-            // Read ComboItemQuery (12 bytes)
-            mov eax, [ebx + 4]   // q0
-            mov edx, [ebx + 8]   // q1
-            
-            READ_N64_REG(A1_OFFSET, ecx)
-
-            // Fill the buffer at the correct index
-            mov[edi + 8], eax   // q0
-            mov[edi + 12], edx  // q1
-            mov[edi + 16], ecx  // q2
-            mov[edi + 20], 0  // q3
-            mov[edi + 24], 0  // q4
-            mov[edi + 28], 0  // q5
-
-            INC_INDEX(gData, eax)
-            pop edi
-
-            jmp DONE
-
-        DROP_CUSTOM_TEST:
-
-            // Test if we are currently changing room. If yes then this should be aborted as Gossip PC could be reached by a Game switch without being a real gossip stone
-            cmp[forceGameCheck], 1
-            je DONE
-
-            READ_N64_REG(SP_OFFSET, ebx)
-            add ebx, DROP_CUSTOM
-
-            call CaptureXFlagASM
-            jmp DONE
-
-        SHOP_TEST:
-
-            // Test if we are currently changing room. If yes then this should be aborted as Gossip PC could be reached by a Game switch without being a real gossip stone
-            cmp[forceGameCheck], 1
-            je DONE
-
-            // The item is buyable, therefore it is not a "Nothing item", we can exit
-            READ_N64_REG(V0_OFFSET, eax)
-            cmp eax, 0x02
-            jne DONE
-
-            // The item is not a nothing object, we can exit
-            READ_N64_REG(V1_OFFSET, eax)
-            cmp eax, [gNothingID]
-            jne DONE
-
-            READ_N64_REG(SP_OFFSET, ebx)
-            add ebx, SHOP_CUSTOM
-
-            call CaptureXFlagASM
-            jmp DONE
-
-        PLAY_INIT_TEST:
-
-            mov [forceGameCheck], 0
-
-            push edi
-
-            mov edx, [gData]
-
-            // Get CurrIndex
-            mov edi, [edx + 12]
-
-            COMPUTE_INDEX(edx, edi, edi)
-
-            mov[edi], ecx                        // Store PC
-
-            // Build entrance flag + farore wind state + owl choice ID
-            mov ecx, IN_MAGIC
-            COMPUTE_RAM_ADDR([gActiveOwlOffset], edx)
-            mov cl, byte ptr[edx]
-
-            cmp [gGame], GAME_OOT
-            jne PLAY_INIT_STORE_MEM
-
-            // Build Link age
-            COMPUTE_RAM_ADDR(OOT_LINK_AGE, edx)
-            mov edx, [edx]
-            shr edx, 8
-            and edx, 00FF0000h
-            or ecx, edx
-
-        PLAY_INIT_STORE_MEM:
-
-            mov[edi + 4], ecx    // Store Mem = entrance flag + link age + farore wind state + owl choice
-
-            // Spawned scene ID
-            READ_N64_REG(V0_OFFSET, eax)
-
-            // gLastScene
-            COMPUTE_RAM_ADDR([gActiveSceneOffset], ecx)
-            mov ecx, [ecx]
-            shl ecx, 24
-            or eax, ecx
-
-            // Current Scene
-            COMPUTE_RAM_ADDR([gActiveCurrSceneOffset], ebx)
-            mov ebx, [ebx]
-            and ebx, 0xFFFF0000
-            or eax, ebx
-
-
-            // Build last played song
-            COMPUTE_RAM_ADDR([gActiveSongOffset], edx)
-            mov dl, byte ptr[edx]
-            and edx, 000000FFh
-            shl edx, 8
-
-            // Build current room index
-            COMPUTE_RAM_ADDR([gActiveRoomOffset], ebx)
-            mov dl, byte ptr[ebx]
-            shl edx, 8
-
-            // Build grotto data
-            COMPUTE_RAM_ADDR([gActiveGrottoOffset], ebx)
-            mov dl, byte ptr[ebx]
-            shl edx, 8
-
-            // Build game data
-            mov dl, byte ptr[gGame]
-
-            // Entrance spawn ID
-            READ_N64_REG(V1_OFFSET, ebx)
-
-            // Fill the buffer at the correct index
-            mov[edi + 8], edx   // Message direction + current room + grotto data + Game 
-            mov[edi + 12], eax  // Scene ID
-            mov[edi + 16], ebx  // Entrance ID
-
-            // Player coordinates data
-            COMPUTE_RAM_ADDR([gActiveCoordOffset], ebx)
-            mov eax, [ebx]      // X
-            mov ecx, [ebx + 4]  // Y
-            mov edx, [ebx + 8]  // Z
-            mov[edi + 20], eax  // X
-            mov[edi + 24], ecx  // Y
-            mov[edi + 28], edx  // Z
-
-            INC_INDEX(gData, eax)
-            pop edi
-
-            jmp DONE
-
-        TRANSITION_TEST :
-
-            mov[forceGameCheck], 1
-
-            push edi
-
-            mov edx, [gData]
-
-            // Get CurrIndex
-            mov edi, [edx + 12]
-
-            COMPUTE_INDEX(edx, edi, edi)
-
-            mov[edi], ecx                        // Store PC
-
-            // Build entrance flag + farore wind state + owl choice ID
-            mov ecx, OUT_MAGIC
-            COMPUTE_RAM_ADDR([gActiveOwlOffset], edx)
-            mov cl, byte ptr[edx]
-
-            // Build farore wind state
-            COMPUTE_RAM_ADDR([gActiveFaroreOffset], edx)
-            mov edx, [edx]
-            cmp edx, FARORE_USED
-            jne FARORE_END
-            mov edx, 1
-            shl edx, 8
-            add ecx, edx
-
-        FARORE_END :
-
-            cmp[gGame], GAME_OOT
-            jne TRANSITION_STORE_MEM
-
-            // Build Link age
-            COMPUTE_RAM_ADDR(OOT_LINK_AGE, edx)
-            mov edx, [edx]
-            shr edx, 8
-            and edx, 00FF0000h
-            or ecx, edx
-
-        TRANSITION_STORE_MEM :
-
-            // Build Death flag: add the death flag to link age => if age > 1 = death occured
-            COMPUTE_RAM_ADDR([gActiveDeathOffset], edx)
-            mov edx, [edx]
-            and edx, 00FF0000h
-            add ecx, edx
-
-            mov [edi + 4], ecx    // Store Mem = entrance flag + link age + farore wind state + owl choice
-
-            // gLastScene
-            COMPUTE_RAM_ADDR([gActiveSceneOffset], eax)
-            mov eax, [eax]
-
-            // Current Scene
-            COMPUTE_RAM_ADDR([gActiveCurrSceneOffset], ebx)
-            mov ebx, [ebx]
-            and ebx, 0xFFFF0000
-            or eax, ebx
-
-            // Build last played song
-            COMPUTE_RAM_ADDR([gActiveSongOffset], edx)
-            mov dl, byte ptr[edx]
-            and edx, 000000FFh
-            shl edx, 8
-
-            // Build current room index
-            COMPUTE_RAM_ADDR([gActiveRoomOffset], ebx)
-            mov dl, byte ptr[ebx]
-            shl edx, 8
-
-            // Build grotto data
-            COMPUTE_RAM_ADDR([gActiveGrottoOffset], ebx)
-            mov dl, byte ptr[ebx]
-            shl edx, 8
-
-            // Build game data
-            mov dl, byte ptr[gGame]
-
-            // gNextEntrance
-            COMPUTE_RAM_ADDR([gActiveNextEntrance], ebx)
-            mov ebx, [ebx]
-
-            // Fill the buffer at the correct index
-            mov[edi + 8], edx   // Last song + curr room index + grotto data + Game
-            mov[edi + 12], eax  // Scene ID
-            mov[edi + 16], ebx  // Entrance ID
-
-            // Player coordinates data
-            COMPUTE_RAM_ADDR([gActiveCoordOffset], ebx)
-            mov eax, [ebx]      // X
-            mov ecx, [ebx + 4]  // Y
-            mov edx, [ebx + 8]  // Z
-            mov[edi + 20], eax  // X
-            mov[edi + 24], ecx  // Y
-            mov[edi + 28], edx  // Z
-
-            INC_INDEX(gData, eax)
-            pop edi
-
-        GOSSIP_TEST:
-        BUTTERFLY_TEST:
-
-            // Test if we are currently changing room. If yes then this should be aborted as Gossip PC could be reached by a Game switch without being a real gossip stone
-            cmp[forceGameCheck], 1
-            je DONE
-
-            // Handle "Nothing" Butterflies / Gossip Stone Fiaries
-            mov edx, [regBase]
-            mov edx, [edx]
-            mov eax, [edx + V1_OFFSET]  // Get the buttlerfly / gossip object ID
-
-            // if butterfly / gossip fairy item != Nothing -> done
-            cmp eax, [gNothingID]
-            jne DONE
-
-            mov ebx, [edx + SP_OFFSET]
-            add ebx, BUTTERFLY_CUSTOM
-            call CaptureXFlagASM
-            jmp DONE
-
-        DONE:
-            pop ebx
-            pop edx
-            pop ecx
-            pop eax
-            jmp gatewayPC
+        call PCHookImpl
+        pop  edx
+        pop  ecx
+        pop  eax
+        jmp  gatewayPC          // trampoline to original code
     }
 }
 
@@ -1256,32 +1169,36 @@ extern "C" void StartDelayedROMDetectionASM()
     StartDelayedROMDetection();
 }
 
+
+/*
+*   The actual ROM hook body (called from the naked ROMHook trampoline).
+*
+*   @param ROMBaseValue     The freshly mapped physical ROM base (delivered in ebx by the emulator).
+*/
+void __cdecl ROMHookImpl(uint32_t ROMBaseValue)
+{
+    romBase = ROMBaseValue;
+
+    CheckGameVersion();
+
+    gGame = GAME_UNKNOWN;
+    gIsRAMLoaded = false;
+    isROMBaseResolved = false;
+
+    StartDelayedROMDetection();
+}
+
+
 __declspec(naked) void ROMHook()
 {
     __asm
     {
-        // -------------------------
-        // Save context
-        // -------------------------
-        pushad
-
-        // -------------------------
-        // ROM base / gData setup
-        // -------------------------
-        mov esi, ebx
-        mov [romBase], esi
-        call CheckGameVersionASM
-        mov byte ptr [gGame], GAME_UNKNOWN
-        mov byte ptr [gIsRAMLoaded], 0
-        mov byte ptr [isROMBaseResolved], 0
-
+        pushad                  // Save context
+        push ebx                // The freshly mapped ROM base is delivered in ebx
+        call ROMHookImpl
+        add  esp, 4             // cdecl caller cleanup
         popad
-
-        pushad
-        call StartDelayedROMDetectionASM
-        popad
-
-        jmp gatewayROM // trampoline to original code
+        jmp  gatewayROM         // trampoline to original code
     }
 }
 
