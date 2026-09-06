@@ -68,7 +68,11 @@
       <rendering_option context="child">
         <xflag type="crate" location="Gerudo Valley Crate Child Bottom" setup="0" actor="0x25" item="RUPEE_GREEN" name="Child - Bottom" xyz="421;369;0"/>
       </rendering_option>
-      <xflag type="crate" location="Gerudo Valley Crate Ledge" setup="0" actor="0x26" item="RUPEE_GREEN" name="Ledge" xyz="422;560;0"/>
+      <actor>
+        <match setup="0" actor="0x26"/>
+        <match setup="2" actor="0x1e"/>
+        <xflag type="crate" location="Gerudo Valley Crate Ledge" item="RUPEE_GREEN" name="Ledge" xyz="422;560;0"/>
+      </actor>
       <rendering_option context="adult">
         <xflag type="wonder" location="Gerudo Valley Wonder Item Lower" setup="2" actor="0x28" item="RUPEE_RED" name="Lower Waterfall" xyz="466;325;0"/>
         <xflag type="wonder" location="Gerudo Valley Wonder Item Upper" setup="2" actor="0x29" item="RUPEE_RED" name="Upper Waterfall" xyz="473;62;0"/>
@@ -94,7 +98,9 @@
         </actor>
       </rendering_option>
       <rendering_option context="child">
-        <actor setup="0" actor="0x1f">
+        <actor>
+          <match setup="0" actor="0x1f"/>
+          <match setup="2" actor="0x1f"/>
           <xflag type="soil" location="Gerudo Valley Soil 1" slice="0x0" item="FAIRY" name="Soil 1" xyz="414;346;0"/>
           <xflag type="soil" location="Gerudo Valley Soil 2" slice="0x1" item="FAIRY" name="Soil 2" xyz="404;346;0"/>
           <xflag type="soil" location="Gerudo Valley Soil 3" slice="0x2" item="FAIRY" name="Soil 3" xyz="409;337;0"/>

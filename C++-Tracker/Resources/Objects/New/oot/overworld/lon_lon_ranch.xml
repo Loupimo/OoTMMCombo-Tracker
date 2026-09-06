@@ -45,11 +45,23 @@
           <match setup="1" actor="0x08"/>
           <xflag type="pot" location="Lon Lon Ranch Pot 7" item="RECOVERY_HEART" name="Pot 7" xyz="352;420;1"/>
         </actor>
-        <xflag type="crate" location="Lon Lon Ranch Crate" setup="0" actor="0x18" item="RUPEE_GREEN" name="Crate" xyz="691;465;0"/>
+        <actor>
+          <match setup="0" actor="0x18"/>
+          <match setup="1" actor="0x1d"/>
+          <xflag type="crate" location="Lon Lon Ranch Crate" item="RUPEE_GREEN" name="Crate" xyz="691;465;0"/>
+        </actor>
       </rendering_option>
       <rendering_option context="adult">
-        <xflag type="wonder" location="Lon Lon Ranch Wonder Item 1" setup="2" actor="0x18" item="RUPEE_BLUE" name="Hurdles 1" xyz="508;351;0"/>
-        <xflag type="wonder" location="Lon Lon Ranch Wonder Item 2" setup="2" actor="0x19" item="RUPEE_BLUE" name="Hurdles 2" xyz="421;255;0"/>
+        <actor>
+          <match setup="2" actor="0x18"/>
+          <match setup="3" actor="0x8"/>
+          <xflag type="wonder" location="Lon Lon Ranch Wonder Item 1" item="RUPEE_BLUE" name="Hurdles 1" xyz="508;351;0"/>
+        </actor>
+        <actor>
+          <match setup="2" actor="0x19"/>
+          <match setup="3" actor="0x9"/>
+          <xflag type="wonder" location="Lon Lon Ranch Wonder Item 2" item="RUPEE_BLUE" name="Hurdles 2" xyz="421;255;0"/>
+        </actor>
       </rendering_option>
     </scene_rendering>
   </scene>

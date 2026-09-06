@@ -121,7 +121,9 @@
           <xflag type="butterfly" location="Lake Hylia Butterfly 2" slice="1" item="NOTHING" name="Butterfly 2" xyz="608;695;0"/>
           <xflag type="butterfly" location="Lake Hylia Butterfly 3" slice="2" item="NOTHING" name="Butterfly 3" xyz="615;709;0"/>
         </actor>
-        <actor setup="0" actor="0x27">
+        <actor>
+          <match setup="0" actor="0x27"/>
+          <match setup="2" actor="0x27"/>
           <xflag type="soil" location="Lake Hylia Soil 1" slice="0x0" item="FAIRY" name="Soil 1" xyz="862;640;0"/>
           <xflag type="soil" location="Lake Hylia Soil 2" slice="0x1" item="FAIRY" name="Soil 2" xyz="867;630;0"/>
           <xflag type="soil" location="Lake Hylia Soil 3" slice="0x2" item="FAIRY" name="Soil 3" xyz="856;630;0"/>

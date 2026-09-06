@@ -29,7 +29,13 @@
         <gs location="Graveyard GS Soil" flag="0x80" item="GS_TOKEN" name="Soil" xyz="635;439;0"/>
         <gs location="Graveyard GS Wall" flag="0x87" item="GS_TOKEN" name="Wall" xyz="401;130;0"/>
       </rendering_option>
-      <xflag type="crate" location="Graveyard Crate" setup="0" room="0x1" actor="0x15" item="NOTHING" name="Crate" xyz="712;445;0"/>
+      <actor room="0x1">
+        <match setup="0" actor="0x15"/>
+        <match setup="1" actor="0x17"/>
+        <match setup="2" actor="0x21"/>
+        <match setup="3" actor="0x21"/>
+        <xflag type="crate" location="Graveyard Crate" item="NOTHING" name="Crate" xyz="712;445;0"/>
+      </actor>
       <actor room="0x1">
         <match setup="0" actor="0x10"/>
         <match setup="1" actor="0x14"/>
@@ -49,7 +55,11 @@
         <xflag type="grass" location="Graveyard Grass 12" slice="0xb" item="RANDOM" name="Grass 12" xyz="710;181;0"/>
       </actor>
       <rendering_option context="child">
-        <actor room="0x1" setup="0" actor="0x12">
+        <actor room="0x1">
+          <match setup="0" actor="0x12"/>
+          <match setup="1" actor="0x30"/>
+          <match setup="2" actor="0x1e"/>
+          <match setup="3" actor="0x1e"/>
           <xflag type="soil" location="Graveyard Soil 1" slice="0x0" item="FAIRY" name="Soil 1" xyz="636;463;0"/>
           <xflag type="soil" location="Graveyard Soil 2" slice="0x1" item="FAIRY" name="Soil 2" xyz="641;452;0"/>
           <xflag type="soil" location="Graveyard Soil 3" slice="0x2" item="FAIRY" name="Soil 3" xyz="630;452;0"/>

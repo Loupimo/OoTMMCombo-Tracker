@@ -84,9 +84,21 @@
         <xflag type="boulder" location="Death Mountain Trail Boulder Child" setup="0" actor="0x2f" item="NOTHING" name="Child" xyz="861;345;0"/>
       </rendering_option>
       <rendering_option room="1">
-        <xflag type="boulder" location="Death Mountain Trail Boulder Lower" setup="0" actor="0x30" item="NOTHING" name="Lower" xyz="882;380;0"/>
-        <xflag type="boulder" location="Death Mountain Trail Boulder Middle" setup="0" actor="0x31" item="NOTHING" name="Middle" xyz="893;412;0"/>
-        <xflag type="boulder" location="Death Mountain Trail Boulder Upper" setup="0" actor="0x32" item="NOTHING" name="Upper" xyz="1025;324;0"/>
+        <actor>
+          <match setup="0" actor="0x30"/>
+          <match setup="2" actor="0x30"/>
+          <xflag type="boulder" location="Death Mountain Trail Boulder Lower" item="NOTHING" name="Lower" xyz="882;380;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x31"/>
+          <match setup="2" actor="0x31"/>
+          <xflag type="boulder" location="Death Mountain Trail Boulder Middle" item="NOTHING" name="Middle" xyz="893;412;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x32"/>
+          <match setup="2" actor="0x32"/>
+          <xflag type="boulder" location="Death Mountain Trail Boulder Upper" item="NOTHING" name="Upper" xyz="1025;324;0"/>
+        </actor>
       </rendering_option>
       <rendering_option context="adult" type="redboulder">
         <xflag type="boulder-red" location="Death Mountain Trail Red Boulder Near Lower GS" setup="2" actor="0xa" item="NOTHING" name="Near Lower Skulltula" xyz="318;199;0"/>
@@ -106,7 +118,9 @@
         <xflag type="boulder-red" location="Death Mountain Trail Red Boulder Upper 2" setup="2" actor="0x12" item="NOTHING" name="Upper 2" xyz="762;655;0"/>
       </rendering_option>
       <rendering_option context="child">
-        <actor setup="0" actor="0x2b">
+        <actor>
+          <match setup="0" actor="0x2b"/>
+          <match setup="2" actor="0x2e"/>
           <xflag type="soil" location="Death Mountain Trail Soil 1" slice="0x0" item="FAIRY" name="Soil 1" xyz="300;524;0"/>
           <xflag type="soil" location="Death Mountain Trail Soil 2" slice="0x1" item="FAIRY" name="Soil 2" xyz="282;519;0"/>
           <xflag type="soil" location="Death Mountain Trail Soil 3" slice="0x2" item="FAIRY" name="Soil 3" xyz="317;519;0"/>

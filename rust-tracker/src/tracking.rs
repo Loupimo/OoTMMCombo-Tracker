@@ -40,6 +40,7 @@ const OV_NONE: u8 = 0x00;
 const OV_CHEST: u8 = 0x01;
 const OV_COLLECTIBLE: u8 = 0x02;
 const OV_NPC: u8 = 0x03;
+const OV_GS: u8 = 0x04;
 const OV_SF: u8 = 0x05;
 const OV_FISH: u8 = 0x0a;
 const OV_XFLAG0: u8 = 0x10;
@@ -182,7 +183,10 @@ pub(crate) fn match_object(
         OV_CHEST | OV_COLLECTIBLE | OV_SF => find_object(game, Some(scene), id, ov_type, mq),
         // NPCs need the stable/dev id fix-up before the (global) lookup.
         OV_NPC => find_object(game, None, resolve_raw_npc(game, id, rom), OV_NPC, mq),
-        // gs / cow / shop / scrub / sr / fish: the pool object already carries the
+        // Gold skulltulas: the game reports the raw GS flag, but the pool keys every
+        // GS on flag+8, so shift before the (global by type+id) lookup (see resolve_raw_gs).
+        OV_GS => find_object(game, None, resolve_raw_gs(game, id), OV_GS, mq),
+        // cow / shop / scrub / sr / fish: the pool object already carries the
         // right scene, so match globally by (type, id) — no GetSceneX port needed.
         _ => find_object(game, None, id, ov_type, mq),
     }
@@ -292,6 +296,23 @@ fn find_object_by_legacy_scene(
     None
 }
 
+/// OoT gold-skulltula id fix-up. The game reports the raw GS flag `F` (the value the
+/// OoTMM patch puts in the ComboItemQuery, mirrored by the OoTMM checks XML `flag`),
+/// but the tracker keys every GS object — and the C++ `GetSceneGS` — on `F + 8`. Add
+/// the +8 back before the global `(type, id)` lookup, otherwise flag `F` resolves to
+/// whichever GS was stamped with object_id `F` (8 slots too early): e.g. Zora River
+/// GS Tree (flag 0x89) wrongly marking Kakariko GS Bazaar (object_id 0x89, flag 0x81).
+/// OoT only — MM skulltulas are not resolved through this flag-remapped path (C++
+/// `CorrectComboItem` leaves MM `OV_GS` untouched). Applied on every ROM: the pool's
+/// +8 offset is not version-specific, and no observed build sends `F + 8` directly.
+fn resolve_raw_gs(game: Game, id: u32) -> u32 {
+    if game == Game::Oot {
+        id + 8
+    } else {
+        id
+    }
+}
+
 /// Port of ResolveRawOoTNpcID: on stable ROMs the GS-reward NPCs (0x13..=0x17)
 /// are reported one higher than the tracker's dev numbering. OoT only.
 fn resolve_raw_npc(game: Game, id: u32, rom: RomVersion) -> u32 {
@@ -389,6 +410,10 @@ pub fn demo_event(game: Game, o: &ObjectDef) -> Option<Event> {
         }
     } else if t == OV_NONE || o.object_id > 0xFF {
         return None; // no overlay, or id wider than the DLL's id byte
+    } else if t == OV_GS && game == Game::Oot {
+        // Gold skulltula: the DLL reports the raw flag (object_id - 8), which
+        // resolve_raw_gs shifts back. Emit the raw flag for a faithful round-trip.
+        (t, o.object_id - 8, 0)
     } else {
         // Direct or scene-remapped overlay: the ObjectType value IS its OV value.
         (t, o.object_id, 0)
@@ -494,15 +519,49 @@ mod tests {
             .iter()
             .find(|o| matches!(o.type_, ObjectType::gs) && object_active(o, Game::Oot, &no_mq()) && o.object_id <= 0xFF)
             .expect("a base-layout GS with a byte-sized id");
-        // Deliberately bogus scene byte (0xFF); ov = gs; id in the id byte.
+        // Deliberately bogus scene byte (0xFF); ov = gs; the DLL sends the raw GS
+        // flag (object_id - 8), which resolve_raw_gs shifts back.
         let ev = Event {
             pc: 0x8009_0000,
             mem: 0,
-            query: [0xFF | ((o.type_ as u32) << 8), o.object_id << 16, 0, 0, 0, 0],
+            query: [0xFF | ((o.type_ as u32) << 8), (o.object_id - 8) << 16, 0, 0, 0, 0],
         };
         let (_, j) = resolve_collected(&ev, RomVersion::Dev, true, &no_mq()).expect("gs resolves globally");
         assert_eq!(OOT_OBJECTS[j].object_id, o.object_id);
         assert_eq!(OOT_OBJECTS[j].type_ as u8, ObjectType::gs as u8);
+    }
+
+    /// Regression (reported seed): the DLL reports a GS by its raw flag `F`, but the
+    /// pool keys each GS on `F + 8`. Without the resolve_raw_gs shift, flag `F` marks
+    /// the GS whose object_id is `F` — 8 slots too early. Concretely, collecting
+    /// Zora River GS Tree (flag 0x89) must mark *it*, not Kakariko GS Bazaar (object_id
+    /// 0x89). Drives the collected-item path through `resolve_collected`.
+    #[test]
+    fn gs_flag_resolves_to_own_location_not_eight_earlier() {
+        let tree = OOT_OBJECTS
+            .iter()
+            .position(|o| o.location == "OOT Zora River GS Tree")
+            .expect("Zora River GS Tree in the pool");
+        let flag = OOT_OBJECTS[tree].object_id - 8; // the raw flag the game/DLL reports (0x89)
+
+        // Collected-item query: scene in q0 low byte, ov=gs in q0 byte 1, id in q1 byte 2.
+        let ev = Event {
+            pc: 0x8009_0000,
+            mem: 0,
+            query: [
+                (OOT_OBJECTS[tree].scene as u32 & 0xFF) | ((OV_GS as u32) << 8),
+                flag << 16,
+                0, 0, 0, 0,
+            ],
+        };
+        let (game, j) = resolve_collected(&ev, RomVersion::Dev, false, &no_mq()).expect("gs resolves");
+        assert_eq!(game, Game::Oot);
+        assert_eq!(OOT_OBJECTS[j].location, "OOT Zora River GS Tree", "raw flag must map to its own GS");
+
+        // And it must NOT be the GS stamped with object_id == flag (the pre-fix bug).
+        let bazaar = OOT_OBJECTS.iter().find(|o| o.location == "OOT Kakariko GS Bazaar").unwrap();
+        assert_eq!(bazaar.object_id, flag, "precondition: Bazaar's object_id equals Zora Tree's flag");
+        assert_ne!(OOT_OBJECTS[j].location, "OOT Kakariko GS Bazaar");
     }
 
     /// The scene-remapped overlays can be matched globally by (type, id) only

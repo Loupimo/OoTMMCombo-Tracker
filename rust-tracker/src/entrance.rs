@@ -1414,6 +1414,11 @@ pub struct EntranceEvent {
     pub in_game: Game,
     pub in_scene: u32,
     pub in_entrance: u32,
+    /// The arriving scene as decoded, BEFORE `check_special_case` folds the
+    /// day / night / adult variants into their generic node. The object-map
+    /// auto-follow needs it to tell the Market Day / Night maps apart and to reach
+    /// the Temple of Time Exterior (its objects render only on the Child Day scene).
+    pub in_raw_scene: u32,
     /// The raw OUT / IN messages at pairing time, so the UI can log the same
     /// FROM/TO field table as the Qt `ParseIncomingMessage`.
     pub out_msg: EntranceMsg,
@@ -1571,6 +1576,11 @@ impl EntranceHelper {
             return None;
         }
 
+        // Keep the decoded scene before check_special_case folds day / night / adult
+        // into the generic node (Market, Temple of Time Entryway…). The object-map
+        // follow needs this variant to pick the right rendered map.
+        let in_raw_scene = msg.scene;
+
         msg.entrance_id = check_special_case(&mut msg);
 
         // Owned copy of the OUT so the predicates and later field reads don't
@@ -1667,6 +1677,7 @@ impl EntranceHelper {
             in_game: msg.game,
             in_scene,
             in_entrance: msg.entrance_id,
+            in_raw_scene,
             out_msg: out,
             in_msg: msg,
         })

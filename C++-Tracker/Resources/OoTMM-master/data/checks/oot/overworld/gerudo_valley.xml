@@ -49,7 +49,11 @@
     <xflag type="crate" location="Gerudo Valley Crate Child Unreachable 3" setup="0" actor="0x23" item="RUPEE_GREEN"/>
     <xflag type="crate" location="Gerudo Valley Crate Child Unreachable 4" setup="0" actor="0x24" item="RUPEE_GREEN"/>
     <xflag type="crate" location="Gerudo Valley Crate Child Bottom" setup="0" actor="0x25" item="RUPEE_GREEN"/>
-    <xflag type="crate" location="Gerudo Valley Crate Ledge" setup="0" actor="0x26" item="RUPEE_GREEN"/>
+    <actor>
+      <match setup="0" actor="0x26"/>
+      <match setup="2" actor="0x1e"/>
+      <xflag type="crate" location="Gerudo Valley Crate Ledge" item="RUPEE_GREEN"/>
+    </actor>
     <xflag type="wonder" location="Gerudo Valley Wonder Item Lower" setup="2" actor="0x28" item="RUPEE_RED"/>
     <xflag type="wonder" location="Gerudo Valley Wonder Item Upper" setup="2" actor="0x29" item="RUPEE_RED"/>
     <xflag type="boulder" location="Gerudo Valley Boulder Before Bridge 1" setup="2" actor="0x1b" item="NOTHING"/>
@@ -68,7 +72,9 @@
       <match setup="2" actor="0x19"/>
       <xflag type="boulder-silver" location="Gerudo Valley Silver Boulder" item="NOTHING"/>
     </actor>
-    <actor setup="0" actor="0x1f">
+    <actor>
+      <match setup="0" actor="0x1f"/>
+      <match setup="2" actor="0x1f"/>
       <xflag type="soil" location="Gerudo Valley Soil 1" slice="0x0" item="FAIRY"/>
       <xflag type="soil" location="Gerudo Valley Soil 2" slice="0x1" item="FAIRY"/>
       <xflag type="soil" location="Gerudo Valley Soil 3" slice="0x2" item="FAIRY"/>

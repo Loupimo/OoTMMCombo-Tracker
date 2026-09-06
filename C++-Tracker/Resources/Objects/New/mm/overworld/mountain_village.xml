@@ -15,7 +15,11 @@
         <npc location="Mountain Village Owl Statue" npc="OWL_MOUNTAIN_VILLAGE" item="OWL_MOUNTAIN_VILLAGE" name="Owl Statue" xyz="345;325;1"/>
       </rendering_option>
       <rendering_option context="winter" layout="all">
-        <xflag type="pot" location="Mountain Village Pot" room="0x0" actor="0x26" item="FAIRY" name="Roof" xyz="566;365;0"/>
+        <actor room="0x0">
+          <match actor="0x26" scene="MOUNTAIN_VILLAGE_WINTER"/>
+          <match actor="0x2e" scene="MOUNTAIN_VILLAGE_SPRING"/>
+          <xflag type="pot" location="Mountain Village Pot" item="FAIRY" name="Roof" xyz="566;365;0"/>
+        </actor>
         <actor room="0x0">
           <match actor="0x23" scene="MOUNTAIN_VILLAGE_WINTER"/>
           <match actor="0x29" scene="MOUNTAIN_VILLAGE_SPRING"/>
@@ -28,16 +32,60 @@
           <xflag type="pot" location="Mountain Village Potted Plant 2 Pot" slice="0" item="NOTHING" name="Potted Plant 2" xyz="488;434;0"/>
           <xflag type="grass" location="Mountain Village Potted Plant 2 Grass" slice="1" item="RECOVERY_HEART" name="Potted Plant 2" xyz="474;437;1"/>
         </actor>
-        <xflag type="snowball" location="Mountain Village Big Snowball 1" room="0x0" actor="0x11" item="NOTHING" name="Big Snowball 1" xyz="268;455;0"/>
-        <xflag type="snowball" location="Mountain Village Big Snowball 2" room="0x0" actor="0xe" item="NOTHING" name="Big Snowball 2" xyz="292;363;0"/>
-        <xflag type="snowball" location="Mountain Village Big Snowball 3" room="0x0" actor="0x2e" item="MAGIC_JAR_SMALL" name="Big Snowball 3" xyz="429;326;0"/>
-        <xflag type="snowball" location="Mountain Village Big Snowball 4" room="0x0" actor="0x34" item="RECOVERY_HEART" name="Big Snowball 4" xyz="737;417;0"/>
-        <xflag type="snowball" location="Mountain Village Big Snowball 5" room="0x0" actor="0x12" item="NOTHING" name="Big Snowball 5" xyz="800;403;0"/>
-        <xflag type="snowball" location="Mountain Village Small Snowball 1" room="0x0" actor="0x29" item="RECOVERY_HEART" name="Small Snowball 1" xyz="317;356;0"/>
-        <xflag type="snowball" location="Mountain Village Small Snowball 2" room="0x0" actor="0x38" item="MAGIC_JAR_LARGE" name="Small Snowball 2" xyz="333;331;0"/>
-        <xflag type="snowball" location="Mountain Village Small Snowball 3" room="0x0" actor="0x35" item="BOMBS_5" name="Small Snowball 3" xyz="347;336;0"/>
-        <xflag type="snowball" location="Mountain Village Small Snowball 4" room="0x0" actor="0x36" item="ARROWS_20" name="Small Snowball 4" xyz="357;326;0"/>
-        <xflag type="snowball" location="Mountain Village Small Snowball 5" room="0x0" actor="0x37" item="FLEXIBLE" name="Small Snowball 5" xyz="397;337;0"/>
+        <actor room="0x0">
+          <match actor="0xc"/>
+          <match actor="0xd"/>
+          <match actor="0x11"/>
+          <xflag type="snowball" location="Mountain Village Big Snowball 1" item="NOTHING" name="Big Snowball 1" xyz="268;455;0"/>
+        </actor>
+        <actor room="0x0">
+          <match actor="0xe"/>
+          <match actor="0x10"/>
+          <match actor="0x2d"/>
+          <xflag type="snowball" location="Mountain Village Big Snowball 2" item="NOTHING" name="Big Snowball 2" xyz="292;363;0"/>
+        </actor>
+        <actor room="0x0">
+          <match actor="0x2e"/>
+          <match actor="0x30"/>
+          <xflag type="snowball" location="Mountain Village Big Snowball 3" item="MAGIC_JAR_SMALL" name="Big Snowball 3" xyz="429;326;0"/>
+        </actor>
+        <actor room="0x0">
+          <match actor="0xf"/>
+          <match actor="0x33"/>
+          <match actor="0x34"/>
+          <xflag type="snowball" location="Mountain Village Big Snowball 4" item="RECOVERY_HEART" name="Big Snowball 4" xyz="737;417;0"/>
+        </actor>
+        <actor room="0x0">
+          <match actor="0x12"/>
+          <match actor="0x2c"/>
+          <match actor="0x2f"/>
+          <xflag type="snowball" location="Mountain Village Big Snowball 5" item="NOTHING" name="Big Snowball 5" xyz="800;403;0"/>
+        </actor>
+        <actor room="0x0">
+          <match actor="0x29" scene="MOUNTAIN_VILLAGE_WINTER"/>
+          <match actor="0x2d" scene="MOUNTAIN_VILLAGE_SPRING"/>
+          <xflag type="snowball" location="Mountain Village Small Snowball 1" item="RECOVERY_HEART" name="Small Snowball 1" xyz="317;356;0"/>
+        </actor>
+        <actor room="0x0">
+          <match actor="0x38" scene="MOUNTAIN_VILLAGE_WINTER"/>
+          <match actor="0x32" scene="MOUNTAIN_VILLAGE_SPRING"/>
+          <xflag type="snowball" location="Mountain Village Small Snowball 2" item="MAGIC_JAR_LARGE" name="Small Snowball 2" xyz="333;331;0"/>
+        </actor>
+        <actor room="0x0">
+          <match actor="0x35" scene="MOUNTAIN_VILLAGE_WINTER"/>
+          <match actor="0x2f" scene="MOUNTAIN_VILLAGE_SPRING"/>
+          <xflag type="snowball" location="Mountain Village Small Snowball 3" item="BOMBS_5" name="Small Snowball 3" xyz="347;336;0"/>
+        </actor>
+        <actor room="0x0">
+          <match actor="0x36" scene="MOUNTAIN_VILLAGE_WINTER"/>
+          <match actor="0x30" scene="MOUNTAIN_VILLAGE_SPRING"/>
+          <xflag type="snowball" location="Mountain Village Small Snowball 4" item="ARROWS_20" name="Small Snowball 4" xyz="357;326;0"/>
+        </actor>
+        <actor room="0x0">
+          <match actor="0x37" scene="MOUNTAIN_VILLAGE_WINTER"/>
+          <match actor="0x31" scene="MOUNTAIN_VILLAGE_SPRING"/>
+          <xflag type="snowball" location="Mountain Village Small Snowball 5" item="FLEXIBLE" name="Small Snowball 5" xyz="397;337;0"/>
+        </actor>
         <xflag type="snowball" location="Mountain Village Small Snowball Winter 1" room="0x0" actor="0x2a" item="RECOVERY_HEART" name="Winter 1" xyz="608;315;0"/>
         <xflag type="snowball" location="Mountain Village Small Snowball Winter 2" room="0x0" actor="0x28" item="NOTHING" name="Winter 2" xyz="591;419;0"/>
         <xflag type="snowball" location="Mountain Village Small Snowball Winter 3" room="0x0" actor="0x27" item="MAGIC_JAR_SMALL" name="Winter 3" xyz="740;388;0"/>

@@ -3608,9 +3608,9 @@ FROGS_GAME;OOT_ZORA_RIVER;Frogs - Game;OOT Zora River Frogs Game;npc;785;628;0;O
 0x62100;OOT_ZORA_RIVER;Fairy 7;OOT Zora River Fairy Fountain Fairy 7;none;0;0;0;OOT_FAIRY_ZORA_RIVER;none;render_type;All;0;oot;overworld;;;0x1355;
 0x72100;OOT_ZORA_RIVER;Fairy 8;OOT Zora River Fairy Fountain Fairy 8;none;0;0;0;OOT_FAIRY_ZORA_RIVER;none;render_type;All;0;oot;overworld;;;0x1356;
 0x0002d;OOT_ZORA_RIVER;Ground;OOT Zora River Rock Ground;rock;606;554;0;OOT_ZORA_RIVER;rock;render_type;All;0;oot;overworld;;;0x12FA;
-0x0002e;OOT_ZORA_RIVER;Water 1;OOT Zora River Rock Water 1;rock;509;515;0;OOT_ZORA_RIVER;rock;render_type;All;0;oot;overworld;;;0x12FB;
+0x0002e;OOT_ZORA_RIVER;Water 1;OOT Zora River Rock Water 1;rock;527;494;0;OOT_ZORA_RIVER;rock;render_type;All;0;oot;overworld;;;0x12FB;
 0x0002f;OOT_ZORA_RIVER;Water 2;OOT Zora River Rock Water 2;rock;527;510;1;OOT_ZORA_RIVER;rock;render_type;All;0;oot;overworld;;;0x12FC;
-0x00030;OOT_ZORA_RIVER;Water 3;OOT Zora River Rock Water 3;rock;527;494;0;OOT_ZORA_RIVER;rock;render_type;All;0;oot;overworld;;;0x12FD;
+0x00030;OOT_ZORA_RIVER;Water 3;OOT Zora River Rock Water 3;rock;509;515;0;OOT_ZORA_RIVER;rock;render_type;All;0;oot;overworld;;;0x12FD;
 0x00031;OOT_ZORA_RIVER;Water 4;OOT Zora River Rock Water 4;rock;506;489;0;OOT_ZORA_RIVER;rock;render_type;All;0;oot;overworld;;;0x12FE;
 0x00033;OOT_ZORA_RIVER;Upper - Circle Rock 1;OOT Zora River Rock Circle Upper Rock 1;rock;883;450;0;OOT_ZORA_RIVER;rock;render_type;All;0;oot;overworld;;;0x1307;
 0x10033;OOT_ZORA_RIVER;Upper - Circle Rock 2;OOT Zora River Rock Circle Upper Rock 2;rock;866;453;0;OOT_ZORA_RIVER;rock;render_type;All;0;oot;overworld;;;0x1308;

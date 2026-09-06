@@ -107,6 +107,11 @@ impl WorldInputs {
             }
         }
 
+        // OoTMM funnels each tiered item family (wallet / scale / strength / ocarina /
+        // magic / hookshot) into one counter that the logic tests; re-derive those
+        // counters from every collected tier source (see `normalize_tier_counters`).
+        normalize_tier_counters(&mut items);
+
         // Masks: sum the counts of every owned mask item (generous on purpose —
         // masks() only gates the optimistic Moon trials).
         let masks = mask_item_ids()
@@ -155,6 +160,88 @@ impl WorldInputs {
             song_events: settings.song_events.clone(),
             special_conds: settings.special_conds.clone(),
             exit_redirects: build_exit_redirects(&settings.entrance_remap, discovered, progressive),
+        }
+    }
+}
+
+/// Fold every collected upgrade of a tiered item family onto the single **tier
+/// counter** the logic tests with `has(<COUNTER>, n)`.
+///
+/// OoTMM models these families as one counter: each upgrade get-item does
+/// `add: [<COUNTER>, tier]` (gi.yml), so the counter's value is the current tier and
+/// the logic just tests it (`has_scale_raw`, `has_strength_raw`, `has_ocarina_of_time`,
+/// `has_double_magic`, `has_wallet`, `has_hookshot`, …). The tracker inventory instead
+/// tallies the raw `find_item_id` ids, and in two cases that misses the counter:
+///
+/// - **Separate-tier shuffles** place the individual upgrades (Silver/Golden Scale,
+///   Silver/Golden Gauntlets, Ocarina of Time, Larger Magic Upgrade, Longshot,
+///   Adult's/Giant's/… Wallet), each with its own id ≠ the counter — so the counter
+///   never moves and e.g. `has(SCALE, 2)` stays false with a Golden Scale in hand.
+/// - **Wallets specifically** place a "Progressive Wallet (OoT/MM)" whose id
+///   (`OOT_PROG_WALLET` / `MM_PROG_WALLET`) also differs from the counter, so even the
+///   progressive shuffle misses it.
+///
+/// The other families' progressive pool item id already *is* the counter id (e.g.
+/// `OOT_SCALE` == "Progressive Scale (OoT)"), and the shared counters are progressive-
+/// only (`SHARED_SCALE` etc. *are* the shared progressive item), so those are already
+/// counted by the naive tally and need no `prog` fixup — only their separate tiers do.
+///
+/// Tier = max(the counter's own naive count, the progressive-pool count, the highest
+/// separate tier owned). Writing it back is monotone (never lowers the counter), so a
+/// single pass after the inventory is assembled is safe. The MM hookshot is
+/// deliberately absent: its counter carries pickup-count semantics that already line up
+/// with the shuffled pool (1 copy short-off, 2 copies short-on), so the naive tally is
+/// already correct there.
+fn normalize_tier_counters(items: &mut HashMap<u32, u32>) {
+    use crate::data::iid;
+    let count = |items: &HashMap<u32, u32>, id: u32| items.get(&id).copied().unwrap_or(0);
+    // (counter, progressive-pool item [0 = none / same id as the counter],
+    //  separate tier members [(item id, tier value)] — the counter's own tier is read
+    //  from its naive count, so only tiers with a DIFFERENT id are listed here).
+    struct Fam {
+        counter: u32,
+        prog: u32,
+        members: &'static [(u32, u32)],
+    }
+    let families: &[Fam] = &[
+        // Wallets: the progressive pool item id differs from the counter id.
+        Fam { counter: iid::OOT_WALLET, prog: iid::OOT_PROG_WALLET, members: &[
+            (iid::OOT_WALLET2, 2), (iid::OOT_WALLET3, 3), (iid::OOT_WALLET4, 4), (iid::OOT_WALLET5, 5)] },
+        Fam { counter: iid::MM_WALLET, prog: iid::MM_PROG_WALLET, members: &[
+            (iid::MM_WALLET2, 2), (iid::MM_WALLET3, 3), (iid::MM_WALLET4, 4), (iid::MM_WALLET5, 5)] },
+        // Scale (bronze/silver/gold) — progressive id == counter, only separate tiers listed.
+        Fam { counter: iid::OOT_SCALE, prog: 0, members: &[
+            (iid::OOT_SCALE_BRONZE, 1), (iid::OOT_SCALE_SILVER, 2), (iid::OOT_SCALE_GOLDEN, 3)] },
+        Fam { counter: iid::MM_SCALE, prog: 0, members: &[
+            (iid::MM_SCALE_BRONZE, 1), (iid::MM_SCALE_SILVER, 2), (iid::MM_SCALE_GOLDEN, 3)] },
+        // Strength (bracelet/silver/golden gauntlets).
+        Fam { counter: iid::OOT_STRENGTH, prog: 0, members: &[
+            (iid::OOT_GORON_BRACELET, 1), (iid::OOT_SILVER_GAUNTLETS, 2), (iid::OOT_GOLDEN_GAUNTLETS, 3)] },
+        Fam { counter: iid::MM_STRENGTH, prog: 0, members: &[
+            (iid::MM_GORON_BRACELET, 1), (iid::MM_SILVER_GAUNTLETS, 2), (iid::MM_GOLDEN_GAUNTLETS, 3)] },
+        // Ocarina (fairy/of time).
+        Fam { counter: iid::OOT_OCARINA, prog: 0, members: &[
+            (iid::OOT_OCARINA_FAIRY, 1), (iid::OOT_OCARINA_TIME, 2)] },
+        Fam { counter: iid::MM_OCARINA, prog: 0, members: &[
+            (iid::MM_OCARINA_FAIRY, 1), (iid::MM_OCARINA_OF_TIME, 2)] },
+        // Magic (single/double) — the single upgrade IS the counter id, tier 2 is separate.
+        Fam { counter: iid::OOT_MAGIC_UPGRADE, prog: 0, members: &[(iid::OOT_MAGIC_UPGRADE2, 2)] },
+        Fam { counter: iid::MM_MAGIC_UPGRADE, prog: 0, members: &[(iid::MM_MAGIC_UPGRADE2, 2)] },
+        // OoT hookshot: `has(HOOKSHOT, 2)` = Longshot, whose id differs from the counter.
+        Fam { counter: iid::OOT_HOOKSHOT, prog: 0, members: &[(iid::OOT_LONGSHOT, 2)] },
+    ];
+    for fam in families {
+        let mut tier = count(items, fam.counter);
+        if fam.prog != 0 {
+            tier = tier.max(count(items, fam.prog));
+        }
+        for &(id, t) in fam.members {
+            if count(items, id) > 0 {
+                tier = tier.max(t);
+            }
+        }
+        if tier > 0 {
+            items.insert(fam.counter, tier);
         }
     }
 }

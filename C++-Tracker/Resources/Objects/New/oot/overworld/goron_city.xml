@@ -76,28 +76,112 @@
         <match setup="2" actor="0x23"/>
         <xflag type="rock" location="Goron City Rock" item="RANDOM" name="Rock" xyz="1102;171;0"/>
       </actor>
-      <xflag type="boulder" location="Goron City Maze Boulder 01" setup="0" room="0x0" actor="0x1f" item="NOTHING" name="Maze 1" xyz="852;124;0"/>
-      <xflag type="boulder" location="Goron City Maze Boulder 02" setup="0" room="0x0" actor="0x20" item="NOTHING" name="Maze 2" xyz="804;83;0"/>
-      <xflag type="boulder" location="Goron City Maze Boulder 03" setup="0" room="0x0" actor="0x21" item="NOTHING" name="Maze 3" xyz="807;159;0"/>
-      <xflag type="boulder" location="Goron City Maze Boulder 04" setup="0" room="0x0" actor="0x22" item="NOTHING" name="Maze 4" xyz="863;198;0"/>
-      <xflag type="boulder" location="Goron City Maze Boulder 05" setup="0" room="0x0" actor="0x23" item="NOTHING" name="Maze 5" xyz="956;199;0"/>
-      <xflag type="boulder" location="Goron City Maze Boulder 06" setup="0" room="0x0" actor="0x24" item="NOTHING" name="Maze 6" xyz="903;128;0"/>
-      <xflag type="boulder" location="Goron City Maze Boulder 07" setup="0" room="0x0" actor="0x25" item="NOTHING" name="Maze 7" xyz="888;77;0"/>
-      <xflag type="boulder" location="Goron City Maze Boulder 08" setup="0" room="0x0" actor="0x26" item="NOTHING" name="Maze 8" xyz="956;75;0"/>
-      <xflag type="boulder" location="Goron City Maze Boulder 09" setup="0" room="0x0" actor="0x27" item="NOTHING" name="Maze 9" xyz="1015;104;0"/>
-      <xflag type="boulder" location="Goron City Maze Boulder 10" setup="0" room="0x0" actor="0x28" item="NOTHING" name="Maze 10" xyz="984;165;0"/>
-      <xflag type="boulder" location="Goron City Boulder Upper 1" setup="0" room="0x3" actor="0x16" item="NOTHING" name="Upper 1" xyz="469;301;0"/>
-      <xflag type="boulder" location="Goron City Boulder Upper 2" setup="0" room="0x3" actor="0x19" item="NOTHING" name="Upper 2" xyz="470;326;0"/>
-      <xflag type="boulder" location="Goron City Boulder Upper 3" setup="0" room="0x3" actor="0x1a" item="NOTHING" name="Upper 3" xyz="486;344;0"/>
-      <xflag type="boulder" location="Goron City Boulder Shortcut 1" setup="0" room="0x3" actor="0x18" item="NOTHING" name="Shortcut 1" xyz="224;669;0"/>
-      <xflag type="boulder" location="Goron City Boulder Shortcut 2" setup="0" room="0x3" actor="0x1b" item="NOTHING" name="Shortcut 2" xyz="238;699;1"/>
-      <xflag type="boulder" location="Goron City Boulder Shortcut 3" setup="0" room="0x3" actor="0x1c" item="NOTHING" name="Shortcut 3" xyz="232;683;0"/>
+      <actor room="0x0">
+        <match setup="0" actor="0x1f"/>
+        <match setup="2" actor="0x24"/>
+        <xflag type="boulder" location="Goron City Maze Boulder 01" item="NOTHING" name="Maze 1" xyz="852;124;0"/>
+      </actor>
+      <actor room="0x0">
+        <match setup="0" actor="0x20"/>
+        <match setup="2" actor="0x25"/>
+        <xflag type="boulder" location="Goron City Maze Boulder 02" item="NOTHING" name="Maze 2" xyz="804;83;0"/>
+      </actor>
+      <actor room="0x0">
+        <match setup="0" actor="0x21"/>
+        <match setup="2" actor="0x26"/>
+        <xflag type="boulder" location="Goron City Maze Boulder 03" item="NOTHING" name="Maze 3" xyz="807;159;0"/>
+      </actor>
+      <actor room="0x0">
+        <match setup="0" actor="0x22"/>
+        <match setup="2" actor="0x27"/>
+        <xflag type="boulder" location="Goron City Maze Boulder 04" item="NOTHING" name="Maze 4" xyz="863;198;0"/>
+      </actor>
+      <actor room="0x0">
+        <match setup="0" actor="0x23"/>
+        <match setup="2" actor="0x28"/>
+        <xflag type="boulder" location="Goron City Maze Boulder 05" item="NOTHING" name="Maze 5" xyz="956;199;0"/>
+      </actor>
+      <actor room="0x0">
+        <match setup="0" actor="0x24"/>
+        <match setup="2" actor="0x29"/>
+        <xflag type="boulder" location="Goron City Maze Boulder 06" item="NOTHING" name="Maze 6" xyz="903;128;0"/>
+      </actor>
+      <actor room="0x0">
+        <match setup="0" actor="0x25"/>
+        <match setup="2" actor="0x2a"/>
+        <xflag type="boulder" location="Goron City Maze Boulder 07" item="NOTHING" name="Maze 7" xyz="888;77;0"/>
+      </actor>
+      <actor room="0x0">
+        <match setup="0" actor="0x26"/>
+        <match setup="2" actor="0x2b"/>
+        <xflag type="boulder" location="Goron City Maze Boulder 08" item="NOTHING" name="Maze 8" xyz="956;75;0"/>
+      </actor>
+      <actor room="0x0">
+        <match setup="0" actor="0x27"/>
+        <match setup="2" actor="0x2c"/>
+        <xflag type="boulder" location="Goron City Maze Boulder 09" item="NOTHING" name="Maze 9" xyz="1015;104;0"/>
+      </actor>
+      <actor room="0x0">
+        <match setup="0" actor="0x28"/>
+        <match setup="2" actor="0x2d"/>
+        <xflag type="boulder" location="Goron City Maze Boulder 10" item="NOTHING" name="Maze 10" xyz="984;165;0"/>
+      </actor>
+      <actor room="0x3">
+        <match setup="0" actor="0x16"/>
+        <match setup="2" actor="0x1d"/>
+        <xflag type="boulder" location="Goron City Boulder Upper 1" item="NOTHING" name="Upper 1" xyz="469;301;0"/>
+      </actor>
+      <actor room="0x3">
+        <match setup="0" actor="0x19"/>
+        <match setup="2" actor="0x1f"/>
+        <xflag type="boulder" location="Goron City Boulder Upper 2" item="NOTHING" name="Upper 2" xyz="470;326;0"/>
+      </actor>
+      <actor room="0x3">
+        <match setup="0" actor="0x1a"/>
+        <match setup="2" actor="0x20"/>
+        <xflag type="boulder" location="Goron City Boulder Upper 3" item="NOTHING" name="Upper 3" xyz="486;344;0"/>
+      </actor>
+      <actor room="0x3">
+        <match setup="0" actor="0x18"/>
+        <match setup="2" actor="0x1e"/>
+        <xflag type="boulder" location="Goron City Boulder Shortcut 1" item="NOTHING" name="Shortcut 1" xyz="224;669;0"/>
+      </actor>
+      <actor room="0x3">
+        <match setup="0" actor="0x1b"/>
+        <match setup="2" actor="0x21"/>
+        <xflag type="boulder" location="Goron City Boulder Shortcut 2" item="NOTHING" name="Shortcut 2" xyz="238;699;1"/>
+      </actor>
+      <actor room="0x3">
+        <match setup="0" actor="0x1c"/>
+        <match setup="2" actor="0x22"/>
+        <xflag type="boulder" location="Goron City Boulder Shortcut 3" item="NOTHING" name="Shortcut 3" xyz="232;683;0"/>
+      </actor>
       <rendering_option type="redboulder">
-        <xflag type="boulder-red" location="Goron City Red Boulder 1" setup="0" room="0x0" actor="0x29" item="NOTHING" name="Boulder 1" xyz="851;52;0"/>
-        <xflag type="boulder-red" location="Goron City Red Boulder 2" setup="0" room="0x0" actor="0x2d" item="NOTHING" name="Boulder 2" xyz="896;53;0"/>
-        <xflag type="boulder-red" location="Goron City Red Boulder 3" setup="0" room="0x0" actor="0x2a" item="NOTHING" name="Boulder 3" xyz="935;53;0"/>
-        <xflag type="boulder-red" location="Goron City Red Boulder 4" setup="0" room="0x0" actor="0x2e" item="NOTHING" name="Boulder 4" xyz="980;53;0"/>
-        <xflag type="boulder-red" location="Goron City Red Boulder 5" setup="0" room="0x0" actor="0x2b" item="NOTHING" name="Boulder 5" xyz="1019;52;0"/>
+        <actor room="0x0">
+          <match setup="0" actor="0x29"/>
+          <match setup="2" actor="0x01"/>
+          <xflag type="boulder-red" location="Goron City Red Boulder 1" item="NOTHING" name="Boulder 1" xyz="851;52;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="0" actor="0x2d"/>
+          <match setup="2" actor="0x04"/>
+          <xflag type="boulder-red" location="Goron City Red Boulder 2" item="NOTHING" name="Boulder 2" xyz="896;53;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="0" actor="0x2a"/>
+          <match setup="2" actor="0x02"/>
+          <xflag type="boulder-red" location="Goron City Red Boulder 3" item="NOTHING" name="Boulder 3" xyz="935;53;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="0" actor="0x2e"/>
+          <match setup="2" actor="0x05"/>
+          <xflag type="boulder-red" location="Goron City Red Boulder 4" item="NOTHING" name="Boulder 4" xyz="980;53;0"/>
+        </actor>
+        <actor room="0x0">
+          <match setup="0" actor="0x2b"/>
+          <match setup="2" actor="0x03"/>
+          <xflag type="boulder-red" location="Goron City Red Boulder 5" item="NOTHING" name="Boulder 5" xyz="1019;52;0"/>
+        </actor>
       </rendering_option>
       <rendering_option type="silverboulder">
         <actor room="0x0">

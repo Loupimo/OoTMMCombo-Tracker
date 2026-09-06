@@ -2,10 +2,26 @@
 <checks game="oot">
   <scene id="MARKET_CHILD_DAY">
     <scene_rendering id="OOT_MARKET_CHILD_DAY" loc_type="overworld">
-      <xflag type="crate" location="Market Crate 1" actor="0x21" item="RUPEE_RED" name="Crate 1" xyz="438;41;0"/>
-      <xflag type="crate" location="Market Crate 2" actor="0x22" item="RUPEE_GREEN" name="Crate 2" xyz="410;41;0"/>
-      <xflag type="crate" location="Market Crate 3" actor="0x23" item="RUPEE_GREEN" name="Crate 3" xyz="721;372;0"/>
-      <xflag type="crate" location="Market Crate 4" actor="0x24" item="RUPEE_GREEN" name="Crate 4" xyz="724;474;0"/>
+      <actor>
+        <match actor="0x21" scene="MARKET_CHILD_DAY"/>
+        <match actor="0x16" scene="MARKET_CHILD_NIGHT"/>
+        <xflag type="crate" location="Market Crate 1" item="RUPEE_RED" name="Crate 1" xyz="438;41;0"/>
+      </actor>
+      <actor>
+        <match actor="0x22" scene="MARKET_CHILD_DAY"/>
+        <match actor="0x17" scene="MARKET_CHILD_NIGHT"/>
+        <xflag type="crate" location="Market Crate 2" item="RUPEE_GREEN" name="Crate 2" xyz="410;41;0"/>
+      </actor>
+      <actor>
+        <match actor="0x23" scene="MARKET_CHILD_DAY"/>
+        <match actor="0x18" scene="MARKET_CHILD_NIGHT"/>
+        <xflag type="crate" location="Market Crate 3" item="RUPEE_GREEN" name="Crate 3" xyz="721;372;0"/>
+      </actor>
+      <actor>
+        <match actor="0x24" scene="MARKET_CHILD_DAY"/>
+        <match actor="0x19" scene="MARKET_CHILD_NIGHT"/>
+        <xflag type="crate" location="Market Crate 4" item="RUPEE_GREEN" name="Crate 4" xyz="724;474;0"/>
+      </actor>
       <actor>
         <match actor="0x17" scene="MARKET_CHILD_DAY"/>
         <match actor="0x07" scene="MARKET_CHILD_NIGHT"/>

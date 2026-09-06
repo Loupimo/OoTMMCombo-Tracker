@@ -61,7 +61,7 @@
       <actor room="0x00">
         <match setup="0" actor="0x2e"/>
         <match setup="2" actor="0x13"/>
-        <xflag type="rock" location="Zora River Rock Water 1" item="RANDOM" name="Water 1" xyz="509;515;0"/>
+        <xflag type="rock" location="Zora River Rock Water 1" item="RANDOM" name="Water 1" xyz="527;494;0"/>
       </actor>
       <actor room="0x00">
         <match setup="0" actor="0x2f"/>
@@ -71,7 +71,7 @@
       <actor room="0x00">
         <match setup="0" actor="0x30"/>
         <match setup="2" actor="0x11"/>
-        <xflag type="rock" location="Zora River Rock Water 3" item="RANDOM" name="Water 3" xyz="527;494;0"/>
+        <xflag type="rock" location="Zora River Rock Water 3" item="RANDOM" name="Water 3" xyz="509;515;0"/>
       </actor>
       <actor room="0x00">
         <match setup="0" actor="0x31"/>
@@ -108,7 +108,11 @@
         <xflag type="boulder" location="Zora River Boulder Lower 3" setup="0" room="0x0" actor="0x3f" item="NOTHING" name="Lower 3" xyz="1290;328;0"/>
         <xflag type="boulder" location="Zora River Boulder Lower 4" setup="0" room="0x0" actor="0x40" item="NOTHING" name="Lower 4" xyz="1261;319;0"/>
       </rendering_option>
-      <xflag type="boulder" location="Zora River Boulder Upper" setup="0" room="0x0" actor="0x3d" item="NOTHING" name="Upper" xyz="879;470;0"/>
+      <actor room="0x0">
+        <match setup="0" actor="0x3d"/>
+        <match setup="2" actor="0x1b"/>
+        <xflag type="boulder" location="Zora River Boulder Upper" item="NOTHING" name="Upper" xyz="879;470;0"/>
+      </actor>
       <rendering_option context="child">
         <actor room="0x0" setup="0" actor="0x37">
           <xflag type="butterfly" location="Zora River Butterfly Near Beans 1" slice="0" item="FAIRY" name="Near Beans 1" xyz="1332;434;0"/>
@@ -119,7 +123,9 @@
           <xflag type="butterfly" location="Zora River Butterfly Near Waterfall 2" slice="1" item="NOTHING" name="Near Waterfall 2" xyz="125;700;0"/>
           <xflag type="butterfly" location="Zora River Butterfly Near Waterfall 3" slice="2" item="NOTHING" name="Near Waterfall 3" xyz="115;687;0"/>
         </actor>
-        <actor room="0x0" setup="0" actor="0x38">
+        <actor room="0x0">
+          <match setup="0" actor="0x38"/>
+          <match setup="2" actor="0x1a"/>
           <xflag type="soil" location="Zora River Soil 1" slice="0x0" item="FAIRY" name="Soil 1" xyz="1141;474;0"/>
           <xflag type="soil" location="Zora River Soil 2" slice="0x1" item="FAIRY" name="Soil 2" xyz="1131;465;0"/>
           <xflag type="soil" location="Zora River Soil 3" slice="0x2" item="FAIRY" name="Soil 3" xyz="1144;461;0"/>

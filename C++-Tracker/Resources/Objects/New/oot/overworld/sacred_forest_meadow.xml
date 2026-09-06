@@ -11,12 +11,36 @@
       <rendering_option context="adult">
         <gs location="Sacred Meadow GS Night Adult" flag="0x6b" item="GS_TOKEN" name="Night Adult" xyz="1001;90;0"/>
       </rendering_option>
-      <xflag type="wonder" location="Sacred Meadow Wonder Item Entrance" setup="0" room="0x0" actor="0xf" item="RUPEE_BLUE" name="Entrance" xyz="1688;437;0"/>
-      <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 1" setup="0" room="0x0" actor="0xc" item="RUPEE_GREEN" name="Maze 1" xyz="1388;384;0"/>
-      <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 2" setup="0" room="0x0" actor="0xd" item="RUPEE_GREEN" name="Maze 2" xyz="1418;277;0"/>
-      <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 3" setup="0" room="0x0" actor="0xe" item="RUPEE_GREEN" name="Maze 3" xyz="1039;209;0"/>
-      <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 4" setup="0" room="0x0" actor="0x10" item="RUPEE_BLUE" name="Maze 4" xyz="995;383;0"/>
-      <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 5" setup="0" room="0x0" actor="0x11" item="RUPEE_BLUE" name="Maze 5" xyz="1317;277;0"/>
+      <actor room="0x0">
+        <match setup="0" actor="0xf"/>
+        <match setup="2" actor="0x12"/>
+        <xflag type="wonder" location="Sacred Meadow Wonder Item Entrance" item="RUPEE_BLUE" name="Entrance" xyz="1688;437;0"/>
+      </actor>
+      <actor room="0x0">
+        <match setup="0" actor="0xc"/>
+        <match setup="2" actor="0xf"/>
+        <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 1" item="RUPEE_GREEN" name="Maze 1" xyz="1388;384;0"/>
+      </actor>
+      <actor room="0x0">
+        <match setup="0" actor="0xd"/>
+        <match setup="2" actor="0x10"/>
+        <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 2" item="RUPEE_GREEN" name="Maze 2" xyz="1418;277;0"/>
+      </actor>
+      <actor room="0x0">
+        <match setup="0" actor="0xe"/>
+        <match setup="2" actor="0x11"/>
+        <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 3" item="RUPEE_GREEN" name="Maze 3" xyz="1039;209;0"/>
+      </actor>
+      <actor room="0x0">
+        <match setup="0" actor="0x10"/>
+        <match setup="2" actor="0x13"/>
+        <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 4" item="RUPEE_BLUE" name="Maze 4" xyz="995;383;0"/>
+      </actor>
+      <actor room="0x0">
+        <match setup="0" actor="0x11"/>
+        <match setup="2" actor="0x14"/>
+        <xflag type="wonder" location="Sacred Meadow Wonder Item Maze 5" item="RUPEE_BLUE" name="Maze 5" xyz="1317;277;0"/>
+      </actor>
       <actor>
         <match setup="0" actor="0x2"/>
         <match setup="2" actor="0x1"/>

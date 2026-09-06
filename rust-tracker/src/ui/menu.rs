@@ -584,7 +584,9 @@ impl TrackerApp {
                 ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
                     ui.label(format!("{} : {}", self.i18n.entry(), last_entrance.as_deref().unwrap_or("—")));
                     ui.separator();
-                    ui.label(format!("{} : {}", self.i18n.item(), last_item.as_deref().unwrap_or("—")));
+                    // last_item is stored raw (English); localize it like the entrance (tr_entrance).
+                    let item_label = last_item.as_deref().map(|s| self.i18n.tr_item(s)).unwrap_or("—");
+                    ui.label(format!("{} : {}", self.i18n.item(), item_label));
                     ui.separator();
                     let ccol = if connected { green } else { Color32::from_rgb(220, 120, 90) };
                     ui.weak(&status);

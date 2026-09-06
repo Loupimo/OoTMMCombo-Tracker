@@ -300,6 +300,28 @@ impl Dashboard {
     fn on_item_found(&mut self, id: u32, settings: &Settings) {
         let Some(matches) = self.by_item.get(&id).cloned() else { return };
         let shared = item_can_be_shared(id) && settings.shared_item_ids.contains(&id);
+
+        // OoTMM Short Hookshot (shortHookshotMm): the seed places the SAME item
+        // twice as "Hookshot (MM)" (MM_HOOKSHOT) — the first pickup is the short-range
+        // hookshot, the second upgrades it to full range (gi.yml: MM_HOOKSHOT_SHORT
+        // adds +1, MM_HOOKSHOT +2; `can_hookshot` needs 2 when the setting is on). No
+        // placement is ever named "Short Hookshot", so a plain match lights the full
+        // tier on the first pickup and the Short tier stays dead. Walk [Short, full]
+        // on successive MM_HOOKSHOT pickups instead. The setting is on exactly when
+        // MM_HOOKSHOT_SHORT is NOT disabled (off => check_item_enabled disables it and
+        // hides the Short tier, and a lone hookshot is already full). A MM_HOOKSHOT
+        // placement only exists when the hookshot is NOT shared (a shared hookshot is
+        // placed as SHARED_HOOKSHOT), so no shared-propagation guard is needed here.
+        if id == data::iid::MM_HOOKSHOT
+            && !settings.disabled_item_ids.contains(&data::iid::MM_HOOKSHOT_SHORT)
+        {
+            let mut stages =
+                self.by_item.get(&data::iid::MM_HOOKSHOT_SHORT).cloned().unwrap_or_default();
+            stages.extend(matches.iter().copied());
+            self.walk_stages(&stages);
+            return;
+        }
+
         // Progressive either because the ROM settings say so, or because the id is a
         // structural family marker shared by several tiers of one page (strength,
         // wallets, generic shields…) — see `marker_ids`. Both routes walk one stage
@@ -922,6 +944,63 @@ mod tests {
 
         d.rebuild(&one_world(&places, &[], &[(Game::Mm, a), (Game::Mm, b)]), &settings, &HashSet::new());
         assert!(d.state(hero).found, "second MM shield advances one tier");
+    }
+
+    #[test]
+    fn short_hookshot_walks_short_then_full() {
+        use data::iid::*;
+        // OoTMM's shortHookshotMm places the SAME "Hookshot (MM)" item twice: the
+        // first pickup is the short-range hookshot, the second upgrades it to full.
+        // Both resolve to MM_HOOKSHOT (no placement is ever "Short Hookshot"), so the
+        // tracker must walk [Short Hookshot, Hookshot] on successive pickups.
+        assert_eq!(find_item_id("Hookshot (MM)"), Some(MM_HOOKSHOT));
+
+        let objs: Vec<usize> = data::MM_OBJECTS
+            .iter()
+            .enumerate()
+            .filter(|(_, o)| o.type_ == data::ObjectType::chest || o.type_ == data::ObjectType::gs)
+            .map(|(i, _)| i)
+            .take(2)
+            .collect();
+        let (a, b) = (objs[0], objs[1]);
+        let places = [
+            (data::MM_OBJECTS[a].location, "Hookshot (MM)"),
+            (data::MM_OBJECTS[b].location, "Hookshot (MM)"),
+        ];
+
+        // shortHookshotMm ON: MM_HOOKSHOT_SHORT stays enabled (Short tier visible).
+        let mut settings = Settings::default();
+        settings.set_value("shortHookshotMm", data::ShuffleSetting::all);
+        settings.apply(&HashSet::new());
+        assert!(
+            !settings.disabled_item_ids.contains(&MM_HOOKSHOT_SHORT),
+            "setting on keeps the short item enabled"
+        );
+
+        let mut d = Dashboard::new();
+        let short = entry_with_key(&d, MM_HOOKSHOT_SHORT);
+        let full = entry_with_key(&d, MM_HOOKSHOT);
+
+        d.rebuild(&one_world(&places, &[], &[(Game::Mm, a)]), &settings, &HashSet::new());
+        assert!(d.state(short).found, "first Hookshot (MM) lights the Short Hookshot tier");
+        assert!(!d.state(full).found, "and not the full Hookshot yet");
+
+        d.rebuild(&one_world(&places, &[], &[(Game::Mm, a), (Game::Mm, b)]), &settings, &HashSet::new());
+        assert!(d.state(full).found, "second Hookshot (MM) advances to the full Hookshot");
+
+        // shortHookshotMm OFF: the short item is disabled and a lone hookshot is full.
+        let mut off = Settings::default();
+        off.set_value("shortHookshotMm", data::ShuffleSetting::vanilla);
+        off.apply(&HashSet::new());
+        assert!(
+            off.disabled_item_ids.contains(&MM_HOOKSHOT_SHORT),
+            "setting off disables the short item"
+        );
+
+        let mut d2 = Dashboard::new();
+        d2.rebuild(&one_world(&places, &[], &[(Game::Mm, a)]), &off, &HashSet::new());
+        assert!(d2.state(full).found, "with the setting off, one hookshot is the full Hookshot");
+        assert!(!d2.state(short).found, "and the Short tier stays unlit");
     }
 
     #[test]

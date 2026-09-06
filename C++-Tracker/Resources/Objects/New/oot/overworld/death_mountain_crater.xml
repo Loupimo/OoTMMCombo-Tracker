@@ -76,14 +76,42 @@
           <xflag type="rupee" location="Death Mountain Crater Rupee Adult 7" slice="6" item="RUPEE_RED" name="Adult 7" xyz="310;321;0"/>
         </actor>
       </rendering_option>
-      <xflag type="boulder" location="Death Mountain Crater Boulder 1" setup="0" room="0x1" actor="0x23" item="NOTHING" name="Boulder 1" xyz="448;109;0"/>
-      <xflag type="boulder" location="Death Mountain Crater Boulder 2" setup="0" room="0x1" actor="0x24" item="NOTHING" name="Boulder 2" xyz="420;175;0"/>
-      <xflag type="boulder" location="Death Mountain Crater Boulder 3" setup="0" room="0x1" actor="0x25" item="NOTHING" name="Boulder 3" xyz="555;202;0"/>
+      <actor room="0x1">
+        <match setup="0" actor="0x23"/>
+        <match setup="2" actor="0x2f"/>
+        <xflag type="boulder" location="Death Mountain Crater Boulder 1" item="NOTHING" name="Boulder 1" xyz="448;109;0"/>
+      </actor>
+      <actor room="0x1">
+        <match setup="0" actor="0x24"/>
+        <match setup="2" actor="0x2d"/>
+        <xflag type="boulder" location="Death Mountain Crater Boulder 2" item="NOTHING" name="Boulder 2" xyz="420;175;0"/>
+      </actor>
+      <actor room="0x1">
+        <match setup="0" actor="0x25"/>
+        <match setup="2" actor="0x2e"/>
+        <xflag type="boulder" location="Death Mountain Crater Boulder 3" item="NOTHING" name="Boulder 3" xyz="555;202;0"/>
+      </actor>
       <rendering_option type="redboulder">
-        <xflag type="boulder-red" location="Death Mountain Crater Red Boulder Grotto" setup="0" room="0x1" actor="0xb" item="NOTHING" name="Grotto" xyz="736;461;0"/>
-        <xflag type="boulder-red" location="Death Mountain Crater Red Boulder Great Fairy 1" setup="0" room="0x1" actor="0xc" item="NOTHING" name="Great Fairy 1" xyz="687;240;1"/>
-        <xflag type="boulder-red" location="Death Mountain Crater Red Boulder Great Fairy 2" setup="0" room="0x1" actor="0xd" item="NOTHING" name="Great Fairy 2" xyz="681;228;0"/>
-        <xflag type="boulder-red" location="Death Mountain Crater Red Boulder Shortcut" setup="0" room="0x1" actor="0xe" item="NOTHING" name="Shortcut" xyz="641;240;0"/>
+        <actor room="0x1">
+          <match setup="0" actor="0xb"/>
+          <match setup="2" actor="0x6"/>
+          <xflag type="boulder-red" location="Death Mountain Crater Red Boulder Grotto" item="NOTHING" name="Grotto" xyz="736;461;0"/>
+        </actor>
+        <actor room="0x1">
+          <match setup="0" actor="0xc"/>
+          <match setup="2" actor="0x4"/>
+          <xflag type="boulder-red" location="Death Mountain Crater Red Boulder Great Fairy 1" item="NOTHING" name="Great Fairy 1" xyz="687;240;1"/>
+        </actor>
+        <actor room="0x1">
+          <match setup="0" actor="0xd"/>
+          <match setup="2" actor="0x5"/>
+          <xflag type="boulder-red" location="Death Mountain Crater Red Boulder Great Fairy 2" item="NOTHING" name="Great Fairy 2" xyz="681;228;0"/>
+        </actor>
+        <actor room="0x1">
+          <match setup="0" actor="0xe"/>
+          <match setup="2" actor="0x7"/>
+          <xflag type="boulder-red" location="Death Mountain Crater Red Boulder Shortcut" item="NOTHING" name="Shortcut" xyz="641;240;0"/>
+        </actor>
       </rendering_option>
       <rendering_option context="child" type="silverboulder">
         <xflag type="boulder-silver" location="Death Mountain Crater Silver Boulder 1" setup="0" room="0x1" actor="0x1b" item="NOTHING" name="Silver Boulder 1" xyz="485;488;0"/>
@@ -91,7 +119,9 @@
         <xflag type="boulder-silver" location="Death Mountain Crater Silver Boulder 3" setup="0" room="0x1" actor="0x1d" item="NOTHING" name="Silver Boulder 3" xyz="450;488;0"/>
       </rendering_option>
       <rendering_option context="child">
-        <actor room="0x1" setup="0" actor="0x21">
+        <actor room="0x1">
+          <match setup="0" actor="0x21"/>
+          <match setup="2" actor="0x2b"/>
           <xflag type="soil" location="Death Mountain Crater Soil 1" slice="0x0" item="FAIRY" name="Soil 1" xyz="491;430;0"/>
           <xflag type="soil" location="Death Mountain Crater Soil 2" slice="0x1" item="FAIRY" name="Soil 2" xyz="514;412;0"/>
           <xflag type="soil" location="Death Mountain Crater Soil 3" slice="0x2" item="FAIRY" name="Soil 3" xyz="468;412;0"/>

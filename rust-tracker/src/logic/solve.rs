@@ -364,6 +364,224 @@ mod tests {
         }
     }
 
+    /// A child with a bronze scale, rupees available, and the Fishing Pond owner's
+    /// soul reaches the shuffled pond fish — the exact inventory a player fishing at
+    /// the pond has. Guards the macro chain `soul_fishing_pond_owner` /
+    /// `can_use_wallet` and the child `Lake Hylia -> Near Pond -> Fishing Pond`
+    /// route (a regression here would wrongly dim every pond-fish check).
+    #[test]
+    fn fishing_pond_fish_reachable_with_scale_soul_and_rupees() {
+        use crate::data::iid;
+        let mq = std::collections::HashSet::new();
+        let mut s = crate::settings::Settings::default();
+        s.parse_spoiler(
+            "Settings\n  startingAgeOot: child\n  doorOfTime: open\n  bronzeScale: true\n  soulsNpcOot: true\n  rustyKeysOot: false\n",
+            &mq,
+        );
+        s.apply(&mq);
+        // Bronze scale (opens the child swim into Near Pond) + the pond owner's soul.
+        s.starting_item_ids.insert(iid::OOT_SCALE, 1);
+        s.starting_item_ids.insert(iid::OOT_SOUL_NPC_FISHING_POND_OWNER, 1);
+        let r = crate::logic::solve_world(
+            &s,
+            std::slice::from_ref(&crate::WorldData::default()),
+            1,
+            &Default::default(),
+            false,
+        );
+        assert!(r.reachable("OOT Fishing Pond Child Fish 1"), "pond fish should be reachable");
+        assert!(r.reachable("OOT Fishing Pond Child"), "pond prize should be reachable");
+    }
+
+    /// With `rustyKeysOot` on, the pond entrance needs `has(RUSTY_KEY_FISHING_POND)`.
+    /// The key obtained through a COLLECTED check (its spoiler placement name resolved
+    /// by `find_item_id`, the real app inventory path) must credit id 0x1f0 and open
+    /// the pond — guards against a rusty-key name/id drift silencing the credit.
+    #[test]
+    fn rusty_key_from_collected_check_opens_pond() {
+        use crate::data::iid;
+        use crate::scene::Game;
+        let mq = std::collections::HashSet::new();
+        let mut s = crate::settings::Settings::default();
+        s.parse_spoiler(
+            "Settings\n  startingAgeOot: child\n  doorOfTime: open\n  bronzeScale: true\n  soulsNpcOot: true\n  rustyKeysOot: true\n",
+            &mq,
+        );
+        s.apply(&mq);
+        s.starting_item_ids.insert(iid::OOT_SCALE, 1);
+        s.starting_item_ids.insert(iid::OOT_SOUL_NPC_FISHING_POND_OWNER, 1);
+
+        let loc = "OOT Kokiri Forest Kokiri Sword Chest";
+        let idx = data::OOT_OBJECTS.iter().position(|o| o.location == loc).unwrap();
+        let mut w = crate::WorldData::default();
+        w.items.insert(loc.to_string(), "Rusty Key (Fishing Pond)".to_string());
+        w.collected.insert((Game::Oot, idx));
+
+        // Without the key: pond walled. With it: reachable.
+        let no_key = crate::logic::solve_world(&s, std::slice::from_ref(&crate::WorldData::default()), 1, &Default::default(), false);
+        assert!(!no_key.reachable("OOT Fishing Pond Child Fish 1"), "no rusty key => pond walled");
+        let with_key = crate::logic::solve_world(&s, std::slice::from_ref(&w), 1, &Default::default(), false);
+        assert!(with_key.reachable("OOT Fishing Pond Child Fish 1"), "collected rusty key must open the pond");
+    }
+
+    /// With `childWallets` on, `can_use_wallet(n)` needs the wallet **tier counter**
+    /// (`has(OOT_WALLET, n)`). The shuffled pool hands out "Progressive Wallet (OoT)"
+    /// (`OOT_PROG_WALLET`, a different id) or specific tier wallets, none of which move
+    /// the counter through the naive tally — so without the wallet-tier fold every
+    /// wallet-gated check (the whole Fishing Pond) stays dark despite wallets in hand.
+    /// Covers the exact reported seed: child, rusty keys on, pond key + owner soul +
+    /// bronze scale collected, wallets progressive.
+    #[test]
+    fn progressive_wallet_satisfies_can_use_wallet_at_pond() {
+        use crate::data::iid;
+        let mq = std::collections::HashSet::new();
+        let mut s = crate::settings::Settings::default();
+        s.parse_spoiler(
+            "Settings\n  startingAgeOot: child\n  doorOfTime: open\n  bronzeScale: true\n  soulsNpcOot: true\n  rustyKeysOot: true\n  childWallets: true\n",
+            &mq,
+        );
+        s.apply(&mq);
+        s.starting_item_ids.insert(iid::OOT_SCALE, 1);
+        s.starting_item_ids.insert(iid::OOT_SOUL_NPC_FISHING_POND_OWNER, 1);
+        s.starting_item_ids.insert(iid::OOT_RUSTY_KEY_FISHING_POND, 1);
+
+        // No wallet yet: childWallets gates paying, so the whole pond is dark.
+        let none = crate::logic::solve_world(&s, std::slice::from_ref(&crate::WorldData::default()), 1, &Default::default(), false);
+        assert!(!none.reachable("OOT Fishing Pond Child Fish 1"), "no wallet + childWallets => pond dark");
+
+        // Two progressive wallets collected (tier 2): the counter must reflect it.
+        s.starting_item_ids.insert(iid::OOT_PROG_WALLET, 2);
+        let inp = crate::logic::inputs::WorldInputs::build(&s, std::slice::from_ref(&crate::WorldData::default()), 1, &Default::default(), false);
+        assert_eq!(inp.item_count(iid::OOT_WALLET), 2, "progressive wallets must fold onto the tier counter");
+        let with = crate::logic::solve_world(&s, std::slice::from_ref(&crate::WorldData::default()), 1, &Default::default(), false);
+        assert!(with.reachable("OOT Fishing Pond Child Fish 1"), "progressive wallet must open the pond");
+    }
+
+    /// `pondFishShuffle`: the weighted fish become real, uniquely-ided shuffled items,
+    /// so the pond PRIZE (heart piece / scale) needs one heavy enough. `has_pond_fish`
+    /// is compiled to a real OR of `has(<weighted fish>)` (not optimistic): with the
+    /// setting on and no fish the prize is dark (while the fish CHECKS, gated only by
+    /// pond access, stay lit); an in-range fish collected through the real inventory
+    /// path lights it, a too-light one does not. With the setting off the prize is
+    /// reachable regardless (vanilla: any weight is catchable). Covers the reported
+    /// seed (child, pond accessible, no fish -> prize wrongly shown before this fix).
+    #[test]
+    fn pond_prize_needs_a_heavy_enough_shuffled_fish() {
+        use crate::data::iid;
+        use crate::scene::Game;
+        let mq = std::collections::HashSet::new();
+        let base = "Settings\n  startingAgeOot: child\n  doorOfTime: open\n  bronzeScale: true\n  soulsNpcOot: true\n  rustyKeysOot: false\n";
+
+        // Solve with pondFishShuffle on, optionally having collected one named fish
+        // (placed at a real check, exercising the find_item_id crediting path).
+        let solve_with_fish = |fish: Option<&str>| {
+            let mut s = crate::settings::Settings::default();
+            s.parse_spoiler(&format!("{base}  pondFishShuffle: true\n"), &mq);
+            s.apply(&mq);
+            s.starting_item_ids.insert(iid::OOT_SCALE, 1);
+            s.starting_item_ids.insert(iid::OOT_SOUL_NPC_FISHING_POND_OWNER, 1);
+            let w = match fish {
+                Some(name) => {
+                    let loc = "OOT Kokiri Forest Kokiri Sword Chest";
+                    let idx = data::OOT_OBJECTS.iter().position(|o| o.location == loc).unwrap();
+                    let mut w = crate::WorldData::default();
+                    w.items.insert(loc.to_string(), name.to_string());
+                    w.collected.insert((Game::Oot, idx));
+                    w
+                }
+                None => crate::WorldData::default(),
+            };
+            crate::logic::solve_world(&s, std::slice::from_ref(&w), 1, &Default::default(), false)
+        };
+
+        // No fish: pond access is fine (fish checks lit) but the prize is dark.
+        let none = solve_with_fish(None);
+        assert!(none.reachable("OOT Fishing Pond Child Fish 1"), "pond access unaffected: fish check stays reachable");
+        assert!(!none.reachable("OOT Fishing Pond Child"), "pondFishShuffle on + no fish => prize dark");
+
+        // Too light (3 lbs < the 7 lbs the child prize needs): must not open it.
+        assert!(!solve_with_fish(Some("Child Fish (3 pounds)")).reachable("OOT Fishing Pond Child"),
+            "a too-light fish must not satisfy the prize");
+
+        // Heavy enough (7 lbs, in [7,14]) collected through the real inventory path: lit.
+        assert!(solve_with_fish(Some("Child Fish (7 pounds)")).reachable("OOT Fishing Pond Child"),
+            "an in-range shuffled fish must satisfy the prize");
+
+        // pondFishShuffle off: prize reachable with no fish at all (vanilla pond).
+        let mut off = crate::settings::Settings::default();
+        off.parse_spoiler(base, &mq);
+        off.apply(&mq);
+        off.starting_item_ids.insert(iid::OOT_SCALE, 1);
+        off.starting_item_ids.insert(iid::OOT_SOUL_NPC_FISHING_POND_OWNER, 1);
+        let off_r = crate::logic::solve_world(&off, std::slice::from_ref(&crate::WorldData::default()), 1, &Default::default(), false);
+        assert!(off_r.reachable("OOT Fishing Pond Child"), "pondFishShuffle off => prize reachable regardless of fish");
+    }
+
+    /// A specific-tier wallet (Adult's Wallet, not the progressive pool item) must also
+    /// fold onto the counter so `can_use_wallet` sees it.
+    #[test]
+    fn specific_tier_wallet_satisfies_can_use_wallet() {
+        use crate::data::iid;
+        let mq = std::collections::HashSet::new();
+        let mut s = crate::settings::Settings::default();
+        s.parse_spoiler(
+            "Settings\n  startingAgeOot: child\n  childWallets: true\n",
+            &mq,
+        );
+        s.apply(&mq);
+        s.starting_item_ids.insert(iid::OOT_WALLET2, 1); // Adult's Wallet = tier 2
+        let inp = crate::logic::inputs::WorldInputs::build(&s, std::slice::from_ref(&crate::WorldData::default()), 1, &Default::default(), false);
+        assert_eq!(inp.item_count(iid::OOT_WALLET), 2, "Adult's Wallet must raise the counter to tier 2");
+    }
+
+    /// Separate-tier upgrades (not the progressive pool item) must fold onto the tier
+    /// counter the logic tests, across every family: scale, strength, ocarina, magic
+    /// and the OoT longshot. Guards `normalize_tier_counters` against a missed family.
+    #[test]
+    fn separate_tier_upgrades_fold_onto_counter() {
+        use crate::data::iid;
+        let mq = std::collections::HashSet::new();
+        let build = |id: u32, n: u32| {
+            let mut s = crate::settings::Settings::default();
+            s.apply(&mq);
+            s.starting_item_ids.insert(id, n);
+            crate::logic::inputs::WorldInputs::build(
+                &s,
+                std::slice::from_ref(&crate::WorldData::default()),
+                1,
+                &Default::default(),
+                false,
+            )
+        };
+        // (separate tier item, its counter, expected tier).
+        let cases = [
+            (iid::OOT_SCALE_GOLDEN, iid::OOT_SCALE, 3),
+            (iid::OOT_SCALE_SILVER, iid::OOT_SCALE, 2),
+            (iid::MM_SCALE_GOLDEN, iid::MM_SCALE, 3),
+            (iid::OOT_GOLDEN_GAUNTLETS, iid::OOT_STRENGTH, 3),
+            (iid::OOT_GORON_BRACELET, iid::OOT_STRENGTH, 1),
+            (iid::MM_SILVER_GAUNTLETS, iid::MM_STRENGTH, 2),
+            (iid::OOT_OCARINA_TIME, iid::OOT_OCARINA, 2),
+            (iid::MM_OCARINA_OF_TIME, iid::MM_OCARINA, 2),
+            (iid::OOT_MAGIC_UPGRADE2, iid::OOT_MAGIC_UPGRADE, 2),
+            (iid::MM_MAGIC_UPGRADE2, iid::MM_MAGIC_UPGRADE, 2),
+            (iid::OOT_LONGSHOT, iid::OOT_HOOKSHOT, 2),
+        ];
+        for (item, counter, tier) in cases {
+            let inp = build(item, 1);
+            assert_eq!(
+                inp.item_count(counter),
+                tier,
+                "item {item:#x} should fold onto counter {counter:#x} as tier {tier}"
+            );
+        }
+
+        // The progressive pool item still counts directly (counter == its id), and the
+        // fold must not lower it: three progressive scales stay tier 3.
+        let prog = build(iid::OOT_SCALE, 3);
+        assert_eq!(prog.item_count(iid::OOT_SCALE), 3, "progressive scales keep their tier");
+    }
+
     #[test]
     fn empty_inventory_reaches_little() {
         // With nothing, only the free/near-spawn checks open; far less than full.

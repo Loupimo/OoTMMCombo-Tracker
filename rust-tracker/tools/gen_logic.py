@@ -68,6 +68,11 @@ LOGIC_ITEM_ALIASES = {
 CORE_NATIVES = {
     "has", "event", "trick", "setting", "cond", "age", "oot_time", "mm_time",
     "renewable", "license", "masks",
+    # has_pond_fish(kind, lo, hi): with pondFishShuffle the weighted fish are real
+    # uniquely-ided shuffled items (OOT_FISHING_POND_<kind>_<w>LBS, one per pound),
+    # so this desugars to an OR of has() over the weight range (see compile_native)
+    # -- modelled precisely, no dedicated op.
+    "has_pond_fish",
     # Win-condition gates (BRIDGE / GANON_BK / LACS / MAJORA / MOON) and the MM
     # region-state flags (temple cleared / cursed): settings- / progress-driven,
     # kept as real ops so the solver can evaluate them.
@@ -79,12 +84,11 @@ CORE_NATIVES = {
     "_song_event_oot", "_song_event_mm",
 }
 # OPTIMISTIC: folded to `true` at compile time. These gate on data the tracker
-# has no source for (randomised shop prices) or on skill (fishing weight), so a
-# "show only reachable" tracker must not hide for them — hiding a reachable check
-# is worse UX than showing an unreachable one.
+# has no source for (randomised shop prices), so a "show only reachable" tracker
+# must not hide for them — hiding a reachable check is worse UX than showing an
+# unreachable one.
 #   price(range, id, max)        -> shops/scrubs always affordable
-#   has_pond_fish(kind, lo, hi)  -> catchable if you can fish
-OPTIMISTIC_NATIVES = {"price", "has_pond_fish"}
+OPTIMISTIC_NATIVES = {"price"}
 NATIVES = CORE_NATIVES | OPTIMISTIC_NATIVES
 
 
@@ -523,6 +527,8 @@ class Compiler:
         if name in ("flag_on", "flag_off"):
             idx = self._intern(self.flags, self.flags_l, self._lit(args[0]))
             return [("flag", idx, name == "flag_on")]
+        if name == "has_pond_fish":
+            return self.compile_pond_fish(args)
         if name in ("_song_event_oot", "_song_event_mm"):
             # (slot, songIndex) both fold to numeric literals after macro
             # expansion; if either is non-constant (shouldn't happen), stay
@@ -532,10 +538,35 @@ class Compiler:
             game = OOT if name.endswith("oot") else MM
             return [("song_event", game, args[0][1], args[1][1])]
         if name in OPTIMISTIC_NATIVES:
-            # price / _song_event_* / has_pond_fish: no data source -> satisfiable.
+            # price: no data source (randomised) -> always satisfiable.
             return [("const", True)]
         # Should be unreachable (only NATIVES reach here).
         return [("builtin", self.intern_builtin(name))]
+
+    def compile_pond_fish(self, args):
+        """`has_pond_fish(kind, lo, hi)` (pondFishShuffle). With the setting on, the
+        weighted fish become real, uniquely-ided shuffled items
+        `OOT_FISHING_POND_<kind>_<w>LBS` (one per pound), collectable anywhere; the
+        check is satisfied by owning any fish of that kind weighing in [lo, hi].
+        Desugar to an OR of `has()` over the weight range so the ordinary inventory
+        path (find_item_id crediting a collected fish) drives it. Terms whose weight
+        has no item id (a partial range) drop out; an empty range is const-false.
+        When pondFishShuffle is off, the enclosing rule short-circuits this via
+        `!setting(pondFishShuffle) ||` and none of these items are in the pool. A
+        non-constant bound (shouldn't happen) stays optimistic so nothing is hidden."""
+        kind = self._lit(args[0])
+        if args[1][0] != "num" or args[2][0] != "num":
+            return [("const", True)]
+        lo, hi = args[1][1], args[2][1]
+        terms = [("has", item, 1)
+                 for w in range(lo, hi + 1)
+                 if (item := self.resolve_item(f"FISHING_POND_{kind}_{w}LBS")) is not None]
+        if not terms:
+            return [("const", False)]
+        ops = [terms[0]]
+        for t in terms[1:]:
+            ops += [t, ("or",)]
+        return ops
 
     # -- expression -> deduped index --
     def expr_index_of(self, expr_str):

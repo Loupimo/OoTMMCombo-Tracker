@@ -828,7 +828,9 @@ impl TrackerApp {
             .unwrap_or_else(|| g.objects()[idx].name.to_string());
         self.last_item = Some(name.clone());
 
-        if self.worlds[map_idx].collected.insert((g, idx)) {
+        // A real ledger collection takes precedence over a manual "forced" hand-check,
+        // same as the local hook path (see record_collection).
+        if record_collection(&mut self.worlds[map_idx], (g, idx)) {
             let obj = &g.objects()[idx];
             let tag = if g == Game::Oot { "OoT" } else { "MM" };
             self.log_msg(self.i18n.log_world_object_net(
@@ -869,6 +871,13 @@ impl TrackerApp {
 
     /// Handle one live event: an entrance message or a collected item.
     pub(crate) fn process_event(&mut self, ev: Event) {
+        // Debug journal: dump the raw event exactly like the Qt MemoryReader, so a
+        // mis-resolved or unresolved pickup can be diagnosed from the log alone.
+        self.log_msg(format!(
+            "PC = {:#010X}, Mem = {:#010X}, Buffer[0] = {:#010X}, Buffer[1] = {:#010X}, \
+             Buffer[2] = {:#010X}, Buffer[3] = {:#010X}, Buffer[4] = {:#010X}, Buffer[5] = {:#010X}",
+            ev.pc, ev.mem, ev.query[0], ev.query[1], ev.query[2], ev.query[3], ev.query[4], ev.query[5],
+        ));
         if entrance::is_entrance(ev.mem) {
             self.handle_entrance(&ev);
             return;
@@ -898,14 +907,19 @@ impl TrackerApp {
             // world (index 0) regardless of which world the user is viewing. Its
             // shown name comes from the local world's placement.
             const LOCAL: usize = 0;
-            let item = self.worlds[LOCAL]
-                .items
-                .get(obj.location)
-                .cloned()
-                .unwrap_or_else(|| obj.name.to_string());
+            let item = collected_item_name(
+                self.worlds[LOCAL].items.get(obj.location),
+                (ev.query[2] & 0xFFFF) as u16,
+                is_nothing,
+                self.rom,
+                obj.name,
+            );
             self.last_item = Some(item.clone());
             let (rs, room, ox, oy) = (obj.render_scene, obj.room, obj.x as f32, obj.y as f32);
-            if self.worlds[LOCAL].collected.insert(hit) {
+            // A real hook pickup takes precedence over a manual "forced" hand-check
+            // (see record_collection): a pre-checked location becomes a genuine
+            // collection (rendered normally, not gold) and is still processed here.
+            if record_collection(&mut self.worlds[LOCAL], hit) {
                 // Mirror the Qt MemoryReader log line.
                 let game = if hit.0 == Game::Oot { "OoT" } else { "MM" };
                 self.log_msg(self.i18n.log_world_object(game, obj.location, &item));
@@ -918,6 +932,24 @@ impl TrackerApp {
                 if self.app_settings.auto_snap && self.active_world == LOCAL {
                     self.pending_snap = Some((hit.0, rs, room, ox, oy));
                 }
+            }
+        } else {
+            // Nothing in the pool matched this pickup — log the decoded overlay so it
+            // can be identified (the raw dump above keeps the untouched bytes). This is
+            // what a pickup the pool cannot resolve looks like in the journal, e.g. an
+            // id the object table does not carry.
+            let game = if ev.pc > 0x8070_0000 { "MM" } else { "OoT" };
+            if is_nothing {
+                self.log_msg(format!("{game} unresolved \"nothing\" drop (key {:#010X})", ev.query[0]));
+            } else {
+                let ov = (ev.query[0] >> 8) & 0xFF;
+                let scene = ev.query[0] & 0xFF;
+                let id = (ev.query[1] >> 16) & 0xFF;
+                let room = (ev.query[1] >> 24) & 0xFF;
+                let gi = ev.query[2] & 0xFFFF;
+                self.log_msg(format!(
+                    "{game} unresolved pickup: ov={ov:#04X} scene={scene:#04X} id={id:#04X} room={room:#04X} gi={gi:#06X}"
+                ));
             }
         }
     }
@@ -1064,7 +1096,7 @@ impl TrackerApp {
             // the generic Market resolves to its Day / Night variant (told apart by
             // the raw arriving scene); object-less zones resolve to `None`.
             self.player_obj_scene =
-                resolve_obj_scene(evt.in_game, d.to_scene, evt.in_msg.scene, &self.mq_scenes);
+                resolve_obj_scene(evt.in_game, d.to_scene, evt.in_raw_scene, &self.mq_scenes);
             let from = entrance::lookup(evt.out_game, evt.out_entrance).map(|o| o.to_name).unwrap_or("?");
             let msg = self.i18n.entrance_detect(self.i18n.tr_entrance(from), self.i18n.tr_entrance(d.to_name));
             self.log_msg(msg);
@@ -1662,35 +1694,46 @@ impl eframe::App for TrackerApp {
     }
 }
 
-/// The OoT Market's generic map node (`OOT_MARKET`) carries no objects: entrances
-/// render on its combined minimap, while the collectibles live on the Day / Night
-/// variants, told apart only by the raw runtime scene in the arriving message. Map
-/// the generic node + raw scene to the real object scene, or `None` for anything
-/// else (including the adult Market, which has no tracked objects).
-fn market_object_scene(game: Game, generic: u16, raw: u16) -> Option<u16> {
+/// Some OoT overworld nodes carry no objects on their generic combined map: the
+/// entrances render on the combined minimap, while the collectibles live on the
+/// day / night / adult variants, told apart only by the raw (pre-globalization)
+/// runtime scene. Map that raw scene to the map that actually renders the objects,
+/// or `None` when the variant has none.
+///
+/// - **Market**: Day and Night each have their own object map (follow verbatim);
+///   the adult Market has no tracked objects.
+/// - **Temple of Time Exterior** ("vestibule"): every tracked object (the gossip
+///   stones) renders on the Child Day map only, so all variants follow there.
+fn combined_object_scene(game: Game, raw: u16) -> Option<u16> {
     use crate::data::scenes as sc;
-    if game == Game::Oot && generic == sc::OOT_MARKET {
-        match raw {
-            sc::OOT_MARKET_CHILD_DAY | sc::OOT_MARKET_CHILD_NIGHT => Some(raw),
-            _ => None,
+    if game != Game::Oot {
+        return None;
+    }
+    match raw {
+        sc::OOT_MARKET_CHILD_DAY | sc::OOT_MARKET_CHILD_NIGHT => Some(raw),
+        sc::OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY
+        | sc::OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_NIGHT
+        | sc::OOT_TEMPLE_OF_TIME_EXTERIOR_ADULT => {
+            Some(sc::OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY)
         }
-    } else {
-        None
+        _ => None,
     }
 }
 
 /// The object-rendering scene to auto-follow for the player's current location.
 /// `generic` is the entrance meta's scene; `raw` is the arriving message's own
-/// scene. Resolves the Market's Day / Night special case first, then follows the
-/// generic scene only when it actually holds tracked objects — so object-less
-/// zones (Market Entrance, Back Alley, plain interiors) yield `None` (no follow).
+/// scene BEFORE globalization (`EntranceEvent::in_raw_scene`). Resolves the
+/// combined-node special cases (Market, Temple of Time Exterior) from the raw
+/// variant first, then follows the generic scene only when it actually holds
+/// tracked objects — so object-less zones (Market Entrance, Back Alley, plain
+/// interiors) yield `None` (no follow).
 fn resolve_obj_scene(
     game: Game,
     generic: u16,
     raw: u32,
     mq: &HashSet<(Game, u16)>,
 ) -> Option<(Game, u16)> {
-    if let Some(obj) = market_object_scene(game, generic, raw as u16) {
+    if let Some(obj) = combined_object_scene(game, raw as u16) {
         return Some((game, obj));
     }
     game.scene_has_objects(generic, mq).then_some((game, generic))
@@ -2251,9 +2294,102 @@ fn parse_save_xml(text: &str) -> ParsedSave {
     out
 }
 
+/// Name to show for a collected pickup, in priority order:
+/// 1. the loaded spoiler's placement at this location (correct identity, incl. the
+///    real item in a multiworld seed where the local GI can be a placeholder);
+/// 2. otherwise the item the hook actually reported — its GI — resolved like the Qt
+///    MemoryReader's `FindItem(ResolveRawItemID(gi))` (covers a no-spoiler session);
+/// 3. otherwise the object's own friendly name (last resort).
+/// A "nothing" drop carries no GI in this field, so it skips straight to (3).
+fn collected_item_name(
+    placement: Option<&String>,
+    gi: u16,
+    is_nothing: bool,
+    rom: RomVersion,
+    obj_name: &str,
+) -> String {
+    placement
+        .cloned()
+        .or_else(|| {
+            (!is_nothing)
+                .then(|| tracking::net_item_name(gi, rom))
+                .flatten()
+                .map(str::to_string)
+        })
+        .unwrap_or_else(|| obj_name.to_string())
+}
+
+/// Record a genuine collection of `key` in `world`, returning whether it should be
+/// processed now (logged / counted / re-rendered). A real pickup — from the hook or
+/// the network ledger — takes precedence over a manual "forced" hand-check: the forced
+/// flag is cleared so the location becomes a real collection (drawn normally, not gold),
+/// and this reports `true` even when the location was already pre-checked. A plain
+/// re-collection of something already collected and not forced reports `false`, so a
+/// duplicate event is not re-logged or re-counted.
+fn record_collection(world: &mut crate::WorldData, key: (Game, usize)) -> bool {
+    let newly = world.collected.insert(key);
+    let was_forced = world.forced.remove(&key);
+    newly || was_forced
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    /// A hook / ledger collection must override a manual "forced" hand-check: the forced
+    /// flag is cleared and the event is still processed (`true`), so a pre-checked
+    /// location the player then really collects turns from gold into a genuine, counted
+    /// collection. A fresh collection is processed; a plain duplicate is not.
+    #[test]
+    fn record_collection_overrides_forced_hand_check() {
+        let key = (Game::Oot, 42usize);
+
+        // Fresh collection: newly inserted -> process.
+        let mut w = crate::WorldData::default();
+        assert!(record_collection(&mut w, key), "a new collection is processed");
+        assert!(w.collected.contains(&key));
+
+        // Duplicate of an ordinary (non-forced) collection: not re-processed.
+        assert!(!record_collection(&mut w, key), "a plain duplicate is not re-processed");
+
+        // Hand-checked (forced) then really collected: process AND drop the forced flag.
+        let mut w = crate::WorldData::default();
+        w.collected.insert(key);
+        w.forced.insert(key);
+        assert!(record_collection(&mut w, key), "the real pickup overrides the manual mark");
+        assert!(w.collected.contains(&key), "still collected");
+        assert!(!w.forced.contains(&key), "forced flag cleared -> renders as a real collection");
+        // And now it is an ordinary collection: a further duplicate is a no-op.
+        assert!(!record_collection(&mut w, key));
+    }
+
+    /// A collected pickup's shown name: spoiler placement wins; with no placement the
+    /// hook's GI item name is used (the no-spoiler case that used to show the object's
+    /// name, e.g. a GS reading "Tree"); a "nothing" drop or an unknown GI falls back to
+    /// the object name.
+    #[test]
+    fn collected_item_name_prefers_spoiler_then_gi_then_object() {
+        // A real item id + its canonical name, taken from the item table itself.
+        let known = &data::ITEMS[0];
+        let gi = known.id as u16;
+        let gi_name = tracking::net_item_name(gi, RomVersion::Dev).expect("known GI resolves");
+
+        // 1. Spoiler placement wins over both the GI and the object name.
+        let placement = "Green Rupee (MM)".to_string();
+        assert_eq!(
+            collected_item_name(Some(&placement), gi, false, RomVersion::Dev, "Tree"),
+            "Green Rupee (MM)"
+        );
+        // 2. No placement -> the hook's GI item (not the object's "Tree" name).
+        assert_eq!(
+            collected_item_name(None, gi, false, RomVersion::Dev, "Tree"),
+            gi_name
+        );
+        // 3a. "Nothing" drop (no GI here) -> object name.
+        assert_eq!(collected_item_name(None, gi, true, RomVersion::Dev, "Tree"), "Tree");
+        // 3b. Unknown GI (0) -> object name.
+        assert_eq!(collected_item_name(None, 0, false, RomVersion::Dev, "Tree"), "Tree");
+    }
 
     #[test]
     fn seed_tag_extraction() {
@@ -2268,6 +2404,74 @@ mod tests {
         // No seed line (or empty text) -> the shared no-spoiler file.
         assert_eq!(seed_tag_from_spoiler("Version: dev\nSettings\n"), "empty");
         assert_eq!(seed_tag_from_spoiler(""), "empty");
+    }
+
+    /// Regression guard for the object-map auto-follow on combined overworld nodes.
+    /// `check_special_case` folds the Market / Temple of Time Exterior day/night/adult
+    /// variants into a generic node that carries NO objects, so the follow must resolve
+    /// from the RAW variant (`EntranceEvent::in_raw_scene`), not the globalized scene —
+    /// otherwise these scenes never follow (the reported bug).
+    #[test]
+    fn combined_scene_follow_routes_to_object_map() {
+        use crate::data::scenes as sc;
+        let mq: HashSet<(Game, u16)> = HashSet::new();
+
+        // Market: Day and Night keep their own object maps; Adult has none.
+        assert_eq!(
+            combined_object_scene(Game::Oot, sc::OOT_MARKET_CHILD_DAY),
+            Some(sc::OOT_MARKET_CHILD_DAY)
+        );
+        assert_eq!(
+            combined_object_scene(Game::Oot, sc::OOT_MARKET_CHILD_NIGHT),
+            Some(sc::OOT_MARKET_CHILD_NIGHT)
+        );
+        assert_eq!(combined_object_scene(Game::Oot, sc::OOT_MARKET_ADULT), None);
+
+        // Temple of Time Exterior ("vestibule"): every variant follows to the Child
+        // Day map, where the gossip-stone objects render.
+        for raw in [
+            sc::OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY,
+            sc::OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_NIGHT,
+            sc::OOT_TEMPLE_OF_TIME_EXTERIOR_ADULT,
+        ] {
+            assert_eq!(
+                combined_object_scene(Game::Oot, raw),
+                Some(sc::OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY)
+            );
+        }
+
+        // MM never uses this OoT-only special case.
+        assert_eq!(combined_object_scene(Game::Mm, sc::OOT_MARKET_CHILD_DAY), None);
+
+        // End-to-end routing: the generic (globalized) node is object-less, but the
+        // raw variant resolves the follow to the real object map. Passing the
+        // globalized scene (== generic) as `raw` would yield None — the exact bug.
+        assert!(!Game::Oot.scene_has_objects(sc::OOT_MARKET, &mq), "generic Market node is object-less");
+        assert_eq!(
+            resolve_obj_scene(Game::Oot, sc::OOT_MARKET, sc::OOT_MARKET_CHILD_NIGHT as u32, &mq),
+            Some((Game::Oot, sc::OOT_MARKET_CHILD_NIGHT)),
+        );
+        assert!(
+            !Game::Oot.scene_has_objects(sc::OOT_TEMPLE_OF_TIME_ENTRYWAY, &mq),
+            "generic ToT entryway is object-less"
+        );
+        assert_eq!(
+            resolve_obj_scene(
+                Game::Oot,
+                sc::OOT_TEMPLE_OF_TIME_ENTRYWAY,
+                sc::OOT_TEMPLE_OF_TIME_EXTERIOR_ADULT as u32,
+                &mq,
+            ),
+            Some((Game::Oot, sc::OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY)),
+        );
+
+        // A plain scene (not a combined node) still follows via its own generic node.
+        let plain = data::OOT_OBJECTS
+            .iter()
+            .map(|o| o.render_scene)
+            .find(|&s| combined_object_scene(Game::Oot, s).is_none() && Game::Oot.scene_has_objects(s, &mq))
+            .expect("a plain object-bearing OoT scene exists");
+        assert_eq!(resolve_obj_scene(Game::Oot, plain, plain as u32, &mq), Some((Game::Oot, plain)));
     }
 
     #[test]
