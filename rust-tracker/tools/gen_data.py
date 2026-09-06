@@ -278,6 +278,37 @@ def _id_ref(idtok, id_sym, used_ids, missing_ids):
     return "0xFFFF_FFFF"
 
 
+# Overlay checks whose in-game flag the DLL reports as (OvType, id). The runtime
+# resolves these globally by (type, object_id), so object_id MUST equal that flag.
+_OVERLAY_TAGS = ("gs", "scrub", "cow", "shop", "sr", "fish")
+_OVERLAY_FLAGS = None
+
+
+def overlay_flags():
+    """`{game-prefixed location -> flag}` for the overlay checks, parsed from the
+    OoTMM checks XML — the authoritative id the game / DLL sends when one is collected.
+    Master-Quest objects are stored in the pool under their base-dungeon slot id, which
+    does NOT match this reported flag; the caller uses this map to restamp the MQ
+    overlay object_id so it resolves. Cached (parsed once)."""
+    global _OVERLAY_FLAGS
+    if _OVERLAY_FLAGS is None:
+        _OVERLAY_FLAGS = {}
+        base = resolve("Resources/OoTMM-master/data/checks")
+        pat = re.compile(
+            r'<(' + '|'.join(_OVERLAY_TAGS) + r')\s+location="([^"]+)"[^>]*?\bflag="([^"]+)"')
+        for path in Path(base).rglob("*.xml"):
+            p = str(path).replace("\\", "/")
+            prefix = "OOT " if "/oot/" in p else ("MM " if "/mm/" in p else "")
+            if not prefix:
+                continue
+            for m in pat.finditer(path.read_text(encoding="utf-8", errors="replace")):
+                try:
+                    _OVERLAY_FLAGS[prefix + m.group(2)] = (m.group(1), int(m.group(3), 0))
+                except ValueError:
+                    pass
+    return _OVERLAY_FLAGS
+
+
 def objects_from_rows(bucket, scene_sym, id_sym, used_ids, missing, missing_ids):
     """gen_objects rows for one game -> ObjectDef dicts (adds xflag_id + legacy_scene). Scenes and
     the legacy ObjectID come already game-prefixed from gen_objects, so no re-prefixing here."""
@@ -300,8 +331,19 @@ def objects_from_rows(bucket, scene_sym, id_sym, used_ids, missing, missing_ids)
             missing.add(render)
             render = scene
         legacy = r.get("legacy_scene")
+        id_ref = _id_ref(r["id"], id_sym, used_ids, missing_ids)
+        # Master-Quest overlay objects are stored under their base-dungeon slot id, but
+        # the game reports the MQ-specific flag (e.g. MQ Dodongo scrub 0x9d, not the base
+        # 0x1d), so a global (type, id) lookup never matches them. Restamp the object_id
+        # to that reported flag (gs is kept at flag+8 to stay consistent with the pool's
+        # base gs and the runtime resolve_raw_gs; the other overlays use the flag as-is).
+        if r["game_layout"].strip() in ("oot_mq", "mm_jp") and r["type"] in _OVERLAY_TAGS:
+            hit = overlay_flags().get(r["location"].strip())
+            if hit is not None:
+                _, flag = hit
+                id_ref = f"{flag + 8 if r['type'] == 'gs' else flag:#x}"
         objs.append({
-            "id_ref": _id_ref(r["id"], id_sym, used_ids, missing_ids),
+            "id_ref": id_ref,
             "scene": scene, "name": r["friendly_name"], "location": r["location"],
             "type": r["type"], "x": r["x"], "y": r["y"], "z": r["z"],
             "render": render, "render_type": r["rendertype"], "map_icon": r["icontype"],

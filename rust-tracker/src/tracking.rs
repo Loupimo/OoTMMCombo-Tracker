@@ -163,6 +163,9 @@ pub(crate) fn match_object(
     if ov_type == OV_NONE {
         return None;
     }
+    // Fold an OoT Master-Quest scene id back to its base dungeon before any
+    // scene-scoped match — MQ objects live under the base scene (see resolve_raw_scene).
+    let scene = resolve_raw_scene(game, scene);
     if ov_type >= OV_XFLAG0 {
         if !uses_legacy {
             // Compact system (> v32.3): the query only holds a 16-bit XflagID, split
@@ -322,6 +325,24 @@ fn resolve_raw_npc(game: Game, id: u32, rom: RomVersion) -> u32 {
         id - 1
     } else {
         id
+    }
+}
+
+/// OoT Master-Quest scene remap. Recent OoTMM data gave the twelve MQ dungeons their own
+/// scene ids (0x70..=0x7d, e.g. `OOT_DODONGO_CAVERN_MQ = 0x71` in scenes.yml), so the game
+/// now reports an MQ dungeon check under that id. The tracker keeps NO separate MQ scenes:
+/// MQ objects live under their base dungeon (`layout` oot_mq) so they render on the same
+/// map, and the tracker's own scene ids 0x70+ are unrelated synthetic scenes (split grottos
+/// / fairy fountains) the game never emits. Fold the reported MQ scene back to its base
+/// dungeon (base = scene - 0x70) before the scene-scoped match (chest / collectible / stray
+/// fairy / legacy xflag); the layout gate then keeps the MQ object. OoT only, harmless on
+/// every ROM — the game never emits an OoT scene in 0x70..=0x7d for anything but MQ. This is
+/// a resolution-time fix-up only: the pool keeps base scene ids, so old saves are unaffected.
+fn resolve_raw_scene(game: Game, scene: u16) -> u16 {
+    if game == Game::Oot && (0x70..=0x7d).contains(&scene) {
+        scene - 0x70
+    } else {
+        scene
     }
 }
 
@@ -562,6 +583,47 @@ mod tests {
         let bazaar = OOT_OBJECTS.iter().find(|o| o.location == "OOT Kakariko GS Bazaar").unwrap();
         assert_eq!(bazaar.object_id, flag, "precondition: Bazaar's object_id equals Zora Tree's flag");
         assert_ne!(OOT_OBJECTS[j].location, "OOT Kakariko GS Bazaar");
+    }
+
+    /// Regression (reported seed): recent OoTMM data moved the Master-Quest dungeons to
+    /// their own scene ids (`OOT_DODONGO_CAVERN_MQ = 0x71`), which collide with the tracker's
+    /// synthetic grotto scenes (0x71 = OOT_GROTTO_DEATH_CRATER_SCRUBS). A collected MQ chest
+    /// is reported under the MQ scene (Buffer[0] = 0x171: scene 0x71, ov chest); it must fold
+    /// back to the base dungeon (0x01) and resolve to the MQ object (layout oot_mq), not the
+    /// grotto pseudo-scene. Scene-remapped overlays (scrubs) already worked (scene ignored);
+    /// only the scene-scoped chest / collectible / SF paths were broken.
+    #[test]
+    fn mq_chest_scene_folds_to_base_dungeon() {
+        use crate::data::scenes::OOT_DODONGO_CAVERN;
+        // Master Quest active for Dodongo Cavern: the mq set is keyed by the BASE scene,
+        // which is also the MQ object's `scene` field.
+        let mut mq = no_mq();
+        mq.insert((Game::Oot, OOT_DODONGO_CAVERN));
+
+        let map_chest = OOT_OBJECTS
+            .iter()
+            .position(|o| o.location == "OOT MQ Dodongo Cavern Map Chest")
+            .expect("MQ Dodongo Map Chest in the pool");
+        assert_eq!(OOT_OBJECTS[map_chest].object_id, 0x00, "precondition: MQ Map Chest is flag 0");
+        assert_eq!(OOT_OBJECTS[map_chest].scene, OOT_DODONGO_CAVERN, "stored under base scene");
+        assert!(object_active(&OOT_OBJECTS[map_chest], Game::Oot, &mq), "MQ object active when MQ set");
+
+        // Exactly the reported event: Buffer[0] = 0x0000_0171 (scene 0x71, ov chest),
+        // Buffer[1] = 0 (id 0x00, room 0).
+        let ev = Event {
+            pc: 0x8009_0000,
+            mem: 0,
+            query: [0x0000_0171, 0x0000_0000, 0, 0, 0, 0],
+        };
+        let (game, j) = resolve_collected(&ev, RomVersion::Dev, false, &mq)
+            .expect("MQ chest resolves after the scene fold");
+        assert_eq!(game, Game::Oot);
+        assert_eq!(OOT_OBJECTS[j].location, "OOT MQ Dodongo Cavern Map Chest");
+
+        // And the raw 0x71 must NOT have been taken literally as the grotto pseudo-scene.
+        assert_eq!(super::resolve_raw_scene(Game::Oot, 0x71), OOT_DODONGO_CAVERN);
+        // MM scenes 0x70..=0x7d are real (never MQ) and must pass through untouched.
+        assert_eq!(super::resolve_raw_scene(Game::Mm, 0x71), 0x71);
     }
 
     /// The scene-remapped overlays can be matched globally by (type, id) only

@@ -307,6 +307,10 @@ pub struct LiveObject {
     pub room: u16,
     pub x: f32,
     pub y: f32,
+    /// Game-world Z (height). Drives the marker stacking order so a check placed
+    /// above another (e.g. a silver rupee over a crate) draws in front, mirroring the
+    /// Qt `ObjectRenderer::setZValue(Position[2])`.
+    pub z: i32,
     pub collected: bool,
 }
 
@@ -346,6 +350,7 @@ impl LiveScene {
                 room: o.room,
                 x: o.x as f32,
                 y: o.y as f32,
+                z: o.z,
                 collected: false,
             })
             .collect();

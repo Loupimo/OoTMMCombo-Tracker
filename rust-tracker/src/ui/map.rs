@@ -855,8 +855,13 @@ impl TrackerApp {
             // Clic : toggle le marqueur le plus proche (vue Objets uniquement).
             if resp.clicked() && !entrance_view {
                 if let Some(cp) = resp.interact_pointer_pos() {
-                    let mut best = f32::MAX;
+                    // Mirror Qt's top-most-Z hit-testing: among the markers under the
+                    // cursor, the one drawn in front (highest Z) takes the click, so a
+                    // rupee sitting on top of a crate is the one toggled; ties break to
+                    // the nearest. Matches the ascending-Z draw order below.
                     let mut best_i = None;
+                    let mut best_z = i32::MIN;
+                    let mut best_d = f32::MAX;
                     for (i, obj) in scene.objects.iter().enumerate() {
                         if !context_allows(eff_ctx, obj.context)
                             || !active_types.contains(&obj.type_)
@@ -871,8 +876,9 @@ impl TrackerApp {
                         }
                         let c = img_min + vec2(obj.x, obj.y) * self.zoom;
                         let d = (cp - c).length();
-                        if d <= radius + 2.0 && d < best {
-                            best = d;
+                        if d <= radius + 2.0 && (obj.z > best_z || (obj.z == best_z && d < best_d)) {
+                            best_z = obj.z;
+                            best_d = d;
                             best_i = Some(i);
                         }
                     }
@@ -911,7 +917,15 @@ impl TrackerApp {
 
             // Objects are drawn in the item view only.
             let objects: &[scene::LiveObject] = if entrance_view { &[] } else { &scene.objects };
-            for (i, obj) in objects.iter().enumerate() {
+            // Paint in ascending Z so a higher check (e.g. a silver rupee above a crate)
+            // draws on top instead of being hidden behind it — mirror of the Qt
+            // ObjectRenderer::setZValue(Position[2]). Stable sort keeps the many z==0
+            // markers in declaration order; `i` stays the Vec index (the key used by
+            // logic_unreachable / scene.objects[i]).
+            let mut draw_order: Vec<usize> = (0..objects.len()).collect();
+            draw_order.sort_by_key(|&i| objects[i].z);
+            for &i in &draw_order {
+                let obj = &objects[i];
                 if !context_allows(eff_ctx, obj.context)
                     || !active_types.contains(&obj.type_)
                     || self.excluded.contains(scene.game, obj.index)

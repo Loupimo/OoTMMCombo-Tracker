@@ -615,15 +615,16 @@ impl TrackerApp {
                     self.out_links.insert((og, oid), (ig, iid));
                 }
             } else if let Some(rest) = line.strip_prefix("ITEM ") {
-                // Version 4: a persisted placement (location <TAB> item name).
+                // Version 4: a persisted placement (location <TAB> item name). Fallback
+                // only — never clobber a loaded spoiler's placement (see merge_saved_worlds).
                 if let Some((loc, item)) = rest.split_once('\t') {
-                    self.worlds[cur_world].items.insert(loc.to_string(), item.to_string());
+                    self.worlds[cur_world].items.entry(loc.to_string()).or_insert_with(|| item.to_string());
                 }
             } else if let Some(rest) = line.strip_prefix("DEST ") {
                 // Version 4: a placement's destination player (location <TAB> N).
                 if let Some((loc, player)) = rest.split_once('\t') {
                     if let Ok(p) = player.trim().parse::<u8>() {
-                        self.worlds[cur_world].dest.insert(loc.to_string(), p);
+                        self.worlds[cur_world].dest.entry(loc.to_string()).or_insert(p);
                     }
                 }
             } else if let Some(loc) = line.strip_prefix("F ") {
@@ -670,7 +671,8 @@ impl TrackerApp {
                     }
                 }
                 if let Some(name) = qtsave::item_name(ob.item_id) {
-                    self.worlds[w].items.insert(location.to_string(), name.to_string());
+                    // Fallback only — a loaded spoiler's placement wins (see merge_saved_worlds).
+                    self.worlds[w].items.entry(location.to_string()).or_insert_with(|| name.to_string());
                 }
             }
         }
@@ -708,18 +710,10 @@ impl TrackerApp {
     fn load_from_xml(&mut self, text: &str) {
         let parsed = parse_save_xml(text);
         // Merge into the live state. Dialog loads clear collected / forced /
-        // entrances first; the startup autoload merges into a fresh state. Growing
-        // the world Vec on demand restores a save with more worlds than allocated.
-        for (wi, w) in parsed.worlds.into_iter().enumerate() {
-            if self.worlds.len() <= wi {
-                self.worlds.resize_with(wi + 1, crate::WorldData::default);
-            }
-            let tw = &mut self.worlds[wi];
-            tw.collected.extend(w.collected);
-            tw.forced.extend(w.forced);
-            tw.items.extend(w.items);
-            tw.dest.extend(w.dest);
-        }
+        // entrances first; the startup autoload merges into a fresh state. Placements
+        // are restored as a fallback only — a loaded spoiler's placement always wins,
+        // see `merge_saved_worlds`.
+        merge_saved_worlds(&mut self.worlds, parsed.worlds);
         self.visited_entrances.extend(parsed.visited);
         for (k, v) in parsed.out_links {
             self.out_links.insert(k, v);
@@ -1790,6 +1784,34 @@ struct ParsedSave {
     spoiler_path: Option<String>,
 }
 
+/// Merge a loaded save's `saved` worlds into the live `worlds`. Collected / forced marks
+/// are unioned. Placements (`items`) and destinations (`dest`) are only a FALLBACK for
+/// rendering icons without a spoiler: a save's cached placement must NEVER clobber one
+/// already present, because a loaded spoiler is the authoritative placement source.
+///
+/// Without this, the save (which caches the WHOLE spoiler placement map, not just
+/// collected checks) would override the freshly-loaded spoiler on every load — a stale
+/// cached name then wins over the current spoiler and gets re-persisted, so it survives
+/// forever (the reported "MQ chest shows Green Rupee instead of the spoiler's Blast Mask":
+/// the autosave, re-applied after the spoiler in `load_spoiler`, carried an old name).
+/// The world Vec grows on demand so a save with more worlds than allocated restores fully.
+fn merge_saved_worlds(worlds: &mut Vec<crate::WorldData>, saved: Vec<crate::WorldData>) {
+    for (wi, w) in saved.into_iter().enumerate() {
+        if worlds.len() <= wi {
+            worlds.resize_with(wi + 1, crate::WorldData::default);
+        }
+        let tw = &mut worlds[wi];
+        tw.collected.extend(w.collected);
+        tw.forced.extend(w.forced);
+        for (loc, it) in w.items {
+            tw.items.entry(loc).or_insert(it);
+        }
+        for (loc, d) in w.dest {
+            tw.dest.entry(loc).or_insert(d);
+        }
+    }
+}
+
 /// Serialize the tracked state to the human-readable / hand-editable XML save.
 /// Output is deterministic (scenes, locations and entrances are sorted) so saves
 /// diff cleanly. The `loc` attribute — the globally-unique object `Location` — is
@@ -2537,6 +2559,56 @@ mod tests {
         assert_eq!(p.in_links, in_links);
         assert_eq!(p.spoiler_path.as_deref(), Some("C:/spoiler.txt"));
         assert_eq!(p.patch_path, Some(PathBuf::from("C:/patch.ootmm")));
+    }
+
+    /// Regression: a loaded spoiler is the authoritative placement source, so a save's
+    /// cached placement must never clobber one already present. Otherwise a stale cached
+    /// name (an older seed state, re-applied by `load_spoiler` AFTER the fresh spoiler)
+    /// wins over the current spoiler and is re-persisted forever — the reported "MQ chest
+    /// shows Green Rupee (MM) while the spoiler says Blast Mask (OoT)". Collected / forced
+    /// marks, and placements the spoiler lacks, must still be restored.
+    #[test]
+    fn saved_placements_never_clobber_the_loaded_spoiler() {
+        let chest = "OOT MQ Dodongo Cavern Map Chest".to_string();
+        let extra = "OOT Some Uncovered Location".to_string();
+
+        // Live world: the freshly-loaded spoiler placed Blast Mask here (authoritative).
+        let mut live = crate::WorldData::default();
+        live.items.insert(chest.clone(), "Blast Mask (OoT)".to_string());
+        live.dest.insert(chest.clone(), 1);
+        let mut worlds = vec![live];
+
+        // The autosave carries a stale cached placement for the SAME location, a stale
+        // dest, plus a collected mark and a placement the spoiler never had.
+        let mut saved = crate::WorldData::default();
+        saved.items.insert(chest.clone(), "Green Rupee (MM)".to_string());
+        saved.dest.insert(chest.clone(), 2);
+        saved.items.insert(extra.clone(), "Recovery Heart".to_string());
+        saved.collected.insert((Game::Oot, 0));
+        saved.forced.insert((Game::Oot, 0));
+
+        merge_saved_worlds(&mut worlds, vec![saved]);
+
+        // The spoiler's placement / dest survive; the stale cached ones are ignored.
+        assert_eq!(worlds[0].items.get(&chest).map(String::as_str), Some("Blast Mask (OoT)"));
+        assert_eq!(worlds[0].dest.get(&chest).copied(), Some(1));
+        // A placement the spoiler didn't cover is still filled in from the save.
+        assert_eq!(worlds[0].items.get(&extra).map(String::as_str), Some("Recovery Heart"));
+        // Progress (collected / forced) is unioned in regardless.
+        assert!(worlds[0].collected.contains(&(Game::Oot, 0)));
+        assert!(worlds[0].forced.contains(&(Game::Oot, 0)));
+    }
+
+    /// With no spoiler loaded, the save is the only placement source, so it fully
+    /// populates an empty world (the "icons show without a spoiler" fallback).
+    #[test]
+    fn saved_placements_populate_when_no_spoiler() {
+        let loc = "OOT MQ Dodongo Cavern Map Chest".to_string();
+        let mut saved = crate::WorldData::default();
+        saved.items.insert(loc.clone(), "Blast Mask (OoT)".to_string());
+        let mut worlds = vec![crate::WorldData::default()];
+        merge_saved_worlds(&mut worlds, vec![saved]);
+        assert_eq!(worlds[0].items.get(&loc).map(String::as_str), Some("Blast Mask (OoT)"));
     }
 
     #[test]

@@ -126,6 +126,18 @@ impl Dashboard {
         for (&id, idxs) in &by_item {
             let mut per_page: HashMap<usize, u32> = HashMap::new();
             for &i in idxs {
+                // Only NON-counter tiers form a progressive family. A counter (Empty
+                // Bottle, …) aggregates every matching pickup and is never a "tier", so
+                // it must not make a shared id look progressive. Otherwise a SPECIFIC
+                // bottle item that a counter and its own widget both list — Ruto's Letter
+                // (Empty Bottle + "Ruto's Letter"), Bottle of Gold Dust — would be
+                // mis-collapsed: one pickup would only bump the bottle count and never
+                // light the item (and a second bottle would wrongly light it). Every real
+                // progressive family (bow, wallet, strength, scale, bomb bag, shields) is
+                // built from non-counter tier widgets, so this never loses one.
+                if flat[i].entry.is_counter {
+                    continue;
+                }
                 *per_page.entry(flat[i].page).or_default() += 1;
             }
             if per_page.values().any(|&n| n >= 2) {
@@ -320,6 +332,51 @@ impl Dashboard {
             stages.extend(matches.iter().copied());
             self.walk_stages(&stages);
             return;
+        }
+
+        // Deku stick / nut capacity: a progressive stack whose three tiers
+        // (Capacity → Upgrade → Second) are each keyed to a DISTINCT level id
+        // (OoT sticks: 0x80 / 0x77 / 0x78). A non-shared seed places those distinct
+        // ids, so a plain match lights the tier of the level collected — e.g. the
+        // middle "Deku Stick Upgrade" — and leaves Capacity dark instead of filling
+        // bottom-up (reported: "j'ai eu une capacity mais c'est l'amélioration qui a
+        // pris en premier"). Route any family id through the shared tier list so
+        // successive pickups advance in order. The SHARED id advances every game in
+        // lockstep; a per-game id advances only its own game's tiers. Every tier
+        // carries the SHARED id, so `by_item[shared]` is the ordered tier list.
+        {
+            use data::iid::*;
+            const STICK_FAMILY: &[u32] = &[
+                OOT_STICK_UPGRADE, OOT_STICK_UPGRADE2, OOT_STICK_UPGRADE3,
+                MM_STICK_UPGRADE, MM_STICK_UPGRADE2, MM_STICK_UPGRADE3, SHARED_STICK_UPGRADE,
+            ];
+            const NUT_FAMILY: &[u32] = &[
+                OOT_NUT_UPGRADE, OOT_NUT_UPGRADE2, OOT_NUT_UPGRADE3,
+                MM_NUT_UPGRADE, MM_NUT_UPGRADE2, MM_NUT_UPGRADE3, SHARED_NUT_UPGRADE,
+            ];
+            for (family, shared_id) in
+                [(STICK_FAMILY, SHARED_STICK_UPGRADE), (NUT_FAMILY, SHARED_NUT_UPGRADE)]
+            {
+                if !family.contains(&id) {
+                    continue;
+                }
+                let tiers = self.by_item.get(&shared_id).cloned().unwrap_or_default();
+                // A per-game id advances only its own game's page; the shared id, both.
+                let only_page = if id == shared_id {
+                    None
+                } else {
+                    self.by_item.get(&id).and_then(|v| v.first()).map(|&i| self.flat[i].page)
+                };
+                for page in 0..data::PROG_PAGES.len() {
+                    if only_page.is_some_and(|p| p != page) {
+                        continue;
+                    }
+                    let stages: Vec<usize> =
+                        tiers.iter().copied().filter(|&i| self.flat[i].page == page).collect();
+                    self.walk_stages(&stages);
+                }
+                return;
+            }
         }
 
         // Progressive either because the ROM settings say so, or because the id is a
@@ -778,6 +835,60 @@ mod tests {
 
         let gs = entry_by_name(&d, "Gold Skulltula Token");
         assert_eq!(d.state(gs).count, 2, "each collected token bumps the counter");
+    }
+
+    /// Regression: a specific bottle item (Ruto's Letter) sits in BOTH the "Empty Bottle"
+    /// counter and its own widget on the same page. It is not a progressive family — a
+    /// counter is not a tier — so one pickup must light both. The bug classified the id as
+    /// a progressive marker, so `walk_stages` only bumped the bottle counter and left
+    /// Ruto's Letter dead (and a second bottle would have wrongly lit it).
+    #[test]
+    fn bottled_item_lights_both_the_bottle_counter_and_its_own_widget() {
+        let id = data::iid::OOT_BOTTLE_RUTO_LETTER;
+        let d0 = Dashboard::new();
+        assert!(
+            !d0.marker_ids.contains(&id),
+            "a specific bottle item shared with the Empty Bottle counter is not a progressive marker"
+        );
+
+        let mut d = Dashboard::new();
+        d.on_item_found(id, &Settings::default());
+
+        let ruto = entry_by_name(&d, "Ruto's Letter");
+        let bottle = entry_with_key(&d, data::iid::OOT_BOTTLE_EMPTY); // the OoT Empty Bottle counter
+        assert!(d.state(ruto).found, "Ruto's Letter widget must light on the pickup");
+        assert!(d.state(bottle).count >= 1, "the empty-bottle counter must also bump");
+    }
+
+    /// Regression (reported seed): the three Deku Stick capacity tiers (Capacity →
+    /// Upgrade → Second) are each keyed to a distinct level id (0x80 / 0x77 / 0x78). A
+    /// non-shared seed places those distinct ids, so collecting the middle-level item
+    /// used to light the "Deku Stick Upgrade" tier and leave Capacity dark. They form a
+    /// progressive stack, so any capacity pickup must fill the tiers bottom-up by count.
+    #[test]
+    fn stick_capacity_tiers_fill_bottom_up_by_count() {
+        let settings = Settings::default();
+        let mut d = Dashboard::new();
+        let cap = entry_with_key(&d, data::iid::OOT_STICK_UPGRADE); // OoT "Deku Stick Capacity" (218)
+        let upg = entry_with_key(&d, data::iid::OOT_STICK_UPGRADE2); // OoT "Deku Stick Upgrade" (219)
+        let second = entry_with_key(&d, data::iid::OOT_STICK_UPGRADE3); // OoT "Second …" (220)
+
+        // Collecting the MIDDLE-level item first must light the base Capacity tier.
+        d.on_item_found(data::iid::OOT_STICK_UPGRADE2, &settings);
+        assert!(d.state(cap).found, "first stick upgrade lights Capacity, not the middle tier");
+        assert!(!d.state(upg).found, "the Upgrade tier stays dark until the second pickup");
+        assert!(!d.state(second).found);
+
+        // A second pickup (any level id) advances to the next tier in order.
+        d.on_item_found(data::iid::OOT_STICK_UPGRADE, &settings);
+        assert!(d.state(upg).found, "second stick pickup lights the Upgrade tier");
+        assert!(!d.state(second).found, "Second stays dark until a third pickup");
+
+        // The nut family behaves the same (verify the routing covers it too).
+        let mut dn = Dashboard::new();
+        let ncap = entry_with_key(&dn, data::iid::OOT_NUT_UPGRADE);
+        dn.on_item_found(data::iid::OOT_NUT_UPGRADE3, &settings); // top-level nut id first
+        assert!(dn.state(ncap).found, "first nut pickup lights Nut Capacity");
     }
 
     #[test]

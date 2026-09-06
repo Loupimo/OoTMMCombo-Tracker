@@ -9,6 +9,18 @@ void CorrectComboItem(ComboItem* Item)
 	{
 		if (Item->GameID == OOT_GAME)
 		{
+			// Fold an OoT Master-Quest scene id back to its base dungeon. Recent OoTMM data gave
+			// the twelve MQ dungeons their own scene ids (0x70..=0x7d, e.g. OOT_DODONGO_CAVERN_MQ =
+			// 0x71), so the game now reports an MQ check under that id. The tracker keeps no separate
+			// MQ scenes (MQ objects live under the base dungeon, layout oot_mq), and 0x70+ collides
+			// with the synthetic grotto scenes (OOT_GROTTO_DEATH_CRATER_SCRUBS = 0x71). Scene-scoped
+			// overlays (chest / collectible / stray fairy) resolve by the reported scene, so fold it
+			// here (base = scene - 0x70); the layout gate then keeps the MQ object. OoT only; the game
+			// never emits an OoT scene in this range for anything but MQ.
+			if (Item->SceneID >= 0x70 && Item->SceneID <= 0x7d)
+			{
+				Item->SceneID -= 0x70;
+			}
 			switch (Item->OvType)
 			{
 				case OV_SF:
