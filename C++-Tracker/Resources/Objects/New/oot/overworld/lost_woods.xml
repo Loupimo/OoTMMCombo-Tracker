@@ -183,10 +183,10 @@
       </actor>
       <actor room="0x34" actor="0x9">
         <rendering_option type="fairy">
-          <xflag type="gossip" location="Lost Woods Generic Grotto Gossip Fairy" slice="0" item="FAIRY" name="Gossip Stone" xyz="637;632;0"/>
+          <xflag type="gossip" location="Lost Woods Generic Grotto Gossip Fairy" slice="0" item="FAIRY" name="Gossip Stone" xyz="624;277;0"/>
         </rendering_option>
         <rendering_option type="fairy_spot">
-          <xflag type="gossip-big" location="Lost Woods Generic Grotto Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Stone" xyz="617;632;0"/>
+          <xflag type="gossip-big" location="Lost Woods Generic Grotto Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Stone" xyz="596;277;0"/>
         </rendering_option>
       </actor>
     </scene_rendering>

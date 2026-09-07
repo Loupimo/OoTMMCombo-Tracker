@@ -1,0 +1,2 @@
+const ItemInfo ItemList[371] =
+{

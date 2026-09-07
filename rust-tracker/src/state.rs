@@ -926,6 +926,28 @@ impl TrackerApp {
                 if self.app_settings.auto_snap && self.active_world == LOCAL {
                     self.pending_snap = Some((hit.0, rs, room, ox, oy));
                 }
+                // Auto age / season switch: the pickup's object is tagged Child /
+                // Adult (OoT) or Winter / Spring (MM), which reveals the game's current
+                // age (or season). Flip the map context toggle to match so the mark
+                // lands on the variant actually being played — the common case being
+                // the player as adult while the tracker still shows the child map (and
+                // inversely). An `All`-tagged pickup carries no such hint and is left
+                // alone. Local world only (same as the snap), and only when the view is
+                // coherent: with Auto Snap the view jumps to this game anyway; without
+                // it, flip only when this game is already shown, so an OoT pickup never
+                // flips MM's season and vice versa.
+                if self.active_world == LOCAL {
+                    let same_game_shown = self.scene.as_ref().is_some_and(|s| s.game == hit.0);
+                    if (self.app_settings.auto_snap || same_game_shown)
+                        && context_toggle_for(obj.context).is_some_and(|w| w != self.context_toggle)
+                    {
+                        self.context_toggle = !self.context_toggle;
+                        // A per-context map image must reload when the toggle flips.
+                        if self.scene.as_ref().is_some_and(|s| !s.def.context_image_rel.is_empty()) {
+                            self.map_texture = None;
+                        }
+                    }
+                }
             }
         } else {
             // Nothing in the pool matched this pickup — log the decoded overlay so it
@@ -1688,6 +1710,20 @@ impl eframe::App for TrackerApp {
     }
 }
 
+/// The map context toggle value a collected object's context implies: Adult /
+/// Spring => the "on" side (`true`), Child / Winter => the "off" side (`false`).
+/// `All` carries no age / season information, so it leaves the toggle untouched
+/// (`None`). Used to auto-flip the map view to the age (or season) actually being
+/// played when a live pickup is tagged to one variant.
+fn context_toggle_for(ctx: data::ObjectContext) -> Option<bool> {
+    use data::ObjectContext as C;
+    match ctx {
+        C::Adult | C::Spring => Some(true),
+        C::Child | C::Winter => Some(false),
+        C::All => None,
+    }
+}
+
 /// Some OoT overworld nodes carry no objects on their generic combined map: the
 /// entrances render on the combined minimap, while the collectibles live on the
 /// day / night / adult variants, told apart only by the raw (pre-globalization)
@@ -2357,6 +2393,31 @@ fn record_collection(world: &mut crate::WorldData, key: (Game, usize)) -> bool {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    /// The collection-driven auto age/season switch: `context_toggle_for` must be the
+    /// exact inverse of `effective_context`'s toggle convention (OoT false=Child /
+    /// true=Adult, MM false=Winter / true=Spring), so flipping the toggle to a pickup's
+    /// context shows that pickup's variant. `All` is unknown -> leaves the toggle alone.
+    /// Also assert the object data actually carries Adult/Child tags, so the signal is real.
+    #[test]
+    fn context_toggle_for_matches_effective_context_convention() {
+        use data::ObjectContext as C;
+        assert_eq!(context_toggle_for(C::Adult), Some(true), "Adult => Adult side (true)");
+        assert_eq!(context_toggle_for(C::Child), Some(false), "Child => Child side (false)");
+        assert_eq!(context_toggle_for(C::Spring), Some(true), "Spring => Spring side (true)");
+        assert_eq!(context_toggle_for(C::Winter), Some(false), "Winter => Winter side (false)");
+        assert_eq!(context_toggle_for(C::All), None, "All carries no age/season hint");
+
+        // The tag exists in the pool, so a real pickup can drive the switch.
+        assert!(
+            data::OOT_OBJECTS.iter().any(|o| matches!(o.context, C::Adult)),
+            "OoT has adult-tagged objects to trigger the switch"
+        );
+        assert!(
+            data::MM_OBJECTS.iter().any(|o| matches!(o.context, C::Spring)),
+            "MM has spring-tagged objects to trigger the switch"
+        );
+    }
 
     /// A hook / ledger collection must override a manual "forced" hand-check: the forced
     /// flag is cleared and the event is still processed (`true`), so a pre-checked

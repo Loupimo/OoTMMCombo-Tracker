@@ -184,11 +184,11 @@ pub static PROG_PAGES: &[ProgPage] = &[
         ProgSection { title: "Equipments", entries: &[
             ProgEntry { icon: "spin", name: "Spin Attack Upgrade", lookup_keys: &[iid::OOT_SPIN_UPGRADE, iid::SHARED_SPIN_UPGRADE], is_counter: false, max_count: 0, max_from_spoiler: false },
             ProgEntry { icon: "kokiri", name: "Kokiri Sword", lookup_keys: &[iid::OOT_SWORD_KOKIRI, iid::OOT_SWORD, iid::SHARED_SWORD], is_counter: false, max_count: 0, max_from_spoiler: false },
-            ProgEntry { icon: "razor", name: "Razor Sword", lookup_keys: &[iid::OOT_SWORD_RAZOR, iid::OOT_SWORD, iid::SHARED_SWORD], is_counter: false, max_count: 0, max_from_spoiler: false },
+            ProgEntry { icon: "razor", name: "Razor Sword", lookup_keys: &[iid::OOT_SWORD_RAZOR, iid::SHARED_SWORD], is_counter: false, max_count: 0, max_from_spoiler: false },
             ProgEntry { icon: "master", name: "Master Sword", lookup_keys: &[iid::OOT_SWORD_MASTER, iid::OOT_SWORD, iid::SHARED_SWORD], is_counter: false, max_count: 0, max_from_spoiler: false },
             ProgEntry { icon: "biggoron", name: "Giant's Knife", lookup_keys: &[iid::OOT_SWORD_KNIFE, iid::OOT_SWORD_GORON, iid::OOT_SWORD, iid::SHARED_SWORD], is_counter: false, max_count: 0, max_from_spoiler: false },
             ProgEntry { icon: "biggoron", name: "Biggoron's Sword", lookup_keys: &[iid::OOT_SWORD_BIGGORON, iid::OOT_SWORD_GORON, iid::OOT_SWORD, iid::SHARED_SWORD], is_counter: false, max_count: 0, max_from_spoiler: false },
-            ProgEntry { icon: "gilded", name: "Gilded Sword", lookup_keys: &[iid::OOT_SWORD_GILDED, iid::OOT_SWORD, iid::SHARED_SWORD], is_counter: false, max_count: 0, max_from_spoiler: false },
+            ProgEntry { icon: "gilded", name: "Gilded Sword", lookup_keys: &[iid::OOT_SWORD_GILDED, iid::SHARED_SWORD], is_counter: false, max_count: 0, max_from_spoiler: false },
             ProgEntry { icon: "deku_shield", name: "Deku Shield", lookup_keys: &[iid::OOT_SHIELD_DEKU, iid::OOT_PROGRESSIVE_SHIELD_DEKU, iid::OOT_SHIELD, iid::SHARED_SHIELD, iid::SHARED_SHIELD_DEKU], is_counter: false, max_count: 0, max_from_spoiler: false },
             ProgEntry { icon: "hylian_shield", name: "Hylian Shield", lookup_keys: &[iid::OOT_SHIELD_HYLIAN, iid::OOT_PROGRESSIVE_SHIELD_HYLIAN, iid::OOT_SHIELD, iid::SHARED_SHIELD, iid::SHARED_SHIELD_HYLIAN], is_counter: false, max_count: 0, max_from_spoiler: false },
             ProgEntry { icon: "mirror_oot", name: "Mirror Shield", lookup_keys: &[iid::OOT_SHIELD_MIRROR, iid::OOT_SHIELD, iid::SHARED_SHIELD, iid::SHARED_SHIELD_MIRROR], is_counter: false, max_count: 0, max_from_spoiler: false },

@@ -209,11 +209,11 @@ const ProgEntry OoTEquipments[] =
 
     // Swords
     { EGameIcon::kokiri,        "Kokiri Sword",         { OOT_SWORD_KOKIRI, OOT_SWORD, SHARED_SWORD },     false},
-    { EGameIcon::razor, "Razor Sword", { OOT_SWORD_RAZOR, OOT_SWORD, SHARED_SWORD }, false },
+    { EGameIcon::razor, "Razor Sword", { OOT_SWORD_RAZOR, SHARED_SWORD }, false },
     { EGameIcon::master,        "Master Sword",         { OOT_SWORD_MASTER, OOT_SWORD, SHARED_SWORD },     false },
     { EGameIcon::biggoron, "Giant's Knife", { OOT_SWORD_KNIFE, OOT_SWORD_GORON, OOT_SWORD, SHARED_SWORD }, false },
     { EGameIcon::biggoron,      "Biggoron's Sword",     { OOT_SWORD_BIGGORON, OOT_SWORD_GORON, OOT_SWORD, SHARED_SWORD },         false },
-    { EGameIcon::gilded, "Gilded Sword", { OOT_SWORD_GILDED, OOT_SWORD, SHARED_SWORD }, false },
+    { EGameIcon::gilded, "Gilded Sword", { OOT_SWORD_GILDED, SHARED_SWORD }, false },
 
     // Shields
     { EGameIcon::deku_shield,        "Deku Shield",      { OOT_SHIELD_DEKU, OOT_PROGRESSIVE_SHIELD_DEKU, OOT_SHIELD, SHARED_SHIELD, SHARED_SHIELD_DEKU },      false},

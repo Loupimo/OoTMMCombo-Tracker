@@ -7,7 +7,7 @@
 
 SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
 {
-    { "Deku Tree", "", "./Resources/OoT/Dungeons/Deku_Tree/DEK_Map.jpg", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot },
+        { "Deku Tree", "", "./Resources/OoT/Dungeons/Deku_Tree/DEK_Map.jpg", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot },
     { "Dodongo's Cavern", "", "./Resources/OoT/Dungeons/Cavern/CAV_Map.jpg", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot },
     { "Inside Jabu-Jabu", "", "./Resources/OoT/Dungeons/Jabu-Jabu/JAB_Map.jpg", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot },
     { "Forest Temple", "", "./Resources/OoT/Dungeons/Forest/FOT_Map.jpg", (uint8_t)OoTRegions::Dungeons, false, GameLayout::oot },
@@ -34,9 +34,9 @@ SceneMetaInfo OoTScenesMetaInfo[OOT_NUM_SCENES] =
     { "Bongo-Bongo's Lair", "", "./Resources/OoT/Dungeons/Shadow/Bongo_Map.jpg", (uint8_t)OoTRegions::None, false, GameLayout::oot },
     { "Ganondorf's Lair", "", "./Resources/OoT/Ganon/Ganondorf_Map.jpg", (uint8_t)OoTRegions::None, false, GameLayout::oot },
     { "Tower Collapse - Exterior", "", "", (uint8_t)OoTRegions::None, false, GameLayout::oot },
-    { "Market Entrance - Child Day", "", "", (uint8_t)OoTRegions::None, false, GameLayout::oot },
-    { "Market Entrance - Child Night", "", "", (uint8_t)OoTRegions::None, false, GameLayout::oot },
-    { "Market Entrance - Adult", "", "", (uint8_t)OoTRegions::None, false, GameLayout::oot },
+    { "Market Entrance - Child Day", "./Resources/OoT/Market/Temple_Entry.jpg", "", (uint8_t)OoTRegions::None, false, GameLayout::oot },
+    { "Market Entrance - Child Night", "./Resources/OoT/Market/Temple_Entry.jpg", "", (uint8_t)OoTRegions::None, false, GameLayout::oot },
+    { "Market Entrance - Adult", "./Resources/OoT/Market/Temple_Entry.jpg", "", (uint8_t)OoTRegions::None, false, GameLayout::oot },
     { "Back Alley - Day", "", "", (uint8_t)OoTRegions::None, false, GameLayout::oot },
     { "Back Alley - Night", "", "", (uint8_t)OoTRegions::None, false, GameLayout::oot },
     { "Market - Day", "./Resources/OoT/Market/Market_Day.jpg", "", (uint8_t)OoTRegions::Market, false, GameLayout::oot },

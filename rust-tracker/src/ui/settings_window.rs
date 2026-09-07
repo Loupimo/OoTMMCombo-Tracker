@@ -230,6 +230,7 @@ const WORLD_PARAM_GROUPS: &[Group] = &[
         ("kamaroMaskOot", Badge::Oot),
         ("powderKegOot", Badge::Oot),
         ("gfsOot", Badge::Oot),
+        ("extraChildSwordsOot", Badge::Oot),
         ("boomerangMm", Badge::Mm),
         ("slingshotMm", Badge::Mm),
     ] },
@@ -245,7 +246,7 @@ const WORLD_PARAM_GROUPS: &[Group] = &[
 fn on_other_page(key: &str) -> bool {
     matches!(
         key,
-        "kamaroMaskOot" | "boomerangMm" | "powderKegOot" | "gfsOot" | "slingshotMm"
+        "kamaroMaskOot" | "boomerangMm" | "powderKegOot" | "gfsOot" | "slingshotMm" | "extraChildSwordsOot"
             | "gerudoMaskMm" | "skullMaskMm" | "spookyMaskMm"
             | "rustyKeysOot" | "rustyKeysMm"
     )

@@ -891,6 +891,44 @@ mod tests {
         assert!(dn.state(ncap).found, "first nut pickup lights Nut Capacity");
     }
 
+    /// `progressiveSwordsOot: goron` — only Giant's Knife + Biggoron are progressive
+    /// (delivered as "Progressive Goron Sword", OOT_SWORD_GORON), while Kokiri and
+    /// Master are independent placements of their own ids. Verify the dashboard lights
+    /// the right tiles: the two independent swords on their own pickups, and the goron
+    /// pair filling bottom-up (Knife then Biggoron) on successive Goron-sword pickups.
+    #[test]
+    fn goron_swords_split_independent_and_progressive_pair() {
+        use data::iid::*;
+        // The placed item names resolve to the ids the goron branch expects.
+        assert_eq!(find_item_id("Kokiri Sword (OoT)"), Some(OOT_SWORD_KOKIRI));
+        assert_eq!(find_item_id("Master Sword"), Some(OOT_SWORD_MASTER));
+        assert_eq!(find_item_id("Progressive Goron Sword"), Some(OOT_SWORD_GORON));
+
+        let mut settings = Settings::default();
+        settings.set_value("progressiveSwordsOot", data::ShuffleSetting::overworld); // "goron"
+        settings.apply(&HashSet::new());
+
+        let mut d = Dashboard::new();
+        let kokiri = entry_with_key(&d, OOT_SWORD_KOKIRI);
+        let master = entry_with_key(&d, OOT_SWORD_MASTER);
+        let knife = entry_with_key(&d, OOT_SWORD_KNIFE);
+        let biggoron = entry_with_key(&d, OOT_SWORD_BIGGORON);
+
+        // Independent swords light only their own tile.
+        d.on_item_found(OOT_SWORD_KOKIRI, &settings);
+        assert!(d.state(kokiri).found, "Kokiri Sword lights its own tile");
+        assert!(!d.state(knife).found, "and nothing in the goron pair");
+        d.on_item_found(OOT_SWORD_MASTER, &settings);
+        assert!(d.state(master).found, "Master Sword lights its own tile");
+
+        // The goron pair fills bottom-up: first Goron sword = Giant's Knife, second = Biggoron.
+        d.on_item_found(OOT_SWORD_GORON, &settings);
+        assert!(d.state(knife).found, "first Progressive Goron Sword lights Giant's Knife");
+        assert!(!d.state(biggoron).found, "Biggoron stays dark until the second pickup");
+        d.on_item_found(OOT_SWORD_GORON, &settings);
+        assert!(d.state(biggoron).found, "second Progressive Goron Sword advances to Biggoron's Sword");
+    }
+
     #[test]
     fn multiworld_routes_by_destination_player() {
         // Two GS coordinates. In world 1, coord `a` holds a token for player 1

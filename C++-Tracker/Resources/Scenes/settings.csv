@@ -85,7 +85,7 @@ shuffleGossipBigFairiesMm;Gossip Stone Big Fairies - MM;shuffle;vanilla;standard
 crossWarpOot;Cross-Games OoT Warp Song;boolean;vanilla;standard;
 crossWarpMm;Cross-Games MM Song of Soaring;boolean;vanilla;standard;
 progressiveShieldsOot;Progressive Shields - OoT;boolean;vanilla;progressive;OOT_PROGRESSIVE_SHIELD_DEKU, OOT_PROGRESSIVE_SHIELD_HYLIAN
-progressiveSwordsOot;Progressive Swords - OoT;boolean;vanilla;progressive;OOT_SWORD_KOKIRI, OOT_SWORD_MASTER, OOT_SWORD_KNIFE, OOT_SWORD_GORON, OOT_SWORD_BIGGORON, OOT_SWORD_RAZOR, OOT_SWORD_GILDED, OOT_SWORD
+progressiveSwordsOot;Progressive Swords - OoT;boolean;vanilla;progressive;OOT_SWORD_KOKIRI, OOT_SWORD_MASTER, OOT_SWORD_KNIFE, OOT_SWORD_GORON, OOT_SWORD_BIGGORON, OOT_SWORD
 progressiveShieldsMm;Progressive Shields - Mm;boolean;vanilla;progressive;MM_PROGRESSIVE_SHIELD_DEKU, MM_PROGRESSIVE_SHIELD_HERO
 progressiveGFS;Progressive Great Fairy Sword;boolean;vanilla;progressive;MM_SWORD_KOKIRI, MM_SWORD_RAZOR, MM_SWORD_GILDED, MM_GREAT_FAIRY_SWORD, MM_SWORD
 progressiveClocks;Progressive Clock;boolean;all;progressive;MM_CLOCK, MM_CLOCK1, MM_CLOCK2, MM_CLOCK3, MM_CLOCK4, MM_CLOCK5, MM_CLOCK6
@@ -246,3 +246,4 @@ adultMaskMm;Adult Mask;boolean;vanilla;standard;MM_MASK_ADULT
 sticksNutsUpgradesInitial;Shuffle Initial Deku Stick & Nut Upgrades;boolean;vanilla;standard;OOT_STICK_UPGRADE, OOT_NUT_UPGRADE, MM_STICK_UPGRADE, MM_NUT_UPGRADE
 bombchuBehaviorOot;Bombchu Behavior - OoT;boolean;vanilla;standard;OOT_BOMBCHU_BAG, OOT_BOMBCHU_BAG2, OOT_BOMBCHU_BAG3, OOT_BOMBCHU_BAG_FIRST_5, OOT_BOMBCHU_BAG_FIRST_10, OOT_BOMBCHU_BAG_FIRST_20
 bombchuBehaviorMm;Bombchu Behavior - MM;boolean;vanilla;standard;MM_BOMBCHU_BAG, MM_BOMBCHU_BAG2, MM_BOMBCHU_BAG3, MM_BOMBCHU_BAG_FIRST_1, MM_BOMBCHU_BAG_FIRST_5, MM_BOMBCHU_BAG_FIRST_10, MM_BOMBCHU_BAG_FIRST_20
+extraChildSwordsOot;Extra Child Swords - OoT;boolean;vanilla;standard;OOT_SWORD_RAZOR, OOT_SWORD_GILDED

@@ -504,7 +504,7 @@ print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_fil
 
 input_file = '..\\Scenes\\scenes_mm.csv'
 output_file = '..\\Scenes\\scenes_mm.txt'
-parse_scene(input_file, output_file, "MM")
+#parse_scene(input_file, output_file, "MM")
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_file}'.")
 
@@ -555,6 +555,6 @@ print(f"Conversion terminée. Les résultats sont enregistrés dans '{output_fil
 input_file = '..\\Scenes\\entrance_costs.csv'
 oot_cpp_file = '..\\..\\Sources\\Combo\\OoTEntranceCosts.cpp'
 mm_cpp_file  = '..\\..\\Sources\\Combo\\MMEntranceCosts.cpp'
-parse_entrance_costs(input_file, oot_cpp_file, mm_cpp_file)
+#parse_entrance_costs(input_file, oot_cpp_file, mm_cpp_file)
 #
 print(f"Conversion terminée. Les résultats sont enregistrés dans '{oot_cpp_file}', '{mm_cpp_file}'.")

@@ -175,8 +175,10 @@ impl WorldInputs {
 ///
 /// - **Separate-tier shuffles** place the individual upgrades (Silver/Golden Scale,
 ///   Silver/Golden Gauntlets, Ocarina of Time, Larger Magic Upgrade, Longshot,
-///   Adult's/Giant's/… Wallet), each with its own id ≠ the counter — so the counter
-///   never moves and e.g. `has(SCALE, 2)` stays false with a Golden Scale in hand.
+///   Deku Stick/Nut Upgrade + Second Upgrade, Adult's/Giant's/… Wallet), each with its
+///   own id ≠ the counter — so the counter never moves and e.g. `has(SCALE, 2)` stays
+///   false with a Golden Scale in hand (or `has(STICK_UPGRADE)` false after a lone
+///   "Deku Stick Upgrade").
 /// - **Wallets specifically** place a "Progressive Wallet (OoT/MM)" whose id
 ///   (`OOT_PROG_WALLET` / `MM_PROG_WALLET`) also differs from the counter, so even the
 ///   progressive shuffle misses it.
@@ -229,6 +231,19 @@ fn normalize_tier_counters(items: &mut HashMap<u32, u32>) {
         Fam { counter: iid::MM_MAGIC_UPGRADE, prog: 0, members: &[(iid::MM_MAGIC_UPGRADE2, 2)] },
         // OoT hookshot: `has(HOOKSHOT, 2)` = Longshot, whose id differs from the counter.
         Fam { counter: iid::OOT_HOOKSHOT, prog: 0, members: &[(iid::OOT_LONGSHOT, 2)] },
+        // Deku stick / nut capacity: each get-item does `add: [<counter>, tier]` (gi.yml),
+        // so the counter (the tier-1 "Capacity" id) is what `has(STICK_UPGRADE)` /
+        // `has(NUT_UPGRADE)` reads. The shuffle can place the tier-2 "Upgrade" or tier-3
+        // "Second Upgrade" get-item, each with its own id ≠ the counter, so a collected
+        // upgrade never moved the counter and `has_sticks_capacity` stayed false.
+        Fam { counter: iid::OOT_STICK_UPGRADE, prog: 0, members: &[
+            (iid::OOT_STICK_UPGRADE2, 2), (iid::OOT_STICK_UPGRADE3, 3)] },
+        Fam { counter: iid::MM_STICK_UPGRADE, prog: 0, members: &[
+            (iid::MM_STICK_UPGRADE2, 2), (iid::MM_STICK_UPGRADE3, 3)] },
+        Fam { counter: iid::OOT_NUT_UPGRADE, prog: 0, members: &[
+            (iid::OOT_NUT_UPGRADE2, 2), (iid::OOT_NUT_UPGRADE3, 3)] },
+        Fam { counter: iid::MM_NUT_UPGRADE, prog: 0, members: &[
+            (iid::MM_NUT_UPGRADE2, 2), (iid::MM_NUT_UPGRADE3, 3)] },
     ];
     for fam in families {
         let mut tier = count(items, fam.counter);
@@ -468,6 +483,23 @@ mod tests {
         let ti = trick_index();
         let mido = ti.get("OOT_MIDO_SKIP").copied().expect("trick indexed");
         assert!(inp.trick(mido), "Backflip Over Mido should be enabled");
+    }
+
+    /// A separate-tier stick/nut upgrade folds onto the logic counter the macros read.
+    /// `has_sticks_capacity` tests `has(STICK_UPGRADE)`, i.e. the tier-1 counter id, but
+    /// the shuffle places the tier-2 "Deku Stick Upgrade" (a different id), so without the
+    /// fold the counter stayed 0 and sticks read as unusable. The fold lifts the counter
+    /// to the owned tier; the shared counter (progressive-only) is untouched.
+    #[test]
+    fn stick_nut_upgrades_fold_onto_the_logic_counter() {
+        use crate::data::iid;
+        let mut items: HashMap<u32, u32> = HashMap::new();
+        items.insert(iid::OOT_STICK_UPGRADE2, 1); // tier-2 "Deku Stick Upgrade (OoT)"
+        items.insert(iid::MM_NUT_UPGRADE3, 1); // tier-3 "Second Deku Nut Upgrade (MM)"
+        normalize_tier_counters(&mut items);
+        assert_eq!(items.get(&iid::OOT_STICK_UPGRADE).copied(), Some(2), "stick counter lifted to tier 2");
+        assert_eq!(items.get(&iid::MM_NUT_UPGRADE).copied(), Some(3), "nut counter lifted to tier 3");
+        assert_eq!(items.get(&iid::SHARED_STICK_UPGRADE).copied().unwrap_or(0), 0, "shared counter untouched");
     }
 
     /// A set-valued setting (`openDungeonsOot`) parses its comma-separated members so
