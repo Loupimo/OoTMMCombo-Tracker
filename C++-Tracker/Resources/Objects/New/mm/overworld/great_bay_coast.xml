@@ -342,10 +342,10 @@
       <actor>
         <match setup="0" actor="0x7a"/>
         <match setup="1" actor="0x02"/>
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Great Bay Coast Gossip Fairy" slice="0" item="FAIRY" name="Gossip Stone" xyz="655;113;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Great Bay Coast Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Stone" xyz="649;98;0"/>
         </rendering_option>
       </actor>

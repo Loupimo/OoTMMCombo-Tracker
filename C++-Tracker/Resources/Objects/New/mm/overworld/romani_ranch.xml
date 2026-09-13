@@ -114,26 +114,26 @@
         <xflag type="soil" location="Romani Ranch Soil Day 1" setup="0" room="0x0" actor="0x31" item="ARROWS_30" name="Day 1" xyz="240;72;0"/>
       </rendering_option>
       <actor actor="0x33">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Romani Ranch Gossip Fairy Entrance" slice="0" item="FAIRY" name="Gossip Stone - Entrance" xyz="786;379;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Romani Ranch Gossip Big Fairy Entrance" slice="1" item="FAIRY_BIG" name="Gossip Stone - Entrance" xyz="774;394;0"/>
         </rendering_option>
       </actor>
       <actor actor="0x34">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Romani Ranch Gossip Fairy Near Tree" slice="0" item="FAIRY" name="Gossip Stone - Near Tree" xyz="387;577;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Romani Ranch Gossip Big Fairy Near Tree" slice="1" item="FAIRY_BIG" name="Gossip Stone - Near Tree" xyz="387;560;0"/>
         </rendering_option>
       </actor>
       <actor actor="0x35">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Romani Ranch Gossip Fairy Behind House" slice="0" item="FAIRY" name="Gossip Stone - Behind House" xyz="358;73;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Romani Ranch Gossip Big Fairy Behind House" slice="1" item="FAIRY_BIG" name="Gossip Stone - Behind House" xyz="354;90;0"/>
         </rendering_option>
       </actor>
@@ -186,10 +186,10 @@
         <xflag type="bush" location="Cucco Shack Bush 7" actor="0x13" item="NOTHING" name="Bush 7" xyz="643;188;0"/>
       </rendering_option>
       <actor actor="0x18">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Cucco Shack Gossip Fairy" slice="0" item="FAIRY" name="Gossip Stone" xyz="757;222;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Cucco Shack Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Stone" xyz="757;204;0"/>
         </rendering_option>
       </actor>
@@ -211,10 +211,10 @@
         <xflag type="soil" location="Doggy Racetrack Soil" setup="0" room="0x0" actor="0x8" item="RUPEE_RED" name="Soil" xyz="384;391;0"/>
       </rendering_option>
       <actor actor="0xe">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Doggy Racetrack Gossip Fairy" slice="0" item="FAIRY" name="Gossip Stone" xyz="114;313;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Doggy Racetrack Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Stone" xyz="111;332;0"/>
         </rendering_option>
       </actor>

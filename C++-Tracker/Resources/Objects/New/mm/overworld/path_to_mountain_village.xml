@@ -92,10 +92,10 @@
       <actor>
         <match setup="0" actor="0x31"/>
         <match setup="1" actor="0x01"/>
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Path to Mountain Village Gossip Fairy" slice="0" item="FAIRY" name="Gossip Stone" xyz="550;404;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Path to Mountain Village Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Stone" xyz="538;419;0"/>
         </rendering_option>
       </actor>

@@ -96,10 +96,10 @@
       <actor room="0x00">
         <match actor="0x39" scene="MOUNTAIN_VILLAGE_WINTER"/>
         <match actor="0x33" scene="MOUNTAIN_VILLAGE_SPRING"/>
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Mountain Village Gossip Outside Fairy" slice="0" item="FAIRY" name="Gossip Stone - Outside" xyz="319;521;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Mountain Village Gossip Outside Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Stone - Outside" xyz="306;509;0"/>
         </rendering_option>
       </actor>
@@ -186,10 +186,10 @@
         <xflag type="rock" location="Mountain Village Rock Ground 5" room="0x0" actor="0x14" item="RANDOM" name="Ground 5" xyz="609;399;0"/>
       </rendering_option>
       <actor room="0x01" actor="0x18">
-        <rendering_option context="spring" type="fairy">
+        <rendering_option context="spring" layout="all" type="fairy">
           <xflag type="gossip" location="Mountain Village Gossip Tunnel Fairy" slice="0" item="FAIRY" name="Gossip Stone - Tunnel" xyz="1451;105;0"/>
         </rendering_option>
-        <rendering_option context="spring" type="fairy_spot">
+        <rendering_option context="spring" layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Mountain Village Gossip Tunnel Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Stone - Tunnel" xyz="1439;90;0"/>
         </rendering_option>
       </actor>

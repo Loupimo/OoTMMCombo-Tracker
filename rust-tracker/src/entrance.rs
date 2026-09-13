@@ -541,6 +541,50 @@ pub fn get_warp_song(game: Game, scene: u16, song: u8, owl_id: u8, entrance_id: 
     }
 }
 
+/// Map an out-side entrance id (as stored in `out_links`) to the id the spoiler's
+/// `Entrances` section keys the same shuffled entrance by, so progressive discovery
+/// can match a walked entrance against its remap. Two rewrites are needed:
+///
+/// 1. **Normal entrances.** `parse_incoming` records the OUT side as the def's
+///    `from_id` — the *return-trip* id, not the forward id the player walked into.
+///    But the spoiler keys each shuffled entrance by the FORWARD id (its `to_id`,
+///    e.g. `MM_ASTRAL_OBSERVATORY_FROM_FIELD`). Recover it: `lookup(from_id)` finds
+///    the reverse-direction def whose `to_id` equals that `from_id`, and *its*
+///    `from_id` is the forward id the spoiler keys by. Without this the discovered
+///    set held return ids while the remap gated on forward ids, so a walked entrance
+///    never matched and every shuffled edge stayed a permanent wall.
+///
+/// 2. **OoT warp songs.** The OUT side is stored under the synthetic "song node" id
+///    (`OOT_MINUET_OF_FOREST_SONG` = 0xfff00 …) — the identity the entrance follow
+///    and songs-warp menu use — but the spoiler keys the warp by its *real* entrance
+///    (`OOT_WARP_SONG_MEADOW` = 0x600 …). Those defs are one-way, so case 1 does not
+///    catch them; the song node bridges to the paired real warp entrance (the def's
+///    `from_id`).
+///
+/// One-way entrances (owls, boss warp-outs) already store their real forward id, so
+/// they pass through unchanged.
+///
+/// @param game the game the discovered entrance belongs to
+/// @param entrance_id the out-side entrance id as stored in `out_links`
+/// @return the id the spoiler's progressive-discovery filter keys by
+pub fn canonical_discovered_entrance(game: Game, entrance_id: u32) -> u32 {
+    // Warp songs: synthetic song node -> real (one-way) warp entrance.
+    if game == Game::Oot
+        && (e::OOT_MINUET_OF_FOREST_SONG..=e::OOT_PRELUDE_OF_LIGHT_SONG).contains(&entrance_id)
+    {
+        if let Some(meta) = lookup(game, entrance_id) {
+            return meta.from_id;
+        }
+    }
+    // Normal entrances: return-trip `from_id` -> forward `to_id` the spoiler keys by.
+    if let Some(meta) = lookup(game, entrance_id) {
+        if meta.type_ == EntranceType::Normal {
+            return meta.from_id;
+        }
+    }
+    entrance_id
+}
+
 /// CheckWrapScene: boss lairs / caught rooms warp out; everything else falls
 /// back to the WARP_SCENE marker. Returns (new scene as u32, entrance id).
 pub fn check_wrap_scene(game: Game, scene: u16, entrance_id: u32) -> (u32, u32) {
@@ -1720,6 +1764,48 @@ mod tests {
         let ent = check_special_case(&mut m);
         assert_eq!(m.scene, s::OOT_MARKET as u32);
         assert_eq!(ent, UNKNOWN); // unmatched entrance id passes through
+    }
+
+    /// The progressive-discovery bridge maps every OoT warp-song "song node" to its
+    /// real warp entrance (the id the spoiler keys by), and bridges an ordinary
+    /// (Normal) entrance from its stored return-trip `from_id` back to the forward
+    /// `to_id` the spoiler keys by. One-way entrances (MM owls) pass through unchanged.
+    #[test]
+    fn warp_song_node_bridges_to_the_real_warp_entrance() {
+        let pairs = [
+            (e::OOT_MINUET_OF_FOREST_SONG, e::OOT_WARP_SONG_MEADOW_ENTR),
+            (e::OOT_BOLERO_OF_FIRE_SONG, e::OOT_WARP_SONG_CRATER_ENTR),
+            (e::OOT_SERENADE_OF_WATER_SONG, e::OOT_WARP_SONG_LAKE_ENTR),
+            (e::OOT_REQUIEM_OF_SPIRIT_SONG, e::OOT_WARP_SONG_DESERT_ENTR),
+            (e::OOT_NOCTURNE_OF_SHADOW_SONG, e::OOT_WARP_SONG_GRAVE_ENTR),
+            (e::OOT_PRELUDE_OF_LIGHT_SONG, e::OOT_WARP_SONG_TEMPLE_ENTR),
+        ];
+        for (node, real) in pairs {
+            assert_eq!(
+                canonical_discovered_entrance(Game::Oot, node),
+                real,
+                "song node 0x{node:X} must bridge to real warp entrance 0x{real:X}"
+            );
+        }
+        // MM owls store their real entrance id already — no bridge.
+        assert_eq!(
+            canonical_discovered_entrance(Game::Mm, e::MM_WARP_OWL_GREAT_BAY_ENTR),
+            e::MM_WARP_OWL_GREAT_BAY_ENTR
+        );
+        // The synthetic range is OoT-only; the same numeric id in MM passes through.
+        assert_eq!(
+            canonical_discovered_entrance(Game::Mm, e::OOT_MINUET_OF_FOREST_SONG),
+            e::OOT_MINUET_OF_FOREST_SONG
+        );
+        // An ordinary (Normal) entrance: `out_links` stores the def's return-trip
+        // `from_id`, which the bridge maps to the forward `to_id` the spoiler keys by.
+        // Walking Lost Woods -> Sacred Forest Meadow stores LOST_WOODS_FROM_MEADOW; it
+        // must bridge to SACRED_FOREST_MEADOW_ENTR (the spoiler's src id) so the remap
+        // opens once walked.
+        assert_eq!(
+            canonical_discovered_entrance(Game::Oot, e::OOT_LOST_WOODS_FROM_MEADOW_ENTR),
+            e::OOT_SACRED_FOREST_MEADOW_ENTR
+        );
     }
 
     #[test]

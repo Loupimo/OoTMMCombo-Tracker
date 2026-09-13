@@ -288,22 +288,6 @@ PCSignature Sig_EnButte_TransformIntoFairy_OoT = { 48, Pattern_EnButte_Transform
 
 #pragma endregion   // EnButte_TransformIntoFairy
 
-#pragma region   // EnButte_TransformIntoFairy
-
-uint8_t Pattern_EnGs_SpawnFairy_OoT[] =
-{
-    0x00
-};
-
-uint32_t Mask_EnGs_SpawnFairy_OoT[] =
-{
-    0xFF
-};
-
-PCSignature Sig_EnGs_SpawnFairy_OoT = { 0, Pattern_EnGs_SpawnFairy_OoT, Mask_EnGs_SpawnFairy_OoT, 0 };
-
-#pragma endregion   // EnButte_TransformIntoFairy
-
 PCFastResolver OoTSignatures[] =
 {
     { 0x800253E0, 0, { 0 }, &Sig_Actor_Spawn_OoT },
@@ -312,7 +296,6 @@ PCFastResolver OoTSignatures[] =
     { 0x80000000, 1, { 0 }, &Sig_comboItemPrecond_OoT },
     { 0x80000000, 1, { 0 }, &Sig_hookPlay_Init_OoT },
     { 0x80000000, 1, { 0 }, &Sig_Play_TransitionDone_OoT },
-    { 0x80000000, 1, { 0 }, &Sig_EnGs_SpawnFairy_OoT },              // It is Null as legacy version does not have a gossip stone option. However it is require to respect padding with the newer version
     { 0x80000000, 1, { 0 }, &Sig_EnButte_TransformIntoFairy_OoT }
 };
 size_t OoTSignatureCount = sizeof(OoTSignatures) / sizeof(OoTSignatures[0]);
@@ -502,7 +485,7 @@ uint32_t Mask_hookPlay_Init_MM[] =
     0xFFFFFFFF,                     // SW       S0, 0x0030 (SP)
     0xFFFFFFFF,                     // SW       S6, 0x0048 (SP)
     0xFFFFFFFF,                     // SW       S2, 0x0038 (SP)
-    0xFFFFFFFF,                     // SB       V0, 0x003C (S3)
+    0xFFFF0000,                     // SB       V0, 0x003C (S3)
     0xFFFFFFFF,                     // LUI      V0, 0x8077
     0xFFFF0000                      // SB       R0, 0x0EC8 (V0)
 };
@@ -631,7 +614,6 @@ PCFastResolver MMSignatures[] =
     { 0x80000000, 1, { 0 }, &Sig_comboItemPrecond_MM },
     { 0x80000000, 1, { 0 }, &Sig_hookPlay_Init_MM },
     { 0x80000000, 1, { 0 }, &Sig_Play_TransitionDone_MM },
-    { 0x80000000, 1, { 0 }, &Sig_EnGs_SpawnFairy_OoT },              // It is Null as legacy version does not have a gossip stone option. However it is require to respect padding with the newer version
     { 0x80000000, 1, { 0 }, &Sig_EnButte_TransformIntoFairy_MM }
 };
 size_t MMSignatureCount = sizeof(MMSignatures) / sizeof(MMSignatures[0]);
@@ -654,14 +636,14 @@ size_t MMSignatureCount = sizeof(MMSignatures) / sizeof(MMSignatures[0]);
 
 uint8_t Pattern_comboAddItemRawEx_OoT_V33[] =
 {
-    0x27,0xBD,0xFF,0xB8,            // ADDIU    SP, SP, -0x48           <-- comboAddItemRawEx_Start
-    0xAF,0xB2,0x00,0x3C,            // SW       S2, 0x003C (SP)
-    0x00,0x80,0x90,0x25,            // OR       S2, A0, R0
-    0x27,0xA4,0x00,0x18,            // ADDIU    A0, SP, 0x0018
-    0xAF,0xB3,0x00,0x40,            // SW       S3, 0x0040 (SP)
-    0xAF,0xB0,0x00,0x34,            // SW       S0, 0x0034 (SP)
-    0xAF,0xBF,0x00,0x44,            // SW       RA, 0x0044 (SP)
-    0xAF,0xB1,0x00,0x38             // SW       S1, 0x0038 (SP)
+    0x27, 0xBD, 0xFF, 0xB8,            // ADDIU    SP, SP, -0x48           <-- comboAddItemRawEx_Start
+    0xAF, 0xB2, 0x00, 0x3C,            // SW       S2, 0x003C (SP)
+    0x00, 0x80, 0x90, 0x25,            // OR       S2, A0, R0
+    0x27, 0xA4, 0x00, 0x18,            // ADDIU    A0, SP, 0x0018
+    0xAF, 0xBF, 0x00, 0x44,            // SW       RA, 0x0044 (SP)
+    0xAF, 0xB3, 0x00, 0x40,            // SW       S3, 0x0040 (SP)
+    0xAF, 0xB1, 0x00, 0x38,            // SW       S1, 0x0038 (SP)
+    0xAF, 0xB0, 0x00, 0x34             // SW       S0, 0x0034 (SP)
 };
 
 uint32_t Mask_comboAddItemRawEx_OoT_V33[] =
@@ -824,31 +806,6 @@ PCSignature Sig_hookPlay_Init_OoT_V33    = { 88, Pattern_hookPlay_Init_OoT_V33, 
 /* Play_TransitionDone  (hint PCOffset Legacy: 0x00) */
 PCSignature Sig_Play_TransitionDone_OoT_V33 = Sig_Play_TransitionDone_OoT;
 
-/* EnGs_SpawnFairy  (hint PCOffset Legacy: 0x00) */
-uint8_t  Pattern_EnGs_SpawnFairy_OoT_V33[] =
-{
-    0x27,0xBD,0xFF,0xC0,             // ADD       SP, SP, -0x40         <-- EnGs_SpawnFairy_Start
-    0x34,0x02,0xFF,0xFF,             // ORI       V0, R0, 0xFFFF
-    0xAF,0xBF,0x00,0x3C,             // SW        RA, 0x003C (SP)
-    0xAF,0xB1,0x00,0x38,             // SW        S1, 0x0038 (SP)
-    0xAF,0xB0,0x00,0x34,             // SW        S0, 0x0034 (SP)
-    0x14,0xA2,0x00,0x07,             // BNE       A1, V0, 0x8040D054
-    0xAF,0xA4,0x00,0x40,             // SW        A0, 0x0040 (SP)
-    0x00,0x00,0x10,0x25              // OR        V0, R0, R0
-};
-uint32_t Mask_EnGs_SpawnFairy_OoT_V33[] =
-{
-    0xFFFFFFFF,                      // ADD       SP, SP, -0x40         <-- EnGs_SpawnFairy_Start
-    0xFFFFFFFF,                      // ORI       V0, R0, 0xFFFF
-    0xFFFFFFFF,                      // SW        RA, 0x003C (SP)
-    0xFFFFFFFF,                      // SW        S1, 0x0038 (SP)
-    0xFFFFFFFF,                      // SW        S0, 0x0034 (SP)
-    0xFFFFFFFF,                      // BNE       A1, V0, 0x8040D054
-    0xFFFFFFFF,                      // SW        A0, 0x0040 (SP)
-    0xFFFFFFFF                       // OR        V0, R0, R0
-};
-PCSignature Sig_EnGs_SpawnFairy_OoT_V33 = { 32, Pattern_EnGs_SpawnFairy_OoT_V33, Mask_EnGs_SpawnFairy_OoT_V33, 0x7C };
-
 /* EnButte_TransformIntoFairy  (hint PCOffset Legacy: 0x130) */
 uint8_t  Pattern_EnButte_TransformIntoFairy_OoT_V33[] =
 {
@@ -892,8 +849,7 @@ PCFastResolver OoTSignatures_V33[] =
     { 0x80000000, 1, { 0 }, &Sig_comboItemPrecond_OoT_V33 },          // 3 comboItemPrecond
     { 0x80000000, 1, { 0 }, &Sig_hookPlay_Init_OoT_V33 },             // 4 hookPlay_Init
     { 0x80000000, 1, { 0 }, &Sig_Play_TransitionDone_OoT_V33 },       // 5 Play_TransitionDone
-    { 0x80000000, 1, { 0 }, &Sig_EnGs_SpawnFairy_OoT_V33 },           // 6 EnGs_SpawnFairy
-    { 0x80000000, 1, { 0 }, &Sig_EnButte_TransformIntoFairy_OoT_V33 } // 7 EnButte_TransformIntoFairy
+    { 0x80000000, 1, { 0 }, &Sig_EnButte_TransformIntoFairy_OoT_V33 } // 6 EnButte_TransformIntoFairy
 };
 size_t OoTSignatures_V33_Count = sizeof(OoTSignatures_V33) / sizeof(OoTSignatures_V33[0]);
 
@@ -1099,12 +1055,41 @@ PCFastResolver MMSignatures_V33[] =
     { 0x80000000, 1, { 0 }, &Sig_comboItemPrecond_OoT_V33 },          // 3 comboItemPrecond
     { 0x80000000, 1, { 0 }, &Sig_hookPlay_Init_MM_V33 },              // 4 hookPlay_Init
     { 0x80000000, 1, { 0 }, &Sig_Play_TransitionDone_MM_V33 },        // 5 Play_TransitionDone
-    { 0x80000000, 1, { 0 }, &Sig_EnGs_SpawnFairy_OoT_V33 },           // 6 EnGs_SpawnFairy
-    { 0x80000000, 1, { 0 }, &Sig_EnButte_TransformIntoFairy_MM_V33 }  // 7 EnButte_TransformIntoFairy
+    { 0x80000000, 1, { 0 }, &Sig_EnButte_TransformIntoFairy_MM_V33 }  // 6 EnButte_TransformIntoFairy
 };
 size_t MMSignatures_V33_Count = sizeof(MMSignatures_V33) / sizeof(MMSignatures_V33[0]);
 
 #pragma endregion   // V33 MM
+
+#pragma region // V32.3
+
+
+PCFastResolver OoTSignatures_V32_3[] =
+{
+    { 0x800253E0, 0, { 0 }, &Sig_Actor_Spawn_OoT },
+    { 0x803A4AD0, 2, { 0, 0x84 }, &Sig_comboAddItemRawEx_OoT },
+    { 0x80000000, 1, { 0 }, &Sig_EnItem00_DropCustom_OoT },
+    { 0x80000000, 1, { 0 }, &Sig_comboItemPrecond_OoT },
+    { 0x80000000, 1, { 0 }, &Sig_hookPlay_Init_OoT_V33 },
+    { 0x80000000, 1, { 0 }, &Sig_Play_TransitionDone_OoT },
+    { 0x80000000, 1, { 0 }, &Sig_EnButte_TransformIntoFairy_OoT }
+};
+size_t OoTSignatureCount_V32_3 = sizeof(OoTSignatures_V32_3) / sizeof(OoTSignatures_V32_3[0]);
+
+
+PCFastResolver MMSignatures_V32_3[] =
+{
+    { 0x800BB0B4, 0, { 0 }, &Sig_Actor_Spawn_MM },                    // 0 Actor_Spawn
+    { 0x806D57E4, 2, { 0, 0x84 }, &Sig_comboAddItemRawEx_MM },   // 1 comboAddItemRawEx
+    { 0x80000000, 1, { 0 }, &Sig_EnItem00_DropCustom_MM },       // 2 EnItem00_DropCustom
+    { 0x80000000, 1, { 0 }, &Sig_comboItemPrecond_MM },          // 3 comboItemPrecond
+    { 0x80000000, 1, { 0 }, &Sig_hookPlay_Init_MM },              // 4 hookPlay_Init
+    { 0x80000000, 1, { 0 }, &Sig_Play_TransitionDone_MM },        // 5 Play_TransitionDone
+    { 0x80000000, 1, { 0 }, &Sig_EnButte_TransformIntoFairy_MM }  // 7 EnButte_TransformIntoFairy
+};
+size_t MMSignatureCount_V32_3 = sizeof(MMSignatures_V32_3) / sizeof(MMSignatures_V32_3[0]);
+
+#pragma endregion
 
 /*
 *   Table des profils de version. La detection (cf. DetectVersionProfile) se fait :
@@ -1123,8 +1108,11 @@ size_t MMSignatures_V33_Count = sizeof(MMSignatures_V33) / sizeof(MMSignatures_V
 */
 VersionProfile gProfiles[] =
 {
-    // Legacy (<= v32.3 : stable + dev, meme payload ; NothingID gere par la logique CRC/hookInit)
+    // Legacy (< v32.3 : stable + dev, meme payload ; NothingID gere par la logique CRC/hookInit)
     { "Legacy", 0x69F7A146, 0x224AFE45, 0x000003A7, 0x800, OoTSignatures,     OoTSignatureCount,       MMSignatures,     MMSignatureCount },
+
+    // v32.3 : stable ; NothingID gere par la logique CRC/hookInit
+    { "V32.3", 0x69F7A146, 0x224AFE45, 0x000003A7, 0x800, OoTSignatures_V32_3,     OoTSignatureCount_V32_3,       MMSignatures_V32_3,     MMSignatureCount_V32_3 },
 
     // V33 (payload recompile ; CRC + NothingID a renseigner quand connus)
     { "V33",    0x00000000, 0x00000000, 0x000003AF, 0x464, OoTSignatures_V33, OoTSignatures_V33_Count, MMSignatures_V33, MMSignatures_V33_Count }

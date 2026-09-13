@@ -8,7 +8,7 @@ mod gps;
 mod inject;
 mod logic;
 mod multi;
-mod multi_r4;
+mod multi_r9;
 mod patch;
 mod poller;
 mod progression;
@@ -46,7 +46,7 @@ const SAVE_VERSION_TAG: &str = "TRACKER_SAVE";
 /// `save_to` / `load_from_xml`); the legacy line-based text format (4 and below) and
 /// the Qt binary `.trck` are still read. 4 was self-contained (persisted each
 /// world's item placements / destinations so a load restores the map without a
-/// spoiler); 3 added the r4 patch path; 2 and below had no header. The reader routes
+/// spoiler); 3 added the multiplayer patch path; 2 and below had no header. The reader routes
 /// on the XML prefix, not this number, so every prior XML save still loads.
 const SAVE_VERSION: u32 = 6;
 /// Icons flanking the age/season context switch (Qt ContextSwitchButton): OoT
@@ -148,7 +148,8 @@ fn main() -> eframe::Result<()> {
     let mut viewport = egui::ViewportBuilder::default()
         .with_inner_size([1360.0, 860.0])
         .with_min_inner_size([980.0, 640.0])
-        .with_title("OoTMMCombo Auto Tracker");
+        .with_title("OoTMMCombo Auto Tracker")
+        .with_window_level(egui::WindowLevel::Normal);
     // Same window / taskbar icon as the Qt build (setWindowIcon(Logo.ico)).
     if let Some(icon) = load_window_icon() {
         viewport = viewport.with_icon(std::sync::Arc::new(icon));
@@ -239,9 +240,11 @@ fn install_symbol_font(ctx: &egui::Context) {
 }
 
 fn apply_qt_style(ctx: &egui::Context) {
+    
     let mut style = (*ctx.style()).clone();
 
     let mut v = egui::Visuals::dark();
+    v.dark_mode = true;
     v.panel_fill = BG_BASE; // central + side panels
     v.window_fill = BG_PANEL; // floating windows / menus / tooltips
     v.window_stroke = Stroke::new(1.0_f32, BORDER);
@@ -849,11 +852,11 @@ struct TrackerApp {
     /// The running multiplayer client (Qt `App` + `TrackerThread`), spawned when
     /// tracking starts with multiplayer enabled. `None` while stopped / disabled.
     multi: Option<multi::MultiHandle>,
-    /// The running r4 multiplayer client (OoTMM builds > v32.0), spawned when
+    /// The running r9 multiplayer client (OoTMM builds > v32.0), spawned when
     /// tracking starts with a patch loaded. `None` while stopped / no patch.
-    r4: Option<multi_r4::R4Handle>,
+    r9: Option<multi_r9::R9Handle>,
     /// The OoTMM game patch file chosen by the user (`.ootmm` or the `.zip`
-    /// bundling it), for the r4 multiplayer mechanism. Persisted in the save file
+    /// bundling it), for the r9 multiplayer mechanism. Persisted in the save file
     /// so the next launch re-loads it automatically.
     patch_path: Option<PathBuf>,
     /// Session identity parsed from `patch_path` (world id / mode / session ids).

@@ -1,13 +1,16 @@
-//! Loading the OoTMM game patch file for the r4 multiplayer mechanism.
+//! Loading the OoTMM game patch file for the r9 multiplayer mechanism.
 //!
 //! In OoTMM builds newer than v32.0 the multiplayer session is described by a
 //! `.ootmm` patch file, which is itself a zip archive holding a `meta.json`
-//! (session id / secret, world id, game mode). This mirrors the Go client's
-//! `game.ExtractGameInfo`. The user may point at the `.ootmm` directly, or at the
-//! ROM `.zip` that bundles it (alongside a log `.txt` and the `.z64` ROM); both
-//! are handled, since both are zip archives — the outer zip simply carries a
-//! `*.ootmm` entry that is itself the patch archive.
+//! (session id / secret, world id, game mode) and — since r9 — optional
+//! `manifests/items.json` (item id -> symbol) and `manifests/locations.json`
+//! (location key -> name). This mirrors the Go client's `game.ExtractGameInfo`.
+//! The user may point at the `.ootmm` directly, or at the ROM `.zip` that bundles
+//! it (alongside a log `.txt` and the `.z64` ROM); both are handled, since both
+//! are zip archives — the outer zip simply carries a `*.ootmm` entry that is
+//! itself the patch archive.
 
+use std::collections::HashMap;
 use std::io::{Cursor, Read};
 use std::path::Path;
 
@@ -33,7 +36,7 @@ impl PatchMode {
 }
 
 /// The multiplayer session identity extracted from a patch file (mirror of the
-/// Go client's `game.Info`). Consumed by the r4 networking layer (`multi_r4`):
+/// Go client's `game.Info`). Consumed by the r9 networking layer (`multi_r9`):
 /// the session id / secret authenticate the uplink handshake and are matched
 /// against the game's HELLO.
 #[derive(Clone)]
@@ -42,6 +45,13 @@ pub struct PatchInfo {
     pub session_secret: [u8; 8],
     pub world_id: u8,
     pub mode: PatchMode,
+    /// Item id (gi) -> symbol, from `manifests/items.json` (r9). Empty when the
+    /// patch predates the manifests or they fail to parse (an r9 game's
+    /// INFO_ITEM then logs the raw gi instead of a name).
+    pub items: HashMap<u16, String>,
+    /// Location key -> location name, from `manifests/locations.json` (r9).
+    /// Empty under the same conditions as [`Self::items`].
+    pub locations: HashMap<u32, String>,
 }
 
 impl PatchInfo {
@@ -85,13 +95,83 @@ pub fn load(path: &Path) -> Result<PatchInfo, String> {
     read_meta_from_ootmm(&inner)
 }
 
-/// Read `meta.json` out of a `.ootmm` archive's raw bytes.
+/// Read `meta.json` (and, since r9, the optional item / location manifests) out
+/// of a `.ootmm` archive's raw bytes.
 fn read_meta_from_ootmm(bytes: &[u8]) -> Result<PatchInfo, String> {
     let mut zip = zip::ZipArchive::new(Cursor::new(bytes)).map_err(|e| e.to_string())?;
-    let mut file = zip.by_name("meta.json").map_err(|e| e.to_string())?;
     let mut text = String::new();
-    file.read_to_string(&mut text).map_err(|e| e.to_string())?;
-    parse_meta(&text)
+    {
+        let mut file = zip.by_name("meta.json").map_err(|e| e.to_string())?;
+        file.read_to_string(&mut text).map_err(|e| e.to_string())?;
+    }
+    let mut info = parse_meta(&text)?;
+    // r9: the manifests are optional. A missing / malformed manifest leaves the
+    // map empty (matching the Go client, which silently skips them), so an older
+    // patch or a partial archive still loads its session identity.
+    info.items = read_items_manifest(&mut zip);
+    info.locations = read_locations_manifest(&mut zip);
+    Ok(info)
+}
+
+/// Read a JSON entry (`name`) from the archive into a string, or `None` when it
+/// is absent / unreadable.
+fn read_zip_text(zip: &mut zip::ZipArchive<Cursor<&[u8]>>, name: &str) -> Option<String> {
+    let mut file = zip.by_name(name).ok()?;
+    let mut text = String::new();
+    file.read_to_string(&mut text).ok()?;
+    Some(text)
+}
+
+/// Parse `manifests/items.json` (r9) into an id -> symbol map. Any error (absent
+/// file, bad JSON, unexpected version) yields an empty map.
+fn read_items_manifest(zip: &mut zip::ZipArchive<Cursor<&[u8]>>) -> HashMap<u16, String> {
+    #[derive(Deserialize)]
+    struct Entry {
+        id: u16,
+        sym: String,
+    }
+    #[derive(Deserialize)]
+    struct Manifest {
+        version: i64,
+        #[serde(default)]
+        items: Vec<Entry>,
+    }
+    let mut out = HashMap::new();
+    let Some(text) = read_zip_text(zip, "manifests/items.json") else { return out };
+    if let Ok(m) = serde_json::from_str::<Manifest>(&text) {
+        if m.version == 1 {
+            for e in m.items {
+                out.insert(e.id, e.sym);
+            }
+        }
+    }
+    out
+}
+
+/// Parse `manifests/locations.json` (r9) into a key -> location-name map. Any
+/// error yields an empty map (see [`read_items_manifest`]).
+fn read_locations_manifest(zip: &mut zip::ZipArchive<Cursor<&[u8]>>) -> HashMap<u32, String> {
+    #[derive(Deserialize)]
+    struct Entry {
+        key: u32,
+        location: String,
+    }
+    #[derive(Deserialize)]
+    struct Manifest {
+        version: i64,
+        #[serde(default)]
+        locations: Vec<Entry>,
+    }
+    let mut out = HashMap::new();
+    let Some(text) = read_zip_text(zip, "manifests/locations.json") else { return out };
+    if let Ok(m) = serde_json::from_str::<Manifest>(&text) {
+        if m.version == 1 {
+            for e in m.locations {
+                out.insert(e.key, e.location);
+            }
+        }
+    }
+    out
 }
 
 /// Find and extract the first `*.ootmm` entry from an outer zip's raw bytes.
@@ -123,7 +203,15 @@ fn parse_meta(text: &str) -> Result<PatchInfo, String> {
         "multi" => PatchMode::Multi,
         other => return Err(format!("unknown mode: {other}")),
     };
-    Ok(PatchInfo { session_id, session_secret, world_id: raw.meta.world_id, mode })
+    Ok(PatchInfo {
+        session_id,
+        session_secret,
+        world_id: raw.meta.world_id,
+        mode,
+        // Filled by `read_meta_from_ootmm` from the r9 manifests, if present.
+        items: HashMap::new(),
+        locations: HashMap::new(),
+    })
 }
 
 /// Decode an exact `N`-byte hex string into a fixed array.
@@ -192,6 +280,38 @@ mod tests {
         let info = read_meta_from_ootmm(&inner).unwrap();
         assert_eq!(info.world_id, 2);
         assert_eq!(info.mode, PatchMode::Multi);
+    }
+
+    #[test]
+    fn reads_r9_manifests() {
+        // An r9 .ootmm carries meta.json plus the two manifests.
+        let items = r#"{"version":1,"items":[{"id":322,"sym":"OOT_KOKIRI_SWORD"},{"id":1,"sym":"OOT_STICK"}]}"#;
+        let locs = r#"{"version":1,"locations":[{"key":22282241,"location":"Kokiri Sword Chest"}]}"#;
+        let mut buf = Vec::new();
+        let opts = SimpleFileOptions::default().compression_method(zip::CompressionMethod::Stored);
+        {
+            let mut zw = zip::ZipWriter::new(Cursor::new(&mut buf));
+            zw.start_file("meta.json", opts).unwrap();
+            zw.write_all(META.as_bytes()).unwrap();
+            zw.start_file("manifests/items.json", opts).unwrap();
+            zw.write_all(items.as_bytes()).unwrap();
+            zw.start_file("manifests/locations.json", opts).unwrap();
+            zw.write_all(locs.as_bytes()).unwrap();
+            zw.finish().unwrap();
+        }
+        let info = read_meta_from_ootmm(&buf).unwrap();
+        assert_eq!(info.world_id, 2);
+        assert_eq!(info.items.get(&322).map(String::as_str), Some("OOT_KOKIRI_SWORD"));
+        assert_eq!(info.items.get(&1).map(String::as_str), Some("OOT_STICK"));
+        assert_eq!(info.locations.get(&22282241).map(String::as_str), Some("Kokiri Sword Chest"));
+    }
+
+    #[test]
+    fn manifests_absent_yields_empty_maps() {
+        // A pre-r9 patch (meta only) still loads; the manifest maps are empty.
+        let info = read_meta_from_ootmm(&make_ootmm(META)).unwrap();
+        assert!(info.items.is_empty());
+        assert!(info.locations.is_empty());
     }
 
     #[test]

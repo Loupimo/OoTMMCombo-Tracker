@@ -17,6 +17,7 @@ pub mod ids {
     pub const GORON_BABY: u32 = 0x5;
     pub const ZORA_KING_TUNIC: u32 = 0x5;
     pub const GORON_KEG: u32 = 0x6;
+    pub const OOT_SONG_OF_STORMS: u32 = 0x6;
     pub const GERUDO_CARD: u32 = 0x7;
     pub const SONG_EPONA: u32 = 0x7;
     pub const LOST_WOODS_TARGET: u32 = 0x8;
@@ -29,6 +30,7 @@ pub mod ids {
     pub const MASK_STONE: u32 = 0xb;
     pub const LOST_WOODS_MEMORY: u32 = 0xc;
     pub const MASK_GARO: u32 = 0xc;
+    pub const MM_SONG_OF_STORMS: u32 = 0xd;
     pub const THEATER_STICKS: u32 = 0xd;
     pub const MASK_GIBDO: u32 = 0xe;
     pub const THEATER_NUTS: u32 = 0xe;
@@ -221,8 +223,6 @@ pub mod ids {
     pub const LOTTERY_NIGHT_1: u32 = 0x7a;
     pub const LOTTERY_NIGHT_2: u32 = 0x7b;
     pub const LOTTERY_NIGHT_3: u32 = 0x7c;
-    pub const OOT_SONG_STORMS: u32 = 0x8e;
-    pub const MM_SONG_STORMS: u32 = 0x293;
 }
 
 

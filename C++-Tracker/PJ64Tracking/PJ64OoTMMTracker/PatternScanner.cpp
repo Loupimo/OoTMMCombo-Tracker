@@ -100,19 +100,19 @@ void ResolveButterflyTransform()
         return;
     }
 
-    if (sigs == NULL || sigs[6].Signature == NULL || sigs[7].Signature->PatternSize == 0)
+    if (sigs == NULL || sigs[5].Signature == NULL || sigs[6].Signature->PatternSize == 0)
     {   // Signature stub (pas encore trouvee pour cette version) : tracking papillon desactive
         return;
     }
 
-    uintptr_t base = FindPatternInPayload(sigs[7].Signature, PC_RANGE_START, PAYLOAD_END);
+    uintptr_t base = FindPatternInPayload(sigs[6].Signature, PC_RANGE_START, PAYLOAD_END);
 
     if (base != 0)
     {   // We have find the desired start address of the function
 
-        uintptr_t PC = base + sigs[7].Signature->PCOffset;  // The specific instruction to track
+        uintptr_t PC = base + sigs[6].Signature->PCOffset;  // The specific instruction to track
 
-        gPatternState[gGame].PCs[7] = PC;
+        gPatternState[gGame].PCs[6] = PC;
         LOG("[OK] PC 0x%08X", PC);
     }
 }
@@ -161,8 +161,12 @@ int32_t DetectVersionProfile()
 
         if (FindPatternInPayload(disc, PAYLOAD_START, PAYLOAD_END) != 0)
         {
-            LOG("Version profile via probe: %s", gProfiles[i].Name);
-            return (int32_t)i;
+            disc = table[4].Signature; // ID 4 = hookInitPlay
+            if (FindPatternInPayload(disc, PAYLOAD_START, PAYLOAD_END) != 0)
+            {
+                LOG("Version profile via probe: %s", gProfiles[i].Name);
+                return (int32_t)i;
+            }
         }
     }
 

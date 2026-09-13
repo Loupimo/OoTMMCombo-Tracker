@@ -102,10 +102,10 @@
       <actor>
         <match room="0x2" actor="0x13" scene="SOUTHERN_SWAMP"/>
         <match room="0x2" actor="0x10" scene="SOUTHERN_SWAMP_CLEAR"/>
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Southern Swamp Gossip Fairy" slice="0" item="FAIRY" name="Gossip Stone" xyz="120;432;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Southern Swamp Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Stone" xyz="119;452;0"/>
         </rendering_option>
       </actor>

@@ -61,6 +61,9 @@ pub struct WorldInputs {
     settings_multi: HashMap<u32, HashSet<u32>>,
     /// `TRICK_NAMES` indices enabled by the seed.
     tricks: HashSet<u32>,
+    /// Per-seed `var(NAME)` counts (index = `data::VAR_NAMES` id), read from the
+    /// spoiler setting `data::VAR_SETTING_KEYS[i]` (default `data::VAR_DEFAULTS`).
+    var_counts: Vec<u16>,
     /// Per game (`[OoT, MM]`) the song index placed at each event slot (indexed by
     /// slot), from the spoiler's `Song Events` section. `u8::MAX` = unresolved.
     song_events: [Vec<u8>; 2],
@@ -69,6 +72,17 @@ pub struct WorldInputs {
     /// Entrance-randomizer edge redirects: `(from_region, vanilla_to_region)` ->
     /// shuffled destination region index(es). Empty when the seed has no ER.
     exit_redirects: HashMap<(u32, u32), Vec<u32>>,
+    /// Reachable MM time slices (bitmask over `data::MM_TIME_SLICES`), precomputed
+    /// from the clock-period rules. All-bits when clock shuffle (`clocksMm`) is
+    /// off; under it, only the periods whose clock the player owns contribute.
+    mm_slices: u64,
+    /// Extra region roots seeded as reachable on top of SPAWN/GLOBAL. In progressive
+    /// entrance mode these are the logic regions the player has physically been to
+    /// (derived from the discovered entrance graph via [`Self::seed_from_visited`]):
+    /// a live auto-tracker treats "where you have walked" as reachable and lets the
+    /// solver extend from there through discovered entrances + logic. Empty otherwise
+    /// (full-knowledge mode seeds only SPAWN, the true from-start reachability).
+    seed_regions: Vec<u32>,
 }
 
 impl WorldInputs {
@@ -150,18 +164,84 @@ impl WorldInputs {
             .filter_map(|id| tri.get(id).copied())
             .collect();
 
-        WorldInputs {
+        // `var(NAME)` counts (`Op::HasVar`): read each from its spoiler setting
+        // (`VAR_SETTING_KEYS`), falling back to the OoTMM default (`VAR_DEFAULTS`).
+        let var_counts: Vec<u16> = (0..data::VAR_NAMES.len())
+            .map(|i| {
+                data::VAR_SETTING_KEYS
+                    .get(i)
+                    .and_then(|k| settings.raw_settings.get(*k))
+                    .and_then(|v| v.trim().parse::<u16>().ok())
+                    .unwrap_or_else(|| data::VAR_DEFAULTS.get(i).copied().unwrap_or(1))
+            })
+            .collect();
+
+        let mut wi = WorldInputs {
             items,
             masks,
             settings_enabled,
             settings_value,
             settings_multi,
             tricks,
+            var_counts,
             song_events: settings.song_events.clone(),
             special_conds: settings.special_conds.clone(),
             exit_redirects: build_exit_redirects(&settings.entrance_remap, discovered, progressive),
+            // Placeholder; the clock-period rules read only settings/inventory
+            // (never `mm_time`), so computing over `wi` below is well-defined.
+            mm_slices: u64::MAX,
+            // Set by `seed_from_visited` after build (progressive mode only).
+            seed_regions: Vec::new(),
+        };
+        wi.mm_slices = compute_mm_slices(&wi);
+        wi
+    }
+
+    /// Seed the reachability roots from the player's discovered entrance graph
+    /// (progressive mode). `visited` holds every entrance id the player has actually
+    /// walked through — BOTH the departure ids (`out_links` keys) and the arrival ids
+    /// (`out_links` values). Each entrance's own def resolves the *real* region on its
+    /// destination side (`to_name`): for a departure id that is the region the player
+    /// stood in, for an arrival id the region they ended up in (already the shuffled
+    /// destination — the tracker detected the true arriving entrance, so this is
+    /// correct under entrance rando and decoupling, not the vanilla assumption).
+    ///
+    /// Those region names are matched against the logic region graph and stored as
+    /// extra roots, so a scene the player has physically reached is treated as
+    /// reachable even when no discovered entrance chain links it back to SPAWN. The
+    /// solver then extends from each root through vanilla edges, discovered redirects
+    /// and in-region logic. Names that do not resolve to a logic region are skipped.
+    pub fn seed_from_visited(&mut self, visited: &HashSet<(u8, u32)>) {
+        let names = region_name_index();
+        let mut regions = Vec::new();
+        for &(game, id) in visited {
+            let g = if game == 0 { crate::scene::Game::Oot } else { crate::scene::Game::Mm };
+            let Some(meta) = crate::entrance::lookup(g, id) else { continue };
+            if let Some(idxs) = names[game as usize].get(meta.to_name) {
+                regions.extend_from_slice(idxs);
+            }
+        }
+        regions.sort_unstable();
+        regions.dedup();
+        self.seed_regions = regions;
+    }
+}
+
+/// The set of MM time slices the player can reach: the union of each period's
+/// slices (`data::MM_PERIOD_SLICES`) whose reachability rule
+/// (`data::MM_CLOCK_PERIOD_EXPRS`) holds. With clock shuffle off every rule holds
+/// (they short-circuit on `!setting(clocksMm)`), so this is the full set — fully
+/// optimistic, as the tracker was before. Under clock shuffle only the periods
+/// whose clock the player owns (per `progressiveClocks` mode) contribute, so a
+/// check gated on e.g. `after(NIGHT3_AM_12_00)` needs the Night 3 clock.
+fn compute_mm_slices(inp: &WorldInputs) -> u64 {
+    let mut mask = 0u64;
+    for (i, &expr) in data::MM_CLOCK_PERIOD_EXPRS.iter().enumerate() {
+        if crate::logic::solve::eval_settings_only(&data::EXPRS[expr as usize], inp) {
+            mask |= data::MM_PERIOD_SLICES[i];
         }
     }
+    mask
 }
 
 /// Fold every collected upgrade of a tiered item family onto the single **tier
@@ -353,6 +433,11 @@ impl Inputs for WorldInputs {
     fn item_count(&self, id: u32) -> u32 {
         self.items.get(&id).copied().unwrap_or(0)
     }
+    fn var_count(&self, var: u8) -> u16 {
+        self.var_counts.get(var as usize).copied().unwrap_or_else(|| {
+            crate::data::VAR_DEFAULTS.get(var as usize).copied().unwrap_or(1)
+        })
+    }
     fn setting_value(&self, key: u32) -> Option<u32> {
         self.settings_value.get(&key).copied()
     }
@@ -400,6 +485,12 @@ impl Inputs for WorldInputs {
     }
     fn exit_redirects(&self) -> Option<&HashMap<(u32, u32), Vec<u32>>> {
         (!self.exit_redirects.is_empty()).then_some(&self.exit_redirects)
+    }
+    fn extra_seed_regions(&self) -> &[u32] {
+        &self.seed_regions
+    }
+    fn mm_time_slices(&self) -> u64 {
+        self.mm_slices
     }
 }
 
@@ -523,6 +614,82 @@ mod tests {
         assert!(!inp.setting_has(k, member("JJ")), "JJ was not selected");
     }
 
+    /// MM time under clock shuffle: `mm_time_slices` narrows to the day/night
+    /// periods whose clock the player owns, so a check gated on
+    /// `after(NIGHT3_AM_12_00)` needs the Night 3 clock rather than merely *some*
+    /// clock (the reported over-permissive bug). With clock shuffle off it stays
+    /// fully optimistic (every slice reachable), as the tracker was before.
+    #[test]
+    fn mm_time_slices_track_clock_shuffle() {
+        use crate::data::iid;
+        let mq = std::collections::HashSet::new();
+        let all = data::MM_PERIOD_SLICES.iter().fold(0u64, |a, &m| a | m);
+        let day1 = data::MM_PERIOD_SLICES[0];
+        let night3 = data::MM_PERIOD_SLICES[5];
+
+        let build = |clocks_mm: bool, mode: &str, owned: &[(u32, u32)]| {
+            let mut s = Settings::default();
+            if clocks_mm {
+                s.raw_settings.insert("clocksMm".into(), "true".into());
+                s.raw_settings.insert("progressiveClocks".into(), mode.into());
+            }
+            s.apply(&mq);
+            for &(id, n) in owned {
+                s.starting_item_ids.insert(id, n);
+            }
+            WorldInputs::build(&s, &[WorldData::default()], 1, &Default::default(), false)
+        };
+
+        // Clock shuffle OFF -> every slice reachable (optimistic, as before).
+        assert_eq!(build(false, "", &[]).mm_time_slices(), all);
+
+        // Separate mode, only the Night 3 clock (CLOCK6): night3 reachable, day1
+        // is not (it needs CLOCK1) -> `after(NIGHT3_AM_12_00)` holds, day-1 checks
+        // do not.
+        let sep_n3 = build(true, "separate", &[(iid::MM_CLOCK6, 1)]);
+        assert_eq!(sep_n3.mm_time_slices() & night3, night3, "night3 unlocked by CLOCK6");
+        assert_eq!(sep_n3.mm_time_slices() & day1, 0, "day1 still needs CLOCK1");
+
+        // Ascending mode: day1 is free (has(CLOCK, 0)), night3 needs 5 clocks.
+        let asc0 = build(true, "ascending", &[]);
+        assert_eq!(asc0.mm_time_slices() & day1, day1, "day1 free in ascending");
+        assert_eq!(asc0.mm_time_slices() & night3, 0, "night3 needs 5 clocks (had 0)");
+        let asc5 = build(true, "ascending", &[(iid::MM_CLOCK, 5)]);
+        assert_eq!(asc5.mm_time_slices() & night3, night3, "5 clocks reach night3");
+    }
+
+    /// Stray-fairy Great Fairy rewards gate on `has(item, var(STRAY_FAIRY_COUNT))`.
+    /// The count is `strayFairyRewardCount` (default 15), NOT 1 (the old bug where
+    /// a single fairy lit the Great Fairy). It also tracks a lowered seed setting.
+    #[test]
+    fn stray_fairy_reward_needs_the_full_count() {
+        use crate::data::{iid, Op};
+        let mq = std::collections::HashSet::new();
+        let st = iid::MM_STRAY_FAIRY_ST; // Ikana / Stone Tower (the "Canyon" fairy)
+        let rule = [Op::HasVar(st, 0)]; // sf_stone_tower's `has(item, var(...))` half
+
+        // Default seed: threshold is 15. 7 fairies is not enough; 15 is.
+        let build = |setting: Option<&str>, owned: u32| {
+            let mut s = Settings::default();
+            if let Some(v) = setting {
+                s.raw_settings.insert("strayFairyRewardCount".into(), v.into());
+            }
+            s.apply(&mq);
+            s.starting_item_ids.insert(st, owned);
+            WorldInputs::build(&s, &[WorldData::default()], 1, &Default::default(), false)
+        };
+
+        let def7 = build(None, 7);
+        assert_eq!(def7.var_count(0), 15, "default stray fairy count is 15");
+        assert!(!crate::logic::solve::eval_settings_only(&rule, &def7), "7 < 15");
+        assert!(crate::logic::solve::eval_settings_only(&rule, &build(None, 15)), "15 reaches");
+
+        // A seed that lowers the requirement to 5: 7 fairies now satisfies it.
+        let low = build(Some("5"), 7);
+        assert_eq!(low.var_count(0), 5, "reads the lowered setting");
+        assert!(crate::logic::solve::eval_settings_only(&rule, &low), "7 >= 5");
+    }
+
     /// `song_event` reflects the spoiler's slot->song map: the exact placement
     /// matches, other songs at that slot do not, and unknown slots stay optimistic.
     #[test]
@@ -632,6 +799,148 @@ mod tests {
         assert!(targets(&opened).contains(&zora), "walked entrance reroutes like full knowledge");
     }
 
+    /// Regression for the cross-game warp-song discovery bug (#3): an OoT warp song
+    /// lands in `out_links` under its synthetic song-node id (`OOT_MINUET_OF_FOREST_SONG`),
+    /// but the spoiler keys the shuffled warp by its real entrance (`OOT_WARP_SONG_MEADOW`).
+    /// Feeding the raw synthetic id to progressive discovery never matched the remap, so
+    /// a walked warp song stayed a wall. `canonical_discovered_entrance` bridges the two;
+    /// this proves the bridged id opens the destination while the raw synthetic id does not.
+    #[test]
+    fn walked_oot_warp_song_opens_its_shuffled_destination() {
+        use crate::data::entr as e;
+        use crate::entrance::canonical_discovered_entrance;
+
+        let mq = std::collections::HashSet::new();
+        let mut settings = Settings::default();
+        // The Minuet warp (SONG_TP_FOREST -> Sacred Meadow, src OOT_WARP_SONG_MEADOW)
+        // rerouted so playing it leads to Zora River instead.
+        settings.parse_spoiler(
+            "Entrances\n  OOT SONG_TP_FOREST to OOT Sacred Meadow (OOT_WARP_SONG_MEADOW) \
+             -> OOT Zora River from OOT Hyrule Field (OOT_ZORA_RIVER)\n",
+            &mq,
+        );
+        settings.apply(&mq);
+        // The spoiler resolves the warp song to its REAL entrance id (0x600), not the
+        // synthetic song-node id (0xfff00) the runtime stores.
+        assert_eq!(settings.entrance_remap[0].src_id, Some(e::OOT_WARP_SONG_MEADOW_ENTR));
+
+        let idx = |g: u8, n: &str| region_name_index()[g as usize].get(n).unwrap()[0];
+        let (song, meadow, zora) =
+            (idx(0, "SONG_TP_FOREST"), idx(0, "Sacred Meadow"), idx(0, "Zora River"));
+        let edge = (song, meadow);
+        let targets = |inp: &WorldInputs| -> Vec<u32> {
+            inp.exit_redirects().and_then(|m| m.get(&edge)).cloned().unwrap_or_default()
+        };
+
+        // What the entrance follow actually stores when the player plays the Minuet.
+        let raw_node = (0u8, e::OOT_MINUET_OF_FOREST_SONG);
+        let bridged = (0u8, canonical_discovered_entrance(Game::Oot, e::OOT_MINUET_OF_FOREST_SONG));
+
+        // Progressive, discovered set holding only the RAW synthetic node id: still a wall
+        // (this is the bug — the id never matches the remap's real src id).
+        let raw_only: std::collections::HashSet<(u8, u32)> = [raw_node].into_iter().collect();
+        let blocked = WorldInputs::build(&settings, &[WorldData::default()], 1, &raw_only, true);
+        assert!(
+            targets(&blocked).is_empty(),
+            "the synthetic song-node id alone must not open the warp (it is the bug)"
+        );
+
+        // Progressive, discovered set bridged as `recompute_reachability` does it: opens.
+        let walked: std::collections::HashSet<(u8, u32)> = [bridged].into_iter().collect();
+        let opened = WorldInputs::build(&settings, &[WorldData::default()], 1, &walked, true);
+        assert!(
+            targets(&opened).contains(&zora),
+            "a walked OoT warp song, bridged to its real entrance, reroutes to Zora River"
+        );
+    }
+
+    /// Regression for the ordinary-entrance progressive-discovery bug: a Normal
+    /// entrance lands in `out_links` under the def's *return-trip* `from_id`, but the
+    /// spoiler keys the shuffled entrance by the FORWARD `to_id` the player walked
+    /// into. Feeding the raw stored id to progressive discovery never matched the
+    /// remap, so a walked entrance stayed a permanent wall (no maps ever opened).
+    /// `canonical_discovered_entrance` bridges the return id back to the forward id;
+    /// this proves the bridged id opens the destination while the raw stored id does not.
+    #[test]
+    fn walked_normal_entrance_opens_its_shuffled_destination() {
+        use crate::data::entr as e;
+        use crate::entrance::canonical_discovered_entrance;
+
+        let mq = std::collections::HashSet::new();
+        let mut settings = Settings::default();
+        // The vanilla Kokiri Forest -> Lost Woods edge (forward entrance
+        // OOT_LOST_WOODS_FROM_KOKIRI_FOREST) rerouted to Zora River.
+        settings.parse_spoiler(
+            "Entrances\n  OOT Kokiri Forest to OOT Lost Woods (OOT_LOST_WOODS_FROM_KOKIRI_FOREST) \
+             -> OOT Zora River from OOT Hyrule Field (OOT_ZORA_RIVER)\n",
+            &mq,
+        );
+        settings.apply(&mq);
+        // The spoiler keys the entrance by the forward id the player walks into.
+        assert_eq!(settings.entrance_remap[0].src_id, Some(e::OOT_LOST_WOODS_FROM_KOKIRI_FOREST_ENTR));
+
+        let idx = |g: u8, n: &str| region_name_index()[g as usize].get(n).unwrap()[0];
+        let (kokiri, lost, zora) =
+            (idx(0, "Kokiri Forest"), idx(0, "Lost Woods"), idx(0, "Zora River"));
+        let edge = (kokiri, lost);
+        let targets = |inp: &WorldInputs| -> Vec<u32> {
+            inp.exit_redirects().and_then(|m| m.get(&edge)).cloned().unwrap_or_default()
+        };
+
+        // What the entrance follow actually stores when the player walks the entrance:
+        // the def's return-trip `from_id`, NOT the forward id the spoiler keys by.
+        let raw_stored = (0u8, e::OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR);
+        let bridged = (0u8, canonical_discovered_entrance(Game::Oot, e::OOT_KOKIRI_FOREST_FROM_LOST_WOODS_ENTR));
+
+        // Progressive, discovered set holding only the RAW stored return id: still a
+        // wall (this is the bug — the return id never matches the remap's forward src).
+        let raw_only: std::collections::HashSet<(u8, u32)> = [raw_stored].into_iter().collect();
+        let blocked = WorldInputs::build(&settings, &[WorldData::default()], 1, &raw_only, true);
+        assert!(
+            targets(&blocked).is_empty(),
+            "the raw stored return id alone must not open the entrance (it is the bug)"
+        );
+
+        // Progressive, discovered set bridged as `recompute_reachability` does it: opens.
+        let walked: std::collections::HashSet<(u8, u32)> = [bridged].into_iter().collect();
+        let opened = WorldInputs::build(&settings, &[WorldData::default()], 1, &walked, true);
+        assert!(
+            targets(&opened).contains(&zora),
+            "a walked Normal entrance, bridged to its forward id, reroutes to Zora River"
+        );
+    }
+
+    /// Progressive seeding: `seed_from_visited` turns the entrance ids the player has
+    /// actually walked (both `out_links` endpoints) into logic-region roots via each
+    /// entrance's own `to_name`. Walking Graveyard <-> Kakariko must root exactly the
+    /// "Graveyard" and "Kakariko" regions, so those scenes are reachable even with no
+    /// discovered chain back to SPAWN (the reported bug: physically there, nothing shown).
+    #[test]
+    fn seed_from_visited_roots_the_players_regions() {
+        use crate::data::entr as e;
+
+        let mq = std::collections::HashSet::new();
+        let mut settings = Settings::default();
+        settings.apply(&mq);
+        let mut inp = WorldInputs::build(&settings, &[WorldData::default()], 1, &Default::default(), true);
+        assert!(inp.extra_seed_regions().is_empty(), "no roots before seeding");
+
+        // Both endpoints of the discovered Graveyard <-> Kakariko link, exactly as
+        // `recompute_reachability` gathers them from `out_links` (keys + values).
+        let visited: std::collections::HashSet<(u8, u32)> = [
+            (0u8, e::OOT_GRAVEYARD_ENTR),            // to_name "Graveyard"
+            (0u8, e::OOT_KAKARIKO_FROM_GRAVEYARD_ENTR), // to_name "Kakariko"
+        ]
+        .into_iter()
+        .collect();
+        inp.seed_from_visited(&visited);
+
+        let gy = region_name_index()[0].get("Graveyard").expect("Graveyard region")[0];
+        let kak = region_name_index()[0].get("Kakariko").expect("Kakariko region")[0];
+        assert!(inp.extra_seed_regions().contains(&gy), "Graveyard must be a seeded root");
+        assert!(inp.extra_seed_regions().contains(&kak), "Kakariko must be a seeded root");
+    }
+
     /// Multiworld: a collected check's item goes to its destination player, so it
     /// enters that player's inventory — not the world it was physically found in.
     #[test]
@@ -685,6 +994,35 @@ mod tests {
 
         // LACS requires a mask category the tracker does not model -> optimistic.
         assert!(inp.special(lacs));
+    }
+
+    /// Key-ring / silver-pouch set flags reach the reachability logic. OoTMM writes
+    /// them in the World Flags section by display LABEL (`- Fire Temple`), and
+    /// `Settings::parse_logic_sets` maps the labels to the logic TOKENS so
+    /// `setting(smallKeyRingOot, Fire)` resolves — the branch of `small_keys(...)`
+    /// that lets one owned KEY_RING satisfy a locked door instead of `count`
+    /// individual small keys. Regression: the set was never parsed, so the flag read
+    /// false and a Fire Temple key ring left the rooms behind key doors unreachable.
+    #[test]
+    fn key_ring_and_silver_pouch_set_flags_resolve_for_the_logic() {
+        let mq = std::collections::HashSet::new();
+        let mut s = Settings::default();
+        s.parse_spoiler(
+            "World Flags\n  Small Key Ring (OoT):\n    - Fire Temple\n    - Water Temple\n\
+             \x20\x20Silver Rupee Pouches:\n    - Ganon's Castle (Light)\n",
+            &mq,
+        );
+        s.apply(&mq);
+        let inp = WorldInputs::build(&s, &[WorldData::default()], 1, &Default::default(), false);
+        let skey = |n: &str| data::SETTING_KEYS.iter().position(|&x| x == n).unwrap() as u32;
+        let sval = |n: &str| data::SETTING_VALUES.iter().position(|&x| x == n).unwrap() as u32;
+
+        // The two listed dungeons flip to the key-ring branch; an unlisted one does not.
+        assert!(inp.setting_has(skey("smallKeyRingOot"), sval("Fire")), "Fire ring listed");
+        assert!(inp.setting_has(skey("smallKeyRingOot"), sval("Water")), "Water ring listed");
+        assert!(!inp.setting_has(skey("smallKeyRingOot"), sval("Shadow")), "Shadow not listed");
+        // Silver rupee pouches share the exact same mechanism.
+        assert!(inp.setting_has(skey("silverRupeePouches"), sval("Ganon_Light")), "silver pouch listed");
     }
 
     /// `solve_world` runs end to end and is monotonic: collecting a check never

@@ -150,10 +150,10 @@
         <xflag type="boulder" location="Swamp Spider House Boulder" room="0x3" actor="0x12" item="NOTHING" name="Monument Room" xyz="741;451;0"/>
       </rendering_option>
       <actor room="0x5" actor="0x0">
-        <rendering_option room="5" type="fairy">
+        <rendering_option layout="all" room="5" type="fairy">
           <xflag type="gossip" location="Swamp Spider House Gossip Fairy" slice="0" item="FAIRY" name="Gossip Stone" xyz="511;506;0"/>
         </rendering_option>
-        <rendering_option room="5" type="fairy_spot">
+        <rendering_option layout="all" room="5" type="fairy_spot">
           <xflag type="gossip-big" location="Swamp Spider House Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Stone" xyz="487;506;0"/>
         </rendering_option>
       </actor>

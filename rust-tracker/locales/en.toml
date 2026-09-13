@@ -240,7 +240,7 @@ no_img = "(no image for this scene.)"
 
 # --- Multiplayer / patch (state.rs) ---
 mp_enabled = "Multiplayer enabled — server {server}"
-r4_enabled = "r4 multiplayer — {info} (server {server})"
+r9_enabled = "r9 multiplayer — {info} (server {server})"
 patch_loaded = "Patch loaded: {path} ({info})"
 patch_invalid = "Saved patch file is invalid ({err}). Please pick a patch file."
 patch_missing = "Saved patch file no longer exists: {path}. Please pick the new location."

@@ -45,7 +45,7 @@ impl TrackerApp {
             mp_host,
             mp_port,
             multi: None,
-            r4: None,
+            r9: None,
             patch_path: None,
             patch_info: None,
             patch_startup_check: false,
@@ -224,7 +224,7 @@ impl TrackerApp {
     /// drive the poller and update the journal. The status pill reflects the
     /// same flag.
     pub(crate) fn toggle_tracking(&mut self, ctx: &egui::Context) {
-        // Starting the tracker: the r4 method needs a patch file. If none is loaded
+        // Starting the tracker: the r9 method needs a patch file. If none is loaded
         // yet, prompt for one now (the DLL hook still works as a backup if the user
         // cancels the dialog).
         if !self.tracking && self.patch_info.is_none() {
@@ -233,19 +233,19 @@ impl TrackerApp {
         self.tracking = !self.tracking;
         self.poller.set_tracking(self.tracking);
         if self.tracking {
-            // A loaded patch selects the r4 mechanism (dev OoTMM builds only, the
+            // A loaded patch selects the r9 mechanism (dev OoTMM builds only, the
             // ones exposing the emulator IPC pipe); otherwise the old net-context
             // client runs when multiplayer is on. On a non-dev build the pipe is
-            // absent, r4 never validates HELLO, and the DLL hook stays authoritative.
+            // absent, r9 never validates HELLO, and the DLL hook stays authoritative.
             if self.patch_info.is_some() {
-                self.start_r4(ctx);
+                self.start_r9(ctx);
             } else if self.use_multiplayer {
                 self.start_multiplayer(ctx);
             }
             self.log_msg(self.i18n.reading_mem().to_string());
         } else {
             self.stop_multiplayer();
-            self.stop_r4();
+            self.stop_r9();
             self.log_msg(self.i18n.log_tracker_stop().to_string());
         }
     }
@@ -275,33 +275,33 @@ impl TrackerApp {
         }
     }
 
-    /// Spawn the r4 multiplayer client (dev OoTMM builds only): it connects to the
+    /// Spawn the r9 multiplayer client (dev OoTMM builds only): it connects to the
     /// emulator's named pipe and relays WAL entries to / from the OoTMM server,
     /// deriving the session identity from the loaded patch. The DLL hook path
     /// (poller) keeps running in parallel as a backup — and becomes the sole source
     /// of truth on non-dev builds, where the pipe never appears.
-    pub(crate) fn start_r4(&mut self, ctx: &egui::Context) {
-        if self.r4.is_some() {
+    pub(crate) fn start_r9(&mut self, ctx: &egui::Context) {
+        if self.r9.is_some() {
             return;
         }
         let Some(info) = self.patch_info.clone() else { return };
-        // The r4 server lives at multi.ootmm.com:14236 (distinct from the old
+        // The r9 server lives at multi.ootmm.com:14236 (distinct from the old
         // mechanism's port); the host field is reused so a custom server works.
         let host = self.mp_host.trim();
         let host = if host.is_empty() { "multi.ootmm.com" } else { host };
-        let cfg = multi_r4::R4Config {
+        let cfg = multi_r9::R9Config {
             server_host: host.to_string(),
             server_port: 14236,
-            data_dir: r4_data_dir(),
+            data_dir: r9_data_dir(),
         };
         let server = format!("{}:{}", cfg.server_host, cfg.server_port);
-        self.log_msg(self.i18n.log_r4_enabled(&info.summary(), &server));
-        self.r4 = Some(multi_r4::spawn(ctx.clone(), cfg, info));
+        self.log_msg(self.i18n.log_r9_enabled(&info.summary(), &server));
+        self.r9 = Some(multi_r9::spawn(ctx.clone(), cfg, info));
     }
 
-    /// Stop the r4 client if it is running (joins its thread).
-    pub(crate) fn stop_r4(&mut self) {
-        if let Some(mut handle) = self.r4.take() {
+    /// Stop the r9 client if it is running (joins its thread).
+    pub(crate) fn stop_r9(&mut self) {
+        if let Some(mut handle) = self.r9.take() {
             handle.stop();
         }
     }
@@ -355,13 +355,13 @@ impl TrackerApp {
     }
 
     /// Unload the selected patch (the Launch ✕ button): drop the path + parsed
-    /// session info, stop the r4 client if it was running (it derives its identity
+    /// session info, stop the r9 client if it was running (it derives its identity
     /// from the patch), and persist the removal. The DLL hook keeps tracking.
     pub(crate) fn clear_patch(&mut self) {
         if self.patch_path.is_none() && self.patch_info.is_none() {
             return;
         }
-        self.stop_r4();
+        self.stop_r9();
         self.patch_path = None;
         self.patch_info = None;
         self.log_msg(self.i18n.patch_unloaded().to_string());
@@ -507,7 +507,7 @@ impl TrackerApp {
     /// (`<tracker version="6">`). Shared by the autosave and the "Save Tracking"
     /// dialog. See [`Self::load_from_xml`] for the reader.
     ///
-    /// Layout: `<paths>` (remembered spoiler + r4 patch), then `<worlds>` — one
+    /// Layout: `<paths>` (remembered spoiler + r9 patch), then `<worlds>` — one
     /// `<world index="N">` (1-based) per world, its collected/placed locations
     /// grouped by scene — then `<entrances>` (visited flag + discovered out/in
     /// links, grouped by scene). A `<location>` loads on its numeric identity
@@ -515,7 +515,7 @@ impl TrackerApp {
     /// fallback; a placed `<item>` loads on its stable `id`, with `name` as a
     /// fallback. The remaining `name` annotations are readable and ignored on load.
     pub(crate) fn save_to(&self, path: &std::path::Path) {
-        // The remembered spoiler (sidecar) + the r4 patch path go in <paths>.
+        // The remembered spoiler (sidecar) + the r9 patch path go in <paths>.
         let spoiler = std::fs::read_to_string(&self.spoiler_path_file)
             .ok()
             .map(|s| s.trim().to_string())
@@ -585,7 +585,7 @@ impl TrackerApp {
             if line.starts_with(SAVE_VERSION_TAG) {
                 // Save-format version marker (latest-version saves only); no action.
             } else if let Some(rest) = line.strip_prefix("PATCH ") {
-                // r4 patch file path, restored so startup can auto-load it.
+                // r9 patch file path, restored so startup can auto-load it.
                 self.patch_path = Some(std::path::PathBuf::from(rest.trim()));
             } else if let Some(rest) = line.strip_prefix("WORLD ") {
                 if let Ok(n) = rest.trim().parse::<usize>() {
@@ -779,17 +779,17 @@ impl TrackerApp {
             }
         }
 
-        // Drain the r4 client thread the same way (shares NetItem / apply_net_item).
-        let mut r4_msgs = Vec::new();
-        if let Some(handle) = self.r4.as_ref() {
+        // Drain the r9 client thread the same way (shares NetItem / apply_net_item).
+        let mut r9_msgs = Vec::new();
+        if let Some(handle) = self.r9.as_ref() {
             while let Ok(msg) = handle.rx.try_recv() {
-                r4_msgs.push(msg);
+                r9_msgs.push(msg);
             }
         }
-        for msg in r4_msgs {
+        for msg in r9_msgs {
             match msg {
-                multi_r4::R4Msg::Log(line) => self.log_msg(line),
-                multi_r4::R4Msg::Item(item) => self.apply_net_item(item),
+                multi_r9::R9Msg::Log(line) => self.log_msg(line),
+                multi_r9::R9Msg::Item(item) => self.apply_net_item(item),
             }
         }
     }
@@ -884,14 +884,14 @@ impl TrackerApp {
         // HookItem gate). Skipping the hook for real items avoids marking them in
         // the local world when the ledger will place them in the correct world.
         let is_nothing = ev.query[2] & 0xFFFF_0000 == 0xFFFF_0000;
-        // The old net-context client owns real items in a coop / multi seed; the r4
+        // The old net-context client owns real items in a coop / multi seed; the r9
         // client (WAL) owns them only when it has a LIVE session matching the patch
         // (non-single). If the loaded game predates the IPC or its session differs
-        // from the patch, r4 isn't connected → the hook keeps the item (fallback).
+        // from the patch, r9 isn't connected → the hook keeps the item (fallback).
         let old_owns = self.multi.is_some() && self.rom_settings.mode != settings::GameMode::Single;
-        let r4_owns = self.r4.as_ref().map(|h| h.is_connected()).unwrap_or(false)
+        let r9_owns = self.r9.as_ref().map(|h| h.is_connected()).unwrap_or(false)
             && self.patch_info.as_ref().map(|p| p.mode != patch::PatchMode::Single).unwrap_or(false);
-        let net_owns_real = old_owns || r4_owns;
+        let net_owns_real = old_owns || r9_owns;
         if let Some(hit) = tracking::resolve_collected(&ev, self.rom, self.uses_legacy_xflags, &self.mq_scenes) {
             if !is_nothing && net_owns_real {
                 return; // let the network ledger own this real item
@@ -1337,17 +1337,41 @@ impl TrackerApp {
         // Progressive discovery only needs the set of walked entrances; skip the
         // allocation entirely when the mode is off (full spoiler knowledge).
         let discovered: std::collections::HashSet<(u8, u32)> = if progressive {
-            self.out_links.keys().map(|&(g, id)| (g as u8, id)).collect()
+            // Bridge each walked out-entrance to the id the spoiler keys by: OoT warp
+            // songs are stored under a synthetic song-node id but shuffled by their
+            // real warp entrance (see `canonical_discovered_entrance`).
+            self.out_links
+                .keys()
+                .map(|&(g, id)| (g as u8, crate::entrance::canonical_discovered_entrance(g, id)))
+                .collect()
         } else {
             std::collections::HashSet::new()
         };
-        self.reach = Some(crate::logic::solve_world(
-            &self.rom_settings,
-            &self.worlds,
-            player,
-            &discovered,
-            progressive,
-        ));
+        self.reach = Some(if progressive {
+            // Progressive mode: seed every region the player has physically visited
+            // (both endpoints of each discovered link) as reachable, so being somewhere
+            // makes it — and what it connects to — show up even without a discovered
+            // entrance chain back to SPAWN (a live auto-tracker follows the player).
+            let mut inp = crate::logic::WorldInputs::build(
+                &self.rom_settings,
+                &self.worlds,
+                player,
+                &discovered,
+                true,
+            );
+            let visited: std::collections::HashSet<(u8, u32)> = self
+                .out_links
+                .iter()
+                .flat_map(|(&(og, oid), &(ig, iid))| {
+                    [(og.idx() as u8, oid), (ig.idx() as u8, iid)]
+                })
+                .collect();
+            inp.seed_from_visited(&visited);
+            crate::logic::solve(&inp)
+        } else {
+            // Full-knowledge mode: pure from-SPAWN reachability with every remap known.
+            crate::logic::solve_world(&self.rom_settings, &self.worlds, player, &discovered, false)
+        });
     }
 
     /// Whether a check must be treated as *unreachable* by the accessibility
@@ -1597,6 +1621,9 @@ impl TrackerApp {
 
 impl eframe::App for TrackerApp {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
+        if !ctx.style().visuals.dark_mode {
+            apply_qt_style(ctx);
+        }
         // Frame-rate cap. egui is immediate-mode: every mouse-move event would
         // otherwise re-tessellate the whole UI as fast as the OS delivers moves,
         // pinning a core (~100%). Sleeping out the rest of a ~60 fps budget bounds
@@ -1705,7 +1732,7 @@ impl eframe::App for TrackerApp {
     /// so Project64 is left clean even though it keeps running.
     fn on_exit(&mut self, _gl: Option<&eframe::glow::Context>) {
         self.stop_multiplayer();
-        self.stop_r4();
+        self.stop_r9();
         self.poller.shutdown_and_wait();
     }
 }
@@ -1732,8 +1759,10 @@ fn context_toggle_for(ctx: data::ObjectContext) -> Option<bool> {
 ///
 /// - **Market**: Day and Night each have their own object map (follow verbatim);
 ///   the adult Market has no tracked objects.
-/// - **Temple of Time Exterior** ("vestibule"): every tracked object (the gossip
-///   stones) renders on the Child Day map only, so all variants follow there.
+/// - **Temple of Time Exterior** ("vestibule"): the three runtime variants (Child
+///   Day / Night / Adult, scenes 0x23–0x25) are all object-less placeholders — the
+///   gossip stones render on the single generic **Temple of Time Entryway** map, so
+///   every variant follows there (unlike the Market, no day/night/adult split matters).
 fn combined_object_scene(game: Game, raw: u16) -> Option<u16> {
     use crate::data::scenes as sc;
     if game != Game::Oot {
@@ -1743,9 +1772,7 @@ fn combined_object_scene(game: Game, raw: u16) -> Option<u16> {
         sc::OOT_MARKET_CHILD_DAY | sc::OOT_MARKET_CHILD_NIGHT => Some(raw),
         sc::OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY
         | sc::OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_NIGHT
-        | sc::OOT_TEMPLE_OF_TIME_EXTERIOR_ADULT => {
-            Some(sc::OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY)
-        }
+        | sc::OOT_TEMPLE_OF_TIME_EXTERIOR_ADULT => Some(sc::OOT_TEMPLE_OF_TIME_ENTRYWAY),
         _ => None,
     }
 }
@@ -1769,10 +1796,10 @@ fn resolve_obj_scene(
     game.scene_has_objects(generic, mq).then_some((game, generic))
 }
 
-/// Root directory for the r4 client's per-session data (WAL + send queue). Mirrors
+/// Root directory for the r9 client's per-session data (WAL + send queue). Mirrors
 /// the Go client's `%APPDATA%/OoTMM/client`, but under a tracker-specific folder
 /// so it never clashes with a standalone client's data.
-fn r4_data_dir() -> std::path::PathBuf {
+fn r9_data_dir() -> std::path::PathBuf {
     if let Ok(appdata) = std::env::var("APPDATA") {
         std::path::PathBuf::from(appdata).join("OoTMM").join("tracker-client")
     } else {
@@ -1904,7 +1931,7 @@ fn render_save_xml(
     out.push_str("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
     writeln!(out, "<tracker version=\"{}\">", crate::SAVE_VERSION).ok();
 
-    // <paths>: the remembered spoiler (sidecar) + the r4 patch file.
+    // <paths>: the remembered spoiler (sidecar) + the r9 patch file.
     out.push_str("  <paths>\n");
     if let Some(sp) = spoiler {
         writeln!(out, "    <spoiler>{}</spoiler>", esc(sp)).ok();
@@ -2510,8 +2537,9 @@ mod tests {
         );
         assert_eq!(combined_object_scene(Game::Oot, sc::OOT_MARKET_ADULT), None);
 
-        // Temple of Time Exterior ("vestibule"): every variant follows to the Child
-        // Day map, where the gossip-stone objects render.
+        // Temple of Time Exterior ("vestibule"): the three runtime variants are
+        // object-less placeholders; every one follows to the generic Entryway map,
+        // where the gossip-stone objects render.
         for raw in [
             sc::OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY,
             sc::OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_NIGHT,
@@ -2519,7 +2547,12 @@ mod tests {
         ] {
             assert_eq!(
                 combined_object_scene(Game::Oot, raw),
-                Some(sc::OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY)
+                Some(sc::OOT_TEMPLE_OF_TIME_ENTRYWAY)
+            );
+            // The placeholder variant itself carries no rendered objects.
+            assert!(
+                !Game::Oot.scene_has_objects(raw, &mq),
+                "the ToT Exterior runtime variant is an object-less placeholder"
             );
         }
 
@@ -2534,9 +2567,12 @@ mod tests {
             resolve_obj_scene(Game::Oot, sc::OOT_MARKET, sc::OOT_MARKET_CHILD_NIGHT as u32, &mq),
             Some((Game::Oot, sc::OOT_MARKET_CHILD_NIGHT)),
         );
+        // The generic Entryway map is where the gossip stones render, so it is the
+        // follow target for every runtime Exterior variant (the raw scene the message
+        // carries is an object-less placeholder).
         assert!(
-            !Game::Oot.scene_has_objects(sc::OOT_TEMPLE_OF_TIME_ENTRYWAY, &mq),
-            "generic ToT entryway is object-less"
+            Game::Oot.scene_has_objects(sc::OOT_TEMPLE_OF_TIME_ENTRYWAY, &mq),
+            "generic ToT entryway holds the gossip stones"
         );
         assert_eq!(
             resolve_obj_scene(
@@ -2545,7 +2581,7 @@ mod tests {
                 sc::OOT_TEMPLE_OF_TIME_EXTERIOR_ADULT as u32,
                 &mq,
             ),
-            Some((Game::Oot, sc::OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY)),
+            Some((Game::Oot, sc::OOT_TEMPLE_OF_TIME_ENTRYWAY)),
         );
 
         // A plain scene (not a combined node) still follows via its own generic node.
@@ -2555,6 +2591,29 @@ mod tests {
             .find(|&s| combined_object_scene(Game::Oot, s).is_none() && Game::Oot.scene_has_objects(s, &mq))
             .expect("a plain object-bearing OoT scene exists");
         assert_eq!(resolve_obj_scene(Game::Oot, plain, plain as u32, &mq), Some((Game::Oot, plain)));
+    }
+
+    #[test]
+    fn mm_gossip_grottos_all_follow_on_the_item_map() {
+        use crate::data::scenes as sc;
+        let mq: HashSet<(Game, u16)> = HashSet::new();
+        for (name, sid) in [
+            ("ocean", sc::MM_GROTTO_TERMINA_OCEAN_GOSSIP),
+            ("canyon", sc::MM_GROTTO_TERMINA_CANYON_GOSSIP),
+            ("swamp", sc::MM_GROTTO_TERMINA_SWAMP_GOSSIP),
+            ("mountain", sc::MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP),
+        ] {
+            assert!(Game::Mm.scene_has_objects(sid, &mq), "{name} gossip grotto has active objects");
+            assert!(
+                Game::Mm.scenes().iter().any(|s| s.id == sid),
+                "{name} gossip grotto has a SceneDef to select"
+            );
+            assert_eq!(
+                resolve_obj_scene(Game::Mm, sid, sid as u32, &mq),
+                Some((Game::Mm, sid)),
+                "{name} gossip grotto resolves as its own object map"
+            );
+        }
     }
 
     #[test]

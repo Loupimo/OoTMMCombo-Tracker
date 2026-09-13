@@ -331,6 +331,9 @@ extern ObjectInfo* OOT_MARKET_POTION_SHOPSceneObjects;
 extern const size_t OOT_RANCH_HOUSE_SILONumOfObjs;
 extern ObjectInfo* OOT_RANCH_HOUSE_SILOSceneObjects;
 
+extern const size_t OOT_TEMPLE_OF_TIME_ENTRYWAYNumOfObjs;
+extern ObjectInfo* OOT_TEMPLE_OF_TIME_ENTRYWAYSceneObjects;
+
 extern const size_t OOT_SACRED_FOREST_MEADOWNumOfObjs;
 extern ObjectInfo* OOT_SACRED_FOREST_MEADOWSceneObjects;
 

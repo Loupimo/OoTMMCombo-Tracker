@@ -249,6 +249,10 @@ fn on_other_page(key: &str) -> bool {
         "kamaroMaskOot" | "boomerangMm" | "powderKegOot" | "gfsOot" | "slingshotMm" | "extraChildSwordsOot"
             | "gerudoMaskMm" | "skullMaskMm" | "spookyMaskMm"
             | "rustyKeysOot" | "rustyKeysMm"
+            // The MM clock mode is a 4-way (Normal + separate/ascending/descending) driving two
+            // raw solver settings; its boolean checkbox can't express that, so it moves to the
+            // Logique / Accès page as `clock_card` instead. See `set_clock_mode`.
+            | "progressiveClocks"
     )
 }
 
@@ -892,6 +896,72 @@ impl TrackerApp {
             self.access_card(&mut cols[0], "Open Dungeons & Access", &access);
             self.access_card(&mut cols[1], "Win Conditions", &conds);
         });
+        self.clock_card(ui);
+    }
+
+    /// MM clocks: a single 4-way selector over the two raw settings the MM-time solver reads -
+    /// `clocksMm` (the clock-shuffle gate) and `progressiveClocks` (its mode). "Normal" clears
+    /// the gate so every time-of-day check stays reachable (the optimistic default); each of
+    /// Separate / Ascending / Descending turns the gate on and picks how the six day/night
+    /// clocks are earned, so a check gated on e.g. `after(NIGHT3_AM_12_00)` needs the matching
+    /// clock. It cannot be a boolean checkbox (OoTMM models `progressiveClocks` as an enum), so
+    /// it lives here rather than on the Progressive Items page. See inputs.rs `compute_mm_slices`.
+    fn clock_card(&mut self, ui: &mut egui::Ui) {
+        const OPTS: [(&str, &str); 4] = [
+            ("normal", "Normal"), ("separate", "Separate"),
+            ("ascending", "Ascending"), ("descending", "Descending"),
+        ];
+        // The current 4-way state, derived from the two raw keys (OoTMM defaults: clocks not
+        // shuffled, mode "ascending").
+        let shuffled = self.rom_settings.raw_settings.get("clocksMm").map(|s| s == "true").unwrap_or(false);
+        let cur: String = if shuffled {
+            self.rom_settings.raw_settings.get("progressiveClocks").cloned().unwrap_or_else(|| "ascending".into())
+        } else {
+            "normal".into()
+        };
+        let active = cur != "normal";
+        let cur_label = OPTS.iter().find(|(v, _)| *v == cur).map(|(_, l)| *l).unwrap_or("Normal");
+        egui::Frame::group(ui.style())
+            .fill(BG_PANEL)
+            .stroke(egui::Stroke::new(1.0_f32, BORDER))
+            .rounding(8.0)
+            .inner_margin(egui::Margin::symmetric(12.0, 10.0))
+            .show(ui, |ui| {
+                ui.set_width(ui.available_width());
+                ui.label(RichText::new(self.i18n.tr_settings("MM Time / Clocks")).strong().color(ACCENT));
+                ui.add_space(8.0);
+                ui.horizontal(|ui| {
+                    egui::ComboBox::from_id_salt("mmClocks")
+                        .width(150.0)
+                        .selected_text(RichText::new(self.i18n.tr_settings(cur_label))
+                            .color(if active { STATE_ON } else { TEXT_MUTED }))
+                        .show_ui(ui, |ui| {
+                            for (val, label) in OPTS {
+                                if ui.selectable_label(val == cur, self.i18n.tr_settings(label)).clicked() {
+                                    self.set_clock_mode(val);
+                                }
+                            }
+                        });
+                    game_badge(ui, Badge::Mm);
+                    let (dot, _) = ui.allocate_exact_size(egui::vec2(11.0, 11.0), egui::Sense::hover());
+                    ui.painter().circle_filled(dot.center(), 3.5, if active { STATE_ON } else { TEXT_MUTED });
+                    ui.add(egui::Label::new(RichText::new(self.i18n.tr_settings("Clock shuffle mode")).size(13.0)).truncate());
+                });
+            });
+        ui.add_space(10.0);
+    }
+
+    /// Apply a 4-way MM clock choice onto the two raw solver keys (and mirror the typed value so
+    /// the filter that gates the clock items stays consistent). "normal" only clears `clocksMm`
+    /// and leaves the remembered mode untouched.
+    fn set_clock_mode(&mut self, val: &str) {
+        if val == "normal" {
+            self.rom_settings.raw_settings.insert("clocksMm".into(), "false".into());
+        } else {
+            self.rom_settings.raw_settings.insert("clocksMm".into(), "true".into());
+            self.rom_settings.raw_settings.insert("progressiveClocks".into(), val.into());
+            self.rom_settings.set_value("progressiveClocks", crate::settings::item_value(val));
+        }
     }
 
     /// One access card: header + `active / total` count + meter, then a row per setting

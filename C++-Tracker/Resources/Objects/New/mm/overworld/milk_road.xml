@@ -22,10 +22,10 @@
         </actor>
       </rendering_option>
       <actor actor="0x2">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Milk Road Gossip Fairy" slice="0" item="FAIRY" name="Gossip Stone" xyz="568;395;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Milk Road Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Stone" xyz="549;385;0"/>
         </rendering_option>
       </actor>

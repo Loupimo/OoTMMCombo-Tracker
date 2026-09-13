@@ -240,7 +240,7 @@
     </scene_rendering>
   </scene>
   <scene id="TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY">
-    <scene_rendering id="OOT_TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY" loc_type="overworld">
+    <scene_rendering id="OOT_TEMPLE_OF_TIME_ENTRYWAY" loc_type="overworld">
       <actor actor="0x1">
         <match scene="TEMPLE_OF_TIME_EXTERIOR_CHILD_DAY"/>
         <match scene="TEMPLE_OF_TIME_EXTERIOR_CHILD_NIGHT"/>

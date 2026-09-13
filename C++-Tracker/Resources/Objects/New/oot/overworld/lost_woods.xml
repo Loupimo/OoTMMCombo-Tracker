@@ -30,11 +30,13 @@
       <rendering_option context="adult">
         <gs location="Lost Woods GS Bean Ride" flag="0x6a" item="GS_TOKEN" name="Bean Ride - Theater" xyz="1526;752;0"/>
       </rendering_option>
-      <rendering_option icon="stick_upgrade_2">
+      <rendering_option context="child" icon="stick_upgrade_2">
         <scrub location="Lost Woods Scrub Sticks Upgrade" flag="0x00" item="STICK_UPGRADE" name="Deku Sticks Upgrade" xyz="238;3051;0"/>
       </rendering_option>
-      <scrub location="Lost Woods Scrub Near Theater Left" flag="0x01" item="STICK" name="Near Theater - Left" xyz="1264;1102;0"/>
-      <scrub location="Lost Woods Scrub Near Theater Right" flag="0x02" item="NUTS_5" name="Near Theater - Right" xyz="1423;859;1"/>
+      <rendering_option context="child">
+        <scrub location="Lost Woods Scrub Near Theater Left" flag="0x01" item="STICK" name="Near Theater - Left" xyz="1264;1102;0"/>
+        <scrub location="Lost Woods Scrub Near Theater Right" flag="0x02" item="NUTS_5" name="Near Theater - Right" xyz="1423;859;1"/>
+      </rendering_option>
       <actor room="0x2">
         <match setup="0" actor="0x02"/>
         <match setup="2" actor="0x04"/>

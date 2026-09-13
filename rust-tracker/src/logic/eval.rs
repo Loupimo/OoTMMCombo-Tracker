@@ -20,6 +20,12 @@ use crate::data::Op;
 pub trait WorldState {
     /// Count of an item id currently owned (0 if none).
     fn item_count(&self, id: u32) -> u32;
+    /// The per-seed count for a `has(item, var(NAME))` requirement (`var` indexes
+    /// `data::VAR_NAMES`). Defaults to the OoTMM default (`data::VAR_DEFAULTS`);
+    /// the solver overrides it with the seed's setting value.
+    fn var_count(&self, var: u8) -> u16 {
+        crate::data::VAR_DEFAULTS.get(var as usize).copied().unwrap_or(1)
+    }
     /// Number of MM masks owned (`masks(n)`).
     fn mask_count(&self) -> u16;
     /// The value a setting is fixed to (`Some(value_id)`), for `setting(k, v)`.
@@ -59,6 +65,15 @@ pub trait WorldState {
     fn time_reachable(&self) -> bool {
         true
     }
+    /// The set of MM time-of-day slices the player can reach, as a bitmask over
+    /// `data::MM_TIME_SLICES` (bit i = slice i). An `mm_time` requirement holds
+    /// iff its mask (`data::MM_TIME_MASKS`) intersects this set. The default is
+    /// all bits (optimistic: any reachable time), matching the old boolean; the
+    /// solver narrows it under clock shuffle (`clocksMm`) to the periods whose
+    /// clock the player owns.
+    fn mm_time_slices(&self) -> u64 {
+        u64::MAX
+    }
     /// A renewable source of the item exists. Approximated as "owned" until the
     /// solver models drop/shop sources (M3); good enough for most ammo checks.
     fn renewable(&self, id: u32) -> bool {
@@ -80,6 +95,7 @@ pub fn eval<W: WorldState + ?Sized>(expr: &[Op], w: &W) -> bool {
         match *op {
             Op::Const(b) => stack.push(b),
             Op::Has(id, n) => stack.push(w.item_count(id) >= n as u32),
+            Op::HasVar(id, v) => stack.push(w.item_count(id) >= w.var_count(v) as u32),
             Op::Renewable(id) => stack.push(w.renewable(id)),
             Op::License(id) => stack.push(w.license(id)),
             Op::Event(id) => stack.push(w.event(id)),
@@ -87,7 +103,11 @@ pub fn eval<W: WorldState + ?Sized>(expr: &[Op], w: &W) -> bool {
             Op::Setting(k) => stack.push(w.setting_enabled(k)),
             Op::SettingEq(k, v) => stack.push(w.setting_has(k, v)),
             Op::Age(a) => stack.push(w.age() == a),
-            Op::OotTime(_) | Op::MmTime(_) => stack.push(w.time_reachable()),
+            Op::OotTime(_) => stack.push(w.time_reachable()),
+            Op::MmTime(id) => {
+                let mask = crate::data::MM_TIME_MASKS.get(id as usize).copied().unwrap_or(0);
+                stack.push((w.mm_time_slices() & mask) != 0);
+            }
             Op::Masks(n) => stack.push(w.mask_count() >= n),
             Op::Special(id) => stack.push(w.special(id)),
             Op::Flag(id, want) => stack.push(w.flag(id, want)),
@@ -137,6 +157,7 @@ mod tests {
         specials: HashSet<u32>,
         age: u8,
         time: bool,
+        mm_slices: u64,
     }
 
     impl WorldState for Mock {
@@ -170,10 +191,13 @@ mod tests {
         fn time_reachable(&self) -> bool {
             self.time
         }
+        fn mm_time_slices(&self) -> u64 {
+            self.mm_slices
+        }
     }
 
     fn base() -> Mock {
-        Mock { time: true, ..Default::default() }
+        Mock { time: true, mm_slices: u64::MAX, ..Default::default() }
     }
 
     #[test]
@@ -232,11 +256,26 @@ mod tests {
     }
 
     #[test]
-    fn time_is_optimistic_but_configurable() {
+    fn oot_time_is_optimistic_but_configurable() {
         let mut w = base();
         assert!(eval(&[Op::OotTime(0)], &w));
         w.time = false;
-        assert!(!eval(&[Op::MmTime(1)], &w));
+        assert!(!eval(&[Op::OotTime(0)], &w));
+    }
+
+    #[test]
+    fn mm_time_matches_reachable_slices() {
+        // MM time holds iff the requirement's slice mask intersects the reachable
+        // set. Index 0 is some real (non-empty) requirement from the logic.
+        let m0 = crate::data::MM_TIME_MASKS[0];
+        assert_ne!(m0, 0, "test needs a non-empty mask at index 0");
+        let mut w = base();
+        w.mm_slices = u64::MAX; // every time reachable -> holds
+        assert!(eval(&[Op::MmTime(0)], &w));
+        w.mm_slices = !m0; // reachable set disjoint from the requirement
+        assert!(!eval(&[Op::MmTime(0)], &w));
+        w.mm_slices = 0; // no time reachable
+        assert!(!eval(&[Op::MmTime(0)], &w));
     }
 
     /// Every emitted expression evaluates without panicking against a fixed

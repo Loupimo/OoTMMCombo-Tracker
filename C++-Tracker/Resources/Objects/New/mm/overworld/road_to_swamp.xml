@@ -46,10 +46,10 @@
         <xflag type="tree" location="Road to Southern Swamp Forked Tree 6" actor="0x1f" item="NOTHING" name="Tree 6" xyz="299;387;0"/>
       </rendering_option>
       <actor actor="0x2e">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Road to Southern Swamp Gossip Fairy" slice="0" item="FAIRY" name="Gossip Stone" xyz="365;427;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Road to Southern Swamp Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Stone" xyz="340;424;0"/>
         </rendering_option>
       </actor>

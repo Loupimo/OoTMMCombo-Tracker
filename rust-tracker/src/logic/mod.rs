@@ -74,7 +74,8 @@ mod tests {
         let n_skeys = data::SETTING_KEYS.len();
         let n_svals = data::SETTING_VALUES.len();
         let n_oot_t = data::OOT_TIME_VALUES.len();
-        let n_mm_t = data::MM_TIME_VALUES.len();
+        let n_mm_t = data::MM_TIME_MASKS.len();
+        let n_vars = data::VAR_NAMES.len();
         let n_special = data::SPECIAL_NAMES.len();
         let n_flag = data::FLAG_NAMES.len();
         let n_builtin = data::BUILTIN_NAMES.len();
@@ -91,6 +92,7 @@ mod tests {
                     }
                     Op::OotTime(i) => assert!((i as usize) < n_oot_t, "expr {ei}: oot_time {i}"),
                     Op::MmTime(i) => assert!((i as usize) < n_mm_t, "expr {ei}: mm_time {i}"),
+                    Op::HasVar(_, v) => assert!((v as usize) < n_vars, "expr {ei}: has_var var {v}"),
                     Op::Special(i) => assert!((i as usize) < n_special, "expr {ei}: special {i}"),
                     Op::Flag(i, _) => assert!((i as usize) < n_flag, "expr {ei}: flag {i}"),
                     Op::Builtin(i) => assert!((i as usize) < n_builtin, "expr {ei}: builtin {i}"),

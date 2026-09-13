@@ -32,6 +32,12 @@ use super::eval::{eval, WorldState};
 pub trait Inputs {
     /// Count of an item id currently owned.
     fn item_count(&self, id: u32) -> u32;
+    /// The per-seed count for a `has(item, var(NAME))` requirement (index into
+    /// `data::VAR_NAMES`). Default is the OoTMM default; the app inputs read the
+    /// seed's setting.
+    fn var_count(&self, var: u8) -> u16 {
+        crate::data::VAR_DEFAULTS.get(var as usize).copied().unwrap_or(1)
+    }
     /// The value a setting is fixed to (`Some(value_id)` into `SETTING_VALUES`).
     fn setting_value(&self, key: u32) -> Option<u32>;
     /// Whether setting `key` holds `val` — enum equality, or set membership for a
@@ -57,11 +63,23 @@ pub trait Inputs {
     fn song_event(&self, _game: u8, _slot: u8, _song: u8) -> bool {
         true
     }
+    /// The set of reachable MM time slices (bitmask over `data::MM_TIME_SLICES`).
+    /// Default all-bits (optimistic); the app inputs narrow it under clock shuffle.
+    fn mm_time_slices(&self) -> u64 {
+        u64::MAX
+    }
     /// Entrance-randomizer edge redirects: maps `(from_region, vanilla_to_region)`
     /// to the shuffled destination region(s). `None` (the default) means vanilla
     /// entrances — the solver then follows every edge to its compiled target.
     fn exit_redirects(&self) -> Option<&HashMap<(u32, u32), Vec<u32>>> {
         None
+    }
+    /// Extra region roots to seed as reachable, on top of SPAWN/GLOBAL. Default none;
+    /// the app inputs supply the player's visited regions in progressive entrance mode
+    /// (see `WorldInputs::seed_from_visited`) so a scene the player has physically
+    /// reached is reachable even without a discovered entrance chain back to SPAWN.
+    fn extra_seed_regions(&self) -> &[u32] {
+        &[]
     }
 }
 
@@ -76,6 +94,9 @@ struct View<'a, I: Inputs> {
 impl<I: Inputs> WorldState for View<'_, I> {
     fn item_count(&self, id: u32) -> u32 {
         self.inp.item_count(id)
+    }
+    fn var_count(&self, var: u8) -> u16 {
+        self.inp.var_count(var)
     }
     fn mask_count(&self) -> u16 {
         self.inp.mask_count()
@@ -98,6 +119,9 @@ impl<I: Inputs> WorldState for View<'_, I> {
     fn song_event(&self, game: u8, slot: u8, song: u8) -> bool {
         self.inp.song_event(game, slot, song)
     }
+    fn mm_time_slices(&self) -> u64 {
+        self.inp.mm_time_slices()
+    }
     fn event(&self, id: u32) -> bool {
         self.events.contains(&id)
     }
@@ -111,6 +135,16 @@ impl<I: Inputs> WorldState for View<'_, I> {
     fn age(&self) -> u8 {
         self.age
     }
+}
+
+/// Evaluate an access rule that depends only on settings and inventory (no age,
+/// events, flags, or time) against `inp`. Used to precompute the MM reachable
+/// time-slice set from the six clock-period rules (`MM_CLOCK_PERIOD_EXPRS`) at
+/// input-build time — those rules are pure `has`/`setting`, so the age and empty
+/// event set fed here never affect the result.
+pub fn eval_settings_only<I: Inputs>(expr: &[data::Op], inp: &I) -> bool {
+    let events = HashSet::new();
+    eval(expr, &View { inp, events: &events, age: 0 })
 }
 
 /// The result of a solve: which checks are reachable.
@@ -146,6 +180,18 @@ pub fn solve<I: Inputs>(inp: &I) -> Reachability {
 
     for i in seed_regions() {
         if inp.layout_active(regions[i].layout) {
+            reached[i] = [true, true];
+        }
+    }
+
+    // Extra roots: regions the player has physically visited (progressive entrance
+    // mode). Seeded at both ages, like SPAWN — the age-gated edges/rules still narrow
+    // what actually opens from here. A live auto-tracker treats "where you have walked"
+    // as reachable, so these anchor the fixed point even with no discovered chain to
+    // SPAWN; empty in full-knowledge mode (the default `Inputs::extra_seed_regions`).
+    for &ri in inp.extra_seed_regions() {
+        let i = ri as usize;
+        if i < n && inp.layout_active(regions[i].layout) {
             reached[i] = [true, true];
         }
     }
@@ -240,11 +286,15 @@ mod tests {
         enabled: HashSet<u32>,        // boolean settings that are on
         masks: u16,
         specials: bool,
+        extra_roots: Vec<u32>,        // extra reachable region roots (progressive seeding)
     }
 
     impl Inputs for Cfg {
         fn item_count(&self, _id: u32) -> u32 {
             self.items_all
+        }
+        fn extra_seed_regions(&self) -> &[u32] {
+            &self.extra_roots
         }
         fn setting_value(&self, key: u32) -> Option<u32> {
             self.settings.get(&key).copied()
@@ -286,13 +336,33 @@ mod tests {
             enabled: HashSet::new(),
             masks: 24,
             specials: true,
+            extra_roots: Vec::new(),
         }
     }
 
     fn empty() -> Cfg {
         let mut settings = HashMap::new();
         settings.insert(setting_idx("startingAgeOot"), value_idx("child"));
-        Cfg { items_all: 0, settings, enabled: HashSet::new(), masks: 0, specials: false }
+        Cfg { items_all: 0, settings, enabled: HashSet::new(), masks: 0, specials: false, extra_roots: Vec::new() }
+    }
+
+    /// Progressive seeding: regions handed to the solver as extra reachable roots
+    /// (the player's visited scenes) open their checks even when no path from SPAWN
+    /// reaches them. Rooting the whole graph with no items must therefore expose far
+    /// more checks than the SPAWN-only baseline.
+    #[test]
+    fn extra_seed_regions_root_the_solver() {
+        let base = solve(&empty());
+        let mut all = empty();
+        all.extra_roots = (0..data::LOGIC_REGIONS.len() as u32).collect();
+        let seeded = solve(&all);
+        assert!(
+            seeded.locations.len() > base.locations.len(),
+            "seeding regions as roots must open checks unreachable from SPAWN alone \
+             (base {}, seeded {})",
+            base.locations.len(),
+            seeded.locations.len()
+        );
     }
 
     #[test]
@@ -304,6 +374,87 @@ mod tests {
             "expected broad reachability, got {}",
             r.locations.len()
         );
+    }
+
+    /// The Sacred Forest Meadow gossip-fairy checks resolve and are reachable once the
+    /// meadow's access is owned. OoTMM gates the ADULT meadow entry behind Saria's Song
+    /// (`Lost Woods Deep: is_child || can_play_saria || …`, lost_woods.yml), so a fully
+    /// equipped solve reaches them while a child-only / song-less inventory would not —
+    /// which is why the tracker (correctly) hides them for a player who has walked there
+    /// as adult without Saria's Song. Guards the location strings + the region graph
+    /// against a regression that would drop the whole meadow (or its gossip stones).
+    #[test]
+    fn sacred_meadow_gossip_fairy_reachable_when_equipped() {
+        let r = solve(&full());
+        for loc in [
+            "OOT Sacred Meadow Gossip Fairy Maze 1",
+            "OOT Sacred Meadow Gossip Fairy Maze 2",
+            "OOT Sacred Meadow Gossip Fairy Deep",
+            "OOT Sacred Meadow Wonder Item Maze 1",
+            "OOT Temple of Time Exterior Gossip Fairy 1",
+        ] {
+            assert!(r.reachable(loc), "fully equipped should reach {loc}");
+        }
+    }
+
+    /// Regression: OoTMM overloads the name `SONG_STORMS` for both the Song of Storms
+    /// ITEM (OOT_SONG_STORMS 0x8E) and the windmill NPC (renamed OOT_SONG_OF_STORMS 0x06,
+    /// which also equals OOT_BOOMERANG). A stale gen_logic alias mapped the logic's
+    /// `has(SONG_STORMS)` to the NPC id 0x06, so collecting the BOOMERANG wrongly satisfied
+    /// `can_play_storms` and lit the gossip "big fairy". `can_play_storms` must key on the
+    /// real song item only. (Ocarina buttons aren't shuffled here, so they fold to `true`.)
+    #[test]
+    fn boomerang_does_not_satisfy_song_of_storms() {
+        use crate::data::iid;
+        let mq = std::collections::HashSet::new();
+        // Adult start puts Link at the Temple of Time, so the ToT-Exterior gossip
+        // region is reachable with almost no items — isolating `can_play_storms`
+        // (the only remaining gate on the "big fairy") from world-traversal noise.
+        let base = |extra: &[(u32, u32)]| {
+            let mut s = crate::settings::Settings::default();
+            s.parse_spoiler("Settings\n  startingAgeOot: adult\n  doorOfTime: open\n", &mq);
+            s.apply(&mq);
+            s.starting_item_ids.insert(iid::OOT_OCARINA, 1); // has_ocarina
+            for &(id, n) in extra {
+                s.starting_item_ids.insert(id, n);
+            }
+            crate::logic::solve_world(&s, &[crate::WorldData::default()], 1, &Default::default(), false)
+        };
+        let big = "OOT Temple of Time Exterior Gossip Big Fairy 1"; // gossip_fairy_big = can_play_storms
+
+        // Boomerang (id 0x06) must NOT masquerade as the Song of Storms item.
+        assert!(
+            !base(&[(iid::OOT_BOOMERANG, 1)]).reachable(big),
+            "the Boomerang must not satisfy can_play_storms"
+        );
+        // The actual Song of Storms item (0x8E) opens it.
+        assert!(
+            base(&[(iid::OOT_SONG_STORMS, 1)]).reachable(big),
+            "Song of Storms opens the gossip big fairy"
+        );
+    }
+
+    /// Regression for **song-note partiality** (`songs: notes` shuffle). A song is only
+    /// playable once ALL its notes are owned: OoTMM gates `has_song_storms` behind
+    /// `has_shared_count(SONG_NOTE_STORMS, …, 6)` — six copies of the note item — so a
+    /// single collected note must NOT light the storms-gated gossip "big fairy", and six
+    /// must. Confirms the tracker counts note items at their own id (0xA2) with the real
+    /// threshold rather than crediting the song on the first note.
+    #[test]
+    fn song_notes_unlock_only_when_all_are_collected() {
+        use crate::data::iid;
+        let mq = std::collections::HashSet::new();
+        let base = |notes: u32| {
+            let mut s = crate::settings::Settings::default();
+            s.parse_spoiler("Settings\n  startingAgeOot: adult\n  doorOfTime: open\n  songs: notes\n", &mq);
+            s.apply(&mq);
+            s.starting_item_ids.insert(iid::OOT_OCARINA, 1);
+            s.starting_item_ids.insert(iid::OOT_SONG_NOTE_STORMS, notes);
+            crate::logic::solve_world(&s, &[crate::WorldData::default()], 1, &Default::default(), false)
+        };
+        let big = "OOT Temple of Time Exterior Gossip Big Fairy 1";
+        assert!(!base(1).reachable(big), "one storm note must not unlock the song");
+        assert!(base(6).reachable(big), "six storm notes complete the Song of Storms");
     }
 
     #[test]
@@ -504,8 +655,15 @@ mod tests {
             "a too-light fish must not satisfy the prize");
 
         // Heavy enough (7 lbs, in [7,14]) collected through the real inventory path: lit.
-        assert!(solve_with_fish(Some("Child Fish (7 pounds)")).reachable("OOT Fishing Pond Child"),
+        let child_fish = solve_with_fish(Some("Child Fish (7 pounds)"));
+        assert!(child_fish.reachable("OOT Fishing Pond Child"),
             "an in-range shuffled fish must satisfy the prize");
+        // Age separation: the child and adult prizes compile to DISJOINT fish item
+        // sets (child 0x199..=0x1a0 / adult 0x1a5..=0x1b6) plus an `is_child` /
+        // `is_adult` gate, so a fish caught as one age can never open the other
+        // age's prize. A child fish must not open the adult prize.
+        assert!(!child_fish.reachable("OOT Fishing Pond Adult"),
+            "a CHILD fish must not open the ADULT prize");
 
         // pondFishShuffle off: prize reachable with no fish at all (vanilla pond).
         let mut off = crate::settings::Settings::default();

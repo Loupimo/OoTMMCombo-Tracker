@@ -40,10 +40,10 @@
         <match setup="0" actor="0x6"/>
         <match setup="1" actor="0x5"/>
         <match setup="3" actor="0x6"/>
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Ikana Valley Gossip Fairy Lower" slice="0" item="FAIRY" name="Gossip Stone - Lower" xyz="571;457;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Ikana Valley Gossip Big Fairy Lower" slice="1" item="FAIRY_BIG" name="Gossip Stone - Lower" xyz="558;446;0"/>
         </rendering_option>
       </actor>
@@ -51,20 +51,20 @@
         <match setup="0" actor="0x7"/>
         <match setup="1" actor="0x6"/>
         <match setup="3" actor="0x5"/>
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Ikana Valley Gossip Fairy Upper" slice="0" item="FAIRY" name="Gossip Stone - Upper" xyz="96;326;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Ikana Valley Gossip Big Fairy Upper" slice="1" item="FAIRY_BIG" name="Gossip Stone - Upper" xyz="87;311;0"/>
         </rendering_option>
       </actor>
       <actor room="0x4">
         <match setup="0" actor="0x1"/>
         <match setup="3" actor="0x3"/>
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Ikana Valley Gossip Fairy Scrub" slice="0" item="FAIRY" name="Gossip Stone - Scrub" xyz="808;199;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Ikana Valley Gossip Big Fairy Scrub" slice="1" item="FAIRY_BIG" name="Gossip Stone - Scrub" xyz="792;192;0"/>
         </rendering_option>
       </actor>

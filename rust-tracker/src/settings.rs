@@ -693,6 +693,14 @@ impl Settings {
             ("Ganon Trials", "ganonTrials", GANON_TRIALS),
             // Only WF / GB carry a logic value; other temples map harmlessly (unused).
             ("Clear State Dungeons (MM)", "clearStateDungeonsMm", OPEN_DUNGEONS_MM),
+            // Key rings / silver pouches: a listed dungeon (or cluster) groups its keys
+            // (or silver rupees) into one item, flipping `small_keys` / `silver_rupees`
+            // from `has(SMALL_KEY/RUPEE, count)` to `has(KEY_RING/POUCH)`. Without this
+            // the ring/pouch is owned but the count never adds up → rooms behind the
+            // door read as unreachable.
+            ("Small Key Ring (OoT)", "smallKeyRingOot", KEY_RING_SET_OOT),
+            ("Small Key Ring (MM)", "smallKeyRingMm", KEY_RING_SET_MM),
+            ("Silver Rupee Pouches", "silverRupeePouches", SILVER_POUCH_SET),
         ] {
             let Some(list) = read_list(section, label) else { continue };
             let value = match list {
@@ -1165,7 +1173,7 @@ pub(crate) fn filter_value(value: &str) -> ShuffleSetting {
 }
 
 /// The item-parameter value mapping of AddSetting.
-fn item_value(value: &str) -> ShuffleSetting {
+pub(crate) fn item_value(value: &str) -> ShuffleSetting {
     let int_pos = value.parse::<i64>().map(|n| n > 0).unwrap_or(false);
     match value {
         "progressive" | "all" | "true" | "ascending" | "night" | "day" | "bagSeparate" | "bagFirst" | "separate" => ShuffleSetting::all,
@@ -1205,6 +1213,57 @@ const GANON_TRIALS: &[(&str, &str)] = &[
     ("Water Trial", "Water"),
     ("Shadow Trial", "Shadow"),
     ("Spirit Trial", "Spirit"),
+];
+
+/// Small-key-ring set members (spoiler label -> logic `setting(smallKeyRingOot, type)`
+/// token). A dungeon in this set replaces its individual small keys with one ring, so
+/// `small_keys(...)` checks `has(KEY_RING_*)` instead of `has(SMALL_KEY_*, count)`.
+const KEY_RING_SET_OOT: &[(&str, &str)] = &[
+    ("Forest Temple", "Forest"),
+    ("Fire Temple", "Fire"),
+    ("Water Temple", "Water"),
+    ("Shadow Temple", "Shadow"),
+    ("Spirit Temple", "Spirit"),
+    ("Bottom of the Well", "BotW"),
+    ("Gerudo Training Grounds", "GTG"),
+    ("Ganon's Castle", "Ganon"),
+    ("Hideout", "GF"),
+    ("Chest Game", "TCG"),
+];
+const KEY_RING_SET_MM: &[(&str, &str)] = &[
+    ("Woodfall Temple", "WF"),
+    ("Snowhead Temple", "SH"),
+    ("Great Bay Temple", "GB"),
+    ("Stone Tower Temple", "ST"),
+];
+
+/// Silver-rupee-pouch set members (spoiler label -> logic `setting(silverRupeePouches,
+/// type)` token). Same shape as key rings: a listed cluster groups its silver rupees
+/// into one pouch, so `silver_rupees(...)` checks `has(POUCH_*)` instead of
+/// `has(RUPEE_SILVER_*, count)`.
+const SILVER_POUCH_SET: &[(&str, &str)] = &[
+    ("Dodongo's Cavern", "DC"),
+    ("Bottom of the Well", "BotW"),
+    ("Spirit Temple (Child)", "Spirit_Child"),
+    ("Spirit Temple (Sun)", "Spirit_Sun"),
+    ("Spirit Temple (Boulders)", "Spirit_Boulders"),
+    ("Spirit Temple (Lobby)", "Spirit_Lobby"),
+    ("Spirit Temple (Adult)", "Spirit_Adult"),
+    ("Shadow Temple (Scythe)", "Shadow_Scythe"),
+    ("Shadow Temple (Pit)", "Shadow_Pit"),
+    ("Shadow Temple (Spikes)", "Shadow_Spikes"),
+    ("Shadow Temple (Blades)", "Shadow_Blades"),
+    ("Ice Cavern (Scythe)", "IC_Scythe"),
+    ("Ice Cavern (Block)", "IC_Block"),
+    ("GTG (Slopes)", "GTG_Slopes"),
+    ("GTG (Lava)", "GTG_Lava"),
+    ("GTG (Water)", "GTG_Water"),
+    ("Ganon's Castle (Light)", "Ganon_Light"),
+    ("Ganon's Castle (Forest)", "Ganon_Forest"),
+    ("Ganon's Castle (Fire)", "Ganon_Fire"),
+    ("Ganon's Castle (Water)", "Ganon_Water"),
+    ("Ganon's Castle (Shadow)", "Ganon_Shadow"),
+    ("Ganon's Castle (Spirit)", "Ganon_Spirit"),
 ];
 
 /// A parsed `  Label: ...` entry: an inline value or an indented `- item` list.

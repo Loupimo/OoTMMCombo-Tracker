@@ -2,17 +2,14 @@
 //!
 //! `data.rs` holds the immutable static tables (every scene/object of both
 //! games, generated from the CSV pools). This module adds the mutable state
-//! (collection) and the render helpers (per-type colour/glyph).
+//! (collection) and the render helpers (per-type color/glyph).
 
 use std::collections::HashSet;
 use std::path::{Path, PathBuf};
 use std::sync::OnceLock;
 use crate::i18n::{I18n};
 
-use crate::data::{
-    EntranceDef, ObjectContext, ObjectDef, ObjectType, RoomDef, SceneDef, MM_ENTRANCES, MM_OBJECTS,
-    MM_ROOMS, MM_SCENES, OOT_ENTRANCES, OOT_OBJECTS, OOT_ROOMS, OOT_SCENES,
-};
+use crate::data::{EntranceDef, ObjectContext, ObjectDef, ObjectType, RoomDef, SceneDef, MM_ENTRANCES, MM_OBJECTS, MM_ROOMS, MM_SCENES, OOT_ENTRANCES, OOT_OBJECTS, OOT_ROOMS, OOT_SCENES};
 
 /// Repository root, resolved at compile time. Used as the dev fallback when the
 /// build is run from the source tree (`cargo run`) rather than a deployed folder.
@@ -186,7 +183,7 @@ pub fn icon_render_size(t: ObjectType) -> f32 {
         .unwrap_or(26.0)
 }
 
-/// Marker RGB colour for an object type (render_type).
+/// Marker RGB color for an object type (render_type).
 pub fn color_for(t: ObjectType) -> [u8; 3] {
     use ObjectType::*;
     match t {
@@ -269,7 +266,7 @@ pub fn type_label(t: ObjectType, i18n: &I18n) -> &str {
     }
 }
 
-/// Short glyph drawn at the centre of the marker.
+/// Short glyph drawn at the center of the marker.
 pub fn glyph_for(t: ObjectType) -> &'static str {
     use ObjectType::*;
     match t {
@@ -326,7 +323,7 @@ pub struct LiveScene {
 impl LiveScene {
     /// Load a scene: gather the objects that render on it and belong to the
     /// active layout (`mq` = scenes running Master Quest / JP). Collected states
-    /// are synced afterwards from the app's collected-set.
+    /// are synced afterward from the app's collected-set.
     pub fn load(game: Game, def: &'static SceneDef, mq: &HashSet<(Game, u16)>) -> Self {
         let objects = game
             .objects()

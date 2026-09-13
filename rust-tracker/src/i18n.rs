@@ -946,8 +946,8 @@ impl I18n {
         Self::get(&self.strings.logs, "mp_enabled").replace("{server}", server)
     }
 
-    pub fn log_r4_enabled(&self, info: &str, server: &str) -> String {
-        Self::get(&self.strings.logs, "r4_enabled")
+    pub fn log_r9_enabled(&self, info: &str, server: &str) -> String {
+        Self::get(&self.strings.logs, "r9_enabled")
             .replace("{info}", info)
             .replace("{server}", server)
     }
@@ -1271,7 +1271,7 @@ mod tests {
 
         // Multiplayer / patch / live-event log lines (state.rs) — templated.
         i.log_mp_enabled("host:1");
-        i.log_r4_enabled("info", "host:1");
+        i.log_r9_enabled("info", "host:1");
         i.log_patch_loaded("p", "info");
         i.log_patch_invalid("e");
         i.log_patch_missing("p");

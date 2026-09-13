@@ -379,6 +379,32 @@ impl Dashboard {
             }
         }
 
+        // Progressive capacity families (bow → Big/Biggest Quiver, slingshot →
+        // Big/Biggest Bullet Bag, magic → Double Magic) — the generated
+        // `PROGRESSIVE_FAMILIES`. OoTMM places EVERY tier under the BASE item's spoiler
+        // name (a quiver upgrade is "Hero's Bow"), so each pickup resolves to the base
+        // id (MM_BOW). Their tiers carry DISTINCT ids with no common marker, so
+        // `by_item[base]` holds only the base tile — a plain match stalls there and the
+        // upgrade tiles stay dark (reported: a 2nd Hero's Bow left Big Quiver
+        // unobtained). Route any family id through its ordered tier list [base, up1,
+        // up2] so successive pickups advance one tier. Gathering the tiles by
+        // family-member id restricts a per-game id (MM_BOW) to its own page, while a
+        // SHARED id (SHARED_BOW, listed on both games' bow tiles) advances every page —
+        // walked per page so one shared pickup moves each game by one tier. Mirrors the
+        // C++ family-aware `FindAllMatchingWidgets` + `walkStages`.
+        if let Some(fam) = data::PROGRESSIVE_FAMILIES.iter().find(|f| f.contains(&id)) {
+            for page in 0..data::PROG_PAGES.len() {
+                let stages: Vec<usize> = fam
+                    .iter()
+                    .filter(|&&m| m != 0)
+                    .flat_map(|&m| self.by_item.get(&m).into_iter().flatten().copied())
+                    .filter(|&i| self.flat[i].page == page)
+                    .collect();
+                self.walk_stages(&stages);
+            }
+            return;
+        }
+
         // Progressive either because the ROM settings say so, or because the id is a
         // structural family marker shared by several tiers of one page (strength,
         // wallets, generic shields…) — see `marker_ids`. Both routes walk one stage
@@ -756,11 +782,20 @@ mod tests {
     fn every_prog_icon_and_key_is_sane() {
         let d = Dashboard::new();
         assert!(!d.flat().is_empty());
+        // The Song of Storms ITEM is `OOT_SONG_STORMS` (0x8E) / `MM_SONG_STORMS`
+        // (0x293) — the value the progression entries key on. OoTMM also has an NPC
+        // symbol `OOT_/MM_SONG_OF_STORMS` (0x06 / 0x0D) for the windmill/graveyard
+        // NPC that teaches the song, and the C++ `ItemList` registers the song's
+        // ItemDef under THAT id, so `data::ITEMS` has no row at the item id itself.
+        // These two ids are valid item symbols regardless, so allow them here.
+        const ITEM_IDS_WITHOUT_A_DEDICATED_ITEMDEF: &[u32] =
+            &[data::iid::OOT_SONG_STORMS, data::iid::MM_SONG_STORMS];
         // Every lookup key resolves to a real item id.
         for fe in d.flat() {
             for &k in fe.entry.lookup_keys {
                 assert!(
-                    data::ITEMS.iter().any(|it| it.id == k),
+                    data::ITEMS.iter().any(|it| it.id == k)
+                        || ITEM_IDS_WITHOUT_A_DEDICATED_ITEMDEF.contains(&k),
                     "unknown item id {k:#x} in {}",
                     fe.entry.name
                 );
@@ -927,6 +962,36 @@ mod tests {
         assert!(!d.state(biggoron).found, "Biggoron stays dark until the second pickup");
         d.on_item_found(OOT_SWORD_GORON, &settings);
         assert!(d.state(biggoron).found, "second Progressive Goron Sword advances to Biggoron's Sword");
+    }
+
+    #[test]
+    fn mm_quiver_upgrades_fill_bottom_up_from_repeated_hero_bow() {
+        use data::iid::*;
+        // OoTMM names every quiver upgrade with the BASE item's name ("Hero's Bow"),
+        // so the spoiler resolves each pickup to MM_BOW (0x224) — never to Big/Biggest
+        // Quiver directly. The 2nd Hero's Bow must advance to Big Quiver, the 3rd to
+        // Biggest Quiver, filling the family bottom-up instead of stalling on the base
+        // tile. (Reported: "un 2ème Hero's Bow (MM) mais le premier carquois pas obtenu".)
+        assert_eq!(find_item_id("Hero's Bow (MM)"), Some(MM_BOW));
+
+        let mut settings = Settings::default();
+        settings.apply(&HashSet::new());
+
+        let mut d = Dashboard::new();
+        let bow = entry_with_key(&d, MM_BOW);
+        let big = entry_with_key(&d, MM_QUIVER2);
+        let biggest = entry_with_key(&d, MM_QUIVER3);
+
+        d.on_item_found(MM_BOW, &settings);
+        assert!(d.state(bow).found, "first Hero's Bow lights the bow tile");
+        assert!(!d.state(big).found, "Big Quiver stays dark after one bow");
+
+        d.on_item_found(MM_BOW, &settings);
+        assert!(d.state(big).found, "second Hero's Bow advances to Big Quiver");
+        assert!(!d.state(biggest).found, "Biggest Quiver waits for the third pickup");
+
+        d.on_item_found(MM_BOW, &settings);
+        assert!(d.state(biggest).found, "third Hero's Bow advances to Biggest Quiver");
     }
 
     #[test]

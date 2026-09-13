@@ -190,27 +190,49 @@ class Aug:
             elif c.tag in OBJ_TAGS:
                 yield c
 
-    def actor_render(self, actor):
-        """(rs, lt, ro_key) for placing the actor. rs/lt come from its first check; the ro_key
-        is shared only when every check renders the same way. A heterogeneous actor - e.g. a
-        gossip stone whose small 'gossip' fairy renders as 'fairy' and its 'gossip-big' as
-        'fairy_spot' - returns an empty ro so scene_xml does not wrap it in one shared
-        <rendering_option>; emit_actor then gives each check its own nested one instead."""
-        rs = lt = None
-        ros = []
+    def _actor_variants(self, actor):
+        """Flat list of (check, rs, lt, ro_key, name, xyz) for every check in the actor,
+        expanded across ALL its pool layout-variants (mm + mm_jp / oot + oot_mq), in
+        document-then-pool order. This is the actor-side counterpart of scene_xml's
+        `renders_of` loop: an actor whose checks sit at different coordinates per layout
+        thus yields one placement per layout instead of collapsing to the first pool row
+        (which dropped e.g. the MM_JP placement of Deku Palace right rupees 7-13)."""
+        out = []
+        seen = set()
         for c in self._actor_checks(actor):
-            crs, clt, cro, _, _, _ = self.render_of(c)
-            if rs is None:
-                rs, lt = crs, clt
-            ros.append(cro)
-        if not ros:
+            # Collapse by location before re-expanding: on a re-augment the nested
+            # <rendering_option> a prior run emitted carries the SAME location as the bare
+            # variant (both surface through _actor_checks), so dedup keeps one check per
+            # location and renders_of rebuilds every pool variant - which keeps the pass
+            # idempotent, exactly like scene_xml's `seen` on the standalone path.
+            loc = c.attrib.get("location", "")
+            if loc and loc in seen:
+                continue
+            if loc:
+                seen.add(loc)
+            for rs, lt, ro, name, xyz, _missing in self.renders_of(c):
+                out.append((c, rs, lt, ro, name, xyz))
+        return out
+
+    def actor_render(self, actor):
+        """(rs, lt, ro_key) for placing the actor's enclosing scene_rendering /
+        rendering_option. rs/lt come from its first variant; the ro_key is shared only
+        when every variant renders the same way. A heterogeneous actor - a gossip stone
+        whose small 'gossip' fairy renders as 'fairy' and its 'gossip-big' as 'fairy_spot',
+        or a check carrying per-layout variants (mm vs mm_jp) - returns an empty ro so
+        scene_xml does not wrap it in one shared <rendering_option>; emit_actor then groups
+        the variants into their own nested ones instead."""
+        vs = self._actor_variants(actor)
+        if not vs:
             return None, "", ()
+        rs, lt = vs[0][1], vs[0][2]
+        ros = [v[3] for v in vs]
         common = ros[0] if all(r == ros[0] for r in ros) else ()
         return rs, lt, common
 
     def emit_actor(self, actor, indent, scene_sym=None):
-        checks = list(self._actor_checks(actor))
-        ros = [self.render_of(c)[2] for c in checks]
+        variants = self._actor_variants(actor)
+        ros = [v[3] for v in variants]
         homogeneous = (not ros) or all(r == ros[0] for r in ros)
         lines = [f"{indent}<actor" + _attrs(actor) + ">"]
         for c in actor:                       # matches carry the identity; keep them first
@@ -218,24 +240,24 @@ class Aug:
                 lines.append(f"{indent}  <match" + _attrs(c) + "/>")
         if homogeneous:
             # the actor's single render is carried by the enclosing <rendering_option> (scene_xml)
-            for c in checks:
-                _, _, _, name, xyz, _ = self.render_of(c)
+            for c, _rs, _lt, _ro, name, xyz in variants:
                 lines.append(self.obj_xml(c, name, xyz, indent + "  ", scene_sym))
         else:
-            # split: each check keeps its own render type via a nested <rendering_option>
+            # split: consecutive variants sharing a ro go in one nested <rendering_option>
+            # (bare when the ro is empty), mirroring scene_xml's per-check layout grouping -
+            # so a check's mm variant emits bare and its mm_jp variant under layout="mm_jp".
             k = 0
-            while k < len(checks):
-                ro = ros[k]
+            while k < len(variants):
+                ro = variants[k][3]
                 m = k
-                while m < len(checks) and ros[m] == ro:
+                while m < len(variants) and variants[m][3] == ro:
                     m += 1
                 pad = indent + "  "
                 if ro:
                     roattr = " ".join(f'{kk}="{esc(vv)}"' for kk, vv in ro)
                     lines.append(f"{indent}  <rendering_option {roattr}>")
                     pad = indent + "    "
-                for c in checks[k:m]:
-                    _, _, _, name, xyz, _ = self.render_of(c)
+                for c, _rs, _lt, _ro, name, xyz in variants[k:m]:
                     lines.append(self.obj_xml(c, name, xyz, pad, scene_sym))
                 if ro:
                     lines.append(f"{indent}  </rendering_option>")

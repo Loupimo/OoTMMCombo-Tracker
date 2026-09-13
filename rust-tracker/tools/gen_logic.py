@@ -47,15 +47,20 @@ OOT, MM = 0, 1
 GAME_PREFIX = {OOT: "OOT ", MM: "MM "}
 ITEM_PREFIX = {OOT: "OOT_", MM: "MM_"}
 
-# OoTMM's logic names the Song of Storms item SONG_STORMS / SHARED_SONG_STORMS, but
-# the Qt tracker (and thus the generated data) defines it as SONG_OF_STORMS /
-# SHARED_SONG_OF_STORMS -- SONG_STORMS was repurposed as the NPC symbol (NPC.h:
-# OOT_SONG_STORMS = 0x06). Without this alias, has(SONG_STORMS) would silently
-# resolve to that NPC id (a collision, since id_sym holds both namespaces) and
-# has(SHARED_SONG_STORMS) would not resolve at all. Alias the logic name to the
-# tracker's item name. Keep in sync with the Qt Items.h / NPC.h naming.
+# Song of Storms name collision (OoTMM overloads SONG_STORMS for two things):
+#   * the ITEM   -> tracker Items.h: OOT_SONG_STORMS 0x8E / MM_SONG_STORMS 0x293,
+#                   and the SHARED item is SHARED_SONG_OF_STORMS 0x411.
+#   * the NPC    -> tracker NPC.h:  OOT_SONG_OF_STORMS 0x06 / MM_SONG_OF_STORMS 0x0d
+#                   (renamed with the _OF_ infix to disambiguate from the item; 0x06
+#                   also happens to be OOT_BOOMERANG).
+# The logic's has(SONG_STORMS) means the ITEM, so per game it must resolve DIRECTLY to
+# OOT_/MM_SONG_STORMS -- no alias. Aliasing it to SONG_OF_STORMS (as an earlier naming
+# generation did) now points it at the NPC id 0x06 == Boomerang, so a collected
+# Boomerang wrongly satisfied can_play_storms (gossip "big fairy" lit with no Song of
+# Storms). Only the SHARED item still needs the alias, since it is named
+# SHARED_SONG_OF_STORMS and there is no SHARED_SONG_STORMS define to resolve to.
+# Keep in sync with the Qt Items.h / NPC.h naming.
 LOGIC_ITEM_ALIASES = {
-    "SONG_STORMS": "SONG_OF_STORMS",
     "SHARED_SONG_STORMS": "SHARED_SONG_OF_STORMS",
 }
 
@@ -90,6 +95,84 @@ CORE_NATIVES = {
 #   price(range, id, max)        -> shops/scrubs always affordable
 OPTIMISTIC_NATIVES = {"price"}
 NATIVES = CORE_NATIVES | OPTIMISTIC_NATIVES
+
+# Logic `var(NAME)` values: a per-seed number that OoTMM binds from a setting
+# (`world/builder.ts addVar`). Used only as the count of a `has(item, var(NAME))`
+# (currently just the stray-fairy Great Fairy rewards). Maps NAME -> (spoiler
+# setting key, OoTMM default) so the solver reads the real threshold per seed and
+# falls back to the default when the spoiler omits it. Without this the count arg
+# fell back to 1, so a single stray fairy wrongly satisfied the Great Fairy.
+VAR_INFO = {
+    "STRAY_FAIRY_COUNT": ("strayFairyRewardCount", 15),
+}
+
+
+# ── MM time-of-day model ─────────────────────────────────────────────────────
+# Ordered MM time slices (vendored from OoTMM packages/logic/src/expr/data.ts).
+# `at/after/before/between(slice)` compile to a bitmask over these; the solver
+# tests it against the set of slices the player can reach (`mm_time_slices`), so
+# a check gated on e.g. `after(NIGHT3_AM_12_00)` needs the Night 3 clock, not
+# merely *some* clock. Index i -> bit (1 << i); 47 slices fit a u64.
+MM_TIME_SLICES = [
+    "DAY1_AM_06_00", "DAY1_AM_07_00", "DAY1_AM_08_00", "DAY1_AM_10_00",
+    "DAY1_PM_01_45", "DAY1_PM_03_00", "DAY1_PM_04_00",
+    "NIGHT1_PM_06_00", "NIGHT1_PM_08_00", "NIGHT1_PM_09_00", "NIGHT1_PM_10_00",
+    "NIGHT1_PM_11_00", "NIGHT1_AM_12_00", "NIGHT1_AM_02_30", "NIGHT1_AM_04_00",
+    "NIGHT1_AM_05_00",
+    "DAY2_AM_06_00", "DAY2_AM_07_00", "DAY2_AM_08_00", "DAY2_AM_10_00",
+    "DAY2_AM_11_30", "DAY2_PM_02_00", "DAY2_PM_04_00",
+    "NIGHT2_PM_06_00", "NIGHT2_PM_08_00", "NIGHT2_PM_09_00", "NIGHT2_PM_10_00",
+    "NIGHT2_PM_11_00", "NIGHT2_AM_12_00", "NIGHT2_AM_04_00", "NIGHT2_AM_05_00",
+    "NIGHT2_AM_05_30",
+    "DAY3_AM_06_00", "DAY3_AM_07_00", "DAY3_AM_08_00", "DAY3_AM_10_00",
+    "DAY3_AM_11_30", "DAY3_PM_01_00",
+    "NIGHT3_PM_06_00", "NIGHT3_PM_08_00", "NIGHT3_PM_09_00", "NIGHT3_PM_10_00",
+    "NIGHT3_PM_11_00", "NIGHT3_AM_12_00", "NIGHT3_AM_04_00", "NIGHT3_AM_05_00",
+]
+
+# The six MM day/night periods, in the same order as the `clock_day1 ..
+# clock_night3` macros and `MM_CLOCK_PERIOD_MACROS` below. A slice belongs to a
+# period by its name prefix (`DAY1_...` -> DAY1).
+MM_PERIODS = ["DAY1", "NIGHT1", "DAY2", "NIGHT2", "DAY3", "NIGHT3"]
+
+# The macro whose truth (pure has/setting: clock items + progressiveClocks mode)
+# says whether that period is reachable, one per `MM_PERIODS` entry.
+MM_CLOCK_PERIOD_MACROS = [
+    "clock_day1", "clock_night1", "clock_day2",
+    "clock_night2", "clock_day3", "clock_night3",
+]
+
+
+def mm_time_mask(operator, slice_names):
+    """Port of OoTMM `exprMmTime`: the bitmask of MM time slices that satisfy a
+    `before/after/at/between(slice[, slice2])` requirement. `before` = strictly
+    earlier slices, `after` = this slice and all later, `at` = this slice only,
+    `between(a, b)` = `[a, b)`. Unknown slice names raise (fail loud)."""
+    idx = [MM_TIME_SLICES.index(s) for s in slice_names]
+    n = len(MM_TIME_SLICES)
+    v = 0
+    if operator == "before":
+        for i in range(0, idx[0]):
+            v |= (1 << i)
+    elif operator == "after":
+        for i in range(idx[0], n):
+            v |= (1 << i)
+    elif operator == "at":
+        v |= (1 << idx[0])
+    elif operator == "between":
+        for i in range(idx[0], idx[1]):
+            v |= (1 << i)
+    else:
+        raise ValueError(f"bad mm_time operator {operator!r}")
+    return v
+
+
+def mm_period_slices():
+    """The slice bitmask of each `MM_PERIODS` entry (by slice-name prefix)."""
+    masks = [0] * len(MM_PERIODS)
+    for i, name in enumerate(MM_TIME_SLICES):
+        masks[MM_PERIODS.index(name.split("_", 1)[0])] |= (1 << i)
+    return masks
 
 
 # ── YAML-ish loaders ─────────────────────────────────────────────────────────
@@ -365,12 +448,15 @@ class Compiler:
         self.mm_time, self.mm_time_l = {}, []
         self.flags, self.flags_l = {}, []
         self.specials, self.specials_l = {}, []
+        self.vars, self.vars_l = {}, []
         self.builtins, self.builtins_l = {}, []
         # Diagnostics.
         self.missing_items = set()
         self.builtins_seen = {}
         # Expression dedup: op-tuple -> index.
         self.expr_pool, self.expr_index = [], {}
+        # EXPRS indices of the six MM clock-period rules (filled in generate()).
+        self.mm_clock_period_exprs = [0] * 6
         self.macros = None
         self.game = None
 
@@ -497,8 +583,19 @@ class Compiler:
     def compile_native(self, name, args):
         if name == "has":
             item = self.resolve_item(self._lit(args[0]))
-            cnt = args[1][1] if len(args) > 1 and args[1][0] == "num" else 1
-            return [("const", False)] if item is None else [("has", item, cnt)]
+            if item is None:
+                return [("const", False)]
+            # `has(item, var(NAME))`: the count is a per-seed number the solver
+            # reads from a setting (see VAR_INFO). Without this it fell through to
+            # the `else 1` below, so one item satisfied a threshold of N.
+            a1 = args[1] if len(args) > 1 else None
+            if a1 is not None and a1[0] in ("builtin", "call") and a1[1] == "var":
+                vname = self._lit(a1[2][0])
+                if vname not in VAR_INFO:
+                    raise ValueError(f"unknown var({vname}) — add it to VAR_INFO")
+                return [("has_var", item, self._intern(self.vars, self.vars_l, vname))]
+            cnt = a1[1] if a1 is not None and a1[0] == "num" else 1
+            return [("has", item, cnt)]
         if name in ("renewable", "license"):
             item = self.resolve_item(self._lit(args[0]))
             return [("const", False)] if item is None else [(name, item)]
@@ -519,7 +616,13 @@ class Compiler:
         if name == "oot_time":
             return [("oot_time", self._intern(self.oot_time, self.oot_time_l, self._lit(args[0])))]
         if name == "mm_time":
-            return [("mm_time", self._intern(self.mm_time, self.mm_time_l, self._lit(args[0])))]
+            # `mm_time(operator, slice[, slice2])`: keep the actual time bound by
+            # compiling it to a slice bitmask (interned by value), not just the
+            # operator name -- the old code dropped the bound entirely.
+            operator = self._lit(args[0])
+            slice_names = [self._lit(a) for a in args[1:]]
+            mask = mm_time_mask(operator, slice_names)
+            return [("mm_time", self._intern(self.mm_time, self.mm_time_l, mask))]
         if name == "masks":
             return [("masks", args[0][1] if args[0][0] == "num" else 0)]
         if name == "special":
@@ -694,6 +797,8 @@ def op_to_rust(op):
         return f"Op::Const({str(op[1]).lower()})"
     if k == "has":
         return f"Op::Has({op[1]:#x}, {op[2]})"
+    if k == "has_var":
+        return f"Op::HasVar({op[1]:#x}, {op[2]})"
     if k == "renewable":
         return f"Op::Renewable({op[1]:#x})"
     if k == "license":
@@ -756,6 +861,9 @@ pub enum Op {
     Const(bool),
     /// `has(item, n)`: at least `n` of the item.
     Has(u32, u16),
+    /// `has(item, var(NAME))`: at least a per-seed count of the item; the count
+    /// is read from a setting at solve time (index into `VAR_NAMES`).
+    HasVar(u32, u8),
     Renewable(u32),
     License(u32),
     Event(u32),
@@ -862,10 +970,40 @@ def emit(out_path, compiler, regions):
                  + str_arr("SETTING_KEYS", compiler.skeys_l))
     parts.append("/// Setting values referenced by `setting(k, v)`, indexed by value id.\n"
                  + str_arr("SETTING_VALUES", compiler.svals_l))
+    # `var(NAME)` tables (`Op::HasVar` count sources), indexed by var id: the name,
+    # the spoiler setting the solver reads the count from, and the OoTMM default.
+    parts.append("/// `var(NAME)` names, indexed by `Op::HasVar` var id.\n"
+                 + str_arr("VAR_NAMES", compiler.vars_l))
+    parts.append("/// Spoiler setting key each var's count is read from, same order.\n"
+                 + str_arr("VAR_SETTING_KEYS", [VAR_INFO[v][0] for v in compiler.vars_l]))
+    vd_cells = ", ".join(str(VAR_INFO[v][1]) for v in compiler.vars_l)
+    parts.append("/// OoTMM default count for each var (fallback when the spoiler\n"
+                 "/// omits the setting), same order.\n"
+                 f"pub static VAR_DEFAULTS: &[u16] = &[{vd_cells}];\n")
     parts.append("/// OoT time-of-day values, indexed by id.\n"
                  + str_arr("OOT_TIME_VALUES", compiler.oot_time_l))
-    parts.append("/// MM time values, indexed by id.\n"
-                 + str_arr("MM_TIME_VALUES", compiler.mm_time_l))
+    # MM time is a slice bitmask (`Op::MmTime` indexes this): a check is time-
+    # reachable iff this mask intersects the player's reachable slices.
+    mm_mask_cells = ",\n    ".join(f"0x{m:x}" for m in compiler.mm_time_l)
+    parts.append(
+        "/// MM time requirement bitmasks, indexed by `Op::MmTime` id. Bit i =\n"
+        "/// `MM_TIME_SLICES[i]`; the check holds iff this intersects the reachable\n"
+        "/// slice set (see `MM_CLOCK_PERIOD_EXPRS` / `MM_PERIOD_SLICES`).\n"
+        f"pub static MM_TIME_MASKS: &[u64] = &[\n    {mm_mask_cells},\n];\n")
+    # Per-period slice masks (DAY1, NIGHT1, DAY2, NIGHT2, DAY3, NIGHT3) and the
+    # EXPRS index of each period's reachability rule, in the same order. The
+    # solver ORs a period's slices into `mm_time_slices` when its rule evaluates
+    # true (all-slices when clock shuffle is off, since the rules short-circuit).
+    ps_cells = ",\n    ".join(f"0x{m:x}" for m in mm_period_slices())
+    parts.append(
+        "/// MM day/night period slice masks: [DAY1, NIGHT1, DAY2, NIGHT2, DAY3,\n"
+        "/// NIGHT3]. OR'd into the reachable slice set per period whose rule holds.\n"
+        f"pub static MM_PERIOD_SLICES: [u64; 6] = [\n    {ps_cells},\n];\n")
+    cpe_cells = ", ".join(str(i) for i in compiler.mm_clock_period_exprs)
+    parts.append(
+        "/// EXPRS index of each MM period's reachability rule, matching\n"
+        "/// `MM_PERIOD_SLICES` order (clock_day1 .. clock_night3).\n"
+        f"pub static MM_CLOCK_PERIOD_EXPRS: [u32; 6] = [{cpe_cells}];\n")
     parts.append("/// Win-condition gate names (`Op::Special`), indexed by id.\n"
                  + str_arr("SPECIAL_NAMES", compiler.specials_l))
     parts.append("/// MM region-state flag names (`Op::Flag`), indexed by id.\n"
@@ -892,6 +1030,13 @@ def generate(out_path=OUT_DEFAULT, id_sym=None, verbose=True):
     compiler.macros = bind_macro_bodies(mm_macros)
     compiler.game = MM
     used_mm = collect(MM, compiler, regions)
+
+    # Compile the six clock-period reachability macros (pure clock-item / mode
+    # logic) while the MM macro table + game are still bound; the solver ORs in a
+    # period's slices when its rule holds to build `mm_time_slices`.
+    compiler.mm_clock_period_exprs = [
+        compiler.expr_index_of(m) for m in MM_CLOCK_PERIOD_MACROS
+    ]
 
     unresolved = resolve_region_targets(regions)
     emit(out_path, compiler, regions)

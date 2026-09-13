@@ -336,50 +336,50 @@
         <xflag type="soil" location="Termina Field Soil Pillar" actor="0x8" item="ARROWS_30" name="Pillar" xyz="1953;670;0"/>
       </rendering_option>
       <actor actor="0x15">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Termina Field Gossip Fairy Southeast" slice="0" item="FAIRY" name="Gossip Stone - Southeast" xyz="1743;1571;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Termina Field Gossip Big Fairy Southeast" slice="1" item="FAIRY_BIG" name="Gossip Stone - Southeast" xyz="1729;1555;0"/>
         </rendering_option>
       </actor>
       <actor actor="0x16">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Termina Field Gossip Fairy Near Kamaro" slice="0" item="FAIRY" name="Gossip Stone - Near Kamaro" xyz="1110;418;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Termina Field Gossip Big Fairy Near Kamaro" slice="1" item="FAIRY_BIG" name="Gossip Stone - Near Kamaro" xyz="1096;430;0"/>
         </rendering_option>
       </actor>
       <actor actor="0x17">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Termina Field Gossip Fairy Near Mountain" slice="0" item="FAIRY" name="Gossip Stone - Near Mountain" xyz="1531;132;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Termina Field Gossip Big Fairy Near Mountain" slice="1" item="FAIRY_BIG" name="Gossip Stone - Near Mountain" xyz="1510;137;0"/>
         </rendering_option>
       </actor>
       <actor actor="0x18">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Termina Field Gossip Fairy Southwest" slice="0" item="FAIRY" name="Gossip Stone - Southwest" xyz="1033;1462;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Termina Field Gossip Big Fairy Southwest" slice="1" item="FAIRY_BIG" name="Gossip Stone - Southwest" xyz="1017;1475;0"/>
         </rendering_option>
       </actor>
       <actor actor="0x19">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Termina Field Gossip Fairy Northeast" slice="0" item="FAIRY" name="Gossip Stone - Northeast" xyz="2086;377;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Termina Field Gossip Big Fairy Northeast" slice="1" item="FAIRY_BIG" name="Gossip Stone - Northeast" xyz="2071;366;0"/>
         </rendering_option>
       </actor>
       <actor actor="0x1a">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Termina Field Gossip Fairy Observatory" slice="0" item="FAIRY" name="Gossip Stone - Observatory" xyz="2344;1031;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Termina Field Gossip Big Fairy Observatory" slice="1" item="FAIRY_BIG" name="Gossip Stone - Observatory" xyz="2341;1009;0"/>
         </rendering_option>
       </actor>
@@ -616,34 +616,34 @@
         </actor>
       </rendering_option>
       <actor actor="0x9">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Ocean Gossip Grotto Gossip Fairy 1" slice="0" item="FAIRY" name="Gossip Stone 1" xyz="721;377;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Ocean Gossip Grotto Gossip Big Fairy 1" slice="1" item="FAIRY_BIG" name="Gossip Stone 1" xyz="706;363;0"/>
         </rendering_option>
       </actor>
       <actor actor="0xa">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Ocean Gossip Grotto Gossip Fairy 2" slice="0" item="FAIRY" name="Gossip Stone 2" xyz="752;403;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Ocean Gossip Grotto Gossip Big Fairy 2" slice="1" item="FAIRY_BIG" name="Gossip Stone 2" xyz="740;391;0"/>
         </rendering_option>
       </actor>
       <actor actor="0xb">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Ocean Gossip Grotto Gossip Fairy 3" slice="0" item="FAIRY" name="Gossip Stone 3" xyz="796;424;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Ocean Gossip Grotto Gossip Big Fairy 3" slice="1" item="FAIRY_BIG" name="Gossip Stone 3" xyz="782;410;0"/>
         </rendering_option>
       </actor>
       <actor actor="0xc">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Ocean Gossip Grotto Gossip Fairy 4" slice="0" item="FAIRY" name="Gossip Stone 4" xyz="841;469;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Ocean Gossip Grotto Gossip Big Fairy 4" slice="1" item="FAIRY_BIG" name="Gossip Stone 4" xyz="825;453;0"/>
         </rendering_option>
       </actor>
@@ -652,34 +652,34 @@
   <scene id="GROTTOS" room="0x1">
     <scene_rendering id="MM_GROTTO_TERMINA_SWAMP_GOSSIP" loc_type="overworld">
       <actor actor="0x3">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Swamp Gossip Grotto Gossip Fairy 1" slice="0" item="FAIRY" name="Gossip Stone 1" xyz="237;395;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Swamp Gossip Grotto Gossip Big Fairy 1" slice="1" item="FAIRY_BIG" name="Gossip Stone 1" xyz="221;404;0"/>
         </rendering_option>
       </actor>
       <actor actor="0x4">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Swamp Gossip Grotto Gossip Fairy 2" slice="0" item="FAIRY" name="Gossip Stone 2" xyz="285;378;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Swamp Gossip Grotto Gossip Big Fairy 2" slice="1" item="FAIRY_BIG" name="Gossip Stone 2" xyz="270;387;0"/>
         </rendering_option>
       </actor>
       <actor actor="0x5">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Swamp Gossip Grotto Gossip Fairy 3" slice="0" item="FAIRY" name="Gossip Stone 3" xyz="332;362;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Swamp Gossip Grotto Gossip Big Fairy 3" slice="1" item="FAIRY_BIG" name="Gossip Stone 3" xyz="317;369;0"/>
         </rendering_option>
       </actor>
       <actor actor="0x6">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Swamp Gossip Grotto Gossip Fairy 4" slice="0" item="FAIRY" name="Gossip Stone 4" xyz="363;350;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Swamp Gossip Grotto Gossip Big Fairy 4" slice="1" item="FAIRY_BIG" name="Gossip Stone 4" xyz="349;357;0"/>
         </rendering_option>
       </actor>
@@ -695,34 +695,34 @@
         <xflag type="grass" location="Canyon Gossip Grotto Grass 5" actor="0x4" item="RANDOM" name="Grass 5" xyz="702;422;0"/>
       </rendering_option>
       <actor actor="0x5">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Canyon Gossip Grotto Gossip Fairy 1" slice="0" item="FAIRY" name="Gossip Stone 1" xyz="138;459;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Canyon Gossip Grotto Gossip Big Fairy 1" slice="1" item="FAIRY_BIG" name="Gossip Stone 1" xyz="126;473;0"/>
         </rendering_option>
       </actor>
       <actor actor="0x6">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Canyon Gossip Grotto Gossip Fairy 2" slice="0" item="FAIRY" name="Gossip Stone 2" xyz="175;421;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Canyon Gossip Grotto Gossip Big Fairy 2" slice="1" item="FAIRY_BIG" name="Gossip Stone 2" xyz="162;434;0"/>
         </rendering_option>
       </actor>
       <actor actor="0x7">
-        <rendering_option type="fairy">
-          <xflag type="gossip" location="Canyon Gossip Grotto Gossip Fairy 3" slice="0" item="FAIRY" name="Gossip Stone 3" xyz="281;408;0"/>
+        <rendering_option layout="all" type="fairy">
+          <xflag type="gossip" location="Canyon Gossip Grotto Gossip Fairy 3" slice="0" item="FAIRY" name="Gossip Stone 3" xyz="209;388;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Canyon Gossip Grotto Gossip Big Fairy 3" slice="1" item="FAIRY_BIG" name="Gossip Stone 3" xyz="194;403;0"/>
         </rendering_option>
       </actor>
       <actor actor="0x8">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Canyon Gossip Grotto Gossip Fairy 4" slice="0" item="FAIRY" name="Gossip Stone 4" xyz="243;356;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Canyon Gossip Grotto Gossip Big Fairy 4" slice="1" item="FAIRY_BIG" name="Gossip Stone 4" xyz="229;370;0"/>
         </rendering_option>
       </actor>
@@ -731,34 +731,34 @@
   <scene id="GROTTOS" room="0x3">
     <scene_rendering id="MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP" loc_type="overworld">
       <actor actor="0x1">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Mountain Gossip Grotto Gossip Fairy 1" slice="0" item="FAIRY" name="Gossip Stone 1" xyz="328;556;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Mountain Gossip Grotto Gossip Big Fairy 1" slice="1" item="FAIRY_BIG" name="Gossip Stone 1" xyz="310;568;0"/>
         </rendering_option>
       </actor>
       <actor actor="0x2">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Mountain Gossip Grotto Gossip Fairy 2" slice="0" item="FAIRY" name="Gossip Stone 2" xyz="384;525;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Mountain Gossip Grotto Gossip Big Fairy 2" slice="1" item="FAIRY_BIG" name="Gossip Stone 2" xyz="359;537;0"/>
         </rendering_option>
       </actor>
       <actor actor="0x3">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Mountain Gossip Grotto Gossip Fairy 3" slice="0" item="FAIRY" name="Gossip Stone 3" xyz="437;499;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Mountain Gossip Grotto Gossip Big Fairy 3" slice="1" item="FAIRY_BIG" name="Gossip Stone 3" xyz="423;509;0"/>
         </rendering_option>
       </actor>
       <actor actor="0x4">
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Mountain Gossip Grotto Gossip Fairy 4" slice="0" item="FAIRY" name="Gossip Stone 4" xyz="473;479;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Mountain Gossip Grotto Gossip Big Fairy 4" slice="1" item="FAIRY_BIG" name="Gossip Stone 4" xyz="459;489;0"/>
         </rendering_option>
       </actor>

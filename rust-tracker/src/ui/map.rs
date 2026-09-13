@@ -523,6 +523,7 @@ impl TrackerApp {
                             let mut region_scenes: Vec<&'static data::SceneDef> = scenes
                                 .iter()
                                 .filter(|s| {
+                                    let has_count = counts.get(&s.id).is_some_and(|&(_, t)| t > 0);
                                     eff_region(s) == Some(rid)
                                         // Entrance tab: drop scenes with no valid entrance
                                         // (all None-type / wrong layout -> total 0), exactly
@@ -532,8 +533,9 @@ impl TrackerApp {
                                         // scenes, etc. In hide-unreachable mode the item tabs
                                         // apply the same `t > 0` gate to drop scenes with
                                         // nothing reachable.
+                                        && has_count
                                         && ((!entrance_tab && !hide_mode)
-                                            || counts.get(&s.id).is_some_and(|&(_, t)| t > 0))
+                                            || has_count)
                                         && (query.is_empty()
                                             // Match the raw (English) name and the
                                             // translated one shown in the tree.

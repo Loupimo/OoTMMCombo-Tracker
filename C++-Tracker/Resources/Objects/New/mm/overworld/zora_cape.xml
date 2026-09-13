@@ -140,10 +140,10 @@
       <actor>
         <match setup="0" actor="0x3e"/>
         <match setup="1" actor="0x0"/>
-        <rendering_option type="fairy">
+        <rendering_option layout="all" type="fairy">
           <xflag type="gossip" location="Zora Cape Gossip Fairy" slice="0" item="FAIRY" name="Gossip Stone" xyz="686;234;0"/>
         </rendering_option>
-        <rendering_option type="fairy_spot">
+        <rendering_option layout="all" type="fairy_spot">
           <xflag type="gossip-big" location="Zora Cape Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Stone" xyz="670;228;0"/>
         </rendering_option>
       </actor>

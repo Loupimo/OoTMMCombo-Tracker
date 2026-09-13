@@ -56,7 +56,7 @@ impl TrackerApp {
                 });
                 ui.add_space(4.0);
 
-                // Row 2.5: [Load Patch] + the current patch file status. The r4
+                // Row 2.5: [Load Patch] + the current patch file status. The r9
                 // multiplayer reads the session identity from this .ootmm patch.
                 ui.horizontal(|ui| {
                     if ui.button(format!("📦  {}", self.i18n.load_patch())).clicked() {

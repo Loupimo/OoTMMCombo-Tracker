@@ -22,12 +22,33 @@
       </rendering_option>
       <actor room="0x1" actor="0x11">
         <xflag type="rupee" location="Deku Palace Rupee Right 07" slice="0" item="RUPEE_GREEN" name="Right 7" xyz="590;179;1"/>
+        <rendering_option layout="mm_jp">
+          <xflag type="rupee" location="Deku Palace Rupee Right 07" slice="0" item="RUPEE_GREEN" name="Right 7" xyz="585;229;1"/>
+        </rendering_option>
         <xflag type="rupee" location="Deku Palace Rupee Right 08" slice="1" item="RUPEE_GREEN" name="Right 8" xyz="603;174;1"/>
+        <rendering_option layout="mm_jp">
+          <xflag type="rupee" location="Deku Palace Rupee Right 08" slice="1" item="RUPEE_GREEN" name="Right 8" xyz="598;224;1"/>
+        </rendering_option>
         <xflag type="rupee" location="Deku Palace Rupee Right 09" slice="2" item="RUPEE_GREEN" name="Right 9" xyz="603;163;0"/>
+        <rendering_option layout="mm_jp">
+          <xflag type="rupee" location="Deku Palace Rupee Right 09" slice="2" item="RUPEE_GREEN" name="Right 9" xyz="598;213;0"/>
+        </rendering_option>
         <xflag type="rupee" location="Deku Palace Rupee Right 10" slice="3" item="RUPEE_GREEN" name="Right 10" xyz="590;157;0"/>
+        <rendering_option layout="mm_jp">
+          <xflag type="rupee" location="Deku Palace Rupee Right 10" slice="3" item="RUPEE_GREEN" name="Right 10" xyz="585;207;0"/>
+        </rendering_option>
         <xflag type="rupee" location="Deku Palace Rupee Right 11" slice="4" item="RUPEE_GREEN" name="Right 11" xyz="577;163;0"/>
+        <rendering_option layout="mm_jp">
+          <xflag type="rupee" location="Deku Palace Rupee Right 11" slice="4" item="RUPEE_GREEN" name="Right 11" xyz="572;213;0"/>
+        </rendering_option>
         <xflag type="rupee" location="Deku Palace Rupee Right 12" slice="5" item="RUPEE_GREEN" name="Right 12" xyz="577;174;0"/>
+        <rendering_option layout="mm_jp">
+          <xflag type="rupee" location="Deku Palace Rupee Right 12" slice="5" item="RUPEE_GREEN" name="Right 12" xyz="572;224;0"/>
+        </rendering_option>
         <xflag type="rupee" location="Deku Palace Rupee Right 13" slice="6" item="RUPEE_RED" name="Right 13" xyz="590;168;0"/>
+        <rendering_option layout="mm_jp">
+          <xflag type="rupee" location="Deku Palace Rupee Right 13" slice="6" item="RUPEE_RED" name="Right 13" xyz="585;218;0"/>
+        </rendering_option>
       </actor>
       <rendering_option layout="all">
         <xflag type="rupee" location="Deku Palace Rupee Left 1" room="0x2" actor="0x0" item="RUPEE_GREEN" name="Left 1" xyz="271;292;0"/>

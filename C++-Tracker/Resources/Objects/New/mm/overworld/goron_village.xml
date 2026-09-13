@@ -60,17 +60,17 @@
         <actor room="0x0">
           <match setup="0" actor="0x03"/>
           <match setup="1" actor="0x08"/>
-          <xflag type="rock" location="Goron Shrine Rock 02" item="RANDOM" name="Rock 2" xyz="430;409;0"/>
+          <xflag type="rock" location="Goron Shrine Rock 02" item="RANDOM" name="Rock 2" xyz="412;399;0"/>
         </actor>
         <actor room="0x0">
           <match setup="0" actor="0x04"/>
           <match setup="1" actor="0x09"/>
-          <xflag type="rock" location="Goron Shrine Rock 03" item="RANDOM" name="Rock 3" xyz="412;399;0"/>
+          <xflag type="rock" location="Goron Shrine Rock 03" item="RANDOM" name="Rock 3" xyz="430;390;0"/>
         </actor>
         <actor room="0x0">
           <match setup="0" actor="0x05"/>
           <match setup="1" actor="0x0a"/>
-          <xflag type="rock" location="Goron Shrine Rock 04" item="RANDOM" name="Rock 4" xyz="430;390;0"/>
+          <xflag type="rock" location="Goron Shrine Rock 04" item="RANDOM" name="Rock 4" xyz="430;409;0"/>
         </actor>
         <actor room="0x0">
           <match setup="0" actor="0x06"/>
