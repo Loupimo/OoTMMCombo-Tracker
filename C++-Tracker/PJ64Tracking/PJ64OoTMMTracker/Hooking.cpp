@@ -732,10 +732,39 @@ static void HandleShop(uint32_t PC)
 
 
 /*
+*   The combo payload (0x804xxxxx) is shared by both games, so a transition / play-init hook
+*   resolved for one game can physically execute while the OTHER game is the one loaded in RAM
+*   (during the detection throttle window right after a game swap). Capturing then would snapshot
+*   the wrong game's RAM: the scene offsets point at foreign data / code and the emitted entrance
+*   event is garbage that pollutes the pairing. Re-verify the loaded game from its RAM magic and
+*   reject the event on mismatch.
+*
+*   @return true when the loaded game still matches gGame and capture may proceed.
+*/
+static __forceinline bool VerifyLoadedGame()
+{
+    GameID expected = gGame;
+    DetectCurrentGame();            // refresh gGame from the ZELDAZ / ZELDA3 magic
+    if (gGame != expected)
+    {   // Stale game id: this hook belongs to a game that is no longer the one in RAM.
+        forceGameCheck = true;      // force a clean re-sync on the next hook
+        return false;
+    }
+
+    return true;
+}
+
+
+/*
 *   hookPlay_Init handler: build the incoming entrance / scene / coordinates snapshot.
 */
 static void HandlePlayInit(uint32_t PC)
 {
+    if (!VerifyLoadedGame())
+    {
+        return;
+    }
+
     forceGameCheck = false;
 
     Event* e = &gData->Buffer[gData->CurrIndex];
@@ -780,6 +809,11 @@ static void HandlePlayInit(uint32_t PC)
 */
 static void HandleTransition(uint32_t PC)
 {
+    if (!VerifyLoadedGame())
+    {
+        return;
+    }
+
     forceGameCheck = true;
 
     Event* e = &gData->Buffer[gData->CurrIndex];
@@ -826,25 +860,24 @@ static void HandleTransition(uint32_t PC)
     gData->CurrIndex = (gData->CurrIndex + 1) & (BUFFER_SIZE - 1);
 
     // NOTE: the original hand-written hook physically fell through from the transition
-    // code into the gossip / butterfly code, but that path bailed out immediately because
+    // code into the butterfly code, but that path bailed out immediately because
     // forceGameCheck had just been set to true. Returning here is therefore equivalent.
 }
 
 
 /*
-*   EnGs_SpawnFairy / EnButte_TransformIntoFairy handler: capture a "Nothing" gossip fairy or
+*   EnButte_TransformIntoFairy handler: capture a "Nothing" gossip fairy or
 *   butterfly cross-flag.
 */
-static void HandleGossipButterfly(uint32_t PC)
+static void HandleButterfly(uint32_t PC)
 {
-    // Test if we are currently changing room. If yes then this should be aborted as the gossip
-    // PC could be reached by a game switch without being a real gossip stone.
+    // Test if we are currently changing room.
     if (forceGameCheck)
     {
         return;
     }
 
-    // Get the butterfly / gossip object ID
+    // Get the butterfly object ID
     if (ReadN64Reg(V1_OFFSET) != gNothingID)
     {
         return;
@@ -892,9 +925,9 @@ static __forceinline void DispatchPC(uint32_t PC)
     {
         HandleTransition(PC);
     }
-    else if (PC == pcs[6] || PC == pcs[7])  // EnGs_SpawnFairy / EnButte_TransformIntoFairy
+    else if (PC == pcs[6])                  // EnButte_TransformIntoFairy
     {
-        HandleGossipButterfly(PC);
+        HandleButterfly(PC);
     }
 }
 
@@ -1040,7 +1073,7 @@ __declspec(naked) void PCHook()
         cmp  byte ptr [gIsRAMLoaded], 0
         je   Cold                                   // game RAM not ready
 
-        // ---- dispatch: is this PC one of the 8 tracked events? ----
+        // ---- dispatch: is this PC one of the 7 tracked events? ----
         mov  eax, [gActivePCs]
         cmp  ecx, [eax]
         je   Cold
@@ -1055,8 +1088,6 @@ __declspec(naked) void PCHook()
         cmp  ecx, [eax + 20]
         je   Cold
         cmp  ecx, [eax + 24]
-        je   Cold
-        cmp  ecx, [eax + 28]
         je   Cold
 
         // Untracked PC: the overwhelmingly common case. No C call at all.

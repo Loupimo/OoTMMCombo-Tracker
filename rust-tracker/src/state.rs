@@ -45,7 +45,7 @@ impl TrackerApp {
             mp_host,
             mp_port,
             multi: None,
-            r9: None,
+            dev: None,
             patch_path: None,
             patch_info: None,
             patch_startup_check: false,
@@ -102,6 +102,7 @@ impl TrackerApp {
             counts_dirty: true,
             autosave_dir: data_dir.join("autosave"),
             seed_tag: "empty".to_string(),
+            current_autosave_file: None,
             legacy_save_path: data_dir.join("tracker_save.txt"),
             spoiler_path_file: data_dir.join("tracker_spoiler.txt"),
             dirty: false,
@@ -224,7 +225,7 @@ impl TrackerApp {
     /// drive the poller and update the journal. The status pill reflects the
     /// same flag.
     pub(crate) fn toggle_tracking(&mut self, ctx: &egui::Context) {
-        // Starting the tracker: the r9 method needs a patch file. If none is loaded
+        // Starting the tracker: the dev method needs a patch file. If none is loaded
         // yet, prompt for one now (the DLL hook still works as a backup if the user
         // cancels the dialog).
         if !self.tracking && self.patch_info.is_none() {
@@ -233,19 +234,19 @@ impl TrackerApp {
         self.tracking = !self.tracking;
         self.poller.set_tracking(self.tracking);
         if self.tracking {
-            // A loaded patch selects the r9 mechanism (dev OoTMM builds only, the
+            // A loaded patch selects the dev mechanism (dev OoTMM builds only, the
             // ones exposing the emulator IPC pipe); otherwise the old net-context
             // client runs when multiplayer is on. On a non-dev build the pipe is
-            // absent, r9 never validates HELLO, and the DLL hook stays authoritative.
+            // absent, dev never validates HELLO, and the DLL hook stays authoritative.
             if self.patch_info.is_some() {
-                self.start_r9(ctx);
+                self.start_dev(ctx);
             } else if self.use_multiplayer {
                 self.start_multiplayer(ctx);
             }
             self.log_msg(self.i18n.reading_mem().to_string());
         } else {
             self.stop_multiplayer();
-            self.stop_r9();
+            self.stop_dev();
             self.log_msg(self.i18n.log_tracker_stop().to_string());
         }
     }
@@ -275,33 +276,33 @@ impl TrackerApp {
         }
     }
 
-    /// Spawn the r9 multiplayer client (dev OoTMM builds only): it connects to the
+    /// Spawn the dev multiplayer client (dev OoTMM builds only): it connects to the
     /// emulator's named pipe and relays WAL entries to / from the OoTMM server,
     /// deriving the session identity from the loaded patch. The DLL hook path
     /// (poller) keeps running in parallel as a backup — and becomes the sole source
     /// of truth on non-dev builds, where the pipe never appears.
-    pub(crate) fn start_r9(&mut self, ctx: &egui::Context) {
-        if self.r9.is_some() {
+    pub(crate) fn start_dev(&mut self, ctx: &egui::Context) {
+        if self.dev.is_some() {
             return;
         }
         let Some(info) = self.patch_info.clone() else { return };
-        // The r9 server lives at multi.ootmm.com:14236 (distinct from the old
+        // The dev server lives at multi.ootmm.com:14236 (distinct from the old
         // mechanism's port); the host field is reused so a custom server works.
         let host = self.mp_host.trim();
         let host = if host.is_empty() { "multi.ootmm.com" } else { host };
-        let cfg = multi_r9::R9Config {
+        let cfg = multi_dev::DevConfig {
             server_host: host.to_string(),
             server_port: 14236,
-            data_dir: r9_data_dir(),
+            data_dir: dev_data_dir(),
         };
         let server = format!("{}:{}", cfg.server_host, cfg.server_port);
-        self.log_msg(self.i18n.log_r9_enabled(&info.summary(), &server));
-        self.r9 = Some(multi_r9::spawn(ctx.clone(), cfg, info));
+        self.log_msg(self.i18n.log_dev_enabled(&info.summary(), &server));
+        self.dev = Some(multi_dev::spawn(ctx.clone(), cfg, info));
     }
 
-    /// Stop the r9 client if it is running (joins its thread).
-    pub(crate) fn stop_r9(&mut self) {
-        if let Some(mut handle) = self.r9.take() {
+    /// Stop the dev client if it is running (joins its thread).
+    pub(crate) fn stop_dev(&mut self) {
+        if let Some(mut handle) = self.dev.take() {
             handle.stop();
         }
     }
@@ -355,13 +356,13 @@ impl TrackerApp {
     }
 
     /// Unload the selected patch (the Launch ✕ button): drop the path + parsed
-    /// session info, stop the r9 client if it was running (it derives its identity
+    /// session info, stop the dev client if it was running (it derives its identity
     /// from the patch), and persist the removal. The DLL hook keeps tracking.
     pub(crate) fn clear_patch(&mut self) {
         if self.patch_path.is_none() && self.patch_info.is_none() {
             return;
         }
-        self.stop_r9();
+        self.stop_dev();
         self.patch_path = None;
         self.patch_info = None;
         self.log_msg(self.i18n.patch_unloaded().to_string());
@@ -405,9 +406,11 @@ impl TrackerApp {
     /// then clear collected items, forced marks and discovered entrances.
     pub(crate) fn reset_tracking(&mut self) {
         self.save_state(); // Qt autosaves the current state before wiping it
-        // Back to a no-spoiler run: future autosaves target `empty.xml`, so the seed
-        // file we just flushed keeps its progress instead of being overwritten empty.
+        // Back to a no-spoiler run. Drop this session's file so the next autosave
+        // opens a fresh timestamped one (Qt `ResetTracking` rotates the autosave
+        // path), leaving the file we just flushed with its pre-reset progress.
         self.seed_tag = "empty".to_string();
+        self.current_autosave_file = None;
         // Full clean slate: the Qt `ResetObject` clears both `Status` AND `Item`, so
         // a reset drops the loaded spoiler too — not only the collected marks. Left
         // in place, the placements linger as item traces on every actor and the
@@ -491,23 +494,79 @@ impl TrackerApp {
         }
     }
 
-    /// The active per-seed autosave file: `<autosave_dir>/<seed_tag>.xml`. The stem
-    /// is the loaded spoiler's seed hash, or `empty` when no spoiler is loaded, so a
-    /// new seed lands in a new file while the no-seed run always overwrites one.
-    fn autosave_path(&self) -> PathBuf {
-        self.autosave_dir.join(format!("{}.xml", self.seed_tag))
+    /// A fresh timestamped autosave path `<autosave_dir>/AutoSave-<dd_MM_yyyy_HH_mm_ss>.xml`
+    /// (Qt `LogTab` naming). If a file with that name already exists (a second save
+    /// within the same clock second), a `_<n>` suffix disambiguates it so a launch
+    /// never clobbers one it just wrote.
+    fn new_autosave_path(&self) -> PathBuf {
+        let stem = format!("AutoSave-{}", local_timestamp());
+        let base = self.autosave_dir.join(format!("{stem}.xml"));
+        if !base.exists() {
+            return base;
+        }
+        for n in 2.. {
+            let p = self.autosave_dir.join(format!("{stem}_{n}.xml"));
+            if !p.exists() {
+                return p;
+            }
+        }
+        base
     }
 
-    pub(crate) fn save_state(&self) {
+    /// The newest autosave file whose stamped seed matches `seed` (the "compatible"
+    /// check: same seed = same playthrough). Files with no `seed` attribute (legacy
+    /// or hand-written) count as the no-seed `empty` context. Returns `None` when no
+    /// matching file exists yet — the caller then starts a fresh one.
+    fn newest_matching_autosave(&self, seed: &str) -> Option<PathBuf> {
+        let entries = std::fs::read_dir(&self.autosave_dir).ok()?;
+        let mut best: Option<(std::time::SystemTime, PathBuf)> = None;
+        for entry in entries.flatten() {
+            let path = entry.path();
+            if path.extension().and_then(|e| e.to_str()) != Some("xml") {
+                continue;
+            }
+            // Prefer the stamped seed; fall back to the legacy `<hash>.xml` scheme
+            // (pre-timestamp files carry no attribute — their stem IS the seed hash),
+            // so a seed already played before this change still resumes. A timestamped
+            // file with no seed attribute is the no-seed `empty` context.
+            let file_seed = read_save_seed(&path).unwrap_or_else(|| {
+                match path.file_stem().and_then(|s| s.to_str()) {
+                    Some(stem) if !stem.starts_with("AutoSave-") => stem.to_string(),
+                    _ => "empty".to_string(),
+                }
+            });
+            if file_seed != seed {
+                continue;
+            }
+            let Ok(mtime) = entry.metadata().and_then(|m| m.modified()) else { continue };
+            let newer = match &best {
+                Some((t, _)) => mtime > *t,
+                None => true,
+            };
+            if newer {
+                best = Some((mtime, path));
+            }
+        }
+        best.map(|(_, p)| p)
+    }
+
+    /// Autosave the current state to this session's file, creating a fresh
+    /// timestamped one on the first call (or after a seed switch / reset cleared it).
+    pub(crate) fn save_state(&mut self) {
         let _ = std::fs::create_dir_all(&self.autosave_dir);
-        self.save_to(&self.autosave_path());
+        if self.current_autosave_file.is_none() {
+            self.current_autosave_file = Some(self.new_autosave_path());
+        }
+        if let Some(path) = self.current_autosave_file.clone() {
+            self.save_to(&path);
+        }
     }
 
     /// Serialize the tracked state to a human-readable / hand-editable XML save
     /// (`<tracker version="6">`). Shared by the autosave and the "Save Tracking"
     /// dialog. See [`Self::load_from_xml`] for the reader.
     ///
-    /// Layout: `<paths>` (remembered spoiler + r9 patch), then `<worlds>` — one
+    /// Layout: `<paths>` (remembered spoiler + dev patch), then `<worlds>` — one
     /// `<world index="N">` (1-based) per world, its collected/placed locations
     /// grouped by scene — then `<entrances>` (visited flag + discovered out/in
     /// links, grouped by scene). A `<location>` loads on its numeric identity
@@ -515,7 +574,7 @@ impl TrackerApp {
     /// fallback; a placed `<item>` loads on its stable `id`, with `name` as a
     /// fallback. The remaining `name` annotations are readable and ignored on load.
     pub(crate) fn save_to(&self, path: &std::path::Path) {
-        // The remembered spoiler (sidecar) + the r9 patch path go in <paths>.
+        // The remembered spoiler (sidecar) + the dev patch path go in <paths>.
         let spoiler = std::fs::read_to_string(&self.spoiler_path_file)
             .ok()
             .map(|s| s.trim().to_string())
@@ -523,6 +582,7 @@ impl TrackerApp {
         let patch = self.patch_path.as_ref().map(|p| p.display().to_string());
         let xml = render_save_xml(
             &self.worlds,
+            &self.seed_tag,
             patch.as_deref(),
             spoiler.as_deref(),
             &self.visited_entrances,
@@ -532,12 +592,16 @@ impl TrackerApp {
         let _ = std::fs::write(path, xml);
     }
 
-    /// Restore the collected-set from the active seed's autosave file (by Location).
-    /// Falls back once to the pre-3.0 single autosave (`tracker_save.txt`) when no
-    /// per-seed file exists yet, so upgrading users keep their last no-seed progress.
+    /// Restore progress from the newest autosave whose seed matches the current one
+    /// (the Qt "load the most recent compatible save"). At startup the seed is still
+    /// `empty` (no spoiler yet), so this restores the last no-spoiler session;
+    /// `auto_load_spoiler` then switches to the real seed and restores its own file
+    /// (see `load_spoiler`). Falls back once to the pre-3.0 single autosave when no
+    /// matching file exists yet. `current_autosave_file` stays `None` here: this
+    /// launch's own file is opened lazily / on the seed switch, so the loaded file
+    /// is never overwritten by the session that only read it.
     pub(crate) fn load_state(&mut self) {
-        let path = self.autosave_path();
-        if path.is_file() {
+        if let Some(path) = self.newest_matching_autosave(&self.seed_tag) {
             self.load_from(&path);
         } else if self.seed_tag == "empty" && self.legacy_save_path.is_file() {
             self.load_from(&self.legacy_save_path.clone());
@@ -585,7 +649,7 @@ impl TrackerApp {
             if line.starts_with(SAVE_VERSION_TAG) {
                 // Save-format version marker (latest-version saves only); no action.
             } else if let Some(rest) = line.strip_prefix("PATCH ") {
-                // r9 patch file path, restored so startup can auto-load it.
+                // dev patch file path, restored so startup can auto-load it.
                 self.patch_path = Some(std::path::PathBuf::from(rest.trim()));
             } else if let Some(rest) = line.strip_prefix("WORLD ") {
                 if let Ok(n) = rest.trim().parse::<usize>() {
@@ -779,19 +843,98 @@ impl TrackerApp {
             }
         }
 
-        // Drain the r9 client thread the same way (shares NetItem / apply_net_item).
-        let mut r9_msgs = Vec::new();
-        if let Some(handle) = self.r9.as_ref() {
+        // Drain the dev client thread the same way (shares NetItem / apply_net_item).
+        let mut dev_msgs = Vec::new();
+        if let Some(handle) = self.dev.as_ref() {
             while let Ok(msg) = handle.rx.try_recv() {
-                r9_msgs.push(msg);
+                dev_msgs.push(msg);
             }
         }
-        for msg in r9_msgs {
+        for msg in dev_msgs {
             match msg {
-                multi_r9::R9Msg::Log(line) => self.log_msg(line),
-                multi_r9::R9Msg::Item(item) => self.apply_net_item(item),
+                multi_dev::DevMsg::Log(line) => self.log_msg(line),
+                multi_dev::DevMsg::Item(item) => self.apply_net_item(item),
+                multi_dev::DevMsg::Entrance(e) => self.apply_info_entrance(e),
             }
         }
+    }
+
+    /// Map a dev INFO_ENTRANCE endpoint (raw key + manifest symbol) to the tracker's
+    /// `(Game, entrance id)`. The game comes from the symbol's `OOT_` / `MM_` prefix
+    /// (the numeric id space overlaps between the two games, so the prefix is what
+    /// disambiguates); the id is the raw key, which shares OoTMM's entrance
+    /// numbering. Returns `None` when the game can't be told or the id isn't a known
+    /// entrance (a symbol renumbered / added since this build) — the caller then
+    /// leaves the entrance graph untouched, and the client thread's journal line
+    /// still recorded the transition.
+    fn resolve_dev_entrance(&self, key: u32, sym: &str) -> Option<(Game, u32)> {
+        let game = if sym.starts_with("OOT_") {
+            Game::Oot
+        } else if sym.starts_with("MM_") {
+            Game::Mm
+        } else {
+            return None;
+        };
+        entrance::lookup(game, key).map(|_| (game, key))
+    }
+
+    /// Fold a resolved dev INFO_ENTRANCE transition into the entrance graph, the
+    /// same way the DLL-hook path does (`handle_entrance`): record the discovered
+    /// out/in link, mark both endpoints visited, and update the player's scene for
+    /// the auto-follow. The arrival (`entrance`) is the destination; `original` is
+    /// the doorway used (absent on respawns / age swaps). Endpoints whose symbol
+    /// doesn't map to a known entrance are skipped (the journal already logged them).
+    pub(crate) fn apply_info_entrance(&mut self, e: multi_dev::NetEntrance) {
+        let Some(inc) = self.resolve_dev_entrance(e.entrance.0, &e.entrance.1) else {
+            return;
+        };
+        let out = e.original.as_ref().and_then(|(k, s)| self.resolve_dev_entrance(*k, s));
+
+        // Discovered link: leaving `out` leads to `inc` (skip the trivial self-map
+        // of an unshuffled entrance, where original == entrance).
+        if let Some(out) = out {
+            if out != inc {
+                let newly = self.out_links.insert(out, inc) != Some(inc);
+                if newly && self.app_settings.logic_progressive_entrances {
+                    self.logic_dirty = true;
+                }
+                let sources = self.in_links.entry(inc).or_default();
+                if !sources.contains(&out) {
+                    sources.push(out);
+                }
+                self.visited_entrances.insert(out);
+            }
+        }
+        self.visited_entrances.insert(inc);
+
+        // Arrival effects: the player is now at `inc` (drives auto-follow / auto-GPS).
+        if let Some(d) = entrance::lookup(inc.0, inc.1) {
+            self.last_entrance = Some(self.i18n.tr_entrance(d.to_name).to_string());
+            self.player_scene = Some((inc.0, d.to_scene));
+            // No raw arriving scene here (INFO_ENTRANCE carries none), so the generic
+            // node resolves to its own object scene; Market Day/Night stays generic.
+            let prev_obj_scene = self.player_obj_scene;
+            self.player_obj_scene = resolve_obj_scene(inc.0, d.to_scene, d.to_scene as u32, &self.mq_scenes);
+            // Seed-the-live-scene needs a recompute on a scene change even when the
+            // link was already known (mirrors `handle_entrance`).
+            if self.app_settings.logic_progressive_entrances
+                && self.player_obj_scene != prev_obj_scene
+            {
+                self.logic_dirty = true;
+            }
+        }
+        // Follow the transmitted OoT age (0 = adult, 1 = child) on the age/season
+        // context toggle, like a pickup's ObjectContext auto-switch. MM's age field
+        // isn't a child/adult split, so only OoT drives the toggle here.
+        if inc.0 == Game::Oot {
+            match e.age {
+                0 => self.context_toggle = true,  // adult
+                1 => self.context_toggle = false, // child
+                _ => {}
+            }
+        }
+        self.dirty = true;
+        self.counts_dirty = true;
     }
 
     /// Apply a decoded network ledger transfer to the tracked worlds (port of
@@ -884,14 +1027,14 @@ impl TrackerApp {
         // HookItem gate). Skipping the hook for real items avoids marking them in
         // the local world when the ledger will place them in the correct world.
         let is_nothing = ev.query[2] & 0xFFFF_0000 == 0xFFFF_0000;
-        // The old net-context client owns real items in a coop / multi seed; the r9
+        // The old net-context client owns real items in a coop / multi seed; the dev
         // client (WAL) owns them only when it has a LIVE session matching the patch
         // (non-single). If the loaded game predates the IPC or its session differs
-        // from the patch, r9 isn't connected → the hook keeps the item (fallback).
+        // from the patch, dev isn't connected → the hook keeps the item (fallback).
         let old_owns = self.multi.is_some() && self.rom_settings.mode != settings::GameMode::Single;
-        let r9_owns = self.r9.as_ref().map(|h| h.is_connected()).unwrap_or(false)
+        let dev_owns = self.dev.as_ref().map(|h| h.is_connected()).unwrap_or(false)
             && self.patch_info.as_ref().map(|p| p.mode != patch::PatchMode::Single).unwrap_or(false);
-        let net_owns_real = old_owns || r9_owns;
+        let net_owns_real = old_owns || dev_owns;
         if let Some(hit) = tracking::resolve_collected(&ev, self.rom, self.uses_legacy_xflags, &self.mq_scenes) {
             if !is_nothing && net_owns_real {
                 return; // let the network ledger own this real item
@@ -909,6 +1052,21 @@ impl TrackerApp {
                 obj.name,
             );
             self.last_item = Some(item.clone());
+            // Persist the resolved pickup name into the local world's placement map so
+            // the collected-object panel shows it even with NO spoiler loaded — the GI
+            // hook has already named the item (as it does in the journal). Only genuine
+            // items are stored: a "nothing" drop or the object-name fallback (GI did not
+            // resolve to a real item) is not a placement, and an existing spoiler
+            // placement is never overwritten (`or_insert`).
+            let has_real_name = self.worlds[LOCAL].items.contains_key(obj.location)
+                || (!is_nothing
+                    && tracking::net_item_name((ev.query[2] & 0xFFFF) as u16, self.rom).is_some());
+            if has_real_name {
+                self.worlds[LOCAL]
+                    .items
+                    .entry(obj.location.to_string())
+                    .or_insert_with(|| item.clone());
+            }
             let (rs, room, ox, oy) = (obj.render_scene, obj.room, obj.x as f32, obj.y as f32);
             // A real hook pickup takes precedence over a manual "forced" hand-check
             // (see record_collection): a pre-checked location becomes a genuine
@@ -983,7 +1141,11 @@ impl TrackerApp {
                 if seed_changed {
                     let has_progress = self.worlds.iter().any(|w| !w.collected.is_empty())
                         || !self.visited_entrances.is_empty();
-                    if self.auto_save && has_progress {
+                    // Flush only when this session already owns a file (a mid-session
+                    // seed switch): at startup the loaded state came straight off disk,
+                    // so `current_autosave_file` is still None and re-saving it would
+                    // just spawn a duplicate timestamped file.
+                    if self.auto_save && has_progress && self.current_autosave_file.is_some() {
                         self.save_state(); // preserve the previous seed's file
                     }
                     for w in &mut self.worlds {
@@ -1035,15 +1197,17 @@ impl TrackerApp {
                 } else {
                     self.i18n.spoiler_singleworld(self.worlds[0].items.len(), self.mq_scenes.len())
                 };
-                // New seed: restore this seed's own progress from its autosave (the
-                // collected set was cleared above), if it has been played before.
+                // New seed: restore this seed's own progress from the newest autosave
+                // that matches it (the collected set was cleared above), if it has
+                // been played before, then open a fresh timestamped file for this
+                // session so the restored file is never overwritten in place.
                 if seed_changed {
-                    let auto = self.autosave_path();
-                    if auto.is_file() {
-                        self.load_from(&auto);
+                    if let Some(prev) = self.newest_matching_autosave(&self.seed_tag) {
+                        self.load_from(&prev);
                         self.prog_dirty = true;
                         self.counts_dirty = true;
                     }
+                    self.current_autosave_file = Some(self.new_autosave_path());
                 }
             }
             Err(e) => self.status = format!("Lecture spoiler échouée : {e}"),
@@ -1111,8 +1275,18 @@ impl TrackerApp {
             // The object-map follow needs the scene that actually renders objects:
             // the generic Market resolves to its Day / Night variant (told apart by
             // the raw arriving scene); object-less zones resolve to `None`.
+            let prev_obj_scene = self.player_obj_scene;
             self.player_obj_scene =
                 resolve_obj_scene(evt.in_game, d.to_scene, evt.in_raw_scene, &self.mq_scenes);
+            // Progressive reachability seeds the live scene (`recompute_reachability`),
+            // so a scene change must invalidate the logic even when the entrance link
+            // itself was already known — otherwise the freshly loaded scene's checks
+            // would not light up until the next discovery.
+            if self.app_settings.logic_progressive_entrances
+                && self.player_obj_scene != prev_obj_scene
+            {
+                self.logic_dirty = true;
+            }
             let from = entrance::lookup(evt.out_game, evt.out_entrance).map(|o| o.to_name).unwrap_or("?");
             let msg = self.i18n.entrance_detect(self.i18n.tr_entrance(from), self.i18n.tr_entrance(d.to_name));
             self.log_msg(msg);
@@ -1367,6 +1541,13 @@ impl TrackerApp {
                 })
                 .collect();
             inp.seed_from_visited(&visited);
+            // Seed the scene the player is standing in right now, so its checks are
+            // reachable the instant it loads — not one entrance later. The arriving
+            // entrance's `to_name` does not always name the loaded scene (owl flights,
+            // reverse-pair OUT ids), so `seed_from_visited` alone lagged by a step.
+            if let Some((g, scene)) = self.player_obj_scene {
+                inp.seed_scene(g.idx() as u8, scene as u32);
+            }
             crate::logic::solve(&inp)
         } else {
             // Full-knowledge mode: pure from-SPAWN reachability with every remap known.
@@ -1732,7 +1913,7 @@ impl eframe::App for TrackerApp {
     /// so Project64 is left clean even though it keeps running.
     fn on_exit(&mut self, _gl: Option<&eframe::glow::Context>) {
         self.stop_multiplayer();
-        self.stop_r9();
+        self.stop_dev();
         self.poller.shutdown_and_wait();
     }
 }
@@ -1796,10 +1977,10 @@ fn resolve_obj_scene(
     game.scene_has_objects(generic, mq).then_some((game, generic))
 }
 
-/// Root directory for the r9 client's per-session data (WAL + send queue). Mirrors
+/// Root directory for the dev client's per-session data (WAL + send queue). Mirrors
 /// the Go client's `%APPDATA%/OoTMM/client`, but under a tracker-specific folder
 /// so it never clashes with a standalone client's data.
-fn r9_data_dir() -> std::path::PathBuf {
+fn dev_data_dir() -> std::path::PathBuf {
     if let Ok(appdata) = std::env::var("APPDATA") {
         std::path::PathBuf::from(appdata).join("OoTMM").join("tracker-client")
     } else {
@@ -1875,6 +2056,55 @@ fn merge_saved_worlds(worlds: &mut Vec<crate::WorldData>, saved: Vec<crate::Worl
     }
 }
 
+/// Local wall-clock timestamp `dd_MM_yyyy_HH_mm_ss` for the autosave file name
+/// (mirror of the Qt `LogTab` `QDateTime::toString("dd_MM_yyyy_hh_mm_ss")`). Uses
+/// Win32 `GetLocalTime` directly — the crate is Windows-only and already calls
+/// kernel32 by raw FFI (see `pipe.rs` / `shared_mem.rs`) — so no date/time crate
+/// is pulled in.
+fn local_timestamp() -> String {
+    #[repr(C)]
+    struct SystemTime {
+        year: u16,
+        month: u16,
+        day_of_week: u16,
+        day: u16,
+        hour: u16,
+        minute: u16,
+        second: u16,
+        milliseconds: u16,
+    }
+    #[link(name = "kernel32")]
+    extern "system" {
+        fn GetLocalTime(lp: *mut SystemTime);
+    }
+    let mut t = SystemTime {
+        year: 0,
+        month: 0,
+        day_of_week: 0,
+        day: 0,
+        hour: 0,
+        minute: 0,
+        second: 0,
+        milliseconds: 0,
+    };
+    unsafe { GetLocalTime(&mut t) };
+    format!("{:02}_{:02}_{:04}_{:02}_{:02}_{:02}", t.day, t.month, t.year, t.hour, t.minute, t.second)
+}
+
+/// The `seed` attribute stamped on a save's `<tracker>` element, read from just the
+/// header (no full parse). `None` when the save carries no seed (legacy / hand-
+/// written), which the caller treats as the no-seed `empty` context.
+fn read_save_seed(path: &std::path::Path) -> Option<String> {
+    let text = std::fs::read_to_string(path).ok()?;
+    let tag_start = text.find("<tracker")?;
+    let tag_end = text[tag_start..].find('>')? + tag_start;
+    let head = &text[tag_start..tag_end];
+    let attr = head.find("seed=\"")? + "seed=\"".len();
+    let val = &head[attr..];
+    let end = val.find('"')?;
+    Some(val[..end].to_string())
+}
+
 /// Serialize the tracked state to the human-readable / hand-editable XML save.
 /// Output is deterministic (scenes, locations and entrances are sorted) so saves
 /// diff cleanly. The `loc` attribute — the globally-unique object `Location` — is
@@ -1884,6 +2114,7 @@ fn merge_saved_worlds(worlds: &mut Vec<crate::WorldData>, saved: Vec<crate::Worl
 /// annotations free to hand-edit (the entrance graph reloads from the `id`s).
 fn render_save_xml(
     worlds: &[crate::WorldData],
+    seed: &str,
     patch: Option<&str>,
     spoiler: Option<&str>,
     visited: &HashSet<(Game, u32)>,
@@ -1929,9 +2160,11 @@ fn render_save_xml(
 
     let mut out = String::new();
     out.push_str("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-    writeln!(out, "<tracker version=\"{}\">", crate::SAVE_VERSION).ok();
+    // The seed the save belongs to (`empty` for a no-spoiler run), so a launch can
+    // find the newest *matching* autosave to resume — see `newest_matching_autosave`.
+    writeln!(out, "<tracker version=\"{}\" seed=\"{}\">", crate::SAVE_VERSION, esc(seed)).ok();
 
-    // <paths>: the remembered spoiler (sidecar) + the r9 patch file.
+    // <paths>: the remembered spoiler (sidecar) + the dev patch file.
     out.push_str("  <paths>\n");
     if let Some(sp) = spoiler {
         writeln!(out, "    <spoiler>{}</spoiler>", esc(sp)).ok();
@@ -2647,15 +2880,17 @@ mod tests {
 
         let xml = render_save_xml(
             &worlds,
+            "seedcafebabe",
             Some("C:/patch.ootmm"),
             Some("C:/spoiler.txt"),
             &visited,
             &out_links,
             &in_links,
         );
-        // Sanity: it is the version-6 XML the loader routes on.
+        // Sanity: it is the version-6 XML the loader routes on, stamped with the seed.
         assert!(xml.starts_with("<?xml"));
-        assert!(xml.contains("<tracker version=\"6\">"));
+        assert!(xml.contains("<tracker version=\"6\" seed=\"seedcafebabe\">"));
+        assert_eq!(read_save_seed(std::path::Path::new("nonexistent")), None);
 
         let p = parse_save_xml(&xml);
         assert_eq!(p.worlds.len(), 2);
@@ -2754,7 +2989,7 @@ mod tests {
 
         let mut w = crate::WorldData::default();
         w.collected.insert((Game::Oot, idx));
-        let xml = render_save_xml(&[w], None, None, &HashSet::new(), &HashMap::new(), &HashMap::new());
+        let xml = render_save_xml(&[w], "empty", None, None, &HashSet::new(), &HashMap::new(), &HashMap::new());
         assert!(xml.contains(&format!("oid=\"{:#x}\"", objs[idx].object_id)));
 
         // Simulate an upstream rename: the saved loc no longer matches any object.
@@ -2783,7 +3018,7 @@ mod tests {
 
         let mut w = crate::WorldData::default();
         w.items.insert(loc.clone(), stored.to_string());
-        let xml = render_save_xml(&[w], None, None, &HashSet::new(), &HashMap::new(), &HashMap::new());
+        let xml = render_save_xml(&[w], "empty", None, None, &HashSet::new(), &HashMap::new(), &HashMap::new());
         assert!(xml.contains(&format!("id=\"{id:#x}\"")));
 
         // Corrupt the item name; the id must still resolve it to the canonical name.
@@ -2804,6 +3039,7 @@ mod tests {
         visited.insert((Game::Oot, ent));
         let xml = render_save_xml(
             &[crate::WorldData::default()],
+            "empty",
             None,
             None,
             &visited,
@@ -2839,6 +3075,7 @@ mod tests {
         visited.insert(host);
         let xml = render_save_xml(
             &[crate::WorldData::default()],
+            "empty",
             None,
             None,
             &visited,
@@ -2848,5 +3085,27 @@ mod tests {
         // The <out> carries the dash form, the <in> the arrow form.
         assert!(xml.contains(&format!("<out game=\"OoT\" id=\"{src:#x}\" name=\"{leads}\"/>")));
         assert!(xml.contains(&format!("<in game=\"OoT\" id=\"{src:#x}\" name=\"{spawn}\"/>")));
+    }
+
+    /// `read_save_seed` recovers the stamped seed from a written save, and reports
+    /// `None` for a save that carries no seed (a legacy file), so the autosave
+    /// matcher treats the latter as the no-seed `empty` context.
+    #[test]
+    fn read_save_seed_round_trips() {
+        let dir = std::env::temp_dir().join(format!("seedscan-{}", std::process::id()));
+        let _ = std::fs::create_dir_all(&dir);
+        let w = crate::WorldData::default();
+
+        let stamped = dir.join("stamped.xml");
+        let xml = render_save_xml(&[w.clone()], "18316056476e293e4c", None, None, &HashSet::new(), &HashMap::new(), &HashMap::new());
+        std::fs::write(&stamped, xml).unwrap();
+        assert_eq!(read_save_seed(&stamped).as_deref(), Some("18316056476e293e4c"));
+
+        // A save with no seed attribute (older / hand-written) yields None.
+        let legacy = dir.join("legacy.xml");
+        std::fs::write(&legacy, "<?xml version=\"1.0\"?>\n<tracker version=\"6\">\n</tracker>\n").unwrap();
+        assert_eq!(read_save_seed(&legacy), None);
+
+        let _ = std::fs::remove_dir_all(&dir);
     }
 }

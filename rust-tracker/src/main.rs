@@ -8,7 +8,7 @@ mod gps;
 mod inject;
 mod logic;
 mod multi;
-mod multi_r9;
+mod multi_dev;
 mod patch;
 mod poller;
 mod progression;
@@ -852,11 +852,11 @@ struct TrackerApp {
     /// The running multiplayer client (Qt `App` + `TrackerThread`), spawned when
     /// tracking starts with multiplayer enabled. `None` while stopped / disabled.
     multi: Option<multi::MultiHandle>,
-    /// The running r9 multiplayer client (OoTMM builds > v32.0), spawned when
+    /// The running dev multiplayer client (OoTMM builds > v32.0), spawned when
     /// tracking starts with a patch loaded. `None` while stopped / no patch.
-    r9: Option<multi_r9::R9Handle>,
+    dev: Option<multi_dev::DevHandle>,
     /// The OoTMM game patch file chosen by the user (`.ootmm` or the `.zip`
-    /// bundling it), for the r9 multiplayer mechanism. Persisted in the save file
+    /// bundling it), for the dev multiplayer mechanism. Persisted in the save file
     /// so the next launch re-loads it automatically.
     patch_path: Option<PathBuf>,
     /// Session identity parsed from `patch_path` (world id / mode / session ids).
@@ -979,15 +979,24 @@ struct TrackerApp {
     /// Recompute the counts only when the collected set / exclusions / layout
     /// change — not on every mouse-move frame.
     counts_dirty: bool,
-    /// Autosave folder (`<data>/autosave`): one file per seed so each seed keeps
-    /// its own progress. The active file is `<autosave_dir>/<seed_tag>.xml`.
+    /// Autosave folder (`<data>/autosave`): human-friendly timestamped files
+    /// `AutoSave-<dd_MM_yyyy_HH_mm_ss>.xml` (Qt `LogTab` naming), each stamping the
+    /// seed it belongs to. A launch loads the newest file whose seed matches, then
+    /// writes this session to a *new* timestamped file (Qt "new file per launch").
     autosave_dir: PathBuf,
-    /// Stem of the active autosave file: the loaded spoiler's seed hash, or
-    /// `empty` when no spoiler is loaded (the no-seed file, overwritten in place).
-    /// Loading a spoiler with a different seed switches to that seed's own file.
+    /// The current seed identity (the spoiler's seed hash), or `empty` when no
+    /// spoiler is loaded. Stamped into every save so the newest *matching* autosave
+    /// can be found again (the "compatible" check), replacing the old scheme that
+    /// used this hash as the file name.
     seed_tag: String,
+    /// The autosave file this session writes to (`save_state`). Set when a seed
+    /// context is established (startup spoiler load / seed change / reset) to a
+    /// fresh timestamped path; `None` until the first save creates one. The newest
+    /// matching file is loaded for its state, but writes go here so each launch
+    /// keeps its own file (Qt behaviour).
+    current_autosave_file: Option<PathBuf>,
     /// Pre-3.0 single autosave (`<data>/tracker_save.txt`), read once as a
-    /// migration fallback when no per-seed file exists yet.
+    /// migration fallback when no timestamped file exists yet.
     legacy_save_path: PathBuf,
     /// Sidecar remembering the last loaded spoiler path (auto-loaded at startup,
     /// mirroring the Qt AutoLoadMostRecentSpoilerLog so the ROM settings — which

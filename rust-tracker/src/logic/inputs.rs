@@ -83,6 +83,16 @@ pub struct WorldInputs {
     /// solver extend from there through discovered entrances + logic. Empty otherwise
     /// (full-knowledge mode seeds only SPAWN, the true from-start reachability).
     seed_regions: Vec<u32>,
+    /// Progressive entrance mode is on. Gates [`Inputs::edge_blocked`]: only here do
+    /// undiscovered entrance edges wall reachability. Off = full-knowledge (every
+    /// vanilla edge open).
+    progressive: bool,
+    /// Progressive mode: the scenes the player has physically discovered (landed in),
+    /// as `(game, scene_id)` — the scenes hosting the seeded regions. A vanilla (non-
+    /// redirected) real-entrance edge may only be crossed *into* a scene in this set;
+    /// crossing into an undiscovered scene is walled. Populated by
+    /// [`Self::seed_from_visited`]. Empty outside progressive mode.
+    visited_scenes: HashSet<(u8, u32)>,
 }
 
 impl WorldInputs {
@@ -156,6 +166,25 @@ impl WorldInputs {
             }
         }
 
+        // Defaults for settings the seed omits. OoTMM applies each setting's default
+        // when it is absent; an older / cut-down ROM version drops whole settings
+        // (e.g. one without OoT clocks has no `clocksOot`). A missing enum setting
+        // whose default is the unshuffled/"vanilla" state must still satisfy
+        // `setting(k, <off value>)` — `is_day`/`is_night` gate on
+        // `setting(clocksOot, none)`, so without this every OoT day/night check reads
+        // unreachable on such a version. The first option is that off value (OoTMM
+        // lists options default-first). Only vanilla-default settings are seeded, and
+        // only when absent, so a present or actively-shuffled setting is untouched.
+        for meta in data::FILTER_SETTINGS.iter().chain(data::ITEM_SETTINGS.iter()) {
+            if meta.default != data::ShuffleSetting::vanilla || settings.raw_settings.contains_key(meta.key) {
+                continue;
+            }
+            let Some(opt) = meta.options.first() else { continue };
+            let (Some(&ki), Some(&vi)) = (skeys.get(meta.key), svals.get(opt.value)) else { continue };
+            settings_value.entry(ki).or_insert(vi);
+            settings_multi.entry(ki).or_default().insert(vi);
+        }
+
         // Tricks: id string -> TRICK_NAMES index.
         let tri = trick_index();
         let tricks = settings
@@ -192,6 +221,8 @@ impl WorldInputs {
             mm_slices: u64::MAX,
             // Set by `seed_from_visited` after build (progressive mode only).
             seed_regions: Vec::new(),
+            progressive,
+            visited_scenes: HashSet::new(),
         };
         wi.mm_slices = compute_mm_slices(&wi);
         wi
@@ -223,8 +254,76 @@ impl WorldInputs {
         }
         regions.sort_unstable();
         regions.dedup();
+        // The scenes those regions live in are the "discovered" scenes: a real
+        // entrance may be crossed into one of them, but not into any other scene
+        // (see `edge_blocked`). Derived from the regions so it tracks exactly what
+        // the player has physically reached, ER and vanilla alike.
+        let scenes = region_scenes();
+        self.visited_scenes = regions
+            .iter()
+            .filter_map(|&i| scenes[i as usize].map(|s| (data::LOGIC_REGIONS[i as usize].game, s)))
+            .collect();
         self.seed_regions = regions;
     }
+
+    /// Also seed the scene the player is physically standing in *right now* (the
+    /// tracker's `player_obj_scene`), on top of [`Self::seed_from_visited`]. On
+    /// arrival the entrance's `to_name` does not always resolve to the scene actually
+    /// loaded — an owl flight or the reverse-pair OUT id can name the far side — so
+    /// without this the current scene's checks only lit up one entrance later (the
+    /// reported one-step lag). Seeding the live scene roots it immediately and marks
+    /// it discovered, so `edge_blocked` lets movement fan out from it at once.
+    /// Must be called after `seed_from_visited` (which overwrites both fields).
+    ///
+    /// Roots only the scene's **hub** region — the entry region with the most exits,
+    /// i.e. the main area a player lands in — not every region of the scene. A scene's
+    /// interior sub-areas (Lake Hylia's pond ledge, a bean-only spot) and its other
+    /// entrance-fed pockets (the fishing-pond exit) are reachable solely through their
+    /// own access rules / entrances, so seeding them would wrongly show them for free.
+    /// Seeding just the hub lights the scene immediately while the normal fixed point
+    /// gates the rest by the player's items. `seed_from_visited` still roots the exact
+    /// arrival region for a normal door; this covers the cases where its `to_name` does
+    /// not resolve (owl flights, reverse-pair OUT ids) — the one-step-lag fix.
+    pub fn seed_scene(&mut self, game: u8, scene: u32) {
+        let scenes = region_scenes();
+        let entry = entry_regions();
+        let hub = data::LOGIC_REGIONS
+            .iter()
+            .enumerate()
+            .filter(|(i, r)| r.game == game && scenes[*i] == Some(scene) && entry[*i])
+            .max_by_key(|(_, r)| r.exits.len())
+            .map(|(i, _)| i as u32);
+        if let Some(h) = hub {
+            if !self.seed_regions.contains(&h) {
+                self.seed_regions.push(h);
+            }
+        }
+        self.visited_scenes.insert((game, scene));
+    }
+}
+
+/// Per region, whether an entrance can land the player *in* it: it has at least one
+/// incoming edge from a region in a different scene (or a scene-less plumbing node).
+/// These are the arrival points of a scene; a region reachable only from within its
+/// own scene (a gated pond ledge, a bean spot) is not one. [`WorldInputs::seed_scene`]
+/// roots the busiest of them (the hub) and lets in-scene rules gate the rest. Static:
+/// depends only on the region graph + `region_scenes`.
+fn entry_regions() -> &'static [bool] {
+    static E: OnceLock<Vec<bool>> = OnceLock::new();
+    E.get_or_init(|| {
+        let scenes = region_scenes();
+        let mut entry = vec![false; data::LOGIC_REGIONS.len()];
+        for (j, r) in data::LOGIC_REGIONS.iter().enumerate() {
+            for e in r.exits {
+                let i = e.to as usize;
+                // A cross-scene (or plumbing -> scene) incoming edge marks an arrival.
+                if scenes[j] != scenes[i] {
+                    entry[i] = true;
+                }
+            }
+        }
+        entry
+    })
 }
 
 /// The set of MM time slices the player can reach: the union of each period's
@@ -351,6 +450,91 @@ fn region_name_index() -> &'static [HashMap<&'static str, Vec<u32>>; 2] {
             idx[r.game as usize].entry(r.name).or_default().push(i as u32);
         }
         idx
+    })
+}
+
+/// Per region index, the scene it belongs to (`Some(scene_id)`), inferred from the
+/// first of its locations that resolves in the object table. Regions with no
+/// locations — pure plumbing (SPAWN / GLOBAL / warp hubs / lost-woods junctions) and
+/// event-only nodes — have no scene (`None`) and are never treated as an entrance
+/// boundary (movement through them is free). Static: depends only on `LOGIC_REGIONS`
+/// and the object tables. The scene id is game-relative, so callers pair it with the
+/// region's own `game` (OoT and MM scene ids overlap).
+fn region_scenes() -> &'static [Option<u32>] {
+    static S: OnceLock<Vec<Option<u32>>> = OnceLock::new();
+    S.get_or_init(|| {
+        // Pass 1: a region's scene = the scene of its first location that resolves in
+        // the object table.
+        let mut scene: Vec<Option<u32>> = data::LOGIC_REGIONS
+            .iter()
+            .map(|r| {
+                let objs = if r.game == 0 { data::OOT_OBJECTS } else { data::MM_OBJECTS };
+                r.locations
+                    .iter()
+                    .find_map(|l| objs.iter().find(|o| o.location == l.loc).map(|o| o.scene as u32))
+            })
+            .collect();
+
+        // A real overworld `area` (LAKE_HYLIA, HYRULE_FIELD, …) maps to exactly one
+        // scene; the pseudo-areas (NONE / ENTRANCE / "" dungeon interiors / EGGS /
+        // BUFFER_DELAYED) span many. Learn `(game, area) -> scene` only where it is
+        // unambiguous, from the regions that already have a scene.
+        let mut area_scene: HashMap<(u8, &str), Option<u32>> = HashMap::new();
+        for (i, r) in data::LOGIC_REGIONS.iter().enumerate() {
+            if r.area.is_empty() {
+                continue;
+            }
+            if let Some(s) = scene[i] {
+                area_scene
+                    .entry((r.game, r.area))
+                    .and_modify(|e| {
+                        if *e != Some(s) {
+                            *e = None;
+                        }
+                    })
+                    .or_insert(Some(s));
+            }
+        }
+
+        // Pass 2: a location-less region (owl-flight spots, the Lost Woods bridge,
+        // transition nodes) inherits its area's scene when that is unambiguous. This
+        // closes the leak where an entrance routes through a scene-less waypoint. The
+        // pseudo-areas resolve to `None` and stay free plumbing (so boss-lair doors
+        // and SPAWN/GLOBAL/warp hubs are never mistaken for entrance boundaries).
+        for (i, r) in data::LOGIC_REGIONS.iter().enumerate() {
+            if scene[i].is_none() && !r.area.is_empty() {
+                if let Some(&Some(s)) = area_scene.get(&(r.game, r.area)) {
+                    scene[i] = Some(s);
+                }
+            }
+        }
+        scene
+    })
+}
+
+/// The set of scene transitions that are real, trackable entrances (loading zones),
+/// as `(game, from_scene, to_scene)`. Built from the entrance tables, both directions
+/// per def. Excludes `EntranceType::None` (logic-internal, never walked) and same-
+/// scene defs (wallmaster drops etc.). A cross-scene region edge whose scene pair is
+/// NOT in here is not an entrance — a boss-lair door, say — and is never walled.
+fn entrance_scene_pairs() -> &'static HashSet<(u8, u32, u32)> {
+    static P: OnceLock<HashSet<(u8, u32, u32)>> = OnceLock::new();
+    P.get_or_init(|| {
+        let mut set = HashSet::new();
+        for (game, table) in [(0u8, data::OOT_ENTRANCES), (1u8, data::MM_ENTRANCES)] {
+            for e in table {
+                if e.type_ == crate::data::EntranceType::None {
+                    continue;
+                }
+                let (a, b) = (e.from_scene as u32, e.to_scene as u32);
+                if a == b {
+                    continue;
+                }
+                set.insert((game, a, b));
+                set.insert((game, b, a));
+            }
+        }
+        set
     })
 }
 
@@ -492,6 +676,36 @@ impl Inputs for WorldInputs {
     fn mm_time_slices(&self) -> u64 {
         self.mm_slices
     }
+    fn edge_blocked(&self, from: u32, to: u32) -> bool {
+        // Full-knowledge mode: every vanilla edge is open.
+        if !self.progressive {
+            return false;
+        }
+        let regions = data::LOGIC_REGIONS;
+        let (rf, rt) = (&regions[from as usize], &regions[to as usize]);
+        // Cross-game edges (the OoTMM portal) and any edge touching a scene-less
+        // plumbing region (SPAWN / GLOBAL / warps / junctions / events) are not a
+        // walkable loading zone we gate — leave them to the access rule.
+        if rf.game != rt.game {
+            return false;
+        }
+        let scenes = region_scenes();
+        let (Some(sa), Some(sb)) = (scenes[from as usize], scenes[to as usize]) else {
+            return false;
+        };
+        // Same scene → intra-scene movement, always free.
+        if sa == sb {
+            return false;
+        }
+        // A cross-scene edge that is not a real entrance (e.g. a dungeon → boss-lair
+        // door) is free — crossing it is implied by reaching the source. A real
+        // entrance may only be crossed *into* a scene the player has discovered;
+        // stepping into an undiscovered scene is walled.
+        if !entrance_scene_pairs().contains(&(rf.game, sa, sb)) {
+            return false;
+        }
+        !self.visited_scenes.contains(&(rt.game, sb))
+    }
 }
 
 // ── Reverse index tables (name/id -> compiled index), built once ─────────────
@@ -529,6 +743,7 @@ fn mask_item_ids() -> &'static HashSet<u32> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
 
     /// Object index of a location in a game's object table (test helper).
     fn obj_idx(game: Game, location: &str) -> usize {
@@ -939,6 +1154,155 @@ mod tests {
         let kak = region_name_index()[0].get("Kakariko").expect("Kakariko region")[0];
         assert!(inp.extra_seed_regions().contains(&gy), "Graveyard must be a seeded root");
         assert!(inp.extra_seed_regions().contains(&kak), "Kakariko must be a seeded root");
+
+        // The visited SCENES follow from those regions: Graveyard and Kakariko, and
+        // nothing else — this is the set the entrance wall lets you cross *into*.
+        let scenes = region_scenes();
+        let (gy_s, kak_s) = (scenes[gy as usize].unwrap(), scenes[kak as usize].unwrap());
+        assert!(inp.visited_scenes.contains(&(0, gy_s)));
+        assert!(inp.visited_scenes.contains(&(0, kak_s)));
+    }
+
+    /// Region -> scene inference (`region_scenes`). A region with checks resolves to
+    /// its object scene; a *location-less* overworld waypoint (owl-flight spot, the
+    /// Lost Woods bridge) inherits its `area`'s scene so an entrance routed through it
+    /// is still gated; a pseudo-area plumbing node (SPAWN / GLOBAL) stays `None`; and a
+    /// boss lair is a distinct scene from its dungeon (so a scene gate must NOT wall
+    /// the dungeon -> boss door — that is what `entrance_scene_pairs` is for).
+    #[test]
+    fn region_scene_inference_covers_locationless_waypoints() {
+        let scenes = region_scenes();
+        let idx = |n: &str| region_name_index()[0].get(n).map(|v| v[0]);
+        let sc = |n: &str| idx(n).and_then(|i| scenes[i as usize]);
+
+        // Located overworld regions resolve to their own scene.
+        assert_eq!(sc("Lake Hylia"), Some(data::scenes::OOT_LAKE_HYLIA as u32));
+        assert_eq!(sc("Kokiri Forest"), Some(data::scenes::OOT_KOKIRI_FOREST as u32));
+
+        // A location-less waypoint inside Lake Hylia inherits the Lake Hylia scene.
+        if let Some(owl) = sc("Lake Hylia Owl Flight") {
+            assert_eq!(owl, data::scenes::OOT_LAKE_HYLIA as u32,
+                "owl-flight waypoint must inherit its area's scene, not stay None");
+        }
+
+        // Plumbing nodes have no scene (never an entrance boundary).
+        assert_eq!(sc("SPAWN"), None);
+        assert_eq!(sc("GLOBAL"), None);
+
+        // A boss lair is its own scene, distinct from the dungeon it sits in.
+        let deku = sc("Deku Tree Before Boss");
+        let boss = sc("Deku Tree Boss");
+        assert!(deku.is_some() && boss.is_some() && deku != boss,
+            "boss lair should be a separate scene from the dungeon");
+    }
+
+    /// `entrance_scene_pairs` marks exactly the scene transitions that carry a real
+    /// `EntranceDef` (both directions), and excludes the non-walkable `None`-type and
+    /// same-scene defs. A Kokiri Forest <-> Link's House door is in; a scene pair with
+    /// no def at all (Lake Hylia <-> Deku Tree — never adjacent) is out.
+    #[test]
+    fn entrance_scene_pairs_marks_real_entrances() {
+        let p = entrance_scene_pairs();
+        let (links, kokiri) = (data::scenes::OOT_LINK_HOUSE as u32, data::scenes::OOT_KOKIRI_FOREST as u32);
+        assert!(p.contains(&(0, kokiri, links)), "Kokiri <-> Link's House is a real entrance");
+        assert!(p.contains(&(0, links, kokiri)), "stored both directions");
+
+        // The boss-lair door IS a trackable entrance (`One_Way_In` Deku Tree ->
+        // Gohma's Lair), so in progressive mode the boss room is discovered by
+        // entering it — its scene pair must be present.
+        let (deku, gohma) = (data::scenes::OOT_DEKU_TREE as u32, data::scenes::OOT_LAIR_GOHMA as u32);
+        assert!(p.contains(&(0, deku, gohma)), "Deku Tree -> boss lair is a real (one-way) entrance");
+
+        // A pair with no EntranceDef between the two scenes is absent.
+        let lake = data::scenes::OOT_LAKE_HYLIA as u32;
+        assert!(!p.contains(&(0, lake, gohma)), "Lake Hylia and Gohma's Lair share no entrance");
+    }
+
+    /// The core progressive wall (`edge_blocked`): with only Lake Hylia discovered,
+    /// crossing a real entrance *into* an undiscovered scene (Hyrule Field) is walled,
+    /// while intra-scene movement, boss-lair doors, and edges touching plumbing stay
+    /// free — and the whole thing is inert outside progressive mode.
+    #[test]
+    fn edge_blocked_walls_only_undiscovered_entrances() {
+        let mq = std::collections::HashSet::new();
+        let mut settings = Settings::default();
+        settings.apply(&mq);
+        let idx = |n: &str| region_name_index()[0].get(n).unwrap()[0];
+        let scenes = region_scenes();
+
+        let mut inp = WorldInputs::build(&settings, &[WorldData::default()], 1, &Default::default(), true);
+        // Pretend the player has discovered (landed in) Lake Hylia only.
+        inp.visited_scenes = [(0u8, data::scenes::OOT_LAKE_HYLIA as u32)].into_iter().collect();
+
+        let (lake, hyrule) = (idx("Lake Hylia"), idx("Hyrule Field"));
+        // Cross-scene real entrance into an UNDISCOVERED scene -> walled.
+        assert!(Inputs::edge_blocked(&inp, lake, hyrule),
+            "Lake Hylia -> Hyrule Field must be walled until Hyrule Field is discovered");
+
+        // Same transition once Hyrule Field is also discovered -> open.
+        inp.visited_scenes.insert((0, data::scenes::OOT_HYRULE_FIELD as u32));
+        assert!(!Inputs::edge_blocked(&inp, lake, hyrule),
+            "a discovered scene is crossable");
+
+        // Intra-scene movement is always free: Lake Hylia -> a Lake Hylia waypoint.
+        if scenes[idx("Lake Hylia Owl Flight") as usize] == Some(data::scenes::OOT_LAKE_HYLIA as u32) {
+            assert!(!Inputs::edge_blocked(&inp, lake, idx("Lake Hylia Owl Flight")));
+        }
+
+        // An edge touching a scene-less plumbing region (GLOBAL) is never a wall.
+        assert!(!Inputs::edge_blocked(&inp, idx("Kokiri Forest"), idx("GLOBAL")),
+            "an edge into plumbing must stay free");
+
+        // Outside progressive mode the wall is inert.
+        let full = WorldInputs::build(&settings, &[WorldData::default()], 1, &Default::default(), false);
+        assert!(!Inputs::edge_blocked(&full, lake, hyrule),
+            "full-knowledge mode never walls a vanilla edge");
+    }
+
+    /// `seed_scene` roots the scene the player is standing in right now and marks it
+    /// discovered — the fix for the one-step lag where a freshly loaded scene's checks
+    /// only lit up one entrance later. Crucially it roots ONLY the scene's entry
+    /// regions (arrival points), not its interior sub-areas: seeding Lake Hylia roots
+    /// the main "Lake Hylia" region but NOT "Lake Hylia Near Pond" (the pond ledge,
+    /// reachable only through an in-scene access rule), so the interior stays gated.
+    #[test]
+    fn seed_scene_roots_only_entry_regions_of_the_live_scene() {
+        let mq = std::collections::HashSet::new();
+        let mut settings = Settings::default();
+        settings.apply(&mq);
+        let mut inp = WorldInputs::build(&settings, &[WorldData::default()], 1, &Default::default(), true);
+        inp.seed_from_visited(&std::collections::HashSet::new());
+        assert!(inp.extra_seed_regions().is_empty() && inp.visited_scenes.is_empty());
+
+        let lake = data::scenes::OOT_LAKE_HYLIA as u32;
+        inp.seed_scene(0, lake);
+
+        assert!(inp.visited_scenes.contains(&(0, lake)), "the live scene is now discovered");
+        let main = region_name_index()[0].get("Lake Hylia").unwrap()[0];
+        assert!(inp.extra_seed_regions().contains(&main),
+            "the scene's entry region is seeded as a root");
+        let pond = region_name_index()[0].get("Lake Hylia Near Pond").unwrap()[0];
+        assert!(!inp.extra_seed_regions().contains(&pond),
+            "an interior gated sub-region must NOT be seeded (kept behind its access rule)");
+    }
+
+    /// An enum setting the seed omits defaults to its unshuffled ("off") value, so
+    /// `setting(k, <off>)` still holds. Regression: a ROM version without OoT clocks
+    /// drops `clocksOot`, and `is_day`/`is_night` gate on `setting(clocksOot, none)` —
+    /// without the default every OoT day/night check (Hyrule Field / Market wonder
+    /// items…) read unreachable.
+    #[test]
+    fn absent_vanilla_enum_setting_defaults_to_its_off_value() {
+        let mq = std::collections::HashSet::new();
+        let mut settings = Settings::default();
+        settings.apply(&mq); // no spoiler loaded -> clocksOot absent
+        assert!(!settings.raw_settings.contains_key("clocksOot"), "precondition: clocksOot omitted");
+
+        let inp = WorldInputs::build(&settings, &[WorldData::default()], 1, &Default::default(), false);
+        let ki = *setting_key_index().get("clocksOot").expect("clocksOot in SETTING_KEYS");
+        let vi = *setting_value_index().get("none").expect("none in SETTING_VALUES");
+        assert!(inp.setting_has(ki, vi),
+            "absent clocksOot must default to `none` so has_clock / is_day hold");
     }
 
     /// Multiworld: a collected check's item goes to its destination player, so it

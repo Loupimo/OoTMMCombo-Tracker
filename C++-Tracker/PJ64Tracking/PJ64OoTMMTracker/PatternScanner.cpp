@@ -178,8 +178,8 @@ int32_t DetectVersionProfile()
 
 void ResetButterflyTransform()
 {
-    gPatternState[GAME_OOT].PCs[7] = 0;
-    gPatternState[GAME_MM].PCs[7] = 0;
+    gPatternState[GAME_OOT].PCs[6] = 0;
+    gPatternState[GAME_MM].PCs[6] = 0;
 }
 
 

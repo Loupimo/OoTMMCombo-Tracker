@@ -240,7 +240,7 @@ no_img = "(pas d'image pour cette scène)"
 
 # --- Multijoueur / patch (state.rs) ---
 mp_enabled = "Multijoueur activé — serveur {server}"
-r9_enabled = "Multijoueur r9 — {info} (serveur {server})"
+dev_enabled = "Multijoueur dev — {info} (serveur {server})"
 patch_loaded = "Patch chargé : {path} ({info})"
 patch_invalid = "Le fichier patch enregistré est invalide ({err}). Choisis un fichier patch."
 patch_missing = "Le fichier patch enregistré n'existe plus : {path}. Choisis son nouvel emplacement."

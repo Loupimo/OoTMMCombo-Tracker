@@ -81,6 +81,17 @@ pub trait Inputs {
     fn extra_seed_regions(&self) -> &[u32] {
         &[]
     }
+    /// Progressive entrance mode: whether a *vanilla* (non-redirected) edge between
+    /// two regions crosses a real entrance the player has not discovered yet, and so
+    /// must be treated as impassable. Default `false` (full-knowledge: every vanilla
+    /// edge open). Only consulted for edges with no `exit_redirects` entry — shuffled
+    /// entrances are already gated by their (possibly empty) redirect. The app impl
+    /// (`WorldInputs::edge_blocked`) walls only cross-scene edges that map to a real
+    /// entrance whose scene transition is not in the discovered set, so intra-scene
+    /// movement and non-entrance scene links (boss doors) stay free.
+    fn edge_blocked(&self, _from_region: u32, _to_region: u32) -> bool {
+        false
+    }
 }
 
 /// A `WorldState` view over the inputs at a fixed age, reading the solver's
@@ -213,10 +224,13 @@ pub fn solve<I: Inputs>(inp: &I) -> Reachability {
                 let view = View { inp, events: &events, age };
                 for e in r.exits {
                     // Under entrance rando a shuffled edge points at new target(s);
-                    // a vanilla edge keeps its single compiled target.
-                    let targets: &[u32] = redirects
-                        .and_then(|m| m.get(&(ri as u32, e.to)))
-                        .map_or(std::slice::from_ref(&e.to), Vec::as_slice);
+                    // a vanilla edge keeps its single compiled target — unless
+                    // progressive mode walls it as an undiscovered entrance.
+                    let targets: &[u32] = match redirects.and_then(|m| m.get(&(ri as u32, e.to))) {
+                        Some(v) => v.as_slice(), // shuffled: open iff discovered (non-empty)
+                        None if inp.edge_blocked(ri as u32, e.to) => &[], // undiscovered vanilla entrance
+                        None => std::slice::from_ref(&e.to),
+                    };
                     // The access rule gates taking the entrance, not its target, so
                     // evaluate it once and apply to every destination.
                     if !eval(&data::EXPRS[e.expr as usize], &view) {
