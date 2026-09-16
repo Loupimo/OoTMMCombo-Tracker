@@ -50,8 +50,9 @@ fn warp_scene(game: Game) -> u16 {
 
 /// The buckets holding non-physical nodes (warp menus, generic grottos, cutscene
 /// maps): "walking" between two of their entrances is meaningless. Mirrors
-/// `IsSyntheticScene`.
-fn is_synthetic(game: Game, scene: u16) -> bool {
+/// `IsSyntheticScene`. Also drives the GPS scene picker (a synthetic scene is not
+/// a real place you can route from / to, so it is hidden there).
+pub(crate) fn is_synthetic(game: Game, scene: u16) -> bool {
     match game {
         Game::Oot => scene == sc::OOT_GROTTOS || scene == sc::OOT_CUTSCENE_MAP || scene == sc::OOT_SONGS,
         Game::Mm => {

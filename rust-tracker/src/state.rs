@@ -983,27 +983,44 @@ impl TrackerApp {
         }
     }
 
-    /// Queue a hook-captured "nothing" drop for the multiplayer client to push to
-    /// the ledger (mirror of `MemoryReader`'s `QueueTrackerNothing`). Only in coop,
-    /// only while the multiplayer client is running.
+    /// Queue a hook-captured "nothing" drop for whichever multiplayer client is
+    /// running, so the rest of the team's trackers mark the location too — OoTMM
+    /// never sends a "nothing" over the wire, so the tracker must synthesize it
+    /// (mirror of `MemoryReader`'s `QueueTrackerNothing`).
+    ///
+    /// * The old net-context client owns nothings only in coop (its ledger is the
+    ///   shared world's).
+    /// * The dev client (WAL) owns them whenever it has a live, non-single session:
+    ///   in multiworld the entry is stamped for our own world, so a remote *game*
+    ///   skips it while every remote *tracker* still marks the check.
     fn forward_nothing_drop(&self, ev: &Event) {
-        let Some(handle) = self.multi.as_ref() else { return };
-        if self.rom_settings.mode != settings::GameMode::Coop {
-            return;
-        }
         // A "nothing" drop: high half of Query[2] is 0xFFFF; low byte selects the
         // game. The `>> 2` gate skips events already flagged treated (as the DLL
         // hook does before writing back the treated flag).
         if ev.query[2] & 0xFFFF_0000 != 0xFFFF_0000 || (ev.query[2] & 0x0000_FF00) >> 2 != 0 {
             return;
         }
-        handle.queue_nothing(multi::TrackerNothing {
+        let nothing = multi::TrackerNothing {
             game_id: if ev.query[2] & 0xFF == 0 { 0 } else { 1 },
             // Raw Query[0]: already in the big-endian order the ledger round-trip
             // expects (a local byteswap would double-reverse it).
             key: ev.query[0],
             gi: (ev.query[1] & 0xFFFF) as u16,
-        });
+        };
+        // Old net-context client: coop only.
+        if let Some(handle) = self.multi.as_ref() {
+            if self.rom_settings.mode == settings::GameMode::Coop {
+                handle.queue_nothing(nothing);
+            }
+        }
+        // Dev client: any live non-single session (coop or multiworld).
+        if let Some(handle) = self.dev.as_ref() {
+            let non_single =
+                self.patch_info.as_ref().map(|p| p.mode != patch::PatchMode::Single).unwrap_or(false);
+            if handle.is_connected() && non_single {
+                handle.queue_nothing(nothing);
+            }
+        }
     }
 
     /// Handle one live event: an entrance message or a collected item.
@@ -1138,23 +1155,35 @@ impl TrackerApp {
                 // Re-loading the SAME seed keeps the in-memory progress (below).
                 let new_seed = seed_tag_from_spoiler(&text);
                 let seed_changed = new_seed != self.seed_tag;
+                let has_progress = self.worlds.iter().any(|w| !w.collected.is_empty())
+                    || !self.visited_entrances.is_empty();
+                // Loading a spoiler while the current run still has no seed ("empty" —
+                // it was played BEFORE the spoiler was applied) ATTACHES the spoiler to
+                // the SAME playthrough: keep the collected / entrance progress, just
+                // adopt the seed. Only a switch between two real seeds is a distinct
+                // playthrough that resets. Either way the outgoing progress is flushed
+                // to its own file and a fresh seed-tagged autosave is opened (below), so
+                // the current save is never overwritten.
+                let adopting = seed_changed && self.seed_tag == "empty" && has_progress;
                 if seed_changed {
-                    let has_progress = self.worlds.iter().any(|w| !w.collected.is_empty())
-                        || !self.visited_entrances.is_empty();
                     // Flush only when this session already owns a file (a mid-session
                     // seed switch): at startup the loaded state came straight off disk,
                     // so `current_autosave_file` is still None and re-saving it would
                     // just spawn a duplicate timestamped file.
                     if self.auto_save && has_progress && self.current_autosave_file.is_some() {
-                        self.save_state(); // preserve the previous seed's file
+                        self.save_state(); // preserve the previous seed's / empty file
                     }
-                    for w in &mut self.worlds {
-                        w.collected.clear();
-                        w.forced.clear();
+                    // A genuine seed switch wipes the old progress; adopting a spoiler
+                    // onto the current run keeps it.
+                    if !adopting {
+                        for w in &mut self.worlds {
+                            w.collected.clear();
+                            w.forced.clear();
+                        }
+                        self.visited_entrances.clear();
+                        self.out_links.clear();
+                        self.in_links.clear();
                     }
-                    self.visited_entrances.clear();
-                    self.out_links.clear();
-                    self.in_links.clear();
                     self.seed_tag = new_seed;
                 }
                 let sp = spoiler::parse(&text);
@@ -1200,12 +1229,16 @@ impl TrackerApp {
                 // New seed: restore this seed's own progress from the newest autosave
                 // that matches it (the collected set was cleared above), if it has
                 // been played before, then open a fresh timestamped file for this
-                // session so the restored file is never overwritten in place.
+                // session so the restored file is never overwritten in place. When
+                // ADOPTING a spoiler onto the current run, the in-memory progress is
+                // this seed's progress — keep it, do not overwrite it from another file.
                 if seed_changed {
-                    if let Some(prev) = self.newest_matching_autosave(&self.seed_tag) {
-                        self.load_from(&prev);
-                        self.prog_dirty = true;
-                        self.counts_dirty = true;
+                    if !adopting {
+                        if let Some(prev) = self.newest_matching_autosave(&self.seed_tag) {
+                            self.load_from(&prev);
+                            self.prog_dirty = true;
+                            self.counts_dirty = true;
+                        }
                     }
                     self.current_autosave_file = Some(self.new_autosave_path());
                 }

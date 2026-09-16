@@ -317,13 +317,26 @@ impl TrackerApp {
                 });
                 return;
             }
-            // Order scenes by their DISPLAYED (translated) name so the tree is alphabetical
-            // in the active language, keeping OoT before MM. The model sorts by the raw
-            // English name (no i18n there), which would not follow the language.
+            // The displayed scene name: the translated name, disambiguated with its
+            // region when several scenes share it (the twelve "Open Grotto"s, the
+            // fairy fountains…) — exactly what the GPS shows — so common names read
+            // apart. In multiworld a foreign world's copy is prefixed "World N —".
+            let scene_label = |scene: &crate::progression::LocScene| -> String {
+                let disp = crate::scene_display_name(&self.i18n, scene.game, scene.scene);
+                if scene.world != self.dashboard.active_world {
+                    format!("World {} — {}", scene.world, disp)
+                } else {
+                    disp
+                }
+            };
+            // Order scenes by their DISPLAYED (translated, disambiguated) name so the
+            // tree is alphabetical in the active language, keeping OoT before MM. The
+            // model sorts by the raw English name (no i18n there), which would not
+            // follow the language.
             let mut ordered: Vec<_> = tree.iter().collect();
             ordered.sort_by(|a, b| {
-                (a.game.idx(), self.i18n.tr_scene(&a.title).to_lowercase())
-                    .cmp(&(b.game.idx(), self.i18n.tr_scene(&b.title).to_lowercase()))
+                (a.game.idx(), scene_label(a).to_lowercase())
+                    .cmp(&(b.game.idx(), scene_label(b).to_lowercase()))
             });
             let mut cur_game: Option<Game> = None;
             for scene in ordered {
@@ -337,12 +350,8 @@ impl TrackerApp {
                     ui.add_space(4.0);
                     ui.label(egui::RichText::new(scene.game.label()).strong().color(col));
                 }
-                egui::CollapsingHeader::new(format!(
-                    "{} ({})",
-                    self.i18n.tr_scene(&scene.title),
-                    scene.leaves.len()
-                ))
-                    .id_salt((scene.game.idx(), scene.title.as_str()))
+                egui::CollapsingHeader::new(format!("{} ({})", scene_label(scene), scene.leaves.len()))
+                    .id_salt((scene.game.idx(), scene.world, scene.scene))
                     .default_open(true)
                     .show(ui, |ui| {
                         // Leaves: uncollected ("to-find") first, then alphabetical by the

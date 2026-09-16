@@ -55,7 +55,9 @@ pub struct NetItem {
 
 /// A hook-captured "nothing" drop queued for the network thread to push to the
 /// ledger (port of `TrackerNothing`). Crosses from the UI/poller side to the
-/// multi thread through `MultiHandle::queue_nothing`.
+/// multi thread through `MultiHandle::queue_nothing` (and, for the dev client,
+/// `multi_dev::DevHandle::queue_nothing`).
+#[derive(Clone, Copy)]
 pub struct TrackerNothing {
     pub game_id: u8,
     pub key: u32,

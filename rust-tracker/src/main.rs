@@ -460,7 +460,10 @@ fn gps_scene_combo(
     // Scenes that own entrances — the curated SceneEntranceMeta list, the same set
     // the entrance tab counts. Using it (rather than a region filter) keeps
     // map-item-only scenes out while KEEPING region-less scenes that are real
-    // entrance destinations, like King Dodongo's Lair (region 0).
+    // entrance destinations, like King Dodongo's Lair (region 0). Synthetic scenes
+    // (the generic "Grottos" bucket, the warp-song / owl menus, the cutscene maps)
+    // are dropped: they are not real places to route from / to, so a generic
+    // "Grotto" choice must never surface in the picker.
     let ent_scenes = |game: Game| -> HashSet<u16> {
         match game {
             Game::Oot => data::OOT_SCENE_ENTRANCES,
@@ -468,6 +471,7 @@ fn gps_scene_combo(
         }
         .iter()
         .map(|&(s, _, _)| s)
+        .filter(|&s| !gps::is_synthetic(game, s))
         .collect()
     };
     // Display names that repeat within a game (fairy fountains, grottos…): the

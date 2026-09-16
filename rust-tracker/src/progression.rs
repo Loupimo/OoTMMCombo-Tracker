@@ -45,6 +45,15 @@ pub struct FlatEntry {
 /// A scene bucket of the detail-panel location tree.
 pub struct LocScene {
     pub game: Game,
+    /// The bucket's scene id (`render_scene`). Kept so the UI can disambiguate a
+    /// display name shared by several scenes (the twelve OoT "Open Grotto"s, the
+    /// fairy fountains…) by appending the region, exactly like the GPS does.
+    pub scene: u16,
+    /// The physical world (1-based) this bucket lives in. In a multiworld seed a
+    /// foreign world's copy of a scene reads "World N — …"; equals the shown world
+    /// (so no prefix) for single / coop seeds and for the active world.
+    pub world: u8,
+    /// The raw (untranslated) scene name, used only for a stable sort key.
     pub title: String,
     pub leaves: Vec<LocLeaf>,
 }
@@ -528,7 +537,6 @@ impl Dashboard {
         mq: &HashSet<(Game, u16)>,
     ) -> Vec<LocScene> {
         let e = self.flat[i].entry;
-        let multiworld = worlds.len() > 1;
         // Bucket per (physical world, game, scene) so a foreign world's copy of a
         // scene is a distinct group from the active world's.
         let mut buckets: HashMap<(usize, usize, u16), LocScene> = HashMap::new();
@@ -559,13 +567,16 @@ impl Dashboard {
                     }
                     let bucket =
                         buckets.entry((wi, game.idx(), o.render_scene)).or_insert_with(|| {
-                            let base = scene_name(game, o.render_scene);
-                            let title = if multiworld && (wi as u8 + 1) != self.active_world {
-                                format!("World {} — {}", wi + 1, base)
-                            } else {
-                                base
-                            };
-                            LocScene { game, title, leaves: Vec::new() }
+                            // The world prefix and the region disambiguation are both
+                            // applied at display time (the UI has the i18n / active
+                            // world), so the bucket only carries the raw ingredients.
+                            LocScene {
+                                game,
+                                scene: o.render_scene,
+                                world: wi as u8 + 1,
+                                title: scene_name(game, o.render_scene),
+                                leaves: Vec::new(),
+                            }
                         });
                     bucket.leaves.push(LocLeaf {
                         game,
@@ -586,7 +597,8 @@ impl Dashboard {
             });
         }
         out.sort_by(|a, b| {
-            (a.game.idx(), a.title.to_lowercase()).cmp(&(b.game.idx(), b.title.to_lowercase()))
+            (a.game.idx(), a.title.to_lowercase(), a.world)
+                .cmp(&(b.game.idx(), b.title.to_lowercase(), b.world))
         });
         out
     }
