@@ -638,29 +638,31 @@ uint8_t Pattern_comboAddItemRawEx_OoT_V33[] =
 {
     0x27, 0xBD, 0xFF, 0xB8,            // ADDIU    SP, SP, -0x48           <-- comboAddItemRawEx_Start
     0xAF, 0xB2, 0x00, 0x3C,            // SW       S2, 0x003C (SP)
+    0xAF, 0xB0, 0x00, 0x34,            // SW       S0, 0x0034 (SP)
     0x00, 0x80, 0x90, 0x25,            // OR       S2, A0, R0
+    0x00, 0xA0, 0x80, 0x25,            // OR       S0, A1, R0
     0x27, 0xA4, 0x00, 0x18,            // ADDIU    A0, SP, 0x0018
-    0xAF, 0xBF, 0x00, 0x44,            // SW       RA, 0x0044 (SP)
     0xAF, 0xB3, 0x00, 0x40,            // SW       S3, 0x0040 (SP)
     0xAF, 0xB1, 0x00, 0x38,            // SW       S1, 0x0038 (SP)
-    0xAF, 0xB0, 0x00, 0x34             // SW       S0, 0x0034 (SP)
+    0xAF, 0xBF, 0x00, 0x44,            // SW       RA, 0x0044 (SP)
 };
 
 uint32_t Mask_comboAddItemRawEx_OoT_V33[] =
 {
     0xFFFFFFFF,                     // ADDIU    SP, SP, -0x48
     0xFFFFFFFF,                     // SW       S2, 0x003C (SP)
+    0xFFFFFFFF,                     // SW       S0, 0x0034 (SP)
     0xFFFFFFFF,                     // OR       S2, A0, R0
+    0xFFFFFFFF,                     // OR       S0, A1, R0
     0xFFFFFFFF,                     // ADDIU    A0, SP, 0x0018
     0xFFFFFFFF,                     // SW       S3, 0x0040 (SP)
-    0xFFFFFFFF,                     // SW       S0, 0x0034 (SP)
-    0xFFFFFFFF,                     // SW       RA, 0x0044 (SP)
-    0xFFFFFFFF                      // SW       S1, 0x0038 (SP)
+    0xFFFFFFFF,                     // SW       S1, 0x0038 (SP)
+    0xFFFFFFFF                      // SW       RA, 0x0044 (SP)
 };
 
 /* Hook au meme PCOffset (0x40) que la version Legacy : entree + 0x40 = delay-slot du
    JAL comboAddItemRaw, ou S0 = ComboItemQuery* (registre et decodage inchanges). */
-PCSignature Sig_comboAddItemRawEx_OoT_V33 = { 32, Pattern_comboAddItemRawEx_OoT_V33, Mask_comboAddItemRawEx_OoT_V33, 0x40 };
+PCSignature Sig_comboAddItemRawEx_OoT_V33 = { 36, Pattern_comboAddItemRawEx_OoT_V33, Mask_comboAddItemRawEx_OoT_V33, 0x4C };
 
 /* ---- Squelettes OoT V33 a completer (PatternSize 0 => ignore tant que non rempli) ---- */
 

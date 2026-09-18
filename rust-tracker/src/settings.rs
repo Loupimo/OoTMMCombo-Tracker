@@ -1058,6 +1058,22 @@ impl Settings {
             self.starting_item_ids.insert(iid::OOT_ZELDA_LETTER, 1);
         }
 
+        // Progressive clocks (MM): the starting clock is implied by the setting, never
+        // placed in the spoiler. `ascending` starts the player at Day 1 (clock logic:
+        // `clock_ascending(0)`, i.e. `has(CLOCK, 0)`), `descending` at Night 3
+        // (`clock_descending(0)`); each collected Progressive Clock then unlocks the next
+        // period. Grant the implied starting clock — its SPECIFIC tier id, so only that
+        // one progression tile lights (the generic MM_CLOCK sits on all six). The solver
+        // is untouched: its periods read `has(CLOCK, n)` (the MM_CLOCK counter, a
+        // different id) and `has(CLOCK, 0)` is already true, so this never over-opens time.
+        if self.raw_settings.get("clocksMm").map(String::as_str) == Some("true") {
+            match self.raw_settings.get("progressiveClocks").map(String::as_str) {
+                Some("ascending") => { self.starting_item_ids.insert(iid::MM_CLOCK1, 1); }
+                Some("descending") => { self.starting_item_ids.insert(iid::MM_CLOCK6, 1); }
+                _ => {}
+            }
+        }
+
         for m in ITEM_SETTINGS {
             let setting = self.value(m.key);
             match m.cat {

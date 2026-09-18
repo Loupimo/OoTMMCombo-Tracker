@@ -282,6 +282,15 @@ impl TrackerApp {
                 ui.add(egui::Image::new((id, vec2(72.0, 72.0))).tint(tint));
             }
             ui.label(egui::RichText::new(self.i18n.tr_prog_entry(e.name, e.lookup_keys)).heading().size(16.0));
+            // Heaviest weighed fish caught (pondFishShuffle) — shown right under the
+            // name for the four fishing-pond tiles once one has been reeled in.
+            if let Some(lbs) = st.heaviest_lbs {
+                ui.label(
+                    egui::RichText::new(self.i18n.prog_heaviest_fish(lbs))
+                        .italics()
+                        .color(Color32::from_rgb(130, 200, 255)),
+                );
+            }
             if st.found {
                 ui.colored_label(Color32::from_rgb(101, 224, 154), format!("✔ {}", self.i18n.prog_found()));
             } else {

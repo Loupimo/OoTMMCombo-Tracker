@@ -231,25 +231,50 @@ impl WorldInputs {
     /// Seed the reachability roots from the player's discovered entrance graph
     /// (progressive mode). `visited` holds every entrance id the player has actually
     /// walked through — BOTH the departure ids (`out_links` keys) and the arrival ids
-    /// (`out_links` values). Each entrance's own def resolves the *real* region on its
-    /// destination side (`to_name`): for a departure id that is the region the player
-    /// stood in, for an arrival id the region they ended up in (already the shuffled
-    /// destination — the tracker detected the true arriving entrance, so this is
-    /// correct under entrance rando and decoupling, not the vanilla assumption).
+    /// (`out_links` values). Each entrance's def gives the destination scene and the
+    /// facing (`from_name`) side; the tracker detected the true arriving entrance, so
+    /// this is correct under entrance rando and decoupling, not the vanilla assumption.
     ///
-    /// Those region names are matched against the logic region graph and stored as
-    /// extra roots, so a scene the player has physically reached is treated as
-    /// reachable even when no discovered entrance chain links it back to SPAWN. The
-    /// solver then extends from each root through vanilla edges, discovered redirects
-    /// and in-region logic. Names that do not resolve to a logic region are skipped.
+    /// Each entrance is rooted at the region the player ACTUALLY lands in, taken from
+    /// the logic region graph: the destination-scene region(s) a `from_name` region
+    /// reaches by one logic edge. The entrance table's `to_name` is only the
+    /// destination AREA, which is the scene's hub even when the entrance really drops
+    /// the player in a finer pocket walled off by an in-scene barrier — Lost Woods ->
+    /// Goron City lands in the gated "Goron City Shortcut" (behind the three rocks),
+    /// not the "Goron City" hub, so rooting `to_name` lit the whole city for free
+    /// (reported). Reading the arrival off the graph edge keeps that barrier honest,
+    /// and the solver then extends from each root through vanilla edges, discovered
+    /// redirects and in-region logic. Falls back to matching `to_name` when the graph
+    /// does not line up (names differ, cross-game portal, an entrance with no modelled
+    /// edge). Names that resolve to no logic region are skipped.
     pub fn seed_from_visited(&mut self, visited: &HashSet<(u8, u32)>) {
         let names = region_name_index();
+        let scenes = region_scenes();
         let mut regions = Vec::new();
         for &(game, id) in visited {
             let g = if game == 0 { crate::scene::Game::Oot } else { crate::scene::Game::Mm };
             let Some(meta) = crate::entrance::lookup(g, id) else { continue };
-            if let Some(idxs) = names[game as usize].get(meta.to_name) {
-                regions.extend_from_slice(idxs);
+            let dest_scene = canon_entrance_scene(game, meta.to_scene as u32);
+            // Primary: the region(s) in the destination scene that a `from_name` region
+            // steps into over one edge — the true landing spot, barrier-aware.
+            let before = regions.len();
+            if let Some(srcs) = names[game as usize].get(meta.from_name) {
+                for &s in srcs {
+                    for edge in data::LOGIC_REGIONS[s as usize].exits {
+                        let d = edge.to;
+                        if data::LOGIC_REGIONS[d as usize].game == game
+                            && scenes[d as usize] == Some(dest_scene)
+                        {
+                            regions.push(d);
+                        }
+                    }
+                }
+            }
+            // Fallback: match `to_name` directly when the edge lookup found nothing.
+            if regions.len() == before {
+                if let Some(idxs) = names[game as usize].get(meta.to_name) {
+                    regions.extend_from_slice(idxs);
+                }
             }
         }
         regions.sort_unstable();
@@ -258,7 +283,6 @@ impl WorldInputs {
         // entrance may be crossed into one of them, but not into any other scene
         // (see `edge_blocked`). Derived from the regions so it tracks exactly what
         // the player has physically reached, ER and vanilla alike.
-        let scenes = region_scenes();
         self.visited_scenes = regions
             .iter()
             .filter_map(|&i| scenes[i as usize].map(|s| (data::LOGIC_REGIONS[i as usize].game, s)))
@@ -281,21 +305,38 @@ impl WorldInputs {
     /// entrance-fed pockets (the fishing-pond exit) are reachable solely through their
     /// own access rules / entrances, so seeding them would wrongly show them for free.
     /// Seeding just the hub lights the scene immediately while the normal fixed point
-    /// gates the rest by the player's items. `seed_from_visited` still roots the exact
-    /// arrival region for a normal door; this covers the cases where its `to_name` does
-    /// not resolve (owl flights, reverse-pair OUT ids) — the one-step-lag fix.
+    /// gates the rest by the player's items.
+    ///
+    /// The hub is rooted **only as a fallback** — when `seed_from_visited` did not
+    /// already root a region of this scene from a discovered entrance's `to_name`
+    /// (owl flights, reverse-pair OUT ids whose `to_name` does not resolve to the
+    /// loaded scene). When the real arrival region IS known, forcing the hub on top
+    /// would jump the player past an intra-scene barrier standing between the arrival
+    /// region and the hub: entering Goron City from the Lost Woods lands in the gated
+    /// "Goron City Shortcut" pocket, whose only edge to the main city needs explosives
+    /// / hammer / Din (the three blocking rocks), so with no bombs the nine city checks
+    /// must stay hidden. Rooting the hub unconditionally showed them as reachable
+    /// (reported). Letting the fixed point extend from the true arrival region alone
+    /// keeps the barrier honest.
     pub fn seed_scene(&mut self, game: u8, scene: u32) {
         let scenes = region_scenes();
-        let entry = entry_regions();
-        let hub = data::LOGIC_REGIONS
-            .iter()
-            .enumerate()
-            .filter(|(i, r)| r.game == game && scenes[*i] == Some(scene) && entry[*i])
-            .max_by_key(|(_, r)| r.exits.len())
-            .map(|(i, _)| i as u32);
-        if let Some(h) = hub {
-            if !self.seed_regions.contains(&h) {
-                self.seed_regions.push(h);
+        // Did seed_from_visited already root a region of this exact scene? Then the
+        // arrival point is known; do not also force the hub (see the doc above).
+        let arrival_known = self.seed_regions.iter().any(|&i| {
+            data::LOGIC_REGIONS[i as usize].game == game && scenes[i as usize] == Some(scene)
+        });
+        if !arrival_known {
+            let entry = entry_regions();
+            let hub = data::LOGIC_REGIONS
+                .iter()
+                .enumerate()
+                .filter(|(i, r)| r.game == game && scenes[*i] == Some(scene) && entry[*i])
+                .max_by_key(|(_, r)| r.exits.len())
+                .map(|(i, _)| i as u32);
+            if let Some(h) = hub {
+                if !self.seed_regions.contains(&h) {
+                    self.seed_regions.push(h);
+                }
             }
         }
         self.visited_scenes.insert((game, scene));
@@ -508,8 +549,40 @@ fn region_scenes() -> &'static [Option<u32>] {
                 }
             }
         }
+
+        // Pass 3: the OoT Market complex has no single area scene (its `MARKET` area
+        // spans the Market, the Back Alley and the Temple of Time exterior), so its
+        // check-less transition nodes stay scene-less and act as free plumbing — which
+        // let Market and Hyrule Castle show as reachable in progressive mode the moment
+        // Hyrule Field was reached (reported). Pin the two nodes that gate the complex's
+        // outer boundaries to the Market's own object scene, so `edge_blocked` treats
+        // Hyrule Field -> Market and Market -> Hyrule Castle as the real entrances they
+        // are (paired via `canon_entrance_scene`). Market Entryway is the drawbridge
+        // side; Market Castle Entry is the castle-door side.
+        for (i, r) in data::LOGIC_REGIONS.iter().enumerate() {
+            if r.game == 0
+                && scene[i].is_none()
+                && matches!(r.name, "Market Entryway" | "Market Castle Entry")
+            {
+                scene[i] = Some(data::scenes::OOT_MARKET_CHILD_DAY as u32);
+            }
+        }
         scene
     })
+}
+
+/// Fold an OoTMM entrance-table scene id onto the object-scene id the tracker keys
+/// regions and visited scenes by. OoTMM numbers the Market complex with "meta" scene
+/// ids in its entrance table (Market Entrance `0x93`, Market `0x98`) that differ from
+/// the object/render scenes the map uses (Market Child Day `0x20`); without this fold
+/// the entrance pairs never match the region graph's scenes, so the Market boundary is
+/// invisible to `edge_blocked`. Every other scene already agrees across both spaces.
+fn canon_entrance_scene(game: u8, s: u32) -> u32 {
+    use crate::data::scenes as sc;
+    if game == 0 && (s == sc::OOT_MARKET as u32 || s == sc::OOT_MARKET_ENTRANCE as u32) {
+        return sc::OOT_MARKET_CHILD_DAY as u32;
+    }
+    s
 }
 
 /// The set of scene transitions that are real, trackable entrances (loading zones),
@@ -526,7 +599,8 @@ fn entrance_scene_pairs() -> &'static HashSet<(u8, u32, u32)> {
                 if e.type_ == crate::data::EntranceType::None {
                     continue;
                 }
-                let (a, b) = (e.from_scene as u32, e.to_scene as u32);
+                let (a, b) = (canon_entrance_scene(game, e.from_scene as u32),
+                              canon_entrance_scene(game, e.to_scene as u32));
                 if a == b {
                     continue;
                 }
@@ -1200,6 +1274,46 @@ mod tests {
     /// `EntranceDef` (both directions), and excludes the non-walkable `None`-type and
     /// same-scene defs. A Kokiri Forest <-> Link's House door is in; a scene pair with
     /// no def at all (Lake Hylia <-> Deku Tree — never adjacent) is out.
+    /// Progressive discovery must wall the OoT Market complex behind its real
+    /// entrances even though the Market's transition nodes carry no checks (and so
+    /// resolved to no scene) and OoTMM numbers the Market with a different scene id in
+    /// its entrance table than the map uses. Regression: standing in Hyrule Field lit
+    /// up every Market and Hyrule Castle check although neither had been visited.
+    #[test]
+    fn progressive_market_and_castle_gated_behind_their_entrances() {
+        let mq = std::collections::HashSet::new();
+        let mut settings = Settings::default();
+        settings.raw_settings.insert("startingAgeOot".into(), "child".into());
+        settings.apply(&mq);
+        let hf = data::scenes::OOT_HYRULE_FIELD as u32;
+        let market = data::scenes::OOT_MARKET_CHILD_DAY as u32;
+
+        // The Market node and its castle-door node now carry the Market scene, and the
+        // entrance pairs fold onto it, so both boundaries are real entrances.
+        let scenes = region_scenes();
+        let idx = |n: &str| region_name_index()[0].get(n).unwrap()[0] as usize;
+        assert_eq!(scenes[idx("Market Entryway")], Some(market), "Market Entryway is pinned to the Market scene");
+        assert_eq!(scenes[idx("Market Castle Entry")], Some(market));
+        assert!(entrance_scene_pairs().contains(&(0, hf, market)), "Hyrule Field <-> Market is a (folded) entrance");
+        assert!(entrance_scene_pairs().contains(&(0, market, data::scenes::OOT_HYRULE_CASTLE as u32)));
+
+        // Standing only in Hyrule Field: Market and Castle stay hidden.
+        let mut inp = WorldInputs::build(&settings, &[WorldData::default()], 1, &Default::default(), true);
+        inp.seed_scene(0, hf);
+        let r = crate::logic::solve::solve(&inp);
+        assert!(r.reachable("OOT Hyrule Field Tree 01"), "the visited scene itself is reachable");
+        assert!(!r.reachable("OOT Market Crate 1"), "Market must stay hidden until visited");
+        assert!(!r.reachable("OOT Hyrule Castle Pot 1"), "Hyrule Castle must stay hidden until visited");
+
+        // After walking into the Market, its checks open — but Hyrule Castle, one more
+        // entrance away, stays gated.
+        inp.visited_scenes.insert((0, market));
+        inp.seed_scene(0, market);
+        let r2 = crate::logic::solve::solve(&inp);
+        assert!(r2.reachable("OOT Market Crate 1"), "the Market opens once walked into");
+        assert!(!r2.reachable("OOT Hyrule Castle Pot 1"), "Hyrule Castle is still a further undiscovered entrance");
+    }
+
     #[test]
     fn entrance_scene_pairs_marks_real_entrances() {
         let p = entrance_scene_pairs();
@@ -1284,6 +1398,70 @@ mod tests {
         let pond = region_name_index()[0].get("Lake Hylia Near Pond").unwrap()[0];
         assert!(!inp.extra_seed_regions().contains(&pond),
             "an interior gated sub-region must NOT be seeded (kept behind its access rule)");
+    }
+
+    /// Progressive discovery: arriving through a SECONDARY entrance that opens into a
+    /// pocket walled off from the rest of the scene by an in-scene barrier must not
+    /// light the whole scene. Reported: discovering Goron City from the Lost Woods
+    /// drops the player in the gated "Goron City Shortcut" pocket, whose only edge to
+    /// the main city needs explosives / hammer / Din (the three blocking rocks), so
+    /// with no bombs the city's checks must stay hidden. The bug was `seed_scene`
+    /// force-rooting the busiest hub on top of the real (known) arrival region.
+    #[test]
+    fn secondary_entrance_pocket_does_not_light_the_barred_hub() {
+        use crate::data::entr as e;
+        let mq = std::collections::HashSet::new();
+        let mut settings = Settings::default();
+        settings.apply(&mq);
+        let idx = |n: &str| region_name_index()[0].get(n).unwrap()[0];
+        let gc_scene =
+            region_scenes()[idx("Goron City") as usize].expect("Goron City resolves to a scene");
+        let (shortcut, hub) = (idx("Goron City Shortcut"), idx("Goron City"));
+
+        // Drive the real seeding path: the player has walked ONLY the Lost Woods <->
+        // Goron City link. `recompute_reachability` feeds both endpoint ids to
+        // `seed_from_visited`, exactly as gathered from `out_links`.
+        let visited: std::collections::HashSet<(u8, u32)> = [
+            (0u8, e::OOT_GORON_CITY_FROM_LOST_WOODS_ENTR), // arrival: Goron City side
+            (0u8, e::OOT_LOST_WOODS_FROM_GORON_CITY_ENTR), // departure: Lost Woods side
+        ]
+        .into_iter()
+        .collect();
+        let mut inp =
+            WorldInputs::build(&settings, &[WorldData::default()], 1, &Default::default(), true);
+        inp.seed_from_visited(&visited);
+        // The arrival must be the gated pocket, not the hub past the rocks.
+        assert!(
+            inp.extra_seed_regions().contains(&shortcut),
+            "the Lost Woods entrance roots the 'Goron City Shortcut' pocket it truly lands in"
+        );
+        assert!(
+            !inp.extra_seed_regions().contains(&hub),
+            "the 'Goron City' hub (its coarse to_name) must NOT be rooted — the rocks are between"
+        );
+
+        // Standing in Goron City now: the seed_scene fallback must not re-add the hub,
+        // because the arrival pocket is already a known root of this scene.
+        inp.seed_scene(0, gc_scene);
+        assert!(!inp.extra_seed_regions().contains(&hub), "seed_scene must not force the hub either");
+
+        // With no explosives the shortcut event never fires, so the main city — and its
+        // pots — stay behind the unbroken rocks (0 checks, as reported).
+        let r = crate::logic::solve::solve(&inp);
+        assert!(
+            !r.reachable("OOT Goron City Pot Stairs 1"),
+            "a hub check stays hidden while the rocks block the only way in"
+        );
+
+        // The seed_scene fallback still works when NO arrival resolves (owl flight /
+        // unresolved OUT id): it roots the hub so the loaded scene still lights.
+        let mut fb =
+            WorldInputs::build(&settings, &[WorldData::default()], 1, &Default::default(), true);
+        fb.seed_scene(0, gc_scene);
+        assert!(
+            fb.extra_seed_regions().contains(&hub),
+            "with no known arrival the hub is still seeded as a fallback"
+        );
     }
 
     /// An enum setting the seed omits defaults to its unshuffled ("off") value, so

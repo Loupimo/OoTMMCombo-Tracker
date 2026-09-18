@@ -546,6 +546,14 @@ impl I18n {
         Self::get(&self.strings.launch, "use_multiplayer")
     }
 
+    pub fn legacy_multiplayer(&self) -> &str {
+        Self::get(&self.strings.launch, "legacy_multiplayer")
+    }
+
+    pub fn legacy_multiplayer_hint(&self) -> &str {
+        Self::get(&self.strings.launch, "legacy_multiplayer_hint")
+    }
+
     pub fn journal(&self) -> &str {
         Self::get(&self.strings.launch, "journal")
     }
@@ -753,6 +761,10 @@ impl I18n {
 
     pub fn prog_not_found_yet(&self) -> &str {
         Self::get(&self.strings.progression, "not_found_yet")
+    }
+
+    pub fn prog_heaviest_fish(&self, n: i32) -> String {
+        Self::get(&self.strings.progression, "heaviest_fish").replace("{n}", &n.to_string())
     }
 
     // ---------------------------------------------------------------------
@@ -1225,6 +1237,7 @@ mod tests {
             i.filter_tooltip(), i.filter_needs_game(),
             i.launch_options(), i.save_tracking(), i.load_tracking(), i.load_spoiler(),
             i.reset_tracking(), i.use_multiplayer(), i.journal(),
+            i.legacy_multiplayer(), i.legacy_multiplayer_hint(),
             i.drop_spoiler_hint(), i.copy_log(), i.unload_patch(), i.patch_unloaded(),
             i.address_placeholder(), i.port_placeholder(),
             i.all(), i.none(), i.choose(), i.search(), i.apply(), i.lang(),
@@ -1268,6 +1281,7 @@ mod tests {
         i.spoiler_singleworld(1, 2);
         i.gps_alternative(2);
         i.gps_transitions(3);
+        i.prog_heaviest_fish(12);
 
         // Multiplayer / patch / live-event log lines (state.rs) — templated.
         i.log_mp_enabled("host:1");

@@ -14,6 +14,12 @@
 //!   the `TIME_TRAVEL` event, so seeding both ages is safe.
 //! - **Age change** is emergent: once the `TIME_TRAVEL` event fires (Temple of
 //!   Time, computed by the fixed point), `SPAWN`'s other-age exit opens.
+//! - **Extra roots** (progressive entrance mode: the player's visited scenes) are
+//!   seeded *inside* the fixed point and, for OoT, only at an age the player can
+//!   actually reach — read straight off the `SPAWN CHILD` / `SPAWN ADULT` gate. A
+//!   scene walked as a child must not light its adult-only checks (or an exit's
+//!   `is_adult` branch) while adult is unreachable. MM has no age gate, so its extra
+//!   roots stay both-age.
 //! - **Layout**: only regions whose `layout` is active count (base dungeons /
 //!   US MM by default; MQ / JP wired later).
 //! - **MM region flags** (`Op::Flag`) are treated optimistically (satisfiable),
@@ -195,17 +201,20 @@ pub fn solve<I: Inputs>(inp: &I) -> Reachability {
         }
     }
 
-    // Extra roots: regions the player has physically visited (progressive entrance
-    // mode). Seeded at both ages, like SPAWN — the age-gated edges/rules still narrow
-    // what actually opens from here. A live auto-tracker treats "where you have walked"
-    // as reachable, so these anchor the fixed point even with no discovered chain to
-    // SPAWN; empty in full-knowledge mode (the default `Inputs::extra_seed_regions`).
-    for &ri in inp.extra_seed_regions() {
-        let i = ri as usize;
-        if i < n && inp.layout_active(regions[i].layout) {
-            reached[i] = [true, true];
-        }
-    }
+    // Extra roots (progressive entrance mode) are the player's visited scenes; they
+    // are seeded *inside* the loop below so their age gating can track the fixed point.
+    // For OoT they must open only at an age the player can actually reach: seeding a
+    // scene walked as child at the adult age too would light every adult-only check in
+    // it even with no way to time travel. That achievable-age set is exactly what the
+    // SPAWN age gate computes (`SPAWN CHILD`/`SPAWN ADULT` = starting age or TIME_TRAVEL),
+    // so we read those two nodes' reachability rather than re-deriving the rule. MM has
+    // no such gate (its GLOBAL seeds both ages), so MM extra roots stay both-age.
+    let spawn_child_idx = regions
+        .iter()
+        .position(|r| r.game == 0 && r.name == "SPAWN CHILD");
+    let spawn_adult_idx = regions
+        .iter()
+        .position(|r| r.game == 0 && r.name == "SPAWN ADULT");
 
     // Iterate to a fixed point. Region reachability is updated in place (so later
     // regions in the same pass see it); events are collected and applied at the
@@ -259,6 +268,33 @@ pub fn solve<I: Inputs>(inp: &I) -> Reachability {
                 changed = true;
             }
         }
+
+        // (Re)seed the extra roots now that this pass has updated the SPAWN age gate.
+        // OoT roots open only at an achievable age (child/adult per `SPAWN CHILD`/
+        // `SPAWN ADULT`); MM has no age gate, so both ages. If the SPAWN nodes are
+        // somehow absent, fall back to both ages (old behaviour) rather than hiding
+        // everything. TIME_TRAVEL flips the adult gate mid-solve, so re-running each
+        // pass lets a scene's adult checks appear the moment time travel is available.
+        let oot_child_ok = spawn_child_idx.map_or(true, |i| reached[i][0]);
+        let oot_adult_ok = spawn_adult_idx.map_or(true, |i| reached[i][1]);
+        for &ri in inp.extra_seed_regions() {
+            let i = ri as usize;
+            if i >= n || !inp.layout_active(regions[i].layout) {
+                continue;
+            }
+            let ages = if regions[i].game == 0 {
+                [oot_child_ok, oot_adult_ok]
+            } else {
+                [true, true]
+            };
+            for (age, &ok) in ages.iter().enumerate() {
+                if ok && !reached[i][age] {
+                    reached[i][age] = true;
+                    changed = true;
+                }
+            }
+        }
+
         if !changed {
             break;
         }
@@ -376,6 +412,45 @@ mod tests {
              (base {}, seeded {})",
             base.locations.len(),
             seeded.locations.len()
+        );
+    }
+
+    /// Regression: an extra root (a scene the player has physically walked, progressive
+    /// mode) must open only at an age the player can actually reach. Standing at the
+    /// Sacred Forest Meadow entryway as a child with no items and no way to time travel,
+    /// the maze past the gate must stay hidden — its only child path needs Wolfos/damage
+    /// and the entryway→meadow exit's `is_adult` branch must not fire. Before the fix,
+    /// extra roots were seeded at BOTH ages, so that adult branch lit every `true`-ruled
+    /// wonder item in the maze even though the player could never become adult.
+    #[test]
+    fn extra_root_scene_does_not_leak_adult_only_access() {
+        let entryway = data::LOGIC_REGIONS
+            .iter()
+            .position(|r| r.game == 0 && r.name == "Sacred Meadow Entryway")
+            .expect("Sacred Meadow Entryway region") as u32;
+
+        // Child start, no items: only the entryway itself opens, not the gated maze.
+        let mut child = empty();
+        child.extra_roots = vec![entryway];
+        let rc = solve(&child);
+        assert!(
+            rc.reachable("OOT Sacred Meadow Wonder Item Entrance"),
+            "the entryway check we are standing on must show"
+        );
+        assert!(
+            !rc.reachable("OOT Sacred Meadow Wonder Item Maze 1"),
+            "the maze past the closed gate must stay hidden for a child who cannot time travel"
+        );
+
+        // Adult start: the same seeding reaches the maze through the entryway's adult
+        // branch — proving the gate is age-conditioned, not simply always shut.
+        let mut adult = empty();
+        adult.settings.insert(setting_idx("startingAgeOot"), value_idx("adult"));
+        adult.extra_roots = vec![entryway];
+        let ra = solve(&adult);
+        assert!(
+            ra.reachable("OOT Sacred Meadow Wonder Item Maze 1"),
+            "an adult-start player standing at the entryway reaches the maze"
         );
     }
 

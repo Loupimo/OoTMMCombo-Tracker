@@ -32,6 +32,11 @@ pub struct ProgState {
     pub max_count: i32,
     /// The player begins the run owning this item.
     pub is_starting: bool,
+    /// For the four weighed fishing-pond tiles (`pondFishShuffle` disperses one
+    /// distinct item per pound): the heaviest pound value collected so far, so the
+    /// detail panel can show it. `None` for every other entry (and until the first
+    /// weighed fish of this kind is caught).
+    pub heaviest_lbs: Option<i32>,
 }
 
 /// One flattened dashboard entry with its page/section coordinates.
@@ -128,12 +133,23 @@ impl Dashboard {
             }
         }
         // Derive the progressive-family markers: any id listed by two or more tiers
-        // of the same page (see `marker_ids`). A shared item that only mirrors one
-        // OoT + one MM widget lives on two DIFFERENT pages, so it is not caught here
-        // and keeps its shared-propagation behaviour.
+        // of the same page SECTION (see `marker_ids`). A real progressive family
+        // (bow, wallet, strength, scale, bomb bag, shields, MM swords) groups all its
+        // tiers in one section ("Equipments"), so counting per section catches it.
+        //
+        // Counting per section — not per page — is what keeps a *shared* mirror from
+        // being mistaken for a family. A shared item's OoT and MM widgets sit in
+        // DIFFERENT, game-labelled sections of one page: the "Souls" page splits into
+        // "OoT NPC Souls" / "MM NPC Souls" (and the "Collectibles" page likewise), so a
+        // shared soul like `SHARED_SOUL_NPC_MEDIGORON` appears exactly once per section.
+        // Under the old per-page rule it counted twice on the Souls page and was wrongly
+        // flagged progressive, so `walk_stages` lit only the OoT tile and left the MM
+        // mirror dark (reported: Medigoron's soul collected, MM tile stayed unlit though
+        // its detail panel showed it collected). One-per-section means it is not a
+        // marker and keeps its shared-propagation (light every mirror).
         let mut marker_ids: HashSet<u32> = HashSet::new();
         for (&id, idxs) in &by_item {
-            let mut per_page: HashMap<usize, u32> = HashMap::new();
+            let mut per_section: HashMap<(usize, usize), u32> = HashMap::new();
             for &i in idxs {
                 // Only NON-counter tiers form a progressive family. A counter (Empty
                 // Bottle, …) aggregates every matching pickup and is never a "tier", so
@@ -147,9 +163,9 @@ impl Dashboard {
                 if flat[i].entry.is_counter {
                     continue;
                 }
-                *per_page.entry(flat[i].page).or_default() += 1;
+                *per_section.entry((flat[i].page, flat[i].section)).or_default() += 1;
             }
-            if per_page.values().any(|&n| n >= 2) {
+            if per_section.values().any(|&n| n >= 2) {
                 marker_ids.insert(id);
             }
         }
@@ -216,6 +232,7 @@ impl Dashboard {
                 count: 0,
                 max_count: if e.max_from_spoiler { 0 } else { e.max_count },
                 is_starting: false,
+                heaviest_lbs: None,
             };
         }
 
@@ -320,7 +337,50 @@ impl Dashboard {
     /// stage) semantics.
     fn on_item_found(&mut self, id: u32, settings: &Settings) {
         let Some(matches) = self.by_item.get(&id).cloned() else { return };
-        let shared = item_can_be_shared(id) && settings.shared_item_ids.contains(&id);
+        // Weighed fishing-pond fish (`pondFishShuffle`) are dispersed one distinct
+        // item per pound, all pooled under a single counter tile. Remember the heaviest
+        // pound value caught for each matching fish tile so the detail panel can show it.
+        // Gated on the `carp_fish` icon so an unrelated "(N pounds)" name never counts.
+        if let Some(lbs) = fish_weight_lbs(id) {
+            for &i in &matches {
+                if self.flat[i].entry.icon == "carp_fish" {
+                    let cur = &mut self.states[i].heaviest_lbs;
+                    *cur = Some(cur.map_or(lbs, |c| c.max(lbs)));
+                }
+            }
+        }
+        // "Shared" here means the collected item mirrors across both games, so a pickup
+        // must touch every mirror (advance each game's page independently for a
+        // progressive family, or light every tile otherwise). Detect it structurally:
+        // the item's tiles span more than one page (a SHARED_* item is placed once but
+        // listed on the OoT page AND the MM page). The old flag keyed on
+        // `item_can_be_shared` + `shared_item_ids`, but the id actually collected when
+        // sharing is on is the SHARED_* variant, whose ItemDef is `can_be_shared: false`
+        // and which is not in `shared_item_ids` (that set holds the per-game tier ids) —
+        // so shared PROGRESSIVE items (strength, shields, wallet, scale, bomb bag) fell
+        // through to a single `walk_stages` that advanced only the first page's tier and
+        // left the other game's mirror dark (reported: shared Progressive Strength lit
+        // OoT, not MM). Keep the old test as a fallback for any single-page edge case.
+        let first_page = self.flat[matches[0]].page;
+        let shared = matches.iter().any(|&i| self.flat[i].page != first_page)
+            || (item_can_be_shared(id) && settings.shared_item_ids.contains(&id));
+
+        // Progressive clocks (MM ascending/descending): one generic "Progressive Clock"
+        // (MM_CLOCK) is handed out per period unlocked, and all six clock tiles list it.
+        // They are declared Day 1 → Night 3, which is the `ascending` unlock order;
+        // `descending` unlocks Night 3 → Day 1, so its stages walk in reverse. The
+        // starting clock (Day 1 ascending / Night 3 descending) is already lit as a
+        // starting item (`Settings::apply`), so the walk advances from the next period.
+        // (Under `separate` each clock is its own id, so MM_CLOCK is never collected and
+        // this never fires.)
+        if id == data::iid::MM_CLOCK {
+            let mut stages = matches;
+            if settings.raw_settings.get("progressiveClocks").map(String::as_str) == Some("descending") {
+                stages.reverse();
+            }
+            self.walk_stages(&stages);
+            return;
+        }
 
         // OoTMM Short Hookshot (shortHookshotMm): the seed places the SAME item
         // twice as "Hookshot (MM)" (MM_HOOKSHOT) — the first pickup is the short-range
@@ -612,6 +672,16 @@ impl Default for Dashboard {
 
 // ── Free helpers (Items.cpp ports) ────────────────────────────────────────────
 
+/// The weight, in pounds, of a weighed fishing-pond fish item, parsed from its
+/// display name (e.g. "Child Fish (7 pounds)" → 7). `None` for any item whose name
+/// does not end in a "(N pounds)" suffix. Used to surface the heaviest fish caught
+/// (`pondFishShuffle` disperses one distinct item per pound).
+fn fish_weight_lbs(id: u32) -> Option<i32> {
+    let name = crate::qtsave::item_name(id)?;
+    let inner = name.strip_suffix(" pounds)")?.rsplit_once('(')?.1;
+    inner.parse().ok()
+}
+
 /// FindItemByName: resolve a spoiler item name to its internal (dev) item id.
 /// Strips newlines and the "cloaked as …" wrapper, then matches case-insensitively.
 pub fn find_item_id(name: &str) -> Option<u32> {
@@ -645,6 +715,13 @@ fn clock_alias(key_lc: &str) -> Option<u32> {
             .ok()
             .map(|i| data::ITEM_BY_NAME_LC[i].1)
     };
+    // The MM progressive clock is placed as "Progressive Clock (MM)", but the item
+    // table only carries the bare "Progressive Clock" (id MM_CLOCK). Without this the
+    // pickup resolved to nothing, so neither the clock progression tiles nor the time
+    // logic (`has(CLOCK, n)`) ever moved as the player collected clocks.
+    if key_lc == "progressive clock (mm)" {
+        return lookup("progressive clock");
+    }
     // New "clock (mm, X)" -> old "clock (X)".
     if let Some(inner) = key_lc.strip_prefix("clock (mm, ").and_then(|s| s.strip_suffix(')')) {
         return lookup(&format!("clock ({inner})"));
@@ -1227,6 +1304,201 @@ mod tests {
         d2.rebuild(&one_world(&places, &[], &[(Game::Mm, a)]), &off, &HashSet::new());
         assert!(d2.state(full).found, "with the setting off, one hookshot is the full Hookshot");
         assert!(!d2.state(short).found, "and the Short tier stays unlit");
+    }
+
+    #[test]
+    fn heaviest_weighed_fish_is_tracked_for_the_detail_panel() {
+        use data::iid::{OOT_FISHING_POND_CHILD_FISH_7LBS, OOT_FISHING_POND_CHILD_FISH_12LBS};
+        // The panel derives the weight from the item name's "(N pounds)" suffix.
+        assert_eq!(super::fish_weight_lbs(OOT_FISHING_POND_CHILD_FISH_7LBS), Some(7));
+        assert_eq!(super::fish_weight_lbs(OOT_FISHING_POND_CHILD_FISH_12LBS), Some(12));
+        assert_eq!(super::fish_weight_lbs(data::iid::OOT_STICK), None, "a non-fish item has no weight");
+
+        // pondFishShuffle disperses each weighed fish as its own item; two of them land
+        // on real OoT objects and both get collected — the tile must remember the heavier.
+        let mq: HashSet<(Game, u16)> = HashSet::new();
+        let objs: Vec<usize> = data::OOT_OBJECTS
+            .iter()
+            .enumerate()
+            .filter(|(_, o)| {
+                o.type_ != data::ObjectType::none
+                    && crate::tracking::object_active(o, Game::Oot, &mq)
+            })
+            .map(|(i, _)| i)
+            .take(2)
+            .collect();
+        let (a, b) = (objs[0], objs[1]);
+        let places = [
+            (data::OOT_OBJECTS[a].location, "Child Fish (7 pounds)"),
+            (data::OOT_OBJECTS[b].location, "Child Fish (12 pounds)"),
+        ];
+        let mut settings = Settings::default();
+        settings.apply(&mq);
+
+        let mut d = Dashboard::new();
+        let child_fish = entry_by_name(&d, "Child Fish");
+        let adult_loach = entry_by_name(&d, "Adult Loach");
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a), (Game::Oot, b)]), &settings, &mq);
+        assert_eq!(
+            d.state(child_fish).heaviest_lbs,
+            Some(12),
+            "the tile remembers the heavier of the two catches"
+        );
+        assert_eq!(
+            d.state(adult_loach).heaviest_lbs,
+            None,
+            "a fish kind that was never caught has no weight"
+        );
+    }
+
+    #[test]
+    fn shared_soul_lights_both_game_mirrors() {
+        use data::iid::SHARED_SOUL_NPC_MEDIGORON;
+        // A shared soul is placed once (the combined "Soul of Medigoron/Keg Trial
+        // Goron"), and its id sits on BOTH the OoT and the MM soul tile. Those tiles
+        // live in different, game-labelled sections of the one "Souls" page, so the
+        // shared id must NOT be taken for a progressive-family marker — otherwise
+        // `walk_stages` lights only the OoT tile and the MM mirror stays dark even
+        // though its detail panel shows the soul collected (the reported bug).
+        assert_eq!(
+            find_item_id("Soul of Medigoron/Keg Trial Goron"),
+            Some(SHARED_SOUL_NPC_MEDIGORON)
+        );
+        let d0 = Dashboard::new();
+        assert!(
+            !d0.marker_ids.contains(&SHARED_SOUL_NPC_MEDIGORON),
+            "a cross-section shared mirror must not be treated as a progressive marker"
+        );
+
+        // Attach the placement to a real OoT object and collect it.
+        let a = data::OOT_OBJECTS
+            .iter()
+            .position(|o| o.type_ == data::ObjectType::gs)
+            .expect("an OoT gs object exists");
+        let places = [(data::OOT_OBJECTS[a].location, "Soul of Medigoron/Keg Trial Goron")];
+        let mut settings = Settings::default();
+        settings.apply(&HashSet::new());
+
+        let mut d = Dashboard::new();
+        let oot = entry_by_name(&d, "Soul of Medigoron");
+        let mm = entry_by_name(&d, "Soul of Keg Trial Goron");
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a)]), &settings, &HashSet::new());
+        assert!(d.state(oot).found, "the OoT Medigoron soul tile lights");
+        assert!(
+            d.state(mm).found,
+            "the MM Keg Trial soul tile lights too — shared propagation to every mirror"
+        );
+    }
+
+    #[test]
+    fn shared_progressive_strength_advances_both_pages() {
+        use data::iid::SHARED_STRENGTH;
+        // Shared Progressive Strength is placed once ("Progressive Strength" =
+        // SHARED_STRENGTH) and its id sits on the strength tiers of BOTH the OoT page
+        // and the MM page. Each pickup must advance one tier on EACH page — not just
+        // walk the first page's tier and leave the other game's mirror dark (reported:
+        // shared strength lit OoT only).
+        assert_eq!(find_item_id("Progressive Strength"), Some(SHARED_STRENGTH));
+
+        // Tile names repeat across pages, so locate each by (name, page): OoT page = 0,
+        // MM page = 1 (PROG_PAGES order).
+        let d = Dashboard::new();
+        let by_name_page = |name: &str, page: usize| {
+            d.flat()
+                .iter()
+                .position(|fe| fe.entry.name == name && fe.page == page)
+                .expect("tile exists")
+        };
+        let oot_bracelet = by_name_page("Goron's Bracelet", 0);
+        let oot_silver = by_name_page("Silver Gauntlets", 0);
+        let mm_bracelet = by_name_page("Goron's Bracelet", 1);
+        let mm_silver = by_name_page("Silver Gauntlets", 1);
+
+        let gs: Vec<usize> = data::OOT_OBJECTS
+            .iter()
+            .enumerate()
+            .filter(|(_, o)| o.type_ == data::ObjectType::gs)
+            .map(|(i, _)| i)
+            .take(2)
+            .collect();
+        let (a, b) = (gs[0], gs[1]);
+        let places = [
+            (data::OOT_OBJECTS[a].location, "Progressive Strength"),
+            (data::OOT_OBJECTS[b].location, "Progressive Strength"),
+        ];
+        let mut settings = Settings::default();
+        settings.apply(&HashSet::new());
+
+        let mut d = Dashboard::new();
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a)]), &settings, &HashSet::new());
+        assert!(d.state(oot_bracelet).found, "first shared strength lights OoT Goron's Bracelet");
+        assert!(d.state(mm_bracelet).found, "and the MM Goron's Bracelet too");
+        assert!(!d.state(oot_silver).found, "not the OoT second tier yet");
+        assert!(!d.state(mm_silver).found, "nor the MM second tier yet");
+
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a), (Game::Oot, b)]), &settings, &HashSet::new());
+        assert!(d.state(oot_silver).found, "second pickup advances OoT to Silver Gauntlets");
+        assert!(d.state(mm_silver).found, "and MM to Silver Gauntlets in lockstep");
+    }
+
+    #[test]
+    fn progressive_clocks_light_from_starting_clock_in_each_direction() {
+        use data::iid::MM_CLOCK;
+        // The MM progressive clock is placed as "Progressive Clock (MM)" but the table
+        // only holds the bare "Progressive Clock" — resolution must bridge it, or no
+        // clock ever registers.
+        assert_eq!(find_item_id("Progressive Clock (MM)"), Some(MM_CLOCK));
+
+        let d = Dashboard::new();
+        let tile = |name: &str| entry_by_name(&d, name);
+        let (day1, night1, day2) =
+            (tile("Clock (Day 1)"), tile("Clock (Night 1)"), tile("Clock (Day 2)"));
+        let (day3, night2, night3) =
+            (tile("Clock (Day 3)"), tile("Clock (Night 2)"), tile("Clock (Night 3)"));
+
+        // Two OoT objects to host the collected Progressive Clocks.
+        let gs: Vec<usize> = data::OOT_OBJECTS
+            .iter()
+            .enumerate()
+            .filter(|(_, o)| o.type_ == data::ObjectType::gs)
+            .map(|(i, _)| i)
+            .take(2)
+            .collect();
+        let (a, b) = (gs[0], gs[1]);
+        let places = [
+            (data::OOT_OBJECTS[a].location, "Progressive Clock (MM)"),
+            (data::OOT_OBJECTS[b].location, "Progressive Clock (MM)"),
+        ];
+        let settings = |mode: &str| {
+            let mut s = Settings::default();
+            s.raw_settings.insert("clocksMm".into(), "true".into());
+            s.raw_settings.insert("progressiveClocks".into(), mode.into());
+            s.apply(&HashSet::new());
+            s
+        };
+
+        // Descending: start at Night 3, then unlock backward (Day 3, Night 2, …).
+        let desc = settings("descending");
+        let mut d = Dashboard::new();
+        d.rebuild(&one_world(&places, &[], &[]), &desc, &HashSet::new());
+        assert!(d.state(night3).found, "descending starts at Night 3");
+        assert!(!d.state(day1).found, "and not Day 1");
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a)]), &desc, &HashSet::new());
+        assert!(d.state(day3).found, "first descending clock unlocks Day 3");
+        assert!(!d.state(day1).found, "not Day 1 (wrong end)");
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a), (Game::Oot, b)]), &desc, &HashSet::new());
+        assert!(d.state(night2).found, "second descending clock unlocks Night 2");
+
+        // Ascending: start at Day 1, then unlock forward (Night 1, Day 2, …).
+        let asc = settings("ascending");
+        let mut d = Dashboard::new();
+        d.rebuild(&one_world(&places, &[], &[]), &asc, &HashSet::new());
+        assert!(d.state(day1).found, "ascending starts at Day 1");
+        assert!(!d.state(night3).found, "and not Night 3");
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a)]), &asc, &HashSet::new());
+        assert!(d.state(night1).found, "first ascending clock unlocks Night 1");
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a), (Game::Oot, b)]), &asc, &HashSet::new());
+        assert!(d.state(day2).found, "second ascending clock unlocks Day 2");
     }
 
     #[test]

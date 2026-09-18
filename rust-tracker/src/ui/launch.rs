@@ -37,23 +37,33 @@ impl TrackerApp {
                 });
                 ui.add_space(4.0);
 
-                // Row 2: [Use Multiplayer] [host] [port].
-                ui.horizontal(|ui| {
-                    ui.checkbox(&mut self.use_multiplayer, self.i18n.use_multiplayer());
-                    ui.add_enabled_ui(self.use_multiplayer, |ui| {
-                        let port_w = 90.0;
-                        let host_w = (ui.available_width() - port_w - 8.0).max(120.0);
-                        ui.add_sized(
-                            [host_w, 24.0],
-                            egui::TextEdit::singleline(&mut self.mp_host)
-                                .hint_text(self.i18n.address_placeholder()),
-                        );
-                        ui.add_sized(
-                            [port_w, 24.0],
-                            egui::TextEdit::singleline(&mut self.mp_port).hint_text(self.i18n.port_placeholder()),
-                        );
+                // Row 2: legacy server multiplayer, collapsed by default. The public
+                // servers are gone; only self-hosters use this now, so we tuck the
+                // [Use Multiplayer] [host] [port] controls behind a "Legacy" header
+                // to avoid confusing everyone else.
+                let legacy_label = self.i18n.legacy_multiplayer().to_string();
+                egui::CollapsingHeader::new(legacy_label)
+                    .id_salt("legacy_multiplayer")
+                    .default_open(false)
+                    .show(ui, |ui| {
+                        ui.weak(self.i18n.legacy_multiplayer_hint());
+                        ui.horizontal(|ui| {
+                            ui.checkbox(&mut self.use_multiplayer, self.i18n.use_multiplayer());
+                            ui.add_enabled_ui(self.use_multiplayer, |ui| {
+                                let port_w = 90.0;
+                                let host_w = (ui.available_width() - port_w - 8.0).max(120.0);
+                                ui.add_sized(
+                                    [host_w, 24.0],
+                                    egui::TextEdit::singleline(&mut self.mp_host)
+                                        .hint_text(self.i18n.address_placeholder()),
+                                );
+                                ui.add_sized(
+                                    [port_w, 24.0],
+                                    egui::TextEdit::singleline(&mut self.mp_port).hint_text(self.i18n.port_placeholder()),
+                                );
+                            });
+                        });
                     });
-                });
                 ui.add_space(4.0);
 
                 // Row 2.5: [Load Patch] + the current patch file status. The dev

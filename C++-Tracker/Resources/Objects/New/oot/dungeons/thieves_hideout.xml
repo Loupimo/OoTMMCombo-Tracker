@@ -18,8 +18,8 @@
       <xflag type="pot" location="Gerudo Fortress Pot Jail 1 3" room="0x2" actor="0x8" item="RUPEE_RED" name="Jail 1 - Pot 3" xyz="648;441;1"/>
       <xflag type="pot" location="Gerudo Fortress Pot Kitchen 1" room="0x3" actor="0x5" item="ARROWS_10" name="Kitchen 1" xyz="314;188;0"/>
       <xflag type="pot" location="Gerudo Fortress Pot Kitchen 2" room="0x3" actor="0x6" item="RECOVERY_HEART" name="Kitchen 2" xyz="308;196;0"/>
-      <xflag type="pot" location="Gerudo Fortress Pot Jail 3 1" room="0x4" actor="0x9" item="RUPEE_BLUE" name="Jail 3 - Pot 1" xyz="563;351;1"/>
-      <xflag type="pot" location="Gerudo Fortress Pot Jail 3 2" room="0x4" actor="0xa" item="RECOVERY_HEART" name="Jail 3 - Pot 2" xyz="569;345;0"/>
+      <xflag type="pot" location="Gerudo Fortress Pot Jail 4 1" system="new" room="0x4" actor="0x9" item="RUPEE_BLUE" name="Jail 3 - Pot 1" xyz="563;351;1"/>
+      <xflag type="pot" location="Gerudo Fortress Pot Jail 4 2" system="new" room="0x4" actor="0xa" item="RECOVERY_HEART" name="Jail 3 - Pot 2" xyz="569;345;0"/>
       <xflag type="pot" location="Gerudo Fortress Pot Jail 2 1" room="0x5" actor="0x7" item="RECOVERY_HEART" name="Jail 2 - Pot 1" xyz="485;85;1"/>
       <xflag type="pot" location="Gerudo Fortress Pot Jail 2 2" room="0x5" actor="0x8" item="RUPEE_BLUE" name="Jail 2 - Pot 2" xyz="479;80;0"/>
       <xflag type="pot" location="Gerudo Fortress Pot Jail 2 3" room="0x5" actor="0x9" item="RUPEE_RED" name="Jail 2 - Pot 3" xyz="478;86;1"/>
@@ -55,6 +55,8 @@
       <xflag type="wonder" location="Gerudo Fortress Wonder Item Break Room Top" room="0x0" actor="0x3" item="RANDOM" name="Break Room - Top Skull" xyz="577;575;0"/>
       <xflag type="wonder" location="Gerudo Fortress Wonder Item Kitchen Skull" room="0x3" actor="0x3" item="RANDOM" name="Kitchen - Skull" xyz="410;163;0"/>
       <xflag type="wonder" location="Gerudo Fortress Wonder Item Kitchen Soup" room="0x3" actor="0x4" item="RUPEE_RED" name="Kitchen - Soup" xyz="310;161;0"/>
+      <xflag type="pot" location="Gerudo Fortress Pot Jail 3 1" system="legacy" setup="0" room="0x4" actor="0x9" item="RANDOM" name="Jail 3 - Pot 1" xyz="563;351;1"/>
+      <xflag type="pot" location="Gerudo Fortress Pot Jail 3 2" system="legacy" setup="0" room="0x4" actor="0xa" item="RANDOM" name="Jail 3 - Pot 2" xyz="569;345;0"/>
     </scene_rendering>
   </scene>
 </checks>

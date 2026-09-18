@@ -1854,7 +1854,7 @@ static ObjectInfo OOT_ICE_CAVERNSceneObjects_Data [OOT_ICE_CAVERNNumOfObjs] =
 };
 ObjectInfo * OOT_ICE_CAVERNSceneObjects = OOT_ICE_CAVERNSceneObjects_Data;
 
-const size_t OOT_THIEVES_HIDEOUTNumOfObjs = 47;
+const size_t OOT_THIEVES_HIDEOUTNumOfObjs = 49;
 static ObjectInfo OOT_THIEVES_HIDEOUTSceneObjects_Data [OOT_THIEVES_HIDEOUTNumOfObjs] =
 {
 	{ 0x0c, OOT_THIEVES_HIDEOUT, "Small Key - Jail 1", "OOT Gerudo Fortress Jail 1", ObjectType::collectible, {620, 413, 0}, OOT_THIEVES_HIDEOUT, ObjectType::small_key, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0xFFFF, ObjSystem::Any },
@@ -1869,8 +1869,8 @@ static ObjectInfo OOT_THIEVES_HIDEOUTSceneObjects_Data [OOT_THIEVES_HIDEOUTNumOf
 	{ 0x0208, OOT_THIEVES_HIDEOUT, "Jail 1 - Pot 3", "OOT Gerudo Fortress Pot Jail 1 3", ObjectType::pot, {648, 441, 1}, OOT_THIEVES_HIDEOUT, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0B7E, ObjSystem::Any },
 	{ 0x0305, OOT_THIEVES_HIDEOUT, "Kitchen 1", "OOT Gerudo Fortress Pot Kitchen 1", ObjectType::pot, {314, 188, 0}, OOT_THIEVES_HIDEOUT, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0B7F, ObjSystem::Any },
 	{ 0x0306, OOT_THIEVES_HIDEOUT, "Kitchen 2", "OOT Gerudo Fortress Pot Kitchen 2", ObjectType::pot, {308, 196, 0}, OOT_THIEVES_HIDEOUT, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0B80, ObjSystem::Any },
-	{ 0x0409, OOT_THIEVES_HIDEOUT, "Jail 3 - Pot 1", "OOT Gerudo Fortress Pot Jail 3 1", ObjectType::pot, {563, 351, 1}, OOT_THIEVES_HIDEOUT, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0B81, ObjSystem::Any },
-	{ 0x040a, OOT_THIEVES_HIDEOUT, "Jail 3 - Pot 2", "OOT Gerudo Fortress Pot Jail 3 2", ObjectType::pot, {569, 345, 0}, OOT_THIEVES_HIDEOUT, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0B82, ObjSystem::Any },
+	{ 0x0409, OOT_THIEVES_HIDEOUT, "Jail 3 - Pot 1", "OOT Gerudo Fortress Pot Jail 4 1", ObjectType::pot, {563, 351, 1}, OOT_THIEVES_HIDEOUT, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0B81, ObjSystem::New },
+	{ 0x040a, OOT_THIEVES_HIDEOUT, "Jail 3 - Pot 2", "OOT Gerudo Fortress Pot Jail 4 2", ObjectType::pot, {569, 345, 0}, OOT_THIEVES_HIDEOUT, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0B82, ObjSystem::New },
 	{ 0x0507, OOT_THIEVES_HIDEOUT, "Jail 2 - Pot 1", "OOT Gerudo Fortress Pot Jail 2 1", ObjectType::pot, {485, 85, 1}, OOT_THIEVES_HIDEOUT, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0B83, ObjSystem::Any },
 	{ 0x0508, OOT_THIEVES_HIDEOUT, "Jail 2 - Pot 2", "OOT Gerudo Fortress Pot Jail 2 2", ObjectType::pot, {479, 80, 0}, OOT_THIEVES_HIDEOUT, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0B84, ObjSystem::Any },
 	{ 0x0509, OOT_THIEVES_HIDEOUT, "Jail 2 - Pot 3", "OOT Gerudo Fortress Pot Jail 2 3", ObjectType::pot, {478, 86, 1}, OOT_THIEVES_HIDEOUT, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0B85, ObjSystem::Any },
@@ -1903,7 +1903,9 @@ static ObjectInfo OOT_THIEVES_HIDEOUTSceneObjects_Data [OOT_THIEVES_HIDEOUTNumOf
 	{ 0x00002, OOT_THIEVES_HIDEOUT, "Break Room - Bottom Skull", "OOT Gerudo Fortress Wonder Item Break Room Bottom", ObjectType::wonder, {461, 575, 0}, OOT_THIEVES_HIDEOUT, ObjectType::wonder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0BA0, ObjSystem::Any },
 	{ 0x00003, OOT_THIEVES_HIDEOUT, "Break Room - Top Skull", "OOT Gerudo Fortress Wonder Item Break Room Top", ObjectType::wonder, {577, 575, 0}, OOT_THIEVES_HIDEOUT, ObjectType::wonder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0BA1, ObjSystem::Any },
 	{ 0x00303, OOT_THIEVES_HIDEOUT, "Kitchen - Skull", "OOT Gerudo Fortress Wonder Item Kitchen Skull", ObjectType::wonder, {410, 163, 0}, OOT_THIEVES_HIDEOUT, ObjectType::wonder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0BA2, ObjSystem::Any },
-	{ 0x00304, OOT_THIEVES_HIDEOUT, "Kitchen - Soup", "OOT Gerudo Fortress Wonder Item Kitchen Soup", ObjectType::wonder, {310, 161, 0}, OOT_THIEVES_HIDEOUT, ObjectType::wonder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0BA3, ObjSystem::Any }
+	{ 0x00304, OOT_THIEVES_HIDEOUT, "Kitchen - Soup", "OOT Gerudo Fortress Wonder Item Kitchen Soup", ObjectType::wonder, {310, 161, 0}, OOT_THIEVES_HIDEOUT, ObjectType::wonder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0BA3, ObjSystem::Any },
+	{ 0x0409, OOT_THIEVES_HIDEOUT, "Jail 3 - Pot 1", "OOT Gerudo Fortress Pot Jail 3 1", ObjectType::pot, {563, 351, 1}, OOT_THIEVES_HIDEOUT, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0B81, ObjSystem::Legacy },
+	{ 0x040a, OOT_THIEVES_HIDEOUT, "Jail 3 - Pot 2", "OOT Gerudo Fortress Pot Jail 3 2", ObjectType::pot, {569, 345, 0}, OOT_THIEVES_HIDEOUT, ObjectType::pot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0B82, ObjSystem::Legacy }
 };
 ObjectInfo * OOT_THIEVES_HIDEOUTSceneObjects = OOT_THIEVES_HIDEOUTSceneObjects_Data;
 
