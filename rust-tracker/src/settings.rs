@@ -249,6 +249,13 @@ pub struct Settings {
     /// vanilla region edge to a new destination for the reachability solver. Empty
     /// when the seed has no entrance randomizer.
     pub entrance_remap: Vec<EntranceRemap>,
+    /// Scenes running the Master Quest (OoT) / JP (MM) layout this seed, from the
+    /// spoiler's `Master Quest Dungeons` / `Majora's Mask JP Layouts` sections
+    /// (empty = base game everywhere). Copied in by [`Self::apply`] so the
+    /// reachability solver can gate a dungeon's dead variant — its vanilla and MQ
+    /// region graphs share the boss room, so exploring the wrong one leaks
+    /// reachability into the shared boss checks.
+    pub mq_scenes: HashSet<(Game, u16)>,
 }
 
 /// One custom win-condition: the token threshold (`count`) and which item
@@ -300,6 +307,7 @@ impl Default for Settings {
             song_events: [Vec::new(), Vec::new()],
             special_conds: HashMap::new(),
             entrance_remap: Vec::new(),
+            mq_scenes: HashSet::new(),
         }
     }
 }
@@ -748,6 +756,9 @@ impl Settings {
     /// current parameter values. `mq` gates the per-scene layout (Master Quest).
     pub fn apply(&mut self, mq: &HashSet<(Game, u16)>) -> Excluded {
         let mut excluded = Excluded::default();
+        // Remember which dungeons run the alternate (MQ / JP) layout so the solver can
+        // gate each dungeon's dead variant (`WorldInputs::region_active`).
+        self.mq_scenes = mq.clone();
         // Seed the derived sets from what the spoiler world sections rolled.
         self.disabled_item_ids = self.base_disabled.clone();
         self.starting_item_ids = self.base_starting.clone();

@@ -88,11 +88,12 @@ CORE_NATIVES = {
     # `&& can_play_<song>` half of the macro compiles to ordinary item leaves).
     "_song_event_oot", "_song_event_mm",
 }
-# OPTIMISTIC: folded to `true` at compile time. These gate on data the tracker
-# has no source for (randomised shop prices), so a "show only reachable" tracker
-# must not hide for them — hiding a reachable check is worse UX than showing an
-# unreachable one.
-#   price(range, id, max)        -> shops/scrubs always affordable
+# OPTIMISTIC: modelled as satisfiable at compile time when the tracker has no
+# per-seed data source, so a "show only reachable" tracker does not hide for them.
+# `price` is handled specially in `compile_native` (budget-aware: a POSITIVE budget
+# stays true, but the 0-budget "free" branch is false so the wallet/rupee tiers of
+# `wallet_price` actually gate shop / scrub / merchant checks — otherwise every one
+# shows even with no wallet). This set is the generic blanket-true fallback.
 OPTIMISTIC_NATIVES = {"price"}
 NATIVES = CORE_NATIVES | OPTIMISTIC_NATIVES
 
@@ -640,8 +641,22 @@ class Compiler:
                 return [("const", True)]
             game = OOT if name.endswith("oot") else MM
             return [("song_event", game, args[0][1], args[1][1])]
+        if name == "price":
+            # `price(range, id, budget)`: the item's shop/scrub/merchant cost is <= budget.
+            # We have no per-seed price data (randomised), so we stay optimistic — but only
+            # for a POSITIVE budget. `wallet_price` is
+            #   price(_, _, 0) || (has_rupees && ((price(_, _, 99) && has_wallet(1)) || ...))
+            # so treating price(_, _, 0) as true (the old blanket-true `price`) short-circuits
+            # the whole OR and shows every shop/scrub/merchant check even with NO wallet and
+            # NO rupees (reported: shop items visible without a wallet). The 0-budget branch
+            # means "the item is free"; assume it is NOT (returns false), so the wallet tiers
+            # `has_rupees && has_wallet(n)` gate the check. Any positive budget stays true
+            # (affordable if the player can hold that many rupees).
+            budget = args[2] if len(args) > 2 else None
+            free = budget is not None and budget[0] == "num" and budget[1] == 0
+            return [("const", not free)]
         if name in OPTIMISTIC_NATIVES:
-            # price: no data source (randomised) -> always satisfiable.
+            # A modelled-as-satisfiable native with no per-seed data source.
             return [("const", True)]
         # Should be unreachable (only NATIVES reach here).
         return [("builtin", self.intern_builtin(name))]

@@ -28,7 +28,7 @@
 
 use std::collections::{HashMap, HashSet};
 
-use crate::data::{self, GameLayout};
+use crate::data;
 
 use super::eval::{eval, WorldState};
 
@@ -53,8 +53,15 @@ pub trait Inputs {
     }
     /// Whether a boolean-form setting is enabled.
     fn setting_enabled(&self, key: u32) -> bool;
-    /// Whether a region layout is active for this seed (base vs MQ / US vs JP).
-    fn layout_active(&self, layout: GameLayout) -> bool;
+    /// Whether region `idx` (into [`data::LOGIC_REGIONS`]) belongs to a layout that is
+    /// live this seed. A dungeon exists as two region graphs — vanilla (`oot`/`mm`) and
+    /// alternate (`oot_mq`/`mm_jp`) — that share the boss room, so the dead variant must
+    /// be gated out per dungeon (not just per layout): exploring it would otherwise leak
+    /// reachability through the shared boss into that dungeon's boss checks. Default
+    /// `true` explores everything (fine for a base-game-only impl).
+    fn region_active(&self, _idx: usize) -> bool {
+        true
+    }
     fn mask_count(&self) -> u16 {
         0
     }
@@ -196,7 +203,7 @@ pub fn solve<I: Inputs>(inp: &I) -> Reachability {
     let redirects = inp.exit_redirects();
 
     for i in seed_regions() {
-        if inp.layout_active(regions[i].layout) {
+        if inp.region_active(i) {
             reached[i] = [true, true];
         }
     }
@@ -223,7 +230,7 @@ pub fn solve<I: Inputs>(inp: &I) -> Reachability {
         let mut changed = false;
         let mut new_events: Vec<u32> = Vec::new();
         for (ri, r) in regions.iter().enumerate() {
-            if !inp.layout_active(r.layout) {
+            if !inp.region_active(ri) {
                 continue;
             }
             for age in 0u8..2 {
@@ -247,7 +254,7 @@ pub fn solve<I: Inputs>(inp: &I) -> Reachability {
                     }
                     for &to in targets {
                         let to = to as usize;
-                        if reached[to][age as usize] || !inp.layout_active(regions[to].layout) {
+                        if reached[to][age as usize] || !inp.region_active(to) {
                             continue;
                         }
                         reached[to][age as usize] = true;
@@ -279,7 +286,7 @@ pub fn solve<I: Inputs>(inp: &I) -> Reachability {
         let oot_adult_ok = spawn_adult_idx.map_or(true, |i| reached[i][1]);
         for &ri in inp.extra_seed_regions() {
             let i = ri as usize;
-            if i >= n || !inp.layout_active(regions[i].layout) {
+            if i >= n || !inp.region_active(i) {
                 continue;
             }
             let ages = if regions[i].game == 0 {
@@ -304,7 +311,7 @@ pub fn solve<I: Inputs>(inp: &I) -> Reachability {
     // is reachable at an age where its rule holds.
     let mut locations = HashSet::new();
     for (ri, r) in regions.iter().enumerate() {
-        if !inp.layout_active(r.layout) {
+        if !inp.region_active(ri) {
             continue;
         }
         for age in 0u8..2 {
@@ -326,6 +333,7 @@ pub fn solve<I: Inputs>(inp: &I) -> Reachability {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::data::GameLayout;
     use std::collections::{HashMap, HashSet};
 
     /// A configurable `Inputs` for tests: an owned-item set (unlisted = 0 or a
@@ -352,8 +360,11 @@ mod tests {
         fn setting_enabled(&self, key: u32) -> bool {
             self.enabled.contains(&key)
         }
-        fn layout_active(&self, layout: GameLayout) -> bool {
-            matches!(layout, GameLayout::all | GameLayout::oot | GameLayout::mm)
+        fn region_active(&self, idx: usize) -> bool {
+            matches!(
+                data::LOGIC_REGIONS[idx].layout,
+                GameLayout::all | GameLayout::oot | GameLayout::mm
+            )
         }
         fn mask_count(&self) -> u16 {
             self.masks
@@ -697,6 +708,44 @@ mod tests {
         assert!(with.reachable("OOT Fishing Pond Child Fish 1"), "progressive wallet must open the pond");
     }
 
+    /// Shop / scrub / merchant checks are gated by `shop_price(id)` -> `wallet_price`,
+    /// whose first branch is `price(_, _, 0)` ("the item is free"). With randomised
+    /// prices the tracker has no price data, so `price` is optimistic — but the 0-budget
+    /// branch must be FALSE, else it short-circuits the whole OR to true and shows every
+    /// shop item even with no wallet (reported: shop items visible without a wallet). The
+    /// positive-budget branches stay true, so the check reduces to `has_rupees &&
+    /// has_wallet(1)`. `soulsNpcOot` is left off here to isolate the wallet gate from the
+    /// shopkeeper soul.
+    #[test]
+    fn shop_items_need_a_wallet() {
+        use crate::data::iid;
+        let mq = std::collections::HashSet::new();
+        let mut s = crate::settings::Settings::default();
+        s.parse_spoiler(
+            "Settings\n  startingAgeOot: child\n  doorOfTime: open\n  childWallets: true\n",
+            &mq,
+        );
+        s.apply(&mq);
+
+        // No wallet: childWallets makes `has_wallet(1)` false, so the shop item is dark.
+        let none = crate::logic::solve_world(
+            &s, std::slice::from_ref(&crate::WorldData::default()), 1, &Default::default(), false);
+        assert!(
+            !none.reachable("OOT Kokiri Shop Item 1"),
+            "no wallet + childWallets => shop item dark (the price fix)"
+        );
+
+        // A tier-1 wallet collected: the shop item lights up (rupees reachable from the
+        // open child overworld, same as the pond wallet test).
+        s.starting_item_ids.insert(iid::OOT_WALLET, 1);
+        let with = crate::logic::solve_world(
+            &s, std::slice::from_ref(&crate::WorldData::default()), 1, &Default::default(), false);
+        assert!(
+            with.reachable("OOT Kokiri Shop Item 1"),
+            "a wallet must open the shop item"
+        );
+    }
+
     /// `pondFishShuffle`: the weighted fish become real, uniquely-ided shuffled items,
     /// so the pond PRIZE (heart piece / scale) needs one heavy enough. `has_pond_fish`
     /// is compiled to a real OR of `has(<weighted fish>)` (not optimistic): with the
@@ -962,12 +1011,21 @@ mod tests {
         );
 
         // On a full clear, ~all active logic-gated checks are reachable (the seed clears).
+        // "Active" must follow the SEED's real layout (this spoiler runs every dungeon as
+        // Master Quest + the MM JP layout), so we gate each check by its scene's live
+        // layout exactly as the solver does — counting the dead vanilla variant instead
+        // would score the unreachable graph and ignore the reachable one.
         let logic_set = crate::logic::logic_location_set();
-        let active = |l| matches!(l, GameLayout::all | GameLayout::oot | GameLayout::mm);
-        for (label, objs, floor) in [("OoT", data::OOT_OBJECTS, 0.90), ("MM", data::MM_OBJECTS, 0.85)] {
+        for (label, game, objs, floor) in [
+            ("OoT", Game::Oot, data::OOT_OBJECTS, 0.90),
+            ("MM", Game::Mm, data::MM_OBJECTS, 0.85),
+        ] {
             let (mut tot, mut reach) = (0.0f64, 0.0f64);
             for o in objs {
-                if o.type_ == data::ObjectType::none || !active(o.layout) || !logic_set.contains(o.location) {
+                if o.type_ == data::ObjectType::none
+                    || !crate::tracking::scene_layout_active(o.layout, game, o.scene, &sp.mq_scenes)
+                    || !logic_set.contains(o.location)
+                {
                     continue;
                 }
                 tot += 1.0;

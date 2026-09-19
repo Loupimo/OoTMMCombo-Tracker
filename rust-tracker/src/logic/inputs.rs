@@ -26,13 +26,18 @@
 //!   non-custom seed short-circuits it. The mask categories are not modelled yet
 //!   and fall back to optimistic (`true`) so they never hide a check.
 //!
-//! ## `layout_active` is always `true` (correct, not an approximation)
-//! The solver explores both the base and the alternate (MQ / JP) variant of every
-//! dungeon. This never mis-renders: the tracker's object-layout filter draws only
-//! the seed's real variant, and the two variants use disjoint location strings, so
-//! a dead variant's reachable locations are simply never shown. Exploring the extra
-//! regions only ever *adds* reachability to invisible checks — it can never hide a
-//! real one — so per-dungeon gating would change nothing observable.
+//! ## `region_active` gates each dungeon's dead layout variant (per dungeon)
+//! Every OoT dungeon exists as two region graphs — vanilla (`oot`) and Master Quest
+//! (`oot_mq`) — and the MM Deku Palace as `mm` / `mm_jp`; both variants coexist in
+//! `LOGIC_REGIONS`. They are NOT fully disjoint: a dungeon's two variants **share its
+//! boss room** (`GameLayout::all`), and both variants' pre-boss rooms carry an edge into
+//! it. So exploring the dead variant is not harmless — its (differently gated) path to
+//! the shared boss lights that dungeon's boss checks even when the live variant walls
+//! them (reported: King Dodongo's chest / heart container / stone shown though the boss
+//! was unreachable). [`compute_active_regions`] therefore marks each region live or dead
+//! from `settings.mq_scenes`, and the solver skips dead ones. The dungeon's inbound
+//! entrance edge lands on *both* variants' entry regions, so gating the dead one keeps
+//! the live one reachable.
 
 use std::collections::{HashMap, HashSet};
 use std::sync::OnceLock;
@@ -93,6 +98,12 @@ pub struct WorldInputs {
     /// crossing into an undiscovered scene is walled. Populated by
     /// [`Self::seed_from_visited`]. Empty outside progressive mode.
     visited_scenes: HashSet<(u8, u32)>,
+    /// Per region index (into [`data::LOGIC_REGIONS`]): whether its layout is live this
+    /// seed (`Inputs::region_active`). A dungeon's vanilla and Master-Quest / JP region
+    /// graphs coexist in the data and share the boss room, so the dead variant must be
+    /// gated out or its path leaks reachability into the shared boss checks. Built once
+    /// in [`Self::build`] from `settings.mq_scenes`.
+    active_regions: Vec<bool>,
 }
 
 impl WorldInputs {
@@ -223,6 +234,7 @@ impl WorldInputs {
             seed_regions: Vec::new(),
             progressive,
             visited_scenes: HashSet::new(),
+            active_regions: compute_active_regions(&settings.mq_scenes),
         };
         wi.mm_slices = compute_mm_slices(&wi);
         wi
@@ -244,10 +256,12 @@ impl WorldInputs {
     /// House is entered by the free balcony window ("Impa House Back", the Piece of
     /// Heart) OR the rusty-key front door ("Impa House Front", the Wonder Item), so
     /// rooting only the walked pocket keeps the locked sibling hidden (reported: the
-    /// Wonder Item showed after entering the back). The node may itself be a scene-less
-    /// waypoint ("Near Romani Ranch", "Mayor's Residence"), so the walk follows
-    /// scene-less connectors forward to the real destination-scene region, never
-    /// crossing into another real scene — an in-scene barrier stays honest.
+    /// Wonder Item showed after entering the back). Only that node is rooted — even when
+    /// it is a scene-less hub or waypoint ("Market Pot House", "Near Romani Ranch") — and
+    /// its destination scene is marked visited so the solver may extend inward across the
+    /// node's real (gated) edges. It must NOT root those inner regions topologically: a
+    /// hub that forks by age (the child-only vs adult-only Market pot rooms) would then
+    /// light the adult room for a child, ignoring the age gate (reported).
     ///
     /// When `to_area` does not resolve to a destination-scene region (an entrance with
     /// no `areas`, or a name the logic graph lacks), it falls back to a SOURCE-side walk
@@ -259,6 +273,11 @@ impl WorldInputs {
         let names = region_name_index();
         let scenes = region_scenes();
         let mut regions = Vec::new();
+        // Destination scenes reached through a scene-less `to_area` hub/waypoint. Rooting
+        // the (scene-less) node contributes no scene of its own, but the player physically
+        // arrived in this scene, so it must be marked visited for `edge_blocked` to pass
+        // the hub's inward edges. Merged into `visited_scenes` below.
+        let mut extra_visited: HashSet<(u8, u32)> = HashSet::new();
         for &(game, id) in visited {
             let g = if game == 0 { crate::scene::Game::Oot } else { crate::scene::Game::Mm };
             let Some(meta) = crate::entrance::lookup(g, id) else { continue };
@@ -286,28 +305,41 @@ impl WorldInputs {
                     }
                 }
             };
-            // Primary: the entrance's exact destination NODE (`to_area`). Root it when it
-            // is already in the destination scene, else walk forward from it through
-            // scene-less waypoints. Roots only the pocket this entrance lands in.
+            // Primary: the entrance's exact destination NODE (`to_area`). Root that node
+            // itself — a located pocket of the destination scene, or a scene-less hub /
+            // waypoint in front of it — and let the solver extend inward across its real
+            // (gated) edges. A scene-less hub is NOT walked forward to root its
+            // destination-scene children: that ignored the age/item gate on those inward
+            // edges and lit the adult Market pot room for a child (reported). Marking the
+            // destination scene visited lets `edge_blocked` pass the hub's inward edges so
+            // the solver takes only the ones whose rule the player satisfies.
             if let Some(dsts) = names[game as usize].get(meta.to_area) {
+                let mut rooted = false;
                 for &d in dsts {
-                    if !seen.insert(d) {
+                    if data::LOGIC_REGIONS[d as usize].game != game {
                         continue;
                     }
-                    match scenes[d as usize] {
-                        Some(sc) if sc == dest_scene => regions.push(d),
-                        None => stack.push(d),
-                        _ => {}
-                    }
+                    regions.push(d);
+                    rooted = true;
                 }
-                walk(&mut regions, &mut stack, &mut seen);
+                if rooted {
+                    extra_visited.insert((game, dest_scene));
+                }
             }
             // Fallback 1: `to_area` gave nothing — walk the SOURCE side. Seed from the
             // named `from` region AND every region of the source scene (the table's names
             // do not always match the logic region names — "North Clock Town" vs "Clock
             // Town North" — so the scene id is the reliable source-side link), then walk
             // forward. Broader (can root sibling pockets), hence only a fallback.
-            if regions.len() == before {
+            //
+            // Only for a CROSS-scene entrance: when the destination scene IS the source
+            // scene (an intra-scene warp with no `to_area` — the Deku Palace "Caught" guard
+            // toss, a bridge), seeding every source-scene region and rooting each one's
+            // in-scene neighbours would light the entire scene through its own internal
+            // edges, ignoring every gate — it rooted the mask-gated "Deku Palace Upper"
+            // pots off the Caught warp (reported). The player is already in that scene via
+            // the entrance that brought them in, so nothing extra needs rooting here.
+            if regions.len() == before && src_scene != dest_scene {
                 seen.clear();
                 if let Some(srcs) = names[game as usize].get(meta.from_name) {
                     for &s in srcs {
@@ -336,10 +368,14 @@ impl WorldInputs {
         // entrance may be crossed into one of them, but not into any other scene
         // (see `edge_blocked`). Derived from the regions so it tracks exactly what
         // the player has physically reached, ER and vanilla alike.
-        self.visited_scenes = regions
+        let mut visited_scenes: HashSet<(u8, u32)> = regions
             .iter()
             .filter_map(|&i| scenes[i as usize].map(|s| (data::LOGIC_REGIONS[i as usize].game, s)))
             .collect();
+        // Scenes reached only through a scene-less `to_area` hub contribute no region of
+        // their own but were physically entered; add them so their inward edges open.
+        visited_scenes.extend(extra_visited);
+        self.visited_scenes = visited_scenes;
         self.seed_regions = regions;
     }
 
@@ -373,10 +409,22 @@ impl WorldInputs {
     /// keeps the barrier honest.
     pub fn seed_scene(&mut self, game: u8, scene: u32) {
         let scenes = region_scenes();
+        let areas = entrance_area_scene();
         // Did seed_from_visited already root a region of this exact scene? Then the
-        // arrival point is known; do not also force the hub (see the doc above).
+        // arrival point is known; do not also force the hub (see the doc above). A
+        // scene's arrival region often has no check of its own, so `region_scenes` leaves
+        // it `None` — but it IS a region of that scene, named by some entrance's
+        // `to_area`. The Deku King's Chamber (scene 0x3e) is entered at "Deku Palace
+        // Throne" (no check) via the throne door, or at "Deku Palace Cage" (the Sonata
+        // check) via the jail door; walking the throne door roots "Throne", yet matching
+        // on `region_scenes` alone missed it and force-rooted the gated "Cage" hub, whose
+        // free Cage -> Near Cage -> Upper (Deku mask) path lit the upper pots (reported).
+        // So also credit a seeded region that an entrance's `to_area` files under `scene`.
         let arrival_known = self.seed_regions.iter().any(|&i| {
-            data::LOGIC_REGIONS[i as usize].game == game && scenes[i as usize] == Some(scene)
+            let r = &data::LOGIC_REGIONS[i as usize];
+            r.game == game
+                && (scenes[i as usize] == Some(scene)
+                    || areas[game as usize].get(r.name) == Some(&scene))
         });
         if !arrival_known {
             let entry = entry_regions();
@@ -396,18 +444,40 @@ impl WorldInputs {
     }
 }
 
-/// Per region, whether an entrance can land the player *in* it: it has at least one
-/// incoming edge from a region in a different scene (or a scene-less plumbing node).
-/// These are the arrival points of a scene; a region reachable only from within its
-/// own scene (a gated pond ledge, a bean spot) is not one. [`WorldInputs::seed_scene`]
-/// roots the busiest of them (the hub) and lets in-scene rules gate the rest. Static:
-/// depends only on the region graph + `region_scenes`.
+/// Per region, whether a *walk-in* entrance can land the player in it: it has at least
+/// one incoming edge, from a region in a different scene (or a scene-less plumbing
+/// node), that is not a WARP. These are the arrival points of a scene; a region
+/// reachable only from within its own scene (a gated pond ledge, a bean spot) is not
+/// one. [`WorldInputs::seed_scene`] roots the busiest of them (the hub) and lets
+/// in-scene rules gate the rest.
+///
+/// Warp-song / owl landings are excluded: a region reached only from a scene-less warp
+/// node (the nodes `GLOBAL` warps to — `SONG_TP_*`, `MM SOARING`, `EGGS`) is a warp pad,
+/// not a walk-in entry. Being physically in a scene does not mean the player warped to
+/// its pad; treating "Death Mountain Crater Warp" (fed only by `SONG_TP_FIRE`) as the
+/// hub seeded it at child age and lit the tunic-gated child rupees reached from it via
+/// `is_child` (reported). With it excluded, `seed_scene` falls back to a real walk-in
+/// entry (Crater Top/Bridges), whose own rules keep the tunic gate honest.
+/// Static: depends only on the region graph + `region_scenes`.
 fn entry_regions() -> &'static [bool] {
     static E: OnceLock<Vec<bool>> = OnceLock::new();
     E.get_or_init(|| {
         let scenes = region_scenes();
+        // Warp nodes: every region a `GLOBAL` node exits to (the warp songs, MM soaring,
+        // eggs). An edge from one is a warp, not a walk-in, so it must not mark an entry.
+        let mut warp_node = vec![false; data::LOGIC_REGIONS.len()];
+        for r in data::LOGIC_REGIONS.iter() {
+            if r.name == "GLOBAL" {
+                for e in r.exits {
+                    warp_node[e.to as usize] = true;
+                }
+            }
+        }
         let mut entry = vec![false; data::LOGIC_REGIONS.len()];
         for (j, r) in data::LOGIC_REGIONS.iter().enumerate() {
+            if warp_node[j] {
+                continue;
+            }
             for e in r.exits {
                 let i = e.to as usize;
                 // A cross-scene (or plumbing -> scene) incoming edge marks an arrival.
@@ -544,6 +614,29 @@ fn region_name_index() -> &'static [HashMap<&'static str, Vec<u32>>; 2] {
             idx[r.game as usize].entry(r.name).or_default().push(i as u32);
         }
         idx
+    })
+}
+
+/// Per game, an entrance `to_area` region name -> the (canonicalized) scene that entrance
+/// drops into. A scene's arrival region often carries no check of its own (e.g. "Deku
+/// Palace Throne", the Deku King's Chamber entry), so [`region_scenes`] leaves it `None`
+/// even though it is a region of that scene. [`WorldInputs::seed_scene`] consults this so
+/// a scene whose arrival [`WorldInputs::seed_from_visited`] already rooted counts as known
+/// — instead of force-rooting a different, gated hub region of the same scene. First
+/// writer wins if two entrances share a `to_area` (they resolve to the same scene anyway).
+fn entrance_area_scene() -> &'static [HashMap<&'static str, u32>; 2] {
+    static M: OnceLock<[HashMap<&'static str, u32>; 2]> = OnceLock::new();
+    M.get_or_init(|| {
+        let mut m: [HashMap<&'static str, u32>; 2] = [HashMap::new(), HashMap::new()];
+        for (g, ents) in [(0usize, data::OOT_ENTRANCES), (1usize, data::MM_ENTRANCES)] {
+            for e in ents {
+                if !e.to_area.is_empty() {
+                    let s = canon_entrance_scene(g as u8, e.to_scene as u32);
+                    m[g].entry(e.to_area).or_insert(s);
+                }
+            }
+        }
+        m
     })
 }
 
@@ -756,6 +849,59 @@ fn entrance_scene_pairs() -> &'static HashSet<(u8, u32, u32)> {
     })
 }
 
+/// OoT dungeon `LogicRegion.dungeon` code -> its base scene id, for the 12 dungeons that
+/// have a Master Quest variant. Both the vanilla (`oot`) and MQ (`oot_mq`) region graphs
+/// of such a dungeon carry this code; which one is live depends on whether this scene
+/// runs MQ ([`compute_active_regions`]). A code absent here — the overworld (`""`),
+/// Ganon's Tower, Gerudo Fortress, Thieves' Hideout — has no MQ variant, so its regions
+/// are always live. Scene ids match `settings.mq_scenes` (base ids, see `parse_mq`).
+fn oot_mq_dungeon_scene(code: &str) -> Option<u16> {
+    use crate::data::scenes as s;
+    Some(match code {
+        "DT" => s::OOT_DEKU_TREE,
+        "DC" => s::OOT_DODONGO_CAVERN,
+        "JJ" => s::OOT_INSIDE_JABU_JABU,
+        "Forest" => s::OOT_TEMPLE_FOREST,
+        "Fire" => s::OOT_TEMPLE_FIRE,
+        "Water" => s::OOT_TEMPLE_WATER,
+        "Shadow" => s::OOT_TEMPLE_SHADOW,
+        "Spirit" => s::OOT_TEMPLE_SPIRIT,
+        "BotW" => s::OOT_BOTTOM_OF_THE_WELL,
+        "IC" => s::OOT_ICE_CAVERN,
+        "GTG" => s::OOT_GERUDO_TRAINING_GROUND,
+        "Ganon" => s::OOT_INSIDE_GANON_CASTLE,
+        _ => return None,
+    })
+}
+
+/// Per region index, whether its layout is live this seed — backs
+/// [`Inputs::region_active`]. `mq` is the seed's Master-Quest (OoT) / JP (MM) scene set
+/// (`Settings::mq_scenes`; empty = base game everywhere). `all` regions are always live.
+/// An OoT dungeon's vanilla (`oot`) / MQ (`oot_mq`) variants are gated by whether that
+/// dungeon runs MQ; the MM Deku-Palace `mm` / `mm_jp` variants by the all-or-nothing JP
+/// toggle. Both variants of a dungeon share its boss room and both receive the dungeon's
+/// inbound entrance edge, so gating the dead one keeps the entrance connected through the
+/// live one while stopping the dead path from lighting the shared boss checks.
+fn compute_active_regions(mq: &HashSet<(Game, u16)>) -> Vec<bool> {
+    let jp_on = mq.iter().any(|&(g, _)| g == Game::Mm);
+    data::LOGIC_REGIONS
+        .iter()
+        .map(|r| match r.layout {
+            GameLayout::all => true,
+            GameLayout::mm => !jp_on,
+            GameLayout::mm_jp => jp_on,
+            GameLayout::oot => match oot_mq_dungeon_scene(r.dungeon) {
+                Some(scene) => !mq.contains(&(Game::Oot, scene)),
+                None => true, // overworld / no-MQ dungeon: always live
+            },
+            GameLayout::oot_mq => match oot_mq_dungeon_scene(r.dungeon) {
+                Some(scene) => mq.contains(&(Game::Oot, scene)),
+                None => false, // an oot_mq region must belong to an MQ-capable dungeon
+            },
+        })
+        .collect()
+}
+
 /// Turn the spoiler's name-based entrance remaps into solver edge redirects: for
 /// each `from -> via` vanilla edge in the region graph, redirect it to the shuffled
 /// destination region(s). Dungeon destinations resolve to every layout variant; the
@@ -850,10 +996,8 @@ impl Inputs for WorldInputs {
     fn setting_enabled(&self, key: u32) -> bool {
         self.settings_enabled.contains(&key)
     }
-    fn layout_active(&self, _layout: GameLayout) -> bool {
-        // Explore every variant; the object-layout filter renders only the seed's
-        // real one and the variants use disjoint locations (see module docs).
-        true
+    fn region_active(&self, idx: usize) -> bool {
+        self.active_regions.get(idx).copied().unwrap_or(true)
     }
     fn mask_count(&self) -> u16 {
         self.masks
@@ -1131,6 +1275,162 @@ mod tests {
             "adult-only MM chest must stay unreachable without the means to become adult");
         assert!(solved(true),
             "the MM Adult mask makes the adult-only chest reachable");
+    }
+
+    /// An intra-scene warp with no `to_area` (the Deku Palace "Caught" guard toss, whose
+    /// `from_scene == to_scene`) must not fall into the source-side walk: seeding every
+    /// region of the scene and rooting each one's in-scene neighbours lights the whole
+    /// palace through its own gated edges — it rooted the mask-gated "Deku Palace Upper"
+    /// pots (reported: pots shown in progressive mode with no way to reach Upper). The
+    /// scene is already rooted by the entrance that brought the player in.
+    #[test]
+    fn intra_scene_warp_does_not_root_the_whole_scene() {
+        let mq = HashSet::new();
+        let mut settings = Settings::default();
+        settings.apply(&mq);
+        let mut inp = WorldInputs::build(&settings, &[WorldData::default()], 1, &Default::default(), true);
+        inp.items.insert(data::iid::MM_MASK_DEKU, 1); // the mask that would open Upper if rooted
+
+        let visited: HashSet<(u8, u32)> = [
+            (1u8, data::entr::MM_DEKU_PALACE_MAIN_ENTRANCE_ENTR), // normal entry -> "Deku Palace Front"
+            (1u8, data::entr::MM_DEKU_PALACE_CAUGHT),             // intra-scene guard toss (no to_area)
+        ]
+        .into_iter()
+        .collect();
+        inp.seed_from_visited(&visited);
+
+        let idx = |n: &str| region_name_index()[1][n][0];
+        assert!(
+            inp.seed_regions.contains(&idx("Deku Palace Front")),
+            "the normal entrance still roots the palace arrival (Front)",
+        );
+        assert!(
+            !inp.seed_regions.contains(&idx("Deku Palace Upper")),
+            "the intra-scene Caught warp must not root the gated Upper pocket",
+        );
+        let r = crate::logic::solve::solve(&inp);
+        assert!(
+            !r.reachable("MM Deku Palace Pot 1"),
+            "the upper pots stay hidden with no real path to Upper",
+        );
+    }
+
+    /// The Deku King's Chamber (scene 0x3e) is entered at "Deku Palace Throne" (no check
+    /// of its own, so `region_scenes` = None) via the throne door, or at "Deku Palace
+    /// Cage" (the Sonata check) via the jail door. Standing in the chamber after the
+    /// throne door must not root the gated "Cage" hub — its free Cage -> Near Cage ->
+    /// Upper (Deku mask) path would light the upper pots (reported: pots shown in
+    /// progressive mode though the player could not grow the beans to reach Upper).
+    #[test]
+    fn chamber_throne_arrival_does_not_leak_to_the_upper_pots() {
+        let mq = HashSet::new();
+        let mut settings = Settings::default();
+        settings.apply(&mq);
+        let mut inp = WorldInputs::build(&settings, &[WorldData::default()], 1, &Default::default(), true);
+        inp.items.insert(data::iid::MM_MASK_DEKU, 1); // owns the Deku mask (the leak's key)
+
+        // Walk the throne door: `seed_from_visited` roots its `to_area` "Deku Palace
+        // Throne", which has no check, so `region_scenes` leaves it None.
+        let visited: HashSet<(u8, u32)> =
+            [(1u8, data::entr::MM_DEKU_PALACE_THRONE_ENTR)].into_iter().collect();
+        inp.seed_from_visited(&visited);
+        assert!(
+            inp.seed_regions.contains(&(region_name_index()[1]["Deku Palace Throne"][0])),
+            "the throne door roots the Throne arrival region",
+        );
+
+        // Standing in the chamber must recognise the Throne arrival and NOT force the Cage
+        // hub, so the mask-gated upper pots stay hidden.
+        inp.seed_scene(1, data::scenes::MM_DEKU_KING_CHAMBER as u32);
+        let cage = region_name_index()[1]["Deku Palace Cage"][0];
+        assert!(
+            !inp.seed_regions.contains(&cage),
+            "the gated Cage hub must not be force-rooted when the Throne arrival is known",
+        );
+        let r = crate::logic::solve::solve(&inp);
+        assert!(
+            !r.reachable("MM Deku Palace Pot 1"),
+            "the upper pots stay hidden when the chamber was entered at the throne",
+        );
+    }
+
+    /// A dungeon's vanilla and Master Quest region graphs share the boss room, so the
+    /// dead variant must be gated per dungeon: with no MQ dungeons the MQ graph is off
+    /// (and vice-versa). Without this the MQ Pre-Boss Lobby stayed reachable and lit King
+    /// Dodongo's chest / heart container / stone even when the vanilla path to the boss
+    /// was walled (reported).
+    #[test]
+    fn dungeon_variant_regions_are_gated_by_the_seed_layout() {
+        use crate::data::scenes as s;
+        let dc: Vec<(usize, GameLayout)> = data::LOGIC_REGIONS
+            .iter()
+            .enumerate()
+            .filter(|(_, r)| r.game == 0 && r.name == "Dodongo Cavern")
+            .map(|(i, r)| (i, r.layout))
+            .collect();
+        let vanilla = dc.iter().find(|(_, l)| *l == GameLayout::oot).expect("vanilla DC entry").0;
+        let mq = dc.iter().find(|(_, l)| *l == GameLayout::oot_mq).expect("MQ DC entry").0;
+
+        // No Master Quest dungeons: vanilla graph live, MQ graph dead.
+        let mut base = Settings::default();
+        base.apply(&Default::default());
+        let inp = WorldInputs::build(&base, &[WorldData::default()], 1, &Default::default(), false);
+        assert!(inp.region_active(vanilla), "vanilla DC is live when DC is not Master Quest");
+        assert!(!inp.region_active(mq), "MQ DC is dead when DC is not Master Quest");
+
+        // Dodongo's Cavern set to Master Quest: the two graphs swap.
+        let mut mqset = HashSet::new();
+        mqset.insert((Game::Oot, s::OOT_DODONGO_CAVERN));
+        let mut mqs = Settings::default();
+        mqs.apply(&mqset);
+        let inp = WorldInputs::build(&mqs, &[WorldData::default()], 1, &Default::default(), false);
+        assert!(!inp.region_active(vanilla), "vanilla DC is dead when DC is Master Quest");
+        assert!(inp.region_active(mq), "MQ DC is live when DC is Master Quest");
+
+        // The always-shared boss room stays live regardless of the layout.
+        let boss = data::LOGIC_REGIONS
+            .iter()
+            .position(|r| r.game == 0 && r.name == "Dodongo Cavern Boss")
+            .unwrap();
+        assert!(inp.region_active(boss), "the shared boss room is always live");
+    }
+
+    /// A warp-song / owl landing region must not be picked as a scene's `seed_scene` hub.
+    /// "Death Mountain Crater Warp" is fed only by the scene-less `SONG_TP_FIRE` node
+    /// (the Bolero warp pad), so it looked like the crater's busiest "entry" and got
+    /// seeded when the player merely stood in the crater — which lit the tunic-gated
+    /// child rupees reached from it via `is_child`, with no Goron Tunic (reported).
+    /// `entry_regions` now excludes warp-node sources, so the hub is a real walk-in entry
+    /// whose own rules keep the tunic gate honest.
+    #[test]
+    fn warp_pad_is_not_a_seed_scene_hub() {
+        let idx = |n: &str| region_name_index()[0].get(n).expect("region")[0] as usize;
+        let entry = entry_regions();
+        assert!(
+            !entry[idx("Death Mountain Crater Warp")],
+            "the Bolero warp pad must not count as a walk-in entry"
+        );
+        // The crater still has real walk-in entries (from Summit / Goron City), so a hub
+        // can still be picked.
+        assert!(
+            entry[idx("Death Mountain Crater Bridges")] || entry[idx("Death Mountain Crater Top")],
+            "a real walk-in crater entry must remain"
+        );
+
+        // End to end: a tunic-less child physically in the crater (seed_scene) must NOT
+        // see the child rupees — reaching them needs the Goron Tunic (or the Bolero warp).
+        let mq = std::collections::HashSet::new();
+        let mut s = Settings::default();
+        s.raw_settings.insert("startingAgeOot".into(), "child".into());
+        s.raw_settings.insert("doorOfTime".into(), "open".into());
+        s.apply(&mq);
+        let mut inp = WorldInputs::build(&s, &[WorldData::default()], 1, &Default::default(), true);
+        inp.seed_scene(0, data::scenes::OOT_DEATH_MOUNTAIN_CRATER as u32);
+        let r = crate::logic::solve::solve(&inp);
+        assert!(
+            !r.reachable("OOT Death Mountain Crater Rupee Child 1"),
+            "standing in the crater without the tunic must not reveal the child rupees"
+        );
     }
 
     /// A collected Kokiri Sword check turns into +1 of the sword's item id, and
