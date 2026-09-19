@@ -699,7 +699,28 @@ pub fn find_item_id(name: &str) -> Option<u32> {
     // string ("Rusty Key (Silo)"), while the tracker's item table uses the name
     // shown in-game ("Rusty Key (Lon Lon Silo)"). Map the spoiler-only spellings
     // onto the tracker id so a collected rusty key still shows in progression.
-    rusty_key_alias(&key).or_else(|| clock_alias(&key))
+    rusty_key_alias(&key)
+        .or_else(|| clock_alias(&key))
+        .or_else(|| shared_item_alias(&key))
+}
+
+/// A shared item (its `shared*` setting merges the OoT and MM copies into one) is
+/// placed and picked up under OoTMM's bare display name — "Bomb Bag", "Bow", "Fire
+/// Arrows"… — but a handful are carried in the tracker's item table under a "Shared X"
+/// spelling (`SHARED_BOMB_BAG` = "Shared Bomb Bag", `SHARED_BOW` = "Shared Bow",
+/// the shared magic arrows and magic upgrade). Their bare spoiler/pickup name then
+/// resolved to nothing, so neither game's progression tile lit AND the logic never
+/// credited the item — `has_bomb_bag` / `has_bow` stayed false (reported for shared
+/// Bomb Bags; the same held for shared Bows). Most shared items already carry the bare
+/// name (Progressive Strength, Fairy Slingshot, Big Quiver…) and resolve directly;
+/// this only rescues the "Shared X"-named holdouts by retrying with the prefix. Only
+/// reached after a direct miss, so a name that already resolves is never rerouted.
+fn shared_item_alias(key_lc: &str) -> Option<u32> {
+    let shared = format!("shared {key_lc}");
+    data::ITEM_BY_NAME_LC
+        .binary_search_by(|&(nm, _)| nm.cmp(shared.as_str()))
+        .ok()
+        .map(|i| data::ITEM_BY_NAME_LC[i].1)
 }
 
 /// Since OoTMM added an OoT clock, newer spoilers / logs disambiguate the Majora's
@@ -865,6 +886,56 @@ mod tests {
         assert_eq!(find_item_id("Boomerang (OOT)"), Some(data::iid::OOT_BOOMERANG));
         // Unknown -> None (the C++ synthesises an id=-1 placeholder we skip).
         assert_eq!(find_item_id("Definitely Not An Item"), None);
+    }
+
+    #[test]
+    fn bare_shared_item_names_resolve_to_the_shared_id() {
+        use data::iid::*;
+        // OoTMM writes shared Bomb Bags / Bows under their bare display name, but the
+        // tracker table carries them as "Shared X" — the bare name must still resolve
+        // (reported: a collected shared Bomb Bag lit neither the OoT nor the MM tile and
+        // was never credited to the logic). Bows behaved the same.
+        assert_eq!(find_item_id("Bomb Bag"), Some(SHARED_BOMB_BAG));
+        assert_eq!(find_item_id("Bow"), Some(SHARED_BOW));
+        // The other "Shared X" holdouts (magic arrows, magic upgrade) resolve too.
+        assert_eq!(find_item_id("Fire Arrows"), find_item_id("Shared Fire Arrows"));
+        assert!(find_item_id("Fire Arrows").is_some());
+        // A game-suffixed copy still resolves to that game's own id (fallback never fires).
+        assert_eq!(find_item_id("Bomb Bag (OoT)"), Some(OOT_BOMB_BAG));
+        assert_eq!(find_item_id("Bomb Bag (MM)"), Some(MM_BOMB_BAG));
+        // Shared items already carrying the bare name keep resolving directly.
+        assert_eq!(find_item_id("Progressive Strength"), Some(SHARED_STRENGTH));
+        assert_eq!(find_item_id("Fairy Slingshot"), Some(SHARED_SLINGSHOT));
+    }
+
+    #[test]
+    fn shared_bomb_bag_pickup_lights_both_games() {
+        // End to end: a shared Bomb Bag placed under the bare name "Bomb Bag" is now
+        // resolved (SHARED_BOMB_BAG), and its id sits on both games' bomb-bag tiers, so
+        // one pickup lights the base Bomb Bag tile on BOTH the OoT and the MM page
+        // (previously it resolved to nothing and neither lit).
+        let d = Dashboard::new();
+        let by_name_page = |name: &str, page: usize| {
+            d.flat()
+                .iter()
+                .position(|fe| fe.entry.name == name && fe.page == page)
+                .expect("bomb bag tile exists")
+        };
+        let oot = by_name_page("Bomb Bag", 0);
+        let mm = by_name_page("Bomb Bag", 1);
+
+        let a = data::OOT_OBJECTS
+            .iter()
+            .position(|o| o.type_ == data::ObjectType::gs)
+            .expect("an OoT gs object exists");
+        let places = [(data::OOT_OBJECTS[a].location, "Bomb Bag")];
+        let mut settings = Settings::default();
+        settings.apply(&HashSet::new());
+
+        let mut d = Dashboard::new();
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a)]), &settings, &HashSet::new());
+        assert!(d.state(oot).found, "the OoT Bomb Bag tile lights");
+        assert!(d.state(mm).found, "the MM Bomb Bag tile lights too (shared)");
     }
 
     #[test]
@@ -1304,6 +1375,27 @@ mod tests {
         d2.rebuild(&one_world(&places, &[], &[(Game::Mm, a)]), &off, &HashSet::new());
         assert!(d2.state(full).found, "with the setting off, one hookshot is the full Hookshot");
         assert!(!d2.state(short).found, "and the Short tier stays unlit");
+    }
+
+    #[test]
+    fn preplanted_beans_hide_only_the_oot_magic_beans_tile() {
+        use data::iid::{MM_MAGIC_BEAN, OOT_MAGIC_BEAN};
+        let d = Dashboard::new();
+        let oot = entry_with_key(&d, OOT_MAGIC_BEAN);
+        let mm = entry_with_key(&d, MM_MAGIC_BEAN);
+
+        // Off: both Magic Beans tiles are visible.
+        let mut off = Settings::default();
+        off.apply(&HashSet::new());
+        assert!(!d.entry_hidden(oot, &off), "OoT Magic Beans shows when pre-planted beans is off");
+        assert!(!d.entry_hidden(mm, &off), "MM Magic Beans shows regardless");
+
+        // On: only the OoT tile hides; MM (a separate item and setting) stays.
+        let mut on = Settings::default();
+        on.raw_settings.insert("ootPreplantedBeans".into(), "true".into());
+        on.apply(&HashSet::new());
+        assert!(d.entry_hidden(oot, &on), "OoT Magic Beans hides when pre-planted beans is on");
+        assert!(!d.entry_hidden(mm, &on), "MM Magic Beans stays visible");
     }
 
     #[test]

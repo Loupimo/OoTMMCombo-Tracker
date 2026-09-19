@@ -788,6 +788,23 @@ impl Settings {
         }
     }
 
+    /// A raw spoiler setting's verbatim value, or `default` when the seed omits it
+    /// (the setting's OoTMM default). Used for the enum / boolean settings that gate
+    /// the special-case pool removals below, which are not tracked as `ShuffleSetting`s.
+    fn raw_or<'a>(&'a self, key: &str, default: &'a str) -> &'a str {
+        self.raw_settings.get(key).map(String::as_str).unwrap_or(default)
+    }
+
+    /// Exclude every object matching `pred` — the settings-driven special cases OoTMM's
+    /// `transform.ts` removes from the pool on top of the per-type shuffle filter.
+    fn exclude_where(&self, excluded: &mut Excluded, game: Game, pred: impl Fn(&ObjectDef) -> bool) {
+        for (idx, o) in game.objects().iter().enumerate() {
+            if pred(o) {
+                excluded.set(game).insert(idx);
+            }
+        }
+    }
+
     /// ApplyOoTSettingsToFilter.
     fn apply_oot(&mut self, excluded: &mut Excluded) {
         use ObjectType as T;
@@ -909,6 +926,13 @@ impl Settings {
                 }
             }
         }
+
+        // Stone Mask (OoT) disabled (default): the guards make the "Guarded" Hyrule
+        // Castle tree impossible to bonk, so OoTMM drops it from the pool
+        // (transform.ts filterChecksTrees). `stoneMaskOot` defaults to false.
+        if self.raw_or("stoneMaskOot", "false") != "true" {
+            self.exclude_where(excluded, game, |o| o.location == "OOT Hyrule Castle Tree Guarded");
+        }
     }
 
     /// Zelda's Letter / Song: shown only when Skip Zelda is off (inverted).
@@ -1004,6 +1028,19 @@ impl Settings {
                 _ => {}
             }
         }
+
+        // Gorman Track trees are unreachable — and thus removed from the pool by OoTMM
+        // (transform.ts filterChecksTrees) — when ALL of: All Locations logic (default),
+        // the Goron bomb-jump-fences trick off, and Hookshot Anywhere (MM) not logical
+        // (default off). `logic`/`hookshotAnywhereMm` default to allLocations/off.
+        if self.raw_or("logic", "allLocations") == "allLocations"
+            && !self.enabled_trick_ids.contains("MM_GORON_BOMB_JUMP")
+            && self.raw_or("hookshotAnywhereMm", "off") != "logical"
+        {
+            self.exclude_where(excluded, game, |o| {
+                o.type_ == ObjectType::tree && o.scene == s::MM_GORMAN_TRACK
+            });
+        }
     }
 
     /// ApplyItemSettings: derive disabled / shared / progressive item ids from
@@ -1056,6 +1093,13 @@ impl Settings {
             self.disabled_item_ids.insert(iid::OOT_CHICKEN);
             self.starting_item_ids.insert(iid::OOT_SONG_ZELDA, 1);
             self.starting_item_ids.insert(iid::OOT_ZELDA_LETTER, 1);
+        }
+
+        // Pre-planted beans (OoT): with `ootPreplantedBeans` on, every bean patch starts
+        // already sprouted, so Magic Beans is never handed out or shuffled — hide its OoT
+        // progression tile. MM's beans (a separate item and setting) are untouched.
+        if self.raw_settings.get("ootPreplantedBeans").map(String::as_str) == Some("true") {
+            self.disabled_item_ids.insert(iid::OOT_MAGIC_BEAN);
         }
 
         // Progressive clocks (MM): the starting clock is implied by the setting, never
@@ -1483,6 +1527,74 @@ mod tests {
             .enumerate()
             .any(|(i, o)| o.render_type == ObjectType::gs && after.oot.contains(&i));
         assert!(gs_excluded, "GS objects excluded when goldSkulltulaTokens=vanilla");
+    }
+
+    /// Stone Mask (OoT) disabled removes the "Guarded" Hyrule Castle tree from the pool
+    /// (the guards make it un-bonkable); enabling it keeps the tree. Mirrors OoTMM
+    /// transform.ts filterChecksTrees. Trees are shuffled on, so the Stone Mask condition
+    /// is the sole reason the tree is (not) excluded.
+    #[test]
+    fn stone_mask_gates_the_guarded_hyrule_castle_tree() {
+        let mq = HashSet::new();
+        let idx = OOT_OBJECTS
+            .iter()
+            .position(|o| o.location == "OOT Hyrule Castle Tree Guarded")
+            .expect("guarded tree object exists");
+
+        // stoneMaskOot defaults to false => the tree is removed.
+        let mut s = Settings::default();
+        s.parse_spoiler("Settings\n  shuffleTreesOot: true\n", &mq);
+        assert!(s.apply(&mq).oot.contains(&idx),
+            "guarded tree removed when Stone Mask (OoT) is off (default)");
+
+        // stoneMaskOot: true => the tree stays in the pool.
+        let mut s2 = Settings::default();
+        s2.parse_spoiler("Settings\n  shuffleTreesOot: true\n  stoneMaskOot: true\n", &mq);
+        assert!(!s2.apply(&mq).oot.contains(&idx),
+            "guarded tree kept when Stone Mask (OoT) is on");
+    }
+
+    /// Gorman Track trees are removed from the pool when ALL of: All Locations logic,
+    /// the Goron bomb-jump-fences trick off, and Hookshot Anywhere (MM) not logical —
+    /// otherwise they are unreachable (OoTMM transform.ts filterChecksTrees). Any one
+    /// condition failing keeps them. Trees are shuffled on to isolate the condition.
+    #[test]
+    fn gorman_track_trees_gated_by_logic_trick_and_hookshot() {
+        use crate::data::{scenes as sc, MM_OBJECTS};
+        let mq = HashSet::new();
+        let gorman: Vec<usize> = MM_OBJECTS
+            .iter()
+            .enumerate()
+            .filter(|(_, o)| o.type_ == ObjectType::tree && o.scene == sc::MM_GORMAN_TRACK)
+            .map(|(i, _)| i)
+            .collect();
+        assert!(!gorman.is_empty(), "Gorman Track has tree objects");
+        let all_removed = |ex: &Excluded| gorman.iter().all(|i| ex.mm.contains(i));
+        let none_removed = |ex: &Excluded| gorman.iter().all(|i| !ex.mm.contains(i));
+
+        // All three conditions met by default (logic=allLocations, hookshotAnywhereMm=off,
+        // trick absent), trees shuffled on => every Gorman tree removed.
+        let mut s = Settings::default();
+        s.parse_spoiler("Settings\n  shuffleTreesMm: all\n", &mq);
+        assert!(all_removed(&s.apply(&mq)), "removed when all three conditions hold");
+
+        // Hookshot Anywhere (MM) = logical => kept.
+        let mut s2 = Settings::default();
+        s2.parse_spoiler("Settings\n  shuffleTreesMm: all\n  hookshotAnywhereMm: logical\n", &mq);
+        assert!(none_removed(&s2.apply(&mq)), "kept when Hookshot Anywhere (MM) is logical");
+
+        // Beatable logic (not All Locations) => kept.
+        let mut s3 = Settings::default();
+        s3.parse_spoiler("Settings\n  shuffleTreesMm: all\n  logic: beatable\n", &mq);
+        assert!(none_removed(&s3.apply(&mq)), "kept when logic is not All Locations");
+
+        // Goron bomb-jump-fences trick on => kept.
+        let mut s4 = Settings::default();
+        s4.parse_spoiler(
+            "Settings\n  shuffleTreesMm: all\nTricks\n  Bomb Jump Fences as Goron\n",
+            &mq,
+        );
+        assert!(none_removed(&s4.apply(&mq)), "kept when the Goron bomb-jump trick is enabled");
     }
 
     /// The spoiler's `Tricks` / `Glitches` sections resolve to real logic trick

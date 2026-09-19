@@ -235,18 +235,26 @@ impl WorldInputs {
     /// facing (`from_name`) side; the tracker detected the true arriving entrance, so
     /// this is correct under entrance rando and decoupling, not the vanilla assumption.
     ///
-    /// Each entrance is rooted at the region the player ACTUALLY lands in, taken from
-    /// the logic region graph: the destination-scene region(s) a `from_name` region
-    /// reaches by one logic edge. The entrance table's `to_name` is only the
-    /// destination AREA, which is the scene's hub even when the entrance really drops
-    /// the player in a finer pocket walled off by an in-scene barrier — Lost Woods ->
-    /// Goron City lands in the gated "Goron City Shortcut" (behind the three rocks),
-    /// not the "Goron City" hub, so rooting `to_name` lit the whole city for free
-    /// (reported). Reading the arrival off the graph edge keeps that barrier honest,
-    /// and the solver then extends from each root through vanilla edges, discovered
-    /// redirects and in-region logic. Falls back to matching `to_name` when the graph
-    /// does not line up (names differ, cross-game portal, an entrance with no modelled
-    /// edge). Names that resolve to no logic region are skipped.
+    /// Each entrance is rooted at the region the player ACTUALLY lands in. The primary
+    /// source is the entrance's exact destination NODE — `EntranceDef.to_area`, taken
+    /// from OoTMM's `entrances.yml` `areas[1]`, which names the very logic region the
+    /// entrance drops into (unlike the display `to_name`, e.g. "Impa's House" for the
+    /// node "Impa House Front"). This distinguishes several entrances that lead from one
+    /// neighbour into different, separately gated pockets of the SAME scene: Impa's
+    /// House is entered by the free balcony window ("Impa House Back", the Piece of
+    /// Heart) OR the rusty-key front door ("Impa House Front", the Wonder Item), so
+    /// rooting only the walked pocket keeps the locked sibling hidden (reported: the
+    /// Wonder Item showed after entering the back). The node may itself be a scene-less
+    /// waypoint ("Near Romani Ranch", "Mayor's Residence"), so the walk follows
+    /// scene-less connectors forward to the real destination-scene region, never
+    /// crossing into another real scene — an in-scene barrier stays honest.
+    ///
+    /// When `to_area` does not resolve to a destination-scene region (an entrance with
+    /// no `areas`, or a name the logic graph lacks), it falls back to a SOURCE-side walk
+    /// (from `from_name` + the whole source scene, forward to any destination-scene
+    /// region one edge away) and finally to a direct `to_name` match. The solver then
+    /// extends from each root through vanilla edges, discovered redirects and in-region
+    /// logic. Names that resolve to no logic region are skipped.
     pub fn seed_from_visited(&mut self, visited: &HashSet<(u8, u32)>) {
         let names = region_name_index();
         let scenes = region_scenes();
@@ -255,22 +263,67 @@ impl WorldInputs {
             let g = if game == 0 { crate::scene::Game::Oot } else { crate::scene::Game::Mm };
             let Some(meta) = crate::entrance::lookup(g, id) else { continue };
             let dest_scene = canon_entrance_scene(game, meta.to_scene as u32);
-            // Primary: the region(s) in the destination scene that a `from_name` region
-            // steps into over one edge — the true landing spot, barrier-aware.
+            let src_scene = canon_entrance_scene(game, meta.from_scene as u32);
             let before = regions.len();
-            if let Some(srcs) = names[game as usize].get(meta.from_name) {
-                for &s in srcs {
+            let mut stack: Vec<u32> = Vec::new();
+            let mut seen: HashSet<u32> = HashSet::new();
+            // Follow scene-less connectors on `stack` forward, rooting every
+            // destination-scene region reached. Never steps into another real scene, so
+            // an in-scene barrier between the arrival pocket and the rest of the scene
+            // stays gated (the barrier is a real-scene -> real-scene edge, never taken).
+            let walk = |regions: &mut Vec<u32>, stack: &mut Vec<u32>, seen: &mut HashSet<u32>| {
+                while let Some(s) = stack.pop() {
                     for edge in data::LOGIC_REGIONS[s as usize].exits {
                         let d = edge.to;
-                        if data::LOGIC_REGIONS[d as usize].game == game
-                            && scenes[d as usize] == Some(dest_scene)
-                        {
-                            regions.push(d);
+                        if data::LOGIC_REGIONS[d as usize].game != game {
+                            continue;
+                        }
+                        match scenes[d as usize] {
+                            Some(sc) if sc == dest_scene => regions.push(d),
+                            None if seen.insert(d) => stack.push(d),
+                            _ => {}
                         }
                     }
                 }
+            };
+            // Primary: the entrance's exact destination NODE (`to_area`). Root it when it
+            // is already in the destination scene, else walk forward from it through
+            // scene-less waypoints. Roots only the pocket this entrance lands in.
+            if let Some(dsts) = names[game as usize].get(meta.to_area) {
+                for &d in dsts {
+                    if !seen.insert(d) {
+                        continue;
+                    }
+                    match scenes[d as usize] {
+                        Some(sc) if sc == dest_scene => regions.push(d),
+                        None => stack.push(d),
+                        _ => {}
+                    }
+                }
+                walk(&mut regions, &mut stack, &mut seen);
             }
-            // Fallback: match `to_name` directly when the edge lookup found nothing.
+            // Fallback 1: `to_area` gave nothing — walk the SOURCE side. Seed from the
+            // named `from` region AND every region of the source scene (the table's names
+            // do not always match the logic region names — "North Clock Town" vs "Clock
+            // Town North" — so the scene id is the reliable source-side link), then walk
+            // forward. Broader (can root sibling pockets), hence only a fallback.
+            if regions.len() == before {
+                seen.clear();
+                if let Some(srcs) = names[game as usize].get(meta.from_name) {
+                    for &s in srcs {
+                        if seen.insert(s) {
+                            stack.push(s);
+                        }
+                    }
+                }
+                for (i, r) in data::LOGIC_REGIONS.iter().enumerate() {
+                    if r.game == game && scenes[i] == Some(src_scene) && seen.insert(i as u32) {
+                        stack.push(i as u32);
+                    }
+                }
+                walk(&mut regions, &mut stack, &mut seen);
+            }
+            // Fallback 2: match `to_name` directly when neither walk found anything.
             if regions.len() == before {
                 if let Some(idxs) = names[game as usize].get(meta.to_name) {
                     regions.extend_from_slice(idxs);
@@ -505,14 +558,40 @@ fn region_scenes() -> &'static [Option<u32>] {
     static S: OnceLock<Vec<Option<u32>>> = OnceLock::new();
     S.get_or_init(|| {
         // Pass 1: a region's scene = the scene of its first location that resolves in
-        // the object table.
+        // the object table — but keyed to the scene the ENTRANCE table and the map use,
+        // which the object table sometimes files a check under a different id from:
+        //   * Context variants (`context != All`): MM season copies (Mountain Village
+        //     Winter/Spring) and OoT day/age copies are separate object scenes, while
+        //     the map shows one scene toggled by context and every entrance targets that
+        //     base — which is the check's `render_scene`. Fold onto it.
+        //   * Generic groupers: grottos and fairy fountains file every check under one
+        //     lumping scene (OOT_GROTTOS / OOT_FAIRY_FOUNTAIN / MM_GROTTOS / …) that is
+        //     not itself an entrance destination, while each instance's entrance keys the
+        //     specific `render_scene`. Fold onto it too.
+        // Without this the entrance boundary is not recognised and `edge_blocked` leaves
+        // it open, so a bomb-openable grotto, a fairy fountain, or a whole season copy of
+        // an area lit up from a neighbour the player had merely visited (reported after a
+        // Bomb Bag let the explosives rules fire). A boss lair keeps its own object scene:
+        // it is `context: All` and its lair IS an entrance destination, so neither fold
+        // triggers and its boss-door boundary stays gated.
+        let dest = entrance_dest_scenes();
         let mut scene: Vec<Option<u32>> = data::LOGIC_REGIONS
             .iter()
             .map(|r| {
                 let objs = if r.game == 0 { data::OOT_OBJECTS } else { data::MM_OBJECTS };
-                r.locations
-                    .iter()
-                    .find_map(|l| objs.iter().find(|o| o.location == l.loc).map(|o| o.scene as u32))
+                r.locations.iter().find_map(|l| {
+                    objs.iter().find(|o| o.location == l.loc).map(|o| {
+                        let (s, rs) = (o.scene as u32, o.render_scene as u32);
+                        let d = &dest[r.game as usize];
+                        let context_variant = o.context != data::ObjectContext::All;
+                        let generic_grouper = !d.contains(&s) && d.contains(&rs);
+                        if s != rs && (context_variant || generic_grouper) {
+                            rs
+                        } else {
+                            s
+                        }
+                    })
+                })
             })
             .collect();
 
@@ -545,6 +624,48 @@ fn region_scenes() -> &'static [Option<u32>] {
         for (i, r) in data::LOGIC_REGIONS.iter().enumerate() {
             if scene[i].is_none() && !r.area.is_empty() {
                 if let Some(&Some(s)) = area_scene.get(&(r.game, r.area)) {
+                    scene[i] = Some(s);
+                }
+            }
+        }
+
+        // Pass 2b: a location-less DUNGEON region (a dungeon's entry hall or an inner
+        // transition node that hosts no checks of its own) inherits its dungeon's scene.
+        // Dungeon interiors carry the OoTMM `dungeon:` tag instead of an overworld
+        // `area:`, so Pass 2 skipped them and they stayed scene-less — and `edge_blocked`
+        // cannot wall an entrance into a `None` scene, so an undiscovered dungeon lit up
+        // the instant its overworld scene was reached with the access items (Bottom of the
+        // Well showed from Kakariko though its entrance was unfound — reported; the same
+        // latent hole affected every dungeon whose entry hall carries no check, e.g. the
+        // Deku Tree lobby). Learn `(game, dungeon) -> scene` from the RENDER scene of the
+        // dungeon's checks: a boss lair's checks keep the dungeon's render scene even
+        // though their own object scene is the lair, so the whole dungeon maps to one
+        // scene here, while the lair regions still take their real lair scene from Pass 1
+        // (they host checks) and stay gated behind their own boss-door entrance. Ambiguous
+        // dungeons (none expected) stay `None`.
+        let mut dungeon_scene: HashMap<(u8, &str), Option<u32>> = HashMap::new();
+        for r in data::LOGIC_REGIONS.iter() {
+            if r.dungeon.is_empty() {
+                continue;
+            }
+            let objs = if r.game == 0 { data::OOT_OBJECTS } else { data::MM_OBJECTS };
+            for l in r.locations {
+                if let Some(o) = objs.iter().find(|o| o.location == l.loc) {
+                    let s = o.render_scene as u32;
+                    dungeon_scene
+                        .entry((r.game, r.dungeon))
+                        .and_modify(|e| {
+                            if *e != Some(s) {
+                                *e = None;
+                            }
+                        })
+                        .or_insert(Some(s));
+                }
+            }
+        }
+        for (i, r) in data::LOGIC_REGIONS.iter().enumerate() {
+            if scene[i].is_none() && !r.dungeon.is_empty() {
+                if let Some(&Some(s)) = dungeon_scene.get(&(r.game, r.dungeon)) {
                     scene[i] = Some(s);
                 }
             }
@@ -583,6 +704,29 @@ fn canon_entrance_scene(game: u8, s: u32) -> u32 {
         return sc::OOT_MARKET_CHILD_DAY as u32;
     }
     s
+}
+
+/// Per game, every scene id that appears as an entrance endpoint (`to_scene` or
+/// `from_scene`) in the entrance table — i.e. a scene you can walk into through a real
+/// loading zone. Used by `region_scenes` to tell a grotto / fairy-fountain check (filed
+/// under a generic grouping scene that is NOT an entrance endpoint, its render scene the
+/// specific one that IS) apart from a boss-lair check (its own scene already an entrance
+/// endpoint). Raw scene ids (no Market fold — grottos and lairs need no folding).
+fn entrance_dest_scenes() -> &'static [HashSet<u32>; 2] {
+    static D: OnceLock<[HashSet<u32>; 2]> = OnceLock::new();
+    D.get_or_init(|| {
+        let mut d: [HashSet<u32>; 2] = [HashSet::new(), HashSet::new()];
+        for (game, table) in [(0usize, data::OOT_ENTRANCES), (1usize, data::MM_ENTRANCES)] {
+            for e in table {
+                if e.type_ == crate::data::EntranceType::None {
+                    continue;
+                }
+                d[game].insert(e.to_scene as u32);
+                d[game].insert(e.from_scene as u32);
+            }
+        }
+        d
+    })
 }
 
 /// The set of scene transitions that are real, trackable entrances (loading zones),
@@ -764,20 +908,31 @@ impl Inputs for WorldInputs {
             return false;
         }
         let scenes = region_scenes();
-        let (Some(sa), Some(sb)) = (scenes[from as usize], scenes[to as usize]) else {
+        // Entering scene-less plumbing (SPAWN / GLOBAL / warp / junction / event nodes)
+        // is never a wall — it carries no checks and is gated by its own access rule.
+        let Some(sb) = scenes[to as usize] else {
             return false;
         };
+        let sa = scenes[from as usize];
         // Same scene → intra-scene movement, always free.
-        if sa == sb {
+        if sa == Some(sb) {
             return false;
         }
-        // A cross-scene edge that is not a real entrance (e.g. a dungeon → boss-lair
-        // door) is free — crossing it is implied by reaching the source. A real
-        // entrance may only be crossed *into* a scene the player has discovered;
-        // stepping into an undiscovered scene is walled.
-        if !entrance_scene_pairs().contains(&(rf.game, sa, sb)) {
-            return false;
+        // A real-scene → real-scene edge that is not a trackable entrance (e.g. a dungeon
+        // → boss-lair door that is not a One_Way_In entrance) is free — crossing it is
+        // implied by reaching the source.
+        if let Some(sa) = sa {
+            if !entrance_scene_pairs().contains(&(rf.game, sa, sb)) {
+                return false;
+            }
         }
+        // Otherwise this crosses INTO real scene `sb` — either from another real scene over
+        // a trackable entrance, or from a scene-less waypoint / warp hub whose edge IS the
+        // loading zone ("Near Swamp Spider House" → the spider house, the Song-of-Soaring
+        // hub → an owl statue, a bombable "Behind Large Icicles" approach → the path). It
+        // may only be crossed into a scene the player has actually walked into; stepping
+        // into an undiscovered scene is walled. Without gating the scene-less case, crediting
+        // an item (explosives / a warp song) opened un-entered scenes (reported leak).
         !self.visited_scenes.contains(&(rt.game, sb))
     }
 }
@@ -826,6 +981,156 @@ mod tests {
             Game::Mm => data::MM_OBJECTS,
         };
         objs.iter().position(|o| o.location == location).expect("known location")
+    }
+
+    /// A shared Bomb Bag fires the explosives rules; in progressive mode that must NOT
+    /// open grottos / fairy fountains the player has not walked into. Those file their
+    /// checks under a generic grouping scene (OOT_GROTTOS / OOT_FAIRY_FOUNTAIN), which is
+    /// not an entrance destination, while the map keys each instance by the specific
+    /// scene it renders in — so `region_scenes` must resolve them to that specific scene
+    /// for `edge_blocked` to wall the boundary. Reported: after picking up a shared Bomb
+    /// Bag, grottos and fairy fountains lit up from a merely-visited Hyrule Field.
+    #[test]
+    fn bomb_openable_grottos_and_fountains_stay_gated_until_visited() {
+        // A grotto region resolves to its specific render scene, not the generic grouper.
+        let grotto_obj = data::OOT_OBJECTS
+            .iter()
+            .find(|o| o.scene as u32 == data::scenes::OOT_GROTTOS as u32)
+            .expect("a grotto object exists");
+        let grotto_region = data::LOGIC_REGIONS
+            .iter()
+            .position(|r| r.game == 0 && r.locations.iter().any(|l| l.loc == grotto_obj.location))
+            .expect("its logic region exists");
+        assert_ne!(
+            region_scenes()[grotto_region],
+            Some(data::scenes::OOT_GROTTOS as u32),
+            "a grotto region must not stay on the generic grouping scene"
+        );
+        assert_eq!(region_scenes()[grotto_region], Some(grotto_obj.render_scene as u32));
+
+        let mq = std::collections::HashSet::new();
+        let mut settings = Settings::default();
+        settings.raw_settings.insert("startingAgeOot".into(), "child".into());
+        settings.apply(&mq);
+
+        // Stand in Hyrule Field with a shared Bomb Bag collected there.
+        let hf = data::scenes::OOT_HYRULE_FIELD as u32;
+        let loc = data::OOT_OBJECTS
+            .iter()
+            .find(|o| o.scene as u32 == hf && o.type_ != data::ObjectType::none)
+            .map(|o| o.location)
+            .expect("a HF object");
+        let mut world = WorldData::default();
+        world.items.insert(loc.to_string(), "Bomb Bag".to_string());
+        world.collected.insert((Game::Oot, obj_idx(Game::Oot, loc)));
+
+        let mut inp =
+            WorldInputs::build(&settings, std::slice::from_ref(&world), 1, &Default::default(), true);
+        inp.visited_scenes = [(0u8, hf)].into_iter().collect();
+        inp.seed_scene(0, hf);
+        assert_eq!(inp.item_count(data::iid::SHARED_BOMB_BAG), 1, "the shared Bomb Bag is credited");
+
+        let r = crate::logic::solve::solve(&inp);
+        // No grotto / fairy-fountain check leaks in — none has been entered.
+        let generic =
+            [data::scenes::OOT_GROTTOS as u32, data::scenes::OOT_FAIRY_FOUNTAIN as u32];
+        let leaked = data::OOT_OBJECTS
+            .iter()
+            .filter(|o| generic.contains(&(o.scene as u32)) && r.reachable(o.location))
+            .count();
+        assert_eq!(leaked, 0, "no bomb-openable grotto / fountain check leaks from a visited overworld");
+        // Sanity: the visited overworld's own checks are reachable.
+        assert!(r.reachable("OOT Hyrule Field Tree 01"), "Hyrule Field itself stays reachable");
+    }
+
+    /// In progressive mode a Bomb Bag (explosives) must not open MM areas the player has
+    /// not walked into. MM season copies (Mountain Village / Twin Islands Winter/Spring)
+    /// are separate OBJECT scenes the map folds onto one base via the check's
+    /// `render_scene`; the connector "Path to Mountain Village" and the spider houses are
+    /// their own scenes. Reported: after a Bomb Bag they lit up from a merely-visited
+    /// Termina Field / Great Bay Coast — the season copies because `region_scenes` had
+    /// filed them under the un-entered variant id instead of the folded base.
+    #[test]
+    fn mm_context_and_path_scenes_stay_gated_until_visited() {
+        let mq = std::collections::HashSet::new();
+        let mut settings = Settings::default();
+        settings.apply(&mq);
+
+        let visited =
+            [data::scenes::MM_TERMINA_FIELD as u32, data::scenes::MM_GREAT_BAY_COAST as u32];
+        let loc = data::MM_OBJECTS
+            .iter()
+            .find(|o| {
+                o.scene as u32 == data::scenes::MM_GREAT_BAY_COAST as u32
+                    && o.type_ != data::ObjectType::none
+            })
+            .map(|o| o.location)
+            .expect("a Great Bay Coast object");
+        let mut world = WorldData::default();
+        world.items.insert(loc.to_string(), "Bomb Bag".to_string());
+        world.collected.insert((Game::Mm, obj_idx(Game::Mm, loc)));
+
+        let mut inp =
+            WorldInputs::build(&settings, std::slice::from_ref(&world), 1, &Default::default(), true);
+        inp.visited_scenes = visited.iter().map(|&s| (1u8, s)).collect();
+        for &s in &visited {
+            inp.seed_scene(1, s);
+        }
+        assert_eq!(inp.item_count(data::iid::SHARED_BOMB_BAG), 1, "the shared Bomb Bag is credited");
+
+        let r = crate::logic::solve::solve(&inp);
+        let reachable_in =
+            |scene: u32| data::MM_OBJECTS.iter().any(|o| o.scene as u32 == scene && r.reachable(o.location));
+
+        use data::scenes as sc;
+        for (scene, name) in [
+            (sc::MM_PATH_MOUNTAIN_VILLAGE as u32, "Path to Mountain Village"),
+            (sc::MM_MOUNTAIN_VILLAGE_WINTER as u32, "Mountain Village (Winter)"),
+            (sc::MM_TWIN_ISLANDS_WINTER as u32, "Twin Islands (Winter)"),
+            (sc::MM_SPIDER_HOUSE_OCEAN as u32, "Ocean Spider House"),
+        ] {
+            assert!(!reachable_in(scene), "{name} must stay gated until its entrance is discovered");
+        }
+        assert!(reachable_in(sc::MM_TERMINA_FIELD as u32), "Termina Field itself stays reachable");
+    }
+
+    /// MM `is_adult` must be gated by the ability to actually become adult — owning the
+    /// MM Adult mask (crossAge) or starting adult — not by the solver's age plane. The
+    /// solver seeds MM at both ages unconditionally, so OoTMM's `age(adult)` was trivially
+    /// true and lit every adult-only MM check; the tracker's MM macros drop the age()
+    /// dependency (gen_logic.py override). Reported: the Doggy Racetrack Chest
+    /// (`… || is_tall || …`, is_tall = has_mask_zora || is_adult) showed with no way to
+    /// reach it. With an empty inventory its only satisfiable term is is_adult.
+    #[test]
+    fn mm_is_adult_needs_the_adult_mask_not_the_age_plane() {
+        let mq = std::collections::HashSet::new();
+        let mut settings = Settings::default();
+        settings.raw_settings.insert("crossAge".into(), "true".into());
+        settings.apply(&mq);
+
+        let region = data::LOGIC_REGIONS
+            .iter()
+            .position(|r| r.game == 1 && r.name == "Doggy Racetrack")
+            .expect("Doggy Racetrack region exists") as u32;
+        let loc = "MM Doggy Racetrack Chest";
+
+        let solved = |mask: bool| {
+            let world = WorldData::default();
+            let mut inp = WorldInputs::build(
+                &settings, std::slice::from_ref(&world), 1, &Default::default(), false);
+            // Seed the race track directly; an empty inventory leaves is_adult as the
+            // chest's only satisfiable access term (no beans / hookshot / Zora mask / trick).
+            inp.seed_regions = vec![region];
+            if mask {
+                inp.items.insert(data::iid::MM_MASK_ADULT, 1);
+            }
+            crate::logic::solve::solve(&inp).reachable(loc)
+        };
+
+        assert!(!solved(false),
+            "adult-only MM chest must stay unreachable without the means to become adult");
+        assert!(solved(true),
+            "the MM Adult mask makes the adult-only chest reachable");
     }
 
     /// A collected Kokiri Sword check turns into +1 of the sword's item id, and
@@ -1237,6 +1542,71 @@ mod tests {
         assert!(inp.visited_scenes.contains(&(0, kak_s)));
     }
 
+    /// Progressive seeding must root only the pocket a walked entrance lands in, not
+    /// every separately gated pocket of the same scene. Impa's House (scene 0x37) is one
+    /// interior split into two disconnected nodes reached from Kakariko by DIFFERENT
+    /// entrances: the free balcony window -> "Impa House Back" (the Piece of Heart) and
+    /// the rusty-key front door -> "Impa House Front" (the Wonder Item). Walking the back
+    /// entrance used to root both — the old seed walked ungated edges from the whole
+    /// source scene, and Kakariko has an (ungated-in-walk) edge to the front node — so it
+    /// lit the locked Wonder Item (reported). `EntranceDef.to_area` roots exactly the
+    /// node walked, leaving the front gated behind its rusty key.
+    #[test]
+    fn walked_entrance_roots_only_its_pocket_not_the_locked_sibling() {
+        use crate::data::entr as e;
+
+        let mq = std::collections::HashSet::new();
+        let mut settings = Settings::default();
+        // Rusty keys shuffled: the front door needs the (unowned) Impa's House rusty key.
+        settings.raw_settings.insert("rustyKeysOot".into(), "true".into());
+        settings.raw_settings.insert("startingAgeOot".into(), "child".into());
+        settings.apply(&mq);
+
+        let idx = |n: &str| region_name_index()[0].get(n).expect("region")[0];
+        let (front, back) = (idx("Impa House Front"), idx("Impa House Back"));
+        let impa = data::scenes::OOT_IMPA_HOUSE as u32;
+
+        // Walk the BACK entrance (balcony window) and stand in the scene.
+        let visited: std::collections::HashSet<(u8, u32)> = [
+            (0u8, e::OOT_HOUSE_IMPA_BACK_ENTR),
+            (0u8, e::OOT_KAKARIKO_FROM_IMPA_BACK_ENTR),
+        ]
+        .into_iter()
+        .collect();
+        let mut inp = WorldInputs::build(&settings, &[WorldData::default()], 1, &visited, true);
+        inp.seed_from_visited(&visited);
+        inp.seed_scene(0, impa);
+        assert!(inp.extra_seed_regions().contains(&back), "the walked back node is rooted");
+        assert!(
+            !inp.extra_seed_regions().contains(&front),
+            "the locked front node (rusty-key door) must NOT be rooted by the back entrance"
+        );
+
+        let r = crate::logic::solve::solve(&inp);
+        assert!(r.reachable("OOT Kakariko Impa House HP"), "the HP (back) is reachable");
+        assert!(
+            !r.reachable("OOT Kakariko Impa House Wonder Item"),
+            "the Wonder Item (front) stays hidden without the rusty key"
+        );
+
+        // Walking the FRONT door instead roots the front node, so its Wonder Item shows —
+        // the player physically entered that pocket, key or not.
+        let visited_front: std::collections::HashSet<(u8, u32)> = [
+            (0u8, e::OOT_HOUSE_IMPA_ENTR),
+            (0u8, e::OOT_KAKARIKO_FROM_IMPA_ENTR),
+        ]
+        .into_iter()
+        .collect();
+        let mut inp2 = WorldInputs::build(&settings, &[WorldData::default()], 1, &visited_front, true);
+        inp2.seed_from_visited(&visited_front);
+        assert!(inp2.extra_seed_regions().contains(&front), "the walked front node is rooted");
+        let r2 = crate::logic::solve::solve(&inp2);
+        assert!(
+            r2.reachable("OOT Kakariko Impa House Wonder Item"),
+            "the Wonder Item shows once the front door is actually walked"
+        );
+    }
+
     /// Region -> scene inference (`region_scenes`). A region with checks resolves to
     /// its object scene; a *location-less* overworld waypoint (owl-flight spot, the
     /// Lost Woods bridge) inherits its `area`'s scene so an entrance routed through it
@@ -1464,6 +1834,55 @@ mod tests {
         );
     }
 
+    /// A dungeon whose entry hall hosts no checks (Bottom of the Well, the Deku Tree
+    /// lobby) used to leave that region scene-less, so `edge_blocked` could not wall its
+    /// entrance and the dungeon lit up the instant its overworld scene was reached with
+    /// the access items though the entrance was still unfound (reported: the Bottom of
+    /// the Well showed from Kakariko). `region_scenes` now resolves a location-less
+    /// dungeon region to its dungeon's scene, so the entrance is gated like any other.
+    #[test]
+    fn location_less_dungeon_entry_is_scened_and_gated() {
+        let scenes = region_scenes();
+        let idx = |n: &str| region_name_index()[0].get(n).unwrap()[0];
+
+        // The check-less entry halls now carry their dungeon's (render) scene — even the
+        // Deku Tree, whose dungeon also spans the Gohma lair (a boss lair keeps the
+        // dungeon's render scene, so the dungeon still maps to one scene here).
+        let botw = data::scenes::OOT_BOTTOM_OF_THE_WELL as u32;
+        assert_eq!(scenes[idx("Bottom of the Well") as usize], Some(botw));
+        assert_eq!(
+            scenes[idx("Deku Tree") as usize],
+            Some(data::scenes::OOT_DEKU_TREE as u32),
+            "the Deku Tree lobby resolves despite the dungeon also containing Gohma's lair"
+        );
+
+        let mut settings = Settings::default();
+        settings.apply(&std::collections::HashSet::new());
+        let mut inp =
+            WorldInputs::build(&settings, &[WorldData::default()], 1, &Default::default(), true);
+
+        let well = idx("Kakariko Well");
+        let entry = idx("Bottom of the Well");
+        let kak = scenes[well as usize].expect("Kakariko Well resolves to a scene");
+        assert!(
+            entrance_scene_pairs().contains(&(0, kak, botw)),
+            "Kakariko <-> Bottom of the Well is a real entrance"
+        );
+
+        // Reached Kakariko, but not the well: the entrance is walled.
+        inp.visited_scenes = [(0u8, kak)].into_iter().collect();
+        assert!(
+            Inputs::edge_blocked(&inp, well, entry),
+            "the well entrance stays walled until the Bottom of the Well is discovered"
+        );
+        // Once discovered, it opens.
+        inp.visited_scenes.insert((0, botw));
+        assert!(
+            !Inputs::edge_blocked(&inp, well, entry),
+            "a discovered dungeon is crossable"
+        );
+    }
+
     /// An enum setting the seed omits defaults to its unshuffled ("off") value, so
     /// `setting(k, <off>)` still holds. Regression: a ROM version without OoT clocks
     /// drops `clocksOot`, and `is_day`/`is_night` gate on `setting(clocksOot, none)` —
@@ -1589,5 +2008,70 @@ mod tests {
             assert!(r1.locations.contains(l), "{l} lost after collecting a check");
         }
         assert!(r1.locations.len() >= r0.locations.len());
+    }
+
+    /// Progressive discovery, Fix B (scene-less bridge gate): the entrance graph routes
+    /// many loading zones through a *scene-less* waypoint region ("Near Swamp Spider
+    /// House" → the spider house, the Song-of-Soaring hub → an owl statue, a bombable
+    /// "Behind Large Icicles" approach → the mountain path). `edge_blocked` used to treat
+    /// any edge touching a scene-less region as free, so crediting an item (explosives, a
+    /// warp song) let those bridges spill into scenes the player had never walked into
+    /// (reported: Path to Mountain Village and the Swamp Spider House showing un-entered).
+    /// The hop from a scene-less waypoint INTO a real scene is the loading zone and must be
+    /// walled until that scene is discovered.
+    #[test]
+    fn scene_less_waypoint_into_unvisited_scene_is_walled() {
+        let mq = std::collections::HashSet::new();
+        let mut settings = Settings::default();
+        settings.apply(&mq);
+        let mut inp = WorldInputs::build(&settings, &[WorldData::default()], 1, &Default::default(), true);
+
+        let mm = |n: &str| region_name_index()[1].get(n).map(|v| v[0]);
+        let scenes = region_scenes();
+        let (Some(w), Some(t)) = (mm("Near Swamp Spider House"), mm("Swamp Spider House")) else {
+            panic!("anchor regions must exist");
+        };
+        // Precondition: W is scene-less plumbing, T is the real spider-house scene, W → T.
+        assert_eq!(scenes[w as usize], None, "the waypoint must be scene-less");
+        assert_eq!(scenes[t as usize], Some(data::scenes::MM_SPIDER_HOUSE_SWAMP as u32));
+        assert!(data::LOGIC_REGIONS[w as usize].exits.iter().any(|e| e.to == t),
+            "the waypoint must bridge into the spider house");
+
+        // Un-entered: the scene-less bridge into it is walled.
+        assert!(Inputs::edge_blocked(&inp, w, t),
+            "a scene-less waypoint must not bridge into an un-entered scene");
+        // Once the player has actually walked into the spider house, the bridge opens.
+        inp.visited_scenes.insert((1, data::scenes::MM_SPIDER_HOUSE_SWAMP as u32));
+        assert!(!Inputs::edge_blocked(&inp, w, t), "a discovered scene is crossable");
+    }
+
+    /// Progressive discovery, Fix A (root through scene-less waypoints): `seed_from_visited`
+    /// roots the region a discovered entrance actually lands in. When the entrance graph
+    /// puts a scene-less waypoint ("Near Romani Ranch") between the `from_name` region and
+    /// the arrival scene, a single-hop match missed it and the walked scene was never
+    /// marked visited — so its own checks hid AND (with Fix B) its scene-less bridges would
+    /// wrongly wall. Following scene-less connectors (but never another real scene, so an
+    /// intra-scene barrier is still respected) roots the true landing scene.
+    #[test]
+    fn entrance_through_scene_less_waypoint_roots_its_scene() {
+        let mq = std::collections::HashSet::new();
+        let mut settings = Settings::default();
+        settings.apply(&mq);
+        let mut inp = WorldInputs::build(&settings, &[WorldData::default()], 1, &Default::default(), true);
+
+        // The Milk Road → Romani Ranch loading zone lands behind the scene-less
+        // "Near Romani Ranch" waypoint. Its `to_id` is the map key `lookup` matches.
+        let id = data::entr::MM_ROMANI_RANCH_FROM_MILK_ROAD_ENTR;
+        let ranch = data::scenes::MM_ROMANI_RANCH as u32;
+        assert_eq!(
+            crate::entrance::lookup(Game::Mm, id).map(|m| m.to_scene as u32),
+            Some(ranch),
+            "the anchor entrance must land in Romani Ranch",
+        );
+
+        let visited: std::collections::HashSet<(u8, u32)> = [(1u8, id)].into_iter().collect();
+        inp.seed_from_visited(&visited);
+        assert!(inp.visited_scenes.contains(&(1, ranch)),
+            "the scene reached through the scene-less waypoint must be rooted as visited");
     }
 }

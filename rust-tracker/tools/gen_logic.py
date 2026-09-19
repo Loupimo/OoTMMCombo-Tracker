@@ -1020,6 +1020,23 @@ def generate(out_path=OUT_DEFAULT, id_sym=None, verbose=True):
     oot_macros = dict(common); oot_macros.update(load_macros(LOGIC_DIR / "macros_oot.yml"))
     mm_macros = dict(common); mm_macros.update(load_macros(LOGIC_DIR / "macros_mm.yml"))
 
+    # Tracker-specific MM age model (deliberate deviation from OoTMM's macros_mm.yml).
+    # OoTMM defines `is_adult`/`is_child` as
+    #   cond(setting(crossAge), age(<x>), setting(startingAgeMm, <x>) || has_mask_adult)
+    # relying on a pathfinder that tracks Link's *physical* age per node and only lets it
+    # flip at an age-change node when you own MM_MASK_ADULT (crossAge). This solver has no
+    # such model: it seeds MM at BOTH ages unconditionally, so `age(adult)` is trivially
+    # true and every adult-only MM check lights up even with no way to become adult
+    # (reported: the Doggy Racetrack Chest showing via is_tall -> is_adult without the
+    # mask). In MM the age is fully determined by the adult mask (crossAge) or the starting
+    # age, so drop the age() dependency entirely: adult iff you own the mask or start adult;
+    # child otherwise. `!setting(startingAgeMm, adult)` yields the child default (MM starts
+    # child) without needing the setting seeded, and both branches of the original `cond`
+    # collapse to this (with crossAge off, has(MM_MASK_ADULT) is 0 — the mask is not in the
+    # pool — so it reduces to setting(startingAgeMm, <x>), matching the OoTMM off-branch).
+    mm_macros["is_adult"] = ([], "has(MM_MASK_ADULT) || setting(startingAgeMm, adult)")
+    mm_macros["is_child"] = ([], "has(MM_MASK_ADULT) || !setting(startingAgeMm, adult)")
+
     compiler = Compiler(id_sym)
     regions = []
 

@@ -554,6 +554,9 @@ pub struct EntranceDef {
     pub to_scene: SceneId,
     pub from_name: &'static str,
     pub to_name: &'static str,
+    /// Exact destination node (OoTMM `entrances.yml` `areas[1]`, game prefix
+    /// stripped) — matches `LOGIC_REGIONS` names; "" when the entrance has none.
+    pub to_area: &'static str,
     pub type_: EntranceType,
     pub anchor: [i32; 2],
     pub text: [i32; 2],

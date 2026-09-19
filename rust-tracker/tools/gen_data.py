@@ -402,7 +402,40 @@ def build_entrance_code_map(rows):
     return m
 
 
-def load_entrances(rel, scene_sym, missing, missing_ent):
+def load_entrance_areas(rel):
+    """`(game, id) -> destination area node` from OoTMM's `data/defs/entrances.yml`.
+
+    Each entry carries `areas: [fromArea, toArea]` naming the exact logic nodes the
+    entrance connects — the same names the world YAML (and so `LOGIC_REGIONS`) uses,
+    unlike the CSV's display `To_Name` ("Impa's House" vs the node "Impa House Front").
+    The area strings are game-prefixed ("OOT …" / "MM …"); the prefix is stripped so
+    the result matches `LOGIC_REGIONS[i].name`. Used to root the *exact* pocket a
+    walked entrance lands in, so a scene reachable by several separately gated
+    entrances from one neighbour (Impa's House: free balcony window vs rusty-key front
+    door) roots only the one actually taken (`seed_from_visited`)."""
+    text = read(rel)
+    out = {}
+    id_re = re.compile(r"\bid:\s*(0x[0-9a-fA-F]+|\d+)")
+    game_re = re.compile(r"\bgame:\s*(oot|mm)")
+    areas_re = re.compile(r"\bareas:\s*\[([^\]]*)\]")
+    str_re = re.compile(r"\"([^\"]*)\"|'([^']*)'")
+    for line in text.splitlines():
+        m_id, m_game, m_areas = id_re.search(line), game_re.search(line), areas_re.search(line)
+        if not (m_id and m_game and m_areas):
+            continue
+        strs = [a or b for a, b in str_re.findall(m_areas.group(1))]
+        if len(strs) < 2:
+            continue
+        dest = strs[1]
+        for pfx in ("OOT ", "MM "):
+            if dest.startswith(pfx):
+                dest = dest[len(pfx):]
+                break
+        out[(m_game.group(1), int(m_id.group(1), 0))] = dest
+    return out
+
+
+def load_entrances(rel, game, scene_sym, missing, missing_ent, areas):
     rows = read_csv(rel)
     code_map = build_entrance_code_map(rows)
 
@@ -430,13 +463,17 @@ def load_entrances(rel, scene_sym, missing, missing_ent):
             continue
         if from_scene not in scene_sym:
             from_scene = to_scene
+        to_id = resolve_id(r["To_ID"])
         out.append({
-            "to_id": resolve_id(r["To_ID"]),
+            "to_id": to_id,
             "from_id": resolve_id(r["From_ID"]),
             "from_scene": from_scene,
             "to_scene": to_scene,
             "from_name": r["From_Name"],
             "to_name": r["To_Name"],
+            # Exact destination node from OoTMM's entrances.yml (matches LOGIC_REGIONS
+            # names); "" when the entrance has no `areas` entry (grottos, specials).
+            "to_area": areas.get((game, to_id), ""),
             "type": r["Type"].strip() or "None",
             "ax": as_int(r["Anchor_X"]), "ay": as_int(r["Anchor_Y"]),
             "tx": as_int(r["Text_X"]), "ty": as_int(r["Text_Y"]),
@@ -1057,11 +1094,13 @@ def emit_entrances(name, entrs):
         out.append(
             "    EntranceDef {{ to_id: {ti}, from_id: {fi}, from_scene: scenes::{fs}, "
             "to_scene: scenes::{ts}, from_name: \"{fn}\", to_name: \"{tn}\", "
+            "to_area: \"{ta}\", "
             "type_: EntranceType::{ty}, anchor: [{ax}, {ay}], text: [{tx}, {tyy}], "
             "icon: \"{ic}\", layout: GameLayout::{lay} }},".format(
                 ti=entr_ref(e["to_id"]), fi=entr_ref(e["from_id"]),
                 fs=e["from_scene"], ts=e["to_scene"],
-                fn=esc(e["from_name"]), tn=esc(e["to_name"]), ty=rust_ident(e["type"]),
+                fn=esc(e["from_name"]), tn=esc(e["to_name"]), ta=esc(e["to_area"]),
+                ty=rust_ident(e["type"]),
                 ax=e["ax"], ay=e["ay"], tx=e["tx"], tyy=e["ty"],
                 ic=esc(e["icon"]), lay=rust_ident(e["layout"])))
     out.append("];\n")
@@ -1216,8 +1255,9 @@ def main():
     mm_scenes = load_scenes("Resources/Scenes/scenes_mm.csv",
                             regions["MMRegions"], scene_sym, missing)
     oot_rooms, mm_rooms = parse_rooms(read("Headers/UI/RoomRenderer.h"), scene_sym)
-    oot_entr = load_entrances("Resources/Scenes/entrances_oot.csv", scene_sym, missing, missing_ent)
-    mm_entr = load_entrances("Resources/Scenes/entrances_mm.csv", scene_sym, missing, missing_ent)
+    entrance_areas = load_entrance_areas("Resources/OoTMM-master/data/defs/entrances.yml")
+    oot_entr = load_entrances("Resources/Scenes/entrances_oot.csv", "oot", scene_sym, missing, missing_ent, entrance_areas)
+    mm_entr = load_entrances("Resources/Scenes/entrances_mm.csv", "mm", scene_sym, missing, missing_ent, entrance_areas)
     icons_cpp = read("Sources/UI/Icons.cpp")
     icons = parse_icons(icons_cpp, len(obj_types))
     icon_sizes = parse_icon_sizes(icons_cpp, len(obj_types))
@@ -1333,7 +1373,10 @@ def main():
         "pub struct EntranceDef {\n"
         "    pub to_id: u32,\n    pub from_id: u32,\n    pub from_scene: SceneId,\n"
         "    pub to_scene: SceneId,\n    pub from_name: &'static str,\n"
-        "    pub to_name: &'static str,\n    pub type_: EntranceType,\n"
+        "    pub to_name: &'static str,\n"
+        "    /// Exact destination node (OoTMM `entrances.yml` `areas[1]`, game prefix\n"
+        "    /// stripped) — matches `LOGIC_REGIONS` names; \"\" when the entrance has none.\n"
+        "    pub to_area: &'static str,\n    pub type_: EntranceType,\n"
         "    pub anchor: [i32; 2],\n    pub text: [i32; 2],\n    pub icon: &'static str,\n"
         "    pub layout: GameLayout,\n}\n\n"
         "/// One selectable value of a setting: the raw OoTMM value plus its display label\n"
