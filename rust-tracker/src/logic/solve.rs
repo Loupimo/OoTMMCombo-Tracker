@@ -202,7 +202,20 @@ pub fn solve<I: Inputs>(inp: &I) -> Reachability {
     let mut events: HashSet<u32> = HashSet::new();
     let redirects = inp.exit_redirects();
 
+    // The OoT GLOBAL node is the warp-song hub: every region exits to it (`"GLOBAL":
+    // "true"`) and it exits back out to the warp destinations gated only by the song
+    // (age-independent). Seeding it at both ages would open the *adult* warp plane even
+    // for a child-locked seed (no time travel), lighting every adult-only check the
+    // player can never reach. Edges preserve age, so the adult plane is only ever
+    // entered through a seed; we therefore seed OoT GLOBAL age-gated inside the loop
+    // (like the extra roots) rather than unconditionally here. MM GLOBAL stays both-age.
+    let global_oot_idx = regions
+        .iter()
+        .position(|r| r.game == 0 && r.name == "GLOBAL");
     for i in seed_regions() {
+        if Some(i) == global_oot_idx {
+            continue;
+        }
         if inp.region_active(i) {
             reached[i] = [true, true];
         }
@@ -215,7 +228,8 @@ pub fn solve<I: Inputs>(inp: &I) -> Reachability {
     // it even with no way to time travel. That achievable-age set is exactly what the
     // SPAWN age gate computes (`SPAWN CHILD`/`SPAWN ADULT` = starting age or TIME_TRAVEL),
     // so we read those two nodes' reachability rather than re-deriving the rule. MM has
-    // no such gate (its GLOBAL seeds both ages), so MM extra roots stay both-age.
+    // no such gate (its GLOBAL seeds both ages), so MM extra roots stay both-age. The
+    // OoT GLOBAL warp hub uses the same age gate for the same reason (see above).
     let spawn_child_idx = regions
         .iter()
         .position(|r| r.game == 0 && r.name == "SPAWN CHILD");
@@ -229,6 +243,12 @@ pub fn solve<I: Inputs>(inp: &I) -> Reachability {
     loop {
         let mut changed = false;
         let mut new_events: Vec<u32> = Vec::new();
+        // The achievable OoT ages this pass (child/adult per the SPAWN gate, i.e.
+        // starting age or reachable TIME_TRAVEL). Used both to re-gate cross-game
+        // arrivals into OoT and to (re)seed the OoT roots at the bottom of the pass.
+        // Computed from the previous pass's reachability; the fixed point converges.
+        let oot_child_ok = spawn_child_idx.map_or(true, |i| reached[i][0]);
+        let oot_adult_ok = spawn_adult_idx.map_or(true, |i| reached[i][1]);
         for (ri, r) in regions.iter().enumerate() {
             if !inp.region_active(ri) {
                 continue;
@@ -254,11 +274,32 @@ pub fn solve<I: Inputs>(inp: &I) -> Reachability {
                     }
                     for &to in targets {
                         let to = to as usize;
-                        if reached[to][age as usize] || !inp.region_active(to) {
+                        if !inp.region_active(to) {
                             continue;
                         }
-                        reached[to][age as usize] = true;
-                        changed = true;
+                        // A same-game edge keeps the current age plane. A cross-game
+                        // entrance is a re-spawn in the other game, so the age plane
+                        // does NOT carry across: OoT's plane gates is_adult/is_child, so
+                        // you arrive at whatever age OoT allows (child/adult per the
+                        // SPAWN gate); MM's plane is mask-based and carries no meaning,
+                        // so both plane values are available there. Without this an MM
+                        // region (seeded both ages) reached through a shuffled MM->OoT
+                        // entrance would light OoT's adult plane even with no time travel.
+                        let arrive = if r.game == regions[to].game {
+                            let mut a = [false; 2];
+                            a[age as usize] = true;
+                            a
+                        } else if regions[to].game == 0 {
+                            [oot_child_ok, oot_adult_ok]
+                        } else {
+                            [true, true]
+                        };
+                        for a in 0..2 {
+                            if arrive[a] && !reached[to][a] {
+                                reached[to][a] = true;
+                                changed = true;
+                            }
+                        }
                     }
                 }
                 for ev in r.events {
@@ -277,13 +318,25 @@ pub fn solve<I: Inputs>(inp: &I) -> Reachability {
         }
 
         // (Re)seed the extra roots now that this pass has updated the SPAWN age gate.
-        // OoT roots open only at an achievable age (child/adult per `SPAWN CHILD`/
-        // `SPAWN ADULT`); MM has no age gate, so both ages. If the SPAWN nodes are
-        // somehow absent, fall back to both ages (old behaviour) rather than hiding
-        // everything. TIME_TRAVEL flips the adult gate mid-solve, so re-running each
-        // pass lets a scene's adult checks appear the moment time travel is available.
-        let oot_child_ok = spawn_child_idx.map_or(true, |i| reached[i][0]);
-        let oot_adult_ok = spawn_adult_idx.map_or(true, |i| reached[i][1]);
+        // OoT roots open only at an achievable age (`oot_child_ok`/`oot_adult_ok`,
+        // computed at the top of the pass); MM has no age gate, so both ages. If the
+        // SPAWN nodes are somehow absent the gate falls back to both ages (old
+        // behaviour) rather than hiding everything. TIME_TRAVEL flips the adult gate
+        // mid-solve, so re-running each pass lets a scene's adult checks appear the
+        // moment time travel is available.
+        //
+        // The OoT warp hub opens only at an achievable age (child/adult per the SPAWN
+        // gate); this keeps the adult warp plane closed until time travel is reachable.
+        if let Some(i) = global_oot_idx {
+            if inp.region_active(i) {
+                for (age, &ok) in [oot_child_ok, oot_adult_ok].iter().enumerate() {
+                    if ok && !reached[i][age] {
+                        reached[i][age] = true;
+                        changed = true;
+                    }
+                }
+            }
+        }
         for &ri in inp.extra_seed_regions() {
             let i = ri as usize;
             if i >= n || !inp.region_active(i) {
@@ -345,6 +398,7 @@ mod tests {
         masks: u16,
         specials: bool,
         extra_roots: Vec<u32>,        // extra reachable region roots (progressive seeding)
+        redirects: HashMap<(u32, u32), Vec<u32>>, // shuffled-entrance edge redirects
     }
 
     impl Inputs for Cfg {
@@ -353,6 +407,13 @@ mod tests {
         }
         fn extra_seed_regions(&self) -> &[u32] {
             &self.extra_roots
+        }
+        fn exit_redirects(&self) -> Option<&HashMap<(u32, u32), Vec<u32>>> {
+            if self.redirects.is_empty() {
+                None
+            } else {
+                Some(&self.redirects)
+            }
         }
         fn setting_value(&self, key: u32) -> Option<u32> {
             self.settings.get(&key).copied()
@@ -398,13 +459,14 @@ mod tests {
             masks: 24,
             specials: true,
             extra_roots: Vec::new(),
+            redirects: HashMap::new(),
         }
     }
 
     fn empty() -> Cfg {
         let mut settings = HashMap::new();
         settings.insert(setting_idx("startingAgeOot"), value_idx("child"));
-        Cfg { items_all: 0, settings, enabled: HashSet::new(), masks: 0, specials: false, extra_roots: Vec::new() }
+        Cfg { items_all: 0, settings, enabled: HashSet::new(), masks: 0, specials: false, extra_roots: Vec::new(), redirects: HashMap::new() }
     }
 
     /// Progressive seeding: regions handed to the solver as extra reachable roots
@@ -462,6 +524,67 @@ mod tests {
         assert!(
             ra.reachable("OOT Sacred Meadow Wonder Item Maze 1"),
             "an adult-start player standing at the entryway reaches the maze"
+        );
+    }
+
+    /// Regression: a cross-game entrance is a re-spawn in the other game, so the age
+    /// plane must NOT carry across. MM regions are seeded at BOTH ages (their plane is
+    /// mask-based and carries no meaning), so a shuffled MM->OoT entrance that copied the
+    /// source age would light OoT's adult plane — and every adult-only OoT check — for a
+    /// player who can never become adult. This reproduces the reported leak (silver
+    /// gauntlets + agelessStrength as a child exposed the Zora Fountain *adult* pots,
+    /// reached via a Clock Town -> Market shuffled entrance). Arriving in OoT you are only
+    /// whatever age OoT allows (`SPAWN CHILD`/`SPAWN ADULT`), so a child-locked seed stays
+    /// child; an adult-capable seed carries adult across.
+    #[test]
+    fn cross_game_entrance_does_not_leak_the_age_plane() {
+        let idx = |game: u8, name: &str| {
+            data::LOGIC_REGIONS
+                .iter()
+                .position(|r| r.game == game && r.name == name)
+                .unwrap_or_else(|| panic!("region {name} (game {game})")) as u32
+        };
+        let entryway = idx(0, "Sacred Meadow Entryway");
+        let mm_global = idx(1, "GLOBAL");
+        // MM GLOBAL -> "ACCESS" is unconditional, so it fires with no items; redirect it
+        // to the OoT entryway to stand in for a shuffled MM->OoT entrance.
+        let access_edge_to = data::LOGIC_REGIONS[mm_global as usize]
+            .exits
+            .iter()
+            .map(|e| e.to)
+            .find(|&to| {
+                let r = &data::LOGIC_REGIONS[to as usize];
+                r.game == 1 && r.name == "ACCESS"
+            })
+            .expect("MM GLOBAL -> ACCESS edge");
+        let mut redirects = HashMap::new();
+        redirects.insert((mm_global, access_edge_to), vec![entryway]);
+
+        // Child-locked (no items, no time travel): the crossover reaches OoT only as a
+        // child, so the entryway check we land on shows but the adult-gated maze stays
+        // hidden.
+        let mut child = empty();
+        child.redirects = redirects.clone();
+        let rc = solve(&child);
+        assert!(
+            rc.reachable("OOT Sacred Meadow Wonder Item Entrance"),
+            "the MM->OoT crossover does reach the OoT entryway (as a child)"
+        );
+        assert!(
+            !rc.reachable("OOT Sacred Meadow Wonder Item Maze 1"),
+            "the crossover must not carry MM's adult plane into a child-locked OoT"
+        );
+
+        // Adult-capable (adult start): the crossover now legitimately arrives as an adult
+        // and the maze opens — the isolation gates by achievable age, it does not simply
+        // shut every cross-game arrival out of the adult plane.
+        let mut adult = empty();
+        adult.settings.insert(setting_idx("startingAgeOot"), value_idx("adult"));
+        adult.redirects = redirects;
+        let ra = solve(&adult);
+        assert!(
+            ra.reachable("OOT Sacred Meadow Wonder Item Maze 1"),
+            "an adult-capable seed carries adult across the crossover"
         );
     }
 
