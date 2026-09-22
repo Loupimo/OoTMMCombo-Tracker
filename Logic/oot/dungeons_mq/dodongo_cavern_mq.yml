@@ -24,7 +24,7 @@
     "MQ Dodongo Cavern Near Gossip": "has_bombflowers || can_hammer || has_blue_fire_arrows_mudwall"
   events:
     MQ_DC_PILLAR_RAISE: "has_bombflowers || can_hammer"
-    MQ_DC_OPEN_SKULL: "(hookshot_anywhere || climb_anywhere) && has_explosives"
+    MQ_DC_OPEN_SKULL: "(hookshot_anywhere || climb_anywhere) && (has_explosives || can_use_mask_blast)"
   locations:
     "MQ Dodongo Cavern Map Chest": "has_bombflowers || can_hammer || has_blue_fire_arrows_mudwall"
     "MQ Dodongo Cavern Lobby Scrub Front": "business_scrub(0x1c)"
@@ -47,7 +47,7 @@
     "Dodongo Cavern Vanilla Bomb Bag Room Upper": "event(DC_MQ_SHORTCUT) || hookshot_anywhere || (climb_anywhere && can_jump_slash)"
     "Dodongo Cavern Main Room Upper Entrance Side": "longshot_anywhere"
   events:
-    MQ_DC_OPEN_SKULL: "has_explosives"
+    MQ_DC_OPEN_SKULL: "has_explosives || can_use_mask_blast"
     MQ_DC_STAIRCASE_SWITCH: "true"
     DC_MQ_SHORTCUT: "has_explosives_or_hammer || can_use_din"
   locations:

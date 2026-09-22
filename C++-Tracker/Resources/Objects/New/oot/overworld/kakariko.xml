@@ -169,12 +169,12 @@
         <actor>
           <match setup="2" actor="0x2d"/>
           <match setup="3" actor="0x2b"/>
-          <xflag type="crate" location="Kakariko Crate Adult Back 3" item="RUPEE_RED" name="Adult - Back 3" xyz="301;339;0"/>
+          <xflag type="crate" location="Kakariko Crate Adult Back 3" item="RUPEE_RED" name="Adult - Back 3" xyz="301;359;0"/>
         </actor>
         <actor>
           <match setup="2" actor="0x2e"/>
           <match setup="3" actor="0x2c"/>
-          <xflag type="crate" location="Kakariko Crate Adult Back 4" item="NOTHING" name="Adult - Back 4" xyz="317;339;0"/>
+          <xflag type="crate" location="Kakariko Crate Adult Back 4" item="NOTHING" name="Adult - Back 4" xyz="317;359;0"/>
         </actor>
       </rendering_option>
       <actor>

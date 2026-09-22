@@ -944,6 +944,31 @@ impl Settings {
         if self.raw_or("stoneMaskOot", "false") != "true" {
             self.exclude_where(excluded, game, |o| o.location == "OOT Hyrule Castle Tree Guarded");
         }
+
+        // Gerudo Fortress carpenters: OoTMM drops the jail small keys the setting makes
+        // unobtainable (transform.ts). `open` frees every carpenter outright, so no jail
+        // key exists; `single` leaves only the first carpenter (Jail 1); `vanilla`
+        // (default) keeps all four.
+        match self.raw_or("gerudoFortress", "vanilla") {
+            "open" => self.exclude_where(excluded, game, |o| {
+                matches!(
+                    o.location,
+                    "OOT Gerudo Fortress Jail 1"
+                        | "OOT Gerudo Fortress Jail 2"
+                        | "OOT Gerudo Fortress Jail 3"
+                        | "OOT Gerudo Fortress Jail 4"
+                )
+            }),
+            "single" => self.exclude_where(excluded, game, |o| {
+                matches!(
+                    o.location,
+                    "OOT Gerudo Fortress Jail 2"
+                        | "OOT Gerudo Fortress Jail 3"
+                        | "OOT Gerudo Fortress Jail 4"
+                )
+            }),
+            _ => {}
+        }
     }
 
     /// Zelda's Letter / Song: shown only when Skip Zelda is off (inverted).
@@ -1563,6 +1588,53 @@ mod tests {
         s2.parse_spoiler("Settings\n  shuffleTreesOot: true\n  stoneMaskOot: true\n", &mq);
         assert!(!s2.apply(&mq).oot.contains(&idx),
             "guarded tree kept when Stone Mask (OoT) is on");
+    }
+
+    /// Gerudo Fortress carpenter jail small keys are dropped by the `gerudoFortress`
+    /// setting (OoTMM transform.ts): `open` frees every carpenter (no keys), `single`
+    /// leaves only the first carpenter (Jail 1), `vanilla` (default) keeps all four. The
+    /// hideout keys are shuffled on (`anywhere`) so the setting is the sole reason a key
+    /// is (not) excluded.
+    #[test]
+    fn gerudo_fortress_setting_drops_the_right_carpenter_jail_keys() {
+        let mq = HashSet::new();
+        let jail = |n: &str| {
+            OOT_OBJECTS
+                .iter()
+                .position(|o| o.location == n)
+                .unwrap_or_else(|| panic!("{n} object exists"))
+        };
+        let (j1, j2, j3, j4) = (
+            jail("OOT Gerudo Fortress Jail 1"),
+            jail("OOT Gerudo Fortress Jail 2"),
+            jail("OOT Gerudo Fortress Jail 3"),
+            jail("OOT Gerudo Fortress Jail 4"),
+        );
+        let build = |gf: &str| {
+            let mut s = Settings::default();
+            s.parse_spoiler(
+                &format!("Settings\n  smallKeyShuffleHideout: anywhere\n  gerudoFortress: {gf}\n"),
+                &mq,
+            );
+            s.apply(&mq)
+        };
+
+        // vanilla (default): all four kept.
+        let van = build("vanilla");
+        for i in [j1, j2, j3, j4] {
+            assert!(!van.oot.contains(&i), "vanilla keeps all four carpenter jail keys");
+        }
+        // single: only Jail 1 kept, the other three dropped.
+        let single = build("single");
+        assert!(!single.oot.contains(&j1), "single keeps Jail 1");
+        for i in [j2, j3, j4] {
+            assert!(single.oot.contains(&i), "single drops Jail 2/3/4");
+        }
+        // open: all four dropped.
+        let open = build("open");
+        for i in [j1, j2, j3, j4] {
+            assert!(open.oot.contains(&i), "open drops all four carpenter jail keys");
+        }
     }
 
     /// Gorman Track trees are removed from the pool when ALL of: All Locations logic,

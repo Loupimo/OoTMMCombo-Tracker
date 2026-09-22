@@ -5,7 +5,7 @@
       <rendering_option context="child" icon="fairy_ocarina" type="ocarina">
         <npc location="Lost Woods Gift from Saria" npc="SARIA_OCARINA" item="OCARINA" name="Fairy Ocarina" xyz="211;2800;0"/>
       </rendering_option>
-      <rendering_option icon="big_seed">
+      <rendering_option context="child" icon="big_seed">
         <npc location="Lost Woods Target" npc="LOST_WOODS_TARGET" item="SLINGSHOT" name="Slingshot Target" xyz="2069;1966;0"/>
       </rendering_option>
       <rendering_option context="child" type="heart_piece">

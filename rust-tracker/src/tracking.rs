@@ -127,7 +127,12 @@ pub fn resolve_collected(
         // The placement is a combo key in Query[0] (ParseKey after byteswap32),
         // the game in the low byte of Query[2].
         let game = if ev.query[2] & 0xFF == 0 { Game::Oot } else { Game::Mm };
-        let ov_type = ((ev.query[0] >> 24) & 0xFF) as u8;
+        // Mask the game flag off the ov byte: OoTMM stamps bit 31 of the key (the top bit of
+        // the ov_type byte) with the game (0 = OoT, 1 = MM), which ParseKey strips with `& 0x7f`.
+        // Leaving it in only bites MM (bit set): a real overlay like OV_SHOP (0x07) reads as 0x87,
+        // past OV_XFLAG0, and wrongly enters the xflag branch (e.g. an MM shop "Nothing" resolving
+        // to a Snowhead pot). OoT (bit clear) is unaffected. Mirror of ParseKey / net_item_from.
+        let ov_type = ((ev.query[0] >> 24) & 0x7F) as u8;
         let scene = ((ev.query[0] >> 16) & 0xFF) as u16;
         let room = (ev.query[0] >> 8) & 0xFF;
         let id = ev.query[0] & 0xFF;
@@ -668,6 +673,33 @@ mod tests {
         let (_, j) = resolve_collected(&ev, RomVersion::Dev, true, &no_mq()).expect("nothing-drop grass resolves");
         assert_eq!(OOT_OBJECTS[j].object_id, o.object_id);
         assert_eq!(OOT_OBJECTS[j].type_ as u8, ObjectType::grass as u8);
+    }
+
+    /// An MM shop "Nothing" purchase. OoTMM stamps the key's game-flag bit (bit 31,
+    /// the top bit of the ov byte) with 1 for MM, so a real OV_SHOP (0x07) overlay
+    /// arrives as 0x87. Masking that bit off keeps it a shop overlay; leaving it in
+    /// puts ov_type past OV_XFLAG0 and resolves to a bogus xflag object (the reported
+    /// MM Bomb Shop "Nothing" landing on a Snowhead pot). OoT (bit clear) always
+    /// worked, so this pins the MM path specifically.
+    #[test]
+    fn mm_shop_nothing_masks_game_bit() {
+        let (idx, o) = MM_OBJECTS
+            .iter()
+            .enumerate()
+            .find(|(_, o)| matches!(o.type_, ObjectType::shop)
+                && object_active(o, Game::Mm, &no_mq())
+                && o.object_id <= 0xFF)
+            .expect("an MM shop object with a byte-sized id");
+        // ov byte = OV_SHOP (0x07) with the MM game-flag bit set; room = scene = 0.
+        let ov = 0x07u32 | 0x80;
+        let q0 = (o.object_id & 0xFF) | (ov << 24);
+        // Query[2]: high half 0xFFFF marks the "nothing" path, low byte 1 = MM.
+        let ev = Event { pc: 0x8072_C478, mem: 0, query: [q0, 0, 0xFFFF_0001, 0, 0, 0] };
+        let (g, j) = resolve_collected(&ev, RomVersion::Dev, false, &no_mq())
+            .expect("MM shop nothing resolves");
+        assert_eq!(g, Game::Mm);
+        assert_eq!(j, idx);
+        assert_eq!(MM_OBJECTS[j].type_ as u8, ObjectType::shop as u8);
     }
 
     /// Compact-XflagID resolution (new ROMs > v32.3): an event carrying only a

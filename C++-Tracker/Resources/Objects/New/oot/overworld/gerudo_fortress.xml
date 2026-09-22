@@ -93,13 +93,13 @@
         <match setup="0" actor="0x5"/>
         <match setup="2" actor="0xd"/>
         <match setup="3" actor="0x6"/>
-        <xflag type="crate" location="Gerudo Fortress Crate Archery 05" item="RUPEE_GREEN" name="Archery 5" xyz="681;166;0"/>
+        <xflag type="crate" location="Gerudo Fortress Crate Archery 05" item="RUPEE_GREEN" name="Archery 5" xyz="681;138;0"/>
       </actor>
       <actor room="0x1">
         <match setup="0" actor="0x6"/>
         <match setup="2" actor="0xc"/>
         <match setup="3" actor="0x5"/>
-        <xflag type="crate" location="Gerudo Fortress Crate Archery 06" item="RUPEE_GREEN" name="Archery 6" xyz="681;138;0"/>
+        <xflag type="crate" location="Gerudo Fortress Crate Archery 06" item="RUPEE_GREEN" name="Archery 6" xyz="681;166;0"/>
       </actor>
       <actor room="0x1">
         <match setup="0" actor="0x7"/>

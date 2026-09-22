@@ -104,6 +104,11 @@ pub struct WorldInputs {
     /// gated out or its path leaks reachability into the shared boss checks. Built once
     /// in [`Self::build`] from `settings.mq_scenes`.
     active_regions: Vec<bool>,
+    /// The `[child, adult]` ages MM can carry into OoT across a game boundary under
+    /// Cross-Age Items (`crossAge`). `[false, false]` when the setting is off; otherwise
+    /// the ages the player can actually be in MM (owning the MM Adult mask, or the MM
+    /// starting age). See [`Inputs::cross_game_ages`]. Built once in [`Self::build`].
+    cross_game_ages: [bool; 2],
 }
 
 impl WorldInputs {
@@ -216,6 +221,26 @@ impl WorldInputs {
             })
             .collect();
 
+        // Cross-Age Items: an age the player can be in MM carries across a game boundary
+        // into OoT. MM `is_adult` is `has(MM_MASK_ADULT) || startingAgeMm == adult` (the
+        // solver's mask-based MM age model, gen_logic.py); `is_child` its mirror. Only the
+        // OoT direction needs this — MM's plane is seeded both ages regardless. Off (or no
+        // MM adult access) contributes nothing, preserving the child-locked isolation.
+        let cross_game_ages = if settings
+            .raw_settings
+            .get("crossAge")
+            .is_some_and(|v| v.eq_ignore_ascii_case("true"))
+        {
+            let has_adult_mask = items.get(&data::iid::MM_MASK_ADULT).copied().unwrap_or(0) > 0;
+            let mm_start_adult = settings
+                .raw_settings
+                .get("startingAgeMm")
+                .is_some_and(|v| v.eq_ignore_ascii_case("adult"));
+            [has_adult_mask || !mm_start_adult, has_adult_mask || mm_start_adult]
+        } else {
+            [false, false]
+        };
+
         let mut wi = WorldInputs {
             items,
             masks,
@@ -235,6 +260,7 @@ impl WorldInputs {
             progressive,
             visited_scenes: HashSet::new(),
             active_regions: compute_active_regions(&settings.mq_scenes),
+            cross_game_ages,
         };
         wi.mm_slices = compute_mm_slices(&wi);
         wi
@@ -672,19 +698,36 @@ fn region_scenes() -> &'static [Option<u32>] {
             .iter()
             .map(|r| {
                 let objs = if r.game == 0 { data::OOT_OBJECTS } else { data::MM_OBJECTS };
-                r.locations.iter().find_map(|l| {
-                    objs.iter().find(|o| o.location == l.loc).map(|o| {
+                let d = &dest[r.game as usize];
+                // Majority vote of the folded scene across ALL resolving locations, not
+                // just the first: a region's scene is where most of its checks live. A
+                // single shared reward filed under another instance's render scene — the
+                // "Termina Field Gossip Stones HP", listed in all four gossip-stone
+                // grottos but rendering in just one — must not hijack the region. With the
+                // first location it folded every gossip grotto onto that one scene, so
+                // `edge_blocked` saw them as one scene and visiting one lit the others.
+                let mut counts: Vec<(u32, u32)> = Vec::new(); // (scene, count), first-seen order
+                for l in r.locations {
+                    if let Some(o) = objs.iter().find(|o| o.location == l.loc) {
                         let (s, rs) = (o.scene as u32, o.render_scene as u32);
-                        let d = &dest[r.game as usize];
                         let context_variant = o.context != data::ObjectContext::All;
                         let generic_grouper = !d.contains(&s) && d.contains(&rs);
-                        if s != rs && (context_variant || generic_grouper) {
-                            rs
-                        } else {
-                            s
+                        let folded = if s != rs && (context_variant || generic_grouper) { rs } else { s };
+                        match counts.iter_mut().find(|(sc, _)| *sc == folded) {
+                            Some((_, c)) => *c += 1,
+                            None => counts.push((folded, 1)),
                         }
-                    })
-                })
+                    }
+                }
+                // The strictly-most-common folded scene; ties keep the first-seen (stable),
+                // which matches the old first-location behaviour when every check agrees.
+                let mut best: Option<(u32, u32)> = None;
+                for &(sc, c) in &counts {
+                    if best.map_or(true, |(_, bc)| c > bc) {
+                        best = Some((sc, c));
+                    }
+                }
+                best.map(|(sc, _)| sc)
             })
             .collect();
 
@@ -1035,6 +1078,9 @@ impl Inputs for WorldInputs {
     fn extra_seed_regions(&self) -> &[u32] {
         &self.seed_regions
     }
+    fn cross_game_ages(&self) -> [bool; 2] {
+        self.cross_game_ages
+    }
     fn mm_time_slices(&self) -> u64 {
         self.mm_slices
     }
@@ -1275,6 +1321,57 @@ mod tests {
             "adult-only MM chest must stay unreachable without the means to become adult");
         assert!(solved(true),
             "the MM Adult mask makes the adult-only chest reachable");
+    }
+
+    /// The four MM gossip-stone grottos (Swamp / Mountain / Ocean / Canyon) each share the
+    /// single "Termina Field Gossip Stones HP" reward, listed in all four logic regions but
+    /// rendering in just one grotto's scene. Taking the FIRST resolving location folded all
+    /// four regions onto that one scene, so `edge_blocked` saw them as a single scene and
+    /// walking into one lit the others (reported: only the Swamp grotto visited, but the
+    /// Ocean/Mountain/Canyon grottos showed their grass/hive/butterfly checks). The
+    /// majority-vote fold in `region_scenes` keeps each grotto on its own render scene.
+    #[test]
+    fn mm_gossip_grottos_keep_distinct_scenes() {
+        use crate::data::scenes as sc;
+        let rs = region_scenes();
+        let region_scene = |first_loc: &str| {
+            let ri = data::LOGIC_REGIONS
+                .iter()
+                .position(|r| r.game == 1 && r.locations.iter().any(|l| l.loc == first_loc))
+                .expect("grotto region exists");
+            rs[ri]
+        };
+        // Each grotto region resolves to its OWN render scene, not a single shared one.
+        assert_eq!(region_scene("MM Swamp Gossip Grotto Gossip Fairy 1"),
+            Some(sc::MM_GROTTO_TERMINA_SWAMP_GOSSIP as u32));
+        assert_eq!(region_scene("MM Ocean Gossip Grotto Grass 1"),
+            Some(sc::MM_GROTTO_TERMINA_OCEAN_GOSSIP as u32));
+        assert_eq!(region_scene("MM Mountain Gossip Grotto Gossip Fairy 1"),
+            Some(sc::MM_GROTTO_TERMINA_MOUNTAIN_GOSSIP as u32));
+        assert_eq!(region_scene("MM Canyon Gossip Grotto Grass 1"),
+            Some(sc::MM_GROTTO_TERMINA_CANYON_GOSSIP as u32));
+
+        // Progressive mode: having walked only the Swamp grotto, the others stay hidden.
+        let mq = std::collections::HashSet::new();
+        let mut settings = Settings::default();
+        settings.apply(&mq);
+        let visited: HashSet<(u8, u32)> = [
+            (1u8, data::entr::MM_GROTTO_GOSSIPS_SWAMP_ENTR),
+            (1u8, data::entr::MM_GROTTO_EXIT_GOSSIPS_SWAMP),
+        ]
+        .into_iter()
+        .collect();
+        let mut inp = WorldInputs::build(&settings, &[WorldData::default()], 1, &Default::default(), true);
+        inp.seed_from_visited(&visited);
+        let r = crate::logic::solve::solve(&inp);
+        for loc in [
+            "MM Ocean Gossip Grotto Grass 1",
+            "MM Ocean Gossip Grotto Hive",
+            "MM Mountain Gossip Grotto Grass 1",
+            "MM Canyon Gossip Grotto Grass 1",
+        ] {
+            assert!(!r.reachable(loc), "{loc} must stay hidden until its own grotto is visited");
+        }
     }
 
     /// An intra-scene warp with no `to_area` (the Deku Palace "Caught" guard toss, whose

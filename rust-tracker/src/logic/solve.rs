@@ -105,6 +105,15 @@ pub trait Inputs {
     fn edge_blocked(&self, _from_region: u32, _to_region: u32) -> bool {
         false
     }
+    /// With Cross-Age Items (`crossAge`) on, the ages the player can be in MM — owning
+    /// the MM Adult mask or the MM starting age — carry across a game boundary into OoT.
+    /// Returns the `[child, adult]` ages MM contributes to a cross-game arrival into OoT;
+    /// the solver ORs them into OoT's own achievable ages when a shuffled/linked MM->OoT
+    /// entrance lands the player in OoT. Default (setting off, or no MM adult access)
+    /// contributes neither, so the OoT plane stays gated purely by OoT's SPAWN.
+    fn cross_game_ages(&self) -> [bool; 2] {
+        [false, false]
+    }
 }
 
 /// A `WorldState` view over the inputs at a fixed age, reading the solver's
@@ -201,6 +210,9 @@ pub fn solve<I: Inputs>(inp: &I) -> Reachability {
     let mut reached = vec![[false; 2]; n];
     let mut events: HashSet<u32> = HashSet::new();
     let redirects = inp.exit_redirects();
+    // The ages MM can carry into OoT across a game boundary (Cross-Age Items). Empty
+    // unless `crossAge` is on and the player can become adult (or child) in MM.
+    let cross_ages = inp.cross_game_ages();
 
     // The OoT GLOBAL node is the warp-song hub: every region exits to it (`"GLOBAL":
     // "true"`) and it exits back out to the warp destinations gated only by the song
@@ -279,18 +291,23 @@ pub fn solve<I: Inputs>(inp: &I) -> Reachability {
                         }
                         // A same-game edge keeps the current age plane. A cross-game
                         // entrance is a re-spawn in the other game, so the age plane
-                        // does NOT carry across: OoT's plane gates is_adult/is_child, so
-                        // you arrive at whatever age OoT allows (child/adult per the
-                        // SPAWN gate); MM's plane is mask-based and carries no meaning,
-                        // so both plane values are available there. Without this an MM
-                        // region (seeded both ages) reached through a shuffled MM->OoT
-                        // entrance would light OoT's adult plane even with no time travel.
+                        // does NOT carry across by itself: OoT's plane gates
+                        // is_adult/is_child, so you arrive at whatever age OoT allows
+                        // (child/adult per the SPAWN gate); MM's plane is mask-based and
+                        // carries no meaning, so both plane values are available there.
+                        // Without this an MM region (seeded both ages) reached through a
+                        // shuffled MM->OoT entrance would light OoT's adult plane even
+                        // with no time travel. Cross-Age Items (`crossAge`) is the one
+                        // exception: an age the player can be in MM (adult mask / MM
+                        // starting age) then carries across into OoT, so `cross_ages` is
+                        // ORed into the OoT arrival — that is how becoming adult in MM
+                        // and returning unlocks OoT's adult checks with no OoT time travel.
                         let arrive = if r.game == regions[to].game {
                             let mut a = [false; 2];
                             a[age as usize] = true;
                             a
                         } else if regions[to].game == 0 {
-                            [oot_child_ok, oot_adult_ok]
+                            [oot_child_ok || cross_ages[0], oot_adult_ok || cross_ages[1]]
                         } else {
                             [true, true]
                         };
@@ -399,6 +416,7 @@ mod tests {
         specials: bool,
         extra_roots: Vec<u32>,        // extra reachable region roots (progressive seeding)
         redirects: HashMap<(u32, u32), Vec<u32>>, // shuffled-entrance edge redirects
+        cross_ages: [bool; 2],        // MM ages carried into OoT (Cross-Age Items)
     }
 
     impl Inputs for Cfg {
@@ -414,6 +432,9 @@ mod tests {
             } else {
                 Some(&self.redirects)
             }
+        }
+        fn cross_game_ages(&self) -> [bool; 2] {
+            self.cross_ages
         }
         fn setting_value(&self, key: u32) -> Option<u32> {
             self.settings.get(&key).copied()
@@ -460,13 +481,14 @@ mod tests {
             specials: true,
             extra_roots: Vec::new(),
             redirects: HashMap::new(),
+            cross_ages: [false, false],
         }
     }
 
     fn empty() -> Cfg {
         let mut settings = HashMap::new();
         settings.insert(setting_idx("startingAgeOot"), value_idx("child"));
-        Cfg { items_all: 0, settings, enabled: HashSet::new(), masks: 0, specials: false, extra_roots: Vec::new(), redirects: HashMap::new() }
+        Cfg { items_all: 0, settings, enabled: HashSet::new(), masks: 0, specials: false, extra_roots: Vec::new(), redirects: HashMap::new(), cross_ages: [false, false] }
     }
 
     /// Progressive seeding: regions handed to the solver as extra reachable roots
@@ -580,11 +602,25 @@ mod tests {
         // shut every cross-game arrival out of the adult plane.
         let mut adult = empty();
         adult.settings.insert(setting_idx("startingAgeOot"), value_idx("adult"));
-        adult.redirects = redirects;
+        adult.redirects = redirects.clone();
         let ra = solve(&adult);
         assert!(
             ra.reachable("OOT Sacred Meadow Wonder Item Maze 1"),
             "an adult-capable seed carries adult across the crossover"
+        );
+
+        // Cross-Age Items: a child-locked OoT (no time travel) whose player CAN become
+        // adult in MM (adult mask) must see the adult maze again — becoming adult in MM
+        // and returning through the crossover carries the adult age into OoT. This is the
+        // reported case the isolation must not over-block; `cross_ages[adult] = true`
+        // stands in for `crossAge` + MM adult access.
+        let mut cross = empty();
+        cross.redirects = redirects;
+        cross.cross_ages = [false, true];
+        let rx = solve(&cross);
+        assert!(
+            rx.reachable("OOT Sacred Meadow Wonder Item Maze 1"),
+            "Cross-Age Items carries MM adult access into a child-locked OoT"
         );
     }
 
