@@ -114,6 +114,7 @@ impl TrackerApp {
             grey_icon_cache: HashMap::new(),
             glow_icon_cache: HashMap::new(),
             map_texture: None,
+            map_texture_path: None,
             map_size: Vec2::ZERO,
             load_error: None,
             zoom: 1.0,
@@ -1692,12 +1693,22 @@ impl TrackerApp {
 
     /// Charge l'image de la scène courante en texture (une seule fois).
     pub(crate) fn ensure_texture(&mut self, ctx: &egui::Context) {
+        let Some(scene) = &self.scene else { return };
+        let entrance_view = self.active_tab.is_entrance();
+        let wanted = scene.image_path(self.current_room, entrance_view, self.context_toggle);
+        // Reload whenever the image the view needs changed, not only when a caller
+        // remembered to clear the texture: Auto Snap switching from the Entrance tab
+        // to the SAME scene's item map kept the entrance minimap under item-map
+        // coordinates (markers drawn off the image until the tab was re-clicked).
+        if wanted != self.map_texture_path {
+            self.map_texture = None;
+            self.load_error = None;
+        }
         if self.map_texture.is_some() || self.load_error.is_some() {
             return;
         }
-        let Some(scene) = &self.scene else { return };
-        let entrance_view = self.active_tab.is_entrance();
-        let Some(path) = scene.image_path(self.current_room, entrance_view, self.context_toggle) else {
+        self.map_texture_path = wanted.clone();
+        let Some(path) = wanted else {
             self.load_error = Some(self.i18n.no_img().to_owned());
             return;
         };
@@ -1736,20 +1747,24 @@ impl TrackerApp {
                     // objects. `player_obj_scene` already resolved that (the Market's
                     // real Day / Night map), and is `None` for object-less zones
                     // (Market Entrance, Back Alley…), which then keep the current map.
+                    // Crossing into the other game switches to that game's tab.
                     Tab::Oot | Tab::Mm if self.app_settings.auto_follow_item => {
                         if let Some((fg, fsid)) = self.player_obj_scene {
-                            if self.active_tab.game() == Some(fg) {
-                                if let Some(def) = fg.scenes().iter().find(|s| s.id == fsid) {
-                                    self.select_scene(fg, def);
-                                }
+                            if let Some(def) = fg.scenes().iter().find(|s| s.id == fsid) {
+                                self.active_tab = if fg == Game::Oot { Tab::Oot } else { Tab::Mm };
+                                self.select_scene(fg, def);
                             }
                         }
                     }
                     // Entrance map: entrances render on the generic scene's minimap,
                     // so follow it verbatim (object-less zones still carry entrances).
+                    // Crossing games flips the OoT / MM sub-tab; the GPS sub-tab has
+                    // no map and is left alone.
                     Tab::Entrance if self.app_settings.auto_follow_entrance => {
-                        if self.entrance_sub.game() == Some(g) {
+                        if self.entrance_sub.game().is_some() {
                             if let Some(def) = g.scenes().iter().find(|s| s.id == sid) {
+                                self.entrance_sub =
+                                    if g == Game::Oot { EntranceSub::Oot } else { EntranceSub::Mm };
                                 self.select_scene(g, def);
                             }
                         }

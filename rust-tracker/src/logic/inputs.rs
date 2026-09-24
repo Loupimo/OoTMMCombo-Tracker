@@ -109,6 +109,9 @@ pub struct WorldInputs {
     /// the ages the player can actually be in MM (owning the MM Adult mask, or the MM
     /// starting age). See [`Inputs::cross_game_ages`]. Built once in [`Self::build`].
     cross_game_ages: [bool; 2],
+    /// Renewable sources: renewable check location (`data::RENEWABLE_LOCATIONS`) ->
+    /// the item it restocks for this player. See [`Inputs::renewable_item`].
+    renewable_at: HashMap<&'static str, u32>,
 }
 
 impl WorldInputs {
@@ -201,6 +204,20 @@ impl WorldInputs {
             settings_multi.entry(ki).or_default().insert(vi);
         }
 
+        // OoT starting age. `SPAWN` only opens `SPAWN CHILD` / `SPAWN ADULT` through
+        // `setting(startingAgeOot, …)` (or TIME_TRAVEL, itself behind a spawn), so
+        // without that value no OoT age ever spawns and every OoT check reads
+        // unreachable — grass, chests, everything. Stable v32.3 spoilers name it
+        // `startingAge` (MM had no starting age yet), and with no spoiler loaded the
+        // raw block is empty. Fall back to the old key, then to OoTMM's default.
+        if !settings.raw_settings.contains_key("startingAgeOot") {
+            let age = settings.raw_settings.get("startingAge").map(String::as_str).unwrap_or("child");
+            if let (Some(&ki), Some(&vi)) = (skeys.get("startingAgeOot"), svals.get(age)) {
+                settings_value.insert(ki, vi);
+                settings_multi.entry(ki).or_default().insert(vi);
+            }
+        }
+
         // Tricks: id string -> TRICK_NAMES index.
         let tri = trick_index();
         let tricks = settings
@@ -241,6 +258,30 @@ impl WorldInputs {
             [false, false]
         };
 
+        // Renewable sources: what each renewable location restocks for THIS player —
+        // the spoiler placement when the seed shuffled it, else the vanilla item (the
+        // spoiler lists only shuffled locations, so a vanilla shop / cow is absent).
+        // A placement destined to another player restocks nothing here. Only the
+        // player's own world counts: the solver walks that world's graph, so another
+        // world's shop cannot be reached from it. Starting items are not renewable
+        // (OoTMM seeds `renewables` empty).
+        let own = worlds.get((player as usize).saturating_sub(1));
+        let mut renewable_at = HashMap::new();
+        for &(loc, vanilla) in data::RENEWABLE_LOCATIONS {
+            let id = match own.and_then(|w| w.items.get(loc).map(|name| (w, name))) {
+                Some((w, name)) => {
+                    if w.dest.get(loc).copied().unwrap_or(player) != player {
+                        continue;
+                    }
+                    find_item_id(name).unwrap_or(0)
+                }
+                None => vanilla,
+            };
+            if id != 0 {
+                renewable_at.insert(loc, id);
+            }
+        }
+
         let mut wi = WorldInputs {
             items,
             masks,
@@ -261,6 +302,7 @@ impl WorldInputs {
             visited_scenes: HashSet::new(),
             active_regions: compute_active_regions(&settings.mq_scenes),
             cross_game_ages,
+            renewable_at,
         };
         wi.mm_slices = compute_mm_slices(&wi);
         wi
@@ -1074,6 +1116,9 @@ impl Inputs for WorldInputs {
     }
     fn exit_redirects(&self) -> Option<&HashMap<(u32, u32), Vec<u32>>> {
         (!self.exit_redirects.is_empty()).then_some(&self.exit_redirects)
+    }
+    fn renewable_item(&self, location: &str) -> Option<u32> {
+        self.renewable_at.get(location).copied()
     }
     fn extra_seed_regions(&self) -> &[u32] {
         &self.seed_regions
@@ -2470,5 +2515,95 @@ mod tests {
         inp.seed_from_visited(&visited);
         assert!(inp.visited_scenes.contains(&(1, ranch)),
             "the scene reached through the scene-less waypoint must be rooted as visited");
+    }
+
+    /// What a renewable location restocks for the shown player: the spoiler placement
+    /// when the seed shuffled it, else its vanilla item (the spoiler lists only
+    /// shuffled locations), and nothing when the placement is destined to another
+    /// player. Starting items never count as a renewable source.
+    #[test]
+    fn renewable_sources_follow_spoiler_then_vanilla() {
+        let mq = std::collections::HashSet::new();
+        let mut settings = Settings::default();
+        settings.apply(&mq);
+        let shop = "MM Swamp Potion Shop Item 3"; // vanilla: Red Potion (MM)
+        let build = |worlds: &[WorldData], player: u8| {
+            WorldInputs::build(&settings, worlds, player, &Default::default(), false)
+        };
+
+        // Not in the spoiler (vanilla shop): the vanilla item.
+        let vanilla = build(&[WorldData::default()], 1);
+        assert_eq!(vanilla.renewable_item(shop), Some(data::iid::MM_POTION_RED));
+        assert_eq!(vanilla.renewable_item("MM Clock Town Chest"), None, "a chest is not renewable");
+
+        // Shuffled: the spoiler placement wins over the vanilla item.
+        let mut shuffled = WorldData::default();
+        shuffled.items.insert(shop.to_string(), "Milk".to_string());
+        assert_eq!(build(std::slice::from_ref(&shuffled), 1).renewable_item(shop), Some(data::iid::SHARED_MILK));
+
+        // Multiworld: a placement destined to player 2 restocks nothing for player 1,
+        // and player 2 does not walk world 1's shop either.
+        shuffled.dest.insert(shop.to_string(), 2);
+        let worlds = [shuffled, WorldData::default()];
+        assert_eq!(build(&worlds, 1).renewable_item(shop), None);
+        assert_eq!(build(&worlds, 2).renewable_item(shop), Some(data::iid::MM_POTION_RED), "world 2's own vanilla shop");
+    }
+
+    /// A spoiler without `startingAgeOot` must still spawn the OoT starting age.
+    /// `SPAWN` gates both ages on `setting(startingAgeOot, …)`, so a stable v32.3
+    /// spoiler (which calls it `startingAge`) or no spoiler at all left every OoT
+    /// check unreachable. Reported as "Kokiri Sword / bombs don't reveal the grass
+    /// checks": the grass is what the sword should light first on a new game.
+    #[test]
+    fn missing_starting_age_oot_falls_back_to_old_key_then_child() {
+        let mq = std::collections::HashSet::new();
+        let loc = "OOT Kokiri Forest Kokiri Sword Chest";
+        let mut world = WorldData::default();
+        world.items.insert(loc.to_string(), "Kokiri Sword (OoT)".to_string());
+        world.collected.insert((Game::Oot, obj_idx(Game::Oot, loc)));
+
+        for (label, text) in [
+            ("v32.3 key", Some("Settings
+  startingAge: child
+  progressiveSwordsOot: separate
+")),
+            ("no spoiler", None),
+        ] {
+            let mut settings = Settings::default();
+            if let Some(t) = text {
+                settings.parse_spoiler(t, &mq);
+            }
+            settings.apply(&mq);
+            assert!(!settings.raw_settings.contains_key("startingAgeOot"), "{label}: precondition");
+
+            let r = crate::logic::solve_world(&settings, std::slice::from_ref(&world), 1, &Default::default(), false);
+            assert!(r.reachable(loc), "{label}: the child spawn is reachable");
+            assert!(
+                r.reachable("OOT Kokiri Forest Grass Child 1"),
+                "{label}: the Kokiri Sword cuts the child Kokiri Forest grass"
+            );
+            assert!(
+                !r.reachable("OOT Kokiri Forest Grass Adult 01"),
+                "{label}: still child only — adult grass stays out of reach"
+            );
+
+            // Progressive entrances: the player's scene is seeded at the spawned age.
+            let mut inp = WorldInputs::build(&settings, std::slice::from_ref(&world), 1, &Default::default(), true);
+            inp.seed_scene(0, data::scenes::OOT_KOKIRI_FOREST as u32);
+            let rp = crate::logic::solve::solve(&inp);
+            assert!(
+                rp.reachable("OOT Kokiri Forest Grass Child 1"),
+                "{label}: progressive mode reveals the grass too"
+            );
+        }
+
+        // An adult start in the old key is honoured, not overridden by the default.
+        let mut adult = Settings::default();
+        adult.parse_spoiler("Settings
+  startingAge: adult
+", &mq);
+        adult.apply(&mq);
+        let r = crate::logic::solve_world(&adult, &[WorldData::default()], 1, &Default::default(), false);
+        assert!(!r.reachable(loc), "an adult start cannot open the child-only sword chest");
     }
 }

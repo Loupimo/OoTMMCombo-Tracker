@@ -1034,6 +1034,9 @@ struct TrackerApp {
     /// to build a contour-following glow — the Qt drop-shadow, which blurs the alpha.
     glow_icon_cache: HashMap<&'static str, Option<egui::TextureHandle>>,
     map_texture: Option<egui::TextureHandle>,
+    /// The image file `map_texture` was loaded from. `ensure_texture` reloads as
+    /// soon as the image the view needs (tab layer / room / context) differs.
+    map_texture_path: Option<String>,
     map_size: Vec2,
     load_error: Option<String>,
 

@@ -22,9 +22,12 @@
 //!   roots stay both-age.
 //! - **Layout**: only regions whose `layout` is active count (base dungeons /
 //!   US MM by default; MQ / JP wired later).
+//! - **Renewables**: `renewable(X)` holds once a renewable location (shop, cow,
+//!   scrub, fairy…, [`Inputs::renewable_item`]) restocking X is reachable — a
+//!   fixed-point input like events, never "owns one X".
 //! - **MM region flags** (`Op::Flag`) are treated optimistically (satisfiable),
-//!   and `special(x)` / renewable / license fall back to their `Inputs` / trait
-//!   defaults. These are the known v1 approximations to refine later.
+//!   and `special(x)` / license fall back to their `Inputs` / trait defaults.
+//!   These are the known v1 approximations to refine later.
 
 use std::collections::{HashMap, HashSet};
 
@@ -87,6 +90,13 @@ pub trait Inputs {
     fn exit_redirects(&self) -> Option<&HashMap<(u32, u32), Vec<u32>>> {
         None
     }
+    /// The item a renewable check location restocks for this player (shop, cow,
+    /// scrub, fairy, fish, gossip fairy… — OoTMM `isLocationRenewable`), or `None`
+    /// when the location is not a renewable source. Reaching such a location makes
+    /// `renewable(item)` hold. Default none: `renewable()` is then always false.
+    fn renewable_item(&self, _location: &str) -> Option<u32> {
+        None
+    }
     /// Extra region roots to seed as reachable, on top of SPAWN/GLOBAL. Default none;
     /// the app inputs supply the player's visited regions in progressive entrance mode
     /// (see `WorldInputs::seed_from_visited`) so a scene the player has physically
@@ -121,6 +131,8 @@ pub trait Inputs {
 struct View<'a, I: Inputs> {
     inp: &'a I,
     events: &'a HashSet<u32>,
+    /// Items with a reachable renewable source so far (fixed-point state).
+    renewables: &'a HashSet<u32>,
     age: u8,
 }
 
@@ -158,6 +170,9 @@ impl<I: Inputs> WorldState for View<'_, I> {
     fn event(&self, id: u32) -> bool {
         self.events.contains(&id)
     }
+    fn renewable(&self, id: u32) -> bool {
+        self.renewables.contains(&id)
+    }
     fn flag_on(&self, _id: u32) -> bool {
         false
     }
@@ -176,8 +191,8 @@ impl<I: Inputs> WorldState for View<'_, I> {
 /// input-build time — those rules are pure `has`/`setting`, so the age and empty
 /// event set fed here never affect the result.
 pub fn eval_settings_only<I: Inputs>(expr: &[data::Op], inp: &I) -> bool {
-    let events = HashSet::new();
-    eval(expr, &View { inp, events: &events, age: 0 })
+    let empty = HashSet::new();
+    eval(expr, &View { inp, events: &empty, renewables: &empty, age: 0 })
 }
 
 /// The result of a solve: which checks are reachable.
@@ -209,6 +224,19 @@ pub fn solve<I: Inputs>(inp: &I) -> Reachability {
     let n = regions.len();
     let mut reached = vec![[false; 2]; n];
     let mut events: HashSet<u32> = HashSet::new();
+    // `renewable(X)` holds once a renewable location restocking X is reachable (OoTMM
+    // pathfind `ws.renewables`); like events, those sources join the fixed point.
+    // Gathered once as (region, access rule, item).
+    let mut renewables: HashSet<u32> = HashSet::new();
+    let renewable_sources: Vec<(usize, u32, u32)> = regions
+        .iter()
+        .enumerate()
+        .flat_map(|(ri, r)| {
+            r.locations
+                .iter()
+                .filter_map(move |l| inp.renewable_item(l.loc).map(|id| (ri, l.expr, id)))
+        })
+        .collect();
     let redirects = inp.exit_redirects();
     // The ages MM can carry into OoT across a game boundary (Cross-Age Items). Empty
     // unless `crossAge` is on and the player can become adult (or child) in MM.
@@ -269,7 +297,7 @@ pub fn solve<I: Inputs>(inp: &I) -> Reachability {
                 if !reached[ri][age as usize] {
                     continue;
                 }
-                let view = View { inp, events: &events, age };
+                let view = View { inp, events: &events, renewables: &renewables, age };
                 for e in r.exits {
                     // Under entrance rando a shuffled edge points at new target(s);
                     // a vanilla edge keeps its single compiled target — unless
@@ -333,6 +361,29 @@ pub fn solve<I: Inputs>(inp: &I) -> Reachability {
                 changed = true;
             }
         }
+        // Renewable sources reached this pass (checked against the state the pass
+        // started from; newly opened ones are picked up by the next pass).
+        let mut new_renewables: Vec<u32> = Vec::new();
+        for &(ri, expr, id) in &renewable_sources {
+            if renewables.contains(&id) || !inp.region_active(ri) {
+                continue;
+            }
+            let reachable = (0u8..2).any(|age| {
+                reached[ri][age as usize]
+                    && eval(
+                        &data::EXPRS[expr as usize],
+                        &View { inp, events: &events, renewables: &renewables, age },
+                    )
+            });
+            if reachable {
+                new_renewables.push(id);
+            }
+        }
+        for id in new_renewables {
+            if renewables.insert(id) {
+                changed = true;
+            }
+        }
 
         // (Re)seed the extra roots now that this pass has updated the SPAWN age gate.
         // OoT roots open only at an achievable age (`oot_child_ok`/`oot_adult_ok`,
@@ -388,7 +439,7 @@ pub fn solve<I: Inputs>(inp: &I) -> Reachability {
             if !reached[ri][age as usize] {
                 continue;
             }
-            let view = View { inp, events: &events, age };
+            let view = View { inp, events: &events, renewables: &renewables, age };
             for l in r.locations {
                 if !locations.contains(l.loc) && eval(&data::EXPRS[l.expr as usize], &view) {
                     locations.insert(l.loc);
@@ -417,9 +468,13 @@ mod tests {
         extra_roots: Vec<u32>,        // extra reachable region roots (progressive seeding)
         redirects: HashMap<(u32, u32), Vec<u32>>, // shuffled-entrance edge redirects
         cross_ages: [bool; 2],        // MM ages carried into OoT (Cross-Age Items)
+        renewable_at: HashMap<&'static str, u32>, // renewable location -> item it restocks
     }
 
     impl Inputs for Cfg {
+        fn renewable_item(&self, location: &str) -> Option<u32> {
+            self.renewable_at.get(location).copied()
+        }
         fn item_count(&self, _id: u32) -> u32 {
             self.items_all
         }
@@ -482,13 +537,42 @@ mod tests {
             extra_roots: Vec::new(),
             redirects: HashMap::new(),
             cross_ages: [false, false],
+            renewable_at: HashMap::new(),
         }
     }
 
     fn empty() -> Cfg {
         let mut settings = HashMap::new();
         settings.insert(setting_idx("startingAgeOot"), value_idx("child"));
-        Cfg { items_all: 0, settings, enabled: HashSet::new(), masks: 0, specials: false, extra_roots: Vec::new(), redirects: HashMap::new(), cross_ages: [false, false] }
+        Cfg { items_all: 0, settings, enabled: HashSet::new(), masks: 0, specials: false, extra_roots: Vec::new(), redirects: HashMap::new(), cross_ages: [false, false], renewable_at: HashMap::new() }
+    }
+
+    /// `renewable(X)` needs a reachable renewable SOURCE of X, not one X in hand.
+    /// Reported: the tourist office pictograph (Koume needs a red / blue potion)
+    /// showed from a potion once collected but no longer carried (no free bottle)
+    /// with no potion shop reachable, because `renewable` was approximated as "owned".
+    /// Here the player owns everything, so only the renewable-source model can gate.
+    #[test]
+    fn renewable_needs_a_reachable_source_not_an_owned_item() {
+        let stone_mask = "MM Road to Ikana Stone Mask"; // lens && red-or-blue potion
+        assert!(
+            !solve(&full()).reachable(stone_mask),
+            "owning a potion is not a renewable potion source"
+        );
+
+        let mut with_shop = full();
+        with_shop.renewable_at.insert("MM Swamp Potion Shop Item 3", data::iid::MM_POTION_RED);
+        assert!(
+            solve(&with_shop).reachable(stone_mask),
+            "a reachable potion shop selling Red Potion makes it renewable"
+        );
+
+        // A source behind an unreachable region grants nothing: with no items the
+        // Swamp Potion Shop can't be reached, so the potion still isn't renewable.
+        let mut locked = empty();
+        locked.renewable_at.insert("MM Swamp Potion Shop Item 3", data::iid::MM_POTION_RED);
+        assert!(!solve(&locked).reachable("MM Swamp Potion Shop Item 3"));
+        assert!(!solve(&locked).reachable(stone_mask));
     }
 
     /// Progressive seeding: regions handed to the solver as extra reachable roots

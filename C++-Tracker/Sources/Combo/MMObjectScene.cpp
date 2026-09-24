@@ -3438,7 +3438,7 @@ ObjectInfo * MM_POTION_SHOPSceneObjects = MM_POTION_SHOPSceneObjects_Data;
 const size_t MM_TOURIST_INFORMATIONNumOfObjs = 3;
 static ObjectInfo MM_TOURIST_INFORMATIONSceneObjects_Data [MM_TOURIST_INFORMATIONNumOfObjs] =
 {
-	{ KOUME_PICTOGRAPH_BOX, MM_TOURIST_INFORMATION, "Pictobox", "MM Tourist Information Pictobox", ObjectType::npc, {299, 334, 0}, MM_TOURIST_INFORMATION, ObjectType::npc, EGameIcon::picto, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL, 0xFFFF, ObjSystem::Any },
+	{ KOUME_PICTOGRAPH_BOX, MM_TOURIST_INFORMATION, "Pictobox", "MM Tourist Information Pictobox", ObjectType::npc, {617, 253, 0}, MM_TOURIST_INFORMATION, ObjectType::npc, EGameIcon::picto, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL, 0xFFFF, ObjSystem::Any },
 	{ KOUME_HEART_PIECE, MM_TOURIST_INFORMATION, "Archery", "MM Tourist Information Boat Archery", ObjectType::npc, {617, 205, 0}, MM_TOURIST_INFORMATION, ObjectType::heart_piece, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL, 0xFFFF, ObjSystem::Any },
 	{ TOUR_GUIDE_HEART_PIECE, MM_TOURIST_INFORMATION, "Deku's King or Tingle Picture", "MM Tourist Information Tingle Picture", ObjectType::npc, {376, 335, 0}, MM_TOURIST_INFORMATION, ObjectType::heart_piece, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::all, LocType::overworld, NULL, 0xFFFF, ObjSystem::Any }
 };

@@ -54,6 +54,7 @@ qui bouge des checks, ou quand tu changes le rendu (positions / icônes / noms /
 | `gen_data.py` | `rust-tracker/tools/` | Génère `rust-tracker/src/data/*.rs` (objets via `gen_objects.build_objects()`, + items/scènes/entrées/progression). Appelle `gen_logic`. |
 | `gen_logic.py` | `rust-tracker/tools/` | Compile `Logic/**.yml` → `src/data/logic.rs`. |
 | `gen_setting_options.py` | `rust-tracker/tools/` | Extrait les **listes d'options par paramètre** de `packages/core/src/settings/data.ts` (OoTMM) → snapshot `tools/ootmm_settings.json`. Lu **hors-ligne** par `gen_data.py` pour peupler `SettingMeta.options`. Accepte un `data.ts`, une racine OoTMM, ou télécharge depuis master. À relancer après un update OoTMM (voir §5). |
+| `gen_renewables.py` | `rust-tracker/tools/` | Extrait les **emplacements renouvelables** (règle `RENEWABLE_LOCATIONS` de `packages/logic/src/locations.ts`) + leur **objet vanilla** (`data/checks/**/*.xml`) → snapshot `tools/ootmm_renewables.tsv`. Lu **hors-ligne** par `gen_logic.py` pour émettre `RENEWABLE_LOCATIONS` (logic.rs). Accepte une racine OoTMM ou télécharge depuis master. À relancer après un update OoTMM (voir §5). |
 | `Position Finder.py` | `C++-Tracker/Resources/` | Utilitaire : extrait des positions xyz depuis une image de map color-codée (aide à remplir le rendu). |
 | `ItemShift.py` | `C++-Tracker/Resources/` | Utilitaire ad-hoc : renumérote des IDs d'items selon un ordre donné (décalages dev/stable). |
 
@@ -150,7 +151,9 @@ python gen_objects.py <ootmm_root> --sync-pool --write   # applique (avec checko
 cd rust-tracker && python tools/gen_logic.py
 ```
 Rafraîchis `rust-tracker/tools/tricks.tsv` si OoTMM ajoute des tricks (le spoiler liste les tricks
-par nom d'affichage, la logique par id).
+par nom d'affichage, la logique par id), et `rust-tracker/tools/ootmm_renewables.tsv`
+(`python tools/gen_renewables.py [<ootmm_root>]`) si OoTMM change les checks ou la règle des
+renouvelables — puis relance `gen_logic.py`.
 
 ---
 
@@ -268,6 +271,16 @@ Signaux à lire dans la sortie :
   un **bucket** `ShuffleSetting` via `settings::filter_value` : plusieurs options OoTMM peuvent tomber dans le
   même bucket (ex. `ganonBossKey` : `ganon`+`anywhere`→`all`) — c'est voulu, le filtrage est bucket-based.
   Après un update OoTMM : relancer `gen_setting_options.py` puis `gen_data.py`.
+- **`renewable(X)` = source renouvelable atteignable (Rust).** Pas « X possédé » : OoTMM ne rend un objet
+  renouvelable que quand un emplacement **renouvelable** qui le contient est atteignable (pathfind
+  `ws.renewables`). Renouvelable = types `shop` / `cow` / `scrub` / `fairy` / `fish` / `fairy-spot` /
+  `gossip` / `gossip-big`, **moins** les achats uniques (Bomb Bag ×2, All-Night Mask), **plus** des listes
+  explicites (Business Scrubs MM, marchands OoT/MM dont Potion Shop « Buy Blue Potion » et le lait,
+  cartes de Tingle). Les papillons n'en font **pas** partie. C'est du **code** amont, d'où le snapshot
+  `tools/ootmm_renewables.tsv`. L'objet vanilla y est indispensable : le spoiler ne liste **que** les
+  emplacements mélangés, donc une boutique / vache vanilla n'y apparaît pas. `WorldInputs::build` prend
+  le placement du spoiler, sinon l'objet vanilla ; un placement destiné à un autre joueur ne compte pas ;
+  les objets de départ ne sont jamais renouvelables.
 - **Réglages « Logique / Accès » (raw_settings, Rust).** La logique d'accessibilité lit **uniquement**
   `Settings::raw_settings` (rempli par `parse_spoiler`) → `logic/inputs.rs`. Les réglages d'accès / conditions
   de victoire (open dungeons, `doorOfTime`, `rainbowBridge`/`moon`/`lacs`, `ganonTrials`…) ne sont **pas** des

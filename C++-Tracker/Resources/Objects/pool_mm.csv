@@ -3527,7 +3527,7 @@ SCRUB_TELESCOPE;MM_TERMINA_FIELD;Scrub;MM Termina Field Scrub;none;0;0;0;MM_GROT
 0x00008;MM_TERMINA_FIELD;Pillar;MM Termina Field Soil Pillar;soil;1953;670;0;MM_TERMINA_FIELD;soil;render_type;All;0;all;overworld;Bug (MM);Free some bugs next to the soil;0x0867;
 0x00b01;MM_TERMINA_FIELD;Rock;MM Bio Baba Grotto Rock;none;0;0;0;MM_GROTTO_TERMINA_BIO_BABA;none;render_type;All;0;all;overworld;;;0x08A3;
 KOUME_HEART_PIECE;MM_TOURIST_INFORMATION;Archery;MM Tourist Information Boat Archery;npc;617;205;0;MM_TOURIST_INFORMATION;heart_piece;render_type;All;0;all;overworld;;;0xFFFF;
-KOUME_PICTOGRAPH_BOX;MM_TOURIST_INFORMATION;Pictobox;MM Tourist Information Pictobox;npc;299;334;0;MM_TOURIST_INFORMATION;npc;picto;All;0;all;overworld;;;0xFFFF;
+KOUME_PICTOGRAPH_BOX;MM_TOURIST_INFORMATION;Pictobox;MM Tourist Information Pictobox;npc;617;253;0;MM_TOURIST_INFORMATION;npc;picto;All;0;all;overworld;;;0xFFFF;
 TOUR_GUIDE_HEART_PIECE;MM_TOURIST_INFORMATION;Deku's King or Tingle Picture;MM Tourist Information Tingle Picture;npc;376;335;0;MM_TOURIST_INFORMATION;heart_piece;render_type;All;0;all;overworld;Soul of Boat Cruise Man, Soul of Deku's King / Soul of Tingle, Pictobox;Take a picture of either the <b>Deku King</b> or <b>Tingle</b> and show it to the <b>Boat Cruise Owner</b>.;0xFFFF;
 0x05;MM_TRADING_POST;Item 1;MM Trading Post Item 1;shop;384;261;0;MM_TRADING_POST;shop;render_type;All;0;all;overworld;;;0xFFFF;
 0x06;MM_TRADING_POST;Item 2;MM Trading Post Item 2;shop;422;261;0;MM_TRADING_POST;shop;render_type;All;0;all;overworld;;;0xFFFF;

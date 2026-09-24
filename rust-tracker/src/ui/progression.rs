@@ -291,6 +291,21 @@ impl TrackerApp {
                         .color(Color32::from_rgb(130, 200, 255)),
                 );
             }
+            // Progressive Goron Lullaby: which half of the song is in hand (the
+            // intro, or the whole lullaby). Only the two Goron Lullaby tiles of a
+            // `progressive` seed carry a stage.
+            if let Some(stage) = st.lullaby_stage {
+                let full = stage == crate::progression::LullabyStage::Full;
+                ui.label(
+                    egui::RichText::new(self.i18n.prog_lullaby_stage(full))
+                        .italics()
+                        .color(if full {
+                            Color32::from_rgb(101, 224, 154)
+                        } else {
+                            Color32::from_rgb(248, 200, 120)
+                        }),
+                );
+            }
             if st.found {
                 ui.colored_label(Color32::from_rgb(101, 224, 154), format!("✔ {}", self.i18n.prog_found()));
             } else {

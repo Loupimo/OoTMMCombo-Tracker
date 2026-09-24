@@ -125,7 +125,7 @@
   <scene id="TOURIST_INFORMATION">
     <scene_rendering id="MM_TOURIST_INFORMATION" loc_type="overworld">
       <rendering_option icon="picto" layout="all">
-        <npc location="Tourist Information Pictobox" npc="KOUME_PICTOGRAPH_BOX" item="PICTOGRAPH_BOX" name="Pictobox" xyz="299;334;0"/>
+        <npc location="Tourist Information Pictobox" npc="KOUME_PICTOGRAPH_BOX" item="PICTOGRAPH_BOX" name="Pictobox" xyz="617;253;0"/>
       </rendering_option>
       <rendering_option layout="all" type="heart_piece">
         <npc location="Tourist Information Boat Archery" npc="KOUME_HEART_PIECE" item="HEART_PIECE" hint="BOAT_ARCHERY" name="Archery" xyz="617;205;0"/>

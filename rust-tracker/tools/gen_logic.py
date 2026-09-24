@@ -39,6 +39,10 @@ OUT_DEFAULT = Path(__file__).resolve().parents[1] / "src" / "data" / "logic.rs"
 # a separate file to refresh when OoTMM adds tricks.
 TRICKS_TSV = Path(__file__).resolve().parent / "tricks.tsv"
 
+# Renewable check locations + their vanilla item, snapshotted from OoTMM by
+# gen_renewables.py (the renewable rule is upstream code, not part of `Logic/`).
+RENEWABLES_TSV = Path(__file__).resolve().parent / "ootmm_renewables.tsv"
+
 # The C++ headers (item / NPC symbols) moved under C++-Tracker/ when the Qt
 # tracker was relocated; fall back to the repo root for older checkouts.
 CPP_ROOT = ROOT / "C++-Tracker" if (ROOT / "C++-Tracker" / "Headers").is_dir() else ROOT
@@ -300,6 +304,17 @@ def load_trick_names(path=TRICKS_TSV):
     return out
 
 
+def load_renewables(path=RENEWABLES_TSV):
+    """[(location, vanilla item symbol or None)] from the gen_renewables snapshot."""
+    rows = []
+    for line in read_text(path).splitlines():
+        if not line.strip() or line.startswith("#"):
+            continue
+        loc, _, item = line.partition("	")
+        rows.append((loc.strip(), item.strip() or None))
+    return rows
+
+
 def region_files(game):
     root = LOGIC_DIR / ("oot" if game == OOT else "mm")
     return sorted(p for p in root.rglob("*.yml"))
@@ -453,6 +468,7 @@ class Compiler:
         self.builtins, self.builtins_l = {}, []
         # Diagnostics.
         self.missing_items = set()
+        self.missing_renewable_items = set()
         self.builtins_seen = {}
         # Expression dedup: op-tuple -> index.
         self.expr_pool, self.expr_index = [], {}
@@ -1019,6 +1035,24 @@ def emit(out_path, compiler, regions):
         "/// EXPRS index of each MM period's reachability rule, matching\n"
         "/// `MM_PERIOD_SLICES` order (clock_day1 .. clock_night3).\n"
         f"pub static MM_CLOCK_PERIOD_EXPRS: [u32; 6] = [{cpe_cells}];\n")
+    # Renewable sources (`Op::Renewable`): location -> vanilla item id (0 = none /
+    # unresolved), sorted by location for binary search.
+    ren_cells = []
+    for loc, item in sorted(load_renewables()):
+        iid = 0
+        if item:
+            iid = compiler.id_sym.get(LOGIC_ITEM_ALIASES.get(item, item))
+            if iid is None:
+                compiler.missing_renewable_items.add(item)
+                iid = 0
+        ren_cells.append(f'("{esc(loc)}", {iid:#x}),')
+    body = "&[]" if not ren_cells else "&[\n    " + "\n    ".join(ren_cells) + "\n]"
+    parts.append(
+        "/// OoTMM renewable check locations (`isLocationRenewable`) and their vanilla\n"
+        "/// item id (0 = random / nothing / unresolved). Reaching one that holds X makes\n"
+        "/// `renewable(X)` hold. Sorted by location for binary search. Snapshotted from\n"
+        "/// OoTMM via tools/ootmm_renewables.tsv (tools/gen_renewables.py).\n"
+        f"pub static RENEWABLE_LOCATIONS: &[(&str, u32)] = {body};\n")
     parts.append("/// Win-condition gate names (`Op::Special`), indexed by id.\n"
                  + str_arr("SPECIAL_NAMES", compiler.specials_l))
     parts.append("/// MM region-state flag names (`Op::Flag`), indexed by id.\n"
@@ -1098,6 +1132,13 @@ def generate(out_path=OUT_DEFAULT, id_sym=None, verbose=True):
               f"matched={len(matched)}")
         print(f"  loc in logic not in tracker: {len(in_logic_not_tracker)}")
         print(f"  loc in tracker not in logic: {len(in_tracker_not_logic)}")
+        # A vanilla item with no tracker id (the generic weightless pond fish) can
+        # only matter if the logic asks `renewable()` of it, and any such symbol is
+        # already reported by the `unresolved items` warning below — so just count.
+        renewables = {loc for loc, _ in load_renewables()}
+        print(f"  renewables     : {len(renewables)} locations "
+              f"({len(renewables - logic_locs)} not in logic; vanilla item without "
+              f"tracker id: {sorted(compiler.missing_renewable_items)})")
         if compiler.missing_items:
             print(f"  WARN unresolved items ({len(compiler.missing_items)}): "
                   f"{sorted(compiler.missing_items)[:15]}", file=sys.stderr)

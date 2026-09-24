@@ -74,8 +74,9 @@ pub trait WorldState {
     fn mm_time_slices(&self) -> u64 {
         u64::MAX
     }
-    /// A renewable source of the item exists. Approximated as "owned" until the
-    /// solver models drop/shop sources (M3); good enough for most ammo checks.
+    /// A renewable source of the item (shop, cow, scrub, fairy…) is reachable. The
+    /// solver answers from the renewable locations it has reached
+    /// (`Inputs::renewable_item`); this "owned" default only serves minimal mocks.
     fn renewable(&self, id: u32) -> bool {
         self.item_count(id) >= 1
     }

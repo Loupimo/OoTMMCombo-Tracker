@@ -767,6 +767,14 @@ impl I18n {
         Self::get(&self.strings.progression, "heaviest_fish").replace("{n}", &n.to_string())
     }
 
+    /// Which half of a progressive Goron Lullaby is playable (detail panel).
+    pub fn prog_lullaby_stage(&self, full: bool) -> &str {
+        Self::get(
+            &self.strings.progression,
+            if full { "lullaby_full" } else { "lullaby_intro" },
+        )
+    }
+
     // ---------------------------------------------------------------------
     // GPS
     // ---------------------------------------------------------------------
@@ -1282,6 +1290,8 @@ mod tests {
         i.gps_alternative(2);
         i.gps_transitions(3);
         i.prog_heaviest_fish(12);
+        assert!(!i.prog_lullaby_stage(true).is_empty());
+        assert!(!i.prog_lullaby_stage(false).is_empty());
 
         // Multiplayer / patch / live-event log lines (state.rs) — templated.
         i.log_mp_enabled("host:1");

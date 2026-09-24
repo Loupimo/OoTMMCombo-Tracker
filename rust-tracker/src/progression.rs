@@ -37,6 +37,28 @@ pub struct ProgState {
     /// detail panel can show it. `None` for every other entry (and until the first
     /// weighed fish of this kind is caught).
     pub heaviest_lbs: Option<i32>,
+    /// Goron Lullaby tiles only: how many "Progressive Goron Lullaby" copies have
+    /// been collected (the seed hands out two under `progressiveGoronLullaby*`).
+    pub lullaby_halves: i32,
+    /// Goron Lullaby tiles only: the full "Goron Lullaby" item itself is in hand
+    /// (a starting item, or a `single` seed's one copy).
+    pub lullaby_whole: bool,
+    /// Which half of the Goron Lullaby is playable right now, or `None` when the
+    /// entry is not a progressive Goron Lullaby tile (or nothing is playable yet).
+    /// Resolved by [`Dashboard::resolve_goron_lullaby`].
+    pub lullaby_stage: Option<LullabyStage>,
+}
+
+/// How much of the Goron Lullaby the player can play, under
+/// `progressiveGoronLullaby{Oot,Mm}: progressive` (the seed splits the song in
+/// two: the intro first, the whole lullaby second).
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+pub enum LullabyStage {
+    /// The 6-note intro only (Goron Lullaby Intro): enough for the song events
+    /// that take the half song, not for the ones needing the full lullaby.
+    Intro,
+    /// The whole lullaby.
+    Full,
 }
 
 /// One flattened dashboard entry with its page/section coordinates.
@@ -233,6 +255,9 @@ impl Dashboard {
                 max_count: if e.max_from_spoiler { 0 } else { e.max_count },
                 is_starting: false,
                 heaviest_lbs: None,
+                lullaby_halves: 0,
+                lullaby_whole: false,
+                lullaby_stage: None,
             };
         }
 
@@ -242,6 +267,7 @@ impl Dashboard {
             for &key in self.flat[i].entry.lookup_keys {
                 if let Some(&c) = settings.starting_item_ids.get(&key) {
                     self.states[i].is_starting = true;
+                    self.tally_goron_lullaby(i, key, c as i32);
                     for _ in 0..c {
                         self.mark_found(i);
                     }
@@ -302,6 +328,71 @@ impl Dashboard {
                 self.on_item_found(id, settings);
             }
         }
+
+        self.resolve_goron_lullaby(settings);
+    }
+
+    /// Record `n` pickups of item `id` on entry `i` when it is one of the Goron
+    /// Lullaby items; a no-op for everything else.
+    fn tally_goron_lullaby(&mut self, i: usize, id: u32, n: i32) {
+        use data::iid::*;
+        match id {
+            OOT_SONG_GORON_HALF | MM_SONG_GORON_HALF | SHARED_SONG_GORON_HALF => {
+                self.states[i].lullaby_halves += n
+            }
+            OOT_SONG_GORON | MM_SONG_GORON | SHARED_SONG_GORON if n > 0 => {
+                self.states[i].lullaby_whole = true
+            }
+            _ => {}
+        }
+    }
+
+    /// Stamp each Goron Lullaby tile with the half of the song currently playable
+    /// (`ProgState::lullaby_stage`).
+    ///
+    /// Under `progressiveGoronLullaby{Oot,Mm}: progressive` the song comes in two
+    /// steps: the seed places two "Progressive Goron Lullaby" copies — the first
+    /// teaches the intro, the second the whole lullaby — and with shuffled notes
+    /// (`songs: notes`) the same split is a threshold, 6 of the 8 notes playing the
+    /// intro and all 8 the full song. Mirrors `macros_common.yml`
+    /// (`has_song_goron_half` / `has_song_goron`) and the `setting(...,
+    /// progressive)` gate of `can_play_goron_half`, so the panel never claims an
+    /// intro the solver would not honour. `single` (full lullaby only) has no intro
+    /// stage, so the tile keeps `None`.
+    fn resolve_goron_lullaby(&mut self, settings: &Settings) {
+        /// Notes needed for the intro (the full song needs the entry's `max_count`).
+        const NOTES_FOR_INTRO: i32 = 6;
+        for i in 0..self.flat.len() {
+            let e = self.flat[i].entry;
+            let key = if e.lookup_keys.contains(&data::iid::OOT_SONG_GORON_HALF) {
+                "progressiveGoronLullabyOot"
+            } else if e.lookup_keys.contains(&data::iid::MM_SONG_GORON_HALF) {
+                "progressiveGoronLullabyMm"
+            } else {
+                continue;
+            };
+            let st = &self.states[i];
+            // The seed lists every setting, so a present value decides. A ROM version
+            // that predates the setting still proves the mode by having handed out a
+            // progressive copy.
+            let raw = settings.raw_settings.get(key).map(String::as_str);
+            if !(raw == Some("progressive") || (raw.is_none() && st.lullaby_halves > 0)) {
+                continue;
+            }
+            // Notes only count while they are the shuffled unit; otherwise the
+            // counter holds song pickups, not notes.
+            let notes = if self.songs_counter { st.count } else { 0 };
+            self.states[i].lullaby_stage = if st.lullaby_whole
+                || st.lullaby_halves >= 2
+                || (notes > 0 && notes >= e.max_count)
+            {
+                Some(LullabyStage::Full)
+            } else if st.lullaby_halves >= 1 || notes >= NOTES_FOR_INTRO {
+                Some(LullabyStage::Intro)
+            } else {
+                None
+            };
+        }
     }
 
     /// Whether an entry behaves as a counter right now (songs flip with the
@@ -348,6 +439,13 @@ impl Dashboard {
                     *cur = Some(cur.map_or(lbs, |c| c.max(lbs)));
                 }
             }
+        }
+        // Goron Lullaby: remember whether the pickup was a progressive copy (intro
+        // then full) or the whole song, so `resolve_goron_lullaby` can tell the
+        // detail panel which half is playable. A SHARED_* copy matches both games'
+        // tiles, which is exactly what sharing means here.
+        for &i in &matches {
+            self.tally_goron_lullaby(i, id, 1);
         }
         // "Shared" here means the collected item mirrors across both games, so a pickup
         // must touch every mirror (advance each game's page independently for a
@@ -1440,6 +1538,101 @@ mod tests {
             d.state(adult_loach).heaviest_lbs,
             None,
             "a fish kind that was never caught has no weight"
+        );
+    }
+
+    #[test]
+    fn progressive_goron_lullaby_tells_intro_from_full_song() {
+        use data::iid::{MM_SONG_GORON_HALF, OOT_SONG_GORON_HALF};
+        assert_eq!(find_item_id("Progressive Goron Lullaby (OoT)"), Some(OOT_SONG_GORON_HALF));
+        assert_eq!(find_item_id("Note from Goron Lullaby (OoT)"), Some(data::iid::OOT_SONG_NOTE_GORON));
+
+        // Eight active OoT objects to hang the placements on (the note case needs 8).
+        let mq: HashSet<(Game, u16)> = HashSet::new();
+        let objs: Vec<usize> = data::OOT_OBJECTS
+            .iter()
+            .enumerate()
+            .filter(|(_, o)| {
+                o.type_ != data::ObjectType::none
+                    && crate::tracking::object_active(o, Game::Oot, &mq)
+            })
+            .map(|(i, _)| i)
+            .take(8)
+            .collect();
+        let collected =
+            |n: usize| -> Vec<(Game, usize)> { objs[..n].iter().map(|&i| (Game::Oot, i)).collect() };
+
+        let mut d = Dashboard::new();
+        let oot = entry_with_key(&d, OOT_SONG_GORON_HALF);
+        let mm = entry_with_key(&d, MM_SONG_GORON_HALF);
+
+        // `progressive`: two copies of the progressive song — intro, then the whole thing.
+        let mut settings = Settings::default();
+        settings.parse_spoiler("Settings
+  progressiveGoronLullabyOot: progressive
+", &mq);
+        settings.apply(&mq);
+        let places: Vec<(&str, &str)> = objs[..2]
+            .iter()
+            .map(|&i| (data::OOT_OBJECTS[i].location, "Progressive Goron Lullaby (OoT)"))
+            .collect();
+
+        d.rebuild(&one_world(&places, &[], &collected(1)), &settings, &mq);
+        assert_eq!(
+            d.state(oot).lullaby_stage,
+            Some(LullabyStage::Intro),
+            "one progressive copy teaches the intro only"
+        );
+        assert_eq!(d.state(mm).lullaby_stage, None, "the MM tile got nothing");
+
+        d.rebuild(&one_world(&places, &[], &collected(2)), &settings, &mq);
+        assert_eq!(
+            d.state(oot).lullaby_stage,
+            Some(LullabyStage::Full),
+            "the second copy completes the lullaby"
+        );
+
+        // `single`: one full lullaby, so there is no intro stage to report.
+        let mut single = Settings::default();
+        single.parse_spoiler("Settings
+  progressiveGoronLullabyOot: single
+", &mq);
+        single.apply(&mq);
+        let full_places: Vec<(&str, &str)> =
+            objs[..1].iter().map(|&i| (data::OOT_OBJECTS[i].location, "Goron Lullaby (OoT)")).collect();
+        d.rebuild(&one_world(&full_places, &[], &collected(1)), &single, &mq);
+        assert!(d.state(oot).found, "the tile still lights up");
+        assert_eq!(d.state(oot).lullaby_stage, None, "`single` has no intro / full split");
+
+        // `songs: notes`: the split becomes a threshold — 6 of the 8 notes play the
+        // intro, all 8 the full song (macros_common.yml `has_song_goron_half`).
+        let mut notes = Settings::default();
+        notes.parse_spoiler(
+            "Settings
+  songs: notes
+  progressiveGoronLullabyOot: progressive
+",
+            &mq,
+        );
+        notes.apply(&mq);
+        let note_places: Vec<(&str, &str)> = objs
+            .iter()
+            .map(|&i| (data::OOT_OBJECTS[i].location, "Note from Goron Lullaby (OoT)"))
+            .collect();
+
+        d.rebuild(&one_world(&note_places, &[], &collected(5)), &notes, &mq);
+        assert_eq!(d.state(oot).lullaby_stage, None, "5 notes play nothing");
+        d.rebuild(&one_world(&note_places, &[], &collected(6)), &notes, &mq);
+        assert_eq!(
+            d.state(oot).lullaby_stage,
+            Some(LullabyStage::Intro),
+            "the 6th note unlocks the intro"
+        );
+        d.rebuild(&one_world(&note_places, &[], &collected(8)), &notes, &mq);
+        assert_eq!(
+            d.state(oot).lullaby_stage,
+            Some(LullabyStage::Full),
+            "all 8 notes play the whole lullaby"
         );
     }
 
