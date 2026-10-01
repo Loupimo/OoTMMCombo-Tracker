@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="oot">
+  <scene id="LAIR_PHANTOM_GANON">
+    <scene_rendering id="OOT_TEMPLE_FOREST" loc_type="dungeon">
+      <rendering_option layout="all" room="3" type="heart_container">
+        <collectible location="Forest Temple Boss Container" flag="0x1f" item="HEART_CONTAINER" name="Heart Container" xyz="363;261;0"/>
+      </rendering_option>
+      <rendering_option icon="forest" layout="all" room="3">
+        <npc location="Forest Temple Boss" npc="BLUE_WARP_PHANTOM_GANON" item="MEDALLION_FOREST" name="Forest Medaillon" xyz="325;262;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

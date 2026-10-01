@@ -1,0 +1,1231 @@
+//! Spike Rust + egui tracker OoTMM.
+#![windows_subsystem = "windows"]
+
+mod data;
+mod dialog;
+mod entrance;
+mod gps;
+mod inject;
+mod logic;
+mod multi;
+mod multi_v1_10;
+mod patch;
+mod poller;
+mod progression;
+mod qtsave;
+mod scene;
+mod settings;
+mod shared_mem;
+mod spoiler;
+mod tracking;
+mod i18n;
+mod state;
+mod ui;
+
+use i18n::{AppSettings, I18n};
+use std::collections::{HashMap, HashSet, VecDeque};
+use std::path::PathBuf;
+use std::time::Instant;
+
+use eframe::egui::{self, pos2, vec2, Align2, Color32, FontId, Rect, Sense, Stroke, Vec2};
+
+use scene::{Game, LiveScene};
+use tracking::RomVersion;
+
+/// Maximum number of events kept in the log panel.
+const LOG_CAP: usize = 500;
+/// Header tag written on the first line of a save file, followed by the version
+/// number. Marks a "latest version" save (which may carry a `PATCH <path>` line);
+/// older saves have no header and load unchanged.
+const SAVE_VERSION_TAG: &str = "TRACKER_SAVE";
+/// Current save-format version. 6 keyed `<location>`s on the stable numeric object
+/// identity (object id within the parent scene, split by type + layout) with the
+/// `loc` string as a fallback, added the stable item `id` to placements, and made
+/// entrance links carry the fully-qualified "scene - side" name. 5 switched to a
+/// human-readable / hand-editable XML document (`<tracker version="…">`, see
+/// `save_to` / `load_from_xml`); the legacy line-based text format (4 and below) and
+/// the Qt binary `.trck` are still read. 4 was self-contained (persisted each
+/// world's item placements / destinations so a load restores the map without a
+/// spoiler); 3 added the multiplayer patch path; 2 and below had no header. The reader routes
+/// on the XML prefix, not this number, so every prior XML save still loads.
+const SAVE_VERSION: u32 = 6;
+/// Icons flanking the age/season context switch (Qt ContextSwitchButton): OoT
+/// child/adult heads and MM winter/spring, preloaded into the icon cache.
+const CONTEXT_ICON_PATHS: [&str; 4] = [
+    "./Resources/Common/ChildHead.png",
+    "./Resources/Common/AdultHead.png",
+    "./Resources/Common/Winter.png",
+    "./Resources/Common/Spring.png",
+];
+
+/// Whether an object of context `ctx` shows under the active scene context
+/// `eff` (None = the scene has no age/season context, so show everything).
+fn context_allows(eff: Option<data::ObjectContext>, ctx: data::ObjectContext) -> bool {
+    match eff {
+        None => true,
+        Some(c) => ctx == data::ObjectContext::All || ctx == c,
+    }
+}
+
+/// A Launch-page button press, resolved after the UI closure so the handlers
+/// can borrow `self` mutably without conflicting with the surrounding draw.
+#[derive(Clone, Copy)]
+enum LaunchAction {
+    None,
+    Save,
+    Load,
+    Spoiler,
+    Reset,
+    Toggle,
+    Patch,
+    ClearPatch,
+}
+
+/// Top-level tabs, mirroring the original Qt layout.
+#[derive(Clone, Copy, PartialEq)]
+enum Tab {
+    Launch,
+    Oot,
+    Mm,
+    Entrance,
+    Progression,
+}
+
+impl Tab {
+    const ALL: [Tab; 5] = [Tab::Launch, Tab::Oot, Tab::Mm, Tab::Entrance, Tab::Progression];
+
+    fn label(self, i18n: &I18n) -> &str {
+        match self {
+            Tab::Launch => i18n.launch(),
+            Tab::Oot => "OoT",
+            Tab::Mm => "MM",
+            Tab::Entrance => i18n.entrance(),
+            Tab::Progression => i18n.progress(),
+        }
+    }
+    /// The game this tab tracks, if any (Entrance/Launch/Progression: none).
+    fn game(self) -> Option<Game> {
+        match self {
+            Tab::Oot => Some(Game::Oot),
+            Tab::Mm => Some(Game::Mm),
+            _ => None,
+        }
+    }
+    fn is_entrance(self) -> bool {
+        matches!(self, Tab::Entrance)
+    }
+}
+
+/// Sub-tabs of the Entrance tab (Qt EntranceTab), mirroring OoT / MM / GPS.
+#[derive(Clone, Copy, PartialEq)]
+enum EntranceSub {
+    Oot,
+    Mm,
+    Gps,
+}
+
+impl EntranceSub {
+    /// The game of a game sub-tab (None for GPS).
+    fn game(self) -> Option<Game> {
+        match self {
+            EntranceSub::Oot => Some(Game::Oot),
+            EntranceSub::Mm => Some(Game::Mm),
+            EntranceSub::Gps => None,
+        }
+    }
+}
+
+/// Load the shared Qt window icon (Resources/Logo.ico) as egui `IconData`.
+/// Returns `None` if the file is missing or cannot be decoded.
+fn load_window_icon() -> Option<egui::IconData> {
+    let path = scene::resource_path("./Resources/Logo.ico");
+    let img = image::open(&path).ok()?.into_rgba8();
+    let (width, height) = img.dimensions();
+    Some(egui::IconData { rgba: img.into_raw(), width, height })
+}
+
+fn main() -> eframe::Result<()> {
+    let mut viewport = egui::ViewportBuilder::default()
+        .with_inner_size([1360.0, 860.0])
+        .with_min_inner_size([980.0, 640.0])
+        .with_title("OoTMMCombo Auto Tracker")
+        .with_window_level(egui::WindowLevel::Normal);
+    // Same window / taskbar icon as the Qt build (setWindowIcon(Logo.ico)).
+    if let Some(icon) = load_window_icon() {
+        viewport = viewport.with_icon(std::sync::Arc::new(icon));
+    }
+    let options = eframe::NativeOptions {
+        viewport,
+        ..Default::default()
+    };
+    eframe::run_native(
+        "OoTMM Tracker (Rust spike)",
+        options,
+        Box::new(|cc| {
+            apply_qt_style(&cc.egui_ctx);
+            install_symbol_font(&cc.egui_ctx);
+            Ok(Box::new(TrackerApp::new(&cc.egui_ctx)))
+        }),
+    )
+}
+
+/// Shuffle options offered for a boolean-ish parameter, and for a full shuffle.
+const BOOL_OPTIONS: [data::ShuffleSetting; 3] = [
+    data::ShuffleSetting::all,
+    data::ShuffleSetting::vanilla,
+    data::ShuffleSetting::removed,
+];
+const SHUFFLE_OPTIONS: [data::ShuffleSetting; 6] = [
+    data::ShuffleSetting::all,
+    data::ShuffleSetting::dungeons,
+    data::ShuffleSetting::overworld,
+    data::ShuffleSetting::starting,
+    data::ShuffleSetting::vanilla,
+    data::ShuffleSetting::removed,
+];
+
+/// Human label for a shuffle setting (shown in the ROM Settings editors).
+fn shuffle_label(i18n: &I18n, s: data::ShuffleSetting) -> &str {
+    use data::ShuffleSetting as S;
+    match s {
+        S::vanilla => i18n.shuffle_vanilla(),
+        S::removed => i18n.shuffle_removed(),
+        S::starting => i18n.shuffle_starting(),
+        S::all => i18n.shuffle_all(),
+        S::dungeons => i18n.shuffle_dungeons(),
+        S::overworld => i18n.shuffle_overworld(),
+    }
+}
+
+/// The Qt tracker's accent blue (#4a9edb), reused for headers / selection.
+const ACCENT: Color32 = Color32::from_rgb(74, 158, 219);
+
+// The Qt "Dual Realm" navy palette (Resources/Styles/DualRealm.qss), so the egui
+// build reads like the Qt one instead of the default Fusion gray.
+const BG_BASE: Color32 = Color32::from_rgb(0x08, 0x0f, 0x1a); // #080f1a window / panels
+const BG_PANEL: Color32 = Color32::from_rgb(0x0d, 0x18, 0x27); // #0d1827 menus / groups / buttons
+const BG_INPUT: Color32 = Color32::from_rgb(0x06, 0x0c, 0x16); // #060c16 inputs / map / troughs
+const BG_HOVER: Color32 = Color32::from_rgb(0x0d, 0x2a, 0x4a); // #0d2a4a hover
+const BG_SEL: Color32 = Color32::from_rgb(0x1a, 0x4a, 0x7a); // #1a4a7a selection / active
+const BORDER: Color32 = Color32::from_rgb(0x1a, 0x30, 0x50); // #1a3050 borders / separators
+const TEXT: Color32 = Color32::from_rgb(0xdd, 0xee, 0xff); // #ddeeff primary text
+const TEXT_MUTED: Color32 = Color32::from_rgb(0x7a, 0x9a, 0xbf); // #7a9abf secondary text
+
+/// Sentinel `entrance_table` region meaning "every entrance of the game" (the Qt
+/// "All" node that has no child scenes, just the full global table).
+const ALL_REGION: u8 = 0xFF;
+
+/// The Qt "Dual Realm" dark-navy theme: navy panels, blue accent + selection, and
+/// slightly roomier spacing so the trees / grids read like the Qt build.
+/// egui's bundled fonts (Ubuntu-Light / Hack) don't cover the arrow / check
+/// glyphs used in the entrance strings (→ U+2192, ↔, ✓). Append a Windows
+/// system font that does, as the *lowest*-priority fallback for both families,
+/// so those characters render instead of the "tofu" box. A missing font just
+/// leaves the defaults in place.
+fn install_symbol_font(ctx: &egui::Context) {
+    let candidates = [
+        "C:/Windows/Fonts/arial.ttf",
+        "C:/Windows/Fonts/segoeui.ttf",
+        "C:/Windows/Fonts/tahoma.ttf",
+    ];
+    let Some(bytes) = candidates.iter().find_map(|p| std::fs::read(p).ok()) else {
+        return;
+    };
+    let mut fonts = egui::FontDefinitions::default();
+    fonts.font_data.insert("winsym".to_owned(), egui::FontData::from_owned(bytes));
+    for family in [egui::FontFamily::Proportional, egui::FontFamily::Monospace] {
+        fonts.families.entry(family).or_default().push("winsym".to_owned());
+    }
+    ctx.set_fonts(fonts);
+}
+
+fn apply_qt_style(ctx: &egui::Context) {
+    
+    let mut style = (*ctx.style()).clone();
+
+    let mut v = egui::Visuals::dark();
+    v.dark_mode = true;
+    v.panel_fill = BG_BASE; // central + side panels
+    v.window_fill = BG_PANEL; // floating windows / menus / tooltips
+    v.window_stroke = Stroke::new(1.0_f32, BORDER);
+    v.extreme_bg_color = BG_INPUT; // text edits, combo popups, scroll troughs
+    v.faint_bg_color = Color32::from_rgb(0x0a, 0x12, 0x20); // striped rows (#0a1220)
+    v.override_text_color = Some(TEXT);
+    // Softer translucent selection with a crisp accent outline (Qt highlight).
+    v.selection.bg_fill = Color32::from_rgba_unmultiplied(74, 158, 219, 90);
+    v.selection.stroke = Stroke::new(1.0_f32, ACCENT);
+    v.hyperlink_color = ACCENT;
+
+    // Widget states, navy like the Qt QPushButton / QComboBox / QGroupBox rules.
+    let border = Stroke::new(1.0_f32, BORDER);
+    let accent = Stroke::new(1.0_f32, ACCENT);
+    v.widgets.noninteractive.bg_fill = BG_PANEL; // ui.group() frame fill
+    v.widgets.noninteractive.weak_bg_fill = BG_PANEL;
+    v.widgets.noninteractive.bg_stroke = border;
+    v.widgets.noninteractive.fg_stroke = Stroke::new(1.0_f32, TEXT);
+    v.widgets.inactive.bg_fill = BG_PANEL; // idle buttons / combos
+    v.widgets.inactive.weak_bg_fill = BG_PANEL;
+    v.widgets.inactive.bg_stroke = border;
+    v.widgets.inactive.fg_stroke = Stroke::new(1.0_f32, TEXT_MUTED);
+    v.widgets.hovered.bg_fill = BG_HOVER;
+    v.widgets.hovered.weak_bg_fill = BG_HOVER;
+    v.widgets.hovered.bg_stroke = accent;
+    v.widgets.hovered.fg_stroke = Stroke::new(1.0_f32, TEXT);
+    v.widgets.active.bg_fill = BG_SEL;
+    v.widgets.active.weak_bg_fill = BG_SEL;
+    v.widgets.active.bg_stroke = accent;
+    v.widgets.active.fg_stroke = Stroke::new(1.0_f32, TEXT);
+    v.widgets.open.bg_fill = BG_PANEL;
+    v.widgets.open.weak_bg_fill = BG_PANEL;
+    v.widgets.open.bg_stroke = border;
+    style.visuals = v;
+
+    style.spacing.item_spacing = vec2(8.0, 5.0);
+    style.spacing.button_padding = vec2(8.0, 3.0);
+    style.spacing.indent = 16.0;
+
+    ctx.set_style(style);
+}
+
+/// A section heading tinted with the Qt accent (used across the side panels).
+fn accent_heading(ui: &mut egui::Ui, text: &str) {
+    ui.add_space(2.0);
+    ui.label(egui::RichText::new(text).heading().size(17.0).color(ACCENT));
+}
+
+/// A precomputed entrance-table row: display strings + click navigation targets.
+/// The strings are owned because they carry the translated (`tr_scene` /
+/// `tr_entrance`) display names rather than the raw `&'static` data names.
+struct EntRow {
+    scene: String,
+    entrance: String,
+    ent_target: (Game, u16, u32),
+    spawn: EntCell,
+    leads: EntCell,
+    dot: Color32,
+}
+
+/// One in/out-link cell: N/A (one-way), undiscovered ("?"), or a clickable link
+/// (its label carries the translated entrance name).
+enum EntCell {
+    Na,
+    Unknown,
+    Link(String, (Game, u16, u32)),
+}
+
+impl EntCell {
+    /// The sort / search text of the cell.
+    fn text(&self) -> &str {
+        match self {
+            EntCell::Na => "N/A",
+            EntCell::Unknown => "?",
+            EntCell::Link(n, _) => n.as_str(),
+        }
+    }
+}
+
+/// The rendered content of one entrance info box (Qt `EntranceGroupBoxItem`):
+/// a title (icon + entrance name), the green "how you arrive" rows (one per
+/// inbound source) and the single red "where it leads" row. Shared by the map
+/// overlay boxes and the right-panel entrance cards so both stay identical.
+pub(crate) struct EntranceBoxData {
+    pub title: String,
+    pub icon: &'static str,
+    pub has_in: bool,
+    pub has_out: bool,
+    /// One row per known inbound source ("?" placeholder when none is known);
+    /// each carries the (game, scene, entrance) to focus when clicked.
+    pub in_rows: Vec<(String, Option<(Game, u16, u32)>)>,
+    /// The single "where it leads" row, present iff `has_out`.
+    pub out_row: Option<(String, Option<(Game, u16, u32)>)>,
+}
+
+/// Format one inbound-source label the way Qt `GetEntranceSpawnsString` /
+/// `GetOneWayInName` do: `e_type` is the described entrance's type, `s` the
+/// linked source entrance whose from/to names build the text. The name atoms
+/// are translated (`tr_entrance`); the arrow layout stays language-neutral.
+fn fmt_in_link(i18n: &I18n, e_type: data::EntranceType, s: &data::EntranceDef) -> String {
+    use data::EntranceType::*;
+    let (from, to) = (i18n.tr_entrance(s.from_name), i18n.tr_entrance(s.to_name));
+    match e_type {
+        Normal => {
+            if s.type_ == One_Way_Out {
+                format!("{from} → {to}")
+            } else {
+                format!("{to} → {from}")
+            }
+        }
+        One_Way_In => {
+            if s.type_ == Normal {
+                format!("{from} → {to}")
+            } else {
+                to.to_string()
+            }
+        }
+        _ => to.to_string(),
+    }
+}
+
+/// Format the outbound-destination label the way Qt `GetEntranceLeadsString` /
+/// `GetOneWayOutName` do: `d` is the destination entrance.
+fn fmt_out_link(i18n: &I18n, e_type: data::EntranceType, d: &data::EntranceDef) -> String {
+    use data::EntranceType::*;
+    let (from, to) = (i18n.tr_entrance(d.from_name), i18n.tr_entrance(d.to_name));
+    match e_type {
+        One_Way_Out => {
+            if d.type_ == Normal {
+                format!("{to} - {from}")
+            } else {
+                to.to_string()
+            }
+        }
+        _ => format!("{to} - {from}"),
+    }
+}
+
+/// Build the display + navigation content of one entrance's box from the live
+/// link maps (port of `EntranceGroupBoxItem::RefreshText`). Takes the two maps
+/// by reference (rather than `&self`) so it can run while the scene is borrowed
+/// mutably in `draw_map`.
+pub(crate) fn entrance_box_data(
+    i18n: &I18n,
+    game: Game,
+    e: &'static data::EntranceDef,
+    in_links: &HashMap<(Game, u32), Vec<(Game, u32)>>,
+    out_links: &HashMap<(Game, u32), (Game, u32)>,
+) -> EntranceBoxData {
+    use data::EntranceType as ET;
+    let has_in = e.type_ != ET::One_Way_Out;
+    let has_out = e.type_ != ET::One_Way_In;
+    let key = (game, e.to_id);
+
+    // Green rows: every inbound source, or a single "?" placeholder when none is
+    // known yet (mirrors the legacy single-arm box).
+    let mut in_rows: Vec<(String, Option<(Game, u16, u32)>)> = Vec::new();
+    if has_in {
+        match in_links.get(&key).filter(|v| !v.is_empty()) {
+            Some(sources) => {
+                for &(sg, sid) in sources {
+                    match entrance::lookup(sg, sid) {
+                        Some(s) => in_rows.push((fmt_in_link(i18n, e.type_, s), Some((sg, s.to_scene, sid)))),
+                        None => in_rows.push(("?".to_string(), None)),
+                    }
+                }
+            }
+            None => in_rows.push(("?".to_string(), None)),
+        }
+    }
+
+    // Red row: where this entrance leads once discovered.
+    let out_row = has_out.then(|| match out_links.get(&key) {
+        Some(&(dg, did)) => match entrance::lookup(dg, did) {
+            Some(d) => (fmt_out_link(i18n, e.type_, d), Some((dg, d.to_scene, did))),
+            None => ("?".to_string(), None),
+        },
+        None => ("?".to_string(), None),
+    });
+
+    // The box/card title is the entrance's own name (Qt `formatEntrance` ->
+    // `GetEntranceFromName` -> `FromName`): the side facing away from this scene,
+    // e.g. "Fire Temple" for the Fire Temple doorway inside Death Mountain Crater.
+    EntranceBoxData { title: i18n.tr_entrance(e.from_name).to_string(), icon: e.icon, has_in, has_out, in_rows, out_row }
+}
+
+/// A fixed-width table cell (entrance table): allocates `w` px and runs `add`.
+/// Render cell content pinned to an absolute sub-rect. Using an explicit
+/// `max_rect` (instead of `allocate_ui_with_layout`, which only reserves the
+/// content's `min_rect` and lets short cells collapse) guarantees every cell
+/// occupies its whole column, so the columns line up with the header separators.
+/// The clip rect keeps content from bleeding past the column edge.
+fn table_cell_at(ui: &mut egui::Ui, rect: Rect, add: impl FnOnce(&mut egui::Ui)) {
+    let mut child = ui.new_child(
+        egui::UiBuilder::new().max_rect(rect).layout(egui::Layout::left_to_right(egui::Align::Center)),
+    );
+    // Intersect with the ancestor clip (the ScrollArea viewport): setting the bare
+    // cell rect would *replace* the clip, letting rows scrolled above the viewport
+    // paint over the menu / tab bar.
+    child.set_clip_rect(rect.intersect(ui.clip_rect()));
+    add(&mut child);
+}
+
+/// GPS scene picker listing both games' scenes (skipping technical maps);
+/// resets the paired entrance when the scene changes.
+fn gps_scene_combo(
+    ui: &mut egui::Ui,
+    i18n: &I18n,
+    id: &str,
+    sel: &mut Option<(Game, u16)>,
+    ent: &mut Option<u32>,
+    mq: &HashSet<(Game, u16)>,
+) {
+    // Scenes that own entrances — the curated SceneEntranceMeta list, the same set
+    // the entrance tab counts. Using it (rather than a region filter) keeps
+    // map-item-only scenes out while KEEPING region-less scenes that are real
+    // entrance destinations, like King Dodongo's Lair (region 0). Synthetic scenes
+    // (the generic "Grottos" bucket, the warp-song / owl menus, the cutscene maps)
+    // are dropped: they are not real places to route from / to, so a generic
+    // "Grotto" choice must never surface in the picker.
+    let ent_scenes = |game: Game| -> HashSet<u16> {
+        match game {
+            Game::Oot => data::OOT_SCENE_ENTRANCES,
+            Game::Mm => data::MM_SCENE_ENTRANCES,
+        }
+        .iter()
+        .map(|&(s, _, _)| s)
+        .filter(|&s| !gps::is_synthetic(game, s))
+        // Drop scenes of the inactive layout (the MM JP Deku Palace grottos on a
+        // US Deku Palace): no entrance touching them exists in this seed.
+        .filter(|&s| {
+            game.entrances().iter().any(|e| {
+                (e.to_scene == s || e.from_scene == s)
+                    && tracking::scene_layout_active(e.layout, game, e.to_scene, mq)
+            })
+        })
+        .collect()
+    };
+    // Display names that repeat within a game (fairy fountains, grottos…): the
+    // region is appended so the entries read apart.
+    let dupes = |game: Game, es: &HashSet<u16>| -> HashSet<String> {
+        let mut seen: HashMap<String, u32> = HashMap::new();
+        for s in game.scenes() {
+            if !es.contains(&s.id) {
+                continue;
+            }
+            *seen.entry(i18n.tr_scene(s.name).to_string()).or_default() += 1;
+        }
+        seen.into_iter().filter(|(_, c)| *c > 1).map(|(n, _)| n).collect()
+    };
+    // Translated scene name, suffixed with its region when the name is shared.
+    let label_for = |d: &data::SceneDef, dupes: &HashSet<String>| -> String {
+        let name = i18n.tr_scene(d.name);
+        if dupes.contains(name) {
+            let region = i18n.tr_region(d.region_name);
+            if !region.is_empty() && region != "None" {
+                return format!("{name} ({region})");
+            }
+        }
+        name.to_string()
+    };
+
+    let text = sel
+        .and_then(|(g, s)| {
+            g.scenes().iter().find(|d| d.id == s).map(|d| {
+                let tag = if g == Game::Oot { "OoT" } else { "MM" };
+                format!("{tag} — {}", label_for(d, &dupes(g, &ent_scenes(g))))
+            })
+        })
+        .unwrap_or_else(|| format!("({})", i18n.choose()));
+
+    // A hand-rolled combo: egui's ComboBox popup closes on *any* click (CloseOnClick),
+    // so the embedded search field can never be focused. We drive the popup ourselves
+    // with CloseOnClickOutside — clicks inside the body (the search box, the scrollbar)
+    // keep it open; only a click outside, Escape, or a selection closes it.
+    let popup_id = egui::Id::new(id).with("gps_popup");
+    let search_id = egui::Id::new(id).with("gps_search");
+    let focus_id = egui::Id::new(id).with("gps_focus");
+    let btn = egui::Button::new(format!("{text}   ⏷")).min_size(vec2(230.0, 0.0));
+    let resp = ui.add(btn);
+    if resp.clicked() {
+        let was_open = ui.memory(|m| m.is_popup_open(popup_id));
+        ui.memory_mut(|m| m.toggle_popup(popup_id));
+        if !was_open {
+            ui.data_mut(|d| d.insert_temp(focus_id, true)); // focus the search on open
+        }
+    }
+    egui::popup::popup_below_widget(
+        ui,
+        popup_id,
+        &resp,
+        egui::popup::PopupCloseBehavior::CloseOnClickOutside,
+        |ui| {
+            ui.set_min_width(230.0);
+            // Live search on the translated (disambiguated) name, persisted in egui
+            // temp memory so it survives across frames while the popup is open.
+            let mut query: String = ui.data_mut(|d| d.get_temp::<String>(search_id).unwrap_or_default());
+            let te = ui.add(
+                egui::TextEdit::singleline(&mut query)
+                    .hint_text(i18n.search())
+                    .desired_width(f32::INFINITY),
+            );
+            if ui.data_mut(|d| d.get_temp::<bool>(focus_id).unwrap_or(false)) {
+                te.request_focus();
+                ui.data_mut(|d| d.insert_temp(focus_id, false));
+            }
+            ui.data_mut(|d| d.insert_temp(search_id, query.clone()));
+            let q = query.trim().to_lowercase();
+            ui.separator();
+            egui::ScrollArea::vertical().max_height(320.0).show(ui, |ui| {
+                for game in [Game::Oot, Game::Mm] {
+                    let es = ent_scenes(game);
+                    let dupes = dupes(game, &es);
+                    let mut header_done = false;
+                    // Grouped by game, then alphabetical by the displayed name.
+                    let mut rows: Vec<(&data::SceneDef, String)> = game
+                        .scenes()
+                        .iter()
+                        .filter(|s| es.contains(&s.id)) // scenes with no entrance
+                        .map(|s| (s, label_for(s, &dupes)))
+                        .collect();
+                    rows.sort_by_key(|(_, l)| sort_key(l));
+                    for (s, label) in rows {
+                        if !q.is_empty() && !label.to_lowercase().contains(&q) {
+                            continue;
+                        }
+                        if !header_done {
+                            ui.label(egui::RichText::new(game.label()).strong().color(game_accent(game)));
+                            header_done = true;
+                        }
+                        if ui.selectable_label(*sel == Some((game, s.id)), label.as_str()).clicked() {
+                            *sel = Some((game, s.id));
+                            *ent = None;
+                            ui.data_mut(|d| d.insert_temp(search_id, String::new()));
+                            ui.memory_mut(|m| m.close_popup());
+                        }
+                    }
+                }
+            });
+        },
+    );
+}
+
+/// GPS entrance picker for a chosen scene (or "(toute)" = the whole scene).
+fn gps_entrance_combo(
+    ui: &mut egui::Ui,
+    i18n: &I18n,
+    id: &str,
+    scene: Option<(Game, u16)>,
+    ent: &mut Option<u32>,
+    mq: &HashSet<(Game, u16)>,
+) {
+    let Some((game, sid)) = scene else {
+        ui.weak("—");
+        return;
+    };
+    // Entrances arriving in this scene. Most two-way ones are just named after
+    // the scene itself ("Hyrule Field" x15), so a name shared by several of them
+    // is replaced by where the entrance comes from ("From Gerudo Valley").
+    // `None`-type entrances (end credits, spring Twin Islands, Castle stealth) are
+    // not real arrivals and are left out, like the Entrance tab does.
+    let arrivals: Vec<&data::EntranceDef> = game
+        .entrances()
+        .iter()
+        .filter(|e| {
+            e.to_scene == sid
+                && !e.to_name.is_empty()
+                && e.type_ != data::EntranceType::None
+                // Only the loaded layout's entrances (MM JP grottos, OoT MQ).
+                && tracking::scene_layout_active(e.layout, game, e.to_scene, mq)
+        })
+        .collect();
+    // One-way arrivals read "<scene> - <spot>" ("Hyrule Field - Owl Drop"): the
+    // scene prefix is redundant here, so they get the same "From …" label too.
+    // One-way exits read "<scene> -> <target>" and their `from_name` is that
+    // target (Deku Tree -> Gohma's Lair), so they read "To …" instead.
+    let label = |e: &data::EntranceDef| -> String {
+        let shared = arrivals.iter().any(|o| o.to_id != e.to_id && o.to_name == e.to_name);
+        let prefixed = e.to_name.contains(" - ");
+        if e.to_name.contains(" -> ") && !e.from_name.is_empty() {
+            i18n.gps_to_exit(i18n.tr_entrance(e.from_name))
+        } else if (shared || prefixed) && !e.from_name.is_empty() {
+            i18n.gps_from_entrance(i18n.tr_entrance(e.from_name))
+        } else {
+            i18n.tr_entrance(e.to_name).to_string()
+        }
+    };
+    // One row per entrance: an arrival listed under several layouts collapses to
+    // a single row.
+    let mut items: Vec<(u32, String)> = Vec::new();
+    for &e in &arrivals {
+        let l = label(e);
+        if !items.iter().any(|(id, x)| *id == e.to_id || *x == l) {
+            items.push((e.to_id, l));
+        }
+    }
+    items.sort_by_key(|(_, l)| sort_key(l));
+    let text = ent
+        .and_then(|e| {
+            items
+                .iter()
+                .find(|(id, _)| *id == e)
+                .map(|(_, l)| l.clone())
+                // A collapsed variant still reads as its own label.
+                .or_else(|| arrivals.iter().find(|d| d.to_id == e).map(|d| label(d)))
+        })
+        .unwrap_or_else(|| i18n.gps_whole_scene().to_string());
+    egui::ComboBox::from_id_salt(id).width(220.0).selected_text(text).show_ui(ui, |ui| {
+        if ui.selectable_label(ent.is_none(), i18n.gps_whole_scene()).clicked() {
+            *ent = None;
+        }
+        for (to_id, l) in &items {
+            if ui.selectable_label(*ent == Some(*to_id), l.as_str()).clicked() {
+                *ent = Some(*to_id);
+            }
+        }
+    });
+}
+
+/// Translated scene name, suffixed with its (translated) region when another
+/// scene of the same game shares the display name (the fairy fountains and the
+/// grottos all read "Fairy Fountain" / "Grotto" otherwise). Used by the GPS.
+fn scene_display_name(i18n: &I18n, game: Game, scene_id: u16) -> String {
+    let Some(d) = game.scenes().iter().find(|s| s.id == scene_id) else {
+        return "?".to_string();
+    };
+    let name = i18n.tr_scene(d.name);
+    let shared = game.scenes().iter().any(|s| s.id != scene_id && i18n.tr_scene(s.name) == name);
+    if shared {
+        let region = i18n.tr_region(d.region_name);
+        if !region.is_empty() && region != "None" {
+            return format!("{name} ({region})");
+        }
+    }
+    name.to_string()
+}
+
+/// A clickable table cell (absolute sub-rect) showing a link-tinted, truncated
+/// label. Truncation clips to the column width so long names never overflow. On
+/// hover the cell lights up (accent background + underline + hand cursor) to
+/// signal that it is actionable.
+fn table_link_cell_at(ui: &mut egui::Ui, rect: Rect, text: &str) -> egui::Response {
+    let clip = rect.intersect(ui.clip_rect());
+    let hovered = ui.rect_contains_pointer(clip);
+    if hovered {
+        // Subtle accent fill behind the cell, inset so adjacent cells stay distinct.
+        ui.painter().rect_filled(rect.shrink2(vec2(1.0, 1.5)), 3.0, BG_HOVER);
+    }
+    let mut child = ui.new_child(
+        egui::UiBuilder::new().max_rect(rect).layout(egui::Layout::left_to_right(egui::Align::Center)),
+    );
+    // See table_cell_at: clip to the viewport, not just the cell rect.
+    child.set_clip_rect(clip);
+    let mut rt = egui::RichText::new(text).color(if hovered {
+        Color32::from_rgb(190, 220, 250)
+    } else {
+        Color32::from_rgb(150, 190, 230)
+    });
+    if hovered {
+        rt = rt.underline();
+    }
+    let resp = child.add(egui::Label::new(rt).truncate().sense(Sense::click()));
+    if hovered {
+        ui.ctx().set_cursor_icon(egui::CursorIcon::PointingHand);
+    }
+    resp
+}
+
+/// Per-game accent colour (Qt GameTab::GetAccentColorFor: OoT #4a9edb / MM #9b5de5).
+/// Sort key for a displayed (translated) name: lowercased with the diacritics
+/// folded, so "Île" / "Écurie" sort among the I / E names instead of after "Z".
+pub(crate) fn sort_key(s: &str) -> String {
+    let mut out = String::with_capacity(s.len());
+    for c in s.chars().flat_map(char::to_lowercase) {
+        match c {
+            'à' | 'á' | 'â' | 'ã' | 'ä' | 'å' => out.push('a'),
+            'ç' => out.push('c'),
+            'è' | 'é' | 'ê' | 'ë' => out.push('e'),
+            'ì' | 'í' | 'î' | 'ï' => out.push('i'),
+            'ñ' => out.push('n'),
+            'ò' | 'ó' | 'ô' | 'õ' | 'ö' => out.push('o'),
+            'ù' | 'ú' | 'û' | 'ü' => out.push('u'),
+            'ý' | 'ÿ' => out.push('y'),
+            'œ' => out.push_str("oe"),
+            'æ' => out.push_str("ae"),
+            'ß' => out.push_str("ss"),
+            c => out.push(c),
+        }
+    }
+    out
+}
+
+fn game_accent(game: Game) -> Color32 {
+    match game {
+        Game::Oot => Color32::from_rgb(74, 158, 219),
+        Game::Mm => Color32::from_rgb(155, 93, 229),
+    }
+}
+
+/// Per-game selected-row background (Qt MapTab: OoT #1a4a7a / MM #5a2580).
+fn game_selection(game: Game) -> Color32 {
+    match game {
+        Game::Oot => Color32::from_rgb(26, 74, 122),
+        Game::Mm => Color32::from_rgb(90, 37, 128),
+    }
+}
+
+/// Per-game row hover background (Qt MapTab QSS `::item:hover:!selected`:
+/// OoT #0d2a4a / MM #2a1248 — a dark blue / violet, not a white overlay).
+fn game_hover(game: Game) -> Color32 {
+    match game {
+        Game::Oot => Color32::from_rgb(0x0d, 0x2a, 0x4a),
+        Game::Mm => Color32::from_rgb(0x2a, 0x12, 0x48),
+    }
+}
+
+/// A full-width tinted tree row (Qt TintedTreeWidget): `bg` fills the whole row,
+/// `text` sits at `indent`, an optional collapse pill (`expand`: Some(true)=open
+/// "−", Some(false)=closed "+") at the far left, and an optional (collected, total)
+/// count right-aligned (green once complete). Returns the click response.
+#[allow(clippy::too_many_arguments)]
+fn tinted_row(
+    ui: &mut egui::Ui,
+    height: f32,
+    indent: f32,
+    bg: Color32,
+    hover: Color32,
+    text: &str,
+    text_col: Color32,
+    count: Option<(usize, usize)>,
+    expand: Option<bool>,
+    icon: Option<egui::TextureId>,
+) -> egui::Response {
+    let w = ui.available_width();
+    let (rect, resp) = ui.allocate_exact_size(vec2(w, height), Sense::click());
+    if ui.is_rect_visible(rect) {
+        let painter = ui.painter();
+        // Square corners (Qt tree rows are rectangular; rounding left a seam
+        // between adjacent regions).
+        painter.rect_filled(rect, 0.0, bg);
+        // Hover repaints the row in `hover` (Qt paints an opaque item background
+        // over the depth tint, rather than lightening it with a white overlay).
+        if resp.hovered() {
+            painter.rect_filled(rect, 0.0, hover);
+        }
+        let mid = rect.left_center();
+        // Collapse pill, redrawn from Qt's Plus.svg / Minus.svg (muted blue lines,
+        // rounded): "−" when open, "+" when closed. Painter-drawn so we need no SVG
+        // decoder (the `image` crate only handles JPEG/PNG).
+        if let Some(open) = expand {
+            let pc = mid + vec2(9.0, 0.0);
+            let r = 4.5_f32;
+            let sw = Stroke::new(1.6_f32, Color32::from_rgb(0x7a, 0x9a, 0xbf));
+            painter.line_segment([pc + vec2(-r, 0.0), pc + vec2(r, 0.0)], sw);
+            if !open {
+                painter.line_segment([pc + vec2(0.0, -r), pc + vec2(0.0, r)], sw);
+            }
+        }
+        // Region / category icon just left of the label (slot before `indent`).
+        if let Some(tex) = icon {
+            let ir = Rect::from_center_size(mid + vec2(indent - 11.0, 0.0), Vec2::splat(18.0));
+            painter.image(tex, ir, Rect::from_min_max(pos2(0.0, 0.0), pos2(1.0, 1.0)), Color32::WHITE);
+        }
+        // Label, elided with "…" so long (translated) region / scene names never
+        // overrun the collected/total count or the right edge.
+        let text_left = rect.left() + indent;
+        let reserve = if count.is_some() { 46.0 } else { 8.0 };
+        let mut job = egui::text::LayoutJob::single_section(
+            text.to_owned(),
+            egui::TextFormat { font_id: FontId::proportional(14.0), color: text_col, ..Default::default() },
+        );
+        job.wrap = egui::text::TextWrapping {
+            max_width: (rect.right() - reserve - text_left).max(6.0),
+            max_rows: 1,
+            break_anywhere: true,
+            overflow_character: Some('…'),
+        };
+        let galley = painter.layout_job(job);
+        painter.galley(pos2(text_left, mid.y - galley.size().y * 0.5), galley, text_col);
+        if let Some((done, total)) = count {
+            let cc = if total > 0 && done >= total {
+                Color32::from_rgb(120, 210, 120)
+            } else {
+                Color32::from_gray(165)
+            };
+            painter.text(
+                rect.right_center() - vec2(8.0, 0.0),
+                Align2::RIGHT_CENTER,
+                format!("{done}/{total}"),
+                FontId::proportional(12.5),
+                cc,
+            );
+        }
+    }
+    resp
+}
+
+/// Paint one single line of tree-leaf text, elided with "…" past `max_w`,
+/// vertically centred on `center_y` at `x`, optionally struck through (Qt
+/// `elidedText` + `setStrikeOut`).
+#[allow(clippy::too_many_arguments)]
+fn elided_line(
+    painter: &egui::Painter,
+    x: f32,
+    center_y: f32,
+    max_w: f32,
+    text: &str,
+    size: f32,
+    color: Color32,
+    strike: bool,
+) {
+    let mut job = egui::text::LayoutJob::single_section(
+        text.to_owned(),
+        egui::TextFormat {
+            font_id: FontId::proportional(size),
+            color,
+            strikethrough: if strike { Stroke::new(1.1_f32, color) } else { Stroke::NONE },
+            ..Default::default()
+        },
+    );
+    job.wrap = egui::text::TextWrapping {
+        max_width: max_w.max(6.0),
+        max_rows: 1,
+        break_anywhere: true,
+        overflow_character: Some('…'),
+    };
+    let galley = painter.layout_job(job);
+    painter.galley(pos2(x, center_y - galley.size().y * 0.5), galley, color);
+}
+
+/// A thin full-width progress bar (Qt scene/room progress) filled to `done/total`
+/// in `color` over a dark track.
+fn progress_bar(ui: &mut egui::Ui, done: usize, total: usize, color: Color32) {
+    let w = ui.available_width();
+    let (rect, _) = ui.allocate_exact_size(vec2(w, 6.0), Sense::hover());
+    let p = ui.painter();
+    p.rect_filled(rect, 3.0, Color32::from_gray(60));
+    let frac = if total > 0 { done as f32 / total as f32 } else { 0.0 };
+    if frac > 0.0 {
+        let fill = Rect::from_min_size(rect.min, vec2(rect.width() * frac.clamp(0.0, 1.0), rect.height()));
+        p.rect_filled(fill, 3.0, color);
+    }
+}
+
+/// One world's spoiler placements and collected state (multiworld). World 0 is
+/// the local world (world 1); single / coop seeds have exactly one entry. Mirror
+/// of the Qt per-world `WorldObjects` clones: the physical layout is identical
+/// across worlds, only the items placed, their destination player and the
+/// collected status differ. The world selector swaps which one every view reads.
+#[derive(Default, Clone)]
+pub(crate) struct WorldData {
+    /// Physical placements in this world: object `Location` -> item name.
+    pub items: HashMap<String, String>,
+    /// Per-location destination player (1-based), when the spoiler gives an
+    /// explicit "Player N" prefix. Absent means the item belongs to this world.
+    pub dest: HashMap<String, u8>,
+    /// Objects collected in this world (`Game`, object index).
+    pub collected: HashSet<(Game, usize)>,
+    /// Manually-forced subset of `collected` (drawn gold on the map).
+    pub forced: HashSet<(Game, usize)>,
+}
+
+struct TrackerApp {
+    /// --- Current UI language ---
+    i18n: I18n,
+    /// Persisted app settings (currently just the UI language) and the file they
+    /// live in, so the chosen language survives across sessions.
+    app_settings: AppSettings,
+    app_settings_path: PathBuf,
+
+    // --- Navigation / Current scene ---
+    scene: Option<LiveScene>,
+
+    // --- Shared memory / event stream ---
+    /// Background poller (owns the shared-memory link off the UI thread) and the
+    /// live connection state it reports.
+    poller: poller::Poller,
+    /// Localized journal / status strings the poller thread reads; swapped on a
+    /// language change so its messages follow the UI language.
+    log_strings: poller::SharedLog,
+    connected: bool,
+    /// Whether the auto-tracker is started (Start/Stop button + status pill).
+    /// Mirror of `LogTab::IsRunning`; drives the poller's connect/idle gate.
+    tracking: bool,
+    /// Whether the program should auto save or not when an entrance or item is received.
+    auto_save: bool,
+    /// Multiplayer launch options (Qt `NetCheckBox` / `Host` / `Port`).
+    use_multiplayer: bool,
+    mp_host: String,
+    mp_port: String,
+    /// The running multiplayer client (Qt `App` + `TrackerThread`), spawned when
+    /// tracking starts with multiplayer enabled. `None` while stopped / disabled.
+    multi: Option<multi::MultiHandle>,
+    /// The running dev multiplayer client (OoTMM builds > v32.0), spawned when
+    /// tracking starts with a patch loaded. `None` while stopped / no patch.
+    v110: Option<multi_v1_10::V110Handle>,
+    /// The OoTMM game patch file chosen by the user (`.ootmm` or the `.zip`
+    /// bundling it), for the dev multiplayer mechanism. Persisted in the save file
+    /// so the next launch re-loads it automatically.
+    patch_path: Option<PathBuf>,
+    /// Session identity parsed from `patch_path` (world id / mode / session ids).
+    /// `None` until a patch is successfully loaded.
+    patch_info: Option<patch::PatchInfo>,
+    /// Set at startup when a patch path was restored from the save: the first
+    /// frame resolves it (loads the patch, or warns + prompts if the file moved).
+    patch_startup_check: bool,
+    /// Text journal shown on the Launch page (Qt `LogViewer`): action / status
+    /// messages, newest at the bottom.
+    log_lines: VecDeque<String>,
+    /// Multiworld: one entry per world (placements + collected + forced). Always
+    /// holds at least `worlds[0]` (the local world). The active world's entry is
+    /// what every map / tree / progression view reads. DLL-hook pickups land in
+    /// the local world (index 0); network ledger transfers (see `apply_net_item`)
+    /// land in their real "from" world. `active_world` is the 0-based displayed one.
+    worlds: Vec<WorldData>,
+    active_world: usize,
+    /// Entrances visited live (keyed by game + entrance id).
+    visited_entrances: HashSet<(Game, u32)>,
+    /// EntranceLink OutLink: where leaving an entrance leads (entrance -> entrance).
+    out_links: HashMap<(Game, u32), (Game, u32)>,
+    /// EntranceLink InLinks: the sources known to lead to each entrance.
+    in_links: HashMap<(Game, u32), Vec<(Game, u32)>>,
+    /// The OUT/IN message assembler (faithful EntranceHelper state machine).
+    ent_helper: entrance::EntranceHelper,
+    /// GPS sub-tab: start / arrival scene (per game) + a specific entrance in
+    /// each (cross-game routing over discovered links).
+    gps_from: Option<(Game, u16)>,
+    gps_to: Option<(Game, u16)>,
+    gps_from_ent: Option<u32>,
+    gps_to_ent: Option<u32>,
+    /// Cached GPS routing result, reused until an input changes — the weighted
+    /// graph build + Yen search is far too heavy to run every frame.
+    gps_cache: Option<(gps::GpsKey, gps::GpsResult)>,
+    /// Entrance tab: the active sub-tab (OoT / MM / GPS), like the Qt EntranceTab.
+    entrance_sub: EntranceSub,
+    /// Entrance tab: when a region is selected, its center shows the global
+    /// entrance table for that (game, region) instead of a scene minimap.
+    entrance_table: Option<(Game, u8)>,
+    /// Pending "focus this entrance" request: after loading a scene from the
+    /// entrance table, centre the map on this entrance id (EntranceTab focus).
+    focus_entrance: Option<u32>,
+    /// "Expand/collapse all" toggle state for the scene nav / object trees.
+    nav_all_expanded: bool,
+    obj_all_expanded: bool,
+    /// Pending "reveal this scene" request for the scene nav tree: unfold its
+    /// region and scroll its row into view. Set when the map is switched by code
+    /// (auto-follow, auto-snap, a jump from the Progression detail panel) rather
+    /// than by a click in the tree itself.
+    nav_reveal: Option<(Game, u16)>,
+    /// Object highlighted in the object tree (game, object index), set by a jump
+    /// from the Progression detail panel; cleared when the scene changes.
+    obj_focus: Option<(Game, usize)>,
+    /// One-shot: unfold the focused object's category and scroll it into view.
+    obj_focus_scroll: bool,
+    /// Right-panel entrance tree: "Find…" filter + "expand/collapse all" state.
+    ent_search: String,
+    ent_all_expanded: bool,
+    /// Global entrance table ("All entrances" / region view): live search filter.
+    ent_table_search: String,
+    /// Entrance table sort column (0=Scene 1=Entrance 2=spawn 3=leads) + order.
+    ent_sort_col: usize,
+    ent_sort_asc: bool,
+    /// Entrance-table column width fractions (Scene / Entrance / spawn / leads),
+    /// user-resizable by dragging a header separator.
+    ent_col_frac: [f32; 4],
+    /// Scenes running the Master Quest / JP layout (from the spoiler settings).
+    mq_scenes: HashSet<(Game, u16)>,
+    /// Age/season toggle for scenes that have a context (false = Child/Winter,
+    /// true = Adult/Spring), mirroring the Qt ContextSwitchButton.
+    context_toggle: bool,
+    /// Live scene-list filter text ("Find…" box above the nav tree).
+    scene_search: String,
+    /// Live object-list filter text ("Find…" box above the object tree).
+    obj_search: String,
+    /// Category filter (FilterManager::ActiveFilter): visible render-types per
+    /// game (index by Game::idx). An object shows on the map only if its
+    /// render-type is in this set.
+    active_types: [HashSet<data::ObjectType>; 2],
+    /// Index of the displayed room (for multi-room dungeons).
+    current_room: usize,
+    /// Active top-level tab.
+    active_tab: Tab,
+    /// Last selected scene per game (index by Game::idx), restored on tab switch.
+    /// `None` until the user opens a scene for that game (nothing shown at startup).
+    sel_scene: [Option<u16>; 2],
+    /// Status-bar memory: last collected item and last entrance crossed.
+    last_item: Option<String>,
+    last_entrance: Option<String>,
+    /// The player's current scene, derived from the last IN entrance (drives the
+    /// auto-follow and auto-GPS-start options). Holds the entrance meta's scene
+    /// (the generic map node, e.g. the combined Market minimap), which the GPS
+    /// graph keys on.
+    player_scene: Option<(Game, u16)>,
+    /// The object-rendering scene for the player's current location, or `None`
+    /// when the zone carries no tracked objects (Market Entrance, Back Alley…).
+    /// Distinct from `player_scene`: the generic Market scene resolves here to its
+    /// real Day / Night object map (told apart by the arriving message's raw
+    /// scene). Drives the item-map auto-follow (which skips object-less zones).
+    player_obj_scene: Option<(Game, u16)>,
+    /// The entrance the player last arrived through (`(game, to_id)`), seeding the
+    /// GPS start entrance when "auto GPS start" is on.
+    player_entrance: Option<(Game, u32)>,
+    /// Last arrival already copied into the GPS start (so it only fires on a move).
+    gps_followed_entrance: Option<(Game, u32)>,
+    /// True while the player looks through a telescope (last IN entrance is a
+    /// telescope view): the loaded scene is only seen, so progressive reachability
+    /// must not seed it as the live scene.
+    player_in_telescope: bool,
+    /// Real pickups the DLL hook saw while the dev IPC owned items, parked until the
+    /// IPC reports them; applied from the hook after `HOOK_FALLBACK_DELAY` if not
+    /// (silent IPC after a savestate). (parked at, raw event, resolved object).
+    pending_hook_items: Vec<(std::time::Instant, shared_mem::Event, (Game, usize))>,
+    /// Last scene we already auto-followed to (so a follow only fires on a move).
+    followed_scene: Option<(Game, u16)>,
+    /// Pending auto-snap request (game, scene, room, x, y) from the last collected
+    /// object. `room` is the object's RoomID, so a multi-room dungeon loads the
+    /// room holding the object before the view zooms onto it.
+    pending_snap: Option<(Game, u16, u16, f32, f32)>,
+    /// Map position to centre on when the view (re)initialises (auto-snap target).
+    snap_pos: Option<(f32, f32)>,
+    /// Whether the ROM Settings window is open.
+    show_settings: bool,
+    /// Selected ROM Settings category (index into the left-nav list), so the
+    /// page persists while the window stays open.
+    settings_nav: usize,
+    /// Whether the "About" dialog window is open.
+    show_about: bool,
+    /// Parsed / edited ROM build settings (shuffle parameters).
+    rom_settings: settings::Settings,
+    /// Objects hidden by the ROM settings (FilterManager::ExcludedObj).
+    excluded: settings::Excluded,
+    /// The progression dashboard (ProgressionTab) state.
+    dashboard: progression::Dashboard,
+    /// Whether the dashboard needs a rebuild (collected / spoiler / settings changed).
+    prog_dirty: bool,
+    /// Per-game (collected, total) and per-render-scene counts, recomputed once
+    /// per frame into this cache so the tab bar + scene tree read the same values
+    /// (one object scan per game instead of several across the panels).
+    cached_totals: [(usize, usize); 2],
+    cached_scene_counts: [HashMap<u16, (usize, usize)>; 2],
+    /// Recompute the counts only when the collected set / exclusions / layout
+    /// change — not on every mouse-move frame.
+    counts_dirty: bool,
+    /// Autosave folder (`<data>/autosave`): human-friendly timestamped files
+    /// `AutoSave-<dd_MM_yyyy_HH_mm_ss>.xml` (Qt `LogTab` naming), each stamping the
+    /// seed it belongs to. A launch loads the newest file whose seed matches, then
+    /// writes this session to a *new* timestamped file (Qt "new file per launch").
+    autosave_dir: PathBuf,
+    /// The current seed identity (the spoiler's seed hash), or `empty` when no
+    /// spoiler is loaded. Stamped into every save so the newest *matching* autosave
+    /// can be found again (the "compatible" check), replacing the old scheme that
+    /// used this hash as the file name.
+    seed_tag: String,
+    /// The autosave file this session writes to (`save_state`). Set when a seed
+    /// context is established (startup spoiler load / seed change / reset) to a
+    /// fresh timestamped path; `None` until the first save creates one. The newest
+    /// matching file is loaded for its state, but writes go here so each launch
+    /// keeps its own file (Qt behaviour).
+    current_autosave_file: Option<PathBuf>,
+    /// Pre-3.0 single autosave (`<data>/tracker_save.txt`), read once as a
+    /// migration fallback when no timestamped file exists yet.
+    legacy_save_path: PathBuf,
+    /// Sidecar remembering the last loaded spoiler path (auto-loaded at startup,
+    /// mirroring the Qt AutoLoadMostRecentSpoilerLog so the ROM settings — which
+    /// filter the map — are applied from launch, not only after a manual drop).
+    spoiler_path_file: PathBuf,
+    dirty: bool,
+
+    // --- Connection / injection ---
+    status: String,
+    /// ROM build reported by the DLL (drives the item / NPC id fix-up).
+    rom: RomVersion,
+    /// True once a spoiler's `Version:` line has set `rom` (mirror of the C++
+    /// `ActiveROMVersionFromSpoiler`): the spoiler is authoritative, so the
+    /// per-poll fingerprint detection must not override it (a fingerprint can't
+    /// tell v30.1 from a later stable, but the spoiler can).
+    rom_from_spoiler: bool,
+    /// True when the loaded ROM predates the compact-XflagID rework (stable <= v32.3),
+    /// so xflag events carry the full scene / room / actor identity in the key. Newer
+    /// builds send only a compact XflagID that `resolve_collected` expands by Location.
+    /// Mirror of the C++ `Settings.UsesLegacyXflags` / `SetUsesLegacyXflags`.
+    uses_legacy_xflags: bool,
+
+    // --- Map rendering ---
+    /// Object-type icon textures (None = load failed → colored fallback).
+    icon_cache: HashMap<&'static str, Option<egui::TextureHandle>>,
+    /// Desaturated, half-alpha variants of the progression item icons, built on
+    /// demand for the "uncollected" placeholder look (mirrors the Qt ProgressionTab).
+    grey_icon_cache: HashMap<&'static str, Option<egui::TextureHandle>>,
+    /// Solid-blue silhouette variants of the progression item icons (blue where the
+    /// icon is opaque, original alpha), stamped a few times behind a collected icon
+    /// to build a contour-following glow — the Qt drop-shadow, which blurs the alpha.
+    glow_icon_cache: HashMap<&'static str, Option<egui::TextureHandle>>,
+    map_texture: Option<egui::TextureHandle>,
+    /// The image file `map_texture` was loaded from. `ensure_texture` reloads as
+    /// soon as the image the view needs (tab layer / room / context) differs.
+    map_texture_path: Option<String>,
+    map_size: Vec2,
+    load_error: Option<String>,
+
+    // --- View transform (pan/zoom) ---
+    zoom: f32,
+    pan: Vec2,
+    view_initialized: bool,
+
+    /// Wall-clock of the last rendered frame, for the interaction frame-rate cap.
+    last_frame: Instant,
+
+    /// Keyboard navigation shared by the tree panels: which tree owns the arrows
+    /// (set on click) and the focused leaf within each one.
+    kbd: ui::kbdnav::KbdNav,
+
+    // --- Reachability logic (accessibility filter) ---
+    /// Reachable-check set for the active world, recomputed from the inventory +
+    /// seed settings when `logic_dirty`. `None` until the filter is first enabled.
+    reach: Option<logic::Reachability>,
+    /// The reachability result is stale (collected / spoiler / settings / world
+    /// changed, or the filter was just enabled) and must be recomputed.
+    logic_dirty: bool,
+    /// Every location that carries a logic rule (cached once). A check outside
+    /// this set has no rule, so it is always shown (never dimmed / hidden).
+    logic_locs: std::collections::HashSet<&'static str>,
+}
+
+
+
+/// Dessine un petit label avec fond semi-opaque.
+fn draw_label(painter: &egui::Painter, pos: egui::Pos2, text: &str, color: Color32) {
+    let galley = painter.layout_no_wrap(text.to_owned(), FontId::proportional(13.0), color);
+    let pad = vec2(6.0, 3.0);
+    let bg = Rect::from_min_size(pos, galley.size() + pad * 2.0);
+    painter.rect_filled(bg, 4.0, Color32::from_rgba_unmultiplied(0, 0, 0, 170));
+    painter.galley(pos + pad, galley, color);
+}
+
+/// Décode une image disque (JPG/PNG) en ColorImage egui.
+fn load_color_image(path: &str) -> Result<egui::ColorImage, String> {
+    let img = image::open(path).map_err(|e| format!("Image introuvable :\n{path}\n{e}"))?;
+    let rgba = img.to_rgba8();
+    let (w, h) = rgba.dimensions();
+    Ok(egui::ColorImage::from_rgba_unmultiplied(
+        [w as usize, h as usize],
+        rgba.as_raw(),
+    ))
+}
+
+/// Construit une copie désaturée et à demi-transparente d'une icône, pour la
+/// marque "non collecté" de l'onglet de progression. Reproduit l'effet Qt
+/// (ProgressionTab::RefreshVisual) : luminance qGray + alpha divisé par deux.
+fn greyscale_image(img: &egui::ColorImage) -> egui::ColorImage {
+    let pixels = img
+        .pixels
+        .iter()
+        .map(|c| {
+            let [r, g, b, a] = c.to_srgba_unmultiplied();
+            // qGray de Qt : luminance entière (r*11 + g*16 + b*5) / 32.
+            let gray = ((r as u32 * 11 + g as u32 * 16 + b as u32 * 5) / 32) as u8;
+            Color32::from_rgba_unmultiplied(gray, gray, gray, a / 2)
+        })
+        .collect();
+    egui::ColorImage {
+        size: img.size,
+        pixels,
+    }
+}
+
+/// A solid-colour silhouette of an icon: every pixel takes `color`'s RGB and keeps
+/// the icon's own alpha. Stamped behind a collected progression icon to build a glow
+/// that follows the icon's contours (like Qt's alpha-blurred drop-shadow) instead of
+/// its square bounding box.
+fn silhouette_image(img: &egui::ColorImage, color: Color32) -> egui::ColorImage {
+    let pixels = img
+        .pixels
+        .iter()
+        .map(|c| {
+            let [.., a] = c.to_srgba_unmultiplied();
+            Color32::from_rgba_unmultiplied(color.r(), color.g(), color.b(), a)
+        })
+        .collect();
+    egui::ColorImage {
+        size: img.size,
+        pixels,
+    }
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="mm">
+  <scene id="NONE">
+    <scene_rendering id="MM_CLOCK_TOWN_SOUTH" loc_type="overworld">
+      <rendering_option layout="all" type="song">
+        <npc location="Initial Song of Healing" npc="SONG_HEALING" item="SONG_HEALING" name="Song of Healing" xyz="368;302;0"/>
+      </rendering_option>
+    </scene_rendering>
+    <scene_rendering id="MM_TEMPLE_WOODFALL" loc_type="dungeon">
+      <rendering_option icon="song_purple" layout="all" room="11" type="song">
+        <npc location="Oath to Order" npc="SONG_ORDER" item="SONG_ORDER" name="Oath to Order" xyz="372;302;0" legacy_scene="LAIR_ODOLWA"/>
+      </rendering_option>
+    </scene_rendering>
+    <scene_rendering id="MM_CLOCK_TOWN_NORTH" loc_type="overworld">
+      <rendering_option layout="all" type="map">
+        <npc location="Tingle Map Clock Town" npc="TINGLE_MAP_CLOCK_TOWN" item="WORLD_MAP_CLOCK_TOWN" name="Tingle - Clock Town Map" xyz="394;148;0" legacy_scene="CLOCK_TOWN_SOUTH"/>
+      </rendering_option>
+    </scene_rendering>
+    <scene_rendering id="MM_ROAD_SOUTHERN_SWAMP" loc_type="overworld">
+      <rendering_option layout="all" type="map">
+        <npc location="Tingle Map Woodfall" npc="TINGLE_MAP_WOODFALL" item="WORLD_MAP_WOODFALL" name="Tingle - Woodfall Map" xyz="468;149;0" legacy_scene="CLOCK_TOWN_SOUTH"/>
+      </rendering_option>
+    </scene_rendering>
+    <scene_rendering id="MM_TWIN_ISLANDS" loc_type="overworld">
+      <rendering_option layout="all" type="map">
+        <npc location="Tingle Map Snowhead" npc="TINGLE_MAP_SNOWHEAD" item="WORLD_MAP_SNOWHEAD" name="Tingle - Snowhead Map" xyz="561;248;0" legacy_scene="CLOCK_TOWN_SOUTH"/>
+      </rendering_option>
+    </scene_rendering>
+    <scene_rendering id="MM_MILK_ROAD" loc_type="overworld">
+      <rendering_option layout="all" type="map">
+        <npc location="Tingle Map Ranch" npc="TINGLE_MAP_ROMANI_RANCH" item="WORLD_MAP_ROMANI_RANCH" name="Tingle - Ranch Map" xyz="639;200;0" legacy_scene="CLOCK_TOWN_SOUTH"/>
+      </rendering_option>
+    </scene_rendering>
+    <scene_rendering id="MM_GREAT_BAY_COAST" loc_type="overworld">
+      <rendering_option layout="all" type="map">
+        <npc location="Tingle Map Great Bay" npc="TINGLE_MAP_GREAT_BAY" item="WORLD_MAP_GREAT_BAY" name="Tingle - Great Bay Map" xyz="310;504;0" legacy_scene="CLOCK_TOWN_SOUTH"/>
+      </rendering_option>
+    </scene_rendering>
+    <scene_rendering id="MM_IKANA_CANYON" loc_type="overworld">
+      <rendering_option layout="all" type="map">
+        <npc location="Tingle Map Ikana" npc="TINGLE_MAP_STONE_TOWER" item="WORLD_MAP_STONE_TOWER" name="Tingle - Ikana Map" xyz="344;455;0" legacy_scene="CLOCK_TOWN_SOUTH"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

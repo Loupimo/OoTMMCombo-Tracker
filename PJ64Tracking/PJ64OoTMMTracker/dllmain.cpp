@@ -3,8 +3,29 @@
 #include "Hooking.h"
 #include <string.h>
 
+
+/*
+*   Tell whether the current version of Project64 is supported.
+*
+*   @return true if the version of "Project64" is supported, false otherwise.
+*/
+static bool IsSupportedProject64()
+{
+    switch (gPJVersion)
+    {
+        case PJVersion::EM_1_0_3:
+        case PJVersion::EM_1_1_0:
+            return true;
+
+        default:
+            return false;
+    }
+}
+
 DWORD WINAPI MainThread(LPVOID)
 {
+    OutputDebugStringA("PJ64OoTMMTracker: MainThread START\n");
+
 #ifdef _DEBUG
 
     AllocConsole();
@@ -34,6 +55,7 @@ DWORD WINAPI MainThread(LPVOID)
     {
         //gData->Base = 0;
         //gData->GameRAMBase = 0;
+        gData->Command = TrackerCommand::None;
         gData->MaxSize = BUFFER_SIZE;
         gData->CurrIndex = 0;
         for (size_t i = 0; i < BUFFER_SIZE; i++)
@@ -61,13 +83,20 @@ DWORD WINAPI MainThread(LPVOID)
             }
         }
 
+        if (!IsSupportedProject64())
+        {
+            LOG("Unsupported Project64 version. DLL will remain inactive.");
+            return 0;
+        }
+
         InstallROMHook();
-        TryResolveROMBase();
+        StartDelayedROMDetection();
+        /*TryResolveROMBase();
         gameRAMBase = FindGameRAM();
 
         LOG("Init Hook");
 
-        InstallPCHook();
+        InstallPCHook();*/
     }
 
     return 0;
@@ -123,17 +152,23 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     {
         case DLL_PROCESS_ATTACH:
         {
+            OutputDebugStringA("PJ64OoTMMTracker: DLL_PROCESS_ATTACH\n");
             DisableThreadLibraryCalls(hModule);
 
             if (IsHostProject64())
             {   // Only install the hooks when running inside the emulator
 
+                // Keep one normal reference to ourselves.
+                if (!GetModuleHandleExW(
+                    GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS,
+                    reinterpret_cast<LPCWSTR>(&TrackerHookProc),
+                    &gSelfModule))
+                {
+                    return FALSE;
+                }
                 // Pin the module so it stays loaded once the injector removes its hook.
-                HMODULE pinned = nullptr;
-                GetModuleHandleExW(
-                    GET_MODULE_HANDLE_EX_FLAG_PIN | GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS,
-                    (LPCWSTR)&TrackerHookProc,
-                    &pinned);
+                //HMODULE pinned = nullptr;
+                //GetModuleHandleExW(GET_MODULE_HANDLE_EX_FLAG_PIN | GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS, (LPCWSTR)&TrackerHookProc, &pinned);
 
                 CreateThread(nullptr, 0, MainThread, nullptr, 0, nullptr);
             }
@@ -143,9 +178,14 @@ BOOL APIENTRY DllMain( HMODULE hModule,
         case DLL_THREAD_ATTACH:
         case DLL_THREAD_DETACH:
         case DLL_PROCESS_DETACH:
+        {
+            OutputDebugStringA("========== DLL DETACH ==========\n");
+            //ShutdownHooks();
+        }
         default:
         break;
 
     }
+    OutputDebugStringA("PJ64OoTMMTracker: MainThread END\n");
     return TRUE;
 }

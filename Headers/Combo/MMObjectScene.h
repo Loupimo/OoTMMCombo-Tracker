@@ -118,6 +118,9 @@ extern ObjectInfo* MM_GORON_SHRINESceneObjects;
 extern const size_t MM_GORON_VILLAGE_WINTERNumOfObjs;
 extern ObjectInfo* MM_GORON_VILLAGE_WINTERSceneObjects;
 
+extern const size_t MM_GORON_VILLAGENumOfObjs;
+extern ObjectInfo* MM_GORON_VILLAGESceneObjects;
+
 extern const size_t MM_GROTTO_GREAT_BAY_COAST_COWNumOfObjs;
 extern ObjectInfo* MM_GROTTO_GREAT_BAY_COAST_COWSceneObjects;
 

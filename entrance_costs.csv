@@ -6528,3 +6528,6 @@ Game;SceneID;FromEntranceID;From;ToEntranceID;To;ElapsedSec
 1;0x98;0x9420;Goron City - Goron Shrine;0x1500;Goron City -> Lone Peak Shrine;24.083
 1;0x72;0x1500;Lone Peak Shrine - Goron City;0x9430;Lone Peak Shrine -> Goron City;3.56652
 1;0x98;0x9430;Goron City - Lone Peak Shrine;0xb410;Goron Village -> Twin Islands;27.2244
+1;0x97;0xb410;Twin Islands - Goron Village;0x9400;Twin Islands -> Goron Village;4.78518
+1;0x98;0x9400;Goron Village - Twin Islands;0x5e00;Goron City -> Goron Shrine;27.9388
+1;0x32;0x5e00;Goron Shrine - Goron City;0x9420;Goron Shrine -> Goron City;6.17835

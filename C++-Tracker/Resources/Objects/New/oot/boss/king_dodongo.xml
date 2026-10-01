@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="oot">
+  <scene id="LAIR_KING_DODONGO">
+    <scene_rendering id="OOT_DODONGO_CAVERN" loc_type="dungeon">
+      <rendering_option layout="all">
+        <chest location="Dodongo Cavern Boss Chest" flag="0x00" item="BOMBS_10" name="Small Chest" xyz="570;796;0"/>
+      </rendering_option>
+      <rendering_option layout="all" type="heart_container">
+        <collectible location="Dodongo Cavern Boss Container" flag="0x1f" item="HEART_CONTAINER" name="Heart Container" xyz="614;384;0"/>
+      </rendering_option>
+      <rendering_option icon="ruby" layout="all">
+        <npc location="Dodongo Cavern Boss" npc="BLUE_WARP_KING_DODONGO" item="STONE_RUBY" name="Goron's Ruby" xyz="666;384;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

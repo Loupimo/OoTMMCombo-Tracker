@@ -954,6 +954,50 @@ void MapTab::UpdateObjectVisibility()
 }
 
 
+void MapTab::FocusScene(uint32_t SceneID)
+{
+    auto it = this->Scenes.find(SceneID);
+    if (it == this->Scenes.end()) return;
+
+    SceneItemTree* sceneItem = it.value();
+    if (sceneItem == nullptr) return;
+
+    // Same visibility fix as FocusObject: the target scene (and its region) may currently be
+    // hidden by the active layout filter — unhide them so the selection is actually visible.
+    if (QTreeWidgetItem* region = sceneItem->parent())
+    {
+        region->setHidden(false);
+        region->setExpanded(true);
+    }
+    sceneItem->setHidden(false);
+
+    // Multi-room scenes (dungeons, most temples) delegate their rendering to a specific room
+    // child: the parent SceneItemTree has no renderer of its own, so selecting it triggers no
+    // map load. Pick the first available room instead — matches the game's behavior of always
+    // starting the player in room 0 when entering a dungeon.
+    QTreeWidgetItem* targetItem = sceneItem;
+    if (!sceneItem->Rooms.empty())
+    {
+        sceneItem->setExpanded(true);
+        for (RoomItemTree* room : sceneItem->Rooms)
+        {
+            if (room != nullptr)
+            {
+                targetItem = room;
+                break;
+            }
+        }
+    }
+
+    this->MapList->setCurrentItem(targetItem);
+    if (this->RenderedScene == nullptr)
+    {
+        this->ChangeActiveScene(targetItem, nullptr);
+    }
+    this->MapList->scrollToItem(targetItem);
+}
+
+
 void MapTab::FocusObject(ObjectInfo* Object)
 {
     if (Object == nullptr) return;

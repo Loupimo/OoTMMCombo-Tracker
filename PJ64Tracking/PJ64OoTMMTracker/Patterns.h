@@ -190,6 +190,27 @@ uint32_t Mask_hookPlay_Init_OoT[] =
 
 PCSignature Sig_hookPlay_Init_OoT = { 64, Pattern_hookPlay_Init_OoT, Mask_hookPlay_Init_OoT, 0x4D0 };
 
+/* Ancre du site de hook OoT (identique stable/dev). L'adresse de match EST le PC a hooker. */
+uint8_t Pattern_hookInit_Site_OoT[] =
+{
+    0xAC,0x43,0xB3,0xEC,            // SW       V1, 0xB3EC (V0)   <-- HOOK
+    0x96,0x22,0x00,0xA4,            // LHU      V0, V0, 0x00A4
+    0x24,0x03,0x00,0x3C,            // ADDIU    V1, R0, 0x003C
+    0x30,0x44,0xFF,0xFD,            // ANDI     A0, V0, 0xFFFD
+    0x54,0x83,0x00,0x3A             // BNEL     A0, V1, 0x80431C9C
+};
+
+uint32_t Mask_hookInit_Site_OoT[] =
+{
+    0xFFFF0000,                     // SW       V1, 0xB3EC (V0)
+    0xFFFFFFFF,                     // LHU      V0, V0, 0x00A4
+    0xFFFFFFFF,                     // ADDIU    V1, R0, 0x003C
+    0xFFFFFFFF,                     // ANDI     A0, V0, 0xFFFD
+    0xFFFFFFFF                      // BNEL     A0, V1, 0x80431C9C
+};
+
+PCSignature Sig_hookInit_Site_OoT = { 20, Pattern_hookInit_Site_OoT, Mask_hookInit_Site_OoT, 0 };
+
 #pragma endregion   // hookPlay_Init
 
 #pragma region Play_TransitionDone
@@ -537,10 +558,10 @@ uint32_t Mask_Play_TransitionDone_MM[] =
     0xFFFFFFFF,                     // ORI      V1, R0, 0xFFFE
     0xFFFFFFFF,                     // BEQ      V0, C1, 0x80759DDC
     0xFFFFFFFF,                     // ORI      V1, R0, 0xFFFC
-    0xFFFFFFFF,                     // BEQL     V0, V1, 0x80759E94
+    0xFFFF0000,                     // BEQL     V0, V1, 0x80759E94
     0xFFFFFFFF,                     // LUI      V0, 0x8077
     0xFFFFFFFF,                     // ORI      V1, R0, 0xFFFF
-    0xFFFFFFFF                      // BNEL     V0, V1, 0x80759E00
+    0xFFFF0000                      // BNEL     V0, V1, 0x80759E00
 };
 
 //PCSignature Sig_Play_TransitionDone_MM = { 76, Pattern_Play_TransitionDone_MM, Mask_Play_TransitionDone_MM, 0x1D4 };

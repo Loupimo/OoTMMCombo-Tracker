@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="mm">
+  <scene id="STONE_TOWER">
+    <scene_rendering id="MM_STONE_TOWER" loc_type="overworld">
+      <rendering_option layout="all" type="owl">
+        <npc location="Stone Tower Owl Statue" npc="OWL_STONE_TOWER" item="OWL_STONE_TOWER" name="Owl Statue" xyz="440;84;0"/>
+      </rendering_option>
+      <rendering_option layout="all">
+        <xflag type="pot" location="Stone Tower Pot Lower Scarecrow 01" actor="0x27" item="MAGIC_JAR_SMALL" name="Scarecrow - Lower 1" xyz="699;501;0"/>
+        <xflag type="pot" location="Stone Tower Pot Lower Scarecrow 02" actor="0x28" item="RECOVERY_HEART" name="Scarecrow - Lower 2" xyz="696;448;0"/>
+        <xflag type="pot" location="Stone Tower Pot Lower Scarecrow 03" actor="0x29" item="MAGIC_JAR_SMALL" name="Scarecrow - Lower 3" xyz="696;457;0"/>
+        <xflag type="pot" location="Stone Tower Pot Lower Scarecrow 04" actor="0x2a" item="FAIRY" name="Scarecrow - Lower 4" xyz="696;467;0"/>
+        <xflag type="pot" location="Stone Tower Pot Lower Scarecrow 05" actor="0x2b" item="RECOVERY_HEART" name="Scarecrow - Lower 5" xyz="693;406;1"/>
+        <xflag type="pot" location="Stone Tower Pot Lower Scarecrow 06" actor="0x2c" item="FAIRY" name="Scarecrow - Lower 6" xyz="694;416;1"/>
+        <xflag type="pot" location="Stone Tower Pot Lower Scarecrow 07" actor="0x2d" item="NOTHING" name="Scarecrow - Lower 7" xyz="693;396;0"/>
+        <xflag type="pot" location="Stone Tower Pot Lower Scarecrow 08" actor="0x2e" item="RECOVERY_HEART" name="Scarecrow - Lower 8" xyz="690;347;0"/>
+        <xflag type="pot" location="Stone Tower Pot Lower Scarecrow 09" actor="0x2f" item="NOTHING" name="Scarecrow - Lower 9" xyz="691;357;0"/>
+        <xflag type="pot" location="Stone Tower Pot Lower Scarecrow 10" actor="0x30" item="NOTHING" name="Scarecrow - Lower 10" xyz="699;510;0"/>
+        <xflag type="pot" location="Stone Tower Pot Lower Scarecrow 11" actor="0x31" item="RECOVERY_HEART" name="Scarecrow - Lower 11" xyz="700;520;0"/>
+        <xflag type="pot" location="Stone Tower Pot Lower Scarecrow 12" actor="0x3b" item="MAGIC_JAR_SMALL" name="Scarecrow - Lower 12" xyz="691;366;0"/>
+        <xflag type="pot" location="Stone Tower Pot Higher Scarecrow 1" actor="0x32" item="RECOVERY_HEART" name="Scarecrow - Higher 1" xyz="151;416;2"/>
+        <xflag type="pot" location="Stone Tower Pot Higher Scarecrow 2" actor="0x33" item="FAIRY" name="Scarecrow - Higher 2" xyz="154;396;0"/>
+        <xflag type="pot" location="Stone Tower Pot Higher Scarecrow 3" actor="0x34" item="NOTHING" name="Scarecrow - Higher 3" xyz="152;406;0"/>
+        <xflag type="pot" location="Stone Tower Pot Higher Scarecrow 4" actor="0x35" item="MAGIC_JAR_SMALL" name="Scarecrow - Higher 4" xyz="118;366;2"/>
+        <xflag type="pot" location="Stone Tower Pot Higher Scarecrow 5" actor="0x36" item="ARROWS_10" name="Scarecrow - Higher 5" xyz="119;356;1"/>
+        <xflag type="pot" location="Stone Tower Pot Higher Scarecrow 6" actor="0x37" item="RECOVERY_HEART" name="Scarecrow - Higher 6" xyz="120;346;0"/>
+        <xflag type="pot" location="Stone Tower Pot Higher Scarecrow 7" actor="0x38" item="MAGIC_JAR_SMALL" name="Scarecrow - Higher 7" xyz="128;289;2"/>
+        <xflag type="pot" location="Stone Tower Pot Higher Scarecrow 8" actor="0x39" item="NOTHING" name="Scarecrow - Higher 8" xyz="129;280;1"/>
+        <xflag type="pot" location="Stone Tower Pot Higher Scarecrow 9" actor="0x3a" item="ARROWS_10" name="Scarecrow - Higher 9" xyz="131;270;0"/>
+        <xflag type="pot" location="Stone Tower Pot Climb 1" actor="0x3c" item="RECOVERY_HEART" name="Climb 1" xyz="577;504;0"/>
+        <xflag type="pot" location="Stone Tower Pot Climb 2" actor="0x3d" item="RECOVERY_HEART" name="Climb 2" xyz="577;515;0"/>
+        <xflag type="pot" location="Stone Tower Pot Owl Statue 1" actor="0x3e" item="BOMBS_5" name="Owl Statue 1" xyz="419;86;0"/>
+        <xflag type="pot" location="Stone Tower Pot Owl Statue 2" actor="0x3f" item="ARROWS_20" name="Owl Statue 2" xyz="462;87;1"/>
+        <xflag type="pot" location="Stone Tower Pot Owl Statue 3" actor="0x40" item="FAIRY" name="Owl Statue 3" xyz="474;87;0"/>
+        <xflag type="pot" location="Stone Tower Pot Owl Statue 4" actor="0x41" item="MAGIC_JAR_LARGE" name="Owl Statue 4" xyz="407;86;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="STONE_TOWER_INVERTED">
+    <scene_rendering id="MM_STONE_TOWER_INVERTED" loc_type="overworld">
+      <rendering_option layout="all">
+        <chest location="Stone Tower Inverted Chest 1" flag="0x1d" item="RUPEE_SILVER" name="Chest 1" xyz="275;366;0"/>
+        <chest location="Stone Tower Inverted Chest 2" flag="0x1e" item="BOMBCHU_10" name="Chest 2" xyz="294;394;0"/>
+        <chest location="Stone Tower Inverted Chest 3" flag="0x1f" item="MAGIC_BEAN" name="Chest 3" xyz="314;423;0"/>
+        <xflag type="rock" location="Stone Tower Inverted Rock 1" actor="0x15" item="RANDOM" name="Rock 1" xyz="307;268;0"/>
+        <xflag type="rock" location="Stone Tower Inverted Rock 2" actor="0x16" item="RANDOM" name="Rock 2" xyz="255;589;0"/>
+        <xflag type="pot" location="Stone Tower Inverted Pot 1" actor="0x8" item="RECOVERY_HEART" name="Pot 1" xyz="361;371;0"/>
+        <xflag type="pot" location="Stone Tower Inverted Pot 2" actor="0x9" item="MAGIC_JAR_LARGE" name="Pot 2" xyz="341;344;0"/>
+        <xflag type="pot" location="Stone Tower Inverted Pot 3" actor="0xa" item="FAIRY" name="Pot 3" xyz="335;368;0"/>
+        <xflag type="pot" location="Stone Tower Inverted Pot 4" actor="0xb" item="BOMBS_5" name="Pot 4" xyz="309;364;0"/>
+        <xflag type="pot" location="Stone Tower Inverted Pot 5" actor="0xc" item="RECOVERY_HEART" name="Pot 5" xyz="329;392;0"/>
+        <xflag type="soil" location="Stone Tower Inverted Soil Lower" actor="0x0" item="ARROWS_30" name="Lower" xyz="205;288;0"/>
+        <xflag type="soil" location="Stone Tower Inverted Soil Upper" actor="0x1" item="ARROWS_30" name="Upper" xyz="272;282;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

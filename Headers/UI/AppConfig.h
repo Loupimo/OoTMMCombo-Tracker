@@ -232,6 +232,52 @@ public:
     */
     static void SetRevealUncollectedItems(bool NewValue);
 
+
+    /*
+    *   Tell whether the tracker should automatically switch to the item map of the game the
+    *   player is currently in and focus the scene they just entered.
+    *
+    *   @return <b>True</b> if the item map should auto-follow the player, <b>false</b> otherwise.
+    */
+    static bool GetAutoFollowItemMap();
+
+    /*
+    *   Tell whether the tracker should automatically switch to the entrance map of the game the
+    *   player is currently in and focus the scene they just entered.
+    *
+    *   @return <b>True</b> if the entrance map should auto-follow the player, <b>false</b> otherwise.
+    */
+    static bool GetAutoFollowEntranceMap();
+
+    /*
+    *   Tell whether the tracker should automatically set the GPS "From" scene to the one the
+    *   player is currently in (route recompute is left to the user).
+    *
+    *   @return <b>True</b> if the GPS starting scene should follow the player, <b>false</b> otherwise.
+    */
+    static bool GetAutoSetGpsStart();
+
+    /*
+    *   Set the auto-follow-item-map option persistently.
+    *
+    *   @param NewValue    The new option value.
+    */
+    static void SetAutoFollowItemMap(bool NewValue);
+
+    /*
+    *   Set the auto-follow-entrance-map option persistently.
+    *
+    *   @param NewValue    The new option value.
+    */
+    static void SetAutoFollowEntranceMap(bool NewValue);
+
+    /*
+    *   Set the auto-set-GPS-start option persistently.
+    *
+    *   @param NewValue    The new option value.
+    */
+    static void SetAutoSetGpsStart(bool NewValue);
+
 #pragma endregion
 
 };

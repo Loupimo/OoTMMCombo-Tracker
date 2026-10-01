@@ -115,6 +115,7 @@ const IconMetaInf IconsMetaInfo[NumOfGameIcons] =
     {"./Resources/OoT/Icons/Quest/Shadow.png", { 30, 30 }},
     {"./Resources/OoT/Icons/Quest/Spirit.png", { 30, 30 }},
     {"./Resources/OoT/Icons/Quest/GS_Token.png", { 30, 30 }},
+    {"./Resources/OoT/Icons/Quest/Clock.png", { 30, 30 } },
     {"./Resources/MM/Icons/Quest/Clock_D1.png", { 30, 30 }},
     {"./Resources/MM/Icons/Quest/Clock_D2.png", { 30, 30 }},
     {"./Resources/MM/Icons/Quest/Clock_D3.png", { 30, 30 }},
@@ -153,6 +154,7 @@ const IconMetaInf IconsMetaInfo[NumOfGameIcons] =
     {"./Resources/Common/Quest/Triforce_Power.png", { 30, 30 } },
     {"./Resources/Common/Quest/Triforce_Courage.png", { 30, 30 } },
     {"./Resources/Common/Quest/Triforce_Wisdom.png", { 30, 30 } },
+    {"./Resources/Common/Quest/Shovel.png", { 30, 30 } },
 
     // Equipment
     {"./Resources/OoT/Icons/Equipment/Big_Seed.png", { 30, 30 }},

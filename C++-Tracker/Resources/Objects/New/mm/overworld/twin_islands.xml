@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checks game="mm">
+  <scene id="TWIN_ISLANDS_WINTER">
+    <scene_rendering id="MM_TWIN_ISLANDS" loc_type="overworld">
+      <rendering_option context="spring" layout="all" type="heart_piece">
+        <chest location="Twin Islands Underwater Chest 1" flag="0x06" item="HEART_PIECE" name="Underwater 1" xyz="450;479;0"/>
+      </rendering_option>
+      <rendering_option context="spring" layout="all">
+        <chest location="Twin Islands Underwater Chest 2" flag="0x00" item="RUPEE_RED" name="Underwater 2" xyz="630;74;0"/>
+      </rendering_option>
+      <rendering_option context="winter" layout="all" type="song">
+        <npc location="Goron Elder" npc="GORON_ELDER" item="SONG_GORON_HALF" name="Goron's Lulluby - Intro" xyz="738;268;0"/>
+      </rendering_option>
+      <rendering_option context="winter" layout="all">
+        <xflag type="tree" location="Twin Islands Snow Tree Island 1" actor="0x7" item="NOTHING" name="Winter - Island 1" xyz="424;299;0"/>
+        <xflag type="tree" location="Twin Islands Snow Tree Island 2" actor="0x8" item="NOTHING" name="Winter - Island 2" xyz="672;317;0"/>
+        <xflag type="tree" location="Twin Islands Snow Tree Ramp" actor="0x9" item="NOTHING" name="Winter - Ramp" xyz="242;265;1"/>
+      </rendering_option>
+      <rendering_option context="spring" layout="all">
+        <actor>
+          <match actor="0x20" scene="TWIN_ISLANDS_WINTER"/>
+          <match actor="0x0e" scene="TWIN_ISLANDS_SPRING"/>
+          <xflag type="rupee" location="Twin Islands Rupee 1" item="RUPEE_BLUE" name="Rupee 1" xyz="684;211;0" legacy_scene="TWIN_ISLANDS_SPRING"/>
+        </actor>
+        <actor>
+          <match actor="0x21" scene="TWIN_ISLANDS_WINTER"/>
+          <match actor="0x0f" scene="TWIN_ISLANDS_SPRING"/>
+          <xflag type="rupee" location="Twin Islands Rupee 2" item="RUPEE_BLUE" name="Rupee 2" xyz="495;185;0" legacy_scene="TWIN_ISLANDS_SPRING"/>
+        </actor>
+        <actor>
+          <match actor="0x22" scene="TWIN_ISLANDS_WINTER"/>
+          <match actor="0x10" scene="TWIN_ISLANDS_SPRING"/>
+          <xflag type="rupee" location="Twin Islands Rupee 3" item="RUPEE_BLUE" name="Rupee 3" xyz="596;517;0" legacy_scene="TWIN_ISLANDS_SPRING"/>
+        </actor>
+        <actor>
+          <match actor="0x24" scene="TWIN_ISLANDS_WINTER"/>
+          <match actor="0x12" scene="TWIN_ISLANDS_SPRING"/>
+          <xflag type="rupee" location="Twin Islands Rupee 4" item="RUPEE_BLUE" name="Rupee 4" xyz="780;349;0" legacy_scene="TWIN_ISLANDS_SPRING"/>
+        </actor>
+      </rendering_option>
+      <rendering_option context="winter" layout="all">
+        <actor>
+          <match actor="0x0e"/>
+          <match actor="0x3b"/>
+          <xflag type="snowball" location="Twin Islands Big Snowball 01" item="MAGIC_JAR_SMALL" name="Big Snowball 1" xyz="412;438;0"/>
+        </actor>
+        <actor>
+          <match actor="0x10"/>
+          <match actor="0x2e"/>
+          <match actor="0x3a"/>
+          <xflag type="snowball" location="Twin Islands Big Snowball 02" item="RECOVERY_HEART" name="Big Snowball 2" xyz="322;376;0"/>
+        </actor>
+        <actor>
+          <match actor="0x14"/>
+          <match actor="0x30"/>
+          <match actor="0x39"/>
+          <xflag type="snowball" location="Twin Islands Big Snowball 03" item="MAGIC_JAR_SMALL" name="Big Snowball 3" xyz="319;263;0"/>
+        </actor>
+        <actor>
+          <match actor="0x0d"/>
+          <match actor="0x33"/>
+          <match actor="0x37"/>
+          <xflag type="snowball" location="Twin Islands Big Snowball 04" item="RECOVERY_HEART" name="Big Snowball 4" xyz="438;187;0"/>
+        </actor>
+        <actor>
+          <match actor="0x11"/>
+          <match actor="0x16"/>
+          <match actor="0x2a"/>
+          <xflag type="snowball" location="Twin Islands Big Snowball 05" item="NOTHING" name="Big Snowball 5" xyz="531;136;0"/>
+        </actor>
+        <actor>
+          <match actor="0x1d"/>
+          <match actor="0x29"/>
+          <match actor="0x3c"/>
+          <xflag type="snowball" location="Twin Islands Big Snowball 06" item="RECOVERY_HEART" name="Big Snowball 6" xyz="553;207;0"/>
+        </actor>
+        <actor>
+          <match actor="0x13"/>
+          <match actor="0x2d"/>
+          <match actor="0x31"/>
+          <xflag type="snowball" location="Twin Islands Big Snowball 07" item="NOTHING" name="Big Snowball 7" xyz="523;392;0"/>
+        </actor>
+        <actor>
+          <match actor="0x04"/>
+          <match actor="0x05"/>
+          <match actor="0x32"/>
+          <xflag type="snowball" location="Twin Islands Big Snowball 08" item="NOTHING" name="Big Snowball 8" xyz="749;281;0"/>
+        </actor>
+        <actor>
+          <match actor="0x28"/>
+          <match actor="0x2f"/>
+          <match actor="0x38"/>
+          <xflag type="snowball" location="Twin Islands Big Snowball 09" item="MAGIC_JAR_SMALL" name="Big Snowball 9" xyz="768;400;0"/>
+        </actor>
+        <actor>
+          <match actor="0x1e"/>
+          <match actor="0x2c"/>
+          <match actor="0x34"/>
+          <xflag type="snowball" location="Twin Islands Big Snowball 10" item="NOTHING" name="Big Snowball 10" xyz="672;494;0"/>
+        </actor>
+        <actor>
+          <match actor="0x15"/>
+          <match actor="0x1c"/>
+          <match actor="0x36"/>
+          <xflag type="snowball" location="Twin Islands Big Snowball 11" item="MAGIC_JAR_SMALL" name="Big Snowball 11" xyz="566;498;0"/>
+        </actor>
+        <actor>
+          <match actor="0x12"/>
+          <match actor="0x2b"/>
+          <match actor="0x35"/>
+          <xflag type="snowball" location="Twin Islands Big Snowball 12" item="NOTHING" name="Big Snowball 12" xyz="641;216;0"/>
+        </actor>
+        <actor>
+          <match actor="0x0f"/>
+          <match actor="0x3d"/>
+          <xflag type="snowball" location="Twin Islands Big Snowball 13" item="MAGIC_JAR_SMALL" name="Big Snowball 13" xyz="540;312;0"/>
+        </actor>
+        <xflag type="snowball" location="Twin Islands Small Snowball 1" actor="0x3e" item="MAGIC_JAR_SMALL" name="Small Snowball 1" xyz="127;511;0"/>
+        <xflag type="snowball" location="Twin Islands Small Snowball 2" actor="0x3f" item="RECOVERY_HEART" name="Small Snowball 2" xyz="196;412;0"/>
+        <xflag type="snowball" location="Twin Islands Small Snowball 3" actor="0x40" item="MAGIC_JAR_SMALL" name="Small Snowball 3" xyz="561;273;0"/>
+        <xflag type="snowball" location="Twin Islands Small Snowball Ramp 1" actor="0x41" item="MAGIC_JAR_SMALL" name="Ramp 1" xyz="226;265;0"/>
+        <xflag type="snowball" location="Twin Islands Small Snowball Ramp 2" actor="0x42" item="RECOVERY_HEART" name="Ramp 2" xyz="242;280;1"/>
+        <xflag type="snowball" location="Twin Islands Small Snowball Ramp 3" actor="0x43" item="RECOVERY_HEART" name="Ramp 3" xyz="227;279;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="TWIN_ISLANDS_SPRING">
+    <scene_rendering id="MM_TWIN_ISLANDS" loc_type="overworld">
+      <rendering_option context="spring" layout="all">
+        <actor actor="0xb">
+          <xflag type="grass" location="Twin Islands Grass 01" slice="0x0" item="RANDOM" name="Grass 1" xyz="193;470;0"/>
+          <xflag type="grass" location="Twin Islands Grass 02" slice="0x1" item="RANDOM" name="Grass 2" xyz="173;497;0"/>
+          <xflag type="grass" location="Twin Islands Grass 03" slice="0x2" item="RANDOM" name="Grass 3" xyz="143;485;0"/>
+          <xflag type="grass" location="Twin Islands Grass 04" slice="0x3" item="RANDOM" name="Grass 4" xyz="137;453;0"/>
+          <xflag type="grass" location="Twin Islands Grass 05" slice="0x4" item="RANDOM" name="Grass 5" xyz="164;466;0"/>
+          <xflag type="grass" location="Twin Islands Grass 06" slice="0x5" item="RANDOM" name="Grass 6" xyz="188;487;0"/>
+          <xflag type="grass" location="Twin Islands Grass 07" slice="0x6" item="RANDOM" name="Grass 7" xyz="156;494;0"/>
+          <xflag type="grass" location="Twin Islands Grass 08" slice="0x7" item="RANDOM" name="Grass 8" xyz="134;470;0"/>
+          <xflag type="grass" location="Twin Islands Grass 09" slice="0x8" item="RANDOM" name="Grass 9" xyz="147;438;0"/>
+          <xflag type="grass" location="Twin Islands Grass 10" slice="0x9" item="RANDOM" name="Grass 10" xyz="165;436;0"/>
+          <xflag type="grass" location="Twin Islands Grass 11" slice="0xa" item="RANDOM" name="Grass 11" xyz="181;439;0"/>
+          <xflag type="grass" location="Twin Islands Grass 12" slice="0xb" item="RANDOM" name="Grass 12" xyz="192;453;0"/>
+        </actor>
+        <xflag type="tree" location="Twin Islands Tree Island 1" actor="0x7" item="NOTHING" name="Spring - Island 1" xyz="424;299;0"/>
+        <xflag type="tree" location="Twin Islands Tree Island 2" actor="0x8" item="NOTHING" name="Spring - Island 2" xyz="672;317;0"/>
+        <xflag type="tree" location="Twin Islands Tree Ramp" actor="0x9" item="NOTHING" name="Spring - Ramp" xyz="242;265;1"/>
+        <xflag type="rock" location="Twin Islands Rock 1" actor="0x18" item="RANDOM" name="Rock 1" xyz="227;279;1"/>
+        <xflag type="rock" location="Twin Islands Rock 2" actor="0x19" item="RANDOM" name="Rock 2" xyz="226;265;0"/>
+        <xflag type="rock" location="Twin Islands Rock 3" actor="0x1a" item="RANDOM" name="Rock 3" xyz="242;280;2"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="GORON_RACETRACK">
+    <scene_rendering id="MM_GORON_RACETRACK" loc_type="overworld">
+      <rendering_option icon="dust" layout="all">
+        <npc location="Goron Race Reward" npc="GORON_RACE" item="BOTTLED_GOLD_DUST" hint="GORON_RACE" name="Reward" xyz="679;442;0"/>
+      </rendering_option>
+      <rendering_option layout="all">
+        <actor>
+          <match setup="0" actor="0x2"/>
+          <match setup="1" actor="0x2"/>
+          <xflag type="pot" location="Goron Race Pot 01" item="MAGIC_JAR_LARGE" name="Pot 1" xyz="346;247;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x3"/>
+          <match setup="1" actor="0x3"/>
+          <xflag type="pot" location="Goron Race Pot 02" item="MAGIC_JAR_LARGE" name="Pot 2" xyz="284;276;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x4"/>
+          <match setup="1" actor="0x4"/>
+          <xflag type="pot" location="Goron Race Pot 03" item="MAGIC_JAR_LARGE" name="Pot 3" xyz="358;219;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x5"/>
+          <match setup="1" actor="0x5"/>
+          <xflag type="pot" location="Goron Race Pot 04" item="MAGIC_JAR_LARGE" name="Pot 4" xyz="87;315;1"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x6"/>
+          <match setup="1" actor="0x6"/>
+          <xflag type="pot" location="Goron Race Pot 05" item="MAGIC_JAR_LARGE" name="Pot 5" xyz="256;202;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x7"/>
+          <match setup="1" actor="0x7"/>
+          <xflag type="pot" location="Goron Race Pot 06" item="MAGIC_JAR_LARGE" name="Pot 6" xyz="262;233;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x8"/>
+          <match setup="1" actor="0x8"/>
+          <xflag type="pot" location="Goron Race Pot 07" item="MAGIC_JAR_LARGE" name="Pot 7" xyz="88;302;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x9"/>
+          <match setup="1" actor="0x9"/>
+          <xflag type="pot" location="Goron Race Pot 08" item="MAGIC_JAR_LARGE" name="Pot 8" xyz="73;319;2"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0xa"/>
+          <match setup="1" actor="0xa"/>
+          <xflag type="pot" location="Goron Race Pot 09" item="MAGIC_JAR_LARGE" name="Pot 9" xyz="78;294;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0xb"/>
+          <match setup="1" actor="0xb"/>
+          <xflag type="pot" location="Goron Race Pot 10" item="MAGIC_JAR_LARGE" name="Pot 10" xyz="64;310;1"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0xc"/>
+          <match setup="1" actor="0xc"/>
+          <xflag type="pot" location="Goron Race Pot 11" item="MAGIC_JAR_LARGE" name="Pot 11" xyz="64;298;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0xd"/>
+          <match setup="1" actor="0xd"/>
+          <xflag type="pot" location="Goron Race Pot 12" item="MAGIC_JAR_LARGE" name="Pot 12" xyz="747;423;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0xe"/>
+          <match setup="1" actor="0xe"/>
+          <xflag type="pot" location="Goron Race Pot 13" item="MAGIC_JAR_LARGE" name="Pot 13" xyz="754;429;1"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0xf"/>
+          <match setup="1" actor="0xf"/>
+          <xflag type="pot" location="Goron Race Pot 14" item="MAGIC_JAR_LARGE" name="Pot 14" xyz="757;421;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x10"/>
+          <match setup="1" actor="0x10"/>
+          <xflag type="pot" location="Goron Race Pot 15" item="MAGIC_JAR_LARGE" name="Pot 15" xyz="323;289;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x11"/>
+          <match setup="1" actor="0x11"/>
+          <xflag type="pot" location="Goron Race Pot 16" item="MAGIC_JAR_LARGE" name="Pot 16" xyz="456;342;1"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x12"/>
+          <match setup="1" actor="0x12"/>
+          <xflag type="pot" location="Goron Race Pot 17" item="MAGIC_JAR_LARGE" name="Pot 17" xyz="456;331;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x13"/>
+          <match setup="1" actor="0x13"/>
+          <xflag type="pot" location="Goron Race Pot 18" item="MAGIC_JAR_LARGE" name="Pot 18" xyz="472;331;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x14"/>
+          <match setup="1" actor="0x14"/>
+          <xflag type="pot" location="Goron Race Pot 19" item="MAGIC_JAR_LARGE" name="Pot 19" xyz="474;342;1"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x15"/>
+          <match setup="1" actor="0x15"/>
+          <xflag type="pot" location="Goron Race Pot 20" item="MAGIC_JAR_LARGE" name="Pot 20" xyz="465;350;2"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x16"/>
+          <match setup="1" actor="0x16"/>
+          <xflag type="pot" location="Goron Race Pot 21" item="MAGIC_JAR_LARGE" name="Pot 21" xyz="548;186;3"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x17"/>
+          <match setup="1" actor="0x17"/>
+          <xflag type="pot" location="Goron Race Pot 22" item="MAGIC_JAR_LARGE" name="Pot 22" xyz="541;184;1"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x18"/>
+          <match setup="1" actor="0x18"/>
+          <xflag type="pot" location="Goron Race Pot 23" item="MAGIC_JAR_LARGE" name="Pot 23" xyz="551;180;2"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x19"/>
+          <match setup="1" actor="0x19"/>
+          <xflag type="pot" location="Goron Race Pot 24" item="MAGIC_JAR_LARGE" name="Pot 24" xyz="544;178;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x1a"/>
+          <match setup="1" actor="0x1a"/>
+          <xflag type="pot" location="Goron Race Pot 25" item="MAGIC_JAR_LARGE" name="Pot 25" xyz="362;276;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x1b"/>
+          <match setup="1" actor="0x1b"/>
+          <xflag type="pot" location="Goron Race Pot 26" item="MAGIC_JAR_LARGE" name="Pot 26" xyz="545;270;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x1c"/>
+          <match setup="1" actor="0x1c"/>
+          <xflag type="pot" location="Goron Race Pot 27" item="MAGIC_JAR_LARGE" name="Pot 27" xyz="552;275;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x1d"/>
+          <match setup="1" actor="0x1d"/>
+          <xflag type="pot" location="Goron Race Pot 28" item="MAGIC_JAR_LARGE" name="Pot 28" xyz="678;238;1"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x1e"/>
+          <match setup="1" actor="0x1e"/>
+          <xflag type="pot" location="Goron Race Pot 29" item="MAGIC_JAR_LARGE" name="Pot 29" xyz="681;230;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x1f"/>
+          <match setup="1" actor="0x1f"/>
+          <xflag type="pot" location="Goron Race Pot 30" item="MAGIC_JAR_LARGE" name="Pot 30" xyz="670;233;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x3b"/>
+          <match setup="1" actor="0x3b"/>
+          <xflag type="tree" location="Goron Race Forked Tree 1" item="NOTHING" name="Tree 1" xyz="134;338;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x3c"/>
+          <match setup="1" actor="0x3c"/>
+          <xflag type="tree" location="Goron Race Forked Tree 2" item="NOTHING" name="Tree 2" xyz="106;352;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x3d"/>
+          <match setup="1" actor="0x3d"/>
+          <xflag type="tree" location="Goron Race Forked Tree 3" item="NOTHING" name="Tree 3" xyz="169;321;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x3e"/>
+          <match setup="1" actor="0x3e"/>
+          <xflag type="tree" location="Goron Race Forked Tree 4" item="NOTHING" name="Tree 4" xyz="154;325;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x3f"/>
+          <match setup="1" actor="0x3f"/>
+          <xflag type="tree" location="Goron Race Forked Tree 5" item="NOTHING" name="Tree 5" xyz="134;349;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x40"/>
+          <match setup="1" actor="0x40"/>
+          <xflag type="tree" location="Goron Race Forked Tree 6" item="NOTHING" name="Tree 6" xyz="151;338;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x41"/>
+          <match setup="1" actor="0x41"/>
+          <xflag type="tree" location="Goron Race Forked Tree 7" item="NOTHING" name="Tree 7" xyz="192;314;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x42"/>
+          <match setup="1" actor="0x42"/>
+          <xflag type="tree" location="Goron Race Forked Tree 8" item="NOTHING" name="Tree 8" xyz="181;333;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x43"/>
+          <match setup="1" actor="0x43"/>
+          <xflag type="tree" location="Goron Race Forked Tree 9" item="NOTHING" name="Tree 9" xyz="166;339;0"/>
+        </actor>
+        <actor>
+          <match setup="0" actor="0x44"/>
+          <match setup="1" actor="0x44"/>
+          <xflag type="tree" location="Goron Race Forked Tree 10" item="NOTHING" name="Tree 10" xyz="146;352;0"/>
+        </actor>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="GROTTOS" room="0xe">
+    <scene_rendering id="MM_GROTTO_TWIN_ISLANDS_FROZEN" loc_type="overworld">
+      <rendering_option layout="all">
+        <chest location="Twin Islands Frozen Grotto Chest" flag="0x02" item="RUPEE_RED" name="Chest" xyz="147;420;0"/>
+        <xflag type="boulder" location="Twin Islands Frozen Grotto Large Boulder 1" actor="0xa" item="NOTHING" name="Large Boulder 1" xyz="227;356;0"/>
+        <xflag type="boulder" location="Twin Islands Frozen Grotto Large Boulder 2" actor="0xb" item="NOTHING" name="Large Boulder 2" xyz="385;349;0"/>
+        <xflag type="boulder" location="Twin Islands Frozen Grotto Large Boulder 3" actor="0xc" item="NOTHING" name="Large Boulder 3" xyz="537;384;0"/>
+        <xflag type="boulder" location="Twin Islands Frozen Grotto Large Boulder 4" actor="0xd" item="NOTHING" name="Large Boulder 4" xyz="285;490;0"/>
+        <xflag type="boulder" location="Twin Islands Frozen Grotto Large Boulder 5" actor="0xe" item="NOTHING" name="Large Boulder 5" xyz="147;420;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+  <scene id="GROTTOS" room="0x39">
+    <scene_rendering id="MM_GROTTO_TWIN_ISLANDS_RAMP" loc_type="overworld">
+      <rendering_option layout="all">
+        <chest location="Twin Islands Ramp Grotto Chest" flag="0x19" item="BOMBCHU" name="Chest" xyz="231;410;0"/>
+        <xflag type="grass" location="Twin Islands Ramp Grotto Grass 01" actor="0x00" item="RANDOM" name="Grass 1" xyz="612;542;0"/>
+        <xflag type="grass" location="Twin Islands Ramp Grotto Grass 02" actor="0x01" item="RANDOM" name="Grass 2" xyz="371;494;0"/>
+        <xflag type="grass" location="Twin Islands Ramp Grotto Grass 03" actor="0x02" item="RANDOM" name="Grass 3" xyz="281;467;0"/>
+        <xflag type="grass" location="Twin Islands Ramp Grotto Grass 04" actor="0x03" item="RANDOM" name="Grass 4" xyz="339;480;0"/>
+        <xflag type="grass" location="Twin Islands Ramp Grotto Grass 05" actor="0x05" item="RANDOM" name="Grass 5" xyz="294;449;0"/>
+        <xflag type="grass" location="Twin Islands Ramp Grotto Grass 06" actor="0x06" item="RANDOM" name="Grass 6" xyz="270;444;0"/>
+        <xflag type="grass" location="Twin Islands Ramp Grotto Grass 07" actor="0x0a" item="RANDOM" name="Grass 7" xyz="699;497;0"/>
+        <xflag type="grass" location="Twin Islands Ramp Grotto Grass 08" actor="0x0b" item="RANDOM" name="Grass 8" xyz="390;431;0"/>
+        <xflag type="grass" location="Twin Islands Ramp Grotto Grass 09" actor="0x0c" item="RANDOM" name="Grass 9" xyz="556;453;0"/>
+        <xflag type="grass" location="Twin Islands Ramp Grotto Grass 10" actor="0x0e" item="RANDOM" name="Grass 10" xyz="651;467;0"/>
+        <xflag type="grass" location="Twin Islands Ramp Grotto Grass 11" actor="0x10" item="RANDOM" name="Grass 11" xyz="255;388;0"/>
+        <xflag type="grass" location="Twin Islands Ramp Grotto Grass 12" actor="0x11" item="RANDOM" name="Grass 12" xyz="382;418;0"/>
+        <xflag type="grass" location="Twin Islands Ramp Grotto Grass 13" actor="0x12" item="RANDOM" name="Grass 13" xyz="583;448;0"/>
+        <xflag type="grass" location="Twin Islands Ramp Grotto Grass 14" actor="0x13" item="RANDOM" name="Grass 14" xyz="418;418;0"/>
+      </rendering_option>
+    </scene_rendering>
+  </scene>
+</checks>

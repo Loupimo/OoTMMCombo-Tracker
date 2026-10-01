@@ -184,27 +184,54 @@ void BuildPCsPatterns()
 
         // We have find the desired start address of the function
 
-        if (gGame == GAME_MM && i == 4)
-        {   // Resout dynamiquement le site du hook (independant du build : stable, dev, futurs)
+        if (i == 4)
+        {
+            if (gGame == GAME_OOT)
+            {   // Resout dynamiquement le site du hook (independant du build : stable, dev, futurs)
 
-            uintptr_t site = FindSubPattern(base, &Sig_hookInit_Site_MM, 0x800);
-            if (site)
-            {
-                uint32_t off = (uint32_t)(site - base);
-                sigs[i].Signature->PCOffset = off;
-
-                // Le variant decoule de l'emplacement du hook -> selectionne le bon "Nothing" ID,
-                // sauf si le tracker a fourni la version via le spoiler (elle fait foi, cf ApplyHostVersion).
-                if (!gData || gData->HostROMVersion == HOST_VER_UNKNOWN)
+                uintptr_t site = FindSubPattern(base, &Sig_hookInit_Site_OoT, 0x800);
+                if (site)
                 {
-                    isStable = (off == MM_HOOK_INIT_STABLE_PCOFF);
-                    gNothingID = isStable ? STABLE_NOTHING : DEV_NOTHING;
+                    uint32_t off = (uint32_t)(site - base);
+                    sigs[i].Signature->PCOffset = off;
+
+                    // Le variant decoule de l'emplacement du hook -> selectionne le bon "Nothing" ID,
+                    // sauf si le tracker a fourni la version via le spoiler (elle fait foi, cf ApplyHostVersion).
+                    if (!gData || gData->HostROMVersion == HOST_VER_UNKNOWN)
+                    {
+                        isStable = (off == OOT_HOOK_INIT_STABLE_PCOFF);
+                        gNothingID = isStable ? STABLE_NOTHING : DEV_NOTHING;
+                    }
+                }
+                else
+                {   // Repli : ancien comportement base sur le CRC (isStable deja positionne par CheckGameVersionASM)
+
+                    sigs[i].Signature->PCOffset = isStable ? OOT_HOOK_INIT_STABLE_PCOFF : OOT_HOOK_INIT_DEV_PCOFF;
                 }
             }
-            else
-            {   // Repli : ancien comportement base sur le CRC (isStable deja positionne par CheckGameVersionASM)
 
-                sigs[i].Signature->PCOffset = isStable ? MM_HOOK_INIT_STABLE_PCOFF : MM_HOOK_INIT_DEV_PCOFF;
+            else if (gGame == GAME_MM)
+            {   // Resout dynamiquement le site du hook (independant du build : stable, dev, futurs)
+
+                uintptr_t site = FindSubPattern(base, &Sig_hookInit_Site_MM, 0x800);
+                if (site)
+                {
+                    uint32_t off = (uint32_t)(site - base);
+                    sigs[i].Signature->PCOffset = off;
+
+                    // Le variant decoule de l'emplacement du hook -> selectionne le bon "Nothing" ID,
+                    // sauf si le tracker a fourni la version via le spoiler (elle fait foi, cf ApplyHostVersion).
+                    if (!gData || gData->HostROMVersion == HOST_VER_UNKNOWN)
+                    {
+                        isStable = (off == MM_HOOK_INIT_STABLE_PCOFF);
+                        gNothingID = isStable ? STABLE_NOTHING : DEV_NOTHING;
+                    }
+                }
+                else
+                {   // Repli : ancien comportement base sur le CRC (isStable deja positionne par CheckGameVersionASM)
+
+                    sigs[i].Signature->PCOffset = isStable ? MM_HOOK_INIT_STABLE_PCOFF : MM_HOOK_INIT_DEV_PCOFF;
+                }
             }
         }
 
@@ -212,7 +239,7 @@ void BuildPCsPatterns()
 
         gPatternState[gGame].PCs[i] = PC;
         LOG("[OK] PC 0x%08X", PC);
-        if (i == 5)
+        if (i == 4)
         {   // We successfully found the PC for play transition done. We need to find the gLastScene offset
 
             FindLastSceneAddress();
@@ -281,20 +308,17 @@ __forceinline void FindLastSceneAddress()
 {
     if (gGame == GAME_OOT)
     {
-        gOOTLastSceneAddr = (uint16_t)*(uint32_t*)((gPatternState[gGame].PCs[5] & 0x00FFFFFF) + gameRAMBase + 0x2C);
+        gOOTLastSceneAddr = (uint16_t) * (uint32_t*)((gPatternState[gGame].PCs[4] & 0x00FFFFFF) + gameRAMBase - 0x04);
         gOOTLastSceneAddr <<= 16;
-        //gOOTActiveGlobalOffset = (int16_t)*(uint32_t*)((gPatternState[gGame].PCs[5] & 0x00FFFFFF) + gameRAMBase + OOT_LAST_SCENE_OFFSET);
-        gOOTActiveGlobalOffset = (int16_t)*(uint32_t*)((gPatternState[gGame].PCs[5] & 0x00FFFFFF) + gameRAMBase + 0x4C) - 0x08;
-        //gActiveSceneOffset = OOT_SCENE_OFFSET + gOOTActiveGlobalOffset;
+        gOOTActiveGlobalOffset = (int16_t) * (uint32_t*)((gPatternState[gGame].PCs[4] & 0x00FFFFFF) + gameRAMBase) - 0x04;
         gOOTLastSceneAddr = gOOTLastSceneAddr + gOOTActiveGlobalOffset;
         gActiveSceneOffset = gOOTLastSceneAddr;
     }
     else if (gGame == GAME_MM)
     {
-        gMMLastSceneAddr = (uint16_t)*(uint32_t*)((gPatternState[gGame].PCs[5] & 0x00FFFFFF) + gameRAMBase + MM_LAST_SCENE_OFFSET - 0x04);
+        gMMLastSceneAddr = (uint16_t) * (uint32_t*)((gPatternState[gGame].PCs[4] & 0x00FFFFFF) + gameRAMBase - 0x08);
         gMMLastSceneAddr <<= 16;
-        gMMActiveGlobalOffset = (int16_t)*(uint32_t*)((gPatternState[gGame].PCs[5] & 0x00FFFFFF) + gameRAMBase + MM_LAST_SCENE_OFFSET);
-        //gActiveSceneOffset = MM_SCENE_OFFSET + gMMActiveGlobalOffset;
+        gMMActiveGlobalOffset = (int16_t) * (uint32_t*)((gPatternState[gGame].PCs[4] & 0x00FFFFFF) + gameRAMBase - 0x04) - 0x04;
         gMMLastSceneAddr = gMMLastSceneAddr + gMMActiveGlobalOffset;
         gActiveSceneOffset = gMMLastSceneAddr;
     }

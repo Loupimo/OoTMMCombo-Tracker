@@ -154,4 +154,35 @@ void AppConfig::SetRevealUncollectedItems(bool NewValue)
     Config.Settings.setValue("RevealUncollectedItems", NewValue);
 }
 
+
+bool AppConfig::GetAutoFollowItemMap()
+{
+    return Config.Settings.value("AutoFollowItemMap", false).toBool();
+}
+
+bool AppConfig::GetAutoFollowEntranceMap()
+{
+    return Config.Settings.value("AutoFollowEntranceMap", false).toBool();
+}
+
+bool AppConfig::GetAutoSetGpsStart()
+{
+    return Config.Settings.value("AutoSetGpsStart", false).toBool();
+}
+
+void AppConfig::SetAutoFollowItemMap(bool NewValue)
+{
+    Config.Settings.setValue("AutoFollowItemMap", NewValue);
+}
+
+void AppConfig::SetAutoFollowEntranceMap(bool NewValue)
+{
+    Config.Settings.setValue("AutoFollowEntranceMap", NewValue);
+}
+
+void AppConfig::SetAutoSetGpsStart(bool NewValue)
+{
+    Config.Settings.setValue("AutoSetGpsStart", NewValue);
+}
+
 #pragma endregion

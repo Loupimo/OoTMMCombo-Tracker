@@ -1,0 +1,16 @@
+"Water Temple Boss":
+  boss: true
+  age_change: false
+  dungeon: Water
+  events:
+    BOSS_MORPHA: "can_kill_morpha"
+  exits:
+    "Water Temple After Boss": "event(BOSS_MORPHA)"
+
+"Water Temple After Boss":
+  boss: true
+  age_change: false
+  dungeon: Water
+  locations:
+    "Water Temple Boss HC": "true"
+    "Water Temple Boss": "true"

@@ -1,0 +1,2130 @@
+//! Faithful port of the Qt progression dashboard (Sources/UI/ProgressionTab.cpp).
+//!
+//! The Qt version tracks every collected item on a grid of icon widgets spread
+//! over four pages (OoT / MM / Souls / Collectibles). We keep the same data
+//! model — the generated `PROG_PAGES` — and replicate the runtime semantics
+//! (counters, shared items, progressive stages, spoiler-derived totals,
+//! starting items) in a single `rebuild` pass. The UI layer (main.rs) then
+//! paints the grids and the detail panel from the resulting per-entry state,
+//! the way `RefreshVisual` / `BuildLocationTree` do.
+//!
+//! The one impedance mismatch with the C++: there an object already carries an
+//! `ItemInfo*` (numeric `ItemID`); here a collected object is keyed by its
+//! `Location`, so we resolve `Location -> item name -> id` through the spoiler
+//! and the generated `ITEM_BY_NAME_LC` table (a port of `FindItemByName`).
+
+use std::collections::{HashMap, HashSet};
+
+use crate::data::{self, ProgEntry};
+use crate::scene::Game;
+use crate::settings::Settings;
+use crate::WorldData;
+
+/// Live state of one dashboard entry (the mutable `ItemIconWidget` fields).
+#[derive(Default, Clone)]
+pub struct ProgState {
+    /// At least one matching item collected (or a starting item).
+    pub found: bool,
+    /// Running total for counter entries (song notes, tokens, collectables).
+    pub count: i32,
+    /// Total needed to complete: the static `ProgEntry.max_count`, or — for
+    /// spoiler-derived collectables — the tally of matching placements.
+    pub max_count: i32,
+    /// The player begins the run owning this item.
+    pub is_starting: bool,
+    /// For the four weighed fishing-pond tiles (`pondFishShuffle` disperses one
+    /// distinct item per pound): the heaviest pound value collected so far, so the
+    /// detail panel can show it. `None` for every other entry (and until the first
+    /// weighed fish of this kind is caught).
+    pub heaviest_lbs: Option<i32>,
+    /// Goron Lullaby tiles only: how many "Progressive Goron Lullaby" copies have
+    /// been collected (the seed hands out two under `progressiveGoronLullaby*`).
+    pub lullaby_halves: i32,
+    /// Goron Lullaby tiles only: the full "Goron Lullaby" item itself is in hand
+    /// (a starting item, or a `single` seed's one copy).
+    pub lullaby_whole: bool,
+    /// Which half of the Goron Lullaby is playable right now, or `None` when the
+    /// entry is not a progressive Goron Lullaby tile (or nothing is playable yet).
+    /// Resolved by [`Dashboard::resolve_goron_lullaby`].
+    pub lullaby_stage: Option<LullabyStage>,
+}
+
+/// How much of the Goron Lullaby the player can play, under
+/// `progressiveGoronLullaby{Oot,Mm}: progressive` (the seed splits the song in
+/// two: the intro first, the whole lullaby second).
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+pub enum LullabyStage {
+    /// The 6-note intro only (Goron Lullaby Intro): enough for the song events
+    /// that take the half song, not for the ones needing the full lullaby.
+    Intro,
+    /// The whole lullaby.
+    Full,
+}
+
+/// One flattened dashboard entry with its page/section coordinates.
+pub struct FlatEntry {
+    pub page: usize,
+    pub section: usize,
+    pub section_title: &'static str,
+    pub entry: &'static ProgEntry,
+}
+
+/// A scene bucket of the detail-panel location tree.
+pub struct LocScene {
+    pub game: Game,
+    /// The bucket's scene id (`render_scene`). Kept so the UI can disambiguate a
+    /// display name shared by several scenes (the twelve OoT "Open Grotto"s, the
+    /// fairy fountains…) by appending the region, exactly like the GPS does.
+    pub scene: u16,
+    /// The physical world (1-based) this bucket lives in. In a multiworld seed a
+    /// foreign world's copy of a scene reads "World N — …"; equals the shown world
+    /// (so no prefix) for single / coop seeds and for the active world.
+    pub world: u8,
+    /// The raw (untranslated) scene name, used only for a stable sort key.
+    pub title: String,
+    pub leaves: Vec<LocLeaf>,
+}
+
+/// One object leaf under a scene bucket.
+pub struct LocLeaf {
+    pub game: Game,
+    pub render_scene: u16,
+    /// Index into `game.objects()` (the collected-set key), so a click can focus
+    /// this exact object in the item tab's object tree.
+    pub index: usize,
+    pub name: &'static str,
+    pub collected: bool,
+    /// Resolved map-icon path for this check's type (chest / pot / GS / …), shown
+    /// ahead of the location name in the detail panel. `None` when the type has no
+    /// icon (the caller then reserves the same width so names stay aligned).
+    pub icon: Option<&'static str>,
+}
+
+pub struct Dashboard {
+    /// Flattened entries in declaration order (page, then section, then entry).
+    flat: Vec<FlatEntry>,
+    /// item id -> flat indices whose `lookup_keys` contain it (declaration order).
+    by_item: HashMap<u32, Vec<usize>>,
+    /// Ids that stand for a progressive family: an id that several tiers of the
+    /// SAME page list in their `lookup_keys` (e.g. `OOT_STRENGTH` on the three
+    /// gauntlet widgets, `MM_SHIELD` on the three MM shields). OoTMM hands out one
+    /// generic "progressive" item for these families, so a single pickup must
+    /// advance ONE tier — not light every widget that references the shared id. The
+    /// ROM settings mark some of these (swords, clocks, the specific shield ids) but
+    /// miss the ones with no toggle (strength, wallet, scale, bomb bags…) and the
+    /// generic shield ids, so we derive the full set structurally here. Used
+    /// alongside `settings.progressive_item_ids` by [`Self::on_item_found`].
+    marker_ids: HashSet<u32>,
+    /// Live per-entry state, aligned with `flat`.
+    states: Vec<ProgState>,
+    /// Whether the 'songs' setting shuffles notes individually (so a song widget
+    /// reads as a counter). Resolved from the settings on every `rebuild`.
+    songs_counter: bool,
+    /// The seed's sharing flags that disambiguate placed item names
+    /// ([`find_placed_item_id`]). Resolved on every `rebuild`, read by the detail
+    /// tree (which has no settings).
+    sharing: Sharing,
+    /// King Zora is `open` and the seed holds no Ruto's Letter: OoTMM replaced it by
+    /// an empty bottle, so its tile hides. Read from the placements, not the
+    /// settings: whether `sharedBottles` keeps the letter changed between OoTMM
+    /// builds (v32.3 kept it, later dev builds drop it). Resolved on every `rebuild`.
+    rutos_letter_absent: bool,
+    /// Selected sub-tab (page index) and selected entry (flat index).
+    pub sub_tab: usize,
+    pub selected: Option<usize>,
+    /// Whether the detail location tree also lists uncollected placements.
+    pub reveal: bool,
+    /// Multiworld: the world (1-based) whose progression is shown. Placements are
+    /// counted only when their destination world matches (ParseWorldLocations'
+    /// TargetWorld). 1 = the local world (the only one for single / coop seeds).
+    pub active_world: u8,
+    /// Cached detail location tree (recomputed only when the inputs change).
+    tree_cache: Vec<LocScene>,
+    tree_cache_key: Option<usize>,
+    tree_dirty: bool,
+}
+
+impl Dashboard {
+    pub fn new() -> Self {
+        // Flatten the generated pages into one indexable list.
+        let mut flat = Vec::new();
+        for (p, page) in data::PROG_PAGES.iter().enumerate() {
+            for (s, sec) in page.sections.iter().enumerate() {
+                for e in sec.entries {
+                    flat.push(FlatEntry { page: p, section: s, section_title: sec.title, entry: e });
+                }
+            }
+        }
+        // Index every entry by the item ids it stands for (declaration order,
+        // which the progressive-stage walk relies on).
+        let mut by_item: HashMap<u32, Vec<usize>> = HashMap::new();
+        for (i, fe) in flat.iter().enumerate() {
+            for &k in fe.entry.lookup_keys {
+                let list = by_item.entry(k).or_default();
+                if list.last() != Some(&i) {
+                    list.push(i);
+                }
+            }
+        }
+        // Derive the progressive-family markers: any id listed by two or more tiers
+        // of the same page SECTION (see `marker_ids`). A real progressive family
+        // (bow, wallet, strength, scale, bomb bag, shields, MM swords) groups all its
+        // tiers in one section ("Equipments"), so counting per section catches it.
+        //
+        // Counting per section — not per page — is what keeps a *shared* mirror from
+        // being mistaken for a family. A shared item's OoT and MM widgets sit in
+        // DIFFERENT, game-labelled sections of one page: the "Souls" page splits into
+        // "OoT NPC Souls" / "MM NPC Souls" (and the "Collectibles" page likewise), so a
+        // shared soul like `SHARED_SOUL_NPC_MEDIGORON` appears exactly once per section.
+        // Under the old per-page rule it counted twice on the Souls page and was wrongly
+        // flagged progressive, so `walk_stages` lit only the OoT tile and left the MM
+        // mirror dark (reported: Medigoron's soul collected, MM tile stayed unlit though
+        // its detail panel showed it collected). One-per-section means it is not a
+        // marker and keeps its shared-propagation (light every mirror).
+        let mut marker_ids: HashSet<u32> = HashSet::new();
+        for (&id, idxs) in &by_item {
+            let mut per_section: HashMap<(usize, usize), u32> = HashMap::new();
+            for &i in idxs {
+                // Only NON-counter tiers form a progressive family. A counter (Empty
+                // Bottle, …) aggregates every matching pickup and is never a "tier", so
+                // it must not make a shared id look progressive. Otherwise a SPECIFIC
+                // bottle item that a counter and its own widget both list — Ruto's Letter
+                // (Empty Bottle + "Ruto's Letter"), Bottle of Gold Dust — would be
+                // mis-collapsed: one pickup would only bump the bottle count and never
+                // light the item (and a second bottle would wrongly light it). Every real
+                // progressive family (bow, wallet, strength, scale, bomb bag, shields) is
+                // built from non-counter tier widgets, so this never loses one.
+                if flat[i].entry.is_counter {
+                    continue;
+                }
+                *per_section.entry((flat[i].page, flat[i].section)).or_default() += 1;
+            }
+            if per_section.values().any(|&n| n >= 2) {
+                marker_ids.insert(id);
+            }
+        }
+
+        let states = vec![ProgState::default(); flat.len()];
+        Dashboard {
+            flat,
+            by_item,
+            marker_ids,
+            states,
+            songs_counter: false,
+            sharing: Sharing::default(),
+            rutos_letter_absent: false,
+            sub_tab: 0,
+            selected: None,
+            reveal: true,
+            active_world: 1,
+            tree_cache: Vec::new(),
+            tree_cache_key: None,
+            tree_dirty: true,
+        }
+    }
+
+    /// Switch the world whose progression is shown (multiworld). Invalidates the
+    /// detail tree; the caller re-runs `rebuild` to recompute the per-entry state.
+    pub fn set_active_world(&mut self, w: u8) {
+        if self.active_world != w {
+            self.active_world = w;
+            self.tree_dirty = true;
+        }
+    }
+
+    pub fn flat(&self) -> &[FlatEntry] {
+        &self.flat
+    }
+
+    pub fn state(&self, i: usize) -> &ProgState {
+        &self.states[i]
+    }
+
+    // ── Rebuild (RebuildFromSceneObjects) ─────────────────────────────────────
+
+    /// Recompute every entry's live state from all worlds' placements + collected
+    /// sets + settings. Cheap enough to run whenever one of those changes.
+    ///
+    /// Multiworld (Qt "option b"): the active world's progression is every
+    /// placement DESTINED to that world, wherever it is physically placed. So we
+    /// scan every world and keep only the placements whose destination player
+    /// matches `active_world` (1-based). Single / coop seeds have one world whose
+    /// placements all default to destination 1, so this matches everything.
+    pub fn rebuild(
+        &mut self,
+        worlds: &[WorldData],
+        settings: &Settings,
+        mq: &HashSet<(Game, u16)>,
+    ) {
+        self.songs_counter = settings.value("songs") == data::ShuffleSetting::all;
+        self.sharing = Sharing::from_settings(settings);
+        self.rutos_letter_absent = rutos_letter_absent(worlds, settings);
+        self.tree_dirty = true; // collected / spoiler changed → detail tree stale
+
+        // Reset. Spoiler-derived counters start at 0 (tallied below); static
+        // counters keep their declared max.
+        for (i, fe) in self.flat.iter().enumerate() {
+            let e = fe.entry;
+            self.states[i] = ProgState {
+                found: false,
+                count: 0,
+                max_count: if e.max_from_spoiler { 0 } else { e.max_count },
+                is_starting: false,
+                heaviest_lbs: None,
+                lullaby_halves: 0,
+                lullaby_whole: false,
+                lullaby_stage: None,
+            };
+        }
+
+        // Starting items first, so the collected replay sees them as already
+        // found and progressive items advance to the right stage.
+        for i in 0..self.flat.len() {
+            for &key in self.flat[i].entry.lookup_keys {
+                if let Some(&c) = settings.starting_item_ids.get(&key) {
+                    self.states[i].is_starting = true;
+                    self.tally_goron_lullaby(i, key, c as i32);
+                    for _ in 0..c {
+                        self.mark_found(i);
+                    }
+                    break;
+                }
+                // Progressive capacity upgrade: the starting section only lists the
+                // base (bow / slingshot) with a count; a count >= 2 grants the first
+                // upgrade, >= 3 the second (GetProgressiveUpgradeRequirement).
+                if let Some((base, req)) = progressive_upgrade_requirement(key) {
+                    if settings.starting_item_ids.get(&base).copied().unwrap_or(0) >= req {
+                        self.states[i].is_starting = true;
+                        self.mark_found(i);
+                        break;
+                    }
+                }
+            }
+        }
+
+        // Spoiler-derived totals also include the starting copies: the placement
+        // tally below only sees the pool, so starting stray fairies / keys / heart
+        // pieces made the tile read e.g. 11 / 9.
+        for i in 0..self.flat.len() {
+            if !self.flat[i].entry.max_from_spoiler {
+                continue;
+            }
+            let start: u32 = self.flat[i]
+                .entry
+                .lookup_keys
+                .iter()
+                .map(|k| settings.starting_item_ids.get(k).copied().unwrap_or(0))
+                .sum();
+            self.states[i].max_count += start as i32;
+        }
+
+        // Tally spoiler-derived totals: every active placement (across all worlds)
+        // destined to the active world counts toward the max, collected or not.
+        // The dedup key carries the physical world so the same coordinate in two
+        // world clones counts twice (they are distinct placements).
+        let mut seen = HashSet::new();
+        for (wi, w) in worlds.iter().enumerate() {
+            for (game, objs) in [(Game::Oot, data::OOT_OBJECTS), (Game::Mm, data::MM_OBJECTS)] {
+                for o in objs {
+                    if o.type_ == data::ObjectType::none
+                        || !crate::tracking::object_active(o, game, mq)
+                    {
+                        continue;
+                    }
+                    let Some(name) = w.items.get(o.location) else { continue };
+                    if dest_world(w, wi, o.location) != self.active_world {
+                        continue;
+                    }
+                    let Some(id) = find_placed_item_id(name, self.sharing) else { continue };
+                    if !seen.insert((wi, game.idx(), o.object_id, o.render_scene, o.type_ as u8)) {
+                        continue;
+                    }
+                    self.tally_max(id);
+                }
+            }
+        }
+
+        // Replay every collected placement across all worlds. Each pickup resolves
+        // to a single object index (the tracker never records a paired duplicate),
+        // so a plain walk of each world's collected set matches the C++ deduped
+        // placement replay. A pickup destined to another player does not advance
+        // the active world's progression.
+        for (wi, w) in worlds.iter().enumerate() {
+            for &(game, idx) in &w.collected {
+                let o = &game.objects()[idx];
+                let Some(name) = w.items.get(o.location) else { continue };
+                if dest_world(w, wi, o.location) != self.active_world {
+                    continue;
+                }
+                let Some(id) = find_placed_item_id(name, self.sharing) else { continue };
+                self.on_item_found(id, settings);
+            }
+        }
+
+        self.resolve_goron_lullaby(settings);
+    }
+
+    /// Record `n` pickups of item `id` on entry `i` when it is one of the Goron
+    /// Lullaby items; a no-op for everything else.
+    fn tally_goron_lullaby(&mut self, i: usize, id: u32, n: i32) {
+        use data::iid::*;
+        match id {
+            OOT_SONG_GORON_HALF | MM_SONG_GORON_HALF | SHARED_SONG_GORON_HALF => {
+                self.states[i].lullaby_halves += n
+            }
+            OOT_SONG_GORON | MM_SONG_GORON | SHARED_SONG_GORON if n > 0 => {
+                self.states[i].lullaby_whole = true
+            }
+            _ => {}
+        }
+    }
+
+    /// Stamp each Goron Lullaby tile with the half of the song currently playable
+    /// (`ProgState::lullaby_stage`).
+    ///
+    /// Under `progressiveGoronLullaby{Oot,Mm}: progressive` the song comes in two
+    /// steps: the seed places two "Progressive Goron Lullaby" copies — the first
+    /// teaches the intro, the second the whole lullaby — and with shuffled notes
+    /// (`songs: notes`) the same split is a threshold, 6 of the 8 notes playing the
+    /// intro and all 8 the full song. Mirrors `macros_common.yml`
+    /// (`has_song_goron_half` / `has_song_goron`) and the `setting(...,
+    /// progressive)` gate of `can_play_goron_half`, so the panel never claims an
+    /// intro the solver would not honour. `single` (full lullaby only) has no intro
+    /// stage, so the tile keeps `None`.
+    fn resolve_goron_lullaby(&mut self, settings: &Settings) {
+        /// Notes needed for the intro (the full song needs the entry's `max_count`).
+        const NOTES_FOR_INTRO: i32 = 6;
+        for i in 0..self.flat.len() {
+            let e = self.flat[i].entry;
+            let key = if e.lookup_keys.contains(&data::iid::OOT_SONG_GORON_HALF) {
+                "progressiveGoronLullabyOot"
+            } else if e.lookup_keys.contains(&data::iid::MM_SONG_GORON_HALF) {
+                "progressiveGoronLullabyMm"
+            } else {
+                continue;
+            };
+            let st = &self.states[i];
+            // The seed lists every setting, so a present value decides. A ROM version
+            // that predates the setting still proves the mode by having handed out a
+            // progressive copy.
+            let raw = settings.raw_settings.get(key).map(String::as_str);
+            if !(raw == Some("progressive") || (raw.is_none() && st.lullaby_halves > 0)) {
+                continue;
+            }
+            // Notes only count while they are the shuffled unit; otherwise the
+            // counter holds song pickups, not notes.
+            let notes = if self.songs_counter { st.count } else { 0 };
+            self.states[i].lullaby_stage = if st.lullaby_whole
+                || st.lullaby_halves >= 2
+                || (notes > 0 && notes >= e.max_count)
+            {
+                Some(LullabyStage::Full)
+            } else if st.lullaby_halves >= 1 || notes >= NOTES_FOR_INTRO {
+                Some(LullabyStage::Intro)
+            } else {
+                None
+            };
+        }
+    }
+
+    /// Whether an entry behaves as a counter right now (songs flip with the
+    /// 'songs' setting; every other entry keeps its declared flag).
+    fn effective_is_counter(&self, e: &ProgEntry) -> bool {
+        if is_song_icon(e.icon) {
+            self.songs_counter
+        } else {
+            e.is_counter
+        }
+    }
+
+    /// MarkFound: flag the entry found and bump its counter when applicable.
+    fn mark_found(&mut self, i: usize) {
+        self.states[i].found = true;
+        if self.effective_is_counter(self.flat[i].entry) {
+            self.states[i].count += 1;
+        }
+    }
+
+    /// TallySpoilerMax: bump the max of every spoiler-derived entry matching id.
+    fn tally_max(&mut self, id: u32) {
+        let Some(list) = self.by_item.get(&id) else { return };
+        let idxs: Vec<usize> =
+            list.iter().copied().filter(|&i| self.flat[i].entry.max_from_spoiler).collect();
+        for i in idxs {
+            self.states[i].max_count += 1;
+        }
+    }
+
+    /// OnItemFound (add path): route a collected item id to the matching entries,
+    /// honouring shared (propagate to every mirror) and progressive (advance one
+    /// stage) semantics.
+    fn on_item_found(&mut self, id: u32, settings: &Settings) {
+        let Some(matches) = self.by_item.get(&id).cloned() else { return };
+        // Weighed fishing-pond fish (`pondFishShuffle`) are dispersed one distinct
+        // item per pound, all pooled under a single counter tile. Remember the heaviest
+        // pound value caught for each matching fish tile so the detail panel can show it.
+        // Gated on the `carp_fish` icon so an unrelated "(N pounds)" name never counts.
+        if let Some(lbs) = fish_weight_lbs(id) {
+            for &i in &matches {
+                if self.flat[i].entry.icon == "carp_fish" {
+                    let cur = &mut self.states[i].heaviest_lbs;
+                    *cur = Some(cur.map_or(lbs, |c| c.max(lbs)));
+                }
+            }
+        }
+        // Goron Lullaby: remember whether the pickup was a progressive copy (intro
+        // then full) or the whole song, so `resolve_goron_lullaby` can tell the
+        // detail panel which half is playable. A SHARED_* copy matches both games'
+        // tiles, which is exactly what sharing means here.
+        for &i in &matches {
+            self.tally_goron_lullaby(i, id, 1);
+        }
+        // "Shared" here means the collected item mirrors across both games, so a pickup
+        // must touch every mirror (advance each game's page independently for a
+        // progressive family, or light every tile otherwise). Detect it structurally:
+        // the item's tiles span more than one page (a SHARED_* item is placed once but
+        // listed on the OoT page AND the MM page). The old flag keyed on
+        // `item_can_be_shared` + `shared_item_ids`, but the id actually collected when
+        // sharing is on is the SHARED_* variant, whose ItemDef is `can_be_shared: false`
+        // and which is not in `shared_item_ids` (that set holds the per-game tier ids) —
+        // so shared PROGRESSIVE items (strength, shields, wallet, scale, bomb bag) fell
+        // through to a single `walk_stages` that advanced only the first page's tier and
+        // left the other game's mirror dark (reported: shared Progressive Strength lit
+        // OoT, not MM). Keep the old test as a fallback for any single-page edge case.
+        let first_page = self.flat[matches[0]].page;
+        let shared = matches.iter().any(|&i| self.flat[i].page != first_page)
+            || (item_can_be_shared(id) && settings.shared_item_ids.contains(&id));
+
+        // Progressive clocks (MM ascending/descending): one generic "Progressive Clock"
+        // (MM_CLOCK) is handed out per period unlocked, and all six clock tiles list it.
+        // They are declared Day 1 → Night 3, which is the `ascending` unlock order;
+        // `descending` unlocks Night 3 → Day 1, so its stages walk in reverse. The
+        // starting clock (Day 1 ascending / Night 3 descending) is already lit as a
+        // starting item (`Settings::apply`), so the walk advances from the next period.
+        // (Under `separate` each clock is its own id, so MM_CLOCK is never collected and
+        // this never fires.)
+        if id == data::iid::MM_CLOCK {
+            let mut stages = matches;
+            if settings.raw_settings.get("progressiveClocks").map(String::as_str) == Some("descending") {
+                stages.reverse();
+            }
+            self.walk_stages(&stages);
+            return;
+        }
+
+        // Extra child swords (OoT): `extraChildSwordsOot` turns the Kokiri Sword into
+        // three "Progressive Sword (OoT)" (OOT_SWORD) granting Kokiri -> Razor -> Gilded
+        // (transform.ts), the Master Sword staying its own item. The tiles list OOT_SWORD
+        // on Kokiri / Master / Knife / Biggoron for the `progressive` sword mode, which
+        // the setting excludes (OoTMM only offers it when the swords are not
+        // progressive), so walk the three child-sword tiles instead.
+        if id == data::iid::OOT_SWORD
+            && settings.raw_settings.get("extraChildSwordsOot").map(String::as_str) == Some("true")
+        {
+            use data::iid::{OOT_SWORD_GILDED, OOT_SWORD_KOKIRI, OOT_SWORD_RAZOR};
+            let stages: Vec<usize> = [OOT_SWORD_KOKIRI, OOT_SWORD_RAZOR, OOT_SWORD_GILDED]
+                .iter()
+                .filter_map(|k| self.by_item.get(k).and_then(|v| v.first().copied()))
+                .collect();
+            self.walk_stages(&stages);
+            return;
+        }
+
+        // OoTMM Short Hookshot (shortHookshotMm): the seed places the SAME item
+        // twice as "Hookshot (MM)" (MM_HOOKSHOT) — the first pickup is the short-range
+        // hookshot, the second upgrades it to full range (gi.yml: MM_HOOKSHOT_SHORT
+        // adds +1, MM_HOOKSHOT +2; `can_hookshot` needs 2 when the setting is on). No
+        // placement is ever named "Short Hookshot", so a plain match lights the full
+        // tier on the first pickup and the Short tier stays dead. Walk [Short, full]
+        // on successive MM_HOOKSHOT pickups instead. The setting is on exactly when
+        // MM_HOOKSHOT_SHORT is NOT disabled (off => check_item_enabled disables it and
+        // hides the Short tier, and a lone hookshot is already full). A MM_HOOKSHOT
+        // placement only exists when the hookshot is NOT shared (a shared hookshot is
+        // placed as SHARED_HOOKSHOT), so no shared-propagation guard is needed here.
+        if id == data::iid::MM_HOOKSHOT
+            && !settings.disabled_item_ids.contains(&data::iid::MM_HOOKSHOT_SHORT)
+        {
+            let mut stages =
+                self.by_item.get(&data::iid::MM_HOOKSHOT_SHORT).cloned().unwrap_or_default();
+            stages.extend(matches.iter().copied());
+            self.walk_stages(&stages);
+            return;
+        }
+
+        // Deku stick / nut capacity: a progressive stack whose three tiers
+        // (Capacity → Upgrade → Second) are each keyed to a DISTINCT level id
+        // (OoT sticks: 0x80 / 0x77 / 0x78). A non-shared seed places those distinct
+        // ids, so a plain match lights the tier of the level collected — e.g. the
+        // middle "Deku Stick Upgrade" — and leaves Capacity dark instead of filling
+        // bottom-up (reported: "j'ai eu une capacity mais c'est l'amélioration qui a
+        // pris en premier"). Route any family id through the shared tier list so
+        // successive pickups advance in order. The SHARED id advances every game in
+        // lockstep; a per-game id advances only its own game's tiers. Every tier
+        // carries the SHARED id, so `by_item[shared]` is the ordered tier list.
+        {
+            use data::iid::*;
+            const STICK_FAMILY: &[u32] = &[
+                OOT_STICK_UPGRADE, OOT_STICK_UPGRADE2, OOT_STICK_UPGRADE3,
+                MM_STICK_UPGRADE, MM_STICK_UPGRADE2, MM_STICK_UPGRADE3, SHARED_STICK_UPGRADE,
+            ];
+            const NUT_FAMILY: &[u32] = &[
+                OOT_NUT_UPGRADE, OOT_NUT_UPGRADE2, OOT_NUT_UPGRADE3,
+                MM_NUT_UPGRADE, MM_NUT_UPGRADE2, MM_NUT_UPGRADE3, SHARED_NUT_UPGRADE,
+            ];
+            for (family, shared_id) in
+                [(STICK_FAMILY, SHARED_STICK_UPGRADE), (NUT_FAMILY, SHARED_NUT_UPGRADE)]
+            {
+                if !family.contains(&id) {
+                    continue;
+                }
+                let tiers = self.by_item.get(&shared_id).cloned().unwrap_or_default();
+                // A per-game id advances only its own game's page; the shared id, both.
+                let only_page = if id == shared_id {
+                    None
+                } else {
+                    self.by_item.get(&id).and_then(|v| v.first()).map(|&i| self.flat[i].page)
+                };
+                for page in 0..data::PROG_PAGES.len() {
+                    if only_page.is_some_and(|p| p != page) {
+                        continue;
+                    }
+                    let stages: Vec<usize> =
+                        tiers.iter().copied().filter(|&i| self.flat[i].page == page).collect();
+                    self.walk_stages(&stages);
+                }
+                return;
+            }
+        }
+
+        // Progressive capacity families (bow → Big/Biggest Quiver, slingshot →
+        // Big/Biggest Bullet Bag, magic → Double Magic) — the generated
+        // `PROGRESSIVE_FAMILIES`. OoTMM places EVERY tier under the BASE item's spoiler
+        // name (a quiver upgrade is "Hero's Bow"), so each pickup resolves to the base
+        // id (MM_BOW). Their tiers carry DISTINCT ids with no common marker, so
+        // `by_item[base]` holds only the base tile — a plain match stalls there and the
+        // upgrade tiles stay dark (reported: a 2nd Hero's Bow left Big Quiver
+        // unobtained). Route any family id through its ordered tier list [base, up1,
+        // up2] so successive pickups advance one tier. Gathering the tiles by
+        // family-member id restricts a per-game id (MM_BOW) to its own page, while a
+        // SHARED id (SHARED_BOW, listed on both games' bow tiles) advances every page —
+        // walked per page so one shared pickup moves each game by one tier. Mirrors the
+        // C++ family-aware `FindAllMatchingWidgets` + `walkStages`.
+        if let Some(fam) = data::PROGRESSIVE_FAMILIES.iter().find(|f| f.contains(&id)) {
+            for page in 0..data::PROG_PAGES.len() {
+                let stages: Vec<usize> = fam
+                    .iter()
+                    .filter(|&&m| m != 0)
+                    .flat_map(|&m| self.by_item.get(&m).into_iter().flatten().copied())
+                    .filter(|&i| self.flat[i].page == page)
+                    .collect();
+                self.walk_stages(&stages);
+            }
+            return;
+        }
+
+        // Progressive either because the ROM settings say so, or because the id is a
+        // structural family marker shared by several tiers of one page (strength,
+        // wallets, generic shields…) — see `marker_ids`. Both routes walk one stage
+        // at a time instead of lighting every tier that lists the shared id.
+        let progressive = settings.progressive_item_ids.contains(&id) || self.marker_ids.contains(&id);
+
+        if shared && progressive {
+            // Shared progressive items (shields) live on both pages: advance each
+            // page independently so every mirror moves in lockstep.
+            for page in 0..data::PROG_PAGES.len() {
+                let stages: Vec<usize> =
+                    matches.iter().copied().filter(|&i| self.flat[i].page == page).collect();
+                self.walk_stages(&stages);
+            }
+        } else if shared || !progressive {
+            // Propagate to every mirror (shared) or mark every match the same way
+            // (non-progressive: one widget per game, counters accumulate).
+            for &i in &matches {
+                self.mark_found(i);
+            }
+        } else {
+            // Progressive only: advance the first not-yet-found stage.
+            self.walk_stages(&matches);
+        }
+    }
+
+    /// Advance the first not-yet-found stage of a declaration-ordered list.
+    fn walk_stages(&mut self, stages: &[usize]) {
+        for &i in stages {
+            if !self.states[i].found {
+                self.mark_found(i);
+                return;
+            }
+        }
+    }
+
+    // ── Per-entry render queries (RefreshVisual) ─────────────────────────────
+
+    /// Whether an entry is hidden by the ROM settings (any of its ids disabled), or
+    /// is the Ruto's Letter tile of a seed that removed the letter. The letter is
+    /// hidden by name: the Empty Bottle counters also list the letter ids, so
+    /// disabling those ids would hide the bottle tiles too.
+    pub fn entry_hidden(&self, i: usize, settings: &Settings) -> bool {
+        let entry = &self.flat[i].entry;
+        (self.rutos_letter_absent && entry.name == "Ruto's Letter")
+            || entry.lookup_keys.iter().any(|k| settings.disabled_item_ids.contains(k))
+    }
+
+    /// Whether a page still has at least one visible entry (else its tab hides).
+    pub fn page_visible(&self, page: usize, settings: &Settings) -> bool {
+        self.flat
+            .iter()
+            .enumerate()
+            .any(|(i, fe)| fe.page == page && !self.entry_hidden(i, settings))
+    }
+
+    /// Whether the entry's icon should light up (a "full set" song counter only
+    /// completes once every note is gathered; everything else on first pickup).
+    pub fn complete(&self, i: usize) -> bool {
+        let e = self.flat[i].entry;
+        let st = &self.states[i];
+        if self.effective_is_counter(e) && e.max_count > 0 && !e.max_from_spoiler {
+            st.count >= e.max_count
+        } else {
+            st.found
+        }
+    }
+
+    /// The counter badge text ("count" or "count/total"), or None when hidden.
+    pub fn badge_text(&self, i: usize) -> Option<String> {
+        let e = self.flat[i].entry;
+        let st = &self.states[i];
+        if self.effective_is_counter(e) && st.count > 0 {
+            Some(if st.max_count > 0 {
+                format!("{}/{}", st.count, st.max_count)
+            } else {
+                st.count.to_string()
+            })
+        } else {
+            None
+        }
+    }
+
+    // ── Detail panel location tree (BuildLocationTree) ────────────────────────
+
+    /// Toggle the "reveal uncollected placements" option (invalidates the tree).
+    pub fn set_reveal(&mut self, v: bool) {
+        if self.reveal != v {
+            self.reveal = v;
+            self.tree_dirty = true;
+        }
+    }
+
+    /// Refresh the cached location tree of the selected entry when it went stale
+    /// (selection / reveal / collected changed). Cheap no-op otherwise, so it can
+    /// run every frame before the detail panel reads `tree`.
+    pub fn ensure_tree(&mut self, worlds: &[WorldData], mq: &HashSet<(Game, u16)>) {
+        if !self.tree_dirty && self.tree_cache_key == self.selected {
+            return;
+        }
+        self.tree_cache = match self.selected {
+            Some(i) => self.location_tree(i, worlds, mq),
+            None => Vec::new(),
+        };
+        self.tree_cache_key = self.selected;
+        self.tree_dirty = false;
+    }
+
+    /// The cached location tree (see `ensure_tree`).
+    pub fn tree(&self) -> &[LocScene] {
+        &self.tree_cache
+    }
+
+    /// Every placement of the selected entry's item(s) DESTINED to the active
+    /// world (across all physical worlds), grouped by scene and sorted (OoT before
+    /// MM, then by scene name; uncollected leaves first). A placement that lives in
+    /// another world is tagged "World N —" so it reads apart from own-world ones.
+    fn location_tree(
+        &self,
+        i: usize,
+        worlds: &[WorldData],
+        mq: &HashSet<(Game, u16)>,
+    ) -> Vec<LocScene> {
+        let e = self.flat[i].entry;
+        // Bucket per (physical world, game, scene) so a foreign world's copy of a
+        // scene is a distinct group from the active world's.
+        let mut buckets: HashMap<(usize, usize, u16), LocScene> = HashMap::new();
+        let mut seen = HashSet::new();
+
+        for (wi, w) in worlds.iter().enumerate() {
+            for (game, objs) in [(Game::Oot, data::OOT_OBJECTS), (Game::Mm, data::MM_OBJECTS)] {
+                for (idx, o) in objs.iter().enumerate() {
+                    if o.type_ == data::ObjectType::none
+                        || !crate::tracking::object_active(o, game, mq)
+                    {
+                        continue;
+                    }
+                    let Some(name) = w.items.get(o.location) else { continue };
+                    if dest_world(w, wi, o.location) != self.active_world {
+                        continue;
+                    }
+                    let Some(id) = find_placed_item_id(name, self.sharing) else { continue };
+                    if !item_matches(e, id) {
+                        continue;
+                    }
+                    let coll = w.collected.contains(&(game, idx));
+                    if !coll && !self.reveal {
+                        continue;
+                    }
+                    if !seen.insert((wi, game.idx(), o.object_id, o.render_scene, o.type_ as u8)) {
+                        continue;
+                    }
+                    let bucket =
+                        buckets.entry((wi, game.idx(), o.render_scene)).or_insert_with(|| {
+                            // The world prefix and the region disambiguation are both
+                            // applied at display time (the UI has the i18n / active
+                            // world), so the bucket only carries the raw ingredients.
+                            LocScene {
+                                game,
+                                scene: o.render_scene,
+                                world: wi as u8 + 1,
+                                title: scene_name(game, o.render_scene),
+                                leaves: Vec::new(),
+                            }
+                        });
+                    bucket.leaves.push(LocLeaf {
+                        game,
+                        render_scene: o.render_scene,
+                        index: idx,
+                        name: o.name,
+                        collected: coll,
+                        icon: crate::scene::icon_path_for(o.map_icon, o.type_),
+                    });
+                }
+            }
+        }
+
+        let mut out: Vec<LocScene> = buckets.into_values().collect();
+        for s in &mut out {
+            // Uncollected ("to-find") leaves first, then alphabetical.
+            s.leaves.sort_by(|a, b| {
+                (a.collected as u8, a.name.to_lowercase()).cmp(&(b.collected as u8, b.name.to_lowercase()))
+            });
+        }
+        out.sort_by(|a, b| {
+            (a.game.idx(), a.title.to_lowercase(), a.world)
+                .cmp(&(b.game.idx(), b.title.to_lowercase(), b.world))
+        });
+        out
+    }
+}
+
+impl Default for Dashboard {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+// ── Free helpers (Items.cpp ports) ────────────────────────────────────────────
+
+/// The weight, in pounds, of a weighed fishing-pond fish item, parsed from its
+/// display name (e.g. "Child Fish (7 pounds)" → 7). `None` for any item whose name
+/// does not end in a "(N pounds)" suffix. Used to surface the heaviest fish caught
+/// (`pondFishShuffle` disperses one distinct item per pound).
+fn fish_weight_lbs(id: u32) -> Option<i32> {
+    let name = crate::qtsave::item_name(id)?;
+    let inner = name.strip_suffix(" pounds)")?.rsplit_once('(')?.1;
+    inner.parse().ok()
+}
+
+/// FindItemByName: resolve a spoiler item name to its internal (dev) item id.
+/// Strips newlines and the "cloaked as …" wrapper, then matches case-insensitively.
+pub fn find_item_id(name: &str) -> Option<u32> {
+    let mut n = name.replace('\n', "");
+    if n.contains("cloaked") {
+        if let Some(p) = n.find('(') {
+            n.truncate(p.saturating_sub(1));
+        }
+    }
+    let key = n.trim().to_lowercase();
+    if let Ok(idx) = data::ITEM_BY_NAME_LC.binary_search_by(|&(nm, _)| nm.cmp(key.as_str())) {
+        return Some(data::ITEM_BY_NAME_LC[idx].1);
+    }
+    // Fallback: OoTMM spoilers name rusty keys by their internal door/location
+    // string ("Rusty Key (Silo)"), while the tracker's item table uses the name
+    // shown in-game ("Rusty Key (Lon Lon Silo)"). Map the spoiler-only spellings
+    // onto the tracker id so a collected rusty key still shows in progression.
+    rusty_key_alias(&key)
+        .or_else(|| clock_alias(&key))
+        .or_else(|| shared_item_alias(&key))
+}
+
+/// The seed's sharing settings that decide which copy an ambiguous placed item name
+/// stands for (see [`find_placed_item_id`]).
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct Sharing {
+    /// `sharedGFS`: the Great Fairy's Sword is the SHARED copy.
+    pub gfs: bool,
+    /// `sharedBottles`: every bottle content is the SHARED copy.
+    pub bottles: bool,
+}
+
+impl Sharing {
+    /// Read the sharing flags from the seed's raw settings.
+    ///
+    /// @param settings the ROM settings
+    /// @return the sharing flags of this seed
+    pub fn from_settings(settings: &Settings) -> Self {
+        let on = |k: &str| settings.raw_settings.get(k).map(String::as_str) == Some("true");
+        Self { gfs: on("sharedGFS"), bottles: on("sharedBottles") }
+    }
+}
+
+/// Resolve a PLACED item name (spoiler placement) to its id, taking the seed's
+/// sharing into account. OoTMM gives several items the SAME display name in OoT,
+/// MM and SHARED form, so the bare name (which the name index maps to the OoT copy)
+/// must be steered to the copy that actually exists in this seed:
+/// - "Great Fairy's Sword" (MM / SHARED): SHARED with `sharedGFS`, else MM.
+/// - "Bottle of Gold Dust", "Bottle of Chateau Romani": MM-only items (Goron race,
+///   Madame Aroma) — resolving to the OoT id meant `has_gold_dust` never lit, so the
+///   Gilded Sword stayed locked with a bottle of gold dust in hand (reported).
+/// - with `sharedBottles`, those plus "Ruto's Letter" and "Bottle of Blue Fire" are
+///   the SHARED copy the logic asks for (`shared_bottle(a, b)` = `has(b)`).
+/// - "Triforce Piece" / "Triforce of Power|Courage|Wisdom": always SHARED (the only
+///   copies OoTMM places).
+///
+/// @param name the placed item name, as the spoiler spells it
+/// @param sharing the seed's sharing flags ([`Sharing::from_settings`])
+/// @return the item id, or None when the name is unknown
+pub fn find_placed_item_id(name: &str, sharing: Sharing) -> Option<u32> {
+    use data::iid::*;
+    let id = find_item_id(name)?;
+    Some(match id {
+        MM_GREAT_FAIRY_SWORD if sharing.gfs => SHARED_GREAT_FAIRY_SWORD,
+        OOT_BOTTLED_GOLD_DUST if sharing.bottles => SHARED_BOTTLED_GOLD_DUST,
+        OOT_BOTTLED_GOLD_DUST => MM_BOTTLED_GOLD_DUST,
+        OOT_BOTTLE_CHATEAU if sharing.bottles => SHARED_BOTTLE_CHATEAU,
+        OOT_BOTTLE_CHATEAU => MM_BOTTLE_CHATEAU,
+        OOT_BOTTLE_RUTO_LETTER if sharing.bottles => SHARED_BOTTLE_RUTO_LETTER,
+        OOT_BOTTLE_BLUE_FIRE if sharing.bottles => SHARED_BOTTLE_BLUE_FIRE,
+        // Triforces: OoTMM only ever places the SHARED copies (transform.ts
+        // `addTriforce(SHARED_TRIFORCE…)`, no setting), under the bare OoT name.
+        OOT_TRIFORCE => SHARED_TRIFORCE,
+        OOT_TRIFORCE_POWER => SHARED_TRIFORCE_POWER,
+        OOT_TRIFORCE_COURAGE => SHARED_TRIFORCE_COURAGE,
+        OOT_TRIFORCE_WISDOM => SHARED_TRIFORCE_WISDOM,
+        id => id,
+    })
+}
+
+/// King Zora `open` removed Ruto's Letter from this seed: no world places one and
+/// it is not a starting item (OoTMM swaps it for an empty bottle).
+///
+/// @param worlds every world's placements
+/// @param settings the ROM settings (King Zora mode + starting items)
+/// @return true when the Ruto's Letter tile must hide
+fn rutos_letter_absent(worlds: &[WorldData], settings: &Settings) -> bool {
+    use data::iid::{MM_BOTTLE_RUTO_LETTER, OOT_BOTTLE_RUTO_LETTER, SHARED_BOTTLE_RUTO_LETTER};
+    let open = settings.raw_settings.get("zoraKing").map(String::as_str) == Some("open");
+    let starting = [OOT_BOTTLE_RUTO_LETTER, MM_BOTTLE_RUTO_LETTER, SHARED_BOTTLE_RUTO_LETTER]
+        .iter()
+        .any(|id| settings.starting_item_ids.contains_key(id));
+    let placed = worlds.iter().any(|w| w.items.values().any(|n| n.ends_with("Ruto's Letter")));
+    open && !starting && !placed
+}
+
+/// A shared item (its `shared*` setting merges the OoT and MM copies into one) is
+/// placed and picked up under OoTMM's bare display name — "Bomb Bag", "Bow", "Fire
+/// Arrows"… — but a handful are carried in the tracker's item table under a "Shared X"
+/// spelling (`SHARED_BOMB_BAG` = "Shared Bomb Bag", `SHARED_BOW` = "Shared Bow",
+/// the shared magic arrows and magic upgrade). Their bare spoiler/pickup name then
+/// resolved to nothing, so neither game's progression tile lit AND the logic never
+/// credited the item — `has_bomb_bag` / `has_bow` stayed false (reported for shared
+/// Bomb Bags; the same held for shared Bows). Most shared items already carry the bare
+/// name (Progressive Strength, Fairy Slingshot, Big Quiver…) and resolve directly;
+/// this only rescues the "Shared X"-named holdouts by retrying with the prefix. Only
+/// reached after a direct miss, so a name that already resolves is never rerouted.
+fn shared_item_alias(key_lc: &str) -> Option<u32> {
+    let shared = format!("shared {key_lc}");
+    data::ITEM_BY_NAME_LC
+        .binary_search_by(|&(nm, _)| nm.cmp(shared.as_str()))
+        .ok()
+        .map(|i| data::ITEM_BY_NAME_LC[i].1)
+}
+
+/// Since OoTMM added an OoT clock, newer spoilers / logs disambiguate the Majora's
+/// Mask clocks as "Clock (MM, Day 1)" where they used to read "Clock (Day 1)". The
+/// item table only carries one spelling, so on a direct miss try the other form so
+/// BOTH the old and new names resolve to the same MM clock. "Clock (OoT)" already
+/// matches directly and is never rewritten. Only reached after `ITEM_BY_NAME_LC`
+/// misses, so there is no ambiguity with whichever spelling the table itself uses.
+fn clock_alias(key_lc: &str) -> Option<u32> {
+    let lookup = |k: &str| {
+        data::ITEM_BY_NAME_LC
+            .binary_search_by(|&(nm, _)| nm.cmp(k))
+            .ok()
+            .map(|i| data::ITEM_BY_NAME_LC[i].1)
+    };
+    // The MM progressive clock is placed as "Progressive Clock (MM)", but the item
+    // table only carries the bare "Progressive Clock" (id MM_CLOCK). Without this the
+    // pickup resolved to nothing, so neither the clock progression tiles nor the time
+    // logic (`has(CLOCK, n)`) ever moved as the player collected clocks.
+    if key_lc == "progressive clock (mm)" {
+        return lookup("progressive clock");
+    }
+    // New "clock (mm, X)" -> old "clock (X)".
+    if let Some(inner) = key_lc.strip_prefix("clock (mm, ").and_then(|s| s.strip_suffix(')')) {
+        return lookup(&format!("clock ({inner})"));
+    }
+    // Old "clock (X)" -> new "clock (mm, X)" (the OoT clock keeps its own name).
+    if let Some(inner) = key_lc.strip_prefix("clock (").and_then(|s| s.strip_suffix(')')) {
+        if !inner.eq_ignore_ascii_case("oot") {
+            return lookup(&format!("clock (mm, {inner})"));
+        }
+    }
+    None
+}
+
+/// Resolve the OoTMM spoiler spelling of a rusty key (lowercased) to the tracker
+/// item id whose in-game name differs. Only the diverging names are listed; every
+/// matching one already resolves through `ITEM_BY_NAME_LC`. Returns `None` for a
+/// non-rusty-key string.
+fn rusty_key_alias(key_lc: &str) -> Option<u32> {
+    use data::iid::*;
+    Some(match key_lc {
+        // OoT — the tracker prefixes the region (Market / Kakariko / Lon Lon).
+        "rusty key (treasure chest game)" => OOT_RUSTY_KEY_TREASURE_CHEST_GAME,
+        "rusty key (hyrule castle)" => OOT_RUSTY_KEY_HYRULE_CASTLE,
+        "rusty key (child bazaar)" => OOT_RUSTY_KEY_CHILD_BAZAAR,
+        "rusty key (child potion shop)" => OOT_RUSTY_KEY_CHILD_POTION_SHOP,
+        "rusty key (child shooting gallery)" => OOT_RUSTY_KEY_CHILD_SHOOTING_GALLERY,
+        "rusty key (laboratory)" => OOT_RUSTY_KEY_LABORATORY,
+        "rusty key (silo)" => OOT_RUSTY_KEY_SILO,
+        "rusty key (ranch stable)" => OOT_RUSTY_KEY_RANCH_STABLE,
+        "rusty key (ranch house)" => OOT_RUSTY_KEY_RANCH_HOUSE,
+        "rusty key (adult shooting gallery)" => OOT_RUSTY_KEY_ADULT_SHOOTING_GALLERY,
+        "rusty key (skulltula house)" => OOT_RUSTY_KEY_SKULLTULA_HOUSE,
+        "rusty key (adult bazaar)" => OOT_RUSTY_KEY_ADULT_BAZAAR,
+        "rusty key (adult potion shop)" => OOT_RUSTY_KEY_ADULT_POTION_SHOP,
+        "rusty key (adult potion shop back)" => OOT_RUSTY_KEY_ADULT_POTION_SHOP_BACK,
+        // MM.
+        "rusty key (potion shop)" => MM_RUSTY_KEY_POTION_SHOP,
+        "rusty key (swordsman school)" => MM_RUSTY_KEY_SWORDSMAN_SCHOOL,
+        "rusty key (town archery)" => MM_RUSTY_KEY_TOWN_ARCHERY,
+        "rusty key (swamp archery)" => MM_RUSTY_KEY_SWAMP_ARCHERY,
+        "rusty key (observatory)" => MM_RUSTY_KEY_OBSERVATORY,
+        "rusty key (blacksmith)" => MM_RUSTY_KEY_BLACKSMITH,
+        "rusty key (music house)" => MM_RUSTY_KEY_MUSIC_HOUSE,
+        "rusty key (oceanic laboratory)" => MM_RUSTY_KEY_LABORATORY,
+        "rusty key (treasure game)" => MM_RUSTY_KEY_TREASURE_CHEST_GAME,
+        "rusty key (romani's room)" => MM_RUSTY_KEY_RANCH_HOUSE_ROOM,
+        "rusty key (kafei's room)" => MM_RUSTY_KEY_MAYOR_RESIDENCE_KAFEI,
+        _ => return None,
+    })
+}
+
+/// ItemInfo::CanBeShared for the given id (ITEMS is dense, id-ordered).
+fn item_can_be_shared(id: u32) -> bool {
+    let dense = (id as usize).checked_sub(1).and_then(|i| data::ITEMS.get(i));
+    match dense {
+        Some(d) if d.id == id => d.can_be_shared,
+        _ => data::ITEMS.iter().find(|d| d.id == id).is_some_and(|d| d.can_be_shared),
+    }
+}
+
+/// ItemMatchesWidget: an entry stands for the item if it lists the id directly,
+/// or the id shares a progressive capacity family with one of its keys.
+fn item_matches(e: &ProgEntry, id: u32) -> bool {
+    e.lookup_keys.contains(&id) || e.lookup_keys.iter().any(|&k| items_share_family(id, k))
+}
+
+/// Deku stick / nut upgrade families the generated `PROGRESSIVE_FAMILIES` omits.
+/// OoTMM places a progressive stick/nut upgrade under a SINGLE item name (every tier
+/// is e.g. "Deku Stick Upgrade (OoT)"), so all placements resolve to the middle
+/// tier's id. Their three prog entries (capacity / upgrade / second upgrade) don't
+/// share a common base id either — the capacity id was removed from the upgrade
+/// tiers to make the visual cope with the capacity × upgrade setting cross — so
+/// without a family the detail panel shows the shared pool only under the middle
+/// entry and "No Known Location" under the other two. Grouping [capacity, upgrade,
+/// second upgrade] pools the locations under all three, exactly like the bow/quiver
+/// and slingshot/bullet-bag families. Kept hand-written (not in the generated data)
+/// so it survives a regeneration, and only consulted by `items_share_family` → the
+/// location detail; the visual walk and starting-item logic are untouched.
+const STICK_NUT_FAMILIES: &[[u32; 3]] = &[
+    [data::iid::OOT_STICK_UPGRADE, data::iid::OOT_STICK_UPGRADE2, data::iid::OOT_STICK_UPGRADE3],
+    [data::iid::MM_STICK_UPGRADE, data::iid::MM_STICK_UPGRADE2, data::iid::MM_STICK_UPGRADE3],
+    [data::iid::OOT_NUT_UPGRADE, data::iid::OOT_NUT_UPGRADE2, data::iid::OOT_NUT_UPGRADE3],
+    [data::iid::MM_NUT_UPGRADE, data::iid::MM_NUT_UPGRADE2, data::iid::MM_NUT_UPGRADE3],
+];
+
+/// ItemsShareProgressiveFamily: both ids in the same [base, up1, up2] family.
+fn items_share_family(a: u32, b: u32) -> bool {
+    data::PROGRESSIVE_FAMILIES
+        .iter()
+        .chain(STICK_NUT_FAMILIES.iter())
+        .any(|f| f.contains(&a) && f.contains(&b))
+}
+
+/// GetProgressiveUpgradeRequirement: for an upgrade tier, its base id and the
+/// base starting count that grants it (2 for the first upgrade, 3 for the second).
+fn progressive_upgrade_requirement(id: u32) -> Option<(u32, u32)> {
+    for f in data::PROGRESSIVE_FAMILIES {
+        for pos in 1..3 {
+            if f[pos] == id {
+                return Some((f[0], (pos + 1) as u32));
+            }
+        }
+    }
+    None
+}
+
+/// The destination world (1-based) of a placement physically in world `wi`: the
+/// spoiler's "Player N" prefix when present, else that world's own player.
+/// Mirrors ParseWorldLocations' `TargetWorld = WorldIndex + 1` default.
+fn dest_world(world: &WorldData, wi: usize, location: &str) -> u8 {
+    world.dest.get(location).copied().unwrap_or((wi + 1) as u8)
+}
+
+/// The song-family icons whose counter behaviour follows the 'songs' setting.
+fn is_song_icon(icon: &str) -> bool {
+    matches!(
+        icon,
+        "song" | "song_green" | "song_red" | "song_blue" | "song_purple" | "song_orange" | "song_yellow"
+    )
+}
+
+/// A scene's display name, or a hex fallback for an unknown id.
+fn scene_name(game: Game, scene_id: u16) -> String {
+    game.scenes()
+        .iter()
+        .find(|s| s.id == scene_id)
+        .map(|s| s.name.to_string())
+        .unwrap_or_else(|| format!("Scene {scene_id:#x}"))
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn resolves_known_item_names() {
+        // A game-suffixed name and a suffix-less one both resolve.
+        assert_eq!(find_item_id("Fairy Bow (OoT)"), Some(data::iid::OOT_BOW));
+        assert_eq!(find_item_id("Zelda's Letter"), Some(data::iid::OOT_ZELDA_LETTER));
+        // Case-insensitive suffix.
+        assert_eq!(find_item_id("Boomerang (OOT)"), Some(data::iid::OOT_BOOMERANG));
+        // Unknown -> None (the C++ synthesises an id=-1 placeholder we skip).
+        assert_eq!(find_item_id("Definitely Not An Item"), None);
+    }
+
+    #[test]
+    fn bare_shared_item_names_resolve_to_the_shared_id() {
+        use data::iid::*;
+        // OoTMM writes shared Bomb Bags / Bows under their bare display name, but the
+        // tracker table carries them as "Shared X" — the bare name must still resolve
+        // (reported: a collected shared Bomb Bag lit neither the OoT nor the MM tile and
+        // was never credited to the logic). Bows behaved the same.
+        assert_eq!(find_item_id("Bomb Bag"), Some(SHARED_BOMB_BAG));
+        assert_eq!(find_item_id("Bow"), Some(SHARED_BOW));
+        // The other "Shared X" holdouts (magic arrows, magic upgrade) resolve too.
+        assert_eq!(find_item_id("Fire Arrows"), find_item_id("Shared Fire Arrows"));
+        assert!(find_item_id("Fire Arrows").is_some());
+        // A game-suffixed copy still resolves to that game's own id (fallback never fires).
+        assert_eq!(find_item_id("Bomb Bag (OoT)"), Some(OOT_BOMB_BAG));
+        assert_eq!(find_item_id("Bomb Bag (MM)"), Some(MM_BOMB_BAG));
+        // Shared items already carrying the bare name keep resolving directly.
+        assert_eq!(find_item_id("Progressive Strength"), Some(SHARED_STRENGTH));
+        assert_eq!(find_item_id("Fairy Slingshot"), Some(SHARED_SLINGSHOT));
+        // The MM and the SHARED Great Fairy's Sword share one bare name: the seed's
+        // `sharedGFS` decides which one a placement is.
+        let gfs = |on: bool| Sharing { gfs: on, bottles: false };
+        assert_eq!(find_placed_item_id("Great Fairy's Sword", gfs(false)), Some(data::iid::MM_GREAT_FAIRY_SWORD));
+        assert_eq!(find_placed_item_id("Great Fairy's Sword", gfs(true)), Some(data::iid::SHARED_GREAT_FAIRY_SWORD));
+        assert_eq!(find_placed_item_id("Great Fairy's Sword (OoT)", gfs(true)), Some(data::iid::OOT_GREAT_FAIRY_SWORD));
+
+        // Bottle contents share one name across OoT / MM / SHARED. Gold Dust and the
+        // Chateau bottle are MM items; `sharedBottles` turns every bottle SHARED (the
+        // copy `has_gold_dust` = `shared_bottle(..)` asks for — reported Gilded Sword).
+        let bottles = |on: bool| Sharing { gfs: false, bottles: on };
+        assert_eq!(find_placed_item_id("Bottle of Gold Dust", bottles(false)), Some(MM_BOTTLED_GOLD_DUST));
+        assert_eq!(find_placed_item_id("Bottle of Gold Dust", bottles(true)), Some(SHARED_BOTTLED_GOLD_DUST));
+        assert_eq!(find_placed_item_id("Bottle of Chateau Romani", bottles(false)), Some(MM_BOTTLE_CHATEAU));
+        assert_eq!(find_placed_item_id("Bottle of Chateau Romani", bottles(true)), Some(SHARED_BOTTLE_CHATEAU));
+        assert_eq!(find_placed_item_id("Ruto's Letter", bottles(false)), Some(OOT_BOTTLE_RUTO_LETTER));
+        assert_eq!(find_placed_item_id("Ruto's Letter", bottles(true)), Some(SHARED_BOTTLE_RUTO_LETTER));
+        assert_eq!(find_placed_item_id("Bottle of Blue Fire", bottles(false)), Some(OOT_BOTTLE_BLUE_FIRE));
+        assert_eq!(find_placed_item_id("Bottle of Blue Fire", bottles(true)), Some(SHARED_BOTTLE_BLUE_FIRE));
+        // Triforces are always the SHARED copy, whatever the sharing flags.
+        for s in [bottles(false), bottles(true)] {
+            assert_eq!(find_placed_item_id("Triforce Piece", s), Some(SHARED_TRIFORCE));
+            assert_eq!(find_placed_item_id("Triforce of Power", s), Some(SHARED_TRIFORCE_POWER));
+            assert_eq!(find_placed_item_id("Triforce of Courage", s), Some(SHARED_TRIFORCE_COURAGE));
+            assert_eq!(find_placed_item_id("Triforce of Wisdom", s), Some(SHARED_TRIFORCE_WISDOM));
+        }
+    }
+
+    #[test]
+    fn shared_bomb_bag_pickup_lights_both_games() {
+        // End to end: a shared Bomb Bag placed under the bare name "Bomb Bag" is now
+        // resolved (SHARED_BOMB_BAG), and its id sits on both games' bomb-bag tiers, so
+        // one pickup lights the base Bomb Bag tile on BOTH the OoT and the MM page
+        // (previously it resolved to nothing and neither lit).
+        let d = Dashboard::new();
+        let by_name_page = |name: &str, page: usize| {
+            d.flat()
+                .iter()
+                .position(|fe| fe.entry.name == name && fe.page == page)
+                .expect("bomb bag tile exists")
+        };
+        let oot = by_name_page("Bomb Bag", 0);
+        let mm = by_name_page("Bomb Bag", 1);
+
+        let a = data::OOT_OBJECTS
+            .iter()
+            .position(|o| o.type_ == data::ObjectType::gs)
+            .expect("an OoT gs object exists");
+        let places = [(data::OOT_OBJECTS[a].location, "Bomb Bag")];
+        let mut settings = Settings::default();
+        settings.apply(&HashSet::new());
+
+        let mut d = Dashboard::new();
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a)]), &settings, &HashSet::new());
+        assert!(d.state(oot).found, "the OoT Bomb Bag tile lights");
+        assert!(d.state(mm).found, "the MM Bomb Bag tile lights too (shared)");
+    }
+
+    #[test]
+    fn every_prog_icon_and_key_is_sane() {
+        let d = Dashboard::new();
+        assert!(!d.flat().is_empty());
+        // The Song of Storms ITEM is `OOT_SONG_STORMS` (0x8E) / `MM_SONG_STORMS`
+        // (0x293) — the value the progression entries key on. OoTMM also has an NPC
+        // symbol `OOT_/MM_SONG_OF_STORMS` (0x06 / 0x0D) for the windmill/graveyard
+        // NPC that teaches the song, and the C++ `ItemList` registers the song's
+        // ItemDef under THAT id, so `data::ITEMS` has no row at the item id itself.
+        // These two ids are valid item symbols regardless, so allow them here.
+        const ITEM_IDS_WITHOUT_A_DEDICATED_ITEMDEF: &[u32] =
+            &[data::iid::OOT_SONG_STORMS, data::iid::MM_SONG_STORMS];
+        // Every lookup key resolves to a real item id.
+        for fe in d.flat() {
+            for &k in fe.entry.lookup_keys {
+                assert!(
+                    data::ITEMS.iter().any(|it| it.id == k)
+                        || ITEM_IDS_WITHOUT_A_DEDICATED_ITEMDEF.contains(&k),
+                    "unknown item id {k:#x} in {}",
+                    fe.entry.name
+                );
+            }
+        }
+    }
+
+    /// Flat index of the first entry with the given display name.
+    fn entry_by_name(d: &Dashboard, name: &str) -> usize {
+        d.flat().iter().position(|fe| fe.entry.name == name).expect("entry exists")
+    }
+
+    /// Flat index of the entry whose lookup keys contain `key` (used to pick a
+    /// specific game's tier when the display name is shared across OoT and MM).
+    fn entry_with_key(d: &Dashboard, key: u32) -> usize {
+        d.flat().iter().position(|fe| fe.entry.lookup_keys.contains(&key)).expect("entry exists")
+    }
+
+    /// Build a single local world from (location -> item) placements plus a
+    /// collected set, for the tests below.
+    fn one_world(
+        items: &[(&str, &str)],
+        dest: &[(&str, u8)],
+        collected: &[(Game, usize)],
+    ) -> Vec<WorldData> {
+        let mut w = WorldData::default();
+        for &(loc, it) in items {
+            w.items.insert(loc.to_string(), it.to_string());
+        }
+        for &(loc, d) in dest {
+            w.dest.insert(loc.to_string(), d);
+        }
+        w.collected = collected.iter().copied().collect();
+        vec![w]
+    }
+
+    #[test]
+    fn collecting_marks_the_matching_entry() {
+        // Map an OoT object's location to "Fairy Bow (OoT)" and collect it.
+        let obj = &data::OOT_OBJECTS[0];
+        let worlds = one_world(&[(obj.location, "Fairy Bow (OoT)")], &[], &[(Game::Oot, 0)]);
+
+        let mut d = Dashboard::new();
+        d.rebuild(&worlds, &Settings::default(), &HashSet::new());
+
+        let bow = entry_by_name(&d, "Fairy Bow");
+        assert!(d.state(bow).found, "the bow widget should light up");
+        assert!(d.complete(bow));
+    }
+
+    #[test]
+    fn counter_entry_accumulates_per_placement() {
+        // Two distinct GS placements both hold a Gold Skulltula Token: count == 2.
+        let a = data::OOT_OBJECTS.iter().position(|o| o.type_ == data::ObjectType::gs).unwrap();
+        let b = data::OOT_OBJECTS
+            .iter()
+            .enumerate()
+            .position(|(i, o)| i != a && o.type_ == data::ObjectType::gs)
+            .unwrap();
+
+        let worlds = one_world(
+            &[
+                (data::OOT_OBJECTS[a].location, "Gold Skulltula Token"),
+                (data::OOT_OBJECTS[b].location, "Gold Skulltula Token"),
+            ],
+            &[],
+            &[(Game::Oot, a), (Game::Oot, b)],
+        );
+
+        let mut d = Dashboard::new();
+        d.rebuild(&worlds, &Settings::default(), &HashSet::new());
+
+        let gs = entry_by_name(&d, "Gold Skulltula Token");
+        assert_eq!(d.state(gs).count, 2, "each collected token bumps the counter");
+    }
+
+    /// Regression: a specific bottle item (Ruto's Letter) sits in BOTH the "Empty Bottle"
+    /// counter and its own widget on the same page. It is not a progressive family — a
+    /// counter is not a tier — so one pickup must light both. The bug classified the id as
+    /// a progressive marker, so `walk_stages` only bumped the bottle counter and left
+    /// Ruto's Letter dead (and a second bottle would have wrongly lit it).
+    #[test]
+    fn bottled_item_lights_both_the_bottle_counter_and_its_own_widget() {
+        let id = data::iid::OOT_BOTTLE_RUTO_LETTER;
+        let d0 = Dashboard::new();
+        assert!(
+            !d0.marker_ids.contains(&id),
+            "a specific bottle item shared with the Empty Bottle counter is not a progressive marker"
+        );
+
+        let mut d = Dashboard::new();
+        d.on_item_found(id, &Settings::default());
+
+        let ruto = entry_by_name(&d, "Ruto's Letter");
+        let bottle = entry_with_key(&d, data::iid::OOT_BOTTLE_EMPTY); // the OoT Empty Bottle counter
+        assert!(d.state(ruto).found, "Ruto's Letter widget must light on the pickup");
+        assert!(d.state(bottle).count >= 1, "the empty-bottle counter must also bump");
+    }
+
+    /// Regression (reported seed): the three Deku Stick capacity tiers (Capacity →
+    /// Upgrade → Second) are each keyed to a distinct level id (0x80 / 0x77 / 0x78). A
+    /// non-shared seed places those distinct ids, so collecting the middle-level item
+    /// used to light the "Deku Stick Upgrade" tier and leave Capacity dark. They form a
+    /// progressive stack, so any capacity pickup must fill the tiers bottom-up by count.
+    #[test]
+    fn stick_capacity_tiers_fill_bottom_up_by_count() {
+        let settings = Settings::default();
+        let mut d = Dashboard::new();
+        let cap = entry_with_key(&d, data::iid::OOT_STICK_UPGRADE); // OoT "Deku Stick Capacity" (218)
+        let upg = entry_with_key(&d, data::iid::OOT_STICK_UPGRADE2); // OoT "Deku Stick Upgrade" (219)
+        let second = entry_with_key(&d, data::iid::OOT_STICK_UPGRADE3); // OoT "Second …" (220)
+
+        // Collecting the MIDDLE-level item first must light the base Capacity tier.
+        d.on_item_found(data::iid::OOT_STICK_UPGRADE2, &settings);
+        assert!(d.state(cap).found, "first stick upgrade lights Capacity, not the middle tier");
+        assert!(!d.state(upg).found, "the Upgrade tier stays dark until the second pickup");
+        assert!(!d.state(second).found);
+
+        // A second pickup (any level id) advances to the next tier in order.
+        d.on_item_found(data::iid::OOT_STICK_UPGRADE, &settings);
+        assert!(d.state(upg).found, "second stick pickup lights the Upgrade tier");
+        assert!(!d.state(second).found, "Second stays dark until a third pickup");
+
+        // The nut family behaves the same (verify the routing covers it too).
+        let mut dn = Dashboard::new();
+        let ncap = entry_with_key(&dn, data::iid::OOT_NUT_UPGRADE);
+        dn.on_item_found(data::iid::OOT_NUT_UPGRADE3, &settings); // top-level nut id first
+        assert!(dn.state(ncap).found, "first nut pickup lights Nut Capacity");
+    }
+
+    /// `progressiveSwordsOot: goron` — only Giant's Knife + Biggoron are progressive
+    /// (delivered as "Progressive Goron Sword", OOT_SWORD_GORON), while Kokiri and
+    /// Master are independent placements of their own ids. Verify the dashboard lights
+    /// the right tiles: the two independent swords on their own pickups, and the goron
+    /// pair filling bottom-up (Knife then Biggoron) on successive Goron-sword pickups.
+    #[test]
+    fn goron_swords_split_independent_and_progressive_pair() {
+        use data::iid::*;
+        // The placed item names resolve to the ids the goron branch expects.
+        assert_eq!(find_item_id("Kokiri Sword (OoT)"), Some(OOT_SWORD_KOKIRI));
+        assert_eq!(find_item_id("Master Sword"), Some(OOT_SWORD_MASTER));
+        assert_eq!(find_item_id("Progressive Goron Sword"), Some(OOT_SWORD_GORON));
+
+        let mut settings = Settings::default();
+        settings.set_value("progressiveSwordsOot", data::ShuffleSetting::overworld); // "goron"
+        settings.apply(&HashSet::new());
+
+        let mut d = Dashboard::new();
+        let kokiri = entry_with_key(&d, OOT_SWORD_KOKIRI);
+        let master = entry_with_key(&d, OOT_SWORD_MASTER);
+        let knife = entry_with_key(&d, OOT_SWORD_KNIFE);
+        let biggoron = entry_with_key(&d, OOT_SWORD_BIGGORON);
+
+        // Independent swords light only their own tile.
+        d.on_item_found(OOT_SWORD_KOKIRI, &settings);
+        assert!(d.state(kokiri).found, "Kokiri Sword lights its own tile");
+        assert!(!d.state(knife).found, "and nothing in the goron pair");
+        d.on_item_found(OOT_SWORD_MASTER, &settings);
+        assert!(d.state(master).found, "Master Sword lights its own tile");
+
+        // The goron pair fills bottom-up: first Goron sword = Giant's Knife, second = Biggoron.
+        d.on_item_found(OOT_SWORD_GORON, &settings);
+        assert!(d.state(knife).found, "first Progressive Goron Sword lights Giant's Knife");
+        assert!(!d.state(biggoron).found, "Biggoron stays dark until the second pickup");
+        d.on_item_found(OOT_SWORD_GORON, &settings);
+        assert!(d.state(biggoron).found, "second Progressive Goron Sword advances to Biggoron's Sword");
+    }
+
+    #[test]
+    fn mm_quiver_upgrades_fill_bottom_up_from_repeated_hero_bow() {
+        use data::iid::*;
+        // OoTMM names every quiver upgrade with the BASE item's name ("Hero's Bow"),
+        // so the spoiler resolves each pickup to MM_BOW (0x224) — never to Big/Biggest
+        // Quiver directly. The 2nd Hero's Bow must advance to Big Quiver, the 3rd to
+        // Biggest Quiver, filling the family bottom-up instead of stalling on the base
+        // tile. (Reported: "un 2ème Hero's Bow (MM) mais le premier carquois pas obtenu".)
+        assert_eq!(find_item_id("Hero's Bow (MM)"), Some(MM_BOW));
+
+        let mut settings = Settings::default();
+        settings.apply(&HashSet::new());
+
+        let mut d = Dashboard::new();
+        let bow = entry_with_key(&d, MM_BOW);
+        let big = entry_with_key(&d, MM_QUIVER2);
+        let biggest = entry_with_key(&d, MM_QUIVER3);
+
+        d.on_item_found(MM_BOW, &settings);
+        assert!(d.state(bow).found, "first Hero's Bow lights the bow tile");
+        assert!(!d.state(big).found, "Big Quiver stays dark after one bow");
+
+        d.on_item_found(MM_BOW, &settings);
+        assert!(d.state(big).found, "second Hero's Bow advances to Big Quiver");
+        assert!(!d.state(biggest).found, "Biggest Quiver waits for the third pickup");
+
+        d.on_item_found(MM_BOW, &settings);
+        assert!(d.state(biggest).found, "third Hero's Bow advances to Biggest Quiver");
+    }
+
+    #[test]
+    fn multiworld_routes_by_destination_player() {
+        // Two GS coordinates. In world 1, coord `a` holds a token for player 1
+        // (own, no prefix) and coord `b` holds one destined to player 2. Both are
+        // collected in world 1. World 2 is present but physically empty.
+        let a = data::OOT_OBJECTS.iter().position(|o| o.type_ == data::ObjectType::gs).unwrap();
+        let b = data::OOT_OBJECTS
+            .iter()
+            .enumerate()
+            .position(|(i, o)| i != a && o.type_ == data::ObjectType::gs)
+            .unwrap();
+
+        let mut w1 = WorldData::default();
+        w1.items.insert(data::OOT_OBJECTS[a].location.to_string(), "Gold Skulltula Token".to_string());
+        w1.items.insert(data::OOT_OBJECTS[b].location.to_string(), "Gold Skulltula Token".to_string());
+        w1.dest.insert(data::OOT_OBJECTS[b].location.to_string(), 2u8);
+        w1.collected.insert((Game::Oot, a));
+        w1.collected.insert((Game::Oot, b));
+        let worlds = vec![w1, WorldData::default()];
+
+        let gs = |d: &Dashboard| entry_by_name(d, "Gold Skulltula Token");
+        let mut d = Dashboard::new();
+
+        // World 1 (default): only the own token (a) counts; b is sent to player 2.
+        d.rebuild(&worlds, &Settings::default(), &HashSet::new());
+        assert_eq!(d.state(gs(&d)).count, 1, "player-2 token excluded from world 1");
+
+        // World 2: only the placement destined to player 2 (coord b) counts,
+        // even though it physically lives in world 1 (Qt "option b").
+        d.set_active_world(2);
+        d.rebuild(&worlds, &Settings::default(), &HashSet::new());
+        assert_eq!(d.state(gs(&d)).count, 1, "world 2 sees the token routed to it");
+    }
+
+    #[test]
+    fn progressive_upgrade_requirements() {
+        // Big Quiver needs 2 bows, Biggest Quiver 3.
+        assert_eq!(
+            progressive_upgrade_requirement(data::iid::OOT_QUIVER2),
+            Some((data::iid::OOT_BOW, 2))
+        );
+        assert_eq!(
+            progressive_upgrade_requirement(data::iid::OOT_QUIVER3),
+            Some((data::iid::OOT_BOW, 3))
+        );
+        // The base itself is not an upgrade.
+        assert_eq!(progressive_upgrade_requirement(data::iid::OOT_BOW), None);
+    }
+
+    #[test]
+    fn progressive_ocarina_lights_stages_in_order() {
+        // Two placements both holding a "Progressive Ocarina". Collecting the
+        // first must light ONLY the Fairy Ocarina, not Ocarina of Time — the
+        // regression being that the shared OOT_OCARINA id sits in both widgets'
+        // lookup keys and, when the ocarina wasn't treated as progressive, lit
+        // them both on the first pickup.
+        let gs: Vec<usize> = data::OOT_OBJECTS
+            .iter()
+            .enumerate()
+            .filter(|(_, o)| o.type_ == data::ObjectType::gs)
+            .map(|(i, _)| i)
+            .take(2)
+            .collect();
+        let (a, b) = (gs[0], gs[1]);
+        let places = [
+            (data::OOT_OBJECTS[a].location, "Progressive Ocarina (OoT)"),
+            (data::OOT_OBJECTS[b].location, "Progressive Ocarina (OoT)"),
+        ];
+        // apply() derives progressive_item_ids (incl. the always-progressive ocarina).
+        let mut settings = Settings::default();
+        settings.apply(&HashSet::new());
+
+        let mut d = Dashboard::new();
+        let fairy = entry_by_name(&d, "Fairy Ocarina");
+        let time = entry_by_name(&d, "Ocarina of Time"); // first match = the OoT page
+
+        // Only the first placement collected.
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a)]), &settings, &HashSet::new());
+        assert!(d.state(fairy).found, "first Progressive Ocarina lights Fairy Ocarina");
+        assert!(!d.state(time).found, "and not Ocarina of Time yet (progressive walk)");
+
+        // Both collected → the second advances to Ocarina of Time.
+        d.rebuild(
+            &one_world(&places, &[], &[(Game::Oot, a), (Game::Oot, b)]),
+            &settings,
+            &HashSet::new(),
+        );
+        assert!(d.state(time).found, "second Progressive Ocarina lights Ocarina of Time");
+    }
+
+    #[test]
+    fn progressive_strength_walks_one_tier_at_a_time() {
+        // Strength (Bracelet -> Silver -> Golden) is always progressive in OoTMM but
+        // has NO progressive setting row, so `OOT_STRENGTH` — the marker every
+        // gauntlet widget lists — was never marked progressive and one pickup lit all
+        // three. It is now derived as a structural family marker.
+        assert_eq!(find_item_id("Progressive Strength (OoT)"), Some(data::iid::OOT_STRENGTH));
+        let gs: Vec<usize> = data::OOT_OBJECTS
+            .iter()
+            .enumerate()
+            .filter(|(_, o)| o.type_ == data::ObjectType::gs)
+            .map(|(i, _)| i)
+            .take(2)
+            .collect();
+        let (a, b) = (gs[0], gs[1]);
+        let places = [
+            (data::OOT_OBJECTS[a].location, "Progressive Strength (OoT)"),
+            (data::OOT_OBJECTS[b].location, "Progressive Strength (OoT)"),
+        ];
+        let mut settings = Settings::default();
+        settings.apply(&HashSet::new());
+
+        let d0 = Dashboard::new();
+        assert!(d0.marker_ids.contains(&data::iid::OOT_STRENGTH), "strength marker derived");
+
+        let mut d = Dashboard::new();
+        let bracelet = entry_by_name(&d, "Goron's Bracelet"); // first match = OoT page
+        let silver = entry_by_name(&d, "Silver Gauntlets");
+        let golden = entry_by_name(&d, "Golden Gauntlets");
+
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a)]), &settings, &HashSet::new());
+        assert!(d.state(bracelet).found, "first strength lights Goron's Bracelet");
+        assert!(!d.state(silver).found, "and not Silver Gauntlets yet");
+        assert!(!d.state(golden).found, "and not Golden Gauntlets yet");
+
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a), (Game::Oot, b)]), &settings, &HashSet::new());
+        assert!(d.state(silver).found, "second strength advances to Silver Gauntlets");
+        assert!(!d.state(golden).found, "still not Golden Gauntlets (only two collected)");
+    }
+
+    #[test]
+    fn progressive_shield_walks_one_tier_at_a_time() {
+        // MM shields: the generic `MM_SHIELD` marker sits on all three shield widgets
+        // but the progressive setting only lists the specific ids, so a pickup that
+        // resolves to the generic id lit all three. Now covered by the structural
+        // marker set. (Uses the MM widgets, picked by a game-specific key since the
+        // display names are shared with OoT.)
+        assert_eq!(find_item_id("Progressive Shield (MM)"), Some(data::iid::MM_SHIELD));
+        let objs: Vec<usize> = data::MM_OBJECTS
+            .iter()
+            .enumerate()
+            .filter(|(_, o)| o.type_ == data::ObjectType::gs || o.type_ == data::ObjectType::chest)
+            .map(|(i, _)| i)
+            .take(2)
+            .collect();
+        let (a, b) = (objs[0], objs[1]);
+        let places = [
+            (data::MM_OBJECTS[a].location, "Progressive Shield (MM)"),
+            (data::MM_OBJECTS[b].location, "Progressive Shield (MM)"),
+        ];
+        let mut settings = Settings::default();
+        settings.apply(&HashSet::new());
+
+        let mut d = Dashboard::new();
+        assert!(d.marker_ids.contains(&data::iid::MM_SHIELD), "shield marker derived");
+        let deku = entry_with_key(&d, data::iid::MM_SHIELD_DEKU);
+        let hero = entry_with_key(&d, data::iid::MM_SHIELD_HERO);
+
+        d.rebuild(&one_world(&places, &[], &[(Game::Mm, a)]), &settings, &HashSet::new());
+        assert!(d.state(deku).found, "first MM shield lights the first tier");
+        assert!(!d.state(hero).found, "and not the second tier yet");
+
+        d.rebuild(&one_world(&places, &[], &[(Game::Mm, a), (Game::Mm, b)]), &settings, &HashSet::new());
+        assert!(d.state(hero).found, "second MM shield advances one tier");
+    }
+
+    #[test]
+    fn short_hookshot_walks_short_then_full() {
+        use data::iid::*;
+        // OoTMM's shortHookshotMm places the SAME "Hookshot (MM)" item twice: the
+        // first pickup is the short-range hookshot, the second upgrades it to full.
+        // Both resolve to MM_HOOKSHOT (no placement is ever "Short Hookshot"), so the
+        // tracker must walk [Short Hookshot, Hookshot] on successive pickups.
+        assert_eq!(find_item_id("Hookshot (MM)"), Some(MM_HOOKSHOT));
+
+        let objs: Vec<usize> = data::MM_OBJECTS
+            .iter()
+            .enumerate()
+            .filter(|(_, o)| o.type_ == data::ObjectType::chest || o.type_ == data::ObjectType::gs)
+            .map(|(i, _)| i)
+            .take(2)
+            .collect();
+        let (a, b) = (objs[0], objs[1]);
+        let places = [
+            (data::MM_OBJECTS[a].location, "Hookshot (MM)"),
+            (data::MM_OBJECTS[b].location, "Hookshot (MM)"),
+        ];
+
+        // shortHookshotMm ON: MM_HOOKSHOT_SHORT stays enabled (Short tier visible).
+        let mut settings = Settings::default();
+        settings.set_value("shortHookshotMm", data::ShuffleSetting::all);
+        settings.apply(&HashSet::new());
+        assert!(
+            !settings.disabled_item_ids.contains(&MM_HOOKSHOT_SHORT),
+            "setting on keeps the short item enabled"
+        );
+
+        let mut d = Dashboard::new();
+        let short = entry_with_key(&d, MM_HOOKSHOT_SHORT);
+        let full = entry_with_key(&d, MM_HOOKSHOT);
+
+        d.rebuild(&one_world(&places, &[], &[(Game::Mm, a)]), &settings, &HashSet::new());
+        assert!(d.state(short).found, "first Hookshot (MM) lights the Short Hookshot tier");
+        assert!(!d.state(full).found, "and not the full Hookshot yet");
+
+        d.rebuild(&one_world(&places, &[], &[(Game::Mm, a), (Game::Mm, b)]), &settings, &HashSet::new());
+        assert!(d.state(full).found, "second Hookshot (MM) advances to the full Hookshot");
+
+        // shortHookshotMm OFF: the short item is disabled and a lone hookshot is full.
+        let mut off = Settings::default();
+        off.set_value("shortHookshotMm", data::ShuffleSetting::vanilla);
+        off.apply(&HashSet::new());
+        assert!(
+            off.disabled_item_ids.contains(&MM_HOOKSHOT_SHORT),
+            "setting off disables the short item"
+        );
+
+        let mut d2 = Dashboard::new();
+        d2.rebuild(&one_world(&places, &[], &[(Game::Mm, a)]), &off, &HashSet::new());
+        assert!(d2.state(full).found, "with the setting off, one hookshot is the full Hookshot");
+        assert!(!d2.state(short).found, "and the Short tier stays unlit");
+    }
+
+    #[test]
+    fn preplanted_beans_hide_only_the_oot_magic_beans_tile() {
+        use data::iid::{MM_MAGIC_BEAN, OOT_MAGIC_BEAN};
+        let d = Dashboard::new();
+        let oot = entry_with_key(&d, OOT_MAGIC_BEAN);
+        let mm = entry_with_key(&d, MM_MAGIC_BEAN);
+
+        // Off: both Magic Beans tiles are visible.
+        let mut off = Settings::default();
+        off.apply(&HashSet::new());
+        assert!(!d.entry_hidden(oot, &off), "OoT Magic Beans shows when pre-planted beans is off");
+        assert!(!d.entry_hidden(mm, &off), "MM Magic Beans shows regardless");
+
+        // On: only the OoT tile hides; MM (a separate item and setting) stays.
+        let mut on = Settings::default();
+        on.raw_settings.insert("ootPreplantedBeans".into(), "true".into());
+        on.apply(&HashSet::new());
+        assert!(d.entry_hidden(oot, &on), "OoT Magic Beans hides when pre-planted beans is on");
+        assert!(!d.entry_hidden(mm, &on), "MM Magic Beans stays visible");
+    }
+
+    /// King Zora `open` can remove Ruto's Letter (replaced by an empty bottle), but
+    /// whether shared bottles keep it changed between OoTMM builds — so the tile hides
+    /// from the placements: King Zora open AND no Ruto's Letter placed. The Empty
+    /// Bottle counters, which also list the letter ids, stay visible.
+    #[test]
+    fn open_king_zora_hides_the_rutos_letter_tile_only_when_none_is_placed() {
+        let letter_tile = |d: &Dashboard| {
+            d.flat().iter().position(|fe| fe.entry.name == "Ruto's Letter").expect("letter tile")
+        };
+        let settings = |kz: &str| {
+            let mut s = Settings::default();
+            s.raw_settings.insert("zoraKing".into(), kz.into());
+            s.apply(&HashSet::new());
+            s
+        };
+        let loc = data::OOT_OBJECTS[0].location;
+        let hidden = |kz: &str, item: &str| {
+            let s = settings(kz);
+            let mut d = Dashboard::new();
+            d.rebuild(&one_world(&[(loc, item)], &[], &[]), &s, &HashSet::new());
+            let bottles_visible = d
+                .flat()
+                .iter()
+                .enumerate()
+                .filter(|(_, fe)| fe.entry.name == "Empty Bottle")
+                .all(|(i, _)| !d.entry_hidden(i, &s));
+            assert!(bottles_visible, "Empty Bottle tiles never hide");
+            d.entry_hidden(letter_tile(&d), &s)
+        };
+
+        assert!(hidden("open", "Green Rupee"), "open + no letter placed: hidden (dev builds)");
+        assert!(!hidden("open", "Ruto's Letter"), "open + letter still placed: shown (v32.3 shared bottles)");
+        assert!(!hidden("open", "Player 2 Ruto's Letter"), "multiworld spelling counts too");
+        assert!(!hidden("adult", "Green Rupee"), "adult-only keeps the letter");
+        assert!(!hidden("vanilla", "Green Rupee"), "vanilla keeps the letter");
+    }
+
+    /// Kakariko gate `open` removes Zelda's Letter from the pool (transform.ts): its
+    /// tile hides. A closed gate keeps it.
+    /// Gerudo Fortress `open`: no hideout keys exist (every carpenter starts rescued),
+    /// so the hideout small key and key ring tiles hide. Other modes keep them.
+    #[test]
+    fn open_fortress_hides_the_hideout_keys() {
+        let d = Dashboard::new();
+        let small = entry_with_key(&d, data::iid::OOT_SMALL_KEY_GF);
+        let ring = entry_with_key(&d, data::iid::OOT_KEY_RING_GF);
+        let build = |gf: &str| {
+            let mut s = Settings::default();
+            s.raw_settings.insert("gerudoFortress".into(), gf.into());
+            s.apply(&HashSet::new());
+            s
+        };
+        let open = build("open");
+        assert!(d.entry_hidden(small, &open) && d.entry_hidden(ring, &open), "open hides both");
+        for gf in ["vanilla", "single"] {
+            let s = build(gf);
+            assert!(!d.entry_hidden(ring, &s), "{gf}: key ring tile stays");
+        }
+    }
+
+    /// With shared child swords the single progressive SHARED_SWORD walks Kokiri ->
+    /// Razor -> Gilded on the OoT page too; it must not be listed on the Master /
+    /// Giant's Knife / Biggoron tiles, which the walk lit instead of the Gilded Sword.
+    #[test]
+    fn shared_sword_tiers_are_the_child_swords_only() {
+        let d = Dashboard::new();
+        let names: Vec<&str> = d
+            .flat()
+            .iter()
+            .filter(|fe| fe.entry.lookup_keys.contains(&data::iid::SHARED_SWORD))
+            .map(|fe| fe.entry.name)
+            .collect();
+        for n in &names {
+            assert!(
+                matches!(*n, "Kokiri Sword" | "Razor Sword" | "Gilded Sword"),
+                "SHARED_SWORD listed on {n}"
+            );
+        }
+        assert_eq!(names.len(), 6, "three child swords on each game page");
+    }
+
+    /// `extraChildSwordsOot`: each "Progressive Sword (OoT)" grants Kokiri -> Razor ->
+    /// Gilded (Master Sword separate). Without it (progressive mode) the same item walks
+    /// Kokiri -> Master.
+    #[test]
+    fn extra_child_swords_walk_kokiri_razor_gilded() {
+        let (a, b, c) = (&data::OOT_OBJECTS[0], &data::OOT_OBJECTS[1], &data::OOT_OBJECTS[2]);
+        let worlds = one_world(
+            &[(a.location, "Progressive Sword (OoT)"), (b.location, "Progressive Sword (OoT)"), (c.location, "Progressive Sword (OoT)")],
+            &[],
+            &[(Game::Oot, 0), (Game::Oot, 1), (Game::Oot, 2)],
+        );
+        let settings = |extra: bool| {
+            let mut s = Settings::default();
+            if extra {
+                s.raw_settings.insert("extraChildSwordsOot".into(), "true".into());
+            }
+            s.apply(&HashSet::new());
+            s
+        };
+        let found = |d: &Dashboard, n: &str| d.state(entry_by_name(d, n)).found;
+
+        let mut d = Dashboard::new();
+        d.rebuild(&worlds, &settings(true), &HashSet::new());
+        for n in ["Kokiri Sword", "Razor Sword", "Gilded Sword"] {
+            assert!(found(&d, n), "extra child swords: {n} lit");
+        }
+        assert!(!found(&d, "Master Sword"), "Master Sword stays a separate item");
+
+        let mut d = Dashboard::new();
+        d.rebuild(&worlds, &settings(false), &HashSet::new());
+        assert!(found(&d, "Master Sword"), "progressive mode: the 2nd sword is the Master Sword");
+        assert!(!found(&d, "Gilded Sword"), "progressive mode never lights the Gilded Sword");
+    }
+
+    #[test]
+    fn open_kakariko_gate_hides_zeldas_letter() {
+        let d = Dashboard::new();
+        let letter = entry_with_key(&d, data::iid::OOT_ZELDA_LETTER);
+        let build = |gate: &str| {
+            let mut s = Settings::default();
+            s.raw_settings.insert("kakarikoGate".into(), gate.into());
+            s.apply(&HashSet::new());
+            s
+        };
+        assert!(d.entry_hidden(letter, &build("open")), "open gate hides Zelda's Letter");
+        assert!(!d.entry_hidden(letter, &build("closed")), "closed gate keeps it");
+    }
+
+    #[test]
+    fn heaviest_weighed_fish_is_tracked_for_the_detail_panel() {
+        use data::iid::{OOT_FISHING_POND_CHILD_FISH_7LBS, OOT_FISHING_POND_CHILD_FISH_12LBS};
+        // The panel derives the weight from the item name's "(N pounds)" suffix.
+        assert_eq!(super::fish_weight_lbs(OOT_FISHING_POND_CHILD_FISH_7LBS), Some(7));
+        assert_eq!(super::fish_weight_lbs(OOT_FISHING_POND_CHILD_FISH_12LBS), Some(12));
+        assert_eq!(super::fish_weight_lbs(data::iid::OOT_STICK), None, "a non-fish item has no weight");
+
+        // pondFishShuffle disperses each weighed fish as its own item; two of them land
+        // on real OoT objects and both get collected — the tile must remember the heavier.
+        let mq: HashSet<(Game, u16)> = HashSet::new();
+        let objs: Vec<usize> = data::OOT_OBJECTS
+            .iter()
+            .enumerate()
+            .filter(|(_, o)| {
+                o.type_ != data::ObjectType::none
+                    && crate::tracking::object_active(o, Game::Oot, &mq)
+            })
+            .map(|(i, _)| i)
+            .take(2)
+            .collect();
+        let (a, b) = (objs[0], objs[1]);
+        let places = [
+            (data::OOT_OBJECTS[a].location, "Child Fish (7 pounds)"),
+            (data::OOT_OBJECTS[b].location, "Child Fish (12 pounds)"),
+        ];
+        let mut settings = Settings::default();
+        settings.apply(&mq);
+
+        let mut d = Dashboard::new();
+        let child_fish = entry_by_name(&d, "Child Fish");
+        let adult_loach = entry_by_name(&d, "Adult Loach");
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a), (Game::Oot, b)]), &settings, &mq);
+        assert_eq!(
+            d.state(child_fish).heaviest_lbs,
+            Some(12),
+            "the tile remembers the heavier of the two catches"
+        );
+        assert_eq!(
+            d.state(adult_loach).heaviest_lbs,
+            None,
+            "a fish kind that was never caught has no weight"
+        );
+    }
+
+    #[test]
+    fn progressive_goron_lullaby_tells_intro_from_full_song() {
+        use data::iid::{MM_SONG_GORON_HALF, OOT_SONG_GORON_HALF};
+        assert_eq!(find_item_id("Progressive Goron Lullaby (OoT)"), Some(OOT_SONG_GORON_HALF));
+        assert_eq!(find_item_id("Note from Goron Lullaby (OoT)"), Some(data::iid::OOT_SONG_NOTE_GORON));
+
+        // Eight active OoT objects to hang the placements on (the note case needs 8).
+        let mq: HashSet<(Game, u16)> = HashSet::new();
+        let objs: Vec<usize> = data::OOT_OBJECTS
+            .iter()
+            .enumerate()
+            .filter(|(_, o)| {
+                o.type_ != data::ObjectType::none
+                    && crate::tracking::object_active(o, Game::Oot, &mq)
+            })
+            .map(|(i, _)| i)
+            .take(8)
+            .collect();
+        let collected =
+            |n: usize| -> Vec<(Game, usize)> { objs[..n].iter().map(|&i| (Game::Oot, i)).collect() };
+
+        let mut d = Dashboard::new();
+        let oot = entry_with_key(&d, OOT_SONG_GORON_HALF);
+        let mm = entry_with_key(&d, MM_SONG_GORON_HALF);
+
+        // `progressive`: two copies of the progressive song — intro, then the whole thing.
+        let mut settings = Settings::default();
+        settings.parse_spoiler("Settings
+  progressiveGoronLullabyOot: progressive
+", &mq);
+        settings.apply(&mq);
+        let places: Vec<(&str, &str)> = objs[..2]
+            .iter()
+            .map(|&i| (data::OOT_OBJECTS[i].location, "Progressive Goron Lullaby (OoT)"))
+            .collect();
+
+        d.rebuild(&one_world(&places, &[], &collected(1)), &settings, &mq);
+        assert_eq!(
+            d.state(oot).lullaby_stage,
+            Some(LullabyStage::Intro),
+            "one progressive copy teaches the intro only"
+        );
+        assert_eq!(d.state(mm).lullaby_stage, None, "the MM tile got nothing");
+
+        d.rebuild(&one_world(&places, &[], &collected(2)), &settings, &mq);
+        assert_eq!(
+            d.state(oot).lullaby_stage,
+            Some(LullabyStage::Full),
+            "the second copy completes the lullaby"
+        );
+
+        // `single`: one full lullaby, so there is no intro stage to report.
+        let mut single = Settings::default();
+        single.parse_spoiler("Settings
+  progressiveGoronLullabyOot: single
+", &mq);
+        single.apply(&mq);
+        let full_places: Vec<(&str, &str)> =
+            objs[..1].iter().map(|&i| (data::OOT_OBJECTS[i].location, "Goron Lullaby (OoT)")).collect();
+        d.rebuild(&one_world(&full_places, &[], &collected(1)), &single, &mq);
+        assert!(d.state(oot).found, "the tile still lights up");
+        assert_eq!(d.state(oot).lullaby_stage, None, "`single` has no intro / full split");
+
+        // `songs: notes`: the split becomes a threshold — 6 of the 8 notes play the
+        // intro, all 8 the full song (macros_common.yml `has_song_goron_half`).
+        let mut notes = Settings::default();
+        notes.parse_spoiler(
+            "Settings
+  songs: notes
+  progressiveGoronLullabyOot: progressive
+",
+            &mq,
+        );
+        notes.apply(&mq);
+        let note_places: Vec<(&str, &str)> = objs
+            .iter()
+            .map(|&i| (data::OOT_OBJECTS[i].location, "Note from Goron Lullaby (OoT)"))
+            .collect();
+
+        d.rebuild(&one_world(&note_places, &[], &collected(5)), &notes, &mq);
+        assert_eq!(d.state(oot).lullaby_stage, None, "5 notes play nothing");
+        d.rebuild(&one_world(&note_places, &[], &collected(6)), &notes, &mq);
+        assert_eq!(
+            d.state(oot).lullaby_stage,
+            Some(LullabyStage::Intro),
+            "the 6th note unlocks the intro"
+        );
+        d.rebuild(&one_world(&note_places, &[], &collected(8)), &notes, &mq);
+        assert_eq!(
+            d.state(oot).lullaby_stage,
+            Some(LullabyStage::Full),
+            "all 8 notes play the whole lullaby"
+        );
+    }
+
+    #[test]
+    fn shared_soul_lights_both_game_mirrors() {
+        use data::iid::SHARED_SOUL_NPC_MEDIGORON;
+        // A shared soul is placed once (the combined "Soul of Medigoron/Keg Trial
+        // Goron"), and its id sits on BOTH the OoT and the MM soul tile. Those tiles
+        // live in different, game-labelled sections of the one "Souls" page, so the
+        // shared id must NOT be taken for a progressive-family marker — otherwise
+        // `walk_stages` lights only the OoT tile and the MM mirror stays dark even
+        // though its detail panel shows the soul collected (the reported bug).
+        assert_eq!(
+            find_item_id("Soul of Medigoron/Keg Trial Goron"),
+            Some(SHARED_SOUL_NPC_MEDIGORON)
+        );
+        let d0 = Dashboard::new();
+        assert!(
+            !d0.marker_ids.contains(&SHARED_SOUL_NPC_MEDIGORON),
+            "a cross-section shared mirror must not be treated as a progressive marker"
+        );
+
+        // Attach the placement to a real OoT object and collect it.
+        let a = data::OOT_OBJECTS
+            .iter()
+            .position(|o| o.type_ == data::ObjectType::gs)
+            .expect("an OoT gs object exists");
+        let places = [(data::OOT_OBJECTS[a].location, "Soul of Medigoron/Keg Trial Goron")];
+        let mut settings = Settings::default();
+        settings.apply(&HashSet::new());
+
+        let mut d = Dashboard::new();
+        let oot = entry_by_name(&d, "Soul of Medigoron");
+        let mm = entry_by_name(&d, "Soul of Keg Trial Goron");
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a)]), &settings, &HashSet::new());
+        assert!(d.state(oot).found, "the OoT Medigoron soul tile lights");
+        assert!(
+            d.state(mm).found,
+            "the MM Keg Trial soul tile lights too — shared propagation to every mirror"
+        );
+    }
+
+    #[test]
+    fn shared_progressive_strength_advances_both_pages() {
+        use data::iid::SHARED_STRENGTH;
+        // Shared Progressive Strength is placed once ("Progressive Strength" =
+        // SHARED_STRENGTH) and its id sits on the strength tiers of BOTH the OoT page
+        // and the MM page. Each pickup must advance one tier on EACH page — not just
+        // walk the first page's tier and leave the other game's mirror dark (reported:
+        // shared strength lit OoT only).
+        assert_eq!(find_item_id("Progressive Strength"), Some(SHARED_STRENGTH));
+
+        // Tile names repeat across pages, so locate each by (name, page): OoT page = 0,
+        // MM page = 1 (PROG_PAGES order).
+        let d = Dashboard::new();
+        let by_name_page = |name: &str, page: usize| {
+            d.flat()
+                .iter()
+                .position(|fe| fe.entry.name == name && fe.page == page)
+                .expect("tile exists")
+        };
+        let oot_bracelet = by_name_page("Goron's Bracelet", 0);
+        let oot_silver = by_name_page("Silver Gauntlets", 0);
+        let mm_bracelet = by_name_page("Goron's Bracelet", 1);
+        let mm_silver = by_name_page("Silver Gauntlets", 1);
+
+        let gs: Vec<usize> = data::OOT_OBJECTS
+            .iter()
+            .enumerate()
+            .filter(|(_, o)| o.type_ == data::ObjectType::gs)
+            .map(|(i, _)| i)
+            .take(2)
+            .collect();
+        let (a, b) = (gs[0], gs[1]);
+        let places = [
+            (data::OOT_OBJECTS[a].location, "Progressive Strength"),
+            (data::OOT_OBJECTS[b].location, "Progressive Strength"),
+        ];
+        let mut settings = Settings::default();
+        settings.apply(&HashSet::new());
+
+        let mut d = Dashboard::new();
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a)]), &settings, &HashSet::new());
+        assert!(d.state(oot_bracelet).found, "first shared strength lights OoT Goron's Bracelet");
+        assert!(d.state(mm_bracelet).found, "and the MM Goron's Bracelet too");
+        assert!(!d.state(oot_silver).found, "not the OoT second tier yet");
+        assert!(!d.state(mm_silver).found, "nor the MM second tier yet");
+
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a), (Game::Oot, b)]), &settings, &HashSet::new());
+        assert!(d.state(oot_silver).found, "second pickup advances OoT to Silver Gauntlets");
+        assert!(d.state(mm_silver).found, "and MM to Silver Gauntlets in lockstep");
+    }
+
+    #[test]
+    fn progressive_clocks_light_from_starting_clock_in_each_direction() {
+        use data::iid::MM_CLOCK;
+        // The MM progressive clock is placed as "Progressive Clock (MM)" but the table
+        // only holds the bare "Progressive Clock" — resolution must bridge it, or no
+        // clock ever registers.
+        assert_eq!(find_item_id("Progressive Clock (MM)"), Some(MM_CLOCK));
+
+        let d = Dashboard::new();
+        let tile = |name: &str| entry_by_name(&d, name);
+        let (day1, night1, day2) =
+            (tile("Clock (Day 1)"), tile("Clock (Night 1)"), tile("Clock (Day 2)"));
+        let (day3, night2, night3) =
+            (tile("Clock (Day 3)"), tile("Clock (Night 2)"), tile("Clock (Night 3)"));
+
+        // Two OoT objects to host the collected Progressive Clocks.
+        let gs: Vec<usize> = data::OOT_OBJECTS
+            .iter()
+            .enumerate()
+            .filter(|(_, o)| o.type_ == data::ObjectType::gs)
+            .map(|(i, _)| i)
+            .take(2)
+            .collect();
+        let (a, b) = (gs[0], gs[1]);
+        let places = [
+            (data::OOT_OBJECTS[a].location, "Progressive Clock (MM)"),
+            (data::OOT_OBJECTS[b].location, "Progressive Clock (MM)"),
+        ];
+        let settings = |mode: &str| {
+            let mut s = Settings::default();
+            s.raw_settings.insert("clocksMm".into(), "true".into());
+            s.raw_settings.insert("progressiveClocks".into(), mode.into());
+            s.apply(&HashSet::new());
+            s
+        };
+
+        // Descending: start at Night 3, then unlock backward (Day 3, Night 2, …).
+        let desc = settings("descending");
+        let mut d = Dashboard::new();
+        d.rebuild(&one_world(&places, &[], &[]), &desc, &HashSet::new());
+        assert!(d.state(night3).found, "descending starts at Night 3");
+        assert!(!d.state(day1).found, "and not Day 1");
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a)]), &desc, &HashSet::new());
+        assert!(d.state(day3).found, "first descending clock unlocks Day 3");
+        assert!(!d.state(day1).found, "not Day 1 (wrong end)");
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a), (Game::Oot, b)]), &desc, &HashSet::new());
+        assert!(d.state(night2).found, "second descending clock unlocks Night 2");
+
+        // Ascending: start at Day 1, then unlock forward (Night 1, Day 2, …).
+        let asc = settings("ascending");
+        let mut d = Dashboard::new();
+        d.rebuild(&one_world(&places, &[], &[]), &asc, &HashSet::new());
+        assert!(d.state(day1).found, "ascending starts at Day 1");
+        assert!(!d.state(night3).found, "and not Night 3");
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a)]), &asc, &HashSet::new());
+        assert!(d.state(night1).found, "first ascending clock unlocks Night 1");
+        d.rebuild(&one_world(&places, &[], &[(Game::Oot, a), (Game::Oot, b)]), &asc, &HashSet::new());
+        assert!(d.state(day2).found, "second ascending clock unlocks Day 2");
+    }
+
+    #[test]
+    fn resolves_rusty_key_spoiler_alias() {
+        // The spoiler names rusty keys by their internal door/location string,
+        // which differs from the tracker's in-game item name; the alias bridges
+        // them so a collected rusty key still resolves (and shows in progression).
+        assert_eq!(find_item_id("Rusty Key (Silo)"), Some(data::iid::OOT_RUSTY_KEY_SILO));
+        assert_eq!(
+            find_item_id("Rusty Key (Swordsman School)"),
+            Some(data::iid::MM_RUSTY_KEY_SWORDSMAN_SCHOOL)
+        );
+        // A name already matching the item table still resolves through it.
+        assert_eq!(find_item_id("Rusty Key (Windmill)"), Some(data::iid::OOT_RUSTY_KEY_WINDMILL));
+    }
+
+    #[test]
+    fn resolves_clock_both_formats() {
+        use data::iid::*;
+        // Old ("Clock (Night 3)") and new ("Clock (MM, Night 3)") MM clock spellings
+        // must resolve to the same item, whichever the current data table uses.
+        assert_eq!(find_item_id("Clock (Night 3)"), Some(MM_CLOCK6));
+        assert_eq!(find_item_id("Clock (MM, Night 3)"), Some(MM_CLOCK6));
+        assert_eq!(find_item_id("Clock (Day 1)"), Some(MM_CLOCK1));
+        assert_eq!(find_item_id("Clock (MM, Day 1)"), Some(MM_CLOCK1));
+        // Case-insensitive, like the rest of the resolver.
+        assert_eq!(find_item_id("clock (mm, night 1)"), Some(MM_CLOCK2));
+        // The OoT clock keeps its own name and is never rewritten to an MM clock.
+        assert_eq!(find_item_id("Clock (OoT)"), Some(OOT_CLOCK));
+        // A genuinely unknown clock stays unresolved.
+        assert_eq!(find_item_id("Clock (MM, Night 9)"), None);
+    }
+
+    #[test]
+    fn stick_nut_upgrade_family_pools_locations() {
+        use data::iid::*;
+        // OoTMM places the whole progressive stick/nut chain under the middle tier's
+        // id (e.g. every stick placement is "Deku Stick Upgrade (OoT)" = 0x77). The
+        // family must make the capacity and second-upgrade entries — which list only
+        // their own tier — still match that placement id, so the detail panel pools
+        // the locations under all three instead of showing "No Known Location".
+        let entry = |keys: &'static [u32]| ProgEntry {
+            icon: "stick",
+            name: "x",
+            lookup_keys: keys,
+            is_counter: false,
+            max_count: 0,
+            max_from_spoiler: false,
+        };
+        let cap = entry(&[OOT_STICK_UPGRADE, SHARED_STICK_UPGRADE]);
+        let second = entry(&[OOT_STICK_UPGRADE3, SHARED_STICK_UPGRADE]);
+        assert!(item_matches(&cap, OOT_STICK_UPGRADE2), "capacity pools the middle-tier placement");
+        assert!(item_matches(&second, OOT_STICK_UPGRADE2), "second upgrade pools it too");
+        // MM nuts behave the same.
+        let mm_nut_cap = entry(&[MM_NUT_UPGRADE, SHARED_NUT_UPGRADE]);
+        assert!(item_matches(&mm_nut_cap, MM_NUT_UPGRADE2));
+        assert!(item_matches(&mm_nut_cap, MM_NUT_UPGRADE3));
+        // Families don't bleed across item type or game.
+        assert!(!item_matches(&mm_nut_cap, OOT_STICK_UPGRADE2));
+        assert!(!item_matches(&cap, MM_STICK_UPGRADE2));
+    }
+
+}

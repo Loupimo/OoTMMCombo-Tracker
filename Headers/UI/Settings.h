@@ -94,6 +94,12 @@ public:
 
 	/* The ROM game combination (OoT only, MM only, or OoTMM combo) parsed from the spoiler log. */
     ROMVersion Version;
+    /* True when the spoiler was produced by a build predating OoTMM v32.1, which renamed and
+       reshuffled several MM location labels (Great Bay Coast pots / rocks). The tracker stores the
+       current (>= v32.1) Location strings, so an older spoiler must have its former names translated
+       before matching (see LegacyMMLocationAliases / ParseWorldLocations). Dev builds are treated as
+       current. */
+    bool UsesLegacyLocationNames = false;
 	ROMGame Game;
 	GameMode Mode;
     GoalMode Goal;

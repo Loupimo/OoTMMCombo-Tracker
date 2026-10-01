@@ -494,6 +494,27 @@ OoTMMComboTracker::OoTMMComboTracker(QWidget *parent)
         SettingsTab dialog(this, this);
         dialog.exec();
     });
+
+    // Auto-follow player toggles: three independent options attached to the Options menu at
+    // runtime (they are not part of the .ui file so we can iterate on wording without regenerating
+    // ui_OoTMMComboTracker.h). All three default to false in AppConfig so nothing changes for
+    // users who do not enable them.
+    this->ui.menuOptions->addSeparator();
+
+    QAction* autoFollowItemAction = this->ui.menuOptions->addAction("Auto-follow player (item map)");
+    autoFollowItemAction->setCheckable(true);
+    autoFollowItemAction->setChecked(AppConfig::GetAutoFollowItemMap());
+    connect(autoFollowItemAction, &QAction::toggled, this, &AppConfig::SetAutoFollowItemMap);
+
+    QAction* autoFollowEntranceAction = this->ui.menuOptions->addAction("Auto-follow player (entrance map)");
+    autoFollowEntranceAction->setCheckable(true);
+    autoFollowEntranceAction->setChecked(AppConfig::GetAutoFollowEntranceMap());
+    connect(autoFollowEntranceAction, &QAction::toggled, this, &AppConfig::SetAutoFollowEntranceMap);
+
+    QAction* autoGpsStartAction = this->ui.menuOptions->addAction("Auto-set GPS starting scene");
+    autoGpsStartAction->setCheckable(true);
+    autoGpsStartAction->setChecked(AppConfig::GetAutoSetGpsStart());
+    connect(autoGpsStartAction, &QAction::toggled, this, &AppConfig::SetAutoSetGpsStart);
 }
 
 OoTMMComboTracker::~OoTMMComboTracker()
@@ -510,7 +531,7 @@ void OoTMMComboTracker::ShowAboutDialog()
     QMessageBox msgBox(this);
     msgBox.setWindowTitle("About");
     msgBox.setTextFormat(Qt::RichText);
-    msgBox.setText("OoTMMCombo Auto Tracker<br>Version 2.1.0<br>&copy; 2025-2026 Loupimo<br><br>git repository: <a href='https://github.com/Loupimo/OoTMMCombo-Tracker'>https://github.com/Loupimo/OoTMMCombo-Tracker</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>Thanks for testing to :<br><br>- Wild<br><br>-DataSkywalker");
+    msgBox.setText("OoTMMCombo Auto Tracker<br>Version 2.2.1<br>&copy; 2025-2026 Loupimo<br><br>git repository: <a href='https://github.com/Loupimo/OoTMMCombo-Tracker'>https://github.com/Loupimo/OoTMMCombo-Tracker</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>Thanks for testing to :<br><br>- Wild<br><br>-DataSkywalker");
     msgBox.exec();
 }
 
@@ -850,6 +871,51 @@ void OoTMMComboTracker::UpdateTrackedEntrance(SceneEntranceUpdate OutEntrance, S
 
         this->LastActivityLabel->setText(QString("Last entrance: %1 → %2").arg(fromName, toName));
     }
+
+    // Auto-follow player features. The InEntrance carries the destination scene the player just
+    // entered, which is exactly what the three toggles need to act on. Each is independent so
+    // the user can enable any subset.
+    const uint8_t  destGame  = InEntrance.Game;
+    const uint32_t destScene = InEntrance.SceneID;
+
+    if (AppConfig::GetAutoFollowItemMap())
+    {
+        GameTab* target = nullptr;
+        if (destGame == OOT_GAME)      target = this->OoTTab;
+        else if (destGame == MM_GAME)  target = this->MMTab;
+        if (target != nullptr)
+        {
+            // Bring the corresponding game tab to the foreground first — the user chose the
+            // "switch tab" behavior so the map jump is immediately visible.
+            const int idx = this->TabWidget->indexOf(target);
+            if (idx >= 0)
+            {
+                this->TabWidget->setCurrentIndex(idx);
+            }
+            target->FocusScene(destScene);
+        }
+    }
+
+    if (AppConfig::GetAutoFollowEntranceMap() && this->EntTab != nullptr)
+    {
+        // Switch to the entrance tab so the user actually sees the map jump, then focus the
+        // scene inside that tab's per-game view.
+        const int idx = this->TabWidget->indexOf(this->EntTab);
+        if (idx >= 0)
+        {
+            this->TabWidget->setCurrentIndex(idx);
+        }
+        this->EntTab->FocusSceneInGame((int)destGame, destScene);
+    }
+
+    if (AppConfig::GetAutoSetGpsStart() && this->EntTab != nullptr && this->EntTab->GPSTab != nullptr)
+    {
+        // GPS start follows the player but never triggers a recompute — that call was the user's
+        // explicit choice, so the routes shown stay stable until they click something themselves.
+        // We also forward the incoming entrance so the "from entrance" combo lines up with where
+        // the player just spawned rather than defaulting back to "Any" every time.
+        this->EntTab->GPSTab->SetFromScene((int)destGame, destScene, InEntrance.EntranceID);
+    }
 }
 
 #pragma endregion
@@ -1101,6 +1167,65 @@ void OoTMMComboTracker::LoadGameScenes(QString FilePath)
 }
 
 
+// Backward-compat for the OoTMM v32.1 rename: the Great Bay Coast pot & rock location labels were
+// renamed AND reshuffled that release, so the SAME string (e.g. "...Pot Ledge 1") denotes a
+// different object before and after it. The tracker's data uses the current (>= v32.1) names, so a
+// spoiler from an older build lists these under their former names. This maps former -> current;
+// it is applied ONLY when the spoiler predates v32.1 (see Settings::UsesLegacyLocationNames) - a
+// blind alias would mis-assign the reshuffled pots. Extend this table for any future MM rename.
+static const QHash<QString, QString>& LegacyMMLocationAliases()
+{
+    static const QHash<QString, QString> Aliases = {
+        { "MM Great Bay Coast Pot Ledge 1",  "MM Great Bay Coast Pot Upper Cliffs 1" },
+        { "MM Great Bay Coast Pot Ledge 2",  "MM Great Bay Coast Pot Upper Cliffs 2" },
+        { "MM Great Bay Coast Pot Ledge 3",  "MM Great Bay Coast Pot Upper Cliffs 3" },
+        { "MM Great Bay Coast Pot 01",       "MM Great Bay Coast Pot Ledge 1" },
+        { "MM Great Bay Coast Pot 02",       "MM Great Bay Coast Pot 1" },
+        { "MM Great Bay Coast Pot 03",       "MM Great Bay Coast Pot Lower Cliffs 3" },
+        { "MM Great Bay Coast Pot 04",       "MM Great Bay Coast Pot Lower Cliffs 2" },
+        { "MM Great Bay Coast Pot 05",       "MM Great Bay Coast Pot Platform 1" },
+        { "MM Great Bay Coast Pot 06",       "MM Great Bay Coast Pot Platform 3" },
+        { "MM Great Bay Coast Pot 07",       "MM Great Bay Coast Pot Platform 2" },
+        { "MM Great Bay Coast Pot 08",       "MM Great Bay Coast Pot Ledge 2" },
+        { "MM Great Bay Coast Pot 09",       "MM Great Bay Coast Pot 2" },
+        { "MM Great Bay Coast Pot 10",       "MM Great Bay Coast Pot Lower Cliffs 4" },
+        { "MM Great Bay Coast Pot 11",       "MM Great Bay Coast Pot Lower Cliffs 1" },
+        { "MM Great Bay Coast Pot 12",       "MM Great Bay Coast Pot Platform 4" },
+        { "MM Great Bay Coast Rock Ledge 1", "MM Great Bay Coast Rock Cliffs 1" },
+        { "MM Great Bay Coast Rock Ledge 2", "MM Great Bay Coast Rock Cliffs 2" },
+        { "MM Great Bay Coast Rock Ledge 3", "MM Great Bay Coast Rock Cliffs 3" },
+    };
+    return Aliases;
+}
+
+
+/*
+*   Tell whether a spoiler "Version:" string predates OoTMM v32.1, the release that renamed the
+*   Great Bay Coast pot / rock labels. Dev builds and unrecognised strings are treated as current.
+*   @param VersionString  The raw value from the spoiler's "Version:" line (e.g. "v30.1", "dev-...").
+*   @return true if the build is a stable release older than v32.1, false otherwise.
+*/
+static bool SpoilerBuildPredatesV32_1(const QString& VersionString)
+{
+    if (VersionString.startsWith("dev"))
+    {   // Dev builds are considered current (>= v32.1): no legacy translation.
+
+        return false;
+    }
+
+    QRegularExpressionMatch Match = QRegularExpression("(\\d+)\\.(\\d+)").match(VersionString);
+    if (!Match.hasMatch())
+    {   // Unrecognised version string: assume current, translate nothing.
+
+        return false;
+    }
+
+    int Major = Match.captured(1).toInt();
+    int Minor = Match.captured(2).toInt();
+    return (Major < 32) || (Major == 32 && Minor < 1);
+}
+
+
 void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
 {
     QFile file(FilePath);
@@ -1148,6 +1273,10 @@ void OoTMMComboTracker::LoadGameSpoiler(QString FilePath)
                     this->ROMSettings.Version = ROMVersion::stable_30_1;
                 }
             }
+
+            // Older builds label some MM locations (Great Bay Coast pots / rocks) by their pre-v32.1
+            // names; ParseWorldLocations translates those to the current names before matching.
+            this->ROMSettings.UsesLegacyLocationNames = SpoilerBuildPredatesV32_1(version);
         }
 
     }
@@ -1340,7 +1469,20 @@ void OoTMMComboTracker::ParseWorldLocations(const QString& LocationBlock, size_t
                 continue;
             }
 
-            QByteArray objNameBytes = spoilObject[0].toUtf8();                          // Keep the buffer alive while it is used as a C string below
+            // Pre-v32.1 spoilers label some MM locations by their former names; map them to the
+            // current Location strings before matching (see LegacyMMLocationAliases). No-op for
+            // current builds and for any location absent from the table.
+            QString objLocation = spoilObject[0];
+            if (this->ROMSettings.UsesLegacyLocationNames)
+            {
+                auto Alias = LegacyMMLocationAliases().constFind(objLocation);
+                if (Alias != LegacyMMLocationAliases().constEnd())
+                {
+                    objLocation = Alias.value();
+                }
+            }
+
+            QByteArray objNameBytes = objLocation.toUtf8();                             // Keep the buffer alive while it is used as a C string below
             const char* objName = objNameBytes.constData();
             const ItemInfo* item = FindItemByName(spoilObject[1]);
 
@@ -1353,7 +1495,7 @@ void OoTMMComboTracker::ParseWorldLocations(const QString& LocationBlock, size_t
             // Fallback: entrance shuffle can list a location under a different scene header than the one
             // it natively belongs to (moved grottos, relocated boss lairs, ...). The Location string is
             // globally unique and carries its game prefix, so scan every scene of that game to find it.
-            uint32_t objGame = spoilObject[0].startsWith("MM ") ? MM_GAME : OOT_GAME;
+            uint32_t objGame = objLocation.startsWith("MM ") ? MM_GAME : OOT_GAME;
             if (!this->AssignSpoilerObjectAnyScene(WorldIndex, objGame, objName, item, targetWorld))
             {   // Still unresolved even after the cross-scene scan (previously this failed silently)
 

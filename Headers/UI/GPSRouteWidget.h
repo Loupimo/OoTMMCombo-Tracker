@@ -90,6 +90,21 @@ public:
     */
     void SetMessage(const QString& Message);
 
+
+    /*
+    *   Programmatically set the GPS starting scene without triggering a route recompute.
+    *   Signals on FromCombo are blocked so the change does not fire OnSelectionChanged; the
+    *   From-entrance combo is repopulated manually so its choices stay consistent with the
+    *   newly selected scene. When EntranceID is provided and matches one of the newly loaded
+    *   entrance items, that entrance is also selected — otherwise the combo keeps its default
+    *   "Any entrance" value. No-op if the (Game, SceneID) pair is not present in FromCombo.
+    *
+    *   @param Game          The game the scene belongs to (OOT_GAME or MM_GAME).
+    *   @param SceneID       The scene ID to select.
+    *   @param EntranceID    Optional specific entrance to preselect (UINT32_MAX = keep "Any").
+    */
+    void SetFromScene(int Game, uint32_t SceneID, uint32_t EntranceID = UINT32_MAX);
+
     #pragma endregion
 
 
