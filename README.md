@@ -64,6 +64,8 @@ It also lets the tracker show the expected item on each location, reveal uncolle
 - Master Quest and Majora's Mask JP layouts are supported, but the hook **cannot** detect them — they are read from the spoiler log, so import it to get the correct layouts (see the spoiler-log section above).
 - Multiworld is fully supported — use the world selector to browse any world's map and progression. Reachability/accessibility assumes a single shared settings/entrance/MQ layout across all worlds (the standard combo case); only the item routing is per-world.
 
+<code style="color : red">Dev version above V32.0 are poorly supported right now, mainly due to fact that a lot of changes that impact AddItem functions, entrance variables and new multiplayer system have been done.</code>
+
 ## Troubleshooting
 
 **"Start Tracking" does nothing / the plugin never loads.** Project64 was most likely in **fullscreen** when you started tracking. To load its plugin the tracker sends **Ctrl+T** to the Project64 window, and a fullscreen PJ64 swallows the keystroke. Put Project64 in **windowed mode**, then click **Start Tracking** again (you can go back to fullscreen once it's connected). The tracker's journal prints a reminder when injection begins.
