@@ -2,95 +2,49 @@
 
 All notable changes to this project are documented in this file.
 
-## [3.1.0] - 2026-10-01
+## [3.0.0] - 2026-10-01
 
-This release reworks check identification around OoTMM's new xflag system, adds gossip stones and the remaining MM grottos, makes the hooking DLL more robust (newer OoTMM builds, savestates), and brings a long series of fixes to the reachability logic, the progression tab and the GPS.
-
-### Added
-- New check format matching OoTMM's own system: checks are identified by OoTMM's compact xflag IDs on recent builds, with the legacy system kept for v32.3 and older
-- Gossip stones (fairies and big fairies) for both games, with dedicated DLL hooking, plus the remaining MM grottos
-- Rendered map switches with the Adult/Child (OoT) or Spring/Winter (MM) context, and the context switches automatically when you pick up an item tied to the other one
-- Every remaining logic setting from the seed: open dungeons and conditions, key rings, silver rupee pouches, MM clocks (ascending/descending/separate, with time-slice logic), pond fish shuffle, conditional check removals (Guarded tree, Gorman track trees…)
-- Renewable sources in the logic: `renewable()` items count only when a reachable source exists, and a shuffled renewable location only once it has been collected
-- Starting items and items removed by the seed's settings: the Gerudo Member Card check is granted at start with an open fortress, Ruto's Letter is hidden when King Zora is open and none is placed, Zelda's Letter when the Kakariko gate is open, and the hideout keys / key ring when the fortress is open
-- OoT Razor and Gilded swords (extra child swords) and Deku stick / nut capacity detection
-- Heaviest caught fish shown under the fishing entries
-- DLL health signal: the status bar and journal warn when the DLL's heartbeat freezes or its hook is removed, and log every automatic recovery
-- Multiplayer dev IPC safety net: an item picked up in game but never reported by the IPC (e.g. after a savestate) is applied from the DLL after 5 seconds
-- Scene and object trees unfold and scroll to the right entry when the map changes (auto-follow, auto-snap, progression detail jump), and a detail-panel location click highlights the object and centres the map on it
-- GPS: readable entrance labels ("From X" / "To X"), pickers filtered by the seed's MQ / MM JP layouts, scenes grouped by game, and auto-start now fills in the arrival entrance instead of "Whole Scene"
-- Accent-insensitive alphabetical sorting everywhere
-
-### Changed
-- Hooking DLL optimized and updated for the latest OoTMM builds (Play_Init / Play_TransitionDone for MM, adjusted hooking spots and patterns, 32.3 fixes)
-- Multiplayer client updated to the OoTMM 1.10 protocol (items and entrances)
-- Logic updated to the latest OoTMM version
-- Room selector wraps on several lines instead of overflowing (Snowhead Temple and other many-room dungeons)
-
-### Fixed
-- Item tracking going silent after loading a savestate during a scene transition (the DLL now recovers on its own)
-- Many reachability issues: age-gated areas (OoT and MM), cross-game age leaks through shuffled entrances, intra-scene blockers, "fake" entrances such as the bridge after being caught by the guards, warp pads, shared boss rooms between dungeon variants, shop prices without a wallet, entrance discovery in progressive ER
-- Telescope views no longer reveal the viewed area as visited in progressive entrance randomizer
-- Shared items: bare spoiler names (Bomb Bag, Bow…), items with the same name in OoT, MM and Shared (Gold Dust, Chateau Romani, Great Fairy's Sword, Triforces) — fixes the MM Gilded Sword never becoming available
-- Progression tab: bottles, stick / nut capacity, progressive bow / quiver / slingshot / magic, shared souls (Swamp Archery owner), shared swords, and extra child swords now lighting Kokiri → Razor → Gilded
-- MM "Nothing" shop items
-- Royal Tomb and Death Mountain Trail Cow Grotto big fairies not appearing on the map
-- Temple of Time Entryway missing image
-- Missing translations, and various object positions (gossip stones, Goron City, Termina Field, Moon trials)
-
-## [3.0.0] - 2026-08-28
-
-This release is a full rewrite of the tracker from Qt/C++ to Rust + egui. Every 2.0.0 feature was ported over the same shared-memory contract (so the hooking DLL stays compatible), with the performance gains and new capabilities listed below.
+This release is a full rewrite of the tracker from Qt/C++ to Rust + egui. Every 2.0.0 feature was ported over the same shared-memory contract, and the tracker now ships a reachability logic engine, OoTMM's new check identification system, gossip stones and a much more robust hooking DLL.
 
 ### Added
-- Full French translation, backed by an in-app i18n system and FR/EN locale files (every UI string localized)
-- Reachability / accessibility logic engine: the OoTMM logic is compiled into the tracker and used to show only the checks reachable from the items collected so far; toggle between dimming and hiding unreachable checks on the map and object tree (Options → Accessibility)
-- Entrance-randomizer awareness in reachability: the solver reroutes region edges from the spoiler's Entrances section, so accessibility stays correct under any entrance shuffle (interiors, grottos, dungeons, overworld, mixed, decoupled, spawns/warps)
-- Multiworld reachability: the shown world's accessibility uses that player's routed inventory
-- Support for OoTMM stable builds up to v32.3 and for dev builds, with raw in-game item IDs shifted to the tracker's numbering so both track correctly
-- Dev-only item list and the latest dev ROM-setting options
-- New items and ROM parameters through the adult mask (rusty keys, Powder Keg, GFS, stick & nut capacity, and more)
-- Boulder and silver-boulder tracking for both games: placeholders, settings, filters, and map positions across the OoT and MM overworlds
-- The new r4 multiplayer Go client integrated directly into the tracker (dev only), plus multi-source support
-- Load a patch tied to the save, applied automatically when the launched game matches
-- GPS scene routing over the entrance graph, now cross-game (OoT ↔ MM), with warp-song handling, a search field, and cross-game routing
+- Reachability logic engine: the OoTMM logic is compiled into the tracker and shows only the checks reachable with the items collected so far (dim or hide unreachable checks on the map and object tree, Options → Accessibility)
+  - Honours every seed setting: open dungeons and conditions, key rings, silver rupee pouches, MM clocks and time of day, shared items, renewable items, pond fish shuffle, checks removed by settings, and more
+  - Entrance-randomizer aware (any shuffle: interiors, grottos, dungeons, overworld, mixed, decoupled, spawns/warps), including progressive entrance discovery
+  - Multiworld: each world's accessibility uses that player's own inventory
+- New check format matching OoTMM's own system (compact xflag IDs on recent builds, legacy system kept for v32.3 and older)
+- Gossip stones (fairies and big fairies) for both games, the remaining MM grottos, boulders / silver boulders, and Granny's blue-potion buy spot
+- Full French translation backed by an in-app i18n system (FR/EN)
+- Support for OoTMM stable builds up to v32.3 and for the latest dev builds, including their new items and settings (rusty keys, Powder Keg, GFS, stick & nut capacity, Razor / Gilded swords, …)
+- Starting items and items removed by the seed's settings handled automatically (e.g. Gerudo Member Card with an open fortress, Ruto's / Zelda's letters, hideout keys)
+- Multiplayer client for OoTMM 1.10 integrated directly into the tracker (items and entrances), with a fallback so a pickup is never lost when the multiplayer link drops
+- GPS route finder over the entrance graph, cross-game (OoT ↔ MM), with warp songs, readable entrance names and auto-start from your current position and arrival entrance
+- Region entrance table (scene, entrance, how to reach it, where it leads, status), sortable, with click-to-focus on the map
+- Auto-follow: the map, item / entrance / GPS views follow the player's in-game position, and the scene and object trees unfold to it; the map switches automatically with the Adult/Child (OoT) or Spring/Winter (MM) context
 - Full in-game timer tracking for every OoT and MM timer
-- Setting to auto-load the map item / entrance / GPS view at the player's live in-game position
-- Region entrance table (per region: scene, entrance, how to reach it, where it leads, and a status dot), with sortable and resizable columns and click-to-focus on the map
-- Native Save / Load / Load Spoiler / Reset workflow with a Start/Stop Tracking control on the Launch page
-- Per-seed autosaves: each seed gets its own file in a new `autosave/` folder (named from the spoiler's seed hash), so switching seeds keeps every playthrough's progress; runs with no spoiler share a single `empty` file
+- Heaviest caught fish shown under the fishing entries
+- DLL health indicator in the status bar (heartbeat frozen, hook removed, automatic recoveries)
+- Patch tied to the save, applied automatically when the launched game matches
+- Native Save / Load / Load Spoiler / Reset workflow with a Start/Stop Tracking control, and per-seed timestamped autosaves
 - Support for the PJ-EM 1.1.0 emulator build
-- Granny's blue-potion buy spot as a tracked location
 
 ### Changed
-- Entire tracker UI rewritten from Qt/C++ to Rust + egui: much faster startup and far lower resource use (idle CPU dropped from ~15% to ~0%, mouse-move interaction capped to display rate), with the shared-memory link moved onto a background poller so the UI is genuinely idle when nothing changes; the old C++ tracker moved to its own folder
-- Injector-free DLL loading: Project64 now loads the tracking DLL itself instead of relying on the external injector, so antivirus no longer flags it, and the DLL loads and unloads cleanly inside the PJ64 process
-- Hooking DLL revised to catch every entrance on both stable and dev builds, and updated to follow the latest dev build
-- gLastScene address resolution made more robust for wider version compatibility
-- Tracker saves are now a human-readable, hand-editable XML format instead of an opaque binary. Each check is keyed on its stable numeric identity (object id within its scene, split by type and layout) so a save survives location renames between versions, with the Location string as a fallback; placed items also store their stable item id, and entrance links record the fully-qualified "scene - side" name of the resolved exit. Pre-3.0 Qt `.trck` binaries and the earlier autosave are still imported
-- All map images converted from PNG to JPG
-- Reworked Death Mountain Trail, Goron City and Road to Ikana layouts to fit the boulder additions, and adjusted the OoT trade-quest icons
+- Entire UI rewritten in Rust + egui: much faster startup and far lower resource use (idle CPU from ~15% to ~0%); the old C++ tracker moved to its own folder
+- Injector-free DLL loading: Project64 loads the tracking DLL itself, so antivirus no longer flags it
+- Hooking DLL optimized and updated for the latest OoTMM builds, catching every entrance on stable and dev builds
+- Saves are now a human-readable XML format keyed on stable check identities, so they survive location renames; pre-3.0 `.trck` saves are still imported
+- Map images converted from PNG to JPG; reworked Death Mountain Trail, Goron City and Road to Ikana layouts
 
 ### Removed
-- The standalone PJ64Injector.exe — the tracker no longer needs an external injector
+- The standalone PJ64Injector.exe
 
 ### Fixed
-- Many entrance issues: ER grotto data and the gLast entrance, the Bean grotto exit, a Kakariko entrance overlapping the map, Telescope entrances, Lone Peak Shrine and Spring Mountain context, and assorted entrance typos
-- Grotto entrance tracking, including several entrance-randomizer-specific cases
+- Item tracking going silent after loading savestates (the DLL now recovers on its own)
+- Many entrance issues: ER grottos, Bean grotto exit, Telescope entrances, Lone Peak Shrine, Spring Mountain context, first-game spawn, and more
 - Missing item when loading a spoiler log from an entrance-randomizer seed
 - Crashes when completing a Ganon Trial
-- First-game spawn handling and MM grotto scenes
-- Progression-tab bugs: quiver / bullet-bag locations from a spoiler log, non-shuffled items, and regressions from multiworld and the new item list
-- Progression tab labelling the Deku Stick and Deku Nut capacity entries as "…Upgrade" instead of their real names
-- Progression tab showing quantified pickup names (e.g. "5 Deku nuts", "Child Fish (2 pounds)") instead of the clean item family name
-- Progressive items lighting every stage on the first pickup instead of advancing one stage at a time — now covers every progressive family, including the ones with no dedicated setting (strength / gauntlets, wallets, scales, bomb bags) and the generic shield pickups, not just swords and the ocarina
-- Rusty keys collected but not reflected in the progression tab, now that spoiler names are mapped to the curated in-game item names
-- Multiworld / coop tracking bug
-- Race condition when emitting entrance updates
-- Southern Swamp "cleared" state not being caught
-- Clearer distinction between dev and stable builds in game
-- Non-escaped path that could make injection fail
-- Various object placements, icon fixes, and stable 31.1 / 32.0 version parsing
+- Progression tab: progressive items lighting every stage at once, wrong names for quantified pickups and capacity upgrades, rusty keys, quiver / bullet-bag locations
+- Multiworld / coop tracking, Southern Swamp "cleared" state, path escaping during injection
+- Various object placements, icons, and stable 31.1 / 32.0 version parsing
 
 ## [2.0.0] - 2026-06-02
 
