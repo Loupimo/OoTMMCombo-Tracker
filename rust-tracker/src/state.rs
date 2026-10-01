@@ -11,6 +11,11 @@ use crate::shared_mem::Event;
 use crate::tracking::RomVersion;
 use crate::i18n::{AppSettings, I18n, Language};
 
+/// How long a real hook pickup waits for the dev IPC to report it before the hook's
+/// own copy is applied (see `process_event` / `flush_stale_hook_items`). The game
+/// sends a local pickup over the IPC at once, so a few seconds means it went silent.
+const HOOK_FALLBACK_DELAY: Duration = Duration::from_secs(5);
+
 impl TrackerApp {
     pub(crate) fn new(ctx: &egui::Context) -> Self {
         // Start with no scene loaded: the map + object panels stay empty until the
@@ -45,7 +50,7 @@ impl TrackerApp {
             mp_host,
             mp_port,
             multi: None,
-            dev: None,
+            v110: None,
             patch_path: None,
             patch_info: None,
             patch_startup_check: false,
@@ -66,6 +71,9 @@ impl TrackerApp {
             focus_entrance: None,
             nav_all_expanded: false, // scene trees start collapsed (regions folded)
             obj_all_expanded: true,
+            nav_reveal: None,
+            obj_focus: None,
+            obj_focus_scroll: false,
             ent_search: String::new(),
             ent_table_search: String::new(),
             ent_all_expanded: true,
@@ -87,6 +95,10 @@ impl TrackerApp {
             last_entrance: None,
             player_scene: None,
             player_obj_scene: None,
+            player_entrance: None,
+            gps_followed_entrance: None,
+            player_in_telescope: false,
+            pending_hook_items: Vec::new(),
             followed_scene: None,
             pending_snap: None,
             snap_pos: None,
@@ -240,14 +252,14 @@ impl TrackerApp {
             // client runs when multiplayer is on. On a non-dev build the pipe is
             // absent, dev never validates HELLO, and the DLL hook stays authoritative.
             if self.patch_info.is_some() {
-                self.start_dev(ctx);
+                self.start_v110(ctx);
             } else if self.use_multiplayer {
                 self.start_multiplayer(ctx);
             }
             self.log_msg(self.i18n.reading_mem().to_string());
         } else {
             self.stop_multiplayer();
-            self.stop_dev();
+            self.stop_v110();
             self.log_msg(self.i18n.log_tracker_stop().to_string());
         }
     }
@@ -282,8 +294,8 @@ impl TrackerApp {
     /// deriving the session identity from the loaded patch. The DLL hook path
     /// (poller) keeps running in parallel as a backup — and becomes the sole source
     /// of truth on non-dev builds, where the pipe never appears.
-    pub(crate) fn start_dev(&mut self, ctx: &egui::Context) {
-        if self.dev.is_some() {
+    pub(crate) fn start_v110(&mut self, ctx: &egui::Context) {
+        if self.v110.is_some() {
             return;
         }
         let Some(info) = self.patch_info.clone() else { return };
@@ -291,19 +303,19 @@ impl TrackerApp {
         // mechanism's port); the host field is reused so a custom server works.
         let host = self.mp_host.trim();
         let host = if host.is_empty() { "multi.ootmm.com" } else { host };
-        let cfg = multi_dev::DevConfig {
+        let cfg = multi_v1_10::V110Config {
             server_host: host.to_string(),
             server_port: 14236,
             data_dir: dev_data_dir(),
         };
         let server = format!("{}:{}", cfg.server_host, cfg.server_port);
-        self.log_msg(self.i18n.log_dev_enabled(&info.summary(), &server));
-        self.dev = Some(multi_dev::spawn(ctx.clone(), cfg, info));
+        self.log_msg(self.i18n.log_v110_enabled(&info.summary(), &server));
+        self.v110 = Some(multi_v1_10::spawn(ctx.clone(), cfg, info));
     }
 
     /// Stop the dev client if it is running (joins its thread).
-    pub(crate) fn stop_dev(&mut self) {
-        if let Some(mut handle) = self.dev.take() {
+    pub(crate) fn stop_v110(&mut self) {
+        if let Some(mut handle) = self.v110.take() {
             handle.stop();
         }
     }
@@ -363,7 +375,7 @@ impl TrackerApp {
         if self.patch_path.is_none() && self.patch_info.is_none() {
             return;
         }
-        self.stop_dev();
+        self.stop_v110();
         self.patch_path = None;
         self.patch_info = None;
         self.log_msg(self.i18n.patch_unloaded().to_string());
@@ -845,17 +857,17 @@ impl TrackerApp {
         }
 
         // Drain the dev client thread the same way (shares NetItem / apply_net_item).
-        let mut dev_msgs = Vec::new();
-        if let Some(handle) = self.dev.as_ref() {
+        let mut v110_msgs = Vec::new();
+        if let Some(handle) = self.v110.as_ref() {
             while let Ok(msg) = handle.rx.try_recv() {
-                dev_msgs.push(msg);
+                v110_msgs.push(msg);
             }
         }
-        for msg in dev_msgs {
+        for msg in v110_msgs {
             match msg {
-                multi_dev::DevMsg::Log(line) => self.log_msg(line),
-                multi_dev::DevMsg::Item(item) => self.apply_net_item(item),
-                multi_dev::DevMsg::Entrance(e) => self.apply_info_entrance(e),
+                multi_v1_10::V110Msg::Log(line) => self.log_msg(line),
+                multi_v1_10::V110Msg::Item(item) => self.apply_net_item(item),
+                multi_v1_10::V110Msg::Entrance(e) => self.apply_info_entrance(e),
             }
         }
     }
@@ -868,7 +880,7 @@ impl TrackerApp {
     /// entrance (a symbol renumbered / added since this build) — the caller then
     /// leaves the entrance graph untouched, and the client thread's journal line
     /// still recorded the transition.
-    fn resolve_dev_entrance(&self, key: u32, sym: &str) -> Option<(Game, u32)> {
+    fn resolve_v110_entrance(&self, key: u32, sym: &str) -> Option<(Game, u32)> {
         let game = if sym.starts_with("OOT_") {
             Game::Oot
         } else if sym.starts_with("MM_") {
@@ -885,11 +897,11 @@ impl TrackerApp {
     /// the auto-follow. The arrival (`entrance`) is the destination; `original` is
     /// the doorway used (absent on respawns / age swaps). Endpoints whose symbol
     /// doesn't map to a known entrance are skipped (the journal already logged them).
-    pub(crate) fn apply_info_entrance(&mut self, e: multi_dev::NetEntrance) {
-        let Some(inc) = self.resolve_dev_entrance(e.entrance.0, &e.entrance.1) else {
+    pub(crate) fn apply_info_entrance(&mut self, e: multi_v1_10::NetEntrance) {
+        let Some(inc) = self.resolve_v110_entrance(e.entrance.0, &e.entrance.1) else {
             return;
         };
-        let out = e.original.as_ref().and_then(|(k, s)| self.resolve_dev_entrance(*k, s));
+        let out = e.original.as_ref().and_then(|(k, s)| self.resolve_v110_entrance(*k, s));
 
         // Discovered link: leaving `out` leads to `inc` (skip the trivial self-map
         // of an unshuffled entrance, where original == entrance).
@@ -912,10 +924,12 @@ impl TrackerApp {
         if let Some(d) = entrance::lookup(inc.0, inc.1) {
             self.last_entrance = Some(self.i18n.tr_entrance(d.to_name).to_string());
             self.player_scene = Some((inc.0, d.to_scene));
+            self.player_entrance = Some(inc);
             // No raw arriving scene here (INFO_ENTRANCE carries none), so the generic
             // node resolves to its own object scene; Market Day/Night stays generic.
             let prev_obj_scene = self.player_obj_scene;
             self.player_obj_scene = resolve_obj_scene(inc.0, d.to_scene, d.to_scene as u32, &self.mq_scenes);
+            self.player_in_telescope = entrance::is_telescope_view(inc.0, inc.1);
             // Seed-the-live-scene needs a recompute on a scene change even when the
             // link was already known (mirrors `handle_entrance`).
             if self.app_settings.logic_progressive_entrances
@@ -950,6 +964,8 @@ impl TrackerApp {
         else {
             return; // no matching placement (e.g. filtered / unknown overlay)
         };
+        // The IPC reported it: the parked hook copy (if any) is no longer needed.
+        self.pending_hook_items.retain(|(_, _, h)| *h != (g, idx));
 
         // The map world is where the check physically lives (the "from" world).
         let single_world = self.num_worlds() <= 1;
@@ -1015,7 +1031,7 @@ impl TrackerApp {
             }
         }
         // Dev client: any live non-single session (coop or multiworld).
-        if let Some(handle) = self.dev.as_ref() {
+        if let Some(handle) = self.v110.as_ref() {
             let non_single =
                 self.patch_info.as_ref().map(|p| p.mode != patch::PatchMode::Single).unwrap_or(false);
             if handle.is_connected() && non_single {
@@ -1050,81 +1066,28 @@ impl TrackerApp {
         // (non-single). If the loaded game predates the IPC or its session differs
         // from the patch, dev isn't connected → the hook keeps the item (fallback).
         let old_owns = self.multi.is_some() && self.rom_settings.mode != settings::GameMode::Single;
-        let dev_owns = self.dev.as_ref().map(|h| h.is_connected()).unwrap_or(false)
+        let v110_owns = self.v110.as_ref().map(|h| h.is_connected()).unwrap_or(false)
             && self.patch_info.as_ref().map(|p| p.mode != patch::PatchMode::Single).unwrap_or(false);
-        let net_owns_real = old_owns || dev_owns;
+        let net_owns_real = old_owns || v110_owns;
         if let Some(hit) = tracking::resolve_collected(&ev, self.rom, self.uses_legacy_xflags, &self.mq_scenes) {
             if !is_nothing && net_owns_real {
-                return; // let the network ledger own this real item
-            }
-            let obj = &hit.0.objects()[hit.1];
-            // A live pickup is the local player's, so it always lands in the local
-            // world (index 0) regardless of which world the user is viewing. Its
-            // shown name comes from the local world's placement.
-            const LOCAL: usize = 0;
-            let item = collected_item_name(
-                self.worlds[LOCAL].items.get(obj.location),
-                (ev.query[2] & 0xFFFF) as u16,
-                is_nothing,
-                self.rom,
-                obj.name,
-            );
-            self.last_item = Some(item.clone());
-            // Persist the resolved pickup name into the local world's placement map so
-            // the collected-object panel shows it even with NO spoiler loaded — the GI
-            // hook has already named the item (as it does in the journal). Only genuine
-            // items are stored: a "nothing" drop or the object-name fallback (GI did not
-            // resolve to a real item) is not a placement, and an existing spoiler
-            // placement is never overwritten (`or_insert`).
-            let has_real_name = self.worlds[LOCAL].items.contains_key(obj.location)
-                || (!is_nothing
-                    && tracking::net_item_name((ev.query[2] & 0xFFFF) as u16, self.rom).is_some());
-            if has_real_name {
-                self.worlds[LOCAL]
-                    .items
-                    .entry(obj.location.to_string())
-                    .or_insert_with(|| item.clone());
-            }
-            let (rs, room, ox, oy) = (obj.render_scene, obj.room, obj.x as f32, obj.y as f32);
-            // A real hook pickup takes precedence over a manual "forced" hand-check
-            // (see record_collection): a pre-checked location becomes a genuine
-            // collection (rendered normally, not gold) and is still processed here.
-            if record_collection(&mut self.worlds[LOCAL], hit) {
-                // Mirror the Qt MemoryReader log line.
-                let game = if hit.0 == Game::Oot { "OoT" } else { "MM" };
-                self.log_msg(self.i18n.log_world_object(game, obj.location, &item));
-                self.dirty = true;
-                self.prog_dirty = true;
-                self.counts_dirty = true;
-                // Auto Snap View: remember where to recentre the map next frame,
-                // but only while the local world is the one on screen (else the
-                // mark isn't visible on the world the user is looking at).
-                if self.app_settings.auto_snap && self.active_world == LOCAL {
-                    self.pending_snap = Some((hit.0, rs, room, ox, oy));
-                }
-                // Auto age / season switch: the pickup's object is tagged Child /
-                // Adult (OoT) or Winter / Spring (MM), which reveals the game's current
-                // age (or season). Flip the map context toggle to match so the mark
-                // lands on the variant actually being played — the common case being
-                // the player as adult while the tracker still shows the child map (and
-                // inversely). An `All`-tagged pickup carries no such hint and is left
-                // alone. Local world only (same as the snap), and only when the view is
-                // coherent: with Auto Snap the view jumps to this game anyway; without
-                // it, flip only when this game is already shown, so an OoT pickup never
-                // flips MM's season and vice versa.
-                if self.active_world == LOCAL {
-                    let same_game_shown = self.scene.as_ref().is_some_and(|s| s.game == hit.0);
-                    if (self.app_settings.auto_snap || same_game_shown)
-                        && context_toggle_for(obj.context).is_some_and(|w| w != self.context_toggle)
-                    {
-                        self.context_toggle = !self.context_toggle;
-                        // A per-context map image must reload when the toggle flips.
-                        if self.scene.as_ref().is_some_and(|s| !s.def.context_image_rel.is_empty()) {
-                            self.map_texture = None;
-                        }
+                // Let the network ledger own this real item. Safety net for the dev
+                // IPC: a session can look alive yet have stopped reporting (OoTMM's
+                // IPC often dies silently on a savestate load, pipe left open). Park
+                // the hook's copy; if the IPC has not delivered this pickup within
+                // `HOOK_FALLBACK_DELAY`, `flush_stale_hook_items` applies it from the
+                // hook. Skipped when already collected (a savestate re-pickup the game
+                // may legitimately not resend).
+                if v110_owns && !old_owns {
+                    let world = self.v110_local_world();
+                    let w = &self.worlds[world];
+                    if !w.collected.contains(&hit) || w.forced.contains(&hit) {
+                        self.pending_hook_items.push((Instant::now(), ev, hit));
                     }
                 }
+                return;
             }
+            self.apply_hook_item(&ev, hit, is_nothing, 0);
         } else {
             // Nothing in the pool matched this pickup — log the decoded overlay so it
             // can be identified (the raw dump above keeps the untouched bytes). This is
@@ -1144,6 +1107,121 @@ impl TrackerApp {
                 ));
             }
         }
+    }
+
+    /// Apply a hook-resolved pickup (DLL) to world `world`: shown item name, the
+    /// placement fallback, the collection itself, journal line, auto-snap and the
+    /// auto age / season switch. A live pickup is the local player's, so the caller
+    /// passes the local world (index 0 for the plain hook path) regardless of which
+    /// world the user is viewing; its shown name comes from that world's placement.
+    ///
+    /// @param ev the raw DLL event (for the GI / nothing flag)
+    /// @param hit the collected object `(game, index)` the event resolved to
+    /// @param is_nothing whether the event is a "nothing" drop
+    /// @param world index of the world the pickup lands in
+    fn apply_hook_item(&mut self, ev: &Event, hit: (Game, usize), is_nothing: bool, world: usize) {
+        let obj = &hit.0.objects()[hit.1];
+        let item = collected_item_name(
+            self.worlds[world].items.get(obj.location),
+            (ev.query[2] & 0xFFFF) as u16,
+            is_nothing,
+            self.rom,
+            obj.name,
+        );
+        self.last_item = Some(item.clone());
+        // Persist the resolved pickup name into the local world's placement map so
+        // the collected-object panel shows it even with NO spoiler loaded — the GI
+        // hook has already named the item (as it does in the journal). Only genuine
+        // items are stored: a "nothing" drop or the object-name fallback (GI did not
+        // resolve to a real item) is not a placement, and an existing spoiler
+        // placement is never overwritten (`or_insert`).
+        let has_real_name = self.worlds[world].items.contains_key(obj.location)
+            || (!is_nothing
+                && tracking::net_item_name((ev.query[2] & 0xFFFF) as u16, self.rom).is_some());
+        if has_real_name {
+            self.worlds[world]
+                .items
+                .entry(obj.location.to_string())
+                .or_insert_with(|| item.clone());
+        }
+        let (rs, room, ox, oy) = (obj.render_scene, obj.room, obj.x as f32, obj.y as f32);
+        // A real hook pickup takes precedence over a manual "forced" hand-check
+        // (see record_collection): a pre-checked location becomes a genuine
+        // collection (rendered normally, not gold) and is still processed here.
+        if record_collection(&mut self.worlds[world], hit) {
+            // Mirror the Qt MemoryReader log line.
+            let game = if hit.0 == Game::Oot { "OoT" } else { "MM" };
+            self.log_msg(self.i18n.log_world_object(game, obj.location, &item));
+            self.dirty = true;
+            self.prog_dirty = true;
+            self.counts_dirty = true;
+            // Auto Snap View: remember where to recentre the map next frame,
+            // but only while the local world is the one on screen (else the
+            // mark isn't visible on the world the user is looking at).
+            if self.app_settings.auto_snap && self.active_world == world {
+                self.pending_snap = Some((hit.0, rs, room, ox, oy));
+            }
+            // Auto age / season switch: the pickup's object is tagged Child /
+            // Adult (OoT) or Winter / Spring (MM), which reveals the game's current
+            // age (or season). Flip the map context toggle to match so the mark
+            // lands on the variant actually being played — the common case being
+            // the player as adult while the tracker still shows the child map (and
+            // inversely). An `All`-tagged pickup carries no such hint and is left
+            // alone. Local world only (same as the snap), and only when the view is
+            // coherent: with Auto Snap the view jumps to this game anyway; without
+            // it, flip only when this game is already shown, so an OoT pickup never
+            // flips MM's season and vice versa.
+            if self.active_world == world {
+                let same_game_shown = self.scene.as_ref().is_some_and(|s| s.game == hit.0);
+                if (self.app_settings.auto_snap || same_game_shown)
+                    && context_toggle_for(obj.context).is_some_and(|w| w != self.context_toggle)
+                {
+                    self.context_toggle = !self.context_toggle;
+                    // A per-context map image must reload when the toggle flips.
+                    if self.scene.as_ref().is_some_and(|s| !s.def.context_image_rel.is_empty()) {
+                        self.map_texture = None;
+                    }
+                }
+            }
+        }
+    }
+
+    /// World index where the dev IPC files a local pickup: the patch's own world
+    /// (`from_world`, 1-based) in a multi-world set, index 0 otherwise — the same
+    /// slot `apply_net_item` resolves, so a hook fallback lands where the IPC would.
+    ///
+    /// @return the local world index into `self.worlds`
+    fn v110_local_world(&self) -> usize {
+        let id = self.patch_info.as_ref().map(|p| p.world_id as usize).unwrap_or(1);
+        if self.num_worlds() <= 1 || id == 0 || id > self.worlds.len() {
+            0
+        } else {
+            id - 1
+        }
+    }
+
+    /// Apply every parked hook pickup the dev IPC failed to report in time (see
+    /// `process_event`). The IPC's own later copy is then a no-op (`record_collection`
+    /// is idempotent). Logs once per stall so a silent IPC is visible in the journal.
+    ///
+    /// @return true while pickups are still waiting (the caller schedules a repaint)
+    pub(crate) fn flush_stale_hook_items(&mut self) -> bool {
+        if self.pending_hook_items.is_empty() {
+            return false;
+        }
+        let now = Instant::now();
+        let (stale, keep): (Vec<_>, Vec<_>) = std::mem::take(&mut self.pending_hook_items)
+            .into_iter()
+            .partition(|(t, _, _)| now.duration_since(*t) >= HOOK_FALLBACK_DELAY);
+        self.pending_hook_items = keep;
+        if !stale.is_empty() {
+            self.log_msg(self.i18n.log_v110_ipc_silent(stale.len()));
+            let world = self.v110_local_world();
+            for (_, ev, hit) in stale {
+                self.apply_hook_item(&ev, hit, false, world);
+            }
+        }
+        !self.pending_hook_items.is_empty()
     }
 
     /// Load a spoiler log file: item placement + ROM build.
@@ -1252,6 +1330,7 @@ impl TrackerApp {
     pub(crate) fn select_scene(&mut self, game: Game, def: &'static data::SceneDef) {
         self.sel_scene[game.idx()] = Some(def.id);
         self.scene = Some(LiveScene::load(game, def, &self.mq_scenes));
+        self.obj_focus = None;
         self.current_room = 0;
         self.map_texture = None;
         self.load_error = None;
@@ -1306,12 +1385,14 @@ impl TrackerApp {
             // auto-follow). `d.to_scene` is the entrance meta's map node — for the
             // Market that is the generic combined scene, which carries no objects.
             self.player_scene = Some((evt.in_game, d.to_scene));
+            self.player_entrance = Some(inc);
             // The object-map follow needs the scene that actually renders objects:
             // the generic Market resolves to its Day / Night variant (told apart by
             // the raw arriving scene); object-less zones resolve to `None`.
             let prev_obj_scene = self.player_obj_scene;
             self.player_obj_scene =
                 resolve_obj_scene(evt.in_game, d.to_scene, evt.in_raw_scene, &self.mq_scenes);
+            self.player_in_telescope = entrance::is_telescope_view(evt.in_game, evt.in_entrance);
             // Progressive reachability seeds the live scene (`recompute_reachability`),
             // so a scene change must invalidate the logic even when the entrance link
             // itself was already known — otherwise the freshly loaded scene's checks
@@ -1473,6 +1554,29 @@ impl TrackerApp {
     }
 
     /// Refresh the current scene's markers from the active world's collected-set.
+    /// Mark every starting location (`Settings::starting_locations`, e.g. the Gerudo
+    /// Member Card with an open fortress) collected in every world: the game gives
+    /// its placed item at file creation, so the logic and the progression dashboard
+    /// must own it from the start. Idempotent; runs each frame so a seed switch or an
+    /// autosave restore that resets the collected set is covered too.
+    pub(crate) fn grant_starting_locations(&mut self) {
+        let mut changed = false;
+        for &loc in self.rom_settings.starting_locations() {
+            let Some(idx) = Game::Oot.objects().iter().position(|o| o.location == loc) else {
+                continue;
+            };
+            for w in &mut self.worlds {
+                changed |= w.collected.insert((Game::Oot, idx));
+            }
+        }
+        if changed {
+            self.dirty = true;
+            self.prog_dirty = true;
+            self.counts_dirty = true;
+            self.logic_dirty = true;
+        }
+    }
+
     pub(crate) fn sync_collected(&mut self) {
         let coll = &self.worlds[self.active_world].collected;
         if let Some(scene) = self.scene.as_mut() {
@@ -1579,7 +1683,8 @@ impl TrackerApp {
             // reachable the instant it loads — not one entrance later. The arriving
             // entrance's `to_name` does not always name the loaded scene (owl flights,
             // reverse-pair OUT ids), so `seed_from_visited` alone lagged by a step.
-            if let Some((g, scene)) = self.player_obj_scene {
+            // Not while looking through a telescope: the viewed scene is not entered.
+            if let (Some((g, scene)), false) = (self.player_obj_scene, self.player_in_telescope) {
                 inp.seed_scene(g.idx() as u8, scene as u32);
             }
             crate::logic::solve(&inp)
@@ -1753,6 +1858,7 @@ impl TrackerApp {
                             if let Some(def) = fg.scenes().iter().find(|s| s.id == fsid) {
                                 self.active_tab = if fg == Game::Oot { Tab::Oot } else { Tab::Mm };
                                 self.select_scene(fg, def);
+                                self.nav_reveal = Some((fg, fsid));
                             }
                         }
                     }
@@ -1766,17 +1872,25 @@ impl TrackerApp {
                                 self.entrance_sub =
                                     if g == Game::Oot { EntranceSub::Oot } else { EntranceSub::Mm };
                                 self.select_scene(g, def);
+                                self.nav_reveal = Some((g, sid));
                             }
                         }
                     }
                     _ => {}
                 }
-                if self.app_settings.auto_gps_start {
-                    self.gps_from = Some(ps);
-                    self.gps_from_ent = None;
-                }
             }
             self.followed_scene = Some(ps);
+        }
+        // Auto GPS start: seed the departure with the player's scene AND the entrance
+        // they arrived through, on every new arrival (also a re-entry of the same scene
+        // through another door). Leaving it on "Whole Scene" made a route the player
+        // follows start from anywhere in the scene, so it drifted from the real path.
+        if self.app_settings.auto_gps_start && self.player_entrance != self.gps_followed_entrance {
+            self.gps_followed_entrance = self.player_entrance;
+            if let (Some(ps), Some((g, id))) = (self.player_scene, self.player_entrance) {
+                self.gps_from = Some(ps);
+                self.gps_from_ent = gps_start_entrance(g, id, ps.1, &self.mq_scenes);
+            }
         }
         // Auto Snap View: jump to the last collected object's scene and centre on it.
         if let Some((g, sid, room, x, y)) = self.pending_snap.take() {
@@ -1785,6 +1899,7 @@ impl TrackerApp {
                 if self.scene.as_ref().map_or(true, |s| s.game != g || s.def.id != sid) {
                     self.select_scene(g, def);
                 }
+                self.nav_reveal = Some((g, sid));
                 // Multi-room scene: load the room that actually holds the object
                 // before zooming, so the view (and its object coordinates, which are
                 // relative to the room image) snap onto the right map.
@@ -1875,6 +1990,11 @@ impl eframe::App for TrackerApp {
 
         // Drain the poller thread (connection status + live events).
         self.process_poll();
+        // Hook pickups the dev IPC never reported: apply them from the hook, and keep
+        // a frame scheduled while some are still waiting (the UI otherwise sleeps).
+        if self.flush_stale_hook_items() {
+            ctx.request_repaint_after(Duration::from_millis(500));
+        }
         self.apply_auto_options();
 
         // Load a spoiler log dropped onto the window.
@@ -1885,6 +2005,7 @@ impl eframe::App for TrackerApp {
 
         self.ensure_icons(ctx);
         self.ensure_tab_scene();
+        self.grant_starting_locations();
         self.sync_collected();
         self.ensure_texture(ctx);
         // A tracked-state change (collected / exclusions / layout / world) also
@@ -1961,7 +2082,7 @@ impl eframe::App for TrackerApp {
     /// so Project64 is left clean even though it keeps running.
     fn on_exit(&mut self, _gl: Option<&eframe::glow::Context>) {
         self.stop_multiplayer();
-        self.stop_dev();
+        self.stop_v110();
         self.poller.shutdown_and_wait();
     }
 }
@@ -2685,6 +2806,25 @@ fn collected_item_name(
         .unwrap_or_else(|| obj_name.to_string())
 }
 
+/// The GPS start entrance for an arrival: the arriving entrance itself when the GPS
+/// entrance picker lists it for that scene (same filter as `gps_entrance_combo`:
+/// arrives in the scene, named, a real arrival, active layout), else `None` = the
+/// whole scene (e.g. a `None`-type arrival such as end credits).
+///
+/// @param game the game of the arrival
+/// @param entrance_id the arriving entrance id (`to_id`)
+/// @param scene the player's scene (entrance meta map node)
+/// @param mq the active MQ / JP layouts
+/// @return the entrance to preselect as GPS departure, or None for the whole scene
+fn gps_start_entrance(game: Game, entrance_id: u32, scene: u16, mq: &HashSet<(Game, u16)>) -> Option<u32> {
+    let d = entrance::lookup(game, entrance_id)?;
+    (d.to_scene == scene
+        && !d.to_name.is_empty()
+        && d.type_ != data::EntranceType::None
+        && tracking::scene_layout_active(d.layout, game, d.to_scene, mq))
+        .then_some(entrance_id)
+}
+
 /// Record a genuine collection of `key` in `world`, returning whether it should be
 /// processed now (logged / counted / re-rendered). A real pickup — from the hook or
 /// the network ledger — takes precedence over a manual "forced" hand-check: the forced
@@ -2731,6 +2871,26 @@ mod tests {
     /// flag is cleared and the event is still processed (`true`), so a pre-checked
     /// location the player then really collects turns from gold into a genuine, counted
     /// collection. A fresh collection is processed; a plain duplicate is not.
+    #[test]
+    fn gps_start_entrance_keeps_the_real_arrival() {
+        // A real named arrival preselects itself as the GPS departure entrance…
+        let mq = HashSet::new();
+        let e = Game::Oot
+            .entrances()
+            .iter()
+            .find(|e| {
+                !e.to_name.is_empty()
+                    && e.type_ != data::EntranceType::None
+                    && e.layout == data::GameLayout::all
+            })
+            .expect("a normal OoT arrival");
+        assert_eq!(gps_start_entrance(Game::Oot, e.to_id, e.to_scene, &mq), Some(e.to_id));
+        // …but not when it does not arrive in the player's scene (falls back to the
+        // whole scene), nor for an unknown id.
+        assert_eq!(gps_start_entrance(Game::Oot, e.to_id, e.to_scene.wrapping_add(1), &mq), None);
+        assert_eq!(gps_start_entrance(Game::Oot, 0xFFFF_FFF0, e.to_scene, &mq), None);
+    }
+
     #[test]
     fn record_collection_overrides_forced_hand_check() {
         let key = (Game::Oot, 42usize);

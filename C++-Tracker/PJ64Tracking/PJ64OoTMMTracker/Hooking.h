@@ -129,6 +129,13 @@ typedef struct Event
 #define HOST_VER_DEV     1
 #define HOST_VER_STABLE  2
 
+/* DLL -> tracker health report (appended to SharedData, see StatusMagic). */
+#define STATUS_MAGIC                0x48425431  // "HBT1" : the status fields below are live
+#define HOOK_STATE_PC_INSTALLED     0x01        // The PC hook is patched into the emulator
+#define HOOK_STATE_RAM_LOADED       0x02        // The game RAM is ready (tracking armed)
+#define HOOK_STATE_FORCE_CHECK      0x04        // A transition is pending: item handlers are muted
+#define FORCE_CHECK_TIMEOUT_MS      5000        // A pending transition older than this is considered stuck (savestate)
+
 struct SharedData
 {
     uint32_t GameVersion[2];
@@ -137,6 +144,11 @@ struct SharedData
     Event Buffer[BUFFER_SIZE];
     volatile int32_t HostROMVersion;    // Tracker -> DLL : voir HOST_VER_* (0 = inconnu / pas de spoiler)
     TrackerCommand Command;
+    // --- Appended: DLL -> tracker health report (older trackers simply never map it) ---
+    volatile uint32_t StatusMagic;      // STATUS_MAGIC once the fields below are maintained
+    volatile uint32_t Heartbeat;        // Bumped on every PC hook slow-path pass (stops when paused / unhooked)
+    volatile uint32_t HookState;        // HOOK_STATE_* bits | gGame << 8
+    volatile uint32_t Recoveries;       // Stuck-transition watchdog resets (savestate loaded mid-transition)
 };
 
 extern HMODULE gSelfModule;                 // A reference to this module in order to keep it active after the dll has been loaded and to unload it properly.

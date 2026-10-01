@@ -337,10 +337,10 @@
       </rendering_option>
       <actor actor="0x15">
         <rendering_option layout="all" type="fairy">
-          <xflag type="gossip" location="Termina Field Gossip Fairy Southeast" slice="0" item="FAIRY" name="Gossip Stone - Southeast" xyz="1743;1571;0"/>
+          <xflag type="gossip" location="Termina Field Gossip Fairy Southeast" slice="0" item="FAIRY" name="Gossip Stone - Southwest" xyz="1033;1462;0"/>
         </rendering_option>
         <rendering_option layout="all" type="fairy_spot">
-          <xflag type="gossip-big" location="Termina Field Gossip Big Fairy Southeast" slice="1" item="FAIRY_BIG" name="Gossip Stone - Southeast" xyz="1729;1555;0"/>
+          <xflag type="gossip-big" location="Termina Field Gossip Big Fairy Southeast" slice="1" item="FAIRY_BIG" name="Gossip Stone - Southwest" xyz="1017;1475;0"/>
         </rendering_option>
       </actor>
       <actor actor="0x16">
@@ -361,10 +361,10 @@
       </actor>
       <actor actor="0x18">
         <rendering_option layout="all" type="fairy">
-          <xflag type="gossip" location="Termina Field Gossip Fairy Southwest" slice="0" item="FAIRY" name="Gossip Stone - Southwest" xyz="1033;1462;0"/>
+          <xflag type="gossip" location="Termina Field Gossip Fairy Southwest" slice="0" item="FAIRY" name="Gossip Stone - Southeast" xyz="1743;1571;0"/>
         </rendering_option>
         <rendering_option layout="all" type="fairy_spot">
-          <xflag type="gossip-big" location="Termina Field Gossip Big Fairy Southwest" slice="1" item="FAIRY_BIG" name="Gossip Stone - Southwest" xyz="1017;1475;0"/>
+          <xflag type="gossip-big" location="Termina Field Gossip Big Fairy Southwest" slice="1" item="FAIRY_BIG" name="Gossip Stone - Southeast" xyz="1729;1555;0"/>
         </rendering_option>
       </actor>
       <actor actor="0x19">

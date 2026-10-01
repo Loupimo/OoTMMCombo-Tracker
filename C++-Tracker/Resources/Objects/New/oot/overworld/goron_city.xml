@@ -344,10 +344,10 @@
         <match setup="0" actor="0x05"/>
         <match setup="2" actor="0x00"/>
         <rendering_option type="fairy">
-          <xflag type="gossip" location="Goron City Gossip Fairy Medigoron" slice="0" item="FAIRY" name="Gossip Stone - Medigoron" xyz="228;315;0"/>
+          <xflag type="gossip" location="Goron City Gossip Fairy Medigoron" slice="0" item="FAIRY" name="Gossip Stone - Medigoron" xyz="206;310;0"/>
         </rendering_option>
         <rendering_option type="fairy_spot">
-          <xflag type="gossip-big" location="Goron City Gossip Big Fairy Medigoron" slice="1" item="FAIRY_BIG" name="Gossip Stone - Medigoron" xyz="206;310;0"/>
+          <xflag type="gossip-big" location="Goron City Gossip Big Fairy Medigoron" slice="1" item="FAIRY_BIG" name="Gossip Stone - Medigoron" xyz="183;317;0"/>
         </rendering_option>
       </actor>
     </scene_rendering>

@@ -36,7 +36,7 @@ impl PatchMode {
 }
 
 /// The multiplayer session identity extracted from a patch file (mirror of the
-/// Go client's `game.Info`). Consumed by the dev networking layer (`multi_dev`):
+/// Go client's `game.Info`). Consumed by the dev networking layer (`multi_v1_10`):
 /// the session id / secret authenticate the uplink handshake and are matched
 /// against the game's HELLO.
 #[derive(Clone)]

@@ -585,6 +585,24 @@ pub fn canonical_discovered_entrance(game: Game, entrance_id: u32) -> u32 {
     entrance_id
 }
 
+/// Whether an arriving entrance is a telescope *view* (OoTMM `indoors-telescope`):
+/// the Astral Observatory, Curiosity Shop and Pirate Fortress Sewers telescopes. The
+/// game loads the viewed scene, but the player never leaves the telescope — the
+/// paired `indoors-exit` brings them straight back. Progressive discovery must not
+/// treat the viewed scene as physically entered (the Pirate Fortress telescope marked
+/// the fortress interior visited and lit the Entrance Lookout barrel through it).
+///
+/// @param game the game the entrance belongs to
+/// @param entrance_id the arriving entrance id
+/// @return true for a telescope view arrival
+pub fn is_telescope_view(game: Game, entrance_id: u32) -> bool {
+    game == Game::Mm
+        && matches!(
+            entrance_id,
+            e::MM_TERMINA_FIELD_TELESCOPE | e::MM_CURIOSITY_SHOP_TELESCOPE | e::MM_PIRATE_FORTRESS_TELESCOPE
+        )
+}
+
 /// CheckWrapScene: boss lairs / caught rooms warp out; everything else falls
 /// back to the WARP_SCENE marker. Returns (new scene as u32, entrance id).
 pub fn check_wrap_scene(game: Game, scene: u16, entrance_id: u32) -> (u32, u32) {

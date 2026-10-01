@@ -180,8 +180,8 @@
       <xflag type="heart" location="Death Mountain Trail Cow Grotto Heart 2" actor="0x7" item="RECOVERY_HEART" name="Heart 2" xyz="671;160;0"/>
       <xflag type="heart" location="Death Mountain Trail Cow Grotto Heart 3" actor="0x8" item="RECOVERY_HEART" name="Heart 3" xyz="723;161;0"/>
       <xflag type="heart" location="Death Mountain Trail Cow Grotto Heart 4" actor="0x9" item="RECOVERY_HEART" name="Heart 4" xyz="802;228;0"/>
-      <rendering_option type="none">
-        <xflag type="fairy-spot" location="Death Mountain Trail Cow Grotto Big Fairy" actor="0x4" item="FAIRY_BIG" name="Big Fairy" xyz="0;0;0" legacy_scene="DEATH_MOUNTAIN_TRAIL"/>
+      <rendering_option type="fairy_spot">
+        <xflag type="fairy-spot" location="Death Mountain Trail Cow Grotto Big Fairy" actor="0x4" item="FAIRY_BIG" name="Big Fairy" xyz="753;308;0"/>
       </rendering_option>
       <xflag type="hive" location="Death Mountain Trail Cow Grotto Hive" actor="0x3" item="RUPEE_RED" name="Hive" xyz="829;166;0"/>
     </scene_rendering>

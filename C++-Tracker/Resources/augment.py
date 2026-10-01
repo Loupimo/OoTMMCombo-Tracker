@@ -33,7 +33,7 @@ ORDER = ["type", "location", "system", "flag", "npc", "slice", "setup", "room", 
 
 
 TYPE_MAP = {"boulder-silver": "silverboulder", "boulder-red": "redboulder",
-            "gossip-big": "gossip_big"}
+            "gossip-big": "gossip_big", "fairy-spot": "fairy_spot"}
 
 # Pool `system` tokens whose checks are ABSENT from current OoTMM data (an older representation that
 # was merged / removed upstream). augment re-injects them from the pool so a fresh OoTMM XML doesn't
@@ -103,7 +103,13 @@ class Aug:
         if not cands:
             return []
         matched = [r for r in cands if r["type"] == otype]
-        return matched if matched else [cands[0]]
+        if matched:
+            return matched
+        # No type match: prefer the real check over its type=none render-dup placeholder
+        # (same rule as gen_objects.pool_legacy_ids). Falling back on cands[0] blindly let
+        # the pool's ROW ORDER decide: a legacy none row listed first (e.g. Royal Tomb /
+        # DMT Cow Grotto Big Fairy) hid the check (rendering none, xyz 0;0;0).
+        return [next((r for r in cands if r["type"] != "none"), cands[0])]
 
     def pool_row(self, el):
         rows = self.pool_rows(el)

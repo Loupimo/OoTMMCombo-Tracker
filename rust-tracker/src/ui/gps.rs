@@ -33,12 +33,12 @@ impl TrackerApp {
             let (dep, arr) = (format!("{} :", self.i18n.departure()), format!("{} :", self.i18n.arrival()));
             egui::Grid::new("gps_grid").spacing(vec2(8.0, 8.0)).show(ui, |ui| {
                 ui.label(&dep);
-                gps_scene_combo(ui, &self.i18n, "gps_from_sc", &mut self.gps_from, &mut self.gps_from_ent);
-                gps_entrance_combo(ui, &self.i18n, "gps_from_en", self.gps_from, &mut self.gps_from_ent);
+                gps_scene_combo(ui, &self.i18n, "gps_from_sc", &mut self.gps_from, &mut self.gps_from_ent, &self.mq_scenes);
+                gps_entrance_combo(ui, &self.i18n, "gps_from_en", self.gps_from, &mut self.gps_from_ent, &self.mq_scenes);
                 ui.end_row();
                 ui.label(&arr);
-                gps_scene_combo(ui, &self.i18n, "gps_to_sc", &mut self.gps_to, &mut self.gps_to_ent);
-                gps_entrance_combo(ui, &self.i18n, "gps_to_en", self.gps_to, &mut self.gps_to_ent);
+                gps_scene_combo(ui, &self.i18n, "gps_to_sc", &mut self.gps_to, &mut self.gps_to_ent, &self.mq_scenes);
+                gps_entrance_combo(ui, &self.i18n, "gps_to_en", self.gps_to, &mut self.gps_to_ent, &self.mq_scenes);
                 ui.end_row();
             });
             ui.separator();

@@ -3791,10 +3791,10 @@ FROGS_GAME;OOT_ZORA_RIVER;Frogs - Game;OOT Zora River Frogs Game;npc;785;628;0;O
 0x10008;OOT_GERUDO_VALLEY;Gossip Stone;OOT Gerudo Valley Gossip Big Fairy;gossip_big;414;174;0;OOT_GERUDO_VALLEY;fairy_spot;render_type;All;0;oot;overworld;;;0x0F65;
 0x00030;OOT_GORON_CITY;Gossip Stone - Maze;OOT Goron City Gossip Fairy Maze;gossip;1094;150;0;OOT_GORON_CITY;fairy;render_type;All;0;oot;overworld;;;0x0FAB;
 0x10030;OOT_GORON_CITY;Gossip Stone - Maze;OOT Goron City Gossip Big Fairy Maze;gossip_big;1063;150;0;OOT_GORON_CITY;fairy_spot;render_type;All;0;oot;overworld;;;0x0FAC;
-0x00205;OOT_GORON_CITY;Gossip Stone - Medigoron;OOT Goron City Gossip Fairy Medigoron;gossip;228;315;0;OOT_GORON_CITY;fairy;render_type;All;0;oot;overworld;;;0x0FAD;
-0x10205;OOT_GORON_CITY;Gossip Stone - Medigoron;OOT Goron City Gossip Big Fairy Medigoron;gossip_big;206;310;0;OOT_GORON_CITY;fairy_spot;render_type;All;0;oot;overworld;;;0x0FAE;
-0x00102;OOT_GRAVEYARD;Gossip Stone;OOT Graveyard Gossip Fairy;gossip;525;318;0;OOT_GRAVEYARD;fairy;render_type;All;0;oot;overworld;;;0x0FC4;
-0x10102;OOT_GRAVEYARD;Gossip Stone;OOT Graveyard Gossip Big Fairy;gossip_big;511;304;0;OOT_GRAVEYARD;fairy_spot;render_type;All;0;oot;overworld;;;0x0FC5;
+0x00205;OOT_GORON_CITY;Gossip Stone - Medigoron;OOT Goron City Gossip Fairy Medigoron;gossip;206;310;0;OOT_GORON_CITY;fairy;render_type;All;0;oot;overworld;;;0x0FAD;
+0x10205;OOT_GORON_CITY;Gossip Stone - Medigoron;OOT Goron City Gossip Big Fairy Medigoron;gossip_big;183;317;0;OOT_GORON_CITY;fairy_spot;render_type;All;0;oot;overworld;;;0x0FAE;
+0x00102;OOT_GRAVEYARD;Gossip Stone;OOT Graveyard Gossip Fairy;gossip;816;234;0;OOT_GRAVEYARD;fairy;render_type;All;0;oot;overworld;;;0x0FC4;
+0x10102;OOT_GRAVEYARD;Gossip Stone;OOT Graveyard Gossip Big Fairy;gossip_big;795;218;0;OOT_GRAVEYARD;fairy_spot;render_type;All;0;oot;overworld;;;0x0FC5;
 0x02209;OOT_GROTTOS;Gossip Stone;OOT Hyrule Field Southeast Grotto Gossip Fairy;gossip;624;277;0;OOT_GROTTO_HYRULE_SE;fairy;render_type;All;0;oot;overworld;;;0x10AE;
 0x12209;OOT_GROTTOS;Gossip Stone;OOT Hyrule Field Southeast Grotto Gossip Big Fairy;gossip_big;596;277;0;OOT_GROTTO_HYRULE_SE;fairy_spot;render_type;All;0;oot;overworld;;;0x10AF;
 0x02309;OOT_GROTTOS;Gossip Stone;OOT Hyrule Field Open Grotto Gossip Fairy;gossip;624;277;0;OOT_GROTTO_HYRULE_OPEN;fairy;render_type;All;0;oot;overworld;;;0x10B9;

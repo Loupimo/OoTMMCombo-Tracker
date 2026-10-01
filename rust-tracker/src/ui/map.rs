@@ -168,6 +168,16 @@ impl TrackerApp {
         let mut klist = self.kbd.begin(kid);
         let mut kout = kbdnav::KbdOut::default();
         let mut obj_targets: HashMap<u64, (Game, usize)> = HashMap::new();
+        // Object focused from the Progression detail panel: highlighted, and on
+        // the first frame its category is unfolded and the row scrolled into view.
+        let focus = self
+            .obj_focus
+            .filter(|&(g, _)| self.scene.as_ref().is_some_and(|s| s.game == g))
+            .map(|(_, i)| i);
+        let focus_ty = focus.and_then(|i| {
+            self.scene.as_ref()?.objects.iter().find(|o| o.index == i).map(|o| o.type_)
+        });
+        let focus_scroll = self.obj_focus_scroll;
         egui::SidePanel::right("objtree")
             .resizable(true)
             .default_width(320.0)
@@ -236,9 +246,8 @@ impl TrackerApp {
                     // Sort alphabetically by the DISPLAYED (translated) category name,
                     // like the nav regions/scenes, so the order follows the language.
                     order.sort_by(|&a, &b| {
-                        scene::type_label(a, &self.i18n)
-                            .to_lowercase()
-                            .cmp(&scene::type_label(b, &self.i18n).to_lowercase())
+                        sort_key(scene::type_label(a, &self.i18n))
+                            .cmp(&sort_key(scene::type_label(b, &self.i18n)))
                     });
                     // "Hide unreachable" mode: an uncollected unreachable object is
                     // not listed, so it drops from the category counts too — a
@@ -287,6 +296,10 @@ impl TrackerApp {
                         } else {
                             ui.data_mut(|d| d.get_persisted::<bool>(id)).unwrap_or(true)
                         };
+                        if focus_scroll && focus_ty == Some(ty) && !open {
+                            open = true;
+                            ui.data_mut(|d| d.insert_persisted(id, true));
+                        }
                         let cat_tex = data::ICON_PATHS
                             .get(ty as usize)
                             .copied()
@@ -321,6 +334,16 @@ impl TrackerApp {
                                     continue; // "Hide Collected Object → From Object List"
                                 }
                                 let resp = self.object_leaf(ui, game, o);
+                                if focus == Some(o.index) {
+                                    ui.painter().rect_stroke(
+                                        resp.rect.shrink2(vec2(3.0, 1.5)),
+                                        6.0,
+                                        Stroke::new(1.5_f32, accent),
+                                    );
+                                    if focus_scroll {
+                                        resp.scroll_to_me(Some(egui::Align::Center));
+                                    }
+                                }
                                 let ok = ((game.idx() as u64) << 32) | o.index as u64;
                                 klist.leaf(ui, ok, &resp);
                                 obj_targets.insert(ok, (game, o.index));
@@ -337,6 +360,7 @@ impl TrackerApp {
         // Keep the tree's focus / active target in sync; Enter / Space toggles the
         // highlighted object (arrow moves only move the highlight).
         self.kbd.apply(kid, &kout);
+        self.obj_focus_scroll = false;
         if let Some((g, i)) = kout.activate.and_then(|k| obj_targets.get(&k).copied()) {
             toggle = Some((g, i));
         }
@@ -352,6 +376,10 @@ impl TrackerApp {
         let mut region_selected: Option<(Game, u8)> = None;
         let mut set_all: Option<bool> = None; // "expand/collapse all" this frame
         let entrance_tab = self.active_tab.is_entrance();
+        // Scene switched by code (auto-follow / snap / Progression jump): unfold its
+        // region and scroll its row into view once it's in the listed game.
+        let reveal = self.nav_reveal;
+        let mut reveal_seen = false;
         // "Hide unreachable" mode: the scene counts already drop hidden checks, so a
         // scene with a zero visible total has nothing reachable and is left out of
         // the tree (item tabs only; the entrance tab keeps its own `t > 0` gate).
@@ -490,6 +518,14 @@ impl TrackerApp {
                                 None
                             }
                         };
+                        // Region holding the scene to reveal (unfolded below).
+                        let reveal_rid = reveal
+                            .filter(|&(g, _)| g == game)
+                            .and_then(|(_, id)| scenes.iter().find(|s| s.id == id))
+                            .and_then(|s| eff_region(s));
+                        if reveal.is_some_and(|(g, _)| g == game) {
+                            reveal_seen = true;
+                        }
                         // Regions, sorted alphabetically by name (not by region id).
                         let mut regions: Vec<u8> = Vec::new();
                         for s in scenes {
@@ -513,10 +549,8 @@ impl TrackerApp {
                         // Alphabetical by the DISPLAYED (translated) region name, so the
                         // order follows the active language (e.g. Woodfall -> Cascade Mojo).
                         regions.sort_by(|&a, &b| {
-                            self.i18n
-                                .tr_region(region_name_of(a))
-                                .to_lowercase()
-                                .cmp(&self.i18n.tr_region(region_name_of(b)).to_lowercase())
+                            sort_key(self.i18n.tr_region(region_name_of(a)))
+                                .cmp(&sort_key(self.i18n.tr_region(region_name_of(b))))
                         });
                         for rid in regions {
                             // Filter scenes by the search text; skip empty regions.
@@ -549,10 +583,8 @@ impl TrackerApp {
                             // Scenes alphabetical by their DISPLAYED (translated) name so the
                             // order follows the active language, like the regions above.
                             region_scenes.sort_by(|a, b| {
-                                self.i18n
-                                    .tr_scene(a.name)
-                                    .to_lowercase()
-                                    .cmp(&self.i18n.tr_scene(b.name).to_lowercase())
+                                sort_key(self.i18n.tr_scene(a.name))
+                                    .cmp(&sort_key(self.i18n.tr_scene(b.name)))
                             });
                             // Region name from the region id (the entrance hub scenes
                             // carry region_name "None" on their own SceneDef, so read
@@ -581,6 +613,10 @@ impl TrackerApp {
                             } else {
                                 ui.data_mut(|d| d.get_persisted::<bool>(id)).unwrap_or(false)
                             };
+                            if reveal_rid == Some(rid) && !open {
+                                open = true;
+                                ui.data_mut(|d| d.insert_persisted(id, true));
+                            }
 
                             // Region icon (Regions.h), loaded into the shared cache.
                             let region_tex = scene::region_icon(game, rid)
@@ -622,6 +658,9 @@ impl TrackerApp {
                                         ui, 22.0, 30.0, bg, hov, self.i18n.tr_scene(s.name),
                                         TEXT, scount, None, None,
                                     );
+                                    if reveal == Some((game, s.id)) {
+                                        row.scroll_to_me(Some(egui::Align::Center));
+                                    }
                                     let sk = skey(game, s.id);
                                     klist.leaf(ui, sk, &row);
                                     key_targets.insert(sk, (game, s));
@@ -642,6 +681,9 @@ impl TrackerApp {
         // tree) load the focused scene exactly like a click on it. Region headers
         // are not in `key_targets`, so focusing one only moves the highlight.
         self.kbd.apply(kid, &kout);
+        if reveal_seen {
+            self.nav_reveal = None; // handled (or filtered out by the search / hide mode)
+        }
         if let Some((g, def)) = kout.moved.or(kout.activate).and_then(|k| key_targets.get(&k).copied()) {
             clicked = Some((g, def));
         }
@@ -690,7 +732,11 @@ impl TrackerApp {
             });
             if let Some((has_context, game, rooms)) = header {
                 if has_context || !rooms.is_empty() {
-                    ui.horizontal(|ui| {
+                    // Wrapped: a dungeon with many rooms (Snowhead Temple) overflowed a
+                    // single row, putting the right-most rooms out of reach. Each room
+                    // label stays whole (Extend) and flows onto the next line instead.
+                    ui.horizontal_wrapped(|ui| {
+                        ui.style_mut().wrap_mode = Some(egui::TextWrapMode::Extend);
                         if has_context {
                             let (left, right, off, on_) = match game {
                                 Game::Oot => (

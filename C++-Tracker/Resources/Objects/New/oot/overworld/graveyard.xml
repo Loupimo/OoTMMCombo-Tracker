@@ -71,10 +71,10 @@
         <match setup="2" actor="0x1"/>
         <match setup="3" actor="0x1"/>
         <rendering_option type="fairy">
-          <xflag type="gossip" location="Graveyard Gossip Fairy" slice="0" item="FAIRY" name="Gossip Stone" xyz="525;318;0"/>
+          <xflag type="gossip" location="Graveyard Gossip Fairy" slice="0" item="FAIRY" name="Gossip Stone" xyz="816;234;0"/>
         </rendering_option>
         <rendering_option type="fairy_spot">
-          <xflag type="gossip-big" location="Graveyard Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Stone" xyz="511;304;0"/>
+          <xflag type="gossip-big" location="Graveyard Gossip Big Fairy" slice="1" item="FAIRY_BIG" name="Gossip Stone" xyz="795;218;0"/>
         </rendering_option>
       </actor>
     </scene_rendering>
@@ -92,8 +92,8 @@
         <npc location="Graveyard Royal Tomb Song" npc="ROYAL_TOMB_SONG" item="SONG_SUN" name="Sun's Song" xyz="149;24;0"/>
       </rendering_option>
       <chest location="Graveyard Royal Tomb Chest" flag="0x00" item="BOMBS_5" name="Torches" xyz="150;522;0"/>
-      <rendering_option type="none">
-        <xflag type="fairy-spot" location="Graveyard Royal Tomb Big Fairy" setup="0" room="0x0" actor="0x8" item="FAIRY_BIG" name="Skull" xyz="0;0;0" legacy_scene="GRAVEYARD"/>
+      <rendering_option type="fairy_spot">
+        <xflag type="fairy-spot" location="Graveyard Royal Tomb Big Fairy" setup="0" room="0x0" actor="0x8" item="FAIRY_BIG" name="Skull" xyz="111;506;0"/>
       </rendering_option>
     </scene_rendering>
   </scene>

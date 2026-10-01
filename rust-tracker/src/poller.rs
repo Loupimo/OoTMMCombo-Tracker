@@ -26,7 +26,11 @@ use eframe::egui;
 
 use crate::i18n::LogStrings;
 use crate::inject;
-use crate::shared_mem::{Event, SharedMemory};
+use crate::shared_mem::{self as shm, Event, SharedMemory};
+
+/// A DLL heartbeat frozen this long means the hook is no longer running: emulation
+/// paused, or the DLL stopped tracking (the silent "disconnect" after savestates).
+const HEARTBEAT_STALL: Duration = Duration::from_secs(3);
 
 /// Localized log / status strings shared with this thread, swapped by the UI on a
 /// language change. An inner `Arc` makes each per-iteration read a cheap pointer
@@ -122,6 +126,42 @@ struct Link {
     settings_window: Option<isize>,
     /// The tracked PJ64 process id (for liveness + unload waiting).
     pid: Option<u32>,
+    /// Last DLL heartbeat seen and when it last moved (health report).
+    heartbeat: Option<(u32, Instant)>,
+    /// Last watchdog-recovery count seen (journal line on each new one).
+    recoveries: Option<u32>,
+}
+
+/// Read the DLL health report and turn it into the status-bar text: a hook that was
+/// removed, a heartbeat that froze, or plain "connected". Logs each new watchdog
+/// recovery (a transition left stuck by a savestate, released by the DLL). `None`
+/// for an older DLL without the report.
+///
+/// @param link the connected link (shared memory + previous heartbeat / recovery count)
+/// @param s the localized strings
+/// @param log journal sink
+/// @return the status text to show, or None when the DLL reports no health
+fn health_status(link: &mut Link, s: &LogStrings, log: &dyn Fn(&str)) -> Option<String> {
+    let st = link.shared.as_ref()?.status()?;
+    let now = Instant::now();
+    let moved_at = match link.heartbeat {
+        Some((hb, at)) if hb == st.heartbeat => at,
+        _ => now,
+    };
+    link.heartbeat = Some((st.heartbeat, moved_at));
+    if let Some(prev) = link.recoveries {
+        if st.recoveries > prev {
+            log(&s.dll_recovered.replace("{count}", &st.recoveries.to_string()));
+        }
+    }
+    link.recoveries = Some(st.recoveries);
+    Some(if st.hook_state & shm::HOOK_STATE_PC_INSTALLED == 0 {
+        s.st_dll_unhooked.clone()
+    } else if now.duration_since(moved_at) >= HEARTBEAT_STALL {
+        s.st_dll_silent.clone()
+    } else {
+        s.st_connected.clone()
+    })
 }
 
 /// Ask the DLL to unload, wait (bounded) for it, then drop the mapping and
@@ -200,6 +240,15 @@ fn run(
             }
             if last_liveness.elapsed() >= Duration::from_millis(700) {
                 last_liveness = Instant::now();
+                // DLL health: surface a removed hook / frozen heartbeat in the status
+                // bar (journal line on each change) instead of a silent "connected".
+                let log = |m: &str| send_log(&ctx, &tx, m);
+                if let Some(text) = health_status(&mut link, &s, &log) {
+                    if text != last_status {
+                        send_log(&ctx, &tx, &s.dll_health_log.replace("{status}", &text));
+                    }
+                    push_status(&ctx, &tx, &mut last_status, true, &text);
+                }
                 match inject::find_pj64_pid() {
                     Some(pid) => link.pid = Some(pid),
                     None => {
@@ -229,6 +278,8 @@ fn run(
                 send_log(&ctx, &tx, &s.dll_loaded);
                 link.shared = Some(sm);
                 link.loading = false;
+                link.heartbeat = None;
+                link.recoveries = None;
                 if let Some(hwnd) = link.settings_window.take() {
                     inject::close_window(hwnd);
                     send_log(&ctx, &tx, &s.settings_closed);

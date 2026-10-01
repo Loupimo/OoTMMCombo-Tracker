@@ -17,6 +17,8 @@
 //!     Event    Buffer[BUFFER_SIZE];
 //!     volatile int32_t HostROMVersion;
 //!     TrackerCommand   Command;      // = u8 (tracker -> DLL : demande d'arrêt)
+//!     // Ajoutés (rapport de santé DLL -> tracker, cf. Hooking.h STATUS_MAGIC) :
+//!     volatile uint32_t StatusMagic, Heartbeat, HookState, Recoveries;
 //! } SharedData;
 //! ```
 //! Comme tous les champs font 4 octets et qu'il n'y a aucun pointeur, le layout
@@ -71,6 +73,26 @@ pub struct Event {
 /// à la DLL de s'arrêter et de restaurer ce qu'elle a patché avant de se décharger.
 pub const TRACKER_COMMAND_SHUTDOWN: u8 = 1;
 
+/// `STATUS_MAGIC` (Hooking.h) : la DLL maintient les champs de santé ajoutés.
+/// Une DLL plus ancienne ne les a pas (zéros) -> pas de rapport de santé.
+pub const STATUS_MAGIC: u32 = 0x4842_5431;
+/// `HOOK_STATE_PC_INSTALLED` (Hooking.h) : bit de `SharedData::hook_state` levé
+/// tant que le hook PC est patché dans l'émulateur. (Autres bits : 0x02 RAM prête,
+/// 0x04 transition en attente ; jeu courant << 8.)
+pub const HOOK_STATE_PC_INSTALLED: u32 = 0x01;
+
+/// Instantané du rapport de santé de la DLL (voir [`SharedMemory::status`]).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct DllStatus {
+    /// Incrémenté à chaque passage lent du hook PC : figé = émulation en pause,
+    /// hook retiré ou DLL bloquée.
+    pub heartbeat: u32,
+    /// Bits `HOOK_STATE_*` | jeu courant << 8.
+    pub hook_state: u32,
+    /// Nombre de transitions bloquées libérées par le watchdog de la DLL
+    /// (savestate chargée entre Play_TransitionDone et Play_Init).
+    pub recoveries: u32,
+}
 /// Miroir exact de `SharedData` (Headers/UI/MemoryReader.h:43).
 ///
 /// Le champ `command` a été ajouté avec la nouvelle méthode d'injection : le
@@ -86,6 +108,11 @@ pub struct SharedData {
     pub buffer: [Event; BUFFER_SIZE],
     pub host_rom_version: i32,
     pub command: u8,
+    /// Champs ajoutés (DLL -> tracker) ; valides seulement si `status_magic == STATUS_MAGIC`.
+    pub status_magic: u32,
+    pub heartbeat: u32,
+    pub hook_state: u32,
+    pub recoveries: u32,
 }
 
 /// Poignée sur la vue mappée + curseur de lecture du ring buffer.
@@ -108,13 +135,11 @@ impl SharedMemory {
                 return None;
             }
 
-            let view = MapViewOfFile(
-                map_handle,
-                FILE_MAP_ALL_ACCESS,
-                0,
-                0,
-                std::mem::size_of::<SharedData>(),
-            ) as *mut SharedData;
+            // Taille 0 = tout le mapping : une DLL plus ancienne crée un mapping plus
+            // petit (sans les champs de santé) et une vue de `size_of::<SharedData>()`
+            // y échouerait. La vue est arrondie à la page (32 792 -> 36 864 octets),
+            // donc les champs ajoutés restent lisibles (à zéro, magic absent).
+            let view = MapViewOfFile(map_handle, FILE_MAP_ALL_ACCESS, 0, 0, 0) as *mut SharedData;
 
             if view.is_null() {
                 CloseHandle(map_handle);
@@ -137,6 +162,20 @@ impl SharedMemory {
     /// (used to detect the stable vs dev build).
     pub fn game_version(&self) -> [u32; 2] {
         unsafe { (*self.view).game_version }
+    }
+
+    /// The DLL health report, or `None` for an older DLL that does not maintain it.
+    pub fn status(&self) -> Option<DllStatus> {
+        unsafe {
+            if ptr::read_volatile(ptr::addr_of!((*self.view).status_magic)) != STATUS_MAGIC {
+                return None;
+            }
+            Some(DllStatus {
+                heartbeat: ptr::read_volatile(ptr::addr_of!((*self.view).heartbeat)),
+                hook_state: ptr::read_volatile(ptr::addr_of!((*self.view).hook_state)),
+                recoveries: ptr::read_volatile(ptr::addr_of!((*self.view).recoveries)),
+            })
+        }
     }
 
     /// Ask the DLL to shut down and undo its patches (mirror of
@@ -201,11 +240,12 @@ mod tests {
     /// test verrouille la taille attendue (calculée depuis le C++), notamment le
     /// padding qui suit le `command: u8` : GameVersion(8) + MaxSize(4) +
     /// CurrIndex(4) + Buffer(1024*32) + HostROMVersion(4) + command(1) -> arrondi
-    /// à un multiple de 4 = 32792.
+    /// à un multiple de 4 = 32792, puis les 4 champs de santé (16) = 32808.
     #[test]
     fn shared_data_layout_matches_cpp() {
         assert_eq!(std::mem::size_of::<Event>(), 32);
-        assert_eq!(std::mem::size_of::<SharedData>(), 32792);
+        assert_eq!(std::mem::offset_of!(SharedData, status_magic), 32792);
+        assert_eq!(std::mem::size_of::<SharedData>(), 32808);
     }
 }
 

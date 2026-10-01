@@ -89,6 +89,9 @@ pub struct LocScene {
 pub struct LocLeaf {
     pub game: Game,
     pub render_scene: u16,
+    /// Index into `game.objects()` (the collected-set key), so a click can focus
+    /// this exact object in the item tab's object tree.
+    pub index: usize,
     pub name: &'static str,
     pub collected: bool,
     /// Resolved map-icon path for this check's type (chest / pot / GS / …), shown
@@ -117,6 +120,15 @@ pub struct Dashboard {
     /// Whether the 'songs' setting shuffles notes individually (so a song widget
     /// reads as a counter). Resolved from the settings on every `rebuild`.
     songs_counter: bool,
+    /// The seed's sharing flags that disambiguate placed item names
+    /// ([`find_placed_item_id`]). Resolved on every `rebuild`, read by the detail
+    /// tree (which has no settings).
+    sharing: Sharing,
+    /// King Zora is `open` and the seed holds no Ruto's Letter: OoTMM replaced it by
+    /// an empty bottle, so its tile hides. Read from the placements, not the
+    /// settings: whether `sharedBottles` keeps the letter changed between OoTMM
+    /// builds (v32.3 kept it, later dev builds drop it). Resolved on every `rebuild`.
+    rutos_letter_absent: bool,
     /// Selected sub-tab (page index) and selected entry (flat index).
     pub sub_tab: usize,
     pub selected: Option<usize>,
@@ -199,6 +211,8 @@ impl Dashboard {
             marker_ids,
             states,
             songs_counter: false,
+            sharing: Sharing::default(),
+            rutos_letter_absent: false,
             sub_tab: 0,
             selected: None,
             reveal: true,
@@ -243,6 +257,8 @@ impl Dashboard {
         mq: &HashSet<(Game, u16)>,
     ) {
         self.songs_counter = settings.value("songs") == data::ShuffleSetting::all;
+        self.sharing = Sharing::from_settings(settings);
+        self.rutos_letter_absent = rutos_letter_absent(worlds, settings);
         self.tree_dirty = true; // collected / spoiler changed → detail tree stale
 
         // Reset. Spoiler-derived counters start at 0 (tallied below); static
@@ -286,6 +302,22 @@ impl Dashboard {
             }
         }
 
+        // Spoiler-derived totals also include the starting copies: the placement
+        // tally below only sees the pool, so starting stray fairies / keys / heart
+        // pieces made the tile read e.g. 11 / 9.
+        for i in 0..self.flat.len() {
+            if !self.flat[i].entry.max_from_spoiler {
+                continue;
+            }
+            let start: u32 = self.flat[i]
+                .entry
+                .lookup_keys
+                .iter()
+                .map(|k| settings.starting_item_ids.get(k).copied().unwrap_or(0))
+                .sum();
+            self.states[i].max_count += start as i32;
+        }
+
         // Tally spoiler-derived totals: every active placement (across all worlds)
         // destined to the active world counts toward the max, collected or not.
         // The dedup key carries the physical world so the same coordinate in two
@@ -303,7 +335,7 @@ impl Dashboard {
                     if dest_world(w, wi, o.location) != self.active_world {
                         continue;
                     }
-                    let Some(id) = find_item_id(name) else { continue };
+                    let Some(id) = find_placed_item_id(name, self.sharing) else { continue };
                     if !seen.insert((wi, game.idx(), o.object_id, o.render_scene, o.type_ as u8)) {
                         continue;
                     }
@@ -324,7 +356,7 @@ impl Dashboard {
                 if dest_world(w, wi, o.location) != self.active_world {
                     continue;
                 }
-                let Some(id) = find_item_id(name) else { continue };
+                let Some(id) = find_placed_item_id(name, self.sharing) else { continue };
                 self.on_item_found(id, settings);
             }
         }
@@ -480,6 +512,24 @@ impl Dashboard {
             return;
         }
 
+        // Extra child swords (OoT): `extraChildSwordsOot` turns the Kokiri Sword into
+        // three "Progressive Sword (OoT)" (OOT_SWORD) granting Kokiri -> Razor -> Gilded
+        // (transform.ts), the Master Sword staying its own item. The tiles list OOT_SWORD
+        // on Kokiri / Master / Knife / Biggoron for the `progressive` sword mode, which
+        // the setting excludes (OoTMM only offers it when the swords are not
+        // progressive), so walk the three child-sword tiles instead.
+        if id == data::iid::OOT_SWORD
+            && settings.raw_settings.get("extraChildSwordsOot").map(String::as_str) == Some("true")
+        {
+            use data::iid::{OOT_SWORD_GILDED, OOT_SWORD_KOKIRI, OOT_SWORD_RAZOR};
+            let stages: Vec<usize> = [OOT_SWORD_KOKIRI, OOT_SWORD_RAZOR, OOT_SWORD_GILDED]
+                .iter()
+                .filter_map(|k| self.by_item.get(k).and_then(|v| v.first().copied()))
+                .collect();
+            self.walk_stages(&stages);
+            return;
+        }
+
         // OoTMM Short Hookshot (shortHookshotMm): the seed places the SAME item
         // twice as "Hookshot (MM)" (MM_HOOKSHOT) — the first pickup is the short-range
         // hookshot, the second upgrades it to full range (gi.yml: MM_HOOKSHOT_SHORT
@@ -610,13 +660,14 @@ impl Dashboard {
 
     // ── Per-entry render queries (RefreshVisual) ─────────────────────────────
 
-    /// Whether an entry is hidden by the ROM settings (any of its ids disabled).
+    /// Whether an entry is hidden by the ROM settings (any of its ids disabled), or
+    /// is the Ruto's Letter tile of a seed that removed the letter. The letter is
+    /// hidden by name: the Empty Bottle counters also list the letter ids, so
+    /// disabling those ids would hide the bottle tiles too.
     pub fn entry_hidden(&self, i: usize, settings: &Settings) -> bool {
-        self.flat[i]
-            .entry
-            .lookup_keys
-            .iter()
-            .any(|k| settings.disabled_item_ids.contains(k))
+        let entry = &self.flat[i].entry;
+        (self.rutos_letter_absent && entry.name == "Ruto's Letter")
+            || entry.lookup_keys.iter().any(|k| settings.disabled_item_ids.contains(k))
     }
 
     /// Whether a page still has at least one visible entry (else its tab hides).
@@ -712,7 +763,7 @@ impl Dashboard {
                     if dest_world(w, wi, o.location) != self.active_world {
                         continue;
                     }
-                    let Some(id) = find_item_id(name) else { continue };
+                    let Some(id) = find_placed_item_id(name, self.sharing) else { continue };
                     if !item_matches(e, id) {
                         continue;
                     }
@@ -739,6 +790,7 @@ impl Dashboard {
                     bucket.leaves.push(LocLeaf {
                         game,
                         render_scene: o.render_scene,
+                        index: idx,
                         name: o.name,
                         collected: coll,
                         icon: crate::scene::icon_path_for(o.map_icon, o.type_),
@@ -800,6 +852,80 @@ pub fn find_item_id(name: &str) -> Option<u32> {
     rusty_key_alias(&key)
         .or_else(|| clock_alias(&key))
         .or_else(|| shared_item_alias(&key))
+}
+
+/// The seed's sharing settings that decide which copy an ambiguous placed item name
+/// stands for (see [`find_placed_item_id`]).
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct Sharing {
+    /// `sharedGFS`: the Great Fairy's Sword is the SHARED copy.
+    pub gfs: bool,
+    /// `sharedBottles`: every bottle content is the SHARED copy.
+    pub bottles: bool,
+}
+
+impl Sharing {
+    /// Read the sharing flags from the seed's raw settings.
+    ///
+    /// @param settings the ROM settings
+    /// @return the sharing flags of this seed
+    pub fn from_settings(settings: &Settings) -> Self {
+        let on = |k: &str| settings.raw_settings.get(k).map(String::as_str) == Some("true");
+        Self { gfs: on("sharedGFS"), bottles: on("sharedBottles") }
+    }
+}
+
+/// Resolve a PLACED item name (spoiler placement) to its id, taking the seed's
+/// sharing into account. OoTMM gives several items the SAME display name in OoT,
+/// MM and SHARED form, so the bare name (which the name index maps to the OoT copy)
+/// must be steered to the copy that actually exists in this seed:
+/// - "Great Fairy's Sword" (MM / SHARED): SHARED with `sharedGFS`, else MM.
+/// - "Bottle of Gold Dust", "Bottle of Chateau Romani": MM-only items (Goron race,
+///   Madame Aroma) — resolving to the OoT id meant `has_gold_dust` never lit, so the
+///   Gilded Sword stayed locked with a bottle of gold dust in hand (reported).
+/// - with `sharedBottles`, those plus "Ruto's Letter" and "Bottle of Blue Fire" are
+///   the SHARED copy the logic asks for (`shared_bottle(a, b)` = `has(b)`).
+/// - "Triforce Piece" / "Triforce of Power|Courage|Wisdom": always SHARED (the only
+///   copies OoTMM places).
+///
+/// @param name the placed item name, as the spoiler spells it
+/// @param sharing the seed's sharing flags ([`Sharing::from_settings`])
+/// @return the item id, or None when the name is unknown
+pub fn find_placed_item_id(name: &str, sharing: Sharing) -> Option<u32> {
+    use data::iid::*;
+    let id = find_item_id(name)?;
+    Some(match id {
+        MM_GREAT_FAIRY_SWORD if sharing.gfs => SHARED_GREAT_FAIRY_SWORD,
+        OOT_BOTTLED_GOLD_DUST if sharing.bottles => SHARED_BOTTLED_GOLD_DUST,
+        OOT_BOTTLED_GOLD_DUST => MM_BOTTLED_GOLD_DUST,
+        OOT_BOTTLE_CHATEAU if sharing.bottles => SHARED_BOTTLE_CHATEAU,
+        OOT_BOTTLE_CHATEAU => MM_BOTTLE_CHATEAU,
+        OOT_BOTTLE_RUTO_LETTER if sharing.bottles => SHARED_BOTTLE_RUTO_LETTER,
+        OOT_BOTTLE_BLUE_FIRE if sharing.bottles => SHARED_BOTTLE_BLUE_FIRE,
+        // Triforces: OoTMM only ever places the SHARED copies (transform.ts
+        // `addTriforce(SHARED_TRIFORCE…)`, no setting), under the bare OoT name.
+        OOT_TRIFORCE => SHARED_TRIFORCE,
+        OOT_TRIFORCE_POWER => SHARED_TRIFORCE_POWER,
+        OOT_TRIFORCE_COURAGE => SHARED_TRIFORCE_COURAGE,
+        OOT_TRIFORCE_WISDOM => SHARED_TRIFORCE_WISDOM,
+        id => id,
+    })
+}
+
+/// King Zora `open` removed Ruto's Letter from this seed: no world places one and
+/// it is not a starting item (OoTMM swaps it for an empty bottle).
+///
+/// @param worlds every world's placements
+/// @param settings the ROM settings (King Zora mode + starting items)
+/// @return true when the Ruto's Letter tile must hide
+fn rutos_letter_absent(worlds: &[WorldData], settings: &Settings) -> bool {
+    use data::iid::{MM_BOTTLE_RUTO_LETTER, OOT_BOTTLE_RUTO_LETTER, SHARED_BOTTLE_RUTO_LETTER};
+    let open = settings.raw_settings.get("zoraKing").map(String::as_str) == Some("open");
+    let starting = [OOT_BOTTLE_RUTO_LETTER, MM_BOTTLE_RUTO_LETTER, SHARED_BOTTLE_RUTO_LETTER]
+        .iter()
+        .any(|id| settings.starting_item_ids.contains_key(id));
+    let placed = worlds.iter().any(|w| w.items.values().any(|n| n.ends_with("Ruto's Letter")));
+    open && !starting && !placed
 }
 
 /// A shared item (its `shared*` setting merges the OoT and MM copies into one) is
@@ -1004,6 +1130,32 @@ mod tests {
         // Shared items already carrying the bare name keep resolving directly.
         assert_eq!(find_item_id("Progressive Strength"), Some(SHARED_STRENGTH));
         assert_eq!(find_item_id("Fairy Slingshot"), Some(SHARED_SLINGSHOT));
+        // The MM and the SHARED Great Fairy's Sword share one bare name: the seed's
+        // `sharedGFS` decides which one a placement is.
+        let gfs = |on: bool| Sharing { gfs: on, bottles: false };
+        assert_eq!(find_placed_item_id("Great Fairy's Sword", gfs(false)), Some(data::iid::MM_GREAT_FAIRY_SWORD));
+        assert_eq!(find_placed_item_id("Great Fairy's Sword", gfs(true)), Some(data::iid::SHARED_GREAT_FAIRY_SWORD));
+        assert_eq!(find_placed_item_id("Great Fairy's Sword (OoT)", gfs(true)), Some(data::iid::OOT_GREAT_FAIRY_SWORD));
+
+        // Bottle contents share one name across OoT / MM / SHARED. Gold Dust and the
+        // Chateau bottle are MM items; `sharedBottles` turns every bottle SHARED (the
+        // copy `has_gold_dust` = `shared_bottle(..)` asks for — reported Gilded Sword).
+        let bottles = |on: bool| Sharing { gfs: false, bottles: on };
+        assert_eq!(find_placed_item_id("Bottle of Gold Dust", bottles(false)), Some(MM_BOTTLED_GOLD_DUST));
+        assert_eq!(find_placed_item_id("Bottle of Gold Dust", bottles(true)), Some(SHARED_BOTTLED_GOLD_DUST));
+        assert_eq!(find_placed_item_id("Bottle of Chateau Romani", bottles(false)), Some(MM_BOTTLE_CHATEAU));
+        assert_eq!(find_placed_item_id("Bottle of Chateau Romani", bottles(true)), Some(SHARED_BOTTLE_CHATEAU));
+        assert_eq!(find_placed_item_id("Ruto's Letter", bottles(false)), Some(OOT_BOTTLE_RUTO_LETTER));
+        assert_eq!(find_placed_item_id("Ruto's Letter", bottles(true)), Some(SHARED_BOTTLE_RUTO_LETTER));
+        assert_eq!(find_placed_item_id("Bottle of Blue Fire", bottles(false)), Some(OOT_BOTTLE_BLUE_FIRE));
+        assert_eq!(find_placed_item_id("Bottle of Blue Fire", bottles(true)), Some(SHARED_BOTTLE_BLUE_FIRE));
+        // Triforces are always the SHARED copy, whatever the sharing flags.
+        for s in [bottles(false), bottles(true)] {
+            assert_eq!(find_placed_item_id("Triforce Piece", s), Some(SHARED_TRIFORCE));
+            assert_eq!(find_placed_item_id("Triforce of Power", s), Some(SHARED_TRIFORCE_POWER));
+            assert_eq!(find_placed_item_id("Triforce of Courage", s), Some(SHARED_TRIFORCE_COURAGE));
+            assert_eq!(find_placed_item_id("Triforce of Wisdom", s), Some(SHARED_TRIFORCE_WISDOM));
+        }
     }
 
     #[test]
@@ -1494,6 +1646,135 @@ mod tests {
         on.apply(&HashSet::new());
         assert!(d.entry_hidden(oot, &on), "OoT Magic Beans hides when pre-planted beans is on");
         assert!(!d.entry_hidden(mm, &on), "MM Magic Beans stays visible");
+    }
+
+    /// King Zora `open` can remove Ruto's Letter (replaced by an empty bottle), but
+    /// whether shared bottles keep it changed between OoTMM builds — so the tile hides
+    /// from the placements: King Zora open AND no Ruto's Letter placed. The Empty
+    /// Bottle counters, which also list the letter ids, stay visible.
+    #[test]
+    fn open_king_zora_hides_the_rutos_letter_tile_only_when_none_is_placed() {
+        let letter_tile = |d: &Dashboard| {
+            d.flat().iter().position(|fe| fe.entry.name == "Ruto's Letter").expect("letter tile")
+        };
+        let settings = |kz: &str| {
+            let mut s = Settings::default();
+            s.raw_settings.insert("zoraKing".into(), kz.into());
+            s.apply(&HashSet::new());
+            s
+        };
+        let loc = data::OOT_OBJECTS[0].location;
+        let hidden = |kz: &str, item: &str| {
+            let s = settings(kz);
+            let mut d = Dashboard::new();
+            d.rebuild(&one_world(&[(loc, item)], &[], &[]), &s, &HashSet::new());
+            let bottles_visible = d
+                .flat()
+                .iter()
+                .enumerate()
+                .filter(|(_, fe)| fe.entry.name == "Empty Bottle")
+                .all(|(i, _)| !d.entry_hidden(i, &s));
+            assert!(bottles_visible, "Empty Bottle tiles never hide");
+            d.entry_hidden(letter_tile(&d), &s)
+        };
+
+        assert!(hidden("open", "Green Rupee"), "open + no letter placed: hidden (dev builds)");
+        assert!(!hidden("open", "Ruto's Letter"), "open + letter still placed: shown (v32.3 shared bottles)");
+        assert!(!hidden("open", "Player 2 Ruto's Letter"), "multiworld spelling counts too");
+        assert!(!hidden("adult", "Green Rupee"), "adult-only keeps the letter");
+        assert!(!hidden("vanilla", "Green Rupee"), "vanilla keeps the letter");
+    }
+
+    /// Kakariko gate `open` removes Zelda's Letter from the pool (transform.ts): its
+    /// tile hides. A closed gate keeps it.
+    /// Gerudo Fortress `open`: no hideout keys exist (every carpenter starts rescued),
+    /// so the hideout small key and key ring tiles hide. Other modes keep them.
+    #[test]
+    fn open_fortress_hides_the_hideout_keys() {
+        let d = Dashboard::new();
+        let small = entry_with_key(&d, data::iid::OOT_SMALL_KEY_GF);
+        let ring = entry_with_key(&d, data::iid::OOT_KEY_RING_GF);
+        let build = |gf: &str| {
+            let mut s = Settings::default();
+            s.raw_settings.insert("gerudoFortress".into(), gf.into());
+            s.apply(&HashSet::new());
+            s
+        };
+        let open = build("open");
+        assert!(d.entry_hidden(small, &open) && d.entry_hidden(ring, &open), "open hides both");
+        for gf in ["vanilla", "single"] {
+            let s = build(gf);
+            assert!(!d.entry_hidden(ring, &s), "{gf}: key ring tile stays");
+        }
+    }
+
+    /// With shared child swords the single progressive SHARED_SWORD walks Kokiri ->
+    /// Razor -> Gilded on the OoT page too; it must not be listed on the Master /
+    /// Giant's Knife / Biggoron tiles, which the walk lit instead of the Gilded Sword.
+    #[test]
+    fn shared_sword_tiers_are_the_child_swords_only() {
+        let d = Dashboard::new();
+        let names: Vec<&str> = d
+            .flat()
+            .iter()
+            .filter(|fe| fe.entry.lookup_keys.contains(&data::iid::SHARED_SWORD))
+            .map(|fe| fe.entry.name)
+            .collect();
+        for n in &names {
+            assert!(
+                matches!(*n, "Kokiri Sword" | "Razor Sword" | "Gilded Sword"),
+                "SHARED_SWORD listed on {n}"
+            );
+        }
+        assert_eq!(names.len(), 6, "three child swords on each game page");
+    }
+
+    /// `extraChildSwordsOot`: each "Progressive Sword (OoT)" grants Kokiri -> Razor ->
+    /// Gilded (Master Sword separate). Without it (progressive mode) the same item walks
+    /// Kokiri -> Master.
+    #[test]
+    fn extra_child_swords_walk_kokiri_razor_gilded() {
+        let (a, b, c) = (&data::OOT_OBJECTS[0], &data::OOT_OBJECTS[1], &data::OOT_OBJECTS[2]);
+        let worlds = one_world(
+            &[(a.location, "Progressive Sword (OoT)"), (b.location, "Progressive Sword (OoT)"), (c.location, "Progressive Sword (OoT)")],
+            &[],
+            &[(Game::Oot, 0), (Game::Oot, 1), (Game::Oot, 2)],
+        );
+        let settings = |extra: bool| {
+            let mut s = Settings::default();
+            if extra {
+                s.raw_settings.insert("extraChildSwordsOot".into(), "true".into());
+            }
+            s.apply(&HashSet::new());
+            s
+        };
+        let found = |d: &Dashboard, n: &str| d.state(entry_by_name(d, n)).found;
+
+        let mut d = Dashboard::new();
+        d.rebuild(&worlds, &settings(true), &HashSet::new());
+        for n in ["Kokiri Sword", "Razor Sword", "Gilded Sword"] {
+            assert!(found(&d, n), "extra child swords: {n} lit");
+        }
+        assert!(!found(&d, "Master Sword"), "Master Sword stays a separate item");
+
+        let mut d = Dashboard::new();
+        d.rebuild(&worlds, &settings(false), &HashSet::new());
+        assert!(found(&d, "Master Sword"), "progressive mode: the 2nd sword is the Master Sword");
+        assert!(!found(&d, "Gilded Sword"), "progressive mode never lights the Gilded Sword");
+    }
+
+    #[test]
+    fn open_kakariko_gate_hides_zeldas_letter() {
+        let d = Dashboard::new();
+        let letter = entry_with_key(&d, data::iid::OOT_ZELDA_LETTER);
+        let build = |gate: &str| {
+            let mut s = Settings::default();
+            s.raw_settings.insert("kakarikoGate".into(), gate.into());
+            s.apply(&HashSet::new());
+            s
+        };
+        assert!(d.entry_hidden(letter, &build("open")), "open gate hides Zelda's Letter");
+        assert!(!d.entry_hidden(letter, &build("closed")), "closed gate keeps it");
     }
 
     #[test]

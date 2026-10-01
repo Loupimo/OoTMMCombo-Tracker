@@ -97,42 +97,42 @@
       </rendering_option>
       <actor room="0x0" actor="0x4">
         <rendering_option layout="all" type="fairy">
-          <xflag type="gossip" location="Moon Trial Goron Gossip Fairy Center Left" slice="0" item="FAIRY" name="Gossip Stone - Center Left" xyz="437;277;0"/>
+          <xflag type="gossip" location="Moon Trial Goron Gossip Fairy Center Left" slice="0" item="FAIRY" name="Gossip Stone - By Heart Piece" xyz="220;350;0"/>
         </rendering_option>
         <rendering_option layout="all" type="fairy_spot">
-          <xflag type="gossip-big" location="Moon Trial Goron Gossip Big Fairy Center Left" slice="1" item="FAIRY_BIG" name="Gossip Stone - Center Left" xyz="437;258;0"/>
+          <xflag type="gossip-big" location="Moon Trial Goron Gossip Big Fairy Center Left" slice="1" item="FAIRY_BIG" name="Gossip Stone - By Heart Piece" xyz="203;350;0"/>
         </rendering_option>
       </actor>
       <actor room="0x0" actor="0x5">
         <rendering_option layout="all" type="fairy">
-          <xflag type="gossip" location="Moon Trial Goron Gossip Fairy Center Right" slice="0" item="FAIRY" name="Gossip Stone - Center Right" xyz="409;277;0"/>
+          <xflag type="gossip" location="Moon Trial Goron Gossip Fairy Center Right" slice="0" item="FAIRY" name="Gossip Stone - Center Right" xyz="613;252;0"/>
         </rendering_option>
         <rendering_option layout="all" type="fairy_spot">
-          <xflag type="gossip-big" location="Moon Trial Goron Gossip Big Fairy Center Right" slice="1" item="FAIRY_BIG" name="Gossip Stone - Center Right" xyz="409;258;0"/>
+          <xflag type="gossip-big" location="Moon Trial Goron Gossip Big Fairy Center Right" slice="1" item="FAIRY_BIG" name="Gossip Stone - Center Right" xyz="613;233;0"/>
         </rendering_option>
       </actor>
       <actor room="0x0" actor="0x6">
         <rendering_option layout="all" type="fairy">
-          <xflag type="gossip" location="Moon Trial Goron Gossip Fairy West Left" slice="0" item="FAIRY" name="Gossip Stone - West Left" xyz="635;252;0"/>
+          <xflag type="gossip" location="Moon Trial Goron Gossip Fairy West Left" slice="0" item="FAIRY" name="Gossip Stone - Center Left" xyz="635;252;0"/>
         </rendering_option>
         <rendering_option layout="all" type="fairy_spot">
-          <xflag type="gossip-big" location="Moon Trial Goron Gossip Big Fairy West Left" slice="1" item="FAIRY_BIG" name="Gossip Stone - West Left" xyz="635;233;0"/>
+          <xflag type="gossip-big" location="Moon Trial Goron Gossip Big Fairy West Left" slice="1" item="FAIRY_BIG" name="Gossip Stone - Center Left" xyz="635;233;0"/>
         </rendering_option>
       </actor>
       <actor room="0x0" actor="0x7">
         <rendering_option layout="all" type="fairy">
-          <xflag type="gossip" location="Moon Trial Goron Gossip Fairy West Right" slice="0" item="FAIRY" name="Gossip Stone - West Right" xyz="613;252;0"/>
+          <xflag type="gossip" location="Moon Trial Goron Gossip Fairy West Right" slice="0" item="FAIRY" name="Gossip Stone - West Right" xyz="409;277;0"/>
         </rendering_option>
         <rendering_option layout="all" type="fairy_spot">
-          <xflag type="gossip-big" location="Moon Trial Goron Gossip Big Fairy West Right" slice="1" item="FAIRY_BIG" name="Gossip Stone - West Right" xyz="613;233;0"/>
+          <xflag type="gossip-big" location="Moon Trial Goron Gossip Big Fairy West Right" slice="1" item="FAIRY_BIG" name="Gossip Stone - West Right" xyz="409;258;0"/>
         </rendering_option>
       </actor>
       <actor room="0x0" actor="0x8">
         <rendering_option layout="all" type="fairy">
-          <xflag type="gossip" location="Moon Trial Goron Gossip Fairy By Heart Piece" slice="0" item="FAIRY" name="Gossip Stone - By Heart Piece" xyz="220;350;0"/>
+          <xflag type="gossip" location="Moon Trial Goron Gossip Fairy By Heart Piece" slice="0" item="FAIRY" name="Gossip Stone - West Left" xyz="437;277;0"/>
         </rendering_option>
         <rendering_option layout="all" type="fairy_spot">
-          <xflag type="gossip-big" location="Moon Trial Goron Gossip Big Fairy By Heart Piece" slice="1" item="FAIRY_BIG" name="Gossip Stone - By Heart Piece" xyz="203;350;0"/>
+          <xflag type="gossip-big" location="Moon Trial Goron Gossip Big Fairy By Heart Piece" slice="1" item="FAIRY_BIG" name="Gossip Stone - West Left" xyz="437;258;0"/>
         </rendering_option>
       </actor>
     </scene_rendering>
@@ -140,7 +140,7 @@
   <scene id="MOON_ZORA">
     <scene_rendering id="MM_MOON_ZORA" loc_type="dungeon">
       <rendering_option layout="all" type="heart_piece">
-        <collectible location="Moon Trial Zora HP" flag="0x01" item="HEART_PIECE" name="Heart Piece" xyz="71;366;0"/>
+        <collectible location="Moon Trial Zora HP" flag="0x01" item="HEART_PIECE" name="Heart Piece" xyz="424;344;0"/>
       </rendering_option>
       <actor actor="0x1">
         <rendering_option layout="all" type="fairy">

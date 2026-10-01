@@ -43,7 +43,7 @@ use std::collections::{HashMap, HashSet};
 use std::sync::OnceLock;
 
 use crate::data::{self, GameLayout};
-use crate::progression::find_item_id;
+use crate::progression::{find_placed_item_id, Sharing};
 use crate::scene::Game;
 use crate::settings::Settings;
 use crate::WorldData;
@@ -129,6 +129,7 @@ impl WorldInputs {
         progressive: bool,
     ) -> Self {
         // Inventory: starting items, then +1 per collected check destined to us.
+        let sharing = Sharing::from_settings(settings);
         let mut items: HashMap<u32, u32> = settings.starting_item_ids.clone();
         for (wi, w) in worlds.iter().enumerate() {
             let owner = (wi + 1) as u8; // this world's own player (1-based)
@@ -144,7 +145,7 @@ impl WorldInputs {
                 if w.dest.get(obj.location).copied().unwrap_or(owner) != player {
                     continue;
                 }
-                if let Some(id) = find_item_id(name) {
+                if let Some(id) = find_placed_item_id(name, sharing) {
                     *items.entry(id).or_insert(0) += 1;
                 }
             }
@@ -265,7 +266,27 @@ impl WorldInputs {
         // player's own world counts: the solver walks that world's graph, so another
         // world's shop cannot be reached from it. Starting items are not renewable
         // (OoTMM seeds `renewables` empty).
+        //
+        // A SHUFFLED renewable location is a check: OoTMM's pathfind collects
+        // everything reachable, but here `has()` means "actually picked up", so it
+        // restocks only once the player has collected it (a potion placed on a gossip
+        // stone does not unlock Koume before the stone was played). A vanilla source
+        // (unshuffled shop / cow) is no check and stays gated on reachability alone.
         let own = worlds.get((player as usize).saturating_sub(1));
+        let own_collected: HashSet<&'static str> = own
+            .map(|w| {
+                w.collected
+                    .iter()
+                    .filter_map(|&(game, idx)| {
+                        let objs = match game {
+                            Game::Oot => data::OOT_OBJECTS,
+                            Game::Mm => data::MM_OBJECTS,
+                        };
+                        objs.get(idx).map(|o| o.location)
+                    })
+                    .collect()
+            })
+            .unwrap_or_default();
         let mut renewable_at = HashMap::new();
         for &(loc, vanilla) in data::RENEWABLE_LOCATIONS {
             let id = match own.and_then(|w| w.items.get(loc).map(|name| (w, name))) {
@@ -273,7 +294,10 @@ impl WorldInputs {
                     if w.dest.get(loc).copied().unwrap_or(player) != player {
                         continue;
                     }
-                    find_item_id(name).unwrap_or(0)
+                    if !own_collected.contains(loc) {
+                        continue; // shuffled check not picked up yet
+                    }
+                    find_placed_item_id(name, sharing).unwrap_or(0)
                 }
                 None => vanilla,
             };
@@ -351,6 +375,10 @@ impl WorldInputs {
             let Some(meta) = crate::entrance::lookup(g, id) else { continue };
             let dest_scene = canon_entrance_scene(game, meta.to_scene as u32);
             let src_scene = canon_entrance_scene(game, meta.from_scene as u32);
+            // A telescope view loads the viewed scene without the player entering it:
+            // root only its view node (its events — the Moon's Tear — are real) and
+            // never mark the viewed scene visited nor fall back to walking it.
+            let telescope = crate::entrance::is_telescope_view(g, id);
             let before = regions.len();
             let mut stack: Vec<u32> = Vec::new();
             let mut seen: HashSet<u32> = HashSet::new();
@@ -390,9 +418,12 @@ impl WorldInputs {
                     regions.push(d);
                     rooted = true;
                 }
-                if rooted {
+                if rooted && !telescope {
                     extra_visited.insert((game, dest_scene));
                 }
+            }
+            if telescope {
+                continue;
             }
             // Fallback 1: `to_area` gave nothing — walk the SOURCE side. Seed from the
             // named `from` region AND every region of the source scene (the table's names
@@ -1207,6 +1238,7 @@ fn mask_item_ids() -> &'static HashSet<u32> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::progression::find_item_id;
 
 
     /// Object index of a location in a game's object table (test helper).
@@ -1984,6 +2016,34 @@ mod tests {
         assert!(inp.visited_scenes.contains(&(0, kak_s)));
     }
 
+    /// A telescope view loads the viewed scene without the player entering it. Looking
+    /// through the Pirate Fortress Sewers telescope (and back) must root the view node
+    /// but NOT mark the viewed fortress scene visited — it did, opening the vanilla
+    /// Balcony -> Interior -> Barrel Maze -> Entrance Lookout path and lighting the
+    /// Entrance Barrel without the player ever stepping into the interior (reported).
+    #[test]
+    fn telescope_view_does_not_mark_viewed_scene_visited() {
+        use crate::data::entr as e;
+
+        let mq = std::collections::HashSet::new();
+        let mut settings = Settings::default();
+        settings.apply(&mq);
+        let mut inp = WorldInputs::build(&settings, &[WorldData::default()], 1, &Default::default(), true);
+        let visited: std::collections::HashSet<(u8, u32)> = [
+            (1u8, e::MM_PIRATE_FORTRESS_TELESCOPE),
+            (1u8, e::MM_PIRATE_FORTRESS_SEWERS_FROM_TELESCOPE),
+        ]
+        .into_iter()
+        .collect();
+        inp.seed_from_visited(&visited);
+
+        let view = region_name_index()[1].get("Pirate Fortress Telescope").expect("telescope region")[0];
+        assert!(inp.extra_seed_regions().contains(&view), "the view node itself stays rooted");
+        let meta = crate::entrance::lookup(crate::scene::Game::Mm, e::MM_PIRATE_FORTRESS_TELESCOPE).unwrap();
+        let viewed = canon_entrance_scene(1, meta.to_scene as u32);
+        assert!(!inp.visited_scenes.contains(&(1, viewed)), "the viewed scene must not count as visited");
+    }
+
     /// Progressive seeding must root only the pocket a walked entrance lands in, not
     /// every separately gated pocket of the same scene. Impa's House (scene 0x37) is one
     /// interior split into two disconnected nodes reached from Kakariko by DIFFERENT
@@ -2536,9 +2596,16 @@ mod tests {
         assert_eq!(vanilla.renewable_item(shop), Some(data::iid::MM_POTION_RED));
         assert_eq!(vanilla.renewable_item("MM Clock Town Chest"), None, "a chest is not renewable");
 
-        // Shuffled: the spoiler placement wins over the vanilla item.
+        // Shuffled: a check, so it restocks nothing until collected — then the
+        // spoiler placement wins over the vanilla item.
         let mut shuffled = WorldData::default();
         shuffled.items.insert(shop.to_string(), "Milk".to_string());
+        assert_eq!(
+            build(std::slice::from_ref(&shuffled), 1).renewable_item(shop),
+            None,
+            "an uncollected shuffled renewable is not a source yet"
+        );
+        shuffled.collected.insert((Game::Mm, obj_idx(Game::Mm, shop)));
         assert_eq!(build(std::slice::from_ref(&shuffled), 1).renewable_item(shop), Some(data::iid::SHARED_MILK));
 
         // Multiworld: a placement destined to player 2 restocks nothing for player 1,

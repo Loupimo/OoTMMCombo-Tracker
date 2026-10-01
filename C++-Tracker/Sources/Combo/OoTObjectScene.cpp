@@ -2015,7 +2015,7 @@ static ObjectInfo OOT_GROTTOSSceneObjects_Data [OOT_GROTTOSNumOfObjs] =
 	{ 0x00307, OOT_GROTTOS, "Heart 2", "OOT Death Mountain Trail Cow Grotto Heart 2", ObjectType::heart, {671, 160, 0}, OOT_GROTTO_DEATH_TRIAL_COW, ObjectType::heart, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0EFA, ObjSystem::Any },
 	{ 0x00308, OOT_GROTTOS, "Heart 3", "OOT Death Mountain Trail Cow Grotto Heart 3", ObjectType::heart, {723, 161, 0}, OOT_GROTTO_DEATH_TRIAL_COW, ObjectType::heart, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0EFB, ObjSystem::Any },
 	{ 0x00309, OOT_GROTTOS, "Heart 4", "OOT Death Mountain Trail Cow Grotto Heart 4", ObjectType::heart, {802, 228, 0}, OOT_GROTTO_DEATH_TRIAL_COW, ObjectType::heart, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0EFC, ObjSystem::Any },
-	{ 0x00304, OOT_GROTTOS, "Big Fairy", "OOT Death Mountain Trail Cow Grotto Big Fairy", ObjectType::none, {0, 0, 0}, OOT_GROTTO_DEATH_TRIAL_COW, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0EFD, ObjSystem::Any },
+	{ 0x00304, OOT_GROTTOS, "Big Fairy", "OOT Death Mountain Trail Cow Grotto Big Fairy", ObjectType::fairy_spot, {753, 308, 0}, OOT_GROTTO_DEATH_TRIAL_COW, ObjectType::fairy_spot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0EFD, ObjSystem::Any },
 	{ 0x00303, OOT_GROTTOS, "Hive", "OOT Death Mountain Trail Cow Grotto Hive", ObjectType::hive, {829, 166, 0}, OOT_GROTTO_DEATH_TRIAL_COW, ObjectType::hive, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0EFE, ObjSystem::Any },
 	{ 0x19, OOT_GROTTOS, "Front", "OOT Desert Colossus Grotto Front Scrub", ObjectType::scrub, {714, 302, 0}, OOT_GROTTO_DESERT_SCRUBS, ObjectType::scrub, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0xFFFF, ObjSystem::Any },
 	{ 0x1a, OOT_GROTTOS, "Back", "OOT Desert Colossus Grotto Back Scrub", ObjectType::scrub, {649, 207, 0}, OOT_GROTTO_DESERT_SCRUBS, ObjectType::scrub, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0xFFFF, ObjSystem::Any },
@@ -2286,7 +2286,7 @@ static ObjectInfo OOT_GROTTO_DEATH_TRIAL_STORMSSceneObjects_Data [OOT_GROTTO_DEA
 };
 ObjectInfo * OOT_GROTTO_DEATH_TRIAL_STORMSSceneObjects = OOT_GROTTO_DEATH_TRIAL_STORMSSceneObjects_Data;
 
-const size_t OOT_GROTTO_DEATH_TRIAL_COWNumOfObjs = 15;
+const size_t OOT_GROTTO_DEATH_TRIAL_COWNumOfObjs = 16;
 static ObjectInfo OOT_GROTTO_DEATH_TRIAL_COWSceneObjects_Data [OOT_GROTTO_DEATH_TRIAL_COWNumOfObjs] =
 {
 	{ 0x07, OOT_GROTTOS, "Cow", "OOT Death Mountain Trail Cow", ObjectType::cow, {719, 198, 0}, OOT_GROTTO_DEATH_TRIAL_COW, ObjectType::cow, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0xFFFF, ObjSystem::Any },
@@ -2303,6 +2303,7 @@ static ObjectInfo OOT_GROTTO_DEATH_TRIAL_COWSceneObjects_Data [OOT_GROTTO_DEATH_
 	{ 0x00307, OOT_GROTTOS, "Heart 2", "OOT Death Mountain Trail Cow Grotto Heart 2", ObjectType::heart, {671, 160, 0}, OOT_GROTTO_DEATH_TRIAL_COW, ObjectType::heart, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0EFA, ObjSystem::Any },
 	{ 0x00308, OOT_GROTTOS, "Heart 3", "OOT Death Mountain Trail Cow Grotto Heart 3", ObjectType::heart, {723, 161, 0}, OOT_GROTTO_DEATH_TRIAL_COW, ObjectType::heart, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0EFB, ObjSystem::Any },
 	{ 0x00309, OOT_GROTTOS, "Heart 4", "OOT Death Mountain Trail Cow Grotto Heart 4", ObjectType::heart, {802, 228, 0}, OOT_GROTTO_DEATH_TRIAL_COW, ObjectType::heart, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0EFC, ObjSystem::Any },
+	{ 0x00304, OOT_GROTTOS, "Big Fairy", "OOT Death Mountain Trail Cow Grotto Big Fairy", ObjectType::fairy_spot, {753, 308, 0}, OOT_GROTTO_DEATH_TRIAL_COW, ObjectType::fairy_spot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0EFD, ObjSystem::Any },
 	{ 0x00303, OOT_GROTTOS, "Hive", "OOT Death Mountain Trail Cow Grotto Hive", ObjectType::hive, {829, 166, 0}, OOT_GROTTO_DEATH_TRIAL_COW, ObjectType::hive, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0EFE, ObjSystem::Any }
 };
 ObjectInfo * OOT_GROTTO_DEATH_TRIAL_COWSceneObjects = OOT_GROTTO_DEATH_TRIAL_COWSceneObjects_Data;
@@ -2630,8 +2631,8 @@ static ObjectInfo OOT_GORON_CITYSceneObjects_Data [OOT_GORON_CITYNumOfObjs] =
 	{ 0x0002c, OOT_GORON_CITY, "Silver Boulder 29", "OOT Goron City Silver Boulder 29", ObjectType::silverboulder, {1021, 179, 0}, OOT_GORON_CITY, ObjectType::silverboulder, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0FAA, ObjSystem::Any },
 	{ 0x00030, OOT_GORON_CITY, "Gossip Stone - Maze", "OOT Goron City Gossip Fairy Maze", ObjectType::gossip, {1094, 150, 0}, OOT_GORON_CITY, ObjectType::fairy, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0FAB, ObjSystem::Any },
 	{ 0x10030, OOT_GORON_CITY, "Gossip Stone - Maze", "OOT Goron City Gossip Big Fairy Maze", ObjectType::gossip_big, {1063, 150, 0}, OOT_GORON_CITY, ObjectType::fairy_spot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0FAC, ObjSystem::Any },
-	{ 0x00205, OOT_GORON_CITY, "Gossip Stone - Medigoron", "OOT Goron City Gossip Fairy Medigoron", ObjectType::gossip, {228, 315, 0}, OOT_GORON_CITY, ObjectType::fairy, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0FAD, ObjSystem::Any },
-	{ 0x10205, OOT_GORON_CITY, "Gossip Stone - Medigoron", "OOT Goron City Gossip Big Fairy Medigoron", ObjectType::gossip_big, {206, 310, 0}, OOT_GORON_CITY, ObjectType::fairy_spot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0FAE, ObjSystem::Any }
+	{ 0x00205, OOT_GORON_CITY, "Gossip Stone - Medigoron", "OOT Goron City Gossip Fairy Medigoron", ObjectType::gossip, {206, 310, 0}, OOT_GORON_CITY, ObjectType::fairy, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0FAD, ObjSystem::Any },
+	{ 0x10205, OOT_GORON_CITY, "Gossip Stone - Medigoron", "OOT Goron City Gossip Big Fairy Medigoron", ObjectType::gossip_big, {183, 317, 0}, OOT_GORON_CITY, ObjectType::fairy_spot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0FAE, ObjSystem::Any }
 };
 ObjectInfo * OOT_GORON_CITYSceneObjects = OOT_GORON_CITYSceneObjects_Data;
 
@@ -2687,8 +2688,8 @@ static ObjectInfo OOT_GRAVEYARDSceneObjects_Data [OOT_GRAVEYARDNumOfObjs] =
 	{ 0x00112, OOT_GRAVEYARD, "Soil 1", "OOT Graveyard Soil 1", ObjectType::soil, {636, 463, 0}, OOT_GRAVEYARD, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL, 0x0FC1, ObjSystem::Any },
 	{ 0x10112, OOT_GRAVEYARD, "Soil 2", "OOT Graveyard Soil 2", ObjectType::soil, {641, 452, 0}, OOT_GRAVEYARD, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL, 0x0FC2, ObjSystem::Any },
 	{ 0x20112, OOT_GRAVEYARD, "Soil 3", "OOT Graveyard Soil 3", ObjectType::soil, {630, 452, 0}, OOT_GRAVEYARD, ObjectType::soil, EGameIcon::render_type, ObjectContext::Child, 0, GameLayout::oot, LocType::overworld, NULL, 0x0FC3, ObjSystem::Any },
-	{ 0x00102, OOT_GRAVEYARD, "Gossip Stone", "OOT Graveyard Gossip Fairy", ObjectType::gossip, {525, 318, 0}, OOT_GRAVEYARD, ObjectType::fairy, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0FC4, ObjSystem::Any },
-	{ 0x10102, OOT_GRAVEYARD, "Gossip Stone", "OOT Graveyard Gossip Big Fairy", ObjectType::gossip_big, {511, 304, 0}, OOT_GRAVEYARD, ObjectType::fairy_spot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0FC5, ObjSystem::Any }
+	{ 0x00102, OOT_GRAVEYARD, "Gossip Stone", "OOT Graveyard Gossip Fairy", ObjectType::gossip, {816, 234, 0}, OOT_GRAVEYARD, ObjectType::fairy, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0FC4, ObjSystem::Any },
+	{ 0x10102, OOT_GRAVEYARD, "Gossip Stone", "OOT Graveyard Gossip Big Fairy", ObjectType::gossip_big, {795, 218, 0}, OOT_GRAVEYARD, ObjectType::fairy_spot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0FC5, ObjSystem::Any }
 };
 ObjectInfo * OOT_GRAVEYARDSceneObjects = OOT_GRAVEYARDSceneObjects_Data;
 
@@ -2704,7 +2705,7 @@ static ObjectInfo OOT_TOMB_ROYALSceneObjects_Data [OOT_TOMB_ROYALNumOfObjs] =
 {
 	{ ROYAL_TOMB_SONG, OOT_TOMB_ROYAL, "Sun's Song", "OOT Graveyard Royal Tomb Song", ObjectType::npc, {149, 24, 0}, OOT_TOMB_ROYAL, ObjectType::song, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0xFFFF, ObjSystem::Any },
 	{ 0x00, OOT_TOMB_ROYAL, "Torches", "OOT Graveyard Royal Tomb Chest", ObjectType::chest, {150, 522, 0}, OOT_TOMB_ROYAL, ObjectType::chest, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0xFFFF, ObjSystem::Any },
-	{ 0x00008, OOT_TOMB_ROYAL, "Skull", "OOT Graveyard Royal Tomb Big Fairy", ObjectType::none, {0, 0, 0}, OOT_TOMB_ROYAL, ObjectType::none, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0FC6, ObjSystem::Any }
+	{ 0x00008, OOT_TOMB_ROYAL, "Skull", "OOT Graveyard Royal Tomb Big Fairy", ObjectType::fairy_spot, {111, 506, 0}, OOT_TOMB_ROYAL, ObjectType::fairy_spot, EGameIcon::render_type, ObjectContext::All, 0, GameLayout::oot, LocType::overworld, NULL, 0x0FC6, ObjSystem::Any }
 };
 ObjectInfo * OOT_TOMB_ROYALSceneObjects = OOT_TOMB_ROYALSceneObjects_Data;
 
@@ -4385,12 +4386,10 @@ ObjectInfo * OOT_INSIDE_EGGSSceneObjects = nullptr;
 const size_t OOT_MARKETNumOfObjs = 0;
 ObjectInfo * OOT_MARKETSceneObjects = nullptr;
 
-const size_t OoTLegacySceneRemapCount = 14;
+const size_t OoTLegacySceneRemapCount = 12;
 static LegacySceneRemap OoTLegacySceneRemap_Data [OoTLegacySceneRemapCount] =
 {
 	{ OOT_DEATH_MOUNTAIN_TRAIL, 0x07, ObjectType::cow, OOT_GROTTOS }, // OOT Death Mountain Trail Cow
-	{ OOT_DEATH_MOUNTAIN_TRAIL, 0x00304, ObjectType::none, OOT_GROTTOS }, // OOT Death Mountain Trail Cow Grotto Big Fairy
-	{ OOT_GRAVEYARD, 0x00008, ObjectType::none, OOT_TOMB_ROYAL }, // OOT Graveyard Royal Tomb Big Fairy
 	{ OOT_HYRULE_FIELD, 0x01, ObjectType::cow, OOT_GROTTOS }, // OOT Hyrule Field Cow
 	{ OOT_KAKARIKO_VILLAGE, 0x06, ObjectType::cow, OOT_IMPA_HOUSE }, // OOT Kakariko Cow
 	{ OOT_KAKARIKO_POTION_SHOP, TRADE_ODD_POTION, ObjectType::npc, OOT_GRANNY_POTION_SHOP }, // OOT Kakariko Potion Shop Odd Potion

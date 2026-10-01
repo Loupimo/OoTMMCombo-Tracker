@@ -210,9 +210,9 @@ const ProgEntry OoTEquipments[] =
     // Swords
     { EGameIcon::kokiri,        "Kokiri Sword",         { OOT_SWORD_KOKIRI, OOT_SWORD, SHARED_SWORD },     false},
     { EGameIcon::razor, "Razor Sword", { OOT_SWORD_RAZOR, SHARED_SWORD }, false },
-    { EGameIcon::master,        "Master Sword",         { OOT_SWORD_MASTER, OOT_SWORD, SHARED_SWORD },     false },
-    { EGameIcon::biggoron, "Giant's Knife", { OOT_SWORD_KNIFE, OOT_SWORD_GORON, OOT_SWORD, SHARED_SWORD }, false },
-    { EGameIcon::biggoron,      "Biggoron's Sword",     { OOT_SWORD_BIGGORON, OOT_SWORD_GORON, OOT_SWORD, SHARED_SWORD },         false },
+    { EGameIcon::master,        "Master Sword",         { OOT_SWORD_MASTER, OOT_SWORD },     false },
+    { EGameIcon::biggoron, "Giant's Knife", { OOT_SWORD_KNIFE, OOT_SWORD_GORON, OOT_SWORD }, false },
+    { EGameIcon::biggoron,      "Biggoron's Sword",     { OOT_SWORD_BIGGORON, OOT_SWORD_GORON, OOT_SWORD },         false },
     { EGameIcon::gilded, "Gilded Sword", { OOT_SWORD_GILDED, SHARED_SWORD }, false },
 
     // Shields
@@ -810,7 +810,7 @@ const ProgEntry SoulsMMNPCs[] =
     { EGameIcon::soul_of_npc, "Soul of Anju", { MM_SOUL_NPC_ANJU, SHARED_SOUL_NPC_ANJU }, false },
     { EGameIcon::soul_of_npc, "Soul of Madame Aroma", { MM_SOUL_NPC_AROMA }, false },
     { EGameIcon::soul_of_npc, "Soul of Astronomer", { MM_SOUL_NPC_ASTRONOMER, SHARED_SOUL_NPC_ASTRONOMER }, false },
-    { EGameIcon::soul_of_npc, "Soul of the Banker", { MM_SOUL_NPC_BANKER, SHARED_SOUL_NPC_BANKER, SHARED_SOUL_NPC_BAZAAR_SHOPKEEPER }, false },
+    { EGameIcon::soul_of_npc, "Soul of the Banker", { MM_SOUL_NPC_BANKER, SHARED_SOUL_NPC_BANKER }, false },
     { EGameIcon::soul_of_npc, "Soul of Swamp Archery Owner", { MM_SOUL_NPC_BAZAAR_SHOPKEEPER, SHARED_SOUL_NPC_BAZAAR_SHOPKEEPER }, false },
     { EGameIcon::soul_of_npc, "Soul of the Beans Salesman", { MM_SOUL_NPC_BEAN_SALESMAN, SHARED_SOUL_NPC_BEAN_SALESMAN }, false },
     { EGameIcon::soul_of_npc, "Soul of Biggoron", { MM_SOUL_NPC_BIGGORON, SHARED_SOUL_NPC_BIGGORON }, false },

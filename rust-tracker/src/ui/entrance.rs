@@ -263,13 +263,12 @@ impl TrackerApp {
         let sort_col = self.ent_sort_col;
         let asc = self.ent_sort_asc;
         let sort_text = |r: &EntRow, c: usize| -> String {
-            match c {
+            sort_key(match c {
                 0 => r.scene.as_str(),
                 1 => r.entrance.as_str(),
                 2 => r.spawn.text(),
                 _ => r.leads.text(),
-            }
-            .to_lowercase()
+            })
         };
         data.sort_by(|a, b| {
             let o = sort_text(a, sort_col).cmp(&sort_text(b, sort_col));
@@ -505,7 +504,28 @@ impl TrackerApp {
             self.map_texture = None;
             self.load_error = None;
             self.view_initialized = false;
+            self.nav_reveal = Some((game, scene_id));
+            self.obj_focus = None;
         }
+    }
+
+    /// Highlight an object of the current scene in the object tree, scroll the
+    /// tree onto it and centre the map on it (loading its room in a multi-room
+    /// dungeon, like auto-snap). Matches by object index, falling back to the name
+    /// when the index isn't loaded (another layout variant of the same check).
+    pub(crate) fn focus_object(&mut self, game: Game, index: usize, name: &str) {
+        let Some(s) = self.scene.as_ref().filter(|s| s.game == game) else { return };
+        let Some(o) = s
+            .objects
+            .iter()
+            .find(|o| o.index == index)
+            .or_else(|| s.objects.iter().find(|o| o.name == name))
+        else {
+            return;
+        };
+        self.obj_focus = Some((game, o.index));
+        self.obj_focus_scroll = true;
+        self.pending_snap = Some((game, s.def.id, o.room, o.x, o.y));
     }
 
 

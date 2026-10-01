@@ -8,7 +8,7 @@ mod gps;
 mod inject;
 mod logic;
 mod multi;
-mod multi_dev;
+mod multi_v1_10;
 mod patch;
 mod poller;
 mod progression;
@@ -456,6 +456,7 @@ fn gps_scene_combo(
     id: &str,
     sel: &mut Option<(Game, u16)>,
     ent: &mut Option<u32>,
+    mq: &HashSet<(Game, u16)>,
 ) {
     // Scenes that own entrances — the curated SceneEntranceMeta list, the same set
     // the entrance tab counts. Using it (rather than a region filter) keeps
@@ -472,6 +473,14 @@ fn gps_scene_combo(
         .iter()
         .map(|&(s, _, _)| s)
         .filter(|&s| !gps::is_synthetic(game, s))
+        // Drop scenes of the inactive layout (the MM JP Deku Palace grottos on a
+        // US Deku Palace): no entrance touching them exists in this seed.
+        .filter(|&s| {
+            game.entrances().iter().any(|e| {
+                (e.to_scene == s || e.from_scene == s)
+                    && tracking::scene_layout_active(e.layout, game, e.to_scene, mq)
+            })
+        })
         .collect()
     };
     // Display names that repeat within a game (fairy fountains, grottos…): the
@@ -550,11 +559,15 @@ fn gps_scene_combo(
                     let es = ent_scenes(game);
                     let dupes = dupes(game, &es);
                     let mut header_done = false;
-                    for s in game.scenes() {
-                        if !es.contains(&s.id) {
-                            continue; // scenes with no entrance
-                        }
-                        let label = label_for(s, &dupes);
+                    // Grouped by game, then alphabetical by the displayed name.
+                    let mut rows: Vec<(&data::SceneDef, String)> = game
+                        .scenes()
+                        .iter()
+                        .filter(|s| es.contains(&s.id)) // scenes with no entrance
+                        .map(|s| (s, label_for(s, &dupes)))
+                        .collect();
+                    rows.sort_by_key(|(_, l)| sort_key(l));
+                    for (s, label) in rows {
                         if !q.is_empty() && !label.to_lowercase().contains(&q) {
                             continue;
                         }
@@ -582,24 +595,70 @@ fn gps_entrance_combo(
     id: &str,
     scene: Option<(Game, u16)>,
     ent: &mut Option<u32>,
+    mq: &HashSet<(Game, u16)>,
 ) {
     let Some((game, sid)) = scene else {
         ui.weak("—");
         return;
     };
+    // Entrances arriving in this scene. Most two-way ones are just named after
+    // the scene itself ("Hyrule Field" x15), so a name shared by several of them
+    // is replaced by where the entrance comes from ("From Gerudo Valley").
+    // `None`-type entrances (end credits, spring Twin Islands, Castle stealth) are
+    // not real arrivals and are left out, like the Entrance tab does.
+    let arrivals: Vec<&data::EntranceDef> = game
+        .entrances()
+        .iter()
+        .filter(|e| {
+            e.to_scene == sid
+                && !e.to_name.is_empty()
+                && e.type_ != data::EntranceType::None
+                // Only the loaded layout's entrances (MM JP grottos, OoT MQ).
+                && tracking::scene_layout_active(e.layout, game, e.to_scene, mq)
+        })
+        .collect();
+    // One-way arrivals read "<scene> - <spot>" ("Hyrule Field - Owl Drop"): the
+    // scene prefix is redundant here, so they get the same "From …" label too.
+    // One-way exits read "<scene> -> <target>" and their `from_name` is that
+    // target (Deku Tree -> Gohma's Lair), so they read "To …" instead.
+    let label = |e: &data::EntranceDef| -> String {
+        let shared = arrivals.iter().any(|o| o.to_id != e.to_id && o.to_name == e.to_name);
+        let prefixed = e.to_name.contains(" - ");
+        if e.to_name.contains(" -> ") && !e.from_name.is_empty() {
+            i18n.gps_to_exit(i18n.tr_entrance(e.from_name))
+        } else if (shared || prefixed) && !e.from_name.is_empty() {
+            i18n.gps_from_entrance(i18n.tr_entrance(e.from_name))
+        } else {
+            i18n.tr_entrance(e.to_name).to_string()
+        }
+    };
+    // One row per entrance: an arrival listed under several layouts collapses to
+    // a single row.
+    let mut items: Vec<(u32, String)> = Vec::new();
+    for &e in &arrivals {
+        let l = label(e);
+        if !items.iter().any(|(id, x)| *id == e.to_id || *x == l) {
+            items.push((e.to_id, l));
+        }
+    }
+    items.sort_by_key(|(_, l)| sort_key(l));
     let text = ent
-        .and_then(|e| entrance::lookup(game, e).map(|d| i18n.tr_entrance(d.to_name)))
-        .unwrap_or(i18n.gps_whole_scene());
+        .and_then(|e| {
+            items
+                .iter()
+                .find(|(id, _)| *id == e)
+                .map(|(_, l)| l.clone())
+                // A collapsed variant still reads as its own label.
+                .or_else(|| arrivals.iter().find(|d| d.to_id == e).map(|d| label(d)))
+        })
+        .unwrap_or_else(|| i18n.gps_whole_scene().to_string());
     egui::ComboBox::from_id_salt(id).width(220.0).selected_text(text).show_ui(ui, |ui| {
         if ui.selectable_label(ent.is_none(), i18n.gps_whole_scene()).clicked() {
             *ent = None;
         }
-        for e in game.entrances() {
-            if e.to_scene != sid || e.to_name.is_empty() {
-                continue;
-            }
-            if ui.selectable_label(*ent == Some(e.to_id), i18n.tr_entrance(e.to_name)).clicked() {
-                *ent = Some(e.to_id);
+        for (to_id, l) in &items {
+            if ui.selectable_label(*ent == Some(*to_id), l.as_str()).clicked() {
+                *ent = Some(*to_id);
             }
         }
     });
@@ -655,6 +714,29 @@ fn table_link_cell_at(ui: &mut egui::Ui, rect: Rect, text: &str) -> egui::Respon
 }
 
 /// Per-game accent colour (Qt GameTab::GetAccentColorFor: OoT #4a9edb / MM #9b5de5).
+/// Sort key for a displayed (translated) name: lowercased with the diacritics
+/// folded, so "Île" / "Écurie" sort among the I / E names instead of after "Z".
+pub(crate) fn sort_key(s: &str) -> String {
+    let mut out = String::with_capacity(s.len());
+    for c in s.chars().flat_map(char::to_lowercase) {
+        match c {
+            'à' | 'á' | 'â' | 'ã' | 'ä' | 'å' => out.push('a'),
+            'ç' => out.push('c'),
+            'è' | 'é' | 'ê' | 'ë' => out.push('e'),
+            'ì' | 'í' | 'î' | 'ï' => out.push('i'),
+            'ñ' => out.push('n'),
+            'ò' | 'ó' | 'ô' | 'õ' | 'ö' => out.push('o'),
+            'ù' | 'ú' | 'û' | 'ü' => out.push('u'),
+            'ý' | 'ÿ' => out.push('y'),
+            'œ' => out.push_str("oe"),
+            'æ' => out.push_str("ae"),
+            'ß' => out.push_str("ss"),
+            c => out.push(c),
+        }
+    }
+    out
+}
+
 fn game_accent(game: Game) -> Color32 {
     match game {
         Game::Oot => Color32::from_rgb(74, 158, 219),
@@ -858,7 +940,7 @@ struct TrackerApp {
     multi: Option<multi::MultiHandle>,
     /// The running dev multiplayer client (OoTMM builds > v32.0), spawned when
     /// tracking starts with a patch loaded. `None` while stopped / no patch.
-    dev: Option<multi_dev::DevHandle>,
+    v110: Option<multi_v1_10::V110Handle>,
     /// The OoTMM game patch file chosen by the user (`.ootmm` or the `.zip`
     /// bundling it), for the dev multiplayer mechanism. Persisted in the save file
     /// so the next launch re-loads it automatically.
@@ -907,6 +989,16 @@ struct TrackerApp {
     /// "Expand/collapse all" toggle state for the scene nav / object trees.
     nav_all_expanded: bool,
     obj_all_expanded: bool,
+    /// Pending "reveal this scene" request for the scene nav tree: unfold its
+    /// region and scroll its row into view. Set when the map is switched by code
+    /// (auto-follow, auto-snap, a jump from the Progression detail panel) rather
+    /// than by a click in the tree itself.
+    nav_reveal: Option<(Game, u16)>,
+    /// Object highlighted in the object tree (game, object index), set by a jump
+    /// from the Progression detail panel; cleared when the scene changes.
+    obj_focus: Option<(Game, usize)>,
+    /// One-shot: unfold the focused object's category and scroll it into view.
+    obj_focus_scroll: bool,
     /// Right-panel entrance tree: "Find…" filter + "expand/collapse all" state.
     ent_search: String,
     ent_all_expanded: bool,
@@ -952,6 +1044,19 @@ struct TrackerApp {
     /// real Day / Night object map (told apart by the arriving message's raw
     /// scene). Drives the item-map auto-follow (which skips object-less zones).
     player_obj_scene: Option<(Game, u16)>,
+    /// The entrance the player last arrived through (`(game, to_id)`), seeding the
+    /// GPS start entrance when "auto GPS start" is on.
+    player_entrance: Option<(Game, u32)>,
+    /// Last arrival already copied into the GPS start (so it only fires on a move).
+    gps_followed_entrance: Option<(Game, u32)>,
+    /// True while the player looks through a telescope (last IN entrance is a
+    /// telescope view): the loaded scene is only seen, so progressive reachability
+    /// must not seed it as the live scene.
+    player_in_telescope: bool,
+    /// Real pickups the DLL hook saw while the dev IPC owned items, parked until the
+    /// IPC reports them; applied from the hook after `HOOK_FALLBACK_DELAY` if not
+    /// (silent IPC after a savestate). (parked at, raw event, resolved object).
+    pending_hook_items: Vec<(std::time::Instant, shared_mem::Event, (Game, usize))>,
     /// Last scene we already auto-followed to (so a follow only fires on a move).
     followed_scene: Option<(Game, u16)>,
     /// Pending auto-snap request (game, scene, room, x, y) from the last collected

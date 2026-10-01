@@ -6,6 +6,9 @@ use crate::scene::Game;
 use crate::ui::kbdnav;
 use std::collections::HashMap;
 
+/// A detail-panel location jump: (game, render scene, object index, object name).
+type LocTarget = (Game, u16, usize, &'static str);
+
 impl TrackerApp {
 
     /// The progression dashboard (ProgressionTab): four sub-tabs of item-icon
@@ -66,10 +69,10 @@ impl TrackerApp {
         let kid = egui::Id::new("kbd_prog_tree");
         let mut klist = self.kbd.begin(kid);
         let mut kout = kbdnav::KbdOut::default();
-        let mut loc_targets: HashMap<u64, (Game, u16)> = HashMap::new();
+        let mut loc_targets: HashMap<u64, LocTarget> = HashMap::new();
 
         // Detail panel (right), then the icon grid (center).
-        let mut nav: Option<(Game, u16)> = None;
+        let mut nav: Option<LocTarget> = None;
         egui::SidePanel::right("prog_detail")
             .resizable(false)
             .exact_width(300.0)
@@ -92,8 +95,9 @@ impl TrackerApp {
         if let Some(t) = kout.activate.and_then(|k| loc_targets.get(&k).copied()) {
             nav = Some(t);
         }
-        if let Some((game, scene_id)) = nav {
+        if let Some((game, scene_id, index, name)) = nav {
             self.navigate_to(game, scene_id);
+            self.focus_object(game, index, name);
         }
     }
 
@@ -264,9 +268,9 @@ impl TrackerApp {
     pub(crate) fn draw_prog_detail(
         &self,
         ui: &mut egui::Ui,
-        nav: &mut Option<(Game, u16)>,
+        nav: &mut Option<LocTarget>,
         klist: &mut kbdnav::KbdList,
-        loc_targets: &mut HashMap<u64, (Game, u16)>,
+        loc_targets: &mut HashMap<u64, LocTarget>,
         kout: &mut kbdnav::KbdOut,
     ) {
         ui.add_space(6.0);
@@ -359,8 +363,8 @@ impl TrackerApp {
             // follow the language.
             let mut ordered: Vec<_> = tree.iter().collect();
             ordered.sort_by(|a, b| {
-                (a.game.idx(), scene_label(a).to_lowercase())
-                    .cmp(&(b.game.idx(), scene_label(b).to_lowercase()))
+                (a.game.idx(), sort_key(&scene_label(a)))
+                    .cmp(&(b.game.idx(), sort_key(&scene_label(b))))
             });
             let mut cur_game: Option<Game> = None;
             for scene in ordered {
@@ -382,8 +386,8 @@ impl TrackerApp {
                         // translated name so the order follows the active language.
                         let mut leaves: Vec<_> = scene.leaves.iter().collect();
                         leaves.sort_by(|a, b| {
-                            (a.collected as u8, self.i18n.tr_object(a.name).to_lowercase())
-                                .cmp(&(b.collected as u8, self.i18n.tr_object(b.name).to_lowercase()))
+                            (a.collected as u8, sort_key(self.i18n.tr_object(a.name)))
+                                .cmp(&(b.collected as u8, sort_key(self.i18n.tr_object(b.name))))
                         });
                         for leaf in leaves {
                             let mut txt = egui::RichText::new(self.i18n.tr_object(leaf.name)).small();
@@ -417,9 +421,10 @@ impl TrackerApp {
                                 .inner;
                             let lk = kbdnav::key((leaf.game.idx() as u8, leaf.render_scene, leaf.name));
                             klist.leaf(ui, lk, &resp);
-                            loc_targets.insert(lk, (leaf.game, leaf.render_scene));
+                            let target = (leaf.game, leaf.render_scene, leaf.index, leaf.name);
+                            loc_targets.insert(lk, target);
                             if resp.clicked() {
-                                *nav = Some((leaf.game, leaf.render_scene));
+                                *nav = Some(target);
                             }
                         }
                     });

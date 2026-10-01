@@ -2,6 +2,42 @@
 
 All notable changes to this project are documented in this file.
 
+## [3.1.0] - 2026-10-01
+
+This release reworks check identification around OoTMM's new xflag system, adds gossip stones and the remaining MM grottos, makes the hooking DLL more robust (newer OoTMM builds, savestates), and brings a long series of fixes to the reachability logic, the progression tab and the GPS.
+
+### Added
+- New check format matching OoTMM's own system: checks are identified by OoTMM's compact xflag IDs on recent builds, with the legacy system kept for v32.3 and older
+- Gossip stones (fairies and big fairies) for both games, with dedicated DLL hooking, plus the remaining MM grottos
+- Rendered map switches with the Adult/Child (OoT) or Spring/Winter (MM) context, and the context switches automatically when you pick up an item tied to the other one
+- Every remaining logic setting from the seed: open dungeons and conditions, key rings, silver rupee pouches, MM clocks (ascending/descending/separate, with time-slice logic), pond fish shuffle, conditional check removals (Guarded tree, Gorman track trees…)
+- Renewable sources in the logic: `renewable()` items count only when a reachable source exists, and a shuffled renewable location only once it has been collected
+- Starting items and items removed by the seed's settings: the Gerudo Member Card check is granted at start with an open fortress, Ruto's Letter is hidden when King Zora is open and none is placed, Zelda's Letter when the Kakariko gate is open, and the hideout keys / key ring when the fortress is open
+- OoT Razor and Gilded swords (extra child swords) and Deku stick / nut capacity detection
+- Heaviest caught fish shown under the fishing entries
+- DLL health signal: the status bar and journal warn when the DLL's heartbeat freezes or its hook is removed, and log every automatic recovery
+- Multiplayer dev IPC safety net: an item picked up in game but never reported by the IPC (e.g. after a savestate) is applied from the DLL after 5 seconds
+- Scene and object trees unfold and scroll to the right entry when the map changes (auto-follow, auto-snap, progression detail jump), and a detail-panel location click highlights the object and centres the map on it
+- GPS: readable entrance labels ("From X" / "To X"), pickers filtered by the seed's MQ / MM JP layouts, scenes grouped by game, and auto-start now fills in the arrival entrance instead of "Whole Scene"
+- Accent-insensitive alphabetical sorting everywhere
+
+### Changed
+- Hooking DLL optimized and updated for the latest OoTMM builds (Play_Init / Play_TransitionDone for MM, adjusted hooking spots and patterns, 32.3 fixes)
+- Multiplayer client updated to the OoTMM 1.10 protocol (items and entrances)
+- Logic updated to the latest OoTMM version
+- Room selector wraps on several lines instead of overflowing (Snowhead Temple and other many-room dungeons)
+
+### Fixed
+- Item tracking going silent after loading a savestate during a scene transition (the DLL now recovers on its own)
+- Many reachability issues: age-gated areas (OoT and MM), cross-game age leaks through shuffled entrances, intra-scene blockers, "fake" entrances such as the bridge after being caught by the guards, warp pads, shared boss rooms between dungeon variants, shop prices without a wallet, entrance discovery in progressive ER
+- Telescope views no longer reveal the viewed area as visited in progressive entrance randomizer
+- Shared items: bare spoiler names (Bomb Bag, Bow…), items with the same name in OoT, MM and Shared (Gold Dust, Chateau Romani, Great Fairy's Sword, Triforces) — fixes the MM Gilded Sword never becoming available
+- Progression tab: bottles, stick / nut capacity, progressive bow / quiver / slingshot / magic, shared souls (Swamp Archery owner), shared swords, and extra child swords now lighting Kokiri → Razor → Gilded
+- MM "Nothing" shop items
+- Royal Tomb and Death Mountain Trail Cow Grotto big fairies not appearing on the map
+- Temple of Time Entryway missing image
+- Missing translations, and various object positions (gossip stones, Goron City, Termina Field, Moon trials)
+
 ## [3.0.0] - 2026-08-28
 
 This release is a full rewrite of the tracker from Qt/C++ to Rust + egui. Every 2.0.0 feature was ported over the same shared-memory contract (so the hooking DLL stays compatible), with the performance gains and new capabilities listed below.

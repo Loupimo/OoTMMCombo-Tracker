@@ -950,6 +950,8 @@ impl Settings {
         // key exists; `single` leaves only the first carpenter (Jail 1); `vanilla`
         // (default) keeps all four.
         match self.raw_or("gerudoFortress", "vanilla") {
+            // `open` also turns the Gerudo Member Card into a starting location (see
+            // `starting_locations`): not a check any more, so it leaves the map too.
             "open" => self.exclude_where(excluded, game, |o| {
                 matches!(
                     o.location,
@@ -957,6 +959,7 @@ impl Settings {
                         | "OOT Gerudo Fortress Jail 2"
                         | "OOT Gerudo Fortress Jail 3"
                         | "OOT Gerudo Fortress Jail 4"
+                        | "OOT Gerudo Member Card"
                 )
             }),
             "single" => self.exclude_where(excluded, game, |o| {
@@ -968,6 +971,21 @@ impl Settings {
                 )
             }),
             _ => {}
+        }
+    }
+
+    /// Locations whose placed item the game hands out at file creation
+    /// (OoTMM `starting-items.ts` `addStartingItemLocsWorld`): the player owns that
+    /// item from the start, whatever the seed put there. With the fortress `open`,
+    /// the Gerudo Member Card location is moved to SPAWN (region NONE in the
+    /// spoiler) and granted this way — there is nothing to talk to in the hideout.
+    ///
+    /// @return the OoT location names granted at start for these settings
+    pub fn starting_locations(&self) -> &'static [&'static str] {
+        if self.raw_or("gerudoFortress", "vanilla") == "open" {
+            &["OOT Gerudo Member Card"]
+        } else {
+            &[]
         }
     }
 
@@ -1129,6 +1147,24 @@ impl Settings {
             self.disabled_item_ids.insert(iid::OOT_CHICKEN);
             self.starting_item_ids.insert(iid::OOT_SONG_ZELDA, 1);
             self.starting_item_ids.insert(iid::OOT_ZELDA_LETTER, 1);
+        }
+
+        // Kakariko gate `open`: OoTMM removes Zelda's Letter from the pool (transform.ts
+        // `removeItem(OOT_ZELDA_LETTER)`) — hide its tile. Kept when Skip Zelda hands
+        // it out as a starting item. Its tile lists only this id, so disabling it
+        // hides nothing else.
+        if self.raw_or("kakarikoGate", "closed") == "open"
+            && !self.starting_item_ids.contains_key(&iid::OOT_ZELDA_LETTER)
+        {
+            self.disabled_item_ids.insert(iid::OOT_ZELDA_LETTER);
+        }
+
+        // Gerudo Fortress `open`: every carpenter starts rescued, so the hideout has no
+        // jail door and OoTMM removes its small keys (the jail key checks already leave
+        // the map, see `apply_oot`) — hide the hideout small key and key ring tiles.
+        if self.raw_or("gerudoFortress", "vanilla") == "open" {
+            self.disabled_item_ids.insert(iid::OOT_SMALL_KEY_GF);
+            self.disabled_item_ids.insert(iid::OOT_KEY_RING_GF);
         }
 
         // Pre-planted beans (OoT): with `ootPreplantedBeans` on, every bean patch starts
@@ -1634,6 +1670,33 @@ mod tests {
         let open = build("open");
         for i in [j1, j2, j3, j4] {
             assert!(open.oot.contains(&i), "open drops all four carpenter jail keys");
+        }
+    }
+
+    /// With an `open` fortress OoTMM moves the Gerudo Member Card location to SPAWN
+    /// and hands its item out at file creation (starting-items.ts): it is a starting
+    /// location (granted by the tracker) and no longer a map check. Other modes keep
+    /// it as the hideout NPC check.
+    #[test]
+    fn open_fortress_makes_the_member_card_a_starting_location() {
+        let mq = HashSet::new();
+        let card = OOT_OBJECTS
+            .iter()
+            .position(|o| o.location == "OOT Gerudo Member Card")
+            .expect("card object exists");
+        let build = |gf: &str| {
+            let mut s = Settings::default();
+            s.parse_spoiler(&format!("Settings\n  gerudoFortress: {gf}\n"), &mq);
+            let ex = s.apply(&mq);
+            (s, ex)
+        };
+        let (open, ex) = build("open");
+        assert_eq!(open.starting_locations(), &["OOT Gerudo Member Card"]);
+        assert!(ex.oot.contains(&card), "open: the card leaves the map");
+        for gf in ["vanilla", "single"] {
+            let (s, ex) = build(gf);
+            assert!(s.starting_locations().is_empty(), "{gf}: no starting location");
+            assert!(!ex.oot.contains(&card), "{gf}: the card stays a check");
         }
     }
 

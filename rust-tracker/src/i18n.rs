@@ -274,6 +274,11 @@ pub struct LogStrings {
     pub st_loading_plugin: String,
     pub st_injection_failed: String,
     pub st_waiting_pj64: String,
+    // DLL health report (poller.rs)
+    pub st_dll_silent: String,
+    pub st_dll_unhooked: String,
+    pub dll_health_log: String, // {status}
+    pub dll_recovered: String,  // {count}
 }
 
 impl I18n {
@@ -807,6 +812,18 @@ impl I18n {
         Self::get(&self.strings.gps, "whole_scene")
     }
 
+    /// An arrival entrance labelled by where it comes from ("From Gerudo Valley"),
+    /// for the entrances whose own name is just the scene's.
+    pub fn gps_from_entrance(&self, name: &str) -> String {
+        Self::get(&self.strings.gps, "from_entrance").replace("{name}", name)
+    }
+
+    /// A one-way exit labelled by where it leads ("To Gohma's Lair"), for the
+    /// "<scene> -> <target>" one-way-out entrances.
+    pub fn gps_to_exit(&self, name: &str) -> String {
+        Self::get(&self.strings.gps, "to_exit").replace("{name}", name)
+    }
+
     pub fn gps_fastest(&self) -> &str {
         Self::get(&self.strings.gps, "fastest")
     }
@@ -966,10 +983,14 @@ impl I18n {
         Self::get(&self.strings.logs, "mp_enabled").replace("{server}", server)
     }
 
-    pub fn log_dev_enabled(&self, info: &str, server: &str) -> String {
-        Self::get(&self.strings.logs, "dev_enabled")
+    pub fn log_v110_enabled(&self, info: &str, server: &str) -> String {
+        Self::get(&self.strings.logs, "v110_enabled")
             .replace("{info}", info)
             .replace("{server}", server)
+    }
+
+    pub fn log_v110_ipc_silent(&self, count: usize) -> String {
+        Self::get(&self.strings.logs, "v110_ipc_silent").replace("{count}", &count.to_string())
     }
 
     pub fn log_patch_loaded(&self, path: &str, info: &str) -> String {
@@ -1086,6 +1107,10 @@ impl I18n {
             st_loading_plugin: g("st_loading_plugin"),
             st_injection_failed: g("st_injection_failed"),
             st_waiting_pj64: g("st_waiting_pj64"),
+            st_dll_silent: g("st_dll_silent"),
+            st_dll_unhooked: g("st_dll_unhooked"),
+            dll_health_log: g("dll_health_log"),
+            dll_recovered: g("dll_recovered"),
         }
     }
 
@@ -1289,13 +1314,15 @@ mod tests {
         i.spoiler_singleworld(1, 2);
         i.gps_alternative(2);
         i.gps_transitions(3);
+        assert!(!i.gps_from_entrance("x").is_empty());
+        assert!(!i.gps_to_exit("x").is_empty());
         i.prog_heaviest_fish(12);
         assert!(!i.prog_lullaby_stage(true).is_empty());
         assert!(!i.prog_lullaby_stage(false).is_empty());
 
         // Multiplayer / patch / live-event log lines (state.rs) — templated.
         i.log_mp_enabled("host:1");
-        i.log_dev_enabled("info", "host:1");
+        i.log_v110_enabled("info", "host:1");
         i.log_patch_loaded("p", "info");
         i.log_patch_invalid("e");
         i.log_patch_missing("p");

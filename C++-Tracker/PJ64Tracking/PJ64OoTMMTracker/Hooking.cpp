@@ -19,6 +19,7 @@ SharedData* gData = nullptr;                                // The shared data w
 GameID gGame = GAME_OOT;                                    // The current running game.
 bool gIsRAMLoaded = false;                                  // Tells if the current game RAM is ready.
 bool forceGameCheck = false;                                // Force a game check in order to be sure to track the correct PCs.
+ULONGLONG gForceCheckSince = 0;                             // When forceGameCheck was last raised (GetTickCount64), for the stuck-transition watchdog.
 bool isStable = true;                                       // Tells if the game version uses the last stable release.
 uintptr_t moduleBase = 0;                                   // The module base address of Project 64.
 uintptr_t regBase = 0;                                      // The RAM address where the Project 64 registers are stored.
@@ -732,6 +733,38 @@ static void HandleShop(uint32_t PC)
 
 
 /*
+*   Raise forceGameCheck (a transition / game re-sync is pending: item handlers are muted until
+*   the next Play_Init) and remember when, so the stuck-transition watchdog can release it.
+*/
+static __forceinline void RaiseForceGameCheck()
+{
+    forceGameCheck = true;
+    gForceCheckSince = GetTickCount64();
+}
+
+
+/*
+*   Publish the DLL health report into the shared data (heartbeat + hook state), read by the
+*   tracker to tell "tracking alive" from "hooked but muted" or "not hooked at all".
+*/
+static __forceinline void PublishStatus()
+{
+    if (gData == nullptr)
+    {
+        return;
+    }
+
+    uint32_t state = (gPCHookInstalled ? HOOK_STATE_PC_INSTALLED : 0)
+                   | (gIsRAMLoaded ? HOOK_STATE_RAM_LOADED : 0)
+                   | (forceGameCheck ? HOOK_STATE_FORCE_CHECK : 0)
+                   | ((uint32_t)gGame << 8);
+
+    gData->HookState = state;
+    gData->Heartbeat = gData->Heartbeat + 1;
+}
+
+
+/*
 *   The combo payload (0x804xxxxx) is shared by both games, so a transition / play-init hook
 *   resolved for one game can physically execute while the OTHER game is the one loaded in RAM
 *   (during the detection throttle window right after a game swap). Capturing then would snapshot
@@ -747,7 +780,7 @@ static __forceinline bool VerifyLoadedGame()
     DetectCurrentGame();            // refresh gGame from the ZELDAZ / ZELDA3 magic
     if (gGame != expected)
     {   // Stale game id: this hook belongs to a game that is no longer the one in RAM.
-        forceGameCheck = true;      // force a clean re-sync on the next hook
+        RaiseForceGameCheck();      // force a clean re-sync on the next hook
         return false;
     }
 
@@ -814,7 +847,7 @@ static void HandleTransition(uint32_t PC)
         return;
     }
 
-    forceGameCheck = true;
+    RaiseForceGameCheck();
 
     Event* e = &gData->Buffer[gData->CurrIndex];
     e->PC = PC;
@@ -942,6 +975,8 @@ static __forceinline void DispatchPC(uint32_t PC)
 */
 void __fastcall PCHookImpl(uint32_t PC)
 {
+    PublishStatus();
+
     // ====================
     // Check if game is known
     // ====================
@@ -968,6 +1003,23 @@ void __fastcall PCHookImpl(uint32_t PC)
             // Trigger a game check when condition are met
             gDetectCounter++;
             runCheck = (gDetectCounter >= DETECT_THROTTLE);
+        }
+
+        // Stuck-transition watchdog: forceGameCheck is raised by Play_TransitionDone and only
+        // cleared by the next Play_Init. Loading a savestate between the two (a death, a wrong
+        // loading zone) restores a mid-scene state where Play_Init never runs, so the flag
+        // stayed up forever and every item handler kept bailing out: tracking went silent
+        // after savestates. A real scene load reaches Play_Init well within the timeout.
+        if (forceGameCheck && gIsRAMLoaded && GetTickCount64() - gForceCheckSince >= FORCE_CHECK_TIMEOUT_MS)
+        {
+            forceGameCheck = false;
+
+            if (gData != nullptr)
+            {
+                gData->Recoveries = gData->Recoveries + 1;
+            }
+
+            LOG("Stuck transition released (savestate loaded mid-transition ?)");
         }
 
         if (runCheck)
@@ -1256,6 +1308,7 @@ void InstallPCHook()
     }
 
     gPCHookInstalled = true;
+    PublishStatus();
 }
 
 
@@ -1384,6 +1437,7 @@ void UninstallPCHook()
     }
 
     gPCHookInstalled = false;
+    PublishStatus();
 }
 
 
