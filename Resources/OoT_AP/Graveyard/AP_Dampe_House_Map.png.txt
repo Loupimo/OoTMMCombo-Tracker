@@ -1,6 +1,0 @@
-QList<QPair<int, int>> GrassPoints = {
-{519, 469},
-};
-QList<QPair<int, int>> ChestPoints = {
-{565, 469},
-};

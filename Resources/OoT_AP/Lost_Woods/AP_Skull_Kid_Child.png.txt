@@ -1,8 +1,0 @@
-QList<QPair<int, int>> GrottoPoints = {
-{357, 599},
-{759, 326},
-};
-QList<QPair<int, int>> NPCsPoints = {
-{515, 362},
-{397, 250},
-};

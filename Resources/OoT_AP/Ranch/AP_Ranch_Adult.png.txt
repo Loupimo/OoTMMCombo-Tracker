@@ -1,4 +1,0 @@
-QList<QPair<int, int>> WonderPoints = {
-{508, 351},
-{421, 255},
-};

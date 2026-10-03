@@ -1,8 +1,0 @@
-QList<QPair<int, int>> PotPoints = {
-{950, 538},
-{976, 536},
-{1025, 534},
-};
-QList<QPair<int, int>> FoesPoints = {
-{999, 537},
-};

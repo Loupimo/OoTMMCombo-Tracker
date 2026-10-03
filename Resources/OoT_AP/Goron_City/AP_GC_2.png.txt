@@ -1,4 +1,0 @@
-QList<QPair<int, int>> PotPoints = {
-{733, 392},
-{704, 392},
-};

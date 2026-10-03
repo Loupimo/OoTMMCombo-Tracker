@@ -1,8 +1,0 @@
-QList<QPair<int, int>> HivePoints = {
-{545, 425},
-{548, 370},
-};
-QList<QPair<int, int>> PotPoints = {
-{545, 425},
-{548, 370},
-};

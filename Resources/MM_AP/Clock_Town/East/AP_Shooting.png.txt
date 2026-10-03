@@ -1,4 +1,0 @@
-QList<QPair<int, int>> NPCsPoints = {
-{620, 364},
-{728, 297},
-};

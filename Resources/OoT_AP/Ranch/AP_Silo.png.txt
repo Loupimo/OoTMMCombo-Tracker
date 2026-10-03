@@ -1,7 +1,0 @@
-QList<QPair<int, int>> FSPoints = {
-{751, 262},
-};
-QList<QPair<int, int>> CowPoints = {
-{510, 405},
-{554, 384},
-};

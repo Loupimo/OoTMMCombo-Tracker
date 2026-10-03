@@ -1,3 +1,0 @@
-QList<QPair<int, int>> FSPoints = {
-{792, 595},
-};
